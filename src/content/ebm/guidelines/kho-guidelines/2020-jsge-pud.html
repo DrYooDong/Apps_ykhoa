@@ -1,0 +1,1455 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tóm tắt Hướng dẫn Lâm sàng JSGE 2020 về Loét Dạ dày - Tá tràng: 28 Câu hỏi lâm sàng (CQ-1 đến CQ-28), quản lý thuốc chống huyết khối khi xuất huyết, phác đồ tiệt trừ H. pylori chứa Vonoprazan (P-CAB), dự phòng loét do NSAIDs và Aspirin liều thấp (LDA), cùng 11 biểu đồ Forest plot và sơ đồ thuật toán chính thức.">
+  <title>JSGE 2020: Hướng Dẫn Lâm Sàng Về Loét Dạ Dày - Tá Tràng – CliniPortal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #059669; --green-bg: #f0fdf4; --green-light: #a7f3d0;
+      --orange: #d97706; --orange-bg: #fffbeb; --orange-light: #fde68a;
+      --red: #dc2626; --red-bg: #fef2f2; --red-light: #fca5a5;
+      --blue: #2563eb; --blue-bg: #eff6ff; --blue-light: #bfdbfe;
+      --teal: #0d9488; --teal-bg: #f0fdfa; --teal-light: #99f6e4;
+      --purple: #7c3aed; --purple-bg: #faf5ff; --purple-light: #ddd6fe;
+      --accent: #0f6fb4;
+      --bg: #f0f4f8; --surface: #ffffff; --surface-2: #f8fafc;
+      --border: #cbd5e1; --border-light: #e2e8f0;
+      --text: #0f172a; --text-muted: #475569; --text-faint: #94a3b8;
+      --radius: 16px; --tr: 220ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [data-theme="dark"] {
+      --bg: #0f172a; --surface: #1e293b; --surface-2: #334155;
+      --border: #475569; --border-light: #334155;
+      --text: #f8fafc; --text-muted: #cbd5e1; --text-faint: #64748b;
+      --green-bg: rgba(5, 150, 105, 0.15); --green-light: rgba(167, 243, 208, 0.3);
+      --orange-bg: rgba(217, 119, 6, 0.15); --orange-light: rgba(253, 230, 138, 0.3);
+      --red-bg: rgba(220, 38, 38, 0.15); --red-light: rgba(252, 165, 165, 0.3);
+      --blue-bg: rgba(37, 99, 235, 0.15); --blue-light: rgba(191, 219, 254, 0.3);
+      --teal-bg: rgba(13, 148, 136, 0.15); --teal-light: rgba(153, 246, 228, 0.3);
+      --purple-bg: rgba(124, 58, 237, 0.15); --purple-light: rgba(221, 214, 254, 0.3);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; font-size: 15px; background: var(--bg); color: var(--text); line-height: 1.65; min-height: 100vh; }
+
+    @media print {
+      body { background: #fff !important; color: #000 !important; }
+      .topnav, .pillars-nav, .topnav-theme-toggle, .page-footer, .topnav-pdf-btn { display: none !important; }
+      .page-content { max-width: 100% !important; margin: 0 !important; padding: 0 !important; }
+      .sec-card { break-inside: avoid; border: 1px solid #ccc !important; box-shadow: none !important; }
+    }
+
+    /* TOP NAV */
+    .topnav { position: sticky; top: 0; z-index: 200; background: rgba(255,255,255,0.94); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 1rem; padding: 0 1.5rem; height: 56px; }
+    [data-theme="dark"] .topnav { background: rgba(15, 23, 42, 0.92); }
+    .topnav-back { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--accent); text-decoration: none; font-size: 0.82rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 8px; transition: background var(--tr); white-space: nowrap; }
+    .topnav-back:hover { background: var(--blue-bg); }
+    .topnav-divider { width: 1px; height: 18px; background: var(--border-light); flex-shrink: 0; }
+    .topnav-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .topnav-badges { margin-left: auto; display: flex; gap: 0.5rem; flex-shrink: 0; align-items: center; }
+    .topnav-theme-toggle, .topnav-pdf-btn { background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 1.05rem; padding: 0.4rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; transition: all var(--tr); }
+    .topnav-theme-toggle:hover, .topnav-pdf-btn:hover { background: var(--surface-2); color: var(--accent); }
+    .badge { padding: 0.2rem 0.65rem; border-radius: 20px; font-size: 0.7rem; font-weight: 700; white-space: nowrap; }
+    .badge-green { background: var(--green-bg); color: #065f46; border: 1px solid var(--green-light); }
+    .badge-blue { background: var(--blue-bg); color: #1e40af; border: 1px solid var(--blue-light); }
+    .badge-red { background: var(--red-bg); color: #991b1b; border: 1px solid var(--red-light); }
+    .badge-orange { background: var(--orange-bg); color: #92400e; border: 1px solid var(--orange-light); }
+    .badge-purple { background: var(--purple-bg); color: #5b21b6; border: 1px solid var(--purple-light); }
+
+    /* HERO */
+    .hero { background: linear-gradient(135deg, #0c4a6e 0%, #0369a1 40%, #0d9488 100%); color: #fff; padding: 3.5rem 1.5rem 4.5rem; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 15% 60%, rgba(56,189,248,0.2) 0%, transparent 55%), radial-gradient(ellipse at 85% 20%, rgba(16,185,129,0.15) 0%, transparent 50%); }
+    .hero-inner { max-width: 980px; margin: 0 auto; position: relative; z-index: 1; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.24); border-radius: 20px; padding: 0.3rem 0.9rem; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1rem; color: #7dd3fc; }
+    .hero-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(1.8rem, 4vw, 2.7rem); font-weight: 800; line-height: 1.18; letter-spacing: -0.03em; margin-bottom: 0.75rem; }
+    .hero-title span { display: block; background: linear-gradient(90deg, #7dd3fc, #6ee7b7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 0.68em; font-weight: 600; letter-spacing: 0; margin-bottom: 0.25rem; }
+    .hero-subtitle { font-size: 0.95rem; opacity: 0.92; max-width: 820px; margin-bottom: 1.75rem; line-height: 1.65; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 0.75rem 2rem; font-size: 0.8rem; opacity: 0.88; }
+    .hero-meta-item { display: flex; align-items: center; gap: 6px; }
+
+    /* PILLARS NAV STRIP */
+    .pillars-nav { position: sticky; top: 56px; z-index: 190; background: var(--surface); border-bottom: 1px solid var(--border-light); padding: 0.75rem 1.5rem; }
+    .pillars-nav-inner { max-width: 980px; margin: 0 auto; display: flex; gap: 0.5rem; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .pillar-tab { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.45rem 0.85rem; border-radius: 10px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.78rem; font-weight: 700; color: var(--text-muted); border: 1px solid var(--border-light); background: var(--surface-2); text-decoration: none; white-space: nowrap; transition: all var(--tr); }
+    .pillar-tab:hover { border-color: var(--accent); color: var(--accent); background: var(--blue-bg); }
+    .pillar-tab.p-1 { border-left: 4px solid var(--blue); }
+    .pillar-tab.p-2 { border-left: 4px solid var(--red); }
+    .pillar-tab.p-3 { border-left: 4px solid var(--green); }
+    .pillar-tab.p-4 { border-left: 4px solid var(--orange); }
+    .pillar-tab.p-5 { border-left: 4px solid var(--teal); }
+    .pillar-tab.p-6 { border-left: 4px solid var(--purple); }
+
+    /* STATS STRIP */
+    .stats-strip { background: var(--surface); border-bottom: 1px solid var(--border-light); padding: 1.5rem; }
+    .stats-grid { max-width: 980px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+    .stat-card { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.1rem 1.25rem; text-align: center; }
+    .stat-val { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.45rem; font-weight: 800; color: var(--accent); line-height: 1.2; }
+    .stat-lbl { font-size: 0.76rem; color: var(--text-muted); font-weight: 600; margin-top: 0.3rem; }
+
+    /* PAGE CONTENT */
+    .page-content { max-width: 980px; margin: 0 auto; padding: 2.25rem 1.5rem; display: flex; flex-direction: column; gap: 2.25rem; }
+
+    /* SECTION CARDS */
+    .sec-card { background: var(--surface); border: 1px solid var(--border-light); border-radius: var(--radius); overflow: hidden; scroll-margin-top: 110px; }
+    .sec-hdr { padding: 1.1rem 1.5rem; border-bottom: 1px solid var(--border-light); background: var(--surface-2); display: flex; align-items: center; gap: 0.65rem; }
+    .sec-hdr-icon { font-size: 1.2rem; }
+    .sec-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.05rem; font-weight: 800; color: var(--text); }
+    .sec-body { padding: 1.5rem; }
+    .sec-subtitle { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.9rem; color: var(--text-muted); margin: 1.75rem 0 0.85rem; text-transform: uppercase; letter-spacing: 0.04em; display: flex; align-items: center; gap: 0.5rem; }
+    .sec-subtitle:first-child { margin-top: 0; }
+
+    /* EBM RECOMMENDATION CARDS */
+    .ebm-rec-card { background: var(--surface-2); border: 1px solid var(--border-light); border-left: 4px solid var(--accent); border-radius: 12px; padding: 1.15rem 1.35rem; margin-bottom: 1.1rem; }
+    .ebm-rec-card.strong { border-left-color: var(--green); }
+    .ebm-rec-card.weak { border-left-color: var(--orange); }
+    .ebm-rec-card.danger { border-left-color: var(--red); }
+    .ebm-rec-header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.6rem; }
+    .ebm-rec-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.92rem; color: var(--text); display: flex; align-items: center; gap: 0.4rem; }
+    .ebm-rec-body { font-size: 0.86rem; color: var(--text); line-height: 1.65; }
+    .ebm-rec-body ul { margin-left: 1.25rem; margin-top: 0.4rem; }
+    .ebm-rec-body li { margin-bottom: 0.35rem; }
+    .ebm-rec-evidence { margin-top: 0.65rem; font-size: 0.78rem; color: var(--text-muted); background: var(--surface); padding: 0.5rem 0.85rem; border-radius: 8px; border: 1px solid var(--border-light); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
+
+    /* BADGES */
+    .grade-badge-group { display: inline-flex; align-items: center; gap: 0.35rem; flex-wrap: wrap; }
+    .grade-badge { display: inline-block; padding: 0.18rem 0.55rem; border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 700; }
+    .grade-strong { background: var(--green-bg); color: #065f46; border: 1px solid var(--green-light); }
+    .grade-weak { background: var(--orange-bg); color: #92400e; border: 1px solid var(--orange-light); }
+    .grade-loe { display: inline-block; padding: 0.18rem 0.5rem; border-radius: 6px; background: var(--surface); color: var(--text-muted); border: 1px solid var(--border); font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; font-weight: 700; }
+    .grade-agree { padding: 0.18rem 0.5rem; border-radius: 6px; background: var(--blue-bg); color: #1e40af; border: 1px solid var(--blue-light); font-size: 0.7rem; font-weight: 700; }
+
+    /* INFO BOXES */
+    .infobox { display: flex; align-items: flex-start; gap: 0.85rem; padding: 1rem 1.25rem; border-radius: 12px; margin-bottom: 1.1rem; font-size: 0.86rem; line-height: 1.6; }
+    .infobox:last-child { margin-bottom: 0; }
+    .infobox-icon { font-size: 1.3rem; flex-shrink: 0; line-height: 1.3; }
+    .infobox.danger { background: var(--red-bg); border: 1px solid var(--red-light); border-left: 4px solid var(--red); }
+    .infobox.success { background: var(--green-bg); border: 1px solid var(--green-light); border-left: 4px solid var(--green); }
+    .infobox.warning { background: var(--orange-bg); border: 1px solid var(--orange-light); border-left: 4px solid var(--orange); }
+    .infobox.info { background: var(--blue-bg); border: 1px solid var(--blue-light); border-left: 4px solid var(--blue); }
+    .infobox-title, .infobox > div > strong:first-child { display: block; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.88rem; font-weight: 700; margin-bottom: 0.35rem; color: var(--text); }
+    .infobox strong { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; }
+
+    /* FIGURE CARDS */
+    .fig-card { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.25rem; margin: 1.5rem 0; text-align: center; }
+    .fig-img { max-width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--border-light); box-shadow: 0 4px 14px rgba(0,0,0,0.06); margin-bottom: 0.85rem; }
+    .fig-caption { font-size: 0.83rem; color: var(--text-muted); text-align: left; line-height: 1.6; background: var(--surface); padding: 0.9rem 1.1rem; border-radius: 8px; border: 1px solid var(--border-light); }
+    .fig-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.9rem; color: var(--text); margin-bottom: 0.35rem; }
+
+    /* TABLES */
+    .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 1rem 0; }
+    .med-table { width: 100%; border-collapse: collapse; font-size: 0.83rem; min-width: 680px; }
+    .med-table th { background: var(--surface-2); padding: 0.75rem 0.9rem; text-align: left; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); border-bottom: 2px solid var(--border-light); }
+    .med-table td { padding: 0.85rem 0.9rem; border-bottom: 1px solid var(--border-light); vertical-align: top; line-height: 1.55; }
+    .med-table tbody tr:hover td { background: var(--surface-2); }
+    .rx-tag { display: inline-block; background: var(--border-light); color: var(--text-muted); font-size: 0.72rem; font-family: 'JetBrains Mono', monospace; padding: 0.18rem 0.5rem; border-radius: 5px; margin: 0.15rem 0.1rem; }
+    .rx-tag.preferred { background: var(--green-bg); color: #065f46; border: 1px solid var(--green-light); font-weight: 700; }
+    .rx-tag.danger { background: var(--red-bg); color: #991b1b; border: 1px solid var(--red-light); font-weight: 700; }
+    .rx-tag.warning { background: var(--orange-bg); color: #92400e; border: 1px solid var(--orange-light); font-weight: 700; }
+    .rx-tag.info { background: var(--blue-bg); color: #1e40af; border: 1px solid var(--blue-light); font-weight: 700; }
+
+    /* MATRIX GRID CARDS */
+    .matrix-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 1rem; margin: 1rem 0; }
+    .matrix-card { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 12px; padding: 1.25rem; position: relative; transition: box-shadow var(--tr); }
+    .matrix-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+    .matrix-card-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.9rem; color: var(--text); margin-bottom: 0.4rem; display: flex; align-items: center; justify-content: space-between; }
+    .matrix-card-body { font-size: 0.83rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* CDSS INTERACTIVE TOOL BOX */
+    .cdss-box { background: var(--surface-2); border: 1.5px solid var(--accent); border-radius: 14px; padding: 1.35rem; margin: 1.5rem 0; box-shadow: 0 4px 18px rgba(15, 111, 180, 0.08); }
+    .cdss-hdr { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.1rem; border-bottom: 1px solid var(--border-light); padding-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem; }
+    .cdss-hdr-title { display: flex; align-items: center; gap: 0.5rem; color: var(--accent); font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.95rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.03em; }
+    .cdss-tabs { display: flex; gap: 0.4rem; overflow-x: auto; margin-bottom: 1.2rem; }
+    .cdss-tab-btn { padding: 0.45rem 0.85rem; border-radius: 8px; border: 1px solid var(--border-light); background: var(--surface); color: var(--text-muted); font-size: 0.78rem; font-weight: 700; cursor: pointer; transition: all var(--tr); white-space: nowrap; font-family: 'Plus Jakarta Sans', sans-serif; }
+    .cdss-tab-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .cdss-tab-content { display: none; }
+    .cdss-tab-content.active { display: block; }
+    .cdss-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 1rem; }
+    .form-group-mini { display: flex; flex-direction: column; gap: 0.35rem; }
+    .form-group-mini label { font-size: 0.78rem; font-weight: 600; color: var(--text-muted); }
+    .form-control-mini { padding: 0.45rem 0.65rem; border-radius: 8px; border: 1px solid var(--border); background: var(--surface); color: var(--text); font-family: 'Inter', sans-serif; font-size: 0.82rem; height: 38px; }
+    .form-control-mini:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 2px rgba(15, 111, 180, 0.15); }
+    .cdss-result-panel { background: var(--surface); border: 1.5px solid var(--border-light); border-radius: 10px; padding: 1.1rem 1.25rem; transition: all var(--tr); margin-top: 1rem; }
+    .cdss-score-badge { display: inline-flex; align-items: center; gap: 0.5rem; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.05rem; font-weight: 800; color: var(--accent); margin-bottom: 0.45rem; }
+    .cdss-recommendation { font-size: 0.85rem; line-height: 1.6; color: var(--text); }
+
+    /* EDITORIAL SVG FLOWCHART CONTAINER */
+    .svg-flowchart-container { background: var(--surface); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.5rem; margin: 1.5rem 0; overflow-x: auto; text-align: center; }
+    .svg-flowchart-container svg { max-width: 100%; height: auto; min-width: 720px; }
+
+    /* CITATION & ACTION BUTTONS */
+    .citation-box { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 12px; padding: 1.25rem; font-size: 0.82rem; color: var(--text-muted); line-height: 1.75; font-style: italic; }
+    .btn-row { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.25rem; }
+    .btn { display: inline-flex; align-items: center; gap: 6px; padding: 0.55rem 1.1rem; border-radius: 10px; border: 1.5px solid var(--border-light); background: var(--surface); color: var(--text-muted); font-size: 0.82rem; font-weight: 600; cursor: pointer; text-decoration: none; transition: all var(--tr); }
+    .btn:hover { border-color: var(--accent); color: var(--accent); background: var(--blue-bg); }
+    .btn-primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .btn-primary:hover { background: #0c5a94; color: #fff; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .page-content { padding: 1.25rem 1rem; }
+      .sec-body { padding: 1rem; }
+      .cdss-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP NAV -->
+  <nav class="topnav">
+    <a href="../guidelines.html" class="topnav-back">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+      Kho Guidelines
+    </a>
+    <div class="topnav-divider"></div>
+    <div class="topnav-title">JSGE 2020: Hướng Dẫn Lâm Sàng Về Loét Dạ Dày - Tá Tràng</div>
+    <div class="topnav-badges">
+      <span class="badge badge-green">GRADE EBM</span>
+      <span class="badge badge-blue">JSGE 2020</span>
+      <span class="badge badge-purple">J Gastroenterol Q1</span>
+      <button class="topnav-pdf-btn" onclick="window.print()" title="In / Xuất PDF" aria-label="In / Xuất PDF">
+        <i class="fa-solid fa-print"></i>
+      </button>
+      <button class="topnav-theme-toggle" id="themeToggleBtn" title="Chuyển đổi giao diện Sáng / Tối" aria-label="Toggle Theme">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">🇯🇵 Japanese Society of Gastroenterology (JSGE) • Evidence-based Clinical Guidelines</div>
+      <h1 class="hero-title">
+        <span>Evidence-based Clinical Practice Guidelines for Peptic Ulcer Disease 2020</span>
+        Hướng Dẫn Lâm Sàng Dựa Trên Bằng Chứng Cho Bệnh Loét Dạ Dày - Tá Tràng (JSGE 2020)
+      </h1>
+      <p class="hero-subtitle">
+        Khuyến cáo thực hành y học chứng cứ chuẩn GRADE toàn diện của Hiệp hội Tiêu hóa Nhật Bản về quản lý xuất huyết tiêu hóa, xử trí thuốc chống huyết khối (Aspirin/DAPT/DOACs/Warfarin), phác đồ tiệt trừ <em>Helicobacter pylori</em> chứa Vonoprazan (P-CAB), chiến lược dự phòng loét do NSAIDs / Aspirin liều thấp (LDA), và điều trị các thể loét phức tạp (loét vô căn, mỏm cắt sau phẫu thuật, thiếu máu cục bộ).
+      </p>
+      <div class="hero-meta">
+        <div class="hero-meta-item"><i class="fa-regular fa-calendar"></i> Xuất bản: 2021 (Bản gốc JSGE 2020)</div>
+        <div class="hero-meta-item"><i class="fa-solid fa-book-journal-whills"></i> Journal of Gastroenterology (IF: 6.2, Q1)</div>
+        <div class="hero-meta-item"><i class="fa-solid fa-user-doctor"></i> Trưởng ban: Tomoari Kamada, Ken Satoh, Takuya Itoh, et al.</div>
+        <div class="hero-meta-item"><i class="fa-solid fa-tag"></i> Tiêu hóa - Gan mật / Cấp cứu - Dược lâm sàng</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PILLARS STICKY NAV BAR -->
+  <div class="pillars-nav">
+    <div class="pillars-nav-inner">
+      <a href="#sec-1" class="pillar-tab p-1">1. Phương Pháp Luận GRADE</a>
+      <a href="#sec-2" class="pillar-tab p-2">2. Loét Xuất Huyết & Chống Đông</a>
+      <a href="#sec-3" class="pillar-tab p-3">3. Tiệt Trừ H. pylori & P-CAB</a>
+      <a href="#sec-4" class="pillar-tab p-4">4. Loét Do Thuốc NSAIDs</a>
+      <a href="#sec-5" class="pillar-tab p-5">5. Loét Do Aspirin Liều Thấp (LDA)</a>
+      <a href="#sec-6" class="pillar-tab p-6">6. Thể Loét Đặc Biệt & Ngoại Khoa</a>
+    </div>
+  </div>
+
+  <!-- STATS STRIP -->
+  <div class="stats-strip">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-val">28 CQ + 1 FRQ</div>
+        <div class="stat-lbl">29 Khuyến cáo lâm sàng GRADE toàn diện</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">100%</div>
+        <div class="stat-lbl">Tỷ lệ đồng thuận tuyệt đối của Hội đồng JSGE</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">OR 0.28</div>
+        <div class="stat-lbl">Vonoprazan tiệt trừ H. pylori bước 1 vượt trội (p &lt; 0.00001)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">RR 0.26</div>
+        <div class="stat-lbl">PPI phối hợp DAPT giảm 74% nguy cơ xuất huyết (p = 0.0002)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE CONTENT -->
+  <div class="page-content">
+
+    <!-- CDSS INTERACTIVE DECISION SUPPORT TOOL -->
+    <div class="cdss-box">
+      <div class="cdss-hdr">
+        <div class="cdss-hdr-title">
+          <i class="fa-solid fa-calculator"></i>
+          JSGE 2020: Bộ Công Cụ Tư Vấn Phân Tầng & Ra Quyết Định Lâm Sàng (CDSS)
+        </div>
+        <span class="badge badge-blue">Hỗ Trợ Quyết Định Tức Thì</span>
+      </div>
+
+      <div class="cdss-tabs">
+        <button class="cdss-tab-btn active" onclick="switchCdssTab('tab-bleeding')">1. Thuốc Chống Huyết Khối Khi Chảy Máu</button>
+        <button class="cdss-tab-btn" onclick="switchCdssTab('tab-nsaid')">2. Phân Tầng Dự Phòng NSAIDs</button>
+        <button class="cdss-tab-btn" onclick="switchCdssTab('tab-lda')">3. Phân Tầng Dự Phòng Aspirin (LDA)</button>
+        <button class="cdss-tab-btn" onclick="switchCdssTab('tab-hp')">4. Lựa Chọn Phác Đồ H. pylori</button>
+      </div>
+
+      <!-- TAB 1: THUỐC CHỐNG HUYẾT KHỐI KHI XUẤT HUYẾT -->
+      <div id="tab-bleeding" class="cdss-tab-content active">
+        <div class="cdss-grid">
+          <div class="form-group-mini">
+            <label for="antithromboticType">Nhóm thuốc chống huyết khối đang dùng:</label>
+            <select id="antithromboticType" class="form-control-mini" onchange="calcBleedingMgmt()">
+              <option value="aspirin-mono">Aspirin đơn trị liệu (Nguy cơ huyết khối cao)</option>
+              <option value="non-aspirin-antiplatelet">Kháng tiểu cầu khác (Clopidogrel, Ticagrelor, Prasugrel)</option>
+              <option value="dapt">Kháng tiểu cầu kép (DAPT: Aspirin + P2Y12)</option>
+              <option value="warfarin">Thuốc kháng Vitamin K (Warfarin)</option>
+              <option value="doac">Thuốc chống đông đường uống trực tiếp (DOACs)</option>
+              <option value="warfarin-antiplatelet">Phối hợp Warfarin + Kháng tiểu cầu</option>
+            </select>
+          </div>
+          <div class="form-group-mini">
+            <label for="thromboticRisk">Nguy cơ biến cố huyết khối tắc mạch của bệnh nhân:</label>
+            <select id="thromboticRisk" class="form-control-mini" onchange="calcBleedingMgmt()">
+              <option value="high">Nguy cơ cao (Stent mạch vành gần đây, đột quỵ thiếu máu não gần, van nhân tạo)</option>
+              <option value="low">Nguy cơ thấp / Trung bình (Dự phòng tiên phát, biến cố xa)</option>
+            </select>
+          </div>
+          <div class="form-group-mini">
+            <label for="hemostasisStatus">Tình trạng can thiệp nội soi cầm máu:</label>
+            <select id="hemostasisStatus" class="form-control-mini" onchange="calcBleedingMgmt()">
+              <option value="confirmed">Đã xác nhận cầm máu thành công qua nội soi</option>
+              <option value="pending">Chuẩn bị nội soi can thiệp cầm máu</option>
+              <option value="failed">Thất bại can thiệp nội soi cầm máu</option>
+            </select>
+          </div>
+        </div>
+        <div id="bleedingResultPanel" class="cdss-result-panel">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+
+      <!-- TAB 2: DỰ PHÒNG NSAIDs -->
+      <div id="tab-nsaid" class="cdss-tab-content">
+        <div class="cdss-grid">
+          <div class="form-group-mini">
+            <label for="nsaidUlcerHistory">Tiền sử loét dạ dày - tá tràng:</label>
+            <select id="nsaidUlcerHistory" class="form-control-mini" onchange="calcNsaidMgmt()">
+              <option value="none">Không có tiền sử loét (Ulcer history -)</option>
+              <option value="ulcer-non-bleed">Có tiền sử loét (Không có biến chứng chảy máu)</option>
+              <option value="ulcer-bleed">Có tiền sử loét biến chứng CHẢY MÁU</option>
+            </select>
+          </div>
+          <div class="form-group-mini">
+            <label for="nsaidAgeCoMeds">Tuổi và thuốc dùng kèm:</label>
+            <select id="nsaidAgeCoMeds" class="form-control-mini" onchange="calcNsaidMgmt()">
+              <option value="standard">Người trẻ / Không dùng kèm thuốc nguy cơ cao</option>
+              <option value="elderly">Người cao tuổi (&ge; 65 tuổi) hoặc có bệnh lý nền nặng</option>
+              <option value="plus-steroid-anticoag">Dùng kèm Glucocorticoids hoặc Thuốc chống đông</option>
+              <option value="plus-lda">Dùng kèm Aspirin liều thấp (LDA)</option>
+            </select>
+          </div>
+          <div class="form-group-mini">
+            <label for="nsaidHpStatus">Tình trạng nhiễm H. pylori & kinh nghiệm dùng NSAIDs:</label>
+            <select id="nsaidHpStatus" class="form-control-mini" onchange="calcNsaidMgmt()">
+              <option value="naive-hp-pos">Chưa từng dùng NSAIDs (NSAID-naïve) & H. pylori (+)</option>
+              <option value="naive-hp-neg">Chưa từng dùng NSAIDs & H. pylori (-)</option>
+              <option value="chronic-user">Đang sử dụng NSAIDs dài hạn (> 3 tháng)</option>
+            </select>
+          </div>
+        </div>
+        <div id="nsaidResultPanel" class="cdss-result-panel">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+
+      <!-- TAB 3: DỰ PHÒNG ASPIRIN (LDA) -->
+      <div id="tab-lda" class="cdss-tab-content">
+        <div class="cdss-grid">
+          <div class="form-group-mini">
+            <label for="ldaUlcerHistory">Tiền sử loét / Xuất huyết liên quan LDA:</label>
+            <select id="ldaUlcerHistory" class="form-control-mini" onchange="calcLdaMgmt()">
+              <option value="none">Không có tiền sử loét (Dự phòng tiên phát)</option>
+              <option value="ulcer-non-bleed">Có tiền sử loét không chảy máu</option>
+              <option value="ulcer-bleed">Có tiền sử loét BIẾN CHỨNG CHẢY MÁU</option>
+            </select>
+          </div>
+          <div class="form-group-mini">
+            <label for="ldaCoNsaid">Phối hợp thêm thuốc NSAIDs khác:</label>
+            <select id="ldaCoNsaid" class="form-control-mini" onchange="calcLdaMgmt()">
+              <option value="no">Không dùng kèm NSAIDs</option>
+              <option value="yes">Bắt buộc phối hợp thêm NSAIDs</option>
+            </select>
+          </div>
+          <div class="form-group-mini">
+            <label for="ldaHpStatus">Tình trạng xét nghiệm H. pylori:</label>
+            <select id="ldaHpStatus" class="form-control-mini" onchange="calcLdaMgmt()">
+              <option value="positive">Dương tính với H. pylori (+)</option>
+              <option value="negative">Âm tính với H. pylori (-)</option>
+              <option value="unknown">Chưa làm xét nghiệm</option>
+            </select>
+          </div>
+        </div>
+        <div id="ldaResultPanel" class="cdss-result-panel">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+
+      <!-- TAB 4: LỰA CHỌN PHÁC ĐỒ H. PYLORI -->
+      <div id="tab-hp" class="cdss-tab-content">
+        <div class="cdss-grid">
+          <div class="form-group-mini">
+            <label for="hpLine">Bước điều trị tiệt trừ:</label>
+            <select id="hpLine" class="form-control-mini" onchange="calcHpMgmt()">
+              <option value="line-1">Bước 1 (First-line / Khởi đầu)</option>
+              <option value="line-2">Bước 2 (Second-line / Cứu vãn khi thất bại bước 1)</option>
+              <option value="line-3">Bước 3 (Third-line / Kháng thuốc bước 1 và 2)</option>
+            </select>
+          </div>
+          <div class="form-group-mini">
+            <label for="hpClariResistance">Tỷ lệ kháng Clarithromycin tại khu vực:</label>
+            <select id="hpClariResistance" class="form-control-mini" onchange="calcHpMgmt()">
+              <option value="high">Cao (> 15%, ví dụ Nhật Bản, Việt Nam)</option>
+              <option value="low">Thấp (&le; 15%)</option>
+            </select>
+          </div>
+          <div class="form-group-mini">
+            <label for="hpPcabAvail">Tình trạng sẵn có của Vonoprazan (P-CAB):</label>
+            <select id="hpPcabAvail" class="form-control-mini" onchange="calcHpMgmt()">
+              <option value="available">Có sẵn Vonoprazan (VPZ 20mg)</option>
+              <option value="ppi-only">Chỉ có sẵn PPI tiêu chuẩn (Esomeprazole, Rabeprazole...)</option>
+            </select>
+          </div>
+        </div>
+        <div id="hpResultPanel" class="cdss-result-panel">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- SƠ ĐỒ EDITORIAL SVG TỔNG THỂ -->
+    <div class="sec-card" id="sec-svg-overview">
+      <div class="sec-hdr">
+        <span class="sec-hdr-icon"><i class="fa-solid fa-diagram-project" style="color: var(--accent);"></i></span>
+        <h2 class="sec-title">Lưu Đồ Thuật Toán Tiếp Cận & Điều Trị Bệnh Loét Dạ Dày - Tá Tràng (JSGE 2020)</h2>
+      </div>
+      <div class="sec-body">
+        <p style="font-size: 0.86rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+          Sơ đồ phác đồ trực quan hóa toàn bộ lộ trình ra quyết định lâm sàng theo Hướng dẫn JSGE 2020: phân luồng cấp cứu biến chứng (Thủng, Hẹp, Xuất huyết), tiếp cận loét theo căn nguyên (NSAIDs, <em>H. pylori</em>, Vô căn, Mỏm cắt) và chiến lược duy trì phòng ngừa tái phát.
+        </p>
+
+        <div class="svg-flowchart-container">
+          <svg viewBox="0 0 920 540" xmlns="http://www.w3.org/2000/svg" font-family="'Plus Jakarta Sans', 'Inter', sans-serif">
+            <defs>
+              <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--text-faint)"/>
+              </marker>
+              <marker id="arrow-blue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#2563eb"/>
+              </marker>
+              <marker id="arrow-red" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+              </marker>
+            </defs>
+
+            <!-- NODE 1: BỆNH NHÂN LOÉT DẠ DÀY - TÁ TRÀNG -->
+            <rect x="330" y="20" width="260" height="48" rx="10" fill="var(--surface-2)" stroke="var(--accent)" stroke-width="2"/>
+            <text x="460" y="42" font-size="13" font-weight="700" fill="var(--text)" text-anchor="middle">BỆNH NHÂN LOÉT DẠ DÀY - TÁ TRÀNG</text>
+            <text x="460" y="56" font-size="10.5" fill="var(--text-muted)" text-anchor="middle">Đánh giá ban đầu & Khảo sát biến chứng</text>
+
+            <!-- ARROW DOWN TO COMPLICATIONS CHECK -->
+            <path d="M 460 68 L 460 105" stroke="var(--text-faint)" stroke-width="1.8" fill="none" marker-end="url(#arrow)"/>
+
+            <!-- COMPLICATIONS SPLIT -->
+            <!-- LEFT: THỦNG / HẸP MÔN VỊ -->
+            <rect x="40" y="115" width="220" height="58" rx="10" fill="var(--red-bg)" stroke="var(--red-light)" stroke-width="1.5"/>
+            <text x="150" y="137" font-size="12" font-weight="700" fill="#991b1b" text-anchor="middle">THỦNG HOẶC HẸP MÔN VỊ</text>
+            <text x="150" y="155" font-size="10.5" fill="var(--text-muted)" text-anchor="middle">Phẫu thuật / Điều trị bảo tồn</text>
+
+            <!-- CENTER: XUẤT HUYẾT TIÊU HÓA -->
+            <rect x="340" y="115" width="240" height="58" rx="10" fill="var(--red-bg)" stroke="#dc2626" stroke-width="2"/>
+            <text x="460" y="137" font-size="12" font-weight="700" fill="#991b1b" text-anchor="middle">LOÉT BIẾN CHỨNG XUẤT HUYẾT</text>
+            <text x="460" y="155" font-size="10.5" fill="var(--text-muted)" text-anchor="middle">Nội soi can thiệp cầm máu</text>
+
+            <!-- RIGHT: KHÔNG BIẾN CHỨNG -->
+            <rect x="650" y="115" width="230" height="58" rx="10" fill="var(--green-bg)" stroke="var(--green-light)" stroke-width="1.5"/>
+            <text x="765" y="137" font-size="12" font-weight="700" fill="#065f46" text-anchor="middle">KHÔNG CÓ BIẾN CHỨNG</text>
+            <text x="765" y="155" font-size="10.5" fill="var(--text-muted)" text-anchor="middle">Điều trị nội khoa tức thì</text>
+
+            <!-- CONNECTORS FROM TOP TO BRANCHES -->
+            <path d="M 460 90 L 150 90 L 150 115" stroke="var(--text-faint)" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+            <path d="M 460 90 L 765 90 L 765 115" stroke="var(--text-faint)" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+
+            <!-- UNDER BLEEDING: POST-HEMOSTASIS -->
+            <path d="M 460 173 L 460 210" stroke="var(--text-faint)" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+            <rect x="330" y="210" width="260" height="54" rx="10" fill="var(--surface-2)" stroke="var(--border)" stroke-width="1.5"/>
+            <text x="460" y="231" font-size="11.5" font-weight="700" fill="var(--text)" text-anchor="middle">PPI Liều Chuẩn + Xem xét IVR/TAE</text>
+            <text x="460" y="249" font-size="10" fill="var(--text-muted)" text-anchor="middle">Duy trì Aspirin nếu nguy cơ huyết khối cao</text>
+
+            <!-- ARROWS LEADING TO ETIOLOGY DIVISION -->
+            <path d="M 460 264 L 460 300" stroke="var(--text-faint)" stroke-width="1.5" fill="none"/>
+            <path d="M 765 173 L 765 300 L 140 300" stroke="var(--text-faint)" stroke-width="1.5" fill="none"/>
+
+            <!-- 4 ETIOLOGICAL BOXES -->
+            <!-- 1. LOÉT DO NSAIDS -->
+            <path d="M 140 300 L 140 330" stroke="var(--text-faint)" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+            <rect x="30" y="330" width="200" height="175" rx="10" fill="var(--surface)" stroke="var(--orange)" stroke-width="1.5"/>
+            <rect x="30" y="330" width="200" height="30" rx="10" fill="var(--orange-bg)"/>
+            <text x="130" y="350" font-size="11.5" font-weight="700" fill="#92400e" text-anchor="middle">1. LOÉT DO NSAIDs</text>
+            <text x="42" y="380" font-size="10.5" font-weight="700" fill="var(--text)">• Ngừng NSAIDs + PPI/VPZ</text>
+            <text x="42" y="400" font-size="10" fill="var(--text-muted)">• Nếu bắt buộc dùng tiếp:</text>
+            <text x="50" y="418" font-size="10" fill="#2563eb">• Ưu tiên PPI hàng đầu</text>
+            <text x="42" y="438" font-size="10" fill="var(--text-muted)">• Bệnh nhân có tiền sử loét:</text>
+            <text x="50" y="456" font-size="10" fill="#059669">• Celecoxib + PPI</text>
+            <text x="42" y="478" font-size="10" fill="var(--text-muted)">• Tiệt trừ H. pylori nếu naïve</text>
+
+            <!-- 2. LOÉT DO H. PYLORI -->
+            <path d="M 360 300 L 360 330" stroke="var(--text-faint)" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+            <rect x="250" y="330" width="205" height="175" rx="10" fill="var(--surface)" stroke="var(--green)" stroke-width="1.5"/>
+            <rect x="250" y="330" width="205" height="30" rx="10" fill="var(--green-bg)"/>
+            <text x="352" y="350" font-size="11.5" font-weight="700" fill="#065f46" text-anchor="middle">2. NHIỄM H. PYLORI (+)</text>
+            <text x="262" y="380" font-size="10.5" font-weight="700" fill="#065f46">• Bước 1: VPZ + Amox + Clari</text>
+            <text x="270" y="398" font-size="10" fill="var(--text-muted)">(Hoặc Amox + Metro)</text>
+            <text x="262" y="420" font-size="10.5" font-weight="700" fill="#2563eb">• Bước 2: PAM (VPZ/PPI +</text>
+            <text x="270" y="438" font-size="10" fill="var(--text-muted)">Amox + Metronidazole)</text>
+            <text x="262" y="460" font-size="10.5" font-weight="700" fill="#d97706">• Bước 3: Chứa Sitafloxacin</text>
+            <text x="262" y="482" font-size="10" fill="var(--text-muted)">• Thử lại UBT sau 4-8 tuần</text>
+
+            <!-- 3. LOÉT DO ASPIRIN (LDA) -->
+            <path d="M 580 300 L 580 330" stroke="var(--text-faint)" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+            <rect x="475" y="330" width="205" height="175" rx="10" fill="var(--surface)" stroke="var(--blue)" stroke-width="1.5"/>
+            <rect x="475" y="330" width="205" height="30" rx="10" fill="var(--blue-bg)"/>
+            <text x="577" y="350" font-size="11.5" font-weight="700" fill="#1e40af" text-anchor="middle">3. DÙNG ASPIRIN (LDA)</text>
+            <text x="487" y="380" font-size="10.5" font-weight="700" fill="var(--text)">• TIẾP TỤC LDA + PPI</text>
+            <text x="487" y="400" font-size="10" fill="var(--text-muted)">• Dự phòng chảy máu:</text>
+            <text x="495" y="418" font-size="10" fill="#059669">• PPI hoặc Vonoprazan</text>
+            <text x="487" y="438" font-size="10" fill="var(--text-muted)">• Tiền sử chảy máu loét:</text>
+            <text x="495" y="456" font-size="10" fill="#2563eb">• Tiệt trừ HP + Duy trì PPI</text>
+            <text x="487" y="478" font-size="10" fill="var(--text-muted)">• Nếu phối hợp NSAIDs:</text>
+            <text x="495" y="494" font-size="10" fill="#991b1b">• Celecoxib + PPI</text>
+
+            <!-- 4. VÔ CĂN / MỎM CẮT / THIẾU MÁU -->
+            <path d="M 800 300 L 800 330" stroke="var(--text-faint)" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+            <rect x="700" y="330" width="195" height="175" rx="10" fill="var(--surface)" stroke="var(--purple)" stroke-width="1.5"/>
+            <rect x="700" y="330" width="195" height="30" rx="10" fill="var(--purple-bg)"/>
+            <text x="797" y="350" font-size="11.5" font-weight="700" fill="#5b21b6" text-anchor="middle">4. THỂ ĐẶC BIỆT</text>
+            <text x="710" y="380" font-size="10" font-weight="700" fill="var(--text)">• Loét vô căn (Idiopathic):</text>
+            <text x="718" y="398" font-size="9.5" fill="var(--text-muted)">PPI dài hạn / Duy trì H2RA</text>
+            <text x="710" y="420" font-size="10" font-weight="700" fill="var(--text)">• Loét mỏm cắt sau mổ:</text>
+            <text x="718" y="438" font-size="9.5" fill="var(--text-muted)">Khởi trị ngay bằng PPI</text>
+            <text x="710" y="460" font-size="10" font-weight="700" fill="var(--text)">• Loét do thiếu máu:</text>
+            <text x="718" y="478" font-size="9.5" fill="var(--text-muted)">PPI/Misoprostol + Chụp mạch</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 1: PHƯƠNG PHÁP LUẬN GRADE & PHÂN TẦNG -->
+    <div class="sec-card" id="sec-1">
+      <div class="sec-hdr">
+        <span class="sec-hdr-icon"><i class="fa-solid fa-microscope" style="color: var(--blue);"></i></span>
+        <h2 class="sec-title">1. Phương Pháp Luận Xây Dựng Hướng Dẫn Lâm Sàng JSGE 2020</h2>
+      </div>
+      <div class="sec-body">
+        <div class="infobox info">
+          <div class="infobox-icon"><i class="fa-solid fa-circle-info"></i></div>
+          <div>
+            <strong>Quy chuẩn GRADE và Tiêu chuẩn Đồng thuận của JSGE</strong>
+            Hướng dẫn Thực hành Lâm sàng dựa trên Bằng chứng cho Bệnh Loét Dạ dày - Tá tràng năm 2020 của Hiệp hội Tiêu hóa Nhật Bản (JSGE) được biên soạn theo phương pháp luận chuẩn hóa quốc tế GRADE (Grading of Recommendations Assessment, Development and Evaluation), thu thập dữ liệu y văn từ năm 1983 đến cuối năm 2018 từ Medline, Cochrane Library và Igaku Chuo Zasshi.
+          </div>
+        </div>
+
+        <div class="matrix-grid">
+          <div class="matrix-card">
+            <div class="matrix-card-title">
+              <span>Chất Lượng Bằng Chứng (GRADE)</span>
+              <span class="badge badge-blue">4 Mức Độ</span>
+            </div>
+            <div class="matrix-card-body">
+              <ul style="list-style: none; padding-left: 0;">
+                <li style="margin-bottom: 0.4rem;"><strong>A (Cao - High):</strong> Rất tự tin rằng hiệu quả thực tế nằm sát với ước tính hiệu quả.</li>
+                <li style="margin-bottom: 0.4rem;"><strong>B (Trung bình - Moderate):</strong> Tự tin vừa phải; nghiên cứu tương lai có thể ảnh hưởng đến ước tính.</li>
+                <li style="margin-bottom: 0.4rem;"><strong>C (Thấp - Low):</strong> Mức độ tự tin hạn chế; nghiên cứu tiếp theo có khả năng thay đổi kết luận.</li>
+                <li><strong>D (Rất thấp - Very Low):</strong> Rất ít tự tin vào ước tính kết quả lâm sàng hiện tại.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="matrix-card">
+            <div class="matrix-card-title">
+              <span>Sức Mạnh Khuyến Cáo & Đồng Thuận</span>
+              <span class="badge badge-green">&ge; 70% Bỏ Phiếu</span>
+            </div>
+            <div class="matrix-card-body">
+              <ul style="list-style: none; padding-left: 0;">
+                <li style="margin-bottom: 0.4rem;"><strong>Khuyến cáo mạnh (Strong Recommendation):</strong> Lợi ích lâm sàng vượt trội rõ rệt so với nguy cơ hoặc ngược lại; áp dụng cho hầu hết bệnh nhân.</li>
+                <li style="margin-bottom: 0.4rem;"><strong>Khuyến cáo yếu / Gợi ý (Weak/Suggested):</strong> Cần cân nhắc cá thể hóa dựa trên giá trị và nguyện vọng của người bệnh.</li>
+                <li><strong>Tiêu chuẩn Đồng thuận:</strong> Bắt buộc đạt <strong>&ge; 70% số phiếu tán thành</strong> từ Hội đồng chuyên gia JSGE. Trong bản 2020, 100% các khuyến nghị đều đạt đồng thuận tuyệt đối.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 2: LOÉT XUẤT HUYẾT & THUỐC CHỐNG HUYẾT KHỐI -->
+    <div class="sec-card" id="sec-2">
+      <div class="sec-hdr">
+        <span class="sec-hdr-icon"><i class="fa-solid fa-droplet" style="color: var(--red);"></i></span>
+        <h2 class="sec-title">2. Quản Lý Loét Xuất Huyết & Bệnh Nhân Dùng Thuốc Chống Huyết Khối (CQ-1 &rarr; CQ-4)</h2>
+      </div>
+      <div class="sec-body">
+        <p style="font-size: 0.86rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+          Bệnh nhân loét dạ dày - tá tràng xuất huyết (PUB) đang điều trị thuốc chống huyết khối đặt ra bài toán cân bằng khắt khe giữa nguy cơ tử vong do biến cố tắc mạch/nhồi máu cơ tim khi ngưng thuốc và nguy cơ tái xuất huyết tiêu hóa nếu tiếp tục điều trị.
+        </p>
+
+        <!-- CQ-1 -->
+        <div class="ebm-rec-card strong">
+          <div class="ebm-rec-header">
+            <div class="ebm-rec-title">
+              <span class="badge badge-red">CQ-1</span>
+              Xử Trí Không Nội Soi Với Bệnh Nhân Loét Xuất Huyết Đang Dùng Thuốc Chống Đông / Kháng Tiểu Cầu
+            </div>
+            <div class="grade-badge-group">
+              <span class="grade-badge grade-strong">Khuyến cáo Mạnh / Yếu (Tùy tình huống)</span>
+              <span class="grade-badge grade-agree">Đồng thuận 100%</span>
+            </div>
+          </div>
+          <div class="ebm-rec-body">
+            <ul>
+              <li><strong>Tiếp tục Aspirin đơn trị:</strong> <strong>Khuyến cáo tiếp tục duy trì sử dụng aspirin</strong> ở những bệnh nhân có nguy cơ cao xảy ra biến cố huyết khối tắc mạch. <em>(Khuyến cáo mạnh, Bằng chứng B)</em>.</li>
+              <li><strong>Chuyển đổi kháng tiểu cầu sang Aspirin:</strong> <strong>Gợi ý chuyển đổi các thuốc kháng tiểu cầu khác (P2Y12) sang aspirin</strong> ở bệnh nhân nguy cơ huyết khối cao. <em>(Khuyến cáo yếu, Bằng chứng D)</em>.</li>
+              <li><strong>Tạm ngưng kháng tiểu cầu:</strong> <strong>Gợi ý tạm ngưng sử dụng các thuốc kháng tiểu cầu</strong>, ngoại trừ những trường hợp có nguy cơ tắc mạch cao. <em>(Khuyến cáo yếu, Bằng chứng D)</em>.</li>
+              <li><strong>Xử trí Warfarin:</strong> <strong>Khuyến cáo tạm ngưng sử dụng warfarin</strong> nếu thực sự cần thiết chuẩn bị nội soi can thiệp cầm máu. Khi ngừng warfarin, <strong>gợi ý sử dụng heparin bắc cầu</strong> hoặc nhanh chóng dùng lại warfarin ngay khi cầm máu ổn định. <em>(Khuyến cáo mạnh, Bằng chứng C)</em>.</li>
+              <li><strong>Dùng lại DOACs:</strong> <strong>Gợi ý sử dụng lại các thuốc chống đông đường uống trực tiếp (DOACs) sớm (trong vòng 1 - 2 ngày)</strong> sau khi xác nhận cầm máu thành công qua nội soi. <em>(Khuyến cáo yếu, Bằng chứng D)</em>.</li>
+              <li><strong>Phối hợp Kháng tiểu cầu và Warfarin:</strong> <strong>Gợi ý chuyển đổi kháng tiểu cầu sang aspirin hoặc cilostazol</strong>, đồng thời duy trì warfarin có kiểm soát PT-INR chặt chẽ, hoặc chuyển sang heparin. <em>(Khuyến cáo yếu, Bằng chứng D)</em>.</li>
+              <li><strong>Liệu pháp Kháng tiểu cầu kép (DAPT):</strong> Ở bệnh nhân đang dùng DAPT, <strong>khuyến cáo tiếp tục duy trì đơn trị liệu aspirin</strong>. <em>(Khuyến cáo mạnh, Bằng chứng D)</em>.</li>
+            </ul>
+          </div>
+          <div class="ebm-rec-evidence">
+            <span><i class="fa-solid fa-stethoscope"></i> Cốt lõi lâm sàng: Việc tiếp tục aspirin giúp giảm tỷ lệ tử vong chung liên quan đến biến cố tim mạch mà không làm tăng đáng kể tử vong do xuất huyết.</span>
+            <span class="grade-loe">GRADE B / C / D</span>
+          </div>
+        </div>
+
+        <!-- CQ-2 -->
+        <div class="ebm-rec-card weak">
+          <div class="ebm-rec-header">
+            <div class="ebm-rec-title">
+              <span class="badge badge-red">CQ-2</span>
+              Vai Trò Của X-quang Can Thiệp - Nút Mạch (IVR / TAE) Trong Xuất Huyết Kháng Trị
+            </div>
+            <div class="grade-badge-group">
+              <span class="grade-badge grade-weak">Khuyến cáo Yếu</span>
+              <span class="grade-badge grade-loe">Bằng chứng C</span>
+              <span class="grade-badge grade-agree">Đồng thuận 100%</span>
+            </div>
+          </div>
+          <div class="ebm-rec-body">
+            Ở những bệnh nhân loét dạ dày - tá tràng xuất huyết nặng, kháng trị với các biện pháp can thiệp qua nội soi, <strong>phương pháp can thiệp mạch qua da - nút mạch chọn lọc (Interventional Radiology - IVR / Transcatheter Arterial Embolization - TAE) được gợi ý lựa chọn</strong> nhờ tính an toàn cao và hạn chế xâm lấn. Dữ liệu phân tích gộp cho thấy tuy IVR có tỷ lệ tái chảy máu cao hơn phẫu thuật mở cấp cứu, nhưng không có sự khác biệt có ý nghĩa về tỷ lệ tử vong, nhu cầu can thiệp bổ sung hay biến chứng chung.
+          </div>
+        </div>
+
+        <!-- CQ-3 -->
+        <div class="ebm-rec-card strong">
+          <div class="ebm-rec-header">
+            <div class="ebm-rec-title">
+              <span class="badge badge-red">CQ-3</span>
+              Sử Dụng Thuốc Kháng Tiết Acid (PPI) Sau Can Thiệp Nội Soi Cầm Máu
+            </div>
+            <div class="grade-badge-group">
+              <span class="grade-badge grade-strong">Khuyến cáo Mạnh</span>
+              <span class="grade-badge grade-loe">Bằng chứng A</span>
+              <span class="grade-badge grade-agree">Đồng thuận 100%</span>
+            </div>
+          </div>
+          <div class="ebm-rec-body">
+            <strong>Khuyến cáo mạnh mẽ sử dụng thuốc ức chế bơm proton (PPI) sau can thiệp nội soi cầm máu thành công</strong> nhằm giảm tỷ lệ tái xuất huyết, giảm nhu cầu truyền máu, rút ngắn ngày nằm viện và giảm tỷ lệ phải phẫu thuật cấp cứu.
+            <div class="infobox warning" style="margin-top: 0.85rem; margin-bottom: 0;">
+              <div class="infobox-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+              <div>
+                <strong>Lưu ý về liều lượng & đường dùng PPI theo JSGE 2020:</strong>
+                Phân tích gộp chỉ ra liệu pháp PPI liều cao (high-dose) truyền tĩnh mạch liên tục <em>không cho thấy hiệu quả vượt trội hơn</em> so với PPI liều tiêu chuẩn (non-high-dose) về tỷ lệ tái chảy máu hay tử vong. Đồng thời không có sự khác biệt có ý nghĩa lâm sàng giữa PPI đường uống và đường tĩnh mạch. Tuy nhiên, PPI tĩnh mạch vượt trội hoàn toàn so với thuốc kháng thụ thể histamine-2 (H2RA).
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CQ-4 -->
+        <div class="ebm-rec-card strong">
+          <div class="ebm-rec-header">
+            <div class="ebm-rec-title">
+              <span class="badge badge-red">CQ-4</span>
+              Dự Phòng Xuất Huyết Tiêu Hóa Ở Bệnh Nhân Sử Dụng Thuốc Chống Huyết Khối
+            </div>
+            <div class="grade-badge-group">
+              <span class="grade-badge grade-strong">Khuyến cáo Mạnh / Yếu</span>
+              <span class="grade-badge grade-agree">Đồng thuận 100%</span>
+            </div>
+          </div>
+          <div class="ebm-rec-body">
+            <ul>
+              <li><strong>Bệnh nhân dùng Kháng tiểu cầu kép (DAPT):</strong> <strong>Khuyến cáo phối hợp sử dụng PPI</strong> để dự phòng biến chứng xuất huyết tiêu hóa trên (UGIB). <em>(Khuyến cáo mạnh, Bằng chứng A)</em>.</li>
+              <li><strong>Bệnh nhân dùng Warfarin:</strong> <strong>Gợi ý phối hợp sử dụng PPI</strong> để dự phòng xuất huyết ở bệnh nhân điều trị bằng warfarin có kết hợp thêm kháng tiểu cầu hoặc NSAIDs. <em>(Khuyến cáo yếu, Bằng chứng C)</em>.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- FIGURE 1: FOREST PLOT DAPT + PPI -->
+        <div class="fig-card">
+          <img src="./images/2020-jsge-pud-fig1.png" alt="Figure 1. Forest plot of PPIs against control for UGIB preventive effect in DAPT" class="fig-img" loading="lazy">
+          <div class="fig-caption">
+            <div class="fig-title">Figure 1. Forest plots of proton pump inhibitors (PPIs) against control for upper gastrointestinal bleeding preventive effect in dual antiplatelet therapy (DAPT)</div>
+            Biểu đồ Forest plot phân tích gộp từ 3 thử nghiệm lâm sàng ngẫu nhiên có đối chứng (Bhatt 2010 - thử nghiệm COGENT, Ren 2011, Wei 2016) so sánh hiệu quả dự phòng xuất huyết tiêu hóa trên giữa nhóm phối hợp PPI và nhóm chứng ở bệnh nhân dùng DAPT. Kết quả chứng minh phối hợp PPI giúp giảm mạnh và có ý nghĩa thống kê nguy cơ xuất huyết tiêu hóa trên với <strong>Tỷ số nguy cơ gộp (Risk Ratio - RR) đạt 0.26 (95% CI: 0.13 - 0.53, P = 0.0002)</strong>.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 3: TIỆT TRỪ H. PYLORI & KHÔNG TIỆT TRỪ -->
+    <div class="sec-card" id="sec-3">
+      <div class="sec-hdr">
+        <span class="sec-hdr-icon"><i class="fa-solid fa-bacterium" style="color: var(--green);"></i></span>
+        <h2 class="sec-title">3. Liệu Pháp Tiệt Trừ Helicobacter pylori & Điều Trị Không Tiệt Trừ (CQ-5 &rarr; CQ-10)</h2>
+      </div>
+      <div class="sec-body">
+        <p style="font-size: 0.86rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+          Mức độ và thời gian ức chế acid dạ dày là yếu tố quyết định hàng đầu tỷ lệ thành công của liệu pháp kháng sinh tiệt trừ <em>H. pylori</em>. JSGE 2020 đánh dấu bước ngoặt lớn với sự xuất hiện của chất ức chế acid cạnh tranh kali (P-CAB, Vonoprazan).
+        </p>
+
+        <!-- CQ-5 -->
+        <div class="ebm-rec-card strong">
+          <div class="ebm-rec-header">
+            <div class="ebm-rec-title">
+              <span class="badge badge-green">CQ-5</span>
+              Phác Đồ Tiệt Trừ Bước 1 (First-Line Eradication Therapy)
+            </div>
+            <div class="grade-badge-group">
+              <span class="grade-badge grade-strong">Khuyến cáo Mạnh</span>
+              <span class="grade-badge grade-loe">Bằng chứng A</span>
+              <span class="grade-badge grade-agree">Đồng thuận 100%</span>
+            </div>
+          </div>
+          <div class="ebm-rec-body">
+            <ul>
+              <li><strong>Phác đồ chứa Vonoprazan (P-CAB):</strong> <strong>Khuyến cáo sử dụng phác đồ 3 thuốc chứa Vonoprazan (VPZ 20mg x 2 lần/ngày)</strong> phối hợp Amoxicillin (750mg-1000mg x 2 lần/ngày) và Clarithromycin (200mg-400mg x 2 lần/ngày) trong 7 ngày làm phác đồ đầu tay nhờ đạt tỷ lệ tiệt trừ vi khuẩn vượt trội rõ rệt so với phác đồ chứa PPI thông thường. <em>(Khuyến cáo mạnh, Bằng chứng A)</em>.</li>
+              <li><strong>Khi kháng Clarithromycin cao (> 15%):</strong> Phối hợp <strong>Amoxicillin + Metronidazole</strong> được khuyến cáo mạnh mẽ.</li>
+              <li><strong>Nếu sử dụng PPI:</strong> Gợi ý áp dụng liệu pháp nối tiếp (sequential therapy) hoặc phác đồ 4 thuốc đồng thời (concomitant quadruple therapy) để tối ưu hóa tỷ lệ tiệt trừ so với phác đồ 3 thuốc tiêu chuẩn. <em>(Khuyến cáo yếu, Bằng chứng A)</em>.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- FIGURE 2: FOREST PLOT VPZ VS PPI LINE 1 -->
+        <div class="fig-card">
+          <img src="./images/2020-jsge-pud-fig2.png" alt="Figure 2. Forest plots of eradication rates of first-line therapy between VPZ and PPI" class="fig-img" loading="lazy">
+          <div class="fig-caption">
+            <div class="fig-title">Figure 2. Forest plots of eradication rates of first-line therapy between vonoprazan-containing triple therapy and proton pump inhibitor (PPI)-containing triple therapy in RCTs</div>
+            Biểu đồ phân tích gộp từ 3 thử nghiệm lâm sàng ngẫu nhiên có đối chứng (Murakami 2016, Maruyama 2017, Sue 2018) so sánh giữa phác đồ 3 thuốc chứa VPZ và phác đồ chứa PPI ở bước 1. Kết quả khẳng định phác đồ chứa VPZ đạt hiệu quả tiệt trừ vi khuẩn cao vượt trội và có ý nghĩa thống kê rất mạnh so với PPI, với <strong>Tỷ số chênh (Odds Ratio - OR) đạt 0.28 (95% CI: 0.19 - 0.41, P &lt; 0.00001)</strong>.
+          </div>
+        </div>
+
+        <!-- CQ-6 -->
+        <div class="ebm-rec-card strong">
+          <div class="ebm-rec-header">
+            <div class="ebm-rec-title">
+              <span class="badge badge-green">CQ-6</span>
+              Phác Đồ Tiệt Trừ Cứu Vãn Bước 2 (Second-Line Salvage Therapy)
+            </div>
+            <div class="grade-badge-group">
+              <span class="grade-badge grade-strong">Khuyến cáo Mạnh</span>
+              <span class="grade-badge grade-loe">Bằng chứng A</span>
+              <span class="grade-badge grade-agree">Đồng thuận 100%</span>
+            </div>
+          </div>
+          <div class="ebm-rec-body">
+            <strong>Khuyến cáo phác đồ 3 thuốc phối hợp PPI hoặc VPZ, Amoxicillin và Metronidazole (PAM)</strong> trong 7 ngày làm liệu pháp cứu vãn bước 2 sau khi thất bại với phác đồ bước 1.
+          </div>
+        </div>
+
+        <!-- FIGURE 3: FOREST PLOT PAM VS PAC LINE 2 -->
+        <div class="fig-card">
+          <img src="./images/2020-jsge-pud-fig3.png" alt="Figure 3. Forest plots of eradication rates of second-line therapy between PAM and PAC" class="fig-img" loading="lazy">
+          <div class="fig-caption">
+            <div class="fig-title">Figure 3. Forest plots of eradication rates of second-line therapy between PAM and PAC therapy in RCTs in Japan</div>
+            Phân tích gộp từ các thử nghiệm ngẫu nhiên tại Nhật Bản (Nishizawa 2015, Adachi 2017, Mabe 2018) so sánh giữa phác đồ PAM (chứa Metronidazole) và phác đồ PAC (chứa Clarithromycin) ở bước 2. Phác đồ PAM đạt tỷ lệ tiệt trừ cao hơn hẳn PAC, với <strong>Tỷ số chênh (Odds Ratio - OR) đạt 0.14 (95% CI: 0.08 - 0.24, P &lt; 0.00001)</strong>.
+          </div>
+        </div>
+
+        <!-- CQ-7, CQ-8, CQ-9, CQ-10 -->
+        <div class="matrix-grid">
+          <div class="matrix-card">
+            <div class="matrix-card-title">
+              <span>CQ-7: Phác Đồ Tiệt Trừ Bước 3</span>
+              <span class="grade-badge grade-weak">Yếu - Bằng chứng B</span>
+            </div>
+            <div class="matrix-card-body">
+              Gợi ý phác đồ 3 thuốc phối hợp <strong>PPI + Sitafloxacin + Metronidazole</strong> HOẶC <strong>PPI + Sitafloxacin + Amoxicillin</strong>. Dữ liệu ghi nhận tỷ lệ tiệt trừ đạt từ 70.0% đến 90.9%. Do tỷ lệ chưa đạt mức tối ưu lý tưởng, phác đồ này chỉ dừng ở mức độ gợi ý.
+            </div>
+          </div>
+
+          <div class="matrix-card">
+            <div class="matrix-card-title">
+              <span>CQ-8: Điều Trị Duy Trì Sau Tiệt Trừ</span>
+              <span class="grade-badge grade-weak">Yếu - Bằng chứng D</span>
+            </div>
+            <div class="matrix-card-body">
+              Khi nguyên nhân gây tái phát loét sau tiệt trừ thành công <em>H. pylori</em> không rõ ràng (loét vô căn/idiopathic ulcers), <strong>gợi ý điều trị duy trì kéo dài bằng PPI hoặc H2RA</strong> để ngăn ngừa tái phát.
+            </div>
+          </div>
+
+          <div class="matrix-card">
+            <div class="matrix-card-title">
+              <span>CQ-9: Điều Trị Ban Đầu Loét Dạ Dày</span>
+              <span class="grade-badge grade-strong">Mạnh - Bằng chứng A</span>
+            </div>
+            <div class="matrix-card-body">
+              <strong>Khuyến cáo lựa chọn PPI hoặc P-CAB (Vonoprazan)</strong> làm thuốc hàng đầu. Lựa chọn thay thế bước 1: H2RAs <em>(Mạnh, B)</em>. Thay thế bước 2: Pirenzepine, Sucralfate hoặc Misoprostol <em>(Yếu, B)</em>.
+            </div>
+          </div>
+
+          <div class="matrix-card">
+            <div class="matrix-card-title">
+              <span>CQ-10: Điều Trị Ban Đầu Loét Tá Tràng</span>
+              <span class="grade-badge grade-strong">Mạnh - Bằng chứng A</span>
+            </div>
+            <div class="matrix-card-body">
+              <strong>Khuyến cáo lựa chọn PPI hoặc P-CAB</strong> làm thuốc hàng đầu. Nếu không thể dùng PPI/P-CAB: Khuyến cáo dùng H2RAs <em>(Mạnh, B)</em>; Thay thế bước 2: Pirenzepine, Sucralfate hoặc Misoprostol <em>(Yếu, B)</em>.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 4: LOÉT DO THUỐC NSAIDs -->
+    <div class="sec-card" id="sec-4">
+      <div class="sec-hdr">
+        <span class="sec-hdr-icon"><i class="fa-solid fa-pills" style="color: var(--orange);"></i></span>
+        <h2 class="sec-title">4. Sinh Lý Bệnh, Điều Trị & Dự Phòng Loét Do Thuốc NSAIDs (CQ-11 &rarr; CQ-17)</h2>
+      </div>
+      <div class="sec-body">
+        <p style="font-size: 0.86rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+          Thuốc kháng viêm không steroid không chọn lọc (nonselective NSAIDs) phá hủy hàng rào chất nhầy và biểu mô bảo vệ dạ dày tá tràng qua ức chế COX-1 làm cạn kiệt prostaglandin sinh lý.
+        </p>
+
+        <!-- CQ-11 -->
+        <div class="ebm-rec-card strong">
+          <div class="ebm-rec-header">
+            <div class="ebm-rec-title">
+              <span class="badge badge-orange">CQ-11</span>
+              Nguyên Tắc Điều Trị Loét Dạ Dày - Tá Tràng Do NSAIDs
+            </div>
+            <div class="grade-badge-group">
+              <span class="grade-badge grade-strong">Khuyến cáo Mạnh</span>
+              <span class="grade-badge grade-loe">Bằng chứng A</span>
+              <span class="grade-badge grade-agree">Đồng thuận 100%</span>
+            </div>
+          </div>
+          <div class="ebm-rec-body">
+            <ul>
+              <li><strong>Ngừng thuốc NSAIDs:</strong> Khi xuất hiện ổ loét, khuyến cáo hàng đầu là <strong>ngừng sử dụng NSAIDs và bắt đầu điều trị bằng các thuốc chống loét (PPI hoặc P-CAB)</strong>.</li>
+              <li><strong>Trường hợp bắt buộc phải tiếp tục sử dụng NSAIDs:</strong> Nếu bệnh lý cơ xương khớp/tim mạch bắt buộc tiếp tục dùng NSAIDs, <strong>thuốc ức chế bơm proton (PPIs) được khuyến cáo là lựa chọn số 1</strong> để làm liền ổ loét. Tỷ lệ liền sẹo loét sau 8 tuần ở nhóm dùng PPI vượt trội hoàn toàn so với H2RA hoặc chất đồng đẳng prostaglandin.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- FIGURE 4: FOREST PLOT PPI VS H2RA UNDER NSAID CONTINUATION -->
+        <div class="fig-card">
+          <img src="./images/2020-jsge-pud-fig4.png" alt="Figure 4. Meta-analysis of ulcer curative effect between PPI and H2RA under NSAID continuation" class="fig-img" loading="lazy">
+          <div class="fig-caption">
+            <div class="fig-title">Figure 4. Meta-analysis of comparison of ulcer curative effect between PPI and H2RA under the NSAIDs continuation</div>
+            Phân tích gộp từ 4 thử nghiệm lâm sàng ngẫu nhiên có đối chứng (Agrawal 2000, Campbell 2002, Goldstein 2007, Yeomans 1998). Tỷ lệ liền sẹo loét dạ dày tá tràng sau 8 tuần ở nhóm điều trị bằng PPI cao hơn rõ rệt và có ý nghĩa thống kê so với H2RA khi vẫn tiếp tục dùng NSAID, với <strong>Tỷ số chênh gộp (Odds Ratio - OR) đạt 0.48 (95% CI: 0.37 - 0.63, P &lt; 0.00001)</strong>.
+          </div>
+        </div>
+
+        <!-- CQ-12, CQ-13, CQ-14, CQ-15, CQ-16, CQ-17 -->
+        <div class="matrix-grid">
+          <div class="matrix-card">
+            <div class="matrix-card-title">
+              <span>CQ-12: Tiệt Trừ H. pylori Khi Dùng NSAIDs</span>
+              <span class="grade-badge grade-strong">Mạnh - Bằng chứng A</span>
+            </div>
+            <div class="matrix-card-body">
+              <strong>Khuyến cáo tiệt trừ H. pylori</strong> ở bệnh nhân <em>chưa từng dùng NSAIDs (NSAID-naïve)</em> chuẩn bị bắt đầu dùng thuốc. Tuy nhiên, ở bệnh nhân <em>đã dùng NSAIDs dài hạn</em>, tiệt trừ đơn thuần không đủ để dự phòng loét tái phát mà bắt buộc phải duy trì PPI.
+            </div>
+          </div>
+
+          <div class="matrix-card">
+            <div class="matrix-card-title">
+              <span>CQ-13: Dự Phòng Tiên Phát Loét NSAIDs</span>
+              <span class="grade-badge grade-strong">Mạnh - Bằng chứng A</span>
+            </div>
+            <div class="matrix-card-body">
+              Đối với bệnh nhân sử dụng NSAIDs kéo dài hơn 3 tháng và không có tiền sử loét, <strong>khuyến cáo sử dụng PPI để dự phòng tiên phát tổn thương niêm mạc</strong>. PPI thể hiện hiệu quả bảo vệ mạnh hơn rõ rệt so với H2RA liều thông thường.
+            </div>
+          </div>
+
+          <div class="matrix-card">
+            <div class="matrix-card-title">
+              <span>CQ-14: Dự Phòng Thứ Phát (Có Tiền Sử Loét)</span>
+              <span class="grade-badge grade-strong">Mạnh - Bằng chứng A</span>
+            </div>
+            <div class="matrix-card-body">
+              <strong>Tiền sử loét không chảy máu:</strong> Khuyến cáo dùng PPI hoặc gợi ý Vonoprazan (VPZ).<br>
+              <strong>Tiền sử loét biến chứng chảy máu:</strong> Khuyến cáo phối hợp <strong>thuốc ức chế chọn lọc COX-2 (Celecoxib) + thuốc PPI</strong>.
+            </div>
+          </div>
+
+          <div class="matrix-card">
+            <div class="matrix-card-title">
+              <span>CQ-15: Người Cao Tuổi & Bệnh Nền Nặng</span>
+              <span class="grade-badge grade-strong">Mạnh - Bằng chứng B</span>
+            </div>
+            <div class="matrix-card-body">
+              <strong>Khuyến cáo sử dụng PPI</strong> để dự phòng ở bệnh nhân cao tuổi (&ge; 65 tuổi) hoặc có bệnh nền nặng. Nếu dùng kèm glucocorticoids hoặc thuốc chống đông, <strong>chuyển đổi sang thuốc ức chế chọn lọc COX-2</strong> được khuyến cáo.
+            </div>
+          </div>
+
+          <div class="matrix-card">
+            <div class="matrix-card-title">
+              <span>CQ-16: Lợi Thế Của Thuốc Chọn Lọc COX-2</span>
+              <span class="grade-badge grade-strong">Mạnh - Bằng chứng A</span>
+            </div>
+            <div class="matrix-card-body">
+              <strong>Khuyến cáo lựa chọn thuốc ức chế chọn lọc COX-2</strong> thay thế cho NSAIDs không chọn lọc để làm giảm đáng kể nguy cơ hình thành loét dạ dày, loét tá tràng và các biến chứng chảy máu tiêu hóa nặng.
+            </div>
+          </div>
+
+          <div class="matrix-card">
+            <div class="matrix-card-title">
+              <span>CQ-17: Dự Phòng Khi Đang Dùng COX-2</span>
+              <span class="grade-badge grade-strong">Mạnh - Bằng chứng B</span>
+            </div>
+            <div class="matrix-card-body">
+              <strong>Có tiền sử loét hoặc chảy máu:</strong> Khuyến cáo phối hợp thêm PPI.<br>
+              <strong>Không có tiền sử loét:</strong> Không cần thiết phải sử dụng thêm thuốc dự phòng.
+            </div>
+          </div>
+        </div>
+
+        <!-- FIGURE 5: FOREST PLOT SECONDARY PREVENTION NSAIDS -->
+        <div class="fig-card">
+          <img src="./images/2020-jsge-pud-fig5.png" alt="Figure 5. Meta-analysis in secondary prevention of NSAID ulcer" class="fig-img" loading="lazy">
+          <div class="fig-caption">
+            <div class="fig-title">Figure 5. Meta-analysis of preventive effect in the secondary prevention of NSAIDs ulcer</div>
+            Phân tích gộp từ 3 RCTs (Chan 2007, Sugano 2012 Esomeprazole, Sugano 2012 Lansoprazole) cho thấy tỷ lệ tái phát loét ở nhóm duy trì PPI thấp hơn rõ rệt so với giả dược ở bệnh nhân có tiền sử loét phải dùng NSAID dài hạn, với <strong>Tỷ số chênh gộp (Odds Ratio) đạt 0.14 (95% CI: 0.08 - 0.22, P &lt; 0.00001)</strong>.
+          </div>
+        </div>
+
+        <!-- FIGURE 6: FOREST PLOT COX-2 VS NSAID -->
+        <div class="fig-card">
+          <img src="./images/2020-jsge-pud-fig6.png" alt="Figure 6. Peptic ulcer risk between COX-2 selective inhibitor and NSAID" class="fig-img" loading="lazy">
+          <div class="fig-caption">
+            <div class="fig-title">Figure 6. Forest plots of peptic ulcer risk between COX-2 selective inhibitor and NSAID therapy (a: gastric ulcer, b: duodenal ulcer)</div>
+            Phân tích gộp từ 12 thử nghiệm lâm sàng ngẫu nhiên đối đầu trực tiếp chứng minh: <strong>(a) Loét dạ dày:</strong> Thuốc ức chế chọn lọc COX-2 giảm mạnh nguy cơ loét so với NSAIDs không chọn lọc với <strong>RR = 0.21 (95% CI: 0.18 - 0.25, P &lt; 0.00001)</strong>; <strong>(b) Loét tá tràng:</strong> Nguy cơ cũng giảm mạnh với <strong>RR = 0.38 (95% CI: 0.29 - 0.51, P &lt; 0.00001)</strong>.
+          </div>
+        </div>
+
+        <!-- FIGURE 9: ALGORITHM FOR TREATMENT OF PUD -->
+        <div class="fig-card">
+          <img src="./images/2020-jsge-pud-fig9.png" alt="Figure 9. Algorithm for the treatment of peptic ulcer disease" class="fig-img" loading="lazy">
+          <div class="fig-caption">
+            <div class="fig-title">Figure 9. Algorithm for the treatment of peptic ulcer disease (Official JSGE 2020)</div>
+            Lưu đồ thuật toán chính thức của JSGE 2020 về điều trị bệnh loét dạ dày - tá tràng: (Fig 9a) Xử trí biến chứng trước (thủng/hẹp môn vị điều trị ngoại khoa hoặc bảo tồn; loét xuất huyết can thiệp nội soi cầm máu, nếu thất bại tiến hành nút mạch IVR hoặc phẫu thuật; nếu không có biến chứng tiến hành điều trị nội khoa ngay lập tức); (Fig 9b) Phân luồng điều trị nội khoa theo căn nguyên (loét do NSAIDs ngừng thuốc + chống loét, nếu không ngừng được thì dùng PPI; loét không do NSAIDs xét nghiệm <em>H. pylori</em> để tiệt trừ bước 1/2/3; loét không tiệt trừ điều trị tấn công + duy trì; loét mỏm cắt dùng PPI; loét vô căn dùng PPI tiếp nối điều trị duy trì).
+          </div>
+        </div>
+
+        <!-- FIGURE 10: ALGORITHM FOR PREVENTION OF NSAID ULCERS -->
+        <div class="fig-card">
+          <img src="./images/2020-jsge-pud-fig10.png" alt="Figure 10. Algorithm for the prevention of NSAID-induced ulcers" class="fig-img" loading="lazy">
+          <div class="fig-caption">
+            <div class="fig-title">Figure 10. Algorithm for the prevention of NSAID-induced ulcers (Official JSGE 2020)</div>
+            Lưu đồ phân tầng và lựa chọn thuốc dự phòng loét khi điều trị bằng NSAIDs: <strong>Không có tiền sử loét (Ulcer history -):</strong> Lựa chọn Celecoxib (CXB) hoặc gợi ý PPI (bắt buộc PPI cho người già hoặc bệnh nặng; tiệt trừ HP nếu chưa từng dùng NSAID); <strong>Có tiền sử loét không chảy máu (Ulcer history +):</strong> Dùng PPI &plusmn; CXB, hoặc Vonoprazan (VPZ); <strong>Có tiền sử loét chảy máu (Hemorrhagic ulcer +):</strong> Phối hợp CXB + PPI; <strong>Phối hợp NSAID + Aspirin liều thấp (LDA):</strong> Phối hợp CXB + PPI.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 5: LOÉT DO ASPIRIN LIỀU THẤP (LDA) -->
+    <div class="sec-card" id="sec-5">
+      <div class="sec-hdr">
+        <span class="sec-hdr-icon"><i class="fa-solid fa-heart-pulse" style="color: var(--teal);"></i></span>
+        <h2 class="sec-title">5. Sinh Lý Bệnh & Dự Phòng Loét Do Aspirin Liều Thấp (LDA) (CQ-18 &rarr; CQ-25)</h2>
+      </div>
+      <div class="sec-body">
+        <p style="font-size: 0.86rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+          Aspirin liều thấp (LDA, 75 - 100 mg/ngày) ức chế không hồi phục enzyme COX-1 tiểu cầu, làm suy giảm dòng máu nuôi niêm mạc và gia tăng nguy cơ loét cũng như chảy máu tiêu hóa nghiêm trọng.
+        </p>
+
+        <!-- CQ-18 -->
+        <div class="ebm-rec-card strong">
+          <div class="ebm-rec-header">
+            <div class="ebm-rec-title">
+              <span class="badge badge-teal">CQ-18</span>
+              Nguyên Tắc Điều Trị Loét Xuất Hiện Trong Khi Đang Dùng Aspirin Liều Thấp (LDA)
+            </div>
+            <div class="grade-badge-group">
+              <span class="grade-badge grade-strong">Khuyến cáo Mạnh</span>
+              <span class="grade-badge grade-loe">Bằng chứng B</span>
+              <span class="grade-badge grade-agree">Đồng thuận 100%</span>
+            </div>
+          </div>
+          <div class="ebm-rec-body">
+            <strong>Khuyến cáo phối hợp sử dụng PPI đồng thời với việc TIẾP TỤC duy trì liệu pháp LDA</strong> đối với các ổ loét xuất hiện trong quá trình dùng thuốc (sau khi đã can thiệp cầm máu nội soi ổn định). Việc tiếp tục duy trì LDA giúp giảm đáng kể tỷ lệ tử vong chung liên quan đến các biến cố huyết khối tim mạch và mạch máu não, trong khi PPI đảm bảo tốc độ liền sẹo ổ loét mà không làm tăng nguy cơ chảy máu tái phát.
+          </div>
+        </div>
+
+        <!-- CQ-19, CQ-20, CQ-21, CQ-22, CQ-23, CQ-24 & 25 -->
+        <div class="matrix-grid">
+          <div class="matrix-card">
+            <div class="matrix-card-title">
+              <span>CQ-19: Dự Phòng Loét Do LDA Nói Chung</span>
+              <span class="grade-badge grade-strong">Mạnh - Bằng chứng A</span>
+            </div>
+            <div class="matrix-card-body">
+              <strong>Khuyến cáo sử dụng PPIs hoặc H2RAs</strong> để làm giảm tỷ lệ xuất hiện loét do LDA. Phân tích gộp độc lập của JSGE cho thấy không có sự khác biệt có ý nghĩa thống kê về tỷ lệ ngăn ngừa loét nói chung giữa hai nhóm này.
+            </div>
+          </div>
+
+          <div class="matrix-card">
+            <div class="matrix-card-title">
+              <span>CQ-20: Dự Phòng Biến Chứng CHẢY MÁU Do LDA</span>
+              <span class="grade-badge grade-strong">Mạnh - Bằng chứng A</span>
+            </div>
+            <div class="matrix-card-body">
+              <strong>Khuyến cáo lựa chọn PPIs hoặc Vonoprazan (VPZ)</strong> để dự phòng nguy cơ xuất huyết tiêu hóa do LDA. PPIs vượt trội rõ rệt so với H2RAs trong việc ngăn ngừa biến chứng chảy máu. Vonoprazan (10mg, 20mg) không kém hơn (non-inferior) lansoprazole 15mg.
+            </div>
+          </div>
+
+          <div class="matrix-card">
+            <div class="matrix-card-title">
+              <span>CQ-21: Vai Trò Tiệt Trừ H. pylori Khi Dùng LDA</span>
+              <span class="grade-badge grade-strong">Mạnh - Bằng chứng A</span>
+            </div>
+            <div class="matrix-card-body">
+              Đối với bệnh nhân nhiễm <em>H. pylori</em> có tiền sử chảy máu do loét liên quan LDA, <strong>khuyến cáo phối hợp liệu pháp tiệt trừ vi khuẩn cùng với việc duy trì sử dụng thuốc PPI</strong> để giảm tối đa tái phát xuất huyết. Tiệt trừ đơn thuần không đảm bảo an toàn.
+            </div>
+          </div>
+
+          <div class="matrix-card">
+            <div class="matrix-card-title">
+              <span>CQ-22 & CQ-23: Dự Phòng Tiên Phát & Thứ Phát</span>
+              <span class="grade-badge grade-strong">Mạnh - Bằng chứng A</span>
+            </div>
+            <div class="matrix-card-body">
+              <strong>Dự phòng thứ phát (có tiền sử loét):</strong> Khuyến cáo PPI hoặc VPZ hàng đầu; H2RA chỉ xếp mức gợi ý <em>(Yếu, B)</em>.<br>
+              <strong>Dự phòng tiên phát (chưa có tiền sử loét):</strong> Khuyến cáo sử dụng PPI <em>(Mạnh, A)</em>.
+            </div>
+          </div>
+
+          <div class="matrix-card" style="grid-column: 1 / -1;">
+            <div class="matrix-card-title">
+              <span>CQ-24 & CQ-25: Phối Hợp Đồng Thời Aspirin (LDA) và Thuốc NSAIDs</span>
+              <span class="grade-badge grade-strong">Mạnh - Bằng chứng B</span>
+            </div>
+            <div class="matrix-card-body">
+              Khi bệnh nhân bắt buộc phải sử dụng đồng thời cả LDA và NSAIDs, <strong>khuyến cáo lựa chọn thuốc ức chế chọn lọc COX-2 (Celecoxib) phối hợp với một thuốc PPI</strong> để giảm thiểu tối đa nguy cơ tổn thương niêm mạc và xuất huyết so với việc dùng NSAIDs không chọn lọc + LDA.
+            </div>
+          </div>
+        </div>
+
+        <!-- FIGURE 7: FOREST PLOT LDA ULCER PPI VS H2RA -->
+        <div class="fig-card">
+          <img src="./images/2020-jsge-pud-fig7.png" alt="Figure 7. Effects of PPIs and H2RAs in preventing GI ulcers related to LDA" class="fig-img" loading="lazy">
+          <div class="fig-caption">
+            <div class="fig-title">Figure 7. Effects of proton pump inhibitors (PPIs) and histamine 2-receptor antagonists (H2RAs) in preventing upper GI ulcers related to low dose aspirin (LDA)</div>
+            Phân tích gộp từ 3 nghiên cứu ngẫu nhiên (Ng 2010, Ng 2012, Chan 2017) cho thấy <strong>không có sự khác biệt có ý nghĩa thống kê</strong> về hiệu quả ngăn ngừa hình thành ổ loét dạ dày - tá tràng nói chung giữa nhóm PPI và nhóm H2RA ở bệnh nhân điều trị bằng LDA, với <strong>Tỷ số nguy cơ gộp (Risk Ratio - RR) đạt 0.26 (95% CI: 0.04 - 1.81, P = 0.17)</strong>.
+          </div>
+        </div>
+
+        <!-- FIGURE 8: FOREST PLOT LDA ULCER BLEEDING PPI VS H2RA -->
+        <div class="fig-card">
+          <img src="./images/2020-jsge-pud-fig8.png" alt="Figure 8. Effects of PPIs and H2RAs in preventing GI ulcer bleeding related to LDA" class="fig-img" loading="lazy">
+          <div class="fig-caption">
+            <div class="fig-title">Figure 8. Effects of proton pump inhibitors (PPIs) and histamine 2-receptor antagonists (H2RAs) in preventing upper GI ulcer bleeding related to low dose aspirin (LDA)</div>
+            Phân tích gộp từ 6 RCTs (Ng 2010, Tunggal 2011, Yano 2012, Ng 2012, Wang Z 2013, Chan 2017). Kết quả chứng minh <strong>PPIs vượt trội rõ rệt và có ý nghĩa thống kê so với H2RAs trong việc ngăn ngừa biến chứng CHẢY MÁU tiêu hóa do LDA</strong> với <strong>Tỷ số nguy cơ gộp đạt 0.28 (95% CI: 0.16 - 0.50, P &lt; 0.0001)</strong>.
+          </div>
+        </div>
+
+        <!-- FIGURE 11: ALGORITHM FOR PREVENTION OF LDA-RELATED ULCERS -->
+        <div class="fig-card">
+          <img src="./images/2020-jsge-pud-fig11.png" alt="Figure 11. Algorithm for the prevention of LDA-related ulcers" class="fig-img" loading="lazy">
+          <div class="fig-caption">
+            <div class="fig-title">Figure 11. Algorithm for the prevention of LDA-related ulcers (Official JSGE 2020)</div>
+            Lưu đồ thuật toán chính thức của JSGE 2020 về dự phòng loét khi điều trị bằng LDA: <strong>Không có tiền sử loét (Ulcer/hemorrhagic history -):</strong> Khuyến cáo sử dụng PPI; <strong>Có tiền sử loét không chảy máu (Ulcer history):</strong> Khuyến cáo PPI hoặc Vonoprazan (VPZ), gợi ý cân nhắc H2RA; <strong>Có tiền sử loét biến chứng chảy máu (Hemorrhagic ulcer history):</strong> Khuyến cáo dùng PPI, tiệt trừ <em>H. pylori</em> nếu dương tính; <strong>Phối hợp LDA và NSAIDs:</strong> Khuyến cáo dùng Celecoxib + PPI.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 6: THỂ LOÉT ĐẶC BIỆT & NGOẠI KHOA -->
+    <div class="sec-card" id="sec-6">
+      <div class="sec-hdr">
+        <span class="sec-hdr-icon"><i class="fa-solid fa-hospital-user" style="color: var(--purple);"></i></span>
+        <h2 class="sec-title">6. Xử Trí Loét Vô Căn, Loét Mỏm Cắt Dạ Dày, Phẫu Thuật & Thiếu Máu Cục Bộ (CQ-26 &rarr; CQ-28, FRQ-1)</h2>
+      </div>
+      <div class="sec-body">
+        <!-- CQ-26: IDIOPATHIC ULCERS -->
+        <div class="ebm-rec-card weak">
+          <div class="ebm-rec-header">
+            <div class="ebm-rec-title">
+              <span class="badge badge-purple">CQ-26</span>
+              Điều Trị & Dự Phòng Loét Dạ Dày - Tá Tràng Vô Căn (Idiopathic Ulcers)
+            </div>
+            <div class="grade-badge-group">
+              <span class="grade-badge grade-weak">Khuyến cáo Yếu</span>
+              <span class="grade-badge grade-loe">Bằng chứng D</span>
+              <span class="grade-badge grade-agree">Đồng thuận 100%</span>
+            </div>
+          </div>
+          <div class="ebm-rec-body">
+            <ul>
+              <li><strong>Định nghĩa:</strong> Loét vô căn là những ổ loét xuất hiện ở bệnh nhân <strong>âm tính với H. pylori và hoàn toàn không sử dụng NSAIDs hay aspirin</strong>.</li>
+              <li><strong>Điều trị ban đầu:</strong> Gợi ý sử dụng <strong>PPIs làm liệu pháp điều trị ban đầu</strong>. <em>Lưu ý sinh lý bệnh:</em> Loét vô căn thường kháng trị và khó liền sẹo hơn loét do <em>H. pylori</em> (tỷ lệ liền sẹo sau 12 tuần PPI chỉ đạt 77.4% so với 95.0% ở loét do <em>H. pylori</em>).</li>
+              <li><strong>Dự phòng tái phát:</strong> Do loét vô căn có tỷ lệ tái phát tích lũy rất cao (lên tới 42.3% trong vòng 7 năm nếu không điều trị dự phòng), <strong>gợi ý điều trị duy trì kéo dài bằng PPIs hoặc H2RAs</strong> để ngăn ngừa tái phát chảy máu.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- CQ-27: REMNANT GASTRIC ULCER -->
+        <div class="ebm-rec-card strong">
+          <div class="ebm-rec-header">
+            <div class="ebm-rec-title">
+              <span class="badge badge-purple">CQ-27</span>
+              Điều Trị Loét Dạ Dày Còn Lại Sau Phẫu Thuật Cắt Đoạn (Remnant Gastric Ulcers)
+            </div>
+            <div class="grade-badge-group">
+              <span class="grade-badge grade-strong">Khuyến cáo Mạnh</span>
+              <span class="grade-badge grade-loe">Bằng chứng A</span>
+              <span class="grade-badge grade-agree">Đồng thuận 100%</span>
+            </div>
+          </div>
+          <div class="ebm-rec-body">
+            <strong>Khuyến cáo sử dụng PPI làm liệu pháp nội khoa hàng đầu</strong> cho bệnh nhân bị loét ở phần dạ dày còn lại sau phẫu thuật cắt đoạn. Nghiên cứu so sánh ghi nhận Omeprazole đạt tốc độ và tỷ lệ liền sẹo ổ loét dạ dày còn lại cao vượt trội sau 2 tuần điều trị (đạt 66.7%) so với Cimetidine (43.3%), Sucralfate (22.2%), Colloidal Bismuth (22.2%), và Misoprostol (16.7%). Việc tiệt trừ <em>H. pylori</em> được khuyến khích nhằm cải thiện cấu trúc mô học niêm mạc.
+          </div>
+        </div>
+
+        <!-- CQ-28: PERFORATION CLOSURE & H. PYLORI -->
+        <div class="ebm-rec-card strong">
+          <div class="ebm-rec-header">
+            <div class="ebm-rec-title">
+              <span class="badge badge-purple">CQ-28</span>
+              Tiệt Trừ H. pylori Sau Phẫu Thuật Khâu Lỗ Thủng Ổ Loét
+            </div>
+            <div class="grade-badge-group">
+              <span class="grade-badge grade-strong">Khuyến cáo Mạnh</span>
+              <span class="grade-badge grade-loe">Bằng chứng A</span>
+              <span class="grade-badge grade-agree">Đồng thuận 100%</span>
+            </div>
+          </div>
+          <div class="ebm-rec-body">
+            Đối với bệnh nhân bị thủng ổ loét tá tràng đã được phẫu thuật xử trí bằng phương pháp khâu đơn thuần hoặc khâu bọc mạc nối lớn (omental patch), <strong>khuyến cáo thực hiện tiệt trừ H. pylori sớm sau mổ nếu xét nghiệm vi khuẩn dương tính</strong>. Việc tiệt trừ sớm giúp đẩy nhanh tốc độ liền sẹo ở tuần thứ 8 và ngăn ngừa hiệu quả nguy cơ tái phát loét sau phẫu thuật bảo tồn dạ dày.
+          </div>
+        </div>
+
+        <!-- FRQ-1: ISCHEMIC DUODENAL ULCER -->
+        <div class="ebm-rec-card weak">
+          <div class="ebm-rec-header">
+            <div class="ebm-rec-title">
+              <span class="badge badge-purple">FRQ-1</span>
+              Sinh Lý Bệnh & Điều Trị Loét Tá Tràng Do Thiếu Máu Cục Bộ (Ischemic Duodenal Ulcer)
+            </div>
+            <div class="grade-badge-group">
+              <span class="grade-badge grade-weak">Khuyến cáo Nghiên Cứu Tương Lai</span>
+              <span class="grade-badge grade-loe">Bằng chứng D</span>
+              <span class="grade-badge grade-agree">Đồng thuận 100%</span>
+            </div>
+          </div>
+          <div class="ebm-rec-body">
+            <ul>
+              <li><strong>Cơ chế bệnh sinh:</strong>
+                <ul>
+                  <li><em>Nguyên nhân cấp tính:</em> Thường xảy ra sau thủ thuật can thiệp mạch (như nút mạch hóa dầu - TACE điều trị ung thư gan, hoặc nút mạch cầm máu dạ dày tá tràng) gây thuyên tắc mạch nuôi dưỡng, hoặc do huyết khối hệ thống.</li>
+                  <li><em>Nguyên nhân mạn tính:</em> Xuất hiện ở bệnh nhân xơ vữa động mạch gây hẹp nặng động mạch thân tạng (celiac artery) hoặc động mạch mạc treo tràng trên (SMA).</li>
+                </ul>
+              </li>
+              <li><strong>Hình ảnh nội soi đặc trưng:</strong> Xuất hiện các <strong>ổ loét dọc (longitudinal ulcers)</strong>, niêm mạc xung quanh phù nề, xung huyết đỏ sẫm do thiếu máu nuôi.</li>
+              <li><strong>Tiếp cận điều trị bảo tồn:</strong> <strong>Gợi ý sử dụng PPIs hoặc Misoprostol</strong> phối hợp nhịn ăn nuôi dưỡng tĩnh mạch. Do vùng hành tá tràng phía sau tiếp xúc với dịch mật và dịch tụy kiềm, Misoprostol có vai trò bảo vệ niêm mạc đặc biệt quan trọng. Bắt buộc chụp mạch hoặc MSCT bụng để khảo sát tái thông mạch hoặc phẫu thuật nếu có hoại tử tiến triển.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- BẢNG TỔNG HỢP THUỐC VÀ LIỀU LƯỢNG -->
+        <h3 class="sec-subtitle"><i class="fa-solid fa-table-list"></i> Bảng Phân Loại & Liều Lượng Các Thuốc Điều Trị PUD Chuẩn Theo JSGE 2020</h3>
+        <div class="table-wrapper">
+          <table class="med-table">
+            <thead>
+              <tr>
+                <th>Nhóm Thuốc</th>
+                <th>Tên Hoạt Chất</th>
+                <th>Liều Dùng Tiêu Chuẩn (JSGE)</th>
+                <th>Chỉ Định & Ưu Thế Lâm Sàng Vượt Trội</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>P-CAB</strong><br><span class="rx-tag preferred">Đột Phá</span></td>
+                <td><strong>Vonoprazan</strong> (Takecab)</td>
+                <td>20 mg x 2 lần/ngày (Tiệt trừ HP)<br>10 - 20 mg x 1 lần/ngày (Dự phòng loét)</td>
+                <td>Ức chế acid nhanh, mạnh, không phụ thuộc bữa ăn/CYP2C19. Tiệt trừ <em>H. pylori</em> bước 1 vượt trội (OR 0.28); dự phòng loét NSAID/LDA non-inferior so với PPI.</td>
+              </tr>
+              <tr>
+                <td><strong>PPIs</strong><br><span class="rx-tag preferred">Hàng Đầu</span></td>
+                <td>Esomeprazole, Rabeprazole, Lansoprazole, Omeprazole</td>
+                <td>Liều chuẩn x 1-2 lần/ngày (PO/IV)</td>
+                <td>Lựa chọn số 1 điều trị loét dạ dày tá tràng không tiệt trừ, loét do NSAIDs, dự phòng chảy máu do LDA, loét mỏm cắt dạ dày và sau can thiệp nội soi cầm máu.</td>
+              </tr>
+              <tr>
+                <td><strong>H2RAs</strong><br><span class="rx-tag info">Thay Thế</span></td>
+                <td>Famotidine, Nizatidine, Cimetidine</td>
+                <td>Famotidine 20 mg x 2 lần/ngày</td>
+                <td>Lựa chọn thay thế bước 1 khi không dung nạp PPI/P-CAB; điều trị duy trì ngừa tái phát loét vô căn. Kém hiệu quả hơn PPI trong dự phòng chảy máu do LDA.</td>
+              </tr>
+              <tr>
+                <td><strong>COX-2 Chọn Lọc</strong><br><span class="rx-tag preferred">Bảo Vệ Dạ Dày</span></td>
+                <td><strong>Celecoxib</strong> (Celebrex)</td>
+                <td>100 - 200 mg x 1-2 lần/ngày</td>
+                <td>Thay thế NSAIDs không chọn lọc. Giảm 79% loét dạ dày (RR 0.21) và 62% loét tá tràng (RR 0.38). Bắt buộc phối hợp PPI ở bệnh nhân có tiền sử loét/chảy máu.</td>
+              </tr>
+              <tr>
+                <td><strong>Kháng Sinh</strong><br><span class="rx-tag info">Tiệt Trừ HP</span></td>
+                <td>Amoxicillin, Clarithromycin, Metronidazole, Sitafloxacin</td>
+                <td>Theo phác đồ 7 ngày chuẩn Nhật Bản</td>
+                <td>Bước 1: VPZ + Amox + Clari (hoặc Metro); Bước 2: PAM (PPI/VPZ + Amox + Metro); Bước 3: Phác đồ chứa Sitafloxacin.</td>
+              </tr>
+              <tr>
+                <td><strong>Bảo Vệ Niêm Mạc</strong><br><span class="rx-tag warning">Bổ Trợ</span></td>
+                <td><strong>Misoprostol</strong>, Sucralfate, Pirenzepine</td>
+                <td>Misoprostol 200 mcg x 3-4 lần/ngày</td>
+                <td>Đồng đẳng Prostaglandin E1; ưu tiên lựa chọn trong loét tá tràng do thiếu máu cục bộ (Ischemic ulcer) và thay thế khi chống chỉ định kháng tiết acid.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- CITATION BOX -->
+        <h3 class="sec-subtitle"><i class="fa-solid fa-quote-left"></i> Trích Dẫn Y Văn Chuẩn AMA & Liên Kết Tra Cứu</h3>
+        <div class="citation-box">
+          Kamada T, Satoh K, Itoh T, Ito M, Iwamoto J, Okimoto T, Kanno T, Sugimoto M, Chiba T, Nomura S, Mabe K, Murakami K, Yoshino J, Shimosegawa T; Guidelines Committee for Peptic Ulcer Disease, Japanese Society of Gastroenterology. <strong>Evidence-based clinical practice guidelines for peptic ulcer disease 2020</strong>. <em>J Gastroenterol</em>. 2021;56(4):303-322. doi:10.1007/s00535-021-01769-0.
+        </div>
+
+        <div class="btn-row">
+          <a href="https://doi.org/10.1007/s00535-021-01769-0" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Xem Bài Gốc DOI: 10.1007/s00535-021-01769-0
+          </a>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/33620583/" target="_blank" rel="noopener noreferrer" class="btn">
+            <i class="fa-solid fa-book-bookmark"></i> PubMed PMID: 33620583
+          </a>
+          <a href="../guidelines.html" class="btn">
+            <i class="fa-solid fa-list-check"></i> Trở Về Danh Sách Kho Guidelines
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SCRIPT LOGIC -->
+  <script>
+    // THEME TOGGLE
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    if (themeToggleBtn) {
+      themeToggleBtn.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('cliniportal_theme', newTheme);
+        themeToggleBtn.innerHTML = newTheme === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+      });
+
+      const savedTheme = localStorage.getItem('cliniportal_theme');
+      if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        themeToggleBtn.innerHTML = savedTheme === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+      }
+    }
+
+    // CDSS TAB SWITCHING
+    function switchCdssTab(tabId) {
+      document.querySelectorAll('.cdss-tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.cdss-tab-content').forEach(content => content.classList.remove('active'));
+      
+      const targetBtn = Array.from(document.querySelectorAll('.cdss-tab-btn')).find(b => b.getAttribute('onclick')?.includes(tabId));
+      if (targetBtn) targetBtn.classList.add('active');
+      
+      const targetContent = document.getElementById(tabId);
+      if (targetContent) targetContent.classList.add('active');
+    }
+
+    // CDSS 1: BLEEDING MANAGEMENT
+    function calcBleedingMgmt() {
+      const type = document.getElementById('antithromboticType').value;
+      const risk = document.getElementById('thromboticRisk').value;
+      const hemo = document.getElementById('hemostasisStatus').value;
+      const panel = document.getElementById('bleedingResultPanel');
+
+      let rec = '';
+      let badge = 'Khuyến Cáo Xử Trí JSGE 2020';
+
+      if (hemo === 'failed') {
+        rec = `<strong><span style="color: #dc2626;"><i class="fa-solid fa-triangle-exclamation"></i> Thất bại can thiệp nội soi:</span></strong> Khuyến cáo chỉ định <strong>X-quang can thiệp nút mạch chọn lọc (IVR / TAE)</strong> hoặc phẫu thuật ngoại khoa cấp cứu ngay lập tức (CQ-2). Tạm ngưng toàn bộ thuốc chống đông/kháng tiểu cầu cho đến khi kiểm soát được huyết động.`;
+      } else if (type === 'aspirin-mono') {
+        if (risk === 'high') {
+          rec = `<strong><span style="color: #059669;"><i class="fa-solid fa-check-circle"></i> Tiếp tục duy trì Aspirin đơn trị (CQ-1, CQ-18):</span></strong> Khuyến cáo tiếp tục sử dụng Aspirin liều thấp (100mg/ngày) kết hợp với truyền/uống PPI liều chuẩn. Không ngưng Aspirin vì nguy cơ huyết khối tim mạch và tử vong cao vượt trội so với nguy cơ tái chảy máu (GRADE B, Mạnh).`;
+        } else {
+          rec = `<strong><span style="color: #d97706;"><i class="fa-solid fa-clock"></i> Tạm ngưng ngắn hạn (CQ-1):</span></strong> Có thể tạm ngưng Aspirin trong giai đoạn cấp cứu chuẩn bị nội soi và dùng lại ngay sau 1 - 3 ngày khi đã xác nhận cầm máu ổn định qua nội soi (GRADE D, Yếu).`;
+        }
+      } else if (type === 'non-aspirin-antiplatelet') {
+        if (risk === 'high') {
+          rec = `<strong><span style="color: #2563eb;"><i class="fa-solid fa-arrows-rotate"></i> Chuyển đổi sang Aspirin (CQ-1):</span></strong> Gợi ý chuyển đổi từ thuốc ức chế P2Y12 (Clopidogrel, Ticagrelor, Prasugrel) sang <strong>Aspirin đơn trị</strong> để duy trì bảo vệ mạch vành/mạch não đồng thời giảm áp lực chảy máu niêm mạc (GRADE D, Yếu).`;
+        } else {
+          rec = `<strong><span style="color: #d97706;"><i class="fa-solid fa-pause"></i> Tạm ngưng P2Y12 (CQ-1):</span></strong> Gợi ý tạm ngưng thuốc kháng tiểu cầu cho đến khi nội soi cầm máu ổn định.`;
+        }
+      } else if (type === 'dapt') {
+        rec = `<strong><span style="color: #059669;"><i class="fa-solid fa-shield-halved"></i> Chuyển DAPT sang Đơn Trị Aspirin (CQ-1, CQ-4):</span></strong> Khuyến cáo <strong>tiếp tục duy trì đơn trị liệu Aspirin</strong> và tạm ngưng thuốc P2Y12 thứ hai trong giai đoạn xuất huyết cấp. Bắt buộc phối hợp PPI tĩnh mạch/uống liều chuẩn để giảm 74% nguy cơ xuất huyết tiêu hóa (RR 0.26, GRADE A/D). Tái khởi động P2Y12 sau hội chẩn Tim mạch can thiệp.`;
+      } else if (type === 'warfarin') {
+        if (hemo === 'pending') {
+          rec = `<strong><span style="color: #dc2626;"><i class="fa-solid fa-ban"></i> Tạm ngưng Warfarin & Xem xét Heparin bắc cầu (CQ-1):</span></strong> Khuyến cáo tạm ngưng Warfarin trước khi can thiệp nội soi. Ở bệnh nhân có van cơ học hoặc rung nhĩ nguy cơ đột quỵ rất cao, xem xét truyền Heparin bắc cầu và đảo ngược đông máu nếu INR &gt; 2.5 (GRADE C, Mạnh).`;
+        } else {
+          rec = `<strong><span style="color: #059669;"><i class="fa-solid fa-play"></i> Dùng lại Warfarin sớm (CQ-1):</span></strong> Nhanh chóng sử dụng lại Warfarin ngay khi đã cầm máu ổn định, kiểm soát chỉ số PT-INR mục tiêu chặt chẽ (GRADE C).`;
+        }
+      } else if (type === 'doac') {
+        if (hemo === 'pending') {
+          rec = `<strong><span style="color: #d97706;"><i class="fa-solid fa-pause"></i> Tạm ngưng DOACs (CQ-1):</span></strong> Tạm ngưng DOACs (Rivaroxaban, Apixaban, Dabigatran, Edoxaban) trước khi can thiệp nội soi cầm máu.`;
+        } else {
+          rec = `<strong><span style="color: #059669;"><i class="fa-solid fa-clock-rotate-left"></i> Khởi động lại DOACs sớm trong 1 - 2 ngày (CQ-1):</span></strong> Gợi ý sử dụng lại các DOACs sớm (trong vòng 1 - 2 ngày) sau khi xác nhận cầm máu thành công qua nội soi (GRADE D, Yếu).`;
+        }
+      } else if (type === 'warfarin-antiplatelet') {
+        rec = `<strong><span style="color: #2563eb;"><i class="fa-solid fa-code-branch"></i> Chuyển đổi Kháng tiểu cầu & Kiểm soát Warfarin (CQ-1):</span></strong> Gợi ý chuyển đổi thuốc kháng tiểu cầu sang <strong>Aspirin hoặc Cilostazol</strong>, đồng thời duy trì Warfarin có kiểm soát PT-INR chặt chẽ, hoặc chuyển sang Heparin (GRADE D, Yếu).`;
+      }
+
+      panel.innerHTML = `
+        <div class="cdss-score-badge"><i class="fa-solid fa-bell"></i> ${badge}</div>
+        <div class="cdss-recommendation">${rec}</div>
+      `;
+    }
+
+    // CDSS 2: NSAID PREVENTION
+    function calcNsaidMgmt() {
+      const history = document.getElementById('nsaidUlcerHistory').value;
+      const ageCo = document.getElementById('nsaidAgeCoMeds').value;
+      const hp = document.getElementById('nsaidHpStatus').value;
+      const panel = document.getElementById('nsaidResultPanel');
+
+      let rec = '';
+      let badge = 'Chiến Lược Dự Phòng Loét Do NSAIDs (Fig. 10)';
+
+      if (history === 'ulcer-bleed' || ageCo === 'plus-lda') {
+        rec = `<strong><span style="color: #dc2626;"><i class="fa-solid fa-shield-virus"></i> Nguy Cơ Xuất Huyết Cực Cao (CQ-14, CQ-24):</span></strong> Khuyến cáo bắt buộc phối hợp <strong>Thuốc ức chế chọn lọc COX-2 (Celecoxib) + Thuốc PPI</strong> (hoặc Vonoprazan). Tuyệt đối tránh dùng NSAIDs không chọn lọc.`;
+      } else if (history === 'ulcer-non-bleed') {
+        rec = `<strong><span style="color: #d97706;"><i class="fa-solid fa-shield-halved"></i> Dự Phòng Thứ Phát (CQ-14):</span></strong> Khuyến cáo sử dụng <strong>PPI</strong> (hoặc Vonoprazan) phối hợp hoặc không phối hợp với Celecoxib. Vonoprazan (P-CAB) đã được chứng minh hiệu quả dự phòng không kém hơn Lansoprazole.`;
+      } else {
+        // history === 'none'
+        if (ageCo === 'elderly' || ageCo === 'plus-steroid-anticoag') {
+          rec = `<strong><span style="color: #2563eb;"><i class="fa-solid fa-user-shield"></i> Người Cao Tuổi / Bệnh Nền / Dùng Kèm Steroid/Kháng Đông (CQ-15):</span></strong> Khuyến cáo sử dụng <strong>PPI dự phòng</strong>. Nếu dùng kèm Steroid hoặc thuốc chống đông, khuyến cáo chuyển sang <strong>Celecoxib</strong> để giảm tối đa rủi ro xuất huyết.`;
+        } else {
+          rec = `<strong><span style="color: #059669;"><i class="fa-solid fa-check"></i> Không Có Tiền Sử Loét (CQ-13, CQ-16):</span></strong> Khuyến cáo lựa chọn <strong>Celecoxib (CXB)</strong>, hoặc gợi ý dùng <strong>PPI</strong> nếu dùng NSAIDs kéo dài &gt; 3 tháng. Nếu dùng Celecoxib đơn độc ở người không có tiền sử loét, không cần thiết phải thêm thuốc dự phòng (CQ-17).`;
+        }
+      }
+
+      if (hp === 'naive-hp-pos') {
+        rec += `<br><span style="color: #059669; font-weight: 600; display: inline-block; margin-top: 0.4rem;"><i class="fa-solid fa-bacterium"></i> Khuyến cáo tiệt trừ H. pylori trước khi bắt đầu dùng NSAIDs ở bệnh nhân chưa từng dùng (NSAID-naïve, CQ-12).</span>`;
+      } else if (hp === 'chronic-user') {
+        rec += `<br><span style="color: #d97706; font-weight: 600; display: inline-block; margin-top: 0.4rem;"><i class="fa-solid fa-circle-info"></i> Ở người đang dùng NSAIDs dài hạn, tiệt trừ HP đơn thuần không đủ để dự phòng loét; bắt buộc phải duy trì PPI (CQ-12).</span>`;
+      }
+
+      panel.innerHTML = `
+        <div class="cdss-score-badge"><i class="fa-solid fa-pills"></i> ${badge}</div>
+        <div class="cdss-recommendation">${rec}</div>
+      `;
+    }
+
+    // CDSS 3: LDA PREVENTION
+    function calcLdaMgmt() {
+      const history = document.getElementById('ldaUlcerHistory').value;
+      const coNsaid = document.getElementById('ldaCoNsaid').value;
+      const hp = document.getElementById('ldaHpStatus').value;
+      const panel = document.getElementById('ldaResultPanel');
+
+      let rec = '';
+      let badge = 'Chiến Lược Dự Phòng Loét Do Aspirin Liều Thấp (Fig. 11)';
+
+      if (coNsaid === 'yes') {
+        rec = `<strong><span style="color: #dc2626;"><i class="fa-solid fa-shield-virus"></i> Phối hợp LDA + NSAIDs (CQ-24, CQ-25):</span></strong> Bắt buộc lựa chọn <strong>Celecoxib + PPI</strong>. Sự kết hợp này giảm thiểu tối đa tổn thương niêm mạc so với việc dùng NSAID không chọn lọc + LDA.`;
+      } else if (history === 'ulcer-bleed') {
+        rec = `<strong><span style="color: #dc2626;"><i class="fa-solid fa-shield-halved"></i> Tiền Sử Xuất Huyết Do LDA (CQ-20, CQ-21):</span></strong> Khuyến cáo sử dụng <strong>PPI hoặc Vonoprazan (VPZ)</strong> để ngăn ngừa tái phát chảy máu. ${hp === 'positive' ? '<strong>Bắt buộc tiến hành tiệt trừ H. pylori đồng thời DUY TRÌ PPI liên tục</strong> (tiệt trừ đơn thuần không đủ).' : ''}`;
+      } else if (history === 'ulcer-non-bleed') {
+        rec = `<strong><span style="color: #2563eb;"><i class="fa-solid fa-shield-halved"></i> Tiền Sử Loét Không Chảy Máu (CQ-20, CQ-22):</span></strong> Khuyến cáo sử dụng <strong>PPI hoặc Vonoprazan (VPZ)</strong> làm lựa chọn hàng đầu (vượt trội hơn hẳn so với H2RA về ngăn biến chứng chảy máu, RR 0.28).`;
+      } else {
+        rec = `<strong><span style="color: #059669;"><i class="fa-solid fa-check"></i> Dự Phòng Tiên Phát (CQ-23):</span></strong> Khuyến cáo sử dụng <strong>PPI</strong> để dự phòng tiên phát tổn thương niêm mạc dạ dày tá tràng.`;
+      }
+
+      panel.innerHTML = `
+        <div class="cdss-score-badge"><i class="fa-solid fa-heart-pulse"></i> ${badge}</div>
+        <div class="cdss-recommendation">${rec}</div>
+      `;
+    }
+
+    // CDSS 4: H. PYLORI REGIMEN
+    function calcHpMgmt() {
+      const line = document.getElementById('hpLine').value;
+      const clari = document.getElementById('hpClariResistance').value;
+      const pcab = document.getElementById('hpPcabAvail').value;
+      const panel = document.getElementById('hpResultPanel');
+
+      let rec = '';
+      let badge = 'Lựa Chọn Phác Đồ Tiệt Trừ H. pylori (JSGE 2020)';
+
+      if (line === 'line-1') {
+        if (pcab === 'available') {
+          if (clari === 'high') {
+            rec = `<strong><span style="color: #059669;"><i class="fa-solid fa-star"></i> Phác đồ Bước 1 Tối Ưu (Kháng Clarithromycin cao, CQ-5):</span></strong><br>
+            • <strong>Vonoprazan (VPZ):</strong> 20 mg x 2 lần/ngày (sau ăn)<br>
+            • <strong>Amoxicillin (AMPC):</strong> 750 mg x 2 lần/ngày<br>
+            • <strong>Metronidazole (MNZ):</strong> 250 mg x 2 lần/ngày (hoặc Clarithromycin 200mg x 2 lần/ngày)<br>
+            • Thời gian: <strong>7 ngày</strong>. Phác đồ chứa VPZ đạt tỷ lệ tiệt trừ vượt trội so với PPI (OR 0.28, p &lt; 0.00001, GRADE A).`;
+          } else {
+            rec = `<strong><span style="color: #059669;"><i class="fa-solid fa-star"></i> Phác đồ 3 Thuốc Chứa Vonoprazan (VAC-7, CQ-5):</span></strong><br>
+            • <strong>Vonoprazan (VPZ):</strong> 20 mg x 2 lần/ngày<br>
+            • <strong>Amoxicillin (AMPC):</strong> 750 mg x 2 lần/ngày<br>
+            • <strong>Clarithromycin (CAM):</strong> 200 - 400 mg x 2 lần/ngày<br>
+            • Thời gian: <strong>7 ngày</strong> (GRADE A, Mạnh).`;
+          }
+        } else {
+          rec = `<strong><span style="color: #2563eb;"><i class="fa-solid fa-pills"></i> Phác đồ Bước 1 Dùng PPI (CQ-5):</span></strong><br>
+          Gợi ý áp dụng <strong>Liệu pháp 4 thuốc đồng thời (Concomitant)</strong> hoặc <strong>Liệu pháp nối tiếp (Sequential)</strong>: PPI liều gấp đôi + Amoxicillin 1000mg + Clarithromycin 500mg + Metronidazole 500mg x 2 lần/ngày trong 10 - 14 ngày (thay vì 3 thuốc PPI 7 ngày truyền thống) để khắc phục đề kháng Clarithromycin.`;
+        }
+      } else if (line === 'line-2') {
+        rec = `<strong><span style="color: #059669;"><i class="fa-solid fa-shield-halved"></i> Phác Đồ Cứu Vãn Bước 2 (PAM, CQ-6):</span></strong><br>
+        • <strong>Vonoprazan (VPZ 20mg x 2)</strong> HOẶC <strong>PPI liều tiêu chuẩn x 2 lần/ngày</strong><br>
+        • <strong>Amoxicillin (AMPC):</strong> 750 mg x 2 lần/ngày<br>
+        • <strong>Metronidazole (MNZ):</strong> 250 mg x 2 lần/ngày<br>
+        • Thời gian: <strong>7 ngày</strong>. PAM đạt hiệu quả vượt trội hoàn toàn so với PAC ở bước 2 (OR 0.14, p &lt; 0.00001, GRADE A, Mạnh).`;
+      } else if (line === 'line-3') {
+        rec = `<strong><span style="color: #d97706;"><i class="fa-solid fa-flask"></i> Phác Đồ Bước 3 Chứa Sitafloxacin (CQ-7):</span></strong><br>
+        • <strong>PPI tiêu chuẩn x 2 lần/ngày</strong><br>
+        • <strong>Sitafloxacin (STFX):</strong> 100 mg x 2 lần/ngày<br>
+        • Phối hợp với <strong>Metronidazole 250mg x 2</strong> HOẶC <strong>Amoxicillin 750mg x 2</strong><br>
+        • Thời gian: <strong>7 ngày</strong>. Tỷ lệ tiệt trừ đạt 70.0% - 90.9% (GRADE B, Gợi ý). Cần tham vấn chuyên gia Tiêu hóa.`;
+      }
+
+      panel.innerHTML = `
+        <div class="cdss-score-badge"><i class="fa-solid fa-bacterium"></i> ${badge}</div>
+        <div class="cdss-recommendation">${rec}</div>
+      `;
+    }
+
+    // INITIALIZE CDSS CALCULATORS
+    document.addEventListener('DOMContentLoaded', () => {
+      calcBleedingMgmt();
+      calcNsaidMgmt();
+      calcLdaMgmt();
+      calcHpMgmt();
+    });
+  </script>
+</body>
+</html>

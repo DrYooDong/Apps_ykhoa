@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tóm tắt toàn diện Hướng dẫn chẩn đoán và điều trị bệnh thần kinh đái tháo đường (Bộ Y tế 2025 - QĐ 3510/QĐ-BYT): Cơ chế ngộ độc glucose, Phân loại DPN & CAN, Phác đồ dược lý ALA/Benfotiamine, Phác đồ giảm đau 2 bước và Kỹ thuật khám lâm sàng.">
+  <title>Hướng Dẫn Chẩn Đoán & Điều Trị Bệnh Thần Kinh Đái Tháo Đường (BYT 2025) – CliniPortal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #059669; --green-bg: #f0fdf4; --green-light: #a7f3d0;
+      --orange: #d97706; --orange-bg: #fffbeb; --orange-light: #fde68a;
+      --red: #dc2626; --red-bg: #fef2f2; --red-light: #fca5a5;
+      --blue: #2563eb; --blue-bg: #eff6ff; --blue-light: #bfdbfe;
+      --teal: #0d9488; --teal-bg: #f0fdfa; --teal-light: #99f6e4;
+      --purple: #7c3aed; --purple-bg: #faf5ff; --purple-light: #ddd6fe;
+      --accent: #0f6fb4;
+      --bg: #f0f4f8; --surface: #ffffff; --surface-2: #f8fafc;
+      --border: #cbd5e1; --border-light: #e2e8f0;
+      --text: #0f172a; --text-muted: #475569; --text-faint: #94a3b8;
+      --radius: 16px; --tr: 220ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [data-theme="dark"] {
+      --green: #10b981; --green-bg: rgba(6, 78, 59, 0.4); --green-light: #047857;
+      --orange: #f59e0b; --orange-bg: rgba(120, 53, 15, 0.4); --orange-light: #b45309;
+      --red: #ef4444; --red-bg: rgba(127, 29, 29, 0.4); --red-light: #b91c1c;
+      --blue: #3b82f6; --blue-bg: rgba(30, 58, 138, 0.4); --blue-light: #1d4ed8;
+      --teal: #14b8a6; --teal-bg: rgba(17, 94, 89, 0.4); --teal-light: #0f766e;
+      --purple: #8b5cf6; --purple-bg: rgba(76, 29, 149, 0.4); --purple-light: #6d28d9;
+      --accent: #38bdf8;
+      --bg: #0f172a; --surface: #1e293b; --surface-2: #0f172a;
+      --border: #334155; --border-light: #1e293b;
+      --text: #f8fafc; --text-muted: #cbd5e1; --text-faint: #64748b;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; font-size: 15px; background: var(--bg); color: var(--text); line-height: 1.65; min-height: 100vh; transition: background var(--tr), color var(--tr); }
+
+    /* TOP NAV */
+    .topnav { position: sticky; top: 0; z-index: 200; background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 1rem; padding: 0 1.5rem; height: 56px; transition: background var(--tr), border-color var(--tr); }
+    [data-theme="dark"] .topnav { background: rgba(30, 41, 59, 0.9); }
+    .topnav-back { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--accent); text-decoration: none; font-size: 0.82rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 8px; transition: background var(--tr); white-space: nowrap; }
+    .topnav-back:hover { background: var(--blue-bg); }
+    .topnav-divider { width: 1px; height: 18px; background: var(--border-light); flex-shrink: 0; }
+    .topnav-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .topnav-theme-toggle { margin-left: auto; background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 1.1rem; padding: 0.5rem; border-radius: 50%; transition: background var(--tr); display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; }
+    .topnav-theme-toggle:hover { background: var(--surface-2); color: var(--accent); }
+
+    /* QUICK NAV BAR */
+    .quicknav { position: sticky; top: 56px; z-index: 190; background: var(--surface); border-bottom: 1px solid var(--border-light); display: flex; gap: 0.5rem; padding: 0.6rem 1.5rem; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .quicknav::-webkit-scrollbar { height: 3px; }
+    .quicknav::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    .quicknav-link { display: inline-flex; align-items: center; white-space: nowrap; font-size: 0.78rem; font-weight: 600; color: var(--text-muted); text-decoration: none; padding: 0.35rem 0.85rem; border-radius: 20px; background: var(--surface-2); border: 1px solid var(--border-light); transition: all var(--tr); }
+    .quicknav-link:hover, .quicknav-link.active { background: var(--blue-bg); color: var(--accent); border-color: var(--blue-light); }
+
+    /* HERO */
+    .hero { background: linear-gradient(135deg, #065f46 0%, #0f6fb4 50%, #1e3a8a 100%); color: #fff; padding: 3.5rem 1.5rem 4.5rem; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 50%, rgba(56, 189, 248, 0.25) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(16, 185, 129, 0.2) 0%, transparent 55%); }
+    .hero-inner { max-width: 1000px; margin: 0 auto; position: relative; z-index: 1; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255, 255, 255, 0.14); border: 1px solid rgba(255, 255, 255, 0.24); border-radius: 20px; padding: 0.3rem 0.9rem; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1rem; color: #7dd3fc; }
+    .hero-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 0.85rem; }
+    .hero-title span { display: block; background: linear-gradient(90deg, #7dd3fc, #6ee7b7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 0.65em; font-weight: 600; letter-spacing: 0; margin-bottom: 0.2rem; }
+    .hero-subtitle { font-size: 0.95rem; opacity: 0.88; max-width: 820px; margin-bottom: 2rem; line-height: 1.65; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 0.75rem 2rem; font-size: 0.8rem; opacity: 0.8; }
+    .hero-meta-item { display: flex; align-items: center; gap: 6px; }
+
+    /* PILLARS STRIP */
+    .pillars { background: var(--surface); border-bottom: 1px solid var(--border-light); padding: 1.75rem 1.5rem; }
+    .pillars-inner { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+    .pillar { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.1rem 1.2rem; display: flex; align-items: flex-start; gap: 0.85rem; position: relative; overflow: hidden; transition: box-shadow var(--tr); }
+    .pillar::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; border-radius: 4px 0 0 4px; }
+    .pillar.p1::before { background: var(--blue); }
+    .pillar.p2::before { background: var(--orange); }
+    .pillar.p3::before { background: var(--red); }
+    .pillar.p4::before { background: var(--teal); }
+    .pillar:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+    .pillar-icon { font-size: 1.6rem; flex-shrink: 0; line-height: 1; }
+    .pillar-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text); margin-bottom: 0.25rem; }
+    .pillar-desc { font-size: 0.76rem; color: var(--text-muted); line-height: 1.45; }
+
+    /* PAGE CONTENT */
+    .page-content { max-width: 1000px; margin: 0 auto; padding: 2.25rem 1.5rem; display: flex; flex-direction: column; gap: 2rem; }
+
+    /* SECTION CARDS */
+    .sec-card { background: var(--surface); border: 1px solid var(--border-light); border-radius: var(--radius); overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.03); scroll-margin-top: 110px; }
+    .sec-hdr { padding: 1.1rem 1.5rem; border-bottom: 1px solid var(--border-light); background: var(--surface-2); display: flex; align-items: center; gap: 0.75rem; }
+    .sec-hdr-icon { font-size: 1.2rem; color: var(--accent); }
+    .sec-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.05rem; font-weight: 800; color: var(--text); }
+    .sec-body { padding: 1.5rem; display: flex; flex-direction: column; gap: 1.25rem; }
+    .sec-subtitle { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; border-bottom: 1px solid var(--border-light); padding-bottom: 0.4rem; }
+
+    /* INFO BOXES */
+    .infobox { display: flex; align-items: flex-start; gap: 0.85rem; padding: 1rem 1.25rem; border-radius: 12px; font-size: 0.85rem; line-height: 1.6; margin-bottom: 0.5rem; }
+    .infobox-icon { font-size: 1.3rem; flex-shrink: 0; line-height: 1.3; }
+    .infobox.danger { background: var(--red-bg); border: 1px solid var(--red-light); border-left: 4px solid var(--red); color: var(--text); }
+    .infobox.success { background: var(--green-bg); border: 1px solid var(--green-light); border-left: 4px solid var(--green); color: var(--text); }
+    .infobox.warning { background: var(--orange-bg); border: 1px solid var(--orange-light); border-left: 4px solid var(--orange); color: var(--text); }
+    .infobox.info { background: var(--blue-bg); border: 1px solid var(--blue-light); border-left: 4px solid var(--blue); color: var(--text); }
+    .infobox.teal { background: var(--teal-bg); border: 1px solid var(--teal-light); border-left: 4px solid var(--teal); color: var(--text); }
+    .infobox strong { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; color: var(--text); }
+
+    /* TABLES */
+    .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 12px; border: 1px solid var(--border-light); margin-bottom: 0.5rem; }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 0.83rem; min-width: 650px; text-align: left; }
+    .data-table thead th { padding: 0.75rem 1rem; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; background: var(--surface-2); color: var(--text-muted); border-bottom: 1px solid var(--border-light); }
+    .data-table td { padding: 0.85rem 1rem; border-bottom: 1px solid var(--border-light); vertical-align: top; line-height: 1.55; }
+    .data-table tbody tr:last-child td { border-bottom: none; }
+
+    /* ══════════════════════════════════════════════════════
+       FLOWCHART — PREMIUM CLINICAL ALGORITHM UI
+       "Deep Diagnostic Map" Design System v2.0
+    ══════════════════════════════════════════════════════ */
+    @keyframes fc-pulse-glow { 0%, 100% { box-shadow: 0 0 0 0 rgba(15,111,180,0); } 50% { box-shadow: 0 0 0 4px rgba(15,111,180,0.12); } }
+    @keyframes fc-fade-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+    .flowchart-card { background: var(--surface); border-radius: 18px; overflow: hidden; margin-bottom: 1.75rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.06), 0 0 0 1px rgba(15,111,180,0.1); transition: box-shadow 280ms cubic-bezier(0.16,1,0.3,1), transform 280ms cubic-bezier(0.16,1,0.3,1); animation: fc-fade-in 0.4s ease both; }
+    .flowchart-card:hover { box-shadow: 0 4px 6px rgba(0,0,0,0.04), 0 16px 40px rgba(0,0,0,0.1), 0 0 0 1px rgba(15,111,180,0.2); transform: translateY(-2px); }
+    .flowchart-card-hdr { background: linear-gradient(135deg, #0c4a6e 0%, #0f6fb4 55%, #1d4ed8 100%); padding: 0.9rem 1.35rem; display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; position: relative; overflow: hidden; }
+    .flowchart-card-hdr::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 80% 50%, rgba(56,189,248,0.18) 0%, transparent 60%); pointer-events: none; }
+    .flowchart-card-hdr-title { display: flex; align-items: center; gap: 0.6rem; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.82rem; font-weight: 800; color: #ffffff; letter-spacing: -0.01em; position: relative; z-index: 1; }
+    .flowchart-card-hdr-title i { font-size: 1rem; color: #7dd3fc; }
+    .flowchart-card-hdr .badge { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.25rem 0.65rem; border-radius: 20px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); color: #e0f2fe; white-space: nowrap; position: relative; z-index: 1; }
+    .flowchart-card-body { padding: 2rem 1.75rem; overflow-x: auto; -webkit-overflow-scrolling: touch; background: #f0f6ff; background-image: radial-gradient(ellipse at 15% 20%, rgba(59,130,246,0.08) 0%, transparent 55%), radial-gradient(ellipse at 85% 75%, rgba(16,185,129,0.06) 0%, transparent 55%), radial-gradient(circle, rgba(15,111,180,0.25) 1px, transparent 1px); background-size: auto, auto, 22px 22px; color: var(--text); position: relative; }
+    [data-theme="dark"] .flowchart-card-body { background: #060e1c; background-image: radial-gradient(ellipse at 15% 20%, rgba(59,130,246,0.12) 0%, transparent 55%), radial-gradient(ellipse at 85% 75%, rgba(16,185,129,0.08) 0%, transparent 55%), radial-gradient(circle, rgba(56,189,248,0.2) 1px, transparent 1px); background-size: auto, auto, 22px 22px; }
+    pre.flowchart-box { font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace; font-size: 0.84rem; line-height: 1.8; margin: 0; white-space: pre; color: #334155; }
+    [data-theme="dark"] pre.flowchart-box { color: #cbd5e1; }
+    .fc-node { display: inline-block; padding: 0.28rem 0.85rem; background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); color: #1e40af; border: 1.5px solid #93c5fd; border-radius: 10px; font-weight: 800; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.78rem; vertical-align: middle; box-shadow: 0 2px 8px rgba(37,99,235,0.15), inset 0 1px 0 rgba(255,255,255,0.8); transition: transform 160ms, box-shadow 160ms; line-height: 1.4; letter-spacing: -0.01em; }
+    .fc-node:hover { transform: scale(1.03); box-shadow: 0 4px 14px rgba(37,99,235,0.22), inset 0 1px 0 rgba(255,255,255,0.8); }
+    [data-theme="dark"] .fc-node { background: linear-gradient(135deg, #1e3a5f 0%, #1e3a8a 100%); color: #93c5fd; border-color: #2563eb; box-shadow: 0 2px 10px rgba(37,99,235,0.3), 0 0 0 1px rgba(147,197,253,0.1), inset 0 1px 0 rgba(255,255,255,0.05); }
+    .fc-node-yes { background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%) !important; color: #15803d !important; border-color: #86efac !important; box-shadow: 0 2px 8px rgba(21,128,61,0.15), inset 0 1px 0 rgba(255,255,255,0.8) !important; }
+    .fc-node-yes:hover { box-shadow: 0 4px 14px rgba(21,128,61,0.22), inset 0 1px 0 rgba(255,255,255,0.8) !important; }
+    [data-theme="dark"] .fc-node-yes { background: linear-gradient(135deg, #064e3b 0%, #065f46 100%) !important; color: #34d399 !important; border-color: #059669 !important; box-shadow: 0 2px 10px rgba(5,150,105,0.35), 0 0 0 1px rgba(52,211,153,0.1) !important; }
+    .fc-node-no { background: linear-gradient(135deg, #fff1f2 0%, #ffe4e6 100%) !important; color: #b91c1c !important; border-color: #fca5a5 !important; box-shadow: 0 2px 8px rgba(185,28,28,0.13), inset 0 1px 0 rgba(255,255,255,0.8) !important; }
+    .fc-node-no:hover { box-shadow: 0 4px 14px rgba(185,28,28,0.2), inset 0 1px 0 rgba(255,255,255,0.8) !important; }
+    [data-theme="dark"] .fc-node-no { background: linear-gradient(135deg, #7f1d1d 0%, #991b1b 100%) !important; color: #fca5a5 !important; border-color: #dc2626 !important; box-shadow: 0 2px 10px rgba(220,38,38,0.35), 0 0 0 1px rgba(252,165,165,0.1) !important; }
+    .fc-node-warn { background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%) !important; color: #b45309 !important; border-color: #fcd34d !important; box-shadow: 0 2px 8px rgba(180,83,9,0.13), inset 0 1px 0 rgba(255,255,255,0.8) !important; }
+    .fc-node-warn:hover { box-shadow: 0 4px 14px rgba(180,83,9,0.2), inset 0 1px 0 rgba(255,255,255,0.8) !important; }
+    [data-theme="dark"] .fc-node-warn { background: linear-gradient(135deg, #78350f 0%, #92400e 100%) !important; color: #fcd34d !important; border-color: #d97706 !important; box-shadow: 0 2px 10px rgba(217,119,6,0.35), 0 0 0 1px rgba(252,211,77,0.1) !important; }
+    .fc-line { color: #0f6fb4; font-weight: 700; opacity: 1; text-shadow: 0 0 12px rgba(15,111,180,0.35); }
+    [data-theme="dark"] .fc-line { color: #38bdf8; text-shadow: 0 0 12px rgba(56,189,248,0.4); }
+    .flowchart-card-body::after { content: '↔ Cuộn ngang để xem đầy đủ'; display: none; font-family: 'Inter', sans-serif; font-size: 0.7rem; color: var(--text-faint); padding: 0.5rem 0 0; text-align: center; }
+    @media (max-width: 640px) { .flowchart-card-body::after { display: block; } }
+
+    /* BADGES & TAGS */
+    .rx-tag { display: inline-block; background: var(--surface-2); color: var(--text-muted); font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; padding: 0.15rem 0.5rem; border-radius: 6px; border: 1px solid var(--border-light); margin: 0.15rem 0.1rem; }
+    .rx-tag.highlight { background: var(--blue-bg); color: var(--accent); border-color: var(--blue-light); font-weight: 600; }
+    .rx-tag.alert { background: var(--red-bg); color: var(--red); border-color: var(--red-light); font-weight: 600; }
+
+    code { font-family: 'JetBrains Mono', monospace; background: var(--surface-2); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.82em; border: 1px solid var(--border-light); }
+
+    /* CITATION & FOOTER */
+    .citation-box { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 12px; padding: 1.25rem; font-size: 0.82rem; color: var(--text-muted); line-height: 1.75; font-style: italic; }
+    .page-footer { max-width: 1000px; margin: 0 auto; padding: 2rem 1.5rem 4rem; text-align: center; font-size: 0.8rem; color: var(--text-faint); border-top: 1px solid var(--border-light); }
+
+    @media (max-width: 768px) {
+      .page-content { padding: 1.25rem 1rem; }
+      .sec-body { padding: 1.1rem 1rem; }
+      .pillars-inner { grid-template-columns: 1fr; }
+    }
+
+    @media print {
+      body { background: #fff !important; color: #000 !important; }
+      .topnav, .quicknav, .topnav-theme-toggle, .page-footer, .topnav-pdf-btn { display: none !important; }
+      .sec-card { break-inside: avoid; border: 1px solid #ccc !important; box-shadow: none !important; }
+    }
+  </style>
+  <link rel="stylesheet" href="../../../../../css/components/header.css">
+  <script type="module" src="../../../../../components/header.ts" defer></script>
+</head>
+<body>
+  <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
+
+
+  <!-- TOP NAV -->
+  <nav class="topnav">
+    <a href="../guidelines.html" class="topnav-back">
+      <i class="fa-solid fa-chevron-left"></i>
+      Kho Guidelines
+    </a>
+    <div class="topnav-divider"></div>
+    <div class="topnav-title">Hướng Dẫn Chẩn Đoán & Điều Trị Bệnh Thần Kinh Đái Tháo Đường (BYT 2025)</div>
+    <button class="topnav-theme-toggle topnav-pdf-btn" onclick="window.print()" title="Tải PDF / In bài viết" style="margin-left: auto; margin-right: 4px;">
+      <i class="fa-solid fa-file-pdf"></i>
+    </button>
+    <button class="topnav-theme-toggle" id="themeToggleBtn" aria-label="Đổi giao diện">
+      <i class="fa-solid fa-moon"></i>
+    </button>
+  </nav>
+
+  <!-- QUICK NAV BAR -->
+  <div class="quicknav">
+    <a href="#sec-1" class="quicknav-link active">1. Đại Cương & Cơ Chế Bệnh Sinh</a>
+    <a href="#sec-2" class="quicknav-link">2. Phân Loại & Bệnh Tự Chủ</a>
+    <a href="#sec-3" class="quicknav-link">3. Đa Dây Thần Kinh (DPN)</a>
+    <a href="#sec-4" class="quicknav-link">4. Dược Lý & Phác Đồ Giảm Đau</a>
+    <a href="#sec-5" class="quicknav-link">5. Kỹ Thuật Thăm Khám Lâm Sàng</a>
+    <a href="#sec-ref" class="quicknav-link">6. Tài Liệu Tham Khảo</a>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge"><i class="fa-solid fa-building-flag"></i> Bộ Y tế Việt Nam · QĐ 3510/QĐ-BYT (11/11/2025)</div>
+      <h1 class="hero-title">
+        <span>MOH Vietnam Guidelines on Diabetic Neuropathy (2025)</span>
+        Hướng Dẫn Chẩn Đoán & Điều Trị Bệnh Thần Kinh Đái Tháo Đường
+      </h1>
+      <p class="hero-subtitle">Tóm tắt toàn diện Hướng dẫn chính thức của Bộ Y tế Việt Nam năm 2025: Cơ chế ngộ độc glucose nội bào, Phân loại DPN & CAN, Phác đồ dược lý theo cơ chế (ALA, Benfotiamine), Phác đồ giảm đau 2 bước và Kỹ thuật khám lâm sàng tại giường.</p>
+      <div class="hero-meta">
+        <div class="hero-meta-item"><i class="fa-solid fa-calendar-check"></i> Ban hành: 11/11/2025</div>
+        <div class="hero-meta-item"><i class="fa-solid fa-building-flag"></i> Bộ Y tế Việt Nam</div>
+        <div class="hero-meta-item"><i class="fa-solid fa-stethoscope"></i> Chuyên khoa: NỘI TIẾT / NỘI THẦN KINH</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PILLARS STRIP -->
+  <div class="pillars">
+    <div class="pillars-inner">
+      <div class="pillar p1">
+        <div class="pillar-icon">🧬</div>
+        <div>
+          <div class="pillar-title">Cơ Chế Bệnh Sinh</div>
+          <div class="pillar-desc">Ngộ độc glucose nội bào kích hoạt 4 con đường độc hại (Polyol, Hexosamine, AGE, PKC).</div>
+        </div>
+      </div>
+      <div class="pillar p2">
+        <div class="pillar-icon">🩺</div>
+        <div>
+          <div class="pillar-title">Phân Loại Thể Bệnh</div>
+          <div class="pillar-desc">Đa dây thần kinh (DPN 70-80%), Thần kinh tự chủ (CAN tim mạch, tiêu hóa, tiết niệu).</div>
+        </div>
+      </div>
+      <div class="pillar p3">
+        <div class="pillar-icon">💊</div>
+        <div>
+          <div class="pillar-title">Dược Lý Cơ Chế</div>
+          <div class="pillar-desc">Alpha-lipoic acid (ALA 600mg) & Benfotiamine (300-450mg) bảo vệ sợi thần kinh từ sớm.</div>
+        </div>
+      </div>
+      <div class="pillar p4">
+        <div class="pillar-icon">⚡</div>
+        <div>
+          <div class="pillar-title">Giảm Đau 2 Bước</div>
+          <div class="pillar-desc">Bước 1 đơn trị liệu (Pregabalin / Duloxetine / Amitriptyline) -> Bước 2 phối hợp thuốc.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="page-content">
+    
+    <!-- SECTION 1 -->
+    <div class="sec-card" id="sec-1">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-stethoscope sec-hdr-icon"></i>
+        <h2 class="sec-title">1. Đại Cương, Dịch Tễ & Cơ Chế Bệnh Sinh Ngộ Độc Glucose</h2>
+      </div>
+      <div class="sec-body">
+        
+        <h3 class="sec-subtitle"><i class="fa-solid fa-angle-right"></i> Dịch Tễ Học Biến Chứng Thần Kinh Đái Tháo Đường</h3>
+        <div class="infobox info">
+          <span class="infobox-icon">ℹ️</span>
+          <div>
+            <strong>Số liệu Dịch tễ (Bộ Y tế 2025):</strong><br>
+            • Biến chứng thần kinh ảnh hưởng đến <strong>hơn 50%</strong> người bệnh ĐTĐ trong suốt cuộc đời.<br>
+            • Tại Việt Nam (2020), biến chứng thần kinh ngoại biên xuất hiện ở <strong>trên 38%</strong> người ĐTĐ tuýp 2.<br>
+            • <strong>Bệnh đa dây thần kinh (DPN)</strong> là thể phổ biến nhất (chiếm 70% – 80%).<br>
+            • <strong>Bệnh thần kinh tự chủ tim mạch (CAN):</strong> Xuất hiện ở 30% bệnh nhân ĐTĐ tuýp 1 sau 20 năm và tới 60% bệnh nhân ĐTĐ tuýp 2 sau 15 năm.
+          </div>
+        </div>
+
+        <h3 class="sec-subtitle"><i class="fa-solid fa-angle-right"></i> Chuỗi Phản Ứng Bệnh Sinh "Ngộ Độc Glucose" Nội Bào (Hình 1 & 2)</h3>
+        <div class="flowchart-card">
+          <div class="flowchart-card-hdr">
+            <div class="flowchart-card-hdr-title"><i class="fa-solid fa-diagram-project"></i> Sơ đồ 1: Cơ chế Bệnh sinh Biến chứng Thần kinh & Loét Bàn Chân ĐTĐ</div>
+            <span class="badge badge-blue">Pathophysiology Map</span>
+          </div>
+          <div class="flowchart-card-body">
+            <pre class="flowchart-box">
+                         <span class="fc-node">ĐÁÍ THÁO ĐƯỜNG (Tăng glucose mạn tính)</span>
+                                  <span class="fc-line">│</span>
+         <span class="fc-line">┌────────────────────────┼────────────────────────┬────────────────────────┐</span>
+         <span class="fc-line">▼</span>                        <span class="fc-line">▼</span>                        <span class="fc-line">▼</span>                        <span class="fc-line">▼</span>
+<span class="fc-node">Con đường polyol</span>       <span class="fc-node">Con đường hexosamine</span>     <span class="fc-node">Hình thành các AGE</span>     <span class="fc-node">Hoạt hóa Protein kinase C</span>
+         <span class="fc-line">│</span>                        <span class="fc-line">└────────────────────────┬────────────────────────┘</span>
+         <span class="fc-line">└────────────────────────┬────────────────────────┘</span>
+                                  <span class="fc-line">▼</span>
+         <span class="fc-line">┌────────────────────────┴────────────────────────┐</span>
+         <span class="fc-line">▼</span>                                                 <span class="fc-line">▼</span>
+<span class="fc-node fc-node-warn">Bệnh đa dây thần kinh ĐTĐ</span>                     <span class="fc-node fc-node-warn">Bệnh lý động mạch chi dưới do ĐTĐ</span>
+         <span class="fc-line">│</span>                                                 <span class="fc-line">│</span>
+ <span class="fc-line">┌───────┴──────────────────────┐</span>                  <span class="fc-line">┌───────┴──────────────────────┐</span>
+ <span class="fc-line">▼</span>                              <span class="fc-line">▼</span>                  <span class="fc-line">▼</span>                              <span class="fc-line">▼</span>
+Giảm biên độ khớp,            Giảm cảm giác      Giảm tiết mồ hôi,              Xơ vữa tiến triển nhanh,
+biến dạng bàn chân            bảo vệ             rối loạn vận mạch              bệnh mạch máu ngoại biên
+ <span class="fc-line">│</span>                              <span class="fc-line">│</span>                  <span class="fc-line">│</span>                              <span class="fc-line">│</span>
+ <span class="fc-line">└──────────────┬───────────────┴──────────────────┼───────────────┬──────────────┘</span>
+                <span class="fc-line">▼</span>                                                  <span class="fc-line">▼</span>
+      <span class="fc-node">Áp lực tỳ đè bất thường</span>                         <span class="fc-node">Giảm tưới máu mô da khô</span>
+      (dễ chấn thương)                                             <span class="fc-line">│</span>
+                <span class="fc-line">│</span>                                                  <span class="fc-line">▼</span>
+                <span class="fc-line">│</span>                                        <span class="fc-node fc-node-no">Yếu tố nhiễm trùng</span>
+                <span class="fc-line">│</span>                                                  <span class="fc-line">│</span>
+                <span class="fc-line">└────────────────────────┬─────────────────────────┘</span>
+                                         <span class="fc-line">▼</span>
+                               <span class="fc-node fc-node-no"><i class="fa-solid fa-triangle-exclamation"></i> LOÉT BÀN CHÂN DO ĐÁI THÁO ĐƯỜNG</span></pre>
+          </div>
+        </div>
+        <p><strong>Cơ chế chi tiết:</strong> Tế bào thần kinh không có khả năng tự điều hòa giảm nhập glucose. Glucose mạn tính tích tụ gây dư thừa chất nền ty thể -&gt; Tăng sinh gốc tự do (ROS) -&gt; Ức chế enzyme đường phân GAPDH -&gt; Kích hoạt 4 con đường độc hại (Polyol, Hexosamine, AGE, PKC) -&gt; Stress oxy hóa, viêm vasa nervorum và tổn thương sợi thần kinh.</p>
+
+      </div>
+    </div>
+
+    <!-- SECTION 2 -->
+    <div class="sec-card" id="sec-2">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-vial sec-hdr-icon"></i>
+        <h2 class="sec-title">2. Phân Loại Thể Bệnh & Bệnh Thần Kinh Tự Chủ ĐTĐ</h2>
+      </div>
+      <div class="sec-body">
+        
+        <h3 class="sec-subtitle"><i class="fa-solid fa-angle-right"></i> Phân Loại Các Thể Bệnh Thần Kinh ĐTĐ</h3>
+        <ul>
+          <li><strong>I. Bệnh lý thần kinh lan tỏa:</strong>
+            <ul>
+              <li>Bệnh đa dây thần kinh ĐTĐ (DPN - 50%, tổn thương phối hợp sợi nhỏ + sợi lớn).</li>
+              <li>Bệnh thần kinh tự chủ ĐTĐ (CAN - 20-40%: Tim mạch, tiêu hóa, tiết niệu sinh dục, tiết mồ hôi).</li>
+            </ul>
+          </li>
+          <li><strong>II. Bệnh lý đơn dây thần kinh (&lt; 1%):</strong> Dây thần kinh sọ (III, IV, VI, VII), dây giữa, dây trụ, dây mác.</li>
+          <li><strong>III. Bệnh lý rễ / đa rễ thần kinh (&lt; 1%):</strong> Đám rối thắt lưng cùng, teo cơ đùi một bên ở nam giới ĐTĐ2.</li>
+        </ul>
+
+        <h3 class="sec-subtitle"><i class="fa-solid fa-angle-right"></i> Bệnh Thần Kinh Tự Chủ Tim Mạch (CAN), Tiêu Hóa & Tiết Niệu</h3>
+        <div class="infobox warning">
+          <span class="infobox-icon">⚠️</span>
+          <div>
+            <strong>Tầm soát & Xử trí Bệnh Thần kinh Tự chủ:</strong>
+            <ul>
+              <li><strong>Tim mạch (CAN):</strong> Tầm soát nhịp tim nhanh lúc nghỉ (&gt; 100 bpm) và hạ huyết áp tư thế (HATT giảm &gt; 20 mmHg hoặc HATTr &gt; 10 mmHg). Khởi trị <strong>Fludrocortisone liều thấp</strong> bù thể tích + <strong>Alpha-lipoic acid (ALA)</strong> cải thiện HRV.</li>
+              <li><strong>Liệt dạ dày (Gastroparesis):</strong> Nghi ngờ khi đường huyết dao động thất thường, đầy bụng. Tiêu chuẩn vàng: Xạ hình làm rỗng dạ dày với thức ăn rắn 4h. Dùng <strong>Metoclopramide</strong> (&lt; 12 tuần) hoặc <strong>Domperidone</strong>; ngưng Opioids và GLP-1 RA.</li>
+              <li><strong>Tiết niệu sinh dục:</strong> Dùng thuốc <strong>PDE-5</strong> cho rối loạn cương dương. Khám cầu bàng quang nếu UTIs tái phát nhiều lần.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+
+    <!-- SECTION 3 -->
+    <div class="sec-card" id="sec-3">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-pills sec-hdr-icon"></i>
+        <h2 class="sec-title">3. Bệnh Đa Dây Thần Kinh Đái Tháo Đường (DPN)</h2>
+      </div>
+      <div class="sec-body">
+        
+        <h3 class="sec-subtitle"><i class="fa-solid fa-angle-right"></i> Quy Trình Tiếp Cận & Chẩn Đoán DPN (Hình 4)</h3>
+        <div class="flowchart-card">
+          <div class="flowchart-card-hdr">
+            <div class="flowchart-card-hdr-title"><i class="fa-solid fa-diagram-project"></i> Sơ đồ 4: Quy trình Tiếp cận & Chẩn đoán Bệnh Đa Dây Thần Kinh ĐTĐ (DPN)</div>
+            <span class="badge badge-blue">Clinical Diagnostic Algorithm</span>
+          </div>
+          <div class="flowchart-card-body">
+            <pre class="flowchart-box">
+                    <span class="fc-node">1. BỆNH SỬ NGƯỜI BỆNH ĐTĐ</span>
+         • ĐTĐ típ 2: Mới chẩn đoán
+         • ĐTĐ típ 1: 5 năm sau khi chẩn đoán
+                                <span class="fc-line">│</span>
+                                <span class="fc-line">▼</span>
+                   <span class="fc-node">2. ĐÁNH GIÁ TRIỆU CHỨNG</span>
+         • Đau thần kinh (bỏng, nhức nhói, điện giật, tăng về đêm).
+         • Tê bì, dị cảm, mất thăng bằng.
+                                <span class="fc-line">│</span>
+                                <span class="fc-line">▼</span>
+                <span class="fc-node">3. ĐÁNH GIÁ DẤU HIỆU LÂM SÀNG</span>
+         (Monofilament 10-g, Sờ nông Ipswich, Âm thoa 128-Hz,
+          Búa phản xạ gót, Kim châm, Tip-therm)
+                                <span class="fc-line">│</span>
+                                <span class="fc-line">▼</span>
+         <span class="fc-node fc-node-warn">Triệu chứng đối xứng ngọn chi "mang găng mang vớ"</span>
+                                <span class="fc-line">│</span>
+                <span class="fc-line">┌───────────────┴───────────────┐</span>
+                <span class="fc-line">▼ (Có)                          ▼ (Không)</span>
+     <span class="fc-node fc-node-yes"><i class="fa-solid fa-check"></i> Chẩn đoán xác định DPN</span>           <span class="fc-node">Cận lâm sàng chuyên sâu</span>
+                                         (Đo điện cơ / Sinh thiết da)
+                                                 <span class="fc-line">│</span>
+                                         <span class="fc-line">┌───────┴───────┐</span>
+                                         <span class="fc-line">▼ (Có tổn thương)▼ (Không)</span>
+                              <span class="fc-node fc-node-yes"><i class="fa-solid fa-check"></i> Xác định DPN</span>   <span class="fc-node fc-node-no">Bệnh thần kinh khác</span></pre>
+          </div>
+        </div>
+
+        <h3 class="sec-subtitle"><i class="fa-solid fa-angle-right"></i> Đặc Điểm Triệu Chứng Sợi Lớn vs Sợi Nhỏ (Hình 3)</h3>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Loại sợi thần kinh</th>
+                <th>Cảm giác & Chức năng phụ trách</th>
+                <th>Triệu chứng khi tổn thương</th>
+                <th>Dụng cụ thăm khám</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Sợi Lớn (Aα, Aα/β)</strong><br><span class="rx-tag highlight">Có Myelin</span></td>
+                <td>Kiểm soát cơ, cảm giác sờ nông, áp lực, rung động sâu, bản thể.</td>
+                <td>Tê bì, dị cảm (kiến bò, châm chích), giảm phản xạ gót, mất thăng bằng, teo cơ gian cốt.</td>
+                <td>Monofilament 10-g, Sờ nông Ipswich, Âm thoa 128-Hz, Búa phản xạ.</td>
+              </tr>
+              <tr>
+                <td><strong>Sợi Nhỏ (Aδ, C)</strong><br><span class="rx-tag alert">Myelin mỏng / Không</span></td>
+                <td>Cảm giác đau bảo vệ, cảm giác nhiệt độ nóng / lạnh.</td>
+                <td>Đau thần kinh kiểu bỏng rát, điện giật, nhức nhói, loạn cảm đau khi chạm chăn màn. Mất cảm giác đau gây loét.</td>
+                <td>Nghiệm pháp Kim châm, Dụng cụ nhiệt Tip-therm.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SECTION 4 -->
+    <div class="sec-card" id="sec-4">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-heart-pulse sec-hdr-icon"></i>
+        <h2 class="sec-title">4. Phác Đồ Dược Lý Theo Cơ Chế Bệnh Sinh & Giảm Đau 2 Bước</h2>
+      </div>
+      <div class="sec-body">
+        
+        <h3 class="sec-subtitle"><i class="fa-solid fa-angle-right"></i> Thuốc Điều Trị Theo Cơ Chế Bệnh Sinh (Hình 5)</h3>
+        <p>Dùng sớm cho cả thể không đau hoặc thể có đau phối hợp cùng thuốc giảm đau:</p>
+        <div class="infobox success">
+          <span class="infobox-icon">✅</span>
+          <div>
+            <strong>Thuốc Điều Trị Theo Cơ Chế Bệnh Sinh:</strong><br>
+            • <strong>Alpha-Lipoic Acid (ALA / Thioctic Acid):</strong> Chất chống oxy hóa mạnh dọn dẹp gốc tự do ROS. Liều dùng: <span class="rx-tag highlight">600 mg/ngày, uống trước ăn sáng 30 phút</span>. Dạng tiêm truyền tĩnh mạch 600 mg/ngày từ 5 ngày đến 2-4 tuần nếu cần tác dụng nhanh. Nghiên cứu NATHAN 1 chứng minh hiệu quả duy trì 4 năm.<br>
+            • <strong>Benfotiamine:</strong> Tiền chất Vitamin B1 tan trong mỡ (hấp thu gấp 50 lần B1). Liều dùng: <span class="rx-tag highlight">300 – 450 mg/ngày</span> chia 2–3 lần trong 4–8 tuần. Tác động chuyển dịch các sản phẩm đường phân độc hại sang chu trình pentose phosphate.
+          </div>
+        </div>
+
+        <h3 class="sec-subtitle"><i class="fa-solid fa-angle-right"></i> Lưu Đồ Điều Trị Đau Thần Kinh ĐTĐ 2 Bước (Hình 6)</h3>
+        <pre class="flowchart-box">
+     [ CHẨN ĐOÁN LÂM SÀNG BỆNH ĐA DÂY THẦN KINH ĐTĐ CÓ ĐAU ]
+                                │
+                                ▼
+           [ Đánh giá chống chỉ định và bệnh đi kèm ]
+                                │
+                                ▼
+     ┌─────────────────────────────────────────────────────────┐
+     │ BƯỚC 1: LIỆU PHÁP ĐƠN TRỊ LIỆU                          │
+     │ Khởi trị bằng 1 trong 3 nhóm thuốc:                     │
+     │ - Gabapentinoid (pregabalin / gabapentin)               │
+     │ - SNRI (duloxetin / venlafaxin)                         │
+     │ - TCA (amitriptylin)                                    │
+     └─────────────────────────┬───────────────────────────────┘
+                               │ Tăng đến liều dung nạp tối đa
+                               ▼
+               ┌───────────────┴───────────────┐
+               ▼ (Nếu chỉ giảm đau một phần)    ▼ (Nếu không đáp ứng/TDP nặng)
+       [ BƯỚC 2: PHỐI HỢP THUỐC ]     [ ĐỔI SANG ĐƠN TRỊ LIỆU KHÁC ]
+     - Phối hợp thêm thuốc thứ 2      - Chuyển sang nhóm còn lại Bước 1
+                               │
+                               ▼ (Nếu kháng trị hoàn toàn &gt; 12 tuần)
+                [ KÍCH THÍCH TỦY SỐNG ] (Xâm lấn)
+        </pre>
+
+        <h3 class="sec-subtitle"><i class="fa-solid fa-angle-right"></i> Chi Tiết Thuốc Giảm Đau Thần Kinh Bước 1</h3>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Nhóm thuốc</th>
+                <th>Tên thuốc & Liều khuyến cáo</th>
+                <th>Chống chỉ định & Thận trọng đặc biệt</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Gabapentinoids</strong></td>
+                <td>
+                  • <strong>Pregabalin:</strong> Khởi đầu 150 mg/ngày -&gt; duy trì 300 mg/ngày.<br>
+                  • <strong>Gabapentin:</strong> 300 mg -&gt; duy trì 1200 - 3000 mg/ngày (max 3600 mg).
+                </td>
+                <td>Hiệu chỉnh liều nghiêm ngặt theo eGFR ở bệnh nhân suy thận (Pregabalin giảm liều khi eGFR &lt; 60). Tác dụng phụ: ngủ gà, chóng mặt, phù ngoại vi.</td>
+              </tr>
+              <tr>
+                <td><strong>SNRIs</strong></td>
+                <td>
+                  • <strong>Duloxetine:</strong> Khuyến cáo duy nhất <span class="rx-tag highlight">60 mg, 1 lần/ngày</span>.<br>
+                  • <strong>Venlafaxine XR:</strong> 75 - 225 mg/ngày.
+                </td>
+                <td>Chống chỉ định Duloxetine khi eGFR &lt; 30 mL/phút hoặc suy gan. Chống chỉ định Venlafaxine khi tăng HA chưa kiểm soát.</td>
+              </tr>
+              <tr>
+                <td><strong>TCAs</strong></td>
+                <td>
+                  • <strong>Amitriptyline:</strong> Khởi đầu 12.5 - 25 mg uống buổi tối -&gt; duy trì 25 - 75 mg/ngày.
+                </td>
+                <td>Thận trọng tác dụng kháng cholinergic mạnh (khô miệng, táo bón, bí tiểu). Tránh dùng ở bệnh nhân CAN hoặc bàng quang thần kinh.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="infobox danger">
+          <span class="infobox-icon">🚫</span>
+          <div>
+            <strong>Cảnh báo an toàn:</strong> Không được ngưng thuốc giảm đau thần kinh đột ngột (phải giảm liều từ từ trong ít nhất 1 tuần). <strong>KHÔNG khuyến cáo sử dụng Opioids / Tramadol</strong> thường quy do nguy cơ gây nghiện vượt quá lợi ích.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SECTION 5 -->
+    <div class="sec-card" id="sec-5">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-triangle-exclamation sec-hdr-icon"></i>
+        <h2 class="sec-title">5. Hướng Dẫn Kỹ Thuật Thăm Khám Lâm Sàng (Phụ Lục)</h2>
+      </div>
+      <div class="sec-body">
+        
+        <h3 class="sec-subtitle"><i class="fa-solid fa-angle-right"></i> Phụ Lục 1: Nghiệm Pháp Monofilament 10-g</h3>
+        <ul>
+          <li><strong>Mục tiêu:</strong> Đánh giá cảm giác áp lực nông của sợi lớn để phát hiện sớm nguy cơ loét.</li>
+          <li><strong>Kỹ thuật:</strong> Đặt monofilament vuông góc mặt da gan bàn chân, ấn uốn cong nhẹ trong <strong>2 giây</strong> tại 3 vị trí (Đầu ngón 1, gốc ngón 3 & 5 ở cả hai bên chân).</li>
+          <li><strong>Kết luận:</strong> Mất cảm giác bảo vệ khi người bệnh trả lời sai <code>≥ 2/3 lần</code> thử nghiệm. Phải thay sợi đơn mới sau 70–90 bệnh nhân.</li>
+        </ul>
+
+        <h3 class="sec-subtitle"><i class="fa-solid fa-angle-right"></i> Phụ Lục 2 & 3: Sờ Nông Ipswich & Âm Thoa 128-Hz</h3>
+        <ul>
+          <li><strong>Sờ nông Ipswich (IpTT):</strong> Dùng đầu ngón tay trỏ chạm nhẹ tĩnh 1-2 giây vào 6 đầu ngón chân (Ngón 1, 3, 5 hai bên). Mất cảm giác bảo vệ khi không nhận biết <code>≥ 2/6 điểm</code>.</li>
+          <li><strong>Âm thoa 128-Hz:</strong> Gõ và đặt phần đế vuông góc lên lồi xương khớp ngón xa ngón cái để khám cảm giác rung sâu. Mất cảm giác rung khi trả lời sai <code>≥ 2/3 lần</code>.</li>
+        </ul>
+
+        <h3 class="sec-subtitle"><i class="fa-solid fa-angle-right"></i> Phụ Lục 5 & 6: Kim Châm & Thiết Bị Nhiệt Tip-Therm</h3>
+        <ul>
+          <li><strong>Kim châm:</strong> Khám cảm giác nhói bảo vệ (sợi nhỏ A-delta/C) từ ngón chân di chuyển dần lên cẳng chân.</li>
+          <li><strong>Tip-therm:</strong> Phân biệt hai đầu kim loại (lạnh) và nhựa (ít lạnh) trên da mu ngón cái. Độ nhạy cực cao <strong>97.3%</strong> và độ đặc hiệu <strong>100%</strong>.</li>
+        </ul>
+
+      </div>
+    </div>
+
+    <!-- CITATION & SOURCE -->
+    <div class="sec-card" id="sec-ref">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-bookmark sec-hdr-icon"></i>
+        <h2 class="sec-title">6. Tài Liệu Tham Khảo Chuẩn AMA</h2>
+      </div>
+      <div class="sec-body">
+        <div class="citation-box">
+          1. Bộ Y tế Việt Nam. <em>Hướng dẫn chẩn đoán và điều trị bệnh thần kinh đái tháo đường</em>. Ban hành kèm theo Quyết định số 3510/QĐ-BYT ngày 11 tháng 11 năm 2025. Hà Nội, Việt Nam; 2025:1-35.
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PAGE FOOTER -->
+  <footer class="page-footer">
+    <p>© 2026 CliniPortal — Phân hệ Y học Chứng cứ (EBM). Bản quyền tóm tắt hướng dẫn y khoa chuẩn hóa.</p>
+  </footer>
+
+  <script>
+    // Theme Toggle with LocalStorage
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const htmlEl = document.documentElement;
+
+    const savedTheme = localStorage.getItem('cliniportal_ebm_theme');
+    if (savedTheme === 'dark' || savedTheme === 'light') {
+      htmlEl.setAttribute('data-theme', savedTheme);
+      if (themeToggleBtn) {
+        themeToggleBtn.innerHTML = savedTheme === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+      }
+    }
+
+    if (themeToggleBtn) {
+      themeToggleBtn.addEventListener('click', () => {
+        const currentTheme = htmlEl.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        htmlEl.setAttribute('data-theme', newTheme);
+        themeToggleBtn.innerHTML = newTheme === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+        localStorage.setItem('cliniportal_ebm_theme', newTheme);
+      });
+    }
+
+    // Quicknav Active Highlight with IntersectionObserver
+    const sections = document.querySelectorAll('.sec-card[id]');
+    const navLinks = document.querySelectorAll('.quicknav-link');
+
+    const navObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const currentId = entry.target.getAttribute('id');
+          navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + currentId) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    }, { rootMargin: '-10% 0px -70% 0px' });
+
+    sections.forEach(section => navObserver.observe(section));
+  </script>
+  <script type="module" src="../guideline-controller.ts"></script>
+</body>
+</html>

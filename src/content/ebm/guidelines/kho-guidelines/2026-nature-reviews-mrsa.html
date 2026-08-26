@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tóm tắt Nature Reviews Disease Primers 2026: Tổng quan toàn diện về Tụ cầu vàng kháng Methicillin (MRSA) — Dịch tễ học, cơ chế kháng thuốc sinh học phân tử, động học cư trú, sinh lý bệnh học xâm lấn sâu, chẩn đoán cận lâm sàng và phác đồ điều trị kháng sinh.">
+  <title>Nature Reviews 2026 – Staphylococcus aureus Kháng Methicillin (MRSA) – CliniPortal</title>
+
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #059669; --green-bg: #f0fdf4; --green-light: #a7f3d0;
+      --orange: #d97706; --orange-bg: #fffbeb; --orange-light: #fde68a;
+      --red: #dc2626; --red-bg: #fef2f2; --red-light: #fca5a5;
+      --blue: #2563eb; --blue-bg: #eff6ff; --blue-light: #bfdbfe;
+      --teal: #0d9488; --teal-bg: #f0fdfa; --teal-light: #99f6e4;
+      --purple: #7c3aed; --purple-bg: #faf5ff; --purple-light: #ddd6fe;
+      --amber: #ca8a04; --amber-bg: #fefce8; --amber-light: #fef08a;
+      --accent: #0f6fb4;
+      --accent-gradient: linear-gradient(135deg, #0c2d48 0%, #0f6fb4 45%, #0d9488 100%);
+      --bg: #f0f4f8; --surface: #ffffff; --surface-2: #f8fafc;
+      --border: #cbd5e1; --border-light: #e2e8f0;
+      --text: #0f172a; --text-muted: #475569; --text-faint: #94a3b8;
+      --radius: 16px; --tr: 220ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [data-theme="dark"] {
+      --bg: #0b1120; --surface: #131d31; --surface-2: #1a2744;
+      --border: #2e3f60; --border-light: #223250;
+      --text: #f8fafc; --text-muted: #94a3b8; --text-faint: #64748b;
+      --green-bg: rgba(5, 150, 105, 0.18); --green-light: rgba(167, 243, 208, 0.25);
+      --orange-bg: rgba(217, 119, 6, 0.18); --orange-light: rgba(253, 230, 138, 0.25);
+      --red-bg: rgba(220, 38, 38, 0.18); --red-light: rgba(252, 165, 165, 0.25);
+      --blue-bg: rgba(37, 99, 235, 0.18); --blue-light: rgba(191, 219, 254, 0.25);
+      --teal-bg: rgba(13, 148, 136, 0.18); --teal-light: rgba(153, 246, 228, 0.25);
+      --purple-bg: rgba(124, 58, 237, 0.18); --purple-light: rgba(221, 214, 254, 0.25);
+      --amber-bg: rgba(202, 138, 4, 0.18); --amber-light: rgba(254, 240, 138, 0.25);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; font-size: 15px; background: var(--bg); color: var(--text); line-height: 1.65; min-height: 100vh; }
+
+    @media print {
+      body { background: #fff !important; color: #000 !important; }
+      .topnav, .pillars-nav, .btn-row, #header-placeholder { display: none !important; }
+      .page-content { max-width: 100% !important; margin: 0 !important; padding: 0 !important; }
+      .sec-card { break-inside: avoid; border: 1px solid #ccc !important; box-shadow: none !important; }
+    }
+
+    /* TOP NAV */
+    .topnav { position: sticky; top: 0; z-index: 200; background: rgba(255,255,255,0.94); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 1rem; padding: 0 1.5rem; height: 56px; }
+    [data-theme="dark"] .topnav { background: rgba(11, 17, 32, 0.94); }
+    .topnav-back { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--accent); text-decoration: none; font-size: 0.82rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 8px; transition: background var(--tr); white-space: nowrap; }
+    .topnav-back:hover { background: var(--blue-bg); }
+    .topnav-divider { width: 1px; height: 18px; background: var(--border-light); flex-shrink: 0; }
+    .topnav-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .topnav-badges { margin-left: auto; display: flex; gap: 0.5rem; flex-shrink: 0; align-items: center; }
+    .badge { padding: 0.25rem 0.7rem; border-radius: 20px; font-size: 0.72rem; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; white-space: nowrap; display: inline-flex; align-items: center; gap: 0.3rem; }
+    .badge-purple { background: var(--purple-bg); color: #7c3aed; border: 1px solid var(--purple-light); }
+    .badge-teal { background: var(--teal-bg); color: #0d9488; border: 1px solid var(--teal-light); }
+    .badge-red { background: var(--red-bg); color: #dc2626; border: 1px solid var(--red-light); }
+    .badge-green { background: var(--green-bg); color: #059669; border: 1px solid var(--green-light); }
+
+    .topnav-theme-toggle { background: none; border: 1px solid var(--border-light); color: var(--text-muted); cursor: pointer; font-size: 0.95rem; width: 34px; height: 34px; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; transition: all var(--tr); }
+    .topnav-theme-toggle:hover { background: var(--surface-2); color: var(--text); }
+
+    /* HERO */
+    .hero { background: var(--accent-gradient); color: #fff; padding: 3.5rem 1.5rem 4.5rem; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 15% 60%, rgba(56,189,248,0.25) 0%, transparent 55%), radial-gradient(ellipse at 85% 20%, rgba(20,184,166,0.22) 0%, transparent 50%); }
+    .hero-inner { max-width: 1020px; margin: 0 auto; position: relative; z-index: 1; }
+    .hero-badge-strip { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin-bottom: 1.25rem; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.28); border-radius: 20px; padding: 0.35rem 0.95rem; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #7dd3fc; }
+    .hero-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(1.75rem, 4vw, 2.7rem); font-weight: 800; line-height: 1.18; letter-spacing: -0.03em; margin-bottom: 0.85rem; }
+    .hero-title span { display: block; background: linear-gradient(90deg, #7dd3fc, #6ee7b7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 0.65em; font-weight: 600; letter-spacing: 0; margin-bottom: 0.35rem; }
+    .hero-subtitle { font-size: 0.95rem; opacity: 0.92; max-width: 820px; margin-bottom: 1.8rem; line-height: 1.65; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 0.75rem 2rem; font-size: 0.82rem; opacity: 0.9; }
+    .hero-meta-item { display: flex; align-items: center; gap: 6px; }
+
+    /* PILLARS STICKY NAV STRIP */
+    .pillars-nav { position: sticky; top: 56px; z-index: 190; background: var(--surface); border-bottom: 1px solid var(--border-light); padding: 0.75rem 1.5rem; }
+    .pillars-nav-inner { max-width: 1020px; margin: 0 auto; display: flex; gap: 0.55rem; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .pillar-tab { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.45rem 0.85rem; border-radius: 10px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.78rem; font-weight: 700; color: var(--text-muted); border: 1px solid var(--border-light); background: var(--surface-2); text-decoration: none; white-space: nowrap; transition: all var(--tr); }
+    .pillar-tab:hover { border-color: var(--accent); color: var(--accent); background: var(--blue-bg); }
+    .pillar-tab.p-1 { border-left: 4px solid var(--blue); }
+    .pillar-tab.p-2 { border-left: 4px solid var(--purple); }
+    .pillar-tab.p-3 { border-left: 4px solid var(--teal); }
+    .pillar-tab.p-4 { border-left: 4px solid var(--red); }
+    .pillar-tab.p-5 { border-left: 4px solid var(--amber); }
+    .pillar-tab.p-6 { border-left: 4px solid var(--green); }
+
+    /* KPI STATS STRIP */
+    .stats-strip { background: var(--surface); border-bottom: 1px solid var(--border-light); padding: 1.5rem; }
+    .stats-grid { max-width: 1020px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+    .stat-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border-light);
+      border-radius: 14px;
+      padding: 1.25rem 1rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+      transition: transform var(--tr), box-shadow var(--tr);
+    }
+    .stat-card:hover { transform: translateY(-2px); box-shadow: 0 4px 14px rgba(0,0,0,0.06); }
+    .stat-val { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.35rem; font-weight: 800; color: var(--accent); line-height: 1.2; text-align: center; }
+    .stat-lbl { font-size: 0.76rem; color: var(--text-muted); font-weight: 600; line-height: 1.45; text-align: center; }
+
+    /* PAGE CONTENT */
+    .page-content { max-width: 1020px; margin: 0 auto; padding: 2.25rem 1.5rem 4rem; display: flex; flex-direction: column; gap: 2.25rem; }
+
+    /* SECTION CARDS */
+    .sec-card { background: var(--surface); border: 1px solid var(--border-light); border-radius: var(--radius); overflow: hidden; scroll-margin-top: 120px; }
+    .sec-hdr { padding: 1.15rem 1.5rem; border-bottom: 1px solid var(--border-light); background: var(--surface-2); display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; }
+    .sec-hdr-left { display: flex; align-items: center; gap: 0.75rem; }
+    .sec-hdr-icon { width: 38px; height: 38px; border-radius: 10px; background: var(--blue-bg); color: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 1.15rem; flex-shrink: 0; }
+    .sec-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.05rem; font-weight: 800; color: var(--text); }
+    .sec-subtitle-text { font-size: 0.78rem; color: var(--text-muted); font-weight: 500; margin-top: 0.15rem; }
+    .sec-body { padding: 1.6rem; }
+    .sec-subtitle { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.85rem; color: var(--text-muted); margin: 1.4rem 0 0.85rem; text-transform: uppercase; letter-spacing: 0.04em; }
+    .sec-subtitle:first-child { margin-top: 0; }
+
+    /* GRID LAYOUTS */
+    .grid-2col { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 1.25rem; }
+    .grid-3col { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 1rem; }
+    .grid-4col { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(210px, 100%), 1fr)); gap: 1rem; }
+
+    /* BENTO & CLINICAL CARDS */
+    .clin-card { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.25rem; position: relative; overflow: hidden; transition: box-shadow var(--tr); }
+    .clin-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.06); }
+    .clin-card-accent { position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+    .clin-card-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 0.92rem; color: var(--text); margin-bottom: 0.6rem; display: flex; align-items: center; gap: 0.5rem; }
+    .clin-card-body { font-size: 0.84rem; color: var(--text-muted); line-height: 1.6; }
+    .clin-card-body ul { padding-left: 1.2rem; margin-top: 0.4rem; }
+    .clin-card-body li { margin-bottom: 0.35rem; }
+
+    /* INFO BOXES */
+    .infobox { display: flex; align-items: flex-start; gap: 0.85rem; padding: 1.1rem 1.25rem; border-radius: 12px; margin-bottom: 1.25rem; font-size: 0.85rem; line-height: 1.65; }
+    .infobox:last-child { margin-bottom: 0; }
+    .infobox-icon { font-size: 1.35rem; flex-shrink: 0; line-height: 1.3; }
+    .infobox.danger { background: var(--red-bg); border: 1px solid var(--red-light); border-left: 4px solid var(--red); }
+    .infobox.success { background: var(--green-bg); border: 1px solid var(--green-light); border-left: 4px solid var(--green); }
+    .infobox.warning { background: var(--orange-bg); border: 1px solid var(--orange-light); border-left: 4px solid var(--orange); }
+    .infobox.info { background: var(--blue-bg); border: 1px solid var(--blue-light); border-left: 4px solid var(--blue); }
+    .infobox.purple { background: var(--purple-bg); border: 1px solid var(--purple-light); border-left: 4px solid var(--purple); }
+    .infobox.teal { background: var(--teal-bg); border: 1px solid var(--teal-light); border-left: 4px solid var(--teal); }
+    .infobox-title { display: block; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.9rem; font-weight: 700; margin-bottom: 0.35rem; color: var(--text); }
+
+    /* TABLE DESIGN */
+    .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 12px; border: 1px solid var(--border-light); margin-bottom: 1.25rem; }
+    .custom-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; min-width: 720px; }
+    .custom-table thead th { padding: 0.8rem 0.95rem; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; background: var(--surface-2); border-bottom: 2px solid var(--border-light); color: var(--text); text-align: left; }
+    .custom-table td { padding: 0.85rem 0.95rem; border-bottom: 1px solid var(--border-light); vertical-align: top; line-height: 1.55; }
+    .custom-table tbody tr:hover td { background: var(--surface-2); }
+
+    /* BADGES & TAGS */
+    .rx-tag { display: inline-block; font-size: 0.72rem; font-family: 'JetBrains Mono', monospace; padding: 0.2rem 0.55rem; border-radius: 6px; margin: 0.15rem 0.15rem 0.15rem 0; font-weight: 600; }
+    .rx-tag.preferred { background: var(--green-bg); color: #065f46; border: 1px solid var(--green-light); font-weight: 700; }
+    .rx-tag.alt { background: var(--blue-bg); color: #1e40af; border: 1px solid var(--blue-light); }
+    .rx-tag.warning { background: var(--orange-bg); color: #92400e; border: 1px solid var(--orange-light); }
+    .rx-tag.danger { background: var(--red-bg); color: #991b1b; border: 1px solid var(--red-light); font-weight: 700; }
+    .rx-tag.salvage { background: var(--purple-bg); color: #6b21a8; border: 1px solid var(--purple-light); }
+
+    /* EDITORIAL DIAGRAM CONTAINER */
+    .diagram-container { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.25rem; margin: 1.25rem 0; overflow-x: auto; text-align: center; }
+    .diagram-caption { font-size: 0.8rem; color: var(--text-muted); font-weight: 600; margin-top: 0.75rem; text-align: center; }
+
+    /* CITATION & ACTION BUTTONS */
+    .citation-box { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 12px; padding: 1.25rem; font-size: 0.83rem; color: var(--text-muted); line-height: 1.75; font-style: italic; }
+    .btn-row { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.25rem; }
+    .btn { display: inline-flex; align-items: center; gap: 6px; padding: 0.55rem 1.1rem; border-radius: 10px; border: 1.5px solid var(--border-light); background: var(--surface); color: var(--text-muted); font-size: 0.82rem; font-weight: 600; cursor: pointer; text-decoration: none; transition: all var(--tr); }
+    .btn:hover { border-color: var(--accent); color: var(--accent); background: var(--blue-bg); }
+    .btn-primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+    /* DOSING LIST */
+    .dosing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; }
+    .dosing-card { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 12px; padding: 1.1rem; }
+    .dosing-drug { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 0.92rem; color: var(--accent); margin-bottom: 0.45rem; display: flex; justify-content: space-between; align-items: center; }
+    .dosing-detail { font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: var(--text); line-height: 1.55; background: var(--surface); padding: 0.75rem; border-radius: 8px; border: 1px solid var(--border-light); }
+
+    /* SCIENTIFIC FIGURE CARDS */
+    .fig-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border-light);
+      border-radius: 14px;
+      padding: 1.25rem;
+      margin: 1.5rem 0;
+      text-align: center;
+      transition: transform var(--tr), box-shadow var(--tr);
+    }
+    .fig-card:hover {
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    }
+    .fig-img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      border: 1px solid var(--border-light);
+      background: #ffffff;
+      padding: 8px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+      display: block;
+      margin: 0 auto;
+    }
+    [data-theme="dark"] .fig-img {
+      background: #f8fafc;
+      border-color: #334155;
+    }
+    .fig-caption {
+      margin-top: 0.95rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      text-align: left;
+      border-top: 1px dashed var(--border-light);
+      padding-top: 0.8rem;
+    }
+    .fig-caption strong {
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    @media (max-width: 768px) {
+      .page-content { padding: 1.25rem 1rem; }
+      .sec-body { padding: 1rem; }
+      .grid-2col, .grid-3col, .grid-4col, .dosing-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+  <link rel="stylesheet" href="../../../../../css/components/header.css">
+  <script type="module" src="../../../../../components/header.ts" defer></script>
+</head>
+<body>
+  <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
+
+  <!-- TOP NAV -->
+  <nav class="topnav">
+    <a href="../guidelines.html" class="topnav-back">
+      <i class="fa-solid fa-arrow-left"></i>
+      Kho Guidelines
+    </a>
+    <div class="topnav-divider"></div>
+    <div class="topnav-title">Nature Reviews Disease Primers 2026 — MRSA Comprehensive Primer</div>
+    <div class="topnav-badges">
+      <span class="badge badge-purple"><i class="fa-solid fa-flask"></i> Nature Reviews 2026</span>
+      <span class="badge badge-teal"><i class="fa-solid fa-star"></i> Q1 (IF: 82.9)</span>
+      <button class="topnav-theme-toggle" onclick="window.print()" title="Tải PDF / In bài viết">
+        <i class="fa-solid fa-file-pdf"></i>
+      </button>
+      <button class="topnav-theme-toggle" id="themeToggleBtn" aria-label="Đổi giao diện">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge-strip">
+        <div class="hero-badge"><i class="fa-solid fa-microscope"></i> Nature Reviews Disease Primers 2026</div>
+        <div class="hero-badge" style="color: #a7f3d0; border-color: rgba(167,243,208,0.3);"><i class="fa-solid fa-shield-virus"></i> Bệnh Truyền Nhiễm &amp; Hồi Sức Cấp Cứu</div>
+      </div>
+      <h1 class="hero-title">
+        <span>METHICILLIN-RESISTANT STAPHYLOCOCCUS AUREUS (MRSA)</span>
+        Tụ Cầu Vàng Kháng Methicillin: Dịch Tễ Học, Cơ Chế Kháng Thuốc, Động Học Cư Trú, Sinh Lý Bệnh Học Xâm Lấn &amp; Phác Đồ Điều Trị
+      </h1>
+      <p class="hero-subtitle">
+        Tổng quan chuyên sâu toàn diện về MRSA từ Nature Reviews 2026: Động học tiến hóa dịch tễ toàn cầu, đảo di truyền SCCmec mã hóa PBP2a, các biến thể BORSA / MOD-SA / OS-MRSA, cơ chế né tránh miễn dịch Trojan Horse, biofilm thiết bị cấy ghép, quy trình chẩn đoán vi sinh hiện đại và hướng dẫn sử dụng kháng sinh tối ưu hóa AUC/MIC.
+      </p>
+      <div class="hero-meta">
+        <div class="hero-meta-item"><i class="fa-solid fa-user-doctor"></i> <strong>Tác giả:</strong> Parsons JB, Westgeest AC, Conlon BP, et al.</div>
+        <div class="hero-meta-item"><i class="fa-solid fa-book-journal-whills"></i> <strong>Tạp chí:</strong> Nat Rev Dis Primers 2026;12:53</div>
+        <div class="hero-meta-item"><i class="fa-solid fa-link"></i> <strong>DOI:</strong> 10.1038/s41572-026-00729-3</div>
+        <div class="hero-meta-item"><i class="fa-solid fa-calendar-check"></i> <strong>Năm:</strong> 2026</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PILLARS STICKY NAV BAR -->
+  <div class="pillars-nav">
+    <div class="pillars-nav-inner">
+      <a href="#sec-epidemiology" class="pillar-tab p-1">1. Đại Cương &amp; Dịch Tễ</a>
+      <a href="#sec-resistance" class="pillar-tab p-2">2. Cơ Chế Kháng Thuốc</a>
+      <a href="#sec-colonization" class="pillar-tab p-3">3. Động Học Cư Trú</a>
+      <a href="#sec-pathophysiology" class="pillar-tab p-4">4. Sinh Lý Bệnh Xâm Lấn</a>
+      <a href="#sec-diagnosis" class="pillar-tab p-5">5. Quy Trình Chẩn Đoán</a>
+      <a href="#sec-treatment" class="pillar-tab p-6">6. Phác Đồ Điều Trị &amp; Phòng Ngừa</a>
+      <a href="#sec-algorithm" class="pillar-tab p-1" style="border-left-color: var(--accent);"><i class="fa-solid fa-diagram-project"></i> Lưu Đồ Xử Trí</a>
+    </div>
+  </div>
+
+  <!-- KPI STATS STRIP -->
+  <div class="stats-strip">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-val">&gt;130.000</div>
+        <div class="stat-lbl">Ca tử vong toàn cầu / năm do nhiễm khuẩn MRSA (năm 2021)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">74% Giảm</div>
+        <div class="stat-lbl">Tỷ lệ nhiễm khuẩn huyết MRSA tại Mỹ (2005–2016) nhờ kiểm soát dòng USA100</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">400 – 600</div>
+        <div class="stat-lbl">Mục tiêu AUC/MIC chuẩn của Vancomycin nhằm tối ưu diệt khuẩn &amp; bảo vệ thận</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">1 Giờ &rarr; 1,7 Ngày</div>
+        <div class="stat-lbl">Real-time PCR mecA/mecC rút ngắn 1,7 ngày tiếp cận kháng sinh thích hợp</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE CONTENT -->
+  <div class="page-content">
+
+    <!-- SEC 1: ĐẠI CƯƠNG & DỊCH TỄ HỌC TOÀN CẦU -->
+    <div class="sec-card" id="sec-epidemiology">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <div class="sec-hdr-icon"><i class="fa-solid fa-earth-americas"></i></div>
+          <div>
+            <div class="sec-title">1. Đại Cương Lâm Sàng, Gánh Nặng Bệnh Tật &amp; Dịch Tễ Học Toàn Cầu</div>
+            <div class="sec-subtitle-text">Sự chuyển dịch từ HA-MRSA sang CA-MRSA và biến động dịch tễ các dòng khuẩn</div>
+          </div>
+        </div>
+        <span class="badge badge-purple">Dịch tễ học 2026</span>
+      </div>
+      <div class="sec-body">
+        <div class="grid-2col">
+          <div class="clin-card">
+            <div class="clin-card-accent" style="background: var(--blue);"></div>
+            <div class="clin-card-title"><i class="fa-solid fa-virus"></i> Bản Chất &amp; Phổ Bệnh Lý Lâm Sàng</div>
+            <div class="clin-card-body">
+              <p><strong><em>Staphylococcus aureus</em> kháng Methicillin (MRSA)</strong> là nguyên nhân hàng đầu gây nhiễm trùng kháng thuốc đe dọa tính mạng trên toàn cầu, chịu trách nhiệm cho <strong>&gt;130.000 ca tử vong</strong> vào năm 2021.</p>
+              <ul>
+                <li><strong>Nhiễm trùng da và mô mềm (SSTIs):</strong> Từ chốc lở, nhọt, áp-xe nông đến viêm mô tế bào hoại tử lan tỏa.</li>
+                <li><strong>Nhiễm trùng xâm lấn nặng:</strong> Nhiễm khuẩn huyết (BSI), viêm phổi hoại tử cộng đồng/thở máy (PNA), viêm xương tủy (osteomyelitis), viêm khớp nhiễm khuẩn, viêm nội tâm mạc nhiễm khuẩn (IE) và nhiễm trùng thiết bị cấy ghép nhân tạo.</li>
+                <li><strong>Khả năng chuyển đổi:</strong> Vi khuẩn chuyển nhanh từ vi sinh vật hội sinh trên da/niêm mạc sang tác nhân xâm lấn hủy hoại tế bào nhờ hệ thống độc lực bám dính, né tránh miễn dịch và tiết độc tố ly giải mô.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="clin-card">
+            <div class="clin-card-accent" style="background: var(--purple);"></div>
+            <div class="clin-card-title"><i class="fa-solid fa-dna"></i> Tiến Trình Chuyển Dịch Dòng Khuẩn</div>
+            <div class="clin-card-body">
+              <p><strong>Sự hòa lẫn ranh giới giữa CA-MRSA và HA-MRSA:</strong></p>
+              <ul>
+                <li><strong>Trước thập kỷ 1990:</strong> MRSA chủ yếu là nhiễm trùng bệnh viện (HA-MRSA, dòng USA100 kinh điển).</li>
+                <li><strong>Thập kỷ 1990:</strong> Bùng phát dòng mắc phải tại cộng đồng (CA-MRSA). Dòng <strong>USA400</strong> xuất hiện đầu tiên tại Bắc Mỹ, sau đó bị thay thế bởi <strong>USA300</strong> có độc lực vượt trội.</li>
+                <li><strong>Hiện tại:</strong> Dòng USA300 đã xâm nhập ngược trở lại vào môi trường bệnh viện, làm mờ đi ranh giới phân định nguồn gốc lây truyền.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="sec-subtitle">Phân Bố Đặc Trưng Theo Vùng Miền Toàn Cầu</div>
+        <div class="grid-3col">
+          <div class="clin-card">
+            <div class="clin-card-accent" style="background: var(--blue);"></div>
+            <div class="clin-card-title"><i class="fa-solid fa-flag-usa"></i> Bắc &amp; Nam Mỹ</div>
+            <div class="clin-card-body">
+              <ul>
+                <li><strong>Hoa Kỳ:</strong> Tỷ lệ nhiễm khuẩn huyết MRSA giảm <strong>74% (2005–2016)</strong> nhờ kiểm soát dòng USA100, trong khi MSSA ổn định. USA300 vẫn chiếm ưu thế.</li>
+                <li><strong>Nam Mỹ:</strong> Dòng <strong>USA300-LV</strong> (biến thể Mỹ Latinh) chiếm ưu thế phía bắc; dòng ST5 ở Peru và ST105-II tăng mạnh ở Brazil.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="clin-card">
+            <div class="clin-card-accent" style="background: var(--teal);"></div>
+            <div class="clin-card-title"><i class="fa-solid fa-earth-europe"></i> Châu Âu</div>
+            <div class="clin-card-body">
+              <ul>
+                <li>Tỷ lệ kháng Methicillin dao động từ <strong>&lt;5% ở Bắc Âu / Hà Lan</strong> (nhờ chiến lược "Search and Destroy") đến <strong>&gt;45% ở Nam Âu</strong>.</li>
+                <li>Dòng HA-MRSA chiếm ưu thế là <strong>EMRSA-15 (ST22-IV)</strong>. Dòng liên quan vật nuôi <strong>LA-ST398</strong> đã tiến hóa lây truyền từ người sang người.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="clin-card">
+            <div class="clin-card-accent" style="background: var(--amber);"></div>
+            <div class="clin-card-title"><i class="fa-solid fa-earth-asia"></i> Châu Á &amp; Châu Phi</div>
+            <div class="clin-card-body">
+              <ul>
+                <li><strong>Châu Á:</strong> 9% nhân viên y tế Nam Á mang trùng. Giảm mạnh dòng HA-ST239 tại Nhật Bản và Trung Quốc, xuất hiện dòng ST398 thích ứng ở người.</li>
+                <li><strong>Châu Phi:</strong> Tỷ lệ lưu hành MRSA trong bệnh phẩm đạt trung bình <strong>42%</strong>, với dòng ST-88 ("African clone") phân bố rộng khắp.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="sec-subtitle">Phân Tầng Yếu Tố Nguy Cơ Mắc MRSA</div>
+        <div class="grid-2col">
+          <div class="infobox info">
+            <div class="infobox-icon"><i class="fa-solid fa-users"></i></div>
+            <div>
+              <span class="infobox-title">Yếu Tố Nguy Cơ Nhiễm Trùng Cộng Đồng (CA-MRSA)</span>
+              Nam giới, tuổi &gt;65, sử dụng ma túy tiêm chích, sinh sống trong điều kiện đông đúc (trại lính, nhà tù), vận động viên thể thao tiếp xúc trực tiếp da-da, người nhiễm HIV, người vô gia cư/tị nạn, kinh tế xã hội thấp.
+            </div>
+          </div>
+          <div class="infobox warning">
+            <div class="infobox-icon"><i class="fa-solid fa-hospital-user"></i></div>
+            <div>
+              <span class="infobox-title">Yếu Tố Nguy Cơ Nhiễm Trùng Bệnh Viện (HA-MRSA)</span>
+              Tiền sử cư trú MRSA, đặt catheter tĩnh mạch trung tâm, suy thận mạn/chạy thận nhân tạo, nằm viện điều trị kéo dài, sống tại viện dưỡng lão, suy giảm miễn dịch (ung thư, ghép tạng, corticoid) và mang thiết bị cấy ghép nhân tạo.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEC 2: CƠ CHẾ KHÁNG THUỐC SINH HỌC PHÂN TỬ -->
+    <div class="sec-card" id="sec-resistance">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <div class="sec-hdr-icon"><i class="fa-solid fa-shield-halved"></i></div>
+          <div>
+            <div class="sec-title">2. Cơ Chế Sinh Học Phân Tử Đề Kháng Methicillin &amp; Các Thể Kiểu Hình Đặc Biệt</div>
+            <div class="sec-subtitle-text">Đảo di truyền SCCmec, protein biến đổi PBP2a, và các biến thể BORSA, MOD-SA, OS-MRSA</div>
+          </div>
+        </div>
+        <span class="badge badge-red">Cơ chế phân tử</span>
+      </div>
+      <div class="sec-body">
+        <div class="grid-3col">
+          <div class="clin-card">
+            <div class="clin-card-accent" style="background: var(--red);"></div>
+            <div class="clin-card-title"><i class="fa-solid fa-dna"></i> Đảo Di Truyền SCCmec &amp; Gen <em>mec</em></div>
+            <div class="clin-card-body">
+              <ul>
+                <li><strong>Gen <em>mecA</em>:</strong> Thu nhận qua đảo di truyền SCCmec từ tụ cầu coagulase âm tính (những năm 1940), mã hóa protein <strong>PBP2a</strong> có ái lực cực thấp với &beta;-lactam.</li>
+                <li><strong>Gen <em>mecC</em>:</strong> Chỉ có <strong>69% độ đồng dạng</strong> với <em>mecA</em>, <strong>không thể phát hiện bằng PCR <em>mecA</em> thông thường</strong>.</li>
+                <li><strong>Gen <em>mecB</em>:</strong> Nằm trên plasmid thu nhận từ <em>Macrococcus</em>, rất hiếm gặp lâm sàng.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="clin-card">
+            <div class="clin-card-accent" style="background: var(--orange);"></div>
+            <div class="clin-card-title"><i class="fa-solid fa-triangle-exclamation"></i> Thể Kháng Không Phụ Thuộc <em>mec</em></div>
+            <div class="clin-card-body">
+              <ul>
+                <li><strong>BORSA (Borderline oxacillin-resistant <em>S. aureus</em>):</strong> MIC oxacillin 1–8 &mu;g/mL do đột biến điều hòa &beta;-lactamase dẫn tới <strong>tăng tiết quá mức &beta;-lactamase</strong>.</li>
+                <li><strong>MOD-SA (Modified <em>S. aureus</em>):</strong> MIC oxacillin &gt;4–8 &mu;g/mL do đột biến gen <em>gdpP</em> hoặc <em>yjbH</em> dẫn tới <strong>tăng sản xuất PBP4</strong> mà không cần gen <em>mec</em>.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="clin-card">
+            <div class="clin-card-accent" style="background: var(--purple);"></div>
+            <div class="clin-card-title"><i class="fa-solid fa-masks-theater"></i> OS-MRSA &amp; Heteroresistance</div>
+            <div class="clin-card-body">
+              <ul>
+                <li><strong>OS-MRSA (Oxacillin-susceptible MRSA):</strong> Mang gen <em>mec</em> nhưng nhạy cảm giả tạo với Oxacillin/Cefoxitin trên đĩa cấy do đột biến RNA polymerase/điều hòa <em>mecA</em>.</li>
+                <li><strong>Cảnh báo:</strong> Tái bùng phát kháng thuốc rất nhanh khi gặp Oxacillin. <strong>Bắt buộc điều trị như MRSA thực thụ!</strong></li>
+                <li><strong>Heteroresistance:</strong> EUCAST khuyến cáo dùng <strong>Cefoxitin</strong> làm chất cảm ứng tốt nhất.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- EDITORIAL SVG DIAGRAM 1: CƠ CHẾ ĐỀ KHÁNG & BIẾN THỂ -->
+        <div class="diagram-container">
+          <svg viewBox="0 0 940 380" width="100%" height="100%" style="max-width: 900px; font-family: 'Plus Jakarta Sans', sans-serif;">
+            <defs>
+              <linearGradient id="grad-sa" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#0284c7"/>
+                <stop offset="100%" stop-color="#0369a1"/>
+              </linearGradient>
+              <linearGradient id="grad-mec" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#dc2626"/>
+                <stop offset="100%" stop-color="#b91c1c"/>
+              </linearGradient>
+              <linearGradient id="grad-nonmec" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#d97706"/>
+                <stop offset="100%" stop-color="#b45309"/>
+              </linearGradient>
+            </defs>
+
+            <!-- Gốc: S. aureus -->
+            <rect x="360" y="15" width="220" height="46" rx="10" fill="url(#grad-sa)"/>
+            <text x="470" y="44" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">STAPHYLOCOCCUS AUREUS</text>
+
+            <!-- Nhánh trái: Thu nhận SCCmec -->
+            <path d="M 420 61 L 420 95 L 240 95 L 240 120" fill="none" stroke="#dc2626" stroke-width="2.5"/>
+            <text x="290" y="88" font-size="11" font-weight="700" fill="#dc2626">Thu nhận SCCmec (mecA / mecC)</text>
+
+            <!-- Nhánh phải: Không có gen mec -->
+            <path d="M 520 61 L 520 95 L 700 95 L 700 120" fill="none" stroke="#d97706" stroke-width="2.5"/>
+            <text x="650" y="88" font-size="11" font-weight="700" fill="#d97706">Không có gen mec (Đột biến)</text>
+
+            <!-- Box Nhánh Trái: mecA & mecC -->
+            <rect x="50" y="120" width="180" height="70" rx="8" fill="var(--surface)" stroke="#dc2626" stroke-width="1.5"/>
+            <text x="140" y="145" font-size="12" font-weight="700" fill="var(--text)" text-anchor="middle">Gen mecA (Đảo SCCmec)</text>
+            <text x="140" y="165" font-size="11" fill="var(--text-muted)" text-anchor="middle">Mã hóa protein biến đổi PBP2a</text>
+            <text x="140" y="180" font-size="10" fill="#059669" font-weight="600" text-anchor="middle">Bắt được bằng PCR mecA</text>
+
+            <rect x="250" y="120" width="180" height="70" rx="8" fill="var(--surface)" stroke="#dc2626" stroke-width="1.5"/>
+            <text x="340" y="145" font-size="12" font-weight="700" fill="var(--text)" text-anchor="middle">Gen mecC (Đồng dạng 69%)</text>
+            <text x="340" y="165" font-size="11" fill="var(--text-muted)" text-anchor="middle">Mã hóa PBP2a biến thể</text>
+            <text x="340" y="180" font-size="10" fill="#dc2626" font-weight="700" text-anchor="middle">ÂM TÍNH trên PCR mecA thường</text>
+
+            <!-- Box Nhánh Phải: BORSA & MOD-SA -->
+            <rect x="530" y="120" width="170" height="70" rx="8" fill="var(--surface)" stroke="#d97706" stroke-width="1.5"/>
+            <text x="615" y="145" font-size="12" font-weight="700" fill="var(--text)" text-anchor="middle">BORSA (Borderline)</text>
+            <text x="615" y="165" font-size="11" fill="var(--text-muted)" text-anchor="middle">Tăng tiết quá mức &beta;-lactamase</text>
+            <text x="615" y="180" font-size="10" fill="#d97706" font-weight="600" text-anchor="middle">MIC Oxacillin: 1–8 &mu;g/mL</text>
+
+            <rect x="720" y="120" width="170" height="70" rx="8" fill="var(--surface)" stroke="#d97706" stroke-width="1.5"/>
+            <text x="805" y="145" font-size="12" font-weight="700" fill="var(--text)" text-anchor="middle">MOD-SA (Modified)</text>
+            <text x="805" y="165" font-size="11" fill="var(--text-muted)" text-anchor="middle">Đột biến gdpP/yjbH &rarr; Tăng PBP4</text>
+            <text x="805" y="180" font-size="10" fill="#d97706" font-weight="600" text-anchor="middle">MIC Oxacillin: &gt;4–8 &mu;g/mL</text>
+
+            <!-- Hội tụ về PBP2a Box -->
+            <path d="M 140 190 L 140 225 L 240 225 L 240 240" fill="none" stroke="#dc2626" stroke-width="2"/>
+            <path d="M 340 190 L 340 225 L 240 225 L 240 240" fill="none" stroke="#dc2626" stroke-width="2"/>
+
+            <rect x="50" y="240" width="380" height="55" rx="10" fill="var(--red-bg)" stroke="#dc2626" stroke-width="2"/>
+            <text x="240" y="263" font-size="13" font-weight="800" fill="#991b1b" text-anchor="middle">PBP2a: ÁI LỰC CỰC THẤP VỚI &beta;-LACTAM</text>
+            <text x="240" y="282" font-size="11" font-weight="600" fill="var(--text)" text-anchor="middle">Kháng toàn bộ Penicillin chống tụ cầu &amp; Cephalosporin thế hệ 1–4</text>
+
+            <!-- Tách 2 kiểu hình từ PBP2a -->
+            <path d="M 140 295 L 140 320" fill="none" stroke="#059669" stroke-width="2"/>
+            <path d="M 340 295 L 340 320" fill="none" stroke="#7c3aed" stroke-width="2"/>
+
+            <rect x="50" y="320" width="180" height="48" rx="8" fill="var(--surface)" stroke="#059669" stroke-width="1.5"/>
+            <text x="140" y="340" font-size="11" font-weight="700" fill="#065f46" text-anchor="middle">MRSA Điển Hình</text>
+            <text x="140" y="356" font-size="10" fill="var(--text-muted)" text-anchor="middle">Kháng Oxacillin &amp; Cefoxitin</text>
+
+            <rect x="250" y="320" width="180" height="48" rx="8" fill="var(--surface)" stroke="#7c3aed" stroke-width="1.5"/>
+            <text x="340" y="338" font-size="11" font-weight="700" fill="#5b21b6" text-anchor="middle">OS-MRSA (Ẩn Danh)</text>
+            <text x="340" y="352" font-size="9.5" fill="#dc2626" font-weight="700" text-anchor="middle">Nhạy cảm giả tạo &rarr; Bùng phát lại</text>
+
+            <!-- EUCAST Box -->
+            <rect x="530" y="240" width="360" height="128" rx="10" fill="var(--blue-bg)" stroke="#2563eb" stroke-width="1.5"/>
+            <text x="710" y="268" font-size="12" font-weight="800" fill="#1e40af" text-anchor="middle">KHUYẾN CÁO XÉT NGHIỆM EUCAST / CLSI</text>
+            <text x="710" y="292" font-size="11" fill="var(--text)" text-anchor="middle">&bull; Sử dụng CEFOXITIN làm chất cảm ứng tốt nhất</text>
+            <text x="710" y="312" font-size="11" fill="var(--text)" text-anchor="middle">&bull; Phát hiện chính xác cả mecA và mecC</text>
+            <text x="710" y="332" font-size="11" fill="var(--text)" text-anchor="middle">&bull; Cefoxitin kích thích biểu hiện gen PBP2a mạnh mẽ</text>
+            <text x="710" y="352" font-size="10.5" font-weight="700" fill="#dc2626" text-anchor="middle">&bull; Không dùng Oxacillin để sàng lọc do tỷ lệ bỏ sót cao</text>
+          </svg>
+          <div class="diagram-caption">Sơ đồ 1: Cơ chế sinh học phân tử đề kháng &beta;-lactam ở MRSA và các thể kiểu hình liên quan (Nature Reviews 2026).</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEC 3: ĐỘNG HỌC CƯ TRÚ -->
+    <div class="sec-card" id="sec-colonization">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <div class="sec-hdr-icon"><i class="fa-solid fa-bacterium"></i></div>
+          <div>
+            <div class="sec-title">3. Động Học Cư Trú (Colonization Dynamics) &amp; Cạnh Tranh Sinh Học</div>
+            <div class="sec-subtitle-text">Ổ chứa giải phẫu, phân tử bám dính MSCRAMMs/WTAs và tương tác vi sinh vật cộng sinh</div>
+          </div>
+        </div>
+        <span class="badge badge-teal">Động học cư trú</span>
+      </div>
+      <div class="sec-body">
+        <div class="grid-3col">
+          <div class="clin-card">
+            <div class="clin-card-accent" style="background: var(--teal);"></div>
+            <div class="clin-card-title"><i class="fa-solid fa-location-dot"></i> Ổ Chứa Giải Phẫu</div>
+            <div class="clin-card-body">
+              <ul>
+                <li><strong>Hốc mũi trước (Anterior nares):</strong> Ổ chứa kinh điển, 1% đến &gt;10% dân số mang trùng; yếu tố nguy cơ độc lập dẫn tới nhiễm trùng xâm lấn.</li>
+                <li><strong>Vị trí ngoài mũi (Extranasal):</strong> Phế quản, nách, bẹn, âm đạo.</li>
+                <li><strong>Đường tiêu hóa (GI tract):</strong> Ổ chứa quan trọng thường bị bỏ sót, vai trò thậm chí có thể vượt qua hốc mũi trong nhiễm trùng nội sinh.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="clin-card">
+            <div class="clin-card-accent" style="background: var(--blue);"></div>
+            <div class="clin-card-title"><i class="fa-solid fa-link"></i> Phân Tử Bám Dính</div>
+            <div class="clin-card-body">
+              <ul>
+                <li><strong>Họ protein MSCRAMMs:</strong> Liên kết đặc hiệu với collagen, fibronectin và fibrinogen ma trận ngoại bào của vật chủ.</li>
+                <li><strong>Axit teichoic thành tế bào (WTAs):</strong> Gắn thụ thể scavenger <strong>SREC1</strong> của tế bào biểu mô tỵ hầu sau để thiết lập sự bám dính vững chắc.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="clin-card">
+            <div class="clin-card-accent" style="background: var(--green);"></div>
+            <div class="clin-card-title"><i class="fa-solid fa-handshake-angle"></i> Cạnh Tranh Sinh Học</div>
+            <div class="clin-card-body">
+              <ul>
+                <li><strong><em>S. lugdunensis:</em></strong> Tiết chất kháng khuẩn <strong>Lugdunin</strong>, làm giảm 5–6 lần nguy cơ mang trùng tụ cầu vàng.</li>
+                <li><strong><em>S. epidermidis:</em></strong> Tiết serine protease <strong>Esp</strong> phá hủy màng biofilm của tụ cầu vàng.</li>
+                <li><strong>Đề kháng AMPs:</strong> <em>S. aureus</em> đổi điện tích màng, tiết staphylokinase trung hòa defensin/LL-37.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- FIGURE 3: ĐỘNG HỌC CƯ TRÚ VÀ CẠNH TRANH SINH HỌC -->
+        <figure class="fig-card">
+          <img class="fig-img" src="./images/2026-nature-reviews-mrsa-fig3.png" alt="Fig. 3: Các ổ chứa giải phẫu và cơ chế phân tử của sự cư trú Staphylococcus aureus" loading="lazy">
+          <figcaption class="fig-caption">
+            <strong>Hình 3 (Nature Reviews Disease Primers 2026):</strong> <em>Anatomical reservoirs and mechanisms of Staphylococcus aureus colonization</em>.<br>
+            <strong>a. Các ổ chứa giải phẫu chính:</strong> Hốc mũi trước (Anterior nares - vị trí khảo sát thường quy), hầu họng (Pharynx), nách (Axilla), đường tiêu hóa (Intestines - ổ chứa quan trọng nội sinh), âm đạo (Vagina) và bẹn (Groin).<br>
+            <strong>b. Cơ chế bám dính phân tử:</strong> Họ adhesin MSCRAMMs gắn đặc hiệu với các phân tử nền ngoại bào (Fibronectin, Fibrinogen, Collagen); Axit teichoic thành tế bào (WTA) liên kết với thụ thể scavenger SREC1 trên biểu mô mũi.<br>
+            <strong>c. Cạnh tranh sinh học và đối kháng vi sinh vật cộng sinh:</strong> Vi khuẩn cộng sinh (<em>S. lugdunensis</em> tiết Lugdunin, <em>S. epidermidis</em> tiết Esp) ức chế và phá hủy biofilm tụ cầu; đồng thời <em>S. aureus</em> và <em>S. epidermidis</em> kích thích tế bào biểu mô vật chủ tiết peptide kháng khuẩn (AMPs) để đối kháng các chủng vi sinh vật khác.
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <!-- SEC 4: SINH LÝ BỆNH HỌC XÂM LẤN SÂU -->
+    <div class="sec-card" id="sec-pathophysiology">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <div class="sec-hdr-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+          <div>
+            <div class="sec-title">4. Sinh Lý Bệnh Học Các Thể Nhiễm Trùng MRSA Xâm Lấn Sâu</div>
+            <div class="sec-subtitle-text">Nhiễm khuẩn huyết, áp-xe mô mềm, viêm phổi hoại tử PVL, viêm xương tủy &amp; biofilm thiết bị</div>
+          </div>
+        </div>
+        <span class="badge badge-red">Sinh lý bệnh sâu</span>
+      </div>
+      <div class="sec-body">
+        <div class="sec-subtitle">A. Nhiễm Khuẩn Huyết (BSI) &amp; Nhiễm Trùng Da Mô Mềm (SSTI)</div>
+        <div class="grid-2col">
+          <!-- BSI -->
+          <div class="clin-card">
+            <div class="clin-card-accent" style="background: var(--red);"></div>
+            <div class="clin-card-title"><i class="fa-solid fa-droplet"></i> Nhiễm Khuẩn Huyết (BSI) &amp; Hệ Thống <em>agr</em></div>
+            <div class="clin-card-body">
+              <ul>
+                <li><strong>Giai đoạn bám dính (ức chế <em>agr</em>):</strong> Mật độ thấp làm ức chế hệ thống <em>agr</em>, kích hoạt tối đa các phân tử bám dính MSCRAMM (ClfA, ClfB, FnBPA, FnBPB) bám chặt nội mạc mạch máu.</li>
+                <li><strong>Tạo cụm vón Fibrin:</strong> Tiết Coagulase và protein liên kết von Willebrand (vWbp) kích hoạt đông máu tạo kén fibrin che chắn vi khuẩn khỏi thực bào.</li>
+                <li><strong>Phát tán di căn (tái kích hoạt <em>agr</em>):</strong> Mật độ cao trong cụm vón kích hoạt lại <em>agr</em>, chuyển sang tiết ồ ạt độc tố tạo lỗ (Alpha-toxin/Hla, PSMs, PVL) ly giải tế bào mô.</li>
+                <li><strong>Cơ chế "Trojan Horse":</strong> Vi khuẩn sống sót trong bạch cầu trung tính nhờ catalase, SOD, staphyloxanthin trung hòa ROS; sau đó phá vỡ phagolysosome để phát tán khắp cơ thể.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- SSTI -->
+          <div class="clin-card">
+            <div class="clin-card-accent" style="background: var(--orange);"></div>
+            <div class="clin-card-title"><i class="fa-solid fa-hand-dots"></i> Nhiễm Trùng Da &amp; Mô Mềm (SSTI)</div>
+            <div class="clin-card-body">
+              <ul>
+                <li><strong>Ức chế bạch cầu:</strong> Tiết protein CHIPS và Eap làm giảm biểu hiện phân tử bám dính <strong>ICAM1</strong> trên nội mạc mạch máu, chặn đứng sự huy động bạch cầu trung tính.</li>
+                <li><strong>Tạo áp-xe hoại tử:</strong> Độc tố tạo lỗ ly giải tế bào, hình thành ổ mủ có vỏ bọc fibrin dày và lõi hoại tử trung tâm.</li>
+                <li><strong>Dung nạp kháng sinh (Low-ATP):</strong> Môi trường áp-xe axit, nghèo dinh dưỡng đẩy MRSA vào trạng thái năng lượng thấp (dung nạp kháng sinh).</li>
+                <li><strong>Nguyên tắc vàng:</strong> <strong>Bắt buộc rạch dẫn lưu ngoại khoa</strong> để giải phóng ổ mủ.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- FIGURES 4a & 4b -->
+        <div class="grid-2col" style="margin: 1.25rem 0;">
+          <figure class="fig-card" style="margin: 0;">
+            <img class="fig-img" src="./images/2026-nature-reviews-mrsa-fig4a-bsi.png" alt="Fig. 4a: Sinh lý bệnh học MRSA trong dòng máu (BSI)" loading="lazy">
+            <figcaption class="fig-caption">
+              <strong>Hình 4a:</strong> <em>Bloodstream infection (BSI)</em>.<br>
+              • <strong>Giai đoạn đầu (agr tắt):</strong> ClfA/B, FnBPA/B bám dính nội mạc; Protein A gắn Fc của IgG; Efb và SCIN ức chế con đường bổ thể.<br>
+              • <strong>Kén Fibrin:</strong> Coagulase/vWbp kích hoạt đông máu bọc fibrin bảo vệ vi khuẩn.<br>
+              • <strong>Phát tán (agr bật):</strong> Tiết độc tố tạo lỗ &alpha;-toxin, PSMs, PVL.<br>
+              • <strong>Ngựa Trojan:</strong> Sống sót trong đại thực bào nhờ Catalase, SOD và Staphyloxanthin trung hòa các gốc tự do ROS.
+            </figcaption>
+          </figure>
+
+          <figure class="fig-card" style="margin: 0;">
+            <img class="fig-img" src="./images/2026-nature-reviews-mrsa-fig4b-ssti.png" alt="Fig. 4b: Sinh lý bệnh nhiễm trùng da, mô mềm (SSTI) và tiến trình tạo ổ áp-xe" loading="lazy">
+            <figcaption class="fig-caption">
+              <strong>Hình 4b:</strong> <em>Skin and soft tissue infection &amp; Abscess formation</em>.<br>
+              • <strong>Nhiễm trùng ban đầu:</strong> MRSA vào lớp trung bì gặp tế bào đuôi gai, NK cell, đại thực bào.<br>
+              • <strong>Ổ áp-xe sớm:</strong> Tiết CHIPS và Eap ức chế ICAM1 ngăn huy động bạch cầu; &alpha;-toxin và PVL ly giải tế bào.<br>
+              • <strong>Ổ áp-xe hoàn chỉnh:</strong> Vỏ fibrin bọc lõi bạch cầu hoại tử; môi trường pH thấp và ATP thấp làm vi khuẩn dung nạp thuốc và ngăn kháng sinh khuếch tán &rarr; Bắt buộc rạch dẫn lưu.
+            </figcaption>
+          </figure>
+        </div>
+
+        <div class="sec-subtitle">B. Viêm Phổi Hoại Tử &amp; Viêm Xương Tủy / Biofilm Khớp Nhân Tạo</div>
+        <div class="grid-2col">
+          <!-- PNA -->
+          <div class="clin-card">
+            <div class="clin-card-accent" style="background: var(--blue);"></div>
+            <div class="clin-card-title"><i class="fa-solid fa-lungs"></i> Viêm Phổi Hoại Tử &amp; Đồng Nhiễm Vi Rút</div>
+            <div class="clin-card-body">
+              <ul>
+                <li><strong>VAP (Viêm phổi thở máy):</strong> Ống nội khí quản làm mất phản xạ ho/nuốt, tạo điều kiện cho MRSA từ hốc mũi di chuyển xuống sâu đường thở.</li>
+                <li><strong>Bội nhiễm sau cúm / COVID-19:</strong> Vi rút phá hủy biểu mô hô hấp, liệt nhầy-lông chuyển và bộc lộ ligand cho adhesin của MRSA bám dính.</li>
+                <li><strong>Độc tố hoại tử:</strong> <strong>PVL</strong> gây viêm phổi hoại tử xuất huyết tối cấp; <strong>Alpha-toxin</strong> kích hoạt thể viêm NLRP3 inflammasome phá hủy toàn bộ nhu mô phổi.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Bone & Joint / Biofilm -->
+          <div class="clin-card">
+            <div class="clin-card-accent" style="background: var(--purple);"></div>
+            <div class="clin-card-title"><i class="fa-solid fa-bone"></i> Viêm Xương Tủy &amp; Biofilm Khớp Nhân Tạo</div>
+            <div class="clin-card-body">
+              <ul>
+                <li><strong>Tiêu xương nghiêm trọng:</strong> Protein A gắn nguyên bào xương (osteoblasts) kích hoạt tự hủy, đồng thời kích hoạt tế bào hủy xương (osteoclasts) qua con đường <strong>RANKL</strong>. Sống sót nội bào dai dẳng trong tế bào xương.</li>
+                <li><strong>Biofilm trên thiết bị cấy ghép:</strong> Tạo màng exopolysaccharide/lipid/DNA/protein chống lại kháng sinh và miễn dịch.</li>
+                <li><strong>Persister cells:</strong> Vi khuẩn nằm sâu trong biofilm rơi vào trạng thái ngủ đông (tế bào dai dẳng), đòi hỏi can thiệp ngoại khoa thay thế thiết bị.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- FIGURE 4c & 4d -->
+        <figure class="fig-card">
+          <img class="fig-img" src="./images/2026-nature-reviews-mrsa-fig4cd-lung-bone.png" alt="Fig. 4c,d: Sinh lý bệnh viêm phổi hoại tử và nhiễm trùng khớp nhân tạo" loading="lazy">
+          <figcaption class="fig-caption">
+            <strong>Hình 4c,d (Nature Reviews Disease Primers 2026):</strong> <em>Pathophysiology of pulmonary and bone/orthopaedic implant MRSA infections</em>.<br>
+            <strong>c. Sinh lý bệnh viêm phổi (Pulmonary):</strong> Giảm thanh thải nhầy-lông chuyển do đặt nội khí quản hoặc nhiễm vi rút cúm (Influenza); vi rút cúm phá hủy biểu mô và kích hoạt tăng biểu hiện thụ thể gắn adhesin của MRSA; &alpha;-toxin và PVL gây viêm phổi hoại tử (Necrotizing pneumonia) và tràn mủ màng phổi (Empyema).<br>
+            <strong>d. Nhiễm trùng khớp nhân tạo &amp; xương (Bone and orthopaedic implant):</strong> Màng sinh học (Biofilm) trên bề mặt implant bảo vệ vi khuẩn khỏi thực bào và kháng sinh; phân tử MSCRAMMs (Eap, ClfA/B, FnBPA/B, Bbp, Coa, vWbp) bám tế bào xương (Osteocyte); Protein A ức chế và làm chết nguyên bào xương (Osteoblast death), đồng thời kích thích hủy cốt bào (Osteoclast) qua RANKL gây tiêu xương; vi khuẩn xâm nhập sống sót dai dẳng nội bào (Intracellular persistence).
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <!-- SEC 5: QUY TRÌNH CHẨN ĐOÁN LÂM SÀNG & CẬN LÂM SÀNG -->
+    <div class="sec-card" id="sec-diagnosis">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <div class="sec-hdr-icon"><i class="fa-solid fa-clipboard-check"></i></div>
+          <div>
+            <div class="sec-title">5. Quy Trình Chẩn Đoán Cận Lâm Sàng &amp; Phân Tầng Hội Chứng</div>
+            <div class="sec-subtitle-text">Nuôi cấy, Cefoxitin disk, Real-time PCR, mcfDNA và chẩn đoán hình ảnh chuyên sâu</div>
+          </div>
+        </div>
+        <span class="badge badge-purple">Chẩn đoán vi sinh</span>
+      </div>
+      <div class="sec-body">
+        <div class="grid-3col" style="margin-bottom: 1.5rem;">
+          <div class="infobox info">
+            <div class="infobox-icon"><i class="fa-solid fa-vial"></i></div>
+            <div>
+              <span class="infobox-title">Nuôi Cấy &amp; MALDI-TOF MS</span>
+              Cấy bệnh phẩm đích kết hợp định danh nhanh bằng khối phổ MALDI-TOF MS hoặc hóa sinh. Luôn làm kháng sinh đồ với đĩa <strong>Cefoxitin</strong>.
+            </div>
+          </div>
+
+          <div class="infobox success">
+            <div class="infobox-icon"><i class="fa-solid fa-bolt"></i></div>
+            <div>
+              <span class="infobox-title">Real-Time PCR (Nhanh 1 Giờ)</span>
+              Phát hiện trực tiếp <em>S. aureus</em> và gen <em>mecA/mecC</em> từ chai cấy máu dương tính hoặc dịch hô hấp, <strong>rút ngắn 1,7 ngày tiếp cận phác đồ đích</strong>.
+            </div>
+          </div>
+
+          <div class="infobox teal">
+            <div class="infobox-icon"><i class="fa-solid fa-dna"></i></div>
+            <div>
+              <span class="infobox-title">Dấu Ấn Tiên Tiến mcfDNA</span>
+              Giải trình tự microbial cell-free DNA trong huyết tương phát hiện ổ di căn sâu (viêm nội tâm mạc, viêm đĩa đệm cột sống) còn tiềm ẩn.
+            </div>
+          </div>
+        </div>
+
+        <div class="sec-subtitle">Bảng 1: Hướng Dẫn Chẩn Đoán Theo Từng Hội Chứng Nhiễm Trùng MRSA (Nature Reviews 2026)</div>
+        <div class="table-wrapper">
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th style="width: 18%;">Hội Chứng</th>
+                <th style="width: 25%;">Biểu Hiện Lâm Sàng Điển Hình</th>
+                <th style="width: 22%;">Nuôi Cấy &amp; Bệnh Phẩm</th>
+                <th style="width: 20%;">Chẩn Đoán Hình Ảnh</th>
+                <th style="width: 15%;">Xét Nghiệm Khác</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Nhiễm trùng da mô mềm (SSTI)</strong></td>
+                <td>Áp-xe có mủ, nhọt, viêm da mủ sưng nóng đỏ đau, ranh giới rõ.</td>
+                <td>Nhuộm Gram và cấy dịch mủ dẫn lưu từ ổ áp-xe. <strong>Không quệt tăm bông bề mặt da</strong>.</td>
+                <td>Siêu âm phát hiện ổ áp-xe sâu; CT/MRI cho viêm cân hoại tử sâu.</td>
+                <td>PCR tìm <em>S. aureus</em> &amp; <em>mecA/mecC</em>.</td>
+              </tr>
+              <tr>
+                <td><strong>Viêm phổi (PNA)</strong></td>
+                <td>Viêm phổi cộng đồng nặng, hoại tử có hang, suy hô hấp cấp tiến triển nhanh.</td>
+                <td>Nhuộm Gram &amp; cấy đờm, dịch hút nội khí quản, BALF hoặc dịch màng phổi.</td>
+                <td>X-quang (đông đặc kèm hang hóa); CT ngực đánh giá hoại tử, áp-xe, tràn mủ màng phổi.</td>
+                <td>PCR đờm/BALF tìm <em>mecA/mecC</em> và độc tố PVL.</td>
+              </tr>
+              <tr>
+                <td><strong>Nhiễm khuẩn huyết &amp; Viêm nội tâm mạc (BSI/IE)</strong></td>
+                <td>Sốt cao rét run, sốc nhiễm khuẩn, tiếng thổi tim mới, tắc mạch di căn.</td>
+                <td><strong>Cấy máu ít nhất 2 bộ</strong> từ 2 vị trí tĩnh mạch khác nhau trước khi dùng KS.</td>
+                <td><strong>Siêu âm tim bắt buộc:</strong> TTE đầu tiên, làm TEE nếu nghi ngờ cao hoặc TTE âm tính. CT/MRI tìm ổ di căn.</td>
+                <td>PCR nhanh chai cấy máu dương tính; mcfDNA huyết tương hoặc 16S rRNA từ van tim.</td>
+              </tr>
+              <tr>
+                <td><strong>Nhiễm trùng xương khớp (B&amp;J)</strong></td>
+                <td>Đau xương khu trú dai dẳng, sưng nóng đỏ khớp, hạn chế vận động.</td>
+                <td>Cấy sinh thiết xương, dịch khớp hoặc dịch rửa siêu âm đầu dò thiết bị (sonication).</td>
+                <td><strong>MRI là lựa chọn hàng đầu</strong> cho viêm tủy xương cột sống; CT đánh giá vỏ xương; X-quang mạn tính.</td>
+                <td>PCR tìm <em>mecA/mecC</em> từ dịch khớp / dịch rửa sonication.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEC 6: PHÁC ĐỒ ĐIỀU TRỊ KHÁNG SINH & PHÒNG NGỪA -->
+    <div class="sec-card" id="sec-treatment">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <div class="sec-hdr-icon"><i class="fa-solid fa-pills"></i></div>
+          <div>
+            <div class="sec-title">6. Phác Đồ Điều Trị Kháng Sinh Nội Khoa &amp; Chiến Lược Phòng Ngừa</div>
+            <div class="sec-subtitle-text">Tối ưu hóa liều Vancomycin AUC/MIC, Daptomycin, Ceftaroline, Linezolid và khử trùng bệnh viện</div>
+          </div>
+        </div>
+        <span class="badge badge-green">Phác đồ điều trị</span>
+      </div>
+      <div class="sec-body">
+        <div class="grid-2col" style="margin-bottom: 1.5rem;">
+          <div class="clin-card">
+            <div class="clin-card-accent" style="background: var(--blue);"></div>
+            <div class="clin-card-title"><i class="fa-solid fa-calculator"></i> Vancomycin &amp; Giám Sát Nồng Độ TDM</div>
+            <div class="clin-card-body">
+              <p>Kháng sinh tiêu chuẩn vàng, ức chế tổng hợp thành tế bào qua gắn <em>d-Ala-d-Ala</em>.</p>
+              <ul>
+                <li><strong>Mục tiêu TDM hiện đại:</strong> Duy trì <strong>AUC/MIC = 400–600</strong> dựa trên Bayesian software hoặc đo 2 mẫu nồng độ để giảm thiểu độc tính trên thận.</li>
+                <li><strong>VISA:</strong> Dày thành tế bào; <strong>VRSA:</strong> Operon <em>vanA</em> biến đổi thành <em>d-Ala-d-Lac</em> (giảm ái lực 1.000 lần). Vancomycin mất hoàn toàn tác dụng.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="clin-card">
+            <div class="clin-card-accent" style="background: var(--red);"></div>
+            <div class="clin-card-title"><i class="fa-solid fa-ban"></i> Cảnh Báo An Toàn Kháng Sinh Đặc Biệt</div>
+            <div class="clin-card-body">
+              <ul>
+                <li><span class="rx-tag danger">CHỐNG CHỈ ĐỊNH</span> <strong>Daptomycin trong Viêm Phổi:</strong> Thuốc bị bất hoạt hoàn toàn bởi chất diện hoạt phế nang (surfactant). Nguy cơ xuất hiện kháng thuốc 39% nếu BSI dai dẳng không kiểm soát nguồn.</li>
+                <li><span class="rx-tag warning">CẢNH BÁO FDA</span> <strong>Linezolid trong BSI liên quan Catheter:</strong> Tỷ lệ tử vong cao hơn trong thử nghiệm RCT; tuy nhiên lại là lựa chọn số 1 cho viêm phổi MRSA (ZEPHYR: 57% vs 47% Vancomycin).</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="sec-subtitle">Bảng 2: Tổng Hợp Các Kháng Sinh Điều Trị MRSA Lâm Sàng (Nature Reviews 2026)</div>
+        <div class="table-wrapper">
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th style="width: 15%;">Kháng Sinh</th>
+                <th style="width: 20%;">Cơ Chế Hoạt Động</th>
+                <th style="width: 25%;">Tác Dụng Phụ &amp; Cảnh Báo</th>
+                <th style="width: 25%;">Phổ Chỉ Định Hội Chứng</th>
+                <th style="width: 15%;">Hiệu Quả VISA / VRSA</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Vancomycin (IV)</strong></td>
+                <td>Glycopeptide: Gắn d-Ala-d-Ala ức chế tổng hợp thành tế bào.</td>
+                <td>Độc thận (nephrotoxicity), hội chứng người đỏ (Red man syndrome), giảm bạch cầu hạt.</td>
+                <td>SSTI, BSI, PNA, Xương khớp (B&amp;J). <br><span class="rx-tag preferred">Đích AUC/MIC: 400–600</span></td>
+                <td><span class="rx-tag danger">KHÔNG</span> hiệu quả trên cả VISA &amp; VRSA.</td>
+              </tr>
+              <tr>
+                <td><strong>Daptomycin (IV)</strong></td>
+                <td>Lipopeptide vòng: Phân cực và phá hủy màng tế bào.</td>
+                <td>Độc cơ (tăng CPK, theo dõi hàng tuần), viêm phổi tăng bạch cầu ái toan.</td>
+                <td>SSTI, BSI, Xương khớp. <br><span class="rx-tag danger">CHỐNG CHỈ ĐỊNH: Viêm phổi</span></td>
+                <td>Không tin cậy với VISA; <br><span class="rx-tag preferred">CÓ</span> hiệu quả với VRSA.</td>
+              </tr>
+              <tr>
+                <td><strong>Ceftaroline (IV)</strong></td>
+                <td>Cephalosporin thế hệ 5: Gắn đặc hiệu protein <strong>PBP2a</strong>.</td>
+                <td>Quá mẫn, thiếu máu tán huyết miễn dịch, giảm bạch cầu khi dùng kéo dài.</td>
+                <td>SSTI, PNA, BSI cứu cánh (salvage therapy phối hợp Daptomycin).</td>
+                <td><span class="rx-tag preferred">CÓ</span> hiệu quả trên cả VISA &amp; VRSA.</td>
+              </tr>
+              <tr>
+                <td><strong>Ceftobiprole (IV)</strong></td>
+                <td>Cephalosporin thế hệ 5: Gắn đặc hiệu protein <strong>PBP2a</strong>.</td>
+                <td>Quá mẫn, buồn nôn, thay đổi vị giác.</td>
+                <td>SSTI, PNA, BSI phức tạp (FDA phê duyệt 2024), Xương khớp.</td>
+                <td><span class="rx-tag preferred">CÓ</span> hiệu quả trên cả VISA &amp; VRSA.</td>
+              </tr>
+              <tr>
+                <td><strong>Linezolid (PO/IV)</strong></td>
+                <td>Oxazolidinone: Gắn tiểu phần ribosome 50S ức chế tổng hợp protein.</td>
+                <td>Giảm tiểu cầu/thiếu máu (dùng &gt;2 tuần), viêm thần kinh thị giác/ngoại biên, hội chứng Serotonin.</td>
+                <td>PNA (lựa chọn hàng đầu), SSTI, B&amp;J. <br><span class="rx-tag warning">Tránh dùng thường quy BSI</span></td>
+                <td><span class="rx-tag preferred">CÓ</span> hiệu quả trên cả VISA &amp; VRSA.</td>
+              </tr>
+              <tr>
+                <td><strong>Dalbavancin (IV)</strong></td>
+                <td>Lipoglycopeptide thế hệ 2 tác dụng kéo dài.</td>
+                <td>Phản ứng truyền, đau đầu, tăng men gan nhẹ.</td>
+                <td>SSTI, BSI/Osteomyelitis (off-label). <br><span class="rx-tag preferred">Bán thải cực dài (duy trì 6 tuần/2 liều)</span></td>
+                <td>Không tin cậy VISA; <br><span class="rx-tag danger">KHÔNG</span> hiệu quả VRSA.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="sec-subtitle">Bằng Chứng Về Phối Hợp Kháng Sinh &amp; Viêm Nội Tâm Mạc</div>
+        <div class="grid-2col">
+          <div class="infobox warning">
+            <div class="infobox-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+            <div>
+              <span class="infobox-title">Thử Nghiệm CAMERA2 &amp; ARREST: Không Phối Hợp &beta;-Lactam Thường Quy</span>
+              Phối hợp thêm &beta;-lactam vào Vancomycin/Daptomycin tuy rút ngắn thời gian cấy máu dương tính nhưng <strong>KHÔNG làm giảm tỷ lệ tử vong</strong>, ngược lại làm tăng độc tính suy thận cấp và tổn thương gan.
+            </div>
+          </div>
+
+          <div class="infobox info">
+            <div class="infobox-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+            <div>
+              <span class="infobox-title">Viêm Nội Tâm Mạc Van Nhân Tạo (PVE) &amp; ESC 2023</span>
+              Phối hợp Rifampicin + Gentamicin kinh điển làm tăng đáng kể độc tính thận/gan và tương tác thuốc mà không cải thiện rõ rệt tỷ lệ sống sót; cần cá thể hóa thận trọng trên từng ca bệnh.
+            </div>
+          </div>
+        </div>
+
+        <div class="sec-subtitle">Chiến Lược Phòng Ngừa, Sàng Lọc &amp; Khử Trùng Bệnh Viện</div>
+        <div class="table-wrapper">
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th style="width: 20%;">Chiến Lược</th>
+                <th style="width: 25%;">Cách Thức Thực Hiện</th>
+                <th style="width: 25%;">Ưu Điểm Lâm Sàng</th>
+                <th style="width: 30%;">Hạn Chế &amp; Bối Cảnh Áp Dụng</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Vệ sinh tay</strong></td>
+                <td>Sát khuẩn tay có cồn 5 thời điểm theo WHO.</td>
+                <td>Biện pháp cốt lõi số 1, chi phí thấp, hiệu quả toàn diện.</td>
+                <td>Phụ thuộc vào sự tuân thủ của nhân viên y tế.</td>
+              </tr>
+              <tr>
+                <td><strong>Chiến dịch "Search &amp; Destroy"</strong></td>
+                <td>Sàng lọc diện rộng, cách ly nghiêm ngặt và khử trùng triệt để người mang trùng.</td>
+                <td>Duy trì tỷ lệ MRSA &lt;5% thành công suốt nhiều thập kỷ.</td>
+                <td>Rất hiệu quả ở Hà Lan/Bắc Âu; không khả thi ở vùng dịch tễ lưu hành cao do quá tốn nguồn lực.</td>
+              </tr>
+              <tr>
+                <td><strong>Khử trùng đích (Targeted)</strong></td>
+                <td>Chỉ tra mũi Mupirocin + tắm Chlorhexidine cho ca cấy/PCR dương tính.</td>
+                <td>Tiết kiệm thuốc, giảm thiểu chọn lọc đề kháng Mupirocin.</td>
+                <td>Có thể bỏ sót vi khuẩn cư trú ngoài mũi; phù hợp trước mổ chương trình.</td>
+              </tr>
+              <tr>
+                <td><strong>Khử trùng toàn bộ (Universal)</strong></td>
+                <td>Tra mũi Mupirocin + tắm Chlorhexidine đồng loạt cho 100% bệnh nhân ICU.</td>
+                <td>Thử nghiệm <strong>REDUCE-MRSA</strong> chứng minh hiệu quả giảm nhiễm khuẩn vượt trội (HR: 0,63 vs 0,75).</td>
+                <td>Khuyến cáo mạnh tại ICU có tỷ lệ lưu hành cao; nguy cơ phát sinh chủng kháng Mupirocin (cân nhắc thay bằng <em>Octenidine</em>).</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEC 7: LƯU ĐỒ THUẬT TOÁN ĐIỀU TRỊ MRSA EDITORIAL SVG -->
+    <div class="sec-card" id="sec-algorithm">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <div class="sec-hdr-icon"><i class="fa-solid fa-diagram-project"></i></div>
+          <div>
+            <div class="sec-title">7. Lưu Đồ Thuật Toán Tiếp Cận &amp; Phân Tầng Điều Trị MRSA 2026</div>
+            <div class="sec-subtitle-text">Lưu đồ quyết định lâm sàng từ chẩn đoán, lựa chọn kháng sinh đến kiểm soát nguồn lây</div>
+          </div>
+        </div>
+        <span class="badge badge-purple">Editorial SVG Studio</span>
+      </div>
+      <div class="sec-body">
+        <div class="diagram-container">
+          <svg viewBox="0 0 960 520" width="100%" height="100%" style="max-width: 940px; font-family: 'Plus Jakarta Sans', sans-serif;">
+            <defs>
+              <linearGradient id="flow-head" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#0c4a6e"/>
+                <stop offset="100%" stop-color="#0f6fb4"/>
+              </linearGradient>
+            </defs>
+
+            <!-- Node 1: Đầu vào -->
+            <rect x="330" y="15" width="300" height="46" rx="10" fill="url(#flow-head)"/>
+            <text x="480" y="44" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">NGHI NGỜ / XÁC ĐỊNH NHIỄM TRÙNG MRSA</text>
+
+            <!-- Nhánh phân tầng 4 hội chứng -->
+            <path d="M 480 61 L 480 90" fill="none" stroke="#0f6fb4" stroke-width="2"/>
+            <path d="M 120 90 L 840 90" fill="none" stroke="#0f6fb4" stroke-width="2"/>
+            <path d="M 120 90 L 120 120" fill="none" stroke="#0f6fb4" stroke-width="2"/>
+            <path d="M 360 90 L 360 120" fill="none" stroke="#0f6fb4" stroke-width="2"/>
+            <path d="M 600 90 L 600 120" fill="none" stroke="#0f6fb4" stroke-width="2"/>
+            <path d="M 840 90 L 840 120" fill="none" stroke="#0f6fb4" stroke-width="2"/>
+
+            <!-- Cột 1: SSTI -->
+            <rect x="30" y="120" width="180" height="60" rx="8" fill="var(--surface)" stroke="#d97706" stroke-width="1.5"/>
+            <text x="120" y="145" font-size="12" font-weight="800" fill="#d97706" text-anchor="middle">Áp-xe Da &amp; Mô Mềm</text>
+            <text x="120" y="165" font-size="10.5" fill="var(--text-muted)" text-anchor="middle">Mủ hoại tử, tụ cầu vàng</text>
+
+            <path d="M 120 180 L 120 210" fill="none" stroke="#d97706" stroke-width="2"/>
+            <rect x="25" y="210" width="190" height="90" rx="8" fill="var(--surface-2)" stroke="var(--border)" stroke-width="1"/>
+            <text x="120" y="232" font-size="11" font-weight="700" fill="#dc2626" text-anchor="middle">RẠCH DẪN LƯU NGOẠI KHOA</text>
+            <text x="120" y="252" font-size="10" fill="var(--text-muted)" text-anchor="middle">&bull; Áp-xe nông: Dẫn lưu là đủ</text>
+            <text x="120" y="270" font-size="10" fill="var(--text-muted)" text-anchor="middle">&bull; Lan tỏa/Nặng: KS uống/IV</text>
+            <text x="120" y="288" font-size="10" font-weight="600" fill="#059669" text-anchor="middle">(TMP-SMX, Doxy, Vanco)</text>
+
+            <!-- Cột 2: Viêm phổi -->
+            <rect x="270" y="120" width="180" height="60" rx="8" fill="var(--surface)" stroke="#2563eb" stroke-width="1.5"/>
+            <text x="360" y="145" font-size="12" font-weight="800" fill="#2563eb" text-anchor="middle">Viêm Phổi (CAP / VAP)</text>
+            <text x="360" y="165" font-size="10.5" fill="var(--text-muted)" text-anchor="middle">Hoại tử PVL, sau cúm</text>
+
+            <path d="M 360 180 L 360 210" fill="none" stroke="#2563eb" stroke-width="2"/>
+            <rect x="265" y="210" width="190" height="90" rx="8" fill="var(--surface-2)" stroke="var(--border)" stroke-width="1"/>
+            <text x="360" y="232" font-size="11" font-weight="700" fill="#2563eb" text-anchor="middle">LINEZOLID HOẶC VANCO</text>
+            <text x="360" y="252" font-size="10" fill="var(--text-muted)" text-anchor="middle">&bull; Linezolid 600mg q12h (Ưu tiên)</text>
+            <text x="360" y="270" font-size="10" fill="var(--text-muted)" text-anchor="middle">&bull; Vanco (AUC/MIC 400–600)</text>
+            <text x="360" y="288" font-size="10" font-weight="700" fill="#dc2626" text-anchor="middle">CẤM DÙNG DAPTOMYCIN</text>
+
+            <!-- Cột 3: BSI & Endocarditis -->
+            <rect x="510" y="120" width="180" height="60" rx="8" fill="var(--surface)" stroke="#dc2626" stroke-width="1.5"/>
+            <text x="600" y="145" font-size="12" font-weight="800" fill="#dc2626" text-anchor="middle">Nhiễm Khuẩn Huyết (BSI)</text>
+            <text x="600" y="165" font-size="10.5" fill="var(--text-muted)" text-anchor="middle">Nguy cơ sùi van, di căn</text>
+
+            <path d="M 600 180 L 600 210" fill="none" stroke="#dc2626" stroke-width="2"/>
+            <rect x="505" y="210" width="190" height="90" rx="8" fill="var(--surface-2)" stroke="var(--border)" stroke-width="1"/>
+            <text x="600" y="232" font-size="11" font-weight="700" fill="#dc2626" text-anchor="middle">DAPTOMYCIN HOẶC VANCO</text>
+            <text x="600" y="252" font-size="10" fill="var(--text-muted)" text-anchor="middle">&bull; Dapto 8–10 mg/kg/ngày</text>
+            <text x="600" y="270" font-size="10" fill="var(--text-muted)" text-anchor="middle">&bull; Siêu âm tim TTE/TEE bắt buộc</text>
+            <text x="600" y="288" font-size="10" font-weight="700" fill="#7c3aed" text-anchor="middle">Salvage: + Ceftaroline</text>
+
+            <!-- Cột 4: Bone & Joint -->
+            <rect x="750" y="120" width="180" height="60" rx="8" fill="var(--surface)" stroke="#7c3aed" stroke-width="1.5"/>
+            <text x="840" y="145" font-size="12" font-weight="800" fill="#7c3aed" text-anchor="middle">Xương Khớp &amp; Thiết Bị</text>
+            <text x="840" y="165" font-size="10.5" fill="var(--text-muted)" text-anchor="middle">Biofilm, tiêu xương RANKL</text>
+
+            <path d="M 840 180 L 840 210" fill="none" stroke="#7c3aed" stroke-width="2"/>
+            <rect x="745" y="210" width="190" height="90" rx="8" fill="var(--surface-2)" stroke="var(--border)" stroke-width="1"/>
+            <text x="840" y="232" font-size="11" font-weight="700" fill="#7c3aed" text-anchor="middle">PHẪU THUẬT &amp; KHÁNG SINH</text>
+            <text x="840" y="252" font-size="10" fill="var(--text-muted)" text-anchor="middle">&bull; Nạo viêm / Tháo bỏ khớp</text>
+            <text x="840" y="270" font-size="10" fill="var(--text-muted)" text-anchor="middle">&bull; Vanco / Dapto / Ceftobiprole</text>
+            <text x="840" y="288" font-size="10" fill="var(--text-muted)" text-anchor="middle">&bull; Liệu trình dài 6–12 tuần</text>
+
+            <!-- Khung Tổng Kết Dưới Cùng: Đánh giá đáp ứng & Xuống thang -->
+            <path d="M 120 300 L 120 330 L 480 330" fill="none" stroke="var(--border)" stroke-width="1.5"/>
+            <path d="M 360 300 L 360 330 L 480 330" fill="none" stroke="var(--border)" stroke-width="1.5"/>
+            <path d="M 600 300 L 600 330 L 480 330" fill="none" stroke="var(--border)" stroke-width="1.5"/>
+            <path d="M 840 300 L 840 330 L 480 330" fill="none" stroke="var(--border)" stroke-width="1.5"/>
+            <path d="M 480 330 L 480 360" fill="none" stroke="#059669" stroke-width="2.5"/>
+
+            <rect x="180" y="360" width="600" height="135" rx="12" fill="var(--green-bg)" stroke="#059669" stroke-width="2"/>
+            <text x="480" y="388" font-size="13" font-weight="800" fill="#065f46" text-anchor="middle">KIỂM SOÁT NGUỒN NHIỄM TRÙNG &amp; CHIẾN LƯỢC DÀI HẠN</text>
+            <text x="480" y="412" font-size="11" fill="var(--text)" text-anchor="middle">&bull; <tspan font-weight="700">Cấy máu lặp lại mỗi 24–48h</tspan> cho đến khi âm tính để xác định thời điểm bắt đầu tính độ dài liệu trình.</text>
+            <text x="480" y="434" font-size="11" fill="var(--text)" text-anchor="middle">&bull; <tspan font-weight="700">Rút bỏ catheter tĩnh mạch</tspan> nhiễm trùng ngay khi phát hiện; dẫn lưu triệt để ổ mủ tụ.</text>
+            <text x="480" y="456" font-size="11" fill="var(--text)" text-anchor="middle">&bull; <tspan font-weight="700">Xuống thang đường uống:</tspan> Khi lâm sàng ổn định, hết sốt &gt;48h, không có di căn sâu (Linezolid, TMP-SMX, Clindamycin).</text>
+            <text x="480" y="478" font-size="11" fill="var(--text)" text-anchor="middle">&bull; <tspan font-weight="700">Khử trùng dự phòng (Decolonization):</tspan> Mupirocin tra mũi + tắm Chlorhexidine ở bệnh nhân tái phát hoặc phòng ICU.</text>
+          </svg>
+          <div class="diagram-caption">Sơ đồ 2: Lưu đồ thuật toán phân tầng điều trị và kiểm soát nguồn lây nhiễm trùng do MRSA (Nature Reviews Disease Primers 2026).</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEC 8: TRÍCH DẪN & LIÊN KẾT HỆ THỐNG -->
+    <div class="sec-card" id="sec-citation">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <div class="sec-hdr-icon"><i class="fa-solid fa-quote-left"></i></div>
+          <div>
+            <div class="sec-title">8. Trích Dẫn Tài Liệu Tham Khảo Chuẩn AMA &amp; Liên Kết Lâm Sàng</div>
+            <div class="sec-subtitle-text">Nature Reviews Disease Primers 2026 Landmark Primer</div>
+          </div>
+        </div>
+      </div>
+      <div class="sec-body">
+        <div class="citation-box">
+          Parsons JB, Westgeest AC, Conlon BP, et al. Methicillin-resistant <em>Staphylococcus aureus</em>. <em>Nature Reviews Disease Primers</em>. 2026;12:53. doi:10.1038/s41572-026-00729-3.
+        </div>
+
+        <div class="btn-row">
+          <a href="../guidelines.html" class="btn btn-primary">
+            <i class="fa-solid fa-list-check"></i> Quay lại Kho Guidelines
+          </a>
+          <a href="../../../docspace/tools/scores/antibiotic-dosing.ts" class="btn">
+            <i class="fa-solid fa-calculator"></i> Công Cụ Tính Liều Vancomycin &amp; Kháng Sinh
+          </a>
+          <a href="../../../ebm/ebm.html" class="btn">
+            <i class="fa-solid fa-book-medical"></i> Hub Y Học Chứng Cứ (EBM)
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Theme Toggle with LocalStorage
+      const themeToggleBtn = document.getElementById('themeToggleBtn');
+      const htmlEl = document.documentElement;
+      const savedTheme = localStorage.getItem('cliniportal_ebm_theme');
+      if (savedTheme === 'dark' || savedTheme === 'light') {
+        htmlEl.setAttribute('data-theme', savedTheme);
+        if (themeToggleBtn) {
+          themeToggleBtn.innerHTML = savedTheme === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+        }
+      }
+      if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', () => {
+          const currentTheme = htmlEl.getAttribute('data-theme');
+          const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+          htmlEl.setAttribute('data-theme', newTheme);
+          themeToggleBtn.innerHTML = newTheme === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+          localStorage.setItem('cliniportal_ebm_theme', newTheme);
+        });
+      }
+
+      // Smooth scroll highlight for pillar navigation
+      const sections = document.querySelectorAll('.sec-card[id]');
+      const navLinks = document.querySelectorAll('.pillar-tab');
+      if (sections.length > 0 && navLinks.length > 0) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const currentId = entry.target.getAttribute('id');
+              navLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href === '#' + currentId) {
+                  link.style.borderColor = 'var(--accent)';
+                  link.style.background = 'var(--blue-bg)';
+                } else {
+                  link.style.borderColor = 'var(--border-light)';
+                  link.style.background = 'var(--surface-2)';
+                }
+              });
+            }
+          });
+        }, { rootMargin: '-10% 0px -70% 0px' });
+        sections.forEach(s => observer.observe(s));
+      }
+    });
+  </script>
+</body>
+</html>

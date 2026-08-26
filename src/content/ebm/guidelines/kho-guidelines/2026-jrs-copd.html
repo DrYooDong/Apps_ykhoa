@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tóm tắt Hướng dẫn Quản lý Bệnh Phổi Tắc Nghẽn Mạn Tính (COPD) JRS 2026 - Ấn bản lần 7 của Hội Hô hấp Nhật Bản. Cập nhật Etiotype GOLD 2023, Pre-COPD, PRISm, Dupilumab, Macrolide, BLVR, tầm soát tim mạch sau đợt cấp và thực hành tại Việt Nam.">
+  <title>JRS 2026 – Hướng Dẫn Quản Lý Bệnh Phổi Tắc Nghẽn Mạn Tính (COPD 7th Ed) – CliniPortal</title>
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #059669; --green-bg: #f0fdf4; --green-light: #a7f3d0;
+      --orange: #d97706; --orange-bg: #fffbeb; --orange-light: #fde68a;
+      --red: #dc2626; --red-bg: #fef2f2; --red-light: #fca5a5;
+      --blue: #2563eb; --blue-bg: #eff6ff; --blue-light: #bfdbfe;
+      --teal: #0d9488; --teal-bg: #f0fdfa; --teal-light: #99f6e4;
+      --purple: #7c3aed; --purple-bg: #faf5ff; --purple-light: #ddd6fe;
+      --accent: #0f6fb4;
+      --bg: #f0f4f8; --surface: #ffffff; --surface-2: #f8fafc;
+      --border: #cbd5e1; --border-light: #e2e8f0;
+      --text: #0f172a; --text-muted: #475569; --text-faint: #94a3b8;
+      --radius: 16px; --tr: 220ms cubic-bezier(0.16,1,0.3,1);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; font-size: 15px; background: var(--bg); color: var(--text); line-height: 1.65; min-height: 100vh; }
+
+    /* TOP NAV */
+    .topnav { position: sticky; top: 0; z-index: 200; background: rgba(255,255,255,0.94); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 1rem; padding: 0 1.5rem; height: 56px; }
+    .topnav-back { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--accent); text-decoration: none; font-size: 0.82rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 8px; transition: background var(--tr); white-space: nowrap; }
+    .topnav-back:hover { background: var(--blue-bg); }
+    .topnav-divider { width: 1px; height: 18px; background: var(--border-light); flex-shrink: 0; }
+    .topnav-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .topnav-badges { margin-left: auto; display: flex; gap: 0.5rem; flex-shrink: 0; }
+    .badge { padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.72rem; font-weight: 700; white-space: nowrap; }
+    .badge-green { background: var(--green-bg); color: #065f46; border: 1px solid var(--green-light); }
+    .badge-blue { background: var(--blue-bg); color: #1e40af; border: 1px solid var(--blue-light); }
+    .badge-teal { background: var(--teal-bg); color: #0f766e; border: 1px solid var(--teal-light); }
+    .badge-purple { background: var(--purple-bg); color: #5b21b6; border: 1px solid var(--purple-light); }
+    .badge-red { background: var(--red-bg); color: #991b1b; border: 1px solid var(--red-light); }
+
+    /* HERO HEADER */
+    .hero { background: linear-gradient(135deg, #0c4a6e 0%, #0f6fb4 45%, #055938 100%); color: #fff; padding: 3.5rem 1.5rem 5rem; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 15% 60%, rgba(56,189,248,0.2) 0%, transparent 55%), radial-gradient(ellipse at 85% 20%, rgba(16,185,129,0.15) 0%, transparent 50%); }
+    .hero-inner { max-width: 960px; margin: 0 auto; position: relative; z-index: 1; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.24); border-radius: 20px; padding: 0.35rem 1rem; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1.25rem; color: #7dd3fc; }
+    .hero-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 800; line-height: 1.18; letter-spacing: -0.03em; margin-bottom: 0.85rem; }
+    .hero-title span { display: block; background: linear-gradient(90deg, #7dd3fc, #6ee7b7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 0.65em; font-weight: 600; letter-spacing: 0; margin-bottom: 0.3rem; }
+    .hero-subtitle { font-size: 0.95rem; opacity: 0.9; max-width: 840px; margin-bottom: 2rem; line-height: 1.65; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 0.75rem 2rem; font-size: 0.8rem; opacity: 0.88; }
+    .hero-meta-item { display: flex; align-items: center; gap: 6px; }
+
+    /* 3 PILLARS STRIP */
+    .pillars { background: var(--surface); border-bottom: 1px solid var(--border-light); padding: 1.75rem 1.5rem; }
+    .pillars-inner { max-width: 960px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; }
+    .pillar { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.25rem 1.25rem 1.25rem 1.5rem; display: flex; align-items: flex-start; gap: 1rem; position: relative; overflow: hidden; transition: box-shadow var(--tr); }
+    .pillar::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; border-radius: 4px 0 0 4px; }
+    .pillar.p1::before { background: var(--teal); }
+    .pillar.p2::before { background: var(--blue); }
+    .pillar.p3::before { background: var(--orange); }
+    .pillar:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+    .pillar-icon { font-size: 1.8rem; flex-shrink: 0; line-height: 1; }
+    .pillar-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text); margin-bottom: 0.25rem; }
+    .pillar-desc { font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; }
+
+    /* STICKY QUICKMENU (MỤC LỤC) */
+    .quickmenu { position: sticky; top: 56px; z-index: 100; background: var(--surface); border-bottom: 1px solid var(--border-light); overflow-x: auto; display: flex; white-space: nowrap; -webkit-overflow-scrolling: touch; }
+    .quickmenu-inner { max-width: 960px; margin: 0 auto; display: flex; width: 100%; padding: 0 1.5rem; gap: 0.25rem; }
+    .quickmenu-item { display: inline-block; padding: 0.85rem 0.95rem; color: var(--text-muted); text-decoration: none; font-size: 0.78rem; font-weight: 600; border-bottom: 3px solid transparent; transition: all var(--tr); }
+    .quickmenu-item:hover { color: var(--accent); }
+    .quickmenu-item.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+    /* PAGE CONTENT */
+    .page-content { max-width: 960px; margin: 0 auto; padding: 2.25rem 1.5rem 4rem; display: flex; flex-direction: column; gap: 2rem; }
+
+    /* SECTION CARDS */
+    .sec-card { background: var(--surface); border: 1px solid var(--border-light); border-radius: var(--radius); overflow: hidden; scroll-margin-top: 120px; }
+    .sec-hdr { padding: 1.1rem 1.5rem; border-bottom: 1px solid var(--border-light); background: var(--surface-2); display: flex; align-items: center; gap: 0.75rem; }
+    .sec-hdr-icon { width: 38px; height: 38px; border-radius: 10px; background: var(--teal-bg); color: var(--teal); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
+    .sec-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.05rem; font-weight: 800; color: var(--text); }
+    .sec-subtitle-text { font-size: 0.78rem; color: var(--text-muted); font-weight: 500; margin-top: 0.1rem; }
+    .sec-body { padding: 1.5rem; }
+    .sec-subtitle { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.85rem; color: var(--text-muted); margin: 1.25rem 0 0.85rem; text-transform: uppercase; letter-spacing: 0.04em; }
+    .sec-subtitle:first-child { margin-top: 0; }
+
+    /* INFO BOXES & ALERT BANNERS */
+    .infobox { display: flex; align-items: flex-start; gap: 0.85rem; padding: 1rem 1.25rem; border-radius: 12px; margin-bottom: 1.25rem; font-size: 0.85rem; line-height: 1.65; }
+    .infobox:last-child { margin-bottom: 0; }
+    .infobox-icon { font-size: 1.3rem; flex-shrink: 0; line-height: 1.3; }
+    .infobox.danger { background: var(--red-bg); border: 1px solid var(--red-light); border-left: 4px solid var(--red); }
+    .infobox.success { background: var(--green-bg); border: 1px solid var(--green-light); border-left: 4px solid var(--green); }
+    .infobox.warning { background: var(--orange-bg); border: 1px solid var(--orange-light); border-left: 4px solid var(--orange); }
+    .infobox.info { background: var(--blue-bg); border: 1px solid var(--blue-light); border-left: 4px solid var(--blue); }
+    .infobox.teal { background: var(--teal-bg); border: 1px solid var(--teal-light); border-left: 4px solid var(--teal); }
+    .infobox.purple { background: var(--purple-bg); border: 1px solid var(--purple-light); border-left: 4px solid var(--purple); }
+    .infobox-title, .infobox > div > strong:first-child { display: block; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.88rem; font-weight: 700; margin-bottom: 0.35rem; color: var(--text); }
+    .infobox strong { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; }
+
+    /* CLINICAL ALERT CARDS */
+    .alert-banner { background: var(--surface-2); border-radius: 14px; border: 1px solid var(--border-light); margin-bottom: 1.5rem; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.03); }
+    .alert-banner.danger { background: linear-gradient(135deg, #fef2f2 0%, #fff5f5 100%); border: 1px solid #fca5a5; border-left: 5px solid var(--red); }
+    .alert-banner.warning { background: linear-gradient(135deg, #fffbeb 0%, #fffdf5 100%); border: 1px solid #fde68a; border-left: 5px solid var(--orange); }
+    .alert-banner.info { background: linear-gradient(135deg, #eff6ff 0%, #f4f8ff 100%); border: 1px solid #bfdbfe; border-left: 5px solid var(--blue); }
+    .alert-banner.teal { background: linear-gradient(135deg, #f0fdfa 0%, #f5fffe 100%); border: 1px solid #99f6e4; border-left: 5px solid var(--teal); }
+    .alert-banner.success { background: linear-gradient(135deg, #f0fdf4 0%, #f5fff7 100%); border: 1px solid #a7f3d0; border-left: 5px solid var(--green); }
+    
+    .alert-banner-hdr { padding: 1rem 1.25rem 0.6rem; display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; flex-wrap: wrap; }
+    .alert-banner-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 0.92rem; display: flex; align-items: center; gap: 0.6rem; }
+    .alert-banner.danger .alert-banner-title { color: #991b1b; }
+    .alert-banner.warning .alert-banner-title { color: #92400e; }
+    .alert-banner.info .alert-banner-title { color: #1e40af; }
+    .alert-banner.teal .alert-banner-title { color: #0f766e; }
+    .alert-banner.success .alert-banner-title { color: #065f46; }
+    
+    .alert-banner-icon { width: 34px; height: 34px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.05rem; flex-shrink: 0; background: rgba(220,38,38,0.12); color: var(--red); }
+    .alert-banner.warning .alert-banner-icon { background: rgba(217,119,6,0.12); color: var(--orange); }
+    .alert-banner.info .alert-banner-icon { background: rgba(37,99,235,0.12); color: var(--blue); }
+    .alert-banner.teal .alert-banner-icon { background: rgba(13,148,136,0.12); color: var(--teal); }
+    .alert-banner.success .alert-banner-icon { background: rgba(5,150,105,0.12); color: var(--green); }
+    
+    .alert-banner-body { padding: 0 1.25rem 1.25rem; font-size: 0.85rem; line-height: 1.65; color: var(--text); }
+    
+    .alert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.75rem; margin-top: 0.85rem; }
+    .alert-grid-item { background: rgba(255,255,255,0.85); border: 1px solid rgba(0,0,0,0.08); border-radius: 10px; padding: 0.75rem 0.9rem; display: flex; align-items: flex-start; gap: 0.65rem; }
+    .alert-grid-item-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 0.05rem; }
+    .alert-grid-item-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.84rem; color: var(--text); }
+    .alert-grid-item-desc { font-size: 0.76rem; color: var(--text-muted); margin-top: 0.15rem; line-height: 1.45; }
+
+    /* TABLE DESIGN */
+    .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 12px; border: 1px solid var(--border-light); margin-bottom: 1.25rem; }
+    .custom-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; min-width: 680px; }
+    .custom-table thead th { padding: 0.75rem 0.9rem; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; background: var(--surface-2); border-bottom: 2px solid var(--border-light); color: var(--text); text-align: left; }
+    .custom-table td { padding: 0.85rem 0.9rem; border-bottom: 1px solid var(--border-light); vertical-align: top; line-height: 1.55; }
+    .custom-table tbody tr:hover td { background: #f8fafc; }
+
+    /* BADGES & TAGS */
+    .rx-tag { display: inline-block; font-size: 0.72rem; font-family: 'JetBrains Mono', monospace; padding: 0.2rem 0.55rem; border-radius: 6px; margin: 0.15rem 0.15rem 0.15rem 0; }
+    .rx-tag.preferred { background: var(--green-bg); color: #065f46; border: 1px solid var(--green-light); font-weight: 700; }
+    .rx-tag.alt { background: var(--blue-bg); color: #1e40af; border: 1px solid var(--blue-light); font-weight: 600; }
+    .rx-tag.warning { background: var(--orange-bg); color: #92400e; border: 1px solid var(--orange-light); font-weight: 600; }
+    .rx-tag.danger { background: var(--red-bg); color: #991b1b; border: 1px solid var(--red-light); font-weight: 700; }
+
+    /* GRADE BADGES */
+    .grade-tag { display: inline-flex; align-items: center; gap: 4px; padding: 0.18rem 0.5rem; border-radius: 6px; font-size: 0.7rem; font-weight: 700; font-family: 'JetBrains Mono', monospace; }
+    .grade-strong-a { background: var(--green-bg); color: #065f46; border: 1px solid var(--green-light); }
+    .grade-strong-b { background: var(--teal-bg); color: #0f766e; border: 1px solid var(--teal-light); }
+    .grade-weak-a { background: var(--blue-bg); color: #1e40af; border: 1px solid var(--blue-light); }
+    .grade-weak-b { background: var(--purple-bg); color: #5b21b6; border: 1px solid var(--purple-light); }
+    .grade-weak-c { background: var(--orange-bg); color: #92400e; border: 1px solid var(--orange-light); }
+    .grade-weak-d { background: #f1f5f9; color: #475569; border: 1px solid var(--border-light); }
+
+    /* GRID CARDS (10 REASONS / UPDATES) */
+    .updates-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px,100%), 1fr)); gap: 1.1rem; }
+    .update-card { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.25rem; position: relative; overflow: hidden; transition: box-shadow var(--tr); }
+    .update-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
+    .update-card-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.85rem; }
+    .update-card-num { width: 32px; height: 32px; border-radius: 50%; background: var(--accent); color: #fff; display: flex; align-items: center; justify-content: center; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 0.85rem; flex-shrink: 0; }
+    .update-card-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 0.88rem; color: var(--text); line-height: 1.35; }
+    .update-card-body { font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* FLOWCHART STEPS */
+    .flow-container { display: flex; flex-direction: column; gap: 1rem; position: relative; }
+    .flow-step { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.25rem; display: flex; gap: 1rem; align-items: flex-start; }
+    .flow-icon { width: 40px; height: 40px; border-radius: 10px; background: var(--blue-bg); color: var(--accent); font-size: 1.2rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .flow-content { flex: 1; }
+    .flow-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 0.9rem; color: var(--text); margin-bottom: 0.35rem; }
+    .flow-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; }
+    .flow-branch { margin-top: 0.75rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0.75rem; }
+    .flow-branch-card { background: var(--surface); border: 1px solid var(--border-light); border-radius: 10px; padding: 0.85rem; font-size: 0.8rem; }
+    .flow-branch-card.accent-blue { border-left: 4px solid var(--blue); }
+    .flow-branch-card.accent-green { border-left: 4px solid var(--green); }
+    .flow-branch-card.accent-orange { border-left: 4px solid var(--orange); }
+    .flow-branch-card.accent-red { border-left: 4px solid var(--red); }
+
+    /* CITATION & ACTION BUTTONS */
+    .citation-box { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 12px; padding: 1.25rem; font-size: 0.82rem; color: var(--text-muted); line-height: 1.75; font-style: italic; }
+    .btn-row { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.25rem; }
+    .btn { display: inline-flex; align-items: center; gap: 6px; padding: 0.55rem 1.1rem; border-radius: 10px; border: 1.5px solid var(--border-light); background: var(--surface); color: var(--text-muted); font-size: 0.82rem; font-weight: 600; cursor: pointer; text-decoration: none; transition: all var(--tr); }
+    .btn:hover { border-color: var(--accent); color: var(--accent); background: var(--blue-bg); }
+    .btn-primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+    @media (max-width: 768px) {
+      .page-content { padding: 1.25rem 1rem; }
+      .sec-body { padding: 1rem; }
+      .updates-grid, .flow-branch { grid-template-columns: 1fr; }
+    }
+
+    @media print {
+      body { background: #fff !important; color: #000 !important; }
+      .topnav, .quickmenu, .topnav-theme-toggle, .mcq-card, .page-footer, .topnav-pdf-btn { display: none !important; }
+      .main-container, .page-content { max-width: 100% !important; margin: 0 !important; padding: 0 !important; }
+      .sec-card { break-inside: avoid; border: 1px solid #ccc !important; box-shadow: none !important; }
+    }
+  </style>
+  <link rel="stylesheet" href="../../../../../css/components/header.css">
+  <script type="module" src="../../../../../components/header.ts" defer></script>
+</head>
+<body>
+  <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
+
+
+  <!-- TOP NAV -->
+  <nav class="topnav">
+    <a href="../guidelines.html" class="topnav-back">
+      <i class="fa-solid fa-arrow-left"></i>
+      Kho Guidelines
+    </a>
+    <div class="topnav-divider"></div>
+    <div class="topnav-title">JRS COPD Guideline 7th Edition 2026</div>
+    <div class="topnav-badges" style="margin-left: auto; display: flex; align-items: center; gap: 0.5rem;">
+      <span class="badge badge-teal">🔬 JRS 2026</span>
+      <span class="badge badge-blue">🫁 COPD 7th Ed</span>
+      <span class="badge badge-green">🌏 Châu Á</span>
+      <button class="topnav-theme-toggle topnav-pdf-btn" onclick="window.print()" title="Tải PDF / In bài viết">
+        <i class="fa-solid fa-file-pdf"></i>
+      </button>
+      <button class="topnav-theme-toggle" id="themeToggleBtn" aria-label="Đổi giao diện">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO HEADER -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge"><i class="fa-solid fa-lungs"></i> Japanese Respiratory Society (JRS)</div>
+      <h1 class="hero-title">
+        <span>The JRS Guideline for the Management of Chronic Obstructive Pulmonary Disease, 7th Edition 2026</span>
+        Hướng Dẫn Quản Lý Bệnh Phổi Tắc Nghẽn Mạn Tính (COPD) — Ấn Bản Lần 7 (2026)
+      </h1>
+      <p class="hero-subtitle">
+        Bản tóm tắt toàn diện và hướng dẫn áp dụng lâm sàng từ Hội Hô hấp Nhật Bản (JRS) — Đăng trên <em>Respiratory Investigation 64 (2026) 101482</em>. Cập nhật phân loại Etiotype GOLD 2023, Pre-COPD, PRISm, sinh học mới Dupilumab, Macrolide kéo dài, can thiệp van nội phế quản BLVR, và tầm soát tim mạch thường quy sau đợt cấp.
+      </p>
+      <div class="hero-meta">
+        <span class="hero-meta-item"><i class="fa-solid fa-calendar-check"></i> Xuất bản: 14/07/2026 (Online)</span>
+        <span class="hero-meta-item"><i class="fa-solid fa-user-doctor"></i> Tác giả: H. Sugiura, N. Fujino, Y. Shibata, et al.</span>
+        <span class="hero-meta-item"><i class="fa-solid fa-language"></i> Biên dịch: Phạm Anh Tuấn (@drtuancao)</span>
+        <span class="hero-meta-item"><i class="fa-solid fa-clipboard-check"></i> Khung Minds/GRADE (Nhật Bản)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3 PILLARS STRIP -->
+  <div class="pillars">
+    <div class="pillars-inner">
+      <div class="pillar p1">
+        <div class="pillar-icon">🧪</div>
+        <div>
+          <div class="pillar-title">1. Etiotype & Sinh Bệnh Học Mới</div>
+          <div class="pillar-desc">Áp dụng 7 etiotype GOLD 2023, công nhận Nút nhầy trên CT & Lão hóa tế bào (Cellular senescence/SASP) là cơ chế và yếu tố tiên lượng độc lập.</div>
+        </div>
+      </div>
+      <div class="pillar p2">
+        <div class="pillar-icon">💊</div>
+        <div>
+          <div class="pillar-title">2. LAMA Nền Tảng & Sinh Học Mới</div>
+          <div class="pillar-desc">LAMA đơn trị là lựa chọn khởi đầu hàng đầu (CQ02, Mạnh A). Thêm Dupilumab (anti-IL-4Rα) cho viêm type 2 đợt cấp tái diễn & Macrolide dài hạn (CQ16).</div>
+        </div>
+      </div>
+      <div class="pillar p3">
+        <div class="pillar-icon">🫀</div>
+        <div>
+          <div class="pillar-title">3. Tầm Soát Tim Mạch Sau Đợt Cấp</div>
+          <div class="pillar-desc">Nguy cơ biến cố tim mạch tăng vọt kéo dài trong vài tuần SAU đợt cấp (EXACOS-CV/IMPACT). Khuyên dùng BNP/NT-proBNP, ECG & Siêu âm tim thường quy.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STICKY QUICKMENU (MỤC LỤC) -->
+  <nav class="quickmenu">
+    <div class="quickmenu-inner">
+      <a href="#sec-overview" class="quickmenu-item active">1. Bối Cảnh & Điểm Mới</a>
+      <a href="#sec-etiotype" class="quickmenu-item">2. Etiotype & Biomarker</a>
+      <a href="#sec-precopd" class="quickmenu-item">3. Pre-COPD, PRISm & CVD</a>
+      <a href="#sec-stable" class="quickmenu-item">4. Điều Trị Ổn Định</a>
+      <a href="#sec-exacerbation" class="quickmenu-item">5. Quản Lý Đợt Cấp</a>
+      <a href="#sec-flowchart" class="quickmenu-item">6. Lưu Đồ Xử Trí</a>
+      <a href="#sec-takeaways" class="quickmenu-item">7. 10 Điều Cần Nhớ</a>
+      <a href="#sec-vietnam" class="quickmenu-item">8. Áp Dụng Tại VN</a>
+    </div>
+  </nav>
+
+  <!-- PAGE CONTENT -->
+  <div class="page-content">
+
+    <!-- SEC 1: BỐI CẢNH VÀ ĐIỂM MỚI -->
+    <section id="sec-overview" class="sec-card">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-circle-info"></i></div>
+        <div>
+          <h2 class="sec-title">1. Bối Cảnh Lâm Sàng & 7 Điểm Mới Của Ấn Bản 7 (JRS 2026)</h2>
+          <div class="sec-subtitle-text">Đặc điểm dịch tễ học bệnh nhân COPD Nhật Bản/Châu Á & những thay đổi mang tính đột phá</div>
+        </div>
+      </div>
+      <div class="sec-body">
+        
+        <div class="alert-banner info">
+          <div class="alert-banner-hdr">
+            <div class="alert-banner-title">
+              <div class="alert-banner-icon"><i class="fa-solid fa-chart-pie"></i></div>
+              Gánh Nặng Ẩn Chưa Được Chẩn Đoán Tại Nhật Bản & Châu Á
+            </div>
+            <span class="badge badge-blue"><i class="fa-solid fa-square-poll-vertical"></i> CORE & NICE Studies</span>
+          </div>
+          <div class="alert-banner-body">
+            Tỷ lệ hiện mắc COPD ước tính khoảng <strong>8,6%</strong> ở người trên 40 tuổi (Nghiên cứu NICE, &gt;5 triệu bệnh nhân tại Nhật Bản), nhưng chỉ khoảng <strong>~8%</strong> người có tắc nghẽn đường thở xác nhận qua hô hấp ký thực sự được chẩn đoán (Nghiên cứu CORE). Gánh nặng COPD chưa được chẩn đoán tại Châu Á là cực kỳ nghiêm trọng.
+          </div>
+        </div>
+
+        <div class="sec-subtitle">Đặc Điểm Lâm Sàng Riêng Của Bệnh Nhân Châu Á (Tham Chiếu Cho Việt Nam)</div>
+        <div class="table-wrapper">
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th>Đặc điểm lâm sàng</th>
+                <th>Quần thể Nhật Bản / Châu Á</th>
+                <th>So sánh với Phương Tây</th>
+                <th>Ý nghĩa quản lý điều trị</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Giới tính & Tuổi</strong></td>
+                <td>Nam giới chiếm ưu thế tuyệt đối; tuổi chẩn đoán ở nữ muộn hơn</td>
+                <td>Phương Tây tỷ lệ Nam/Nữ gần cân bằng</td>
+                <td>Cần tầm soát chủ động ở nam giới có tiền sử hút thuốc kéo dài</td>
+              </tr>
+              <tr>
+                <td><strong>Thể trạng (BMI)</strong></td>
+                <td>Thiên về thể trạng gầy: BMI trung bình <strong>~22,9 kg/m²</strong> (Nghiên cứu NOVELTY)</td>
+                <td>BMI trung bình <strong>27,8 kg/m²</strong> (thừa cân/béo phì)</td>
+                <td>Tăng nguy cơ tác dụng phụ của ICS (viêm phổi, NTM); cần chú trọng dinh dưỡng</td>
+              </tr>
+              <tr>
+                <td><strong>Tần suất đợt cấp</strong></td>
+                <td>Thấp hơn rõ rệt (Dữ liệu từ Hokkaido COPD Cohort)</td>
+                <td>Đợt cấp trung bình-nặng xuất hiện thường xuyên hơn</td>
+                <td>Cần công cụ phát hiện đợt cấp dưới lâm sàng (như CERT-J)</td>
+              </tr>
+              <tr>
+                <td><strong>Chồng lấp Hen - COPD (ACO)</strong></td>
+                <td>Tỷ lệ ACO rất cao: <strong>~25%</strong> bệnh nhân COPD</td>
+                <td>Thường &lt; 10-15% trong các đăng ký phương Tây</td>
+                <td>ACO liên quan giảm FEV1 nhanh và nhiều đợt cấp -&gt; Ưu tiên chỉ định ICS sớm</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="sec-subtitle">★ 7 Điểm Nổi Bật Mới Trong JRS 2026 (Ấn Bản 7)</div>
+        <div class="updates-grid">
+          <div class="update-card">
+            <div class="update-card-header">
+              <div class="update-card-num">1</div>
+              <div class="update-card-title">Etiotype GOLD 2023</div>
+            </div>
+            <div class="update-card-body">Chính thức phân loại COPD thành 7 phân nhóm theo nguyên nhân chủ đạo (không chỉ xem COPD là bệnh do thuốc lá).</div>
+          </div>
+          <div class="update-card">
+            <div class="update-card-header">
+              <div class="update-card-num">2</div>
+              <div class="update-card-title">CT Mucus Plugging</div>
+            </div>
+            <div class="update-card-body">Nút nhầy đường thở phát hiện trên CT phế quản được công nhận là yếu tố tiên lượng độc lập tăng đợt cấp & tử vong.</div>
+          </div>
+          <div class="update-card">
+            <div class="update-card-header">
+              <div class="update-card-num">3</div>
+              <div class="update-card-title">Lão Hóa Tế Bào (SASP)</div>
+            </div>
+            <div class="update-card-body">Đưa khái niệm Cellular Senescence & kiểu hình tiết SASP vào cơ chế bệnh sinh thúc đẩy viêm mạn & phá hủy nhu mô.</div>
+          </div>
+          <div class="update-card">
+            <div class="update-card-header">
+              <div class="update-card-num">4</div>
+              <div class="update-card-title">Tim Mạch Quanh Đợt Cấp</div>
+            </div>
+            <div class="update-card-body">Nâng quản lý bệnh đồng mắc tim mạch thành mục tiêu điều trị cốt lõi do nguy cơ biến cố tim mạch bùng nổ sau đợt cấp.</div>
+          </div>
+          <div class="update-card">
+            <div class="update-card-header">
+              <div class="update-card-num">5</div>
+              <div class="update-card-title">7 Câu Hỏi Lâm Sàng Mới</div>
+            </div>
+            <div class="update-card-body">Bổ sung CQ16–22: Macrolide dài hạn, đặt van nội phế quản (BLVR) và quản lý đợt cấp toàn diện (kháng sinh, corticoid, NPPV/HFNC).</div>
+          </div>
+          <div class="update-card">
+            <div class="update-card-header">
+              <div class="update-card-num">6</div>
+              <div class="update-card-title">Sinh Học Dupilumab</div>
+            </div>
+            <div class="update-card-body">Khuyến cáo mới cho Dupilumab (anti-IL-4Rα) giảm 30% đợt cấp ở bệnh nhân viêm type 2 kèm đợt cấp tái diễn.</div>
+          </div>
+          <div class="update-card">
+            <div class="update-card-header">
+              <div class="update-card-num">7</div>
+              <div class="update-card-title">COMORE-By 2032</div>
+            </div>
+            <div class="update-card-body">Khởi động dự án quốc gia nâng cao nhận thức và tầm soát sớm COPD gắn với chính sách "Health Japan 21 (kỳ 3)".</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SEC 2: ETIOTYPE VÀ BIOMARKERS -->
+    <section id="sec-etiotype" class="sec-card">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-vial"></i></div>
+        <div>
+          <h2 class="sec-title">2. Phân Loại Etiotype GOLD 2023 & Bảng Sinh Chỉ Điểm (Biomarkers)</h2>
+          <div class="sec-subtitle-text">Tương tác Gen – Môi trường tích lũy suốt đời và các ngưỡng xét nghiệm hướng dẫn điều trị</div>
+        </div>
+      </div>
+      <div class="sec-body">
+        
+        <div class="alert-banner teal">
+          <div class="alert-banner-hdr">
+            <div class="alert-banner-title">
+              <div class="alert-banner-icon"><i class="fa-solid fa-dna"></i></div>
+              7 Phân Nhóm Etiotype GOLD 2023 Trong JRS 2026
+            </div>
+            <span class="badge badge-teal"><i class="fa-solid fa-layer-group"></i> GOLD 2023 Concept</span>
+          </div>
+          <div class="alert-banner-body">
+            COPD không còn được xem đơn thuần là bệnh do thuốc lá, mà được cấu thành từ nhiều nguyên nhân tích lũy suốt đời: 
+            <strong>(1) Di truyền</strong> (thiếu alpha-1 antitrypsin); 
+            <strong>(2) Bất thường phát triển phổi sớm</strong> (sinh non, hen trẻ em); 
+            <strong>(3) Phơi nhiễm thuốc lá</strong>; 
+            <strong>(4) Khói bụi sinh khối & ô nhiễm môi trường</strong> (PM2.5, NOx); 
+            <strong>(5) Nhiễm trùng hô hấp tái diễn</strong>; 
+            <strong>(6) Hen phế quản đi kèm (ACO)</strong>; 
+            <strong>(7) Không rõ nguyên nhân</strong>.
+          </div>
+        </div>
+
+        <div class="sec-subtitle">Bảng Ngưỡng Sinh Chỉ Điểm (Biomarker) Hướng Dẫn Lâm Sàng</div>
+        <div class="table-wrapper">
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th>Sinh chỉ điểm (Biomarker)</th>
+                <th>Ngưỡng tham chiếu</th>
+                <th>Ý nghĩa lâm sàng & Hướng dẫn điều trị</th>
+                <th>Khuyến cáo JRS 2026</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Eosinophil máu ngoại vi</strong></td>
+                <td><span class="rx-tag danger">&ge; 300 tế bào/&mu;L</span></td>
+                <td>Hướng dẫn thêm ICS ở bệnh nhân đợt cấp tái diễn (&ge;2 đợt nhẹ-vừa hoặc &ge;1 đợt nặng/năm). Ngưỡng xét chỉ định Dupilumab. <em>Lưu ý đo lặp lại do dao động.</em></td>
+                <td><span class="grade-tag grade-weak-a">CQ06 - Yếu A</span></td>
+              </tr>
+              <tr>
+                <td><strong>FeNO (Nồng độ NO thở ra)</strong></td>
+                <td>Không cố định (&gt; 25-50 ppb)</td>
+                <td>Hỗ trợ chẩn đoán Hen – COPD chồng lấp (ACO) và dự đoán đáp ứng với Corticosteroid xịt.</td>
+                <td>Bổ trợ chẩn đoán ACO</td>
+              </tr>
+              <tr>
+                <td><strong>BNP / NT-proBNP</strong></td>
+                <td>Tăng bất thường theo tuổi/EF</td>
+                <td>Tầm soát/loại trừ suy tim và biến cố mạch vành đồng mắc — <strong>Đặc biệt bắt buộc đánh giá SAU đợt cấp COPD.</strong></td>
+                <td>Tầm soát CVD chủ động</td>
+              </tr>
+              <tr>
+                <td><strong>CRP / Procalcitonin</strong></td>
+                <td>CRP &gt; 20-50 mg/L / Procalcitonin &gt; 0,25</td>
+                <td>Hướng dẫn quyết định chỉ định kháng sinh trong đợt cấp (phân biệt đàm mủ do vi khuẩn vs virus).</td>
+                <td><span class="grade-tag grade-strong-b">CQ19 - Mạnh B</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SEC 3: PRE-COPD, PRISM VÀ BỆNH ĐỒNG MẮC -->
+    <section id="sec-precopd" class="sec-card">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+        <div>
+          <h2 class="sec-title">3. Pre-COPD, PRISm & Bệnh Đồng Mắc Tim Mạch Quanh Đợt Cấp</h2>
+          <div class="sec-subtitle-text">Cửa sổ can thiệp sớm và tầm soát chủ động biến cố tim mạch sau đợt cấp</div>
+        </div>
+      </div>
+      <div class="sec-body">
+        
+        <div class="sec-subtitle">Bảng So Sánh Chi Tiết: Pre-COPD — PRISm — COPD Xác Lập</div>
+        <div class="table-wrapper">
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th>Tiêu chí đánh giá</th>
+                <th>Pre-COPD (Mới từ GOLD 2023)</th>
+                <th>PRISm (Preserved Ratio Impaired Spirometry)</th>
+                <th>COPD (Bệnh đã xác lập)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>FEV1/FVC sau thử GPQ</strong></td>
+                <td><span class="rx-tag preferred">&ge; 0,70</span></td>
+                <td><span class="rx-tag preferred">&ge; 0,70</span></td>
+                <td><span class="rx-tag danger">&lt; 0,70</span> (Cố định)</td>
+              </tr>
+              <tr>
+                <td><strong>%FEV1 dự đoán</strong></td>
+                <td>Thường bình thường (&ge;80%)</td>
+                <td><span class="rx-tag warning">&lt; 80%</span></td>
+                <td>Thường &lt; 80% (GOLD 1 - 4)</td>
+              </tr>
+              <tr>
+                <td><strong>Đặc điểm cốt lõi</strong></td>
+                <td>Có triệu chứng hô hấp và/hoặc tổn thương CT (khí phế thũng/bẫy khí/nút nhầy) và/hoặc giảm DLCO, nhưng FEV1/FVC chưa &lt;0.70.</td>
+                <td>Giảm FEV1 tuyệt đối dù tỷ lệ FEV1/FVC bình thường. Thể tích phổi giảm.</td>
+                <td>Tắc nghẽn đường thở không hồi phục hoàn toàn sau thuốc GPQ.</td>
+              </tr>
+              <tr>
+                <td><strong>Tỷ lệ hiện mắc</strong></td>
+                <td>7,2 – 22,3% quần thể nguy cơ</td>
+                <td>1,4 – 19,6% (TG); 4,4 – 16,7% (Nhật)</td>
+                <td>8,6% người Nhật &gt;40 tuổi</td>
+              </tr>
+              <tr>
+                <td><strong>Ý nghĩa lâm sàng</strong></td>
+                <td>Cửa sổ vàng can thiệp sớm; tốc độ giảm FEV1 nhanh hơn người khỏe mạnh.</td>
+                <td>Tăng tử vong mọi nguyên nhân, tăng biến cố tim mạch, tỷ lệ chuyển thành COPD cao.</td>
+                <td>Bệnh mạn tính tiến triển, cần điều trị kiểm soát theo bậc thang.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="alert-banner danger">
+          <div class="alert-banner-hdr">
+            <div class="alert-banner-title">
+              <div class="alert-banner-icon"><i class="fa-solid fa-heart-crack"></i></div>
+              ★ CẢNH BÁO LÂM SÀNG: NGUY CƠ TIM MẠCH TĂNG VỌT SAU ĐỢT CẤP COPD
+            </div>
+            <span class="badge badge-red"><i class="fa-solid fa-database"></i> IMPACT & EXACOS-CV Data</span>
+          </div>
+          <div class="alert-banner-body">
+            <p style="margin-bottom: 0.75rem;">
+              Dữ liệu từ thử nghiệm lâm sàng <strong>IMPACT</strong> và chương trình nghiên cứu đa quốc gia <strong>EXACOS-CV</strong> (bao gồm dữ liệu tại Nhật Bản) chứng minh: Nguy cơ nhồi máu cơ tim cấp, suy tim mất bù và loạn nhịp tim tăng vọt trong những tuần đầu tiên <strong>SAU KHI BỆNH NHÂN XUẤT VIỆN VÌ ĐỢT CẤP COPD</strong>, và nguy cơ này vẫn kéo dài nhiều tháng sau đó. Viêm hệ thống mạn tính (IL-6, CRP, TNF-&alpha;) là cơ chế sinh bệnh học dùng chung giữa COPD và Bệnh tim mạch (CVD).
+            </p>
+            
+            <div style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 0.82rem; margin-top: 0.85rem; color: #991b1b; text-transform: uppercase; letter-spacing: 0.03em;">
+              <i class="fa-solid fa-clipboard-check"></i> Khuyến cáo JRS 2026: Tầm soát tim mạch có cấu trúc sau xuất viện đợt cấp bằng 3 công cụ:
+            </div>
+            
+            <div class="alert-grid">
+              <div class="alert-grid-item">
+                <div class="alert-grid-item-icon">🧪</div>
+                <div>
+                  <div class="alert-grid-item-title">BNP / NT-proBNP</div>
+                  <div class="alert-grid-item-desc">Đánh giá suy tim cấp/mạn, phân biệt khó thở do tim vs do hô hấp.</div>
+                </div>
+              </div>
+              <div class="alert-grid-item">
+                <div class="alert-grid-item-icon">📈</div>
+                <div>
+                  <div class="alert-grid-item-title">ECG 12 Chuyển Đạo</div>
+                  <div class="alert-grid-item-desc">Tầm soát thiếu máu cục bộ cơ tim, biến đổi ST-T và loạn nhịp.</div>
+                </div>
+              </div>
+              <div class="alert-grid-item">
+                <div class="alert-grid-item-icon">🫀</div>
+                <div>
+                  <div class="alert-grid-item-title">Siêu Âm Tim (Echocardiogram)</div>
+                  <div class="alert-grid-item-desc">Đánh giá phân suất tống máu (EF, HFpEF), tăng áp ĐMP & nhĩ/thất.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sec-subtitle">Kiểu Hình COPD Phối Hợp Giãn Phế Quản (ROSE Criteria)</div>
+        <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1rem;">
+          Được công nhận là kiểu hình riêng biệt theo tiêu chuẩn <strong>ROSE</strong> (Radiology, Obstruction, Symptoms, Exposure). Liên quan đến tần suất đợt cấp cao và tăng tử vong. Phác đồ ưu tiên xem xét Macrolide dài hạn (CQ16) và thận trọng tối đa khi dùng ICS do nguy cơ bội nhiễm viêm phổi.
+        </p>
+
+      </div>
+    </section>
+
+    <!-- SEC 4: ĐIỀU TRỊ GIAI ĐOẠN ỔN ĐỊNH -->
+    <section id="sec-stable" class="sec-card">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-pills"></i></div>
+        <div>
+          <h2 class="sec-title">4. Khuyến Cáo Điều Trị COPD Giai Đoạn Ổn Định</h2>
+          <div class="sec-subtitle-text">Bậc thang Dược lý (LAMA, LABA, Triple, Dupilumab, Macrolide) & Không dược lý (BLVR, HFNC, LTOT)</div>
+        </div>
+      </div>
+      <div class="sec-body">
+        
+        <div class="sec-subtitle">1. Phác Đồ Dược Lý Theo Bậc Thang (GRADE Recommendations)</div>
+        
+        <div class="alert-banner success">
+          <div class="alert-banner-hdr">
+            <div class="alert-banner-title">
+              <div class="alert-banner-icon"><i class="fa-solid fa-check-double"></i></div>
+              LAMA Đơn Trị Là Lựa Chọn Hàng Đầu Khởi Đầu Duy Trì
+            </div>
+            <span class="badge badge-green"><i class="fa-solid fa-award"></i> CQ02 - Khuyến Cáo Mạnh (A)</span>
+          </div>
+          <div class="alert-banner-body">
+            LAMA (Tiotropium, Umeclidinium, Glycopyrronium) là điều trị nền tảng duy trì khởi đầu cho bệnh nhân COPD có triệu chứng dai dẳng. <strong>KHÔNG KHỞI ĐẦU BẰNG ICS ĐƠN TRỊ.</strong> Nếu LAMA bị hạn chế do tác dụng phụ phụ khoa/tăng nhãn áp, chuyển sang LABA. Bệnh nhân khó khăn khi dùng thiết bị hít có thể dùng miếng dán LABA qua da.
+          </div>
+        </div>
+
+        <div class="table-wrapper">
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th>Bậc điều trị</th>
+                <th>Phác đồ khuyến cáo</th>
+                <th>Mức khuyến cáo JRS 2026</th>
+                <th>Chỉ định & Điểm lưu ý lâm sàng</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Triệu chứng thoáng qua</strong></td>
+                <td><span class="rx-tag preferred">SABA</span> hoặc <span class="rx-tag preferred">SAMA</span> xịt khi cần</td>
+                <td>Tiêu chuẩn thực hành</td>
+                <td>dùng Salbutamol hoặc Ipratropium khi khó thở đột ngột.</td>
+              </tr>
+              <tr>
+                <td><strong>Triệu chứng dai dẳng</strong></td>
+                <td><span class="rx-tag preferred">LAMA</span> đơn trị</td>
+                <td><span class="grade-tag grade-strong-a">CQ02 - Mạnh A</span></td>
+                <td>Lựa chọn nền tảng ưu tiên hàng đầu giúp cải thiện FEV1 & giảm đợt cấp.</td>
+              </tr>
+              <tr>
+                <td><strong>Triệu chứng nặng / Khó thở nhiều</strong></td>
+                <td><span class="rx-tag preferred">LAMA + LABA</span> bộ đôi duy trì</td>
+                <td><span class="grade-tag grade-weak-a">CQ04 - Yếu A</span></td>
+                <td>Khởi đầu ngay nếu mMRC &ge; 2 hoặc CAT &ge; 10 hoặc suy giảm hoạt động thể lực rõ.</td>
+              </tr>
+              <tr>
+                <td><strong>ACO hoặc Đợt cấp tái diễn + Eos &ge;300</strong></td>
+                <td><span class="rx-tag preferred">LAMA + LABA + ICS</span> (Bộ ba / Triple)</td>
+                <td><span class="grade-tag grade-weak-a">CQ06 - Yếu A</span></td>
+                <td>Thêm ICS khi: Có ACO (bất kể độ nặng) HOẶC &ge;2 đợt cấp vừa/&ge;1 đợt cấp nặng/năm KÈM Eosinophil &ge;300/&mu;L. <em>Tránh ICS nếu Eos &lt;100 hoặc tiền sử viêm phổi tái phát.</em></td>
+              </tr>
+              <tr>
+                <td><strong>Đợt cấp tái diễn dù đã dùng Triple Therapy</strong></td>
+                <td><span class="rx-tag alt">Dupilumab</span> (anti-IL-4R&alpha;) hoặc <span class="rx-tag warning">Macrolide dài hạn</span></td>
+                <td>Mới trong JRS 2026<br><span class="grade-tag grade-weak-b">CQ16 - Yếu B</span></td>
+                <td><strong>Dupilumab:</strong> Add-on cho BN không ACO, FEV1 30-70%, Eos &ge;300, đợt cấp tái diễn (giảm ~30% đợt cấp - BOREAS/NOTUS).<br><strong>Macrolide dài hạn:</strong> Azithromycin/Clarithromycin cho thể viêm neutrophil/giãn phế quản đi kèm.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="alert-banner warning">
+          <div class="alert-banner-hdr">
+            <div class="alert-banner-title">
+              <div class="alert-banner-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+              Cảnh Báo Tác Dụng Phụ ICS Trên Người Cao Tuổi & Thể Trạng Gầy (Châu Á)
+            </div>
+            <span class="badge badge-orange"><i class="fa-solid fa-shield-virus"></i> Viêm Phổi & NTM Risk</span>
+          </div>
+          <div class="alert-banner-body">
+            Bệnh nhân COPD cao tuổi, thể trạng gầy (BMI &lt; 23 kg/m² — đặc điểm điển hình ở người Châu Á/Việt Nam) dùng ICS kéo dài có nguy cơ <strong>Viêm phổi nặng</strong> và <strong>Nhiễm Mycobacteria không lao (NTM)</strong> cao hơn rõ rệt. Khuyến cáo chủ động giảm liều hoặc ngừng ICS nếu bệnh nhân xuất hiện nhiễm trùng hô hấp tái diễn.
+          </div>
+        </div>
+
+        <div class="sec-subtitle">2. Phác Đồ Không Dược Lý & Can Thiệp Mới (JRS 2026)</div>
+        <div class="updates-grid">
+          <div class="update-card">
+            <div class="update-card-header">
+              <div class="update-card-num"><i class="fa-solid fa-ban font-size-xs"></i></div>
+              <div class="update-card-title">Cai Thuốc Lá (CQ10)</div>
+            </div>
+            <div class="update-card-body">
+              <span class="grade-tag grade-strong-b">Khuyến cáo Mạnh, Bằng chứng B</span> (Nâng cấp từ D). Khuyên dùng NRT và Varenicline. Bao gồm cả thuốc lá điện tử & thuốc lá nung nóng.
+            </div>
+          </div>
+          <div class="update-card">
+            <div class="update-card-header">
+              <div class="update-card-num"><i class="fa-solid fa-syringe"></i></div>
+              <div class="update-card-title">Tiêm Chủng Mới (CQ11)</div>
+            </div>
+            <div class="update-card-body">
+              <span class="grade-tag grade-strong-b">Khuyến cáo Mạnh, Bằng chứng B</span> cho Phế cầu. Mở rộng thêm <strong>Cúm mùa</strong>, <strong>COVID-19</strong> và <strong>RSV</strong> hằng năm.
+            </div>
+          </div>
+          <div class="update-card">
+            <div class="update-card-header">
+              <div class="update-card-num"><i class="fa-solid fa-person-walking"></i></div>
+              <div class="update-card-title">Phục Hồi Chức Năng (CQ12)</div>
+            </div>
+            <div class="update-card-body">
+              <span class="grade-tag grade-strong-a">Khuyến cáo Mạnh, Bằng chứng A</span>. Áp dụng PHCN hô hấp sớm cho mọi bệnh nhân có triệu chứng giúp cải thiện CAT và khả năng gắng sức.
+            </div>
+          </div>
+          <div class="update-card">
+            <div class="update-card-header">
+              <div class="update-card-num"><i class="fa-solid fa-wind"></i></div>
+              <div class="update-card-title">LTOT & Home HFNC (CQ14,15)</div>
+            </div>
+            <div class="update-card-body">
+              <strong>LTOT:</strong> PaO2 &le; 55 mmHg. <strong>HFNC tại nhà:</strong> PaCO2 45–55 mmHg không kiểm soát tốt với LTOT đơn thuần (<span class="grade-tag grade-weak-b">CQ15 - Yếu B</span>).
+            </div>
+          </div>
+          <div class="update-card">
+            <div class="update-card-header">
+              <div class="update-card-num"><i class="fa-solid fa-stetho"></i></div>
+              <div class="update-card-title">Van Nội Phế Quản BLVR (CQ17)</div>
+            </div>
+            <div class="update-card-body">
+              <span class="grade-tag grade-weak-c">CQ17 - Khuyến cáo Yếu, Bằng chứng C</span>. Đặt van nội phế quản (Zephyr) cho khí phế thũng có vách liên thùy nguyên vẹn (CV-). FEV1 +0.15L, SGRQ -7.66 điểm. <em>Lưu ý nguy cơ tràn khí màng phổi tăng mạnh (OR 19.68).</em>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SEC 5: QUẢN LÝ ĐỢT CẤP COPD -->
+    <section id="sec-exacerbation" class="sec-card">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-truck-medical"></i></div>
+        <div>
+          <h2 class="sec-title">5. Quản Lý Đợt Cấp COPD (4 Câu Hỏi Lâm Sàng Mới CQ18–22)</h2>
+          <div class="sec-subtitle-text">Định nghĩa 14 ngày, công cụ CERT-J, phác đồ Corticoid, Kháng sinh & Hỗ trợ hô hấp NPPV/HFNC</div>
+        </div>
+      </div>
+      <div class="sec-body">
+        
+        <div class="alert-banner danger">
+          <div class="alert-banner-hdr">
+            <div class="alert-banner-title">
+              <div class="alert-banner-icon"><i class="fa-solid fa-clock"></i></div>
+              Định Nghĩa Đợt Cấp COPD & Tiêu Chuẩn Loại Trừ (JRS 2026)
+            </div>
+            <span class="badge badge-red"><i class="fa-solid fa-hourglass-half"></i> Khởi phát &le; 14 Ngày</span>
+          </div>
+          <div class="alert-banner-body">
+            Đợt cấp được định nghĩa là sự xấu đi cấp tính của các triệu chứng hô hấp (khó thở tăng, ho/đàm tăng, tức ngực mới khởi phát) vượt quá biến động hằng ngày và dẫn đến thay đổi điều trị nền, <strong>khởi phát trong vòng 14 ngày</strong>.<br>
+            <strong>Bắt buộc loại trừ các nguyên nhân cấp tính khác:</strong> Viêm phổi cấp, Suy tim cấp mất bù, Tràn khí màng phổi, và Thuyên tắc phổi.
+          </div>
+        </div>
+
+        <div class="sec-subtitle">Các Khuyến Cáo Điều Trị Đợt Cấp (CQ18 – CQ22)</div>
+        <div class="table-wrapper">
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th>Can thiệp đợt cấp</th>
+                <th>Phác đồ chi tiết & Liều dùng</th>
+                <th>Mức khuyến cáo JRS 2026</th>
+                <th>Bằng chứng & Lưu ý lâm sàng</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Thuốc giãn phế quản</strong></td>
+                <td><strong>SABA + SAMA</strong> phun khí dung/xịt khi cần.<br>Tiếp tục hoặc khởi đầu LABD (LAMA/LABA).</td>
+                <td><span class="grade-tag grade-weak-d">CQ18 - Yếu D</span></td>
+                <td>Nền tảng điều trị đầu tay giúp giảm bẫy khí và cải thiện thông khí nhanh.</td>
+              </tr>
+              <tr>
+                <td><strong>Corticosteroid toàn thân</strong></td>
+                <td><span class="rx-tag preferred">Prednisolone 0,5 mg/kg/ngày</span> (uống) &times; <strong>5 – 7 ngày</strong></td>
+                <td><span class="grade-tag grade-strong-b">CQ21 - Mạnh B</span></td>
+                <td><strong>KHÔNG NÊN DÙNG LIỀU CAO HOẶC KÉO DÀI HƠN 7 NGÀY.</strong> Phân tích gộp 10 RCT (n=1240) chứng minh cải thiện FEV1 và giảm tỷ lệ thất bại điều trị tương đương liệu trình dài ngày nhưng ít tác dụng phụ hơn.</td>
+              </tr>
+              <tr>
+                <td><strong>Liệu pháp Kháng sinh</strong></td>
+                <td>Chỉ dùng khi có <strong>bằng chứng nhiễm khuẩn</strong> (đàm mủ, CRP tăng, procalcitonin tăng).</td>
+                <td><span class="grade-tag grade-strong-b">CQ19 - Mạnh B</span></td>
+                <td>Phân tích gộp 6 RCT (n=1185): Giảm 50% thất bại điều trị (OR 0.50; 95%CI 0.35-0.71). CQ20: Thời gian dùng &le;7 ngày vs &gt;7 ngày chưa dứt khoát (Bằng chứng D).</td>
+              </tr>
+              <tr>
+                <td><strong>Thông khí nhân tạo không xâm nhập (NPPV)</strong></td>
+                <td>Chỉ định ưu tiên hơn oxy đơn thuần khi có <strong>suy hô hấp tăng CO2</strong> (pH &lt; 7.35, PaCO2 &gt; 45 mmHg).</td>
+                <td><span class="grade-tag grade-weak-b">CQ22 - Yếu B</span></td>
+                <td>Phân tích gộp 17 RCT: Giảm tỷ lệ tử vong nội viện (RR 0.54) và giảm 64% tỷ lệ phải đặt nội khí quản (RR 0.36).</td>
+              </tr>
+              <tr>
+                <td><strong>HFNC trong đợt cấp</strong></td>
+                <td>Tăng CO2 nhẹ (PaCO2 45-55 mmHg, pH &ge; 7.35) không dung nạp NPPV.</td>
+                <td>Lựa chọn thay thế NPPV</td>
+                <td>Cung cấp dòng cao ấm ẩm, giảm công thở và cải thiện thải CO2 nhẹ.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SEC 6: LƯU ĐỒ THUẬT TOÁN XỬ TRÍ -->
+    <section id="sec-flowchart" class="sec-card">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-diagram-project"></i></div>
+        <div>
+          <h2 class="sec-title">6. Lưu Đồ Thuật Toán Điều Trị COPD JRS 2026</h2>
+          <div class="sec-subtitle-text">Quy trình quyết định lâm sàng từng bước cho giai đoạn ổn định và đợt cấp</div>
+        </div>
+      </div>
+      <div class="sec-body">
+        
+        <div class="sec-subtitle">Lưu Đồ Xử Trí COPD Giai Đoạn Ổn Định</div>
+        <div class="flow-container">
+          <div class="flow-step">
+            <div class="flow-icon">01</div>
+            <div class="flow-content">
+              <div class="flow-title">BƯỚC NỀN TẢNG (Áp dụng cho mọi bệnh nhân)</div>
+              <div class="flow-desc">SABA/SAMA xịt khi cần + Ngừng hút thuốc lá (CQ10) + Tiêm chủng Phế cầu/Cúm/COVID/RSV (CQ11) + Quản lý vận động & Bệnh đồng mắc tim mạch.</div>
+            </div>
+          </div>
+
+          <div class="flow-step">
+            <div class="flow-icon">02</div>
+            <div class="flow-content">
+              <div class="flow-title">ĐIỂM QUYẾT ĐỊNH 1: Có Hen – COPD Chồng Lấp (ACO) Không?</div>
+              <div class="flow-branch">
+                <div class="flow-branch-card accent-blue">
+                  <strong>KHÔNG CÓ ACO:</strong><br>
+                  • Triệu chứng nhẹ/thoáng qua -&gt; SABD khi cần.<br>
+                  • Triệu chứng dai dẳng -&gt; <strong>LAMA đơn trị (CQ02)</strong>.<br>
+                  • mMRC &ge;2 / CAT &ge;10 -&gt; <strong>LAMA + LABA (CQ04)</strong>.
+                </div>
+                <div class="flow-branch-card accent-green">
+                  <strong>CÓ ACO (Tiền sử hen, FeNO high, Eos high):</strong><br>
+                  • Khởi đầu ngay bằng <strong>ICS + LABA</strong> (hoặc ICS + LAMA).<br>
+                  • Nặng hơn -&gt; Nâng cấp lên <strong>Triple (ICS + LABA + LAMA)</strong>.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flow-step">
+            <div class="flow-icon">03</div>
+            <div class="flow-content">
+              <div class="flow-title">ĐIỂM QUYẾT ĐỊNH 2: Đợt Cấp Tái Diễn Trợ Với LAMA+LABA?</div>
+              <div class="flow-branch">
+                <div class="flow-branch-card accent-orange">
+                  <strong>Eosinophil Máu &ge; 300 tế bào/&mu;L:</strong><br>
+                  Thêm ICS -&gt; <strong>LAMA + LABA + ICS (CQ06)</strong>.
+                </div>
+                <div class="flow-branch-card accent-red">
+                  <strong>Đợt cấp tái diễn dù đã Triple Therapy:</strong><br>
+                  • Thêm <strong>Dupilumab</strong> (anti-IL-4R&alpha;) nếu Eos &ge;300 & FEV1 30-70%.<br>
+                  • Thêm <strong>Macrolide kéo dài (CQ16)</strong> nếu thể viêm neutrophil/giãn phế quản.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SEC 7: 10 ĐIỀU CẦN NHỚ -->
+    <section id="sec-takeaways" class="sec-card">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-list-check"></i></div>
+        <div>
+          <h2 class="sec-title">7. Tóm Tắt Tinh Gọn — 10 Điều Bác Sĩ Điều Trị Cần Nhớ</h2>
+          <div class="sec-subtitle-text">10 quy tắc cốt lõi rút ra từ Guideline JRS COPD 2026 trong thực hành hằng ngày</div>
+        </div>
+      </div>
+      <div class="sec-body">
+        
+        <div class="updates-grid">
+          <div class="update-card">
+            <div class="update-card-header">
+              <div class="update-card-num">1</div>
+              <div class="update-card-title">LAMA Là Nền Tảng Hàng Đầu</div>
+            </div>
+            <div class="update-card-body">LAMA đơn trị là chọn lựa ưu tiên đầu tay cho COPD ổn định có triệu chứng (CQ02, bằng chứng A) — <strong>KHÔNG DÙNG ICS ĐƠN TRỊ</strong>.</div>
+          </div>
+          <div class="update-card">
+            <div class="update-card-header">
+              <div class="update-card-num">2</div>
+              <div class="update-card-title">Chỉ Định ICS Đúng Ngưỡng</div>
+            </div>
+            <div class="update-card-body">Chỉ thêm ICS vào bộ đôi LAMA+LABA khi có ACO hoặc đợt cấp thường xuyên kèm Eosinophil máu &ge; 300 tế bào/&mu;L.</div>
+          </div>
+          <div class="update-card">
+            <div class="update-card-header">
+              <div class="update-card-num">3</div>
+              <div class="update-card-title">Thận Trọng ICS Ở Người Gầy</div>
+            </div>
+            <div class="update-card-body">Bệnh nhân cao tuổi, thể trạng gầy (BMI thấp) dùng ICS tăng nguy cơ Viêm phổi & NTM -&gt; giảm liều/ngừng nếu nhiễm trùng tái diễn.</div>
+          </div>
+          <div class="update-card">
+            <div class="update-card-header">
+              <div class="update-card-num">4</div>
+              <div class="update-card-title">Tầm Soát Tim Mạch Sau Đợt Cấp</div>
+            </div>
+            <div class="update-card-body">Nguy cơ biến cố tim mạch tăng vọt trong vài tuần SAU đợt cấp -&gt; Chủ động làm BNP/NT-proBNP, ECG 12 chuyển đạo, Siêu âm tim.</div>
+          </div>
+          <div class="update-card">
+            <div class="update-card-header">
+              <div class="update-card-num">5</div>
+              <div class="update-card-title">Khai Thác Đợt Cấp Cấu Trúc</div>
+            </div>
+            <div class="update-card-body">Bệnh nhân Châu Á thường báo cáo dưới mức triệu chứng đợt cấp thực tế -&gt; Cần dùng bảng câu hỏi có cấu trúc (CERT-J tool).</div>
+          </div>
+          <div class="update-card">
+            <div class="update-card-header">
+              <div class="update-card-num">6</div>
+              <div class="update-card-title">Prednisolone 5-7 Ngày</div>
+            </div>
+            <div class="update-card-body">Corticosteroid đường toàn thân trong đợt cấp: Prednisolone 0,5 mg/kg/ngày &times; 5–7 ngày (CQ21) — Không dùng liều cao hoặc kéo dài hơn.</div>
+          </div>
+          <div class="update-card">
+            <div class="update-card-header">
+              <div class="update-card-num">7</div>
+              <div class="update-card-title">Kháng Sinh Chỉ Khi Nhiễm Khuẩn</div>
+            </div>
+            <div class="update-card-body">Chỉ dùng kháng sinh đợt cấp khi có đàm mủ hoặc CRP/Procalcitonin tăng (CQ19). Thời gian tối ưu &le;7 ngày chưa xác định.</div>
+          </div>
+          <div class="update-card">
+            <div class="update-card-header">
+              <div class="update-card-num">8</div>
+              <div class="update-card-title">Ưu Tiên NPPV Khi Tăng CO2</div>
+            </div>
+            <div class="update-card-body">NPPV được ưu tiên hơn oxy đơn thuần/HFNC khi có suy hô hấp tăng CO2 máu (pH &lt;7.35, PaCO2 &gt;45 mmHg) giúp giảm tử vong và đặt NKQ.</div>
+          </div>
+          <div class="update-card">
+            <div class="update-card-header">
+              <div class="update-card-num">9</div>
+              <div class="update-card-title">Chỉ Định Hẹp Cho Dupilumab</div>
+            </div>
+            <div class="update-card-body">Dupilumab dành cho bệnh nhân FEV1 30-70%, Eos &ge;300/&mu;L, đợt cấp tái diễn dù đã dùng Triple Therapy tối ưu.</div>
+          </div>
+          <div class="update-card">
+            <div class="update-card-header">
+              <div class="update-card-num">10</div>
+              <div class="update-card-title">Tầm Soát ACO Thường Quy</div>
+            </div>
+            <div class="update-card-body">Chủ động tầm soát ACO (hen chồng lấp) ở mọi bệnh nhân COPD mới chẩn đoán vì tỷ lệ cao ở người Châu Á (~25%) và thay đổi lựa chọn ICS.</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SEC 8: ÁP DỤNG THỰC HÀNH TẠI VIỆT NAM -->
+    <section id="sec-vietnam" class="sec-card">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-flag"></i></div>
+        <div>
+          <h2 class="sec-title">8. Điểm Lưu Ý Đặc Biệt Cho Thực Hành Lâm Sàng Tại Việt Nam</h2>
+          <div class="sec-subtitle-text">Khả thi trang thiết bị, Bảo hiểm Y tế, Bối cảnh dịch tễ học Lao & Chi phí điều trị</div>
+        </div>
+      </div>
+      <div class="sec-body">
+        
+        <div class="alert-banner warning">
+          <div class="alert-banner-hdr">
+            <div class="alert-banner-title">
+              <div class="alert-banner-icon"><i class="fa-solid fa-shield-virus"></i></div>
+              ★ BẮT BUỘC LOẠI TRỪ LAO TRƯỚC KHI DÙNG MACROLIDE DÀI HẠN (CQ16)
+            </div>
+            <span class="badge badge-orange"><i class="fa-solid fa-triangle-exclamation"></i> Đặc Thù Việt Nam</span>
+          </div>
+          <div class="alert-banner-body">
+            Gánh nặng bệnh Lao tại Việt Nam cao hơn Nhật Bản đáng kể. Macrolide kéo dài (Azithromycin/Clarithromycin) không được BHYT Việt Nam chi trả cho chỉ định COPD. Đặc biệt, nếu dùng Macrolide đơn độc kéo dài ở bệnh nhân có Lao tiềm ẩn hoặc Lao chưa phát hiện sẽ <strong>gây chọn lọc vi khuẩn Lao kháng thuốc (MDR-TB / NTM) cực kỳ nguy hiểm</strong>.
+          </div>
+        </div>
+
+        <div class="table-wrapper">
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th>Nội dung khuyến cáo JRS 2026</th>
+                <th>Tình hình thực tế tại Việt Nam</th>
+                <th>Khuyến nghị áp dụng cho bác sĩ Việt Nam</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Thuốc GPQ & Triple Therapy</strong></td>
+                <td>LAMA, LABA, ICS bộ đôi và bộ ba (Triple therapy) đều sẵn có và được BHYT chi trả.</td>
+                <td>Áp dụng trực tiếp bậc thang điều trị JRS 2026: LAMA đầu tay, không dùng ICS đơn trị.</td>
+              </tr>
+              <tr>
+                <td><strong>Sinh học mới Dupilumab</strong></td>
+                <td>Chi phí rất cao, chi trả BHYT cho COPD chưa có.</td>
+                <td>Cần tư vấn kỹ chi phí trước khi chỉ định cho bệnh nhân đợt cấp tái diễn nặng.</td>
+              </tr>
+              <tr>
+                <td><strong>Đặt van nội phế quản (BLVR)</strong></td>
+                <td>Yêu cầu CT chuyên sâu (CV-) và ê-kíp nội soi phế quản can thiệp trình độ cao.</td>
+                <td>Hiện chỉ khả thi tại một số trung tâm hô hấp lớn (BV Chợ Rẫy, BV Bạch Mai, BV Đại học Y Dược).</td>
+              </tr>
+              <tr>
+                <td><strong>Thể trạng gầy (BMI thấp)</strong></td>
+                <td>Bệnh nhân Việt Nam có tỷ lệ BMI thấp tương đồng với Nhật Bản.</td>
+                <td>Cảnh báo tăng nguy cơ Viêm phổi/NTM khi dùng ICS kéo dài; đẩy mạnh dinh dưỡng & PHCN.</td>
+              </tr>
+              <tr>
+                <td><strong>Tầm soát tim mạch sau đợt cấp</strong></td>
+                <td>Xét nghiệm BNP/NT-proBNP, ECG, Siêu âm tim phổ biến và chi phí hợp lý.</td>
+                <td><strong>Nên áp dụng thường quy tại mọi bệnh viện Việt Nam</strong> sau khi bệnh nhân xuất viện vì đợt cấp.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- CITATION & ACTION BUTTONS -->
+        <div class="citation-box">
+          <strong>Trích dẫn tài liệu gốc (Citation):</strong><br>
+          Sugiura H, Fujino N, Shibata Y, Muro S, Matsunaga K, Horita N, Kawayama T. The JRS Guideline for the Management of Chronic Obstructive Pulmonary Disease, 7th edition 2026. <em>Respiratory Investigation</em>. 2026;64(101482). Elsevier (Open Access CC BY).
+        </div>
+
+        <div class="btn-row">
+          <a href="../guidelines.html" class="btn btn-primary">
+            <i class="fa-solid fa-book-medical"></i> Quay lại Kho Guidelines
+          </a>
+          <a href="../../calculators/respiratory/CAT_COPD.html" class="btn">
+            <i class="fa-solid fa-calculator"></i> Thang điểm CAT (COPD)
+          </a>
+          <a href="2026-byt-copd.html" class="btn">
+            <i class="fa-solid fa-file-contract"></i> COPD Bộ Y Tế 2026
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Theme Toggle with LocalStorage
+      const themeToggleBtn = document.getElementById('themeToggleBtn');
+      const htmlEl = document.documentElement;
+      const savedTheme = localStorage.getItem('cliniportal_ebm_theme');
+      if (savedTheme === 'dark' || savedTheme === 'light') {
+        htmlEl.setAttribute('data-theme', savedTheme);
+        if (themeToggleBtn) {
+          themeToggleBtn.innerHTML = savedTheme === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+        }
+      }
+      if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', () => {
+          const currentTheme = htmlEl.getAttribute('data-theme');
+          const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+          htmlEl.setAttribute('data-theme', newTheme);
+          themeToggleBtn.innerHTML = newTheme === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+          localStorage.setItem('cliniportal_ebm_theme', newTheme);
+        });
+      }
+
+      // Quicknav Active Highlight with IntersectionObserver
+      const sections = document.querySelectorAll('.sec-card[id]');
+      const navItems = document.querySelectorAll('.quickmenu-item, .quicknav-link');
+      if (sections.length > 0 && navItems.length > 0) {
+        const navObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const currentId = entry.target.getAttribute('id');
+              navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href') === '#' + currentId) {
+                  item.classList.add('active');
+                }
+              });
+            }
+          });
+        }, { rootMargin: '-10% 0px -70% 0px' });
+        sections.forEach(section => navObserver.observe(section));
+      }
+    });
+  </script>
+  <script type="module" src="../guideline-controller.ts"></script>
+</body>
+</html>

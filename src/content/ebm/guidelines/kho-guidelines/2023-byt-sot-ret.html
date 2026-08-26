@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tóm tắt Hướng dẫn Chẩn đoán và Điều trị Bệnh Sốt rét 2023 của Bộ Y tế Việt Nam (QĐ 3377/QĐ-BYT). Phác đồ ACTs (Pyramax), Primaquin diệt giao bào/tiệt căn, cấp cứu sốt rét ác tính và bảng liều dùng chuẩn.">
+  <title>Hướng Dẫn Chẩn Đoán & Điều Trị Sốt Rét BYT 2023 – CliniPortal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #059669; --green-bg: #f0fdf4; --green-light: #a7f3d0;
+      --orange: #d97706; --orange-bg: #fffbeb; --orange-light: #fde68a;
+      --red: #dc2626; --red-bg: #fef2f2; --red-light: #fca5a5;
+      --blue: #2563eb; --blue-bg: #eff6ff; --blue-light: #bfdbfe;
+      --teal: #0d9488; --teal-bg: #f0fdfa; --teal-light: #99f6e4;
+      --purple: #7c3aed; --purple-bg: #faf5ff; --purple-light: #ddd6fe;
+      --accent: #0f6fb4;
+      --bg: #f0f4f8; --surface: #ffffff; --surface-2: #f8fafc;
+      --border: #cbd5e1; --border-light: #e2e8f0;
+      --text: #0f172a; --text-muted: #475569; --text-faint: #94a3b8;
+      --radius: 16px; --tr: 220ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [data-theme="dark"] {
+      --green: #10b981; --green-bg: #064e3b; --green-light: #047857;
+      --orange: #f59e0b; --orange-bg: #78350f; --orange-light: #b45309;
+      --red: #ef4444; --red-bg: #7f1d1d; --red-light: #b91c1c;
+      --blue: #3b82f6; --blue-bg: #1e3a8a; --blue-light: #1d4ed8;
+      --teal: #14b8a6; --teal-bg: #115e59; --teal-light: #0f766e;
+      --purple: #8b5cf6; --purple-bg: #4c1d95; --purple-light: #6d28d9;
+      --accent: #38bdf8;
+      --bg: #0f172a; --surface: #1e293b; --surface-2: #0f172a;
+      --border: #334155; --border-light: #1e293b;
+      --text: #f8fafc; --text-muted: #cbd5e1; --text-faint: #64748b;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; font-size: 15px; background: var(--bg); color: var(--text); line-height: 1.65; min-height: 100vh; transition: background var(--tr), color var(--tr); }
+
+    @media print {
+      body { background: #fff !important; color: #000 !important; }
+      .topnav, .quicknav, .topnav-theme-toggle, .mcq-card, .page-footer, .topnav-pdf-btn { display: none !important; }
+      .main-container { max-width: 100% !important; margin: 0 !important; padding: 0 !important; }
+      .sec-card { break-inside: avoid; border: 1px solid #ccc !important; box-shadow: none !important; }
+    }
+
+    /* TOP NAV */
+    .topnav { position: sticky; top: 0; z-index: 200; background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 1rem; padding: 0 1.5rem; height: 56px; transition: background var(--tr), border-color var(--tr); }
+    [data-theme="dark"] .topnav { background: rgba(30, 41, 59, 0.9); }
+    .topnav-back { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--accent); text-decoration: none; font-size: 0.82rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 8px; transition: background var(--tr); white-space: nowrap; }
+    .topnav-back:hover { background: var(--blue-bg); }
+    .topnav-divider { width: 1px; height: 18px; background: var(--border-light); flex-shrink: 0; }
+    .topnav-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .topnav-theme-toggle { margin-left: auto; background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 1.1rem; padding: 0.5rem; border-radius: 50%; transition: background var(--tr); display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; }
+    .topnav-theme-toggle:hover { background: var(--surface-2); color: var(--accent); }
+
+    /* QUICK NAV BAR */
+    .quicknav { position: sticky; top: 56px; z-index: 190; background: var(--surface); border-bottom: 1px solid var(--border-light); padding: 0.6rem 1.5rem; display: flex; gap: 0.5rem; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .quicknav::-webkit-scrollbar { height: 3px; }
+    .quicknav::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    .quicknav-link { font-size: 0.76rem; font-weight: 600; text-decoration: none; color: var(--text-muted); padding: 0.3rem 0.75rem; border-radius: 20px; background: var(--surface-2); border: 1px solid var(--border-light); white-space: nowrap; transition: all var(--tr); }
+    .quicknav-link:hover, .quicknav-link.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+    /* HERO */
+    .hero { background: linear-gradient(135deg, #0f172a 0%, #0c4a6e 40%, #065f46 100%); color: #fff; padding: 3.5rem 1.5rem 4.5rem; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 15% 60%, rgba(56, 189, 248, 0.2) 0%, transparent 55%), radial-gradient(ellipse at 85% 20%, rgba(16, 185, 129, 0.15) 0%, transparent 50%); }
+    .hero-inner { max-width: 1000px; margin: 0 auto; position: relative; z-index: 1; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255, 255, 255, 0.14); border: 1px solid rgba(255, 255, 255, 0.24); border-radius: 20px; padding: 0.3rem 0.9rem; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1rem; color: #7dd3fc; }
+    .hero-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 0.75rem; }
+    .hero-title span { display: block; background: linear-gradient(90deg, #7dd3fc, #6ee7b7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 0.68em; font-weight: 600; letter-spacing: 0; margin-bottom: 0.2rem; }
+    .hero-subtitle { font-size: 0.95rem; opacity: 0.88; max-width: 760px; margin-bottom: 1.75rem; line-height: 1.6; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 0.75rem 1.5rem; font-size: 0.8rem; opacity: 0.82; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 1rem; }
+    .hero-meta-item { display: flex; align-items: center; gap: 6px; }
+
+    /* PILLARS STRIP */
+    .pillars { background: var(--surface); border-bottom: 1px solid var(--border-light); padding: 1.75rem 1.5rem; }
+    .pillars-inner { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+    .pillar { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.25rem 1.25rem 1.25rem 1.5rem; display: flex; align-items: flex-start; gap: 1rem; position: relative; overflow: hidden; transition: box-shadow var(--tr); }
+    .pillar::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; border-radius: 4px 0 0 4px; }
+    .pillar.p1::before { background: var(--blue); }
+    .pillar.p2::before { background: var(--green); }
+    .pillar.p3::before { background: var(--orange); }
+    .pillar.p4::before { background: var(--red); }
+    .pillar:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+    .pillar-icon { font-size: 1.8rem; flex-shrink: 0; line-height: 1; }
+    .pillar-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text); margin-bottom: 0.25rem; }
+    .pillar-desc { font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; }
+
+    /* PAGE CONTENT */
+    .page-content { max-width: 1000px; margin: 0 auto; padding: 2.5rem 1.5rem; display: flex; flex-direction: column; gap: 2.25rem; }
+
+    /* SECTION CARDS */
+    .sec-card { background: var(--surface); border: 1px solid var(--border-light); border-radius: var(--radius); overflow: hidden; }
+    .sec-hdr { padding: 1.1rem 1.5rem; border-bottom: 1px solid var(--border-light); background: var(--surface-2); display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .sec-hdr-title { display: flex; align-items: center; gap: 0.65rem; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1rem; font-weight: 800; color: var(--text); }
+    .sec-hdr-icon { font-size: 1.2rem; }
+    .sec-body { padding: 1.75rem 1.5rem; }
+    .sec-subtitle { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em; }
+
+    /* INFO BOXES */
+    .infobox { display: flex; align-items: flex-start; gap: 0.85rem; padding: 1rem 1.25rem; border-radius: 12px; margin-bottom: 1rem; font-size: 0.85rem; line-height: 1.6; }
+    .infobox:last-child { margin-bottom: 0; }
+    .infobox-icon { font-size: 1.3rem; flex-shrink: 0; line-height: 1.3; }
+    .infobox.danger { background: var(--red-bg); border: 1px solid var(--red-light); border-left: 4px solid var(--red); }
+    .infobox.success { background: var(--green-bg); border: 1px solid var(--green-light); border-left: 4px solid var(--green); }
+    .infobox.warning { background: var(--orange-bg); border: 1px solid var(--orange-light); border-left: 4px solid var(--orange); }
+    .infobox.info { background: var(--blue-bg); border: 1px solid var(--blue-light); border-left: 4px solid var(--blue); }
+    .infobox-title, .infobox > div > strong:first-child { display: block; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.88rem; font-weight: 700; margin-bottom: 0.35rem; color: var(--text); }
+    .infobox strong { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; }
+
+    /* TABLES */
+    .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 1rem 0; }
+    .regimen-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; min-width: 680px; }
+    .regimen-table thead th { padding: 0.75rem 1rem; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; text-align: left; }
+    .regimen-table thead .th-source { background: var(--accent); color: #fff; border-radius: 8px 0 0 0; }
+    .regimen-table thead .th-low { background: var(--green); color: #fff; }
+    .regimen-table thead .th-high { background: #b45309; color: #fff; border-radius: 0 8px 0 0; }
+    .regimen-table td { padding: 0.9rem 1rem; border-bottom: 1px solid var(--border-light); vertical-align: top; line-height: 1.55; }
+    .regimen-table tbody tr:hover td { background: var(--surface-2); }
+    .source-cell { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.85rem; color: var(--accent); display: flex; align-items: center; gap: 0.5rem; white-space: nowrap; }
+    .rx-tag { display: inline-block; background: var(--border-light); color: var(--text-muted); font-size: 0.72rem; font-family: 'JetBrains Mono', monospace; padding: 0.15rem 0.5rem; border-radius: 5px; margin: 0.15rem 0.2rem 0.15rem 0; }
+    .rx-tag.preferred { background: var(--green-bg); color: #065f46; border: 1px solid var(--green-light); font-weight: 600; }
+    .rx-tag.warn { background: var(--orange-bg); color: #92400e; border: 1px solid var(--orange-light); font-weight: 600; }
+    .rx-tag.danger { background: var(--red-bg); color: #991b1b; border: 1px solid var(--red-light); font-weight: 600; }
+
+    /* GRIDS */
+    .updates-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-top: 1rem; }
+    .update-card { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.35rem; position: relative; overflow: hidden; transition: box-shadow var(--tr); }
+    .update-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
+    .update-card-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.85rem; }
+    .update-card-icon { width: 42px; height: 42px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+    .update-card-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 0.9rem; color: var(--text); line-height: 1.3; }
+    .update-card-body { font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* CHECKLIST / STEPS */
+    .step-list { display: flex; flex-direction: column; gap: 1rem; }
+    .step-item { display: flex; align-items: flex-start; gap: 1rem; background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 12px; padding: 1rem 1.25rem; }
+    .step-num { width: 32px; height: 32px; border-radius: 50%; background: var(--accent); color: #fff; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 0.88rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .step-content { font-size: 0.85rem; }
+    .step-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; color: var(--text); margin-bottom: 0.2rem; }
+
+    /* MCQ SECTION */
+    .mcq-container { display: flex; flex-direction: column; gap: 1.5rem; }
+    .mcq-card { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.5rem; }
+    .mcq-q { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.92rem; color: var(--text); margin-bottom: 1rem; }
+    .mcq-options { display: flex; flex-direction: column; gap: 0.6rem; }
+    .mcq-opt { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.75rem 1rem; border-radius: 10px; border: 1.5px solid var(--border-light); background: var(--surface); cursor: pointer; font-size: 0.84rem; color: var(--text); transition: all var(--tr); }
+    .mcq-opt:hover { border-color: var(--accent); background: var(--blue-bg); }
+    .mcq-opt.selected-correct { border-color: var(--green); background: var(--green-bg); color: #065f46; font-weight: 600; }
+    .mcq-opt.selected-wrong { border-color: var(--red); background: var(--red-bg); color: #991b1b; }
+    .mcq-exp { margin-top: 1rem; padding: 0.9rem 1.1rem; border-radius: 10px; background: var(--blue-bg); border-left: 4px solid var(--blue); font-size: 0.82rem; color: var(--text); display: none; line-height: 1.6; }
+    .mcq-exp.show { display: block; }
+
+    /* FOOTER */
+    .page-footer { max-width: 1000px; margin: 0 auto; padding: 2rem 1.5rem 4rem; text-align: center; font-size: 0.8rem; color: var(--text-faint); border-top: 1px solid var(--border-light); }
+
+    @media (max-width: 768px) {
+      .page-content { padding: 1.5rem 1rem; }
+      .sec-body { padding: 1.25rem 1rem; }
+      .updates-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+  <link rel="stylesheet" href="../../../../../css/components/header.css">
+  <script type="module" src="../../../../../components/header.ts" defer></script>
+</head>
+<body>
+  <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
+
+
+  <!-- TOP NAV -->
+  <nav class="topnav">
+    <a href="../guidelines.html" class="topnav-back">
+      <i class="fa-solid fa-chevron-left"></i>
+      Kho Guidelines
+    </a>
+    <div class="topnav-divider"></div>
+    <div class="topnav-title">BYT 2023 – Hướng dẫn Chẩn đoán & Điều trị Sốt rét (QĐ 3377/QĐ-BYT)</div>
+    <button class="topnav-theme-toggle topnav-pdf-btn" onclick="window.print()" title="Tải PDF / In bài viết" style="margin-left: auto; margin-right: 4px;">
+      <i class="fa-solid fa-file-pdf"></i>
+    </button>
+    <button class="topnav-theme-toggle" id="themeToggleBtn" aria-label="Đổi giao diện">
+      <i class="fa-solid fa-moon"></i>
+    </button>
+  </nav>
+
+  <!-- QUICK NAV BAR -->
+  <div class="quicknav">
+    <a href="#sec-daicuong" class="quicknav-link active">1. Đại Cương</a>
+    <a href="#sec-chandoan" class="quicknav-link">2. Chẩn Đoán & Xét Nghiệm</a>
+    <a href="#sec-act" class="quicknav-link">3. Phác Đồ Thể Thông Thường</a>
+    <a href="#sec-actinh" class="quicknav-link">4. Sốt Rét Ác Tính</a>
+    <a href="#sec-dacbiet" class="quicknav-link">5. Nhóm Đặc Biệt & Phân Tuyến</a>
+    <a href="#sec-lieudung" class="quicknav-link">6. Bảng Liều Dùng</a>
+    <a href="#sec-mcq" class="quicknav-link">7. Tự Lượng Giá (MCQ)</a>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge"><i class="fa-solid fa-shield-virus"></i> BỘ Y TẾ VIỆT NAM · QĐ 3377/QĐ-BYT</div>
+      <h1 class="hero-title">
+        <span>GUIDELINES CẬP NHẬT 2023 · TRUYỀN NHIỄM & KÝ SINH TRÙNG</span>
+        HƯỚNG DẪN CHẨN ĐOÁN & ĐIỀU TRỊ BỆNH SỐT RÉT
+      </h1>
+      <p class="hero-subtitle">
+        Cập nhật theo Quyết định số 3377/QĐ-BYT (ngày 30/08/2023). Chuẩn hóa phác đồ điều trị phối hợp ACTs (ưu tiên Pyramax), chiến lược tiệt căn/diệt giao bào theo loài (Primaquin/Tafenoquine), 12 tiêu chuẩn cảnh báo & hồi sức Sốt rét ác tính, và phân tuyến xử trí cơ sở.
+      </p>
+      <div class="hero-meta">
+        <div class="hero-meta-item"><i class="fa-solid fa-calendar-check"></i> Ban hành: 30/08/2023</div>
+        <div class="hero-meta-item"><i class="fa-solid fa-building-flag"></i> Cơ quan: Bộ Y tế Việt Nam</div>
+        <div class="hero-meta-item"><i class="fa-solid fa-earth-asia"></i> Áp dụng: Toàn quốc (42 tỉnh loại trừ, 21 tỉnh lưu hành)</div>
+        <div class="hero-meta-item"><i class="fa-solid fa-file-medical"></i> Mã tài liệu: QĐ-3377/2023/BYT</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PILLARS STRIP -->
+  <div class="pillars">
+    <div class="pillars-inner">
+      <div class="pillar p1">
+        <div class="pillar-icon">💊</div>
+        <div>
+          <div class="pillar-title">Phác Đồ ACTs Ưu Tiên</div>
+          <div class="pillar-desc">Pyronaridin - Artesunat (Pyramax) uống 3 ngày là ưu tiên số 1 cho P. falciparum và P. vivax.</div>
+        </div>
+      </div>
+      <div class="pillar p2">
+        <div class="pillar-icon">🎯</div>
+        <div>
+          <div class="pillar-title">Diệt Giao Bào & Tiệt Căn</div>
+          <div class="pillar-desc">Primaquin 1 liều duy nhất cho P.f/P.m/P.k; 7-14 ngày (hoặc Tafenoquine 1 liều) cho P.v/P.o.</div>
+        </div>
+      </div>
+      <div class="pillar p3">
+        <div class="pillar-icon">⚡</div>
+        <div>
+          <div class="pillar-title">Sốt Rét Ác Tính</div>
+          <div class="pillar-desc">Tiêm Artesunat tĩnh mạch/bắp ngay từ đầu (2.4 mg/kg giờ 0 & 12), chuyển Pyramax uống khi tỉnh.</div>
+        </div>
+      </div>
+      <div class="pillar p4">
+        <div class="pillar-icon">🛡️</div>
+        <div>
+          <div class="pillar-title">An Toàn G6PD & Thai Kỳ</div>
+          <div class="pillar-desc">Chống chỉ định tuyệt đối Primaquin ở phụ nữ có thai/cho con bú con &lt;6 tháng và thiếu G6PD.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE CONTENT -->
+  <div class="page-content">
+
+    <!-- SEC 1: ĐẠI CƯƠNG -->
+    <div class="sec-card" id="sec-daicuong">
+      <div class="sec-hdr">
+        <div class="sec-hdr-title"><span class="sec-hdr-icon">🌍</span> 1. Đại Cương & Tác Nhân Gây Bệnh Sốt Rét</div>
+        <span class="rx-tag preferred">QĐ 3377/QĐ-BYT</span>
+      </div>
+      <div class="sec-body">
+        <p style="margin-bottom: 1.25rem; line-height: 1.7;">
+          Sốt rét là bệnh truyền nhiễm do ký sinh trùng <strong><i>Plasmodium</i></strong> gây ra, lây truyền qua vết đốt của muỗi cái <strong><i>Anopheles</i></strong>. Bệnh có thuốc điều trị đặc hiệu và có thể phòng chống được.
+        </p>
+        <div class="updates-grid">
+          <div class="update-card">
+            <div class="update-card-header">
+              <div class="update-card-icon" style="background: var(--blue-bg); color: var(--blue);"><i class="fa-solid fa-bug"></i></div>
+              <div class="update-card-title">5 Loài Plasmodium Gây Bệnh</div>
+            </div>
+            <div class="update-card-body">
+              <ul>
+                <li><strong><i>P. falciparum (P.f):</i></strong> Phổ biến nhất, nguy cơ cao chuyển thành sốt rét ác tính và tử vong.</li>
+                <li><strong><i>P. vivax (P.v) & P. ovale (P.o):</i></strong> Có thể ngủ trong gan (hypnozoite) gây tái phát xa, cần điều trị tiệt căn.</li>
+                <li><strong><i>P. malariae (P.m):</i></strong> Sốt chu kỳ 72 giờ, ít biến chứng nặng.</li>
+                <li><strong><i>P. knowlesi (P.k):</i></strong> Ký sinh trùng từ khỉ truyền sang người, chu kỳ sinh sản 24 giờ, tiến triển nhanh.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="update-card">
+            <div class="update-card-header">
+              <div class="update-card-icon" style="background: var(--green-bg); color: var(--green);"><i class="fa-solid fa-map-location-dot"></i></div>
+              <div class="update-card-title">Dịch Tễ Học Sốt Rét Tại Việt Nam</div>
+            </div>
+            <div class="update-card-body">
+              <p>
+                Tính đến năm 2022, Việt Nam đã có <strong>42 tỉnh/thành</strong> được công nhận loại trừ sốt rét. Tuy nhiên, vẫn còn <strong>21 tỉnh có sốt rét lưu hành</strong> (chủ yếu miền Trung - Tây Nguyên, Bình Phước...) và ghi nhận các ca bệnh sốt rét ngoại lai trở về từ Châu Phi hoặc các quốc gia lưu hành.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEC 2: CHẨN ĐOÁN & XÉT NGHIỆM -->
+    <div class="sec-card" id="sec-chandoan">
+      <div class="sec-hdr">
+        <div class="sec-hdr-title"><span class="sec-hdr-icon">🔬</span> 2. Chẩn Đoán & Các Kỹ Thuật Xét Nghiệm</div>
+        <span class="rx-tag preferred">Chuẩn lâm sàng 2023</span>
+      </div>
+      <div class="sec-body">
+        <div class="sec-subtitle">A. TRƯỜNG HỢP NGHI NGỜ SỐT RÉT (CLINICAL SUSPICION)</div>
+        <div class="infobox warning">
+          <div class="infobox-icon">⚠️</div>
+          <div>
+            <strong>Tiêu chuẩn chẩn đoán nghi ngờ (Sốt + Yếu tố dịch tễ)</strong>
+            • <strong>Sốt:</strong> Đang sốt hoặc có tiền sử sốt trong <strong>3 ngày gần đây</strong>. Cơn sốt rét điển hình diễn qua 3 giai đoạn: <i>Rét run → Sốt cao → Vã mồ hôi</i> có tính chu kỳ. Ở người mắc lần đầu hoặc trẻ em có thể gặp sốt không điển hình (sốt liên tục, dao động, gai rét).<br>
+            • <strong>Dịch tễ:</strong> Đến/ở/trở về từ vùng sốt rét lưu hành hoặc có tiền sử mắc sốt rét.
+          </div>
+        </div>
+
+        <div class="sec-subtitle" style="margin-top: 1.5rem;">B. 3 KỸ THUẬT XÉT NGHIỆM XÁC ĐỊNH KÝ SINH TRÙNG</div>
+        <div class="table-wrapper">
+          <table class="regimen-table">
+            <thead>
+              <tr>
+                <th class="th-source">Kỹ Thuật</th>
+                <th class="th-low">Đặc Điểm & Nguyên Lý</th>
+                <th class="th-high">Thời Gian & Phạm Vi Áp Dụng</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="source-cell"><i class="fa-solid fa-microscope"></i> Lam máu Giemsa</td>
+                <td>
+                  <strong>Tiêu chuẩn vàng (Gold Standard)</strong><br>
+                  Soi lam máu giọt dày và giọt mỏng nhuộm Giemsa dưới kính hiển vi quang học. Xác định rõ loài KST, giai đoạn phát triển và đếm mật độ KST/µL máu.
+                </td>
+                <td>
+                  <span class="rx-tag preferred">Trả kết quả trong 1 giờ</span><br>
+                  Áp dụng phổ biến tại tất cả các cơ sở y tế có phòng xét nghiệm.
+                </td>
+              </tr>
+              <tr>
+                <td class="source-cell"><i class="fa-solid fa-vial-virus"></i> Test nhanh (RDTs)</td>
+                <td>
+                  <strong>Phát hiện kháng nguyên KST sốt rét</strong><br>
+                  HRP-2 (đặc hiệu cho <i>P. falciparum</i>) hoặc pLDH / Aldolase (cho các loài KST sốt rét nói chung).
+                </td>
+                <td>
+                  <span class="rx-tag preferred">Trả kết quả trong 30 phút</span><br>
+                  Áp dụng tại y tế cơ sở, y tế thôn bản hoặc khi không có kính hiển vi/kỹ thuật viên soi lam.
+                </td>
+              </tr>
+              <tr>
+                <td class="source-cell"><i class="fa-solid fa-dna"></i> Sinh học phân tử (PCR)</td>
+                <td>
+                  <strong>Xác định DNA/RNA của ký sinh trùng</strong><br>
+                  Độ nhạy và độ đặc hiệu cực cao, giúp định danh chính xác loài (đặc biệt <i>P. knowlesi</i>, nhiễm phối hợp mật độ thấp) và đột biến gen kháng thuốc.
+                </td>
+                <td>
+                  <span class="rx-tag warn">Cơ sở chuyên sâu</span><br>
+                  Áp dụng tại các viện nghiên cứu, bệnh viện tuyến Trung ương có trang bị máy PCR.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="infobox danger" style="margin-top: 1rem;">
+          <div class="infobox-icon">🚨</div>
+          <div>
+            <strong>Quy tắc lặp lại xét nghiệm khi lâm sàng nghi ngờ cao</strong>
+            Tất cả các trường hợp nghi ngờ sốt rét đều phải xét nghiệm tìm KST. Nếu xét nghiệm lam máu lần đầu <strong>ÂM TÍNH</strong> nhưng triệu chứng lâm sàng và dịch tễ vẫn gợi ý sốt rét, bắt buộc phải <strong>xét nghiệm lại lam máu sau 8 – 24 giờ</strong> (tốt nhất vào thời điểm người bệnh đang lên cơn sốt).
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEC 3: PHÁC ĐỒ THỂ THÔNG THƯỜNG -->
+    <div class="sec-card" id="sec-act">
+      <div class="sec-hdr">
+        <div class="sec-hdr-title"><span class="sec-hdr-icon">💊</span> 3. Phác Đồ Điều Trị Sốt Rét Thể Thông Thường</div>
+        <span class="rx-tag preferred">ACTs Ưu Tiên</span>
+      </div>
+      <div class="sec-body">
+        <div class="sec-subtitle">A. PHÁC ĐỒ CHUẨN THEO LOÀI KÝ SINH TRÙNG (FIRST-LINE REGIMENS)</div>
+        <p style="margin-bottom: 1rem; font-size: 0.9rem;">
+          <strong>Nguyên tắc vàng:</strong> Nhiễm <i>P. falciparum</i> <strong>tuyệt đối không điều trị đơn trị liệu</strong> mà phải dùng phác đồ phối hợp ACT (Artemisinin-based Combination Therapy) để hạn chế kháng thuốc.
+        </p>
+
+        <div class="table-wrapper">
+          <table class="regimen-table">
+            <thead>
+              <tr>
+                <th class="th-source">Loài Ký Sinh Trùng</th>
+                <th class="th-low">Thuốc Diệt Thể Vô Tính (Cắt Cơn)</th>
+                <th class="th-high">Thuốc Diệt Giao Bào / Tiệt Căn</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="source-cell">
+                  <i>P. falciparum</i> đơn thuần<br>
+                  hoặc phối hợp <i>P. malariae / P. knowlesi</i>
+                </td>
+                <td>
+                  <strong>Pyramax</strong> (Pyronaridin - Artesunat)<br>
+                  <span class="rx-tag preferred">Uống đủ 3 ngày liên tục</span>
+                </td>
+                <td>
+                  <strong>Primaquin</strong><br>
+                  <span class="rx-tag preferred">Uống 1 liều duy nhất</span> vào ngày 1 (diệt giao bào chống lây lan).
+                </td>
+              </tr>
+              <tr>
+                <td class="source-cell">
+                  <i>P. falciparum</i> phối hợp<br>
+                  với <i>P. vivax</i> hoặc <i>P. ovale</i>
+                </td>
+                <td>
+                  <strong>Pyramax</strong> (Pyronaridin - Artesunat)<br>
+                  <span class="rx-tag preferred">Uống đủ 3 ngày liên tục</span>
+                </td>
+                <td>
+                  <strong>Primaquin</strong><br>
+                  <span class="rx-tag warn">Uống 7 ngày hoặc 14 ngày</span><br>
+                  (hoặc <strong>Tafenoquine</strong> 1 liều duy nhất khi được BYT cấp phép).
+                </td>
+              </tr>
+              <tr>
+                <td class="source-cell">
+                  <i>P. vivax</i> hoặc <i>P. ovale</i><br>
+                  đơn thuần
+                </td>
+                <td>
+                  <strong>Chloroquin</strong> uống 3 ngày<br>
+                  hoặc <strong>Pyramax</strong> uống 3 ngày
+                </td>
+                <td>
+                  <strong>Primaquin</strong><br>
+                  <span class="rx-tag warn">Uống 7 ngày hoặc 14 ngày</span> (tiệt căn thể ngủ ở gan).
+                </td>
+              </tr>
+              <tr>
+                <td class="source-cell">
+                  <i>P. malariae</i> hoặc <i>P. knowlesi</i><br>
+                  đơn thuần
+                </td>
+                <td>
+                  <strong>Chloroquin</strong> uống 3 ngày<br>
+                  hoặc <strong>Pyramax</strong> uống 3 ngày
+                </td>
+                <td>
+                  <strong>Primaquin</strong><br>
+                  <span class="rx-tag preferred">Uống 1 liều duy nhất</span> vào ngày đầu tiên.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="sec-subtitle" style="margin-top: 1.75rem;">B. PHÁC ĐỒ THAY THẾ (SECOND-LINE WHEN PYRAMAX IS UNAVAILABLE)</div>
+        <p style="margin-bottom: 0.75rem; font-size: 0.88rem;">Khi không có Pyramax, sử dụng các thuốc phối hợp thay thế theo thứ tự ưu tiên sau:</p>
+        <div class="step-list">
+          <div class="step-item">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <div class="step-title">Artesunat - Mefloquin (AS - MQ)</div>
+              Uống liên tục đủ 3 ngày. Không dùng cho người có tiền sử bệnh lý tâm thần, động kinh.
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <div class="step-title">Artemether - Lumefantrin (AL)</div>
+              Uống 3 ngày (tổng 6 liều, ngày uống 2 lần sau ăn có chất béo để tăng hấp thu).
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <div class="step-title">Artesunat - Amodiaquin (AS - AQ) hoặc Dihydroartemisinin - Piperaquin (DHA - PPQ)</div>
+              Uống liên tục đủ 3 ngày.
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">4</div>
+            <div class="step-content">
+              <div class="step-title">Quinin sulfat + Clindamycin (hoặc Doxycycline)</div>
+              Uống phối hợp liên tục trong <strong>7 ngày</strong> (Doxycycline chống chỉ định cho phụ nữ có thai và trẻ em &lt;8 tuổi).
+            </div>
+          </div>
+        </div>
+
+        <div class="infobox danger" style="margin-top: 1.5rem;">
+          <div class="infobox-icon">⚠️</div>
+          <div>
+            <strong>CẢNH BÁO AN TOÀN KHI SỬ DỤNG PRIMAQUIN & TAFENOQUINE</strong><br>
+            • <strong>Chống chỉ định Primaquin:</strong> Trẻ em &lt; 6 tháng tuổi, phụ nữ có thai, phụ nữ đang cho con bú con &lt; 6 tháng tuổi, người có bệnh gan tiến triển.<br>
+            • <strong>Chống chỉ định Tafenoquine:</strong> Trẻ em &lt; 2 tuổi (hoặc cân nặng &lt; 5kg), người thiếu hoặc bán thiếu men G6PD, phụ nữ có thai và cho con bú.<br>
+            • <strong>Theo dõi tan máu cấp:</strong> Bệnh nhân dùng Primaquin/Tafenoquine cần theo dõi sát các dấu hiệu tan máu (nước tiểu màu sẫm/đen như xá xị, vàng da, sốt, đau lưng cấp, tụt HA) để ngưng thuốc lập tức và xử trí hồi sức.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEC 4: SỐT RÉT ÁC TÍNH -->
+    <div class="sec-card" id="sec-actinh">
+      <div class="sec-hdr">
+        <div class="sec-hdr-title"><span class="sec-hdr-icon">⚡</span> 4. Chẩn Đoán & Cấp Cứu Sốt Rét Ác Tính</div>
+        <span class="rx-tag danger">CẤP CỨU ICU</span>
+      </div>
+      <div class="sec-body">
+        <div class="infobox warning">
+          <div class="infobox-icon">🚨</div>
+          <div>
+            <strong>6 Dấu hiệu cảnh báo sớm Sốt Rét Ác Tính (Cần theo dõi sát ICU):</strong><br>
+            1. Rối loạn tri giác nhẹ, thoáng qua (li bì, cuồng sảng, vật vã). &nbsp;&nbsp; 2. Sốt cao liên tục không hạ.<br>
+            3. Rối loạn tiêu hóa nặng (nôn/tiêu chảy nhiều lần, đau bụng). &nbsp;&nbsp; 4. Đau đầu dữ dội.<br>
+            5. Mật độ KST thể vô tính rất cao (<i>P. falciparum</i> ++++ hoặc ≥ 100.000 KST/µL). &nbsp;&nbsp; 6. Thiếu máu nặng nhanh.
+          </div>
+        </div>
+
+        <div class="sec-subtitle" style="margin-top: 1.5rem;">A. 12 TIÊU CHUẨN CHẨN ĐOÁN SỐT RÉT ÁC TÍNH (BYT 2023)</div>
+        <p style="margin-bottom: 1rem; font-size: 0.88rem;">Chẩn đoán xác định khi có KST sốt rét trong máu kèm <strong>ít nhất 01</strong> trong 12 biểu hiện sau:</p>
+        <div class="updates-grid" style="margin-top: 0.5rem;">
+          <div class="update-card">
+            <div class="update-card-title">1. Suy sụp toàn thân</div>
+            <div class="update-card-body">Người bệnh cực kỳ suy kiệt, không thể tự ngồi, đứng hoặc đi lại được nếu không có hỗ trợ.</div>
+          </div>
+          <div class="update-card">
+            <div class="update-card-title">2. Hôn mê / Rối loạn tri giác</div>
+            <div class="update-card-body">Thang điểm Glasgow &lt; 11 điểm (người lớn/trẻ &gt;5 tuổi) hoặc Blantyre &lt; 3 điểm (trẻ &lt;5 tuổi).</div>
+          </div>
+          <div class="update-card">
+            <div class="update-card-title">3. Co giật toàn thân</div>
+            <div class="update-card-body">Khởi phát co giật nhiều lần (≥ 2 cơn co giật trong vòng 24 giờ).</div>
+          </div>
+          <div class="update-card">
+            <div class="update-card-title">4. Suy hô hấp / ARDS</div>
+            <div class="update-card-body">Nhịp thở &gt; 30 lần/phút, SpO2 &lt; 92%, ran ẩm 2 đáy phổi, phù phổi cấp hoặc mờ X-quang.</div>
+          </div>
+          <div class="update-card">
+            <div class="update-card-title">5. Sốc (Còn bù / Mất bù)</div>
+            <div class="update-card-body">CRT ≥ 3s, lạnh chi, hoặc HA tâm thu &lt; 80 mmHg (người lớn) / &lt; 70 mmHg (trẻ em).</div>
+          </div>
+          <div class="update-card">
+            <div class="update-card-title">6. Thiếu máu nặng</div>
+            <div class="update-card-body">Hb ≤ 5 g/dL (Hct &lt;15%) ở trẻ &lt;12t; Hb &lt; 7 g/dL (Hct &lt;20%) ở người lớn (kèm mật độ KST &gt;10.000/µL).</div>
+          </div>
+          <div class="update-card">
+            <div class="update-card-title">7. Tổn thương gan cấp</div>
+            <div class="update-card-body">Vàng da, Bilirubin toàn phần &gt; 50 µmol/L (3 mg/dL) kèm theo mật độ KST cao / men gan tăng.</div>
+          </div>
+          <div class="update-card">
+            <div class="update-card-title">8. Suy thận cấp</div>
+            <div class="update-card-body">Thiểu niệu (&lt;400ml/24h) / vô niệu (&lt;200ml/24h); Creatinine huyết thanh &gt; 265 µmol/L (&gt;3 mg/dL).</div>
+          </div>
+          <div class="update-card">
+            <div class="update-card-title">9. Rối loạn đông máu</div>
+            <div class="update-card-body">Chảy máu tự nhiên kéo dài ở nướu, mũi, nơi tiêm truyền, nôn ra máu hoặc xuất huyết tiêu hóa.</div>
+          </div>
+          <div class="update-card">
+            <div class="update-card-title">10. Toan chuyển hóa</div>
+            <div class="update-card-body">Kiềm dư &lt; -8 mEq/L, HCO3- &lt; 15 mmol/L, pH máu &lt; 7.35 hoặc Lactate tĩnh mạch ≥ 5 mmol/L.</div>
+          </div>
+          <div class="update-card">
+            <div class="update-card-title">11. Hạ đường huyết</div>
+            <div class="update-card-body">Đường huyết &lt; 2.2 mmol/L (&lt; 40 mg/dL), thường gặp ở trẻ nhỏ, phụ nữ có thai, sau điều trị Quinin.</div>
+          </div>
+          <div class="update-card">
+            <div class="update-card-title">12. Mật độ KST cực cao</div>
+            <div class="update-card-body">Tỷ lệ hồng cầu nhiễm ký sinh trùng vượt quá &gt; 10% tổng số hồng cầu.</div>
+          </div>
+        </div>
+
+        <div class="sec-subtitle" style="margin-top: 2rem;">B. PHÁC ĐỒ ĐIỀU TRỊ ĐẶC HIỆU SỐT RÉT ÁC TÍNH (ICU PROTOCOL)</div>
+        <p style="margin-bottom: 1rem; font-size: 0.9rem;">
+          Bắt buộc sử dụng <strong>thuốc tiêm đặc hiệu</strong> ngay từ giờ đầu tiên cho đến khi người bệnh tỉnh, nói được, hấp thu tốt qua đường tiêu hóa thì <strong>chuyển sang thuốc phối hợp đường uống (Pyramax) đủ 3 ngày</strong>.
+        </p>
+
+        <div class="table-wrapper">
+          <table class="regimen-table">
+            <thead>
+              <tr>
+                <th class="th-source">Thuốc Tiêm Cấp Cứu</th>
+                <th class="th-low">Liều Nạp & Quy Trình Giờ Tiêm</th>
+                <th class="th-high">Chuyển Tiếp Đường Uống</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="source-cell">
+                  1. Artesunat tiêm<br>
+                  <span class="rx-tag preferred">ƯU TIÊN SỐ 1</span>
+                </td>
+                <td>
+                  <strong>Tiêm tĩnh mạch chậm (hoặc tiêm bắp):</strong><br>
+                  • <strong>Người lớn & trẻ &gt; 20 kg:</strong> <span class="rx-tag preferred">2.4 mg/kg</span> vào <strong>giờ thứ 0</strong> và <strong>giờ thứ 12</strong> (ngày đầu). Các ngày sau tiêm 1 liều 2.4 mg/kg/ngày.<br>
+                  • <strong>Trẻ em &lt; 20 kg:</strong> <span class="rx-tag preferred">3.0 mg/kg</span> vào giờ thứ 0, giờ 12 và mỗi ngày sau đó.
+                </td>
+                <td>
+                  Khi tỉnh, chuyển ngay sang uống <strong>Pyramax 3 ngày</strong> (hoặc ACT thay thế).<br>
+                  <i>*Tổng thời gian tiêm tối thiểu 24h (ít nhất 3 liều).</i>
+                </td>
+              </tr>
+              <tr>
+                <td class="source-cell">
+                  2. Artemether tiêm<br>
+                  <span class="rx-tag warn">Lựa chọn 2</span>
+                </td>
+                <td>
+                  <strong>Tiêm bắp sâu:</strong><br>
+                  • Ngày 1: Liều <span class="rx-tag warn">3.2 mg/kg</span> (tiêm vào giờ thứ 0 và giờ thứ 12).<br>
+                  • Từ ngày 2: Liều <span class="rx-tag warn">1.6 mg/kg/ngày</span> (không dùng quá 7 ngày).
+                </td>
+                <td>
+                  Khi bệnh nhân tỉnh và uống được, chuyển sang uống <strong>Pyramax đủ 3 ngày</strong>.
+                </td>
+              </tr>
+              <tr>
+                <td class="source-cell">
+                  3. Quinin dihydrochloride<br>
+                  <span class="rx-tag danger">Lựa chọn 3</span>
+                </td>
+                <td>
+                  <strong>Truyền tĩnh mạch (pha trong Glucose 5% hoặc NaCl 0.9%):</strong><br>
+                  • Liều nạp: <span class="rx-tag danger">20 mg/kg</span> truyền trong 8 giờ đầu.<br>
+                  • Liều duy trì: <span class="rx-tag danger">10 mg/kg</span> mỗi 8 giờ (truyền trong ít nhất 4 giờ).
+                </td>
+                <td>
+                  Khi tỉnh, chuyển sang uống <strong>Quinin + Clindamycin/Doxycycline</strong> đủ 7 ngày (hoặc Pyramax 3 ngày).
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEC 5: NHÓM ĐẶC BIỆT & PHÂN TUYẾN -->
+    <div class="sec-card" id="sec-dacbiet">
+      <div class="sec-hdr">
+        <div class="sec-hdr-title"><span class="sec-hdr-icon">🏥</span> 5. Nhóm Bệnh Nhân Đặc Biệt & Phân Tuyến Điều Trị</div>
+        <span class="rx-tag preferred">Quản lý tuyến</span>
+      </div>
+      <div class="sec-body">
+        <div class="sec-subtitle">A. ĐIỀU TRỊ SỐT RÉT Ở PHỤ NỮ CÓ THAI & CHO CON BÚ</div>
+        <div class="table-wrapper">
+          <table class="regimen-table">
+            <thead>
+              <tr>
+                <th class="th-source">Đối Tượng</th>
+                <th class="th-low">Sốt Rét Thể Thông Thường</th>
+                <th class="th-high">Sốt Rét Ác Tính</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="source-cell">Thai &lt; 3 tháng đầu</td>
+                <td>
+                  • <i>P. falciparum:</i> <strong>Quinin sulfat + Clindamycin</strong> uống 7 ngày (hoặc Artemether - Lumefantrin nếu không có Quinin).<br>
+                  • <i>P. vivax / P.o / P.m:</i> <strong>Chloroquin</strong> uống 3 ngày.<br>
+                  <span class="rx-tag danger">CHỐNG CHỈ ĐỊNH PRIMAQUIN</span>
+                </td>
+                <td>
+                  <strong>Quinin dihydrochloride tiêm/truyền TM + Clindamycin</strong>.<br>
+                  <i>*Cân nhắc dùng Artesunat tiêm nếu Quinin không có sẵn và lợi ích vượt trội nguy cơ.</i>
+                </td>
+              </tr>
+              <tr>
+                <td class="source-cell">Thai &gt; 3 tháng (Quý 2, 3)</td>
+                <td>
+                  • <i>P. falciparum:</i> Dùng ACTs đường uống <strong>3 ngày</strong> (AL, AS-MQ, DHA-PPQ, AS-AQ). Hạn chế Quinin do nguy cơ hạ đường huyết.<br>
+                  <span class="rx-tag danger">CHỐNG CHỈ ĐỊNH PRIMAQUIN</span>
+                </td>
+                <td>
+                  <strong>Artesunat tiêm</strong> tĩnh mạch/bắp theo quy trình 2.4 mg/kg.<br>
+                  <i>*Truyền chủ động Glucose 10% và test đường huyết mao mạch sát.</i>
+                </td>
+              </tr>
+              <tr>
+                <td class="source-cell">Phụ nữ cho con bú</td>
+                <td>
+                  • Phác đồ cắt cơn giống thai phụ &gt; 3 tháng.<br>
+                  • <strong>Không dùng Primaquin</strong> (trừ khi biết chắc con không thiếu G6PD).<br>
+                  • <strong>Không dùng Artesunat - Mefloquin</strong> (nếu dùng phải ngừng cho con bú).
+                </td>
+                <td>
+                  Dùng Artesunat tiêm. Theo dõi sát triệu chứng mẹ và bé.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="sec-subtitle" style="margin-top: 1.75rem;">B. PHÂN TUYẾN ĐIỀU TRỊ & CHUYỂN TUYẾN AN TOÀN</div>
+        <div class="updates-grid">
+          <div class="update-card">
+            <div class="update-card-header">
+              <div class="update-card-icon" style="background: var(--green-bg); color: var(--green);"><i class="fa-solid fa-house-medical"></i></div>
+              <div class="update-card-title">Trạm Y Tế Xã / Phòng Khám Tư</div>
+            </div>
+            <div class="update-card-body">
+              • Điều trị ca sốt rét thể thông thường.<br>
+              • <strong>Xử trí ban đầu sốt rét ác tính:</strong> Tiêm ngay <strong>01 liều Artesunat tiêm</strong> (hoặc Quinin nếu thai &lt;3 tháng) hoặc uống 01 liều ACT, sau đó <strong>chuyển tuyến khẩn cấp</strong>.<br>
+              • <i>Lưu ý:</i> Không chuyển ngay bệnh nhân đang sốc nặng, phù phổi, co giật liên tục mà phải hồi sức ban đầu an toàn.
+            </div>
+          </div>
+
+          <div class="update-card">
+            <div class="update-card-header">
+              <div class="update-card-icon" style="background: var(--blue-bg); color: var(--blue);"><i class="fa-solid fa-hospital-user"></i></div>
+              <div class="update-card-title">Bệnh Viện Huyện / Tỉnh / TW</div>
+            </div>
+            <div class="update-card-body">
+              • Tiếp nhận và điều trị toàn diện <strong>tất cả các trường hợp sốt rét</strong>.<br>
+              • Đơn vị ICU chịu trách nhiệm theo dõi sát lâm sàng, hồi sức suy tạng, theo dõi mật độ KST hàng ngày đến khi âm tính.<br>
+              • Báo cáo và theo dõi ca bệnh điều trị thất bại/kháng thuốc theo quy định Bộ Y tế.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEC 6: BẢNG LIỀU DÙNG -->
+    <div class="sec-card" id="sec-lieudung">
+      <div class="sec-hdr">
+        <div class="sec-hdr-title"><span class="sec-hdr-icon">📋</span> 6. Bảng Tra Cứu Liều Dùng Thuốc Điều Trị Sốt Rét</div>
+        <span class="rx-tag preferred">Phụ Lục I - QĐ 3377/QĐ-BYT</span>
+      </div>
+      <div class="sec-body">
+        <div class="sec-subtitle">BẢNG 1: LIỀU ARTESUNAT TIÊM (LỌ 60 MG) THEO LỨA TUỔI (KHI KHÔNG CÓ CÂN NẶNG)</div>
+        <div class="table-wrapper">
+          <table class="regimen-table">
+            <thead>
+              <tr>
+                <th class="th-source">Nhóm Tuổi</th>
+                <th class="th-low">Liều Giờ Thứ Nhất (Dung dịch pha)</th>
+                <th class="th-low">Liều Giờ Thứ 12 (Dung dịch pha)</th>
+                <th class="th-high">Liều Các Ngày Sau (Dung dịch pha)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="source-cell">&lt; 1 tuổi</td>
+                <td>2 ml</td>
+                <td>2 ml</td>
+                <td>2 ml / ngày</td>
+              </tr>
+              <tr>
+                <td class="source-cell">1 – &lt; 5 tuổi</td>
+                <td>4 ml</td>
+                <td>4 ml</td>
+                <td>4 ml / ngày</td>
+              </tr>
+              <tr>
+                <td class="source-cell">5 – &lt; 12 tuổi</td>
+                <td>8 ml</td>
+                <td>8 ml</td>
+                <td>8 ml / ngày</td>
+              </tr>
+              <tr>
+                <td class="source-cell">12 – &lt; 15 tuổi</td>
+                <td>10 ml</td>
+                <td>10 ml</td>
+                <td>10 ml / ngày</td>
+              </tr>
+              <tr>
+                <td class="source-cell">≥ 15 tuổi</td>
+                <td>12 ml (2 lọ)</td>
+                <td>12 ml (2 lọ)</td>
+                <td>12 ml (2 lọ) / ngày</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="sec-subtitle" style="margin-top: 2rem;">BẢNG 2: LIỀU PYRAMAX (PYRONARIDIN TETRAPHOSPHAT / ARTESUNAT)</div>
+        <div class="table-wrapper">
+          <table class="regimen-table">
+            <thead>
+              <tr>
+                <th class="th-source">Dạng Bào Chế</th>
+                <th class="th-low">Cân Nặng (kg)</th>
+                <th class="th-high">Liều Ngày 1, Ngày 2 và Ngày 3 (Uống giống nhau mỗi ngày)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="source-cell" rowspan="3"><strong>Gói bột trẻ em</strong><br>(Pyronaridin 60mg /<br>Artesunat 20mg)</td>
+                <td>&lt; 8 kg</td>
+                <td><strong>1 gói / ngày</strong> (x 3 ngày)</td>
+              </tr>
+              <tr>
+                <td>8 – &lt; 15 kg</td>
+                <td><strong>2 gói / ngày</strong> (x 3 ngày)</td>
+              </tr>
+              <tr>
+                <td>15 – &lt; 20 kg</td>
+                <td><strong>3 gói / ngày</strong> (x 3 ngày)</td>
+              </tr>
+              <tr>
+                <td class="source-cell" rowspan="4"><strong>Viên nén người lớn</strong><br>(Pyronaridin 180mg /<br>Artesunat 60mg)</td>
+                <td>15 – &lt; 24 kg</td>
+                <td><strong>1 viên / ngày</strong> (x 3 ngày)</td>
+              </tr>
+              <tr>
+                <td>24 – &lt; 45 kg</td>
+                <td><strong>2 viên / ngày</strong> (x 3 ngày)</td>
+              </tr>
+              <tr>
+                <td>45 – &lt; 65 kg</td>
+                <td><strong>3 viên / ngày</strong> (x 3 ngày)</td>
+              </tr>
+              <tr>
+                <td>≥ 65 kg</td>
+                <td><strong>4 viên / ngày</strong> (x 3 ngày)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="sec-subtitle" style="margin-top: 2rem;">BẢNG 3: LIỀU PRIMAQUIN (VIÊN 7.5 MG BASE) & CHLOROQUIN (VIÊN 250 MG / 150 MG BASE)</div>
+        <div class="table-wrapper">
+          <table class="regimen-table">
+            <thead>
+              <tr>
+                <th class="th-source">Nhóm Tuổi</th>
+                <th class="th-low">Primaquin (P. falciparum) – Uống 1 lần</th>
+                <th class="th-low">Primaquin (P. vivax/ovale) – Uống 14 ngày</th>
+                <th class="th-high">Chloroquin – Ngày 1, Ngày 2 / Ngày 3</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="source-cell">6 tháng – &lt; 3 tuổi</td>
+                <td>1/2 viên (1 liều duy nhất)</td>
+                <td>1/4 viên / ngày x 14 ngày</td>
+                <td>1 viên / 1 viên / 1/2 viên</td>
+              </tr>
+              <tr>
+                <td class="source-cell">3 – &lt; 5 tuổi</td>
+                <td>1 viên (1 liều duy nhất)</td>
+                <td>1/2 viên / ngày x 14 ngày</td>
+                <td>1 viên / 1 viên / 1/2 viên</td>
+              </tr>
+              <tr>
+                <td class="source-cell">5 – &lt; 12 tuổi</td>
+                <td>2 viên (1 liều duy nhất)</td>
+                <td>1 viên / ngày x 14 ngày</td>
+                <td>2 viên / 2 viên / 1 viên</td>
+              </tr>
+              <tr>
+                <td class="source-cell">12 – &lt; 15 tuổi</td>
+                <td>3 viên (1 liều duy nhất)</td>
+                <td>1½ viên / ngày x 14 ngày</td>
+                <td>3 viên / 3 viên / 1½ viên</td>
+              </tr>
+              <tr>
+                <td class="source-cell">≥ 15 tuổi</td>
+                <td>4 viên (1 liều duy nhất)</td>
+                <td>2 viên / ngày x 14 ngày</td>
+                <td>4 viên / 4 viên / 2 viên</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEC 7: MCQ QUIZ -->
+    <div class="sec-card" id="sec-mcq">
+      <div class="sec-hdr">
+        <div class="sec-hdr-title"><span class="sec-hdr-icon">🧠</span> 7. Tự Lượng Giá Kiến Thức Lâm Sàng (MCQ Quiz)</div>
+        <span class="rx-tag preferred">5 Câu Trắc Nghiệm BYT 2023</span>
+      </div>
+      <div class="sec-body">
+        <div class="mcq-container" id="mcqContainer">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="page-footer">
+    <p class="footer-title">CliniPortal – Hệ sinh thái Y khoa Trường tồn</p>
+    <p>Tài liệu Guidelines tóm tắt phục vụ tra cứu nhanh tại giường bệnh theo Quyết định số 3377/QĐ-BYT (Bộ Y tế Việt Nam).</p>
+  </footer>
+
+  <script>
+    // 1. THEME TOGGLE
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const htmlEl = document.documentElement;
+
+    function initTheme() {
+      const saved = localStorage.getItem('cliniportal_theme') || 'light';
+      htmlEl.setAttribute('data-theme', saved);
+      updateThemeIcon(saved);
+    }
+
+    function updateThemeIcon(theme) {
+      if (!themeToggleBtn) return;
+      themeToggleBtn.innerHTML = theme === 'dark'
+        ? '<i class="fa-solid fa-sun"></i>'
+        : '<i class="fa-solid fa-moon"></i>';
+    }
+
+    if (themeToggleBtn) {
+      themeToggleBtn.addEventListener('click', () => {
+        const current = htmlEl.getAttribute('data-theme');
+    // Theme Toggle with LocalStorage
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const htmlEl = document.documentElement;
+    const savedTheme = localStorage.getItem('cliniportal_ebm_theme');
+    if (savedTheme === 'dark' || savedTheme === 'light') {
+      htmlEl.setAttribute('data-theme', savedTheme);
+      if (themeToggleBtn) {
+        themeToggleBtn.innerHTML = savedTheme === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+      }
+    }
+    if (themeToggleBtn) {
+      themeToggleBtn.addEventListener('click', () => {
+        const currentTheme = htmlEl.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        htmlEl.setAttribute('data-theme', newTheme);
+        themeToggleBtn.innerHTML = newTheme === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+        localStorage.setItem('cliniportal_ebm_theme', newTheme);
+      });
+    }
+
+    // Quicknav Active Highlight with IntersectionObserver
+    const sections = document.querySelectorAll('.sec-card[id]');
+    const navLinks = document.querySelectorAll('.quicknav-link');
+    if (sections.length > 0 && navLinks.length > 0) {
+      const navObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const currentId = entry.target.getAttribute('id');
+            navLinks.forEach(link => {
+              link.classList.remove('active');
+              if (link.getAttribute('href') === '#' + currentId) {
+                link.classList.add('active');
+              }
+            });
+          }
+        });
+      }, { rootMargin: '-10% 0px -70% 0px' });
+      sections.forEach(section => navObserver.observe(section));
+    }
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${currentId}`) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+    // 3. MCQ QUIZ DATA & RENDERER
+    const mcqData = [
+      {
+        id: 1,
+        question: "Câu 1: Phác đồ ưu tiên số 1 điều trị Sốt rét thể thông thường do Plasmodium falciparum theo Bộ Y tế 2023 là gì?",
+        options: [
+          { key: "A", text: "Chloroquin uống 3 ngày + Primaquin 14 ngày" },
+          { key: "B", text: "Pyramax (Pyronaridin - Artesunat) uống 3 ngày + Primaquin 1 liều duy nhất ngày đầu" },
+          { key: "C", text: "Quinin sulfat uống 7 ngày + Doxycycline 7 ngày" },
+          { key: "D", text: "Artesunat tiêm tĩnh mạch 3 ngày liên tục" }
+        ],
+        correct: "B",
+        explain: "Theo QĐ 3377/QĐ-BYT, phác đồ ưu tiên số 1 cho P. falciparum là Pyramax uống 3 ngày kết hợp Primaquin uống 1 liều duy nhất vào ngày đầu tiên để diệt giao bào chống lây lan."
+      },
+      {
+        id: 2,
+        question: "Câu 2: Dấu hiệu nào sau đây thuộc 12 tiêu chuẩn chẩn đoán Sốt rét ác tính theo Bộ Y tế 2023?",
+        options: [
+          { key: "A", text: "Sốt cao trên 39 độ C kéo dài 2 ngày" },
+          { key: "B", text: "Mật độ ký sinh trùng trong máu > 1% hồng cầu nhiễm" },
+          { key: "C", text: "Hạ đường huyết < 2,2 mmol/L (< 40 mg/dL) hoặc Toan chuyển hóa với HCO3- < 15 mmol/L" },
+          { key: "D", text: "Nhịp tim nhanh 100 lần/phút ở người lớn" }
+        ],
+        correct: "C",
+        explain: "Hạ đường huyết (< 2.2 mmol/L) và Toan chuyển hóa (HCO3- < 15 mmol/L, Lactate >= 5 mmol/L) là các tiêu chuẩn chính xác định Sốt rét ác tính. Mật độ KST được tính là ác tính khi > 10% hồng cầu nhiễm."
+      },
+      {
+        id: 3,
+        question: "Câu 3: Nguyên tắc chỉ định Artesunat tiêm trong điều trị cấp cứu Sốt rét ác tính tại ICU như thế nào?",
+        options: [
+          { key: "A", text: "Tiêm tĩnh mạch hoặc tiêm bắp liều 2,4 mg/kg vào giờ thứ 0 và giờ thứ 12, sau đó mỗi ngày 1 liều cho đến khi tỉnh và chuyển uống Pyramax 3 ngày" },
+          { key: "B", text: "Tiêm tĩnh mạch liều duy nhất 10 mg/kg vào ngày đầu tiên" },
+          { key: "C", text: "Chỉ tiêm cho bệnh nhân bị sốt rét do P. vivax" },
+          { key: "D", text: "Tiêm Artesunat liên tục trong 14 ngày không chuyển đường uống" }
+        ],
+        correct: "A",
+        explain: "Artesunat tiêm là ưu tiên số 1: liều 2.4 mg/kg (với người lớn/trẻ >20kg) hoặc 3.0 mg/kg (trẻ <20kg) tại giờ 0, giờ 12, sau đó hàng ngày cho đến khi người bệnh tỉnh, uống được thì chuyển sang Pyramax uống 3 ngày."
+      },
+      {
+        id: 4,
+        question: "Câu 4: Khi điều trị sốt rét cho phụ nữ có thai trong 3 tháng đầu nhiễm P. falciparum, phác đồ nào được khuyến cáo?",
+        options: [
+          { key: "A", text: "Pyramax 3 ngày + Primaquin 14 ngày" },
+          { key: "B", text: "Quinin sulfat uống 7 ngày + Clindamycin uống 7 ngày (Chống chỉ định tuyệt đối Primaquin)" },
+          { key: "C", text: "Doxycycline uống 10 ngày" },
+          { key: "D", text: "Artesunat - Mefloquin uống 3 ngày + Primaquin 7 ngày" }
+        ],
+        correct: "B",
+        explain: "Phụ nữ có thai 3 tháng đầu nhiễm P. falciparum được khuyến cáo dùng Quinin sulfat + Clindamycin trong 7 ngày. Tuyệt đối CHỐNG CHỈ ĐỊNH Primaquin và Doxycycline trong thai kỳ."
+      },
+      {
+        id: 5,
+        question: "Câu 5: Tại Trạm Y tế xã, khi gặp trường hợp nghi ngờ Sốt rét ác tính, xử trí ban đầu đúng nhất là gì?",
+        options: [
+          { key: "A", text: "Giữ lại Trạm Y tế điều trị bằng thuốc uống trong 5 ngày" },
+          { key: "B", text: "Tiêm ngay 01 liều Artesunat tiêm (hoặc Quinin nếu thai < 3 tháng) hoặc cho uống 01 liều ACTs, ổn định ban đầu rồi chuyển tuyến khẩn cấp" },
+          { key: "C", text: "Chuyển tuyến ngay lập tức mà không cần xử trí hay tiêm thuốc gì" },
+          { key: "D", text: "Cho uống Chloroquin 1 liều duy nhất rồi cho về nhà theo dõi" }
+        ],
+        correct: "B",
+        explain: "Theo phân tuyến BYT 2023, Trạm y tế xã khi phát hiện nghi ngờ sốt rét ác tính cần tiêm ngay 1 liều Artesunat (hoặc Quinin cho thai phụ <3 tháng) hoặc uống 1 liều ACT, hồi sức ban đầu an toàn rồi chuyển tuyến ngay."
+      }
+    ];
+
+    function renderMCQ() {
+      const container = document.getElementById('mcqContainer');
+      if (!container) return;
+      container.innerHTML = '';
+
+      mcqData.forEach(q => {
+        const card = document.createElement('div');
+        card.className = 'mcq-card';
+
+        let optionsHtml = '';
+        q.options.forEach(opt => {
+          optionsHtml += `
+            <div class="mcq-opt" id="opt-${q.id}-${opt.key}" onclick="selectMCQ(${q.id}, '${opt.key}')">
+              <strong>${opt.key}.</strong> <span>${opt.text}</span>
+            </div>
+          `;
+        });
+
+        card.innerHTML = `
+          <div class="mcq-q">${q.question}</div>
+          <div class="mcq-options">${optionsHtml}</div>
+          <div class="mcq-exp" id="exp-${q.id}">
+            <strong><i class="fa-solid fa-circle-info"></i> Giải thích:</strong> ${q.explain}
+          </div>
+        `;
+
+        container.appendChild(card);
+      });
+    }
+
+    window.selectMCQ = function(questionId, selectedKey) {
+      const q = mcqData.find(item => item.id === questionId);
+      if (!q) return;
+
+      q.options.forEach(opt => {
+        const el = document.getElementById(`opt-${questionId}-${opt.key}`);
+        if (el) {
+          el.classList.remove('selected-correct', 'selected-wrong');
+        }
+      });
+
+      const selectedEl = document.getElementById(`opt-${questionId}-${selectedKey}`);
+      const expEl = document.getElementById(`exp-${questionId}`);
+
+      if (selectedKey === q.correct) {
+        if (selectedEl) selectedEl.classList.add('selected-correct');
+      } else {
+        if (selectedEl) selectedEl.classList.add('selected-wrong');
+        const correctEl = document.getElementById(`opt-${questionId}-${q.correct}`);
+        if (correctEl) correctEl.classList.add('selected-correct');
+      }
+
+      if (expEl) expEl.classList.add('show');
+    };
+
+    document.addEventListener('DOMContentLoaded', renderMCQ);
+  </script>
+  <script type="module" src="../guideline-controller.ts"></script>
+</body>
+</html>

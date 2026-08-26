@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tóm tắt toàn diện Hướng dẫn chẩn đoán và điều trị U xơ cơ tử cung (BYT 2026): Sinh bệnh học Steroid, Phân loại FIGO 2011 (L0-L8), Triệu chứng AUB, Siêu âm/MRI, Phác đồ Nội khoa (GnRH, SPRMs, Progestin), Phẫu thuật (Nội soi buồng tử cung, Bóc nhân xơ, Cắt tử cung), Kỹ thuật ít xâm lấn (US-HIFU, UAE, RFA) và Xử trí vô sinh / thai kỳ.">
+  <title>Hướng dẫn Chẩn đoán và Điều trị U Xơ Cơ Tử Cung (BYT 2026) – CliniPortal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #059669; --green-bg: #f0fdf4; --green-light: #a7f3d0;
+      --orange: #d97706; --orange-bg: #fffbeb; --orange-light: #fde68a;
+      --red: #dc2626; --red-bg: #fef2f2; --red-light: #fca5a5;
+      --blue: #2563eb; --blue-bg: #eff6ff; --blue-light: #bfdbfe;
+      --teal: #0d9488; --teal-bg: #f0fdfa; --teal-light: #99f6e4;
+      --purple: #7c3aed; --purple-bg: #faf5ff; --purple-light: #ddd6fe;
+      --accent: #0f6fb4;
+      --bg: #f0f4f8; --surface: #ffffff; --surface-2: #f8fafc;
+      --border: #cbd5e1; --border-light: #e2e8f0;
+      --text: #0f172a; --text-muted: #475569; --text-faint: #94a3b8;
+      --radius: 16px; --tr: 220ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [data-theme="dark"] {
+      --green: #10b981; --green-bg: #064e3b; --green-light: #047857;
+      --orange: #f59e0b; --orange-bg: #78350f; --orange-light: #b45309;
+      --red: #ef4444; --red-bg: #7f1d1d; --red-light: #b91c1c;
+      --blue: #3b82f6; --blue-bg: #1e3a8a; --blue-light: #1d4ed8;
+      --teal: #14b8a6; --teal-bg: #115e59; --teal-light: #0f766e;
+      --purple: #8b5cf6; --purple-bg: #4c1d95; --purple-light: #6d28d9;
+      --accent: #38bdf8;
+      --bg: #0f172a; --surface: #1e293b; --surface-2: #0f172a;
+      --border: #334155; --border-light: #1e293b;
+      --text: #f8fafc; --text-muted: #cbd5e1; --text-faint: #64748b;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; font-size: 15px; background: var(--bg); color: var(--text); line-height: 1.65; min-height: 100vh; transition: background var(--tr), color var(--tr); }
+
+    /* TOP NAV */
+    .topnav { position: sticky; top: 0; z-index: 200; background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 1rem; padding: 0 1.5rem; height: 56px; transition: background var(--tr), border-color var(--tr); }
+    [data-theme="dark"] .topnav { background: rgba(30, 41, 59, 0.9); }
+    .topnav-back { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--accent); text-decoration: none; font-size: 0.82rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 8px; transition: background var(--tr); white-space: nowrap; }
+    .topnav-back:hover { background: var(--blue-bg); }
+    .topnav-divider { width: 1px; height: 18px; background: var(--border-light); flex-shrink: 0; }
+    .topnav-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .topnav-theme-toggle { margin-left: auto; background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 1.1rem; padding: 0.5rem; border-radius: 50%; transition: background var(--tr); display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; }
+    .topnav-theme-toggle:hover { background: var(--surface-2); color: var(--accent); }
+
+    /* QUICK NAV BAR */
+    .quicknav { position: sticky; top: 56px; z-index: 190; background: var(--surface); border-bottom: 1px solid var(--border-light); display: flex; gap: 0.5rem; padding: 0.6rem 1.5rem; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .quicknav::-webkit-scrollbar { height: 3px; }
+    .quicknav::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    .quicknav-link { display: inline-flex; align-items: center; white-space: nowrap; font-size: 0.78rem; font-weight: 600; color: var(--text-muted); text-decoration: none; padding: 0.35rem 0.85rem; border-radius: 20px; background: var(--surface-2); border: 1px solid var(--border-light); transition: all var(--tr); }
+    .quicknav-link:hover, .quicknav-link.active { background: var(--blue-bg); color: var(--accent); border-color: var(--blue-light); }
+
+    /* HERO */
+    .hero { background: linear-gradient(135deg, #0c4a6e 0%, #0f6fb4 45%, #065f46 100%); color: #fff; padding: 3.5rem 1.5rem 4.5rem; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 50%, rgba(56, 189, 248, 0.25) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(16, 185, 129, 0.2) 0%, transparent 55%); }
+    .hero-inner { max-width: 1000px; margin: 0 auto; position: relative; z-index: 1; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255, 255, 255, 0.14); border: 1px solid rgba(255, 255, 255, 0.24); border-radius: 20px; padding: 0.3rem 0.9rem; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1rem; color: #7dd3fc; }
+    .hero-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 0.85rem; }
+    .hero-title span { display: block; background: linear-gradient(90deg, #7dd3fc, #6ee7b7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 0.65em; font-weight: 600; letter-spacing: 0; margin-bottom: 0.2rem; }
+    .hero-subtitle { font-size: 0.95rem; opacity: 0.88; max-width: 780px; margin-bottom: 2rem; line-height: 1.65; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 0.75rem 2rem; font-size: 0.8rem; opacity: 0.8; }
+    .hero-meta-item { display: flex; align-items: center; gap: 6px; }
+
+    /* PILLARS STRIP */
+    .pillars { background: var(--surface); border-bottom: 1px solid var(--border-light); padding: 1.75rem 1.5rem; }
+    .pillars-inner { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+    .pillar { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.1rem 1.2rem; display: flex; align-items: flex-start; gap: 0.85rem; position: relative; overflow: hidden; transition: box-shadow var(--tr); }
+    .pillar::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; border-radius: 4px 0 0 4px; }
+    .pillar.p1::before { background: var(--blue); }
+    .pillar.p2::before { background: var(--orange); }
+    .pillar.p3::before { background: var(--red); }
+    .pillar.p4::before { background: var(--teal); }
+    .pillar:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+    .pillar-icon { font-size: 1.6rem; flex-shrink: 0; line-height: 1; }
+    .pillar-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text); margin-bottom: 0.25rem; }
+    .pillar-desc { font-size: 0.76rem; color: var(--text-muted); line-height: 1.45; }
+
+    /* PAGE CONTENT */
+    .page-content { max-width: 1000px; margin: 0 auto; padding: 2.25rem 1.5rem; display: flex; flex-direction: column; gap: 2rem; }
+
+    /* SECTION CARDS & HEADINGS */
+    .sec-card { background: var(--surface); border: 1px solid var(--border-light); border-radius: var(--radius); overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.03); scroll-margin-top: 110px; }
+    .sec-hdr { padding: 1.15rem 1.5rem; border-bottom: 1px solid var(--border-light); background: var(--surface-2); display: flex; align-items: center; gap: 0.75rem; }
+    .sec-hdr-icon { font-size: 1.15rem; color: var(--accent); background: var(--blue-bg); width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--blue-light); flex-shrink: 0; }
+    .sec-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.1rem; font-weight: 800; color: var(--text); letter-spacing: -0.01em; }
+    .sec-body { padding: 1.5rem; display: flex; flex-direction: column; gap: 1.25rem; }
+
+    /* SUBHEADINGS (H3, H4) */
+    .sec-subtitle { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 0.95rem; color: var(--text); margin-top: 0.5rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.6rem; }
+    .sec-subtitle i { color: var(--accent); font-size: 0.75rem; background: var(--blue-bg); width: 24px; height: 24px; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--blue-light); flex-shrink: 0; }
+    .sec-subtitle::after { content: ''; flex: 1; height: 2px; background: linear-gradient(90deg, var(--border-light), transparent); border-radius: 1px; margin-left: 0.5rem; }
+
+    .sec-h4 { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 0.88rem; color: var(--text); margin-top: 1rem; margin-bottom: 0.4rem; border-left: 3px solid var(--accent); padding-left: 0.65rem; display: flex; align-items: center; }
+
+    /* INFO BOXES */
+    .infobox { display: flex; align-items: flex-start; gap: 0.85rem; padding: 1rem 1.25rem; border-radius: 12px; font-size: 0.85rem; line-height: 1.6; }
+    .infobox-icon { font-size: 1.3rem; flex-shrink: 0; line-height: 1.3; }
+    .infobox.danger { background: var(--red-bg); border: 1px solid var(--red-light); border-left: 4px solid var(--red); color: var(--text); }
+    .infobox.success { background: var(--green-bg); border: 1px solid var(--green-light); border-left: 4px solid var(--green); color: var(--text); }
+    .infobox.warning { background: var(--orange-bg); border: 1px solid var(--orange-light); border-left: 4px solid var(--orange); color: var(--text); }
+    .infobox.info { background: var(--blue-bg); border: 1px solid var(--blue-light); border-left: 4px solid var(--blue); color: var(--text); }
+    .infobox.teal { background: var(--teal-bg); border: 1px solid var(--teal-light); border-left: 4px solid var(--teal); color: var(--text); }
+    .infobox strong { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; color: var(--text); }
+
+    /* TABLES */
+    .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 12px; border: 1px solid var(--border-light); margin-bottom: 1rem; }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 0.83rem; min-width: 650px; text-align: left; }
+    .data-table thead th { padding: 0.75rem 1rem; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; background: var(--surface-2); color: var(--text-muted); border-bottom: 1px solid var(--border-light); }
+    .data-table td { padding: 0.85rem 1rem; border-bottom: 1px solid var(--border-light); vertical-align: top; line-height: 1.55; }
+    .data-table tbody tr:last-child td { border-bottom: none; }
+
+    /* BADGES & TAGS */
+    .rx-tag { display: inline-block; background: var(--surface-2); color: var(--text-muted); font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; padding: 0.15rem 0.5rem; border-radius: 6px; border: 1px solid var(--border-light); margin: 0.15rem 0.1rem; }
+    .rx-tag.highlight { background: var(--blue-bg); color: var(--accent); border-color: var(--blue-light); font-weight: 600; }
+    .rx-tag.alert { background: var(--red-bg); color: var(--red); border-color: var(--red-light); font-weight: 600; }
+
+    /* FIGO BOARD & UI DIAGRAMS */
+    .figo-board { background: var(--surface); border: 1px solid var(--border-light); border-radius: 16px; overflow: hidden; margin: 1.25rem 0; box-shadow: 0 4px 14px rgba(0,0,0,0.04); }
+    .figo-board-hdr { background: linear-gradient(135deg, #0c4a6e 0%, #0f6fb4 100%); color: #fff; padding: 0.85rem 1.25rem; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.85rem; font-weight: 800; display: flex; align-items: center; gap: 0.6rem; }
+    .figo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; padding: 1.25rem; background: var(--surface-2); }
+    .figo-card { background: var(--surface); border: 1px solid var(--border-light); border-radius: 12px; padding: 1.1rem; display: flex; flex-direction: column; gap: 0.75rem; transition: transform var(--tr), box-shadow var(--tr); }
+    .figo-card:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.06); }
+    .figo-card.figo-submucosal { border-top: 4px solid var(--orange); }
+    .figo-card.figo-intramural { border-top: 4px solid var(--blue); }
+    .figo-card.figo-subserosal { border-top: 4px solid var(--green); }
+    .figo-card.figo-special { border-top: 4px solid var(--purple); }
+    .figo-card-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 0.84rem; color: var(--text); display: flex; align-items: center; gap: 0.4rem; }
+    .figo-pills { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .figo-pill { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 700; padding: 0.2rem 0.55rem; border-radius: 6px; }
+    .figo-pill.orange { background: var(--orange-bg); color: var(--orange); border: 1px solid var(--orange-light); }
+    .figo-pill.blue { background: var(--blue-bg); color: var(--blue); border: 1px solid var(--blue-light); }
+    .figo-pill.green { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-light); }
+    .figo-pill.purple { background: var(--purple-bg); color: var(--purple); border: 1px solid var(--purple-light); }
+    .figo-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.55; }
+
+    /* FLOWCHART V2 UI */
+    .flowchart-v2 { background: var(--surface); border: 1px solid var(--border-light); border-radius: 16px; overflow: hidden; margin: 1.5rem 0; box-shadow: 0 4px 16px rgba(0,0,0,0.05); }
+    .flowchart-v2-hdr { background: linear-gradient(135deg, #065f46 0%, #0d9488 100%); color: #fff; padding: 0.85rem 1.25rem; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.85rem; font-weight: 800; display: flex; align-items: center; gap: 0.6rem; }
+    .flowchart-v2-body { padding: 1.5rem; background: var(--surface-2); display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+    .flow-step { background: var(--surface); border: 1.5px solid var(--accent); border-radius: 12px; padding: 1rem 1.25rem; display: flex; align-items: center; gap: 0.85rem; width: 100%; max-width: 720px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+    .flow-step .step-num { width: 32px; height: 32px; border-radius: 50%; background: var(--accent); color: #fff; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .flow-step .step-content { flex: 1; font-size: 0.83rem; line-height: 1.5; color: var(--text); }
+    .flow-step .step-content strong { display: block; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.88rem; font-weight: 800; margin-bottom: 0.2rem; color: var(--accent); }
+    .flow-arrow { color: var(--accent); font-size: 1.2rem; }
+    .flow-branches { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; width: 100%; }
+    .branch-card { background: var(--surface); border: 1px solid var(--border-light); border-radius: 12px; padding: 1.1rem; display: flex; flex-direction: column; gap: 0.6rem; }
+    .branch-card.branch-red { border-top: 4px solid var(--red); }
+    .branch-card.branch-green { border-top: 4px solid var(--green); }
+    .branch-card.branch-orange { border-top: 4px solid var(--orange); }
+    .branch-hdr { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 0.83rem; color: var(--text); display: flex; align-items: center; gap: 0.4rem; }
+    .branch-card ul { margin-left: 1rem; font-size: 0.78rem; color: var(--text-muted); line-height: 1.55; }
+
+    /* DOPPLER CARD UI */
+    .doppler-card { background: var(--surface); border: 1px solid var(--border-light); border-radius: 16px; overflow: hidden; margin: 1.25rem 0; box-shadow: 0 4px 14px rgba(0,0,0,0.04); }
+    .doppler-hdr { background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); color: #fff; padding: 0.85rem 1.25rem; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.85rem; font-weight: 800; display: flex; align-items: center; gap: 0.6rem; }
+    .doppler-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; padding: 1.25rem; background: var(--surface-2); }
+    .doppler-box { background: var(--surface); border: 1px solid var(--border-light); border-radius: 12px; padding: 1.1rem; display: flex; flex-direction: column; gap: 0.75rem; }
+    .doppler-box.leiomyoma { border-left: 4px solid var(--blue); }
+    .doppler-box.adenomyosis { border-left: 4px solid var(--orange); }
+    .doppler-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 0.85rem; color: var(--text); display: flex; align-items: center; gap: 0.4rem; }
+    .doppler-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.8rem; color: var(--text-muted); line-height: 1.55; }
+    .doppler-list li { display: flex; align-items: flex-start; gap: 0.5rem; }
+    .doppler-list li i { flex-shrink: 0; margin-top: 0.2rem; }
+
+    /* ══════════════════════════════════════════════════════
+       FLOWCHART — PREMIUM CLINICAL ALGORITHM UI
+       "Deep Diagnostic Map" Design System v2.0
+    ══════════════════════════════════════════════════════ */
+    @keyframes fc-pulse-glow { 0%, 100% { box-shadow: 0 0 0 0 rgba(15,111,180,0); } 50% { box-shadow: 0 0 0 4px rgba(15,111,180,0.12); } }
+    @keyframes fc-fade-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+    .flowchart-card {
+      background: var(--surface);
+      border-radius: 18px;
+      overflow: hidden;
+      margin-bottom: 1.75rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.06), 0 0 0 1px rgba(15,111,180,0.1);
+      transition: box-shadow 280ms cubic-bezier(0.16,1,0.3,1), transform 280ms cubic-bezier(0.16,1,0.3,1);
+      animation: fc-fade-in 0.4s ease both;
+    }
+    .flowchart-card:hover {
+      box-shadow: 0 4px 6px rgba(0,0,0,0.04), 0 16px 40px rgba(0,0,0,0.1), 0 0 0 1px rgba(15,111,180,0.2);
+      transform: translateY(-2px);
+    }
+
+    /* HEADER — Gradient Medical Banner */
+    .flowchart-card-hdr {
+      background: linear-gradient(135deg, #0c4a6e 0%, #0f6fb4 55%, #1d4ed8 100%);
+      padding: 0.9rem 1.35rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .flowchart-card-hdr::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 80% 50%, rgba(56,189,248,0.18) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .flowchart-card-hdr-title {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.01em;
+      position: relative;
+      z-index: 1;
+    }
+    .flowchart-card-hdr-title i {
+      font-size: 1rem;
+      color: #7dd3fc;
+    }
+    .flowchart-card-hdr .badge {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.65rem;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: #e0f2fe;
+      white-space: nowrap;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* BODY CANVAS — Dot-Grid Blueprint */
+    .flowchart-card-body {
+      padding: 2rem 1.75rem;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      background: #f0f6ff;
+      background-image:
+        radial-gradient(ellipse at 15% 20%, rgba(59,130,246,0.08) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 75%, rgba(16,185,129,0.06) 0%, transparent 55%),
+        radial-gradient(circle, rgba(15,111,180,0.25) 1px, transparent 1px);
+      background-size: auto, auto, 22px 22px;
+      color: var(--text);
+      position: relative;
+    }
+    [data-theme="dark"] .flowchart-card-body {
+      background: #060e1c;
+      background-image:
+        radial-gradient(ellipse at 15% 20%, rgba(59,130,246,0.12) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 75%, rgba(16,185,129,0.08) 0%, transparent 55%),
+        radial-gradient(circle, rgba(56,189,248,0.2) 1px, transparent 1px);
+      background-size: auto, auto, 22px 22px;
+    }
+
+    /* FLOWCHART PRE CANVAS */
+    pre.flowchart-box {
+      font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+      font-size: 0.84rem;
+      line-height: 1.8;
+      margin: 0;
+      white-space: pre;
+      color: #334155;
+    }
+    [data-theme="dark"] pre.flowchart-box { color: #cbd5e1; }
+
+    /* NODES — Premium Pill Badges */
+    .fc-node {
+      display: inline-block;
+      padding: 0.28rem 0.85rem;
+      background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+      color: #1e40af;
+      border: 1.5px solid #93c5fd;
+      border-radius: 10px;
+      font-weight: 800;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.78rem;
+      vertical-align: middle;
+      box-shadow: 0 2px 8px rgba(37,99,235,0.15), inset 0 1px 0 rgba(255,255,255,0.8);
+      transition: transform 160ms, box-shadow 160ms;
+      line-height: 1.4;
+      letter-spacing: -0.01em;
+    }
+    .fc-node:hover { transform: scale(1.03); box-shadow: 0 4px 14px rgba(37,99,235,0.22), inset 0 1px 0 rgba(255,255,255,0.8); }
+    [data-theme="dark"] .fc-node {
+      background: linear-gradient(135deg, #1e3a5f 0%, #1e3a8a 100%);
+      color: #93c5fd;
+      border-color: #2563eb;
+      box-shadow: 0 2px 10px rgba(37,99,235,0.3), 0 0 0 1px rgba(147,197,253,0.1), inset 0 1px 0 rgba(255,255,255,0.05);
+    }
+
+    /* NODE YES — Success Green */
+    .fc-node-yes {
+      background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%) !important;
+      color: #15803d !important;
+      border-color: #86efac !important;
+      box-shadow: 0 2px 8px rgba(21,128,61,0.15), inset 0 1px 0 rgba(255,255,255,0.8) !important;
+    }
+    .fc-node-yes:hover { box-shadow: 0 4px 14px rgba(21,128,61,0.22), inset 0 1px 0 rgba(255,255,255,0.8) !important; }
+    [data-theme="dark"] .fc-node-yes {
+      background: linear-gradient(135deg, #064e3b 0%, #065f46 100%) !important;
+      color: #34d399 !important;
+      border-color: #059669 !important;
+      box-shadow: 0 2px 10px rgba(5,150,105,0.35), 0 0 0 1px rgba(52,211,153,0.1) !important;
+    }
+
+    /* NODE NO — Danger Red */
+    .fc-node-no {
+      background: linear-gradient(135deg, #fff1f2 0%, #ffe4e6 100%) !important;
+      color: #b91c1c !important;
+      border-color: #fca5a5 !important;
+      box-shadow: 0 2px 8px rgba(185,28,28,0.13), inset 0 1px 0 rgba(255,255,255,0.8) !important;
+    }
+    .fc-node-no:hover { box-shadow: 0 4px 14px rgba(185,28,28,0.2), inset 0 1px 0 rgba(255,255,255,0.8) !important; }
+    [data-theme="dark"] .fc-node-no {
+      background: linear-gradient(135deg, #7f1d1d 0%, #991b1b 100%) !important;
+      color: #fca5a5 !important;
+      border-color: #dc2626 !important;
+      box-shadow: 0 2px 10px rgba(220,38,38,0.35), 0 0 0 1px rgba(252,165,165,0.1) !important;
+    }
+
+    /* NODE WARN — Amber Warning */
+    .fc-node-warn {
+      background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%) !important;
+      color: #b45309 !important;
+      border-color: #fcd34d !important;
+      box-shadow: 0 2px 8px rgba(180,83,9,0.13), inset 0 1px 0 rgba(255,255,255,0.8) !important;
+    }
+    .fc-node-warn:hover { box-shadow: 0 4px 14px rgba(180,83,9,0.2), inset 0 1px 0 rgba(255,255,255,0.8) !important; }
+    [data-theme="dark"] .fc-node-warn {
+      background: linear-gradient(135deg, #78350f 0%, #92400e 100%) !important;
+      color: #fcd34d !important;
+      border-color: #d97706 !important;
+      box-shadow: 0 2px 10px rgba(217,119,6,0.35), 0 0 0 1px rgba(252,211,77,0.1) !important;
+    }
+
+    /* CONNECTOR LINES */
+    .fc-line {
+      color: #0f6fb4;
+      font-weight: 700;
+      opacity: 1;
+      text-shadow: 0 0 12px rgba(15,111,180,0.35);
+    }
+    [data-theme="dark"] .fc-line {
+      color: #38bdf8;
+      text-shadow: 0 0 12px rgba(56,189,248,0.4);
+    }
+
+    /* SCROLL HINT on small screens */
+    .flowchart-card-body::after {
+      content: '↔ Cuộn ngang để xem đầy đủ';
+      display: none;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      color: var(--text-faint);
+      padding: 0.5rem 0 0;
+      text-align: center;
+    }
+    @media (max-width: 640px) { .flowchart-card-body::after { display: block; } }
+
+    code { font-family: 'JetBrains Mono', monospace; background: var(--surface-2); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.82em; border: 1px solid var(--border-light); }
+
+    /* CITATION & FOOTER */
+    .citation-box { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 12px; padding: 1.25rem; font-size: 0.82rem; color: var(--text-muted); line-height: 1.75; font-style: italic; }
+    .page-footer { max-width: 1000px; margin: 0 auto; padding: 2rem 1.5rem 4rem; text-align: center; font-size: 0.8rem; color: var(--text-faint); border-top: 1px solid var(--border-light); }
+
+    @media (max-width: 768px) {
+      .page-content { padding: 1.25rem 1rem; }
+      .sec-body { padding: 1.1rem 1rem; }
+      .pillars-inner { grid-template-columns: 1fr; }
+    }
+
+    @media print {
+      body { background: #fff !important; color: #000 !important; }
+      .topnav, .quicknav, .topnav-theme-toggle, .page-footer, .topnav-pdf-btn { display: none !important; }
+      .sec-card { break-inside: avoid; border: 1px solid #ccc !important; box-shadow: none !important; }
+    }
+  </style>
+  <link rel="stylesheet" href="../../../../../css/components/header.css">
+  <script type="module" src="../../../../../components/header.ts" defer></script>
+</head>
+<body>
+  <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
+
+
+  <!-- TOP NAV -->
+  <nav class="topnav">
+    <a href="../guidelines.html" class="topnav-back">
+      <i class="fa-solid fa-chevron-left"></i>
+      Kho Guidelines
+    </a>
+    <div class="topnav-divider"></div>
+    <div class="topnav-title">Hướng dẫn Chẩn đoán và Điều trị U Xơ Cơ Tử Cung (BYT 2026)</div>
+    <button class="topnav-theme-toggle topnav-pdf-btn" onclick="window.print()" title="Tải PDF / In bài viết" style="margin-left: auto; margin-right: 4px;">
+      <i class="fa-solid fa-file-pdf"></i>
+    </button>
+    <button class="topnav-theme-toggle" id="themeToggleBtn" aria-label="Đổi giao diện">
+      <i class="fa-solid fa-moon"></i>
+    </button>
+  </nav>
+
+  <!-- QUICK NAV BAR -->
+  <div class="quicknav">
+    <a href="#sec-1-dai-cuong-dich-te-va-co-che-benh-sinh" class="quicknav-link active">1. Đại cương, Dịch tễ và Cơ chế Bệnh sinh</a>
+    <a href="#sec-2-he-thong-phan-loai-figo-2011-dinh-huong-xu-tri" class="quicknav-link ">2. Hệ thống Phân loại FIGO 2011 & Định hướng Xử trí</a>
+    <a href="#sec-3-trieu-chung-lam-sang-can-lam-sang-va-bien-chung" class="quicknav-link ">3. Triệu chứng Lâm sàng, Cận lâm sàng và Biến chứng</a>
+    <a href="#sec-4-dieu-tri-noi-khoa-u-xo-co-tu-cung" class="quicknav-link ">4. Điều trị Nội khoa U Xơ Cơ Tử Cung</a>
+    <a href="#sec-5-phau-thuat-ngoai-khoa-va-cac-phuong-phap-giam-mat-mau" class="quicknav-link ">5. Phẫu thuật Ngoại khoa và Các Phương pháp Giảm Mất máu</a>
+    <a href="#sec-6-cac-phuong-phap-dieu-tri-it-xam-lan-modern" class="quicknav-link ">6. Các Phương pháp Điều trị Ít Xâm Lấn Modern</a>
+    <a href="#sec-7-xu-tri-u-xo-co-tu-cung-trong-vo-sinh-va-thai-ky" class="quicknav-link ">7. Xử trí U xơ cơ Tử cung trong Vô sinh và Thai kỳ</a>
+    <a href="#sec-8-tai-lieu-tham-khao" class="quicknav-link ">8. Tài liệu Tham khảo</a>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge"><i class="fa-solid fa-book-journal-whills"></i> Bộ Y tế Việt Nam · 2026</div>
+      <h1 class="hero-title">
+        <span>Diagnosis and Management of Uterine Leiomyoma (Fibroids) Guideline 2026</span>
+        Hướng dẫn Chẩn đoán và Điều trị U Xơ Cơ Tử Cung (BYT 2026)
+      </h1>
+      <p class="hero-subtitle">Tài liệu tóm tắt chuyên sâu Hướng dẫn chẩn đoán và điều trị U xơ cơ tử cung (Leiomyoma - UXCTC) ban hành theo tài liệu chuyên môn của Bộ Y tế Việt Nam năm 2026. Nội dung bao quát toàn bộ từ dịch tễ, sinh bệnh học hormone steroid (Estrogen & Progesterone PR-B), phân loại FIGO 2011 (L0 - L8), chẩn đoán hình ảnh (Siêu âm, SIS, MRI), phác đồ điều trị nội khoa, phẫu thuật ngoại khoa (nội soi buồng tử cung, bóc u xơ, cắt tử cung), các phương pháp giảm mất máu trong mổ, kỹ thuật ít xâm lấn (US-HIFU, UAE, RFA) đến chiến lược quản lý UXCTC ở bệnh nhân vô sinh và phụ nữ mang thai.</p>
+      <div class="hero-meta">
+        <div class="hero-meta-item"><i class="fa-solid fa-calendar-check"></i> Cập nhật: 2026</div>
+        <div class="hero-meta-item"><i class="fa-solid fa-building-flag"></i> Bộ Y tế Việt Nam</div>
+        <div class="hero-meta-item"><i class="fa-solid fa-stethoscope"></i> Chuyên khoa: OBGYN</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PILLARS STRIP -->
+  <div class="pillars">
+    <div class="pillars-inner">
+      
+      <div class="pillar p1">
+        <div class="pillar-icon">⚡</div>
+        <div>
+          <div class="pillar-title">Phân Loại FIGO 2011 (L0-L8)</div>
+          <div class="pillar-desc">Phân định chính xác u xơ dưới niêm mạc (L0-L2), trong cơ (L3-L4) và dưới thanh mạc (L5-L8) làm cơ sở chọn chiến lược can thiệp.</div>
+        </div>
+      </div>
+      <div class="pillar p2">
+        <div class="pillar-icon">🎯</div>
+        <div>
+          <div class="pillar-title">Cá Thể Hóa Định Hướng Điều Trị</div>
+          <div class="pillar-desc">Lựa chọn phác đồ dựa trên nhu cầu bảo tồn sinh sản, tuổi tác, kích thước khối u và mức độ nghiêm trọng của triệu chứng AUB.</div>
+        </div>
+      </div>
+      <div class="pillar p3">
+        <div class="pillar-icon">🛡</div>
+        <div>
+          <div class="pillar-title">Công Nghệ Ít Xâm Lấn US-HIFU</div>
+          <div class="pillar-desc">Đốt siêu âm hội tụ cường độ cao tiêu hủy hoại tử đông u xơ không phẫu thuật, không để lại sẹo tử cung, tối ưu cho phụ nữ mong con.</div>
+        </div>
+      </div>
+      <div class="pillar p4">
+        <div class="pillar-icon">⏱️</div>
+        <div>
+          <div class="pillar-title">Kiểm Soát Xuất Huyết & Bảo Tồn Sinh Sản</div>
+          <div class="pillar-desc">Phối hợp Tranexamic acid, GnRH-a, SPRMs, nội soi buồng tử cung cắt L0-L2 và bóc nhân xơ bảo tồn tử cung chuẩn hóa.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="page-content">
+    
+    <!-- 1. Đại cương, Dịch tễ và Cơ chế Bệnh sinh -->
+    <div class="sec-card" id="sec-1-dai-cuong-dich-te-va-co-che-benh-sinh">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-stethoscope sec-hdr-icon"></i>
+        <h2 class="sec-title">1. Đại cương, Dịch tễ và Cơ chế Bệnh sinh</h2>
+      </div>
+      <div class="sec-body">
+        
+<h3 class="sec-subtitle"><i class="fa-solid fa-angle-right"></i> Khái niệm và Cơ chế Bệnh sinh</h3>
+<strong>U xơ cơ tử cung (Leiomyoma - UXCTC)</strong> là khối u lành tính không rõ nguyên nhân, do sự phát triển quá mức của sợi cơ trơn và mô liên kết ở tử cung. Đây là loại khối u tử cung phổ biến nhất ở phụ nữ với khuynh hướng di truyền rõ rệt.
+<p style="line-height: 1.65;">Cơ chế bệnh sinh và sự tăng trưởng của UXCTC phụ thuộc chặt chẽ vào các hormone steroid sinh dục:</p>
+<ul style="margin-left: 1.25rem; margin-bottom: 0.75rem; line-height: 1.6;"><li><strong>Estrogen:</strong> Kích thích tăng kích thước khối u. Mật độ thụ thể estrogen (ER) trên tế bào UXCTC cao hơn rõ rệt so với cơ tử cung bình thường. Nồng độ estrogen cao trong 3 tháng đầu và giữa thai kỳ làm u xơ to nhanh.</li>
+<li><strong>Progesterone:</strong> Đóng vai trò then chốt trong sự phát triển khối u thông qua <strong>thụ thể PR-B</strong> (làm tăng kích thước u), trong khi <strong>thụ thể PR-A</strong> không làm thay đổi kích thước u. </li></ul>
+<div class="infobox info">
+  <span class="infobox-icon">ℹ️</span>
+  <div>
+    Khi ngắt nguồn hormone steroid sinh dục (như sau mãn kinh hoặc điều trị ức chế nội khoa), phần lớn khối u xơ sẽ thoái triển tự nhiên.
+  </div>
+</div>
+<h3 class="sec-subtitle"><i class="fa-solid fa-angle-right"></i> Dịch tễ học và Yếu tố Nguy cơ</h3>
+<p style="line-height: 1.65;">Chỉ khoảng <strong>25% phụ nữ trong độ tuổi sinh sản</strong> có biểu hiện triệu chứng UXCTC và khoảng 25% trong số đó có triệu chứng nặng cần điều trị.</p>
+<div class="table-wrapper">
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Nhóm Yếu Tố</th>
+              <th>Chi Tiết Lâm Sàng & Mức Độ Nguy Cơ</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Tuổi tác</strong></td><td>Nguy cơ tăng mạnh theo tuổi. Tuổi >40 risk cao gấp <strong>4 lần</strong>; tuổi 41-60 risk cao gấp <strong>10 lần</strong> so với tuổi 21-30. Giảm mạnh sau mãn kinh.</td></tr>
+            <tr><td><strong>Chủng tộc</strong></td><td>Người da đen có nguy cơ cao gấp <strong>2 - 3 lần</strong> so với da trắng/châu Á, khởi phát trẻ hơn, u to hơn và nhiều nhân hơn.</td></tr>
+            <tr><td><strong>Tiền sử & Di truyền</strong></td><td>Gia đình có người mắc UXCTC làm tăng nguy cơ <strong>> 3 lần</strong>. Liên quan đột biến gene <em>MED12, HMGA2, CYP1A1</em>.</td></tr>
+            <tr><td><strong>Bệnh đồng mắc</strong></td><td>Tăng huyết áp làm tăng nguy cơ UXCTC cao <strong>gần 5 lần</strong>. Béo phì, kháng insulin, PCOS cũng làm tăng nguy cơ.</td></tr>
+            <tr><td><strong>Lối sống & Thực phẩm</strong></td><td>Căng thẳng kéo dài, ăn nhiều thịt đỏ, thiếu Vitamin D, uống cồn/caffeine và phụ gia thực phẩm (tăng risk lên đến <strong>3 lần</strong>).</td></tr>
+            <tr><td><strong>Yếu tố bảo vệ</strong></td><td>Mang thai/sinh nhiều lần, vận động thể lực thường xuyên, chế độ ăn nhiều cá, rau xanh và Vitamin A.</td></tr>
+    </tbody>
+  </table>
+</div>
+      </div>
+    </div>
+
+    <!-- 2. Hệ thống Phân loại FIGO 2011 & Định hướng Xử trí -->
+    <div class="sec-card" id="sec-2-he-thong-phan-loai-figo-2011-dinh-huong-xu-tri">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-vial sec-hdr-icon"></i>
+        <h2 class="sec-title">2. Hệ thống Phân loại FIGO 2011 & Định hướng Xử trí</h2>
+      </div>
+      <div class="sec-body">
+        <p style="line-height: 1.65;">Hiện nay, hệ thống phân loại theo vị trí của <strong>Liên đoàn Sản Phụ khoa Quốc tế (FIGO 2011)</strong> được áp dụng chuẩn mực trên lâm sàng:</p>
+<div class="figo-board">
+  <div class="figo-board-hdr">
+    <i class="fa-solid fa-layer-group"></i> SƠ ĐỒ PHÂN LOẠI VỊ TRÍ U XƠ CƠ TỬ CUNG FIGO 2011 (L0 – L8)
+  </div>
+  <div class="figo-grid">
+    <!-- Group 1: Dưới niêm mạc -->
+    <div class="figo-card figo-submucosal">
+      <div class="figo-card-title"><i class="fa-solid fa-circle-dot" style="color: var(--orange);"></i> 1. NHÓM DƯỚI NIÊM MẠC (Submucosal)</div>
+      <div class="figo-pills">
+        <span class="figo-pill orange">L0 · Có cuống trong buồng</span>
+        <span class="figo-pill orange">L1 · Lồi buồng tử cung >50%</span>
+        <span class="figo-pill orange">L2 · Lồi buồng tử cung ≤50%</span>
+      </div>
+      <div class="figo-desc">
+        • <strong>Đặc điểm:</strong> Tiếp xúc trực tiếp lòng tử cung, gây rong kinh/cường kinh (AUB) nặng & vô sinh.<br>
+        • <strong>Xử trí ưu tiên:</strong> Phẫu thuật nội soi buồng tử cung (Hysteroscopic Myomectomy).
+      </div>
+    </div>
+<!-- Group 2: Trong cơ -->
+    <div class="figo-card figo-intramural">
+      <div class="figo-card-title"><i class="fa-solid fa-circle-dot" style="color: var(--blue);"></i> 2. NHÓM TRONG CƠ TỬ CUNG (Intramural)</div>
+      <div class="figo-pills">
+        <span class="figo-pill blue">L3 · Chạm niêm mạc (100% trong cơ)</span>
+        <span class="figo-pill blue">L4 · Hoàn toàn trong cơ (100%)</span>
+      </div>
+      <div class="figo-desc">
+        • <strong>Đặc điểm:</strong> Nằm giữa thành cơ tử cung, gây đau trằn bụng, tăng thể tích tử cung.<br>
+        • <strong>Xử trí ưu tiên:</strong> Điều trị Nội khoa (GnRH-a, SPRMs) / US-HIFU / Phẫu thuật bóc nhân xơ.
+      </div>
+    </div>
+<!-- Group 3: Dưới thanh mạc -->
+    <div class="figo-card figo-subserosal">
+      <div class="figo-card-title"><i class="fa-solid fa-circle-dot" style="color: var(--green);"></i> 3. NHÓM DƯỚI THANH MẠC (Subserosal)</div>
+      <div class="figo-pills">
+        <span class="figo-pill green">L5 · Dưới thanh mạc (cơ ≥50%)</span>
+        <span class="figo-pill green">L6 · Dưới thanh mạc (cơ &lt;50%)</span>
+        <span class="figo-pill green">L7 · Dưới thanh mạc có cuống ngoài</span>
+      </div>
+      <div class="figo-desc">
+        • <strong>Đặc điểm:</strong> Lồi ra ngoài ổ bụng, chèn ép bàng quang, niệu quản (thận ứ nước), trực tràng.<br>
+        • <strong>Xử trí ưu tiên:</strong> Theo dõi nếu nhỏ / Mổ bóc nhân xơ / US-HIFU nếu có triệu chứng.
+      </div>
+    </div>
+<!-- Group 4: Đặc biệt & U lai -->
+    <div class="figo-card figo-special">
+      <div class="figo-card-title"><i class="fa-solid fa-circle-dot" style="color: var(--purple);"></i> 4. VỊ TRÍ ĐẶC BIỆT & KHỐI U LAI</div>
+      <div class="figo-pills">
+        <span class="figo-pill purple">L8 · Cổ tử cung / Dây chằng rộng</span>
+        <span class="figo-pill purple">L2-5 · Khối u lai (Xuyên niêm & thanh mạc)</span>
+      </div>
+      <div class="figo-desc">
+        • <strong>Đặc điểm:</strong> Vị trí dị thường hoặc khối u lớn đâm xuyên nhiều lớp tử cung.<br>
+        • <strong>Xử trí ưu tiên:</strong> Khảo sát MRI & Phẫu thuật cá thể hóa đa chuyên khoa.
+      </div>
+    </div>
+  </div>
+</div>
+<h3 class="sec-subtitle"><i class="fa-solid fa-angle-right"></i> Chi tiết Phân loại và Định hướng Xử trí Lâm sàng</h3>
+<ul style="margin-left: 1.25rem; margin-bottom: 0.75rem; line-height: 1.6;"><li><strong>Nhóm Dưới niêm mạc (Submucosal - L0, L1, L2):</strong></li>
+<li><em>L0:</em> Có cuống, nằm hoàn toàn trong buồng tử cung.</li>
+<li><em>L1:</em> Lồi vào buồng tử cung > 50% thể tích.</li>
+<li><em>L2:</em> Lồi vào buồng tử cung ≤ 50% thể tích (chân bám sâu trong cơ).</li>
+<li><em>Định hướng xử trí:</em> Thường gây xuất huyết tử cung bất thường (AUB), vô sinh, sẩy thai. Lựa chọn điều trị ưu tiên số 1 là <strong>Phẫu thuật nội soi buồng tử cung (Hysteroscopic Myomectomy)</strong>.</li>
+<li><strong>Nhóm Khác (Other - L3, L4, L5, L6, L7, L8 & L2-5):</strong></li>
+<li><em>L3:</em> Tiếp xúc niêm mạc nhưng nằm 100% trong cơ tử cung.</li>
+<li><em>L4:</em> Nằm hoàn toàn giữa lớp cơ tử cung.</li>
+<li><em>L5:</em> Dưới thanh mạc, phần nằm trong cơ ≥ 50%.</li>
+<li><em>L6:</em> Dưới thanh mạc, phần nằm trong cơ &lt; 50%.</li>
+<li><em>L7:</em> Dưới thanh mạc có cuống lồi ra ngoài ổ bụng.</li>
+<li><em>L8:</em> Vị trí đặc biệt (cổ tử cung, dây chằng rộng).</li>
+<li><em>Định hướng xử trí:</em> Thường không gây AUB. Chỉ can thiệp khi khối u lớn chèn ép niệu/tiêu hóa hoặc ảnh hưởng đến khả năng mang thai (xử trí bằng <strong>Nội khoa, US-HIFU hoặc Phẫu thuật bóc u</strong>).</li></ul>
+
+      </div>
+    </div>
+
+    <!-- 3. Triệu chứng Lâm sàng, Cận lâm sàng và Biến chứng -->
+    <div class="sec-card" id="sec-3-trieu-chung-lam-sang-can-lam-sang-va-bien-chung">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-pills sec-hdr-icon"></i>
+        <h2 class="sec-title">3. Triệu chứng Lâm sàng, Cận lâm sàng và Biến chứng</h2>
+      </div>
+      <div class="sec-body">
+        
+<h3 class="sec-subtitle"><i class="fa-solid fa-angle-right"></i> Triệu chứng Lâm sàng</h3>
+<ol style="margin-left: 1.25rem; margin-bottom: 0.75rem; line-height: 1.6;"><li><strong>Xuất huyết tử cung bất thường (AUB):</strong> Phổ biến nhất (26 - 29%). Rong kinh, cường kinh là dấu hiệu điển hình. Phụ thuộc vào <em>vị trí u</em> hơn là kích thước (u L0-L2 dù nhỏ vẫn gây AUB nặng).</li>
+<li><strong>Đau và cảm giác chèn ép:</strong> Đau bụng kinh, trằn nặng hạ vị, đau lưng hoặc giao hợp đau sâu. UXCTC lớn gây chèn ép bàng quang (tiểu dắt, tiểu khó, bí tiểu), chèn ép niệu quản (thận ứ nước) hoặc chèn ép trực tràng (táo bón mạn).</li>
+<li><strong>Hiếm muộn & Biến chứng Thai kỳ:</strong> Vô sinh, sẩy thai liên tiếp, sinh non, ngôi bất thường, đẻ khó do đường ra bị cản trở, băng huyết sau sinh.</li></ol>
+<h3 class="sec-subtitle"><i class="fa-solid fa-angle-right"></i> Phương pháp Cận lâm sàng</h3>
+<ul style="margin-left: 1.25rem; margin-bottom: 0.75rem; line-height: 1.6;"><li><strong>Siêu âm ngã âm đạo (TVS):</strong> Phương pháp chẩn đoán ban đầu chuẩn mực, xác định số lượng, kích thước và định vị phân loại FIGO.</li>
+<li><strong>Siêu âm bơm dịch buồng tử cung (SIS):</strong> Đặc biệt hiệu quả đánh giá tổn thương lồi buồng tử cung L0, L1, L2.</li>
+<li><strong>Cộng hưởng từ (MRI):</strong> <strong>Tiêu chuẩn vàng</strong> khảo sát chính xác nhất vị trí, số lượng u xơ phức tạp, phân biệt với Tuyến cơ tử cung (Adenomyosis) hoặc Ung thư cơ tử cung (Leiomyosarcoma).</li></ul>
+<div class="doppler-card">
+  <div class="doppler-hdr"><i class="fa-solid fa-wave-square"></i> ĐẶC ĐIỂM DÒNG MÁU DOPPLER TRÊN SIÊU ÂM PHÂN BIỆT</div>
+  <div class="doppler-grid">
+    <div class="doppler-box leiomyoma">
+      <div class="doppler-title"><i class="fa-solid fa-circle-dot" style="color: var(--blue);"></i> U Xơ Cơ Tử Cung (Leiomyoma)</div>
+      <ul class="doppler-list">
+        <li><i class="fa-solid fa-check" style="color: var(--green);"></i> <strong>Mạch máu vòng quanh (Peripheral Ring):</strong> Phổ Doppler màu hiển thị dòng máu chạy quanh bao khối u.</li>
+        <li><i class="fa-solid fa-check" style="color: var(--green);"></i> Ranh giới rõ ràng so với lớp cơ tử cung xung quanh, có vỏ giả (pseudocapsule).</li>
+        <li><i class="fa-solid fa-check" style="color: var(--green);"></i> Cấu trúc âm đồng nhất hoặc tăng âm dạng vòng xơ.</li>
+      </ul>
+    </div>
+    <div class="doppler-box adenomyosis">
+      <div class="doppler-title"><i class="fa-solid fa-triangle-exclamation" style="color: var(--orange);"></i> Bệnh Tuyến Cơ Tử Cung (Adenomyosis)</div>
+      <ul class="doppler-list">
+        <li><i class="fa-solid fa-xmark" style="color: var(--red);"></i> <strong>Mạch máu đâm xuyên (Translesional Vessels):</strong> Dòng máu đâm xuyên qua vùng tổn thương không theo quy luật.</li>
+        <li><i class="fa-solid fa-xmark" style="color: var(--red);"></i> Ranh giới không rõ ràng, cơ tử cung dày không đối xứng (thường thành sau > thành trước).</li>
+        <li><i class="fa-solid fa-xmark" style="color: var(--red);"></i> Hình ảnh nang nhỏ lấm chấm âm và bóng lưng sọc quạt.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="infobox warning">
+  <span class="infobox-icon">⚠️</span>
+  <div>
+    <strong>Biến chứng Thoái hóa U xơ</strong><br>U xơ có thể trải qua các dạng thoái hóa: thoái hóa kính (phổ biến nhất 65%), thoái hóa nang, thoái hóa hóa vôi (ở người già), hoặc <strong>thoái hóa hoại tử vô trùng (thoái hóa đỏ)</strong> thường gặp trong thai kỳ gây đau bụng cấp dữ dội, sốt nhẹ và tăng bạch cầu.
+  </div>
+</div>
+      </div>
+    </div>
+
+    <!-- 4. Điều trị Nội khoa U Xơ Cơ Tử Cung -->
+    <div class="sec-card" id="sec-4-dieu-tri-noi-khoa-u-xo-co-tu-cung">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-heart-pulse sec-hdr-icon"></i>
+        <h2 class="sec-title">4. Điều trị Nội khoa U Xơ Cơ Tử Cung</h2>
+      </div>
+      <div class="sec-body">
+        <p style="line-height: 1.65;">Điều trị nội khoa nhằm mục tiêu: (1) Kiểm soát xuất huyết tử cung bất thường (AUB); (2) Giảm kích thước khối u xơ trước mổ; (3) Nâng nồng độ Hemoglobin cải thiện tình trạng thiếu máu.</p>
+<div class="table-wrapper">
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Nhóm Thuốc</th>
+              <th>Tên Thuốc & Liều Dùng</th>
+              <th>Cơ Chế & Tác Dụng Lâm Sàng</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Tranexamic acid</strong></td><td><strong>1g uống 3-4 lần/ngày</strong> (tối đa 4g/ngày) trong ngày hành kinh</td><td>Thuốc cầm máu chống tiêu fibrin. Giảm 40-50% lượng máu kinh mà không làm thay đổi kích thước u xơ.</td></tr>
+            <tr><td><strong>Dụng cụ tử cung LNG-IUS</strong></td><td>Vòng chứa <strong>Levonorgestrel 52mg</strong> đặt buồng tử cung</td><td>Giảm 70-90% lượng máu kinh. Lựa chọn tuyệt vời cho AUB do u xơ không làm biến dạng buồng tử cung.</td></tr>
+            <tr><td><strong>Thuốc tránh thai phối hợp (COC)</strong></td><td>Viên uống chứa Estrogen + Progestin</td><td>Kiểm soát chu kỳ kinh nguyệt, giảm lượng máu kinh nhưng không làm giảm kích thước u xơ.</td></tr>
+            <tr><td><strong>Đồng vận GnRH (GnRH-a)</strong></td><td><strong>Goserelin 3.6mg</strong> hoặc <strong>Leuprorelin 3.75mg</strong> tiêm bắp mỗi 4 tuần</td><td>Ức chế trục Hạ đồi - Tuyến yên - Buồng trứng → gây mãn kinh nhân tạo. Giảm <strong>35-50% thể tích u xơ</strong> sau 3 tháng. Dùng tiền phẫu 3-6 tháng.</td></tr>
+            <tr><td><strong>Đối kháng GnRH (GnRH-ant)</strong></td><td><strong>Elagolix, Relugolix</strong> kết hợp Add-back therapy</td><td>Ức chế tức thì estrogen/progesterone. Giảm nhanh chảy máu và giảm thể tích u xơ mà ít gây bùng phát triệu chứng.</td></tr>
+            <tr><td><strong>Chất điều hòa SPRMs</strong></td><td><strong>Mifepristone</strong> (2.5-5mg/ngày) hoặc <strong>Ulipristal Acetate</strong> (5mg/ngày)</td><td>Kháng progesterone chọn lọc. Giảm nhanh AUB và giảm 40-50% thể tích u xơ.</td></tr>
+    </tbody>
+  </table>
+</div>
+      </div>
+    </div>
+
+    <!-- 5. Phẫu thuật Ngoại khoa và Các Phương pháp Giảm Mất máu -->
+    <div class="sec-card" id="sec-5-phau-thuat-ngoai-khoa-va-cac-phuong-phap-giam-mat-mau">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-shield-halved sec-hdr-icon"></i>
+        <h2 class="sec-title">5. Phẫu thuật Ngoại khoa và Các Phương pháp Giảm Mất máu</h2>
+      </div>
+      <div class="sec-body">
+        
+<h3 class="sec-subtitle"><i class="fa-solid fa-angle-right"></i> 1. Phẫu thuật Bóc u xơ tử cung (Myomectomy)</h3>
+<p style="line-height: 1.65;">Chỉ định cho bệnh nhân trẻ còn nhu cầu sinh con hoặc muốn giữ lại tử cung.</p>
+<ul style="margin-left: 1.25rem; margin-bottom: 0.75rem; line-height: 1.6;"><li><strong>Nội soi buồng tử cung cắt u (Hysteroscopic Myomectomy):</strong> Chỉ định cho u dưới niêm mạc L0, L1, L2 &lt; 5 cm. Nguy cơ hấp thụ dịch bơm buồng (glycine) gây hạ natri máu/phù não cấp nếu kéo dài.</li>
+<li><strong>Phẫu thuật bóc u qua mổ mở / nội soi ổ bụng:</strong> Chỉ định cho u xơ trong cơ hoặc dưới thanh mạc (L2 - L7). Bắt buộc khâu phục hồi cơ tử cung đủ <strong>3 lớp tiêu chuẩn</strong> để phòng ngừa nguy cơ vỡ tử cung khi mang thai sau mổ.</li></ul>
+<!-- EDITORIAL SVG CLINICAL ALGORITHM: THUẬT TOÁN TIẾP CẬN VÀ QUYẾT ĐỊNH ĐIỀU TRỊ U XƠ CƠ TỬ CUNG -->
+<div class="flowchart-card" style="margin: 1.5rem 0;">
+  <div class="flowchart-card-hdr">
+    <div class="flowchart-card-hdr-title">
+      <i class="fa-solid fa-diagram-project"></i>
+      <span>LƯU ĐỒ QUYẾT ĐỊNH ĐIỀU TRỊ U XƠ TỬ CUNG (FIGO 2011 & BYT 2026)</span>
+    </div>
+    <span class="badge">Editorial SVG</span>
+  </div>
+  <div style="padding: 1.5rem; background: var(--surface-2); display: flex; justify-content: center; overflow-x: auto;">
+    <svg class="med-svg" viewBox="0 0 940 480" width="100%" height="100%" style="max-width: 940px;" xmlns="http://www.w3.org/2000/svg">
+      <!-- Background -->
+      <rect width="940" height="480" fill="var(--surface)" rx="12" stroke="var(--border-light)" stroke-width="1"/>
+
+      <!-- Node 1: Start (Top) -->
+      <g>
+        <rect x="350" y="25" width="240" height="60" rx="8" fill="var(--blue-bg)" stroke="var(--blue)" stroke-width="1.5"/>
+        <text x="470" y="47" font-size="10" font-weight="700" fill="var(--accent)" text-anchor="middle" font-family="'JetBrains Mono', monospace">BƯỚC 1: TIẾP NHẬN & PHÂN LOẠI</text>
+        <text x="470" y="65" font-size="12" font-weight="800" fill="var(--text)" text-anchor="middle">Siêu âm TVS / SIS / MRI → FIGO L0–L8</text>
+      </g>
+
+      <!-- Connectors Node 1 -> Node 2 -->
+      <path d="M 470 85 L 470 120" fill="none" stroke="var(--border)" stroke-width="2"/>
+      <polygon points="470,120 465,110 475,110" fill="var(--border)"/>
+
+      <!-- Node 2: Decision (Middle) -->
+      <g>
+        <rect x="330" y="120" width="280" height="55" rx="8" fill="var(--orange-bg)" stroke="var(--orange)" stroke-width="1.5"/>
+        <text x="470" y="142" font-size="10" font-weight="700" fill="var(--orange)" text-anchor="middle" font-family="'JetBrains Mono', monospace">BƯỚC 2: PHÂN TẦNG NGUYỆN VỌNG</text>
+        <text x="470" y="159" font-size="12" font-weight="800" fill="var(--text)" text-anchor="middle">Mong Muốn Bảo Tồn Sinh Sản / Tử Cung?</text>
+      </g>
+
+      <!-- Orthogonal Branches from Node 2 -->
+      <!-- Left Branch: Còn mong con -->
+      <path d="M 330 147.5 L 180 147.5 L 180 215" fill="none" stroke="var(--green)" stroke-width="2"/>
+      <polygon points="180,215 175,205 185,205" fill="var(--green)"/>
+      <g>
+        <rect x="195" y="137.5" width="110" height="20" rx="4" fill="var(--surface)" stroke="var(--green-light)" stroke-width="1"/>
+        <text x="250" y="151.5" font-size="10" font-weight="700" fill="var(--green)" text-anchor="middle">CÒN MONG CON</text>
+      </g>
+
+      <!-- Center-Right Branch: Đủ con / Triệt để -->
+      <path d="M 610 147.5 L 760 147.5 L 760 215" fill="none" stroke="var(--blue)" stroke-width="2"/>
+      <polygon points="760,215 755,205 765,205" fill="var(--blue)"/>
+      <g>
+        <rect x="635" y="137.5" width="105" height="20" rx="4" fill="var(--surface)" stroke="var(--blue-light)" stroke-width="1"/>
+        <text x="687.5" y="151.5" font-size="10" font-weight="700" fill="var(--blue)" text-anchor="middle">ĐÃ ĐỦ CON</text>
+      </g>
+
+      <!-- Center Downward Branch: Xuất huyết cấp AUB (Red Flag - Focal Node) -->
+      <path d="M 470 175 L 470 360" fill="none" stroke="var(--red)" stroke-width="2" stroke-dasharray="4,4"/>
+      <polygon points="470,360 465,350 475,350" fill="var(--red)"/>
+      <g>
+        <rect x="405" y="240" width="130" height="22" rx="4" fill="var(--surface)" stroke="var(--red-light)" stroke-width="1"/>
+        <text x="470" y="255" font-size="9.5" font-weight="700" fill="var(--red)" text-anchor="middle">🚨 AUB NẶNG / THIẾU MÁU</text>
+      </g>
+
+      <!-- Left Nodes (Bảo tồn sinh sản) -->
+      <!-- Node 3A: L0-L2 -->
+      <g>
+        <rect x="50" y="215" width="260" height="90" rx="8" fill="var(--surface-2)" stroke="var(--green)" stroke-width="1.5"/>
+        <rect x="60" y="225" width="90" height="20" rx="4" fill="var(--green)"/>
+        <text x="105" y="239" font-size="9" font-weight="700" fill="#ffffff" text-anchor="middle">DƯỚI NIÊM MẠC</text>
+        <text x="160" y="239" font-size="11" font-weight="800" fill="var(--text)">FIGO L0 – L2 (&lt;5cm)</text>
+        <text x="60" y="268" font-size="11" font-weight="700" fill="var(--green)">★ Nội Soi Buồng Cắt U (Hysteroscopy)</text>
+        <text x="60" y="288" font-size="10" fill="var(--text-muted)">Bảo tồn buồng tử cung trọn vẹn để làm IVF</text>
+      </g>
+
+      <!-- Node 3B: L3-L6 -->
+      <g>
+        <rect x="50" y="335" width="260" height="110" rx="8" fill="var(--teal-bg)" stroke="var(--teal)" stroke-width="1.5"/>
+        <rect x="60" y="345" width="115" height="20" rx="4" fill="var(--teal)"/>
+        <text x="117.5" y="359" font-size="9" font-weight="700" fill="#ffffff" text-anchor="middle">TRONG CƠ / THANH MẠC</text>
+        <text x="185" y="359" font-size="11" font-weight="800" fill="var(--text)">FIGO L3 – L6</text>
+        <text x="60" y="388" font-size="11" font-weight="700" fill="var(--teal)">1. US-HIFU (Không sẹo, mang thai sớm)</text>
+        <text x="60" y="408" font-size="11" font-weight="600" fill="var(--text)">2. Mổ bóc u xơ khâu 3 lớp cơ tử cung</text>
+        <text x="60" y="428" font-size="9.5" fill="var(--text-muted)">* Tránh mang thai tối thiểu 6-12 tháng sau mổ bóc</text>
+      </g>
+
+      <!-- Connectors Left 3A -> 3B (if mixed) -->
+      <path d="M 180 305 L 180 335" fill="none" stroke="var(--border-light)" stroke-width="1" stroke-dasharray="3,3"/>
+
+      <!-- Right Nodes (Đủ con / Triệt để) -->
+      <!-- Node 4A: Cắt tử cung -->
+      <g>
+        <rect x="630" y="215" width="260" height="90" rx="8" fill="var(--surface-2)" stroke="var(--blue)" stroke-width="1.5"/>
+        <rect x="640" y="225" width="75" height="20" rx="4" fill="var(--blue)"/>
+        <text x="677.5" y="239" font-size="9" font-weight="700" fill="#ffffff" text-anchor="middle">TRIỆT ĐỂ</text>
+        <text x="725" y="239" font-size="11" font-weight="800" fill="var(--text)">Cắt Tử Cung Hoàn Toàn</text>
+        <text x="640" y="268" font-size="11" font-weight="700" fill="var(--blue)">Phẫu thuật Nội soi / Mổ mở / Âm đạo</text>
+        <text x="640" y="288" font-size="10" fill="var(--text-muted)">Điều trị dứt điểm, không lo tái phát</text>
+      </g>
+
+      <!-- Node 4B: Can thiệp ít xâm lấn -->
+      <g>
+        <rect x="630" y="335" width="260" height="110" rx="8" fill="var(--purple-bg)" stroke="var(--purple)" stroke-width="1.5"/>
+        <rect x="640" y="345" width="105" height="20" rx="4" fill="var(--purple)"/>
+        <text x="692.5" y="359" font-size="9" font-weight="700" fill="#ffffff" text-anchor="middle">ÍT XÂM LẤN</text>
+        <text x="755" y="359" font-size="11" font-weight="800" fill="var(--text)">Bảo Tồn Tử Cung</text>
+        <text x="640" y="388" font-size="11" font-weight="700" fill="var(--purple)">1. Nút mạch tử cung (UAE / UFE)</text>
+        <text x="640" y="408" font-size="11" font-weight="600" fill="var(--text)">2. US-HIFU / RFA sóng cao tần (&lt;5cm)</text>
+        <text x="640" y="428" font-size="9.5" fill="var(--text-muted)">* UAE chống chỉ định nếu còn muốn có thai</text>
+      </g>
+
+      <!-- Connectors Right 4A -> 4B -->
+      <path d="M 760 305 L 760 335" fill="none" stroke="var(--border-light)" stroke-width="1" stroke-dasharray="3,3"/>
+
+      <!-- Center Bottom Node: Focal Red Flag (Xử trí cấp cứu AUB) -->
+      <g>
+        <rect x="340" y="360" width="260" height="95" rx="8" fill="var(--red-bg)" stroke="var(--red)" stroke-width="2"/>
+        <text x="470" y="385" font-size="10.5" font-weight="800" fill="var(--red)" text-anchor="middle" font-family="'JetBrains Mono', monospace">PHÁC ĐỒ NỘI KHOA HỖ TRỢ</text>
+        <text x="355" y="408" font-size="11" font-weight="700" fill="var(--text)">• Tranexamic acid 1g x3–4 lần/ngày</text>
+        <text x="355" y="428" font-size="11" font-weight="600" fill="var(--text)">• GnRH-a (Goserelin/Leuprorelin) tiền phẫu</text>
+        <text x="355" y="445" font-size="10" fill="var(--text-muted)">• Bù sắt, truyền máu nâng Hb &gt; 10 g/dL</text>
+      </g>
+    </svg>
+  </div>
+</div>
+<h3 class="sec-subtitle"><i class="fa-solid fa-angle-right"></i> 2. Phẫu thuật Cắt tử cung (Hysterectomy)</h3>
+<p style="line-height: 1.65;">Là phương pháp điều trị triệt để cho phụ nữ đủ con, lớn tuổi hoặc u thoái hóa ác tính/đa nhân xơ lớn. Bắt buộc loại trừ ung thư cổ tử cung và ung thư nội mạc tử cung trước mổ (nạo sinh thiết, phết tế bào).</p>
+<h3 class="sec-subtitle"><i class="fa-solid fa-angle-right"></i> 3. Kỹ thuật Giảm Mất máu trong Phẫu thuật Bóc u xơ</h3>
+<div class="infobox success">
+  <span class="infobox-icon">✅</span>
+  <div>
+    <strong>Các Biện Pháp Giảm Mất Máu Tiền Phẫu & Trong Mổ</strong><br>• <strong>Vasopressin:</strong> Tiêm 30-40 ml dung dịch Vasopressin pha loãng tại gốc u xơ giúp co mạch mạnh, giảm rõ rệt chảy máu.<br>• <strong>Misoprostol:</strong> Đặt trực tràng 400 µg trước mổ 1 giờ.<br>• <strong>Tranexamic acid:</strong> Truyền tĩnh mạch 1g trước mổ.<br>• <strong>Buộc thắt eo tử cung:</strong> Dùng dây cao su Nelaton buộc ép động mạch tử cung tạm thời trong khi bóc u.
+  </div>
+</div>
+      </div>
+    </div>
+
+    <!-- 6. Các Phương pháp Điều trị Ít Xâm Lấn Modern -->
+    <div class="sec-card" id="sec-6-cac-phuong-phap-dieu-tri-it-xam-lan-modern">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-triangle-exclamation sec-hdr-icon"></i>
+        <h2 class="sec-title">6. Các Phương pháp Điều trị Ít Xâm Lấn Modern</h2>
+      </div>
+      <div class="sec-body">
+        
+<h3 class="sec-subtitle"><i class="fa-solid fa-angle-right"></i> 1. Đốt siêu âm hội tụ cường độ cao (US-HIFU)</h3>
+<p style="line-height: 1.65;">Phương pháp tiêu hủy u xơ bằng sóng siêu âm hội tụ sinh nhiệt &gt; 60°C gây hoại tử đông đặc khối u mà <strong>không rạch da, không phẫu thuật</strong>.</p>
+<ul style="margin-left: 1.25rem; margin-bottom: 0.75rem; line-height: 1.6;"><li><strong>Chỉ định:</strong> U xơ đường kính 1 - 20 cm, bệnh nhân mong muốn bảo tồn tử cung/sinh con hoặc không muốn phẫu thuật.</li>
+<li><strong>Quy trình:</strong> Nhịn ăn/thụt tháo ruột kỹ 1-3 ngày để đuổi khí ruột. Bệnh nhân nằm sấp, làm đầy bàng quang vừa phải để đẩy ruột ra xa.</li>
+<li><strong>Mục tiêu:</strong> Đạt tỷ lệ thể tích không tưới máu <strong>NPV ≥ 70%</strong> ngay sau thủ thuật để bảo đảm u xơ teo nhỏ tối đa và không tái phát.</li></ul>
+<h3 class="sec-subtitle"><i class="fa-solid fa-angle-right"></i> 2. Các kỹ thuật Can thiệp Mạch & Năng lượng khác</h3>
+<ul style="margin-left: 1.25rem; margin-bottom: 0.75rem; line-height: 1.6;"><li><strong>Thuyên tắc động mạch tử cung (Nút mạch - UAE):</strong> Bơm hạt thuyên tắc vào động mạch tử cung. Giảm 59% thể tích u sau 6 tháng. <em>Chống chỉ định ở phụ nữ còn nhu cầu sinh con</em>.</li>
+<li><strong>MRI-HIFU (MRgFUS):</strong> Hướng dẫn bởi cộng hưởng từ định vị nhiệt độ tiêu điểm &gt; 55°C.</li>
+<li><strong>Tiêu hủy bằng sóng cao tần (RFA):</strong> Dùng dòng điện tần số cao tiêu hủy khối u &lt; 5 cm.</li></ul>
+
+      </div>
+    </div>
+
+    <!-- 7. Xử trí U xơ cơ Tử cung trong Vô sinh và Thai kỳ -->
+    <div class="sec-card" id="sec-7-xu-tri-u-xo-co-tu-cung-trong-vo-sinh-va-thai-ky">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-circle-nodes sec-hdr-icon"></i>
+        <h2 class="sec-title">7. Xử trí U xơ cơ Tử cung trong Vô sinh và Thai kỳ</h2>
+      </div>
+      <div class="sec-body">
+        
+<h3 class="sec-subtitle"><i class="fa-solid fa-angle-right"></i> UXCTC và Vô sinh</h3>
+<p style="line-height: 1.65;">UXCTC xuất hiện ở 5 - 10% phụ nữ hiếm muộn. Các u xơ dưới niêm mạc (L0, L1, L2) hoặc u trong cơ biến dạng buồng tử cung làm giảm tỷ lệ đậu thai và tăng sẩy thai.</p>
+<div class="infobox success" style="margin-top: 1rem; margin-bottom: 1.25rem;">
+  <span class="infobox-icon">✅</span>
+  <div>
+    <strong>Khuyến cáo Xử trí Vô sinh theo Nhóm FIGO:</strong>
+    <ul style="margin-left: 1.25rem; margin-top: 0.5rem; line-height: 1.6;">
+      <li><strong>Nhóm L0, L1, L2:</strong> Phẫu thuật nội soi buồng tử cung cắt u hoặc làm US-HIFU trước khi làm IVF.</li>
+      <li><strong>Nhóm L3 – L5 (&gt; 4 cm hoặc thất bại IVF nhiều lần):</strong> Chỉ định US-HIFU hoặc bóc nhân xơ. US-HIFU có ưu thế vượt trội vì không gây sẹo tử cung, phục hồi sinh sản sớm (sau 3–6 tháng).</li>
+      <li><strong>Nhóm L6 – L8:</strong> Phẫu thuật bóc u xơ nếu u kích thước lớn.</li>
+    </ul>
+  </div>
+</div>
+<h3 class="sec-subtitle"><i class="fa-solid fa-angle-right"></i> UXCTC trong Thai kỳ</h3>
+<ul style="margin-left: 1.25rem; margin-bottom: 0.75rem; line-height: 1.6;"><li><strong>Tương tác:</strong> U xơ to nhanh trong 3 tháng đầu/giữa do Estrogen/Progesterone, nhưng tự teo nhỏ ở 80% phụ nữ trong 6 tháng sau sinh.</li>
+<li><strong>Biến chứng thai kỳ:</strong> Dọa sẩy thai, thoái hóa đỏ gây đau cấp, ngôi thai bất thường, rau tiền đạo, đẻ khó cản trở đường ra, và băng huyết sau sinh.</li></ul>
+
+      </div>
+    </div>
+
+    <!-- 8. Tài liệu Tham khảo -->
+    <div class="sec-card" id="sec-8-tai-lieu-tham-khao">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-book-medical sec-hdr-icon"></i>
+        <h2 class="sec-title">8. Tài liệu Tham khảo</h2>
+      </div>
+      <div class="sec-body">
+        
+<ol style="margin-left: 1.25rem; margin-bottom: 0.75rem; line-height: 1.6;"><li><strong>Bộ Y tế Việt Nam.</strong> <em>Tài liệu chuyên môn Hướng dẫn Chẩn đoán và Điều trị U xơ cơ tử cung</em>. Hà Nội, Việt Nam; 2026.</li>
+<li><strong>FIGO Gynecologic Oncology Committee.</strong> <em>FIGO classification system (PALM-COEIN) for causes of abnormal uterine bleeding in non-gravid women of reproductive age</em>. Int J Gynaecol Obstet. 2011.</li></ol>
+
+      </div>
+    </div>
+
+    <!-- CITATION & SOURCE -->
+    <div class="sec-card">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-bookmark sec-hdr-icon"></i>
+        <h2 class="sec-title">Tài Liệu Tham Khảo Chuẩn AMA</h2>
+      </div>
+      <div class="sec-body">
+        <div class="citation-box">
+          1. Bộ Y tế Việt Nam. <em>Hướng dẫn Chẩn đoán và Điều trị U Xơ Cơ Tử Cung (BYT 2026) (Diagnosis and Management of Uterine Leiomyoma (Fibroids) Guideline 2026)</em>. 2026. DOI / Ref: JCEM / Endocrine Society Guidelines.
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PAGE FOOTER -->
+  <footer class="page-footer">
+    <p>© 2026 CliniPortal — Phân hệ Y học Chứng cứ (EBM). Bản quyền tóm tắt hướng dẫn y khoa chuẩn hóa.</p>
+  </footer>
+
+  <script>
+    // Theme Toggle with LocalStorage
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const htmlEl = document.documentElement;
+
+    const savedTheme = localStorage.getItem('cliniportal_ebm_theme');
+    if (savedTheme === 'dark' || savedTheme === 'light') {
+      htmlEl.setAttribute('data-theme', savedTheme);
+      if (themeToggleBtn) {
+        themeToggleBtn.innerHTML = savedTheme === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+      }
+    }
+
+    if (themeToggleBtn) {
+      themeToggleBtn.addEventListener('click', () => {
+        const currentTheme = htmlEl.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        htmlEl.setAttribute('data-theme', newTheme);
+        themeToggleBtn.innerHTML = newTheme === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+        localStorage.setItem('cliniportal_ebm_theme', newTheme);
+      });
+    }
+
+    // Quicknav Active Highlight with IntersectionObserver
+    const sections = document.querySelectorAll('.sec-card[id]');
+    const navLinks = document.querySelectorAll('.quicknav-link');
+
+    const navObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const currentId = entry.target.getAttribute('id');
+          navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + currentId) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    }, { rootMargin: '-10% 0px -70% 0px' });
+
+    sections.forEach(section => navObserver.observe(section));
+  </script>
+  <script type="module" src="../guideline-controller.ts"></script>
+</body>
+</html>

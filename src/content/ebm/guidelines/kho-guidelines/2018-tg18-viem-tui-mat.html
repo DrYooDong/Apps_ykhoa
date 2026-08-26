@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tóm tắt Hướng dẫn Tokyo 2018 (TG18) về Viêm túi mật cấp: Tiêu chuẩn chẩn đoán, Phân độ nặng I-III, Lưu đồ xử trí Lap-C sớm, Dẫn lưu PTGBD và Phác đồ kháng sinh.">
+  <title>Tokyo Guidelines 2018 (TG18): Viêm Túi Mật Cấp – CliniPortal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #059669; --green-bg: #f0fdf4; --green-light: #a7f3d0;
+      --orange: #d97706; --orange-bg: #fffbeb; --orange-light: #fde68a;
+      --red: #dc2626; --red-bg: #fef2f2; --red-light: #fca5a5;
+      --blue: #2563eb; --blue-bg: #eff6ff; --blue-light: #bfdbfe;
+      --teal: #0d9488; --teal-bg: #f0fdfa; --teal-light: #99f6e4;
+      --purple: #7c3aed; --purple-bg: #faf5ff; --purple-light: #ddd6fe;
+      --amber: #b45309; --amber-bg: #fffbeb;
+      --accent: #0f766e;
+      --accent-gradient: linear-gradient(135deg, #042f2e 0%, #0f766e 45%, #0369a1 100%);
+      --bg: #f0f4f8; --surface: #ffffff; --surface-2: #f8fafc;
+      --border: #cbd5e1; --border-light: #e2e8f0;
+      --text: #0f172a; --text-muted: #475569; --text-faint: #94a3b8;
+      --radius: 16px; --tr: 220ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [data-theme="dark"] {
+      --bg: #0b1320; --surface: #152238; --surface-2: #1e2f4d;
+      --border: #334d70; --border-light: #243854;
+      --text: #f8fafc; --text-muted: #94a3b8; --text-faint: #64748b;
+      --green-bg: rgba(5, 150, 105, 0.18); --green-light: rgba(167, 243, 208, 0.3);
+      --orange-bg: rgba(217, 119, 6, 0.18); --orange-light: rgba(253, 230, 138, 0.3);
+      --red-bg: rgba(220, 38, 38, 0.18); --red-light: rgba(252, 165, 165, 0.3);
+      --blue-bg: rgba(37, 99, 235, 0.18); --blue-light: rgba(191, 219, 254, 0.3);
+      --teal-bg: rgba(13, 148, 136, 0.18); --teal-light: rgba(153, 246, 228, 0.3);
+      --purple-bg: rgba(124, 58, 237, 0.18); --purple-light: rgba(221, 214, 254, 0.3);
+      --amber-bg: rgba(180, 83, 9, 0.18);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; font-size: 15px; background: var(--bg); color: var(--text); line-height: 1.65; min-height: 100vh; }
+
+    @media print {
+      body { background: #fff !important; color: #000 !important; }
+      .topnav, .pillars-nav, .topnav-theme-toggle, .page-footer, .btn-row, #calc-reset { display: none !important; }
+      .page-content { max-width: 100% !important; margin: 0 !important; padding: 0 !important; }
+      .sec-card { break-inside: avoid; border: 1px solid #ccc !important; box-shadow: none !important; }
+    }
+
+    /* TOP NAV */
+    .topnav { position: sticky; top: 0; z-index: 200; background: rgba(255,255,255,0.94); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 1rem; padding: 0 1.5rem; height: 56px; }
+    [data-theme="dark"] .topnav { background: rgba(11, 19, 32, 0.92); }
+    .topnav-back { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--accent); text-decoration: none; font-size: 0.82rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 8px; transition: background var(--tr); white-space: nowrap; }
+    .topnav-back:hover { background: var(--teal-bg); }
+    .topnav-divider { width: 1px; height: 18px; background: var(--border-light); flex-shrink: 0; }
+    .topnav-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .topnav-badges { margin-left: auto; display: flex; gap: 0.5rem; flex-shrink: 0; align-items: center; }
+    .badge { padding: 0.2rem 0.65rem; border-radius: 20px; font-size: 0.7rem; font-weight: 700; white-space: nowrap; }
+    .badge-teal { background: var(--teal-bg); color: #0f766e; border: 1px solid var(--teal-light); }
+    [data-theme="dark"] .badge-teal { color: #5eead4; }
+    .badge-blue { background: var(--blue-bg); color: #1e40af; border: 1px solid var(--blue-light); }
+    [data-theme="dark"] .badge-blue { color: #93c5fd; }
+    .badge-orange { background: var(--orange-bg); color: #92400e; border: 1px solid var(--orange-light); }
+    [data-theme="dark"] .badge-orange { color: #fcd34d; }
+
+    .topnav-theme-toggle { background: none; border: 1px solid var(--border-light); color: var(--text-muted); cursor: pointer; font-size: 1rem; padding: 0.35rem 0.6rem; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; transition: all var(--tr); }
+    .topnav-theme-toggle:hover { background: var(--surface-2); color: var(--text); }
+
+    /* HERO */
+    .hero { background: var(--accent-gradient); color: #fff; padding: 3.5rem 1.5rem 4.5rem; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 50%, rgba(20,184,166,0.25) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(56,189,248,0.2) 0%, transparent 55%); }
+    .hero-inner { max-width: 980px; margin: 0 auto; position: relative; z-index: 1; }
+    .hero-badge-strip { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin-bottom: 1rem; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.24); border-radius: 20px; padding: 0.3rem 0.85rem; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #5eead4; }
+    .hero-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(1.8rem, 4vw, 2.7rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 0.75rem; }
+    .hero-title span { display: block; background: linear-gradient(90deg, #5eead4, #93c5fd); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 0.65em; font-weight: 600; letter-spacing: 0; margin-bottom: 0.25rem; }
+    .hero-subtitle { font-size: 0.95rem; opacity: 0.9; max-width: 780px; margin-bottom: 1.8rem; line-height: 1.6; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 0.75rem 1.8rem; font-size: 0.8rem; opacity: 0.85; }
+    .hero-meta-item { display: flex; align-items: center; gap: 6px; }
+
+    /* PILLARS STICKY NAV STRIP */
+    .pillars-nav { position: sticky; top: 56px; z-index: 190; background: var(--surface); border-bottom: 1px solid var(--border-light); padding: 0.75rem 1.5rem; }
+    .pillars-nav-inner { max-width: 980px; margin: 0 auto; display: flex; gap: 0.55rem; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .pillar-tab { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.45rem 0.85rem; border-radius: 10px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.78rem; font-weight: 700; color: var(--text-muted); border: 1px solid var(--border-light); background: var(--surface-2); text-decoration: none; white-space: nowrap; transition: all var(--tr); }
+    .pillar-tab:hover { border-color: var(--accent); color: var(--accent); background: var(--teal-bg); }
+    .pillar-tab.p-1 { border-left: 4px solid var(--teal); }
+    .pillar-tab.p-2 { border-left: 4px solid var(--blue); }
+    .pillar-tab.p-3 { border-left: 4px solid var(--green); }
+    .pillar-tab.p-4 { border-left: 4px solid var(--purple); }
+    .pillar-tab.p-5 { border-left: 4px solid var(--orange); }
+    .pillar-tab.p-6 { border-left: 4px solid var(--red); }
+
+    /* KPI STATS STRIP */
+    .stats-strip { background: var(--surface); border-bottom: 1px solid var(--border-light); padding: 1.5rem; }
+    .stats-grid { max-width: 980px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+    .stat-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border-light);
+      border-radius: 14px;
+      padding: 1.25rem 1rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+      transition: transform var(--tr), box-shadow var(--tr);
+    }
+    .stat-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+    .stat-val { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.35rem; font-weight: 800; color: var(--accent); line-height: 1.2; text-align: center; }
+    .stat-lbl { font-size: 0.75rem; color: var(--text-muted); font-weight: 600; line-height: 1.45; text-align: center; }
+
+    /* PAGE CONTENT */
+    .page-content { max-width: 980px; margin: 0 auto; padding: 2.25rem 1.5rem; display: flex; flex-direction: column; gap: 2rem; }
+
+    /* SECTION CARDS */
+    .sec-card { background: var(--surface); border: 1px solid var(--border-light); border-radius: var(--radius); overflow: hidden; scroll-margin-top: 120px; }
+    .sec-hdr { padding: 1.1rem 1.5rem; border-bottom: 1px solid var(--border-light); background: var(--surface-2); display: flex; align-items: center; justify-content: space-between; gap: 0.6rem; }
+    .sec-hdr-left { display: flex; align-items: center; gap: 0.6rem; }
+    .sec-hdr-icon { font-size: 1.25rem; }
+    .sec-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1rem; font-weight: 800; color: var(--text); }
+    .sec-badge { font-size: 0.7rem; font-weight: 700; padding: 0.15rem 0.55rem; border-radius: 12px; background: var(--teal-bg); color: var(--accent); border: 1px solid var(--teal-light); }
+    .sec-body { padding: 1.5rem; }
+    .sec-subtitle { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.85rem; color: var(--text-muted); margin: 1.25rem 0 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; }
+    .sec-subtitle:first-child { margin-top: 0; }
+
+    /* GRID LAYOUTS */
+    .grid-2col { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 1.25rem; }
+    .grid-3col { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 1rem; }
+
+    /* BENTO & CLINICAL CARDS */
+    .clin-card { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.25rem; position: relative; overflow: hidden; transition: box-shadow var(--tr); }
+    .clin-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.06); }
+    .clin-card-accent { position: absolute; top: 0; left: 0; right: 0; height: 4px; }
+    .accent-green { background: var(--green); }
+    .accent-orange { background: var(--orange); }
+    .accent-red { background: var(--red); }
+    .accent-blue { background: var(--blue); }
+    .accent-teal { background: var(--teal); }
+    .accent-purple { background: var(--purple); }
+
+    .clin-card-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 0.92rem; color: var(--text); margin-bottom: 0.6rem; display: flex; align-items: center; justify-content: space-between; }
+    .clin-card-body { font-size: 0.84rem; color: var(--text-muted); line-height: 1.6; }
+    .clin-card-list { list-style: none; margin-top: 0.5rem; padding-left: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+    .clin-card-list li {
+      position: relative;
+      padding-left: 1.1rem;
+      font-size: 0.84rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+      display: block;
+    }
+    .clin-card-list li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--accent);
+      font-weight: 800;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    /* INFO BOXES */
+    .infobox { display: flex; align-items: flex-start; gap: 0.85rem; padding: 1rem 1.25rem; border-radius: 12px; margin-bottom: 1rem; font-size: 0.85rem; line-height: 1.6; }
+    .infobox:last-child { margin-bottom: 0; }
+    .infobox-icon { font-size: 1.3rem; flex-shrink: 0; line-height: 1.3; }
+    .infobox.danger { background: var(--red-bg); border: 1px solid var(--red-light); border-left: 4px solid var(--red); }
+    .infobox.success { background: var(--green-bg); border: 1px solid var(--green-light); border-left: 4px solid var(--green); }
+    .infobox.warning { background: var(--orange-bg); border: 1px solid var(--orange-light); border-left: 4px solid var(--orange); }
+    .infobox.info { background: var(--blue-bg); border: 1px solid var(--blue-light); border-left: 4px solid var(--blue); }
+    .infobox.teal { background: var(--teal-bg); border: 1px solid var(--teal-light); border-left: 4px solid var(--teal); }
+    .infobox-title { display: block; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.88rem; font-weight: 800; margin-bottom: 0.35rem; color: var(--text); }
+    .infobox strong { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; color: var(--text); }
+
+    /* EBM RECOMMENDATION CARDS */
+    .ebm-rec-card { background: var(--surface); border: 1px solid var(--border-light); border-left: 4px solid var(--accent); border-radius: 12px; padding: 1rem 1.25rem; margin-bottom: 0.85rem; }
+    .ebm-rec-card.class-1 { border-left-color: #059669; }
+    .ebm-rec-card.class-2 { border-left-color: #0284c7; }
+    .ebm-rec-card.class-3 { border-left-color: #dc2626; }
+    .ebm-badge-group { display: inline-flex; align-items: center; gap: 0.35rem; flex-wrap: wrap; margin-right: 0.5rem; vertical-align: middle; }
+    .cor-badge, .loe-badge { padding: 0.15rem 0.5rem; border-radius: 6px; font-size: 0.7rem; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; display: inline-flex; align-items: center; gap: 0.25rem; }
+    .cor-class-1 { background: #dcfce7; color: #15803d; border: 1px solid #86efac; }
+    .cor-class-2 { background: #e0f2fe; color: #0369a1; border: 1px solid #7dd3fc; }
+    .loe-grade-b { background: rgba(59,130,246,0.12); color: #1d4ed8; border: 1px solid rgba(59,130,246,0.35); }
+    .loe-grade-c { background: rgba(245,158,11,0.12); color: #b45309; border: 1px solid rgba(245,158,11,0.35); }
+    .loe-grade-d { background: rgba(220,38,38,0.12); color: #b91c1c; border: 1px solid rgba(220,38,38,0.35); }
+    [data-theme="dark"] .cor-class-1 { background: rgba(22, 163, 74, 0.25); color: #86efac; }
+    [data-theme="dark"] .cor-class-2 { background: rgba(3, 105, 161, 0.25); color: #7dd3fc; }
+
+    /* TABLES */
+    .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 1.25rem; border-radius: 12px; border: 1px solid var(--border-light); }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 0.83rem; min-width: 650px; }
+    .data-table thead th { padding: 0.75rem 0.95rem; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; background: var(--surface-2); color: var(--text); border-bottom: 1px solid var(--border-light); text-align: left; }
+    .data-table td { padding: 0.85rem 0.95rem; border-bottom: 1px solid var(--border-light); vertical-align: top; line-height: 1.55; }
+    .data-table tbody tr:last-child td { border-bottom: none; }
+    .data-table tbody tr:hover td { background: var(--surface-2); }
+    .rx-tag { display: inline-block; background: var(--surface-2); color: var(--text); border: 1px solid var(--border-light); font-size: 0.72rem; font-family: 'JetBrains Mono', monospace; padding: 0.15rem 0.5rem; border-radius: 6px; margin: 0.15rem 0.2rem 0.15rem 0; }
+    .rx-tag.preferred { background: var(--green-bg); color: #065f46; border-color: var(--green-light); font-weight: 700; }
+    [data-theme="dark"] .rx-tag.preferred { color: #6ee7b7; }
+    .rx-tag.warn { background: var(--orange-bg); color: #92400e; border-color: var(--orange-light); font-weight: 700; }
+    [data-theme="dark"] .rx-tag.warn { color: #fde68a; }
+
+    /* EDITORIAL SVG FLOWCHART CONTAINER */
+    .flowchart-container { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.5rem; overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 1.25rem; }
+    .flowchart-caption { font-size: 0.78rem; color: var(--text-muted); text-align: center; margin-top: 0.75rem; font-style: italic; }
+
+    /* FOREST PLOT DIAGRAM */
+    .forest-plot-card { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.25rem; margin-bottom: 1.25rem; }
+    .forest-row { display: grid; grid-template-columns: 180px 1fr 1fr; gap: 1rem; align-items: center; padding: 0.6rem 0; border-bottom: 1px dashed var(--border-light); font-size: 0.82rem; }
+    .forest-row:last-child { border-bottom: none; }
+    .forest-hdr { font-weight: 700; color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; }
+    .forest-bar-container { position: relative; height: 24px; background: var(--surface); border-radius: 6px; border: 1px solid var(--border-light); display: flex; align-items: center; padding: 0 6px; }
+    .forest-marker { height: 12px; border-radius: 3px; background: var(--accent); position: relative; }
+    .forest-ci-line { position: absolute; top: 50%; transform: translateY(-50%); height: 2px; background: var(--accent); opacity: 0.6; }
+
+    /* CLINICAL CALCULATOR & TRIAGE WIDGET */
+    .widget-box { background: linear-gradient(135deg, var(--surface) 0%, var(--surface-2) 100%); border: 2px solid var(--teal-light); border-radius: var(--radius); padding: 1.5rem; box-shadow: 0 8px 24px rgba(0,0,0,0.04); }
+    .widget-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 0.5rem; }
+    .widget-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.05rem; font-weight: 800; color: var(--accent); display: flex; align-items: center; gap: 0.5rem; }
+    .widget-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-bottom: 1.5rem; }
+    .calc-section { background: var(--surface); border: 1px solid var(--border-light); border-radius: 12px; padding: 1rem 1.15rem; }
+    .calc-section-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--accent); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.4rem; }
+    .calc-checkbox-label { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.82rem; margin-bottom: 0.55rem; cursor: pointer; line-height: 1.45; }
+    .calc-checkbox-label:last-child { margin-bottom: 0; }
+    .calc-checkbox-label input { margin-top: 0.2rem; cursor: pointer; accent-color: var(--accent); }
+    
+    .calc-result-box { background: var(--surface); border: 2px solid var(--border); border-radius: 14px; padding: 1.25rem; }
+    .calc-result-header { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.88rem; font-weight: 700; color: var(--text-muted); margin-bottom: 0.5rem; }
+    .calc-result-badge { display: inline-flex; align-items: center; gap: 0.5rem; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.15rem; font-weight: 800; padding: 0.45rem 1rem; border-radius: 10px; margin-bottom: 0.75rem; }
+    .res-grade-1 { background: #dcfce7; color: #15803d; border: 1px solid #86efac; }
+    .res-grade-2 { background: #fef3c7; color: #b45309; border: 1px solid #fcd34d; }
+    .res-grade-3 { background: #fee2e2; color: #b91c1c; border: 1px solid #fca5a5; }
+    .res-none { background: var(--surface-2); color: var(--text-muted); border: 1px solid var(--border-light); }
+    [data-theme="dark"] .res-grade-1 { background: rgba(22, 163, 74, 0.25); color: #86efac; }
+    [data-theme="dark"] .res-grade-2 { background: rgba(217, 119, 6, 0.25); color: #fde68a; }
+    [data-theme="dark"] .res-grade-3 { background: rgba(220, 38, 38, 0.3); color: #fca5a5; }
+
+    .calc-result-advice { font-size: 0.85rem; line-height: 1.6; color: var(--text); margin-top: 0.5rem; }
+    .btn-row { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 1rem; }
+    .btn { display: inline-flex; align-items: center; gap: 6px; padding: 0.5rem 1rem; border-radius: 8px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.8rem; font-weight: 700; cursor: pointer; text-decoration: none; transition: all var(--tr); border: 1px solid var(--border-light); background: var(--surface); color: var(--text-muted); }
+    .btn:hover { border-color: var(--accent); color: var(--accent); background: var(--teal-bg); }
+    .btn-primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .btn-primary:hover { opacity: 0.92; background: var(--accent); color: #fff; }
+
+    /* AMA CITATION BOX */
+    .citation-box { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 12px; padding: 1.25rem; font-size: 0.82rem; color: var(--text-muted); line-height: 1.7; }
+    .citation-item { margin-bottom: 0.75rem; padding-bottom: 0.75rem; border-bottom: 1px dashed var(--border-light); }
+    .citation-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+    .citation-num { font-weight: 700; color: var(--accent); margin-right: 0.35rem; }
+
+    /* FOOTER */
+    .page-footer { text-align: center; padding: 2rem 1.5rem; font-size: 0.8rem; color: var(--text-faint); border-top: 1px solid var(--border-light); background: var(--surface); }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .page-content { padding: 1.25rem 1rem; }
+      .sec-body { padding: 1rem; }
+      .hero { padding: 2.5rem 1rem 3.5rem; }
+      .hero-title { font-size: 1.65rem; }
+      .forest-row { grid-template-columns: 1fr; gap: 0.3rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP NAV -->
+  <nav class="topnav">
+    <a href="../guidelines.html" class="topnav-back">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+      Kho Guidelines
+    </a>
+    <div class="topnav-divider"></div>
+    <div class="topnav-title">Tokyo Guidelines 2018 (TG18) – Viêm Túi Mật Cấp</div>
+    <div class="topnav-badges">
+      <span class="badge badge-teal">TG18 / JSHBPS</span>
+      <span class="badge badge-blue">Ngoại Tiêu hóa - Gan Mật</span>
+      <button class="topnav-theme-toggle" id="theme-toggle" title="Đổi giao diện Sáng/Tối" aria-label="Toggle Theme">🌓</button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge-strip">
+        <div class="hero-badge">🔬 Hướng Dẫn Đồng Thuận Quốc Tế</div>
+        <div class="hero-badge">📋 J Hepatobiliary Pancreat Sci 2018</div>
+      </div>
+      <h1 class="hero-title">
+        <span>Tokyo Guidelines 2018: Diagnostic Criteria, Severity Grading & Management</span>
+        Hướng Dẫn Tokyo 2018 (TG18): Chẩn Đoán, Phân Độ Nặng, Dẫn Lưu & Xử Trí Viêm Túi Mật Cấp
+      </h1>
+      <p class="hero-subtitle">
+        Chuẩn hóa toàn diện tiêu chuẩn chẩn đoán TG18/TG13, thang điểm phân độ nặng 3 mức độ (Grade I-III), lưu đồ phẫu thuật cắt túi mật nội soi sớm (< 72h) kết hợp chiến lược can thiệp dẫn lưu túi mật (PTGBD, ETGBD, EUS-GBD) và phác đồ kháng sinh y khoa tối ưu.
+      </p>
+      <div class="hero-meta">
+        <div class="hero-meta-item">🏛️ <strong>Tổ chức:</strong> Hội Gan Mật Tụy Nhật Bản (JSHBPS) & Ủy ban TG18</div>
+        <div class="hero-meta-item">📅 <strong>Năm:</strong> 2018 (Đồng thuận Big Data)</div>
+        <div class="hero-meta-item">🎯 <strong>Phạm vi:</strong> Ngoại Tiêu hóa, Cấp cứu, ICU, CĐHA</div>
+        <div class="hero-meta-item">🩺 <strong>ICD-10:</strong> K80.0, K81.0, K80.1</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- PILLARS STICKY NAV STRIP -->
+  <nav class="pillars-nav" aria-label="Mục lục hướng dẫn">
+    <div class="pillars-nav-inner">
+      <a href="#sec-1" class="pillar-tab p-1">1. Chẩn Đoán & Độ Nặng</a>
+      <a href="#sec-2" class="pillar-tab p-2">2. Chẩn Đoán Hình Ảnh</a>
+      <a href="#sec-3" class="pillar-tab p-3">3. Lưu Đồ Điều Trị SVG</a>
+      <a href="#sec-4" class="pillar-tab p-4">4. Dẫn Lưu Túi Mật</a>
+      <a href="#sec-5" class="pillar-tab p-5">5. Phác Đồ Kháng Sinh</a>
+      <a href="#sec-6" class="pillar-tab p-6">6. Bedside Calculator & Triage</a>
+    </div>
+  </nav>
+
+  <!-- KPI STATS STRIP -->
+  <section class="stats-strip">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-val">≤ 72 Giờ</div>
+        <div class="stat-lbl">Thời điểm vàng Cắt túi mật nội soi (Lap-C) sớm</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">≤ 24 Giờ</div>
+        <div class="stat-lbl">Dừng kháng sinh sau mổ Độ I & II đã loại bỏ nguồn nhiễm</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">WBC > 18.000</div>
+        <div class="stat-lbl">Hoặc triệu chứng > 72h xếp vào Độ II (Trung bình)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">98.0%</div>
+        <div class="stat-lbl">Tỷ lệ thành công kỹ thuật dẫn lưu EUS-GBD (LAMS)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <main class="page-content">
+
+    <!-- SECTION 1: TIÊU CHUẨN CHẨN ĐOÁN & PHÂN ĐỘ NẶNG -->
+    <section class="sec-card" id="sec-1">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <span class="sec-hdr-icon">🩺</span>
+          <h2 class="sec-title">I. Tiêu Chuẩn Chẩn Đoán & Phân Độ Nặng (TG18/TG13)</h2>
+        </div>
+        <span class="sec-badge">Tiêu Chuẩn Chuẩn Hóa</span>
+      </div>
+      <div class="sec-body">
+        <p style="margin-bottom: 1.25rem; font-size: 0.88rem; color: var(--text-muted);">
+          TG18 kế thừa và tái khẳng định tiêu chuẩn chẩn đoán và phân độ nặng từ TG13 mà không thay đổi, dựa trên dữ liệu xác thực lâm sàng quy mô lớn (Big Data validation). Chẩn đoán xác định đòi hỏi sự kết hợp giữa triệu chứng viêm tại chỗ, phản ứng toàn thân và bằng chứng hình ảnh học.
+        </p>
+
+        <!-- CHẨN ĐOÁN CRITERIA -->
+        <h3 class="sec-subtitle">1. Tiêu chuẩn Chẩn đoán Viêm Túi Mật Cấp (TG18)</h3>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width: 220px;">Nhóm Tiêu Chí</th>
+                <th>Dấu Hiệu Lâm Sàng & Cận Lâm Sàng Chi Tiết</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>A. Dấu hiệu Viêm Tại Chỗ</strong></td>
+                <td>
+                  (1) <strong>Dấu hiệu Murphy dương tính</strong> (Murphy's sign (+))<br>
+                  (2) <strong>Khối u, đau hoặc ấn đau vùng hạ sườn phải (RUQ)</strong>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>B. Dấu hiệu Viêm Toàn Thân</strong></td>
+                <td>
+                  (1) <strong>Sốt</strong> (Nhiệt độ cơ thể > 38°C)<br>
+                  (2) <strong>Tăng nồng độ CRP</strong> (C-reactive protein ≥ 1 mg/dL)<br>
+                  (3) <strong>Bất thường số lượng bạch cầu (WBC)</strong> (&lt; 4.000/mm³ hoặc &gt; 10.000/mm³)
+                </td>
+              </tr>
+              <tr>
+                <td><strong>C. Bằng chứng Hình Ảnh Học</strong></td>
+                <td>
+                  <strong>Các phát hiện đặc trưng của viêm túi mật cấp</strong> trên Siêu âm (US), Chụp cắt lớp vi tính (CT) hoặc Cộng hưởng từ (MRI/MRCP).
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="grid-2col" style="margin-bottom: 1.25rem;">
+          <div class="infobox warning">
+            <span class="infobox-icon">⚠️</span>
+            <div>
+              <strong class="infobox-title">Chẩn Đoán Nghi Ngờ (Suspected Diagnosis)</strong>
+              Hiện diện <strong>01 tiêu chí nhóm A</strong> + <strong>01 tiêu chí nhóm B</strong>. Cần tiến hành ngay siêu âm ổ bụng hoặc phương tiện CĐHA thích hợp.
+            </div>
+          </div>
+          <div class="infobox success">
+            <span class="infobox-icon">✅</span>
+            <div>
+              <strong class="infobox-title">Chẩn Đoán Xác Định (Definite Diagnosis)</strong>
+              Hiện diện <strong>01 tiêu chí nhóm A</strong> + <strong>01 tiêu chí nhóm B</strong> + <strong>Bằng chứng nhóm C</strong> (Hình ảnh học điển hình).
+            </div>
+          </div>
+        </div>
+
+        <div class="infobox info">
+          <span class="infobox-icon">💡</span>
+          <div>
+            <strong>Chẩn đoán loại trừ bắt buộc:</strong> Cần loại trừ viêm gan cấp tính, các bệnh lý cấp cứu bụng ngoại khoa khác (thủng tạng rỗng, viêm tụy cấp, viêm ruột thừa) và viêm túi mật mạn tính.
+          </div>
+        </div>
+
+        <!-- PHÂN ĐỘ NẶNG -->
+        <h3 class="sec-subtitle" style="margin-top: 1.75rem;">2. Phân Tầng Độ Nặng Viêm Túi Mật Cấp (Severity Grading)</h3>
+        <p style="margin-bottom: 1rem; font-size: 0.85rem; color: var(--text-muted);">
+          Phân độ nặng quyết định trực tiếp chỉ định can thiệp phẫu thuật nội soi sớm, dẫn lưu túi mật cấp cứu hay điều trị nội khoa trì hoãn:
+        </p>
+
+        <div class="grid-3col">
+          <!-- GRADE I -->
+          <div class="clin-card">
+            <div class="clin-card-accent accent-green"></div>
+            <div class="clin-card-title">
+              <span>Độ I (Nhẹ - Grade I)</span>
+              <span class="badge" style="background:#dcfce7; color:#15803d;">Mild</span>
+            </div>
+            <div class="clin-card-body">
+              Viêm túi mật cấp ở bệnh nhân khỏe mạnh, chỉ có tổn thương viêm nhẹ tại túi mật.
+              <ul class="clin-card-list">
+                <li><strong>Không có suy chức năng cơ quan</strong> (không đáp ứng tiêu chuẩn Độ III).</li>
+                <li><strong>Không đáp ứng tiêu chuẩn Độ II</strong>.</li>
+                <li>Phẫu thuật cắt túi mật nội soi là thủ thuật an toàn, nguy cơ thấp.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- GRADE II -->
+          <div class="clin-card">
+            <div class="clin-card-accent accent-orange"></div>
+            <div class="clin-card-title">
+              <span>Độ II (Vừa - Grade II)</span>
+              <span class="badge" style="background:#fef3c7; color:#b45309;">Moderate</span>
+            </div>
+            <div class="clin-card-body">
+              Đi kèm với tình trạng viêm cục bộ nặng nề, làm tăng độ khó phẫu thuật. Có <strong>bất kỳ 1 trong 4</strong> tiêu chí:
+              <ul class="clin-card-list">
+                <li><strong>Bạch cầu (WBC) > 18.000/mm³</strong>.</li>
+                <li><strong>Sờ thấy khối đau</strong> ở hạ sườn phải (RUQ).</li>
+                <li><strong>Thời gian khởi phát kéo dài > 72 giờ</strong>.</li>
+                <li><strong>Viêm cục bộ nặng:</strong> Hoại tử, áp-xe quanh túi mật, áp-xe gan, viêm phúc mạc mật, hoặc khí thũng.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- GRADE III -->
+          <div class="clin-card">
+            <div class="clin-card-accent accent-red"></div>
+            <div class="clin-card-title">
+              <span>Độ III (Nặng - Grade III)</span>
+              <span class="badge" style="background:#fee2e2; color:#b91c1c;">Severe</span>
+            </div>
+            <div class="clin-card-body">
+              Có sự <strong>suy giảm chức năng của ít nhất 01</strong> trong 6 hệ cơ quan/hệ thống sau:
+              <ul class="clin-card-list">
+                <li><strong>Tuần hoàn:</strong> Tụt huyết áp cần Dopamine ≥ 5 μg/kg/phút hoặc bất kỳ liều Norepinephrine nào.</li>
+                <li><strong>Thần kinh:</strong> Rối loạn ý thức / giảm tỉnh táo.</li>
+                <li><strong>Hô hấp:</strong> PaO₂/FiO₂ &lt; 300.</li>
+                <li><strong>Thận:</strong> Thiểu niệu hoặc Creatinine &gt; 2,0 mg/dL.</li>
+                <li><strong>Gan:</strong> PT-INR &gt; 1,5.</li>
+                <li><strong>Huyết học:</strong> Tiểu cầu &lt; 100.000/mm³.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: CHẨN ĐOÁN HÌNH ẢNH & HIỆU NĂNG -->
+    <section class="sec-card" id="sec-2">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <span class="sec-hdr-icon">🔬</span>
+          <h2 class="sec-title">II. Khuyến Cáo & Vai Trò Của Chẩn Đoán Hình Ảnh</h2>
+        </div>
+        <span class="sec-badge">Hình Ảnh Học EBM</span>
+      </div>
+      <div class="sec-body">
+        <p style="margin-bottom: 1.25rem; font-size: 0.88rem; color: var(--text-muted);">
+          TG18 phân định rõ vai trò của từng phương tiện hình ảnh theo tính sẵn có, độ nhạy/độ đặc hiệu và thể biến chứng giải phẫu học:
+        </p>
+
+        <!-- EBM RECS IMAGING -->
+        <div class="ebm-rec-card class-1">
+          <div class="ebm-badge-group">
+            <span class="cor-badge cor-class-1">Khuyến cáo Độ 1</span>
+            <span class="loe-badge loe-grade-c">Mức chứng cứ C</span>
+          </div>
+          <strong>Siêu âm ổ bụng (US) là phương tiện hình ảnh đầu tay:</strong> Khuyến cáo siêu âm đầu tiên cho mọi trường hợp nghi ngờ viêm túi mật cấp nhờ tính sẵn có cao, không xâm lấn, chi phí thấp và độ nhạy/độ đặc hiệu cao (Độ nhạy 81-82%, độ đặc hiệu 83%).
+        </div>
+
+        <div class="ebm-rec-card class-2">
+          <div class="ebm-badge-group">
+            <span class="cor-badge cor-class-2">Khuyến cáo Độ 2</span>
+            <span class="loe-badge loe-grade-b">Mức chứng cứ B</span>
+          </div>
+          <strong>Chụp Cộng hưởng từ (MRI/MRCP) khi siêu âm không kết luận được:</strong> Khuyến cáo chụp MRI/MRCP để phân định các trường hợp khó, đánh giá đường mật phụ (aberrant bile duct) trước mổ và phát hiện tăng tưới máu khu trú giường túi mật (độ đặc hiệu 92% cho viêm cấp).
+        </div>
+
+        <div class="ebm-rec-card class-2">
+          <div class="ebm-badge-group">
+            <span class="cor-badge cor-class-2">Khuyến cáo Độ 2</span>
+            <span class="loe-badge loe-grade-c">Mức chứng cứ C/D</span>
+          </div>
+          <strong>Chụp CT có thuốc cản quang cho Viêm túi mật hoại tử & Khí thũng:</strong> CT phát hiện dấu hiệu viền gián đoạn (interrupted rim sign) trong thể hoại tử và có độ nhạy tuyệt đối phát hiện bóng khí (-1.000 HU) trong thành/lòng túi mật ở thể khí thũng.
+        </div>
+
+        <!-- FOREST PLOT DATA -->
+        <h3 class="sec-subtitle" style="margin-top: 1.5rem;">So Sánh Hiệu Năng Chẩn Đoán Hình Ảnh (Phân Tích Gộp Forest Plot)</h3>
+        <div class="forest-plot-card">
+          <div class="forest-row forest-hdr">
+            <div>Phương Pháp</div>
+            <div>Độ Nhạy (95% CI)</div>
+            <div>Độ Đặc Hiệu (95% CI)</div>
+          </div>
+          <div class="forest-row">
+            <div><strong>Nhấp nháy gan mật</strong><br><small style="color:var(--text-faint);">Cholescintigraphy (HIDA)</small></div>
+            <div><strong>94%</strong> (0.92 - 0.96)</div>
+            <div><strong>90%</strong> (0.85 - 0.93)</div>
+          </div>
+          <div class="forest-row">
+            <div><strong>Siêu âm (US)</strong><br><small style="color:var(--text-faint);">Lựa chọn đầu tay chuẩn hóa</small></div>
+            <div><strong>82%</strong> (0.75 - 0.87)</div>
+            <div><strong>81%</strong> (0.73 - 0.87)</div>
+          </div>
+          <div class="forest-row">
+            <div><strong>Cộng hưởng từ (MRI)</strong><br><small style="color:var(--text-faint);">Độ phân giải tương phản cao</small></div>
+            <div><strong>86%</strong> (0.66 - 0.95)</div>
+            <div><strong>82%</strong> (0.69 - 0.90)</div>
+          </div>
+        </div>
+
+        <!-- DẤU HIỆU CỤ THỂ -->
+        <h3 class="sec-subtitle" style="margin-top: 1.5rem;">Đặc Điểm Hình Ảnh Học Trọng Điểm Cần Nhớ</h3>
+        <div class="grid-2col">
+          <div class="clin-card">
+            <div class="clin-card-accent accent-teal"></div>
+            <div class="clin-card-title">
+              <span>Siêu Âm & Doppler Vi Mạch (SMI)</span>
+              <span>🔊 US / SMI</span>
+            </div>
+            <div class="clin-card-body">
+              <ul class="clin-card-list">
+                <li><strong>Túi mật căng to:</strong> Trục dọc ≥ 8 cm, trục ngang ≥ 4 cm.</li>
+                <li><strong>Dày thành túi mật:</strong> Thành dày ≥ 4 mm (dạng 2-3 lớp).</li>
+                <li><strong>Dấu hiệu Murphy siêu âm (+):</strong> Đau chói khu trú khi ấn đầu dò trực tiếp lên đáy túi mật.</li>
+                <li><strong>Sỏi kẹt cổ túi mật / Bùn mật / Dịch quanh túi mật</strong> (pericholecystic fluid).</li>
+                <li><strong>Siêu âm vi mạch (SMI):</strong> Nhạy hơn Doppler màu thường quy trong phát hiện dòng chảy tưới máu thấp ở thành túi mật bị viêm.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="clin-card">
+            <div class="clin-card-accent accent-red"></div>
+            <div class="clin-card-title">
+              <span>Thể Biến Chứng Đặc Biệt (CT/MRI)</span>
+              <span>⚡ Hoại Tử & Khí Thũng</span>
+            </div>
+            <div class="clin-card-body">
+              <ul class="clin-card-list">
+                <li><strong>Viêm túi mật hoại tử (Gangrenous):</strong> Mảnh niêm mạc hoại tử bong tróc (intraluminal flap); mất liên tục ngấm thuốc thành túi mật trên CT thì động mạch (<em>Interrupted rim sign</em>).</li>
+                <li><strong>Viêm túi mật khí thũng (Emphysematous):</strong> Do vi khuẩn sinh hơi (<em>Clostridium</em>, <em>E. coli</em>). Thấy rõ bóng khí trong lòng và thành trên CT không thuốc (~ -1.000 HU). <em>Tránh nhầm lẫn với túi mật sứ (porcelain gallbladder) trên siêu âm</em>.</li>
+                <li><strong>MRCP 2D/3D:</strong> Dựng hình giải phẫu cây đường mật chính xác, phát hiện đường mật phụ phân thùy sau gan trước khi phẫu thuật.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: LƯU ĐỒ ĐIỀU TRỊ TG18 EDITORIAL SVG -->
+    <section class="sec-card" id="sec-3">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <span class="sec-hdr-icon">🗺️</span>
+          <h2 class="sec-title">III. Lưu Đồ Xử Trí Lâm Sàng Toàn Diện TG18</h2>
+        </div>
+        <span class="sec-badge">Editorial Flowchart</span>
+      </div>
+      <div class="sec-body">
+        <p style="margin-bottom: 1.25rem; font-size: 0.88rem; color: var(--text-muted);">
+          Chiến lược điều trị TG18 dựa trên sự cân bằng giữa <strong>Độ nặng bệnh lý</strong> và <strong>Nguy cơ phẫu thuật của người bệnh</strong> (Chỉ số bệnh đồng mắc Charlson - CCI, Thể trạng gây mê - ASA-PS, Tình trạng suy tạng phục hồi nhanh - FOSF, và Yếu tố tiên lượng âm tính).
+        </p>
+
+        <!-- SVG FLOWCHART -->
+        <div class="flowchart-container">
+          <svg viewBox="0 0 920 620" width="100%" height="100%" style="min-width: 760px; font-family: 'Plus Jakarta Sans', sans-serif;" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="grad-top" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#0f766e"/>
+                <stop offset="100%" stop-color="#0369a1"/>
+              </linearGradient>
+              <linearGradient id="grad-g1" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#059669"/>
+                <stop offset="100%" stop-color="#10b981"/>
+              </linearGradient>
+              <linearGradient id="grad-g2" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#d97706"/>
+                <stop offset="100%" stop-color="#f59e0b"/>
+              </linearGradient>
+              <linearGradient id="grad-g3" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#dc2626"/>
+                <stop offset="100%" stop-color="#ef4444"/>
+              </linearGradient>
+              <filter id="shadow-sm" x="-4%" y="-4%" width="108%" height="108%">
+                <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.08"/>
+              </filter>
+            </defs>
+
+            <!-- TOP ROOT NODE -->
+            <rect x="280" y="15" width="360" height="52" rx="12" fill="url(#grad-top)" filter="url(#shadow-sm)"/>
+            <text x="460" y="38" fill="#ffffff" font-size="14" font-weight="800" text-anchor="middle">BỆNH NHÂN VIÊM TÚI MẬT CẤP (TG18)</text>
+            <text x="460" y="55" fill="#a7f3d0" font-size="11" font-weight="600" text-anchor="middle">Khởi động Kháng sinh kinh nghiệm sớm + Đánh giá Phân độ</text>
+
+            <!-- MAIN TRUNK CONNECTOR -->
+            <line x1="460" y1="67" x2="460" y2="105" stroke="var(--border)" stroke-width="2.5"/>
+            <line x1="150" y1="105" x2="770" y2="105" stroke="var(--border)" stroke-width="2.5"/>
+
+            <!-- BRANCH 1: GRADE I -->
+            <line x1="150" y1="105" x2="150" y2="135" stroke="var(--border)" stroke-width="2.5"/>
+            <rect x="50" y="135" width="200" height="42" rx="10" fill="url(#grad-g1)"/>
+            <text x="150" y="161" fill="#ffffff" font-size="13" font-weight="800" text-anchor="middle">ĐỘ I (NHẸ - GRADE I)</text>
+
+            <!-- GRADE I PATHS -->
+            <line x1="150" y1="177" x2="150" y2="200" stroke="var(--border)" stroke-width="2"/>
+            <line x1="90" y1="200" x2="210" y2="200" stroke="var(--border)" stroke-width="2"/>
+
+            <line x1="90" y1="200" x2="90" y2="225" stroke="var(--border)" stroke-width="2"/>
+            <rect x="25" y="225" width="130" height="60" rx="8" fill="var(--surface)" stroke="#059669" stroke-width="1.5"/>
+            <text x="90" y="247" fill="#059669" font-size="11" font-weight="700" text-anchor="middle">CCI ≤ 5 / ASA ≤ II</text>
+            <text x="90" y="265" fill="var(--text-muted)" font-size="10" text-anchor="middle">(Nguy cơ thấp)</text>
+
+            <line x1="90" y1="285" x2="90" y2="320" stroke="#059669" stroke-width="2"/>
+            <rect x="15" y="320" width="150" height="64" rx="10" fill="#dcfce7" stroke="#86efac" stroke-width="2"/>
+            <text x="90" y="344" fill="#15803d" font-size="11.5" font-weight="800" text-anchor="middle">CẮT TÚI MẬT NỘI SOI</text>
+            <text x="90" y="362" fill="#166534" font-size="12" font-weight="800" text-anchor="middle">SỚM (&lt; 72H) ⭐</text>
+
+            <line x1="210" y1="200" x2="210" y2="225" stroke="var(--border)" stroke-width="2"/>
+            <rect x="165" y="225" width="120" height="60" rx="8" fill="var(--surface)" stroke="#d97706" stroke-width="1.5"/>
+            <text x="225" y="247" fill="#d97706" font-size="11" font-weight="700" text-anchor="middle">CCI ≥ 6 / ASA ≥ III</text>
+            <text x="225" y="265" fill="var(--text-muted)" font-size="10" text-anchor="middle">(Nguy cơ cao)</text>
+
+            <line x1="225" y1="285" x2="225" y2="320" stroke="#d97706" stroke-width="2"/>
+            <rect x="175" y="320" width="115" height="64" rx="10" fill="#fef3c7" stroke="#fcd34d" stroke-width="2"/>
+            <text x="232" y="344" fill="#b45309" font-size="11" font-weight="800" text-anchor="middle">KHÁNG SINH</text>
+            <text x="232" y="362" fill="#78350f" font-size="10.5" font-weight="700" text-anchor="middle">→ Mổ Trì Hoãn</text>
+
+
+            <!-- BRANCH 2: GRADE II -->
+            <line x1="460" y1="105" x2="460" y2="135" stroke="var(--border)" stroke-width="2.5"/>
+            <rect x="345" y="135" width="230" height="42" rx="10" fill="url(#grad-g2)"/>
+            <text x="460" y="161" fill="#ffffff" font-size="13" font-weight="800" text-anchor="middle">ĐỘ II (VỪA - GRADE II)</text>
+
+            <line x1="460" y1="177" x2="460" y2="210" stroke="var(--border)" stroke-width="2"/>
+            <rect x="350" y="210" width="220" height="45" rx="8" fill="var(--surface)" stroke="#d97706" stroke-width="1.5"/>
+            <text x="460" y="230" fill="var(--text)" font-size="11" font-weight="700" text-anchor="middle">Kháng Sinh + Hồi Sức Ban Đầu</text>
+            <text x="460" y="245" fill="var(--text-muted)" font-size="10" text-anchor="middle">(Đánh giá đáp ứng sau 24-48h)</text>
+
+            <line x1="460" y1="255" x2="460" y2="280" stroke="var(--border)" stroke-width="2"/>
+            <line x1="375" y1="280" x2="545" y2="280" stroke="var(--border)" stroke-width="2"/>
+
+            <!-- Grade II success -->
+            <line x1="375" y1="280" x2="375" y2="305" stroke="var(--border)" stroke-width="2"/>
+            <rect x="315" y="305" width="125" height="46" rx="8" fill="#dcfce7" stroke="#86efac" stroke-width="1.5"/>
+            <text x="377" y="324" fill="#15803d" font-size="10.5" font-weight="700" text-anchor="middle">Đáp ứng tốt</text>
+            <text x="377" y="339" fill="#166534" font-size="9.5" text-anchor="middle">CCI ≤ 5 + PTV giỏi</text>
+
+            <line x1="377" y1="351" x2="377" y2="385" stroke="#15803d" stroke-width="2"/>
+            <rect x="305" y="385" width="145" height="55" rx="10" fill="#dcfce7" stroke="#86efac" stroke-width="2"/>
+            <text x="377" y="408" fill="#15803d" font-size="11" font-weight="800" text-anchor="middle">CẮT TÚI MẬT SỚM</text>
+            <text x="377" y="425" fill="#166534" font-size="10" font-weight="700" text-anchor="middle">(Lap-C có kinh nghiệm)</text>
+
+            <!-- Grade II fail -->
+            <line x1="545" y1="280" x2="545" y2="305" stroke="var(--border)" stroke-width="2"/>
+            <rect x="485" y="305" width="125" height="46" rx="8" fill="#fee2e2" stroke="#fca5a5" stroke-width="1.5"/>
+            <text x="547" y="324" fill="#b91c1c" font-size="10.5" font-weight="700" text-anchor="middle">Thất bại / Nguy cơ cao</text>
+            <text x="547" y="339" fill="#991b1b" font-size="9.5" text-anchor="middle">CCI ≥ 6 / Viêm nặng</text>
+
+            <line x1="547" y1="351" x2="547" y2="385" stroke="#b91c1c" stroke-width="2"/>
+            <rect x="475" y="385" width="145" height="55" rx="10" fill="#fee2e2" stroke="#fca5a5" stroke-width="2"/>
+            <text x="547" y="408" fill="#b91c1c" font-size="11" font-weight="800" text-anchor="middle">DẪN LƯU CẤP CỨU</text>
+            <text x="547" y="425" fill="#991b1b" font-size="10" font-weight="700" text-anchor="middle">PTGBD → Mổ Trì Hoãn</text>
+
+
+            <!-- BRANCH 3: GRADE III -->
+            <line x1="770" y1="105" x2="770" y2="135" stroke="var(--border)" stroke-width="2.5"/>
+            <rect x="670" y="135" width="200" height="42" rx="10" fill="url(#grad-g3)"/>
+            <text x="770" y="161" fill="#ffffff" font-size="13" font-weight="800" text-anchor="middle">ĐỘ III (NẶNG - GRADE III)</text>
+
+            <line x1="770" y1="177" x2="770" y2="205" stroke="var(--border)" stroke-width="2"/>
+            <rect x="660" y="205" width="220" height="48" rx="8" fill="var(--surface)" stroke="#dc2626" stroke-width="1.5"/>
+            <text x="770" y="225" fill="#b91c1c" font-size="11" font-weight="800" text-anchor="middle">HỒI SỨC ICU + KS PHỔ RỘNG</text>
+            <text x="770" y="241" fill="var(--text-muted)" font-size="9.5" text-anchor="middle">Nâng đỡ tạng + Đánh giá FOSF</text>
+
+            <line x1="770" y1="253" x2="770" y2="280" stroke="var(--border)" stroke-width="2"/>
+            <line x1="695" y1="280" x2="845" y2="280" stroke="var(--border)" stroke-width="2"/>
+
+            <!-- Grade III Strict Criteria Lap-C -->
+            <line x1="695" y1="280" x2="695" y2="305" stroke="var(--border)" stroke-width="2"/>
+            <rect x="630" y="305" width="130" height="75" rx="8" fill="#dcfce7" stroke="#86efac" stroke-width="1.5"/>
+            <text x="695" y="323" fill="#15803d" font-size="10" font-weight="800" text-anchor="middle">Thỏa Mãn 4 Tiêu Chí:</text>
+            <text x="695" y="338" fill="var(--text-muted)" font-size="9" text-anchor="middle">• Không yếu tố xấu</text>
+            <text x="695" y="352" fill="var(--text-muted)" font-size="9" text-anchor="middle">• Có FOSF (hồi phục)</text>
+            <text x="695" y="366" fill="var(--text-muted)" font-size="9" text-anchor="middle">• CCI ≤ 3 + Trung tâm sâu</text>
+
+            <line x1="695" y1="380" x2="695" y2="415" stroke="#15803d" stroke-width="2"/>
+            <rect x="625" y="415" width="140" height="55" rx="10" fill="#dcfce7" stroke="#86efac" stroke-width="2"/>
+            <text x="695" y="438" fill="#15803d" font-size="11" font-weight="800" text-anchor="middle">CẮT TÚI MẬT SỚM</text>
+            <text x="695" y="455" fill="#166534" font-size="9.5" font-weight="700" text-anchor="middle">(ICU + PTV chuyên sâu)</text>
+
+            <!-- Grade III Drain PTGBD -->
+            <line x1="845" y1="280" x2="845" y2="305" stroke="var(--border)" stroke-width="2"/>
+            <rect x="780" y="305" width="130" height="75" rx="8" fill="#fee2e2" stroke="#fca5a5" stroke-width="1.5"/>
+            <text x="845" y="323" fill="#b91c1c" font-size="10" font-weight="800" text-anchor="middle">Không Thỏa Tiêu Chí:</text>
+            <text x="845" y="338" fill="var(--text-muted)" font-size="9" text-anchor="middle">• Có Bilirubin ≥ 2 / Hô hấp</text>
+            <text x="845" y="352" fill="var(--text-muted)" font-size="9" text-anchor="middle">• Không có FOSF</text>
+            <text x="845" y="366" fill="var(--text-muted)" font-size="9" text-anchor="middle">• CCI ≥ 4 / ASA ≥ III</text>
+
+            <line x1="845" y1="380" x2="845" y2="415" stroke="#b91c1c" stroke-width="2"/>
+            <rect x="775" y="415" width="140" height="55" rx="10" fill="#fee2e2" stroke="#fca5a5" stroke-width="2"/>
+            <text x="845" y="438" fill="#b91c1c" font-size="11" font-weight="800" text-anchor="middle">DẪN LƯU CẤP CỨU</text>
+            <text x="845" y="455" fill="#991b1b" font-size="10" font-weight="700" text-anchor="middle">PTGBD Đầu Tay ⭐</text>
+
+            <!-- BOTTOM FOOTER NOTE -->
+            <rect x="150" y="525" width="620" height="65" rx="10" fill="var(--surface)" stroke="var(--border-light)" stroke-width="1"/>
+            <text x="460" y="547" fill="var(--text)" font-size="11" font-weight="700" text-anchor="middle">Chú giải thuật ngữ TG18:</text>
+            <text x="460" y="563" fill="var(--text-muted)" font-size="10" text-anchor="middle">CCI: Charlson Comorbidity Index | ASA-PS: Phân loại thể trạng gây mê | FOSF: Suy tạng hồi phục nhanh sau hồi sức</text>
+            <text x="460" y="578" fill="var(--text-muted)" font-size="10" text-anchor="middle">PTGBD: Dẫn lưu túi mật qua da dưới US | Lap-C: Phẫu thuật cắt túi mật nội soi (chuyển mổ mở khi cần thiết)</text>
+          </svg>
+          <div class="flowchart-caption">Hình 1: Lưu đồ thuật toán quyết định can thiệp phẫu thuật và dẫn lưu túi mật theo phân độ nặng TG18 (JHBPS 2018).</div>
+        </div>
+
+        <!-- TIÊU CHUẨN CHUYỂN TUYẾN -->
+        <h3 class="sec-subtitle">Tiêu Chuẩn Chuyển Tuyến Y Tế (TG18 Transfer Criteria)</h3>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width: 180px;">Phân Độ Nặng</th>
+                <th>Điều Kiện Tại Tuyến Hiện Tại & Tiêu Chí Chuyển Tuyến</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong style="color:#b91c1c;">Độ III (Severe)</strong></td>
+                <td>
+                  Phẫu thuật cắt túi mật nội soi Độ III chỉ được thực hiện tại <strong>Trung tâm chuyên sâu (Advanced Center)</strong> có sẵn đơn vị hồi sức tích cực (ICU) và phẫu thuật viên nội soi tay nghề cao. <em>Nếu không đủ điều kiện phẫu thuật hoặc hồi sức an toàn, bắt buộc chuyển tuyến khẩn cấp sau khi đã dẫn lưu giải áp hoặc ổn định sơ bộ.</em>
+                </td>
+              </tr>
+              <tr>
+                <td><strong style="color:#b45309;">Độ II (Moderate)</strong></td>
+                <td>
+                  Bệnh nhân cần được điều trị tại các bệnh viện có khả năng thực hiện <strong>dẫn lưu túi mật cấp cứu (PTGBD)</strong> hoặc <strong>cắt túi mật nội soi sớm</strong>. Cân nhắc chuyển tuyến sớm nếu không có sẵn các kỹ thuật này.
+                </td>
+              </tr>
+              <tr>
+                <td><strong style="color:#15803d;">Độ I (Mild)</strong></td>
+                <td>
+                  Nếu phẫu thuật bị trì hoãn do bệnh nhân có các bệnh lý nền đồng mắc nghiêm trọng (CCI cao), cân nhắc chuyển viện đến trung tâm có khả năng theo dõi nội khoa sát và thực hiện can thiệp nội soi nâng cao.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: DẪN LƯU TÚI MẬT -->
+    <section class="sec-card" id="sec-4">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <span class="sec-hdr-icon">💉</span>
+          <h2 class="sec-title">IV. Chiến Lược Can Thiệp Dẫn Lưu Túi Mật (Gallbladder Drainage)</h2>
+        </div>
+        <span class="sec-badge">Can Thiệp Giải Áp</span>
+      </div>
+      <div class="sec-body">
+        <p style="margin-bottom: 1.25rem; font-size: 0.88rem; color: var(--text-muted);">
+          Dẫn lưu túi mật là cứu cánh sống còn ở những bệnh nhân nguy cơ phẫu thuật cao, già yếu hoặc viêm nhiễm nặng không đáp ứng điều trị nội khoa:
+        </p>
+
+        <!-- 3 DẪN LƯU PHƯƠNG PHÁP -->
+        <div class="grid-3col" style="margin-bottom: 1.5rem;">
+          <!-- PTGBD -->
+          <div class="clin-card">
+            <div class="clin-card-accent accent-teal"></div>
+            <div class="clin-card-title">
+              <span>PTGBD (Dẫn Lưu Qua Da)</span>
+              <span class="badge badge-teal">Đầu Tay ⭐</span>
+            </div>
+            <div class="clin-card-body">
+              <strong>Lựa chọn chuẩn hóa đầu tay</strong> cho bệnh nhân nguy cơ mổ cao <em>(Khuyến cáo Độ 1, Mức chứng cứ B)</em>.
+              <ul class="clin-card-list">
+                <li><strong>Kỹ thuật:</strong> Chọc kim 18-G dưới hướng dẫn siêu âm, luồn catheter pigtail 6-Fr đến 10-Fr theo Seldinger qua ngả xuyên gan.</li>
+                <li><strong>Ưu điểm:</strong> Nhanh, an toàn, tỷ lệ thành công kỹ thuật > 95%.</li>
+                <li><strong>Lưu ý:</strong> Bệnh nhân Độ III có tỷ lệ tái nhập viện và tử vong nền cao hơn do bệnh lý toàn thân.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- ETGBD -->
+          <div class="clin-card">
+            <div class="clin-card-accent accent-blue"></div>
+            <div class="clin-card-title">
+              <span>ETGBD (Qua Nội Soi Mật Tụy)</span>
+              <span class="badge badge-blue">ERCP / Stent</span>
+            </div>
+            <div class="clin-card-body">
+              Áp dụng tại trung tâm lớn cho bệnh nhân <strong>rối loạn đông máu nặng</strong> hoặc giải phẫu qua da không an toàn <em>(Mức chứng cứ B)</em>.
+              <ul class="clin-card-list">
+                <li><strong>ENGBD (Dẫn lưu mũi - túi mật):</strong> Đặt pigtail 5-8.5 Fr ra ngoài. Ưu điểm bơm rửa tốt; nhược điểm khó chịu, dễ tuột.</li>
+                <li><strong>EGBS (Stent túi mật trong):</strong> Không mất dịch điện giải, không khó chịu; nhược điểm nguy cơ tắc stent.</li>
+                <li>Tỷ lệ thành công và tai biến tương đương nhau giữa ENGBD và EGBS.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- EUS-GBD -->
+          <div class="clin-card">
+            <div class="clin-card-accent accent-purple"></div>
+            <div class="clin-card-title">
+              <span>EUS-GBD (Dưới Siêu Âm Nội Soi)</span>
+              <span class="badge" style="background:#faf5ff; color:#7c3aed;">LAMS 98%</span>
+            </div>
+            <div class="clin-card-body">
+              Tiếp cận từ dạ dày hoặc tá tràng bằng siêu âm nội soi <em>(Mức chứng cứ B)</em>.
+              <ul class="clin-card-list">
+                <li><strong>LAMS (Lumen-Apposing Metal Stents):</strong> Stent kim loại tự bung định vị lòng áp sát mang lại tỷ lệ biến chứng thấp nhất (9.9%).</li>
+                <li><strong>Tỷ lệ thành công:</strong> Thành công kỹ thuật lên tới 98%.</li>
+                <li>Là giải pháp thay thế xuất sắc khi PTGBD có chống chỉ định hoặc thất bại.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="infobox warning">
+          <span class="infobox-icon">⚠️</span>
+          <div>
+            <strong>Nuôi cấy dịch mật trong quá trình dẫn lưu:</strong> Bắt buộc lấy mẫu dịch mật gửi làm xét nghiệm vi sinh và kháng sinh đồ ngay khi đặt ống dẫn lưu hoặc phẫu thuật để phục vụ việc xuống thang kháng sinh trúng đích.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: PHÁC ĐỒ KHÁNG SINH & THỜI GIAN ĐIỀU TRỊ -->
+    <section class="sec-card" id="sec-5">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <span class="sec-hdr-icon">💊</span>
+          <h2 class="sec-title">V. Phác Đồ Kháng Sinh Trị Liệu & Xuống Thang Chuẩn TG18</h2>
+        </div>
+        <span class="sec-badge">Antimicrobial Regimens</span>
+      </div>
+      <div class="sec-body">
+        <p style="margin-bottom: 1.25rem; font-size: 0.88rem; color: var(--text-muted);">
+          TG18 chuẩn hóa thời điểm khởi trị, phổ bao phủ vi sinh theo từng phân độ nặng và rút ngắn thời gian dùng kháng sinh sau mổ:
+        </p>
+
+        <!-- NGUYÊN TẮC -->
+        <div class="grid-2col" style="margin-bottom: 1.25rem;">
+          <div class="infobox danger">
+            <span class="infobox-icon">⏱️</span>
+            <div>
+              <strong>Thời điểm dùng kháng sinh đầu tiên:</strong>
+              • Nếu có <strong>Sốc nhiễm khuẩn (Septic Shock):</strong> Truyền tĩnh mạch trong vòng <strong>1 giờ đầu tiên</strong>.<br>
+              • Các trường hợp khác: Khởi động trong vòng <strong>6 giờ đầu</strong> kể từ khi nghi ngờ.
+            </div>
+          </div>
+          <div class="infobox info">
+            <span class="infobox-icon">🔬</span>
+            <div>
+              <strong>Cấy máu & Cấy dịch mật:</strong>
+              • Thực hiện cấy máu trước liều kháng sinh đầu ở Độ II và Độ III.<br>
+              • Lấy mẫu dịch mật cấy trong mọi can thiệp ngoại khoa / dẫn lưu (ngoại trừ Độ I nhẹ).
+            </div>
+          </div>
+        </div>
+
+        <!-- BẢNG KHÁNG SINH THEO ĐỘ NẶNG -->
+        <h3 class="sec-subtitle">1. Lựa Chọn Kháng Sinh Kinh Nghiệm Theo Phân Độ Nặng (TG18 Table 3)</h3>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width: 140px;">Phân Độ</th>
+                <th style="width: 220px;">Phổ Kháng Khuẩn Cần Đạt</th>
+                <th>Các Phác Đồ Kháng Sinh Khuyến Cáo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong style="color:#15803d;">Độ I (Nhẹ)</strong></td>
+                <td>Vi khuẩn Gram âm đường ruột thường gặp (<em>E. coli</em>, <em>Klebsiella</em>)</td>
+                <td>
+                  <span class="rx-tag preferred">Cefazolin</span>
+                  <span class="rx-tag preferred">Cefuroxime</span>
+                  <span class="rx-tag preferred">Ceftriaxone</span>
+                  <span class="rx-tag preferred">Cefotaxime</span><br>
+                  <span class="rx-tag">Ampicillin/sulbactam</span> <em>(Lưu ý: Không dùng kinh nghiệm nếu tỷ lệ đề kháng E. coli tại chỗ &gt; 20%)</em><br>
+                  <span class="rx-tag warn">Ciprofloxacin / Levofloxacin / Moxifloxacin</span> <em>(Chỉ dùng nếu biết rõ nhạy cảm hoặc dị ứng beta-lactam)</em>
+                </td>
+              </tr>
+              <tr>
+                <td><strong style="color:#b45309;">Độ II (Vừa)</strong></td>
+                <td>Vi khuẩn Gram âm + <strong>Bắt buộc bao phủ vi khuẩn kỵ khí</strong> (<em>B. fragilis</em>)</td>
+                <td>
+                  <span class="rx-tag preferred">Piperacillin/tazobactam</span>
+                  <span class="rx-tag preferred">Cefoperazone/sulbactam</span>
+                  <span class="rx-tag preferred">Cefmetazole / Cefoxitin / Flomoxef</span><br>
+                  <span class="rx-tag">Ceftriaxone / Cefepime / Ceftazidime</span> + <strong>Metronidazole</strong><br>
+                  <span class="rx-tag">Ertapenem</span>
+                </td>
+              </tr>
+              <tr>
+                <td><strong style="color:#b91c1c;">Độ III (Nặng)</strong></td>
+                <td>Bao phủ <strong><em>Pseudomonas aeruginosa</em></strong> + Kỵ khí + <strong><em>Enterococcus</em></strong></td>
+                <td>
+                  <span class="rx-tag preferred">Piperacillin/tazobactam</span>
+                  <span class="rx-tag preferred">Cefepime / Ceftazidime</span> + Metronidazole<br>
+                  <span class="rx-tag preferred">Meropenem / Imipenem-cilastatin / Doripenem</span><br>
+                  <span class="rx-tag warn">Aztreonam</span> + Metronidazole <em>(BN dị ứng nặng beta-lactam)</em><br>
+                  <div style="margin-top:0.4rem; font-size:0.8rem; color:#b91c1c;">
+                    ⚠️ <strong>Bắt buộc phối hợp thêm Vancomycin</strong> để bao phủ <em>Enterococcus spp.</em> cho đến khi có kết quả cấy máu/dịch mật.
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Nhiễm Trùng Bệnh Viện (HCAI)</strong></td>
+                <td>Vi khuẩn đa kháng (MRSA, ESBL, Pseudomonas kháng thuốc)</td>
+                <td>
+                  <span class="rx-tag preferred">Piperacillin/tazobactam</span>
+                  <span class="rx-tag preferred">Meropenem / Imipenem</span>
+                  <span class="rx-tag">Cefepime + Metronidazole</span><br>
+                  + Bổ sung <span class="rx-tag warn">Vancomycin</span> nếu nghi ngờ MRSA hoặc <em>Enterococcus spp.</em> đề kháng.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- THỜI GIAN SỬ DỤNG KHÁNG SINH -->
+        <h3 class="sec-subtitle" style="margin-top: 1.5rem;">2. Thời Gian Sử Dụng Kháng Sinh Tối Ưu (TG18 Table 5)</h3>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width: 240px;">Tình Trạng Lâm Sàng Sau Can Thiệp</th>
+                <th>Thời Gian Dùng Kháng Sinh Khuyến Cáo Chuẩn</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Viêm túi mật Độ I & II đã cắt túi mật thành công</strong></td>
+                <td>
+                  <strong style="color:#15803d;">DỪNG TRONG VÒNG 24 GIỜ</strong> sau phẫu thuật (khi nguồn nhiễm đã được loại bỏ hoàn toàn).
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Viêm túi mật Độ III hoặc Có Biến Chứng Tại Chỗ</strong><br><small style="color:var(--text-faint);">(Hoại tử, khí thũng, thủng, áp-xe quanh túi mật)</small></td>
+                <td>
+                  Duy trì từ <strong>4 đến 7 ngày</strong> sau khi nguồn nhiễm đã được kiểm soát hoàn toàn (bằng phẫu thuật hoặc dẫn lưu túi mật ổn định).
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Cấy máu dương tính với Gram dương</strong><br><small style="color:var(--text-faint);">(<em>Enterococcus spp.</em> hoặc <em>Streptococcus spp.</em>)</small></td>
+                <td>
+                  Duy trì tối thiểu <strong>2 tuần</strong> điều trị kháng sinh toàn thân để phòng ngừa viêm nội tâm mạc nhiễm khuẩn.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Kèm biến chứng Áp-xe gan</strong></td>
+                <td>
+                  Duy trì liên tục cho đến khi kiểm soát hoàn toàn triệu chứng lâm sàng, xét nghiệm hóa sinh bình thường và hình ảnh học xác nhận áp-xe đã tiêu biến hoàn toàn.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: INTERACTIVE CLINICAL CALCULATOR & TRIAGE WIDGET -->
+    <section class="sec-card" id="sec-6">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <span class="sec-hdr-icon">🧮</span>
+          <h2 class="sec-title">VI. Công Cụ Tính Nhanh Phân Độ TG18 & Hỗ Trợ Quyết Định Lâm Sàng</h2>
+        </div>
+        <span class="sec-badge">Bedside CDSS Tool</span>
+      </div>
+      <div class="sec-body">
+        <div class="widget-box">
+          <div class="widget-header">
+            <div class="widget-title">
+              <span>⚡</span> Bảng Kiểm Phân Độ Nặng TG18 & Quyết Định Can Thiệp Tức Thì
+            </div>
+            <button class="btn" id="calc-reset">🔄 Đặt lại bảng kiểm</button>
+          </div>
+
+          <div class="widget-grid">
+            <!-- CHECKLIST SUY TẠNG (GRADE III) -->
+            <div class="calc-section">
+              <div class="calc-section-title" style="color:#dc2626;">🔴 1. Tiêu Chí Suy Tạng (Độ III)</div>
+              <label class="calc-checkbox-label">
+                <input type="checkbox" class="chk-g3" value="cv">
+                <span><strong>Tuần hoàn:</strong> Tụt HA cần Dopamine ≥ 5 hoặc Norepinephrine</span>
+              </label>
+              <label class="calc-checkbox-label">
+                <input type="checkbox" class="chk-g3" value="cns">
+                <span><strong>Thần kinh:</strong> Rối loạn ý thức / giảm tỉnh táo</span>
+              </label>
+              <label class="calc-checkbox-label">
+                <input type="checkbox" class="chk-g3" value="resp">
+                <span><strong>Hô hấp:</strong> PaO₂/FiO₂ &lt; 300</span>
+              </label>
+              <label class="calc-checkbox-label">
+                <input type="checkbox" class="chk-g3" value="renal">
+                <span><strong>Thận:</strong> Thiểu niệu hoặc Creatinine &gt; 2.0 mg/dL</span>
+              </label>
+              <label class="calc-checkbox-label">
+                <input type="checkbox" class="chk-g3" value="hep">
+                <span><strong>Gan:</strong> PT-INR &gt; 1.5</span>
+              </label>
+              <label class="calc-checkbox-label">
+                <input type="checkbox" class="chk-g3" value="hema">
+                <span><strong>Huyết học:</strong> Tiểu cầu &lt; 100.000/mm³</span>
+              </label>
+            </div>
+
+            <!-- CHECKLIST VIÊM NẶNG CỤC BỘ (GRADE II) -->
+            <div class="calc-section">
+              <div class="calc-section-title" style="color:#d97706;">🟠 2. Viêm Cục Bộ & Thời Gian (Độ II)</div>
+              <label class="calc-checkbox-label">
+                <input type="checkbox" class="chk-g2" value="wbc">
+                <span><strong>Bạch cầu (WBC) &gt; 18.000/mm³</strong></span>
+              </label>
+              <label class="calc-checkbox-label">
+                <input type="checkbox" class="chk-g2" value="mass">
+                <span><strong>Sờ thấy khối đau</strong> ở vùng hạ sườn phải (RUQ)</span>
+              </label>
+              <label class="calc-checkbox-label">
+                <input type="checkbox" class="chk-g2" value="time">
+                <span><strong>Thời gian đau kéo dài &gt; 72 giờ</strong></span>
+              </label>
+              <label class="calc-checkbox-label">
+                <input type="checkbox" class="chk-g2" value="local">
+                <span><strong>Viêm cục bộ nặng:</strong> Hoại tử / Khí thũng / Áp-xe quanh TM / Áp-xe gan / Viêm phúc mạc mật</span>
+              </label>
+            </div>
+
+            <!-- CHECKLIST NGUY CƠ PHẪU THUẬT -->
+            <div class="calc-section">
+              <div class="calc-section-title" style="color:#0f766e;">🟢 3. Nguy Cơ Phẫu Thuật & Cơ Sở</div>
+              <label class="calc-checkbox-label">
+                <input type="checkbox" id="chk-highrisk">
+                <span><strong>Nguy cơ cao:</strong> CCI ≥ 6 hoặc ASA-PS ≥ III (hoặc CCI ≥ 4 ở Độ III)</span>
+              </label>
+              <label class="calc-checkbox-label">
+                <input type="checkbox" id="chk-neg-pred">
+                <span><strong>Yếu tố tiên lượng xấu (Độ III):</strong> Bilirubin ≥ 2.0 mg/dL, suy hô hấp, hôn mê</span>
+              </label>
+              <label class="calc-checkbox-label">
+                <input type="checkbox" id="chk-advanced-center" checked>
+                <span><strong>Cơ sở chuyên sâu:</strong> Có ICU + Phẫu thuật viên nội soi kinh nghiệm</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- KẾT QUẢ TRIAGE -->
+          <div class="calc-result-box" id="calc-result">
+            <div class="calc-result-header">KẾT QUẢ PHÂN ĐỘ & KHUYẾN CÁO XỬ TRÍ (TG18):</div>
+            <div class="calc-result-badge res-grade-1" id="res-badge">🟢 Độ I (Nhẹ - Grade I)</div>
+            <div class="calc-result-advice" id="res-advice">
+              <strong>Khuyến cáo điều trị:</strong> Bệnh nhân viêm túi mật cấp nhẹ không có suy tạng hay viêm cục bộ nặng. Nếu bệnh nhân có nguy cơ phẫu thuật thấp (CCI ≤ 5, ASA ≤ II), chỉ định <strong>Phẫu thuật cắt túi mật nội soi (Lap-C) sớm trong vòng 72 giờ đầu</strong>. Kháng sinh kinh nghiệm phổ thông (Cefazolin / Ceftriaxone) và dừng trong vòng 24 giờ sau mổ thành công.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 7: BẰNG CHỨNG EBM & TRÍCH DẪN AMA -->
+    <section class="sec-card" id="sec-7">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <span class="sec-hdr-icon">📚</span>
+          <h2 class="sec-title">VII. Tài Liệu Tham Khảo Chuẩn AMA (Tokyo Guidelines 2018)</h2>
+        </div>
+        <span class="sec-badge">EBM Citations</span>
+      </div>
+      <div class="sec-body">
+        <div class="citation-box">
+          <div class="citation-item">
+            <span class="citation-num">1.</span>
+            Yokoe M, Hata J, Takada T, et al. Tokyo Guidelines 2018: diagnostic criteria and severity grading of acute cholecystitis (with videos). <em>J Hepatobiliary Pancreat Sci</em>. 2018;25(1):41-54. doi:10.1002/jhbp.515
+          </div>
+          <div class="citation-item">
+            <span class="citation-num">2.</span>
+            Okamoto K, Suzuki K, Takada T, et al. Tokyo Guidelines 2018: flowchart for the management of acute cholecystitis. <em>J Hepatobiliary Pancreat Sci</em>. 2018;25(1):55-72. doi:10.1002/jhbp.516
+          </div>
+          <div class="citation-item">
+            <span class="citation-num">3.</span>
+            Mori Y, Itoi T, Baron TH, et al. Tokyo Guidelines 2018: management strategies for gallbladder drainage in patients with acute cholecystitis (with videos). <em>J Hepatobiliary Pancreat Sci</em>. 2018;25(1):87-95. doi:10.1002/jhbp.504
+          </div>
+          <div class="citation-item">
+            <span class="citation-num">4.</span>
+            Gomi H, Solomkin JS, Schlossberg D, et al. Tokyo Guidelines 2018: antimicrobial therapy for acute cholangitis and cholecystitis. <em>J Hepatobiliary Pancreat Sci</em>. 2018;25(1):3-16. doi:10.1002/jhbp.518
+          </div>
+          <div class="citation-item">
+            <span class="citation-num">5.</span>
+            Mayumi T, Okamoto K, Takada T, et al. Tokyo Guidelines 2018: management bundles for acute cholangitis and cholecystitis. <em>J Hepatobiliary Pancreat Sci</em>. 2018;25(1):96-100. doi:10.1002/jhbp.519
+          </div>
+          <div class="citation-item">
+            <span class="citation-num">6.</span>
+            Miura F, Okamoto K, Takada T, et al. Tokyo Guidelines 2018: initial management of acute biliary infection and flowchart for acute cholangitis. <em>J Hepatobiliary Pancreat Sci</em>. 2018;25(1):31-40. doi:10.1002/jhbp.509
+          </div>
+        </div>
+
+        <div class="btn-row">
+          <a href="../guidelines.html" class="btn btn-primary">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+            Quay lại Kho Guidelines
+          </a>
+          <button class="btn" onclick="window.print()">
+            🖨️ In / Xuất PDF Tóm Tắt
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- PAGE FOOTER -->
+  <footer class="page-footer">
+    <p>CliniPortal EBM Guidelines Hub &copy; 2026 — Dữ liệu Y học chứng cứ Tokyo Guidelines 2018 (TG18) phục vụ tra cứu thực hành lâm sàng.</p>
+  </footer>
+
+  <!-- SCRIPT LOGIC -->
+  <script>
+    // Theme Toggle Logic
+    const themeBtn = document.getElementById('theme-toggle');
+    function initTheme() {
+      const saved = localStorage.getItem('cliniportal-theme') || 'light';
+      document.documentElement.setAttribute('data-theme', saved);
+    }
+    if (themeBtn) {
+      themeBtn.addEventListener('click', () => {
+        const current = document.documentElement.getAttribute('data-theme') || 'light';
+        const next = current === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('cliniportal-theme', next);
+      });
+    }
+    initTheme();
+
+    // Bedside Calculator Triage Logic
+    const chkG3 = document.querySelectorAll('.chk-g3');
+    const chkG2 = document.querySelectorAll('.chk-g2');
+    const chkHighRisk = document.getElementById('chk-highrisk');
+    const chkNegPred = document.getElementById('chk-neg-pred');
+    const chkAdvCenter = document.getElementById('chk-advanced-center');
+    const resBadge = document.getElementById('res-badge');
+    const resAdvice = document.getElementById('res-advice');
+    const btnReset = document.getElementById('calc-reset');
+
+    function calculateTriage() {
+      let g3Count = 0;
+      chkG3.forEach(c => { if (c.checked) g3Count++; });
+
+      let g2Count = 0;
+      chkG2.forEach(c => { if (c.checked) g2Count++; });
+
+      const isHighRisk = chkHighRisk.checked;
+      const hasNegPred = chkNegPred.checked;
+      const isAdvCenter = chkAdvCenter.checked;
+
+      if (g3Count > 0) {
+        // GRADE III
+        resBadge.className = 'calc-result-badge res-grade-3';
+        resBadge.textContent = `🔴 Độ III (Nặng - Grade III) [${g3Count} cơ quan suy giảm]`;
+
+        if (!hasNegPred && !isHighRisk && isAdvCenter) {
+          resAdvice.innerHTML = `<strong>Chiến lược xử trí:</strong> Bệnh nhân thỏa mãn các điều kiện phẫu thuật đặc biệt của TG18 (Không có yếu tố xấu, có suy tạng hồi phục FOSF, nguy cơ mổ thấp CCI ≤ 3 và có ICU/PTV chuyên sâu). Chỉ định: <strong>CẮT TÚI MẬT NỘI SOI SỚM</strong> kèm hồi sức ICU tích cực và kháng sinh phổ rộng (Pip/Tazo hoặc Meropenem + Vancomycin).`;
+        } else {
+          resAdvice.innerHTML = `<strong>Chiến lược xử trí:</strong> Bệnh nhân có nguy cơ phẫu thuật cao hoặc có yếu tố tiên lượng âm tính. Chỉ định bắt buộc: <strong>DẪN LƯU TÚI MẬT CẤP CỨU (PTGBD ĐẦU TAY)</strong> dưới hướng dẫn siêu âm kết hợp hồi sức ICU nâng đỡ tạng và kháng sinh phổ rộng. Tiến hành cắt túi mật trì hoãn khi tình trạng bệnh nhân ổn định.`;
+        }
+      } else if (g2Count > 0) {
+        // GRADE II
+        resBadge.className = 'calc-result-badge res-grade-2';
+        resBadge.textContent = `🟠 Độ II (Vừa - Grade II) [${g2Count} dấu hiệu viêm nặng]`;
+
+        if (!isHighRisk && isAdvCenter) {
+          resAdvice.innerHTML = `<strong>Chiến lược xử trí:</strong> Kháng sinh toàn thân ngay lập tức (phổ bao phủ kỵ khí: Pip/Tazo, Cefoperazone/sulbactam, hoặc Ceftriaxone + Metronidazole). Nếu bệnh nhân đáp ứng nội khoa ban đầu tốt và có phẫu thuật viên nội soi giàu kinh nghiệm: <strong>CẮT TÚI MẬT NỘI SOI SỚM</strong>. Nếu không đáp ứng hoặc mổ khó khăn: Chuyển sang <strong>DẪN LƯU TÚI MẬT PTGBD</strong>.`;
+        } else {
+          resAdvice.innerHTML = `<strong>Chiến lược xử trí:</strong> Điều trị nội khoa ban đầu bằng kháng sinh và chăm sóc hỗ trợ. Nếu tình trạng viêm cải thiện: Phẫu thuật trì hoãn. Nếu điều trị nội khoa thất bại trong việc kiểm soát viêm: <strong>DẪN LƯU TÚI MẬT CẤP CỨU (PTGBD)</strong>.`;
+        }
+      } else {
+        // GRADE I
+        resBadge.className = 'calc-result-badge res-grade-1';
+        resBadge.textContent = '🟢 Độ I (Nhẹ - Grade I)';
+
+        if (!isHighRisk) {
+          resAdvice.innerHTML = `<strong>Chiến lược xử trí:</strong> Bệnh nhân viêm túi mật cấp nhẹ, nguy cơ phẫu thuật thấp (CCI ≤ 5, ASA ≤ II). Chỉ định hàng đầu: <strong>CẮT TÚI MẬT NỘI SOI SỚM (&lt; 72H)</strong>. Kháng sinh kinh nghiệm Cephalosporin thế hệ 1-3 và DỪNG trong vòng 24 giờ sau mổ thành công.`;
+        } else {
+          resAdvice.innerHTML = `<strong>Chiến lược xử trí:</strong> Bệnh nhân có nguy cơ phẫu thuật cao (CCI ≥ 6, ASA ≥ III). Khởi đầu điều trị nội khoa bằng kháng sinh và chăm sóc hỗ trợ. Sau khi tình trạng viêm cải thiện lâm sàng, tiến hành <strong>Cắt túi mật nội soi trì hoãn</strong> có chương trình.`;
+        }
+      }
+    }
+
+    [...chkG3, ...chkG2, chkHighRisk, chkNegPred, chkAdvCenter].forEach(el => {
+      if (el) el.addEventListener('change', calculateTriage);
+    });
+
+    if (btnReset) {
+      btnReset.addEventListener('click', () => {
+        chkG3.forEach(c => c.checked = false);
+        chkG2.forEach(c => c.checked = false);
+        chkHighRisk.checked = false;
+        chkNegPred.checked = false;
+        chkAdvCenter.checked = true;
+        calculateTriage();
+      });
+    }
+
+    calculateTriage();
+  </script>
+</body>
+</html>

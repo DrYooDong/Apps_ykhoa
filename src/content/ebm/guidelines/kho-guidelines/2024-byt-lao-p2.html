@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tóm tắt Hướng dẫn chẩn đoán, điều trị và dự phòng bệnh Lao 2024 của Bộ Y tế Việt Nam (QĐ 162/QĐ-BYT) – Phần 2: Phác đồ điều trị Lao nhạy cảm / kháng thuốc (BPaLM, Phác đồ C), quản lý nhóm đặc biệt, Lao tiềm ẩn & Dự phòng lây nhiễm.">
+  <title>Bộ Y Tế 2024 – Hướng Dẫn Lao (Phần 2: Điều Trị & Dự Phòng) – CliniPortal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #059669; --green-bg: #f0fdf4; --green-light: #a7f3d0;
+      --orange: #d97706; --orange-bg: #fffbeb; --orange-light: #fde68a;
+      --red: #dc2626; --red-bg: #fef2f2; --red-light: #fca5a5;
+      --blue: #2563eb; --blue-bg: #eff6ff; --blue-light: #bfdbfe;
+      --teal: #0d9488; --teal-bg: #f0fdfa; --teal-light: #99f6e4;
+      --purple: #7c3aed; --purple-bg: #faf5ff; --purple-light: #ddd6fe;
+      --accent: #0f6fb4;
+      --bg: #f0f4f8; --surface: #ffffff; --surface-2: #f8fafc;
+      --border: #cbd5e1; --border-light: #e2e8f0;
+      --text: #0f172a; --text-muted: #475569; --text-faint: #94a3b8;
+      --radius: 16px; --tr: 220ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [data-theme="dark"] {
+      --green: #10b981; --green-bg: #064e3b; --green-light: #047857;
+      --orange: #f59e0b; --orange-bg: #78350f; --orange-light: #b45309;
+      --red: #ef4444; --red-bg: #7f1d1d; --red-light: #b91c1c;
+      --blue: #3b82f6; --blue-bg: #1e3a8a; --blue-light: #1d4ed8;
+      --teal: #14b8a6; --teal-bg: #115e59; --teal-light: #0f766e;
+      --purple: #8b5cf6; --purple-bg: #4c1d95; --purple-light: #6d28d9;
+      --accent: #38bdf8;
+      --bg: #0f172a; --surface: #1e293b; --surface-2: #0f172a;
+      --border: #334155; --border-light: #1e293b;
+      --text: #f8fafc; --text-muted: #cbd5e1; --text-faint: #64748b;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; font-size: 15px; background: var(--bg); color: var(--text); line-height: 1.65; min-height: 100vh; transition: background var(--tr), color var(--tr); }
+
+    /* TOP NAV */
+    .topnav { position: sticky; top: 0; z-index: 200; background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 1rem; padding: 0 1.5rem; height: 56px; transition: background var(--tr), border-color var(--tr); }
+    [data-theme="dark"] .topnav { background: rgba(30, 41, 59, 0.9); }
+    .topnav-back { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--accent); text-decoration: none; font-size: 0.82rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 8px; transition: background var(--tr); white-space: nowrap; }
+    .topnav-back:hover { background: var(--blue-bg); }
+    .topnav-divider { width: 1px; height: 18px; background: var(--border-light); flex-shrink: 0; }
+    .topnav-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .topnav-actions { margin-left: auto; display: flex; align-items: center; gap: 0.5rem; }
+    .part-switcher { display: inline-flex; background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 8px; padding: 2px; }
+    .part-btn { padding: 0.25rem 0.65rem; border-radius: 6px; font-size: 0.75rem; font-weight: 700; text-decoration: none; color: var(--text-muted); transition: all var(--tr); }
+    .part-btn.active { background: var(--accent); color: #fff; }
+    .part-btn:hover:not(.active) { color: var(--accent); }
+    .theme-toggle { background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 1.1rem; padding: 0.4rem; border-radius: 50%; transition: background var(--tr); display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; }
+    .theme-toggle:hover { background: var(--surface-2); color: var(--accent); }
+
+    /* HERO */
+    .hero { background: linear-gradient(135deg, #0f6fb4 0%, #065f46 50%, #0c4a6e 100%); color: #fff; padding: 3.25rem 1.5rem 4.5rem; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 15% 60%, rgba(56, 189, 248, 0.25) 0%, transparent 55%), radial-gradient(ellipse at 85% 20%, rgba(16, 185, 129, 0.2) 0%, transparent 50%); }
+    .hero-inner { max-width: 1000px; margin: 0 auto; position: relative; z-index: 1; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 20px; padding: 0.35rem 0.95rem; font-size: 0.74rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1rem; color: #a7f3d0; }
+    .hero-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(1.8rem, 4vw, 2.7rem); font-weight: 800; line-height: 1.18; letter-spacing: -0.03em; margin-bottom: 0.75rem; }
+    .hero-title span { display: block; background: linear-gradient(90deg, #7dd3fc, #6ee7b7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 0.68em; font-weight: 600; letter-spacing: 0; margin-bottom: 0.2rem; }
+    .hero-subtitle { font-size: 0.95rem; opacity: 0.9; max-width: 780px; margin-bottom: 1.75rem; line-height: 1.6; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 0.75rem 1.75rem; font-size: 0.8rem; opacity: 0.85; border-top: 1px solid rgba(255,255,255,0.18); padding-top: 1rem; }
+    .hero-meta-item { display: flex; align-items: center; gap: 6px; }
+
+    /* PILLARS STICKY NAV BAR */
+    .pillars-nav { position: sticky; top: 56px; z-index: 190; background: var(--surface); border-bottom: 1px solid var(--border-light); padding: 0.65rem 1.5rem; transition: background var(--tr); }
+    .pillars-nav-inner { max-width: 1000px; margin: 0 auto; display: flex; gap: 0.5rem; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .pillars-nav-inner::-webkit-scrollbar { height: 3px; }
+    .pillars-nav-inner::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    .pillar-tab { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.4rem 0.8rem; border-radius: 20px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.76rem; font-weight: 700; color: var(--text-muted); border: 1px solid var(--border-light); background: var(--surface-2); text-decoration: none; white-space: nowrap; transition: all var(--tr); }
+    .pillar-tab:hover { border-color: var(--accent); color: var(--accent); background: var(--blue-bg); }
+    .pillar-tab.p-1 { border-left: 4px solid var(--green); }
+    .pillar-tab.p-2 { border-left: 4px solid var(--red); }
+    .pillar-tab.p-3 { border-left: 4px solid var(--orange); }
+    .pillar-tab.p-4 { border-left: 4px solid var(--purple); }
+    .pillar-tab.p-5 { border-left: 4px solid var(--teal); }
+
+    /* PILLARS STRIP */
+    .pillars { background: var(--surface); border-bottom: 1px solid var(--border-light); padding: 1.75rem 1.5rem; }
+    .pillars-inner { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; }
+    .pillar { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.1rem 1.2rem; display: flex; align-items: flex-start; gap: 0.85rem; position: relative; overflow: hidden; transition: transform var(--tr), box-shadow var(--tr); }
+    .pillar::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; }
+    .pillar.p1::before { background: var(--green); }
+    .pillar.p2::before { background: var(--red); }
+    .pillar.p3::before { background: var(--orange); }
+    .pillar.p4::before { background: var(--purple); }
+    .pillar.p5::before { background: var(--teal); }
+    .pillar:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.06); }
+    .pillar-icon { font-size: 1.6rem; flex-shrink: 0; line-height: 1; }
+    .pillar-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.86rem; color: var(--text); margin-bottom: 0.2rem; }
+    .pillar-desc { font-size: 0.76rem; color: var(--text-muted); line-height: 1.45; }
+
+    /* PAGE CONTENT CONTAINER */
+    .page-content { max-width: 1000px; margin: 0 auto; padding: 2.25rem 1.5rem; display: flex; flex-direction: column; gap: 2.25rem; }
+
+    /* SECTION CARD */
+    .sec-card { background: var(--surface); border: 1px solid var(--border-light); border-radius: var(--radius); overflow: hidden; scroll-margin-top: 110px; box-shadow: 0 2px 8px rgba(0,0,0,0.03); }
+    .sec-hdr { padding: 1.1rem 1.5rem; border-bottom: 1px solid var(--border-light); background: var(--surface-2); display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; }
+    .sec-hdr-left { display: flex; align-items: center; gap: 0.65rem; }
+    .sec-hdr-icon { width: 34px; height: 34px; border-radius: 10px; background: var(--green-bg); color: var(--green); display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+    .sec-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1rem; font-weight: 800; color: var(--text); }
+    .sec-body { padding: 1.5rem; }
+    .sec-subtitle { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.85rem; color: var(--accent); margin: 1.35rem 0 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; display: flex; align-items: center; gap: 0.5rem; }
+    .sec-subtitle:first-child { margin-top: 0; }
+
+    /* INFO BOXES */
+    .infobox { display: flex; align-items: flex-start; gap: 0.85rem; padding: 1rem 1.25rem; border-radius: 12px; margin-bottom: 1rem; font-size: 0.85rem; line-height: 1.6; }
+    .infobox:last-child { margin-bottom: 0; }
+    .infobox-icon { font-size: 1.2rem; flex-shrink: 0; line-height: 1.3; }
+    .infobox.danger { background: var(--red-bg); border: 1px solid var(--red-light); border-left: 4px solid var(--red); color: var(--text); }
+    .infobox.success { background: var(--green-bg); border: 1px solid var(--green-light); border-left: 4px solid var(--green); color: var(--text); }
+    .infobox.warning { background: var(--orange-bg); border: 1px solid var(--orange-light); border-left: 4px solid var(--orange); color: var(--text); }
+    .infobox.info { background: var(--blue-bg); border: 1px solid var(--blue-light); border-left: 4px solid var(--blue); color: var(--text); }
+    .infobox strong { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.88rem; color: var(--text); }
+
+    /* TABLES */
+    .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 1.25rem; border-radius: 10px; border: 1px solid var(--border-light); }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 0.83rem; min-width: 650px; text-align: left; }
+    .data-table th { padding: 0.75rem 0.9rem; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.74rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; background: var(--surface-2); color: var(--text); border-bottom: 2px solid var(--border-light); }
+    .data-table td { padding: 0.8rem 0.9rem; border-bottom: 1px solid var(--border-light); vertical-align: top; line-height: 1.55; }
+    .data-table tbody tr:last-child td { border-bottom: none; }
+    .data-table tbody tr:hover td { background: rgba(56, 189, 248, 0.04); }
+
+    /* CARDS GRID */
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 1.2rem; }
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 1rem; }
+
+    .sub-card { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 12px; padding: 1.2rem; transition: box-shadow var(--tr); }
+    .sub-card:hover { box-shadow: 0 4px 14px rgba(0,0,0,0.06); }
+    .sub-card-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.88rem; font-weight: 700; color: var(--text); margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: space-between; }
+
+    /* TAGS & BADGES */
+    .tag { display: inline-block; padding: 0.15rem 0.55rem; border-radius: 6px; font-size: 0.72rem; font-weight: 700; font-family: 'JetBrains Mono', monospace; }
+    .tag-blue { background: var(--blue-bg); color: var(--blue); border: 1px solid var(--blue-light); }
+    .tag-green { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-light); }
+    .tag-orange { background: var(--orange-bg); color: var(--orange); border: 1px solid var(--orange-light); }
+    .tag-red { background: var(--red-bg); color: var(--red); border: 1px solid var(--red-light); }
+    .tag-purple { background: var(--purple-bg); color: var(--purple); border: 1px solid var(--purple-light); }
+    .tag-teal { background: var(--teal-bg); color: var(--teal); border: 1px solid var(--teal-light); }
+
+    .rx-pill { display: inline-block; padding: 0.2rem 0.5rem; border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; font-weight: 700; background: var(--surface-2); border: 1px solid var(--border); margin-right: 0.3rem; }
+
+    /* BOTTOM PART SWITCHER BANNER */
+    .banner-next-part { background: linear-gradient(135deg, var(--surface-2) 0%, var(--blue-bg) 100%); border: 1.5px solid var(--blue-light); border-radius: 16px; padding: 1.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; }
+    .banner-text-h { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 1.05rem; color: var(--text); margin-bottom: 0.25rem; }
+    .banner-text-p { font-size: 0.82rem; color: var(--text-muted); }
+    .banner-btn { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--accent); color: #fff; padding: 0.65rem 1.25rem; border-radius: 10px; font-weight: 700; font-size: 0.85rem; text-decoration: none; transition: transform var(--tr); }
+    .banner-btn:hover { transform: translateX(-3px); }
+
+    /* CITATION BOX */
+    .citation-box { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 12px; padding: 1.25rem; font-size: 0.82rem; color: var(--text-muted); line-height: 1.75; font-style: italic; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .page-content { padding: 1.25rem 1rem; }
+      .sec-body { padding: 1rem; }
+      .banner-next-part { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+  <link rel="stylesheet" href="../../../../../css/components/header.css">
+  <script type="module" src="../../../../../components/header.ts" defer></script>
+</head>
+<body>
+  <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
+
+
+  <!-- TOP NAV -->
+  <nav class="topnav">
+    <a href="../guidelines.html" class="topnav-back">
+      <i class="fa-solid fa-chevron-left"></i>
+      Kho Guidelines
+    </a>
+    <div class="topnav-divider"></div>
+    <div class="topnav-title">BYT 2024 – Hướng Dẫn Bệnh Lao (Phần 2: Điều Trị & Dự Phòng)</div>
+    <div class="topnav-actions">
+      <div class="part-switcher">
+        <a href="2024-byt-lao-p1.html" class="part-btn">Phần 1</a>
+        <a href="2024-byt-lao-p2.html" class="part-btn active">Phần 2</a>
+      </div>
+      <button class="theme-toggle" id="themeToggle" title="Chuyển chế độ giao diện">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">
+        <i class="fa-solid fa-pills"></i> Bộ Y Tế Việt Nam • Quyết Định 162/QĐ-BYT (2024)
+      </div>
+      <h1 class="hero-title">
+        <span>Phác Đồ Điều Trị Học & Kiểm Soát Nhiễm Khuẩn</span>
+        Hướng Dẫn Điều Trị Lao & Dự Phòng Lây Nhiễm (Phần 2)
+      </h1>
+      <p class="hero-subtitle">
+        Cập nhật toàn diện 4 nguyên tắc điều trị, phác đồ Lao nhạy cảm (A1, A2, A2a 4 tháng trẻ em, B1, B2a), phác đồ đột phá Lao kháng thuốc (BPaLM 6 tháng, Phác đồ C 9-11 tháng), xử trí bệnh nhân đặc biệt (Thai kỳ, Viêm gan/suy thận, HIV/ARV) & Phác đồ Lao tiềm ẩn 3HP/1HP.
+      </p>
+      <div class="hero-meta">
+        <div class="hero-meta-item"><i class="fa-solid fa-calendar-check"></i> Ban hành: 19/01/2024</div>
+        <div class="hero-meta-item"><i class="fa-solid fa-prescription"></i> Liều lượng theo cân nặng (Phụ lục 6)</div>
+        <div class="hero-meta-item"><i class="fa-solid fa-clock-rotate-left"></i> Quản lý quên liều (Phụ lục 8)</div>
+        <div class="hero-meta-item"><i class="fa-solid fa-shield-halved"></i> Kiểm soát lây nhiễm & BCG</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- PILLARS STICKY NAV STRIP -->
+  <div class="pillars-nav">
+    <div class="pillars-nav-inner">
+      <a href="#sec-1" class="pillar-tab p-1"><i class="fa-solid fa-prescription-bottle-medical"></i> 1. Lao Nhạy Cảm Thuốc</a>
+      <a href="#sec-2" class="pillar-tab p-2"><i class="fa-solid fa-capsules"></i> 2. Lao Kháng Thuốc (MDR/BPaLM)</a>
+      <a href="#sec-3" class="pillar-tab p-3"><i class="fa-solid fa-hospital-user"></i> 3. Nhóm Đặc Biệt & Theo Dõi</a>
+      <a href="#sec-4" class="pillar-tab p-4"><i class="fa-solid fa-vial-circle-check"></i> 4. Điều Trị Lao Tiềm Ẩn</a>
+      <a href="#sec-5" class="pillar-tab p-5"><i class="fa-solid fa-virus-slash"></i> 5. Dự Phòng & BCG</a>
+    </div>
+  </div>
+
+  <!-- PILLARS STRIP -->
+  <section class="pillars">
+    <div class="pillars-inner">
+      <div class="pillar p1">
+        <div class="pillar-icon">💊</div>
+        <div>
+          <div class="pillar-title">4 Nguyên Tắc Vàng</div>
+          <div class="pillar-desc">Phối hợp, đúng liều cân nặng, đều đặn DOT & đủ thời gian (tấn công + duy trì).</div>
+        </div>
+      </div>
+      <div class="pillar p2">
+        <div class="pillar-icon">⚡</div>
+        <div>
+          <div class="pillar-title">Phác Đồ Đột Phá BPaLM</div>
+          <div class="pillar-desc">Siêu ngắn 6 tháng (Bdq + Pa + Lzd + Mfx) cho MDR-TB từ &ge; 14 tuổi.</div>
+        </div>
+      </div>
+      <div class="pillar p3">
+        <div class="pillar-icon">🩺</div>
+        <div>
+          <div class="pillar-title">An Toàn Lâm Sàng</div>
+          <div class="pillar-desc">Cắt thuốc khi men gan &gt; 5 lần, hiệu chỉnh liều suy thận & ARV sau 2 tuần ở HIV.</div>
+        </div>
+      </div>
+      <div class="pillar p4">
+        <div class="pillar-icon">🧪</div>
+        <div>
+          <div class="pillar-title">Lao Tiềm Ẩn Ngắn Ngày</div>
+          <div class="pillar-desc">Phác đồ 3HP (12 liều hàng tuần) & 1HP (1 tháng hàng ngày) đạt tỷ lệ tuân thủ cao.</div>
+        </div>
+      </div>
+      <div class="pillar p5">
+        <div class="pillar-icon">🛡️</div>
+        <div>
+          <div class="pillar-title">Dự Phòng & Vắc-xin BCG</div>
+          <div class="pillar-desc">Kiểm soát hạt khí dung 1-5 µm, quạt/N95 & xử trí phản ứng hạch nách / BCG lan tỏa.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAGE CONTENT -->
+  <main class="page-content">
+
+    <!-- SEC 1: PHÁC ĐỒ LAO NHẠY CẢM THUỐC -->
+    <article id="sec-1" class="sec-card">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <div class="sec-hdr-icon"><i class="fa-solid fa-prescription-bottle-medical"></i></div>
+          <h2 class="sec-title">1. Điều Trị Lao Nhạy Cảm Thuốc (Hàng 1) & Bảng Liều Lượng</h2>
+        </div>
+        <span class="tag tag-green">Phác đồ Hàng 1</span>
+      </div>
+      <div class="sec-body">
+        
+        <div class="infobox success">
+          <div class="infobox-icon"><i class="fa-solid fa-shield-check"></i></div>
+          <div>
+            <strong>4 Nguyên Tắc Bắt Buộc Trong Điều Trị Lao (BYT 2024):</strong>
+            <ol style="margin-left: 1.2rem; margin-top: 0.3rem; font-size: 0.83rem;">
+              <li><strong>Phối hợp thuốc:</strong> Nhạy cảm dùng tối thiểu 3 thuốc giai đoạn tấn công & 2 thuốc giai đoạn duy trì.</li>
+              <li><strong>Dùng thuốc đúng liều:</strong> Tính chính xác theo cân nặng bệnh nhân (uống xa bữa ăn / lúc đói).</li>
+              <li><strong>Dùng thuốc đều đặn & DOT:</strong> Uống đúng cùng khung giờ cố định dưới sự giám sát trực tiếp (DOT).</li>
+              <li><strong>Dùng thuốc đủ thời gian:</strong> Tấn công diệt vi khuẩn nhanh, duy trì tiêu diệt vi khuẩn thể ẩn (dormant).</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-list-check"></i> Các Phác Đồ Điều Trị Lao Nhạy Cảm Chuẩn Hóa</div>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Mã phác đồ</th>
+                <th>Công thức phác đồ</th>
+                <th>Đối tượng chỉ định</th>
+                <th>Lưu ý lâm sàng quan trọng</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="tag tag-blue">Phác đồ A1</span></td>
+                <td><strong>2HRZE / 4RHE</strong> (6 tháng)</td>
+                <td>Lao phổi & ngoài phổi ở <strong>người lớn</strong> (bao gồm cả HIV, thai kỳ)</td>
+                <td>Tấn công 2 tháng (H, R, Z, E daily); Duy trì 4 tháng (R, H, E daily). <em>Không dùng cho Lao TK TW & Xương khớp.</em></td>
+              </tr>
+              <tr>
+                <td><span class="tag tag-green">Phác đồ A2</span></td>
+                <td><strong>2HRZE / 4RH</strong> (6 tháng)</td>
+                <td>Lao ở <strong>trẻ em</strong> nhạy cảm thuốc</td>
+                <td>Tấn công 2 tháng (H, R, Z, E); Duy trì 4 tháng (R, H) hàng ngày.</td>
+              </tr>
+              <tr>
+                <td><span class="tag tag-teal">Phác đồ A2a</span></td>
+                <td><strong>2HRZE / 2RH</strong> (Ngắn hạn 4 tháng)</td>
+                <td>Trẻ em (3 tháng đến 16 tuổi) tổn thương nhẹ</td>
+                <td>Chỉ định khi thỏa 3 tiêu chí: Tổn thương nhẹ Xquang, vi sinh âm tính/vết/thấp, lâm sàng nhẹ không cần nhập viện.</td>
+              </tr>
+              <tr>
+                <td><span class="tag tag-purple">Phác đồ B1</span></td>
+                <td><strong>2HRZE / 10RHE</strong> (12 tháng)</td>
+                <td>Lao Hệ thần kinh trung ương (lao màng brain), Lao xương khớp ở <strong>người lớn</strong></td>
+                <td>Duy trì kéo dài 10 tháng. Lao màng brain bắt buộc phối hợp <strong>Corticosteroid giảm liều dần trong 6-8 tuần đầu</strong>.</td>
+              </tr>
+              <tr>
+                <td><span class="tag tag-orange">Phác đồ B2</span></td>
+                <td><strong>2HRZE / 10RH</strong> (12 tháng)</td>
+                <td>Lao Hệ thần kinh trung ương, Lao xương khớp ở <strong>trẻ em</strong></td>
+                <td>Tấn công phối hợp thêm Streptomycin; duy trì 10 tháng RH + Corticosteroid 6-8 tuần.</td>
+              </tr>
+              <tr>
+                <td><span class="tag tag-red">Phác đồ B2a</span></td>
+                <td><strong>6HRZEto</strong> (Ngắn ngày 6 tháng)</td>
+                <td>Lao màng não ở trẻ em / vị thành niên (0 - 19 tuổi)</td>
+                <td>Phác đồ 4 thuốc (H, R, Z, Ethionamide) hàng ngày liên tục 6 tháng. <em>Chống chỉ định ở bệnh nhân HIV.</em></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-weight-scale"></i> Bảng 1 (Phụ Lục 6): Liều Dùng Thuốc Lao Hàng 1 Theo Cân Nặng (Uống Hàng Ngày)</div>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Tên thuốc chống lao</th>
+                <th>Liều hàng ngày Người lớn (mg/kg)</th>
+                <th>Tổng liều tối đa (Người lớn)</th>
+                <th>Liều hàng ngày Trẻ em (mg/kg)</th>
+                <th>Tổng liều tối đa (Trẻ em)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Isoniazid (H)</strong></td>
+                <td><span class="rx-pill">5 (4 - 6) mg/kg</span></td>
+                <td><strong>300 mg/ngày</strong></td>
+                <td><span class="rx-pill">10 (7 - 15) mg/kg</span></td>
+                <td><strong>300 mg/ngày</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Rifampicin (R)</strong></td>
+                <td><span class="rx-pill">10 (8 - 12) mg/kg</span></td>
+                <td><strong>600 mg/ngày</strong></td>
+                <td><span class="rx-pill">15 (10 - 20) mg/kg</span></td>
+                <td><strong>600 mg/ngày</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Pyrazinamide (Z)</strong></td>
+                <td><span class="rx-pill">25 (20 - 30) mg/kg</span></td>
+                <td>Theo cân nặng</td>
+                <td><span class="rx-pill">35 (30 - 40) mg/kg</span></td>
+                <td>Theo cân nặng</td>
+              </tr>
+              <tr>
+                <td><strong>Ethambutol (E)</strong></td>
+                <td><span class="rx-pill">15 (15 - 20) mg/kg</span></td>
+                <td>Theo cân nặng</td>
+                <td><span class="rx-pill">20 (15 - 25) mg/kg</span></td>
+                <td>Theo cân nặng</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </article>
+
+    <!-- SEC 2: PHÁC ĐỒ LAO KHÁNG THUỐC -->
+    <article id="sec-2" class="sec-card">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <div class="sec-hdr-icon"><i class="fa-solid fa-capsules"></i></div>
+          <h2 class="sec-title">2. Điều Trị Lao Kháng Thuốc (MDR / pre-XDR / BPaLM)</h2>
+        </div>
+        <span class="tag tag-red">Kháng thuốc 2024</span>
+      </div>
+      <div class="sec-body">
+        
+        <div class="sec-subtitle"><i class="fa-solid fa-layer-group"></i> Phân Nhóm Thuốc Lao Hàng 2 Theo Bộ Y Tế</div>
+        <div class="grid-3">
+          <div class="sub-card" style="border-left: 4px solid var(--red);">
+            <div class="sub-card-title"><span>Nhóm A (Ưu tiên)</span> <span class="tag tag-red">Cốt lõi</span></div>
+            <p style="font-size: 0.8rem; color: var(--text-muted);">Levofloxacin (Lfx) / Moxifloxacin (Mfx), Bedaquiline (Bdq), Linezolid (Lzd). Phải chọn đủ nếu nhạy cảm.</p>
+          </div>
+          <div class="sub-card" style="border-left: 4px solid var(--orange);">
+            <div class="sub-card-title"><span>Nhóm B (Bổ sung)</span> <span class="tag tag-orange">Thứ 2</span></div>
+            <p style="font-size: 0.8rem; color: var(--text-muted);">Clofazimine (Cfz), Cycloserine (Cs) / Terizidone (Trd).</p>
+          </div>
+          <div class="sub-card" style="border-left: 4px solid var(--blue);">
+            <div class="sub-card-title"><span>Nhóm C (Thay thế)</span> <span class="tag tag-blue">Dự phòng</span></div>
+            <p style="font-size: 0.8rem; color: var(--text-muted);">Ethambutol (E), Delamanid (Dmd), Pyrazinamide (Z), Imipenem-cilastatin/Meropenem, Amikacin, Ethionamide.</p>
+          </div>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-bolt"></i> Các Phác Đồ Lao Kháng Thuốc Đột Phá Mới</div>
+        <div class="grid-2">
+          <div class="sub-card" style="border-top: 4px solid var(--green);">
+            <div class="sub-card-title">
+              <span>Phác Đồ BPaLM (Siêu ngắn 6 tháng)</span>
+              <span class="tag tag-green">Chuẩn WHO</span>
+            </div>
+            <p style="font-size: 0.83rem; color: var(--text-muted);">
+              • <strong>Đối tượng:</strong> Bệnh nhân MDR/RR-TB từ <strong>&ge; 14 tuổi</strong>.<br>
+              • <strong>Công thức:</strong> <span class="rx-pill">Bdq + Pa + Lzd + Mfx</span> hàng ngày trong <strong>6 tháng</strong>.<br>
+              • <em>Chống chỉ định:</em> Lao màng não, lao xương khớp, phụ nữ mang thai / cho con bú.
+            </p>
+          </div>
+
+          <div class="sub-card" style="border-top: 4px solid var(--blue);">
+            <div class="sub-card-title">
+              <span>Phác Đồ C (Ngắn hạn 9 - 11 tháng Bedaquiline)</span>
+              <span class="tag tag-blue">MDR-TB</span>
+            </div>
+            <p style="font-size: 0.83rem; color: var(--text-muted);">
+              • <strong>Tấn công (4-6 tháng):</strong> <span class="rx-pill">Bdq - Lfx - Lzd - E - Z - Hh - Cfz</span>.<br>
+              • <strong>Duy trì (5 tháng):</strong> <span class="rx-pill">Lfx - Cfz - Z - E</span>.<br>
+              • <em>Lưu ý:</em> Bedaquiline dùng 6 tháng. Linezolid dùng tối đa 2-4 tháng.
+            </p>
+          </div>
+
+          <div class="sub-card" style="border-top: 4px solid var(--purple);">
+            <div class="sub-card-title">
+              <span>Phác Đồ Hr-TB (Kháng H nhạy R)</span>
+              <span class="tag tag-purple">6 tháng</span>
+            </div>
+            <p style="font-size: 0.83rem; color: var(--text-muted);">
+              • <strong>Công thức:</strong> <span class="rx-pill">6 R - Z - E - Lfx</span> uống hàng ngày 6 tháng.<br>
+              • Tuyệt đối không phối hợp Streptomycin hoặc thuốc tiêm hàng 2. Bắt buộc làm Xpert XDR loại trừ kháng FQ trước thu nhận.
+            </p>
+          </div>
+
+          <div class="sub-card" style="border-top: 4px solid var(--orange);">
+            <div class="sub-card-title">
+              <span>Phác Đồ Dài Hạn Cá Thể (18 - 20 tháng)</span>
+              <span class="tag tag-orange">preXDR / XDR</span>
+            </div>
+            <p style="font-size: 0.83rem; color: var(--text-muted);">
+              • <strong>Chỉ định:</strong> Bệnh nhân kháng FQ (pre-XDR/XDR) hoặc thất bại phác đồ ngắn hạn.<br>
+              • Xây dựng cá thể hóa gồm tối thiểu 4 thuốc hiệu lực kéo dài <strong>&ge; 15-17 tháng sau âm hóa nuôi cấy</strong>.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </article>
+
+    <!-- SEC 3: ĐỐI TƯỢNG ĐẶC BIỆT & THEO DÕI -->
+    <article id="sec-3" class="sec-card">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <div class="sec-hdr-icon"><i class="fa-solid fa-hospital-user"></i></div>
+          <h2 class="sec-title">3. Quản Lý Điều Trị Nhóm Đặc Biệt & Quy Trình Theo Dõi</h2>
+        </div>
+        <span class="tag tag-orange">An toàn điều trị</span>
+      </div>
+      <div class="sec-body">
+        
+        <div class="sec-subtitle"><i class="fa-solid fa-user-doctor"></i> Hướng Dẫn Xử Trí Lâm Sàng Trên Đối Tượng Đặc Biệt</div>
+        <div class="grid-2">
+          <div class="sub-card">
+            <div class="sub-card-title"><span>Phụ Nữ Mang Thai & Cho Con Bú</span> <span class="tag tag-green">An toàn H1</span></div>
+            <p style="font-size: 0.82rem; color: var(--text-muted);">
+              • Lao nhạy cảm: Dùng an toàn phác đồ chuẩn (H, R, Z, E).<br>
+              • Lao kháng thuốc: <strong>Chống chỉ định tuyệt đối thuốc tiêm H2</strong> (gây độc thính giác thai nhi) và <strong>Ethionamide</strong> (tăng nguy cơ dị tật thai nhi & nôn nặng).
+            </p>
+          </div>
+
+          <div class="sub-card">
+            <div class="sub-card-title"><span>Bệnh Nhân Đái Tháo Đường</span> <span class="tag tag-blue">Bổ sung B6</span></div>
+            <p style="font-size: 0.82rem; color: var(--text-muted);">
+              Tăng nguy cơ biến cố thần kinh ngoại vi (do H) và thần kinh thị giác (do E). Bắt buộc <strong>bổ sung Pyridoxine (Vitamin B6) 10-25 mg/ngày</strong>. Ưu tiên Insulin kiểm soát đường huyết.
+            </p>
+          </div>
+
+          <div class="sub-card">
+            <div class="sub-card-title"><span>Đồng Nhiễm Lao / HIV</span> <span class="tag tag-red">ARV sau 2 tuần</span></div>
+            <p style="font-size: 0.82rem; color: var(--text-muted);">
+              Khởi trị lao ngay. <strong>Bắt đầu ARV sau 02 tuần điều trị lao</strong> (bất kể CD4). Riêng Lao màng não hoãn ARV 4-8 tuần. CD4 &lt; 100 tế bào/mm&sup3; dùng thêm Corticoid ngừa IRIS.
+            </p>
+          </div>
+
+          <div class="sub-card">
+            <div class="sub-card-title"><span>Bệnh Nhân Suy Thận / Chạy Thận</span> <span class="tag tag-purple">Chỉnh liều Z & E</span></div>
+            <p style="font-size: 0.82rem; color: var(--text-muted);">
+              Thanh thải Creatinine &lt; 30 ml/phút hoặc chạy thận nhân tạo:<br>
+              • <strong>Pyrazinamide (Z):</strong> 25-35 mg/kg <strong>3 lần/tuần</strong>.<br>
+              • <strong>Ethambutol (E):</strong> 15-25 mg/kg <strong>3 lần/tuần</strong> (uống sau ca lọc máu).
+            </p>
+          </div>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-triangle-exclamation"></i> Xử Trí Độc Tính Men Gan Do Thuốc Lao (Liver Safety Protocol)</div>
+        <div class="infobox danger">
+          <div class="infobox-icon"><i class="fa-solid fa-liver"></i></div>
+          <div>
+            <strong>Tiêu chuẩn NGỪNG NGAY TOÀN BỘ THUỐC LAO khi có độc tính gan:</strong>
+            <ol style="margin-left: 1.2rem; margin-top: 0.3rem; font-size: 0.83rem;">
+              <li>Men gan (AST/ALT) tăng cao <strong>&gt; 5 lần giới hạn bình thường trên</strong> (dù có hay không có triệu chứng).</li>
+              <li>Men gan tăng <strong>&gt; 3 lần kèm theo triệu chứng lâm sàng</strong> (mệt mỏi, chán ăn, buồn nôn) hoặc vàng da (Bilirubin toàn phần &gt; 3 mg/dL).</li>
+            </ol>
+            <div style="margin-top: 0.4rem; font-size: 0.82rem;">
+              <em>Tái sử dụng thuốc:</em> Khi men gan về &lt; 2 lần giới hạn bình thường, dùng lại từng thuốc một, bắt đầu từ thuốc ít độc nhất (E &rarr; R &rarr; H).
+            </div>
+          </div>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-calendar-days"></i> Bảng 4: Quy Trình Theo Dõi Xét Nghiệm Điều Trị Lao Phổi 6 Tháng</div>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Kỹ thuật theo dõi</th>
+                <th>M0 (Trước ĐT)</th>
+                <th>M1</th>
+                <th>M2</th>
+                <th>M3</th>
+                <th>M4</th>
+                <th>M5</th>
+                <th>M6 (Kết thúc)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Khám lâm sàng</strong></td>
+                <td><span class="tag tag-green">✓</span></td>
+                <td><span class="tag tag-green">✓</span></td>
+                <td><span class="tag tag-green">✓</span></td>
+                <td><span class="tag tag-green">✓</span></td>
+                <td><span class="tag tag-green">✓</span></td>
+                <td><span class="tag tag-green">✓</span></td>
+                <td><span class="tag tag-green">✓</span></td>
+              </tr>
+              <tr>
+                <td><strong>Chụp X-quang ngực</strong></td>
+                <td><span class="tag tag-green">✓</span></td>
+                <td></td>
+                <td><span class="tag tag-green">✓</span></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><span class="tag tag-green">✓</span></td>
+              </tr>
+              <tr>
+                <td><strong>Soi đờm AFB trực tiếp</strong></td>
+                <td><span class="tag tag-green">✓</span></td>
+                <td></td>
+                <td><span class="tag tag-green">✓</span></td>
+                <td><em>(Nếu M2 +)</em></td>
+                <td></td>
+                <td><span class="tag tag-green">✓</span></td>
+                <td><span class="tag tag-green">✓</span></td>
+              </tr>
+              <tr>
+                <td><strong>Nuôi cấy trực khuẩn</strong></td>
+                <td><span class="tag tag-green">✓</span></td>
+                <td></td>
+                <td><span class="tag tag-green">✓</span></td>
+                <td></td>
+                <td></td>
+                <td><span class="tag tag-green">✓</span></td>
+                <td><span class="tag tag-green">✓</span></td>
+              </tr>
+              <tr>
+                <td><strong>AST, ALT, Bilirubin</strong></td>
+                <td><span class="tag tag-green">✓</span></td>
+                <td colspan="6" style="text-align: center; color: var(--text-muted);">Kiểm tra hàng tháng hoặc khi nghi ngờ tác dụng phụ thuốc gan</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </article>
+
+    <!-- SEC 4: ĐIỀU TRỊ LAO TIỀM ẨN & QUÊN LIỀU -->
+    <article id="sec-4" class="sec-card">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <div class="sec-hdr-icon"><i class="fa-solid fa-vial-circle-check"></i></div>
+          <h2 class="sec-title">4. Các Phác Đồ Điều Trị Lao Tiềm Ẩn (LTA) & Quy Trình Quên Liều</h2>
+        </div>
+        <span class="tag tag-purple">Điều trị LTA</span>
+      </div>
+      <div class="sec-body">
+        
+        <div class="sec-subtitle"><i class="fa-solid fa-table-list"></i> Các Phác Đồ Điều Trị Lao Tiềm Ẩn Phê Duyệt</div>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Tên phác đồ</th>
+                <th>Công thức & Tần suất</th>
+                <th>Thời gian</th>
+                <th>Ưu điểm & Đối tượng chỉ định</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="tag tag-green">Phác đồ 3HP</span></td>
+                <td>Isoniazid (H) + Rifapentine (P) <strong>uống hàng tuần</strong></td>
+                <td>12 tuần (12 liều)</td>
+                <td>Ưu tiên hàng đầu cho người &ge; 2 tuổi. Uống Rifapentine kèm thức ăn ít béo. Dùng an toàn với ARV chứa TDF/EFV/DTG.</td>
+              </tr>
+              <tr>
+                <td><span class="tag tag-teal">Phác đồ 1HP</span></td>
+                <td>Isoniazid (300mg) + Rifapentine (600mg) <strong>uống hàng ngày</strong></td>
+                <td>1 tháng (28 liều)</td>
+                <td>Siêu ngắn ngày cho người &ge; 13 tuổi (người HIV trong trại tạm giam, chuẩn bị ghép tạng...).</td>
+              </tr>
+              <tr>
+                <td><span class="tag tag-blue">Phác đồ 3HR</span></td>
+                <td>Isoniazid (H) + Rifampicin (R) <strong>uống hàng ngày</strong></td>
+                <td>3 tháng (90 liều)</td>
+                <td><strong>Khuyên dùng an toàn cho phụ nữ mang thai</strong>. Lưu ý nhân đôi liều DTG/RAL ở người nhiễm HIV.</td>
+              </tr>
+              <tr>
+                <td><span class="tag tag-orange">Phác đồ 4R</span></td>
+                <td>Rifampicin (R) đơn độc <strong>uống hàng ngày</strong></td>
+                <td>4 tháng (120 liều)</td>
+                <td>An toàn cho thai kỳ; Chỉ định khi nguồn lây xác định <strong>chỉ kháng đơn độc Isoniazid (kháng H)</strong>.</td>
+              </tr>
+              <tr>
+                <td><span class="tag tag-purple">Phác đồ 6H</span></td>
+                <td>Isoniazid (H) đơn độc <strong>uống hàng ngày</strong></td>
+                <td>6 tháng (180 liều)</td>
+                <td>Phác đồ truyền thống khi không có sẵn Rifapentine hoặc Rifampicin.</td>
+              </tr>
+              <tr>
+                <td><span class="tag tag-red">Phác đồ 6L</span></td>
+                <td>Levofloxacin (Lfx) đơn độc <strong>uống hàng ngày</strong></td>
+                <td>6 tháng</td>
+                <td>Chỉ định đặc biệt cho người tiếp xúc hộ gia đình với bệnh nhân <strong>Lao đa kháng thuốc (MDR-TB)</strong>.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-child-reaching"></i> Bảng Liều Lượng Phác Đồ 3HP Cho Trẻ Em (2 - 14 Tuổi) Theo Cân Nặng</div>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Nhóm cân nặng (kg)</th>
+                <th>Số viên Isoniazid (100mg)</th>
+                <th>Số viên Rifapentine (150mg)</th>
+                <th>Số viên phối hợp (H+P: 150/150mg)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Từ 10 đến &lt; 16 kg</strong></td>
+                <td>3 viên</td>
+                <td>2 viên</td>
+                <td>2 viên</td>
+              </tr>
+              <tr>
+                <td><strong>Từ 16 đến &lt; 24 kg</strong></td>
+                <td>5 viên</td>
+                <td>3 viên</td>
+                <td>3 viên</td>
+              </tr>
+              <tr>
+                <td><strong>Từ 24 đến &lt; 31 kg</strong></td>
+                <td>6 viên</td>
+                <td>4 viên</td>
+                <td>4 viên</td>
+              </tr>
+              <tr>
+                <td><strong>Từ 31 đến 34 kg</strong></td>
+                <td>7 viên</td>
+                <td>5 viên</td>
+                <td>5 viên</td>
+              </tr>
+              <tr>
+                <td><strong>Trên 34 kg</strong></td>
+                <td>7 viên</td>
+                <td>5 viên</td>
+                <td>5 viên</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-clock-rotate-left"></i> Phụ Lục 8: Quy Trình Xử Trí Khi Quên Liều Điều Trị Lao Tiềm Ẩn</div>
+        <div class="sub-card">
+          <div class="sub-card-title"><span>Quy trình xử trí quên liều phác đồ 3HP (Uống hàng tuần):</span> <span class="tag tag-green">Phụ lục 8</span></div>
+          <ul style="margin-left: 1.2rem; font-size: 0.82rem; color: var(--text-muted); line-height: 1.6;">
+            <li><strong>Quên 1 liều &lt; 2 ngày (&lt; 48h):</strong> Uống ngay liều đã quên. Tiếp tục lịch uống hàng tuần theo lịch cũ bình thường.</li>
+            <li><strong>Quên 1 liều &gt; 2 ngày (&gt; 48h):</strong> Uống ngay liều đã quên. Điều chỉnh dời lịch uống tuần tiếp theo sao cho khoảng cách giữa 2 liều liên tiếp <strong>&gt; 72 giờ</strong>.</li>
+            <li><strong>Quên 1 - 3 liều liên tiếp:</strong> Tiếp tục uống tuần bình thường và kéo dài liệu trình bù liều (tổng thời gian 12 liều <strong>không quá 16 tuần</strong>).</li>
+            <li><strong>Quên &ge; 4 liều liên tiếp:</strong> Ngừng phác đồ hiện tại và <strong>chỉ định điều trị lại từ đầu</strong>.</li>
+          </ul>
+        </div>
+
+      </div>
+    </article>
+
+    <!-- SEC 5: DỰ PHÒNG & BCG -->
+    <article id="sec-5" class="sec-card">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <div class="sec-hdr-icon"><i class="fa-solid fa-virus-slash"></i></div>
+          <h2 class="sec-title">5. Biện Pháp Dự Phòng Lây Nhiễm Bệnh Lao & Vắc-Xin BCG</h2>
+        </div>
+        <span class="tag tag-teal">Phần V - BYT</span>
+      </div>
+      <div class="sec-body">
+        
+        <div class="sec-subtitle"><i class="fa-solid fa-wind"></i> Cơ Chế Sinh Lý Bệnh Lây Truyền Qua Đường Hô Hấp</div>
+        <div class="infobox info">
+          <div class="infobox-icon"><i class="fa-solid fa-lungs"></i></div>
+          <div>
+            <strong>Động học hạt khí dung chứa vi khuẩn lao:</strong>
+            <ul style="margin-left: 1.2rem; margin-top: 0.3rem; font-size: 0.83rem;">
+              <li>Vi khuẩn lao lây truyền qua các hạt khí dung siêu nhỏ có kích thước <strong>1 - 5 micrô-mét (&mu;m)</strong> phát tán khi bệnh nhân ho, khạc, hắt hơi.</li>
+              <li>Nhờ kích thước siêu nhỏ, các hạt này có thể <strong>bay lơ lửng trong không khí từ vài giờ đến 24 giờ</strong>.</li>
+              <li>Khả năng lây lan giảm đi rất mạnh sau khi người bệnh được điều trị lao hiệu quả từ <strong>02 đến 04 tuần</strong>.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-building-shield"></i> Biện Pháp Kiểm Soát Kiểm Soát Nhiễm Khuẩn Lao Hàng Đầu</div>
+        <div class="grid-3">
+          <div class="sub-card">
+            <div class="sub-card-title"><span>1. Kiểm Soát Hành Chính</span> <span class="tag tag-blue">Cách ly</span></div>
+            <p style="font-size: 0.8rem; color: var(--text-muted);">
+              Bố trí khu điều trị riêng bệnh nhân AFB(+); Nhân viên y tế ngồi <strong>cuối hướng gió</strong>; Ưu tiên sàng lọc người HIV; **Khu vực lấy đờm phải đặt ngoài trời, nơi thông thoáng** (tuyệt đối không đặt phòng kín hay nhà vệ sinh).
+            </p>
+          </div>
+
+          <div class="sub-card">
+            <div class="sub-card-title"><span>2. Kiểm Soát Vệ Sinh Môi Trường</span> <span class="tag tag-green">Thông gió</span></div>
+            <p style="font-size: 0.8rem; color: var(--text-muted);">
+              Mở toàn bộ cửa đi & cửa sổ phòng khám/buồng bệnh để **thông gió tự nhiên**. Sử dụng quạt điện đúng chiều làm loãng không khí. Ánh nắng mặt trời tiêu diệt trực khuẩn lao. Phòng điều hòa phải mở cửa thông khí &ge; 1h/ngày.
+            </p>
+          </div>
+
+          <div class="sub-card">
+            <div class="sub-card-title"><span>3. Kiểm Soát Hô Hấp</span> <span class="tag tag-red">Khẩu trang N95</span></div>
+            <p style="font-size: 0.8rem; color: var(--text-muted);">
+              Nhân viên y tế & người chăm sóc khu vực nguy cơ cao bắt buộc sử dụng khẩu trang bảo vệ hô hấp đạt tiêu chuẩn **N95 hoặc tương đương trở lên**. Hướng dẫn bệnh nhân che miệng khi ho khạc và hủy giấy nhổ đúng quy định.
+            </p>
+          </div>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-syringe"></i> Vắc-Xin BCG & Hướng Dẫn Xử Trí Biến Cố Sau Tiêm</div>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Loại biến cố sau tiêm BCG</th>
+                <th>Biểu hiện sinh lý bệnh lâm sàng</th>
+                <th>Hướng xử trí lâm sàng chuẩn BYT</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Phản ứng tại chỗ thông thường</strong></td>
+                <td>Sưng hạch nách hoặc hạch thượng đòn cùng bên tiêm; hạch mềm, di động, sưng chậm, vỡ rò kéo dài vài tháng rồi tự lành.</td>
+                <td><strong style="color: var(--green);">KHÔNG dùng thuốc chống lao toàn thân</strong>. Khi hạch nhuyễn hóa, chích rửa sạch mủ và <strong>rắc bột Isoniazid (INH) hoặc Rifampicin tại chỗ</strong>.</td>
+              </tr>
+              <tr>
+                <td><strong>Bệnh BCG lan tỏa / toàn thân</strong></td>
+                <td>Trẻ phát triển thành bệnh do vi khuẩn BCG lan tỏa toàn thân (thường gặp trên trẻ suy giảm miễn dịch bẩm sinh).</td>
+                <td>Đánh giá miễn dịch; chỉ định điều trị bằng <strong>thuốc chống lao hàng 1 (TUYỆT ĐỐI NGOẠI TRỪ Pyrazinamide - do vi khuẩn BCG kháng tự nhiên với PZA)</strong>; phối hợp ngoại khoa khi cần.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </article>
+
+    <!-- BANNER NAV TO PART 1 -->
+    <section class="banner-next-part">
+      <div>
+        <div class="banner-text-h"><i class="fa-solid fa-arrow-left-long"></i> Quay Lại Phần 1: Đại Cương & Chẩn Đoán Bệnh Lao</div>
+        <div class="banner-text-p">Xem lại hệ thống khái niệm, phân loại ICD-10, các kỹ thuật vi sinh chẩn đoán nhanh (Xpert Ultra/Truenat), tiêu chuẩn chẩn đoán chuẩn hóa & Bảng điểm lao trẻ em TCYTTG.</div>
+      </div>
+      <a href="2024-byt-lao-p1.html" class="banner-btn">
+        <i class="fa-solid fa-chevron-left"></i> Xem Lại Phần 1
+      </a>
+    </section>
+
+    <!-- CITATION & REFERENCES -->
+    <footer class="citation-box">
+      <strong>Tài liệu tham khảo chuẩn AMA:</strong><br>
+      1. Bộ Y tế Việt Nam. <em>Tài liệu chuyên môn “Hướng dẫn chẩn đoán, điều trị và dự phòng bệnh Lao”</em>. Ban hành kèm theo Quyết định số 162/QĐ-BYT ngày 19 tháng 01 năm 2024 do Thứ trưởng Trần Văn Thuấn ký. Hanoi, Vietnam; 2024.<br>
+      2. World Health Organization. <em>WHO consolidated guidelines on tuberculosis. Module 4: Treatment - drug-resistant tuberculosis treatment, 2022 update</em>. Geneva: World Health Organization; 2022.
+    </footer>
+
+  </main>
+
+  <script>
+    // Theme Toggle Script
+    const themeToggleBtn = document.getElementById('themeToggle');
+    const htmlEl = document.documentElement;
+
+    const savedTheme = localStorage.getItem('cliniportal_theme') || 'light';
+    htmlEl.setAttribute('data-theme', savedTheme);
+    updateToggleIcon(savedTheme);
+
+    themeToggleBtn.addEventListener('click', () => {
+      const currentTheme = htmlEl.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      htmlEl.setAttribute('data-theme', newTheme);
+      localStorage.setItem('cliniportal_theme', newTheme);
+      updateToggleIcon(newTheme);
+    });
+
+    function updateToggleIcon(theme) {
+      themeToggleBtn.innerHTML = theme === 'dark' 
+        ? '<i class="fa-solid fa-sun" style="color: #f59e0b;"></i>' 
+        : '<i class="fa-solid fa-moon"></i>';
+    }
+  </script>
+  <script type="module" src="../guideline-controller.ts"></script>
+</body>
+</html>

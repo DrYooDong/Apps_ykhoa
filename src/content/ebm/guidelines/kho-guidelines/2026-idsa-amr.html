@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tóm tắt Hướng dẫn điều trị nhiễm khuẩn Gram-âm kháng thuốc IDSA 2026 (cập nhật 01/03/2026): Phác đồ ưu tiên & thay thế tối ưu hóa cho ESBL-E, AmpC-E, CRE, DTR P. aeruginosa, CRAB và S. maltophilia.">
+  <title>IDSA 2026 – Hướng Dẫn Điều Trị Nhiễm Khuẩn Gram-Âm Kháng Thuốc (AMR) – CliniPortal</title>
+
+  <!-- Google Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #059669; --green-bg: #f0fdf4; --green-light: #a7f3d0;
+      --orange: #d97706; --orange-bg: #fffbeb; --orange-light: #fde68a;
+      --red: #dc2626; --red-bg: #fef2f2; --red-light: #fca5a5;
+      --blue: #2563eb; --blue-bg: #eff6ff; --blue-light: #bfdbfe;
+      --teal: #0d9488; --teal-bg: #f0fdfa; --teal-light: #99f6e4;
+      --purple: #7c3aed; --purple-bg: #faf5ff; --purple-light: #ddd6fe;
+      --accent: #0f6fb4;
+      --bg: #f0f4f8; --surface: #ffffff; --surface-2: #f8fafc;
+      --border: #cbd5e1; --border-light: #e2e8f0;
+      --text: #0f172a; --text-muted: #475569; --text-faint: #94a3b8;
+      --radius: 16px; --tr: 220ms cubic-bezier(0.16,1,0.3,1);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; font-size: 15px; background: var(--bg); color: var(--text); line-height: 1.65; min-height: 100vh; }
+
+    /* TOP NAV */
+    .topnav { position: sticky; top: 0; z-index: 200; background: rgba(255,255,255,0.94); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 1rem; padding: 0 1.5rem; height: 56px; }
+    .topnav-back { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--accent); text-decoration: none; font-size: 0.82rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 8px; transition: background var(--tr); white-space: nowrap; }
+    .topnav-back:hover { background: var(--blue-bg); }
+    .topnav-divider { width: 1px; height: 18px; background: var(--border-light); flex-shrink: 0; }
+    .topnav-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .topnav-badges { margin-left: auto; display: flex; gap: 0.5rem; flex-shrink: 0; }
+    .badge { padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.72rem; font-weight: 700; white-space: nowrap; }
+    .badge-green { background: var(--green-bg); color: #065f46; border: 1px solid var(--green-light); }
+    .badge-blue { background: var(--blue-bg); color: #1e40af; border: 1px solid var(--blue-light); }
+    .badge-purple { background: var(--purple-bg); color: #5b21b6; border: 1px solid var(--purple-light); }
+    .badge-red { background: var(--red-bg); color: #991b1b; border: 1px solid var(--red-light); }
+
+    /* HERO HEADER */
+    .hero { background: linear-gradient(135deg, #092c4c 0%, #0f6fb4 45%, #055938 100%); color: #fff; padding: 3.5rem 1.5rem 5rem; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 15% 60%, rgba(56,189,248,0.2) 0%, transparent 55%), radial-gradient(ellipse at 85% 20%, rgba(16,185,129,0.15) 0%, transparent 50%); }
+    .hero-inner { max-width: 960px; margin: 0 auto; position: relative; z-index: 1; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.24); border-radius: 20px; padding: 0.35rem 1rem; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1.25rem; color: #7dd3fc; }
+    .hero-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(1.8rem, 4vw, 2.7rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 0.85rem; }
+    .hero-title span { display: block; background: linear-gradient(90deg, #7dd3fc, #6ee7b7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 0.65em; font-weight: 600; letter-spacing: 0; margin-bottom: 0.3rem; }
+    .hero-subtitle { font-size: 0.95rem; opacity: 0.9; max-width: 820px; margin-bottom: 2rem; line-height: 1.65; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 0.75rem 2rem; font-size: 0.8rem; opacity: 0.85; }
+    .hero-meta-item { display: flex; align-items: center; gap: 6px; }
+
+    /* 3 PILLARS STRIP */
+    .pillars { background: var(--surface); border-bottom: 1px solid var(--border-light); padding: 1.75rem 1.5rem; }
+    .pillars-inner { max-width: 960px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; }
+    .pillar { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.25rem 1.25rem 1.25rem 1.5rem; display: flex; align-items: flex-start; gap: 1rem; position: relative; overflow: hidden; transition: box-shadow var(--tr); }
+    .pillar::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; border-radius: 4px 0 0 4px; }
+    .pillar.p1::before { background: var(--blue); }
+    .pillar.p2::before { background: var(--green); }
+    .pillar.p3::before { background: var(--purple); }
+    .pillar:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+    .pillar-icon { font-size: 1.8rem; flex-shrink: 0; line-height: 1; }
+    .pillar-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text); margin-bottom: 0.25rem; }
+    .pillar-desc { font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; }
+
+    /* STICKY QUICKMENU (MỤC LỤC) */
+    .quickmenu { position: sticky; top: 56px; z-index: 100; background: var(--surface); border-bottom: 1px solid var(--border-light); overflow-x: auto; display: flex; white-space: nowrap; -webkit-overflow-scrolling: touch; }
+    .quickmenu-inner { max-width: 960px; margin: 0 auto; display: flex; width: 100%; padding: 0 1.5rem; gap: 0.25rem; }
+    .quickmenu-item { display: inline-block; padding: 0.85rem 1rem; color: var(--text-muted); text-decoration: none; font-size: 0.8rem; font-weight: 600; border-bottom: 3px solid transparent; transition: all var(--tr); }
+    .quickmenu-item:hover { color: var(--accent); }
+    .quickmenu-item.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+    /* PAGE CONTENT */
+    .page-content { max-width: 960px; margin: 0 auto; padding: 2.25rem 1.5rem 4rem; display: flex; flex-direction: column; gap: 2rem; }
+
+    /* SECTION CARDS */
+    .sec-card { background: var(--surface); border: 1px solid var(--border-light); border-radius: var(--radius); overflow: hidden; scroll-margin-top: 120px; }
+    .sec-hdr { padding: 1.1rem 1.5rem; border-bottom: 1px solid var(--border-light); background: var(--surface-2); display: flex; align-items: center; gap: 0.75rem; }
+    .sec-hdr-icon { width: 36px; height: 36px; border-radius: 10px; background: var(--blue-bg); color: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
+    .sec-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.05rem; font-weight: 800; color: var(--text); }
+    .sec-subtitle-text { font-size: 0.78rem; color: var(--text-muted); font-weight: 500; margin-top: 0.1rem; }
+    .sec-body { padding: 1.5rem; }
+    .sec-subtitle { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.04em; }
+
+    /* INFO BOXES */
+    .infobox { display: flex; align-items: flex-start; gap: 0.85rem; padding: 1rem 1.25rem; border-radius: 12px; margin-bottom: 1.25rem; font-size: 0.85rem; line-height: 1.65; }
+    .infobox:last-child { margin-bottom: 0; }
+    .infobox-icon { font-size: 1.3rem; flex-shrink: 0; line-height: 1.3; }
+    .infobox.danger { background: var(--red-bg); border: 1px solid var(--red-light); border-left: 4px solid var(--red); }
+    .infobox.success { background: var(--green-bg); border: 1px solid var(--green-light); border-left: 4px solid var(--green); }
+    .infobox.warning { background: var(--orange-bg); border: 1px solid var(--orange-light); border-left: 4px solid var(--orange); }
+    .infobox.info { background: var(--blue-bg); border: 1px solid var(--blue-light); border-left: 4px solid var(--blue); }
+    .infobox.purple { background: var(--purple-bg); border: 1px solid var(--purple-light); border-left: 4px solid var(--purple); }
+    .infobox-title, .infobox > div > strong:first-child { display: block; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.88rem; font-weight: 700; margin-bottom: 0.35rem; color: var(--text); }
+    .infobox strong { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; }
+
+    /* TABLE DESIGN */
+    .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 12px; border: 1px solid var(--border-light); margin-bottom: 1rem; }
+    .custom-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; min-width: 680px; }
+    .custom-table thead th { padding: 0.75rem 0.9rem; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; background: var(--surface-2); border-bottom: 2px solid var(--border-light); color: var(--text); text-align: left; }
+    .custom-table td { padding: 0.85rem 0.9rem; border-bottom: 1px solid var(--border-light); vertical-align: top; line-height: 1.55; }
+    .custom-table tbody tr:hover td { background: #f8fafc; }
+
+    /* BADGES & TAGS */
+    .rx-tag { display: inline-block; font-size: 0.72rem; font-family: 'JetBrains Mono', monospace; padding: 0.2rem 0.55rem; border-radius: 6px; margin: 0.15rem 0.15rem 0.15rem 0; }
+    .rx-tag.preferred { background: var(--green-bg); color: #065f46; border: 1px solid var(--green-light); font-weight: 700; }
+    .rx-tag.alt { background: var(--blue-bg); color: #1e40af; border: 1px solid var(--blue-light); font-weight: 600; }
+    .rx-tag.warning { background: var(--orange-bg); color: #92400e; border: 1px solid var(--orange-light); font-weight: 600; }
+    .rx-tag.danger { background: var(--red-bg); color: #991b1b; border: 1px solid var(--red-light); font-weight: 700; }
+
+    /* UPDATES GRID CARDS */
+    .updates-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px,100%), 1fr)); gap: 1.25rem; }
+    .update-card { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.25rem; position: relative; overflow: hidden; transition: box-shadow var(--tr); }
+    .update-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
+    .update-card-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.85rem; }
+    .update-card-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
+    .update-card-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 0.88rem; color: var(--text); line-height: 1.35; }
+    .update-card-body { font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; }
+    .update-verdict { display: inline-flex; align-items: center; gap: 0.35rem; margin-top: 0.85rem; padding: 0.3rem 0.7rem; border-radius: 8px; font-size: 0.72rem; font-weight: 700; }
+    .verdict-green { background: var(--green-bg); color: #065f46; border: 1px solid var(--green-light); }
+    .verdict-blue { background: var(--blue-bg); color: #1e40af; border: 1px solid var(--blue-light); }
+
+    /* CITATION & ACTION BUTTONS */
+    .citation-box { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 12px; padding: 1.25rem; font-size: 0.82rem; color: var(--text-muted); line-height: 1.75; font-style: italic; }
+    .btn-row { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.25rem; }
+    .btn { display: inline-flex; align-items: center; gap: 6px; padding: 0.55rem 1.1rem; border-radius: 10px; border: 1.5px solid var(--border-light); background: var(--surface); color: var(--text-muted); font-size: 0.82rem; font-weight: 600; cursor: pointer; text-decoration: none; transition: all var(--tr); }
+    .btn:hover { border-color: var(--accent); color: var(--accent); background: var(--blue-bg); }
+    .btn-primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+    /* DOSING LIST */
+    .dosing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; }
+    .dosing-card { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 12px; padding: 1rem; }
+    .dosing-drug { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 0.9rem; color: var(--accent); margin-bottom: 0.4rem; display: flex; justify-content: space-between; align-items: center; }
+    .dosing-detail { font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: var(--text); line-height: 1.5; background: var(--surface); padding: 0.6rem; border-radius: 8px; border: 1px solid var(--border-light); }
+
+    @media (max-width: 768px) {
+      .page-content { padding: 1.25rem 1rem; }
+      .sec-body { padding: 1rem; }
+      .updates-grid, .dosing-grid { grid-template-columns: 1fr; }
+    }
+
+    @media print {
+      body { background: #fff !important; color: #000 !important; }
+      .topnav, .quickmenu, .topnav-theme-toggle, .mcq-card, .page-footer, .topnav-pdf-btn { display: none !important; }
+      .main-container, .page-content { max-width: 100% !important; margin: 0 !important; padding: 0 !important; }
+      .sec-card { break-inside: avoid; border: 1px solid #ccc !important; box-shadow: none !important; }
+    }
+  </style>
+  <link rel="stylesheet" href="../../../../../css/components/header.css">
+  <script type="module" src="../../../../../components/header.ts" defer></script>
+</head>
+<body>
+  <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
+
+
+  <!-- TOP NAV -->
+  <nav class="topnav">
+    <a href="../guidelines.html" class="topnav-back">
+      <i class="fa-solid fa-arrow-left"></i>
+      Kho Guidelines
+    </a>
+    <div class="topnav-divider"></div>
+    <div class="topnav-title">IDSA AMR Treatment Guidance (01/03/2026)</div>
+    <div class="topnav-badges" style="margin-left: auto; display: flex; align-items: center; gap: 0.5rem;">
+      <span class="badge badge-purple">🔬 IDSA 2026</span>
+      <span class="badge badge-red">⚡ Cập nhật mới</span>
+      <button class="topnav-theme-toggle topnav-pdf-btn" onclick="window.print()" title="Tải PDF / In bài viết">
+        <i class="fa-solid fa-file-pdf"></i>
+      </button>
+      <button class="topnav-theme-toggle" id="themeToggleBtn" aria-label="Đổi giao diện">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO HEADER -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge"><i class="fa-solid fa-bacteria"></i> Infectious Diseases Society of America (IDSA)</div>
+      <h1 class="hero-title">
+        <span>2026 Guidance on the Treatment of Antimicrobial-Resistant Gram-Negative Infections</span>
+        Hướng Dẫn Điều Trị Nhiễm Khuẩn Gram-Âm Kháng Thuốc (AMR)
+      </h1>
+      <p class="hero-subtitle">
+        Bản tóm tắt toàn diện cập nhật ngày 01/03/2026 từ Hiệp hội Bệnh Truyền nhiễm Hoa Kỳ (IDSA): Phác đồ ưu tiên & thay thế tối ưu hóa theo bằng chứng mới nhất cho 6 nhóm tác nhân nguy hiểm: ESBL-E, AmpC-E, CRE, DTR <em>Pseudomonas aeruginosa</em>, CRAB và <em>Stenotrophomonas maltophilia</em>.
+      </p>
+      <div class="hero-meta">
+        <span class="hero-meta-item"><i class="fa-solid fa-calendar-check"></i> Cập nhật: 01/03/2026</span>
+        <span class="hero-meta-item"><i class="fa-solid fa-user-doctor"></i> Tác giả: Pranita D. Tamma, et al.</span>
+        <span class="hero-meta-item"><i class="fa-solid fa-capsules"></i> 6 Nhóm vi khuẩn Gram-âm AMR</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3 PILLARS STRIP -->
+  <div class="pillars">
+    <div class="pillars-inner">
+      <div class="pillar p1">
+        <div class="pillar-icon">💊</div>
+        <div>
+          <div class="pillar-title">1. Các Thuốc Mới Được Phê Duyệt</div>
+          <div class="pillar-desc">Cập nhật Sulbactam-durlobactam (CRAB), Gepotidacin (uUTI ESBL-E), Pivmecillinam, Sulopenem & IV Fosfomycin vào phác đồ điều trị tiêu chuẩn.</div>
+        </div>
+      </div>
+      <div class="pillar p2">
+        <div class="pillar-icon">🚫</div>
+        <div>
+          <div class="pillar-title">2. Thay Đổi Quan Điểm Lâm Sàng</div>
+          <div class="pillar-desc">Loại bỏ PIP-TZB ở ESBL ngoài niệu; Tránh Ceftriaxone ở AmpC nguy cơ TB; Ngừng phối hợp kháng sinh thường quy khi có β-lactam hoạt tính.</div>
+        </div>
+      </div>
+      <div class="pillar p3">
+        <div class="pillar-icon">🎯</div>
+        <div>
+          <div class="pillar-title">3. Tối Ưu Hóa Phác Đồ Theo Cơ Chế</div>
+          <div class="pillar-desc">Phân định rõ KPC-E vs NDM/MBL-E (Cefiderocol / ATM-AVI); DTR PA ưu tiên Ceftolozane-TZB ở phổi; Sulbactam-durlobactam + Carbapenem cho CRAB.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STICKY QUICKMENU -->
+  <nav class="quickmenu">
+    <div class="quickmenu-inner">
+      <a href="#sec-overview" class="quickmenu-item active">Điểm Mới 2026</a>
+      <a href="#sec-esbl" class="quickmenu-item">ESBL-E</a>
+      <a href="#sec-ampc" class="quickmenu-item">AmpC-E</a>
+      <a href="#sec-cre" class="quickmenu-item">CRE</a>
+      <a href="#sec-paeruginosa" class="quickmenu-item">DTR P. aeruginosa</a>
+      <a href="#sec-crab" class="quickmenu-item">CRAB</a>
+      <a href="#sec-smaltophilia" class="quickmenu-item">S. maltophilia</a>
+      <a href="#sec-dosing" class="quickmenu-item">Liều Dùng (Table 1)</a>
+      <a href="#sec-citation" class="quickmenu-item">Trích Dẫn</a>
+    </div>
+  </nav>
+
+  <!-- PAGE CONTENT -->
+  <div class="page-content">
+
+    <!-- SEC 0: OVERVIEW -->
+    <div class="sec-card" id="sec-overview">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-bolt"></i></div>
+        <div>
+          <div class="sec-title">Điểm Mới Nổi Bật Trong Hướng Dẫn IDSA 2026</div>
+          <div class="sec-subtitle-text">Tóm tắt các thay đổi lớn so với các phiên bản trước</div>
+        </div>
+      </div>
+      <div class="sec-body">
+        <div class="updates-grid">
+          <div class="update-card">
+            <div class="update-card-header">
+              <div class="update-card-icon" style="background:#ecfdf5;color:#059669;"><i class="fa-solid fa-shield-virus"></i></div>
+              <div class="update-card-title">Sulbactam-Durlobactam (SUL-DUR)</div>
+            </div>
+            <div class="update-card-body">
+              Chính thức trở thành <strong>Phác đồ Ưu tiên hàng đầu</strong> cho CRAB xâm lấn khi kết hợp với Imipenem hoặc Meropenem. Vượt trội hoàn toàn so với Colistin trong RCT.
+            </div>
+            <span class="update-verdict verdict-green"><i class="fa-solid fa-check"></i> Ưu tiên số 1 cho CRAB</span>
+          </div>
+
+          <div class="update-card">
+            <div class="update-card-header">
+              <div class="update-card-icon" style="background:#eff6ff;color:#2563eb;"><i class="fa-solid fa-tablets"></i></div>
+              <div class="update-card-title">Kháng Sinh Uống uUTI Mới (2024-2025)</div>
+            </div>
+            <div class="update-card-body">
+              FDA chấp thuận <strong>Gepotidacin</strong> (3/2025), <strong>Pivmecillinam</strong> (4/2024) và <strong>Sulopenem</strong> (10/2024) làm lựa chọn ưu tiên mới cho uUTI do ESBL-E/AmpC-E.
+            </div>
+            <span class="update-verdict verdict-blue"><i class="fa-solid fa-star"></i> Mở rộng lựa chọn đường uống</span>
+          </div>
+
+          <div class="update-card">
+            <div class="update-card-header">
+              <div class="update-card-icon" style="background:#fef2f2;color:#dc2626;"><i class="fa-solid fa-ban"></i></div>
+              <div class="update-card-title">Ngừng Thường Quy Kháng Sinh Phối Hợp</div>
+            </div>
+            <div class="update-card-body">
+              IDSA 2026 <strong>không khuyến cáo phối hợp 2 kháng sinh thường quy</strong> đối với CRE và DTR <em>P. aeruginosa</em> một khi đã xác định được một β-lactam mới có hoạt tính.
+            </div>
+            <span class="update-verdict" style="background:#fef2f2;color:#991b1b;border:1px solid #fca5a5;"><i class="fa-solid fa-circle-exclamation"></i> Chuyển sang Đơn trị liệu β-lactam</span>
+          </div>
+        </div>
+
+        <div class="infobox warning" style="margin-top:1.25rem;">
+          <div class="infobox-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+          <div>
+            <strong>Cảnh báo quan trọng về Piperacillin-Tazobactam (PIP-TZB) ở ESBL-E:</strong>
+            Thử nghiệm MERINO và các phân tích lại xác nhận PIP-TZB làm tăng nguy cơ tử vong 30 ngày so với Meropenem ở bệnh nhân nhiễm khuẩn huyết ESBL-E. IDSA 2026 **chống chỉ định dùng PIP-TZB cho các nhiễm khuẩn ESBL-E ngoài đường niệu** (kể cả khi in vitro báo nhạy cảm).
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEC 1: ESBL-E -->
+    <div class="sec-card" id="sec-esbl">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-dna"></i></div>
+        <div>
+          <div class="sec-title">SECTION 1: ESBL-E (Extended-Spectrum β-Lactamase Enterobacterales)</div>
+          <div class="sec-subtitle-text">Tác nhân phổ biến: E. coli, Klebsiella pneumoniae, Klebsiella oxytoca (CTX-M-15)</div>
+        </div>
+      </div>
+      <div class="sec-body">
+        <div class="table-wrapper">
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th style="width: 28%;">Hội chứng Lâm sàng</th>
+                <th style="width: 38%;">Lựa chọn ƯU TIÊN (Preferred)</th>
+                <th style="width: 34%;">Lựa chọn THAY THẾ (Alternative) & Lưu ý</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <strong>Viêm bàng quang cấp không biến chứng (uUTI)</strong>
+                </td>
+                <td>
+                  <span class="rx-tag preferred">Aminoglycoside liều đơn</span>
+                  <span class="rx-tag preferred">Gepotidacin</span>
+                  <span class="rx-tag preferred">Nitrofurantoin</span>
+                  <span class="rx-tag preferred">Pivmecillinam</span>
+                  <span class="rx-tag preferred">Sulopenem</span>
+                  <span class="rx-tag preferred">TMP-SMX</span>
+                </td>
+                <td>
+                  <span class="rx-tag alt">Fosfomycin uống (chỉ E. coli)</span><br>
+                  <small style="color:var(--text-muted);">
+                    • Dự phòng khi không dùng được nhóm trên: FQ (Cipro/Levo), Cefepime-enmetazobactam, Carbapenem.<br>
+                    🚫 <strong>Tránh:</strong> Amox-Clav, Doxycycline (nồng độ niệu thấp).
+                  </small>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>Viêm đường tiết niệu có biến chứng (cUTI)</strong>
+                </td>
+                <td>
+                  <span class="rx-tag preferred">TMP-SMX</span>
+                  <span class="rx-tag preferred">Ciprofloxacin</span>
+                  <span class="rx-tag preferred">Levofloxacin</span><br>
+                  <em>(nếu nhạy cảm in vitro)</em><br>
+                  <strong style="color:var(--accent);display:inline-block;margin-top:4px;">Nếu không dùng được FQ/TMP-SMX:</strong><br>
+                  <span class="rx-tag preferred">Cefepime-enmetazobactam</span>
+                  <span class="rx-tag preferred">Ertapenem</span>
+                  <span class="rx-tag preferred">Meropenem</span>
+                  <span class="rx-tag preferred">Imipenem</span>
+                </td>
+                <td>
+                  <span class="rx-tag alt">IV Fosfomycin (ưu tiên E. coli)</span>
+                  <span class="rx-tag alt">Aminoglycosides</span>
+                  <span class="rx-tag alt">Piperacillin-tazobactam</span><br>
+                  <small style="color:var(--text-muted);">
+                    ⚠️ PIP-TZB chỉ là thay thế cho cUTI <strong>không nguy kịch</strong> và <strong>không có bacteremia</strong>.
+                  </small>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>Nhiễm khuẩn ngoài đường niệu (Huyết, Phổi, Ổ bụng, SSTI)</strong>
+                </td>
+                <td>
+                  <span class="rx-tag preferred">Meropenem</span>
+                  <span class="rx-tag preferred">Imipenem</span>
+                  <span class="rx-tag preferred">Ertapenem</span><br>
+                  <small style="color:var(--green);font-weight:600;">
+                    • Bệnh nhân nặng / Hạ Albumin (&lt;2.5 g/dL): Ưu tiên Meropenem/Imipenem hơn Ertapenem.
+                  </small>
+                </td>
+                <td>
+                  <span class="rx-tag alt">Cefepime-enmetazobactam</span><br>
+                  <small style="color:var(--text-muted);">
+                    • Step-down đường uống (khi ổn định): Cipro, Levo, TMP-SMX.<br>
+                    🚫 <strong>CHỐNG CHỈ ĐỊNH PIP-TZB</strong> cho ESBL xâm lấn ngoài đường niệu.
+                  </small>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEC 2: AMPC-E -->
+    <div class="sec-card" id="sec-ampc">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-biohazard"></i></div>
+        <div>
+          <div class="sec-title">SECTION 2: AmpC-E (AmpC β-Lactamase Enterobacterales)</div>
+          <div class="sec-subtitle-text">Enterobacter cloacae complex, Klebsiella aerogenes, Citrobacter freundii, Hafnia alvei</div>
+        </div>
+      </div>
+      <div class="sec-body">
+        <div class="infobox info">
+          <div class="infobox-icon"><i class="fa-solid fa-circle-info"></i></div>
+          <div>
+            <strong>Phân loại nguy cơ Derepression / Induction AmpC theo Vi khuẩn:</strong><br>
+            • <strong>Nguy cơ TRUNG BÌNH (~20% bùng phát đề kháng khi dùng Ceftriaxone):</strong> <em>Enterobacter cloacae complex, Klebsiella aerogenes, Citrobacter freundii, Hafnia alvei</em>.<br>
+            • <strong>Nguy cơ THẤP (&lt;5%):</strong> <em>Serratia marcescens, Morganella morganii, Providencia spp.</em> (Điều trị theo kết quả AST thông thường).
+          </div>
+        </div>
+
+        <div class="table-wrapper">
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th>Kháng sinh</th>
+                <th>Khuyến cáo IDSA 2026</th>
+                <th>Cơ chế & Lý luận Lâm sàng</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Cefepime</strong></td>
+                <td><span class="rx-tag preferred">ƯU TIÊN HÀNG ĐẦU</span> (khi MIC ≤ 8 µg/mL)</td>
+                <td>Cefepime là cảm ứng yếu ampC và bền vững với sự thủy phân của AmpC β-lactamase (acyl-enzyme ổn định).</td>
+              </tr>
+              <tr>
+                <td><strong>Ceftriaxone / Ceftazidime</strong></td>
+                <td><span class="rx-tag danger">KHÔNG KHUYẾN CÁO</span> thường quy</td>
+                <td>Gây chọn lọc vi khuẩn đột biến bùng phát AmpC (derepression) trong quá trình điều trị (~20% thất bại). Chỉ dùng bắc cầu sau khi đã kiểm soát tốt nguồn nhiễm.</td>
+              </tr>
+              <tr>
+                <td><strong>Piperacillin-Tazobactam</strong></td>
+                <td><span class="rx-tag warning">KHÔNG NÊN DÙNG</span> ở nhiễm khuẩn nặng</td>
+                <td>Tazobactam bảo vệ piperacillin rất kém trước enzym AmpC. Nồng độ vi khuẩn cao (áp-xe) làm tăng MIC nhanh chóng.</td>
+              </tr>
+              <tr>
+                <td><strong>Carbapenems</strong></td>
+                <td><span class="rx-tag preferred">ƯU TIÊN</span> (nếu kháng Cefepime hoặc nhiễm ESBL đồng thời)</td>
+                <td>Rất bền vững với AmpC. Khuyên dùng Meropenem/Imipenem khi Cefepime MIC &gt; 8 µg/mL.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEC 3: CRE -->
+    <div class="sec-card" id="sec-cre">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-virus-covid"></i></div>
+        <div>
+          <div class="sec-title">SECTION 3: CRE (Carbapenem-Resistant Enterobacterales)</div>
+          <div class="sec-subtitle-text">Kháng Carbapenem do Serine Carbapenemase (KPC, OXA-48) hoặc Metallo-β-Lactamase (NDM, VIM, IMP)</div>
+        </div>
+      </div>
+      <div class="sec-body">
+        <div class="table-wrapper">
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th>Cơ chế & Vi khuẩn</th>
+                <th>Phác đồ ƯU TIÊN (Preferred)</th>
+                <th>Phác đồ THAY THẾ (Alternative)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <strong>KPC-producing CRE (Serine Carbapenemase)</strong>
+                </td>
+                <td>
+                  <span class="rx-tag preferred">Meropenem-vaborbactam</span><br>
+                  <span class="rx-tag preferred">Ceftazidime-avibactam</span><br>
+                  <span class="rx-tag preferred">Imipenem-relebactam</span><br>
+                  <small style="color:var(--green);font-weight:600;">
+                    • Meropenem-vaborbactam ít bị bùng phát đề kháng hơn (&lt;3%) so với CAZ-AVI (~10%).
+                  </small>
+                </td>
+                <td>
+                  <span class="rx-tag alt">Aztreonam-avibactam</span>
+                  <span class="rx-tag alt">Cefiderocol</span>
+                  <span class="rx-tag alt">Eravacycline</span>
+                  <span class="rx-tag alt">Tigecycline</span><br>
+                  <small style="color:var(--text-muted);">
+                    🚫 Eravacycline/Tigecycline: Không dùng cho nhiễm khuẩn huyết hoặc niệu.
+                  </small>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>NDM / VIM / IMP (Metallo-β-Lactamase - MBL)</strong>
+                </td>
+                <td>
+                  <span class="rx-tag preferred">Aztreonam-avibactam</span><br>
+                  <span class="rx-tag preferred">Cefiderocol</span>
+                </td>
+                <td>
+                  <span class="rx-tag alt">Ceftazidime-avibactam + Aztreonam</span> (Phối hợp tiêm đồng thời Y-site)<br>
+                  <small style="color:var(--text-muted);">
+                    Dùng khi Aztreonam-avibactam đơn chất chưa có sẵn.
+                  </small>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>Non-Carbapenemase CRE (Porin Loss + ESBL/AmpC)</strong>
+                </td>
+                <td>
+                  • Nếu nhạy Meropenem/Imipenem (MIC ≤1), kháng Ertapenem: <strong>Meropenem/Imipenem truyền kéo dài</strong>.<br>
+                  • Nếu kháng toàn bộ Carbapenem: <span class="rx-tag preferred">CAZ-AVI</span> <span class="rx-tag preferred">IPM-REL</span> <span class="rx-tag preferred">MER-VAB</span> <span class="rx-tag preferred">ATM-AVI</span>.
+                </td>
+                <td>
+                  <span class="rx-tag alt">Cefiderocol</span>
+                  <span class="rx-tag alt">Eravacycline</span>
+                  <span class="rx-tag alt">Tigecycline</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="infobox danger">
+          <div class="infobox-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+          <div>
+            <strong>Lưu ý về MBL (NDM-E):</strong>
+            Các thuốc Ceftazidime-avibactam, Meropenem-vaborbactam và Imipenem-relebactam **hoàn toàn KHÔNG có hoạt tính** chống lại MBL (NDM, VIM, IMP) nếu sử dụng đơn độc, vì các chất ức chế này không bất hoạt được kẽm ở trung tâm hoạt động của MBL.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEC 4: DTR PSEUDOMONAS AERUGINOSA -->
+    <div class="sec-card" id="sec-paeruginosa">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-shield-virus"></i></div>
+        <div>
+          <div class="sec-title">SECTION 4: DTR <em>Pseudomonas aeruginosa</em> (Difficult-to-Treat Resistance)</div>
+          <div class="sec-subtitle-text">Kháng tất cả β-lactam truyền thống (Aztreonam, Cefepime, Ceftazidime, Pip-Tazo, Imipenem, Meropenem, Cipro/Levo)</div>
+        </div>
+      </div>
+      <div class="sec-body">
+        <div class="table-wrapper">
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th>Vị trí Nhiễm khuẩn</th>
+                <th>Lựa chọn ƯU TIÊN (Preferred)</th>
+                <th>Lựa chọn THAY THẾ (Alternative)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Nhiễm khuẩn Phổi (VAP / HAP)</strong></td>
+                <td>
+                  <span class="rx-tag preferred">Ceftolozane-tazobactam</span> *(Ưu tiên hàng đầu do nồng độ dịch lót phế nang ELF tới 50%)*<br>
+                  <span class="rx-tag preferred">Ceftazidime-avibactam</span>
+                  <span class="rx-tag preferred">Imipenem-relebactam</span>
+                </td>
+                <td>
+                  <span class="rx-tag alt">Cefiderocol</span>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>cUTI do DTR PA</strong></td>
+                <td>
+                  <span class="rx-tag preferred">Ceftolozane-tazobactam</span>
+                  <span class="rx-tag preferred">Ceftazidime-avibactam</span>
+                  <span class="rx-tag preferred">Imipenem-relebactam</span>
+                  <span class="rx-tag preferred">Cefiderocol</span>
+                </td>
+                <td>
+                  <span class="rx-tag alt">Amikacin / Tobramycin 1 lần/ngày</span>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>DTR PA sinh Carbapenemase (KPC / MBL)</strong></td>
+                <td>
+                  • **KPC:** Cefiderocol, CAZ-AVI, IPM-REL (Tránh Ceftolozane-tazobactam).<br>
+                  • **MBL (VIM, NDM, IMP):** <span class="rx-tag preferred">Cefiderocol</span> là lựa chọn ưu tiên duy nhất.
+                </td>
+                <td>
+                  <span class="rx-tag alt">Ceftazidime-avibactam + Aztreonam</span> (chỉ khi kháng Cefiderocol).
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="infobox success">
+          <div class="infobox-icon"><i class="fa-solid fa-chart-line"></i></div>
+          <div>
+            <strong>Tỷ lệ nhạy cảm in vitro DTR P. aeruginosa (Hoa Kỳ 2020-2023):</strong><br>
+            Cefiderocol (99%) &gt; Ceftolozane-tazobactam (71%) &gt; Imipenem-relebactam (62%) &gt; Ceftazidime-avibactam (61%).
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEC 5: CRAB -->
+    <div class="sec-card" id="sec-crab">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-bug"></i></div>
+        <div>
+          <div class="sec-title">SECTION 5: CRAB (Carbapenem-Resistant <em>Acinetobacter baumannii</em>)</div>
+          <div class="sec-subtitle-text">Tác nhân siêu kháng thuốc bệnh viện, tỷ lệ tử vong cao</div>
+        </div>
+      </div>
+      <div class="sec-body">
+        <div class="infobox danger" style="background:#fef2f2;border-left-color:#dc2626;">
+          <div class="infobox-icon"><i class="fa-solid fa-crown"></i></div>
+          <div>
+            <strong>KHUYẾN CÁO ĐỘT PHÁ IDSA 2026 CHO CRAB XÂM LẤN:</strong><br>
+            <span style="font-size:1.05rem;font-weight:800;color:#991b1b;">Sulbactam-Durlobactam (SUL-DUR) + Imipenem hoặc Meropenem</span><br>
+            Là <strong>PHÁC ĐỒ ƯU TIÊN HÀNG ĐẦU</strong> duy nhất được chứng minh làm tăng tỷ lệ sống còn 28 ngày (81% vs 68% của Colistin trong RCT). Durlobactam ức chế OXA-23/ADC, giải phóng Sulbactam diệt khuẩn qua PBP1a/1b/PBP3, kết hợp với Carbapenem diệt khuẩn qua PBP2.
+          </div>
+        </div>
+
+        <div class="table-wrapper">
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th>Tình huống Lâm sàng</th>
+                <th>Phác đồ Xử trí Theo IDSA 2026</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>CRAB xâm lấn (Phổi, Huyết, Cấp cứu)</strong></td>
+                <td>
+                  <span class="rx-tag preferred">Sulbactam-durlobactam + Imipenem (hoặc Meropenem)</span><br>
+                  <small style="color:var(--text-muted);">
+                    Liều SUL-DUR: 2g (1g sulbactam / 1g durlobactam) IV q6h truyền 3 giờ.
+                  </small>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Khi SUL-DUR chưa có sẵn (Bắc cầu tạm thời)</strong></td>
+                <td>
+                  <span class="rx-tag warning">Ampicillin-sulbactam liều cao (Sulbactam 9g/ngày)</span> + ít nhất 1 kháng sinh thứ 2 (Cefiderocol, Minocycline, hoặc Polymyxin B).<br>
+                  <small style="color:var(--text-muted);">⚠️ Chỉ dùng làm cầu nối tạm thời trong khi chờ SUL-DUR.</small>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Kháng SUL-DUR hoặc sinh MBL (NDM)</strong></td>
+                <td>
+                  Phối hợp không chứa sulbactam: <strong>Cefiderocol + Minocycline + Polymyxin B / Tigecycline</strong>.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEC 6: STENOTROPHOMONAS MALTOPHILIA -->
+    <div class="sec-card" id="sec-smaltophilia">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-bacteriophage"></i></div>
+        <div>
+          <div class="sec-title">SECTION 6: <em>Stenotrophomonas maltophilia</em></div>
+          <div class="sec-subtitle-text">Nhiễm trùng bệnh viện nguy hiểm ở bệnh nhân suy giảm miễn dịch, ung thư máu</div>
+        </div>
+      </div>
+      <div class="sec-body">
+        <div class="table-wrapper">
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th>Phân loại</th>
+                <th>Thuốc / Phác đồ</th>
+                <th>Lý luận & Đặc điểm Dược lý</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="rx-tag preferred">ƯU TIÊN (Đơn trị)</span></td>
+                <td><strong>Cefiderocol</strong></td>
+                <td>Tỷ lệ nhạy cảm in vitro ~100%. Đạt hiệu quả diệt khuẩn mạnh mẽ trong mô hình động vật, vượt trội hơn TMP-SMX.</td>
+              </tr>
+              <tr>
+                <td><span class="rx-tag alt">THAY THẾ (Phối hợp)</span></td>
+                <td>
+                  • <strong>Aztreonam-avibactam</strong><br>
+                  • <strong>Levofloxacin</strong><br>
+                  • <strong>Minocycline</strong><br>
+                  • <strong>TMP-SMX</strong>
+                </td>
+                <td>
+                  • S. maltophilia sinh đồng thời L1 MBL và L2 Cephalosporinase.<br>
+                  • Avibactam ức chế L2 → Aztreonam diệt khuẩn qua PBP3.<br>
+                  • Minocycline, Levofloxacin, TMP-SMX nên dùng trong **Phác đồ phối hợp** ban đầu, xuống thang đơn trị khi lâm sàng cải thiện rõ.
+                </td>
+              </tr>
+              <tr>
+                <td><span class="rx-tag danger">CHỐNG CHỈ ĐỊNH</span></td>
+                <td><strong>Ceftazidime</strong></td>
+                <td>L1 và L2 β-lactamase thủy phân hoàn toàn Ceftazidime. CLSI/FDA đã xóa bỏ breakpoint của Ceftazidime với S. maltophilia.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEC 7: DOSING TABLE 1 -->
+    <div class="sec-card" id="sec-dosing">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-prescription-bottle-medical"></i></div>
+        <div>
+          <div class="sec-title">Bảng Tra Cứu Liều Kháng Sinh Chuẩn IDSA 2026 (Người lớn, Chức năng thận bình thường)</div>
+          <div class="sec-subtitle-text">Liều khuyến cáo tối ưu hóa theo PK/PD & truyền kéo dài</div>
+        </div>
+      </div>
+      <div class="sec-body">
+        <div class="dosing-grid">
+          <div class="dosing-card">
+            <div class="dosing-drug">Sulbactam - durlobactam <span>SUL-DUR</span></div>
+            <div class="dosing-detail">2 g (1 g sulbactam / 1 g durlobactam) IV q6h truyền 3 giờ.<br>(CrCL ≥130 mL/min: q4h truyền 3 giờ)</div>
+          </div>
+          <div class="dosing-card">
+            <div class="dosing-drug">Aztreonam - avibactam <span>ATM-AVI</span></div>
+            <div class="dosing-detail">Liều nạp 2.67 g IV truyền 3 giờ → Liều duy trì 2 g IV q6h truyền 3 giờ.</div>
+          </div>
+          <div class="dosing-card">
+            <div class="dosing-drug">Cefiderocol <span>Fetroja</span></div>
+            <div class="dosing-detail">2 g IV q8h truyền 3 giờ.<br>(CrCL ≥120 mL/min: 2 g IV q6h truyền 3 giờ)</div>
+          </div>
+          <div class="dosing-card">
+            <div class="dosing-drug">Cefepime - enmetazobactam <span>Exblifep</span></div>
+            <div class="dosing-detail">2.5 g IV q8h truyền 2 giờ.<br>(CrCL ≥130 mL/min: 2.5 g IV q8h truyền 4 giờ)</div>
+          </div>
+          <div class="dosing-card">
+            <div class="dosing-drug">Ceftolozane - tazobactam <span>Zerbaxa</span></div>
+            <div class="dosing-detail">Viêm phổi: 3 g IV q8h truyền 3 giờ.<br>uUTI/cUTI: 1.5 g IV q8h truyền 1 giờ.</div>
+          </div>
+          <div class="dosing-card">
+            <div class="dosing-drug">Meropenem - vaborbactam <span>Vabomere</span></div>
+            <div class="dosing-detail">4 g (2 g meropenem / 2 g vaborbactam) IV q8h truyền 3 giờ.</div>
+          </div>
+          <div class="dosing-card">
+            <div class="dosing-drug">Imipenem - relebactam <span>Recarbrio</span></div>
+            <div class="dosing-detail">1.25 g IV q6h truyền 30 phút.</div>
+          </div>
+          <div class="dosing-card">
+            <div class="dosing-drug">Gepotidacin (Uống) <span>uUTI</span></div>
+            <div class="dosing-detail">1.5 g PO q12h x 5 ngày.</div>
+          </div>
+          <div class="dosing-card">
+            <div class="dosing-drug">Pivmecillinam (Uống) <span>Pivya</span></div>
+            <div class="dosing-detail">370 mg PO q8h x 3-7 ngày.</div>
+          </div>
+          <div class="dosing-card">
+            <div class="dosing-drug">Sulopenem (Uống) <span>Orlynvah</span></div>
+            <div class="dosing-detail">500 mg sulopenem + 500 mg probenecid PO q12h.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEC 8: CITATION & ACTIONS -->
+    <div class="sec-card" id="sec-citation">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-quote-left"></i></div>
+        <div>
+          <div class="sec-title">Trích Dẫn & Nguồn Tham Chiếu Tài Liệu</div>
+          <div class="sec-subtitle-text">IDSA Official Practice Guideline 2026</div>
+        </div>
+      </div>
+      <div class="sec-body">
+        <div class="citation-box">
+          Tamma PD, Bonomo RA, Heil EL, Justo JA, Satlin MJ, Mathers AJ. Infectious Diseases Society of America 2026 Guidance on the Treatment of Antimicrobial-Resistant Gram-Negative Infections. Clinical Infectious Diseases. 2026; IDSA Practice Guideline Update.
+        </div>
+
+        <div class="btn-row">
+          <a href="../guidelines.html" class="btn btn-primary">
+            <i class="fa-solid fa-list-check"></i> Quay lại Danh mục Guidelines
+          </a>
+          <a href="../../../calculators/infectious/chinh-lieu-khang-sinh.html" class="btn">
+            <i class="fa-solid fa-calculator"></i> Máy tính Chỉnh Liều Kháng Sinh
+          </a>
+          <a href="../../../pharmacology/duoc-ly.html" class="btn">
+            <i class="fa-solid fa-pills"></i> Tra cứu Dược Lý Kháng Sinh
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Theme Toggle with LocalStorage
+      const themeToggleBtn = document.getElementById('themeToggleBtn');
+      const htmlEl = document.documentElement;
+      const savedTheme = localStorage.getItem('cliniportal_ebm_theme');
+      if (savedTheme === 'dark' || savedTheme === 'light') {
+        htmlEl.setAttribute('data-theme', savedTheme);
+        if (themeToggleBtn) {
+          themeToggleBtn.innerHTML = savedTheme === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+        }
+      }
+      if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', () => {
+          const currentTheme = htmlEl.getAttribute('data-theme');
+          const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+          htmlEl.setAttribute('data-theme', newTheme);
+          themeToggleBtn.innerHTML = newTheme === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+          localStorage.setItem('cliniportal_ebm_theme', newTheme);
+        });
+      }
+
+      // Quicknav Active Highlight with IntersectionObserver
+      const sections = document.querySelectorAll('.sec-card[id]');
+      const navItems = document.querySelectorAll('.quickmenu-item, .quicknav-link');
+      if (sections.length > 0 && navItems.length > 0) {
+        const navObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const currentId = entry.target.getAttribute('id');
+              navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href') === '#' + currentId) {
+                  item.classList.add('active');
+                }
+              });
+            }
+          });
+        }, { rootMargin: '-10% 0px -70% 0px' });
+        sections.forEach(section => navObserver.observe(section));
+      }
+    });
+  </script>
+  <script type="module" src="../guideline-controller.ts"></script>
+</body>
+</html>

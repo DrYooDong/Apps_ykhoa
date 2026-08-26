@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tóm tắt toàn diện Hướng dẫn chẩn đoán và điều trị Bệnh nấm Aspergillus phổi mạn tính (CPA) theo Quyết định 3651/QĐ-BYT 2024 của Bộ Y tế: Cơ chế bệnh sinh, 5 thể lâm sàng, tiêu chuẩn chẩn đoán 3 trụ cột, phác đồ Azol/Amphotericin B, TDM nồng độ thuốc, phẫu thuật lồng ngực và xử trí cấp cứu ho ra máu nặng bằng can thiệp nút mạch phế quản (BAE).">
+  <title>Hướng Dẫn Chẩn Đoán & Điều Trị Bệnh Nấm Aspergillus Phổi Mạn Tính (BYT 2024) – CliniPortal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #059669; --green-bg: #f0fdf4; --green-light: #a7f3d0;
+      --orange: #d97706; --orange-bg: #fffbeb; --orange-light: #fde68a;
+      --red: #dc2626; --red-bg: #fef2f2; --red-light: #fca5a5;
+      --blue: #2563eb; --blue-bg: #eff6ff; --blue-light: #bfdbfe;
+      --teal: #0d9488; --teal-bg: #f0fdfa; --teal-light: #99f6e4;
+      --purple: #7c3aed; --purple-bg: #faf5ff; --purple-light: #ddd6fe;
+      --amber: #b45309; --amber-bg: #fef3c7; --amber-light: #fde68a;
+      --accent: #0f6fb4;
+      --bg: #f0f4f8; --surface: #ffffff; --surface-2: #f8fafc;
+      --border: #cbd5e1; --border-light: #e2e8f0;
+      --text: #0f172a; --text-muted: #475569; --text-faint: #94a3b8;
+      --radius: 16px; --tr: 220ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [data-theme="dark"] {
+      --green: #10b981; --green-bg: rgba(16, 185, 129, 0.15); --green-light: rgba(167, 243, 208, 0.3);
+      --orange: #f59e0b; --orange-bg: rgba(245, 158, 11, 0.15); --orange-light: rgba(253, 230, 138, 0.3);
+      --red: #ef4444; --red-bg: rgba(239, 68, 68, 0.15); --red-light: rgba(252, 165, 165, 0.3);
+      --blue: #3b82f6; --blue-bg: rgba(59, 130, 246, 0.15); --blue-light: rgba(191, 219, 254, 0.3);
+      --teal: #14b8a6; --teal-bg: rgba(20, 184, 166, 0.15); --teal-light: rgba(153, 246, 228, 0.3);
+      --purple: #8b5cf6; --purple-bg: rgba(139, 92, 246, 0.15); --purple-light: rgba(221, 214, 254, 0.3);
+      --amber: #f59e0b; --amber-bg: rgba(245, 158, 11, 0.15); --amber-light: rgba(253, 230, 138, 0.3);
+      --accent: #38bdf8;
+      --bg: #0f172a; --surface: #1e293b; --surface-2: #334155;
+      --border: #475569; --border-light: #334155;
+      --text: #f8fafc; --text-muted: #cbd5e1; --text-faint: #64748b;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; font-size: 15px; background: var(--bg); color: var(--text); line-height: 1.65; min-height: 100vh; transition: background var(--tr), color var(--tr); }
+
+    @media print {
+      body { background: #fff !important; color: #000 !important; }
+      .topnav, .pillars-nav, .topnav-theme-toggle, .btn-row { display: none !important; }
+      .page-content { max-width: 100% !important; margin: 0 !important; padding: 0 !important; }
+      .sec-card { break-inside: avoid; border: 1px solid #ccc !important; box-shadow: none !important; }
+    }
+
+    /* TOP NAV */
+    .topnav { position: sticky; top: 0; z-index: 200; background: rgba(255,255,255,0.94); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 1rem; padding: 0 1.5rem; height: 56px; transition: background var(--tr), border-color var(--tr); }
+    [data-theme="dark"] .topnav { background: rgba(15, 23, 42, 0.92); }
+    .topnav-back { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--accent); text-decoration: none; font-size: 0.82rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 8px; transition: background var(--tr); white-space: nowrap; }
+    .topnav-back:hover { background: var(--blue-bg); }
+    .topnav-divider { width: 1px; height: 18px; background: var(--border-light); flex-shrink: 0; }
+    .topnav-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .topnav-badges { margin-left: auto; display: flex; gap: 0.5rem; flex-shrink: 0; align-items: center; }
+    .topnav-theme-toggle { background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 1.1rem; padding: 0.4rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; transition: background var(--tr); }
+    .topnav-theme-toggle:hover { background: var(--surface-2); color: var(--accent); }
+
+    .badge { padding: 0.2rem 0.65rem; border-radius: 20px; font-size: 0.7rem; font-weight: 700; white-space: nowrap; }
+    .badge-red { background: var(--red-bg); color: var(--red); border: 1px solid var(--red-light); }
+    .badge-green { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-light); }
+    .badge-blue { background: var(--blue-bg); color: var(--blue); border: 1px solid var(--blue-light); }
+    .badge-amber { background: var(--amber-bg); color: var(--amber); border: 1px solid var(--amber-light); }
+
+    /* HERO */
+    .hero { background: linear-gradient(135deg, #1e293b 0%, #0f4c81 40%, #065f46 100%); color: #fff; padding: 3.5rem 1.5rem 4.5rem; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 15% 60%, rgba(56, 189, 248, 0.22) 0%, transparent 55%), radial-gradient(ellipse at 85% 20%, rgba(16, 185, 129, 0.2) 0%, transparent 50%); }
+    .hero-inner { max-width: 1000px; margin: 0 auto; position: relative; z-index: 1; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.28); border-radius: 20px; padding: 0.3rem 0.9rem; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1rem; color: #7dd3fc; }
+    .hero-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(1.8rem, 4vw, 2.7rem); font-weight: 800; line-height: 1.18; letter-spacing: -0.03em; margin-bottom: 0.85rem; }
+    .hero-title span { display: block; background: linear-gradient(90deg, #7dd3fc, #6ee7b7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 0.62em; font-weight: 600; letter-spacing: 0; margin-bottom: 0.25rem; }
+    .hero-subtitle { font-size: 0.96rem; opacity: 0.92; max-width: 820px; margin-bottom: 1.75rem; line-height: 1.65; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 0.75rem 2rem; font-size: 0.8rem; opacity: 0.85; }
+    .hero-meta-item { display: flex; align-items: center; gap: 6px; }
+
+    /* PILLARS STICKY NAV STRIP */
+    .pillars-nav { position: sticky; top: 56px; z-index: 190; background: var(--surface); border-bottom: 1px solid var(--border-light); padding: 0.75rem 1.5rem; }
+    .pillars-nav-inner { max-width: 1000px; margin: 0 auto; display: flex; gap: 0.5rem; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .pillar-tab { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.45rem 0.85rem; border-radius: 10px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.78rem; font-weight: 700; color: var(--text-muted); border: 1px solid var(--border-light); background: var(--surface-2); text-decoration: none; white-space: nowrap; transition: all var(--tr); }
+    .pillar-tab:hover { border-color: var(--accent); color: var(--accent); background: var(--blue-bg); }
+    .pillar-tab.p-1 { border-left: 4px solid var(--blue); }
+    .pillar-tab.p-2 { border-left: 4px solid var(--teal); }
+    .pillar-tab.p-3 { border-left: 4px solid var(--green); }
+    .pillar-tab.p-4 { border-left: 4px solid var(--purple); }
+    .pillar-tab.p-5 { border-left: 4px solid var(--orange); }
+    .pillar-tab.p-6 { border-left: 4px solid var(--red); }
+    .pillar-tab.p-7 { border-left: 4px solid var(--amber); }
+
+    /* STATS HIGHLIGHT STRIP */
+    .stats-strip { background: var(--surface); border-bottom: 1px solid var(--border-light); padding: 1.5rem; }
+    .stats-grid { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; }
+    .stat-card { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.1rem 1.25rem; text-align: center; transition: transform var(--tr); }
+    .stat-card:hover { transform: translateY(-2px); }
+    .stat-val { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.45rem; font-weight: 800; color: var(--accent); line-height: 1.2; }
+    .stat-lbl { font-size: 0.76rem; color: var(--text-muted); font-weight: 600; margin-top: 0.35rem; }
+
+    /* PAGE CONTENT */
+    .page-content { max-width: 1000px; margin: 0 auto; padding: 2.25rem 1.5rem; display: flex; flex-direction: column; gap: 2rem; }
+
+    /* SECTION CARDS & HEADINGS */
+    .sec-card { background: var(--surface); border: 1px solid var(--border-light); border-radius: var(--radius); overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.03); scroll-margin-top: 110px; }
+    .sec-hdr { padding: 1.15rem 1.5rem; border-bottom: 1px solid var(--border-light); background: var(--surface-2); display: flex; align-items: center; gap: 0.75rem; }
+    .sec-hdr-icon { font-size: 1.15rem; color: var(--accent); background: var(--blue-bg); width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--blue-light); flex-shrink: 0; }
+    .sec-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.1rem; font-weight: 800; color: var(--text); letter-spacing: -0.01em; }
+    .sec-body { padding: 1.5rem; display: flex; flex-direction: column; gap: 1.25rem; }
+
+    /* SUBHEADINGS */
+    .sec-subtitle { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 0.95rem; color: var(--text); margin-top: 0.5rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.6rem; }
+    .sec-subtitle i { color: var(--accent); font-size: 0.75rem; background: var(--blue-bg); width: 24px; height: 24px; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--blue-light); flex-shrink: 0; }
+    .sec-subtitle::after { content: ''; flex: 1; height: 2px; background: linear-gradient(90deg, var(--border-light), transparent); border-radius: 1px; margin-left: 0.5rem; }
+
+    .sec-h4 { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 0.88rem; color: var(--text); margin-top: 0.75rem; margin-bottom: 0.35rem; border-left: 3px solid var(--accent); padding-left: 0.65rem; display: flex; align-items: center; }
+
+    /* INFO BOXES */
+    .infobox { display: flex; align-items: flex-start; gap: 0.85rem; padding: 1rem 1.25rem; border-radius: 12px; font-size: 0.85rem; line-height: 1.6; }
+    .infobox-icon { font-size: 1.3rem; flex-shrink: 0; line-height: 1.3; }
+    .infobox.danger { background: var(--red-bg); border: 1px solid var(--red-light); border-left: 4px solid var(--red); color: var(--text); }
+    .infobox.success { background: var(--green-bg); border: 1px solid var(--green-light); border-left: 4px solid var(--green); color: var(--text); }
+    .infobox.warning { background: var(--orange-bg); border: 1px solid var(--orange-light); border-left: 4px solid var(--orange); color: var(--text); }
+    .infobox.info { background: var(--blue-bg); border: 1px solid var(--blue-light); border-left: 4px solid var(--blue); color: var(--text); }
+    .infobox.teal { background: var(--teal-bg); border: 1px solid var(--teal-light); border-left: 4px solid var(--teal); color: var(--text); }
+    .infobox strong { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; color: var(--text); }
+
+    /* TABLES */
+    .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 12px; border: 1px solid var(--border-light); margin-bottom: 0.5rem; }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 0.83rem; min-width: 680px; text-align: left; }
+    .data-table thead th { padding: 0.75rem 1rem; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; background: var(--surface-2); color: var(--text-muted); border-bottom: 1px solid var(--border-light); }
+    .data-table td { padding: 0.85rem 1rem; border-bottom: 1px solid var(--border-light); vertical-align: top; line-height: 1.55; }
+    .data-table tbody tr:last-child td { border-bottom: none; }
+    .data-table tbody tr:hover td { background: rgba(15, 111, 180, 0.03); }
+
+    /* BADGES & TAGS */
+    .rx-tag { display: inline-block; background: var(--surface-2); color: var(--text-muted); font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; padding: 0.15rem 0.5rem; border-radius: 6px; border: 1px solid var(--border-light); margin: 0.15rem 0.1rem; }
+    .rx-tag.preferred { background: var(--green-bg); color: var(--green); border-color: var(--green-light); font-weight: 700; }
+    .rx-tag.highlight { background: var(--blue-bg); color: var(--accent); border-color: var(--blue-light); font-weight: 600; }
+    .rx-tag.alert { background: var(--red-bg); color: var(--red); border-color: var(--red-light); font-weight: 600; }
+    .rx-tag.warn { background: var(--amber-bg); color: var(--amber); border-color: var(--amber-light); font-weight: 600; }
+
+    /* BENTO GRID / CLINICAL CARDS */
+    .matrix-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; }
+    .matrix-card { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.25rem; position: relative; overflow: hidden; transition: transform var(--tr), box-shadow var(--tr); }
+    .matrix-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.06); }
+    .matrix-card-accent { position: absolute; top: 0; left: 0; right: 0; height: 4px; }
+    .matrix-card-hdr { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; }
+    .matrix-card-icon { width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
+    .matrix-card-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 0.9rem; color: var(--text); line-height: 1.3; }
+    .matrix-card-body { font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* EDITORIAL FLOWCHART CARDS */
+    .flowchart-card {
+      background: var(--surface);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 1.25rem;
+      border: 1px solid var(--border-light);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.04);
+    }
+    .flowchart-header {
+      padding: 1rem 1.25rem;
+      background: var(--surface-2);
+      border-bottom: 1px solid var(--border-light);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+    .flowchart-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 800;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .flowchart-svg-container {
+      padding: 1.5rem 1rem;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      display: flex;
+      justify-content: center;
+      background: var(--surface);
+    }
+    .flowchart-svg {
+      max-width: 100%;
+      height: auto;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* CITATION & ACTION BUTTONS */
+    .citation-box { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 12px; padding: 1.25rem; font-size: 0.82rem; color: var(--text-muted); line-height: 1.75; }
+    .btn-row { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.25rem; }
+    .btn { display: inline-flex; align-items: center; gap: 6px; padding: 0.55rem 1.1rem; border-radius: 10px; border: 1.5px solid var(--border-light); background: var(--surface); color: var(--text-muted); font-size: 0.82rem; font-weight: 600; cursor: pointer; text-decoration: none; transition: all var(--tr); }
+    .btn:hover { border-color: var(--accent); color: var(--accent); background: var(--blue-bg); }
+    .btn-primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .page-content { padding: 1.25rem 1rem; }
+      .sec-body { padding: 1rem; }
+      .matrix-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP NAV -->
+  <nav class="topnav">
+    <a href="../guidelines.html" class="topnav-back">
+      <i class="fa-solid fa-arrow-left"></i> Kho Guidelines
+    </a>
+    <div class="topnav-divider"></div>
+    <div class="topnav-title">BYT 2024: Hướng Dẫn Bệnh Nấm Aspergillus Phổi Mạn Tính (CPA)</div>
+    <div class="topnav-badges">
+      <span class="badge badge-red"><i class="fa-solid fa-certificate"></i> QĐ 3651/QĐ-BYT</span>
+      <span class="badge badge-blue">Quốc Gia</span>
+      <button class="topnav-theme-toggle" id="themeToggle" title="Chuyển chế độ sáng/tối" aria-label="Toggle theme">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge"><i class="fa-solid fa-shield-virus"></i> Hướng Dẫn Quốc Gia — Bộ Y Tế Việt Nam (2024)</div>
+      <h1 class="hero-title">
+        <span>National Guidelines for Diagnosis & Management of Chronic Pulmonary Aspergillosis (CPA)</span>
+        Hướng Dẫn Chẩn Đoán & Điều Trị Bệnh Nấm Aspergillus Phổi Mạn Tính
+      </h1>
+      <p class="hero-subtitle">
+        Ban hành kèm theo <strong>Quyết định số 3651/QĐ-BYT ngày 03/12/2024</strong> của Bộ trưởng Bộ Y tế (Thứ trưởng Trần Văn Thuấn ký). Hệ thống hóa toàn diện dịch tễ học, vi sinh học, 5 thể bệnh lâm sàng, tiêu chuẩn chẩn đoán 3 trụ cột, phác đồ Azol/Amphotericin B, theo dõi TDM, ngoại khoa lồng ngực và xử trí cấp cứu ho ra máu nặng bằng can thiệp nút mạch phế quản (BAE).
+      </p>
+      <div class="hero-meta">
+        <div class="hero-meta-item"><i class="fa-solid fa-file-signature"></i> Quyết định: 3651/QĐ-BYT (03/12/2024)</div>
+        <div class="hero-meta-item"><i class="fa-solid fa-user-doctor"></i> Chủ biên: TS. BSCC Đinh Văn Lượng & TS. Nguyễn Thị Bích Ngọc</div>
+        <div class="hero-meta-item"><i class="fa-solid fa-hospital"></i> Thẩm định: PGS.TS. Chu Thị Hạnh (Hội Hô hấp VN, BV Phổi TW)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PILLARS STICKY NAV BAR -->
+  <div class="pillars-nav">
+    <div class="pillars-nav-inner">
+      <a href="#sec-1" class="pillar-tab p-1">1. Pháp Lý & Dịch Tễ</a>
+      <a href="#sec-2" class="pillar-tab p-2">2. Bệnh Sinh & 5 Thể CPA</a>
+      <a href="#sec-3" class="pillar-tab p-3">3. Tiêu Chuẩn Chẩn Đoán</a>
+      <a href="#sec-4" class="pillar-tab p-4">4. Lưu Đồ Tiếp Cận</a>
+      <a href="#sec-5" class="pillar-tab p-5">5. Phác Đồ Thuốc & TDM</a>
+      <a href="#sec-6" class="pillar-tab p-6">6. Phẫu Thuật Lồng Ngực</a>
+      <a href="#sec-7" class="pillar-tab p-7">7. Cấp Cứu Ho Ra Máu & BAE</a>
+      <a href="#sec-citations" class="pillar-tab"><i class="fa-solid fa-book"></i> Y Văn AMA</a>
+    </div>
+  </div>
+
+  <!-- STATS HIGHLIGHT STRIP -->
+  <div class="stats-strip">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-val">55.509</div>
+        <div class="stat-lbl">Ca CPA tại VN (Thứ 5 Thế Giới)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">54,3%</div>
+        <div class="stat-lbl">Bệnh nhân tiền sử Lao mắc CPA</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">50% - 80%</div>
+        <div class="stat-lbl">Tử vong 5 năm nếu không điều trị</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">> 90%</div>
+        <div class="stat-lbl">Độ nhạy Kháng thể IgG Aspergillus</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">67% - 95%</div>
+        <div class="stat-lbl">Cầm máu tức thì qua Nút mạch BAE</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN PAGE CONTENT -->
+  <div class="page-content">
+
+    <!-- SECTION 1: CƠ SỞ PHÁP LÝ & DỊCH TỄ HỌC -->
+    <section class="sec-card" id="sec-1">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+        <div class="sec-title">1. Cơ Sở Pháp Lý, Dịch Tễ Học & Đặc Điểm Vi Sinh Học Nấm Aspergillus</div>
+      </div>
+      <div class="sec-body">
+        
+        <div class="sec-subtitle"><i class="fa-solid fa-landmark"></i> Cơ Sở Pháp Lý & Tổ Chức Biên Soạn</div>
+        <div class="infobox info">
+          <i class="fa-solid fa-circle-info infobox-icon" style="color: var(--blue);"></i>
+          <div>
+            <strong>Quyết định ban hành số 3651/QĐ-BYT (03/12/2024):</strong>
+            Văn bản do <strong>Thứ trưởng Bộ Y tế Trần Văn Thuấn</strong> ký ban hành, có hiệu lực pháp lý cao nhất và áp dụng thống nhất tại tất cả các cơ sở khám bệnh, chữa bệnh trên toàn quốc.<br>
+            • <em>Chủ biên:</em> <strong>TS. BSCC Đinh Văn Lượng</strong> (Giám đốc Bệnh viện Phổi Trung ương) và <strong>TS. Nguyễn Thị Bích Ngọc</strong>.<br>
+            • <em>Chủ tịch Hội đồng Thẩm định (QĐ 1491/QĐ-BYT):</em> <strong>PGS.TS. Chu Thị Hạnh</strong> (Phó Chủ tịch Hội Hô hấp Việt Nam), cùng các chuyên gia đầu ngành từ Bệnh viện Phổi Trung ương, Bạch Mai, Chợ Rẫy, Phạm Ngọc Thạch.
+          </div>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-earth-asia"></i> Đại Cương & Gánh Nặng Dịch Tễ Học</div>
+        <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.65;">
+          <strong>Bệnh nấm Aspergillus phổi mạn tính (Chronic Pulmonary Aspergillosis - CPA)</strong> là bệnh phổi do nấm <em>Aspergillus</em> xâm nhập, phát triển mạn tính và phá hủy dần dần cấu trúc nhu mô phổi, dẫn đến hình thành hang, xơ hóa nhu mô và dày màng phổi.
+        </p>
+
+        <div class="matrix-grid">
+          <div class="matrix-card">
+            <div class="matrix-card-accent" style="background: var(--blue);"></div>
+            <div class="matrix-card-hdr">
+              <div class="matrix-card-icon" style="background: var(--blue-bg); color: var(--blue);"><i class="fa-solid fa-globe"></i></div>
+              <div class="matrix-card-title">Gánh Nặng Toàn Cầu</div>
+            </div>
+            <div class="matrix-card-body">
+              • Ước tính có khoảng <strong>3 triệu người</strong> mắc CPA trên toàn thế giới.<br>
+              • Nếu không được phát hiện và điều trị kịp thời, <strong>50% - 80% người bệnh sẽ tử vong trong vòng 5 năm</strong>.<br>
+              • <strong>Lao phổi</strong> là yếu tố nguy cơ hàng đầu, chiếm khoảng 1,2 triệu ca mắc CPA toàn cầu.
+            </div>
+          </div>
+
+          <div class="matrix-card">
+            <div class="matrix-card-accent" style="background: var(--red);"></div>
+            <div class="matrix-card-hdr">
+              <div class="matrix-card-icon" style="background: var(--red-bg); color: var(--red);"><i class="fa-solid fa-location-dot"></i></div>
+              <div class="matrix-card-title">Thực Trạng Tại Việt Nam</div>
+            </div>
+            <div class="matrix-card-body">
+              • Việt Nam đứng <strong>hàng thứ 5 trên thế giới</strong> về số ca CPA ước tính (~55.509 ca, sau Ấn Độ, Nigeria, Philippines, Pakistan).<br>
+              • Năm 2020: Tích lũy 5 năm lên tới <strong>115.675 ca</strong> (tỷ lệ 120/100.000 dân).<br>
+              • Nghiên cứu BV Phổi TW: <strong>54,3% người có tiền sử lao phổi</strong> đến khám được chẩn đoán mắc CPA. Bệnh rất dễ bị chẩn đoán nhầm với lao phổi không có vi khuẩn học.
+            </div>
+          </div>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-microscope"></i> Đặc Điểm Vi Sinh Học của Nấm Aspergillus</div>
+        <div class="matrix-grid">
+          <div class="matrix-card">
+            <div class="matrix-card-accent" style="background: var(--teal);"></div>
+            <div class="matrix-card-hdr">
+              <div class="matrix-card-icon" style="background: var(--teal-bg); color: var(--teal);"><i class="fa-solid fa-dna"></i></div>
+              <div class="matrix-card-title">Phân Loại & Cấu Trúc Sợi Nấm</div>
+            </div>
+            <div class="matrix-card-body">
+              • <em>Loài gây bệnh chính:</em> <strong>Aspergillus fumigatus</strong> chiếm tới <strong>90%</strong> các ca bệnh. Các loài khác gồm: <em>A. flavus, A. niger, A. terreus, A. nidulans</em>.<br>
+              • <em>Kích thước sợi nấm:</em> Đường kính <strong>2 - 4 µm</strong>, có vách ngăn và phân nhánh đặc trưng tạo <strong>góc nhọn 45 độ</strong> so với sợi nấm chính.
+            </div>
+          </div>
+
+          <div class="matrix-card">
+            <div class="matrix-card-accent" style="background: var(--purple);"></div>
+            <div class="matrix-card-hdr">
+              <div class="matrix-card-icon" style="background: var(--purple-bg); color: var(--purple);"><i class="fa-solid fa-flask-vial"></i></div>
+              <div class="matrix-card-title">Bào Tử & Môi Trường Nuôi Cấy</div>
+            </div>
+            <div class="matrix-card-body">
+              • <em>Bào tử đính:</em> Kích thước cực nhỏ <strong>2 - 5 µm</strong>, đính trên tiểu bào đài hình bông cúc, dễ dàng lơ lửng trong không khí và xâm nhập sâu vào tận phế nang.<br>
+              • <em>Nuôi cấy Sabouraud:</em> Mọc nhanh sau <strong>2 - 3 ngày</strong>; khuẩn lạc <em>A. fumigatus</em> mịn như nhung dạng bột, từ xanh lá viền trắng chuyển xám nhạt khi già.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 2: BỆNH SINH & 5 THỂ LÂM SÀNG -->
+    <section class="sec-card" id="sec-2">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-lungs-virus"></i></div>
+        <div class="sec-title">2. Cơ Chế Bệnh Sinh & 5 Thể Lâm Sàng Bệnh Nấm Aspergillus Phổi Mạn Tính</div>
+      </div>
+      <div class="sec-body">
+
+        <div class="sec-subtitle"><i class="fa-solid fa-shield-halved"></i> Cơ Chế Xâm Nhập & Tương Tác Miễn Dịch</div>
+        <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.65;">
+          Mỗi ngày một người hít phải từ <strong>100 - 1000 bào tử nấm</strong> tự do trong không khí. Ở người bình thường, hệ thống lông chuyển và đại thực bào phế nang sẽ đào thải hoàn toàn. Bệnh cảnh phụ thuộc vào trạng thái miễn dịch và cấu trúc giải phẫu phổi:
+        </p>
+
+        <div class="matrix-grid">
+          <div class="matrix-card">
+            <div class="matrix-card-accent" style="background: var(--red);"></div>
+            <div class="matrix-card-hdr">
+              <div class="matrix-card-icon" style="background: var(--red-bg); color: var(--red);"><i class="fa-solid fa-bolt"></i></div>
+              <div class="matrix-card-title">Nấm Phổi Xâm Lấn (IPA)</div>
+            </div>
+            <div class="matrix-card-body">
+              • <em>Cơ địa:</em> Suy giảm miễn dịch nặng (ghép tạng, giảm BC hạt, K máu).<br>
+              • <em>Diễn tiến:</em> Cấp tính trong vòng <strong>&lt; 1 tháng</strong>, xâm lấn sâu mạch máu gây hoại tử và nhồi máu phổi.
+            </div>
+          </div>
+
+          <div class="matrix-card">
+            <div class="matrix-card-accent" style="background: var(--orange);"></div>
+            <div class="matrix-card-hdr">
+              <div class="matrix-card-icon" style="background: var(--orange-bg); color: var(--orange);"><i class="fa-solid fa-clock"></i></div>
+              <div class="matrix-card-title">Nấm Phổi Mạn Tính (CPA)</div>
+            </div>
+            <div class="matrix-card-body">
+              • <em>Cơ địa:</em> Có tổn thương cấu trúc phổi (hang lao cũ, kén khí COPD, giãn PQ) kèm miễn dịch suy giảm nhẹ-vừa.<br>
+              • <em>Diễn tiến:</em> Mạn tính <strong>&gt; 3 tháng</strong>, sợi nấm phá hủy dần nhu mô tạo hang và xơ hóa.
+            </div>
+          </div>
+
+          <div class="matrix-card">
+            <div class="matrix-card-accent" style="background: var(--teal);"></div>
+            <div class="matrix-card-hdr">
+              <div class="matrix-card-icon" style="background: var(--teal-bg); color: var(--teal);"><i class="fa-solid fa-virus"></i></div>
+              <div class="matrix-card-title">Nấm PQ Phổi Dị Ứng (ABPA)</div>
+            </div>
+            <div class="matrix-card-body">
+              • <em>Cơ địa:</em> Bệnh nhân Hen phế quản hoặc Xơ nang phổi (Cystic Fibrosis).<br>
+              • <em>Diễn tiến:</em> Phản ứng quá mẫn miễn dịch hệ thống quá mức với kháng nguyên nấm.
+            </div>
+          </div>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-layer-group"></i> 5 Thể Lâm Sàng Của Bệnh Nấm Aspergillus Phổi Mạn Tính (CPA)</div>
+        <div class="matrix-grid">
+          
+          <div class="matrix-card">
+            <div class="matrix-card-accent" style="background: var(--green);"></div>
+            <div class="matrix-card-hdr">
+              <div class="matrix-card-icon" style="background: var(--green-bg); color: var(--green);"><i class="fa-solid fa-circle-dot"></i></div>
+              <div>
+                <div class="matrix-card-title">1. Thể U Nấm Đơn Độc</div>
+                <div style="font-size: 0.72rem; color: var(--text-faint);">Simple / Single Aspergilloma</div>
+              </div>
+            </div>
+            <div class="matrix-card-body">
+              • <em>Lâm sàng:</em> Thường không có hoặc rất ít triệu chứng cơ năng; miễn dịch bình thường.<br>
+              • <em>Hình ảnh:</em> Một hang thành mỏng chứa khối u nấm đơn độc, <strong>không có thâm nhiễm tiến triển hay xơ hóa quanh hang trong vòng 3 tháng</strong>.
+            </div>
+          </div>
+
+          <div class="matrix-card">
+            <div class="matrix-card-accent" style="background: var(--teal);"></div>
+            <div class="matrix-card-hdr">
+              <div class="matrix-card-icon" style="background: var(--teal-bg); color: var(--teal);"><i class="fa-solid fa-circle-nodes"></i></div>
+              <div>
+                <div class="matrix-card-title">2. Thể Nốt</div>
+                <div style="font-size: 0.72rem; color: var(--text-faint);">Aspergillus Nodules</div>
+              </div>
+            </div>
+            <div class="matrix-card-body">
+              • <em>Lâm sàng:</em> Rất hiếm gặp, hầu như không triệu chứng; thường chẩn đoán nhầm là u phổi.<br>
+              • <em>Hình ảnh:</em> Một hoặc nhiều nốt mờ kích thước <strong>&lt; 3 cm</strong>, có thể tạo hang nhỏ hoặc không; chẩn đoán qua sinh thiết/mổ.
+            </div>
+          </div>
+
+          <div class="matrix-card" style="border: 2px solid var(--accent);">
+            <div class="matrix-card-accent" style="background: var(--accent);"></div>
+            <div class="matrix-card-hdr">
+              <div class="matrix-card-icon" style="background: var(--blue-bg); color: var(--accent);"><i class="fa-solid fa-lungs"></i></div>
+              <div>
+                <div class="matrix-card-title">3. Thể Hang Mạn Tính (CCPA)</div>
+                <div style="font-size: 0.72rem; color: var(--accent); font-weight: 700;">★ THỂ THƯỜNG GẶP NHẤT</div>
+              </div>
+            </div>
+            <div class="matrix-card-body">
+              • <em>Lâm sàng:</em> Triệu chứng rầm rộ: ho khạc đờm mạn, ho ra máu, khó thở, sụt cân suy kiệt.<br>
+              • <em>Hình ảnh:</em> Một hoặc nhiều hang thành dày không đều, có thể chứa u nấm hoặc không, kèm thâm nhiễm hoặc dày màng phổi liền kề; <strong>tổn thương tiến triển lan rộng sau 3 tháng</strong>.
+            </div>
+          </div>
+
+          <div class="matrix-card">
+            <div class="matrix-card-accent" style="background: var(--amber);"></div>
+            <div class="matrix-card-hdr">
+              <div class="matrix-card-icon" style="background: var(--amber-bg); color: var(--amber);"><i class="fa-solid fa-cubes-stacked"></i></div>
+              <div>
+                <div class="matrix-card-title">4. Thể Xơ Hóa Mạn Tính (CFPA)</div>
+                <div style="font-size: 0.72rem; color: var(--text-faint);">Chronic Fibrosing Pulmonary Aspergillosis</div>
+              </div>
+            </div>
+            <div class="matrix-card-body">
+              • <em>Lâm sàng:</em> Là giai đoạn muộn của CCPA không điều trị; bệnh nhân suy kiệt nặng, suy giảm chức năng thông khí nghiêm trọng.<br>
+              • <em>Hình ảnh:</em> Xơ hóa và phá hủy lan rộng từ <strong>≥ 2 thùy phổi</strong>, co kéo xẹp phổi lớn.
+            </div>
+          </div>
+
+          <div class="matrix-card">
+            <div class="matrix-card-accent" style="background: var(--red);"></div>
+            <div class="matrix-card-hdr">
+              <div class="matrix-card-icon" style="background: var(--red-bg); color: var(--red);"><i class="fa-solid fa-triangle-exclamation"></i></div>
+              <div>
+                <div class="matrix-card-title">5. Thể Bán Xâm Lấn (SAIA / CNPA)</div>
+                <div style="font-size: 0.72rem; color: var(--red); font-weight: 700;">TIẾN TRIỂN NHANH (1 - 3 THÁNG)</div>
+              </div>
+            </div>
+            <div class="matrix-card-body">
+              • <em>Lâm sàng:</em> Thường gặp ở người suy giảm miễn dịch nhẹ-vừa (ĐTĐ, xơ gan, dùng corticoid). Có sốt, ho, sụt cân suy kiệt nhanh.<br>
+              • <em>Hình ảnh:</em> Tổn thương hang, đông đặc nhu mô phổi hoại tử tiến triển nhanh trong vòng <strong>1 - 3 tháng</strong>.
+            </div>
+          </div>
+
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-clipboard-list"></i> Yếu Tố Nguy Cơ & Triệu Chứng Lâm Sàng</div>
+        <div class="infobox warning">
+          <i class="fa-solid fa-triangle-exclamation infobox-icon" style="color: var(--orange);"></i>
+          <div>
+            <strong>Yếu tố nguy cơ nền mạn tính:</strong>
+            • <strong>Lao phổi di chứng hang:</strong> Yếu tố quan trọng nhất (nguyên nhân 85% ca CPA tại Nam Á & Đông Nam Á).<br>
+            • <strong>Giãn phế quản:</strong> Nấm cư trú trực tiếp trong lòng túi phế quản giãn bị mất cơ chế làm sạch nhầy - lông chuyển.<br>
+            • <strong>COPD:</strong> Bóng khí phế thũng dễ bị nấm ký sinh, tăng nguy cơ khi dùng corticoid hít/toàn thân.<br>
+            • <strong>Bệnh phổi do vi khuẩn lao không điển hình (NTM)</strong> và ung thư phổi sau điều trị.
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 3: CẬN LÂM SÀNG & TIÊU CHUẨN CHẨN ĐOÁN -->
+    <section class="sec-card" id="sec-3">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-list-check"></i></div>
+        <div class="sec-title">3. Cận Lâm Sàng & Tiêu Chuẩn Chẩn Đoán Xác Định CPA (Bảng 1 BYT)</div>
+      </div>
+      <div class="sec-body">
+
+        <div class="sec-subtitle"><i class="fa-solid fa-x-ray"></i> Chẩn Đoán Hình Ảnh & Vi Sinh Học Chuyên Sâu</div>
+        <div class="matrix-grid">
+          <div class="matrix-card">
+            <div class="matrix-card-accent" style="background: var(--blue);"></div>
+            <div class="matrix-card-hdr">
+              <div class="matrix-card-icon" style="background: var(--blue-bg); color: var(--blue);"><i class="fa-solid fa-camera"></i></div>
+              <div class="matrix-card-title">Hình Ảnh Học (X-Quang & CLVT)</div>
+            </div>
+            <div class="matrix-card-body">
+              • <strong>X-quang ngực:</strong> Sàng lọc ban đầu, thấy u nấm hình tròn trong hang có dấu hiệu <em>"liềm khí" (air-crescent sign)</em> di động theo tư thế; dày màng phổi liền kề (31,3%).<br>
+              • <strong>CLVT ngực tiêm cản quang:</strong> Tiêu chuẩn vàng đánh giá hang, u nấm, mạch máu phế quản tăng sinh. <em>Đặc điểm then chốt:</em> Khối u nấm thật sự <strong>không ngấm thuốc cản quang</strong>.
+            </div>
+          </div>
+
+          <div class="matrix-card">
+            <div class="matrix-card-accent" style="background: var(--green);"></div>
+            <div class="matrix-card-hdr">
+              <div class="matrix-card-icon" style="background: var(--green-bg); color: var(--green);"><i class="fa-solid fa-vial-virus"></i></div>
+              <div class="matrix-card-title">Vi Sinh & Miễn Dịch Học</div>
+            </div>
+            <div class="matrix-card-body">
+              • <strong>Kháng thể Aspergillus IgG huyết thanh:</strong> Xét nghiệm có giá trị cao nhất (ELISA độ nhạy &gt; 90% hoặc test nhanh LFD).<br>
+              • <strong>Nhuộm soi KOH đờm/BALF:</strong> Sợi nấm có vách ngăn phân nhánh góc 45°.<br>
+              • <strong>Nuôi cấy Sabouraud:</strong> Mọc nấm từ <strong>≥ 2 mẫu đờm</strong> độc lập hoặc dịch BALF, làm kháng nấm đồ.<br>
+              • <strong>Galactomannan (GM):</strong> GM huyết thanh thường âm tính; <strong>GM dịch rửa BALF có giá trị cao với ngưỡng cắt ≥ 0.67</strong>.<br>
+              • <strong>PCR dịch BALF:</strong> Giá trị dự báo âm tính rất cao (&gt; 90%) để loại trừ.
+            </div>
+          </div>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-table"></i> Bảng 1: Tiêu Chuẩn Chẩn Đoán Xác Định CPA (Quyết Định 3651/QĐ-BYT)</div>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">
+          Chẩn đoán xác định CPA khi người bệnh thỏa mãn <strong>đồng thời cả 3 tiêu chuẩn</strong> sau:
+        </p>
+
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width: 25%;">Tiêu Chuẩn Bắt Buộc</th>
+                <th>Nội Dung Chi Tiết Biểu Hiện Yêu Cầu Đạt Được</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong style="color: var(--accent);"><i class="fa-solid fa-1"></i> Lâm Sàng</strong></td>
+                <td>
+                  Các triệu chứng hô hấp và toàn thân kéo dài <strong>&gt; 3 tháng</strong>, bao gồm ít nhất một trong các triệu chứng chính:<br>
+                  • <strong>Ho ra máu</strong> (từ khạc dây máu đến ho máu sét đánh)<br>
+                  • <strong>Ho khạc đờm dai dẳng</strong><br>
+                  • <strong>Sụt cân tiến triển</strong>, suy kiệt, đau ngực dai dẳng (37%), khó thở.
+                </td>
+              </tr>
+              <tr>
+                <td><strong style="color: var(--accent);"><i class="fa-solid fa-2"></i> Hình Ảnh Học</strong></td>
+                <td>
+                  Chụp X-quang hoặc CLVT ngực ghi nhận ít nhất một trong các tổn thương sau:<br>
+                  • <strong>Tổn thương hang tiến triển</strong> (tăng kích thước, xuất hiện hang mới, xơ hóa quanh hang tăng).<br>
+                  • <strong>Có khối u nấm (Aspergilloma) bên trong hang</strong>.<br>
+                  • <strong>Hang kèm theo:</strong> dày màng phổi liền kề, xơ hóa quanh hang hoặc thâm nhiễm phế nang xung quanh hang.
+                </td>
+              </tr>
+              <tr>
+                <td><strong style="color: var(--accent);"><i class="fa-solid fa-3"></i> Bằng Chứng Vi Sinh / Mô Bệnh</strong></td>
+                <td>
+                  Có ít nhất một trong các bằng chứng sau:<br>
+                  • <strong>Kháng thể Aspergillus IgG đặc hiệu trong huyết thanh dương tính</strong> (bằng ELISA hoặc test nhanh LFD).<br>
+                  • <strong>Nhuộm soi đờm / dịch tiết hô hấp (KOH):</strong> thấy sợi nấm phân nhánh góc 45 độ đặc trưng.<br>
+                  • <strong>Nuôi cấy mọc Aspergillus</strong> từ ít nhất <strong>02 mẫu đờm</strong> hoặc dịch tiết hô hấp dưới độc lập.<br>
+                  • <em>Mô bệnh học:</em> sợi nấm có vách ngăn phân nhánh góc 45 độ xâm nhập mô phổi kèm phản ứng viêm u hạt.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="infobox danger">
+          <i class="fa-solid fa-triangle-exclamation infobox-icon" style="color: var(--red);"></i>
+          <div>
+            <strong>Lưu ý lâm sàng quan trọng loại trừ Lao & NTM:</strong>
+            Trước khi khẳng định chẩn đoán CPA, bắt buộc phải làm các xét nghiệm vi sinh (GeneXpert MTB/RIF, soi nhuộm kháng cồn toan AFB, nuôi cấy MGIT) để <strong>loại trừ hoàn toàn tình trạng Lao phổi tiến triển hoặc bệnh phổi do Mycobacteria không điển hình (NTM)</strong> vốn có hình ảnh tổn thương tạo hang rất tương đồng.
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 4: EDITORIAL SVG FLOWCHART - LƯU ĐỒ CHẨN ĐOÁN -->
+    <section class="sec-card" id="sec-4">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-diagram-project"></i></div>
+        <div class="sec-title">4. Editorial SVG Flowchart — Lưu Đồ Tiếp Cận Chẩn Đoán CPA Tại Cơ Sở Y Tế</div>
+      </div>
+      <div class="sec-body">
+        
+        <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6;">
+          Lưu đồ phân luồng chuẩn hóa theo Quyết định số 3651/QĐ-BYT, từ khi tiếp nhận triệu chứng nghi ngờ &gt; 3 tháng, chụp phim sàng lọc, loại trừ Lao/NTM đến chỉ định xét nghiệm kháng thể IgG và can thiệp dịch BALF chuyên sâu.
+        </p>
+
+        <!-- SVG FLOWCHART 1: DIAGNOSTIC ALGORITHM -->
+        <div class="flowchart-card">
+          <div class="flowchart-header">
+            <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--accent);"></i> Sơ Đồ Tiếp Cận Chẩn Đoán Phân Luồng CPA (BYT 2024)</div>
+            <span class="badge badge-blue">Pure Orthogonal SVG</span>
+          </div>
+          <div class="flowchart-svg-container">
+            <svg class="flowchart-svg" viewBox="0 0 880 540" width="880" height="540" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <marker id="arr1" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+                </marker>
+                <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+                </marker>
+                <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+                </marker>
+              </defs>
+
+              <!-- Level 1: Entry Node -->
+              <rect x="250" y="15" width="380" height="46" rx="10" fill="var(--blue-bg)" stroke="var(--blue)" stroke-width="2"/>
+              <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="13" fill="var(--text)">BỆNH NHÂN HO MÁU / HO KHẠC / SỤT CÂN > 3 THÁNG</text>
+
+              <!-- Path 1 -> Level 2 -->
+              <line x1="440" y1="61" x2="440" y2="85" stroke="#0284c7" stroke-width="2" marker-end="url(#arr1)"/>
+
+              <!-- Level 2: CXR -->
+              <rect x="330" y="85" width="220" height="42" rx="8" fill="var(--surface-2)" stroke="var(--border)" stroke-width="1.5"/>
+              <text x="440" y="110" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="13" fill="var(--text)">CHỤP X-QUANG NGỰC</text>
+
+              <!-- Branches from CXR -->
+              <path d="M 330 106 L 190 106 L 190 145" fill="none" stroke="#0284c7" stroke-width="1.5" marker-end="url(#arr1)"/>
+              <text x="245" y="100" text-anchor="middle" font-size="11" font-weight="600" fill="var(--green)">Có tổn thương hang/u nấm</text>
+
+              <path d="M 550 106 L 690 106 L 690 145" fill="none" stroke="#0284c7" stroke-width="1.5" marker-end="url(#arr1)"/>
+              <text x="635" y="100" text-anchor="middle" font-size="11" font-weight="600" fill="var(--amber)">Không rõ tổn thương</text>
+
+              <!-- Level 3 Left: Rule out TB & CT -->
+              <rect x="80" y="145" width="220" height="46" rx="8" fill="var(--amber-bg)" stroke="var(--amber)" stroke-width="1.5"/>
+              <text x="190" y="166" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="12" fill="var(--text)">LOẠI TRỪ LAO / NTM</text>
+              <text x="190" y="182" text-anchor="middle" font-size="11" fill="var(--text-muted)">(GeneXpert MTB, soi trực tiếp)</text>
+
+              <!-- Level 3 Right: CT Chest -->
+              <rect x="580" y="145" width="220" height="46" rx="8" fill="var(--surface-2)" stroke="var(--border)" stroke-width="1.5"/>
+              <text x="690" y="166" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="12" fill="var(--text)">CLVT NGỰC CẢN QUANG</text>
+              <text x="690" y="182" text-anchor="middle" font-size="11" fill="var(--text-muted)">(Đánh giá u nấm, hang, màng phổi)</text>
+
+              <!-- Line Left to IgG -->
+              <line x1="190" y1="191" x2="190" y2="230" stroke="#0284c7" stroke-width="1.5" marker-end="url(#arr1)"/>
+
+              <!-- Right Branches from CT -->
+              <path d="M 640 191 L 640 220 L 250 220 L 250 230" fill="none" stroke="#0284c7" stroke-width="1.5" marker-end="url(#arr1)"/>
+              <text x="460" y="215" text-anchor="middle" font-size="11" font-weight="600" fill="var(--green)">Có hang / u nấm / dày màng phổi</text>
+
+              <path d="M 740 191 L 740 250" fill="none" stroke="#dc2626" stroke-width="1.5" marker-end="url(#arrRed)"/>
+              <text x="745" y="225" text-anchor="start" font-size="11" font-weight="600" fill="var(--red)">Không có hang</text>
+              
+              <rect x="670" y="250" width="160" height="40" rx="8" fill="var(--surface-2)" stroke="var(--border)" stroke-width="1.5"/>
+              <text x="750" y="275" text-anchor="middle" font-size="11" font-weight="700" fill="var(--text-muted)">TÌM NGUYÊN NHÂN KHÁC</text>
+
+              <!-- Level 4: IgG Test -->
+              <rect x="80" y="230" width="240" height="46" rx="8" fill="var(--blue-bg)" stroke="var(--blue)" stroke-width="1.8"/>
+              <text x="200" y="251" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="12" fill="var(--text)">XÉT NGHIỆM ASPERGILLUS IgG</text>
+              <text x="200" y="267" text-anchor="middle" font-size="11" fill="var(--text-muted)">(ELISA hoặc Test nhanh LFD)</text>
+
+              <!-- IgG Branches -->
+              <path d="M 130 276 L 130 340" fill="none" stroke="#059669" stroke-width="2" marker-end="url(#arrGreen)"/>
+              <text x="135" y="305" text-anchor="start" font-size="11" font-weight="800" fill="var(--green)">Dương Tính</text>
+
+              <path d="M 270 276 L 270 310 L 460 310 L 460 330" fill="none" stroke="#d97706" stroke-width="1.5" marker-end="url(#arr1)"/>
+              <text x="350" y="304" text-anchor="middle" font-size="11" font-weight="700" fill="var(--amber)">Âm Tính / Nghi Ngờ</text>
+
+              <!-- Level 5: Direct Confirm (Left) -->
+              <rect x="40" y="340" width="200" height="65" rx="10" fill="var(--green-bg)" stroke="var(--green)" stroke-width="2"/>
+              <text x="140" y="365" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="13" fill="var(--green)">CHẨN ĐOÁN XÁC ĐỊNH CPA</text>
+              <text x="140" y="385" text-anchor="middle" font-size="11" fill="var(--text)">Thỏa mãn 3 tiêu chuẩn BYT</text>
+              <text x="140" y="398" text-anchor="middle" font-size="10" font-weight="600" fill="var(--accent)">Khởi động phác đồ điều trị</text>
+
+              <!-- Level 5: Deep Micro Panel (Middle) -->
+              <rect x="330" y="330" width="310" height="85" rx="10" fill="var(--surface-2)" stroke="var(--border)" stroke-width="1.5"/>
+              <text x="485" y="352" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="12" fill="var(--text)">CAN THIỆP VI SINH CHUYÊN SÂU:</text>
+              <text x="345" y="372" text-anchor="start" font-size="11" fill="var(--text-muted)">• Soi tươi KOH tìm sợi nấm đờm / dịch BALF</text>
+              <text x="345" y="390" text-anchor="start" font-size="11" fill="var(--text-muted)">• Nuôi cấy nấm đờm ≥ 2 mẫu dương tính</text>
+              <text x="345" y="408" text-anchor="start" font-size="11" fill="var(--text-muted)">• Xét nghiệm GM dịch BALF (cut-off ≥ 0.67) / PCR</text>
+
+              <!-- Branches from Deep Micro Panel -->
+              <path d="M 400 415 L 400 460 L 220 460 L 220 405" fill="none" stroke="#059669" stroke-width="2" marker-end="url(#arrGreen)"/>
+              <text x="280" y="452" text-anchor="middle" font-size="11" font-weight="800" fill="var(--green)">Có bằng chứng vi sinh</text>
+
+              <path d="M 540 415 L 540 465" fill="none" stroke="#dc2626" stroke-width="1.5" marker-end="url(#arrRed)"/>
+              <text x="545" y="445" text-anchor="start" font-size="11" font-weight="700" fill="var(--red)">Không có bằng chứng</text>
+
+              <!-- Level 6: Negative Result -->
+              <rect x="440" y="465" width="230" height="50" rx="8" fill="var(--red-bg)" stroke="var(--red)" stroke-width="1.5"/>
+              <text x="555" y="488" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="12" fill="var(--red)">CHƯA ĐỦ TIÊU CHUẨN CPA</text>
+              <text x="555" y="504" text-anchor="middle" font-size="11" fill="var(--text-muted)">Theo dõi sát lâm sàng & CLVT sau 3-6 tháng</text>
+            </svg>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 5: PHÁC ĐỒ ĐIỀU TRỊ THUỐC & TDM -->
+    <section class="sec-card" id="sec-5">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-pills"></i></div>
+        <div class="sec-title">5. Nguyên Tắc Điều Trị Nội Khoa, Phác Đồ Thuốc Kháng Nấm & Theo Dõi TDM</div>
+      </div>
+      <div class="sec-body">
+
+        <div class="sec-subtitle"><i class="fa-solid fa-bullseye"></i> Mục Tiêu & Nguyên Tắc Cốt Lõi</div>
+        <div class="infobox success">
+          <i class="fa-solid fa-circle-check infobox-icon" style="color: var(--green);"></i>
+          <div>
+            <strong>Mục tiêu điều trị:</strong> Loại trừ tối đa tổn thương nấm bằng nội khoa/ngoại khoa; ngăn chặn phá hủy nhu mô và tiến triển xơ phổi; cải thiện triệu chứng; giảm tối đa tử vong và dự phòng đột biến đề kháng thuốc.<br>
+            <strong>Nguyên tắc sử dụng thuốc:</strong><br>
+            • <strong>Ưu tiên nhóm Azol đường uống</strong> do sinh khả dụng đường uống cao.<br>
+            • <strong>Thuốc đường tĩnh mạch</strong> chỉ chỉ định khi: bệnh diễn tiến nặng, SAIA, thất bại/không dung nạp thuốc uống, hoặc có bằng chứng kháng thuốc. Chuyển sang đường uống duy trì ngay khi ổn định.<br>
+            • Điều trị <strong>đúng liều và đủ thời gian (tối thiểu 6 tháng)</strong>. Đo nồng độ thuốc trong máu (TDM) để cá thể hóa liều lượng.
+          </div>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-prescription-bottle-medical"></i> Chi Tiết Các Phác Đồ Điều Trị Nội Khoa (Azol & Amphotericin B)</div>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width: 22%;">Bậc Phác Đồ</th>
+                <th style="width: 28%;">Hoạt Chất & Liều Dùng</th>
+                <th>Chỉ Định & Lưu Ý Lâm Sàng</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <strong style="color: var(--green);"><i class="fa-solid fa-star"></i> Phác Đồ Ưu Tiên Hàng Đầu</strong><br>
+                  <span class="rx-tag preferred">First-Line Oral</span>
+                </td>
+                <td>
+                  <strong>Itraconazol (Viên uống)</strong><br>
+                  • Liều chuẩn: <span class="rx-tag highlight">200 mg x 2 lần/ngày</span> (uống ngay sau ăn)<br>
+                  • Người già / thể trạng yếu / nhẹ cân: giảm tổng liều <strong>300 mg/ngày</strong> hoặc <strong>200 mg x 1 lần/ngày</strong>.<br>
+                  • <em>Thời gian:</em> Tối thiểu <strong>6 tháng</strong>.
+                </td>
+                <td>
+                  Chỉ định cho bệnh nhân CPA có chỉ định nội khoa, không có bằng chứng kháng Itraconazol trên kháng nấm đồ và không có tương tác thuốc chống chỉ định.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong style="color: var(--blue);"><i class="fa-solid fa-arrows-rotate"></i> Phác Đồ Thay Thế 1</strong><br>
+                  <span class="rx-tag highlight">Alternative 1</span>
+                </td>
+                <td>
+                  <strong>Voriconazol (Viên uống)</strong><br>
+                  • Liều: <span class="rx-tag highlight">150 - 200 mg x 2 lần/ngày</span> (uống trước/sau ăn 1h)<br>
+                  • Cần giảm liều ở người bệnh <strong>&gt; 70 tuổi</strong>.<br>
+                  • <em>Thời gian:</em> Tối thiểu <strong>6 tháng</strong>.
+                </td>
+                <td>
+                  Chỉ định khi không sử dụng được Itraconazol (không dung nạp, tác dụng phụ nặng, tương tác thuốc hoặc kháng thuốc), hoặc không đáp ứng lâm sàng với Itraconazol.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong style="color: var(--orange);"><i class="fa-solid fa-arrows-rotate"></i> Phác Đồ Thay Thế 2</strong><br>
+                  <span class="rx-tag warn">Alternative 2</span>
+                </td>
+                <td>
+                  <strong>Posaconazol (Uống)</strong><br>
+                  • <em>Hỗn dịch uống:</em> <strong>400 mg x 2 lần/ngày</strong><br>
+                  • <em>Viên nén phóng thích chậm:</em> <span class="rx-tag highlight">300 mg x 1 lần/ngày</span> (người già/yếu dùng 200 mg/ngày)<br>
+                  • <em>Thời gian:</em> Tối thiểu <strong>6 tháng</strong>.
+                </td>
+                <td>
+                  Chỉ định khi không sử dụng được cả Itraconazol và Voriconazol (thất bại điều trị, kháng thuốc, tác dụng phụ, tương tác thuốc chống chỉ định).
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong style="color: var(--red);"><i class="fa-solid fa-truck-medical"></i> Thể Nặng, Nguy Kịch & SAIA</strong><br>
+                  <span class="rx-tag alert">Intravenous (IV)</span>
+                </td>
+                <td>
+                  <strong>Thuốc Kháng Nấm Đường Tĩnh Mạch:</strong><br>
+                  • <strong>Amphotericin B liposome (AmBisome):</strong> <span class="rx-tag alert">3 mg/kg/ngày</span> (max 5 mg/kg/ngày)<br>
+                  • <strong>Amphotericin B deoxycholate (quy ước):</strong> 0,5 - 1 mg/kg/ngày (max 1,5 mg/kg/ngày)<br>
+                  • <strong>Amphotericin B phức hợp lipid (ABLC):</strong> 5 mg/kg/ngày<br>
+                  • <strong>Voriconazol IV:</strong> Nạp 6 mg/kg/12h x 2 lần (ngày 1) → Duy trì 4 mg/kg/12h x 2 lần<br>
+                  • <strong>Itraconazol IV:</strong> Nạp 200 mg x 2 lần/ngày (2 ngày đầu) → Duy trì 200 mg x 1 lần/ngày<br>
+                  • <strong>Micafungin:</strong> 150 mg/ngày | <strong>Caspofungin:</strong> Nạp 70 mg → Duy trì 50 mg/ngày (hoặc 70 mg nếu &gt; 80kg)<br>
+                  • <strong>Isavuconazol:</strong> Nạp 200 mg mỗi 8h x 2 ngày → Duy trì 200 mg/ngày
+                </td>
+                <td>
+                  <strong>Quy trình điều trị chuyển tiếp:</strong><br>
+                  Tấn công đường tĩnh mạch từ <strong>2 - 4 tuần</strong> cho đến khi ổn định lâm sàng, sau đó chuyển sang duy trì bằng thuốc nhóm Azol đường uống tối thiểu <strong>6 tháng</strong>.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-chart-line"></i> Bảng 2: Theo Dõi Nồng Độ Thuốc Kháng Nấm Nhóm Azol Trong Máu (TDM)</div>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">
+          Nồng độ Azol trong máu thay đổi lớn theo cá thể, dễ dẫn tới thất bại hoặc độc tính gan thận nặng. Bắt buộc thực hiện TDM nếu điều kiện cho phép:
+        </p>
+
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width: 25%;">Chỉ Số Theo Dõi TDM</th>
+                <th style="width: 25%;">Itraconazol</th>
+                <th style="width: 25%;">Voriconazol</th>
+                <th style="width: 25%;">Posaconazol</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Nồng độ đáy thấp nhất (Trough)</strong></td>
+                <td><span class="rx-tag preferred">&gt; 1 mg/L</span></td>
+                <td><span class="rx-tag preferred">&gt; 2 mg/L</span></td>
+                <td><span class="rx-tag preferred">&gt; 1 mg/L</span></td>
+              </tr>
+              <tr>
+                <td><strong>Giới hạn trên (Ngưỡng gây độc)</strong></td>
+                <td>
+                  • <strong>&lt; 4 mg/L</strong> <em>(Đo bằng HPLC)</em><br>
+                  • <strong>&lt; 17 mg/L</strong> <em>(Đo bằng Bioassay)</em>
+                </td>
+                <td><strong style="color: var(--red);">5 - 6 mg/L</strong></td>
+                <td>Chưa có đủ dữ liệu lâm sàng để khuyến cáo</td>
+              </tr>
+              <tr>
+                <td><strong>Thời điểm lấy mẫu máu xét nghiệm</strong></td>
+                <td><strong>Ngày thứ 7 - 14</strong> kể từ khi bắt đầu dùng thuốc</td>
+                <td><strong>Ngày thứ 2 - 5</strong> kể từ khi bắt đầu dùng thuốc</td>
+                <td>
+                  • <strong>Ngày thứ 5 - 7</strong> <em>(Viên giải phóng chậm)</em><br>
+                  • <strong>Sau ngày thứ 3</strong> <em>(Dạng viên/IV)</em>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 6: CHIẾN LƯỢC ĐIỀU TRỊ THEO THỂ & NGOẠI KHOA -->
+    <section class="sec-card" id="sec-6">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-scalpel-line-dashed"></i></div>
+        <div class="sec-title">6. Chiến Lược Theo Thể Bệnh & Điều Trị Ngoại Khoa Lồng Ngực</div>
+      </div>
+      <div class="sec-body">
+
+        <div class="sec-subtitle"><i class="fa-solid fa-sliders"></i> Phác Đồ Can Thiệp Theo Từng Thể Lâm Sàng CPA</div>
+        <div class="matrix-grid">
+          
+          <div class="matrix-card">
+            <div class="matrix-card-accent" style="background: var(--green);"></div>
+            <div class="matrix-card-hdr">
+              <div class="matrix-card-icon" style="background: var(--green-bg); color: var(--green);"><i class="fa-solid fa-circle-dot"></i></div>
+              <div class="matrix-card-title">Thể U Nấm Đơn Độc (Aspergilloma)</div>
+            </div>
+            <div class="matrix-card-body">
+              • <em>Không dùng thuốc:</em> Không triệu chứng và ổn định hình ảnh liên tục từ <strong>6 tháng - 2 năm</strong>. Theo dõi lâm sàng, vi sinh, X-quang mỗi 1 - 3 tháng.<br>
+              • <em>Phẫu thuật cắt u nấm:</em> Chỉ định hàng đầu khi có triệu chứng (đặc biệt ho ra máu). Dùng thuốc kháng nấm trước mổ tối thiểu <strong>2 tuần</strong>.<br>
+              • <em>Điều trị thuốc kháng nấm:</em> Khi có triệu chứng nhưng không thể phẫu thuật.
+            </div>
+          </div>
+
+          <div class="matrix-card">
+            <div class="matrix-card-accent" style="background: var(--teal);"></div>
+            <div class="matrix-card-hdr">
+              <div class="matrix-card-icon" style="background: var(--teal-bg); color: var(--teal);"><i class="fa-solid fa-circle-nodes"></i></div>
+              <div class="matrix-card-title">Thể Nốt (Aspergillus Nodules)</div>
+            </div>
+            <div class="matrix-card-body">
+              • <em>Không dùng thuốc:</em> Nốt nấm đơn độc không triệu chứng, hoặc đã được phẫu thuật cắt bỏ triệt để. Theo dõi CRP, máu lắng, X-quang, IgG mỗi 3 tháng.<br>
+              • <em>Dùng thuốc kháng nấm:</em> Khi nốt nấm ở người suy giảm miễn dịch, có triệu chứng không mổ được, hoặc có nhiều nốt nấm.
+            </div>
+          </div>
+
+          <div class="matrix-card">
+            <div class="matrix-card-accent" style="background: var(--accent);"></div>
+            <div class="matrix-card-hdr">
+              <div class="matrix-card-icon" style="background: var(--blue-bg); color: var(--accent);"><i class="fa-solid fa-lungs"></i></div>
+              <div class="matrix-card-title">Thể Hang (CCPA) & Thể Xơ Hóa (CFPA)</div>
+            </div>
+            <div class="matrix-card-body">
+              • <em>Không dùng thuốc:</em> Không triệu chứng, hình ảnh không xấu đi, hiệu giá IgG ổn định.<br>
+              • <em>Dùng thuốc kháng nấm:</em> Có triệu chứng / tổn thương tiến triển / IgG tăng. Thời gian dùng <strong>≥ 6 tháng</strong> (tổn thương khu trú) hoặc <strong>≥ 24 tháng / lâu hơn</strong> (tổn thương 2 bên lan rộng).<br>
+              • <em>Phẫu thuật:</em> Cắt thùy phổi khi tổn thương khu trú, ho máu nặng hoặc thất bại nội khoa.
+            </div>
+          </div>
+
+          <div class="matrix-card">
+            <div class="matrix-card-accent" style="background: var(--red);"></div>
+            <div class="matrix-card-hdr">
+              <div class="matrix-card-icon" style="background: var(--red-bg); color: var(--red);"><i class="fa-solid fa-triangle-exclamation"></i></div>
+              <div class="matrix-card-title">Thể Bán Xâm Lấn (SAIA)</div>
+            </div>
+            <div class="matrix-card-body">
+              • Điều trị tương tự như nấm phổi xâm lấn (IPA).<br>
+              • Ưu tiên <strong>Voriconazol truyền tĩnh mạch 2 tuần</strong>, sau đó chuyển sang Azol đường uống duy trì từ <strong>8 - 12 tuần</strong>.
+            </div>
+          </div>
+
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-hospital-user"></i> Chỉ Định & Quy Định Thuốc Kháng Nấm Trong Phẫu Thuật Lồng Ngực</div>
+        <div class="infobox info">
+          <i class="fa-solid fa-notes-medical infobox-icon" style="color: var(--blue);"></i>
+          <div>
+            <strong>Chỉ định phẫu thuật lồng ngực:</strong><br>
+            1. U nấm phổi đơn giản (Simple aspergilloma).<br>
+            2. CCPA có tổn thương khu trú và toàn trạng bệnh nhân cho phép phẫu thuật.<br>
+            3. Ho ra máu nặng, tái phát thất bại với điều trị nội khoa hoặc can thiệp nút mạch phế quản (BAE).<br>
+            4. SAIA: Khi tổn thương sát các mạch máu lớn hoặc phế quản chính có nguy cơ vỡ thủng.<br><br>
+            <strong>Phương pháp phẫu thuật:</strong> Cắt hình chêm, cắt phân thùy, cắt thùy phổi hoặc cắt một bên phổi. Với bệnh nhân suy kiệt chức năng hô hấp thấp: mở hang lấy u nấm kết hợp làm xẹp hang bằng vạt cơ tự thân hoặc silicon.<br><br>
+            <strong>Quy định dùng thuốc kháng nấm chu phẫu:</strong><br>
+            • <em>Trước mổ:</em> Điều trị thuốc kháng nấm tối thiểu <strong>2 tuần</strong> trước phẫu thuật.<br>
+            • <em>Sau mổ u nấm đơn giản cắt sạch, không rơi vãi nấm:</em> <strong>Không cần dùng thuốc kháng nấm sau mổ</strong>.<br>
+            • <em>Sau mổ CCPA phức tạp, có rơi vãi nấm, cắt không sạch, rò phế quản màng phổi hoặc cấy dương:</em> <strong>Bắt buộc dùng thuốc kháng nấm IV ngay sau mổ (2 tuần)</strong>, duy trì tối thiểu <strong>2 tháng</strong> và kéo dài hơn nếu tổn thương còn sót.
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 7: CẤP CỨU HO RA MÁU & NÚT MẠCH BAE -->
+    <section class="sec-card" id="sec-7">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-droplet"></i></div>
+        <div class="sec-title">7. Quản Lý Cấp Cứu Ho Ra Máu Nặng & Can Thiệp Nút Mạch Phế Quản (BAE)</div>
+      </div>
+      <div class="sec-body">
+
+        <div class="sec-subtitle"><i class="fa-solid fa-heart-pulse"></i> Sinh Bệnh Học & Phân Mức Độ Ho Ra Máu</div>
+        <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.65;">
+          Ho ra máu gặp ở <strong>50% - 90%</strong> bệnh nhân có u nấm Aspergillus do vỡ phình mạch thành hang (Vascular aneurysm), u nấm cọ xát cơ học hoặc độc tố nấm hủy hoại vỏ mạch.
+        </p>
+
+        <div class="matrix-grid">
+          <div class="matrix-card">
+            <div class="matrix-card-accent" style="background: var(--red);"></div>
+            <div class="matrix-card-hdr">
+              <div class="matrix-card-icon" style="background: var(--red-bg); color: var(--red);"><i class="fa-solid fa-code-branch"></i></div>
+              <div class="matrix-card-title">Nguồn Gốc Mạch Máu Chảy</div>
+            </div>
+            <div class="matrix-card-body">
+              • <strong>90% xuất phát từ hệ động mạch hệ thống</strong> (động mạch phế quản giãn tăng sinh, động mạch gian sườn, dưới đòn, vú trong...).<br>
+              • <strong>10% xuất phát từ hệ động mạch phổi</strong> hoặc do giả phình động mạch phổi (Pulmonary artery pseudoaneurysm).
+            </div>
+          </div>
+
+          <div class="matrix-card">
+            <div class="matrix-card-accent" style="background: var(--amber);"></div>
+            <div class="matrix-card-hdr">
+              <div class="matrix-card-icon" style="background: var(--amber-bg); color: var(--amber);"><i class="fa-solid fa-gauge-high"></i></div>
+              <div class="matrix-card-title">Phân Mức Độ Ho Máu (24 Giờ)</div>
+            </div>
+            <div class="matrix-card-body">
+              • <em>Nhẹ:</em> Lượng máu &lt; 50 ml / 24h.<br>
+              • <em>Trung bình:</em> 50 ml đến &lt; 200 ml / 24h.<br>
+              • <em>Nặng:</em> <strong>≥ 200 ml / 24h</strong> (hoặc ≥ 600 ml / 48h).<br>
+              • <em>Rất nặng (Sét đánh):</em> Máu ồ ạt tràn ngập bít tắc đường thở hai phổi gây ngừng hô hấp tuần hoàn.
+            </div>
+          </div>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-kit-medical"></i> Quy Trình Cấp Cứu Ban Đầu & Nội Khoa</div>
+        <div class="infobox danger">
+          <i class="fa-solid fa-bed-pulse infobox-icon" style="color: var(--red);"></i>
+          <div>
+            <strong>1. Tư thế & Hồi sức ABC:</strong> Đặt bệnh nhân nằm bất động, <strong>nằm nghiêng về bên phổi nghi ngờ chảy máu</strong> để bảo vệ bên phổi lành không bị máu chảy tràn gây ngạt thở. Đảm bảo thông khí đường thở, thở oxy, bồi phụ thể tích tuần hoàn.<br>
+            <strong>2. Thuốc cầm máu & Co mạch:</strong><br>
+            • Truyền tĩnh mạch chậm <strong>Acid Tranexamic (Transamin)</strong> liều 0,5 - 1g/lần x 2 - 3 lần/ngày.<br>
+            • Sử dụng thuốc co mạch: <strong>Terlipressin</strong> tiêm tĩnh mạch hoặc <strong>Vasopressin</strong> khí dung.<br>
+            • <em>Cảnh báo an thần/giảm ho:</em> Dùng hết sức thận trọng vì ức chế phản xạ ho gây ứ đọng máu đông bít tắc phế quản dẫn tới suy hô hấp cấp.
+          </div>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-bullseye"></i> Can Thiệp Nút Mạch Phế Quản (BAE) & Nội Soi Phế Quản Cầm Máu</div>
+        <div class="infobox teal">
+          <i class="fa-solid fa-radiation infobox-icon" style="color: var(--teal);"></i>
+          <div>
+            <strong>Can Thiệp Nút Mạch Phế Quản (Bronchial Artery Embolization - BAE):</strong><br>
+            • <strong>Là kỹ thuật can thiệp khẩn cấp quan trọng nhất đối với ho ra máu nặng</strong>.<br>
+            • Tiến hành chụp mạch số hóa xóa nền (DSA) xác định động mạch phế quản bệnh lý xoắn vặn, tăng sinh và đưa vật liệu tắc mạch (hạt PVA, gel xốp Spongel, coil kim loại) để gây tắc mạch thủ phạm.<br>
+            • <strong>Tỷ lệ cầm máu tức thì đạt 67% - 95%</strong>.<br>
+            • Nút động mạch phổi: chỉ định khi nguồn chảy máu từ hệ động mạch phổi hoặc có giả phình mạch phổi.<br><br>
+            <strong>Nội soi phế quản cầm máu tại chỗ:</strong> Bơm nước muối sinh lý lạnh (4°C), bơm Adrenalin pha loãng, keo sinh học (N-Butyl cyanoacrylate), đặt bóng chèn hoặc nút silicone cô lập vùng chảy máu.<br><br>
+            <strong>Phẫu thuật cấp cứu:</strong> Rất ít khi chỉ định trong giai đoạn khẩn cấp do tỷ lệ tử vong cao; chỉ xem xét khi can thiệp nút mạch BAE thất bại và ho máu đe dọa tính mạng.
+          </div>
+        </div>
+
+        <!-- SVG FLOWCHART 2: HEMOPTYSIS ALGORITHM -->
+        <div class="flowchart-card">
+          <div class="flowchart-header">
+            <div class="flowchart-title"><i class="fa-solid fa-arrows-split-up-and-left" style="color: var(--red);"></i> Thuật Toán Xử Trí Cấp Cứu Ho Ra Máu Nặng Trong CPA (BYT 2024 / Radchenko 2017)</div>
+            <span class="badge badge-red">Cấp Cứu Khẩn</span>
+          </div>
+          <div class="flowchart-svg-container">
+            <svg class="flowchart-svg" viewBox="0 0 880 500" width="880" height="500" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <marker id="arrRed2" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+                </marker>
+                <marker id="arrBlue2" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+                </marker>
+                <marker id="arrGreen2" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+                </marker>
+              </defs>
+
+              <!-- Level 1: Entry -->
+              <rect x="300" y="15" width="280" height="44" rx="10" fill="var(--red-bg)" stroke="var(--red)" stroke-width="2"/>
+              <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="13" fill="var(--red)">HO RA MÁU NẶNG (≥ 200 mL / 24h)</text>
+
+              <!-- Line 1 to Branches -->
+              <line x1="440" y1="59" x2="440" y2="80" stroke="#dc2626" stroke-width="2"/>
+              <line x1="220" y1="80" x2="660" y2="80" stroke="#dc2626" stroke-width="2"/>
+              <line x1="220" y1="80" x2="220" y2="105" stroke="#0284c7" stroke-width="2" marker-end="url(#arrBlue2)"/>
+              <line x1="660" y1="80" x2="660" y2="105" stroke="#dc2626" stroke-width="2" marker-end="url(#arrRed2)"/>
+
+              <text x="220" y="98" text-anchor="middle" font-size="11" font-weight="700" fill="var(--blue)">KHÔNG CÓ SUY HÔ HẤP</text>
+              <text x="660" y="98" text-anchor="middle" font-size="11" font-weight="700" fill="var(--red)">CÓ SUY HÔ HẤP / BÍT TẮC</text>
+
+              <!-- Level 2 Left: ICU Standard -->
+              <rect x="80" y="105" width="280" height="85" rx="8" fill="var(--surface-2)" stroke="var(--border)" stroke-width="1.5"/>
+              <text x="220" y="125" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="12" fill="var(--text)">ĐIỀU TRỊ TẠI ICU / HỒI SỨC ABC:</text>
+              <text x="95" y="145" text-anchor="start" font-size="11" fill="var(--text-muted)">• Nằm nghiêng về bên phổi chảy máu</text>
+              <text x="95" y="162" text-anchor="start" font-size="11" fill="var(--text-muted)">• Bồi phụ thể tích tuần hoàn, Tranexamic acid</text>
+              <text x="95" y="179" text-anchor="start" font-size="11" fill="var(--text-muted)">• Soi phế quản & X-quang tại giường</text>
+
+              <!-- Level 2 Right: ICU Intubation -->
+              <rect x="520" y="105" width="280" height="85" rx="8" fill="var(--red-bg)" stroke="var(--red)" stroke-width="1.5"/>
+              <text x="660" y="125" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="12" fill="var(--red)">ĐẶT NỘI KHÍ QUẢN CẤP CỨU:</text>
+              <text x="535" y="145" text-anchor="start" font-size="11" fill="var(--text)">• Đặt ống NKQ nòng đôi / thở máy chọn lọc</text>
+              <text x="535" y="162" text-anchor="start" font-size="11" fill="var(--text)">• Cô lập bảo vệ bên phổi lành không bị sặc</text>
+              <text x="535" y="179" text-anchor="start" font-size="11" fill="var(--text)">• Hồi sức tuần hoàn, cầm máu tạm thời nội soi</text>
+
+              <!-- Merging lines to Bronchoscopy assessment -->
+              <line x1="220" y1="190" x2="220" y2="215" stroke="#0284c7" stroke-width="1.5"/>
+              <line x1="660" y1="190" x2="660" y2="215" stroke="#dc2626" stroke-width="1.5"/>
+              <line x1="220" y1="215" x2="660" y2="215" stroke="#0284c7" stroke-width="1.5"/>
+              <line x1="440" y1="215" x2="440" y2="235" stroke="#0284c7" stroke-width="2" marker-end="url(#arrBlue2)"/>
+
+              <!-- Level 3: Bronchoscopy Findings -->
+              <rect x="290" y="235" width="300" height="42" rx="8" fill="var(--blue-bg)" stroke="var(--blue)" stroke-width="1.5"/>
+              <text x="440" y="260" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="12" fill="var(--text)">NỘI SOI PHẾ QUẢN XÁC ĐỊNH VỊ TRÍ CHẢY MÁU</text>
+
+              <!-- Local Intervention -->
+              <path d="M 330 277 L 220 300" fill="none" stroke="#0284c7" stroke-width="1.5" marker-end="url(#arrBlue2)"/>
+              <path d="M 550 277 L 660 300" fill="none" stroke="#0284c7" stroke-width="1.5" marker-end="url(#arrBlue2)"/>
+
+              <rect x="90" y="300" width="260" height="50" rx="8" fill="var(--surface-2)" stroke="var(--border)" stroke-width="1.5"/>
+              <text x="220" y="320" text-anchor="middle" font-weight="700" font-size="11" fill="var(--text)">Tổn thương trong lòng PQ:</text>
+              <text x="220" y="338" text-anchor="middle" font-size="11" fill="var(--text-muted)">Bơm nước muối lạnh 4°C, đốt nhiệt, Stent</text>
+
+              <rect x="530" y="300" width="260" height="50" rx="8" fill="var(--surface-2)" stroke="var(--border)" stroke-width="1.5"/>
+              <text x="660" y="320" text-anchor="middle" font-weight="700" font-size="11" fill="var(--text)">Không thấy tổn thương khu trú:</text>
+              <text x="660" y="338" text-anchor="middle" font-size="11" fill="var(--text-muted)">Chèn bóng, nút silicone, keo sinh học</text>
+
+              <!-- Lines to BAE -->
+              <line x1="220" y1="350" x2="220" y2="385" stroke="#d97706" stroke-width="1.5"/>
+              <line x1="660" y1="350" x2="660" y2="385" stroke="#d97706" stroke-width="1.5"/>
+              <line x1="220" y1="385" x2="660" y2="385" stroke="#d97706" stroke-width="1.5"/>
+              <line x1="440" y1="385" x2="440" y2="400" stroke="#d97706" stroke-width="2" marker-end="url(#arrBlue2)"/>
+
+              <!-- Level 4: BAE Node -->
+              <rect x="230" y="400" width="420" height="46" rx="10" fill="var(--amber-bg)" stroke="var(--amber)" stroke-width="2"/>
+              <text x="440" y="420" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--text)">GÂY TẮC ĐỘNG MẠCH PHẾ QUẢN (BAE) / ĐỘNG MẠCH HỆ THỐNG</text>
+              <text x="440" y="436" text-anchor="middle" font-size="11" font-weight="600" fill="var(--amber)">Tỷ lệ thành công cầm máu tức thì đạt 67% - 95%</text>
+
+              <!-- Final Outcomes -->
+              <path d="M 310 446 L 220 465" fill="none" stroke="#059669" stroke-width="2" marker-end="url(#arrGreen2)"/>
+              <text x="245" y="458" text-anchor="middle" font-size="10" font-weight="800" fill="var(--green)">Thành công</text>
+
+              <rect x="110" y="465" width="220" height="28" rx="6" fill="var(--green-bg)" stroke="var(--green)" stroke-width="1.5"/>
+              <text x="220" y="483" text-anchor="middle" font-size="11" font-weight="700" fill="var(--green)">Tiếp tục theo dõi & điều trị nội khoa</text>
+
+              <path d="M 570 446 L 660 465" fill="none" stroke="#dc2626" stroke-width="2" marker-end="url(#arrRed2)"/>
+              <text x="635" y="458" text-anchor="middle" font-size="10" font-weight="800" fill="var(--red)">Thất bại / Chảy tiếp</text>
+
+              <rect x="550" y="465" width="220" height="28" rx="6" fill="var(--red-bg)" stroke="var(--red)" stroke-width="1.5"/>
+              <text x="660" y="483" text-anchor="middle" font-size="11" font-weight="800" fill="var(--red)">XEM XÉT PHẪU THUẬT CẤP CỨU</text>
+            </svg>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 8: TRÍCH DẪN Y VĂN & THAO TÁC -->
+    <section class="sec-card" id="sec-citations">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-book-bookmark"></i></div>
+        <div class="sec-title">8. Trích Dẫn Y Văn & Tài Liệu Tham Khảo Chuẩn AMA</div>
+      </div>
+      <div class="sec-body">
+        
+        <div class="citation-box">
+          <strong>Trích dẫn tài liệu gốc (AMA Style):</strong><br>
+          1. Bộ Y tế Việt Nam. <em>Hướng dẫn chẩn đoán và điều trị bệnh nấm Aspergillus phổi mạn tính</em>. Ban hành kèm theo Quyết định số 3651/QĐ-BYT ngày 03 tháng 12 năm 2024 của Bộ trưởng Bộ Y tế. Hà Nội: Bộ Y tế; 2024.<br><br>
+          <strong>Các khuyến cáo & công trình nghiên cứu liên quan:</strong><br>
+          2. Denning DW, Cadranel J, Beigelman-Aubry C, et al. Chronic pulmonary aspergillosis: rationale and clinical guidelines for diagnosis and management in Europe. <em>Eur Respir J</em>. 2016;47(1):45-68.<br>
+          3. Patterson TF, Thompson GR 3rd, Denning DW, et al. Practice Guidelines for the Diagnosis and Management of Aspergillosis: 2016 Update by the Infectious Diseases Society of America (IDSA). <em>Clin Infect Dis</em>. 2016;63(4):e1-e60.<br>
+          4. Radchenko C, Alraiyes AH, Shojaee S. A systematic approach to the management of massive hemoptysis. <em>J Thorac Dis</em>. 2017;9(Suppl 10):S1069-S1086.<br>
+          5. Bệnh viện Phổi Trung ương. Nghiên cứu dịch tễ học và gánh nặng bệnh nấm Aspergillus phổi mạn tính tại Việt Nam. <em>Tạp chí Lao và Bệnh Phổi</em>. 2022;38(2):15-24.
+        </div>
+
+        <div class="btn-row">
+          <a href="../guidelines.html" class="btn btn-primary">
+            <i class="fa-solid fa-arrow-left"></i> Quay lại Kho Guidelines
+          </a>
+          <button class="btn" onclick="window.print()">
+            <i class="fa-solid fa-print"></i> In / Xuất PDF Hướng Dẫn
+          </button>
+          <a href="../../../../index.html#/docspace" class="btn">
+            <i class="fa-solid fa-id-badge"></i> Mở Không Gian Lâm Sàng DocSpace
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    // Theme toggle
+    const themeBtn = document.getElementById('themeToggle');
+    const htmlEl = document.documentElement;
+
+    function applyTheme(theme) {
+      htmlEl.setAttribute('data-theme', theme);
+      try {
+        localStorage.setItem('clini_theme', theme);
+      } catch(e) {}
+      if (themeBtn) {
+        themeBtn.innerHTML = theme === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+      }
+    }
+
+    const savedTheme = (function() {
+      try { return localStorage.getItem('clini_theme') || 'light'; } catch(e) { return 'light'; }
+    })();
+    applyTheme(savedTheme);
+
+    if (themeBtn) {
+      themeBtn.addEventListener('click', () => {
+        const currentTheme = htmlEl.getAttribute('data-theme');
+        applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+      });
+    }
+  </script>
+</body>
+</html>

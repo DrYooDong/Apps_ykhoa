@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tóm tắt Toàn vẹn 100% Hướng dẫn Lâm sàng 2026 AHA/ACC/ADA/ASN về Phân giai đoạn CKM (Stage 0-4b), PREVENT-CVD, Nhóm chăm sóc đa chuyên khoa, Phác đồ điều trị SGLT2i, GLP-1 RA, nsMRA Finerenone và GDMT Suy tim/ASCVD.">
+  <title>2026 AHA/ACC/ADA/ASN CKM Syndrome Guideline – CliniPortal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #059669; --green-bg: #f0fdf4; --green-light: #a7f3d0;
+      --orange: #d97706; --orange-bg: #fffbeb; --orange-light: #fde68a;
+      --red: #dc2626; --red-bg: #fef2f2; --red-light: #fca5a5;
+      --blue: #2563eb; --blue-bg: #eff6ff; --blue-light: #bfdbfe;
+      --teal: #0d9488; --teal-bg: #f0fdfa; --teal-light: #99f6e4;
+      --purple: #7c3aed; --purple-bg: #faf5ff; --purple-light: #ddd6fe;
+      --accent: #0284c7;
+      --bg: #f0f4f8; --surface: #ffffff; --surface-2: #f8fafc;
+      --border: #cbd5e1; --border-light: #e2e8f0;
+      --text: #0f172a; --text-muted: #475569; --text-faint: #94a3b8;
+      --radius: 16px; --tr: 220ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [data-theme="dark"] {
+      --green: #10b981; --green-bg: rgba(6, 78, 59, 0.4); --green-light: #047857;
+      --orange: #f59e0b; --orange-bg: rgba(120, 53, 15, 0.4); --orange-light: #b45309;
+      --red: #ef4444; --red-bg: rgba(127, 29, 29, 0.4); --red-light: #b91c1c;
+      --blue: #38bdf8; --blue-bg: rgba(30, 58, 138, 0.4); --blue-light: #1d4ed8;
+      --teal: #14b8a6; --teal-bg: rgba(17, 94, 89, 0.4); --teal-light: #0f766e;
+      --purple: #c084fc; --purple-bg: rgba(76, 29, 149, 0.4); --purple-light: #6d28d9;
+      --accent: #38bdf8;
+      --bg: #0f172a; --surface: #1e293b; --surface-2: #0f172a;
+      --border: #334155; --border-light: #1e293b;
+      --text: #f8fafc; --text-muted: #cbd5e1; --text-faint: #64748b;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; font-size: 15px; background: var(--bg); color: var(--text); line-height: 1.65; min-height: 100vh; }
+
+    /* TOP NAV */
+    .topnav { position: sticky; top: 0; z-index: 200; background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(18px); border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 1rem; padding: 0 1.5rem; height: 56px; }
+    [data-theme="dark"] .topnav { background: rgba(30, 41, 59, 0.9); }
+    .topnav-back { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--accent); text-decoration: none; font-size: 0.82rem; font-weight: 700; padding: 0.3rem 0.75rem; border-radius: 8px; transition: background var(--tr); white-space: nowrap; }
+    .topnav-back:hover { background: var(--blue-bg); }
+    .topnav-divider { width: 1px; height: 18px; background: var(--border-light); flex-shrink: 0; }
+    .topnav-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .topnav-right { margin-left: auto; display: flex; align-items: center; gap: 0.6rem; }
+
+    /* HERO */
+    .hero { background: linear-gradient(135deg, #0369a1 0%, #0284c7 40%, #0d9488 100%); color: #fff; padding: 3rem 1.5rem 4.5rem; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 60%, rgba(56, 189, 248, 0.3) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(20, 184, 166, 0.25) 0%, transparent 55%); }
+    .hero-inner { max-width: 1060px; margin: 0 auto; position: relative; z-index: 1; }
+    .hero-badges { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255, 255, 255, 0.16); border: 1px solid rgba(255, 255, 255, 0.28); border-radius: 20px; padding: 0.3rem 0.9rem; font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: #e0f2fe; }
+    .hero-badge.highlight { background: rgba(234, 179, 8, 0.25); border-color: rgba(253, 224, 71, 0.5); color: #fef08a; }
+    .hero-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 0.85rem; }
+    .hero-title span { display: block; background: linear-gradient(90deg, #7dd3fc, #6ee7b7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 0.62em; font-weight: 700; letter-spacing: 0; margin-bottom: 0.2rem; }
+    .hero-subtitle { font-size: 0.95rem; opacity: 0.92; max-width: 860px; margin-bottom: 1.75rem; line-height: 1.65; }
+    
+    /* PILLARS NAV STRIP */
+    .pillars-nav { position: sticky; top: 56px; z-index: 190; background: var(--surface); border-bottom: 1px solid var(--border-light); padding: 0.65rem 1.5rem; }
+    .pillars-nav-inner { max-width: 1060px; margin: 0 auto; display: flex; gap: 0.6rem; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .pillar-tab { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.45rem 0.85rem; border-radius: 10px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.78rem; font-weight: 700; color: var(--text-muted); border: 1px solid var(--border-light); background: var(--surface-2); text-decoration: none; white-space: nowrap; transition: all var(--tr); }
+    .pillar-tab:hover { border-color: var(--accent); color: var(--accent); background: var(--blue-bg); }
+
+    /* PAGE CONTENT CONTAINER */
+    .page-content { max-width: 1060px; margin: 0 auto; padding: 2.25rem 1.5rem; display: flex; flex-direction: column; gap: 2rem; }
+
+    /* SECTION CARDS */
+    .sec-card { background: var(--surface); border: 1px solid var(--border-light); border-radius: var(--radius); overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.03); scroll-margin-top: 110px; }
+    .sec-hdr { padding: 1.15rem 1.5rem; border-bottom: 1px solid var(--border-light); background: var(--surface-2); display: flex; align-items: center; justify-content: space-between; }
+    .sec-hdr-left { display: flex; align-items: center; gap: 0.75rem; }
+    .sec-hdr-icon { font-size: 1.15rem; color: var(--accent); background: var(--blue-bg); width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--blue-light); flex-shrink: 0; }
+    .sec-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.1rem; font-weight: 800; color: var(--text); }
+    .sec-body { padding: 1.5rem; display: flex; flex-direction: column; gap: 1.25rem; }
+
+    /* COR & LOE BADGES */
+    .cor-badge { display: inline-flex; align-items: center; gap: 4px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.72rem; font-weight: 800; padding: 0.2rem 0.55rem; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.03em; }
+    .cor-1 { background: #dcfce7; color: #14532d; border: 1px solid #86efac; }
+    .cor-2a { background: #dbeafe; color: #1e40af; border: 1px solid #93c5fd; }
+    .cor-2b { background: #fef3c7; color: #78350f; border: 1px solid #fde68a; }
+    .cor-3-harm { background: #fee2e2; color: #7f1d1d; border: 1px solid #fca5a5; }
+
+    .loe-badge { display: inline-flex; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; font-weight: 700; padding: 0.15rem 0.45rem; border-radius: 4px; background: var(--surface-2); border: 1px solid var(--border-light); color: var(--text-muted); }
+
+    /* CKM STAGE BENTO GRID MATRIX */
+    .matrix-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 0.5rem; }
+    .matrix-card { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; transition: transform var(--tr), box-shadow var(--tr); }
+    .matrix-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+    .matrix-card-hdr { padding: 0.75rem 1rem; color: #fff; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.85rem; font-weight: 800; display: flex; align-items: center; justify-content: space-between; }
+    .matrix-card-hdr.st-0 { background: linear-gradient(135deg, #059669, #10b981); }
+    .matrix-card-hdr.st-1 { background: linear-gradient(135deg, #0284c7, #38bdf8); }
+    .matrix-card-hdr.st-2 { background: linear-gradient(135deg, #d97706, #f59e0b); }
+    .matrix-card-hdr.st-3 { background: linear-gradient(135deg, #7c3aed, #a855f7); }
+    .matrix-card-hdr.st-4 { background: linear-gradient(135deg, #dc2626, #ef4444); }
+    
+    .matrix-card-body { padding: 1rem; display: flex; flex-direction: column; gap: 0.75rem; flex: 1; }
+    .matrix-criteria-list { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; font-size: 0.8rem; color: var(--text); }
+    .matrix-criteria-list li { display: flex; align-items: flex-start; gap: 0.5rem; line-height: 1.45; }
+    .matrix-criteria-list li i { margin-top: 0.2rem; flex-shrink: 0; }
+    
+    .matrix-focus-box { background: var(--surface); border: 1px dashed var(--border); border-radius: 8px; padding: 0.6rem 0.75rem; font-size: 0.78rem; color: var(--text-muted); margin-top: auto; }
+    .matrix-focus-title { font-weight: 800; color: var(--text); font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.75rem; text-transform: uppercase; margin-bottom: 2px; }
+
+    /* ALGORITHM STEP CARDS */
+    .algorithm-container { display: flex; flex-direction: column; gap: 1rem; margin: 0.5rem 0; }
+    .algo-step { background: var(--surface-2); border: 1.5px solid var(--border-light); border-radius: 14px; padding: 1.25rem; display: flex; gap: 1rem; align-items: flex-start; position: relative; }
+    .algo-step-num { width: 36px; height: 36px; border-radius: 10px; background: var(--accent); color: #fff; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 1rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 4px 10px rgba(2, 132, 199, 0.25); }
+    .algo-step-content { flex: 1; min-width: 0; }
+    .algo-step-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 0.95rem; color: var(--text); margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+    .algo-step-desc { font-size: 0.83rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* RX CARDS & TABLES */
+    .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 12px; border: 1px solid var(--border-light); margin: 0.5rem 0; }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 0.83rem; min-width: 750px; text-align: left; }
+    .data-table thead th { padding: 0.8rem 1rem; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; background: var(--surface-2); color: var(--text-muted); border-bottom: 1px solid var(--border-light); }
+    .data-table td { padding: 0.85rem 1rem; border-bottom: 1px solid var(--border-light); vertical-align: top; line-height: 1.55; }
+    .data-table tbody tr:hover td { background: var(--surface-2); }
+
+    .rx-tag { display: inline-block; background: var(--surface-2); color: var(--text-muted); font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; padding: 0.2rem 0.55rem; border-radius: 6px; border: 1px solid var(--border-light); font-weight: 600; }
+    .rx-tag.preferred { background: var(--green-bg); color: var(--green); border-color: var(--green-light); font-weight: 700; }
+    .rx-tag.accent { background: var(--blue-bg); color: var(--accent); border-color: var(--blue-light); font-weight: 700; }
+    .rx-tag.purple { background: var(--purple-bg); color: var(--purple); border-color: var(--purple-light); font-weight: 700; }
+    .rx-tag.alert { background: var(--red-bg); color: var(--red); border-color: var(--red-light); font-weight: 700; }
+
+    /* INFO BOXES */
+    .infobox { display: flex; align-items: flex-start; gap: 0.85rem; padding: 1rem 1.25rem; border-radius: 12px; font-size: 0.85rem; line-height: 1.6; margin: 0.5rem 0; }
+    .infobox-icon { font-size: 1.3rem; flex-shrink: 0; line-height: 1.3; }
+    .infobox.danger { background: var(--red-bg); border: 1px solid var(--red-light); border-left: 4px solid var(--red); color: var(--text); }
+    .infobox.success { background: var(--green-bg); border: 1px solid var(--green-light); border-left: 4px solid var(--green); color: var(--text); }
+    .infobox.warning { background: var(--orange-bg); border: 1px solid var(--orange-light); border-left: 4px solid var(--orange); color: var(--text); }
+    .infobox.info { background: var(--blue-bg); border: 1px solid var(--blue-light); border-left: 4px solid var(--blue); color: var(--text); }
+    .infobox.teal { background: var(--teal-bg); border: 1px solid var(--teal-light); border-left: 4px solid var(--teal); color: var(--text); }
+    .infobox strong { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; color: var(--text); }
+
+    /* GRID CARDS FOR CLINICAL AREAS */
+    .clinical-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem; }
+    .clin-card { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.25rem; display: flex; flex-direction: column; gap: 0.75rem; border-top: 4px solid var(--accent); }
+    .clin-card.blue { border-top-color: var(--blue); }
+    .clin-card.green { border-top-color: var(--green); }
+    .clin-card.purple { border-top-color: var(--purple); }
+    .clin-card.orange { border-top-color: var(--orange); }
+    .clin-card.red { border-top-color: var(--red); }
+    .clin-card-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 0.92rem; color: var(--text); display: flex; align-items: center; gap: 0.5rem; }
+
+    /* EXTRACTED FIGURE & TABLE BOXES */
+    .fig-extract-box { background: var(--surface); border: 1px solid var(--border-light); border-radius: 12px; padding: 1rem 1.25rem; margin: 0.75rem 0; border-left: 4px solid var(--accent); }
+    .fig-extract-hdr { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 0.82rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.3rem; display: flex; align-items: center; gap: 0.4rem; }
+    .fig-extract-desc { font-size: 0.81rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* CITATION BOX & FOOTER */
+    .citation-box { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 12px; padding: 1.25rem; font-size: 0.82rem; color: var(--text-muted); line-height: 1.75; font-style: italic; }
+    .page-footer { max-width: 1060px; margin: 0 auto; padding: 2rem 1.5rem 4rem; text-align: center; font-size: 0.8rem; color: var(--text-faint); border-top: 1px solid var(--border-light); }
+
+    @media (max-width: 768px) {
+      .page-content { padding: 1.25rem 1rem; }
+      .sec-body { padding: 1.1rem 1rem; }
+      .matrix-grid, .clinical-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+  <link rel="stylesheet" href="../../../../../css/components/header.css">
+  <script type="module" src="../../../../../components/header.ts" defer></script>
+</head>
+
+<body>
+  <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
+
+  <!-- TOP NAV -->
+  <nav class="topnav">
+    <a href="../guidelines.html" class="topnav-back">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+      Kho Guidelines
+    </a>
+    <div class="topnav-divider"></div>
+    <div class="topnav-title">🫀 2026 AHA/ACC/ADA/ASN CKM Syndrome Guideline</div>
+    <div class="topnav-right">
+      <span class="cor-badge cor-1">PRACTICE-CHANGING</span>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-badges">
+        <span class="hero-badge"><i class="fa-solid fa-graduation-cap"></i> AHA / ACC / ADA / ASN 2026</span>
+        <span class="hero-badge highlight"><i class="fa-solid fa-star"></i> CLINICAL GUIDELINE FLAGSHIP</span>
+      </div>
+      <h1 class="hero-title">
+        <span>Hội chứng Tim mạch - Thận - Chuyển hóa (Cardiovascular-Kidney-Metabolic Syndrome)</span>
+        Hướng dẫn Phòng ngừa, Phát hiện, Đánh giá và Quản lý Toàn diện
+      </h1>
+      <p class="hero-subtitle">
+        Cẩm nang chuẩn hóa quy trình phân giai đoạn CKM (Stage 0–4b), đánh giá nguy cơ định lượng PREVENT-CVD, mô hình nhóm chăm sóc liên chuyên khoa và phác đồ điều trị đa tầng bảo vệ tim - thận (SGLT2i, GLP-1 RA, nsMRA Finerenone, RASi &amp; ARNI).
+      </p>
+    </div>
+  </div>
+
+  <!-- PILLARS STICKY NAV STRIP -->
+  <div class="pillars-nav">
+    <div class="pillars-nav-inner">
+      <a href="#sec-matrix" class="pillar-tab">📊 1. Phân Giai Đoạn CKM (Stage 0–4b)</a>
+      <a href="#sec-risk" class="pillar-tab">⚡ 2. Nguy Cơ PREVENT &amp; Đa Chuyên Khoa</a>
+      <a href="#sec-risk-mgmt" class="pillar-tab">🎯 3. Quản Lý Béo Phì, T2D &amp; CKD</a>
+      <a href="#sec-stage4" class="pillar-tab">🛡️ 4. Quản Lý Stage 4 (ASCVD &amp; Suy Tim)</a>
+      <a href="#sec-dosing" class="pillar-tab">💊 5. Phác Đồ Liều Dùng Thuốc</a>
+    </div>
+  </div>
+
+  <!-- PAGE CONTENT CONTAINER -->
+  <div class="page-content">
+
+    <!-- SECTION 1: CKM STAGING BENTO MATRIX -->
+    <div class="sec-card" id="sec-matrix">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <div class="sec-hdr-icon"><i class="fa-solid fa-layer-group"></i></div>
+          <h2 class="sec-title">Phần 1: Định Nghĩa, Phân Giai Đoạn, Đánh Giá Nguy Cơ &amp; Theo Dõi Dọc</h2>
+        </div>
+        <span class="cor-badge cor-1">FIGURE 1 &amp; TABLE 4</span>
+      </div>
+      <div class="sec-body">
+        
+        <!-- DEFINITION BOXES -->
+        <div class="infobox info">
+          <span class="infobox-icon">🫀</span>
+          <div>
+            <strong>Định nghĩa Hội chứng Tim mạch - Thận - Chuyển hóa (CKM Syndrome):</strong><br>
+            Hội chứng CKM là một rối loạn hệ thống đặc trưng bởi các tương tác sinh lý bệnh tuần tiến giữa các yếu tố nguy cơ chuyển hóa (như béo phì, đái tháo đường típ 2), bệnh thận mạn (CKD) và hệ tim mạch, dẫn đến rối loạn chức năng đa cơ quan và tỷ lệ biến cố tim mạch bất lợi cao.
+            <div style="margin-top: 0.3rem; font-style: italic; color: var(--text-muted);">
+              Định nghĩa đơn giản hóa: Rối loạn sức khỏe xuất hiện từ các mối liên kết chặt chẽ giữa bệnh tim, bệnh thận, đái tháo đường và béo phì, dẫn đến các kết cục sức khỏe kém cho người bệnh.
+            </div>
+          </div>
+        </div>
+
+        <!-- BENTO MATRIX GRID -->
+        <div class="matrix-grid">
+          <!-- STAGE 0 -->
+          <div class="matrix-card">
+            <div class="matrix-card-hdr st-0">
+              <span>STAGE 0</span>
+              <span class="loe-badge">Khỏe mạnh</span>
+            </div>
+            <div class="matrix-card-body">
+              <div style="font-weight: 800; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.88rem;">Không có yếu tố nguy cơ CKM</div>
+              <ul class="matrix-criteria-list">
+                <li><i class="fa-solid fa-circle-check" style="color: var(--green);"></i> BMI &amp; Vòng eo bình thường</li>
+                <li><i class="fa-solid fa-circle-check" style="color: var(--green);"></i> Glucose máu &amp; Huyết áp bình thường</li>
+                <li><i class="fa-solid fa-circle-check" style="color: var(--green);"></i> Chức năng thận &amp; Lipid bình thường</li>
+                <li><i class="fa-solid fa-circle-check" style="color: var(--green);"></i> Không có CVD cận lâm sàng/lâm sàng</li>
+              </ul>
+              <div class="matrix-focus-box">
+                <div class="matrix-focus-title">Trọng tâm lâm sàng</div>
+                Dự phòng nguyên phát (Primordial Prevention). Kiểm tra Lipid, FPG, eGFR mỗi 5 năm; HA hàng năm.
+              </div>
+            </div>
+          </div>
+
+          <!-- STAGE 1 -->
+          <div class="matrix-card">
+            <div class="matrix-card-hdr st-1">
+              <span>STAGE 1</span>
+              <span class="loe-badge">Rối loạn Mô mỡ</span>
+            </div>
+            <div class="matrix-card-body">
+              <div style="font-weight: 800; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.88rem;">Thừa cân, Béo phì hoặc Tiền Đái tháo đường</div>
+              <ul class="matrix-criteria-list">
+                <li><i class="fa-solid fa-weight-scale" style="color: var(--accent);"></i> BMI ≥ 25  kg/m² (≥ 23 ở người gốc Á)</li>
+                <li><i class="fa-solid fa-ruler-horizontal" style="color: var(--accent);"></i> Vòng eo ≥ 88 cm (nữ), ≥ 102 cm (nam) [Á: ≥ 80/≥ 90]</li>
+                <li><i class="fa-solid fa-droplet" style="color: var(--accent);"></i> Tiền ĐTĐ (FPG 100-125 / HbA1c 5.7-6.4%)</li>
+                <li><i class="fa-solid fa-circle-xmark" style="color: var(--text-faint);"></i> Chưa có CKD hay yếu tố nguy cơ khác</li>
+              </ul>
+              <div class="matrix-focus-box">
+                <div class="matrix-focus-title">Trọng tâm lâm sàng</div>
+                Can thiệp lối sống thâm hụt 500-750 kcal/ngày, giảm 5-10% cân nặng. Đánh giá xét nghiệm mỗi 2-3 năm; HA hàng năm.
+              </div>
+            </div>
+          </div>
+
+          <!-- STAGE 2 -->
+          <div class="matrix-card">
+            <div class="matrix-card-hdr st-2">
+              <span>STAGE 2</span>
+              <span class="loe-badge">YTNC Chuyển hóa &amp; CKD</span>
+            </div>
+            <div class="matrix-card-body">
+              <div style="font-weight: 800; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.88rem;">Có YTNC Chuyển hóa hoặc CKD Trung bình-Cao</div>
+              <ul class="matrix-criteria-list">
+                <li><i class="fa-solid fa-heart-pulse" style="color: var(--orange);"></i> Tăng huyết áp (≥ 130/80  mmHg)</li>
+                <li><i class="fa-solid fa-vial" style="color: var(--orange);"></i> Tăng Triglycerid (≥ 150  mg/dL) hoặc MetS (3/5 tiêu chuẩn)</li>
+                <li><i class="fa-solid fa-cubes-stacked" style="color: var(--orange);"></i> Đái tháo đường T2D (FPG ≥ 126 / HbA1c ≥ 6.5%)</li>
+                <li><i class="fa-solid fa-kidney" style="color: var(--orange);"></i> CKD nguy cơ TB-Cao (KDIGO). Chưa có CVD</li>
+              </ul>
+              <div class="matrix-focus-box">
+                <div class="matrix-focus-title">Trọng tâm lâm sàng</div>
+                Điều trị đa yếu tố tích cực (SGLT2i, GLP-1 RA, RASi). Đánh giá lipid, FPG, HA &amp; <strong>đồng thời cả eGFR + UACR nước tiểu hàng năm</strong>.
+              </div>
+            </div>
+          </div>
+
+          <!-- STAGE 3 -->
+          <div class="matrix-card">
+            <div class="matrix-card-hdr st-3">
+              <span>STAGE 3</span>
+              <span class="loe-badge">CVD Cận lâm sàng</span>
+            </div>
+            <div class="matrix-card-body">
+              <div style="font-weight: 800; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.88rem;">Bệnh Tim mạch Cận lâm sàng / Tương đương Nguy cơ</div>
+              <ul class="matrix-criteria-list">
+                <li><i class="fa-solid fa-x-ray" style="color: var(--purple);"></i> Xơ vữa vành cận lâm sàng (CAC ≥ 100, hẹp mạch vành, ABI thấp)</li>
+                <li><i class="fa-solid fa-wave-square" style="color: var(--purple);"></i> Tiền suy tim: NT-proBNP ≥ 125  pg/mL, hs-cTnT ≥ 14 (nữ) / ≥ 22 (nam)</li>
+                <li><i class="fa-solid fa-triangle-exclamation" style="color: var(--purple);"></i> CKD rất nặng (G4-G5) hoặc PREVENT 10 năm ≥ 20%</li>
+              </ul>
+              <div class="matrix-focus-box">
+                <div class="matrix-focus-title">Trọng tâm lâm sàng</div>
+                Tăng cường phác đồ bảo vệ tim-thận. Xem xét nsMRA finerenone, phối hợp SGLT2i + GLP-1 RA.
+              </div>
+            </div>
+          </div>
+
+          <!-- STAGE 4 -->
+          <div class="matrix-card">
+            <div class="matrix-card-hdr st-4">
+              <span>STAGE 4</span>
+              <span class="loe-badge">CVD Lâm sàng</span>
+            </div>
+            <div class="matrix-card-body">
+              <div style="font-weight: 800; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.88rem;">Bệnh Tim mạch Lâm sàng đã Thiết lập</div>
+              <ul class="matrix-criteria-list">
+                <li><i class="fa-solid fa-truck-medical" style="color: var(--red);"></i> Bệnh mạch vành (CHD), Nhồi máu cơ tim, Đau thắt ngực, Revasc</li>
+                <li><i class="fa-solid fa-heart-circle-bolt" style="color: var(--red);"></i> Suy tim (HFrEF / HFmrEF / HFpEF), Đột quỵ, PAD, Rung nhĩ (AF)</li>
+                <li><i class="fa-solid fa-notes-medical" style="color: var(--red);"></i> <strong>Stage 4a:</strong> Chưa suy thận | <strong>Stage 4b:</strong> Suy thận (eGFR &lt; 15 / Dialysis)</li>
+              </ul>
+              <div class="matrix-focus-box">
+                <div class="matrix-focus-title">Trọng tâm lâm sàng</div>
+                Tối ưu hóa GDMT cho ASCVD/Suy tim (Tứ trụ HFrEF, Semaglutide 2.4mg cho ASCVD/HFpEF béo phì, Statin liều cao, Duy trì thuốc khi eGFR thấp).
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FIGURE & TABLE EXTRACTIONS -->
+        <div class="fig-extract-box">
+          <div class="fig-extract-hdr"><i class="fa-solid fa-image"></i> Trích xuất FIGURE 1 &amp; TABLE 4: Stages of CKM Syndrome</div>
+          <div class="fig-extract-desc">
+            Sơ đồ minh họa cấu trúc phân giai đoạn CKM phản ánh sự tiến triển sinh lý bệnh tuần tiến và gia tăng nguy cơ tim mạch tuyệt đối. Bảng 4 định nghĩa chi tiết các mốc phân loại nhân trắc học (BMI, vòng eo), glucose đói, HbA1c, tiêu chuẩn MetS, dấu ấn sinh học tim (NT-proBNP, hs-cTnT) và bản đồ nhiệt KDIGO.
+          </div>
+        </div>
+
+        <div class="fig-extract-box">
+          <div class="fig-extract-hdr"><i class="fa-solid fa-calendar-check"></i> Trích xuất FIGURE 3: Longitudinal Assessments for Adults According to Baseline CKM Stage</div>
+          <div class="fig-extract-desc">
+            Tóm tắt tần suất đánh giá dọc theo thời gian: Nhân trắc học (BMI, vòng eo) và Huyết áp được khuyến cáo <strong>hàng năm cho tất cả các nhóm</strong>. Xét nghiệm Lipid, Đường huyết, eGFR thực hiện mỗi 5 năm ở Stage 0; mỗi 2-3 năm ở Stage 1; và <strong>hàng năm ở Stage 2–4</strong>. Xét nghiệm <strong>UACR nước tiểu được bắt buộc thực hiện hàng năm bắt đầu từ Stage 2 trở lên</strong>.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SECTION 2: PREVENT CALCULATOR & INTERDISCIPLINARY CARE -->
+    <div class="sec-card" id="sec-risk">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <div class="sec-hdr-icon"><i class="fa-solid fa-calculator"></i></div>
+          <h2 class="sec-title">Phần 2: Đánh Giá Nguy Cơ Định Lượng PREVENT &amp; Nhóm Chăm Sóc Đa Chuyên Khoa</h2>
+        </div>
+        <span class="cor-badge cor-1">TABLE 9 &amp; FIGURE 5</span>
+      </div>
+      <div class="sec-body">
+        
+        <!-- ALGORITHM STEP CARDS -->
+        <div class="algorithm-container">
+          <div class="algo-step">
+            <div class="algo-step-num">1</div>
+            <div class="algo-step-content">
+              <div class="algo-step-title">
+                Ước tính Nguy cơ 10 năm &amp; 30 năm bằng Phương trình PREVENT-CVD
+                <span class="cor-badge cor-1">COR 1</span> <span class="loe-badge">LOE B-NR</span>
+              </div>
+              <div class="algo-step-desc">
+                Áp dụng cho người từ 30–79 tuổi chưa có CVD lâm sàng để ước tính nguy cơ biến cố tim mạch tổng hợp (ASCVD + Suy tim).
+                <div style="margin-top: 0.4rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                  <span class="rx-tag alert">Nguy cơ 10 năm ≥ 20%: Tiêu chuẩn xếp vào STAGE 3 CKM</span>
+                  <span class="rx-tag preferred">Nguy cơ 10 năm ≥ 7.5%: Chỉ định khởi trị SGLT2i / GLP-1 RA bảo vệ tim-thận</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="algo-step">
+            <div class="algo-step-num">2</div>
+            <div class="algo-step-content">
+              <div class="algo-step-title">
+                Trích xuất TABLE 9: CKM Risk Enhancers (Yếu Tố Tăng Cường Nguy Cơ CKM)
+                <span class="cor-badge cor-2a">COR 2a</span>
+              </div>
+              <div class="algo-step-desc">
+                Khi nguy cơ tính toán ở mức ranh giới, sự hiện diện của các yếu tố sau hỗ trợ quyết định tăng cường chiến lược dự phòng:
+                <ul style="margin-left: 1.2rem; margin-top: 0.4rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 0.5rem;">
+                  <li><strong>1. Tiền sử cá nhân:</strong> Bệnh viêm mạn/tự miễn (RA, SLE, HIV/AIDS); Ngưng thở khi ngủ (OSA); Trầm cảm/Lo âu; Mãn kinh sớm (&lt;40 tuổi); Kết cục thai kỳ bất lợi (APOs: tiền giật giật, GDM); PCOS; Rối loạn cương dương (ED).</li>
+                  <li><strong>2. Yếu tố xã hội (SDOH):</strong> Địa vị kinh tế xã hội thấp, gánh nặng môi trường sống.</li>
+                  <li><strong>3. Tình trạng viêm:</strong> Chỉ số hs-CRP ≥ 2.0  mg/L.</li>
+                  <li><strong>4. Tiền sử gia đình:</strong> Có người thân mắc ĐTĐ hoặc suy thận.</li>
+                  <li><strong>5. Chủng tộc nguy cơ cao:</strong> Người Nam Á, Thổ dân Mỹ, Người đảo Thái Bình Dương.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="algo-step">
+            <div class="algo-step-num">3</div>
+            <div class="algo-step-content">
+              <div class="algo-step-title">
+                Trích xuất FIGURE 5: Mô Hình Chăm Sóc Phối Hợp Đa Chuyên Khoa CKM
+                <span class="cor-badge cor-1">COR 1</span> <span class="loe-badge">LOE C-EO</span>
+              </div>
+              <div class="algo-step-desc">
+                Nhằm giải quyết sự phân mảnh y tế, khuyến cáo thành lập <strong>Nhóm chăm sóc liên chuyên khoa (Interdisciplinary Care Teams)</strong> có sự tham gia của một <strong>Điều phối viên CKM (CKM coordination point person)</strong> cho bệnh nhân Stage 2–4 có từ 2 bệnh đồng mắc trở lên (ĐTĐ, CKD, CVD):
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 0.75rem; margin-top: 0.5rem;">
+                  <div style="background: var(--surface); padding: 0.75rem; border-radius: 10px; border: 1px solid var(--border-light);">
+                    <strong style="color: var(--accent);">Gánh nặng nguy cơ thấp:</strong> Can thiệp thay đổi lối sống &amp; GDMT cơ bản tại y tế cơ sở.
+                  </div>
+                  <div style="background: var(--surface); padding: 0.75rem; border-radius: 10px; border: 1px solid var(--border-light);">
+                    <strong style="color: var(--accent);">Chăm sóc dựa trên Giá trị (Value-Based Care):</strong> ≥ 2 bệnh đồng mắc nguy cơ trung bình \rightarrow Điều phối viên CKM + Nhóm đa chuyên khoa ảo.
+                  </div>
+                  <div style="background: var(--surface); padding: 0.75rem; border-radius: 10px; border: 1px solid var(--border-light);">
+                    <strong style="color: var(--red);">Chăm sóc Chuyên sâu (Volume-Based Care):</strong> ≥ 2 bệnh đồng mắc nguy cơ rất cao (HbA1c ≥ 9%, CKD rất nặng, CVD) \rightarrow Chuyển gửi trực tiếp Bác sĩ chuyên khoa sâu + Điều phối viên CKM.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SECTION 3: CKM RISK FACTOR MANAGEMENT (STAGE 1-3) -->
+    <div class="sec-card" id="sec-risk-mgmt">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <div class="sec-hdr-icon"><i class="fa-solid fa-staff-snake"></i></div>
+          <h2 class="sec-title">Phần 3: Quản Lý Béo Phì, Đái Tháo Đường Típ 2 &amp; Bệnh Thận Mạn (Stage 1–3)</h2>
+        </div>
+        <span class="cor-badge cor-1">FIGURE 7, 8, 9 &amp; TABLE 13</span>
+      </div>
+      <div class="sec-body">
+        
+        <div class="clinical-grid">
+          <!-- BÉO PHÌ CARD -->
+          <div class="clin-card blue">
+            <div class="clin-card-title"><i class="fa-solid fa-weight-scale" style="color: var(--blue);"></i> 1. Quản Lý Thừa Cân &amp; Béo Phì (FIGURE 7 &amp; TABLE 13)</div>
+            <ul style="margin-left: 1.1rem; font-size: 0.82rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.35rem;">
+              <li><strong>Tiếp cận không phán xét (Nonjudgmental approach):</strong> Tôn trọng, tránh kỳ thị cân nặng. <span class="cor-badge cor-1">COR 1</span></li>
+              <li><strong>Can thiệp lối sống chuyên sâu:</strong> Tư vấn dinh dưỡng giảm calo (thâm hụt 500–750 kcal/ngày), Aerobic ≥ 150  phút/tuần, Trị liệu hành vi ≥ 14  tháng. Mục tiêu giảm cân <strong>5%–10%</strong>. <span class="cor-badge cor-1">COR 1</span></li>
+              <li><strong>Thuốc dựa trên GLP-1 (Semaglutide 2.4mg, Tirzepatide 15mg):</strong> Phối hợp lối sống cho béo phì (hoặc BMI ≥ 27 có nguy cơ) giúp giảm 12%–21% cân nặng, SBP -6.5 mmHg, TG -19%. <span class="cor-badge cor-1">COR 1</span> <em>Chống chỉ định: MEN 2, tiền sử viêm tụy.</em></li>
+              <li><strong>Thuốc không dựa trên GLP-1:</strong> Orlistat, Phentermine/Topiramate, Naltrexone/Bupropion (hiệu quả thấp hơn).</li>
+              <li><strong>Phẫu thuật Bariatric (MBS):</strong> BMI ≥ 35 (hoặc ≥ 30 kèm ĐTĐ T2D) không đạt mục tiêu với thuốc. <span class="cor-badge cor-2a">COR 2a</span></li>
+            </ul>
+            <div class="infobox info" style="margin-top: auto; font-size: 0.78rem;">
+              <span class="infobox-icon">💡</span>
+              <div>Đánh giá đáp ứng giảm cân sau 3–6 tháng. Nếu giảm &lt;5%, cần tăng liều tối đa, đổi GLP-1 khác hoặc chuyển chuyên gia quản lý cân nặng.</div>
+            </div>
+          </div>
+
+          <!-- ĐÁI THÁO ĐƯỜNG CARD -->
+          <div class="clin-card green">
+            <div class="clin-card-title"><i class="fa-solid fa-cubes-stacked" style="color: var(--green);"></i> 2. Điều Trị Đái Tháo Đường Típ 2 (FIGURE 8)</div>
+            <ul style="margin-left: 1.1rem; font-size: 0.82rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.35rem;">
+              <li><strong>Can thiệp đa yếu tố tích cực:</strong> Kiểm soát HA, lipid, đường huyết (mục tiêu HbA1c &lt; 7.0%) và albumin niệu. <span class="cor-badge cor-1">COR 1</span></li>
+              <li><strong>Bắt buộc dùng SGLT2i hoặc GLP-1 RA bảo vệ tim-thận:</strong> Cho bệnh nhân T2D có nguy cơ PREVENT ≥ 7.5% hoặc tuổi ≥ 50, <strong>độc lập với HbA1c ban đầu hay Metformin</strong>. <span class="cor-badge cor-1">COR 1</span></li>
+              <li><strong>Ưu tiên SGLT2i:</strong> Khi có kèm CKD hoặc Pre-HF để làm giảm nhập viện suy tim và bảo tồn chức năng thận.</li>
+              <li><strong>Ưu tiên GLP-1 RA:</strong> Khi béo phì nặng (độ II+), HbA1c ≥ 9.0%, hoặc gan nhiễm mỡ MASLD.</li>
+              <li><strong>Đồng trị liệu SGLT2i + GLP-1 RA:</strong> Cân nhắc phối hợp khi nguy cơ tim mạch rất cao. <span class="cor-badge cor-2a">COR 2a</span></li>
+              <li><strong>Metformin:</strong> Phối hợp nếu HbA1c vượt quá mục tiêu cá thể hóa từ 0.5% – 1.0%.</li>
+            </ul>
+          </div>
+
+          <!-- BỆNH THẬN MẠN CARD -->
+          <div class="clin-card purple">
+            <div class="clin-card-title"><i class="fa-solid fa-kidney" style="color: var(--purple);"></i> 3. Quản Lý Bệnh Thận Mạn (FIGURE 9, 10 &amp; 11)</div>
+            <ul style="margin-left: 1.1rem; font-size: 0.82rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.35rem;">
+              <li><strong>RASi (ACEi / ARB):</strong> Liều dung nạp tối đa cho tất cả CKD có albumin niệu (UACR ≥ 30  mg/g), bất kể có ĐTĐ hay không. <span class="cor-badge cor-1">COR 1</span></li>
+              <li><strong>SGLT2i:</strong> Hàng đầu cho CKD + T2D, hoặc CKD không T2D có UACR ≥ 200  mg/g (eGFR ≥ 20). <span class="cor-badge cor-1">COR 1</span> (Hợp lý dùng cho UACR 30-199 không T2D <span class="cor-badge cor-2a">COR 2a</span>).</li>
+              <li><strong>nsMRA Finerenone:</strong> Bổ sung cho CKD + T2D còn UACR ≥ 30  mg/g tồn dư dù đã dùng tối đa RASi + SGLT2i (eGFR ≥ 25, Kali an toàn). <span class="cor-badge cor-1">COR 1</span></li>
+              <li><strong>GLP-1 RA Semaglutide:</strong> Bổ sung cho CKD + T2D có UACR ≥ 100  mg/g tồn dư (ưu tiên trước finerenone nếu béo phì/MASLD). <span class="cor-badge cor-1">COR 1</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- SECTION 8 SAFETY MONITORING BOX -->
+        <div class="infobox warning">
+          <span class="infobox-icon">🛡️</span>
+          <div>
+            <strong>Trích xuất Section 8: Quy Tắc Theo Dõi &amp; Giám Sát Định Kỳ Sau Khởi Trị Thuốc:</strong>
+            <ul style="margin-left: 1.2rem; margin-top: 0.3rem;">
+              <li><strong>Kiểm tra Chức năng Thận (eGFR) &amp; Kali máu:</strong> Bắt buộc đo lại sau <strong>2 đến 4 tuần</strong> khi khởi trị các thuốc hệ RAAS (RASi, MRA, nsMRA). <em>Mức giảm eGFR ban đầu &lt;30% là chấp nhận được.</em></li>
+              <li><strong>Đánh giá UACR nước tiểu tồn dư:</strong> Đo lại UACR sau <strong>3 đến 6 tháng</strong> khởi trị RASi/SGLT2i để quyết định bổ sung thuốc bảo vệ thận tầng 2 (nsMRA Finerenone hoặc GLP-1 RA Semaglutide).</li>
+              <li><strong>Đánh giá Giảm cân (GLP-1 RA):</strong> Đo lại sau <strong>3 đến 6 tháng</strong> (mục tiêu giảm ≥ 5% cân nặng).</li>
+              <li><strong>Giám sát Đường huyết (SGLT2i/GLP-1 RA):</strong> Đo HbA1c/CGM mỗi <strong>3 đến 6 tháng</strong>.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SECTION 4: STAGE 4 MANAGEMENT (ASCVD & HEART FAILURE) -->
+    <div class="sec-card" id="sec-stage4">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <div class="sec-hdr-icon"><i class="fa-solid fa-heart-circle-bolt"></i></div>
+          <h2 class="sec-title">Phần 4: Quản Lý Bệnh Tim Mạch Lâm Sàng ở Giai Đoạn 4 (ASCVD &amp; Suy Tim)</h2>
+        </div>
+        <span class="cor-badge cor-1">FIGURE 13, 14, 16, 17, 18, 19 &amp; 20</span>
+      </div>
+      <div class="sec-body">
+        
+        <div class="clinical-grid">
+          <!-- ASCVD BOARD -->
+          <div class="clin-card red">
+            <div class="clin-card-title"><i class="fa-solid fa-heart-pulse" style="color: var(--red);"></i> 1. Quản Lý ASCVD Lâm Sàng (FIGURE 13, 14, 16)</div>
+            <ul style="margin-left: 1.1rem; font-size: 0.82rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.35rem;">
+              <li><strong>ASCVD GDMT Nền tảng:</strong> Aspirin \pm Kháng tiểu cầu/Kháng đông; Statin cường độ cao (mục tiêu LDL-C &lt;55 mg/dL, phối hợp Ezetimibe, Bempedoic acid, PCSK9i); PAD triệu chứng phối hợp <strong>Rivaroxaban 2.5mg x 2 + Aspirin</strong>; HA &lt;130/80 (RASi).</li>
+              <li><strong>ASCVD + Thừa cân / Béo phì:</strong> Khởi trị <strong>Semaglutide 2.4mg tiêm dưới da</strong> giúp <strong>giảm 20% nguy cơ MACE</strong> (Nghiên cứu SELECT ở BMI ≥ 27 không ĐTĐ), hiệu quả bảo vệ tim mạch <em>phần lớn độc lập với mức độ giảm cân</em>. <span class="cor-badge cor-1">COR 1</span></li>
+              <li><strong>Phẫu thuật MBS:</strong> Cân nhắc cho béo phì nặng (BMI ≥ 30). <span class="cor-badge cor-2a">COR 2a</span></li>
+              <li><strong>ASCVD + Đái tháo đường T2D:</strong> Bắt buộc dùng SGLT2i hoặc GLP-1 RA (hoặc phối hợp cả hai). <span class="cor-badge cor-1">COR 1</span></li>
+              <li><strong>ASCVD + CKD:</strong> Phối hợp RASi + SGLT2i. Thêm Finerenone hoặc Semaglutide nếu albumin niệu dai dẳng.</li>
+            </ul>
+
+            <div class="infobox danger" style="font-size: 0.78rem;">
+              <span class="infobox-icon">🚫</span>
+              <div>
+                <strong>COR 3-HARM (CHỐNG CHỈ ĐỊNH):</strong> KHÔNG SỬ DỤNG Naltrexone/Bupropion hoặc các hoạt chất chứa Phentermine ở bệnh nhân ASCVD do làm tăng huyết áp và nhịp tim!
+              </div>
+            </div>
+          </div>
+
+          <!-- SUY TIM BOARD -->
+          <div class="clin-card purple">
+            <div class="clin-card-title"><i class="fa-solid fa-heart-circle-check" style="color: var(--purple);"></i> 2. Quản Lý Suy Tim (HF) (FIGURE 17, 18, 19, 20)</div>
+            <ul style="margin-left: 1.1rem; font-size: 0.82rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.35rem;">
+              <li><strong>HFrEF (EF ≤ 40%):</strong> Tứ trụ GDMT (ARNI/RASi + Chẹn beta + MRA + SGLT2i). <span class="cor-badge cor-1">COR 1</span></li>
+              <li><strong>HFmrEF / HFpEF (EF &gt; 40%):</strong> <strong>SGLT2i là lựa chọn hàng đầu</strong> giảm nhập viện &amp; tử vong suy tim. <span class="cor-badge cor-1">COR 1</span></li>
+              <li><strong>HFpEF + Béo phì:</strong> **Semaglutide / Tirzepatide** giúp cải thiện triệu chứng KCCQ-CSS, khoảng cách đi bộ 6 phút (6MWD) và giảm **38% biến cố suy tim xấu đi** (Nghiên cứu SUMMIT cho Tirzepatide). <span class="cor-badge cor-1">COR 1</span></li>
+              <li><strong>Suy tim + T2D:</strong> SGLT2i hàng đầu. Metformin an toàn khi eGFR ≥ 30 (HbA1c duy trì 7%–8%).</li>
+              <li><strong>Suy tim + CKD:</strong> ARNI khi eGFR ≥ 30 (HFrEF), SGLT2i khi eGFR ≥ 20 (mọi EF), nsMRA Finerenone cho HFmrEF/HFpEF có T2D + UACR ≥ 30. Thuốc gắn Kali đường uống (Patiromer) hỗ trợ duy trì RAASi.</li>
+            </ul>
+
+            <div class="infobox warning" style="font-size: 0.78rem;">
+              <span class="infobox-icon">⚠️</span>
+              <div>
+                Thận trọng với HFrEF nặng (NYHA III-IV): Thuốc GLP-1 RA chưa được chứng minh an toàn (Nghiên cứu FIGHT &amp; LIVE cho thấy Liraglutide có xu hướng làm tăng biến cố bất lợi).
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STAGE 4B ADVANCED CKD ADVOCACY -->
+        <div class="infobox teal" style="margin-top: 1rem;">
+          <span class="infobox-icon">🔄</span>
+          <div>
+            <strong>Quản Lý Stage 4b (Bệnh Thận Mạn Tiến Triển eGFR &lt; 15 mL/min/1.73m²):</strong><br>
+            Khi chỉ số eGFR của bệnh nhân suy giảm xuống dưới ngưỡng bắt đầu chỉ định ban đầu của SGLT2i, RASi, finerenone hay semaglutide: <strong>KHUYÊN TIẾP TỤC DUY TRÌ CÁC ĐIỀU TRỊ NÀY NẾU BỆNH NHÂN DUNG NẠP AN TOÀN</strong> dưới sự giám sát chặt chẽ điện giải và huyết áp, thay vì ngừng thuốc một cách hệ thống, nhằm duy trì lợi ích bảo vệ tim mạch đến khi tiến triển đến giai đoạn suy thận cuối. <span class="cor-badge cor-1">COR 1</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SECTION 5: PHARMACOTHERAPY DOSING & DRUG SELECTION TABLE -->
+    <div class="sec-card" id="sec-dosing">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <div class="sec-hdr-icon"><i class="fa-solid fa-pills"></i></div>
+          <h2 class="sec-title">Phần 5: Bảng Tra Cứu Phác Đồ Liều Dùng &amp; Ngưỡng An Toàn Thuốc Lâm Sàng</h2>
+        </div>
+        <span class="cor-badge cor-1">SUMMARY DOSING TABLE</span>
+      </div>
+      <div class="sec-body">
+        
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Nhóm Thuốc</th>
+                <th>Hoạt Chất &amp; Liều Lượng</th>
+                <th>Khuyến Cáo (COR/LOE)</th>
+                <th>Ngưỡng eGFR Khởi Trị</th>
+                <th>Điểm Tựa Lâm Sàng (Clinical Pearls)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>SGLT2i</strong><br><span class="rx-tag preferred">Bảo vệ Tim - Thận</span></td>
+                <td>
+                  <strong>Empagliflozin:</strong> 10 mg/ngày<br>
+                  <strong>Dapagliflozin:</strong> 10 mg/ngày<br>
+                  <strong>Canagliflozin:</strong> 100 mg/ngày
+                </td>
+                <td><span class="cor-badge cor-1">COR 1</span> <span class="loe-badge">LOE A</span></td>
+                <td>eGFR ≥ 20  mL/min</td>
+                <td>Giảm nhập viện suy tim, giảm 30% tiến triển CKD. Tiếp tục duy trì khi eGFR giảm &lt;20 đến khi lọc máu.</td>
+              </tr>
+              <tr>
+                <td><strong>GLP-1 RA / Dual GIP</strong><br><span class="rx-tag accent">Giảm cân &amp; MACE</span></td>
+                <td>
+                  <strong>Semaglutide:</strong> 0.5 – 2.4 mg tiêm SC/tuần<br>
+                  <strong>Tirzepatide:</strong> 5 – 15 mg tiêm SC/tuần
+                </td>
+                <td><span class="cor-badge cor-1">COR 1</span> <span class="loe-badge">LOE A</span></td>
+                <td>eGFR ≥ 15  mL/min</td>
+                <td>Giảm 20% MACE ở ASCVD (SELECT), giảm 38% biến cố suy tim ở HFpEF béo phì (SUMMIT). Giảm 15-21% cân nặng.</td>
+              </tr>
+              <tr>
+                <td><strong>nsMRA</strong><br><span class="rx-tag purple">Kháng Aldosterone</span></td>
+                <td>
+                  <strong>Finerenone:</strong> 10 – 20 mg/ngày (Dựa theo eGFR &amp; Kali)
+                </td>
+                <td><span class="cor-badge cor-1">COR 1</span> <span class="loe-badge">LOE A</span></td>
+                <td>eGFR ≥ 25  mL/min<br>Kali ≤ 4.8  mEq/L</td>
+                <td>Chỉ định cho CKD + T2D có UACR ≥ 30  mg/g tồn dư sau RASi+SGLT2i. Ít tăng Kali hơn MRA cổ điển.</td>
+              </tr>
+              <tr>
+                <td><strong>RASi / ARNI</strong><br><span class="rx-tag">Ức chế hệ RAAS</span></td>
+                <td>
+                  <strong>Sacubitril/Valsartan:</strong> 24/26 – 97/103 mg x 2 lần/ngày<br>
+                  <strong>Losartan / Enalapril:</strong> Liều dung nạp tối đa
+                </td>
+                <td><span class="cor-badge cor-1">COR 1</span> <span class="loe-badge">LOE A</span></td>
+                <td>eGFR ≥ 30  mL/min (ARNI)<br>Mọi eGFR (ACEi/ARB)</td>
+                <td>Nền tảng bảo vệ thận khi có UACR ≥ 30  mg/g và HFrEF. Kiểm tra Kali &amp; eGFR sau 2-4 tuần.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CITATION BOX -->
+    <div class="citation-box">
+      <strong>Trích dẫn tài liệu tham khảo chính thức chuẩn AMA:</strong><br>
+      Ndumele CE, Rodriguez F, Dixon DL, Khan SS, Mukherjee D, Bajaj M, Bangalore S, Bozkurt B, Breathett K, Clarke SL, de Boer IH, Ellison DH, Evangelista LS, Heffron SP, Kazi DS, Kulshreshtha A, Lingvay I, Low Wang CC, Mercado CA, Morton JM, Neeland IJ, Pagidipati N, Powell-Wiley TM, Rangaswami J, Rao G, Reza N, Saeed A, St. Peter W, Starks JB, Sterling M, Talbot AW, Tran AH, Tuttle KR, VanWagner LB, Vest AR, Virani SS. 2026 AHA/ACC/ADA/ASN guideline for the prevention, detection, evaluation, and management of cardiovascular-kidney-metabolic syndrome: a report of the American College of Cardiology/American Heart Association Joint Committee on Clinical Practice Guidelines. <em>J Am Coll Cardiol</em>. 2026;87(22S):e1889-e2007. doi:10.1016/j.jacc.2026.03.056.
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="page-footer">
+    CliniPortal © 2026 · Cẩm Nang Hướng Dẫn Lâm Sàng CKM · Y Học Chứng Cứ EBM
+  </footer>
+  <script type="module" src="../guideline-controller.ts"></script>
+</body>
+</html>

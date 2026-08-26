@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tóm tắt Hướng dẫn Lâm sàng ACG 2022 về Bệnh trào ngược dạ dày - thực quản (GERD): Sinh lý bệnh, Phác đồ thử PPI 8 tuần, Lưu đồ EGD & Đo pH trào ngược, Tiếp cận triệu chứng ngoài thực quản, Quản lý GERD kháng trị, Can thiệp ngoại khoa MSA/TIF/Nissen và Dữ liệu an toàn PPI dài hạn.">
+  <title>ACG 2022: Hướng Dẫn Chẩn Đoán & Điều Trị GERD Toàn Diện – CliniPortal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #059669; --green-bg: #f0fdf4; --green-light: #a7f3d0;
+      --orange: #d97706; --orange-bg: #fffbeb; --orange-light: #fde68a;
+      --red: #dc2626; --red-bg: #fef2f2; --red-light: #fca5a5;
+      --blue: #2563eb; --blue-bg: #eff6ff; --blue-light: #bfdbfe;
+      --teal: #0d9488; --teal-bg: #f0fdfa; --teal-light: #99f6e4;
+      --purple: #7c3aed; --purple-bg: #faf5ff; --purple-light: #ddd6fe;
+      --amber: #ca8a04; --amber-bg: #fefce8; --amber-light: #fef08a;
+      --accent: #0284c7;
+      --accent-gradient: linear-gradient(135deg, #0369a1 0%, #0284c7 45%, #0d9488 100%);
+      --bg: #f0f4f8; --surface: #ffffff; --surface-2: #f8fafc;
+      --border: #cbd5e1; --border-light: #e2e8f0;
+      --text: #0f172a; --text-muted: #475569; --text-faint: #94a3b8;
+      --radius: 16px; --tr: 220ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [data-theme="dark"] {
+      --bg: #0c121e; --surface: #172033; --surface-2: #1e2c45;
+      --border: #334768; --border-light: #24354f;
+      --text: #f8fafc; --text-muted: #94a3b8; --text-faint: #64748b;
+      --green-bg: rgba(5, 150, 105, 0.18); --green-light: rgba(167, 243, 208, 0.3);
+      --orange-bg: rgba(217, 119, 6, 0.18); --orange-light: rgba(253, 230, 138, 0.3);
+      --red-bg: rgba(220, 38, 38, 0.18); --red-light: rgba(252, 165, 165, 0.3);
+      --blue-bg: rgba(37, 99, 235, 0.18); --blue-light: rgba(191, 219, 254, 0.3);
+      --teal-bg: rgba(13, 148, 136, 0.18); --teal-light: rgba(153, 246, 228, 0.3);
+      --purple-bg: rgba(124, 58, 237, 0.18); --purple-light: rgba(221, 214, 254, 0.3);
+      --amber-bg: rgba(202, 138, 4, 0.18); --amber-light: rgba(254, 240, 138, 0.3);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; font-size: 15px; background: var(--bg); color: var(--text); line-height: 1.65; min-height: 100vh; }
+
+    @media print {
+      body { background: #fff !important; color: #000 !important; }
+      .topnav, .pillars-nav, .topnav-theme-toggle, .btn-row { display: none !important; }
+      .page-content { max-width: 100% !important; margin: 0 !important; padding: 0 !important; }
+      .sec-card { break-inside: avoid; border: 1px solid #ccc !important; box-shadow: none !important; }
+    }
+
+    /* TOP NAV */
+    .topnav { position: sticky; top: 0; z-index: 200; background: rgba(255,255,255,0.94); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 1rem; padding: 0 1.5rem; height: 56px; }
+    [data-theme="dark"] .topnav { background: rgba(12, 18, 30, 0.92); }
+    .topnav-back { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--accent); text-decoration: none; font-size: 0.82rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 8px; transition: background var(--tr); white-space: nowrap; }
+    .topnav-back:hover { background: var(--blue-bg); }
+    .topnav-divider { width: 1px; height: 18px; background: var(--border-light); flex-shrink: 0; }
+    .topnav-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .topnav-badges { margin-left: auto; display: flex; gap: 0.5rem; flex-shrink: 0; align-items: center; }
+    .badge { padding: 0.2rem 0.65rem; border-radius: 20px; font-size: 0.7rem; font-weight: 700; white-space: nowrap; }
+    .badge-blue { background: var(--blue-bg); color: #1e40af; border: 1px solid var(--blue-light); }
+    [data-theme="dark"] .badge-blue { color: #93c5fd; }
+    .badge-teal { background: var(--teal-bg); color: #0f766e; border: 1px solid var(--teal-light); }
+    [data-theme="dark"] .badge-teal { color: #99f6e4; }
+    .badge-amber { background: var(--amber-bg); color: #854d0e; border: 1px solid var(--amber-light); }
+    [data-theme="dark"] .badge-amber { color: #fef08a; }
+
+    .topnav-theme-toggle { background: none; border: 1px solid var(--border-light); color: var(--text-muted); cursor: pointer; font-size: 1rem; padding: 0.35rem 0.6rem; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; transition: all var(--tr); }
+    .topnav-theme-toggle:hover { background: var(--surface-2); color: var(--text); }
+
+    /* HERO */
+    .hero { background: var(--accent-gradient); color: #fff; padding: 3.5rem 1.5rem 4.5rem; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 15% 60%, rgba(56,189,248,0.25) 0%, transparent 55%), radial-gradient(ellipse at 85% 20%, rgba(16,185,129,0.2) 0%, transparent 50%); }
+    .hero-inner { max-width: 980px; margin: 0 auto; position: relative; z-index: 1; }
+    .hero-badge-strip { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin-bottom: 1rem; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.28); border-radius: 20px; padding: 0.3rem 0.85rem; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #bae6fd; }
+    .hero-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(1.8rem, 4vw, 2.7rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 0.75rem; }
+    .hero-title span { display: block; background: linear-gradient(90deg, #7dd3fc, #6ee7b7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 0.65em; font-weight: 600; letter-spacing: 0; margin-bottom: 0.25rem; }
+    .hero-subtitle { font-size: 0.95rem; opacity: 0.92; max-width: 780px; margin-bottom: 1.8rem; line-height: 1.6; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 0.75rem 1.8rem; font-size: 0.8rem; opacity: 0.88; }
+    .hero-meta-item { display: flex; align-items: center; gap: 6px; }
+
+    /* PILLARS STICKY NAV STRIP */
+    .pillars-nav { position: sticky; top: 56px; z-index: 190; background: var(--surface); border-bottom: 1px solid var(--border-light); padding: 0.75rem 1.5rem; }
+    .pillars-nav-inner { max-width: 980px; margin: 0 auto; display: flex; gap: 0.55rem; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .pillar-tab { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.45rem 0.85rem; border-radius: 10px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.78rem; font-weight: 700; color: var(--text-muted); border: 1px solid var(--border-light); background: var(--surface-2); text-decoration: none; white-space: nowrap; transition: all var(--tr); }
+    .pillar-tab:hover { border-color: var(--accent); color: var(--accent); background: var(--blue-bg); }
+    .pillar-tab.p-1 { border-left: 4px solid var(--blue); }
+    .pillar-tab.p-2 { border-left: 4px solid var(--teal); }
+    .pillar-tab.p-3 { border-left: 4px solid var(--green); }
+    .pillar-tab.p-4 { border-left: 4px solid var(--amber); }
+    .pillar-tab.p-5 { border-left: 4px solid var(--purple); }
+    .pillar-tab.p-6 { border-left: 4px solid var(--red); }
+    .pillar-tab.p-7 { border-left: 4px solid #0284c7; }
+
+    /* KPI STATS STRIP */
+    .stats-strip { background: var(--surface); border-bottom: 1px solid var(--border-light); padding: 1.5rem; }
+    .stats-grid { max-width: 980px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+    .stat-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border-light);
+      border-radius: 14px;
+      padding: 1.25rem 1rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+      transition: transform var(--tr), box-shadow var(--tr);
+    }
+    .stat-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+    .stat-val { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.35rem; font-weight: 800; color: var(--accent); line-height: 1.2; text-align: center; }
+    .stat-lbl { font-size: 0.75rem; color: var(--text-muted); font-weight: 600; line-height: 1.45; text-align: center; }
+
+    /* PAGE CONTENT */
+    .page-content { max-width: 980px; margin: 0 auto; padding: 2.25rem 1.5rem; display: flex; flex-direction: column; gap: 2rem; }
+
+    /* SECTION CARDS */
+    .sec-card { background: var(--surface); border: 1px solid var(--border-light); border-radius: var(--radius); overflow: hidden; scroll-margin-top: 120px; }
+    .sec-hdr { padding: 1.1rem 1.5rem; border-bottom: 1px solid var(--border-light); background: var(--surface-2); display: flex; align-items: center; justify-content: space-between; gap: 0.6rem; }
+    .sec-hdr-left { display: flex; align-items: center; gap: 0.6rem; }
+    .sec-hdr-icon { font-size: 1.25rem; }
+    .sec-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1rem; font-weight: 800; color: var(--text); }
+    .sec-badge { font-size: 0.7rem; font-weight: 700; padding: 0.15rem 0.55rem; border-radius: 12px; background: var(--blue-bg); color: var(--accent); border: 1px solid var(--blue-light); }
+    .sec-body { padding: 1.5rem; }
+    .sec-subtitle { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.85rem; color: var(--text-muted); margin: 1.25rem 0 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; }
+    .sec-subtitle:first-child { margin-top: 0; }
+
+    /* GRID LAYOUTS */
+    .grid-2col { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 1.25rem; }
+    .grid-3col { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 1rem; }
+    .grid-4col { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); gap: 1rem; }
+
+    /* BENTO & CLINICAL CARDS */
+    .clin-card { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.25rem; position: relative; overflow: hidden; transition: box-shadow var(--tr); }
+    .clin-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.06); }
+    .clin-card-accent { position: absolute; top: 0; left: 0; right: 0; height: 4px; }
+    .accent-green { background: var(--green); }
+    .accent-orange { background: var(--orange); }
+    .accent-red { background: var(--red); }
+    .accent-blue { background: var(--blue); }
+    .accent-teal { background: var(--teal); }
+    .accent-purple { background: var(--purple); }
+    .accent-amber { background: var(--amber); }
+
+    .clin-card-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 0.92rem; color: var(--text); margin-bottom: 0.6rem; display: flex; align-items: center; justify-content: space-between; }
+    .clin-card-body { font-size: 0.84rem; color: var(--text-muted); line-height: 1.6; }
+    .clin-card-list { list-style: none; margin-top: 0.5rem; padding-left: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+    .clin-card-list li {
+      position: relative;
+      padding-left: 1.1rem;
+      font-size: 0.84rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+      display: block;
+    }
+    .clin-card-list li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--accent);
+      font-weight: 800;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    /* INFO BOXES */
+    .infobox { display: flex; align-items: flex-start; gap: 0.85rem; padding: 1rem 1.25rem; border-radius: 12px; margin-bottom: 1rem; font-size: 0.85rem; line-height: 1.6; }
+    .infobox:last-child { margin-bottom: 0; }
+    .infobox-icon { font-size: 1.3rem; flex-shrink: 0; line-height: 1.3; }
+    .infobox.danger { background: var(--red-bg); border: 1px solid var(--red-light); border-left: 4px solid var(--red); }
+    .infobox.success { background: var(--green-bg); border: 1px solid var(--green-light); border-left: 4px solid var(--green); }
+    .infobox.warning { background: var(--orange-bg); border: 1px solid var(--orange-light); border-left: 4px solid var(--orange); }
+    .infobox.info { background: var(--blue-bg); border: 1px solid var(--blue-light); border-left: 4px solid var(--blue); }
+    .infobox.teal { background: var(--teal-bg); border: 1px solid var(--teal-light); border-left: 4px solid var(--teal); }
+    .infobox-title { display: block; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.88rem; font-weight: 800; margin-bottom: 0.35rem; color: var(--text); }
+    .infobox strong { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; color: var(--text); }
+
+    /* EBM RECOMMENDATION CARDS */
+    .ebm-rec-card { background: var(--surface); border: 1px solid var(--border-light); border-left: 4px solid var(--accent); border-radius: 12px; padding: 1.1rem 1.25rem; margin-bottom: 0.85rem; transition: transform var(--tr); }
+    .ebm-rec-card:hover { transform: translateX(2px); }
+    .ebm-rec-card.rec-strong { border-left-color: var(--green); }
+    .ebm-rec-card.rec-cond { border-left-color: var(--blue); }
+    .ebm-rec-card.rec-against { border-left-color: var(--red); }
+    .ebm-rec-header { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; margin-bottom: 0.5rem; flex-wrap: wrap; }
+    .ebm-rec-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 0.88rem; color: var(--text); }
+    .ebm-rec-body { font-size: 0.84rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* BADGES */
+    .badge-group { display: inline-flex; align-items: center; gap: 0.35rem; flex-wrap: wrap; }
+    .cor-badge, .loe-badge { padding: 0.2rem 0.55rem; border-radius: 8px; font-size: 0.72rem; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; display: inline-flex; align-items: center; gap: 0.3rem; }
+    .cor-strong { background: var(--green-bg); color: #065f46; border: 1px solid var(--green-light); }
+    .cor-cond { background: var(--blue-bg); color: #1e40af; border: 1px solid var(--blue-light); }
+    .cor-against { background: var(--red-bg); color: #991b1b; border: 1px solid var(--red-light); }
+    .loe-high { background: rgba(5, 150, 105, 0.12); color: #047857; border: 1px solid rgba(5, 150, 105, 0.35); }
+    .loe-mod { background: rgba(37, 99, 235, 0.12); color: #1d4ed8; border: 1px solid rgba(37, 99, 235, 0.35); }
+    .loe-low { background: rgba(217, 119, 6, 0.12); color: #b45309; border: 1px solid rgba(217, 119, 6, 0.35); }
+
+    /* TABLES */
+    .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--border-light); border-radius: 12px; }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 0.83rem; min-width: 680px; }
+    .data-table thead th { background: var(--surface-2); padding: 0.75rem 1rem; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text); border-bottom: 2px solid var(--border-light); text-align: left; }
+    .data-table td { padding: 0.85rem 1rem; border-bottom: 1px solid var(--border-light); vertical-align: top; line-height: 1.55; color: var(--text-muted); }
+    .data-table tbody tr:last-child td { border-bottom: none; }
+    .data-table tbody tr:hover td { background: var(--surface-2); }
+    .data-table strong { color: var(--text); font-weight: 700; }
+
+    .rx-tag { display: inline-block; background: var(--surface-2); color: var(--text); font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; font-weight: 600; padding: 0.2rem 0.55rem; border-radius: 6px; border: 1px solid var(--border-light); margin: 0.15rem 0.2rem 0.15rem 0; }
+    .rx-tag.preferred { background: var(--green-bg); color: #065f46; border-color: var(--green-light); font-weight: 700; }
+    .rx-tag.warning { background: var(--orange-bg); color: #92400e; border-color: var(--orange-light); }
+
+    /* SVG FLOWCHART STUDIO CONTAINER */
+    .flowchart-container {
+      background: var(--surface-2);
+      border: 1px solid var(--border-light);
+      border-radius: 14px;
+      padding: 1.25rem;
+      margin: 1.25rem 0;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .flowchart-caption {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-top: 0.75rem;
+      text-align: center;
+    }
+    .flowchart-svg {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* CITATION BOX */
+    .citation-box { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 12px; padding: 1.25rem; font-size: 0.82rem; color: var(--text-muted); line-height: 1.75; font-style: italic; }
+    .btn-row { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.25rem; }
+    .btn { display: inline-flex; align-items: center; gap: 6px; padding: 0.55rem 1.1rem; border-radius: 10px; border: 1.5px solid var(--border-light); background: var(--surface); color: var(--text-muted); font-size: 0.82rem; font-weight: 600; cursor: pointer; text-decoration: none; transition: all var(--tr); }
+    .btn:hover { border-color: var(--accent); color: var(--accent); background: var(--blue-bg); }
+    .btn-primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .btn-primary:hover { background: #0369a1; color: #fff; }
+
+    @media (max-width: 768px) {
+      .page-content { padding: 1.25rem 1rem; }
+      .sec-body { padding: 1rem; }
+      .grid-2col, .grid-3col, .grid-4col { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP NAV -->
+  <nav class="topnav">
+    <a href="../guidelines.html" class="topnav-back">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+      Kho Guidelines
+    </a>
+    <div class="topnav-divider"></div>
+    <div class="topnav-title">ACG 2022: Hướng Dẫn Tiếp Cận & Quản Lý Bệnh Trào Ngược Dạ Dày - Thực Quản (GERD)</div>
+    <div class="topnav-badges">
+      <span class="badge badge-blue">ACG 2022</span>
+      <span class="badge badge-teal">Tiêu hóa</span>
+      <button class="topnav-theme-toggle" id="theme-btn" title="Chuyển đổi giao diện Sáng/Tối" aria-label="Toggle Dark Mode">🌙</button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge-strip">
+        <div class="hero-badge">🔬 American College of Gastroenterology (ACG)</div>
+        <div class="hero-badge">📑 Am J Gastroenterol 2022</div>
+        <div class="hero-badge">⭐ GRADE Practice-Changing</div>
+      </div>
+      <h1 class="hero-title">
+        <span>ACG Clinical Guideline for GERD</span>
+        Chẩn Đoán & Điều Trị Bệnh Trào Ngược Dạ Dày - Thực Quản (GERD)
+      </h1>
+      <p class="hero-subtitle">
+        Khuyến cáo thực hành lâm sàng toàn diện từ ACG 2022: Sinh lý bệnh đa yếu tố, phác đồ thử PPI 8 tuần chuẩn mực, phân tầng nội soi EGD & đo theo dõi trào ngược ngoài điều trị, xử trí triệu chứng ngoài thực quản, quản lý GERD kháng trị, can thiệp ngoại khoa MSA/TIF/Nissen và bằng chứng an toàn dài hạn của liệu pháp PPI.
+      </p>
+      <div class="hero-meta">
+        <div class="hero-meta-item">📅 <strong>Năm công bố:</strong> 2022</div>
+        <div class="hero-meta-item">🏛️ <strong>Tổ chức:</strong> ACG (American College of Gastroenterology)</div>
+        <div class="hero-meta-item">📖 <strong>Tạp chí:</strong> Am J Gastroenterol 2022;117:27–56</div>
+        <div class="hero-meta-item">🎯 <strong>Đối tượng:</strong> Bác sĩ Tiêu hóa, Nội tổng quát, Tai Mũi Họng, Ngoại tổng quát</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- PILLARS STICKY NAV STRIP -->
+  <nav class="pillars-nav" aria-label="Mục lục hướng dẫn">
+    <div class="pillars-nav-inner">
+      <a href="#sec-1" class="pillar-tab p-1">1. Sinh lý & Phân loại</a>
+      <a href="#sec-2" class="pillar-tab p-2">2. Chẩn đoán & Lưu đồ EGD</a>
+      <a href="#sec-3" class="pillar-tab p-3">3. Lối sống (Table 3)</a>
+      <a href="#sec-4" class="pillar-tab p-4">4. Phác đồ Thuốc PPI</a>
+      <a href="#sec-5" class="pillar-tab p-5">5. Ngoài thực quản (Fig 2)</a>
+      <a href="#sec-6" class="pillar-tab p-6">6. Kháng trị & Can thiệp (Fig 3)</a>
+      <a href="#sec-7" class="pillar-tab p-7">7. An toàn PPI Dài hạn (Table 5)</a>
+    </div>
+  </nav>
+
+  <!-- KPI STATS STRIP -->
+  <section class="stats-strip" aria-label="Các chỉ số mốc then chốt">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-val">8 Tuần</div>
+        <div class="stat-lbl">Thời gian thử nghiệm PPI 1 lần/ngày trước ăn cho triệu chứng điển hình</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">30–60 Phút</div>
+        <div class="stat-lbl">Khoảng cách uống PPI trước bữa ăn đầu tiên để ức chế bơm H⁺/K⁺ tối ưu</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">Độ C/D & Barrett</div>
+        <div class="stat-lbl">Chỉ định bắt buộc duy trì PPI vô thời hạn hoặc can thiệp phẫu thuật</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">OR 1.33</div>
+        <div class="stat-lbl">Biến cố bất lợi duy nhất có ý nghĩa trong RCT 3 năm (Nhiễm trùng đường ruột)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN PAGE CONTENT -->
+  <main class="page-content">
+
+    <!-- SECTION 1: SINH LÝ BỆNH & PHÂN LOẠI KIỂU HÌNH -->
+    <section id="sec-1" class="sec-card">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <span class="sec-hdr-icon">🔬</span>
+          <h2 class="sec-title">1. Sinh Lý Bệnh, Định Nghĩa & Các Kiểu Hình Lâm Sàng GERD</h2>
+        </div>
+        <span class="sec-badge">Pathophysiology</span>
+      </div>
+      <div class="sec-body">
+        
+        <div class="infobox info">
+          <div class="infobox-icon">💡</div>
+          <div>
+            <span class="infobox-title">Định Nghĩa Bệnh GERD Theo Tiêu Chuẩn Khách Quan</span>
+            <strong>Bệnh trào ngược dạ dày - thực quản (GERD)</strong> là tình trạng dịch trong dạ dày trào ngược vào thực quản gây ra các triệu chứng khó chịu và/hoặc biến chứng. Về mặt khách quan, GERD được xác lập bởi: <strong>(1)</strong> Tổn thương niêm mạc thực quản phát hiện qua nội soi (viêm thực quản bào mòn độ B–D, thực quản Barrett > 3cm, hoặc hẹp thực quản); và/hoặc <strong>(2)</strong> Thời gian tiếp xúc với axit bất thường (AET > 6%) được chứng minh qua theo dõi trào ngược. Hiện nay, GERD không còn là một bệnh đơn lẻ mà là một hội chứng đa kiểu hình lâm sàng.
+          </div>
+        </div>
+
+        <div class="sec-subtitle">4 Yếu Tố Sinh Lý Bệnh Cốt Lõi Của GERD</div>
+        <div class="grid-2col">
+          <div class="clin-card">
+            <div class="clin-card-accent accent-blue"></div>
+            <div class="clin-card-title">
+              <span>1. Suy giảm Vùng nối Dạ dày - Thực quản (EGJ)</span>
+              <span>🚪</span>
+            </div>
+            <div class="clin-card-body">
+              Hàng rào chống trào ngược giải phẫu được cấu thành bởi <strong>cơ thắt thực quản dưới (LES)</strong> và <strong>cơ hoành chân (crural diaphragm)</strong>. Sự giãn thoáng qua của LES (TLESR) không liên quan nuốt hoặc sự biến dạng giải phẫu do thoát vị hoành (hiatal hernia) làm mất hiệu ứng kẹp ép, dẫn đến trào ngược tự do dịch vị.
+            </div>
+          </div>
+
+          <div class="clin-card">
+            <div class="clin-card-accent accent-red"></div>
+            <div class="clin-card-title">
+              <span>2. Viêm Niêm mạc do Cytokine & Hóa ứng động</span>
+              <span>🔥</span>
+            </div>
+            <div class="clin-card-body">
+              Dịch vị trào ngược không chỉ gây tổn thương ăn mòn vật lý trực tiếp mà còn kích hoạt tế bào biểu mô thực quản giải phóng <strong>IL-8, IL-1β và các chemokine</strong>, thu hút bạch cầu trung tính và lympho bào xâm nhập, làm giãn rộng khoảng gian bào (DIS) và kích thích tận cùng thần kinh cảm giác.
+            </div>
+          </div>
+
+          <div class="clin-card">
+            <div class="clin-card-accent accent-amber"></div>
+            <div class="clin-card-title">
+              <span>3. Giảm Thanh Thải Axit & Tổn Thương Bảo Vệ</span>
+              <span>⏳</span>
+            </div>
+            <div class="clin-card-body">
+              Giảm nhu động đẩy dịch của thân thực quản kết hợp với <strong>giảm tiết nước bọt</strong> (nơi chứa bicarbonate trung hòa axit) kéo dài thời gian niêm mạc tiếp xúc với dịch toan. Tổn thương lớp nhầy và lớp biểu mô vảy làm giảm tính toàn vẹn hàng rào niêm mạc.
+            </div>
+          </div>
+
+          <div class="clin-card">
+            <div class="clin-card-accent accent-purple"></div>
+            <div class="clin-card-title">
+              <span>4. Tăng Nhạy Cảm & Rối Loạn Vận Động Dạ Dày</span>
+              <span>🧠</span>
+            </div>
+            <div class="clin-card-body">
+              <strong>Chậm làm rỗng dạ dày (gastroparesis)</strong> làm tăng thể tích và áp lực trong lòng dạ dày, tạo điều kiện mở bung EGJ. Kèm theo đó, hiện tượng <strong>tăng nhạy cảm thực quản (reflux hypersensitivity)</strong> ở thụ thể TRPV1 khiến bệnh nhân cảm nhận đau rát ngay cả với các đợt trào ngược sinh lý.
+            </div>
+          </div>
+        </div>
+
+        <div class="sec-subtitle">Phổ Biểu Hiện Lâm Sàng & Các Kiểu Hình (Phenotypes)</div>
+        <div class="grid-3col">
+          <div class="clin-card">
+            <div class="clin-card-accent accent-green"></div>
+            <div class="clin-card-title">
+              <span>Triệu chứng Điển hình</span>
+              <span>🫀</span>
+            </div>
+            <div class="clin-card-body">
+              <ul class="clin-card-list">
+                <li><strong>Ợ nóng (Heartburn):</strong> Nóng rát sau xương ức lan từ thượng vị lên cổ, tăng sau ăn hoặc khi nằm.</li>
+                <li><strong>Trớ (Regurgitation):</strong> Trào ngược tự nhiên dịch/thức ăn lên miệng, có vị chua hoặc đắng.</li>
+                <li><strong>Đau ngực không do tim:</strong> Có thể giống hệt cơn đau thắt ngực mạch vành, cần loại trừ tim mạch trước.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="clin-card">
+            <div class="clin-card-accent accent-orange"></div>
+            <div class="clin-card-title">
+              <span>Biểu hiện Ngoài Thực quản</span>
+              <span>🗣️</span>
+            </div>
+            <div class="clin-card-body">
+              <ul class="clin-card-list">
+                <li><strong>Hô hấp:</strong> Ho mạn tính không rõ nguyên nhân, hen phế quản khó kiểm soát, xơ phổi kẽ.</li>
+                <li><strong>Tai Mũi Họng:</strong> Khàn tiếng kéo dài, hắng giọng liên tục, cảm giác vướng nghẹn họng (globus), viêm thanh quản trào ngược (LPR).</li>
+                <li><strong>Răng miệng:</strong> Mòn men răng mặt trong, viêm nướu mạn.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="clin-card">
+            <div class="clin-card-accent accent-red"></div>
+            <div class="clin-card-title">
+              <span>Triệu chứng Báo động (Cờ đỏ)</span>
+              <span>🚩</span>
+            </div>
+            <div class="clin-card-body">
+              <ul class="clin-card-list">
+                <li><strong>Nuốt khó (Dysphagia)</strong> tiến triển hoặc nuốt đau (Odynophagia).</li>
+                <li><strong>Chảy máu tiêu hóa:</strong> Nôn ra máu, đi cầu phân đen hoặc thiếu máu thiếu sắt không giải thích được.</li>
+                <li><strong>Sụt cân nhanh không chủ ý</strong> hoặc nôn ói tái diễn.</li>
+                <li><strong>Chỉ định:</strong> Bắt buộc nội soi EGD khẩn cấp, không trì hoãn thử thuốc.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 2: CHẨN ĐOÁN & LƯU ĐỒ FIGURE 1 -->
+    <section id="sec-2" class="sec-card">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <span class="sec-hdr-icon">📋</span>
+          <h2 class="sec-title">2. Khuyến Cáo Chẩn Đoán & Lưu Đồ Tiếp Cận Khách Quan (Figure 1)</h2>
+        </div>
+        <span class="sec-badge">Diagnostic Algorithm</span>
+      </div>
+      <div class="sec-body">
+        
+        <div class="sec-subtitle">8 Khuyến Cáo Chẩn Đoán Chính Thức Từ ACG 2022</div>
+
+        <div class="ebm-rec-card rec-strong">
+          <div class="ebm-rec-header">
+            <span class="ebm-rec-title">1. Thử nghiệm PPI 8 tuần cho triệu chứng điển hình</span>
+            <div class="badge-group">
+              <span class="cor-badge cor-strong">Khuyến cáo MẠNH</span>
+              <span class="loe-badge loe-mod">Bằng chứng Trung bình</span>
+            </div>
+          </div>
+          <div class="ebm-rec-body">
+            Ở bệnh nhân có triệu chứng GERD điển hình (ợ nóng và trớ) <strong>không có triệu chứng báo động</strong>, khuyến cáo thực hiện thử nghiệm điều trị bằng <strong>PPI liều 1 lần/ngày uống 30–60 phút trước bữa ăn trong vòng 8 tuần</strong>.
+          </div>
+        </div>
+
+        <div class="ebm-rec-card rec-cond">
+          <div class="ebm-rec-header">
+            <span class="ebm-rec-title">2. Thử nghiệm ngừng PPI sau khi đạt đáp ứng</span>
+            <div class="badge-group">
+              <span class="cor-badge cor-cond">Khuyến cáo Có điều kiện</span>
+              <span class="loe-badge loe-low">Bằng chứng Thấp</span>
+            </div>
+          </div>
+          <div class="ebm-rec-body">
+            Khuyến cáo cố gắng ngừng PPI ở những bệnh nhân có triệu chứng đáp ứng tốt hoàn toàn với đợt thử nghiệm PPI 8 tuần ban đầu để đánh giá xem bệnh nhân có cần điều trị duy trì hay không.
+          </div>
+        </div>
+
+        <div class="ebm-rec-card rec-strong">
+          <div class="ebm-rec-header">
+            <span class="ebm-rec-title">3. Nội soi EGD chẩn đoán sau khi thất bại PPI hoặc tái phát nhanh</span>
+            <div class="badge-group">
+              <span class="cor-badge cor-strong">Khuyến cáo MẠNH</span>
+              <span class="loe-badge loe-low">Bằng chứng Thấp</span>
+            </div>
+          </div>
+          <div class="ebm-rec-body">
+            Khuyến cáo nội soi thực quản dạ dày (EGD), <strong>lý tưởng nhất là sau khi đã ngừng PPI từ 2 đến 4 tuần</strong>, ở những bệnh nhân có triệu chứng điển hình không đáp ứng đầy đủ với PPI 8 tuần hoặc triệu chứng tái phát nhanh khi ngừng thuốc.
+          </div>
+        </div>
+
+        <div class="ebm-rec-card rec-cond">
+          <div class="ebm-rec-header">
+            <span class="ebm-rec-title">4. Đánh giá đau ngực nghi ngờ do GERD</span>
+            <div class="badge-group">
+              <span class="cor-badge cor-cond">Khuyến cáo Có điều kiện</span>
+              <span class="loe-badge loe-low">Bằng chứng Thấp</span>
+            </div>
+          </div>
+          <div class="ebm-rec-body">
+            Ở bệnh nhân bị đau ngực không kèm ợ nóng và đã được bác sĩ tim mạch đánh giá đầy đủ để loại trừ hoàn toàn nguyên nhân mạch vành, khuyến cáo thăm dò khách quan tìm GERD bằng nội soi EGD và/hoặc đo theo dõi trào ngược.
+          </div>
+        </div>
+
+        <div class="ebm-rec-card rec-against">
+          <div class="ebm-rec-header">
+            <span class="ebm-rec-title">5. Không dùng X-quang Barium đơn thuần để chẩn đoán GERD</span>
+            <div class="badge-group">
+              <span class="cor-badge cor-against">Không khuyến cáo</span>
+              <span class="loe-badge loe-low">Bằng chứng Thấp</span>
+            </div>
+          </div>
+          <div class="ebm-rec-body">
+            Không khuyến cáo sử dụng chụp thực quản cản quang Barium đơn thuần như một xét nghiệm để chẩn đoán xác định GERD (chỉ có giá trị đánh giá hẹp cơ học hoặc thoát vị hoành trước phẫu thuật).
+          </div>
+        </div>
+
+        <div class="ebm-rec-card rec-strong">
+          <div class="ebm-rec-header">
+            <span class="ebm-rec-title">6. Nội soi EGD là xét nghiệm đầu tay cho triệu chứng báo động & nguy cơ Barrett</span>
+            <div class="badge-group">
+              <span class="cor-badge cor-strong">Khuyến cáo MẠNH</span>
+              <span class="loe-badge loe-low">Bằng chứng Thấp</span>
+            </div>
+          </div>
+          <div class="ebm-rec-body">
+            Khuyến cáo nội soi EGD là xét nghiệm đầu tiên để đánh giá bệnh nhân có nuốt khó, nuốt đau, sụt cân, xuất huyết tiêu hóa, hoặc bệnh nhân có nhiều yếu tố nguy cơ của thực quản Barrett (nam giới, > 50 tuổi, GERD mạn tính > 5 năm, béo phì trung tâm, hút thuốc lá).
+          </div>
+        </div>
+
+        <div class="ebm-rec-card rec-strong">
+          <div class="ebm-rec-header">
+            <span class="ebm-rec-title">7. Đo theo dõi trào ngược ngoài điều trị (Off PPI) khi chẩn đoán chưa rõ</span>
+            <div class="badge-group">
+              <span class="cor-badge cor-strong">Khuyến cáo MẠNH</span>
+              <span class="loe-badge loe-low">Bằng chứng Thấp</span>
+            </div>
+          </div>
+          <div class="ebm-rec-body">
+            Ở những bệnh nhân nghi ngờ GERD nhưng nội soi EGD bình thường hoặc chỉ có viêm nhẹ độ A theo phân loại Los Angeles (LA Grade A), khuyến cáo thực hiện <strong>đo theo dõi trào ngược ngoài điều trị (Off PPI ≥ 7 ngày)</strong> bằng catheter pH-impedance 24h hoặc viên nang pH không dây 48–96h (Bravo) để xác lập chẩn đoán khách quan.
+          </div>
+        </div>
+
+        <div class="ebm-rec-card rec-strong">
+          <div class="ebm-rec-header">
+            <span class="ebm-rec-title">8. Tránh đo trào ngược Off PPI ở bệnh nhân đã có viêm thực quản nặng/Barrett</span>
+            <div class="badge-group">
+              <span class="cor-badge cor-strong">Khuyến cáo MẠNH</span>
+              <span class="loe-badge loe-low">Bằng chứng Thấp</span>
+            </div>
+          </div>
+          <div class="ebm-rec-body">
+            Khuyến cáo KHÔNG thực hiện đo theo dõi trào ngược ngoài điều trị (Off PPI) đơn thuần để chẩn đoán GERD ở những bệnh nhân đã có bằng chứng nội soi rõ ràng của <strong>viêm thực quản bào mòn độ C hoặc D (LA Grade C/D)</strong> hoặc <strong>thực quản Barrett đoạn dài (> 3cm)</strong> vì chẩn đoán GERD ở nhóm này đã được xác định 100%.
+          </div>
+        </div>
+
+        <!-- EDITORIAL SVG FLOWCHART: FIGURE 1 -->
+        <div class="sec-subtitle" style="margin-top: 1.5rem;">Sơ Đồ Vector: Lưu Đồ Chẩn Đoán GERD Chuẩn ACG 2022 (Figure 1)</div>
+        <div class="flowchart-container">
+          <svg class="flowchart-svg" viewBox="0 0 880 560" width="100%" height="560" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="gBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#0284c7"/>
+                <stop offset="100%" stop-color="#0369a1"/>
+              </linearGradient>
+              <linearGradient id="gGreen" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#059669"/>
+                <stop offset="100%" stop-color="#047857"/>
+              </linearGradient>
+              <linearGradient id="gAmber" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#d97706"/>
+                <stop offset="100%" stop-color="#b45309"/>
+              </linearGradient>
+              <linearGradient id="gPurple" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#7c3aed"/>
+                <stop offset="100%" stop-color="#6d28d9"/>
+              </linearGradient>
+              <filter id="shadow" x="-4%" y="-4%" width="108%" height="108%">
+                <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.08"/>
+              </filter>
+            </defs>
+
+            <!-- Top Box: Triệu chứng khởi đầu -->
+            <rect x="240" y="20" width="400" height="54" rx="10" fill="url(#gBlue)" filter="url(#shadow)"/>
+            <text x="440" y="44" fill="#ffffff" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700" text-anchor="middle">Triệu chứng Ợ nóng / Trớ điển hình</text>
+            <text x="440" y="62" fill="#bae6fd" font-family="'Inter', sans-serif" font-size="11" text-anchor="middle">(Không kèm triệu chứng báo động cờ đỏ)</text>
+
+            <!-- Line 1 Down -->
+            <line x1="440" y1="74" x2="440" y2="105" stroke="#0284c7" stroke-width="2.5"/>
+            <polygon points="436,105 440,113 444,105" fill="#0284c7"/>
+
+            <!-- Box 2: Thử PPI 8 tuần -->
+            <rect x="260" y="113" width="360" height="50" rx="10" fill="#ffffff" stroke="#0284c7" stroke-width="2" filter="url(#shadow)"/>
+            <text x="440" y="135" fill="#0f172a" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700" text-anchor="middle">Thử nghiệm PPI 8 tuần</text>
+            <text x="440" y="152" fill="#475569" font-family="'Inter', sans-serif" font-size="11" text-anchor="middle">(Liều chuẩn 1 lần/ngày, uống 30-60p trước bữa ăn)</text>
+
+            <!-- Branches Left & Right from Box 2 -->
+            <path d="M 440 163 L 440 185 L 200 185 L 200 210" fill="none" stroke="#64748b" stroke-width="2"/>
+            <polygon points="196,210 200,218 204,210" fill="#64748b"/>
+            
+            <path d="M 440 163 L 440 185 L 680 185 L 680 210" fill="none" stroke="#64748b" stroke-width="2"/>
+            <polygon points="676,210 680,218 684,210" fill="#64748b"/>
+
+            <rect x="110" y="174" width="130" height="22" rx="6" fill="#f0fdf4" stroke="#86efac" stroke-width="1"/>
+            <text x="175" y="189" fill="#15803d" font-family="'Inter', sans-serif" font-size="10" font-weight="700" text-anchor="middle">Đáp ứng hoàn toàn</text>
+
+            <rect x="630" y="174" width="150" height="22" rx="6" fill="#fef2f2" stroke="#fca5a5" stroke-width="1"/>
+            <text x="705" y="189" fill="#b91c1c" font-family="'Inter', sans-serif" font-size="10" font-weight="700" text-anchor="middle">Không đáp ứng / Tái phát</text>
+
+            <!-- LEFT SUBTREE (Đáp ứng tốt) -->
+            <rect x="100" y="218" width="200" height="46" rx="8" fill="#ffffff" stroke="#059669" stroke-width="1.5"/>
+            <text x="200" y="238" fill="#0f172a" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700" text-anchor="middle">Thử nghiệm Ngừng PPI</text>
+            <text x="200" y="253" fill="#64748b" font-family="'Inter', sans-serif" font-size="10" text-anchor="middle">(Giảm liều dần hoặc dừng)</text>
+
+            <path d="M 200 264 L 200 285 L 110 285 L 110 310" fill="none" stroke="#64748b" stroke-width="1.5"/>
+            <polygon points="107,310 110,316 113,310" fill="#64748b"/>
+            
+            <path d="M 200 264 L 200 285 L 290 285 L 290 310" fill="none" stroke="#64748b" stroke-width="1.5"/>
+            <polygon points="287,310 290,316 293,310" fill="#64748b"/>
+
+            <rect x="40" y="316" width="140" height="46" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+            <text x="110" y="335" fill="#334155" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" text-anchor="middle">Không tái phát</text>
+            <text x="110" y="350" fill="#64748b" font-family="'Inter', sans-serif" font-size="10" text-anchor="middle">Theo dõi / Dừng thuốc</text>
+
+            <rect x="220" y="316" width="140" height="46" rx="8" fill="url(#gGreen)"/>
+            <text x="290" y="335" fill="#ffffff" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" text-anchor="middle">Tái phát triệu chứng</text>
+            <text x="290" y="350" fill="#dcfce7" font-family="'Inter', sans-serif" font-size="10" text-anchor="middle">Xác nhận GERD</text>
+
+            <!-- RIGHT SUBTREE (Nội soi EGD) -->
+            <rect x="560" y="218" width="240" height="48" rx="8" fill="#ffffff" stroke="#d97706" stroke-width="2"/>
+            <text x="680" y="238" fill="#0f172a" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700" text-anchor="middle">Nội soi Thực quản Dạ dày (EGD)</text>
+            <text x="680" y="254" fill="#b45309" font-family="'Inter', sans-serif" font-size="10" font-weight="600" text-anchor="middle">Lý tưởng: Ngừng PPI trước 2–4 tuần</text>
+
+            <!-- Branch from EGD -->
+            <path d="M 680 266 L 680 288 L 540 288 L 540 310" fill="none" stroke="#64748b" stroke-width="1.5"/>
+            <polygon points="537,310 540,316 543,310" fill="#64748b"/>
+            
+            <path d="M 680 266 L 680 288 L 800 288 L 800 310" fill="none" stroke="#64748b" stroke-width="1.5"/>
+            <polygon points="797,310 800,316 803,310" fill="#64748b"/>
+
+            <!-- EGD Abnormal -->
+            <rect x="720" y="316" width="150" height="54" rx="8" fill="url(#gGreen)"/>
+            <text x="795" y="335" fill="#ffffff" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" text-anchor="middle">EGD Bất Thường</text>
+            <text x="795" y="350" fill="#dcfce7" font-family="'Inter', sans-serif" font-size="9.5" text-anchor="middle">LA Độ B, C, D hoặc Barrett</text>
+            <text x="795" y="363" fill="#ffffff" font-family="'Inter', sans-serif" font-size="10" font-weight="700" text-anchor="middle">➔ XÁC NHẬN GERD</text>
+
+            <!-- EGD Normal or LA A -->
+            <rect x="440" y="316" width="200" height="54" rx="8" fill="#ffffff" stroke="#7c3aed" stroke-width="1.5"/>
+            <text x="540" y="334" fill="#0f172a" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" text-anchor="middle">EGD Bình thường / LA Độ A</text>
+            <text x="540" y="349" fill="#7c3aed" font-family="'Inter', sans-serif" font-size="10" font-weight="600" text-anchor="middle">Chưa đủ bằng chứng xác nhận</text>
+            <text x="540" y="362" fill="#64748b" font-family="'Inter', sans-serif" font-size="9.5" text-anchor="middle">Cần đo trào ngược ngoài điều trị</text>
+
+            <!-- Line from EGD Normal down to Reflux Testing -->
+            <line x1="540" y1="370" x2="540" y2="400" stroke="#7c3aed" stroke-width="2"/>
+            <polygon points="536,400 540,408 544,400" fill="#7c3aed"/>
+
+            <rect x="420" y="408" width="240" height="48" rx="8" fill="url(#gPurple)"/>
+            <text x="540" y="428" fill="#ffffff" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="700" text-anchor="middle">Đo Theo Dõi Trào Ngược (Off PPI)</text>
+            <text x="540" y="444" fill="#e9d5ff" font-family="'Inter', sans-serif" font-size="10" text-anchor="middle">pH-Impedance 24h hoặc Viên nang Bravo</text>
+
+            <!-- Final Split from Reflux Testing -->
+            <path d="M 540 456 L 540 478 L 440 478 L 440 496" fill="none" stroke="#64748b" stroke-width="1.5"/>
+            <polygon points="437,496 440,502 443,496" fill="#64748b"/>
+
+            <path d="M 540 456 L 540 478 L 640 478 L 640 496" fill="none" stroke="#64748b" stroke-width="1.5"/>
+            <polygon points="637,496 640,502 643,496" fill="#64748b"/>
+
+            <rect x="360" y="502" width="160" height="44" rx="8" fill="url(#gGreen)"/>
+            <text x="440" y="520" fill="#ffffff" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" text-anchor="middle">AET &gt; 6% (Bất thường)</text>
+            <text x="440" y="536" fill="#dcfce7" font-family="'Inter', sans-serif" font-size="10" font-weight="700" text-anchor="middle">➔ XÁC NHẬN GERD</text>
+
+            <rect x="560" y="502" width="160" height="44" rx="8" fill="#f8fafc" stroke="#e11d48" stroke-width="1.5"/>
+            <text x="640" y="520" fill="#be123c" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" text-anchor="middle">AET &lt; 4% (Bình thường)</text>
+            <text x="640" y="536" fill="#64748b" font-family="'Inter', sans-serif" font-size="9.5" text-anchor="middle">Loại trừ GERD ➔ Tìm NN khác</text>
+          </svg>
+          <div class="flowchart-caption">Hình 1. Lưu đồ chẩn đoán GERD theo Khuyến cáo ACG 2022 (Nội soi EGD và Đo theo dõi trào ngược ngoài điều trị).</div>
+        </div>
+
+        <div class="sec-subtitle">Phân Loại Viêm Thực Quản Bào Mòn Los Angeles (LA Classification)</div>
+        <div class="grid-4col">
+          <div class="clin-card">
+            <div class="clin-card-accent accent-green"></div>
+            <div class="clin-card-title"><span>Độ A (Grade A)</span><span class="rx-tag">Nhẹ</span></div>
+            <div class="clin-card-body">Một hoặc nhiều vết trợt niêm mạc dài <strong>≤ 5 mm</strong>, không lan qua đỉnh của hai nếp gấp niêm mạc. <em>(Chưa đủ để khẳng định chắc chắn GERD)</em>.</div>
+          </div>
+          <div class="clin-card">
+            <div class="clin-card-accent accent-blue"></div>
+            <div class="clin-card-title"><span>Độ B (Grade B)</span><span class="rx-tag preferred">GERD</span></div>
+            <div class="clin-card-body">Ít nhất một vết trợt <strong>> 5 mm</strong> nhưng không nối liền qua đỉnh của hai nếp gấp niêm mạc. Đủ tiêu chuẩn xác nhận GERD.</div>
+          </div>
+          <div class="clin-card">
+            <div class="clin-card-accent accent-amber"></div>
+            <div class="clin-card-title"><span>Độ C (Grade C)</span><span class="rx-tag warning">Nặng</span></div>
+            <div class="clin-card-body">Vết trợt nối liền giữa các đỉnh nếp gấp niêm mạc nhưng lan rộng <strong>< 75%</strong> chu vi lòng thực quản. Bắt buộc duy trì PPI lâu dài.</div>
+          </div>
+          <div class="clin-card">
+            <div class="clin-card-accent accent-red"></div>
+            <div class="clin-card-title"><span>Độ D (Grade D)</span><span class="rx-tag warning">Rất Nặng</span></div>
+            <div class="clin-card-body">Các vết trợt niêm mạc lan rộng chiếm <strong>≥ 75%</strong> chu vi lòng thực quản. Nguy cơ cao hẹp thực quản và chuyển sản Barrett.</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 3: THAY ĐỔI LỐI SỐNG (TABLE 3) -->
+    <section id="sec-3" class="sec-card">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <span class="sec-hdr-icon">🥗</span>
+          <h2 class="sec-title">3. Khuyến Cáo Thay Đổi Lối Sống (Lifestyle Modifications – Table 3)</h2>
+        </div>
+        <span class="sec-badge">Non-Pharmacological</span>
+      </div>
+      <div class="sec-body">
+        
+        <div class="infobox success">
+          <div class="infobox-icon">🌟</div>
+          <div>
+            <span class="infobox-title">Bằng Chứng Mạnh Nhất: Giảm Cân, Nâng Cao Đầu Giường & Nằm Nghiêng Bên Trái</span>
+            Tổng thuật các thử nghiệm lâm sàng cho thấy: <strong>Giảm cân ở bệnh nhân thừa cân/béo phì (BMI ≥ 25)</strong> và <strong>nằm nghiêng bên trái khi ngủ</strong> là hai can thiệp có cơ chế sinh lý bệnh rõ ràng nhất (Unequivocal) giúp giảm áp lực ổ bụng, giữ lỗ tâm vị nằm cao hơn mức dịch dạ dày, làm giảm số đợt và thời gian tiếp xúc với axit thực quản.
+          </div>
+        </div>
+
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width: 28%;">Biện Pháp Thay Đổi Lối Sống</th>
+                <th style="width: 20%;">Bằng Chứng Khoa Học</th>
+                <th style="width: 22%;">Cơ Chế Sinh Lý Bệnh</th>
+                <th style="width: 30%;">Khuyến Cáo Thực Hành ACG</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Giảm cân (Lose weight)</strong></td>
+                <td><span class="cor-badge cor-strong">Mạnh (Trung bình)</span></td>
+                <td>Mơ hồ <em>(Equivocal)</em></td>
+                <td><strong style="color: var(--green);">CÓ KHUYẾN CÁO</strong> (Béo phì là yếu tố nguy cơ tiến triển thực quản Barrett & Ung thư biểu mô tuyến thực quản).</td>
+              </tr>
+              <tr>
+                <td><strong>Nằm nghiêng bên trái khi ngủ</strong></td>
+                <td><span class="cor-badge cor-cond">Có điều kiện (Thấp)</span></td>
+                <td><strong style="color: var(--green);">Rõ ràng (Unequivocal)</strong></td>
+                <td><strong style="color: var(--green);">CÓ KHUYẾN CÁO</strong> (Tư thế nằm nghiêng trái giữ vùng nối EGJ ở phía trên mức dịch vị).</td>
+              </tr>
+              <tr>
+                <td><strong>Ngủ nâng cao đầu giường (15–20 cm)</strong></td>
+                <td><span class="cor-badge cor-cond">Có điều kiện (Thấp)</span></td>
+                <td>Mơ hồ <em>(Equivocal)</em></td>
+                <td><strong style="color: var(--green);">CÓ KHUYẾN CÁO</strong> cho bệnh nhân có triệu chứng GERD ban đêm hoặc ho khi ngủ.</td>
+              </tr>
+              <tr>
+                <td><strong>Tránh ăn trong 2–3 giờ trước khi ngủ</strong></td>
+                <td><span class="cor-badge cor-cond">Có điều kiện (Thấp)</span></td>
+                <td>Có <em>(Yes)</em></td>
+                <td><strong style="color: var(--green);">CÓ KHUYẾN CÁO</strong> (Giảm thể tích dịch vị và áp lực dạ dày khi nằm).</td>
+              </tr>
+              <tr>
+                <td><strong>Tránh các bữa ăn nhiều chất béo</strong></td>
+                <td>Mơ hồ <em>(Equivocal)</em></td>
+                <td>Mơ hồ <em>(Equivocal)</em></td>
+                <td><strong style="color: var(--green);">CÓ KHUYẾN CÁO</strong> (Chất béo làm chậm tháo rỗng dạ dày và kích thích TLESR).</td>
+              </tr>
+              <tr>
+                <td><strong>Tránh đồ uống có gas (Carbonated)</strong></td>
+                <td>Trung bình <em>(Moderate)</em></td>
+                <td>Có <em>(Yes)</em></td>
+                <td><strong style="color: var(--green);">CÓ KHUYẾN CÁO</strong> (Khí CO₂ làm căng phồng phình vị gây mở bung cơ thắt LES).</td>
+              </tr>
+              <tr>
+                <td><strong>Ăn các bữa ăn nhỏ hơn (Chia nhỏ bữa)</strong></td>
+                <td>Yếu <em>(Weak)</em></td>
+                <td>Có <em>(Yes)</em></td>
+                <td><strong style="color: var(--green);">CÓ KHUYẾN CÁO</strong> (Tránh quá tải thể tích và áp lực dạ dày sau ăn).</td>
+              </tr>
+              <tr>
+                <td><strong>Ngưng hút thuốc lá / sản phẩm thuốc lá</strong></td>
+                <td><span class="cor-badge cor-cond">Có điều kiện (Thấp)</span></td>
+                <td>Có <em>(Yes)</em></td>
+                <td><strong style="color: var(--green);">CÓ KHUYẾN CÁO</strong> (Nicotine làm giảm áp lực nghỉ LES, giảm tiết nước bọt và tăng nguy cơ ung thư).</td>
+              </tr>
+              <tr>
+                <td><strong>Tránh thực phẩm kích ứng (Trigger foods: Cam quýt, cà chua, chocolate, bạc hà)</strong></td>
+                <td>Yếu <em>(Weak)</em></td>
+                <td>Có <em>(Yes)</em></td>
+                <td><strong>CÁ THỂ HÓA</strong>: Chỉ khuyên tránh nếu thực phẩm đó thực sự khởi phát triệu chứng của chính bệnh nhân. Không kiêng khem đại trà.</td>
+              </tr>
+              <tr>
+                <td><strong>Chọn đồ uống tách caffein (Decaf)</strong></td>
+                <td>Mơ hồ <em>(Equivocal)</em></td>
+                <td>Mơ hồ <em>(Equivocal)</em></td>
+                <td><strong>KHÔNG KHUYẾN CÁO THƯỜNG QUY</strong> trừ khi người bệnh nhận thấy cà phê làm tăng ợ nóng.</td>
+              </tr>
+              <tr>
+                <td><strong>Tránh đồ uống có cồn (Rượu bia)</strong></td>
+                <td>Yếu <em>(Weak)</em></td>
+                <td>Cơ chế chưa rõ ràng</td>
+                <td><strong>KHÔNG KHUYẾN CÁO THƯỜNG QUY</strong> kiêng tuyệt đối (tùy thuộc vào loại đồ uống và đáp ứng cá nhân).</td>
+              </tr>
+              <tr>
+                <td><strong>Tránh tập thể dục quá mức ngay sau ăn</strong></td>
+                <td>Yếu <em>(Weak)</em></td>
+                <td>Có <em>(Yes)</em></td>
+                <td><strong style="color: var(--green);">CÓ KHUYẾN CÁO</strong> (Tăng áp lực ổ bụng khi gắng sức thúc đẩy dòng trào ngược).</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 4: PHÁC ĐỒ THUỐC PPI & NỘI KHOA -->
+    <section id="sec-4" class="sec-card">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <span class="sec-hdr-icon">💊</span>
+          <h2 class="sec-title">4. Phác Đồ Điều Trị Thuốc & Tối Ưu Hóa Liệu Pháp PPI</h2>
+        </div>
+        <span class="sec-badge">Medical Therapy</span>
+      </div>
+      <div class="sec-body">
+        
+        <div class="sec-subtitle">Các Khuyến Cáo Điều Trị Thuốc Nền Tảng ACG 2022</div>
+
+        <div class="ebm-rec-card rec-strong">
+          <div class="ebm-rec-header">
+            <span class="ebm-rec-title">PPI vượt trội hơn H2RA trong làm lành và duy trì viêm thực quản bào mòn</span>
+            <div class="badge-group">
+              <span class="cor-badge cor-strong">Khuyến cáo MẠNH</span>
+              <span class="loe-badge loe-high">Bằng chứng Cao</span>
+            </div>
+          </div>
+          <div class="ebm-rec-body">
+            Khuyến cáo sử dụng thuốc ức chế bơm proton (PPI) ưu tiên hơn thuốc kháng thụ thể histamine-2 (H2RA) để làm lành tổn thương niêm mạc trong viêm thực quản bào mòn (EE) và duy trì sự lành bệnh lâu dài.
+          </div>
+        </div>
+
+        <div class="ebm-rec-card rec-strong">
+          <div class="ebm-rec-header">
+            <span class="ebm-rec-title">Thời điểm uống PPI chuẩn mực: 30–60 phút trước bữa ăn</span>
+            <div class="badge-group">
+              <span class="cor-badge cor-strong">Khuyến cáo MẠNH</span>
+              <span class="loe-badge loe-mod">Bằng chứng Trung bình</span>
+            </div>
+          </div>
+          <div class="ebm-rec-body">
+            Khuyến cáo uống PPI từ <strong>30 đến 60 phút trước bữa ăn đầu tiên trong ngày</strong> thay vì uống trước khi đi ngủ. Bơm proton H⁺/K⁺-ATPase chỉ được hoạt hóa khi thức ăn vào dạ dày; uống PPI trước ăn 30-60p đảm bảo nồng độ đỉnh của thuốc trong máu trùng khớp với thời điểm số lượng bơm hoạt động tối đa.
+          </div>
+        </div>
+
+        <div class="ebm-rec-card rec-strong">
+          <div class="ebm-rec-header">
+            <span class="ebm-rec-title">Chỉ định duy trì PPI vô thời hạn cho Viêm thực quản LA Độ C/D hoặc Barrett</span>
+            <div class="badge-group">
+              <span class="cor-badge cor-strong">Khuyến cáo MẠNH</span>
+              <span class="loe-badge loe-mod">Bằng chứng Trung bình</span>
+            </div>
+          </div>
+          <div class="ebm-rec-body">
+            Khuyến cáo điều trị duy trì bằng PPI liên tục vô thời hạn (hoặc can thiệp phẫu thuật chống trào ngược) cho bệnh nhân có <strong>viêm thực quản bào mòn độ C hoặc D theo phân loại Los Angeles</strong> hoặc <strong>thực quản Barrett</strong> nhằm phòng ngừa biến chứng loét, hẹp thực quản và ung thư biểu mô tuyến.
+          </div>
+        </div>
+
+        <div class="ebm-rec-card rec-cond">
+          <div class="ebm-rec-header">
+            <span class="ebm-rec-title">Chiến lược dùng PPI ngắt quãng / khi cần (On-demand) cho bệnh nhân NERD</span>
+            <div class="badge-group">
+              <span class="cor-badge cor-cond">Khuyến cáo Có điều kiện</span>
+              <span class="loe-badge loe-low">Bằng chứng Thấp</span>
+            </div>
+          </div>
+          <div class="ebm-rec-body">
+            Ở bệnh nhân trào ngược không bào mòn (NERD) hoặc không có tổn thương niêm mạc nặng đã kiểm soát tốt triệu chứng sau đợt điều trị ban đầu, gợi ý chuyển sang dùng PPI theo yêu cầu (khi có triệu chứng) hoặc dùng ngắt quãng để giảm thiểu liều tích lũy.
+          </div>
+        </div>
+
+        <div class="ebm-rec-card rec-against">
+          <div class="ebm-rec-header">
+            <span class="ebm-rec-title">Không sử dụng Prokinetic, Baclofen hoặc Sucralfate thường quy</span>
+            <div class="badge-group">
+              <span class="cor-badge cor-against">Không khuyến cáo</span>
+              <span class="loe-badge loe-mod">Bằng chứng Trung bình / Thấp</span>
+            </div>
+          </div>
+          <div class="ebm-rec-body">
+            <ul style="padding-left: 1.2rem; margin-top: 0.35rem;">
+              <li><strong>Prokinetics (Metoclopramide, Domperidone, Itopride):</strong> Không dùng cho GERD trừ khi có bằng chứng khách quan về liệt dạ dày (gastroparesis).</li>
+              <li><strong>Baclofen (Chất đồng vận GABA-B):</strong> Không dùng nếu không có bằng chứng khách quan về trào ngược không axit gây triệu chứng.</li>
+              <li><strong>Sucralfate:</strong> Không dùng thường quy cho GERD, <em>ngoại trừ trong thời kỳ mang thai</em> do tính an toàn tại chỗ không hấp thu toàn thân.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="sec-subtitle">Bảng Tra Cứu Các Thuốc Ức Chế Bơm Proton (PPI) Thường Dùng</div>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Hoạt Chất (PPI)</th>
+                <th>Liều Chuẩn (1 lần/ngày)</th>
+                <th>Liều Gấp Đôi (BID - 2 lần/ngày)</th>
+                <th>Đặc Điểm Dược Lý & Chuyển Hóa</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Esomeprazole</strong></td>
+                <td><span class="rx-tag preferred">40 mg</span></td>
+                <td><span class="rx-tag preferred">40 mg x 2 lần/ngày</span></td>
+                <td>Đồng phân S của Omeprazole; chuyển hóa ít phụ thuộc CYP2C19 hơn; kiểm soát pH dạ dày &gt; 4 kéo dài nhất. Uống trước ăn 30-60p.</td>
+              </tr>
+              <tr>
+                <td><strong>Rabeprazole</strong></td>
+                <td><span class="rx-tag preferred">20 mg</span></td>
+                <td><span class="rx-tag preferred">20 mg x 2 lần/ngày</span></td>
+                <td>Chuyển hóa chủ yếu qua con đường phi enzym; ít tương tác thuốc với Clopidogrel qua CYP2C19; khởi phát ức chế axit nhanh.</td>
+              </tr>
+              <tr>
+                <td><strong>Omeprazole</strong></td>
+                <td><span class="rx-tag">20 mg</span></td>
+                <td><span class="rx-tag">20 mg x 2 lần/ngày</span></td>
+                <td>PPI kinh điển; chuyển hóa mạnh qua CYP2C19. Chú ý tương tác với Clopidogrel ở người chuyển hóa nhanh.</td>
+              </tr>
+              <tr>
+                <td><strong>Pantoprazole</strong></td>
+                <td><span class="rx-tag">40 mg</span></td>
+                <td><span class="rx-tag">40 mg x 2 lần/ngày</span></td>
+                <td>Ít ức chế CYP2C19 nhất; là lựa chọn an toàn khi dùng phối hợp đa thuốc trên bệnh nhân tim mạch/người cao tuổi.</td>
+              </tr>
+              <tr>
+                <td><strong>Lansoprazole</strong></td>
+                <td><span class="rx-tag">30 mg</span></td>
+                <td><span class="rx-tag">30 mg x 2 lần/ngày</span></td>
+                <td>Sinh khả dụng cao (> 80%); chuyển hóa qua CYP2C19 và CYP3A4.</td>
+              </tr>
+              <tr>
+                <td><strong>Dexlansoprazole</strong></td>
+                <td><span class="rx-tag">30–60 mg</span></td>
+                <td><span class="rx-tag">60 mg x 1 lần/ngày</span></td>
+                <td>Công nghệ phóng thích kép (Dual Delayed Release) tạo 2 đỉnh nồng độ; có thể uống mà không cần phụ thuộc chặt chẽ vào bữa ăn.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 5: BIỂU HIỆN NGOÀI THỰC QUẢN (FIGURE 2) -->
+    <section id="sec-5" class="sec-card">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <span class="sec-hdr-icon">🗣️</span>
+          <h2 class="sec-title">5. Triệu Chứng Ngoài Thực Quản (Extraesophageal GERD & Figure 2)</h2>
+        </div>
+        <span class="sec-badge">ENT & Pulmonary</span>
+      </div>
+      <div class="sec-body">
+        
+        <div class="sec-subtitle">Cơ Chế Bệnh Sinh & Những Điểm Cần Lưu Ý</div>
+        <div class="grid-2col">
+          <div class="clin-card">
+            <div class="clin-card-accent accent-teal"></div>
+            <div class="clin-card-title"><span>1. Con đường Trào ngược Trực tiếp</span><span>🎯</span></div>
+            <div class="clin-card-body">Axit và Pepsin trào ngược vượt qua cơ thắt thực quản trên (UES), tiếp xúc và ăn mòn trực tiếp lên niêm mạc nhạy cảm của thanh quản, dây thanh và đường thở dưới, gây phù nề và phản ứng viêm tại chỗ.</div>
+          </div>
+          <div class="clin-card">
+            <div class="clin-card-accent accent-purple"></div>
+            <div class="clin-card-title"><span>2. Con đường Phản xạ Thần kinh Phế vị</span><span>⚡</span></div>
+            <div class="clin-card-body">Axit trong lòng thực quản đoạn xa kích thích các thụ thể cảm giác phế vị, khởi phát cung phản xạ thần kinh thực quản - khí phế quản gây co thắt cơ trơn phế quản (khởi phát cơn hen) hoặc gây ho mạn tính dai dẳng.</div>
+          </div>
+        </div>
+
+        <div class="infobox warning" style="margin-top: 1.25rem;">
+          <div class="infobox-icon">⚠️</div>
+          <div>
+            <span class="infobox-title">Cảnh Báo Chẩn Đoán Viêm Thanh Quản Trào Ngược (LPR)</span>
+            Khuyến cáo <strong>CHỐNG LẠI việc chẩn đoán LPR chỉ dựa trên hình ảnh soi thanh quản đơn thuần</strong> (như phù nề sụn phễu, sung huyết nếp thanh âm) vì các dấu hiệu này xuất hiện ở hơn 80% người khỏe mạnh bình thường. Đồng thời <strong>KHÔNG khuyến cáo đo pepsin nước bọt hay đo pH hầu họng</strong> thường quy do độ đặc hiệu kém.
+          </div>
+        </div>
+
+        <!-- EDITORIAL SVG FLOWCHART: FIGURE 2 -->
+        <div class="sec-subtitle" style="margin-top: 1.5rem;">Sơ Đồ Vector: Lưu Đồ Chẩn Đoán Triệu Chứng Ngoài Thực Quản (Figure 2)</div>
+        <div class="flowchart-container">
+          <svg class="flowchart-svg" viewBox="0 0 880 480" width="100%" height="480" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="gTeal" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#0d9488"/>
+                <stop offset="100%" stop-color="#0f766e"/>
+              </linearGradient>
+            </defs>
+
+            <!-- Top Box -->
+            <rect x="220" y="15" width="440" height="52" rx="10" fill="url(#gTeal)" filter="url(#shadow)"/>
+            <text x="440" y="38" fill="#ffffff" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700" text-anchor="middle">Triệu chứng Ngoài Thực Quản Nghi Do GERD</text>
+            <text x="440" y="55" fill="#ccfbf1" font-family="'Inter', sans-serif" font-size="11" text-anchor="middle">(Ho mạn tính, Hen suyễn, Khàn tiếng, Viêm thanh quản LPR, Globus)</text>
+
+            <!-- Evaluation Box -->
+            <line x1="440" y1="67" x2="440" y2="92" stroke="#0d9488" stroke-width="2"/>
+            <polygon points="436,92 440,99 444,92" fill="#0d9488"/>
+
+            <rect x="200" y="99" width="480" height="42" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+            <text x="440" y="117" fill="#0f172a" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="700" text-anchor="middle">1. Loại trừ nguyên nhân không do trào ngược (Hô hấp, TMH, Dị ứng)</text>
+            <text x="440" y="132" fill="#64748b" font-family="'Inter', sans-serif" font-size="10.5" text-anchor="middle">2. Phân tầng thành 2 nhóm lâm sàng:</text>
+
+            <!-- 2 Branches -->
+            <path d="M 440 141 L 440 165 L 240 165 L 240 185" fill="none" stroke="#64748b" stroke-width="2"/>
+            <polygon points="236,185 240,192 244,185" fill="#64748b"/>
+
+            <path d="M 440 141 L 440 165 L 640 165 L 640 185" fill="none" stroke="#64748b" stroke-width="2"/>
+            <polygon points="636,185 640,192 644,185" fill="#64748b"/>
+
+            <!-- Left Branch: Combined Symptoms -->
+            <rect x="110" y="192" width="260" height="46" rx="8" fill="#ffffff" stroke="#0284c7" stroke-width="2"/>
+            <text x="240" y="211" fill="#0284c7" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="700" text-anchor="middle">Nhóm Có CẢ 2 Triệu Chứng</text>
+            <text x="240" y="227" fill="#475569" font-family="'Inter', sans-serif" font-size="10" text-anchor="middle">(Ợ nóng/Trớ + Ngoài thực quản)</text>
+
+            <line x1="240" y1="238" x2="240" y2="265" stroke="#0284c7" stroke-width="2"/>
+            <polygon points="236,265 240,272 244,265" fill="#0284c7"/>
+
+            <rect x="110" y="272" width="260" height="46" rx="8" fill="url(#gBlue)"/>
+            <text x="240" y="291" fill="#ffffff" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" text-anchor="middle">Thử PPI Liều Gấp Đôi (BID)</text>
+            <text x="240" y="307" fill="#bae6fd" font-family="'Inter', sans-serif" font-size="10" text-anchor="middle">Uống trước ăn sáng & tối trong 8–12 tuần</text>
+
+            <!-- Split from PPI BID -->
+            <path d="M 240 318 L 240 340 L 150 340 L 150 360" fill="none" stroke="#64748b" stroke-width="1.5"/>
+            <polygon points="147,360 150,366 153,360" fill="#64748b"/>
+
+            <path d="M 240 318 L 240 340 L 330 340 L 330 360" fill="none" stroke="#64748b" stroke-width="1.5"/>
+            <polygon points="327,360 330,366 333,360" fill="#64748b"/>
+
+            <rect x="70" y="366" width="160" height="44" rx="8" fill="url(#gGreen)"/>
+            <text x="150" y="384" fill="#ffffff" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" text-anchor="middle">Cải thiện triệu chứng</text>
+            <text x="150" y="399" fill="#dcfce7" font-family="'Inter', sans-serif" font-size="9.5" text-anchor="middle">Tiếp tục duy trì như GERD</text>
+
+            <rect x="250" y="366" width="160" height="44" rx="8" fill="#ffffff" stroke="#7c3aed" stroke-width="1.5"/>
+            <text x="330" y="384" fill="#7c3aed" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" text-anchor="middle">Không cải thiện</text>
+            <text x="330" y="399" fill="#64748b" font-family="'Inter', sans-serif" font-size="9.5" text-anchor="middle">Đo trào ngược Off PPI</text>
+
+            <!-- Right Branch: Extraesophageal Symptoms Only -->
+            <rect x="510" y="192" width="260" height="46" rx="8" fill="#ffffff" stroke="#e11d48" stroke-width="2"/>
+            <text x="640" y="211" fill="#be123c" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="700" text-anchor="middle">Nhóm CHỈ CÓ Triệu Chứng Ngoài Thực Quản</text>
+            <text x="640" y="227" fill="#475569" font-family="'Inter', sans-serif" font-size="10" text-anchor="middle">(Không kèm ợ nóng hoặc trớ)</text>
+
+            <line x1="640" y1="238" x2="640" y2="265" stroke="#e11d48" stroke-width="2"/>
+            <polygon points="636,265 640,272 644,265" fill="#e11d48"/>
+
+            <rect x="510" y="272" width="260" height="46" rx="8" fill="url(#gPurple)"/>
+            <text x="640" y="291" fill="#ffffff" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" text-anchor="middle">ĐO THEO DÕI TRÀO NGƯỢC (Off PPI)</text>
+            <text x="640" y="307" fill="#e9d5ff" font-family="'Inter', sans-serif" font-size="10" text-anchor="middle">Khảo sát khách quan trước khi kê đơn PPI</text>
+
+            <!-- Split from Off PPI testing -->
+            <path d="M 640 318 L 640 340 L 550 340 L 550 360" fill="none" stroke="#64748b" stroke-width="1.5"/>
+            <polygon points="547,360 550,366 553,360" fill="#64748b"/>
+
+            <path d="M 640 318 L 640 340 L 730 340 L 730 360" fill="none" stroke="#64748b" stroke-width="1.5"/>
+            <polygon points="727,360 730,366 733,360" fill="#64748b"/>
+
+            <rect x="470" y="366" width="160" height="44" rx="8" fill="url(#gGreen)"/>
+            <text x="550" y="384" fill="#ffffff" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" text-anchor="middle">Kết quả Bất thường</text>
+            <text x="550" y="399" fill="#dcfce7" font-family="'Inter', sans-serif" font-size="9.5" text-anchor="middle">Khẳng định GERD ➔ Trị PPI</text>
+
+            <rect x="650" y="366" width="160" height="44" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+            <text x="730" y="384" fill="#334155" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" text-anchor="middle">Kết quả Bình thường</text>
+            <text x="730" y="399" fill="#64748b" font-family="'Inter', sans-serif" font-size="9.5" text-anchor="middle">Loại trừ GERD ➔ Tránh PPI</text>
+          </svg>
+          <div class="flowchart-caption">Hình 2. Thuật toán tiếp cận chẩn đoán các triệu chứng ngoài thực quản nghi do GERD theo ACG 2022.</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 6: GERD KHÁNG TRỊ & CAN THIỆP (FIGURE 3, MSA, TIF, NISSEN) -->
+    <section id="sec-6" class="sec-card">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <span class="sec-hdr-icon">🛡️</span>
+          <h2 class="sec-title">6. Quản Lý GERD Kháng Trị & Các Can Thiệp Ngoại Khoa / Nội Soi</h2>
+        </div>
+        <span class="sec-badge">Refractory & Surgical</span>
+      </div>
+      <div class="sec-body">
+        
+        <div class="sec-subtitle">7 Nguyên Tắc Quản Lý GERD Kháng Trị (Refractory GERD)</div>
+
+        <div class="grid-2col">
+          <div class="clin-card">
+            <div class="clin-card-accent accent-green"></div>
+            <div class="clin-card-title"><span>1. Tối ưu hóa PPI là bước đầu tiên</span><span>⏰</span></div>
+            <div class="clin-card-body">Kiểm tra tuân thủ điều trị; đảm bảo uống thuốc 30-60 phút trước ăn sáng (và trước ăn tối nếu dùng liều BID). Chuyển sang PPI thế hệ mới có chuyển hóa ít phụ thuộc CYP2C19 nếu nghi ngờ chuyển hóa nhanh.</div>
+          </div>
+
+          <div class="clin-card">
+            <div class="clin-card-accent accent-blue"></div>
+            <div class="clin-card-title"><span>2. Đo pH Off PPI nếu chưa có bằng chứng trước đó</span><span>🧪</span></div>
+            <div class="clin-card-body">Ở bệnh nhân chưa từng có bằng chứng khách quan xác định GERD (chưa có LA C/D hay Barrett), bắt buộc ngưng PPI ≥ 7 ngày rồi đo theo dõi trào ngược để loại trừ chứng ợ nóng chức năng (Functional Heartburn).</div>
+          </div>
+
+          <div class="clin-card">
+            <div class="clin-card-accent accent-amber"></div>
+            <div class="clin-card-title"><span>3. Đo pH-Impedance On PPI nếu đã xác định GERD</span><span>📊</span></div>
+            <div class="clin-card-body">Ở bệnh nhân đã có chẩn đoán GERD chắc chắn từ trước nhưng vẫn có triệu chứng với PPI BID, tiến hành đo pH-impedance trong khi ĐANG DÙNG THUỐC để tìm trào ngược không axit hoặc yếu axit.</div>
+          </div>
+
+          <div class="clin-card">
+            <div class="clin-card-accent accent-red"></div>
+            <div class="clin-card-title"><span>4. Sinh thiết EGD loại trừ Viêm thực quản EoE</span><span>🔬</span></div>
+            <div class="clin-card-body">Nội soi EGD (ngừng PPI 2-4 tuần) và sinh thiết niêm mạc thực quản ngay cả khi bình thường để loại trừ viêm thực quản tăng bạch cầu ái toan (Eosinophilic Esophagitis - EoE ≥ 15 eos/HPF).</div>
+          </div>
+        </div>
+
+        <div class="sec-subtitle" style="margin-top: 1.5rem;">Đối So Sánh Các Lựa Chọn Can Thiệp Xâm Lấn (Surgical & Endoscopic Interventions)</div>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Phương Pháp Can Thiệp</th>
+                <th>Phân Loại & Cơ Chế</th>
+                <th>Chỉ Định Tối Ưu</th>
+                <th>Ưu Điểm & Lưu Ý Đặc Thù</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Tạo nếp gấp phình vị Nissen (Laparoscopic Nissen Fundoplication)</strong></td>
+                <td>Ngoại khoa (360° Wrap) – Tiêu chuẩn vàng</td>
+                <td>GERD kháng trị có bằng chứng trào ngược khách quan, thoát vị hoành lớn, viêm thực quản nặng LA C/D.</td>
+                <td>Tạo hàng rào cơ học mạnh nhất ngăn trào ngược mọi loại dịch. Nhược điểm: Nguy cơ đầy hơi chướng bụng (Gas-bloat) và khó nuốt sau mổ.</td>
+              </tr>
+              <tr>
+                <td><strong>Tạo nếp gấp bán phần (Toupet 270° / Dor 180°)</strong></td>
+                <td>Ngoại khoa bán phần</td>
+                <td>Bệnh nhân có giảm nhu động thân thực quản hoặc nguy cơ cao nuốt khó sau mổ.</td>
+                <td>Ít gây biến chứng khó nuốt và đầy hơi hơn Nissen 360°; tuy nhiên tỷ lệ tái phát trào ngược về lâu dài có thể cao hơn một ít.</td>
+              </tr>
+              <tr>
+                <td><strong>Vòng hạt nam châm MSA (LINX Reflux Management System)</strong></td>
+                <td>Ngoại khoa ít xâm lấn (Magnetic Sphincter Augmentation)</td>
+                <td>Bệnh nhân có triệu chứng trớ (regurgitation) kháng trị, thoát vị hoành nhỏ &lt; 3cm, không có viêm thực quản độ C/D.</td>
+                <td>Bóc tách tối thiểu, giữ được khả năng ợ hơi và nôn sinh lý. <strong>Chống chỉ định chụp MRI &gt; 1.5 Tesla</strong>. Tỷ lệ xói mòn hạt vào lòng thực quản cực thấp (~0.3%).</td>
+              </tr>
+              <tr>
+                <td><strong>Nối tắt dạ dày Roux-en-Y (RYGB)</strong></td>
+                <td>Phẫu thuật Bariatric</td>
+                <td>Bệnh nhân GERD kèm béo phì nặng (BMI ≥ 35) có chỉ định phẫu thuật giảm cân.</td>
+                <td>Hiệu quả chống trào ngược vượt trội nhờ giảm cân mạnh, túi dạ dày nhỏ tiết rất ít axit và quai Roux ngăn triệt để trào ngược dịch mật.</td>
+              </tr>
+              <tr>
+                <td><strong>Nội soi tạo nếp gấp qua ngả miệng (TIF - EsophyX)</strong></td>
+                <td>Can thiệp Nội soi hoàn toàn qua đường miệng</td>
+                <td>Triệu chứng trớ dai dẳng không muốn mổ, <strong>thoát vị hoành ≤ 2cm</strong> và <strong>KHÔNG có viêm nặng LA C/D</strong>.</td>
+                <td>Không có vết mổ thành bụng; tạo nếp gấp 180–270° bằng ghim T-fasteners. Cần theo dõi hiệu quả dài hạn; một số bệnh nhân phải dùng lại PPI.</td>
+              </tr>
+              <tr>
+                <td><strong>Sóng cao tần Stretta (Stretta Radiofrequency)</strong></td>
+                <td>Nội soi nhiệt điện đông</td>
+                <td>Không khuyến cáo thường quy</td>
+                <td><span class="cor-badge cor-against">ACG KHÔNG KHUYẾN CÁO</span> do dữ liệu hiệu quả kiểm soát tiếp xúc axit thực quản không nhất quán và biến thiên lớn.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 7: TÍNH AN TOÀN CỦA PPI KÉO DÀI (TABLE 5 & RCT MOAYYEDI) -->
+    <section id="sec-7" class="sec-card">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <span class="sec-hdr-icon">🔬</span>
+          <h2 class="sec-title">7. Tính An Toàn Của Liệu Pháp PPI Dài Hạn (Table 5 & Bằng Chứng RCT)</h2>
+        </div>
+        <span class="sec-badge">Safety & Landmark RCT</span>
+      </div>
+      <div class="sec-body">
+        
+        <div class="infobox success">
+          <div class="infobox-icon">✅</div>
+          <div>
+            <span class="infobox-title">Bằng Chứng Bản Lề Từ Thử Nghiệm Ngẫu Nhiên Mù Đôi (RCT Moayyedi et al. - COMPASS Trial)</span>
+            Thử nghiệm lâm sàng ngẫu nhiên đối chứng mù đôi quy mô <strong>17.598 bệnh nhân</strong> theo dõi trong <strong>3 năm</strong> (Gastroenterology 2019) chứng minh rằng: Liệu pháp PPI dài hạn <strong>KHÔNG làm tăng có ý nghĩa thống kê nguy cơ tim mạch, bệnh thận mạn, gãy xương loãng xương, sa sút trí tuệ, viêm phổi hay tử vong</strong>. Nguy cơ duy nhất có ý nghĩa thống kê là <strong>nhiễm trùng đường ruột (OR 1.33, 95% CI 1.01–1.75)</strong>. Lợi ích điều trị làm lành viêm thực quản và phòng ngừa Barrett/ung thư vượt trội hoàn toàn nguy cơ lý thuyết.
+          </div>
+        </div>
+
+        <div class="sec-subtitle">Biểu Đồ Forest Plot: Tỷ Suất Nguy Cơ Biến Cố Bất Lợi Của PPI trong RCT 17.598 Bệnh Nhân</div>
+        <div class="flowchart-container" style="background: var(--surface);">
+          <svg class="flowchart-svg" viewBox="0 0 800 320" width="100%" height="320" xmlns="http://www.w3.org/2000/svg">
+            <!-- Background grids -->
+            <line x1="400" y1="40" x2="400" y2="280" stroke="#0284c7" stroke-width="2" stroke-dasharray="4,4"/>
+            <text x="400" y="30" fill="#0284c7" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" text-anchor="middle">HR / OR = 1.0 (Không khác biệt)</text>
+
+            <!-- Axis -->
+            <line x1="200" y1="280" x2="700" y2="280" stroke="#94a3b8" stroke-width="1.5"/>
+            <text x="250" y="298" fill="#64748b" font-family="'Inter', sans-serif" font-size="10" text-anchor="middle">0.5</text>
+            <text x="400" y="298" fill="#64748b" font-family="'Inter', sans-serif" font-size="10" text-anchor="middle">1.0</text>
+            <text x="550" y="298" fill="#64748b" font-family="'Inter', sans-serif" font-size="10" text-anchor="middle">1.5</text>
+            <text x="700" y="298" fill="#64748b" font-family="'Inter', sans-serif" font-size="10" text-anchor="middle">2.0</text>
+
+            <!-- Labels Column -->
+            <!-- 1. Biến cố tim mạch (HR 1.04: 0.93 - 1.15) -->
+            <text x="20" y="65" fill="var(--text)" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600">Biến cố Tim Mạch Chung</text>
+            <line x1="379" y1="62" x2="445" y2="62" stroke="#0284c7" stroke-width="2"/>
+            <circle cx="412" cy="62" r="5" fill="#0284c7"/>
+            <text x="730" y="65" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="10">HR 1.04 (0.93–1.15)</text>
+
+            <!-- 2. Nhồi máu cơ tim (HR 0.94: 0.79 - 1.12) -->
+            <text x="20" y="95" fill="var(--text)" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600">Nhồi Máu Cơ Tim (MI)</text>
+            <line x1="337" y1="92" x2="436" y2="92" stroke="#0284c7" stroke-width="2"/>
+            <circle cx="382" cy="92" r="5" fill="#0284c7"/>
+            <text x="730" y="95" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="10">HR 0.94 (0.79–1.12)</text>
+
+            <!-- 3. Bệnh thận mạn (HR 1.17: 0.94 - 1.45) -->
+            <text x="20" y="125" fill="var(--text)" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600">Bệnh Thận Mạn (CKD)</text>
+            <line x1="382" y1="122" x2="535" y2="122" stroke="#0284c7" stroke-width="2"/>
+            <circle cx="451" cy="122" r="5" fill="#0284c7"/>
+            <text x="730" y="125" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="10">HR 1.17 (0.94–1.45)</text>
+
+            <!-- 4. Nhiễm trùng ruột (OR 1.33: 1.01 - 1.75) -->
+            <text x="20" y="155" fill="#dc2626" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700">Nhiễm Trùng Đường Ruột *</text>
+            <line x1="403" y1="152" x2="625" y2="152" stroke="#dc2626" stroke-width="2.5"/>
+            <rect x="494" y="147" width="10" height="10" fill="#dc2626"/>
+            <text x="730" y="155" fill="#dc2626" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700">OR 1.33 (1.01–1.75)</text>
+
+            <!-- 5. Viêm phổi (HR 1.02: 0.87 - 1.19) -->
+            <text x="20" y="185" fill="var(--text)" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600">Viêm Phổi (Pneumonia)</text>
+            <line x1="361" y1="182" x2="457" y2="182" stroke="#0284c7" stroke-width="2"/>
+            <circle cx="406" cy="182" r="5" fill="#0284c7"/>
+            <text x="730" y="185" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="10">HR 1.02 (0.87–1.19)</text>
+
+            <!-- 6. Sa sút trí tuệ (HR 1.20: 0.81 - 1.78) -->
+            <text x="20" y="215" fill="var(--text)" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600">Sa Sút Trí Tuệ (Dementia)</text>
+            <line x1="343" y1="212" x2="634" y2="212" stroke="#0284c7" stroke-width="2"/>
+            <circle cx="460" cy="212" r="5" fill="#0284c7"/>
+            <text x="730" y="215" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="10">HR 1.20 (0.81–1.78)</text>
+
+            <!-- 7. Gãy xương (OR 0.96: 0.79 - 1.17) -->
+            <text x="20" y="245" fill="var(--text)" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600">Gãy Xương Loãng Xương</text>
+            <line x1="337" y1="242" x2="451" y2="242" stroke="#0284c7" stroke-width="2"/>
+            <circle cx="388" cy="242" r="5" fill="#0284c7"/>
+            <text x="730" y="245" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="10">OR 0.96 (0.79–1.17)</text>
+
+            <!-- 8. Tử vong do mọi nguyên nhân (HR 1.03: 0.92 - 1.15) -->
+            <text x="20" y="275" fill="var(--text)" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700">Tử Vong Mọi Nguyên Nhân</text>
+            <line x1="376" y1="272" x2="445" y2="272" stroke="#059669" stroke-width="2"/>
+            <circle cx="409" cy="272" r="5" fill="#059669"/>
+            <text x="730" y="275" fill="#059669" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700">HR 1.03 (0.92–1.15)</text>
+          </svg>
+          <div class="flowchart-caption">Biểu đồ Forest Plot tỷ suất nguy cơ biến cố bất lợi của PPI từ RCT Moayyedi et al. (* Chỉ có nhiễm trùng đường ruột có ý nghĩa thống kê).</div>
+        </div>
+
+        <div class="sec-subtitle" style="margin-top: 1.5rem;">Bảng Đánh Giá Chi Tiết 10 Biến Cố Bất Lợi Giả Định (Table 5)</div>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width: 22%;">Biến Cố Bất Lợi Giả Định</th>
+                <th style="width: 28%;">Cơ Chế Đề Xuất</th>
+                <th style="width: 20%;">Số Liệu RCT Moayyedi</th>
+                <th style="width: 30%;">Khuyến Cáo Thực Hành Lâm Sàng</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Nhiễm trùng đường ruột (Enteric infection)</strong></td>
+                <td>Axit dạ dày giảm cho phép vi khuẩn ngoại lai sống sót qua dạ dày.</td>
+                <td><strong style="color: var(--red);">OR 1.33</strong> (1.01–1.75)<br><span class="rx-tag warning">Có ý nghĩa</span></td>
+                <td>Cần cảnh giác và dặn bệnh nhân ăn chín uống sôi; thận trọng khi đi du lịch vùng dịch tễ tiêu chảy.</td>
+              </tr>
+              <tr>
+                <td><strong>Nhiễm Clostridium difficile</strong></td>
+                <td>Bào tử C. diff sống sót khi pH dạ dày tăng; biến đổi vi sinh ruột.</td>
+                <td><strong>OR 2.26</strong> (0.70–7.34)<br><span class="rx-tag">Không ý nghĩa</span></td>
+                <td>Tần suất trong RCT rất thấp; cẩn trọng ở bệnh nhân cao tuổi nằm viện dùng kháng sinh phổ rộng đồng thời.</td>
+              </tr>
+              <tr>
+                <td><strong>Biến cố tim mạch & Tương tác Clopidogrel</strong></td>
+                <td>Ức chế thoái giáng ADMA nội mạc; cạnh tranh men gan CYP2C19.</td>
+                <td><strong>HR 1.04</strong> (0.93–1.15)<br>MI: <strong>HR 0.94</strong> (0.79–1.12)</td>
+                <td><strong>Không có ý nghĩa lâm sàng</strong>. Ở bệnh nhân dùng Clopidogrel có chỉ định bảo vệ dạ dày, lợi ích phòng ngừa xuất huyết tiêu hóa vượt trội nguy cơ tim mạch.</td>
+              </tr>
+              <tr>
+                <td><strong>Bệnh thận mạn (CKD) & Viêm thận kẽ (AIN)</strong></td>
+                <td>Viêm thận kẽ dị ứng đặc dị tiến triển xơ hóa nhu mô thận.</td>
+                <td><strong>HR 1.17</strong> (0.94–1.45)<br><span class="rx-tag">Không ý nghĩa</span></td>
+                <td><strong>Không có ý nghĩa lâm sàng</strong>. Không khuyến cáo xét nghiệm creatinine huyết thanh định kỳ nếu không có yếu tố nguy cơ thận khác.</td>
+              </tr>
+              <tr>
+                <td><strong>Gãy xương do loãng xương</strong></td>
+                <td>Giảm toan dạ dày làm giảm hòa tan và hấp thu canxi không tan.</td>
+                <td><strong>OR 0.96</strong> (0.79–1.17)<br><span class="rx-tag">Không ý nghĩa</span></td>
+                <td><strong>Không có ý nghĩa lâm sàng</strong>. Không khuyến cáo đo mật độ xương (DEXA) hay bổ sung canxi thường quy chỉ vì lý do dùng PPI.</td>
+              </tr>
+              <tr>
+                <td><strong>Viêm phổi (Pneumonia)</strong></td>
+                <td>Vi khuẩn dạ dày tăng sinh ngược dòng trào ngược vào đường thở.</td>
+                <td><strong>HR 1.02</strong> (0.87–1.19)<br><span class="rx-tag">Không ý nghĩa</span></td>
+                <td>Mối liên quan trước đây trong nghiên cứu quan sát chủ yếu do sai lệch thời gian (protopathic bias - dùng PPI cho triệu chứng sớm của viêm phổi).</td>
+              </tr>
+              <tr>
+                <td><strong>Sa sút trí tuệ (Dementia)</strong></td>
+                <td>Ức chế bơm V-ATPase vi sừng não làm tích tụ Beta-amyloid.</td>
+                <td><strong>HR 1.20</strong> (0.81–1.78)<br><span class="rx-tag">Không ý nghĩa</span></td>
+                <td><strong>Không có ý nghĩa lâm sàng</strong>. Không có cơ sở để ngừng PPI vì lo ngại suy giảm nhận thức.</td>
+              </tr>
+              <tr>
+                <td><strong>Thiếu hụt Vitamin B12</strong></td>
+                <td>Giảm axit làm giảm phân cắt B12 khỏi phức hợp protein thức ăn.</td>
+                <td>Không có dữ liệu trong RCT 3 năm</td>
+                <td>Không khuyến cáo theo dõi nồng độ Vitamin B12 thường quy trừ khi bệnh nhân có ăn chay trường hoặc có thiếu máu hồng cầu to.</td>
+              </tr>
+              <tr>
+                <td><strong>Hạ Magie máu (Hypomagnesemia)</strong></td>
+                <td>Thay đổi pH lòng ruột ảnh hưởng kênh vận chuyển magie TRPM6/7.</td>
+                <td>Không có dữ liệu trong RCT 3 năm</td>
+                <td>Hiếm gặp; chỉ kiểm tra magie máu khi bệnh nhân có triệu chứng chuột rút, co giật hoặc rối loạn nhịp tim không rõ căn nguyên.</td>
+              </tr>
+              <tr>
+                <td><strong>Tử vong do mọi nguyên nhân</strong></td>
+                <td>Tác động tích lũy các biến cố lý thuyết.</td>
+                <td><strong>HR 1.03</strong> (0.92–1.15)<br><span class="rx-tag preferred">An toàn tuyệt đối</span></td>
+                <td>Không có sự khác biệt giữa nhóm dùng PPI và nhóm dùng giả dược (Placebo). Khẳng định tính an toàn cao của liệu pháp PPI.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 8: CHECKLIST LÂM SÀNG & TÀI LIỆU THAM KHẢO -->
+    <section class="sec-card">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <span class="sec-hdr-icon">📚</span>
+          <h2 class="sec-title">8. Bảng Kiểm Thực Hành & Trích Dẫn Y Văn Chuẩn AMA</h2>
+        </div>
+        <span class="sec-badge">Clinical Checklist</span>
+      </div>
+      <div class="sec-body">
+        
+        <div class="sec-subtitle">Bảng Kiểm 6 Bước Tiếp Cận GERD Chuẩn ACG Cho Bác Sĩ</div>
+        <div class="grid-3col">
+          <div class="clin-card">
+            <div class="clin-card-accent accent-blue"></div>
+            <div class="clin-card-title"><span>Bước 1: Rà soát Cờ đỏ</span><span>🚩</span></div>
+            <div class="clin-card-body">Loại trừ ngay nuốt khó, nuốt đau, sụt cân, xuất huyết. Nếu có cờ đỏ ➔ Chỉ định nội soi EGD khẩn.</div>
+          </div>
+          <div class="clin-card">
+            <div class="clin-card-accent accent-teal"></div>
+            <div class="clin-card-title"><span>Bước 2: Thử PPI Chuẩn</span><span>⏱️</span></div>
+            <div class="clin-card-body">Uống PPI 1 lần/ngày trước bữa ăn đầu tiên 30–60 phút trong 8 tuần. Dặn dò giảm cân và nằm nghiêng trái.</div>
+          </div>
+          <div class="clin-card">
+            <div class="clin-card-accent accent-amber"></div>
+            <div class="clin-card-title"><span>Bước 3: Ngừng thử thuốc</span><span>🔄</span></div>
+            <div class="clin-card-body">Nếu hết triệu chứng, thử ngừng PPI. Tái phát triệu chứng ➔ Xác nhận GERD. Không tái phát ➔ Theo dõi.</div>
+          </div>
+          <div class="clin-card">
+            <div class="clin-card-accent accent-red"></div>
+            <div class="clin-card-title"><span>Bước 4: EGD Khảo sát</span><span>🔍</span></div>
+            <div class="clin-card-body">Nếu không đáp ứng: Ngừng PPI 2–4 tuần ➔ EGD. Tìm viêm thực quản LA B/C/D, Barrett hoặc sinh thiết tìm EoE.</div>
+          </div>
+          <div class="clin-card">
+            <div class="clin-card-accent accent-purple"></div>
+            <div class="clin-card-title"><span>Bước 5: Đo Trào ngược</span><span>🧪</span></div>
+            <div class="clin-card-body">Nếu EGD bình thường ➔ Đo theo dõi trào ngược Off PPI để phân biệt GERD thực sự vs Ợ nóng chức năng.</div>
+          </div>
+          <div class="clin-card">
+            <div class="clin-card-accent accent-green"></div>
+            <div class="clin-card-title"><span>Bước 6: Cá thể hóa Can thiệp</span><span>🛡️</span></div>
+            <div class="clin-card-body">Duy trì PPI vô thời hạn cho LA C/D; xem xét can thiệp ngoại khoa (MSA, TIF, Nissen, RYGB) nếu trớ dai dẳng.</div>
+          </div>
+        </div>
+
+        <div class="sec-subtitle" style="margin-top: 1.5rem;">Trích Dẫn Tài Liệu Tham Khảo Chuẩn AMA</div>
+        <div class="citation-box">
+          Katz PO, Dunbar KB, Schnoll-Sussman FH, Greer KB, Yadlapati R, Spechler SJ. ACG Clinical Guideline for the Diagnosis and Management of Gastroesophageal Reflux Disease. <em>Am J Gastroenterol</em>. 2022;117(1):27-56. doi:10.14309/ajg.0000000000001538
+        </div>
+
+        <div class="btn-row">
+          <a href="../guidelines.html" class="btn btn-primary">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+            Quay lại Kho Guidelines
+          </a>
+          <button class="btn" onclick="window.print()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+            In bản hướng dẫn (PDF)
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    // Theme Toggle Handler
+    (function() {
+      const themeBtn = document.getElementById('theme-btn');
+      const htmlEl = document.documentElement;
+      
+      const savedTheme = localStorage.getItem('clini_theme') || 'light';
+      htmlEl.setAttribute('data-theme', savedTheme);
+      updateBtnIcon(savedTheme);
+
+      if (themeBtn) {
+        themeBtn.addEventListener('click', function() {
+          const currentTheme = htmlEl.getAttribute('data-theme');
+          const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+          htmlEl.setAttribute('data-theme', nextTheme);
+          localStorage.setItem('clini_theme', nextTheme);
+          updateBtnIcon(nextTheme);
+        });
+      }
+
+      function updateBtnIcon(theme) {
+        if (themeBtn) {
+          themeBtn.textContent = theme === 'dark' ? '☀️' : '🌙';
+        }
+      }
+    })();
+  </script>
+</body>
+</html>

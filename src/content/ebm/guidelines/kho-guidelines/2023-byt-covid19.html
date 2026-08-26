@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Hướng dẫn toàn diện chẩn đoán và điều trị COVID-19 theo Quyết định 2671/QĐ-BYT ngày 26/06/2023 của Bộ Y tế Việt Nam. Phân loại 5 mức độ lâm sàng; nhận diện Giảm oxy máu thầm lặng (Silent Hypoxia); phác đồ Remdesivir, Paxlovid, Molnupiravir; chỉ định Corticoid cho thể nặng/nguy kịch; Tocilizumab, Baricitinib, chống đông Enoxaparin, lọc máu CRRT/hấp phụ bão cytokine và tiêu chuẩn xuất viện.">
+  <title>Bộ Y Tế 2023: Hướng Dẫn Chẩn Đoán & Điều Trị Bệnh COVID-19 – CliniPortal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../../../../css/components/header.css">
+  <script type="module" src="../../../../../components/header.ts" defer></script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #059669; --green-bg: #f0fdf4; --green-light: #a7f3d0;
+      --orange: #d97706; --orange-bg: #fffbeb; --orange-light: #fde68a;
+      --red: #dc2626; --red-bg: #fef2f2; --red-light: #fca5a5;
+      --blue: #2563eb; --blue-bg: #eff6ff; --blue-light: #bfdbfe;
+      --teal: #0d9488; --teal-bg: #f0fdfa; --teal-light: #99f6e4;
+      --purple: #7c3aed; --purple-bg: #faf5ff; --purple-light: #ddd6fe;
+      --accent: #0f6fb4;
+      --bg: #f0f4f8; --surface: #ffffff; --surface-2: #f8fafc;
+      --border: #cbd5e1; --border-light: #e2e8f0;
+      --text: #0f172a; --text-muted: #475569; --text-faint: #94a3b8;
+      --radius: 16px; --tr: 220ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [data-theme="dark"] {
+      --green: #10b981; --green-bg: #064e3b; --green-light: #047857;
+      --orange: #f59e0b; --orange-bg: #78350f; --orange-light: #b45309;
+      --red: #ef4444; --red-bg: #7f1d1d; --red-light: #b91c1c;
+      --blue: #3b82f6; --blue-bg: #1e3a8a; --blue-light: #1d4ed8;
+      --teal: #14b8a6; --teal-bg: #115e59; --teal-light: #0f766e;
+      --purple: #8b5cf6; --purple-bg: #4c1d95; --purple-light: #6d28d9;
+      --accent: #38bdf8;
+      --bg: #0f172a; --surface: #1e293b; --surface-2: #0f172a;
+      --border: #334155; --border-light: #1e293b;
+      --text: #f8fafc; --text-muted: #cbd5e1; --text-faint: #64748b;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; font-size: 15px; background: var(--bg); color: var(--text); line-height: 1.65; min-height: 100vh; transition: background var(--tr), color var(--tr); }
+
+    /* TOP NAV */
+    .topnav { position: sticky; top: 0; z-index: 200; background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 1rem; padding: 0 1.5rem; height: 56px; transition: background var(--tr), border-color var(--tr); }
+    [data-theme="dark"] .topnav { background: rgba(30, 41, 59, 0.9); }
+    .topnav-back { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--accent); text-decoration: none; font-size: 0.82rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 8px; transition: background var(--tr); white-space: nowrap; }
+    .topnav-back:hover { background: var(--blue-bg); }
+    .topnav-divider { width: 1px; height: 18px; background: var(--border-light); flex-shrink: 0; }
+    .topnav-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .topnav-theme-toggle { margin-left: auto; background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 1.1rem; padding: 0.5rem; border-radius: 50%; transition: background var(--tr); display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; }
+    .topnav-theme-toggle:hover { background: var(--surface-2); color: var(--accent); }
+
+    /* QUICK NAV BAR */
+    .quicknav { position: sticky; top: 56px; z-index: 190; background: var(--surface); border-bottom: 1px solid var(--border-light); display: flex; gap: 0.5rem; padding: 0.6rem 1.5rem; overflow-x: auto; -webkit-overflow-scrolling: touch; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+    .quicknav::-webkit-scrollbar { height: 3px; }
+    .quicknav::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    .quicknav-link { display: inline-flex; align-items: center; white-space: nowrap; font-size: 0.78rem; font-weight: 600; color: var(--text-muted); text-decoration: none; padding: 0.35rem 0.85rem; border-radius: 20px; background: var(--surface-2); border: 1px solid var(--border-light); transition: all var(--tr); }
+    .quicknav-link:hover, .quicknav-link.active { background: var(--blue-bg); color: var(--accent); border-color: var(--blue-light); }
+
+    /* HERO */
+    .hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 45%, #0f6fb4 100%); color: #fff; padding: 3.5rem 1.5rem 4.5rem; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 50%, rgba(14, 165, 233, 0.25) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(124, 58, 237, 0.2) 0%, transparent 55%); }
+    .hero-inner { max-width: 1000px; margin: 0 auto; position: relative; z-index: 1; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255, 255, 255, 0.14); border: 1px solid rgba(255, 255, 255, 0.24); border-radius: 20px; padding: 0.3rem 0.9rem; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1rem; color: #38bdf8; }
+    .hero-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(1.8rem, 4vw, 2.7rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 0.85rem; }
+    .hero-title span { display: block; background: linear-gradient(90deg, #38bdf8, #ddd6fe); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 0.65em; font-weight: 600; letter-spacing: 0; margin-bottom: 0.2rem; }
+    .hero-subtitle { font-size: 0.95rem; opacity: 0.88; max-width: 780px; margin-bottom: 2rem; line-height: 1.65; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 0.75rem 2rem; font-size: 0.8rem; opacity: 0.85; }
+    .hero-meta-item { display: flex; align-items: center; gap: 6px; }
+
+    /* PILLARS STRIP */
+    .pillars { background: var(--surface); border-bottom: 1px solid var(--border-light); padding: 1.75rem 1.5rem; }
+    .pillars-inner { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+    .pillar { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.1rem 1.2rem; display: flex; align-items: flex-start; gap: 0.85rem; position: relative; overflow: hidden; transition: box-shadow var(--tr); }
+    .pillar::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; border-radius: 4px 0 0 4px; }
+    .pillar.p1::before { background: var(--blue); }
+    .pillar.p2::before { background: var(--red); }
+    .pillar.p3::before { background: var(--orange); }
+    .pillar.p4::before { background: var(--purple); }
+    .pillar:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+    .pillar-icon { font-size: 1.6rem; flex-shrink: 0; line-height: 1; }
+    .pillar-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text); margin-bottom: 0.25rem; }
+    .pillar-desc { font-size: 0.76rem; color: var(--text-muted); line-height: 1.45; }
+
+    /* PAGE CONTENT */
+    .page-content { max-width: 1000px; margin: 0 auto; padding: 2.25rem 1.5rem; display: flex; flex-direction: column; gap: 2rem; }
+
+    /* SECTION CARDS & HEADINGS */
+    .sec-card { background: var(--surface); border: 1px solid var(--border-light); border-radius: var(--radius); overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.03); scroll-margin-top: 110px; }
+    .sec-hdr { padding: 1.15rem 1.5rem; border-bottom: 1px solid var(--border-light); background: var(--surface-2); display: flex; align-items: center; gap: 0.75rem; }
+    .sec-hdr-icon { font-size: 1.15rem; color: var(--accent); background: var(--blue-bg); width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--blue-light); flex-shrink: 0; }
+    .sec-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.1rem; font-weight: 800; color: var(--text); letter-spacing: -0.01em; }
+    .sec-body { padding: 1.5rem; display: flex; flex-direction: column; gap: 1.25rem; }
+
+    /* SUBHEADINGS (H3, H4) */
+    .sec-subtitle { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 0.95rem; color: var(--text); margin-top: 0.5rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.6rem; }
+    .sec-subtitle i { color: var(--accent); font-size: 0.75rem; background: var(--blue-bg); width: 24px; height: 24px; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--blue-light); flex-shrink: 0; }
+    .sec-subtitle::after { content: ''; flex: 1; height: 2px; background: linear-gradient(90deg, var(--border-light), transparent); border-radius: 1px; margin-left: 0.5rem; }
+
+    /* BENTO MATRIX CARDS */
+    .matrix-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 0.5rem; }
+    .matrix-card { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.15rem; transition: transform var(--tr), box-shadow var(--tr); display: flex; flex-direction: column; gap: 0.5rem; position: relative; overflow: hidden; }
+    .matrix-card:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.06); }
+    .matrix-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--accent); }
+    .matrix-card.card-red::before { background: var(--red); }
+    .matrix-card.card-orange::before { background: var(--orange); }
+    .matrix-card.card-green::before { background: var(--green); }
+    .matrix-card.card-teal::before { background: var(--teal); }
+    .matrix-card.card-purple::before { background: var(--purple); }
+    .matrix-card-hdr { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
+    .matrix-card-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 0.88rem; color: var(--text); display: flex; align-items: center; gap: 0.5rem; }
+    .matrix-card-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.55; }
+
+    /* INFO BOXES */
+    .infobox { display: flex; align-items: flex-start; gap: 0.85rem; padding: 1rem 1.25rem; border-radius: 12px; font-size: 0.85rem; line-height: 1.6; }
+    .infobox-icon { font-size: 1.3rem; flex-shrink: 0; line-height: 1.3; }
+    .infobox.danger { background: var(--red-bg); border: 1px solid var(--red-light); border-left: 4px solid var(--red); color: var(--text); }
+    .infobox.success { background: var(--green-bg); border: 1px solid var(--green-light); border-left: 4px solid var(--green); color: var(--text); }
+    .infobox.warning { background: var(--orange-bg); border: 1px solid var(--orange-light); border-left: 4px solid var(--orange); color: var(--text); }
+    .infobox.info { background: var(--blue-bg); border: 1px solid var(--blue-light); border-left: 4px solid var(--blue); color: var(--text); }
+    .infobox.teal { background: var(--teal-bg); border: 1px solid var(--teal-light); border-left: 4px solid var(--teal); color: var(--text); }
+    .infobox strong { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; color: var(--text); }
+
+    /* TABLES */
+    .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 12px; border: 1px solid var(--border-light); margin-bottom: 0.5rem; }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 0.83rem; min-width: 650px; text-align: left; }
+    .data-table thead th { padding: 0.75rem 1rem; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; background: var(--surface-2); color: var(--text-muted); border-bottom: 1px solid var(--border-light); }
+    .data-table td { padding: 0.85rem 1rem; border-bottom: 1px solid var(--border-light); vertical-align: top; line-height: 1.55; }
+    .data-table tbody tr:last-child td { border-bottom: none; }
+
+    /* BADGES & TAGS */
+    .rx-tag { display: inline-block; background: var(--surface-2); color: var(--text-muted); font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; padding: 0.15rem 0.5rem; border-radius: 6px; border: 1px solid var(--border-light); margin: 0.15rem 0.1rem; }
+    .rx-tag.highlight { background: var(--blue-bg); color: var(--accent); border-color: var(--blue-light); font-weight: 600; }
+    .rx-tag.alert { background: var(--red-bg); color: var(--red); border-color: var(--red-light); font-weight: 600; }
+    .rx-tag.warn { background: var(--orange-bg); color: var(--orange); border-color: var(--orange-light); font-weight: 600; }
+    .rx-tag.success { background: var(--green-bg); color: var(--green); border-color: var(--green-light); font-weight: 600; }
+
+    /* CITATION & FOOTER */
+    .citation-box { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 12px; padding: 1.25rem; font-size: 0.82rem; color: var(--text-muted); line-height: 1.75; }
+    .citation-box ol { padding-left: 1.2rem; }
+    .citation-box li { margin-bottom: 0.5rem; }
+    .page-footer { max-width: 1000px; margin: 0 auto; padding: 2rem 1.5rem 4rem; text-align: center; font-size: 0.8rem; color: var(--text-faint); border-top: 1px solid var(--border-light); }
+
+    @media (max-width: 768px) {
+      .page-content { padding: 1.25rem 1rem; }
+      .sec-body { padding: 1.1rem 1rem; }
+      .pillars-inner { grid-template-columns: 1fr; }
+      .matrix-grid { grid-template-columns: 1fr; }
+    }
+
+    @media print {
+      body { background: #fff !important; color: #000 !important; }
+      .topnav, .quicknav, .topnav-theme-toggle, .page-footer, .topnav-pdf-btn { display: none !important; }
+      .sec-card { break-inside: avoid; border: 1px solid #ccc !important; box-shadow: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
+
+  <!-- TOP NAV -->
+  <nav class="topnav">
+    <a href="../guidelines.html" class="topnav-back">
+      <i class="fa-solid fa-chevron-left"></i>
+      Kho Guidelines
+    </a>
+    <div class="topnav-divider"></div>
+    <div class="topnav-title">Bộ Y Tế 2023: Hướng Dẫn Chẩn Đoán & Điều Trị Bệnh COVID-19</div>
+    <button class="topnav-theme-toggle topnav-pdf-btn" onclick="window.print()" title="Tải PDF / In bài viết" style="margin-left: auto; margin-right: 4px;">
+      <i class="fa-solid fa-file-pdf"></i>
+    </button>
+    <button class="topnav-theme-toggle" id="themeToggleBtn" aria-label="Đổi giao diện">
+      <i class="fa-solid fa-moon"></i>
+    </button>
+  </nav>
+
+  <!-- QUICK NAV BAR -->
+  <div class="quicknav">
+    <a href="#sec-1" class="quicknav-link active"><i class="fa-solid fa-virus"></i> 1. Dịch Tễ & Căn Nguyên</a>
+    <a href="#sec-2" class="quicknav-link"><i class="fa-solid fa-lungs-virus"></i> 2. Silent Hypoxia & Phân Độ</a>
+    <a href="#sec-3" class="quicknav-link"><i class="fa-solid fa-vials"></i> 3. Cận Lâm Sàng & LUSS</a>
+    <a href="#sec-4" class="quicknav-link"><i class="fa-solid fa-capsules"></i> 4. Kháng Vi Rút Đặc Hiệu</a>
+    <a href="#sec-5" class="quicknav-link"><i class="fa-solid fa-syringe"></i> 5. Corticoid & Miễn Dịch</a>
+    <a href="#sec-6" class="quicknav-link"><i class="fa-solid fa-droplet"></i> 6. Chống Đông & AKI / CRRT</a>
+    <a href="#sec-7" class="quicknav-link"><i class="fa-solid fa-heart-pulse"></i> 7. Dinh Dưỡng, PHCN & Xuất Viện</a>
+    <a href="#sec-8" class="quicknav-link"><i class="fa-solid fa-bookmark"></i> 8. Tham Khảo AMA</a>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge"><i class="fa-solid fa-file-medical"></i> Quyết định 2671/QĐ-BYT · Bộ Y Tế Việt Nam (26/06/2023)</div>
+      <h1 class="hero-title">
+        <span>Vietnam MOH Guidelines on Diagnosis & Treatment of COVID-19 (2023)</span>
+        Hướng Dẫn Chẩn Đoán & Điều Trị Bệnh COVID-19
+      </h1>
+      <p class="hero-subtitle">
+        Tài liệu chuyên môn quốc gia áp dụng thống nhất trên toàn quốc theo Quyết định 2671/QĐ-BYT (chính thức thay thế QĐ 250/QĐ-BYT & QĐ 437/QĐ-BYT). Phân loại 5 mức độ lâm sàng; nhận diện Giảm oxy máu thầm lặng (Silent Hypoxia); phác đồ Remdesivir, Paxlovid, Molnupiravir; chỉ định Corticoid cho thể nặng/nguy kịch; Tocilizumab, Baricitinib, chống đông Enoxaparin, lọc máu CRRT/hấp phụ bão cytokine và tiêu chuẩn xuất viện.
+      </p>
+      <div class="hero-meta">
+        <div class="hero-meta-item"><i class="fa-solid fa-calendar-check"></i> Ban hành: 26/06/2023 (Thứ trưởng Trần Văn Thuấn ký)</div>
+        <div class="hero-meta-item"><i class="fa-solid fa-user-doctor"></i> Chủ biên: GS.TS. Nguyễn Gia Bình · Đồng chủ biên: PGS.TS. Lương Ngọc Khuê</div>
+        <div class="hero-meta-item"><i class="fa-solid fa-virus"></i> Phân loại: Viêm đường hô hấp cấp do SARS-CoV-2</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PILLARS STRIP -->
+  <div class="pillars">
+    <div class="pillars-inner">
+      <div class="pillar p1">
+        <div class="pillar-icon">🦠</div>
+        <div>
+          <div class="pillar-title">SARS-CoV-2 (Omicron)</div>
+          <div class="pillar-desc">Vi rút ARN lây qua giọt bắn, tiếp xúc bề mặt & khí dung aerosol. Phát tán từ 2 ngày trước phát bệnh.</div>
+        </div>
+      </div>
+      <div class="pillar p2">
+        <div class="pillar-icon">⚠️</div>
+        <div>
+          <div class="pillar-title">Silent Hypoxia & 5 Mức Độ</div>
+          <div class="pillar-desc">5-10% BN giảm oxy máu thầm lặng; phân loại từ Không triệu chứng đến Nguy kịch (ARDS/Sốc).</div>
+        </div>
+      </div>
+      <div class="pillar p3">
+        <div class="pillar-icon">💊</div>
+        <div>
+          <div class="pillar-title">3 Thuốc Kháng Vi Rút</div>
+          <div class="pillar-desc">Remdesivir (truyền IV), Paxlovid (uống 5 ngày), Molnupiravir (uống, CẤM tuyệt đối cho thai phụ).</div>
+        </div>
+      </div>
+      <div class="pillar p4">
+        <div class="pillar-icon">🛡️</div>
+        <div>
+          <div class="pillar-title">Corticoid & Chống Đông</div>
+          <div class="pillar-desc">Corticoid CHỈ dùng cho thể Nặng & Nguy kịch; Tocilizumab, Baricitinib, Enoxaparin và lọc máu CRRT.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="page-content">
+
+    <!-- SECTION 1: DỊCH TỄ HỌC & CĂN NGUYÊN SINH HỌC -->
+    <div class="sec-card" id="sec-1">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-virus"></i></div>
+        <h2 class="sec-title">1. Dịch Tễ Học, Căn Nguyên Sinh Học & Cơ Sở Pháp Lý</h2>
+      </div>
+      <div class="sec-body">
+        
+        <div class="infobox success">
+          <div class="infobox-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+          <div>
+            <strong>Cơ Sở Pháp Lý Chuyên Môn Ban Hành:</strong>
+            Quyết định số 2671/QĐ-BYT ban hành ngày 26 tháng 6 năm 2023 do Thứ trưởng Bộ Y tế GS.TS. Trần Văn Thuấn ký thay Bộ trưởng, ban hành "Hướng dẫn chẩn đoán và điều trị COVID-19", chính thức <strong>thay thế Quyết định số 250/QĐ-BYT (28/11/2022) và Quyết định số 437/QĐ-BYT (27/02/2022)</strong>. Áp dụng thống nhất trên phạm vi cả nước. Chỉ đạo biên soạn: <strong>GS.TS. Trần Văn Thuấn</strong>; Chủ biên: <strong>GS.TS. Nguyễn Gia Bình</strong>; Đồng chủ biên: <strong>PGS.TS. Lương Ngọc Khuê</strong>.
+          </div>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-dna"></i> Đặc Điểm Tác Nhân & Đường Lây Sinh Học</div>
+
+        <div class="matrix-grid">
+          <div class="matrix-card card-blue">
+            <div class="matrix-card-hdr">
+              <span class="matrix-card-title"><i class="fa-solid fa-microscope"></i> Tác Nhân SARS-CoV-2</span>
+              <span class="rx-tag highlight">Biến Thể Omicron</span>
+            </div>
+            <div class="matrix-card-desc">
+              Chủng vi rút corona mới (ARN chuỗi đơn lớn) xuất hiện lần đầu tháng 12/2019. Biến thể lưu hành phổ biến tại thời điểm ban hành là Omicron với khả năng lây lan nhanh chóng.
+            </div>
+          </div>
+
+          <div class="matrix-card card-orange">
+            <div class="matrix-card-hdr">
+              <span class="matrix-card-title"><i class="fa-solid fa-people-arrows"></i> Con Đường Lây Truyền</span>
+              <span class="rx-tag warn">Giọt Bắn & Aerosol</span>
+            </div>
+            <div class="matrix-card-desc">
+              - Lây trực tiếp qua giọt bắn hô hấp.<br>
+              - Lây qua bề mặt bị ô nhiễm.<br>
+              - Lây dạng sương mù (aerosol) trong không khí kín, ít thông gió hoặc khi làm thủ thuật y tế.
+            </div>
+          </div>
+
+          <div class="matrix-card card-red">
+            <div class="matrix-card-hdr">
+              <span class="matrix-card-title"><i class="fa-solid fa-clock-rotate-left"></i> Đặc Điểm Phát Tán Vi Rút</span>
+              <span class="rx-tag alert">Trước Phát Bệnh 2 Ngày</span>
+            </div>
+            <div class="matrix-card-desc">
+              Phát tán từ <strong>2 ngày trước khi có triệu chứng</strong>, mạnh nhất trong <strong>3 ngày đầu</strong>, kéo dài ~8 ngày. Người không triệu chứng vẫn phát tán vi rút gây lây nhiễm.
+            </div>
+          </div>
+
+          <div class="matrix-card card-purple">
+            <div class="matrix-card-hdr">
+              <span class="matrix-card-title"><i class="fa-solid fa-user-doctor"></i> Nhóm Nguy Cơ Nặng</span>
+              <span class="rx-tag highlight">Cao Tuổi & Bệnh Nền</span>
+            </div>
+            <div class="matrix-card-desc">
+              Người cao tuổi, người có bệnh nền mạn tính, suy giảm miễn dịch, hoặc trường hợp đồng nhiễm/bội nhiễm vi khuẩn, nấm.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SECTION 2: LÂM SÀNG, SILENT HYPOXIA & PHÂN ĐỘ BỆNH -->
+    <div class="sec-card" id="sec-2">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-lungs-virus"></i></div>
+        <h2 class="sec-title">2. Diễn Tiến Lâm Sàng, Giảm Oxy Máu Thầm Lặng & Phân Độ Bệnh</h2>
+      </div>
+      <div class="sec-body">
+        
+        <div class="infobox warning">
+          <div class="infobox-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+          <div>
+            <strong>CẢNH BÁO NGUY HIỂM GIẢM OXY MÁU THẦM LẶNG (SILENT HYPOXIA):</strong>
+            Khoảng <strong>5 – 10% người bệnh có tình trạng giảm oxy máu thầm lặng</strong> ($SpO_2$ giảm sâu dưới 94% nhưng bệnh nhân hoàn toàn không có cảm giác khó thở), rất dễ bị bỏ qua nếu không kẹp SpO2 ngón tay định kỳ.
+          </div>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-table"></i> Bảng Phân Loại Mức Độ Lâm Sàng & Phân Luồng Điều Trị (Bảng 2 QĐ 2671)</div>
+
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width: 18%;">Mức Độ Lâm Sàng</th>
+                <th style="width: 15%;">SpO₂ (Khí Trời)</th>
+                <th style="width: 15%;">Nhịp Thở</th>
+                <th style="width: 27%;">Biểu Hiện Lâm Sàng Chi Tiết</th>
+                <th>Nơi Điều Trị</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Không Triệu Chứng</strong></td>
+                <td><span class="rx-tag success">≥ 96%</span></td>
+                <td>12 – 21 lần/phút</td>
+                <td>Không có triệu chứng lâm sàng. Huyết áp bình thường.</td>
+                <td>Cách ly tại nhà</td>
+              </tr>
+              <tr>
+                <td><strong>Mức Độ Nhẹ</strong></td>
+                <td><span class="rx-tag success">≥ 96%</span></td>
+                <td>12 – 21 lần/phút</td>
+                <td>Sốt, ho khan, mệt mỏi, đau họng, mất vị giác. Không viêm phổi.</td>
+                <td>Cách ly tại nhà</td>
+              </tr>
+              <tr>
+                <td><strong>Mức Độ Trung Bình</strong><br><em>(Viêm Phổi)</em></td>
+                <td><span class="rx-tag warn">94 – 96%</span></td>
+                <td>22 – 30 lần/phút</td>
+                <td>Khó thở khi vận động nhẹ. X-quang tổn thương &lt; 50%. Tỉnh táo.</td>
+                <td>Phòng HDU bệnh viện</td>
+              </tr>
+              <tr>
+                <td><strong>Mức Độ Nặng</strong><br><em>(Viêm Phổi Nặng)</em></td>
+                <td><span class="rx-tag alert">&lt; 94%</span></td>
+                <td>> 30 lần/phút</td>
+                <td>Khó thở cả khi nghỉ, co kéo cơ hô hấp phụ. X-quang tổn thương > 50%.</td>
+                <td>Khoa Hồi sức / ICU</td>
+              </tr>
+              <tr>
+                <td><strong>Mức Độ Nguy Kịch</strong></td>
+                <td><span class="rx-tag alert">&lt; 92%</span> <em>(Dù thở Oxy)</em></td>
+                <td>> 30 hoặc &lt; 10 lần/phút</td>
+                <td>ARDS nguy kịch, ý thức giảm/hôn mê, sốc, suy đa cơ quan (AKI, DIC, Viêm cơ tim).</td>
+                <td>Khoa Hồi sức ICU</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="infobox danger">
+          <div class="infobox-icon"><i class="fa-solid fa-bell"></i></div>
+          <div>
+            <strong>Dấu Hiệu Cảnh Báo Chuyển Độ Nặng:</strong>
+            SpO2 giảm dưới 96%, khó thở khi vận động, sốt cao liên tục không hạ, CRP > 125 mg/L, Ferritin > 500 ng/mL, D-dimer > 1000 ng/mL, Lymphocyte &lt; 1K/uL.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SECTION 3: CẬN LÂM SÀNG, LUSS & CHẨN ĐOÁN HÌNH ẢNH -->
+    <div class="sec-card" id="sec-3">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-vials"></i></div>
+        <h2 class="sec-title">3. Xét Nghiệm Cận Lâm Sàng, Siêu Âm Phổi LUSS & Chẩn Đoán Hình Ảnh</h2>
+      </div>
+      <div class="sec-body">
+        
+        <div class="sec-subtitle"><i class="fa-solid fa-wave-square"></i> Bảng Thang Điểm Siêu Âm Phổi LUSS (Bảng 1 QĐ 2671)</div>
+
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width: 15%;">Điểm Số</th>
+                <th style="width: 45%;">Đặc Điểm Hình Ảnh Siêu Âm Phổi</th>
+                <th>Ý Nghĩa Sinh Lý Bệnh Tổn Thương</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>LUSS 0</strong></td>
+                <td>Đường màng phổi bình thường, các đường A vẫn bảo tồn, có 1-2 đường B.</td>
+                <td>Phổi bình thường hoặc tổn thương tối thiểu.</td>
+              </tr>
+              <tr>
+                <td><strong>LUSS 1</strong></td>
+                <td>Đường màng phổi dày không đều, > 2 đường B rời rạc, đường A bị gián đoạn.</td>
+                <td>Tổn thương mô kẽ mức độ nhẹ.</td>
+              </tr>
+              <tr>
+                <td><strong>LUSS 2</strong></td>
+                <td>Nhiều đường B tụm lại tạo "phổi trắng"; đông đặc nhỏ dưới màng phổi (&lt; 1cm).</td>
+                <td>Tổn thương phế nang - kẽ nặng, tụ dịch nhiều.</td>
+              </tr>
+              <tr>
+                <td><strong>LUSS 3</strong></td>
+                <td>Đông đặc phổi diện rộng (> 1cm), kèm đường phế quản chứa khí & tăng sinh mạch.</td>
+                <td>Đông đặc phổi hoàn toàn, mất thông khí vùng khảo sát.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="infobox danger">
+          <div class="infobox-icon"><i class="fa-solid fa-chart-line"></i></div>
+          <div>
+            <strong>Giá Trị Tiên Lượng Tử Vong Điểm LUSS:</strong>
+            Tổng điểm LUSS trên 12 vùng phổi <strong>> 18 điểm</strong> cho thấy tỷ lệ tử vong tăng cao và đòi hỏi cần xem xét chỉ định thông khí nhân tạo xâm nhập (đặt NKQ) kịp thời.
+          </div>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-file-waveform"></i> Bilan Xét Nghiệm & Chẩn Đoán Hình Ảnh</div>
+
+        <div class="matrix-grid">
+          <div class="matrix-card card-purple">
+            <div class="matrix-card-hdr">
+              <span class="matrix-card-title"><i class="fa-solid fa-vial"></i> Huyết Học & Bão Cytokine</span>
+              <span class="rx-tag alert">Lympho < 1000/uL</span>
+            </div>
+            <div class="matrix-card-desc">
+              - <strong>Lympho giảm sâu (&lt; 1000/uL):</strong> Gợi ý bão cytokine.<br>
+              - <strong>D-dimer tăng cao (> 4 - 5 lần):</strong> Nguy cơ huyết khối tắc mạch.<br>
+              - <strong>Bilan viêm:</strong> Ferritin, CRP, LDH, IL-6 tăng vọt.
+            </div>
+          </div>
+
+          <div class="matrix-card card-blue">
+            <div class="matrix-card-hdr">
+              <span class="matrix-card-title"><i class="fa-solid fa-x-ray"></i> X-quang & CT Lồng Ngực</span>
+              <span class="rx-tag highlight">TSS & CO-RADS</span>
+            </div>
+            <div class="matrix-card-desc">
+              - <strong>X-quang (Điểm TSS 8 vùng):</strong> Nhẹ (1-2), Vừa (3-6), Nặng (7-8 điểm).<br>
+              - <strong>CT-Scanner:</strong> Kính mờ đa ổ ngoại vi/đáy phổi, đông đặc, lát đá. Phân loại từ CO-RADS 1 đến CO-RADS 6.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SECTION 4: PHÁC ĐỒ THUỐC KHÁNG VI RÚT ĐẶC HIỆU -->
+    <div class="sec-card" id="sec-4">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-capsules"></i></div>
+        <h2 class="sec-title">4. Phác Đồ Thuốc Kháng Vi Rút Đặc Hiệu (Remdesivir, Paxlovid, Molnupiravir)</h2>
+      </div>
+      <div class="sec-body">
+        
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width: 18%;">Tên Thuốc</th>
+                <th style="width: 25%;">Chỉ Định & Thời Điểm Dùng</th>
+                <th style="width: 27%;">Liều Dùng Cụ Thể</th>
+                <th>Chống Chỉ Định & Lưu Ý</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Remdesivir</strong><br><em>(Truyền tĩnh mạch)</em></td>
+                <td>Nội trú Nhẹ (nguy cơ cao), Trung bình, Nặng $\le 10$ ngày khởi phát.</td>
+                <td>NL ($\ge 12$t, $>40$kg): Ngày 1: 200mg IV, Ngày 2-5: 100mg/ngày. Trẻ 3-40kg: Ngày 1: 5mg/kg, Ngày 2-5: 2.5mg/kg/ngày. Dùng 5 ngày (max 10 ngày).</td>
+                <td>Ngưng thuốc nếu <span class="rx-tag alert">ALT > 5 lần</span> hoặc <span class="rx-tag alert">eGFR < 30 ml/phút</span>.</td>
+              </tr>
+              <tr>
+                <td><strong>Paxlovid</strong><br><em>(Nirmatrelvir + Ritonavir)</em><br><em>(Đường uống)</em></td>
+                <td>NL & Trẻ $\ge 12$t, $\ge 40$kg nhẹ/trung bình nguy cơ cao, $\le 5$ ngày khởi phát.</td>
+                <td>($eGFR \ge 60$): 300mg Nirmatrelvir + 100mg Ritonavir x 2 lần/ngày x 5 ngày.</td>
+                <td>eGFR 30-60: giảm liều; <span class="rx-tag alert">eGFR < 30 ml/phút: CẤM DÙNG</span>.</td>
+              </tr>
+              <tr>
+                <td><strong>Molnupiravir</strong><br><em>(Đường uống)</em></td>
+                <td>NL $\ge 18$t mức độ nhẹ hoặc vừa có nguy cơ cao, $\le 5$ ngày khởi phát.</td>
+                <td><strong>800 mg</strong>/lần x 2 lần/ngày x 5 ngày.</td>
+                <td><span class="rx-tag alert">CHỐNG CHỈ ĐỊNH TUYỆT ĐỐI THAI PHỤ</span>. Nữ tránh thai đến 4 ngày sau liều cuối; Nam tránh thai đến 3 tháng sau liều cuối.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SECTION 5: CORTICOID & THUỐC ỨC CHẾ MIỄN DỊCH -->
+    <div class="sec-card" id="sec-5">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-syringe"></i></div>
+        <h2 class="sec-title">5. Liệu Pháp Điều Hòa Miễn Dịch (Corticoid, Tocilizumab, Baricitinib)</h2>
+      </div>
+      <div class="sec-body">
+        
+        <div class="infobox danger">
+          <div class="infobox-icon"><i class="fa-solid fa-ban"></i></div>
+          <div>
+            <strong>CHỐNG CHỈ ĐỊNH DÙNG CORTICOID CHO THỂ NHẸ & TRUNG BÌNH:</strong>
+            Corticoid <strong>CHỈ DÙNG CHO BỆNH NHÂN NẶNG VÀ NGUY KỊCH</strong>. Tuyệt đối không tự ý dùng corticoid cho người nhiễm không triệu chứng, mức độ nhẹ và trung bình vì làm giảm khả năng thải vi rút.
+          </div>
+        </div>
+
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width: 20%;">Nhóm Thuốc</th>
+                <th style="width: 25%;">Chỉ Định Chi Tiết</th>
+                <th style="width: 27%;">Phác Đồ & Liều Dùng</th>
+                <th>Lưu Ý Chuyên Môn</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Dexamethason</strong></td>
+                <td>Thể Nặng & Nguy Kịch có suy hô hấp.</td>
+                <td><strong>6 – 12 mg/ngày</strong> tiêm IV x 5 ngày, sau đó giảm nửa liều x 5 ngày.</td>
+                <td>Tầm soát đường huyết, điện giải và nguy cơ bội nhiễm nấm.</td>
+              </tr>
+              <tr>
+                <td><strong>Methylprednisolon</strong></td>
+                <td>Thể Nặng & Nguy Kịch (thay thế Dexamethason).</td>
+                <td><strong>1 – 2 mg/kg/ngày</strong> tiêm IV x 5 ngày, sau đó giảm nửa liều x 5 ngày.</td>
+                <td>Duy trì liều cao &lt; 7 ngày, giảm liều nhanh khi lâm sàng cải thiện.</td>
+              </tr>
+              <tr>
+                <td><strong>Tocilizumab</strong><br><em>(Ức chế IL-6)</em></td>
+                <td>Bệnh nhân $\ge 2$t nhập viện $\le 3$ ngày thở oxy/HFNC/NIV + CRP $\ge 75$mg/L; hoặc nhập viện $\le 24$h cần thở máy.</td>
+                <td>$\ge 30$kg: 8 mg/kg IV (max 800mg); &lt; 30kg: 12 mg/kg. Có thể nhắc lại sau 8h.</td>
+                <td>Chống chỉ định khi Bạch cầu trung tính &lt; 1 G/L, Tiểu cầu &lt; 50 G/L, ALT > 5 lần.</td>
+              </tr>
+              <tr>
+                <td><strong>Baricitinib</strong><br><em>(Ức chế JAK)</em></td>
+                <td>Bệnh nhân $\ge 2$t cần hỗ trợ hô hấp (Oxy, NIV, MV, ECMO).</td>
+                <td>$\ge 9$t: 4 mg uống 1 lần/ngày x max 14 ngày (hiệu chỉnh theo eGFR).</td>
+                <td>Không dùng nếu eGFR &lt; 15 ml/phút.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SECTION 6: CHỐNG ĐÔNG ENOXAPARIN & AKI / CRRT -->
+    <div class="sec-card" id="sec-6">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-droplet"></i></div>
+        <h2 class="sec-title">6. Chiến Lược Dùng Thuốc Chống Đông Máu & Xử Trí AKI / Lọc Máu (CRRT)</h2>
+      </div>
+      <div class="sec-body">
+        
+        <div class="sec-subtitle"><i class="fa-solid fa-notes-medical"></i> Phác Đồ Chống Đông Theo Mức Độ Bệnh (Sơ Đồ 7 QĐ 2671)</div>
+
+        <div class="matrix-grid">
+          <div class="matrix-card card-blue">
+            <div class="matrix-card-hdr">
+              <span class="matrix-card-title"><i class="fa-solid fa-shield"></i> Mức Độ Trung Bình</span>
+              <span class="rx-tag highlight">Liều Dự Phòng</span>
+            </div>
+            <div class="matrix-card-desc">
+              - <strong>Enoxaparin:</strong> 40 mg tiêm dưới da 1 lần/ngày (nếu BMI $\le 30$).<br>
+              - <strong>UFH:</strong> 5000 UI tiêm dưới da x 2 lần/ngày.
+            </div>
+          </div>
+
+          <div class="matrix-card card-red">
+            <div class="matrix-card-hdr">
+              <span class="matrix-card-title"><i class="fa-solid fa-syringe"></i> Mức Độ Nặng</span>
+              <span class="rx-tag alert">Liều Điều Trị</span>
+            </div>
+            <div class="matrix-card-desc">
+              - <strong>Enoxaparin:</strong> 1 mg/kg tiêm dưới da x 2 lần/ngày (nếu BMI $\le 30$).<br>
+              - Chống chỉ định liều điều trị nếu Tiểu cầu &lt; 50 G/L, Hgb &lt; 8 g/L.
+            </div>
+          </div>
+        </div>
+
+        <div class="infobox danger">
+          <div class="infobox-icon"><i class="fa-solid fa-hand"></i></div>
+          <div>
+            <strong>Chống Chỉ Định Tuyệt Đối Chống Đông:</strong> Đang chảy máu, mới xuất huyết não, Fibrinogen &lt; 0.5 g/L, viêm nội tâm mạc nhiễm khuẩn cấp.
+          </div>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-filter"></i> Lọc Máu Cấp Cứu AKI & Hấp Phụ Bão Cytokine</div>
+
+        <div class="infobox warning">
+          <div class="infobox-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+          <div>
+            <strong>Tương Tác Dược Động Học Khi Lọc Máu Hấp Phụ (CytoSorb):</strong>
+            Lọc hấp phụ làm <strong>tăng thanh thải cực lớn của Linezolid (114%), Fluconazol (282%), Amphotericin B (75%)</strong> $\rightarrow$ Cần tăng liều hoặc chuyển sang thuốc ít bị ảnh hưởng. Vancomycin & Colistin cũng bị tăng thanh thải mạnh.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SECTION 7: DINH DƯỠNG, PHCN, CUỐI ĐỜI & XUẤT VIỆN -->
+    <div class="sec-card" id="sec-7">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+        <h2 class="sec-title">7. Dinh Dưỡng, PHCN, Chăm Sóc Cuối Đời & Tiêu Chuẩn Xuất Viện</h2>
+      </div>
+      <div class="sec-body">
+        
+        <div class="matrix-grid">
+          <div class="matrix-card card-orange">
+            <div class="matrix-card-hdr">
+              <span class="matrix-card-title"><i class="fa-solid fa-bowl-rice"></i> Hội Chứng Nuôi Ăn Lại</span>
+              <span class="rx-tag warn">Refeeding Syndrome</span>
+            </div>
+            <div class="matrix-card-desc">
+              Người bệnh suy dinh dưỡng nặng (BMI &lt; 16): Bắt buộc tiêm <strong>Vitamin B1 (100mg)</strong> trước khi bắt đầu nuôi dưỡng. Khởi đầu năng lượng thấp (10-20 kcal/kg/ngày). Trì hoãn nếu có hạ K+, P, Mg nặng.
+            </div>
+          </div>
+
+          <div class="matrix-card card-teal">
+            <div class="matrix-card-hdr">
+              <span class="matrix-card-title"><i class="fa-solid fa-bed"></i> Chăm Sóc Cuối Đời</span>
+              <span class="rx-tag highlight">Morphin / Haloperidol</span>
+            </div>
+            <div class="matrix-card-desc">
+              - <strong>Khó thở kháng trị:</strong> Dùng <strong>Morphin</strong> liều thấp (3mg uống / 1mg IV). Ưu tiên <strong>Fentanyl</strong> khi suy thận.<br>
+              - <strong>Kiểm soát sảng:</strong> Dùng <strong>Haloperidol</strong> (0.5-1mg, max 20mg/24h), tránh nếu QTc > 500ms.
+            </div>
+          </div>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-house-medical-circle-check"></i> Tiêu Chuẩn Kết Thúc Cách Ly & Xuất Viện</div>
+
+        <div class="matrix-grid">
+          <div class="matrix-card card-green">
+            <div class="matrix-card-hdr">
+              <span class="matrix-card-title"><i class="fa-solid fa-user-check"></i> Nhẹ & Trung Bình</span>
+              <span class="rx-tag success">5 Ngày Cách Ly</span>
+            </div>
+            <div class="matrix-card-desc">
+              Cách ly ít nhất 5 ngày kể từ khi có triệu chứng/dương tính, đeo khẩu trang hết ngày 10 (hoặc kết thúc sớm nếu test âm tính).
+            </div>
+          </div>
+
+          <div class="matrix-card card-purple">
+            <div class="matrix-card-hdr">
+              <span class="matrix-card-title"><i class="fa-solid fa-hospital-user"></i> Nặng & Nguy Kịch</span>
+              <span class="rx-tag highlight">≥ 5 Ngày Đã Cải Thiện</span>
+            </div>
+            <div class="matrix-card-desc">
+              Đã điều trị $\ge 5$ ngày, lâm sàng cải thiện tốt, hết tình trạng nặng $\rightarrow$ Xuất viện cách ly tại nhà (đeo khẩu trang hết ngày 10). Nếu qua 21 ngày điều trị mà còn bệnh nền $\rightarrow$ chuyển khoa thông thường.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SECTION 8: TÀI LIỆU THAM KHẢO AMA -->
+    <div class="sec-card" id="sec-8">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-bookmark"></i></div>
+        <h2 class="sec-title">8. Danh Mục Tài Liệu Tham Khảo Chuẩn AMA</h2>
+      </div>
+      <div class="sec-body">
+        <div class="citation-box">
+          <ol>
+            <li>Bộ Y tế Việt Nam. <em>Hướng dẫn chẩn đoán và điều trị COVID-19</em> (Ban hành kèm theo Quyết định số 2671/QĐ-BYT ngày 26 tháng 6 năm 2023 của Bộ trưởng Bộ Y tế). Hà Nội: Bộ Y tế; 2023.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PAGE FOOTER -->
+  <footer class="page-footer">
+    <p>© 2026 CliniPortal — Phân hệ Y học Chứng cứ (EBM). Bản quyền tóm tắt hướng dẫn y khoa chuẩn hóa.</p>
+  </footer>
+
+  <script>
+    // Theme Toggle with LocalStorage
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const htmlEl = document.documentElement;
+
+    const savedTheme = localStorage.getItem('cliniportal_ebm_theme');
+    if (savedTheme === 'dark' || savedTheme === 'light') {
+      htmlEl.setAttribute('data-theme', savedTheme);
+      if (themeToggleBtn) {
+        themeToggleBtn.innerHTML = savedTheme === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+      }
+    }
+
+    if (themeToggleBtn) {
+      themeToggleBtn.addEventListener('click', () => {
+        const currentTheme = htmlEl.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        htmlEl.setAttribute('data-theme', newTheme);
+        themeToggleBtn.innerHTML = newTheme === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+        localStorage.setItem('cliniportal_ebm_theme', newTheme);
+      });
+    }
+
+    // Quicknav Active Highlight with IntersectionObserver
+    const sections = document.querySelectorAll('.sec-card[id]');
+    const navLinks = document.querySelectorAll('.quicknav-link');
+
+    const navObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const currentId = entry.target.getAttribute('id');
+          navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + currentId) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    }, { rootMargin: '-10% 0px -70% 0px' });
+
+    sections.forEach(section => navObserver.observe(section));
+  </script>
+  <script type="module" src="../guideline-controller.ts"></script>
+</body>
+</html>

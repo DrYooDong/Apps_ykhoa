@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Phác Đồ Xử Trí Cấp Cứu Sốc Nhiễm Khuẩn (Sepsis-3) & SSC 2021">
+  <title>Phác Đồ Xử Trí Cấp Cứu Sốc Nhiễm Khuẩn (Sepsis-3) & SSC 2021 – CliniPortal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+    :root {
+      --green: #059669; --green-bg: #f0fdf4; --green-light: #a7f3d0;
+      --orange: #d97706; --orange-bg: #fffbeb; --orange-light: #fde68a;
+      --red: #dc2626; --red-bg: #fef2f2; --red-light: #fca5a5;
+      --blue: #2563eb; --blue-bg: #eff6ff; --blue-light: #bfdbfe;
+      --teal: #0d9488; --teal-bg: #f0fdfa; --teal-light: #99f6e4;
+      --purple: #7c3aed; --purple-bg: #faf5ff; --purple-light: #ddd6fe;
+      --accent: #0f6fb4;
+      --bg: #f0f4f8; --surface: #ffffff; --surface-2: #f8fafc;
+      --border: #cbd5e1; --border-light: #e2e8f0;
+      --text: #0f172a; --text-muted: #475569; --text-faint: #94a3b8;
+      --radius: 16px; --tr: 220ms cubic-bezier(0.16,1,0.3,1);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; font-size: 15px; background: var(--bg); color: var(--text); line-height: 1.65; min-height: 100vh; }
+
+    /* TOP NAV */
+    .topnav { position: sticky; top: 0; z-index: 200; background: rgba(255,255,255,0.94); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 1rem; padding: 0 1.5rem; height: 56px; }
+    .topnav-back { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--accent); text-decoration: none; font-size: 0.82rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 8px; transition: background var(--tr); white-space: nowrap; }
+    .topnav-back:hover { background: var(--blue-bg); }
+    .topnav-divider { width: 1px; height: 18px; background: var(--border-light); flex-shrink: 0; }
+    .topnav-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+    /* HERO */
+    .hero { background: linear-gradient(135deg, #0c4a6e 0%, #0f6fb4 40%, #065f46 100%); color: #fff; padding: 3rem 1.5rem 4.5rem; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 15% 60%, rgba(56,189,248,0.2) 0%, transparent 55%), radial-gradient(ellipse at 85% 20%, rgba(16,185,129,0.15) 0%, transparent 50%); }
+    .hero-inner { max-width: 960px; margin: 0 auto; position: relative; z-index: 1; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.24); border-radius: 20px; padding: 0.3rem 0.9rem; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1rem; color: #7dd3fc; }
+    .hero-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(1.7rem, 4vw, 2.5rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 0.75rem; }
+    .hero-title span { display: block; background: linear-gradient(90deg, #7dd3fc, #6ee7b7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 0.7em; font-weight: 600; letter-spacing: 0; margin-bottom: 0.2rem; }
+    .hero-subtitle { font-size: 0.95rem; opacity: 0.85; max-width: 680px; margin-bottom: 1.5rem; line-height: 1.6; }
+
+    /* PILLARS STICKY NAV STRIP */
+    .pillars-nav { position: sticky; top: 56px; z-index: 190; background: var(--surface); border-bottom: 1px solid var(--border-light); padding: 0.75rem 1.5rem; }
+    .pillars-nav-inner { max-width: 960px; margin: 0 auto; display: flex; gap: 0.6rem; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .pillar-tab { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.45rem 0.85rem; border-radius: 10px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.78rem; font-weight: 700; color: var(--text-muted); border: 1px solid var(--border-light); background: var(--surface-2); text-decoration: none; white-space: nowrap; transition: all var(--tr); }
+    .pillar-tab:hover { border-color: var(--accent); color: var(--accent); background: var(--blue-bg); }
+    .pillar-tab.p-1 { border-left: 4px solid var(--blue); }
+    .pillar-tab.p-2 { border-left: 4px solid var(--teal); }
+    .pillar-tab.p-3 { border-left: 4px solid var(--green); }
+    .pillar-tab.p-4 { border-left: 4px solid var(--purple); }
+    .pillar-tab.p-5 { border-left: 4px solid var(--red); }
+
+    /* PILLARS */
+    .pillars { background: var(--surface); border-bottom: 1px solid var(--border-light); padding: 1.5rem; }
+    .pillars-inner { max-width: 960px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+    .pillar { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.1rem 1.25rem; display: flex; align-items: flex-start; gap: 0.85rem; position: relative; overflow: hidden; }
+    .pillar::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; border-radius: 4px 0 0 4px; }
+    .pillar.p1::before { background: var(--blue); }
+    .pillar.p2::before { background: var(--green); }
+    .pillar.p3::before { background: var(--orange); }
+    .pillar-icon { font-size: 1.6rem; flex-shrink: 0; line-height: 1; }
+    .pillar-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text); margin-bottom: 0.2rem; }
+    .pillar-desc { font-size: 0.78rem; color: var(--text-muted); line-height: 1.45; }
+
+    /* PAGE CONTENT */
+    .page-content { max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem; display: flex; flex-direction: column; gap: 1.75rem; }
+
+    /* SEC CARD */
+    .sec-card { background: var(--surface); border: 1px solid var(--border-light); border-radius: var(--radius); overflow: hidden; scroll-margin-top: 110px; }
+    .sec-hdr { padding: 1rem 1.25rem; border-bottom: 1px solid var(--border-light); background: var(--surface-2); display: flex; align-items: center; gap: 0.6rem; }
+    .sec-hdr-icon { font-size: 1.1rem; }
+    .sec-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.95rem; font-weight: 800; color: var(--text); }
+    .sec-body { padding: 1.35rem; }
+
+    /* INFOBOX ALERTS */
+    .infobox { display: flex; align-items: flex-start; gap: 0.85rem; padding: 1rem 1.15rem; border-radius: 12px; margin-bottom: 1rem; font-size: 0.85rem; line-height: 1.6; }
+    .infobox:last-child { margin-bottom: 0; }
+    .infobox-icon { font-size: 1.25rem; flex-shrink: 0; line-height: 1.2; }
+    .infobox.danger { background: var(--red-bg); border: 1px solid var(--red-light); border-left: 4px solid var(--red); }
+    .infobox.success { background: var(--green-bg); border: 1px solid var(--green-light); border-left: 4px solid var(--green); }
+    .infobox.warning { background: var(--orange-bg); border: 1px solid var(--orange-light); border-left: 4px solid var(--orange); }
+    .infobox.info { background: var(--blue-bg); border: 1px solid var(--blue-light); border-left: 4px solid var(--blue); }
+    .infobox strong { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; color: var(--text); }
+
+    /* REGIMEN TABLE */
+    .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 1rem; }
+    .regimen-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; min-width: 600px; }
+    .regimen-table th { background: var(--surface-2); color: var(--text-muted); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.7rem 0.85rem; border-bottom: 1px solid var(--border-light); text-align: left; }
+    .regimen-table td { padding: 0.8rem 0.85rem; border-bottom: 1px solid var(--border-light); vertical-align: top; line-height: 1.55; }
+    .rx-tag { display: inline-block; background: var(--border-light); color: var(--text-muted); font-size: 0.72rem; font-family: 'JetBrains Mono', monospace; padding: 0.15rem 0.45rem; border-radius: 5px; margin: 0.1rem 0.1rem 0.1rem 0; }
+    .rx-tag.preferred { background: var(--green-bg); color: #065f46; border: 1px solid var(--green-light); font-weight: 600; }
+
+    code { font-family: 'JetBrains Mono', monospace; background: var(--surface-2); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.82em; border: 1px solid var(--border-light); }
+
+    @media (max-width: 768px) {
+      .page-content { padding: 1.25rem 1rem; }
+      .sec-body { padding: 1rem; }
+    }
+  </style>
+  <link rel="stylesheet" href="../../../../../css/components/header.css">
+  <script type="module" src="../../../../../components/header.ts" defer></script>
+</head>
+<body>
+  <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
+
+
+  <!-- TOP NAV -->
+  <nav class="topnav">
+    <a href="../guidelines.html" class="topnav-back">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+      Kho Guidelines
+    </a>
+    <div class="topnav-divider"></div>
+    <div class="topnav-title">Phác Đồ Xử Trí Cấp Cứu Sốc Nhiễm Khuẩn (Sepsis-3) & SSC 2021</div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">🔬 PGS.TS Nguyễn Văn A - BS.CKII Lê Văn B (2026)</div>
+      <h1 class="hero-title">
+        <span>Phác Đồ Xử Trí Cấp Cứu Sốc Nhiễm Khuẩn (Sepsis-3) & SSC 2021</span>
+        Phác Đồ Xử Trí Cấp Cứu Sốc Nhiễm Khuẩn (Sepsis-3) & SSC 2021
+      </h1>
+      <p class="hero-subtitle"><strong>Sốc nhiễm khuẩn (Septic Shock)</strong> là một tình trạng rối loạn tuần hoàn và chuyển hóa tế bào/tế bào mô trầm trọng do đáp ứng bất thường của cơ thể với nhiễm trùng, làm tăng đáng kể nguy cơ tử vong so với chỉ có nhiễm trùng huyết đơn thuần.
+
+<div class="infobox success">
+  <span class="infobox-icon">✅</span>
+  <div>
+    <strong>Tiêu chuẩn chẩn đoán Sốc nhiễm khuẩn theo Sepsis-3:</strong><br>1. Xã định <strong>Nhiễm trùng huyết (Sepsis)</strong>: Độ biến thiên điểm qSOFA ≥ 2 hoặc điểm SOFA tăng ≥ 2 điểm so với giá trị nền.<br>2. Mặc dù đã hồi sức đủ dịch thể tích, bệnh nhân vẫn cần thuốc nâng huyết áp để duy trì <strong>MAP <code>\ge 65\text{ mmHg}</code></strong>.<br>3. Nồng độ <strong>Lactate máu động mạch <code>> 2\text{ mmol/L}</code></strong> (<code>> 18\text{ mg/dL}</code>).
+  </div>
+</div>
+
+---</p>
+    </div>
+  </header>
+
+  <!-- PILLARS STRIP NAV -->
+  <div class="pillars-nav">
+    <div class="pillars-nav-inner">
+      <a href="#sec-1" class="pillar-tab p-1">1. Nhận Diện Nhanh Tại Giường Bệnh (qSOFA Score)</a>
+      <a href="#sec-2" class="pillar-tab p-2">2. Phác Đồ Xử Trí "Hour-1 Bundle" (Khuyến Cáo SSC 2021)</a>
+      <a href="#sec-3" class="pillar-tab p-3">3. Mục Tiêu Hồi Sức Tuần Hoàn (Hemodynamic Targets)</a>
+      <a href="#sec-4" class="pillar-tab p-4">4. Thuốc Vận Mạch & Tăng Co Bóp Cơ Tim</a>
+      <a href="#sec-5" class="pillar-tab p-5">5. Tóm Tắt Quy Trình Xử Trí Khẩn Cấp</a>
+    </div>
+  </div>
+
+  <!-- PILLARS GRID -->
+  <section class="pillars">
+    <div class="pillars-inner">
+      
+      <div class="pillar p1">
+        <div class="pillar-icon">⚡</div>
+        <div>
+          <div class="pillar-title">Chẩn đoán sớm</div>
+          <div class="pillar-desc">Sàng lọc và phân loại mức độ nguy cơ ngay khi tiếp cận.</div>
+        </div>
+      </div>
+      <div class="pillar p2">
+        <div class="pillar-icon">🎯</div>
+        <div>
+          <div class="pillar-title">Điều trị chuẩn hóa</div>
+          <div class="pillar-desc">Áp dụng phác đồ và tối ưu hóa liều dùng lâm sàng.</div>
+        </div>
+      </div>
+      <div class="pillar p3">
+        <div class="pillar-icon">🛡️</div>
+        <div>
+          <div class="pillar-title">Theo dõi & An toàn</div>
+          <div class="pillar-desc">Đánh giá đáp ứng và phòng ngừa biến chứng nguy hiểm.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <main class="page-content">
+    
+    <!-- 1. Nhận Diện Nhanh Tại Giường Bệnh (qSOFA Score) -->
+    <article class="sec-card" id="sec-1">
+      <div class="sec-hdr">
+        <span class="sec-hdr-icon">📋</span>
+        <h2 class="sec-title">1. Nhận Diện Nhanh Tại Giường Bệnh (qSOFA Score)</h2>
+      </div>
+      <div class="sec-body">
+        <p style="margin-bottom: 1rem; line-height: 1.6;">Bảng điểm <strong>qSOFA (Quick SOFA)</strong> dùng để sàng lọc nhanh tại khoa Cấp cứu hoặc Khoa phòng thông thường khi nghi ngờ nhiễm trùng:</p>
+<div class="table-wrapper">
+  <table class="regimen-table">
+    <thead>
+      <tr>
+        <th>Chỉ số Lâm sàng</th>
+                <th>Giá trị Bất thường</th>
+                <th>Điểm</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Nhịp thở (Respiratory Rate)</strong></td><td>≥ 22 lần/phút</td><td>1</td></tr>
+              <tr><td><strong>Rối loạn ý thức (Altered Mentation)</strong></td><td>GCS <code>&lt; 15</code> điểm</td><td>1</td></tr>
+              <tr><td><strong>Huyết áp tâm thu (Systolic BP)</strong></td><td><code>\le 100\text{ mmHg}</code></td><td>1</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="infobox info">
+  <span class="infobox-icon">💡</span>
+  <div>
+    Nếu bệnh nhân có <strong>qSOFA ≥ 2 điểm</strong>, nguy cơ tử vong cao hoặc phải nằm ICU tăng gấp 3-5 lần. Bắt đầu ngay <strong>"Gói Hồi Sức 1 Giờ (Hour-1 Bundle)"</strong>.
+  </div>
+</div>
+<p style="margin-bottom: 1rem; line-height: 1.6;">---</p>
+      </div>
+    </article>
+
+    <!-- 2. Phác Đồ Xử Trí "Hour-1 Bundle" (Khuyến Cáo SSC 2021) -->
+    <article class="sec-card" id="sec-2">
+      <div class="sec-hdr">
+        <span class="sec-hdr-icon">💊</span>
+        <h2 class="sec-title">2. Phác Đồ Xử Trí "Hour-1 Bundle" (Khuyến Cáo SSC 2021)</h2>
+      </div>
+      <div class="sec-body">
+        <p style="margin-bottom: 1rem; line-height: 1.6;">Tất cả các hành động dưới đây phải được khởi động <strong>NGAY LẬP TỨC</strong> trong vòng 1 giờ đầu tiên kể từ khi nhận diện:</p>
+<h3 class="sec-subtitle" style="margin-top: 1rem; margin-bottom: 0.5rem; color: var(--accent);">Bước 1: Đo Lactate Máu Động Mạch</h3>
+<li>Đo ngay Lactate ban đầu.</li>
+<li>Tái đánh giá Lactate sau 2-4 giờ nếu Lactate ban đầu &gt; 2 mmol/L để theo dõi hiệu quả hồi sức tưới máu mô (Clearance Target &gt; 20%).</li>
+<h3 class="sec-subtitle" style="margin-top: 1rem; margin-bottom: 0.5rem; color: var(--accent);">Bước 2: Cấy Máu Trước Khi Dùng Kháng Sinh</h3>
+<li>Cấy tối thiểu **2 bộ máu** (1 chai hiếu khí + 1 chai yếm khí cho mỗi bộ).</li>
+<li>Một bộ lấy từ đường tĩnh mạch ngoại vi, một bộ lấy qua catheter tĩnh mạch trung tâm (nếu có).</li>
+<h3 class="sec-subtitle" style="margin-top: 1rem; margin-bottom: 0.5rem; color: var(--accent);">Bước 3: Cho Kháng Sinh Phổ Rộng Đường Tĩnh Mạch</h3>
+<li>Sử dụng kháng sinh phổ rộng diệt vi khuẩn Gram âm và Gram dương có nguy cơ cao (vd: Carbapenem + Vancomycin/Linezolid nếu nghi ngờ MRSA).</li>
+<h3 class="sec-subtitle" style="margin-top: 1rem; margin-bottom: 0.5rem; color: var(--accent);">Bước 4: Hồi Sức Dịch Tĩnh Mạch Nhanh</h3>
+<li>Truyền ngay <strong>30 mL/kg dung dịch tinh thể đẳng trương</strong> (Ưu tiên Ringer Lactate hoặc Acetate) trong 3 giờ đầu tiên nếu có hạ huyết áp hoặc Lactate ≥ 4 mmol/L.</li>
+<h3 class="sec-subtitle" style="margin-top: 1rem; margin-bottom: 0.5rem; color: var(--accent);">Bước 5: Sử Dụng Thuốc Vận Mạch</h3>
+<li>Khởi động **Norepinephrine** nâng huyết áp nếu MAP &lt; 65 mmHg trong hoặc sau khi truyền dịch.</li>
+<p style="margin-bottom: 1rem; line-height: 1.6;">---</p>
+      </div>
+    </article>
+
+    <!-- 3. Mục Tiêu Hồi Sức Tuần Hoàn (Hemodynamic Targets) -->
+    <article class="sec-card" id="sec-3">
+      <div class="sec-hdr">
+        <span class="sec-hdr-icon">🎯</span>
+        <h2 class="sec-title">3. Mục Tiêu Hồi Sức Tuần Hoàn (Hemodynamic Targets)</h2>
+      </div>
+      <div class="sec-body">
+        <div class="infobox warning">
+  <span class="infobox-icon">⚠️</span>
+  <div>
+    Không trì hoãn vận mạch cho đến khi hoàn thành xong <code>30\text{ mL/kg}</code> dịch nếu huyết áp tâm thu giảm sâu đáng ngại. Norepinephrine có thể truyền tạm qua tĩnh mạch ngoại vi trong lúc đặt tĩnh mạch trung tâm.
+  </div>
+</div>
+<li>**Huyết áp trung bình (MAP):** ≥ 65 mmHg.</li>
+<li>**Nước tiểu:** ≥ 0.5 mL/kg/giờ.</li>
+<li>**Độ bão hòa oxy tĩnh mạch trung tâm (ScvO<sub>2</sub>):** ≥ 70%.</li>
+<li>**Lactate máu:** Giảm dần về mức bình thường.</li>
+<p style="margin-bottom: 1rem; line-height: 1.6;">---</p>
+      </div>
+    </article>
+
+    <!-- 4. Thuốc Vận Mạch & Tăng Co Bóp Cơ Tim -->
+    <article class="sec-card" id="sec-4">
+      <div class="sec-hdr">
+        <span class="sec-hdr-icon">📊</span>
+        <h2 class="sec-title">4. Thuốc Vận Mạch & Tăng Co Bóp Cơ Tim</h2>
+      </div>
+      <div class="sec-body">
+        <ul style="margin-left: 1.25rem; margin-bottom: 1rem; line-height: 1.6;">1. **Lựa chọn hàng 1 (First-line):**
+<li>**Norepinephrine:** Liều khởi đầu 0.05 – 0.1 mcg/kg/phút, tăng dần liều mỗi 2-5 phút đến khi đạt MAP ≥ 65 mmHg.</li>
+2. **Lựa chọn bổ sung (Second-line):**
+<li>**Vasopressin:** Phối hợp thêm liều cố định 0.03 đơn vị/phút khi liều Norepinephrine tăng cao để giảm liều Norepinephrine.</li>
+<li>**Epinephrine:** Thay thế hoặc thêm vào nếu huyết áp vẫn không đạt mục tiêu.</li>
+3. **Thuốc tăng co bóp (Inotropes):**
+<li>**Dobutamine:** Thêm vào nếu có bằng chứng suy chức năng cơ tim (EF giảm, ScvO<sub>2</sub> &lt; 70%) mặc dù đã đủ thể tích lòng mạch và MAP đạt mục tiêu.</li></ul>
+<p style="margin-bottom: 1rem; line-height: 1.6;">---</p>
+      </div>
+    </article>
+
+    <!-- 5. Tóm Tắt Quy Trình Xử Trí Khẩn Cấp -->
+    <article class="sec-card" id="sec-5">
+      <div class="sec-hdr">
+        <span class="sec-hdr-icon">🛡️</span>
+        <h2 class="sec-title">5. Tóm Tắt Quy Trình Xử Trí Khẩn Cấp</h2>
+      </div>
+      <div class="sec-body">
+        <div class="infobox danger">
+  <span class="infobox-icon">🚫</span>
+  <div>
+    <strong>Nhớ kĩ:</strong> Thất bại trong việc kiểm soát ổ nhiễm trùng (Source Control) là nguyên nhân hàng đầu gây thất bại hồi sức sốc nhiễm khuẩn. Cần dẫn lưu áp xe, cắt lọc mô hoại tử, hoặc rút catheter nhiễm trùng càng sớm càng tốt (trong vòng 6-12 giờ).
+  </div>
+</div>
+      </div>
+    </article>
+  </main>
+
+  <script type="module" src="../guideline-controller.ts"></script>
+</body>
+</html>

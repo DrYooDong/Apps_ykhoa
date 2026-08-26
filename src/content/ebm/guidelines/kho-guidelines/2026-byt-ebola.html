@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Hướng dẫn toàn diện chẩn đoán, điều trị và phòng lây nhiễm bệnh do vi rút Ebola theo Quyết định 1505/QĐ-BYT ngày 25/05/2026 của Bộ Y tế Việt Nam. Phân loại 6 loài Filovirus, tỷ lệ tử vong 25%-90%, tiêu chuẩn RT-PCR, phác đồ điều trị hỗ trợ, liệu pháp kháng thể đơn dòng (Inmazeb, Ebanga), chống chỉ định NSAID, vắc-xin Ervebo và quy định cách ly/hỏa táng.">
+  <title>Bộ Y Tế 2026: Hướng Dẫn Chẩn Đoán & Điều Trị Bệnh Do Vi Rút Ebola – CliniPortal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../../../../css/components/header.css">
+  <script type="module" src="../../../../../components/header.ts" defer></script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #059669; --green-bg: #f0fdf4; --green-light: #a7f3d0;
+      --orange: #d97706; --orange-bg: #fffbeb; --orange-light: #fde68a;
+      --red: #dc2626; --red-bg: #fef2f2; --red-light: #fca5a5;
+      --blue: #2563eb; --blue-bg: #eff6ff; --blue-light: #bfdbfe;
+      --teal: #0d9488; --teal-bg: #f0fdfa; --teal-light: #99f6e4;
+      --purple: #7c3aed; --purple-bg: #faf5ff; --purple-light: #ddd6fe;
+      --accent: #0f6fb4;
+      --bg: #f0f4f8; --surface: #ffffff; --surface-2: #f8fafc;
+      --border: #cbd5e1; --border-light: #e2e8f0;
+      --text: #0f172a; --text-muted: #475569; --text-faint: #94a3b8;
+      --radius: 16px; --tr: 220ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [data-theme="dark"] {
+      --green: #10b981; --green-bg: #064e3b; --green-light: #047857;
+      --orange: #f59e0b; --orange-bg: #78350f; --orange-light: #b45309;
+      --red: #ef4444; --red-bg: #7f1d1d; --red-light: #b91c1c;
+      --blue: #3b82f6; --blue-bg: #1e3a8a; --blue-light: #1d4ed8;
+      --teal: #14b8a6; --teal-bg: #115e59; --teal-light: #0f766e;
+      --purple: #8b5cf6; --purple-bg: #4c1d95; --purple-light: #6d28d9;
+      --accent: #38bdf8;
+      --bg: #0f172a; --surface: #1e293b; --surface-2: #0f172a;
+      --border: #334155; --border-light: #1e293b;
+      --text: #f8fafc; --text-muted: #cbd5e1; --text-faint: #64748b;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; font-size: 15px; background: var(--bg); color: var(--text); line-height: 1.65; min-height: 100vh; transition: background var(--tr), color var(--tr); }
+
+    /* TOP NAV */
+    .topnav { position: sticky; top: 0; z-index: 200; background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 1rem; padding: 0 1.5rem; height: 56px; transition: background var(--tr), border-color var(--tr); }
+    [data-theme="dark"] .topnav { background: rgba(30, 41, 59, 0.9); }
+    .topnav-back { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--accent); text-decoration: none; font-size: 0.82rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 8px; transition: background var(--tr); white-space: nowrap; }
+    .topnav-back:hover { background: var(--blue-bg); }
+    .topnav-divider { width: 1px; height: 18px; background: var(--border-light); flex-shrink: 0; }
+    .topnav-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .topnav-theme-toggle { margin-left: auto; background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 1.1rem; padding: 0.5rem; border-radius: 50%; transition: background var(--tr); display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; }
+    .topnav-theme-toggle:hover { background: var(--surface-2); color: var(--accent); }
+
+    /* QUICK NAV BAR */
+    .quicknav { position: sticky; top: 56px; z-index: 190; background: var(--surface); border-bottom: 1px solid var(--border-light); display: flex; gap: 0.5rem; padding: 0.6rem 1.5rem; overflow-x: auto; -webkit-overflow-scrolling: touch; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+    .quicknav::-webkit-scrollbar { height: 3px; }
+    .quicknav::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    .quicknav-link { display: inline-flex; align-items: center; white-space: nowrap; font-size: 0.78rem; font-weight: 600; color: var(--text-muted); text-decoration: none; padding: 0.35rem 0.85rem; border-radius: 20px; background: var(--surface-2); border: 1px solid var(--border-light); transition: all var(--tr); }
+    .quicknav-link:hover, .quicknav-link.active { background: var(--blue-bg); color: var(--accent); border-color: var(--blue-light); }
+
+    /* HERO */
+    .hero { background: linear-gradient(135deg, #450a0a 0%, #991b1b 45%, #0f172a 100%); color: #fff; padding: 3.5rem 1.5rem 4.5rem; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 50%, rgba(239, 68, 68, 0.25) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(245, 158, 11, 0.2) 0%, transparent 55%); }
+    .hero-inner { max-width: 1000px; margin: 0 auto; position: relative; z-index: 1; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255, 255, 255, 0.14); border: 1px solid rgba(255, 255, 255, 0.24); border-radius: 20px; padding: 0.3rem 0.9rem; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1rem; color: #fca5a5; }
+    .hero-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(1.8rem, 4vw, 2.7rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 0.85rem; }
+    .hero-title span { display: block; background: linear-gradient(90deg, #fca5a5, #fde68a); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 0.65em; font-weight: 600; letter-spacing: 0; margin-bottom: 0.2rem; }
+    .hero-subtitle { font-size: 0.95rem; opacity: 0.88; max-width: 780px; margin-bottom: 2rem; line-height: 1.65; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 0.75rem 2rem; font-size: 0.8rem; opacity: 0.85; }
+    .hero-meta-item { display: flex; align-items: center; gap: 6px; }
+
+    /* PILLARS STRIP */
+    .pillars { background: var(--surface); border-bottom: 1px solid var(--border-light); padding: 1.75rem 1.5rem; }
+    .pillars-inner { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+    .pillar { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.1rem 1.2rem; display: flex; align-items: flex-start; gap: 0.85rem; position: relative; overflow: hidden; transition: box-shadow var(--tr); }
+    .pillar::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; border-radius: 4px 0 0 4px; }
+    .pillar.p1::before { background: var(--red); }
+    .pillar.p2::before { background: var(--orange); }
+    .pillar.p3::before { background: var(--blue); }
+    .pillar.p4::before { background: var(--green); }
+    .pillar:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+    .pillar-icon { font-size: 1.6rem; flex-shrink: 0; line-height: 1; }
+    .pillar-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text); margin-bottom: 0.25rem; }
+    .pillar-desc { font-size: 0.76rem; color: var(--text-muted); line-height: 1.45; }
+
+    /* PAGE CONTENT */
+    .page-content { max-width: 1000px; margin: 0 auto; padding: 2.25rem 1.5rem; display: flex; flex-direction: column; gap: 2rem; }
+
+    /* SECTION CARDS & HEADINGS */
+    .sec-card { background: var(--surface); border: 1px solid var(--border-light); border-radius: var(--radius); overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.03); scroll-margin-top: 110px; }
+    .sec-hdr { padding: 1.15rem 1.5rem; border-bottom: 1px solid var(--border-light); background: var(--surface-2); display: flex; align-items: center; gap: 0.75rem; }
+    .sec-hdr-icon { font-size: 1.15rem; color: var(--accent); background: var(--blue-bg); width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--blue-light); flex-shrink: 0; }
+    .sec-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.1rem; font-weight: 800; color: var(--text); letter-spacing: -0.01em; }
+    .sec-body { padding: 1.5rem; display: flex; flex-direction: column; gap: 1.25rem; }
+
+    /* SUBHEADINGS (H3, H4) */
+    .sec-subtitle { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 0.95rem; color: var(--text); margin-top: 0.5rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.6rem; }
+    .sec-subtitle i { color: var(--accent); font-size: 0.75rem; background: var(--blue-bg); width: 24px; height: 24px; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--blue-light); flex-shrink: 0; }
+    .sec-subtitle::after { content: ''; flex: 1; height: 2px; background: linear-gradient(90deg, var(--border-light), transparent); border-radius: 1px; margin-left: 0.5rem; }
+
+    /* BENTO MATRIX CARDS */
+    .matrix-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 0.5rem; }
+    .matrix-card { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.15rem; transition: transform var(--tr), box-shadow var(--tr); display: flex; flex-direction: column; gap: 0.5rem; position: relative; overflow: hidden; }
+    .matrix-card:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.06); }
+    .matrix-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--accent); }
+    .matrix-card.card-red::before { background: var(--red); }
+    .matrix-card.card-orange::before { background: var(--orange); }
+    .matrix-card.card-green::before { background: var(--green); }
+    .matrix-card.card-teal::before { background: var(--teal); }
+    .matrix-card.card-purple::before { background: var(--purple); }
+    .matrix-card-hdr { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
+    .matrix-card-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 0.88rem; color: var(--text); display: flex; align-items: center; gap: 0.5rem; }
+    .matrix-card-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.55; }
+
+    /* STEP CLINICAL TIMELINE CARDS */
+    .timeline-container { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 0.5rem; }
+    .timeline-step-card { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.15rem; display: flex; gap: 1rem; align-items: flex-start; transition: transform var(--tr); }
+    .timeline-step-card:hover { transform: translateX(3px); }
+    .timeline-badge { width: 38px; height: 38px; border-radius: 12px; background: var(--accent); color: #fff; display: flex; align-items: center; justify-content: center; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 0.9rem; flex-shrink: 0; box-shadow: 0 3px 8px rgba(15,111,180,0.25); }
+    .timeline-badge.step-1 { background: var(--blue); }
+    .timeline-badge.step-2 { background: var(--orange); }
+    .timeline-badge.step-3 { background: var(--red); }
+    .timeline-badge.step-4 { background: var(--purple); }
+    .timeline-content { flex: 1; display: flex; flex-direction: column; gap: 0.35rem; }
+    .timeline-content h4 { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 0.9rem; color: var(--text); display: flex; align-items: center; justify-content: space-between; }
+    .timeline-content p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.55; }
+
+    /* INFO BOXES */
+    .infobox { display: flex; align-items: flex-start; gap: 0.85rem; padding: 1rem 1.25rem; border-radius: 12px; font-size: 0.85rem; line-height: 1.6; }
+    .infobox-icon { font-size: 1.3rem; flex-shrink: 0; line-height: 1.3; }
+    .infobox.danger { background: var(--red-bg); border: 1px solid var(--red-light); border-left: 4px solid var(--red); color: var(--text); }
+    .infobox.success { background: var(--green-bg); border: 1px solid var(--green-light); border-left: 4px solid var(--green); color: var(--text); }
+    .infobox.warning { background: var(--orange-bg); border: 1px solid var(--orange-light); border-left: 4px solid var(--orange); color: var(--text); }
+    .infobox.info { background: var(--blue-bg); border: 1px solid var(--blue-light); border-left: 4px solid var(--blue); color: var(--text); }
+    .infobox.teal { background: var(--teal-bg); border: 1px solid var(--teal-light); border-left: 4px solid var(--teal); color: var(--text); }
+    .infobox strong { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; color: var(--text); }
+
+    /* TABLES */
+    .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 12px; border: 1px solid var(--border-light); margin-bottom: 0.5rem; }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 0.83rem; min-width: 650px; text-align: left; }
+    .data-table thead th { padding: 0.75rem 1rem; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; background: var(--surface-2); color: var(--text-muted); border-bottom: 1px solid var(--border-light); }
+    .data-table td { padding: 0.85rem 1rem; border-bottom: 1px solid var(--border-light); vertical-align: top; line-height: 1.55; }
+    .data-table tbody tr:last-child td { border-bottom: none; }
+
+    /* BADGES & TAGS */
+    .rx-tag { display: inline-block; background: var(--surface-2); color: var(--text-muted); font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; padding: 0.15rem 0.5rem; border-radius: 6px; border: 1px solid var(--border-light); margin: 0.15rem 0.1rem; }
+    .rx-tag.highlight { background: var(--blue-bg); color: var(--accent); border-color: var(--blue-light); font-weight: 600; }
+    .rx-tag.alert { background: var(--red-bg); color: var(--red); border-color: var(--red-light); font-weight: 600; }
+    .rx-tag.warn { background: var(--orange-bg); color: var(--orange); border-color: var(--orange-light); font-weight: 600; }
+    .rx-tag.success { background: var(--green-bg); color: var(--green); border-color: var(--green-light); font-weight: 600; }
+
+    /* CITATION & FOOTER */
+    .citation-box { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 12px; padding: 1.25rem; font-size: 0.82rem; color: var(--text-muted); line-height: 1.75; }
+    .citation-box ol { padding-left: 1.2rem; }
+    .citation-box li { margin-bottom: 0.5rem; }
+    .page-footer { max-width: 1000px; margin: 0 auto; padding: 2rem 1.5rem 4rem; text-align: center; font-size: 0.8rem; color: var(--text-faint); border-top: 1px solid var(--border-light); }
+
+    @media (max-width: 768px) {
+      .page-content { padding: 1.25rem 1rem; }
+      .sec-body { padding: 1.1rem 1rem; }
+      .pillars-inner { grid-template-columns: 1fr; }
+      .matrix-grid { grid-template-columns: 1fr; }
+    }
+
+    @media print {
+      body { background: #fff !important; color: #000 !important; }
+      .topnav, .quicknav, .topnav-theme-toggle, .page-footer, .topnav-pdf-btn { display: none !important; }
+      .sec-card { break-inside: avoid; border: 1px solid #ccc !important; box-shadow: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
+
+  <!-- TOP NAV -->
+  <nav class="topnav">
+    <a href="../guidelines.html" class="topnav-back">
+      <i class="fa-solid fa-chevron-left"></i>
+      Kho Guidelines
+    </a>
+    <div class="topnav-divider"></div>
+    <div class="topnav-title">Bộ Y Tế 2026: Hướng Dẫn Chẩn Đoán & Điều Trị Bệnh Do Vi Rút Ebola</div>
+    <button class="topnav-theme-toggle topnav-pdf-btn" onclick="window.print()" title="Tải PDF / In bài viết" style="margin-left: auto; margin-right: 4px;">
+      <i class="fa-solid fa-file-pdf"></i>
+    </button>
+    <button class="topnav-theme-toggle" id="themeToggleBtn" aria-label="Đổi giao diện">
+      <i class="fa-solid fa-moon"></i>
+    </button>
+  </nav>
+
+  <!-- QUICK NAV BAR -->
+  <div class="quicknav">
+    <a href="#sec-1" class="quicknav-link active"><i class="fa-solid fa-biohazard"></i> 1. Dịch Tễ & Căn Nguyên</a>
+    <a href="#sec-2" class="quicknav-link"><i class="fa-solid fa-notes-medical"></i> 2. Lâm Sàng & Diễn Tiến</a>
+    <a href="#sec-3" class="quicknav-link"><i class="fa-solid fa-vial-virus"></i> 3. Cận Lâm Sàng & Chẩn Đoán</a>
+    <a href="#sec-4" class="quicknav-link"><i class="fa-solid fa-kit-medical"></i> 4. Điều Trị Hỗ Trợ</a>
+    <a href="#sec-5" class="quicknav-link"><i class="fa-solid fa-capsules"></i> 5. Liệu Pháp Kháng Thể Đơn Dòng</a>
+    <a href="#sec-6" class="quicknav-link"><i class="fa-solid fa-user-shield"></i> 6. KCNK, Giám Sát & Hỏa Táng</a>
+    <a href="#sec-7" class="quicknav-link"><i class="fa-solid fa-bookmark"></i> 7. Tham Khảo AMA</a>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge"><i class="fa-solid fa-file-medical"></i> Quyết định 1505/QĐ-BYT · Bộ Y Tế Việt Nam (25/05/2026)</div>
+      <h1 class="hero-title">
+        <span>Vietnam MOH Guidelines on Diagnosis, Treatment & Infection Control of Ebola Virus Disease (2026)</span>
+        Hướng Dẫn Chẩn Đoán, Điều Trị & Phòng Lây Nhiễm Bệnh Do Vi Rút Ebola
+      </h1>
+      <p class="hero-subtitle">
+        Tài liệu chuyên môn quốc gia áp dụng thống nhất tại tất cả các cơ sở khám chữa bệnh trên toàn quốc theo Quyết định 1505/QĐ-BYT (chính thức thay thế QĐ 2968/QĐ-BYT năm 2014). Phân loại 6 loài Filovirus, tỷ lệ tử vong 25%–90%, tiêu chuẩn RT-PCR, phác đồ điều trị hỗ trợ, liệu pháp kháng thể đơn dòng (Inmazeb, Ebanga), chống chỉ định NSAID, vắc-xin Ervebo và quy định cách ly/hỏa táng.
+      </p>
+      <div class="hero-meta">
+        <div class="hero-meta-item"><i class="fa-solid fa-calendar-check"></i> Ban hành: 25/05/2026 (Thứ trưởng Trần Văn Thuấn ký)</div>
+        <div class="hero-meta-item"><i class="fa-solid fa-hospital"></i> Áp dụng: Tất cả cơ sở khám chữa bệnh toàn quốc</div>
+        <div class="hero-meta-item"><i class="fa-solid fa-biohazard"></i> Phân loại: Bệnh truyền nhiễm Nhóm A (Luật Phòng Bệnh 01/07/2026)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PILLARS STRIP -->
+  <div class="pillars">
+    <div class="pillars-inner">
+      <div class="pillar p1">
+        <div class="pillar-icon">⚠️</div>
+        <div>
+          <div class="pillar-title">Tử Vong 25% – 90%</div>
+          <div class="pillar-desc">Vi rút RNA họ Filoviridae, xuất huyết dữ dội kèm sốc và suy đa tạng rầm rộ.</div>
+        </div>
+      </div>
+      <div class="pillar p2">
+        <div class="pillar-icon">🦠</div>
+        <div>
+          <div class="pillar-title">Zaire Ebolavirus (EBOV)</div>
+          <div class="pillar-desc">Loài nguy hiểm nhất, đã có vắc-xin Ervebo & Kháng thể đơn dòng (Inmazeb, Ebanga).</div>
+        </div>
+      </div>
+      <div class="pillar p3">
+        <div class="pillar-icon">🧪</div>
+        <div>
+          <div class="pillar-title">RT-PCR & Lab BSL-3/4</div>
+          <div class="pillar-desc">Tiêu chuẩn vàng PCR; test nhanh sàng lọc; nuôi cấy phân lập vi rút chỉ làm tại lab BSL-3 & BSL-4.</div>
+        </div>
+      </div>
+      <div class="pillar p4">
+        <div class="pillar-icon">🔥</div>
+        <div>
+          <div class="pillar-title">Cách Ly Hoàn Toàn & Hỏa Táng</div>
+          <div class="pillar-desc">CẤM cách ly tại nhà; CẤM NSAID; giám sát tiếp xúc 21 ngày; hỏa táng thi thể bắt buộc.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="page-content">
+
+    <!-- SECTION 1: DỊCH TỄ HỌC & CĂN NGUYÊN SINH HỌC -->
+    <div class="sec-card" id="sec-1">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-biohazard"></i></div>
+        <h2 class="sec-title">1. Dịch Tễ Học, Phân Loại Vi Học & Cơ Sở Pháp Lý</h2>
+      </div>
+      <div class="sec-body">
+        
+        <div class="infobox success">
+          <div class="infobox-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+          <div>
+            <strong>Cơ Sở Pháp Lý Chuyên Môn Ban Hành:</strong>
+            Quyết định số 1505/QĐ-BYT ban hành ngày 25 tháng 05 năm 2026 do Thứ trưởng Bộ Y tế Trần Văn Thuấn ký thay Bộ trưởng, ban hành "Hướng dẫn Chẩn đoán và điều trị bệnh do vi rút Ebola", chính thức <strong>thay thế Quyết định số 2968/QĐ-BYT ngày 08/08/2014</strong>. Hướng dẫn áp dụng thống nhất tại tất cả các cơ sở khám chữa bệnh trong phạm vi cả nước, căn cứ trên Luật Khám bệnh, chữa bệnh 2023, Nghị định 42/2025/NĐ-CP và Luật Phòng bệnh (có hiệu lực chính thức từ ngày 01/07/2026).
+          </div>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-virus"></i> Phân Loại Vi Học Chi Ebolavirus (Họ Filoviridae)</div>
+
+        <div class="matrix-grid">
+          <div class="matrix-card card-purple">
+            <div class="matrix-card-hdr">
+              <span class="matrix-card-title"><i class="fa-solid fa-dna"></i> Đặc Điểm Tác Nhân</span>
+              <span class="rx-tag highlight">Filoviridae</span>
+            </div>
+            <div class="matrix-card-desc">
+              Vi rút Ebola được phát hiện lần đầu tiên năm 1976 tại CHDC Công-gô, gần sông Ebola. Thuộc họ <em>Filoviridae</em> (bên cạnh chi <em>Marburgvirus</em> và <em>Cuevavirus</em>). Chi <em>Ebolavirus</em> gồm 6 loài với độc lực sinh học nguy hiểm gây hội chứng sốt xuất huyết rầm rộ.
+            </div>
+          </div>
+
+          <div class="matrix-card card-red">
+            <div class="matrix-card-hdr">
+              <span class="matrix-card-title"><i class="fa-solid fa-skull"></i> Zaire ebolavirus (EBOV)</span>
+              <span class="rx-tag alert">Đã Có Vắc-xin & mAb</span>
+            </div>
+            <div class="matrix-card-desc">
+              Loài gây các đợt dịch thảm khốc nhất. Đây là <strong>loài duy nhất đã có vắc-xin phòng ngừa (Ervebo) và liệu pháp kháng thể đơn dòng đặc hiệu (Inmazeb, Ebanga)</strong> được phê duyệt.
+            </div>
+          </div>
+
+          <div class="matrix-card card-orange">
+            <div class="matrix-card-hdr">
+              <span class="matrix-card-title"><i class="fa-solid fa-earth-africa"></i> Các Loài Gây Dịch Khác</span>
+              <span class="rx-tag warn">SUDV · BDBV · TAFV</span>
+            </div>
+            <div class="matrix-card-desc">
+              - <em>Sudan ebolavirus (SUDV)</em> & <em>Bundibugyo ebolavirus (BDBV)</em>: Đã gây các đợt dịch lớn tại Châu Phi.<br>
+              - <em>Taï Forest ebolavirus (TAFV)</em>: Gây bệnh ở người.<br>
+              - <em>Reston (RESTV)</em> & <em>Bombali (BOMV)</em>: Chưa thấy gây bệnh ở người.
+            </div>
+          </div>
+
+          <div class="matrix-card card-teal">
+            <div class="matrix-card-hdr">
+              <span class="matrix-card-title"><i class="fa-solid fa-people-arrows"></i> Con Đường Lây Truyền</span>
+              <span class="rx-tag highlight">Trực Tiếp & Gián Tiếp</span>
+            </div>
+            <div class="matrix-card-desc">
+              - <strong>Trực tiếp:</strong> Máu, mô và dịch cơ thể (phân, nước tiểu, nước bọt, tinh dịch) của động vật / người bị bệnh.<br>
+              - <strong>Gián tiếp:</strong> Đồ dùng ô nhiễm (quần áo, chăn màn, kim tiêm đã qua sử dụng).<br>
+              - <strong>Tỷ lệ tử vong:</strong> Trung bình <strong>50%</strong> (dao động từ <strong>25% đến 90%</strong>).
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SECTION 2: LÂM SÀNG & DIỄN TIẾN -->
+    <div class="sec-card" id="sec-2">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-notes-medical"></i></div>
+        <h2 class="sec-title">2. Triệu Chứng Lâm Sàng & Diễn Tiến Xuất Huyết Suy Đa Tạng</h2>
+      </div>
+      <div class="sec-body">
+        
+        <div class="infobox warning">
+          <div class="infobox-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+          <div>
+            <strong>Triệu Chứng Xuất Huyết Dữ Dội:</strong> Diễn tiến lâm sàng tiến triển cực kỳ rầm rộ từ sốt rầm rộ sang xuất huyết đa cơ quan, sốc giảm thể tích và suy đa tạng (suy gan, suy thận cấp).
+          </div>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-clock-rotate-left"></i> Các Giai Đoạn Diễn Tiến Lâm Sàng Chi Tiết</div>
+
+        <div class="timeline-container">
+          <div class="timeline-step-card">
+            <div class="timeline-badge step-1">1</div>
+            <div class="timeline-content">
+              <h4>Giai Đoạn Ủ Bệnh <span class="rx-tag highlight">2 – 21 ngày</span></h4>
+              <p>Thời gian ủ bệnh dao động trung bình từ 2 đến 21 ngày. Trong thời gian này, người nhiễm chưa biểu hiện triệu chứng rõ ràng và chưa lây truyền vi rút.</p>
+            </div>
+          </div>
+
+          <div class="timeline-step-card">
+            <div class="timeline-badge step-2">2</div>
+            <div class="timeline-content">
+              <h4>Giai Đoạn Khởi Phát <span class="rx-tag warn">Sốt & Triệu Chứng Cấp</span></h4>
+              <p>Khởi phát đột ngột với mệt mỏi rã rời, đau đầu dữ dội, đau mỏi cơ khớp toàn thân, đau họng, nôn/buồn nôn, tiêu chảy cấp, đau bụng quặn thắt và viêm kết mạc mắt.</p>
+            </div>
+          </div>
+
+          <div class="timeline-step-card">
+            <div class="timeline-badge step-3">3</div>
+            <div class="timeline-content">
+              <h4>Phát Ban & Xuất Huyết Rầm Rộ <span class="rx-tag alert">Tuần Đầu Tiên</span></h4>
+              <p>
+                - <strong>Phát ban:</strong> Ban đầu ban nhú đỏ sẫm như đinh ghim tại nang lông; tiến triển thành ban dát sẩn ranh giới rõ; hợp thành mảng ban lan tỏa toàn thân.<br>
+                - <strong>Xuất huyết:</strong> Xuất huyết tiêu hóa (đi ngoài phân đen), chảy máu liên tục vị trí tiêm truyền, ho ra máu, chảy máu chân răng, đái ra máu, chảy máu âm đạo bất thường ở phụ nữ.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-step-card">
+            <div class="timeline-badge step-4">4</div>
+            <div class="timeline-content">
+              <h4>Giai Đoạn Nguy Kịch <span class="rx-tag alert">Sốc & Suy Đa Tạng · Tử Vong ~50%</span></h4>
+              <p>Bệnh nhân tiến triển nhanh chóng sang sốc giảm thể tích, rối loạn đông máu nội mạch rải rác (DIC) và suy đa tạng (suy gan, suy thận cấp). Tỷ lệ tử vong dao động từ 25% đến 90%.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SECTION 3: CẬN LÂM SÀNG & TIÊU CHUẨN CHẨN ĐOÁN -->
+    <div class="sec-card" id="sec-3">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-vial-virus"></i></div>
+        <h2 class="sec-title">3. Xét Nghiệm Cận Lâm Sàng & Tiêu Chuẩn Chẩn Đoán</h2>
+      </div>
+      <div class="sec-body">
+        
+        <div class="sec-subtitle"><i class="fa-solid fa-vials"></i> Phương Pháp Xét Nghiệm Chẩn Đoán & Hỗ Trợ</div>
+
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width: 28%;">Hạng Mục Xét Nghiệm</th>
+                <th style="width: 32%;">Bệnh Phẩm / Phương Pháp</th>
+                <th>Giá Trị Chẩn Đoán & Đặc Điểm Kết Quả</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Real-time RT-PCR</strong></td>
+                <td>Máu toàn phần / Dịch cơ thể</td>
+                <td><span class="rx-tag highlight">Tiêu Chuẩn Vàng</span> Khẳng định chắc chắn ca bệnh do vi rút Ebola. Lấy mẫu tuân thủ quy trình an toàn sinh học Bộ Y tế.</td>
+              </tr>
+              <tr>
+                <td><strong>Test Nhanh Kháng Nguyên / Kháng Thể</strong></td>
+                <td>Máu ngoại vi / Huyết thanh</td>
+                <td>Sử dụng sàng lọc ca bệnh ban đầu khi được phép lưu hành tại Việt Nam.</td>
+              </tr>
+              <tr>
+                <td><strong>Giải Trình Tự Gen & Nuôi Cấy</strong></td>
+                <td>Máu toàn phần / Bệnh phẩm đặc biệt</td>
+                <td><span class="rx-tag alert">Lab BSL-3 & BSL-4</span> Chỉ thực hiện tại các phòng xét nghiệm đạt an toàn sinh học Cấp 3 và Cấp 4.</td>
+              </tr>
+              <tr>
+                <td><strong>Công Thức Máu & Hóa Sinh</strong></td>
+                <td>Máu toàn phần & Huyết thanh</td>
+                <td>- <strong>CTM:</strong> Giảm bạch cầu và giảm tiểu cầu nghiêm trọng.<br>- <strong>Hóa sinh:</strong> Tăng men gan AST/ALT rõ rệt; Ure/Creatinin tăng dần (suy thận cấp); Protein niệu; Rối loạn đông máu (DIC).</td>
+              </tr>
+              <tr>
+                <td><strong>Chẩn Đoán Phân Biệt</strong></td>
+                <td>Cấy máu, CRP, Procalcitonin, Ký sinh trùng</td>
+                <td>Loại trừ Sốt rét, Sốt xuất huyết Dengue, <em>Streptococcus suis</em>, Nhiễm trùng huyết do não mô cầu, Leptospirosis.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-list-check"></i> Tiêu Chuẩn Phân Loại Ca Bệnh</div>
+
+        <div class="matrix-grid">
+          <div class="matrix-card card-orange">
+            <div class="matrix-card-hdr">
+              <span class="matrix-card-title"><i class="fa-solid fa-user-clock"></i> Ca Bệnh Nghi Ngờ</span>
+              <span class="rx-tag warn">Sốt ≥ 38°C + Yếu Tố Dịch Tễ</span>
+            </div>
+            <div class="matrix-card-desc">
+              Sốt cấp tính $\ge 38^\circ\text{C}$ kèm $\ge 1$ triệu chứng (đau đầu, nôn/tiêu chảy, đau bụng, xuất huyết) <strong>VÀ</strong> trong 21 ngày qua có tiếp xúc ca bệnh/nghi ngờ, về từ vùng dịch, hoặc xử lý ĐV ốm/chết do Ebola.
+            </div>
+          </div>
+
+          <div class="matrix-card card-red">
+            <div class="matrix-card-hdr">
+              <span class="matrix-card-title"><i class="fa-solid fa-circle-check"></i> Ca Bệnh Xác Định</span>
+              <span class="rx-tag alert">RT-PCR Dương Tính</span>
+            </div>
+            <div class="matrix-card-desc">
+              Là ca bệnh nghi ngờ đã được khẳng định bằng kết quả xét nghiệm <strong>Real-time RT-PCR dương tính</strong> với vi rút Ebola.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SECTION 4: PHÁC ĐỒ ĐIỀU TRỊ HỖ TRỢ -->
+    <div class="sec-card" id="sec-4">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-kit-medical"></i></div>
+        <h2 class="sec-title">4. Phác Đồ Điều Trị Hỗ Trợ Triệu Chứng & Biến Chứng (Bảng 1 QĐ 1505)</h2>
+      </div>
+      <div class="sec-body">
+        
+        <div class="infobox danger">
+          <div class="infobox-icon"><i class="fa-solid fa-ban"></i></div>
+          <div>
+            <strong>CHỐNG CHỈ ĐỊNH TUYỆT ĐỐI THUỐC NHÓM NSAIDs & SALICYLATE:</strong>
+            Chỉ được sử dụng <span class="rx-tag highlight">Paracetamol</span> để hạ sốt/giảm đau nhẹ hoặc <span class="rx-tag highlight">Morphin</span> cho đau trung bình–nặng. Tuyệt đối <strong>CẤM dùng NSAIDs (Diclofenac, Ibuprofen...) hoặc Salicylate (Aspirin)</strong> vì làm trầm trọng thêm tình trạng xuất huyết và rối loạn đông máu.
+          </div>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-table-list"></i> Bảng Phác Đồ Xử Trí Lâm Sàng Theo Quyết Đinh 1505/QĐ-BYT</div>
+
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width: 25%;">Triệu Chứng / Biến Chứng</th>
+                <th style="width: 40%;">Phương Pháp Xử Trí Cụ Thể</th>
+                <th>Thuốc / Can Thiệp Chỉ Định</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Sốt, Đau</strong></td>
+                <td>Hạ sốt & giảm đau an toàn. <span class="rx-tag alert">CHỐNG CHỈ ĐỊNH NSAIDs & Aspirin</span></td>
+                <td>
+                  <span class="rx-tag highlight">Paracetamol</span> 10–15 mg/kg mỗi 4–6h (max 60 mg/kg/ngày).<br>
+                  <span class="rx-tag highlight">Morphin</span> nếu đau trung bình đến nặng.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Nôn, Tiêu Chảy, Mất Nước</strong></td>
+                <td>Cho uống Oresol sớm. Dùng thuốc chống nôn giúp người bệnh uống được Oresol.</td>
+                <td>
+                  <span class="rx-tag highlight">Oresol</span> uống sớm.<br>
+                  Người lớn: <span class="rx-tag highlight">Chlorpromazine</span> 25-50mg IM 4 lần/ngày hoặc <span class="rx-tag highlight">Metoclopramide</span> 10mg IV/uống 3 lần/ngày.<br>
+                  Trẻ >2 tuổi: <span class="rx-tag highlight">Promethazine</span> (theo dõi ngoại tháp).
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Co Giật</strong></td>
+                <td>Cắt cơn giật cấp tính và khống chế dự phòng tái phát.</td>
+                <td>
+                  - Cắt cơn: <span class="rx-tag highlight">Diazepam</span> (NL: 20mg IV chậm; Trẻ: 0,1–0,3 mg/kg).<br>
+                  - Khống chế: <span class="rx-tag highlight">Phenobarbital</span> (NL: 10 mg/kg; Trẻ: 10–15 mg/kg IV chậm 15 phút).
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Mất Máu Cấp / Sốc Giảm Thể Tích</strong></td>
+                <td>Bù thể tích tuần hoàn rầm rộ và cầm máu.</td>
+                <td>Truyền máu toàn phần và các chế phẩm máu phù hợp.</td>
+              </tr>
+              <tr>
+                <td><strong>Sốc, Suy Đa Tạng</strong></td>
+                <td>Hồi sức tích cực tại khoa ICU chuyên sâu.</td>
+                <td>Duy trì HA, thuốc lợi tiểu, thở máy oxy, lọc máu liên tục (CRRT), thực hiện ECMO khi có chỉ định.</td>
+              </tr>
+              <tr>
+                <td><strong>Nhiễm Trùng Thứ Phát & Đồng Nhiễm</strong></td>
+                <td>Điều trị bội nhiễm vi khuẩn và sốt rét nếu có bằng chứng.</td>
+                <td>Kháng sinh phổ rộng khi nghi ngờ bội nhiễm; Thuốc điều trị đặc hiệu Sốt rét.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-person-breastfeeding"></i> Lưu Ý Trên Các Nhóm Đối Tượng Đặc Biệt</div>
+
+        <div class="matrix-grid">
+          <div class="matrix-card card-red">
+            <div class="matrix-card-hdr">
+              <span class="matrix-card-title"><i class="fa-solid fa-baby-carriage"></i> Phụ Nữ Cho Con Bú</span>
+              <span class="rx-tag alert">CẤM Cho Bú Mẹ</span>
+            </div>
+            <div class="matrix-card-desc">
+              Vi rút Ebola bài tiết qua sữa mẹ và lây truyền cho trẻ. <strong>BẮT BUỘC NGỪNG CHO CON BÚ NGAY LẬP TỨC</strong>. Cả mẹ và trẻ phải cách ly nghiêm ngặt cho đến khi có xét nghiệm loại trừ hoàn toàn.
+            </div>
+          </div>
+
+          <div class="matrix-card card-orange">
+            <div class="matrix-card-hdr">
+              <span class="matrix-card-title"><i class="fa-solid fa-person-pregnant"></i> Phụ Nữ Mang Thai</span>
+              <span class="rx-tag warn">Xuất Huyết Sau Sinh</span>
+            </div>
+            <div class="matrix-card-desc">
+              Nguy cơ cao sảy thai, đẻ non, chảy máu sau sinh dữ dội. Chỉ định thuốc co hồi tử cung (Oxytocin) và can thiệp cầm máu chuyên khoa khẩn cấp.
+            </div>
+          </div>
+
+          <div class="matrix-card card-teal">
+            <div class="matrix-card-hdr">
+              <span class="matrix-card-title"><i class="fa-solid fa-child"></i> Trẻ Em & Người Cao Tuổi</span>
+              <span class="rx-tag highlight">Hạ Đường Huyết / Hạ Thân Nhiệt</span>
+            </div>
+            <div class="matrix-card-desc">
+              Ưu tiên bù dịch đường uống; tính liều chặt chẽ theo cân nặng; phòng và phát hiện sớm hạ đường huyết và hạ thân nhiệt ở trẻ em.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SECTION 5: LIỆU PHÁP KHÁNG THỂ ĐƠN DÒNG -->
+    <div class="sec-card" id="sec-5">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-capsules"></i></div>
+        <h2 class="sec-title">5. Liệu Pháp Kháng Thể Đơn Dòng Điều Trị Đặc Hiệu (Bảng 2 QĐ 1505)</h2>
+      </div>
+      <div class="sec-body">
+        
+        <div class="infobox success">
+          <div class="infobox-icon"><i class="fa-solid fa-vial-circle-check"></i></div>
+          <div>
+            <strong>Đặc Hiệu Cho Loài Zaire ebolavirus (EBOV):</strong>
+            Kháng thể đơn dòng điều trị đặc hiệu chỉ có tác dụng đối với loài <em>Zaire ebolavirus</em>. Sử dụng khi đã được cấp phép lưu hành chính thức tại Việt Nam. Không có chống chỉ định do lợi ích cứu sống vượt trội.
+          </div>
+        </div>
+
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width: 25%;">Tiêu Chí So Sánh</th>
+                <th style="width: 38%;">INMAZEB (Hỗn Hợp 3 Kháng Thể)</th>
+                <th>EBANGA (1 Kháng Thể Đơn Lẻ)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Thành Phần Hoạt Chất</strong></td>
+                <td><span class="rx-tag highlight">Atoltivimab</span> + <span class="rx-tag highlight">Maftivimab</span> + <span class="rx-tag highlight">Odesivimab-ebgn</span></td>
+                <td><span class="rx-tag highlight">Ansuvimab-zykl</span></td>
+              </tr>
+              <tr>
+                <td><strong>Chỉ Định</strong></td>
+                <td>Nhiễm loài <em>Zaire ebolavirus</em> ở người lớn & trẻ em (kể cả trẻ sơ sinh sinh ra từ mẹ RT-PCR dương tính).</td>
+                <td>Nhiễm loài <em>Zaire ebolavirus</em> ở người lớn & trẻ em (kể cả trẻ sơ sinh sinh ra từ mẹ RT-PCR dương tính).</td>
+              </tr>
+              <tr>
+                <td><strong>Liều Dùng & Đường Dùng</strong></td>
+                <td>Liều <strong>50 mg/kg</strong> cho mỗi loại kháng thể trong hỗn hợp. <strong>Truyền tĩnh mạch liều duy nhất.</strong></td>
+                <td>Liều <strong>50 mg/kg</strong> hoạt chất. <strong>Truyền tĩnh mạch liều duy nhất.</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Tác Dụng Phụ (ADRs)</strong></td>
+                <td>Sốt, ớn lạnh, nhịp tim nhanh, nhịp thở nhanh, nôn mửa.</td>
+                <td>Sốt, nhịp tim nhanh, tiêu chảy, nôn mửa, hạ huyết áp, thở nhanh, ớn lạnh.</td>
+              </tr>
+              <tr>
+                <td><strong>Chống Chỉ Định & Lưu Ý</strong></td>
+                <td><span class="rx-tag success">Không Chống Chỉ Định</span><br><span class="rx-tag alert">CẤM Dùng Cùng Vắc-xin Ervebo</span> Không dùng đồng thời với vắc-xin sống giảm độc lực phòng Ebola.</td>
+                <td><span class="rx-tag success">Không Chống Chỉ Định</span><br><span class="rx-tag alert">CẤM Dùng Cùng Vắc-xin Ervebo</span> Không dùng đồng thời với vắc-xin sống giảm độc lực phòng Ebola.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SECTION 6: KCNK, GIÁM SÁT & HỎA TÁNG -->
+    <div class="sec-card" id="sec-6">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-user-shield"></i></div>
+        <h2 class="sec-title">6. Kiểm Soát Nhiễm Khuẩn, Giám Sát Người Tiếp Xúc & Hỏa Táng</h2>
+      </div>
+      <div class="sec-body">
+        
+        <div class="infobox danger">
+          <div class="infobox-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+          <div>
+            <strong>Đào Thải Vi Rút Qua Tinh Dịch Lên Tới 12 Tháng:</strong>
+            Vi rút Ebola bài tiết qua tinh dịch kéo dài lên tới <strong>12 tháng</strong> sau khi xuất viện. Bắt buộc tư vấn kỹ cho người bệnh về các biện pháp quan hệ tình dục an toàn sau xuất viện.
+          </div>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-users-slash"></i> Giám Sát Người Tiếp Xúc Gần & Chống Chỉ Định Trong 21 Ngày</div>
+
+        <div class="matrix-grid">
+          <div class="matrix-card card-orange">
+            <div class="matrix-card-hdr">
+              <span class="matrix-card-title"><i class="fa-solid fa-user-check"></i> Giám Sát Dịch Tễ 21 Ngày</span>
+              <span class="rx-tag warn">Theo Dõi Sức Khỏe</span>
+            </div>
+            <div class="matrix-card-desc">
+              Lập danh sách người tiếp xúc gần (sống cùng nhà, tiếp xúc dịch/thi thể/đồ ô nhiễm, NVYT phơi nhiễm) và theo dõi tình trạng sức khỏe liên tục trong vòng <strong>21 ngày</strong> kể từ ngày tiếp xúc cuối cùng. Trang bị PPE chuyên dụng (khẩu trang N95, kính bảo hộ, bộ đồ chống dịch).
+            </div>
+          </div>
+
+          <div class="matrix-card card-red">
+            <div class="matrix-card-hdr">
+              <span class="matrix-card-title"><i class="fa-solid fa-ban"></i> Chống Chỉ Định Trong 21 Ngày</span>
+              <span class="rx-tag alert">Tuyệt Đối Cấm</span>
+            </div>
+            <div class="matrix-card-desc">
+              Trong 21 ngày kể từ lần tiếp xúc cuối cùng, người tiếp xúc gần <strong>TUYỆT ĐỐI KHÔNG DÙNG</strong> các hoạt động:<br>
+              1. Cho con bú sữa mẹ.<br>
+              2. Hiến máu.<br>
+              3. Hiến mô hoặc tạng.<br>
+              4. Hiến tinh dịch.
+            </div>
+          </div>
+
+          <div class="matrix-card card-purple">
+            <div class="matrix-card-hdr">
+              <span class="matrix-card-title"><i class="fa-solid fa-fire"></i> Xử Lý Tử Thi (Hỏa Táng)</span>
+              <span class="rx-tag highlight">Thông Tư 21/2021/TT-BYT</span>
+            </div>
+            <div class="matrix-card-desc">
+              Thi thể người tử vong do Ebola chứa tải lượng vi rút cực lớn và nguy cơ lây nhiễm rất cao. Bắt buộc phải xử lý bằng phương pháp <strong>HỎA TÁNG</strong> tuân thủ nghiêm ngặt Thông tư số 21/2021/TT-BYT.
+            </div>
+          </div>
+
+          <div class="matrix-card card-green">
+            <div class="matrix-card-hdr">
+              <span class="matrix-card-title"><i class="fa-solid fa-shield-halved"></i> Vắc-Xin Phòng Bệnh Ervebo</span>
+              <span class="rx-tag success">rVSV-ZEBOV</span>
+            </div>
+            <div class="matrix-card-desc">
+              Vắc-xin <strong>Ervebo (rVSV-ZEBOV)</strong> đã được FDA và WHO phê duyệt năm 2019 trong phòng ngừa loài <em>Zaire ebolavirus</em>. Các loài vi rút Ebola khác chưa có vắc-xin phê duyệt.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SECTION 7: TÀI LIỆU THAM KHẢO AMA -->
+    <div class="sec-card" id="sec-7">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-bookmark"></i></div>
+        <h2 class="sec-title">7. Danh Mục Tài Liệu Tham Khảo Chuẩn AMA</h2>
+      </div>
+      <div class="sec-body">
+        <div class="citation-box">
+          <ol>
+            <li>Bộ Y tế Việt Nam. <em>Hướng dẫn Chẩn đoán và điều trị bệnh do vi rút Ebola</em> (Ban hành kèm theo Quyết định số 1505/QĐ-BYT ngày 25 tháng 05 năm 2026 của Bộ trưởng Bộ Y tế). Hà Nội: Bộ Y tế; 2026.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PAGE FOOTER -->
+  <footer class="page-footer">
+    <p>© 2026 CliniPortal — Phân hệ Y học Chứng cứ (EBM). Bản quyền tóm tắt hướng dẫn y khoa chuẩn hóa.</p>
+  </footer>
+
+  <script>
+    // Theme Toggle with LocalStorage
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const htmlEl = document.documentElement;
+
+    const savedTheme = localStorage.getItem('cliniportal_ebm_theme');
+    if (savedTheme === 'dark' || savedTheme === 'light') {
+      htmlEl.setAttribute('data-theme', savedTheme);
+      if (themeToggleBtn) {
+        themeToggleBtn.innerHTML = savedTheme === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+      }
+    }
+
+    if (themeToggleBtn) {
+      themeToggleBtn.addEventListener('click', () => {
+        const currentTheme = htmlEl.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        htmlEl.setAttribute('data-theme', newTheme);
+        themeToggleBtn.innerHTML = newTheme === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+        localStorage.setItem('cliniportal_ebm_theme', newTheme);
+      });
+    }
+
+    // Quicknav Active Highlight with IntersectionObserver
+    const sections = document.querySelectorAll('.sec-card[id]');
+    const navLinks = document.querySelectorAll('.quicknav-link');
+
+    const navObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const currentId = entry.target.getAttribute('id');
+          navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + currentId) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    }, { rootMargin: '-10% 0px -70% 0px' });
+
+    sections.forEach(section => navObserver.observe(section));
+  </script>
+  <script type="module" src="../guideline-controller.ts"></script>
+</body>
+</html>

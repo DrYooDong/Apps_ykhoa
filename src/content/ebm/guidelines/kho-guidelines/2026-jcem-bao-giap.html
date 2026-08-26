@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tóm tắt Hướng dẫn Chẩn đoán và Điều trị Cơn Bão Giáp 2026 (JCEM / Endocrine Society) – Sinh lý bệnh, thang điểm BWPS & JTA, phác đồ điều trị đa mô thức, liều dùng thuốc kháng giáp, chẹn beta, liệu pháp iod và xử trí ICU.">
+  <title>Hướng Dẫn Chẩn Đoán & Điều Trị Cơn Bão Giáp JCEM 2026 – CliniPortal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #059669; --green-bg: #f0fdf4; --green-light: #a7f3d0;
+      --orange: #d97706; --orange-bg: #fffbeb; --orange-light: #fde68a;
+      --red: #dc2626; --red-bg: #fef2f2; --red-light: #fca5a5;
+      --blue: #2563eb; --blue-bg: #eff6ff; --blue-light: #bfdbfe;
+      --teal: #0d9488; --teal-bg: #f0fdfa; --teal-light: #99f6e4;
+      --purple: #7c3aed; --purple-bg: #faf5ff; --purple-light: #ddd6fe;
+      --accent: #0f6fb4;
+      --bg: #f0f4f8; --surface: #ffffff; --surface-2: #f8fafc;
+      --border: #cbd5e1; --border-light: #e2e8f0;
+      --text: #0f172a; --text-muted: #475569; --text-faint: #94a3b8;
+      --radius: 16px; --tr: 220ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [data-theme="dark"] {
+      --green: #10b981; --green-bg: #064e3b; --green-light: #047857;
+      --orange: #f59e0b; --orange-bg: #78350f; --orange-light: #b45309;
+      --red: #ef4444; --red-bg: #7f1d1d; --red-light: #b91c1c;
+      --blue: #3b82f6; --blue-bg: #1e3a8a; --blue-light: #1d4ed8;
+      --teal: #14b8a6; --teal-bg: #115e59; --teal-light: #0f766e;
+      --purple: #8b5cf6; --purple-bg: #4c1d95; --purple-light: #6d28d9;
+      --accent: #38bdf8;
+      --bg: #0f172a; --surface: #1e293b; --surface-2: #0f172a;
+      --border: #334155; --border-light: #1e293b;
+      --text: #f8fafc; --text-muted: #cbd5e1; --text-faint: #64748b;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; font-size: 15px; background: var(--bg); color: var(--text); line-height: 1.65; min-height: 100vh; transition: background var(--tr), color var(--tr); }
+
+    /* TOP NAV */
+    .topnav { position: sticky; top: 0; z-index: 200; background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 1rem; padding: 0 1.5rem; height: 56px; transition: background var(--tr), border-color var(--tr); }
+    [data-theme="dark"] .topnav { background: rgba(30, 41, 59, 0.9); }
+    .topnav-back { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--accent); text-decoration: none; font-size: 0.82rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 8px; transition: background var(--tr); white-space: nowrap; }
+    .topnav-back:hover { background: var(--blue-bg); }
+    .topnav-divider { width: 1px; height: 18px; background: var(--border-light); flex-shrink: 0; }
+    .topnav-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .topnav-theme-toggle { margin-left: auto; background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 1.1rem; padding: 0.5rem; border-radius: 50%; transition: background var(--tr); display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; }
+    .topnav-theme-toggle:hover { background: var(--surface-2); color: var(--accent); }
+
+    /* QUICK NAV BAR */
+    .quicknav { position: sticky; top: 56px; z-index: 190; background: var(--surface); border-bottom: 1px solid var(--border-light); display: flex; gap: 0.5rem; padding: 0.6rem 1.5rem; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .quicknav::-webkit-scrollbar { height: 3px; }
+    .quicknav::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    .quicknav-link { display: inline-flex; align-items: center; white-space: nowrap; font-size: 0.78rem; font-weight: 600; color: var(--text-muted); text-decoration: none; padding: 0.35rem 0.85rem; border-radius: 20px; background: var(--surface-2); border: 1px solid var(--border-light); transition: all var(--tr); }
+    .quicknav-link:hover, .quicknav-link.active { background: var(--blue-bg); color: var(--accent); border-color: var(--blue-light); }
+
+    /* HERO */
+    .hero { background: linear-gradient(135deg, #0c4a6e 0%, #0f6fb4 45%, #b91c1c 100%); color: #fff; padding: 3.5rem 1.5rem 4.5rem; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 50%, rgba(56, 189, 248, 0.25) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(239, 68, 68, 0.2) 0%, transparent 55%); }
+    .hero-inner { max-width: 1000px; margin: 0 auto; position: relative; z-index: 1; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255, 255, 255, 0.14); border: 1px solid rgba(255, 255, 255, 0.24); border-radius: 20px; padding: 0.3rem 0.9rem; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1rem; color: #7dd3fc; }
+    .hero-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 0.85rem; }
+    .hero-title span { display: block; background: linear-gradient(90deg, #7dd3fc, #fca5a5); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 0.65em; font-weight: 600; letter-spacing: 0; margin-bottom: 0.2rem; }
+    .hero-subtitle { font-size: 0.95rem; opacity: 0.88; max-width: 780px; margin-bottom: 2rem; line-height: 1.65; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 0.75rem 2rem; font-size: 0.8rem; opacity: 0.8; }
+    .hero-meta-item { display: flex; align-items: center; gap: 6px; }
+
+    /* PILLARS STRIP */
+    .pillars { background: var(--surface); border-bottom: 1px solid var(--border-light); padding: 1.75rem 1.5rem; }
+    .pillars-inner { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+    .pillar { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.1rem 1.2rem; display: flex; align-items: flex-start; gap: 0.85rem; position: relative; overflow: hidden; transition: box-shadow var(--tr); }
+    .pillar::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; border-radius: 4px 0 0 4px; }
+    .pillar.p1::before { background: var(--blue); }
+    .pillar.p2::before { background: var(--orange); }
+    .pillar.p3::before { background: var(--red); }
+    .pillar.p4::before { background: var(--teal); }
+    .pillar:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+    .pillar-icon { font-size: 1.6rem; flex-shrink: 0; line-height: 1; }
+    .pillar-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text); margin-bottom: 0.25rem; }
+    .pillar-desc { font-size: 0.76rem; color: var(--text-muted); line-height: 1.45; }
+
+    /* PAGE CONTENT */
+    .page-content { max-width: 1000px; margin: 0 auto; padding: 2.25rem 1.5rem; display: flex; flex-direction: column; gap: 2rem; }
+
+    /* SECTION CARDS */
+    .sec-card { background: var(--surface); border: 1px solid var(--border-light); border-radius: var(--radius); overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.03); scroll-margin-top: 110px; }
+    .sec-hdr { padding: 1.1rem 1.5rem; border-bottom: 1px solid var(--border-light); background: var(--surface-2); display: flex; align-items: center; gap: 0.75rem; }
+    .sec-hdr-icon { font-size: 1.2rem; color: var(--accent); }
+    .sec-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.05rem; font-weight: 800; color: var(--text); }
+    .sec-body { padding: 1.5rem; display: flex; flex-direction: column; gap: 1.25rem; }
+    .sec-subtitle { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+    .sec-subtitle::after { content: ''; flex: 1; height: 1px; background: var(--border-light); }
+
+    /* INFO BOXES */
+    .infobox { display: flex; align-items: flex-start; gap: 0.85rem; padding: 1rem 1.25rem; border-radius: 12px; font-size: 0.85rem; line-height: 1.6; }
+    .infobox-icon { font-size: 1.3rem; flex-shrink: 0; line-height: 1.3; }
+    .infobox.danger { background: var(--red-bg); border: 1px solid var(--red-light); border-left: 4px solid var(--red); color: var(--text); }
+    .infobox.success { background: var(--green-bg); border: 1px solid var(--green-light); border-left: 4px solid var(--green); color: var(--text); }
+    .infobox.warning { background: var(--orange-bg); border: 1px solid var(--orange-light); border-left: 4px solid var(--orange); color: var(--text); }
+    .infobox.info { background: var(--blue-bg); border: 1px solid var(--blue-light); border-left: 4px solid var(--blue); color: var(--text); }
+    .infobox.teal { background: var(--teal-bg); border: 1px solid var(--teal-light); border-left: 4px solid var(--teal); color: var(--text); }
+    .infobox strong { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; color: var(--text); }
+
+    /* TABLES */
+    .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 12px; border: 1px solid var(--border-light); margin-bottom: 1rem; }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 0.83rem; min-width: 650px; text-align: left; }
+    .data-table thead th { padding: 0.75rem 1rem; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; background: var(--surface-2); color: var(--text-muted); border-bottom: 1px solid var(--border-light); }
+    .data-table td { padding: 0.85rem 1rem; border-bottom: 1px solid var(--border-light); vertical-align: top; line-height: 1.55; }
+    .data-table tbody tr:last-child td { border-bottom: none; }
+
+    /* BADGES & TAGS */
+    .badge { display: inline-flex; align-items: center; gap: 4px; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.72rem; font-weight: 700; white-space: nowrap; }
+    .badge-green { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-light); }
+    .badge-orange { background: var(--orange-bg); color: var(--orange); border: 1px solid var(--orange-light); }
+    .badge-red { background: var(--red-bg); color: var(--red); border: 1px solid var(--red-light); }
+    .badge-blue { background: var(--blue-bg); color: var(--blue); border: 1px solid var(--blue-light); }
+    .badge-purple { background: var(--purple-bg); color: var(--purple); border: 1px solid var(--purple-light); }
+
+    .rx-tag { display: inline-block; background: var(--surface-2); color: var(--text-muted); font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; padding: 0.15rem 0.5rem; border-radius: 6px; border: 1px solid var(--border-light); margin: 0.15rem 0.1rem; }
+    .rx-tag.highlight { background: var(--blue-bg); color: var(--accent); border-color: var(--blue-light); font-weight: 600; }
+    .rx-tag.alert { background: var(--red-bg); color: var(--red); border-color: var(--red-light); font-weight: 600; }
+
+    /* STRUCTURED SCORE LIST FOR BWPS */
+    .score-list { display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.82rem; }
+    .score-item { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; padding: 0.35rem 0.65rem; border-radius: 8px; background: var(--surface-2); border: 1px solid var(--border-light); }
+
+    /* ALGO BOX */
+    .algo-box { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 12px; padding: 1.25rem; display: flex; flex-direction: column; gap: 0.85rem; }
+    .algo-step { display: flex; align-items: flex-start; gap: 0.85rem; }
+    .algo-num { width: 28px; height: 28px; border-radius: 50%; background: var(--accent); color: #fff; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.8rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .algo-content { flex: 1; font-size: 0.84rem; line-height: 1.6; }
+    .algo-content strong { color: var(--text); font-family: 'Plus Jakarta Sans', sans-serif; }
+
+    /* MCQ QUIZ */
+    .mcq-card { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.25rem; margin-bottom: 1rem; }
+    .mcq-card:last-child { margin-bottom: 0; }
+    .mcq-q { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.9rem; color: var(--text); margin-bottom: 0.85rem; display: flex; gap: 0.5rem; }
+    .mcq-opts { display: flex; flex-direction: column; gap: 0.5rem; }
+    .mcq-opt { padding: 0.65rem 0.9rem; border-radius: 10px; border: 1px solid var(--border); background: var(--surface); font-size: 0.83rem; cursor: pointer; transition: all var(--tr); display: flex; align-items: center; gap: 0.5rem; }
+    .mcq-opt:hover { border-color: var(--accent); background: var(--blue-bg); }
+    .mcq-opt.selected-correct { border-color: var(--green); background: var(--green-bg); color: #065f46; font-weight: 600; }
+    .mcq-opt.selected-wrong { border-color: var(--red); background: var(--red-bg); color: #991b1b; }
+    .mcq-exp { margin-top: 0.85rem; padding: 0.85rem 1rem; border-radius: 10px; background: var(--blue-bg); border-left: 4px solid var(--blue); font-size: 0.82rem; color: var(--text); display: none; line-height: 1.6; }
+    .mcq-exp.show { display: block; }
+
+    /* CITATION & FOOTER */
+    .citation-box { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 12px; padding: 1.25rem; font-size: 0.82rem; color: var(--text-muted); line-height: 1.75; font-style: italic; }
+    .page-footer { max-width: 1000px; margin: 0 auto; padding: 2rem 1.5rem 4rem; text-align: center; font-size: 0.8rem; color: var(--text-faint); border-top: 1px solid var(--border-light); }
+
+    @media (max-width: 768px) {
+      .page-content { padding: 1.25rem 1rem; }
+      .sec-body { padding: 1.1rem 1rem; }
+      .pillars-inner { grid-template-columns: 1fr; }
+    }
+
+    @media print {
+      body { background: #fff !important; color: #000 !important; }
+      .topnav, .quicknav, .topnav-theme-toggle, .page-footer, .topnav-pdf-btn { display: none !important; }
+      .sec-card { break-inside: avoid; border: 1px solid #ccc !important; box-shadow: none !important; }
+    }
+  </style>
+  <link rel="stylesheet" href="../../../../../css/components/header.css">
+  <script type="module" src="../../../../../components/header.ts" defer></script>
+</head>
+<body>
+  <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
+
+
+  <!-- TOP NAV -->
+  <nav class="topnav">
+    <a href="../guidelines.html" class="topnav-back">
+      <i class="fa-solid fa-chevron-left"></i>
+      Kho Guidelines
+    </a>
+    <div class="topnav-divider"></div>
+    <div class="topnav-title">JCEM 2026 – Hướng Dẫn Lâm Sàng Chẩn Đoán & Điều Trị Cơn Bão Giáp (Thyroid Storm)</div>
+    <button class="topnav-theme-toggle topnav-pdf-btn" onclick="window.print()" title="Tải PDF / In bài viết" style="margin-left: auto; margin-right: 4px;">
+      <i class="fa-solid fa-file-pdf"></i>
+    </button>
+    <button class="topnav-theme-toggle" id="themeToggleBtn" aria-label="Đổi giao diện">
+      <i class="fa-solid fa-moon"></i>
+    </button>
+  </nav>
+
+  <!-- QUICK NAV BAR -->
+  <div class="quicknav">
+    <a href="#sec-dichte" class="quicknav-link active">1. Dịch Tễ & Tử Vong</a>
+    <a href="#sec-khoiphat" class="quicknav-link">2. Yếu Tố Khởi Phát</a>
+    <a href="#sec-benhsinh" class="quicknav-link">3. Cơ Chế Bệnh Sinh</a>
+    <a href="#sec-lamsang" class="quicknav-link">4. Biểu Hiện Lâm Sàng</a>
+    <a href="#sec-chandoan" class="quicknav-link">5. Thang Điểm BWPS vs JTA</a>
+    <a href="#sec-supportive" class="quicknav-link">6. Hồi Sức ICU & Hạ Sốt</a>
+    <a href="#sec-beta" class="quicknav-link">7. Chẹn Beta Adrenergic</a>
+    <a href="#sec-thionamides" class="quicknav-link">8. Thuốc Kháng Giáp</a>
+    <a href="#sec-iodine" class="quicknav-link">9. Liệu Pháp Iod (Quy Tắc 1h)</a>
+    <a href="#sec-steroids" class="quicknav-link">10. Steroids & Thay Huyết Tương</a>
+    <a href="#sec-mcq" class="quicknav-link">11. Ca Lâm Sàng & MCQ</a>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge"><i class="fa-solid fa-fire-flame-curved"></i> JCEM / ENDOCRINE SOCIETY · CẬP NHẬT 2026</div>
+      <h1 class="hero-title">
+        <span>APPROACH TO THE PATIENT WITH THYROID STORM</span>
+        TOÀN DIỆN CHẨN ĐOÁN & ĐIỀU TRỊ CƠN BÃO GIÁP 2026
+      </h1>
+      <p class="hero-subtitle">
+        Tóm tắt hợp nhất hướng dẫn lâm sàng nhiễm độc giáp nguy kịch. Từ sinh lý bệnh, yếu tố khởi phát, đối chiếu 2 thang điểm BWPS & JTA đến phác đồ điều trị đa mô thức khóa chuỗi tổng hợp hormone và chiến lược hồi sức ICU tích cực.
+      </p>
+      <div class="hero-meta">
+        <div class="hero-meta-item"><i class="fa-solid fa-calendar-check"></i> Ban hành: JCEM 2026</div>
+        <div class="hero-meta-item"><i class="fa-solid fa-user-doctor"></i> Tác giả: Kopp PA, Giordani I, Feldt-Rasmussen U et al.</div>
+        <div class="hero-meta-item"><i class="fa-solid fa-notes-medical"></i> Chuyên khoa: Nội tiết & Hồi sức cấp cứu (ICU)</div>
+        <div class="hero-meta-item"><i class="fa-solid fa-link"></i> DOI: 10.1210/clinem/dgag054</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PILLARS STRIP -->
+  <div class="pillars">
+    <div class="pillars-inner">
+      <div class="pillar p1">
+        <div class="pillar-icon">🌡️</div>
+        <div>
+          <div class="pillar-title">Mất Bù Tăng Chuyển Hóa</div>
+          <div class="pillar-desc">Sốt cao 38.5-40.6°C. CHỐNG CHỈ ĐỊNH TUYỆT ĐỐI Aspirin (giải phóng T4/T3 tự do).</div>
+        </div>
+      </div>
+      <div class="pillar p2">
+        <div class="pillar-icon">💓</div>
+        <div>
+          <div class="pillar-title">Tăng Nhạy Cảm Beta</div>
+          <div class="pillar-desc">Propranolol 60-80mg q4h hoặc Esmolol TTM (liều nạp 500 mcg/kg) khi có suy tim.</div>
+        </div>
+      </div>
+      <div class="pillar p3">
+        <div class="pillar-icon">📊</div>
+        <div>
+          <div class="pillar-title">BWPS (>45) & JTA/JES</div>
+          <div class="pillar-desc">BWPS >45 điểm xác chẩn bão giáp. Tiêu chuẩn JTA yêu cầu tăng FT4/FT3 + tổn thương CNS.</div>
+        </div>
+      </div>
+      <div class="pillar p4">
+        <div class="pillar-icon">⏱️</div>
+        <div>
+          <div class="pillar-title">Quy Tắc Iod 1 Giờ</div>
+          <div class="pillar-desc">CHỈ cho dung dịch Lugol/SSKI/KI sau khi đã uống thuốc kháng giáp (PTU/MMI) ít nhất 1 giờ.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE CONTENT -->
+  <div class="page-content">
+
+    <!-- SEC 1: DỊCH TỄ HỌC & TỬ VONG -->
+    <div class="sec-card" id="sec-dichte">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-chart-line sec-hdr-icon"></i>
+        <h2 class="sec-title">1. Dịch Tễ Học & Tỷ Lệ Tử Vong</h2>
+      </div>
+      <div class="sec-body">
+        <div class="infobox danger">
+          <span class="infobox-icon">🚫</span>
+          <div>
+            <strong>Tỷ lệ tử vong cao đe dọa tính mạng:</strong>
+            Nếu không xử trí khẩn cấp, tỷ lệ tử vong chung dao động từ <strong>5% đến 25%</strong>. Ở người cao tuổi (≥ 60 tuổi) hoặc bệnh nhân có nhiều bệnh lý đồng mắc, tử vong có thể lên tới <strong>30%</strong> do suy đa tạng, suy tim, rung nhĩ nhanh và DIC.
+          </div>
+        </div>
+
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Chỉ số Dịch tễ (Table 1 JCEM 2026)</th>
+                <th>Giá trị Ước tính</th>
+                <th>Ý nghĩa Lâm sàng</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Tần suất mắc (Dân số chung)</strong></td>
+                <td>0.2 – 1.1 ca / 100,000 người/năm</td>
+                <td>Hiếm gặp ở cộng đồng nhưng nguy kịch cấp cứu.</td>
+              </tr>
+              <tr>
+                <td><strong>Tần suất mắc (Bệnh nhân nhập viện)</strong></td>
+                <td>4.8 – 6.3 ca / 100,000 bệnh nhân/năm</td>
+                <td>Tập trung ở các khoa Cấp cứu & Nội tiết/ICU.</td>
+              </tr>
+              <tr>
+                <td><strong>Tỷ lệ Giới tính (Nữ : Nam)</strong></td>
+                <td>2 : 1  đến  3 : 1</td>
+                <td>Phù hợp với tần suất bệnh lý tự miễn tuyến giáp (Graves).</td>
+              </tr>
+              <tr>
+                <td><strong>Nguyên nhân tử vong chính</strong></td>
+                <td>Suy đa tạng, Suy tim, Loạn nhịp thất/Rung nhĩ, Phù phổi, DIC</td>
+                <td>Đòi hỏi hồi sức đa mô thức phối hợp ICU.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEC 2: YẾU TỐ KHỞI PHÁT -->
+    <div class="sec-card" id="sec-khoiphat">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-bolt sec-hdr-icon"></i>
+        <h2 class="sec-title">2. Bệnh Lý Nền & Yếu Tố Khởi Phát</h2>
+      </div>
+      <div class="sec-body">
+        <div class="infobox warning">
+          <span class="infobox-icon">⚠️</span>
+          <div>
+            <strong>Bệnh lý nền nhiễm độc giáp:</strong> Phổ biến nhất là bệnh <strong>Graves</strong> không được điều trị hoặc ngưng thuốc đột ngột. Các nguyên nhân khác bao gồm bướu giáp đa nhân hóa độc, nhân độc tuyến giáp hoặc nhiễm độc giáp do <strong>Amiodarone</strong>.
+          </div>
+        </div>
+
+        <h3 class="sec-subtitle"><i class="fa-solid fa-angle-right"></i> Các yếu tố kích hoạt cơn bão giáp điển hình</h3>
+        <ul style="margin-left: 1.25rem; line-height: 1.65;">
+          <li><strong>Nhiễm trùng cấp tính:</strong> Viêm phổi, nhiễm trùng đường tiết niệu, nhiễm trùng huyết (Sepsis) là yếu tố khởi phát hàng đầu.</li>
+          <li><strong>Can thiệp phẫu thuật & Chấn thương:</strong> Phẫu thuật tuyến giáp hoặc phẫu thuật ngoài tuyến giáp ở bệnh nhân nhiễm độc giáp chưa ổn định.</li>
+          <li><strong>Phơi nhiễm Iod cấp:</strong> Chụp CT có tiêm thuốc cản quang chứa iod hoặc dùng Amiodarone (Hiệu ứng Jod-Basedow).</li>
+          <li><strong>Bỏ thuốc kháng giáp:</strong> Tự ý ngưng Thionamides (PTU/MMI) đột ngột.</li>
+          <li><strong>Căng thẳng thể chất / tâm lý nặng:</strong> Mang thai, sinh nở, hạ đường huyết cấp, hoặc mỏi cơ tim mạn.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SEC 3: CƠ CHẾ BỆNH SINH -->
+    <div class="sec-card" id="sec-benhsinh">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-dna sec-hdr-icon"></i>
+        <h2 class="sec-title">3. Cơ Chế Bệnh Sinh & Tăng Nhạy Cảm Adrenergic</h2>
+      </div>
+      <div class="sec-body">
+        <div class="infobox info">
+          <span class="infobox-icon">ℹ️</span>
+          <div>
+            <strong>Mâu thuẫn lâm sàng quan trọng:</strong> Nồng độ T3/T4 tự do ở bệnh nhân bão giáp <strong>không cao hơn đáng kể</strong> so với bệnh nhân cường giáp không biến chứng. Nồng độ Catecholamine máu cũng ở mức bình thường. Sự bùng phát là do <strong>tăng mật độ và tính nhạy cảm của thụ thể β1/β2-adrenergic</strong> tại mô đích.
+          </div>
+        </div>
+
+        <p>Hormone tuyến giáp tăng cao kích thích tổng hợp và gắn thụ thể β-adrenergic ở màng tế bào cơ tim, hệ thần kinh và cơ gan, dẫn đến:</p>
+        <ul style="margin-left: 1.25rem; line-height: 1.65;">
+          <li><strong>Đáp ứng giao cảm quá mức:</strong> Nhịp tim nhanh kịch phát, tăng co bóp cơ tim, bồn chồn kích động và vã mồ hôi.</li>
+          <li><strong>Mất bù Phosphoryl hóa Oxy hóa:</strong> Căng thẳng chuyển hóa tế bào làm thất thoát năng lượng dưới dạng nhiệt, gây sốt cao đầm đìa và tiêu thụ O2 bùng nổ.</li>
+          <li><strong>Giải phóng Cytokine viêm:</strong> TNF-α, IL-1, IL-6 gia tăng thúc đẩy suy đa tạng.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SEC 4: BIỂU HIỆN LÂM SÀNG -->
+    <div class="sec-card" id="sec-lamsang">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-heart-pulse sec-hdr-icon"></i>
+        <h2 class="sec-title">4. Biểu Hiện Lâm Sàng 4 Hệ Cơ Quan</h2>
+      </div>
+      <div class="sec-body">
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Hệ Cơ Quan</th>
+                <th>Triệu Chứng Lâm Sàng Điển Hình</th>
+                <th>Mức Độ Nặng / Nguy Kịch</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>1. Rối loạn Thân nhiệt</strong></td>
+                <td>Sốt nhẹ 38.0 – 38.5°C, vã mồ hôi đầm đìa</td>
+                <td>Sốt cao cực độ &gt; 40.0°C, da nóng bừng, mất nước nặng</td>
+              </tr>
+              <tr>
+                <td><strong>2. Hệ Tim Mạch</strong></td>
+                <td>Nhịp tim nhanh 110 – 140 bpm, hồi hộp đánh trống ngực</td>
+                <td>Rung nhĩ đáp ứng thất nhanh (&gt; 150 bpm), Suy tim cấp, Phù phổi, Sốc tim</td>
+              </tr>
+              <tr>
+                <td><strong>3. Hệ Thần Kinh Trung Ương</strong></td>
+                <td>Bồn chồn, lo âu, bứt rứt, run tay tần số cao</td>
+                <td>Loạn thần, mê sảng, ngủ lịm, co giật, Hôn mê (GCS ≤ 14)</td>
+              </tr>
+              <tr>
+                <td><strong>4. Tiêu Hóa - Gan Mật</strong></td>
+                <td>Buồn nôn, nôn, tiêu chảy, đau bụng cấp</td>
+                <td>Vàng da rõ, Bilirubin &gt; 3.0 mg/dL, Suy gan cấp</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEC 5: BẢNG ĐIỂM CHẨN ĐOÁN BWPS VS JTA -->
+    <div class="sec-card" id="sec-chandoan">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-clipboard-check sec-hdr-icon"></i>
+        <h2 class="sec-title">5. Đối Chiếu Bảng Điểm Burch-Wartofsky (BWPS) & Tiêu Chuẩn Nhật Bản (JTA/JES)</h2>
+      </div>
+      <div class="sec-body">
+        <h3 class="sec-subtitle"><i class="fa-solid fa-angle-right"></i> 1. Thang điểm Burch-Wartofsky (BWPS Score Card)</h3>
+        
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Tiêu Chí Đánh Giá BWPS</th>
+                <th>Phân Mức & Biểu Hiện Lâm Sàng Chi Tiết</th>
+                <th style="width: 130px; text-align: center;">Điểm Thành Phần</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Thân nhiệt -->
+              <tr>
+                <td><strong>Rối loạn Thân nhiệt (°C)</strong></td>
+                <td>
+                  <div class="score-list">
+                    <div class="score-item"><span>38.0 – 38.5 °C</span> <span class="badge badge-blue">5 điểm</span></div>
+                    <div class="score-item"><span>38.6 – 39.0 °C</span> <span class="badge badge-blue">10 điểm</span></div>
+                    <div class="score-item"><span>39.1 – 40.0 °C</span> <span class="badge badge-orange">15 điểm</span></div>
+                    <div class="score-item"><span>40.1 – 40.5 °C</span> <span class="badge badge-red">20 điểm</span></div>
+                    <div class="score-item"><span>&gt; 40.5 °C (Sốt cực cao)</span> <span class="badge badge-red">30 điểm</span></div>
+                  </div>
+                </td>
+                <td style="text-align: center; vertical-align: middle;"><strong>5 – 30 điểm</strong></td>
+              </tr>
+              <!-- Thần kinh -->
+              <tr>
+                <td><strong>Tổn thương Thần kinh (CNS)</strong></td>
+                <td>
+                  <div class="score-list">
+                    <div class="score-item"><span>Không có triệu chứng</span> <span class="badge badge-blue">0 điểm</span></div>
+                    <div class="score-item"><span>Nhẹ: Bồn chồn, lo âu, bứt rứt</span> <span class="badge badge-blue">10 điểm</span></div>
+                    <div class="score-item"><span>Vừa: Mê sảng, loạn thần, ngủ lịm</span> <span class="badge badge-orange">20 điểm</span></div>
+                    <div class="score-item"><span>Nặng: Co giật, hôn mê</span> <span class="badge badge-red">30 điểm</span></div>
+                  </div>
+                </td>
+                <td style="text-align: center; vertical-align: middle;"><strong>0 – 30 điểm</strong></td>
+              </tr>
+              <!-- Tiêu hóa -->
+              <tr>
+                <td><strong>Tiêu hóa - Gan mật</strong></td>
+                <td>
+                  <div class="score-list">
+                    <div class="score-item"><span>Không triệu chứng</span> <span class="badge badge-blue">0 điểm</span></div>
+                    <div class="score-item"><span>Vừa: Buồn nôn, nôn, tiêu chảy, đau bụng</span> <span class="badge badge-orange">10 điểm</span></div>
+                    <div class="score-item"><span>Nặng: Vàng da rõ (Bilirubin &gt; 3 mg/dL)</span> <span class="badge badge-red">20 điểm</span></div>
+                  </div>
+                </td>
+                <td style="text-align: center; vertical-align: middle;"><strong>0 – 20 điểm</strong></td>
+              </tr>
+              <!-- Nhịp tim -->
+              <tr>
+                <td><strong>Nhịp tim (Heart Rate - bpm)</strong></td>
+                <td>
+                  <div class="score-list">
+                    <div class="score-item"><span>90 – 109 bpm</span> <span class="badge badge-blue">5 điểm</span></div>
+                    <div class="score-item"><span>110 – 119 bpm</span> <span class="badge badge-blue">10 điểm</span></div>
+                    <div class="score-item"><span>120 – 149 bpm</span> <span class="badge badge-orange">15 điểm</span></div>
+                    <div class="score-item"><span>150 – 179 bpm</span> <span class="badge badge-orange">20 điểm</span></div>
+                    <div class="score-item"><span>≥ 180 bpm</span> <span class="badge badge-red">25 điểm</span></div>
+                  </div>
+                </td>
+                <td style="text-align: center; vertical-align: middle;"><strong>5 – 25 điểm</strong></td>
+              </tr>
+              <!-- Rung nhĩ -->
+              <tr>
+                <td><strong>Rung nhĩ (Atrial Fibrillation)</strong></td>
+                <td>
+                  <div class="score-list">
+                    <div class="score-item"><span>Vắng mặt (Nhịp xoang)</span> <span class="badge badge-blue">0 điểm</span></div>
+                    <div class="score-item"><span>Có rung nhĩ (AF)</span> <span class="badge badge-red">10 điểm</span></div>
+                  </div>
+                </td>
+                <td style="text-align: center; vertical-align: middle;"><strong>0 – 10 điểm</strong></td>
+              </tr>
+              <!-- Suy tim -->
+              <tr>
+                <td><strong>Suy tim sung huyết (CHF)</strong></td>
+                <td>
+                  <div class="score-list">
+                    <div class="score-item"><span>Không suy tim</span> <span class="badge badge-blue">0 điểm</span></div>
+                    <div class="score-item"><span>Nhẹ: Phù chân / Phù mắt cá</span> <span class="badge badge-blue">5 điểm</span></div>
+                    <div class="score-item"><span>Vừa: Ran ẩm đáy phổi</span> <span class="badge badge-orange">10 điểm</span></div>
+                    <div class="score-item"><span>Nặng: Phù phổi cấp</span> <span class="badge badge-red">15 điểm</span></div>
+                  </div>
+                </td>
+                <td style="text-align: center; vertical-align: middle;"><strong>0 – 15 điểm</strong></td>
+              </tr>
+              <!-- Yếu tố khởi phát -->
+              <tr>
+                <td><strong>Yếu tố Khởi phát (Precipitant)</strong></td>
+                <td>
+                  <div class="score-list">
+                    <div class="score-item"><span>Vắng mặt</span> <span class="badge badge-blue">0 điểm</span></div>
+                    <div class="score-item"><span>Có tiền sử yếu tố khởi phát (Nhiễm trùng, phẫu thuật, ngưng thuốc...)</span> <span class="badge badge-orange">10 điểm</span></div>
+                  </div>
+                </td>
+                <td style="text-align: center; vertical-align: middle;"><strong>0 – 10 điểm</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="infobox success">
+          <span class="infobox-icon">✅</span>
+          <div>
+            <strong>Đánh giá Tổng Điểm BWPS (BWPS Score Diagnostic Thresholds):</strong><br>
+            • <strong>&gt; 45 điểm:</strong> Khả năng rất cao là Bão Giáp thực sự (Highly suggestive of Thyrotoxic Crisis).<br>
+            • <strong>25 – 44 điểm:</strong> Nghi ngờ bão giáp sắp xảy ra (Suggestive for impending storm).<br>
+            • <strong>&lt; 25 điểm:</strong> Ít khả năng xảy ra bão giáp (Thyroid storm unlikely).
+          </div>
+        </div>
+
+        <h3 class="sec-subtitle" style="margin-top: 1.5rem;"><i class="fa-solid fa-angle-right"></i> 2. Tiêu chuẩn Hiệp hội Giáp trạng Nhật Bản (JTA/JES)</h3>
+        <p>Yêu cầu có bằng chứng xét nghiệm tăng FT4/FT3 kết hợp với các tiêu chuẩn lâm sàng:</p>
+        <ul style="margin-left: 1.25rem; line-height: 1.65;">
+          <li><strong>TS1 (Xác chẩn Bão giáp):</strong> Có triệu chứng CNS (GCS ≤14) VÀ ít nhất 1 triệu chứng khác (Sốt ≥38°C, Nhịp nhanh ≥130 bpm, Suy tim, Tiêu hóa/Gan); HOẶC có sự kết hợp của ít nhất 3 triệu chứng ngoài CNS.</li>
+          <li><strong>TS2 (Nghi ngờ Bão giáp):</strong> Kết hợp ít nhất 2 triệu chứng lâm sàng; HOẶC đạt tiêu chuẩn TS1 nhưng chưa có sẵn xét nghiệm FT4/FT3.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SEC 6: HỒI SỨC ICU & NÂNG ĐỠ -->
+    <div class="sec-card" id="sec-supportive">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-bed-pulse sec-hdr-icon"></i>
+        <h2 class="sec-title">6. Hồi Sức Tích Cực (ICU) & Điều Trị Nâng Đỡ</h2>
+      </div>
+      <div class="sec-body">
+        <div class="infobox danger">
+          <span class="infobox-icon">🚫</span>
+          <div>
+            <strong>CHỐNG CHỈ ĐỊNH TUYỆT ĐỐI VỚI ASPIRIN (ACETYLSALICYLIC ACID):</strong><br>
+            Aspirin cạnh tranh mạnh mẽ vị trí gắn kết trên các protein vận chuyển hormone giáp (TBG và TBPA), làm giải phóng lượng lớn T4 và T3 tự do vào máu, khiến cơn bão giáp bùng phát dữ dội hơn. <strong>Chỉ dùng Paracetamol (Acetaminophen) để hạ sốt.</strong>
+          </div>
+        </div>
+
+        <h3 class="sec-subtitle"><i class="fa-solid fa-angle-right"></i> Quy trình chăm sóc hỗ trợ toàn diện</h3>
+        <ul style="margin-left: 1.25rem; line-height: 1.65;">
+          <li><strong>Theo dõi ICU liên tục:</strong> Giám sát liên tục điện tâm đồ (ECG), SpO2, huyết áp động mạch xâm lấn và áp lực tĩnh mạch trung tâm (CVP).</li>
+          <li><strong>Hạ sốt tích cực:</strong> Dùng Paracetamol kết hợp chườm mát vật lý. Chlorpromazine có thể dùng thêm để hạ nhiệt và giảm kích động thần kinh vận động.</li>
+          <li><strong>Bù dịch & Điện giải:</strong> Bù dịch NSS 0.9% tích cực do mất nước qua vã mồ hôi và tiêu chảy. Giám sát kali máu sát sao (kích thích β2-adrenergic đẩy K⁺ vào tế bào gây hạ kali máu cấp).</li>
+          <li><strong>Bổ sung Thiamine (Vitamin B1):</strong> Cần tiêm tĩnh mạch Thiamine trước khi truyền Glucose để tránh hội chứng Wernicke do tăng tiêu thụ vitamin B1 trong trạng thái tăng chuyển hóa.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SEC 7: CHẸN BETA -->
+    <div class="sec-card" id="sec-beta">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-heart-circle-check sec-hdr-icon"></i>
+        <h2 class="sec-title">7. Kiểm Soát Adrenergic Bằng Thuốc Chẹn Beta</h2>
+      </div>
+      <div class="sec-body">
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Thuốc Chẹn Beta</th>
+                <th>Liều Dùng & Đường Dùng</th>
+                <th>Đặc Điểm & Lưu Ý Lâm Sàng</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="rx-tag highlight">Propranolol</span><br>(Không chọn lọc)</td>
+                <td><strong>Uống:</strong> 60 – 80 mg mỗi 4 giờ.<br><strong>TTM:</strong> Bolus chậm 1 – 3 mg trong 10 phút, duy trì 2 – 3 mg/giờ.</td>
+                <td>Ưu điểm là ức chế enzym 5′-deiodinase ở ngoại vi giúp giảm chuyển T4 → T3. Thận trọng nếu có suy tim nặng.</td>
+              </tr>
+              <tr>
+                <td><span class="rx-tag highlight">Esmolol</span><br>(Chọn lọc β₁ cực ngắn)</td>
+                <td><strong>TTM:</strong> Liều nạp <span class="rx-tag alert">500 mcg/kg</span> trong 1 phút, sau đó truyền duy trì <span class="rx-tag">50 – 100 mcg/kg/phút</span>.</td>
+                <td><strong>Ưu tiên hàng đầu khi có suy tim</strong> hoặc huyết động bất ổn do thời gian bán thải cực ngắn (~9 phút), có thể ngưng thuốc ngay nếu suy tim sụp đổ.</td>
+              </tr>
+              <tr>
+                <td><span class="rx-tag">Labetalol</span><br>(Chẹn α₁ + β)</td>
+                <td><strong>TTM:</strong> Bolus 5 – 20 mg trong 2 phút, sau đó truyền duy trì 0.5 mg/phút.</td>
+                <td>Phù hợp cho bệnh nhân bão giáp có kèm tăng huyết áp kịch phát.</td>
+              </tr>
+              <tr>
+                <td><span class="rx-tag">Diltiazem</span><br>(Chẹn kênh Canxi)</td>
+                <td><strong>Uống:</strong> 60 mg mỗi 6 – 8 giờ hoặc TTM duy trì.</td>
+                <td><strong>Thuốc thay thế bắt buộc</strong> khi bệnh nhân có chống chỉ định tuyệt đối với chẹn beta (như hen phế quản nặng).</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEC 8: THUỐC KHÁNG GIÁP TỔNG HỢP -->
+    <div class="sec-card" id="sec-thionamides">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-capsules sec-hdr-icon"></i>
+        <h2 class="sec-title">8. Ngăn Chặn Tổng Hợp Hormone Giáp (Thionamides)</h2>
+      </div>
+      <div class="sec-body">
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Thuốc Kháng Giáp</th>
+                <th>Liều Khởi Đầu & Duy Trì</th>
+                <th>Cơ Chế & Lựa Chọn Lâm Sàng</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="rx-tag alert">PTU</span><br>(Propylthiouracil)</td>
+                <td><strong>Liều nạp:</strong> 500 – 1000 mg (uống / qua xông dạ dày / thụt trực tràng).<br><strong>Duy trì:</strong> 250 mg mỗi 4 giờ.</td>
+                <td>Ức chế tổng hợp mới tại tuyến VÀ ức chế enzym 5′-deiodinase ở ngoại vi. Thường ưu tiên cấp cứu ban đầu.</td>
+              </tr>
+              <tr>
+                <td><span class="rx-tag highlight">Methimazole (MMI)</span></td>
+                <td><strong>Liều dùng:</strong> 60 – 80 mg/ngày (chia 20 mg mỗi 8 giờ).</td>
+                <td>Thời gian bán thải dài hơn, ít độc gan hơn PTU. Nhanh chóng đưa hormone về bình thường.</td>
+              </tr>
+              <tr>
+                <td><span class="rx-tag">Carbimazole (CMZ)</span></td>
+                <td><strong>Liều dùng:</strong> 80 – 100 mg/ngày (chuyển hóa thành MMI).</td>
+                <td>Tương đương MMI về hiệu quả điều trị.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="infobox warning">
+          <span class="infobox-icon">⚠️</span>
+          <div>
+            <strong>Lưu ý chức năng gan (JCEM 2026):</strong><br>
+            Nếu bệnh nhân có tình trạng tăng men gan hoặc Bilirubin toàn phần <strong>&gt; 3 lần giới hạn trên bình thường (ULN)</strong>, <strong>Methimazole (MMI) được ưu tiên lựa chọn hơn PTU</strong> do PTU có nguy cơ gây viêm gan hoại tử tế bào gan đe dọa tính mạng.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEC 9: LIỆU PHÁP IOD VÔ CƠ -->
+    <div class="sec-card" id="sec-iodine">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-flask-vial sec-hdr-icon"></i>
+        <h2 class="sec-title">9. Liệu Pháp Iod Vô Cơ & Quy Tắc An Toàn 1 Giờ</h2>
+      </div>
+      <div class="sec-body">
+        <div class="infobox danger">
+          <span class="infobox-icon">🚫</span>
+          <div>
+            <strong>QUY TẮC BẮT BUỘC VỀ THỜI DIỂM DÙNG IOD (QUY TẮC 1 GIỜ):</strong><br>
+            Dung dịch Iod (Lugol / SSKI / KI) <strong>CHỈ ĐƯỢC CHO ÍT NHẤT 1 GIỜ SAU KHI ĐÃ DÙNG THUỐC KHÁNG GIÁP TỔNG HỢP (PTU HOẶC MMI)</strong>.<br>
+            <em>Cơ chế nguy hiểm:</em> Nếu cho Iod trước, tuyến giáp sẽ sử dụng chính lượng Iod vô cơ này làm nguyên liệu tổng hợp ồ ạt thêm hormone giáp mới (Hiệu ứng Jod-Basedow), làm trầm trọng thêm cơn bão giáp.
+          </div>
+        </div>
+
+        <h3 class="sec-subtitle"><i class="fa-solid fa-angle-right"></i> Liều lượng dung dịch Iod vô cơ</h3>
+        <ul style="margin-left: 1.25rem; line-height: 1.65;">
+          <li><strong>Dung dịch Lugol 5%:</strong> <span class="rx-tag highlight">8 giọt mỗi 6 giờ</span> (uống pha loãng với nước trái cây hoặc bơm xông dạ dày). Mỗi giọt Lugol 5% chứa ~6.25 mg Iod toàn phần.</li>
+          <li><strong>Dung dịch Iod bão hòa SSKI:</strong> <span class="rx-tag highlight">5 giọt mỗi 6 giờ</span> (chứa ~35-50 mg Iodid/giọt).</li>
+          <li><strong>Potassium Iodide (KI) viên nén:</strong> <span class="rx-tag">65 mg x 3 lần/ngày</span>.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SEC 10: STEROIDS & THAY HUYẾT TƯƠNG -->
+    <div class="sec-card" id="sec-steroids">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-syringe sec-hdr-icon"></i>
+        <h2 class="sec-title">10. Glucocorticoids, Cholestyramine & Thay Huyết Tương</h2>
+      </div>
+      <div class="sec-body">
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Thuốc Phối Hợp</th>
+                <th>Liều Dùng</th>
+                <th>Cơ Chế & Chỉ Định</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="rx-tag highlight">Hydrocortisone</span><br>(Glucocorticoid)</td>
+                <td><strong>TTM liều nạp:</strong> 300 mg.<br><strong>Duy trì:</strong> 100 mg mỗi 8 giờ.</td>
+                <td>Ức chế chuyển đổi T4 → T3 ở ngoại vi VÀ điều trị tình trạng suy thượng thận tương đối do tăng chuyển hóa cortisol. Giảm liều dần khi lâm sàng cải thiện.</td>
+              </tr>
+              <tr>
+                <td><span class="rx-tag">Cholestyramine</span><br>(Bắt giữ acid mật)</td>
+                <td><strong>Uống:</strong> 4 g x 3 lần/ngày.</td>
+                <td>Liên kết hormone giáp trong lòng ruột, ngăn chặn chu trình gan ruột (enterohepatic circulation) giúp tăng đáng kể tốc độ thải trừ hormone.</td>
+              </tr>
+              <tr>
+                <td><span class="rx-tag alert">Thay Huyết Tương</span><br>(Plasmapheresis)</td>
+                <td>1.5 – 2.0 thể tích plasma thay thế bằng FFP / Albumin.</td>
+                <td>Chỉ định khi điều trị nội khoa thất bại sau 24-48h, suy gan nặng, hoặc dị ứng/giảm bạch cầu hạt nặng do Thionamides. Loại bỏ T4/T3 gắn protein cực nhanh.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEC 11: CA LÂM SÀNG THỰC TẾ & MCQ -->
+    <div class="sec-card" id="sec-mcq">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-graduation-cap sec-hdr-icon"></i>
+        <h2 class="sec-title">11. Bài Học Ca Lâm Sàng Thực Tế & Trắc Nghiệm MCQ</h2>
+      </div>
+      <div class="sec-body">
+
+        <div class="algo-box">
+          <div class="algo-step">
+            <div class="algo-num">1</div>
+            <div class="algo-content">
+              <strong>Ca lâm sàng 2 (Tử vong do điều trị sai phác đồ):</strong> Bệnh nhân bướu giáp đa nhân hóa độc bị bão giáp sau chụp CT cản quang. Bác sĩ cho <strong>Aspirin hạ sốt</strong> (làm giải phóng T4 tự do) và uống <strong>Lugol trước khi dùng PTU</strong> (cung cấp nguyên liệu tổng hợp hormone) → Tử vong do suy tim cấp và loạn nhịp thất.
+            </div>
+          </div>
+          <div class="algo-step">
+            <div class="algo-num">2</div>
+            <div class="algo-content">
+              <strong>Ca lâm sàng 3 (Cứu sống thành công):</strong> Bệnh nhân Graves bị bão giáp gây rung thất ngừng tuần hoàn. Bác sĩ cấp cứu ngừng tuần hoàn sớm, cho <strong>PTU qua xông dạ dày trước, sau 1 giờ mới cho Potassium iodide</strong>, phối hợp <strong>Hydrocortisone TTM, Labetalol TTM và Cholestyramine</strong> → Hồi phục hoàn toàn.
+            </div>
+          </div>
+        </div>
+
+        <!-- MCQ 1 -->
+        <div class="mcq-card" data-correct="2" style="margin-top: 1.5rem;">
+          <div class="mcq-q">
+            <span>❓ Câu 1:</span>
+            <span>Bệnh nhân nữ 45 tuổi có tiền sử bệnh Graves ngưng thuốc 2 tuần, nhập viện vì sốt 39.5°C, nhịp tim 155 bpm (rung nhĩ), bồn chồn kích động và tiêu chảy 4 lần/ngày. Tổng điểm BWPS của bệnh nhân này là bao nhiêu và phân độ lâm sàng?</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="mcq-opt" data-idx="0">A. 20 điểm (Ít khả năng bão giáp)</div>
+            <div class="mcq-opt" data-idx="1">B. 35 điểm (Nghi ngờ bão giáp sắp xảy ra)</div>
+            <div class="mcq-opt" data-idx="2">C. 75 điểm (Xác chẩn Bão giáp thực sự - Highly suggestive)</div>
+            <div class="mcq-opt" data-idx="3">D. 15 điểm (Nhiễm trùng huyết đơn thuần)</div>
+          </div>
+          <div class="mcq-exp">
+            <strong>Giải thích chi tiết:</strong><br>
+            • Sốt 39.5°C = 15đ.<br>
+            • Nhịp tim 155 bpm = 20đ.<br>
+            • Rung nhĩ = 10đ.<br>
+            • Kích động CNS = 10đ.<br>
+            • Tiêu chảy = 10đ.<br>
+            • Yếu tố khởi phát (bỏ thuốc) = 10đ.<br>
+            Tổng cộng: <strong>75 điểm (&gt; 45 điểm)</strong> → Xác chẩn Bão Giáp (Thyrotoxic Crisis).
+          </div>
+        </div>
+
+        <!-- MCQ 2 -->
+        <div class="mcq-card" data-correct="2">
+          <div class="mcq-q">
+            <span>❓ Câu 2:</span>
+            <span>Tại sao dung dịch Iod vô cơ (Lugol/SSKI) BẮT BUỘC phải dùng sau thuốc kháng giáp tổng hợp (PTU/MMI) ít nhất 1 giờ trong xử trí Bão Giáp?</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="mcq-opt" data-idx="0">A. Để tránh gây tụt huyết áp do tương tác thuốc trực tiếp.</div>
+            <div class="mcq-opt" data-idx="1">B. Vì Iod làm vô hiệu hóa tác dụng của Propranolol.</div>
+            <div class="mcq-opt" data-idx="2">C. Tránh cho tuyến giáp sử dụng chính Iod đó làm nguyên liệu tổng hợp thêm hormone giáp mới trước khi bị thuốc kháng giáp ức chế enzym peroxidase.</div>
+            <div class="mcq-opt" data-idx="3">D. Vì Iod gây độc cho thận nếu cho cùng lúc với PTU.</div>
+          </div>
+          <div class="mcq-exp">
+            <strong>Giải thích chi tiết:</strong><br>
+            Chính xác là C. Nếu cho Iod trước khi PTU/MMI kịp ức chế enzym TPO, tuyến giáp sẽ dùng Iod đó tổng hợp thêm hormone bùng nổ (Hiệu ứng Jod-Basedow). Cho PTU/MMI trước 1 giờ giúp khóa enzym TPO trước khi Iod được hấp thu vào tuyến.
+          </div>
+        </div>
+
+        <!-- MCQ 3 -->
+        <div class="mcq-card" data-correct="1">
+          <div class="mcq-q">
+            <span>❓ Câu 3:</span>
+            <span>Loại thuốc hạ sốt nào bị CHỐNG CHỈ ĐỊNH TUYỆT ĐỐI ở bệnh nhân Cơn Bão Giáp?</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="mcq-opt" data-idx="0">A. Paracetamol (Acetaminophen)</div>
+            <div class="mcq-opt" data-idx="1">B. Aspirin (Acetylsalicylic acid)</div>
+            <div class="mcq-opt" data-idx="2">C. Chlorpromazine</div>
+            <div class="mcq-opt" data-idx="3">D. Ibuprofen</div>
+          </div>
+          <div class="mcq-exp">
+            <strong>Giải thích chi tiết:</strong><br>
+            Đáp án B. Aspirin cạnh tranh với hormone giáp tại vị trí gắn protein vận chuyển (TBG, TBPA), đẩy một lượng lớn T4 và T3 từ dạng gắn kết thành dạng tự do trong máu, làm trầm trọng thêm tình trạng nhiễm độc giáp nguy kịch.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CITATION & SOURCE -->
+    <div class="sec-card">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-bookmark sec-hdr-icon"></i>
+        <h2 class="sec-title">Tài Liệu Tham Khảo Chuẩn AMA</h2>
+      </div>
+      <div class="sec-body">
+        <div class="citation-box">
+          1. Kopp PA, Giordani I, Feldt-Rasmussen U, Forget-Renaud A. Approach to the patient with thyroid storm. <em>J Clin Endocrinol Metab</em>. 2026;111(5):1484-1494. doi:10.1210/clinem/dgag054
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PAGE FOOTER -->
+  <footer class="page-footer">
+    <p>© 2026 CliniPortal — Phân hệ Y học Chứng cứ (EBM). Bản quyền tóm tắt hướng dẫn y khoa chuẩn hóa.</p>
+  </footer>
+
+  <script>
+    // Theme Toggle with LocalStorage
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const htmlEl = document.documentElement;
+
+    const savedTheme = localStorage.getItem('cliniportal_ebm_theme');
+    if (savedTheme === 'dark' || savedTheme === 'light') {
+      htmlEl.setAttribute('data-theme', savedTheme);
+      if (themeToggleBtn) {
+        themeToggleBtn.innerHTML = savedTheme === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+      }
+    }
+
+    if (themeToggleBtn) {
+      themeToggleBtn.addEventListener('click', () => {
+        const currentTheme = htmlEl.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        htmlEl.setAttribute('data-theme', newTheme);
+        themeToggleBtn.innerHTML = newTheme === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+        localStorage.setItem('cliniportal_ebm_theme', newTheme);
+      });
+    }
+
+    // Quicknav Active Highlight with IntersectionObserver
+    const sections = document.querySelectorAll('.sec-card[id]');
+    const navLinks = document.querySelectorAll('.quicknav-link');
+
+    const navObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const currentId = entry.target.getAttribute('id');
+          navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + currentId) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    }, { rootMargin: '-10% 0px -70% 0px' });
+
+    sections.forEach(section => navObserver.observe(section));
+
+    // Interactive MCQ Quiz Script
+    document.querySelectorAll('.mcq-card').forEach(card => {
+      const correctIdx = parseInt(card.getAttribute('data-correct'), 10);
+      const opts = card.querySelectorAll('.mcq-opt');
+      const exp = card.querySelector('.mcq-exp');
+
+      opts.forEach(opt => {
+        opt.addEventListener('click', () => {
+          const selectedIdx = parseInt(opt.getAttribute('data-idx'), 10);
+          opts.forEach(o => o.classList.remove('selected-correct', 'selected-wrong'));
+
+          if (selectedIdx === correctIdx) {
+            opt.classList.add('selected-correct');
+          } else {
+            opt.classList.add('selected-wrong');
+            opts[correctIdx].classList.add('selected-correct');
+          }
+          exp.classList.add('show');
+        });
+      });
+    });
+  </script>
+  <script type="module" src="../guideline-controller.ts"></script>
+</body>
+</html>

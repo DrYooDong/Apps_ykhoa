@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tóm tắt Hướng dẫn Lâm sàng BSG 2025 về Bệnh Viêm Ruột (IBD - Viêm loét đại tràng & Bệnh Crohn): Montreal/Paris, Treat-to-Target, Sàng lọc liệu pháp nâng cao, TDM Thiopurine & Biologics, Cấp cứu ASUC, CD quanh hậu môn, Thai kỳ & Quản lý chu phẫu.">
+  <title>BSG 2025: Hướng Dẫn Quản Lý & Điều Trị Bệnh Viêm Ruột (IBD) Toàn Diện – CliniPortal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #059669; --green-bg: #f0fdf4; --green-light: #a7f3d0;
+      --orange: #d97706; --orange-bg: #fffbeb; --orange-light: #fde68a;
+      --red: #dc2626; --red-bg: #fef2f2; --red-light: #fca5a5;
+      --blue: #2563eb; --blue-bg: #eff6ff; --blue-light: #bfdbfe;
+      --teal: #0d9488; --teal-bg: #f0fdfa; --teal-light: #99f6e4;
+      --purple: #7c3aed; --purple-bg: #faf5ff; --purple-light: #ddd6fe;
+      --amber: #ca8a04; --amber-bg: #fefce8; --amber-light: #fef08a;
+      --accent: #7c3aed;
+      --accent-gradient: linear-gradient(135deg, #4c1d95 0%, #6d28d9 40%, #0d9488 100%);
+      --bg: #f0f4f8; --surface: #ffffff; --surface-2: #f8fafc;
+      --border: #cbd5e1; --border-light: #e2e8f0;
+      --text: #0f172a; --text-muted: #475569; --text-faint: #94a3b8;
+      --radius: 16px; --tr: 220ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [data-theme="dark"] {
+      --bg: #0c121e; --surface: #172033; --surface-2: #1e2c45;
+      --border: #334768; --border-light: #24354f;
+      --text: #f8fafc; --text-muted: #94a3b8; --text-faint: #64748b;
+      --green-bg: rgba(5, 150, 105, 0.18); --green-light: rgba(167, 243, 208, 0.3);
+      --orange-bg: rgba(217, 119, 6, 0.18); --orange-light: rgba(253, 230, 138, 0.3);
+      --red-bg: rgba(220, 38, 38, 0.18); --red-light: rgba(252, 165, 165, 0.3);
+      --blue-bg: rgba(37, 99, 235, 0.18); --blue-light: rgba(191, 219, 254, 0.3);
+      --teal-bg: rgba(13, 148, 136, 0.18); --teal-light: rgba(153, 246, 228, 0.3);
+      --purple-bg: rgba(124, 58, 237, 0.18); --purple-light: rgba(221, 214, 254, 0.3);
+      --amber-bg: rgba(202, 138, 4, 0.18); --amber-light: rgba(254, 240, 138, 0.3);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; font-size: 15px; background: var(--bg); color: var(--text); line-height: 1.65; min-height: 100vh; }
+
+    @media print {
+      body { background: #fff !important; color: #000 !important; }
+      .topnav, .pillars-nav, .topnav-theme-toggle, .btn-row { display: none !important; }
+      .page-content { max-width: 100% !important; margin: 0 !important; padding: 0 !important; }
+      .sec-card { break-inside: avoid; border: 1px solid #ccc !important; box-shadow: none !important; }
+    }
+
+    /* TOP NAV */
+    .topnav { position: sticky; top: 0; z-index: 200; background: rgba(255,255,255,0.94); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 1rem; padding: 0 1.5rem; height: 56px; }
+    [data-theme="dark"] .topnav { background: rgba(12, 18, 30, 0.92); }
+    .topnav-back { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--accent); text-decoration: none; font-size: 0.82rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 8px; transition: background var(--tr); white-space: nowrap; }
+    .topnav-back:hover { background: var(--purple-bg); }
+    .topnav-divider { width: 1px; height: 18px; background: var(--border-light); flex-shrink: 0; }
+    .topnav-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .topnav-badges { margin-left: auto; display: flex; gap: 0.5rem; flex-shrink: 0; align-items: center; }
+    .badge { padding: 0.2rem 0.65rem; border-radius: 20px; font-size: 0.7rem; font-weight: 700; white-space: nowrap; }
+    .badge-purple { background: var(--purple-bg); color: #6b21a8; border: 1px solid var(--purple-light); }
+    [data-theme="dark"] .badge-purple { color: #d8b4fe; }
+    .badge-teal { background: var(--teal-bg); color: #0f766e; border: 1px solid var(--teal-light); }
+    [data-theme="dark"] .badge-teal { color: #99f6e4; }
+    .badge-amber { background: var(--amber-bg); color: #854d0e; border: 1px solid var(--amber-light); }
+    [data-theme="dark"] .badge-amber { color: #fef08a; }
+
+    .topnav-theme-toggle { background: none; border: 1px solid var(--border-light); color: var(--text-muted); cursor: pointer; font-size: 1rem; padding: 0.35rem 0.6rem; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; transition: all var(--tr); }
+    .topnav-theme-toggle:hover { background: var(--surface-2); color: var(--text); }
+
+    /* HERO */
+    .hero { background: var(--accent-gradient); color: #fff; padding: 3.5rem 1.5rem 4.5rem; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 15% 60%, rgba(192,132,252,0.25) 0%, transparent 55%), radial-gradient(ellipse at 85% 20%, rgba(20,184,166,0.2) 0%, transparent 50%); }
+    .hero-inner { max-width: 980px; margin: 0 auto; position: relative; z-index: 1; }
+    .hero-badge-strip { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin-bottom: 1rem; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.28); border-radius: 20px; padding: 0.3rem 0.85rem; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #e9d5ff; }
+    .hero-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(1.8rem, 4vw, 2.7rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 0.75rem; }
+    .hero-title span { display: block; background: linear-gradient(90deg, #d8b4fe, #5eead4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 0.62em; font-weight: 600; letter-spacing: 0; margin-bottom: 0.25rem; }
+    .hero-subtitle { font-size: 0.95rem; opacity: 0.92; max-width: 780px; margin-bottom: 1.8rem; line-height: 1.6; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 0.75rem 1.8rem; font-size: 0.8rem; opacity: 0.88; }
+    .hero-meta-item { display: flex; align-items: center; gap: 6px; }
+
+    /* PILLARS STICKY NAV STRIP */
+    .pillars-nav { position: sticky; top: 56px; z-index: 190; background: var(--surface); border-bottom: 1px solid var(--border-light); padding: 0.75rem 1.5rem; }
+    .pillars-nav-inner { max-width: 980px; margin: 0 auto; display: flex; gap: 0.55rem; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .pillar-tab { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.45rem 0.85rem; border-radius: 10px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.78rem; font-weight: 700; color: var(--text-muted); border: 1px solid var(--border-light); background: var(--surface-2); text-decoration: none; white-space: nowrap; transition: all var(--tr); }
+    .pillar-tab:hover { border-color: var(--accent); color: var(--accent); background: var(--purple-bg); }
+    .pillar-tab.p-1 { border-left: 4px solid var(--blue); }
+    .pillar-tab.p-2 { border-left: 4px solid var(--teal); }
+    .pillar-tab.p-3 { border-left: 4px solid var(--amber); }
+    .pillar-tab.p-4 { border-left: 4px solid var(--red); }
+    .pillar-tab.p-5 { border-left: 4px solid var(--purple); }
+    .pillar-tab.p-6 { border-left: 4px solid var(--green); }
+
+    /* KPI STATS STRIP */
+    .stats-strip { background: var(--surface); border-bottom: 1px solid var(--border-light); padding: 1.5rem; }
+    .stats-grid { max-width: 980px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+    .stat-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border-light);
+      border-radius: 14px;
+      padding: 1.25rem 1rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+      transition: transform var(--tr), box-shadow var(--tr);
+    }
+    .stat-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+    .stat-val { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.3rem; font-weight: 800; color: var(--accent); line-height: 1.2; text-align: center; }
+    .stat-lbl { font-size: 0.75rem; color: var(--text-muted); font-weight: 600; line-height: 1.45; text-align: center; }
+
+    /* PAGE CONTENT */
+    .page-content { max-width: 980px; margin: 0 auto; padding: 2.25rem 1.5rem; display: flex; flex-direction: column; gap: 2rem; }
+
+    /* SECTION CARDS */
+    .sec-card { background: var(--surface); border: 1px solid var(--border-light); border-radius: var(--radius); overflow: hidden; scroll-margin-top: 120px; }
+    .sec-hdr { padding: 1.1rem 1.5rem; border-bottom: 1px solid var(--border-light); background: var(--surface-2); display: flex; align-items: center; justify-content: space-between; gap: 0.6rem; }
+    .sec-hdr-left { display: flex; align-items: center; gap: 0.6rem; }
+    .sec-hdr-icon { font-size: 1.25rem; }
+    .sec-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1rem; font-weight: 800; color: var(--text); }
+    .sec-badge { font-size: 0.7rem; font-weight: 700; padding: 0.15rem 0.55rem; border-radius: 12px; background: var(--purple-bg); color: var(--accent); border: 1px solid var(--purple-light); }
+    .sec-body { padding: 1.5rem; }
+    .sec-subtitle { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.85rem; color: var(--text-muted); margin: 1.25rem 0 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; }
+    .sec-subtitle:first-child { margin-top: 0; }
+
+    /* GRID LAYOUTS */
+    .grid-2col { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 1.25rem; }
+    .grid-3col { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 1rem; }
+    .grid-4col { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); gap: 1rem; }
+
+    /* BENTO & CLINICAL CARDS */
+    .clin-card { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.25rem; position: relative; overflow: hidden; transition: box-shadow var(--tr); }
+    .clin-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.06); }
+    .clin-card-accent { position: absolute; top: 0; left: 0; right: 0; height: 4px; }
+    .accent-green { background: var(--green); }
+    .accent-orange { background: var(--orange); }
+    .accent-red { background: var(--red); }
+    .accent-blue { background: var(--blue); }
+    .accent-teal { background: var(--teal); }
+    .accent-purple { background: var(--purple); }
+    .accent-amber { background: var(--amber); }
+
+    .clin-card-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 0.92rem; color: var(--text); margin-bottom: 0.6rem; display: flex; align-items: center; justify-content: space-between; }
+    .clin-card-body { font-size: 0.84rem; color: var(--text-muted); line-height: 1.6; }
+    .clin-card-list { list-style: none; margin-top: 0.5rem; padding-left: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+    .clin-card-list li {
+      position: relative;
+      padding-left: 1.1rem;
+      font-size: 0.84rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+      display: block;
+    }
+    .clin-card-list li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--accent);
+      font-weight: 800;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    /* INFO BOXES */
+    .infobox { display: flex; align-items: flex-start; gap: 0.85rem; padding: 1rem 1.25rem; border-radius: 12px; margin-bottom: 1rem; font-size: 0.85rem; line-height: 1.6; }
+    .infobox:last-child { margin-bottom: 0; }
+    .infobox-icon { font-size: 1.3rem; flex-shrink: 0; line-height: 1.3; }
+    .infobox.danger { background: var(--red-bg); border: 1px solid var(--red-light); border-left: 4px solid var(--red); }
+    .infobox.success { background: var(--green-bg); border: 1px solid var(--green-light); border-left: 4px solid var(--green); }
+    .infobox.warning { background: var(--orange-bg); border: 1px solid var(--orange-light); border-left: 4px solid var(--orange); }
+    .infobox.info { background: var(--blue-bg); border: 1px solid var(--blue-light); border-left: 4px solid var(--blue); }
+    .infobox.teal { background: var(--teal-bg); border: 1px solid var(--teal-light); border-left: 4px solid var(--teal); }
+    .infobox.purple { background: var(--purple-bg); border: 1px solid var(--purple-light); border-left: 4px solid var(--purple); }
+    .infobox-title { display: block; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.88rem; font-weight: 800; margin-bottom: 0.35rem; color: var(--text); }
+    .infobox strong { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; color: var(--text); }
+
+    /* EBM RECOMMENDATION CARDS */
+    .ebm-rec-card { background: var(--surface); border: 1px solid var(--border-light); border-left: 4px solid var(--accent); border-radius: 12px; padding: 1.1rem 1.25rem; margin-bottom: 0.85rem; transition: transform var(--tr); }
+    .ebm-rec-card:hover { transform: translateX(2px); }
+    .ebm-rec-card.rec-strong { border-left-color: var(--green); }
+    .ebm-rec-card.rec-cond { border-left-color: var(--blue); }
+    .ebm-rec-card.rec-against { border-left-color: var(--red); }
+    .ebm-rec-header { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; margin-bottom: 0.5rem; flex-wrap: wrap; }
+    .ebm-rec-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 0.88rem; color: var(--text); }
+    .ebm-rec-body { font-size: 0.84rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* BADGES */
+    .badge-group { display: inline-flex; align-items: center; gap: 0.35rem; flex-wrap: wrap; }
+    .cor-badge, .loe-badge { padding: 0.2rem 0.55rem; border-radius: 8px; font-size: 0.72rem; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; display: inline-flex; align-items: center; gap: 0.3rem; }
+    .cor-strong { background: var(--green-bg); color: #065f46; border: 1px solid var(--green-light); }
+    .cor-cond { background: var(--blue-bg); color: #1e40af; border: 1px solid var(--blue-light); }
+    .cor-against { background: var(--red-bg); color: #991b1b; border: 1px solid var(--red-light); }
+    .loe-high { background: rgba(5, 150, 105, 0.12); color: #047857; border: 1px solid rgba(5, 150, 105, 0.35); }
+    .loe-mod { background: rgba(37, 99, 235, 0.12); color: #1d4ed8; border: 1px solid rgba(37, 99, 235, 0.35); }
+    .loe-low { background: rgba(217, 119, 6, 0.12); color: #b45309; border: 1px solid rgba(217, 119, 6, 0.35); }
+    .loe-vlow { background: rgba(100, 116, 139, 0.12); color: #475569; border: 1px solid rgba(100, 116, 139, 0.35); }
+
+    /* TABLES */
+    .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--border-light); border-radius: 12px; margin-bottom: 1rem; }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 0.83rem; min-width: 680px; }
+    .data-table thead th { background: var(--surface-2); padding: 0.75rem 1rem; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text); border-bottom: 2px solid var(--border-light); text-align: left; }
+    .data-table td { padding: 0.85rem 1rem; border-bottom: 1px solid var(--border-light); vertical-align: top; line-height: 1.55; color: var(--text-muted); }
+    .data-table tbody tr:last-child td { border-bottom: none; }
+    .data-table tbody tr:hover td { background: var(--surface-2); }
+    .data-table strong { color: var(--text); font-weight: 700; }
+
+    .rx-tag { display: inline-block; background: var(--surface-2); color: var(--text); font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; font-weight: 600; padding: 0.2rem 0.55rem; border-radius: 6px; border: 1px solid var(--border-light); margin: 0.15rem 0.2rem 0.15rem 0; }
+    .rx-tag.preferred { background: var(--green-bg); color: #065f46; border-color: var(--green-light); font-weight: 700; }
+    .rx-tag.warning { background: var(--orange-bg); color: #92400e; border-color: var(--orange-light); }
+    .rx-tag.danger { background: var(--red-bg); color: #991b1b; border-color: var(--red-light); }
+
+    /* SVG FLOWCHART STUDIO CONTAINER */
+    .flowchart-container {
+      background: var(--surface-2);
+      border: 1px solid var(--border-light);
+      border-radius: 14px;
+      padding: 1.25rem;
+      margin: 1.25rem 0;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .flowchart-caption {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-top: 0.75rem;
+      text-align: center;
+    }
+    .flowchart-svg {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* CITATION BOX */
+    .citation-box { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 12px; padding: 1.25rem; font-size: 0.82rem; color: var(--text-muted); line-height: 1.75; font-style: italic; }
+    .btn-row { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.25rem; }
+    .btn { display: inline-flex; align-items: center; gap: 6px; padding: 0.55rem 1.1rem; border-radius: 10px; border: 1.5px solid var(--border-light); background: var(--surface); color: var(--text-muted); font-size: 0.82rem; font-weight: 600; cursor: pointer; text-decoration: none; transition: all var(--tr); }
+    .btn:hover { border-color: var(--accent); color: var(--accent); background: var(--purple-bg); }
+    .btn-primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+  </style>
+</head>
+<body>
+
+  <!-- TOP NAV -->
+  <nav class="topnav">
+    <a href="../guidelines.html" class="topnav-back">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+      Kho Guidelines
+    </a>
+    <div class="topnav-divider"></div>
+    <div class="topnav-title">BSG 2025: Quản Lý Bệnh Viêm Ruột (IBD)</div>
+    <div class="topnav-badges">
+      <span class="badge badge-purple">BSG Guidelines 2025</span>
+      <span class="badge badge-teal">Gut (IF 24.5 - Q1)</span>
+      <button class="topnav-theme-toggle" id="themeToggle" title="Chuyển đổi giao diện Sáng/Tối" aria-label="Toggle dark mode">🌓</button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge-strip">
+        <div class="hero-badge">🔬 British Society of Gastroenterology</div>
+        <div class="hero-badge">📖 Gut 2025;74(Suppl 1):s1-s101</div>
+        <div class="hero-badge">🧬 Cập nhật Thực hành Toàn diện</div>
+      </div>
+      <h1 class="hero-title">
+        <span>BSG Clinical Practice Guidelines 2025</span>
+        Hướng Dẫn Quản Lý &amp; Điều Trị Bệnh Viêm Ruột (IBD) Ở Người Lớn
+      </h1>
+      <p class="hero-subtitle">
+        Bản cập nhật hướng dẫn thực hành lâm sàng toàn diện của Hội Tiêu hóa Anh quốc (BSG) về Viêm loét đại tràng (UC) &amp; Bệnh Crohn (CD): Từ nguyên lý chẩn đoán, phân loại Montreal/Paris, Treat-to-Target STRIDE-II, giám sát nồng độ thuốc (TDM), phác đồ sinh học/phân tử nhỏ tiên tiến, xử trí cấp cứu viêm đại tràng nặng (ASUC), đến an toàn thai kỳ và chu phẫu.
+      </p>
+      <div class="hero-meta">
+        <div class="hero-meta-item">📅 <strong>Năm:</strong> 2025</div>
+        <div class="hero-meta-item">🏛️ <strong>Tổ chức:</strong> British Society of Gastroenterology (BSG)</div>
+        <div class="hero-meta-item">📄 <strong>Tạp chí:</strong> Gut (BMJ Group)</div>
+        <div class="hero-meta-item">🎯 <strong>Tác động:</strong> Practice-Changing (Cấp 1)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PILLARS STICKY NAV BAR -->
+  <div class="pillars-nav">
+    <div class="pillars-nav-inner">
+      <a href="#sec-1" class="pillar-tab p-1">1. Chẩn đoán &amp; Treat-to-Target</a>
+      <a href="#sec-2" class="pillar-tab p-2">2. Sàng lọc &amp; Tiêm chủng &amp; VTE</a>
+      <a href="#sec-3" class="pillar-tab p-3">3. Giám sát Nồng độ Thuốc (TDM)</a>
+      <a href="#sec-4" class="pillar-tab p-4">4. Điều trị UC &amp; Cấp cứu ASUC</a>
+      <a href="#sec-5" class="pillar-tab p-5">5. Điều trị Bệnh Crohn (CD)</a>
+      <a href="#sec-6" class="pillar-tab p-6">6. Thai kỳ, Cho con bú &amp; Chu phẫu</a>
+    </div>
+  </div>
+
+  <!-- KPI STATS STRIP -->
+  <div class="stats-strip">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-val">Montreal / Paris</div>
+        <div class="stat-lbl">Chuẩn phân loại kiểu hình lâm sàng &amp; giải phẫu</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">&ge; 2 Mẫu / Vị trí</div>
+        <div class="stat-lbl">Quy trình sinh thiết chuẩn: Hồi tràng + 4 đoạn đại tràng + Trực tràng</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">100% Nhập viện</div>
+        <div class="stat-lbl">Bắt buộc dùng LMWH dự phòng huyết khối tĩnh mạch (VTE)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">Ngày 3 &rarr; Ngày 7</div>
+        <div class="stat-lbl">Cột mốc quyết định Cứu cánh (Rescue) &amp; Phẫu thuật trong ASUC</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE CONTENT -->
+  <div class="page-content">
+
+    <!-- ========================================================================= -->
+    <!-- MỤC 1: NGUYÊN LÝ CHẨN ĐOÁN, PHÂN LOẠI & TREAT-TO-TARGET -->
+    <!-- ========================================================================= -->
+    <div class="sec-card" id="sec-1">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <span class="sec-hdr-icon">🔬</span>
+          <h2 class="sec-title">1. Nguyên Lý Chẩn Đoán, Phân Loại Kiểu Hình &amp; Mục Tiêu Điều Trị (Treat-to-Target)</h2>
+        </div>
+        <span class="sec-badge">Nguyên lý nền tảng</span>
+      </div>
+      <div class="sec-body">
+        
+        <div class="grid-2col">
+          <div class="clin-card">
+            <div class="clin-card-accent accent-blue"></div>
+            <div class="clin-card-title">
+              <span>Hệ Thống Phân Loại Kiểu Hình Chuẩn</span>
+              <span class="badge badge-purple">Khuyến cáo</span>
+            </div>
+            <div class="clin-card-body">
+              <ul class="clin-card-list">
+                <li><strong>Người lớn:</strong> Sử dụng hệ thống <strong>phân loại kiểu hình Montreal</strong> để phân tầng nguy cơ và quản lý lâm sàng.</li>
+                <li><strong>Trẻ em &amp; Vị thành niên:</strong> Sử dụng hệ thống <strong>phân loại Paris</strong> (tinh chỉnh từ Montreal) để theo dõi sự phát triển thể chất và diễn tiến bệnh.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="clin-card">
+            <div class="clin-card-accent accent-teal"></div>
+            <div class="clin-card-title">
+              <span>Quy Trình Nội Soi &amp; Sinh Thiết Chuẩn</span>
+              <span class="badge badge-purple">Bắt buộc</span>
+            </div>
+            <div class="clin-card-body">
+              <ul class="clin-card-list">
+                <li><strong>Nội soi hồi-đại tràng (Ileocolonoscopy):</strong> Là tiêu chuẩn vàng bắt buộc để chẩn đoán xác định, đánh giá mức độ nghiêm trọng và phạm vi tổn thương ban đầu.</li>
+                <li><strong>Lấy mẫu sinh thiết tối thiểu:</strong> Lấy <strong>ít nhất 2 mẫu sinh thiết</strong> từ mỗi vị trí: hồi tràng tận, &ge; 4 phân đoạn đại tràng (manh tràng, đại tràng lên, ngang, xuống, sigma) và trực tràng. Dán nhãn rõ nguồn gốc giải phẫu kèm thông tin lâm sàng chi tiết.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="sec-subtitle">Bảng 1: Hệ Thống Ngôn Ngữ Phân Loại GRADE Dùng Trong Khuyến Cáo BSG 2025 (Table 3)</div>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width: 25%;">Cường độ Khuyến cáo</th>
+                <th style="width: 25%;">Thuật ngữ Hướng dẫn</th>
+                <th style="width: 50%;">Ý nghĩa Lâm sàng &amp; Cơ sở Bằng chứng</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="cor-badge cor-strong">Strong (Mạnh)</span></td>
+                <td><strong>"Recommended" (Khuyến cáo)</strong></td>
+                <td>Hội đồng chuyên gia tự tin rằng <strong>lợi ích mong muốn vượt trội hoàn toàn so với tác hại/rủi ro</strong> (hoặc ngược lại). Hầu hết bệnh nhân nên nhận can thiệp này.</td>
+              </tr>
+              <tr>
+                <td><span class="cor-badge cor-cond">Conditional (Có điều kiện)</span></td>
+                <td><strong>"Suggested" (Gợi ý / Đề xuất)</strong></td>
+                <td>Lợi ích mong muốn có thể vượt trội hơn tác hại, nhưng vẫn còn những điểm <strong>chưa chắc chắn đáng kể</strong>. Cần cá thể hóa và thảo luận kỹ với người bệnh.</td>
+              </tr>
+              <tr>
+                <td><span class="loe-badge loe-high">High (Rất chắc chắn)</span></td>
+                <td><em>"Is more / better"</em></td>
+                <td>Nghiên cứu có thiết kế chuẩn xác cao (RCT lớn, đồng nhất), rất khó bị thay đổi bởi các nghiên cứu tương lai.</td>
+              </tr>
+              <tr>
+                <td><span class="loe-badge loe-mod">Moderate (Trung bình)</span></td>
+                <td><em>"Probably is better"</em></td>
+                <td>Bằng chứng có chất lượng tốt, nghiên cứu tiếp theo có thể làm tăng thêm độ tin cậy của ước tính hiệu quả.</td>
+              </tr>
+              <tr>
+                <td><span class="loe-badge loe-low">Low / Very Low (Thấp)</span></td>
+                <td><em>"May be better / Uncertain"</em></td>
+                <td>Bằng chứng giới hạn từ nghiên cứu quan sát hoặc RCT có nguy cơ sai lệch; độ không chắc chắn còn cao.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="sec-subtitle">Bảng 2: So Sánh Phân Loại Vienna (1998) &amp; Montreal (2005) Cho Bệnh Crohn (Table 4)</div>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Thông số Phân loại</th>
+                <th>Hệ thống Vienna (1998)</th>
+                <th>Hệ thống Montreal (2005) – Chuẩn BSG 2025</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>A – Tuổi khởi phát (Age)</strong></td>
+                <td>
+                  <span class="rx-tag">A1: &lt; 40 tuổi</span>
+                  <span class="rx-tag">A2: &ge; 40 tuổi</span>
+                </td>
+                <td>
+                  <span class="rx-tag preferred">A1: &le; 16 tuổi</span> (Khởi phát sớm ở trẻ em)<br>
+                  <span class="rx-tag preferred">A2: 17 – 40 tuổi</span><br>
+                  <span class="rx-tag preferred">A3: &gt; 40 tuổi</span> (Khởi phát muộn)
+                </td>
+              </tr>
+              <tr>
+                <td><strong>L – Vị trí tổn thương (Location)</strong></td>
+                <td>
+                  <span class="rx-tag">L1: Hồi tràng</span>
+                  <span class="rx-tag">L2: Đại tràng</span>
+                  <span class="rx-tag">L3: Hồi-đại tràng</span>
+                  <span class="rx-tag">L4: Tiêu hóa trên (đơn độc)</span>
+                </td>
+                <td>
+                  <span class="rx-tag preferred">L1: Hồi tràng</span> | <span class="rx-tag preferred">L2: Đại tràng</span> | <span class="rx-tag preferred">L3: Hồi-đại tràng</span><br>
+                  <span class="rx-tag warning">L4: Đường tiêu hóa trên</span> (Có thể <strong>đồng tồn tại</strong> đồng thời với L1, L2 hoặc L3, ví dụ: L1+L4, L3+L4)
+                </td>
+              </tr>
+              <tr>
+                <td><strong>B – Hành vi bệnh (Behaviour)</strong></td>
+                <td>
+                  <span class="rx-tag">B1: Không hẹp, không xuyên thành</span><br>
+                  <span class="rx-tag">B2: Xơ hẹp (Stricturing)</span><br>
+                  <span class="rx-tag">B3: Xuyên thành/xâm lấn (Penetrating)</span>
+                </td>
+                <td>
+                  <span class="rx-tag preferred">B1: Không hẹp, không xuyên thành</span><br>
+                  <span class="rx-tag preferred">B2: Xơ hẹp</span> | <span class="rx-tag preferred">B3: Xuyên thành</span><br>
+                  <span class="rx-tag danger">Hậu tố "p" (Perianal):</span> Bổ sung thêm "p" khi có kèm bệnh lý quanh hậu môn (ví dụ: B1p, B2p, B3p)
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="sec-subtitle">Chiến Lược Treat-to-Target &amp; Thăm Dò Hình Ảnh Không Bức Xạ</div>
+        <div class="grid-2col">
+          <div class="ebm-rec-card rec-strong">
+            <div class="ebm-rec-header">
+              <span class="ebm-rec-title">Mục Tiêu Điều Trị Trong Viêm Loét Đại Tràng (UC)</span>
+              <div class="badge-group">
+                <span class="cor-badge cor-strong">Class I</span>
+                <span class="loe-badge loe-mod">Grade B</span>
+              </div>
+            </div>
+            <div class="ebm-rec-body">
+              Tiếp cận đa phương thức theo dõi thuyên giảm: Lâm sàng (điểm Partial Mayo hoặc SCCAI), Sinh hóa (Hb, CRP, Faecal Calprotectin), Siêu âm ruột (IUS), Nội soi đại tràng kèm sinh thiết. <strong>Thuyên giảm mô học (Histological remission)</strong> là dấu ấn mức độ lành sâu hơn nhưng không phải là mục tiêu điều trị bắt buộc.
+            </div>
+          </div>
+
+          <div class="ebm-rec-card rec-strong">
+            <div class="ebm-rec-header">
+              <span class="ebm-rec-title">Mục Tiêu Điều Trị Trong Bệnh Crohn (CD)</span>
+              <div class="badge-group">
+                <span class="cor-badge cor-strong">Class I</span>
+                <span class="loe-badge loe-mod">Grade B</span>
+              </div>
+            </div>
+            <div class="ebm-rec-body">
+              <strong>Calprotectin phân (FC)</strong> được chỉ định theo dõi định kỳ sau khi đã có nồng độ nền. <strong>Chữa lành niêm mạc (Endoscopic healing - điểm SES-CD &lt; 3 hoặc không còn loét)</strong> là mục tiêu cốt lõi. <strong>Lành xuyên thành (Transmural healing)</strong> trên IUS/MRE là thông số bổ trợ đánh giá độ sâu thuyên giảm.
+            </div>
+          </div>
+        </div>
+
+        <div class="infobox info">
+          <span class="infobox-icon">🧲</span>
+          <div>
+            <span class="infobox-title">Ưu Tiên Thăm Dò Hình Ảnh Không Bức Xạ Ion Hóa (MRE &amp; IUS)</span>
+            Khuyến cáo ưu tiên tuyệt đối <strong>Chụp cộng hưởng từ ruột (MRE)</strong> và <strong>Siêu âm ruột (IUS - Intestinal Ultrasound)</strong> thay cho chụp CT để đánh giá tổn thương xuyên thành và ngoài ruột nhằm giảm thiểu phơi nhiễm bức xạ tích lũy, đặc biệt quan trọng ở bệnh nhân trẻ tuổi. Chụp CT chỉ hạn chế sử dụng trong bối cảnh cấp cứu ngoại khoa khẩn cấp.
+          </div>
+        </div>
+
+        <!-- SVG FLOWCHART 1: CALPROTECTIN INTERPRETATION -->
+        <div class="flowchart-container">
+          <svg class="flowchart-svg" viewBox="0 0 880 280" width="100%" height="280" xmlns="http://www.w3.org/2000/svg">
+            <rect width="100%" height="100%" fill="transparent"/>
+            <defs>
+              <marker id="arr-blue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 1 L 10 5 L 0 9 z" fill="#2563eb"/>
+              </marker>
+              <marker id="arr-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 1 L 10 5 L 0 9 z" fill="#059669"/>
+              </marker>
+              <marker id="arr-amber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 1 L 10 5 L 0 9 z" fill="#d97706"/>
+              </marker>
+              <marker id="arr-red" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 1 L 10 5 L 0 9 z" fill="#dc2626"/>
+              </marker>
+            </defs>
+
+            <!-- Root Node -->
+            <rect x="270" y="15" width="340" height="52" rx="10" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+            <text x="440" y="36" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="13" font-weight="700" fill="#4c1d95">BỆNH NHÂN CROHN ĐANG THUYÊN GIẢM LÂM SÀNG</text>
+            <text x="440" y="54" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="500" fill="#6b21a8">Định lượng nồng độ Calprotectin phân (Faecal Calprotectin - FC)</text>
+
+            <!-- Orthogonal Connectors from Root -->
+            <path d="M 320 67 L 320 105 L 140 105 L 140 125" fill="none" stroke="#059669" stroke-width="2" marker-end="url(#arr-green)"/>
+            <path d="M 440 67 L 440 125" fill="none" stroke="#d97706" stroke-width="2" marker-end="url(#arr-amber)"/>
+            <path d="M 560 67 L 560 105 L 740 105 L 740 125" fill="none" stroke="#dc2626" stroke-width="2" marker-end="url(#arr-red)"/>
+
+            <!-- Node Green: FC < 100 -->
+            <rect x="25" y="125" width="230" height="125" rx="10" fill="#f0fdf4" stroke="#059669" stroke-width="2"/>
+            <text x="140" y="148" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="13" font-weight="800" fill="#065f46">FC &lt; 100 &mu;g/g</text>
+            <text x="140" y="168" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#047857">Khả năng cao lành niêm mạc</text>
+            <line x1="45" y1="178" x2="235" y2="178" stroke="#a7f3d0" stroke-width="1"/>
+            <text x="140" y="196" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#0f5132">&bull; Thuyên giảm nội soi ổn định</text>
+            <text x="140" y="214" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#0f5132">&bull; Tiếp tục duy trì phác đồ hiện tại</text>
+            <text x="140" y="232" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#0f5132">&bull; Tái khám theo dõi định kỳ</text>
+
+            <!-- Node Amber: FC 100-250 -->
+            <rect x="325" y="125" width="230" height="125" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+            <text x="440" y="148" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="13" font-weight="800" fill="#92400e">FC 100 &ndash; 250 &mu;g/g</text>
+            <text x="440" y="168" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#b45309">Khả năng trung bình lành niêm mạc</text>
+            <line x1="345" y1="178" x2="535" y2="178" stroke="#fde68a" stroke-width="1"/>
+            <text x="440" y="196" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#78350f">&bull; Xét nghiệm lại FC sau 6 tuần</text>
+            <text x="440" y="214" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#78350f">&bull; Nếu tăng &gt;50 hoặc &gt;250: Thăm dò sâu</text>
+            <text x="440" y="232" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#78350f">&bull; Nếu ổn định: Tiếp tục theo dõi</text>
+
+            <!-- Node Red: FC > 250 -->
+            <rect x="625" y="125" width="230" height="125" rx="10" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+            <text x="740" y="148" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="13" font-weight="800" fill="#991b1b">FC &gt; 250 &mu;g/g</text>
+            <text x="740" y="168" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#b91c1c">Khả năng thấp lành niêm mạc</text>
+            <line x1="645" y1="178" x2="835" y2="178" stroke="#fca5a5" stroke-width="1"/>
+            <text x="740" y="196" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#7f1d1d">&bull; Chỉ định Nội soi hoặc IUS / MRE</text>
+            <text x="740" y="214" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#7f1d1d">&bull; Đánh giá hoạt tính viêm niêm mạc</text>
+            <text x="740" y="232" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#7f1d1d">&bull; Thảo luận tối ưu hóa phác đồ</text>
+          </svg>
+          <div class="flowchart-caption">Sơ đồ 1: Lưu đồ đề xuất diễn giải Faecal Calprotectin (FC) trong theo dõi Bệnh Crohn (Figure 3 BSG 2025)</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- MỤC 2: SÀNG LỌC TOÀN DIỆN, TIÊM CHỦNG & DỰ PHÒNG VTE -->
+    <!-- ========================================================================= -->
+    <div class="sec-card" id="sec-2">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <span class="sec-hdr-icon">🛡️</span>
+          <h2 class="sec-title">2. Sàng Lọc Toàn Diện Trước Liệu Pháp Nâng Cao, Tiêm Chủng &amp; Dự Phòng Huyết Khối (VTE)</h2>
+        </div>
+        <span class="sec-badge">An toàn người bệnh</span>
+      </div>
+      <div class="sec-body">
+        
+        <div class="sec-subtitle">Bộ Bảng Kiểm Sàng Lọc Bắt Buộc Trước Khởi Đầu Thuốc Sinh Học / Phân Tử Nhỏ</div>
+        <div class="grid-3col">
+          <div class="clin-card">
+            <div class="clin-card-accent accent-red"></div>
+            <div class="clin-card-title">
+              <span>Sàng Lọc Lao (TB)</span>
+              <span class="rx-tag danger">Bắt buộc</span>
+            </div>
+            <div class="clin-card-body">
+              Xét nghiệm giải phóng <strong>Interferon-gamma (IGRA)</strong> kết hợp <strong>chụp X-quang ngực thẳng</strong> là bộ xét nghiệm tối thiểu bắt buộc cho tất cả bệnh nhân (kể cả nhóm nguy cơ thấp) trước khi dùng thuốc sinh học/ức chế miễn dịch.
+            </div>
+          </div>
+
+          <div class="clin-card">
+            <div class="clin-card-accent accent-amber"></div>
+            <div class="clin-card-title">
+              <span>Sàng Lọc Virus EBV</span>
+              <span class="rx-tag warning">Huyết thanh học</span>
+            </div>
+            <div class="clin-card-body">
+              Thực hiện xét nghiệm huyết thanh EBV. Đối với bệnh nhân <strong>EBV âm tính (seronegative)</strong>: Cân nhắc tránh dùng purine analogues hoặc kháng TNF do nguy cơ cao mắc <em>hội chứng tăng sinh lympho</em>. Nếu bắt buộc dùng, phải theo dõi sát.
+            </div>
+          </div>
+
+          <div class="clin-card">
+            <div class="clin-card-accent accent-teal"></div>
+            <div class="clin-card-title">
+              <span>Viêm Gan B, C &amp; HIV &amp; VZV</span>
+              <span class="rx-tag preferred">Đầy đủ</span>
+            </div>
+            <div class="clin-card-body">
+              Bắt buộc xét nghiệm <strong>HBsAg, HBcAb, HCV Ab và HIV</strong>. Sàng lọc <strong>Varicella Zoster IgG</strong> nếu không rõ tiền sử mắc thủy đậu. Khuyến khích bệnh nhân nữ tham gia sàng lọc ung thư cổ tử cung quốc gia và tiêm phòng HPV.
+            </div>
+          </div>
+        </div>
+
+        <div class="sec-subtitle">Khuyến Cáo Tiêm Chủng Trong Bệnh Viêm Ruột (Vaccination Guidelines)</div>
+        <div class="grid-2col">
+          <div class="infobox danger">
+            <span class="infobox-icon">🚫</span>
+            <div>
+              <span class="infobox-title">Vắc Xin Sống Giảm Độc Lực (Live Vaccines)</span>
+              <strong>Chống chỉ định tuyệt đối</strong> ở bệnh nhân đang nhận liệu pháp ức chế miễn dịch mạnh hoặc suy dinh dưỡng protein-năng lượng nặng. Chỉ được phép tiêm vắc xin sống <strong>ít nhất 4 tuần trước khi bắt đầu</strong> hoặc <strong>ít nhất 3 tháng sau khi ngừng</strong> các thuốc ức chế miễn dịch/sinh học.
+            </div>
+          </div>
+
+          <div class="infobox success">
+            <span class="infobox-icon">💉</span>
+            <div>
+              <span class="infobox-title">Vắc Xin Bất Hoạt &amp; Tái Tổ Hợp (Non-Live Vaccines)</span>
+              Tiêm định kỳ đầy đủ: <strong>Cúm mùa</strong> (hàng năm vào mùa thu), <strong>Phế cầu</strong> (liều cơ bản + nhắc lại mỗi 5 năm), <strong>SARS-CoV-2</strong> (mỗi 6 tháng). Vắc xin <strong>Shingrix (Zona tái tổ hợp)</strong>: Khuyến nghị mạnh mẽ cho người &ge; 50 tuổi dùng ức chế miễn dịch/sinh học, và người &ge; 18 tuổi bắt đầu dùng <strong>chất ức chế JAK</strong>.
+            </div>
+          </div>
+        </div>
+
+        <div class="sec-subtitle">Phòng Ngừa Biến Cố Thuyên Tắc Huyết Khối Tĩnh Mạch (VTE Prophylaxis)</div>
+        <div class="ebm-rec-card rec-strong">
+          <div class="ebm-rec-header">
+            <span class="ebm-rec-title">Dự Phòng VTE Bằng Thuốc Cho Tất Cả Bệnh Nhân IBD Nhập Viện</span>
+            <div class="badge-group">
+              <span class="cor-badge cor-strong">Strong</span>
+              <span class="loe-badge loe-mod">Moderate</span>
+            </div>
+          </div>
+          <div class="ebm-rec-body">
+            Bệnh nhân IBD có nguy cơ thuyên tắc mạch cao gấp đôi bình thường và tăng vọt trong các đợt bùng phát cấp tính. <strong>Tất cả bệnh nhân IBD nhập viện vì bất kỳ lý do gì (nội khoa hoặc ngoại khoa) đều phải nhận dự phòng huyết khối bằng thuốc (như heparin trọng lượng phân tử thấp - LMWH)</strong> trừ khi có chống chỉ định tuyệt đối.
+            <div class="infobox warning" style="margin-top: 0.75rem; margin-bottom: 0;">
+              <span class="infobox-icon">⚠️</span>
+              <div>
+                <strong>Lưu ý lâm sàng then chốt:</strong> Việc sử dụng heparin trọng lượng phân tử thấp (LMWH) dự phòng <strong>không làm khởi phát hoặc trầm trọng thêm tình trạng chảy máu đại tràng</strong> ở bệnh nhân đang bùng phát đợt cấp IBD.
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- MỤC 3: GIÁM SÁT NỒNG ĐỘ THUỐC TRONG ĐIỀU TRỊ (TDM) -->
+    <!-- ========================================================================= -->
+    <div class="sec-card" id="sec-3">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <span class="sec-hdr-icon">🧪</span>
+          <h2 class="sec-title">3. Giám Sát Nồng Độ Thuốc Trong Điều Trị (TDM) &amp; Dược Di Truyền</h2>
+        </div>
+        <span class="sec-badge">Tối ưu hóa phác đồ</span>
+      </div>
+      <div class="sec-body">
+        
+        <div class="grid-2col">
+          <div class="clin-card">
+            <div class="clin-card-accent accent-purple"></div>
+            <div class="clin-card-title">
+              <span>Nhóm Thiopurine (Azathioprine / 6-MP)</span>
+              <span class="badge badge-purple">Khuyến nghị cao</span>
+            </div>
+            <div class="clin-card-body">
+              Theo dõi định lượng chất chuyển hóa của Thiopurine để tối ưu hóa liều và giảm thiểu độc tính, phối hợp xét nghiệm công thức máu (FBC), men gan (LFT) và chức năng thận vào các tuần <strong>2, 4, 8, 12</strong>, sau đó duy trì tối thiểu mỗi 3 tháng.
+              <ul class="clin-card-list">
+                <li><strong>Đơn trị liệu:</strong> Mục tiêu 6-TGN từ <strong>235 đến 450 pmol/8&times;10<sup>8</sup> RBC</strong> và MMP &lt; 5700 pmol/8&times;10<sup>8</sup> RBC.</li>
+                <li><strong>Phối hợp Anti-TNF:</strong> Mục tiêu 6-TGN duy trì &ge; <strong>125 pmol/8&times;10<sup>8</sup> RBC</strong> là đủ để ức chế sinh kháng thể kháng thuốc.</li>
+                <li><strong>Xét nghiệm trước điều trị:</strong> Xét nghiệm enzyme <strong>TPMT</strong> và kiểu gen <strong>NUDT15</strong> (đặc biệt người gốc Á) để phòng ngừa suy tủy nặng.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="clin-card">
+            <div class="clin-card-accent accent-blue"></div>
+            <div class="clin-card-title">
+              <span>Nhóm Kháng TNF &amp; Liệu Pháp Nâng Cao Khác</span>
+              <span class="badge badge-teal">Reactive TDM</span>
+            </div>
+            <div class="clin-card-body">
+              <ul class="clin-card-list">
+                <li><strong>Kháng TNF (Infliximab / Adalimumab):</strong> TDM được chỉ định dưới dạng <strong>phản ứng (reactive TDM)</strong> khi bệnh nhân mất đáp ứng thứ phát (LOR) nhằm định hướng tăng liều, rút ngắn khoảng cách truyền hoặc đổi thuốc. Hiệu quả của TDM chủ động (proactive TDM) định kỳ khi đang thuyên giảm chưa được chứng minh vượt trội.</li>
+                <li><strong>Thuốc nâng cao không phải kháng TNF (Vedolizumab, Ustekinumab):</strong> Hiện tại chưa đủ bằng chứng ủng hộ vai trò của TDM thường quy trong thực hành lâm sàng.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="sec-subtitle">Bảng 3: Diễn Giải Nồng Độ Chất Chuyển Hóa &amp; Hướng Dẫn Chỉnh Liều Thiopurine (Table 8)</div>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width: 25%;">Nồng độ 6-TGN &amp; MMP</th>
+                <th style="width: 25%;">Kiểu hình / Cơ chế</th>
+                <th style="width: 50%;">Hướng Xử Trí Lâm Sàng Đề Xuất</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>6-TGN không phát hiện</strong><br><strong>MMP không phát hiện</strong></td>
+                <td><span class="rx-tag warning">Tuân thủ điều trị kém</span></td>
+                <td>Trao đổi và đánh giá sự tuân thủ điều trị của bệnh nhân (rất hiếm khi do kém hấp thu nặng).</td>
+              </tr>
+              <tr>
+                <td><strong>6-TGN thấp (&lt; 235)</strong><br><strong>MMP thấp/bình thường (&lt; 5700)</strong></td>
+                <td><span class="rx-tag">Dưới ngưỡng điều trị</span></td>
+                <td>Tăng liều Thiopurine thêm <strong>25 &ndash; 33%</strong> và xét nghiệm lại chất chuyển hóa sau 4 tuần.</td>
+              </tr>
+              <tr>
+                <td><strong>6-TGN thấp (&lt; 235)</strong><br><strong>MMP cao (&gt; 5700 hoặc MMP:TGN &gt; 11)</strong></td>
+                <td><span class="rx-tag danger">Tăng methyl hóa (Hypermethylator)</span></td>
+                <td><strong>Giảm liều Thiopurine xuống 25 &ndash; 33%</strong> và bắt đầu kết hợp <strong>Allopurinol 100 mg/ngày</strong>, kiểm tra lại FBC, LFT và chất chuyển hóa sau 4 tuần.</td>
+              </tr>
+              <tr>
+                <td><strong>6-TGN đạt chuẩn (235 &ndash; 450)</strong><br><strong>MMP bình thường (&lt; 5700)</strong></td>
+                <td><span class="rx-tag preferred">Ngưỡng điều trị tối ưu</span></td>
+                <td>Nếu đáp ứng lâm sàng tốt: Tiếp tục duy trì liều hiện tại. Nếu không đáp ứng lâm sàng: Đổi sang nhóm cơ chế khác.</td>
+              </tr>
+              <tr>
+                <td><strong>6-TGN cao (&gt; 450)</strong><br>HOẶC <strong>MMP cao (&gt; 5700)</strong></td>
+                <td><span class="rx-tag danger">Quá liều / Nguy cơ độc tính</span></td>
+                <td><strong>Giảm liều Thiopurine</strong> ngay và kiểm tra lại chất chuyển hóa sau 4 tuần để tránh suy tủy hoặc nhiễm độc gan.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- MỤC 4: ĐIỀU TRỊ VIÊM LOÉT ĐẠI TRÀNG (UC) & CẤP CỨU ASUC -->
+    <!-- ========================================================================= -->
+    <div class="sec-card" id="sec-4">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <span class="sec-hdr-icon">💊</span>
+          <h2 class="sec-title">4. Điều Trị Nội Khoa Viêm Loét Đại Tràng (UC) &amp; Phác Đồ Cấp Cứu ASUC</h2>
+        </div>
+        <span class="sec-badge">Phân tầng mức độ</span>
+      </div>
+      <div class="sec-body">
+        
+        <div class="grid-3col">
+          <div class="clin-card">
+            <div class="clin-card-accent accent-green"></div>
+            <div class="clin-card-title">
+              <span>Viêm Trực Tràng (Proctitis)</span>
+              <span class="badge badge-purple">Nhẹ - TB</span>
+            </div>
+            <div class="clin-card-body">
+              <ul class="clin-card-list">
+                <li><strong>Đầu tay:</strong> 5-ASA đặt hậu môn (Suppositories 1 g/ngày) là lựa chọn chuẩn.</li>
+                <li><strong>Thứ hai:</strong> 5-ASA uống hoặc Corticosteroid tại chỗ (Enemas/Foam) nếu không đáp ứng/không dung nạp.</li>
+                <li><strong>Kháng trị:</strong> Leo thang lên Steroid uống, Tacrolimus tại chỗ, JAKi, S1Pi hoặc thuốc sinh học.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="clin-card">
+            <div class="clin-card-accent accent-blue"></div>
+            <div class="clin-card-title">
+              <span>Viêm Lan Rộng Ngoài Trực Tràng</span>
+              <span class="badge badge-teal">Nhẹ - TB</span>
+            </div>
+            <div class="clin-card-body">
+              <ul class="clin-card-list">
+                <li><strong>Khởi đầu:</strong> Phối hợp <strong>5-ASA uống (&ge; 2 g/ngày) + 5-ASA tại chỗ</strong> để tối ưu hóa cảm ứng thuyên giảm. Uống 1 lần/ngày tương đương chia liều.</li>
+                <li><strong>Không đáp ứng sau 2&ndash;4 tuần:</strong> Bắt đầu sử dụng <strong>Corticosteroid uống</strong> (Prednisolone).</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="clin-card">
+            <div class="clin-card-accent accent-red"></div>
+            <div class="clin-card-title">
+              <span>Viêm Hoạt Động TB &ndash; Nặng</span>
+              <span class="badge badge-amber">Liệu pháp nâng cao</span>
+            </div>
+            <div class="clin-card-body">
+              <ul class="clin-card-list">
+                <li><strong>Cảm ứng:</strong> Prednisolone uống kết hợp 5-ASA.</li>
+                <li><strong>Khởi đầu thuốc nâng cao:</strong> Khi thất bại steroid sau 2 tuần, hoặc lệ thuộc steroid, hoặc tránh các đợt lặp lại.</li>
+                <li><strong>Ưu tiên cao:</strong> <strong>Upadacitinib, Tofacitinib</strong> (hiệu quả lớn), Infliximab, Vedolizumab, Ustekinumab, Risankizumab, Mirikizumab, Filgotinib, Ozanimod, Etrasimod.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="infobox warning">
+          <span class="infobox-icon">⚠️</span>
+          <div>
+            <span class="infobox-title">Các Thuốc &amp; Can Thiệp Không Khuyến Khích Dùng Thường Quy Trong UC</span>
+            <ul style="padding-left: 1.2rem; margin-top: 0.35rem;">
+              <li><strong>Adalimumab:</strong> Không gợi ý làm chuẩn đầu tay do hiệu quả cảm ứng thấp (trivial) so với các sinh học khác (nhưng không ngừng nếu bệnh nhân đang đáp ứng tốt).</li>
+              <li><strong>Purine analogues (Azathioprine / 6-MP):</strong> Không dùng để cảm ứng (hiệu quả trivial), nhưng được khuyến nghị mạnh mẽ để <strong>duy trì thuyên giảm</strong>.</li>
+              <li><strong>Methotrexate:</strong> Không khuyến nghị đơn trị liệu để cảm ứng hoặc duy trì trong UC do thiếu bằng chứng.</li>
+              <li><strong>Kháng sinh, FMT và Probiotics:</strong> Không khuyến nghị thường quy. FMT chỉ cân nhắc theo ca biệt lệ trong nghiên cứu chuyên khoa sâu khi mọi liệu pháp đã thất bại.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="sec-subtitle">Bảng 4: Ước Tính Thời Gian Đạt Các Mục Tiêu Điều Trị Trong Viêm Loét Đại Tràng (Table 7 BSG 2025)</div>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Liệu Pháp Điều Trị</th>
+                <th>Thuyên Giảm Lâm Sàng</th>
+                <th>Bình Thường Hóa CRP/ESR</th>
+                <th>Giảm Calprotectin Phân</th>
+                <th>Chữa Lành Niêm Mạc (EH)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>5-ASA uống (Oral 5-ASA)</strong></td>
+                <td>8 tuần</td>
+                <td>8 tuần</td>
+                <td>10 tuần</td>
+                <td>13 tuần</td>
+              </tr>
+              <tr>
+                <td><strong>Corticosteroids uống (Oral steroids)</strong></td>
+                <td><strong>2 tuần</strong></td>
+                <td>5 tuần</td>
+                <td>8 tuần</td>
+                <td>11 tuần</td>
+              </tr>
+              <tr>
+                <td><strong>Corticosteroids tác dụng tại chỗ</strong></td>
+                <td>8 tuần</td>
+                <td>8 tuần</td>
+                <td>9 tuần</td>
+                <td>13 tuần</td>
+              </tr>
+              <tr>
+                <td><strong>Purine analogues (Thiopurines)</strong></td>
+                <td>15 tuần</td>
+                <td>15 tuần</td>
+                <td>15 tuần</td>
+                <td>20 tuần</td>
+              </tr>
+              <tr>
+                <td><strong>Infliximab</strong></td>
+                <td>10 tuần</td>
+                <td>9 tuần</td>
+                <td>11 tuần</td>
+                <td>13 tuần</td>
+              </tr>
+              <tr>
+                <td><strong>Adalimumab</strong></td>
+                <td>11 tuần</td>
+                <td>10 tuần</td>
+                <td>12 tuần</td>
+                <td>14 tuần</td>
+              </tr>
+              <tr>
+                <td><strong>Vedolizumab</strong></td>
+                <td>14 tuần</td>
+                <td>14 tuần</td>
+                <td>15 tuần</td>
+                <td>18 tuần</td>
+              </tr>
+              <tr>
+                <td><strong>Tofacitinib</strong></td>
+                <td>11 tuần</td>
+                <td>9 tuần</td>
+                <td>11 tuần</td>
+                <td>14 tuần</td>
+              </tr>
+              <tr>
+                <td><strong style="color: var(--accent);">Upadacitinib</strong></td>
+                <td><strong style="color: var(--green);">8 tuần</strong></td>
+                <td><strong style="color: var(--green);">8 tuần</strong></td>
+                <td><strong style="color: var(--green);">8 tuần</strong></td>
+                <td><strong style="color: var(--green);">8 tuần</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Etrasimod</strong></td>
+                <td>12 tuần</td>
+                <td>12 tuần</td>
+                <td>12 tuần</td>
+                <td>12 tuần</td>
+              </tr>
+              <tr>
+                <td><strong>Mirikizumab</strong></td>
+                <td>12 tuần</td>
+                <td>12 tuần</td>
+                <td>12 tuần</td>
+                <td>12 tuần</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="sec-subtitle">Quản Lý Viêm Đại Tràng Cấp Tính Nặng (Acute Severe Ulcerative Colitis - ASUC)</div>
+        <div class="infobox danger">
+          <span class="infobox-icon">🚨</span>
+          <div>
+            <span class="infobox-title">Tiêu Chuẩn Nhập Viện Bắt Buộc (Truelove &amp; Witts)</span>
+            Bệnh nhân có <strong>&ge; 6 lần đi tiêu phân máu/ngày</strong> KÈM ít nhất 1 dấu hiệu độc tính hệ thống: Mạch &gt; 90 bpm, Nhiệt độ &gt; 37.8 &deg;C, Haemoglobin &lt; 105 g/L, hoặc CRP &gt; 30 mg/L.
+          </div>
+        </div>
+
+        <!-- SVG FLOWCHART 2: ASUC MANAGEMENT ALGORITHM -->
+        <div class="flowchart-container">
+          <svg class="flowchart-svg" viewBox="0 0 920 460" width="100%" height="460" xmlns="http://www.w3.org/2000/svg">
+            <rect width="100%" height="100%" fill="transparent"/>
+            <defs>
+              <marker id="asuc-arr-red" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 1 L 10 5 L 0 9 z" fill="#dc2626"/>
+              </marker>
+              <marker id="asuc-arr-blue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 1 L 10 5 L 0 9 z" fill="#2563eb"/>
+              </marker>
+              <marker id="asuc-arr-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 1 L 10 5 L 0 9 z" fill="#059669"/>
+              </marker>
+            </defs>
+
+            <!-- Day 0 Box -->
+            <rect x="220" y="15" width="480" height="75" rx="12" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+            <text x="460" y="38" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="14" font-weight="800" fill="#991b1b">NGÀY 0: NHẬP VIỆN CẤP CỨU &ndash; TIÊU CHUẨN TRUELOVE &amp; WITTS</text>
+            <text x="460" y="58" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#b91c1c">IV Corticosteroids (Hydrocortisone 100mg q6h hoặc Methylprednisolone 60mg/ngày)</text>
+            <text x="460" y="76" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#7f1d1d">+ Dự phòng VTE bằng LMWH + Cấy phân (C. diff) + Nội soi trực tràng sinh thiết CMV</text>
+
+            <!-- Arrow Day 0 to Day 3 -->
+            <path d="M 460 90 L 460 130" fill="none" stroke="#dc2626" stroke-width="2" marker-end="url(#asuc-arr-red)"/>
+
+            <!-- Day 3 Decision Box -->
+            <rect x="250" y="130" width="420" height="60" rx="10" fill="#fefce8" stroke="#ca8a04" stroke-width="2"/>
+            <text x="460" y="153" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="13" font-weight="800" fill="#854d0e">NGÀY 3: ĐÁNH GIÁ ĐÁP ỨNG STEROID</text>
+            <text x="460" y="173" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#713f12">Đi tiêu &gt;8 lần/ngày HOẶC Đi tiêu 3&ndash;8 lần/ngày + CRP &gt; 45 mg/L ?</text>
+
+            <!-- Decision Connectors -->
+            <path d="M 330 190 L 330 220 L 170 220 L 170 240" fill="none" stroke="#059669" stroke-width="2" marker-end="url(#asuc-arr-green)"/>
+            <path d="M 590 190 L 590 220 L 730 220 L 730 240" fill="none" stroke="#dc2626" stroke-width="2" marker-end="url(#asuc-arr-red)"/>
+
+            <!-- Left: Responded (Day 3) -->
+            <rect x="35" y="240" width="270" height="95" rx="10" fill="#f0fdf4" stroke="#059669" stroke-width="2"/>
+            <text x="170" y="262" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="12" font-weight="800" fill="#065f46">ĐÁP ỨNG TỐT (Đi tiêu &lt;4 lần, hết máu)</text>
+            <text x="170" y="282" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#047857">&bull; Tiếp tục IV Steroid đến ngày 5&ndash;7</text>
+            <text x="170" y="300" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#047857">&bull; Chuyển Prednisolone uống 40mg/ngày</text>
+            <text x="170" y="318" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#047857">&bull; Khởi đầu thuốc duy trì (Thiopurine/Sinh học)</text>
+
+            <!-- Right: Steroid Refractory (Day 3 Rescue) -->
+            <rect x="585" y="240" width="290" height="95" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+            <text x="730" y="262" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="12" font-weight="800" fill="#1e40af">KHÁNG STEROID &rarr; CỨU CÁNH (RESCUE)</text>
+            <text x="730" y="282" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#1d4ed8">Khởi động ngay Liệu pháp Cứu cánh:</text>
+            <text x="730" y="300" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#1e3a8a">&bull; Infliximab IV (5 mg/kg hoặc 10 mg/kg)</text>
+            <text x="730" y="318" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#1e3a8a">HOẶC Ciclosporin IV (2 mg/kg/ngày)</text>
+
+            <!-- Arrow from Rescue to Day 7 Evaluation -->
+            <path d="M 730 335 L 730 365" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#asuc-arr-blue)"/>
+
+            <!-- Day 7 Decision Node -->
+            <rect x="560" y="365" width="340" height="80" rx="10" fill="#faf5ff" stroke="#7c3aed" stroke-width="2"/>
+            <text x="730" y="386" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="12" font-weight="800" fill="#581c87">NGÀY 6&ndash;8: ĐÁNH GIÁ SAU CỨU CÁNH</text>
+            <text x="730" y="405" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#6b21a8">&bull; Đáp ứng tốt &rarr; Tiếp tục duy trì &amp; Xuất viện</text>
+            <text x="730" y="424" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#b91c1c">&bull; Thất bại &rarr; Phẫu thuật cắt đại tràng bán phần</text>
+          </svg>
+          <div class="flowchart-caption">Sơ đồ 2: Lưu đồ tiếp cận và xử trí Viêm đại tràng cấp tính nặng (ASUC) tại bệnh viện (Figure 4 BSG 2025)</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- MỤC 5: ĐIỀU TRỊ NỘI KHOA BỆNH CROHN (CD) -->
+    <!-- ========================================================================= -->
+    <div class="sec-card" id="sec-5">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <span class="sec-hdr-icon">🧬</span>
+          <h2 class="sec-title">5. Điều Trị Nội Khoa Bệnh Crohn (CD) &amp; Bệnh Lý Quanh Hậu Môn</h2>
+        </div>
+        <span class="sec-badge">Chiến lược can thiệp sớm</span>
+      </div>
+      <div class="sec-body">
+        
+        <div class="grid-2col">
+          <div class="clin-card">
+            <div class="clin-card-accent accent-purple"></div>
+            <div class="clin-card-title">
+              <span>Cảm Ứng Thuyên Giảm Trong CD Hoạt Động</span>
+              <span class="badge badge-purple">Ngắn hạn</span>
+            </div>
+            <div class="clin-card-body">
+              <ul class="clin-card-list">
+                <li><strong>Corticosteroid hệ thống:</strong> Dùng để cảm ứng trong CD trung bình - nặng, thời gian <strong>không quá 8 tuần</strong>. <strong>Chống chỉ định dùng duy trì</strong>.</li>
+                <li><strong>Budesonide (Controlled ileal release):</strong> Dùng cho CD hồi-manh tràng nhẹ - TB, thời gian <strong>không quá 8&ndash;12 tuần</strong>.</li>
+                <li><strong>Dinh dưỡng ruột hoàn toàn (EEN):</strong> Chưa đủ chứng cứ dùng thường quy ở người lớn; nhưng rất hữu ích <strong>trước phẫu thuật</strong> để tối ưu dinh dưỡng ở bệnh nhân xơ hẹp/suy dinh dưỡng.</li>
+                <li><strong>Không khuyến nghị thường quy:</strong> 5-ASA, Thiopurines đơn trị hoặc Methotrexate đơn trị không dùng để cảm ứng CD TB-nặng.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="clin-card">
+            <div class="clin-card-accent accent-teal"></div>
+            <div class="clin-card-title">
+              <span>Khởi Đầu Sớm Liệu Pháp Nâng Cao</span>
+              <span class="badge badge-teal">Top-Down / Sớm</span>
+            </div>
+            <div class="clin-card-body">
+              Khởi đầu sớm các thuốc sinh học/phân tử nhỏ cho bệnh Crohn TB-nặng để làm thay đổi diễn tiến tự nhiên, ngăn xơ hẹp và giảm phẫu thuật.
+              <ul class="clin-card-list">
+                <li><strong>Adalimumab &amp; Infliximab:</strong> Khuyến cáo mạnh mẽ <strong>kết hợp với Purine analogue</strong> để giảm sinh kháng thể kháng thuốc. Không tự ý ngừng sau 1 năm nếu đang ổn định.</li>
+                <li><strong>Ustekinumab, Risankizumab, Upadacitinib:</strong> Lựa chọn thay thế hiệu quả cao, đặc biệt ưu việt ở bệnh nhân đã từng thất bại với kháng TNF.</li>
+                <li><strong>Vedolizumab:</strong> Hiệu quả cảm ứng tương đối thấp ở CD chung; chỉ cân nhắc qua hội chẩn MDT cho nhóm bệnh nhân chưa từng dùng sinh học (naive).</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="sec-subtitle">Bảng 5: Ước Tính Thời Gian Đạt Các Mục Tiêu Điều Trị Trong Bệnh Crohn (Table 9 BSG 2025)</div>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Liệu Pháp Điều Trị</th>
+                <th>Thuyên Giảm Lâm Sàng</th>
+                <th>Bình Thường Hóa CRP/ESR</th>
+                <th>Giảm Calprotectin Phân</th>
+                <th>Chữa Lành Niêm Mạc (EH)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Corticosteroids uống / Liệu pháp EEN</strong></td>
+                <td><strong>4 tuần</strong></td>
+                <td>5 tuần</td>
+                <td>8 tuần</td>
+                <td>13 tuần</td>
+              </tr>
+              <tr>
+                <td><strong>Budesonide</strong></td>
+                <td>6 tuần</td>
+                <td>8 tuần</td>
+                <td>15 tuần</td>
+                <td>10 tuần</td>
+              </tr>
+              <tr>
+                <td><strong>Purine analogues (Thiopurines)</strong></td>
+                <td>15 tuần</td>
+                <td>15 tuần</td>
+                <td>17 tuần</td>
+                <td>24 tuần</td>
+              </tr>
+              <tr>
+                <td><strong>Methotrexate</strong></td>
+                <td>14 tuần</td>
+                <td>14 tuần</td>
+                <td>15 tuần</td>
+                <td>24 tuần</td>
+              </tr>
+              <tr>
+                <td><strong>Kháng TNF (Anti-TNF)</strong></td>
+                <td>4 &ndash; 6 tuần</td>
+                <td>9 tuần</td>
+                <td>17 tuần</td>
+                <td>11 tuần</td>
+              </tr>
+              <tr>
+                <td><strong>Vedolizumab</strong></td>
+                <td>17 tuần</td>
+                <td>15 tuần</td>
+                <td>17 tuần</td>
+                <td>24 tuần</td>
+              </tr>
+              <tr>
+                <td><strong>Ustekinumab</strong></td>
+                <td>13 tuần</td>
+                <td>11 tuần</td>
+                <td>19 tuần</td>
+                <td>14 tuần</td>
+              </tr>
+              <tr>
+                <td><strong style="color: var(--accent);">Upadacitinib</strong></td>
+                <td><strong style="color: var(--green);">12 tuần</strong></td>
+                <td><strong style="color: var(--green);">12 tuần</strong></td>
+                <td><strong style="color: var(--green);">12 tuần</strong></td>
+                <td><strong style="color: var(--green);">12 tuần</strong></td>
+              </tr>
+              <tr>
+                <td><strong style="color: var(--teal);">Risankizumab</strong></td>
+                <td><strong style="color: var(--green);">12 tuần</strong></td>
+                <td><strong style="color: var(--green);">12 tuần</strong></td>
+                <td><strong style="color: var(--green);">12 tuần</strong></td>
+                <td><strong style="color: var(--green);">12 tuần</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="sec-subtitle">Quản Lý Bệnh Crohn Quanh Hậu Môn (Perianal Crohn's Disease)</div>
+        <div class="ebm-rec-card rec-strong">
+          <div class="ebm-rec-header">
+            <span class="ebm-rec-title">Tiếp Cận Đa Chuyên Khoa Phối Hợp (MDT Approach)</span>
+            <div class="badge-group">
+              <span class="cor-badge cor-strong">Strong</span>
+              <span class="loe-badge loe-mod">Moderate</span>
+            </div>
+          </div>
+          <div class="ebm-rec-body">
+            <div class="grid-2col" style="margin-top: 0.5rem;">
+              <div>
+                <strong>1. Đánh giá &amp; Ngoại khoa:</strong>
+                <ul class="clin-card-list">
+                  <li><strong>Chẩn đoán:</strong> Kết hợp MRI vùng chậu, Khám dưới gây mê (EUA) và Nội soi đại trực tràng (đánh giá tình trạng viêm trực tràng kèm theo).</li>
+                  <li><strong>Xử trí ngoại khoa:</strong> Đặt <strong>Seton không thắt (loose seton)</strong> để dẫn lưu triệt để mủ và ngăn ngừa áp xe tái phát.</li>
+                </ul>
+              </div>
+              <div>
+                <strong>2. Điều trị nội khoa:</strong>
+                <ul class="clin-card-list">
+                  <li><strong>Kháng sinh:</strong> Ciprofloxacin hoặc Metronidazole kiểm soát nhiễm trùng cấp tính.</li>
+                  <li><strong>Khởi đầu sớm Infliximab:</strong> Là thuốc sinh học hàng đầu; nhắm mục tiêu nồng độ đáy cao hơn (<strong>&gt; 10 &mu;g/mL</strong>) để tối ưu hóa lành đường rò. Upadacitinib, Ustekinumab là lựa chọn tiếp theo nếu kém đáp ứng.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- MỤC 6: THAI KỲ, CHO CON BÚ, AN TOÀN THUỐC & NGOẠI KHOA CHU PHẪU -->
+    <!-- ========================================================================= -->
+    <div class="sec-card" id="sec-6">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <span class="sec-hdr-icon">🤰</span>
+          <h2 class="sec-title">6. Thai Kỳ, Cho Con Bú, An Toàn Thuốc &amp; Quản Lý Ngoại Khoa Chu Phẫu</h2>
+        </div>
+        <span class="sec-badge">Quản lý đặc biệt</span>
+      </div>
+      <div class="sec-body">
+        
+        <div class="sec-subtitle">Nguyên Tắc Điều Trị Trước, Trong Thai Kỳ &amp; Cho Con Bú</div>
+        <div class="grid-3col">
+          <div class="clin-card">
+            <div class="clin-card-accent accent-purple"></div>
+            <div class="clin-card-title">
+              <span>Trước Thụ Thai</span>
+              <span class="rx-tag preferred">Chuẩn bị</span>
+            </div>
+            <div class="clin-card-body">
+              Nguyên tắc: <em>"Mẹ khỏe mạnh thì con mới khỏe mạnh"</em>. Cần đạt thuyên giảm ổn định <strong>ít nhất 3 tháng trước khi thụ thai</strong>. Ngừng thuốc gây quái thai (<strong>Methotrexate, JAKi, S1Pi</strong>) ít nhất 3 tháng trước thụ thai. Bổ sung Acid Folic 400 &mu;g/ngày (hoặc <strong>5 mg/ngày</strong> nếu dùng Sulfasalazine hoặc tổn thương hồi tràng).
+            </div>
+          </div>
+
+          <div class="clin-card">
+            <div class="clin-card-accent accent-green"></div>
+            <div class="clin-card-title">
+              <span>Trong Thai Kỳ</span>
+              <span class="rx-tag preferred">Duy trì ổn định</span>
+            </div>
+            <div class="clin-card-body">
+              <strong>Tiếp tục thuốc an toàn suốt thai kỳ:</strong> 5-ASA, Thiopurines, Corticosteroid và các thuốc sinh học (<strong>Kháng TNF tiếp tục suốt thai kỳ bao gồm tam cá nguyệt 3</strong>; Vedolizumab, Ustekinumab an toàn). Chống chỉ định tuyệt đối JAKi &amp; S1Pi.
+            </div>
+          </div>
+
+          <div class="clin-card">
+            <div class="clin-card-accent accent-teal"></div>
+            <div class="clin-card-title">
+              <span>Cho Con Bú &amp; Trẻ Sơ Sinh</span>
+              <span class="rx-tag preferred">An toàn</span>
+            </div>
+            <div class="clin-card-body">
+              Hầu hết các thuốc (5-ASA, Thiopurines, Steroids, Kháng TNF, Vedolizumab, Ustekinumab) bài tiết rất ít qua sữa mẹ và an toàn khi cho con bú. <strong>Lưu ý trẻ sơ sinh phơi nhiễm thuốc sinh học trong tử cung:</strong> Hoãn tất cả các vắc xin sống (như <strong>vắc xin BCG</strong>) trong vòng <strong>12 tháng đầu đời</strong>.
+            </div>
+          </div>
+        </div>
+
+        <div class="sec-subtitle">Bảng 6: Mức Độ An Toàn Của Các Thuốc Điều Trị IBD Trong Thai Kỳ &amp; Cho Con Bú (Table 11 BSG 2025)</div>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Nhóm Thuốc</th>
+                <th>Độ An Toàn Thai Kỳ</th>
+                <th>Độ An Toàn Cho Con Bú</th>
+                <th>Khuyến Nghị Lâm Sàng Cốt Lõi</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>5-ASA (Mesalazine)</strong></td>
+                <td><span class="rx-tag preferred">Nguy cơ thấp (Low risk)</span></td>
+                <td><span class="rx-tag preferred">An toàn / Khuyên dùng</span></td>
+                <td>Tiếp tục duy trì suốt thai kỳ. Bổ sung Acid Folic 5 mg/ngày nếu dùng Sulfasalazine.</td>
+              </tr>
+              <tr>
+                <td><strong>Purine analogues (Thiopurines)</strong></td>
+                <td><span class="rx-tag preferred">Nguy cơ thấp (Low risk)</span></td>
+                <td><span class="rx-tag preferred">An toàn / Khuyên dùng</span></td>
+                <td>Tiếp tục duy trì. Có thể định lượng chất chuyển hóa nếu nghi ngờ bùng phát hoặc tăng men gan.</td>
+              </tr>
+              <tr>
+                <td><strong>Corticosteroids</strong></td>
+                <td><span class="rx-tag preferred">Nguy cơ thấp (Low risk)</span></td>
+                <td><span class="rx-tag preferred">An toàn / Khuyên dùng</span></td>
+                <td>Sử dụng ngắn hạn để kiểm soát đợt bùng phát cấp; tránh duy trì kéo dài.</td>
+              </tr>
+              <tr>
+                <td><strong>Kháng TNF (Anti-TNF)</strong></td>
+                <td><span class="rx-tag preferred">Nguy cơ thấp (Low risk)</span></td>
+                <td><span class="rx-tag preferred">An toàn / Khuyên dùng</span></td>
+                <td><strong>Tiếp tục suốt thai kỳ (bao gồm tam cá nguyệt 3)</strong> để phòng ngừa bùng phát đợt cấp ở mẹ.</td>
+              </tr>
+              <tr>
+                <td><strong>Vedolizumab &amp; Ustekinumab</strong></td>
+                <td><span class="rx-tag preferred">Nguy cơ thấp (Low risk)</span></td>
+                <td><span class="rx-tag preferred">An toàn / Khuyên dùng</span></td>
+                <td>Dữ liệu tích lũy chứng minh tính an toàn cao, khuyên tiếp tục duy trì nếu đang đạt thuyên giảm.</td>
+              </tr>
+              <tr>
+                <td><strong>JAK Inhibitors &amp; S1P Modulators</strong></td>
+                <td><span class="rx-tag danger">CHỐNG CHỈ ĐỊNH</span></td>
+                <td><span class="rx-tag danger">Không khuyến cáo</span></td>
+                <td><strong>Bắt buộc ngừng tối thiểu 3 tháng trước khi thụ thai</strong> do nguy cơ dị tật thai nhi trên thực nghiệm.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="sec-subtitle">Quản Lý Phẫu Thuật &amp; Dự Phòng Tái Phát Sau Mổ Chu Phẫu</div>
+        <div class="grid-2col">
+          <div class="clin-card">
+            <div class="clin-card-accent accent-red"></div>
+            <div class="clin-card-title">
+              <span>Phẫu Thuật Trong Viêm Loét Đại Tràng (UC)</span>
+              <span class="badge badge-purple">Ngoại khoa</span>
+            </div>
+            <div class="clin-card-body">
+              <ul class="clin-card-list">
+                <li>Tạo túi chứa hồi tràng (IPAA) hoặc Mở thông hồi tràng vĩnh viễn mang lại chất lượng sống tương đương.</li>
+                <li><strong>Cảnh báo steroid chu phẫu:</strong> Bắt buộc ngừng hoặc giảm thiểu tối đa steroid trước phẫu thuật chương trình. <strong>CẤM phẫu thuật tạo túi IPAA khi bệnh nhân đang dùng corticosteroid</strong> do nguy cơ rò và bục túi cực kỳ cao.</li>
+                <li><strong>Thuốc sinh học chu phẫu:</strong> Cho phép tiếp tục dùng Biologics và Thiopurines trong giai đoạn chu phẫu (không làm tăng biến chứng nhiễm trùng hậu phẫu).</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="clin-card">
+            <div class="clin-card-accent accent-blue"></div>
+            <div class="clin-card-title">
+              <span>Dự Phòng Tái Phát Sau Mổ Trong Bệnh Crohn (CD)</span>
+              <span class="badge badge-teal">Hậu phẫu 90 ngày</span>
+            </div>
+            <div class="clin-card-body">
+              <ul class="clin-card-list">
+                <li>Phẫu thuật cắt đoạn hồi-manh tràng nội soi là lựa chọn hợp lý cho CD khu trú xơ hẹp kháng trị.</li>
+                <li><strong>Khởi đầu sớm liệu pháp nâng cao trong vòng 90 ngày sau mổ</strong> (Infliximab, Adalimumab hoặc Vedolizumab) cho nhóm có nguy cơ tái phát cao (hút thuốc lá, mổ nhiều lần, diện cắt có viêm xuyên thành).</li>
+                <li><strong>Không khuyến nghị dùng 5-ASA hoặc Thiopurines đơn trị</strong> để dự phòng tái phát sau mổ do hiệu quả rất thấp.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- CITATION & BRIDGE -->
+    <!-- ========================================================================= -->
+    <div class="sec-card">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <span class="sec-hdr-icon">📚</span>
+          <h2 class="sec-title">Tài Liệu Tham Khảo &amp; Nguồn Trích Dẫn Chuẩn (AMA Citation)</h2>
+        </div>
+      </div>
+      <div class="sec-body">
+        <div class="citation-box">
+          Moran GW, Gordon M, Sinopolou V, et al. British Society of Gastroenterology guidelines on inflammatory bowel disease in adults: 2025. <em>Gut</em>. 2025;74(Suppl 1):s1-s101. doi:10.1136/gutjnl-2024-334395
+        </div>
+
+        <div class="btn-row">
+          <a href="../guidelines.html" class="btn btn-primary">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+            Quay lại Kho Guidelines
+          </a>
+          <a href="https://doi.org/10.1136/gutjnl-2024-334395" target="_blank" rel="noopener noreferrer" class="btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Toàn văn trên Gut (BMJ)
+          </a>
+          <a href="../../../docspace/docspace.html" class="btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Soạn Bệnh Án SOAP (DocSpace)
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // Theme toggle handler
+    const themeToggleBtn = document.getElementById('themeToggle');
+    if (themeToggleBtn) {
+      themeToggleBtn.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('cliniportal-theme', newTheme);
+      });
+
+      // Load saved theme
+      const savedTheme = localStorage.getItem('cliniportal-theme');
+      if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+      }
+    }
+  </script>
+</body>
+</html>

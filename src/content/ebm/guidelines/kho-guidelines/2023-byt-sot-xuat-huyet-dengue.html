@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tóm tắt Hướng dẫn Chẩn đoán và Điều trị Sốt xuất huyết Dengue 2023 của Bộ Y tế Việt Nam (QĐ 2760/QĐ-BYT). Phác đồ bù dịch, quy trình chống sốc trẻ em và người lớn, cao phân tử, truyền máu và xử trí suy tạng.">
+  <title>Hướng Dẫn Chẩn Đoán & Điều Trị Sốt Xuất Huyết Dengue BYT 2023 – CliniPortal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #059669; --green-bg: #f0fdf4; --green-light: #a7f3d0;
+      --orange: #d97706; --orange-bg: #fffbeb; --orange-light: #fde68a;
+      --red: #dc2626; --red-bg: #fef2f2; --red-light: #fca5a5;
+      --blue: #2563eb; --blue-bg: #eff6ff; --blue-light: #bfdbfe;
+      --teal: #0d9488; --teal-bg: #f0fdfa; --teal-light: #99f6e4;
+      --purple: #7c3aed; --purple-bg: #faf5ff; --purple-light: #ddd6fe;
+      --accent: #0f6fb4;
+      --bg: #f0f4f8; --surface: #ffffff; --surface-2: #f8fafc;
+      --border: #cbd5e1; --border-light: #e2e8f0;
+      --text: #0f172a; --text-muted: #475569; --text-faint: #94a3b8;
+      --radius: 16px; --tr: 220ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [data-theme="dark"] {
+      --green: #10b981; --green-bg: #064e3b; --green-light: #047857;
+      --orange: #f59e0b; --orange-bg: #78350f; --orange-light: #b45309;
+      --red: #ef4444; --red-bg: #7f1d1d; --red-light: #b91c1c;
+      --blue: #3b82f6; --blue-bg: #1e3a8a; --blue-light: #1d4ed8;
+      --teal: #14b8a6; --teal-bg: #115e59; --teal-light: #0f766e;
+      --purple: #8b5cf6; --purple-bg: #4c1d95; --purple-light: #6d28d9;
+      --accent: #38bdf8;
+      --bg: #0f172a; --surface: #1e293b; --surface-2: #0f172a;
+      --border: #334155; --border-light: #1e293b;
+      --text: #f8fafc; --text-muted: #cbd5e1; --text-faint: #64748b;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; font-size: 15px; background: var(--bg); color: var(--text); line-height: 1.65; min-height: 100vh; transition: background var(--tr), color var(--tr); }
+
+    /* TOP NAV */
+    .topnav { position: sticky; top: 0; z-index: 200; background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 1rem; padding: 0 1.5rem; height: 56px; transition: background var(--tr), border-color var(--tr); }
+    [data-theme="dark"] .topnav { background: rgba(30, 41, 59, 0.9); }
+    .topnav-back { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--accent); text-decoration: none; font-size: 0.82rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 8px; transition: background var(--tr); white-space: nowrap; }
+    .topnav-back:hover { background: var(--blue-bg); }
+    .topnav-divider { width: 1px; height: 18px; background: var(--border-light); flex-shrink: 0; }
+    .topnav-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .topnav-theme-toggle { margin-left: auto; background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 1.1rem; padding: 0.5rem; border-radius: 50%; transition: background var(--tr); display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; }
+    .topnav-theme-toggle:hover { background: var(--surface-2); color: var(--accent); }
+
+    /* QUICK NAV BAR */
+    .quicknav { position: sticky; top: 56px; z-index: 190; background: var(--surface); border-bottom: 1px solid var(--border-light); display: flex; gap: 0.5rem; padding: 0.6rem 1.5rem; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .quicknav::-webkit-scrollbar { height: 3px; }
+    .quicknav::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    .quicknav-link { display: inline-flex; align-items: center; white-space: nowrap; font-size: 0.78rem; font-weight: 600; color: var(--text-muted); text-decoration: none; padding: 0.35rem 0.85rem; border-radius: 20px; background: var(--surface-2); border: 1px solid var(--border-light); transition: all var(--tr); }
+    .quicknav-link:hover, .quicknav-link.active { background: var(--blue-bg); color: var(--accent); border-color: var(--blue-light); }
+
+    /* HERO */
+    .hero { background: linear-gradient(135deg, #092e48 0%, #0f6fb4 45%, #b91c1c 100%); color: #fff; padding: 3.5rem 1.5rem 4.5rem; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 50%, rgba(56, 189, 248, 0.25) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(239, 68, 68, 0.2) 0%, transparent 55%); }
+    .hero-inner { max-width: 1000px; margin: 0 auto; position: relative; z-index: 1; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255, 255, 255, 0.14); border: 1px solid rgba(255, 255, 255, 0.24); border-radius: 20px; padding: 0.3rem 0.9rem; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1rem; color: #7dd3fc; }
+    .hero-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 0.85rem; }
+    .hero-title span { display: block; background: linear-gradient(90deg, #7dd3fc, #fca5a5); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 0.65em; font-weight: 600; letter-spacing: 0; margin-bottom: 0.2rem; }
+    .hero-subtitle { font-size: 0.95rem; opacity: 0.88; max-width: 780px; margin-bottom: 2rem; line-height: 1.65; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 0.75rem 2rem; font-size: 0.8rem; opacity: 0.8; }
+    .hero-meta-item { display: flex; align-items: center; gap: 6px; }
+
+    /* PILLARS STRIP */
+    .pillars { background: var(--surface); border-bottom: 1px solid var(--border-light); padding: 1.75rem 1.5rem; }
+    .pillars-inner { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+    .pillar { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.1rem 1.2rem; display: flex; align-items: flex-start; gap: 0.85rem; position: relative; overflow: hidden; transition: box-shadow var(--tr); }
+    .pillar::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; border-radius: 4px 0 0 4px; }
+    .pillar.p1::before { background: var(--blue); }
+    .pillar.p2::before { background: var(--orange); }
+    .pillar.p3::before { background: var(--red); }
+    .pillar.p4::before { background: var(--teal); }
+    .pillar:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+    .pillar-icon { font-size: 1.6rem; flex-shrink: 0; line-height: 1; }
+    .pillar-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text); margin-bottom: 0.25rem; }
+    .pillar-desc { font-size: 0.76rem; color: var(--text-muted); line-height: 1.45; }
+
+    /* PAGE CONTENT */
+    .page-content { max-width: 1000px; margin: 0 auto; padding: 2.25rem 1.5rem; display: flex; flex-direction: column; gap: 2rem; }
+
+    /* SECTION CARDS */
+    .sec-card { background: var(--surface); border: 1px solid var(--border-light); border-radius: var(--radius); overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.03); }
+    .sec-hdr { padding: 1.1rem 1.5rem; border-bottom: 1px solid var(--border-light); background: var(--surface-2); display: flex; align-items: center; gap: 0.75rem; }
+    .sec-hdr-icon { font-size: 1.2rem; color: var(--accent); }
+    .sec-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.05rem; font-weight: 800; color: var(--text); }
+    .sec-body { padding: 1.5rem; display: flex; flex-direction: column; gap: 1.25rem; }
+    .sec-subtitle { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+    .sec-subtitle::after { content: ''; flex: 1; height: 1px; background: var(--border-light); }
+
+    /* INFO BOXES */
+    .infobox { display: flex; align-items: flex-start; gap: 0.85rem; padding: 1rem 1.25rem; border-radius: 12px; font-size: 0.85rem; line-height: 1.6; }
+    .infobox-icon { font-size: 1.3rem; flex-shrink: 0; line-height: 1.3; }
+    .infobox.danger { background: var(--red-bg); border: 1px solid var(--red-light); border-left: 4px solid var(--red); color: var(--text); }
+    .infobox.success { background: var(--green-bg); border: 1px solid var(--green-light); border-left: 4px solid var(--green); color: var(--text); }
+    .infobox.warning { background: var(--orange-bg); border: 1px solid var(--orange-light); border-left: 4px solid var(--orange); color: var(--text); }
+    .infobox.info { background: var(--blue-bg); border: 1px solid var(--blue-light); border-left: 4px solid var(--blue); color: var(--text); }
+    .infobox.teal { background: var(--teal-bg); border: 1px solid var(--teal-light); border-left: 4px solid var(--teal); color: var(--text); }
+    .infobox strong { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; color: var(--text); }
+
+    /* TABLES */
+    .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 12px; border: 1px solid var(--border-light); }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 0.83rem; min-width: 650px; text-align: left; }
+    .data-table thead th { padding: 0.75rem 1rem; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; background: var(--surface-2); color: var(--text-muted); border-bottom: 1px solid var(--border-light); }
+    .data-table td { padding: 0.85rem 1rem; border-bottom: 1px solid var(--border-light); vertical-align: top; line-height: 1.55; }
+    .data-table tbody tr:last-child td { border-bottom: none; }
+    .data-table tbody tr:hover td { background: rgba(0,0,0,0.015); }
+    [data-theme="dark"] .data-table tbody tr:hover td { background: rgba(255,255,255,0.02); }
+
+    /* BADGES & TAGS */
+    .badge { display: inline-flex; align-items: center; gap: 4px; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.72rem; font-weight: 700; white-space: nowrap; }
+    .badge-green { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-light); }
+    .badge-orange { background: var(--orange-bg); color: var(--orange); border: 1px solid var(--orange-light); }
+    .badge-red { background: var(--red-bg); color: var(--red); border: 1px solid var(--red-light); }
+    .badge-blue { background: var(--blue-bg); color: var(--blue); border: 1px solid var(--blue-light); }
+    .badge-purple { background: var(--purple-bg); color: var(--purple); border: 1px solid var(--purple-light); }
+
+    .rx-tag { display: inline-block; background: var(--surface-2); color: var(--text-muted); font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; padding: 0.15rem 0.5rem; border-radius: 6px; border: 1px solid var(--border-light); margin: 0.15rem 0.1rem; }
+    .rx-tag.highlight { background: var(--blue-bg); color: var(--accent); border-color: var(--blue-light); font-weight: 600; }
+    .rx-tag.alert { background: var(--red-bg); color: var(--red); border-color: var(--red-light); font-weight: 600; }
+
+    /* FLOWCHART & ALGORITHM STEPS */
+    .algo-box { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 12px; padding: 1.25rem; display: flex; flex-direction: column; gap: 0.85rem; }
+    .algo-step { display: flex; align-items: flex-start; gap: 0.85rem; }
+    .algo-num { width: 28px; height: 28px; border-radius: 50%; background: var(--accent); color: #fff; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.8rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .algo-content { flex: 1; font-size: 0.84rem; line-height: 1.6; }
+    .algo-content strong { color: var(--text); font-family: 'Plus Jakarta Sans', sans-serif; }
+
+    /* MCQ QUIZ */
+    .mcq-card { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.25rem; margin-bottom: 1rem; }
+    .mcq-card:last-child { margin-bottom: 0; }
+    .mcq-q { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.9rem; color: var(--text); margin-bottom: 0.85rem; display: flex; gap: 0.5rem; }
+    .mcq-opts { display: flex; flex-direction: column; gap: 0.5rem; }
+    .mcq-opt { padding: 0.65rem 0.9rem; border-radius: 10px; border: 1px solid var(--border); background: var(--surface); font-size: 0.83rem; cursor: pointer; transition: all var(--tr); display: flex; align-items: center; gap: 0.5rem; }
+    .mcq-opt:hover { border-color: var(--accent); background: var(--blue-bg); }
+    .mcq-opt.selected-correct { border-color: var(--green); background: var(--green-bg); color: #065f46; font-weight: 600; }
+    .mcq-opt.selected-wrong { border-color: var(--red); background: var(--red-bg); color: #991b1b; }
+    .mcq-exp { margin-top: 0.85rem; padding: 0.85rem 1rem; border-radius: 10px; background: var(--blue-bg); border-left: 4px solid var(--blue); font-size: 0.82rem; color: var(--text); display: none; line-height: 1.6; }
+    .mcq-exp.show { display: block; }
+
+    /* CITATION & FOOTER */
+    .citation-box { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 12px; padding: 1.25rem; font-size: 0.82rem; color: var(--text-muted); line-height: 1.75; font-style: italic; }
+    .page-footer { max-width: 1000px; margin: 0 auto; padding: 2rem 1.5rem 4rem; text-align: center; font-size: 0.8rem; color: var(--text-faint); border-top: 1px solid var(--border-light); }
+
+    @media (max-width: 768px) {
+      .page-content { padding: 1.25rem 1rem; }
+      .sec-body { padding: 1.1rem 1rem; }
+      .pillars-inner { grid-template-columns: 1fr; }
+    }
+
+    @media print {
+      body { background: #fff !important; color: #000 !important; }
+      .topnav, .quicknav, .topnav-theme-toggle, .mcq-card, .page-footer, .topnav-pdf-btn { display: none !important; }
+      .main-container { max-width: 100% !important; margin: 0 !important; padding: 0 !important; }
+      .sec-card { break-inside: avoid; border: 1px solid #ccc !important; box-shadow: none !important; }
+    }
+  </style>
+  <link rel="stylesheet" href="../../../../../css/components/header.css">
+  <script type="module" src="../../../../../components/header.ts" defer></script>
+</head>
+<body>
+  <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
+
+
+  <!-- TOP NAV -->
+  <nav class="topnav">
+    <a href="../guidelines.html" class="topnav-back">
+      <i class="fa-solid fa-chevron-left"></i>
+      Kho Guidelines
+    </a>
+    <div class="topnav-divider"></div>
+    <div class="topnav-title">BYT 2023 – Hướng dẫn Chẩn đoán & Điều trị Sốt xuất huyết Dengue (QĐ 2760/QĐ-BYT)</div>
+    <button class="topnav-theme-toggle topnav-pdf-btn" onclick="window.print()" title="Tải PDF / In bài viết" style="margin-left: auto; margin-right: 4px;">
+      <i class="fa-solid fa-file-pdf"></i>
+    </button>
+    <button class="topnav-theme-toggle" id="themeToggleBtn" aria-label="Đổi giao diện">
+      <i class="fa-solid fa-moon"></i>
+    </button>
+  </nav>
+
+  <!-- QUICK NAV BAR -->
+  <div class="quicknav">
+    <a href="#sec-daicuong" class="quicknav-link active">1. Sinh Lý Bệnh & 3 Giai Đoạn</a>
+    <a href="#sec-chandoan" class="quicknav-link">2. Chẩn Đoán & Phân Độ</a>
+    <a href="#sec-ngoaitru" class="quicknav-link">3. Phân Nhóm & Ngoại Trú</a>
+    <a href="#sec-canhbao" class="quicknav-link">4. Truyền Dịch Dấu Hiệu Cảnh Báo</a>
+    <a href="#sec-chongsoc" class="quicknav-link">5. Phác Đồ Chống Sốc & CPT</a>
+    <a href="#sec-bienchung" class="quicknav-link">6. Biến Chứng Nặng & Chế Phẩm Máu</a>
+    <a href="#sec-dacbiet" class="quicknav-link">7. Đối Tượng Đặc Biệt</a>
+    <a href="#sec-mcq" class="quicknav-link">8. Cheat-Sheet & MCQ Quiz</a>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge"><i class="fa-solid fa-virus-covid"></i> BỘ Y TẾ VIỆT NAM · QĐ 2760/QĐ-BYT</div>
+      <h1 class="hero-title">
+        <span>GUIDELINES CẬP NHẬT 2023 · BỆNH TRUYỀN NHIỄM</span>
+        HƯỚNG DẪN CHẨN ĐOÁN & ĐIỀU TRỊ SỐT XUẤT HUYẾT DENGUE
+      </h1>
+      <p class="hero-subtitle">
+        Cập nhật theo Quyết định số 2760/QĐ-BYT (ngày 04/07/2023). Chuẩn hóa diễn tiến sinh lý bệnh 3 giai đoạn, phân độ lâm sàng 3 mức, quy trình bù dịch & chống sốc cá thể hóa (trẻ em vs người lớn vs thai phụ/béo phì), chỉ định truyền chế phẩm máu và xử trí suy tạng nặng.
+      </p>
+      <div class="hero-meta">
+        <div class="hero-meta-item"><i class="fa-solid fa-calendar-check"></i> Ban hành: 04/07/2023</div>
+        <div class="hero-meta-item"><i class="fa-solid fa-building-flag"></i> Cơ quan: Bộ Y tế Việt Nam</div>
+        <div class="hero-meta-item"><i class="fa-solid fa-mosquito"></i> Tác nhân: Vi rút Dengue (DEN-1, 2, 3, 4)</div>
+        <div class="hero-meta-item"><i class="fa-solid fa-file-medical"></i> Mã tài liệu: QĐ-2760/2023/BYT</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PILLARS STRIP -->
+  <div class="pillars">
+    <div class="pillars-inner">
+      <div class="pillar p1">
+        <div class="pillar-icon">🌡️</div>
+        <div>
+          <div class="pillar-title">3 Giai Đoạn Lâm Sàng</div>
+          <div class="pillar-desc">Sốt (D1-3) ➔ Nguy hiểm (D3-7: Thoát huyết tương, tụt tiểu cầu, sốc) ➔ Hồi phục (D7-10).</div>
+        </div>
+      </div>
+      <div class="pillar p2">
+        <div class="pillar-icon">📊</div>
+        <div>
+          <div class="pillar-title">Phân Độ 3 Mức</div>
+          <div class="pillar-desc">1. SXHD ➔ 2. SXHD có Dấu hiệu cảnh báo ➔ 3. SXHD nặng (Sốc, Xuất huyết nặng, Suy tạng nặng).</div>
+        </div>
+      </div>
+      <div class="pillar p3">
+        <div class="pillar-icon">💉</div>
+        <div>
+          <div class="pillar-title">Chống Sốc Cá Thể Hóa</div>
+          <div class="pillar-desc">Dịch tinh thể ➔ Cao phân tử (CPT) Dextran/HES. Phân biệt trẻ em vs người lớn vs béo phì.</div>
+        </div>
+      </div>
+      <div class="pillar p4">
+        <div class="pillar-icon">🩸</div>
+        <div>
+          <div class="pillar-title">Biến Chứng & Chế Phẩm Máu</div>
+          <div class="pillar-desc">Chỉ định cụ thể Hồng cầu lắng, FFP, Kết tủa lạnh, Tiểu cầu; Xử trí suy gan/thận/não & Furosemide.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE CONTENT -->
+  <div class="page-content">
+
+    <!-- SEC 1: ĐẠI CƯƠNG & 3 GIAI ĐOẠN -->
+    <div class="sec-card" id="sec-daicuong">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-microscope sec-hdr-icon"></i>
+        <h2 class="sec-title">1. Đại Cương & Diễn Biến Lâm Sàng Sinh Lý Bệnh 3 Giai Đoạn</h2>
+      </div>
+      <div class="sec-body">
+        <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.65;">
+          Sốt xuất huyết Dengue (SXHD) là bệnh truyền nhiễm do vi rút Dengue gây nên với 4 typ huyết thanh (DEN-1, DEN-2, DEN-3, DEN-4). Muỗi <em>Aedes aegypti</em> (muỗi vằn) là côn trùng trung gian truyền bệnh chủ yếu. Biểu hiện đặc trưng của bệnh là <strong>sốt, xuất huyết và thoát huyết tương</strong>. Hiện tượng tăng tính thấm thành mạch dẫn đến thoát huyết tương có thể gây sốc giảm thể tích, kết hợp rối loạn đông máu và suy tạng nặng.
+        </p>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-timeline"></i> Đặc điểm 3 giai đoạn lâm sàng liên tiếp</div>
+
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width: 140px;">Giai đoạn</th>
+                <th style="width: 320px;">Biểu hiện Lâm sàng</th>
+                <th>Cận lâm sàng &amp; Động học Sinh lý bệnh</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <strong style="color: var(--blue);">1. Giai đoạn Sốt</strong><br>
+                  <span class="badge badge-blue">Ngày 1 - Ngày 3</span>
+                </td>
+                <td>
+                  • Sốt cao đột ngột, liên tục.<br>
+                  • Triệu chứng nhiễm độc vi rút: Nhức đầu, chán ăn, buồn nôn, đau cơ/khớp, nhức 2 hố mắt.<br>
+                  • Da xung huyết, Nghiệm pháp dây thắt (Lacet) (+).<br>
+                  • Chấm xuất huyết dưới da, chảy máu chân răng/mũi.
+                </td>
+                <td>
+                  • Hematocrit (Hct) bình thường.<br>
+                  • Số lượng tiểu cầu bình thường hoặc giảm dần nhưng <strong>&gt; 100.000/mm³</strong>.<br>
+                  • Số lượng bạch cầu thường giảm.<br>
+                  • Tải lượng vi rút &amp; kháng nguyên <strong>NS1 cao nhất</strong> trong 5 ngày đầu.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong style="color: var(--red);">2. Giai đoạn Nguy hiểm</strong><br>
+                  <span class="badge badge-red">Ngày 3 - Ngày 7</span>
+                </td>
+                <td>
+                  • Người bệnh có thể còn sốt hoặc đã giảm sốt.<br>
+                  • <strong>Thoát huyết tương cấp tính (kéo dài 24-48 giờ):</strong> Tràn dịch màng phổi, màng bụng, phù nề mi mắt.<br>
+                  • <strong>Sốc giảm thể tích:</strong> Vật vã, bứt rứt/li bì, lạnh chi, mạch nhanh nhỏ, HA kẹt (≤ 20 mmHg) hoặc tụt HA, tiểu ít.<br>
+                  • <strong>Xuất huyết:</strong> Xuất huyết dưới da, niêm mạc (chảy máu răng, mũi, nôn ra máu, tiêu phân đen) hoặc xuất huyết nội tạng nặng.<br>
+                  • <strong>Suy tạng nặng:</strong> Suy gan (AST/ALT ≥ 1000 U/L), suy thận, rối loạn tri giác (thể não), viêm cơ tim.
+                </td>
+                <td>
+                  • <strong>Cô đặc máu:</strong> Hct tăng &gt; 20% so với giá trị ban đầu hoặc trung bình dân số.<br>
+                  • <strong>Tiểu cầu giảm sâu nặng (&lt; 100.000/mm³)</strong>.<br>
+                  • AST, ALT tăng cao. Rối loạn đông máu (PT/aPTT kéo dài, Fibrinogen giảm).<br>
+                  • Siêu âm/X-quang phát hiện tràn dịch màng phổi, màng bụng.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong style="color: var(--green);">3. Giai đoạn Hồi phục</strong><br>
+                  <span class="badge badge-green">Ngày 7 - Ngày 10</span>
+                </td>
+                <td>
+                  • Hết sốt, toàn trạng tốt lên, thèm ăn, huyết động ổn định, tiểu nhiều.<br>
+                  • Có thể xuất hiện phát ban hồi phục hoặc ngứa ngoài da.<br>
+                  • Nhịp tim có thể chậm hoặc không đều.<br>
+                  • <em>Cảnh báo:</em> Nguy cơ suy hô hấp do quá tải dịch nếu tiếp tục truyền dịch.
+                </td>
+                <td>
+                  • Hct trở về bình thường hoặc giảm nhẹ do hiện tượng <strong>pha loãng máu</strong> khi dịch tái hấp thu trở lại lòng mạch.<br>
+                  • Bạch cầu tăng trở lại sớm sau hạ sốt.<br>
+                  • Tiểu cầu hồi phục dần về bình thường.<br>
+                  • Men gan AST, ALT có khuynh hướng giảm.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEC 2: CHẨN ĐOÁN & PHÂN ĐỘ -->
+    <div class="sec-card" id="sec-chandoan">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-list-check sec-hdr-icon"></i>
+        <h2 class="sec-title">2. Chẩn Đoán Căn Nguyên & Phân Độ Lâm Sàng Sốt Xuất Huyết Dengue</h2>
+      </div>
+      <div class="sec-body">
+
+        <div class="sec-subtitle"><i class="fa-solid fa-vial"></i> Chẩn đoán Căn nguyên Vi rút Dengue</div>
+        <div class="infobox info">
+          <div class="infobox-icon"><i class="fa-solid fa-flask"></i></div>
+          <div>
+            <strong>Chiến lược xét nghiệm căn nguyên theo ngày bệnh:</strong>
+            <br>• <strong>Kháng nguyên NS1 (Test nhanh):</strong> Chỉ định từ Ngày 1 đến Ngày 7 của bệnh (ưu tiên độ nhạy cao nhất trong 5 ngày đầu).
+            <br>• <strong>Kháng thể IgM, IgG (ELISA / Test nhanh):</strong> Chỉ định từ Ngày thứ 5 trở đi (đặc biệt khi NS1 âm tính).
+            <br>• <strong>RT-PCR / Phân lập vi rút:</strong> Thực hiện lấy máu trong giai đoạn sốt tại các cơ sở có điều kiện kỹ thuật.
+          </div>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-layer-group"></i> Bảng Phân độ Lâm sàng Sốt xuất huyết Dengue (BYT 2023)</div>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width: 220px;">Phân Độ Lâm Sàng</th>
+                <th>Tiêu Chuẩn Lâm Sàng &amp; Cận Lâm Sàng Triệt Để</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <strong style="color: var(--blue);">1. Sốt xuất huyết Dengue (SXHD)</strong><br>
+                  <span class="badge badge-blue">Thể Thông Thường</span>
+                </td>
+                <td>
+                  • Sốt ≤ 7 ngày tại vùng dịch tễ kèm ít nhất 2 trong các dấu hiệu: Buồn nôn/nôn, phát ban, đau cơ/đau khớp, nhức 2 hố mắt, xuất huyết da hoặc dấu dây thắt (Lacet) (+).<br>
+                  • Cận lâm sàng: Hematocrit bình thường hoặc tăng nhẹ; bạch cầu và tiểu cầu bình thường hoặc giảm.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong style="color: var(--orange);">2. SXHD có Dấu Hiệu Cảnh Báo</strong><br>
+                  <span class="badge badge-orange">Chỉ Định Nhập Viện Nội Trú</span>
+                </td>
+                <td>
+                  Có <strong>ít nhất 1</strong> trong các dấu hiệu cảnh báo sau:
+                  <br>1. Tri giác: Vật vã, lừ đừ, li bì.
+                  <br>2. Tiêu hóa: Đau bụng nhiều liên tục hoặc tăng cảm giác đau vùng gan.
+                  <br>3. Nôn ói nhiều (≥ 3 lần/1 giờ hoặc ≥ 4 lần/6 giờ).
+                  <br>4. Xuất huyết niêm mạc: Chảy máu chân răng, chảy máu mũi, nôn ra máu, tiêu phân đen/máu, xuất huyết âm đạo hoặc tiểu máu.
+                  <br>5. Gan to &gt; 2cm dưới bờ sườn.
+                  <br>6. Thận - Tiết niệu: Tiểu ít.
+                  <br>7. Cận lâm sàng: Hct tăng cao kèm tiểu cầu giảm nhanh; AST/ALT ≥ 400 U/L; Tràn dịch màng phổi/màng bụng trên siêu âm/X-quang.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong style="color: var(--red);">3. Sốt xuất huyết Dengue Nặng</strong><br>
+                  <span class="badge badge-red">Chỉ Định Nhập Khoa Hồi Sức (ICU)</span>
+                </td>
+                <td>
+                  Có <strong>ít nhất 1</strong> trong 3 biểu hiện nặng sau:
+                  <br>• <strong>Thoát huyết tương nặng:</strong> Dẫn đến Sốc SXHD, Sốc SXHD nặng (mạch=0, HA=0) hoặc ứ dịch gây suy hô hấp cấp.
+                  <br>• <strong>Xuất huyết nặng:</strong> Xuất huyết đường tiêu hóa, nôn ra máu tươi, tiêu phân máu ồ ạt, xuất huyết âm đạo nặng, xuất huyết trong cơ/phổi/não.
+                  <br>• <strong>Suy các tạng nặng:</strong> Gan (AST hoặc ALT ≥ 1000 U/L); Thần kinh trung ương (thể não: rối loạn tri giác, co giật, hôn mê); Tim (viêm cơ tim, suy tim) hoặc suy thận cấp.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="infobox danger">
+          <div class="infobox-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+          <div>
+            <strong>Ghi nhớ lâm sàng quan trọng:</strong> Hiện tượng hạ sốt (ngày 3 - 6) KHÔNG đồng nghĩa với khỏi bệnh! Đây chính là thời điểm bước vào <strong>Giai đoạn Nguy hiểm</strong>, nguy cơ xuất hiện thoát huyết tương, tụt huyết áp và xuất huyết ồ ạt cao nhất.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SEC 3: PHÂN NHÓM & NGOẠI TRÚ -->
+    <div class="sec-card" id="sec-ngoaitru">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-hospital-user sec-hdr-icon"></i>
+        <h2 class="sec-title">3. Sơ Đồ Phân Nhóm Điều Trị & Phác Đồ Ngoại Trú</h2>
+      </div>
+      <div class="sec-body">
+
+        <div class="sec-subtitle"><i class="fa-solid fa-diagram-project"></i> Sơ đồ Phân nhóm Tuyến Điều trị (BYT 2023)</div>
+        <div class="algo-box">
+          <div class="algo-step">
+            <div class="algo-num">1</div>
+            <div class="algo-content">
+              <strong>Nhóm A (Điều trị Ngoại trú):</strong> Bệnh nhân SXHD thông thường <em>không có dấu hiệu cảnh báo</em> VÀ <em>không có yếu tố nguy cơ kèm theo</em>. Theo dõi hàng ngày tại y tế cơ sở.
+            </div>
+          </div>
+          <div class="algo-step">
+            <div class="algo-num">2</div>
+            <div class="algo-content">
+              <strong>Nhóm B (Nhập viện Điều trị Nội trú):</strong> Bệnh nhân SXHD có <strong>Dấu hiệu cảnh báo</strong> HOẶC SXHD thông thường kèm <strong>Yếu tố nguy cơ</strong>:
+              <br>• Sống một mình, nhà quá xa cơ sở y tế, gia đình không thể theo dõi sát.
+              <br>• Trẻ nhũ nhi (&le; 12 tháng tuổi).
+              <br>• Dư cân, béo phì.
+              <br>• Phụ nữ mang thai.
+              <br>• Người cao tuổi (&ge; 60 tuổi).
+              <br>• Có bệnh mạn tính kèm theo (Thận, Tim, Gan, Hen, COPD, Thalassemia...).
+            </div>
+          </div>
+          <div class="algo-step">
+            <div class="algo-num" style="background: var(--red);">3</div>
+            <div class="algo-content">
+              <strong>Nhóm C (Nhập Khoa Hồi Sức Tích Cực - ICU):</strong> Tất cả bệnh nhân <strong>SXHD Nặng</strong> (Sốc SXHD, Sốc nguy kịch, Xuất huyết nặng, Suy tạng nặng).
+            </div>
+          </div>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-house-medical"></i> Hướng Dẫn Điều Trị Sốt Xuất Huyết Dengue Ngoại Trú</div>
+
+        <div class="infobox success">
+          <div class="infobox-icon"><i class="fa-solid fa-pills"></i></div>
+          <div>
+            <strong>1. Hạ sốt an toàn chuẩn BYT:</strong>
+            <br>• Khi sốt cao ≥ 38.5°C, cho uống <strong>Paracetamol đơn chất</strong> liều <strong>10 - 15 mg/kg/lần</strong>, cách nhau mỗi <strong>4 - 6 giờ</strong>.
+            <br>• <strong>Tổng liều Paracetamol không vượt quá 60 mg/kg/24 giờ</strong>.
+            <br>• Phối hợp lau mát bằng nước ấm và nới lỏng quần áo.
+          </div>
+        </div>
+
+        <div class="infobox danger">
+          <div class="infobox-icon"><i class="fa-solid fa-ban"></i></div>
+          <div>
+            <strong>CHỐNG CHỈ ĐỊNH TUYỆT ĐỐI THUỐC HẠ SỐT KHÁC:</strong>
+            <br><strong>Tuyệt đối KHÔNG sử dụng Aspirin (acetylsalicylic acid), Analgin, hoặc Ibuprofen</strong>. Các thuốc này làm ức chế kết tập tiểu cầu, gây tổn thương niêm mạc dạ dày dẫn đến xuất huyết tiêu hóa nặng nề và tăng nguy cơ toan máu, suy gan suy thận.
+          </div>
+        </div>
+
+        <div class="infobox teal">
+          <div class="infobox-icon"><i class="fa-solid fa-glass-water"></i></div>
+          <div>
+            <strong>2. Bù dịch bằng đường uống & Dinh dưỡng:</strong>
+            <br>• Khuyến khích uống nhiều dung dịch <strong>Oresol (ORS)</strong> pha đúng tỷ lệ, nước trái cây tươi (nước dừa, cam, chanh) hoặc nước cháo loãng pha muối.
+            <br>• <em>Lưu ý dinh dưỡng:</em> <strong>Không ăn hoặc uống các thực phẩm/nước có màu đỏ hoặc nâu</strong> (như xá xị, sô-cô-la, dưa hấu, củ dền) để tránh nhầm lẫn với hiện tượng nôn ra máu tiêu hóa.
+          </div>
+        </div>
+
+        <div class="infobox warning">
+          <div class="infobox-icon"><i class="fa-solid fa-bell"></i></div>
+          <div>
+            <strong>Dấu hiệu Cần Đưa Người Bệnh Cấp Cứu Ngay Lập Tức:</strong>
+            <br>1. Cảm thấy mệt lả, lừ đừ, vật vã, bứt rứt nhiều hơn dù đã giảm/hết sốt.
+            <br>2. Đau bụng nhiều liên tục.
+            <br>3. Nôn ói liên tục, không ăn uống được.
+            <br>4. Tay chân lạnh, ẩm, nổi vân tím.
+            <br>5. Chảy máu mũi, chân răng hoặc xuất huyết âm đạo bất thường.
+            <br>6. Không tiểu tiện trên 6 giờ.
+            <br>7. Thay đổi tri giác, lú lẫn, li bì.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SEC 4: TRUYỀN DỊCH DẤU HIỆU CẢNH BÁO -->
+    <div class="sec-card" id="sec-canhbao">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-droplet sec-hdr-icon"></i>
+        <h2 class="sec-title">4. Phác Đồ Truyền Dịch SXHD Có Dấu Hiệu Cảnh Báo</h2>
+      </div>
+      <div class="sec-body">
+        <p style="font-size: 0.88rem; color: var(--text-muted);">
+          Bệnh nhân có dấu hiệu cảnh báo bắt buộc phải <strong>nhập viện điều trị nội trú</strong> để theo dõi lâm sàng và Hematocrit (Hct) sát sao.
+        </p>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-child"></i> 1. Phác đồ Truyền dịch ở Trẻ em (&lt; 16 tuổi)</div>
+        <div class="algo-box">
+          <div class="algo-step">
+            <div class="algo-num">A</div>
+            <div class="algo-content">
+              <strong>Chỉ định truyền dịch TM:</strong> Trẻ lừ đừ, không uống được nước, nôn ói nhiều, đau bụng nhiều, có dấu hiệu mất nước hoặc Hct tăng cao.
+            </div>
+          </div>
+          <div class="algo-step">
+            <div class="algo-num">B</div>
+            <div class="algo-content">
+              <strong>Dịch truyền lựa chọn:</strong> Ringer lactate, Ringer acetate hoặc NaCl 0,9%.
+            </div>
+          </div>
+          <div class="algo-step">
+            <div class="algo-num">C</div>
+            <div class="algo-content">
+              <strong>Tốc độ truyền dịch chuẩn:</strong>
+              <br>• Khởi đầu truyền <strong>6 - 7 ml/kg/giờ trong 1 - 3 giờ</strong>.
+              <br>• Sau đó giảm xuống <strong>5 ml/kg/giờ trong 2 - 4 giờ</strong>.
+              <br>• Nếu mạch, HA ổn định, Hct giảm và nước tiểu &ge; 0,5 - 1 ml/kg/giờ ➔ Giảm xuống <strong>3 ml/kg/giờ trong 2 - 4 giờ</strong>.
+              <br>• Xem xét <strong>ngừng dịch hoàn toàn sau 24 - 48 giờ</strong>.
+            </div>
+          </div>
+          <div class="algo-step">
+            <div class="algo-num" style="background: var(--orange);">!</div>
+            <div class="algo-content">
+              <strong>Xử trí khi lâm sàng xấu đi:</strong>
+              <br>• Nếu trẻ chi mát, mạch nhanh nhưng HA còn bình thường: truyền tinh thể <strong>10 ml/kg/giờ trong 1 giờ</strong>.
+              <br>• Nếu tổng lượng dịch truyền đã &gt; 60 ml/kg mà Hct còn tăng cao: Chuyển sang dịch <strong>Cao phân tử (CPT) 10 - 20 ml/kg/giờ trong 1 giờ</strong>.
+              <br>• Nếu xuất hiện Sốc thực sự (HA kẹt/tụt): Truyền tinh thể <strong>20 ml/kg/giờ trong 1 giờ</strong> và chuyển sang phác đồ chống sốc.
+            </div>
+          </div>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-user"></i> 2. Phác đồ Truyền dịch ở Người lớn (&ge; 16 tuổi)</div>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Giai Đoạn Thời Gian</th>
+                <th>Tốc Độ Dịch Truyền Tinh Thể</th>
+                <th>Mục Tiêu Theo Dõi &amp; Tiêu Chuẩn Giảm Liều</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Giờ 1 - Giờ 2</strong></td>
+                <td><span class="rx-tag highlight">6 ml/kg/giờ</span></td>
+                <td>Đánh giá lại mạch, HA, nhịp thở, lượng nước tiểu và Hct sau 1-2 giờ.</td>
+              </tr>
+              <tr>
+                <td><strong>Giờ 3 - Giờ 6</strong></td>
+                <td><span class="rx-tag highlight">3 ml/kg/giờ</span> (trong 2 - 4 giờ)</td>
+                <td>Nếu huyết động ổn định, Hct giảm, nước tiểu &ge; 0,5 ml/kg/h.</td>
+              </tr>
+              <tr>
+                <td><strong>Giờ 7 - Giờ 24</strong></td>
+                <td><span class="rx-tag highlight">1,5 ml/kg/giờ</span> (trong 6 - 18 giờ)</td>
+                <td>Xem xét ngừng dịch hoàn toàn sau <strong>12 - 24 giờ</strong>. Tránh quá tải.</td>
+              </tr>
+              <tr>
+                <td><strong style="color: var(--red);">Nếu vào Sốc</strong></td>
+                <td><span class="rx-tag alert">Cao phân tử 10 - 15 ml/kg/h</span></td>
+                <td>Nếu mạch nhanh nhỏ, HA kẹt/tụt, Hct tăng cao ➔ Chống sốc ngay bằng CPT.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SEC 5: PHÁC ĐỒ CHỐNG SỐC & CPT -->
+    <div class="sec-card" id="sec-chongsoc">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-heart-pulse sec-hdr-icon"></i>
+        <h2 class="sec-title">5. Phác Đồ Điều Trị Sốc Sốt Xuất Huyết Dengue & Sốc Nguy Kịch</h2>
+      </div>
+      <div class="sec-body">
+        <p style="font-size: 0.88rem; color: var(--text-muted);">
+          Sốc SXHD là tình trạng cấp cứu khẩn cấp do thoát huyết tương ồ ạt dẫn đến suy tuần hoàn. Cần bù nhanh thể tích dịch dưới sự giám sát liên tục.
+        </p>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-child-reaching"></i> 1. Chống Sốc ở Trẻ em (&lt; 16 tuổi)</div>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width: 180px;">Tình Trạng / Thời Gian</th>
+                <th style="width: 220px;">Vận Tốc Dịch Truyền</th>
+                <th>Hướng Xử Trí Tiếp Theo Theo Đáp Ứng Huyết Động</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Giờ Đầu Tiên</strong></td>
+                <td><span class="rx-tag highlight">Tinh thể 20 ml/kg/giờ</span> (trong 1 giờ)</td>
+                <td>Trường hợp <strong>Tụt HA nặng</strong> (HA tâm thu &lt; 70 + 2&times;tuổi ở trẻ &lt;10t; &lt;90 ở trẻ &ge;10t): Truyền <strong>20 ml/kg trong 30 phút</strong>.</td>
+              </tr>
+              <tr>
+                <td><strong style="color: var(--green);">Đáp ứng Tốt</strong><br>(Mạch chậm lại, HA hết kẹt)</td>
+                <td>
+                  Giảm dịch bậc thang:<br>
+                  • <strong>10 ml/kg/h</strong> (1-2 giờ)<br>
+                  • <strong>7,5 ml/kg/h</strong> (1-2 giờ)<br>
+                  • <strong>5 ml/kg/h</strong> (3-4 giờ)<br>
+                  • <strong>3 ml/kg/h</strong> (4-6 giờ)
+                </td>
+                <td>
+                  Duy trì lâm sàng ổn định, giảm dịch dần và <strong>ngừng hẳn sau 24 - 48 giờ</strong>.
+                </td>
+              </tr>
+              <tr>
+                <td><strong style="color: var(--red);">Không Cải Thiện</strong><br>(HA vẫn kẹt, mạch nhanh)</td>
+                <td>
+                  Phân loại theo động học Hct:
+                </td>
+                <td>
+                  • <strong>Nếu Hct còn cao (&ge; 40%):</strong> Chuyển sang <strong>Dịch Cao phân tử (CPT) 10 - 20 ml/kg/giờ trong 1 giờ</strong> (Dextran 40, Dextran 70, HES 200).<br>
+                  • <strong>Nếu Hct giảm thấp (&le; 35% hoặc giảm &gt;20%):</strong> Nghi ngờ xuất huyết nội nặng ➔ Truyền <strong>Hồng cầu lắng 5 ml/kg</strong> hoặc <strong>Máu toàn phần 10 ml/kg</strong> + CPT 10 ml/kg/h.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="infobox info">
+          <div class="infobox-icon"><i class="fa-solid fa-user-gear"></i></div>
+          <div>
+            <strong>Lưu ý đặc biệt ở Trẻ Thiếu Niên (13 - 16 tuổi):</strong> Do sinh lý gần giống người lớn và lượng thoát huyết tương ít hơn trẻ nhỏ, thời gian duy trì ở mỗi nấc giảm dịch truyền chỉ bằng <strong>1/2 thời gian trẻ nhỏ</strong>, sau đó duy trì <strong>1,5 ml/kg/giờ trong 12 - 18 giờ</strong> để phòng quá tải dịch.
+          </div>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-user-large"></i> 2. Chống Sốc ở Người lớn (&ge; 16 tuổi)</div>
+        <div class="algo-box">
+          <div class="algo-step">
+            <div class="algo-num">1</div>
+            <div class="algo-content">
+              <strong>Liệu pháp Giờ đầu:</strong> Truyền dịch tinh thể <strong>15 ml/kg/giờ trong 1 giờ</strong>.
+            </div>
+          </div>
+          <div class="algo-step">
+            <div class="algo-num" style="background: var(--green);">2a</div>
+            <div class="algo-content">
+              <strong>Nếu Cải thiện:</strong> Giảm dịch <strong>10 ml/kg/h trong 2h</strong> ➔ <strong>6 ml/kg/h trong 2h</strong> ➔ <strong>3 ml/kg/h trong 5-7h</strong> ➔ <strong>1,5 ml/kg/h trong 12h</strong> rồi ngừng dịch.
+            </div>
+          </div>
+          <div class="algo-step">
+            <div class="algo-num" style="background: var(--red);">2b</div>
+            <div class="algo-content">
+              <strong>Nếu Không cải thiện:</strong>
+              <br>• Hct tăng hoặc không đổi ➔ Chuyển dịch <strong>Cao phân tử (CPT) 10 - 15 ml/kg/giờ trong 1 giờ</strong>.
+              <br>• Hct giảm &gt; 20% so với lúc vào sốc hoặc Hct &lt; 35% ➔ Xử trí xuất huyết nặng (Truyền Hồng cầu lắng / Máu toàn phần).
+            </div>
+          </div>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-skull-crossbones"></i> 3. Phác đồ Sốc Nguy Kịch (Mạch = 0, Huyết áp = 0) &amp; Sốc Trơ Dịch</div>
+        <div class="infobox danger">
+          <div class="infobox-icon"><i class="fa-solid fa-bolt"></i></div>
+          <div>
+            <strong>CẤP CỨU SỐC NGUY KỊCH:</strong>
+            <br>• <strong>Trẻ em:</strong> Bơm trực tiếp tĩnh mạch dịch tinh thể <strong>20 ml/kg trong vòng 15 phút</strong>. Cải thiện ➔ CPT 10 ml/kg/h; Không cải thiện ➔ CPT 15-20 ml/kg/h.
+            <br>• <strong>Người lớn:</strong> Truyền nhanh dịch tinh thể <strong>15 ml/kg trong 15 phút</strong> ➔ tiếp theo CPT <strong>15 ml/kg/giờ trong 1 giờ</strong>.
+            <br>• <strong>Tính cân nặng ở người béo phì:</strong> Bắt buộc dùng <strong>Cân nặng hiệu chỉnh</strong> để tính liều dịch, tránh nguy cơ quá tải phổi.
+          </div>
+        </div>
+
+        <div class="infobox warning">
+          <div class="infobox-icon"><i class="fa-solid fa-notes-medical"></i></div>
+          <div>
+            <strong>Lưu đồ Sốc Không Đáp Ứng Dịch Truyền (Sốc Trơ):</strong>
+            <br>Khẩn cấp hội chẩn chuyên gia. Tiến hành đo HA động mạch xâm lấn, CVP, kiểm tra Khí máu, Lactate, Canxi, Điện tâm đồ, Siêu âm tim.
+            <br>• Thực hiện Test dịch: CPT 5 ml/kg trong 30 phút. Nếu CVP tăng &ge; 5 cmH₂O mà huyết động không cải thiện ➔ Dùng thuốc vận mạch <strong>Noradrenaline</strong>.
+            <br>• Điều chỉnh rối loạn toan kiềm, điện giải, đường huyết (Quy tắc ABCS) và truyền bù Albumin nếu Albumin máu &le; 2,5 g/dL.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SEC 6: BIẾN CHỨNG NẶNG & CHẾ PHẨM MÁU -->
+    <div class="sec-card" id="sec-bienchung">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-truck-medical sec-hdr-icon"></i>
+        <h2 class="sec-title">6. Xử Trí Biến Chứng Nặng & Chỉ Định Truyền Máu / Chế Phẩm Máu</h2>
+      </div>
+      <div class="sec-body">
+
+        <div class="sec-subtitle"><i class="fa-solid fa-vial-circle-check"></i> 1. Bảng Chỉ Định Truyền Máu &amp; Chế Phẩm Máu (BYT 2023)</div>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width: 180px;">Chế Phẩm Máu</th>
+                <th>Chỉ Định Lâm Sàng Cụ Thể</th>
+                <th style="width: 180px;">Liều Dùng &amp; Mục Tiêu</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <strong style="color: var(--red);">Hồng Cầu Lắng / Máu Toàn Phần</strong>
+                </td>
+                <td>
+                  • Hct &le; 35% kèm sốc thất bại hoặc đáp ứng kém với bù dịch &ge; 40 ml/kg.<br>
+                  • Hct giảm nhanh &gt; 20% kèm sốc thất bại bù dịch.<br>
+                  • Hct &le; 40% kèm tình trạng xuất huyết ồ ạt đang tiến triển.
+                </td>
+                <td>
+                  • HC lắng: <strong>5 - 10 ml/kg</strong> (Ưu tiên).<br>
+                  • Máu toàn phần: <strong>10 - 20 ml/kg</strong>.<br>
+                  • Target: Hct 35 - 40%.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong style="color: var(--blue);">Huyết Tương Tươi Đông Lạnh (FFP)</strong>
+                </td>
+                <td>
+                  • Rối loạn đông máu nặng (PT hoặc aPTT &gt; 1,5 lần bình thường hoặc INR &gt; 1,5) kèm theo đang xuất huyết nặng, hoặc chuẩn bị làm thủ thuật xâm lấn, hoặc truyền máu khối lượng lớn.
+                </td>
+                <td>
+                  • Liều: <strong>10 - 20 ml/kg</strong> truyền trong 2 - 4 giờ.<br>
+                  • Target: PT/aPTT &lt; 1,5.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong style="color: var(--purple);">Kết Tủa Lạnh (Cryoprecipitate)</strong>
+                </td>
+                <td>
+                  • Đang xuất huyết nặng kèm nồng độ Fibrinogen máu giảm nặng <strong>&lt; 1 g/L</strong>.
+                </td>
+                <td>
+                  • Liều: <strong>1 túi / 6 kg</strong>.<br>
+                  • Target: Fibrinogen &gt; 1 g/L.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong style="color: var(--orange);">Khối Tiểu Cầu</strong>
+                </td>
+                <td>
+                  • Tiểu cầu giảm cực nặng <strong>&lt; 5.000/mm³</strong> (xem xét cụ thể dù chưa xuất huyết).<br>
+                  • Tiểu cầu <strong>&lt; 50.000/mm³</strong> kèm đang xuất huyết nặng hoặc chuẩn bị làm thủ thuật xâm lấn (chọc màng phổi/bụng).
+                </td>
+                <td>
+                  • <strong>1 ĐV tiểu cầu đậm đặc / 5 kg</strong><br>hoặc <strong>1 ĐV gạn tách (apheresis) / 10 kg</strong>.<br>
+                  • Target: Tiểu cầu &gt; 50.000/mm³.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-stetho-scope"></i> 2. Xử trí Rối loạn Chuyển hóa &amp; Suy tạng nặng</div>
+        <div class="algo-box">
+          <div class="algo-step">
+            <div class="algo-num">1</div>
+            <div class="algo-content">
+              <strong>Toan chuyển hóa (pH &lt; 7,35 / HCO₃⁻ &lt; 17):</strong> Truyền tĩnh mạch chậm <strong>Natri bicarbonate 4,2% liều 2 ml/kg</strong>.
+            </div>
+          </div>
+          <div class="algo-step">
+            <div class="algo-num">2</div>
+            <div class="algo-content">
+              <strong>Hạ đường huyết (Đường máu &lt; 40 mg/dL):</strong> Tiêm TM chậm <strong>Dextrose 30% liều 1 - 2 ml/kg</strong>.
+            </div>
+          </div>
+          <div class="algo-step">
+            <div class="algo-num">3</div>
+            <div class="algo-content">
+              <strong>Hạ Calci máu (Calci ion hóa &lt; 1 mmol/L):</strong> Truyền TM chậm <strong>Calci clorua 10% liều 0,1 - 0,2 ml/kg</strong> (tối đa 2-5 ml/liều) pha loãng trong Dextrose 5% trong 5-10 phút.
+            </div>
+          </div>
+          <div class="algo-step">
+            <div class="algo-num" style="background: var(--red);">4</div>
+            <div class="algo-content">
+              <strong>Tổn thương gan nặng &amp; Suy gan cấp (AST/ALT &ge; 1000 U/L):</strong>
+              <br>• <strong>TUYỆT ĐỐI CHỐNG CHỈ ĐỊNH Ringer lactate và Paracetamol</strong> (do gan tổn thương không chuyển hóa được Lactate gây toan máu nặng).
+              <br>• Dịch truyền thay thế chọn <strong>NaCl 0,9% hoặc Ringer acetate</strong>.
+              <br>• Xem xét truyền TM N-Acetylcystein (NAC), Lactulose thụt tháo, hoặc Lọc máu liên tục (CVVHDF) / Thay huyết tương thể tích cao.
+            </div>
+          </div>
+          <div class="algo-step">
+            <div class="algo-num">5</div>
+            <div class="algo-content">
+              <strong>SXHD Thể Não (Rối loạn tri giác, co giật):</strong> Nằm đầu cao 30°, bảo vệ đường thở. Kiểm soát co giật bằng Diazepam, Phenobarbital. Chống phù não bằng <strong>Mannitol 20% liều 0,5 g/kg/lần</strong> truyền TM nhanh trong 30 phút và/hoặc <strong>NaCl 3% liều 4 ml/kg trong 30 phút</strong>.
+            </div>
+          </div>
+          <div class="algo-step">
+            <div class="algo-num" style="background: var(--red);">6</div>
+            <div class="algo-content">
+              <strong>Quá tải dịch &amp; Phù phổi cấp (Tái hấp thu dịch):</strong>
+              <br>• <strong>NGỪNG TRUYỀN DỊCH TĨNH MẠCH NGAY LẬP TỨC</strong>.
+              <br>• Cho thở NCPAP hoặc đặt nội khí quản thở máy.
+              <br>• Tiêm TM <strong>Furosemide liều 0,5 - 1 mg/kg</strong> (nếu huyết động cho phép). Cho thuốc tăng sức co bóp cơ tim Dobutamine / Dopamine.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SEC 7: ĐỐI TƯỢNG ĐẶC BIỆT -->
+    <div class="sec-card" id="sec-dacbiet">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-person-pregnant sec-hdr-icon"></i>
+        <h2 class="sec-title">7. Điều Trị Sốt Xuất Huyết Dengue Trên Các Đối Tượng Đặc Biệt</h2>
+      </div>
+      <div class="sec-body">
+
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width: 180px;">Đối Tượng Special</th>
+                <th style="width: 280px;">Đặc Điểm Sinh Lý Bệnh Lý</th>
+                <th>Nguyên Tắc Điều Trị &amp; Xử Trí Khuyên Cáo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <strong style="color: var(--purple);">Phụ Nữ Có Thai (PNCT)</strong>
+                </td>
+                <td>
+                  • Thai kỳ 3 tháng cuối có loãng máu sinh lý (Hct nền thấp hơn), mạch nhanh, HA thấp hơn.<br>
+                  • Nguy cơ xuất huyết nặng khi sinh hoặc phẫu thuật trong giai đoạn nguy hiểm.<br>
+                  • Nguy cơ lây truyền dọc cho trẻ sơ sinh (~ 6%).
+                </td>
+                <td>
+                  • Đánh giá cô đặc máu khi Hct tăng &gt; 10% so với nền hoặc Hct &gt; 38-40%.<br>
+                  • Thai kỳ 3 tháng cuối bắt buộc dùng <strong>Cân nặng hiệu chỉnh</strong> để tính dịch.<br>
+                  • <strong>Trì hoãn can thiệp sản khoa / mổ lấy thai</strong> trong giai đoạn nguy hiểm (ngày 3-6) bằng thuốc cắt cơn co tử cung.<br>
+                  • Nếu bắt buộc chuyển dạ: Truyền tiểu cầu trước sinh 6h, duy trì tiểu cầu <strong>&gt; 50.000/mm³ (sinh thường)</strong> hoặc <strong>&gt; 75.000/mm³ (mổ lấy thai)</strong>.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong style="color: var(--orange);">Bệnh Nhân Thalassemia</strong>
+                </td>
+                <td>
+                  • Hct nền rất thấp do thiếu máu mạn.<br>
+                  • Cô đặc máu xảy ra khi Hct tăng 20% so với Hct nền của chính bệnh nhân.<br>
+                  • Nguy cơ suy tim và tổn thương gan nặng hơn.
+                </td>
+                <td>
+                  • Duy trì Hct từ 25% - 30% bằng cách <strong>truyền hồng cầu lắng sớm</strong>.<br>
+                  • Ưu tiên chọn dịch truyền NaCl 0,9% hoặc Ringer acetate để bảo vệ gan.<br>
+                  • Chống sốc kết hợp đo CVP và siêu âm tim phổi sát sao.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong style="color: var(--teal);">Nhũ Nhi (&le; 12 tháng)</strong>
+                </td>
+                <td>
+                  • Phát hiện sốc khó và trễ do Hct sinh lý thấp (30 - 35%).<br>
+                  • Rất khó đo CVP.
+                </td>
+                <td>
+                  • <strong>Ưu tiên sử dụng Siêu âm</strong> khảo sát đường kính tĩnh mạch chủ dưới (IVC) theo nhịp thở để đánh giá dịch nội mạch.<br>
+                  • Kiểm soát chặt chẽ tốc độ dịch truyền tránh quá tải tuần hoàn.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong style="color: var(--blue);">Người Thừa Cân / Béo Phì</strong>
+                </td>
+                <td>
+                  • Dễ bị tính dư thể tích dịch bù nếu dùng cân nặng thực tế, gây quá tải phổi cấp.
+                </td>
+                <td>
+                  • <strong>BẮT BUỘC dùng Cân nặng hiệu chỉnh</strong> theo công thức BYT cho tất cả các tính toán liều dịch truyền tinh thể và CPT.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SEC 8: CHEAT-SHEET & MCQ QUIZ -->
+    <div class="sec-card" id="sec-mcq">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-graduation-cap sec-hdr-icon"></i>
+        <h2 class="sec-title">8. Cheat-Sheet Liều Dùng Nhanh & Trắc Nghiệm Tự Lượng Giá (MCQ)</h2>
+      </div>
+      <div class="sec-body">
+
+        <div class="sec-subtitle"><i class="fa-solid fa-bolt-lightning"></i> Cheat-Sheet Liều Thuốc &amp; Dịch Truyền Cấp Cứu</div>
+        <div class="infobox info">
+          <div class="infobox-icon"><i class="fa-solid fa-notes-medical"></i></div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; line-height: 1.7;">
+            • <strong>Paracetamol:</strong> 10-15 mg/kg/lần uống (Max 60 mg/kg/24h). KHÔNG dùng Aspirin/Ibuprofen.<br>
+            • <strong>Dịch Tinh Thể Cảnh Báo:</strong> Trẻ em: 6-7 ml/kg/h (1-3h) ➔ 5 ml/kg/h ➔ 3 ml/kg/h. Người lớn: 6 ml/kg/h ➔ 3 ml/kg/h ➔ 1.5 ml/kg/h.<br>
+            • <strong>Chống Sốc Tinh Thể:</strong> Trẻ em: 20 ml/kg/h (1h). Người lớn: 15 ml/kg/h (1h). Sốc nguy kịch: 15-20 ml/kg trong 15-30 phút.<br>
+            • <strong>Cao Phân Tử (CPT Dextran/HES):</strong> 10-20 ml/kg/h (1h) khi thất bại tinh thể & Hct &ge; 40%.<br>
+            • <strong>Hồng Cầu Lắng:</strong> 5-10 ml/kg khi Hct &le; 35% hoặc tụt &gt;20% nghi xuất huyết nội.<br>
+            • <strong>FFP:</strong> 10-20 ml/kg (khi PT/aPTT &gt; 1.5). <strong>Kết tủa lạnh:</strong> 1 túi/6kg (khi Fibrinogen &lt; 1 g/L).<br>
+            • <strong>Tiểu Cầu:</strong> 1 ĐV đậm đặc/5kg hoặc 1 ĐV apheresis/10kg (khi tiểu cầu &lt; 50.000/mm³ + xuất huyết nặng hoặc &lt; 5.000/mm³).<br>
+            • <strong>Natri Bicarbonate 4.2%:</strong> 2 ml/kg IV (khi pH &lt; 7.35).<br>
+            • <strong>Dextrose 30%:</strong> 1-2 ml/kg IV tiêm chậm (khi đường máu &lt; 40 mg/dL).<br>
+            • <strong>Furosemide:</strong> 0.5-1 mg/kg IV chậm (khi quá tải dịch/phù phổi cấp).<br>
+            • <strong>Mannitol 20%:</strong> 0.5 g/kg IV trong 30 phút (khi phù não/SXHD thể não).
+          </div>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-clipboard-question"></i> Trắc Nghiệm Tự Lượng Giá Lâm Sàng (5 Câu MCQ)</div>
+
+        <!-- MCQ 1 -->
+        <div class="mcq-card" data-correct="2">
+          <div class="mcq-q"><span>Câu 1:</span> Thuốc hạ sốt nào sau đây ĐƯỢC PHÉP chỉ định cho bệnh nhân sốt xuất huyết Dengue theo khuyến cáo Bộ Y tế 2023?</div>
+          <div class="mcq-opts">
+            <div class="mcq-opt" data-idx="0">A. Aspirin (acetylsalicylic acid) 500 mg</div>
+            <div class="mcq-opt" data-idx="1">B. Ibuprofen 400 mg</div>
+            <div class="mcq-opt" data-idx="2">C. Paracetamol đơn chất 10 - 15 mg/kg/lần (Tối đa 60 mg/kg/24h)</div>
+            <div class="mcq-opt" data-idx="3">D. Analgin tiêm bắp</div>
+          </div>
+          <div class="mcq-exp">
+            <strong>Giải thích:</strong> Theo hướng dẫn BYT 2023, Paracetamol đơn chất liều 10-15 mg/kg/lần (tối đa 60 mg/kg/24h) là thuốc hạ sốt duy nhất được lựa chọn an toàn. Tuyệt đối chống chỉ định Aspirin, Ibuprofen và Analgin vì gây ức chế kết tập tiểu cầu, xuất huyết dạ dày ồ ạt và toan máu nặng.
+          </div>
+        </div>
+
+        <!-- MCQ 2 -->
+        <div class="mcq-card" data-correct="1">
+          <div class="mcq-q"><span>Câu 2:</span> Hiện tượng thoát huyết tương cấp tính gây tràn dịch màng phổi, màng bụng và sốc giảm thể tích thường diễn ra mạnh mẽ nhất vào giai đoạn nào của bệnh?</div>
+          <div class="mcq-opts">
+            <div class="mcq-opt" data-idx="0">A. Giai đoạn Sốt (Ngày 1 - 3)</div>
+            <div class="mcq-opt" data-idx="1">B. Giai đoạn Nguy hiểm (Ngày 3 - 7)</div>
+            <div class="mcq-opt" data-idx="2">C. Giai đoạn Hồi phục (Ngày 7 - 10)</div>
+            <div class="mcq-opt" data-idx="3">D. Giai đoạn ủ bệnh (Ngày 14 - 21)</div>
+          </div>
+          <div class="mcq-exp">
+            <strong>Giải thích:</strong> Giai đoạn nguy hiểm (ngày thứ 3 đến thứ 7 của bệnh) là lúc hiện tượng thoát huyết tương do tăng tính thấm thành mạch diễn ra rầm rộ nhất (kéo dài 24-48 giờ), kèm tiểu cầu giảm sâu &lt;100.000/mm³ dẫn đến nguy cơ sốc và xuất huyết nặng.
+          </div>
+        </div>
+
+        <!-- MCQ 3 -->
+        <div class="mcq-card" data-correct="3">
+          <div class="mcq-q"><span>Câu 3:</span> Ở bệnh nhân SXHD bị tổn thương gan nặng / suy gan cấp (AST, ALT &ge; 1000 U/L), dung dịch điện giải nào sau đây bị TUYỆT ĐỐI CHỐNG CHỈ ĐỊNH?</div>
+          <div class="mcq-opts">
+            <div class="mcq-opt" data-idx="0">A. Natri clorua 0,9% (NaCl 0.9%)</div>
+            <div class="mcq-opt" data-idx="1">B. Ringer acetate</div>
+            <div class="mcq-opt" data-idx="2">C. Glucose 5%</div>
+            <div class="mcq-opt" data-idx="3">D. Ringer lactate</div>
+          </div>
+          <div class="mcq-exp">
+            <strong>Giải thích:</strong> Ringer lactate bị chống chỉ định tuyệt đối khi có suy gan cấp do tế bào gan suy không thể chuyển hóa lactate thành bicarbonate, làm trầm trọng thêm tình trạng toan lactic máu. Dung dịch thay thế bắt buộc là NaCl 0.9% hoặc Ringer acetate.
+          </div>
+        </div>
+
+        <!-- MCQ 4 -->
+        <div class="mcq-card" data-correct="0">
+          <div class="mcq-q"><span>Câu 4:</span> Chỉ định truyền Hồng Cầu Lắng (5 - 10 ml/kg) trong sốc SXHD được đặt ra khi nào?</div>
+          <div class="mcq-opts">
+            <div class="mcq-opt" data-idx="0">A. Hct &le; 35% hoặc Hct giảm nhanh &gt; 20% kèm sốc không cải thiện sau bù dịch</div>
+            <div class="mcq-opt" data-idx="1">B. Tất cả các trường hợp Hct &gt; 50%</div>
+            <div class="mcq-opt" data-idx="2">C. Tiểu cầu giảm &lt; 10.000/mm³ chưa có xuất huyết</div>
+            <div class="mcq-opt" data-idx="3">D. Khi Fibrinogen máu giảm &lt; 1 g/L</div>
+          </div>
+          <div class="mcq-exp">
+            <strong>Giải thích:</strong> Khi sốc không cải thiện sau khi đã bù lượng lớn dịch (&ge;40 ml/kg) mà Hct giảm thấp &le;35% hoặc Hct tụt nhanh &gt;20%, cần nghi ngờ xuất huyết nội ẩn tàng và có chỉ định truyền Hồng cầu lắng 5-10 ml/kg hoặc Máu toàn phần 10-20 ml/kg.
+          </div>
+        </div>
+
+        <!-- MCQ 5 -->
+        <div class="mcq-card" data-correct="2">
+          <div class="mcq-q"><span>Câu 5:</span> Khi người bệnh bước vào giai đoạn hồi phục (ngày 7 - 10) có biểu hiện quá tải dịch / phù phổi cấp do tái hấp thu, xử trí ban đầu quan trọng nhất là gì?</div>
+          <div class="mcq-opts">
+            <div class="mcq-opt" data-idx="0">A. Tăng tốc độ truyền dịch cao phân tử</div>
+            <div class="mcq-opt" data-idx="1">B. Truyền thêm huyết tương tươi đông lạnh (FFP)</div>
+            <div class="mcq-opt" data-idx="2">C. Ngừng truyền dịch tĩnh mạch ngay lập tức và cho thở oxy/NCPAP, dùng Furosemide</div>
+            <div class="mcq-opt" data-idx="3">D. Tiêm Paracetamol tĩnh mạch</div>
+          </div>
+          <div class="mcq-exp">
+            <strong>Giải thích:</strong> Ở giai đoạn hồi phục, dịch thoát ra mô kẽ tự tái hấp thu vào lòng mạch. Nếu tiếp tục truyền dịch sẽ gây quá tải thể tích cấp tính và phù phổi cấp. Xử trí bắt buộc: NGỪNG TRUYỀN DỊCH NGAY LẬP TỨC, hỗ trợ hô hấp (NCPAP/Thở máy) và dùng Furosemide tĩnh mạch (0,5-1 mg/kg) nếu huyết động cho phép.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CITATION & SOURCE -->
+    <div class="sec-card">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-bookmark sec-hdr-icon"></i>
+        <h2 class="sec-title">Tài Liệu Tham Khảo Chuẩn AMA</h2>
+      </div>
+      <div class="sec-body">
+        <div class="citation-box">
+          1. Bộ Y tế Việt Nam. <em>Hướng dẫn chẩn đoán, điều trị Sốt xuất huyết Dengue</em>. Ban hành kèm theo Quyết định số 2760/QĐ-BYT ngày 04 tháng 7 năm 2023 của Bộ trưởng Bộ Y tế. Hà Nội: Bộ Y tế; 2023.
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PAGE FOOTER -->
+  <footer class="page-footer">
+    <p>© 2026 CliniPortal — Phân hệ Y học Chứng cứ (EBM). Bản quyền tóm tắt hướng dẫn Bộ Y tế Việt Nam.</p>
+  </footer>
+
+  <script>
+    // Theme Toggle with LocalStorage
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const htmlEl = document.documentElement;
+
+    const savedTheme = localStorage.getItem('cliniportal_ebm_theme');
+    if (savedTheme === 'dark' || savedTheme === 'light') {
+      htmlEl.setAttribute('data-theme', savedTheme);
+      if (themeToggleBtn) {
+        themeToggleBtn.innerHTML = savedTheme === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+      }
+    }
+
+    if (themeToggleBtn) {
+      themeToggleBtn.addEventListener('click', () => {
+        const currentTheme = htmlEl.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        htmlEl.setAttribute('data-theme', newTheme);
+        themeToggleBtn.innerHTML = newTheme === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+        localStorage.setItem('cliniportal_ebm_theme', newTheme);
+      });
+    }
+
+    // Quicknav Active Highlight with IntersectionObserver
+    const sections = document.querySelectorAll('.sec-card[id]');
+    const navLinks = document.querySelectorAll('.quicknav-link');
+
+    const navObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const currentId = entry.target.getAttribute('id');
+          navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + currentId) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    }, { rootMargin: '-10% 0px -70% 0px' });
+
+    sections.forEach(section => navObserver.observe(section));
+
+    // Interactive MCQ Quiz Script
+    document.querySelectorAll('.mcq-card').forEach(card => {
+      const correctIdx = parseInt(card.getAttribute('data-correct'), 10);
+      const opts = card.querySelectorAll('.mcq-opt');
+      const exp = card.querySelector('.mcq-exp');
+
+      opts.forEach(opt => {
+        opt.addEventListener('click', () => {
+          const selectedIdx = parseInt(opt.getAttribute('data-idx'), 10);
+          
+          // Clear previous state
+          opts.forEach(o => {
+            o.classList.remove('selected-correct', 'selected-wrong');
+          });
+
+          if (selectedIdx === correctIdx) {
+            opt.classList.add('selected-correct');
+          } else {
+            opt.classList.add('selected-wrong');
+            opts[correctIdx].classList.add('selected-correct');
+          }
+
+          exp.classList.add('show');
+        });
+      });
+    });
+  </script>
+  <script type="module" src="../guideline-controller.ts"></script>
+</body>
+</html>

@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tóm tắt toàn diện Cập nhật Sốc tim 2026 (J Cardiothorac Vasc Anesth): Sinh lý bệnh vòng xoắn sốc, Phân độ SCAI cải tiến A-E, Dấu ấn sinh học mới (sST2, DPP3, bio-ADM), Thang điểm tiên lượng, Giám sát PAC, Thiết bị hỗ trợ tuần hoàn cơ học (MCS: IABP, Impella, VA-ECMO), Chiến lược giải áp thất trái (LV Unloading) và Mô hình Shock Team đa chuyên khoa.">
+  <title>Cập Nhật Sốc Tim 2026: Bằng Chứng Hiện Tại, Góc Nhìn Từ Guidelines Và Outcomes – CliniPortal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #059669; --green-bg: #f0fdf4; --green-light: #a7f3d0;
+      --orange: #d97706; --orange-bg: #fffbeb; --orange-light: #fde68a;
+      --red: #dc2626; --red-bg: #fef2f2; --red-light: #fca5a5;
+      --blue: #2563eb; --blue-bg: #eff6ff; --blue-light: #bfdbfe;
+      --teal: #0d9488; --teal-bg: #f0fdfa; --teal-light: #99f6e4;
+      --purple: #7c3aed; --purple-bg: #faf5ff; --purple-light: #ddd6fe;
+      --accent: #0f6fb4;
+      --bg: #f0f4f8; --surface: #ffffff; --surface-2: #f8fafc;
+      --border: #cbd5e1; --border-light: #e2e8f0;
+      --text: #0f172a; --text-muted: #475569; --text-faint: #94a3b8;
+      --radius: 16px; --tr: 220ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [data-theme="dark"] {
+      --green: #10b981; --green-bg: #064e3b; --green-light: #047857;
+      --orange: #f59e0b; --orange-bg: #78350f; --orange-light: #b45309;
+      --red: #ef4444; --red-bg: #7f1d1d; --red-light: #b91c1c;
+      --blue: #3b82f6; --blue-bg: #1e3a8a; --blue-light: #1d4ed8;
+      --teal: #14b8a6; --teal-bg: #115e59; --teal-light: #0f766e;
+      --purple: #8b5cf6; --purple-bg: #4c1d95; --purple-light: #6d28d9;
+      --accent: #38bdf8;
+      --bg: #0f172a; --surface: #1e293b; --surface-2: #0f172a;
+      --border: #334155; --border-light: #1e293b;
+      --text: #f8fafc; --text-muted: #cbd5e1; --text-faint: #64748b;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; font-size: 15px; background: var(--bg); color: var(--text); line-height: 1.65; min-height: 100vh; transition: background var(--tr), color var(--tr); }
+
+    /* TOP NAV */
+    .topnav { position: sticky; top: 0; z-index: 200; background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 1rem; padding: 0 1.5rem; height: 56px; transition: background var(--tr), border-color var(--tr); }
+    [data-theme="dark"] .topnav { background: rgba(30, 41, 59, 0.9); }
+    .topnav-back { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--accent); text-decoration: none; font-size: 0.82rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 8px; transition: background var(--tr); white-space: nowrap; }
+    .topnav-back:hover { background: var(--blue-bg); }
+    .topnav-divider { width: 1px; height: 18px; background: var(--border-light); flex-shrink: 0; }
+    .topnav-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .topnav-theme-toggle { margin-left: auto; background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 1.1rem; padding: 0.5rem; border-radius: 50%; transition: background var(--tr); display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; }
+    .topnav-theme-toggle:hover { background: var(--surface-2); color: var(--accent); }
+
+    /* QUICK NAV BAR */
+    .quicknav { position: sticky; top: 56px; z-index: 190; background: var(--surface); border-bottom: 1px solid var(--border-light); display: flex; gap: 0.5rem; padding: 0.6rem 1.5rem; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .quicknav::-webkit-scrollbar { height: 3px; }
+    .quicknav::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    .quicknav-link { display: inline-flex; align-items: center; white-space: nowrap; font-size: 0.78rem; font-weight: 600; color: var(--text-muted); text-decoration: none; padding: 0.35rem 0.85rem; border-radius: 20px; background: var(--surface-2); border: 1px solid var(--border-light); transition: all var(--tr); }
+    .quicknav-link:hover, .quicknav-link.active { background: var(--blue-bg); color: var(--accent); border-color: var(--blue-light); }
+
+    /* HERO */
+    .hero { background: linear-gradient(135deg, #0c4a6e 0%, #0f6fb4 45%, #065f46 100%); color: #fff; padding: 3.5rem 1.5rem 4.5rem; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 50%, rgba(56, 189, 248, 0.25) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(16, 185, 129, 0.2) 0%, transparent 55%); }
+    .hero-inner { max-width: 1000px; margin: 0 auto; position: relative; z-index: 1; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255, 255, 255, 0.14); border: 1px solid rgba(255, 255, 255, 0.24); border-radius: 20px; padding: 0.3rem 0.9rem; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1rem; color: #7dd3fc; }
+    .hero-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 0.85rem; }
+    .hero-title span { display: block; background: linear-gradient(90deg, #7dd3fc, #6ee7b7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 0.65em; font-weight: 600; letter-spacing: 0; margin-bottom: 0.2rem; }
+    .hero-subtitle { font-size: 0.95rem; opacity: 0.88; max-width: 820px; margin-bottom: 2rem; line-height: 1.65; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 0.75rem 2rem; font-size: 0.8rem; opacity: 0.8; }
+    .hero-meta-item { display: flex; align-items: center; gap: 6px; }
+
+    /* PILLARS STRIP */
+    .pillars { background: var(--surface); border-bottom: 1px solid var(--border-light); padding: 1.75rem 1.5rem; }
+    .pillars-inner { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+    .pillar { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.1rem 1.2rem; display: flex; align-items: flex-start; gap: 0.85rem; position: relative; overflow: hidden; transition: box-shadow var(--tr); }
+    .pillar::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; border-radius: 4px 0 0 4px; }
+    .pillar.p1::before { background: var(--blue); }
+    .pillar.p2::before { background: var(--orange); }
+    .pillar.p3::before { background: var(--red); }
+    .pillar.p4::before { background: var(--teal); }
+    .pillar:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+    .pillar-icon { font-size: 1.6rem; flex-shrink: 0; line-height: 1; }
+    .pillar-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text); margin-bottom: 0.25rem; }
+    .pillar-desc { font-size: 0.76rem; color: var(--text-muted); line-height: 1.45; }
+
+    /* PAGE CONTENT */
+    .page-content { max-width: 1000px; margin: 0 auto; padding: 2.25rem 1.5rem; display: flex; flex-direction: column; gap: 2rem; }
+
+    /* SECTION CARDS */
+    .sec-card { background: var(--surface); border: 1px solid var(--border-light); border-radius: var(--radius); overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.03); scroll-margin-top: 110px; }
+    .sec-hdr { padding: 1.1rem 1.5rem; border-bottom: 1px solid var(--border-light); background: var(--surface-2); display: flex; align-items: center; gap: 0.75rem; }
+    .sec-hdr-icon { font-size: 1.2rem; color: var(--accent); }
+    .sec-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.05rem; font-weight: 800; color: var(--text); }
+    .sec-body { padding: 1.5rem; display: flex; flex-direction: column; gap: 1.25rem; }
+    .sec-subtitle { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; margin-top: 0.5rem; margin-bottom: 0.25rem; display: flex; align-items: center; gap: 0.5rem; }
+    .sec-subtitle::after { content: ''; flex: 1; height: 1px; background: var(--border-light); }
+
+    /* INFO BOXES */
+    .infobox { display: flex; align-items: flex-start; gap: 0.85rem; padding: 1rem 1.25rem; border-radius: 12px; font-size: 0.85rem; line-height: 1.6; }
+    .infobox-icon { font-size: 1.3rem; flex-shrink: 0; line-height: 1.3; }
+    .infobox.danger { background: var(--red-bg); border: 1px solid var(--red-light); border-left: 4px solid var(--red); color: var(--text); }
+    .infobox.success { background: var(--green-bg); border: 1px solid var(--green-light); border-left: 4px solid var(--green); color: var(--text); }
+    .infobox.warning { background: var(--orange-bg); border: 1px solid var(--orange-light); border-left: 4px solid var(--orange); color: var(--text); }
+    .infobox.info { background: var(--blue-bg); border: 1px solid var(--blue-light); border-left: 4px solid var(--blue); color: var(--text); }
+    .infobox.teal { background: var(--teal-bg); border: 1px solid var(--teal-light); border-left: 4px solid var(--teal); color: var(--text); }
+    .infobox strong { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; color: var(--text); }
+
+    /* TABLES */
+    .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 12px; border: 1px solid var(--border-light); margin-bottom: 0.5rem; }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 0.83rem; min-width: 650px; text-align: left; }
+    .data-table thead th { padding: 0.75rem 1rem; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; background: var(--surface-2); color: var(--text-muted); border-bottom: 1px solid var(--border-light); }
+    .data-table td { padding: 0.85rem 1rem; border-bottom: 1px solid var(--border-light); vertical-align: top; line-height: 1.55; }
+    .data-table tbody tr:last-child td { border-bottom: none; }
+
+    /* BADGES & TAGS */
+    .rx-tag { display: inline-block; background: var(--surface-2); color: var(--text-muted); font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; padding: 0.15rem 0.5rem; border-radius: 6px; border: 1px solid var(--border-light); margin: 0.15rem 0.1rem; }
+    .rx-tag.highlight { background: var(--blue-bg); color: var(--accent); border-color: var(--blue-light); font-weight: 600; }
+    .rx-tag.alert { background: var(--red-bg); color: var(--red); border-color: var(--red-light); font-weight: 600; }
+    .rx-tag.green { background: var(--green-bg); color: var(--green); border-color: var(--green-light); font-weight: 600; }
+
+    /* FLOWCHART UI */
+    .flowchart-card {
+      background: var(--surface);
+      border-radius: 18px;
+      overflow: hidden;
+      margin-bottom: 1.25rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.06), 0 0 0 1px rgba(15,111,180,0.1);
+      transition: box-shadow 280ms cubic-bezier(0.16,1,0.3,1), transform 280ms cubic-bezier(0.16,1,0.3,1);
+    }
+    .flowchart-card:hover {
+      box-shadow: 0 4px 6px rgba(0,0,0,0.04), 0 16px 40px rgba(0,0,0,0.1), 0 0 0 1px rgba(15,111,180,0.2);
+      transform: translateY(-2px);
+    }
+    .flowchart-card-hdr {
+      background: linear-gradient(135deg, #0c4a6e 0%, #0f6fb4 55%, #1d4ed8 100%);
+      padding: 0.9rem 1.35rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      position: relative;
+    }
+    .flowchart-card-hdr-title {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: #ffffff;
+    }
+    .flowchart-card-hdr-title i { font-size: 1rem; color: #7dd3fc; }
+    .flowchart-card-body {
+      padding: 1.75rem;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      background: #f0f6ff;
+      background-image: radial-gradient(circle, rgba(15,111,180,0.18) 1px, transparent 1px);
+      background-size: 22px 22px;
+      color: var(--text);
+    }
+    [data-theme="dark"] .flowchart-card-body {
+      background: #060e1c;
+      background-image: radial-gradient(circle, rgba(56,189,248,0.15) 1px, transparent 1px);
+      background-size: 22px 22px;
+    }
+    pre.flowchart-box {
+      font-family: 'JetBrains Mono', 'Fira Code', monospace;
+      font-size: 0.84rem;
+      line-height: 1.8;
+      margin: 0;
+      white-space: pre;
+      color: #334155;
+    }
+    [data-theme="dark"] pre.flowchart-box { color: #cbd5e1; }
+    .fc-node {
+      display: inline-block;
+      padding: 0.28rem 0.85rem;
+      background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+      color: #1e40af;
+      border: 1.5px solid #93c5fd;
+      border-radius: 10px;
+      font-weight: 800;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.78rem;
+    }
+    [data-theme="dark"] .fc-node {
+      background: linear-gradient(135deg, #1e3a5f 0%, #1e3a8a 100%);
+      color: #93c5fd; border-color: #2563eb;
+    }
+    .fc-node-yes {
+      background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%) !important;
+      color: #15803d !important; border-color: #86efac !important;
+    }
+    [data-theme="dark"] .fc-node-yes {
+      background: linear-gradient(135deg, #064e3b 0%, #065f46 100%) !important;
+      color: #34d399 !important; border-color: #059669 !important;
+    }
+    .fc-node-no {
+      background: linear-gradient(135deg, #fff1f2 0%, #ffe4e6 100%) !important;
+      color: #b91c1c !important; border-color: #fca5a5 !important;
+    }
+    [data-theme="dark"] .fc-node-no {
+      background: linear-gradient(135deg, #7f1d1d 0%, #991b1b 100%) !important;
+      color: #fca5a5 !important; border-color: #dc2626 !important;
+    }
+    .fc-line { color: #0f6fb4; font-weight: 700; }
+    [data-theme="dark"] .fc-line { color: #38bdf8; }
+
+    code { font-family: 'JetBrains Mono', monospace; background: var(--surface-2); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.82em; border: 1px solid var(--border-light); }
+
+    /* CITATION & FOOTER */
+    .citation-box { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 12px; padding: 1.25rem; font-size: 0.82rem; color: var(--text-muted); line-height: 1.75; font-style: italic; }
+    .page-footer { max-width: 1000px; margin: 0 auto; padding: 2rem 1.5rem 4rem; text-align: center; font-size: 0.8rem; color: var(--text-faint); border-top: 1px solid var(--border-light); }
+
+    @media (max-width: 768px) {
+      .page-content { padding: 1.25rem 1rem; }
+      .sec-body { padding: 1.1rem 1rem; }
+      .pillars-inner { grid-template-columns: 1fr; }
+    }
+
+    @media print {
+      body { background: #fff !important; color: #000 !important; }
+      .topnav, .quicknav, .topnav-theme-toggle, .page-footer, .topnav-pdf-btn { display: none !important; }
+      .sec-card { break-inside: avoid; border: 1px solid #ccc !important; box-shadow: none !important; }
+    }
+  </style>
+  <link rel="stylesheet" href="../../../../../css/components/header.css">
+  <script type="module" src="../../../../../components/header.ts" defer></script>
+</head>
+<body>
+  <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
+
+
+  <!-- TOP NAV -->
+  <nav class="topnav">
+    <a href="../guidelines.html" class="topnav-back">
+      <i class="fa-solid fa-chevron-left"></i>
+      Kho Guidelines
+    </a>
+    <div class="topnav-divider"></div>
+    <div class="topnav-title">Cập Nhật Sốc Tim 2026: Bằng Chứng Hiện Tại, Góc Nhìn Từ Guidelines Và Outcomes</div>
+    <button class="topnav-theme-toggle topnav-pdf-btn" onclick="window.print()" title="Tải PDF / In bài viết" style="margin-left: auto; margin-right: 4px;">
+      <i class="fa-solid fa-file-pdf"></i>
+    </button>
+    <button class="topnav-theme-toggle" id="themeToggleBtn" aria-label="Đổi giao diện">
+      <i class="fa-solid fa-moon"></i>
+    </button>
+  </nav>
+
+  <!-- QUICK NAV BAR -->
+  <div class="quicknav">
+    <a href="#sec-1" class="quicknav-link active">1. Định Nghĩa & Dịch Tễ</a>
+    <a href="#sec-2" class="quicknav-link">2. Sinh Lý Bệnh & Vòng Xoắn Sốc</a>
+    <a href="#sec-3" class="quicknav-link">3. Phân Độ SCAI Stages A-E</a>
+    <a href="#sec-4" class="quicknav-link">4. Biomarkers & Thang Điểm</a>
+    <a href="#sec-5" class="quicknav-link">5. Giám Sát PAC & Huyết Động</a>
+    <a href="#sec-6" class="quicknav-link">6. Hỗ Trợ Tuần Hoàn Cơ Học (MCS)</a>
+    <a href="#sec-7" class="quicknav-link">7. Giải Áp Thất Trái (LV Unloading)</a>
+    <a href="#sec-8" class="quicknav-link">8. Quy Trình Leo Thang & Hạ Bậc</a>
+    <a href="#sec-9" class="quicknav-link">9. Tim Cấu Trúc & Shock Team</a>
+    <a href="#sec-10" class="quicknav-link">10. Trích Dẫn AMA</a>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge"><i class="fa-solid fa-book-journal-whills"></i> Journal of Cardiothoracic and Vascular Anesthesia · 2026</div>
+      <h1 class="hero-title">
+        <span>Cardiogenic Shock: Current Evidence, Guideline Perspectives, and Outcomes</span>
+        Cập Nhật Sốc Tim 2026: Bằng Chứng Hiện Tại, Góc Nhìn Từ Guidelines Và Outcomes
+      </h1>
+      <p class="hero-subtitle">
+        Tóm tắt toàn diện bài tổng quan chuyên sâu trên <em>J Cardiothorac Vasc Anesth</em> (2026): Phân tích chi tiết sinh lý bệnh vòng xoắn sốc, phân độ SCAI cải tiến A-E, các dấu ấn sinh học tiên lượng mới (sST2, DPP3, bio-ADM), giám sát PAC, các thiết bị hỗ trợ tuần hoàn cơ học (MCS: IABP, Impella, VA-ECMO), chiến lược giải áp thất trái (LV unloading) và mô hình Shock Team đa chuyên khoa.
+      </p>
+      <div class="hero-meta">
+        <div class="hero-meta-item"><i class="fa-solid fa-calendar-check"></i> Cập nhật: 2026</div>
+        <div class="hero-meta-item"><i class="fa-solid fa-user-doctor"></i> Tác giả: Shekhar S, Agrawal A, Almadhoun H, et al.</div>
+        <div class="hero-meta-item"><i class="fa-solid fa-building-flag"></i> J Cardiothorac Vasc Anesth</div>
+        <div class="hero-meta-item"><i class="fa-solid fa-stethoscope"></i> Chuyên khoa: HSCC / TIM MẠCH</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PILLARS STRIP -->
+  <div class="pillars">
+    <div class="pillars-inner">
+      <div class="pillar p1">
+        <div class="pillar-icon">⚡</div>
+        <div>
+          <div class="pillar-title">Chẩn Đoán & Phân Loại SCAI</div>
+          <div class="pillar-desc">Nhận diện sớm từ Giai đoạn A đến E, đánh giá lặp lại liên tục thay vì chỉ ghi nhận một mốc nhập viện.</div>
+        </div>
+      </div>
+      <div class="pillar p2">
+        <div class="pillar-icon">🎯</div>
+        <div>
+          <div class="pillar-title">Giám Sát PAC Huyết Động</div>
+          <div class="pillar-desc">Đánh giá chi tiết CVP, PCWP, CO, CPO, PAPi và tỷ số RA/PCWP để xác định chính xác kiểu hình suy thất.</div>
+        </div>
+      </div>
+      <div class="pillar p3">
+        <div class="pillar-icon">🛡️</div>
+        <div>
+          <div class="pillar-title">Hỗ Trợ Cơ Học (MCS)</div>
+          <div class="pillar-desc">Lựa chọn cá thể hóa IABP, Impella (2.5/CP/5.0/5.5), VA-ECMO dựa trên kiểu suy thất và mục tiêu điều trị.</div>
+        </div>
+      </div>
+      <div class="pillar p4">
+        <div class="pillar-icon">⏱️</div>
+        <div>
+          <div class="pillar-title">Giải Áp Thất Trái (LV Unloading)</div>
+          <div class="pillar-desc">Phối hợp chủ động Impella (ECMELLA) hoặc IABP khi chạy VA-ECMO ngăn chặn quá tải áp lực thất trái.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="page-content">
+
+    <!-- 1. Định Nghĩa & Dịch Tễ -->
+    <div class="sec-card" id="sec-1">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-stethoscope sec-hdr-icon"></i>
+        <h2 class="sec-title">1. Định Nghĩa, Dịch Tễ Học Và Gánh Nặng Lâm Sàng Của Sốc Tim (CS)</h2>
+      </div>
+      <div class="sec-body">
+        <p>Sốc tim (Cardiogenic Shock - CS) vẫn là một trong những nguyên nhân hàng đầu gây tử vong tại bệnh viện. Mỗi năm, ước tính có khoảng 40.000 đến 50.000 bệnh nhân tại Hoa Kỳ và 60.000 đến 70.000 bệnh nhân tại Châu Âu được điều trị vì sốc tim. Mặc dù đã có những tiến bộ lớn trong liệu pháp hỗ trợ tuần hoàn cơ học (Mechanical Circulatory Support - MCS) và dược lý học, kết quả ngắn hạn vẫn rất nghèo nàn với tỷ lệ tử vong trong vòng 30 ngày dao động từ <strong>30% đến 60%</strong>.</p>
+        <p>Nhồi máu cơ tim cấp (AMI) là nguyên nhân phổ biến nhất gây ra sốc tim, chiếm <strong>hơn 80%</strong> tổng số các trường hợp. Tỷ lệ xuất hiện sốc tim sau nhồi máu cơ tim cấp dao động từ 5% đến 15%. Sự duy trì tỷ lệ tử vong cao trong các đăng ký đương đại phản ánh tình trạng già hóa dân số và sự gia tăng các bệnh lý đi kèm ở bệnh nhân.</p>
+
+        <div class="infobox info">
+          <span class="infobox-icon">ℹ️</span>
+          <div>
+            <strong>Tiêu chuẩn huyết động kinh điển của Sốc Tim:</strong>
+            <br>• Huyết áp tâm thu (SBP) &lt; 90 mmHg trong ≥ 30 phút (hoặc cần thuốc vận mạch để duy trì SBP ≥ 90 mmHg).
+            <br>• Chỉ số tim (Cardiac Index - CI) &lt; 2.2 L/min/m².
+            <br>• Chênh lệch oxy động - tĩnh mạch tăng &gt; 5.5 mL/dL.
+            <br>• Áp lực bít mao mạch phổi (PCWP) ≥ 15 mmHg.
+          </div>
+        </div>
+
+        <div class="infobox warning">
+          <span class="infobox-icon">⚠️</span>
+          <div>
+            <strong>Sốc tim huyết áp bình thường (Normotensive Shock):</strong>
+            Các cơ chế bù trừ co mạch của cơ thể có thể duy trì huyết áp tạm thời trong giới hạn bình thường, tuy nhiên tình trạng giảm tưới máu mô vẫn âm thầm diễn tiến. Những bệnh nhân thuộc nhóm này thường có tiên lượng lâm sàng rất xấu và dễ bị trì hoãn điều trị do bỏ sót chẩn đoán ban đầu.
+          </div>
+        </div>
+
+        <h3 class="sec-subtitle">Bảng 1: Định Nghĩa Sốc Tim Trong Các Thử Nghiệm Lâm Sàng & Hướng Dẫn</h3>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width: 160px;">Nghiên cứu / Guideline</th>
+                <th>Tiêu chuẩn Lâm sàng & Huyết động Chẩn đoán</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>SHOCK Trial</strong></td>
+                <td>1. SBP &lt; 90 mmHg trong ≥ 30 phút hoặc cần hỗ trợ để duy trì SBP ≥ 90 mmHg;<br>2. Giảm tưới máu tạng (nước tiểu &lt; 30 mL/h, chi lạnh, HR &gt; 60 bpm);<br>3. Tiêu chuẩn huyết động: CI ≤ 2.2 L/min/m² VÀ PCWP ≥ 15 mmHg.</td>
+              </tr>
+              <tr>
+                <td><strong>TRIUMPH Trial</strong></td>
+                <td>1. Thông thoáng mạch máu thủ phạm (IRA) tự phát hoặc post-PCI;<br>2. Sốc tim kháng trị &gt; 1 giờ post-PCI với SBP &lt; 100 mmHg bất chấp dùng vận mạch (dopamine ≥ 7 µg/kg/min hoặc norepinephrine/epinephrine ≥ 0.15 µg/kg/min);<br>3. Tăng áp lực đổ đầy thất trái & LVEF &lt; 40%.</td>
+              </tr>
+              <tr>
+                <td><strong>IABP-SHOCK II</strong></td>
+                <td>1. SBP &lt; 90 mmHg trong ≥ 30 phút hoặc cần catecholamine duy trì SBP &gt; 90 mmHg;<br>2. Sung huyết phổi trên lâm sàng;<br>3. Suy giảm tưới máu tạng (tri giác, chi lạnh ẩm, nước tiểu &lt; 30 mL/h, Lactate &gt; 2.0 mmol/L).</td>
+              </tr>
+              <tr>
+                <td><strong>CULPRIT-SHOCK</strong></td>
+                <td>1. PCI cấp cứu bệnh vành nhiều nhánh (hẹp &gt; 70% ở ≥ 2 nhánh lớn ≥ 2 mm);<br>2. SBP &lt; 90 mmHg trong &gt; 30 phút hoặc cần catecholamine;<br>3. Sung huyết phổi VÀ tưới máu tạng suy giảm (Lactate &gt; 2.0 mmol/L, nước tiểu &lt; 30 mL/h, tri giác).</td>
+              </tr>
+              <tr>
+                <td><strong>ESC Guidelines</strong></td>
+                <td>SBP &lt; 90 mmHg kèm thể tích tuần hoàn đầy đủ và các dấu hiệu lâm sàng/xét nghiệm giảm tưới máu mô (chi lạnh, thiểu niệu, toan chuyển hóa, tăng lactate, tăng creatinine).</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Sinh Lý Bệnh & Vòng Xoắn Sốc -->
+    <div class="sec-card" id="sec-2">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-vial sec-hdr-icon"></i>
+        <h2 class="sec-title">2. Sinh Lý Bệnh Học Và Vòng Xoắn Sốc (The "Shock Spiral")</h2>
+      </div>
+      <div class="sec-body">
+        <p>Sinh lý bệnh học của sốc tim phản ánh sự không tương hợp nghiêm trọng giữa cung lượng tim (Cardiac Output - CO) và nhu cầu chuyển hóa của hệ thống. Sự sụt giảm đột ngột thể tích nhát bóp do tổn thương cơ tim kích hoạt phản ứng bù trừ:</p>
+        <ul style="margin-left: 1.25rem; line-height: 1.7;">
+          <li><strong>Kích hoạt giao cảm & RAAS:</strong> Co mạch hệ thống để duy trì áp lực tưới máu trung ương.</li>
+          <li><strong>Hệ quả bất lợi:</strong> Co mạch hệ thống làm tăng gánh nặng hậu gánh cho thất trái, trong khi sự giữ muối/nước làm tăng tiền gánh (quá tải thể tích lồng ngực). Công tim tăng cao làm trầm trọng thêm tình trạng thiếu máu cục bộ cơ tim.</li>
+        </ul>
+
+        <div class="infobox danger">
+          <span class="infobox-icon">🚫</span>
+          <div>
+            <strong>Sự Tiến Triển Của Vòng Xoắn Sốc (Shock Spiral) & Suy Đa Cơ Quan:</strong>
+            <br>• <strong>Rối loạn vi tuần hoàn:</strong> Co thắt tiểu động mạch/tĩnh mạch tiến triển thành giãn mạch liệt, tăng tính thấm mao mạch, ứ trệ mao mạch và vi huyết khối lan tỏa (MFI & de Backer score tương quan trực tiếp tử vong 30 ngày).
+            <br>• <strong>Phản ứng viêm hệ thống (SIRS):</strong> Kích hoạt ở ~40% bệnh nhân vào ngày thứ 2. Tăng vọt các Interleukin (IL-1β, IL-6, IL-7). Nitric oxide (NO) giải phóng cục bộ gây giãn mạch liệt và ức chế co bóp cơ tim.
+            <br>• <strong>Suy hàng rào niêm mạc ruột:</strong> Thiếu máu cục bộ ruột gây dịch chuyển vi khuẩn (bacterial translocation) và giải phóng endotoxin vào tuần hoàn.
+            <br>• <strong>Phổi - Gan - Thận - Đông máu:</strong> Phù phổi kẽ toan máu; Sung huyết gan & tổn thương gan cấp (tăng ALT, AST, Bilirubin); Suy thận cấp thiếu máu cục bộ (thiểu niệu, tăng Creatinine); Đông máu nội quản rải rác (DIC).
+          </div>
+        </div>
+
+        <!-- HÌNH 1: SINH LÝ BỆNH SỐC TIM PHÂN ĐỘ SCAI -->
+        <div style="margin: 1.25rem 0; text-align: center; background: var(--surface-2); padding: 1rem; border-radius: 14px; border: 1px solid var(--border-light);">
+          <img src="./images/2026-cap-nhat-soc-tim-fig1.png" alt="Sơ đồ Sinh lý bệnh học Sốc tim theo Giai đoạn SCAI" style="max-width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--border-light); box-shadow: 0 4px 12px rgba(0,0,0,0.06);" loading="lazy">
+          <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.6rem; font-style: italic; font-weight: 500;">
+            <strong>Hình 1:</strong> Sơ đồ Sinh lý bệnh học của Sốc tim với các bất thường theo giai đoạn lâm sàng (SCAI A-E), huyết động hệ thống, rối loạn vi tuần hoàn và suy đa cơ quan <em>(Trích từ J Cardiothorac Vasc Anesth 2026)</em>.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Phân Độ SCAI Stages A-E -->
+    <div class="sec-card" id="sec-3">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-layer-group sec-hdr-icon"></i>
+        <h2 class="sec-title">3. Hệ Thống Phân Độ Sốc SCAI Cải Tiến (SCAI Shock Stages A-E)</h2>
+      </div>
+      <div class="sec-body">
+        <p>Bảng phân loại giai đoạn sốc của Hiệp hội Chụp mạch và Can thiệp Tim mạch (SCAI) chia tiến trình sốc tim thành 5 giai đoạn liên tục từ A đến E. Khung định nghĩa cải tiến của Kapur et al. (Cardiogenic Shock Working Group) cụ thể hóa các tiêu chuẩn thực hành lâm sàng:</p>
+
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width: 140px;">Giai đoạn SCAI</th>
+                <th style="width: 180px;">Tên giai đoạn</th>
+                <th>Tiêu chuẩn Huyết động & Sinh hóa Cụ thể</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="rx-tag highlight">Giai đoạn A</span></td>
+                <td><strong>At Risk (Có nguy cơ)</strong></td>
+                <td>Bệnh nhân có bệnh tim cấp tính (AMI, suy tim cấp) nhưng huyết động hoàn toàn ổn định, không có dấu hiệu giảm tưới máu.</td>
+              </tr>
+              <tr>
+                <td><span class="rx-tag highlight">Giai đoạn B</span></td>
+                <td><strong>Preshock (Tiền sốc)</strong></td>
+                <td>SBP 60-90 mmHg hoặc MAP 50-65 mmHg đơn độc, HOẶC giảm tưới máu cô lập (Lactate 2-5 mmol/L, ALT 200-500 U/L) chưa cần vận mạch/MCS.</td>
+              </tr>
+              <tr>
+                <td><span class="rx-tag alert">Giai đoạn C</span></td>
+                <td><strong>Classic (Sốc điển hình)</strong></td>
+                <td>Xuất hiện đồng thời Hạ huyết áp VÀ Giảm tưới máu mô HOẶC đang duy trì 1 thuốc vận mạch/tăng co bóp hoặc 1 thiết bị MCS (IABP, Impella, ECMO).</td>
+              </tr>
+              <tr>
+                <td><span class="rx-tag alert">Giai đoạn D</span></td>
+                <td><strong>Deteriorating (Diễn tiến xấu)</strong></td>
+                <td>Thất bại ổn định huyết động sau ≥ 30 phút điều trị ban đầu. Lactate 5-10 mmol/L, ALT > 500 U/L, hoặc cần leo thang 2-5 thuốc/MCS.</td>
+              </tr>
+              <tr>
+                <td><span class="rx-tag alert">Giai đoạn E</span></td>
+                <td><strong>Extremis (Sốc trơ/Nguy kịch)</strong></td>
+                <td>Trụy tim mạch hoàn toàn. Ngừng tuần hoàn ngoại viện (OHCA), CPR liên tục, hoặc cần ≥ 3 thuốc/MCS đồng thời. SBP &lt; 60, MAP &lt; 50, Lactate &gt; 10 mmol/L, pH ≤ 7.2.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Biomarkers & Thang Điểm -->
+    <div class="sec-card" id="sec-4">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-heart-pulse sec-hdr-icon"></i>
+        <h2 class="sec-title">4. Dấu Ấn Sinh Học Mới Và Các Thang Điểm Tiên Lượng Lâm Sàng</h2>
+      </div>
+      <div class="sec-body">
+        <h3 class="sec-subtitle">4.1. Các Dấu Ấn Sinh Học (Biomarkers) Mới Trong Sốc Tim</h3>
+        <ul style="margin-left: 1.25rem; line-height: 1.7;">
+          <li><strong>Cardiac Troponin (cTn):</strong> Chuẩn vàng hoại tử cơ tim, tương quan nguy cơ loạn nhịp thất và ngưng tim.</li>
+          <li><strong>BNP & NT-proBNP:</strong> Tăng đáp ứng với căng thành tim. NT-proBNP kết hợp với IL-6 có vai trò tiên lượng sống sót rất cao.</li>
+          <li><strong>Soluble ST2 (sST2):</strong> Chỉ số tiên lượng rất cao. Điểm ưu việt: Nồng độ huyết thanh duy trì ổn định, <strong>không bị ảnh hưởng bởi suy thận hay BMI</strong>. Tích hợp vào thang điểm CardShock để dự báo tử vong 30 và 90 ngày.</li>
+          <li><strong>Dipeptidyl Peptidase 3 (DPP3):</strong> Protease tuần hoạt ức chế trực tiếp sức co bóp cơ tim. Nồng độ DPP3 cao liên quan tử vong ngắn hạn cao, giảm eGFR, tăng lactate và creatinine.</li>
+          <li><strong>Adrenomedullin (bio-ADM):</strong> Hormone giãn mạch tiên lượng tốt sau 48 giờ kể từ khi chẩn đoán sốc.</li>
+          <li><strong>Angiopoietin 2:</strong> Yếu tố duy trì tính toàn vẹn mạch máu. Tăng ở mốc 72 giờ liên quan AKI và chảy máu.</li>
+        </ul>
+
+        <h3 class="sec-subtitle">4.2. Các Thang Điểm Tiên Lượng Lâm Sàng</h3>
+        <div class="infobox teal">
+          <span class="infobox-icon">💡</span>
+          <div>
+            <strong>So Sánh 4 Thang Điểm Tiên Lượng Trong Sốc Tim:</strong>
+            <br>• <strong>CardShock Risk Score:</strong> Dự đoán tử vong tại viện (Tuổi, tiền sử MI/CABG, ACS, LVEF &lt; 40%, tri giác, SBP, Lactate, eGFR).
+            <br>• <strong>IABP-SHOCK II Score:</strong> Dự đoán tử vong 30 ngày ở AMI-CS (Tuổi &gt; 73, stroke, Đường máu &gt; 191 mg/dL, Creatinine &gt; 1.5 mg/dL, Dòng chảy TIMI &lt; 3 post-PCI, Lactate &gt; 5 mmol/L).
+            <br>• <strong>ENCOURAGE Score:</strong> Dự đoán tử vong ở bệnh nhân AMI-CS được chạy VA-ECMO (Tuổi &gt; 60, nữ, BMI &gt; 25, Glasgow &lt; 6, Creatinine &gt; 150 µmol/L, Lactate, Prothrombin &lt; 50%).
+            <br>• <strong>SAVE Score:</strong> Dự đoán sống sót sau khi chạy VA-ECMO cho sốc tim trơ.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. Giám Sát PAC & Huyết Động -->
+    <div class="sec-card" id="sec-5">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-shield-halved sec-hdr-icon"></i>
+        <h2 class="sec-title">5. Giám Sát Huyết Động Xâm Lấn Bằng Catheter Động Mạch Phổi (PAC)</h2>
+      </div>
+      <div class="sec-body">
+        <p>Giám sát bằng Catheter động mạch phổi (PAC) cung cấp các thông tin khách quan vô giá về tình trạng thể tích, áp lực đổ đầy hai thất, sức cản mạch phổi và chức năng thất phải. Phân tích gộp chỉ ra đặt PAC giúp <strong>giảm tử vong 30 ngày (OR 0.71)</strong> và tăng cơ hội tiếp cận kịp thời với các liệu pháp MCS nâng cao.</p>
+
+        <div class="infobox info">
+          <span class="infobox-icon">ℹ️</span>
+          <div>
+            <strong>Các Thông Số Huyết Động Then Chốt Từ PAC:</strong>
+            <br>• <strong>Tỷ lệ RA/PCWP:</strong> Đánh giá suy thất phải (Tỷ lệ &gt; 0.59 gợi ý suy thất phải rõ rệt).
+            <br>• <strong>Công suất tim (Cardiac Power Output - CPO):</strong> \(\text{CPO} = \frac{\text{MAP} \times \text{CO}}{451}\). CPO &lt; 0.6 W sau 24 giờ liên quan tử vong 30 ngày rất cao.
+            <br>• <strong>Chỉ số mạch đập động mạch phổi (PAPi):</strong> \(\text{PAPi} = \frac{\text{PASP} - \text{PADP}}{\text{RAP}}\). PAPi &lt; 1.85 gợi ý suy thất phải.
+          </div>
+        </div>
+
+        <h3 class="sec-subtitle">Phân Loại Hồ Sơ Huyết Động Trong Sốc (Hemodynamic Profiles)</h3>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Hồ sơ Huyết động</th>
+                <th>Áp lực Tim Phải (CVP/RA)</th>
+                <th>Áp lực Tim Trái (PCWP)</th>
+                <th>Đặc điểm Lâm sàng</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Hypovolemic (Giảm thể tích)</strong></td>
+                <td>Thấp (&lt; 6 mmHg)</td>
+                <td>Thấp (&lt; 10 mmHg)</td>
+                <td>Thiếu dịch tuần hoàn tuyệt đối hoặc tương đối.</td>
+              </tr>
+              <tr>
+                <td><strong>RV Congestion (Sung huyết Thất phải)</strong></td>
+                <td>Tăng cao (&gt; 12 mmHg)</td>
+                <td>Bình thường / Thấp</td>
+                <td>Suy thất phải đơn thuần (TAPSE thấp, PAPi &lt; 1.85).</td>
+              </tr>
+              <tr>
+                <td><strong>LV Congestion (Sung huyết Thất trái)</strong></td>
+                <td>Bình thường</td>
+                <td>Tăng cao (&gt; 15 mmHg)</td>
+                <td>Suy thất trái đơn thuần, phù phổi cấp huyết động.</td>
+              </tr>
+              <tr>
+                <td><strong>BiV Congestion (Sung huyết Hai thất)</strong></td>
+                <td>Tăng cao (&gt; 12 mmHg)</td>
+                <td>Tăng cao (&gt; 15 mmHg)</td>
+                <td>Suy hai thất toàn bộ, nguy cơ tử vong cực kỳ cao.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- HÌNH 2: HỒ SƠ HUYẾT ĐỘNG TRONG SỐC -->
+        <div style="margin: 1.25rem 0; text-align: center; background: var(--surface-2); padding: 1rem; border-radius: 14px; border: 1px solid var(--border-light);">
+          <img src="./images/2026-cap-nhat-soc-tim-fig2.png" alt="Sơ đồ Các hồ sơ Huyết động trong Sốc Tim (Hemodynamic Profiles in Shock)" style="max-width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--border-light); box-shadow: 0 4px 12px rgba(0,0,0,0.06);" loading="lazy">
+          <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.6rem; font-style: italic; font-weight: 500;">
+            <strong>Hình 2:</strong> Các hồ sơ huyết động trong Sốc tim dựa trên sự tương quan giữa Áp lực đổ đầy tim phải (CVP/RA) và Áp lực đổ đầy tim trái (PCWP) <em>(Trích từ J Cardiothorac Vasc Anesth 2026)</em>.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. Hỗ Trợ Tuần Hoàn Cơ Học (MCS) -->
+    <div class="sec-card" id="sec-6">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-triangle-exclamation sec-hdr-icon"></i>
+        <h2 class="sec-title">6. Hỗ Trợ Tuần Hoàn Cơ Học (MCS) Và Bằng Chứng Hiệu Quả</h2>
+      </div>
+      <div class="sec-body">
+        <p>Thuốc vận mạch/tăng co bóp làm tăng tiêu thụ oxy cơ tim (\(MVO_2\)) và nguy cơ loạn nhịp. Do đó, các thiết bị hỗ trợ tuần hoàn cơ học (MCS) tạm thời nổi lên như một liệu pháp bắc cầu chính yếu.</p>
+
+        <h3 class="sec-subtitle">Bảng 2: Tác Động Huyết Động Của Các Thiết Bị MCS Khác Nhau</h3>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Thông số huyết động</th>
+                <th>Impella 2.5 / CP</th>
+                <th>Impella 5.0 / 5.5</th>
+                <th>VA-ECMO</th>
+                <th>IABP</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Dòng chảy thất trái (LV flow)</strong></td>
+                <td>Giảm (↓)</td>
+                <td>Giảm nhiều (↓↓)</td>
+                <td>Tăng (↑)</td>
+                <td>Giảm (↓)</td>
+              </tr>
+              <tr>
+                <td><strong>Cung lượng tim (CO)</strong></td>
+                <td>Tăng (↑)</td>
+                <td>Tăng mạnh (↑↑)</td>
+                <td>Tăng rất mạnh (↑↑↑)</td>
+                <td>Tăng nhẹ (↑)</td>
+              </tr>
+              <tr>
+                <td><strong>Huyết áp trung bình (MAP)</strong></td>
+                <td>Tăng (↑)</td>
+                <td>Tăng mạnh (↑↑)</td>
+                <td>Tăng mạnh (↑↑)</td>
+                <td>Tăng nhẹ (↑)</td>
+              </tr>
+              <tr>
+                <td><strong>Áp lực bít mao mạch phổi (PCWP)</strong></td>
+                <td>Giảm nhiều (↓↓)</td>
+                <td>Giảm nhiều (↓↓)</td>
+                <td>Tăng (↑) hoặc Giảm (↓)</td>
+                <td>Giảm (↓)</td>
+              </tr>
+              <tr>
+                <td><strong>Hậu gánh thất trái (LV afterload)</strong></td>
+                <td>Giảm (↓)</td>
+                <td>Giảm (↓)</td>
+                <td><strong style="color: var(--red);">Tăng mạnh (↑↑)</strong></td>
+                <td>Giảm (↓)</td>
+              </tr>
+              <tr>
+                <td><strong>Tiêu thụ oxy cơ tim (\(MVO_2\))</strong></td>
+                <td>Giảm nhiều (↓↓)</td>
+                <td>Giảm nhiều (↓↓)</td>
+                <td>Tăng (↑) hoặc Giữ nguyên</td>
+                <td>Giảm (↓)</td>
+              </tr>
+              <tr>
+                <td><strong>Tưới máu mạch vành</strong></td>
+                <td>Tăng (↑)</td>
+                <td>Tăng (↑)</td>
+                <td>Tăng (↑)</td>
+                <td>Tăng mạnh (↑↑)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="infobox warning">
+          <span class="infobox-icon">⚠️</span>
+          <div>
+            <strong>Bằng chứng lâm sàng hiện tại (IABP-SHOCK II & CULPRIT-SHOCK):</strong>
+            Mặc dù MCS cải thiện huyết động vĩ mô (tăng MAP, giảm lactate), các thử nghiệm RCT chưa chứng minh được lợi ích cải thiện tử vong 30 ngày một cách đồng nhất, đồng thời gia tăng biến chứng chảy máu nặng và thiếu máu chi dưới. Việc lựa chọn thiết bị MCS bắt buộc phải cá thể hóa dựa trên kiểu suy thất.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7. Giải Áp Thất Trái (LV Unloading) -->
+    <div class="sec-card" id="sec-7">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-circle-nodes sec-hdr-icon"></i>
+        <h2 class="sec-title">7. Giải Áp Thất Trái (LV Unloading) Khi Chạy VA-ECMO</h2>
+      </div>
+      <div class="sec-body">
+        <p>Mặc dù VA-ECMO cung cấp hỗ trợ tuần hoàn toàn diện, dòng chảy ngược từ đường trả máu động mạch đùi làm <strong>tăng đáng kể hậu gánh thất trái</strong>. Khi thất trái suy nặng không thể mở van động mạch chủ, áp lực LVEDP và PCWP tăng vọt, gây phù phổi cấp huyết động, huyết khối buồng tim và tăng tiêu thụ oxy cơ tim.</p>
+
+        <h3 class="sec-subtitle">Bảng 3: So Sánh Các Biện Pháp Giải Áp Thất Trái (LV Unloading Modalities)</h3>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width: 220px;">Phương thức giải áp</th>
+                <th>Ưu điểm & Cơ chế</th>
+                <th>Nhược điểm & Hạn chế</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Thuốc tăng co bóp (Inotropes)</strong></td>
+                <td>Đơn giản, chi phí thấp, không cần can thiệp dụng cụ bổ sung.</td>
+                <td>Tăng tiêu thụ oxy cơ tim, nguy cơ loạn nhịp thất, hiệu quả giải áp hạn chế.</td>
+              </tr>
+              <tr>
+                <td><strong>Bóng đối xung động mạch chủ (IABP)</strong></td>
+                <td>Dễ thực hiện tại giường, tỷ lệ biến chứng thấp, tăng tưới máu vành.</td>
+                <td>Chỉ giải áp một phần; chống chỉ định khi hở van ĐMC hoặc phình ĐMC.</td>
+              </tr>
+              <tr>
+                <td><strong>Thiết bị Impella (ECMELLA)</strong></td>
+                <td><strong>Giải áp chủ động & trực tiếp</strong>, giảm LVEDP tối ưu, tăng dòng chảy hệ thống.</td>
+                <td>Tán huyết, chảy máu, thiếu máu chi; chi phí cao; chống chỉ định khi hở van ĐMC.</td>
+              </tr>
+              <tr>
+                <td><strong>Chọc vách liên nhĩ (Atrial Septostomy)</strong></td>
+                <td>Giải áp nhĩ trái/thất trái trực tiếp qua luồng thông sang nhĩ phải.</td>
+                <td>Nguy cơ tổn thương vách tim, di lệch stent, cần can thiệp đóng lại sau hồi phục.</td>
+              </tr>
+              <tr>
+                <td><strong>Cannula giải áp ngoại khoa / qua da</strong></td>
+                <td>Dẫn lưu máu trực tiếp từ thất trái/nhĩ trái, hiệu quả giải áp tối đa.</td>
+                <td>Biến chứng kỹ thuật mổ ngực hoặc chọc đường vào xâm lấn.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8. Quy Trình Leo Thang & Hạ Bậc -->
+    <div class="sec-card" id="sec-8">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-diagram-project sec-hdr-icon"></i>
+        <h2 class="sec-title">8. Quy Trình Leo Thang (Escalation) Và Hạ Bậc (De-escalation) MCS</h2>
+      </div>
+      <div class="sec-body">
+        
+        <!-- Interactive Premium Flowchart -->
+        <div class="flowchart-card">
+          <div class="flowchart-card-hdr">
+            <div class="flowchart-card-hdr-title"><i class="fa-solid fa-diagram-project"></i> Sơ đồ Thuật toán Lâm sàng Leo Thang &amp; Hạ Bậc MCS</div>
+            <span class="badge">Escalation &amp; De-escalation Protocol</span>
+          </div>
+          <div class="flowchart-card-body" style="overflow-x: auto; padding: 1rem;">
+            <svg viewBox="0 0 900 400" width="100%" height="400" xmlns="http://www.w3.org/2000/svg" style="max-width: 100%; height: auto; display: block; font-family: 'Inter', system-ui, sans-serif;">
+              <defs>
+                <linearGradient id="gMcsHdr" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#0284c7"/>
+                  <stop offset="100%" stop-color="#0369a1"/>
+                </linearGradient>
+                <linearGradient id="gDeEsc" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#059669"/>
+                  <stop offset="100%" stop-color="#047857"/>
+                </linearGradient>
+                <linearGradient id="gEsc" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#dc2626"/>
+                  <stop offset="100%" stop-color="#b91c1c"/>
+                </linearGradient>
+              </defs>
+
+              <!-- Root Node -->
+              <rect x="250" y="15" width="400" height="48" rx="8" fill="url(#gMcsHdr)"/>
+              <text x="450" y="37" fill="#ffffff" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700" text-anchor="middle">SỐC TIM ĐANG CÓ HỖ TRỢ TUẦN HOÀN CƠ HỌC (MCS)</text>
+              <text x="450" y="53" fill="#bae6fd" font-size="10.5" text-anchor="middle">Đánh giá đáp ứng huyết động, lactate máu và nhu cầu vận mạch sau 24–48 giờ</text>
+
+              <!-- Split 2 Branches -->
+              <path d="M 450 63 L 450 85 L 220 85 L 220 110" fill="none" stroke="#059669" stroke-width="2"/>
+              <polygon points="216,110 220,117 224,110" fill="#059669"/>
+
+              <path d="M 450 63 L 450 85 L 680 85 L 680 110" fill="none" stroke="#dc2626" stroke-width="2"/>
+              <polygon points="676,110 680,117 684,110" fill="#dc2626"/>
+
+              <!-- Decision Node Left: Stable -->
+              <rect x="50" y="117" width="340" height="46" rx="8" fill="#ecfdf5" stroke="#059669" stroke-width="1.5"/>
+              <text x="220" y="137" fill="#065f46" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="700" text-anchor="middle">🟢 Huyết Động &amp; Chuyển Hóa Cải Thiện</text>
+              <text x="220" y="152" fill="#047857" font-size="10" text-anchor="middle">Lactate giảm liên tục • Giảm liều vận mạch • Cung lượng tim phục hồi</text>
+
+              <!-- Decision Node Right: Deteriorating -->
+              <rect x="510" y="117" width="340" height="46" rx="8" fill="#fef2f2" stroke="#dc2626" stroke-width="1.5"/>
+              <text x="680" y="137" fill="#991b1b" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="700" text-anchor="middle">🔴 Huyết Động Suy Sụp / Không Cải Thiện</text>
+              <text x="680" y="152" fill="#dc2626" font-size="10" text-anchor="middle">Inotropic score &gt; 20 • Vận mạch &gt; 48h • Lactate tăng • Suy đa tạng</text>
+
+              <!-- Connectors Down -->
+              <path d="M 220 163 L 220 195" fill="none" stroke="#059669" stroke-width="2"/>
+              <polygon points="216,195 220,202 224,195" fill="#059669"/>
+
+              <path d="M 680 163 L 680 195" fill="none" stroke="#dc2626" stroke-width="2"/>
+              <polygon points="676,195 680,202 684,195" fill="#dc2626"/>
+
+              <!-- Card Left: De-escalation Action -->
+              <rect x="50" y="202" width="340" height="175" rx="10" fill="#ffffff" stroke="#059669" stroke-width="1.5"/>
+              <rect x="50" y="202" width="340" height="32" rx="10" fill="url(#gDeEsc)"/>
+              <text x="220" y="223" fill="#ffffff" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700" text-anchor="middle">HẠ BẬC / CAI DẦN MCS (DE-ESCALATION)</text>
+              
+              <text x="68" y="255" fill="#0f172a" font-size="11" font-weight="700">• Cai dần VA-ECMO:</text>
+              <text x="80" y="272" fill="#475569" font-size="10.5">Giảm lưu lượng ECMO, đánh giá siêu âm tim và áp lực buồng tim.</text>
+              
+              <text x="68" y="295" fill="#0f172a" font-size="11" font-weight="700">• Chuyển sang Impella 5.0 (đường nách):</text>
+              <text x="80" y="312" fill="#475569" font-size="10.5">Thời gian trung bình 22h post-admission, tạo điều kiện rút ống &amp; vận động sớm.</text>
+              
+              <text x="68" y="335" fill="#0f172a" font-size="11" font-weight="700">• Rút dần dụng cụ</text>
+              <text x="80" y="352" fill="#059669" font-size="10.5" font-weight="700">khi tim tự duy trì CI &gt; 2.2 L/min/m² và lactate &lt; 2.0 mmol/L.</text>
+
+              <!-- Split Escalation into 2 branches -->
+              <path d="M 680 163 L 680 185 L 565 185 L 565 202" fill="none" stroke="#dc2626" stroke-width="1.5"/>
+              <polygon points="561,202 565,209 569,202" fill="#dc2626"/>
+
+              <path d="M 680 163 L 680 185 L 775 185 L 775 202" fill="none" stroke="#dc2626" stroke-width="1.5"/>
+              <polygon points="771,202 775,209 779,202" fill="#dc2626"/>
+
+              <!-- Card Right 1: Single LV Failure -->
+              <rect x="475" y="209" width="180" height="168" rx="8" fill="#ffffff" stroke="#d97706" stroke-width="1.5"/>
+              <rect x="475" y="209" width="180" height="28" rx="8" fill="#fffbeb"/>
+              <text x="565" y="228" fill="#92400e" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="700" text-anchor="middle">SUY ĐƠN THẤT TRÁI</text>
+              
+              <text x="485" y="255" fill="#0f172a" font-size="10" font-weight="700">• Đổi từ đùi sang nách:</text>
+              <text x="485" y="272" fill="#475569" font-size="9.5">Chuyển Impella CP $\rightarrow$ 5.0/5.5</text>
+              <text x="485" y="295" fill="#0f172a" font-size="10" font-weight="700">• Tăng dòng hỗ trợ LV</text>
+              <text x="485" y="312" fill="#475569" font-size="9.5">Đảm bảo dòng chảy &gt; 4.0 L/ph</text>
+              <text x="485" y="335" fill="#0f172a" font-size="10" font-weight="700">• Tháo gỡ quá tải LV</text>
+              <text x="485" y="352" fill="#d97706" font-size="9.5" font-weight="700">Giảm PCWP &amp; áp lực thành</text>
+
+              <!-- Card Right 2: Biventricular Failure -->
+              <rect x="670" y="209" width="210" height="168" rx="8" fill="#ffffff" stroke="#dc2626" stroke-width="1.5"/>
+              <rect x="670" y="209" width="210" height="28" rx="8" fill="#fef2f2"/>
+              <text x="775" y="228" fill="#991b1b" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="700" text-anchor="middle">SUY HAI THẤT (BiV FAILURE)</text>
+              
+              <text x="680" y="255" fill="#0f172a" font-size="10" font-weight="700">• Chỉ định VA-ECMO:</text>
+              <text x="680" y="272" fill="#475569" font-size="9.5">Hỗ trợ oxy hóa &amp; toàn bộ tuần hoàn</text>
+              <text x="680" y="295" fill="#0f172a" font-size="10" font-weight="700">• Hỗ trợ RV chuyên biệt:</text>
+              <text x="680" y="312" fill="#475569" font-size="9.5">Thêm ProtekDuo / Impella RP</text>
+              <text x="680" y="335" fill="#0f172a" font-size="10" font-weight="700">• Phối hợp BIPELLA / ECPELLA:</text>
+              <text x="680" y="352" fill="#dc2626" font-size="9.5" font-weight="700">Impella (LV) + ProtekDuo/ECMO</text>
+            </svg>
+          </div>
+        </div>
+
+        <ul style="margin-left: 1.25rem; line-height: 1.7;">
+          <li><strong>Tiêu chuẩn Leo thang (Escalation):</strong> Đặt ra khi Inotropic score &gt; 20, lactate máu tăng dai dẳng, hoặc suy đa tạng tiến triển. Suy đơn thất trái -&gt; đổi sang Impella 5.0/5.5 đường nách; Suy hai thất (RAP &gt; 16, PAPi &lt; 1.85, RA/PCWP &gt; 0.59) -&gt; chỉ định VA-ECMO, ProtekDuo hoặc BIPELLA.</li>
+          <li><strong>Tiêu chuẩn Hạ bậc (De-escalation):</strong> Khi nồng độ lactate bình thường hóa và huyết động ổn định. Chuyển đổi từ VA-ECMO sang Impella 5.0 nách (thời gian trung bình 22 giờ post-admission) giúp bệnh nhân rút ống sớm và tập vận động tại ICU.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 9. Tim Cấu Trúc & Shock Team -->
+    <div class="sec-card" id="sec-9">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-hospital-user sec-hdr-icon"></i>
+        <h2 class="sec-title">9. Can Thiệp Bệnh Tim Cấu Trúc & Mô Hình Tổ Chức Chăm Sóc Sốc Tim</h2>
+      </div>
+      <div class="sec-body">
+        <ul style="margin-left: 1.25rem; line-height: 1.7;">
+          <li><strong>Sửa van hai lá qua catheter (TMVR / MitraClip):</strong> Hở van 2 lá nặng gặp ở 5-10% bệnh nhân sốc tim. Can thiệp TMVR thành công giúp giảm tỷ lệ tử vong 1 năm từ <strong>69.2% xuống 39.7%</strong> (Jung et al.).</li>
+          <li><strong>Thay van động mạch chủ qua catheter (TAVI):</strong> TAVI cấp cứu đóng vai trò như liệu pháp cứu mạng ở sốc tim do Hẹp van ĐMC khít (Tỷ lệ thành công kỹ thuật đạt 94.1%).</li>
+          <li><strong>Mô hình Shock Team & Mạng lưới Spoke-Hub:</strong> Thành lập đội sốc đa chuyên khoa (Tim mạch can thiệp, Phẫu thuật tim, Hồi sức cấp cứu, Chuyên gia Suy tim) và kết nối Bệnh viện vệ tinh (Spoke) với Trung tâm tuyến cuối (Hub) giúp nhận diện và can thiệp MCS sớm trước khi suy tạng không hồi phục.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 10. Trích Dẫn AMA -->
+    <div class="sec-card" id="sec-10">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-bookmark sec-hdr-icon"></i>
+        <h2 class="sec-title">10. Trích Dẫn Tài Liệu Tham Khảo Chuẩn AMA</h2>
+      </div>
+      <div class="sec-body">
+        <div class="citation-box">
+          1. Shekhar S, Agrawal A, Almadhoun H, et al. Cardiogenic Shock: Current Evidence, Guideline Perspectives, and Outcomes. <em>J Cardiothorac Vasc Anesth</em>. 2026;40(10):2581-2598. doi:10.1053/j.jvca.2026.01.021.
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PAGE FOOTER -->
+  <footer class="page-footer">
+    <p>© 2026 CliniPortal — Phân hệ Y học Chứng cứ (EBM). Bản quyền tóm tắt hướng dẫn y khoa chuẩn hóa.</p>
+  </footer>
+
+  <script>
+    // Theme Toggle with LocalStorage
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const htmlEl = document.documentElement;
+
+    const savedTheme = localStorage.getItem('cliniportal_ebm_theme');
+    if (savedTheme === 'dark' || savedTheme === 'light') {
+      htmlEl.setAttribute('data-theme', savedTheme);
+      if (themeToggleBtn) {
+        themeToggleBtn.innerHTML = savedTheme === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+      }
+    }
+
+    if (themeToggleBtn) {
+      themeToggleBtn.addEventListener('click', () => {
+        const currentTheme = htmlEl.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        htmlEl.setAttribute('data-theme', newTheme);
+        themeToggleBtn.innerHTML = newTheme === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+        localStorage.setItem('cliniportal_ebm_theme', newTheme);
+      });
+    }
+
+    // Quicknav Active Highlight with IntersectionObserver
+    const sections = document.querySelectorAll('.sec-card[id]');
+    const navLinks = document.querySelectorAll('.quicknav-link');
+
+    const navObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const currentId = entry.target.getAttribute('id');
+          navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + currentId) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    }, { rootMargin: '-10% 0px -70% 0px' });
+
+    sections.forEach(section => navObserver.observe(section));
+  </script>
+  <script type="module" src="../guideline-controller.ts"></script>
+</body>
+</html>

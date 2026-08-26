@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Hướng dẫn toàn diện chẩn đoán, điều trị và dự phòng cúm mùa theo Quyết định 1840/QĐ-BYT ngày 03/06/2025 của Bộ Y tế Việt Nam. Phân loại cúm A/H1N1, A/H3N2, Cúm B; phân độ cúm nhẹ và nặng; chỉ định kháng vi rút đầu tay Oseltamivir, Baloxavir, Zanamivir; chống chỉ định Aspirin (Hội chứng Reye); bậc thang hồi sức ARDS/ECMO và phác đồ dự phòng sau phơi nhiễm.">
+  <title>Bộ Y Tế 2025: Hướng Dẫn Chẩn Đoán, Điều Trị & Dự Phòng Cúm Mùa – CliniPortal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../../../../css/components/header.css">
+  <script type="module" src="../../../../../components/header.ts" defer></script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #059669; --green-bg: #f0fdf4; --green-light: #a7f3d0;
+      --orange: #d97706; --orange-bg: #fffbeb; --orange-light: #fde68a;
+      --red: #dc2626; --red-bg: #fef2f2; --red-light: #fca5a5;
+      --blue: #2563eb; --blue-bg: #eff6ff; --blue-light: #bfdbfe;
+      --teal: #0d9488; --teal-bg: #f0fdfa; --teal-light: #99f6e4;
+      --purple: #7c3aed; --purple-bg: #faf5ff; --purple-light: #ddd6fe;
+      --accent: #0f6fb4;
+      --bg: #f0f4f8; --surface: #ffffff; --surface-2: #f8fafc;
+      --border: #cbd5e1; --border-light: #e2e8f0;
+      --text: #0f172a; --text-muted: #475569; --text-faint: #94a3b8;
+      --radius: 16px; --tr: 220ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [data-theme="dark"] {
+      --green: #10b981; --green-bg: #064e3b; --green-light: #047857;
+      --orange: #f59e0b; --orange-bg: #78350f; --orange-light: #b45309;
+      --red: #ef4444; --red-bg: #7f1d1d; --red-light: #b91c1c;
+      --blue: #3b82f6; --blue-bg: #1e3a8a; --blue-light: #1d4ed8;
+      --teal: #14b8a6; --teal-bg: #115e59; --teal-light: #0f766e;
+      --purple: #8b5cf6; --purple-bg: #4c1d95; --purple-light: #6d28d9;
+      --accent: #38bdf8;
+      --bg: #0f172a; --surface: #1e293b; --surface-2: #0f172a;
+      --border: #334155; --border-light: #1e293b;
+      --text: #f8fafc; --text-muted: #cbd5e1; --text-faint: #64748b;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; font-size: 15px; background: var(--bg); color: var(--text); line-height: 1.65; min-height: 100vh; transition: background var(--tr), color var(--tr); }
+
+    /* TOP NAV */
+    .topnav { position: sticky; top: 0; z-index: 200; background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 1rem; padding: 0 1.5rem; height: 56px; transition: background var(--tr), border-color var(--tr); }
+    [data-theme="dark"] .topnav { background: rgba(30, 41, 59, 0.9); }
+    .topnav-back { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--accent); text-decoration: none; font-size: 0.82rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 8px; transition: background var(--tr); white-space: nowrap; }
+    .topnav-back:hover { background: var(--blue-bg); }
+    .topnav-divider { width: 1px; height: 18px; background: var(--border-light); flex-shrink: 0; }
+    .topnav-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .topnav-theme-toggle { margin-left: auto; background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 1.1rem; padding: 0.5rem; border-radius: 50%; transition: background var(--tr); display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; }
+    .topnav-theme-toggle:hover { background: var(--surface-2); color: var(--accent); }
+
+    /* QUICK NAV BAR */
+    .quicknav { position: sticky; top: 56px; z-index: 190; background: var(--surface); border-bottom: 1px solid var(--border-light); display: flex; gap: 0.5rem; padding: 0.6rem 1.5rem; overflow-x: auto; -webkit-overflow-scrolling: touch; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+    .quicknav::-webkit-scrollbar { height: 3px; }
+    .quicknav::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    .quicknav-link { display: inline-flex; align-items: center; white-space: nowrap; font-size: 0.78rem; font-weight: 600; color: var(--text-muted); text-decoration: none; padding: 0.35rem 0.85rem; border-radius: 20px; background: var(--surface-2); border: 1px solid var(--border-light); transition: all var(--tr); }
+    .quicknav-link:hover, .quicknav-link.active { background: var(--blue-bg); color: var(--accent); border-color: var(--blue-light); }
+
+    /* HERO */
+    .hero { background: linear-gradient(135deg, #0284c7 0%, #0369a1 45%, #0f172a 100%); color: #fff; padding: 3.5rem 1.5rem 4.5rem; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 50%, rgba(56, 189, 248, 0.25) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(16, 185, 129, 0.2) 0%, transparent 55%); }
+    .hero-inner { max-width: 1000px; margin: 0 auto; position: relative; z-index: 1; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255, 255, 255, 0.14); border: 1px solid rgba(255, 255, 255, 0.24); border-radius: 20px; padding: 0.3rem 0.9rem; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1rem; color: #bae6fd; }
+    .hero-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(1.8rem, 4vw, 2.7rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 0.85rem; }
+    .hero-title span { display: block; background: linear-gradient(90deg, #bae6fd, #a7f3d0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 0.65em; font-weight: 600; letter-spacing: 0; margin-bottom: 0.2rem; }
+    .hero-subtitle { font-size: 0.95rem; opacity: 0.88; max-width: 780px; margin-bottom: 2rem; line-height: 1.65; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 0.75rem 2rem; font-size: 0.8rem; opacity: 0.85; }
+    .hero-meta-item { display: flex; align-items: center; gap: 6px; }
+
+    /* PILLARS STRIP */
+    .pillars { background: var(--surface); border-bottom: 1px solid var(--border-light); padding: 1.75rem 1.5rem; }
+    .pillars-inner { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+    .pillar { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.1rem 1.2rem; display: flex; align-items: flex-start; gap: 0.85rem; position: relative; overflow: hidden; transition: box-shadow var(--tr); }
+    .pillar::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; border-radius: 4px 0 0 4px; }
+    .pillar.p1::before { background: var(--blue); }
+    .pillar.p2::before { background: var(--red); }
+    .pillar.p3::before { background: var(--orange); }
+    .pillar.p4::before { background: var(--green); }
+    .pillar:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+    .pillar-icon { font-size: 1.6rem; flex-shrink: 0; line-height: 1; }
+    .pillar-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text); margin-bottom: 0.25rem; }
+    .pillar-desc { font-size: 0.76rem; color: var(--text-muted); line-height: 1.45; }
+
+    /* PAGE CONTENT */
+    .page-content { max-width: 1000px; margin: 0 auto; padding: 2.25rem 1.5rem; display: flex; flex-direction: column; gap: 2rem; }
+
+    /* SECTION CARDS & HEADINGS */
+    .sec-card { background: var(--surface); border: 1px solid var(--border-light); border-radius: var(--radius); overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.03); scroll-margin-top: 110px; }
+    .sec-hdr { padding: 1.15rem 1.5rem; border-bottom: 1px solid var(--border-light); background: var(--surface-2); display: flex; align-items: center; gap: 0.75rem; }
+    .sec-hdr-icon { font-size: 1.15rem; color: var(--accent); background: var(--blue-bg); width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--blue-light); flex-shrink: 0; }
+    .sec-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.1rem; font-weight: 800; color: var(--text); letter-spacing: -0.01em; }
+    .sec-body { padding: 1.5rem; display: flex; flex-direction: column; gap: 1.25rem; }
+
+    /* SUBHEADINGS (H3, H4) */
+    .sec-subtitle { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 0.95rem; color: var(--text); margin-top: 0.5rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.6rem; }
+    .sec-subtitle i { color: var(--accent); font-size: 0.75rem; background: var(--blue-bg); width: 24px; height: 24px; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--blue-light); flex-shrink: 0; }
+    .sec-subtitle::after { content: ''; flex: 1; height: 2px; background: linear-gradient(90deg, var(--border-light), transparent); border-radius: 1px; margin-left: 0.5rem; }
+
+    /* BENTO MATRIX CARDS */
+    .matrix-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 0.5rem; }
+    .matrix-card { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.15rem; transition: transform var(--tr), box-shadow var(--tr); display: flex; flex-direction: column; gap: 0.5rem; position: relative; overflow: hidden; }
+    .matrix-card:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.06); }
+    .matrix-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--accent); }
+    .matrix-card.card-red::before { background: var(--red); }
+    .matrix-card.card-orange::before { background: var(--orange); }
+    .matrix-card.card-green::before { background: var(--green); }
+    .matrix-card.card-teal::before { background: var(--teal); }
+    .matrix-card.card-purple::before { background: var(--purple); }
+    .matrix-card-hdr { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
+    .matrix-card-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 0.88rem; color: var(--text); display: flex; align-items: center; gap: 0.5rem; }
+    .matrix-card-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.55; }
+
+    /* STEP CLINICAL TIMELINE CARDS */
+    .timeline-container { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 0.5rem; }
+    .timeline-step-card { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.15rem; display: flex; gap: 1rem; align-items: flex-start; transition: transform var(--tr); }
+    .timeline-step-card:hover { transform: translateX(3px); }
+    .timeline-badge { width: 38px; height: 38px; border-radius: 12px; background: var(--accent); color: #fff; display: flex; align-items: center; justify-content: center; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 0.9rem; flex-shrink: 0; box-shadow: 0 3px 8px rgba(15,111,180,0.25); }
+    .timeline-badge.step-1 { background: var(--blue); }
+    .timeline-badge.step-2 { background: var(--orange); }
+    .timeline-badge.step-3 { background: var(--red); }
+    .timeline-badge.step-4 { background: var(--purple); }
+    .timeline-content { flex: 1; display: flex; flex-direction: column; gap: 0.35rem; }
+    .timeline-content h4 { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 0.9rem; color: var(--text); display: flex; align-items: center; justify-content: space-between; }
+    .timeline-content p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.55; }
+
+    /* INFO BOXES */
+    .infobox { display: flex; align-items: flex-start; gap: 0.85rem; padding: 1rem 1.25rem; border-radius: 12px; font-size: 0.85rem; line-height: 1.6; }
+    .infobox-icon { font-size: 1.3rem; flex-shrink: 0; line-height: 1.3; }
+    .infobox.danger { background: var(--red-bg); border: 1px solid var(--red-light); border-left: 4px solid var(--red); color: var(--text); }
+    .infobox.success { background: var(--green-bg); border: 1px solid var(--green-light); border-left: 4px solid var(--green); color: var(--text); }
+    .infobox.warning { background: var(--orange-bg); border: 1px solid var(--orange-light); border-left: 4px solid var(--orange); color: var(--text); }
+    .infobox.info { background: var(--blue-bg); border: 1px solid var(--blue-light); border-left: 4px solid var(--blue); color: var(--text); }
+    .infobox.teal { background: var(--teal-bg); border: 1px solid var(--teal-light); border-left: 4px solid var(--teal); color: var(--text); }
+    .infobox strong { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; color: var(--text); }
+
+    /* TABLES */
+    .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 12px; border: 1px solid var(--border-light); margin-bottom: 0.5rem; }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 0.83rem; min-width: 650px; text-align: left; }
+    .data-table thead th { padding: 0.75rem 1rem; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; background: var(--surface-2); color: var(--text-muted); border-bottom: 1px solid var(--border-light); }
+    .data-table td { padding: 0.85rem 1rem; border-bottom: 1px solid var(--border-light); vertical-align: top; line-height: 1.55; }
+    .data-table tbody tr:last-child td { border-bottom: none; }
+
+    /* BADGES & TAGS */
+    .rx-tag { display: inline-block; background: var(--surface-2); color: var(--text-muted); font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; padding: 0.15rem 0.5rem; border-radius: 6px; border: 1px solid var(--border-light); margin: 0.15rem 0.1rem; }
+    .rx-tag.highlight { background: var(--blue-bg); color: var(--accent); border-color: var(--blue-light); font-weight: 600; }
+    .rx-tag.alert { background: var(--red-bg); color: var(--red); border-color: var(--red-light); font-weight: 600; }
+    .rx-tag.warn { background: var(--orange-bg); color: var(--orange); border-color: var(--orange-light); font-weight: 600; }
+    .rx-tag.success { background: var(--green-bg); color: var(--green); border-color: var(--green-light); font-weight: 600; }
+
+    /* CITATION & FOOTER */
+    .citation-box { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 12px; padding: 1.25rem; font-size: 0.82rem; color: var(--text-muted); line-height: 1.75; }
+    .citation-box ol { padding-left: 1.2rem; }
+    .citation-box li { margin-bottom: 0.5rem; }
+    .page-footer { max-width: 1000px; margin: 0 auto; padding: 2rem 1.5rem 4rem; text-align: center; font-size: 0.8rem; color: var(--text-faint); border-top: 1px solid var(--border-light); }
+
+    @media (max-width: 768px) {
+      .page-content { padding: 1.25rem 1rem; }
+      .sec-body { padding: 1.1rem 1rem; }
+      .pillars-inner { grid-template-columns: 1fr; }
+      .matrix-grid { grid-template-columns: 1fr; }
+    }
+
+    @media print {
+      body { background: #fff !important; color: #000 !important; }
+      .topnav, .quicknav, .topnav-theme-toggle, .page-footer, .topnav-pdf-btn { display: none !important; }
+      .sec-card { break-inside: avoid; border: 1px solid #ccc !important; box-shadow: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
+
+  <!-- TOP NAV -->
+  <nav class="topnav">
+    <a href="../guidelines.html" class="topnav-back">
+      <i class="fa-solid fa-chevron-left"></i>
+      Kho Guidelines
+    </a>
+    <div class="topnav-divider"></div>
+    <div class="topnav-title">Bộ Y Tế 2025: Hướng Dẫn Chẩn Đoán, Điều Trị & Dự Phòng Cúm Mùa</div>
+    <button class="topnav-theme-toggle topnav-pdf-btn" onclick="window.print()" title="Tải PDF / In bài viết" style="margin-left: auto; margin-right: 4px;">
+      <i class="fa-solid fa-file-pdf"></i>
+    </button>
+    <button class="topnav-theme-toggle" id="themeToggleBtn" aria-label="Đổi giao diện">
+      <i class="fa-solid fa-moon"></i>
+    </button>
+  </nav>
+
+  <!-- QUICK NAV BAR -->
+  <div class="quicknav">
+    <a href="#sec-1" class="quicknav-link active"><i class="fa-solid fa-head-side-cough"></i> 1. Dịch Tễ & Căn Nguyên</a>
+    <a href="#sec-2" class="quicknav-link"><i class="fa-solid fa-notes-medical"></i> 2. Lâm Sàng & Phân Độ</a>
+    <a href="#sec-3" class="quicknav-link"><i class="fa-solid fa-vials"></i> 3. Cận Lâm Sàng & Chẩn Đoán</a>
+    <a href="#sec-4" class="quicknav-link"><i class="fa-solid fa-capsules"></i> 4. Thuốc Kháng Vi Rút</a>
+    <a href="#sec-5" class="quicknav-link"><i class="fa-solid fa-kit-medical"></i> 5. Hồi Sức Hô Hấp (ARDS)</a>
+    <a href="#sec-6" class="quicknav-link"><i class="fa-solid fa-shield-virus"></i> 6. Dự Phòng Sau Phơi Nhiễm</a>
+    <a href="#sec-7" class="quicknav-link"><i class="fa-solid fa-bookmark"></i> 7. Tham Khảo AMA</a>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge"><i class="fa-solid fa-file-medical"></i> Quyết định 1840/QĐ-BYT · Bộ Y Tế Việt Nam (03/06/2025)</div>
+      <h1 class="hero-title">
+        <span>Vietnam MOH Guidelines on Diagnosis, Treatment & Prevention of Seasonal Influenza (2025)</span>
+        Hướng Dẫn Chẩn Đoán, Điều Trị & Dự Phòng Cúm Mùa
+      </h1>
+      <p class="hero-subtitle">
+        Tài liệu chuyên môn quốc gia áp dụng thống nhất trên toàn quốc theo Quyết định 1840/QĐ-BYT (chính thức thay thế QĐ 2078/QĐ-BYT năm 2011). Phân loại các chủng vi rút cúm A/H1N1, A/H3N2, Cúm B; nhận diện 5 nhóm nguy cơ diễn tiến nặng; phân độ Cúm Nhẹ và Cúm Nặng; phác đồ Oseltamivir đầu tay cho phụ nữ mang thai & trẻ em; cấm dùng Aspirin (nguy cơ Hội chứng Reye); bậc thang hồi sức ARDS/ECMO và phác đồ dự phòng PEP sau phơi nhiễm.
+      </p>
+      <div class="hero-meta">
+        <div class="hero-meta-item"><i class="fa-solid fa-calendar-check"></i> Ban hành: 03/06/2025 (Thứ trưởng Trần Văn Thuấn ký)</div>
+        <div class="hero-meta-item"><i class="fa-solid fa-user-doctor"></i> Chủ biên: TS. Phạm Ngọc Thạch (Giám đốc BV Bệnh Nhiệt đới TW)</div>
+        <div class="hero-meta-item"><i class="fa-solid fa-head-side-cough"></i> Phân loại: Nhiễm trùng hô hấp cấp tính</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PILLARS STRIP -->
+  <div class="pillars">
+    <div class="pillars-inner">
+      <div class="pillar p1">
+        <div class="pillar-icon">🦠</div>
+        <div>
+          <div class="pillar-title">Cúm A (H1N1, H3N2) & Cúm B</div>
+          <div class="pillar-desc">Nhiễm trùng hô hấp cấp tính lây qua giọt bắn & bề mặt ô nhiễm, tăng rầm rộ mùa đông xuân.</div>
+        </div>
+      </div>
+      <div class="pillar p2">
+        <div class="pillar-icon">⚠️</div>
+        <div>
+          <div class="pillar-title">5 Nhóm Nguy Cơ Diễn Tiến Nặng</div>
+          <div class="pillar-desc">Phụ nữ mang thai, người >65t, trẻ <5t, người có bệnh nền mạn tính và suy giảm miễn dịch.</div>
+        </div>
+      </div>
+      <div class="pillar p3">
+        <div class="pillar-icon">💊</div>
+        <div>
+          <div class="pillar-title">Oseltamivir Đầu Tay</div>
+          <div class="pillar-desc">Dùng càng sớm càng tốt cho ca nặng hoặc nhẹ có nguy cơ; an toàn cho thai phụ & trẻ sơ sinh.</div>
+        </div>
+      </div>
+      <div class="pillar p4">
+        <div class="pillar-icon">🚫</div>
+        <div>
+          <div class="pillar-title">CẤM Aspirin & Corticoid Thường Quy</div>
+          <div class="pillar-desc">Dùng Paracetamol hạ sốt, cấm Aspirin (Hội chứng Reye); Hồi sức hô hấp oxy $\rightarrow$ HFNC $\rightarrow$ NKQ $\rightarrow$ ECMO.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="page-content">
+
+    <!-- SECTION 1: DỊCH TỄ HỌC & CĂN NGUYÊN SINH HỌC -->
+    <div class="sec-card" id="sec-1">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-head-side-cough"></i></div>
+        <h2 class="sec-title">1. Dịch Tễ Học, Căn Nguyên Sinh Học & Cơ Sở Pháp Lý</h2>
+      </div>
+      <div class="sec-body">
+        
+        <div class="infobox success">
+          <div class="infobox-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+          <div>
+            <strong>Cơ Sở Pháp Lý Chuyên Môn Ban Hành:</strong>
+            Quyết định số 1840/QĐ-BYT ban hành ngày 03 tháng 6 năm 2025 do Thứ trưởng Bộ Y tế GS.TS. Trần Văn Thuấn ký thay Bộ trưởng, ban hành "Hướng dẫn chẩn đoán và điều trị cúm mùa", chính thức <strong>thay thế Quyết định số 2078/QĐ-BYT ngày 23/06/2011</strong>. Hướng dẫn áp dụng thống nhất cho tất cả các cơ sở khám chữa bệnh trên phạm vi toàn quốc, căn cứ Luật Khám bệnh, chữa bệnh 2023 và Nghị định 42/2025/NĐ-CP. Chỉ đạo biên soạn: <strong>GS.TS. Trần Văn Thuấn</strong>; Chủ biên: <strong>TS. Phạm Ngọc Thạch</strong> (Giám đốc BV Bệnh Nhiệt đới Trung ương).
+          </div>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-virus"></i> Tác Nhân Sinh Học & Các Nhóm Nguy Cơ Cao Diễn Tiến Nặng</div>
+
+        <div class="matrix-grid">
+          <div class="matrix-card card-blue">
+            <div class="matrix-card-hdr">
+              <span class="matrix-card-title"><i class="fa-solid fa-dna"></i> Tác Nhân Gây Bệnh</span>
+              <span class="rx-tag highlight">Seasonal Influenza</span>
+            </div>
+            <div class="matrix-card-desc">
+              Cúm mùa do các chủng vi rút cúm đang lưu hành trực tiếp gây ra, bao gồm phân tuýp <strong>A/H1N1</strong>, <strong>A/H3N2</strong> và <strong>vi rút cúm B</strong>. Lây truyền qua giọt bắn hô hấp hoặc tiếp xúc bề mặt ô nhiễm. Tăng cao vào mùa đông xuân.
+            </div>
+          </div>
+
+          <div class="matrix-card card-green">
+            <div class="matrix-card-hdr">
+              <span class="matrix-card-title"><i class="fa-solid fa-syringe"></i> Vắc-Xin Phòng Bệnh</span>
+              <span class="rx-tag success">Tiêm Chủ Động Hàng Năm</span>
+            </div>
+            <div class="matrix-card-desc">
+              Cúm mùa <strong>đã có vắc-xin phòng ngừa hiệu quả</strong>. Bộ Y tế khuyến cáo chủ động tiêm phòng vắc-xin cúm mùa hàng năm cho cộng đồng và đặc biệt các nhóm nguy cơ cao.
+            </div>
+          </div>
+
+          <div class="matrix-card card-red">
+            <div class="matrix-card-hdr">
+              <span class="matrix-card-title"><i class="fa-solid fa-triangle-exclamation"></i> 5 Nhóm Nguy Cơ Nặng</span>
+              <span class="rx-tag alert">Chỉ Định Dùng Thuốc Kháng Vi Rút</span>
+            </div>
+            <div class="matrix-card-desc">
+              1. <strong>Phụ nữ mang thai</strong> hoặc mới sinh trong 2 tuần.<br>
+              2. <strong>Người cao tuổi (> 65 tuổi)</strong>.<br>
+              3. <strong>Trẻ em dưới 5 tuổi</strong> (đặc biệt trẻ &lt; 2 tuổi).<br>
+              4. <strong>Người có bệnh lý nền mạn tính</strong> (COPD, hen phế quản, tim mạch, suy thận, xơ gan, đái tháo đường...).<br>
+              5. <strong>Người bị suy giảm miễn dịch</strong>.
+            </div>
+          </div>
+
+          <div class="matrix-card card-purple">
+            <div class="matrix-card-hdr">
+              <span class="matrix-card-title"><i class="fa-solid fa-clock"></i> Khởi Phát & Ủ Bệnh</span>
+              <span class="rx-tag highlight">Ủ Bệnh 1 – 4 Ngày</span>
+            </div>
+            <div class="matrix-card-desc">
+              Ủ bệnh từ 1 đến 4 ngày. Khởi phát đột ngột: sốt, ớn lạnh, đau đầu, đau mỏi cơ toàn thân, mệt mỏi, ho khan, đau họng, chảy mũi. Trẻ em có thể nôn/tiêu chảy. Triệu chứng <strong>có thể không điển hình ở người cao tuổi (>65t)</strong>.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SECTION 2: LÂM SÀNG, DIỄN TIẾN & PHÂN ĐỘ CÚM -->
+    <div class="sec-card" id="sec-2">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-notes-medical"></i></div>
+        <h2 class="sec-title">2. Diễn Tiến Lâm Sàng & Phân Độ Bệnh Cúm Mùa</h2>
+      </div>
+      <div class="sec-body">
+        
+        <div class="sec-subtitle"><i class="fa-solid fa-layer-group"></i> Phân Độ Lâm Sàng Bệnh Cúm Mùa</div>
+
+        <div class="matrix-grid">
+          <div class="matrix-card card-green">
+            <div class="matrix-card-hdr">
+              <span class="matrix-card-title"><i class="fa-solid fa-circle-check"></i> Cúm Nhẹ</span>
+              <span class="rx-tag success">Đường Hô Hấp Trên</span>
+            </div>
+            <div class="matrix-card-desc">
+              Người bệnh chỉ xuất hiện các triệu chứng khu trú ở đường hô hấp trên (ho, đau họng, chảy mũi, sốt 3–5 ngày) và không có bất kỳ biểu hiện nào của cúm nặng. Thường tự hồi phục.
+            </div>
+          </div>
+
+          <div class="matrix-card card-red">
+            <div class="matrix-card-hdr">
+              <span class="matrix-card-title"><i class="fa-solid fa-truck-medical"></i> Cúm Nặng (Nhập Viện ICU)</span>
+              <span class="rx-tag alert">Suy Hô Hấp / Suy Cơ Quan</span>
+            </div>
+            <div class="matrix-card-desc">
+              Xác định khi có $\ge 1$ biểu hiện:<br>
+              - <strong>Suy hô hấp:</strong> Khó thở, thở nhanh, thở gắng sức, cần thở oxy/HFNC/thở máy để duy trì $SpO_2 > 95\%$.<br>
+              - <strong>Biến chứng phổi:</strong> Viêm phổi tiến triển nhanh sang ARDS, sốc, suy đa tạng.<br>
+              - <strong>Đợt bùng phát bệnh nền:</strong> Đợt cấp COPD, hen phế quản, suy tim.<br>
+              - <strong>Suy cơ quan khác:</strong> Rối loạn tri giác, sốc, suy đa cơ quan.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SECTION 3: CẬN LÂM SÀNG & TIÊU CHUẨN CHẨN ĐOÁN -->
+    <div class="sec-card" id="sec-3">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-vials"></i></div>
+        <h2 class="sec-title">3. Xét Nghiệm Cận Lâm Sàng & Tiêu Chuẩn Chẩn Đoán</h2>
+      </div>
+      <div class="sec-body">
+        
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width: 28%;">Hạng Mục Xét Nghiệm</th>
+                <th style="width: 32%;">Kỹ Thuật / Phương Pháp</th>
+                <th>Ý Nghĩa Đánh Giá Lâm Sàng</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>RT-PCR / Multiplex-PCR</strong></td>
+                <td>Dịch tỵ hầu / Dịch phế quản</td>
+                <td><span class="rx-tag highlight">Tiêu Chuẩn Vàng</span> Khẳng định chắc chắn ca bệnh và định danh chính xác phân tuýp vi rút (A/H1N1, A/H3N2, B).</td>
+              </tr>
+              <tr>
+                <td><strong>Test Nhanh Kháng Nguyên</strong></td>
+                <td>Phết dịch mũi họng</td>
+                <td>Sàng lọc ban đầu nhanh tại phòng khám / khoa cấp cứu.</td>
+              </tr>
+              <tr>
+                <td><strong>Nuôi Cấy & Giải Trình Tự Gen</strong></td>
+                <td>Mẫu dịch hô hấp đặc biệt</td>
+                <td>Chỉ định khi nghi ngờ biến chủng mới có nguy cơ gây đại dịch hoặc xác định tình trạng kháng thuốc.</td>
+              </tr>
+              <tr>
+                <td><strong>Đánh Giá Viêm & Bội Nhiễm</strong></td>
+                <td>CTM, CRP, Procalcitonin, Cấy máu/dịch hô hấp</td>
+                <td>Đánh giá phản ứng viêm và chẩn đoán xác định tình trạng bội nhiễm vi khuẩn/nấm (đặc biệt tụ cầu vàng MRSA).</td>
+              </tr>
+              <tr>
+                <td><strong>Chẩn Đoán Hình Ảnh (X-quang / CT / Siêu Âm)</strong></td>
+                <td>X-quang phổi / CT ngực / Siêu âm phổi tại giường</td>
+                <td>Phát hiện thâm nhiễm viêm phổi, tổn thương đông đặc phổi, ARDS và theo dõi tiến triển trực tiếp tại giường ICU.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-list-check"></i> Tiêu Chuẩn Chẩn Đoán Ca Bệnh</div>
+
+        <div class="matrix-grid">
+          <div class="matrix-card card-orange">
+            <div class="matrix-card-hdr">
+              <span class="matrix-card-title"><i class="fa-solid fa-user-clock"></i> Ca Bệnh Nghi Ngờ</span>
+              <span class="rx-tag warn">Lâm Sàng + Dịch Tễ</span>
+            </div>
+            <div class="matrix-card-desc">
+              Triệu chứng viêm đường hô hấp cấp hoặc suy hô hấp tiến triển nhanh, đồng thời có yếu tố dịch tễ (tiếp xúc gần ca bệnh xác định hoặc sống/di chuyển qua vùng đang có dịch cúm lưu hành).
+            </div>
+          </div>
+
+          <div class="matrix-card card-green">
+            <div class="matrix-card-hdr">
+              <span class="matrix-card-title"><i class="fa-solid fa-circle-check"></i> Ca Bệnh Khẳng Định</span>
+              <span class="rx-tag success">Xét Nghiệm Vi Rút (+)</span>
+            </div>
+            <div class="matrix-card-desc">
+              Là ca bệnh nghi ngờ có kết quả xét nghiệm vi rút cúm dương tính bằng một trong các kỹ thuật: test nhanh, RT-PCR hoặc Multiplex-PCR.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SECTION 4: PHÁC ĐỒ THUỐC KHÁNG VI RÚT -->
+    <div class="sec-card" id="sec-4">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-capsules"></i></div>
+        <h2 class="sec-title">4. Chỉ Định & Phác Đồ Thuốc Kháng Vi Rút Cúm (Bảng 1 QĐ 1840 P1)</h2>
+      </div>
+      <div class="sec-body">
+        
+        <div class="infobox info">
+          <div class="infobox-icon"><i class="fa-solid fa-clock"></i></div>
+          <div>
+            <strong>CHỈ ĐỊNH THUỐC KHÁNG VI RÚT CÀNG SỚM CÀNG TỐT:</strong>
+            Sử dụng thuốc kháng vi rút cho: (1) Ca bệnh nghi ngờ hoặc khẳng định <strong>Cúm Nặng</strong>; (2) Ca bệnh <strong>Cúm Nhẹ kèm yếu tố nguy cơ diễn biến nặng</strong>. Thuốc lựa chọn ưu tiên hàng đầu là <span class="rx-tag highlight">Oseltamivir</span>.
+          </div>
+        </div>
+
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width: 20%;">Hoạt Chất</th>
+                <th style="width: 25%;">Đối Tượng Phân Liều</th>
+                <th style="width: 25%;">Liều Dùng Cụ Thể</th>
+                <th style="width: 12%;">Thời Gian</th>
+                <th>Lưu Ý Chuyên Môn</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td rowspan="5"><strong>Oseltamivir</strong><br><em>(Đường uống)</em><br><span class="rx-tag highlight">Ưu Tiên Đầu Tay</span></td>
+                <td><strong>Người lớn</strong></td>
+                <td><strong>75 mg</strong>, 2 lần/ngày</td>
+                <td>5 ngày</td>
+                <td><span class="rx-tag success">An Toàn Cho Thai Phụ</span></td>
+              </tr>
+              <tr>
+                <td><strong>Trẻ 1 – 12 tuổi:</strong><br>- Trẻ $\le 15$kg<br>- Trẻ 15 – 23kg<br>- Trẻ 23 – 40kg<br>- Trẻ > 40kg</td>
+                <td>30 mg, 2 lần/ngày<br>45 mg, 2 lần/ngày<br>60 mg, 2 lần/ngày<br>75 mg, 2 lần/ngày</td>
+                <td>5 ngày</td>
+                <td>Chia liều chi tiết theo cân nặng thực tế của trẻ.</td>
+              </tr>
+              <tr>
+                <td><strong>Trẻ 9 – 11 tháng</strong></td>
+                <td><strong>3.5 mg/kg</strong>, 2 lần/ngày</td>
+                <td>5 ngày</td>
+                <td>Tính theo mg/kg cân nặng.</td>
+              </tr>
+              <tr>
+                <td><strong>Trẻ 0 – 8 tháng</strong></td>
+                <td><strong>3 mg/kg</strong>, 2 lần/ngày</td>
+                <td>5 ngày</td>
+                <td>Tính theo mg/kg cân nặng.</td>
+              </tr>
+              <tr>
+                <td><strong>Trẻ sinh non:</strong><br>- Tuổi thai < 38 tuần<br>- Tuổi thai 38 – 40 tuần<br>- Tuổi thai > 40 tuần</td>
+                <td>1 mg/kg, 2 lần/ngày<br>1.5 mg/kg, 2 lần/ngày<br>1.5 mg/kg, 2 lần/ngày</td>
+                <td>5 ngày</td>
+                <td>Kéo dài đến <strong>10 ngày</strong> ở bệnh nhân cúm nặng + suy giảm miễn dịch.</td>
+              </tr>
+              <tr>
+                <td><strong>Zanamivir</strong><br><em>(Đường hít)</em></td>
+                <td>Người lớn & Trẻ $\ge 7$ tuổi</td>
+                <td><strong>10 mg</strong>, 2 lần/ngày</td>
+                <td>5 ngày</td>
+                <td>Chỉ dùng khi người bệnh KHÔNG có bệnh lý hô hấp nặng đi kèm.</td>
+              </tr>
+              <tr>
+                <td><strong>Baloxavir marboxil</strong><br><em>(Đường uống)</em></td>
+                <td>- Trẻ/Người lớn < 20kg<br>- Trẻ/Người lớn 20 – 80kg<br>- Trẻ/Người lớn > 80kg</td>
+                <td><strong>2 mg/kg</strong><br><strong>40 mg</strong><br><strong>80 mg</strong></td>
+                <td><span class="rx-tag success">1 Liều Duy Nhất</span></td>
+                <td><span class="rx-tag alert">CẤM Cho Thai Phụ & Cho Con Bú</span> Không dùng cho phụ nữ mang thai hoặc cho con bú.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SECTION 5: BẬC THANG HỒI SỨC HÔ HẤP -->
+    <div class="sec-card" id="sec-5">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-kit-medical"></i></div>
+        <h2 class="sec-title">5. Bậc Thang Hồi Sức Hô Hấp ARDS & Thuốc Hỗ Trợ Cúm Nặng</h2>
+      </div>
+      <div class="sec-body">
+        
+        <div class="infobox danger">
+          <div class="infobox-icon"><i class="fa-solid fa-ban"></i></div>
+          <div>
+            <strong>CHỐNG CHỈ ĐỊNH TUYỆT ĐỐI ASPIRIN (HỘI CHỨNG REYE):</strong>
+            Hạ sốt bằng <span class="rx-tag highlight">Paracetamol</span>. <strong>TUYỆT ĐỐI CẤM DÙNG ASPIRIN</strong> cho người bệnh cúm do nguy cơ kích hoạt <strong>Hội chứng Reye</strong> gây tổn thương gan phế và não cấp tính dẫn tới tử vong.
+          </div>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-lungs"></i> Bậc Thang Hồi Sức Hô Hấp Trong Suy Hô Hấp Cúm Nặng</div>
+
+        <div class="timeline-container">
+          <div class="timeline-step-card">
+            <div class="timeline-badge step-1">1</div>
+            <div class="timeline-content">
+              <h4>Bậc 1: Liệu Pháp Oxy Thông Thường <span class="rx-tag highlight">Oxy Gọng / Mask</span></h4>
+              <p>Chỉ định oxy gọng kính hoặc mask có túi dự trữ để duy trì $SpO_2 > 95\%$. Đánh giá liên tục đáp ứng của người bệnh.</p>
+            </div>
+          </div>
+
+          <div class="timeline-step-card">
+            <div class="timeline-badge step-2">2</div>
+            <div class="timeline-content">
+              <h4>Bậc 2: Thở Máy Dòng Cao HFNC / Thở Máy Không Xâm Nhập <span class="rx-tag warn">NIV / HFNC</span></h4>
+              <p>Áp dụng kịp thời khi người bệnh không đáp ứng oxy thông thường. Theo dõi sát để quyết định đặt ống nội khí quản sớm.</p>
+            </div>
+          </div>
+
+          <div class="timeline-step-card">
+            <div class="timeline-badge step-3">3</div>
+            <div class="timeline-content">
+              <h4>Bậc 3: Thở Máy Xâm Nhập <span class="rx-tag alert">Đặt Nội Khí Quản</span></h4>
+              <p>Chỉ định bắt buộc khi thất bại với HFNC/NIV hoặc xuất hiện sốc, suy đa cơ quan.</p>
+            </div>
+          </div>
+
+          <div class="timeline-step-card">
+            <div class="timeline-badge step-4">4</div>
+            <div class="timeline-content">
+              <h4>Bậc 4: Trao Đổi Oxy Qua Màng Ngoài Cơ Thể <span class="rx-tag alert">ECMO</span></h4>
+              <p>Chỉ định cuối cùng cho suy hô hấp ARDS cực kỳ nghiêm trọng không đáp ứng với các biện pháp hồi sức thông thường.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-pills"></i> Nguyên Tắc Dùng Kháng Sinh & Corticoid</div>
+
+        <div class="matrix-grid">
+          <div class="matrix-card card-orange">
+            <div class="matrix-card-hdr">
+              <span class="matrix-card-title"><i class="fa-solid fa-capsules"></i> Thuốc Kháng Sinh</span>
+              <span class="rx-tag warn">Chỉ Khi Nghi Ngờ Bội Nhiễm</span>
+            </div>
+            <div class="matrix-card-desc">
+              Không dùng kháng sinh cho cúm nhẹ. Chỉ dùng theo kinh nghiệm hoặc vi sinh khi có bằng chứng bội nhiễm vi khuẩn/nấm (đặc biệt tụ cầu vàng MRSA). Lấy mẫu cấy trước liều kháng sinh đầu tiên.
+            </div>
+          </div>
+
+          <div class="matrix-card card-red">
+            <div class="matrix-card-hdr">
+              <span class="matrix-card-title"><i class="fa-solid fa-syringe"></i> Corticoid</span>
+              <span class="rx-tag alert">CHỐNG CHỈ ĐỊNH THƯỜNG QUY</span>
+            </div>
+            <div class="matrix-card-desc">
+              Tuyệt đối không tự ý sử dụng corticosteroid thường quy cho người bệnh cúm. Chỉ dùng khi có chỉ định đặc biệt khác sau khi hội chẩn chuyên khoa.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SECTION 6: PHÁC ĐỒ DỰ PHÒNG SAU PHƠI NHIỄM -->
+    <div class="sec-card" id="sec-6">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-shield-virus"></i></div>
+        <h2 class="sec-title">6. Phác Đồ Sử Dụng Thuốc Kháng Vi Rút Dự Phòng Sau Phơi Nhiễm (PEP)</h2>
+      </div>
+      <div class="sec-body">
+        
+        <div class="infobox info">
+          <div class="infobox-icon"><i class="fa-solid fa-user-shield"></i></div>
+          <div>
+            <strong>Chỉ Định Dự Phòng Sau Phơi Nhiễm (PEP):</strong>
+            Cân nhắc chỉ định cho người bệnh điều trị nội trú có <strong>nguy cơ nhiễm cúm nặng cao</strong> có tiền sử phơi nhiễm trực tiếp với người nhiễm cúm trong vòng <strong>2 ngày</strong> trước đó.
+          </div>
+        </div>
+
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width: 22%;">Tên Hoạt Chất</th>
+                <th style="width: 18%;">Cách Dùng</th>
+                <th style="width: 35%;">Liều Dùng Cụ Thể (10 Ngày)</th>
+                <th>Lưu Ý Chuyên Môn</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Oseltamivir</strong></td>
+                <td>Đường uống</td>
+                <td>Dùng <strong>1 lần/ngày x 10 ngày</strong>:<br>- > 40kg: 75 mg/ngày<br>- 23 – 40kg: 60 mg/ngày<br>- 15 – 23kg: 45 mg/ngày<br>- 10 – 15kg: 30 mg/ngày<br>- Trẻ &lt; 12 tháng: 3 mg/kg/ngày</td>
+                <td><span class="rx-tag success">An Toàn Cho Thai Phụ</span> An toàn cho trẻ em, người lớn và phụ nữ mang thai.</td>
+              </tr>
+              <tr>
+                <td><strong>Zanamivir</strong></td>
+                <td>Hít qua mũi/họng</td>
+                <td>Liều <strong>10 mg x 1 lần/ngày x 10 ngày</strong></td>
+                <td>Chỉ định cho người lớn và trẻ em từ 5 tuổi trở lên không có bệnh hô hấp nặng.</td>
+              </tr>
+              <tr>
+                <td><strong>Baloxavir marboxil</strong></td>
+                <td>Đường uống</td>
+                <td>Dùng <strong>1 liều duy nhất</strong> theo cân nặng:<br>- &lt; 20kg: 2 mg/kg<br>- 20 – 79kg: 40 mg<br>- $\ge$ 80kg: 80 mg</td>
+                <td><span class="rx-tag alert">CẤM Cho Thai Phụ & Cho Con Bú</span> Áp dụng cho người lớn và trẻ $\ge 12$ tuổi.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SECTION 7: TÀI LIỆU THAM KHẢO AMA -->
+    <div class="sec-card" id="sec-7">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-bookmark"></i></div>
+        <h2 class="sec-title">7. Danh Mục Tài Liệu Tham Khảo Chuẩn AMA</h2>
+      </div>
+      <div class="sec-body">
+        <div class="citation-box">
+          <ol>
+            <li>Bộ Y tế Việt Nam. <em>Hướng dẫn chẩn đoán và điều trị cúm mùa</em> (Ban hành kèm theo Quyết định số 1840/QĐ-BYT ngày 03 tháng 06 năm 2025 của Bộ trưởng Bộ Y tế). Hà Nội: Bộ Y tế; 2025.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PAGE FOOTER -->
+  <footer class="page-footer">
+    <p>© 2026 CliniPortal — Phân hệ Y học Chứng cứ (EBM). Bản quyền tóm tắt hướng dẫn y khoa chuẩn hóa.</p>
+  </footer>
+
+  <script>
+    // Theme Toggle with LocalStorage
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const htmlEl = document.documentElement;
+
+    const savedTheme = localStorage.getItem('cliniportal_ebm_theme');
+    if (savedTheme === 'dark' || savedTheme === 'light') {
+      htmlEl.setAttribute('data-theme', savedTheme);
+      if (themeToggleBtn) {
+        themeToggleBtn.innerHTML = savedTheme === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+      }
+    }
+
+    if (themeToggleBtn) {
+      themeToggleBtn.addEventListener('click', () => {
+        const currentTheme = htmlEl.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        htmlEl.setAttribute('data-theme', newTheme);
+        themeToggleBtn.innerHTML = newTheme === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+        localStorage.setItem('cliniportal_ebm_theme', newTheme);
+      });
+    }
+
+    // Quicknav Active Highlight with IntersectionObserver
+    const sections = document.querySelectorAll('.sec-card[id]');
+    const navLinks = document.querySelectorAll('.quicknav-link');
+
+    const navObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const currentId = entry.target.getAttribute('id');
+          navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + currentId) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    }, { rootMargin: '-10% 0px -70% 0px' });
+
+    sections.forEach(section => navObserver.observe(section));
+  </script>
+  <script type="module" src="../guideline-controller.ts"></script>
+</body>
+</html>

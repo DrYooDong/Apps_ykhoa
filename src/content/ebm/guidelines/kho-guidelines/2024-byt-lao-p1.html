@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tóm tắt Hướng dẫn chẩn đoán, điều trị và dự phòng bệnh Lao 2024 của Bộ Y tế Việt Nam (QĐ 162/QĐ-BYT) – Phần 1: Đại đại cương, phân loại, kỹ thuật vi sinh & tiêu chuẩn chẩn đoán bệnh Lao / Lao tiềm ẩn.">
+  <title>Bộ Y Tế 2024 – Hướng Dẫn Lao (Phần 1: Đại Cương & Chẩn Đoán) – CliniPortal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #059669; --green-bg: #f0fdf4; --green-light: #a7f3d0;
+      --orange: #d97706; --orange-bg: #fffbeb; --orange-light: #fde68a;
+      --red: #dc2626; --red-bg: #fef2f2; --red-light: #fca5a5;
+      --blue: #2563eb; --blue-bg: #eff6ff; --blue-light: #bfdbfe;
+      --teal: #0d9488; --teal-bg: #f0fdfa; --teal-light: #99f6e4;
+      --purple: #7c3aed; --purple-bg: #faf5ff; --purple-light: #ddd6fe;
+      --accent: #0f6fb4;
+      --bg: #f0f4f8; --surface: #ffffff; --surface-2: #f8fafc;
+      --border: #cbd5e1; --border-light: #e2e8f0;
+      --text: #0f172a; --text-muted: #475569; --text-faint: #94a3b8;
+      --radius: 16px; --tr: 220ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [data-theme="dark"] {
+      --green: #10b981; --green-bg: #064e3b; --green-light: #047857;
+      --orange: #f59e0b; --orange-bg: #78350f; --orange-light: #b45309;
+      --red: #ef4444; --red-bg: #7f1d1d; --red-light: #b91c1c;
+      --blue: #3b82f6; --blue-bg: #1e3a8a; --blue-light: #1d4ed8;
+      --teal: #14b8a6; --teal-bg: #115e59; --teal-light: #0f766e;
+      --purple: #8b5cf6; --purple-bg: #4c1d95; --purple-light: #6d28d9;
+      --accent: #38bdf8;
+      --bg: #0f172a; --surface: #1e293b; --surface-2: #0f172a;
+      --border: #334155; --border-light: #1e293b;
+      --text: #f8fafc; --text-muted: #cbd5e1; --text-faint: #64748b;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; font-size: 15px; background: var(--bg); color: var(--text); line-height: 1.65; min-height: 100vh; transition: background var(--tr), color var(--tr); }
+
+    /* TOP NAV */
+    .topnav { position: sticky; top: 0; z-index: 200; background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 1rem; padding: 0 1.5rem; height: 56px; transition: background var(--tr), border-color var(--tr); }
+    [data-theme="dark"] .topnav { background: rgba(30, 41, 59, 0.9); }
+    .topnav-back { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--accent); text-decoration: none; font-size: 0.82rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 8px; transition: background var(--tr); white-space: nowrap; }
+    .topnav-back:hover { background: var(--blue-bg); }
+    .topnav-divider { width: 1px; height: 18px; background: var(--border-light); flex-shrink: 0; }
+    .topnav-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .topnav-actions { margin-left: auto; display: flex; align-items: center; gap: 0.5rem; }
+    .part-switcher { display: inline-flex; background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 8px; padding: 2px; }
+    .part-btn { padding: 0.25rem 0.65rem; border-radius: 6px; font-size: 0.75rem; font-weight: 700; text-decoration: none; color: var(--text-muted); transition: all var(--tr); }
+    .part-btn.active { background: var(--accent); color: #fff; }
+    .part-btn:hover:not(.active) { color: var(--accent); }
+    .theme-toggle { background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 1.1rem; padding: 0.4rem; border-radius: 50%; transition: background var(--tr); display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; }
+    .theme-toggle:hover { background: var(--surface-2); color: var(--accent); }
+
+    /* HERO */
+    .hero { background: linear-gradient(135deg, #064e3b 0%, #0f6fb4 50%, #0c4a6e 100%); color: #fff; padding: 3.25rem 1.5rem 4.5rem; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 15% 60%, rgba(56, 189, 248, 0.25) 0%, transparent 55%), radial-gradient(ellipse at 85% 20%, rgba(16, 185, 129, 0.2) 0%, transparent 50%); }
+    .hero-inner { max-width: 1000px; margin: 0 auto; position: relative; z-index: 1; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 20px; padding: 0.35rem 0.95rem; font-size: 0.74rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1rem; color: #a7f3d0; }
+    .hero-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(1.8rem, 4vw, 2.7rem); font-weight: 800; line-height: 1.18; letter-spacing: -0.03em; margin-bottom: 0.75rem; }
+    .hero-title span { display: block; background: linear-gradient(90deg, #7dd3fc, #6ee7b7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 0.68em; font-weight: 600; letter-spacing: 0; margin-bottom: 0.2rem; }
+    .hero-subtitle { font-size: 0.95rem; opacity: 0.9; max-width: 780px; margin-bottom: 1.75rem; line-height: 1.6; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 0.75rem 1.75rem; font-size: 0.8rem; opacity: 0.85; border-top: 1px solid rgba(255,255,255,0.18); padding-top: 1rem; }
+    .hero-meta-item { display: flex; align-items: center; gap: 6px; }
+
+    /* PILLARS STICKY NAV BAR */
+    .pillars-nav { position: sticky; top: 56px; z-index: 190; background: var(--surface); border-bottom: 1px solid var(--border-light); padding: 0.65rem 1.5rem; transition: background var(--tr); }
+    .pillars-nav-inner { max-width: 1000px; margin: 0 auto; display: flex; gap: 0.5rem; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .pillars-nav-inner::-webkit-scrollbar { height: 3px; }
+    .pillars-nav-inner::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    .pillar-tab { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.4rem 0.8rem; border-radius: 20px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.76rem; font-weight: 700; color: var(--text-muted); border: 1px solid var(--border-light); background: var(--surface-2); text-decoration: none; white-space: nowrap; transition: all var(--tr); }
+    .pillar-tab:hover { border-color: var(--accent); color: var(--accent); background: var(--blue-bg); }
+    .pillar-tab.p-1 { border-left: 4px solid var(--blue); }
+    .pillar-tab.p-2 { border-left: 4px solid var(--teal); }
+    .pillar-tab.p-3 { border-left: 4px solid var(--green); }
+    .pillar-tab.p-4 { border-left: 4px solid var(--purple); }
+
+    /* PILLARS STRIP */
+    .pillars { background: var(--surface); border-bottom: 1px solid var(--border-light); padding: 1.75rem 1.5rem; }
+    .pillars-inner { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+    .pillar { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.1rem 1.2rem; display: flex; align-items: flex-start; gap: 0.85rem; position: relative; overflow: hidden; transition: transform var(--tr), box-shadow var(--tr); }
+    .pillar::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; }
+    .pillar.p1::before { background: var(--blue); }
+    .pillar.p2::before { background: var(--teal); }
+    .pillar.p3::before { background: var(--green); }
+    .pillar.p4::before { background: var(--purple); }
+    .pillar:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.06); }
+    .pillar-icon { font-size: 1.6rem; flex-shrink: 0; line-height: 1; }
+    .pillar-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.86rem; color: var(--text); margin-bottom: 0.2rem; }
+    .pillar-desc { font-size: 0.76rem; color: var(--text-muted); line-height: 1.45; }
+
+    /* PAGE CONTENT CONTAINER */
+    .page-content { max-width: 1000px; margin: 0 auto; padding: 2.25rem 1.5rem; display: flex; flex-direction: column; gap: 2.25rem; }
+
+    /* SECTION CARD */
+    .sec-card { background: var(--surface); border: 1px solid var(--border-light); border-radius: var(--radius); overflow: hidden; scroll-margin-top: 110px; box-shadow: 0 2px 8px rgba(0,0,0,0.03); }
+    .sec-hdr { padding: 1.1rem 1.5rem; border-bottom: 1px solid var(--border-light); background: var(--surface-2); display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; }
+    .sec-hdr-left { display: flex; align-items: center; gap: 0.65rem; }
+    .sec-hdr-icon { width: 34px; height: 34px; border-radius: 10px; background: var(--blue-bg); color: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+    .sec-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1rem; font-weight: 800; color: var(--text); }
+    .sec-body { padding: 1.5rem; }
+    .sec-subtitle { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.85rem; color: var(--accent); margin: 1.35rem 0 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; display: flex; align-items: center; gap: 0.5rem; }
+    .sec-subtitle:first-child { margin-top: 0; }
+
+    /* INFO BOXES */
+    .infobox { display: flex; align-items: flex-start; gap: 0.85rem; padding: 1rem 1.25rem; border-radius: 12px; margin-bottom: 1rem; font-size: 0.85rem; line-height: 1.6; }
+    .infobox:last-child { margin-bottom: 0; }
+    .infobox-icon { font-size: 1.2rem; flex-shrink: 0; line-height: 1.3; }
+    .infobox.danger { background: var(--red-bg); border: 1px solid var(--red-light); border-left: 4px solid var(--red); color: var(--text); }
+    .infobox.success { background: var(--green-bg); border: 1px solid var(--green-light); border-left: 4px solid var(--green); color: var(--text); }
+    .infobox.warning { background: var(--orange-bg); border: 1px solid var(--orange-light); border-left: 4px solid var(--orange); color: var(--text); }
+    .infobox.info { background: var(--blue-bg); border: 1px solid var(--blue-light); border-left: 4px solid var(--blue); color: var(--text); }
+    .infobox strong { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.88rem; color: var(--text); }
+
+    /* TABLES */
+    .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 1.25rem; border-radius: 10px; border: 1px solid var(--border-light); }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 0.83rem; min-width: 650px; text-align: left; }
+    .data-table th { padding: 0.75rem 0.9rem; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.74rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; background: var(--surface-2); color: var(--text); border-bottom: 2px solid var(--border-light); }
+    .data-table td { padding: 0.8rem 0.9rem; border-bottom: 1px solid var(--border-light); vertical-align: top; line-height: 1.55; }
+    .data-table tbody tr:last-child td { border-bottom: none; }
+    .data-table tbody tr:hover td { background: rgba(56, 189, 248, 0.04); }
+
+    /* SEARCH FILTER BAR FOR TABLES */
+    .filter-box { position: relative; margin-bottom: 0.85rem; }
+    .filter-input { width: 100%; padding: 0.55rem 1rem 0.55rem 2.3rem; border-radius: 8px; border: 1px solid var(--border-light); background: var(--surface-2); font-size: 0.82rem; color: var(--text); outline: none; transition: border-color var(--tr); }
+    .filter-input:focus { border-color: var(--accent); background: var(--surface); }
+    .filter-box i { position: absolute; left: 0.85rem; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 0.8rem; }
+
+    /* CARDS GRID */
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 1.2rem; }
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 1rem; }
+
+    .sub-card { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 12px; padding: 1.2rem; transition: box-shadow var(--tr); }
+    .sub-card:hover { box-shadow: 0 4px 14px rgba(0,0,0,0.06); }
+    .sub-card-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.88rem; font-weight: 700; color: var(--text); margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: space-between; }
+
+    /* TAGS & BADGES */
+    .tag { display: inline-block; padding: 0.15rem 0.55rem; border-radius: 6px; font-size: 0.72rem; font-weight: 700; font-family: 'JetBrains Mono', monospace; }
+    .tag-blue { background: var(--blue-bg); color: var(--blue); border: 1px solid var(--blue-light); }
+    .tag-green { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-light); }
+    .tag-orange { background: var(--orange-bg); color: var(--orange); border: 1px solid var(--orange-light); }
+    .tag-red { background: var(--red-bg); color: var(--red); border: 1px solid var(--red-light); }
+    .tag-purple { background: var(--purple-bg); color: var(--purple); border: 1px solid var(--purple-light); }
+
+    /* FLOWCHART VISUAL BOX */
+    .flowchart-box { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.35rem; margin: 1rem 0; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; line-height: 1.6; }
+    .flow-node { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 0.6rem 0.9rem; margin: 0.4rem 0; font-weight: 600; color: var(--text); }
+    .flow-node.primary { border-color: var(--blue); background: var(--blue-bg); color: var(--blue); }
+    .flow-node.success { border-color: var(--green); background: var(--green-bg); color: var(--green); }
+    .flow-node.danger { border-color: var(--red); background: var(--red-bg); color: var(--red); }
+    .flow-arrow { text-align: center; color: var(--accent); font-weight: bold; margin: 0.2rem 0; }
+
+    /* BOTTOM PART SWITCHER BANNER */
+    .banner-next-part { background: linear-gradient(135deg, var(--surface-2) 0%, var(--blue-bg) 100%); border: 1.5px solid var(--blue-light); border-radius: 16px; padding: 1.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; }
+    .banner-text-h { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 1.05rem; color: var(--text); margin-bottom: 0.25rem; }
+    .banner-text-p { font-size: 0.82rem; color: var(--text-muted); }
+    .banner-btn { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--accent); color: #fff; padding: 0.65rem 1.25rem; border-radius: 10px; font-weight: 700; font-size: 0.85rem; text-decoration: none; transition: transform var(--tr); }
+    .banner-btn:hover { transform: translateX(3px); }
+
+    /* CITATION BOX */
+    .citation-box { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 12px; padding: 1.25rem; font-size: 0.82rem; color: var(--text-muted); line-height: 1.75; font-style: italic; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .page-content { padding: 1.25rem 1rem; }
+      .sec-body { padding: 1rem; }
+      .banner-next-part { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+  <link rel="stylesheet" href="../../../../../css/components/header.css">
+  <script type="module" src="../../../../../components/header.ts" defer></script>
+</head>
+<body>
+  <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
+
+
+  <!-- TOP NAV -->
+  <nav class="topnav">
+    <a href="../guidelines.html" class="topnav-back">
+      <i class="fa-solid fa-chevron-left"></i>
+      Kho Guidelines
+    </a>
+    <div class="topnav-divider"></div>
+    <div class="topnav-title">BYT 2024 – Hướng Dẫn Bệnh Lao (Phần 1: Đại Cương & Chẩn Đoán)</div>
+    <div class="topnav-actions">
+      <div class="part-switcher">
+        <a href="2024-byt-lao-p1.html" class="part-btn active">Phần 1</a>
+        <a href="2024-byt-lao-p2.html" class="part-btn">Phần 2</a>
+      </div>
+      <button class="theme-toggle" id="themeToggle" title="Chuyển chế độ giao diện">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">
+        <i class="fa-solid fa-shield-virus"></i> Bộ Y Tế Việt Nam • Quyết Định 162/QĐ-BYT (2024)
+      </div>
+      <h1 class="hero-title">
+        <span>Tóm Tắt Khuyến Cáo Lâm Sàng Chuyên Sâu</span>
+        Hướng Dẫn Chẩn Đoán, Điều Trị & Dự Phòng Bệnh Lao (Phần 1)
+      </h1>
+      <p class="hero-subtitle">
+        Văn bản chuyên môn chuẩn mực thay thế Quyết định 1314/QĐ-BYT (2020), quy định hệ thống khái niệm, phân loại ICD-10/kháng thuốc, ưu tiên xét nghiệm sinh học phân tử chẩn đoán nhanh (Xpert Ultra/Truenat) và tiêu chuẩn chẩn đoán chuẩn hóa.
+      </p>
+      <div class="hero-meta">
+        <div class="hero-meta-item"><i class="fa-solid fa-calendar-check"></i> Ban hành: 19/01/2024</div>
+        <div class="hero-meta-item"><i class="fa-solid fa-user-pen"></i> Ký bởi: Thứ trưởng Trần Văn Thuấn</div>
+        <div class="hero-meta-item"><i class="fa-solid fa-hospital"></i> Phạm vi: Toàn quốc</div>
+        <div class="hero-meta-item"><i class="fa-solid fa-vial"></i> Phân hệ: Truyền nhiễm / Hô hấp</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- PILLARS STICKY NAV STRIP -->
+  <div class="pillars-nav">
+    <div class="pillars-nav-inner">
+      <a href="#sec-1" class="pillar-tab p-1"><i class="fa-solid fa-book-medical"></i> 1. Đại Cương & Phân Loại</a>
+      <a href="#sec-2" class="pillar-tab p-2"><i class="fa-solid fa-microscope"></i> 2. Kỹ Thuật Vi Sinh & CĐHA</a>
+      <a href="#sec-3" class="pillar-tab p-3"><i class="fa-solid fa-stethoscope"></i> 3. Tiêu Chuẩn Chẩn Đoán</a>
+      <a href="#sec-4" class="pillar-tab p-4"><i class="fa-solid fa-dna"></i> 4. Chẩn Đoán Lao Tiềm Ẩn</a>
+    </div>
+  </div>
+
+  <!-- PILLARS STRIP -->
+  <section class="pillars">
+    <div class="pillars-inner">
+      <div class="pillar p1">
+        <div class="pillar-icon">🧬</div>
+        <div>
+          <div class="pillar-title">SHPT Nhanh Hàng Đầu</div>
+          <div class="pillar-desc">Ưu tiên Xpert MTB/RIF Ultra & Truenat thay thế AFB nhuộm soi trực tiếp ban đầu.</div>
+        </div>
+      </div>
+      <div class="pillar p2">
+        <div class="pillar-icon">🗂️</div>
+        <div>
+          <div class="pillar-title">Chuẩn Hóa Phân Loại</div>
+          <div class="pillar-desc">Phân loại đồng bộ theo ICD-10, giải phẫu, tiền sử điều trị, HIV & kháng thuốc.</div>
+        </div>
+      </div>
+      <div class="pillar p3">
+        <div class="pillar-icon">📊</div>
+        <div>
+          <div class="pillar-title">Tiêu Chuẩn Đa Tầng</div>
+          <div class="pillar-desc">Bảng điểm chẩn đoán trẻ em TCYTTG 2022 (>10 điểm), xử trí vết Xpert Ultra & Lao AFB(-).</div>
+        </div>
+      </div>
+      <div class="pillar p4">
+        <div class="pillar-icon">🧪</div>
+        <div>
+          <div class="pillar-title">Tầm Soát Lao Tiềm Ẩn</div>
+          <div class="pillar-desc">Ứng dụng Mantoux TST, TBST thế hệ mới & IGRA QuantiFeron cho nhóm nguy cơ cao.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAGE CONTENT -->
+  <main class="page-content">
+
+    <!-- SEC 1: ĐẠI CƯƠNG & PHÂN LOẠI -->
+    <article id="sec-1" class="sec-card">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <div class="sec-hdr-icon"><i class="fa-solid fa-book-medical"></i></div>
+          <h2 class="sec-title">1. Đại Cương & Phân Loại Bệnh Lao (ICD-10)</h2>
+        </div>
+        <span class="tag tag-blue">Bộ Y tế 2024</span>
+      </div>
+      <div class="sec-body">
+        
+        <div class="sec-subtitle"><i class="fa-solid fa-circle-info"></i> Các Khái Niệm Cơ Bản Trong Lâm Sàng</div>
+        <div class="grid-2">
+          <div class="sub-card">
+            <div class="sub-card-title">
+              <span>Bệnh Lao (Tuberculosis - TB)</span>
+              <span class="tag tag-red">MTB</span>
+            </div>
+            <p style="font-size: 0.83rem; color: var(--text-muted);">
+              Bệnh lây nhiễm do vi khuẩn <em>Mycobacterium tuberculosis</em> gây nên. Tổn thương ở mọi bộ phận, trong đó <strong>lao phổi phổ biến nhất (80 - 85%)</strong> và là nguồn lây chính qua hạt bọt khí dung hô hấp. Bệnh có thể gây tử vong nhưng điều trị khỏi và dự phòng được.
+            </p>
+          </div>
+
+          <div class="sub-card">
+            <div class="sub-card-title">
+              <span>Lao Tiềm Ẩn (LTBI)</span>
+              <span class="tag tag-blue">ICD Z22.7</span>
+            </div>
+            <p style="font-size: 0.83rem; color: var(--text-muted);">
+              Tình trạng cơ thể có đáp ứng miễn dịch với kháng nguyên vi khuẩn lao nhưng <strong>chưa có bất kỳ dấu hiệu lâm sàng hay cận lâm sàng nào</strong> cho thấy bệnh lao đang hoạt động.
+            </p>
+          </div>
+
+          <div class="sub-card">
+            <div class="sub-card-title">
+              <span>Người Nghi Mắc Bệnh Lao</span>
+              <span class="tag tag-orange">Sàng lọc</span>
+            </div>
+            <p style="font-size: 0.83rem; color: var(--text-muted);">
+              Người có ít nhất 1 triệu chứng lâm sàng nghi lao (ho > 2 tuần, sốt nhẹ về chiều, ra mồ hôi đêm, sút cân) hoặc có hình ảnh bất thường nghi lao trên X-quang ngực / CĐHA.
+            </p>
+          </div>
+
+          <div class="sub-card">
+            <div class="sub-card-title">
+              <span>Người Tiếp Xúc Hộ Gia Đình</span>
+              <span class="tag tag-purple">Dịch tễ</span>
+            </div>
+            <p style="font-size: 0.83rem; color: var(--text-muted);">
+              Sống cùng nhà/phòng; hoặc ngủ cùng nhà ít nhất 1 đêm/tuần trong 3 tháng; hoặc ở cùng phòng ít nhất 1 giờ/ngày và 5 ngày/tuần trong 3 tháng trước khi bệnh nhân được chẩn đoán.
+            </p>
+          </div>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-list-check"></i> Các Tiêu Chí Phân Loại Bệnh Lao</div>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Tiêu chí phân loại</th>
+                <th>Phân nhóm lâm sàng</th>
+                <th>Mô tả chi tiết & Quy định BYT</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>1. Vị trí giải phẫu</strong></td>
+                <td>
+                  <span class="tag tag-blue">Lao Phổi</span><br>
+                  <span class="tag tag-orange">Lao Ngoài Phổi</span>
+                </td>
+                <td>
+                  • <strong>Lao phổi:</strong> Tổn thương ở nhu mô phổi hoặc phế quản, bao gồm cả lao hạch lồng ngực không có bất thường Xquang, phối hợp lao phổi + ngoài phổi, lao kê tại phổi.<br>
+                  • <strong>Lao ngoài phổi:</strong> Màng phổi, hạch ngoại vi, ổ bụng, màng brain, màng tim, xương khớp, da, hệ tiết niệu - sinh dục.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>2. Tiền sử điều trị</strong></td>
+                <td>
+                  <span class="tag tag-green">Lao mới</span><br>
+                  <span class="tag tag-red">Điều trị lại</span>
+                </td>
+                <td>
+                  • <strong>Lao mới:</strong> Chưa từng điều trị thuốc lao hoặc đã uống &lt; 1 tháng.<br>
+                  • <strong>Điều trị lại (&ge; 1 tháng):</strong> Gồm <em>Tái phát</em> (đã khỏi/hoàn thành nay mắc lại); <em>Thất bại</em>; <em>Bỏ trị</em> (ngưng &ge; 2 tháng); <em>Khác</em> (không rõ kết quả lần trước).
+                </td>
+              </tr>
+              <tr>
+                <td><strong>3. Nhiễm HIV</strong></td>
+                <td>
+                  <span class="tag tag-red">HIV (+)</span> | 
+                  <span class="tag tag-green">HIV (-)</span>
+                </td>
+                <td>
+                  • <strong>Lao HIV (+):</strong> Có kết quả HIV dương tính tại thời điểm chẩn đoán hoặc đang tham gia điều trị ARV.<br>
+                  • <strong>Lao không rõ HIV:</strong> Chưa có kết quả và không có bằng chứng ARV.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>4. Bằng chứng vi khuẩn</strong></td>
+                <td>
+                  <span class="tag tag-purple">Có BC Vi khuẩn</span><br>
+                  <span class="tag tag-blue">Chẩn đoán Lâm sàng</span>
+                </td>
+                <td>
+                  • <strong>Có BCVK:</strong> AFB dương tính, SHPT dương tính (Xpert, Truenat, TB LAM), hoặc Nuôi cấy dương tính.<br>
+                  • <strong>Lâm sàng:</strong> Xét nghiệm vi sinh âm tính/chưa có nhưng có lâm sàng, Xquang gợi ý và hội chẩn thống nhất.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-capsules"></i> Phân Loại Theo Tính Kháng Thuốc (Drug Resistance Spectrum)</div>
+        <div class="infobox warning">
+          <div class="infobox-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+          <div>
+            <strong>Định nghĩa các thể Lao Kháng Thuốc theo Quyết định 162/QĐ-BYT:</strong>
+            <ul style="margin-left: 1.2rem; margin-top: 0.4rem; font-size: 0.83rem;">
+              <li><strong>Lao nhạy cảm thuốc:</strong> Vi khuẩn nhạy cảm với toàn bộ các thuốc chống lao hàng 1.</li>
+              <li><strong>Lao kháng đơn thuốc:</strong> Chỉ kháng duy nhất 01 loại thuốc chống lao hàng 1.</li>
+              <li><strong>Lao kháng nhiều thuốc:</strong> Kháng từ 2 thuốc hàng 1 trở lên nhưng <em>không kháng đồng thời cả Rifampicin (R) và Isoniazid (H)</em>.</li>
+              <li><strong>Lao kháng Isoniazid (Hr-TB):</strong> Kháng Isoniazid (H) nhưng vẫn còn nhạy cảm với Rifampicin (R).</li>
+              <li><strong>Lao đa kháng thuốc (MDR-TB / RR-TB):</strong> Kháng đồng thời ít nhất hai thuốc chống lao chủ chốt hàng 1 là <strong>Rifampicin (R) và Isoniazid (H)</strong>.</li>
+              <li><strong>Lao tiền siêu kháng (pre-XDR TB):</strong> Bệnh nhân đa kháng (MDR/RR-TB) có kháng thêm <strong>bất kỳ thuốc nào thuộc nhóm Fluoroquinolones (Lfx hoặc Mfx)</strong>.</li>
+              <li><strong>Lao siêu kháng thuốc (XDR-TB):</strong> Bệnh nhân MDR/RR-TB kháng thêm Fluoroquinolone VÀ <strong>ít nhất một thuốc khác thuộc Nhóm A (Bedaquiline hoặc Linezolid)</strong>.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-barcode"></i> Bảng Tra Cứu Mã ICD-10 Chuẩn BYT 2024</div>
+        <div class="filter-box">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" class="filter-input" id="icdFilter" placeholder="Nhập mã ICD-10 hoặc tên thể lao để tìm kiếm..." onkeyup="filterTable('icdFilter', 'icdTable')">
+        </div>
+        <div class="table-wrapper">
+          <table class="data-table" id="icdTable">
+            <thead>
+              <tr>
+                <th>Mã ICD-10</th>
+                <th>Tên thể bệnh / Di chứng bệnh Lao</th>
+                <th>Phân loại chẩn đoán</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="tag tag-red">A15</span></td>
+                <td>Lao đường hô hấp, có xác nhận về vi khuẩn học hoặc mô học</td>
+                <td>Lao phổi / hô hấp có BCVK</td>
+              </tr>
+              <tr>
+                <td><span class="tag tag-blue">A16</span></td>
+                <td>Lao đường hô hấp, không xác nhận về vi khuẩn học hoặc mô học</td>
+                <td>Lao phổi chẩn đoán lâm sàng</td>
+              </tr>
+              <tr>
+                <td><span class="tag tag-purple">A17</span></td>
+                <td>Lao hệ thần kinh (Lao màng não, củ lao não...)</td>
+                <td>Lao ngoài phổi thể nặng</td>
+              </tr>
+              <tr>
+                <td><span class="tag tag-orange">A18</span></td>
+                <td>Lao các cơ quan khác (màng phổi, hạch, màng bụng, xương khớp, tiết niệu)</td>
+                <td>Lao ngoài phổi</td>
+              </tr>
+              <tr>
+                <td><span class="tag tag-red">A19</span></td>
+                <td>Lao kê (Miliary Tuberculosis)</td>
+                <td>Lao toàn thể / Cấp tính</td>
+              </tr>
+              <tr>
+                <td><span class="tag tag-green">B90</span></td>
+                <td>Di chứng do bệnh lao</td>
+                <td>Hậu quả tổn thương muộn</td>
+              </tr>
+              <tr>
+                <td><span class="tag tag-red">U84.3</span></td>
+                <td>Kháng (các) thuốc chống lao</td>
+                <td>Lao kháng thuốc (MDR/XDR)</td>
+              </tr>
+              <tr>
+                <td><span class="tag tag-blue">Z22.7</span></td>
+                <td>Lao tiềm ẩn (Latent Tuberculosis Infection)</td>
+                <td>Nhiễm lao chưa hoạt động</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </article>
+
+    <!-- SEC 2: KỸ THUẬT CẬN LÂM SÀNG -->
+    <article id="sec-2" class="sec-card">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <div class="sec-hdr-icon"><i class="fa-solid fa-microscope"></i></div>
+          <h2 class="sec-title">2. Các Kỹ Thuật Cận Lâm Sàng Chẩn Đoán Lao & Kháng Thuốc</h2>
+        </div>
+        <span class="tag tag-green">Xét nghiệm 2024</span>
+      </div>
+      <div class="sec-body">
+        
+        <div class="infobox success">
+          <div class="infobox-icon"><i class="fa-solid fa-circle-check"></i></div>
+          <div>
+            <strong>Đổi mới chiến lược chẩn đoán vi sinh (QĐ 162/QĐ-BYT):</strong>
+            Bộ Y tế chỉ đạo <strong>ưu tiên chỉ định ngay các xét nghiệm Sinh học phân tử (SHPT) chẩn đoán nhanh (Xpert MTB/RIF Ultra, Truenat)</strong> thay thế cho phương pháp nhuộm soi AFB trực tiếp ban đầu nhằm phát hiện sớm ca bệnh và tính kháng Rifampicin ngay từ lần khám đầu tiên.
+          </div>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-vials"></i> Hệ Thống Kỹ Thuật Vi Sinh Phát Hiện Trực Khuẩn Lao</div>
+        <div class="grid-2">
+          <div class="sub-card">
+            <div class="sub-card-title">
+              <span>Nhuộm Soi Trực Tiếp Tìm AFB</span>
+              <span class="tag tag-blue">Ziehl-Neelsen / LED</span>
+            </div>
+            <p style="font-size: 0.82rem; color: var(--text-muted);">
+              • Nhuộm Ziehl-Neelsen hoặc nhuộm Huỳnh quang kính hiển vi LED.<br>
+              • Độ nhạy trung bình (45-65%). Dùng để đánh giá mức độ lây nhiễm và theo dõi động học âm hóa đờm trong quá trình điều trị.
+            </p>
+          </div>
+
+          <div class="sub-card">
+            <div class="sub-card-title">
+              <span>SHPT Chẩn Đoán Nhanh</span>
+              <span class="tag tag-green">Xpert Ultra / Truenat</span>
+            </div>
+            <p style="font-size: 0.82rem; color: var(--text-muted);">
+              • <strong>Xpert MTB/RIF Ultra & Truenat:</strong> Độ nhạy cao (&gt;90%), phát hiện trực khuẩn lao và kháng Rifampicin trong vòng 2 giờ.<br>
+              • <strong>TB-LAMP / TRC Ready:</strong> Kỹ thuật phát hiện ADN lao không xác định kháng thuốc.
+            </p>
+          </div>
+
+          <div class="sub-card">
+            <div class="sub-card-title">
+              <span>Nuôi Cấy Trực Khuẩn Lao</span>
+              <span class="tag tag-purple">Tiêu chuẩn vàng</span>
+            </div>
+            <p style="font-size: 0.82rem; color: var(--text-muted);">
+              • <strong>Môi trường lỏng (BACTEC MGIT 960):</strong> Cho kết quả nhanh (1-3 tuần), ưu tiên chọn lựa.<br>
+              • <strong>Môi trường đặc (Lowenstein-Jensen):</strong> Cho kết quả sau 4-8 tuần.<br>
+              • Bắt buộc làm nuôi cấy để làm kháng sinh đồ kiểu hình.
+            </p>
+          </div>
+
+          <div class="sub-card">
+            <div class="sub-card-title">
+              <span>Xét Nghiệm LF-LAM Nước Tiểu</span>
+              <span class="tag tag-red">Chỉ định HIV nặng</span>
+            </div>
+            <p style="font-size: 0.82rem; color: var(--text-muted);">
+              • Phát hiện kháng nguyên Lipoarabinomannan của vi khuẩn lao thải qua nước tiểu.<br>
+              • Chỉ định hỗ trợ chẩn đoán lao cấp cứu ở <strong>người nhiễm HIV/AIDS nặng</strong> (CD4 &le; 100 cells/mm&sup3; hoặc bệnh nặng).
+            </p>
+          </div>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-dna"></i> Kỹ Thuật Xác Định Tính Kháng Thuốc Chuyên Sâu</div>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Loại kỹ thuật</th>
+                <th>Tên xét nghiệm</th>
+                <th>Thuốc phát hiện tính kháng</th>
+                <th>Giá trị lâm sàng chính</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>SHPT Kiểu Gen</strong></td>
+                <td><span class="tag tag-red">Xpert XDR</span></td>
+                <td>Fluoroquinolones (FQ), Thuốc tiêm H2, INH, Ethionamide</td>
+                <td>Phân loại nhanh pre-XDR / XDR trong 2-4 giờ</td>
+              </tr>
+              <tr>
+                <td><strong>SHPT Kiểu Gen</strong></td>
+                <td><span class="tag tag-blue">LPA Hàng 1 (Line Probe)</span></td>
+                <td>Rifampicin (rpoB), Isoniazid (katG, inhA)</td>
+                <td>Xác định đột biến kháng R và H</td>
+              </tr>
+              <tr>
+                <td><strong>SHPT Kiểu Gen</strong></td>
+                <td><span class="tag tag-orange">LPA Hàng 2</span></td>
+                <td>Fluoroquinolones (gyrA/B), Thuốc tiêm (rrs)</td>
+                <td>Sàng lọc kháng FQ trước khi dùng phác đồ ngắn hạn</td>
+              </tr>
+              <tr>
+                <td><strong>Giải Trình Tự Gen</strong></td>
+                <td><span class="tag tag-purple">GenoScholar PZA-TB</span></td>
+                <td>Pyrazinamide (pncA)</td>
+                <td>Phát hiện đột biến kháng Pyrazinamide</td>
+              </tr>
+              <tr>
+                <td><strong>KSĐ Kiểu Hình</strong></td>
+                <td><span class="tag tag-green">KSĐ Môi trường lỏng</span></td>
+                <td>Bedaquiline, Linezolid, Clofazimine, Delamanid</td>
+                <td>Tiêu chuẩn quyết định phác đồ cá thể hóa</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </article>
+
+    <!-- SEC 3: TIÊU CHUẨN CHẨN ĐOÁN LÂM SÀNG -->
+    <article id="sec-3" class="sec-card">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <div class="sec-hdr-icon"><i class="fa-solid fa-stethoscope"></i></div>
+          <h2 class="sec-title">3. Tiêu Chuẩn Chẩn Đoán Xác Định Lao Phổi & Phác Đồ Lâm Sàng</h2>
+        </div>
+        <span class="tag tag-blue">Tiêu chuẩn Lâm sàng</span>
+      </div>
+      <div class="sec-body">
+        
+        <div class="grid-2">
+          <div class="sub-card" style="border-left: 4px solid var(--green);">
+            <div class="sub-card-title">
+              <span>1. Lao Phổi Có Bằng Chứng Vi Khuẩn</span>
+              <span class="tag tag-green">BCVK (+)</span>
+            </div>
+            <p style="font-size: 0.83rem; color: var(--text-muted);">
+              Xác định khi tìm thấy vi khuẩn lao trong đờm/dịch rửa phế quản/dịch dạ dày qua &ge; 1 xét nghiệm:<br>
+              • <strong>AFB trực tiếp dương tính.</strong> <em>Quy trình lấy mẫu đờm:</em> Ngoại trú làm 02 mẫu đờm lấy cách nhau &ge; 2 giờ; Nội trú lấy 02 mẫu đờm sáng sớm 02 ngày liên tiếp.<br>
+              • <strong>SHPT (Xpert, Truenat) MTB (+).</strong> Kết quả Xpert Ultra <em>"Vết" (Trace)</em> ở trẻ em, HIV, dịch sinh thiết có giá trị chẩn đoán xác định.<br>
+              • <strong>Nuôi cấy dương tính</strong> trực khuẩn lao.
+            </p>
+          </div>
+
+          <div class="sub-card" style="border-left: 4px solid var(--orange);">
+            <div class="sub-card-title">
+              <span>2. Lao Phổi Chẩn Đoán Lâm Sàng</span>
+              <span class="tag tag-orange">BCVK (-)</span>
+            </div>
+            <p style="font-size: 0.83rem; color: var(--text-muted);">
+              Áp dụng khi vi sinh âm tính nhưng thỏa mãn các điều kiện:<br>
+              • Triệu chứng lâm sàng nghi lao rõ rệt.<br>
+              • Hình ảnh Xquang / CLVT ngực bất thường gợi ý lao hoạt động.<br>
+              • <strong>Không đáp ứng kháng sinh phổ rộng ngoài lao (không dùng Fluoroquinolones)</strong> trong 1 - 2 tuần.<br>
+              • Được <strong>Hội đồng chuyên môn hội chẩn thống nhất</strong> chẩn đoán lao.
+            </p>
+          </div>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-diagram-project"></i> Sơ Đồ 1: Quy Trình Chẩn Đoán Lao Phổi Không Có Bằng Chứng Vi Khuẩn (BYT)</div>
+        <div class="flowchart-box">
+          <div class="flow-node primary"><i class="fa-solid fa-user-injured"></i> [1] Người bệnh có triệu chứng nghi ngờ Lao Phổi (Ho > 2 tuần, sốt nhẹ chiều, sút cân...)</div>
+          <div class="flow-arrow">│</div>
+          <div class="flow-arrow">▼</div>
+          <div class="flow-node"><i class="fa-solid fa-x-ray"></i> [2] Chỉ định Chụp X-quang ngực thẳng & Xét nghiệm vi sinh (Xpert Ultra / AFB đờm lần 1)</div>
+          <div class="flow-arrow">├──────────────────────────────────────┐</div>
+          <div class="flow-arrow">▼                                      ▼</div>
+          <div class="flow-node success"><i class="fa-solid fa-check"></i> CÓ bằng chứng vi khuẩn<br>&rarr; CHẨN ĐOÁN LAO PHỔI CÓ BCVK</div>
+          <div class="flow-node danger"><i class="fa-solid fa-xmark"></i> KHÔNG có bằng chứng vi khuẩn<br>&rarr; Điều trị Kháng sinh ngoài lao (KHÔNG dùng FQ) 1-2 tuần</div>
+          <div class="flow-arrow">│</div>
+          <div class="flow-arrow">▼</div>
+          <div class="flow-node">[3] Đánh giá lại Lâm sàng & X-quang ngực sau 1-2 tuần điều trị kháng sinh</div>
+          <div class="flow-arrow">├──────────────────────────────────────┐</div>
+          <div class="flow-arrow">▼                                      ▼</div>
+          <div class="flow-node success">CÓ cải thiện rõ rệt &rarr; LOẠI TRỪ LAO</div>
+          <div class="flow-node danger">KHÔNG cải thiện &rarr; Xét nghiệm vi sinh lần 2 + Chụp CLVT ngực & HỘI CHẨN CHUYÊN MÔN</div>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-hand-holding-droplet"></i> Phụ Lục 3: Quy Trình Lấy Bệnh Phẩm Đờm Chuẩn Hóa 3 Bước</div>
+        <div class="grid-3">
+          <div class="sub-card">
+            <div class="sub-card-title"><span>Bước 1: Súc miệng</span> <span class="tag tag-blue">Bước 1</span></div>
+            <p style="font-size: 0.8rem; color: var(--text-muted);">Súc sạch khoang miệng bằng nước sạch (không dùng nước súc miệng sát khuẩn) để loại bỏ thức ăn thừa và vi khuẩn tạp nhiễm.</p>
+          </div>
+          <div class="sub-card">
+            <div class="sub-card-title"><span>Bước 2: Thở sâu</span> <span class="tag tag-blue">Bước 2</span></div>
+            <p style="font-size: 0.8rem; color: var(--text-muted);">Hít thật sâu, nín thở vài giây rồi thở ra mạnh. Thực hiện liên tục 3 lần để kích thích phản xạ ho sâu từ phế quản.</p>
+          </div>
+          <div class="sub-card">
+            <div class="sub-card-title"><span>Bước 3: Khạc đờm</span> <span class="tag tag-green">&ge; 1ml</span></div>
+            <p style="font-size: 0.8rem; color: var(--text-muted);">Ho khạc mạnh từ sâu trong lồng ngực, nhổ đờm nhầy mủ đặc vào lọ vô trùng. Đạt chuẩn khi đờm đục, nhầy mủ thể tích &ge; 1ml.</p>
+          </div>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-code-branch"></i> Sơ Đồ 5: Hướng Dẫn Xử Trí Kết Quả Xpert Ultra "Vết" (Trace)</div>
+        <div class="infobox danger">
+          <div class="infobox-icon"><i class="fa-solid fa-vial-circle-check"></i></div>
+          <div>
+            <strong>Phân nhánh xử trí lâm sàng khi Xpert Ultra trả kết quả "Vết" (Trace):</strong>
+            <ul style="margin-left: 1.2rem; margin-top: 0.4rem; font-size: 0.83rem;">
+              <li><strong>Nhánh 1 (Trẻ em &lt; 16t, Người nhiễm HIV, Bệnh phẩm ngoài phổi):</strong> Kết quả "Vết" được <strong>chấp nhận làm tiêu chuẩn chẩn đoán xác định lao hoạt động</strong>. Chỉ định điều trị ngay theo phác đồ nhạy cảm hoặc kháng thuốc phù hợp.</li>
+              <li><strong>Nhánh 2 (Người lớn thông thường khác):</strong> Lấy mẫu bệnh phẩm mới làm lại Xpert Ultra lần 2.<br>
+              - <em>Lần 2 tiếp tục Dương/Vết:</em> Chẩn đoán lao hoạt động và điều trị.<br>
+              - <em>Nếu có tiền sử điều trị lao trong 5 năm:</em> Thận trọng vì có thể là xác vi khuẩn cũ. Cần kết hợp Xquang mới và theo dõi sát.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-child"></i> Chẩn Đoán Lao Ở Trẻ Em (Bảng Điểm TCYTTG 2022)</div>
+        <div class="sub-card">
+          <p style="font-size: 0.83rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+            Trẻ em khó lấy đờm, có thể dùng bệnh phẩm <strong>dịch dạ dày, dịch tỵ hầu hoặc phân</strong>. Khi không có bằng chứng vi sinh, Bộ Y tế quy định áp dụng Bảng điểm chẩn đoán lao phổi trẻ em (dưới 10 tuổi):
+          </p>
+          <div class="table-wrapper">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Nhóm chỉ số đánh giá</th>
+                  <th>Các triệu chứng / Bằng chứng lâm sàng & CĐHA</th>
+                  <th>Ngưỡng điểm chẩn đoán</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Tiền sử nguồn lây</strong></td>
+                  <td>Tiếp xúc hộ gia đình với người bệnh lao phổi (đặc biệt AFB+)</td>
+                  <td rowspan="3" style="vertical-align: middle; text-align: center;">
+                    <span class="tag tag-red" style="font-size: 0.9rem;">TỔNG ĐIỂM &gt; 10 ĐIỂM</span><br>
+                    <small>Quyết định chẩn đoán & điều trị lao phổi trẻ em</small>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Lâm sàng (Tầng A)</strong></td>
+                  <td>Sốt &gt; 2 tuần, ho kịch phát &gt; 2 tuần, chán ăn, sụt cân/chậm tăng cân, khò khè kéo dài không đáp ứng thuốc giãn phế quản.</td>
+                </tr>
+                <tr>
+                  <td><strong>Cận lâm sàng (Tầng B)</strong></td>
+                  <td>Xquang ngực có hạch rốn phổi/trung thất, tổn thương thùy phổi không tạo hang, tổn thương kê, TST/IGRA (+).</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </article>
+
+    <!-- SEC 4: CHẨN ĐOÁN LAO TIỀM ẨN -->
+    <article id="sec-4" class="sec-card">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <div class="sec-hdr-icon"><i class="fa-solid fa-dna"></i></div>
+          <h2 class="sec-title">4. Kỹ Thuật & Quy Trình Chẩn Đoán Lao Tiềm Ẩn (Z22.7)</h2>
+        </div>
+        <span class="tag tag-purple">Phần IV - BYT</span>
+      </div>
+      <div class="sec-body">
+        
+        <div class="sec-subtitle"><i class="fa-solid fa-vial"></i> Kỹ Thuật Xét Nghiệm Phát Hiện Nhiễm Lao</div>
+        <div class="grid-3">
+          <div class="sub-card">
+            <div class="sub-card-title">
+              <span>Test Da Mantoux (TST)</span>
+              <span class="tag tag-blue">PPD</span>
+            </div>
+            <p style="font-size: 0.8rem; color: var(--text-muted);">
+              Tiêm trong da 2 TU PPD. Đọc đường kính quầng sẩn sau 48-72 giờ. Dương tính khi &ge; 10mm (hoặc &ge; 5mm ở người HIV/suy giảm miễn dịch). Có thể dương tính giả do vắc-xin BCG.
+            </p>
+          </div>
+
+          <div class="sub-card">
+            <div class="sub-card-title">
+              <span>Test Da TBST Thế Hệ Mới</span>
+              <span class="tag tag-green">Diaskintest / C-TST</span>
+            </div>
+            <p style="font-size: 0.8rem; color: var(--text-muted);">
+              Sử dụng kháng nguyên tái tổ hợp đặc hiệu (ESAT-6 / CFP-10). Độ đặc hiệu cao tương đương IGRA, không bị ảnh hưởng bởi vắc-xin BCG.
+            </p>
+          </div>
+
+          <div class="sub-card">
+            <div class="sub-card-title">
+              <span>Xét Nghiệm IGRA (Máu)</span>
+              <span class="tag tag-purple">QuantiFeron / T-SPOT</span>
+            </div>
+            <p style="font-size: 0.8rem; color: var(--text-muted);">
+              Định lượng Interferon-gamma tiết ra từ lympho T phản ứng với kháng nguyên lao. Khuyến cáo hàng đầu cho người đã tiêm BCG hoặc người suy giảm miễn dịch.
+            </p>
+          </div>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-diagram-next"></i> Sơ Đồ Quy Trình Phân Nhánh Quyết Định Điều Trị Lao Tiềm Ẩn</div>
+        <div class="grid-2">
+          <div class="sub-card" style="border-left: 4px solid var(--teal);">
+            <div class="sub-card-title">
+              <span>Sơ Đồ 7: Trẻ &lt; 5 Tuổi & Người Nhiễm HIV</span>
+              <span class="tag tag-teal">Sơ đồ 7</span>
+            </div>
+            <p style="font-size: 0.82rem; color: var(--text-muted);">
+              1. Sàng lọc triệu chứng lao hoạt động.<br>
+              2. Nếu <strong>KHÔNG có triệu chứng nghi lao</strong> &rarr; Chỉ định Chụp X-quang ngực.<br>
+              3. Nếu <strong>X-quang bình thường</strong> &rarr; <strong>CHỈ ĐỊNH ĐIỀU TRỊ LAO TIỀM ẨN NGAY</strong> (không bắt buộc phải chờ kết quả xét nghiệm TST/IGRA).
+            </p>
+          </div>
+
+          <div class="sub-card" style="border-left: 4px solid var(--purple);">
+            <div class="sub-card-title">
+              <span>Sơ Đồ 8: Người Tiếp Xúc &ge; 5 Tuổi & Nguy Cơ Cao</span>
+              <span class="tag tag-purple">Sơ đồ 8</span>
+            </div>
+            <p style="font-size: 0.82rem; color: var(--text-muted);">
+              1. Sàng lọc loại trừ bệnh lao hoạt động.<br>
+              2. Làm xét nghiệm nhiễm lao (TST / TBST / IGRA).<br>
+              3. Nếu <strong>Xét nghiệm DƯƠNG TÍNH</strong> &rarr; Chụp X-quang ngực.<br>
+              4. X-quang bình thường &rarr; <strong>CHỈ ĐỊNH ĐIỀU TRỊ LAO TIỀM ẨN</strong>. (Nếu Xquang bất thường &rarr; Khám chẩn đoán lao bệnh hoạt động).
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </article>
+
+    <!-- BANNER NAV TO PART 2 -->
+    <section class="banner-next-part">
+      <div>
+        <div class="banner-text-h"><i class="fa-solid fa-arrow-right-long"></i> Tiếp Tục Với Phần 2: Phác Đồ Điều Trị & Dự Phòng</div>
+        <div class="banner-text-p">Xem chi tiết các Phác đồ lao nhạy cảm (A1, A2, A2a, B1), Phác đồ lao kháng thuốc (BPaLM 6t, Phác đồ C), Liều lượng theo cân nặng, Quản lý điều trị đối tượng đặc biệt & Dự phòng lây nhiễm.</div>
+      </div>
+      <a href="2024-byt-lao-p2.html" class="banner-btn">
+        Chuyển Sang Phần 2 <i class="fa-solid fa-chevron-right"></i>
+      </a>
+    </section>
+
+    <!-- CITATION & REFERENCES -->
+    <footer class="citation-box">
+      <strong>Tài liệu tham khảo chuẩn AMA:</strong><br>
+      1. Bộ Y tế Việt Nam. <em>Tài liệu chuyên môn “Hướng dẫn chẩn đoán, điều trị và dự phòng bệnh Lao”</em>. Ban hành kèm theo Quyết định số 162/QĐ-BYT ngày 19 tháng 01 năm 2024 do Thứ trưởng Trần Văn Thuấn ký. Hanoi, Vietnam; 2024.<br>
+      2. Tổ chức Y tế Thế giới (WHO). <em>WHO consolidated guidelines on tuberculosis. Module 4: Treatment - drug-susceptible tuberculosis treatment</em>. Geneva: World Health Organization; 2022.
+    </footer>
+
+  </main>
+
+  <script>
+    // Theme Toggle Script
+    const themeToggleBtn = document.getElementById('themeToggle');
+    const htmlEl = document.documentElement;
+
+    // Load saved theme
+    const savedTheme = localStorage.getItem('cliniportal_theme') || 'light';
+    htmlEl.setAttribute('data-theme', savedTheme);
+    updateToggleIcon(savedTheme);
+
+    themeToggleBtn.addEventListener('click', () => {
+      const currentTheme = htmlEl.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      htmlEl.setAttribute('data-theme', newTheme);
+      localStorage.setItem('cliniportal_theme', newTheme);
+      updateToggleIcon(newTheme);
+    });
+
+    function updateToggleIcon(theme) {
+      themeToggleBtn.innerHTML = theme === 'dark' 
+        ? '<i class="fa-solid fa-sun" style="color: #f59e0b;"></i>' 
+        : '<i class="fa-solid fa-moon"></i>';
+    }
+
+    // Table Filter Script
+    function filterTable(inputId, tableId) {
+      const input = document.getElementById(inputId);
+      const filter = input.value.toLowerCase();
+      const table = document.getElementById(tableId);
+      const trs = table.getElementsByTagName('tr');
+
+      for (let i = 1; i < trs.length; i++) {
+        const tr = trs[i];
+        const text = tr.textContent || tr.innerText;
+        if (text.toLowerCase().indexOf(filter) > -1) {
+          tr.style.display = '';
+        } else {
+          tr.style.display = 'none';
+        }
+      }
+    }
+  </script>
+  <script type="module" src="../guideline-controller.ts"></script>
+</body>
+</html>

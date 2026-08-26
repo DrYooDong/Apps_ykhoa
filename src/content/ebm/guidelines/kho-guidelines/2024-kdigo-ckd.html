@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tóm tắt Hướng dẫn Lâm sàng KDIGO 2024 về Đánh giá, Phân loại CGA, Tiên lượng Nguy cơ KFRE, Tiếp cận Toàn diện 4 Tầng, Liệu pháp SGLT2i/RASi/ns-MRA và Xử trí Biến chứng CKD.">
+  <title>KDIGO 2024 về Bệnh Thận Mạn (CKD) – CliniPortal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #059669; --green-bg: #f0fdf4; --green-light: #a7f3d0;
+      --orange: #d97706; --orange-bg: #fffbeb; --orange-light: #fde68a;
+      --red: #dc2626; --red-bg: #fef2f2; --red-light: #fca5a5;
+      --blue: #2563eb; --blue-bg: #eff6ff; --blue-light: #bfdbfe;
+      --teal: #0d9488; --teal-bg: #f0fdfa; --teal-light: #99f6e4;
+      --purple: #7c3aed; --purple-bg: #faf5ff; --purple-light: #ddd6fe;
+      --accent: #0891b2;
+      --bg: #f0f4f8; --surface: #ffffff; --surface-2: #f8fafc;
+      --border: #cbd5e1; --border-light: #e2e8f0;
+      --text: #0f172a; --text-muted: #475569; --text-faint: #94a3b8;
+      --radius: 16px; --tr: 220ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [data-theme="dark"] {
+      --bg: #0f172a; --surface: #1e293b; --surface-2: #334155;
+      --border: #475569; --border-light: #334155;
+      --text: #f8fafc; --text-muted: #cbd5e1; --text-faint: #64748b;
+      --green-bg: rgba(5, 150, 105, 0.15); --green-light: rgba(167, 243, 208, 0.3);
+      --orange-bg: rgba(217, 119, 6, 0.15); --orange-light: rgba(253, 230, 138, 0.3);
+      --red-bg: rgba(220, 38, 38, 0.15); --red-light: rgba(252, 165, 165, 0.3);
+      --blue-bg: rgba(37, 99, 235, 0.15); --blue-light: rgba(191, 219, 254, 0.3);
+      --teal-bg: rgba(13, 148, 136, 0.15); --teal-light: rgba(153, 246, 228, 0.3);
+      --purple-bg: rgba(124, 58, 237, 0.15); --purple-light: rgba(221, 214, 254, 0.3);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; font-size: 15px; background: var(--bg); color: var(--text); line-height: 1.65; min-height: 100vh; }
+
+    @media print {
+      body { background: #fff !important; color: #000 !important; }
+      .topnav, .pillars-nav, .topnav-theme-toggle, .mcq-card, .page-footer, .topnav-pdf-btn { display: none !important; }
+      .main-container, .page-content { max-width: 100% !important; margin: 0 !important; padding: 0 !important; }
+      .sec-card { break-inside: avoid; border: 1px solid #ccc !important; box-shadow: none !important; }
+    }
+
+    /* TOP NAV */
+    .topnav { position: sticky; top: 0; z-index: 200; background: rgba(255,255,255,0.94); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 1rem; padding: 0 1.5rem; height: 56px; }
+    [data-theme="dark"] .topnav { background: rgba(15, 23, 42, 0.92); }
+    .topnav-back { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--accent); text-decoration: none; font-size: 0.82rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 8px; transition: background var(--tr); white-space: nowrap; }
+    .topnav-back:hover { background: var(--blue-bg); }
+    .topnav-divider { width: 1px; height: 18px; background: var(--border-light); flex-shrink: 0; }
+    .topnav-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .topnav-badges { margin-left: auto; display: flex; gap: 0.5rem; flex-shrink: 0; align-items: center; }
+    .topnav-theme-toggle { background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 1.1rem; padding: 0.4rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; }
+    .topnav-theme-toggle:hover { background: var(--surface-2); color: var(--accent); }
+    .badge { padding: 0.2rem 0.65rem; border-radius: 20px; font-size: 0.7rem; font-weight: 700; white-space: nowrap; }
+    .badge-teal { background: var(--teal-bg); color: #0f766e; border: 1px solid var(--teal-light); }
+    .badge-blue { background: var(--blue-bg); color: #1e40af; border: 1px solid var(--blue-light); }
+    .badge-green { background: var(--green-bg); color: #065f46; border: 1px solid var(--green-light); }
+
+    /* HERO */
+    .hero { background: linear-gradient(135deg, #083344 0%, #0891b2 50%, #0d9488 100%); color: #fff; padding: 3.5rem 1.5rem 5rem; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 15% 60%, rgba(56,189,248,0.2) 0%, transparent 55%), radial-gradient(ellipse at 85% 20%, rgba(16,185,129,0.15) 0%, transparent 50%); }
+    .hero-inner { max-width: 960px; margin: 0 auto; position: relative; z-index: 1; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.24); border-radius: 20px; padding: 0.3rem 0.9rem; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1rem; color: #67e8f9; }
+    .hero-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 0.75rem; }
+    .hero-title span { display: block; background: linear-gradient(90deg, #a5f3fc, #6ee7b7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 0.68em; font-weight: 600; letter-spacing: 0; margin-bottom: 0.2rem; }
+    .hero-subtitle { font-size: 0.95rem; opacity: 0.88; max-width: 760px; margin-bottom: 2rem; line-height: 1.6; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 0.75rem 2rem; font-size: 0.8rem; opacity: 0.82; }
+    .hero-meta-item { display: flex; align-items: center; gap: 5px; }
+
+    /* PILLARS STICKY NAV */
+    .pillars-nav { position: sticky; top: 56px; z-index: 190; background: var(--surface); border-bottom: 1px solid var(--border-light); padding: 0.75rem 1.5rem; }
+    .pillars-nav-inner { max-width: 960px; margin: 0 auto; display: flex; gap: 0.6rem; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .pillar-tab { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.45rem 0.85rem; border-radius: 10px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.78rem; font-weight: 700; color: var(--text-muted); border: 1px solid var(--border-light); background: var(--surface-2); text-decoration: none; white-space: nowrap; transition: all var(--tr); }
+    .pillar-tab:hover { border-color: var(--accent); color: var(--accent); background: var(--teal-bg); }
+    .pillar-tab.p-1 { border-left: 4px solid var(--teal); }
+    .pillar-tab.p-2 { border-left: 4px solid var(--blue); }
+    .pillar-tab.p-3 { border-left: 4px solid var(--orange); }
+    .pillar-tab.p-4 { border-left: 4px solid var(--green); }
+    .pillar-tab.p-5 { border-left: 4px solid var(--red); }
+    .pillar-tab.p-6 { border-left: 4px solid var(--purple); }
+
+    /* STATS STRIP */
+    .stats-strip { background: var(--surface); border-bottom: 1px solid var(--border-light); padding: 1.5rem; }
+    .stats-grid { max-width: 960px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; }
+    .stat-card { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1rem 1.25rem; text-align: center; }
+    .stat-val { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.3rem; font-weight: 800; color: var(--accent); line-height: 1.2; }
+    .stat-lbl { font-size: 0.75rem; color: var(--text-muted); font-weight: 600; margin-top: 0.25rem; }
+
+    /* PAGE CONTENT */
+    .page-content { max-width: 960px; margin: 0 auto; padding: 2.25rem 1.5rem; display: flex; flex-direction: column; gap: 2rem; }
+
+    /* SECTION CARDS */
+    .sec-card { background: var(--surface); border: 1px solid var(--border-light); border-radius: var(--radius); overflow: hidden; scroll-margin-top: 120px; }
+    .sec-hdr { padding: 1rem 1.5rem; border-bottom: 1px solid var(--border-light); background: var(--surface-2); display: flex; align-items: center; gap: 0.6rem; }
+    .sec-hdr-icon { font-size: 1.2rem; }
+    .sec-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1rem; font-weight: 800; color: var(--text); }
+    .sec-body { padding: 1.5rem; }
+    .sec-subtitle { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.85rem; color: var(--text-muted); margin: 1.25rem 0 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; }
+    .sec-subtitle:first-child { margin-top: 0; }
+
+    /* INFO BOXES */
+    .infobox { display: flex; align-items: flex-start; gap: 0.85rem; padding: 1rem 1.25rem; border-radius: 12px; margin-bottom: 1rem; font-size: 0.85rem; line-height: 1.6; }
+    .infobox:last-child { margin-bottom: 0; }
+    .infobox-icon { font-size: 1.3rem; flex-shrink: 0; line-height: 1.3; }
+    .infobox.danger { background: var(--red-bg); border: 1px solid var(--red-light); border-left: 4px solid var(--red); }
+    .infobox.success { background: var(--green-bg); border: 1px solid var(--green-light); border-left: 4px solid var(--green); }
+    .infobox.warning { background: var(--orange-bg); border: 1px solid var(--orange-light); border-left: 4px solid var(--orange); }
+    .infobox.info { background: var(--blue-bg); border: 1px solid var(--blue-light); border-left: 4px solid var(--blue); }
+    .infobox.teal { background: var(--teal-bg); border: 1px solid var(--teal-light); border-left: 4px solid var(--teal); }
+    .infobox-title, .infobox > div > strong:first-child { display: block; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.88rem; font-weight: 700; margin-bottom: 0.35rem; color: var(--text); }
+    .infobox strong { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; }
+
+    /* TABLE DESIGN */
+    .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 1.25rem; border-radius: 10px; border: 1px solid var(--border-light); }
+    .med-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; min-width: 600px; }
+    .med-table thead th { padding: 0.7rem 0.9rem; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; background: var(--surface-2); color: var(--text); border-bottom: 1px solid var(--border-light); text-align: left; }
+    .med-table td { padding: 0.75rem 0.9rem; border-bottom: 1px solid var(--border-light); vertical-align: top; line-height: 1.55; }
+    .med-table tbody tr:last-child td { border-bottom: none; }
+    .med-table tbody tr:hover td { background: var(--surface-2); }
+    
+    /* HEATMAP TABLE */
+    .heatmap-table { width: 100%; border-collapse: separate; border-spacing: 4px; font-size: 0.8rem; min-width: 650px; }
+    .heatmap-table th { padding: 0.6rem; background: var(--surface-2); font-weight: 700; text-align: center; border-radius: 6px; }
+    .heatmap-cell { padding: 0.75rem 0.5rem; text-align: center; font-weight: 700; border-radius: 8px; font-size: 0.78rem; line-height: 1.3; }
+    .hm-green { background: #d1fae5; color: #065f46; border: 1px solid #a7f3d0; }
+    .hm-yellow { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
+    .hm-orange { background: #ffedd5; color: #c2410c; border: 1px solid #fed7aa; }
+    .hm-red { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+    .hm-darkred { background: #7f1d1d; color: #fff; border: 1px solid #991b1b; }
+    [data-theme="dark"] .hm-green { background: rgba(5, 150, 105, 0.25); color: #6ee7b7; border-color: rgba(167, 243, 208, 0.4); }
+    [data-theme="dark"] .hm-yellow { background: rgba(217, 119, 6, 0.25); color: #fde68a; border-color: rgba(253, 230, 138, 0.4); }
+    [data-theme="dark"] .hm-orange { background: rgba(234, 88, 12, 0.25); color: #ffedd5; border-color: rgba(254, 215, 170, 0.4); }
+    [data-theme="dark"] .hm-red { background: rgba(220, 38, 38, 0.3); color: #fca5a5; border-color: rgba(252, 165, 165, 0.4); }
+    [data-theme="dark"] .hm-darkred { background: rgba(153, 27, 27, 0.6); color: #fecaca; border-color: #dc2626; }
+
+    /* TAGS & LABELS */
+    .rec-tag { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 6px; font-size: 0.7rem; font-weight: 700; font-family: 'JetBrains Mono', monospace; margin-right: 0.4rem; white-space: nowrap; }
+    .tag-1a { background: #dcfce7; color: #15803d; border: 1px solid #86efac; }
+    .tag-1b { background: #e0e7ff; color: #4338ca; border: 1px solid #c7d2fe; }
+    .tag-1c { background: #dbeafe; color: #1d4ed8; border: 1px solid #bfdbfe; }
+    .tag-1d { background: #f3e8ff; color: #6b21a8; border: 1px solid #e9d5ff; }
+    .tag-2a { background: #e0f2fe; color: var(--color-primary-dark); border: 1px solid #bae6fd; }
+    .tag-2b { background: #fef3c7; color: #b45309; border: 1px solid #fde68a; }
+    .tag-2c { background: #ffedd5; color: #c2410c; border: 1px solid #fed7aa; }
+    .tag-2d { background: #fee2e2; color: #b91c1c; border: 1px solid #fca5a5; }
+    .tag-pp { background: #f1f5f9; color: #475569; border: 1px solid var(--color-border); }
+    [data-theme="dark"] .tag-1a { background: rgba(22, 163, 74, 0.25); color: #86efac; }
+    [data-theme="dark"] .tag-1b { background: rgba(99, 102, 241, 0.25); color: #c7d2fe; }
+    [data-theme="dark"] .tag-2b { background: rgba(217, 119, 6, 0.25); color: #fde68a; }
+
+    /* STEP CARDS */
+    .steps-list { display: flex; flex-direction: column; gap: 0.85rem; }
+    .step-item { display: flex; gap: 1rem; background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 12px; padding: 0.85rem 1.1rem; align-items: flex-start; }
+    .step-num { width: 32px; height: 32px; border-radius: 50%; background: var(--accent); color: #fff; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 0.85rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .step-content { font-size: 0.85rem; line-height: 1.6; flex: 1; }
+    .step-content strong { color: var(--text); font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.88rem; }
+
+    /* GRID CARDS */
+    .grid-2col { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 1.25rem; }
+    .card-box { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.25rem; }
+    .card-box-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 0.9rem; color: var(--accent); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.4rem; }
+
+    /* INTERACTIVE CALCULATOR WIDGET */
+    .widget-container { background: linear-gradient(135deg, var(--surface) 0%, var(--surface-2) 100%); border: 2px solid var(--accent); border-radius: var(--radius); padding: 1.5rem; margin-top: 1rem; box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
+    .widget-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.05rem; font-weight: 800; color: var(--accent); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+    .widget-desc { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1.25rem; }
+    .widget-form { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.25rem; }
+    .form-group label { display: block; font-size: 0.78rem; font-weight: 700; color: var(--text); margin-bottom: 0.35rem; }
+    .form-control { width: 100%; padding: 0.6rem 0.8rem; border-radius: 8px; border: 1px solid var(--border-light); background: var(--surface); color: var(--text); font-family: 'Inter', sans-serif; font-size: 0.85rem; outline: none; transition: border-color var(--tr); }
+    .form-control:focus { border-color: var(--accent); }
+    .btn-calc { background: var(--accent); color: #fff; border: none; padding: 0.75rem 1.5rem; border-radius: 10px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; cursor: pointer; transition: opacity var(--tr); width: 100%; }
+    .btn-calc:hover { opacity: 0.9; }
+    .widget-result { margin-top: 1.25rem; padding: 1.25rem; border-radius: 12px; background: var(--surface); border: 1px solid var(--border-light); display: none; }
+    .res-badge { display: inline-block; padding: 0.3rem 0.8rem; border-radius: 20px; font-weight: 800; font-size: 0.85rem; margin-bottom: 0.75rem; }
+
+    /* CITATIONS & FOOTER */
+    .citation-box { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 12px; padding: 1.25rem; font-size: 0.82rem; color: var(--text-muted); line-height: 1.75; font-style: italic; margin-top: 1rem; }
+    .page-footer { text-align: center; padding: 2rem 1.5rem; font-size: 0.8rem; color: var(--text-faint); border-top: 1px solid var(--border-light); margin-top: 3rem; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .page-content { padding: 1.25rem 1rem; }
+      .sec-body { padding: 1rem; }
+      .hero { padding: 2.5rem 1rem 3.5rem; }
+      .grid-2col { grid-template-columns: 1fr; }
+    }
+  </style>
+  <link rel="stylesheet" href="../../../../../css/components/header.css">
+  <script type="module" src="../../../../../components/header.ts" defer></script>
+</head>
+<body>
+  <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
+
+
+  <!-- TOP NAV -->
+  <nav class="topnav">
+    <a href="../Guidelines.html" class="topnav-back">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+      Kho Guidelines
+    </a>
+    <div class="topnav-divider"></div>
+    <div class="topnav-title">KDIGO 2024: Đánh Giá & Quản Lý Bệnh Thận Mạn (CKD)</div>
+    <div class="topnav-badges">
+      <span class="badge badge-teal">KDIGO 2024</span>
+      <button class="topnav-theme-toggle" id="theme-toggle-btn" onclick="toggleTheme()" title="Chuyển đổi Giao diện">🌙</button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">🔬 NEPHROLOGY / CLINICAL PRACTICE GUIDELINE</div>
+      <h1 class="hero-title">
+        <span>KDIGO 2024 Clinical Practice Guideline</span>
+        Đánh Giá, Phân Loại CGA & Điều Trị Toàn Diện Bệnh Thận Mạn
+      </h1>
+      <p class="hero-subtitle">
+        Tóm tắt đồng thuận quốc tế toàn diện về phát hiện sớm, ước tính eGFR không dùng chủng tộc, định lượng ACR niệu, tiên lượng nguy cơ bằng phương trình KFRE, tiếp cận 4 tầng bảo vệ tim-thận (SGLT2i, RASi, Finerenone) và quy tắc SADMANS.
+      </p>
+      <div class="hero-meta">
+        <div class="hero-meta-item">📅 Xuất bản: Tháng 04/2024</div>
+        <div class="hero-meta-item">📰 Tạp chí: Kidney International 2024;105(4S):S117-S314</div>
+        <div class="hero-meta-item">🌍 Tổ chức: KDIGO CKD Work Group</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PILLARS STICKY NAV -->
+  <div class="pillars-nav">
+    <div class="pillars-nav-inner">
+      <a href="#sec-1" class="pillar-tab p-1">1. CGA & Sàng Lọc</a>
+      <a href="#sec-2" class="pillar-tab p-2">2. GFR & Albumin Niệu</a>
+      <a href="#sec-3" class="pillar-tab p-3">3. Tiên Lượng KFRE</a>
+      <a href="#sec-4" class="pillar-tab p-4">4. Tiếp Cận 4 Tầng & Dược Lý</a>
+      <a href="#sec-5" class="pillar-tab p-5">5. Biến Chứng & SADMANS</a>
+      <a href="#sec-6" class="pillar-tab p-6">6. Chuyển Tuyến & KRT</a>
+    </div>
+  </div>
+
+  <!-- STATS STRIP -->
+  <div class="stats-strip">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-val">CGA Staging</div>
+        <div class="stat-lbl">Phân loại Cause - GFR - ACR</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">SBP &lt; 120 mmHg</div>
+        <div class="stat-lbl">Mục tiêu Huyết áp Chuẩn hóa</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">SGLT2i + RASi</div>
+        <div class="stat-lbl">Liệu pháp Hàng đầu (Class 1A)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">KFRE Risk</div>
+        <div class="stat-lbl">Tiên lượng Nguy cơ Suy thận 2y/5y</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE CONTENT -->
+  <div class="page-content">
+
+    <!-- SECTION 1: CGA STAGING & SCREENING -->
+    <div class="sec-card" id="sec-1">
+      <div class="sec-hdr">
+        <span class="sec-hdr-icon">📌</span>
+        <h2 class="sec-title">Phần 1: Định Nghĩa, Phân Loại CGA & Quy Trình Sàng Lọc CKD</h2>
+      </div>
+      <div class="sec-body">
+        
+        <div class="infobox teal">
+          <span class="infobox-icon">💡</span>
+          <div>
+            <strong>Định nghĩa Bệnh Thận Mạn (CKD):</strong>
+            Bất kỳ bất thường nào về cấu trúc hoặc chức năng thận kéo dài <strong>tối thiểu 3 tháng</strong> và có ảnh hưởng đến sức khỏe người bệnh. Phân loại theo hệ thống <strong>CGA</strong>: Nguyên nhân (Cause - C), Thể tích lọc cầu thận (GFR - G) và Albumin niệu (Albuminuria - A).
+          </div>
+        </div>
+
+        <div class="sec-subtitle">1. Tiêu chuẩn Chẩn đoán và Phân loại CKD</div>
+        
+        <div class="table-wrapper">
+          <table class="med-table">
+            <thead>
+              <tr>
+                <th>Tiêu chí</th>
+                <th>Thông số / Chỉ số Chẩn đoán</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Dấu hiệu tổn thương thận (≥ 1 dấu hiệu, kéo dài ≥ 3 tháng)</strong></td>
+                <td>
+                  • Albumin niệu tăng (ACR ≥ 30 mg/g [≥ 3 mg/mmol])<br>
+                  • Bất thường cặn lắng nước tiểu (hồng cầu niệu, trụ tế bào)<br>
+                  • Rối loạn điện giải hoặc bất thường khác do bệnh lý ống thận<br>
+                  • Bất thường mô bệnh học (xơ hóa, teo ống thận trên sinh thiết)<br>
+                  • Bất thường cấu trúc phát hiện qua hình ảnh học (thận nhỏ, nang thận di truyền)<br>
+                  • Tiền sử ghép thận
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Giảm chức năng lọc cầu thận (kéo dài ≥ 3 tháng)</strong></td>
+                <td>
+                  • eGFR &lt; 60 ml/min/1.73 m<sup>2</sup> (Giai đoạn G3a - G5)
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="grid-2col">
+          <div>
+            <div class="sec-subtitle">Bảng Phân nhóm GFR (G Categories)</div>
+            <div class="table-wrapper">
+              <table class="med-table">
+                <thead>
+                  <tr>
+                    <th>Mức</th>
+                    <th>GFR (ml/min/1.73m<sup>2</sup>)</th>
+                    <th>Mô tả Chức năng</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td><strong>G1</strong></td><td>≥ 90</td><td>Bình thường hoặc tăng</td></tr>
+                  <tr><td><strong>G2</strong></td><td>60 – 89</td><td>Giảm nhẹ</td></tr>
+                  <tr><td><strong>G3a</strong></td><td>45 – 59</td><td>Giảm nhẹ đến trung bình</td></tr>
+                  <tr><td><strong>G3b</strong></td><td>30 – 44</td><td>Giảm trung bình đến nặng</td></tr>
+                  <tr><td><strong>G4</strong></td><td>15 – 29</td><td>Giảm nặng</td></tr>
+                  <tr><td><strong>G5</strong></td><td>&lt; 15</td><td>Suy thận (Kidney Failure)</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div>
+            <div class="sec-subtitle">Bảng Phân nhóm Albumin niệu (A Categories)</div>
+            <div class="table-wrapper">
+              <table class="med-table">
+                <thead>
+                  <tr>
+                    <th>Mức</th>
+                    <th>ACR (mg/g)</th>
+                    <th>AER (mg/24h)</th>
+                    <th>Mô tả Lâm sàng</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td><strong>A1</strong></td><td>&lt; 30</td><td>&lt; 30</td><td>Bình thường / Tăng nhẹ</td></tr>
+                  <tr><td><strong>A2</strong></td><td>30 – 300</td><td>30 – 300</td><td>Tăng trung bình (Vi thể)</td></tr>
+                  <tr><td><strong>A3</strong></td><td>&gt; 300</td><td>&gt; 300</td><td>Tăng nghiêm trọng (Đại thể)</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="sec-subtitle">2. Quy trình Sàng lọc 6 Bước ở Người lớn Nguy cơ cao</div>
+        <div class="steps-list">
+          <div class="step-item">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <strong>Nhận diện Nhóm Nguy cơ cao:</strong> Đái tháo đường, Tăng huyết áp, Bệnh tim mạch (suy tim, xơ vữa), Tiền sử AKI/AKD, Tiền sử gia đình mắc bệnh thận, hoặc phơi nhiễm thuốc độc thận/hóa chất.
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <strong>Xét nghiệm ban đầu:</strong> Xét nghiệm đồng thời nồng độ Creatinine huyết thanh để tính eGFR và định lượng tỷ lệ Albumin-to-Creatinine nước tiểu (ACR).
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <strong>Đánh giá Bất thường & Loại trừ AKI:</strong> Nếu eGFR &lt; 60 hoặc ACR ≥ 30 mg/g, tiến hành đánh giá tổn thương thận cấp (AKI)/bệnh thận cấp (AKD). Nếu bình thường: Lên lịch tái sàng lọc theo nguy cơ.
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">4</div>
+            <div class="step-content">
+              <strong>Xác định Bằng chứng Mạn tính (Chronicity):</strong> Khẳng định tình trạng bất thường kéo dài ≥ 3 tháng qua hồ sơ quá khứ, hình ảnh học hoặc tái xét nghiệm sau 3 tháng.
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">5</div>
+            <div class="step-content">
+              <strong>Xác nhận eGFR chính xác:</strong> Thực hiện đo đồng thời Cystatin C để tính eGFR<sub>cr-cys</sub> (nếu có nguồn lực) nhằm loại bỏ sai số do khối lượng cơ.
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">6</div>
+            <div class="step-content">
+              <strong>Phân giai đoạn CGA & Khởi trị:</strong> Đánh giá nguyên nhân, xác định giai đoạn CGA, tính toán nguy cơ tiến triển KFRE và bắt đầu các liệu pháp bảo vệ tim-thận.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SECTION 2: GFR & ALBUMINURIA EVALUATION -->
+    <div class="sec-card" id="sec-2">
+      <div class="sec-hdr">
+        <span class="sec-hdr-icon">🧪</span>
+        <h2 class="sec-title">Phần 2: Đánh Giá GFR, Albumin Niệu & Sai Số Phòng Xét Nghiệm</h2>
+      </div>
+      <div class="sec-body">
+        
+        <div class="sec-subtitle">1. Quy trình Tiếp cận GFR 3 Bước & Không Dùng Chủng Tộc</div>
+        
+        <div class="infobox info">
+          <span class="infobox-icon">ℹ️</span>
+          <div>
+            <span class="rec-tag tag-1d">Rec 1.2.4.1 - 1D</span><span class="rec-tag tag-pp">Practice Point 1.2.4.2</span>
+            <strong>Loại bỏ yếu tố Chủng tộc (Race-Free eGFR):</strong> Hướng dẫn KDIGO 2024 khuyến cáo sử dụng phương trình ước tính GFR đã xác thực và <strong>tuyệt đối không sử dụng yếu tố chủng tộc (Race)</strong> trong công thức tính eGFR vì chủng tộc là khái niệm xã hội, gây sai lệch chẩn đoán và chậm trễ can thiệp.
+          </div>
+        </div>
+
+        <div class="card-box" style="margin-bottom: 1.25rem;">
+          <div class="card-box-title">🔄 Lưu đồ 3 Bước Đánh Giá Chức Năng Lọc Cầu Thận (GFR)</div>
+          <div style="font-size: 0.85rem; line-height: 1.65;">
+            <strong>Bước 1 (Initial Test):</strong> Đo Creatinine huyết thanh &rarr; Tính eGFR<sub>cr</sub>. Xem xét sai số (khối cơ nhỏ/lớn, chế độ ăn, tập thể thao).<br>
+            <strong>Bước 2 (Supportive Test):</strong> Nếu nghi ngờ sai số eGFR<sub>cr</sub> hoặc cần độ chính xác cao để đưa ra quyết định quan trọng (chỉnh liều thuốc độc tính cao, phân giai đoạn ranh giới) &rarr; Đo Cystatin C và tính eGFR<sub>cr-cys</sub>.<br>
+            <strong>Bước 3 (Confirmed mGFR):</strong> Nếu vẫn nghi ngờ sai số eGFR<sub>cr-cys</sub> (tình trạng viêm nặng, steroid liều cao, suy kiệt) hoặc đánh giá người hiến thận &rarr; Đo GFR thực tế (mGFR) bằng chất đánh dấu ngoại sinh (iohexol/iothalamate).
+          </div>
+        </div>
+
+        <div class="sec-subtitle">2. Yếu Tố Gây Nhiễu Sinh Học Trong Đánh Giá Albumin Niệu (ACR)</div>
+        
+        <div class="table-wrapper">
+          <table class="med-table">
+            <thead>
+              <tr>
+                <th>Chiều ảnh hưởng</th>
+                <th>Các yếu tố lâm sàng gây sai lệch tỷ lệ ACR / PCR</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong style="color: var(--red);">Tăng giả tạo (False Elevation)</strong></td>
+                <td>
+                  • <strong>Tiểu máu (Hematuria)</strong> hoặc lẫn máu kinh nguyệt (Menstruation)<br>
+                  • <strong>Gắng sức / Tập thể thao</strong> cường độ cao ngay trước khi lấy mẫu<br>
+                  • <strong>Nhiễm trùng đường tiết niệu (UTI)</strong> có triệu chứng<br>
+                  • <strong>Giới tính nữ</strong> (do khối lượng cơ nhỏ làm giảm thải Creatinine niệu &rarr; Tăng tỷ lệ ACR)<br>
+                  • <strong>Cân nặng nhẹ / Suy kiệt cơ</strong> &rarr; Giảm Creatinine niệu ngẫu nhiên
+                </td>
+              </tr>
+              <tr>
+                <td><strong style="color: var(--green);">Giảm giả tạo (False Reduction)</strong></td>
+                <td>
+                  • <strong>Protein không phải Albumin</strong> (như chuỗi nhẹ đơn dòng trong Đa u tủy xương, bị bỏ sót nếu chỉ xét nghiệm que thử Albumin)<br>
+                  • <strong>Giới tính nam</strong> (khối lượng cơ lớn làm tăng thải Creatinine niệu &rarr; Giảm tỷ lệ ACR)<br>
+                  • <strong>Chế độ ăn rất giàu protein</strong> hoặc cơ thể phát triển vạm mỡ
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SECTION 3: RISK PROGRESSION & KFRE -->
+    <div class="sec-card" id="sec-3">
+      <div class="sec-hdr">
+        <span class="sec-hdr-icon">📈</span>
+        <h2 class="sec-title">Phần 3: Tiên Lượng Nguy Cơ Tiến Triển & Thang Điểm KFRE</h2>
+      </div>
+      <div class="sec-body">
+        
+        <div class="sec-subtitle">1. Ma Trận Tần Suất Theo Dõi Định Kỳ GFR & Albumin Niệu (Lần/Năm)</div>
+        <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+          Tần suất tối thiểu cần xét nghiệm theo dõi định kỳ eGFR và ACR mỗi năm dựa trên các ô nguy cơ CGA:
+        </p>
+
+        <div class="table-wrapper">
+          <table class="heatmap-table">
+            <thead>
+              <tr>
+                <th rowspan="2">Giai đoạn GFR</th>
+                <th colspan="3">Mức độ Albumin niệu (ACR)</th>
+              </tr>
+              <tr>
+                <th>A1 (&lt; 30 mg/g)</th>
+                <th>A2 (30 - 300 mg/g)</th>
+                <th>A3 (&gt; 300 mg/g)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>G1 (≥ 90)</th>
+                <td class="heatmap-cell hm-green">1 lần/năm*</td>
+                <td class="heatmap-cell hm-yellow">1 lần/năm</td>
+                <td class="heatmap-cell hm-orange">2 lần/năm</td>
+              </tr>
+              <tr>
+                <th>G2 (60 - 89)</th>
+                <td class="heatmap-cell hm-green">1 lần/năm*</td>
+                <td class="heatmap-cell hm-yellow">1 lần/năm</td>
+                <td class="heatmap-cell hm-orange">2 lần/năm</td>
+              </tr>
+              <tr>
+                <th>G3a (45 - 59)</th>
+                <td class="heatmap-cell hm-yellow">1 lần/năm</td>
+                <td class="heatmap-cell hm-orange">2 lần/năm</td>
+                <td class="heatmap-cell hm-red">3 lần/năm</td>
+              </tr>
+              <tr>
+                <th>G3b (30 - 44)</th>
+                <td class="heatmap-cell hm-orange">2 lần/năm</td>
+                <td class="heatmap-cell hm-red">3 lần/năm</td>
+                <td class="heatmap-cell hm-red">3 lần/năm</td>
+              </tr>
+              <tr>
+                <th>G4 (15 - 29)</th>
+                <td class="heatmap-cell hm-red">3 lần/năm</td>
+                <td class="heatmap-cell hm-red">3 lần/năm</td>
+                <td class="heatmap-cell hm-darkred">≥ 4 lần/năm</td>
+              </tr>
+              <tr>
+                <th>G5 (&lt; 15)</th>
+                <td class="heatmap-cell hm-darkred">≥ 4 lần/năm</td>
+                <td class="heatmap-cell hm-darkred">≥ 4 lần/năm</td>
+                <td class="heatmap-cell hm-darkred">≥ 4 lần/năm</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="sec-subtitle">2. Ứng Dụng Phương Trình KFRE & Ngưỡng Can Thiệp Lâm Sàng</div>
+        
+        <div class="infobox success">
+          <span class="infobox-icon">🎯</span>
+          <div>
+            <span class="rec-tag tag-1a">Recommendation 2.2.1 - 1A</span>
+            <strong>Phương trình Nguy cơ Suy thận (KFRE):</strong> Ở bệnh nhân CKD giai đoạn G3-G5, KDIGO khuyến cáo sử dụng phương trình KFRE (Kidney Failure Risk Equation - 4 biến hoặc 8 biến) để ước tính nguy cơ tuyệt đối tiến triển thành suy thận cần lọc máu/ghép thận trong 2 năm và 5 năm.
+          </div>
+        </div>
+
+        <div class="grid-2col">
+          <div class="card-box">
+            <div class="card-box-title">📊 Mức sụt eGFR: Dip vs Tiến triển</div>
+            <div style="font-size: 0.83rem; line-height: 1.6;">
+              • <strong>Sụt eGFR ban đầu (Dip ≤ 30%):</strong> Khi khởi đầu các thuốc tác động huyết động (RASi, SGLT2i), mức giảm eGFR đến 30% trong 4 tuần đầu là phản ứng sinh lý chấp nhận được, không ngừng thuốc.<br>
+              • <strong>Tiến triển thực sự (&gt; 20%):</strong> Mức giảm eGFR mạn tính &gt; 20% qua các lần kiểm tra là vượt dao động phòng lab, cần đánh giá lại toàn diện.
+            </div>
+          </div>
+
+          <div class="card-box">
+            <div class="card-box-title">🚨 Ngưỡng Quyết định Lâm sàng từ KFRE</div>
+            <div style="font-size: 0.83rem; line-height: 1.6;">
+              • <strong>KFRE 5 năm 3% - 5%:</strong> Ngưỡng xem xét chuyển tuyến chuyên khoa Thận.<br>
+              • <strong>KFRE 2 năm &gt; 10%:</strong> Ngưỡng bắt đầu Chăm sóc đa chuyên khoa tích hợp (Multidisciplinary care).<br>
+              • <strong>KFRE 2 năm &gt; 40%:</strong> Ngưỡng chuẩn bị Thay thế Thận (giáo dục KRT, phẫu thuật cầu nối mạch máu AVF, đăng ký ghép thận).
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SECTION 4: HOLISTIC APPROACH & PHARMACOTHERAPY -->
+    <div class="sec-card" id="sec-4">
+      <div class="sec-hdr">
+        <span class="sec-hdr-icon">🛡️</span>
+        <h2 class="sec-title">Phần 4: Tiếp Cận Điều Trị Toàn Diện 4 Tầng & Dược Lý Bảo Vệ Tim-Thận</h2>
+      </div>
+      <div class="sec-body">
+        
+        <div class="sec-subtitle">1. Khung Tiếp Cận Toàn Diện 4 Tầng (KDIGO 2024 Holistic Approach)</div>
+
+        <div class="steps-list" style="margin-bottom: 1.25rem;">
+          <div class="step-item" style="border-left: 4px solid var(--blue);">
+            <div class="step-num" style="background: var(--blue);">1</div>
+            <div class="step-content">
+              <strong>Tầng 1 - Thay đổi Lối sống & Chế độ ăn:</strong> Chế độ ăn ưu tiên thực phẩm thực vật (plant-based), hạn chế đồ ăn siêu chế biến. Tập thể dục cường độ trung bình ≥ 150 phút/tuần. Cai hoàn toàn thuốc lá. Kiểm soát cân nặng.<br>
+              • <strong>Protein:</strong> Khuyến cáo duy trì <strong>0.8 g/kg/ngày</strong> cho CKD G3-G5 chưa lọc máu (<span class="rec-tag tag-2c">Rec 2C</span>). Tránh &gt; 1.3 g/kg/ngày. Trẻ em <em>không hạn chế protein</em>.<br>
+              • <strong>Muối (Natri):</strong> Khuyến nghị Natri <strong>&lt; 2 g/ngày</strong> (tương đương &lt; 5 g muối ăn/ngày) (<span class="rec-tag tag-2c">Rec 2C</span>).
+            </div>
+          </div>
+
+          <div class="step-item" style="border-left: 4px solid var(--green);">
+            <div class="step-num" style="background: var(--green);">2</div>
+            <div class="step-content">
+              <strong>Tầng 2 - Liệu pháp Nền tảng Hàng đầu (First-line Drugs):</strong><br>
+              • <strong>Thuốc ức chế SGLT2 (SGLT2i):</strong> Khởi trị cho mọi BN CKD + T2D (eGFR ≥ 20) (<span class="rec-tag tag-1a">Rec 1A</span>); CKD không T2D (eGFR ≥ 20 kèm ACR ≥ 200 mg/g) (<span class="rec-tag tag-1a">Rec 1A</span>); hoặc BN Suy tim mọi mức ACR. Duy trì SGLT2i cho đến khi bắt đầu lọc máu/ghép thận.<br>
+              • <strong>Ức chế hệ RAS (ACEi hoặc ARB):</strong> Liều tối đa dung nạp được khi có Tăng huyết áp và Albumin niệu (<span class="rec-tag tag-1b">Rec 1B</span>).<br>
+              • <strong>Huyết áp Mục tiêu:</strong> Huyết áp tâm thu (SBP) <strong>&lt; 120 mmHg</strong> chuẩn hóa (<span class="rec-tag tag-2b">Rec 2B</span>).<br>
+              • <strong>Statin:</strong> Statin cường độ trung bình/cao cho người lớn ≥ 50 tuổi (<span class="rec-tag tag-1a">Rec 1A</span>).
+            </div>
+          </div>
+
+          <div class="step-item" style="border-left: 4px solid var(--orange);">
+            <div class="step-num" style="background: var(--orange);">3</div>
+            <div class="step-content">
+              <strong>Tầng 3 - Liệu pháp Nhắm Mục tiêu Tim-Thận Cụ thể:</strong><br>
+              • <strong>GLP-1 RA:</strong> Ưu tiên chất đồng vận thụ thể GLP-1 cho BN đái tháo đường T2D chưa đạt mục tiêu đường huyết (<span class="rec-tag tag-1b">Rec 1B</span>).<br>
+              • <strong>ns-MRA (Finerenone):</strong> Gợi ý phối hợp Finerenone cho T2D + eGFR &gt; 25, Kali bình thường và ACR tồn dư (≥ 30 mg/g) dù đã tối ưu RASi (<span class="rec-tag tag-2a">Rec 2A</span>).<br>
+              • <strong>CCB Dihydropyridine / Lợi tiểu:</strong> Phối hợp hạ áp để đạt SBP &lt; 120 mmHg.<br>
+              • <strong>Aspirin liều thấp:</strong> Dự phòng thứ phát biến cố xơ vữa động mạch đã thiết lập (<span class="rec-tag tag-1c">Rec 1C</span>).
+            </div>
+          </div>
+
+          <div class="step-item" style="border-left: 4px solid var(--purple);">
+            <div class="step-num" style="background: var(--purple);">4</div>
+            <div class="step-content">
+              <strong>Tầng 4 - Điều trị Biến chứng Hệ thống:</strong> Quản lý thiếu máu (Anemia), rối loạn khoáng chất xương (CKD-MBD), toan chuyển hóa và tăng kali máu.
+            </div>
+          </div>
+        </div>
+
+        <div class="sec-subtitle">2. Quy trình Theo Dõi Kali Máu & eGFR Sau Khi Khởi Trị RASi</div>
+        
+        <div class="infobox danger">
+          <span class="infobox-icon">🚫</span>
+          <div>
+            <span class="rec-tag tag-1b">Recommendation 1.B</span>
+            <strong>Chống chỉ định Phối hợp Ức chế RAS kép:</strong> Tuyệt đối không phối hợp ACEi + ARB hoặc phối hợp với thuốc ức chế trực tiếp Renin (Aliskiren) do làm tăng nguy cơ tổn thương thận cấp (AKI) và tăng kali máu nặng.
+          </div>
+        </div>
+
+        <div class="card-box">
+          <div class="card-box-title">⏱️ Các bước giám sát RASi (ACEi / ARB) sau 2 - 4 tuần khởi trị:</div>
+          <div style="font-size: 0.83rem; line-height: 1.65;">
+            1. Tái kiểm tra Kali máu và Creatinine huyết thanh sau <strong>2 đến 4 tuần</strong>.<br>
+            2. <strong>Nếu Kali bình thường & eGFR sụt &lt; 30%:</strong> Tiếp tục tăng liều RASi đến liều tối đa được phê duyệt để bảo vệ tim-thận.<br>
+            3. <strong>Nếu eGFR sụt ≥ 30%:</strong> Đánh giá nguyên nhân AKI (mất nước, dùng lợi tiểu quá mức, NSAID, hẹp động mạch thận). Bồi phụ thể tích. Chỉ giảm/ngừng RASi nếu mức giảm nghiêm trọng không hồi phục.<br>
+            4. <strong>Nếu Tăng Kali máu (&gt; 5.5 mmol/L):</strong> Xử trí tăng kali theo bậc thang (dinh dưỡng, lợi tiểu, Natri Bicarbonat, Potassium Binders). Chỉ giảm/ngừng RASi khi các biện pháp này thất bại.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SECTION 5: COMPLICATIONS & SADMANS -->
+    <div class="sec-card" id="sec-5">
+      <div class="sec-hdr">
+        <span class="sec-hdr-icon">💊</span>
+        <h2 class="sec-title">Phần 5: Kiểm Soát Biến Chứng Hệ Thống & Quy Tắc SADMANS</h2>
+      </div>
+      <div class="sec-body">
+        
+        <div class="sec-subtitle">1. Quản lý Biến chứng Hệ thống</div>
+        
+        <div class="grid-2col" style="margin-bottom: 1.25rem;">
+          <div class="card-box">
+            <div class="card-box-title">🧪 Toan Chuyển Hóa & Acid Uric</div>
+            <div style="font-size: 0.83rem; line-height: 1.6;">
+              • <strong>Toan chuyển hóa:</strong> Điều trị bằng Natri Bicarbonat khi nồng độ Bicarbonate huyết thanh <strong>&lt; 18 mmol/L</strong> (ngưỡng mới hạ so với &lt; 22 mmol/L trước đây để giảm nguy cơ quá tải dịch).<br>
+              • <strong>Tăng Acid Uric:</strong> Chỉ điều trị thuốc khi có triệu chứng (Gout, sỏi uric) (<span class="rec-tag tag-1c">Rec 1C</span>). <em>Tuyệt đối không dùng hạ uric cho BN không triệu chứng</em> để làm chậm CKD (<span class="rec-tag tag-2d">Rec 2D</span>).
+            </div>
+          </div>
+
+          <div class="card-box">
+            <div class="card-box-title">🫀 Rối Lượng Lipid & Anticoagulation</div>
+            <div style="font-size: 0.83rem; line-height: 1.6;">
+              • <strong>Lipid máu:</strong> Người lớn ≥ 50 tuổi có eGFR &lt; 60: Khuyến cáo Statin hoặc Statin/Ezetimibe (<span class="rec-tag tag-1a">Rec 1A</span>).<br>
+              • <strong>Rung nhĩ kèm CKD G1-G4:</strong> Khuyến cáo ưu tiên sử dụng thuốc kháng đông đường uống thế hệ mới (NOACs/DOACs) hơn Warfarin (<span class="rec-tag tag-1c">Rec 1C</span>).
+            </div>
+          </div>
+        </div>
+
+        <div class="sec-subtitle">2. Quy Tắc Ngày Ốm (Sick Day Rules) - SADMANS</div>
+        
+        <div class="infobox warning">
+          <span class="infobox-icon">⚠️</span>
+          <div>
+            <strong>Quy tắc SADMANS trong Mất nước Cấp tính:</strong> Khi bệnh nhân bị sốt cao, nôn mửa, tiêu chảy cấp hoặc nguy cơ mất nước, cần hướng dẫn <strong>tạm ngừng ngay các nhóm thuốc SADMANS</strong> để tránh gây tổn thương thận cấp (AKI) hoặc ngộ độc tụt đường huyết / toan lactic. Tái khởi động lại thuốc khi sức khỏe bình phục.
+          </div>
+        </div>
+
+        <div class="table-wrapper">
+          <table class="med-table">
+            <thead>
+              <tr>
+                <th>Ký tự</th>
+                <th>Nhóm Thuốc</th>
+                <th>Nguy cơ chính khi mất nước</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>S</strong></td><td>Sulfonylureas (Gliclazide, Glimepiride...)</td><td>Tụt đường huyết nghiêm trọng do giảm thải trừ</td></tr>
+              <tr><td><strong>A</strong></td><td>ACEi (Thuốc ức chế men chuyển)</td><td>Tụt huyết áp, suy sụp eGFR cấp tính (AKI)</td></tr>
+              <tr><td><strong>D</strong></td><td>Diuretics (Thuốc lợi tiểu Quai / Thiazide)</td><td>Giảm thể tích tuần hoàn nặng, rối loạn điện giải</td></tr>
+              <tr><td><strong>M</strong></td><td>Metformin</td><td>Toan Lactic (Lactic Acidosis) đe dọa tính mạng</td></tr>
+              <tr><td><strong>A</strong></td><td>ARBs (Thuốc chẹn thụ thể Angiotensin)</td><td>Tụt huyết áp, suy sụp eGFR cấp tính (AKI)</td></tr>
+              <tr><td><strong>N</strong></td><td>NSAIDs (Thuốc giảm đau kháng viêm)</td><td>Co mạch thận cấp, gây AKI nặng</td></tr>
+              <tr><td><strong>S</strong></td><td>SGLT2i (Empagliflozin, Dapagliflozin...)</td><td>Mất nước, Nhiễm toan ceton huyết áp bình thường (eDKA)</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="sec-subtitle">3. An Toàn Thuốc Cản Quang & Gadolinium MRI</div>
+        <div style="font-size: 0.83rem; line-height: 1.65; background: var(--surface-2); padding: 1rem; border-radius: 10px; border: 1px solid var(--border-light);">
+          • <strong>Thuốc cản quang đường tĩnh mạch:</strong> Đánh giá nguy cơ CA-AKI trước khi chụp. Bồi phụ thể tích NaCl 0.9% trước và sau thủ thuật.<br>
+          • <strong>Chụp MRI dùng Gadolinium:</strong> Ở bệnh nhân có eGFR &lt; 30 ml/min/1.73m<sup>2</sup>, ưu tiên chọn chất cản từ thế hệ mới Nhóm II và III (độ ổn định cao) để triệt tiêu nguy cơ Xơ hóa hệ thống do thận (NSF).
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SECTION 6: REFERRAL & KRT -->
+    <div class="sec-card" id="sec-6">
+      <div class="sec-hdr">
+        <span class="sec-hdr-icon">🏥</span>
+        <h2 class="sec-title">Phần 6: Tiêu Chuẩn Chuyển Tuyến Thận Học & Chuẩn Bị Thay Thế Thận (KRT)</h2>
+      </div>
+      <div class="sec-body">
+        
+        <div class="sec-subtitle">1. Tiêu Chuẩn Chuyển Tuyến Chuyên Khoa Thận Học</div>
+        
+        <div class="table-wrapper">
+          <table class="med-table">
+            <thead>
+              <tr>
+                <th>Phân nhóm Tiêu chí</th>
+                <th>Chỉ định Chuyển tuyến Chuyên khoa Thận cụ thể</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Nguyên nhân (Causes)</strong></td>
+                <td>
+                  • Nguyên nhân gây CKD chưa rõ ràng<br>
+                  • Nghi ngờ hoặc xác định mắc bệnh thận di truyền (bệnh thận đa nang ADPKD, hội chứng Alport)<br>
+                  • Tiền sử sỏi thận tái phát nhiều lần
+                </td>
+              </tr>
+              <tr>
+                <td><strong>eGFR &amp; Nguy cơ</strong></td>
+                <td>
+                  • Nguy cơ suy thận KFRE 5 năm <strong>vượt quá 3% - 5%</strong><br>
+                  • eGFR &lt; 30 ml/min/1.73m<sup>2</sup> (Giai đoạn G4 - G5)<br>
+                  • Suy giảm eGFR mạn tính nhanh &gt; 20%
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Albumin niệu &amp; Nước tiểu</strong></td>
+                <td>
+                  • Có ACR ≥ 300 mg/g kèm tiểu máu vi thể chưa rõ nguyên nhân<br>
+                  • Albumin niệu ACR &gt; 700 mg/g dai dẳng<br>
+                  • Xuất hiện trụ hồng cầu hoặc hồng cầu niệu &gt; 20 cells/HPF dai dẳng
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Biến chứng kèm theo</strong></td>
+                <td>
+                  • Tăng huyết áp kháng trị (không đạt mục tiêu dù dùng phối hợp ≥ 4 thuốc)<br>
+                  • Tăng kali máu dai dẳng hoặc rối loạn toan kiềm nặng<br>
+                  • Thiếu máu / bệnh lý xương do thận mức độ trung bình-nặng
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="sec-subtitle">2. Kế Hoạch Chăm Sóc Thay Thế Thận (KRT) & Chăm Sóc Bảo Tồn</div>
+        
+        <div class="grid-2col">
+          <div class="card-box">
+            <div class="card-box-title">👥 Mô hình Đa chuyên khoa (Multidisciplinary Care)</div>
+            <div style="font-size: 0.83rem; line-height: 1.6;">
+              Khi nguy cơ KFRE 2 năm <strong>&gt; 10%</strong>: Chuyển bệnh nhân vào mô hình chăm sóc đa chuyên khoa (Bác sĩ Thận, Điều dưỡng chuyên khoa, Dược sĩ lâm sàng, Chuyên gia dinh dưỡng, Hỗ trợ tâm lý).
+            </div>
+          </div>
+
+          <div class="card-box">
+            <div class="card-box-title">💉 Chuẩn bị KRT / AV Access</div>
+            <div style="font-size: 0.83rem; line-height: 1.6;">
+              Khi nguy cơ KFRE 2 năm <strong>&gt; 40%</strong> hoặc eGFR &lt; 15 – 20: Tiến hành giáo dục các phương pháp KRT (Lọc màng bụng, Thận nhân tạo, Ghép thận), phẫu thuật tạo cầu nối arteriovenous fistula (AVF) hoặc chuẩn bị ghép thận chủ động.
+            </div>
+          </div>
+        </div>
+
+        <div class="infobox info" style="margin-top: 1rem;">
+          <span class="infobox-icon">🕊️</span>
+          <div>
+            <strong>Chăm sóc Bảo tồn Toàn diện (Comprehensive Conservative Management - CCM):</strong> Đối với bệnh nhân lớn tuổi, frail (suy kiệt nặng) hoặc có nhiều bệnh lý đồng mắc nghiêm trọng không lựa chọn lọc máu, cung cấp mô hình CCM tập trung kiểm soát triệu chứng ure huyết (ngứa, mệt mỏi, chán ăn, buồn nôn, đau) nhằm tối ưu hóa chất lượng cuộc sống.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- WIDGET CALCULATOR TOOL -->
+    <div class="widget-container" id="ckd-interactive-widget">
+      <div class="widget-title">
+        <span>🧮</span> Công Cụ Tương Tác: Tra Cứu CGA Staging & Ngưỡng Can Thiệp KFRE
+      </div>
+      <div class="widget-desc">
+        Nhập chỉ số eGFR và ACR của bệnh nhân để tự động xác định giai đoạn CGA, màu nguy cơ, tần suất theo dõi định kỳ và các khuyến cáo can thiệp chuẩn KDIGO 2024.
+      </div>
+
+      <div class="widget-form">
+        <div class="form-group">
+          <label for="w-egfr">eGFR (ml/min/1.73m²)</label>
+          <input type="number" id="w-egfr" class="form-control" placeholder="VD: 42" value="42">
+        </div>
+        <div class="form-group">
+          <label for="w-acr">ACR Nước tiểu (mg/g)</label>
+          <input type="number" id="w-acr" class="form-control" placeholder="VD: 150" value="150">
+        </div>
+        <div class="form-group">
+          <label for="w-kfre2">Dự đoán KFRE 2 năm (%)</label>
+          <input type="number" id="w-kfre2" class="form-control" placeholder="VD: 12" value="12">
+        </div>
+      </div>
+
+      <button class="btn-calc" onclick="calculateCKDStage()">Phân Giai Đoạn & Tra Cứu Khuyến Cáo KDIGO</button>
+
+      <div class="widget-result" id="w-result">
+        <!-- Results injected via JS -->
+      </div>
+    </div>
+
+    <!-- CITATIONS -->
+    <div class="citation-box">
+      <strong>Trích dẫn Tài liệu Tham khảo Chuẩn AMA:</strong><br>
+      1. Kidney Disease: Improving Global Outcomes (KDIGO) CKD Work Group. KDIGO 2024 Clinical Practice Guideline for the Evaluation and Management of Chronic Kidney Disease. <em>Kidney Int</em>. 2024;105(4S):S117-S314.<br>
+      2. Levin A, Ahmed SB, Carrero JJ, et al. Executive summary of the KDIGO 2024 Clinical Practice Guideline for the Evaluation and Management of Chronic Kidney Disease: known knowns and known unknowns. <em>Kidney Int</em>. 2024;105(4):684-701.<br>
+      3. Kidney Disease: Improving Global Outcomes Diabetes Work Group. KDIGO 2022 Clinical Practice Guideline for Diabetes Management in Chronic Kidney Disease. <em>Kidney Int</em>. 2022;102(5S):S1-S127.
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="page-footer">
+    CliniPortal © 2026 – Hệ sinh thái Web Y khoa Tĩnh. Dữ liệu tóm tắt phục vụ tra cứu lâm sàng & y học chứng cứ.
+  </footer>
+
+  <!-- SCRIPT INTERACTIVE WIDGET -->
+  <script>
+    function toggleTheme() {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      document.getElementById('theme-toggle-btn').textContent = newTheme === 'dark' ? '☀️' : '🌙';
+    }
+
+    function calculateCKDStage() {
+      const egfr = parseFloat(document.getElementById('w-egfr').value);
+      const acr = parseFloat(document.getElementById('w-acr').value);
+      const kfre2 = parseFloat(document.getElementById('w-kfre2').value) || 0;
+      const resDiv = document.getElementById('w-result');
+
+      if (isNaN(egfr) || isNaN(acr)) {
+        alert('Vui lòng nhập đầy đủ chỉ số eGFR và ACR!');
+        return;
+      }
+
+      let gCat = '', gDesc = '';
+      if (egfr >= 90) { gCat = 'G1'; gDesc = 'Bình thường / Tăng'; }
+      else if (egfr >= 60) { gCat = 'G2'; gDesc = 'Giảm nhẹ'; }
+      else if (egfr >= 45) { gCat = 'G3a'; gDesc = 'Giảm nhẹ-trung bình'; }
+      else if (egfr >= 30) { gCat = 'G3b'; gDesc = 'Giảm trung bình-nặng'; }
+      else if (egfr >= 15) { gCat = 'G4'; gDesc = 'Giảm nặng'; }
+      else { gCat = 'G5'; gDesc = 'Suy thận (Kidney Failure)'; }
+
+      let aCat = '', aDesc = '';
+      if (acr &lt; 30) { aCat = 'A1'; aDesc = 'Bình thường / Tăng nhẹ'; }
+      else if (acr &lt;= 300) { aCat = 'A2'; aDesc = 'Tăng trung bình (Vi thể)'; }
+      else { aCat = 'A3'; aDesc = 'Tăng nghiêm trọng (Đại thể)'; }
+
+      // Risk color & Frequency
+      let riskLevel = '', riskClass = '', freq = '';
+      if ((gCat === 'G1' || gCat === 'G2') && aCat === 'A1') {
+        riskLevel = 'Nguy cơ Thấp (Xanh)'; riskClass = 'badge-green'; freq = '1 lần/năm (nếu có YTNC)';
+      } else if (((gCat === 'G1' || gCat === 'G2') && aCat === 'A2') || (gCat === 'G3a' && aCat === 'A1')) {
+        riskLevel = 'Nguy cơ Trung bình (Vàng)'; riskClass = 'badge-teal'; freq = '1 lần/năm';
+      } else if (((gCat === 'G1' || gCat === 'G2') && aCat === 'A3') || (gCat === 'G3a' && aCat === 'A2') || (gCat === 'G3b' && aCat === 'A1')) {
+        riskLevel = 'Nguy cơ Cao (Cam)'; riskClass = 'badge-blue'; freq = '2 lần/năm';
+      } else {
+        riskLevel = 'Nguy cơ Rất cao (Đỏ/Đỏ sẫm)'; riskClass = 'badge-teal'; freq = egfr < 30 ? '3 - ≥ 4 lần/năm' : '3 lần/năm';
+      }
+
+      // Key Recommendations based on inputs
+      let recs = [];
+      recs.push('<strong>Mục tiêu Huyết áp:</strong> SBP &lt; 120 mmHg chuẩn hóa (Rec 2B).');
+      if (egfr >= 20) {
+        recs.push('<strong>Chỉ định SGLT2i (Class 1A):</strong> Bắt đầu điều trị bằng SGLT2i (Empagliflozin/Dapagliflozin) để bảo vệ thận-tim và duy trì cho đến khi bắt đầu lọc máu/ghép thận.');
+      }
+      if (aCat === 'A2' || aCat === 'A3') {
+        recs.push('<strong>Chỉ định RASi (Class 1B/2C):</strong> Dùng ACEi hoặc ARB ở liều tối đa dung nạp được.');
+      }
+      if (kfre2 > 40 || egfr < 20) {
+        recs.push('🚨 <strong>Chuẩn bị Thay Thế Thận (KRT):</strong> KFRE 2y &gt; 40% hoặc eGFR &lt; 20. Bắt đầu giáo dục KRT, phẫu thuật cầu nối mạch máu AVF hoặc đăng ký danh sách ghép thận.');
+      } else if (kfre2 > 10) {
+        recs.push('👥 <strong>Chăm sóc Đa chuyên khoa:</strong> KFRE 2y &gt; 10%. Đưa bệnh nhân vào mô hình Multidisciplinary Care.');
+      }
+      if (egfr < 30 || aCat === 'A3') {
+        recs.push('🏥 <strong>Chuyển tuyến Thận học:</strong> eGFR &lt; 30 hoặc A3 nặng. Cần hội chẩn/chuyển tuyến chuyên khoa Thận.');
+      }
+
+      resDiv.innerHTML = `
+        <div class="res-badge ${riskClass}">Giai đoạn CGA: <strong>${gCat} ${aCat}</strong> (${riskLevel})</div>
+        <div style="font-size: 0.85rem; line-height: 1.65; margin-bottom: 0.75rem;">
+          • <strong>Mức GFR:</strong> ${gCat} (${gDesc}) - ${egfr} ml/min/1.73m²<br>
+          • <strong>Mức Albumin niệu:</strong> ${aCat} (${aDesc}) - ${acr} mg/g<br>
+          • <strong>Tần suất Theo dõi Định kỳ:</strong> <strong>${freq}</strong>
+        </div>
+        <div style="font-size: 0.83rem; background: var(--surface-2); padding: 0.85rem; border-radius: 8px; border: 1px solid var(--border-light);">
+          <strong>Khuyến cáo Lâm sàng KDIGO 2024 cốt lõi:</strong>
+          <ul style="margin-left: 1.2rem; margin-top: 0.4rem;">
+            ${recs.map(r => `<li style="margin-bottom: 0.3rem;">${r}</li>`).join('')}
+          </ul>
+        </div>
+      `;
+      resDiv.style.display = 'block';
+    }
+  </script>
+  <script type="module" src="../guideline-controller.ts"></script>
+</body>
+</html>
