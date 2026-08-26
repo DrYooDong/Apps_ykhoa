@@ -84,3 +84,4 @@
 | ID | Tác vụ | Hoàn thành bởi | Ngày merge |
 | :--- | :--- | :--- | :--- |
 | **DS-INIT** | Thành lập Design Agent Squad & Ban hành Design Squad Rules | Antigravity | 2026-08-26 |
+| **DS-MDX-CSS-001** | Nâng cấp chuyên sâu hệ thống CSS cho 223 bài MDX (mdx-base, guidelines, physio, ccbs, biochem) | Design Squad | 2026-08-26 |

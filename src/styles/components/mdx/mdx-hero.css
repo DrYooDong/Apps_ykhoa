@@ -1,0 +1,78 @@
+/* ============================================================
+   MDX ATOMIC COMPONENT: HERO BANNER (mdx-hero.css)
+   Luxury Editorial Header & Metadata Strip for Medical Articles
+   ============================================================ */
+
+.mdx-hero-banner {
+  position: relative;
+  background: var(--gradient-hero, linear-gradient(135deg, oklch(58% 0.18 225) 0%, oklch(55% 0.22 290) 100%));
+  color: var(--color-text-inverse, #ffffff);
+  border-radius: var(--radius-xl, 20px);
+  padding: var(--space-8, 2rem) var(--space-6, 1.5rem);
+  margin-bottom: var(--space-8, 2rem);
+  border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.15));
+  box-shadow: var(--shadow-lg, 0 10px 25px -5px rgba(0, 0, 0, 0.15));
+  overflow: hidden;
+}
+
+[data-theme="dark"] .mdx-hero-banner {
+  background: var(--gradient-hero, linear-gradient(135deg, oklch(35% 0.14 225) 0%, oklch(28% 0.16 290) 100%));
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.mdx-hero-banner::after {
+  content: "";
+  position: absolute;
+  top: -80px;
+  right: -80px;
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.mdx-hero-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-2, 0.5rem);
+  margin-bottom: var(--space-3, 0.75rem);
+}
+
+.mdx-hero-org-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.85rem;
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--radius-full, 9999px);
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-size: var(--text-xs, 0.78rem);
+  font-weight: 700;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.mdx-hero-title {
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(1.6rem, 3.2vw, 2.3rem);
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.25;
+  margin: var(--space-2, 0.5rem) 0 var(--space-3, 0.75rem) 0;
+  letter-spacing: -0.02em;
+}
+
+.mdx-hero-desc {
+  font-size: var(--text-sm, 0.95rem);
+  color: rgba(255, 255, 255, 0.92);
+  line-height: 1.65;
+  max-width: 920px;
+  margin: 0;
+}

@@ -1,0 +1,81 @@
+/* ============================================================
+   MDX ATOMIC COMPONENT: 4 PILLARS STRIP (mdx-pillars.css)
+   Clinical Pillars Navigation & Color Accent Indicators
+   ============================================================ */
+
+.pillars,
+.mdx-pillars {
+  background: var(--color-surface, #ffffff);
+  border-bottom: 1px solid var(--color-border, #cbd5e1);
+  padding: 1.75rem 1.5rem;
+  border-radius: var(--radius-lg, 16px);
+  margin-bottom: var(--space-8, 2rem);
+}
+
+.pillars-inner,
+.mdx-pillars-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-4, 1rem);
+}
+
+.pillar,
+.mdx-pillar {
+  background: var(--color-surface-2, #f8fafc);
+  border: 1px solid var(--color-border, #cbd5e1);
+  border-radius: var(--radius-md, 14px);
+  padding: 1.1rem 1.2rem;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3, 0.85rem);
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow var(--tr, 200ms ease-out), transform var(--tr, 200ms ease-out);
+}
+
+.pillar::before,
+.mdx-pillar::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  border-radius: 4px 0 0 4px;
+}
+
+.pillar.p1::before, .mdx-pillar.p1::before { background: var(--color-primary, #0284c7); }
+.pillar.p2::before, .mdx-pillar.p2::before { background: var(--color-success, #059669); }
+.pillar.p3::before, .mdx-pillar.p3::before { background: var(--color-warning, #d97706); }
+.pillar.p4::before, .mdx-pillar.p4::before { background: var(--color-danger, #dc2626); }
+
+.pillar:hover,
+.mdx-pillar:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card-hover, 0 4px 16px rgba(0,0,0,0.08));
+}
+
+.pillar-icon,
+.mdx-pillar-icon {
+  font-size: 1.6rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.pillar-title,
+.mdx-pillar-title {
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-weight: 700;
+  font-size: var(--text-sm, 0.88rem);
+  color: var(--color-text, #0f172a);
+  margin-bottom: var(--space-1, 0.25rem);
+}
+
+.pillar-desc,
+.mdx-pillar-desc {
+  font-size: var(--text-xs, 0.76rem);
+  color: var(--color-text-muted, #475569);
+  line-height: 1.45;
+}

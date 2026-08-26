@@ -110,6 +110,7 @@
 | `components/clinical-flow-engine.css` | Styling Hệ thống Render Lưu đồ & Cây Quyết định Y khoa (Clinical Flow Engine) | `pages/clinical-decision-demo.html` |
 | `components/clinical-step-player.css` | Styling Thanh điều khiển Timeline & Mô phỏng Cấp cứu theo Thời gian (Clinical Step Player) | `pages/clinical-player-demo.html` |
 | `components/diagnostic-path-finder.css` | Styling Trực quan hóa Đồ thị & Tối ưu Đường dẫn Y khoa (Diagnostic Path Finder & Steiner Tree) | `pages/diagnostic-path-finder-demo.html` |
+| `components/mdx/` | Thư viện 10 CSS Components vi mô nguyên tử chuyên biệt cho bài đọc MDX (`mdx-hero`, `mdx-section-card`, `mdx-alerts`, `mdx-matrix-bento`, `mdx-timeline-steps`, `mdx-ebm-badges`, `mdx-tables`, `mdx-clinical-pearls`, `mdx-tags`, `mdx-figures`, `mdx-pillars`) | Xuyên suốt 223+ bài `.mdx` toàn hệ thống |
 
 
 ---

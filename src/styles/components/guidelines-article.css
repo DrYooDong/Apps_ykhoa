@@ -1,9 +1,20 @@
 /* ============================================================
-   GUIDELINES ARTICLE STYLESHEET
+   GUIDELINES ARTICLE STYLESHEET (guidelines-article.css)
    Full Clinical Dashboard Component Styling for EBM Guidelines (MDX & HTML)
    ============================================================ */
 
-/* SECTION CARDS & HEADINGS */
+/* --- SECTION CARDS & HEADINGS --- */
+@keyframes sec-card-fade-up {
+  0% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .sec-card {
   background: var(--color-surface, #ffffff);
   border: 1px solid var(--color-border, #cbd5e1);
@@ -12,7 +23,8 @@
   box-shadow: var(--shadow-sm, 0 2px 8px rgba(0,0,0,0.03));
   scroll-margin-top: 110px;
   margin-bottom: 2rem;
-  transition: border-color var(--tr, 200ms), box-shadow var(--tr, 200ms);
+  transition: border-color var(--tr, 200ms ease-out), box-shadow var(--tr, 200ms ease-out);
+  animation: sec-card-fade-up var(--duration-base, 220ms) var(--ease-out, cubic-bezier(0.23, 1, 0.32, 1)) both;
 }
 
 .sec-hdr {
@@ -25,7 +37,7 @@
 }
 
 [data-theme="dark"] .sec-hdr {
-  background: rgba(30, 41, 59, 0.6);
+  background: var(--color-surface-elevated-dark, rgba(30, 41, 59, 0.7));
 }
 
 .sec-hdr-icon {
@@ -38,7 +50,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(2, 132, 199, 0.2);
+  border: 1px solid var(--color-primary-border);
   flex-shrink: 0;
 }
 
@@ -81,7 +93,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(2, 132, 199, 0.2);
+  border: 1px solid var(--color-primary-border);
   flex-shrink: 0;
 }
 
@@ -94,7 +106,7 @@
   margin-left: 0.5rem;
 }
 
-/* BENTO MATRIX CARDS */
+/* --- BENTO MATRIX CARDS --- */
 .matrix-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
@@ -107,7 +119,7 @@
   border: 1px solid var(--color-border, #cbd5e1);
   border-radius: 14px;
   padding: 1.15rem;
-  transition: transform var(--tr, 200ms), box-shadow var(--tr, 200ms);
+  transition: transform var(--tr, 200ms ease-out), box-shadow var(--tr, 200ms ease-out);
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -117,7 +129,7 @@
 
 .matrix-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  box-shadow: var(--shadow-card-hover, 0 6px 18px rgba(0,0,0,0.06));
 }
 
 .matrix-card::before {
@@ -133,8 +145,8 @@
 .matrix-card.card-red::before { background: var(--color-danger, #dc2626); }
 .matrix-card.card-orange::before { background: var(--color-warning, #d97706); }
 .matrix-card.card-green::before { background: var(--color-success, #059669); }
-.matrix-card.card-teal::before { background: #0d9488; }
-.matrix-card.card-purple::before { background: #7c3aed; }
+.matrix-card.card-teal::before { background: var(--color-teal, #0d9488); }
+.matrix-card.card-purple::before { background: var(--color-purple, #7c3aed); }
 
 .matrix-card-hdr {
   display: flex;
@@ -159,7 +171,7 @@
   line-height: 1.55;
 }
 
-/* STEP CLINICAL TIMELINE & ALGORITHM CARDS */
+/* --- STEP CLINICAL TIMELINE & ALGORITHM CARDS --- */
 .timeline-container,
 .algorithm-container {
   display: flex;
@@ -177,7 +189,7 @@
   display: flex;
   gap: 1rem;
   align-items: flex-start;
-  transition: transform var(--tr, 200ms);
+  transition: transform var(--tr, 200ms ease-out);
 }
 
 .timeline-step-card:hover,
@@ -191,7 +203,7 @@
   height: 38px;
   border-radius: 12px;
   background: var(--color-primary, #0284c7);
-  color: #fff;
+  color: var(--color-text-inverse, #fff);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -199,13 +211,13 @@
   font-weight: 800;
   font-size: 0.9rem;
   flex-shrink: 0;
-  box-shadow: 0 3px 8px rgba(2,132,199,0.25);
+  box-shadow: 0 3px 8px var(--color-primary-shadow);
 }
 
-.timeline-badge.step-1 { background: #2563eb; }
-.timeline-badge.step-2 { background: #d97706; }
-.timeline-badge.step-3 { background: #dc2626; }
-.timeline-badge.step-4 { background: #7c3aed; }
+.timeline-badge.step-1 { background: var(--color-primary, #0284c7); }
+.timeline-badge.step-2 { background: var(--color-warning, #d97706); }
+.timeline-badge.step-3 { background: var(--color-danger, #dc2626); }
+.timeline-badge.step-4 { background: var(--color-purple, #7c3aed); }
 
 .timeline-content,
 .algo-content {
@@ -235,7 +247,7 @@
   margin: 0;
 }
 
-/* INFO BOXES */
+/* --- INFO BOXES --- */
 .infobox {
   display: flex;
   align-items: flex-start;
@@ -259,43 +271,43 @@
 
 .infobox.danger {
   background: var(--color-danger-hl, #fef2f2);
-  border: 1px solid rgba(220, 38, 38, 0.3);
+  border: 1px solid var(--color-danger-border);
   border-left: 4px solid var(--color-danger, #dc2626);
   color: var(--color-text, #0f172a);
 }
 
 .infobox.success {
   background: var(--color-success-hl, #f0fdf4);
-  border: 1px solid rgba(5, 150, 105, 0.3);
+  border: 1px solid var(--color-success-border);
   border-left: 4px solid var(--color-success, #059669);
   color: var(--color-text, #0f172a);
 }
 
 .infobox.warning {
   background: var(--color-warning-hl, #fffbeb);
-  border: 1px solid rgba(217, 119, 6, 0.3);
+  border: 1px solid var(--color-warning-border);
   border-left: 4px solid var(--color-warning, #d97706);
   color: var(--color-text, #0f172a);
 }
 
 .infobox.info {
   background: var(--color-primary-hl, #eff6ff);
-  border: 1px solid rgba(37, 99, 235, 0.3);
-  border-left: 4px solid var(--color-primary, #2563eb);
+  border: 1px solid var(--color-primary-border);
+  border-left: 4px solid var(--color-primary, #0284c7);
   color: var(--color-text, #0f172a);
 }
 
 .infobox.teal {
-  background: #f0fdfa;
-  border: 1px solid #99f6e4;
-  border-left: 4px solid #0d9488;
+  background: var(--color-teal-hl, #f0fdfa);
+  border: 1px solid var(--color-teal-border, #99f6e4);
+  border-left: 4px solid var(--color-teal, #0d9488);
   color: var(--color-text, #0f172a);
 }
 
 [data-theme="dark"] .infobox.teal {
-  background: #115e59;
-  border-color: #0f766e;
-  border-left-color: #14b8a6;
+  background: var(--color-teal-hl, rgba(13, 148, 136, 0.15));
+  border-color: var(--color-teal-border, rgba(13, 148, 136, 0.35));
+  border-left-color: var(--color-teal, #14b8a6);
 }
 
 .infobox-title,
@@ -313,13 +325,14 @@
   font-weight: 700;
 }
 
-/* TABLES (REGIMEN & DATA) */
+/* --- TABLES (REGIMEN & DATA) --- */
 .table-wrapper {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   border-radius: 12px;
   border: 1px solid var(--color-border, #cbd5e1);
   margin-bottom: 0.5rem;
+  background: var(--color-surface, #ffffff);
 }
 
 .data-table,
@@ -373,7 +386,7 @@
   white-space: nowrap;
 }
 
-/* RX & CLINICAL TAGS */
+/* --- RX & CLINICAL TAGS --- */
 .rx-tag {
   display: inline-block;
   background: var(--color-surface-2, #f8fafc);
@@ -390,32 +403,32 @@
 .rx-tag.highlight {
   background: var(--color-primary-hl, rgba(2, 132, 199, 0.1));
   color: var(--color-primary, #0284c7);
-  border-color: rgba(2, 132, 199, 0.3);
+  border-color: var(--color-primary-border);
   font-weight: 600;
 }
 
 .rx-tag.alert {
   background: var(--color-danger-hl, rgba(220, 38, 38, 0.1));
   color: var(--color-danger, #dc2626);
-  border-color: rgba(220, 38, 38, 0.3);
+  border-color: var(--color-danger-border);
   font-weight: 600;
 }
 
 .rx-tag.warn {
   background: var(--color-warning-hl, rgba(217, 119, 6, 0.1));
   color: var(--color-warning, #d97706);
-  border-color: rgba(217, 119, 6, 0.3);
+  border-color: var(--color-warning-border);
   font-weight: 600;
 }
 
 .rx-tag.success {
   background: var(--color-success-hl, rgba(5, 150, 105, 0.1));
   color: var(--color-success, #059669);
-  border-color: rgba(5, 150, 105, 0.3);
+  border-color: var(--color-success-border);
   font-weight: 600;
 }
 
-/* EBM EVIDENCE HIERARCHY BADGES & CARDS */
+/* --- EBM EVIDENCE HIERARCHY BADGES & CARDS --- */
 .ebm-badge-group {
   display: inline-flex;
   align-items: center;
@@ -442,9 +455,14 @@
 .cor-class-2b { background: #fef3c7; color: #b45309; border: 1px solid #fcd34d; }
 .cor-class-3 { background: #ffe4e6; color: #be123c; border: 1px solid #fda4af; }
 
-.loe-grade-a { background: rgba(16,185,129,0.12); color: #047857; border: 1px solid rgba(16,185,129,0.35); }
-.loe-grade-b { background: rgba(59,130,246,0.12); color: #1d4ed8; border: 1px solid rgba(59,130,246,0.35); }
-.loe-grade-c { background: rgba(245,158,11,0.12); color: #b45309; border: 1px solid rgba(245,158,11,0.35); }
+[data-theme="dark"] .cor-class-1 { background: rgba(22, 101, 52, 0.35); color: #4ade80; border-color: rgba(74, 222, 128, 0.3); }
+[data-theme="dark"] .cor-class-2a { background: rgba(3, 105, 161, 0.35); color: #38bdf8; border-color: rgba(56, 189, 248, 0.3); }
+[data-theme="dark"] .cor-class-2b { background: rgba(180, 83, 9, 0.35); color: #fbbf24; border-color: rgba(251, 191, 36, 0.3); }
+[data-theme="dark"] .cor-class-3 { background: rgba(190, 18, 60, 0.35); color: #fb7185; border-color: rgba(251, 113, 133, 0.3); }
+
+.loe-grade-a { background: var(--color-success-hl, rgba(16,185,129,0.12)); color: var(--color-success, #047857); border: 1px solid var(--color-success-border); }
+.loe-grade-b { background: var(--color-info-bg, rgba(59,130,246,0.12)); color: var(--color-info, #1d4ed8); border: 1px solid var(--color-info-border); }
+.loe-grade-c { background: var(--color-warning-hl, rgba(245,158,11,0.12)); color: var(--color-warning, #b45309); border: 1px solid var(--color-warning-border); }
 
 .ebm-rec-card {
   background: var(--color-surface, #ffffff);
@@ -455,12 +473,12 @@
   margin-bottom: 0.85rem;
 }
 
-.ebm-rec-card.class-1 { border-left-color: #059669; }
-.ebm-rec-card.class-2a { border-left-color: #0284c7; }
-.ebm-rec-card.class-2b { border-left-color: #d97706; }
-.ebm-rec-card.class-3 { border-left-color: #dc2626; }
+.ebm-rec-card.class-1 { border-left-color: var(--color-success, #059669); }
+.ebm-rec-card.class-2a { border-left-color: var(--color-primary, #0284c7); }
+.ebm-rec-card.class-2b { border-left-color: var(--color-warning, #d97706); }
+.ebm-rec-card.class-3 { border-left-color: var(--color-danger, #dc2626); }
 
-/* UPDATES GRID CARDS */
+/* --- UPDATES GRID CARDS --- */
 .updates-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
@@ -474,11 +492,12 @@
   padding: 1.35rem;
   position: relative;
   overflow: hidden;
-  transition: box-shadow var(--tr, 200ms);
+  transition: box-shadow var(--tr, 200ms ease-out), transform var(--tr, 200ms ease-out);
 }
 
 .update-card:hover {
-  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card-hover, 0 6px 20px rgba(0,0,0,0.08));
 }
 
 .update-card-accent {
@@ -535,17 +554,17 @@
 
 .verdict-green {
   background: var(--color-success-hl, #f0fdf4);
-  color: #065f46;
-  border: 1px solid rgba(5, 150, 105, 0.3);
+  color: var(--color-success, #065f46);
+  border: 1px solid var(--color-success-border);
 }
 
 .verdict-blue {
   background: var(--color-primary-hl, #eff6ff);
-  color: #1e40af;
-  border: 1px solid rgba(37, 99, 235, 0.3);
+  color: var(--color-primary, #1e40af);
+  border: 1px solid var(--color-primary-border);
 }
 
-/* FIGURES & CITATION */
+/* --- FIGURES & CITATION --- */
 .fig-card {
   background: var(--color-surface, #ffffff);
   border: 1px solid var(--color-border, #cbd5e1);
@@ -556,7 +575,7 @@
   flex-direction: column;
   align-items: center;
   gap: 0.85rem;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+  box-shadow: var(--shadow-sm, 0 4px 14px rgba(0,0,0,0.04));
 }
 
 .fig-img {
@@ -598,7 +617,7 @@
   margin-bottom: 0.5rem;
 }
 
-/* PILLARS STRIP */
+/* --- PILLARS STRIP --- */
 .pillars {
   background: var(--color-surface, #ffffff);
   border-bottom: 1px solid var(--color-border, #cbd5e1);
@@ -625,7 +644,7 @@
   gap: 0.85rem;
   position: relative;
   overflow: hidden;
-  transition: box-shadow var(--tr, 200ms);
+  transition: box-shadow var(--tr, 200ms ease-out);
 }
 
 .pillar::before {
@@ -644,7 +663,7 @@
 .pillar.p4::before { background: var(--color-danger, #dc2626); }
 
 .pillar:hover {
-  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  box-shadow: var(--shadow-card-hover, 0 4px 16px rgba(0,0,0,0.08));
 }
 
 .pillar-icon {

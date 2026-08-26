@@ -1,0 +1,87 @@
+/* ============================================================
+   MDX ATOMIC COMPONENT: TIMELINE & ALGORITHMS (mdx-timeline-steps.css)
+   Step-by-Step Clinical Decision Flow & Numbered Badges
+   ============================================================ */
+
+.timeline-container,
+.algorithm-container,
+.mdx-steps-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4, 1rem);
+  margin-bottom: var(--space-4, 1rem);
+}
+
+.timeline-step-card,
+.algo-step,
+.mdx-step-card {
+  background: var(--color-surface-2, #f8fafc);
+  border: 1px solid var(--color-border, #cbd5e1);
+  border-radius: var(--radius-md, 14px);
+  padding: 1.15rem;
+  display: flex;
+  gap: var(--space-4, 1rem);
+  align-items: flex-start;
+  transition: transform var(--tr, 200ms ease-out), border-color var(--tr, 200ms ease-out);
+}
+
+.timeline-step-card:hover,
+.algo-step:hover,
+.mdx-step-card:hover {
+  transform: translateX(4px);
+  border-color: var(--color-primary-border);
+}
+
+.timeline-badge,
+.algo-badge,
+.mdx-step-badge {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-md, 12px);
+  background: var(--color-primary, #0284c7);
+  color: var(--color-text-inverse, #ffffff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-weight: 800;
+  font-size: var(--text-sm, 0.9rem);
+  flex-shrink: 0;
+  box-shadow: 0 3px 8px var(--color-primary-shadow);
+}
+
+.timeline-badge.step-1 { background: var(--color-primary, #0284c7); }
+.timeline-badge.step-2 { background: var(--color-warning, #d97706); }
+.timeline-badge.step-3 { background: var(--color-danger, #dc2626); }
+.timeline-badge.step-4 { background: var(--color-purple, #7c3aed); }
+
+.timeline-content,
+.algo-content,
+.mdx-step-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1, 0.35rem);
+}
+
+.timeline-content h4,
+.algo-content h4,
+.mdx-step-content h4 {
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-weight: 800;
+  font-size: var(--text-sm, 0.9rem);
+  color: var(--color-text, #0f172a);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0;
+}
+
+.timeline-content p,
+.algo-content p,
+.mdx-step-content p {
+  font-size: var(--text-xs, 0.82rem);
+  color: var(--color-text-muted, #475569);
+  line-height: 1.55;
+  margin: 0;
+}

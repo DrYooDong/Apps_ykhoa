@@ -1,0 +1,74 @@
+/* ============================================================
+   MDX ATOMIC COMPONENT: MATRIX BENTO GRID (mdx-matrix-bento.css)
+   Multi-Column Bento Grid & Color-Coded Accent Cards
+   ============================================================ */
+
+.matrix-grid,
+.mdx-bento-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+  gap: var(--space-4, 1rem);
+  margin-bottom: var(--space-4, 1rem);
+}
+
+.matrix-card,
+.mdx-bento-card {
+  background: var(--color-surface-2, #f8fafc);
+  border: 1px solid var(--color-border, #cbd5e1);
+  border-radius: var(--radius-md, 14px);
+  padding: 1.15rem;
+  transition: transform var(--tr, 200ms ease-out), box-shadow var(--tr, 200ms ease-out), border-color var(--tr, 200ms ease-out);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2, 0.5rem);
+  position: relative;
+  overflow: hidden;
+}
+
+.matrix-card:hover,
+.mdx-bento-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-primary-border);
+  box-shadow: var(--shadow-card-hover, 0 6px 18px rgba(0,0,0,0.06));
+}
+
+.matrix-card::before,
+.mdx-bento-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--color-primary, #0284c7);
+}
+
+/* Color variations */
+.matrix-card.card-red::before    { background: var(--color-danger, #dc2626); }
+.matrix-card.card-orange::before { background: var(--color-warning, #d97706); }
+.matrix-card.card-green::before  { background: var(--color-success, #059669); }
+.matrix-card.card-teal::before   { background: var(--color-teal, #0d9488); }
+.matrix-card.card-purple::before { background: var(--color-purple, #7c3aed); }
+
+.matrix-card-hdr {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2, 0.5rem);
+}
+
+.matrix-card-title {
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-weight: 800;
+  font-size: var(--text-sm, 0.88rem);
+  color: var(--color-text, #0f172a);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2, 0.5rem);
+}
+
+.matrix-card-desc {
+  font-size: var(--text-xs, 0.82rem);
+  color: var(--color-text-muted, #475569);
+  line-height: 1.55;
+}

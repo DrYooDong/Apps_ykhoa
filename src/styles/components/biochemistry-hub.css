@@ -543,7 +543,7 @@
   cursor: pointer;
   padding: 0.5rem;
   border-radius: 6px;
-  transition: all 0.2s;
+  transition: background var(--tr-fast, 150ms ease-out), color var(--tr-fast, 150ms ease-out);
 }
 
 .modal-close-btn:hover {
@@ -588,7 +588,7 @@
 }
 
 .pearl-list li {
-  color: #b45309;
+  color: var(--color-warning, #b45309);
 }
 
 [data-theme="dark"] .pearl-list li {
@@ -606,7 +606,56 @@
 }
 
 /* ============================================================
-   7. RESPONSIVE OPTIMIZATION
+   7. MDX BIOCHEMISTRY COMPONENTS & ALERTS (<BiochemAlert />)
+   ============================================================ */
+.biochem-alert {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-md, 12px);
+  margin: 1.25rem 0;
+  font-size: 0.86rem;
+  line-height: 1.6;
+}
+
+.biochem-alert-pathway {
+  background: var(--color-primary-hl, #eff6ff);
+  border: 1px solid var(--color-primary-border);
+  border-left: 4px solid var(--color-primary, #0284c7);
+  color: var(--color-text, #0f172a);
+}
+
+.biochem-alert-clinical {
+  background: var(--color-teal-hl, rgba(13, 148, 136, 0.08));
+  border: 1px solid var(--color-teal-border, rgba(13, 148, 136, 0.3));
+  border-left: 4px solid var(--color-teal, #0d9488);
+  color: var(--color-text, #0f172a);
+}
+
+.biochem-alert-enzyme {
+  background: var(--color-purple-hl, rgba(124, 58, 237, 0.08));
+  border: 1px solid var(--color-purple-border, rgba(124, 58, 237, 0.3));
+  border-left: 4px solid var(--color-purple, #7c3aed);
+  color: var(--color-text, #0f172a);
+}
+
+.enzyme-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.18rem 0.55rem;
+  border-radius: 6px;
+  background: var(--color-purple-hl, rgba(124, 58, 237, 0.1));
+  color: var(--color-purple, #7c3aed);
+  border: 1px solid var(--color-purple-border, rgba(124, 58, 237, 0.25));
+  font-family: var(--font-mono, monospace);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+/* ============================================================
+   8. RESPONSIVE OPTIMIZATION
    ============================================================ */
 @media (max-width: 768px) {
   .biochem-hero {

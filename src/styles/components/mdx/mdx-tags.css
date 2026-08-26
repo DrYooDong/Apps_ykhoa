@@ -1,0 +1,61 @@
+/* ============================================================
+   MDX ATOMIC COMPONENT: RX & CLINICAL TAGS (mdx-tags.css)
+   Medication Badges, Drug Status Pills & Enzyme Labels
+   ============================================================ */
+
+.rx-tag,
+.mdx-tag {
+  display: inline-block;
+  background: var(--color-surface-2, #f8fafc);
+  color: var(--color-text-muted, #475569);
+  font-size: var(--text-xs, 0.75rem);
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-xs, 6px);
+  border: 1px solid var(--color-border, #cbd5e1);
+  margin: 0.15rem 0.1rem;
+}
+
+.rx-tag.preferred,
+.rx-tag.highlight {
+  background: var(--color-primary-hl, rgba(2, 132, 199, 0.1));
+  color: var(--color-primary, #0284c7);
+  border-color: var(--color-primary-border);
+  font-weight: 600;
+}
+
+.rx-tag.alert {
+  background: var(--color-danger-hl, rgba(220, 38, 38, 0.1));
+  color: var(--color-danger, #dc2626);
+  border-color: var(--color-danger-border);
+  font-weight: 600;
+}
+
+.rx-tag.warn {
+  background: var(--color-warning-hl, rgba(217, 119, 6, 0.1));
+  color: var(--color-warning, #d97706);
+  border-color: var(--color-warning-border);
+  font-weight: 600;
+}
+
+.rx-tag.success {
+  background: var(--color-success-hl, rgba(5, 150, 105, 0.1));
+  color: var(--color-success, #059669);
+  border-color: var(--color-success-border);
+  font-weight: 600;
+}
+
+/* Enzyme Tag */
+.enzyme-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.18rem 0.55rem;
+  border-radius: var(--radius-xs, 6px);
+  background: var(--color-purple-hl, rgba(124, 58, 237, 0.1));
+  color: var(--color-purple, #7c3aed);
+  border: 1px solid var(--color-purple-border, rgba(124, 58, 237, 0.25));
+  font-family: var(--font-mono, monospace);
+  font-size: var(--text-xs, 0.78rem);
+  font-weight: 700;
+}
