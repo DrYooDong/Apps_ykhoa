@@ -1681,5 +1681,20 @@
     </div>
 
     <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('a[href*="pathophysiology-cases/"]').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    const href = link.getAttribute('href');
+                    if (href && href.includes('pathophysiology-cases/')) {
+                        e.preventDefault();
+                        const slug = href.split('pathophysiology-cases/')[1].replace('.html', '').replace('.mdx', '');
+                        window.location.href = `../../../index.html#/basic-medical/co-che-benh-sinh/${slug}`;
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>

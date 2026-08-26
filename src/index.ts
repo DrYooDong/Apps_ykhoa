@@ -471,16 +471,31 @@ function initializeRoutes(): void {
       initEpidemiologyView();
     });
 
-    // === EPIDEMIOLOGY TOOLS SUB-ROUTES ===
-    router.register(`/${prefix}/epidemiology/:tool`, 'Công Cụ Dịch Tễ Học', (params) => {
-      const tool = (params.tool || 'matrix-solver') as any;
-      mountToApp(renderEpidemiologyToolView(tool));
-      initEpidemiologyToolsView(tool);
+    // === EPIDEMIOLOGY TOOLS & ARTICLES SUB-ROUTES ===
+    const EPI_KNOWN_TOOLS = ['matrix-solver', 'epicurve', 'study-designs', 'bradford-hill'];
+
+    router.register(`/${prefix}/epidemiology/:toolOrSlug`, 'Dịch Tễ Học Y Khoa', (params) => {
+      const toolOrSlug = params.toolOrSlug || 'matrix-solver';
+      if (EPI_KNOWN_TOOLS.includes(toolOrSlug)) {
+        document.title = 'Công Cụ Dịch Tễ Học – CliniPortal';
+        mountToApp(renderEpidemiologyToolView(toolOrSlug as any));
+        initEpidemiologyToolsView(toolOrSlug as any);
+      } else {
+        document.title = 'Bài Giảng Dịch Tễ Học – CliniPortal';
+        mountToApp(renderPhysioHtmlReader('epidemiology', toolOrSlug));
+      }
     });
-    router.register(`/${prefix}/dich-te-hoc/:tool`, 'Công Cụ Dịch Tễ Học', (params) => {
-      const tool = (params.tool || 'matrix-solver') as any;
-      mountToApp(renderEpidemiologyToolView(tool));
-      initEpidemiologyToolsView(tool);
+
+    router.register(`/${prefix}/dich-te-hoc/:toolOrSlug`, 'Dịch Tễ Học Y Khoa', (params) => {
+      const toolOrSlug = params.toolOrSlug || 'matrix-solver';
+      if (EPI_KNOWN_TOOLS.includes(toolOrSlug)) {
+        document.title = 'Công Cụ Dịch Tễ Học – CliniPortal';
+        mountToApp(renderEpidemiologyToolView(toolOrSlug as any));
+        initEpidemiologyToolsView(toolOrSlug as any);
+      } else {
+        document.title = 'Bài Giảng Dịch Tễ Học – CliniPortal';
+        mountToApp(renderPhysioHtmlReader('epidemiology', toolOrSlug));
+      }
     });
 
     router.register(`/${prefix}/formula-vault`, 'Kho Công thức Sinh lý', () => {

@@ -1387,5 +1387,24 @@
     </div>
 
     <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.specialty-card').forEach(card => {
+                card.addEventListener('click', (e) => {
+                    const href = card.getAttribute('href');
+                    if (href && href.includes('physiology/')) {
+                        e.preventDefault();
+                        const parts = href.split('physiology/')[1].split('/');
+                        if (parts.length >= 2) {
+                            const part = parts[0];
+                            const slug = parts[1].replace('.html', '').replace('.mdx', '');
+                            window.location.href = `../../../index.html#/basic-medical/physiology/${part}/${slug}`;
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>

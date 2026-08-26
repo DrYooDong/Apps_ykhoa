@@ -210,16 +210,24 @@ async function fetchAndHydratePhysioArticle(
 
   if (isCaseStudy) {
     candidatePaths = [
+      `/src/content/basic-medical/pathophysiology-cases/${baseSlugName}.mdx`,
+      `src/content/basic-medical/pathophysiology-cases/${baseSlugName}.mdx`,
+      `./src/content/basic-medical/pathophysiology-cases/${baseSlugName}.mdx`,
+      `../src/content/basic-medical/pathophysiology-cases/${baseSlugName}.mdx`,
       `/src/content/basic-medical/pathophysiology-cases/${cleanSlug}`,
       `src/content/basic-medical/pathophysiology-cases/${cleanSlug}`,
       `pages/Sinh lý - Sinh lý bệnh/SLB_CCBS/${cleanSlug}`
     ];
   } else if (isBiochem) {
     candidatePaths = [
+      `/src/content/basic-medical/biochemistry/${part}/${baseSlugName}.mdx`,
+      `src/content/basic-medical/biochemistry/${part}/${baseSlugName}.mdx`,
+      `./src/content/basic-medical/biochemistry/${part}/${baseSlugName}.mdx`,
+      `../src/content/basic-medical/biochemistry/${part}/${baseSlugName}.mdx`,
       `/src/content/basic-medical/biochemistry/${part}/${cleanSlug}`,
       `src/content/basic-medical/biochemistry/${part}/${cleanSlug}`,
-      `/src/content/pathophysiology/biochemistry/${part}/${cleanSlug}`,
-      `src/content/pathophysiology/biochemistry/${part}/${cleanSlug}`
+      `/src/content/pathophysiology/biochemistry/${part}/${baseSlugName}.mdx`,
+      `src/content/pathophysiology/biochemistry/${part}/${baseSlugName}.mdx`
     ];
   } else if (isEpi) {
     candidatePaths = [

@@ -19,7 +19,7 @@ export const RECOMMENDATION_CATALOG: RecommendationCatalogItem[] = [
     specialty: "infect",
     specName: "Truyền Nhiễm / Hồi Sức",
     desc: "Tối ưu hóa liều nạp, truyền kéo dài Beta-lactam & hiệu chỉnh liều theo PK/PD.",
-    url: "src/content/ebm/guidelines/kho-guidelines/2026-icu-khang-sinh-cho-bn-nang.html"
+    url: "#/ebm/kho-guidelines/2026-icu-khang-sinh-cho-bn-nang"
   },
   {
     id: "rec2",

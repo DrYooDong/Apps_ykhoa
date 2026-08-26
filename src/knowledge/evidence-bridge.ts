@@ -24,7 +24,7 @@ export const EVIDENCE_DATABASE: Record<string, EvidenceItem> = {
     badgeClass: "byt-2026",
     title: "Hướng Dẫn Lâm Sàng Bộ Y Tế Việt Nam",
     body: "Khuyến cáo chính thức của Bộ Y tế Việt Nam về chẩn đoán và điều trị bệnh lý tại Việt Nam.",
-    linkUrl: "src/content/ebm/guidelines/kho-guidelines/2026-byt-copd.html"
+    linkUrl: "#/ebm/kho-guidelines/2026-byt-copd"
   },
   "esc-2026": {
     badgeText: "🇪🇺 ESC 2026 Update",
