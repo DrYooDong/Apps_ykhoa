@@ -169,20 +169,20 @@ async function fetchAndHydrateGuideline(cleanSlug: string, baseSlugName: string)
   if (!mountEl) return;
 
   const candidatePaths = [
-    `/src/content/ebm/guidelines/kho-guidelines/${baseSlugName}.mdx`,
-    `src/content/ebm/guidelines/kho-guidelines/${baseSlugName}.mdx`,
-    `./src/content/ebm/guidelines/kho-guidelines/${baseSlugName}.mdx`,
-    `../src/content/ebm/guidelines/kho-guidelines/${baseSlugName}.mdx`,
-    `/dist/src/content/ebm/guidelines/kho-guidelines/${baseSlugName}.mdx`,
-    `dist/src/content/ebm/guidelines/kho-guidelines/${baseSlugName}.mdx`,
-    `kho-guidelines/${baseSlugName}.mdx`,
-    `/kho-guidelines/${baseSlugName}.mdx`,
     `/src/content/ebm/guidelines/kho-guidelines/${baseSlugName}.html`,
     `src/content/ebm/guidelines/kho-guidelines/${baseSlugName}.html`,
     `./src/content/ebm/guidelines/kho-guidelines/${baseSlugName}.html`,
     `../src/content/ebm/guidelines/kho-guidelines/${baseSlugName}.html`,
+    `/dist/src/content/ebm/guidelines/kho-guidelines/${baseSlugName}.html`,
+    `dist/src/content/ebm/guidelines/kho-guidelines/${baseSlugName}.html`,
     `kho-guidelines/${baseSlugName}.html`,
-    `/kho-guidelines/${baseSlugName}.html`
+    `/kho-guidelines/${baseSlugName}.html`,
+    `/src/content/ebm/guidelines/kho-guidelines/${baseSlugName}.mdx`,
+    `src/content/ebm/guidelines/kho-guidelines/${baseSlugName}.mdx`,
+    `./src/content/ebm/guidelines/kho-guidelines/${baseSlugName}.mdx`,
+    `../src/content/ebm/guidelines/kho-guidelines/${baseSlugName}.mdx`,
+    `kho-guidelines/${baseSlugName}.mdx`,
+    `/kho-guidelines/${baseSlugName}.mdx`
   ];
 
   let htmlText = '';
