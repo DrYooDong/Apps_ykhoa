@@ -10,11 +10,12 @@
  */
 
 import { CliniPortalThemeManager } from '../../../main';
+import { cliniMdxEngine } from '../../../core/mdx-engine';
 
 export function renderGuidelineReader(slug: string): string {
-  // Normalize slug
-  const cleanSlug = slug.endsWith('.html') ? slug : `${slug}.html`;
-  const baseSlugName = cleanSlug.replace(/\.html$/i, '');
+  // Normalize slug & base name cleanly
+  const baseSlugName = slug.replace(/\.(html|mdx)$/i, '');
+  const cleanSlug = `${baseSlugName}.mdx`;
 
   // Retrieve saved preferences from localStorage
   const savedWidthMode = typeof localStorage !== 'undefined' ? (localStorage.getItem('cp_reader_width') || 'wide') : 'wide';
@@ -168,23 +169,38 @@ async function fetchAndHydrateGuideline(cleanSlug: string, baseSlugName: string)
   if (!mountEl) return;
 
   const candidatePaths = [
-    `/src/content/ebm/guidelines/kho-guidelines/${cleanSlug}`,
-    `src/content/ebm/guidelines/kho-guidelines/${cleanSlug}`,
-    `./src/content/ebm/guidelines/kho-guidelines/${cleanSlug}`,
-    `../src/content/ebm/guidelines/kho-guidelines/${cleanSlug}`,
-    `/dist/src/content/ebm/guidelines/kho-guidelines/${cleanSlug}`,
-    `dist/src/content/ebm/guidelines/kho-guidelines/${cleanSlug}`,
-    `kho-guidelines/${cleanSlug}`,
-    `/kho-guidelines/${cleanSlug}`
+    `/src/content/ebm/guidelines/kho-guidelines/${baseSlugName}.mdx`,
+    `src/content/ebm/guidelines/kho-guidelines/${baseSlugName}.mdx`,
+    `./src/content/ebm/guidelines/kho-guidelines/${baseSlugName}.mdx`,
+    `../src/content/ebm/guidelines/kho-guidelines/${baseSlugName}.mdx`,
+    `/dist/src/content/ebm/guidelines/kho-guidelines/${baseSlugName}.mdx`,
+    `dist/src/content/ebm/guidelines/kho-guidelines/${baseSlugName}.mdx`,
+    `kho-guidelines/${baseSlugName}.mdx`,
+    `/kho-guidelines/${baseSlugName}.mdx`,
+    `/src/content/ebm/guidelines/kho-guidelines/${baseSlugName}.html`,
+    `src/content/ebm/guidelines/kho-guidelines/${baseSlugName}.html`,
+    `./src/content/ebm/guidelines/kho-guidelines/${baseSlugName}.html`,
+    `../src/content/ebm/guidelines/kho-guidelines/${baseSlugName}.html`,
+    `kho-guidelines/${baseSlugName}.html`,
+    `/kho-guidelines/${baseSlugName}.html`
   ];
 
   let htmlText = '';
+  let isMdx = false;
 
   for (const path of candidatePaths) {
     try {
-      const resp = await fetch(path);
+      const isMdxPath = path.includes('.mdx') || path.includes('.md');
+      const fetchUrl = isMdxPath && !path.includes('?raw') ? `${path}?raw` : path;
+      let resp = await fetch(fetchUrl);
+      if (!resp.ok && fetchUrl !== path) {
+        resp = await fetch(path);
+      }
       if (resp.ok) {
         htmlText = await resp.text();
+        if (isMdxPath) {
+          isMdx = true;
+        }
         break;
       }
     } catch {
@@ -198,7 +214,7 @@ async function fetchAndHydrateGuideline(cleanSlug: string, baseSlugName: string)
         <i class="fa-solid fa-triangle-exclamation" style="font-size: 3.2rem; color: #dc2626; margin-bottom: 1.25rem;"></i>
         <h3 style="font-size: 1.3rem; font-weight: 800; color: #991b1b; margin-bottom: 0.75rem;">Không tìm thấy bản tóm tắt Guideline</h3>
         <p style="color: #64748b; font-size: 0.92rem; line-height: 1.6; margin-bottom: 1.5rem;">
-          Không thể tải tệp <code>${cleanSlug}</code>. Vui lòng kiểm tra lại đường dẫn hoặc quay lại danh sách Kho Guidelines.
+          Không thể tải tệp <code>${baseSlugName}.mdx</code>. Vui lòng kiểm tra lại đường dẫn hoặc quay lại danh sách Kho Guidelines.
         </p>
         <a href="#/ebm/kho-guidelines" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 8px; padding: 0.65rem 1.35rem; background: var(--color-primary, #0284c7); color: #fff; border-radius: 8px; text-decoration: none; font-weight: 800;">
           <i class="fa-solid fa-arrow-left"></i> Quay lại Kho Guidelines
@@ -208,7 +224,55 @@ async function fetchAndHydrateGuideline(cleanSlug: string, baseSlugName: string)
     return;
   }
 
-  // Parse HTML
+  // Handle Native MDX Rendering for Guidelines
+  if (isMdx) {
+    const parsed = cliniMdxEngine.parse(htmlText);
+    const cleanTitle = parsed.title;
+    const crumbEl = document.getElementById('reader-breadcrumb-title');
+    if (crumbEl) crumbEl.textContent = cleanTitle;
+    document.title = `${cleanTitle} – CliniPortal`;
+
+    const frontmatter = parsed.frontmatter || {};
+    const org = frontmatter.organization || 'EBM Taskforce';
+    const year = frontmatter.year || '2026';
+    const cor = frontmatter.cor || '';
+    const loe = frontmatter.loe || '';
+
+    mountEl.innerHTML = `
+      <div class="reading-progress-bar" id="reading-progress-bar"></div>
+      <div class="guideline-article-container" style="max-width: 1280px; margin: 0 auto; padding: 1.5rem 1.25rem;">
+        
+        <!-- LUXURY EBM HERO BANNER -->
+        <div style="margin-bottom: 2rem; background: linear-gradient(135deg, #78350f 0%, #0f172a 50%, #92400e 100%); color: #ffffff; padding: 2.5rem 2rem; border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.12); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2); position: relative; overflow: hidden;">
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.75rem;">
+            <span class="badge" style="background: rgba(251, 191, 36, 0.18); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.35); font-weight: 700; font-size: 0.8rem; padding: 0.35rem 0.85rem; border-radius: 999px; text-transform: uppercase;">
+              <i class="fa-solid fa-scale-balanced"></i> GUIDELINE EBM • ${org} (${year})
+            </span>
+            <div style="display: flex; gap: 0.4rem;">
+              ${cor ? `<span style="font-size: 0.75rem; background: rgba(16,185,129,0.2); border: 1px solid rgba(16,185,129,0.4); color: #34d399; padding: 0.2rem 0.55rem; border-radius: 6px; font-weight: 800;">COR ${cor}</span>` : ''}
+              ${loe ? `<span style="font-size: 0.75rem; background: rgba(2,132,199,0.2); border: 1px solid rgba(2,132,199,0.4); color: #38bdf8; padding: 0.2rem 0.55rem; border-radius: 6px; font-weight: 800;">LOE ${loe}</span>` : ''}
+            </div>
+          </div>
+          
+          <h1 style="font-size: 2.1rem; font-weight: 800; color: #ffffff; margin: 0.5rem 0; line-height: 1.25;">
+            ${parsed.title}
+          </h1>
+          
+          <p style="margin: 0.5rem 0 1rem 0; font-size: 0.98rem; opacity: 0.92; line-height: 1.65; max-width: 960px;">
+            ${parsed.description || ''}
+          </p>
+        </div>
+
+        <!-- RENDERED CONTENT -->
+        <div class="mdx-rendered-article">
+          ${parsed.html}
+        </div>
+      </div>
+    `;
+    return;
+  }
+
+  // Parse HTML (Legacy Support)
   const parser = new DOMParser();
   const doc = parser.parseFromString(htmlText, 'text/html');
 
