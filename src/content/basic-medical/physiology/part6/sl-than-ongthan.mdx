@@ -1,0 +1,158 @@
+---
+title: "Sinh Lý Tái Hấp Thu & Bài Tiết Tại Ống Thận"
+slug: "sl-than-ongthan"
+code: "PHYS-REN-02"
+part: "part6"
+system: "renal"
+systemName: "Sinh Lý Thận & Thể Dịch"
+guytonChapter: "Guyton 14th - Chapter 28: Tubular Reabsorption and Secretion"
+ganongChapter: "Ganong 26th - Chapter 37: Renal Function & Micturition"
+category: "physiology"
+status: "published"
+version: "2.0.0"
+updatedAt: "2026-08-26"
+description: "Sinh lý học Ống thận: Cơ chế phân tử tái hấp thu và bài tiết tại 4 phân đoạn (Ống lượn gần SGLT2/NHE3, Nhánh lên quai Henle NKCC2, Ống lượn xa NCC/TRPV5, Ống góp ENaC/Aquaporin-2), vị trí và cơ chế tác dụng của 4 nhóm thuốc lợi tiểu kinh điển (Thuốc ức chế CA, Lợi tiểu quai Furosemide, Thiazide, Kháng Aldosterone Spironolactone) và các hội chứng di truyền Fanconi, Bartter, Gitelman & Liddle."
+tags:
+  - "sinh-ly"
+  - "ong-than"
+  - "sglt2"
+  - "nkcc2"
+  - "enac"
+  - "thuoc-loi-tieu"
+clinicalPearls:
+  - "Khác biệt sống còn về Canxi giữa 2 nhóm thuốc lợi tiểu: Lợi tiểu quai (Furosemide chẹn NKCC2) làm THẢI CANXI RA NƯỚC TIỂU (Loops Lose Calcium), dùng cấp cứu Tăng calci máu cấp. Ngược lại, Lợi tiểu Thiazide (Hydrochlorothiazide chẹn NCC) làm TĂNG TÁI HẤP THU CANXI VÀO MÁU, thích hợp nhất cho bệnh nhân Tăng huyết áp có Loãng xương hoặc Sỏi thận calci tái phát."
+  - "Thuốc ức chế kênh SGLT2 (Dapagliflozin, Empagliflozin) tại ống lượn gần ngăn tái hấp thu Glucose và Natri, vừa hạ đường huyết qua đường tiểu, vừa phục hồi phản xạ Macula Densa giảm áp lực lọc cầu thận, mang lại hiệu quả bảo vệ tim mạch và làm chậm tiến triển suy thận mạn vượt trội (KDIGO Guideline)."
+  - "Tế bào chính ống góp (Principal cells) chịu sự điều khiển của Aldosterone (kích hoạt kênh ENaC kéo Na+ vào và đẩy K+ ra) và ADH (gắn V2 mở kênh Aquaporin-2 hút nước tự do). Thuốc Spironolactone chẹn thụ thể Aldosterone giúp hạ huyết áp và giữ Kali máu không bị mất."
+sections:
+  - id: "sec-1"
+    number: 1
+    title: "Ống Lượn Gần (PCT) & Kênh SGLT2"
+    icon: "fa-cubes"
+  - id: "sec-2"
+    number: 2
+    title: "Quai Henle & Kênh NKCC2 (Lợi Tiểu Quai)"
+    icon: "fa-arrows-split-up-and-left"
+  - id: "sec-3"
+    number: 3
+    title: "Ống Lượn Xa (DCT) & Kênh NCC (Thiazide)"
+    icon: "fa-filter"
+  - id: "sec-4"
+    number: 4
+    title: "Ống Góp (CD): Kênh ENaC & Aquaporin-2"
+    icon: "fa-faucet-drip"
+  - id: "sec-5"
+    number: 5
+    title: "Bảng Đối So Sánh Thuốc Lợi Tiểu EBM"
+    icon: "fa-table-cells"
+  - id: "sec-6"
+    number: 6
+    title: "Các Hội Chứng Di Truyền Ống Thận"
+    icon: "fa-dna"
+  - id: "sec-7"
+    number: 7
+    title: "Tài Liệu Tham Khảo EBM"
+    icon: "fa-book-medical"
+---
+
+import { PhysioAlert, PhysioQuickNav, PhysioFeedbackLoop } from '../components'
+
+# 🔬 SINH LÝ TÁI HẤP THU & BÀI TIẾT TẠI ỐNG THẬN
+
+<PhysioQuickNav />
+
+---
+
+## 1. Ống Lượn Gần (PCT): "Công Xưởng Tái Hấp Thu Khổng Lồ" {#sec-1}
+
+Ống lượn gần đảm nhận tái hấp thu phần lớn lượng dịch lọc mà không làm thay đổi áp suất thẩm thấu (Tái hấp thu Đẳng trương):
+- **Tái hấp thu $65\%$ $Na^+, Cl^-$, Nước**, **$85\%$ $HCO_3^-$**, **$100\%$ Glucose** và **$100\%$ Acid amin**.
+
+```
+[LÒNG ỐNG LƯỢN GẦN]                          [TẾ BÀO BIỂU MÔ PCT]                      [MAO MẠCH QUANH ỐNG THẬN]
+  Glucose ──────────► [KÊNH SGLT2 (90%)] ──► Glucose ───────────► [KÊNH GLUT2] ──────► 100% Glucose (Về máu)
+  Acid Amin ────────► [Đồng Vận Na+]     ──► Acid Amin ─────────► [Khuếch tán]  ──────► 100% Acid Amin (Về máu)
+  Na+ ──────────────► [Bơm NHE3 (Đổi H+)] ──► Na+ ───────────────► [Bơm Na+/K+] ──────► 65% Na+ (Về máu)
+  Lọc HCO3- + H+ ───► H2CO3 ──(CA-IV)──► CO2 + H2O khuếch tán vào ──(CA-II)──► H+ + HCO3- ──► 85% HCO3- (Về máu)
+```
+
+<PhysioAlert type="pearl" title="Ngưỡng Thận Của Glucose (Renal Threshold for Glucose)">
+  Kênh **SGLT2** có giới hạn vận chuyển tối đa ($T_m \approx 375\text{ mg/phút}$). Ở người bình thường (Đường huyết $< 180\text{ mg/dL}$), toàn bộ Glucose lọc qua cầu thận được tái hấp thu $100\%$. **Khi đường huyết vượt quá $180 – 200\text{ mg/dL}$**, kênh SGLT2 bị bão hòa, lượng đường dư thừa bị thải vào nước tiểu gây ra **Đái tháo đường (Glucosuria) và Lợi niệu thẩm thấu (Tiểu nhiều, mất nước)**.
+</PhysioAlert>
+
+---
+
+## 2. Quai Henle: Tái Hấp Thu $NaCl$ & Kênh NKCC2 {#sec-2}
+
+1. **Nhánh Xuống Mỏng Quai Henle (Descending Limb)**:
+   - **Rất thấm Nước** (qua kênh Aquaporin-1), **HOÀN TOÀN KHÔNG THẤM $NaCl$**.
+   - Nước bị hút ra dịch kẽ tủy ưu trương $\rightarrow$ Dịch lọc bị cô đặc dần từ $300\text{ mOsm/kg}$ lên tới **$1.200\text{ mOsm/kg}$ tại chóp quai Henle**.
+2. **Nhánh Lên Dày Quai Henle (TAL - Thick Ascending Limb)**:
+   - **HOÀN TOÀN KHÔNG THẤM NƯỚC**, tái hấp thu tích cực **$25\%$ $Na^+, K^+, 2Cl^-$ qua kênh NKCC2**.
+   - Kênh $K^+$ màng đỉnh (ROMK) bơm $K^+$ trở lại lòng ống tạo điện tích dương ($+8\text{ mV}$), đẩy các cation hóa trị hai **$Ca^{2+}$ và $Mg^{2+}$ tái hấp thu qua khe gian bào**.
+   - Dịch lọc ra khỏi nhánh lên bị pha loãng chỉ còn **$100\text{ mOsm/kg}$ (Đoạn pha loãng)**.
+
+```
+[KÊNH NKCC2 TẠI NHÁNH LÊN DÀY QUAI HENLE]
+  • Kéo 1 Na+ + 1 K+ + 2 Cl- từ lòng ống vào tế bào
+  • BỊ ỨC CHẾ ĐẶC HIỆU BỞI: THUỐC LỢI TIỂU QUAI (FUROSEMIDE)
+  ──► Làm mất điện thế dương lòng ống ──► TĂNG THẢI Na+, Cl-, NƯỚC, Ca2+ VÀ Mg2+!
+```
+
+---
+
+## 3. Ống Lượn Xa (DCT): Kênh NCC & Điều Hòa Canxi {#sec-3}
+
+- Tái hấp thu **$5\%$ $NaCl$** còn lại qua **Kênh đồng vận chuyển $Na^+-Cl^-$ (NCC)** tại màng đỉnh (hoàn toàn không thấm nước).
+- **Thuốc Lợi Tiểu Thiazide (Hydrochlorothiazide, Indapamide)**: Ức chế đặc hiệu kênh **NCC**.
+- **Điều hòa Canxi**: Hormone cận giáp **PTH** kích hoạt kênh **TRPV5** tại màng đỉnh, tăng cường tái hấp thu $Ca^{2+}$ vào máu.
+
+---
+
+## 4. Ống Góp (Collecting Duct): Tế Bào Chính & Tế Bào Kẽ $\alpha$ {#sec-4}
+
+Ống góp là nơi tinh chỉnh cuối cùng thành phần nước tiểu dưới sự chi phối của Hormone:
+
+```
+[TẾ BÀO CHÍNH (PRINCIPAL CELLS)]
+  │
+  ├──► 1. ALDOSTERONE: Kích hoạt KÊNH ENaC kéo Na+ vào và KÊNH ROMK đẩy K+ ra nước tiểu
+  │       • Thuốc Lợi tiểu giữ Kali: Spironolactone (Kháng Aldosterone), Amiloride (Chẹn ENaC)
+  │
+  └──► 2. ADH (VASOPRESSIN): Gắn thụ thể V2 ──► Gắn các KÊNH AQUAPORIN-2 lên màng đỉnh
+          • TÁI HẤP THU NƯỚC TỰ DO VÀO MÁU (Cô đặc nước tiểu tối đa)
+
+[TẾ BÀO KẼ ALPHA (INTERCALATED α CELLS)]
+  │
+  └──► BƠM PROTON H+-ATPase: Bơm chủ động H+ vào nước tiểu để đào thải acid và tái hấp thu HCO3- mới
+```
+
+---
+
+## 5. Bảng Tổng Hợp 4 Nhóm Thuốc Lợi Tiểu Kinh Điển EBM {#sec-5}
+
+| Nhóm Thuốc Lợi Tiểu | Vị trí tác dụng | Kênh bị ức chế | Tác động lên Điện giải | Ứng dụng lâm sàng chính |
+|---|---|---|---|---|
+| **Lợi Tiểu Quai** *(Furosemide, Bumetanide)* | **Nhánh lên dày quai Henle (TAL)** | **NKCC2** | $\downarrow Na^+, \downarrow K^+, \downarrow Cl^-$, **$\downarrow Ca^{2+}$ (Thải $Ca^{2+}$)**, $\downarrow Mg^{2+}$ | **Phù phổi cấp, Suy tim sung huyết cấp, Cấp cứu Tăng $Ca^{2+}$ máu**. |
+| **Lợi Tiểu Thiazide** *(Hydrochlorothiazide)* | **Ống lượn xa (DCT)** | **NCC** | $\downarrow Na^+, \downarrow K^+, \downarrow Cl^-$, **$\uparrow Ca^{2+}$ (TĂNG TÁI HẤP THU $Ca^{2+}$)** | **Tăng huyết áp đầu tay, Loãng xương, Sỏi thận calci**. |
+| **Kháng Aldosterone** *(Spironolactone, Eplerenone)* | **Tế bào chính Ống góp** | **Thụ thể Mineralocorticoid** | $\downarrow Na^+$, **$\uparrow K^+$ (GIỮ KALI)**, $\uparrow H^+$ | **Suy tim phân suất tống máu giảm (HFrEF), Xơ gan cổ trướng**. |
+| **Ức Chế Men CA** *(Acetazolamide)* | **Ống lượn gần (PCT)** | **Carbonic Anhydrase** | $\downarrow Na^+, \downarrow HCO_3^- \rightarrow$ Nước tiểu kiềm | **Say độ cao cấp (AMS), Tăng nhãn áp Glaucoma**. |
+
+---
+
+## 6. Các Hội Chứng Di Truyền Bệnh Lý Ống Thận {#sec-6}
+
+<PhysioAlert type="danger" title="Phân Biệt 4 Hội Chứng Di Truyền Ống Thận Kinh Điển">
+  1. **Hội chứng Fanconi**: Suy chức năng toàn diện ống lượn gần $\rightarrow$ Mất $HCO_3^-$ (Toan ống thận Type 2), Glucose niệu dù đường huyết bình thường, mất acid amin và phosphate.
+  2. **Hội chứng Bartter**: Đột biến mất chức năng kênh **NKCC2** tại quai Henle $\rightarrow$ Biểu hiện giống hệt bệnh nhân **uống thuốc Furosemide liều cao mạn tính**: Mất $NaCl$, hạ Kali máu, kiềm chuyển hóa, tăng thải calci niệu gây sỏi thận.
+  3. **Hội chứng Gitelman**: Đột biến mất chức năng kênh **NCC** tại ống lượn xa $\rightarrow$ Biểu hiện giống hệt **uống Thiazide mạn tính**: Hạ Kali máu, kiềm chuyển hóa, nhưng **giảm calci niệu (giữ calci)** và hạ Magie máu.
+  4. **Hội chứng Liddle**: Đột biến tăng chức năng kênh **ENaC** tại ống góp $\rightarrow$ Giả cường Aldosterone: **Tăng huyết áp nặng, Hạ Kali máu, Kiềm chuyển hóa, nhưng nồng độ Renin và Aldosterone đều bị ức chế thấp**.
+</PhysioAlert>
+
+---
+
+## 7. Tài Liệu Tham Khảo EBM {#sec-7}
+
+1. **Hall, J. E., & Hall, M. E. (2021)**. *Guyton and Hall Textbook of Medical Physiology* (14th ed.). Philadelphia: Elsevier. Chapter 28: Tubular Reabsorption and Secretion.
+2. **Barrett, K. E. et al. (2019)**. *Ganong's Review of Medical Physiology* (26th ed.). New York: McGraw-Hill. Chapter 37: Renal Function & Micturition.
+3. **Ellison, D. H. (2019)**. *Clinical pharmacology in diuretic use*. Clinical Journal of the American Society of Nephrology, 14(8), 1248-1257.
+4. **Heerspink, H. J. et al. (2020)**. *Dapagliflozin in patients with chronic kidney disease*. New England Journal of Medicine, 383(15), 1436-1446.

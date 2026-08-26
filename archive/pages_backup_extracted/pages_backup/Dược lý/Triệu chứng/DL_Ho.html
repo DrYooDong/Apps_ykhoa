@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lưu đồ dược lý tương tác xử trí Ho Khan & Ho Có Đờm – CliniPortal">
+    <title>Dược lý Xử Trí Ho – CliniPortal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/reset.css">
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/components/header.css">
+    <link rel="stylesheet" href="../../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../css/components/footer.css">
+    <link rel="stylesheet" href="../../../css/components/pharmacology-symptoms.css">
+    <link rel="stylesheet" href="../../../css/components/pharmacology-tools.css">
+    <link rel="stylesheet" href="../../../css/components/pharmacology-global.css">
+    <script src="../../../components/header.js" defer></script>
+    <script src="../../../js/pharmacology-symptoms.js" defer></script>
+    <script src="../../../components/footer.js" defer></script>
+    <script src="../../../js/drug-passport.js" defer></script>
+    <script src="../../../js/emergency-dosing.js" defer></script>
+    <script src="../../../js/cross-links-pharma.js" defer></script>
+</head>
+<body>
+<div id="header-placeholder" data-header-path="../../../components/header.html"></div>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<div class="app-container">
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../duoc-ly.html" class="nav-item active" title="Dược lý">
+              <span class="nav-icon">💊</span>
+              <span class="nav-text">Dược lý</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="main-wrapper flow-page">
+        <clini-breadcrumb items='[{"label": "🏠 Home", "url": "../../../index.html"}, {"label": "Dược lý", "url": "../duoc-ly.html"}, {"label": "Triệu chứng", "url": "#"}, {"label": "Ho khan / Ho có đờm"}]'></clini-breadcrumb>
+
+        <div class="flow-hero">
+            <div class="hero-badge">💊 Dược lý lâm sàng • 2026</div>
+            <h1>Lưu đồ Dược lý Xử trí Ho Cấp Tính & Mạn Tính</h1>
+            <p>Nhấn vào từng nút lưu đồ để tra cứu phác đồ thuốc giảm ho, long đờm và điều trị căn nguyên</p>
+        </div>
+
+        <!-- QUICK ACCESS TOOLBAR -->
+        <div class="subpage-pharma-toolbar">
+            <div class="subpage-toolbar-title">
+                <i class="fa-solid fa-pills"></i> Phân Hệ Dược Lý Lâm Sàng
+            </div>
+            <div class="subpage-toolbar-actions">
+                <a href="../duoc-ly.html" class="subpage-tool-btn" title="Trang tổng Dược lý"><i class="fa-solid fa-house-medical"></i> Trang tổng Dược lý</a>
+                <a href="../../Công cụ/Chung/QuyDoi_LieuTuongDuong.html" class="subpage-tool-btn" title="Bộ quy đổi liều tương đương lâm sàng (Corticoids, Opioids, Statins, PPIs, DOACs, Benzo)"><i class="fa-solid fa-arrows-rotate"></i> Quy đổi liều tương đương</a>
+            </div>
+        </div>
+
+
+        <div class="fc-legend">
+            <div class="fc-legend-item"><div class="fc-legend-dot" style="background:var(--fc-danger)"></div> Khẩn cấp / Ho máu</div>
+            <div class="fc-legend-item"><div class="fc-legend-dot" style="background:var(--fc-teal)"></div> Phân loại tính chất ho</div>
+            <div class="fc-legend-item"><div class="fc-legend-dot" style="background:var(--fc-purple)"></div> Phác đồ thuốc</div>
+            <div class="fc-legend-item" style="font-style:italic;">💡 Nhấn nút để xem chi tiết bên dưới</div>
+        </div>
+
+        <div class="fc-tree">
+            <!-- Row 1: ROOT -->
+            <div class="fc-row">
+                <div class="fc-node nc-root" style="max-width:280px;">
+                    <div class="fc-node-tag">🎯 Khởi đầu</div>
+                    <div class="fc-node-title">TIẾP CẬN BỆNH NHÂN HO</div>
+                    <div class="fc-node-sub">Bước 1: Sàng lọc Dấu hiệu Cảnh báo (Ho ra máu / Khó thở cấp)</div>
+                </div>
+            </div>
+
+            <!-- Arrow -->
+            <div class="fc-arrow-down"><div class="fc-arrow-line"></div><div class="fc-arrow-head"></div></div>
+
+            <!-- Row 2: Phân loại mức độ -->
+            <div class="fc-row">
+                <div class="fc-node nc-danger pulse-danger" id="node-redflag" onclick="selectPath('REDFLAG')">
+                    <div class="fc-node-tag">🚨 Dấu hiệu nguy cơ</div>
+                    <div class="fc-node-title">HO RA MÁU / KHÓ THỞ NẶNG</div>
+                    <div class="fc-node-sub">Nghi Lao phổi, Ung thư phổi, Thuyên tắc phổi, Tật phế quản...</div>
+                </div>
+                <div class="fc-node nc-teal" id="node-routine" onclick="selectPath('ROUTINE')">
+                    <div class="fc-node-tag">🫁 Nội khoa</div>
+                    <div class="fc-node-title">HO KHÔNG CÓ DẤU HIỆU NGUY CƠ</div>
+                    <div class="fc-node-sub">Phân loại Ho khan vs Ho có đờm vs Ho do Dược lý</div>
+                </div>
+            </div>
+
+            <!-- Row 3: Phân loại tính chất (khóa ban đầu) -->
+            <div id="layer-types" class="fc-layer-disabled">
+                <hr class="fc-sep">
+                <div class="fc-row" style="gap:10px;">
+                    <div class="fc-node nc-purple" id="node-dry" onclick="selectCategory('DRY')">
+                        <div class="fc-node-tag">🌵 Ho khan</div>
+                        <div class="fc-node-title">Ho Khan Cấp / Bán cấp</div>
+                    </div>
+                    <div class="fc-node nc-teal" id="node-wet" onclick="selectCategory('WET')">
+                        <div class="fc-node-tag">💧 Ho có đờm</div>
+                        <div class="fc-node-title">Ho Có Đờm / Tăng tiết dịch</div>
+                    </div>
+                    <div class="fc-node nc-warn" id="node-drug_cough" onclick="selectCategory('DRUG_COUGH')">
+                        <div class="fc-node-tag">💊 Do thuốc</div>
+                        <div class="fc-node-title">Ho do Dược lý (Tác dụng phụ ACEi)</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 4: Scenarios (ẩn ban đầu) -->
+            <div id="layer-scenarios" style="display:none;">
+                <hr class="fc-sep">
+                <div class="fc-row" id="row-scenarios"></div>
+            </div>
+        </div>
+
+        <!-- PROTOCOL PANEL -->
+        <div id="proto-panel" style="display:none;"></div>
+    </main>
+</div>
+
+<footer class="global-footer">
+    <div class="footer-copyright"><p>CliniPortal © 2026 · Công cụ lâm sàng · Chỉ mang tính hỗ trợ tham khảo, không thay thế phán xét lâm sàng của bác sĩ.</p></div>
+</footer>
+<script src="../../../js/sidebar.js"></script>
+<script>
+const DB = {
+    categories:{
+        DRY:[
+            {key:'dry_viral', tag:'🦠 Sau nhiễm siêu vi', title:'Ho khan sau nhiễm siêu vi hô hấp', cls:'nc-purple'},
+            {key:'dry_uacs', tag:'👃 Chảy mũi sau', title:'Hội chứng Chảy mũi sau (UACS / Post-nasal drip)', cls:'nc-purple'}
+        ],
+        WET:[
+            {key:'wet_bronchitis', tag:'🫁 Viêm phế quản', title:'Viêm Phế quản cấp có đờm', cls:'nc-teal'},
+            {key:'wet_copd_asthma', tag:'💨 Hen / COPD', title:'Đợt cấp Hen phế quản / COPD', cls:'nc-teal'}
+        ],
+        DRUG_COUGH:[
+            {key:'acei_cough', tag:'💊 Ho do ACEi', title:'Ho khan do Thuốc ức chế men chuyển (ACEi)', cls:'nc-warn'}
+        ]
+    },
+    scenarios:{
+        dry_viral:{
+            title:"Ho Khan Cấp Tính Sau Nhiễm Siêu Vi",
+            drugs:[
+                {name:"Dextromethorphan", dose:"15–30 mg x 3–4 lần/ngày (PO)", duration:"3–5 ngày"},
+                {name:"Terpin Codein", dose:"1–2 viên x 2–3 lần/ngày (PO)", duration:"Ngắn hạn (< 5 ngày)"},
+                {name:"Levodropropizine", dose:"60 mg x 3 lần/ngày (PO)", duration:"5–7 ngày"}
+            ],
+            ci:"Không dùng Dextromethorphan / Codein cho trẻ em < 12 tuổi hoặc người ho có đờm đe dọa ứ đọng dịch hô hấp.",
+            warn:"Tránh lạm dụng Codein vì nguy cơ phụ thuộc thuốc và suy hô hấp.",
+            ia:"Dextromethorphan phối hợp MAOI hoặc SSRI làm tăng nguy cơ Hội chứng Serotonin.",
+            source:"ACCP Clinical Practice Guidelines on Cough"
+        },
+        dry_uacs:{
+            title:"Ho do Hội chứng Chảy Mũi Sau (UACS / Post-Nasal Drip)",
+            drugs:[
+                {name:"Chlorpheniramine / Loratadine", dose:"4 mg x 2–3 lần/ngày hoặc 10mg x 1 lần/ngày", duration:"1–2 tuần"},
+                {name:"Fluticasone furoate (Xịt mũi)", dose:"2 nhát/mỗi bên mũi x 1 lần/ngày", duration:"2–4 tuần"},
+                {name:"Pseudoephedrine", dose:"60 mg x 2 lần/ngày (PO)", duration:"3–5 ngày"}
+            ],
+            ci:"Pseudoephedrine chống chỉ định ở bệnh nhân Tăng huyết áp ác tính hoặc Bệnh mạch vành nặng.",
+            warn:"Kháng histamin thế hệ 1 (Chlorpheniramine) có hiệu quả cao hơn thế hệ 2 nhờ tác dụng Anticholinergic làm khô dịch tiết.",
+            ia:"Pseudoephedrine làm giảm hiệu quả thuốc hạ huyết áp.",
+            source:"Chest Guidelines: Management of UACS-induced Cough"
+        },
+        wet_bronchitis:{
+            title:"Ho Có Đờm Trong Viêm Phế Quản Cấp",
+            drugs:[
+                {name:"N-Acetylcysteine (NAC)", dose:"200 mg x 3 lần/ngày (PO) hoặc 600mg x 1 lần/ngày", duration:"5–7 ngày"},
+                {name:"Ambroxol / Bromhexine", dose:"30 mg x 3 lần/ngày (PO)", duration:"5–7 ngày"},
+                {name:"Kháng sinh (Nếu nghi Nhiễm khuẩn)", dose:"Amoxicillin/Clavulanate 1g x 2 lần/ngày", duration:"5–7 ngày"}
+            ],
+            ci:"Không dùng kết hợp thuốc long đờm (NAC) với thuốc ức chế phản xạ ho (Dextromethorphan) vì gây tắc ứ đờm.",
+            warn:"Uống thật nhiều nước (1.5-2L/ngày) là biện pháp tiêu đờm tự nhiên hiệu quả nhất.",
+            ia:"NAC có thể làm giảm hoạt tính một số kháng sinh Penicillin nếu trộn lẫn trực tiếp.",
+            source:"ERS Guidelines for Acute Bronchitis"
+        },
+        wet_copd_asthma:{
+            title:"Ho Có Đờm / Co Thắt Trong Hen Phế Quản & COPD",
+            drugs:[
+                {name:"Salbutamol (Ventolin Inhaler)", dose:"100 mcg x 2 nhát xịt khi khó thở/co thắt", duration:"Tùy nhu cầu cắt cơn"},
+                {name:"Ipratropium / Salmeterol", dose:"Thuốc giãn phế quản duy trì", duration:"Liên tục"},
+                {name:"Methylprednisolone", dose:"40 mg/ngày (PO)", duration:"5 ngày trong đợt cấp"}
+            ],
+            ci:"Tránh dùng Beta-blockers không chọn lọc (Propranolol) ở bệnh nhân Hen/COPD.",
+            warn:"Cần hướng dẫn bệnh nhân kỹ thuật súc miệng sau khi xịt Corticoid (ICS) để tránh nấm miệng.",
+            ia:"Salbutamol liều cao truyền/xịt nhiều lần gây hạ Kali máu.",
+            source:"GINA 2026 Strategy for Asthma Management"
+        },
+        acei_cough:{
+            title:"Ho Khan do Thuốc ức chế men chuyển (ACEi)",
+            drugs:[
+                {name:"Đổi ACEi sang ARB (Valsartan / Losartan)", dose:"Tương đương liều kiểm soát HA", duration:"Thay thế lâu dài"},
+                {name:"Theo dõi triệu chứng ho", dose:"Ho thường hết sau 1–4 tuần ngưng ACEi", duration:"1–4 tuần"}
+            ],
+            ci:"Không cần dùng thuốc giảm ho trung ương (Dextromethorphan) vì không hiệu quả với cơ chế tích lũy Bradykinin.",
+            warn:"Tỷ lệ gặp tác dụng phụ ho khan do ACEi là 5-20% bệnh nhân, đặc biệt ở nữ giới.",
+            ia:"Chuyển sang ARB giữ nguyên hiệu quả bảo vệ Thận và Tim mạch.",
+            source:"AHA/ACC Hypertension Guidelines"
+        }
+    }
+};
+
+function selectPath(path) {
+    resetAll();
+    const nodeRed = document.getElementById('node-redflag');
+    const nodeRoutine = document.getElementById('node-routine');
+    if (path === 'REDFLAG') {
+        if (nodeRed) nodeRed.classList.add('active');
+        showEmergency('Ho ra máu / Khó thở cấp nặng (Nghi Ung thư phổi / Lao phổi tiến triển / Thuyên tắc mạch phổi / Áp xe phổi)');
+    } else {
+        if (nodeRoutine) nodeRoutine.classList.add('active');
+        const layerTypes = document.getElementById('layer-types');
+        if (layerTypes) layerTypes.className = 'fc-layer-enabled';
+    }
+}
+
+function selectCategory(catKey) {
+    document.querySelectorAll('#layer-types .fc-node').forEach(n => n.classList.remove('active'));
+    
+    let clickId = '';
+    if (catKey === 'DRY') clickId = 'node-dry';
+    if (catKey === 'WET') clickId = 'node-wet';
+    if (catKey === 'DRUG_COUGH') clickId = 'node-drug_cough';
+    
+    const clickNode = document.getElementById(clickId);
+    if (clickNode) clickNode.classList.add('active');
+    
+    const layerScenarios = document.getElementById('layer-scenarios');
+    const rowScenarios = document.getElementById('row-scenarios');
+    const protoPanel = document.getElementById('proto-panel');
+    
+    if (protoPanel) protoPanel.style.display = 'none';
+    
+    const list = DB.categories[catKey] || [];
+    rowScenarios.innerHTML = list.map(item => `
+        <div class="fc-node ${item.cls}" onclick="displayProtocol('${item.key}', 'var(--fc-teal)')">
+            <div class="fc-node-tag">${item.tag}</div>
+            <div class="fc-node-title">${item.title}</div>
+        </div>
+    `).join('');
+    
+    if (layerScenarios) layerScenarios.style.display = 'block';
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+{
+  "version": "1.0.0",
+  "title": "Kho Công Thức Sinh Lý Định Lượng CliniPortal",
+  "description": "Cơ sở dữ liệu các công thức, phương trình sinh lý học chuẩn và công cụ tính toán tương tác",
+  "formulas": [
+    {
+      "id": "nernst_eq",
+      "category": "Điện sinh lý",
+      "name": "Phương trình Nernst",
+      "subtitle": "Tính điện thế cân bằng cho một ion đơn lẻ qua màng tế bào",
+      "latex": "E_{ion} = \\frac{61.5}{z} \\log_{10} \\left( \\frac{[Ion]_{out}}{[Ion]_{in}} \\right)",
+      "variables": [
+        { "code": "z", "name": "Điện tích ion (Valency)", "unit": "", "default": 1, "min": -2, "max": 2 },
+        { "code": "ion_out", "name": "Nồng độ ngoại bào [Ion]out", "unit": "mmol/L", "default": 4.5, "min": 0.1, "max": 200 },
+        { "code": "ion_in", "name": "Nồng độ nội bào [Ion]in", "unit": "mmol/L", "default": 140, "min": 0.1, "max": 200 }
+      ],
+      "calculate_js": "return (61.5 / z) * Math.log10(ion_out / ion_in);",
+      "result_unit": "mV",
+      "explanation": "Tại nhiệt độ cơ thể (37°C), điện thế Nernst xác định mức điện thế màng mà tại đó lực điện trường cân bằng hoàn toàn với lực khuếch tán nồng độ của ion đó.",
+      "clinical_pearl": "Điện thế cân bằng Nernst cho $K^+$ ($E_K$) là khoảng -90 mV, giải thích tại sao điện thế nghỉ màng tế bào (-70 đến -90 mV) rất gần với $E_K$ do màng ở trạng thái nghỉ thấm chủ yếu với $K^+$."
+    },
+    {
+      "id": "goldman_eq",
+      "category": "Điện sinh lý",
+      "name": "Phương trình Goldman-Hodgkin-Katz (GHK)",
+      "subtitle": "Tính điện thế màng nghỉ thực tế dựa trên nhiều ion (Na+, K+, Cl-)",
+      "latex": "V_m = 61.5 \\log_{10} \\left( \\frac{P_K [K^+]_o + P_{Na} [Na^+]_o + P_{Cl} [Cl^-]_i}{P_K [K^+]_i + P_{Na} [Na^+]_i + P_{Cl} [Cl^-]_o} \\right)",
+      "variables": [
+        { "code": "K_o", "name": "K+ Ngoại bào", "unit": "mmol/L", "default": 4.5 },
+        { "code": "K_i", "name": "K+ Nội bào", "unit": "mmol/L", "default": 140 },
+        { "code": "Na_o", "name": "Na+ Ngoại bào", "unit": "mmol/L", "default": 142 },
+        { "code": "Na_i", "name": "Na+ Nội bào", "unit": "mmol/L", "default": 14 },
+        { "code": "P_K", "name": "Độ thấm tương đối K+", "unit": "", "default": 1.0 },
+        { "code": "P_Na", "name": "Độ thấm tương đối Na+", "unit": "", "default": 0.04 }
+      ],
+      "calculate_js": "return 61.5 * Math.log10((P_K * K_o + P_Na * Na_o) / (P_K * K_i + P_Na * Na_i));",
+      "result_unit": "mV",
+      "explanation": "Phương trình GHK mở rộng phương trình Nernst bằng cách tính đến hệ số độ thấm màng ($P$) của từng ion ở trạng thái nghỉ.",
+      "clinical_pearl": "Trong pha 0 của điện thế hoạt động, kênh Na+ nhanh mở làm $P_{Na}$ tăng gấp hàng trăm lần, kéo điện thế màng vọt lên gần $E_{Na}$ (+60 mV)."
+    },
+    {
+      "id": "fick_diffusion",
+      "category": "Hô hấp / Tế bào",
+      "name": "Định luật Khuếch tán Fick",
+      "subtitle": "Tốc độ khuếch tán khí qua màng trao đổi",
+      "latex": "J = \\frac{D \\cdot A \\cdot \\Delta P}{T}",
+      "variables": [
+        { "code": "D", "name": "Hệ số khuếch tán khí", "unit": "cm²/s", "default": 1.0 },
+        { "code": "A", "name": "Diện tích màng trao đổi", "unit": "m²", "default": 70 },
+        { "code": "dP", "name": "Chênh lệch phân áp ΔP", "unit": "mmHg", "default": 60 },
+        { "code": "T", "name": "Bề dày màng khuếch tán", "unit": "μm", "default": 0.5 }
+      ],
+      "calculate_js": "return (D * A * dP) / T;",
+      "result_unit": "đơn vị tương đối",
+      "explanation": "Tốc độ khuếch tán $J$ tỷ lệ thuận với diện tích $A$ và chênh lệch phân áp $\\Delta P$, tỷ lệ nghịch với bề dày $T$.",
+      "clinical_pearl": "Trong xơ phổi hoặc phù phổi, bề dày màng khuếch tán $T$ tăng lên khiến tốc độ khuếch tán $O_2$ giảm mạnh gây hạ $PaO_2$ máu."
+    },
+    {
+      "id": "starling_forces",
+      "category": "Tim mạch / Thận",
+      "name": "Phương trình Lực Starling qua Mao mạch",
+      "subtitle": "Dòng trao đổi dịch giữa lòng mao mạch và khoảng kẽ",
+      "latex": "J_v = K_f \\cdot \\left[ (P_c - P_i) - \\sigma (\\pi_c - \\pi_i) \\right]",
+      "variables": [
+        { "code": "Kf", "name": "Hệ số lọc màng Kf", "unit": "mL/min/mmHg", "default": 1.0 },
+        { "code": "Pc", "name": "Áp suất thủy tĩnh mao mạch (Pc)", "unit": "mmHg", "default": 30 },
+        { "code": "Pi", "name": "Áp suất thủy tĩnh mô kẽ (Pi)", "unit": "mmHg", "default": -2 },
+        { "code": "pic", "name": "Áp suất keo huyết tương (πc)", "unit": "mmHg", "default": 25 },
+        { "code": "pii", "name": "Áp suất keo mô kẽ (πi)", "unit": "mmHg", "default": 1 }
+      ],
+      "calculate_js": "return Kf * ((Pc - Pi) - 1.0 * (pic - pii));",
+      "result_unit": "mL/phút",
+      "explanation": "Quyết định xu hướng dịch thoát ra ngoài mô kẽ (lọc) hay hút trở lại lòng mạch (tái hấp thu).",
+      "clinical_pearl": "Trong suy tim trái, áp suất thủy tĩnh mao mạch phổi $P_c$ tăng cao vượt quá áp suất keo $\\pi_c$, gây phù phổi cấp."
+    },
+    {
+      "id": "henderson_hasselbalch",
+      "category": "Toan Kiềm / Thận",
+      "name": "Phương trình Henderson-Hasselbalch",
+      "subtitle": "Xác định pH máu động mạch dựa trên hệ đệm Bicarbonate",
+      "latex": "\\text{pH} = 6.1 + \\log_{10} \\left( \\frac{[\\text{HCO}_3^-]}{0.03 \\cdot P_{\\text{CO}_2}} \\right)",
+      "variables": [
+        { "code": "hco3", "name": "Nồng độ Bicarbonate (HCO3-)", "unit": "mmol/L", "default": 24, "min": 5, "max": 50 },
+        { "code": "pco2", "name": "Phân áp CO2 động mạch (PaCO2)", "unit": "mmHg", "default": 40, "min": 10, "max": 100 }
+      ],
+      "calculate_js": "return 6.1 + Math.log10(hco3 / (0.03 * pco2));",
+      "result_unit": "pH unit",
+      "explanation": "Phương trình chuẩn đánh giá tình trạng thăng bằng toan kiềm cơ thể dựa trên tỷ lệ giữa thận ($HCO_3^-$) và hô hấp ($PaCO_2$).",
+      "clinical_pearl": "pH máu bình thường duy trì trong khoảng 7.35 - 7.45. Khi $HCO_3^-$ giảm gây toan chuyển hóa, trung khu hô hấp sẽ tăng thông khí để giảm $PaCO_2$ bù trừ."
+    },
+    {
+      "id": "alveolar_gas_eq",
+      "category": "Hô hấp",
+      "name": "Phương trình Khí Phế nang (PAO2)",
+      "subtitle": "Tính phân áp Oxy trong phế nang PAO2",
+      "latex": "P_A\\text{O}_2 = F_i\\text{O}_2 (P_{atm} - P_{H_2O}) - \\frac{P_a\\text{CO}_2}{R}",
+      "variables": [
+        { "code": "fio2", "name": "Nồng độ Oxy hít vào (FiO2)", "unit": "thập phân", "default": 0.21, "min": 0.21, "max": 1.0 },
+        { "code": "patm", "name": "Áp suất khí quyển (Patm)", "unit": "mmHg", "default": 760 },
+        { "code": "ph2o", "name": "Áp suất hơi nước bão hòa (PH2O)", "unit": "mmHg", "default": 47 },
+        { "code": "paco2", "name": "PaCO2 máu động mạch", "unit": "mmHg", "default": 40 },
+        { "code": "R", "name": "Hệ số trao đổi hô hấp (R)", "unit": "", "default": 0.8 }
+      ],
+      "calculate_js": "return fio2 * (patm - ph2o) - (paco2 / R);",
+      "result_unit": "mmHg",
+      "explanation": "Xác định phân áp oxy lý tưởng trong phế nang để tính độ chênh áp Oxy phế nang - động mạch (A-a gradient).",
+      "clinical_pearl": "Ở khí trời ($FiO_2 = 0.21$), $P_A O_2$ bình thường khoảng $100\\text{ mmHg}$. Khuynh áp A-a gradient tăng chỉ ra nguyên nhân hạ $PaO_2$ tại phổi (bất tương hợp V/Q, khuếch tán kém hoặc shunt)."
+    },
+    {
+      "id": "cockcroft_gault",
+      "category": "Thận",
+      "name": "Công thức Cockcroft-Gault tính eGFR",
+      "subtitle": "Ước tính độ lọc cầu thận dựa trên Creatinine huyết thanh",
+      "latex": "CrCl = \\frac{(140 - \\text{Tuổi}) \\cdot \\text{Cân nặng (kg)}}{72 \\cdot S_{Cr} \\text{ (mg/dL)}} \\times (0.85 \\text{ nếu là Nữ})",
+      "variables": [
+        { "code": "age", "name": "Tuổi", "unit": "tuổi", "default": 50 },
+        { "code": "weight", "name": "Cân nặng", "unit": "kg", "default": 60 },
+        { "code": "scr", "name": "Creatinine huyết thanh (SCr)", "unit": "mg/dL", "default": 1.0 },
+        { "code": "is_female", "name": "Nữ giới (1: Nữ, 0: Nam)", "unit": "", "default": 0 }
+      ],
+      "calculate_js": "let crcl = ((140 - age) * weight) / (72 * scr); return is_female ? crcl * 0.85 : crcl;",
+      "result_unit": "mL/phút",
+      "explanation": "Công thức kinh điển ước tính mức lọc cầu thận ứng dụng trong hiệu chỉnh liều thuốc đào thải qua thận.",
+      "clinical_pearl": "Độ lọc cầu thận giảm theo tuổi tác tự nhiên khoảng 1 mL/phút/năm sau 40 tuổi."
+    }
+  ]
+}

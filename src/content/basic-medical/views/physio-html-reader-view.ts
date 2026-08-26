@@ -232,6 +232,10 @@ async function fetchAndHydratePhysioArticle(
     ];
   } else {
     candidatePaths = [
+      `/src/content/basic-medical/physiology/${part}/${baseSlugName}.mdx`,
+      `src/content/basic-medical/physiology/${part}/${baseSlugName}.mdx`,
+      `./src/content/basic-medical/physiology/${part}/${baseSlugName}.mdx`,
+      `../src/content/basic-medical/physiology/${part}/${baseSlugName}.mdx`,
       `/src/content/basic-medical/physiology/${part}/${cleanSlug}`,
       `src/content/basic-medical/physiology/${part}/${cleanSlug}`,
       `pages/Sinh lý - Sinh lý bệnh/Sinhly/${part.replace('part', 'Phan')}/${cleanSlug}`

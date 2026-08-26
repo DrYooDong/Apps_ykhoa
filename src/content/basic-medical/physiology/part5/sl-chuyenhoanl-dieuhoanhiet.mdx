@@ -1,0 +1,149 @@
+---
+title: "Sinh Lý Chuyển Hóa Năng Lượng & Điều Hòa Thân Nhiệt"
+slug: "sl-chuyenhoanl-dieuhoanhiet"
+code: "PHYS-MET-01"
+part: "part5"
+system: "digestive"
+systemName: "Sinh Lý Hệ Tiêu Hóa & Chuyển Hóa"
+guytonChapter: "Guyton 14th - Chapter 72: Energetics and Metabolic Rate & Chapter 74: Body Temperature Regulation and Fever"
+ganongChapter: "Ganong 26th - Chapter 17: Hypothalamic Regulation of Hormonal & Vegetative Functions"
+category: "physiology"
+status: "published"
+version: "2.0.0"
+updatedAt: "2026-08-26"
+description: "Sinh lý học Chuyển hóa & Thân nhiệt: Vai trò năng lượng ATP, chuyển hóa cơ sở (BMR), tác dụng động lực đặc hiệu thức ăn (SDA), 4 cơ chế thải nhiệt (Bức xạ, Đối lưu, Truyền nhiệt, Bay hơi mồ hôi), bộ điều nhiệt vùng Hạ đồi (Hạ đồi trước chống nóng vs Hạ đồi sau chống lạnh), cơ chế sinh nhiệt run cơ / không run cơ và phân biệt sốt (Fever do PGE2 nâng Set-point) vs Sốc nhiệt (Heatstroke)."
+tags:
+  - "sinh-ly"
+  - "chuyen-hoa"
+  - "dieu-hoa-than-nhiet"
+  - "ha-doi"
+  - "sot-fever"
+  - "soc-nhiet"
+clinicalPearls:
+  - "Phân biệt Sốt (Fever) vs Tăng thân nhiệt (Hyperthermia / Say nóng): Trong CƠN SỐT, Cytokines (IL-1, IL-6, TNF-alpha) kích thích tổng hợp PGE2 làm NÂNG ĐIỂM CÀI ĐẶT NHIỆT (Set-point) tại vùng Hạ đồi lên cao -> Hạ sốt đáp ứng tốt với Paracetamol/NSAIDs (ức chế men COX ngăn tạo PGE2). Trong TĂNG THÂN NHIỆT (Sốc nhiệt Heatstroke), ĐIỂM CÀI ĐẶT VẪN BÌNH THƯỜNG nhưng cơ thể bị hấp thụ nhiệt quá mức hoặc liệt tuyến mồ hôi -> Thuốc hạ sốt HOÀN TOÀN VÔ HIỆU, bắt buộc phải hạ nhiệt vật lý cưỡng bức (chườm nước mát, quạt gió)."
+  - "Khi nhiệt độ môi trường xung quanh vượt quá 37°C (nóng hơn thân nhiệt), 3 cơ chế thải nhiệt Bức xạ, Dẫn truyền và Đối lưu ĐỀU BỊ ĐẢO NGƯỢC (cơ thể hấp thụ nhiệt từ môi trường). Lúc này, BAY HƠI MỒ HÔI LÀ CƠ CHẾ DUY NHẤT giúp cơ thể thải nhiệt (0.58 kcal nhiệt lượng mất đi cho mỗi 1 mL nước mồ hôi bay hơi)."
+  - "Vùng Hạ Đồi Trước (Anterior Hypothalamus / Preoptic) là Trung tâm CHỐNG NÓNG (kích thích phó giao cảm gây giãn mạch da, vã mồ hôi); Vùng Hạ Đồi Sau (Posterior Hypothalamus) là Trung tâm CHỐNG LẠNH (kích thích giao cảm co mạch da, tăng chuyển hóa và run cơ sinh nhiệt)."
+sections:
+  - id: "sec-1"
+    number: 1
+    title: "Chuyển Hóa Cơ Sở (BMR) & Năng Lượng ATP"
+    icon: "fa-fire-flame-curved"
+  - id: "sec-2"
+    number: 2
+    title: "4 Cơ Chế Thải Nhiệt Cơ Thể"
+    icon: "fa-temperature-arrow-down"
+  - id: "sec-3"
+    number: 3
+    title: "Bộ Điều Nhiệt Vùng Hạ Đồi"
+    icon: "fa-compass"
+  - id: "sec-4"
+    number: 4
+    title: "Cơ Chế Sinh Nhiệt: Run vs Không Run"
+    icon: "fa-snowflake"
+  - id: "sec-5"
+    number: 5
+    title: "Phân Biệt Sốt (Fever) vs Sốc Nhiệt (Heatstroke)"
+    icon: "fa-temperature-high"
+  - id: "sec-6"
+    number: 6
+    title: "Tài Liệu Tham Khảo EBM"
+    icon: "fa-book-medical"
+---
+
+import { PhysioAlert, PhysioQuickNav, PhysioFeedbackLoop } from '../components'
+
+# 🌡️ SINH LÝ CHUYỂN HÓA NĂNG LƯỢNG & ĐIỀU HÒA THÂN NHIỆT
+
+<PhysioQuickNav />
+
+---
+
+## 1. Năng Lượng Sinh Học & Chuyển Hóa Cơ Sở (BMR) {#sec-1}
+
+Mọi hoạt động sống của tế bào đều sử dụng nguồn năng lượng trực tiếp từ quá trình thủy phân phân tử **ATP (Adenosine Triphosphate)**:
+
+$$ATP + H_2O \longrightarrow ADP + P_i + \mathbf{7.3\text{ kcal/mol Năng Lượng}}$$
+
+### Chuyển Hóa Cơ Sở (Basal Metabolic Rate - BMR)
+BMR là mức tiêu hao năng lượng tối thiểu cần thiết để duy trì sự hoạt động của các cơ quan sinh tồn (tim, phổi, thận, não, duy trì gradient ion màng tế bào) ở trạng thái:
+- Tỉnh táo hoàn toàn nhưng nghỉ ngơi tuyệt đối về cơ bắp và tinh thần.
+- Nhịn đói sau ăn ít nhất 12 giờ (loại trừ tác dụng động lực đặc hiệu thức ăn SDA).
+- Trong phòng có nhiệt độ trung hòa nhiệt ($20 – 25^\circ\text{C}$).
+- **Giá trị chuẩn**: Khoảng **$24\text{ kcal/kg/ngày}$** (tương đương **$1.500 – 1.800\text{ kcal/ngày}$** ở người lớn 70 kg).
+- **Yếu tố chi phối BMR lớn nhất**: **Hormone tuyến giáp ($T_3, T_4$)** (Bệnh nhân Basedow cường giáp có BMR tăng vọt $+50\%\text{ đến }+100\%$, trong khi Suy giáp có BMR giảm $-40\%$).
+
+---
+
+## 2. Bốn Cơ Chế Thải Nhiệt Của Cơ Thể {#sec-2}
+
+Thân nhiệt trung tâm bình thường được duy trì nghiêm ngặt trong khoảng **$36.5 – 37.5^\circ\text{C}$**:
+
+```
+                                  [4 CƠ CHẾ THẢI NHIỆT CƠ THỂ]
+                                                │
+         ┌──────────────────┬───────────────────┴───────────────────┬──────────────────┐
+         ▼                  ▼                                       ▼                  ▼
+[1. BỨC XẠ NHIỆT]   [2. ĐỐI LƯU & DẪN TRUYỀN]               [3. BAY HƠI MỒ HÔI]   [4. PHÂN & TIỂU]
+  • Chiếm 60%          • Chiếm 15%                             • Chiếm 22% (Mỗi 1g    • Chiếm 3%
+  • Phát xạ sóng hồng  • Dẫn truyền nhiệt trực tiếp cho         nước bay hơi mang đi   • Mất nhiệt bài tiết
+    ngoại ra môi       không khí và các vật tiếp xúc           0.58 kcal nhiệt lượng)
+    trường xung quanh
+```
+
+<PhysioAlert type="pearl" title="Đặc Điểm Cơ Chế Bay Hơi Mồ Hôi Khi Trời Nóng">
+  Khi nhiệt độ môi trường xung quanh tăng cao hơn nhiệt độ bề mặt da ($> 37^\circ\text{C}$), bức xạ và đối lưu không thể thải nhiệt mà sẽ truyền ngược nhiệt độ từ ngoài vào cơ thể. Lúc này, **BAY HƠI NƯỚC QUA TUYẾN MỒ HÔI VÀ ĐƯỜNG THỞ LÀ CƠ CHẾ DUY NHẤT ĐỂ THẢI NHIỆT**.
+  - *Cảnh báo độ ẩm cao*: Nếu độ ẩm không khí đạt bão hòa ($100\%$), mồ hôi tiết ra không thể bay hơi mà chỉ chảy ròng ròng $\rightarrow$ Cơ thể mất hoàn toàn khả năng thải nhiệt, dẫn đến **Sốc nhiệt (Heatstroke) đe dọa tử vong**.
+</PhysioAlert>
+
+---
+
+## 3. "Bộ Điều Nhiệt" Trung Ương Tại Vùng Hạ Đồi (Hypothalamus) {#sec-3}
+
+Vùng hạ đồi đóng vai trò như một máy điều nhiệt tinh vi nhận tín hiệu từ các thụ thể nhiệt ngoại vi (da) và trung ương (máu nuôi não):
+
+```
+                        [TRUNG TÂM ĐIỀU NHIỆT VÙNG HẠ ĐỒI]
+                                        │
+         ┌──────────────────────────────┴──────────────────────────────┐
+         ▼                                                             ▼
+[HẠ ĐỒI TRƯỚC / VÙNG TIỀN THỊ]                               [HẠ ĐỒI SAU]
+(Anterior Hypothalamus / Preoptic)                           (Posterior Hypothalamus)
+  • TRUNG TÂM CHỐNG NÓNG (Thải nhiệt)                          • TRUNG TÂM CHỐNG LẠNH (Sinh nhiệt & Giữ nhiệt)
+  • Kích thích Giãn mạch da (tăng lưu lượng máu da)            • Co mạch máu dưới da tối đa (giữ nhiệt lõi)
+  • Kích thích Tuyến mồ hôi tiết mồ hôi giải nhiệt             • Kích hoạt Run cơ sinh nhiệt (Shivering)
+  • Ức chế chuyển hóa sinh nhiệt                               • Tăng tiết Epinephrine & Hormone Giáp tăng BMR
+```
+
+---
+
+## 4. Các Cơ Chế Sinh Nhiệt Của Cơ Thể Khi Bị Lạnh {#sec-4}
+
+1. **Sinh Nhiệt Do Run Cơ (Shivering Thermogenesis)**:
+   - Trung tâm vận động sơ cấp vùng hạ đồi sau phát xung truyền xuống tủy sống kích thích đồng loạt các cơ vân co duỗi vi thể liên tục.
+   - Hiệu quả sinh nhiệt: **Tăng sản sinh nhiệt lượng lên gấp 4 – 5 lần bình thường** trong vòng vài phút.
+2. **Sinh Nhiệt Không Run Cơ (Non-Shivering Thermogenesis)**:
+   - Kích thích thần kinh giao cảm phóng thích Norepinephrine tác động lên **Mô mỡ nâu (Brown Adipose Tissue - BAT)** giàu ty thể (đặc biệt phong phú ở trẻ sơ sinh).
+   - Kích hoạt protein kênh **UCP-1 (Thermogenin)** tại màng trong ty thể: Cho phép proton $H^+$ đi tắt qua màng mà không qua phức hợp ATP Synthase $\rightarrow$ **Chuyển hóa 100% năng lượng oxy hóa thành NHIỆT LƯỢNG sưởi ấm máu**.
+
+---
+
+## 5. Phân Biệt Sốt (Fever) vs Sốc Nhiệt (Heatstroke) EBM {#sec-5}
+
+<PhysioAlert type="danger" title="Bảng Đối So Sánh Sinh Lý Bệnh: Sốt (Fever) vs Sốc Nhiệt (Heatstroke)">
+  | Đặc điểm so sánh | Cơn Sốt (Fever / Pyrexia) | Sốc Nhiệt / Say Nóng (Heatstroke) |
+  |---|---|---|
+  | **Điểm cài đặt nhiệt độ (Set-point)** | **BỊ NÂNG LÊN MỨC CAO ($38.5 – 40.5^\circ\text{C}$)** do $PGE_2$ tại Hạ đồi. | **HOÀN TOÀN BÌNH THƯỜNG ($37.0^\circ\text{C}$)**. |
+  | **Cơ chế sinh bệnh** | Các chất gây sốt ngoại sinh (vi khuẩn, virus) kích hoạt đại thực bào tiết **$IL-1, IL-6, TNF-\alpha$** $\rightarrow$ Kích hoạt enzyme **COX-2 tổng hợp $PGE_2$** tại vùng tiền thị hạ đồi. | Môi trường quá nóng ẩm, vận động thể lực kiệt sức hoặc mất hoàn toàn khả năng tiết mồ hôi $\rightarrow$ Nhiệt tích tụ quá mức. |
+  | **Biểu hiện ban đầu** | **Cảm thấy rét run**, nổi da gà, tìm chăn đắp (cơ thể đang cố tăng nhiệt để đuổi kịp Set-point mới). | **Da nóng bừng, khô cong (mất mồ hôi)**, lú lẫn, co giật, hôn mê, trụy mạch ($T_{core} > 40.5^\circ\text{C}$). |
+  | **Đáp ứng với Thuốc hạ sốt (Paracetamol / NSAIDs)** | **ĐÁP ỨNG RẤT TỐT** (Ức chế tổng hợp $PGE_2$ kéo Set-point về $37^\circ\text{C}$ $\rightarrow$ Vã mồ hôi hạ sốt). | **HOÀN TOÀN KHÔNG CÓ TÁC DỤNG** (Thậm chí có thể gây độc thêm cho gan và thận). |
+  | **Nguyên tắc điều trị cấp cứu** | Dùng thuốc hạ sốt Paracetamol/Ibuprofen + Bù nước điện giải + Trị nguyên nhân nhiễm khuẩn. | **HẠ THÂN NHIỆT CƯỠNG BỨC TỨC THÌ**: Phun sương nước mát kết hợp quạt gió thổi liên tục, chườm đá vào nách/bẹn, hồi sức dịch truyền lạnh. |
+</PhysioAlert>
+
+---
+
+## 6. Tài Liệu Tham Khảo EBM {#sec-6}
+
+1. **Hall, J. E., & Hall, M. E. (2021)**. *Guyton and Hall Textbook of Medical Physiology* (14th ed.). Philadelphia: Elsevier. Chapters 72 & 74: Energetics, Metabolic Rate, and Thermoregulation.
+2. **Barrett, K. E. et al. (2019)**. *Ganong's Review of Medical Physiology* (26th ed.). New York: McGraw-Hill. Chapter 17: Hypothalamic Regulation & Temperature.
+3. **Boulant, J. A. (2000)**. *Role of the preoptic-anterior hypothalamus in thermoregulation and fever*. Clinical Infectious Diseases, 31(Suppl 5), S157-S161.
+4. **Bouchama, A., & Knochel, J. P. (2002)**. *Heat stroke*. New England Journal of Medicine, 346(25), 1978-1988.

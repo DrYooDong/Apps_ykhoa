@@ -1,0 +1,183 @@
+---
+title: "Sinh Lý Tiểu Cầu & Quá Trình Cầm Máu - Đông Máu"
+slug: "sl-tieucaucammau"
+code: "PHYS-BLD-05"
+part: "part3"
+system: "cardiovascular"
+systemName: "Sinh Lý Máu & Hệ Miễn Dịch"
+guytonChapter: "Guyton 14th - Chapter 37: Hemostasis and Blood Coagulation"
+ganongChapter: "Ganong 26th - Chapter 31: Blood as a Circulatory Fluid"
+category: "physiology"
+status: "published"
+version: "2.0.0"
+updatedAt: "2026-08-26"
+description: "Sinh lý học Tiểu cầu & Đông máu: Cấu trúc hạt alpha/đậm, 4 giai đoạn cầm máu (Co mạch, Cầm máu ban đầu qua vWF/GPIb/GPIIb-IIIa/TXA2, Cầm máu thứ phát qua dòng thác đông máu nội sinh/ngoại sinh/chung, Tiêu sợi huyết qua t-PA/Plasmin và D-Dimer), hệ thống kháng đông tự nhiên (Antithrombin III, Protein C & S), các xét nghiệm đông máu (PT/INR, aPTT, Fibrinogen) và cơ chế tác dụng của Aspirin, Clopidogrel, Heparin, Warfarin, DOACs & Hemophilia."
+tags:
+  - "sinh-ly"
+  - "tieu-cau"
+  - "cam-mau"
+  - "dong-mau"
+  - "thrombin"
+  - "heparin-warfarin"
+clinicalPearls:
+  - "Aspirin ức chế KHÔNG HỒI PHỤC enzyme COX-1 của tiểu cầu làm triệt tiêu sản sinh Thromboxane A2 (TXA2). Vì tiểu cầu không có nhân để tổng hợp protein mới, tác dụng chống đông của 1 liều Aspirin duy nhất sẽ kéo dài suốt toàn bộ vòng đời còn lại của tiểu cầu (7 - 10 ngày). Bắt buộc phải ngừng Aspirin 7 ngày trước các cuộc đại phẫu thuật."
+  - "Xét nghiệm Đông máu: PT/INR đánh giá Con đường Ngoại sinh (Yếu tố VII và các yếu tố đường chung), nhạy cảm nhất để theo dõi thuốc chống đông kháng Vitamin K (Warfarin). aPTT đánh giá Con đường Nội sinh (Yếu tố XII, XI, IX, VIII), nhạy cảm để theo dõi Heparin không phân đoạn UFH và chẩn đoán Hemophilia A (thiếu VIII) & Hemophilia B (thiếu IX)."
+  - "Định lượng D-Dimer tăng cao phản ánh tình trạng hình thành và tiêu hủy mạng sợi Fibrin đang diễn ra trong lòng mạch. D-Dimer có GIÁ TRỊ DỰ ĐOÁN ÂM TÍNH (NPV) CỰC CAO (>98%), dùng để loại trừ nhanh Huyết khối tĩnh mạch sâu (DVT) và Thuyên tắc phổi (PE) ở bệnh nhân có xác suất lâm sàng thấp - trung bình."
+sections:
+  - id: "sec-1"
+    number: 1
+    title: "Cấu Trúc & Nguồn Gốc Tiểu Cầu"
+    icon: "fa-circle-dot"
+  - id: "sec-2"
+    number: 2
+    title: "Cầm Máu Ban Đầu (Nút Chặn Tiểu Cầu)"
+    icon: "fa-hand-dots"
+  - id: "sec-3"
+    number: 3
+    title: "Dòng Thác Đông Máu (Ngoại Sinh & Nội Sinh)"
+    icon: "fa-diagram-project"
+  - id: "sec-4"
+    number: 4
+    title: "Kháng Đông Tự Nhiên & Tiêu Sợi Huyết"
+    icon: "fa-scissors"
+  - id: "sec-5"
+    number: 5
+    title: "Ứng Dụng Dược Lý Kháng Đông & EBM"
+    icon: "fa-pills"
+  - id: "sec-6"
+    number: 6
+    title: "Tài Liệu Tham Khảo EBM"
+    icon: "fa-book-medical"
+---
+
+import { PhysioAlert, PhysioQuickNav, PhysioFeedbackLoop } from '../components'
+
+# 🩸 SINH LÝ TIỂU CẦU & QUÁ TRÌNH CẦM MÁU - ĐÔNG MÁU
+
+<PhysioQuickNav />
+
+---
+
+## 1. Nguồn Gốc & Cấu Trúc Siêu Vi Của Tiểu Cầu {#sec-1}
+
+Tiểu cầu (*Platelets / Thrombocytes*) là các mảnh tế bào không nhân có dạng hình đĩa hình bầu dục:
+- **Số lượng bình thường**: **$150.000 – 400.000\text{/}\mu\text{L}$**.
+- **Đời sống**: **7 – 10 ngày** (sau đó bị đại thực bào lách và gan phá hủy; khoảng $1/3$ tổng số tiểu cầu được tích trữ lưu động tại lách).
+- **Nguồn gốc**: Biệt hóa từ **Tế bào mẫu tiểu cầu khổng lồ (Megakaryocytes)** tại tủy xương dưới sự kích thích của hormone **Thrombopoietin (TPO)** do Gan sản xuất liên tục ($95\%$).
+
+```
+[BÀO TƯƠNG TIỂU CẦU]
+  │
+  ├──► HẠT ALPHA (Alpha Granules):
+  │       • Yếu tố von Willebrand (vWF) • Fibrinogen (Yếu tố I) • Yếu tố V
+  │       • Yếu tố IV tiểu cầu (PF4) • Yếu tố tăng trưởng có nguồn gốc tiểu cầu (PDGF)
+  │
+  └──► HẠT ĐẬM (Dense Granules / Delta Granules):
+          • ADP & ATP (Kích hoạt ngưng tập tiểu cầu)
+          • Serotonin (5-HT: Gây co mạch mạnh)
+          • Ion Canxi Ca2+ (Đồng yếu tố bắt buộc cho dòng thác đông máu)
+```
+
+---
+
+## 2. Giai Đoạn Cầm Máu Ban Đầu (Primary Hemostasis) {#sec-2}
+
+Cầm máu ban đầu là quá trình hình thành **Nút Chặn Tiểu Cầu Trắng (Platelet Plug)** bịt kín lỗ thủng mạch máu trong vòng vài giây đến vài phút:
+
+```
+[TỔN THƯƠNG NỘI MÔ MẠCH MÁU] ──► Lộ lớp Collagen dưới nội mô
+            │
+            ▼ (1. DÍNH TIỂU CẦU - Platelet Adhesion)
+[Yếu tố von Willebrand (vWF)] bám vào Collagen ──► Liên kết với [Thụ Thể GPIb] trên màng tiểu cầu
+            │
+            ▼ (2. HOẠT HÓA & TIẾT HẠT - Activation & Secretion)
+Tiểu cầu thò chân giả, tiết [ADP] (gắn P2Y12) & tổng hợp [Thromboxane A2 (TXA2)] qua enzyme COX-1
+            │
+            ▼ (3. NGƯNG TẬP TIỂU CẦU - Platelet Aggregation)
+Hoạt hóa [Phức Hợp Thụ Thể GPIIb/IIIa] ──► Gắn cầu nối [Fibrinogen] kết dính các tiểu cầu lại với nhau
+            │
+            ▼
+[NÚT CHẶN TIỂU CẦU BAN ĐẦU ĐƯỢC THÀNH LẬP]
+```
+
+<PhysioAlert type="danger" title="Các Bệnh Lý Di Truyền Rối Loạn Chức Năng Tiểu Cầu Kinh Điển">
+  - **Hội chứng Bernard-Soulier**: Đột biến gen gây **thiếu hụt thụ thể GPIb** trên màng tiểu cầu $\rightarrow$ Tiểu cầu không dính được vào lớp collagen qua vWF (Xét nghiệm: Giảm tiểu cầu nhẹ, tiểu cầu khổng lồ *Giant platelets*, thời gian máu chảy BT kéo dài).
+  - **Bệnh Suy nhược tiểu cầu Glanzmann (Glanzmann Thrombasthenia)**: Đột biến gen gây **thiếu hụt thụ thể GPIIb/IIIa** $\rightarrow$ Tiểu cầu không ngưng tập được với nhau qua Fibrinogen (Số lượng và hình thái tiểu cầu bình thường nhưng mất hoàn toàn ngưng tập).
+  - **Bệnh von Willebrand (vWD)**: Thiếu hụt hoặc bất thường chất lượng **yếu tố vWF** (bệnh lý chảy máu di truyền phổ biến nhất). vWF vừa giúp dính tiểu cầu vừa là protein vận chuyển bảo vệ Yếu tố VIII trong máu.
+</PhysioAlert>
+
+---
+
+## 3. Giai Đoạn Cầm Máu Thứ Phát: Dòng Thác Đông Máu (Secondary Hemostasis) {#sec-3}
+
+Dòng thác đông máu là chuỗi phản ứng enzyme liên hoàn biến đổi các tiền chất hòa tan thành mạng lưới sợi **Fibrin không tan**, gia cố nút chặn tiểu cầu thành **Cục máu đông đỏ vững chắc**:
+
+```
+[CON ĐƯỜNG NGOẠI SINH (PT/INR)]                  [CON ĐƯỜNG NỘI SINH (aPTT)]
+(Tổn thương mô giải phóng Tissue Factor)         (Tiếp xúc bề mặt tích điện âm)
+            │                                                │
+       [TF + VIIa]                                    [XII ──► XIIa]
+            │                                                │
+            │                                         [XI ──► XIa]
+            │                                                │
+            │                                         [IX ──► IXa]
+            │                                                │ (+ VIIIa, Ca2+, PL)
+            └───────────────────────┬────────────────────────┘
+                                    ▼
+                         [HOẠT HÓA YẾU TỐ X ──► Xa]
+                                    │ (+ Va, Ca2+, PL - Phức hợp Prothrombinase)
+                                    ▼
+                      [PROTHROMBIN (II) ──► THROMBIN (IIa)]
+                                    │
+                                    ▼
+                      [FIBRINOGEN (I) ──► SỢI FIBRIN (Ia)]
+                                    │ (+ Yếu tố XIIIa ổn định mạng lưới)
+                                    ▼
+                      [CỤC MÁU ĐÔNG FIBRIN VỮNG CHẮC]
+```
+
+---
+
+## 4. Hệ Thống Kháng Đông Tự Nhiên & Tiêu Sợi Huyết (Fibrinolysis) {#sec-4}
+
+Để ngăn cục máu đông lan rộng gây tắc toàn bộ lòng mạch, cơ thể duy trì hệ thống kiểm soát cân bằng động cực kỳ nghiêm ngặt:
+
+### A. 3 Trụ Cột Kháng Đông Tự Nhiên Của Cơ Thể
+1. **Antithrombin III (AT-III)**: Do Gan sản xuất, ức chế trực tiếp Thrombin (IIa), Xa, IXa, XIa, XIIa. Hiệu lực ức chế của AT-III tăng vọt lên **1.000 – 4.000 lần khi có mặt của Heparin**.
+2. **Hệ thống Protein C & Protein S (Phụ thuộc Vitamin K)**: Thrombin gắn vào **Thrombomodulin** trên tế bào nội mô lành kích hoạt Protein C thành *Activated Protein C (APC)*. APC cùng đồng yếu tố Protein S **bất hoạt không hồi phục Yếu tố Va và Yếu tố VIIIa**. (Đột biến Factor V Leiden kháng lại APC là nguyên nhân hàng đầu gây huyết khối di truyền).
+3. **Chất ức chế con đường yếu tố mô (TFPI)**: Bất hoạt phức hợp [TF-VIIa-Xa].
+
+### B. Quá Trình Tiêu Sợi Huyết & Ý Nghĩa Lâm Sàng Của D-Dimer
+
+```
+[Mô lành tiết t-PA (Tissue Plasminogen Activator)]
+            │
+            ▼
+[Chuyển Hóa PLASMINOGEN ──► PLASMIN (Enzyme phân giải protein cực mạnh)]
+            │
+            ▼
+[Plasmin phân cắt mạng lưới sợi Fibrin đông tụ] ──► TẠO SẢN PHẨM THOÁI GIÁNG D-DIMER
+```
+
+---
+
+## 5. Bảng Đối So sánh Thuốc Kháng Đông & Kháng Tiểu Cầu EBM {#sec-5}
+
+| Nhóm thuốc | Hoạt chất điển hình | Cơ chế tác dụng sinh học | Xét nghiệm theo dõi | Ứng dụng lâm sàng |
+|---|---|---|---|---|
+| **Kháng kết tập tiểu cầu** | **Aspirin** | Ức chế không hồi phục enzym **COX-1** $\rightarrow$ Triệt tiêu $TXA_2$ | Thời gian chảy máu (BT) | Dự phòng thứ phát Nhồi máu cơ tim, Đột quỵ thiếu máu não. |
+| | **Clopidogrel, Ticagrelor** | Phong bế thụ thể **$P2Y_{12}$ của ADP** trên tiểu cầu | Xét nghiệm VerifyNow | Đặt Stent mạch vành, Hội chứng vành cấp (DAPT). |
+| **Kháng Vitamin K** | **Warfarin (Coumadin)** | Ức chế enzym VKORC1 $\rightarrow$ Ngăn tổng hợp **Yếu tố II, VII, IX, X, Protein C, S** | **PT / INR** *(Mục tiêu INR 2.0 – 3.0)* | Rung nhĩ van tim, Van tim nhân tạo cơ học. *(Giải độc: Vitamin K1, PCC)*. |
+| **Heparin** | **Heparin không phân đoạn (UFH)** | Tăng hoạt tính **Antithrombin III** ức chế Thrombin IIa và Xa | **aPTT** *(Mục tiêu 1.5 – 2.5 lần chứng)* | Thuyên tắc phổi cấp, lọc máu. *(Giải độc: Protamine Sulfate)*. |
+| | **LMWH (Enoxaparin)** | Tăng hoạt tính AT-III ức chế chọn lọc **Xa > IIa** | Anti-Xa (khi cần) | DVT, PE, Hội chứng vành cấp, không cần chỉnh liều thường quy. |
+| **DOACs (Kháng đông đường uống thế hệ mới)** | **Rivaroxaban, Apixaban** | Ức chế trực tiếp yếu tố **Xa** | Không cần theo dõi thường quy | Rung nhĩ không do van tim, DVT/PE. *(Giải độc: Andexanet alfa)*. |
+| | **Dabigatran** | Ức chế trực tiếp **Thrombin (IIa)** | Không cần theo dõi | Rung nhĩ không do van tim. *(Giải độc: Idarucizumab)*. |
+
+---
+
+## 6. Tài Liệu Tham Khảo EBM {#sec-6}
+
+1. **Hall, J. E., & Hall, M. E. (2021)**. *Guyton and Hall Textbook of Medical Physiology* (14th ed.). Philadelphia: Elsevier. Chapter 37: Hemostasis and Blood Coagulation.
+2. **Barrett, K. E. et al. (2019)**. *Ganong's Review of Medical Physiology* (26th ed.). New York: McGraw-Hill. Chapter 31: Blood as a Circulatory Fluid.
+3. **Gale, A. J. (2011)**. *Current understanding of hemostasis*. Toxicologic Pathology, 39(1), 273-280.
+4. **Hoffman, M., & Monroe, D. M. (2001)**. *A cell-based model of hemostasis*. Thrombosis and Haemostasis, 85(6), 958-965.

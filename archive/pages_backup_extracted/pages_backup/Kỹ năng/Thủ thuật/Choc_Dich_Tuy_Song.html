@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Hướng dẫn quy trình Chọc Dò Dịch Tủy Sống (Lumbar Puncture) từng bước trực quan, đo áp lực mở CSF & xét nghiệm Viêm màng não - CliniPortal.">
+  <title>Chọc Dò Dịch Tủy Sống – CliniPortal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../../css/reset.css">
+  <link rel="stylesheet" href="../../../css/main.css">
+  <link rel="stylesheet" href="../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../css/components/procedure-animator.css">
+
+  <script src="../../../js/main.js" defer></script>
+  <script src="../../../components/header.js" defer></script>
+  <script src="../../../components/footer.js" defer></script>
+  <script src="../../../js/procedure-animator.js" defer></script>
+</head>
+
+<body>
+  <div id="header-placeholder" data-header-path="../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li><a href="../../../index.html" class="nav-item"><span class="nav-icon">🏠</span><span class="nav-text">Trang chủ</span></a></li>
+          <li><a href="../ky-nang.html" class="nav-item active"><span class="nav-icon">🩺</span><span class="nav-text">Kỹ năng</span></a></li>
+          <li><a href="../../Tiếp cận/tiep-can.html" class="nav-item"><span class="nav-icon">🤒</span><span class="nav-text">Tiếp cận</span></a></li>
+          <li><a href="../../Công cụ/cong-cu.html" class="nav-item"><span class="nav-icon">⚙️</span><span class="nav-text">Công cụ</span></a></li>
+          <li><a href="../../Dược lý/duoc-ly.html" class="nav-item"><span class="nav-icon">💊</span><span class="nav-text">Dược lý</span></a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="app-main">
+      <div class="procedure-container">
+        <!-- Header Card -->
+        <div class="procedure-header-card">
+          <div class="procedure-badge-bar">
+            <span class="procedure-badge badge-emergency"><i class="fa-solid fa-brain"></i> Thần Kinh / Cấp Cứu</span>
+            <span class="procedure-badge badge-level"><i class="fa-solid fa-notes-medical"></i> Chẩn Đoán CSF</span>
+            <span class="procedure-badge badge-duration"><i class="fa-solid fa-clock"></i> 6 Bước Chuẩn Thần Kinh</span>
+          </div>
+          <h1 class="procedure-title">Quy Trình Chọc Dò Dịch Tủy Sống (Lumbar Puncture)</h1>
+          <p class="procedure-subtitle">
+            Kỹ thuật lấy dịch não tủy (CSF) chẩn đoán viêm màng não, xuất huyết dưới nhện, bệnh lý thoái hóa myelin hoặc đo áp lực nội sọ.
+          </p>
+        </div>
+
+        <!-- Stepper Bar -->
+        <div class="stepper-bar" id="stepperBar"></div>
+
+        <!-- Viewer Split Grid -->
+        <div class="procedure-viewer-grid">
+          <!-- Visual SVG Display -->
+          <div class="procedure-visual-card">
+            <div id="svgContainer" style="width: 100%; display: flex; justify-content: center; align-items: center;"></div>
+          </div>
+
+          <!-- Step Description & Info -->
+          <div class="procedure-info-card">
+            <div>
+              <div class="step-header">
+                <h2 class="step-title-text" id="stepTitle">Đang tải...</h2>
+                <span class="step-counter" id="stepCounter">Bước 1 / 6</span>
+              </div>
+              <div class="step-body-content" id="stepBody"></div>
+              <div id="safetyAlert" class="safety-alert-box"></div>
+            </div>
+
+            <!-- Controls -->
+            <div class="procedure-controls">
+              <button class="btn-proc btn-proc-outline" id="btnPrevStep"><i class="fa-solid fa-arrow-left"></i> Bước trước</button>
+              <button class="btn-proc btn-proc-primary" id="btnNextStep">Bước tiếp <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const steps = [
+        {
+          shortTitle: "1. Loại trừ tăng ALNS",
+          title: "Bước 1: Loại trừ chống chỉ định & Chụp CT sọ não",
+          description: "Đánh giá các dấu hiệu chống chỉ định chọc dò dịch tủy sống để tránh biến chứng tụt kẹt hạnh nhân não.",
+          bullets: [
+            "Kiểm tra phù gai thị (Papilledema), dấu thần kinh định vị, co giật mới xuất hiện.",
+            "Chụp CT sọ não loại trừ tổn thương choán chỗ (khối u, áp xe, tụ máu) hoặc hiệu ứng khối trước khi chọc.",
+            "Kiểm tra đông máu: Đông máu toàn bộ (PT, APTT) và đếm tiểu cầu (> 50.000/mm3)."
+          ],
+          safety: "CHỐNG CHỈ ĐỊNH ABSOLUTE: Có hiệu ứng khối sọ não hoặc dấu hiệu tăng áp lực nội sọ tiến triển (Tam chứng Cushing: Tăng HA, Nhịp chậm, Thở rối loạn).",
+          safetyType: "danger",
+          svgContent: `
+            <svg viewBox="0 0 300 200" width="280" height="180">
+              <circle cx="150" cy="90" r="50" fill="none" stroke="#e11d48" stroke-width="4"/>
+              <text x="150" y="95" text-anchor="middle" fill="#e11d48" font-weight="bold" font-size="14">LOẠI TRỪ TĂNG ALNS</text>
+              <text x="150" y="170" text-anchor="middle" fill="var(--color-text-muted)" font-size="12">CT Sọ Não & Soi Đáy Mắt Bình Thường</text>
+            </svg>
+          `
+        },
+        {
+          shortTitle: "2. Tư thế & Xác định L3-L4",
+          title: "Bước 2: Tư thế bệnh nhân & Đường Tuffier (L3-L4)",
+          description: "Cho bệnh nhân nằm nghiêng co người 'tư thế con tôm' (C-shape position) để mở rộng khoảng gian đốt sống thắt lưng.",
+          bullets: [
+            "Nằm nghiêng trái, hai đầu gối gấp sát bụng, cằm gập sát ngực.",
+            "Xác định đường Tuffier: Đường nối 2 đỉnh mào chậu băng qua gai sống L4 (hoặc khoảng gian sống L3-L4 / L4-L5).",
+            "Mục tiêu: Đưa kim vào dưới mức kết thúc của tủy sống (Nón tủy kết thúc ở L1-L2 ở người lớn)."
+          ],
+          safety: "KHÔNG chọc ở vị trí L1-L2 trở lên để tránh gây tổn thương trực tiếp tủy sống.",
+          safetyType: "danger",
+          svgContent: `
+            <svg viewBox="0 0 300 200" width="280" height="180">
+              <path d="M60 140 C100 40, 200 40, 240 140" stroke="var(--color-primary)" stroke-width="6" fill="none"/>
+              <line x1="150" y1="40" x2="150" y2="160" stroke="#f59e0b" stroke-width="2" stroke-dasharray="4"/>
+              <circle cx="150" cy="100" r="7" fill="#22c55e"/>
+              <text x="150" y="180" text-anchor="middle" fill="var(--color-success)" font-weight="bold" font-size="13">Khoảng Gian Sống L3-L4 (An Toàn)</text>
+            </svg>
+          `
+        },
+        {
+          shortTitle: "3. Sát khuẩn & Gây tê",
+          title: "Bước 3: Sát khuẩn vô khuẩn & Gây tê tại chỗ",
+          description: "Sát khuẩn rộng vùng thắt lưng theo hình xoắn ốc từ trong ra ngoài 3 lần.",
+          bullets: [
+            "Trải khăn vô khuẩn có lỗ.",
+            "Dùng Lidocaine 1-2% tiêm tạo nốt phồng da ngay chính giữa khoảng gian sống L3-L4.",
+            "Tiêm sâu gây tê dây chằng trên sống, dây chằng liên sống và dây chằng vàng."
+          ],
+          safety: "Tuân thủ nghiêm ngặt vô khuẩn: Mang găng tay vô khuẩn, khẩu trang, nón phẫu thuật.",
+          safetyType: "warning",
+          svgContent: `
+            <svg viewBox="0 0 300 200" width="280" height="180">
+              <rect x="80" y="50" width="140" height="100" rx="8" fill="none" stroke="var(--color-border)" stroke-width="3"/>
+              <circle cx="150" cy="100" r="20" fill="rgba(14, 165, 233, 0.2)" stroke="#0ea5e9" stroke-width="2"/>
+              <text x="150" y="175" text-anchor="middle" fill="var(--color-primary)" font-weight="bold" font-size="13">Vùng Vô Khuẩn & Tiêm Gây Tê</text>
+            </svg>
+          `
+        },
+        {
+          shortTitle: "4. Đưa kim Lumbar",
+          title: "Bước 4: Đưa kim chọc tủy (Spinal Needle) qua các lớp dây chằng",
+          description: "Sử dụng kim chọc tủy (20G-22G) có nòng (stylet) đưa chính giữa gian sống hướng nhẹ về phía rốn (15 độ lên trên).",
+          bullets: [
+            "Vạt vát của đầu kim hướng song song với các sợi dây chằng dọc (vát kim nằm ngang nếu bệnh nhân nằm nghiêng).",
+            "Đưa kim qua: Da -> Mô dưới da -> Dây chằng trên sống -> Dây chằng liên sống -> Dây chằng vàng (cảm giác 'hẫng tay' - pop feeling) -> Màng cứng.",
+            "Rút nhẹ nòng stylet ra kiểm tra dịch não tủy (CSF) chảy ra từng giọt trong suốt."
+          ],
+          safety: "Nếu đâm phải xương: Rút kim về lớp dưới da, điều chỉnh góc kim lên trên và đưa lại nhẹ nhàng.",
+          safetyType: "warning",
+          svgContent: `
+            <svg viewBox="0 0 300 200" width="280" height="180">
+              <line x1="40" y1="100" x2="220" y2="100" stroke="#0ea5e9" stroke-width="4"/>
+              <polygon points="220,95 235,100 220,105" fill="#0ea5e9"/>
+              <text x="140" y="80" fill="var(--color-primary)" font-weight="bold" font-size="12">Cảm giác 'Hẫng tay' qua Dây Chằng Vàng</text>
+              <text x="150" y="170" text-anchor="middle" fill="var(--color-text)" font-size="13">Dịch Não Tủy (CSF) Chảy Giọt Trong Suốt</text>
+            </svg>
+          `
+        },
+        {
+          shortTitle: "5. Đo áp lực & Lấy CSF",
+          title: "Bước 5: Đo áp lực mở CSF & Thu thập các ống nghiệm",
+          description: "Gắn cột đo áp lực (Manometer) đo áp lực CSF ban đầu và thu 3-4 ống nghiệm CSF.",
+          bullets: [
+            "Áp lực mở CSF bình thường: 10 - 20 cmH2O (ở tư thế nằm).",
+            "H hứng 3 - 4 ống CSF (mỗi ống 1-2 ml):",
+            "  - Ống 1: Tế bào & Đếm bạch cầu.",
+            "  - Ống 2: Sinh hóa (Protein, Glucose CSF song song với Glucose máu).",
+            "  - Ống 3: Vi sinh (Nhuộm Gram, cấy CSF, PCR Vi-rút, mực Tàu).",
+            "  - Ống 4: Xét nghiệm đặc biệt (Oligoclonal bands, Tế bào ung thư)."
+          ],
+          safety: "Nếu dịch đục/mủ: Nghi ngờ Viêm màng nội nhiễm khuẩn. Nếu dịch máu: Cần phân biệt chạm mạch (chảy bớt ở ống 3) vs Xuất huyết dưới nhện (máu đều 3 ống).",
+          safetyType: "danger",
+          svgContent: `
+            <svg viewBox="0 0 300 200" width="280" height="180">
+              <rect x="70" y="40" width="160" height="110" rx="8" fill="none" stroke="#22c55e" stroke-width="3"/>
+              <line x1="110" y1="120" x2="110" y2="50" stroke="#22c55e" stroke-width="4"/>
+              <text x="170" y="80" fill="#22c55e" font-weight="bold" font-size="12">Cột Áp Lực Manometer</text>
+              <text x="170" y="105" fill="var(--color-text)" font-size="11">Bình thường: 10-20 cmH2O</text>
+              <text x="150" y="175" text-anchor="middle" fill="var(--color-success)" font-weight="bold" font-size="13">✓ Lấy CSF Thành Công</text>
+            </svg>
+          `
+        },
+        {
+          shortTitle: "6. Rút kim & Nằm nghỉ",
+          title: "Bước 6: Rút kim, Băng kín & Cho nằm sấp/nằm phẳng",
+          description: "Đẩy stylet vào lại kim trước khi rút để tránh kéo rễ thần kinh. Rút kim nhanh và băng ép.",
+          bullets: [
+            "Đẩy stylet vào lại rồi rút kim ra.",
+            "Sát khuẩn lại, dán băng gạc vô khuẩn chắc chắn.",
+            "Bệnh nhân nằm phẳng không kê gối trong 4 - 6 giờ để phòng ngừa biến chứng Đau đầu sau chọc dò dịch tủy sống (Post-dural puncture headache)."
+          ],
+          safety: "Uống nhiều nước sau chọc. Nếu xuất hiện đau đầu khi ngồi/đứng dậy -> Điều trị nghỉ ngơi, giảm đau, caffeine hoặc làm thủ thuật dán máu màng cứng (Epidural blood patch) nếu kéo dài.",
+          safetyType: "warning",
+          svgContent: `
+            <svg viewBox="0 0 300 200" width="280" height="180">
+              <rect x="50" y="110" width="200" height="15" rx="4" fill="var(--color-border)"/>
+              <ellipse cx="200" cy="100" rx="20" ry="10" fill="#0ea5e9"/>
+              <text x="150" y="165" text-anchor="middle" fill="var(--color-primary)" font-weight="bold" font-size="13">Nằm Phẳng 4-6 Giờ Sau Chọc Dò</text>
+            </svg>
+          `
+        }
+      ];
+
+      new ProcedureAnimator({ steps: steps });
+    });
+  </script>
+</body>
+
+</html>

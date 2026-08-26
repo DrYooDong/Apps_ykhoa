@@ -1,0 +1,165 @@
+---
+title: "Sinh Lý Tuyến Tụy Nội Tiết: Insulin & Glucagon"
+slug: "sl-nt-tuyentuy"
+code: "PHYS-ENDO-04"
+part: "part7"
+system: "endocrine"
+systemName: "Sinh Lý Hệ Nội Tiết & Sinh Sản"
+guytonChapter: "Guyton 14th - Chapter 79: Insulin, Glucagon, and Diabetes Mellitus"
+ganongChapter: "Ganong 26th - Chapter 24: Endocrine Functions of the Pancreas & Regulation of Carbohydrate Metabolism"
+category: "physiology"
+status: "published"
+version: "2.0.0"
+updatedAt: "2026-08-26"
+description: "Sinh lý học Tuyến Tụy Nội Tiết: Cấu trúc tiểu đảo Langerhans (Tế bào Beta tiết Insulin/Amylin, Tế bào Alpha tiết Glucagon, Tế bào Delta tiết Somatostatin), cơ chế phân tử tiết Insulin (Kênh GLUT2, Kênh K_ATP, Kênh Ca2+), con đường truyền tin Tyrosine Kinase & kênh GLUT4, tác động đồng hóa đường/đạm/mỡ, cơ chế đối vận của Glucagon và sinh lý bệnh Đái tháo đường Type 1 vs Type 2 & Cơn hạ đường huyết."
+tags:
+  - "sinh-ly"
+  - "tuy-noi-tiet"
+  - "insulin"
+  - "glucagon"
+  - "glut4"
+  - "dai-thao-duong"
+clinicalPearls:
+  - "Cơ chế phân tử tiết Insulin tại tế bào Beta: Glucose đi vào qua GLUT2 -> Đường phân tạo ATP -> Nồng độ ATP/ADP tăng cao làm ĐÓNG KÊNH K_ATP -> Khử cực màng tế bào -> MỞ KÊNH CANXI ĐIỆN THẾ -> Dòng Ca2+ vào bào tương kích hoạt xuất bào các bóng chứa Insulin. Nhóm thuốc Sulfonylureas (Gliclazide, Glimepiride) gắn trực tiếp gây đóng kênh K_ATP để kích thích tiết Insulin."
+  - "Kênh vận chuyển Glucose GLUT4 (nằm trên cơ vân và mô mỡ) là KÊNH DUY NHẤT HOÀN TOÀN PHỤ THUỘC VÀO INSULIN. Khi không có Insulin, GLUT4 bị giấu kín trong các túi nội bào; khi Insulin gắn vào thụ thể Tyrosine Kinase, tín hiệu qua IRS-1/PI3K-Akt sẽ kích hoạt các túi này hòa màng đưa GLUT4 ra bề mặt để thu nhận Glucose."
+  - "C-peptide (chuỗi peptid nối tách ra từ Proinsulin theo tỷ lệ 1:1 với Insulin): Có thời gian bán hủy dài hơn Insulin và không bị gan chuyển hóa bước đầu. Định lượng C-peptide là tiêu chuẩn vàng để đánh giá chức năng bài tiết Insulin nội sinh còn lại của tế bào beta (C-peptide gần bằng 0 trong Đái tháo đường Type 1, trong khi tăng cao trong Đái tháo đường Type 2 giai đoạn đầu hoặc U đảo tụy Insulinoma)."
+sections:
+  - id: "sec-1"
+    number: 1
+    title: "Cấu Trúc Tiểu Đảo Langerhans"
+    icon: "fa-cubes"
+  - id: "sec-2"
+    number: 2
+    title: "Cơ Chế Phân Tử Tiết Insulin"
+    icon: "fa-dna"
+  - id: "sec-3"
+    number: 3
+    title: "Thụ Thể Tyrosine Kinase & Kênh GLUT4"
+    icon: "fa-arrows-down-to-line"
+  - id: "sec-4"
+    number: 4
+    title: "Tác Động Sinh Học: Insulin vs Glucagon"
+    icon: "fa-scale-balanced"
+  - id: "sec-5"
+    number: 5
+    title: "Bệnh Lý: ĐTĐ Type 1, Type 2 & Hạ Đường Huyết"
+    icon: "fa-stethoscope"
+  - id: "sec-6"
+    number: 6
+    title: "Tài Liệu Tham Khảo EBM"
+    icon: "fa-book-medical"
+---
+
+import { PhysioAlert, PhysioQuickNav, PhysioFeedbackLoop } from '../components'
+
+# 🥞 SINH LÝ TUYẾN TỤY NỘI TIẾT: INSULIN & GLUCAGON
+
+<PhysioQuickNav />
+
+---
+
+## 1. Cấu Trúc Tiểu Đảo Langerhans Của Tuyến Tụy {#sec-1}
+
+Tụy nội tiết chiếm khoảng 1–2% khối lượng tuyến tụy, gồm khoảng 1–2 triệu **Tiểu đảo Langerhans**:
+
+```
+[TIỂU ĐẢO LANGERHANS]
+  │
+  ├──► TẾ BÀO BETA (β - Chiếm 65% – 70%): Nằm ở trung tâm tiểu đảo ──► Tiết INSULIN & AMYLIN
+  │
+  ├──► TẾ BÀO ALPHA (α - Chiếm 20%): Nằm ở ngoại vi tiểu đảo      ──► Tiết GLUCAGON
+  │
+  ├──► TẾ BÀO DELTA (δ - Chiếm 5% – 10%):                          ──► Tiết SOMATOSTATIN (Ức chế cận tiết cả α và β)
+  │
+  └──► TẾ BÀO PP / F (Chiếm < 2%):                                 ──► Tiết PANCREATIC POLYPEPTIDE
+```
+
+- **Máu chảy từ tâm ra rìa (Center-to-periphery)**: Giúp nồng độ Insulin cực cao từ tế bào $\beta$ ức chế trực tiếp tế bào $\alpha$ tiết Glucagon.
+
+---
+
+## 2. Cơ Chế Phân Tử Kích Hoạt Bài Tiết Insulin Của Tế Bào Beta {#sec-2}
+
+```
+[NỒNG ĐỘ GLUCOSE MÁU TĂNG SAU ĂN (> 5.5 mmol/L)]
+         │
+         ▼
+[Glucose đi vào tế bào Beta qua KÊNH GLUT2 (Độc Lập với Insulin)]
+         │
+         ▼ (Enzyme Glucokinase phosphoryl hóa Glucose ──► Glucose-6-P)
+[Chu trình Đường phân & Hô hấp tế bào tại Ty thể]
+         │
+         ▼
+[TỶ LỆ ATP / ADP NỘI BÀO TĂNG VỌT]
+         │
+         ▼
+[ĐÓNG KÊNH KALI NHẠY CẢM ATP (K_ATP CHANNELS)] (Đích tác dụng của thuốc Sulfonylureas)
+         │
+         ▼
+Ion K+ không thoát ra được ──► KHỬ CỰC MÀNG TẾ BÀO BETA (-70 mV ──► -30 mV)
+         │
+         ▼
+[MỞ KÊNH CANXI PHỤ THUỘC ĐIỆN THẾ (Voltage-Gated Ca2+ Channels)]
+         │
+         ▼
+[DÒNG CANXI (Ca2+) ÙA VÀO BÀO TƯƠNG] ──► Kích hoạt Xuất Bào (Exocytosis)
+         │
+         ▼
+[PHÓNG THÍCH INSULIN & C-PEPTIDE VÀO TĨNH MẠCH CỬA VỀ GAN]
+```
+
+---
+
+## 3. Thụ Thể Tyrosine Kinase & Cơ Chế Huy Động Kênh GLUT4 {#sec-3}
+
+Insulin gắn vào **Thụ thể bề mặt (Receptor Tyrosine Kinase - gồm 2 tiểu đơn vị $\alpha$ ngoại bào và 2 tiểu đơn vị $\beta$ xuyên màng)**:
+
+```
+[INSULIN GẮN VÀO TIỂU ĐƠN VỊ ALPHA]
+         │
+         ▼
+Tự phosphoryl hóa gốc Tyrosine trên tiểu đơn vị Beta nội bào
+         │
+         ▼
+[Hoạt hóa Cơ chất Thụ thể Insulin (IRS-1 / IRS-2)]
+         │
+         ├──► 1. Nhánh PI3K ──► Protein Kinase B (Akt):
+         │       • KÍCH HOẠT HÒA MÀNG BỌC CHỨA KÊNH GLUT4 LÊN MÀNG TẾ BÀO CƠ & MỠ
+         │       • Tăng thu nhận Glucose từ máu vào tế bào gấp 20 – 40 lần
+         │       • Hoạt hóa Glycogen Synthase (Tăng tổng hợp Glycogen dự trữ)
+         │
+         └──► 2. Nhánh MAPK (Mitogen-Activated Protein Kinase):
+                 • Kích thích phân chia tế bào, tăng trưởng và đồng hóa protein
+```
+
+---
+
+## 4. Tác Động Sinh Học Đối Lập: Insulin vs Glucagon {#sec-4}
+
+| Loại chuyển hóa | Tác động của INSULIN (Hormone Đồng Hóa No) | Tác động của GLUCAGON (Hormone Dị Hóa Đói) |
+|---|---|---|
+| **Chuyển hóa Glucose** | • Tăng thu nhận Glucose tại cơ/mỡ (GLUT4)<br>• Tăng tổng hợp Glycogen tại Gan & Cơ<br>• Ức chế tân tạo đường & phân giải Glycogen<br>──► **HẠ ĐƯỜNG HUYẾT VỀ MỨC CHUẨN** | • Tăng phân giải Glycogen tại Gan (Glycogenolysis)<br>• Tăng tân tạo Glucose từ Acid amin & Glycerol<br>──► **NÂNG ĐƯỜNG HUYẾT KHI ĐÓI** |
+| **Chuyển hóa Lipid** | • Tăng tổng hợp Triglyceride tại mô mỡ<br>• Hoạt hóa Lipoprotein Lipase (LPL)<br>• **Ức chế mạnh mẽ men Lipase nhạy cảm hormone (HSL)** ──► Ngăn chặn tạo thể Ceton | • Hoạt hóa men HSL tăng ly giải mỡ tạo $FFA$<br>• Kích hoạt tạo thể Ceton (Ketogenesis) tại gan |
+| **Chuyển hóa Protein** | • Tăng vận chuyển acid amin vào cơ<br>• Tăng tổng hợp protein, chống teo cơ | • Tăng dị hóa protein cơ giải phóng acid amin làm cơ chất cho tân tạo đường tại gan |
+
+---
+
+## 5. Bệnh Lý Tuyến Tụy Nội Tiết Lâm Sàng EBM {#sec-5}
+
+<PhysioAlert type="danger" title="Phân Biệt: Đái Tháo Đường Type 1 vs Type 2">
+  1. **Đái Tháo Đường Type 1 (Thiếu Insulin Tuyệt Đối)**:
+     - *Cơ chế*: Tự miễn phá hủy $>90\%$ tế bào $\beta$ của tụy (Kháng thể Anti-GAD, IA-2, ZnT8) ở người trẻ.
+     - *Hậu quả cấp cứu*: Mất hoàn toàn Insulin làm tăng ly giải mỡ ồ ạt $\rightarrow$ Tích tụ các thể Ceton (Acetoacetate, $\beta$-hydroxybutyrate) gây **TOAN CETON ĐÁI THÁO ĐƯỜNG (DKA: Thở nhanh sâu Kussmaul, hơi thở mùi táo thối, Toan chuyển hóa tăng Anion Gap)**. Bắt buộc điều trị bằng Insulin suốt đời.
+  2. **Đái Tháo Đường Type 2 (Đề Kháng Insulin & Suy Giảm Tiết Tương Đối)**:
+     - *Cơ chế*: Liên quan béo phì, lối sống $\rightarrow$ Đề kháng Insulin tại mô cơ/mỡ kết hợp suy kiệt tế bào $\beta$ tiến triển.
+     - *Biến chứng cấp tính*: **Hội chứng Tăng Áp Suất Thẩm Thấu Máu Tăng Đường Huyết (HHS)** (Đường huyết $> 33\text{ mmol/L}$, không có toan ceton vì vẫn còn một lượng nhỏ Insulin ức chế ly giải mỡ).
+</PhysioAlert>
+
+---
+
+## 6. Tài Liệu Tham Khảo EBM {#sec-6}
+
+1. **Hall, J. E., & Hall, M. E. (2021)**. *Guyton and Hall Textbook of Medical Physiology* (14th ed.). Philadelphia: Elsevier. Chapter 79: Insulin, Glucagon, and Diabetes Mellitus.
+2. **Barrett, K. E. et al. (2019)**. *Ganong's Review of Medical Physiology* (26th ed.). New York: McGraw-Hill. Chapter 24: Endocrine Functions of the Pancreas.
+3. **Rorsman, P., & Braun, M. (2013)**. *Regulation of insulin secretion in human and rodent islets*. Annual Review of Physiology, 75, 155-179.
+4. **American Diabetes Association (2024)**. *Standards of Care in Diabetes—2024*. Diabetes Care, 47(Suppl. 1), S1-S343.

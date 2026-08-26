@@ -10,7 +10,9 @@
     "deploy": "npm run build && git subtree push --prefix dist origin gh-pages",
     "preview": "vite preview",
     "start": "electron platforms/desktop/main-electron.js",
-    "desktop": "electron platforms/desktop/main-electron.js"
+    "desktop": "electron platforms/desktop/main-electron.js",
+    "migrate": "node -e \"require('esbuild').buildSync({entryPoints:['tools/scripts/ume-migrate.ts'],outfile:'tools/scripts/ume-migrate.cjs',bundle:true,platform:'node'}); require('./tools/scripts/ume-migrate.cjs'); require('fs').unlinkSync('tools/scripts/ume-migrate.cjs');\"",
+    "migrate:validate": "tsc --noEmit"
   },
   "keywords": [
     "medical",

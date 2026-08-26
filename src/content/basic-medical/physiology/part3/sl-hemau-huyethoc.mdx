@@ -1,0 +1,156 @@
+---
+title: "Đại Cương Máu & Huyết Tương (Blood & Plasma)"
+slug: "sl-hemau-huyethoc"
+code: "PHYS-BLD-01"
+part: "part3"
+system: "cardiovascular"
+systemName: "Sinh Lý Máu & Hệ Miễn Dịch"
+guytonChapter: "Guyton 14th - Chapter 33: Red Blood Cells, Anemia, and Polycythemia & Chapter 36: Blood Types; Transfusion"
+ganongChapter: "Ganong 26th - Chapter 31: Blood as a Circulatory Fluid & the Dynamics of Blood and Lymph Flow"
+category: "physiology"
+status: "published"
+version: "2.0.0"
+updatedAt: "2026-08-26"
+description: "Sinh lý học Đại cương Máu & Huyết tương: Tổng thể tích máu, dung tích hồng cầu (Hematocrit), phân biệt huyết tương vs huyết thanh, sinh lý các protein huyết tương (Albumin, Globulin, Fibrinogen), áp suất keo huyết tương (Oncotic Pressure), định luật Starling về trao đổi dịch mao mạch và ứng dụng lâm sàng trong Phù (Edema), Hội chứng Thận hư và Xơ gan."
+tags:
+  - "sinh-ly"
+  - "he-mau"
+  - "huyet-tuong"
+  - "albumin"
+  - "ap-suat-keo"
+  - "starling"
+clinicalPearls:
+  - "Phân biệt Huyết tương (Plasma) vs Huyết thanh (Serum): Huyết thanh chính là Huyết tương ĐÃ LOẠI BỎ Fibrinogen và các yếu tố đông máu tiêu hao (II, V, VIII). Huyết thanh thu được sau khi máu đã đông tụ hoàn toàn trong ống nghiệm không chống đông."
+  - "Albumin chịu trách nhiệm cho 80% áp suất keo huyết tương (~28 mmHg) giữ nước lại trong lòng mạch. Khi Albumin huyết thanh giảm dưới 2.5 g/dL (do xơ gan giảm tổng hợp hoặc hội chứng thận hư tiểu đạm ồ ạt), áp suất keo tụt giảm làm nước thoát ồ ạt ra mô kẽ gây PHÙ TOÀN THÂN VÀ CỔ TRƯỚNG."
+  - "Tỷ lệ A/G (Albumin/Globulin) bình thường dao động 1.2 - 1.8. Đảo ngược tỷ lệ A/G (< 1.0) là dấu hiệu kinh điển của Xơ gan nặng (giảm Albumin) hoặc bệnh Đa u tủy xương Multiple Myeloma (tăng sinh gamma-globulin đơn dòng)."
+sections:
+  - id: "sec-1"
+    number: 1
+    title: "Chức Năng & Thành Phần Của Máu"
+    icon: "fa-droplet"
+  - id: "sec-2"
+    number: 2
+    title: "Dung Tích Hồng Cầu (Hematocrit)"
+    icon: "fa-vial"
+  - id: "sec-3"
+    number: 3
+    title: "Huyết Tương vs Huyết Thanh"
+    icon: "fa-flask"
+  - id: "sec-4"
+    number: 4
+    title: "Protein Huyết Tương & Áp Suất Keo"
+    icon: "fa-dna"
+  - id: "sec-5"
+    number: 5
+    title: "Định Luật Starling & Cơ Chế Phù"
+    icon: "fa-scale-balanced"
+  - id: "sec-6"
+    number: 6
+    title: "Tài Liệu Tham Khảo EBM"
+    icon: "fa-book-medical"
+---
+
+import { PhysioAlert, PhysioQuickNav, PhysioFeedbackLoop } from '../components'
+
+# 🩸 ĐẠI CƯƠNG MÁU & HUYẾT TƯƠNG (BLOOD & PLASMA)
+
+<PhysioQuickNav />
+
+---
+
+## 1. Chức Năng Sinh Lý & Thành Phần Đại Thể Của Máu {#sec-1}
+
+Máu là một mô liên kết lỏng đặc biệt lưu thông liên tục trong hệ tuần hoàn kín:
+- **Tổng thể tích máu**: Chiếm **7% – 8% trọng lượng cơ thể** (khoảng **5.0 – 5.5 lít** ở nam giới 70 kg; 4.5 – 5.0 lít ở nữ giới).
+- **pH máu động mạch**: Duy trì nghiêm ngặt ở mức **$7.35 – 7.45$**.
+- **Độ nhớt của máu**: Cao gấp **3.5 – 5.5 lần so với nước cất** (quy định chủ yếu bởi số lượng hồng cầu và nồng độ Fibrinogen/Globulin).
+
+```
+[MÁU TOÀN PHẦN (100%)]
+  │
+  ├──► CÁC TẾ BÀO HỮU HÌNH (40% – 45% / Hematocrit):
+  │       ├── Hồng cầu (Erythrocytes): 4.5 – 5.5 triệu/µL (Vận chuyển O2 & CO2)
+  │       ├── Bạch cầu (Leukocytes): 4.000 – 10.000/µL (Miễn dịch bảo vệ)
+  │       └── Tiểu cầu (Platelets): 150.000 – 400.000/µL (Cầm máu ban đầu)
+  │
+  └──► HUYẾT TƯƠNG (55% – 60% Thể tích):
+          ├── Nước (90% – 92%)
+          ├── Protein Huyết Tương (7.0 – 8.0 g/dL): Albumin (60%), Globulin (35%), Fibrinogen (4%)
+          └── Các chất hòa tan khác (2%): Glucose, Lipid, Điện giải (Na+, K+, Cl-, HCO3-), Urê
+```
+
+---
+
+## 2. Dung Tích Hồng Cầu (Hematocrit - Hct) {#sec-2}
+
+**Hematocrit (Hct)** là tỷ lệ phần trăm thể tích của các tế bào hồng cầu lắng đọng chiếm trong tổng thể tích máu toàn phần sau khi quay ly tâm:
+
+- **Nam giới trưởng thành**: **$42\% – 52\%$** (trung bình $47\%$).
+- **Nữ giới trưởng thành**: **$37\% – 47\%$** (trung bình $42\%$).
+
+<PhysioAlert type="danger" title="Biến Động Hematocrit Trong Lâm Sàng Cấp Cứu">
+  - **Hematocrit TĂNG CAO ($> 55\%$)**: Gặp trong tình trạng **Cô đặc máu (Mất nước nặng, Sốc bỏng, Thoát huyết tương trong Sốt xuất huyết Dengue)** hoặc Bệnh đa hồng cầu nguyên phát (*Polycythemia Vera*). Hct tăng làm tăng độ nhớt máu theo cấp số nhân, làm tăng sức cản mạch máu và tăng nguy cơ tắc mạch huyết khối.
+  - **Hematocrit GIẢM THẤP ($< 30\%$)**: Gặp trong các bệnh cảnh **Thiếu máu (Anemia)**, tan máu hoặc xuất huyết cấp tính sau khi đã bù dịch.
+</PhysioAlert>
+
+---
+
+## 3. Phân Biệt Huyết Tương (Plasma) vs Huyết Thanh (Serum) {#sec-3}
+
+| Tiêu chí phân biệt | Huyết Tương (Plasma) | Huyết Thanh (Serum) |
+|---|---|---|
+| **Cách thu thập** | Thu được khi ly tâm máu có chứa **chất chống đông** (EDTA, Heparin, Citrate). | Thu được sau khi máu đã để **đông tụ tự nhiên hoàn toàn** trong ống nghiệm không chống đông. |
+| **Thành phần Fibrinogen** | **Có chứa Fibrinogen (0.2 – 0.4 g/dL)** | **HOÀN TOÀN KHÔNG CÓ FIBRINOGEN** (Đã chuyển thành sợi Fibrin tạo cục đông). |
+| **Yếu tố đông máu** | Đầy đủ tất cả các yếu tố đông máu I – XIII | Thiếu hụt các yếu tố đã bị tiêu thụ: **Yếu tố I (Fibrinogen), II (Prothrombin), V, VIII, XIII**. |
+| **Ứng dụng xét nghiệm** | Xét nghiệm đông máu (PT, aPTT), khí máu | Hầu hết các xét nghiệm Hóa sinh (Men gan, Creatinine, Điện giải) và Miễn dịch. |
+
+---
+
+## 4. Hệ Thống Protein Huyết Tương & Áp Suất Keo {#sec-4}
+
+Tổng nồng độ protein huyết tương bình thường là **$6.5 – 8.3\text{ g/dL}$**, được chia thành 3 phân đoạn chính:
+
+```
+[PROTEIN HUYẾT TƯƠNG TOÀN PHẦN (7.0 - 8.0 g/dL)]
+  │
+  ├──► ALBUMIN (3.5 – 5.0 g/dL, ~60%):
+  │       • Do GAN tổng hợp 100% (12 – 15 g/ngày)
+  │       • Quyết định 75% – 80% Áp suất keo huyết tương (Oncotic Pressure)
+  │       • Vận chuyển Bilirubin gián tiếp, Acid béo tự do, Canxi, Thuốc (Warfarin, Kháng sinh)
+  │
+  ├──► GLOBULINS (2.0 – 3.5 g/dL, ~35%):
+  │       • Alpha-1 Globulin: Alpha-1 Antitrypsin (AAT)
+  │       • Alpha-2 Globulin: Haptoglobin (gắn Hemoglobin tự do), Ceruloplasmin (gắn Đồng)
+  │       • Beta Globulin: Transferrin (vận chuyển Sắt), Bổ thể (Complement C3, C4)
+  │       • Gamma Globulin (Immunoglobulins IgG, IgA, IgM, IgE, IgD): Do Tương bào (Plasma cells) tiết
+  │
+  └──► FIBRINOGEN (0.2 – 0.4 g/dL, ~4%):
+          • Do Gan tổng hợp; Yếu tố đông máu I chuyển thành Fibrin cầm máu
+```
+
+---
+
+## 5. Định Luật Starling Về Trao Đổi Dịch Mao Mạch & Cơ Chế Phù (Edema) {#sec-5}
+
+Sự di chuyển của dịch qua màng mao mạch được chi phối bởi **Phương trình Starling**:
+
+$$\text{Áp suất lọc ròng (NFP)} = \left[ (P_c - P_{if}) - \sigma (\pi_c - \pi_{if}) \right]$$
+
+- **$P_c$ (Áp suất thủy tĩnh mao mạch)**: Đẩy dịch từ lòng mạch ra mô kẽ ($30\text{ mmHg}$ ở đầu tiểu động mạch, $10\text{ mmHg}$ ở đầu tiểu tĩnh mạch).
+- **$\pi_c$ (Áp suất keo huyết tương do Albumin)**: Hút và giữ dịch lại trong lòng mạch (**$28\text{ mmHg}$**).
+
+<PhysioAlert type="danger" title="4 Cơ Chế Sinh Lý Bệnh Gây Phù (Edema) Trong Lâm Sàng">
+  1. **Giảm Áp Suất Keo Huyết Tương ($\downarrow \pi_c$)**: Khi nồng độ **Albumin $< 2.5\text{ g/dL}$** do giảm tổng hợp (Xơ gan mất bù, Suy dinh dưỡng Kwashiorkor) hoặc mất qua thận (Hội chứng thận hư tiểu đạm $> 3.5\text{ g/24h}$) ──► Nước thoát tự do ra mô kẽ gây **Phù toàn thân, phù mềm ấn lõm đối xứng hai bên, tràn dịch đa màng (Cổ trướng, màng phổi)**.
+  2. **Tăng Áp Suất Thủy Tĩnh Mao Mạch ($\uparrow P_c$)**: Suy tim ứ huyết (Suy tim phải gây tăng áp tĩnh mạch hệ thống $\rightarrow$ Phù 2 chi dưới), Huyết khối tĩnh mạch sâu (DVT gây phù 1 bên chân).
+  3. **Tăng Tính Thấm Thành Mạch**: Phản ứng viêm, dị ứng phản vệ (Histamine, Bradykinin mở rộng khe tế bào nội mô).
+  4. **Tắc Nghẽn Mạch Bạch Huyết**: Phù bạch huyết (*Lymphedema*) do ung thư di căn hạch, phẫu thuật nạo vét hạch hoặc nhiễm giun chỉ bạch huyết (*Wuchereria bancrofti*).
+</PhysioAlert>
+
+---
+
+## 6. Tài Liệu Tham Khảo EBM {#sec-6}
+
+1. **Hall, J. E., & Hall, M. E. (2021)**. *Guyton and Hall Textbook of Medical Physiology* (14th ed.). Philadelphia: Elsevier. Chapter 33: Red Blood Cells & Plasma Proteins.
+2. **Barrett, K. E. et al. (2019)**. *Ganong's Review of Medical Physiology* (26th ed.). New York: McGraw-Hill. Chapter 31: Blood as a Circulatory Fluid.
+3. **Starling, E. H. (1896)**. *On the absorption of fluids from the connective tissue spaces*. The Journal of Physiology, 19(4), 312-326.
+4. **Levick, J. R., & Michel, C. C. (2010)**. *Microvascular fluid exchange and the revised Starling principle*. Cardiovascular Research, 87(2), 198-210.

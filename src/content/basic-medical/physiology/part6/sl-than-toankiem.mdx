@@ -1,0 +1,166 @@
+---
+title: "Sinh Lý Thận Trong Điều Hòa Thăng Bằng Toan - Kiềm"
+slug: "sl-than-toankiem"
+code: "PHYS-REN-04"
+part: "part6"
+system: "renal"
+systemName: "Sinh Lý Thận & Thể Dịch"
+guytonChapter: "Guyton 14th - Chapter 31: Acid-Base Regulation"
+ganongChapter: "Ganong 26th - Chapter 39: Acid-Base Balance & Regulation of pH"
+category: "physiology"
+status: "published"
+version: "2.0.0"
+updatedAt: "2026-08-26"
+description: "Sinh lý học Toan Kiềm: Phương trình Henderson-Hasselbalch, 3 tuyến phòng thủ pH máu (Hệ đệm Bicarbonate, Hô hấp, Thận), cơ chế tế bào thận tái hấp thu 100% HCO3- và bài xuất acid cố định qua đệm Phosphate & Amoniac (NH4+), 4 rối loạn toan kiềm nguyên phát, công thức bù trừ Winter và chẩn đoán toan chuyển hóa tăng Anion Gap (MUDPILES) vs Toan ống thận (RTA)."
+tags:
+  - "sinh-ly"
+  - "toan-kiem"
+  - "ph-mau"
+  - "anion-gap"
+  - "mudpiles"
+  - "khi-mau-abg"
+clinicalPearls:
+  - "Khoảng trống Anion máu (Anion Gap = [Na+] - ([Cl-] + [HCO3-]), bình thường 8 - 12 mmol/L): Là công cụ bắt buộc phải tính trong mọi trường hợp Toan chuyển hóa (HCO3- giảm). Anion Gap tăng cao (> 12) phản ánh sự xuất hiện của các acid không đo được (Quy tắc MUDPILES: Methanol, Uremia, DKA toan ceton, Lactic acidosis, Ethylene glycol, Salicylates)."
+  - "Công thức Winter kiểm tra bù trừ hô hấp trong Toan Chuyển Hóa: PaCO2 kỳ vọng = (1.5 x [HCO3-]) + 8 ± 2. Nếu PaCO2 đo được CAO HƠN khoảng kỳ vọng -> Có toan hô hấp phối hợp (suy hô hấp); Nếu PaCO2 THẤP HƠN khoảng kỳ vọng -> Có kiềm hô hấp phối hợp."
+  - "Cơ chế Thận tạo HCO3- MỚI: Thận không chỉ tái hấp thu HCO3- cũ mà còn liên tục tạo thêm phân tử HCO3- mới đưa vào máu thông qua quá trình khử amin Glutamine tạo Amoni (NH4+ đào thải qua nước tiểu) và acid chuẩn độ H2PO4-."
+sections:
+  - id: "sec-1"
+    number: 1
+    title: "Khái Niệm pH & 3 Tuyến Phòng Thủ"
+    icon: "fa-scale-balanced"
+  - id: "sec-2"
+    number: 2
+    title: "Cơ Chế Tế Bào Thận: Tái Hấp Thu HCO3-"
+    icon: "fa-cubes"
+  - id: "sec-3"
+    number: 3
+    title: "Bài Xuất H+ & Đệm NH4+ / Phosphate"
+    icon: "fa-flask-vial"
+  - id: "sec-4"
+    number: 4
+    title: "4 Rối Loạn Toan Kiềm & Công Thức Bù Trừ"
+    icon: "fa-calculator"
+  - id: "sec-5"
+    number: 5
+    title: "Phân Loại Anion Gap & MUDPILES"
+    icon: "fa-triangle-exclamation"
+  - id: "sec-6"
+    number: 6
+    title: "Tài Liệu Tham Khảo EBM"
+    icon: "fa-book-medical"
+---
+
+import { PhysioAlert, PhysioQuickNav, PhysioFeedbackLoop } from '../components'
+
+# ⚖️ SINH LÝ THẬN TRONG ĐIỀU HÒA THĂNG BẰNG TOAN - KIỀM
+
+<PhysioQuickNav />
+
+---
+
+## 1. Khái Niệm pH Máu & 3 Tuyến Phòng Thủ Sinh Học {#sec-1}
+
+pH máu động mạch ở người bình thường được kiểm soát cực kỳ nghiêm ngặt trong khoảng **$7.35 – 7.45$** (tương ứng nồng độ $[H^+] \approx 40\text{ nmol/L}$):
+
+$$pH = 6.1 + \log_{10} \left( \frac{[HCO_3^-]}{0.03 \times PaCO_2} \right) \quad \text{(Phương Trình Henderson - Hasselbalch)}$$
+
+```
+[3 TUYẾN PHÒNG THỦ DUY TRÌ pH MÁU]
+  │
+  ├──► TUYẾN 1: CÁC HỆ ĐỆM HÓA HỌC (Đáp ứng tức thì trong vài giây)
+  │       • Hệ đệm Bicarbonate (HCO3- / H2CO3): Hệ đệm ngoại bào mạnh nhất
+  │       • Hệ đệm Protein & Hemoglobin: Hệ đệm nội bào chính
+  │       • Hệ đệm Phosphate (HPO4 2- / H2PO4 -): Đệm chính trong dịch ống thận và nội bào
+  │
+  ├──► TUYẾN 2: HỆ HÔ HẤP (Đáp ứng nhanh trong vài phút đến vài giờ)
+  │       • Điều hòa phân áp PaCO2 qua việc tăng/giảm thông khí phế nang
+  │
+  └──► TUYẾN 3: HỆ THẬN (Đáp ứng chậm sau vài giờ đến vài ngày - HIỆU QUẢ TỐI HẬU)
+          • Tái hấp thu 100% lượng HCO3- lọc qua cầu thận
+          • Đào thải lượng acid cố định (Non-volatile acids 50 – 100 mEq/ngày) và sinh mới HCO3-
+```
+
+---
+
+## 2. Cơ Chế Tế Bào Thận Tái Hấp Thu $HCO_3^-$ {#sec-2}
+
+Mỗi ngày có khoảng **$4.320\text{ mEq } HCO_3^-$** được lọc qua cầu thận. **$85\%$** lượng $HCO_3^-$ này được tái hấp thu tại Ống lượn gần (PCT) thông qua chu trình enzym Carbonic Anhydrase (CA):
+
+```
+[LÒNG ỐNG LƯỢN GẦN]                          [TẾ BÀO BIỂU MÔ PCT]                      [MÁU MAO MẠCH QUANH ỐNG]
+  Lọc HCO3- + H+ (bơm NHE3 tiết)
+       │
+       ▼
+     H2CO3
+       │ (Enzym CA-IV trên màng đỉnh)
+       ▼
+   CO2 + H2O ─────────────────────────────► CO2 + H2O
+                                               │ (Enzym CA-II trong bào tương)
+                                               ▼
+                                             H2CO3 ──► H+ (Tái sử dụng cho NHE3)
+                                               │
+                                               ▼
+                                             HCO3- ──(Kênh NBCe1 đồng vận 3 Na+)──► HCO3- (Về máu)
+```
+
+---
+
+## 3. Cơ Chế Thận Bài Xuất $H^+$ & Tạo Phân Tử $HCO_3^-$ Mới {#sec-3}
+
+Để trung hòa $50 – 100\text{ mEq}$ acid chuyển hóa cố định sinh ra mỗi ngày (Acid sulfuric, Acid phosphoric), tế bào ống thận đào thải $H^+$ vào nước tiểu dưới 2 dạng đệm:
+
+```
+                                 [ĐÀO THẢI ACID CỐ ĐỊNH CỦA THẬN]
+                                                │
+         ┌──────────────────────────────────────┴──────────────────────────────────────┐
+         ▼                                                                             ▼
+[1. HỆ ĐỆM PHOSPHATE (Acid Chuẩn Độ - Titratable Acid)]                [2. HỆ ĐỆM AMONIAC (NH4+ / Ammoniagenesis)]
+  • H+ tiết ra gắn với HPO4 2- tạo thành H2PO4 -                       • Tế bào PCT chuyển hóa Glutamine ──► 2 NH4+ + 2 HCO3- MỚI
+  • Đào thải khoảng 20 - 30 mEq H+/ngày                                • NH4+ được bài tiết vào nước tiểu; HCO3- mới vào máu
+  • TẠO RA 1 PHÂN TỬ HCO3- MỚI VÀO MÁU                                  • Đóng góp 30 - 50 mEq H+/ngày (CÓ THỂ TĂNG GẤP 10 LẦN KHI TOAN MÁU)
+```
+
+- **Giới hạn pH nước tiểu tối thiểu**: Bơm proton của thận không thể tiếp tục bơm $H^+$ tự do nếu pH nước tiểu tụt xuống **$< 4.5$** (Nhờ có hệ đệm $NH_4^+$ và Phosphate giữ cho pH nước tiểu không bị quá toan).
+
+---
+
+## 4. Bảng 4 Rối Loạn Toan Kiềm Nguyên Phát & Công Thức Bù Trừ EBM {#sec-4}
+
+| Rối Loạn Toan Kiềm | Biến đổi khởi phát | Đáp ứng bù trừ sinh lý | Công thức tính toán bù trừ kỳ vọng |
+|---|---|---|---|
+| **Toan Chuyển Hóa (Metabolic Acidosis)** | **$\downarrow [HCO_3^-]$** ($< 22\text{ mmol/L}$) | Bù hô hấp: **$\downarrow PaCO_2$** (Thở nhanh sâu Kussmaul) | **Công thức Winter**: $PaCO_2 = 1.5 \times [HCO_3^-] + 8 \pm 2$ |
+| **Kiềm Chuyển Hóa (Metabolic Alkalosis)** | **$\uparrow [HCO_3^-]$** ($> 26\text{ mmol/L}$) | Bù hô hấp: **$\uparrow PaCO_2$** (Thở chậm nông) | $PaCO_2 = 0.7 \times ([HCO_3^-] - 24) + 40 \pm 5$ |
+| **Toan Hô Hấp (Respiratory Acidosis)** | **$\uparrow PaCO_2$** ($> 45\text{ mmHg}$) | Bù thận: **$\uparrow [HCO_3^-]$** | • Cấp: Mỗi $\uparrow 10\text{ mmHg } PaCO_2 \rightarrow \uparrow [HCO_3^-] 1\text{ mmol/L}$<br>• Mạn: Mỗi $\uparrow 10\text{ mmHg } PaCO_2 \rightarrow \uparrow [HCO_3^-] 3.5\text{ mmol/L}$ |
+| **Kiềm Hô Hấp (Respiratory Alkalosis)** | **$\downarrow PaCO_2$** ($< 35\text{ mmHg}$) | Bù thận: **$\downarrow [HCO_3^-]$** | • Cấp: Mỗi $\downarrow 10\text{ mmHg } PaCO_2 \rightarrow \downarrow [HCO_3^-] 2\text{ mmol/L}$<br>• Mạn: Mỗi $\downarrow 10\text{ mmHg } PaCO_2 \rightarrow \downarrow [HCO_3^-] 5\text{ mmol/L}$ |
+
+---
+
+## 5. Phân Loại Toan Chuyển Hóa Theo Khoảng Trống Anion (Anion Gap) {#sec-5}
+
+$$\text{Anion Gap (AG)} = [Na^+] - \left( [Cl^-] + [HCO_3^-] \right) \quad \text{(Bình thường } \mathbf{8 – 12\text{ mmol/L}}\text{)}$$
+
+```
+                                  [TOAN CHUYỂN HÓA (HCO3- < 22 mmol/L)]
+                                                    │
+                 ┌──────────────────────────────────┴──────────────────────────────────┐
+                 ▼                                                                     ▼
+[TĂNG KHOẢNG TRỐNG ANION (AG > 12 mmol/L)]                          [ANION GAP BÌNH THƯỜNG (AG = 8-12 / TĂNG Cl- MÁU)]
+  (Có sự xuất hiện của Acid cố định không đo được):                  (Mất HCO3- được bù trừ hoàn toàn bằng ion Cl-):
+  • M - Methanol                                                      • H - Hyperalimentation (Nuôi dưỡng tĩnh mạch)
+  • U - Uremia (Suy thận cấp/mạn tích tụ phosphat/sulfat)             • A - Acetazolamide (Thuốc ức chế men CA)
+  • D - DKA (Toan Ceton Đái tháo đường, Nhịn đói, Nghiện rượu)         • R - Renal Tubular Acidosis (Toan ống thận RTA Type 1, 2, 4)
+  • P - Propylene Glycol                                              • D - Diarrhea (TIÊU CHẢY MẤT NHIỀU HCO3- QUA PHÂN)
+  • I - Isoniazid / Iron                                              • A - Addison disease (Suy thượng thận)
+  • L - Lactic Acidosis (Sốc nhiễm khuẩn, Thiếu oxy mô, Ngừng tim)    • S - Saline Infusion (TRUYỀN QUÁ NHIỀU NaCl 0.9%)
+  • E - Ethylene Glycol (Ngộ độc dung dịch chống đông)                • S - Spironolactone
+  • S - Salicylates (Ngộ độc Aspirin giai đoạn muộn)
+```
+
+---
+
+## 6. Tài Liệu Tham Khảo EBM {#sec-6}
+
+1. **Hall, J. E., & Hall, M. E. (2021)**. *Guyton and Hall Textbook of Medical Physiology* (14th ed.). Philadelphia: Elsevier. Chapter 31: Acid-Base Regulation.
+2. **Barrett, K. E. et al. (2019)**. *Ganong's Review of Medical Physiology* (26th ed.). New York: McGraw-Hill. Chapter 39: Acid-Base Balance & Regulation of pH.
+3. **Kraut, J. A., & Madias, N. E. (2010)**. *Metabolic acidosis: pathophysiology, diagnosis and management*. Nature Reviews Nephrology, 6(5), 274-285.
+4. **Berend, K., de Vries, A. P., & Gans, R. O. (2014)**. *Physiological approach to assessment of acid-base disturbances*. New England Journal of Medicine, 371(15), 1434-1445.

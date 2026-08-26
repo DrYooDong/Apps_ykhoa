@@ -136,3 +136,22 @@ Dùng trước khi commit hoặc hoàn tất bất kỳ bài tập / tính năng
 - [ ] **6. Security & Performance**: `rel="noopener noreferrer"`, Core Web Vitals (LCP < 2.5s, CLS < 0.1).
 - [ ] **7. CliniPortal Medical**: Relative paths audit (`./`, `../`, `../../`, `../../../`, `../../../../`), Dynamic Header/Footer injection, EBM Citations, Registry synchronization (`FILE_MAP.md`).
 
+---
+
+## ⚡ Checklist F: Chuyển Đổi Bài Giảng Sang MDX Native (MDX Migration Workflow)
+
+Dùng khi chuyển đổi các phân hệ bài giảng HTML tĩnh sang kiến trúc **TypeScript + MDX Native** tốc độ cao.
+
+- [ ] **1. Trích xuất Metadata & Cấu trúc Header**:
+  - Tiêu đề H1, mô tả tóm tắt, mã code bài giảng, phân hệ và các chương sách tham khảo Guyton/Ganong.
+- [ ] **2. Tạo Frontmatter YAML Chuẩn Typecheck**:
+  - Khai báo đầy đủ các trường: `title`, `slug`, `code`, `part`, `system`, `guytonChapter`, `clinicalPearls`, `sections`.
+- [ ] **3. Chuyển đổi Khung Nội dung & Linh kiện JSX**:
+  - Dùng thẻ linh kiện `<PhysioAlert>`, `<PhysioQuickNav>`, `<PhysioFeedbackLoop>`.
+  - Encode các ký tự đặc biệt trong text props (`&` $\rightarrow$ `và` hoặc `&amp;`).
+  - Bọc công thức Toán trong MathJax `$ ... $` hoặc `$$ ... $$`.
+- [ ] **4. Dọn dẹp File HTML Cũ**:
+  - Xóa file `.html` cùng tên ngay sau khi hoàn tất file `.mdx`.
+- [ ] **5. Kiểm thử TypeScript Compile**:
+  - Chạy `npm run typecheck` $\rightarrow$ Đạt chuẩn 0 lỗi type.
+

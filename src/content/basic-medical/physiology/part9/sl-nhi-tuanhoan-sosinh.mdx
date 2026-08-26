@@ -1,0 +1,147 @@
+---
+title: "Sinh Lý Tuần Hoàn Thai Nhi & Chuyển Tiếp Sơ Sinh"
+slug: "sl-nhi-tuanhoan-sosinh"
+code: "PHYS-PED-02"
+part: "part9"
+system: "pediatric"
+systemName: "Sinh Lý Học Nhi Khoa"
+guytonChapter: "Guyton 14th - Chapter 84: Neonatal and Pediatric Physiology"
+ganongChapter: "Ganong 26th - Chapter 33: Circulation Through Special Regions"
+category: "physiology"
+status: "published"
+version: "2.0.0"
+updatedAt: "2026-08-26"
+description: "Sinh lý học Tuần hoàn Thai Nhi & Sơ Sinh: 3 luồng thông bào thai (Ống tĩnh mạch Arantius, Lỗ bầu dục Foramen Ovale, Ống động mạch Ductus Arteriosus), áp lực phổi cao vs áp lực hệ thống thấp trong buồng ối, tiếng khóc đầu đời và cơ chế chuyển tiếp tuần hoàn sơ sinh (Cắt rốn, phổi nở, sụt giảm PVR, đóng các luồng thông) và bệnh lý Còn ống động mạch (PDA) vs Tăng áp phổi tồn tại sơ sinh (PPHN)."
+tags:
+  - "sinh-ly"
+  - "nhi-khoa"
+  - "tuan-hoan-thai-nhi"
+  - "ong-dong-mach"
+  - "lo-bau-duc"
+  - "chuyen-tiep-so-sinh"
+clinicalPearls:
+  - "3 Shunts sinh lý sống còn của tuần hoàn thai nhi: (1) Ống Tĩnh Mạch (Ductus Venosus) đưa máu giàu oxy từ Tĩnh mạch rốn đi tắt qua gan đổ thẳng vào Tĩnh mạch chủ dưới (IVC); (2) Lỗ Bầu Dục (Foramen Ovale) đưa 1/3 lượng máu giàu oxy từ Nhĩ Phải bắn thẳng sang Nhĩ Trái để ưu tiên tưới máu Não và Tim; (3) Ống Động Mạch (Ductus Arteriosus) dẫn 90% máu từ Động mạch phổi tống thẳng sang Động mạch chủ xuống, không qua phổi (vì phổi thai nhi chưa thở nên sức cản mạch phổi PVR cực cao)."
+  - "Cơ chế đóng Ống Động Mạch (Ductus Arteriosus) sau sinh: Sau tiếng khóc chào đời, nồng độ oxy máu tăng vọt (PaO2 tăng từ 25 lên 100 mmHg) kết hợp mất nguồn cung cấp Prostaglandin E2 từ bánh nhau làm cơ trơn thành ống động mạch co thắt mạnh mẽ, đóng kín về chức năng sau 10 - 15 giờ và đóng giải phẫu tạo Dây chằng động mạch sau vài tuần."
+  - "Dược lý ống động mạch EBM: Ở trẻ sinh non bị Còn Ống Động Mạch (PDA) có luồng thông Trái - Phải lớn đe dọa suy tim -> Dùng thuốc ức chế COX (Indomethacin hoặc Ibuprofen truyền tĩnh mạch) để ức chế Prostaglandin giúp ĐÓNG ỐNG ĐỘNG MẠCH. Ngược lại, trong các Tật tim bẩm sinh phụ thuộc ống động mạch (như Teo van động mạch phổi, Chuyển gốc động mạch lớn) -> Truyền liên tục Prostaglandin E1 (Alprostadil) để GIỮ MỞ ỐNG ĐỘNG MẠCH cứu sống trẻ."
+sections:
+  - id: "sec-1"
+    number: 1
+    title: "Sơ Đồ Tuần Hoàn Thai Nhi & 3 Shunts"
+    icon: "fa-arrows-split-up-and-left"
+  - id: "sec-2"
+    number: 2
+    title: "Đặc Điểm Áp Lực Phổi & Huyết Động Bào Thai"
+    icon: "fa-gauge-high"
+  - id: "sec-3"
+    number: 3
+    title: "Tiếng Khóc Đầu Đời & Chuyển Tiếp Sau Sinh"
+    icon: "fa-baby"
+  - id: "sec-4"
+    number: 4
+    title: "Cơ Chế Đóng Các Luồng Thông Sau Sinh"
+    icon: "fa-circle-check"
+  - id: "sec-5"
+    number: 5
+    title: "Bệnh Lý Lâm Sàng: PDA & PPHN"
+    icon: "fa-heart-pulse"
+  - id: "sec-6"
+    number: 6
+    title: "Tài Liệu Tham Khảo EBM"
+    icon: "fa-book-medical"
+---
+
+import { PhysioAlert, PhysioQuickNav, PhysioFeedbackLoop } from '../components'
+
+# 🫀 SINH LÝ TUẦN HOÀN THAI NHI & CHUYỂN TIẾP SƠ SINH
+
+<PhysioQuickNav />
+
+---
+
+## 1. Sơ Đồ Tuần Hoàn Thai Nhi & Ba Luồng Thông Sinh Lý (Shunts) {#sec-1}
+
+Trong buồng ối tử cung, **Bánh nhau (Placenta)** đảm nhận hoàn toàn chức năng hô hấp, dinh dưỡng và bài tiết thay cho phổi và thận của thai nhi:
+
+```
+[BÁNH NHAU (Máu bão hòa Oxy cao nhất: SaO2 80%, PO2 30 – 35 mmHg)]
+  │
+  ▼ (TĨNH MẠCH RỐN - 1 Tĩnh Mạch Rốn duy nhất)
+[ỐNG TĨNH MẠCH (DUCTUS VENOSUS - SHUNT 1)]: Đi tắt qua gan đổ thẳng vào Tĩnh Mạch Chủ Dưới (IVC)
+  │
+  ▼
+[TÂM NHĨ PHẢI] ──(Van Eustachian hướng dòng)──► [LỖ BẦU DỤC (FORAMEN OVALE - SHUNT 2)]
+  │                                                                 │
+  │ (Máu tĩnh mạch từ SVC trộn vào Nhĩ Phải)                        ▼
+  ▼                                                     [TÂM NHĨ TRÁI ──► TÂM THẤT TRÁI]
+[TÂM THẤT PHẢI ──► ĐỘNG MẠCH PHỔI]                                  │
+  │                                                                 ▼
+  │ (Sức cản mạch phổi PVR cực cao, chỉ 10% máu vào phổi)   [ĐỘNG MẠCH CHỦ LÊN]
+  ▼                                                                 │
+[ỐNG ĐỘNG MẠCH (DUCTUS ARTERIOSUS - SHUNT 3)]                       ├──► Thân Cánh Tay Đầu ──► NUÔI NÃO BỘ
+  │                                                                 └──► Động Mạch Vành   ──► NUÔI CƠ TIM
+  ▼
+[ĐỘNG MẠCH CHỦ XUỐNG ──► 2 ĐỘNG MẠCH RỐN ──► TRỞ VỀ BÁNH NHAU ĐỂ TRAO ĐỔI OXY]
+```
+
+---
+
+## 2. Đặc Điểm Huyết Động Bào Thai: Áp Lực Phổi Cao vs Áp Lực Hệ Thống Thấp {#sec-2}
+
+| Thông số tuần hoàn | Giai đoạn Trong Bào Thai | Ngay Sau Khi Sinh Ra Đời |
+|---|---|---|
+| **Sức cản mạch máu Phổi (PVR)** | **CỰC KỲ CAO** (Do phế nang chứa đầy dịch ép xẹp mao mạch và tình trạng thiếu oxy sinh lý gây co mạch phổi). | **TỤT GIẢM ĐỘT NGỘT 80%** (Phổi nở đón khí oxy gây giãn mạch phổi tối đa). |
+| **Sức cản mạch máu Hệ Thống (SVR)** | **RẤT THẤP** (Do bánh nhau là một hồ máu có trở kháng mạch cực kỳ thấp). | **TĂNG VỌT GẤP ĐÔI** (Do kẹp cắt dây rốn loại bỏ hoàn toàn tuần hoàn bánh nhau). |
+| **Áp lực buồng tim** | **Áp lực Tim Phải > Áp lực Tim Trái** ($RA > LA; RV > LV$). | **Áp lực Tim Trái > Áp lực Tim Phải** ($LA > RA; LV > RV$). |
+
+---
+
+## 3. Tiếng Khóc Đầu Đời & Sự Chuyển Tiếp Tuần Hoàn Sơ Sinh {#sec-3}
+
+```
+[TIẾNG KHÓC CHÀO ĐỜI & NHỊP THỞ ĐẦU TIÊN CỦA TRẺ]
+  │
+  ├── 1. Khí tràn vào phế nang tống đẩy dịch phổi ra ngoài ──► PHỔI NỞ TOÀN BỘ
+  │
+  ├── 2. Nồng độ Oxy phế nang tăng cao (PaO2 tăng từ 25 lên 100 mmHg)
+  │       ──► KÍCH HOẠT TỔNG HỢP NO VÀ PROSTACYCLIN (PGI2) ──► GIÃN MẠCH PHỔI TỐI ĐA
+  │       ──► Sức cản mạch phổi PVR sụt giảm nghiêm trọng
+  │       ──► Lượng máu về Nhĩ Trái tăng vọt gấp 10 lần ──► ÁP LỰC NHĨ TRÁI TĂNG CAO HƠN NHĨ PHẢI
+  │
+  └── 3. KẸP CẮT DÂY RỐN:
+          ──► Loại bỏ bánh nhau ──► Sức cản hệ thống SVR tăng cao
+          ──► Máu từ Tĩnh mạch rốn ngừng chảy ──► Áp lực Nhĩ Phải giảm thấp
+```
+
+---
+
+## 4. Cơ Chế Đóng Ba Luồng Thông Sinh Lý Sau Sinh {#sec-4}
+
+1. **Đóng Lỗ Bầu Dục (Foramen Ovale)**:
+   - Khi áp lực Nhĩ Trái vượt cao hơn áp lực Nhĩ Phải $\rightarrow$ Vách nguyên phát (*Septum Primum*) bị ép dính chặt vào vách thứ phát (*Septum Secundum*) như một chiếc van một chiều $\rightarrow$ **Đóng kín ngay tức thì trong vài giây đầu sau sinh** (Hóa sợi vĩnh viễn tạo thành Hố bầu dục *Fossa Ovalis* sau vài tháng).
+2. **Đóng Ống Động Mạch (Ductus Arteriosus)**:
+   - **$PaO_2$ tăng vọt** kết hợp **mất nguồn $PGE_2$ từ bánh nhau** $\rightarrow$ Co thắt cơ trơn thành ống động mạch $\rightarrow$ Đóng chức năng sau **10 – 15 giờ** $\rightarrow$ Hóa sợi thành Dây chằng động mạch (*Ligamentum Arteriosum*) sau 2–3 tuần.
+3. **Đóng Ống Tĩnh Mạch (Ductus Venosus)**:
+   - Kẹp rốn làm ngừng dòng máu tĩnh mạch rốn $\rightarrow$ Co thắt cơ vòng $\rightarrow$ Hóa xơ thành Dây chằng tĩnh mạch (*Ligamentum Venosum*).
+
+---
+
+## 5. Bệnh Lý Tuần Hoàn Sơ Sinh Lâm Sàng EBM {#sec-5}
+
+<PhysioAlert type="danger" title="Còn Ống Động Mạch (PDA) vs Tăng Áp Phổi Tồn Tại Sơ Sinh (PPHN)">
+  1. **Còn Ống Động Mạch (Patent Ductus Arteriosus - PDA)**:
+     - Thường gặp ở **trẻ sinh non** (do thành ống động mạch kém nhạy cảm với oxy và nồng độ $PGE_2$ lưu hành còn cao).
+     - Gây luồng thông **Trái $\rightarrow$ Phải** từ ĐMC sang ĐMP $\rightarrow$ Tăng gánh thể tích thất trái, phù phổi sung huyết, ruột thiếu máu gây viêm ruột hoại tử (NEC).
+     - *Điều trị*: Thuốc ức chế tổng hợp Prostaglandin (**Indomethacin hoặc Ibuprofen tiêm truyền**) giúp đóng ống.
+  2. **Tăng Áp Phổi Tồn Tại Ở Trẻ Sơ Sinh (PPHN)**:
+     - Thất bại trong việc sụt giảm sức cản mạch phổi sau sinh (do ngạt chu sinh, hít phân su MAS, nhiễm khuẩn huyết).
+     - Hậu quả: $PVR$ vẫn cao hơn $SVR \rightarrow$ **Tái lập luồng thông Phải $\rightarrow$ Trái qua Lỗ bầu dục và Ống động mạch** $\rightarrow$ Tím tái thiếu oxy máu nặng nề trơ với thở oxy.
+     - *Điều trị cấp cứu EBM*: **Thở khí Khí Nitric Oxide (iNO)** giãn chọn lọc mạch máu phổi kết hợp hồi sức thở máy cao tần HFOV.
+</PhysioAlert>
+
+---
+
+## 6. Tài Liệu Tham Khảo EBM {#sec-6}
+
+1. **Kliegman, R. M. et al. (2020)**. *Nelson Textbook of Pediatrics* (21st ed.). Philadelphia: Elsevier. Chapter 450: Fetal and Transitional Circulation.
+2. **Hall, J. E., & Hall, M. E. (2021)**. *Guyton and Hall Textbook of Medical Physiology* (14th ed.). Chapter 84: Neonatal and Pediatric Physiology.
+3. **Lakshminrusimha, S., & Saugstad, O. D. (2016)**. *The fetal circulation, normal transition, and transition with persistent pulmonary hypertension of the newborn*. NeoReviews, 17(5), e241-e251.

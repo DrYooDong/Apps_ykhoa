@@ -1,0 +1,193 @@
+---
+title: "Điện Sinh Lý Học Tế Bào & Điện Thế Hoạt Động"
+slug: "sl-tb-diensinhly"
+code: "PHYS-CELL-03"
+part: "part1"
+system: "cellular"
+systemName: "Sinh Lý Tế Bào & Nội Môi"
+guytonChapter: "Guyton 14th - Chapter 5: Membrane Potentials and Action Potentials"
+ganongChapter: "Ganong 26th - Chapter 4: Excitable Tissue: Nerve"
+category: "physiology"
+status: "published"
+version: "2.0.0"
+updatedAt: "2026-08-26"
+description: "Điện sinh lý học tế bào: Cơ chế hình thành điện thế màng lúc nghỉ (Phương trình Nernst & Goldman-Hodgkin-Katz), các pha của điện thế hoạt động (Khử cực, Tái cực, Ưu phân cực), thời kỳ trơ tuyệt đối/tương đối, dẫn truyền nhảy cóc qua eo Ranvier, điện sinh lý cơ tim (đáp ứng nhanh & nút xoang) và ứng dụng lâm sàng trong gây tê (Lidocaine), ngộ độc TTX và rối loạn Kali máu."
+tags:
+  - "dien-sinh-ly"
+  - "dien-the-nghi"
+  - "dien-the-hoat-dong"
+  - "nernst"
+  - "ghk"
+  - "saltatory"
+clinicalPearls:
+  - "Điện thế màng nghỉ của tế bào thần kinh và cơ vân (-70 đến -90 mV) gần như bằng điện thế cân bằng Nernst của ion K+ (-94 mV) do tính thấm của màng đối với K+ cao gấp 50-100 lần so với Na+."
+  - "Thuốc gây tê tại chỗ (Lidocaine, Bupivacaine) ức chế có hồi phục kênh Na+ phụ thuộc điện thế từ mặt trong màng, ngăn chặn hoàn toàn sự khử cực và dẫn truyền cảm giác đau."
+  - "Tăng Kali máu làm màng tế bào bớt phân cực (kéo Vm lên gần 0), ban đầu làm tăng tính kích thích nhưng sau đó làm bất hoạt mạn tính cổng h của kênh Na+, dẫn đến ngừng tim ở thì tâm trương."
+sections:
+  - id: "sec-1"
+    number: 1
+    title: "Điện Thế Màng Lúc Nghỉ (RMP)"
+    icon: "fa-bolt"
+  - id: "sec-2"
+    number: 2
+    title: "Phương Trình Nernst & GHK"
+    icon: "fa-square-root-variable"
+  - id: "sec-3"
+    number: 3
+    title: "Các Pha Điện Thế Hoạt Động"
+    icon: "fa-chart-line"
+  - id: "sec-4"
+    number: 4
+    title: "Thời Kỳ Trơ & Dẫn Truyền Nhảy Cóc"
+    icon: "fa-forward"
+  - id: "sec-5"
+    number: 5
+    title: "Điện Sinh Lý Tim Mạch Đặc Thù"
+    icon: "fa-heart-pulse"
+  - id: "sec-6"
+    number: 6
+    title: "Ứng Dụng Dược Lý & Cấp Cứu EBM"
+    icon: "fa-pills"
+  - id: "sec-7"
+    number: 7
+    title: "Tài Liệu Tham Khảo EBM"
+    icon: "fa-book-medical"
+---
+
+import { PhysioAlert, PhysioQuickNav, PhysioFeedbackLoop } from '../components'
+
+# ⚡ ĐIỆN SINH LÝ HỌC TẾ BÀO & ĐIỆN THẾ HOẠT ĐỘNG
+
+<PhysioQuickNav />
+
+---
+
+## 1. Điện Thế Màng Lúc Nghỉ (Resting Membrane Potential - RMP) {#sec-1}
+
+Ở trạng thái nghỉ không bị kích thích, tất cả các tế bào sống trong cơ thể đều duy trì một hiệu điện thế qua màng, trong đó **mặt trong màng tế bào tích điện âm hơn so với mặt ngoài màng**.
+
+- **Sợi thần kinh lớn & Tế bào cơ vân**: $V_m \approx -70\text{ đến }-90\text{ mV}$.
+- **Tế bào cơ trơn**: $V_m \approx -50\text{ đến }-60\text{ mV}$.
+- **Hồng cầu**: $V_m \approx -10\text{ mV}$.
+
+```
+Môi Trường Ngoại Bào [ECF]: [+] [+] [+] [+] [+] (Điện tích dương)
+════════════════════════════════════════════════ Màng tế bào lipid kép
+Bào Tương Nội Bào [ICF]:   [-] [-] [-] [-] [-] (Điện thế nghỉ Vm = -90 mV)
+```
+
+<PhysioAlert type="mechanism" title="3 Cơ Chế Cốt Lõi Tạo Nên Điện Thế Nghỉ Của Tế Bào">
+  1. **Tính Thấm Chọn Lọc Cao Với Ion $K^+$**: Ở trạng thái nghỉ, các kênh rò rỉ $K^+$ (*Tandem Pore Domain $K^+$ Channels - K2P*) luôn mở tự do, làm tính thấm của màng đối với $K^+$ cao gấp **50 – 100 lần** so với ion $Na^+$.
+  2. **Các Anion Không Thể Khuếch Tán Nội Bào**: Bên trong tế bào chứa một lượng lớn các phân tử mang điện âm lớn không thể đi qua màng (Protein nội bào, các gốc Phosphate hữu cơ $PO_4^{3-}$, $ATP$, $SO_4^{2-}$).
+  3. **Hoạt Động Bơm $Na^+/K^+$-ATPase**: Đẩy $3\text{ }Na^+$ ra ngoài chỉ lấy vào $2\text{ }K^+$, đóng góp trực tiếp làm âm thêm điện thế màng khoảng $-4\text{ mV}$ (Điện thế sinh điện Electrogenic).
+</PhysioAlert>
+
+---
+
+## 2. Phương Trình Nernst & Phương Trình Goldman-Hodgkin-Katz (GHK) {#sec-2}
+
+### A. Phương Trình Nernst (Điện Thế Cân Bằng Của Từng Ion)
+
+Điện thế cân bằng (*Equilibrium Potential - $E_{ion}$*) là mức hiệu điện thế màng mà tại đó lực đẩy do chênh lệch nồng độ cân bằng hoàn toàn với lực hút tĩnh điện, khiến dòng ion di chuyển ròng bằng 0:
+
+$$E_{ion} = \frac{R \cdot T}{z \cdot F} \ln \left( \frac{[C]_{out}}{[C]_{in}} \right) = \frac{61.5}{z} \log_{10} \left( \frac{[C]_{out}}{[C]_{in}} \right) \quad \text{(ở } 37^\circ\text{C)}$$
+
+| Ion | Nồng độ Ngoại bào ($[C]_{out}$) | Nồng độ Nội bào ($[C]_{in}$) | Điện thế cân bằng Nernst ($E_{ion}$) |
+|---|---|---|---|
+| **$K^+$ (Kali)** | 4.0 mmol/L | 140 mmol/L | **$-94\text{ mV}$** |
+| **$Na^+$ (Natri)** | 142 mmol/L | 14 mmol/L | **$+61\text{ mV}$** |
+| **$Ca^{2+}$ (Canxi)** | 2.4 mmol/L (Tự do 1.2) | 0.0001 mmol/L | **$+130\text{ mV}$** |
+| **$Cl^-$ (Clo)** | 103 mmol/L | 4.0 mmol/L | **$-86\text{ mV}$** |
+
+### B. Phương Trình Goldman-Hodgkin-Katz (GHK)
+
+Khi màng tế bào cho nhiều loại ion cùng đi qua với tính thấm (*Permeability - $P$*) khác nhau, điện thế màng $V_m$ được tính toán chính xác bằng phương trình GHK:
+
+$$V_m = 61.5 \log_{10} \left( \frac{P_{K}[K^+]_{out} + P_{Na}[Na^+]_{out} + P_{Cl}[Cl^-]_{in}}{P_{K}[K^+]_{in} + P_{Na}[Na^+]_{in} + P_{Cl}[Cl^-]_{out}} \right)$$
+
+Vì ở trạng thái nghỉ $P_K \gg P_{Na}$, điện thế màng thực tế ($V_m \approx -90\text{ mV}$) nằm rất sát với $E_K$ ($-94\text{ mV}$).
+
+---
+
+## 3. Các Pha Của Điện Thế Hoạt Động (Action Potential) {#sec-3}
+
+Khi kích thích đạt ngưỡng (*Threshold Potential $\approx -55\text{ mV}$*), tế bào thần kinh và cơ sẽ phát sinh một biến đổi điện thế bùng phát cực nhanh tuân theo **Quy luật Tất cả hoặc Không (All-or-None Law)**:
+
+```
+ Điện thế (mV)
+   +35 ──┐              ▲ Giai đoạn Vượt ngưỡng (Overshoot)
+         │             / \
+     0 ──┼────────────/───\───────────────────────────
+         │           /     \
+   -55 ──┼──────────/       \  ◄ Ngưỡng kích thích (Threshold)
+         │         /         \
+   -70 ──┼────────/           \
+   -90 ──┴───────/             \__________ ◄ Ưu phân cực (Undershoot)
+             Khử cực        Tái cực
+           (Na+ ùa vào)   (K+ thoát ra)
+```
+
+1. **Giai đoạn Khử Cực (Depolarization)**:
+   - Điện thế màng đạt ngưỡng $-55\text{ mV}$ làm mở đồng loạt **Cổng hoạt hóa (Cổng m)** của kênh Natri phụ thuộc điện thế (*Voltage-Gated $Na^+$ Channel - VGSC*).
+   - $Na^+$ ùa vào ồ ạt theo cả gradient nồng độ và điện thế, đảo ngược điện thế màng từ $-90\text{ mV}$ lên **$+35\text{ mV}$ (Hiện tượng Vượt mức Overshoot)**.
+2. **Giai đoạn Tái Cực (Repolarization)**:
+   - Sau vài phần vạn giây, **Cổng bất hoạt (Cổng h)** của kênh $Na^+$ tự động đóng lại, ngắt dòng $Na^+$ vào tế bào.
+   - Đồng thời, các **Kênh Kali phụ thuộc điện thế (*VGKC*)** mở chậm hoàn toàn, ion $K^+$ mang điện tích dương ồ ạt thoát ra ngoài, kéo điện thế màng tụt nhanh về mức âm.
+3. **Giai đoạn Ưu Phân Cực (Hyperpolarization / Undershoot)**:
+   - Kênh $K^+$ đóng chậm làm một lượng $K^+$ tiếp tục thoát thêm ra ngoài, kéo $V_m$ âm hơn mức nghỉ (tiến sát $-94\text{ mV}$). Bơm $Na^+/K^+$ và kênh rò rỉ nhanh chóng lập lại trạng thái nghỉ $-90\text{ mV}$.
+
+---
+
+## 4. Thời Kỳ Trơ & Dẫn Truyền Nhảy Cóc Qua Eo Ranvier {#sec-4}
+
+### A. Thời Kỳ Trơ (Refractory Period)
+
+- **Thời kỳ trơ tuyệt đối (Absolute Refractory Period - ARP)**: Kéo dài từ lúc bắt đầu khử cực đến 1/3 giai đoạn tái cực. Trong giai đoạn này, **cổng bất hoạt h của kênh $Na^+$ đang đóng chặt**, tế bào **hoàn toàn không thể phát sinh thêm một điện thế hoạt động thứ hai** dù cường độ kích thích mạnh đến đâu. ARP quyết định giới hạn tần số phát xung tối đa và đảm bảo xung động thần kinh chỉ dẫn truyền theo 1 chiều duy nhất.
+- **Thời kỳ trơ tương đối (Relative Refractory Period - RRP)**: Kênh $Na^+$ đã hồi phục về trạng thái sẵn sàng nhưng kênh $K^+$ vẫn còn mở. Tế bào có thể phát sinh điện thế hoạt động mới nếu kích thích có **cường độ mạnh hơn bình thường (Suprathreshold)**.
+
+### B. Dẫn Truyền Nhảy Cóc (Saltatory Conduction)
+
+- Ở sợi thần kinh có bao **Myelin** (được tạo bởi tế bào Schwann ở ngoại vi hoặc tế bào Oligodendrocyte ở TƯ), bao myelin là lớp cách điện tuyệt vời.
+- Dòng điện thế hoạt động không thể đi xuyên qua bao myelin mà **nhảy cóc (Saltatory)** từ eo Ranvier này sang eo Ranvier kế tiếp (nơi tập trung mật độ kênh $Na^+$ cực cao).
+- *Ý nghĩa sinh học*:
+  1. **Tăng tốc độ dẫn truyền lên gấp 50 – 100 lần** (từ 0.5 m/s ở sợi C không myelin lên tới **120 m/s ở sợi $A\alpha$ có myelin**).
+  2. **Tiết kiệm năng lượng ATP tối đa** cho bơm $Na^+/K^+$ vì chỉ cần tái lập nồng độ ion tại các nút eo Ranvier nhỏ bé.
+
+---
+
+## 5. Điện Sinh Lý Tim Mạch Đặc Thù {#sec-5}
+
+<PhysioAlert type="pearl" title="So Sánh 2 Dạng Điện Thế Hoạt Động Của Hệ Tim Mạch">
+  1. **Điện thế hoạt động đáp ứng nhanh (Cơ tâm thất, tâm nhĩ, Mạng Purkinje)**:
+     - *Pha 0*: Khử cực nhanh do dòng $Na^+$ ồ ạt qua kênh $Na_V1.5$.
+     - *Pha 1*: Tái cực sớm ngắn do dòng $K^+$ thoát ra qua kênh $I_{to}$.
+     - *Pha 2 (Cao nguyên Plateau)*: Kéo dài 200–300 ms do **dòng $Ca^{2+}$ đi vào qua kênh $Ca_V1.2$ (L-type)** cân bằng với dòng $K^+$ đi ra. Đây là pha giúp cơ tim có thời gian co bóp tống máu và ngăn ngừa hiện tượng co cứng uốn ván (Tetany).
+     - *Pha 3*: Tái cực nhanh do kênh $K^+$ mở mạnh ($I_{Kr}, I_{Ks}$).
+     - *Pha 4*: Điện thế nghỉ ổn định $-90\text{ mV}$.
+  2. **Điện thế hoạt động đáp ứng chậm (Nút xoang SA, Nút nhĩ thất AV - Tự Động Tính)**:
+     - Không có pha 0 dốc đứng và không có pha cao nguyên.
+     - **Pha 4 Tự khử cực tâm trương (Pacemaker Potential)**: Do dòng **$I_f$ (Funny Current)** cho $Na^+$ đi vào kích hoạt bởi hiện tượng ưu phân cực, kết hợp dòng $Ca^{2+}$ kênh T và L, tự động kích hoạt nhịp đập chủ nhịp cho quả tim.
+</PhysioAlert>
+
+---
+
+## 6. Ứng Dụng Dược Lý & Cấp Cứu Lâm Sàng EBM {#sec-6}
+
+<PhysioAlert type="danger" title="Cấp Cứu Rối Loạn Điện Giải: Tăng Kali Máu & Nguy Cơ Rung Thất Ngừng Tim">
+  - **Tăng Kali máu ($K^+ > 5.5\text{ mmol/L}$)**: Làm giảm gradient nồng độ $K^+$ qua màng ──► Theo phương trình Nernst, điện thế nghỉ $V_m$ bị bớt âm hóa (kéo từ $-90\text{ mV}$ lên $-70\text{ mV}$). Tình trạng khử cực mạn tính này làm **bất hoạt liên tục cổng h của kênh $Na^+$**, khiến cơ tim trơ hoàn toàn, xuất hiện sóng T cao nhọn đối xứng, giãn rộng phức bộ QRS và dẫn đến **Rung thất / Vô tâm thu ngừng tim**.
+  - **Chỉ định cấp cứu khẩn cấp**: Tiêm ngay **Calcium Gluconate hoặc Calcium Chloride tĩnh mạch** để ổn định màng tế bào cơ tim (kéo ngưỡng kích thích Threshold lên cao tương ứng để ngăn loạn nhịp).
+</PhysioAlert>
+
+<PhysioAlert type="mechanism" title="Thuốc Tê Tại Chỗ (Lidocaine) & Độc Tố Tetrodotoxin (TTX)">
+  - **Thuốc gây tê tại chỗ (Lidocaine, Bupivacaine)**: Xâm nhập qua màng dưới dạng không tích điện, sau đó ion hóa bên trong bào tương và gắn vào thụ thể ức chế **ở mặt trong lỗ kênh $Na^+$ điện thế**, khóa chặt kênh ở trạng thái bất hoạt và chặn đứng dẫn truyền cảm giác đau.
+  - **Độc tố Cá nóc (Tetrodotoxin - TTX)**: Gắn cực kỳ chặt vào **mặt ngoài của kênh $Na^+$**, làm tê liệt hoàn toàn hệ thần kinh và cơ hô hấp gây tử vong do ngạt thở trong vòng vài giờ nếu không được thở máy hỗ trợ.
+</PhysioAlert>
+
+---
+
+## 7. Tài Liệu Tham Khảo EBM {#sec-7}
+
+1. **Hall, J. E., & Hall, M. E. (2021)**. *Guyton and Hall Textbook of Medical Physiology* (14th ed.). Philadelphia: Elsevier. Chapter 5: Membrane Potentials and Action Potentials.
+2. **Barrett, K. E. et al. (2019)**. *Ganong's Review of Medical Physiology* (26th ed.). New York: McGraw-Hill. Chapter 4: Excitable Tissue: Nerve.
+3. **Hodgkin, A. L., & Huxley, A. F. (1952)**. *A quantitative description of membrane current and its application to conduction and excitation in nerve*. The Journal of Physiology, 117(4), 500-544.
+4. **Katz, A. M. (2010)**. *Physiology of the Heart* (5th ed.). Philadelphia: Lippincott Williams & Wilkins.

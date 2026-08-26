@@ -16,10 +16,20 @@ import { renderEpiTriangle, EpiTriangleProps } from '../content/basic-medical/ep
 import { renderEpiAlert, EpiAlertProps } from '../content/basic-medical/epidemiology/components/EpiAlert';
 import { renderEpiPillarsNav } from '../content/basic-medical/epidemiology/components/EpiPillarsNav';
 import { renderEpiVectorTable, EpiVectorTableProps } from '../content/basic-medical/epidemiology/components/EpiVectorTable';
+import { renderPhysioAlert, PhysioAlertProps } from '../content/basic-medical/physiology/components/PhysioAlert';
+import { renderPhysioQuickNav } from '../content/basic-medical/physiology/components/PhysioQuickNav';
+import { renderPhysioFeedbackLoop, PhysioFeedbackLoopProps } from '../content/basic-medical/physiology/components/PhysioFeedbackLoop';
+import { renderBiochemAlert, BiochemAlertProps } from '../content/basic-medical/biochemistry/components/BiochemAlert';
+import { renderBiochemQuickNav } from '../content/basic-medical/biochemistry/components/BiochemQuickNav';
+import { renderPathoAlert, PathoAlertProps } from '../content/basic-medical/pathophysiology-cases/components/PathoAlert';
+import { renderPathoQuickNav } from '../content/basic-medical/pathophysiology-cases/components/PathoQuickNav';
 import { EpidemiologyMdxFrontmatter } from '../content/basic-medical/types/epidemiology.types';
+import { PhysioMdxFrontmatter } from '../content/basic-medical/types/physiology.types';
+import { BiochemistryMdxFrontmatter } from '../content/basic-medical/types/biochemistry.types';
+import { CcbsMdxFrontmatter } from '../content/basic-medical/types/ccbs.types';
 
 export interface ParsedMdxResult {
-  frontmatter: Partial<EpidemiologyMdxFrontmatter> & Record<string, any>;
+  frontmatter: Partial<EpidemiologyMdxFrontmatter | PhysioMdxFrontmatter | BiochemistryMdxFrontmatter | CcbsMdxFrontmatter> & Record<string, any>;
   title: string;
   description: string;
   html: string;
@@ -229,6 +239,70 @@ export class CliniMdxEngine {
       };
       return renderEpiVectorTable(props);
     });
+
+    // 5. <PhysioQuickNav />
+    result = result.replace(/<PhysioQuickNav\s*\/?>/gi, () => {
+      return renderPhysioQuickNav();
+    });
+
+    // 6. <PhysioAlert type="..." title="...">...</PhysioAlert>
+    result = result.replace(/<PhysioAlert\s+type=["']([^"']+)["']\s+title=["']([^"']+)["'](?:\s+badge=["']([^"']+)["'])?>([\s\S]*?)<\/PhysioAlert>/gi,
+      (_match, type, title, badge, children) => {
+        return renderPhysioAlert({
+          type: type as any,
+          title,
+          badge,
+          children: children.trim()
+        });
+      }
+    );
+
+    // 7. <PhysioFeedbackLoop ... />
+    result = result.replace(/<PhysioFeedbackLoop\s+type=["']([^"']+)["']\s+title=["']([^"']+)["']\s+stimulus=["']([^"']+)["']\s+receptor=["']([^"']+)["']\s+controlCenter=["']([^"']+)["']\s+effector=["']([^"']+)["']\s+response=["']([^"']+)["']\s*\/?>/gi,
+      (_match, type, title, stimulus, receptor, controlCenter, effector, response) => {
+        return renderPhysioFeedbackLoop({
+          type: type as any,
+          title,
+          stimulus,
+          receptor,
+          controlCenter,
+          effector,
+          response
+        });
+      }
+    );
+
+    // 8. <BiochemQuickNav />
+    result = result.replace(/<BiochemQuickNav\s*\/?>/gi, () => {
+      return renderBiochemQuickNav();
+    });
+
+    // 9. <BiochemAlert type="..." title="...">...</BiochemAlert>
+    result = result.replace(/<BiochemAlert\s+type=["']([^"']+)["'](?:\s+title=["']([^"']+)["'])?>([\s\S]*?)<\/BiochemAlert>/gi,
+      (_match, type, title, children) => {
+        return renderBiochemAlert({
+          type: type as any,
+          title,
+          children: children.trim()
+        });
+      }
+    );
+
+    // 10. <PathoQuickNav />
+    result = result.replace(/<PathoQuickNav\s*\/?>/gi, () => {
+      return renderPathoQuickNav();
+    });
+
+    // 11. <PathoAlert type="..." title="...">...</PathoAlert>
+    result = result.replace(/<PathoAlert\s+type=["']([^"']+)["'](?:\s+title=["']([^"']+)["'])?>([\s\S]*?)<\/PathoAlert>/gi,
+      (_match, type, title, children) => {
+        return renderPathoAlert({
+          type: type as any,
+          title,
+          children: children.trim()
+        });
+      }
+    );
 
     return result;
   }

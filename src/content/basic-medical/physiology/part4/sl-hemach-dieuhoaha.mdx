@@ -1,0 +1,188 @@
+---
+title: "Sinh Lý Hệ Mạch & Điều Hòa Huyết Áp Hệ Thống"
+slug: "sl-hemach-dieuhoaha"
+code: "PHYS-CARD-03"
+part: "part4"
+system: "cardiovascular"
+systemName: "Sinh Lý Tim Mạch & Hô Hấp"
+guytonChapter: "Guyton 14th - Chapters 14–19: Vascular Distensibility, Arterial Pressure, Nervous Regulation & Renal Control of Arterial Pressure"
+ganongChapter: "Ganong 26th - Chapters 31 & 32: Dynamics of Blood and Lymph Flow & Cardiovascular Regulatory Mechanisms"
+category: "physiology"
+status: "published"
+version: "2.0.0"
+updatedAt: "2026-08-26"
+description: "Sinh lý học Hệ Mạch & Huyết áp: Cấu trúc chức năng các tầng mạch máu, huyết động lực học Poiseuille (kháng lực tỷ lệ nghịch bán kính lũy thừa 4), công thức huyết áp động mạch trung bình (MAP), cơ chế điều hòa thần kinh ngắn hạn qua phản xạ Baroreceptor (Xoang cảnh & Quai ĐMC), phản xạ thiếu máu não Cushing và cơ chế thể dịch dài hạn của hệ RAA (Renin-Angiotensin-Aldosterone), ADH và Peptides lợi niệu ANP/BNP."
+tags:
+  - "sinh-ly"
+  - "he-mach"
+  - "huyet-ap"
+  - "poiseuille"
+  - "baroreceptor"
+  - "raa-system"
+clinicalPearls:
+  - "Định luật Poiseuille: Kháng lực mạch máu (R) tỷ lệ nghịch với LŨY THỪA BẬC 4 CỦA BÁN KÍNH LÒNG MẠCH (1/r^4). Một sự co thắt nhẹ làm giảm 16% bán kính tiểu động mạch sẽ làm tăng gấp ĐÔI kháng lực mạch máu ngoại vi (SVR) và làm tăng vọt huyết áp."
+  - "Tam chứng Cushing (Cushing Triad) trong Tăng áp lực nội sọ cấp tính (ICP tăng đè bẹp mao mạch não gây thiếu máu não cục bộ cực độ): (1) Tăng huyết áp hệ thống kịch phát, (2) Mạch chậm nghịch thường (do phản xạ Baroreceptor đáp ứng với HA quá cao), và (3) Nhịp thở không đều / thở ngắt quãng Cheyne-Stokes. Đây là dấu hiệu cảnh báo tụt kẹt não đe dọa tử vong tức thì."
+  - "Thuốc ức chế men chuyển ACEi (Captopril, Enalapril) và Chẹn thụ thể ARBs (Losartan, Valsartan) phong bế trục RAA, vừa hạ huyết áp vừa làm GIÃN TIỂU ĐỘNG MẠCH ĐI CỦA CẦU THẬN, giúp giảm áp lực lọc cầu thận và bảo vệ thận lâu dài ở bệnh nhân Đái tháo đường và Bệnh thận mạn."
+sections:
+  - id: "sec-1"
+    number: 1
+    title: "Cấu Trúc & Phân Loại Các Tầng Mạch"
+    icon: "fa-route"
+  - id: "sec-2"
+    number: 2
+    title: "Huyết Động Học & Định Luật Poiseuille"
+    icon: "fa-square-root-variable"
+  - id: "sec-3"
+    number: 3
+    title: "Huyết Áp Động Mạch Trung Bình (MAP)"
+    icon: "fa-gauge-high"
+  - id: "sec-4"
+    number: 4
+    title: "Điều Hòa Thần Kinh Nhanh (Baroreceptor & Cushing)"
+    icon: "fa-bolt"
+  - id: "sec-5"
+    number: 5
+    title: "Điều Hòa Thể Dịch Dài Hạn (Hệ RAA, ADH, ANP)"
+    icon: "fa-dna"
+  - id: "sec-6"
+    number: 6
+    title: "Tài Liệu Tham Khảo EBM"
+    icon: "fa-book-medical"
+---
+
+import { PhysioAlert, PhysioQuickNav, PhysioFeedbackLoop } from '../components'
+
+# 🫀 SINH LÝ HỆ MẠCH & ĐIỀU HÒA HUYẾT ÁP HỆ THỐNG
+
+<PhysioQuickNav />
+
+---
+
+## 1. Cấu Trúc Chức Năng Của Các Tầng Mạch Máu {#sec-1}
+
+Hệ thống mạch máu trong đại tuần hoàn được chia thành các phân đoạn chức năng chuyên biệt:
+
+```
+[ĐỘNG MẠCH LỚN (ĐMC, ĐM Cảnh)] ──► Giàu sợi chun đàn hồi (Windkessel Effect biến dòng máu ngắt quãng thành liên tục)
+               │
+[TIỂU ĐỘNG MẠCH (Arterioles)] ──► Mạch cản chính (Chứa 2/3 tổng sức cản SVR, kiểm soát tưới máu từng mô)
+               │
+[MAO MẠCH (Capillaries)]      ──► Thành mỏng 1 lớp tế bào nội mô, diện tích bề mặt khổng lồ (1.000 m2) trao đổi chất
+               │
+[TĨNH MẠCH (Veins & Venules)] ──► Mạch chứa dung tích (Chứa 65% tổng thể tích máu, kiểm soát hồi lưu tiền tải)
+```
+
+---
+
+## 2. Huyết Động Lực Học & Định Luật Poiseuille {#sec-2}
+
+Dòng chảy của máu trong hệ mạch tuân theo các nguyên lý vật lý thủy động lực học:
+
+### A. Định Luật Ohm Cho Hệ Tuần Hoàn
+
+$$\Delta P = Q \times R \quad \Longleftrightarrow \quad MAP - CVP = CO \times SVR$$
+
+Trong đó: $MAP$ là Huyết áp động mạch trung bình, $CO$ là Cung lượng tim, $SVR$ là Tổng sức cản ngoại biên (Systemic Vascular Resistance).
+
+### B. Định Luật Poiseuille Về Sức Cản Mạch Máu
+
+$$R = \frac{8 \cdot \eta \cdot L}{\pi \cdot r^4}$$
+
+- $\eta$: Độ nhớt của máu (phụ thuộc Hematocrit).
+- $L$: Chiều dài mạch máu.
+- **$r$: Bán kính lòng mạch**: **Kháng lực $R$ tỷ lệ nghịch với lũy thừa bậc 4 của bán kính lòng mạch**.
+
+$$\text{Bán kính giảm } 50\% \quad \Longrightarrow \quad \text{Sức cản mạch máu TĂNG GẤP } 16\text{ LẦN } (2^4 = 16)$$
+
+---
+
+## 3. Huyết Áp Động Mạch Trung Bình (Mean Arterial Pressure - MAP) {#sec-3}
+
+Huyết áp là áp lực của dòng máu tác động lên một đơn vị diện tích thành động mạch:
+- **Huyết áp tâm thu (SBP)**: Đạt đỉnh khi thất trái tống máu ($\approx 120\text{ mmHg}$).
+- **Huyết áp tâm trương (DBP)**: Điểm thấp nhất trước nhát bóp tiếp theo ($\approx 80\text{ mmHg}$).
+- **Huyết áp kẹp / Áp lực mạch (Pulse Pressure - PP)**: $PP = SBP - DBP \approx 40\text{ mmHg}$.
+
+### Công Thức Tính Huyết Áp Trung Bình (MAP)
+Vì thời gian tâm trương kéo dài gấp đôi thời gian tâm thu ($2/3$ chu kỳ tim là tâm trương):
+
+$$MAP = DBP + \frac{1}{3}(SBP - DBP) = 80 + \frac{1}{3}(120 - 80) = \mathbf{93.3\text{ mmHg}}$$
+
+- **Ý nghĩa lâm sàng**: $MAP$ là áp lực tưới máu thực tế nuôi dưỡng các cơ quan sinh tồn (Não, Thận, Tim). Trong hồi sức cấp cứu sốc, **mục tiêu bắt buộc là duy trì $MAP \ge 65\text{ mmHg}$**.
+
+---
+
+## 4. Điều Hòa Huyết Áp Ngắn Hạn: Phản Xạ Thần Kinh Baroreceptor {#sec-4}
+
+Phản xạ thụ thể áp lực (*Baroreceptor Reflex*) phản ứng trong vòng vài phần giây để điều chỉnh các biến động huyết áp tức thì (khi thay đổi tư thế từ nằm sang đứng):
+
+```
+                       [HUYẾT ÁP TĂNG CAO ĐỘT NGỘT]
+                                    │
+         ┌──────────────────────────┴──────────────────────────┐
+         ▼                                                     ▼
+[XOANG ĐỘNG MẠCH CẢNH]                               [QUAI ĐỘNG MẠCH CHỦ]
+(Dẫn truyền theo Dây IX - Thần kinh Hering)           (Dẫn truyền theo Dây X - Dây Mê tẩu)
+         │                                                     │
+         └──────────────────────────┬──────────────────────────┘
+                                    ▼
+                 [NHÂN BÓ ĐƠN ĐỘC TẠI HÀNH NÃO (NTS)]
+                                    │
+         ┌──────────────────────────┴──────────────────────────┐
+         ▼                                                     ▼
+[KÍCH THÍCH TRUNG TÂM ĐỐI GIAO CẢM (Dây X)]           [ỨC CHẾ TRUNG TÂM VẬN MẠCH GIAO CẢM]
+         │                                                     │
+         ▼                                                     ▼
+Làm chậm nhịp tim (M2)                                Giãn tiểu động mạch & Giãn tĩnh mạch
+         │                                                     │
+         └──────────────────────────┬──────────────────────────┘
+                                    ▼
+                [HUYẾT ÁP HẠ NHANH CHÓNG VỀ MỨC CÀI ĐẶT BÌNH THƯỜNG]
+```
+
+<PhysioAlert type="danger" title="Phản Xạ Thiếu Máu Não Cấp Tính & Tam Chứng Cushing (Cushing Reflex)">
+  Khi có khối máu tụ nội sọ hoặc phù não làm **Áp lực nội sọ (ICP) tăng vọt vượt quá MAP** $\rightarrow$ Các mạch máu não bị đè bẹp gây thiếu máu nuôi hành não nghiêm trọng $\rightarrow$ Kích hoạt trung tâm giao cảm phát xung cực đại để cố gắng đẩy máu lên não.
+  - **Tam chứng Cushing kinh điển**:
+    1. **TĂNG HUYẾT ÁP HỆ THỐNG KỊCH PHÁT** (Do co mạch giao cảm tối đa).
+    2. **MẠCH CHẬM NGHỊCH THƯỜNG** (Do Baroreceptor xoang cảnh phát hiện HA quá cao kích thích dây X hãm nhịp tim).
+    3. **RỐI LOẠN NHỊP THỞ / THỞ NGẮT QUÃNG** (Do thân não bị chèn ép).
+</PhysioAlert>
+
+---
+
+## 5. Điều Hòa Huyết Áp Dài Hạn: Hệ Thống RAA, ADH & Peptides Lợi Niệu {#sec-5}
+
+Thận là cơ quan giữ vai trò quyết định trong việc thiết lập mức huyết áp nền tảng dài hạn của cơ thể:
+
+```
+[HUYẾT ÁP GIẢM / GIẢM TƯỚI MÁU THẬN / KÍCH THÍCH GIAO CẢM BETA-1]
+                            │
+                            ▼
+[Tế Bào Cạnh Cầu Thận Tiết Enzyme RENIN Vào Máu]
+                            │
+                            ▼
+[Chuyển Angiotensinogen (từ Gan) ──► Angiotensin I (Decapeptide bất hoạt)]
+                            │
+                            ▼ (Enzyme Men Chuyển ACE tại Nội Mô Mao Mạch Phổi)
+[ANGIOTENSIN II (Octapeptide Sinh Học Cực Mạnh)]
+                            │
+         ┌──────────────────┼──────────────────┬──────────────────┐
+         ▼                  ▼                  ▼                  ▼
+[Co Mạnh Tiểu ĐM]   [Tiết ALDOSTERONE]   [Kích Thích Tuyến Yên]   [Tăng Hấp Thu Na+]
+Tăng SVR ──► Tăng HA  Giữ Na+ & Nước     Tiết ADH giữ nước        Trực tiếp tại Ống lượn gần
+```
+
+<PhysioAlert type="mechanism" title="Peptide Lợi Niệu Nhĩ (ANP) & Peptide Lợi Niệu Thất (BNP)">
+  - **ANP (Atrial Natriuretic Peptide)**: Do cơ tâm nhĩ tiết ra khi thành nhĩ bị căng giãn quá mức.
+  - **BNP (B-type Natriuretic Peptide)**: Do cơ tâm thất tiết ra khi thất bị quá tải áp lực hoặc quá tải thể tích (chỉ số vàng trong chẩn đoán và theo dõi suy tim).
+  - *Tác dụng*: ANP/BNP đối kháng trực tiếp với hệ RAA $\rightarrow$ Làm giãn động mạch ngoại vi, giãn tiểu động mạch đến cầu thận tăng độ lọc GFR, tăng thải Natri và nước qua nước tiểu để **HẠ HUYẾT ÁP VÀ GIẢM TIỀN TẢI CHO QUẢ TIM**.
+</PhysioAlert>
+
+---
+
+## 6. Tài Liệu Tham Khảo EBM {#sec-6}
+
+1. **Hall, J. E., & Hall, M. E. (2021)**. *Guyton and Hall Textbook of Medical Physiology* (14th ed.). Philadelphia: Elsevier. Chapters 14–19: Vascular Physics & Arterial Pressure Regulation.
+2. **Barrett, K. E. et al. (2019)**. *Ganong's Review of Medical Physiology* (26th ed.). New York: McGraw-Hill. Chapters 31 & 32: Blood Flow Dynamics & Cardiovascular Regulation.
+3. **Whelton, P. K. et al. (2018)**. *2017 ACC/AHA Guideline for the Prevention, Detection, Evaluation, and Management of High Blood Pressure in Adults*. Journal of the American College of Cardiology, 71(19), e127-e248.
+4. **Cowley, A. W. (1992)**. *Long-term control of arterial pressure*. Physiological Reviews, 72(1), 231-300.

@@ -1,0 +1,175 @@
+---
+title: "Sinh Lý Tuyến Tiêu Hóa Lớn: Gan & Tụy Ngoại Tiết"
+slug: "sl-th-gantuy"
+code: "PHYS-DIG-03"
+part: "part5"
+system: "digestive"
+systemName: "Sinh Lý Hệ Tiêu Hóa & Chuyển Hóa"
+guytonChapter: "Guyton 14th - Chapter 65: Secretory Functions of the Alimentary Tract & Chapter 71: The Liver as an Organ"
+ganongChapter: "Ganong 26th - Chapter 26: Gastrointestinal Secretion & Absorption & Chapter 27: Transport & Metabolic Functions of the Liver"
+category: "physiology"
+status: "published"
+version: "2.0.0"
+updatedAt: "2026-08-26"
+description: "Sinh lý học Gan và Tụy ngoại tiết: Cơ chế bài tiết dịch tụy giàu enzym tiêu hóa (Trypsinogen, Lipase, Amylase) và dịch kiềm giàu HCO3- qua kênh CFTR, vai trò của Enterokinase tá tràng; sinh tổng hợp muối mật từ Cholesterol, chức năng nhũ tương hóa lipid và tạo hạt Micelle, chu trình Ruột - Gan (Enterohepatic circulation tại Hồi tràng), cơ chế điều hòa của Secretin vs Cholecystokinin (CCK) và ứng dụng lâm sàng trong Viêm tụy cấp, Sỏi mật & Bệnh Xơ nang tụy (Cystic Fibrosis)."
+tags:
+  - "sinh-ly"
+  - "gan-tuy"
+  - "dich-tuy"
+  - "dich-mat"
+  - "chu-trinh-ruot-gan"
+  - "secretin-cck"
+clinicalPearls:
+  - "Hormone Secretin (Tế bào S tá tràng tiết khi gặp acid) kích thích tế bào ống tụy tiết dịch lỏng kiềm giàu HCO3- để trung hòa acid dạ dày; Hormone Cholecystokinin CCK (Tế bào I tá tràng tiết khi gặp chất béo/protein) kích thích nang tụy tiết enzym và CO BÓP TÚI MẬT + GIÃN CƠ VÒNG ODDI tống mật."
+  - "95% lượng muối mật được tái hấp thu chủ động tại ĐOẠN CUỐI HỒI TRÀNG (Terminal Ileum) theo tĩnh mạch cửa trở về gan tái sử dụng. Bệnh nhân bị viêm hồi tràng (Bệnh Crohn) hoặc phẫu thuật cắt đoạn cuối hồi tràng sẽ bị mất muối mật ra phân -> Không hấp thu được chất béo gây TIÊU CHẢY MỠ (Steatorrhea), THIẾU VITAMIN TAN TRONG DẦU (A, D, E, K) và SỎI MẬT CHOLESTEROL."
+  - "Bệnh Xơ nang tụy (Cystic Fibrosis do đột biến kênh Cl- CFTR): Tế bào ống dẫn tụy không bài tiết được Cl- và HCO3- làm dịch tụy bị cô đặc quánh lại, gây tắc nghẽn các ống dẫn tụy, xơ hóa nhu mô tụy và suy tụy ngoại tiết nặng nề ở trẻ em."
+sections:
+  - id: "sec-1"
+    number: 1
+    title: "Sinh Lý Tụy Ngoại Tiết & Hoạt Hóa Enzym"
+    icon: "fa-flask-vial"
+  - id: "sec-2"
+    number: 2
+    title: "Cơ Chế Tiết Kiềm HCO3- & Kênh CFTR"
+    icon: "fa-dna"
+  - id: "sec-3"
+    number: 3
+    title: "Sinh Tổng Hợp Muối Mật & Hạt Micelle"
+    icon: "fa-droplet"
+  - id: "sec-4"
+    number: 4
+    title: "Chu Trình Ruột - Gan (Enterohepatic)"
+    icon: "fa-recycle"
+  - id: "sec-5"
+    number: 5
+    title: "Điều Hòa Nội Tiết: Secretin vs CCK"
+    icon: "fa-scale-balanced"
+  - id: "sec-6"
+    number: 6
+    title: "Bệnh Lý EBM: Viêm Tụy Cấp & Sỏi Mật"
+    icon: "fa-pills"
+  - id: "sec-7"
+    number: 7
+    title: "Tài Liệu Tham Khảo EBM"
+    icon: "fa-book-medical"
+---
+
+import { PhysioAlert, PhysioQuickNav, PhysioFeedbackLoop } from '../components'
+
+# 🫀 SINH LÝ TUYẾN TIÊU HÓA LỚN: GAN & TỤY NGOẠI TIẾT
+
+<PhysioQuickNav />
+
+---
+
+## 1. Sinh Lý Dịch Tụy Ngoại Tiết & Chuỗi Phản Ứng Hoạt Hóa Enzym {#sec-1}
+
+Tuyến tụy ngoại tiết bài tiết **$1.0 – 1.5\text{ Lít dịch tụy/ngày}$** (pH kiềm mạnh $8.0 – 8.3$):
+
+```
+[TẾ BÀO NANG TUYẾN TỤY (ACINAR CELLS)]
+  │
+  ├──► TIỀN CHẤT ENZYM PROTEIN (Zymogens bất hoạt - Tránh tự tiêu hóa tụy):
+  │       • Trypsinogen • Chymotrypsinogen • Procarboxypeptidase • Proelastase
+  │
+  ├──► ENZYM TIÊU HÓA LIPID:
+  │       • Pancreatic Lipase (Thủy phân Triglyceride) • Colipase • Cholesterol Esterase
+  │
+  └──► ENZYM TIÊU HÓA CARBOHYDRATE & NUCLEIC ACID:
+          • Alpha-Amylase tụy • Ribonuclease & Deoxyribonuclease
+```
+
+<PhysioAlert type="mechanism" title="Enzym Khởi Động Enterokinase Tại Tá Tràng">
+  Tất cả các zymogen tụy được bài tiết ra dưới dạng tiền chất bất hoạt để bảo vệ tuyến tụy. Khi dịch tụy đổ vào tá tràng:
+  1. Enzym **Enterokinase (Enteropeptidase)** neo giữ trên riềm bàn chải niêm mạc tá tràng cắt chuỗi hexapeptide để hoạt hóa **Trypsinogen $\rightarrow$ TRYPSIN**.
+  2. Phân tử **Trypsin** tự do vừa tạo ra sẽ hoạt động như một "kíp nổ dây chuyền", xúc tác hoạt hóa toàn bộ các phân tử Trypsinogen khác và cắt mở tất cả các zymogen còn lại thành enzym tiêu hóa hoạt tính.
+</PhysioAlert>
+
+---
+
+## 2. Cơ Chế Tiết Dung Dịch Kiềm $HCO_3^-$ Qua Kênh CFTR {#sec-2}
+
+Tế bào biểu mô ống dẫn tụy (*Ductal cells*) bài tiết nồng độ $HCO_3^-$ lên tới **$120 – 140\text{ mEq/L}$** (cao gấp 5 lần trong máu) để trung hòa acid dịch vị:
+
+```
+[BÀO TƯƠNG TẾ BÀO ỐNG DẪN TỤY]                          [LÒNG ỐNG DẪN TỤY]
+  CO2 + H2O ──(Carbonic Anhydrase)──► H2CO3 ──► H+ + HCO3-
+                                                     │
+                                                     ▼ (Bơm trao đổi Cl-/HCO3-) ──► HCO3- (vào dịch tụy)
+                                             Cl- ◄───┘
+                                              ▲
+                                              │ (Tuần hoàn hồi lưu Cl-)
+                                              │
+                    [KÊNH CLORUA CFTR] ───────┴────────────────────────► Cl- (vào lòng ống)
+```
+
+---
+
+## 3. Sinh Tổng Hợp Muối Mật & Cấu Trúc Hạt Micelle {#sec-3}
+
+Gan bài tiết khoảng **$600 – 1.000\text{ mL dịch mật/ngày}$**:
+- **Thành phần dịch mật**: **Muối mật ($50\%$)**, **Phospholipid / Lecithin ($40\%$)**, **Cholesterol ($4\%$)**, và **Bilirubin liên hợp ($2\%$)**.
+- **Sinh tổng hợp Muối mật**: Gan chuyển hóa Cholesterol $\rightarrow$ **Acid Cholic & Acid Chenodeoxycholic** qua enzyme giới hạn tốc độ **$7\alpha$-Hydroxylase** $\rightarrow$ Liên hợp với Glycine hoặc Taurine tạo thành Muối mật tan trong nước.
+
+```
+                  [CẤU TRÚC HẠT MICELLE HỖN HỢP]
+                           │
+       ┌───────────────────┴───────────────────┐
+       ▼                                       ▼
+[VỎ NGOÀI ƯA NƯỚC (Hydrophilic)]     [LÕI TRONG KỴ NƯỚC (Hydrophobic)]
+  • Muối mật mang điện âm              • Acid béo tự do chuỗi dài
+  • Đầu ưa nước của Lecithin           • Monoglyceride & Cholesterol
+  • Tiếp xúc với dịch nước ruột non    • CÁC VITAMIN TAN TRONG DẦU (A, D, E, K)
+```
+
+- **Ý nghĩa sinh học**: Hạt Micelle có đường kính siêu nhỏ ($3 – 10\text{ nm}$) đóng vai trò như các "xe buýt phân tử", vận chuyển các chất béo kỵ nước xuyên qua lớp nước tĩnh tiếp cận sát màng vi nhung mao ruột non để hấp thu.
+
+---
+
+## 4. Chu Trình Ruột - Gan Của Muối Mật (Enterohepatic Circulation) {#sec-4}
+
+Tổng lượng muối mật trong cơ thể chỉ khoảng **$2.5 – 4.0\text{ gam}$**, nhưng được tuần hoàn tái sử dụng **$6 – 10\text{ lần/ngày}$** (đáp ứng tiêu hóa $20 – 30\text{ gam}$ muối mật/ngày):
+
+```
+[GAN: Bài tiết Muối Mật vào Mật] ──► [TÚI MẬT: Cô đặc & Chứa đựng]
+                                                    │
+                                                    ▼ (Kích thích bởi CCK)
+                                     [TÁ TRÀNG & HỖNG TRÀNG: Tiêu hóa Lipid]
+                                                    │
+                                                    ▼
+[95% MUỐI MẬT ĐƯỢC TÁI HẤP THU CHỦ ĐỘNG TẠI ĐOẠN CUỐI HỒI TRÀNG (Terminal Ileum)]
+                                                    │
+                                                    ▼ (Theo Tĩnh Mạch Cửa trở về Gan)
+                                     [GAN TÁI TIẾT VÀO MẬT (Chỉ mất 5% qua phân)]
+```
+
+---
+
+## 5. Bảng Đối So Sánh Hai Hormone Tiêu Hóa Cốt Lõi: Secretin vs CCK {#sec-5}
+
+| Đặc điểm | Hormone Secretin | Hormone Cholecystokinin (CCK) |
+|---|---|---|
+| **Tế bào tiết** | **Tế bào S** tại niêm mạc tá tràng và hỗng tràng | **Tế bào I** tại niêm mạc tá tràng và hỗng tràng |
+| **Kích thích bài tiết chính** | **Acid dịch vị tràn vào tá tràng (pH $< 4.5$)** | **Acid béo tự do, Monoglyceride & Peptid/Acid amin** |
+| **Tác động lên Tụy** | Kích thích tế bào ống dẫn tiết **LƯỢNG LỚN DỊCH KIỀM GIÀU $HCO_3^-$** | Kích thích tế bào nang tụy tiết **LƯỢNG LỚN ENZYM TIÊU HÓA** |
+| **Tác động lên Hệ Mật** | Kích thích tế bào biểu mô đường mật tiết thêm $HCO_3^-$ | **CO BÓP TÚI MẬT & GIÃN CƠ VÒNG ODDI** tống mật |
+| **Tác động lên Dạ dày** | Ức chế bài tiết acid HCl và ức chế tống thoát dạ dày | Làm chậm quá trình làm rỗng dạ dày (tạo cảm giác no) |
+
+---
+
+## 6. Bệnh Lý Tuyến Tiêu Hóa Lâm Sàng EBM {#sec-6}
+
+<PhysioAlert type="danger" title="Sinh Lý Bệnh Viêm Tụy Cấp (Acute Pancreatitis) — Tự Tiêu Hóa Tụy">
+  - **Cơ chế**: Do sỏi mật kẹt tại bóng Vater hoặc do cồn rượu làm tăng áp lực và tính thấm ống tụy $\rightarrow$ **Trypsinogen bị hoạt hóa sớm bất thường ngay trong lòng các nang tụy**.
+  - **Hệ quả**: Trypsin tự do hoạt hóa ồ ạt Elastase (phá hủy thành mạch gây xuất huyết tụy), Phospholipase A2 (hoại tử mỡ), và dòng thác bổ thể $\rightarrow$ **TỰ TIÊU HÓA HOẠI TỬ TOÀN BỘ NHU MÔ TỤY**, sốc nhiễm độc, suy đa tạng và ARDS.
+  - **Chỉ điểm sinh học vàng**: **Lipase huyết thanh tăng cao $> 3\text{ lần}$ giới hạn trên** (nhạy và đặc hiệu hơn Amylase).
+</PhysioAlert>
+
+---
+
+## 7. Tài Liệu Tham Khảo EBM {#sec-7}
+
+1. **Hall, J. E., & Hall, M. E. (2021)**. *Guyton and Hall Textbook of Medical Physiology* (14th ed.). Philadelphia: Elsevier. Chapters 65 & 71: Secretory Functions of Liver & Pancreas.
+2. **Barrett, K. E. et al. (2019)**. *Ganong's Review of Medical Physiology* (26th ed.). New York: McGraw-Hill. Chapters 26 & 27: Gastrointestinal Secretion & Liver Function.
+3. **Hofmann, A. F. (1999)**. *The enterohepatic circulation of bile acids in man*. Clinics in Gastroenterology, 6(1), 3-24.
+4. **Crockett, S. D. et al. (2018)**. *American Gastroenterological Association Institute Guideline on Initial Management of Acute Pancreatitis*. Gastroenterology, 154(4), 1096-1101.

@@ -1,0 +1,166 @@
+---
+title: "Sinh Lý Cơ Học Hô Hấp & Thông Khí Phổi"
+slug: "sl-cohohap-thongkhi"
+code: "PHYS-RESP-01"
+part: "part4"
+system: "respiratory"
+systemName: "Sinh Lý Tim Mạch & Hô Hấp"
+guytonChapter: "Guyton 14th - Chapter 38: Pulmonary Ventilation"
+ganongChapter: "Ganong 26th - Chapter 34: Pulmonary Function & Gas Transport"
+category: "physiology"
+status: "published"
+version: "2.0.0"
+updatedAt: "2026-08-26"
+description: "Sinh lý học Cơ học Hô hấp: Phân vùng dẫn khí vs hô hấp, cơ học hít vào chủ động & thở ra thụ động, áp suất màng phổi âm tính, định luật Laplace và vai trò của chất hoạt diện Surfactant chống xẹp phổi, các thể tích và dung tích phổi (TV, IRV, ERV, RV, VC, FRC, TLC), phân biệt thông khí phút vs thông khí phế nang có ích và ứng dụng lâm sàng trong Suy hô hấp trẻ sơ sinh (NRDS) & Tràn khí màng phổi."
+tags:
+  - "sinh-ly"
+  - "ho-hap"
+  - "co-hoc-ho-hap"
+  - "surfactant"
+  - "dung-tich-song"
+  - "nrds"
+clinicalPearls:
+  - "Chất hoạt diện Surfactant (do Tế bào phế nang Type II tiết) làm giảm sức căng bề mặt (T) ở phế nang nhỏ nhiều hơn ở phế nang lớn theo định luật Laplace (P = 2T/r), giúp các phế nang kích thước khác nhau không bị xẹp và ổn định đồng đều. Trẻ sinh non trước 34 tuần thiếu Surfactant sẽ mắc Hội chứng suy hô hấp cấp sơ sinh (NRDS), điều trị bằng cách tiêm Corticosteroid cho mẹ trước sinh và bơm Surfactant ngoại sinh vào khí quản trẻ."
+  - "Thể tích khí cặn (RV) và Dung tích cặn chức năng (FRC) HOÀN TOÀN KHÔNG THỂ ĐO ĐƯỢC BẰNG HÔ HẤP KÝ (Spirometry) ĐƠN THUẦN vì khí này không bao giờ được thở ra khỏi lồng ngực; bắt buộc phải đo bằng phương pháp Pha loãng khí Heli (Helium Dilution) hoặc Đo thể tích thân (Body Plethysmography)."
+  - "Thông khí phế nang có ích (VA) mới là thông số quyết định nồng độ khí máu, chứ không phải Thông khí phút toàn phần (VE): Thở nhanh nông làm tăng VE nhưng hầu hết khí bị 'nhốt' trong khoảng chết (VD = 150 mL), khiến VA giảm nghiêm trọng gây thiếu oxy mô và ứ trệ CO2."
+sections:
+  - id: "sec-1"
+    number: 1
+    title: "Cấu Trúc Phân Vùng Hệ Hô Hấp"
+    icon: "fa-lungs"
+  - id: "sec-2"
+    number: 2
+    title: "Cơ Học Động Tác Hô Hấp & Áp Suất Màng Phổi"
+    icon: "fa-arrows-up-down"
+  - id: "sec-3"
+    number: 3
+    title: "Định Luật Laplace & Surfactant"
+    icon: "fa-soap"
+  - id: "sec-4"
+    number: 4
+    title: "Các Thể Tích & Dung Tích Phổi"
+    icon: "fa-chart-pie"
+  - id: "sec-5"
+    number: 5
+    title: "Thông Khí Phút vs Thông Khí Phế Nang"
+    icon: "fa-calculator"
+  - id: "sec-6"
+    number: 6
+    title: "Tài Liệu Tham Khảo EBM"
+    icon: "fa-book-medical"
+---
+
+import { PhysioAlert, PhysioQuickNav, PhysioFeedbackLoop } from '../components'
+
+# 🫁 SINH LÝ CƠ HỌC HÔ HẤP & THÔNG KHÍ PHỔI
+
+<PhysioQuickNav />
+
+---
+
+## 1. Cấu Trúc Chức Năng Phân Vùng Của Hệ Hô Hấp {#sec-1}
+
+Cây khí phế quản phân nhánh 23 thế hệ, được chia thành hai vùng chức năng rạch ròi:
+
+```
+[VÙNG DẪN KHÍ (Thế Hệ 0 – 16): Khí quản ──► Phế quản ──► Tiểu phế quản tận]
+  • Chức năng: Làm ấm (37°C), Làm ẩm (100% hơi nước) và Lọc sạch bụi bẩn qua thang cuốn nhầy - lông chuyển.
+  • Tạo nên KHOẢNG CHẾT GIẢI PHẪU (Anatomic Dead Space: VD ≈ 150 mL) - Hoàn toàn không tham gia trao đổi khí.
+
+[VÙNG HÔ HẤP (Thế Hệ 17 – 23): Tiểu phế quản hô hấp ──► Ống phế nang ──► Túi phế nang]
+  • Chứa khoảng 300 – 500 triệu phế nang tạo nên Diện tích bề mặt trao đổi khí khổng lồ (100 m2 / bằng sân tennis).
+```
+
+---
+
+## 2. Cơ Học Động Tác Hô Hấp & Áp Suất Khoang Màng Phổi {#sec-2}
+
+| Thì Hô Hấp | Cơ Tham Gia Co Bóp | Áp Suất Khoang Màng Phổi ($P_{pl}$) | Áp Suất Phế Nang ($P_{alv}$) | Luồng Khí Di Chuyển |
+|---|---|---|---|---|
+| **Hít vào Bình thường** *(Chủ động)* | **Cơ hoành hạ xuống** (75% thông khí) + **Cơ liên sườn ngoài** nâng lồng ngực | Âm hơn: Từ **$-5\text{ cmH}_2\text{O}$** tụt xuống **$-8\text{ cmH}_2\text{O}$** | Giảm xuống **$-1\text{ cmH}_2\text{O}$** (Âm hơn khí quyển) | Hút **$500\text{ mL}$ không khí** từ ngoài vào phổi |
+| **Thở ra Bình thường** *(Thụ động)* | **Không có cơ nào co** (Nhờ lực đàn hồi tự nhiên của phổi & ngực) | Bớt âm: Từ **$-8\text{ cmH}_2\text{O}$** tăng về **$-5\text{ cmH}_2\text{O}$** | Tăng lên **$+1\text{ cmH}_2\text{O}$** (Dương hơn khí quyển) | Đẩy **$500\text{ mL}$ không khí** từ phổi ra ngoài |
+| **Hít vào Gắng sức** | Cơ ức đòn chũm, Cơ bậc thang, Cơ ngực bé | Tụt sâu xuống **$-15\text{ đến }-20\text{ cmH}_2\text{O}$** | Giảm sâu **$-5\text{ cmH}_2\text{O}$** | Hút thêm khí dự trữ hít vào (IRV ~3.000 mL) |
+| **Thở ra Gắng sức** *(Chủ động)* | **Cơ thành bụng** (thẳng bụng, chéo bụng) + **Cơ liên sườn trong** | Tăng lên mức dương (**$+10\text{ đến }+30\text{ cmH}_2\text{O}$**) | Tăng vọt **$+20\text{ đến }+40\text{ cmH}_2\text{O}$** | Ép tống hết khí dự trữ thở ra (ERV ~1.100 mL) |
+
+<PhysioAlert type="pearl" title="Ý Nghĩa Sống Còn Của Áp Suất Âm Khoang Màng Phổi">
+  Áp suất trong khoang màng phổi luôn luôn âm hơn áp suất khí quyển ($-5\text{ cmH}_2\text{O}$) do sự giằng co đối nghịch liên tục: **Nhu mô phổi luôn có xu hướng co rút đàn hồi về rốn phổi**, trong khi **Thành lồng ngực luôn có xu hướng bung nở ra ngoài**.
+  
+  *Hậu quả khi thủng màng phổi (Tràn khí màng phổi Pneumothorax)*: Không khí từ ngoài tràn vào làm mất áp suất âm ($P_{pl} = 0$) $\rightarrow$ Nhu mô phổi lập tức **xẹp rúm hoàn toàn (Collapse)**, thành ngực phồng to và trung thất bị đẩy lệch sang bên đối diện (Tràn khí áp lực đe dọa trụy tim mạch tử vong).
+</PhysioAlert>
+
+---
+
+## 3. Định Luật Laplace & Vai Trò Của Chất Hoạt Diện Surfactant {#sec-3}
+
+Mặt trong phế nang được lót bởi một lớp dịch mỏng tạo ra **Sức căng bề mặt (Surface Tension - $T$)** có xu hướng kéo phế nang xẹp lại. Theo **Định luật Laplace**:
+
+$$P = \frac{2 \cdot T}{r}$$
+
+- $P$: Áp suất xẹp phế nang.
+- $T$: Sức căng bề mặt của lớp dịch lót.
+- $r$: Bán kính phế nang.
+
+```
+NẾU KHÔNG CÓ SURFACTANT:
+  • Phế nang nhỏ (r nhỏ) ──► Áp suất xẹp P CỰC LỚN
+  • Phế nang lớn (r lớn) ──► Áp suất xẹp P NHỎ HƠN
+  ──► Không khí từ phế nang nhỏ bị ép dồn hết sang phế nang lớn ──► PHẾ NANG NHỎ XẸP HOÀN TOÀN!
+
+KHI CÓ SURFACTANT (Tế bào Phế nang Type II tiết):
+  • Phân tử Surfactant (DPPC) bị nén đậm đặc ở phế nang nhỏ ──► GIẢM MẠNH SỨC CĂNG BỀ MẶT T
+  ──► Cân bằng áp suất P giữa các phế nang lớn và nhỏ ──► PHẾ NANG KHÔNG BỊ XẸP, ỔN ĐỊNH ĐỒNG ĐỀU!
+```
+
+---
+
+## 4. Các Thể Tích & Dung Tích Phổi Tiêu Chuẩn (Spirometry) {#sec-4}
+
+```
+  Dung tích toàn phổi (TLC ≈ 5.800 mL)
+ ┌─────────────────────────────────────────────────────────────┐
+ │                                                             │ ◄── Dung tích hít vào (IC ≈ 3.500 mL)
+ │  IRV (Thể tích dự trữ hít vào ≈ 3.000 mL)                   │
+ │                                                             │
+ ├───────────────────────────────────────────┬─────────────────┤
+ │  TV (Thể tích khí lưu thông ≈ 500 mL)     │                 │
+ ├───────────────────────────────────────────┤ VC (Dung tích   │
+ │  ERV (Thể tích dự trữ thở ra ≈ 1.100 mL)  │ sống ≈ 4.600 mL)│
+ ├───────────────────────────────────────────┴─────────────────┼───────────────────────────
+ │                                                             │ ◄── Dung tích cặn chức năng
+ │  RV (Thể tích khí cặn ≈ 1.200 mL - KHÔNG ĐO ĐƯỢC BẰNG SPDefault) (FRC ≈ 2.300 mL)
+ └─────────────────────────────────────────────────────────────┴───────────────────────────
+```
+
+| Chỉ số Hô hấp | Giá trị trung bình | Định nghĩa sinh lý học |
+|---|---|---|
+| **TV (Tidal Volume)** | **$500\text{ mL}$** | Thể tích khí hít vào hoặc thở ra trong một nhịp thở bình thường lúc nghỉ. |
+| **IRV (Inspiratory Reserve Volume)** | **$3.000\text{ mL}$** | Thể tích khí tối đa có thể hít thêm vào sau khi đã hít vào bình thường. |
+| **ERV (Expiratory Reserve Volume)** | **$1.100\text{ mL}$** | Thể tích khí tối đa có thể thở thêm ra sau khi đã thở ra bình thường. |
+| **RV (Residual Volume)** | **$1.200\text{ mL}$** | Thể tích khí còn lại trong phổi sau khi đã thở ra hết sức (giữ phế nang không dính tịt). |
+| **VC (Vital Capacity)** | **$4.600\text{ mL}$** | $VC = TV + IRV + ERV$: Lượng khí tối đa có thể huy động trong một nhịp thở. |
+| **FRC (Functional Residual Capacity)** | **$2.300\text{ mL}$** | $FRC = ERV + RV$: Thể tích khí còn lại trong phổi sau khi thở ra bình thường lúc nghỉ. |
+| **TLC (Total Lung Capacity)** | **$5.800\text{ mL}$** | $TLC = VC + RV$: Tổng lượng khí chứa trong phổi sau khi hít vào tối đa. |
+
+---
+
+## 5. Thông Khí Phút vs Thông Khí Phế Nang Có Ích {#sec-5}
+
+- **Thông khí phút toàn phần (Minute Ventilation - $V_E$)**:
+  $$V_E = RR \times TV = 12\text{ nhịp/phút} \times 500\text{ mL} = \mathbf{6.000\text{ mL/phút} = 6.0\text{ L/phút}}$$
+- **Thông khí phế nang có ích (Alveolar Ventilation - $V_A$)**: Lượng khí thực tế đến được phế nang để tham gia trao đổi oxy và $CO_2$ với mao mạch:
+  $$V_A = RR \times (TV - V_D) = 12 \times (500\text{ mL} - 150\text{ mL}) = \mathbf{4.200\text{ mL/phút} = 4.2\text{ L/phút}}$$
+
+<PhysioAlert type="danger" title="Hậu Quả Sinh Lý Bệnh Của Kiểu Thở Nhanh Nông">
+  So sánh hai người cùng có $V_E = 6.0\text{ L/phút}$:
+  - *Người A (Thở sâu chậm)*: $RR = 10, TV = 600\text{ mL} \rightarrow V_A = 10 \times (600 - 150) = \mathbf{4.500\text{ mL/phút}}$ (Thông khí cực tốt).
+  - *Người B (Thở nhanh nông do đau ngực/lo lắng)*: $RR = 30, TV = 200\text{ mL} \rightarrow V_A = 30 \times (200 - 150) = \mathbf{1.500\text{ mL/phút}}$ (Thông khí phế nang sụt giảm nghiêm trọng $\rightarrow$ Toan hô hấp và thiếu oxy máu nặng).
+</PhysioAlert>
+
+---
+
+## 6. Tài Liệu Tham Khảo EBM {#sec-6}
+
+1. **Hall, J. E., & Hall, M. E. (2021)**. *Guyton and Hall Textbook of Medical Physiology* (14th ed.). Philadelphia: Elsevier. Chapter 38: Pulmonary Ventilation.
+2. **West, J. B., & Luks, A. M. (2021)**. *West's Respiratory Physiology: The Essentials* (11th ed.). Philadelphia: Wolters Kluwer.
+3. **Barrett, K. E. et al. (2019)**. *Ganong's Review of Medical Physiology* (26th ed.). New York: McGraw-Hill. Chapter 34: Pulmonary Function & Gas Transport.
+4. **Sweet, D. G. et al. (2019)**. *European Consensus Guidelines on the Management of Respiratory Distress Syndrome - 2019 Update*. Neonatology, 115(4), 432-450.

@@ -1,0 +1,165 @@
+---
+title: "Sinh Lý Vận Chuyển Khí Trong Máu & Điều Hòa Hô Hấp"
+slug: "sl-vanchuyen-dieuhoahh"
+code: "PHYS-RESP-03"
+part: "part4"
+system: "respiratory"
+systemName: "Sinh Lý Tim Mạch & Hô Hấp"
+guytonChapter: "Guyton 14th - Chapter 41: Transport of Oxygen and Carbon Dioxide in Blood and Tissue Fluids & Chapter 42: Regulation of Respiration"
+ganongChapter: "Ganong 26th - Chapters 34 & 35: Gas Transport & Regulation of Respiration"
+category: "physiology"
+status: "published"
+version: "2.0.0"
+updatedAt: "2026-08-26"
+description: "Sinh lý học Vận chuyển khí & Điều hòa thông khí: Các dạng chuyên chở O2 (Oxyhemoglobin, công thức CaO2), đường cong phân ly HbO2 và các yếu tố dịch chuyển (Hiệu ứng Bohr - CADET face right), các dạng chuyên chở CO2 (Bicarbonate, hiện tượng Hamburger Chloride Shift, Hiệu ứng Haldane), các trung tâm hô hấp thân não (DRG, VRG, Pneumotaxic, Hering-Breuer) và cơ chế thụ thể hóa học trung ương (PaCO2) vs ngoại vi (PaO2 trong COPD)."
+tags:
+  - "sinh-ly"
+  - "van-chuyen-khi"
+  - "hieu-ung-bohr"
+  - "hieu-ung-haldane"
+  - "dieu-hoa-ho-hap"
+  - "chemoreceptor"
+clinicalPearls:
+  - "Quy tắc CADET Face Right (Đường cong Oxyhemoglobin dịch chuyển sang PHẢI, giảm ái lực để DỄ NHẢ OXY CHO MÔ TIÊU THỤ): Tăng CO2, Tăng Acid (H+ / giảm pH), Tăng 2,3-DPG, Tăng Exercise (vận động), Tăng Temperature (sốt, thân nhiệt cao)."
+  - "Ngộ độc khí Carbon Monoxide (CO): CO có ái lực với Hemoglobin cao gấp 240 LẦN so với Oxy, chiếm chỗ tạo Carboxyhemoglobin (HbCO) và khóa cứng các nhóm Heme còn lại ở dạng R-state (làm đường cong HbO2 lệch cực mạnh sang TRÁI). Hậu quả: Máu có màu đỏ tươi như quả anh đào (Cherry-red), SpO2 đầu ngón tay hiển thị giả tạo bình thường 99-100% nhưng mô cơ thể bị ngạt oxy tế bào cực độ. Cấp cứu đặc hiệu: Thở Oxy 100% qua mặt nạ có túi dự trữ hoặc Oxy cao áp (HBO)."
+  - "Thụ thể hóa học trung ương tại hành não không đo trực tiếp PaO2 mà phản ứng cực kỳ nhạy với nồng độ H+ trong dịch não tủy (do CO2 khuếch tán qua hàng rào máu não). Ở người bình thường, PaCO2 là động lực mạnh nhất điều khiển nhịp thở."
+sections:
+  - id: "sec-1"
+    number: 1
+    title: "Vận Chuyển Oxy (O2) & Công Thức CaO2"
+    icon: "fa-lungs"
+  - id: "sec-2"
+    number: 2
+    title: "Đường Cong HbO2 & Hiệu Ứng Bohr"
+    icon: "fa-chart-line"
+  - id: "sec-3"
+    number: 3
+    title: "Vận Chuyển CO2 & Hiệu Ứng Haldane"
+    icon: "fa-recycle"
+  - id: "sec-4"
+    number: 4
+    title: "Các Trung Tâm Hô Hấp Tại Thân Não"
+    icon: "fa-brain"
+  - id: "sec-5"
+    number: 5
+    title: "Điều Hòa Hóa Học Trung Ương vs Ngoại Vi"
+    icon: "fa-gauge-high"
+  - id: "sec-6"
+    number: 6
+    title: "Tài Liệu Tham Khảo EBM"
+    icon: "fa-book-medical"
+---
+
+import { PhysioAlert, PhysioQuickNav, PhysioFeedbackLoop } from '../components'
+
+# 🫁 SINH LÝ VẬN CHUYỂN KHÍ & ĐIỀU HÒA HÔ HẤP
+
+<PhysioQuickNav />
+
+---
+
+## 1. Vận Chuyển Khí Oxy ($O_2$) Trong Máu & Hàm Lượng $CaO_2$ {#sec-1}
+
+Khí $O_2$ được chuyên chở từ mao mạch phổi đến các mô theo 2 dạng:
+1. **Dạng hòa tan vật lý trong huyết tương**: Chiếm **$1.5\%$** tổng lượng oxy (Độ hòa tan $0.003\text{ mL } O_2\text{/dL máu/mmHg } PaO_2 \rightarrow 0.3\text{ mL/dL}$ ở $PaO_2 = 100\text{ mmHg}$). Mặc dù chiếm tỷ lệ rất nhỏ, phân áp hòa tan $PaO_2$ này quyết định độ bão hòa $SaO_2$ của Hemoglobin.
+2. **Dạng kết hợp hóa học với Hemoglobin ($HbO_2$)**: Chiếm **$98.5\%$** tổng lượng oxy (Mỗi gam Hb bão hòa gắn tối đa $1.34\text{ mL } O_2$).
+
+### Công Thức Tính Tổng Hàm Lượng Oxy Trong Máu Động Mạch ($CaO_2$)
+
+$$CaO_2 = \left( 1.34 \times [Hb] \times \frac{SaO_2}{100} \right) + (0.003 \times PaO_2)$$
+
+- *Ví dụ ở người khỏe mạnh ($[Hb] = 15\text{ g/dL}, SaO_2 = 98\%, PaO_2 = 100\text{ mmHg}$)*:
+  $$CaO_2 = (1.34 \times 15 \times 0.98) + (0.003 \times 100) = 19.7 + 0.3 = \mathbf{20.0\text{ mL } O_2\text{/dL máu (200 mL/L)}}$$
+
+---
+
+## 2. Đường Cong Phân Ly Oxyhemoglobin & Hiệu Ứng Bohr {#sec-2}
+
+Mối quan hệ giữa phân áp oxy $PaO_2$ và độ bão hòa $SaO_2$ của Hemoglobin có dạng **Hình chữ S (Sigmoidal Curve)** nhờ hiện tượng hợp tác dị lập thể:
+- **$P_{50}$ (Phân áp $PaO_2$ để $50\%$ Hb bão hòa oxy)**: Bình thường ở người là **$26.8\text{ mmHg}$**.
+
+```
+Độ bão hòa SaO2 (%)
+  100 ┌──────────────────────/─────────── DỊCH TRÁI (Tăng ái lực - Giữ chặt O2):
+      │                    /             • Giảm nhiệt độ, Giảm CO2, Kiềm máu (pH cao)
+      │                   /              • Giảm 2,3-DPG, HbF bào thai, Ngộ độc CO
+   50 ┼──────────────────/               
+      │                 / ────────────── DỊCH PHẢI / Hiệu Ứng Bohr (Giảm ái lực - NHẢ O2 CHO MÔ):
+      │                /                 • Tăng CO2, Tăng Acid (H+ / giảm pH)
+    0 └───┴───────────┴──────────┴────── • Tăng 2,3-DPG, Tăng Thân nhiệt (Sốt/Vận động)
+         P50(Trái)  26.8        P50(Phải)       Phân áp Oxy PaO2 (mmHg)
+```
+
+<PhysioAlert type="pearl" title="Quy Tắc CADET Face Right — Cơ Chế Ưu Việt Nuôi Dưỡng Mô Đang Vận Động">
+  Khi các mô cơ bắp vận động mạnh hoặc viêm nhiễm sinh nhiệt:
+  - **C** - $\uparrow CO_2$
+  - **A** - $\uparrow Acid$ ($H^+ \rightarrow \downarrow pH$ do toan lactic)
+  - **D** - $\uparrow 2,3-DPG$
+  - **E** - $\uparrow Exercise$ (Vận động thể lực)
+  - **T** - $\uparrow Temperature$ (Tăng thân nhiệt tại chỗ)
+  - **KẾT QUẢ**: Đẩy đường cong $HbO_2$ lệch mạnh sang PHẢI (**Hiệu ứng Bohr**), làm Hemoglobin dễ dàng nhả oxy tối đa đúng tại nơi các mô đang thiếu oxy nhất.
+</PhysioAlert>
+
+---
+
+## 3. Vận Chuyển Khí Carbon Dioxide ($CO_2$) & Hiệu Ứng Haldane {#sec-3}
+
+Khí $CO_2$ do các mô chuyển hóa sinh ra được máu chuyên chở về phổi dưới 3 dạng:
+
+```
+[KHÍ CO2 TỪ MÔ ĐI VÀO MÁU TOÀN PHẦN]
+  │
+  ├──► 1. DẠNG ION BICARBONATE (HCO3-): CHIẾM 70%
+  │       • CO2 vào hồng cầu + H2O ──(Enzyme Carbonic Anhydrase)──► H2CO3 ──► H+ + HCO3-
+  │       • HCO3- được bơm ra huyết tương đổi lấy Cl- đi vào hồng cầu (HIỆN TƯỢNG TRƯỢT CLORUA HAMBURGER)
+  │
+  ├──► 2. DẠNG HỢP CHẤT CARBAMINO (HbCO2): CHIẾM 23%
+  │       • CO2 gắn trực tiếp vào nhóm amin tự do (-NH2) của các chuỗi Polypeptide Globin
+  │
+  └──► 3. DẠNG HÒA TAN VẬT LÝ TRONG HUYẾT TƯƠNG: CHIẾM 7% (Độ hòa tan cao gấp 24 lần O2)
+```
+
+<PhysioAlert type="mechanism" title="Hiệu Ứng Haldane — Thúc Đẩy Đào Thải CO2 Tại Phổi">
+  Tại các mao mạch phế nang của phổi: Phân áp $O_2$ cao làm $O_2$ gắn kết mạnh mẽ vào Hemoglobin biến thành Oxyhemoglobin (có tính acid mạnh hơn Deoxyhemoglobin). Quá trình này **đẩy $CO_2$ văng ra khỏi các nhóm carbamino** và đẩy ion $H^+$ giải phóng để phản ứng ngược với $HCO_3^-$ biến thành khí $CO_2$ khuếch tán ồ ạt ra phế nang để thở ra ngoài.
+</PhysioAlert>
+
+---
+
+## 4. Các Trung Tâm Điều Hòa Hô Hấp Thần Kinh Tại Thân Não {#sec-4}
+
+Nhịp thở được điều khiển tự động bởi mạng lưới neuron tại Thân não:
+
+1. **Nhóm Hô Hấp Lưng (DRG - Dorsal Respiratory Group tại Hành não)**:
+   - Nằm trong nhân bó đơn độc (NTS).
+   - **Chức năng chủ nhịp cơ bản**: Phát tín hiệu xung tăng dần hình dốc đứng (*Ramp signal*) kéo dài 2 giây truyền theo dây thần kinh hoành (C3–C5) kích thích cơ hoành co để **Hít vào tự nhiên**. Sau đó ngừng phát xung trong 3 giây để phổi tự động thở ra thụ động.
+2. **Nhóm Hô Hấp Bụng (VRG - Ventral Respiratory Group tại Hành não)**:
+   - Thường yên lặng lúc nghỉ; chỉ kích hoạt khi **Hô hấp gắng sức** để điều khiển các cơ thở ra chủ động (cơ thẳng bụng, cơ liên sườn trong).
+3. **Trung Tâm Điều Chỉnh Thở (Pneumotaxic Center tại Cầu não)**:
+   - Đóng vai trò là "công tắc ngắt" tín hiệu hít vào của DRG, giới hạn độ sâu của nhịp hít vào và kiểm soát tần số thở.
+4. **Phản Xạ Căng Phổi Hering-Breuer**:
+   - Thụ thể căng giãn (*Stretch receptors*) trên phế quản phát xung theo Dây X ức chế DRG khi phổi bị căng giãn quá mức ($TV > 1.000\text{ mL}$), bảo vệ phổi không bị rách vỡ phế nang.
+
+---
+
+## 5. Cơ Chế Thụ Thể Hóa Học: Trung Ương vs Ngoại Vi {#sec-5}
+
+| Đặc tính so sánh | Thụ Thể Hóa Học Trung Ương (Central) | Thụ Thể Hóa Học Ngoại Vi (Peripheral) |
+|---|---|---|
+| **Vị trí giải phẫu** | Mặt trước bên của **Hành não** (gần rễ dây thần kinh IX và X). | **Xoang Cảnh (Dây IX)** và **Quai Động Mạch Chủ (Dây X)**. |
+| **Kích thích chính** | **Nồng độ $H^+$ trong Dịch Não Tủy (CSF)** do $PaCO_2$ máu khuếch tán qua hàng rào máu não sinh ra. | **Hạ Oxy máu động mạch nghiêm trọng ($PaO_2 < 60\text{ mmHg}$)**; nồng độ $H^+$ và $PaCO_2$ trong máu. |
+| **Độ nhạy & Vai trò** | **ĐỘNG LỰC HÔ HẤP CHÍNH Ở NGƯỜI BÌNH THƯỜNG** (Chỉ cần $PaCO_2$ tăng $2\text{ mmHg}$ đã kích hoạt tăng gấp đôi thông khí). | Đóng vai trò "Hệ thống báo động cấp cứu khẩn cấp" khi thiếu oxy máu nặng. |
+
+<PhysioAlert type="danger" title="Cạm Bẫy Lâm Sàng: Liệu Pháp Oxy Cho Bệnh Nhân COPD Giữ CO2 Mạn Tính">
+  Ở bệnh nhân **COPD giai đoạn nặng bị ứ đọng $CO_2$ mạn tính**: Thận bù trừ bằng cách giữ $HCO_3^-$ làm pH dịch não tủy trở về gần bình thường $\rightarrow$ Các thụ thể hóa học trung ương bị "trơ", trung tâm hô hấp **sống hoàn toàn dựa vào 'Động lực thiếu oxy ngoại vi' (Hypoxic Drive do $PaO_2$ thấp kích thích xoang cảnh)**.
+  
+  *Nguy cơ tử vong*: Nếu cho bệnh nhân thở Oxy nồng độ cao ($FiO_2 100\%$) làm $PaO_2$ tăng vọt $\rightarrow$ Triệt tiêu động lực kích thích xoang cảnh $\rightarrow$ Bệnh nhân **ngừng thở đột ngột, hôn mê toan hô hấp tăng $CO_2$ và tử vong**. Luôn duy trì mục tiêu $SpO_2$ ở mức $88\% – 92\%$ đối với nhóm bệnh nhân này.
+</PhysioAlert>
+
+---
+
+## 6. Tài Liệu Tham Khảo EBM {#sec-6}
+
+1. **Hall, J. E., & Hall, M. E. (2021)**. *Guyton and Hall Textbook of Medical Physiology* (14th ed.). Philadelphia: Elsevier. Chapters 41 & 42: Gas Transport & Respiratory Regulation.
+2. **West, J. B., & Luks, A. M. (2021)**. *West's Respiratory Physiology: The Essentials* (11th ed.). Philadelphia: Wolters Kluwer.
+3. **Barrett, K. E. et al. (2019)**. *Ganong's Review of Medical Physiology* (26th ed.). New York: McGraw-Hill. Chapters 34 & 35: Gas Transport & Respiration Control.
+4. **O'Driscoll, B. R. et al. (2017)**. *BTS guideline for oxygen use in adults in healthcare and emergency settings*. Thorax, 72(Suppl 1), ii1-ii90.

@@ -1,0 +1,122 @@
+---
+title: "Sinh Lý Tuyến Yên & Hormone Tăng Trưởng (GH / Somatotropin)"
+slug: "sl-nt-gh"
+code: "PHYS-ENDO-02"
+part: "part7"
+system: "endocrine"
+systemName: "Sinh Lý Hệ Nội Tiết & Sinh Sản"
+guytonChapter: "Guyton 14th - Chapter 76: Pituitary Hormones and Their Control by the Hypothalamus"
+ganongChapter: "Ganong 26th - Chapter 18: The Pituitary Gland"
+category: "physiology"
+status: "published"
+version: "2.0.0"
+updatedAt: "2026-08-26"
+description: "Sinh lý học Tuyến Yên & Hormone Tăng Trưởng: Cấu trúc thùy trước vs thùy sau, cơ chế tiết GH theo nhịp xung ban đêm, vai trò trung gian của IGF-1 (Somatomedin C) từ Gan, tác động đồng hóa protein, dị hóa lipid, đối kháng insulin gây tăng đường huyết và bệnh lý U tuyến yên tiết GH (Bệnh Khổng lồ Gigantism vs Bệnh To đầu chi Acromegaly)."
+tags:
+  - "sinh-ly"
+  - "tuyen-yen"
+  - "growth-hormone"
+  - "igf-1"
+  - "acromegaly"
+  - "gigantism"
+clinicalPearls:
+  - "Hormone GH là một hormone gây tăng đường huyết (Diabetogenic Hormone): GH ức chế hấp thu glucose ở cơ và mỡ, tăng tân tạo đường tại gan, kháng lại tác dụng của Insulin. U tuyến yên tiết GH mạn tính thường dẫn đến Đái tháo đường thứ phát."
+  - "Phân biệt Bệnh Khổng lồ (Gigantism) vs Bệnh To đầu chi (Acromegaly): U tuyến yên tăng tiết GH xuất hiện TRƯỚC KHI ĐÓNG SỤN TĂNG TRƯỞNG ở tuổi dậy thì sẽ phát triển chiều dài xương tột độ -> BỆNH KHỔNG LỒ (Cao > 2.2 - 2.5m). Nếu xuất hiện SAU KHI SỤN ĐÃ ĐÓNG KÍN ở người trưởng thành, xương không thể dài ra mà chỉ dầy bè ra theo chiều ngang -> BỆNH TO ĐẦU CHI (Xương gò má, cằm nhô, bàn tay bàn chân to thô, lưỡi to, bệnh cơ tim phì đại)."
+  - "Xét nghiệm chẩn đoán xác định To đầu chi: Nồng độ GH tiết ngắt quãng theo nhịp xung nên không dùng nồng độ GH đơn thuần. Tiêu chuẩn vàng: Định lượng IGF-1 huyết thanh tăng cao và Nghiệm pháp dung nạp Glucose đường uống (OGTT): Ở người bình thường Glucose ức chế GH < 1 ng/mL, ở bệnh nhân Acromegaly thì GH KHÔNG BỊ ỨC CHẾ."
+sections:
+  - id: "sec-1"
+    number: 1
+    title: "Cấu Trúc Giải Phẫu Tuyến Yên"
+    icon: "fa-brain"
+  - id: "sec-2"
+    number: 2
+    title: "Điều Hòa Tiết GH & Trục IGF-1"
+    icon: "fa-arrows-split-up-and-left"
+  - id: "sec-3"
+    number: 3
+    title: "Tác Động Chuyển Hóa Của GH"
+    icon: "fa-dna"
+  - id: "sec-4"
+    number: 4
+    title: "Bệnh Lý Lâm Sàng: Gigantism & Acromegaly"
+    icon: "fa-person"
+  - id: "sec-5"
+    number: 5
+    title: "Tài Liệu Tham Khảo EBM"
+    icon: "fa-book-medical"
+---
+
+import { PhysioAlert, PhysioQuickNav, PhysioFeedbackLoop } from '../components'
+
+# 🧠 SINH LÝ TUYẾN YÊN & HORMONE TĂNG TRƯỞNG (GH)
+
+<PhysioQuickNav />
+
+---
+
+## 1. Cấu Trúc Giải Phẫu Chức Năng Của Tuyến Yên {#sec-1}
+
+Tuyến yên (*Pituitary Gland / Hypophysis*) nằm trong hố yên của xương bướm, chia thành hai phần có nguồn gốc phôi thai hoàn toàn khác nhau:
+- **Tuyến Yên Trước (Adenohypophysis - 75% khối lượng)**: Nguồn gốc biểu mô từ túi Rathke vòm họng. Nhận tín hiệu điều khiển từ Hạ đồi qua **Hệ Mạch Cửa Tuyến Yên (Hypophyseal Portal System)**. Chứa 5 dòng tế bào tiết: Tế bào Somatotrope tiết **GH ($50\%$)**, Corticotrope tiết **ACTH ($20\%$)**, Thyrotrope tiết **TSH ($5\%$)**, Gonadotrope tiết **FSH & LH ($10\%$)**, Lactotrope tiết **Prolactin ($15\%$)**.
+- **Tuyến Yên Sau (Neurohypophysis - Thùy thần kinh)**: Nguồn gốc từ mầm thần kinh não thất III. Là cúc tận cùng sợi trục của các neuron hạ đồi (Nhân trên thị & Nhân cạnh não thất), bài tiết **Oxytocin** và **ADH (Vasopressin)**.
+
+---
+
+## 2. Điều Hòa Bài Tiết GH & Trục Gan IGF-1 {#sec-2}
+
+Hormone tăng trưởng GH (*Growth Hormone / Somatotropin*) được bài tiết ngắt quãng thành từng **nhịp xung (Pulsatile)**, đạt đỉnh cao nhất trong giai đoạn **Ngủ sâu sóng chậm (N3 NREM)**:
+
+```
+[VÙNG HẠ ĐỒI]
+  ├──► GHRH (Growth Hormone-Releasing Hormone) ──(+)──► Kích thích Tuyến Yên Trước TIẾT GH
+  └──► SOMATOSTATIN (GHIH) ─────────────────────(-)──► Ức chế Tuyến Yên Trước TIẾT GH
+                                                             │
+                                                             ▼
+                                                [HORMONE TĂNG TRƯỞNG (GH)]
+                                                             │
+                                        ┌────────────────────┴────────────────────┐
+                                        ▼                                         ▼
+                            [TÁC ĐỘNG TRỰC TIẾP]                        [TÁC ĐỘNG GIÁN TIẾP QUA GAN]
+                            • Tăng ly giải mỡ (Lipolysis)               • Kích thích Gan tổng hợp IGF-1
+                            • Kháng Insulin (Tăng đường huyết)            (Somatomedin C: T1/2 dài 20 giờ)
+                                                                                  │
+                                                                                  ▼
+                                                                [TĂNG TRƯỞNG XƯƠNG, SỤN & MÔ MỀM]
+```
+
+---
+
+## 3. Tác Động Chuyển Hóa Toàn Diện Của Hormone GH {#sec-3}
+
+| Loại Chuyển Hóa | Tác động sinh lý của GH | Ý nghĩa sinh học |
+|---|---|---|
+| **Chuyển Hóa Protein** | **Tăng cường đồng hóa Protein**: Tăng vận chuyển acid amin vào tế bào, tăng tổng hợp ARN/ADN, giảm dị hóa protein. | Thúc đẩy phát triển khối lượng cơ bắp, mô liên kết và tăng sinh tế bào toàn thân. |
+| **Chuyển Hóa Lipid** | **Tăng ly giải mỡ (Lipolysis)**: Tăng giải phóng Acid béo tự do ($FFA$) vào máu để tế bào sử dụng tạo năng lượng. | Giảm khối mỡ cơ thể, tiết kiệm đường Glucose và Protein. |
+| **Chuyển Hóa Glucid** | **Kháng Insulin & Giảm sử dụng Glucose**: Giảm thu nhận glucose tại cơ/mỡ, tăng tân tạo glucose tại gan. | **Làm tăng đường huyết (Hiệu ứng Diabetogenic)**. |
+| **Tăng Trưởng Xương** | Kích thích tế bào sụn phân chia mạnh mẽ và cốt hóa sụn thành xương tại **Đĩa sụn tăng trưởng (Epiphyseal Plates)**. | Tăng chiều dài xương dài và tăng bề dầy vỏ xương. |
+
+---
+
+## 4. Bệnh Lý Tuyến Yên Tiết GH Lâm Sàng EBM {#sec-4}
+
+<PhysioAlert type="danger" title="Phân Biệt: Bệnh Khổng Lồ (Gigantism) vs Bệnh To Đầu Chi (Acromegaly)">
+  1. **Bệnh Khổng Lồ (Gigantism)**:
+     - U tuyến yên tăng tiết GH xuất hiện ở **trẻ em TRƯỚC KHI ĐÓNG SỤN TĂNG TRƯỞNG**.
+     - Xương dài phát triển vượt bậc làm trẻ cao lớn bất thường (**Chiều cao $> 2.1 – 2.5\text{ mét}$**), các cơ quan nội tạng phì đại khổng lồ (*Organomegaly*).
+  2. **Bệnh To Đầu Chi (Acromegaly)**:
+     - U tuyến yên tăng tiết GH xuất hiện ở **người trưởng thành SAU KHI SỤN ĐÃ HÀN GẮN KÍN**.
+     - Xương không thể dài thêm mà **phát triển dầy bè theo chiều ngang**:
+       - *Khuôn mặt biến dạng*: Cung mày gồ cao, xương hàm dưới đưa ra trước (*Prognathism*), răng thưa, mũi to, môi dày, lưỡi to dày (*Macroglossia* gây ngưng thở khi ngủ OSA).
+       - *Chi thể thô to*: Bàn tay bàn chân to dày, phải đổi cỡ giày và nhẫn liên tục.
+       - *Biến chứng nguy cơ tử vong*: Tăng huyết áp, Đái tháo đường, Bệnh cơ tim phì đại suy tim, Polyp và Ung thư đại tràng.
+  - **Điều trị chuẩn EBM**: Phẫu thuật nội soi cắt u tuyến yên qua xoang bướm (Transsphenoidal surgery); dùng thuốc đồng vận Somatostatin tác dụng kéo dài (**Octreotide, Lanreotide**) hoặc thuốc chẹn thụ thể GH (**Pegvisomant**).
+</PhysioAlert>
+
+---
+
+## 5. Tài Liệu Tham Khảo EBM {#sec-5}
+
+1. **Hall, J. E., & Hall, M. E. (2021)**. *Guyton and Hall Textbook of Medical Physiology* (14th ed.). Philadelphia: Elsevier. Chapter 76: Pituitary Hormones.
+2. **Barrett, K. E. et al. (2019)**. *Ganong's Review of Medical Physiology* (26th ed.). New York: McGraw-Hill. Chapter 18: The Pituitary Gland.
+3. **Katznelson, L. et al. (2014)**. *Acromegaly: an Endocrine Society clinical practice guideline*. The Journal of Clinical Endocrinology & Metabolism, 99(11), 3933-3951.
+4. **Melmed, S. (2006)**. *Medical progress: Acromegaly*. New England Journal of Medicine, 355(24), 2558-2573.

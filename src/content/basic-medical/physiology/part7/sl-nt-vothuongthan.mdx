@@ -1,0 +1,155 @@
+---
+title: "Sinh Lý Tuyến Vỏ Thượng Thận (Adrenal Cortex)"
+slug: "sl-nt-vothuongthan"
+code: "PHYS-ENDO-05"
+part: "part7"
+system: "endocrine"
+systemName: "Sinh Lý Hệ Nội Tiết & Sinh Sản"
+guytonChapter: "Guyton 14th - Chapter 78: Adrenocortical Hormones"
+ganongChapter: "Ganong 26th - Chapter 20: The Adrenal Medulla & Adrenal Cortex"
+category: "physiology"
+status: "published"
+version: "2.0.0"
+updatedAt: "2026-08-26"
+description: "Sinh lý học Tuyến Vỏ Thượng Thận: Phân vùng 3 lớp mô học (Lớp Cầu GFR - Aldosterone, Lớp Bó - Cortisol, Lớp Lưới - DHEA), con đường sinh tổng hợp Steroid từ Cholesterol, cơ chế tác dụng chống viêm và ức chế miễn dịch của Cortisol, cơ chế điều hòa ngược trục HPA, nhịp tiết sinh học ngày đêm (Diurnal rhythm) và sinh lý bệnh Hội chứng Cushing, Bệnh Addison suy thượng thận & Tăng sản thượng thận bẩm sinh (CAH)."
+tags:
+  - "sinh-ly"
+  - "vo-thuong-than"
+  - "cortisol"
+  - "aldosterone"
+  - "truc-hpa"
+  - "cushing"
+  - "addison"
+clinicalPearls:
+  - "Quy tắc GFR - M-G-A phân vùng vỏ thượng thận từ ngoài vào trong: (1) Lớp Cầu (Zona Glomerulosa) tiết Mineralocorticoids (Aldosterone); (2) Lớp Bó (Zona Fasciculata) tiết Glucocorticoids (Cortisol); (3) Lớp Lưới (Zona Reticularis) tiết Androgens (DHEA, Androstenedione). Nhớ: 'The deeper you go, the sweeter it gets' (Muối -> Đường -> Giới tính)."
+  - "Nhịp tiết sinh học ngày đêm của Cortisol (Diurnal rhythm): Cortisol và ACTH đạt đỉnh cao nhất vào BUỔI SÁNG SỚM (6 - 8 giờ sáng để đánh thức cơ thể và chuẩn bị năng lượng) và tụt xuống mức thấp nhất vào NỬA ĐÊM (23 - 24 giờ). Mất nhịp tiết ngày đêm (định lượng Cortisol tự do trong nước bọt hoặc huyết thanh lúc nửa đêm tăng cao) là xét nghiệm sàng lọc đầu tay của Hội chứng Cushing."
+  - "Nguy cơ Suy thượng thận cấp do ngừng thuốc Corticoid đột ngột: Sử dụng Corticoid ngoại sinh (Prednisolone, Dexamethasone) kéo dài > 3 tuần sẽ ức chế âm tính mạnh mẽ lên trục HPA làm TEO VỎ THƯỢNG THẬN HOÀN TOÀN. Nếu ngừng thuốc đột ngột mà không giảm liều từng bước, cơ thể rơi vào Cơn suy thượng thận cấp (Addisonian crisis: Tụt HA trụy mạch, hạ đường huyết, sốc tử vong)."
+sections:
+  - id: "sec-1"
+    number: 1
+    title: "Phân Vùng 3 Lớp Vỏ Thượng Thận (GFR)"
+    icon: "fa-layer-group"
+  - id: "sec-2"
+    number: 2
+    title: "Sinh Tổng Hợp Steroid Từ Cholesterol"
+    icon: "fa-dna"
+  - id: "sec-3"
+    number: 3
+    title: "Sinh Lý & Tác Động Của Cortisol"
+    icon: "fa-shield-halved"
+  - id: "sec-4"
+    number: 4
+    title: "Nhịp Tiết Ngày Đêm & Trục HPA"
+    icon: "fa-clock"
+  - id: "sec-5"
+    number: 5
+    title: "Bệnh Lý Lâm Sàng: Cushing vs Addison vs CAH"
+    icon: "fa-stethoscope"
+  - id: "sec-6"
+    number: 6
+    title: "Tài Liệu Tham Khảo EBM"
+    icon: "fa-book-medical"
+---
+
+import { PhysioAlert, PhysioQuickNav, PhysioFeedbackLoop } from '../components'
+
+# 🏔️ SINH LÝ TUYẾN VỎ THƯỢNG THẬN (ADRENAL CORTEX)
+
+<PhysioQuickNav />
+
+---
+
+## 1. Phân Vùng 3 Lớp Mô Học Của Vỏ Thượng Thận (Quy Tắc GFR) {#sec-1}
+
+Vỏ thượng thận (*Adrenal Cortex*) chiếm 80% thể tích tuyến thượng thận, cấu tạo gồm 3 lớp từ ngoài vào trong:
+
+```
+[LỚP VỎ NGOÀI: 3 LỚP TỪ NGOÀI VÀO TRONG (GFR)]
+  │
+  ├──► 1. LỚP CẦU (Zona Glomerulosa - 15%):
+  │       • Enzyme: Aldosterone Synthase (Chỉ có ở lớp này)
+  │       • Sản phẩm: MINERALOCORTICOIDS (ALDOSTERONE) ──► Điều hòa bởi Angiotensin II & K+
+  │
+  ├──► 2. LỚP BÓ (Zona Fasciculata - 75% - DẦY NHẤT):
+  │       • Enzyme: 17α-Hydroxylase & 11β-Hydroxylase
+  │       • Sản phẩm: GLUCOCORTICOIDS (CORTISOL) ──► Điều hòa bởi ACTH tuyến yên
+  │
+  └──► 3. LỚP LƯỚI (Zona Reticularis - 10% - TRONG CÙNG):
+          • Enzyme: 17,20-Lyase
+          • Sản phẩm: ANDROGENS (DHEA, DHEA-S, Androstenedione) ──► Điều hòa bởi ACTH
+  │
+[TỦY THƯỢNG THẬN (Adrenal Medulla)]: Tiết CATECHOLAMINE (80% Epinephrine, 20% Norepinephrine)
+```
+
+---
+
+## 2. Con Đường Sinh Tổng Hợp Steroid Từ Cholesterol {#sec-2}
+
+Tất cả các hormone vỏ thượng thận đều bắt nguồn từ phân tử tiền chất **Cholesterol**:
+
+```
+[CHOLESTEROL] ──(Enzyme StAR đưa vào ty thể + Desmolase / CYP11A1 kích thích bởi ACTH)──► [PREGNENOLONE]
+       │
+       ├──► (Lớp Cầu): Pregnenolone ──► Progesterone ──► 11-DOC ──► Corticosterone ──► [ALDOSTERONE]
+       │
+       ├──► (Lớp Bó):  Pregnenolone ──► 17-OH-Pregnenolone ──► 17-OH-Progesterone ──► 11-Deoxycortisol ──► [CORTISOL]
+       │
+       └──► (Lớp Lưới): Pregnenolone ──► DHEA ──► Androstenedione ──► [TESTOSTERONE / ESTROGEN]
+```
+
+---
+
+## 3. Tác Động Sinh Học Toàn Diện Của Hormone Cortisol {#sec-3}
+
+Cortisol là hormone thiết yếu duy trì sự sống trong các tình huống **Stress (Nhiễm trùng, Chấn thương, Phẫu thuật, Hạ đường huyết)**:
+
+1. **Chuyển Hóa Năng Lượng**:
+   - Tăng tân tạo đường tại Gan (Gluconeogenesis) từ acid amin và glycerol.
+   - Tăng dị hóa protein ở cơ xương giải phóng acid amin.
+   - Tăng ly giải mỡ (Lipolysis) ở chi nhưng lại gây tái phân bố mỡ trung tâm (gáy, mặt, bụng).
+   - **Tác dụng làm tăng đường huyết (Diabetogenic)**.
+2. **Tác Dụng Chống Viêm & Ức Chế Miễn Dịch Cực Mạnh**:
+   - Ức chế enzyme **Phospholipase A2** qua protein **Lipocortin (Annexin A1)** $\rightarrow$ Chặn đứng tổng hợp cả Prostaglandin và Leukotrienes.
+   - Ức chế phiên mã yếu tố gây viêm **$NF-\kappa B$** $\rightarrow$ Giảm tiết các cytokine viêm ($IL-1, IL-2, IL-6, TNF-\alpha$).
+   - Làm giảm số lượng tế bào Lympho T, Eosinophil, Basophil trong máu (nhưng làm tăng bạch cầu trung tính do bong tách khỏi nội mô).
+3. **Hệ Tim Mạch & Duy Trì Huyết Áp (Permissive Action)**:
+   - Làm tăng tính nhạy cảm của các thụ thể $\alpha_1$-adrenergic trên mạch máu đối với Catecholamine (Duy trì trương lực mạch; thiếu Cortisol gây tụt huyết áp kháng trị).
+
+---
+
+## 4. Nhịp Tiết Sinh Học Ngày Đêm & Trục HPA {#sec-4}
+
+```
+[VÙNG HẠ ĐỒI] ──► Tiết CRH (Corticotropin-Releasing Hormone)
+      │
+      ▼
+[TUYẾN YÊN TRƯỚC] ──► Tiết ACTH (Adrenocorticotropic Hormone)
+      │
+      ▼
+[LỚP BÓ VỎ THƯỢNG THẬN] ──► Tiết CORTISOL vào Máu (95% gắn CBG / Transcortin)
+      ▲                                │
+      └───────── (-) Feedback Âm Tính ─┘
+```
+
+- **Nhịp tiết ngày đêm**: Cortisol đạt đỉnh cao nhất lúc **$6 – 8\text{ giờ sáng}$** ($10 – 20\text{ }\mu\text{g/dL}$) và giảm dần xuống điểm thấp nhất lúc **$23 – 24\text{ giờ đêm}$** ($< 2\text{ }\mu\text{g/dL}$).
+
+---
+
+## 5. Bệnh Lý Tuyến Vỏ Thượng Thận Lâm Sàng EBM {#sec-5}
+
+<PhysioAlert type="danger" title="Bảng Chẩn Đoán Phân Biệt: Hội Chứng Cushing vs Bệnh Addison">
+  | Tiêu chí | Hội Chứng Cushing (Tăng Cortisol Máu) | Bệnh Addison (Suy Vỏ Thượng Thận Nguyên Phát) |
+  |---|---|---|
+  | **Nguyên nhân chính** | • Lạm dụng thuốc Corticoid ngoại sinh (Hay gặp nhất)<br>• U tuyến yên tiết ACTH (Bệnh Cushing)<br>• U vỏ thượng thận tiết Cortisol | • Tự miễn phá hủy vỏ thượng thận ($80\%$)<br>• Lao tuyến thượng thận |
+  | **Biểu hiện lâm sàng** | • Khuôn mặt tròn như mặt trăng (*Moon face*)<br>• Ụ mỡ trâu sau gáy (*Buffalo hump*), Béo bụng<br>• Teo cơ tứ chi, Da mỏng dễ bầm tím, Vết rạn da màu tím đỏ (*Purple striae*)<br>• Tăng huyết áp, Đái tháo đường, Loãng xương | • **Mệt mỏi kiệt sức mạn tính, Sụt cân**<br>• **Tụt huyết áp tư thế, Chóng mặt ngất**<br>• **SẠM DA NIÊM MẠC NÂU ĐỒNG** (Do ACTH tăng cao kích thích tế bào hắc tố qua MSH)<br>• Thèm ăn muối (do mất Aldosterone) |
+  | **Rối loạn điện giải** | Giữ Natri, Hạ Kali máu nhẹ | **HẠ NATRI MÁU, TĂNG KALI MÁU, TOAN CHUYỂN HÓA** |
+</PhysioAlert>
+
+---
+
+## 6. Tài Liệu Tham Khảo EBM {#sec-6}
+
+1. **Hall, J. E., & Hall, M. E. (2021)**. *Guyton and Hall Textbook of Medical Physiology* (14th ed.). Philadelphia: Elsevier. Chapter 78: Adrenocortical Hormones.
+2. **Barrett, K. E. et al. (2019)**. *Ganong's Review of Medical Physiology* (26th ed.). New York: McGraw-Hill. Chapter 20: The Adrenal Gland.
+3. **Nieman, L. K. et al. (2008)**. *The diagnosis of Cushing's syndrome: an Endocrine Society Clinical Practice Guideline*. The Journal of Clinical Endocrinology & Metabolism, 93(5), 1526-1540.
+4. **Bornstein, S. R. et al. (2016)**. *Diagnosis and treatment of primary adrenal insufficiency: an Endocrine Society Clinical Practice Guideline*. The Journal of Clinical Endocrinology & Metabolism, 101(2), 364-389.

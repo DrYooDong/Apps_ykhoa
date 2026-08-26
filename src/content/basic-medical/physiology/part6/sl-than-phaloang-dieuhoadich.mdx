@@ -1,0 +1,157 @@
+---
+title: "Sinh Lý Cô Đặc - Pha Loãng Nước Tiểu & Điều Hòa Thể Dịch"
+slug: "sl-than-phaloang-dieuhoadich"
+code: "PHYS-REN-03"
+part: "part6"
+system: "renal"
+systemName: "Sinh Lý Thận & Thể Dịch"
+guytonChapter: "Guyton 14th - Chapter 25: The Body Fluid Compartments & Chapter 29: Urine Concentration and Dilution; Regulation of Extracellular Fluid Osmolarity and Sodium Concentration"
+ganongChapter: "Ganong 26th - Chapter 37: Renal Function & Micturition & Chapter 38: Regulation of Extracellular Fluid Composition & Volume"
+category: "physiology"
+status: "published"
+version: "2.0.0"
+updatedAt: "2026-08-26"
+description: "Sinh lý học Thể dịch & Nước tiểu: Quy tắc phân bố dịch cơ thể 60-40-20 (TBW, ICF, ECF), tính toán áp suất thẩm thấu huyết tương, hệ thống tăng nồng độ ngược dòng tại quai Henle và trao đổi ngược dòng qua Vasa Recta tạo ưu trương tủy thận 1.200 mOsm/kg, cơ chế tái hấp thu nước tự do của ADH qua Aquaporin-2 và ứng dụng lâm sàng trong Đái tháo nhạt (Diabetes Insipidus), Hội chứng SIADH & Nguy cơ Hủy myelin cầu não (CPM)."
+tags:
+  - "sinh-ly"
+  - "the-dich"
+  - "co-dac-nuoc-tieu"
+  - "adh"
+  - "siadh"
+  - "dai-thao-nhat"
+clinicalPearls:
+  - "Quy tắc an toàn chỉnh sửa Hạ Natri Máu mạn tính: TỐC ĐỘ BÙ NATRI KHÔNG ĐƯỢC VƯỢT QUÁ 8 - 10 mmol/L TRONG 24 GIỜ ĐẦU TIÊN. Bù Natri quá nhanh làm nước bị rút đột ngột khỏi tế bào não, gây ra biến chứng thần kinh vĩnh viễn tàn phế: HỘI CHỨNG HỦY MYELIN CẦU NÃO TRUNG TÂM (Central Pontine Myelinolysis / Osmotic Demyelination Syndrome)."
+  - "Phân biệt Đái Tháo Nhạt Trung Ương vs Do Thận bằng Nghiệm pháp Nhịn nước kết hợp Desmopressin (dDAVP): Sau khi tiêm dDAVP, nếu Độ thẩm thấu nước tiểu TĂNG VỌT > 50% -> Đái tháo nhạt Trung ương (do thiếu hụt ADH tuyến yên). Nếu Độ thẩm thấu nước tiểu VẪN KHÔNG THAY ĐỔI -> Đái tháo nhạt do Thận (do thụ thể V2/ống thận kháng ADH)."
+  - "Mạng mạch thẳng Vasa Recta chảy với tốc độ cực kỳ chậm theo hình chữ U ngược dòng, đóng vai trò là 'Hệ thống trao đổi ngược dòng thụ động (Countercurrent Exchanger)', vừa cung cấp oxy nuôi dưỡng tủy thận vừa bảo tồn nguyên vẹn gradient ưu trương tủy 1.200 mOsm/kg."
+sections:
+  - id: "sec-1"
+    number: 1
+    title: "Các Khoang Thể Dịch (Quy Tắc 60-40-20)"
+    icon: "fa-chart-pie"
+  - id: "sec-2"
+    number: 2
+    title: "Áp Suất Thẩm Thấu & Cảm Biến Khát"
+    icon: "fa-scale-balanced"
+  - id: "sec-3"
+    number: 3
+    title: "Hệ Thống Ngược Dòng Nhân Nồng Độ Tủy Thận"
+    icon: "fa-arrows-split-up-and-left"
+  - id: "sec-4"
+    number: 4
+    title: "Cơ Chế Tác Dụng Của Hormone ADH"
+    icon: "fa-faucet-drip"
+  - id: "sec-5"
+    number: 5
+    title: "Rối Loạn Lâm Sàng EBM: SIADH vs Đái Tháo Nhạt"
+    icon: "fa-stethoscope"
+  - id: "sec-6"
+    number: 6
+    title: "Tài Liệu Tham Khảo EBM"
+    icon: "fa-book-medical"
+---
+
+import { PhysioAlert, PhysioQuickNav, PhysioFeedbackLoop } from '../components'
+
+# 💧 SINH LÝ CÔ ĐẶC - PHA LOÃNG NƯỚC TIỂU & ĐIỀU HÒA THỂ DỊCH
+
+<PhysioQuickNav />
+
+---
+
+## 1. Phân Bố Các Khoang Dịch Cơ Thể (Quy Tắc 60 - 40 - 20) {#sec-1}
+
+Tổng lượng nước cơ thể (*Total Body Water - TBW*) chiếm trung bình **$60\%$ trọng lượng cơ thể** ở nam giới trưởng thành (khoảng **$42\text{ Lít}$** ở người 70 kg):
+
+```
+                        [TỔNG LƯỢNG NƯỚC CƠ THỂ (TBW = 60% = 42 LÍT)]
+                                              │
+         ┌────────────────────────────────────┴────────────────────────────────────┐
+         ▼                                                                         ▼
+[DỊCH NỘI BÀO (ICF = 2/3 TBW = 40% = 28 LÍT)]             [DỊCH NGOẠI BÀO (ECF = 1/3 TBW = 20% = 14 LÍT)]
+  • Nằm bên trong tất cả các tế bào                         │
+  • Cation chính: K+, Mg2+                                  ├──► Dịch Kẽ (Interstitial: 3/4 ECF = 15% = 10.5 Lít)
+  • Anion chính:  Phosphate (PO4 3-), Protein               │
+                                                            └──► Huyết Tương (Plasma: 1/4 ECF = 5% = 3.5 Lít)
+                                                                 • Cation chính: Na+; Anion chính: Cl-, HCO3-
+```
+
+---
+
+## 2. Áp Suất Thẩm Thấu Huyết Tương & Trung Tâm Khát {#sec-2}
+
+Áp suất thẩm thấu huyết tương (*Posm*) duy trì ổn định ở mức **$280 – 295\text{ mOsm/kg } H_2O$**:
+
+$$\text{Posm ước tính} = 2[Na^+] + \frac{\text{Glucose (mg/dL)}}{18} + \frac{\text{BUN (mg/dL)}}{2.8}$$
+
+- **Trung Tâm Khát & Thụ Thể Thẩm Thấu (Osmoreceptors)**: Nằm tại vùng quanh não thất của Vùng Hạ Đồi (OVLT và SFO).
+- **Độ nhạy cực cao**: Chỉ cần áp suất thẩm thấu máu tăng **$1\%$** (hoặc Natri tăng $2\text{ mmol/L}$) đã kích hoạt phản xạ khát đòi uống nước và kích thích tuyến yên tiết **Hormone ADH**.
+
+---
+
+## 3. Hệ Thống Nhân Nồng Độ Ngược Dòng Tại Tủy Thận {#sec-3}
+
+Khả năng cô đặc nước tiểu tối đa lên tới **$1.200 – 1.400\text{ mOsm/kg}$** (gấp 4 lần máu) phụ thuộc vào **Độ ưu trương của dịch kẽ tủy thận**:
+
+```
+[VỎ THẬN: 300 mOsm/kg] ──────────────────────────────────────────────────────────────────
+         │
+         │  [NHÁNH XUỐNG QUAI HENLE]           [NHÁNH LÊN DÀY QUAI HENLE (TAL)]
+         │  • Chỉ thấm NƯỚC (Hút nước ra)      • HOÀN TOÀN KHÔNG THẤM NƯỚC
+         │  • Dịch lọc cô đặc dần:             • Bơm tích cực Na+, K+, 2Cl- qua NKCC2
+         │    300 ──► 600 ──► 900 mOsm            ra dịch kẽ tủy tạo độ ưu trương
+         │
+[TỦY THẬN SÂU: 1.200 mOsm/kg] ──────────────────────────────────────────────────────────
+         │
+         └──► CHÓP QUAI HENLE (1.200 mOsm) ──► Dịch lọc lên TAL bị pha loãng còn 100 mOsm!
+```
+
+- **Mạng Mạch Thẳng Vasa Recta**: Máu chảy chậm hình chữ U theo cơ chế **Trao đổi ngược dòng (Countercurrent Exchanger)**, lấy đi lượng nước thẩm thấu mà không làm rửa trôi các ion muối $NaCl$ và Urê khỏi tủy thận.
+
+---
+
+## 4. Cơ Chế Hoạt Động Của Hormone Chống Bài Niệu (ADH / Vasopressin) {#sec-4}
+
+ADH do nhân trên thị và nhân cạnh não thất vùng Hạ đồi tổng hợp, dự trữ và bài tiết từ **Thùy sau Tuyến yên**:
+
+```
+[ÁP SUẤT THẨM THẤU MÁU TĂNG / THỂ TÍCH MÁU GIẢM] ──► Tuyến Yên tiết Hormone ADH vào Máu
+                                                                  │
+                                                                  ▼
+[Gắn vào Thụ Thể V2 trên Màng Đáy Bên Tế Bào Ống Góp]
+                                                                  │
+                                                                  ▼
+[Kích hoạt Protein Gs ──► Tăng cAMP ──► Hoạt hóa Protein Kinase A (PKA)]
+                                                                  │
+                                                                  ▼
+[Chèn hàng loạt Bọc chứa KÊNH AQUAPORIN-2 lên Màng Đỉnh]
+                                                                  │
+                                                                  ▼
+[NƯỚC TỰ DO TỪ NƯỚC TIỂU BỊ HÚT Ồ ẠT VỀ DỊCH KẼ TỦY ƯU TRƯƠNG ──► VỀ MÁU]
+                                                                  │
+                                                                  ▼
+[NƯỚC TIỂU CÔ ĐẶC TỐI ĐA (1.200 mOsm) - LƯỢNG NƯỚC TIỂU GIẢM XUỐNG 0.5 LÍT/NGÀY]
+```
+
+---
+
+## 5. Rối Loạn Thể Dịch Lâm Sàng EBM: SIADH vs Đái Tháo Nhạt {#sec-5}
+
+<PhysioAlert type="danger" title="Bảng Chẩn Đoán Phân Biệt: Hội Chứng SIADH vs Bệnh Đái Tháo Nhạt (DI)">
+  | Tiêu chí lâm sàng | Hội Chứng Tiết ADH Không Thích Hợp (SIADH) | Bệnh Đái Tháo Nhạt (Diabetes Insipidus - DI) |
+  |---|---|---|
+  | **Nồng độ ADH máu** | **TĂNG CAO BẤT THƯỜNG KHÔNG KIỂM SOÁT** (U ung thư phổi tế bào nhỏ, Tổn thương não). | **GIẢM NẶNG** (DI Trung ương) hoặc **BỊ KHÁNG TẠI THẬN** (DI do Thận / Đột biến thụ thể $V_2$). |
+  | **Natri máu ($Na^+$)** | **HẠ NATRI MÁU NẶNG ($< 130\text{ mmol/L}$)** do ứ nước pha loãng. | **TĂNG NATRI MÁU ($> 145\text{ mmol/L}$)** do mất nước tự do. |
+  | **Áp suất thẩm thấu máu** | **GIẢM NHẠY ($< 275\text{ mOsm/kg}$)** (Máu bị pha loãng). | **TĂNG CAO ($> 300\text{ mOsm/kg}$)** (Máu bị cô đặc). |
+  | **Độ thẩm thấu nước tiểu** | **CÔ ĐẶC NGHỊCH THƯỜNG ($> 100 – 300\text{ mOsm/kg}$)** kèm $Na^+$ niệu cao. | **PHA LOÃNG TỐI ĐA ($< 100 – 200\text{ mOsm/kg}$)**, tỷ trọng nước tiểu $< 1.005$. |
+  | **Triệu chứng & Thể tích** | **Đẳng thể tích Euvolemic** (không phù), lú lẫn, co giật do phù não. | **Tiểu nhiều dữ dội ($5 – 20\text{ Lít/ngày}$)**, Khát nhiều, mất nước. |
+  | **Nguyên tắc điều trị** | **HẠN CHẾ NƯỚC VÀO ($< 800\text{ mL/ngày}$)**; Dùng thuốc đối kháng thụ thể $V_2$ (Tolvaptan). | • DI Trung ương: **Bổ sung Desmopressin (dDAVP)**.<br>• DI do Thận: Dùng Thiazide + Hạn chế muối. |
+</PhysioAlert>
+
+---
+
+## 6. Tài Liệu Tham Khảo EBM {#sec-6}
+
+1. **Hall, J. E., & Hall, M. E. (2021)**. *Guyton and Hall Textbook of Medical Physiology* (14th ed.). Philadelphia: Elsevier. Chapters 25 & 29: Body Fluids, Osmolarity & Urine Concentration.
+2. **Barrett, K. E. et al. (2019)**. *Ganong's Review of Medical Physiology* (26th ed.). New York: McGraw-Hill. Chapters 37 & 38: Renal Function & Fluid Regulation.
+3. **Sterns, R. H. (2015)**. *Disorders of plasma sodium—causes, consequences, and correction*. New England Journal of Medicine, 372(1), 55-65.
+4. **Verbalis, J. G. et al. (2013)**. *Diagnosis, evaluation, and treatment of hyponatremia: expert panel recommendations*. The American Journal of Medicine, 126(10), S1-S42.

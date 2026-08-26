@@ -1,0 +1,643 @@
+/* ============================================================
+   BODY MAP — Bản đồ Huyệt vị Tương tác
+   Sử dụng Design Tokens từ main.css
+============================================================ */
+
+/* ── LAYOUT ─────────────────────────────────────── */
+.bodymap-layout {
+  display: flex;
+  gap: 0;
+  min-height: calc(100vh - var(--header-height) - 120px);
+  position: relative;
+}
+
+.bodymap-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* ── TOOLBAR ─────────────────────────────────────── */
+.bodymap-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 0.8rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+  animation: fadeInUp 0.4s ease-out;
+}
+
+.toolbar-group {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.toolbar-group-label {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  color: var(--color-text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-right: 0.15rem;
+  white-space: nowrap;
+}
+
+.toolbar-sep {
+  width: 1px;
+  height: 24px;
+  background: var(--color-divider);
+  flex-shrink: 0;
+  margin: 0 0.3rem;
+}
+
+/* Layer & Region buttons */
+.layer-btn, .region-btn, .view-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.32rem 0.6rem;
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  background: var(--color-surface-offset);
+  border: 1px solid var(--color-divider);
+  cursor: pointer;
+  transition: all var(--tr);
+  white-space: nowrap;
+  user-select: none;
+  line-height: 1.4;
+}
+
+.layer-btn:hover, .region-btn:hover, .view-btn:hover {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+  background: var(--color-primary-hl);
+}
+
+.layer-btn.active {
+  color: white;
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.layer-btn.active.layer-anatomy { background: var(--color-teal); border-color: var(--color-teal); }
+.layer-btn.active.layer-meridians { background: var(--color-purple); border-color: var(--color-purple); }
+.layer-btn.active.layer-acupoints { background: var(--color-primary); border-color: var(--color-primary); }
+.layer-btn.active.layer-danger { background: var(--color-rose); border-color: var(--color-rose); }
+
+.region-btn.active, .view-btn.active {
+  color: white;
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.layer-btn .btn-icon, .region-btn .btn-icon {
+  font-size: 0.85rem;
+  line-height: 1;
+}
+
+/* Search in toolbar */
+.bodymap-search {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex: 1;
+  min-width: 160px;
+  max-width: 280px;
+  height: 32px;
+  padding: 0 0.6rem;
+  background: var(--color-surface-offset);
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-full);
+  transition: border-color var(--tr), box-shadow var(--tr);
+}
+
+.bodymap-search:focus-within {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.12);
+}
+
+.bodymap-search input {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  font: inherit;
+  color: var(--color-text);
+  font-size: var(--text-xs);
+}
+
+.bodymap-search input::placeholder { color: var(--color-text-faint); }
+.bodymap-search .search-icon { font-size: 0.8rem; color: var(--color-text-faint); }
+
+/* ── SVG MAP CONTAINER ──────────────────────────── */
+.bodymap-canvas-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-surface);
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  position: relative;
+  min-height: 500px;
+  animation: fadeInUp 0.4s ease-out 0.1s backwards;
+}
+
+.bodymap-canvas-wrapper.dimmed .body-layer:not(.active-focus),
+.bodymap-canvas-wrapper.dimmed .body-region {
+  opacity: 0.15;
+  transition: opacity 0.3s ease;
+}
+
+#bodymapSVG {
+  width: 100%;
+  height: 100%;
+  max-height: calc(100vh - 240px);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── BODY ANATOMY LAYER ─────────────────────────── */
+.body-fill {
+  fill: var(--color-surface-offset);
+  stroke: var(--color-border);
+  stroke-width: 1.2;
+  transition: fill var(--tr), stroke var(--tr), opacity var(--tr);
+}
+
+[data-theme="dark"] .body-fill {
+  fill: var(--color-surface-2);
+  stroke: var(--color-border);
+}
+
+.body-region:hover .body-fill {
+  fill: var(--color-primary-hl);
+  stroke: var(--color-primary);
+  cursor: pointer;
+}
+
+/* Mannequin Gradients */
+.grad-center { stop-color: var(--color-surface); }
+.grad-edge { stop-color: var(--color-surface-offset); }
+.grad-dark { stop-color: var(--color-border); }
+
+[data-theme="dark"] .grad-center { stop-color: var(--color-surface-1); }
+[data-theme="dark"] .grad-edge { stop-color: var(--color-surface-2); }
+[data-theme="dark"] .grad-dark { stop-color: rgba(0,0,0,0.4); }
+
+.body-detail-line {
+  fill: none;
+  stroke: var(--color-divider);
+  stroke-width: 0.8;
+  opacity: 0.6;
+}
+
+[data-theme="dark"] .body-detail-line {
+  opacity: 0.3;
+}
+
+.body-muscle-line {
+  fill: none;
+  stroke: var(--color-text-faint);
+  stroke-width: 0.6;
+  opacity: 0.4;
+  stroke-linecap: round;
+}
+
+.body-ear {
+  opacity: 0.7;
+}
+
+/* ── MERIDIAN LAYER ──────────────────────────────── */
+.meridian-path {
+  fill: none;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.55;
+  transition: opacity 0.3s ease, stroke-width 0.3s ease, filter 0.3s ease;
+  cursor: pointer;
+}
+
+.meridian-path:hover,
+.meridian-path.highlighted {
+  opacity: 1;
+  stroke-width: 4;
+  filter: drop-shadow(0 0 6px currentColor);
+}
+
+.meridian-path.dimmed {
+  opacity: 0.1;
+  stroke-width: 1.5;
+}
+
+/* ── ACUPOINT LAYER ──────────────────────────────── */
+.acupoint-dot {
+  fill: var(--color-primary);
+  stroke: white;
+  stroke-width: 1.5;
+  r: 5;
+  cursor: pointer;
+  transition: r 0.2s ease, fill 0.2s ease, filter 0.2s ease, stroke-width 0.2s ease;
+}
+
+.acupoint-dot:hover {
+  r: 8;
+  stroke-width: 2.5;
+  filter: drop-shadow(0 0 8px rgba(var(--color-primary-rgb), 0.6));
+}
+
+.acupoint-dot.selected {
+  r: 9;
+  fill: var(--color-rose);
+  stroke: white;
+  stroke-width: 3;
+  filter: drop-shadow(0 0 10px rgba(var(--color-rose-rgb), 0.7));
+}
+
+.acupoint-dot.danger-safe { fill: var(--color-success); }
+.acupoint-dot.danger-caution { fill: var(--color-warning); }
+.acupoint-dot.danger-danger { fill: var(--color-rose); }
+
+.acupoint-dot.meridian-highlighted {
+  fill: currentColor;
+  r: 7;
+  stroke-width: 2;
+  filter: drop-shadow(0 0 5px currentColor);
+}
+
+.acupoint-dot.dimmed {
+  opacity: 0.15;
+  r: 3;
+}
+
+.acupoint-dot.search-match {
+  r: 9;
+  fill: var(--color-warning);
+  stroke: white;
+  stroke-width: 3;
+  filter: drop-shadow(0 0 10px rgba(var(--color-warning-rgb), 0.7));
+  animation: pulse-glow 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { filter: drop-shadow(0 0 6px rgba(var(--color-warning-rgb), 0.5)); }
+  50% { filter: drop-shadow(0 0 14px rgba(var(--color-warning-rgb), 0.9)); }
+}
+
+/* Acupoint label */
+.acupoint-label {
+  font-family: var(--font-body);
+  font-size: 8px;
+  font-weight: 600;
+  fill: var(--color-text-muted);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.acupoint-group:hover .acupoint-label,
+.acupoint-group.selected .acupoint-label {
+  opacity: 1;
+}
+
+/* ── DANGER ZONE HEATMAP ─────────────────────────── */
+.danger-zone {
+  opacity: 0.22;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.danger-zone.risk-danger {
+  fill: url(#heatmap-danger);
+}
+
+.danger-zone.risk-caution {
+  fill: url(#heatmap-caution);
+}
+
+.danger-zone:hover {
+  opacity: 0.4;
+}
+
+/* ── TOOLTIP ─────────────────────────────────────── */
+.bodymap-tooltip {
+  position: absolute;
+  background: var(--color-surface);
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  padding: 0.5rem 0.75rem;
+  font-size: var(--text-xs);
+  color: var(--color-text);
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  z-index: 100;
+  max-width: 220px;
+  white-space: nowrap;
+}
+
+.bodymap-tooltip.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.bodymap-tooltip .tt-id {
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-right: 0.3rem;
+}
+
+.bodymap-tooltip .tt-name {
+  font-weight: 600;
+}
+
+/* ── DETAIL PANEL (RIGHT SIDEBAR) ────────────────── */
+.bodymap-detail {
+  width: 0;
+  overflow: hidden;
+  background: var(--color-surface);
+  border-left: 1px solid var(--color-divider);
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+  opacity: 0;
+  flex-shrink: 0;
+}
+
+.bodymap-detail.open {
+  width: 340px;
+  opacity: 1;
+}
+
+.detail-scroll {
+  width: 340px;
+  height: 100%;
+  overflow-y: auto;
+  padding: 1.25rem;
+}
+
+.detail-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.detail-header h2 {
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.detail-header .detail-id {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--color-primary);
+  background: var(--color-primary-hl);
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+}
+
+.detail-close-btn {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  background: none;
+  border: none;
+  font-size: 1rem;
+  color: var(--color-text-faint);
+  cursor: pointer;
+  transition: all var(--tr);
+  flex-shrink: 0;
+}
+
+.detail-close-btn:hover {
+  background: var(--color-rose-hl);
+  color: var(--color-rose);
+}
+
+.detail-pinyin {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  margin-bottom: 0.15rem;
+}
+
+.detail-meridian-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+/* Detail sections */
+.detail-section {
+  margin-bottom: 1rem;
+}
+
+.detail-section h3 {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0 0 0.4rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.detail-section h3 .section-icon {
+  font-size: 0.9rem;
+}
+
+.detail-section p, .detail-section ul {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.detail-section ul {
+  padding-left: 1.2rem;
+}
+
+.detail-section li {
+  margin-bottom: 0.2rem;
+}
+
+/* Danger badge */
+.danger-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
+  font-weight: 700;
+}
+
+.danger-badge.safe {
+  background: var(--color-success-hl);
+  color: var(--color-success);
+}
+
+.danger-badge.caution {
+  background: var(--color-warning-hl);
+  color: var(--color-warning);
+}
+
+.danger-badge.danger {
+  background: var(--color-rose-hl);
+  color: var(--color-rose);
+}
+
+/* ── LEGEND ──────────────────────────────────────── */
+.bodymap-legend {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  padding: 0.5rem 0.75rem;
+  font-size: var(--text-xs);
+  z-index: 10;
+}
+
+.legend-title {
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 0.35rem;
+}
+
+.legend-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--color-text-muted);
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1.5px solid white;
+  flex-shrink: 0;
+}
+
+/* ── RESPONSIVE ──────────────────────────────────── */
+@media (max-width: 900px) {
+  .bodymap-detail.open {
+    width: 280px;
+  }
+  .detail-scroll {
+    width: 280px;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .bodymap-layout {
+    flex-direction: column;
+  }
+
+  .bodymap-toolbar {
+    gap: 0.35rem;
+    padding: 0.5rem;
+  }
+
+  .toolbar-group-label {
+    display: none;
+  }
+
+  .toolbar-sep {
+    display: none;
+  }
+
+  .layer-btn span, .region-btn span {
+    display: none;
+  }
+
+  .bodymap-search {
+    max-width: 100%;
+    min-width: 0;
+    order: -1;
+    flex-basis: 100%;
+  }
+
+  .bodymap-canvas-wrapper {
+    min-height: 400px;
+  }
+
+  .bodymap-detail {
+    width: 100% !important;
+    border-left: none;
+    border-top: 1px solid var(--color-divider);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 0;
+    z-index: 200;
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .bodymap-detail.open {
+    height: 55vh;
+    opacity: 1;
+  }
+
+  .detail-scroll {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .bodymap-legend {
+    display: none;
+  }
+}
+
+/* ── ANIMATIONS ──────────────────────────────────── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.body-layer {
+  transition: opacity 0.4s ease;
+}
+
+.body-layer.hidden {
+  opacity: 0;
+  pointer-events: none;
+}

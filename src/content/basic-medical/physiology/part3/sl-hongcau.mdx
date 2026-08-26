@@ -1,0 +1,193 @@
+---
+title: "Sinh Lý Hồng Cầu & Huyết Sắc Tố (Hemoglobin)"
+slug: "sl-hongcau"
+code: "PHYS-BLD-02"
+part: "part3"
+system: "cardiovascular"
+systemName: "Sinh Lý Máu & Hệ Miễn Dịch"
+guytonChapter: "Guyton 14th - Chapter 33: Red Blood Cells, Anemia, and Polycythemia"
+ganongChapter: "Ganong 26th - Chapter 31: Blood as a Circulatory Fluid"
+category: "physiology"
+status: "published"
+version: "2.0.0"
+updatedAt: "2026-08-26"
+description: "Sinh lý học Hồng cầu: Cấu trúc đĩa lõm hai mặt & khung xương màng Spectrin, sinh tổng hợp Hemoglobin (HbA, HbA2, HbF), vai trò điều hòa tủy xương của Erythropoietin (EPO), chuyển hóa Sắt & Hepcidin, chu trình thoái biến hồng cầu tại lách thành Bilirubin, các chỉ số dòng hồng cầu Wintrobe (MCV, MCH, MCHC, RDW) và phân loại tiếp cận thiếu máu EBM."
+tags:
+  - "sinh-ly"
+  - "hong-cau"
+  - "hemoglobin"
+  - "erythropoietin"
+  - "ferritin"
+  - "mcv-mchc"
+clinicalPearls:
+  - "Erythropoietin (EPO) được sản xuất 90% tại tế bào kẽ mao mạch thận để đáp ứng với tình trạng thiếu oxy mô (qua yếu tố cảm ứng HIF-1alpha). Bệnh nhân suy thận mạn (CKD) mất dần tế bào kẽ thận dẫn đến thiếu máu đẳng sắc đẳng bào tiến triển, bắt buộc phải điều trị bằng thuốc kích thích tạo máu ESA."
+  - "Thiếu hụt men G6PD (Glucose-6-Phosphate Dehydrogenase) làm hồng cầu không tạo đủ NADPH để tái tạo Glutathione khử (GSH). Khi tiếp xúc với tác nhân oxy hóa (thuốc kháng sốt rét Primaquine, kháng sinh Cotrimoxazole, ăn đậu Fava), Hemoglobin bị oxy hóa biến tính kết tủa thành Thể Heinz (Heinz bodies) và bị lách thực bào tạo tế bào hồng cầu bị cắn (Bite cells), gây cơn tán huyết cấp."
+  - "Phân biệt Thiếu máu thiếu sắt vs Thalassemia thể ẩn bằng Chỉ số Mentzer (MCV / Số lượng RBC tính bằng triệu): Nếu Mentzer < 13 gợi ý mạnh Thalassemia (tủy tăng sinh nhiều hồng cầu nhỏ); Nếu Mentzer > 13 gợi ý Thiếu máu thiếu sắt."
+sections:
+  - id: "sec-1"
+    number: 1
+    title: "Hình Thái & Khung Xương Màng Hồng Cầu"
+    icon: "fa-circle-dot"
+  - id: "sec-2"
+    number: 2
+    title: "Cấu Trúc & Chức Năng Hemoglobin"
+    icon: "fa-dna"
+  - id: "sec-3"
+    number: 3
+    title: "Sinh Hồng Cầu & Điều Hòa Bằng EPO"
+    icon: "fa-arrows-spin"
+  - id: "sec-4"
+    number: 4
+    title: "Chuyển Hóa Sắt & Thoái Biến Bilirubin"
+    icon: "fa-recycle"
+  - id: "sec-5"
+    number: 5
+    title: "Các Chỉ Số Wintrobe & Tiếp Cận Thiếu Máu"
+    icon: "fa-vial-circle-check"
+  - id: "sec-6"
+    number: 6
+    title: "Tài Liệu Tham Khảo EBM"
+    icon: "fa-book-medical"
+---
+
+import { PhysioAlert, PhysioQuickNav, PhysioFeedbackLoop } from '../components'
+
+# 🩸 SINH LÝ HỒNG CẦU & HUYẾT SẮC TỐ (HEMOGLOBIN)
+
+<PhysioQuickNav />
+
+---
+
+## 1. Hình Thái & Khung Xương Màng Hồng Cầu {#sec-1}
+
+Hồng cầu (*Erythrocytes / RBCs*) là tế bào máu đông đảo nhất trong tuần hoàn:
+- **Số lượng**: Nam giới **$4.7 – 6.1\text{ triệu/}\mu\text{L}$**; Nữ giới **$4.2 – 5.4\text{ triệu/}\mu\text{L}$**.
+- **Kích thước**: Đường kính trung bình **$7.8\text{ }\mu\text{m}$**, độ dày rìa ngoài $2.5\text{ }\mu\text{m}$, độ dày trung tâm lõm $1.0\text{ }\mu\text{m}$.
+- **Hình đĩa lõm hai mặt (Biconcave Disc)**:
+  - Tối ưu hóa **tỷ lệ diện tích bề mặt trên thể tích ($S/V$)**, giúp khuếch tán oxy và $CO_2$ siêu tốc.
+  - Tăng **tính mềm dẻo, biến dạng linh hoạt** để lách qua các mao mạch hẹp ($3 – 5\text{ }\mu\text{m}$) và khe xoang lách mà không bị vỡ.
+- **Không có nhân, không có ty thể**: Năng lượng $ATP$ được tạo ra 100% nhờ **con đường đường phân kỵ khí (Glycolysis / Embden-Meyerhof)** và chu trình Hexose Monophosphate (HMP Shunt qua enzyme G6PD tạo NADPH bảo vệ chống oxy hóa).
+
+```
+Khung Xương Màng Hồng Cầu:
+  [Màng Lipid Kép] ──► Neo giữ bởi [Ankyrin] & [Band 3]
+                              │
+                              ▼
+  [Mạng Lưới Sợi Spectrin (Alpha & Beta) + Actin + Protein 4.1] ──► Tạo tính đàn hồi siêu bền
+```
+
+<PhysioAlert type="danger" title="Bệnh Hồng Cầu Hình Cầu Di Truyền (Hereditary Spherocytosis)">
+  Đột biến gen mã hóa các protein khung xương màng hồng cầu (**Spectrin, Ankyrin, Band 3**) làm màng hồng cầu mất dần các mẩu lipid nhỏ trong tuần hoàn, biến hồng cầu từ hình đĩa lõm thành hình cầu nhỏ căng cứng (*Spherocytes*). Các hồng cầu hình cầu này mất tính mềm dẻo, bị kẹt lại và bị đại thực bào phá hủy hàng loạt tại các dây xoang lách (*Cords of Billroth*), gây ra **Thiếu máu tán huyết di truyền, Vàng da và Lách to**. Điều trị cắt lách giúp giải quyết triệt để tình trạng tán huyết.
+</PhysioAlert>
+
+---
+
+## 2. Cấu Trúc & Động Học Khí Của Hemoglobin (Huyết Sắc Tố) {#sec-2}
+
+Một phân tử **Hemoglobin (Hb)** hoàn chỉnh là một tetramer gồm **4 chuỗi Polypeptide Globin**, mỗi chuỗi gắn với một nhóm ngoại **Heme** mang một nguyên tử sắt hóa trị hai (**$Fe^{2+}$**):
+
+$$\text{1 phân tử Hemoglobin gắn tối đa } 4\text{ phân tử } O_2 \quad \Longleftrightarrow \quad 1\text{ gam Hb bão hòa gắn được } 1.34\text{ mL } O_2$$
+
+```
+                                [1 PHÂN TỬ HEMOGLOBIN (Hb)]
+                                             │
+                       ┌─────────────────────┴─────────────────────┐
+                       ▼                                           ▼
+             [4 CHUỖI GLOBIN]                                 [4 NHÓM HEME]
+        • HbA người lớn: α2 β2 (>95%)                    • Vòng Porphyrin (Protoporphyrin IX)
+        • HbA2 người lớn: α2 δ2 (2% - 3%)                • 1 Nguyên tử Sắt Fe2+ ở trung tâm
+        • HbF bào thai: α2 γ2 (Ái lực O2 cao)             • Vị trí gắn thuận nghịch với O2
+```
+
+<PhysioAlert type="mechanism" title="Hiện Tượng Hợp Tác Dị Lập Thể (Cooperative Binding) & Đường Cong Phân Ly HbO2">
+  Khi phân tử $O_2$ đầu tiên gắn vào một nhóm Heme, nó làm biến đổi cấu hình không gian của toàn bộ tetramer từ **Dạng Căng (T-state: Ái lực thấp)** sang **Dạng Thư Giãn (R-state: Ái lực cao)**. Sự chuyển dịch này làm tăng ái lực gắn $O_2$ của 3 nhóm Heme còn lại lên hàng trăm lần, tạo nên **Đường cong phân ly Oxyhemoglobin hình chữ S (Sigmoidal Curve)** giúp Hb nạp tối đa $O_2$ tại phổi và nhả nhanh $O_2$ tại các mô tiêu thụ.
+</PhysioAlert>
+
+---
+
+## 3. Quá Trình Sinh Hồng Cầu & Vòng Điều Hòa Erythropoietin (EPO) {#sec-3}
+
+Hồng cầu được sinh ra liên tục tại **Tủy xương đỏ** (khoảng $2\text{ triệu hồng cầu mới/giây}$) từ tế bào gốc tạo máu vạn năng (HSC):
+
+```
+[HSC] ──► [Tiền nguyên hồng cầu] ──► [Nguyên hồng cầu ưa base] ──► [Ưa acid (Đẩy nhân ra)]
+                                                                           │
+[Hồng Cầu Trưởng Thành (Sống 120 ngày)] ◄── [Hồng Cầu Lưới (Reticulocyte 1-2%)] ┘
+```
+
+<PhysioFeedbackLoop 
+  type="negative"
+  title="Vòng Phản Hồi Âm Tính: Điều Hòa Sinh Hồng Cầu Qua Erythropoietin (EPO)"
+  stimulus="Thiếu oxy mô (Tissue Hypoxia do lên vùng cao, mất máu, bệnh phổi, thiếu máu)"
+  receptor="Tế bào kẽ quanh ống thận phát hiện PO2 giảm, hoạt hóa yếu tố phiên mã HIF-1α"
+  controlCenter="Thận tăng tiết mạnh mẽ hormone Erythropoietin (EPO) vào máu (90% tại thận, 10% tại gan)"
+  effector="EPO kích thích tế bào tiền thân tủy xương tăng phân chia và rút ngắn thời gian biệt hóa hồng cầu"
+  response="Tăng số lượng hồng cầu lưu thông, tăng khả năng vận chuyển O2 và ĐƯA TƯỚI MÁU OXY MÔ VỀ BÌNH THƯỜNG"
+/>
+
+---
+
+## 4. Chuyển Hóa Sắt & Chu Trình Thoái Biến Hồng Cầu (Bilirubin) {#sec-4}
+
+### A. Chuyển Hóa Sắt & Hormone Điều Hòa Hepcidin
+- Tổng lượng sắt cơ thể: **$3.0 – 4.0\text{ gam}$** ($65\%$ nằm trong Hemoglobin, $30\%$ dự trữ dưới dạng **Ferritin** tại gan/tủy xương, $0.1\%$ gắn **Transferrin** vận chuyển trong máu).
+- **Hepcidin (Hormone do Gan tiết)**: Là chất điều hòa hấp thu sắt trung ương. Hepcidin gắn và làm thoái giáng kênh xuất bào sắt **Ferroportin** tại ruột và đại thực bào. Khi Hepcidin tăng (trong viêm mạn tính), sắt bị "nhốt" trong tế bào, gây ra **Thiếu máu trong bệnh mạn tính (Anemia of Chronic Disease)**.
+
+### B. Chu Trình Thoái Biến Hồng Cầu (Vòng Đời 120 Ngày)
+Sau 120 ngày lưu thông, hồng cầu già cỗi mất tính mềm dẻo bị đại thực bào lách phá hủy:
+
+```
+[HỒNG CẦU GIÀ (120 NGÀY)] ──► [Đại Thực Bào Hệ Võng Nội Mô (Lách & Gan)]
+                                        │
+                 ┌──────────────────────┼──────────────────────┐
+                 ▼                      ▼                      ▼
+          [Chuỗi Globin]           [Sắt Fe2+]             [Vòng Porphyrin]
+                 │                      │                      │
+                 ▼                      ▼                      ▼
+          Tái tạo Acid amin       Gắn Transferrin        [Biliverdin]
+                                  về Tủy xương                 │
+                                                               ▼
+                                                 [BILIRUBIN GIÁN TIẾP (Tự do / Không tan trong nước)]
+                                                               │ (Gắn Albumin vận chuyển về Gan)
+                                                               ▼
+                                                 [Gan: Enzyme UGT liên hợp với Acid Glucuronic]
+                                                               │
+                                                               ▼
+                                                 [BILIRUBIN TRỰC TIẾP (Liên hợp / Tan trong nước)]
+                                                               │ (Bài tiết theo Mật vào Ruột non)
+                                                               ▼
+                                                 [Urobilinogen & Stercobilin (Tạo màu vàng phân & nước tiểu)]
+```
+
+---
+
+## 5. Các Chỉ Số Wintrobe & Sơ Đồ Tiếp Cận Thiếu Máu EBM {#sec-5}
+
+| Chỉ số huyết học | Giá trị tham chiếu bình thường | Ý nghĩa sinh lý |
+|---|---|---|
+| **MCV** *(Thể tích trung bình HC)* | **$80 – 100\text{ fL}$** | Phân loại thiếu máu: Hồng cầu nhỏ ($<80$), Đẳng bào ($80-100$), Hồng cầu to ($>100$). |
+| **MCH** *(Lượng Hb trung bình/HC)* | **$27 – 32\text{ pg}$** | Mức độ nhiễm sắc của từng tế bào hồng cầu. |
+| **MCHC** *(Nồng độ Hb trung bình)* | **$32 – 36\text{ g/dL}$** | Đẳng sắc ($32-36$) hay Nhược sắc ($<32$). |
+| **RDW** *(Độ phân bố kích thước HC)* | **$11.5\% – 14.5\%$** | Đánh giá độ đồng đều; RDW tăng cao phản ánh hồng cầu to nhỏ không đều (*Anisocytosis*). |
+| **Reticulocyte Count** *(Hồng cầu lưới)* | **$0.5\% – 2.0\%$** | Đánh giá đáp ứng sinh máu của tủy xương (Tăng: Tán huyết/Mất máu; Giảm: Suy tủy). |
+
+```
+                                  [TIẾP CẬN THIẾU MÁU THEO MCV]
+                                                │
+         ┌──────────────────────────────────────┼──────────────────────────────────────┐
+         ▼                                      ▼                                      ▼
+[THIẾU MÁU HỒNG CẦU NHỎ (MCV < 80)]     [THIẾU MÁU ĐẲNG BÀO (MCV 80-100)]      [THIẾU MÁU HỒNG CẦU TO (MCV > 100)]
+  • Thiếu máu thiếu sắt (Ferritin giảm)    • Tán huyết (Tăng hồng cầu lưới)       • Thiếu Vitamin B12 / Acid Folic
+  • Bệnh Thalassemia (Hb điện di bất thường) • Mất máu cấp tính                     • Bệnh lý gan, Nghiện rượu mạn
+  • Thiếu máu bệnh mạn tính (ACD)          • Bệnh thận mạn (Suy giảm EPO)         • Rối loạn sinh tủy (MDS)
+  • Ngộ độc Chì / Thiếu máu nguyên bào sắt  • Suy tủy xương (Aplastic Anemia)
+```
+
+---
+
+## 6. Tài Liệu Tham Khảo EBM {#sec-6}
+
+1. **Hall, J. E., & Hall, M. E. (2021)**. *Guyton and Hall Textbook of Medical Physiology* (14th ed.). Philadelphia: Elsevier. Chapter 33: Red Blood Cells, Anemia, and Polycythemia.
+2. **Barrett, K. E. et al. (2019)**. *Ganong's Review of Medical Physiology* (26th ed.). New York: McGraw-Hill. Chapter 31: Blood as a Circulatory Fluid.
+3. **Nemeth, E., & Ganz, T. (2009)**. *The role of hepcidin in iron metabolism*. Acta Haematologica, 122(2-3), 78-86.
+4. **Hoffbrand, A. V., & Steensma, D. P. (2019)**. *Hoffbrand's Essential Haematology* (8th ed.). Wiley-Blackwell.

@@ -1,0 +1,159 @@
+---
+title: "Sinh Lý Tuyến Giáp & Hormone T3, T4 (Thyroid Gland)"
+slug: "sl-nt-tuyengiap"
+code: "PHYS-ENDO-03"
+part: "part7"
+system: "endocrine"
+systemName: "Sinh Lý Hệ Nội Tiết & Sinh Sản"
+guytonChapter: "Guyton 14th - Chapter 77: Thyroid Metabolic Hormones"
+ganongChapter: "Ganong 26th - Chapter 16: The Thyroid Gland"
+category: "physiology"
+status: "published"
+version: "2.0.0"
+updatedAt: "2026-08-26"
+description: "Sinh lý học Tuyến Giáp: Cơ chế 5 bước sinh tổng hợp T3/T4 (Bắt giữ Iod NIS, Oxy hóa TPO, Iod hóa Tyrosine, Phản ứng ghép tạo MIT/DIT, Thủy phân phóng thích), so sánh hoạt tính T3 vs T4, vai trò của enzyme Deiodinase, tác động tăng chuyển hóa cơ sở BMR & phát triển não bộ trẻ em, hormone Calcitonin và cơ chế bệnh sinh của Cường giáp Basedow (Graves) vs Suy giáp Hashimoto."
+tags:
+  - "sinh-ly"
+  - "tuyen-giap"
+  - "hormone-t3-t4"
+  - "tpo"
+  - "basedow"
+  - "hashimoto"
+clinicalPearls:
+  - "Tuyến giáp sản xuất chủ yếu là T4 (90%), nhưng T3 mới là dạng CÓ HOẠT TÍNH SINH HỌC THỰC TẾ CAO GẤP 4 LẦN T4. T4 đóng vai trò như một tiền chất dự trữ trong máu có thời gian bán hủy dài (T1/2 = 7 ngày) được enzyme Deiodinase loại bỏ 1 nguyên tử Iod tại mô đích để chuyển thành T3 hoạt tính."
+  - "Hormone giáp có vai trò BẮT BUỘC KHÔNG THỂ THAY THẾ đối với sự phát triển và myelin hóa của não bộ thai nhi và trẻ nhũ nhi. Thiếu hụt hormone giáp bẩm sinh (Suy giáp bẩm sinh do thiếu Iod hoặc loạn sản giáp) nếu không được phát hiện sàng lọc sơ sinh và điều trị bổ sung Levothyroxine ngay trong vài tuần đầu sau sinh sẽ dẫn đến ĐẦN ĐỘN VĨNH VIỄN KHÔNG THỂ HỒI PHỤC (Cretinism) kèm lùn tuyến giáp."
+  - "Bệnh Basedow (Graves' Disease): Bệnh tự miễn sinh kháng thể TRAb (TSI) kích hoạt liên tục thụ thể TSH trên màng tế bào nang giáp mà không phụ thuộc TSH tuyến yên -> Tuyến giáp phì đại lan tỏa tăng tiết T3/T4 ồ ạt, TSH tuyến yên bị ức chế < 0.01 mIU/L, kèm triệu chứng Lồi mắt ác tính (Exophthalmos do kích hoạt nguyên bào sợi hốc mắt)."
+sections:
+  - id: "sec-1"
+    number: 1
+    title: "5 Bước Sinh Tổng Hợp Hormone Giáp"
+    icon: "fa-flask"
+  - id: "sec-2"
+    number: 2
+    title: "Vận Chuyển, Deiodinase & So Sánh T3 vs T4"
+    icon: "fa-arrows-split-up-and-left"
+  - id: "sec-3"
+    number: 3
+    title: "Tác Động Chuyển Hóa & Sinh Lý Toàn Thân"
+    icon: "fa-fire-flame-curved"
+  - id: "sec-4"
+    number: 4
+    title: "Điều Hòa Trục HPT & Calcitonin"
+    icon: "fa-arrows-spin"
+  - id: "sec-5"
+    number: 5
+    title: "Bệnh Lý Lâm Sàng: Basedow vs Hashimoto"
+    icon: "fa-stethoscope"
+  - id: "sec-6"
+    number: 6
+    title: "Tài Liệu Tham Khảo EBM"
+    icon: "fa-book-medical"
+---
+
+import { PhysioAlert, PhysioQuickNav, PhysioFeedbackLoop } from '../components'
+
+# 🦋 SINH LÝ TUYẾN GIÁP & HORMONE T3, T4 (THYROID GLAND)
+
+<PhysioQuickNav />
+
+---
+
+## 1. Năm Bước Sinh Tổng Hợp Hormone Giáp Tại Nang Tuyến Giáp {#sec-1}
+
+Tuyến giáp cấu tạo bởi các **Nang giáp (Follicles)** chứa đầy chất keo **Thyroglobulin (Tg)**:
+
+```
+[LÒNG MAO MẠCH MÁU]                  [TẾ BÀO NANG GIÁP (FOLLICULAR CELLS)]            [LÒNG CHẤT KEO NANG GIÁP (COLLOID)]
+  Iodua (I-) trong máu ──► [BƠM ĐỒNG VẬN NIS (Na+/I-)] ──► I- vào tế bào ──(Pendrin)──► I- vào lòng chất keo
+                                                                                              │
+                                                                                              ▼ (1. OXY HÓA IOD)
+                                                                             I- ──(Enzyme TPO + H2O2)──► I2 hoạt hóa
+                                                                                              │
+                                                                                              ▼ (2. IOD HÓA TYROSINE)
+                                                                             I2 + Gốc Tyrosine trên Thyroglobulin
+                                                                                              │
+                                                                                              ├──► MIT (Monoiodotyrosine)
+                                                                                              └──► DIT (Diiodotyrosine)
+                                                                                              │
+                                                                                              ▼ (3. PHẢN ỨNG GHÉP CẶP)
+                                                                             • DIT + DIT ──(TPO)──► T4 (THYROXINE - 90%)
+                                                                             • MIT + DIT ──(TPO)──► T3 (TRIIODOTHYRONINE - 10%)
+                                                                                              │
+                                                                                              ▼ (4. ẨM BÀO & THỦY PHÂN)
+                                                                             Chất keo Tg được ẩm bào ngược vào tế bào
+                                                                             Lysosome thủy phân phóng thích T3, T4 tự do
+                                                                                              │
+                                                                                              ▼ (5. TIẾT VÀO TUẦN HOÀN)
+                                                                             T3 & T4 KHUẾCH TÁN VÀO MÁU
+```
+
+<PhysioAlert type="mechanism" title="Enzyme Thyroid Peroxidase (TPO) — Đích Tác Dụng Của Thuốc Kháng Giáp">
+  Enzyme **TPO (Thyroid Peroxidase)** tại màng đỉnh tế bào nang giáp xúc tác cho cả 3 phản ứng then chốt: (1) Oxy hóa Iodua, (2) Iod hóa gốc Tyrosine, và (3) Ghép cặp phân tử.
+  - *Dược lý kháng giáp EBM*: Thuốc kháng giáp tổng hợp nhóm Thionamide (**Methimazole, Propylthiouracil - PTU**) ức chế chọn lọc enzym TPO, khóa chặt quá trình sinh tổng hợp hormone giáp mới.
+</PhysioAlert>
+
+---
+
+## 2. Vận Chuyển Trong Máu & Chuyển Hóa Qua Enzyme Deiodinase {#sec-2}
+
+| Đặc điểm | Thyroxine ($T_4$) | Triiodothyronine ($T_3$) |
+|---|---|---|
+| **Tỷ lệ bài tiết từ tuyến giáp** | **$90\%$** | **$10\%$** |
+| **Gắn Protein huyết tương** | **$99.96\%$** (Gắn chặt với TBG, Transthyretin, Albumin) | **$99.6\%$** (Gắn lỏng lẻo hơn) |
+| **Dạng tự do có hoạt tính** | **$FT_4 \approx 0.04\%$** ($10 – 25\text{ pmol/L}$) | **$FT_3 \approx 0.4\%$** ($3.5 – 6.5\text{ pmol/L}$) |
+| **Thời gian bán hủy ($T_{1/2}$)** | **7 ngày** (Kho dự trữ hormone bền vững) | **1 ngày (24 giờ)** |
+| **Ái lực thụ thể nhân & Hoạt tính** | Yếu (Đóng vai trò tiền chất Prohormone) | **MẠNH GẤP 4 – 10 LẦN $T_4$** |
+
+- **Enzyme 5'-Deiodinase (Tại Gan, Thận, Mô cơ)**: Cắt 1 nguyên tử Iod ở vòng ngoài của $T_4$ để biến đổi thành **$T_3$ hoạt tính** (Đóng góp **$80\%$ tổng lượng $T_3$ lưu hành trong máu**).
+
+---
+
+## 3. Tác Động Sinh Lý Toàn Diện Của Hormone Tuyến Giáp {#sec-3}
+
+$T_3$ đi qua màng tế bào, gắn vào **Thụ Thể Hormone Giáp Trong Nhân (TR - Thyroid Hormone Receptor)** để điều hòa phiên mã hàng loạt gen:
+
+1. **Tăng Chuyển Hóa Cơ Sở (BMR) & Sinh Nhiệt**:
+   - Tăng số lượng và hoạt tính của bơm **$Na^+/K^+$-ATPase** trong toàn bộ các mô cơ thể.
+   - Tăng tiêu thụ oxy, tăng chuyển hóa sinh nhiệt (Người cường giáp luôn sợ nóng, da ấm ẩm; người suy giáp sợ lạnh, da khô thô).
+2. **Hệ Tim Mạch**:
+   - Tăng biểu hiện **Thụ thể $\beta_1$-adrenergic** trên cơ tim và nút xoang $\rightarrow$ Tăng nhịp tim, tăng thể tích nhát bóp, tăng huyết áp tâm thu (Nhịp nhanh xoang, rung nhĩ trong cường giáp).
+3. **Phát Triển Hệ Thần Kinh Trung Ương Trẻ Em**:
+   - Thúc đẩy tăng sinh đuôi gai, tạo synapse và **Myelin hóa sợi thần kinh não bộ thai nhi**.
+4. **Chuyển Hóa Lipid & Carbohydrate**:
+   - Tăng biểu hiện **Thụ thể LDL trên màng tế bào gan** $\rightarrow$ Tăng thanh thải Cholesterol (Người suy giáp luôn bị Tăng Cholesterol máu nặng nề).
+
+---
+
+## 4. Điều Hòa Trục HPT & Hormone Calcitonin {#sec-4}
+
+```
+[VÙNG HẠ ĐỒI] ──► Tiết TRH ──► [TUYẾN YÊN TRƯỚC] ──► Tiết TSH ──► [TUYẾN GIÁP] ──► Tiết T3 & T4
+      ▲                                ▲                                                │
+      └────────────────────────────────┴────────────────── (-) Feedback Âm Tính ────────┘
+```
+
+- **Calcitonin (Do Tế Bào C / Cạnh Nang Giáp Tiết)**: Tiết ra khi **Canxi máu tăng cao**, ức chế tế bào hủy xương (Osteoclasts) để **HẠ CANXI MÁU** (đối kháng với PTH).
+
+---
+
+## 5. Bệnh Lý Tuyến Giáp Lâm Sàng EBM {#sec-5}
+
+<PhysioAlert type="danger" title="Phân Biệt: Cường Giáp Basedow (Graves) vs Suy Giáp Hashimoto">
+  1. **Bệnh Basedow (Graves' Disease - Cường Giáp Tự Miễn)**:
+     - *Cơ chế*: Kháng thể tự miễn **TRAb / TSI** gắn kích hoạt liên tục thụ thể TSH trên tế bào nang giáp.
+     - *Triệu chứng*: Bướu giáp phì đại mạch đập, Sợ nóng, Sụt cân dù ăn nhiều, Nhịp tim nhanh lúc nghỉ ngơi ($>100\text{ ck/p}$), Run tay biên độ nhỏ tần số nhanh, **Lồi mắt ác tính (Exophthalmos)** và Phù niêm trước xương chày.
+     - *Xét nghiệm*: **$FT_3, FT_4$ tăng cao; TSH bị ức chế $< 0.01\text{ mIU/L}$**.
+  2. **Viêm Tuyến Giáp Hashimoto (Suy Giáp Tự Miễn)**:
+     - *Cơ chế*: Kháng thể **Anti-TPO** và **Anti-Tg** phá hủy dần dần nhu mô nang giáp.
+     - *Triệu chứng*: Mệt mỏi, Sợ lạnh, Tăng cân, Táo bón mạn tính, Da khô tóc rụng, Trầm cảm, Nhịp tim chậm, Phù niêm toàn thân.
+     - *Xét nghiệm*: **$FT_4$ giảm thấp; TSH tăng vọt ($> 10 – 50\text{ mIU/L}$)**. Điều trị chuẩn: Bổ sung **Levothyroxine ($LT_4$) uống mỗi sáng lúc đói**.
+</PhysioAlert>
+
+---
+
+## 6. Tài Liệu Tham Khảo EBM {#sec-6}
+
+1. **Hall, J. E., & Hall, M. E. (2021)**. *Guyton and Hall Textbook of Medical Physiology* (14th ed.). Philadelphia: Elsevier. Chapter 77: Thyroid Metabolic Hormones.
+2. **Barrett, K. E. et al. (2019)**. *Ganong's Review of Medical Physiology* (26th ed.). New York: McGraw-Hill. Chapter 16: The Thyroid Gland.
+3. **Kahaly, G. J. et al. (2018)**. *2018 European Thyroid Association Guideline for the Management of Graves' Hyperthyroidism*. European Thyroid Journal, 7(4), 167-186.
+4. **Jonklaas, J. et al. (2014)**. *Guidelines for the treatment of hypothyroidism*. Thyroid, 24(12), 1670-1751.

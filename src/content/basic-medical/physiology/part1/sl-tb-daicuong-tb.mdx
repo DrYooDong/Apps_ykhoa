@@ -1,0 +1,187 @@
+---
+title: "Đại Cương Sinh Lý Học & Nội Môi (Homeostasis)"
+slug: "sl-tb-daicuong-tb"
+code: "PHYS-CELL-01"
+part: "part1"
+system: "cellular"
+systemName: "Sinh Lý Tế Bào & Nội Môi"
+guytonChapter: "Guyton 14th - Chapter 1: Functional Organization of the Human Body and Control of the 'Internal Environment'"
+ganongChapter: "Ganong 26th - Chapter 1: General Principles & Energy Production in Medical Physiology"
+category: "physiology"
+status: "published"
+version: "2.0.0"
+updatedAt: "2026-08-26"
+description: "Đại cương Sinh lý học Y khoa: Phân tích toàn diện dịch ngoại bào (ECF), môi trường nội môi (Milieu Intérieur của Claude Bernard), sự hằng định nội môi (Homeostasis theo Walter Cannon), hệ thống điều hòa phản hồi âm tính (Negative Feedback) vs phản hồi dương tính (Positive Feedback) và ứng dụng lâm sàng trong sốc mất máu."
+tags:
+  - "sinh-ly"
+  - "noi-moi"
+  - "homeostasis"
+  - "negative-feedback"
+  - "positive-feedback"
+  - "ecf-icf"
+clinicalPearls:
+  - "Dịch ngoại bào (ECF) là môi trường sống chung của 100 nghìn tỷ tế bào, chiếm 1/3 tổng lượng nước cơ thể (20% trọng lượng cơ thể)."
+  - "Phản hồi âm tính là cơ chế điều hòa cốt lõi chiếm >99% các hoạt động cân bằng nội môi của cơ thể người."
+  - "Phản hồi dương tính sinh lý chỉ xảy ra trong một số ít quá trình có điểm dừng dứt khoát: Đông máu, Rụng trứng (LH surge), Rặn đẻ (Oxytocin / Phản xạ Ferguson)."
+sections:
+  - id: "sec-1"
+    number: 1
+    title: "Dịch Ngoại Bào & Nội Môi"
+    icon: "fa-droplet"
+  - id: "sec-2"
+    number: 2
+    title: "Sự Hằng Định Nội Môi (Homeostasis)"
+    icon: "fa-scale-balanced"
+  - id: "sec-3"
+    number: 3
+    title: "Cơ Chế Điều Hòa Phản Hồi"
+    icon: "fa-arrows-spin"
+  - id: "sec-4"
+    number: 4
+    title: "Ứng Dụng Lâm Sàng & Vòng Luẩn Quẩn"
+    icon: "fa-heart-pulse"
+  - id: "sec-5"
+    number: 5
+    title: "Tài Liệu Tham Khảo EBM"
+    icon: "fa-book-medical"
+---
+
+import { PhysioAlert, PhysioQuickNav, PhysioFeedbackLoop } from '../components'
+
+# 🧬 ĐẠI CƯƠNG SINH LÝ HỌC & NỘI MÔI (HOMEOSTASIS)
+
+<PhysioQuickNav />
+
+---
+
+## 1. Dịch Ngoại Bào và Môi Trường Nội Môi (Milieu Intérieur) {#sec-1}
+
+Nước chiếm khoảng **60% trọng lượng cơ thể** ở người trưởng thành khỏe mạnh (khoảng 42 lít ở người nặng 70 kg), được phân bố thành hai khu vực dịch cơ bản:
+
+- **Dịch nội bào (Intracellular Fluid - ICF)**: Chiếm **2/3 tổng lượng dịch cơ thể** (~40% trọng lượng cơ thể, tương đương ~28 lít). Đặc trưng bởi nồng độ cao của các cation $K^+$, $Mg^{2+}$ và các anion hữu cơ, protein, phosphate $PO_4^{3-}$.
+- **Dịch ngoại bào (Extracellular Fluid - ECF)**: Chiếm **1/3 tổng lượng dịch cơ thể** (~20% trọng lượng cơ thể, tương đương ~14 lít), bao gồm:
+  - *Dịch kẽ (Interstitial Fluid)*: Chiếm 3/4 ECF (~10.5 lít) bao quanh trực tiếp các tế bào.
+  - *Huyết tương (Plasma)*: Chiếm 1/4 ECF (~3.5 lít) lưu thông trong lòng mạch máu.
+  - *Dịch xuyên bào (Transcellular Fluid)*: Chiếm lượng nhỏ (~1-2 lít), gồm dịch não tủy, dịch khớp, dịch màng phổi, màng tim, màng bụng.
+
+```
+[Tổng Lượng Dịch Cơ Thể: 60% Trọng lượng (~42L)]
+        │
+        ├──► Dịch Nội Bào (ICF): 2/3 tổng lượng dịch (~28L) • Giàu K+, Mg2+, Protein
+        │
+        └──► Dịch Ngoại Bào (ECF): 1/3 tổng lượng dịch (~14L) • Giàu Na+, Cl-, HCO3-
+                     │
+                     ├── Dịch kẽ (Interstitial Fluid): 75% ECF (~10.5L)
+                     └── Huyết tương (Plasma): 25% ECF (~3.5L)
+```
+
+<PhysioAlert type="pearl" title="Khái Niệm 'Milieu Intérieur' Của Nhà Sinh Lý Học Claude Bernard">
+  Năm 1857, nhà sinh lý học người Pháp **Claude Bernard** đưa ra nhận định kinh điển: Mặc dù con người sống trong môi trường khí quyển bên ngoài, nhưng các tế bào trong cơ thể thực chất đang sống trong một môi trường chất lỏng bên trong gọi là **Môi trường nội môi (Milieu Intérieur - chính là Dịch ngoại bào ECF)**. Sự tự do và độc lập của đời sống con người phụ thuộc hoàn toàn vào khả năng giữ cho môi trường nội môi này luôn ở trạng thái ổn định hằng định.
+</PhysioAlert>
+
+### Bảng Giới Hạn Sinh Tồn Của Các Chỉ Số Nội Môi Cốt Lõi
+
+| Chỉ số nội môi | Giá trị bình thường | Giới hạn sinh tồn tối thiểu - tối đa | Đơn vị |
+|---|---|---|---|
+| **Oxy ($PO_2$ máu động mạch)** | 80 – 100 | 20 – 600 | mmHg |
+| **Khí Carbonic ($PCO_2$ động mạch)** | 35 – 45 | 10 – 100 | mmHg |
+| **Ion Natri ($Na^+$)** | **135 – 145** | 115 – 175 | mmol/L |
+| **Ion Kali ($K^+$)** | **3.5 – 5.0** | **1.5 – 9.0** *(Dưới 1.5 hoặc trên 9.0 ngừng tim tử vong)* | mmol/L |
+| **Ion Canxi ion hóa ($Ca^{2+}$)** | 1.1 – 1.3 | 0.5 – 2.0 | mmol/L |
+| **pH máu động mạch** | **7.35 – 7.45** | **6.80 – 7.80** *(Lệch ra ngoài khoảng này gây chết tế bào)* | — |
+| **Nhiệt độ trung tâm** | 36.5 – 37.5 | 30.0 – 43.5 | °C |
+| **Glucose huyết tương lúc đói** | 70 – 100 (3.9 – 5.6) | 20 – 1500 (1.1 – 83) | mg/dL (mmol/L) |
+
+---
+
+## 2. Sự Hằng Định Nội Môi (Homeostasis) {#sec-2}
+
+Năm 1929, nhà sinh lý học Hoa Kỳ **Walter Cannon** đã phát triển khái niệm của Claude Bernard thành thuật ngữ **Homeostasis (Sự hằng định nội môi)**. 
+
+Homeostasis không có nghĩa là một trạng thái tĩnh bất biến tuyệt đối, mà là một **trạng thái cân bằng động (Dynamic Steady-State)**. Cơ thể liên tục tiếp nhận vật chất và năng lượng từ môi trường bên ngoài, chuyển hóa bên trong và đào thải cặn bã ra ngoài, sao cho:
+
+$$\text{Tổng lượng nhập (Input)} = \text{Tổng lượng xuất (Output)} \pm \text{Lượng chuyển hóa (Metabolism)}$$
+
+<PhysioAlert type="mechanism" title="Sự Phối Hợp Đa Cơ Quan Duy Trì Cân Bằng Trạng Thái Ổn Định">
+  1. **Hệ Tuần Hoàn**: Vận chuyển và liên tục khuấy trộn dịch ngoại bào qua 2 giai đoạn: (1) Máu lưu thông trong lòng mạch máu, và (2) Dịch trao đổi liên tục qua màng mao mạch và dịch kẽ qua hiện tượng khuếch tán.
+  2. **Hệ Hô Hấp**: Cung cấp $O_2$ và đào thải $CO_2$ (sản phẩm chuyển hóa liên tục của chu trình Krebs).
+  3. **Hệ Tiêu Hóa**: Hấp thu glucose, acid béo, acid amin, nước và các chất điện giải từ thức ăn.
+  4. **Hệ Thận - Tiết Niệu**: Cơ quan duy trì thể tích và nồng độ ion dịch ngoại bào tinh vi nhất, lọc huyết tương và bài tiết urê, acid uric, creatinine, ion dư thừa.
+  5. **Hệ Thần Kinh & Hệ Nội Tiết**: Hai hệ thống điều khiển trung ương: Hệ thần kinh điều hòa phản ứng nhanh (tính bằng mili-giây), Hệ nội tiết điều hòa chuyển hóa và sinh trưởng chậm và kéo dài (phút, giờ, ngày).
+</PhysioAlert>
+
+---
+
+## 3. Các Hệ Thống Điều Khiển & Cơ Chế Điều Hòa Phản Hồi {#sec-3}
+
+### A. Cơ Chế Phản Hồi Âm Tính (Negative Feedback)
+
+Phản hồi âm tính là **cơ chế điều hòa chủ đạo và quan trọng nhất** của cơ thể con người. Khi một thông số sinh lý bị lệch khỏi giá trị điểm đặt (*Set-point*), hệ thống điều khiển sẽ kích hoạt một chuỗi đáp ứng tạo ra tác động **ngược chiều với kích thích ban đầu**, nhằm kéo thông số đó trở về giá trị bình thường.
+
+<PhysioFeedbackLoop 
+  type="negative"
+  title="Vòng Phản Hồi Âm Tính: Điều Hòa Huyết Áp Qua Thụ Thể Áp Lực (Baroreceptors)"
+  stimulus="Huyết áp tăng đột ngột làm căng thành xoang cảnh và quai động mạch chủ"
+  receptor="Thụ thể áp lực Baroreceptors phát xung điện thế tăng tần số"
+  controlCenter="Trung tâm điều hòa tim mạch tại Hành não (Medulla Oblongata)"
+  effector="Tăng xung động đối giao cảm (Dây X) đến nút xoang, giảm giao cảm đến mạch máu"
+  response="Nhịp tim chậm lại, giảm sức co bóp cơ tim, giãn mạch máu ngoại vi làm HẠ HUYẾT ÁP VỀ BÌNH THƯỜNG"
+/>
+
+### B. Cơ Chế Phản Hồi Dương Tính (Positive Feedback)
+
+Phản hồi dương tính tạo ra một đáp ứng **cùng chiều với kích thích ban đầu**, làm tăng dần cường độ của biến đổi. Đa số các phản hồi dương tính không kiểm soát sẽ dẫn đến **vòng luẩn quẩn bệnh lý (Vicious Cycle)** và tử vong.
+
+Tuy nhiên, cơ thể sử dụng phản hồi dương tính sinh lý trong một số ít quá trình đặc thù đòi hỏi phải **hoàn thành nhanh chóng và dứt khoát**:
+
+<PhysioFeedbackLoop 
+  type="positive"
+  title="Vòng Phản Hồi Dương Tính Sinh Lý: Quá Trình Chuyển Dạ & Rặn Đẻ (Phản Xạ Ferguson)"
+  stimulus="Đầu thai nhi tụt xuống chèn ép và làm căng giãn cổ tử cung"
+  receptor="Thụ thể kéo giãn tại cổ tử cung truyền tín hiệu thần kinh lên vùng dưới đồi"
+  controlCenter="Tuyến yên sau (Neurohypophysis) tăng tiết hormone Oxytocin vào máu"
+  effector="Oxytocin gắn lên thụ thể cơ trơn tử cung, kích thích co bóp tử cung mạnh hơn"
+  response="Tử cung co bóp càng mạnh đẩy đầu thai nhi căng giãn cổ tử cung nhiều hơn ──► KẾT THÚC KHI ĐỨA TRẺ ĐƯỢC SINH RA"
+/>
+
+<PhysioAlert type="pearl" title="3 Quá Trình Phản Hồi Dương Tính Sinh Lý Kinh Điển Trong Cơ Thể">
+  1. **Đông máu (Blood Clotting)**: Một yếu tố đông máu được hoạt hóa (như Thrombin) sẽ quay lại kích hoạt chuỗi enzyme dòng thác tạo thêm nhiều Thrombin cho đến khi hình thành nút chặn tiểu cầu và cục máu đông Fibrin bịt kín vết thương.
+  2. **Chuyển dạ rặn đẻ (Phản xạ Ferguson & Oxytocin)**: Tăng co bóp tử cung liên tục cho đến khi sổ thai.
+  3. **Đỉnh LH gây rụng trứng (LH Surge)**: Nồng độ Estrogen tăng cao vượt ngưỡng phát tín hiệu phản hồi dương tính lên trục dưới đồi - tuyến yên kích thích giải phóng ồ ạt LH gây phóng noãn.
+</PhysioAlert>
+
+---
+
+## 4. Ứng Dụng Lâm Sàng: Sốc Mất Máu & Vòng Luẩn Quẩn Suy Tuần Hoàn {#sec-4}
+
+Hiệu quả của các hệ thống điều hòa phản hồi quyết định ranh giới giữa sự sống và tử vong trong cấp cứu hồi sức:
+
+```
+[Bệnh Nhân Bị Mất Máu Cấp]
+        │
+        ├──► MẤT MÁU NHẸ/VỪA (< 1 Lít máu, < 20% Thể tích tuần hoàn):
+        │       └── Phản hồi âm tính (Negative Feedback) hoạt động hiệu quả:
+        │             • Kích hoạt hệ giao cảm: Co mạch, tăng nhịp tim
+        │             • Kích hoạt hệ RAA & ADH: Giữ nước và muối tại thận
+        │             • KÉO HUYẾT ÁP VÀ TƯỚI MÁU MÔ TRỞ LẠI BÌNH THƯỜNG
+        │
+        └──► MẤT MÁU NẶNG DỮ DỘI (> 2 Lít máu, > 40% Thể tích tuần hoàn):
+                └── Vượt quá khả năng bù trừ ──► RƠI VÀO PHẢN HỒI DƯƠNG BỆNH LÝ (Vòng Luẩn Quẩn):
+                      Giảm tưới máu động mạch vành ──► Cơ tim thiếu máu hoại tử ──► Giảm sức co bóp tim
+                      ──► Cung lượng tim tiếp tục tụt sâu ──► TỬ VONG TRONG VÀI GIỜ NẾU KHÔNG TRUYỀN MÁU
+```
+
+<PhysioAlert type="danger" title="Khái Niệm Gain Của Hệ Thống Điều Khiển (Độ Lợi Điều Hòa)">
+  Độ lợi (*Gain*) của một hệ thống điều hòa phản hồi âm tính thể hiện mức độ hiệu quả và mức độ chuẩn xác của hệ thống:
+  $$\text{Gain} = \frac{\text{Correction (Lượng hiệu chỉnh)}}{\text{Error (Lỗi còn lại)}}$$
+  Ví dụ: Nếu huyết áp tăng từ 100 lên 175 mmHg khi không có hệ thống điều hòa (độ lệch 75 mmHg), nhưng khi có hệ thống thụ thể áp lực Baroreceptor, huyết áp chỉ tăng lên 125 mmHg (được kéo giảm 50 mmHg, lỗi còn lại 25 mmHg), thì $\text{Gain} = \frac{-50}{+25} = -2.0$. Hệ thống điều hòa thân nhiệt có $\text{Gain} \approx -27$ (cực kỳ chính xác).
+</PhysioAlert>
+
+---
+
+## 5. Tài Liệu Tham Khảo EBM {#sec-5}
+
+1. **Hall, J. E., & Hall, M. E. (2021)**. *Guyton and Hall Textbook of Medical Physiology* (14th ed.). Philadelphia: Elsevier. Chapter 1: Functional Organization of the Human Body and Control of the "Internal Environment".
+2. **Barrett, K. E. et al. (2019)**. *Ganong's Review of Medical Physiology* (26th ed.). New York: McGraw-Hill Education. Chapter 1: General Principles & Energy Production.
+3. **Cannon, W. B. (1929)**. *Organization for physiological homeostasis*. Physiological Reviews, 9(3), 399-431.
+4. **Bernard, C. (1865)**. *An Introduction to the Study of Experimental Medicine*. Paris: J.B. Baillière et Fils.

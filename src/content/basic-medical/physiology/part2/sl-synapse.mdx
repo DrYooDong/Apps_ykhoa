@@ -1,0 +1,173 @@
+---
+title: "Sinh Lý Synapse & Sự Truyền Tin Qua Synapse"
+slug: "sl-synapse"
+code: "PHYS-NERV-01"
+part: "part2"
+system: "nervous"
+systemName: "Sinh Lý Hệ Thần Kinh & Cơ"
+guytonChapter: "Guyton 14th - Chapter 46: Organization of the Nervous System, Basic Functions of Synapses, and Neurotransmitters"
+ganongChapter: "Ganong 26th - Chapter 6: Synaptic & Junctional Transmission"
+category: "physiology"
+status: "published"
+version: "2.0.0"
+updatedAt: "2026-08-26"
+description: "Sinh lý học Synapse & Chất dẫn truyền thần kinh: So sánh synapse điện vs synapse hóa học, cấu trúc cúc tận cùng tiền synapse, cơ chế hòa màng túi tiết qua phức hợp SNARE/Synaptotagmin, điện thế sau synapse EPSP vs IPSP, hiện tượng cộng gộp không gian/thời gian tại gò sợi trục và ứng dụng lâm sàng trong ngộ độc Tetanus, Botulinum và bệnh Nhược cơ (Myasthenia Gravis)."
+tags:
+  - "sinh-ly"
+  - "synapse"
+  - "epsp-ipsp"
+  - "snare"
+  - "acetylcholine"
+  - "gaba"
+clinicalPearls:
+  - "Độc tố uốn ván (Tetanospasmin) và độc tố Botulinum đều là các protease phân cắt phức hợp protein SNARE, nhưng Botox tác động tại cúc tận cùng thần kinh-cơ gây LIỆT MỀM, còn Tetanus tác động tại neuron ức chế Renshaw ở tủy sống gây CO CỨNG CO GIẬT."
+  - "Gò sợi trục (Axon Hillock) là nơi có mật độ kênh Na+ phụ thuộc điện thế cao nhất trên toàn bộ neuron, đóng vai trò là 'Bộ vi xử lý trung tâm' tích hợp tất cả các tín hiệu EPSP và IPSP để quyết định phát xung điện thế hoạt động."
+  - "Benzodiazepines và Barbiturates đều gắn lên thụ thể GABA-A làm tăng dòng Cl- gây ức chế thần kinh, nhưng Benzodiazepine làm tăng TẦN SỐ mở kênh, còn Barbiturate làm tăng THỜI GIAN mở kênh (khiến Barbiturate có độc tính ức chế hô hấp cao hơn nhiều)."
+sections:
+  - id: "sec-1"
+    number: 1
+    title: "Phân Loại & Cấu Trúc Synapse"
+    icon: "fa-circle-nodes"
+  - id: "sec-2"
+    number: 2
+    title: "Cơ Chế Phóng Thích Qua SNARE"
+    icon: "fa-dna"
+  - id: "sec-3"
+    number: 3
+    title: "Điện Thế Sau Synapse EPSP & IPSP"
+    icon: "fa-chart-line"
+  - id: "sec-4"
+    number: 4
+    title: "Cộng Gộp Không Gian & Thời Gian"
+    icon: "fa-calculator"
+  - id: "sec-5"
+    number: 5
+    title: "Các Chất Dẫn Truyền Thần Kinh"
+    icon: "fa-flask-vial"
+  - id: "sec-6"
+    number: 6
+    title: "Ứng Dụng Lâm Sàng & Độc Chất Học"
+    icon: "fa-pills"
+  - id: "sec-7"
+    number: 7
+    title: "Tài Liệu Tham Khảo EBM"
+    icon: "fa-book-medical"
+---
+
+import { PhysioAlert, PhysioQuickNav, PhysioFeedbackLoop } from '../components'
+
+# 🧠 SINH LÝ SYNAPSE & SỰ TRUYỀN TIN QUA SYNAPSE
+
+<PhysioQuickNav />
+
+---
+
+## 1. Phân Loại & Cấu Trúc Synapse Hóa Học {#sec-1}
+
+**Synapse (Khớp thần kinh)** là vùng tiếp xúc chuyên biệt giữa hai tế bào hưng phấn, nơi luồng thông tin truyền từ một neuron sang một neuron khác hoặc tế bào đáp ứng (tế bào cơ, tuyến).
+
+### So Sánh Synapse Điện vs Synapse Hóa Học
+
+| Đặc tính sinh lý | Synapse Điện (Electrical Synapse) | Synapse Hóa Học (Chemical Synapse) |
+|---|---|---|
+| **Cấu trúc nối** | **Kênh liên kết khe (Gap Junctions / Connexons)** | **Khe Synapse (Synaptic Cleft rộng 20 – 40 nm)** |
+| **Chất trung gian** | Dòng ion chạy trực tiếp qua khe | **Chất dẫn truyền thần kinh (Neurotransmitter)** |
+| **Độ trễ Synapse** | Hầu như bằng 0 (Truyền tức thì) | **Có độ trễ 0.5 – 1.0 ms (Synaptic Delay)** |
+| **Chiều dẫn truyền** | **Hai chiều (Bidirectional)** | **Một chiều duy nhất (Unidirectional: Tiền ──► Hậu)** |
+| **Vị trí điển hình** | Cơ tim, cơ trơn ruột, nhân cạnh não thất | **Hầu như toàn bộ hệ thần kinh trung ương & tiếp hợp thần kinh - cơ** |
+
+```
+[Cúc Tận Cùng Tiền Synapse] (Chứa túi tiết bóng Synapse & Kênh Ca2+ điện thế)
+            │
+            ├──► Xung điện thế mở kênh Ca2+ ──► Ca2+ ùa vào kích hoạt phức hợp SNARE
+            │
+[Khe Synapse 20-40nm] ◄── Giải phóng chất dẫn truyền thần kinh (ACh, Glutamate, GABA)
+            │
+[Màng Sau Synapse] (Chứa thụ thể Kênh Ionotropic hoặc Thụ thể GPCR Metabotropic)
+            │
+            └──► Hình thành điện thế kích thích EPSP hoặc điện thế ức chế IPSP
+```
+
+---
+
+## 2. Cơ Chế Phóng Thích Túi Tiết Qua Phức Hợp SNARE & Cảm Biến $Ca^{2+}$ {#sec-2}
+
+Sự xuất bào của túi tiết tại cúc tận cùng tiền synapse diễn ra theo chuỗi sự kiện phân tử cực kỳ tinh vi:
+
+1. **Xung điện thế hoạt động** lan truyền đến cúc tận cùng làm khử cực màng tiền synapse.
+2. **Kênh Canxi phụ thuộc điện thế (*Voltage-Gated $Ca^{2+}$ Channels - N-type và P/Q-type*)** mở ra, ion $Ca^{2+}$ ùa vào tế bào chất làm nồng độ $Ca^{2+}$ cục bộ tăng vọt từ $10^{-7}\text{ M}$ lên $10^{-4}\text{ M}$.
+3. **Phức hợp Protein SNARE** kéo túi tiết ép sát vào màng đáy:
+   - **v-SNARE** (trên màng túi tiết): **Synaptobrevin (VAMP)**.
+   - **t-SNARE** (trên màng đích tiền synapse): **Syntaxin-1** và **SNAP-25**.
+4. **Cảm biến Canxi Synaptotagmin**: Khi $Ca^{2+}$ gắn vào Synaptotagmin, nó kích hoạt sự xoắn vặn hoàn tất của phức hợp SNARE, tạo lỗ hòa màng (Fusion Pore) và **tống xuất chất dẫn truyền thần kinh ra khe synapse trong vòng < 0.2 mili-giây**.
+
+---
+
+## 3. Điện Thế Sau Synapse: EPSP Khử Cực vs IPSP Ưu Phân Cực {#sec-3}
+
+Chất dẫn truyền thần kinh sau khi khuếch tán qua khe synapse sẽ gắn đặc hiệu lên các thụ thể ở màng sau synapse:
+
+### A. Điện Thế Kích Thích Sau Synapse (EPSP - Excitatory Postsynaptic Potential)
+- Gắn lên các thụ thể làm **mở kênh cho ion dương đi vào** ($Na^+$ hoặc $Ca^{2+}$).
+- Làm khử cực cục bộ màng sau synapse (kéo điện thế màng $V_m$ từ $-70\text{ mV}$ lên tiến gần về ngưỡng kích thích $-55\text{ mV}$).
+- *Chất dẫn truyền điển hình*: **Glutamate** (gắn lên thụ thể AMPA và NMDA), **Acetylcholine** (gắn lên thụ thể Nicotinic).
+
+### B. Điện Thế Ức Chế Sau Synapse (IPSP - Inhibitory Postsynaptic Potential)
+- Gắn lên các thụ thể làm **mở kênh cho ion âm đi vào ($Cl^-$)** hoặc **mở kênh cho ion dương thoát ra ($K^+$)**.
+- Làm ưu phân cực màng sau synapse (kéo điện thế màng $V_m$ từ $-70\text{ mV}$ xuống sâu hơn $-80\text{ đến }-90\text{ mV}$), làm neuron trở nên khó bị kích thích hơn.
+- *Chất dẫn truyền điển hình*: **GABA** (GABA-A mở kênh $Cl^-$, GABA-B mở kênh $K^+$) và **Glycine** (tại tủy sống).
+
+---
+
+## 4. Hiện Tượng Tích Hợp & Cộng Gộp Tín Hiệu Tại Gò Sợi Trục {#sec-4}
+
+Mỗi neuron thần kinh trong não bộ tiếp nhận hàng nghìn đến hàng chục nghìn synapse từ các tế bào khác nhau. Một điện thế EPSP đơn lẻ (biên độ chỉ 0.5 – 1.0 mV) không đủ sức kích hoạt điện thế hoạt động. Tế bào thực hiện phép tính tích hợp thông qua hai cơ chế:
+
+1. **Cộng gộp không gian (Spatial Summation)**: Nhiều cúc tận cùng khác nhau phát xung kích thích đồng thời tại nhiều vị trí khác nhau trên thân và đuôi gai neuron.
+2. **Cộng gộp thời gian (Temporal Summation)**: Một cúc tận cùng đơn lẻ phát xung kích thích liên tiếp với tần số cao dồn dập trước khi điện thế EPSP trước đó kịp phân rã.
+
+```
+EPSP (Kích thích) [+] ──┐
+EPSP (Kích thích) [+] ──┼──► [GÒ SỢI TRỤC (AXON HILLOCK)] ──► Vượt ngưỡng (-55mV)?
+IPSP (Ức chế)     [-] ──┘       • Nơi có mật độ kênh Na+ cao nhất      │
+                                • Tổng đại số: Σ(EPSP) - Σ(IPSP)       ├── CÓ ──► PHÁT XUNG HOẠT ĐỘNG
+                                                                       └── KHÔNG ──► KHÔNG PHÁT XUNG
+```
+
+---
+
+## 5. Phân Loại Các Chất Dẫn Truyền Thần Kinh Cốt Lõi {#sec-5}
+
+| Nhóm | Chất dẫn truyền | Vị trí phân bố chính | Tác dụng sinh lý then chốt |
+|---|---|---|---|
+| **Acetylcholine (ACh)** | Acetylcholine | Khớp thần kinh-cơ, Hệ thần kinh tự chủ (tiền hạch giao cảm & đối giao cảm, hậu hạch ĐGC), Não trước | Vận động cơ vân, trí nhớ, học tập, điều hòa phó giao cảm. |
+| **Amin sinh học (Monoamines)** | **Dopamine** | Thể đen (Substantia Nigra), Hệ viền (Limbic system) | Điều hòa vận động tinh vi hạch nền, cơ chế tưởng thưởng/khoái cảm (Reward pathway). |
+| | **Norepinephrine** | Nhân Locus Coeruleus, hậu hạch giao cảm | Tỉnh táo, phản ứng chiến đấu hay bỏ chạy (Fight-or-Flight). |
+| | **Serotonin (5-HT)** | Nhân đường giữa (Raphe nuclei), đường ruột (90%) | Điều hòa khí sắc cảm xúc, giấc ngủ, nhu động ruột. |
+| **Acid Amin** | **Glutamate** | Toàn bộ thần kinh trung ương (>75% synapse hưng phấn) | Chất dẫn truyền **hưng phấn chính của não bộ**; liên quan tính dẻo synapse (LTP). |
+| | **GABA** | Não bộ (>30% synapse ức chế) | Chất dẫn truyền **ức chế chính của não bộ**; chống co giật, an thần, giải lo âu. |
+| | **Glycine** | Tủy sống và thân não | Chất dẫn truyền **ức chế chính tại tủy gai**. |
+
+---
+
+## 6. Ứng Dụng Lâm Sàng, Độc Chất Học & Dược Lý EBM {#sec-6}
+
+<PhysioAlert type="danger" title="Phân Biệt Cơ Chế Phân Tử: Độc Tố Uốn Ván (Tetanus) vs Độc Tố Botulinum (Botox)">
+  Cả hai loại độc tố đều là **kẽm-endopeptidase** phân cắt các protein của phức hợp SNARE, nhưng điểm tác động hoàn toàn trái ngược:
+  - **Độc tố Botulinum (*Clostridium botulinum*)**: Xâm nhập vào cúc tận cùng thần kinh - cơ ngoại vi, phân cắt **SNAP-25 và Synaptobrevin** ──► Ngăn chặn giải phóng Acetylcholine ──► Gây **LIỆT MỀM CƠ TOÀN THÂN (Flaccid Paralysis)**, giãn đồng tử, suy hô hấp do liệt cơ hoành.
+  - **Độc tố Uốn ván (*Tetanospasmin* từ *Clostridium tetani*)**: Di chuyển ngược dòng sợi trục về tủy sống, xâm nhập và phân cắt **Synaptobrevin tại các tế bào Renshaw (neuron ức chế bài tiết GABA/Glycine)** ──► Mất hoàn toàn tín hiệu ức chế ngược đối với neuron vận động alpha ──► Gây **CO CỨNG CƠ LIÊN TỤC (Spastic Paralysis), cứng hàm (Trismus), cơn giật uốn ván**.
+</PhysioAlert>
+
+<PhysioAlert type="pearl" title="Bệnh Nhược Cơ (Myasthenia Gravis) & Thuốc Ức Chế Men Acetylcholinesterase">
+  - **Bệnh Nhược Cơ**: Bệnh tự miễn sinh kháng thể kháng thụ thể **Nicotinic AChR màng sau synapse** tại tấm vận động thần kinh - cơ. Kháng thể phong bế và làm tăng thoái giáng thụ thể AChR ──► Gây yếu cơ tăng dần khi vận động và phục hồi sau khi nghỉ ngơi (sụp mi, song thị, khó nuốt, yếu cơ tứ chi).
+  - **Điều trị dược lý**: Sử dụng thuốc ức chế men thoái giáng **Acetylcholinesterase (Pyridostigmine, Neostigmine)** giúp kéo dài thời gian tồn tại của Acetylcholine trong khe synapse, tăng khả năng kích hoạt các thụ thể còn lại.
+</PhysioAlert>
+
+---
+
+## 7. Tài Liệu Tham Khảo EBM {#sec-7}
+
+1. **Hall, J. E., & Hall, M. E. (2021)**. *Guyton and Hall Textbook of Medical Physiology* (14th ed.). Philadelphia: Elsevier. Chapter 46: Organization of the Nervous System, Synapses, and Neurotransmitters.
+2. **Barrett, K. E. et al. (2019)**. *Ganong's Review of Medical Physiology* (26th ed.). New York: McGraw-Hill. Chapter 6: Synaptic & Junctional Transmission.
+3. **Südhof, T. C. (2013)**. *Neurotransmitter release: the last millisecond in the life of a synaptic vesicle*. Neuron, 80(3), 675-690.
+4. **Kandel, E. R. et al. (2021)**. *Principles of Neural Science* (6th ed.). New York: McGraw-Hill.

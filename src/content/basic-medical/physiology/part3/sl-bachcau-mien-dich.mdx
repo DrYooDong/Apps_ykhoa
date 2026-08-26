@@ -1,0 +1,170 @@
+---
+title: "Sinh Lý Bạch Cầu & Hệ Thống Miễn Dịch"
+slug: "sl-bachcau-mien-dich"
+code: "PHYS-BLD-03"
+part: "part3"
+system: "cardiovascular"
+systemName: "Sinh Lý Máu & Hệ Miễn Dịch"
+guytonChapter: "Guyton 14th - Chapter 34: Resistance of the Body to Infection: I. Leukocytes, Granulocytes, the Monocyte-Macrophage System, and Inflammation & Chapter 35: Immunity and Allergy"
+ganongChapter: "Ganong 26th - Chapter 3: Immunity, Infection, & Inflammation"
+category: "physiology"
+status: "published"
+version: "2.0.0"
+updatedAt: "2026-08-26"
+description: "Sinh lý học Bạch cầu & Miễn dịch: Phân loại 5 dòng bạch cầu ngoại vi (Neutrophil, Eosinophil, Basophil, Monocyte, Lymphocyte), cơ chế miễn dịch tự nhiên (Bổ thể MAC, Tế bào NK, Thực bào), miễn dịch thích ứng qua thụ thể MHC-I & MHC-II, cơ chế hoạt hóa tế bào T và B, cấu trúc & chức năng sinh học của 5 lớp kháng thể (IgM, IgG, IgA, IgE, IgD) và ứng dụng lâm sàng trong Sốc phản vệ & Nhiễm trùng."
+tags:
+  - "sinh-ly"
+  - "bach-cau"
+  - "mien-dich"
+  - "mhc"
+  - "khang-the"
+  - "bo-the"
+clinicalPearls:
+  - "Quy tắc nhân đôi MHC: Thụ thể TCD8 nhận diện kháng nguyên gắn trên phân tử MHC-I (8 x 1 = 8). Thụ thể TCD4 nhận diện kháng nguyên gắn trên phân tử MHC-II (4 x 2 = 8)."
+  - "IgG là loại kháng thể DUY NHẤT có khả năng đi qua hàng rào nhau thai mẹ sang con, cung cấp miễn dịch thụ động bảo vệ trẻ sơ sinh trong 6 tháng đầu đời."
+  - "Hiện tượng 'Chuyển trái của dòng bạch cầu' (Left Shift): Tăng tỷ lệ bạch cầu trung tính dạng đũa (Band cells > 10%) trong máu ngoại vi là chỉ điểm sinh học cực kỳ nhạy của tình trạng nhiễm khuẩn sinh mủ cấp tính hoặc nhiễm khuẩn huyết bùng phát."
+sections:
+  - id: "sec-1"
+    number: 1
+    title: "Phân Loại 5 Dòng Bạch Cầu"
+    icon: "fa-shield-virus"
+  - id: "sec-2"
+    number: 2
+    title: "Miễn Dịch Tự Nhiên & Hệ Bổ Thể"
+    icon: "fa-virus-slash"
+  - id: "sec-3"
+    number: 3
+    title: "Phức Hợp Hòa Hợp Mô MHC-I & II"
+    icon: "fa-dna"
+  - id: "sec-4"
+    number: 4
+    title: "Miễn Dịch Tế Bào T & Dịch Thể B"
+    icon: "fa-circle-nodes"
+  - id: "sec-5"
+    number: 5
+    title: "5 Lớp Kháng Thể (IgM, IgG, IgA, IgE, IgD)"
+    icon: "fa-flask-vial"
+  - id: "sec-6"
+    number: 6
+    title: "Ứng Dụng Lâm Sàng & Phản Vệ EBM"
+    icon: "fa-pills"
+  - id: "sec-7"
+    number: 7
+    title: "Tài Liệu Tham Khảo EBM"
+    icon: "fa-book-medical"
+---
+
+import { PhysioAlert, PhysioQuickNav, PhysioFeedbackLoop } from '../components'
+
+# 🛡️ SINH LÝ BẠCH CẦU & HỆ THỐNG MIỄN DỊCH
+
+<PhysioQuickNav />
+
+---
+
+## 1. Phân Loại & Đặc Tính 5 Dòng Bạch Cầu Ngoại Vi {#sec-1}
+
+Tổng số lượng bạch cầu bình thường ở người lớn là **$4.000 – 10.000\text{ tế bào/}\mu\text{L}$**:
+
+```
+[BẠCH CẦU TOÀN PHẦN (WBC)]
+  │
+  ├──► BẠCH CẦU HẠT (Granulocytes):
+  │       ├── Bạch cầu Trung tính (Neutrophils): 50% – 70% • Diệt vi khuẩn cấp, tạo mủ
+  │       ├── Bạch cầu Ưa acid (Eosinophils): 1% – 4% • Diệt ký sinh trùng giun sán, dị ứng
+  │       └── Bạch cầu Ưa kiềm (Basophils): 0.5% – 1% • Tiết Histamine/Heparin, phản vệ
+  │
+  └──► BẠCH CẦU KHÔNG HẠT (Agranulocytes):
+          ├── Bạch cầu Đơn nhân (Monocytes): 2% – 8% ──► Vào mô thành Đại Thực Bào (APCs)
+          └── Tế bào Lympho (Lymphocytes): 20% – 40% (Lympho T, Lympho B, Tế bào NK)
+```
+
+| Dòng bạch cầu | Tỷ lệ (%) | Nhân tế bào & Hạt bào tương | Chức năng sinh lý cốt lõi |
+|---|---|---|---|
+| **Bạch cầu Trung tính (Neutrophils)** | **50% – 70%** | Nhân chia 3–5 múi; hạt mịn trung tính | Đội quân tiên phong; thực bào vi khuẩn qua enzyme Myeloperoxidase, bẫy NETs. |
+| **Bạch cầu Ưa acid (Eosinophils)** | **1% – 4%** | Nhân 2 múi hình mắt kính; hạt to màu cam đỏ | Tiết **Major Basic Protein (MBP)** đục thủng vỏ giun sán; điều hòa phản ứng dị ứng. |
+| **Bạch cầu Ưa kiềm (Basophils)** | **0.5% – 1%** | Hạt to màu xanh tím che lấp nhân | Mang thụ thể Fc cho **IgE**, giải phóng **Histamine, Leukotrienes** gây co thắt phế quản và giãn mạch phản vệ. |
+| **Bạch cầu Đơn nhân (Monocytes)** | **2% – 8%** | Tế bào lớn nhất, nhân hình hạt đậu | Biệt hóa thành **Đại thực bào (Macrophages)** tại mô; dọn dẹp xác tế bào và **trình diện kháng nguyên (APCs)**. |
+| **Tế bào Lympho (Lymphocytes)** | **20% – 40%** | Nhân to tròn chiếm gần hết tế bào | **Tế bào T** (miễn dịch qua trung gian tế bào), **Tế bào B** (tiết kháng thể), **Tế bào NK** (tiêu diệt tế bào ung thư/virus). |
+
+---
+
+## 2. Miễn Dịch Tự Nhiên & Hệ Thống Bổ Thể (Complement System) {#sec-2}
+
+Miễn dịch tự nhiên (*Innate Immunity*) là hàng rào phòng thủ không đặc hiệu đáp ứng ngay lập tức (trong vòng vài phút đến vài giờ):
+
+### Hệ Thống Bổ Thể (Gồm Hơn 30 Protein Huyết Tương)
+Bổ thể được hoạt hóa theo 3 con đường độc lập nhưng cùng hội tụ tại bước phân cắt enzyme **C3 convertase**:
+
+```
+[1. Con đường Cổ điển (Classical)]: Phức hợp Kháng nguyên - Kháng thể (IgM hoặc IgG)
+[2. Con đường Lectin (MBL)]: Nhận diện gốc đường Mannose trên vách vi khuẩn
+[3. Con đường Thay thế (Alternative)]: Tự phân hủy C3 tự phát trên bề mặt vi sinh vật
+                        │
+                        ▼ (Hội tụ tại enzym C3 Convertase)
+                   [Phân cắt C3 ──► C3a + C3b]
+                        │
+                        ├──► C3a & C5a: Yếu tố phản vệ (Anaphylatoxins) gây giãn mạch, hóa ứng động bạch cầu
+                        ├──► C3b: Opsonin hóa (Opsonization) bao bọc vi khuẩn kích thích đại thực bào ăn
+                        └──► C5b gắn C6, C7, C8, C9 ──► PHỨC HỢP TẤN CÔNG MÀNG (MAC C5b-9)
+                                                                 │
+                                                                 ▼
+                                                  Đục thủng màng tế bào vi khuẩn gây ly giải (Lysis)
+```
+
+---
+
+## 3. Phức Hợp Hòa Hợp Mô Chủ Yếu: MHC-I vs MHC-II {#sec-3}
+
+Phân tử MHC (*Major Histocompatibility Complex*, ở người gọi là **HLA**) là "chứng minh thư" phân tử giúp hệ miễn dịch nhận biết bản thân vs ngoại lai:
+
+| Đặc tính so sánh | Phân tử MHC Lớp I (MHC-I) | Phân tử MHC Lớp II (MHC-II) |
+|---|---|---|
+| **Sự phân bố trên tế bào** | **Có mặt trên MỌI TẾ BÀO CÓ NHÂN** trong cơ thể (và tiểu cầu; trừ hồng cầu không nhân). | **CHỈ CÓ TRÊN TẾ BÀO TRÌNH DIỆN KHÁNG NGUYÊN (APCs)**: Tế bào tua (Dendritic), Đại thực bào, Tế bào B. |
+| **Nguồn gốc kháng nguyên** | Kháng nguyên **Nội sinh** (Virus nhân lên trong tế bào, Protein ung thư đột biến). | Kháng nguyên **Ngoại sinh** (Vi khuẩn, nấm, protein bị đại thực bào thực bào nuốt vào). |
+| **Tế bào T nhận diện** | **Được nhận diện bởi Tế Bào $TCD8^+$ (T Độc Cytotoxic)** | **Được nhận diện bởi Tế Bào $TCD4^+$ (T Giúp Đỡ Helper)** |
+| **Cơ chế tiêu diệt** | Tiết **Perforin và Granzyme B** kích hoạt tế bào đích chết theo chương trình (Apoptosis). | Tiết **Cytokines (IL-2, IFN-$\gamma$, IL-4)** kích hoạt đại thực bào và lympho B tiết kháng thể. |
+
+---
+
+## 4. Đặc Điểm 5 Lớp Kháng Thể (Immunoglobulins) {#sec-4}
+
+Kháng thể là các glycoprotein hình chữ Y do **Tương bào (Plasma cells - biệt hóa từ Lympho B)** sản xuất:
+
+```
+          [Kháng Nguyên]         [Kháng Nguyên]
+                 \                     /
+                  \                   /
+                   [Vùng Biến Đổi Fab] (Nhận diện & Gắn đặc hiệu kháng nguyên)
+                            │
+                            │ (Bản lề Hinge Region)
+                            ▼
+                   [Vùng Hằng Định Fc] (Gắn Thụ thể Đại thực bào / Hoạt hóa Bổ thể)
+```
+
+| Lớp Kháng Thể | Cấu trúc | Tỷ lệ trong máu | Chức năng sinh học cốt lõi |
+|---|---|---|---|
+| **IgG** | **Monomer** | **75% – 80%** (Nhiều nhất) | • **Loại kháng thể DUY NHẤT qua được Nhau thai** bảo vệ thai nhi<br>• Opsonin hóa, hoạt hóa bổ thể, đáp ứng miễn dịch thứ phát bền vững |
+| **IgA** | **Dimer** (có mảnh tiết) | **10% – 15%** | • Kháng thể chính trong **Dịch tiết (Sữa mẹ, nước bọt, niêm mạc ruột, phế quản)**<br>• Ngăn chặn vi sinh vật bám dính vào lớp biểu mô niêm mạc |
+| **IgM** | **Pentamer** (10 vị trí gắn) | **5% – 10%** | • **Kháng thể đầu tiên xuất hiện** trong đáp ứng miễn dịch tiên phát cấp tính<br>• Ngưng kết và hoạt hóa bổ thể mạnh nhất trong hệ tuần hoàn |
+| **IgE** | **Monomer** | **$< 0.01\%$** | • Gắn ái lực cực cao lên **Dưỡng bào (Mast cells)**<br>• Kích hoạt giải phóng Histamine trong **Dị ứng, Hen phế quản, Sốc phản vệ** và chống giun sán |
+| **IgD** | **Monomer** | **$< 0.5\%$** | • Hoạt động như thụ thể bề mặt BCR trên màng tế bào Lympho B non |
+
+---
+
+## 5. Ứng Dụng Lâm Sàng & Cấp Cứu Phản Vệ EBM {#sec-5}
+
+<PhysioAlert type="danger" title="Sốc Phản Vệ (Anaphylactic Shock) & Thuốc Cấp Cứu Hàng Đầu Adrenaline">
+  - **Cơ chế phản vệ Type I (Qua trung gian IgE)**: Dị nguyên (thuốc kháng sinh, nọc ong, hải sản) liên kết chéo với các phân tử **IgE đã gắn sẵn trên màng Dưỡng bào (Mast cells)** ──► Dưỡng bào vỡ hạt ồ ạt giải phóng **Histamine, Tryptase, Leukotrienes ($LTC_4, LTD_4$)**.
+  - **Hậu quả đe dọa tử vong**: Co thắt phế quản dữ dội (suy hô hấp), phù nề thanh quản nghẹt thở (*Stridor*), giãn toàn bộ giường mao mạch gây tụt huyết áp trụy mạch.
+  - **Nguyên tắc xử trí vàng**: **TIÊM BẮP NGAY LẬP TỨC ADRENALINE (Epinephrine 1:1000 liều 0.5 mg ở mặt trước ngoài đùi)**. Adrenaline kích hoạt thụ thể $\alpha_1$ (co mạch nâng HA, giảm phù nề thanh quản) và $\beta_2$ (giãn phế quản tức thì, ức chế dưỡng bào vỡ hạt tiếp).
+</PhysioAlert>
+
+---
+
+## 6. Tài Liệu Tham Khảo EBM {#sec-6}
+
+1. **Hall, J. E., & Hall, M. E. (2021)**. *Guyton and Hall Textbook of Medical Physiology* (14th ed.). Philadelphia: Elsevier. Chapters 34 & 35: Resistance to Infection and Immunity.
+2. **Abbas, A. K., Lichtman, A. H., & Pillai, S. (2021)**. *Cellular and Molecular Immunology* (10th ed.). Philadelphia: Elsevier.
+3. **Barrett, K. E. et al. (2019)**. *Ganong's Review of Medical Physiology* (26th ed.). New York: McGraw-Hill. Chapter 3: Immunity, Infection, & Inflammation.
+4. **Cardona, V. et al. (2020)**. *World Allergy Organization Anaphylaxis Guidance 2020*. World Allergy Organization Journal, 13(10), 100472.

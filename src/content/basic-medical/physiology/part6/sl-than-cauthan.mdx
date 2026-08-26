@@ -1,0 +1,168 @@
+---
+title: "Sinh Lý Lọc Tại Cầu Thận & Độ Lọc Cầu Thận (GFR)"
+slug: "sl-than-cauthan"
+code: "PHYS-REN-01"
+part: "part6"
+system: "renal"
+systemName: "Sinh Lý Thận & Thể Dịch"
+guytonChapter: "Guyton 14th - Chapter 26: The Urinary System: Functional Anatomy and Urine Formation by the Kidneys & Chapter 27: Glomerular Filtration, Renal Blood Flow, and Their Control"
+ganongChapter: "Ganong 26th - Chapter 37: Renal Function & Micturition"
+category: "physiology"
+status: "published"
+version: "2.0.0"
+updatedAt: "2026-08-26"
+description: "Sinh lý học Cầu thận: Cấu trúc màng lọc cầu thận 3 lớp (Nội mô có lỗ, Màng đáy GBM Heparan Sulfate mang điện âm, Chân Podocyte qua Nephrin), động lực học các lực Starling (NFP = +10 mmHg), tính toán GFR (125 mL/phút / 180 L/ngày), phân suất lọc (FF), cơ chế tự điều hòa Myogenic & Phản xạ Ống - Cầu thận (Macula Densa) và tác động của NSAIDs vs ACEi/ARBs trên tiểu động mạch đến/đi."
+tags:
+  - "sinh-ly"
+  - "cau-than"
+  - "gfr"
+  - "mang-loc-cau-than"
+  - "podocyte"
+  - "macula-densa"
+clinicalPearls:
+  - "Màng đáy cầu thận (GBM) và các chân Podocyte phủ kín các điện tích âm (Heparan Sulfate). Do Albumin cũng mang điện tích âm ở pH máu sinh lý (7.4), nó bị ĐẨY LÙI HOÀN TOÀN KHÔNG CHO QUA MÀNG LỌC dù kích thước phân tử Albumin (3.6 nm) nhỏ hơn lỗ lọc. Trong Bệnh Sang Thương Tối Thiểu (MCD), sự mất các điện tích âm này làm Albumin lọt ồ ạt vào nước tiểu gây Hội chứng thận hư tiểu đạm chọn lọc."
+  - "Cạm bẫy phối hợp thuốc nguy hiểm: NSAIDs làm CO TIỂU ĐỘNG MẠCH ĐẾN (chẹn Prostaglandin giãn mạch), trong khi ACEi/ARBs làm GIÃN TIỂU ĐỘNG MẠCH ĐI (chẹn Angiotensin II co mạch). Nếu phối hợp cả NSAIDs + ACEi/ARB ở bệnh nhân mất nước, áp lực lọc mao mạch cầu thận (PGC) sẽ sụt giảm nghiêm trọng dẫn đến SUY THẬN CẤP TRƯỚC THẬN (Prerenal AKI)."
+  - "Độ lọc cầu thận GFR bình thường ở người trưởng thành là 125 mL/phút (tương đương 180 Lít dịch lọc nguyên thủy mỗi ngày). Nhờ ống thận tái hấp thu >99% lượng dịch lọc này, lượng nước tiểu thực tế bài xuất ra ngoài chỉ khoảng 1.5 - 2.0 Lít/ngày."
+sections:
+  - id: "sec-1"
+    number: 1
+    title: "Cấu Trúc Màng Lọc Cầu Thận 3 Lớp"
+    icon: "fa-filter"
+  - id: "sec-2"
+    number: 2
+    title: "Động Lực Học Starling & Áp Suất Lọc (NFP)"
+    icon: "fa-scale-balanced"
+  - id: "sec-3"
+    number: 3
+    title: "Độ Lọc Cầu Thận GFR & Phân Suất Lọc (FF)"
+    icon: "fa-gauge-high"
+  - id: "sec-4"
+    number: 4
+    title: "Cơ Chế Tự Điều Hòa: Myogenic & Macula Densa"
+    icon: "fa-arrows-spin"
+  - id: "sec-5"
+    number: 5
+    title: "Dược Lý Tiểu Động Mạch: NSAIDs vs ACEi/ARBs"
+    icon: "fa-pills"
+  - id: "sec-6"
+    number: 6
+    title: "Tài Liệu Tham Khảo EBM"
+    icon: "fa-book-medical"
+---
+
+import { PhysioAlert, PhysioQuickNav, PhysioFeedbackLoop } from '../components'
+
+# 🔬 SINH LÝ LỌC TẠI CẦU THẬN & ĐỘ LỌC CẦU THẬN (GFR)
+
+<PhysioQuickNav />
+
+---
+
+## 1. Cấu Trúc Siêu Vi Của Màng Lọc Cầu Thận (3 Lớp) {#sec-1}
+
+Màng lọc cầu thận (*Glomerular Filtration Barrier*) có tính thấm nước và các chất hòa tan cao gấp hàng trăm lần mao mạch thông thường nhưng ngăn chặn gần như tuyệt đối tế bào máu và protein huyết tương:
+
+```
+[LÒNG MAO MẠCH CẦU THẬN: Máu tới từ Tiểu Động Mạch Đến]
+  │
+  ├── 1. TẾ BÀO NỘI MÔ CÓ LỖ THỦNG (Fenestrated Endothelium): Lỗ lọc 70 – 100 nm (Chặn tế bào máu)
+  │
+  ├── 2. MÀNG ĐÁY CẦU THẬN (GBM): Lớp Collagen IV + Heparan Sulfate Proteoglycan TÍCH ĐIỆN ÂM CỰC MẠNH
+  │
+  └── 3. TẾ BÀO BIỂU MÔ CÓ CHÂN (Podocytes): Các khe lọc (Filtration Slits 25 – 30 nm) bắc cầu bởi Nephrin & Podocin
+  │
+[KHOANG BAWMAN: Hứng dịch lọc cầu thận nguyên thủy 180 Lít/ngày]
+```
+
+<PhysioAlert type="pearl" title="Hai Cơ Chế Chọn Lọc Tuyệt Đối Của Màng Lọc Cầu Thận">
+  1. **Chọn lọc theo kích thước (Size Selectivity)**: Các phân tử có bán kính $< 2.0\text{ nm}$ (Nước, Glucose, Ion điện giải, Urê, Creatinine) lọc tự do $100\%$; Các phân tử $> 4.2\text{ nm}$ (Protein lớn, Globulin) bị chặn lại hoàn toàn.
+  2. **Chọn lọc theo điện tích (Charge Selectivity)**: Các phân tử mang điện tích âm bị đẩy lùi mạnh mẽ bởi lớp Heparan Sulfate của GBM và áo phủ Podocalyxin của Podocytes. Dù phân tử **Albumin** có bán kính chỉ $3.6\text{ nm}$ (về lý thuyết có thể lọt qua khe), nhưng do Albumin mang điện tích âm ở pH $7.4$, nó bị đẩy lùi và hầu như **không thể lọt vào khoang Bowman ($< 0.01\%$)**.
+</PhysioAlert>
+
+---
+
+## 2. Động Lực Học Starling & Áp Suất Lọc Ròng (NFP) {#sec-2}
+
+Sự hình thành dịch lọc cầu thận là một quá trình siêu lọc thụ động được chi phối bởi **4 Áp lực Starling**:
+
+$$\text{Áp suất lọc ròng (NFP)} = (P_{GC} - P_{BS}) - (\pi_{GC} - \pi_{BS})$$
+
+```
+ÁP LỰC THÚC ĐẨY LỌC:
+  • P_GC (Áp suất thủy tĩnh mao mạch cầu thận): +60 mmHg (Rất cao nhờ Tiểu ĐM đi có sức cản lớn)
+  • π_BS (Áp suất keo khoang Bowman): 0 mmHg (Vì không có protein lọt qua)
+  ──► TỔNG LỰC ĐẨY LỌC = +60 mmHg
+
+ÁP LỰC CHỐNG LẠI SỰ LỌC:
+  • P_BS (Áp suất thủy tĩnh khoang Bowman): -18 mmHg (Chống lại dịch đẩy vào)
+  • π_GC (Áp suất keo mao mạch cầu thận): -32 mmHg (Do protein giữ nước, tăng từ 28 lên 36 mmHg về cuối mao mạch)
+  ──► TỔNG LỰC CHỐNG LỌC = -50 mmHg
+
+══════════════════════════════════════════════════════════════════════════
+ÁP SUẤT LỌC RÒNG CUỐI CÙNG (NFP) = 60 - 18 - 32 = +10 mmHg
+```
+
+---
+
+## 3. Độ Lọc Cầu Thận (GFR) & Phân Suất Lọc (Filtration Fraction - FF) {#sec-3}
+
+### A. Công Thức Tính GFR
+
+$$GFR = K_f \times NFP = 12.5\text{ mL/min/mmHg} \times 10\text{ mmHg} = \mathbf{125\text{ mL/phút} \approx 180\text{ Lít/ngày}}$$
+
+- $K_f$: Hệ số siêu lọc cầu thận (tích số giữa tính thấm nước của màng và tổng diện tích bề mặt lọc).
+
+### B. Phân Suất Lọc (Filtration Fraction - FF)
+Tỷ lệ huyết tương thực tế được lọc qua cầu thận so với tổng lượng huyết tương qua thận trong 1 phút ($RPF \approx 600\text{ mL/phút}$):
+
+$$FF = \frac{GFR}{RPF} = \frac{125\text{ mL/min}}{600\text{ mL/min}} \approx \mathbf{20\%}$$
+
+- **Ý nghĩa sinh lý**: Cứ mỗi $100\text{ mL}$ huyết tương chảy qua thận, có đúng **$20\text{ mL}$** được lọc vào khoang Bowman, $80\text{ mL}$ còn lại tiếp tục theo tiểu động mạch đi nuôi mạng mao mạch quanh ống thận.
+
+---
+
+## 4. Cơ Chế Tự Điều Hòa Lưu Lượng Thận & GFR (Auto-Regulation) {#sec-4}
+
+Thận có khả năng tự duy trì ổn định $RBF$ và $GFR$ khi Huyết áp động mạch hệ thống dao động trong khoảng rộng **$80 – 180\text{ mmHg}$**:
+
+1. **Cơ Chế Cơ Học Cơ Trơn Mạch Máu (Myogenic Mechanism)**:
+   - Khi huyết áp tăng $\rightarrow$ Thành tiểu động mạch đến bị kéo căng $\rightarrow$ Mở kênh Canxi nhạy cảm căng giãn $\rightarrow$ Cơ trơn **tiểu động mạch đến co thắt lại**, ngăn áp lực cao truyền vào cầu thận.
+2. **Cơ Chế Điều Hòa Ngược Ống - Cầu Thận (Tubuloglomerular Feedback - TGF)**:
+   - Tế bào **Macula Densa** (Vết đặc) tại chỗ tiếp xúc giữa quai Henle và ống lượn xa đóng vai trò là cảm biến nồng độ $NaCl$:
+
+```
+[GFR TĂNG CAO] ──► Dòng dịch lọc chảy quá nhanh qua Quai Henle (Giảm tái hấp thu NaCl)
+                            │
+                            ▼
+[TẾ BÀO MACULA DENSA PHÁT HIỆN NỒNG ĐỘ NaCl CAO]
+                            │
+                            ▼
+[Giải Phóng ADENOSINE & ATP] ──► CO THẮT TIỂU ĐỘNG MẠCH ĐẾN
+                            │
+                            ▼
+[HẠ ÁP SUẤT P_GC VÀ ĐƯA GFR TRỞ VỀ MỨC CHUẨN 125 mL/phút]
+```
+
+---
+
+## 5. Dược Lý Huyết Động Tiểu Động Mạch: NSAIDs vs ACEi/ARBs {#sec-5}
+
+<PhysioAlert type="danger" title="Tác Động Đối Lập Lên Tiểu Động Mạch Đến & Đi Của Cầu Thận">
+  ```
+  [Tiểu Động Mạch ĐẾN] ──► [MAO MẠCH CẦU THẬN (PGC)] ──► [Tiểu Động Mạch ĐI]
+           │                                                      │
+     Giãn bởi: PROSTAGLANDIN (PGE2, PGI2)                   Co bởi: ANGIOTENSIN II
+     Co bởi:   NSAIDs (Ức chế tổng hợp Prostaglandin)       Giãn bởi: ACEi / ARBs (Ức chế Angiotensin II)
+  ```
+  - **Khi dùng thuốc NSAIDs**: Gây **co thắt tiểu động mạch đến** $\rightarrow$ Giảm lượng máu vào cầu thận $\rightarrow$ Giảm áp lực $P_{GC}$ $\rightarrow$ **Giảm GFR cấp tính**.
+  - **Khi dùng thuốc ACEi / ARBs**: Gây **giãn tiểu động mạch đi** $\rightarrow$ Máu thoát ra khỏi cầu thận dễ dàng hơn $\rightarrow$ Giảm áp lực $P_{GC}$ $\rightarrow$ Giảm áp lực lọc cầu thận (hiệu quả bảo vệ thận chống xơ hóa lâu dài trong Đái tháo đường, nhưng có thể gây giảm nhẹ GFR lúc mới khởi đầu).
+</PhysioAlert>
+
+---
+
+## 6. Tài Liệu Tham Khảo EBM {#sec-6}
+
+1. **Hall, J. E., & Hall, M. E. (2021)**. *Guyton and Hall Textbook of Medical Physiology* (14th ed.). Philadelphia: Elsevier. Chapters 26 & 27: Glomerular Filtration & Renal Blood Flow.
+2. **Barrett, K. E. et al. (2019)**. *Ganong's Review of Medical Physiology* (26th ed.). New York: McGraw-Hill. Chapter 37: Renal Function & Micturition.
+3. **Navar, L. G. (2014)**. *Physiology of the renal circulation*. Seminars in Nephrology, 34(4), 346-353.
+4. **Kidney Disease: Improving Global Outcomes (KDIGO) CKD Work Group (2013)**. *KDIGO 2012 Clinical Practice Guideline for the Evaluation and Management of Chronic Kidney Disease*. Kidney International Supplements, 3(1), 1-150.

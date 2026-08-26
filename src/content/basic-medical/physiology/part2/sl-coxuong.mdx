@@ -1,0 +1,190 @@
+---
+title: "Sinh Lý Cơ Xương (Skeletal Muscle Physiology)"
+slug: "sl-coxuong"
+code: "PHYS-NERV-02"
+part: "part2"
+system: "nervous"
+systemName: "Sinh Lý Hệ Thần Kinh & Cơ"
+guytonChapter: "Guyton 14th - Chapter 6: Contraction of Skeletal Muscle & Chapter 7: Excitation of Skeletal Muscle"
+ganongChapter: "Ganong 26th - Chapter 5: Excitable Tissue: Muscle"
+category: "physiology"
+status: "published"
+version: "2.0.0"
+updatedAt: "2026-08-26"
+description: "Sinh lý học Cơ xương: Cấu trúc siêu vi thể Sarcomere, cơ chế ghép nối điện - cơ (DHPR và RyR1), chu trình bắt chéo cầu nối Actin-Myosin (Cross-Bridge Cycle), hiện tượng co cứng tử thi Rigor Mortis, phân loại sợi cơ Type I (đỏ) vs Type II (trắng), cơ học co cơ đẳng trương/đẳng trường và ứng dụng lâm sàng trong Tăng thân nhiệt ác tính (Malignant Hyperthermia) & Loạn dưỡng cơ Duchenne."
+tags:
+  - "sinh-ly"
+  - "co-xuong"
+  - "sarcomere"
+  - "actin-myosin"
+  - "ryr1"
+  - "rigor-mortis"
+clinicalPearls:
+  - "ATP cần thiết cho CẢ HAI quá trình: (1) Cung cấp năng lượng cho nhát đập sinh lực co cơ (Power Stroke), và (2) Gắn vào đầu Myosin để TÁCH KHỎI Actin nhằm làm giãn cơ. Khi chết, cạn kiệt ATP khiến đầu Myosin dính chặt vĩnh viễn vào Actin gây hiện tượng Co Cứng Tử Thi (Rigor Mortis)."
+  - "Hội chứng Tăng thân nhiệt ác tính (Malignant Hyperthermia) là bệnh di truyền do đột biến kênh canxi RyR1 tại lưới nội cơ tương. Khi tiếp xúc với thuốc mê hô hấp (Halothane, Isoflurane) hoặc Succinylcholine, kênh RyR1 mở mất kiểm soát gây rò rỉ Ca2+ ồ ạt, co cứng cơ toàn thân, tăng thân nhiệt cực đoan >42°C và tiêu cơ vân. Điều trị đặc hiệu sống còn bằng Dantrolene (chẹn kênh RyR1)."
+  - "Sợi cơ Type I (co chậm, đỏ) thích nghi với các bài tập sức bền duy trì tư thế liên tục, trong khi sợi Type II (co nhanh, trắng) tối ưu hóa cho các hoạt động bộc phát sức mạnh ngắn hạn như chạy nước rút, nâng tạ."
+sections:
+  - id: "sec-1"
+    number: 1
+    title: "Cấu Trúc Siêu Vi Sarcomere"
+    icon: "fa-cubes"
+  - id: "sec-2"
+    number: 2
+    title: "Ghép Nối Điện - Cơ (DHPR & RyR1)"
+    icon: "fa-bolt"
+  - id: "sec-3"
+    number: 3
+    title: "Chu Trình Cầu Nối Sợi Trượt"
+    icon: "fa-arrows-left-right"
+  - id: "sec-4"
+    number: 4
+    title: "Co Cứng Tử Thi & Phân Loại Sợi Cơ"
+    icon: "fa-layer-group"
+  - id: "sec-5"
+    number: 5
+    title: "Cơ Học Co Cơ: Đẳng Trường vs Đẳng Trương"
+    icon: "fa-dumbbell"
+  - id: "sec-6"
+    number: 6
+    title: "Ứng Dụng Lâm Sàng EBM"
+    icon: "fa-pills"
+  - id: "sec-7"
+    number: 7
+    title: "Tài Liệu Tham Khảo EBM"
+    icon: "fa-book-medical"
+---
+
+import { PhysioAlert, PhysioQuickNav, PhysioFeedbackLoop } from '../components'
+
+# 💪 SINH LÝ CƠ XƯƠNG (SKELETAL MUSCLE PHYSIOLOGY)
+
+<PhysioQuickNav />
+
+---
+
+## 1. Cấu Trúc Siêu Vi Thể Của Sarcomere {#sec-1}
+
+**Sarcomere (Đoạn cơ)** là đơn vị co cơ chức năng cơ bản của tế bào cơ xương, nằm giới hạn giữa hai **Đĩa Z (Z-discs)** liên tiếp (chiều dài khi nghỉ $\approx 2.0 – 2.2\text{ }\mu\text{m}$):
+
+```
+  [Đĩa Z]                   [Đường M]                   [Đĩa Z]
+    │ ─── Sợi Actin ───►        │        ◄─── Sợi Actin ─── │
+    │ ═════════════════════════════════════════════════════ │
+    │         ══════════ Sợi Dày Myosin ══════════          │
+    │ ◄── Băng I ──► ◄────────── Băng A ──────────► ◄── Băng I ──► │
+    │                ◄── Vùng H ──►                         │
+```
+
+- **Băng A (Anisotropic - Băng tối)**: Có chiều dài không đổi ($1.6\text{ }\mu\text{m}$), tương ứng với toàn bộ chiều dài của **Sợi dày Myosin** (bao gồm cả vùng gối lên sợi Actin).
+- **Băng I (Isotropic - Băng sáng)**: Chỉ chứa **Sợi mỏng Actin** bám vào đĩa Z.
+- **Vùng H (H-zone)**: Nằm ở trung tâm băng A, chỉ chứa sợi Myosin mà không có sợi Actin gối lên.
+- **Đường M (M-line)**: Protein neo giữ các sợi dày Myosin nằm chính giữa Sarcomere.
+
+<PhysioAlert type="mechanism" title="Phức Hợp Bộ Ba Protein Trên Sợi Mỏng Actin">
+  1. **Actin F (Filamentous Actin)**: Chuỗi xoắn kép chứa các vị trí gắn hoạt động (*Active binding sites*) với đầu Myosin.
+  2. **Tropomyosin**: Sợi protein dài chạy dọc rãnh xoắn Actin, ở trạng thái nghỉ nó **che phủ hoàn toàn các vị trí gắn hoạt động**, ngăn đầu Myosin bám vào.
+  3. **Phức hợp Troponin** gồm 3 tiểu đơn vị:
+     - **Troponin T (TnT)**: Gắn phức hợp troponin vào Tropomyosin.
+     - **Troponin I (TnI)**: Ức chế sự gắn kết giữa Actin và Myosin.
+     - **Troponin C (TnC)**: Mang 4 vị trí gắn với **ion $Ca^{2+}$**. Khi $Ca^{2+}$ gắn vào TnC, nó làm biến đổi cấu hình kéo Tropomyosin lệch ra khỏi rãnh xoắn, để lộ các vị trí gắn cho đầu Myosin tiếp cận.
+</PhysioAlert>
+
+---
+
+## 2. Cơ Chế Ghép Nối Điện - Cơ (Excitation-Contraction Coupling) {#sec-2}
+
+Ghép nối điện - cơ là quá trình chuyển đổi điện thế hoạt động trên màng sợi cơ thành lực co cơ học:
+
+```
+[Điện thế hoạt động từ màng tế bào cơ] ──► Lan truyền sâu vào [Ống T (T-Tubules)]
+                                                              │
+[Cảm biến điện thế DHPR (CaV1.1)] ◄───────────────────────────┘
+               │ (Biến đổi cấu hình cơ học liên kết trực tiếp)
+               ▼
+[Kênh Phóng Thích Canxi RyR1] tại Lưới Nội Cơ Tương (Sarcoplasmic Reticulum) MỞ RA
+               │
+               ▼
+Lượng lớn Ca2+ ùa vào Bào Tương (Nồng độ tăng gấp 100 lần) ──► Gắn vào Troponin C
+```
+
+<PhysioAlert type="pearl" title="Cấu Trúc Bộ Ba Triad: Ống T & Bể Chứa Tận Cùng Của Lưới Nội Cơ Tương">
+  Tại mỗi vị trí tiếp giáp giữa băng A và băng I của cơ xương có một cấu trúc gọi là **Bộ ba Triad**, bao gồm 1 ống ngang **Ống T (T-tubule)** nằm kẹp giữa 2 **bể chứa tận cùng (Terminal Cisternae)** của lưới nội cơ tương (SR). Màng ống T chứa thụ thể **DHPR (Dihydropyridine Receptor)** liên kết vật lý cơ học trực tiếp với kênh **RyR1 (Ryanodine Receptor Type 1)** trên màng lưới nội cơ tương, cho phép giải phóng $Ca^{2+}$ gần như tức thì khi có xung điện thế.
+</PhysioAlert>
+
+---
+
+## 3. Thuyết Sợi Trượt & Chu Trình Bắt Chéo Cầu Nối (Cross-Bridge Cycle) {#sec-3}
+
+Co cơ xảy ra khi **các sợi mỏng Actin trượt sâu vào trung tâm băng A giữa các sợi dày Myosin**, kéo hai đĩa Z lại gần nhau:
+- Băng A **giữ nguyên chiều dài**.
+- Băng I và Vùng H **ngắn lại hoặc biến mất hoàn toàn khi co tối đa**.
+
+```
+[1. Trạng Thái Nghỉ / Nạp Năng Lượng]: Đầu Myosin gắn ADP + Pi ở góc 90°
+        │
+        ▼ (Ca2+ gắn Troponin C ──► Lộ điểm gắn trên Actin)
+[2. Bắt Cầu Nối (Cross-Bridge Formation)]: Đầu Myosin bám chặt vào Actin
+        │
+        ▼ (Giải phóng Pi rồi giải phóng ADP)
+[3. Nhát Đập Sinh Lực (Power Stroke)]: Đầu Myosin bẻ gập từ 90° sang 45°, KÉO SỢI ACTIN VỀ TÂM
+        │
+        ▼ (Phân tử ATP MỚI gắn vào đầu Myosin)
+[4. Tách Rời Cầu Nối (Detachment)]: Đầu Myosin nhả rời khỏi sợi Actin
+        │
+        ▼ (Enzyme Myosin ATPase thủy phân ATP ──► ADP + Pi)
+[5. Tái Nạp Góc 90°]: Đầu Myosin sẵn sàng cho chu trình tiếp theo
+```
+
+---
+
+## 4. Co Cứng Tử Thi (Rigor Mortis) & Phân Loại Sợi Cơ Xương {#sec-4}
+
+### A. Cơ Chế Co Cứng Tử Thi (Rigor Mortis)
+Sau khi cơ thể ngừng tuần hoàn và hô hấp:
+1. Thiếu $O_2$ dẫn đến **ngừng sản sinh ATP hoàn toàn**.
+2. Thiếu ATP làm bơm **SERCA ($Ca^{2+}$-ATPase)** ngừng hoạt động, $Ca^{2+}$ rò rỉ ra bào tương kích hoạt đầu Myosin gắn vào Actin.
+3. Không có phân tử ATP mới để gắn vào đầu Myosin làm nhả cầu nối $\rightarrow$ **Đầu Myosin bị khóa cứng vĩnh viễn ở trạng thái bám Actin**, làm toàn bộ cơ thể co cứng lại sau 3 – 4 giờ, đạt đỉnh sau 12 giờ và tự tan sau 48 – 72 giờ do protein tự thoái hóa.
+
+### B. Phân Loại Sợi Cơ Xương (Type I vs Type II)
+
+| Đặc điểm sinh lý | Sợi Cơ Type I (Co Chậm - Đỏ) | Sợi Cơ Type IIa (Nhanh - Oxy hóa) | Sợi Cơ Type IIb/IIx (Nhanh - Đường Phân) |
+|---|---|---|---|
+| **Màu sắc** | **Đỏ sẫm** (Rất giàu Myoglobin) | Đỏ / Hồng | **Trắng** (Ít Myoglobin) |
+| **Đường chuyển hóa** | **Phosphoryl hóa oxy hóa ưa khí** | Oxy hóa & Đường phân | **Đường phân kỵ khí (Glycolytic)** |
+| **Mật độ ty thể & Mao mạch** | **Rất cao** | Cao | Thấp |
+| **Tốc độ co & Hoạt tính ATPase** | Chậm (Phát lực bền bỉ) | Nhanh | **Cực nhanh (Phát lực bùng nổ)** |
+| **Khả năng chống mỏi cơ** | **Rất cao (Kháng mỏi)** | Trung bình | **Rất thấp (Cực kỳ nhanh mỏi)** |
+| **Chức năng vận động** | Giữ tư thế cột sống, chạy Marathon | Đi bộ nhanh, bơi cự ly trung bình | **Chạy nước rút 100m, cử tạ, nhảy cao** |
+
+---
+
+## 5. Cơ Học Co Cơ: Co Đẳng Trường vs Co Đẳng Trương {#sec-5}
+
+- **Co cơ đẳng trường (Isometric Contraction)**:
+  - Chiều dài bắp cơ **không thay đổi**, nhưng **trương lực cơ (lực căng) tăng lên tối đa**.
+  - Xảy ra khi cố gắng nâng một vật quá nặng hoặc khi cơ co duy trì tư thế chống lại trọng lực.
+- **Co cơ đẳng trương (Isotonic Contraction)**:
+  - Trương lực cơ **giữ nguyên không đổi**, nhưng **chiều dài bắp cơ ngắn lại** để sinh công dịch chuyển vật thể (như cử động gấp cẳng tay nâng tạ).
+
+---
+
+## 6. Ứng Dụng Lâm Sàng & Bệnh Lý Cơ Xương EBM {#sec-6}
+
+<PhysioAlert type="danger" title="Tăng Thân Nhiệt Ác Tính (Malignant Hyperthermia) & Thuốc Giải Độc Dantrolene">
+  - **Cơ chế**: Đột biến gen lặn trên nhiễm sắc thể thường mã hóa kênh **$RyR1$**. Khi bệnh nhân được gây mê bằng các thuốc mê bay hơi nhóm Halogen (*Halothane, Sevoflurane*) hoặc thuốc giãn cơ khử cực *Succinylcholine*, kênh $RyR1$ bị mở toang mất kiểm soát.
+  - **Hậu quả**: $Ca^{2+}$ tràn ngập bào tương kích hoạt co cơ liên tục ồ ạt, tăng chuyển hóa tiêu thụ oxy và sinh nhiệt khủng khiếp (nhiệt độ cơ thể có thể tăng vọt **$1^\circ\text{C}$ mỗi 5 phút lên tới $>42^\circ\text{C}$**), toan chuyển hóa lactic, tiêu cơ vân cấp (*Rhabdomyolysis*) và suy thận cấp.
+  - **Xử trí cấp cứu sống còn**: Ngừng ngay lập tức các thuốc mê/giãn cơ, thở oxy 100%, hạ thân nhiệt tích cực và tiêm tĩnh mạch thuốc đặc hiệu **Dantrolene sodium (2.5 mg/kg)** để chẹn trực tiếp kênh $RyR1$.
+</PhysioAlert>
+
+<PhysioAlert type="pearl" title="Loạn Dưỡng Cơ Duchenne (DMD) & Vai Trò Của Protein Dystrophin">
+  **Dystrophin** là một protein hình que khổng lồ giúp neo giữ khung xương tế bào (sợi Actin nội bào) với phức hợp glycoprotein màng và chất nền ngoại bào. Đột biến mất chức năng gen *DMD* trên nhiễm sắc thể X làm thiếu hụt hoàn toàn Dystrophin, khiến màng sợi cơ bị rách vỡ liên tục trong các chu kỳ co duỗi cơ học, $Ca^{2+}$ tràn vào phá hủy sợi cơ gây teo cơ tiến triển, dáng đi lạch bạch, phì đại bắp chân giả và tử vong do suy hô hấp/bệnh cơ tim ở tuổi thanh niên.
+</PhysioAlert>
+
+---
+
+## 7. Tài Liệu Tham Khảo EBM {#sec-7}
+
+1. **Hall, J. E., & Hall, M. E. (2021)**. *Guyton and Hall Textbook of Medical Physiology* (14th ed.). Philadelphia: Elsevier. Chapters 6 & 7: Skeletal Muscle Physiology.
+2. **Barrett, K. E. et al. (2019)**. *Ganong's Review of Medical Physiology* (26th ed.). New York: McGraw-Hill. Chapter 5: Excitable Tissue: Muscle.
+3. **Huxley, A. F., & Niedergerke, R. (1954)**. *Structural changes in muscle during contraction; interference microscopy of living muscle fibres*. Nature, 173(4412), 971-973.
+4. **Rosenberg, H. et al. (2015)**. *Malignant hyperthermia*. Orphanet Journal of Rare Diseases, 10, 93.
