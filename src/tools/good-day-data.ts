@@ -3,7 +3,7 @@
  * Path: src/tools/good-day-data.ts
  */
 
-import { TrucItem, TietKhiItem, SaoTuItem } from './good-day-types';
+import type { TrucItem, TietKhiItem, SaoTuItem } from './good-day-types';
 
 export const CAN = ["Giáp", "Ất", "Bính", "Đinh", "Mậu", "Kỷ", "Canh", "Tân", "Nhâm", "Quý"] as const;
 export const CHI = ["Tý", "Sửu", "Dần", "Mão", "Thìn", "Tỵ", "Ngọ", "Mùi", "Thân", "Dậu", "Tuất", "Hợi"] as const;

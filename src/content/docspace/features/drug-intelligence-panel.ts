@@ -242,7 +242,7 @@ export class DrugIntelligencePanel {
             <i class="fa-solid fa-ban"></i> Chống Chỉ Định & Thận Trọng
           </div>
           <ul style="margin:0; padding-left:18px; font-size:12.5px; color:var(--color-text, #334155); line-height:1.5;">
-            ${drug.contraindications.map(c => `<li>${escapeHtml(c)}</li>`).join('')}
+            ${(drug.contraindications || []).map(c => `<li>${escapeHtml(c)}</li>`).join('')}
           </ul>
         </div>
 

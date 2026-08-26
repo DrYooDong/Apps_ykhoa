@@ -4,7 +4,7 @@
  */
 
 import { VAULT_CATALOG, getKhoSummaries, filterVaultArticles, getArticleByIdOrPath, KHO_DEFINITIONS } from './vault-loader';
-import { VaultFilterState, VaultArticle } from './types';
+import type { VaultFilterState, VaultArticle } from './types';
 import { renderPathwayRibbon, processMarkdownWithToc, renderTocHtml, renderReaderToolbar, renderAnnotationsBoxHtml, renderEncyclopediaQuickFactsHtml, attachReaderProEvents } from './vault-reader-pro';
 import { renderFlowchartStudioHtml, attachFlowchartEvents, CLINICAL_FLOWCHARTS_REGISTRY } from './vault-flowchart-engine';
 import { renderFlashcardStudioHtml, attachFlashcardEvents, DEFAULT_MEDICAL_FLASHCARDS } from './vault-flashcard-engine';
@@ -12,14 +12,18 @@ import {
   renderProtocolsHubView, 
   attachProtocolsEvents, 
   KHO_PROTOCOLS_REGISTRY, 
-  getProtocolById, 
+  getProtocolById
+} from './protocols';
+import type {
   ProtocolFilterState,
   ClinicalProtocol 
 } from './protocols';
 import {
   renderVaultCrceView,
   attachVaultCrceEvents,
-  DEFAULT_CRCE_STATE,
+  DEFAULT_CRCE_STATE
+} from './vault-crce-view';
+import type {
   VaultCrceState
 } from './vault-crce-view';
 

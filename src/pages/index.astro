@@ -1,12 +1,19 @@
 ---
 import BaseLayout from '../components/layout/BaseLayout.astro';
 
-// Đếm số lượng bài viết sinh lý & dịch tễ học tự động
+// Đếm số lượng bài viết tự động từ các collection MDX
 const physioModules = import.meta.glob('/src/content/basic-medical/physiology/**/*.mdx');
+const biochemModules = import.meta.glob('/src/content/basic-medical/biochemistry/**/*.mdx');
+const pathoModules = import.meta.glob('/src/content/basic-medical/pathophysiology-cases/**/*.mdx');
 const epiModules = import.meta.glob('/src/content/basic-medical/epidemiology/**/*.mdx');
+const guidelineModules = import.meta.glob('/src/content/ebm/guidelines/kho-guidelines/**/*.mdx');
 
 const physioCount = Object.keys(physioModules).length;
+const biochemCount = Object.keys(biochemModules).length;
+const pathoCount = Object.keys(pathoModules).length;
 const epiCount = Object.keys(epiModules).length;
+const guidelineCount = Object.keys(guidelineModules).length;
+const totalArticles = physioCount + biochemCount + pathoCount + epiCount + guidelineCount;
 ---
 
 <BaseLayout 
@@ -16,47 +23,84 @@ const epiCount = Object.keys(epiModules).length;
   <div class="homepage-container">
     <!-- Hero Section -->
     <section class="hero-section">
+      <div class="hero-backdrop-glow"></div>
+      
       <div class="hero-content">
-        <div class="hero-pill">
-          <span class="pulse-dot"></span>
-          <span>CliniPortal v2.0 — Next-Gen Medical Ecosystem</span>
+        <div class="hero-top-badges">
+          <div class="hero-pill">
+            <span class="pulse-dot"></span>
+            <span>CliniPortal v2.0 • Dynamic Clinical Engine</span>
+          </div>
+          <div class="hero-pill hero-pill-sub">
+            <i class="fa-solid fa-bolt text-warning"></i>
+            <span>{totalArticles > 0 ? `${totalArticles}+ Bài Giảng & Công Cụ Sẵn Sàng` : '200+ Bài Giảng MDX'}</span>
+          </div>
         </div>
 
         <h1 class="hero-heading">
           Kiến Thức Y Khoa Chuẩn Xác.<br />
-          <span class="gradient-text">Hỗ Trợ Quyết Định Lâm Sàng.</span>
+          <span class="gradient-text">Hỗ Trợ Ra Quyết Định Lâm Sàng.</span>
         </h1>
 
         <p class="hero-subtext">
-          Hệ sinh thái y khoa offline-first tích hợp bài giảng Sinh lý học Guyton/Ganong, Dịch tễ học bệnh lý, Khuyến cáo điều trị Y học chứng cứ và Bộ máy tính lâm sàng.
+          Hệ sinh thái y khoa thế hệ mới kết hợp bài giảng Sinh lý học Guyton/Ganong, Hóa sinh Harper, Ca lâm sàng Cơ chế bệnh sinh CCBS, Dịch tễ học thực địa và Bộ công cụ hỗ trợ quyết định lâm sàng (CDSS).
         </p>
 
+        <!-- Quick Search Bar -->
+        <div class="hero-search-box">
+          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          <input 
+            type="text" 
+            id="portalQuickSearch" 
+            placeholder="Tra cứu nhanh triệu chứng, bài giảng, phác đồ, thuốc hoặc công cụ..." 
+            aria-label="Tra cứu nhanh toàn bộ phân hệ y khoa"
+          />
+          <span class="search-shortcut">⌘K</span>
+        </div>
+
+        <!-- Quick Bedside Action Chips -->
+        <div class="hero-quick-chips">
+          <span class="chips-label"><i class="fa-solid fa-fire text-danger"></i> Khẩn cấp & Giường bệnh:</span>
+          <a href="/cong-cu" class="quick-chip"><i class="fa-solid fa-heart-pulse"></i> ACLS Ngừng tim</a>
+          <a href="/cong-cu" class="quick-chip"><i class="fa-solid fa-lungs"></i> Khí máu ABG Pro</a>
+          <a href="/sinh-ly-benh" class="quick-chip"><i class="fa-solid fa-kit-medical"></i> 34+ Ca CCBS</a>
+          <a href="/ebm/kho-guidelines" class="quick-chip"><i class="fa-solid fa-book-medical"></i> Khuyến cáo KDIGO/ESC</a>
+          <a href="/hoa-sinh" class="quick-chip"><i class="fa-solid fa-flask"></i> Dấu ấn Men tim & Khối u</a>
+        </div>
+
+        <!-- Primary CTA Buttons -->
         <div class="hero-actions">
           <a href="/sinh-ly/sl-tb-daicuong-tb" class="btn-primary">
             <i class="fas fa-book-open"></i>
-            <span>Khám Phá Sinh Lý Học</span>
+            <span>Bắt Đầu Khám Phá</span>
           </a>
-          <a href="/dich-te-hoc/dth-dengue" class="btn-secondary">
-            <i class="fas fa-virus"></i>
-            <span>Kho Dịch Tễ Học</span>
+          <a href="/cong-cu" class="btn-secondary">
+            <i class="fas fa-calculator"></i>
+            <span>Mở Kho Công Cụ CDSS</span>
           </a>
         </div>
       </div>
 
+      <!-- Stats Banner -->
       <div class="hero-stats-banner">
         <div class="stat-card">
           <span class="stat-number">{physioCount > 0 ? physioCount : '50+'}</span>
-          <span class="stat-label">Bài Giảng Sinh Lý MDX</span>
+          <span class="stat-label"><i class="fa-solid fa-dna text-primary"></i> Sinh Lý Học MDX</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-card">
+          <span class="stat-number">{biochemCount > 0 ? biochemCount : '30+'}</span>
+          <span class="stat-label"><i class="fa-solid fa-flask text-secondary"></i> Hóa Sinh Harper</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-card">
+          <span class="stat-number">{pathoCount > 0 ? pathoCount : '34+'}</span>
+          <span class="stat-label"><i class="fa-solid fa-heart-pulse text-danger"></i> Ca Lâm Sàng CCBS</span>
         </div>
         <div class="stat-divider"></div>
         <div class="stat-card">
           <span class="stat-number">{epiCount > 0 ? epiCount : '12+'}</span>
-          <span class="stat-label">Bệnh Lý Dịch Tễ Học</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat-card">
-          <span class="stat-number">100%</span>
-          <span class="stat-label">Offline-First & PWA</span>
+          <span class="stat-label"><i class="fa-solid fa-virus text-success"></i> Dịch Tễ Học Thực Địa</span>
         </div>
       </div>
     </section>
@@ -65,77 +109,134 @@ const epiCount = Object.keys(epiModules).length;
     <section class="bento-section">
       <div class="section-title-wrap">
         <span class="badge badge-pearl">Hệ Sinh Thái Phân Hệ</span>
-        <h2>Các Phân Hệ Y Khoa Chuyên Biệt</h2>
+        <h2>Khám Phá Các Phân Hệ Y Khoa Chuyên Biệt</h2>
+        <p class="section-subtext">Cấu trúc đa phân hệ tích hợp giữa kiến thức y cơ sở và y học thực hành đầu giường bệnh.</p>
       </div>
 
       <div class="bento-grid">
-        <!-- Bento Card 1: Physiology -->
+        <!-- Bento Card 1: Physiology (Span 2) -->
         <a href="/sinh-ly/sl-tb-daicuong-tb" class="bento-card card-span-2 bento-physio">
-          <div class="bento-icon">
-            <i class="fas fa-dna"></i>
-          </div>
-          <div class="bento-content">
-            <div class="bento-tags">
+          <div class="bento-card-bg-glow"></div>
+          <div class="bento-header">
+            <div class="bento-icon icon-physio">
+              <i class="fas fa-dna"></i>
+            </div>
+            <div class="bento-badge-group">
               <span class="badge badge-primary">Cơ Sở Y Khoa</span>
-              <span class="badge">Guyton 14th & Ganong 26th</span>
+              <span class="badge">{physioCount > 0 ? `${physioCount} Bài giảng` : '9 Hệ Cơ Quan'}</span>
             </div>
-            <h3>Sinh Lý Học & Nội Môi</h3>
-            <p>Hệ thống bài giảng sinh lý học y khoa phân tầng theo 9 khối cơ quan, tích hợp sơ đồ phản hồi âm tính và điểm nhấn lâm sàng.</p>
           </div>
-          <div class="bento-arrow">
-            <i class="fas fa-arrow-right"></i>
+          <div class="bento-content">
+            <h3>Sinh Lý Học & Điều Hòa Nội Môi</h3>
+            <p>Hệ thống bài giảng sinh lý học y khoa Guyton & Hall 14th / Ganong 26th phân tầng 9 hệ cơ quan, tích hợp sơ đồ Feedback Loop tương tác và điểm nhấn lâm sàng.</p>
+          </div>
+          <div class="bento-footer">
+            <span class="bento-link-text">Vào phân hệ Sinh lý <i class="fas fa-arrow-right"></i></span>
           </div>
         </a>
 
-        <!-- Bento Card 2: Epidemiology -->
-        <a href="/dich-te-hoc/dth-dengue" class="bento-card bento-epi">
-          <div class="bento-icon">
-            <i class="fas fa-virus"></i>
+        <!-- Bento Card 2: Biochemistry (Span 2) -->
+        <a href="/hoa-sinh" class="bento-card card-span-2 bento-biochem">
+          <div class="bento-card-bg-glow"></div>
+          <div class="bento-header">
+            <div class="bento-icon icon-biochem">
+              <i class="fas fa-flask"></i>
+            </div>
+            <div class="bento-badge-group">
+              <span class="badge badge-secondary">Hóa Sinh Y Học</span>
+              <span class="badge">7 Khối Harper</span>
+            </div>
           </div>
           <div class="bento-content">
-            <div class="bento-tags">
-              <span class="badge badge-pearl">Dịch Tễ Học</span>
+            <h3>Hóa Sinh & Chuyển Hóa Phân Tử</h3>
+            <p>Toàn bộ 7 khối kiến thức Hóa học, Enzym, Năng lượng sinh học, Chuyển hóa Glucid/Lipid/Protid, Sinh học phân tử PCR/NGS và Biện luận xét nghiệm.</p>
+          </div>
+          <div class="bento-footer">
+            <span class="bento-link-text">Xem bài giảng Hóa sinh <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </a>
+
+        <!-- Bento Card 3: CCBS Pathophysiology (Span 2) -->
+        <a href="/sinh-ly-benh" class="bento-card card-span-2 bento-patho">
+          <div class="bento-card-bg-glow"></div>
+          <div class="bento-header">
+            <div class="bento-icon icon-patho">
+              <i class="fas fa-heart-pulse"></i>
             </div>
+            <div class="bento-badge-group">
+              <span class="badge badge-danger">Lâm Sàng CCBS</span>
+              <span class="badge">34+ Bệnh Học</span>
+            </div>
+          </div>
+          <div class="bento-content">
+            <h3>Sinh Lý Bệnh & Cơ Chế Bệnh Sinh (CCBS)</h3>
+            <p>Phân tích sâu cơ chế bệnh sinh từng bệnh lý từ nguyên nhân, tổn thương phân tử, diễn tiến lâm sàng đến biến chứng và hướng tiếp cận điều trị.</p>
+          </div>
+          <div class="bento-footer">
+            <span class="bento-link-text">Tra cứu ca CCBS <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </a>
+
+        <!-- Bento Card 4: Epidemiology (Span 2) -->
+        <a href="/dich-te-hoc/dth-dengue" class="bento-card card-span-2 bento-epi">
+          <div class="bento-card-bg-glow"></div>
+          <div class="bento-header">
+            <div class="bento-icon icon-epi">
+              <i class="fas fa-virus"></i>
+            </div>
+            <div class="bento-badge-group">
+              <span class="badge badge-success">Y Tế Công Cộng</span>
+              <span class="badge">12+ Bệnh Lây Nhiễm</span>
+            </div>
+          </div>
+          <div class="bento-content">
             <h3>Dịch Tễ Học & Y Tế Công Cộng</h3>
-            <p>Tam giác dịch tễ học, chu kỳ truyền bệnh véc-tơ, sốt xuất huyết, sốt rét, viêm màng não và bệnh mạn tính.</p>
+            <p>Tam giác dịch tễ học, chu kỳ truyền bệnh véc-tơ, phác đồ giám sát Sốt xuất huyết, Sốt rét, Cúm mùa, Bệnh truyền nhiễm nhiệt đới và Bệnh mạn tính.</p>
           </div>
-          <div class="bento-arrow">
-            <i class="fas fa-arrow-right"></i>
+          <div class="bento-footer">
+            <span class="bento-link-text">Xem kho Dịch tễ học <i class="fas fa-arrow-right"></i></span>
           </div>
         </a>
 
-        <!-- Bento Card 3: EBM Guidelines -->
-        <a href="/ebm/kho-guidelines" class="bento-card bento-ebm">
-          <div class="bento-icon">
-            <i class="fas fa-book-medical"></i>
-          </div>
-          <div class="bento-content">
-            <div class="bento-tags">
+        <!-- Bento Card 5: EBM Guidelines (Span 2) -->
+        <a href="/ebm/kho-guidelines" class="bento-card card-span-2 bento-ebm">
+          <div class="bento-card-bg-glow"></div>
+          <div class="bento-header">
+            <div class="bento-icon icon-ebm">
+              <i class="fas fa-book-medical"></i>
+            </div>
+            <div class="bento-badge-group">
               <span class="badge badge-warning">Khuyến Cáo EBM</span>
+              <span class="badge">Class I / II / III</span>
             </div>
-            <h3>Y Học Chứng Cứ & Phác Đồ</h3>
-            <p>Tóm tắt khuyến cáo quốc tế (KDIGO, ESC, ACC/AHA, GOLD, GINA) phân tầng Class I/II/III và Level of Evidence.</p>
           </div>
-          <div class="bento-arrow">
-            <i class="fas fa-arrow-right"></i>
+          <div class="bento-content">
+            <h3>Y Học Chứng Cứ & Khuyến Cáo Quốc Tế</h3>
+            <p>Tổng hợp các khuyến cáo lâm sàng thực hành quốc tế chuẩn EBM: KDIGO (Thận), ESC / ACC (Tim mạch), GOLD (COPD), GINA (Hen phế quản), ADA (Đái tháo đường).</p>
+          </div>
+          <div class="bento-footer">
+            <span class="bento-link-text">Kho Guidelines điều trị <i class="fas fa-arrow-right"></i></span>
           </div>
         </a>
 
-        <!-- Bento Card 4: Clinical Tools -->
+        <!-- Bento Card 6: CDSS Tools & Clinical Calculators (Span 2) -->
         <a href="/cong-cu" class="bento-card card-span-2 bento-tools">
-          <div class="bento-icon">
-            <i class="fas fa-calculator"></i>
+          <div class="bento-card-bg-glow"></div>
+          <div class="bento-header">
+            <div class="bento-icon icon-tools">
+              <i class="fas fa-calculator"></i>
+            </div>
+            <div class="bento-badge-group">
+              <span class="badge badge-primary">CDSS Engine</span>
+              <span class="badge">20+ Studios</span>
+            </div>
           </div>
           <div class="bento-content">
-            <div class="bento-tags">
-              <span class="badge badge-primary">CDSS Engine</span>
-              <span class="badge">Offline Calculators</span>
-            </div>
             <h3>Bộ Máy Tính & Thang Điểm Lâm Sàng</h3>
-            <p>Phân tích Khí Máu Động Mạch (ABG Studio), eGFR CKD-EPI, Chỉnh liều Insulin, Sepsis SOFA và Thang điểm nguy cơ tim mạch.</p>
+            <p>Hệ sinh thái công cụ hỗ trợ tính toán tức thời: Phân tích Khí máu ĐM (ABG Studio), Xơ gan Cirrhosis Pro, ECG Studio Smith-Sgarbossa, SOFA, eGFR và Chỉnh liều thuốc.</p>
           </div>
-          <div class="bento-arrow">
-            <i class="fas fa-arrow-right"></i>
+          <div class="bento-footer">
+            <span class="bento-link-text">Mở bộ công cụ CDSS <i class="fas fa-arrow-right"></i></span>
           </div>
         </a>
       </div>
@@ -147,39 +248,66 @@ const epiCount = Object.keys(epiModules).length;
   .homepage-container {
     max-width: var(--content-wide-width);
     margin: 0 auto;
-    padding: var(--space-8) var(--space-4);
+    padding: var(--space-8) var(--space-4) var(--space-16);
   }
 
   /* --- Hero Styling --- */
   .hero-section {
-    background: var(--gradient-card-glow);
+    position: relative;
+    background: var(--color-surface);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-xl);
     padding: var(--space-12) var(--space-8) var(--space-8);
     margin-bottom: var(--space-16);
-    position: relative;
     overflow: hidden;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .hero-backdrop-glow {
+    position: absolute;
+    top: -120px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 350px;
+    background: radial-gradient(circle, rgba(2, 132, 199, 0.18) 0%, rgba(139, 92, 246, 0.08) 50%, transparent 80%);
+    pointer-events: none;
+    z-index: 0;
   }
 
   .hero-content {
-    max-width: 780px;
+    position: relative;
+    z-index: 1;
+    max-width: 820px;
     margin: 0 auto;
     text-align: center;
+  }
+
+  .hero-top-badges {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+    margin-bottom: var(--space-6);
   }
 
   .hero-pill {
     display: inline-flex;
     align-items: center;
     gap: var(--space-2);
-    padding: 0.35rem 0.85rem;
+    padding: 0.4rem 0.95rem;
     border-radius: var(--radius-full);
-    background-color: var(--color-surface);
+    background-color: var(--color-surface-offset);
     border: 1px solid var(--color-border);
     font-size: var(--text-xs);
     font-weight: 600;
     color: var(--color-primary);
-    margin-bottom: var(--space-6);
     box-shadow: var(--shadow-sm);
+  }
+
+  .hero-pill-sub {
+    color: var(--color-text-muted);
   }
 
   .pulse-dot {
@@ -187,14 +315,22 @@ const epiCount = Object.keys(epiModules).length;
     height: 8px;
     border-radius: var(--radius-full);
     background-color: var(--clinical-normal);
-    box-shadow: 0 0 8px var(--clinical-normal);
+    box-shadow: 0 0 10px var(--clinical-normal);
+    animation: pulseGlow 2s infinite;
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.3); opacity: 0.7; }
   }
 
   .hero-heading {
-    font-size: var(--text-3xl);
+    font-size: clamp(2rem, 4.5vw, 3.2rem);
     font-weight: 800;
-    line-height: 1.15;
+    line-height: 1.18;
+    letter-spacing: -0.03em;
     margin-bottom: var(--space-4);
+    color: var(--color-text);
   }
 
   .gradient-text {
@@ -206,8 +342,93 @@ const epiCount = Object.keys(epiModules).length;
   .hero-subtext {
     font-size: var(--text-md);
     color: var(--color-text-muted);
-    line-height: 1.6;
+    line-height: 1.65;
     margin-bottom: var(--space-8);
+  }
+
+  /* Quick Search Box */
+  .hero-search-box {
+    display: flex;
+    align-items: center;
+    background-color: var(--color-surface);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 0.6rem 1rem;
+    max-width: 620px;
+    margin: 0 auto var(--space-5);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    transition: all var(--tr-fast);
+  }
+
+  .hero-search-box:focus-within {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.15);
+  }
+
+  .search-icon {
+    font-size: 1.1rem;
+    color: var(--color-text-muted);
+    margin-right: var(--space-3);
+  }
+
+  .hero-search-box input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    font-size: var(--text-sm);
+    color: var(--color-text);
+    outline: none;
+  }
+
+  .search-shortcut {
+    font-size: 0.7rem;
+    padding: 2px 6px;
+    border-radius: var(--radius-sm);
+    background-color: var(--color-surface-offset);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+    font-weight: 600;
+  }
+
+  /* Quick Action Chips */
+  .hero-quick-chips {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+    margin-bottom: var(--space-8);
+  }
+
+  .chips-label {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    color: var(--color-text-muted);
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+  }
+
+  .quick-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    padding: 0.3rem 0.75rem;
+    border-radius: var(--radius-full);
+    background-color: var(--color-surface-offset);
+    border: 1px solid var(--color-border);
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--color-text);
+    text-decoration: none;
+    transition: all var(--tr-fast);
+  }
+
+  .quick-chip:hover {
+    background-color: var(--color-primary-hl);
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    transform: translateY(-1px);
   }
 
   .hero-actions {
@@ -215,25 +436,28 @@ const epiCount = Object.keys(epiModules).length;
     justify-content: center;
     gap: var(--space-4);
     margin-bottom: var(--space-10);
+    flex-wrap: wrap;
   }
 
   .btn-primary {
     display: inline-flex;
     align-items: center;
     gap: var(--space-2);
-    padding: 0.75rem 1.5rem;
+    padding: 0.85rem 1.75rem;
     border-radius: var(--radius-md);
     background: var(--color-primary);
     color: white;
     font-weight: 700;
     font-size: var(--text-sm);
     box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
-    transition: transform var(--tr-fast), background-color var(--tr-fast);
+    text-decoration: none;
+    transition: all var(--tr-fast);
   }
 
   .btn-primary:hover {
     background-color: var(--color-primary-hover);
     transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(2, 132, 199, 0.45);
     color: white;
   }
 
@@ -241,31 +465,37 @@ const epiCount = Object.keys(epiModules).length;
     display: inline-flex;
     align-items: center;
     gap: var(--space-2);
-    padding: 0.75rem 1.5rem;
+    padding: 0.85rem 1.75rem;
     border-radius: var(--radius-md);
     background-color: var(--color-surface);
     border: 1px solid var(--color-border);
     color: var(--color-text);
     font-weight: 700;
     font-size: var(--text-sm);
-    box-shadow: var(--shadow-sm);
-    transition: transform var(--tr-fast), background-color var(--tr-fast);
+    text-decoration: none;
+    transition: all var(--tr-fast);
   }
 
   .btn-secondary:hover {
     background-color: var(--color-surface-offset);
+    border-color: var(--color-text-muted);
     transform: translateY(-2px);
+    color: var(--color-text);
   }
 
+  /* Stats Banner */
   .hero-stats-banner {
+    position: relative;
+    z-index: 1;
     display: flex;
     align-items: center;
     justify-content: space-around;
-    background-color: var(--color-surface);
+    background-color: var(--color-surface-offset);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
-    padding: var(--space-6);
-    box-shadow: var(--shadow-sm);
+    padding: var(--space-4) var(--space-6);
+    flex-wrap: wrap;
+    gap: var(--space-4);
   }
 
   .stat-card {
@@ -278,36 +508,54 @@ const epiCount = Object.keys(epiModules).length;
     font-family: var(--font-display);
     font-size: var(--text-2xl);
     font-weight: 800;
-    color: var(--color-primary);
-    line-height: 1;
-    margin-bottom: var(--space-1);
+    color: var(--color-text);
+    line-height: 1.1;
   }
 
   .stat-label {
     font-size: var(--text-xs);
     color: var(--color-text-muted);
     font-weight: 600;
+    margin-top: var(--space-1);
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
   }
 
   .stat-divider {
     width: 1px;
     height: 36px;
-    background-color: var(--color-divider);
+    background-color: var(--color-border);
   }
 
   /* --- Bento Grid Styling --- */
+  .bento-section {
+    margin-top: var(--space-8);
+  }
+
   .section-title-wrap {
-    margin-bottom: var(--space-8);
+    text-align: center;
+    margin-bottom: var(--space-10);
   }
 
   .section-title-wrap h2 {
     font-size: var(--text-2xl);
+    font-weight: 800;
+    letter-spacing: -0.02em;
     margin-top: var(--space-2);
+    margin-bottom: var(--space-2);
+  }
+
+  .section-subtext {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    max-width: 580px;
+    margin: 0 auto;
   }
 
   .bento-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: var(--space-6);
   }
 
@@ -316,66 +564,99 @@ const epiCount = Object.keys(epiModules).length;
   }
 
   .bento-card {
-    background-color: var(--color-surface);
+    position: relative;
+    background: var(--color-surface);
     border: 1px solid var(--color-border);
-    border-radius: var(--radius-xl);
-    padding: var(--space-8);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    position: relative;
-    box-shadow: var(--shadow-sm);
-    transition: transform var(--tr), box-shadow var(--tr), border-color var(--tr);
+    text-decoration: none;
     color: var(--color-text);
+    overflow: hidden;
+    transition: transform var(--tr-fast), border-color var(--tr-fast), box-shadow var(--tr-fast);
   }
 
   .bento-card:hover {
     transform: translateY(-4px);
-    box-shadow: var(--shadow-card-hover);
     border-color: var(--color-primary);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+  }
+
+  .bento-card-bg-glow {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, rgba(2, 132, 199, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .bento-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-4);
   }
 
   .bento-icon {
     width: 48px;
     height: 48px;
-    border-radius: var(--radius-lg);
-    background-color: var(--color-primary-hl);
-    color: var(--color-primary);
+    border-radius: var(--radius-md);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: var(--text-xl);
-    margin-bottom: var(--space-6);
+    font-size: 1.3rem;
   }
 
-  .bento-tags {
+  .icon-physio { background: rgba(2, 132, 199, 0.12); color: #0284c7; }
+  .icon-biochem { background: rgba(139, 92, 246, 0.12); color: #8b5cf6; }
+  .icon-patho { background: rgba(239, 68, 68, 0.12); color: #ef4444; }
+  .icon-epi { background: rgba(16, 185, 129, 0.12); color: #10b981; }
+  .icon-ebm { background: rgba(245, 158, 11, 0.12); color: #f59e0b; }
+  .icon-tools { background: rgba(6, 182, 212, 0.12); color: #06b6d4; }
+
+  .bento-badge-group {
     display: flex;
     gap: var(--space-2);
-    margin-bottom: var(--space-3);
+    flex-wrap: wrap;
   }
 
   .bento-content h3 {
     font-size: var(--text-lg);
+    font-weight: 700;
     margin-bottom: var(--space-2);
+    letter-spacing: -0.01em;
   }
 
   .bento-content p {
-    font-size: var(--text-sm);
+    font-size: var(--text-xs);
     color: var(--color-text-muted);
     line-height: 1.6;
-    margin-bottom: 0;
+    margin-bottom: var(--space-4);
   }
 
-  .bento-arrow {
-    align-self: flex-end;
+  .bento-footer {
+    display: flex;
+    align-items: center;
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .bento-link-text {
+    font-size: var(--text-xs);
+    font-weight: 700;
     color: var(--color-primary);
-    font-size: var(--text-md);
-    margin-top: var(--space-4);
-    transition: transform var(--tr-fast);
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    transition: gap var(--tr-fast);
   }
 
-  .bento-card:hover .bento-arrow {
-    transform: translateX(4px);
+  .bento-card:hover .bento-link-text {
+    gap: var(--space-3);
   }
 
   @media (max-width: 860px) {
@@ -384,10 +665,6 @@ const epiCount = Object.keys(epiModules).length;
     }
     .card-span-2 {
       grid-column: span 1;
-    }
-    .hero-stats-banner {
-      flex-direction: column;
-      gap: var(--space-4);
     }
     .stat-divider {
       display: none;

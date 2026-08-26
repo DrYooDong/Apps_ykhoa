@@ -3,7 +3,7 @@
  * Path: src/tools/good-day-modal.ts
  */
 
-import {
+import type {
   DoctorProfile,
   DayScoreEvaluation,
   ShiftEnergyData,

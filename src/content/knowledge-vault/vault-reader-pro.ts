@@ -6,7 +6,7 @@
  * 3. Reading Toolbar (Zoom font, Serif/Sans toggle, Fullscreen, Copy Citation)
  */
 
-import { VaultArticle, ClinicalPathwayLinks, TocItem, VaultPersonalAnnotation } from './types';
+import type { VaultArticle, ClinicalPathwayLinks, TocItem, VaultPersonalAnnotation } from './types';
 import { findPathwayArticles, VAULT_CATALOG } from './vault-loader';
 
 export interface ReaderSettings {

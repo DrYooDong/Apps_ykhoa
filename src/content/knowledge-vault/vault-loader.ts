@@ -2,7 +2,7 @@
  * CliniPortal — Knowledge Vault Data Loader Engine
  */
 
-import { VaultArticle, VaultKhoSummary, VaultFilterState, ClinicalPathwayLinks } from './types';
+import type { VaultArticle, VaultKhoSummary, VaultFilterState, ClinicalPathwayLinks } from './types';
 import catalogData from './data/vault-catalog.json';
 
 export const VAULT_CATALOG: VaultArticle[] = catalogData as VaultArticle[];

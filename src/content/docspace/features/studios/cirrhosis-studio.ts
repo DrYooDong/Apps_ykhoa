@@ -600,9 +600,9 @@ export function analyzeCirrhosisStudio(inputs: CirrhosisInputs): CirrhosisAnalys
   }
 
   // H. Variceal Bleeding & Preemptive TIPS Criteria (Baveno VII)
-  const isPreemptiveTipsIndicated = hasActiveVaricealBleed && (
+  const isPreemptiveTipsIndicated = Boolean(hasActiveVaricealBleed && (
     cpClass === 'C' || (cpClass === 'B' && !!hasActiveBleedingAtEndoscopy)
-  );
+  ));
 
   const varicealBleedingProtocol = `
 PHÁC ĐỒ XUẤT HUYẾT VỠ GIÃN TMTQ (BAVENO VII 2022):

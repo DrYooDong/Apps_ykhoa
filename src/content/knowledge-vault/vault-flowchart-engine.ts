@@ -8,7 +8,7 @@
  * - No HTML in SVG <text>
  */
 
-import { ClinicalFlowchart, FlowchartNode, FlowchartEdge } from './types';
+import type { ClinicalFlowchart, FlowchartNode, FlowchartEdge } from './types';
 
 export const CLINICAL_FLOWCHARTS_REGISTRY: ClinicalFlowchart[] = [
   // ═══ 1. TIẾP CẬN ĐAU NGỰC CẤP & HỘI CHỨNG VÀNH CẤP ═══

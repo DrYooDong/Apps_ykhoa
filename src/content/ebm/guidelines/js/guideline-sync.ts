@@ -765,7 +765,7 @@ export function processStudyFields(s: any): Study {
             if (Array.isArray(p)) return p.map((x: any) => String(x).trim()).filter(Boolean);
           } catch(e) {}
         }
-        return trimmed.replace(/[\[\]"']/g, '').split(/[,;\s]+/).map(x => x.trim()).filter(Boolean);
+        return trimmed.replace(/[\[\]"']/g, '').split(/[,;\s]+/).map((x: string) => x.trim()).filter(Boolean);
       }
       return [];
     })(),

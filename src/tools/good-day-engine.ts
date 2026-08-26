@@ -3,7 +3,7 @@
  * Path: src/tools/good-day-engine.ts
  */
 
-import {
+import type {
   DoctorProfile,
   TrucItem,
   TietKhiItem,

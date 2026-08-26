@@ -823,7 +823,7 @@ export function analyzeEcg(inputs: EcgInputs): EcgAnalysisResult {
     emergencyFlags.push('🚨 TẮC THÂN CHUNG (LMCA): Huyết động không ổn định, hội chẩn phẫu thuật CABG / can thiệp khẩn.');
   }
 
-  if (stV1 <= -2.0 && stV2 <= -2.5 && stV3 <= -2.0 && (stV7V9 >= 0.5 || inputs.rv5 > 15)) {
+  if (stV1 <= -2.0 && stV2 <= -2.5 && stV3 <= -2.0 && (stV7V9 >= 0.5 || (inputs.rv5 ?? 0) > 15)) {
     stemiEquivalents.push('🚨 Nhồi máu cơ tim Thành Sau thực thụ (Posterior MI): ST chênh xuống nằm ngang ở V1-V3, sóng R ưu thế ➔ Đo ngay các chuyển đạo sau lưng V7-V9.');
     if (culpritArtery === 'NONE') culpritArtery = 'LCx';
   }

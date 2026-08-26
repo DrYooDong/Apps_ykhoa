@@ -320,7 +320,7 @@ export function handleFormSubmit(event?: Event): void {
   }
 
   const icdRaw = getValueFromIds('study-icd10');
-  const icdList = icdRaw ? icdRaw.split(',').map(s => s.trim().toUpperCase()).filter(Boolean) : null;
+  const icdList = icdRaw ? icdRaw.split(',').map(s => s.trim().toUpperCase()).filter(Boolean) : undefined;
 
   const orgVal = getValueFromIds('study-organization', 'form-organization') || 'N/A';
   const ifVal = parseFloat(getValueFromIds('study-impact-factor'));

@@ -198,7 +198,7 @@ export class PubMedGeminiService {
         );
         if (anyGenerate) {
           this.detectedWorkingModel = anyGenerate.name.replace('models/', '');
-          return this.detectedWorkingModel;
+          return this.detectedWorkingModel || 'gemini-2.0-flash';
         }
       }
     } catch (e) {

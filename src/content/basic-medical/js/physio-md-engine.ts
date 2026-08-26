@@ -61,7 +61,7 @@ export class PhysioMDEngine {
     text = text.replace(/:::physio-steps\r?\n([\s\S]*?)\r?\n:::/g, (_m, content) => {
       const items = content.split(/\r?\n(?=\d+\.\s)/);
       let html = '<ol class="physio-steps">';
-      items.forEach(item => {
+      items.forEach((item: string) => {
         if (item.trim()) {
           const cleanItem = item.replace(/^\d+\.\s*/, '').trim();
           html += `<li><div class="physio-step-card">${this.renderSimpleMarkdown(cleanItem)}</div></li>`;

@@ -12,21 +12,28 @@
  *   + <EpiVectorTable ... />
  */
 
-import { renderEpiTriangle, EpiTriangleProps } from '../content/basic-medical/epidemiology/components/EpiTriangle';
-import { renderEpiAlert, EpiAlertProps } from '../content/basic-medical/epidemiology/components/EpiAlert';
+import { renderEpiTriangle } from '../content/basic-medical/epidemiology/components/EpiTriangle';
+import type { EpiTriangleProps } from '../content/basic-medical/epidemiology/components/EpiTriangle';
+import { renderEpiAlert } from '../content/basic-medical/epidemiology/components/EpiAlert';
+import type { EpiAlertProps } from '../content/basic-medical/epidemiology/components/EpiAlert';
 import { renderEpiPillarsNav } from '../content/basic-medical/epidemiology/components/EpiPillarsNav';
-import { renderEpiVectorTable, EpiVectorTableProps } from '../content/basic-medical/epidemiology/components/EpiVectorTable';
-import { renderPhysioAlert, PhysioAlertProps } from '../content/basic-medical/physiology/components/PhysioAlert';
+import { renderEpiVectorTable } from '../content/basic-medical/epidemiology/components/EpiVectorTable';
+import type { EpiVectorTableProps } from '../content/basic-medical/epidemiology/components/EpiVectorTable';
+import { renderPhysioAlert } from '../content/basic-medical/physiology/components/PhysioAlert';
+import type { PhysioAlertProps } from '../content/basic-medical/physiology/components/PhysioAlert';
 import { renderPhysioQuickNav } from '../content/basic-medical/physiology/components/PhysioQuickNav';
-import { renderPhysioFeedbackLoop, PhysioFeedbackLoopProps } from '../content/basic-medical/physiology/components/PhysioFeedbackLoop';
-import { renderBiochemAlert, BiochemAlertProps } from '../content/basic-medical/biochemistry/components/BiochemAlert';
+import { renderPhysioFeedbackLoop } from '../content/basic-medical/physiology/components/PhysioFeedbackLoop';
+import type { PhysioFeedbackLoopProps } from '../content/basic-medical/physiology/components/PhysioFeedbackLoop';
+import { renderBiochemAlert } from '../content/basic-medical/biochemistry/components/BiochemAlert';
+import type { BiochemAlertProps } from '../content/basic-medical/biochemistry/components/BiochemAlert';
 import { renderBiochemQuickNav } from '../content/basic-medical/biochemistry/components/BiochemQuickNav';
-import { renderPathoAlert, PathoAlertProps } from '../content/basic-medical/pathophysiology-cases/components/PathoAlert';
+import { renderPathoAlert } from '../content/basic-medical/pathophysiology-cases/components/PathoAlert';
+import type { PathoAlertProps } from '../content/basic-medical/pathophysiology-cases/components/PathoAlert';
 import { renderPathoQuickNav } from '../content/basic-medical/pathophysiology-cases/components/PathoQuickNav';
-import { EpidemiologyMdxFrontmatter } from '../content/basic-medical/types/epidemiology.types';
-import { PhysioMdxFrontmatter } from '../content/basic-medical/types/physiology.types';
-import { BiochemistryMdxFrontmatter } from '../content/basic-medical/types/biochemistry.types';
-import { CcbsMdxFrontmatter } from '../content/basic-medical/types/ccbs.types';
+import type { EpidemiologyMdxFrontmatter } from '../content/basic-medical/types/epidemiology.types';
+import type { PhysioMdxFrontmatter } from '../content/basic-medical/types/physiology.types';
+import type { BiochemistryMdxFrontmatter } from '../content/basic-medical/types/biochemistry.types';
+import type { CcbsMdxFrontmatter } from '../content/basic-medical/types/ccbs.types';
 
 export interface ParsedMdxResult {
   frontmatter: Partial<EpidemiologyMdxFrontmatter | PhysioMdxFrontmatter | BiochemistryMdxFrontmatter | CcbsMdxFrontmatter> & Record<string, any>;
