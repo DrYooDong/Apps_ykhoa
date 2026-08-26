@@ -5,6 +5,8 @@ import rehypeKatex from 'rehype-katex';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://dryoodong.github.io',
+  base: '/Apps_ykhoa/',
   output: 'static',
   build: {
     format: 'file'
