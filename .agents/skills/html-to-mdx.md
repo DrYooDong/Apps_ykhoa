@@ -1,6 +1,6 @@
 ---
-name: html-to-mdx-pipeline
-description: "Quy trình và bộ tiêu chuẩn kỹ thuật toàn diện chuyển đổi HTML Y khoa tĩnh sang Astro MDX Native, xử lý triệt để 100% lỗi cú pháp JSX, KaTeX Math, lồng thẻ HTML, escape ký tự và tối ưu hóa Content Collections."
+name: html-to-mdx
+description: "Cẩm nang và quy chuẩn kỹ thuật toàn diện chuyển đổi HTML Y khoa tĩnh sang Astro MDX Native, xử lý triệt để 100% lỗi cú pháp JSX, KaTeX Math, lồng thẻ HTML, escape ký tự và tối ưu hóa Content Collections."
 category: "Workflow & Engineering"
 tags:
   - "mdx"
@@ -34,50 +34,67 @@ tags:
 Trong quá trình Astro MDX compiler (`@mdx-js/mdx` + `remark` + `rehype`) phân tích mã nguồn, bất kỳ sai lệch nào về chuẩn XML hoặc xung đột Markdown/JSX đều sẽ làm sập quá trình build. Dưới đây là 10 quy tắc bất di bất dịch đã được chuẩn hóa:
 
 ### 1. Tự đóng tất cả Void Elements (Self-closing Tags)
+
 HTML cho phép thẻ mở đơn lẻ, nhưng JSX/MDX **bắt buộc phải có dấu gạch chéo tự đóng `/>`**:
+
 - ❌ **Lỗi**: `<img src="..." alt="...">`, `<br>`, `<hr>`, `<input type="text">`, `<col width="30%">`
 - ✅ **Chuẩn**: `<img src="..." alt="..." />`, `<br />`, `<hr />`, `<input type="text" />`, `<col width="30%" />`
 
 ### 2. Escape ký tự so sánh toán học & lâm sàng (`<` và `>`)
+
 Ký tự `<` khi đi kèm chữ số, khoảng trắng hoặc tên không phải thẻ HTML sẽ bị JSX hiểu nhầm là thẻ đóng/mở bị lỗi:
+
 - ❌ **Lỗi**: `HbA1c < 7%`, `Tuổi < 65`, `eGFR < 30 mL/phút`, `Bilirubin > 3 mg/dL`
 - ✅ **Chuẩn**: `HbA1c &lt; 7%`, `Tuổi &lt; 65`, `eGFR &lt; 30 mL/phút`, `Bilirubin &gt; 3 mg/dL`
 - ⚙️ **Quy tắc Regex**: Mọi dấu `<` không thuộc danh sách thẻ HTML/SVG hợp lệ (`a`, `div`, `span`, `table`, `ul`, `path`,...) đều phải được thay bằng `&lt;`.
 
 ### 3. Escape dấu ngoặc nhọn `{` và `}` ngoài JSX Props
+
 Trong MDX, cặp ngoặc `{}` được trình thông dịch JavaScript coi là **JSX Expression**. Nếu gặp nội dung như `<code>\le 100\text{ mmHg}</code>` hay `{GCS < 15}`, JavaScript sẽ tìm biến `mmHg` hoặc `GCS` và gây lỗi `ReferenceError: ... is not defined`.
+
 - ❌ **Lỗi**: `\text{ mmHg}`, `\text{ mL/kg}`, `Tỷ lệ {đạt mục tiêu}`
 - ✅ **Chuẩn**: `&#123; mmHg&#125;`, `&#123; mL/kg&#125;`, `Tỷ lệ &#123;đạt mục tiêu&#125;`
 - ⚙️ **Quy tắc**: Escape `{` thành `&#123;` và `}` thành `&#125;` ở toàn bộ văn bản text ngoài thẻ.
 
 ### 4. Chuẩn hóa KaTeX Math & Ký tự `$` Y khoa
+
 Tránh để plugin `remark-math` parse nhầm các ký tự tiền tệ `$200` hoặc ghi chú Obsidian `$BMI \ge 25$` thành công thức KaTeX không hỗ trợ tiếng Việt:
+
 - ❌ **Lỗi**: `$BMI \ge 25$`, `Chi phí $500`, `$HBsAg (+)$`
 - ✅ **Chuẩn**: `BMI ≥ 25`, `Chi phí &#36;500`, `HBsAg (+)`
 - ⚙️ **Ký hiệu Unicode chuẩn**: Sử dụng trực tiếp `≥`, `≤`, `±`, `×`, `→`, `µ`, `α`, `β`, `Δ`.
 
 ### 5. Escape ký tự `&` trần (Unescaped Ampersands)
+
 - ❌ **Lỗi**: `title="A & B"`, `<p>Gan & Mật</p>`
 - ✅ **Chuẩn**: `title="A &amp; B"` hoặc `title="A và B"`, `<p>Gan &amp; Mật</p>`
 
 ### 6. Làm phẳng dòng trong thẻ List (`<li>`), Table (`<td>`, `<th>`) và Paragraph (`<p>`)
-Khi một thẻ `<li>`, `<td>`, `<p>` chứa văn bản nhiều dòng bắt đầu bằng dấu gạch ngang `- ` hoặc chấm tròn `• `, Remark AST sẽ ngắt đoạn thành một Markdown list/paragraph mới lồng bên trong thẻ HTML, dẫn đến lỗi:
+
+Khi một thẻ `<li>`, `<td>`, `<p>` chứa văn bản nhiều dòng bắt đầu bằng dấu gạch ngang `-` hoặc chấm tròn `•`, Remark AST sẽ ngắt đoạn thành một Markdown list/paragraph mới lồng bên trong thẻ HTML, dẫn đến lỗi:
 `Expected a closing tag for <li> before the end of paragraph`.
+
 - ❌ **Lỗi**:
+
   ```html
   <li><strong>Chỉ định:</strong>
     - Bệnh nhân nặng
     - Suy hô hấp
   </li>
   ```
+
 - ✅ **Chuẩn**:
+
   ```html
   <li><strong>Chỉ định:</strong> <br />&bull; Bệnh nhân nặng <br />&bull; Suy hô hấp</li>
   ```
 
 ### 7. Xử lý danh sách lồng nhau (Nested Lists)
+
 Tránh lồng trực tiếp `<ul>` nhiều cấp có khoảng thụt lề 4+ spaces bên trong `<li>` vì sẽ kích hoạt Markdown Indented Code Block:
+
 - ❌ **Lỗi**:
+
   ```html
   <li><strong>Nhóm 1:</strong>
       <ul>
@@ -85,22 +102,29 @@ Tránh lồng trực tiếp `<ul>` nhiều cấp có khoảng thụt lề 4+ spa
       </ul>
   </li>
   ```
+
 - ✅ **Chuẩn**:
+
   ```html
   <li><strong>Nhóm 1:</strong> <span class="sub-list"><span class="sub-item">• Mục a</span></span></li>
   ```
 
 ### 8. Loại bỏ xuống dòng trong thẻ mở HTML (Multi-line Opening Tags)
+
 Các thuộc tính thẻ bị xuống dòng ở giữa (ví dụ `<i\n class="...">` hoặc `<div\n id="...">`) khiến JSX tokenizer parse sai:
+
 - ❌ **Lỗi**: `<i\n class="fa-solid fa-arrow-down"></i>`
 - ✅ **Chuẩn**: `<i class="fa-solid fa-arrow-down"></i>`
 
 ### 9. Xử lý Sơ đồ ASCII / Flowchart bên trong `<pre>`
+
 Văn bản vẽ sơ đồ dạng Text/ASCII chứa nhiều ký tự gạch chéo `\`, ngoặc `{}` hoặc khoảng trắng phải được bọc an toàn trong JSX Template Literal:
+
 - ❌ **Lỗi**: `<pre class="flowchart">│ └───┬───┘ ▼</pre>`
 - ✅ **Chuẩn**: `<pre class="flowchart">{`│ └───┬───┘ ▼`}</pre>`
 
 ### 10. Tự động cân bằng và đóng thẻ vùng chứa (Tag Balancing)
+
 Đảm bảo tất cả các thẻ vùng chứa `<div>`, `<section>`, `<article>`, `<pre>`, `<table>`, `<tbody>`, `<ul>`, `<ol>` đều có thẻ đóng tương ứng ở cuối file.
 
 ---
@@ -224,9 +248,9 @@ function sanitizeMdxContent(rawHtml) {
   // 11. Cân bằng thẻ container
   const tags = ['div', 'section', 'article', 'pre', 'table', 'tbody', 'ul', 'ol'];
   for (const t of tags) {
-    const o = (content.match(new RegExp(`<${tag}\\b`, 'gi')) || []).length;
-    const c = (content.match(new RegExp(`</${tag}>`, 'gi')) || []).length;
-    for (let i = 0; i < o - c; i++) content += `\n</${tag}>`;
+    const o = (content.match(new RegExp(`<${t}\\b`, 'gi')) || []).length;
+    const c = (content.match(new RegExp(`</${t}>`, 'gi')) || []).length;
+    for (let i = 0; i < o - c; i++) content += `\n</${t}>`;
   }
 
   return content;
@@ -239,7 +263,7 @@ function sanitizeMdxContent(rawHtml) {
 
 | Triệu chứng Lỗi Build | Nguyên nhân Cốt lõi | Cách Xử lý Chuẩn |
 | :--- | :--- | :--- |
-| `Expected a closing tag for <li> before the end of paragraph` | Có dấu `- ` hoặc `• ` xuống dòng bên trong `<li>`, hoặc lồng `<ul>` có thụt lề 4+ spaces. | Làm phẳng dòng trong `<li>` hoặc thay `\n• ` thành `<br />&bull; `. |
+| `Expected a closing tag for <li> before the end of paragraph` | Có dấu `-` hoặc `•` xuống dòng bên trong `<li>`, hoặc lồng `<ul>` có thụt lề 4+ spaces. | Làm phẳng dòng trong `<li>` hoặc thay `\n•` thành `<br />&bull;`. |
 | `Unexpected character '4' before name` | Dấu so sánh `<40%`, `<2.5` trong text hoặc description bị hiểu là thẻ JSX. | Thay tất cả `<(?![a-zA-Z\/])` thành `&lt;`. |
 | `ReferenceError: XYZ is not defined` | Ký tự `{XYZ}` bên trong văn bản bị JSX evaluate thành biến JS. | Escape `{` thành `&#123;` và `}` thành `&#125;`. |
 | `Expected corresponding closing tag for <div>` | Thẻ `<main class="page-content">` không có thẻ đóng `</main>` hoặc bị thiếu `</div>`. | Dùng hàm `balanceTags()` tự động bổ sung thẻ đóng. |

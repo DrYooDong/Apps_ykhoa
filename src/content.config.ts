@@ -129,7 +129,13 @@ const guidelines = defineCollection({
     description: z.string().optional(),
     tags: z.array(z.string()).default([]),
     keyRecommendations: z.array(z.string()).default([]),
-    evidenceClass: z.string().optional()
+    evidenceClass: z.string().optional(),
+    sections: z.array(z.object({
+      id: z.string(),
+      number: z.number().optional(),
+      title: z.string(),
+      icon: z.string().optional()
+    })).default([])
   })
 });
 

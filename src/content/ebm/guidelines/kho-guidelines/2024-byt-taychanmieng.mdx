@@ -2,52 +2,780 @@
 title: "Bộ Y Tế 2024: Hướng Dẫn Chẩn Đoán & Điều Trị Bệnh Tay Chân Miệng (QĐ 292/QĐ-BYT)"
 slug: "2024-byt-taychanmieng"
 code: "GDL-2024-BYT-TAYCHANMIENG"
-category: "guidelines"
+organization: "Bộ Y Tế"
 year: "2024"
+category: "guidelines"
 status: "published"
 version: "2.0.0"
 updatedAt: "2026-08-26"
 description: "Hướng dẫn toàn diện chẩn đoán, phân độ lâm sàng, phác đồ điều trị, hồi sức tích cực nâng cao (IVIG, Phenobarbital, Milrinone, Dobutamin, thở máy, CRRT, VA-ECMO) và kiểm soát nhiễm khuẩn bệnh tay chân miệng theo Quyết định 292/QĐ-BYT năm 2024 của Bộ Y tế Việt Nam."
 tags:
+  - "Bộ Y Tế"
+  - "2024"
   - "Khuyến cáo lâm sàng"
   - "Evidence-Based Medicine"
-  - "2024"
+keyRecommendations:
+  - "CHỈ ĐỊNH IVIG ĐỘ 2b 1 g/kg/ngày IV"
 sections:
-  - id: "sec-1"
+  - id: "sec-phaply"
     number: 1
-    title: "Tổng Quan Khuyến Cáo & Thiết Kế Nghiên Cứu"
-    icon: "fa-book-medical"
-  - id: "sec-2"
+    title: "Pháp lý & Biên soạn"
+    icon: "fa-solid fa-scale-balanced"
+  - id: "sec-daicuong"
     number: 2
-    title: "Khuyến Cáo Cốt Lõi & Bằng Chứng EBM"
-    icon: "fa-certificate"
-  - id: "sec-3"
+    title: "Đại cương & Căn nguyên"
+    icon: "fa-solid fa-virus"
+  - id: "sec-lamsang"
     number: 3
-    title: "Ứng Dụng Lâm Sàng & Lưu Ý Thực Hành"
-    icon: "fa-stethoscope"
+    title: "Diễn tiến & Thể bệnh"
+    icon: "fa-solid fa-clock-rotate-left"
+  - id: "sec-canlamsang"
+    number: 4
+    title: "Cận lâm sàng"
+    icon: "fa-solid fa-vial"
+  - id: "sec-chandoan"
+    number: 5
+    title: "Chẩn đoán & Phân biệt"
+    icon: "fa-solid fa-stethoscope"
+  - id: "sec-phando"
+    number: 6
+    title: "Bảng phân độ lâm sàng"
+    icon: "fa-solid fa-layer-group"
+  - id: "sec-luudo"
+    number: 7
+    title: "Lưu đồ sàng lọc"
+    icon: "fa-solid fa-diagram-project"
+  - id: "sec-phacdo-d1-d2"
+    number: 8
+    title: "Điều trị Độ 1 & 2"
+    icon: "fa-solid fa-pills"
+  - id: "sec-hoisuc-d3"
+    number: 9
+    title: "Hồi sức Độ 3"
+    icon: "fa-solid fa-heart-pulse"
+  - id: "sec-hoisuc-d4"
+    number: 10
+    title: "Hồi sức Độ 4 & Chống sốc"
+    icon: "fa-solid fa-truck-medical"
+  - id: "sec-crrt-ecmo"
+    number: 11
+    title: "CRRT & VA-ECMO"
+    icon: "fa-solid fa-filter"
+  - id: "sec-xuatvien-phongngua"
+    number: 12
+    title: "Xuất viện & Phòng ngừa"
+    icon: "fa-solid fa-shield-virus"
+  - id: "sec-citation"
+    number: 13
+    title: "Tài liệu tham khảo"
+    icon: "fa-solid fa-book-bookmark"
 ---
 
-# 📖 BỘ Y TẾ 2024: HƯỚNG DẪN CHẨN ĐOÁN và ĐIỀU TRỊ BỆNH TAY CHÂN MIỆNG (QĐ 292/QĐ-BYT)
+<div class="pillars">
+    <div class="pillars-inner">
+      <div class="pillar p1">
+        <div class="pillar-icon">🎯</div>
+        <div>
+          <div class="pillar-title">5 Phân Độ Lâm Sàng</div>
+          <div class="pillar-desc">Độ 1 (ngoại trú), Độ 2a, Độ 2b (Nhóm 1 &amp; 2), Độ 3 (ICU), Độ 4 (nguy kịch đe dọa tử vong).</div>
+        </div>
+      </div>
+      <div class="pillar p2">
+        <div class="pillar-icon">🧠</div>
+        <div>
+          <div class="pillar-title">Phenobarbital &amp; IVIG</div>
+          <div class="pillar-desc">Kiểm soát sớm kích thích thần kinh, chỉ định IVIG 1 g/kg/ngày cho Độ 2b-N2, Độ 3 và sau chống sốc Độ 4.</div>
+        </div>
+      </div>
+      <div class="pillar p3">
+        <div class="pillar-icon">🫀</div>
+        <div>
+          <div class="pillar-title">Hồi Sức Động Học</div>
+          <div class="pillar-desc">Dobutamin (suy tim/nhịp nhanh), Milrinone (tăng huyết áp nặng), an thần tránh Ketamin, thông khí Vt 6-8 ml/kg.</div>
+        </div>
+      </div>
+      <div class="pillar p4">
+        <div class="pillar-icon">⚡</div>
+        <div>
+          <div class="pillar-title">CRRT &amp; VA-ECMO</div>
+          <div class="pillar-desc">Chỉ định lọc máu CVVH 40 ml/kg/h và ECMO cho sốc trơ (VIS &gt; 50, EF &lt; 30%, toan máu nặng, loạn nhịp kháng trị).</div>
+        </div>
+      </div>
+    </div>
+  </div>
 
----
+  
+  <div class="page-content">
 
+    
+    <div class="sec-card" id="sec-phaply">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+        <h2 class="sec-title">1. Cơ Sở Pháp Lý và Ban Biên Soạn Hướng Dẫn</h2>
+      </div>
+      <div class="sec-body">
+        <div class="matrix-grid">
+          <div class="matrix-card card-blue">
+            <div class="matrix-card-hdr"><span class="matrix-card-title"><i class="fa-solid fa-file-contract"></i> Quyết Định Ban Hành</span> <span class="rx-tag highlight">292/QĐ-BYT</span></div>
+            <div class="matrix-card-desc">Ban hành ngày <strong>06 tháng 02 năm 2024</strong> bởi Bộ trưởng Bộ Y tế. Quyết định này <strong>thay thế hoàn toàn</strong> Quyết định số 1003/QĐ-BYT ngày 30/03/2012.</div>
+          </div>
+          <div class="matrix-card card-green">
+            <div class="matrix-card-hdr"><span class="matrix-card-title"><i class="fa-solid fa-landmark"></i> Phạm Vi Hiệu Lực</span> <span class="rx-tag preferred">Toàn Quốc</span></div>
+            <div class="matrix-card-desc">Áp dụng thống nhất cho tất cả các cơ sở khám bệnh, chữa bệnh (công lập và ngoài công lập) trên toàn quốc và có hiệu lực thi hành ngay kể từ ngày ký.</div>
+          </div>
+        </div>
 
-Hướng dẫn toàn diện chẩn đoán, phân độ lâm sàng, phác đồ điều trị, hồi sức tích cực nâng cao (IVIG, Phenobarbital, Milrinone, Dobutamin, thở máy, CRRT, VA-ECMO) và kiểm soát nhiễm khuẩn bệnh tay chân miệng theo Quyết định 292/QĐ-BYT năm 2024 của Bộ Y tế Việt Nam.
+        <div class="sec-subtitle"><i class="fa-solid fa-users-gear"></i> Hội đồng Biên soạn Chuyên môn</div>
+        <div class="algo-container">
+          <div class="algo-node">
+            <div class="algo-icon" style="background:var(--blue)">I</div>
+            <div class="algo-body">
+              <h5>Chỉ đạo &amp; Chủ biên Hội đồng</h5>
+              <ul style="padding-left:1.2rem; margin-top:0.3rem">
+                <li><strong>Chỉ đạo biên soạn:</strong> GS.TS. Trần Văn Thuấn (Thứ trưởng Bộ Y tế).</li>
+                <li><strong>Chủ biên:</strong> GS.TS. Nguyễn Văn Kính (Phó Chủ tịch thường trực Tổng Hội Y học Việt Nam, nguyên Giám đốc Bệnh viện Bệnh Nhiệt đới Trung ương).</li>
+                <li><strong>Đồng chủ biên:</strong> PGS.TS. Lương Ngọc Khuê (Cục trưởng Cục Quản lý Khám, chữa bệnh - Bộ Y tế).</li>
+              </ul>
+            </div>
+          </div>
+          <div class="algo-node">
+            <div class="algo-icon" style="background:var(--teal)">II</div>
+            <div class="algo-body">
+              <h5>Các chuyên gia đầu ngành tham gia</h5>
+              <p>Ban biên soạn quy tụ các chuyên gia Nhi khoa, Truyền nhiễm và Hồi sức cấp cứu đầu ngành tại 3 miền: <strong>PGS.TS. Nguyễn Thanh Hùng</strong> (Giám đốc BV Nhi đồng 1), <strong>BSCKII. Trịnh Hữu Tùng</strong> (Giám đốc BV Nhi đồng 2), <strong>PGS.TS. Trương Quang Định</strong> (Giám đốc BV Nhi đồng Thành phố), <strong>TS. Cao Việt Tùng</strong> (Phó Giám đốc BV Nhi Trung ương), <strong>BSCKII. Nguyễn Trung Cấp</strong> (Phó Giám đốc BV Bệnh Nhiệt đới Trung ương) cùng các chuyên gia Bệnh viện Nhi Đồng 1, 2, TP, Nhi TW, Bệnh Nhiệt đới TP.HCM và TW.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-```
-THÔNG TIN TÓM TẮT KHUYẾN CÁO:
-  • Mã định danh: GDL-2024-BYT-TAYCHANMIENG
-  • Năm công bố: 2024
-  • Phân loại mức độ bằng chứng: GRADE / Oxford CEBM Level 1
-```
+    
+    <div class="sec-card" id="sec-daicuong">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-virus"></i></div>
+        <h2 class="sec-title">2. Đại Cương &amp; Tác Nhân Gây Bệnh</h2>
+      </div>
+      <div class="sec-body">
+        <div class="matrix-grid">
+          <div class="matrix-card card-blue">
+            <div class="matrix-card-hdr"><span class="matrix-card-title"><i class="fa-solid fa-circle-info"></i> Định Nghĩa Bệnh</span></div>
+            <div class="matrix-card-desc">Bệnh truyền nhiễm do <strong>vi rút đường ruột (Enterovirus)</strong> gây ra, lây truyền chủ yếu theo <strong>đường tiêu hóa</strong> từ người sang người, rất dễ bùng phát thành dịch. Xảy ra quanh năm, gặp ở mọi lứa tuổi nhưng thường gặp nhất ở <strong>trẻ em dưới 5 tuổi</strong>.</div>
+          </div>
 
----
+          <div class="matrix-card card-red">
+            <div class="matrix-card-hdr"><span class="matrix-card-title"><i class="fa-solid fa-dna"></i> Tác Nhân Vi Rút</span> <span class="rx-tag alert">EV71 Biến Chứng Nặng</span></div>
+            <div class="matrix-card-desc">Bao gồm: <strong>Coxsackievirus A6, A10, A16</strong> và <strong>Enterovirus 71 (EV71)</strong>. Trong đó, các trường hợp biến chứng nặng gây nguy hiểm đến tính mạng của trẻ thường do chủng <strong>EV71</strong> trực tiếp gây ra.</div>
+          </div>
 
+          <div class="matrix-card card-orange">
+            <div class="matrix-card-hdr"><span class="matrix-card-title"><i class="fa-solid fa-hand-dots"></i> Sang Thương Đặc Trưng</span></div>
+            <div class="matrix-card-desc">Tổn thương da và niêm mạc dưới dạng <strong>phỏng nước (bóng nước)</strong> khu trú ở các vị trí điển hình: niêm mạc miệng, lòng bàn tay, lòng bàn chân, mông, đầu gối và khuỷu tay.</div>
+          </div>
 
-* Các khuyến cáo điều trị và chỉ định can thiệp chính thức được chuẩn hóa theo y học chứng cứ.
-* Đánh giá nguy cơ - lợi ích dựa trên các thử nghiệm lâm sàng ngẫu nhiên có đối chứng (RCTs) quy mô lớn.
+          <div class="matrix-card card-purple">
+            <div class="matrix-card-hdr"><span class="matrix-card-title"><i class="fa-solid fa-syringe"></i> Phòng Ngừa &amp; Biến Chứng</span> <span class="rx-tag purple">Đã Có Vắc-xin</span></div>
+            <div class="matrix-card-desc">Biến chứng nguy hiểm: <em>viêm não - màng não, viêm cơ tim, phù phổi cấp</em> dẫn đến tử vong nhanh chóng. Hiện nay, trên thế giới và tại Việt Nam <strong>đã có vắc-xin phòng bệnh EV71 đặc hiệu</strong>.</div>
+          </div>
+        </div>
+      </div>
+    </div>
 
----
+    
+    <div class="sec-card" id="sec-lamsang">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
+        <h2 class="sec-title">3. Diễn Tiến Lâm Sàng 4 Giai Đoạn &amp; Các Thể Bệnh</h2>
+      </div>
+      <div class="sec-body">
+        <div class="sec-subtitle"><i class="fa-solid fa-timeline"></i> Diễn tiến 4 giai đoạn sinh lý bệnh thể cấp tính</div>
+        
+        <div class="timeline-container">
+          <div class="timeline-step-card">
+            <div class="timeline-badge step-1">1</div>
+            <div class="timeline-content">
+              <h4>Giai đoạn ủ bệnh <span class="rx-tag">3 – 7 ngày</span></h4>
+              <p>Thời gian không triệu chứng kể từ khi nhiễm vi rút qua đường tiêu hóa.</p>
+            </div>
+          </div>
 
+          <div class="timeline-step-card">
+            <div class="timeline-badge step-2">2</div>
+            <div class="timeline-content">
+              <h4>Giai đoạn khởi phát <span class="rx-tag warn">1 – 2 ngày</span></h4>
+              <p>Triệu chứng không đặc hiệu: sốt nhẹ, mệt mỏi, đau họng, biếng ăn và tiêu chảy vài lần trong ngày.</p>
+            </div>
+          </div>
 
-* Áp dụng cá thể hóa trên từng đối tượng người bệnh dựa trên bối cảnh lâm sàng thực tế và các yếu tố nguy cơ đi kèm.
+          <div class="timeline-step-card">
+            <div class="timeline-badge step-3">3</div>
+            <div class="timeline-content">
+              <h4>Giai đoạn toàn phát <span class="rx-tag alert">3 – 10 ngày (Nguy cơ biến chứng)</span></h4>
+              <p><strong>• Loét miệng:</strong> Phỏng nước đường kính 2 – 3 mm ở niêm mạc miệng, lợi, lưỡi vỡ ra tạo vết loét đỏ gây đau, bỏ ăn, bỏ bú, tăng tiết nước bọt (chảy dãi nhiều).<br /> <strong>• Sang thương da:</strong> Hồng ban hoặc bóng nước ở lòng bàn tay, khuỷu tay, lòng bàn chân, đầu gối, mông, cùi chỏ; tồn tại &lt; 7 ngày, sau đó xẹp để lại vết thâm, hiếm khi loét bội nhiễm.<br /> <strong>• Thời điểm xuất hiện biến chứng:</strong> Rất sớm, thường từ <strong>ngày 2 đến ngày 5</strong> (có thể kéo dài đến ngày thứ 7 của bệnh).<br /> <strong>• Dấu hiệu cảnh báo biến chứng thần kinh quan trọng nhất:</strong> <strong>Giật mình chới với</strong>. Trẻ sốt cao liên tục hoặc nôn ói nhiều có nguy cơ cao xảy ra biến chứng.</p>
+            </div>
+          </div>
+
+          <div class="timeline-step-card">
+            <div class="timeline-badge step-4">4</div>
+            <div class="timeline-content">
+              <h4>Giai đoạn lui bệnh <span class="rx-tag success">3 – 5 ngày</span></h4>
+              <p>Sau giai đoạn toàn phát, trẻ sẽ hồi phục hoàn toàn nếu không xảy ra biến chứng thần kinh, tim mạch hoặc hô hấp.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-shapes"></i> Các thể lâm sàng trên thực tế</div>
+        <div class="matrix-grid">
+          <div class="matrix-card card-red">
+            <div class="matrix-card-hdr"><span class="matrix-card-title"><i class="fa-solid fa-bolt"></i> Thể Tối Cấp</span> <span class="rx-tag alert">Tử vong 24–48h</span></div>
+            <div class="matrix-card-desc">Diễn tiến cực kỳ nhanh chóng; trẻ xuất hiện các biến chứng nặng như suy tuần hoàn, suy hô hấp, hôn mê sâu và dẫn đến tử vong chỉ trong vòng <strong>24 – 48 giờ</strong>.</div>
+          </div>
+
+          <div class="matrix-card card-blue">
+            <div class="matrix-card-hdr"><span class="matrix-card-title"><i class="fa-solid fa-route"></i> Thể Cấp Tính</span> <span class="rx-tag highlight">Điển hình</span></div>
+            <div class="matrix-card-desc">Diễn tiến điển hình tuần tự qua 4 giai đoạn: Ủ bệnh → Khởi phát → Toàn phát → Lui bệnh.</div>
+          </div>
+
+          <div class="matrix-card card-orange">
+            <div class="matrix-card-hdr"><span class="matrix-card-title"><i class="fa-solid fa-question"></i> Thể Không Điển Hình</span> <span class="rx-tag warn">Dễ bỏ sót</span></div>
+            <div class="matrix-card-desc">Phát ban không rõ ràng, hoặc chỉ xuất hiện loét miệng đơn độc, hoặc chỉ biểu hiện triệu chứng biến chứng thần kinh/tim mạch/hô hấp mà không có phát ban và loét miệng kèm theo.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sec-card" id="sec-canlamsang">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-vial"></i></div>
+        <h2 class="sec-title">4. Xét Nghiệm Cận Lâm Sàng &amp; Đánh Giá Biến Chứng</h2>
+      </div>
+      <div class="sec-body">
+        <div class="matrix-grid">
+          <div class="matrix-card card-blue">
+            <div class="matrix-card-hdr"><span class="matrix-card-title"><i class="fa-solid fa-droplet"></i> Xét Nghiệm Cơ Bản</span></div>
+            <div class="matrix-card-desc"><strong>• Công thức máu:</strong> Tổng số bạch cầu thường bình thường. Cảnh báo nguy cơ biến chứng nặng khi <strong>Bạch cầu &gt; 16 G/L</strong> hoặc <strong>Tiểu cầu &gt; 400 G/L</strong>.<br /> <strong>• Đường huyết:</strong> <strong>Tăng &gt; 160 mg% (8.9 mmol/L)</strong> liên quan chặt chẽ đến biến chứng nặng.<br /> <strong>• CRP:</strong> Thường trong giới hạn bình thường (&lt; 10 mg/L).<br /> <strong>• Điện giải đồ, X-quang phổi:</strong> Chỉ định bắt buộc cho tất cả bệnh nhân có biến chứng nặng từ <strong>Độ 2b trở lên</strong>.</div>
+          </div>
+
+          <div class="matrix-card card-red">
+            <div class="matrix-card-hdr"><span class="matrix-card-title"><i class="fa-solid fa-heart-pulse"></i> Xét Nghiệm Biến Chứng</span></div>
+            <div class="matrix-card-desc"><strong>• Khí máu động mạch:</strong> Chỉ định khi trẻ có biểu hiện suy hô hấp.<br /> <strong>• Troponin I, Siêu âm tim:</strong> Chỉ định khi trẻ có nhịp tim nhanh ≥ 150 lần/phút, nghi ngờ viêm cơ tim hoặc sốc.<br /> <strong>• Dịch não tủy (Chọc dò tủy sống):</strong> Chỉ định khi nghi ngờ tổn thương TKTW. Kết quả: protein bình thường hoặc tăng nhẹ, tế bào bình thường hoặc tăng (ưu thế đơn nhân hoặc đa nhân trung tính).<br /> <strong>• MRI não:</strong> Chỉ định khi nghi ngờ biến chứng thân não, tiểu não nếu cơ sở có điều kiện.</div>
+          </div>
+
+          <div class="matrix-card card-teal">
+            <div class="matrix-card-hdr"><span class="matrix-card-title"><i class="fa-solid fa-microscope"></i> Phát Hiện Vi Rút (Xác Định)</span> <span class="rx-tag highlight">RT-PCR &amp; IgM</span></div>
+            <div class="matrix-card-desc"><strong>• RT-PCR / Phân lập vi rút:</strong> Bệnh phẩm dịch hầu họng, dịch phỏng nước, dịch trực tràng, dịch não tủy cho các ca bệnh từ <strong>Độ 2b trở lên</strong> hoặc cần chẩn đoán phân biệt.<br /> <strong>• Test nhanh IgM EV71:</strong> Chỉ định từ <strong>ngày thứ 4 trở đi</strong> của bệnh đối với ca bệnh từ <strong>Độ 3 trở lên</strong> có lâm sàng không điển hình khi chưa làm được RT-PCR.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sec-card" id="sec-chandoan">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-stethoscope"></i></div>
+        <h2 class="sec-title">5. Tiêu Chuẩn Chẩn Đoán &amp; Chẩn Đoán Phân Biệt</h2>
+      </div>
+      <div class="sec-body">
+        <div class="matrix-grid">
+          <div class="matrix-card card-blue">
+            <div class="matrix-card-hdr"><span class="matrix-card-title"><i class="fa-solid fa-id-badge"></i> Chẩn Đoán Ca Lâm Sàng</span></div>
+            <div class="matrix-card-desc">Dựa vào lâm sàng điển hình (phỏng nước niêm mạc miệng, lòng bàn tay, bàn chân, gối, mông kèm sốt hoặc không) phối hợp với yếu tố dịch tễ (tuổi &lt; 5 tuổi, mùa dịch, vùng lưu hành, số trẻ mắc đồng thời).</div>
+          </div>
+
+          <div class="matrix-card card-green">
+            <div class="matrix-card-hdr"><span class="matrix-card-title"><i class="fa-solid fa-dna"></i> Chẩn Đoán Xác Định</span> <span class="rx-tag preferred">Tiêu chuẩn vàng</span></div>
+            <div class="matrix-card-desc">Ca lâm sàng có kết quả xét nghiệm <strong>RT-PCR dương tính</strong> hoặc phân lập được vi rút đường ruột (Enterovirus).</div>
+          </div>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-code-compare"></i> Bảng đối chiếu chẩn đoán phân biệt</div>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width:25%">Nhóm bệnh cảnh</th>
+                <th style="width:35%">Bệnh lý chẩn đoán phân biệt</th>
+                <th style="width:40%">Đặc điểm phân biệt lâm sàng</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Loét miệng đơn độc</strong></td>
+                <td>Viêm loét miệng Áp-tơ (Aphthous ulcer)</td>
+                <td>Vết loét sâu hơn, có dịch tiết giả mạc, hay tái diễn, không có phát ban lòng bàn tay chân.</td>
+              </tr>
+              <tr>
+                <td rowspan="5"><strong>Có phát ban trên da</strong></td>
+                <td>Sốt phát ban</td>
+                <td>Hồng ban xen kẽ ít dạng sẩn, thường xuất hiện hạch sau tai, biến mất nhanh sau sốt.</td>
+              </tr>
+              <tr>
+                <td>Dị ứng da</td>
+                <td>Hồng ban đa dạng, ngứa nhiều, không có phỏng nước đặc trưng lòng bàn tay chân.</td>
+              </tr>
+              <tr>
+                <td>Thủy đậu (Varicella)</td>
+                <td>Phỏng nước nhiều lứa tuổi (dạng giọt sương), phân bố rải rác toàn thân, thân mình nhiều hơn chi.</td>
+              </tr>
+              <tr>
+                <td>Nhiễm khuẩn huyết do Não mô cầu</td>
+                <td>Tử ban xuất huyết hoại tử trung tâm hình sao đặc trưng, diễn tiến nhiễm độc tối cấp.</td>
+              </tr>
+              <tr>
+                <td>Sốt xuất huyết Dengue</td>
+                <td>Chấm xuất huyết dưới da, bầm máu hoặc xuất huyết niêm mạc, gan to, cô đặc máu (Hct tăng, Tiểu cầu giảm).</td>
+              </tr>
+              <tr>
+                <td><strong>Thần kinh &amp; Toàn thân</strong></td>
+                <td>Viêm não - màng não vi khuẩn / siêu vi khác; Viêm phổi nặng, Sốc nhiễm khuẩn</td>
+                <td>Dựa vào dịch não tủy, dấu hiệu màng não, cấy máu, các ổ nhiễm trùng nguyên phát.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sec-card" id="sec-phando">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-layer-group"></i></div>
+        <h2 class="sec-title">6. Bảng Phân Độ Lâm Sàng Chi Tiết Bệnh Tay Chân Miệng (Bộ Y Tế 2024)</h2>
+      </div>
+      <div class="sec-body">
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width:16%">Phân độ lâm sàng</th>
+                <th style="width:50%">Các tiêu chuẩn &amp; dấu hiệu nhận biết cụ thể</th>
+                <th style="width:34%">Ý nghĩa sinh lý bệnh &amp; Hướng xử trí</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="rx-tag preferred" style="font-size:0.85rem">ĐỘ 1</span></td>
+                <td>Trẻ chỉ có phát ban tay chân miệng ở da và/hoặc loét miệng.</td>
+                <td><strong>Tay chân miệng không có biến chứng.</strong><br /> <i class="fa-solid fa-house-chimney-medical text-success"></i> <strong>Xử trí:</strong> Điều trị ngoại trú và theo dõi tại trạm/y tế cơ sở.</td>
+              </tr>
+              <tr>
+                <td><span class="rx-tag highlight" style="font-size:0.85rem">ĐỘ 2a</span></td>
+                <td>Có ít nhất một trong các dấu hiệu sau:<br /> • Bệnh sử có giật mình &lt; 2 lần/30 phút và không ghi nhận lúc khám.<br /> • Sốt cao &gt; 39°C hoặc sốt kéo dài trên 2 ngày.<br /> • Kèm theo nôn ói nhiều, lừ đừ, khó ngủ, quấy khóc vô cớ.</td>
+                <td><strong>Có biến chứng thần kinh sớm.</strong><br /> <i class="fa-solid fa-hospital text-primary"></i> <strong>Xử trí:</strong> Nhập viện điều trị nội trú tại buồng bệnh nặng.</td>
+              </tr>
+              <tr>
+                <td><span class="rx-tag warn" style="font-size:0.85rem">ĐỘ 2b</span><br /> <span class="rx-tag" style="font-size:0.7rem; margin-top:4px">Nhóm 1 &amp; 2</span></td>
+                <td>Có dấu hiệu thuộc Nhóm 1 hoặc Nhóm 2:<br /> <strong>• Nhóm 1:</strong> Có ít nhất một dấu hiệu:<br /> &amp;nbsp;&amp;nbsp;+ Giật mình ghi nhận lúc khám.<br /> &amp;nbsp;&amp;nbsp;+ Bệnh sử có giật mình ≥ 2 lần/30 phút.<br /> &amp;nbsp;&amp;nbsp;+ Bệnh sử có giật mình kèm một dấu hiệu: ngủ gà, hoặc mạch nhanh &gt; 130 lần/phút (khi nằm yên, không sốt).<br /> <strong>• Nhóm 2:</strong> Có ít nhất một dấu hiệu:<br /> &amp;nbsp;&amp;nbsp;+ Nhóm 1 kèm sốt cao ≥ 39°C không đáp ứng thuốc hạ sốt.<br /> &amp;nbsp;&amp;nbsp;+ Mạch nhanh &gt; 150 lần/phút (khi nằm yên, không sốt).<br /> &amp;nbsp;&amp;nbsp;+ Thất điều: run chi, run người, đi loạng choạng.<br /> &amp;nbsp;&amp;nbsp;+ Rung giật nhãn cầu, lác mắt.<br /> &amp;nbsp;&amp;nbsp;+ Yếu chi hoặc liệt mềm cấp.<br /> &amp;nbsp;&amp;nbsp;+ Liệt thần kinh sọ: nuốt sặc, thay đổi giọng nói.<br /> &amp;nbsp;&amp;nbsp;+ Tăng trương lực cơ.<br /> &amp;nbsp;&amp;nbsp;+ Rối loạn tri giác (Glasgow &lt; 10 hoặc mức P trên thang điểm AVPU).</td>
+                <td><strong>Biến chứng thần kinh nặng.</strong><br /> <i class="fa-solid fa-bed-pulse text-warning"></i> <strong>Xử trí:</strong> Sắp xếp điều trị cách ly tại phòng cấp cứu hoặc phòng hồi sức. Dùng Phenobarbital IV; chỉ định IVIG cho Nhóm 2.</td>
+              </tr>
+              <tr>
+                <td><span class="rx-tag alert" style="font-size:0.85rem">ĐỘ 3</span></td>
+                <td>Có ít nhất một dấu hiệu rối loạn thần kinh thực vật sau:<br /> • <strong>Mạch nhanh &gt; 170 lần/phút</strong> (khi không sốt); một số ca có thể có mạch chậm.<br /> • <strong>Huyết áp tâm thu tăng cao theo tuổi:</strong><br /> &amp;nbsp;&amp;nbsp;+ Trẻ &lt; 12 tháng: HA ≥ 100 mmHg.<br /> &amp;nbsp;&amp;nbsp;+ Trẻ 12 đến &lt; 24 tháng: HA ≥ 110 mmHg.<br /> &amp;nbsp;&amp;nbsp;+ Trẻ ≥ 24 tháng: HA ≥ 115 mmHg.<br /> • Thở nhanh, khó thở, thở rít hoặc SpO2 &lt; 94%.<br /> • Rối loạn vận mạch: da nổi bông (vân tím), vã mồ hôi, chi lạnh.</td>
+                <td><strong>Biến chứng rối loạn thần kinh thực vật nặng.</strong><br /> <i class="fa-solid fa-truck-medical text-danger"></i> <strong>Xử trí:</strong> Bắt buộc nhập viện điều trị tại đơn vị <strong>Hồi sức tích cực Nhi (ICU)</strong>. Đặt nội khí quản thở máy, IVIG, Milrinone / Dobutamin.</td>
+              </tr>
+              <tr>
+                <td><span class="rx-tag alert" style="font-size:0.85rem; background:var(--red); color:#fff">ĐỘ 4</span></td>
+                <td>Xuất hiện ít nhất một trong các dấu hiệu suy hô hấp tuần hoàn nặng sau:<br /> • Ngưng thở hoặc rối loạn nhịp thở.<br /> • Tím tái hoặc bão hòa oxy SpO2 &lt; 92%.<br /> • Phù phổi cấp.<br /> • <strong>Sốc</strong> khi có ít nhất 1 trong 3 tiêu chuẩn:<br /> &amp;nbsp;&amp;nbsp;+ Mạch không bắt được, HA không đo được.<br /> &amp;nbsp;&amp;nbsp;+ Tụt HA: HA tâm thu &lt; 70 mmHg (ở trẻ &lt; 12 tháng) hoặc &lt; 80 mmHg (ở trẻ ≥ 12 tháng).<br /> &amp;nbsp;&amp;nbsp;+ HA kẹp: hiệu áp ≤ 25 mmHg.</td>
+                <td><strong>Suy hô hấp tuần hoàn tối nguy kịch.</strong><br /> <i class="fa-solid fa-heart-crack text-danger"></i> <strong>Xử trí:</strong> Cấp cứu hồi sức tích cực khẩn cấp tại ICU: Đặt NKQ thở máy bảo vệ phổi, chống sốc, vận mạch đa phối hợp, xem xét CRRT và VA-ECMO.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sec-card" id="sec-luudo">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-diagram-project"></i></div>
+        <h2 class="sec-title">7. Lưu Đồ Phân Loại, Sàng Lọc &amp; Phân Luồng Xử Trí (Phụ lục 1 BYT)</h2>
+      </div>
+      <div class="sec-body">
+        <div class="algo-container">
+          <div class="algo-node" style="border-left:4px solid var(--accent)">
+            <div class="algo-icon" style="background:var(--accent)"><i class="fa-solid fa-user-check"></i></div>
+            <div class="algo-body">
+              <h5>ĐÁNH GIÁ NGƯỜI BỆNH TẠI PHÒNG KHÁM BAN ĐẦU</h5>
+              <p>Khai thác tiền sử, bệnh sử; đo DHST (Mạch, Nhiệt độ, Huyết áp, Nhịp thở); đo SpO2; thời gian làm đầy mao mạch (CRT); đánh giá tri giác (AVPU / Glasgow); dấu hiệu giật mình; quan sát bóng nước da và loét miệng; cân nặng chính xác.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="matrix-grid" style="margin-top:0.5rem">
+          <div class="matrix-card card-green">
+            <div class="matrix-card-hdr"><span class="matrix-card-title"><i class="fa-solid fa-house-chimney"></i> Nhánh 1: ĐỘ 1</span> <span class="rx-tag preferred">Ngoại trú</span></div>
+            <div class="matrix-card-desc"><strong>Biểu hiện:</strong> Chỉ phát ban / loét miệng đơn thuần.<br /> <strong>Phân luồng:</strong> Điều trị ngoại trú cách ly tại nhà.<br /> <strong>Nhiệm vụ:</strong> Hướng dẫn dinh dưỡng, hạ sốt đúng cách, phát hiện dấu hiệu nguy kịch, hẹn tái khám mỗi 1–2 ngày.</div>
+          </div>
+
+          <div class="matrix-card card-orange">
+            <div class="matrix-card-hdr"><span class="matrix-card-title"><i class="fa-solid fa-hospital"></i> Nhánh 2: ĐỘ 2a &amp; 2b</span> <span class="rx-tag warn">Nội trú</span></div>
+            <div class="matrix-card-desc"><strong>Biểu hiện:</strong> Có biến chứng thần kinh.<br /> <strong>Phân luồng:</strong> Nhập viện nội trú (Độ 2a vào buồng bệnh nặng; Độ 2b vào phòng cấp cứu / hồi sức).<br /> <strong>Nhiệm vụ:</strong> Nằm đầu cao 30°, Phenobarbital, IVIG (Độ 2b-N2), theo dõi sát mạch &amp; tri giác.</div>
+          </div>
+
+          <div class="matrix-card card-red">
+            <div class="matrix-card-hdr"><span class="matrix-card-title"><i class="fa-solid fa-truck-medical"></i> Nhánh 3: ĐỘ 3 &amp; ĐỘ 4</span> <span class="rx-tag alert">ICU Khẩn Cấp</span></div>
+            <div class="matrix-card-desc"><strong>Biểu hiện:</strong> Rối loạn thực vật / Suy tuần hoàn / Sốc.<br /> <strong>Phân luồng:</strong> Đơn vị Hồi sức tích cực Nhi (ICU).<br /> <strong>Nhiệm vụ:</strong> Đặt nội khí quản, thở máy bảo vệ phổi, huyết áp động mạch xâm lấn, Milrinone / Dobutamin, lọc máu CRRT, VA-ECMO.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sec-card" id="sec-phacdo-d1-d2">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-pills"></i></div>
+        <h2 class="sec-title">8. Phác Đồ Điều Trị Theo Từng Phân Độ (Độ 1, Độ 2a, Độ 2b)</h2>
+      </div>
+      <div class="sec-body">
+
+        
+        <div class="sec-subtitle"><i class="fa-solid fa-house-chimney-medical"></i> Phác đồ Độ 1 (Điều trị ngoại trú)</div>
+        <div class="matrix-grid">
+          <div class="matrix-card card-green">
+            <div class="matrix-card-hdr"><span class="matrix-card-title"><i class="fa-solid fa-utensils"></i> Dinh Dưỡng &amp; Nghỉ Ngơi</span></div>
+            <div class="matrix-card-desc">• Ăn thức ăn lỏng, dễ tiêu, để nguội mát, chia nhỏ nhiều bữa; tiếp tục duy trì bú mẹ.<br /> • Nghỉ ngơi hoàn toàn, hạn chế kích thích.<br /> • <strong>Bắt buộc nghỉ học cách ly tối thiểu 7 – 10 ngày</strong> kể từ ngày khởi phát bệnh.</div>
+          </div>
+
+          <div class="matrix-card card-blue">
+            <div class="matrix-card-hdr"><span class="matrix-card-title"><i class="fa-solid fa-temperature-arrow-down"></i> Kiểm Soát Sốt &amp; Đau</span></div>
+            <div class="matrix-card-desc">• <span class="rx-tag preferred">Paracetamol</span>: 10 – 15 mg/kg/lần (uống hoặc đặt hậu môn) mỗi 4 – 6 giờ.<br /> • <span class="rx-tag">Ibuprofen</span>: 5 – 10 mg/kg/lần mỗi 6 – 8 giờ.<br /> • Bôi gel băng niêm mạc (antacid) làm dịu vết loét; bôi Povidone-iodine / xanh methylene vào mụn nước vỡ tránh bội nhiễm.</div>
+          </div>
+        </div>
+
+        <div class="infobox warning">
+          <div class="infobox-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+          <div>
+            <strong>Theo dõi &amp; Dấu hiệu cảnh báo nguy kịch cần nhập viện ngay lập tức:</strong>
+            Tái khám mỗi 1 – 2 ngày trong 7 – 10 ngày đầu. Trẻ có sốt phải tái khám hằng ngày cho đến khi hết sốt 48h. Đưa trẻ đi viện NGAY nếu: Sốt cao &gt; 39°C hoặc sốt &gt; 48h; nôn ói nhiều; lừ đừ hoặc kích thích quấy khóc; bỏ bú / ăn uống quá ít; giật mình; thở nhanh, khó thở; da nổi vân tím; hôn mê hoặc co giật.
+          </div>
+        </div>
+
+        
+        <div class="sec-subtitle" style="margin-top:1rem"><i class="fa-solid fa-bed-pulse"></i> Phác đồ Độ 2a (Điều trị nội trú tại bệnh viện)</div>
+        <div class="ebm-rec-card class-2a">
+          <div class="ebm-badge-group">
+            <span class="cor-badge cor-class-2a"><i class="fa-solid fa-check"></i> ĐIỀU TRỊ NỘI TRÚ</span>
+            <span class="rx-tag highlight">Phenobarbital Uống</span>
+          </div>
+          <p>• Xếp bệnh nhân cùng phân độ nằm chung một phòng bệnh nặng để tiện theo dõi.<br /> • <strong>Phenobarbital đường uống:</strong> Liều <strong>5 – 7 mg/kg/ngày, chia làm 2 lần</strong>.<br /> • <strong>Hạ sốt tích cực:</strong> Phối hợp xen kẽ Paracetamol (10-15 mg/kg mỗi 4-6h, max 60 mg/kg/ngày) và Ibuprofen (5-10 mg/kg mỗi 6-8h, max 40 mg/kg/ngày).<br /> • <span class="rx-tag alert">CHỐNG CHỈ ĐỊNH</span> <strong>Không sử dụng Aspirin</strong> hạ sốt cho trẻ em.<br /> • Giám sát DHST (Mạch, Nhiệt độ, Nhịp thở, Tri giác, SpO2) mỗi 6 – 12 giờ. Đo huyết áp khi có mạch nhanh/chậm.</p>
+        </div>
+
+        <div class="infobox danger">
+          <div class="infobox-icon"><i class="fa-solid fa-bell"></i></div>
+          <div>
+            <strong>Tiêu chuẩn chuyển phòng bệnh nhân nặng (Theo dõi mỗi 4 – 6 giờ trong 24h đầu):</strong>
+            Áp dụng cho trẻ Độ 2a có ít nhất 1 yếu tố nguy cơ: Li bì; sốt kéo dài &gt; 3 ngày hoặc sốt &gt; 39°C; còn giật mình trong 24 – 72 giờ trước; nôn ói nhiều; đường huyết &gt; 160 mg% (8.9 mmol/L); bạch cầu &gt; 16 G/L; tiểu cầu &gt; 400 G/L.
+          </div>
+        </div>
+
+        
+        <div class="sec-subtitle" style="margin-top:1rem"><i class="fa-solid fa-heart-circle-bolt"></i> Phác đồ Độ 2b (Phòng cấp cứu / Phòng hồi sức)</div>
+        <div class="matrix-grid">
+          <div class="matrix-card card-orange">
+            <div class="matrix-card-hdr"><span class="matrix-card-title"><i class="fa-solid fa-bed"></i> Tư Thế &amp; Hỗ Trợ Hô Hấp</span></div>
+            <div class="matrix-card-desc">• Cho trẻ <strong>nằm đầu cao 30°</strong>.<br /> • Thở oxy qua gọng mũi tối đa 6 lít/phút.<br /> • Hạ sốt tích cực nếu có sốt.</div>
+          </div>
+
+          <div class="matrix-card card-purple">
+            <div class="matrix-card-hdr"><span class="matrix-card-title"><i class="fa-solid fa-syringe"></i> Phenobarbital Truyền Tĩnh Mạch</span> <span class="rx-tag purple">10 – 20 mg/kg</span></div>
+            <div class="matrix-card-desc">Chỉ định <strong>Phenobarbital IV 10 – 20 mg/kg truyền trong 30 phút</strong>. Có thể lặp lại sau 8 – 12 giờ nếu có chỉ định (tổng liều tối đa không quá 40 mg/kg/ngày).</div>
+          </div>
+        </div>
+
+        <div class="ebm-rec-card class-1">
+          <div class="ebm-badge-group">
+            <span class="cor-badge cor-class-1"><i class="fa-solid fa-shield-virus"></i> CHỈ ĐỊNH IVIG ĐỘ 2b</span>
+            <span class="rx-tag preferred">1 g/kg/ngày IV</span>
+          </div>
+          <p><strong>• Đối với Độ 2b - Nhóm 2:</strong> Chỉ định truyền IVIG liều <strong>1 g/kg/ngày</strong> truyền tĩnh mạch chậm trong <strong>6 – 12 giờ</strong> (1 liều duy nhất). Xem xét liều 2 sau 24h nếu lâm sàng tiếp tục xấu đi. <em>(Trẻ thừa cân/béo phì: Bắt buộc tính theo cân nặng hiệu chỉnh)</em>.<br /> <strong>• Đối với Độ 2b - Nhóm 1:</strong> Không dùng IVIG thường quy. Xem xét chỉ định nếu sau 6 giờ điều trị Phenobarbital triệu chứng không giảm hoặc giật mình liên tục bứt rứt.</p>
+        </div>
+
+        <div class="infobox teal">
+          <div class="infobox-icon"><i class="fa-solid fa-brain"></i></div>
+          <div>
+            <strong>Dự phòng phù não (Chỉ áp dụng cho Độ 2b - Nhóm 2):</strong>
+            Hạn chế dịch truyền ở mức 1/2 – 3/4 nhu cầu cơ bản; nếu thở máy duy trì tăng thông khí PaCO2 35 – 40 mmHg và PaO2 80 – 100 mmHg; phối hợp Mannitol hoặc Natriclorid 3% IV. Theo dõi DHST mỗi 1 – 3h trong 6h đầu, sau đó mỗi 4 – 6h.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    
+    <div class="sec-card" id="sec-hoisuc-d3">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+        <h2 class="sec-title">9. Hồi Sức Thần Kinh &amp; Tim Mạch Chuyên Sâu Độ 3 (Tại Đơn Vị ICU)</h2>
+      </div>
+      <div class="sec-body">
+        
+        <div class="sec-subtitle"><i class="fa-solid fa-mask-ventilator"></i> Hỗ trợ hô hấp &amp; Chỉ định đặt nội khí quản sớm</div>
+        <div class="infobox danger">
+          <div class="infobox-icon"><i class="fa-solid fa-lungs"></i></div>
+          <div>
+            <strong>Chỉ định đặt nội khí quản và thở máy ở trẻ Độ 3 (sau 30-60 phút thở oxy đáp ứng kém):</strong>
+            <ul style="padding-left:1.2rem; margin-top:0.3rem">
+              <li>Thở bất thường: cơn ngưng thở, thở nông, thở bụng, khò khè, thở rít thì hít vào, rút lõm ngực nặng.</li>
+              <li>Nhịp thở nhanh &gt; 70 lần/phút (khi nằm yên, không sốt).</li>
+              <li>Rối loạn thực vật nặng: SpO2 dao động, da xanh tái, vã mồ hôi, mạch &gt; 180 lần/phút (nằm yên, không sốt).</li>
+              <li>Tri giác suy giảm: gồng cứng chi hoặc hôn mê (Glasgow &lt; 10 hoặc mức P trên AVPU).</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-prescription-bottle-medical"></i> Thuốc kiểm soát thần kinh &amp; Kháng thể IVIG</div>
+        <div class="matrix-grid">
+          <div class="matrix-card card-purple">
+            <div class="matrix-card-hdr"><span class="matrix-card-title"><i class="fa-solid fa-syringe"></i> Phenobarbital IV</span> <span class="rx-tag purple">10 – 20 mg/kg</span></div>
+            <div class="matrix-card-desc">Truyền tĩnh mạch trong 30 phút. Có thể lặp lại sau 8 – 12 giờ nếu cần (tối đa 40 mg/kg/ngày).</div>
+          </div>
+
+          <div class="matrix-card card-green">
+            <div class="matrix-card-hdr"><span class="matrix-card-title"><i class="fa-solid fa-shield-virus"></i> Immunoglobulin (IVIG)</span> <span class="rx-tag preferred">1 g/kg/ngày</span></div>
+            <div class="matrix-card-desc">Truyền tĩnh mạch chậm trong 6 – 12 giờ (1 liều duy nhất, tính theo cân nặng hiệu chỉnh). Xem xét liều 2 sau 24h nếu diễn tiến nặng hơn.</div>
+          </div>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-heart-circle-bolt"></i> Phác đồ sử dụng thuốc vận mạch Dobutamin &amp; Milrinone</div>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width:20%">Thuốc vận mạch</th>
+                <th style="width:25%">Chỉ định lâm sàng</th>
+                <th style="width:30%">Liều lượng &amp; Cách dùng</th>
+                <th style="width:25%">Lưu ý đặc biệt</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Dobutamin</strong></td>
+                <td>Trẻ có biểu hiện suy tim, mạch nhanh > 170 lần/phút và <strong>không có tăng huyết áp</strong>.</td>
+                <td>Khởi đầu <strong>5 µg/kg/phút</strong> IV. Tăng dần 1 – 2.5 µg/kg/phút mỗi 15 phút đến khi cải thiện. <strong>Liều tối đa 20 µg/kg/phút</strong>.</td>
+                <td><span class="rx-tag alert">KHÔNG</span> chỉ định dùng Dopamin trong trường hợp này.</td>
+              </tr>
+              <tr>
+                <td><strong>Milrinone</strong></td>
+                <td>Trẻ có tình trạng <strong>tăng huyết áp nặng</strong> (HAtt: &lt;12m ≥110; 12-&lt;24m ≥115; ≥24m ≥120 mmHg).</td>
+                <td>Truyền tĩnh mạch <strong>0.4 – 0.75 µg/kg/phút</strong> duy trì trong 24 – 72 giờ. Giảm dần mỗi 0.05 – 0.1 µg/kg/phút mỗi 30-60 phút về liều tối thiểu <strong>0.25 µg/kg/phút</strong>.</td>
+                <td><span class="rx-tag alert">NGỪNG KHẨN</span> nếu HAtt tụt &lt; 90 mmHg (ở trẻ &lt; 12 tháng) hoặc &lt; 100 mmHg (ở trẻ ≥ 12 tháng).</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-temperature-arrow-down"></i> Phác đồ hạ sốt tích cực &amp; Can thiệp Methylprednisolone</div>
+        <div class="algo-container">
+          <div class="algo-node">
+            <div class="algo-icon" style="background:var(--orange)">1</div>
+            <div class="algo-body">
+              <h5>Bước 1: Lau mát tích cực + Paracetamol truyền tĩnh mạch</h5>
+              <p>Lau mát toàn thân kết hợp <strong>Paracetamol 10 – 15 mg/kg/lần truyền tĩnh mạch chậm trong 15 phút</strong>. Trẻ đang thở máy sốt &gt; 40°C: rửa dạ dày bằng NaCl 0.9% lạnh, có thể phối hợp thụt tháo trực tràng bằng NaCl 0.9% lạnh.</p>
+            </div>
+          </div>
+          <div class="algo-node">
+            <div class="algo-icon" style="background:var(--red)">2</div>
+            <div class="algo-body">
+              <h5>Bước 2: Can thiệp Methylprednisolone tĩnh mạch khi sốt trơ</h5>
+              <p>Nếu đã áp dụng các biện pháp trên mà thân nhiệt vẫn &gt; 40°C sau 4 – 6 giờ: xem xét chỉ định truyền tĩnh mạch chậm <strong>Methylprednisolone liều 10 mg/kg/lần trong 30 phút, 2 lần/ngày</strong>. Theo dõi sát huyết áp; dùng tối đa không quá 3 ngày và dừng ngay khi kiểm soát được nhiệt độ.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="matrix-grid" style="margin-top:0.5rem">
+          <div class="matrix-card card-blue">
+            <div class="matrix-card-hdr"><span class="matrix-card-title"><i class="fa-solid fa-brain"></i> Cắt Cơn Co Giật</span></div>
+            <div class="matrix-card-desc">• <span class="rx-tag">Midazolam</span>: 0.15 mg/kg/lần IV hoặc <span class="rx-tag">Diazepam</span>: 0.2 – 0.3 mg/kg IV chậm.<br /> • Có thể lặp lại sau 10 phút nếu còn co giật (tối đa không quá 3 lần).</div>
+          </div>
+
+          <div class="matrix-card card-teal">
+            <div class="matrix-card-hdr"><span class="matrix-card-title"><i class="fa-solid fa-gauge-high"></i> Giám Sát Xâm Lấn</span></div>
+            <div class="matrix-card-desc">• Bắt buộc đo <strong>huyết áp động mạch xâm lấn</strong> cho tất cả ca bệnh Độ 3 có dùng vận mạch hoặc đặt nội khí quản.<br /> • Theo dõi DHST mỗi 30 – 60 phút trong 2h đầu, sau đó mỗi 1 – 2 giờ.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    
+    <div class="sec-card" id="sec-hoisuc-d4">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-truck-medical"></i></div>
+        <h2 class="sec-title">10. Hồi Sức Hô Hấp, Tuần Hoàn Nâng Cao &amp; Chống Sốc Độ 4</h2>
+      </div>
+      <div class="sec-body">
+        
+        <div class="sec-subtitle"><i class="fa-solid fa-lungs"></i> Thông khí nhân tạo &amp; Bảng thông số máy thở ban đầu (Bộ Y Tế)</div>
+        
+        <div class="infobox warning">
+          <div class="infobox-icon"><i class="fa-solid fa-syringe"></i></div>
+          <div>
+            <strong>An thần đặt nội khí quản:</strong> Dùng Midazolam 0.1 mg/kg IV, Diazepam 0.2 mg/kg IV chậm hoặc Fentanyl 1 – 2 mcg/kg. <span class="rx-tag alert">TUYỆT ĐỐI KHÔNG</span> dùng Ketamin (nguy cơ tăng áp lực nội sọ).
+          </div>
+        </div>
+
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width:35%">Thông số máy thở</th>
+                <th style="width:65%">Chế độ Kiểm soát áp lực (Pressure Control - PC)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Áp lực thở vào IP (cmH2O)</strong></td>
+                <td>Cài đặt từ <strong>12 – 20 cmH2O</strong> sao cho đạt thể tích khí lưu thông <strong>Vt từ 6 – 8 ml/kg</strong> (tính theo cân nặng hiệu chỉnh nếu béo phì).</td>
+              </tr>
+              <tr>
+                <td><strong>Tần số thở (lần/phút)</strong></td>
+                <td>• Trẻ &lt; 2 tuổi: Cài đặt <strong>25 – 30</strong> lần/phút.<br /> • Trẻ từ 2 – 8 tuổi: Cài đặt <strong>20 – 25</strong> lần/phút.<br /> • Trẻ &gt; 8 tuổi: Cài đặt <strong>15 – 20</strong> lần/phút.</td>
+              </tr>
+              <tr>
+                <td><strong>Tỷ lệ I/E</strong></td>
+                <td>Cài đặt cố định ở mức <strong>1/2</strong>.</td>
+              </tr>
+              <tr>
+                <td><strong>Nồng độ oxy FiO2 (%)</strong></td>
+                <td>Cài đặt ban đầu từ <strong>60 – 100%</strong>.</td>
+              </tr>
+              <tr>
+                <td><strong>PEEP (cmH2O)</strong></td>
+                <td>Cài đặt từ <strong>6 – 8 cmH2O</strong>.</td>
+              </tr>
+              <tr>
+                <td><strong>Mục tiêu khí máu &amp; lâm sàng</strong></td>
+                <td>SpO2: <strong>94 – 98%</strong>; PaO2: <strong>80 – 100 mmHg</strong>; PaCO2: <strong>30 – 35 mmHg</strong>; PIP luôn <strong>≤ 30 cmH2O</strong>.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="sec-subtitle" style="margin-top:1rem"><i class="fa-solid fa-heart-crack"></i> Phác đồ chống sốc (Viêm cơ tim / Tổn thương thân não)</div>
+        
+        <div class="algo-container">
+          <div class="algo-node" style="border-left:4px solid var(--red)">
+            <div class="algo-icon" style="background:var(--red)"><i class="fa-solid fa-bolt"></i></div>
+            <div class="algo-body">
+              <h5>Bước 1: Tiếp cận khẩn cấp &amp; Thiết lập đường truyền</h5>
+              <p>Nhanh chóng thiết lập đường truyền tĩnh mạch lớn (nếu tiêm ngoại biên thất bại sau 10 – 15 phút, tiến hành <strong>tiêm tủy xương</strong>). Bắt đầu truyền Dobutamin liều <strong>5 µg/kg/phút</strong>.</p>
+            </div>
+          </div>
+
+          <div class="algo-node" style="border-left:4px solid var(--purple)">
+            <div class="algo-icon" style="background:var(--purple)"><i class="fa-solid fa-water"></i></div>
+            <div class="algo-body">
+              <h5>Bước 2: Phân nhánh xử trí theo tình trạng Phù phổi cấp</h5>
+              <p><strong>• Nếu CÓ phù phổi cấp:</strong> <span class="rx-tag alert">NGỪNG NGAY TOÀN BỘ DỊCH TRUYỀN</span>. Tiến hành đo CVP, đo HAĐM xâm lấn, tăng Dobutamin lên từ <strong>5 – 20 µg/kg/phút</strong> để hỗ trợ co bóp cơ tim.<br /> <strong>• Nếu KHÔNG CÓ phù phổi cấp:</strong> Thực hiện test dịch truyền bằng LR hoặc NS với liều <strong>5 ml/kg truyền nhanh trong 15 phút</strong> (dùng cân nặng hiệu chỉnh). Đặt thông tiểu theo dõi nước tiểu mỗi giờ, đo CVP và HAĐM.</p>
+            </div>
+          </div>
+
+          <div class="algo-node" style="border-left:4px solid var(--green)">
+            <div class="algo-icon" style="background:var(--green)"><i class="fa-solid fa-stethoscope"></i></div>
+            <div class="algo-body">
+              <h5>Bước 3: Đánh giá &amp; Điều chỉnh theo đáp ứng huyết động</h5>
+              <p><strong>• Sốc cải thiện:</strong> Duy trì LR/NS 5 – 10 ml/kg/giờ + tiếp tục Dobutamin. <em>Mục tiêu: CVP 6 – 14 cmH2O; HAtt ≥ 100 mmHg; HAtb ≥ 50 – 65 mmHg; ScvO2 ≥ 70%; Lactate &lt; 2 mmol/L</em>.<br /> <strong>• Sốc không cải thiện:</strong> Tiếp tục test dịch LR/NS 5 ml/kg/15 phút (tối đa không quá 3 lần trong giờ đầu). Nếu còn sốc: phối hợp thêm <strong>Adrenaline</strong> (0.1 – 0.3 đến max 1 µg/kg/phút) hoặc <strong>Noradrenaline</strong> (0.1 – 1 µg/kg/phút) dưới hướng dẫn CVP và HAĐM xâm lấn.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="infobox info" style="margin-top:0.5rem">
+          <div class="infobox-icon"><i class="fa-solid fa-shield-virus"></i></div>
+          <div>
+            <strong>Chỉ định truyền IVIG ở trẻ Độ 4:</strong>
+            Chỉ được tiến hành truyền IVIG <strong>sau khi đã hồi sức sốc thành công</strong> và huyết áp trung bình duy trì <strong>≥ 50 mmHg</strong>. Liều <strong>1 g/kg/ngày</strong> truyền tĩnh mạch chậm trong 6 – 12 giờ (tính theo cân nặng hiệu chỉnh). Kháng sinh chỉ dùng khi có bằng chứng bội nhiễm.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    
+    <div class="sec-card" id="sec-crrt-ecmo">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-filter"></i></div>
+        <h2 class="sec-title">11. Chỉ Định Lọc Máu Liên Tục (CRRT) &amp; VA-ECMO</h2>
+      </div>
+      <div class="sec-body">
+        
+        <div class="sec-subtitle"><i class="fa-solid fa-filter-circle-dollar"></i> Kỹ thuật Lọc máu liên tục (CRRT)</div>
+        <div class="matrix-grid">
+          <div class="matrix-card card-blue">
+            <div class="matrix-card-hdr"><span class="matrix-card-title"><i class="fa-solid fa-clipboard-check"></i> 3 Chỉ Định CRRT</span></div>
+            <div class="matrix-card-desc">Áp dụng cho ca bệnh Độ 3 hoặc Độ 4 đang thở máy có ít nhất 1 tiêu chuẩn:<br /> 1. <strong>Sốc trơ</strong>, không đáp ứng hồi sức sau 1 – 2 giờ và HAtb ≥ 50 mmHg.<br /> 2. <strong>Sốt cao liên tục &gt; 39.5°C</strong> thất bại với toàn bộ hạ sốt tích cực sau 6 – 12 giờ.<br /> 3. <strong>Nhịp tim nhanh &gt; 180 lần/phút</strong> (nằm yên, không sốt) kèm da nổi vân tím dù huyết áp bình thường hoặc tăng.</div>
+          </div>
+
+          <div class="matrix-card card-teal">
+            <div class="matrix-card-hdr"><span class="matrix-card-title"><i class="fa-solid fa-sliders"></i> Cài Đặt Thông Số CRRT</span> <span class="rx-tag highlight">CVVH Mode</span></div>
+            <div class="matrix-card-desc">• Chế độ ưu tiên: <strong>CVVH</strong> (Lọc máu tĩnh - tĩnh mạch liên tục).<br /> • Tốc độ bơm máu: <strong>4 – 6 ml/kg/phút</strong>.<br /> • Tốc độ dịch thay thế: <strong>40 ml/kg/giờ</strong>.<br /> • <span class="rx-tag alert">CHỐNG CHỈ ĐỊNH</span>: Hạ thân nhiệt, đồng tử dãn, hoặc HAtb &lt; 50 mmHg.</div>
+          </div>
+        </div>
+
+        <div class="sec-subtitle" style="margin-top:1rem"><i class="fa-solid fa-heart-pulse"></i> Chỉ định VA-ECMO (Oxy hóa qua màng ngoài cơ thể Tĩnh - Động mạch)</div>
+        <div class="ebm-rec-card class-3">
+          <div class="ebm-badge-group">
+            <span class="cor-badge cor-class-3"><i class="fa-solid fa-heart-crack"></i> CAN THIỆP VA-ECMO</span>
+            <span class="rx-tag alert">Hội Chẩn Ban Giám Đốc</span>
+          </div>
+          <p><strong>1. Thất bại sau 6 – 12 giờ lọc máu liên tục ở ca Độ 4:</strong> Huyết động không ổn định, phải dùng vận mạch liều rất cao (<strong>chỉ số VIS &gt; 50</strong>), suy tim nặng (<strong>EF &lt; 30%</strong>), chỉ số tim thấp, men tim tăng, toan chuyển hóa kéo dài (<strong>pH &lt; 7.15</strong>, <strong>Lactate &gt; 5 mmol/L</strong>) và lượng nước tiểu &lt; 0.5 ml/kg/giờ.<br /> <strong>2. Rối loạn nhịp tim nặng</strong> ảnh hưởng trực tiếp đến huyết động, kháng trị với thuốc chống loạn nhịp, sốc điện hoặc máy tạo nhịp.<br /> <span class="rx-tag alert">CHỐNG CHỈ ĐỊNH VA-ECMO</span>: Hôn mê sâu, đồng tử dãn hoàn toàn, hạ thân nhiệt hoặc tổn thương não nặng nề không thể hồi phục.</p>
+        </div>
+
+      </div>
+    </div>
+
+    
+    <div class="sec-card" id="sec-xuatvien-phongngua">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-shield-virus"></i></div>
+        <h2 class="sec-title">12. Tiêu Chuẩn Cho Phép Xuất Viện &amp; Phòng Ngừa Nhiễm Khuẩn</h2>
+      </div>
+      <div class="sec-body">
+        
+        <div class="sec-subtitle"><i class="fa-solid fa-door-open"></i> Tiêu chuẩn cho phép xuất viện</div>
+        <div class="matrix-grid">
+          <div class="matrix-card card-green">
+            <div class="matrix-card-hdr"><span class="matrix-card-title"><i class="fa-solid fa-child"></i> Thể Nhẹ / Trung Bình (Độ 1, 2a)</span></div>
+            <div class="matrix-card-desc">1. Cắt sốt hoàn toàn trong ít nhất <strong>24 giờ</strong> không dùng thuốc hạ sốt.<br /> 2. Không còn biểu hiện từ Độ 2a trở lên trong ít nhất <strong>48 giờ liên tục</strong>.<br /> 3. Ăn uống tốt bằng đường miệng.<br /> 4. Gia đình đủ điều kiện theo dõi và cam kết tái khám ngay nếu có dấu hiệu nặng (nếu chưa sang ngày thứ 8).</div>
+          </div>
+
+          <div class="matrix-card card-blue">
+            <div class="matrix-card-hdr"><span class="matrix-card-title"><i class="fa-solid fa-bed-pulse"></i> Ca Nặng Biến Chứng (Độ 2b, 3, 4)</span></div>
+            <div class="matrix-card-desc">1. Ổn định hoàn toàn về mặt lâm sàng.<br /> 2. Các biến chứng và di chứng đã được kiểm soát ổn định.<br /> 3. Tự thở êm hoàn toàn, không còn chỉ định hỗ trợ hô hấp.<br /> 4. Dung nạp tốt dinh dưỡng bằng đường miệng hoặc ống thông dạ dày ổn định.</div>
+          </div>
+        </div>
+
+        <div class="sec-subtitle" style="margin-top:1rem"><i class="fa-solid fa-hands-bubbles"></i> Kiểm soát nhiễm khuẩn tại bệnh viện &amp; cộng đồng</div>
+        <div class="matrix-grid">
+          <div class="matrix-card card-orange">
+            <div class="matrix-card-hdr"><span class="matrix-card-title"><i class="fa-solid fa-hospital-user"></i> Kiểm Soát Tại Bệnh Viện</span></div>
+            <div class="matrix-card-desc">• Cách ly triệt để theo nhóm bệnh truyền nhiễm.<br /> • Nhân viên y tế mang khẩu trang, rửa tay nghiêm ngặt trước và sau khi tiếp xúc.<br /> • Khử khuẩn định kỳ bề mặt, giường bệnh bằng <strong>Cloramin B 2%</strong> (đặc biệt khu vực ghế chờ khám).<br /> • Xử lý đồ dùng, quần áo theo quy trình bệnh lây qua đường tiêu hóa.</div>
+          </div>
+
+          <div class="matrix-card card-teal">
+            <div class="matrix-card-hdr"><span class="matrix-card-title"><i class="fa-solid fa-people-roof"></i> Phòng Bệnh Tại Cộng Đồng</span></div>
+            <div class="matrix-card-desc">• Rửa tay thường xuyên bằng xà phòng dưới vòi nước chảy (sau khi thay tã, tiếp xúc phân/nước bọt).<br /> • Khử khuẩn đồ chơi, sàn nhà định kỳ bằng Cloramin B 2%.<br /> • Hạn chế tiếp xúc với trẻ bệnh.<br /> • <strong>Trẻ bệnh nghỉ học cách ly tại nhà 7 – 10 ngày đầu</strong>.<br /> • Tiêm vắc-xin phòng bệnh đặc hiệu EV71.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    
+    <div class="sec-card" id="sec-citation">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-book-bookmark"></i></div>
+        <h2 class="sec-title">13. Trích Dẫn Tài Liệu Tham Khảo Chuẩn AMA</h2>
+      </div>
+      <div class="sec-body">
+        <div class="citation-box">
+          <ol>
+            <li>Bộ Y tế Việt Nam. <em>Hướng dẫn Chẩn đoán, điều trị bệnh tay chân miệng</em> (Ban hành kèm theo Quyết định số 292/QĐ-BYT ngày 06 tháng 02 năm 2024 của Bộ trưởng Bộ Y tế; thay thế Quyết định số 1003/QĐ-BYT ngày 30/03/2012). Hà Nội: Bộ Y tế; 2024.</li>
+            <li>Bộ Y tế Việt Nam. Phụ lục 1: Phiếu đánh giá, phân độ và xử trí bệnh tay chân miệng; Phụ lục 2: Bảng tính cân nặng hiệu chỉnh ở trẻ em thừa cân béo phì. Hà Nội: Bộ Y tế; 2024.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  

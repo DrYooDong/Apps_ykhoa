@@ -2,52 +2,501 @@
 title: "Cá Thể Hóa Liều Kháng Sinh Beta-Lactam ở Bệnh Nhân Nặng (2026)"
 slug: "2026-icu-ca-the-hoa-beta-lactam"
 code: "GDL-2026-ICU-CA-THE-HOA-BETA-LACTAM"
-category: "guidelines"
+organization: "ICU Critical Care"
 year: "2026"
+category: "guidelines"
 status: "published"
 version: "2.0.0"
 updatedAt: "2026-08-26"
 description: "Hướng dẫn đồng thuận quốc tế 2026 (ACCP/ESCMID/IDSA/SCCM) về cá thể hóa liều kháng sinh Beta-lactam ở bệnh nhân nặng: TDM, mô hình MIPD, xử lý chênh lệch nồng độ và thuật toán mục tiêu PK/PD."
 tags:
+  - "ICU Critical Care"
+  - "2026"
   - "Khuyến cáo lâm sàng"
   - "Evidence-Based Medicine"
-  - "2026"
+keyRecommendations:
+  - "Nắm vững các chỉ định điều trị và cập nhật phác đồ chuẩn y học chứng cứ."
 sections:
-  - id: "sec-1"
+  - id: "sec-overview"
     number: 1
-    title: "Tổng Quan Khuyến Cáo & Thiết Kế Nghiên Cứu"
-    icon: "fa-book-medical"
-  - id: "sec-2"
+    title: "Tổng Quan &amp; Cơ Sở"
+    icon: "fa-solid fa-book-medical"
+  - id: "sec-definitions"
     number: 2
-    title: "Khuyến Cáo Cốt Lõi & Bằng Chứng EBM"
-    icon: "fa-certificate"
-  - id: "sec-3"
+    title: "Bảng Định Nghĩa"
+    icon: "fa-solid fa-book-medical"
+  - id: "sec-outcomes"
     number: 3
-    title: "Ứng Dụng Lâm Sàng & Lưu Ý Thực Hành"
-    icon: "fa-stethoscope"
+    title: "Kết Cục &amp; An Toàn"
+    icon: "fa-solid fa-book-medical"
+  - id: "sec-targets"
+    number: 4
+    title: "Đối Tượng Chỉ Định"
+    icon: "fa-solid fa-book-medical"
+  - id: "sec-stakeholders"
+    number: 5
+    title: "Đội Ngũ &amp; Mẫu XN"
+    icon: "fa-solid fa-book-medical"
+  - id: "sec-mipd-discordance"
+    number: 6
+    title: "Xử Lý Sai Lệch MIPD"
+    icon: "fa-solid fa-book-medical"
+  - id: "sec-pkpd-algorithm"
+    number: 7
+    title: "Thuật Toán PK/PD &amp; MIC"
+    icon: "fa-solid fa-book-medical"
+  - id: "sec-free-conc"
+    number: 8
+    title: "Nồng Độ Tự Do &amp; Bệnh Nhi"
+    icon: "fa-solid fa-book-medical"
+  - id: "sec-citation"
+    number: 9
+    title: "Trích Dẫn AMA"
+    icon: "fa-solid fa-book-medical"
 ---
 
-# 📖 CÁ THỂ HÓA LIỀU KHÁNG SINH BETA-LACTAM Ở BỆNH NHÂN NẶNG (2026)
+<div class="pillars">
+    <div class="pillars-inner">
+      <div class="pillar p1">
+        <div class="pillar-icon">⏱️</div>
+        <div>
+          <div class="pillar-title">1. Mục Tiêu PK/PD Tối Thích</div>
+          <div class="pillar-desc">Khuyên dùng mục tiêu tối thiểu 100% fT &gt; MIC (huyết tương) hoặc 100% fT &gt; 4xMIC (mô khó thấm/viêm màng não) kết hợp liều nạp &amp; truyền kéo dài.</div>
+        </div>
+      </div>
+      <div class="pillar p2">
+        <div class="pillar-icon">🎯</div>
+        <div>
+          <div class="pillar-title">2. Mô Hình Dự Đoán MIPD &amp; TDM</div>
+          <div class="pillar-desc">Áp dụng mô hình PK quần thể (MIPD) chủ động ngay từ đầu thay vì chỉ TDM thụ động phản ứng để chọn liều tối ưu cho từng cá thể.</div>
+        </div>
+      </div>
+      <div class="pillar p3">
+        <div class="pillar-icon">🛡️</div>
+        <div>
+          <div class="pillar-title">3. Kiểm Soát Sai Lệch &amp; Độc Tính</div>
+          <div class="pillar-desc">Quy trình 4 bước xử lý khi dự đoán mô hình sai lệch &gt; 20% &amp; theo dõi sát độc thần kinh (Cefepime Ctrough &gt; 20-35 mg/L).</div>
+        </div>
+      </div>
+    </div>
+  </div>
 
----
+  
+  <div class="quickmenu" id="quickmenu">
+    <div class="quickmenu-inner">
+      <a href="#sec-overview" class="quickmenu-item active">1. Tổng Quan &amp; Cơ Sở</a>
+      <a href="#sec-definitions" class="quickmenu-item">2. Bảng Định Nghĩa</a>
+      <a href="#sec-outcomes" class="quickmenu-item">3. Kết Cục &amp; An Toàn</a>
+      <a href="#sec-targets" class="quickmenu-item">4. Đối Tượng Chỉ Định</a>
+      <a href="#sec-stakeholders" class="quickmenu-item">5. Đội Ngũ &amp; Mẫu XN</a>
+      <a href="#sec-mipd-discordance" class="quickmenu-item">6. Xử Lý Sai Lệch MIPD</a>
+      <a href="#sec-pkpd-algorithm" class="quickmenu-item">7. Thuật Toán PK/PD &amp; MIC</a>
+      <a href="#sec-free-conc" class="quickmenu-item">8. Nồng Độ Tự Do &amp; Bệnh Nhi</a>
+      <a href="#sec-citation" class="quickmenu-item">9. Trích Dẫn AMA</a>
+    </div>
+  </div>
 
+  
+  <div class="page-content">
 
-Hướng dẫn đồng thuận quốc tế 2026 (ACCP/ESCMID/IDSA/SCCM) về cá thể hóa liều kháng sinh Beta-lactam ở bệnh nhân nặng: TDM, mô hình MIPD, xử lý chênh lệch nồng độ và thuật toán mục tiêu PK/PD.
+    
+    <div class="sec-card" id="sec-overview">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-microscope"></i></div>
+        <div>
+          <div class="sec-title">1. Cơ Sở Lâm Sàng &amp; Dược Động Học Kháng Sinh Beta-Lactam</div>
+          <div class="sec-subtitle-text">Thách thức của phác đồ "Một kích cỡ phù hợp cho tất cả" ở bệnh nhân nặng</div>
+        </div>
+      </div>
+      <div class="sec-body">
+        <p style="margin-bottom: 1rem;">Kháng sinh nhóm <strong>Beta-lactam</strong> (Penicillins, Cephalosporins, Carbapenems, Monobactams) là trụ cột điều trị đầu tay cho hầu hết các nhiễm khuẩn nặng nguy kịch. Tuy nhiên, các chế độ liều truyền thống áp dụng cố định dựa trên cân nặng hoặc ước tính độ thanh thải thận thông thường (eGFR) đã bộc lộ hạn chế nghiêm trọng ở nhóm bệnh nhân hồi sức cấp cứu (ICU).</p>
 
-```
-THÔNG TIN TÓM TẮT KHUYẾN CÁO:
-  • Mã định danh: GDL-2026-ICU-CA-THE-HOA-BETA-LACTAM
-  • Năm công bố: 2026
-  • Phân loại mức độ bằng chứng: GRADE / Oxford CEBM Level 1
-```
+        <div class="infobox warning">
+          <div class="infobox-icon">⚠️</div>
+          <div>
+            <strong>Sự Biến Thải Dược Động Học Phức Tạp Ở Bệnh Nhân ICU:</strong>
+            <ul style="margin-left: 1.2rem; margin-top: 0.3rem;">
+              <li><strong>Tăng thể tích phân bố (V<sub>d</sub>):</strong> Do rò rỉ mao mạch, phù toàn thân, hồi sức dịch thể tích lớn &amp;rarr; làm giảm nhanh nồng độ kháng sinh huyết tương trong giai đoạn đầu.</li>
+              <li><strong>Thay đổi độ thanh thải thận (CL<sub>cr</sub>):</strong> Gồm tổn thương thận cấp (AKI), liệu pháp thay thế thận (CRRT/KRT), hoặc hiện tượng <em>Tăng thanh thải thận (Augmented Renal Clearance - ARC)</em> ở người trẻ nguy kịch &amp;rarr; làm đào thải kháng sinh cực nhanh.</li>
+              <li><strong>Giảm albumin máu:</strong> Làm gia tăng phân bố và đào thải dạng tự do của các kháng sinh gắn kết protein cao (Ceftriaxone, Ertapenem).</li>
+            </ul>
+          </div>
+        </div>
 
----
+        <div class="infobox success">
+          <div class="infobox-icon">💡</div>
+          <div>
+            <strong>Giải Pháp: Cá Thể Hóa Liều (Dose Individualization):</strong>
+            Khuyến cáo đồng thuận năm 2026 khẳng định: Việc thiết kế chế độ liều cho từng bệnh nhân cụ thể dựa trên nồng độ thuốc đo được thực tế (TDM) kết hợp với các mô hình dược động học dự đoán (MIPD) giúp đạt được mục tiêu diệt khuẩn tối ưu, tăng tỷ lệ chữa khỏi lâm sàng (Clinical Cure) và hạn chế nguy cơ đề kháng kháng sinh.
+          </div>
+        </div>
+      </div>
+    </div>
 
+    
+    <div class="sec-card" id="sec-definitions">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-book-medical"></i></div>
+        <div>
+          <div class="sec-title">2. Khái Niệm &amp; Định Nghĩa Thuật Ngữ Chuẩn Hóa trong Cá Thể Hóa Liều</div>
+          <div class="sec-subtitle-text">Trích xuất từ Consensus Guidance (Table 2 - ACCP/ESCMID/IDSA/SCCM 2026)</div>
+        </div>
+      </div>
+      <div class="sec-body">
+        <div class="table-wrapper">
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th style="width: 28%;">Thuật ngữ (Key Term)</th>
+                <th>Định nghĩa Tiêu chuẩn Lâm sàng</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><div class="term-name">Minimal Inhibitory Concentration (MIC)</div> <span class="rx-tag preferred">Định lượng độc lập</span></td>
+                <td>Nồng độ kháng sinh thấp nhất ức chế sự phát triển có thể nhìn thấy của vi sinh vật trong điều kiện xét nghiệm in vitro chuẩn hóa. MIC dùng để đánh giá mức độ nhạy cảm của vi khuẩn và làm biến số tính toán chỉ số PK/PD.</td>
+              </tr>
+              <tr>
+                <td><div class="term-name">Clinical Breakpoints (Điểm gãy nhạy cảm)</div> <span class="rx-tag">CLSI / EUCAST</span></td>
+                <td>Giá trị ngưỡng MIC được sử dụng để phân loại chủng vi khuẩn là Nhạy cảm (S), Trung gian (I), Nhạy cảm phụ thuộc liều (SDD) hoặc Kháng (R) với liều kháng sinh tiêu chuẩn trên lâm sàng.</td>
+              </tr>
+              <tr>
+                <td><div class="term-name">Epidemiological Cutoff Value (ECV / ECOFF)</div> <span class="rx-tag">Wild-type MIC</span></td>
+                <td>Giá trị MIC cao nhất của các chủng vi khuẩn không mang đột biến kháng thuốc về mặt kiểu hình (chủng kiểu dại - wild type). Dùng làm mốc tham chiếu khi chưa có điểm gãy lâm sàng.</td>
+              </tr>
+              <tr>
+                <td><div class="term-name">100% fT<sub>&gt;MIC</sub></div> <span class="rx-tag preferred">Mục tiêu tối thiểu</span></td>
+                <td>Nồng độ kháng sinh tự do (unbound) trong huyết tương duy trì vượt quá ngưỡng MIC của vi khuẩn trong <strong>100% khoảng thời gian giữa các liều</strong>. Đây là mục tiêu PK/PD cốt lõi ở bệnh nhân nặng.</td>
+              </tr>
+              <tr>
+                <td><div class="term-name">100% fT<sub>&gt;4xMIC</sub></div> <span class="rx-tag warning">Mô khó thấm / Kháng thuốc</span></td>
+                <td>Nồng độ kháng sinh tự do duy trì vượt quá <strong>4 lần giá trị MIC</strong> trong 100% khoảng cách liều. Áp dụng cho các nhiễm khuẩn vùng mô khó phân bố (viêm màng não, áp-xe) hoặc bệnh nhân suy giảm miễn dịch nặng.</td>
+              </tr>
+              <tr>
+                <td><div class="term-name">Therapeutic Drug Monitoring (TDM)</div> <span class="rx-tag">Đo nồng độ sinh học</span></td>
+                <td>Kỹ thuật đo lường nồng độ thuốc trong máu hoặc dịch sinh học để cá thể hóa chế độ liều. Thường tiến hành từ Ngày 1–3 điều trị hoặc sau đó, sử dụng 1–2 mẫu máu để ước tính fT<sub>&gt;MIC</sub>.</td>
+              </tr>
+              <tr>
+                <td><div class="term-name">Model-Informed Personalized Dosing (MIPD)</div> <span class="rx-tag preferred">Mô hình PK Precision</span></td>
+                <td>Sử dụng mô hình Dược động học quần thể (Population PK Model) kết hợp với các hiệp biến của bệnh nhân và nồng độ thuốc đo được thực tế ở bất kỳ thời điểm nào để tính toán thông số PK cá thể và xác định xác suất đạt mục tiêu PK/PD (PTA).</td>
+              </tr>
+              <tr>
+                <td><div class="term-name">Beta-Lactam Dose Individualization</div> <span class="rx-tag preferred">Cá thể hóa liều</span></td>
+                <td>Chiến lược thiết kế và điều chỉnh chế độ liều lượng cho riêng một bệnh nhân dựa trên các nồng độ đo được từ chính bệnh nhân đó.</td>
+              </tr>
+              <tr>
+                <td><div class="term-name">Prolonged Infusion Therapy</div> <span class="rx-tag preferred">Truyền kéo dài (&amp;ge; 2h)</span></td>
+                <td>Phương thức truyền kháng sinh kéo dài ít nhất 2 giờ (Extended infusion, ví dụ truyền 3-4 giờ) hoặc truyền liên tục 24 giờ (Continuous infusion). Là chiến lược quan trọng hàng đầu để đạt mục tiêu PK/PD fT<sub>&gt;MIC</sub>.</td>
+              </tr>
+              <tr>
+                <td><div class="term-name">Concentration Discordance (&gt; 20%)</div> <span class="rx-tag danger">Ngưỡng cảnh báo sai lệch</span></td>
+                <td>Mức độ chênh lệch giữa nồng độ quan sát thực tế đo được và nồng độ do mô hình MIPD dự đoán. Ngưỡng sai lệch sai số tuyệt đối <strong>&gt; 20%</strong> là mốc cảnh báo làm giảm độ tin cậy của MIPD, cần quy trình điều tra hệ thống.</td>
+              </tr>
+              <tr>
+                <td><div class="term-name">Estimated Free Beta-Lactam Concentration</div> <span class="rx-tag">Nồng độ tự do ước tính</span></td>
+                <td>Nồng độ tự do ước tính = Nồng độ toàn phần đo được &#36;×&#36; Tỷ lệ dạng tự do (1 - Tỷ lệ gắn kết protein).</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
 
-* Các khuyến cáo điều trị và chỉ định can thiệp chính thức được chuẩn hóa theo y học chứng cứ.
-* Đánh giá nguy cơ - lợi ích dựa trên các thử nghiệm lâm sàng ngẫu nhiên có đối chứng (RCTs) quy mô lớn.
+    
+    <div class="sec-card" id="sec-outcomes">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+        <div>
+          <div class="sec-title">3. Tác Động Đến Kết Cục Lâm Sàng &amp; An Toàn Bệnh Nhân</div>
+          <div class="sec-subtitle-text">Tăng tỷ lệ khỏi bệnh &amp; Ngăn ngừa độc tính tích lũy</div>
+        </div>
+      </div>
+      <div class="sec-body">
+        <div class="grid-2" style="margin-bottom: 1.25rem;">
+          <div class="item-card" style="border-left: 4px solid var(--green);">
+            <div class="item-card-title"><i class="fa-solid fa-circle-check" style="color: var(--green);"></i> 1. Cải Thiện Kết Cục Lâm Sàng</div>
+            <div class="item-card-desc">- Áp dụng cá thể hóa liều giúp tăng đáng kể tỷ lệ <strong>chữa khỏi lâm sàng (Clinical Cure)</strong> ở bệnh nhân nặng so với phác đồ tiêu chuẩn.<br /> - Khuyến cáo mục tiêu PK/PD tối thiểu là duy trì <strong>100% fT<sub>&gt;MIC</sub></strong> trong toàn bộ khoảng cách liều.<br /> - Bắt buộc phối hợp <strong>Liều nạp (Loading Dose)</strong> ban đầu kết hợp <strong>Truyền kéo dài (Prolonged Infusion)</strong> để đạt mục tiêu nồng độ tức thì ngay từ giờ đầu tiên.</div>
+          </div>
+          <div class="item-card" style="border-left: 4px solid var(--red);">
+            <div class="item-card-title"><i class="fa-solid fa-shield-halved" style="color: var(--red);"></i> 2. An Toàn &amp; Phòng Độc Tính</div>
+            <div class="item-card-desc">- Giúp kiểm soát nồng độ thuốc vượt ngưỡng dư thừa quá mức ở bệnh nhân suy giảm chức năng đào thải.<br /> - Giám sát đặc biệt rủi ro <strong>Độc tính trên thần kinh (Neurotoxicity)</strong>: Co giật, bệnh não, nhầm lẫn, hôn mê.<br /> - 🚨 <strong>Cefepime:</strong> Thuốc có rủi ro độc thần kinh cao nhất khi nồng độ đáy C<sub>trough</sub> &gt; 20–35 mg/L, đặc biệt ở người cao tuổi, thời gian điều trị kéo dài, hoặc suy thận.</div>
+          </div>
+        </div>
+      </div>
+    </div>
 
----
+    
+    <div class="sec-card" id="sec-targets">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-user-doctor"></i></div>
+        <div>
+          <div class="sec-title">4. Chỉ Định &amp; Đối Tượng Bệnh Nhân Cần Ưu Tiên Cá Thể Hóa Liều</div>
+          <div class="sec-subtitle-text">Nhóm bệnh nhân nguy cơ cao có sự biến thiên PK/PD cực lớn</div>
+        </div>
+      </div>
+      <div class="sec-body">
+        <div class="grid-3">
+          <div class="item-card">
+            <div class="item-card-title">🚨 1. Bệnh Lý Nguy Kịch</div>
+            <div class="item-card-desc">- Bệnh nhân điều trị tại ICU.<br /> - Nhiễm khuẩn huyết (Sepsis) &amp; Sốc nhiễm khuẩn (Septic Shock).<br /> - Nhiễm trùng huyết xâm lấn nguy cơ tử vong cao.</div>
+          </div>
+          <div class="item-card">
+            <div class="item-card-title">🫀 2. Thiết Bị Hỗ Trợ Ngoài Cơ Thể</div>
+            <div class="item-card-desc">- Màng trao đổi oxy ngoài cơ thể (ECMO).<br /> - Liệu pháp thay thế thận liên tục (CRRT / KRT).<br /> - Thay huyết tương (Plasma exchange) &amp; Hấp phụ máu (Hemoperfusion).</div>
+          </div>
+          <div class="item-card">
+            <div class="item-card-title">⚡ 3. Biến Đổi Sinh Lý Complex</div>
+            <div class="item-card-desc">- Rối loạn chức năng thận (AKI, CKD) hoặc Tăng thanh thải thận (ARC).<br /> - Giảm albumin máu, Béo phì / Nhẹ cân cực đoan.<br /> - Phỏng nặng, Bệnh xơ nang, Mang thai, Xơ gan, Vi khuẩn đa kháng (MDR).</div>
+          </div>
+        </div>
+      </div>
+    </div>
 
+    
+    <div class="sec-card" id="sec-stakeholders">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-users-gear"></i></div>
+        <div>
+          <div class="sec-title">5. Đội Ngũ Đa Ngành Stakeholders &amp; Tiêu Chuẩn Mẫu Xét Nghiệm</div>
+          <div class="sec-subtitle-text">Trích xuất từ Consensus Guidance (Table 4 - ACCP/ESCMID/IDSA/SCCM 2026)</div>
+        </div>
+      </div>
+      <div class="sec-body">
+        <div class="table-wrapper">
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th style="width: 22%;">Nhóm Vai Trò</th>
+                <th style="width: 33%;">Thành Phần Tham Gia</th>
+                <th>Nhiệm Vụ &amp; Đóng Góp Thực Tế</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>1. Lâm sàng (Clinicians)</strong></td>
+                <td>Bác sĩ ICU, Truyền nhiễm, Thần kinh; Dược sĩ lâm sàng PK/PD; Chuyên gia Vi sinh.</td>
+                <td>Xây dựng quy trình chuẩn, đào tạo lâm sàng, chỉ định TDM, đánh giá hiệu quả diệt khuẩn và an toàn độc tính.</td>
+              </tr>
+              <tr>
+                <td><strong>2. Lãnh đạo (Leadership)</strong></td>
+                <td>Ban Quản lý Sử dụng Kháng sinh (AST), Điều dưỡng trưởng, Hội đồng Dược &amp; Điều trị, Tài chính, IT.</td>
+                <td>Định hướng chiến lược, cấp nguồn lực, phê duyệt chính sách và đảm bảo sự tuân thủ toàn viện.</td>
+              </tr>
+              <tr>
+                <td><strong>3. Vận hành (Operational)</strong></td>
+                <td>KTV Xét nghiệm, Dược pha chế vô trùng, IT tích hợp EHR, Phlebotomist, Chuỗi cung ứng.</td>
+                <td>Tích hợp phần mềm MIPD vào hồ sơ bệnh án điện tử EHR, tối ưu quy trình vận chuyển mẫu và đảm bảo nguồn cung hóa chất xét nghiệm.</td>
+              </tr>
+              <tr>
+                <td><strong>4. Bệnh nhân (Patients)</strong></td>
+                <td>Bệnh nhân, Người đại diện, Người chăm sóc.</td>
+                <td>Đánh giá trải nghiệm điều trị, phản hồi về tính chấp nhận và sự tuân thủ chế độ liều.</td>
+              </tr>
+              <tr>
+                <td><strong>5. Pháp lý (Regulatory)</strong></td>
+                <td>Ban quản lý chất lượng, Chính sách y tế.</td>
+                <td>Quy định thẩm quyền chỉ định, lấy mẫu, phân tích và ghi chép hồ sơ TDM của từng chức danh y tế.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-* Áp dụng cá thể hóa trên từng đối tượng người bệnh dựa trên bối cảnh lâm sàng thực tế và các yếu tố nguy cơ đi kèm.
+        <div class="infobox teal" style="margin-top: 1rem;">
+          <div class="infobox-icon">🧪</div>
+          <div>
+            <strong>Tiêu Chuẩn Loại Mẫu Xét Nghiệm:</strong>
+            Khuyên dùng ưu tiên <strong>Huyết tương (Plasma)</strong> hoặc <strong>Huyết thanh (Serum)</strong>. Huyết tương có ưu thế vượt trội là có thể ly tâm ngay lập tức sau khi rút máu mà không cần chờ quá trình đông máu kết thúc &amp;rarr; Ngăn ngừa sự tự phân hủy của vòng Beta-lactam vốn rất kém bền ở nhiệt độ phòng. Các mẫu như nước tiểu, dịch não tủy, dịch phế quản chỉ áp dụng trong nghiên cứu chuyên sâu.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sec-card" id="sec-mipd-discordance">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-diagram-project"></i></div>
+        <div>
+          <div class="sec-title">6. Quy Trình Xử Lý Sai Lệch Giữa Mô Hình MIPD &amp; Nồng Độ Thực Tế</div>
+          <div class="sec-subtitle-text">Thuật toán điều tra hệ thống khi prediction error &gt; 20% (Figure 1 - ACCP 2026)</div>
+        </div>
+      </div>
+      <div class="sec-body">
+        <p style="margin-bottom: 1.25rem; font-size: 0.88rem; color: var(--text-muted);">Khi sự chênh lệch giữa nồng độ quan sát thực tế (C<sub>observed</sub>) và nồng độ dự đoán từ mô hình (C<sub>predicted</sub>) vượt quá <strong>20%</strong>, độ tin cậy của MIPD giảm mạnh. Cần thực hiện 4 bước kiểm tra sau trước khi thay đổi liều:</p>
+
+        <div class="flow-steps">
+          <div class="flow-step">
+            <div class="flow-step-num">1</div>
+            <div class="flow-step-content">
+              <div class="flow-step-title">Bước 1: Đánh giá tính phù hợp của mô hình (Evaluate Model Appropriateness)</div>
+              <div class="flow-step-text">Xem xét các đặc tính hiệp biến của bệnh nhân (cân nặng, chức năng thận, phương thức truyền) có nằm trong quần thể gốc của mô hình PK hay không.</div>
+              <div class="flow-branch branch-no"><i class="fa-solid fa-arrow-right"></i> Nếu không phù hợp: Chuyển sang mô hình PK khác thích hợp hơn.</div>
+            </div>
+          </div>
+
+          <div class="flow-step">
+            <div class="flow-step-num">2</div>
+            <div class="flow-step-content">
+              <div class="flow-step-title">Bước 2: Kiểm tra dữ liệu đầu vào (Evaluate Input Data)</div>
+              <div class="flow-step-text">Rà soát lỗi ghi nhận: Liều dùng thực tế, thời điểm truyền kháng sinh, chính xác giờ rút mẫu máu, và sai số xét nghiệm phòng lab.</div>
+              <div class="flow-branch branch-no"><i class="fa-solid fa-arrow-right"></i> Nếu phát hiện sai dữ liệu: Hiệu chỉnh lại dữ liệu vào phần mềm MIPD.</div>
+            </div>
+          </div>
+
+          <div class="flow-step">
+            <div class="flow-step-num">3</div>
+            <div class="flow-step-content">
+              <div class="flow-step-title">Bước 3: Đánh giá biến đổi sinh lý bệnh nhân (Evaluate Patient Changes)</div>
+              <div class="flow-step-text">Bệnh nhân có biến đổi lâm sàng đột ngột (tụt huyết áp mới xuất hiện, bắt đầu CRRT, thay đổi dịch thể) hoặc có tương tác thuốc mới?</div>
+              <div class="flow-branch branch-action"><i class="fa-solid fa-arrow-right"></i> Nếu biến động: Cập nhật biến số mới nhất vào mô hình.</div>
+            </div>
+          </div>
+
+          <div class="flow-step">
+            <div class="flow-step-num">4</div>
+            <div class="flow-step-content">
+              <div class="flow-step-title">Bước 4: Thu thập thêm mẫu &amp; Căn chỉnh mô hình (Gather Additional Sample)</div>
+              <div class="flow-step-text">Nếu dữ liệu đúng nhưng mô hình vẫn dự đoán sai lệch: Tiến hành lấy thêm mẫu máu để tái căn chỉnh (Bayesian feedback fitting).</div>
+              <div class="flow-branch branch-yes"><i class="fa-solid fa-arrow-right"></i> Nếu vẫn tiếp tục sai lệch và không có mô hình thay thế: <strong>Dừng dùng MIPD &amp;rarr; Chuyển sang TDM truyền thống dựa trên nồng độ thực tế.</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sec-card" id="sec-pkpd-algorithm">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-vial-circle-check"></i></div>
+        <div>
+          <div class="sec-title">7. Thuật Toán Lựa Chọn Mục Tiêu PK/PD &amp; Đánh Giá MIC Vi Khuẩn</div>
+          <div class="sec-subtitle-text">Thuật toán từng bước xác định mục tiêu diệt khuẩn tối thiểu (Figure 2 - ACCP 2026)</div>
+        </div>
+      </div>
+      <div class="sec-body">
+        <div class="flow-steps">
+          <div class="flow-step">
+            <div class="flow-step-num">A</div>
+            <div class="flow-step-content">
+              <div class="flow-step-title">Bước 1: Xác định giá trị vi sinh học</div>
+              <div class="flow-step-text">Xác định MIC của chủng vi khuẩn lập bối cảnh trên bệnh nhân, Điểm gãy nhạy cảm (Clinical Breakpoint), và Giá trị ngưỡng dịch tễ học (ECV/ECOFF). <em>(Nếu chưa có kết quả cấy, dùng Breakpoint / ECV của tác nhân nghi ngờ nhất).</em></div>
+            </div>
+          </div>
+
+          <div class="flow-step">
+            <div class="flow-step-num">B</div>
+            <div class="flow-step-content">
+              <div class="flow-step-title">Bước 2: So sánh MIC với Breakpoint / ECV</div>
+              <div class="flow-step-text">Do biến thiên kỹ thuật xét nghiệm in vitro (&amp;plusmn;1 đến &amp;plusmn;2 nấc pha loãng), không sử dụng đơn độc 1 giá trị MIC báo cáo nếu nằm sát ngưỡng.</div>
+              <div class="flow-branch branch-no"><i class="fa-solid fa-triangle-exclamation"></i> <strong>MIC &gt; Breakpoint hoặc ECV:</strong> 🛑 CẢNH BẢO KHÁNG THUỐC! Dừng lại, hội chẩn chuyên gia Truyền nhiễm và xem xét kháng sinh thay thế.</div>
+              <div class="flow-branch branch-yes"><i class="fa-solid fa-circle-check"></i> <strong>MIC &amp;le; Breakpoint và ECV:</strong> Chọn giá trị <strong>CAO HƠN</strong> giữa Breakpoint hoặc ECV làm mốc so sánh tính toán &amp;rarr; Tiến hành cá thể hóa liều.</div>
+            </div>
+          </div>
+
+          <div class="flow-step">
+            <div class="flow-step-num">C</div>
+            <div class="flow-step-content">
+              <div class="flow-step-title">Bước 3: Chọn Mục tiêu PK/PD Tối Thiểu</div>
+              <div class="flow-step-text">Thiết lập mục tiêu liều đạt tối thiểu <strong>100% fT<sub>&gt;MIC</sub></strong> (hoặc 100% fT<sub>&gt;4xMIC</sub> đối với các ổ nhiễm khuẩn sâu/khó thấm).</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sec-card" id="sec-free-conc">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-flask-vial"></i></div>
+        <div>
+          <div class="sec-title">8. Nồng Độ Tự Do (Free/Unbound) vs Toàn Phần &amp; Lưu Ý Bệnh Nhi</div>
+          <div class="sec-subtitle-text">Tầm quan trọng của dạng tự do có hoạt tính sinh học</div>
+        </div>
+      </div>
+      <div class="sec-body">
+        <div class="grid-2">
+          <div class="item-card">
+            <div class="item-card-title">🧪 1. Nồng Độ Tự Do (Unbound/Free)</div>
+            <div class="item-card-desc">- Chỉ có kháng sinh ở dạng tự do mới có khả năng đi qua màng sinh học và diệt khuẩn.<br /> - Xét nghiệm nồng độ tự do trực tiếp (bằng kỹ thuật siêu lọc - Ultrafiltration) là chuẩn vàng nhưng phức tạp và đắt tiền.<br /> - Khi chỉ đo được Nồng độ toàn phần: Ước tính nồng độ tự do qua hệ số gắn kết protein công bố, tuy nhiên cần thận trọng ở bệnh nhân suy gan, giảm albumin máu severe.</div>
+          </div>
+
+          <div class="item-card">
+            <div class="item-card-title">👶 2. Lưu Ý Bệnh Nhi &amp; Trẻ Sơ Sinh</div>
+            <div class="item-card-desc">- Trẻ em có sự biến thiên thể tích nước cơ thể và mức độ trưởng thành chức năng gan/thận rất nhanh.<br /> - Việc áp dụng MIPD bắt buộc phải sử dụng các mô hình Dược động học nhi khoa có tích hợp <strong>Hệ số trưởng thành (Maturation Factor)</strong>.<br /> - Tối ưu hóa số lượng và thể tích lấy máu xét nghiệm để tránh gây mất máu thiếu máu ở trẻ sơ sinh.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sec-card" id="sec-citation">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-quote-left"></i></div>
+        <div>
+          <div class="sec-title">9. Trích Dẫn Tài Liệu Tham Khảo Chuẩn AMA &amp; Liên Kết Chức Năng</div>
+          <div class="sec-subtitle-text">Consensus Guidance for Beta-Lactam Antibiotic Dose Individualization (2026)</div>
+        </div>
+      </div>
+      <div class="sec-body">
+        <div class="citation-box">
+          Barreto EF, McCreary EK, Mangalore RP, et al. Consensus Guidance for Beta-Lactam Antibiotic Dose Individualization in Acutely Ill Patients: Endorsed by the American College of Clinical Pharmacy, European Society of Clinical Microbiology and Infectious Diseases, European Society of Clinical Microbiology and Infectious Diseases PK/PD of Anti-Infectives Study Group, Infectious Diseases Society of America, International Association of Therapeutic Drug Monitoring and Clinical Toxicology, Society of Critical Care Medicine, and the Society of Infectious Diseases Pharmacists. <em>Pharmacotherapy</em>. 2026;46:e70181.
+        </div>
+
+        <div class="btn-row">
+          <a href="index.html" class="btn btn-primary">
+            <i class="fa-solid fa-folder-open"></i> Quay lại Kho Guidelines
+          </a>
+          <a href="../../../calculators/infectious/chinh-lieu-khang-sinh.html" class="btn">
+            <i class="fa-solid fa-calculator"></i> Máy tính Chỉnh liều Kháng sinh
+          </a>
+          <a href="../../../pharmacology/duoc-ly.html" class="btn">
+            <i class="fa-solid fa-pills"></i> Tra cứu Dược lý Kháng sinh
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  
+    document.addEventListener('DOMContentLoaded', () => &#123;
+      // Theme Toggle with LocalStorage
+      const themeToggleBtn = document.getElementById('themeToggleBtn');
+      const htmlEl = document.documentElement;
+      const savedTheme = localStorage.getItem('cliniportal_ebm_theme');
+      if (savedTheme === 'dark' || savedTheme === 'light') &#123;
+        htmlEl.setAttribute('data-theme', savedTheme);
+        if (themeToggleBtn) &#123;
+          themeToggleBtn.innerHTML = savedTheme === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+        &#125;
+      &#125;
+      if (themeToggleBtn) &#123;
+        themeToggleBtn.addEventListener('click', () => &#123;
+          const currentTheme = htmlEl.getAttribute('data-theme');
+          const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+          htmlEl.setAttribute('data-theme', newTheme);
+          themeToggleBtn.innerHTML = newTheme === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+          localStorage.setItem('cliniportal_ebm_theme', newTheme);
+        &#125;);
+      &#125;
+
+      // Quicknav Active Highlight with IntersectionObserver
+      const sections = document.querySelectorAll('.sec-card[id]');
+      const navLinks = document.querySelectorAll('.quickmenu-item, .quicknav-link');
+      if (sections.length > 0 &amp;&amp; navLinks.length > 0) &#123;
+        const navObserver = new IntersectionObserver((entries) => &#123;
+          entries.forEach(entry => &#123;
+            if (entry.isIntersecting) &#123;
+              const currentId = entry.target.getAttribute('id');
+              navLinks.forEach(link => &#123;
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentId) &#123;
+                  link.classList.add('active');
+                &#125;
+              &#125;);
+            &#125;
+          &#125;);
+        &#125;, &#123; rootMargin: '-10% 0px -70% 0px' &#125;);
+        sections.forEach(section => navObserver.observe(section));
+      &#125;
+    &#125;);
+  

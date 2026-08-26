@@ -2,52 +2,428 @@
 title: "ESC 2024 về Quản Lý Rung Nhĩ (AF-CARE)"
 slug: "2024-esc-atrial-fibrillation"
 code: "GDL-2024-ESC-ATRIAL-FIBRILLATION"
-category: "guidelines"
+organization: "ESC"
 year: "2024"
+category: "guidelines"
 status: "published"
 version: "2.0.0"
 updatedAt: "2026-08-26"
 description: "Tóm tắt Hướng dẫn ESC 2024 về Quản lý Rung nhĩ (AF-CARE Roadmap): Thang điểm CHA2DS2-VA mới, phác đồ DOAC, triệt đốt Class I, và 4 công cụ CDSS tính toán lâm sàng."
 tags:
+  - "ESC"
+  - "2024"
   - "Khuyến cáo lâm sàng"
   - "Evidence-Based Medicine"
-  - "2024"
+keyRecommendations:
+  - "Nắm vững các chỉ định điều trị và cập nhật phác đồ chuẩn y học chứng cứ."
 sections:
-  - id: "sec-1"
+  - id: "pillar-c"
     number: 1
-    title: "Tổng Quan Khuyến Cáo & Thiết Kế Nghiên Cứu"
-    icon: "fa-book-medical"
-  - id: "sec-2"
+    title: "📌 [C] Comorbidity & Risk Factors"
+    icon: "fa-solid fa-book-medical"
+  - id: "pillar-a"
     number: 2
-    title: "Khuyến Cáo Cốt Lõi & Bằng Chứng EBM"
-    icon: "fa-certificate"
-  - id: "sec-3"
+    title: "🛡️ [A] Avoid Stroke (CHA₂DS₂-VA)"
+    icon: "fa-solid fa-book-medical"
+  - id: "pillar-r"
     number: 3
-    title: "Ứng Dụng Lâm Sàng & Lưu Ý Thực Hành"
-    icon: "fa-stethoscope"
+    title: "⚡ [R] Reduce Symptoms (Rate/Rhythm)"
+    icon: "fa-solid fa-book-medical"
+  - id: "pillar-e"
+    number: 4
+    title: "🔄 [E] Evaluation & Reassessment"
+    icon: "fa-solid fa-book-medical"
 ---
 
-# 📖 ESC 2024 VỀ QUẢN LÝ RUNG NHĨ (AF-CARE)
+<div class="stats-strip">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-val">AF-CARE</div>
+        <div class="stat-lbl">Khung Tiếp Cận 4 Trụ Cột</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">CHA₂DS₂-VA</div>
+        <div class="stat-lbl">Thang Điểm Nguy Cơ Đột Quỵ Mới</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">Class I</div>
+        <div class="stat-lbl">Triệt Đốt AF Kịch Phát Khởi Đầu</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">SGLT2i</div>
+        <div class="stat-lbl">Chỉ Định Mọi LVEF Kèm Suy Tim</div>
+      </div>
+    </div>
+  </div>
 
----
+  
+  <div class="page-content">
 
+    
+    <div class="sec-card" id="overview">
+      <div class="sec-hdr"><span class="sec-hdr-icon">🌐</span> <h2 class="sec-title">1. Định Nghĩa, Tiêu Chuẩn Chẩn Đoán &amp; Lộ Trình AF-CARE</h2></div>
+      <div class="sec-body">
+        
+        <div class="infobox info">
+          <span class="infobox-icon">💡</span>
+          <div>
+            <strong>Triết Lý Tiếp Cận Mới: Lộ Trình AF-CARE</strong>
+            Thay vì tiếp cận nối tiếp ABC trước đây, ESC 2024 đặt việc quản lý toàn diện các bệnh lý đồng mắc và yếu tố nguy cơ làm trọng tâm song hành ngay từ thời điểm chẩn đoán ban đầu.
+          </div>
+        </div>
 
-Tóm tắt Hướng dẫn ESC 2024 về Quản lý Rung nhĩ (AF-CARE Roadmap): Thang điểm CHA2DS2-VA mới, phác đồ DOAC, triệt đốt Class I, và 4 công cụ CDSS tính toán lâm sàng.
+        <div class="sec-subtitle">4 Trụ Cột Cốt Lõi AF-CARE</div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+          <div style="background: var(--blue-bg); border: 1px solid var(--blue-light); border-left: 4px solid var(--blue); padding: 1rem; border-radius: 10px;">
+            <strong style="color: var(--blue); font-size: 0.9rem;">[C] Comorbidity</strong>
+            <p style="font-size: 0.8rem; margin-top: 0.25rem;">Quản lý tích cực bệnh đồng mắc (THA, Suy tim, ĐTĐ, Béo phì, OSA) và điều chỉnh lối sống.</p>
+          </div>
+          <div style="background: var(--green-bg); border: 1px solid var(--green-light); border-left: 4px solid var(--green); padding: 1rem; border-radius: 10px;">
+            <strong style="color: var(--green); font-size: 0.9rem;">[A] Avoid Stroke</strong>
+            <p style="font-size: 0.8rem; margin-top: 0.25rem;">Dự phòng đột quỵ và thuyên tắc mạch bằng OAC dựa trên thang điểm <strong>CHA₂DS₂-VA</strong>.</p>
+          </div>
+          <div style="background: var(--orange-bg); border: 1px solid var(--orange-light); border-left: 4px solid var(--orange); padding: 1rem; border-radius: 10px;">
+            <strong style="color: var(--orange); font-size: 0.9rem;">[R] Reduce Symptoms</strong>
+            <p style="font-size: 0.8rem; margin-top: 0.25rem;">Cải thiện triệu chứng bằng kiểm soát tần số, kiểm soát nhịp và can thiệp triệt đốt (Catheter Ablation).</p>
+          </div>
+          <div style="background: var(--purple-bg); border: 1px solid var(--purple-light); border-left: 4px solid var(--purple); padding: 1rem; border-radius: 10px;">
+            <strong style="color: var(--purple); font-size: 0.9rem;">[E] Evaluation</strong>
+            <p style="font-size: 0.8rem; margin-top: 0.25rem;">Đánh giá định kỳ triệu chứng (mEHRA) và sự tiến triển của loạn nhịp theo thời gian.</p>
+          </div>
+        </div>
 
-```
-THÔNG TIN TÓM TẮT KHUYẾN CÁO:
-  • Mã định danh: GDL-2024-ESC-ATRIAL-FIBRILLATION
-  • Năm công bố: 2024
-  • Phân loại mức độ bằng chứng: GRADE / Oxford CEBM Level 1
-```
+        <div class="sec-subtitle">Tiêu Chuẩn Chẩn Đoán Rung Nhĩ Lâm Sàng (Clinical AF)</div>
+        <ul style="padding-left: 1.25rem; font-size: 0.88rem; line-height: 1.7; margin-bottom: 1rem;">
+          <li><strong>ECG 12 chuyển đạo tiêu chuẩn</strong> ghi nhận nhịp rung nhĩ.</li>
+          <li>Hoặc <strong>ECG 1 chuyển đạo (hoặc đa chuyển đạo) có độ dài ≥ 30 giây</strong> được bác sĩ xác nhận.</li>
+          <li><strong>Đặc điểm ECG đặc trưng:</strong> Vắng mặt sóng P rõ ràng và khoảng RR hoàn toàn không đều.</li>
+          <li><em>Lưu ý quan trọng:</em> Thiết bị đeo thông minh không tạo bản ghi ECG (như PPG) chỉ có giá trị sàng lọc, KHÔNG dùng để chẩn đoán xác định.</li>
+        </ul>
 
----
+        <div class="sec-subtitle">Phân Loại Rung Nhĩ Theo Thời Gian (Temporal Classification)</div>
+        <div class="table-wrapper">
+          <table class="med-table">
+            <thead>
+              <tr>
+                <th>Thể Rung Nhĩ</th>
+                <th>Đặc Điểm &amp; Tiêu Chuẩn ESC 2024</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Mới chẩn đoán (First-diagnosed)</strong></td>
+                <td>Rung nhĩ chưa từng ghi nhận trước đó, bất kể triệu chứng hay thời gian cơn.</td>
+              </tr>
+              <tr>
+                <td><strong>Kịch phát (Paroxysmal)</strong></td>
+                <td>Rung nhĩ tự giới hạn hoặc được chuyển nhịp thành công trong vòng <strong>7 ngày</strong>.</td>
+              </tr>
+              <tr>
+                <td><strong>Bền bỉ (Persistent)</strong></td>
+                <td>Rung nhĩ kéo dài liên tục <strong>&gt; 7 ngày</strong> (bao gồm các cơn được chuyển nhịp sau 7 ngày).</td>
+              </tr>
+              <tr>
+                <td><strong>Bền bỉ kéo dài (Long-standing persistent)</strong></td>
+                <td>Rung nhĩ liên tục <strong>≥ 12 tháng</strong> nhưng vẫn còn kế hoạch khôi phục nhịp xoang.</td>
+              </tr>
+              <tr>
+                <td><strong>Vĩnh viễn (Permanent)</strong></td>
+                <td>Bệnh nhân và bác sĩ đồng thuận chấp nhận rung nhĩ, ngừng mọi nỗ lực chuyển nhịp.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
+        <div class="sec-subtitle">Đánh Giá Triệu Chứng Bằng Thang Điểm mEHRA Hiệu Chỉnh</div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.5rem; margin-top: 0.5rem;">
+          <div style="padding: 0.6rem 0.8rem; background: var(--surface-2); border-radius: 8px; border: 1px solid var(--border-light); font-size: 0.8rem;"><strong>mEHRA 1:</strong> Không triệu chứng</div>
+          <div style="padding: 0.6rem 0.8rem; background: var(--surface-2); border-radius: 8px; border: 1px solid var(--border-light); font-size: 0.8rem;"><strong>mEHRA 2a:</strong> Nhẹ, sinh hoạt bình thường</div>
+          <div style="padding: 0.6rem 0.8rem; background: var(--surface-2); border-radius: 8px; border: 1px solid var(--border-light); font-size: 0.8rem;"><strong>mEHRA 2b:</strong> Vừa, khó chịu nhưng chưa ảnh hưởng sinh hoạt</div>
+          <div style="padding: 0.6rem 0.8rem; background: var(--surface-2); border-radius: 8px; border: 1px solid var(--border-light); font-size: 0.8rem;"><strong>mEHRA 3:</strong> Nặng, ảnh hưởng sinh hoạt hàng ngày</div>
+          <div style="padding: 0.6rem 0.8rem; background: var(--surface-2); border-radius: 8px; border: 1px solid var(--border-light); font-size: 0.8rem;"><strong>mEHRA 4:</strong> Tàn phế, ngừng mọi hoạt động</div>
+        </div>
 
-* Các khuyến cáo điều trị và chỉ định can thiệp chính thức được chuẩn hóa theo y học chứng cứ.
-* Đánh giá nguy cơ - lợi ích dựa trên các thử nghiệm lâm sàng ngẫu nhiên có đối chứng (RCTs) quy mô lớn.
+      </div>
+    </div>
 
----
+    
+    <div class="sec-card" id="pillar-c">
+      <div class="sec-hdr"><span class="sec-hdr-icon">📌</span> <h2 class="sec-title">2. Trụ Cột [C]: Quản Lý Bệnh Đồng Mắc &amp; Yếu Tố Nguy Cơ</h2></div>
+      <div class="sec-body">
+        
+        <div class="table-wrapper">
+          <table class="med-table">
+            <thead>
+              <tr>
+                <th>Bệnh Đồng Mắc / Yếu Tố</th>
+                <th>Mục Tiêu &amp; Khuyến Cáo ESC 2024</th>
+                <th>Mức Độ Khuyến Cáo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Tăng huyết áp</strong></td>
+                <td>Đạt mục tiêu Huyết áp tâm thu <strong>120-129 mmHg</strong> và Tâm trương <strong>70-79 mmHg</strong> ở đa số người lớn. Ưu tiên sử dụng thuốc <strong>ACEi hoặc ARB</strong>.</td>
+                <td><span class="badge badge-green">Class I, Level B</span></td>
+              </tr>
+              <tr>
+                <td><strong>Suy tim (HF)</strong></td>
+                <td>- Sử dụng thuốc ức chế <strong>SGLT2 (SGLT2i)</strong> cho <strong>tất cả bệnh nhân suy tim bất kể LVEF</strong> (HFrEF, HFmrEF, HFpEF).<br /> - Dùng lợi tiểu giải quyết sung huyết.<br /> - Điều trị tối ưu phác đồ suy tim chuẩn (GDMT).</td>
+                <td><span class="badge badge-green">Class I, Level A (SGLT2i)</span><br /> <span class="badge badge-green" style="margin-top:2px;">Class I, Level B/C</span></td>
+              </tr>
+              <tr>
+                <td><strong>Đái tháo đường T2</strong></td>
+                <td>Kiểm soát đường huyết chặt chẽ. Ưu tiên <strong>Metformin</strong> và/hoặc <strong>SGLT2i</strong> để chủ động phòng ngừa rung nhĩ tiến triển.</td>
+                <td><span class="badge badge-blue">Class IIa, Level B</span></td>
+              </tr>
+              <tr>
+                <td><strong>Thừa cân / Béo phì</strong></td>
+                <td>- Chương trình giảm cân tích cực đạt mục tiêu <strong>giảm ≥ 10% trọng lượng cơ thể</strong>.<br /> - Phẫu thuật Bariatric cân nhắc khi BMI ≥ 40 (hoặc ≥ 35 kèm biến chứng).</td>
+                <td><span class="badge badge-green">Class I, Level B (Giảm cân)</span><br /> <span class="badge badge-blue" style="margin-top:2px;">Class IIb, Level C</span></td>
+              </tr>
+              <tr>
+                <td><strong>Ngưng thở khi ngủ (OSA)</strong></td>
+                <td>- Điều trị bằng thở máy áp lực dương liên tục (<strong>CPAP</strong>) giúp giảm tái phát rung nhĩ.<br /> - <em>Cảnh báo:</em> <strong>Không dùng đơn thuần bảng câu hỏi</strong> để sàng lọc (cần Polysomnography hoặc thiết bị đo tại nhà).</td>
+                <td><span class="badge badge-blue">Class IIb, Level B (CPAP)</span><br /> <span class="badge badge-red" style="margin-top:2px;">Class III, Level B (Cảnh báo)</span></td>
+              </tr>
+              <tr>
+                <td><strong>Tập luyện &amp; Rượu</strong></td>
+                <td>- Tập thể lực cá thể hóa: 150-300 phút cường độ trung bình/tuần.<br /> - Hạn chế rượu nghiêm ngặt: <strong>≤ 3 đơn vị cồn tiêu chuẩn/tuần</strong> (≤ 30g cồn nguyên chất).</td>
+                <td><span class="badge badge-green">Class I, Level B</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
+      </div>
+    </div>
 
-* Áp dụng cá thể hóa trên từng đối tượng người bệnh dựa trên bối cảnh lâm sàng thực tế và các yếu tố nguy cơ đi kèm.
+    
+    <div class="sec-card" id="pillar-a">
+      <div class="sec-hdr"><span class="sec-hdr-icon">🛡️</span> <h2 class="sec-title">3. Trụ Cột [A]: Dự Phòng Đột Quỵ &amp; Thuyên Tắc Mạch (&#36;CHA_2DS_2CHA<sub>2</sub>DS<sub>2</sub>-VA)</h2></div>
+      <div class="sec-body">
+
+        <div class="infobox danger">
+          <span class="infobox-icon">🚨</span>
+          <div>
+            <strong>Thay Đổi Cốt Lõi: Thang Điểm CHA₂DS₂-VA (ESC 2024)</strong>
+            ESC 2024 **loại bỏ hoàn toàn yếu tố Giới tính nữ (Sex category)** khỏi thang điểm phân tầng nguy cơ đột quỵ. Giới tính nữ chỉ là yếu tố điều chỉnh nguy cơ phụ thuộc vào tuổi chứ không phải yếu tố nguy cơ độc lập.
+          </div>
+        </div>
+
+        
+        <div class="cdss-box">
+          <div class="cdss-title"><span>🧮 CDSS TOOL 1: MÁY TÍNH THANG ĐIỂM CHA₂DS₂-VA (ESC 2024)</span></div>
+          <div class="cdss-desc">Tích chọn các yếu tố nguy cơ của bệnh nhân để xác định chỉ định dùng thuốc kháng đông đường uống (OAC):</div>
+          
+          <div class="cdss-grid">
+            <div class="cdss-item"><label for="c1"><input type="checkbox" id="c1" class="cha-check" data-pts="1" /> <strong>C</strong> - Suy tim (HF / LVEF ≤ 40%)</label> <span class="badge badge-blue">+1 điểm</span></div>
+            <div class="cdss-item"><label for="h1"><input type="checkbox" id="h1" class="cha-check" data-pts="1" /> <strong>H</strong> - Tăng huyết áp (Hypertension)</label> <span class="badge badge-blue">+1 điểm</span></div>
+            <div class="cdss-item"><label for="a2"><input type="checkbox" id="a2" class="cha-check" data-pts="2" id="check-a2" /> <strong>A₂</strong> - Tuổi ≥ 75 (Age ≥ 75)</label> <span class="badge badge-red">+2 điểm</span></div>
+            <div class="cdss-item"><label for="d1"><input type="checkbox" id="d1" class="cha-check" data-pts="1" /> <strong>D</strong> - Đái tháo đường (Diabetes)</label> <span class="badge badge-blue">+1 điểm</span></div>
+            <div class="cdss-item"><label for="s2"><input type="checkbox" id="s2" class="cha-check" data-pts="2" /> <strong>S₂</strong> - Tiền sử Đột quỵ / TIA / Thuyên tắc</label> <span class="badge badge-red">+2 điểm</span></div>
+            <div class="cdss-item"><label for="v1"><input type="checkbox" id="v1" class="cha-check" data-pts="1" /> <strong>V</strong> - Bệnh mạch máu (CAD / PAD / Aorta)</label> <span class="badge badge-blue">+1 điểm</span></div>
+            <div class="cdss-item"><label for="a1"><input type="checkbox" id="a1" class="cha-check" data-pts="1" id="check-a1" /> <strong>A</strong> - Tuổi 65–74 (Age 65-74)</label> <span class="badge badge-blue">+1 điểm</span></div>
+          </div>
+
+          <div class="cdss-result">
+            <div class="cdss-score" id="cha-score-display">Tổng điểm CHA₂DS₂-VA: 0 điểm</div>
+            <div class="cdss-recommendation" id="cha-rec-display">
+              <strong>Khuyến cáo điều trị:</strong> Nguy cơ thuyên tắc mạch rất thấp. Không khuyến cáo dùng thuốc kháng đông OAC.
+            </div>
+          </div>
+        </div>
+
+        <div class="sec-subtitle">Quy Tắc Lựa Chọn Thuốc Kháng Đông (OAC)</div>
+        <ul style="padding-left: 1.25rem; font-size: 0.88rem; line-height: 1.7; margin-bottom: 1rem;">
+          <li><strong>Kháng đông DOAC (Apixaban, Dabigatran, Edoxaban, Rivaroxaban)</strong> được <strong>khuyến cáo ưu tiên hàng đầu</strong> hơn VKA do giảm 50% nguy cơ xuất huyết nội sọ (<span class="badge badge-green">Class I, Level A</span>).</li>
+          <li><strong>Bắt buộc dùng VKA (Warfarin/Acenocoumarol):</strong> Bệnh nhân có <strong>Van tim cơ học</strong> hoặc <strong>Hẹp van hai lá mức độ vừa đến nặng</strong> (<span class="badge badge-green">Class I, Level A</span>). Target INR 2.0–3.0, TTR &gt; 70%.</li>
+          <li><strong>Trường hợp đặc biệt:</strong> Khuyến cáo dùng OAC cho <strong>tất cả bệnh nhân Rung nhĩ kèm Bệnh cơ tim phì đại (HCM) hoặc Bệnh thâm nhiễm tinh bột tim (Cardiac Amyloidosis)</strong>, bất kể điểm số CHA₂DS₂-VA (<span class="badge badge-green">Class I, Level B</span>).</li>
+          <li><strong style="color: var(--red);">Chống chỉ định (Class III):</strong> KHÔNG dùng aspirin/clopidogrel đơn thuần để dự phòng đột quỵ do AF (<span class="badge badge-red">Class III, Level A</span>). KHÔNG dựa vào thể rung nhĩ (kịch phát vs vĩnh viễn) để quyết định dừng OAC (<span class="badge badge-red">Class III, Level B</span>).</li>
+        </ul>
+
+        
+        <div class="cdss-box">
+          <div class="cdss-title"><span>💊 CDSS TOOL 2: BỘ TRA CỨU LIỀU &amp; TIÊU CHUẨN GIẢM LIỀU DOAC (ESC 2024)</span></div>
+          <div class="cdss-desc">Nhập thông số bệnh nhân để tra cứu liều chuẩn và điều kiện giảm liều theo ESC 2024 Bảng 11:</div>
+          
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1rem;">
+            <div class="form-group">
+              <label for="doac-select">Chọn thuốc DOAC:</label>
+              <select id="doac-select" class="form-control">
+                <option value="apixaban">Apixaban (Eliquis)</option>
+                <option value="dabigatran">Dabigatran (Pradaxa)</option>
+                <option value="edoxaban">Edoxaban (Lixiana)</option>
+                <option value="rivaroxaban">Rivaroxaban (Xarelto)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="doac-age">Tuổi bệnh nhân:</label>
+              <input type="number" id="doac-age" class="form-control" value="70" min="18" max="110" />
+            </div>
+            <div class="form-group">
+              <label for="doac-weight">Cân nặng (kg):</label>
+              <input type="number" id="doac-weight" class="form-control" value="65" min="30" max="200" />
+            </div>
+            <div class="form-group">
+              <label for="doac-scr">Creatinine huyết thanh (µmol/L):</label>
+              <input type="number" id="doac-scr" class="form-control" value="90" min="30" max="600" />
+            </div>
+            <div class="form-group">
+              <label for="doac-crcl">CrCl tính toán (mL/phút):</label>
+              <input type="number" id="doac-crcl" class="form-control" value="60" min="5" max="200" />
+            </div>
+          </div>
+
+          <div class="cdss-result" id="doac-result-box">
+            <div class="cdss-score" id="doac-dose-title" style="color: var(--green);">Liều Khuyến Cáo: Apixaban 5 mg x 2 lần/ngày</div>
+            <div class="cdss-recommendation" id="doac-dose-detail">
+              <strong>Tiêu chuẩn giảm liều:</strong> Giảm xuống 2.5 mg x 2 lần/ngày nếu đáp ứng ít nhất 2/3 tiêu chuẩn: Tuổi ≥ 80, Cân nặng ≤ 60 kg, Creatinine ≥ 133 µmol/L.
+            </div>
+          </div>
+        </div>
+
+        
+        <div class="cdss-box">
+          <div class="cdss-title"><span>🩸 CDSS TOOL 3: PHÁC ĐỒ KHÁNG ĐÔNG PHỐI HỢP KHI KÈM ACS HOẶC CAN THIỆP PCI</span></div>
+          <div class="cdss-desc">Chọn bệnh cảnh lâm sàng để xem mốc thời gian phối hợp kháng đông OAC + kháng tiểu cầu:</div>
+          
+          <div class="form-group" style="max-width: 400px; margin-bottom: 1rem;">
+            <label for="acs-scenario">Bệnh cảnh lâm sàng:</label>
+            <select id="acs-scenario" class="form-control">
+              <option value="acs_pci">Hội chứng mạch vành cấp (ACS) + PCI</option>
+              <option value="ccs_pci">Can thiệp PCI chương (CCS)</option>
+              <option value="acs_med">ACS Điều trị nội khoa thuần túy</option>
+              <option value="ccs_stable">Bệnh động mạch vành mạn ổn định (&gt; 12 tháng)</option>
+            </select>
+          </div>
+
+          <div class="timeline-strip" id="acs-timeline-display">
+            
+          </div>
+          
+          <div class="cdss-recommendation" id="acs-detail-display" style="margin-top: 0.75rem; font-size: 0.82rem;">
+            <strong>Nguyên tắc:</strong> Ngừng Aspirin sớm ngay sau thủ thuật (≤ 1 tuần). Ưu tiên phối hợp OAC + Clopidogrel (P2Y12i).
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    
+    <div class="sec-card" id="pillar-r">
+      <div class="sec-hdr"><span class="sec-hdr-icon">⚡</span> <h2 class="sec-title">4. Trụ Cột [R]: Giảm Triệu Chứng (Rate / Rhythm Control &amp; Ablation)</h2></div>
+      <div class="sec-body">
+        
+        <div class="sec-subtitle">Kiểm Soát Tần Số Thất (Rate Control)</div>
+        <ul style="padding-left: 1.25rem; font-size: 0.88rem; line-height: 1.7; margin-bottom: 1rem;">
+          <li><strong>Mục tiêu tần số tim:</strong> Kiểm soát nhẹ nhàng (Lenient rate control) với <strong>tần số lúc nghỉ &lt; 110 lần/phút</strong> (<span class="badge badge-blue">Class IIa, Level B</span>).</li>
+          <li><strong>Bệnh nhân LVEF &gt; 40%:</strong> Lựa chọn hàng đầu gồm Thuốc chẹn beta, Diltiazem, Verapamil hoặc Digoxin (<span class="badge badge-green">Class I, Level B</span>).</li>
+          <li><strong>Bệnh nhân LVEF ≤ 40% (HFrEF):</strong> Thuốc chẹn beta và/hoặc Digoxin (<span class="badge badge-green">Class I, Level B</span>). <strong style="color: var(--red);">Chống chỉ định Verapamil/Diltiazem</strong> do tác dụng ức chế co bóp cơ tim.</li>
+        </ul>
+
+        
+        <div class="cdss-box">
+          <div class="cdss-title"><span>⚡ CDSS TOOL 4: THUẬT TOÁN CHUYỂN NHỊP &amp; QUY TẮC KHÁNG ĐÔNG 24H / 3 TUẦN</span></div>
+          <div class="cdss-desc">Trả lời các câu hỏi lâm sàng để nhận quy trình chuyển nhịp cấp cứu hoặc chương trình:</div>
+          
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 1rem;">
+            <div class="form-group">
+              <label for="cv-hemo">Tình trạng Huyết động:</label>
+              <select id="cv-hemo" class="form-control">
+                <option value="stable">Ổn định</option>
+                <option value="unstable">Không ổn định (Tụt huyết áp, Sốc, Đau ngực cấp, Phù phổi)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="cv-duration">Thời gian khởi phát cơn AF:</label>
+              <select id="cv-duration" class="form-control">
+                <option value="under24">&lt; 24 giờ (Khởi phát chắc chắn)</option>
+                <option value="over24">≥ 24 giờ hoặc Không rõ thời gian</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="cv-oac">Đã dùng OAC đủ ≥ 3 tuần liên tục?</label>
+              <select id="cv-oac" class="form-control">
+                <option value="no">Chưa hoặc Không rõ</option>
+                <option value="yes">Đã dùng đủ ≥ 3 tuần</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="cv-toe">Kết quả Siêu âm tim qua thực quản (TOE):</label>
+              <select id="cv-toe" class="form-control">
+                <option value="none">Chưa làm TOE</option>
+                <option value="negative">Âm tính (Không có huyết khối tiểu nhĩ)</option>
+                <option value="positive">Dương tính (Có huyết khối tiểu nhĩ)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="cdss-result" id="cv-result-display">
+            
+          </div>
+        </div>
+
+        <div class="sec-subtitle">Can Thiệp Triệt Đốt Rung Nhĩ Qua Ống Thông (Catheter Ablation)</div>
+        <div class="infobox success">
+          <span class="infobox-icon">🌟</span>
+          <div>
+            <strong>Khuyến Cáo Class I Hàng Đầu Cho Rung Nhĩ Kịch Phát!</strong><br />
+            ESC 2024 chính thức nâng mức khuyến cáo Triệt đốt qua ống thông cô lập tĩnh mạch phổi (PVI) thành <strong>lựa chọn hàng đầu (First-line Class I, Level A)</strong> cho bệnh nhân Rung nhĩ kịch phát có triệu chứng, đồng thuận với người bệnh mà không nhất thiết phải thất bại với thuốc chống loạn nhịp trước đó.
+          </div>
+        </div>
+
+        <ul style="padding-left: 1.25rem; font-size: 0.88rem; line-height: 1.7;">
+          <li><strong>AF Bền bỉ hoặc kháng trị thuốc:</strong> Chỉ định Triệt đốt Class I, Level A để giảm triệu chứng và ngăn tiến triển loạn nhịp.</li>
+          <li><strong>Rung nhĩ kèm Suy tim HFrEF nghi ngờ bệnh cơ tim do nhịp nhanh:</strong> Chỉ định Triệt đốt Class I, Level B để phục hồi chức năng thất trái.</li>
+          <li><strong>Kháng đông chu phẫu triệt đốt:</strong> Khuyến cáo duy trì <strong>kháng đông không ngắt quãng (Uninterrupted OAC)</strong> trong suốt thủ thuật (<span class="badge badge-green">Class I, Level A</span>).</li>
+          <li><strong>Kháng đông sau triệt đốt:</strong> Mọi bệnh nhân bắt buộc dùng OAC <strong>tối thiểu 2 tháng sau triệt đốt</strong>. Sau 2 tháng, quyết định duy trì OAC hoàn toàn dựa vào điểm số <strong>CHA₂DS₂-VA</strong> chứ KHÔNG phụ thuộc vào việc thành công khôi phục nhịp xoang.</li>
+        </ul>
+
+      </div>
+    </div>
+
+    
+    <div class="sec-card" id="pillar-e">
+      <div class="sec-hdr"><span class="sec-hdr-icon">🔄</span> <h2 class="sec-title">5. Trụ Cột [E]: Đánh Giá Định Kỳ &amp; Theo Dõi Động (Evaluation)</h2></div>
+      <div class="sec-body">
+        <p style="font-size: 0.88rem; line-height: 1.7; margin-bottom: 1rem;">Rung nhĩ là một bệnh lý động tiến triển theo thời gian. Trụ cột <strong>[E]</strong> yêu cầu bác sĩ tái đánh giá định kỳ tối thiểu mỗi 6–12 tháng về:</p>
+        <ul style="padding-left: 1.25rem; font-size: 0.88rem; line-height: 1.7;">
+          <li>Sự xuất hiện của các yếu tố nguy cơ đột quỵ mới để cập nhật lại điểm số <strong>CHA₂DS₂-VA</strong>.</li>
+          <li>Đánh giá lại tuân thủ điều trị kháng đông OAC và chức năng thận (CrCl).</li>
+          <li>Đánh giá mức độ cải thiện triệu chứng (thang điểm mEHRA) và tác dụng phụ ngoài tim của thuốc chống loạn nhịp.</li>
+          <li>Tái phát rung nhĩ sau triệt đốt để cân nhắc triệt đốt lại (Redo-ablation).</li>
+        </ul>
+      </div>
+    </div>
+
+    
+    <div class="sec-card">
+      <div class="sec-hdr"><span class="sec-hdr-icon">📚</span> <h2 class="sec-title">Tài Liệu Tham Khảo &amp; Liên Kết Hệ Sinh Thái</h2></div>
+      <div class="sec-body">
+        <div class="citation-box">
+          1. Van Gelder IC, Rienstra M, Bunting KV, et al. 2024 ESC Guidelines for the management of atrial fibrillation developed in collaboration with the European Association for Cardio-Thoracic Surgery (EACTS). <em>European Heart Journal</em>. 2024;45(36):3314-3414. doi:10.1093/eurheartj/ehae176
+        </div>
+
+        <div style="margin-top: 1.5rem;">
+          <h4 style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.9rem; font-weight: 700; margin-bottom: 0.75rem;">🌐 Khám Phá Thêm Trong CliniPortal Ecosystem:</h4>
+          <div class="btn-row">
+            <a href="../../../calculators/cardiology/phan-loai-roi-loan-nhip-studio.html" class="btn btn-primary">
+              ⚡ Công Cụ Phân Loại Rối Loạn Nhịp &amp; ECG Studio
+            </a>
+            <a href="../../../calculators/renal/renal-function.html" class="btn">
+              🧮 Máy Tính Chức Năng Thận (CrCl / eGFR)
+            </a>
+            <a href="../../../pharmacology/duoc-ly.html" class="btn">
+              💊 Tra Cứu Dược Lý Thuốc Kháng Đông DOAC
+            </a>
+            <a href="../guidelines.html" class="btn">
+              📚 Tra Cứu Kho Guidelines EBM
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
