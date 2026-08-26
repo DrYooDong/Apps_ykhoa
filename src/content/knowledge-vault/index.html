@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kho Kiến Thức Y Khoa — CliniPortal Knowledge Vault</title>
+  <meta name="description" content="CliniPortal Knowledge Vault — Kho Tri Thức Y Khoa 2.400+ bài viết, Phác đồ, CRCE & Thuật toán lâm sàng">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="../../../css/main.css">
   <link rel="stylesheet" href="css/vault-hub.css">
@@ -18,50 +18,94 @@
       min-height: 100vh;
       margin: 0;
       padding: 0;
+      font-family: var(--font-body, 'Inter', sans-serif);
+      -webkit-font-smoothing: antialiased;
     }
     .vault-navbar {
-      background: var(--vault-surface);
+      background: rgba(15, 23, 42, 0.85);
       border-bottom: 1px solid var(--vault-border);
-      padding: 0.85rem 1.5rem;
+      padding: 0.75rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       position: sticky;
       top: 0;
       z-index: 100;
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+    [data-theme="light"] .vault-navbar {
+      background: rgba(255, 255, 255, 0.9);
+      border-bottom-color: rgba(226, 232, 240, 0.9);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
     }
     .vault-nav-brand {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
-      font-weight: 700;
+      gap: 0.85rem;
+      font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+      font-weight: 800;
       font-size: 1.15rem;
       color: var(--vault-text);
       text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+    .vault-nav-brand-icon {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 0.6rem;
+      background: linear-gradient(135deg, #0284c7 0%, #6366f1 100%);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.35);
     }
     .vault-nav-links {
       display: flex;
-      gap: 1rem;
+      gap: 0.65rem;
       align-items: center;
+      flex-wrap: wrap;
     }
     .vault-nav-btn {
-      padding: 0.45rem 0.85rem;
-      border-radius: 6px;
+      padding: 0.5rem 0.95rem;
+      border-radius: 0.65rem;
       border: 1px solid var(--vault-border);
       background: var(--vault-surface);
       color: var(--vault-text);
       text-decoration: none;
-      font-size: 0.85rem;
-      display: flex;
+      font-size: 0.82rem;
+      font-weight: 600;
+      display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.45rem;
       cursor: pointer;
-      transition: all 0.2s;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .vault-nav-btn:hover {
       border-color: var(--vault-primary);
       color: var(--vault-primary);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+    .vault-nav-btn--obsidian {
+      background: rgba(168, 85, 247, 0.1);
+      border-color: rgba(168, 85, 247, 0.3);
+      color: #a855f7 !important;
+      font-weight: 700;
+    }
+    .vault-nav-btn--obsidian:hover {
+      background: rgba(168, 85, 247, 0.2);
+      border-color: #a855f7;
+    }
+    .vault-nav-btn--theme {
+      width: 2.25rem;
+      height: 2.25rem;
+      padding: 0;
+      justify-content: center;
+      border-radius: 0.65rem;
     }
   </style>
 </head>
@@ -69,24 +113,26 @@
   <!-- Navigation Top Bar -->
   <header class="vault-navbar">
     <a href="../../../index.html" class="vault-nav-brand">
-      <i class="fa-solid fa-staff-snake" style="color: var(--vault-primary);"></i>
-      <span>CliniPortal <span style="font-weight:400; color:var(--vault-muted);">| Knowledge Vault</span></span>
+      <div class="vault-nav-brand-icon">
+        <i class="fa-solid fa-graduation-cap"></i>
+      </div>
+      <span>CliniPortal <span style="font-weight:500; color:var(--vault-muted); font-size: 0.95rem;">| Knowledge Vault</span></span>
     </a>
 
     <div class="vault-nav-links">
-      <a href="obsidian://open?vault=Apps_ykhoa" class="vault-nav-btn" style="color:#a855f7; border-color:rgba(168,85,247,0.3); font-weight:600;" title="Mở kho ghi chú trong ứng dụng Obsidian">
-        <i class="fa-solid fa-gem"></i> Obsidian Vault
+      <a href="obsidian://open?vault=Apps_ykhoa" class="vault-nav-btn vault-nav-btn--obsidian" title="Mở trực tiếp trong Obsidian App">
+        <i class="fa-solid fa-gem"></i> <span>Obsidian DeepLink</span>
       </a>
       <a href="../docspace/index.html" class="vault-nav-btn">
-        <i class="fa-solid fa-user-doctor"></i> DocSpace
+        <i class="fa-solid fa-user-doctor"></i> <span>DocSpace Pro</span>
       </a>
       <a href="../ebm/index.html" class="vault-nav-btn">
-        <i class="fa-solid fa-scale-balanced"></i> EBM
+        <i class="fa-solid fa-scale-balanced"></i> <span>EBM Guidelines</span>
       </a>
       <a href="../pathophysiology/co-che-benh-sinh.html" class="vault-nav-btn">
-        <i class="fa-solid fa-heart-pulse"></i> Sinh lý - SLB
+        <i class="fa-solid fa-dna"></i> <span>Cơ Chế Bệnh Sinh</span>
       </a>
-      <button id="theme-toggle" class="vault-nav-btn" title="Chuyển chế độ Sáng/Tối">
+      <button id="theme-toggle" class="vault-nav-btn vault-nav-btn--theme" title="Chuyển chế độ Sáng/Tối" aria-label="Toggle Theme">
         <i class="fa-solid fa-moon"></i>
       </button>
     </div>

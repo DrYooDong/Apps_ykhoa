@@ -11,6 +11,34 @@
   --promax-glow-amber: rgba(245, 158, 11, 0.35);
 }
 
+/* Gradient Text & Holographic Extensions */
+.physio-gradient-text {
+  background: linear-gradient(135deg, #ffffff 0%, #bae6fd 50%, #c084fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+[data-theme="light"] .physio-gradient-text {
+  background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 50%, #fed7aa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.physio-holo-hero {
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
+}
+
+.physio-kpi-holo {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.physio-kpi-holo:hover {
+  transform: translateY(-3px) !important;
+  background: rgba(255, 255, 255, 0.25) !important;
+  border-color: rgba(255, 255, 255, 0.6) !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2) !important;
+}
+
 /* Master Container */
 .promax-wrapper {
   width: 100%;

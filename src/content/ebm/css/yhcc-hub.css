@@ -38,6 +38,42 @@
       --hub-emerald-light: rgba(52, 211, 153, 0.15);
     }
 
+    /* EBM Gradient Text & Holographic Extensions */
+    .ebm-gradient-text {
+      background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    [data-theme="light"] .ebm-gradient-text {
+      background: linear-gradient(135deg, #0284c7 0%, #4f46e5 50%, #7c3aed 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .ebm-holo-hero {
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+
+    .ebm-kpi-holo:hover {
+      border-color: #38bdf8 !important;
+      background: rgba(56, 189, 248, 0.12) !important;
+      transform: translateY(-4px) !important;
+      box-shadow: 0 12px 30px rgba(56, 189, 248, 0.2) !important;
+    }
+
+    .ebm-holo-bento {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+
+    .ebm-holo-bento:hover {
+      transform: translateY(-4px) !important;
+      box-shadow: 0 14px 30px -4px var(--card-glow, rgba(2, 132, 199, 0.25)), inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+      border-color: var(--card-accent, var(--color-primary)) !important;
+    }
+
     /* ============================================================
        VIPPRO HERO COMMAND CENTER
     ============================================================ */

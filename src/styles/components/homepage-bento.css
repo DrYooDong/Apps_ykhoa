@@ -707,15 +707,21 @@
 }
 
 /* ══════════════════════════════════════════════════════════
-   FEATURE: 3 MODULE NAVIGATION CARDS (DocSpace, Cơ sở, EBM)
+   FEATURE: 4 MODULE NAVIGATION CARDS (DocSpace, Cơ sở, Tri Thức Vault, EBM)
 ══════════════════════════════════════════════════════════ */
 .module-triad-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.75rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.85rem;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1100px) {
+  .module-triad-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
   .module-triad-grid {
     grid-template-columns: 1fr;
   }
@@ -724,17 +730,18 @@
 .module-triad-card {
   display: flex;
   flex-direction: column;
-  padding: 0.95rem 1.05rem;
+  padding: 1.1rem 1.15rem;
   background: var(--glass-bg-card);
-  backdrop-filter: var(--glass-blur-sm);
-  -webkit-backdrop-filter: var(--glass-blur-sm);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
   border: 1px solid var(--glass-border);
-  border-radius: var(--glass-radius-md);
+  border-radius: var(--glass-radius-lg);
   text-decoration: none;
   color: var(--color-text);
-  transition: var(--glass-transition);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
 }
 
 .module-triad-card::before {
@@ -743,63 +750,67 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 2px;
+  height: 2.5px;
   background: var(--mod-accent, var(--color-primary));
-  opacity: 0.7;
+  opacity: 0.85;
   transition: height 0.2s ease;
 }
 
 .module-triad-card:hover {
-  transform: translateY(-2px);
+  transform: translateY(-4px);
   border-color: var(--mod-accent, var(--color-primary));
-  box-shadow: 0 6px 20px -4px var(--mod-glow, rgba(2, 132, 199, 0.25));
+  box-shadow: 0 12px 28px -4px var(--mod-glow, rgba(2, 132, 199, 0.35)), inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 .module-triad-card:hover::before {
-  height: 4px;
+  height: 4.5px;
 }
 
 .module-triad-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.6rem;
 }
 
 .module-triad-icon {
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--glass-radius-sm);
+  border-radius: 10px;
   background: var(--mod-icon-bg, rgba(2, 132, 199, 0.12));
   color: var(--mod-accent, var(--color-primary));
-  font-size: 0.95rem;
+  font-size: 1.1rem;
 }
 
 .module-triad-badge {
   font-size: 0.68rem;
-  font-weight: 700;
-  padding: 0.15rem 0.5rem;
+  font-weight: 800;
+  padding: 0.2rem 0.55rem;
   border-radius: var(--glass-radius-pill);
   background: var(--glass-bg-subtle);
   border: 1px solid var(--glass-border);
   color: var(--color-text-muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .module-triad-title {
-  font-size: 0.92rem;
-  font-weight: 700;
-  margin-bottom: 0.2rem;
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-size: 1rem;
+  font-weight: 800;
+  margin-bottom: 0.25rem;
   letter-spacing: -0.01em;
+  color: var(--color-text);
 }
 
 .module-triad-desc {
-  font-size: 0.75rem;
+  font-size: 0.76rem;
   color: var(--color-text-muted);
-  line-height: 1.4;
-  margin-bottom: 0.65rem;
+  line-height: 1.45;
+  margin-bottom: 0.75rem;
 }
 
 .module-triad-footer {
@@ -807,26 +818,36 @@
   align-items: center;
   justify-content: space-between;
   margin-top: auto;
-  font-size: 0.72rem;
-  font-weight: 600;
+  font-size: 0.75rem;
+  font-weight: 700;
   color: var(--mod-accent, var(--color-primary));
+  transition: transform 0.2s ease;
+}
+
+.module-triad-card:hover .module-triad-footer i {
+  transform: translateX(3px);
 }
 
 /* Mod Accents */
 .module-triad-card.mod-docspace {
   --mod-accent: #0284c7;
-  --mod-glow: rgba(2, 132, 199, 0.3);
+  --mod-glow: rgba(2, 132, 199, 0.35);
   --mod-icon-bg: rgba(2, 132, 199, 0.15);
 }
 .module-triad-card.mod-coso {
+  --mod-accent: #10b981;
+  --mod-glow: rgba(16, 185, 129, 0.35);
+  --mod-icon-bg: rgba(16, 185, 129, 0.15);
+}
+.module-triad-card.mod-vault {
   --mod-accent: #8b5cf6;
-  --mod-glow: rgba(139, 92, 246, 0.3);
+  --mod-glow: rgba(139, 92, 246, 0.35);
   --mod-icon-bg: rgba(139, 92, 246, 0.15);
 }
 .module-triad-card.mod-ebm {
-  --mod-accent: #06b6d4;
-  --mod-glow: rgba(6, 182, 212, 0.3);
-  --mod-icon-bg: rgba(6, 182, 212, 0.15);
+  --mod-accent: #f43f5e;
+  --mod-glow: rgba(244, 63, 94, 0.35);
+  --mod-icon-bg: rgba(244, 63, 94, 0.15);
 }
 
 /* ══════════════════════════════════════════════════════════

@@ -15,54 +15,59 @@ export function renderPathophysiologyView(activeTab: 'all' | 'sinhly' | 'ccbs' |
     <div class="promax-wrapper" id="mainContent">
 
       <!-- BREADCRUMB -->
-      <div class="breadcrumb" style="font-size: 0.85rem; color: var(--color-text-muted, #64748b); margin-bottom: 1.25rem;">
-        <a href="#/" style="color: inherit; text-decoration: none;">🏠 Trang chủ</a> &nbsp;/&nbsp; 
-        <span style="color: var(--color-primary, #0284c7); font-weight: 600;">Basic Medical Sciences (Giải Phẫu • Sinh Lý • Cơ Chế Bệnh Sinh • Hóa Sinh • Dịch Tễ Học)</span>
+      <div class="breadcrumb" style="font-size: 0.82rem; color: var(--color-text-muted, #64748b); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.45rem; font-weight: 500;">
+        <a href="#/" style="color: inherit; text-decoration: none; display: flex; align-items: center; gap: 4px;">
+          <i class="fa-solid fa-house" style="font-size: 0.75rem;"></i> Trang chủ
+        </a>
+        <span>/</span>
+        <span style="color: var(--color-primary, #0284c7); font-weight: 800; display: flex; align-items: center; gap: 4px;">
+          <i class="fa-solid fa-dna" style="font-size: 0.8rem;"></i> Cơ Sở Y Khoa (Basic Medical Sciences Framework v4.0)
+        </span>
       </div>
 
-      <!-- PROMAX LUXURY HERO SECTION -->
-      <section class="promax-hero hero-physio-theme" aria-labelledby="hero-title">
+      <!-- PROMAX LUXURY HERO SECTION (Aurora Biomedical Intelligence) -->
+      <section class="promax-hero hero-physio-theme physio-holo-hero" aria-labelledby="hero-title">
         <div class="promax-hero-grid">
           <div>
             <div class="promax-badge-pulse">
               <span class="pulse-dot"></span>
-              <span>Hệ Sinh Thái Cơ Sở Y Khoa Toàn Diện • Multi-Disciplinary Biomedical Framework</span>
+              <span>HỆ SINH THÁI CƠ SỞ Y KHOA TOÀN DIỆN • MULTI-DISCIPLINARY BIOMEDICAL SUITE</span>
             </div>
             <h1 id="hero-title" class="promax-hero-title">
-              🧬 BASIC MEDICAL SCIENCES: GP • SL • CCBS • HÓA SINH • DỊCH TỄ HỌC
+              🧬 BASIC MEDICAL SCIENCES:<br><span class="physio-gradient-text">GP • SL • CCBS • HÓA SINH • DỊCH TỄ HỌC</span>
             </h1>
             <p class="promax-hero-desc">
-              Nền tảng tri thức y khoa cơ sở cốt lõi: kết nối mật thiết giữa Giải phẫu chức năng, Sinh lý học 9 hệ cơ quan, Cơ chế bệnh sinh phân tử, Hóa sinh chuyển hóa và Dịch tễ học quần thể để giải mã bản chất các hội chứng lâm sàng.
+              Nền tảng tri thức y học cơ sở cốt lõi: kết nối mật thiết giữa Giải phẫu chức năng, Sinh lý học 9 hệ cơ quan, Cơ chế bệnh sinh phân tử, Hóa sinh chuyển hóa và Dịch tễ học quần thể để giải mã bản chất các hội chứng lâm sàng.
             </p>
 
-            <!-- KPI Metric Bar -->
+            <!-- KPI Metric Bar (4 Pillars) -->
             <div class="promax-kpi-bar">
-              <div class="promax-kpi-pill">
+              <div class="promax-kpi-pill physio-kpi-holo">
                 <i class="fa-solid fa-dna" style="font-size: 1.1rem; color: #38bdf8;"></i>
                 <div>
                   <div class="promax-kpi-num">9 Hệ</div>
-                  <div class="promax-kpi-lbl">Giải Phẫu & Sinh Lý</div>
+                  <div class="promax-kpi-lbl">Giải Phẫu &amp; Sinh Lý</div>
                 </div>
               </div>
-              <div class="promax-kpi-pill">
+              <div class="promax-kpi-pill physio-kpi-holo">
                 <i class="fa-solid fa-house-medical" style="font-size: 1.1rem; color: #34d399;"></i>
                 <div>
                   <div class="promax-kpi-num">16 CK</div>
                   <div class="promax-kpi-lbl">Cơ Chế Bệnh Sinh</div>
                 </div>
               </div>
-              <div class="promax-kpi-pill">
+              <div class="promax-kpi-pill physio-kpi-holo">
                 <i class="fa-solid fa-flask-vial" style="font-size: 1.1rem; color: #c084fc;"></i>
                 <div>
                   <div class="promax-kpi-num">31 Bài</div>
                   <div class="promax-kpi-lbl">Hóa Sinh Chuyển Hóa</div>
                 </div>
               </div>
-              <div class="promax-kpi-pill">
+              <div class="promax-kpi-pill physio-kpi-holo">
                 <i class="fa-solid fa-virus-covid" style="font-size: 1.1rem; color: #2dd4bf;"></i>
                 <div>
                   <div class="promax-kpi-num">6 Khối</div>
-                  <div class="promax-kpi-lbl">Dịch Tễ & 2×2 Solver</div>
+                  <div class="promax-kpi-lbl">Dịch Tễ &amp; 2×2 Solver</div>
                 </div>
               </div>
             </div>
@@ -70,7 +75,7 @@ export function renderPathophysiologyView(activeTab: 'all' | 'sinhly' | 'ccbs' |
 
           <!-- Hero Vector Artwork -->
           <div class="tcm-hero-decor" style="display: flex; align-items: center; justify-content: center;">
-            <svg class="dna-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 140px; height: 140px; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2));">
+            <svg class="dna-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 140px; height: 140px; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.25));">
               <path d="M20 20 Q 35 50, 50 50 T 80 80" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round" fill="none" />
               <path d="M20 80 Q 35 50, 50 50 T 80 20" stroke="#38bdf8" stroke-width="4.5" stroke-linecap="round" fill="none" opacity="0.85" />
               <line x1="26" y1="31" x2="26" y2="69" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" opacity="0.7" />

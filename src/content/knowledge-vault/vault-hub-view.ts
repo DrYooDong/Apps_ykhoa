@@ -117,74 +117,93 @@ export function renderVaultHubView(): string {
 
   return `
     <div class="vault-container">
-      <!-- Top Banner -->
-      <div class="vault-header">
+      <!-- Top Banner (Aurora Medical Magazine Hero) -->
+      <div class="vault-header vault-holo-header">
+        <div class="vault-header-glow"></div>
         <div class="vault-header-title">
-          <h1><i class="fa-solid fa-book-medical" style="color: var(--vault-primary);"></i> Kho Kiến Thức Y Khoa CliniPortal</h1>
-          <p>Hệ sinh thái tra cứu và trình đọc tri thức chuẩn mực cho ${summaries.length} phân hệ y khoa.</p>
+          <div class="vault-header-tag">
+            <span class="vault-tag-dot"></span>
+            <span>KHO TRI THỨC Y KHOA NATIVE • 2.400+ BÀI GIẢNG &amp; PHÁC ĐỒ CHUẨN EBM</span>
+          </div>
+          <h1><i class="fa-solid fa-graduation-cap" style="color: var(--vault-primary);"></i> Knowledge <span class="vault-gradient-text">Vault Pro</span></h1>
+          <p>Hệ thống bách khoa toàn thư y học, liên kết 14 kho chuyên khoa, phác đồ xử trí khẩn cấp và chuỗi phản xạ lâm sàng CRCE 5 bước.</p>
         </div>
         <div class="vault-header-stats">
           <div class="vault-stat-badge">
-            <div class="num">${summaries.length}</div>
+            <div class="num"><i class="fa-solid fa-layer-group"></i> ${summaries.length}</div>
             <div class="label">Kho Chuyên Môn</div>
           </div>
           <div class="vault-stat-badge">
-            <div class="num">${totalArticles}</div>
+            <div class="num"><i class="fa-solid fa-book-bookmark"></i> ${totalArticles}</div>
             <div class="label">Bài Viết Chuẩn</div>
           </div>
         </div>
       </div>
 
-      <!-- Group Filter Tabs -->
-      <div style="display:flex; gap:8px; margin-bottom:1rem; flex-wrap:wrap;">
-        <button class="vault-group-btn ${state.activeGroup === 'ALL' ? 'active' : ''}" data-group="ALL" style="padding:8px 16px; border-radius:8px; border:1px solid var(--vault-border); background:${state.activeGroup === 'ALL' ? 'var(--vault-primary)' : 'var(--vault-surface)'}; color:${state.activeGroup === 'ALL' ? '#fff' : 'var(--vault-text)'}; font-weight:600; font-size:13px; cursor:pointer;">
-          <i class="fa-solid fa-layer-group"></i> Tất cả Phân hệ (${totalArticles})
+      <!-- Group Filter Tabs (Pill Bar) -->
+      <div class="vault-group-tabs-bar">
+        <button class="vault-group-btn ${state.activeGroup === 'ALL' ? 'active' : ''}" data-group="ALL">
+          <i class="fa-solid fa-layer-group"></i> <span>Tất cả Phân hệ</span> <span class="vault-tab-pill-count">${totalArticles}</span>
         </button>
-        <button class="vault-group-btn ${state.activeGroup === 'CRCE' ? 'active' : ''}" data-group="CRCE" style="padding:8px 16px; border-radius:8px; border:1px solid var(--vault-border); background:${state.activeGroup === 'CRCE' ? '#f59e0b' : 'var(--vault-surface)'}; color:${state.activeGroup === 'CRCE' ? '#fff' : 'var(--vault-text)'}; font-weight:700; font-size:13px; cursor:pointer;">
-          ⚡ Chuỗi CRCE (30)
+        <button class="vault-group-btn vault-group-btn--crce ${state.activeGroup === 'CRCE' ? 'active' : ''}" data-group="CRCE">
+          <i class="fa-solid fa-bolt" style="color:#f59e0b;"></i> <span>Chuỗi CRCE</span> <span class="vault-tab-pill-count">30</span>
         </button>
-        <button class="vault-group-btn ${state.activeGroup === 'PROTOCOL' ? 'active' : ''}" data-group="PROTOCOL" style="padding:8px 16px; border-radius:8px; border:1px solid var(--vault-border); background:${state.activeGroup === 'PROTOCOL' ? '#e11d48' : 'var(--vault-surface)'}; color:${state.activeGroup === 'PROTOCOL' ? '#fff' : 'var(--vault-text)'}; font-weight:700; font-size:13px; cursor:pointer;">
-          💉 Phác Đồ (${KHO_PROTOCOLS_REGISTRY.length})
+        <button class="vault-group-btn vault-group-btn--protocol ${state.activeGroup === 'PROTOCOL' ? 'active' : ''}" data-group="PROTOCOL">
+          <i class="fa-solid fa-syringe" style="color:#f43f5e;"></i> <span>Phác Đồ</span> <span class="vault-tab-pill-count">${KHO_PROTOCOLS_REGISTRY.length}</span>
         </button>
-        <button class="vault-group-btn ${state.activeGroup === 'FLOWCHART' ? 'active' : ''}" data-group="FLOWCHART" style="padding:8px 16px; border-radius:8px; border:1px solid var(--vault-border); background:${state.activeGroup === 'FLOWCHART' ? '#0d9488' : 'var(--vault-surface)'}; color:${state.activeGroup === 'FLOWCHART' ? '#fff' : 'var(--vault-text)'}; font-weight:700; font-size:13px; cursor:pointer;">
-          🌿 Sơ Đồ Thuật Toán (${CLINICAL_FLOWCHARTS_REGISTRY.length})
+        <button class="vault-group-btn vault-group-btn--flowchart ${state.activeGroup === 'FLOWCHART' ? 'active' : ''}" data-group="FLOWCHART">
+          <i class="fa-solid fa-sitemap" style="color:#14b8a6;"></i> <span>Lưu Đồ Thuật Toán</span> <span class="vault-tab-pill-count">${CLINICAL_FLOWCHARTS_REGISTRY.length}</span>
         </button>
-        <button class="vault-group-btn ${state.activeGroup === 'FLASHCARD' ? 'active' : ''}" data-group="FLASHCARD" style="padding:8px 16px; border-radius:8px; border:1px solid var(--vault-border); background:${state.activeGroup === 'FLASHCARD' ? '#8b5cf6' : 'var(--vault-surface)'}; color:${state.activeGroup === 'FLASHCARD' ? '#fff' : 'var(--vault-text)'}; font-weight:700; font-size:13px; cursor:pointer;">
-          🧠 Thẻ Ghi Nhớ Flashcard (${DEFAULT_MEDICAL_FLASHCARDS.length})
+        <button class="vault-group-btn vault-group-btn--flashcard ${state.activeGroup === 'FLASHCARD' ? 'active' : ''}" data-group="FLASHCARD">
+          <i class="fa-solid fa-brain" style="color:#8b5cf6;"></i> <span>Flashcards</span> <span class="vault-tab-pill-count">${DEFAULT_MEDICAL_FLASHCARDS.length}</span>
         </button>
-        <button class="vault-group-btn ${state.activeGroup === 'Cơ sở' ? 'active' : ''}" data-group="Cơ sở" style="padding:8px 16px; border-radius:8px; border:1px solid var(--vault-border); background:${state.activeGroup === 'Cơ sở' ? 'var(--vault-primary)' : 'var(--vault-surface)'}; color:${state.activeGroup === 'Cơ sở' ? '#fff' : 'var(--vault-text)'}; font-weight:600; font-size:13px; cursor:pointer;">
-          🫀 1. Cơ sở (${coSoCount})
+        <button class="vault-group-btn ${state.activeGroup === 'Cơ sở' ? 'active' : ''}" data-group="Cơ sở">
+          <i class="fa-solid fa-dna" style="color:#0284c7;"></i> <span>1. Cơ sở</span> <span class="vault-tab-pill-count">${coSoCount}</span>
         </button>
-        <button class="vault-group-btn ${state.activeGroup === 'Chuyên sâu' ? 'active' : ''}" data-group="Chuyên sâu" style="padding:8px 16px; border-radius:8px; border:1px solid var(--vault-border); background:${state.activeGroup === 'Chuyên sâu' ? 'var(--vault-primary)' : 'var(--vault-surface)'}; color:${state.activeGroup === 'Chuyên sâu' ? '#fff' : 'var(--vault-text)'}; font-weight:600; font-size:13px; cursor:pointer;">
-          🩺 2. Chuyên sâu (${chuyenSauCount})
+        <button class="vault-group-btn ${state.activeGroup === 'Chuyên sâu' ? 'active' : ''}" data-group="Chuyên sâu">
+          <i class="fa-solid fa-stethoscope" style="color:#10b981;"></i> <span>2. Chuyên sâu</span> <span class="vault-tab-pill-count">${chuyenSauCount}</span>
         </button>
-        <button class="vault-group-btn ${state.activeGroup === 'Hỗ trợ' ? 'active' : ''}" data-group="Hỗ trợ" style="padding:8px 16px; border-radius:8px; border:1px solid var(--vault-border); background:${state.activeGroup === 'Hỗ trợ' ? 'var(--vault-primary)' : 'var(--vault-surface)'}; color:${state.activeGroup === 'Hỗ trợ' ? '#fff' : 'var(--vault-text)'}; font-weight:600; font-size:13px; cursor:pointer;">
-          📊 3. Hỗ trợ (${hoTroCount})
+        <button class="vault-group-btn ${state.activeGroup === 'Hỗ trợ' ? 'active' : ''}" data-group="Hỗ trợ">
+          <i class="fa-solid fa-flask" style="color:#d97706;"></i> <span>3. Hỗ trợ</span> <span class="vault-tab-pill-count">${hoTroCount}</span>
         </button>
       </div>
 
       <!-- Live Search & Control Bar at Top (Only for General Vault view) -->
       ${state.activeGroup !== 'PROTOCOL' && state.activeGroup !== 'CRCE' ? `
-      <div class="vault-control-bar" style="margin-bottom:1.5rem;">
-        <div class="vault-search-box">
-          <i class="fa-solid fa-magnifying-glass"></i>
-          <input 
-            type="text" 
-            id="vault-search-input" 
-            class="vault-search-input" 
-            placeholder="Tìm kiếm trong ${allFiltered.length} bài viết (chẩn đoán, triệu chứng, cơ chế, thuốc, ICD-10...)" 
-            value="${escapeHtml(state.searchQuery)}"
-          />
+      <div class="vault-control-bar">
+        <div class="vault-search-row">
+          <div class="vault-search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input 
+              type="text" 
+              id="vault-search-input" 
+              class="vault-search-input" 
+              placeholder="Tìm kiếm trong ${allFiltered.length} bài viết (chẩn đoán, triệu chứng, cơ chế, thuốc, ICD-10...)" 
+              value="${escapeHtml(state.searchQuery)}"
+              autocomplete="off"
+            />
+          </div>
+
+          <select id="vault-specialty-select" class="vault-filter-select">
+            <option value="ALL">Tất cả Chuyên khoa (${availableSpecialties.length})</option>
+            ${availableSpecialties.map(spec => `
+              <option value="${escapeHtml(spec)}" ${state.activeSpecialty === spec ? 'selected' : ''}>
+                ${escapeHtml(spec)}
+              </option>
+            `).join('')}
+          </select>
         </div>
 
-        <select id="vault-specialty-select" class="vault-filter-select">
-          <option value="ALL">Tất cả Chuyên khoa (${availableSpecialties.length})</option>
-          ${availableSpecialties.map(spec => `
-            <option value="${escapeHtml(spec)}" ${state.activeSpecialty === spec ? 'selected' : ''}>
-              ${escapeHtml(spec)}
-            </option>
-          `).join('')}
-        </select>
+        <!-- Quick Trending Search Chips -->
+        <div class="vault-trending-chips">
+          <span class="vault-trending-label"><i class="fa-solid fa-fire" style="color:#f59e0b;"></i> Chủ đề nóng:</span>
+          <button type="button" class="vault-trend-chip" onclick="document.getElementById('vault-search-input').value='sốc nhiễm khuẩn'; document.getElementById('vault-search-input').dispatchEvent(new Event('input'));">Sốc nhiễm khuẩn</button>
+          <button type="button" class="vault-trend-chip" onclick="document.getElementById('vault-search-input').value='sốt xuất huyết'; document.getElementById('vault-search-input').dispatchEvent(new Event('input'));">SXHD Dengue</button>
+          <button type="button" class="vault-trend-chip" onclick="document.getElementById('vault-search-input').value='khí máu'; document.getElementById('vault-search-input').dispatchEvent(new Event('input'));">Khí máu ABG</button>
+          <button type="button" class="vault-trend-chip" onclick="document.getElementById('vault-search-input').value='đột quỵ'; document.getElementById('vault-search-input').dispatchEvent(new Event('input'));">Đột quỵ cấp</button>
+          <button type="button" class="vault-trend-chip" onclick="document.getElementById('vault-search-input').value='nhồi máu cơ tim'; document.getElementById('vault-search-input').dispatchEvent(new Event('input'));">Nhồi máu cơ tim</button>
+          <button type="button" class="vault-trend-chip" onclick="document.getElementById('vault-search-input').value='suy hô hấp'; document.getElementById('vault-search-input').dispatchEvent(new Event('input'));">ARDS &amp; Thở máy</button>
+        </div>
       </div>
       ` : ''}
 
@@ -220,27 +239,28 @@ export function renderVaultHubView(): string {
           <div class="vault-kho-card ${state.activeKho === k.code ? 'active' : ''}" data-kho="${k.code}" style="--kho-color: ${k.color};">
             <div class="vault-kho-card-header">
               <div class="vault-kho-icon"><i class="fa-solid ${k.icon}"></i></div>
-              <div>
+              <div style="flex:1; min-width:0;">
                 <h3 class="vault-kho-card-title">${k.name}</h3>
                 <div class="vault-kho-card-meta">${k.articleCount} bài • ${k.specialties.length} chuyên khoa</div>
               </div>
+              <i class="fa-solid fa-chevron-right vault-kho-arrow"></i>
             </div>
           </div>
         `).join('')}
       </div>
 
       <!-- Results Section & Counter -->
-      <div id="vault-results-section" style="margin-top:1.5rem; margin-bottom: 1rem; font-size: 0.95rem; color: var(--vault-muted); display: flex; justify-content: space-between; align-items:center; flex-wrap:wrap; gap:8px;">
-        <div>
+      <div id="vault-results-section" class="vault-results-bar">
+        <div class="vault-results-text">
           ${state.activeKho !== 'ALL' && KHO_DEFINITIONS[state.activeKho] ? `
-            <span style="font-weight:700; color:var(--vault-primary); margin-right:8px;">
-              <i class="fa-solid fa-folder-open"></i> Đang xem Kho: ${KHO_DEFINITIONS[state.activeKho].name}
+            <span class="vault-active-kho-tag">
+              <i class="fa-solid fa-folder-open"></i> Kho: <strong>${KHO_DEFINITIONS[state.activeKho].name}</strong>
             </span>
           ` : ''}
           <span>Hiển thị <strong>${displayedArticles.length}</strong> / <strong>${allFiltered.length}</strong> bài viết</span>
         </div>
         ${state.searchQuery || state.activeKho !== 'ALL' || state.activeSpecialty !== 'ALL' || state.activeGroup !== 'ALL' ? `
-          <button id="vault-reset-filter" style="background:rgba(2,132,199,0.08); border:1px solid rgba(2,132,199,0.25); border-radius:6px; padding:4px 10px; color:var(--vault-primary); cursor:pointer; font-size:0.85rem; font-weight:600;">
+          <button id="vault-reset-filter" class="vault-reset-btn">
             <i class="fa-solid fa-rotate-left"></i> Đặt lại bộ lọc (Hiện tất cả)
           </button>
         ` : ''}
@@ -249,43 +269,38 @@ export function renderVaultHubView(): string {
       <!-- Articles Grid -->
       <div class="vault-articles-grid">
         ${displayedArticles.length > 0 ? displayedArticles.map(art => `
-          <div class="vault-article-card" data-id="${art.id}" data-rel="${escapeHtml(art.relPath)}">
+          <div class="vault-article-card vault-holo-card" data-id="${art.id}" data-rel="${escapeHtml(art.relPath)}">
             <div class="vault-article-top">
               <div class="vault-article-badges">
-                <span class="vault-badge" style="background: rgba(2, 132, 199, 0.1); color: var(--vault-primary);">
+                <span class="vault-badge vault-badge--kho" style="--badge-accent: ${art.khoColor || 'var(--vault-primary)'};">
                   <i class="fa-solid ${art.khoIcon}"></i> ${escapeHtml(art.khoName)}
                 </span>
-                <span class="vault-badge" style="background: rgba(100,116,139,0.1); color: var(--vault-muted);">
+                <span class="vault-badge vault-badge--spec">
                   ${escapeHtml(art.specialty)}
                 </span>
-                <span class="vault-badge" style="background: rgba(100,116,139,0.08); color: var(--vault-muted);">
-                  ${escapeHtml(art.part)}
-                </span>
                 ${art.icd10 && art.icd10.length > 0 ? `
-                  <span class="vault-badge" style="background: rgba(239, 68, 68, 0.1); color: #ef4444; font-weight:700;">
-                    ICD-10: ${escapeHtml(art.icd10[0])}
-                  </span>
-                ` : ''}
-                ${art.aliases && art.aliases.length > 1 ? `
-                  <span class="vault-badge" style="background: rgba(139, 92, 246, 0.1); color: #8b5cf6;">
-                    ${escapeHtml(art.aliases[1])}
+                  <span class="vault-badge vault-badge--icd">
+                    ICD: ${escapeHtml(art.icd10[0])}
                   </span>
                 ` : ''}
               </div>
               <h4 class="vault-article-title">${escapeHtml(art.title)}</h4>
-              <div class="vault-article-snippet">${escapeHtml(art.snippet || 'Tài liệu kiến thức y khoa chuẩn hóa.')}</div>
+              <div class="vault-article-snippet">${escapeHtml(art.snippet || 'Tài liệu kiến thức y khoa chuẩn hóa theo chứng cứ EBM.')}</div>
             </div>
 
             <div class="vault-article-footer">
-              <span><i class="fa-regular fa-clock"></i> ${art.readTime}</span>
-              <span class="action-link">Đọc bài <i class="fa-solid fa-arrow-right"></i></span>
+              <span class="vault-read-time"><i class="fa-regular fa-clock"></i> ${art.readTime}</span>
+              <span class="vault-action-link">
+                <span>Đọc bài</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </span>
             </div>
           </div>
         `).join('') : `
-          <div style="grid-column: 1 / -1; text-align: center; padding: 4rem 1rem; color: var(--vault-muted);">
-            <i class="fa-solid fa-magnifying-glass" style="font-size: 2.5rem; margin-bottom: 1rem; opacity: 0.5;"></i>
+          <div class="vault-empty-state">
+            <i class="fa-solid fa-magnifying-glass vault-empty-icon"></i>
             <h3>Không tìm thấy bài viết phù hợp</h3>
-            <p>Vui lòng thử từ khóa khác hoặc đặt lại bộ lọc.</p>
+            <p>Vui lòng thử từ khóa lâm sàng khác hoặc nhấn nút Đặt lại bộ lọc ở trên.</p>
           </div>
         `}
       </div>

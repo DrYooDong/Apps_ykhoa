@@ -12,14 +12,18 @@ export function renderEbmView(): string {
     <div class="ebm-hub-page-wrapper" style="width: 100%; max-width: 1520px; margin: 0 auto; padding-top: 1.5rem; padding-bottom: 3rem;">
       
       <!-- BREADCRUMB -->
-      <div class="breadcrumb" style="font-size: 0.85rem; color: var(--color-text-muted, #64748b); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.4rem;">
-        <a href="#/" style="color: inherit; text-decoration: none;">🏠 Trang chủ</a>
+      <div class="breadcrumb" style="font-size: 0.82rem; color: var(--color-text-muted, #64748b); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.45rem; font-weight: 500;">
+        <a href="#/" style="color: inherit; text-decoration: none; display: flex; align-items: center; gap: 4px;">
+          <i class="fa-solid fa-house" style="font-size: 0.75rem;"></i> Trang chủ
+        </a>
         <span>/</span>
-        <span style="color: var(--color-primary, #0284c7); font-weight: 700;">Y học Chứng cứ (EBM Command Center)</span>
+        <span style="color: var(--color-primary, #0284c7); font-weight: 800; display: flex; align-items: center; gap: 4px;">
+          <i class="fa-solid fa-scale-balanced" style="font-size: 0.8rem;"></i> Y Học Chứng Cứ (EBM Master Command Center)
+        </span>
       </div>
 
-      <!-- VIPPRO HERO COMMAND CENTER BANNER -->
-      <section class="hub-hero-vippro" aria-labelledby="hub-hero-title" style="margin-bottom: 2rem;">
+      <!-- VIPPRO HERO COMMAND CENTER BANNER (Aurora Medical OS Grade) -->
+      <section class="hub-hero-vippro ebm-holo-hero" aria-labelledby="hub-hero-title" style="margin-bottom: 2rem;">
         <div class="hub-hero-mesh-bg">
           <div class="hub-hero-mesh-1"></div>
           <div class="hub-hero-mesh-2"></div>
@@ -30,10 +34,10 @@ export function renderEbmView(): string {
             <div>
               <div class="hub-hero-eyebrow-badge">
                 <span class="hub-hero-pulse-dot"></span>
-                EBM Master Command Center — Evidence-Based Medicine Pro Suite
+                <span>EBM MASTER COMMAND CENTER • EVIDENCE-BASED MEDICINE PRO SUITE v4.0</span>
               </div>
               <h1 class="hub-hero-title-main" id="hub-hero-title">
-                Trung Tâm Y Học Chứng Cứ<br>& Hướng Dẫn Điều Trị Lâm Sàng
+                Trung Tâm Y Học Chứng Cứ<br>&amp; <span class="ebm-gradient-text">Hướng Dẫn Điều Trị Lâm Sàng</span>
               </h1>
             </div>
 
@@ -45,32 +49,35 @@ export function renderEbmView(): string {
           </div>
 
           <p class="hub-hero-desc">
-            Hệ thống tinh hoa tổng hợp và phân tích thiết kế nghiên cứu khoa học, phương pháp thống kê y học, tháp bằng chứng 6S, chu trình 5As và kho hướng dẫn thực hành lâm sàng EBM chuẩn hóa từ Bộ Y Tế, ESC, ADA, KDIGO, GOLD, GINA.
+            Hệ thống tinh hoa tổng hợp thiết kế nghiên cứu khoa học (RCT, Meta-analysis), phương pháp thống kê y học, tháp bằng chứng 6S, chu trình 5As và kho hướng dẫn thực hành lâm sàng EBM chuẩn hóa từ Bộ Y Tế, ESC, ADA, KDIGO, GOLD, GINA.
           </p>
 
-          <!-- OMNISEARCH BAR -->
-          <div class="hub-command-search-wrapper" style="margin-top: 1.5rem; margin-bottom: 1.5rem;">
+          <!-- OMNISEARCH BAR (Linear/Raycast Style) -->
+          <div class="hub-command-search-wrapper">
             <div class="hub-command-search">
               <i class="fa-solid fa-magnifying-glass" style="color: rgba(255,255,255,0.7); margin-right: 0.75rem; font-size: 1.1rem;"></i>
-              <input type="text" id="ebmOmniSearchInput" placeholder="Tìm kiếm nhanh 100+ phác đồ, nghiên cứu RCT, phân tích gộp, thang điểm EBM..." autocomplete="off" />
+              <input type="text" id="ebmOmniSearchInput" placeholder="Tìm nhanh phác đồ, nghiên cứu RCT, phân tích gộp, thang điểm EBM... (Ctrl + K)" autocomplete="off" />
               <span class="hub-hotkey-badge">Ctrl + K</span>
               <button type="button" id="ebmOmniSearchBtn" title="Tìm kiếm">
                 <i class="fa-solid fa-arrow-right"></i>
               </button>
             </div>
             <div class="hub-search-tags">
-              <span style="font-size: 0.72rem; color: rgba(255,255,255,0.6); font-weight: 600;">Gợi ý:</span>
-              <button type="button" class="hub-search-tag-chip js-quick-tag" data-tag="SGLT2i">SGLT2i CKD</button>
+              <span style="font-size: 0.72rem; color: rgba(255,255,255,0.7); font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em;">
+                <i class="fa-solid fa-fire" style="color:#f59e0b;"></i> Chủ đề nóng:
+              </span>
+              <button type="button" class="hub-search-tag-chip js-quick-tag" data-tag="SGLT2i">SGLT2i CKD &amp; HF</button>
               <button type="button" class="hub-search-tag-chip js-quick-tag" data-tag="Tăng huyết áp">Tăng Huyết Áp 2024</button>
               <button type="button" class="hub-search-tag-chip js-quick-tag" data-tag="COPD">GOLD 2025</button>
               <button type="button" class="hub-search-tag-chip js-quick-tag" data-tag="Kháng sinh">Kháng Sinh BYT</button>
-              <button type="button" class="hub-search-tag-chip js-quick-tag" data-tag="Meta-analysis">Meta-analysis</button>
+              <button type="button" class="hub-search-tag-chip js-quick-tag" data-tag="Meta-analysis">Meta-analysis Forest Plot</button>
+              <button type="button" class="hub-search-tag-chip js-quick-tag" data-tag="DOAC">DOACs Rung Nhĩ</button>
             </div>
           </div>
 
           <!-- REALTIME KPI METRICS GRID -->
           <div class="hub-kpi-grid">
-            <div class="hub-kpi-card">
+            <div class="hub-kpi-card ebm-kpi-holo">
               <div class="hub-kpi-top">
                 <span class="hub-kpi-label">Tổng Guidelines</span>
                 <div class="hub-kpi-icon">📚</div>
@@ -79,7 +86,7 @@ export function renderEbmView(): string {
               <div class="hub-kpi-sub">Đồng bộ tự động</div>
             </div>
 
-            <div class="hub-kpi-card">
+            <div class="hub-kpi-card ebm-kpi-holo">
               <div class="hub-kpi-top">
                 <span class="hub-kpi-label">Practice-Changing</span>
                 <div class="hub-kpi-icon">🏆</div>
@@ -88,7 +95,7 @@ export function renderEbmView(): string {
               <div class="hub-kpi-sub">Thay đổi thực hành</div>
             </div>
 
-            <div class="hub-kpi-card">
+            <div class="hub-kpi-card ebm-kpi-holo">
               <div class="hub-kpi-top">
                 <span class="hub-kpi-label">Bộ Y Tế / Hội VN</span>
                 <div class="hub-kpi-icon">🇻🇳</div>
@@ -97,7 +104,7 @@ export function renderEbmView(): string {
               <div class="hub-kpi-sub">Khuyến cáo chuẩn</div>
             </div>
 
-            <div class="hub-kpi-card">
+            <div class="hub-kpi-card ebm-kpi-holo">
               <div class="hub-kpi-top">
                 <span class="hub-kpi-label">Quốc Tế (ESC/ADA)</span>
                 <div class="hub-kpi-icon">🌐</div>
@@ -111,11 +118,11 @@ export function renderEbmView(): string {
       </section>
 
       <!-- 4 COMPACT MAIN MODULE CARDS (4 COLUMNS) -->
-      <section style="margin-bottom: 1.25rem;" aria-label="Phân hệ chính Y học chứng cứ">
+      <section style="margin-bottom: 1.5rem;" aria-label="Phân hệ chính Y học chứng cứ">
         <div class="ebm-bento-4-grid">
           
           <!-- Card 1: Thống Kê Y Học & Thiết Kế Nghiên Cứu -->
-          <a href="#/ebm/thong-ke-y-hoc" class="ebm-bento-card-compact" style="--card-accent:#0284c7; --card-icon-bg:rgba(2,132,199,0.1); --card-glow:rgba(2,132,199,0.2);">
+          <a href="#/ebm/thong-ke-y-hoc" class="ebm-bento-card-compact ebm-holo-bento" style="--card-accent:#0284c7; --card-icon-bg:rgba(2,132,199,0.1); --card-glow:rgba(2,132,199,0.2);">
             <div>
               <div class="ebm-bento-top-row-sm">
                 <div class="ebm-bento-icon-box-sm">
@@ -139,7 +146,7 @@ export function renderEbmView(): string {
           </a>
 
           <!-- Card 2: Kho Guidelines & Phác Đồ -->
-          <a href="#/ebm/kho-guidelines" class="ebm-bento-card-compact" style="--card-accent:#7c3aed; --card-icon-bg:rgba(124,58,237,0.1); --card-glow:rgba(124,58,237,0.2);">
+          <a href="#/ebm/kho-guidelines" class="ebm-bento-card-compact ebm-holo-bento" style="--card-accent:#7c3aed; --card-icon-bg:rgba(124,58,237,0.1); --card-glow:rgba(124,58,237,0.2);">
             <div>
               <div class="ebm-bento-top-row-sm">
                 <div class="ebm-bento-icon-box-sm">
@@ -163,7 +170,7 @@ export function renderEbmView(): string {
           </a>
 
           <!-- Card 3: Guideline Radar (Diff Studio) -->
-          <a href="#/ebm/radar" class="ebm-bento-card-compact" style="--card-accent:#10b981; --card-icon-bg:rgba(16,185,129,0.1); --card-glow:rgba(16,185,129,0.2);">
+          <a href="#/ebm/radar" class="ebm-bento-card-compact ebm-holo-bento" style="--card-accent:#10b981; --card-icon-bg:rgba(16,185,129,0.1); --card-glow:rgba(16,185,129,0.2);">
             <div>
               <div class="ebm-bento-top-row-sm">
                 <div class="ebm-bento-icon-box-sm">
@@ -187,7 +194,7 @@ export function renderEbmView(): string {
           </a>
 
           <!-- Card 4: EBM Practice Lab & Bedside Tools -->
-          <a href="#/ebm/ebm-lab" class="ebm-bento-card-compact" style="--card-accent:#06b6d4; --card-icon-bg:rgba(6,182,212,0.1); --card-glow:rgba(6,182,212,0.2);">
+          <a href="#/ebm/ebm-lab" class="ebm-bento-card-compact ebm-holo-bento" style="--card-accent:#06b6d4; --card-icon-bg:rgba(6,182,212,0.1); --card-glow:rgba(6,182,212,0.2);">
             <div>
               <div class="ebm-bento-top-row-sm">
                 <div class="ebm-bento-icon-box-sm">

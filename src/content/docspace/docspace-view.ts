@@ -57,19 +57,24 @@ export function renderProfileSelector(): string {
   const profileCardsHtml = hasProfiles
     ? profiles.map(p => `
         <div class="dsp-profile-card-wrapper" id="profile-card-wrap-${p.id}">
-          <button type="button" class="dsp-profile-card" data-profile-id="${escapeHtml(p.id)}" id="select-profile-${escapeHtml(p.id)}">
-            <div class="dsp-avatar dsp-avatar--profile">${getInitials(p.displayName)}</div>
+          <button type="button" class="dsp-profile-card dsp-holo-card" data-profile-id="${escapeHtml(p.id)}" id="select-profile-${escapeHtml(p.id)}">
+            <div class="dsp-profile-card-glow"></div>
+            <div class="dsp-avatar dsp-avatar--profile dsp-avatar--glowing">${getInitials(p.displayName)}</div>
             <div class="dsp-profile-info">
-              <div class="dsp-profile-name">${escapeHtml(p.displayName)}</div>
+              <div class="dsp-profile-name-row">
+                <div class="dsp-profile-name">${escapeHtml(p.displayName)}</div>
+                <span class="dsp-chip-emr-active"><i class="fa-solid fa-microchip"></i> EMR ID</span>
+              </div>
               <div class="dsp-profile-meta">
                 <span class="dsp-spec-badge"><i class="fa-solid fa-user-doctor"></i> ${escapeHtml(p.specialty || 'Bác sĩ Lâm sàng')}</span>
-                <code class="dsp-id-tag"><i class="fa-solid fa-key"></i> ${escapeHtml(p.id)}</code>
+                <code class="dsp-id-tag"><i class="fa-solid fa-fingerprint"></i> ${escapeHtml(p.id)}</code>
               </div>
               <div class="dsp-profile-date">
-                <i class="fa-solid fa-clock-rotate-left"></i> Hoạt động: ${formatRelativeDate(p.lastActiveAt)}
+                <i class="fa-solid fa-clock-rotate-left"></i> Hoạt động gần nhất: <strong>${formatRelativeDate(p.lastActiveAt)}</strong>
               </div>
             </div>
             <div class="dsp-profile-arrow-wrap">
+              <span class="dsp-profile-action-text">Vào Trực</span>
               <i class="fa-solid fa-arrow-right-to-bracket dsp-profile-arrow" title="Truy cập Workspace"></i>
             </div>
           </button>
@@ -79,27 +84,28 @@ export function renderProfileSelector(): string {
         </div>
       `).join('')
     : `
-      <div class="dsp-empty-welcome-card">
+      <div class="dsp-empty-welcome-card dsp-holo-welcome">
         <div class="dsp-empty-welcome-icon">
-          <i class="fa-solid fa-notes-medical"></i>
+          <i class="fa-solid fa-stethoscope"></i>
+          <span class="dsp-icon-radar-ping"></span>
         </div>
-        <h3 class="dsp-empty-welcome-title">Chào mừng Quý Bác sĩ!</h3>
-        <p class="dsp-empty-welcome-desc">Chưa có hồ sơ nào trên trình duyệt này. Hãy khởi tạo hồ sơ cá nhân để mở toàn bộ tính năng của <strong>DocSpace Medical OS</strong>.</p>
+        <h3 class="dsp-empty-welcome-title">Chào mừng Quý Bác sĩ tới DocSpace OS</h3>
+        <p class="dsp-empty-welcome-desc">Khởi tạo hồ sơ lâm sàng cá nhân để kích hoạt toàn bộ trạm điều khiển bệnh án SOAP, bảng bàn giao SBAR, Telemetry 24h và hệ thống ra quyết định CRCE.</p>
         
         <div class="dsp-starter-presets-box">
-          <div class="dsp-starter-presets-label"><i class="fa-solid fa-wand-magic-sparkles"></i> Hoặc chọn nhanh mẫu Bác sĩ:</div>
+          <div class="dsp-starter-presets-label"><i class="fa-solid fa-wand-magic-sparkles"></i> Khởi động nhanh với mẫu Bác sĩ chuyên khoa:</div>
           <div class="dsp-starter-chips-grid">
-            <button type="button" class="dsp-preset-chip" data-preset-id="BS_NoiKhoa_Demo" data-preset-name="BS. Nội Tổng Quát" data-preset-spec="Nội khoa Tổng quát">
-              <i class="fa-solid fa-stethoscope"></i> BS. Nội khoa
+            <button type="button" class="dsp-preset-chip dsp-preset-chip--internal" data-preset-id="BS_NoiKhoa_Demo" data-preset-name="BS. Nội Tổng Quát" data-preset-spec="Nội khoa Tổng quát">
+              <i class="fa-solid fa-stethoscope"></i> <span>BS. Nội khoa</span>
             </button>
-            <button type="button" class="dsp-preset-chip" data-preset-id="BS_CapCuuICU_Demo" data-preset-name="BS. Cấp Cứu - Hồi Sức" data-preset-spec="Cấp cứu &amp; Hồi sức tích cực (ICU)">
-              <i class="fa-solid fa-truck-medical"></i> BS. Cấp cứu ICU
+            <button type="button" class="dsp-preset-chip dsp-preset-chip--icu" data-preset-id="BS_CapCuuICU_Demo" data-preset-name="BS. Cấp Cứu - Hồi Sức" data-preset-spec="Cấp cứu &amp; Hồi sức tích cực (ICU)">
+              <i class="fa-solid fa-truck-medical"></i> <span>BS. Cấp cứu ICU</span>
             </button>
-            <button type="button" class="dsp-preset-chip" data-preset-id="BS_NhiKhoa_Demo" data-preset-name="BS. Nhi Khoa Lâm Sàng" data-preset-spec="Nhi khoa">
-              <i class="fa-solid fa-baby"></i> BS. Nhi khoa
+            <button type="button" class="dsp-preset-chip dsp-preset-chip--pediatric" data-preset-id="BS_NhiKhoa_Demo" data-preset-name="BS. Nhi Khoa Lâm Sàng" data-preset-spec="Nhi khoa">
+              <i class="fa-solid fa-baby"></i> <span>BS. Nhi khoa</span>
             </button>
-            <button type="button" class="dsp-preset-chip" data-preset-id="BS_TimMach_Demo" data-preset-name="BS. Tim Mạch Lâm Sàng" data-preset-spec="Tim mạch Can thiệp">
-              <i class="fa-solid fa-heart-pulse"></i> BS. Tim mạch
+            <button type="button" class="dsp-preset-chip dsp-preset-chip--cardio" data-preset-id="BS_TimMach_Demo" data-preset-name="BS. Tim Mạch Lâm Sàng" data-preset-spec="Tim mạch Can thiệp">
+              <i class="fa-solid fa-heart-pulse"></i> <span>BS. Tim mạch</span>
             </button>
           </div>
         </div>
@@ -108,10 +114,11 @@ export function renderProfileSelector(): string {
 
   return `
     <div class="dsp-profile-selector" id="dspProfileSelector">
-      <!-- Background Ambient Blobs -->
+      <!-- Background Ambient Aurora Blobs -->
       <div class="dsp-ambient-blob dsp-ambient-blob--1"></div>
       <div class="dsp-ambient-blob dsp-ambient-blob--2"></div>
       <div class="dsp-ambient-blob dsp-ambient-blob--3"></div>
+      <div class="dsp-ambient-mesh"></div>
 
       <div class="dsp-selector-container">
         
@@ -120,16 +127,16 @@ export function renderProfileSelector(): string {
           <div class="dsp-brand-top">
             <div class="dsp-logo-mark-wrap">
               <div class="dsp-logo-mark">
-                <i class="fa-solid fa-stethoscope"></i>
+                <i class="fa-solid fa-heart-pulse"></i>
               </div>
               <span class="dsp-pulse-ring"></span>
             </div>
             <div class="dsp-brand-badges">
-              <span class="dsp-badge-pill"><i class="fa-solid fa-shield-halved"></i> 100% Offline-First</span>
-              <span class="dsp-badge-pill dsp-badge-pill--accent"><i class="fa-solid fa-laptop-medical"></i> Clinical OS v2.4</span>
+              <span class="dsp-badge-pill"><i class="fa-solid fa-shield-halved"></i> HIPAA PHI Safe</span>
+              <span class="dsp-badge-pill dsp-badge-pill--accent"><i class="fa-solid fa-bolt"></i> Medical OS v4.0 Pro</span>
             </div>
-            <h1 class="dsp-brand-title">DocSpace Medical OS</h1>
-            <p class="dsp-brand-tagline">Hệ điều hành Lâm sàng Toàn diện &amp; Trợ lý Ra Quyết định Y khoa (CDSS)</p>
+            <h1 class="dsp-brand-title">DocSpace <span class="dsp-gradient-text">Pro Workstation</span></h1>
+            <p class="dsp-brand-tagline">Hệ điều hành Lâm sàng Toàn diện, Bệnh án Điện tử Thông minh &amp; Động cơ Quyết định Y khoa (CRCE 5 Bước)</p>
           </div>
 
           <!-- Clinical Highlights Grid -->
@@ -139,28 +146,28 @@ export function renderProfileSelector(): string {
                 <i class="fa-solid fa-notes-medical"></i>
               </div>
               <div class="dsp-feat-content">
-                <strong>Bệnh án SOAP &amp; SBAR</strong>
-                <p>Chuẩn hóa hồ sơ lâm sàng, ghi chú ca bệnh và bàn giao tua trực an toàn, khoa học.</p>
+                <strong>Bệnh án SOAP &amp; SBAR Handoff</strong>
+                <p>Chuẩn hóa ghi chú ca bệnh, cảnh báo diễn tiến bất thường và bàn giao ca trực an toàn.</p>
               </div>
             </div>
 
             <div class="dsp-brand-feat-card">
               <div class="dsp-feat-icon" style="background: rgba(139, 92, 246, 0.15); color: #8b5cf6;">
-                <i class="fa-solid fa-calculator"></i>
+                <i class="fa-solid fa-brain"></i>
               </div>
               <div class="dsp-feat-content">
-                <strong>40+ Thang điểm &amp; Phác đồ EBM</strong>
-                <p>Khí máu động mạch ABG Studio, eGFR, Thận học, Cấp cứu và Tương tác Thuốc tự động.</p>
+                <strong>Động cơ CRCE &amp; AI Copilot</strong>
+                <p>Khí máu ABG Studio, Chỉnh liều kháng sinh PK/PD, Tra cứu tương tác và phác đồ EBM.</p>
               </div>
             </div>
 
             <div class="dsp-brand-feat-card">
               <div class="dsp-feat-icon" style="background: rgba(16, 185, 129, 0.15); color: #10b981;">
-                <i class="fa-solid fa-lock"></i>
+                <i class="fa-solid fa-tower-broadcast"></i>
               </div>
               <div class="dsp-feat-content">
-                <strong>Bảo mật Thiết bị Tuyệt đối</strong>
-                <p>Dữ liệu lưu trữ độc lập trên máy cục bộ, không đẩy lên máy chủ đám mây, bảo mật PHI.</p>
+                <strong>Telemetry 24h &amp; Thiết Bị IoT</strong>
+                <p>Giám sát quỹ đạo sinh hiệu, dự báo điểm suy tạng NEWS2 và đồng bộ máy theo dõi buồng bệnh.</p>
               </div>
             </div>
 
@@ -170,7 +177,7 @@ export function renderProfileSelector(): string {
               </div>
               <div class="dsp-feat-content">
                 <strong>Chuẩn Y tế HL7 FHIR R4</strong>
-                <p>Dễ dàng sao lưu, nạp và trích xuất dữ liệu chuẩn hóa theo tiêu chuẩn quốc tế.</p>
+                <p>Bảo mật dữ liệu trên máy tính cá nhân, độc lập mạng bệnh viện, sao lưu JSON 1-click.</p>
               </div>
             </div>
           </div>
@@ -179,7 +186,7 @@ export function renderProfileSelector(): string {
           <div class="dsp-brand-footer">
             <div class="dsp-status-live">
               <span class="dsp-status-dot"></span>
-              <span>Hệ thống sẵn sàng • Độc lập mạng Bệnh viện</span>
+              <span>Trạm làm việc sẵn sàng • Sức mạnh Offline 100%</span>
             </div>
           </div>
         </div>
@@ -424,19 +431,36 @@ export async function renderDashboard(profile: DoctorProfile): Promise<string> {
 
           ${backupBanner}
           
-          <!-- Bento Hero Shift Banner -->
-          <div class="dsp-bento-hero">
+          <!-- Bento Hero Shift Banner (Aurora Medical OS Pro) -->
+          <div class="dsp-bento-hero dsp-holo-hero">
+            <div class="dsp-bento-hero-glow"></div>
             <div class="dsp-bento-hero-left">
               <div class="dsp-hero-shift-badge">
                 <span class="dsp-live-pulse-dot"></span>
-                <span>Ca Trực Đang Diễn Ra • Khoa ${escapeHtml(profile.specialty || 'Hồi Sức / Nội Tổng Quát')}</span>
+                <span class="dsp-shift-live-text"><i class="fa-solid fa-hospital-user"></i> CA TRỰC ĐANG HOẠT ĐỘNG • KHOA ${escapeHtml((profile.specialty || 'Hồi Sức / Nội Tổng Quát').toUpperCase())}</span>
               </div>
               <h1 class="dsp-bento-hero-title">
-                Chào Bác sĩ, <span class="dsp-hero-dr-name">${escapeHtml(profile.displayName)}</span>
+                Bác sĩ <span class="dsp-hero-dr-name dsp-gradient-text">${escapeHtml(profile.displayName)}</span>
               </h1>
               <p class="dsp-bento-hero-sub">
-                DocSpace v3.5 đồng bộ hệ thống CRCE 5 bước, giám sát <strong>${patients.length} buồng bệnh</strong> trực tiếp, chuẩn hóa HL7 FHIR và bảo mật dữ liệu HIPAA PHI Safe Harbor.
+                Hệ điều hành lâm sàng đồng bộ thời gian thực: Giám sát <strong>${patients.length} bệnh nhân nội trú</strong>, tích hợp Động cơ CRCE 5 bước và bảo mật HL7 FHIR Safe Harbor.
               </p>
+              
+              <!-- Quick Stats Ticker -->
+              <div class="dsp-hero-quick-vitals">
+                <div class="dsp-hero-mini-stat">
+                  <i class="fa-solid fa-bed" style="color:var(--dsp-sky);"></i>
+                  <span><strong>${patients.length}</strong> Bệnh nhân</span>
+                </div>
+                <div class="dsp-hero-mini-stat">
+                  <i class="fa-solid fa-triangle-exclamation" style="color:var(--dsp-rose);"></i>
+                  <span><strong>${criticalPatients.length}</strong> Cần chú ý</span>
+                </div>
+                <div class="dsp-hero-mini-stat">
+                  <i class="fa-solid fa-list-check" style="color:var(--dsp-amber);"></i>
+                  <span><strong>${pendingTasksList.length}</strong> Việc trực</span>
+                </div>
+              </div>
             </div>
 
             <div class="dsp-bento-hero-actions">
@@ -448,55 +472,71 @@ export async function renderDashboard(profile: DoctorProfile): Promise<string> {
                 <i class="fa-solid fa-bolt"></i>
                 <span>Kích Hoạt CRCE</span>
               </button>
-              <button type="button" class="dsp-hero-btn dsp-hero-btn--ghost" id="dspExportBtn" title="Xuất dữ liệu dự phòng">
+              <button type="button" class="dsp-hero-btn dsp-hero-btn--ghost" id="dspExportBtn" title="Sao lưu toàn bộ hồ sơ (JSON Backup)">
                 <i class="fa-solid fa-file-export"></i>
               </button>
-              <button type="button" class="dsp-hero-btn dsp-hero-btn--ghost" id="dspSwitchProfileBtn" title="Đổi hồ sơ Bác sĩ">
+              <button type="button" class="dsp-hero-btn dsp-hero-btn--ghost" id="dspSwitchProfileBtn" title="Chuyển đổi hồ sơ Bác sĩ">
                 <i class="fa-solid fa-user-doctor"></i>
               </button>
             </div>
           </div>
 
-          <!-- 4 Bento Triage Metric Counters -->
+          <!-- 4 Bento Triage Metric Counters (Glassmorphism Elevation) -->
           <div class="dsp-triage-grid">
             
             <!-- 1. Critical / Emergency -->
             <a href="#/docspace/soap" class="dsp-triage-card dsp-triage-card--critical">
+              <div class="dsp-triage-card-shine"></div>
               <div class="dsp-triage-top">
                 <span class="dsp-triage-label"><i class="fa-solid fa-circle-radiation"></i> Cấp cứu / Nguy kịch</span>
                 <span class="dsp-ping-dot dsp-ping-dot--danger"></span>
               </div>
-              <div class="dsp-triage-count">${criticalPatients.length}</div>
-              <div class="dsp-triage-desc">Cần can thiệp khẩn cấp &amp; hồi sức</div>
+              <div class="dsp-triage-count-row">
+                <div class="dsp-triage-count">${criticalPatients.length}</div>
+                <span class="dsp-triage-unit">ca</span>
+              </div>
+              <div class="dsp-triage-desc">Cần can thiệp khẩn cấp &amp; hồi sức sát</div>
             </a>
 
             <!-- 2. Severe / Watch -->
             <a href="#/docspace/soap" class="dsp-triage-card dsp-triage-card--severe">
+              <div class="dsp-triage-card-shine"></div>
               <div class="dsp-triage-top">
                 <span class="dsp-triage-label"><i class="fa-solid fa-triangle-exclamation"></i> Nặng / Theo dõi</span>
                 <span class="dsp-ping-dot dsp-ping-dot--warning"></span>
               </div>
-              <div class="dsp-triage-count">${severePatients.length}</div>
+              <div class="dsp-triage-count-row">
+                <div class="dsp-triage-count">${severePatients.length}</div>
+                <span class="dsp-triage-unit">ca</span>
+              </div>
               <div class="dsp-triage-desc">Cảnh báo biến chứng &amp; theo dõi sát</div>
             </a>
 
             <!-- 3. Stable / Recovering -->
             <a href="#/docspace/soap" class="dsp-triage-card dsp-triage-card--stable">
+              <div class="dsp-triage-card-shine"></div>
               <div class="dsp-triage-top">
                 <span class="dsp-triage-label"><i class="fa-solid fa-circle-check"></i> Ổn định / Xuất viện</span>
                 <span class="dsp-ping-dot dsp-ping-dot--success"></span>
               </div>
-              <div class="dsp-triage-count">${stablePatients.length}</div>
+              <div class="dsp-triage-count-row">
+                <div class="dsp-triage-count">${stablePatients.length}</div>
+                <span class="dsp-triage-unit">ca</span>
+              </div>
               <div class="dsp-triage-desc">Điều trị duy trì hoặc chờ xuất viện</div>
             </a>
 
             <!-- 4. Pending On-Call Tasks -->
             <a href="#/docspace/oncall" class="dsp-triage-card dsp-triage-card--tasks">
+              <div class="dsp-triage-card-shine"></div>
               <div class="dsp-triage-top">
                 <span class="dsp-triage-label"><i class="fa-solid fa-list-check"></i> Nhiệm vụ trực tồn đọng</span>
                 <span class="dsp-ping-dot dsp-ping-dot--info"></span>
               </div>
-              <div class="dsp-triage-count">${pendingTasksList.length}</div>
+              <div class="dsp-triage-count-row">
+                <div class="dsp-triage-count">${pendingTasksList.length}</div>
+                <span class="dsp-triage-unit">mục</span>
+              </div>
               <div class="dsp-triage-desc">Checklist ca trực chưa hoàn tất</div>
             </a>
 
