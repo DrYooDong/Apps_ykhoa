@@ -1,0 +1,75 @@
+/* ============================================================
+   BASIC MEDICAL ATOMIC: INLINE KEYWORDS & PILLS (physio-highlights.css)
+   Highlight Badges, Biomarker Pills & High-Yield Terms
+   ============================================================ */
+
+/* Primary high-yield term */
+.term-hl {
+  display: inline-block;
+  background-color: var(--color-primary-hl, rgba(2, 132, 199, 0.08));
+  color: var(--color-primary, #0284c7);
+  padding: 0.1rem 0.4rem;
+  border-radius: var(--radius-sm, 6px);
+  font-weight: 600;
+  font-size: 0.9em;
+  border: 1px solid var(--color-primary-border, rgba(2, 132, 199, 0.2));
+  margin: 0 0.1rem;
+  transition: transform var(--tr-fast, 150ms ease-out), background-color var(--tr-fast, 150ms ease-out), color var(--tr-fast, 150ms ease-out);
+}
+
+.term-hl:hover {
+  background-color: var(--color-primary, #0284c7);
+  color: var(--color-text-inverse, #ffffff);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px var(--color-primary-shadow, rgba(2, 132, 199, 0.25));
+}
+
+/* Secondary high-yield terms (Enzymes, Channels) */
+.term-hl-secondary {
+  display: inline-block;
+  background-color: var(--color-purple-hl, rgba(124, 58, 237, 0.08));
+  color: var(--color-purple, #7c3aed);
+  padding: 0.1rem 0.4rem;
+  border-radius: var(--radius-sm, 6px);
+  font-weight: 600;
+  font-size: 0.9em;
+  border: 1px solid var(--color-purple-border, rgba(124, 58, 237, 0.25));
+  margin: 0 0.1rem;
+  transition: transform var(--tr-fast, 150ms ease-out), background-color var(--tr-fast, 150ms ease-out), color var(--tr-fast, 150ms ease-out);
+}
+
+.term-hl-secondary:hover {
+  background-color: var(--color-purple, #7c3aed);
+  color: var(--color-text-inverse, #ffffff);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(124, 58, 237, 0.25);
+}
+
+/* Biomarker & Molecule Pills */
+.biomarker-pill,
+.molecule-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.15rem 0.55rem;
+  border-radius: var(--radius-full, 9999px);
+  font-family: var(--font-mono, monospace);
+  font-size: 0.78rem;
+  font-weight: 700;
+  background: var(--color-surface-2, #f8fafc);
+  color: var(--color-text, #0f172a);
+  border: 1px solid var(--color-border, #cbd5e1);
+  margin: 0.1rem;
+}
+
+.biomarker-pill.high {
+  background: var(--color-danger-hl, rgba(220, 38, 38, 0.1));
+  color: var(--color-danger, #dc2626);
+  border-color: var(--color-danger-border);
+}
+
+.biomarker-pill.normal {
+  background: var(--color-success-hl, rgba(5, 150, 105, 0.1));
+  color: var(--color-success, #059669);
+  border-color: var(--color-success-border);
+}

@@ -1,0 +1,60 @@
+/* ============================================================
+   BASIC MEDICAL ATOMIC: PROPERTIES & CONSTANTS (physio-properties.css)
+   Key-Value Properties, Starling Constants & Lab Reference Rows
+   ============================================================ */
+
+.physio-property-list {
+  background: var(--color-surface-2, #f8fafc);
+  border-radius: var(--radius-md, 12px);
+  padding: 1.25rem;
+  margin: 1.5rem 0;
+  border: 1px solid var(--color-divider, #cbd5e1);
+  list-style: none !important;
+  padding-left: 0 !important;
+}
+
+.physio-property-list li {
+  display: flex;
+  flex-direction: column;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--color-divider, #cbd5e1);
+  gap: 0.25rem;
+}
+
+.physio-property-list li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.physio-property-list li:first-child {
+  padding-top: 0;
+}
+
+.physio-property-name {
+  font-weight: 700;
+  color: var(--color-primary, #0284c7);
+  font-size: var(--text-sm, 0.88rem);
+}
+
+.physio-property-desc {
+  font-size: var(--text-sm, 0.88rem);
+  color: var(--color-text-muted, #475569);
+  line-height: 1.55;
+}
+
+@media (min-width: 640px) {
+  .physio-property-list li {
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0.75rem 0.5rem;
+  }
+
+  .physio-property-name {
+    width: 200px;
+    flex-shrink: 0;
+  }
+
+  .physio-property-desc {
+    flex: 1;
+  }
+}

@@ -1,0 +1,86 @@
+/* ============================================================
+   BASIC MEDICAL ATOMIC: CUSTOM LISTS (physio-lists.css)
+   Checklists, Arrow Navigation Lists & Bullet Indicators
+   ============================================================ */
+
+/* Checklist style */
+.physio-list-check {
+  list-style: none !important;
+  padding-left: 0.5rem !important;
+  margin-bottom: 1.5rem !important;
+}
+
+.physio-list-check li {
+  position: relative;
+  padding-left: 1.75rem !important;
+  margin-bottom: 0.65rem !important;
+  line-height: 1.6 !important;
+  font-size: var(--text-sm, 0.88rem) !important;
+  color: var(--color-text-muted, #475569) !important;
+}
+
+.physio-list-check li::before {
+  content: '✔️';
+  position: absolute;
+  left: 0;
+  top: 0.05rem;
+  font-size: 0.85rem;
+  color: var(--color-success, #059669);
+}
+
+/* Arrow list style */
+.physio-list-arrow {
+  list-style: none !important;
+  padding-left: 0.5rem !important;
+  margin-bottom: 1.5rem !important;
+}
+
+.physio-list-arrow li {
+  position: relative;
+  padding-left: 1.75rem !important;
+  margin-bottom: 0.65rem !important;
+  line-height: 1.6 !important;
+  font-size: var(--text-sm, 0.88rem) !important;
+  color: var(--color-text-muted, #475569) !important;
+}
+
+.physio-list-arrow li::before {
+  content: '➔';
+  position: absolute;
+  left: 0;
+  top: 0.05rem;
+  font-size: 0.9rem;
+  color: var(--color-primary, #0284c7);
+  transition: transform var(--tr-fast, 150ms ease-out);
+}
+
+.physio-list-arrow li:hover::before {
+  transform: translateX(3px);
+}
+
+/* Colored Dot list style */
+.physio-list-dot {
+  list-style: none !important;
+  padding-left: 0.5rem !important;
+  margin-bottom: 1.5rem !important;
+}
+
+.physio-list-dot li {
+  position: relative;
+  padding-left: 1.75rem !important;
+  margin-bottom: 0.65rem !important;
+  line-height: 1.6 !important;
+  font-size: var(--text-sm, 0.88rem) !important;
+  color: var(--color-text-muted, #475569) !important;
+}
+
+.physio-list-dot li::before {
+  content: '';
+  position: absolute;
+  left: 0.35rem;
+  top: 0.55rem;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-primary, #0284c7);
+}

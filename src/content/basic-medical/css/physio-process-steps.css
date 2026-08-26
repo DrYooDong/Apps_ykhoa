@@ -1,0 +1,86 @@
+/* ============================================================
+   BASIC MEDICAL ATOMIC: PROCESS STEPS & TIMELINES (physio-process-steps.css)
+   Sequential Step Lists, Timelines & Dynamic Counter Cards
+   ============================================================ */
+
+.physio-steps {
+  list-style: none !important;
+  padding-left: 0 !important;
+  margin: 2rem 0 !important;
+  position: relative;
+  counter-reset: step-counter;
+}
+
+.physio-steps::before {
+  content: '';
+  position: absolute;
+  top: 1rem;
+  bottom: 1rem;
+  left: 1.25rem;
+  width: 2px;
+  background: var(--color-divider, #e2e8f0);
+  z-index: 1;
+}
+
+.physio-steps li {
+  position: relative;
+  padding-left: 3.5rem;
+  margin-bottom: 1.5rem !important;
+  counter-increment: step-counter;
+}
+
+.physio-steps li:last-child {
+  margin-bottom: 0 !important;
+}
+
+.physio-steps li::before {
+  content: counter(step-counter);
+  position: absolute;
+  left: 0.25rem;
+  top: 0.25rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: var(--color-surface, #ffffff);
+  border: 2px solid var(--color-primary, #0284c7);
+  color: var(--color-primary, #0284c7);
+  font-weight: 700;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: transform var(--tr, 200ms ease-out), background-color var(--tr, 200ms ease-out), color var(--tr, 200ms ease-out);
+  box-shadow: var(--shadow-sm, 0 1px 2px rgba(0,0,0,0.05));
+}
+
+.physio-step-card {
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-divider, #e2e8f0);
+  border-radius: var(--radius-md, 12px);
+  padding: 1.25rem;
+  transition: transform var(--tr, 200ms ease-out), border-color var(--tr, 200ms ease-out), box-shadow var(--tr, 200ms ease-out);
+  box-shadow: var(--shadow-sm, 0 1px 2px rgba(0,0,0,0.05));
+}
+
+.physio-step-card:hover {
+  border-color: var(--color-primary, #0284c7);
+  transform: translateX(4px);
+  box-shadow: var(--shadow-md, 0 4px 12px rgba(0,0,0,0.08));
+}
+
+.physio-steps li:hover::before {
+  background: var(--color-primary, #0284c7);
+  color: var(--color-text-inverse, #ffffff);
+  transform: scale(1.1);
+  box-shadow: 0 0 10px var(--color-primary-shadow, rgba(2, 132, 199, 0.3));
+}
+
+.physio-step-title {
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-size: var(--text-base, 1rem);
+  font-weight: 700;
+  color: var(--color-primary, #0284c7);
+  margin-bottom: 0.5rem;
+  display: block;
+}

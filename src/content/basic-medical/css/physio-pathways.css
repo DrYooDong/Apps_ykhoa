@@ -1,0 +1,169 @@
+/* ============================================================
+   BASIC MEDICAL ATOMIC: PATHWAYS & CASCADES (physio-pathways.css)
+   Molecular Pathway Chains, Vicious Cycles & Flow Step Nodes
+   ============================================================ */
+
+/* Pathway Chains & Process Nodes */
+.pathway-chain {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0.85rem 0;
+}
+
+.pathway-node {
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: var(--radius-md, 8px);
+  padding: 0.4rem 0.75rem;
+  font-size: var(--text-xs, 0.82rem);
+  font-weight: 500;
+  white-space: nowrap;
+  color: var(--color-text, #1e293b);
+}
+
+.pathway-node.red {
+  background: var(--color-danger-hl, rgba(220, 38, 38, 0.08));
+  border-color: var(--color-danger-border, rgba(220, 38, 38, 0.3));
+  color: var(--color-danger, #dc2626);
+  font-weight: 600;
+}
+
+.pathway-node.orange {
+  background: var(--color-warning-hl, rgba(217, 119, 6, 0.08));
+  border-color: var(--color-warning-border, rgba(217, 119, 6, 0.3));
+  color: var(--color-warning, #d97706);
+  font-weight: 600;
+}
+
+.pathway-node.purple {
+  background: var(--color-purple-hl, rgba(124, 58, 237, 0.08));
+  border-color: var(--color-purple-border, rgba(124, 58, 237, 0.3));
+  color: var(--color-purple, #7c3aed);
+  font-weight: 600;
+}
+
+.pathway-node.blue {
+  background: var(--color-primary-hl, rgba(2, 132, 199, 0.08));
+  border-color: var(--color-primary-border, rgba(2, 132, 199, 0.3));
+  color: var(--color-primary, #0284c7);
+  font-weight: 600;
+}
+
+.pathway-arrow {
+  color: var(--color-text-muted, #64748b);
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+
+/* Vicious Cycles & Decompensation Steps */
+.vicious-cycle {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.06) 0%, rgba(99, 102, 241, 0.02) 100%);
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  border-radius: var(--radius-lg, 14px);
+  padding: 1.5rem;
+  margin: 1.25rem 0;
+}
+
+[data-theme="dark"] .vicious-cycle {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.12) 0%, rgba(99, 102, 241, 0.04) 100%);
+  border-color: rgba(99, 102, 241, 0.35);
+}
+
+.vicious-cycle-title {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #6366f1;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+[data-theme="dark"] .vicious-cycle-title {
+  color: #818cf8;
+}
+
+.cycle-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.cycle-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.cycle-step-num {
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  background: #6366f1;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.78rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.cycle-step-text {
+  font-size: var(--text-sm, 0.88rem);
+  padding-top: 0.15rem;
+  line-height: 1.5;
+  color: var(--color-text, #1e293b);
+}
+
+/* Flow Step Nodes */
+.flow-node-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 1rem 0;
+}
+
+.flow-step-node {
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: var(--radius-md, 10px);
+  padding: 1rem 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.flow-step-node.alert {
+  border-color: var(--color-danger-border, rgba(220, 38, 38, 0.4));
+  background: var(--color-danger-hl, rgba(220, 38, 38, 0.03));
+}
+
+.flow-step-node.warning {
+  border-color: var(--color-warning-border, rgba(217, 119, 6, 0.4));
+  background: var(--color-warning-hl, rgba(217, 119, 6, 0.03));
+}
+
+.flow-step-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.flow-badge {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  border-radius: var(--radius-sm, 8px);
+  background: var(--color-primary, #0284c7);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+}

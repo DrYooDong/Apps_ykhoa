@@ -1,0 +1,71 @@
+/* ============================================================
+   BASIC MEDICAL ATOMIC: COMPARATIVE & SUMMARY TABLES (physio-tables.css)
+   Side-by-Side Physiological Parameter Matrices & Spec Tables
+   ============================================================ */
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1.75rem 0;
+  border-radius: var(--radius-lg, 16px);
+  box-shadow: var(--shadow-sm, 0 1px 3px rgba(0, 0, 0, 0.05));
+  border: 1px solid var(--color-divider, #cbd5e1);
+  background: var(--color-surface, #ffffff);
+}
+
+.table-responsive .physio-table {
+  margin: 0;
+  box-shadow: none;
+  border: none;
+  border-radius: 0;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Comparative Table styling */
+.physio-table-compare {
+  width: 100%;
+}
+
+.physio-table-compare th {
+  background: var(--color-primary-hl, rgba(2, 132, 199, 0.08)) !important;
+  color: var(--color-primary, #0284c7) !important;
+  font-weight: 700 !important;
+  text-transform: uppercase;
+  font-size: var(--text-xs, 0.75rem);
+  letter-spacing: 0.03em;
+  padding: 0.75rem 1rem;
+}
+
+.physio-table-compare td {
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid var(--color-divider, #cbd5e1);
+}
+
+/* Highlight first column (spec comparisons) */
+.physio-table-compare td:first-child {
+  font-weight: 600;
+  color: var(--color-text, #0f172a);
+  background-color: var(--color-surface-2, #f8fafc);
+  width: 25%;
+}
+
+/* Summary Table styling */
+.physio-table-summary {
+  width: 100%;
+  font-size: var(--text-xs, 0.82rem) !important;
+}
+
+.physio-table-summary th {
+  background: var(--color-surface-offset, #f1f5f9) !important;
+  color: var(--color-text, #0f172a) !important;
+  border-bottom: 2px solid var(--color-divider, #cbd5e1) !important;
+  font-weight: 600 !important;
+  padding: 0.75rem 1rem;
+}
+
+.physio-table-summary td {
+  padding: 0.65rem 1rem !important;
+  border-bottom: 1px solid var(--color-divider, #cbd5e1);
+}
