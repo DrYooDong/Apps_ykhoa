@@ -54,11 +54,10 @@ import { PhysioAlert, PhysioQuickNav, PhysioFeedbackLoop } from '../components'
 
 # ❤️ SINH LÝ CHU KỲ TIM & CUNG LƯỢNG TIM (CARDIAC OUTPUT)
 
-<PhysioQuickNav />
+
 
 ---
 
-## 1. Các Pha Hoạt Động Trong Chu Kỳ Tim (Thời Gian 0.8 Giây) {#sec-1}
 
 Ở tần số tim nghỉ ngơi **75 nhịp/phút**, mỗi chu kỳ tim kéo dài **$0.8\text{ giây}$**, bao gồm 2 giai đoạn chính:
 
@@ -76,15 +75,14 @@ import { PhysioAlert, PhysioQuickNav, PhysioFeedbackLoop } from '../components'
 
 | Pha chu kỳ tim | Trạng thái Van Tim | Biến đổi Áp lực Tâm Thất Trái | Biến đổi Thể tích Tâm Thất Trái |
 |---|---|---|---|
-| **1. Co Đẳng Tích (Isovolumetric Contraction)** | **TẤT CẢ CÁC VAN ĐỀU ĐÓNG**<br>(Van 2 lá vừa đóng tạo tiếng **T1**) | Tăng vọt từ $10\text{ mmHg}$ lên **$80\text{ mmHg}$** | **Không đổi ở mức EDV ($120\text{ mL}$)** |
+| **1. Co Đẳng Tích (Isovolumetric Contraction)** | **TẤT CẢ CÁC VAN ĐỀU ĐÓNG**<br />(Van 2 lá vừa đóng tạo tiếng **T1**) | Tăng vọt từ $10\text{ mmHg}$ lên **$80\text{ mmHg}$** | **Không đổi ở mức EDV ($120\text{ mL}$)** |
 | **2. Tống Máu Nhanh & Chậm (Ejection)** | **Van ĐMC MỞ**, Van 2 lá ĐÓNG | Đạt đỉnh **$120\text{ mmHg}$** rồi giảm dần | **Giảm từ $120\text{ mL}$ xuống $50\text{ mL}$** (Tống $SV = 70\text{ mL}$) |
-| **3. Giãn Đẳng Tích (Isovolumetric Relaxation)** | **TẤT CẢ CÁC VAN ĐỀU ĐÓNG**<br>(Van ĐMC vừa đóng tạo tiếng **T2**) | Tụt nhanh từ $100\text{ mmHg}$ về **$< 10\text{ mmHg}$** | **Không đổi ở mức ESV ($50\text{ mL}$)** |
+| **3. Giãn Đẳng Tích (Isovolumetric Relaxation)** | **TẤT CẢ CÁC VAN ĐỀU ĐÓNG**<br />(Van ĐMC vừa đóng tạo tiếng **T2**) | Tụt nhanh từ $100\text{ mmHg}$ về **$< 10\text{ mmHg}$** | **Không đổi ở mức ESV ($50\text{ mL}$)** |
 | **4. Đổ Đầy Thất Nhanh & Chậm** | **Van 2 lá MỞ**, Van ĐMC ĐÓNG | Giữ ở mức rất thấp ($0 – 5\text{ mmHg}$) | **Tăng từ $50\text{ mL}$ lên $100\text{ mL}$** |
 | **5. Tâm Nhĩ Thu (Atrial Systole)** | Van 2 lá MỞ, Van ĐMC ĐÓNG | Tăng nhẹ lên $8 – 10\text{ mmHg}$ | **Tăng nốt lên $EDV = 120\text{ mL}$** (Nhĩ đóng góp 20%–30%) |
 
 ---
 
-## 2. Biểu Đồ Wiggers & Vòng Lặp Áp Suất - Thể Tích (PV Loop) {#sec-2}
 
 Vòng lặp Áp suất - Thể tích (Pressure-Volume Loop) là công cụ kinh điển khảo sát toàn diện huyết động học tâm thất trái:
 
@@ -110,7 +108,6 @@ Vòng lặp Áp suất - Thể tích (Pressure-Volume Loop) là công cụ kinh 
 
 ---
 
-## 3. Cung Lượng Tim & Định Luật Frank-Starling {#sec-3}
 
 ### A. Công Thức Cung Lượng Tim (Cardiac Output - CO)
 Cung lượng tim là tổng thể tích máu mà tâm thất bơm vào tuần hoàn trong thời gian 1 phút:
@@ -123,16 +120,15 @@ $$CO = HR \times SV = 75\text{ nhịp/phút} \times 70\text{ mL} \approx \mathbf
 
 $$\text{Tăng Tiền Tải (EDV)} \quad \Longrightarrow \quad \text{Kéo căng sợi cơ tim tối ưu} \quad \Longrightarrow \quad \text{Tăng Thể Tích Nhát Bóp (SV)}$$
 
-<PhysioAlert type="mechanism" title="Cơ Chế Phân Tử Của Định Luật Frank-Starling">
+
   Khi lượng máu tĩnh mạch đổ về thất tăng làm tăng thể tích cuối tâm trương (EDV), các sợi cơ tim bị kéo căng dãn từ mức $1.8\text{ }\mu\text{m}$ đến gần mức chiều dài sarcomere tối ưu ($2.2\text{ }\mu\text{m}$). Ở chiều dài này:
   1. Sự gối lên nhau giữa sợi dày Myosin và sợi mỏng Actin đạt mức lý tưởng nhất để tạo số lượng cầu nối cực đại.
   2. Màng sợi cơ tăng độ nhạy cảm dị lập thể đối với ion $Ca^{2+}$ gắn vào Troponin C.
   - **Kết quả**: Cơ tim tự động phát lực co bóp mạnh mẽ hơn để tống trọn vẹn lượng máu nhận về mà không cần can thiệp thần kinh.
-</PhysioAlert>
+
 
 ---
 
-## 4. Ba Yếu Tố Quyết Định Thể Tích Nhát Bóp: Tiền Tải, Hậu Tải, Sức Co Bóp {#sec-4}
 
 ```
                                 [THỂ TÍCH NHÁT BÓP (STROKE VOLUME)]
@@ -148,18 +144,16 @@ $$\text{Tăng Tiền Tải (EDV)} \quad \Longrightarrow \quad \text{Kéo căng s
 
 ---
 
-## 5. Sinh Lý Tiếng Tim & Tiếng Thổi Bệnh Lý {#sec-5}
 
-<PhysioAlert type="pearl" title="Bảng Phân Tích 4 Tiếng Tim (Heart Sounds)">
+
   - **Tiếng T1 (S1 - 'LUB')**: Do **ĐÓNG VAN 2 LÁ VÀ VAN 3 LÁ** ở đầu tâm thu. Nghe rõ nhất tại mỏm tim (Khoang liên sườn V đường trung đòn trái).
   - **Tiếng T2 (S2 - 'DUB')**: Do **ĐÓNG VAN ĐỘNG MẠCH CHỦ ($A_2$) VÀ VAN ĐỘNG MẠCH PHỔI ($P_2$)** ở đầu tâm trương. Nghe rõ nhất tại đáy tim (Khoang liên sườn II cạnh ức hai bên). Tách đôi sinh lý khi hít vào sâu.
   - **Tiếng T3 (S3 Gallop - Ngựa phi tâm thất)**: Do dòng máu dội nhanh và mạnh vào thành tâm thất bị giãn nhão và quá tải thể tích ở đầu tâm trương. Gặp trong **Suy tim phân suất tống máu giảm (HFrEF)** và Hở van 2 lá nặng.
   - **Tiếng T4 (S4 Gallop - Ngựa phi tâm nhĩ)**: Do tâm nhĩ co bóp tống máu vào buồng tâm thất dầy cứng, mất độ giãn nở ở cuối tâm trương. Gặp trong **Phì đại thất trái do Tăng huyết áp mạn tính** và Bệnh cơ tim phì đại.
-</PhysioAlert>
+
 
 ---
 
-## 6. Tài Liệu Tham Khảo EBM {#sec-6}
 
 1. **Hall, J. E., & Hall, M. E. (2021)**. *Guyton and Hall Textbook of Medical Physiology* (14th ed.). Philadelphia: Elsevier. Chapters 9 & 20: Cardiac Muscle & Cardiac Output.
 2. **Barrett, K. E. et al. (2019)**. *Ganong's Review of Medical Physiology* (26th ed.). New York: McGraw-Hill. Chapter 29: The Heart as a Pump.

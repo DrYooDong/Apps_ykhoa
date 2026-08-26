@@ -1,0 +1,38 @@
+---
+export interface Props {
+  type?: 'pearl' | 'info' | 'warning' | 'danger' | 'critical' | 'research' | 'success' | 'normal';
+  title?: string;
+  icon?: string;
+}
+
+const {
+  type = 'info',
+  title,
+  icon
+} = Astro.props;
+
+const defaultIcons: Record<string, string> = {
+  pearl: 'fa-gem',
+  info: 'fa-circle-info',
+  warning: 'fa-triangle-exclamation',
+  danger: 'fa-skull-crossbones',
+  critical: 'fa-triangle-exclamation',
+  research: 'fa-flask-vial',
+  success: 'fa-circle-check',
+  normal: 'fa-circle-check'
+};
+
+const iconClass = icon || defaultIcons[type] || 'fa-circle-info';
+---
+
+<div class:list={['callout', `callout-${type}`]} role="note">
+  {title && (
+    <div class="callout-header">
+      <i class:list={['fas', iconClass]}></i>
+      <span>{title}</span>
+    </div>
+  )}
+  <div class="callout-body">
+    <slot />
+  </div>
+</div>

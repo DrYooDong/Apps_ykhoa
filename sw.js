@@ -1,23 +1,20 @@
-const CACHE_NAME = 'cliniportal-v2';
+const CACHE_NAME = 'cliniportal-v2.1';
 
 // Essential App Shell resources to precache
 const PRECACHE_ASSETS = [
   './',
   './index.html',
+  './offline.html',
   './manifest.json',
-  './css/reset.css',
-  './css/main.css',
-  './css/components/header.css',
-  './css/components/sidebar.css',
-  './css/components/footer.css',
-  './css/components/homepage-widgets.css',
-  './css/components/homepage-effects.css',
-  './js/main.js',
-  './components/header.html',
-  './components/header.js',
-  './components/footer.html',
-  './components/footer.js',
-  './js/components/tool-components.js',
+  './src/styles/reset.css',
+  './src/styles/main.css',
+  './src/styles/components/header.css',
+  './src/styles/components/sidebar.css',
+  './src/styles/components/footer.css',
+  './src/styles/components/bottom-nav.css',
+  './src/styles/components/homepage-widgets.css',
+  './src/styles/components/homepage-effects.css',
+  './src/components/header.js',
   './assets/icons/app-icon.svg',
   './assets/icons/icon-192x192.png',
   './assets/icons/icon-512x512.png',
@@ -101,8 +98,8 @@ self.addEventListener('fetch', (event) => {
       }).catch(() => {
         return caches.match(req).then((cachedResp) => {
           if (cachedResp) return cachedResp;
-          // Fallback to home page if requested offline page isn't cached yet
-          return caches.match('./index.html');
+          // Fallback to home page or offline fallback page
+          return caches.match('./index.html').then(homeResp => homeResp || caches.match('./offline.html'));
         });
       })
     );

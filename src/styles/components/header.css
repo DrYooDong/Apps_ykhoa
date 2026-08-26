@@ -1139,3 +1139,66 @@
   background: #1e293b;
   border-color: #334155;
 }
+
+/* ============================================================
+   RESPONSIVE HEADER FOR MOBILE & TABLETS (<= 768px)
+   ============================================================ */
+@media (max-width: 768px) {
+  .global-header {
+    top: 0;
+    left: 0;
+    transform: none;
+    width: 100%;
+    height: 56px;
+    border-radius: 0 0 16px 16px;
+    padding: 0 0.65rem;
+    gap: 0.5rem;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+  }
+
+  .header-nav-modules {
+    display: none !important;
+  }
+
+  .logo-text {
+    font-size: 1rem;
+  }
+
+  .btn-back {
+    padding: 0.35rem 0.5rem;
+    min-height: 40px;
+    min-width: 40px;
+    justify-content: center;
+  }
+
+  .mobile-menu-btn,
+  .theme-toggle-btn,
+  .header-bookmark-btn {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .search-kbd-hint {
+    display: none;
+  }
+
+  .search-container {
+    max-width: 140px;
+  }
+
+  .search-container:focus-within {
+    max-width: 200px;
+  }
+}
+
+@media (max-width: 420px) {
+  .btn-back span {
+    display: none;
+  }
+  
+  .search-container {
+    max-width: 110px;
+  }
+}

@@ -4,6 +4,7 @@
  */
 
 import './styles/main.css';
+import './styles/components/bottom-nav.css';
 import './content/docspace/styles/docspace.css';
 import './content/knowledge-vault/css/vault-hub.css';
 import { 
@@ -76,6 +77,40 @@ function syncSidebarActiveState(): void {
   document.querySelectorAll<HTMLElement>('#appSidebar .nav-item').forEach(item => {
     const itemPath = item.getAttribute('data-path');
     const isMatch = (category === '' && itemPath === '') || (category !== '' && itemPath === category);
+    if (isMatch) {
+      item.classList.add('active');
+      item.setAttribute('aria-current', 'page');
+    } else {
+      item.classList.remove('active');
+      item.removeAttribute('aria-current');
+    }
+  });
+}
+
+/**
+ * Đồng bộ trạng thái active của Mobile Bottom Navigation Bar với Hash URL hiện tại (Phương án B: khớp 1:1 với src/content)
+ */
+function syncBottomNavActiveState(): void {
+  const rawHash = window.location.hash || '#/';
+  const clean = rawHash.replace(/^#\/?/, '').trim();
+  const firstSeg = clean.split('/')[0] || '';
+
+  document.querySelectorAll<HTMLElement>('.bottom-nav-item').forEach(item => {
+    const route = item.getAttribute('data-nav-route') || '';
+    let isMatch = false;
+
+    if (route === 'home' && (clean === '' || clean === '/')) {
+      isMatch = true;
+    } else if (route === 'basic' && (firstSeg === 'basic-medical' || firstSeg === 'pathophysiology')) {
+      isMatch = true;
+    } else if (route === 'ebm' && (firstSeg === 'ebm' || firstSeg === 'guidelines')) {
+      isMatch = true;
+    } else if (route === 'docspace' && firstSeg === 'docspace') {
+      isMatch = true;
+    } else if (route === 'vault' && (firstSeg === 'knowledge-vault' || firstSeg === 'vault')) {
+      isMatch = true;
+    }
+
     if (isMatch) {
       item.classList.add('active');
       item.setAttribute('aria-current', 'page');
@@ -697,7 +732,13 @@ function initCliniPortal(): void {
   router.init();
   setupGlobalQuickSearch();
   syncSidebarActiveState();
+  syncBottomNavActiveState();
   initHeaderModals();
+
+  window.addEventListener('hashchange', () => {
+    syncSidebarActiveState();
+    syncBottomNavActiveState();
+  });
 
   // Khởi tạo hệ thống Non-Intrusive UX (Focus Mode, Slide Drawer, Toast) và EBM Provenance
   clinicalNonIntrusiveUX.init();

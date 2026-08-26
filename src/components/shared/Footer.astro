@@ -1,0 +1,142 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="app-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand-col">
+        <div class="brand-badge">
+          <i class="fas fa-heart-pulse"></i>
+          <span>CliniPortal</span>
+        </div>
+        <p class="brand-desc">
+          Hệ sinh thái công cụ lâm sàng, y học chứng cứ và bài giảng y khoa chất lượng cao dành cho bác sĩ nội khoa và sinh viên y khoa.
+        </p>
+      </div>
+
+      <div class="footer-links-col">
+        <h5>Phân Hệ Nội Dung</h5>
+        <ul>
+          <li><a href="/sinh-ly/sl-tb-daicuong-tb">Sinh lý học Y khoa</a></li>
+          <li><a href="/dich-te-hoc/dth-dengue">Dịch tễ học lâm sàng</a></li>
+          <li><a href="/ebm/kho-guidelines">Khuyến cáo điều trị EBM</a></li>
+          <li><a href="/cong-cu">Máy tính liều & Thang điểm</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <h5>Tiêu Chuẩn & EBM</h5>
+        <ul>
+          <li><a href="https://pubmed.ncbi.nlm.nih.gov" target="_blank" rel="noopener">PubMed / Medline</a></li>
+          <li><a href="https://kdigo.org" target="_blank" rel="noopener">KDIGO Guidelines</a></li>
+          <li><a href="https://www.escardio.org" target="_blank" rel="noopener">ESC Guidelines</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; {currentYear} CliniPortal. Hệ sinh thái Y khoa Offline-first.</p>
+      <div class="footer-tags">
+        <span class="badge badge-primary">Astro 5.x</span>
+        <span class="badge badge-pearl">TypeScript Strict</span>
+        <span class="badge">Offline First</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .app-footer {
+    background-color: var(--color-surface);
+    border-top: 1px solid var(--color-border);
+    margin-top: var(--space-16);
+    padding: var(--space-12) 0 var(--space-6);
+  }
+
+  .footer-inner {
+    max-width: var(--content-wide-width);
+    margin: 0 auto;
+    padding: 0 var(--space-4);
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: var(--space-8);
+    margin-bottom: var(--space-10);
+  }
+
+  .brand-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 800;
+    color: var(--color-primary);
+    margin-bottom: var(--space-3);
+  }
+
+  .brand-desc {
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+    max-width: 420px;
+    line-height: 1.6;
+  }
+
+  .footer-links-col h5 {
+    font-size: var(--text-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-4);
+    color: var(--color-text);
+  }
+
+  .footer-links-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .footer-links-col li {
+    margin-bottom: var(--space-2);
+  }
+
+  .footer-links-col a {
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+    transition: color var(--tr-fast);
+  }
+
+  .footer-links-col a:hover {
+    color: var(--color-primary);
+  }
+
+  .footer-bottom {
+    border-top: 1px solid var(--color-divider);
+    padding-top: var(--space-6);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: var(--text-xs);
+    color: var(--color-text-faint);
+  }
+
+  .footer-tags {
+    display: flex;
+    gap: var(--space-2);
+  }
+
+  @media (max-width: 768px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
+    }
+    .footer-bottom {
+      flex-direction: column;
+      gap: var(--space-4);
+      text-align: center;
+    }
+  }
+</style>

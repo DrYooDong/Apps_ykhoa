@@ -26,6 +26,7 @@ d:\Apps_ykhoa\.agents/
 │   ├── PROJECT_OVERVIEW.md           # Tổng quan hệ sinh thái
 │   ├── FILE_MAP.md                   # Bản đồ cấu trúc file
 │   ├── WORKFLOW_CHECKLISTS.md        # Bộ bảng kiểm quy trình
+│   ├── DESIGN_SQUAD_KANBAN.md        # Bảng điều phối Kanban của Design Squad
 │   └── DESIGN_TO_CODE.md             # Hướng dẫn thiết kế sang mã nguồn
 ├── learnings/                        # Bộ nhớ học tập & Lịch sử sửa bug dự án (Lessons Learned)
 │   └── README.md
@@ -38,7 +39,8 @@ d:\Apps_ykhoa\.agents/
 │   ├── responsive-rules.md           # 6. Quy tắc Responsive Mobile-First
 │   ├── html-integrity-rules.md       # 7. Quy tắc kiểm tra toàn vẹn HTML
 │   ├── context-optimization.md       # 8. Quy tắc tối ưu hóa Context AI
-│   └── guideline-creation-rules.md   # 9. Quy tắc kiểm soát tạo Guideline & chống trùng lặp
+│   ├── guideline-creation-rules.md   # 9. Quy tắc kiểm soát tạo Guideline & chống trùng lặp
+│   └── design-squad-rules.md         # 10. Quy tắc vận hành & Merge Gate Design Squad
 └── skills/                           # Thư mục 70+ Skills chuyên môn & workflow
     ├── Agent Intelligence & Memory   # agent-memory-systems, agent-memory-checkpoint, agent-manager, state-management-patterns...
     ├── Healthcare AI & Safety        # cdss-development-patterns, emr-development-patterns, patient-safety-eval-harness, phi-pii-compliance-patterns, clinical-dialogue-standards...
@@ -57,6 +59,8 @@ d:\Apps_ykhoa\.agents/
 | Khi làm task... | Đọc file / Skill... |
 |-----------------|---------------------|
 | Bất kỳ task nào | `.agents/docs/PROJECT_OVERVIEW.md` & `rules/*.md` |
+| Thiết kế UI/UX, Component | `.agents/rules/design-squad-rules.md` & Skill `design-agent-squad` |
+| Quản lý Task Design | `.agents/docs/DESIGN_SQUAD_KANBAN.md` |
 | Tìm file cụ thể | `.agents/docs/FILE_MAP.md` |
 | Checklist quy trình (A/B/C/D) | `.agents/docs/WORKFLOW_CHECKLISTS.md` |
 | Hướng dẫn kiến trúc & Style | `src/styles/README.md` |

@@ -54,11 +54,10 @@ import { PhysioAlert, PhysioQuickNav, PhysioFeedbackLoop } from '../components'
 
 # ⚡ SINH LÝ TỦY GAI & CÁC CUNG PHẢN XẠ TỦY
 
-<PhysioQuickNav />
+
 
 ---
 
-## 1. Tổ Chức Chức Năng Của Tủy Gai: Chất Xám & Chất Trắng {#sec-1}
 
 Tủy gai (*Spinal Cord*) là trung tâm tích hợp phản xạ cấp thấp và là xa lộ dẫn truyền thông tin hai chiều giữa não bộ và ngoại vi:
 
@@ -72,12 +71,11 @@ Chia thành 3 cột (thừng): **Cột sau (Dorsal column)**, **Cột bên (Late
 
 ---
 
-## 2. Các Đường Dẫn Truyền Cảm Giác Hướng Tâm {#sec-2}
 
 | Đường dẫn truyền cảm giác | Vị trí bắt chéo | Loại cảm giác dẫn truyền |
 |---|---|---|
-| **Hệ thống Cột Sau - Liềm Trong (DCML)**<br>*(Bó Thon Gracilis & Bó Chêm Cuneatus)* | **Bắt chéo tại Hành Não** (Bắt chéo cảm giác / Decussation of medial lemniscus) | • Cảm giác bản thể sâu có ý thức (Proprioception - vị trí khớp)<br>• Cảm giác rung âm thoa (Vibration)<br>• Cảm giác phân biệt 2 điểm tinh vi (Two-point discrimination) |
-| **Bó Gai - Đồi Thị Bên (Lateral Spinothalamic)** | **Bắt chéo ngay tại Tủy Gai** (Qua mép trắng trước, cách 1–2 khoanh tủy) | • **Cảm giác Đau (Pain)**<br>• **Cảm giác Nhiệt độ (Temperature: Nóng - Lạnh)** |
+| **Hệ thống Cột Sau - Liềm Trong (DCML)**<br />*(Bó Thon Gracilis & Bó Chêm Cuneatus)* | **Bắt chéo tại Hành Não** (Bắt chéo cảm giác / Decussation of medial lemniscus) | • Cảm giác bản thể sâu có ý thức (Proprioception - vị trí khớp)<br />• Cảm giác rung âm thoa (Vibration)<br />• Cảm giác phân biệt 2 điểm tinh vi (Two-point discrimination) |
+| **Bó Gai - Đồi Thị Bên (Lateral Spinothalamic)** | **Bắt chéo ngay tại Tủy Gai** (Qua mép trắng trước, cách 1–2 khoanh tủy) | • **Cảm giác Đau (Pain)**<br />• **Cảm giác Nhiệt độ (Temperature: Nóng - Lạnh)** |
 | **Bó Gai - Đồi Thị Trước (Anterior Spinothalamic)** | **Bắt chéo ngay tại Tủy Gai** | • Cảm giác Xúc giác thô sơ và Áp lực nhẹ |
 | **Bó Gai - Tiểu Não (Spinocerebellar Tracts)** | Không bắt chéo hoặc bắt chéo 2 lần | • Cảm giác bản thể sâu vô thức phục vụ điều hòa thăng bằng của tiểu não |
 
@@ -91,7 +89,6 @@ CẢM GIÁC ĐAU & NHIỆT ĐỘ (SPINOTHALAMIC):
 
 ---
 
-## 3. Các Đường Dẫn Truyền Vận Động Ly Tâm (Bó Tháp) {#sec-3}
 
 Hệ thống vận động vỏ não chi phối tủy gai qua **Bó Tháp (Corticospinal Tract)**:
 
@@ -106,7 +103,6 @@ Hệ thống vận động vỏ não chi phối tủy gai qua **Bó Tháp (Corti
 
 ---
 
-## 4. Các Cung Phản Xạ Tủy Sống (Spinal Reflexes) {#sec-4}
 
 Mọi cung phản xạ hoàn chỉnh đều bao gồm 5 thành phần: **Thụ thể $\rightarrow$ Sợi hướng tâm $\rightarrow$ Trung tâm tích hợp (Tủy gai) $\rightarrow$ Sợi ly tâm $\rightarrow$ Cơ quan đáp ứng**.
 
@@ -115,15 +111,7 @@ Mọi cung phản xạ hoàn chỉnh đều bao gồm 5 thành phần: **Thụ t
 - **Thụ thể**: **Thoi cơ (Muscle Spindle)** nằm song song với các sợi cơ vân, phát hiện **sự thay đổi chiều dài (độ căng giãn) của cơ**.
 - **Cơ chế**: Gõ búa phản xạ vào gân bánh chè kéo căng cơ tứ đầu đùi $\rightarrow$ Sợi thần kinh **Ia** truyền xung về sừng trước tủy sống $\rightarrow$ Kích thích trực tiếp neuron vận động $\alpha$ làm **CO CƠ TỨ ĐẦU ĐÙI**, đồng thời qua interneuron ức chế làm **GIÃN CƠ ĐỐI VẬN (Cơ gấp tam đầu đùi - Hiện tượng ức chế tương hỗ Reciprocal Inhibition)**.
 
-<PhysioFeedbackLoop 
-  type="negative"
-  title="Phản Xạ Căng Cơ: Điều Hòa Chiều Dài Cơ & Trương Lực Cơ"
-  stimulus="Bắp cơ bị kéo căng giãn đột ngột ngoài ý muốn"
-  receptor="Thoi cơ (Muscle Spindle) phát xung qua sợi cảm giác Ia"
-  controlCenter="Sừng trước tủy sống đoạn tương ứng (L3-L4 đối với phản xạ gân xương bánh chè)"
-  effector="Neuron vận động Alpha kích thích cơ bị kéo căng co lại"
-  response="Bắp cơ co ngắn lại đưa chiều dài cơ trở về mức cài đặt ban đầu (Set-point)"
-/>
+
 
 ### B. Phản Xạ Gân Golgi (Inverse Myotatic Reflex)
 - **Cung phản xạ Đa Synapse**.
@@ -137,9 +125,8 @@ Mọi cung phản xạ hoàn chỉnh đều bao gồm 5 thành phần: **Thụ t
 
 ---
 
-## 5. Phân Biệt Tổn Thương UMN vs LMN & Hội Chứng Tủy EBM {#sec-5}
 
-<PhysioAlert type="danger" title="Bảng Đối Soánh: Tổn Thương Neuron Vận Động Trên (UMN) vs Dưới (LMN)">
+
   | Dấu hiệu lâm sàng | Tổn Thương UMN (Vỏ não / Bó tháp) | Tổn Thương LMN (Sừng trước tủy / Dây TK) |
   |---|---|---|
   | **Kiểu liệt** | **Liệt Cứng (Spastic Paralysis)** | **Liệt Mềm (Flaccid Paralysis)** |
@@ -148,9 +135,9 @@ Mọi cung phản xạ hoàn chỉnh đều bao gồm 5 thành phần: **Thụ t
   | **Phản xạ bệnh lý tháp** | **Dấu hiệu Babinski DƯƠNG TÍNH (+)**, Hoffman (+) | **Babinski ÂM TÍNH (-)** (Đáp ứng gập ngón) |
   | **Teo cơ** | Teo cơ do không sử dụng (xuất hiện muộn, nhẹ) | **Teo cơ nặng nề tiến triển rất nhanh** |
   | **Rung giật bó cơ (Fasciculations)** | Không có | **Có rung giật bó cơ dưới da** |
-</PhysioAlert>
 
-<PhysioAlert type="pearl" title="Hội Chứng Cắt Ngang Nửa Tủy Brown-Séquard">
+
+
   Khi tủy sống bị tổn thương cắt ngang một nửa (do chấn thương dao đâm, khối u chèn ép):
   1. **TẠI MỨC TỔN THƯƠNG**: Mất toàn bộ cảm giác và liệt mềm (LMN) ở khoanh tủy tương ứng.
   2. **DƯỚI MỨC TỔN THƯƠNG - CÙNG BÊN TỔN THƯƠNG**:
@@ -158,11 +145,10 @@ Mọi cung phản xạ hoàn chỉnh đều bao gồm 5 thành phần: **Thụ t
      - **Mất cảm giác bản thể sâu, rung âm thoa, phân biệt 2 điểm** do đứt cột sau DCML.
   3. **DƯỚI MỨC TỔN THƯƠNG - ĐỐI BÊN TỔN THƯƠNG (Dưới 1-2 khoanh tủy)**:
      - **Mất cảm giác Đau và Nhiệt độ** do đứt bó Gai - Đồi thị (vốn đã bắt chéo từ bên đối diện sang).
-</PhysioAlert>
+
 
 ---
 
-## 6. Tài Liệu Tham Khảo EBM {#sec-6}
 
 1. **Hall, J. E., & Hall, M. E. (2021)**. *Guyton and Hall Textbook of Medical Physiology* (14th ed.). Philadelphia: Elsevier. Chapter 55: Spinal Cord Motor Functions; the Cord Reflexes.
 2. **Barrett, K. E. et al. (2019)**. *Ganong's Review of Medical Physiology* (26th ed.). New York: McGraw-Hill. Chapter 12: Reflex & Voluntary Control of Posture & Movement.

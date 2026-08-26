@@ -44,6 +44,7 @@
   <link rel="stylesheet" href="./src/styles/components/clinical-calendar.css">
   <link rel="stylesheet" href="./src/styles/components/clinical-heatmap.css">
   <link rel="stylesheet" href="./src/styles/components/mui-port.css">
+  <link rel="stylesheet" href="./src/styles/components/bottom-nav.css">
 
   <!-- Core Application Entry Point (TypeScript SPA Engine) -->
   <script type="module" src="./src/index.ts"></script>
@@ -618,6 +619,40 @@
       </div>
     </div>
   </div>
+
+  <!-- ===================== MOBILE BOTTOM NAVIGATION ===================== -->
+  <nav class="mobile-bottom-nav" id="mobileBottomNav" aria-label="Điều hướng chính trên di động">
+    <a href="#/" class="bottom-nav-item active" data-nav-route="home" aria-label="Trang chủ">
+      <div class="bottom-nav-icon-wrapper">
+        <i class="fa-solid fa-house"></i>
+      </div>
+      <span class="bottom-nav-label">Trang chủ</span>
+    </a>
+    <a href="#/basic-medical" class="bottom-nav-item" data-nav-route="basic" aria-label="Cơ sở Y khoa (GP, SL, Hóa sinh, Dịch tễ)">
+      <div class="bottom-nav-icon-wrapper">
+        <i class="fa-solid fa-dna"></i>
+      </div>
+      <span class="bottom-nav-label">Cơ sở</span>
+    </a>
+    <a href="#/ebm" class="bottom-nav-item" data-nav-route="ebm" aria-label="Y học Chứng cứ & Guidelines">
+      <div class="bottom-nav-icon-wrapper">
+        <i class="fa-solid fa-flask"></i>
+      </div>
+      <span class="bottom-nav-label">Chứng cứ</span>
+    </a>
+    <a href="#/docspace" class="bottom-nav-item" data-nav-route="docspace" aria-label="DocSpace Pro">
+      <div class="bottom-nav-icon-wrapper">
+        <i class="fa-solid fa-id-badge"></i>
+      </div>
+      <span class="bottom-nav-label">DocSpace</span>
+    </a>
+    <a href="#/knowledge-vault" class="bottom-nav-item" data-nav-route="vault" aria-label="Kho Tri thức Knowledge Vault">
+      <div class="bottom-nav-icon-wrapper">
+        <i class="fa-solid fa-book-bookmark"></i>
+      </div>
+      <span class="bottom-nav-label">Kho Vault</span>
+    </a>
+  </nav>
 </body>
 
 </html>

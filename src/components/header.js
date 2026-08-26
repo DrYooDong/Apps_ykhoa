@@ -90,7 +90,71 @@ function renderHeaderHtml(projectRoot = './') {
         </button>
       </div>
     </header>
+
+    <!-- Mobile Bottom Navigation Bar (Phương án B: khớp 1:1 với src/content) -->
+    <nav class="mobile-bottom-nav" id="mobileBottomNav" aria-label="Điều hướng chính trên di động">
+      <a href="${root}index.html#/" class="bottom-nav-item" data-nav-route="home" aria-label="Trang chủ">
+        <div class="bottom-nav-icon-wrapper">
+          <i class="fa-solid fa-house"></i>
+        </div>
+        <span class="bottom-nav-label">Trang chủ</span>
+      </a>
+      <a href="${root}index.html#/basic-medical" class="bottom-nav-item" data-nav-route="basic" aria-label="Cơ sở Y khoa (GP, SL, Hóa sinh, Dịch tễ)">
+        <div class="bottom-nav-icon-wrapper">
+          <i class="fa-solid fa-dna"></i>
+        </div>
+        <span class="bottom-nav-label">Cơ sở</span>
+      </a>
+      <a href="${root}index.html#/ebm" class="bottom-nav-item" data-nav-route="ebm" aria-label="Y học Chứng cứ & Guidelines">
+        <div class="bottom-nav-icon-wrapper">
+          <i class="fa-solid fa-flask"></i>
+        </div>
+        <span class="bottom-nav-label">Chứng cứ</span>
+      </a>
+      <a href="${root}index.html#/docspace" class="bottom-nav-item" data-nav-route="docspace" aria-label="DocSpace Pro">
+        <div class="bottom-nav-icon-wrapper">
+          <i class="fa-solid fa-id-badge"></i>
+        </div>
+        <span class="bottom-nav-label">DocSpace</span>
+      </a>
+      <a href="${root}index.html#/knowledge-vault" class="bottom-nav-item" data-nav-route="vault" aria-label="Kho Tri thức Knowledge Vault">
+        <div class="bottom-nav-icon-wrapper">
+          <i class="fa-solid fa-book-bookmark"></i>
+        </div>
+        <span class="bottom-nav-label">Kho Vault</span>
+      </a>
+    </nav>
   `;
+}
+
+function syncHeaderBottomNavActive() {
+  const currentPath = window.location.pathname.toLowerCase();
+  const currentHash = (window.location.hash || '').toLowerCase();
+
+  document.querySelectorAll('.mobile-bottom-nav .bottom-nav-item').forEach(item => {
+    const route = item.getAttribute('data-nav-route');
+    let isMatch = false;
+
+    if (route === 'home') {
+      isMatch = (currentHash === '' || currentHash === '#/' || currentHash === '#') && currentPath.endsWith('index.html');
+    } else if (route === 'basic') {
+      isMatch = currentPath.includes('sinh lý') || currentPath.includes('basic') || currentPath.includes('pathophysiology') || currentHash.includes('basic') || currentHash.includes('pathophysiology');
+    } else if (route === 'ebm') {
+      isMatch = currentPath.includes('ebm') || currentPath.includes('yhcc') || currentPath.includes('guidelines') || currentHash.includes('ebm') || currentHash.includes('guidelines');
+    } else if (route === 'docspace') {
+      isMatch = currentPath.includes('docspace') || currentHash.includes('docspace');
+    } else if (route === 'vault') {
+      isMatch = currentPath.includes('vault') || currentPath.includes('knowledge') || currentHash.includes('knowledge-vault') || currentHash.includes('vault');
+    }
+
+    if (isMatch) {
+      item.classList.add('active');
+      item.setAttribute('aria-current', 'page');
+    } else {
+      item.classList.remove('active');
+      item.removeAttribute('aria-current');
+    }
+  });
 }
 
 function goBack() {
@@ -125,6 +189,10 @@ function loadHeader() {
   const headerPath = holder.dataset.headerPath || '';
   const projectRoot = getProjectRootPrefix(headerPath);
   holder.innerHTML = renderHeaderHtml(projectRoot);
+
+  // Sync active state
+  syncHeaderBottomNavActive();
+  window.addEventListener('hashchange', syncHeaderBottomNavActive);
 }
 
 if (typeof document !== 'undefined') {
@@ -138,3 +206,4 @@ if (typeof document !== 'undefined') {
 if (typeof window !== 'undefined') {
   window.goBack = goBack;
 }
+

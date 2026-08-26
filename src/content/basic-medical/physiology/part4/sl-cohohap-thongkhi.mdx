@@ -54,11 +54,10 @@ import { PhysioAlert, PhysioQuickNav, PhysioFeedbackLoop } from '../components'
 
 # 🫁 SINH LÝ CƠ HỌC HÔ HẤP & THÔNG KHÍ PHỔI
 
-<PhysioQuickNav />
+
 
 ---
 
-## 1. Cấu Trúc Chức Năng Phân Vùng Của Hệ Hô Hấp {#sec-1}
 
 Cây khí phế quản phân nhánh 23 thế hệ, được chia thành hai vùng chức năng rạch ròi:
 
@@ -73,7 +72,6 @@ Cây khí phế quản phân nhánh 23 thế hệ, được chia thành hai vùn
 
 ---
 
-## 2. Cơ Học Động Tác Hô Hấp & Áp Suất Khoang Màng Phổi {#sec-2}
 
 | Thì Hô Hấp | Cơ Tham Gia Co Bóp | Áp Suất Khoang Màng Phổi ($P_{pl}$) | Áp Suất Phế Nang ($P_{alv}$) | Luồng Khí Di Chuyển |
 |---|---|---|---|---|
@@ -82,15 +80,14 @@ Cây khí phế quản phân nhánh 23 thế hệ, được chia thành hai vùn
 | **Hít vào Gắng sức** | Cơ ức đòn chũm, Cơ bậc thang, Cơ ngực bé | Tụt sâu xuống **$-15\text{ đến }-20\text{ cmH}_2\text{O}$** | Giảm sâu **$-5\text{ cmH}_2\text{O}$** | Hút thêm khí dự trữ hít vào (IRV ~3.000 mL) |
 | **Thở ra Gắng sức** *(Chủ động)* | **Cơ thành bụng** (thẳng bụng, chéo bụng) + **Cơ liên sườn trong** | Tăng lên mức dương (**$+10\text{ đến }+30\text{ cmH}_2\text{O}$**) | Tăng vọt **$+20\text{ đến }+40\text{ cmH}_2\text{O}$** | Ép tống hết khí dự trữ thở ra (ERV ~1.100 mL) |
 
-<PhysioAlert type="pearl" title="Ý Nghĩa Sống Còn Của Áp Suất Âm Khoang Màng Phổi">
+
   Áp suất trong khoang màng phổi luôn luôn âm hơn áp suất khí quyển ($-5\text{ cmH}_2\text{O}$) do sự giằng co đối nghịch liên tục: **Nhu mô phổi luôn có xu hướng co rút đàn hồi về rốn phổi**, trong khi **Thành lồng ngực luôn có xu hướng bung nở ra ngoài**.
   
   *Hậu quả khi thủng màng phổi (Tràn khí màng phổi Pneumothorax)*: Không khí từ ngoài tràn vào làm mất áp suất âm ($P_{pl} = 0$) $\rightarrow$ Nhu mô phổi lập tức **xẹp rúm hoàn toàn (Collapse)**, thành ngực phồng to và trung thất bị đẩy lệch sang bên đối diện (Tràn khí áp lực đe dọa trụy tim mạch tử vong).
-</PhysioAlert>
+
 
 ---
 
-## 3. Định Luật Laplace & Vai Trò Của Chất Hoạt Diện Surfactant {#sec-3}
 
 Mặt trong phế nang được lót bởi một lớp dịch mỏng tạo ra **Sức căng bề mặt (Surface Tension - $T$)** có xu hướng kéo phế nang xẹp lại. Theo **Định luật Laplace**:
 
@@ -113,7 +110,6 @@ KHI CÓ SURFACTANT (Tế bào Phế nang Type II tiết):
 
 ---
 
-## 4. Các Thể Tích & Dung Tích Phổi Tiêu Chuẩn (Spirometry) {#sec-4}
 
 ```
   Dung tích toàn phổi (TLC ≈ 5.800 mL)
@@ -143,22 +139,20 @@ KHI CÓ SURFACTANT (Tế bào Phế nang Type II tiết):
 
 ---
 
-## 5. Thông Khí Phút vs Thông Khí Phế Nang Có Ích {#sec-5}
 
 - **Thông khí phút toàn phần (Minute Ventilation - $V_E$)**:
   $$V_E = RR \times TV = 12\text{ nhịp/phút} \times 500\text{ mL} = \mathbf{6.000\text{ mL/phút} = 6.0\text{ L/phút}}$$
 - **Thông khí phế nang có ích (Alveolar Ventilation - $V_A$)**: Lượng khí thực tế đến được phế nang để tham gia trao đổi oxy và $CO_2$ với mao mạch:
   $$V_A = RR \times (TV - V_D) = 12 \times (500\text{ mL} - 150\text{ mL}) = \mathbf{4.200\text{ mL/phút} = 4.2\text{ L/phút}}$$
 
-<PhysioAlert type="danger" title="Hậu Quả Sinh Lý Bệnh Của Kiểu Thở Nhanh Nông">
+
   So sánh hai người cùng có $V_E = 6.0\text{ L/phút}$:
   - *Người A (Thở sâu chậm)*: $RR = 10, TV = 600\text{ mL} \rightarrow V_A = 10 \times (600 - 150) = \mathbf{4.500\text{ mL/phút}}$ (Thông khí cực tốt).
   - *Người B (Thở nhanh nông do đau ngực/lo lắng)*: $RR = 30, TV = 200\text{ mL} \rightarrow V_A = 30 \times (200 - 150) = \mathbf{1.500\text{ mL/phút}}$ (Thông khí phế nang sụt giảm nghiêm trọng $\rightarrow$ Toan hô hấp và thiếu oxy máu nặng).
-</PhysioAlert>
+
 
 ---
 
-## 6. Tài Liệu Tham Khảo EBM {#sec-6}
 
 1. **Hall, J. E., & Hall, M. E. (2021)**. *Guyton and Hall Textbook of Medical Physiology* (14th ed.). Philadelphia: Elsevier. Chapter 38: Pulmonary Ventilation.
 2. **West, J. B., & Luks, A. M. (2021)**. *West's Respiratory Physiology: The Essentials* (11th ed.). Philadelphia: Wolters Kluwer.

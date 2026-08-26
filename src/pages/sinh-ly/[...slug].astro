@@ -1,0 +1,44 @@
+---
+import ArticleLayout from '../../components/layout/ArticleLayout.astro';
+import Alert from '../../components/ui/Alert.astro';
+import QuickNav from '../../components/ui/QuickNav.astro';
+import FeedbackLoop from '../../components/ui/FeedbackLoop.astro';
+
+export async function getStaticPaths() {
+  // Tự động nạp toàn bộ bài giảng sinh lý từ src/content/basic-medical/physiology/
+  const mdxModules = import.meta.glob('/src/content/basic-medical/physiology/**/*.mdx', { eager: true });
+  
+  return Object.entries(mdxModules).map(([path, mod]: [string, any]) => {
+    // Trích xuất slug từ đường dẫn hoặc frontmatter
+    const slug = mod.frontmatter?.slug || path.split('/').pop()?.replace(/\.mdx$/, '') || 'index';
+    return {
+      params: { slug },
+      props: {
+        entry: mod
+      }
+    };
+  });
+}
+
+const { entry } = Astro.props;
+const { Content, frontmatter } = entry;
+---
+
+<ArticleLayout
+  title={frontmatter.title}
+  description={frontmatter.description}
+  systemName={frontmatter.systemName}
+  code={frontmatter.code}
+  guytonChapter={frontmatter.guytonChapter}
+  clinicalPearls={frontmatter.clinicalPearls}
+  sections={frontmatter.sections}
+>
+  <Content components={{
+    PhysioAlert: Alert,
+    PhysioQuickNav: QuickNav,
+    PhysioFeedbackLoop: FeedbackLoop,
+    Alert,
+    QuickNav,
+    FeedbackLoop
+  }} />
+</ArticleLayout>

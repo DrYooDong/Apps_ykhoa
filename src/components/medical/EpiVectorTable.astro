@@ -1,0 +1,51 @@
+---
+export interface VectorComparisonRow {
+  characteristic: string;
+  primaryVector: string;
+  secondaryVector?: string;
+  significance?: string;
+}
+
+export interface Props {
+  title?: string;
+  primaryName: string;
+  secondaryName?: string;
+  rows?: VectorComparisonRow[];
+}
+
+const {
+  title = 'So Sánh Véc-Tơ',
+  primaryName,
+  secondaryName,
+  rows = []
+} = Astro.props;
+---
+
+<div class="clinical-table-wrapper">
+  <table class="clinical-table">
+    <thead>
+      <tr>
+        <th style="width: 25%;">{title}</th>
+        <th style="color: var(--clinical-pearl);">
+          <i class="fas fa-mosquito"></i> {primaryName} (Chính)
+        </th>
+        {secondaryName && (
+          <th style="color: var(--color-primary);">
+            <i class="fas fa-mosquito"></i> {secondaryName} (Phụ)
+          </th>
+        )}
+        <th>Ý Nghĩa Dịch Tễ Học</th>
+      </tr>
+    </thead>
+    <tbody>
+      {rows.map((row) => (
+        <tr>
+          <td><strong>{row.characteristic}</strong></td>
+          <td>{row.primaryVector}</td>
+          {secondaryName && <td>{row.secondaryVector || '—'}</td>}
+          <td>{row.significance || '—'}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>

@@ -155,3 +155,31 @@ Dùng khi chuyển đổi các phân hệ bài giảng HTML tĩnh sang kiến tr
 - [ ] **5. Kiểm thử TypeScript Compile**:
   - Chạy `npm run typecheck` $\rightarrow$ Đạt chuẩn 0 lỗi type.
 
+---
+
+## 🎨 Checklist G: Quy Trình Điều Phối Design Squad (Design Agent Squad Workflow)
+
+Dùng khi tiếp nhận bất kỳ yêu cầu thiết kế giao diện, bento layout, motion animation, tạo component mới hoặc audit UI/UX.
+
+- [ ] **1. Đăng ký Tác vụ vào Kanban Board (`DESIGN_SQUAD_KANBAN.md`)**:
+  - Ghi rõ ID, Title, Scope tệp tin, đưa vào cột `Backlog`.
+- [ ] **2. Phân Tích & Soạn Thảo Design Contract (Agent-01 Strategist)**:
+  - Áp dụng `stop-making-ui-slop` để loại bỏ dữ liệu giả, layout rập khuôn.
+  - Định rõ Job-to-be-done, phân tầng thị giác và danh mục component được phép dùng.
+  - Chuyển thẻ sang `Ready`.
+- [ ] **3. Hiện Thực Hóa Giao Diện (Agent-02 Implementation + Agent-04 Domain)**:
+  - 100% dùng Design Tokens (`var(--color-...)`), không hardcode mã màu.
+  - Kỹ thuật chuyển động: `scale(0.97)` on active, `scale(0.95)` on enter, thời lượng $< 300\text{ms}$, custom easing curve (`cubic-bezier`).
+  - Sơ đồ/lưu đồ dùng Pure Inline SVG (`flowchart-module`, `medical-editorial-diagram`).
+  - Chuyển thẻ sang `Running`.
+- [ ] **4. Kiểm Định Chất Lượng & Merge Gate (Agent-03 Auditor)**:
+  - [ ] Độ tương phản WCAG 2.1/2.2 AA ($\ge 4.5:1$).
+  - [ ] Dark Mode kiểm thử hoàn hảo (`data-theme="dark"`).
+  - [ ] Mobile 375px không vỡ khung, Touch target $\ge 44\text{px}$.
+  - [ ] `node tools/scratch/check_tags.js` 0 lỗi thẻ đóng/mở.
+  - Chuyển thẻ sang `Review`.
+- [ ] **5. Hoàn Tất & Tích Hợp (Merge Gate Pass)**:
+  - Cập nhật `docs/FILE_MAP.md`.
+  - Chuyển thẻ sang `Merged` trong `DESIGN_SQUAD_KANBAN.md`.
+
+

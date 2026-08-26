@@ -1,0 +1,104 @@
+/* ============================================================
+   CLINIPORTAL MOBILE BOTTOM NAVIGATION (bottom-nav.css)
+   Thumb-Zone Optimized • Glassmorphism • Touch-First (>=44px)
+   ============================================================ */
+
+.mobile-bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: calc(var(--bottom-nav-h, 62px) + var(--safe-bottom, env(safe-area-inset-bottom, 0px)));
+  padding-bottom: var(--safe-bottom, env(safe-area-inset-bottom, 0px));
+  background: var(--glass-bg, rgba(255, 255, 255, 0.85));
+  backdrop-filter: var(--glass-blur, blur(16px) saturate(180%));
+  -webkit-backdrop-filter: var(--glass-blur, blur(16px) saturate(180%));
+  border-top: 1px solid var(--color-border, #cbd5e1);
+  display: none;
+  align-items: center;
+  justify-content: space-around;
+  z-index: 950;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.06);
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+[data-theme="dark"] .mobile-bottom-nav {
+  background: var(--glass-bg, rgba(16, 24, 40, 0.88));
+  border-top-color: var(--color-border, #263a57);
+  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.4);
+}
+
+.bottom-nav-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--touch-min, 44px);
+  padding: 6px 4px;
+  color: var(--color-text-muted, #475569);
+  text-decoration: none;
+  font-size: 0.72rem;
+  font-weight: 500;
+  gap: 3px;
+  position: relative;
+  transition: color var(--tr-fast, 150ms ease-out), transform var(--tr-fast, 150ms ease-out);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.bottom-nav-item:active {
+  transform: scale(0.92);
+}
+
+.bottom-nav-icon-wrapper {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  transition: transform var(--tr-fast, 150ms ease-out), color var(--tr-fast, 150ms ease-out);
+}
+
+.bottom-nav-label {
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  line-height: 1.1;
+}
+
+/* Active State */
+.bottom-nav-item.active {
+  color: var(--color-primary, oklch(58% 0.18 225));
+  font-weight: 700;
+}
+
+.bottom-nav-item.active .bottom-nav-icon-wrapper {
+  transform: translateY(-2px);
+}
+
+.bottom-nav-item.active::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24px;
+  height: 3px;
+  border-radius: 0 0 3px 3px;
+  background: var(--color-primary, oklch(58% 0.18 225));
+  box-shadow: 0 1px 8px var(--color-primary, oklch(58% 0.18 225));
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .mobile-bottom-nav {
+    display: flex;
+  }
+  
+  body {
+    padding-bottom: calc(var(--bottom-nav-h, 62px) + var(--safe-bottom, env(safe-area-inset-bottom, 0px)) + 12px) !important;
+  }
+}

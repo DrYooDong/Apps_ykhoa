@@ -4,11 +4,14 @@
   "description": "CliniPortal — Hệ sinh thái Web & App Y khoa Offline Đa nền tảng",
   "main": "platforms/desktop/main-electron.js",
   "scripts": {
-    "dev": "vite",
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "vite:dev": "vite",
+    "vite:build": "tsc --noEmit && vite build && node tools/scripts/copy-dist.js",
     "typecheck": "tsc --noEmit",
-    "build": "tsc --noEmit && vite build && node tools/scripts/copy-dist.js",
     "deploy": "npm run build && git subtree push --prefix dist origin gh-pages",
-    "preview": "vite preview",
     "start": "electron platforms/desktop/main-electron.js",
     "desktop": "electron platforms/desktop/main-electron.js",
     "migrate": "node -e \"require('esbuild').buildSync({entryPoints:['tools/scripts/ume-migrate.ts'],outfile:'tools/scripts/ume-migrate.cjs',bundle:true,platform:'node'}); require('./tools/scripts/ume-migrate.cjs'); require('fs').unlinkSync('tools/scripts/ume-migrate.cjs');\"",
@@ -29,5 +32,12 @@
   "devDependencies": {
     "typescript": "^5.8.0",
     "vite": "^6.3.0"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^7.0.8",
+    "astro": "^7.2.7",
+    "rehype-katex": "^7.0.1",
+    "remark-heading-id": "^1.0.1",
+    "remark-math": "^6.0.0"
   }
 }

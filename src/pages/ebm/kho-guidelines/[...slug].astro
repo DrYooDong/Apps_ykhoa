@@ -1,0 +1,35 @@
+---
+import ArticleLayout from '../../../components/layout/ArticleLayout.astro';
+import Alert from '../../../components/ui/Alert.astro';
+import QuickNav from '../../../components/ui/QuickNav.astro';
+
+export async function getStaticPaths() {
+  const mdxModules = import.meta.glob('/src/content/ebm/guidelines/kho-guidelines/*.mdx', { eager: true });
+  
+  return Object.entries(mdxModules).map(([path, mod]: [string, any]) => {
+    const slug = mod.frontmatter?.slug || path.split('/').pop()?.replace(/\.mdx$/, '') || 'index';
+    return {
+      params: { slug },
+      props: {
+        entry: mod
+      }
+    };
+  });
+}
+
+const { entry } = Astro.props;
+const { Content, frontmatter } = entry;
+---
+
+<ArticleLayout
+  title={frontmatter.title}
+  description={frontmatter.description}
+  systemName={`Khuyến Cáo Điều Trị EBM • ${frontmatter.organization || 'Quốc Tế'}`}
+  code={frontmatter.code || `YEAR-${frontmatter.year || '2026'}`}
+  clinicalPearls={frontmatter.keyRecommendations || []}
+>
+  <Content components={{
+    Alert,
+    QuickNav
+  }} />
+</ArticleLayout>

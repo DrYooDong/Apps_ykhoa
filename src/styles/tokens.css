@@ -1,0 +1,188 @@
+/* ============================================================
+   CLINIPORTAL UNIFIED DESIGN TOKENS (tokens.css)
+   Awwwards-tier Design System with OKLCH Palette & Dark Theme
+============================================================ */
+
+:root,
+[data-theme="light"] {
+  /* --- Canvas & Surfaces --- */
+  --color-bg:             oklch(97.5% 0.008 225);
+  --color-surface:        #ffffff;
+  --color-surface-2:      oklch(98.5% 0.005 225);
+  --color-surface-offset: oklch(95.5% 0.012 225);
+  --color-divider:        oklch(91% 0.015 225);
+  --color-border:         oklch(86% 0.02 225);
+
+  /* --- Text & Contrast --- */
+  --color-text:           oklch(20% 0.03 240);
+  --color-text-muted:     oklch(45% 0.04 240);
+  --color-text-faint:     oklch(65% 0.03 240);
+  --color-text-inverse:   #ffffff;
+
+  /* --- Brand & Primary Accent (Medical Blue) --- */
+  --color-primary:        oklch(58% 0.18 225);
+  --color-primary-hover:  oklch(50% 0.18 225);
+  --color-primary-hl:     oklch(95% 0.04 225);
+  --color-primary-rgb:    2, 132, 199;
+
+  /* --- Clinical Semantic Tiers --- */
+  --clinical-critical:    oklch(62% 0.22 25);   /* Cấp cứu / Chống chỉ định */
+  --clinical-critical-hl: oklch(96% 0.04 25);
+  --clinical-warning:     oklch(72% 0.18 70);   /* Cảnh báo / Theo dõi */
+  --clinical-warning-hl:  oklch(96% 0.05 70);
+  --clinical-normal:      oklch(60% 0.17 160);  /* Bình thường / An toàn */
+  --clinical-normal-hl:   oklch(95% 0.04 160);
+  --clinical-research:    oklch(55% 0.22 290);  /* Y học chứng cứ / EBM */
+  --clinical-research-hl: oklch(95% 0.04 290);
+  --clinical-info:        oklch(58% 0.18 225);  /* Thông tin bổ trợ */
+  --clinical-info-hl:     oklch(95% 0.04 225);
+  --clinical-pearl:       oklch(60% 0.15 190);  /* Điểm nhấn lâm sàng */
+  --clinical-pearl-hl:    oklch(95% 0.04 190);
+
+  /* Legacy variable mappings for backward compatibility */
+  --color-success:        var(--clinical-normal);
+  --color-success-hl:     var(--clinical-normal-hl);
+  --color-warning:        var(--clinical-warning);
+  --color-warning-hl:     var(--clinical-warning-hl);
+  --color-danger:         var(--clinical-critical);
+  --color-danger-hl:      var(--clinical-critical-hl);
+  --color-purple:         var(--clinical-research);
+  --color-purple-hl:      var(--clinical-research-hl);
+  --color-teal:           var(--clinical-pearl);
+  --color-teal-hl:        var(--clinical-pearl-hl);
+  --color-info:           var(--clinical-info);
+  --color-info-hl:        var(--clinical-info-hl);
+
+  /* --- Premium Gradients --- */
+  --gradient-hero:        linear-gradient(135deg, oklch(58% 0.18 225) 0%, oklch(55% 0.20 270) 50%, oklch(55% 0.22 290) 100%);
+  --gradient-pearl:       linear-gradient(135deg, oklch(60% 0.15 190) 0%, oklch(58% 0.18 225) 100%);
+  --gradient-critical:    linear-gradient(135deg, oklch(62% 0.22 25) 0%, oklch(58% 0.22 15) 100%);
+  --gradient-card-glow:   linear-gradient(135deg, rgba(2,132,199,0.08), rgba(124,58,237,0.08));
+
+  /* --- Glassmorphism --- */
+  --glass-bg:             rgba(255, 255, 255, 0.75);
+  --glass-border:         rgba(255, 255, 255, 0.35);
+  --glass-blur:           blur(16px) saturate(180%);
+
+  /* --- Typography --- */
+  --font-display:         'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body:            'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono:            'JetBrains Mono', 'Fira Code', Consolas, monospace;
+
+  --text-xs:              clamp(0.72rem, 0.68rem + 0.2vw, 0.8rem);
+  --text-sm:              clamp(0.82rem, 0.78rem + 0.2vw, 0.9rem);
+  --text-base:            clamp(0.92rem, 0.88rem + 0.2vw, 1.02rem);
+  --text-md:              clamp(1.05rem, 1rem + 0.25vw, 1.15rem);
+  --text-lg:              clamp(1.2rem, 1.1rem + 0.5vw, 1.4rem);
+  --text-xl:              clamp(1.4rem, 1.25rem + 0.7vw, 1.75rem);
+  --text-2xl:             clamp(1.75rem, 1.5rem + 1.2vw, 2.3rem);
+  --text-3xl:             clamp(2.2rem, 1.8rem + 1.8vw, 3rem);
+
+  /* --- Spacing Scale --- */
+  --space-1:              0.25rem;
+  --space-2:              0.5rem;
+  --space-3:              0.75rem;
+  --space-4:              1rem;
+  --space-5:              1.25rem;
+  --space-6:              1.5rem;
+  --space-8:              2rem;
+  --space-10:             2.5rem;
+  --space-12:             3rem;
+  --space-16:             4rem;
+
+  /* --- Radii --- */
+  --radius-xs:            4px;
+  --radius-sm:            8px;
+  --radius-md:            12px;
+  --radius-lg:            16px;
+  --radius-xl:            24px;
+  --radius-full:          9999px;
+
+  /* --- Shadows & Depth --- */
+  --shadow-sm:            0 1px 2px 0 rgba(15, 23, 42, 0.05);
+  --shadow-md:            0 4px 6px -1px rgba(15, 23, 42, 0.07), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
+  --shadow-lg:            0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.04);
+  --shadow-xl:            0 20px 25px -5px rgba(15, 23, 42, 0.10), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+  --shadow-card-hover:    0 12px 28px -4px rgba(2, 132, 199, 0.14), 0 4px 8px -2px rgba(2, 132, 199, 0.06);
+  --shadow-glow:          0 0 24px rgba(2, 132, 199, 0.18);
+
+  /* --- Motion & Spring Timings (Emil Kowalski Standard) --- */
+  --ease-out:             cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out:          cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer:          cubic-bezier(0.32, 0.72, 0, 1);
+  --duration-fast:        150ms;
+  --duration-base:        220ms;
+  --duration-slow:        380ms;
+
+  --tr:                   var(--duration-base) var(--ease-out);
+  --tr-fast:              var(--duration-fast) var(--ease-out);
+  --tr-slow:              var(--duration-slow) var(--ease-out);
+
+  /* --- Layout Bounds --- */
+  --header-height:        64px;
+  --sidebar-w:            280px;
+  --content-max-width:    780px;
+  --content-wide-width:   1120px;
+  --content-line-height:  1.75;
+  --content-prose-gap:    1.35rem;
+
+  /* --- Mobile & Touch Friendly Tokens --- */
+  --touch-min:            44px;
+  --touch-target:         44px;
+  --bottom-nav-h:         62px;
+  --space-touch-gap:      8px;
+  --safe-top:             env(safe-area-inset-top, 0px);
+  --safe-bottom:          env(safe-area-inset-bottom, 0px);
+  --safe-left:            env(safe-area-inset-left, 0px);
+  --safe-right:           env(safe-area-inset-right, 0px);
+}
+
+/* ============================================================
+   DARK THEME PALETTE
+============================================================ */
+[data-theme="dark"] {
+  --color-bg:             oklch(14% 0.02 240);
+  --color-surface:        oklch(18% 0.025 240);
+  --color-surface-2:      oklch(22% 0.03 240);
+  --color-surface-offset: oklch(25% 0.035 240);
+  --color-divider:        oklch(27% 0.03 240);
+  --color-border:         oklch(32% 0.035 240);
+
+  --color-text:           oklch(94% 0.01 240);
+  --color-text-muted:     oklch(72% 0.03 240);
+  --color-text-faint:     oklch(50% 0.03 240);
+  --color-text-inverse:   oklch(14% 0.02 240);
+
+  --color-primary:        oklch(75% 0.16 225);
+  --color-primary-hover:  oklch(82% 0.14 225);
+  --color-primary-hl:     oklch(25% 0.07 225);
+  --color-primary-rgb:    56, 189, 248;
+
+  --clinical-critical:    oklch(75% 0.18 25);
+  --clinical-critical-hl: oklch(26% 0.08 25);
+  --clinical-warning:     oklch(82% 0.16 70);
+  --clinical-warning-hl:  oklch(27% 0.08 70);
+  --clinical-normal:      oklch(78% 0.16 160);
+  --clinical-normal-hl:   oklch(25% 0.08 160);
+  --clinical-research:    oklch(75% 0.18 290);
+  --clinical-research-hl: oklch(25% 0.08 290);
+  --clinical-info:        oklch(75% 0.16 225);
+  --clinical-info-hl:     oklch(25% 0.07 225);
+  --clinical-pearl:       oklch(78% 0.14 190);
+  --clinical-pearl-hl:    oklch(25% 0.08 190);
+
+  --gradient-hero:        linear-gradient(135deg, oklch(35% 0.14 225) 0%, oklch(30% 0.16 270) 50%, oklch(28% 0.16 290) 100%);
+  --gradient-pearl:       linear-gradient(135deg, oklch(35% 0.12 190) 0%, oklch(32% 0.14 225) 100%);
+  --gradient-critical:    linear-gradient(135deg, oklch(35% 0.16 25) 0%, oklch(30% 0.16 15) 100%);
+  --gradient-card-glow:   linear-gradient(135deg, rgba(56,189,248,0.12), rgba(167,139,250,0.12));
+
+  --glass-bg:             rgba(24, 30, 48, 0.78);
+  --glass-border:         rgba(255, 255, 255, 0.08);
+
+  --shadow-sm:            0 1px 2px 0 rgba(0, 0, 0, 0.35);
+  --shadow-md:            0 4px 8px -1px rgba(0, 0, 0, 0.45);
+  --shadow-lg:            0 12px 20px -3px rgba(0, 0, 0, 0.55);
+  --shadow-xl:            0 24px 32px -4px rgba(0, 0, 0, 0.65);
+  --shadow-card-hover:    0 12px 28px -4px rgba(56, 189, 248, 0.22), 0 4px 8px -2px rgba(56, 189, 248, 0.12);
+  --shadow-glow:          0 0 28px rgba(56, 189, 248, 0.22);
+}

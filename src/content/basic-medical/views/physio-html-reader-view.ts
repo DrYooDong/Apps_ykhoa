@@ -304,24 +304,92 @@ async function fetchAndHydratePhysioArticle(
     if (crumbEl) crumbEl.textContent = cleanTitle;
     document.title = `${cleanTitle} – CliniPortal`;
 
+    // Dynamic Theme Token based on Module
+    let headerGradient = 'linear-gradient(135deg, #0369a1 0%, #0f172a 50%, #0284c7 100%)';
+    let badgeColor = '#38bdf8';
+    let badgeBg = 'rgba(56, 189, 248, 0.18)';
+    let badgeBorder = 'rgba(56, 189, 248, 0.35)';
+    let badgeIcon = 'fa-heart-pulse';
+    let badgeText = 'SINH LÝ HỌC • MDX NATIVE';
+
+    if (isCaseStudy) {
+      headerGradient = 'linear-gradient(135deg, #4c1d95 0%, #0f172a 50%, #6d28d9 100%)';
+      badgeColor = '#c084fc';
+      badgeBg = 'rgba(192, 132, 252, 0.18)';
+      badgeBorder = 'rgba(192, 132, 252, 0.35)';
+      badgeIcon = 'fa-microscope';
+      badgeText = 'CƠ CHẾ BỆNH SINH (CCBS) • MDX NATIVE';
+    } else if (isBiochem) {
+      headerGradient = 'linear-gradient(135deg, #064e3b 0%, #0f172a 50%, #047857 100%)';
+      badgeColor = '#34d399';
+      badgeBg = 'rgba(52, 211, 153, 0.18)';
+      badgeBorder = 'rgba(52, 211, 153, 0.35)';
+      badgeIcon = 'fa-flask-vial';
+      badgeText = 'HÓA SINH Y HỌC • MDX NATIVE';
+    } else if (isEpi) {
+      headerGradient = 'linear-gradient(135deg, #042f2e 0%, #0f172a 50%, #134e4a 100%)';
+      badgeColor = '#2dd4bf';
+      badgeBg = 'rgba(45, 212, 191, 0.18)';
+      badgeBorder = 'rgba(45, 212, 191, 0.35)';
+      badgeIcon = 'fa-virus-covid';
+    } else if (part.includes('guideline') || part.includes('ebm') || part.includes('stat')) {
+      headerGradient = 'linear-gradient(135deg, #78350f 0%, #0f172a 50%, #92400e 100%)';
+      badgeColor = '#fbbf24';
+      badgeBg = 'rgba(251, 191, 36, 0.18)';
+      badgeBorder = 'rgba(251, 191, 36, 0.35)';
+      badgeIcon = 'fa-book-medical';
+      badgeText = 'Y HỌC CHỨNG CỨ & GUIDELINES • MDX NATIVE';
+    }
+
+    const frontmatter = parsed.frontmatter || {};
+    const code = frontmatter.code || '';
+    const tags = frontmatter.tags || [];
+
     mountEl.innerHTML = `
+      <div class="reading-progress-bar" id="reading-progress-bar"></div>
       <div class="physio-article-container" style="max-width: 1120px; margin: 0 auto; padding: 1.5rem 1.25rem;">
-        <div style="margin-bottom: 2rem; background: linear-gradient(135deg, #042f2e 0%, #0f172a 50%, #134e4a 100%); color: #ffffff; padding: 2.5rem 2rem; border-radius: 16px; border: 1px solid rgba(13, 148, 136, 0.3); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);">
-          <span class="badge" style="background: rgba(45, 212, 191, 0.18); color: #2dd4bf; border: 1px solid rgba(45, 212, 191, 0.35); font-weight: 700; font-size: 0.8rem; padding: 0.35rem 0.85rem; border-radius: 999px; text-transform: uppercase;">
-            <i class="fa-solid fa-virus-covid"></i> DỊCH TỄ HỌC • MDX NATIVE
-          </span>
-          <h1 style="font-size: 2.1rem; font-weight: 800; color: #ffffff; margin: 0.75rem 0 0.5rem 0; line-height: 1.25;">
+        
+        <!-- LUXURY HERO BANNER -->
+        <div style="margin-bottom: 2rem; background: ${headerGradient}; color: #ffffff; padding: 2.5rem 2rem; border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.12); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2); position: relative; overflow: hidden;">
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.75rem;">
+            <span class="badge" style="background: ${badgeBg}; color: ${badgeColor}; border: 1px solid ${badgeBorder}; font-weight: 700; font-size: 0.8rem; padding: 0.35rem 0.85rem; border-radius: 999px; text-transform: uppercase;">
+              <i class="fa-solid ${badgeIcon}"></i> ${badgeText}
+            </span>
+            ${code ? `<span style="font-family: monospace; font-size: 0.85rem; background: rgba(255,255,255,0.12); color: #ffffff; padding: 0.25rem 0.65rem; border-radius: 6px; font-weight: 700;">${code}</span>` : ''}
+          </div>
+          
+          <h1 style="font-size: 2.1rem; font-weight: 800; color: #ffffff; margin: 0.5rem 0; line-height: 1.25;">
             ${parsed.title}
           </h1>
-          <p style="margin: 0; font-size: 1rem; opacity: 0.95; line-height: 1.65; max-width: 920px;">
+          
+          <p style="margin: 0.5rem 0 1rem 0; font-size: 0.98rem; opacity: 0.92; line-height: 1.65; max-width: 960px;">
             ${parsed.description || ''}
           </p>
+
+          ${tags.length > 0 ? `
+            <div style="display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.85rem; padding-top: 0.85rem; border-top: 1px solid rgba(255, 255, 255, 0.15);">
+              ${tags.map((t: string) => `<span style="font-size: 0.75rem; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #f1f5f9; padding: 0.15rem 0.5rem; border-radius: 4px;">#${t}</span>`).join('')}
+            </div>
+          ` : ''}
         </div>
+
+        <!-- RENDERED CONTENT -->
         <div class="mdx-rendered-article">
           ${parsed.html}
         </div>
       </div>
     `;
+
+    // Initialize Reading Progress Scroll Listener
+    const handleScroll = () => {
+      const progressBar = document.getElementById('reading-progress-bar');
+      if (progressBar) {
+        const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = totalHeight > 0 ? (window.scrollY / totalHeight) * 100 : 0;
+        progressBar.style.width = `${Math.min(100, Math.max(0, progress))}%`;
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
 
     setupInPageAnchorScrolling(mountEl);
     return;

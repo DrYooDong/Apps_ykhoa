@@ -1,0 +1,147 @@
+---
+import BaseLayout from '../../components/layout/BaseLayout.astro';
+
+const tools = [
+  {
+    id: 'abg',
+    name: 'ABG Studio Pro — Phân Tích Khí Máu Động Mạch',
+    category: 'Hồi Sức & Thăng Bằng Toan Kiềm',
+    description: 'Quy trình 6 bước phân tích thăng bằng toan kiềm, Anion Gap, Delta-Delta Gap và bù trừ hô hấp / chuyển hóa theo Boston & Stewart.',
+    icon: 'fa-lungs',
+    badge: 'Cấp Cứu / ICU'
+  },
+  {
+    id: 'egfr',
+    name: 'Bộ Tính Lọc Cầu Thận eGFR (CKD-EPI & MDRD)',
+    category: 'Thận Học & Chỉnh Liều Thuốc',
+    description: 'Tính toán mức lọc cầu thận theo công thức CKD-EPI 2021 (không điều chỉnh chủng tộc), phân tầng giai đoạn CKD G1-G5 và cảnh báo chỉnh liều kháng sinh.',
+    icon: 'fa-kidneys',
+    badge: 'Thận Học'
+  },
+  {
+    id: 'insulin',
+    name: 'Bộ Tính & Phác Đồ Chỉnh Liều Insulin Bệnh Viện',
+    category: 'Nội Tiết & Đái Tháo Đường',
+    description: 'Phác đồ Basal-Bolus, chỉnh liều theo carbohydrate ratio (ICR), hệ số nhạy cảm insulin (ISF) và xử trí hạ đường huyết cấp.',
+    icon: 'fa-syringe',
+    badge: 'Nội Tiết'
+  },
+  {
+    id: 'sepsis',
+    name: 'Thang Điểm Đánh Giá Nhiễm Khuẩn Huyết (SOFA & qSOFA)',
+    category: 'Hồi Sức & Cấp Cứu',
+    description: 'Đánh giá nguy cơ suy đa cơ quan, định nghĩa Sepsis-3 và gợi ý bù dịch hồi sức 30 mL/kg theo Surviving Sepsis Campaign 2026.',
+    icon: 'fa-biohazard',
+    badge: 'Sepsis-3'
+  },
+  {
+    id: 'cardio-risk',
+    name: 'Thang Điểm Nguy Cơ Tim Mạch (TIMI, GRACE & CHA2DS2-VASc)',
+    category: 'Tim Mạch Lâm Sàng',
+    description: 'Phân tầng nguy cơ hội chứng vành cấp (ACS) và chỉ định kháng đông dự phòng đột quỵ trong rung nhĩ theo ESC 2024.',
+    icon: 'fa-heart-circle-bolt',
+    badge: 'Tim Mạch'
+  }
+];
+---
+
+<BaseLayout title="Bộ Máy Tính & Thang Điểm Lâm Sàng (CDSS) — CliniPortal" description="Hệ thống máy tính lâm sàng, chỉnh liều và thang điểm nguy cơ y khoa">
+  <div class="hub-container">
+    <header class="hub-header">
+      <span class="badge badge-primary"><i class="fas fa-calculator"></i> CDSS Clinical Engine</span>
+      <h1>Bộ Máy Tính & Thang Điểm Lâm Sàng</h1>
+      <p>Các công cụ tính toán chỉ số sinh lý, phân tầng nguy cơ và phác đồ động hỗ trợ bác sĩ ra quyết định tại giường bệnh nhanh chóng, chuẩn xác và hoàn toàn offline.</p>
+    </header>
+
+    <div class="tools-grid">
+      {tools.map((tool) => (
+        <div class="tool-card">
+          <div class="tool-icon-wrap">
+            <i class:list={['fas', tool.icon]}></i>
+          </div>
+          <div class="tool-info">
+            <div class="tool-badges">
+              <span class="badge badge-primary">{tool.category}</span>
+              <span class="badge">{tool.badge}</span>
+            </div>
+            <h3>{tool.name}</h3>
+            <p>{tool.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .hub-container {
+    max-width: var(--content-wide-width);
+    margin: 0 auto;
+    padding: var(--space-8) var(--space-4);
+  }
+  .hub-header {
+    background: var(--gradient-card-glow);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-10) var(--space-8);
+    margin-bottom: var(--space-10);
+  }
+  .hub-header h1 {
+    font-size: var(--text-2xl);
+    margin-top: var(--space-2);
+    margin-bottom: var(--space-3);
+  }
+  .hub-header p {
+    color: var(--color-text-muted);
+    max-width: 780px;
+    margin: 0;
+  }
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: var(--space-6);
+  }
+  .tool-card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    display: flex;
+    gap: var(--space-5);
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--tr), box-shadow var(--tr), border-color var(--tr);
+  }
+  .tool-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-card-hover);
+    border-color: var(--color-primary);
+  }
+  .tool-icon-wrap {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-md);
+    background-color: var(--color-primary-hl);
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--text-lg);
+    flex-shrink: 0;
+  }
+  .tool-badges {
+    display: flex;
+    gap: var(--space-2);
+    margin-bottom: var(--space-2);
+  }
+  .tool-info h3 {
+    font-size: var(--text-md);
+    margin-bottom: var(--space-2);
+    line-height: 1.3;
+  }
+  .tool-info p {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin: 0;
+  }
+</style>

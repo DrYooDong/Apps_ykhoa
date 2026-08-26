@@ -1,0 +1,112 @@
+---
+import BaseLayout from '../../../components/layout/BaseLayout.astro';
+
+const guidelineModules = import.meta.glob('/src/content/ebm/guidelines/kho-guidelines/*.mdx', { eager: true });
+const guidelines = Object.entries(guidelineModules).map(([path, mod]: [string, any]) => ({
+  slug: mod.frontmatter?.slug || path.split('/').pop()?.replace(/\.mdx$/, '') || 'index',
+  title: mod.frontmatter?.title || 'Khuyến cáo điều trị',
+  description: mod.frontmatter?.description || '',
+  organization: mod.frontmatter?.organization || 'Quốc Tế',
+  year: mod.frontmatter?.year || '2026',
+  code: mod.frontmatter?.code || ''
+}));
+---
+
+<BaseLayout title="Kho Khuyến Cáo Điều Trị Y Học Chứng Cứ (EBM Guidelines) — CliniPortal" description="Tổng hợp khuyến cáo điều trị quốc tế KDIGO, ESC, ACC/AHA, GINA, GOLD">
+  <div class="hub-container">
+    <header class="hub-header">
+      <span class="badge badge-pearl"><i class="fas fa-book-medical"></i> Y Học Chứng Cứ</span>
+      <h1>Kho Khuyến Cáo Điều Trị Lâm Sàng (EBM Guidelines)</h1>
+      <p>Tổng hợp 59 khuyến cáo điều trị cập nhật nhất từ các hiệp hội uy tín thế giới (KDIGO, ESC, ACC/AHA, GINA, GOLD, Bộ Y tế Việt Nam) theo chuẩn phân loại Class & Level of Evidence.</p>
+    </header>
+
+    <div class="articles-grid">
+      {guidelines.map((gl) => (
+        <a href={`/ebm/kho-guidelines/${gl.slug}`} class="article-card">
+          <div class="card-meta">
+            <span class="badge badge-primary">{gl.organization}</span>
+            <span class="badge">{gl.year}</span>
+          </div>
+          <h3>{gl.title}</h3>
+          {gl.description && <p>{gl.description}</p>}
+          <span class="card-link-text">Xem tóm tắt khuyến cáo <i class="fas fa-arrow-right"></i></span>
+        </a>
+      ))}
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .hub-container {
+    max-width: var(--content-wide-width);
+    margin: 0 auto;
+    padding: var(--space-8) var(--space-4);
+  }
+  .hub-header {
+    background: var(--gradient-card-glow);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-10) var(--space-8);
+    margin-bottom: var(--space-10);
+  }
+  .hub-header h1 {
+    font-size: var(--text-2xl);
+    margin-top: var(--space-2);
+    margin-bottom: var(--space-3);
+  }
+  .hub-header p {
+    color: var(--color-text-muted);
+    max-width: 780px;
+    margin: 0;
+  }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: var(--space-6);
+  }
+  .article-card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: var(--shadow-sm);
+    color: var(--color-text);
+    transition: transform var(--tr), box-shadow var(--tr), border-color var(--tr);
+  }
+  .article-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-card-hover);
+    border-color: var(--color-primary);
+  }
+  .card-meta {
+    display: flex;
+    gap: var(--space-2);
+    margin-bottom: var(--space-3);
+  }
+  .article-card h3 {
+    font-size: var(--text-md);
+    margin-bottom: var(--space-2);
+    line-height: 1.3;
+  }
+  .article-card p {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin-bottom: var(--space-4);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .card-link-text {
+    font-size: var(--text-xs);
+    font-weight: 700;
+    color: var(--color-primary);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+  }
+</style>

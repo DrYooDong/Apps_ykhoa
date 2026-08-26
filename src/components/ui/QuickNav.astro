@@ -1,0 +1,94 @@
+---
+export interface SectionItem {
+  id: string;
+  number?: number;
+  title: string;
+  icon?: string;
+}
+
+export interface Props {
+  sections?: SectionItem[];
+  title?: string;
+}
+
+const { sections = [], title = 'Mục Lục Điều Hướng Nhanh' } = Astro.props;
+---
+
+<nav class="quicknav-container" aria-label="Điều hướng nhanh bài đọc">
+  <div class="quicknav-header">
+    <i class="fas fa-list-check"></i>
+    <span>{title}</span>
+  </div>
+  {sections.length > 0 && (
+    <div class="quicknav-chips">
+      {sections.map((sec, idx) => (
+        <a href={`#${sec.id}`} class="quicknav-chip">
+          {sec.icon && <i class:list={['fas', sec.icon]}></i>}
+          <span class="chip-num">{sec.number ?? idx + 1}.</span>
+          <span class="chip-text">{sec.title}</span>
+        </a>
+      ))}
+    </div>
+  )}
+</nav>
+
+<style>
+  .quicknav-container {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-4) var(--space-5);
+    margin: var(--space-6) 0;
+    box-shadow: var(--shadow-sm);
+    position: sticky;
+    top: 76px;
+    z-index: 20;
+    backdrop-filter: blur(12px);
+  }
+
+  .quicknav-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-family: var(--font-display);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: var(--space-3);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .quicknav-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .quicknav-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: 0.35rem 0.75rem;
+    border-radius: var(--radius-full);
+    background-color: var(--color-surface-offset);
+    border: 1px solid var(--color-border);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: transform var(--tr-fast), background-color var(--tr-fast), color var(--tr-fast), border-color var(--tr-fast);
+  }
+
+  .quicknav-chip:hover {
+    background-color: var(--color-primary-hl);
+    color: var(--color-primary);
+    border-color: rgba(var(--color-primary-rgb), 0.3);
+    transform: translateY(-1px);
+  }
+
+  .chip-num {
+    opacity: 0.7;
+    font-size: 0.9em;
+  }
+</style>

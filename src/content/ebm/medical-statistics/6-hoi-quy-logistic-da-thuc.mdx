@@ -1,12 +1,12 @@
 ---
-title: "Bài 6: Hồi quy Logistic Đa thức — CliniPortal"
+title: "Bài 6: Hồi quy Logistic Đa thức"
 slug: "6-hoi-quy-logistic-da-thuc"
 code: "STAT-6-HOI-QUY-LOGISTIC-DA-THUC"
 category: "medical-statistics"
 status: "published"
 version: "2.0.0"
 updatedAt: "2026-08-26"
-description: "Bài 6: Hồi quy Logistic Đa thức (Multinomial Logistic Regression) — CliniPortal"
+description: "Nguyên lý và ứng dụng thực hành thống kê sinh học lâm sàng trong nghiên cứu y học: Bài 6: Hồi quy Logistic Đa thức."
 tags:
   - "Thống kê y học"
   - "Biostatistics"
@@ -26,30 +26,219 @@ sections:
     icon: "fa-square-poll-vertical"
 ---
 
-# 📊 BÀI 6: HỒI QUY LOGISTIC ĐA THỨC — CLINIPORTAL
+# 📊 BÀI 6: HỒI QUY LOGISTIC ĐA THỨC
 
 ---
 
-## 1. Nguyên Lý & Định Nghĩa Cốt Lõi {#sec-1}
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
 
-Bài 6: Hồi quy Logistic Đa thức (Multinomial Logistic Regression) — CliniPortal
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bài 6: Hồi quy Logistic Đa thức (Multinomial Logistic Regression) — CliniPortal">
+  <title>Bài 6: Hồi quy Logistic Đa thức — CliniPortal</title>
 
-```
-THÔNG SỐ PHÂN TÍCH THỐNG KÊ:
-  • Chủ đề: Bài 6: Hồi quy Logistic Đa thức — CliniPortal
-  • Ứng dụng: Thiết kế nghiên cứu lâm sàng, thử nghiệm can thiệp và dịch tễ học quan sát.
-```
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700vàfamily=Plus+Jakarta+Sans:wght@400;500;600;700;800vàdisplay=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../../css/components/toc.css">
+  <link rel="stylesheet" href="text-style.css">
+  
+
+  
+</head>
+
+<body>
+
+  {/* TOP NAV */}
+  
+
+  {/* MAIN CONTAINER */}
+  <div class="main-container visual-container">
+
+    {/* HEADER */}
+    <header class="lesson-header">
+      <div class="lesson-meta">
+        Mô-đun Nâng Cao
+        
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>
+          22 phút đọc
+        
+      </div>
+<h1>Hồi Quy Logistic Đa Thức (Multinomial Logistic Regression)</h1>
+      
+        Phương pháp mô hình hóa mạnh mẽ dành cho biến kết cục danh nghĩa có nhiều hơn 2 lựa chọn (ví dụ: Lựa chọn phác đồ thay thế thận: Bảo tồn vs Lọc máu vs Ghép thận).
+      
+    </header>
+
+    {/* THEORY CONTENT */}
+    <div class="theory-content">
+
+      {/* CHƯƠNG 1 */}
+<h2 id="chuong-1">1. Tổng Quan và Khi Nào Áp Dụng Hồi Quy Logistic Đa Thức?</h2>
+      
+        Trong nghiên cứu y học, biến kết cục (dependent variable) không phải lúc nào cũng là biến liên tục (dùng Hồi quy tuyến tính) hay biến nhị phân 0/1 (dùng Hồi quy Logistic Nhị phân). Nhiều bài toán lâm sàng đòi hỏi dự đoán một kết cục danh nghĩa (nominal outcome) gồm **K ≥ 3 nhóm không có thứ tự tự nhiên**.
+      
+
+      <div class="callout callout-info">
+        **💡 Các ví dụ thực tế trong Y học:**
+        <ul>
+          <li>**Lựa chọn điều trị bệnh thận mạn:** 1 = Điều trị nội khoa bảo tồn, 2 = Lọc máu chu kỳ, 3 = Ghép thận.</li>
+          <li>**Phân loại thể đột quỵ não:** 1 = Nhồi máu não, 2 = Xuất huyết não, 3 = Xuất huyết dưới nhện.</li>
+          <li>**Đáp ứng lâm sàng với thuốc:** 1 = Thất bại, 2 = Thuyên giảm một phần, 3 = Thuyên giảm hoàn toàn.</li>
+        </ul>
+      </div>
+
+      {/* CHƯƠNG 2 */}
+<h2 id="chuong-2">2. Cơ Sở Toán Học và Phương Pháp Cực Đại Hợp Lý (MLE)</h2>
+      
+        Hồi quy logistic đa thức xây dựng đồng thời K - 1 phương trình logit so sánh từng nhóm kết cục với một **Nhóm Tham Chiếu (Baseline / Reference Group)** được chọn trước.
+      
+
+<h3>2.1. Phương Trình Logit Đa Thức</h3>
+      Giả sử chọn nhóm 1 làm nhóm tham chiếu, xác suất bệnh nhân thuộc nhóm k (k = 2, ..., K) so với nhóm 1 được tính bằng:
+      
+      <div class="callout callout-success">
+        ln[ P(Y = k | X) / P(Y = 1 | X) ] = β₀_k + β₁_k * X₁ + β₂_k * X₂ + ... + βp_k * Xp
+      </div>
+
+      Xác suất dự báo tuyệt đối của bệnh nhân thuộc từng nhóm kết cục:
+      <ul>
+        <li>Xác suất nhóm k (k ≥ 2): P(Y = k | X) = exp(g_k(X)) / [ 1 + ∑ exp(g_j(X)) ]</li>
+        <li>Xác suất nhóm tham chiếu (k = 1): P(Y = 1 | X) = 1 / [ 1 + ∑ exp(g_j(X)) ]</li>
+      </ul>
+
+<h3>2.2. Ước Lượng Cực Đại Hợp Lý (MLE) và Hội Tụ Thuật Toán</h3>
+      
+        Không giống như hồi quy tuyến tính có công thức đóng, các hệ số β trong hồi quy logistic đa thức không thể tính trực tiếp mà phải ước lượng bằng thuật toán lặp số như **Newton-Raphson** hoặc **Fisher Scoring** để cực đại hóa hàm Log-Likelihood:
+      
+      <ul>
+        <li>Thuật toán bắt đầu từ bộ tham số ban đầu, cập nhật liên tục qua từng vòng lặp.</li>
+        <li>Quá trình dừng lại khi sự thay đổi của Log-Likelihood giữa 2 vòng lặp nhỏ hơn ngưỡng hội tụ (tolerance < 0.00001).</li>
+      </ul>
+
+      {/* CHƯƠNG 3 */}
+<h2 id="chuong-3">3. Kiểm Định Ý Nghĩa Thống Kê</h2>
+
+<h3>3.1. Kiểm Định Tỷ Số Hợp Lý (Likelihood Ratio Test - LRT)</h3>
+      
+        Đánh giá ý nghĩa của toàn bộ mô hình (hoặc từng biến độc lập trên toàn bộ các nhóm kết cục) bằng cách so sánh Log-Likelihood của Mô hình đầy đủ (Full Model) và Mô hình rút gọn (Reduced Model):
+      
+      <div class="callout callout-info">
+        G² = -2 * [ LL(mô hình rút gọn) - LL(mô hình đầy đủ) ] ~ χ²(df)
+        
+
+Nếu p < 0.05, biến độc lập đó đóng góp có ý nghĩa thống kê vào mô hình dự báo tổng thể.
+      </div>
+
+<h3>3.2. Thống Kê Wald</h3>
+      Đánh giá ý nghĩa của từng hệ số hồi quy riêng biệt đối với từng so sánh nhóm:
+      W = (β_est / SE(β))² ~ χ²(1)
+
+      {/* CHƯƠNG 4 */}
+<h2 id="chuong-4">4. Diễn Giải Tỷ Số Odds Tương Đối (Relative Risk Ratio - RRR)</h2>
+      
+        Trong hồi quy logistic đa thức, exponentiated coefficient RRR = exp(β) biểu thị **Tỷ số Odds Tương đối (Relative Risk Ratio)**.
+      
+
+      <table>
+        <thead>
+          <tr>
+            <th>Giá Trị RRR</th>
+            <th>Ý Nghĩa Lâm Sàng (So với Nhóm Tham Chiếu)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>**RRR > 1**</td>
+            <td>Yếu tố tăng nguy cơ bệnh nhân thuộc nhóm kết cục đang xét so với nhóm tham chiếu.</td>
+          </tr>
+          <tr>
+            <td>**RRR = 1**</td>
+            <td>Yếu tố không làm thay đổi tỷ số Odds giữa nhóm kết cục đang xét và nhóm tham chiếu.</td>
+          </tr>
+          <tr>
+            <td>**RRR < 1**</td>
+            <td>Yếu tố bảo vệ (giảm nguy cơ) bệnh nhân thuộc nhóm kết cục đang xét so với nhóm tham chiếu.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      {/* INTERACTIVE DEMO: MULTINOMIAL RRR CALCULATOR */}
+      <div class="calc-box">
+<h3>📊 Máy Tính Tỷ Số RRR và Mô Phỏng Xác Suất Đáp Ứng</h3>
+        Mô phỏng bài toán lựa chọn phác đồ điều trị (Bảo tồn vs Lọc máu vs Ghép thận) dựa trên tuổi và chỉ số eGFR.
+
+        <div class="calc-grid">
+          <div class="input-group">
+            <label for="patient-age">Tuổi bệnh nhân (năm):</label>
+            <input type="number" id="patient-age" value="55" min="18" max="90">
+          </div>
+          <div class="input-group">
+            <label for="patient-egfr">eGFR (mL/phút/1.73m²):</label>
+            <input type="number" id="patient-egfr" value="12" min="3" max="30">
+          </div>
+          <div class="input-group">
+            <label for="diabetes">Tiền sử Đái tháo đường:</label>
+            <select id="diabetes">
+              <option value="1">Có đái tháo đường</option>
+              <option value="0">Không đái tháo đường</option>
+            </select>
+          </div>
+        </div>
+
+        <button class="calc-btn" onclick="calcMultinomial()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"></svg>
+          Tính Xác Suất Dự Báo Kết Cục
+        </button>
+
+        <div class="calc-result" id="multi-result">
+          <div id="multi-interp" style="font-size:0.88rem; line-height:1.6;"></div>
+        </div>
+      </div>
+
+      {/* CHƯƠNG 5 */}
+<h2 id="chuong-5">5. Giả Định và Các Bẫy Cần Tránh Khi Phân Tích</h2>
+      <ul>
+        <li>**Giả định Independence of Irrelevant Alternatives (IIA):** Việc thêm hay bớt một lựa chọn kết cục khác không làm thay đổi tỷ lệ odds giữa hai kết cục ban đầu. Kiểm định bằng Hausman-McFadden test.</li>
+        <li>**Hiện tượng Phân tách Hoàn toàn (Complete Separation):** Xuất hiện khi một biến độc lập dự đoán hoàn toàn chính xác nhóm kết cục (ví dụ: tất cả bệnh nhân ghép thận đều dưới 40 tuổi). Dẫn đến SE(β) tiến đến vô cực và mô hình không hội tụ. *Xử lý: Gộp nhóm hoặc dùng Firth penalized likelihood.*</li>
+        <li>**Quy tắc EPV (Events Per Variable):** Cần tối thiểu 10–20 bệnh nhân thuộc **nhóm kết cục có tần suất nhỏ nhất** cho mỗi biến độc lập đưa vào mô hình.</li>
+      </ul>
+
+      {/* CHƯƠNG 6 */}
+<h2 id="chuong-6">6. Tóm Tắt Ưu Nhược Điểm và Khuyên Nghị Thực Hành</h2>
+      <div class="callout callout-success">
+        **✅ Ưu điểm:** Linh hoạt, không đòi hỏi biến kết cục có thứ tự, ước lượng chính xác xác suất tuyệt đối cho từng nhóm.
+        
+
+**⚠️ Nhược điểm:** Số lượng tham số cần ước lượng tăng rất nhanh theo công thức (K - 1) * (p + 1), đòi hỏi cỡ mẫu lớn và dễ vi phạm hiện tượng phân tách khi mẫu nhỏ.
+      </div>
+
+    </div>
+
+    {/* MARK AS READ */}
+    <div class="mark-read-section">
+      <div class="mark-read-info">
+        **Bạn đã đọc xong bài học này?**
+        Đánh dấu để theo dõi tiến độ học tập của bạn trên trang hub
+      </div>
+      <button class="mark-read-btn unread" id="mark-read-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"></svg>
+        Đánh dấu đã đọc
+      </button>
+    </div>
+
+  </div>
+
+  
+
+</body>
+</html>
 
 ---
 
-## 2. Công Thức & Mô Hình Tính Toán {#sec-2}
+## Tài Liệu Tham Khảo Y Văn
 
-* Các chỉ số đo lường kích thước hiệu ứng (Effect Size, OR, RR, HR) và khoảng tin cậy 95% (95% CI).
-* Đánh giá giá trị p-value và ý nghĩa thống kê so với ý nghĩa thực tiễn lâm sàng (MCID).
-
----
-
-## 3. Phiên Giải Kết Quả & Biện Luận Y Văn {#sec-3}
-
-* Tránh các sai lầm suy diễn thống kê phổ biến (p-hacking, confounding bias, selection bias).
-* Ứng dụng đọc và phân tích có phê phán các bài báo quốc tế (Critical Appraisal).
+1. **Greenhalgh, T. (2019)**. *How to Read a Paper: The Basics of Evidence-Based Medicine and Healthcare*. Wiley-Blackwell.
+2. **Fletcher, G. S. (2020)**. *Clinical Epidemiology: The Essentials* (6th ed.). Wolters Kluwer.

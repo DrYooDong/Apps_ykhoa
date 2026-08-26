@@ -514,3 +514,45 @@
   border-color: var(--color-primary, #0284c7);
   background: var(--color-primary-hl, rgba(2, 132, 199, 0.05));
 }
+
+/* ── 8. MOBILE RESPONSIVE OPTIMIZATIONS (<= 768px) ────────────────────────── */
+@media (max-width: 768px) {
+  .studio-container,
+  .studio-workspace {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .studio-card {
+    padding: 0.85rem;
+    border-radius: var(--radius-lg, 14px);
+    margin-bottom: 0.85rem;
+  }
+
+  .studio-title {
+    font-size: 1.35rem;
+  }
+
+  .studio-header-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.65rem;
+  }
+
+  .studio-tabs-bar {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    flex-wrap: nowrap;
+    padding-bottom: 4px;
+  }
+
+  .studio-tab-btn {
+    flex-shrink: 0;
+    min-height: 44px;
+    padding: 0.5rem 0.85rem;
+  }
+
+  .quiz-opt-btn {
+    min-height: 48px;
+    padding: 0.75rem 0.85rem;
+  }
+}

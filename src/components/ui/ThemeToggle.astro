@@ -1,0 +1,72 @@
+---
+---
+<button id="themeToggleBtn" class="theme-toggle-btn" type="button" aria-label="Chuyển đổi giao diện sáng/tối">
+  <i class="fas fa-sun theme-icon-sun"></i>
+  <i class="fas fa-moon theme-icon-moon"></i>
+</button>
+
+<style>
+  .theme-toggle-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: var(--radius-full);
+    background-color: var(--color-surface-offset);
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .theme-toggle-btn:hover {
+    background-color: var(--color-primary-hl);
+    color: var(--color-primary);
+    border-color: rgba(var(--color-primary-rgb), 0.3);
+  }
+
+  .theme-icon-sun,
+  .theme-icon-moon {
+    position: absolute;
+    transition: transform var(--tr), opacity var(--tr);
+  }
+
+  :global([data-theme="light"]) .theme-icon-sun {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+  :global([data-theme="light"]) .theme-icon-moon {
+    opacity: 0;
+    transform: rotate(90deg) scale(0.5);
+  }
+
+  :global([data-theme="dark"]) .theme-icon-sun {
+    opacity: 0;
+    transform: rotate(-90deg) scale(0.5);
+  }
+  :global([data-theme="dark"]) .theme-icon-moon {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+    color: var(--color-primary);
+  }
+</style>
+
+<script is:inline>
+  function initTheme() {
+    const savedTheme = localStorage.getItem('cliniportal-theme') || 
+      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', savedTheme);
+  }
+
+  initTheme();
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('themeToggleBtn');
+    if (!btn) return;
+
+    btn.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme') || 'light';
+      const next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('cliniportal-theme', next);
+    });
+  });
+</script>

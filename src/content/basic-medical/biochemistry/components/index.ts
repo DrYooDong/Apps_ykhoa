@@ -1,7 +1,7 @@
 /**
- * CliniPortal 2.0 — Biochemistry Components Index
+ * CliniPortal — Biochemistry MDX Components Barrel Export (Astro Native)
  * Path: src/content/basic-medical/biochemistry/components/index.ts
  */
 
-export * from './BiochemAlert';
-export * from './BiochemQuickNav';
+export { default as BiochemAlert } from '../../../../components/ui/Alert.astro';
+export { default as BiochemQuickNav } from '../../../../components/ui/QuickNav.astro';

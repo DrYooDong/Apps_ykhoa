@@ -1102,3 +1102,42 @@ code {
         background: #fff !important;
     }
 }
+
+/* ============================================================
+   MOBILE RESPONSIVE FLOWCHART & DECISION TREES (<= 768px)
+   ============================================================ */
+@media (max-width: 768px) {
+    .flow-hero {
+        padding: 16px 14px;
+        border-radius: var(--radius-lg, 14px);
+        margin-bottom: 16px;
+    }
+
+    .flow-container,
+    .flow-canvas-wrapper,
+    .flow-page {
+        width: 100%;
+        max-width: 100vw;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .flow-controls-bar,
+    .flow-toolbar {
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+    .flow-btn,
+    .flow-zoom-btn,
+    .flow-filter-btn {
+        min-height: var(--touch-min, 44px);
+        min-width: var(--touch-min, 44px);
+        padding: 8px 12px;
+    }
+
+    .fnode {
+        min-width: 220px;
+        max-width: 90vw;
+    }
+}
