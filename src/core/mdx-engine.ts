@@ -315,7 +315,7 @@ export class CliniMdxEngine {
   }
 
   /**
-   * Markdown parser với hỗ trợ Headings {#custom-id} và Tables
+   * Markdown parser với hỗ trợ Headings {#custom-id}, Tables, Fenced Code Blocks & Clinical Diagrams
    */
   private renderMarkdown(md: string): { html: string; toc: Array<{ id: string; text: string; level: number }> } {
     const toc: Array<{ id: string; text: string; level: number }> = [];
@@ -323,6 +323,11 @@ export class CliniMdxEngine {
     const htmlLines: string[] = [];
     let inTable = false;
     let tableRows: string[] = [];
+    let inCodeBlock = false;
+    let codeBlockLang = '';
+    let codeBlockLines: string[] = [];
+    let inMathBlock = false;
+    let mathBlockLines: string[] = [];
 
     const flushTable = () => {
       if (inTable && tableRows.length > 0) {
@@ -348,8 +353,77 @@ export class CliniMdxEngine {
       }
     };
 
+    const flushCodeBlock = () => {
+      if (inCodeBlock) {
+        const rawContent = codeBlockLines.join('\n');
+        const rendered = this.renderDiagramOrCodeBlock(rawContent, codeBlockLang);
+        htmlLines.push(rendered);
+        codeBlockLines = [];
+        codeBlockLang = '';
+        inCodeBlock = false;
+      }
+    };
+
+    const flushMathBlock = () => {
+      if (inMathBlock) {
+        const rawMath = mathBlockLines.join('\n').trim();
+        htmlLines.push(`<div class="mdx-math-block">${this.formatMathContent(rawMath)}</div>`);
+        mathBlockLines = [];
+        inMathBlock = false;
+      }
+    };
+
     for (let i = 0; i < lines.length; i++) {
       let line = lines[i];
+
+      // Handle Multiline Math Block $$ ... $$
+      if (line.trim().startsWith('$$')) {
+        if (inMathBlock) {
+          flushMathBlock();
+        } else {
+          if (inTable) flushTable();
+          if (inCodeBlock) flushCodeBlock();
+          
+          const restOfLine = line.trim().slice(2).trim();
+          if (restOfLine.endsWith('$$') && restOfLine.length > 2) {
+            // Single-line $$ formula $$
+            const formula = restOfLine.slice(0, -2).trim();
+            htmlLines.push(`<div class="mdx-math-block">${this.formatMathContent(formula)}</div>`);
+          } else {
+            inMathBlock = true;
+            if (restOfLine) mathBlockLines.push(restOfLine);
+          }
+        }
+        continue;
+      }
+
+      if (inMathBlock) {
+        if (line.trim().endsWith('$$')) {
+          const content = line.trim().slice(0, -2).trim();
+          if (content) mathBlockLines.push(content);
+          flushMathBlock();
+        } else {
+          mathBlockLines.push(line);
+        }
+        continue;
+      }
+
+      // Handle Fenced Code Block / Diagrams ```
+      if (line.trim().startsWith('```')) {
+        if (inCodeBlock) {
+          flushCodeBlock();
+        } else {
+          if (inTable) flushTable();
+          inCodeBlock = true;
+          codeBlockLang = line.trim().slice(3).trim();
+        }
+        continue;
+      }
+
+      if (inCodeBlock) {
+        codeBlockLines.push(line);
+        continue;
+      }
 
       // Table line
       if (line.trim().startsWith('|') && line.trim().endsWith('|')) {
@@ -419,11 +493,105 @@ export class CliniMdxEngine {
     }
 
     if (inTable) flushTable();
+    if (inCodeBlock) flushCodeBlock();
+    if (inMathBlock) flushMathBlock();
 
     return {
       html: htmlLines.join('\n'),
       toc
     };
+  }
+
+  /**
+   * Render Block Sơ đồ / Biểu đồ hoặc Khối Code
+   */
+  private renderDiagramOrCodeBlock(raw: string, lang: string): string {
+    const isDiagram = lang === 'diagram' || lang === 'scheme' || lang === 'flowchart' ||
+      raw.includes('├──') || raw.includes('└──') || raw.includes('──►') || raw.includes('│') ||
+      raw.includes('▼') || raw.includes('▲') || (raw.includes('[') && raw.includes(']') && (raw.includes('|') || raw.includes('->') || raw.includes('►')));
+
+    if (isDiagram) {
+      // Trích xuất tiêu đề sơ đồ từ node đầu tiên [Title] nếu có
+      let diagramTitle = 'Sơ đồ cơ chế & Lưu đồ tiếp cận';
+      const rootMatch = raw.match(/\[(.*?)\]/);
+      if (rootMatch && rootMatch[1] && rootMatch[1].length < 60) {
+        diagramTitle = rootMatch[1].trim();
+      }
+
+      const highlightedCanvas = this.highlightDiagramSyntax(raw);
+      const diagramId = 'diag-' + Math.floor(Math.random() * 100000);
+
+      return `
+        <div class="mdx-diagram-card" id="${diagramId}">
+          <div class="mdx-diagram-header">
+            <div class="mdx-diagram-title-wrap">
+              <span class="mdx-diagram-badge"><i class="fa-solid fa-diagram-project"></i> SƠ ĐỒ LÂM SÀNG</span>
+              <span style="font-weight: 700;">${diagramTitle}</span>
+            </div>
+            <div class="mdx-diagram-actions">
+              <button type="button" class="mdx-diagram-btn" onclick="navigator.clipboard.writeText(decodeURIComponent('${encodeURIComponent(raw)}')); this.innerText='Đã chép!'; setTimeout(()=>this.innerHTML='<i class=\\\'fa-regular fa-copy\\\'></i> Sao chép', 2000);" title="Sao chép sơ đồ">
+                <i class="fa-regular fa-copy"></i> Sao chép
+              </button>
+            </div>
+          </div>
+          <pre class="mdx-diagram-canvas"><code>${highlightedCanvas}</code></pre>
+        </div>
+      `;
+    }
+
+    // Standard Code Block
+    const safeContent = this.escapeHtml(raw);
+    return `
+      <div class="mdx-code-block">
+        <pre><code class="language-${lang || 'text'}">${safeContent}</code></pre>
+      </div>
+    `;
+  }
+
+  /**
+   * Highlight syntax cho sơ đồ cây ASCII & Flowcharts
+   */
+  private highlightDiagramSyntax(raw: string): string {
+    let safe = this.escapeHtml(raw);
+
+    // Highlight Tree Branch lines & Connectors
+    safe = safe
+      .replace(/(├──►|└──►|├──|└──|│|─►|──►|──|▼|▲|&gt;)/g, '<span class="diag-branch">$1</span>')
+      .replace(/(\[.*?\])/g, '<span class="diag-bracket">$1</span>')
+      .replace(/\b(Phản hồi âm tính|Negative Feedback|BÌNH THƯỜNG|Bù trừ tốt|Hồi phục|Hiệu quả|Tế bào T|Lympho B|Tế bào NK)\b/gi, '<span class="diag-success">$1</span>')
+      .replace(/\b(Phản hồi dương|Vòng Luẩn Quẩn|TỬ VONG|Hoại tử|Nguy kịch|Thiếu máu cấp|Sốc|Đột quỵ|Cấp cứu)\b/gi, '<span class="diag-danger">$1</span>')
+      .replace(/\b(Cảnh báo|Ngưỡng|Phân cắt|Kích hoạt|Tăng nhịp tim|Co mạch|Enzym|Convertase|Opsonin hóa)\b/gi, '<span class="diag-warning">$1</span>');
+
+    return safe;
+  }
+
+  /**
+   * Format nội dung công thức toán học KaTeX
+   */
+  private formatMathContent(math: string): string {
+    let formatted = math;
+
+    // Handle \frac{A}{B}
+    formatted = formatted.replace(/\\frac\{([^{}]+)\}\{([^{}]+)\}/g, '<span class="mdx-math-fraction"><span class="mdx-math-num">$1</span><span class="mdx-math-den">$2</span></span>');
+
+    // Handle \text{...}
+    formatted = formatted.replace(/\\text\{([^{}]+)\}/g, '<span style="font-family: sans-serif; font-style: normal; font-size: 0.9em; margin: 0 2px;">$1</span>');
+
+    // Handle special symbols
+    formatted = formatted
+      .replace(/\\approx/g, '≈')
+      .replace(/\\mu/g, 'µ')
+      .replace(/\\times/g, '×')
+      .replace(/\\cdot/g, '·')
+      .replace(/\\pm/g, '±')
+      .replace(/\\le(q)?/g, '≤')
+      .replace(/\\ge(q)?/g, '≥')
+      .replace(/\\alpha/g, 'α')
+      .replace(/\\beta/g, 'β')
+      .replace(/\\Delta/g, 'Δ')
+      .replace(/\\infty/g, '∞');
+
+    return formatted;
   }
 
   /**
@@ -434,8 +602,20 @@ export class CliniMdxEngine {
       .replace(/\*\*(.*?)\*\*/g, '<strong style="font-weight: 700; color: var(--color-text, #0f172a);">$1</strong>')
       .replace(/\*(.*?)\*/g, '<em>$1</em>')
       .replace(/`([^`]+)`/g, '<code style="background: var(--color-surface-offset, #f1f5f9); padding: 0.15rem 0.4rem; border-radius: 4px; font-family: monospace; font-size: 0.88em; color: #0f766e;">$1</code>')
-      .replace(/\$([^\$]+)\$/g, '<span style="font-family: serif; font-style: italic; font-weight: 600; color: #0d9488;">$1</span>');
+      .replace(/\$([^\$]+)\$/g, (_m, math) => {
+        return `<span class="mdx-math-inline">${this.formatMathContent(math)}</span>`;
+      });
+  }
+
+  private escapeHtml(str: string): string {
+    return str
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
   }
 }
 
 export const cliniMdxEngine = new CliniMdxEngine();
+

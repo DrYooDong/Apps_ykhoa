@@ -27,7 +27,7 @@ export function renderGuidelineReader(slug: string): string {
   }, 30);
 
   return `
-    <div class="guideline-reader-wrapper animate-fade-in ${savedWidthMode === 'wide' ? 'reader-mode-wide' : 'reader-mode-standard'}" id="guideline-reader-wrapper" style="min-height: calc(100vh - 60px); background: var(--color-bg, #f0f4f8); padding-top: 84px; padding-bottom: 3.5rem; transition: all 0.25s ease;">
+    <div class="guideline-reader-wrapper animate-fade-in ${savedWidthMode === 'wide' ? 'reader-mode-wide' : 'reader-mode-standard'}" id="guideline-reader-wrapper" style="min-height: calc(100vh - 60px); background: var(--color-bg, #f0f4f8); padding: 1rem 1.25rem 3.5rem 1.25rem; transition: all 0.25s ease;">
       
       <!-- TOP CONTROL & BREADCRUMB PRO TOOLBAR (KHÔNG ĐÓNG BĂNG KHI CUỘN) -->
       <header class="guideline-reader-toolbar" style="position: relative; z-index: 10; background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--color-border, #e2e8f0); padding: 0.65rem 1.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; box-shadow: 0 2px 10px rgba(0,0,0,0.04); margin-bottom: 1.25rem; border-radius: 12px;">

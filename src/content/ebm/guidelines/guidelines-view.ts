@@ -9,6 +9,7 @@
 import './guidelines.css';
 import './css/journal-quality.css';
 import './css/guidelines-dashboard.css';
+import '../../../styles/components/non-intrusive-ui.css';
 
 import './guidelinesdata';
 import './data/predatory-blacklist';

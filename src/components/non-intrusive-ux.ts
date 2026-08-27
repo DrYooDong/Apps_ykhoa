@@ -47,6 +47,7 @@ export class ClinicalNonIntrusiveUX {
     if (!document.querySelector('.focus-mode-indicator')) {
       const indicator = document.createElement('div');
       indicator.className = 'focus-mode-indicator';
+      indicator.style.display = 'none';
       indicator.setAttribute('role', 'status');
       indicator.setAttribute('aria-live', 'polite');
       indicator.innerHTML = `
@@ -82,6 +83,11 @@ export class ClinicalNonIntrusiveUX {
   public setFocusMode(enabled: boolean): void {
     this.isFocusMode = enabled;
     document.body.classList.toggle('clinical-focus-mode', enabled);
+
+    const indicator = document.querySelector<HTMLElement>('.focus-mode-indicator');
+    if (indicator) {
+      indicator.style.display = enabled ? 'inline-flex' : 'none';
+    }
 
     const buttons = document.querySelectorAll('.btn-focus-toggle, [data-action="toggle-focus"]');
     buttons.forEach((btn) => {

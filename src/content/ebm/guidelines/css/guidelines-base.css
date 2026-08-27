@@ -95,8 +95,16 @@ body.guidelines-active #appSidebar {
   display: none !important;
 }
 
+body:has(#app .app-shell) .app-container,
+body.guidelines-active .app-container {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
 body:has(#app .app-shell) #app,
-body.guidelines-active #app {
+body:has(#app .app-shell) .main-wrapper,
+body.guidelines-active #app,
+body.guidelines-active .main-wrapper {
   max-width: 100% !important;
   margin: 0 !important;
   padding: 0 !important;

@@ -262,6 +262,12 @@ h1,h2,h3,h4 { font-family: var(--font-display); line-height: 1.2; text-wrap: bal
   min-height: 100dvh;
 }
 
+body.guidelines-active .app-container,
+body:has(#app .app-shell) .app-container {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
 /* Bento homepage stretches to fill app-container */
 .bento-homepage {
   flex: 1;
@@ -282,6 +288,16 @@ h1,h2,h3,h4 { font-family: var(--font-display); line-height: 1.2; text-wrap: bal
   padding: 1rem 1.25rem;
   overflow-x: hidden;
   animation: fadeIn 0.4s ease-out;
+}
+
+body.guidelines-active .main-wrapper,
+body:has(#app .app-shell) .main-wrapper,
+body.guidelines-active #app,
+body:has(#app .app-shell) #app {
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
 }
 
 /* ============================================================
