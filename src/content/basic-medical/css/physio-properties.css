@@ -1,14 +1,14 @@
 /* ============================================================
    BASIC MEDICAL ATOMIC: PROPERTIES & CONSTANTS (physio-properties.css)
-   Key-Value Properties, Starling Constants & Lab Reference Rows
+   Key-Value Properties, Starling Constants, Lab Reference Rows & Ion Permeabilities
    ============================================================ */
 
 .physio-property-list {
   background: var(--color-surface-2, #f8fafc);
-  border-radius: var(--radius-md, 12px);
-  padding: 1.25rem;
+  border-radius: var(--radius-md, 14px);
+  padding: 1.25rem 1.5rem;
   margin: 1.5rem 0;
-  border: 1px solid var(--color-divider, #cbd5e1);
+  border: 1px solid var(--color-border, #cbd5e1);
   list-style: none !important;
   padding-left: 0 !important;
 }
@@ -16,9 +16,9 @@
 .physio-property-list li {
   display: flex;
   flex-direction: column;
-  padding: 0.75rem 0;
-  border-bottom: 1px solid var(--color-divider, #cbd5e1);
-  gap: 0.25rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--color-border, #cbd5e1);
+  gap: 0.35rem;
 }
 
 .physio-property-list li:last-child {
@@ -31,30 +31,52 @@
 }
 
 .physio-property-name {
-  font-weight: 700;
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-weight: 800;
   color: var(--color-primary, #0284c7);
-  font-size: var(--text-sm, 0.88rem);
+  font-size: var(--text-sm, 0.9rem);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
 }
 
 .physio-property-desc {
   font-size: var(--text-sm, 0.88rem);
   color: var(--color-text-muted, #475569);
-  line-height: 1.55;
+  line-height: 1.6;
 }
 
 @media (min-width: 640px) {
   .physio-property-list li {
     flex-direction: row;
-    align-items: flex-start;
-    padding: 0.75rem 0.5rem;
+    align-items: baseline;
+    padding: 0.85rem 0.5rem;
   }
 
   .physio-property-name {
-    width: 200px;
+    width: 220px;
     flex-shrink: 0;
   }
 
   .physio-property-desc {
     flex: 1;
   }
+}
+
+/* --- DARK MODE --- */
+[data-theme="dark"] .physio-property-list {
+  background: var(--color-surface-2, #0f172a);
+  border-color: var(--color-border, #334155);
+}
+
+[data-theme="dark"] .physio-property-list li {
+  border-bottom-color: var(--color-border, #334155);
+}
+
+[data-theme="dark"] .physio-property-name {
+  color: var(--color-primary-light, #38bdf8);
+}
+
+[data-theme="dark"] .physio-property-desc {
+  color: var(--color-text-muted, #94a3b8);
 }

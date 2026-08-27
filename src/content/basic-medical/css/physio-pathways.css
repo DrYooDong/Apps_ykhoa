@@ -1,6 +1,6 @@
 /* ============================================================
    BASIC MEDICAL ATOMIC: PATHWAYS & CASCADES (physio-pathways.css)
-   Molecular Pathway Chains, Vicious Cycles & Flow Step Nodes
+   Molecular Pathway Chains, Vicious Cycles, Flow Step Nodes & Signalling Axes
    ============================================================ */
 
 /* Pathway Chains & Process Nodes */
@@ -8,72 +8,84 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 0.35rem;
-  margin: 0.85rem 0;
+  gap: 0.5rem;
+  margin: 1rem 0;
 }
 
 .pathway-node {
   background: var(--color-surface, #ffffff);
-  border: 1px solid var(--color-border, #e2e8f0);
+  border: 1px solid var(--color-border, #cbd5e1);
   border-radius: var(--radius-md, 8px);
-  padding: 0.4rem 0.75rem;
-  font-size: var(--text-xs, 0.82rem);
-  font-weight: 500;
+  padding: 0.45rem 0.85rem;
+  font-size: var(--text-xs, 0.84rem);
+  font-weight: 600;
   white-space: nowrap;
-  color: var(--color-text, #1e293b);
+  color: var(--color-text, #0f172a);
+  box-shadow: var(--shadow-sm, 0 1px 3px rgba(0, 0, 0, 0.03));
+  transition: transform var(--tr-fast, 150ms ease-out);
+}
+
+.pathway-node:hover {
+  transform: translateY(-1px);
 }
 
 .pathway-node.red {
   background: var(--color-danger-hl, rgba(220, 38, 38, 0.08));
   border-color: var(--color-danger-border, rgba(220, 38, 38, 0.3));
   color: var(--color-danger, #dc2626);
-  font-weight: 600;
 }
 
 .pathway-node.orange {
   background: var(--color-warning-hl, rgba(217, 119, 6, 0.08));
   border-color: var(--color-warning-border, rgba(217, 119, 6, 0.3));
   color: var(--color-warning, #d97706);
-  font-weight: 600;
+}
+
+.pathway-node.green {
+  background: var(--color-success-hl, rgba(5, 150, 105, 0.08));
+  border-color: var(--color-success-border, rgba(5, 150, 105, 0.3));
+  color: var(--color-success, #059669);
+}
+
+.pathway-node.teal {
+  background: var(--color-teal-hl, rgba(13, 148, 136, 0.08));
+  border-color: var(--color-teal-border, rgba(13, 148, 136, 0.3));
+  color: var(--color-teal, #0d9488);
 }
 
 .pathway-node.purple {
   background: var(--color-purple-hl, rgba(124, 58, 237, 0.08));
   border-color: var(--color-purple-border, rgba(124, 58, 237, 0.3));
   color: var(--color-purple, #7c3aed);
-  font-weight: 600;
 }
 
 .pathway-node.blue {
   background: var(--color-primary-hl, rgba(2, 132, 199, 0.08));
   border-color: var(--color-primary-border, rgba(2, 132, 199, 0.3));
   color: var(--color-primary, #0284c7);
-  font-weight: 600;
 }
 
 .pathway-arrow {
   color: var(--color-text-muted, #64748b);
   font-size: 0.95rem;
   flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
 }
 
 /* Vicious Cycles & Decompensation Steps */
 .vicious-cycle {
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.06) 0%, rgba(99, 102, 241, 0.02) 100%);
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(99, 102, 241, 0.02) 100%);
   border: 1px solid rgba(99, 102, 241, 0.25);
   border-radius: var(--radius-lg, 14px);
-  padding: 1.5rem;
-  margin: 1.25rem 0;
-}
-
-[data-theme="dark"] .vicious-cycle {
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.12) 0%, rgba(99, 102, 241, 0.04) 100%);
-  border-color: rgba(99, 102, 241, 0.35);
+  padding: 1.35rem 1.5rem;
+  margin: 1.5rem 0;
 }
 
 .vicious-cycle-title {
-  font-size: 0.92rem;
-  font-weight: 700;
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-size: 0.96rem;
+  font-weight: 800;
   color: #6366f1;
   margin-bottom: 1rem;
   display: flex;
@@ -81,42 +93,38 @@
   gap: 0.5rem;
 }
 
-[data-theme="dark"] .vicious-cycle-title {
-  color: #818cf8;
-}
-
 .cycle-steps {
   display: flex;
   flex-direction: column;
-  gap: 0.65rem;
+  gap: 0.75rem;
 }
 
 .cycle-step {
   display: flex;
   align-items: flex-start;
-  gap: 0.75rem;
+  gap: 0.85rem;
 }
 
 .cycle-step-num {
-  width: 28px;
-  height: 28px;
-  min-width: 28px;
+  width: 26px;
+  height: 26px;
+  min-width: 26px;
   background: #6366f1;
   color: white;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.78rem;
-  font-weight: 700;
+  font-size: 0.76rem;
+  font-weight: 800;
   flex-shrink: 0;
+  margin-top: 0.1rem;
 }
 
 .cycle-step-text {
   font-size: var(--text-sm, 0.88rem);
-  padding-top: 0.15rem;
-  line-height: 1.5;
-  color: var(--color-text, #1e293b);
+  line-height: 1.55;
+  color: var(--color-text, #0f172a);
 }
 
 /* Flow Step Nodes */
@@ -124,34 +132,40 @@
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  margin: 1rem 0;
+  margin: 1.25rem 0;
 }
 
 .flow-step-node {
   background: var(--color-surface, #ffffff);
-  border: 1px solid var(--color-border, #e2e8f0);
-  border-radius: var(--radius-md, 10px);
+  border: 1px solid var(--color-border, #cbd5e1);
+  border-radius: var(--radius-md, 12px);
   padding: 1rem 1.25rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
+  transition: transform var(--tr, 200ms ease-out), border-color var(--tr, 200ms ease-out);
+}
+
+.flow-step-node:hover {
+  transform: translateX(3px);
+  border-color: var(--color-primary, #0284c7);
 }
 
 .flow-step-node.alert {
   border-color: var(--color-danger-border, rgba(220, 38, 38, 0.4));
-  background: var(--color-danger-hl, rgba(220, 38, 38, 0.03));
+  background: var(--color-danger-hl, rgba(220, 38, 38, 0.04));
 }
 
 .flow-step-node.warning {
   border-color: var(--color-warning-border, rgba(217, 119, 6, 0.4));
-  background: var(--color-warning-hl, rgba(217, 119, 6, 0.03));
+  background: var(--color-warning-hl, rgba(217, 119, 6, 0.04));
 }
 
 .flow-step-left {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.85rem;
 }
 
 .flow-badge {
@@ -164,6 +178,31 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 700;
+  font-weight: 800;
   font-size: 0.85rem;
+}
+
+/* --- DARK MODE --- */
+[data-theme="dark"] .pathway-node {
+  background: var(--color-surface, #1e293b);
+  border-color: var(--color-border, #334155);
+  color: var(--color-text, #f8fafc);
+}
+
+[data-theme="dark"] .vicious-cycle {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.12) 0%, rgba(99, 102, 241, 0.04) 100%);
+  border-color: rgba(99, 102, 241, 0.35);
+}
+
+[data-theme="dark"] .vicious-cycle-title {
+  color: #a5b4fc;
+}
+
+[data-theme="dark"] .cycle-step-text {
+  color: var(--color-text, #f8fafc);
+}
+
+[data-theme="dark"] .flow-step-node {
+  background: var(--color-surface, #1e293b);
+  border-color: var(--color-border, #334155);
 }

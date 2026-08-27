@@ -277,6 +277,9 @@ async function fetchAndHydrateGuideline(cleanSlug: string, baseSlugName: string)
         </div>
       </div>
     `;
+
+    // Hydrate MDX Interactive CDSS Calculators & Smooth Anchors
+    hydrateMdxInteractiveTools(mountEl);
     return;
   }
 
@@ -806,4 +809,93 @@ if (typeof window !== 'undefined') {
   win.copyGuidelineSoapNote = copyGuidelineSoapNote;
   win.createSoapFromCurrentGuideline = createSoapFromCurrentGuideline;
   win.openPathophysiologyForCurrentGuideline = openPathophysiologyForCurrentGuideline;
+}
+
+/**
+ * Hydrate Interactive CDSS Calculators & Smooth Anchors for MDX Articles
+ */
+function hydrateMdxInteractiveTools(mountEl: HTMLElement): void {
+  // 1. Replace un-rendered HTML entities like &rarr; in text nodes
+  const walker = document.createTreeWalker(mountEl, NodeFilter.SHOW_TEXT);
+  let node: Node | null;
+  while ((node = walker.nextNode())) {
+    if (node.nodeValue && node.nodeValue.includes('&rarr;')) {
+      node.nodeValue = node.nodeValue.replace(/&rarr;/g, '→');
+    }
+  }
+
+  // 2. CDSS 1: BP Classification Calculator (Table 4 AHA/ACC 2025)
+  const inputSbp = mountEl.querySelector('#input-sbp') as HTMLInputElement | null;
+  const inputDbp = mountEl.querySelector('#input-dbp') as HTMLInputElement | null;
+  const resultEl = mountEl.querySelector('#bp-class-result') as HTMLElement | null;
+
+  if (inputSbp && inputDbp && resultEl) {
+    const calculateBpClass = () => {
+      const sbp = parseFloat(inputSbp.value) || 0;
+      const dbp = parseFloat(inputDbp.value) || 0;
+
+      if (sbp <= 0 || dbp <= 0) {
+        resultEl.innerHTML = '<span style="color: var(--color-text-muted);">Vui lòng nhập trị số SBP và DBP</span>';
+        return;
+      }
+
+      let category = '';
+      let badgeStyle = '';
+      let advice = '';
+
+      if (sbp >= 180 || dbp >= 120) {
+        category = 'Cơn Tăng Huyết Áp Nguy Kịch (Hypertensive Crisis)';
+        badgeStyle = 'background: #7f1d1d; color: #ffffff;';
+        advice = 'Cần đánh giá ngay tổn thương cơ quan đích cấp tính (HMOD). Nếu có: Cấp cứu THA (Emergency) nhập ICU hạ áp IV. Nếu không: Khẩn cấp THA (Urgency) hạ áp uống.';
+      } else if (sbp >= 140 || dbp >= 90) {
+        category = 'Tăng Huyết Áp Độ 2 (Stage 2)';
+        badgeStyle = 'background: #dc2626; color: #ffffff;';
+        advice = 'Chỉ định khởi trị ngay bằng Viên Phối Hợp Liều Cố Định (SPC) 2 nhóm thuốc (RAASi + CCB hoặc Thiazide) kết hợp thay đổi lối sống. Mục tiêu HA < 130/80 mm Hg.';
+      } else if ((sbp >= 130 && sbp <= 139) || (dbp >= 80 && dbp <= 89)) {
+        category = 'Tăng Huyết Áp Độ 1 (Stage 1)';
+        badgeStyle = 'background: #d97706; color: #ffffff;';
+        advice = 'Đánh giá nguy cơ tim mạch 10 năm bằng PREVENT™. Nếu PREVENT ≥ 7.5% hoặc có CVD/CKD/Đái tháo đường: Khởi trị thuốc hạ áp đơn trị/phối hợp. Nếu < 7.5%: Can thiệp lối sống tích cực 3-6 tháng.';
+      } else if (sbp >= 120 && sbp <= 129 && dbp < 80) {
+        category = 'Huyết Áp Tăng Nhẹ (Elevated BP)';
+        badgeStyle = 'background: #0284c7; color: #ffffff;';
+        advice = 'Can thiệp lối sống không dùng thuốc (Chế độ ăn DASH, giảm muối < 2300mg/ngày, tập thể dục 150 phút/tuần, giảm cân, hạn chế rượu bia). Tái khám đánh giá lại sau 3–6 tháng.';
+      } else {
+        category = 'Huyết Áp Bình Thường (Normal BP)';
+        badgeStyle = 'background: #059669; color: #ffffff;';
+        advice = 'Duy trì lối sống lành mạnh và kiểm tra huyết áp định kỳ hàng năm.';
+      }
+
+      resultEl.innerHTML = `
+        <div style="display: flex; flex-direction: column; gap: 0.4rem; width: 100%;">
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;">
+            <span style="font-size: 0.95rem; font-weight: 800; color: var(--color-text, #0f172a);">
+              📊 Kết Quả: <span class="badge" style="padding: 0.25rem 0.65rem; border-radius: 6px; font-weight: 800; ${badgeStyle}">${category}</span>
+            </span>
+            <span style="font-size: 0.78rem; color: var(--color-text-muted, #64748b); font-weight: 600;">HA: ${sbp}/${dbp} mm Hg</span>
+          </div>
+          <p style="margin: 0; font-size: 0.82rem; line-height: 1.5; color: var(--color-text-muted, #475569);">${advice}</p>
+        </div>
+      `;
+    };
+
+    inputSbp.addEventListener('input', calculateBpClass);
+    inputDbp.addEventListener('input', calculateBpClass);
+    calculateBpClass();
+  }
+
+  // 3. Smooth scroll in-page anchors
+  mountEl.querySelectorAll<HTMLAnchorElement>('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      const href = link.getAttribute('href');
+      if (href && href.startsWith('#') && href.length > 1 && !href.startsWith('#/')) {
+        e.preventDefault();
+        e.stopPropagation();
+        const targetId = href.replace(/^#/, '');
+        const targetEl = document.getElementById(targetId) || mountEl.querySelector(href);
+        if (targetEl) {
+          targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    });
+  });
 }

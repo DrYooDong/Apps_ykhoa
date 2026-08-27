@@ -29,7 +29,8 @@ import {
   calculateGioTimeline,
   kiemTraThanSat,
   kiemTraDiaChi,
-  kiemTraQuyNhanLoc
+  kiemTraQuyNhanLoc,
+  SPECIALTY_METAS
 } from './good-day-engine';
 
 import { getDailyClinicalPearl } from './good-day-data';
@@ -165,6 +166,9 @@ export function openDayScoreModal(
               <p style="margin: 0; font-size: 0.85rem; color: var(--color-text-muted, #64748b); line-height: 1.45;">${evalData.summaryText}</p>
               <div style="margin-top: 0.5rem; font-size: 0.78rem; color: var(--color-text, #0f172a); display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem;">
                 <span>👨‍⚕️ <strong>${doc.name || 'Bác sĩ'}</strong> (${doc.gender || 'Nam'}) — Tuổi ${doc.canNam} ${doc.chiNam} (Mệnh ${doc.hanhMenh})</span>
+                <span style="background: rgba(2,132,199,0.12); color: var(--color-primary, #0284c7); padding: 0.1rem 0.5rem; border-radius: 4px; font-weight: 700;">
+                  ${(SPECIALTY_METAS[doc.specialty || 'surgery'] || SPECIALTY_METAS.surgery).icon} ${(SPECIALTY_METAS[doc.specialty || 'surgery'] || SPECIALTY_METAS.surgery).shortName}
+                </span>
                 ${quyNhan.thienAt.isMatch ? `<span style="background: rgba(16,185,129,0.15); color: #059669; padding: 0.1rem 0.4rem; border-radius: 4px; font-weight: 700;">🌟 Thiên Ất Quý Nhân</span>` : ''}
                 ${diaChi.tamHop.isMatch ? `<span style="background: rgba(2,132,199,0.15); color: #0284c7; padding: 0.1rem 0.4rem; border-radius: 4px; font-weight: 700;">✨ Tam Hợp Cát</span>` : ''}
               </div>
@@ -444,6 +448,16 @@ export function openDayScoreModal(
                   <option value="Thổ" ${doc.hanhMenh === 'Thổ' ? 'selected' : ''}>Mệnh Thổ 🏔️</option>
                 </select>
               </div>
+              <div style="grid-column: 1 / -1;">
+                <span style="font-size: 0.75rem; color: var(--color-primary, #0284c7); font-weight: 700;">Chuyên khoa Lâm sàng (Tùy biến trọng số & Khuyến nghị):</span>
+                <select id="selectDocSpecialty" style="width: 100%; padding: 0.45rem; font-size: 0.85rem; font-weight: 700; border: 1px solid var(--color-primary, #0284c7); border-radius: 0.35rem; background: var(--color-surface, #fff); color: var(--color-text, #0f172a);">
+                  <option value="surgery" ${(!doc.specialty || doc.specialty === 'surgery') ? 'selected' : ''}>🔪 Ngoại khoa & Phẫu thuật / Can thiệp (Ưu tiên Thể lực & Độ vững tay)</option>
+                  <option value="icu_er" ${doc.specialty === 'icu_er' ? 'selected' : ''}>⚡ Hồi sức & Cấp cứu ICU/ER (Ưu tiên Trực giác giờ vàng & Xử trí sốc)</option>
+                  <option value="internal" ${doc.specialty === 'internal' ? 'selected' : ''}>🧠 Nội khoa Điều trị & Ca khó (Ưu tiên Trí tuệ chẩn đoán & Phối hợp thuốc)</option>
+                  <option value="psych_onco_peds" ${doc.specialty === 'psych_onco_peds' ? 'selected' : ''}>💬 Tâm thần, Ung bướu, Nhi & CS Giảm nhẹ (Ưu tiên Thấu cảm & Mô hình SPIKES)</option>
+                  <option value="tcm_rehab" ${doc.specialty === 'tcm_rehab' ? 'selected' : ''}>🌿 Y học cổ truyền & Phục hồi chức năng (Ưu tiên Hòa hợp Khí tiết & Khai huyệt)</option>
+                </select>
+              </div>
             </div>
             <div style="margin-top: 1rem; text-align: right;">
               <button type="button" id="btnSaveDocProfile" style="background: var(--color-primary, #0284c7); color: #fff; border: none; padding: 0.5rem 1.2rem; font-size: 0.85rem; font-weight: 700; border-radius: 0.4rem; cursor: pointer;">
@@ -607,8 +621,9 @@ export function openDayScoreModal(
     const birthMonth = parseInt((document.getElementById('inputDocMonth') as HTMLInputElement)?.value, 10);
     const birthDay = parseInt((document.getElementById('inputDocDay') as HTMLInputElement)?.value, 10);
     const hanhMenh = (document.getElementById('selectDocHanhMenh') as HTMLSelectElement)?.value as any;
+    const specialty = (document.getElementById('selectDocSpecialty') as HTMLSelectElement)?.value as any;
 
-    saveDoctorProfile({ name, gender, birthYear, birthMonth, birthDay, hanhMenh });
+    saveDoctorProfile({ name, gender, birthYear, birthMonth, birthDay, hanhMenh, specialty });
     closeModal();
     updateDayScoreBadge();
     updateHeroEnergyBadge();

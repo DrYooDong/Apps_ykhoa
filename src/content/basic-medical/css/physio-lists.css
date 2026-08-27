@@ -1,12 +1,12 @@
 /* ============================================================
    BASIC MEDICAL ATOMIC: CUSTOM LISTS (physio-lists.css)
-   Checklists, Arrow Navigation Lists & Bullet Indicators
+   Checklists, Arrow Navigation Lists, Pill Lists & Bullet Indicators
    ============================================================ */
 
 /* Checklist style */
 .physio-list-check {
   list-style: none !important;
-  padding-left: 0.5rem !important;
+  padding-left: 0.25rem !important;
   margin-bottom: 1.5rem !important;
 }
 
@@ -16,7 +16,7 @@
   margin-bottom: 0.65rem !important;
   line-height: 1.6 !important;
   font-size: var(--text-sm, 0.88rem) !important;
-  color: var(--color-text-muted, #475569) !important;
+  color: var(--color-text, #334155) !important;
 }
 
 .physio-list-check li::before {
@@ -31,7 +31,7 @@
 /* Arrow list style */
 .physio-list-arrow {
   list-style: none !important;
-  padding-left: 0.5rem !important;
+  padding-left: 0.25rem !important;
   margin-bottom: 1.5rem !important;
 }
 
@@ -41,7 +41,7 @@
   margin-bottom: 0.65rem !important;
   line-height: 1.6 !important;
   font-size: var(--text-sm, 0.88rem) !important;
-  color: var(--color-text-muted, #475569) !important;
+  color: var(--color-text, #334155) !important;
 }
 
 .physio-list-arrow li::before {
@@ -61,7 +61,7 @@
 /* Colored Dot list style */
 .physio-list-dot {
   list-style: none !important;
-  padding-left: 0.5rem !important;
+  padding-left: 0.25rem !important;
   margin-bottom: 1.5rem !important;
 }
 
@@ -71,7 +71,7 @@
   margin-bottom: 0.65rem !important;
   line-height: 1.6 !important;
   font-size: var(--text-sm, 0.88rem) !important;
-  color: var(--color-text-muted, #475569) !important;
+  color: var(--color-text, #334155) !important;
 }
 
 .physio-list-dot li::before {
@@ -79,8 +79,23 @@
   position: absolute;
   left: 0.35rem;
   top: 0.55rem;
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   background: var(--color-primary, #0284c7);
+}
+
+/* --- DARK MODE --- */
+[data-theme="dark"] .physio-list-check li,
+[data-theme="dark"] .physio-list-arrow li,
+[data-theme="dark"] .physio-list-dot li {
+  color: var(--color-text, #f1f5f9) !important;
+}
+
+[data-theme="dark"] .physio-list-arrow li::before {
+  color: var(--color-primary-light, #38bdf8);
+}
+
+[data-theme="dark"] .physio-list-dot li::before {
+  background: var(--color-primary-light, #38bdf8);
 }

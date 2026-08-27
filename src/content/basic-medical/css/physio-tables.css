@@ -1,71 +1,163 @@
 /* ============================================================
    BASIC MEDICAL ATOMIC: COMPARATIVE & SUMMARY TABLES (physio-tables.css)
-   Side-by-Side Physiological Parameter Matrices & Spec Tables
+   Side-by-Side Physiological Parameter Matrices, Lab Ranges & Spec Tables
    ============================================================ */
 
-.table-responsive {
+.table-responsive,
+.epi-table-wrapper,
+.physio-table-wrapper {
   width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  margin: 1.75rem 0;
-  border-radius: var(--radius-lg, 16px);
-  box-shadow: var(--shadow-sm, 0 1px 3px rgba(0, 0, 0, 0.05));
-  border: 1px solid var(--color-divider, #cbd5e1);
+  margin: 1.5rem 0;
+  border-radius: var(--radius-lg, 14px);
+  box-shadow: var(--shadow-sm, 0 2px 8px rgba(0, 0, 0, 0.03));
+  border: 1px solid var(--color-border, #cbd5e1);
   background: var(--color-surface, #ffffff);
 }
 
-.table-responsive .physio-table {
+.table-responsive table,
+.physio-table,
+.med-table,
+.epi-table,
+.physio-table-compare,
+.physio-table-summary {
   margin: 0;
   box-shadow: none;
   border: none;
   border-radius: 0;
   width: 100%;
   border-collapse: collapse;
+  font-size: var(--text-xs, 0.86rem);
+  min-width: 600px;
+  text-align: left;
 }
 
-/* Comparative Table styling */
-.physio-table-compare {
-  width: 100%;
-}
-
-.physio-table-compare th {
-  background: var(--color-primary-hl, rgba(2, 132, 199, 0.08)) !important;
-  color: var(--color-primary, #0284c7) !important;
-  font-weight: 700 !important;
+/* Base Header */
+.table-responsive thead th,
+.physio-table thead th,
+.med-table thead th,
+.epi-table thead th,
+.physio-table-compare thead th,
+.physio-table-summary thead th {
+  padding: 0.85rem 1.15rem;
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-size: 0.76rem;
+  font-weight: 800;
   text-transform: uppercase;
-  font-size: var(--text-xs, 0.75rem);
-  letter-spacing: 0.03em;
-  padding: 0.75rem 1rem;
+  letter-spacing: 0.05em;
+  background: var(--color-surface-2, #f8fafc);
+  color: var(--color-text-muted, #475569);
+  border-bottom: 2px solid var(--color-border, #cbd5e1);
+  white-space: nowrap;
 }
 
-.physio-table-compare td {
-  padding: 0.85rem 1rem;
-  border-bottom: 1px solid var(--color-divider, #cbd5e1);
+/* Base Cells */
+.table-responsive td,
+.physio-table td,
+.med-table td,
+.epi-table td,
+.physio-table-compare td,
+.physio-table-summary td {
+  padding: 0.85rem 1.15rem;
+  border-bottom: 1px solid var(--color-border, #cbd5e1);
+  vertical-align: middle;
+  line-height: 1.55;
+  color: var(--color-text, #0f172a);
 }
 
-/* Highlight first column (spec comparisons) */
+.table-responsive tbody tr:last-child td,
+.physio-table tbody tr:last-child td,
+.med-table tbody tr:last-child td,
+.epi-table tbody tr:last-child td,
+.physio-table-compare tbody tr:last-child td,
+.physio-table-summary tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Zebra striping */
+.table-responsive tbody tr:nth-child(even),
+.physio-table tbody tr:nth-child(even),
+.med-table tbody tr:nth-child(even),
+.epi-table tbody tr:nth-child(even) {
+  background: rgba(248, 250, 252, 0.6);
+}
+
+/* Hover Row */
+.table-responsive tbody tr:hover td,
+.physio-table tbody tr:hover td,
+.med-table tbody tr:hover td,
+.epi-table tbody tr:hover td,
+.physio-table-compare tbody tr:hover td,
+.physio-table-summary tbody tr:hover td {
+  background: var(--color-surface-2, #f1f5f9);
+}
+
+/* Comparative Table Spec Column */
+.physio-table-compare th {
+  background: var(--color-primary-hl, rgba(2, 132, 199, 0.08));
+  color: var(--color-primary, #0284c7);
+}
+
 .physio-table-compare td:first-child {
-  font-weight: 600;
+  font-weight: 700;
   color: var(--color-text, #0f172a);
   background-color: var(--color-surface-2, #f8fafc);
-  width: 25%;
+  width: 28%;
 }
 
-/* Summary Table styling */
-.physio-table-summary {
-  width: 100%;
-  font-size: var(--text-xs, 0.82rem) !important;
-}
-
+/* Summary Table Specifics */
 .physio-table-summary th {
-  background: var(--color-surface-offset, #f1f5f9) !important;
-  color: var(--color-text, #0f172a) !important;
-  border-bottom: 2px solid var(--color-divider, #cbd5e1) !important;
-  font-weight: 600 !important;
-  padding: 0.75rem 1rem;
+  background: var(--color-surface-offset, #f1f5f9);
+  color: var(--color-text, #0f172a);
 }
 
-.physio-table-summary td {
-  padding: 0.65rem 1rem !important;
-  border-bottom: 1px solid var(--color-divider, #cbd5e1);
+/* --- DARK MODE --- */
+[data-theme="dark"] .table-responsive,
+[data-theme="dark"] .epi-table-wrapper,
+[data-theme="dark"] .physio-table-wrapper {
+  background: var(--color-surface, #1e293b);
+  border-color: var(--color-border, #334155);
+}
+
+[data-theme="dark"] .table-responsive thead th,
+[data-theme="dark"] .physio-table thead th,
+[data-theme="dark"] .med-table thead th,
+[data-theme="dark"] .epi-table thead th,
+[data-theme="dark"] .physio-table-compare thead th,
+[data-theme="dark"] .physio-table-summary thead th {
+  background: var(--color-surface-2, #0f172a);
+  border-bottom-color: var(--color-border, #334155);
+  color: var(--color-text-muted, #94a3b8);
+}
+
+[data-theme="dark"] .table-responsive td,
+[data-theme="dark"] .physio-table td,
+[data-theme="dark"] .med-table td,
+[data-theme="dark"] .epi-table td,
+[data-theme="dark"] .physio-table-compare td,
+[data-theme="dark"] .physio-table-summary td {
+  border-bottom-color: var(--color-border, #334155);
+  color: var(--color-text, #f8fafc);
+}
+
+[data-theme="dark"] .table-responsive tbody tr:nth-child(even),
+[data-theme="dark"] .physio-table tbody tr:nth-child(even),
+[data-theme="dark"] .med-table tbody tr:nth-child(even),
+[data-theme="dark"] .epi-table tbody tr:nth-child(even) {
+  background: rgba(15, 23, 42, 0.4);
+}
+
+[data-theme="dark"] .table-responsive tbody tr:hover td,
+[data-theme="dark"] .physio-table tbody tr:hover td,
+[data-theme="dark"] .med-table tbody tr:hover td,
+[data-theme="dark"] .epi-table tbody tr:hover td,
+[data-theme="dark"] .physio-table-compare tbody tr:hover td,
+[data-theme="dark"] .physio-table-summary tbody tr:hover td {
+  background: rgba(51, 65, 85, 0.5);
+}
+
+[data-theme="dark"] .physio-table-compare td:first-child {
+  background-color: rgba(15, 23, 42, 0.6);
+  color: var(--color-primary-light, #38bdf8);
 }

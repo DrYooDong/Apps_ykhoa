@@ -3,6 +3,27 @@
  * Path: src/tools/good-day-types.ts
  */
 
+export type DoctorSpecialty =
+  | 'surgery'           // Ngoại khoa & Phẫu thuật / Can thiệp
+  | 'icu_er'            // Hồi sức & Cấp cứu (ICU / CCU / ER)
+  | 'internal'          // Nội khoa Điều trị & Ca khó
+  | 'psych_onco_peds'   // Tâm thần, Ung bướu, Nhi & CS Giảm nhẹ
+  | 'tcm_rehab';        // Y học cổ truyền & Phục hồi chức năng
+
+export interface SpecialtyMeta {
+  id: DoctorSpecialty;
+  name: string;
+  shortName: string;
+  icon: string;
+  description: string;
+  weights: {
+    physical: number;
+    intellectual: number;
+    emotional: number;
+    intuitive: number;
+  };
+}
+
 export interface DoctorProfile {
   name: string;
   gender: 'Nam' | 'Nữ';
@@ -14,6 +35,7 @@ export interface DoctorProfile {
   canNam: string;
   chiNam: string;
   hanhMenh: 'Kim' | 'Mộc' | 'Thủy' | 'Hỏa' | 'Thổ';
+  specialty?: DoctorSpecialty;
 }
 
 export interface TrucItem {
