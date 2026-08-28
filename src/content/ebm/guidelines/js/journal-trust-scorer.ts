@@ -11,15 +11,8 @@ export interface TrustScoreResult {
   breakdown: Record<string, number>;
 }
 
-export interface JournalQualityProfile {
-  journalName: string;
-  metrics: any;
-  trustScore: TrustScoreResult;
-  predatoryAudit: any;
-  recommendation: string;
-}
-
-import '../guidelines-types';
+import type { JournalQualityProfile } from './guidelines-types';
+export type { JournalQualityProfile };
 
 export function calculateJournalTrustScore(metrics: any, predatoryAudit?: any): TrustScoreResult {
   if (!metrics) {

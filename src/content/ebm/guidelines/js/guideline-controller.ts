@@ -2,8 +2,8 @@
  * CliniPortal — Guidelines Directory & Evidence Hub Controller (TypeScript Module)
  * Powers guidelines.html, journal-quality-analyzer.html, and kho-guidelines/*.html
  */
-import { EbmGuideline } from '../types';
-import { filterGuidelines, createSpecialtyBadge, createImpactBadge } from '../renderer';
+import { EbmGuideline } from '../../types';
+import { filterGuidelines, createSpecialtyBadge, createImpactBadge } from '../../renderer';
 
 export function openGuidelineDetail(guidelineId: string): void {
   const gData = (window as any).guidelinesData as EbmGuideline[] | undefined;

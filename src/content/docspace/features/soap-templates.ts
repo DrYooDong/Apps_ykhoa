@@ -15,7 +15,7 @@ import { renderSidebar, renderDocSpaceHeader, escapeHtml } from '../docspace-vie
 import { generateSOAPSuggestion, generateDischargeSummary } from '../ai/llm-client';
 import { icdPicker } from './icd-picker';
 import { ebmBridge } from './ebm-bridge-view';
-import { KHO_GUIDELINES_STATIC } from '../../ebm/guidelines/kho-guidelines-registry';
+import { KHO_GUIDELINES_STATIC } from '../../ebm/guidelines/js/kho-guidelines-registry';
 import { CLINICAL_CASES } from '../../basic-medical/quiz/patho-quiz-data';
 import { drugPicker } from './drug-picker';
 import { drugIntelligencePanel } from './drug-intelligence-panel';

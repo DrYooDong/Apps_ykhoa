@@ -107,18 +107,42 @@
    2. LAYOUT OVERRIDES & CLINICAL BACKDROP
 ═══════════════════════════════════════════════ */
 
+body.dsp-active,
+body:has(#app .dsp-layout) {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+body.dsp-active .global-header,
 body:has(#app .dsp-layout) .global-header {
   display: none !important;
 }
 
-body:has(#app .dsp-layout) .dsp-layout {
+body.dsp-active .app-container,
+body:has(#app .dsp-layout) .app-container {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
   min-height: 100vh !important;
 }
 
-#app:has(.dsp-layout) {
+body.dsp-active #app,
+#app:has(.dsp-layout),
+#app.dsp-app-container {
   max-width: 100% !important;
   margin: 0 !important;
   padding: 0 !important;
+  width: 100% !important;
+}
+
+body.dsp-active main,
+body:has(#app .dsp-layout) main {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+body.dsp-active .dsp-layout,
+body:has(#app .dsp-layout) .dsp-layout {
+  min-height: 100vh !important;
 }
 
 .dsp-layout {

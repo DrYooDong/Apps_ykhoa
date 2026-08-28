@@ -324,22 +324,25 @@ export function renderCoCheBenhSinhView(): string {
                   <li>
                     <a href="#patho-noitiet-tuy" class="part-sub-nav-item" data-target="patho-noitiet-tuy">
                       <span>Bệnh lý tụy</span>
-                      <span class="sub-count-badge">4</span>
+                      <span class="sub-count-badge">1</span>
                     </a>
                   </li>
                   <li>
                     <a href="#patho-noitiet-giap" class="part-sub-nav-item" data-target="patho-noitiet-giap">
                       <span>Tuyến giáp</span>
+                      <span class="sub-count-badge">1</span>
                     </a>
                   </li>
                   <li>
                     <a href="#patho-noitiet-thuongthan" class="part-sub-nav-item" data-target="patho-noitiet-thuongthan">
                       <span>Tuyến thượng thận</span>
+                      <span class="sub-count-badge">1</span>
                     </a>
                   </li>
                   <li>
                     <a href="#patho-noitiet-tuyenyen" class="part-sub-nav-item" data-target="patho-noitiet-tuyenyen">
                       <span>Tuyến yên</span>
+                      <span class="sub-count-badge">1</span>
                     </a>
                   </li>
                 </ul>
@@ -381,11 +384,6 @@ export function renderCoCheBenhSinhView(): string {
                     <a href="#patho-truyen-nhiem-virus" class="part-sub-nav-item" data-target="patho-truyen-nhiem-virus">
                       <span>Vi rút</span>
                       <span class="sub-count-badge">3</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#patho-truyen-nhiem-nam" class="part-sub-nav-item" data-target="patho-truyen-nhiem-nam">
-                      <span>Nấm</span>
                     </a>
                   </li>
                   <li>

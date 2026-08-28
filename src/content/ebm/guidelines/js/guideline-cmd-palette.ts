@@ -3,7 +3,7 @@
  * Path: src/content/ebm/guidelines/js/guideline-cmd-palette.ts
  */
 
-import { Study } from '../guidelines-types';
+import { Study } from './guidelines-types';
 
 interface SystemCommandItem {
   id: string;
@@ -15,7 +15,7 @@ interface SystemCommandItem {
 
 type CmdPaletteResultItem = SystemCommandItem | Study;
 
-import '../guidelines-types';
+import './guidelines-types';
 
 let selectedCmdIndex = 0;
 let cmdResultsList: CmdPaletteResultItem[] = [];

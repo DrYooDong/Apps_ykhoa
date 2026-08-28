@@ -1,5 +1,5 @@
 import { saveProtocol, getActiveProfile } from '../storage';
-import { KHO_GUIDELINES_STATIC } from '../../ebm/guidelines/kho-guidelines-registry';
+import { KHO_GUIDELINES_STATIC } from '../../ebm/guidelines/js/kho-guidelines-registry';
 import { calculatorPicker } from './calculator-picker';
 
 export interface EbmSearchOptions {

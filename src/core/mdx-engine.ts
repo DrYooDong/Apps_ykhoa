@@ -61,9 +61,11 @@ export class CliniMdxEngine {
     // 1. Trích xuất Frontmatter (YAML blocks --- ... ---)
     const { frontmatter, body } = this.extractFrontmatter(rawMdx);
 
-    // 2. Tiền xử lý xóa bỏ các dòng `import { ... } from ...`
+    // 2. Tiền xử lý xóa bỏ các dòng `import { ... } from ...` và các khối chú thích {/* ... */}, <!-- ... -->
     const cleanBody = body
       .replace(/^import\s+.*?from\s+['"].*?['"];?\s*$/gm, '')
+      .replace(/\{\/\*[\s\S]*?\*\/\}/g, '')
+      .replace(/<!--[\s\S]*?-->/g, '')
       .trim();
 
     // 3. Chuyển đổi Custom MDX Components

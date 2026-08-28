@@ -3,7 +3,7 @@
  * Path: src/content/ebm/guidelines/js/guideline-journal-badge.ts
  */
 
-import '../guidelines-types';
+import './guidelines-types';
 
 export function initJournalQualityBadge(): void {
   let targetContainer = document.getElementById('journal-quality-badge');

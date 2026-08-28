@@ -3,8 +3,8 @@
  * Path: src/content/ebm/guidelines/study-analyzer-view.ts
  */
 
-import { escapeHtml } from '../../docspace/docspace-view';
-import { EbmStatisticsEngine, Rob2Evaluator, GradeProfiler, EbmReportGenerator, EbmStatisticalResults, Rob2Assessment, GradeAssessment } from './js/study-analyzer-suite';
+import { escapeHtml } from '../../../docspace/docspace-view';
+import { EbmStatisticsEngine, Rob2Evaluator, GradeProfiler, EbmReportGenerator, EbmStatisticalResults, Rob2Assessment, GradeAssessment } from './study-analyzer-suite';
 
 export function renderStudyAnalyzerView(): string {
   return `

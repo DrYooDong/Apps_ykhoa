@@ -3,7 +3,7 @@
  * Path: src/content/ebm/guidelines/js/journal-quality-analyzer.ts
  */
 
-import '../guidelines-types';
+import './guidelines-types';
 
 let searchTimeout: any = null;
 

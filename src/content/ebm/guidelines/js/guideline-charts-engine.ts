@@ -3,7 +3,7 @@
  * Path: src/content/ebm/guidelines/js/guideline-charts-engine.ts
  */
 
-import { Study } from '../guidelines-types';
+import { Study } from './guidelines-types';
 
 interface ForestMetricItem {
   label: string;
@@ -20,7 +20,7 @@ interface ColumnDataItem {
   color: string;
 }
 
-import '../guidelines-types';
+import './guidelines-types';
 
 export function renderStudyMiniChart(study?: Study): string {
   if (!study) return '';

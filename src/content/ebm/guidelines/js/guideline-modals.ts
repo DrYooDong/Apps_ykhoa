@@ -3,9 +3,9 @@
  * Path: src/content/ebm/guidelines/js/guideline-modals.ts
  */
 
-import { Study, BatchDuplicateItem } from '../guidelines-types';
+import { Study, BatchDuplicateItem } from './guidelines-types';
 
-import '../guidelines-types';
+import './guidelines-types';
 
 let editingStudyId: string | null = null;
 let pendingImportBatch: BatchDuplicateItem[] = [];

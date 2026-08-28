@@ -3,9 +3,9 @@
  * Path: src/content/ebm/guidelines/js/guideline-compare-matrix.ts
  */
 
-import { Study } from '../guidelines-types';
+import { Study } from './guidelines-types';
 
-import '../guidelines-types';
+import './guidelines-types';
 
 const compareStudyIds = new Set<string>();
 

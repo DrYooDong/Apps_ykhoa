@@ -3,9 +3,9 @@
  * Path: src/content/ebm/guidelines/js/guideline-visualizations.ts
  */
 
-import { Study } from '../guidelines-types';
+import { Study } from './guidelines-types';
 
-import '../guidelines-types';
+import './guidelines-types';
 
 export function renderBentoDashboard(studies: Study[], containerId = 'analytics-bento-container'): void {
   const container = document.getElementById(containerId) || document.getElementById('analytics-bento-container') || document.getElementById('updates-list');

@@ -11,9 +11,9 @@ import {
   FilterState,
   DuplicateCheckResult,
   BatchDuplicateItem
-} from '../guidelines-types';
+} from './guidelines-types';
 
-import '../guidelines-types';
+import './guidelines-types';
 
 // Global State Stores
 window.studies = window.studies || [];

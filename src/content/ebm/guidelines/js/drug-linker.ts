@@ -3,7 +3,7 @@
  * Path: src/content/ebm/guidelines/js/drug-linker.ts
  */
 
-import { Study } from '../guidelines-types';
+import { Study } from './guidelines-types';
 
 export interface DrugAliasItem {
   canonicalId: string;
@@ -30,7 +30,7 @@ export interface StudyInteractionResult {
   interactions: DrugInteractionItem[];
 }
 
-import '../guidelines-types';
+import './guidelines-types';
 
 export const DRUG_ALIASES: Record<string, DrugAliasItem> = {
   metoprolol_succ: {

@@ -3,7 +3,7 @@
  * Path: src/content/ebm/guidelines/js/guideline-evidence-analytics.ts
  */
 
-import { Study } from '../guidelines-types';
+import { Study } from './guidelines-types';
 
 export interface EvidenceLevelItem {
   id: string;
@@ -14,7 +14,7 @@ export interface EvidenceLevelItem {
   desc: string;
 }
 
-import '../guidelines-types';
+import './guidelines-types';
 
 export const EVIDENCE_LEVELS: EvidenceLevelItem[] = [
   { id: 'I_A', class: 'I', level: 'A', name: 'Class I - Mức A', color: '#16a34a', desc: 'Có lợi ích rõ ràng, dựa trên nhiều RCT' },

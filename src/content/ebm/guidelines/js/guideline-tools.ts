@@ -3,7 +3,7 @@
  * Path: src/content/ebm/guidelines/js/guideline-tools.ts
  */
 
-import '../guidelines-types';
+import './guidelines-types';
 
 export function syncCurrentSpecialtyOffline(): void {
   const icon = document.getElementById('offline-sync-icon');

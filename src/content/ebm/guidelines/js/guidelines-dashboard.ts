@@ -3,9 +3,9 @@
  * Path: src/content/ebm/guidelines/js/guidelines-dashboard.ts
  */
 
-import { Study } from '../guidelines-types';
+import { Study } from './guidelines-types';
 
-import '../guidelines-types';
+import './guidelines-types';
 
 const PALETTE = [
   '#7c3aed', '#0284c7', '#10b981', '#f59e0b', '#ef4444',

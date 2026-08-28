@@ -262,10 +262,26 @@ h1,h2,h3,h4 { font-family: var(--font-display); line-height: 1.2; text-wrap: bal
   min-height: 100dvh;
 }
 
+body.dsp-active .app-container,
+body:has(#app .dsp-layout) .app-container,
 body.guidelines-active .app-container,
 body:has(#app .app-shell) .app-container {
   padding-top: 0 !important;
   margin-top: 0 !important;
+}
+
+body.dsp-active #app,
+body:has(#app .dsp-layout) #app,
+body.guidelines-active #app,
+body:has(#app .app-shell) #app {
+  padding: 0 !important;
+  margin: 0 !important;
+  max-width: 100% !important;
+}
+
+body.dsp-active .global-header,
+body:has(#app .dsp-layout) .global-header {
+  display: none !important;
 }
 
 /* Bento homepage stretches to fill app-container */

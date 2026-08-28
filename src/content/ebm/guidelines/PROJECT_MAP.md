@@ -10,20 +10,24 @@ Kho Guidelines CliniPortal được phát triển theo tiêu chuẩn **Pure HTML
 
 ```text
 src/content/ebm/guidelines/
+├── index.ts                                 # Master Entry Point for Guidelines module
 ├── guidelines.html                          # Main Viewport & UI Layout Shell
 ├── guidelines.css                           # Master CSS Entry Point (@import architecture)
-├── guidelines.ts                            # Main Application Controller (TypeScript)
-├── guidelinesdata.ts                        # Data Registry & Types (60+ EBM Guidelines & RCTs)
-├── guidelines-types.ts                      # Core Type Definitions & Unified Global Window Interface
-├── guidelines-view.ts                       # SPA View Native Integration cho CliniPortal Core
+├── journal-quality-analyzer.html            # Journal Quality Analyzer Shell
 │
-├── css/                                     # Phân hệ Mô-đun CSS nhỏ
-│   ├── guidelines-base.css                  # Design Tokens, Reset, Topnav, Sidebar & App Shell
-│   ├── guidelines-components.css            # Filter Pills, Search Bar, Command Palette & Badges
-│   ├── guidelines-table.css                 # Data Tables, Compact Cards, Timeline & Forest Plot SVGs
-│   └── guidelines-modals.css                # Overlays, Case CDSS Modal, Multi-Compare & Floating Bar
-│
-├── js/                                      # Phân hệ Mô-đun TypeScript chuyên biệt
+├── js/                                      # Toàn bộ Mã nguồn TypeScript (Controllers, Views, Engines & Types)
+│   ├── index.ts                             # Master Re-export cho toàn bộ guidelines subsystem
+│   ├── guidelines-types.ts                  # Core Type Definitions & Window Interface
+│   ├── guidelinesdata.ts                    # Metadata Registry & Clinical Conditions
+│   ├── kho-guidelines-registry.ts           # 59+ Static Guidelines Metadata Array
+│   ├── guidelines-view.ts                   # SPA View Native Integration cho Web Database
+│   ├── guideline-reader-view.ts             # SPA Reader cho 59+ Bài Tóm Tắt Toàn Văn
+│   ├── kho-guidelines-hub-view.ts           # SPA Hub Showcase Kho Tóm Tắt 59+ Guidelines
+│   ├── journal-quality-view.ts              # SPA Journal Quality & Trust Analyzer View
+│   ├── study-analyzer-view.ts               # SPA Deep Study Analyzer & RoB 2 / GRADE
+│   ├── guideline-controller.ts              # Modal & Detail Controller
+│   ├── guidelines.ts                        # Legacy Global Bindings & DOM Bootstrapper
+│   ├── study-analyzer-suite.ts              # RoB 2, GRADE, EbmStatisticsEngine
 │   ├── guideline-sync.ts                    # LocalStorage & Supabase Realtime Sync Engine (2 chiều)
 │   ├── guideline-table.ts                   # Render Bảng, Thẻ Compact & Filter Pills Engine
 │   ├── guideline-modals.ts                  # Modals Thêm/Sửa & ICD-10 Registry Management
@@ -32,6 +36,19 @@ src/content/ebm/guidelines/
 │   ├── guideline-cmd-palette.ts             # Command Palette (Ctrl+K) Snippet Search
 │   ├── guideline-cdss.ts                    # CDSS Dosing Matcher & EBM Note Clipboard Export
 │   ├── guideline-compare-matrix.ts          # Multi-Guideline 3D Compare Matrix & Floating Bar
+│   ├── guideline-tools.ts                   # Unified Bridge Export Hub
+│   ├── guideline-charts-engine.ts           # SVG Forest Plot, Column, H-Bar, Donut chart generators
+│   ├── guideline-journal-badge.ts           # Journal quality badge injection
+│   ├── openalex-service.ts                  # OpenAlex API live journal lookup
+│   ├── journal-trust-scorer.ts              # Weighted Trust Score calculation (0-100)
+│   ├── journal-quality-analyzer.ts          # Journal comparison & quality analyzer controller
+│   └── drug-linker.ts                       # Auto-Linking Thuốc vào Kho Dược lý
+│
+├── css/                                     # Phân hệ Mô-đun CSS nhỏ
+│   ├── guidelines-base.css                  # Design Tokens, Reset, Topnav, Sidebar & App Shell
+│   ├── guidelines-components.css            # Filter Pills, Search Bar, Command Palette & Badges
+│   ├── guidelines-table.css                 # Data Tables, Compact Cards, Timeline & Forest Plot SVGs
+│   └── guidelines-modals.css                # Overlays, Case CDSS Modal, Multi-Compare & Floating Bar
 │   ├── guideline-tools.ts                   # Unified Bridge Export Hub
 │   ├── guideline-charts-engine.ts           # SVG Forest Plot, Column, H-Bar, Donut chart generators
 │   ├── guideline-journal-badge.ts           # Journal quality badge injection

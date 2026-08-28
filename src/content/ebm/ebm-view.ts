@@ -42,9 +42,9 @@ export function renderEbmView(): string {
             </div>
 
             <!-- KHO GUIDELINE HERO BUTTON -->
-            <a href="#/ebm/kho-guidelines" class="hub-hero-btn-kho" title="Truy cập Kho 100+ Guidelines tóm tắt">
+            <a href="#/ebm/kho-guidelines" class="hub-hero-btn-kho" title="Truy cập Kho 59+ Guidelines & Nghiên cứu tóm tắt chi tiết">
               <i class="fa-solid fa-folder-open"></i>
-              <span>Truy Cập Kho Guidelines</span>
+              <span>Kho Tóm Tắt Guidelines</span>
             </a>
           </div>
 
@@ -80,36 +80,36 @@ export function renderEbmView(): string {
             <div class="hub-kpi-card ebm-kpi-holo">
               <div class="hub-kpi-top">
                 <span class="hub-kpi-label">Tổng Guidelines</span>
-                <div class="hub-kpi-icon">📚</div>
+                <i class="fa-solid fa-layer-group hub-kpi-icon" style="color: #38bdf8;"></i>
               </div>
-              <div class="hub-kpi-val" id="stat-total-guidelines">100+</div>
+              <div class="hub-kpi-val" id="ebmKpiTotal">59+</div>
               <div class="hub-kpi-sub">Đồng bộ tự động</div>
             </div>
 
             <div class="hub-kpi-card ebm-kpi-holo">
               <div class="hub-kpi-top">
                 <span class="hub-kpi-label">Practice-Changing</span>
-                <div class="hub-kpi-icon">🏆</div>
+                <i class="fa-solid fa-trophy hub-kpi-icon" style="color: #fbbf24;"></i>
               </div>
-              <div class="hub-kpi-val" id="stat-practice-changing">73</div>
+              <div class="hub-kpi-val" id="ebmKpiPractice">42</div>
               <div class="hub-kpi-sub">Thay đổi thực hành</div>
             </div>
 
             <div class="hub-kpi-card ebm-kpi-holo">
               <div class="hub-kpi-top">
                 <span class="hub-kpi-label">Bộ Y Tế / Hội VN</span>
-                <div class="hub-kpi-icon">🇻🇳</div>
+                <i class="fa-solid fa-flag hub-kpi-icon" style="color: #f87171;"></i>
               </div>
-              <div class="hub-kpi-val" id="stat-moh-guidelines">37</div>
+              <div class="hub-kpi-val" id="ebmKpiVn">28</div>
               <div class="hub-kpi-sub">Khuyến cáo chuẩn</div>
             </div>
 
             <div class="hub-kpi-card ebm-kpi-holo">
               <div class="hub-kpi-top">
                 <span class="hub-kpi-label">Quốc Tế (ESC/ADA)</span>
-                <div class="hub-kpi-icon">🌐</div>
+                <i class="fa-solid fa-globe hub-kpi-icon" style="color: #34d399;"></i>
               </div>
-              <div class="hub-kpi-val" id="stat-intl-guidelines">63+</div>
+              <div class="hub-kpi-val" id="ebmKpiIntl">31+</div>
               <div class="hub-kpi-sub">Cập nhật toàn cầu</div>
             </div>
           </div>
@@ -152,19 +152,19 @@ export function renderEbmView(): string {
                 <div class="ebm-bento-icon-box-sm">
                   <i class="fa-solid fa-book-medical"></i>
                 </div>
-                <span class="ebm-bento-badge-pill-sm">100+ Phác Đồ</span>
+                <span class="ebm-bento-badge-pill-sm">59+ Tóm Tắt</span>
               </div>
-              <h2 class="ebm-bento-title-sm">Kho Guidelines</h2>
+              <h2 class="ebm-bento-title-sm">Kho Tóm Tắt Guidelines</h2>
               <p class="ebm-bento-desc-sm">
-                Hướng dẫn điều trị GRADE từ Bộ Y Tế Việt Nam, ESC, AHA/ACC, ADA, KDIGO, GOLD.
+                Kho 59+ bài tóm tắt hướng dẫn điều trị chuẩn EBM &amp; thử nghiệm Landmark từ Bộ Y Tế, ESC, AHA, KDIGO, GOLD, GINA.
               </p>
               <div class="ebm-bento-tags-row-sm">
                 <span class="ebm-bento-tag-item-sm">Bộ Y Tế VN</span>
-                <span class="ebm-bento-tag-item-sm">ESC / ADA</span>
+                <span class="ebm-bento-tag-item-sm">ESC / ADA / KDIGO</span>
               </div>
             </div>
             <div class="ebm-bento-action-btn-sm">
-              <span>Mở kho Guidelines</span>
+              <span>Vào Kho Tóm Tắt</span>
               <i class="fa-solid fa-arrow-right"></i>
             </div>
           </a>

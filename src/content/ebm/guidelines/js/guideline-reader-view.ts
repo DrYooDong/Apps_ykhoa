@@ -9,8 +9,8 @@
  * - Standardized EBM SOAP Note clipboard exporter & clean medical PDF printing
  */
 
-import { CliniPortalThemeManager } from '../../../main';
-import { cliniMdxEngine } from '../../../core/mdx-engine';
+import { CliniPortalThemeManager } from '../../../../main';
+import { cliniMdxEngine } from '../../../../core/mdx-engine';
 
 export function renderGuidelineReader(slug: string): string {
   // Normalize slug & base name cleanly
@@ -251,22 +251,23 @@ async function fetchAndHydrateGuideline(cleanSlug: string, baseSlugName: string)
       <div class="guideline-article-container" style="max-width: 1280px; margin: 0 auto; padding: 1.5rem 1.25rem;">
         
         <!-- LUXURY EBM HERO BANNER -->
-        <div style="margin-bottom: 2rem; background: linear-gradient(135deg, #78350f 0%, #0f172a 50%, #92400e 100%); color: #ffffff; padding: 2.5rem 2rem; border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.12); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2); position: relative; overflow: hidden;">
-          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.75rem;">
-            <span class="badge" style="background: rgba(251, 191, 36, 0.18); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.35); font-weight: 700; font-size: 0.8rem; padding: 0.35rem 0.85rem; border-radius: 999px; text-transform: uppercase;">
-              <i class="fa-solid fa-scale-balanced"></i> GUIDELINE EBM • ${org} (${year})
+        <div class="guideline-hero-banner" style="margin-bottom: 2.25rem; background: linear-gradient(135deg, #0b2545 0%, #0f172a 50%, #134e4a 100%); color: #ffffff; padding: 2.75rem 2.25rem; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.15); box-shadow: 0 14px 36px -6px rgba(0, 0, 0, 0.25), 0 0 20px rgba(2, 132, 199, 0.15); position: relative; overflow: hidden;">
+          <div style="position: absolute; top: -60px; right: -60px; width: 220px; height: 220px; background: radial-gradient(circle, rgba(56, 189, 248, 0.2) 0%, transparent 70%); border-radius: 50%; pointer-events: none;"></div>
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1rem; position: relative; z-index: 2;">
+            <span class="badge" style="background: rgba(251, 191, 36, 0.2); color: #fde047; border: 1.5px solid rgba(251, 191, 36, 0.45); font-weight: 800; font-size: 0.82rem; padding: 0.4rem 0.95rem; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.05em; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+              <i class="fa-solid fa-scale-balanced" style="color: #facc15;"></i> GUIDELINE EBM • ${org} (${year})
             </span>
-            <div style="display: flex; gap: 0.4rem;">
-              ${cor ? `<span style="font-size: 0.75rem; background: rgba(16,185,129,0.2); border: 1px solid rgba(16,185,129,0.4); color: #34d399; padding: 0.2rem 0.55rem; border-radius: 6px; font-weight: 800;">COR ${cor}</span>` : ''}
-              ${loe ? `<span style="font-size: 0.75rem; background: rgba(2,132,199,0.2); border: 1px solid rgba(2,132,199,0.4); color: #38bdf8; padding: 0.2rem 0.55rem; border-radius: 6px; font-weight: 800;">LOE ${loe}</span>` : ''}
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+              ${cor ? `<span style="font-size: 0.78rem; background: rgba(16,185,129,0.25); border: 1.5px solid rgba(16,185,129,0.5); color: #4ade80; padding: 0.3rem 0.7rem; border-radius: 8px; font-weight: 800; display: inline-flex; align-items: center; gap: 5px; box-shadow: 0 2px 8px rgba(16,185,129,0.2);"><i class="fa-solid fa-circle-check"></i> COR ${cor}</span>` : ''}
+              ${loe ? `<span style="font-size: 0.78rem; background: rgba(56,189,248,0.25); border: 1.5px solid rgba(56,189,248,0.5); color: #38bdf8; padding: 0.3rem 0.7rem; border-radius: 8px; font-weight: 800; display: inline-flex; align-items: center; gap: 5px; box-shadow: 0 2px 8px rgba(56,189,248,0.2);"><i class="fa-solid fa-layer-group"></i> LOE ${loe}</span>` : ''}
             </div>
           </div>
           
-          <h1 style="font-size: 2.1rem; font-weight: 800; color: #ffffff; margin: 0.5rem 0; line-height: 1.25;">
+          <h1 style="font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif); font-size: clamp(1.8rem, 3.5vw, 2.35rem); font-weight: 800; color: #ffffff; margin: 0.5rem 0 0.85rem 0; line-height: 1.25; letter-spacing: -0.02em; position: relative; z-index: 2; text-shadow: 0 2px 10px rgba(0,0,0,0.3);">
             ${parsed.title}
           </h1>
           
-          <p style="margin: 0.5rem 0 1rem 0; font-size: 0.98rem; opacity: 0.92; line-height: 1.65; max-width: 960px;">
+          <p style="margin: 0; font-size: 1.02rem; color: rgba(255, 255, 255, 0.9); line-height: 1.7; max-width: 980px; position: relative; z-index: 2; font-weight: 400;">
             ${parsed.description || ''}
           </p>
         </div>

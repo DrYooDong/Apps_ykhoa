@@ -3,36 +3,7 @@
  * Path: src/content/ebm/guidelines/guidelinesdata.ts
  */
 
-export interface SpecialtyMeta {
-  name: string;
-  color: string;
-  bg: string;
-}
-
-export interface SourceTypeMeta {
-  name: string;
-  color: string;
-  bg: string;
-}
-
-export interface DesignMeta {
-  name: string;
-}
-
-export interface ImpactMeta {
-  name: string;
-  color: string;
-  bg: string;
-}
-
-export interface ClinicalConditionMeta {
-  id: string;
-  name: string;
-  icd10: string[];
-  color: string;
-  bg: string;
-  specialty?: string;
-}
+import { SpecialtyMeta, SourceTypeMeta, DesignMeta, ImpactMeta, ClinicalConditionMeta } from './guidelines-types';
 
 export interface JournalMetricsItem {
   name: string;

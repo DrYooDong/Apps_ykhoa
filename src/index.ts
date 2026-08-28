@@ -200,6 +200,8 @@ function setupCategoryFilter(): void {
 import { 
   renderEbmView, 
   initEbmHub,
+  renderKhoGuidelinesHubView,
+  initKhoGuidelinesHub,
   renderGuidelinesView,
   initGuidelinesHub,
   renderJournalQualityView,
@@ -257,13 +259,13 @@ function initializeRoutes(): void {
   });
 
   // === EBM SUB-ROUTES (Native SPA Components) ===
-  router.register('/ebm/kho-guidelines', 'Kho Guidelines & Nghiên Cứu', () => {
-    document.title = 'Kho Guidelines & Nghiên Cứu Lâm Sàng – CliniPortal';
-    mountToApp(renderGuidelinesView());
-    initGuidelinesHub();
+  router.register('/ebm/kho-guidelines', 'Kho Tóm Tắt Guidelines', () => {
+    document.title = 'Kho Tóm Tắt Guidelines & Nghiên Cứu Lâm Sàng – CliniPortal';
+    mountToApp(renderKhoGuidelinesHubView());
+    initKhoGuidelinesHub();
   });
-  router.register('/ebm/guidelines', 'Kho Guidelines & Nghiên Cứu', () => {
-    document.title = 'Kho Guidelines & Nghiên Cứu Lâm Sàng – CliniPortal';
+  router.register('/ebm/guidelines', 'Cơ Sở Dữ Liệu Guidelines (Web Guidelines)', () => {
+    document.title = 'Tra Cứu Guidelines & Chỉ Số Tạp Chí IF – CliniPortal';
     mountToApp(renderGuidelinesView());
     initGuidelinesHub();
   });

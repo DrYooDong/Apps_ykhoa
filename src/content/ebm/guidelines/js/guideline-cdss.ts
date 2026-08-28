@@ -3,7 +3,7 @@
  * Path: src/content/ebm/guidelines/js/guideline-cdss.ts
  */
 
-import { Study } from '../guidelines-types';
+import { Study } from './guidelines-types';
 
 interface CaseAnalysisItem {
   study: Study;
@@ -14,7 +14,7 @@ interface CaseAnalysisItem {
   dosingGuide: string[];
 }
 
-import '../guidelines-types';
+import './guidelines-types';
 
 let currentAnalysisResults: CaseAnalysisItem[] = [];
 

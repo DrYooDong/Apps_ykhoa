@@ -3,9 +3,9 @@
  * Path: src/content/ebm/guidelines/js/guideline-table.ts
  */
 
-import { Study } from '../guidelines-types';
+import { Study } from './guidelines-types';
 
-import '../guidelines-types';
+import './guidelines-types';
 
 export const CONDITION_SPECIALTY_MAP: Record<string, string[]> = {
   "heart-failure": [

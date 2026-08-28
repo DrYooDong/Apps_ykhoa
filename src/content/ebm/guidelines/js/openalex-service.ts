@@ -24,7 +24,7 @@ export interface OpenAlexJournalResult {
   source: string;
 }
 
-import '../guidelines-types';
+import './guidelines-types';
 
 const OPENALEX_API_BASE = 'https://api.openalex.org/sources';
 const CACHE_PREFIX = 'cliniportal_oa_journal_';
