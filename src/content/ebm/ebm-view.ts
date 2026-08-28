@@ -145,26 +145,26 @@ export function renderEbmView(): string {
             </div>
           </a>
 
-          <!-- Card 2: Kho Guidelines & Phác Đồ -->
-          <a href="#/ebm/kho-guidelines" class="ebm-bento-card-compact ebm-holo-bento" style="--card-accent:#7c3aed; --card-icon-bg:rgba(124,58,237,0.1); --card-glow:rgba(124,58,237,0.2);">
+          <!-- Card 2: Web Guidelines & Cơ Sở Dữ Liệu Phác Đồ -->
+          <a href="#/ebm/guidelines" class="ebm-bento-card-compact ebm-holo-bento" style="--card-accent:#7c3aed; --card-icon-bg:rgba(124,58,237,0.1); --card-glow:rgba(124,58,237,0.2);">
             <div>
               <div class="ebm-bento-top-row-sm">
                 <div class="ebm-bento-icon-box-sm">
                   <i class="fa-solid fa-book-medical"></i>
                 </div>
-                <span class="ebm-bento-badge-pill-sm">59+ Tóm Tắt</span>
+                <span class="ebm-bento-badge-pill-sm">Database</span>
               </div>
-              <h2 class="ebm-bento-title-sm">Kho Tóm Tắt Guidelines</h2>
+              <h2 class="ebm-bento-title-sm">Web Guidelines</h2>
               <p class="ebm-bento-desc-sm">
-                Kho 59+ bài tóm tắt hướng dẫn điều trị chuẩn EBM &amp; thử nghiệm Landmark từ Bộ Y Tế, ESC, AHA, KDIGO, GOLD, GINA.
+                Cơ sở dữ liệu phác đồ điều trị, khuyến cáo thực hành lâm sàng Bộ Y Tế, ESC, AHA, KDIGO, GOLD, GINA và bộ lọc đa chiều.
               </p>
               <div class="ebm-bento-tags-row-sm">
-                <span class="ebm-bento-tag-item-sm">Bộ Y Tế VN</span>
-                <span class="ebm-bento-tag-item-sm">ESC / ADA / KDIGO</span>
+                <span class="ebm-bento-tag-item-sm">Tra Cứu Phác Đồ</span>
+                <span class="ebm-bento-tag-item-sm">Bộ Lọc Đa Chiều</span>
               </div>
             </div>
             <div class="ebm-bento-action-btn-sm">
-              <span>Vào Kho Tóm Tắt</span>
+              <span>Vào tra cứu</span>
               <i class="fa-solid fa-arrow-right"></i>
             </div>
           </a>
