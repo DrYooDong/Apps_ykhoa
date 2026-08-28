@@ -381,6 +381,45 @@ async function fetchAndHydratePhysioArticle(
           ` : ''}
         </div>
 
+        ${(() => {
+          const metrics = frontmatter.metrics;
+          if (!metrics || typeof metrics !== 'object') return '';
+          const metricEntries = [
+            { key: 'r0', label: 'Hệ Số Lây Nhiễm (R₀)', icon: 'fa-virus-covid', color: '#ef4444' },
+            { key: 'incubationPeriod', label: 'Thời Gian Ủ Bệnh', icon: 'fa-hourglass-half', color: '#f59e0b' },
+            { key: 'eip', label: 'Ủ Bệnh Ngoại Lai (EIP)', icon: 'fa-mosquito', color: '#0d9488' },
+            { key: 'iip', label: 'Ủ Bệnh Nội Lai (IIP)', icon: 'fa-user-clock', color: '#3b82f6' },
+            { key: 'vector', label: 'Véc-tơ Truyền Bệnh', icon: 'fa-locust', color: '#8b5cf6' },
+            { key: 'reservoir', label: 'Ổ Chứa Tự Nhiên', icon: 'fa-earth-asia', color: '#10b981' },
+            { key: 'caseFatalityRate', label: 'Tỷ Lệ Tử Vong (CFR)', icon: 'fa-skull-crossbones', color: '#dc2626' },
+            { key: 'vaccineStatus', label: 'Tình Trạng Vắc-xin', icon: 'fa-syringe', color: '#0284c7' },
+          ];
+          const activeMetrics = metricEntries.filter(m => (metrics as any)[m.key]);
+          if (activeMetrics.length === 0) return '';
+          return `
+            <div class="epi-surveillance-metrics-bar" style="margin: -1rem 0 2rem 0; padding: 1.25rem; background: var(--color-surface, #ffffff); border: 1.5px solid var(--color-border, #cbd5e1); border-radius: 16px; box-shadow: 0 4px 16px rgba(0,0,0,0.03);">
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.85rem; padding-bottom: 0.5rem; border-bottom: 1px dashed var(--color-border, #e2e8f0);">
+                <span style="font-size: 0.76rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; color: var(--color-primary, #0d9488); display: flex; align-items: center; gap: 0.45rem;">
+                  <i class="fa-solid fa-chart-line"></i> Chỉ Số Giám Sát Dịch Tễ Học Trọng Yếu (Epi Vital Metrics)
+                </span>
+                <span class="badge" style="background: rgba(13, 148, 136, 0.1); color: #0d9488; font-size: 0.7rem; font-weight: 700; border-radius: 999px; padding: 0.2rem 0.6rem;">WHO & CDC Surveillance</span>
+              </div>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 0.75rem;">
+                ${activeMetrics.map(m => `
+                  <div style="background: var(--color-surface-2, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); border-radius: 10px; padding: 0.75rem; border-left: 3.5px solid ${m.color};">
+                    <div style="font-size: 0.72rem; font-weight: 700; text-transform: uppercase; color: var(--color-text-muted, #64748b); margin-bottom: 0.25rem; display: flex; align-items: center; gap: 0.35rem;">
+                      <i class="fa-solid ${m.icon}" style="color: ${m.color}; font-size: 0.8rem;"></i> ${m.label}
+                    </div>
+                    <div style="font-size: 0.86rem; font-weight: 700; color: var(--color-text, #0f172a); line-height: 1.35;">
+                      ${(metrics as any)[m.key]}
+                    </div>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          `;
+        })()}
+
         <!-- RENDERED CONTENT -->
         <div class="mdx-rendered-article">
           ${parsed.html}
