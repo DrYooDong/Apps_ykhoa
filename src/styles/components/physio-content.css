@@ -2,99 +2,221 @@
    PHYSIOLOGY KNOWLEDGE CONTENT TYPOGRAPHY & LAYOUT (physio-content.css)
    ============================================================ */
 
-/* Headings Typography */
+/* ============================================================
+   HEADINGS & SECTION TITLES — MODERN MEDICAL EDITORIAL SYSTEM
+   ============================================================ */
+
+/* 1. H1 - Master Article Headings */
 h1.physio-article-title,
 .physio-article-container h1,
+.mdx-rendered-article h1,
 .physio-content h1 {
   font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
-  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-size: clamp(1.75rem, 3.5vw, 2.35rem);
   font-weight: 800;
-  color: var(--color-primary, #0284c7);
   line-height: 1.25;
-  letter-spacing: -0.02em;
-  margin-bottom: 0.75rem;
+  letter-spacing: -0.025em;
+  color: var(--color-text, #0f172a);
+  margin: 1.25rem 0 1.25rem 0;
+  position: relative;
+  display: block;
 }
 
+/* 2. H2 - Major Section Titles (Phần I, Phần II, Các Chuyên Khoa) */
 h2.section-title,
 .section-title,
 .article-section h2,
+.mdx-rendered-article h2,
 .physio-content h2,
 .visual-container h2 {
   font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
-  font-size: clamp(1.2rem, 2.4vw, 1.45rem);
+  font-size: clamp(1.25rem, 2.4vw, 1.55rem);
   font-weight: 800;
   line-height: 1.35;
-  letter-spacing: -0.01em;
-  color: var(--color-primary, #0284c7);
-  margin: 2.25rem 0 1.25rem 0;
-  padding-bottom: 0.65rem;
-  border-bottom: 2px solid rgba(var(--color-primary-rgb, 2, 132, 199), 0.2);
+  letter-spacing: -0.015em;
+  color: #0369a1;
+  margin: 2.75rem 0 1.35rem 0;
+  padding: 0.65rem 1rem 0.65rem 0.95rem;
+  background: linear-gradient(90deg, rgba(2, 132, 199, 0.08) 0%, rgba(2, 132, 199, 0.02) 60%, transparent 100%);
+  border-radius: 12px 12px 0 0;
+  border-bottom: 2.5px solid;
+  border-image: linear-gradient(90deg, #0284c7 0%, #0d9488 40%, rgba(2, 132, 199, 0.15) 80%, transparent 100%) 1;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 0.65rem;
+  gap: 0.75rem;
   position: relative;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+h2.section-title:hover,
+.section-title:hover,
+.article-section h2:hover,
+.mdx-rendered-article h2:hover {
+  transform: translateX(4px);
+  background: linear-gradient(90deg, rgba(2, 132, 199, 0.12) 0%, rgba(2, 132, 199, 0.03) 70%, transparent 100%);
 }
 
 h2.section-title i,
 .section-title i,
-.article-section h2 i {
+.article-section h2 i,
+.mdx-rendered-article h2 i {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 34px;
-  height: 34px;
+  width: 36px;
+  height: 36px;
   font-size: 1.05rem;
-  background: rgba(var(--color-primary-rgb, 2, 132, 199), 0.12);
+  background: linear-gradient(135deg, rgba(2, 132, 199, 0.18), rgba(99, 102, 241, 0.15));
   color: var(--color-primary, #0284c7);
-  border-radius: 8px;
+  border-radius: 10px;
   flex-shrink: 0;
-  transition: transform 0.2s ease, background 0.2s ease;
+  border: 1px solid rgba(2, 132, 199, 0.2);
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.15);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
+h2.section-title:hover i,
+.section-title:hover i,
+.article-section h2:hover i {
+  transform: scale(1.08) rotate(3deg);
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+}
+
+/* 3. H3 - Sub-Section Titles (1. Nứt vỡ mảng xơ vữa, 2. Xói mòn...) */
 h3.subsection-title,
 .subsection-title,
 .article-section h3,
+.mdx-rendered-article h3,
 .physio-content h3,
 .visual-container h3 {
   font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
-  font-size: 1.15rem;
-  font-weight: 700;
-  line-height: 1.45;
-  color: var(--color-primary, #0284c7);
-  margin: 1.85rem 0 1rem 0;
-  padding: 0.5rem 0.95rem;
+  font-size: clamp(1.08rem, 2vw, 1.25rem);
+  font-weight: 750;
+  line-height: 1.4;
+  color: var(--color-text, #0f172a);
+  margin: 2rem 0 1rem 0;
+  padding: 0.55rem 1rem 0.55rem 0.95rem;
   border-left: 4px solid var(--color-primary, #0284c7);
-  background: linear-gradient(90deg, rgba(var(--color-primary-rgb, 2, 132, 199), 0.08) 0%, transparent 100%);
-  border-radius: 0 8px 8px 0;
+  background: linear-gradient(90deg, rgba(2, 132, 199, 0.08) 0%, rgba(2, 132, 199, 0.015) 70%, transparent 100%);
+  border-radius: 0 10px 10px 0;
   display: flex;
   align-items: center;
-  gap: 0.55rem;
+  gap: 0.65rem;
   position: relative;
-  transition: border-color var(--tr-fast, 150ms ease-out), background var(--tr-fast, 150ms ease-out);
+  box-shadow: inset 1px 0 0 rgba(255, 255, 255, 0.2);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+h3.subsection-title::after,
+.subsection-title::after,
+.article-section h3::after,
+.mdx-rendered-article h3::after {
+  content: '';
+  flex: 1;
+  height: 1.5px;
+  background: linear-gradient(90deg, rgba(2, 132, 199, 0.3) 0%, rgba(2, 132, 199, 0.05) 60%, transparent 100%);
+  border-radius: 2px;
+  margin-left: 0.75rem;
+}
+
+h3.subsection-title:hover,
+.subsection-title:hover,
+.article-section h3:hover,
+.mdx-rendered-article h3:hover {
+  transform: translateX(4px);
+  border-left-color: #0369a1;
+  background: linear-gradient(90deg, rgba(2, 132, 199, 0.14) 0%, rgba(2, 132, 199, 0.03) 80%, transparent 100%);
+}
+
+/* 4. H4 - Minor Topic Headings */
+h4.minor-heading,
+.minor-heading,
+.article-section h4,
+.mdx-rendered-article h4,
+.physio-content h4 {
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-size: 1.02rem;
+  font-weight: 700;
+  line-height: 1.45;
+  color: #0284c7;
+  margin: 1.45rem 0 0.65rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+h4.minor-heading::before,
+.minor-heading::before,
+.article-section h4::before,
+.mdx-rendered-article h4::before {
+  content: '';
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-primary, #0284c7);
+  box-shadow: 0 0 6px rgba(2, 132, 199, 0.6);
+  flex-shrink: 0;
+}
+
+/* 5. Dark Mode Headings Color Tokens */
+[data-theme="dark"] h1.physio-article-title,
+[data-theme="dark"] .physio-article-container h1,
+[data-theme="dark"] .mdx-rendered-article h1 {
+  color: #f8fafc;
 }
 
 [data-theme="dark"] h2.section-title,
 [data-theme="dark"] .section-title,
 [data-theme="dark"] .article-section h2,
-[data-theme="dark"] h3.subsection-title,
-[data-theme="dark"] .subsection-title,
-[data-theme="dark"] .article-section h3 {
+[data-theme="dark"] .mdx-rendered-article h2,
+[data-theme="dark"] .physio-content h2 {
   color: #38bdf8;
+  background: linear-gradient(90deg, rgba(56, 189, 248, 0.15) 0%, rgba(56, 189, 248, 0.03) 60%, transparent 100%);
+  border-image: linear-gradient(90deg, #38bdf8 0%, #2dd4bf 40%, rgba(56, 189, 248, 0.15) 80%, transparent 100%) 1;
 }
 
 [data-theme="dark"] h2.section-title i,
 [data-theme="dark"] .section-title i,
-[data-theme="dark"] .article-section h2 i {
-  background: rgba(56, 189, 248, 0.15);
+[data-theme="dark"] .article-section h2 i,
+[data-theme="dark"] .mdx-rendered-article h2 i {
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.22), rgba(129, 140, 248, 0.2));
   color: #38bdf8;
+  border-color: rgba(56, 189, 248, 0.35);
+  box-shadow: 0 2px 10px rgba(56, 189, 248, 0.2);
 }
 
 [data-theme="dark"] h3.subsection-title,
 [data-theme="dark"] .subsection-title,
-[data-theme="dark"] .article-section h3 {
+[data-theme="dark"] .article-section h3,
+[data-theme="dark"] .mdx-rendered-article h3,
+[data-theme="dark"] .physio-content h3 {
+  color: #f1f5f9;
   border-left-color: #38bdf8;
-  background: linear-gradient(90deg, rgba(56, 189, 248, 0.12) 0%, transparent 100%);
+  background: linear-gradient(90deg, rgba(56, 189, 248, 0.16) 0%, rgba(56, 189, 248, 0.03) 70%, transparent 100%);
+}
+
+[data-theme="dark"] h3.subsection-title::after,
+[data-theme="dark"] .subsection-title::after,
+[data-theme="dark"] .article-section h3::after,
+[data-theme="dark"] .mdx-rendered-article h3::after {
+  background: linear-gradient(90deg, rgba(56, 189, 248, 0.35) 0%, rgba(56, 189, 248, 0.08) 60%, transparent 100%);
+}
+
+[data-theme="dark"] h4.minor-heading,
+[data-theme="dark"] .minor-heading,
+[data-theme="dark"] .article-section h4,
+[data-theme="dark"] .mdx-rendered-article h4 {
+  color: #38bdf8;
+}
+
+[data-theme="dark"] h4.minor-heading::before,
+[data-theme="dark"] .minor-heading::before,
+[data-theme="dark"] .article-section h4::before,
+[data-theme="dark"] .mdx-rendered-article h4::before {
+  background: #38bdf8;
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.7);
 }
 
 /* Content block spacing */

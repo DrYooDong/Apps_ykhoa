@@ -446,11 +446,13 @@ export class CliniMdxEngine {
         toc.push({ id: customId, text, level });
 
         if (level === 1) {
-          htmlLines.push(`<h1 id="${customId}" class="article-main-title" style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 2rem; font-weight: 800; color: var(--color-text, #0f172a); margin: 1.5rem 0 1rem 0; scroll-margin-top: 80px;">${this.formatInline(text)}</h1>`);
+          htmlLines.push(`<h1 id="${customId}" class="article-main-title" style="scroll-margin-top: 80px;">${this.formatInline(text)}</h1>`);
         } else if (level === 2) {
-          htmlLines.push(`<section class="article-section" id="${customId}" style="scroll-margin-top: 80px; margin-bottom: 2.5rem;"><h2 class="section-title" style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.45rem; font-weight: 800; color: #0d9488; margin: 2rem 0 1rem 0; padding-bottom: 0.5rem; border-bottom: 2px solid rgba(13, 148, 136, 0.2);"><i class="fa-solid fa-bookmark" style="margin-right: 8px;"></i>${this.formatInline(text)}</h2>`);
+          htmlLines.push(`<section class="article-section" id="${customId}" style="scroll-margin-top: 80px; margin-bottom: 2.5rem;"><h2 class="section-title"><i class="fa-solid fa-bookmark"></i>${this.formatInline(text)}</h2>`);
         } else if (level === 3) {
-          htmlLines.push(`<h3 id="${customId}" style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.15rem; font-weight: 700; color: var(--color-text, #0f172a); margin: 1.5rem 0 0.75rem 0; scroll-margin-top: 80px;">${this.formatInline(text)}</h3>`);
+          htmlLines.push(`<h3 id="${customId}" class="subsection-title" style="scroll-margin-top: 80px;">${this.formatInline(text)}</h3>`);
+        } else if (level === 4) {
+          htmlLines.push(`<h4 id="${customId}" class="minor-heading" style="scroll-margin-top: 80px;">${this.formatInline(text)}</h4>`);
         }
         continue;
       }
