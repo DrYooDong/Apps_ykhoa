@@ -778,31 +778,43 @@ export function renderDocSpaceHeader(profile: DoctorProfile, activeId: string): 
       </div>
 
       <div class="dsp-header-right">
-        <button type="button" class="dsp-header-icon-btn dsp-header-desktop-only" id="dspHeaderReactionChainBtn" title="Chuỗi Phản Ứng Lâm Sàng (CRCE v2.0) — Triệu chứng ➔ Tiêu chuẩn CĐ ➔ Phác đồ ➔ Thuốc ➔ Biến chứng" style="color:#0284c7; background:rgba(2,132,199,0.1); border-radius:8px;">
+        <!-- AI Clinical Copilot Modal Trigger -->
+        <button type="button" class="dsp-header-icon-btn dsp-header-icon-btn--ai dsp-header-desktop-only" id="dspHeaderAiCopilotBtn" title="AI Clinical Copilot & Chấm điểm EBM (Ctrl + J)">
+          <i class="fa-solid fa-brain"></i>
+        </button>
+
+        <!-- CRCE 5-Step Cascade Drawer -->
+        <button type="button" class="dsp-header-icon-btn dsp-header-desktop-only" id="dspHeaderReactionChainBtn" title="Chuỗi Phản Ứng Lâm Sàng (CRCE v3.0) — Triệu chứng ➔ CĐ ➔ Phác đồ ➔ Dược ➔ Biến chứng" style="color:#0284c7; background:rgba(2,132,199,0.1); border-radius:8px;">
           <i class="fa-solid fa-link"></i>
         </button>
 
-        <button type="button" class="dsp-header-icon-btn dsp-header-desktop-only" id="dspHeaderQuickRefBtn" title="Tra cứu Siêu tốc: Công thức, ECG/ABG & ACLS" style="color:var(--color-primary, #0284c7);">
+        <!-- Quick Reference Drawer -->
+        <button type="button" class="dsp-header-icon-btn dsp-header-desktop-only" id="dspHeaderQuickRefBtn" title="Tra cứu Siêu tốc Knowledge Vault: Công thức, ECG/ABG & ACLS (Ctrl + Shift + V)" style="color:var(--dsp-sky);">
           <i class="fa-solid fa-bolt"></i>
         </button>
 
+        <!-- Drug Intelligence Panel -->
         <button type="button" class="dsp-header-icon-btn dsp-header-desktop-only" id="dspHeaderDrugIntelBtn" title="Drug Intelligence — Dược thư & Tương tác thuốc" style="color:#db2777;">
           <i class="fa-solid fa-pills"></i>
         </button>
 
+        <!-- Calculator Picker -->
         <button type="button" class="dsp-header-icon-btn dsp-header-desktop-only" id="dspHeaderToolsBtn" title="Kho Thang điểm & Công cụ Tính toán" style="color:#f59e0b;">
           <i class="fa-solid fa-calculator"></i>
         </button>
 
+        <!-- Doctor Profile Pill -->
         <div class="dsp-header-profile-chip dsp-header-desktop-only" title="Hồ sơ bác sĩ: ${escapeHtml(profile.displayName)}">
           <div class="dsp-avatar dsp-avatar--xs">${getInitials(profile.displayName)}</div>
           <span class="dsp-header-profile-name">${escapeHtml(profile.displayName)}</span>
         </div>
 
+        <!-- Settings Modal Trigger -->
         <button type="button" class="dsp-header-icon-btn" id="dspHeaderSettingsBtn" title="Cài đặt & Tiện ích DocSpace" style="color:var(--color-text);">
           <i class="fa-solid fa-gear"></i>
         </button>
 
+        <!-- Home Link -->
         <a href="#/" class="dsp-header-btn-home" title="Trở về Trang chủ CliniPortal">
           <i class="fa-solid fa-house"></i> <span>Trang chủ</span>
         </a>

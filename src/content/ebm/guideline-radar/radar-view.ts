@@ -163,8 +163,11 @@ export function renderRadarView(): string {
             <button class="action-btn-link toggle-deepdive-btn">
               <i class="fa-solid fa-microscope"></i> Xem Bằng Chứng Landmark Trial &amp; Forest Plot <i class="fa-solid fa-chevron-down"></i>
             </button>
-            <a href="#/docspace/protocol" class="action-btn-link" style="text-decoration:none; color:var(--radar-primary); font-weight:700;">
-              <i class="fa-solid fa-book-medical"></i> Xem Phác Đồ Trong DocSpace
+            <a href="#/docspace/soap?from_guideline=${encodeURIComponent('ADA 2026 / KDIGO 2024 — Khởi Trị Thuốc Hạ Đường Huyết SGLT2i / GLP-1 RA')}" class="action-btn-link" style="text-decoration:none; color:#059669; font-weight:700;">
+              <i class="fa-solid fa-stethoscope"></i> 🩺 Áp Dụng Vào SOAP
+            </a>
+            <a href="#/docspace/studios/renal" class="action-btn-link" style="text-decoration:none; color:var(--radar-primary); font-weight:700;">
+              <i class="fa-solid fa-flask"></i> 🧪 Mở Renal Studio
             </a>
           </div>
 
@@ -208,6 +211,15 @@ export function renderRadarView(): string {
           <div class="diff-reason-box">
             <strong>💡 Lý do thay đổi:</strong> Thử nghiệm CARE-AF Trial (2025, N=12,500) chứng minh giảm thiểu nguy cơ xuất huyết nặng ở nhóm bệnh nhân tuổi cao và có bệnh thận đi kèm.
           </div>
+
+          <div class="card-footer-bar">
+            <a href="#/docspace/soap?from_guideline=${encodeURIComponent('ESC 2026 — Quản Lý Rung Nhĩ & DOACs')}" class="action-btn-link" style="text-decoration:none; color:#059669; font-weight:700;">
+              <i class="fa-solid fa-stethoscope"></i> 🩺 Áp Dụng Vào SOAP
+            </a>
+            <a href="#/docspace/studios/cardio" class="action-btn-link" style="text-decoration:none; color:var(--radar-primary); font-weight:700;">
+              <i class="fa-solid fa-flask"></i> 🧪 Mở Cardio Studio
+            </a>
+          </div>
         </article>
 
         <!-- CARD 3: BYT / GOLD 2026 COPD -->
@@ -240,6 +252,15 @@ export function renderRadarView(): string {
               <div class="diff-text">Hợp nhất nhóm C và D thành <strong>Nhóm E (Exacerbation)</strong>. Khởi trị ưu tiên <strong>LABA + LAMA</strong>. Chỉ thêm ICS khi bạch cầu ái toan $\ge$ 300 tế bào/$\mu$L hoặc $\ge$ 100 kèm $\ge$ 2 đợt cấp/năm.</div>
             </div>
           </div>
+
+          <div class="card-footer-bar">
+            <a href="#/docspace/soap?from_guideline=${encodeURIComponent('Bộ Y Tế / GOLD 2026 — Phác Đồ LABA/LAMA Khởi Đầu Trong COPD Nhóm E')}" class="action-btn-link" style="text-decoration:none; color:#059669; font-weight:700;">
+              <i class="fa-solid fa-stethoscope"></i> 🩺 Áp Dụng Vào SOAP
+            </a>
+            <a href="#/docspace/studios" class="action-btn-link" style="text-decoration:none; color:var(--radar-primary); font-weight:700;">
+              <i class="fa-solid fa-flask"></i> 🧪 Mở Clinical Studio
+            </a>
+          </div>
         </article>
 
         <!-- CARD 4: ESO / AHA ĐỘT QUỴ TIÊU SỢI HUYẾT -->
@@ -271,6 +292,15 @@ export function renderRadarView(): string {
               <div class="diff-header"><span>Khuyến Cáo 2026 (Tenecteplase)</span> ✅</div>
               <div class="diff-text"><strong>Tenecteplase (TNK 0.25 mg/kg tiêm tĩnh mạch 1 lần nhanh Bolus trong 5 giây)</strong> được nâng lên Class I ưu tiên hàng đầu, đặc biệt ở bệnh nhân tắc mạch lớn chuẩn bị can thiệp lấy huyết khối (EVT).</div>
             </div>
+          </div>
+
+          <div class="card-footer-bar">
+            <a href="#/docspace/soap?from_guideline=${encodeURIComponent('ESO / AHA 2026 — Tenecteplase (TNK) Tiêu Sợi Huyết Đột Quỵ Não Cấp')}" class="action-btn-link" style="text-decoration:none; color:#059669; font-weight:700;">
+              <i class="fa-solid fa-stethoscope"></i> 🩺 Áp Dụng Vào SOAP
+            </a>
+            <a href="#/docspace/studios/neuro" class="action-btn-link" style="text-decoration:none; color:var(--radar-primary); font-weight:700;">
+              <i class="fa-solid fa-flask"></i> 🧪 Mở Neuro Studio
+            </a>
           </div>
         </article>
       </div>

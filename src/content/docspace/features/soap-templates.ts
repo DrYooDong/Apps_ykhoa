@@ -25,6 +25,8 @@ import { calculatorPicker } from './calculator-picker';
 import { labDiagnosticsHub } from './lab-diagnostics-hub';
 import { reactionChainDrawer } from './reaction-chain-drawer';
 import { renderProtocolQuickApplyBtn, renderSoapToProtocolBtn, initSoapAiBridgeEvents } from './ai-soap-features';
+import { checkClass3HarmConflicts, renderClass3AlertsHtml } from './ebm-class3-checker';
+import { auditHFrEFGDMT, renderGDMTScorecardHtml } from './gdmt-audit-engine';
 
 export const ALERT_KEYWORDS = [
   'hạ kali', 'tụt kali', 'tăng kali',
@@ -678,7 +680,10 @@ export function renderEditSoapModalContent(p: SoapPatientRecord): string {
           <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnOpenLabFromO" style="color:#059669; padding:2px 7px; font-size:11px;" title="Kho Cận lâm sàng &amp; Bắt cờ đỏ">
             <i class="fa-solid fa-flask-vial"></i> Tra cứu CLS
           </button>
-          <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnQuickRefSoap" style="color:#7c3aed; padding:2px 7px; font-size:11px;" title="Cẩm nang Giường bệnh &amp; Công thức">
+          <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnPicoSoap" style="color:#8b5cf6; padding:2px 7px; font-size:11px;" title="Tạo Câu Hỏi Nghiên Cứu PICO từ Ca Bệnh">
+            <i class="fa-solid fa-microscope"></i> PICO EBM
+          </button>
+          <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnQuickRefSoap" style="color:#7c3aed; padding:2px 7px; font-size:11px;" title="Cẩm nang Giường bệnh, Fagan &amp; Công thức">
             <i class="fa-solid fa-bolt"></i> Tra cứu nhanh
           </button>
         </div>
@@ -686,6 +691,23 @@ export function renderEditSoapModalContent(p: SoapPatientRecord): string {
 
       <!-- Scrollable Body -->
       <div style="padding:14px 20px; overflow-y:auto; flex:1; display:flex; flex-direction:column; gap:10px;">
+        <!-- 🛡️ EBM Class III Harm & Contraindication Checker Banner -->
+        ${(() => {
+          const dxText = `${p.admissionDiagnosis || ''} ${p.currentDiagnosis || ''}`;
+          const c3Alerts = checkClass3HarmConflicts(dxText, p.prescriptions || []);
+          return renderClass3AlertsHtml(c3Alerts);
+        })()}
+
+        <!-- 🩺 GDMT Compliance Scorecard (For Heart Failure Patients) -->
+        ${(() => {
+          const dxText = `${p.admissionDiagnosis || ''} ${p.currentDiagnosis || ''}`.toLowerCase();
+          if (dxText.includes('suy tim') || dxText.includes('hf') || dxText.includes('tim')) {
+            const auditRes = auditHFrEFGDMT(p.prescriptions || []);
+            return renderGDMTScorecardHtml(auditRes);
+          }
+          return '';
+        })()}
+
         <form id="formEditSoap">
           <input type="hidden" id="esPatientId" value="${p.id}" />
 

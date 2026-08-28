@@ -10,7 +10,7 @@ ganongChapter: "Ganong 26th - Chapter 16: The Thyroid Gland & Chapter 18: The Pi
 category: "physiology"
 status: "published"
 version: "2.0.0"
-updatedAt: "2026-08-26"
+updatedAt: "2026-08-28"
 description: "Sinh lý học Nội tiết tổng quát: Phân loại hormone theo cấu trúc hóa học (Peptide, Steroid, Amin), cơ chế truyền tin thứ hai (cAMP/PKA, IP3/DAG/Ca2+, Tyrosine Kinase, Thụ thể nhân điều hòa phiên mã), trục Hạ đồi - Tuyến yên (HPA, HPT, HPG) và các vòng điều hòa ngược âm tính/dương tính (Negative & Positive Feedback Loops)."
 tags:
   - "sinh-ly"
@@ -45,14 +45,35 @@ sections:
     icon: "fa-book-medical"
 ---
 
-import { PhysioAlert, PhysioQuickNav, PhysioFeedbackLoop } from '../components'
+# 🧬 SINH LÝ HỆ NỘI TIẾT TỔNG QUÁT & CƠ CHẾ TÁC DỤNG CỦA HORMONE
 
-# 🧬 SINH LÝ HỆ NỘI TIẾT TỔNG QUÁT & CƠ CHẾ TRUYỀN TIN
+<PhysioQuickNav />
 
-
+<!-- DẢI CHỈ SỐ NHANH (QUICK STATS STRIP) -->
+<section class="stats-strip">
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-val blue">PHYS-ENDO-01</div>
+      <div class="stat-lbl">Mã chuyên đề • Sinh Lý Hệ Nội Tiết & Sinh Sản</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val green">Nội Môi Ổn Định</div>
+      <div class="stat-lbl">Cân bằng gradient điện hóa & Áp suất thẩm thấu</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val amber">Feedback Loop</div>
+      <div class="stat-lbl">Vòng điều hòa phản hồi thần kinh - thể dịch</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val purple">Dược Lý EBM</div>
+      <div class="stat-lbl">Ứng dụng lâm sàng chuẩn Guyton 14th & Ganong 26th</div>
+    </div>
+  </div>
+</section>
 
 ---
 
+## 1. Phân Loại Hóa Học Của Hormone {#sec-1}
 
 Hormone là các chất truyền tin hóa học được bài tiết trực tiếp vào máu để điều hòa hoạt động của các tế bào đích ở xa:
 
@@ -62,8 +83,10 @@ Hormone là các chất truyền tin hóa học được bài tiết trực ti�
 | **Hormone Steroid** | **Cortisol, Aldosterone, Estrogen, Progesterone, Testosterone** | **Tan trong lipid (Kỵ nước)**, gắn với Albumin/Globulin đặc hiệu | **Trong Bào Tương hoặc Trong Nhân Tế Bào** | **Chậm** (Vài giờ đến vài ngày / Tổng hợp protein mới) |
 | **Hormone Dẫn Xuất Acid Amin (Tyrosine)** | • **Catecholamine** (Epinephrine, Norepinephrine)<br />• **Hormone Giáp** ($T_3, T_4$) | • Catecholamine: Tan trong nước (gắn màng tế bào)<br />• $T_3, T_4$: Tan trong lipid (gắn thụ thể trong nhân) | • Catecholamine: Trên màng<br />• $T_3, T_4$: **Trong Nhân Tế Bào** | • Catecholamine: Siêu nhanh<br />• $T_3, T_4$: Kéo dài nhiều ngày |
 
+
 ---
 
+## 2. Các Cơ Chế Truyền Tin Tế Bào {#sec-2}
 
 ```
 [1. CON ĐƯỜNG cAMP]: Hormone ──► Thụ thể Gs ──► Adenylyl Cyclase ──► cAMP ──► Hoạt hóa PKA ──► Phosphoryl hóa Protein
@@ -78,8 +101,10 @@ Hormone là các chất truyền tin hóa học được bài tiết trực ti�
 [4. CON ĐƯỜNG THỤ THỂ TRONG NHÂN]: Hormone Steroid / T3 ──► Đi qua màng ──► Gắn Phức Hợp Thụ Thể Nhân ──► Điều Hòa Phiên Mã ADN
 ```
 
+
 ---
 
+## 3. Trục Hạ Đồi - Tuyến Yên {#sec-3}
 
 ```
 [VÙNG HẠ ĐỒI (HYPOTHALAMUS)]
@@ -93,19 +118,38 @@ Hormone là các chất truyền tin hóa học được bài tiết trực ti�
   └──► Prolactin ─────────────────────► Tuyến vú bài tiết sữa
 ```
 
+
 ---
 
+## 4. Vòng Phản Hồi Âm Tính & Dương Tính {#sec-4}
 
-
-
-
-  1. **Đỉnh LH gây rụng trứng giữa chu kỳ kinh nguyệt**: Nồng độ Estrogen tăng vọt kéo dài $>36\text{ giờ}$ ở cuối pha nang trứng sẽ kích hoạt ngược lại tuyến yên giải phóng ồ ạt **Đỉnh LH (LH Surge)** kích thích phóng noãn.
+1. **Đỉnh LH gây rụng trứng giữa chu kỳ kinh nguyệt**: Nồng độ Estrogen tăng vọt kéo dài $>36\text{ giờ}$ ở cuối pha nang trứng sẽ kích hoạt ngược lại tuyến yên giải phóng ồ ạt **Đỉnh LH (LH Surge)** kích thích phóng noãn.
   2. **Phản xạ tăng tiết Oxytocin khi chuyển dạ (Phản xạ Ferguson)**: Đầu thai nhi thúc vào cổ tử cung gây căng giãn $\rightarrow$ Tín hiệu thần kinh lên hạ đồi kích thích thùy sau tuyến yên tiết thêm **Oxytocin** $\rightarrow$ Tử cung co bóp mạnh hơn $\rightarrow$ Thúc đầu thai nhi mạnh hơn nữa cho đến khi em bé chào đời hoàn tất.
 
 
 ---
 
+## 5. Tài Liệu Tham Khảo EBM {#sec-5}
 
 1. **Hall, J. E., & Hall, M. E. (2021)**. *Guyton and Hall Textbook of Medical Physiology* (14th ed.). Philadelphia: Elsevier. Chapters 75 & 76: Introduction to Endocrinology & Pituitary.
 2. **Barrett, K. E. et al. (2019)**. *Ganong's Review of Medical Physiology* (26th ed.). New York: McGraw-Hill. Chapters 16 & 18: Endocrine System.
 3. **Melmed, S. et al. (2019)**. *Williams Textbook of Endocrinology* (14th ed.). Philadelphia: Elsevier.
+
+<!-- KHUNG TRÍCH DẪN Y VĂN CHUẨN AMA (CITATION BOX) -->
+<div class="citation-box">
+  <strong>Trích dẫn tài liệu tham khảo chuẩn (AMA Format):</strong><br />
+  1. Hall JE, Hall ME. <em>Guyton and Hall Textbook of Medical Physiology</em>. 14th ed. Philadelphia, PA: Elsevier; 2021.<br />
+2. Barrett KE, Barman SM, Brooks HL, Yuan JXJ. <em>Ganong's Review of Medical Physiology</em>. 26th ed. New York: McGraw-Hill; 2019.<br />
+3. Koeppen BM, Stanton BA. <em>Berne & Levy Physiology</em>. 7th ed. Philadelphia, PA: Elsevier; 2018.
+</div>
+
+<!-- HÀNG NÚT ĐIỀU HƯỚNG SPA -->
+<div class="btn-row">
+  <a href="#/basic-medical/giai-phau-sinh-ly" class="btn btn-primary">
+    <i class="fa-solid fa-arrow-left"></i> Quay lại Mục Lục Giải Phẫu & Sinh Lý
+  </a>
+  <a href="#sec-1" class="btn">
+    <i class="fa-solid fa-arrow-up"></i> Lên đầu trang
+  </a>
+</div>
+

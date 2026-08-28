@@ -9,6 +9,7 @@ import '../../../styles/components/module-dashboard.css';
 import '../../../styles/components/physio-content.css';
 import '../../../styles/components/formula-vault.css';
 import '../../../styles/components/physio-promax-hub.css';
+import { renderBasicMedicalNav } from './basic-medical-nav';
 
 export function renderPathophysiologyView(activeTab: 'all' | 'sinhly' | 'ccbs' | 'biochem' = 'all'): string {
   return `
@@ -24,6 +25,9 @@ export function renderPathophysiologyView(activeTab: 'all' | 'sinhly' | 'ccbs' |
           <i class="fa-solid fa-dna" style="font-size: 0.8rem;"></i> Cơ Sở Y Khoa (Basic Medical Sciences Framework v4.0)
         </span>
       </div>
+
+      <!-- UNIVERSAL STICKY SUB-NAV -->
+      ${renderBasicMedicalNav('all')}
 
       <!-- PROMAX LUXURY HERO SECTION (Aurora Biomedical Intelligence) -->
       <section class="promax-hero hero-physio-theme physio-holo-hero" aria-labelledby="hero-title">

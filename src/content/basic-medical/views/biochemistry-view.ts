@@ -12,6 +12,7 @@ import '../../../styles/components/biochemistry-hub.css';
 import '../../../styles/components/physio-promax-hub.css';
 import { BIOCHEMISTRY_DATA } from '../data/biochemistry-data';
 import { BiochemistryBlock, BiochemistryTopic } from '../types/biochemistry.types';
+import { renderBasicMedicalNav } from './basic-medical-nav';
 
 export function renderBiochemistryView(): string {
   return `
@@ -23,6 +24,9 @@ export function renderBiochemistryView(): string {
         <a href="#/basic-medical" style="color: inherit; text-decoration: none;">Basic Medical Sciences</a> &nbsp;/&nbsp; 
         <span style="color: #8b5cf6; font-weight: 600;">Hóa Sinh Y Học & Chuyển Hóa (HS - CH)</span>
       </div>
+
+      <!-- UNIVERSAL STICKY SUB-NAV -->
+      ${renderBasicMedicalNav('hoa-sinh')}
 
       <!-- PROMAX LUXURY HERO SECTION -->
       <section class="promax-hero hero-biochem-theme" aria-labelledby="hero-title">

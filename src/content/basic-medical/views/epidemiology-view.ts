@@ -20,6 +20,7 @@ import {
   EPIDEMIOLOGY_BLOCKS, 
   EPIDEMIOLOGY_TOPICS 
 } from '../data/epidemiology-data';
+import { renderBasicMedicalNav } from './basic-medical-nav';
 
 // Định nghĩa cấu trúc bài viết Dịch tễ học bệnh lý theo chuyên khoa
 export interface SpecialtyEpidemiologyItem {
@@ -757,6 +758,9 @@ export function renderEpidemiologyView(): string {
         <a href="#/basic-medical" style="color: inherit; text-decoration: none;">Basic Medical Sciences</a> &nbsp;/&nbsp; 
         <span style="color: #0d9488; font-weight: 600;">Dịch Tễ Học Y Khoa Theo Chuyên Khoa (DTH - YTCC)</span>
       </div>
+
+      <!-- UNIVERSAL STICKY SUB-NAV -->
+      ${renderBasicMedicalNav('dich-te-hoc')}
 
       <!-- PROMAX LUXURY HERO SECTION (SURVEILLANCE THEME) -->
       <section class="promax-hero hero-epi-theme" aria-labelledby="hero-title" style="margin-bottom: 1.25rem;">

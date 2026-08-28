@@ -7,7 +7,7 @@ specialtyId: "epi-truyen-nhiem"
 category: "epidemiology"
 status: "published"
 version: "2.0.0"
-updatedAt: "2026-08-26"
+updatedAt: "2026-08-28"
 description: "Dịch tễ học Sốt xuất huyết Dengue (DENV): Phân tích toàn diện tam giác dịch tễ học, véc-tơ muỗi Aedes aegypti/albopictus, động thái chu kỳ lây truyền EIP/IIP, cơ chế tăng cường phụ thuộc kháng thể (ADE) và chiến lược kiểm soát véc-tơ chuẩn WHO & Bộ Y Tế."
 tags:
   - "dengue"
@@ -64,14 +64,35 @@ pillars:
     icon: "fa-book-medical"
 ---
 
-import { EpiTriangle, EpiAlert, EpiPillarsNav, EpiVectorTable } from './components'
-
 # 🔬 DỊCH TỄ HỌC SỐT XUẤT HUYẾT DENGUE (DENV)
 
 <EpiPillarsNav />
 
+<!-- DẢI CHỈ SỐ NHANH (QUICK STATS STRIP) -->
+<section class="stats-strip">
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-val blue">1.33 – 4.5 (phụ thuộc mật độ muỗi & nhiệt độ môi trường)</div>
+      <div class="stat-lbl">Hệ số lây truyền cơ bản ($R_0$)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val green">3 – 14 ngày (trung bình 4 – 7 ngày)</div>
+      <div class="stat-lbl">Thời gian ủ bệnh trung bình</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val amber">Aedes aegypti</div>
+      <div class="stat-lbl">Véc-tơ / Phương thức lây truyền chính</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val red">< 1% (khi được bù dịch đúng phác đồ); 2 – 5% (thể sốc không điều trị)</div>
+      <div class="stat-lbl">Tỷ lệ tử vong ca bệnh (CFR)</div>
+    </div>
+  </div>
+</section>
+
 ---
 
+## 1. Tam Giác Dịch Tễ {#sec-1}
 
 Sự bùng phát dịch Dengue được kiểm soát bởi mối tương tác động học ba chiều giữa **Tác nhân (Flavivirus 4 serotypes)**, **Vật chủ (Người & đáp ứng miễn dịch ADE)** và **Môi trường (Đô thị hóa, nhiệt độ, dụng cụ chứa nước)** thông qua trung gian truyền bệnh **Muỗi *Aedes aegypti**.
 
@@ -114,8 +135,10 @@ Sự bùng phát dịch Dengue được kiểm soát bởi mối tương tác đ
   Nhiễm virus Dengue nguyên phát tạo ra kháng thể trung hòa suốt đời với serotype đó, nhưng chỉ tạo **kháng thể bảo vệ chéo tạm thời (khoảng 3 – 6 tháng)** với 3 serotype còn lại. Khi nhiễm lần 2 với một serotype khác sau giai đoạn này, các kháng thể không trung hòa gắn kết vào virus mới nhưng không tiêu diệt được chúng, tạo phức hợp giúp virus xâm nhập nhanh chóng vào bạch cầu đơn nhân (monocyte/macrophage) qua thụ thể FcγR, kích hoạt cơn bão Cytokine, tăng tính thấm thành mạch và dẫn đến **Sốc Dengue (DSS)**.
 </EpiAlert>
 
+
 ---
 
+## 2. Tác Nhân & Bệnh Sinh ADE {#sec-2}
 
 - **Phân loại**: Chi *Flavivirus*, Họ *Flaviviridae*. Bộ gen là RNA sợi đơn dương, mã hóa 3 protein cấu trúc (C, prM, E) và 7 protein phi cấu trúc (NS1, NS2A, NS2B, NS3, NS4A, NS4B, NS5).
 - **Kháng nguyên NS1**: Protein hòa tan tiết vào máu bệnh nhân từ ngày 1 đến ngày 9 của bệnh, đóng vai trò then chốt trong chẩn đoán nhanh sớm và trực tiếp gây tổn thương glycocalyx nội mô mạch máu.
@@ -126,8 +149,10 @@ Sự bùng phát dịch Dengue được kiểm soát bởi mối tương tác đ
 | **Độ bền vững** | Bị bất hoạt ở 56°C trong 30 phút, nhạy cảm với dung môi lipid, cồn 70°, tia cực tím và chất sát khuẩn thông thường. |
 | **Tải lượng virus huyết (Viremia)** | Bắt đầu 1–2 ngày trước khi sốt và kéo dài 4–5 ngày sau khi khởi phát sốt (đây là giai đoạn người bệnh truyền virus cho muỗi khi bị đốt). |
 
+
 ---
 
+## 3. Véc-tơ Truyền Bệnh {#sec-3}
 
 Muỗi *Aedes aegypti* là véc-tơ truyền bệnh chính (chiếm >90% các vụ bùng phát dịch đô thị), trong khi *Aedes albopictus* là véc-tơ phụ thường gặp ở vùng ven đô và nông thôn.
 
@@ -167,8 +192,10 @@ Muỗi *Aedes aegypti* là véc-tơ truyền bệnh chính (chiếm >90% các v�
   Trứng muỗi *Aedes aegypti* có khả năng chịu khô hạn vượt trội, có thể tồn tại ở trạng thái tiềm sinh **từ 6 tháng đến hơn 1 năm** trên thành dụng cụ chứa nước khô ráo. Ngay khi có mưa hoặc tiếp xúc lại với nước, trứng sẽ nở thành bọ gậy chỉ trong vòng vài giờ. Đây là nguyên nhân các ổ dịch bùng phát nhanh chóng ngay sau những cơn mưa đầu mùa.
 </EpiAlert>
 
+
 ---
 
+## 4. Chu Kỳ Lây Truyền {#sec-4}
 
 Chu kỳ lây truyền Dengue bao gồm hai giai đoạn ủ bệnh kế tiếp:
 
@@ -190,8 +217,10 @@ Chu kỳ lây truyền Dengue bao gồm hai giai đoạn ủ bệnh kế tiếp:
   iipDuration="4 – 10 ngày (trung bình 4 – 7 ngày trước cơn sốt đột ngột)"
 />
 
+
 ---
 
+## 5. Vật Chủ & Nguy Cơ {#sec-5}
 
 <EpiAlert type="pearl" title="Phân Tầng Nguy Cơ Lâm Sàng Theo WHO">
   **Nhóm nguy cơ cao diễn tiến Dengue Nặng (Severe Dengue)**:
@@ -202,14 +231,18 @@ Chu kỳ lây truyền Dengue bao gồm hai giai đoạn ủ bệnh kế tiếp:
   5. Người có tiền sử nhiễm Dengue trước đó (nhiễm lần 2 là yếu tố nguy cơ sốc ADE hàng đầu)
 </EpiAlert>
 
+
 ---
 
+## 6. Khí Hậu & Môi Trường {#sec-6}
 
 - **Nhiệt độ & Lượng mưa**: Nhiệt độ trung bình tăng 1°C làm tăng hệ số lây truyền cơ bản $R_0$ lên 15–20% do rút ngắn chu kỳ sinh sản của muỗi và giảm thời gian ủ bệnh ngoại lai EIP.
 - **Đô thị hóa không kiểm soát**: Mật độ dân số cao, hệ thống thoát nước yếu kém và việc tích trữ nước sinh hoạt trong chum, vại, bể hở tạo vi môi trường lý tưởng cho *Aedes aegypti* nhân rộng.
 
+
 ---
 
+## 7. Tình Hình Toàn Cầu & VN {#sec-7}
 
 <EpiAlert type="surveillance" title="Chiến Lược Giám Sát và Phòng Chống Dịch Cốt Lõi">
   - **Chỉ số Véc-tơ Giám sát**: 
@@ -222,10 +255,31 @@ Chu kỳ lây truyền Dengue bao gồm hai giai đoạn ủ bệnh kế tiếp:
     3. **Giám sát ca bệnh sớm**: Báo cáo ca bệnh Dengue trong 24h qua hệ thống giám sát bệnh truyền nhiễm.
 </EpiAlert>
 
+
 ---
 
+## 8. Tài Liệu Tham Khảo {#sec-8}
 
 1. **Bộ Y Tế Việt Nam (2023)**. *Hướng dẫn chẩn đoán, điều trị Sốt xuất huyết Dengue* (Ban hành kèm theo Quyết định số 2760/QĐ-BYT).
 2. **World Health Organization (WHO 2024)**. *Global report on epidemiology and control of Dengue and severe dengue*.
 3. **Halstead, S. B. (2007)**. *Dengue: Antibody-Dependent Enhancement of Infection*. The Lancet, 370(9599), 1644-1652.
 4. **Bhatt, S. et al. (2013)**. *The global distribution and burden of dengue*. Nature, 496(7446), 504-507.
+
+<!-- KHUNG TRÍCH DẪN Y VĂN CHUẨN AMA (CITATION BOX) -->
+<div class="citation-box">
+  <strong>Trích dẫn tài liệu tham khảo chuẩn (AMA Format):</strong><br />
+  1. Celentano DD, Szklo M. <em>Gordis Epidemiology</em>. 6th ed. Philadelphia, PA: Elsevier; 2019.<br />
+2. World Health Organization (WHO). <em>Global Surveillance and Vector Control Guidelines</em>. Geneva: WHO Press; 2024.<br />
+3. Centers for Disease Control and Prevention (CDC). <em>Epidemiology and Prevention of Vaccine-Preventable Diseases</em>. 14th ed. Washington, DC; 2024.
+</div>
+
+<!-- HÀNG NÚT ĐIỀU HƯỚNG SPA -->
+<div class="btn-row">
+  <a href="#/basic-medical/dich-te-hoc" class="btn btn-primary">
+    <i class="fa-solid fa-arrow-left"></i> Quay lại Mục Lục Dịch Tễ Học
+  </a>
+  <a href="#sec-1" class="btn">
+    <i class="fa-solid fa-arrow-up"></i> Lên đầu trang
+  </a>
+</div>
+

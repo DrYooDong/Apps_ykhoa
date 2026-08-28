@@ -119,6 +119,65 @@ export function renderFormulaVaultView(): string {
           </div>
         </div>
 
+        <!-- Formula 4: eGFR CKD-EPI & Guideline Cutoffs -->
+        <div style="background: var(--color-surface, #fff); border: 1px solid var(--color-border, #e2e8f0); border-radius: 14px; padding: 1.25rem; box-shadow: var(--shadow-sm, 0 1px 3px rgba(0,0,0,0.04));">
+          <span style="font-size: 0.75rem; font-weight: 700; color: #0891b2; background: rgba(8,145,178,0.12); padding: 0.2rem 0.6rem; border-radius: 6px; text-transform: uppercase;">KDIGO 2024 / EBM Dosing</span>
+          <h3 style="font-size: 1.1rem; font-weight: 700; margin: 0.6rem 0 0.4rem; color: var(--color-text, #0f172a);">4. Mức Lọc Cầu Thận (eGFR) &amp; Khuyến Cáo Thuốc</h3>
+          <div style="font-family: monospace; font-size: 0.85rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); padding: 0.6rem 0.8rem; border-radius: 8px; margin-bottom: 1rem; color: var(--color-text, #0f172a);">
+            CKD-EPI 2021 (Creatinine máu + Tuổi + Giới)
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.5rem; margin-bottom: 1rem;">
+            <div>
+              <label style="font-size: 0.75rem; font-weight: 600; color: var(--color-text-muted, #64748b); display: block; margin-bottom: 4px;">Creatinine (μmol/L):</label>
+              <input type="number" id="egfr-cr" value="120" style="width: 100%; padding: 0.55rem; font-size: 16px; border: 1px solid var(--color-border, #cbd5e1); border-radius: 8px; background: var(--color-bg, #f8fafc); color: var(--color-text, #0f172a); outline: none; box-sizing: border-box;" oninput="window.calcEgfr()" />
+            </div>
+            <div>
+              <label style="font-size: 0.75rem; font-weight: 600; color: var(--color-text-muted, #64748b); display: block; margin-bottom: 4px;">Tuổi:</label>
+              <input type="number" id="egfr-age" value="65" style="width: 100%; padding: 0.55rem; font-size: 16px; border: 1px solid var(--color-border, #cbd5e1); border-radius: 8px; background: var(--color-bg, #f8fafc); color: var(--color-text, #0f172a); outline: none; box-sizing: border-box;" oninput="window.calcEgfr()" />
+            </div>
+            <div>
+              <label style="font-size: 0.75rem; font-weight: 600; color: var(--color-text-muted, #64748b); display: block; margin-bottom: 4px;">Giới tính:</label>
+              <select id="egfr-gender" style="width: 100%; padding: 0.55rem; font-size: 14px; border: 1px solid var(--color-border, #cbd5e1); border-radius: 8px; background: var(--color-bg, #f8fafc); color: var(--color-text, #0f172a); outline: none; box-sizing: border-box;" onchange="window.calcEgfr()">
+                <option value="nam">Nam</option>
+                <option value="nu">Nữ</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); border-radius: 10px; padding: 0.85rem; text-align: center;">
+            <div style="font-size: 0.78rem; color: var(--color-text-muted, #64748b); font-weight: 600;">eGFR Ước Tính:</div>
+            <div id="egfr-result" style="font-size: 1.75rem; font-weight: 800; color: #0891b2; margin: 0.2rem 0;">54 mL/min/1.73m²</div>
+            <div id="egfr-desc" style="font-size: 0.75rem; color: #d97706; font-weight: 700;">G3a (Giảm nhẹ - vừa) — KDIGO 2024: Duy trì SGLT2i &amp; RAASi</div>
+          </div>
+        </div>
+
+        <!-- Formula 5: PaO2 / FiO2 (Horowitz Ratio) -->
+        <div style="background: var(--color-surface, #fff); border: 1px solid var(--color-border, #e2e8f0); border-radius: 14px; padding: 1.25rem; box-shadow: var(--shadow-sm, 0 1px 3px rgba(0,0,0,0.04));">
+          <span style="font-size: 0.75rem; font-weight: 700; color: #dc2626; background: rgba(220,38,38,0.12); padding: 0.2rem 0.6rem; border-radius: 6px; text-transform: uppercase;">ARDS Berlin / Hồi Sức</span>
+          <h3 style="font-size: 1.1rem; font-weight: 700; margin: 0.6rem 0 0.4rem; color: var(--color-text, #0f172a);">5. Chỉ Số P/F (PaO₂ / FiO₂ Ratio)</h3>
+          <div style="font-family: monospace; font-size: 0.85rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); padding: 0.6rem 0.8rem; border-radius: 8px; margin-bottom: 1rem; color: var(--color-text, #0f172a);">
+            P/F = PaO₂ (mmHg) / FiO₂ (thập phân 0.21 - 1.0)
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-bottom: 1rem;">
+            <div>
+              <label style="font-size: 0.75rem; font-weight: 600; color: var(--color-text-muted, #64748b); display: block; margin-bottom: 4px;">PaO₂ Khí Máu (mmHg):</label>
+              <input type="number" id="pf-pao2" value="80" style="width: 100%; padding: 0.55rem; font-size: 16px; border: 1px solid var(--color-border, #cbd5e1); border-radius: 8px; background: var(--color-bg, #f8fafc); color: var(--color-text, #0f172a); outline: none; box-sizing: border-box;" oninput="window.calcPf()" />
+            </div>
+            <div>
+              <label style="font-size: 0.75rem; font-weight: 600; color: var(--color-text-muted, #64748b); display: block; margin-bottom: 4px;">FiO₂ Thở Vào (%):</label>
+              <input type="number" id="pf-fio2" value="60" style="width: 100%; padding: 0.55rem; font-size: 16px; border: 1px solid var(--color-border, #cbd5e1); border-radius: 8px; background: var(--color-bg, #f8fafc); color: var(--color-text, #0f172a); outline: none; box-sizing: border-box;" oninput="window.calcPf()" />
+            </div>
+          </div>
+
+          <div style="background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); border-radius: 10px; padding: 0.85rem; text-align: center;">
+            <div style="font-size: 0.78rem; color: var(--color-text-muted, #64748b); font-weight: 600;">Chỉ Số P/F:</div>
+            <div id="pf-result" style="font-size: 1.75rem; font-weight: 800; color: #dc2626; margin: 0.2rem 0;">133.3 mmHg</div>
+            <div id="pf-desc" style="font-size: 0.75rem; color: #b91c1c; font-weight: 700;">ARDS Trung Bình (P/F 100-200) — Guideline: Nằm sáp (Prone) ≥ 16h/ngày</div>
+          </div>
+        </div>
+
       </div>
     </div>
   `;
@@ -130,6 +189,8 @@ declare global {
     calcAg: () => void;
     calcWinters: () => void;
     calcFena: () => void;
+    calcEgfr: () => void;
+    calcPf: () => void;
   }
 }
 
@@ -173,6 +234,75 @@ if (typeof window !== 'undefined') {
       } else {
         descEl.textContent = '1 - 2%: Vùng xám (Cần kết hợp lâm sàng)';
         descEl.style.color = '#ca8a04';
+      }
+    }
+  };
+
+  window.calcEgfr = () => {
+    const crUm = parseFloat((document.getElementById('egfr-cr') as HTMLInputElement)?.value || '120');
+    const age = parseFloat((document.getElementById('egfr-age') as HTMLInputElement)?.value || '65');
+    const gender = (document.getElementById('egfr-gender') as HTMLSelectElement)?.value || 'nam';
+
+    const scr = crUm / 88.4; // mg/dL
+    const isFemale = gender === 'nu';
+    const kappa = isFemale ? 0.7 : 0.9;
+    const alpha = isFemale ? -0.241 : -0.302;
+    const minVal = Math.min(scr / kappa, 1);
+    const maxVal = Math.max(scr / kappa, 1);
+    const genderFactor = isFemale ? 1.012 : 1;
+
+    const egfr = 142 * Math.pow(minVal, alpha) * Math.pow(maxVal, -1.200) * Math.pow(0.9938, age) * genderFactor;
+    const resEl = document.getElementById('egfr-result');
+    const descEl = document.getElementById('egfr-desc');
+
+    if (resEl) resEl.textContent = `${Math.round(egfr)} mL/min/1.73m²`;
+    if (descEl) {
+      if (egfr >= 90) {
+        descEl.textContent = 'G1 (Bình thường/Cao) — KDIGO: Tối ưu HA & lối sống';
+        descEl.style.color = '#16a34a';
+      } else if (egfr >= 60) {
+        descEl.textContent = 'G2 (Giảm nhẹ) — KDIGO: Đánh giá Albumin niệu UACR';
+        descEl.style.color = '#059669';
+      } else if (egfr >= 45) {
+        descEl.textContent = 'G3a (Giảm nhẹ-vừa) — KDIGO 2024: Chỉ định SGLT2i + RAASi';
+        descEl.style.color = '#d97706';
+      } else if (egfr >= 30) {
+        descEl.textContent = 'G3b (Giảm vừa-nặng) — KDIGO 2024: Chỉnh liều thuốc qua thận, SGLT2i tiếp tục đến khi lọc máu';
+        descEl.style.color = '#ea580c';
+      } else if (egfr >= 15) {
+        descEl.textContent = 'G4 (Suy thận nặng) — Chuẩn bị tạo đường vào mạch máu (AVF), ngưng Metformin';
+        descEl.style.color = '#dc2626';
+      } else {
+        descEl.textContent = 'G5 (Suy thận giai đoạn cuối - ESKD) — Chỉ định điều trị thay thế thận (RRT/Ghép thận)';
+        descEl.style.color = '#991b1b';
+      }
+    }
+  };
+
+  window.calcPf = () => {
+    const pao2 = parseFloat((document.getElementById('pf-pao2') as HTMLInputElement)?.value || '80');
+    const fio2Percent = parseFloat((document.getElementById('pf-fio2') as HTMLInputElement)?.value || '60');
+    const fio2 = fio2Percent / 100;
+
+    if (fio2 <= 0) return;
+    const pf = pao2 / fio2;
+    const resEl = document.getElementById('pf-result');
+    const descEl = document.getElementById('pf-desc');
+
+    if (resEl) resEl.textContent = `${pf.toFixed(1)} mmHg`;
+    if (descEl) {
+      if (pf > 300) {
+        descEl.textContent = '> 300 mmHg: Trao đổi khí bình thường';
+        descEl.style.color = '#16a34a';
+      } else if (pf > 200) {
+        descEl.textContent = '201 - 300 mmHg: ARDS Nhẹ — Guideline: Thở máy bảo vệ phổi Vt 6 mL/kg, PEEP 5-10';
+        descEl.style.color = '#d97706';
+      } else if (pf > 100) {
+        descEl.textContent = '101 - 200 mmHg: ARDS Trung Bình — Guideline: Nằm sáp (Prone) ≥ 16h/ngày, PEEP cao';
+        descEl.style.color = '#dc2626';
+      } else {
+        descEl.textContent = '≤ 100 mmHg: ARDS Nặng — Guideline: Giãn cơ sớm 48h (NMBAs), Cân nhắc ECMO VV';
+        descEl.style.color = '#991b1b';
       }
     }
   };

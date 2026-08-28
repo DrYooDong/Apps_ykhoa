@@ -1,6 +1,8 @@
 import { saveProtocol, getActiveProfile } from '../storage';
 import { KHO_GUIDELINES_STATIC } from '../../ebm/guidelines/js/kho-guidelines-registry';
 import { calculatorPicker } from './calculator-picker';
+import { VAULT_CATALOG } from '../../knowledge-vault/vault-loader';
+import type { VaultArticle } from '../../knowledge-vault/types';
 
 export interface EbmSearchOptions {
   targetFieldId?: string;
@@ -106,6 +108,9 @@ export class EbmBridge {
             </button>
             <button type="button" class="js-design-filter dsp-btn dsp-btn-sm ${this.currentDesignFilter === 'practice-changing' ? 'active' : ''}" data-design="practice-changing" style="background:rgba(16,185,129,0.12); color:#059669; border:1px solid rgba(16,185,129,0.3); font-size:11px; font-weight:700; padding:2px 8px; border-radius:12px; height:auto;">
               <i class="fa-solid fa-star"></i> Practice-Changing
+            </button>
+            <button type="button" class="js-design-filter dsp-btn dsp-btn-sm ${this.currentDesignFilter === 'vault' ? 'active' : ''}" data-design="vault" style="background:rgba(2,132,199,0.12); color:#0284c7; border:1px solid rgba(2,132,199,0.3); font-size:11px; font-weight:700; padding:2px 8px; border-radius:12px; height:auto;">
+              <i class="fa-solid fa-graduation-cap"></i> Kho Tri Thức (${VAULT_CATALOG.length} Bài)
             </button>
           </div>
           
@@ -312,7 +317,36 @@ export class EbmBridge {
     const seen = new Set<string>(staticList.map(s => s.id));
     const list: any[] = [...staticList];
 
-    // 2. Bổ sung các custom studies hoặc remote nếu có
+    // 2. Bổ sung 2.362+ bài viết từ Knowledge Vault Catalog
+    if (Array.isArray(VAULT_CATALOG)) {
+      VAULT_CATALOG.forEach(art => {
+        const vId = `vault_${art.id}`;
+        if (!seen.has(vId)) {
+          seen.add(vId);
+          list.push({
+            id: vId,
+            title: art.title,
+            titleEn: art.fullFileName,
+            design: 'vault',
+            sourceType: 'vault',
+            organization: `Kho Tri Thức ${art.khoName} (${art.khoCode})`,
+            journal: `CliniPortal Vault · ${art.specialty}`,
+            year: '2026',
+            summary: art.snippet || (art.content ? art.content.slice(0, 300) : ''),
+            detailedConclusion: art.snippet || (art.content ? art.content.slice(0, 350) : ''),
+            drug: art.khoCode === 'DUOC' ? art.title : '',
+            icd10Codes: art.icd10 || [],
+            specialty: art.specialty,
+            impact: 'informative',
+            file: `#/vault?search=${encodeURIComponent(art.title)}`,
+            isVaultArticle: true,
+            vaultArticle: art
+          });
+        }
+      });
+    }
+
+    // 3. Bổ sung các custom studies hoặc remote nếu có
     const customLocal = (() => {
       try {
         const s = localStorage.getItem('cliniportal_custom_studies');
@@ -452,6 +486,8 @@ export class EbmBridge {
       studies = studies.filter((s: any) => s.design === 'review');
     } else if (this.currentDesignFilter === 'practice-changing') {
       studies = studies.filter((s: any) => s.impact === 'practice-changing');
+    } else if (this.currentDesignFilter === 'vault') {
+      studies = studies.filter((s: any) => s.design === 'vault' || s.sourceType === 'vault');
     }
     
     const SPECIALTY_KEYWORD_MAP: Record<string, string[]> = {
@@ -684,6 +720,8 @@ export class EbmBridge {
       designBadge = `<span style="background:rgba(37,99,235,0.12); color:#2563eb; font-size:10.5px; font-weight:800; padding:2px 7px; border-radius:4px; border:1px solid rgba(37,99,235,0.3);"><i class="fa-solid fa-chart-pie"></i> META-ANALYSIS</span>`;
     } else if (s.design === 'review') {
       designBadge = `<span style="background:rgba(124,58,237,0.12); color:#7c3aed; font-size:10.5px; font-weight:800; padding:2px 7px; border-radius:4px; border:1px solid rgba(124,58,237,0.3);"><i class="fa-solid fa-book-open"></i> REVIEW</span>`;
+    } else if (s.design === 'vault' || s.isVaultArticle) {
+      designBadge = `<span style="background:rgba(2,132,199,0.12); color:#0284c7; font-size:10.5px; font-weight:800; padding:2px 7px; border-radius:4px; border:1px solid rgba(2,132,199,0.3);"><i class="fa-solid fa-graduation-cap"></i> KHO TRI THỨC VAULT</span>`;
     }
 
     // Impact Badge
@@ -695,8 +733,13 @@ export class EbmBridge {
     }
 
     // Chuẩn hóa đường dẫn đọc theo SPA Reader Route
-    const cleanSlug = s.file ? s.file.replace(/\.html$/i, '') : s.id;
-    const readerRoute = `#/ebm/kho-guidelines/${cleanSlug}`;
+    let readerRoute = `#/ebm/kho-guidelines/${s.id}`;
+    if (s.isVaultArticle) {
+      readerRoute = `#/vault?search=${encodeURIComponent(s.title)}`;
+    } else if (s.file) {
+      const cleanSlug = s.file.replace(/\.html$/i, '');
+      readerRoute = cleanSlug.startsWith('#') ? cleanSlug : `#/ebm/kho-guidelines/${cleanSlug}`;
+    }
 
     // Công cụ tính điểm liên quan nếu có
     const matchingCalc = this.getMatchingCalculator(s);

@@ -30,6 +30,7 @@ import { calculatorPicker } from './calculator-picker';
 import { labDiagnosticsHub } from './lab-diagnostics-hub';
 import { reactionChainDrawer } from './reaction-chain-drawer';
 import { renderProtocolQuickApplyBtn, renderSoapToProtocolBtn, initSoapAiBridgeEvents } from './ai-soap-features';
+import { extractPICOFromSoap } from './pico-bridge';
 import { 
   setMasterDate, 
   getMasterDate, 
@@ -969,6 +970,19 @@ export function mountSoapController(profileId: string): void {
     quickReferenceDrawer.open('formulas');
   });
 
+  // SOAP-to-PICO Engine Button
+  document.getElementById('btnPicoSoap')?.addEventListener('click', () => {
+    const id = (document.getElementById('esPatientId') as HTMLInputElement)?.value;
+    const p = id ? getSoapPatientById(profileId, id) : null;
+    if (p) {
+      p.admissionDiagnosis = (document.getElementById('esAdmissionDiagnosis') as HTMLInputElement)?.value || p.admissionDiagnosis;
+      p.pPlan = (document.getElementById('esPPlan') as HTMLTextAreaElement)?.value || p.pPlan;
+      
+      const pico = extractPICOFromSoap(p);
+      window.location.hash = pico.ebmHubUrl;
+    }
+  });
+
   // Knowledge Vault Drawer & Real-Time Context Suggester
   document.getElementById('btnVaultKnowledgeSoap')?.addEventListener('click', () => {
     quickReferenceDrawer.open('vault' as any);
@@ -1309,6 +1323,43 @@ export function mountSoapController(profileId: string): void {
         dayOfIllness: 1,
         sNotes: `[Bệnh sử / Lý do vào viện]: Điều trị theo phác đồ ${fromVaultTitle} từ Knowledge Vault.`,
         oNotes: `Sinh hiệu: Mạch 80 l/p, Huyết áp 120/80 mmHg, Thở 18 l/p, SpO2 98%.`,
+        aAssessment,
+        pPlan,
+        clsOrders: [],
+        clsResults: [],
+      });
+    }
+
+    // Mở ngay modal chỉnh sửa SOAP cho ca này
+    window.location.hash = `#/docspace/soap?edit=${targetSoap.id}`;
+  }
+
+  // Tự động nạp dữ liệu từ Guideline Radar (1-Click Guideline Diff to SOAP)
+  const fromGuidelineTitle = urlParams.get('from_guideline');
+  if (fromGuidelineTitle) {
+    const allSoap = getAllSoapPatients(profileId);
+    let targetSoap = allSoap.find(s => s.admissionDiagnosis === fromGuidelineTitle || s.currentDiagnosis === fromGuidelineTitle);
+
+    const aAssessment = `[Chẩn đoán & Tham chiếu Guideline Radar]:\n• Phác đồ: ${fromGuidelineTitle}\n• Khuyến cáo Class I / LOE A theo ESC/ADA/KDIGO/GOLD/Bộ Y Tế VN.`;
+    const pPlan = `[Kế hoạch Điều trị Chuẩn EBM]:\n• Khởi trị phác đồ theo khuyến cáo mới nhất: ${fromGuidelineTitle}.\n• Đánh giá tuân thủ GDMT và phòng ngừa biến cố.`;
+
+    if (!targetSoap) {
+      const patientCode = `GDL-${Date.now().toString().slice(-4)}`;
+      const fullName = `Ca Khuyến Cáo: ${fromGuidelineTitle.length > 35 ? fromGuidelineTitle.substring(0, 35) + '...' : fromGuidelineTitle}`;
+      targetSoap = saveSoapPatient(profileId, {
+        patientCode,
+        bedNumber: 'Phòng Can Thiệp',
+        fullName,
+        age: 60,
+        gender: 'nam',
+        medicalRecordNo: patientCode,
+        admissionDiagnosis: fromGuidelineTitle,
+        currentDiagnosis: fromGuidelineTitle,
+        isEmrEntered: false,
+        soapStatus: 'da_lam',
+        dayOfIllness: 1,
+        sNotes: `[Bệnh sử / Chỉ định điều trị]: Bệnh nhân được chỉ định phác đồ theo hướng dẫn mới nhất: ${fromGuidelineTitle}.`,
+        oNotes: `Sinh hiệu: Mạch 75 l/p, HA 125/80 mmHg, Thở 18 l/p, SpO2 98%.`,
         aAssessment,
         pPlan,
         clsOrders: [],

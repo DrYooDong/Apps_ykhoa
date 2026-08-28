@@ -1,5 +1,5 @@
 ---
-title: "SIBO &amp; IMO"
+title: "SIBO & IMO"
 slug: "slb-ccbs-sibo"
 code: "CCBS-41"
 system: "general"
@@ -8,18 +8,18 @@ order: 41
 category: "pathophysiology-cases"
 status: "published"
 version: "2.0.0"
-updatedAt: "2026-08-26"
-description: "Sinh lý bệnh và Cơ chế bệnh sinh Tăng Sinh Vi Khuẩn Ruột Non (SIBO &amp; IMO Pathophysiology): Phân tích toàn diện sự phân bố vi sinh vật đường ruột, suy giảm phức hợp MMC, 3 con đường kém hấp thu (tổn thương niêm mạc, cạnh tranh B12 vs tăng Folate, giải liên hợp axit mật gây tiêu chảy phân nước &amp; tiêu chảy mỡ), phân loại thể khí thở (H-SIBO, IMO qua Archaea Methanobrevibacter smithii, H2S-SIBO), vai trò màng sinh học Biofilm, liên kết IBS và trục Ruột - Gan thúc đẩy MASLD/MASH."
+updatedAt: "2026-08-28"
+description: "Sinh lý bệnh và Cơ chế bệnh sinh Tăng Sinh Vi Khuẩn Ruột Non (SIBO & IMO Pathophysiology): Phân tích toàn diện sự phân bố vi sinh vật đường ruột, suy giảm phức hợp MMC, 3 con đường kém hấp thu (tổn thương niêm mạc, cạnh tranh B12 vs tăng Folate, giải liên hợp axit mật gây tiêu chảy phân nước & tiêu chảy mỡ), phân loại thể khí thở (H-SIBO, IMO qua Archaea Methanobrevibacter smithii, H2S-SIBO), vai trò màng sinh học Biofilm, liên kết IBS và trục Ruột - Gan thúc đẩy MASLD/MASH."
 tags:
   - "Tổng Quát"
-  - "SIBO &amp; IMO"
+  - "SIBO & IMO"
   - "Sinh lý bệnh"
   - "Cơ chế bệnh sinh"
 clinicalPearls:
-  - "Lên men tạo khí: Carbohydrate ứ đọng bị vi khuẩn lên men tạo ra lượng lớn khí gas: Hydro (H2), Metan (CH4), Hydro Sulfua (H2S) &rarr; Đầy hơi chướng bụng dữ dội, đau bụng quanh rốn."
-  - "Tăng tính thấm ruột (Leaky Gut): Độc tố LPS phá hủy liên kết chặt ZO-1 &rarr; Rò rỉ vi khuẩn và cytokine tiền viêm vào máu cửa."
-  - "Cạn kiệt Vitamin B12: Vi khuẩn kỵ khí (Bacteroides) tiêu thụ trực tiếp phức hợp B12-yếu tố nội tại trong lòng ruột &rarr; Thiếu hụt Vitamin B12, gây thiếu máu hồng cầu to và tổn thương thần kinh ngoại biên."
-  - "Giảm Thiamine &amp; Nicotinamide: Do vi khuẩn tranh chấp hấp thu."
+  - "Lên men tạo khí: Carbohydrate ứ đọng bị vi khuẩn lên men tạo ra lượng lớn khí gas: Hydro (H2), Metan (CH4), Hydro Sulfua (H2S) → Đầy hơi chướng bụng dữ dội, đau bụng quanh rốn."
+  - "Tăng tính thấm ruột (Leaky Gut): Độc tố LPS phá hủy liên kết chặt ZO-1 → Rò rỉ vi khuẩn và cytokine tiền viêm vào máu cửa."
+  - "Cạn kiệt Vitamin B12: Vi khuẩn kỵ khí (Bacteroides) tiêu thụ trực tiếp phức hợp B12-yếu tố nội tại trong lòng ruột → Thiếu hụt Vitamin B12, gây thiếu máu hồng cầu to và tổn thương thần kinh ngoại biên."
+  - "Giảm Thiamine & Nicotinamide: Do vi khuẩn tranh chấp hấp thu."
 sections:
   - id: "sec-1"
     number: 1
@@ -43,29 +43,51 @@ sections:
     icon: "fa-book-medical"
 ---
 
-import { PathoAlert, PathoQuickNav } from './components'
+# 🔬 SIBO & IMO
 
-# 🔬 SIBO vàAMP; IMO
+<PathoQuickNav />
 
-
+<!-- DẢI CHỈ SỐ NHANH (QUICK STATS STRIP) -->
+<section class="stats-strip">
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-val purple">CCBS-41</div>
+      <div class="stat-lbl">Mã định danh cơ chế • Tổng Quát</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val blue">Cấp Tính / Mạn</div>
+      <div class="stat-lbl">Dòng thác sinh lý bệnh phân tử & thích nghi</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val red">Tổn Thương Tạng</div>
+      <div class="stat-lbl">Mất bù trừ cơ quan đích & rối loạn nội môi</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val green">Gold Standard</div>
+      <div class="stat-lbl">Phác đồ điều trị trúng đích chuẩn Harrison 21st</div>
+    </div>
+  </div>
+</section>
 
 ---
 
+## 1. Bệnh Nguyên & Căn Nguyên Khởi Phát {#sec-1}
 
-Sinh lý bệnh và Cơ chế bệnh sinh Tăng Sinh Vi Khuẩn Ruột Non (SIBO &amp; IMO Pathophysiology): Phân tích toàn diện sự phân bố vi sinh vật đường ruột, suy giảm phức hợp MMC, 3 con đường kém hấp thu (tổn thương niêm mạc, cạnh tranh B12 vs tăng Folate, giải liên hợp axit mật gây tiêu chảy phân nước &amp; tiêu chảy mỡ), phân loại thể khí thở (H-SIBO, IMO qua Archaea Methanobrevibacter smithii, H2S-SIBO), vai trò màng sinh học Biofilm, liên kết IBS và trục Ruột - Gan thúc đẩy MASLD/MASH.
+Sinh lý bệnh và Cơ chế bệnh sinh Tăng Sinh Vi Khuẩn Ruột Non (SIBO & IMO Pathophysiology): Phân tích toàn diện sự phân bố vi sinh vật đường ruột, suy giảm phức hợp MMC, 3 con đường kém hấp thu (tổn thương niêm mạc, cạnh tranh B12 vs tăng Folate, giải liên hợp axit mật gây tiêu chảy phân nước & tiêu chảy mỡ), phân loại thể khí thở (H-SIBO, IMO qua Archaea Methanobrevibacter smithii, H2S-SIBO), vai trò màng sinh học Biofilm, liên kết IBS và trục Ruột - Gan thúc đẩy MASLD/MASH.
 
 ```
 TỔNG QUAN HỆ THỐNG BỆNH HỌC:
   • Phân hệ chuyên khoa: Tổng Quát
   • Mã định danh cơ chế: CCBS-41
-  • Từ khóa tra cứu: Tổng Quát, SIBO &amp; IMO, Sinh lý bệnh, Cơ chế bệnh sinh
+  • Từ khóa tra cứu: Tổng Quát, SIBO & IMO, Sinh lý bệnh, Cơ chế bệnh sinh
 ```
+
 
 ---
 
+## 2. Dòng Thác Cơ Chế Bệnh Sinh Phân Tử & Tế Bào {#sec-2}
 
-
-  Cơ chế phân tử và chuỗi biến đổi sinh lý bệnh học then chốt:
+Cơ chế phân tử và chuỗi biến đổi sinh lý bệnh học then chốt:
   
     
 - **Tổn thương cơ sở:** Tác nhân bệnh nguyên tác động làm suy giảm tính toàn vẹn cấu trúc và chức năng tế bào.
@@ -76,14 +98,12 @@ TỔNG QUAN HỆ THỐNG BỆNH HỌC:
     
 - **Chuyển pha mất bù:** Quá tải thích nghi kéo dài dẫn đến tái cấu trúc mô học, xơ hóa và suy kiệt chức năng cơ quan đích.
 
-  
-
 
 ---
 
+## 3. Rối Loạn Chức Năng Cơ Quan & Biểu Hiện Lâm Sàng {#sec-3}
 
-
-  Tương quan trực tiếp giữa tổn thương mô học và dấu hiệu lâm sàng tại giường bệnh:
+Tương quan trực tiếp giữa tổn thương mô học và dấu hiệu lâm sàng tại giường bệnh:
   
     
 - Biểu hiện cơ năng phản ánh trực tiếp mức độ suy giảm phân suất chức năng của hệ Tổng Quát.
@@ -91,25 +111,21 @@ TỔNG QUAN HỆ THỐNG BỆNH HỌC:
     
 - Các chỉ số cận lâm sàng và thăm dò hình ảnh học tương ứng với giai đoạn tiến triển của chuỗi bệnh sinh.
 
-  
-
 
 ---
 
+## 4. Điểm Ngọc Lâm Sàng & Phác Đồ EBM {#sec-4}
 
-
-  
-    
-- Lên men tạo khí: Carbohydrate ứ đọng bị vi khuẩn lên men tạo ra lượng lớn khí gas: Hydro (H2), Metan (CH4), Hydro Sulfua (H2S) vàrarr; Đầy hơi chướng bụng dữ dội, đau bụng quanh rốn.
+- Lên men tạo khí: Carbohydrate ứ đọng bị vi khuẩn lên men tạo ra lượng lớn khí gas: Hydro (H2), Metan (CH4), Hydro Sulfua (H2S) → Đầy hơi chướng bụng dữ dội, đau bụng quanh rốn.
 
     
-- Tăng tính thấm ruột (Leaky Gut): Độc tố LPS phá hủy liên kết chặt ZO-1 vàrarr; Rò rỉ vi khuẩn và cytokine tiền viêm vào máu cửa.
+- Tăng tính thấm ruột (Leaky Gut): Độc tố LPS phá hủy liên kết chặt ZO-1 → Rò rỉ vi khuẩn và cytokine tiền viêm vào máu cửa.
 
     
-- Cạn kiệt Vitamin B12: Vi khuẩn kỵ khí (Bacteroides) tiêu thụ trực tiếp phức hợp B12-yếu tố nội tại trong lòng ruột vàrarr; Thiếu hụt Vitamin B12, gây thiếu máu hồng cầu to và tổn thương thần kinh ngoại biên.
+- Cạn kiệt Vitamin B12: Vi khuẩn kỵ khí (Bacteroides) tiêu thụ trực tiếp phức hợp B12-yếu tố nội tại trong lòng ruột → Thiếu hụt Vitamin B12, gây thiếu máu hồng cầu to và tổn thương thần kinh ngoại biên.
 
     
-- Giảm Thiamine &amp; Nicotinamide: Do vi khuẩn tranh chấp hấp thu.
+- Giảm Thiamine & Nicotinamide: Do vi khuẩn tranh chấp hấp thu.
 
   
 
@@ -120,7 +136,27 @@ TỔNG QUAN HỆ THỐNG BỆNH HỌC:
 
 ---
 
+## 5. Tài Liệu Tham Khảo Y Văn {#sec-5}
 
 1. **Harrison's Principles of Internal Medicine** (21st ed.). McGraw-Hill Education.
 2. **Robbins & Cotran Pathologic Basis of Disease** (10th ed.). Elsevier.
 3. **Guyton and Hall Textbook of Medical Physiology** (14th ed.). Saunders.
+
+<!-- KHUNG TRÍCH DẪN Y VĂN CHUẨN AMA (CITATION BOX) -->
+<div class="citation-box">
+  <strong>Trích dẫn tài liệu tham khảo chuẩn (AMA Format):</strong><br />
+  1. Loscalzo J, Fauci A, Kasper D, Hauser S, Longo D, Jameson JL. <em>Harrison's Principles of Internal Medicine</em>. 21st ed. New York: McGraw-Hill; 2022.<br />
+2. Kumar V, Abbas AK, Aster JC. <em>Robbins & Cotran Pathologic Basis of Disease</em>. 10th ed. Philadelphia, PA: Elsevier; 2020.<br />
+3. Hammer GD, McPhee SJ. <em>Pathophysiology of Disease: An Introduction to Clinical Medicine</em>. 8th ed. New York: McGraw-Hill; 2019.
+</div>
+
+<!-- HÀNG NÚT ĐIỀU HƯỚNG SPA -->
+<div class="btn-row">
+  <a href="#/basic-medical/co-che-benh-sinh" class="btn btn-primary">
+    <i class="fa-solid fa-arrow-left"></i> Quay lại Mục Lục Cơ Chế Bệnh Sinh
+  </a>
+  <a href="#sec-1" class="btn">
+    <i class="fa-solid fa-arrow-up"></i> Lên đầu trang
+  </a>
+</div>
+

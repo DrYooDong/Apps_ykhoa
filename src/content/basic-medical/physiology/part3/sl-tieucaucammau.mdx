@@ -10,7 +10,7 @@ ganongChapter: "Ganong 26th - Chapter 31: Blood as a Circulatory Fluid"
 category: "physiology"
 status: "published"
 version: "2.0.0"
-updatedAt: "2026-08-26"
+updatedAt: "2026-08-28"
 description: "Sinh lý học Tiểu cầu & Đông máu: Cấu trúc hạt alpha/đậm, 4 giai đoạn cầm máu (Co mạch, Cầm máu ban đầu qua vWF/GPIb/GPIIb-IIIa/TXA2, Cầm máu thứ phát qua dòng thác đông máu nội sinh/ngoại sinh/chung, Tiêu sợi huyết qua t-PA/Plasmin và D-Dimer), hệ thống kháng đông tự nhiên (Antithrombin III, Protein C & S), các xét nghiệm đông máu (PT/INR, aPTT, Fibrinogen) và cơ chế tác dụng của Aspirin, Clopidogrel, Heparin, Warfarin, DOACs & Hemophilia."
 tags:
   - "sinh-ly"
@@ -50,14 +50,35 @@ sections:
     icon: "fa-book-medical"
 ---
 
-import { PhysioAlert, PhysioQuickNav, PhysioFeedbackLoop } from '../components'
+# 🧬 SINH LÝ TIỂU CẦU & QUÁ TRÌNH CẦM MÁU - ĐÔNG MÁU
 
-# 🩸 SINH LÝ TIỂU CẦU & QUÁ TRÌNH CẦM MÁU - ĐÔNG MÁU
+<PhysioQuickNav />
 
-
+<!-- DẢI CHỈ SỐ NHANH (QUICK STATS STRIP) -->
+<section class="stats-strip">
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-val blue">PHYS-BLD-05</div>
+      <div class="stat-lbl">Mã chuyên đề • Sinh Lý Máu & Hệ Miễn Dịch</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val green">Nội Môi Ổn Định</div>
+      <div class="stat-lbl">Cân bằng gradient điện hóa & Áp suất thẩm thấu</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val amber">Feedback Loop</div>
+      <div class="stat-lbl">Vòng điều hòa phản hồi thần kinh - thể dịch</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val purple">Dược Lý EBM</div>
+      <div class="stat-lbl">Ứng dụng lâm sàng chuẩn Guyton 14th & Ganong 26th</div>
+    </div>
+  </div>
+</section>
 
 ---
 
+## 1. Cấu Trúc & Nguồn Gốc Tiểu Cầu {#sec-1}
 
 Tiểu cầu (*Platelets / Thrombocytes*) là các mảnh tế bào không nhân có dạng hình đĩa hình bầu dục:
 - **Số lượng bình thường**: **$150.000 – 400.000\text{/}\mu\text{L}$**.
@@ -77,8 +98,10 @@ Tiểu cầu (*Platelets / Thrombocytes*) là các mảnh tế bào không nhân
           • Ion Canxi Ca2+ (Đồng yếu tố bắt buộc cho dòng thác đông máu)
 ```
 
+
 ---
 
+## 2. Cầm Máu Ban Đầu (Nút Chặn Tiểu Cầu) {#sec-2}
 
 Cầm máu ban đầu là quá trình hình thành **Nút Chặn Tiểu Cầu Trắng (Platelet Plug)** bịt kín lỗ thủng mạch máu trong vòng vài giây đến vài phút:
 
@@ -106,6 +129,7 @@ Hoạt hóa [Phức Hợp Thụ Thể GPIIb/IIIa] ──► Gắn cầu nối [F
 
 ---
 
+## 3. Dòng Thác Đông Máu (Ngoại Sinh & Nội Sinh) {#sec-3}
 
 Dòng thác đông máu là chuỗi phản ứng enzyme liên hoàn biến đổi các tiền chất hòa tan thành mạng lưới sợi **Fibrin không tan**, gia cố nút chặn tiểu cầu thành **Cục máu đông đỏ vững chắc**:
 
@@ -133,8 +157,10 @@ Dòng thác đông máu là chuỗi phản ứng enzyme liên hoàn biến đổ
                       [CỤC MÁU ĐÔNG FIBRIN VỮNG CHẮC]
 ```
 
+
 ---
 
+## 4. Kháng Đông Tự Nhiên & Tiêu Sợi Huyết {#sec-4}
 
 Để ngăn cục máu đông lan rộng gây tắc toàn bộ lòng mạch, cơ thể duy trì hệ thống kiểm soát cân bằng động cực kỳ nghiêm ngặt:
 
@@ -155,8 +181,10 @@ Dòng thác đông máu là chuỗi phản ứng enzyme liên hoàn biến đổ
 [Plasmin phân cắt mạng lưới sợi Fibrin đông tụ] ──► TẠO SẢN PHẨM THOÁI GIÁNG D-DIMER
 ```
 
+
 ---
 
+## 5. Ứng Dụng Dược Lý Kháng Đông & EBM {#sec-5}
 
 | Nhóm thuốc | Hoạt chất điển hình | Cơ chế tác dụng sinh học | Xét nghiệm theo dõi | Ứng dụng lâm sàng |
 |---|---|---|---|---|
@@ -168,10 +196,31 @@ Dòng thác đông máu là chuỗi phản ứng enzyme liên hoàn biến đổ
 | **DOACs (Kháng đông đường uống thế hệ mới)** | **Rivaroxaban, Apixaban** | Ức chế trực tiếp yếu tố **Xa** | Không cần theo dõi thường quy | Rung nhĩ không do van tim, DVT/PE. *(Giải độc: Andexanet alfa)*. |
 | | **Dabigatran** | Ức chế trực tiếp **Thrombin (IIa)** | Không cần theo dõi | Rung nhĩ không do van tim. *(Giải độc: Idarucizumab)*. |
 
+
 ---
 
+## 6. Tài Liệu Tham Khảo EBM {#sec-6}
 
 1. **Hall, J. E., & Hall, M. E. (2021)**. *Guyton and Hall Textbook of Medical Physiology* (14th ed.). Philadelphia: Elsevier. Chapter 37: Hemostasis and Blood Coagulation.
 2. **Barrett, K. E. et al. (2019)**. *Ganong's Review of Medical Physiology* (26th ed.). New York: McGraw-Hill. Chapter 31: Blood as a Circulatory Fluid.
 3. **Gale, A. J. (2011)**. *Current understanding of hemostasis*. Toxicologic Pathology, 39(1), 273-280.
 4. **Hoffman, M., & Monroe, D. M. (2001)**. *A cell-based model of hemostasis*. Thrombosis and Haemostasis, 85(6), 958-965.
+
+<!-- KHUNG TRÍCH DẪN Y VĂN CHUẨN AMA (CITATION BOX) -->
+<div class="citation-box">
+  <strong>Trích dẫn tài liệu tham khảo chuẩn (AMA Format):</strong><br />
+  1. Hall JE, Hall ME. <em>Guyton and Hall Textbook of Medical Physiology</em>. 14th ed. Philadelphia, PA: Elsevier; 2021.<br />
+2. Barrett KE, Barman SM, Brooks HL, Yuan JXJ. <em>Ganong's Review of Medical Physiology</em>. 26th ed. New York: McGraw-Hill; 2019.<br />
+3. Koeppen BM, Stanton BA. <em>Berne & Levy Physiology</em>. 7th ed. Philadelphia, PA: Elsevier; 2018.
+</div>
+
+<!-- HÀNG NÚT ĐIỀU HƯỚNG SPA -->
+<div class="btn-row">
+  <a href="#/basic-medical/giai-phau-sinh-ly" class="btn btn-primary">
+    <i class="fa-solid fa-arrow-left"></i> Quay lại Mục Lục Giải Phẫu & Sinh Lý
+  </a>
+  <a href="#sec-1" class="btn">
+    <i class="fa-solid fa-arrow-up"></i> Lên đầu trang
+  </a>
+</div>
+

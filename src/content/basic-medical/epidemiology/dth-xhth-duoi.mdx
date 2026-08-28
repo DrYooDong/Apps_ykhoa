@@ -7,7 +7,7 @@ specialtyId: "epi-tieu-hoa"
 category: "epidemiology"
 status: "published"
 version: "2.0.0"
-updatedAt: "2026-08-26"
+updatedAt: "2026-08-28"
 description: "Dịch tễ học Xuất huyết tiêu hóa dưới (Lower Gastrointestinal Bleeding - LGIB): Phân tích chi tiết mô hình bệnh tật ở người cao tuổi, phổ nguyên nhân hàng đầu (Túi thừa đại tràng, Loạn sản mạch Angiodysplasia, Trĩ, Thiếu máu cục bộ đại tràng, Viêm ruột IBD, Ung thư đại trực tràng), vai trò của thang điểm Oakland trong phân tầng an toàn ngoại trú và chỉ định nội soi đại tràng theo hướng dẫn ACG & BSG."
 tags:
   - "lgib"
@@ -56,14 +56,35 @@ pillars:
     icon: "fa-book-medical"
 ---
 
-import { EpiTriangle, EpiAlert, EpiPillarsNav } from './components'
-
 # 🔬 DỊCH TỄ HỌC XUẤT HUYẾT TIÊU HÓA DƯỚI (LGIB)
 
 <EpiPillarsNav />
 
+<!-- DẢI CHỈ SỐ NHANH (QUICK STATS STRIP) -->
+<section class="stats-strip">
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-val blue">1.5 – 3.0</div>
+      <div class="stat-lbl">Hệ số lây truyền cơ bản ($R_0$)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val green">3 – 7 ngày</div>
+      <div class="stat-lbl">Thời gian ủ bệnh trung bình</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val amber">Người & Véc-tơ</div>
+      <div class="stat-lbl">Véc-tơ / Phương thức lây truyền chính</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val red">Tỷ lệ tử vong chung: 2% – 4% (chủ yếu do biến cố tim mạch và suy đa tạng ở người cao tuổi có nhiều bệnh nền)</div>
+      <div class="stat-lbl">Tỷ lệ tử vong ca bệnh (CFR)</div>
+    </div>
+  </div>
+</section>
+
 ---
 
+## 1. Tam Giác Dịch Tễ XHTH Dưới {#sec-1}
 
 Xuất huyết tiêu hóa dưới (chảy máu có nguồn gốc từ đoạn ruột xa góc Treitz, chủ yếu từ đại tràng và hậu môn trực tràng) là bệnh lý gắn liền với **Tác nhân tổn thương cấu trúc thành ruột & mạch máu (Túi thừa đại tràng, Thoái hóa mạch máu Angiodysplasia, Loét/Polyp đại trực tràng, Bệnh trĩ)**, **Vật chủ (Người cao tuổi ≥ 70 tuổi có xơ vữa mạch máu mạn tính và táo bón)** và **Môi trường dược phẩm (Sử dụng thuốc chống đông, thuốc chống kết tập tiểu cầu, NSAIDs)**.
 
@@ -106,8 +127,10 @@ Xuất huyết tiêu hóa dưới (chảy máu có nguồn gốc từ đoạn ru
   Mặc dù đi ngoài phân máu đỏ tươi (*Hematochezia*) là triệu chứng kinh điển của xuất huyết tiêu hóa dưới, nhưng có khoảng **10% – 15% bệnh nhân đi ngoài phân máu đỏ tươi kèm tụt huyết áp/sốc thực chất là do XUẤT HUYẾT TIÊU HÓA TRÊN Ồ ẠT** (máu chảy quá nhanh làm tăng nhu động ruột tống máu ra ngoài mà chưa kịp chuyển hóa thành phân đen). Bắt buộc phải đặt ống thông dạ dày hoặc nội soi dạ dày khẩn cấp nếu bệnh nhân có rối loạn huyết động không giải thích được.
 </EpiAlert>
 
+
 ---
 
+## 2. Phổ Căn Nguyên & Độ Tuổi {#sec-2}
 
 | Căn nguyên | Tỷ lệ mắc (%) | Đặc điểm dịch tễ & lâm sàng |
 |---|---|---|
@@ -118,8 +141,10 @@ Xuất huyết tiêu hóa dưới (chảy máu có nguồn gốc từ đoạn ru
 | **Polyp & Ung Thư Đại Trực Tràng (CRC)** | 5% – 10% | Chảy máu mạn tính rỉ rả, phân lẫn máu kèm thay đổi thói quen đại tiện và sụt cân. |
 | **Viêm Ruột Tự Miễn (IBD - UC / Crohn)** | 3% – 5% | Phổ biến ở người trẻ tuổi, tiêu chảy phân nhầy máu mạn tính kèm sốt và đau bụng từng cơn. |
 
+
 ---
 
+## 3. Bệnh Túi Thừa & Loạn Sản Mạch {#sec-3}
 
 <EpiAlert type="pearl" title="Thang Điểm Oakland — Tiêu Chuẩn Vàng Phân Tầng An Toàn Xuất Viện Ngoại Trú">
   Thang điểm Oakland (0–35 điểm) được quốc tế công nhận là công cụ phân tầng nguy cơ xuất huyết tiêu hóa dưới chính xác nhất:
@@ -127,8 +152,10 @@ Xuất huyết tiêu hóa dưới (chảy máu có nguồn gốc từ đoạn ru
   - **Điểm Oakland > 8 điểm (Nguy cơ cao)**: Chỉ định nhập viện theo dõi huyết động, hồi sức và chuẩn bị nội soi đại tràng can thiệp.
 </EpiAlert>
 
+
 ---
 
+## 4. Thang Điểm Phân Tầng Oakland {#sec-4}
 
 1. **Bệnh nhân huyết động ổn định**:
    - **Nội soi đại tràng (Colonoscopy)** là lựa chọn đầu tay sau khi bệnh nhân được thụt tháo làm sạch đại tràng bằng dung dịch PEG (Polyethylene glycol).
@@ -138,8 +165,10 @@ Xuất huyết tiêu hóa dưới (chảy máu có nguồn gốc từ đoạn ru
    - **Chụp cắt lớp vi tính mạch máu bụng (CT Angiography - CTA)** là xét nghiệm khẩn cấp tối ưu (phát hiện tốc độ chảy máu từ **0.3 – 0.5 mL/phút**).
    - Nếu CTA phát hiện điểm thoát mạch thuốc cản quang (contrast extravasation), chuyển ngay sang phòng Can thiệp nội mạch làm **Chụp và Nút mạch chọn lọc (Angiography with Transcatheter Embolization)**.
 
+
 ---
 
+## 5. Chẩn Đoán: Nội Soi vs Chụp Mạch CTA {#sec-5}
 
 <EpiAlert type="surveillance" title="Khuyến Cáo Ngưng Và Khởi Động Lại Thuốc Chống Huyết Khối (ACG 2023)">
   - **Khi đang chảy máu cấp tính nặng**: Tạm ngưng thuốc chống đông (Warfarin, DOACs) và thuốc kháng tiểu cầu. Xem xét dùng thuốc đảo ngược tác dụng (Idarucizumab cho Dabigatran, Andexanet alfa cho Rivaroxaban/Apixaban, Phức hợp Prothrombin cô đặc PCC cho Warfarin) nếu đe dọa tính mạng.
@@ -148,10 +177,31 @@ Xuất huyết tiêu hóa dưới (chảy máu có nguồn gốc từ đoạn ru
     - *Thuốc chống đông (DOACs / Warfarin ở bệnh nhân Rung nhĩ hoặc Van tim cơ học)*: Khởi động lại sau **3 – 7 ngày** (tối đa trong vòng 14 ngày) để cân bằng giữa nguy cơ tái phát chảy máu và nguy cơ đột quỵ tắc mạch.
 </EpiAlert>
 
+
 ---
 
+## 6. Hồi Sức & Xử Trí Chảy Máu Cấp {#sec-6}
 
 1. **Oakland, K. et al. (2019)**. *Diagnosis and management of acute lower gastrointestinal bleeding: guidelines from the British Society of Gastroenterology (BSG)*. Gut, 68(5), 776-789.
 2. **Sengupta, N. et al. (2023)**. *Management of Patients with Acute Lower Gastrointestinal Bleeding: An Updated ACG Guideline*. American Journal of Gastroenterology, 118(2), 208-231.
 3. **Strate, L. L. & Gralnek, I. M. (2016)**. *ACG Clinical Guideline: Management of Patients With Acute Lower Gastrointestinal Bleeding*. American Journal of Gastroenterology, 111(4), 459-474.
 4. **Oakland, K. et al. (2017)**. *Development and validation of a risk score for identification of low-risk patients with acute lower gastrointestinal bleeding suitable for out-of-hospital care (Oakland score)*. The Lancet Gastroenterology & Hepatology, 2(9), 635-645.
+
+<!-- KHUNG TRÍCH DẪN Y VĂN CHUẨN AMA (CITATION BOX) -->
+<div class="citation-box">
+  <strong>Trích dẫn tài liệu tham khảo chuẩn (AMA Format):</strong><br />
+  1. Celentano DD, Szklo M. <em>Gordis Epidemiology</em>. 6th ed. Philadelphia, PA: Elsevier; 2019.<br />
+2. World Health Organization (WHO). <em>Global Surveillance and Vector Control Guidelines</em>. Geneva: WHO Press; 2024.<br />
+3. Centers for Disease Control and Prevention (CDC). <em>Epidemiology and Prevention of Vaccine-Preventable Diseases</em>. 14th ed. Washington, DC; 2024.
+</div>
+
+<!-- HÀNG NÚT ĐIỀU HƯỚNG SPA -->
+<div class="btn-row">
+  <a href="#/basic-medical/dich-te-hoc" class="btn btn-primary">
+    <i class="fa-solid fa-arrow-left"></i> Quay lại Mục Lục Dịch Tễ Học
+  </a>
+  <a href="#sec-1" class="btn">
+    <i class="fa-solid fa-arrow-up"></i> Lên đầu trang
+  </a>
+</div>
+

@@ -3,13 +3,20 @@
  * Path: src/core/mdx-engine.ts
  * 
  * Bộ phân tích và chuyển đổi MDX sang HTML chuẩn hóa không cần thư viện ngoài:
- * - Trích xuất và xác thực Frontmatter YAML
- * - Chuyển đổi Markdown semantics (Headings có custom ID {#sec-X}, Tables, Lists, Quotes)
- * - Tự động nạp và chuyển đổi MDX Custom Components:
+ * - Trích xuất và xác thực Frontmatter YAML (bao gồm danh sách lồng nhau sections, pillars, clinicalPearls, metrics)
+ * - Chuyển đổi Markdown semantics (Headings có custom ID {#sec-X}, Tables, Lists, Quotes, KaTeX Math)
+ * - Tự động nạp và chuyển đổi MDX Custom Components với dữ liệu động:
  *   + <EpiTriangle ... />
  *   + <EpiAlert type="..." title="...">...</EpiAlert>
  *   + <EpiPillarsNav ... />
  *   + <EpiVectorTable ... />
+ *   + <PhysioAlert ... />
+ *   + <PhysioQuickNav ... />
+ *   + <PhysioFeedbackLoop ... />
+ *   + <BiochemAlert ... />
+ *   + <BiochemQuickNav ... />
+ *   + <PathoAlert ... />
+ *   + <PathoQuickNav ... />
  */
 
 import { renderEpiTriangle } from '../content/basic-medical/epidemiology/components/EpiTriangle';
@@ -17,20 +24,15 @@ import type { EpiTriangleProps, EpiTriangleNode } from '../content/basic-medical
 import { renderEpiTransmissionCycle } from '../content/basic-medical/epidemiology/components/EpiTransmissionCycle';
 import type { EpiTransmissionCycleProps } from '../content/basic-medical/epidemiology/components/EpiTransmissionCycle';
 import { renderEpiAlert } from '../content/basic-medical/epidemiology/components/EpiAlert';
-import type { EpiAlertProps } from '../content/basic-medical/epidemiology/components/EpiAlert';
 import { renderEpiPillarsNav } from '../content/basic-medical/epidemiology/components/EpiPillarsNav';
 import { renderEpiVectorTable } from '../content/basic-medical/epidemiology/components/EpiVectorTable';
 import type { EpiVectorTableProps } from '../content/basic-medical/epidemiology/components/EpiVectorTable';
 import { renderPhysioAlert } from '../content/basic-medical/physiology/components/PhysioAlert';
-import type { PhysioAlertProps } from '../content/basic-medical/physiology/components/PhysioAlert';
 import { renderPhysioQuickNav } from '../content/basic-medical/physiology/components/PhysioQuickNav';
 import { renderPhysioFeedbackLoop } from '../content/basic-medical/physiology/components/PhysioFeedbackLoop';
-import type { PhysioFeedbackLoopProps } from '../content/basic-medical/physiology/components/PhysioFeedbackLoop';
 import { renderBiochemAlert } from '../content/basic-medical/biochemistry/components/BiochemAlert';
-import type { BiochemAlertProps } from '../content/basic-medical/biochemistry/components/BiochemAlert';
 import { renderBiochemQuickNav } from '../content/basic-medical/biochemistry/components/BiochemQuickNav';
 import { renderPathoAlert } from '../content/basic-medical/pathophysiology-cases/components/PathoAlert';
-import type { PathoAlertProps } from '../content/basic-medical/pathophysiology-cases/components/PathoAlert';
 import { renderPathoQuickNav } from '../content/basic-medical/pathophysiology-cases/components/PathoQuickNav';
 import type { EpidemiologyMdxFrontmatter } from '../content/basic-medical/types/epidemiology.types';
 import type { PhysioMdxFrontmatter } from '../content/basic-medical/types/physiology.types';
@@ -70,13 +72,13 @@ export class CliniMdxEngine {
       .replace(/<!--[\s\S]*?-->/g, '')
       .trim();
 
-    // 3. Chuyển đổi Custom MDX Components
-    let transformedBody = this.transformCustomComponents(cleanBody);
+    // 3. Chuyển đổi Custom MDX Components với Frontmatter Context
+    let transformedBody = this.transformCustomComponents(cleanBody, frontmatter);
 
     // 4. Chuyển đổi Markdown cú pháp chuẩn
     const { html, toc } = this.renderMarkdown(transformedBody);
 
-    const title = frontmatter.title || 'Bài giảng Dịch tễ học';
+    const title = frontmatter.title || 'Bài giảng Y khoa';
     const description = frontmatter.description || '';
 
     return {
@@ -89,7 +91,7 @@ export class CliniMdxEngine {
   }
 
   /**
-   * Tách Frontmatter và Body
+   * Tách Frontmatter và Body với hỗ trợ mảng lồng nhau & key-values
    */
   private extractFrontmatter(raw: string): { frontmatter: Record<string, any>; body: string } {
     const trimmed = raw.trim();
@@ -107,39 +109,97 @@ export class CliniMdxEngine {
 
     const frontmatter: Record<string, any> = {};
     const lines = yamlBlock.split(/\r?\n/);
+    
     let currentKey = '';
-    let currentList: string[] | null = null;
+    let currentMode: 'simple' | 'list_strings' | 'list_objects' | 'nested_object' = 'simple';
+    let currentList: any[] = [];
     let currentObj: Record<string, any> | null = null;
+    let currentNestedKey = '';
 
     for (let i = 0; i < lines.length; i++) {
       const line = lines[i];
       if (!line.trim() || line.trim().startsWith('#')) continue;
 
-      // Check list item
-      if (line.match(/^\s*-\s+/)) {
-        const itemVal = line.replace(/^\s*-\s+/, '').replace(/^["']|["']$/g, '').trim();
-        if (currentList) {
-          currentList.push(itemVal);
+      const indent = line.search(/\S/);
+
+      // Check item in list with "- "
+      const dashMatch = line.match(/^(\s*)-\s+(.*)$/);
+      if (dashMatch) {
+        const itemContent = dashMatch[2].trim();
+
+        // Check if this is an object start "- key: val"
+        const objKvMatch = itemContent.match(/^([a-zA-Z0-9_-]+):\s*(.*)$/);
+        if (objKvMatch) {
+          currentMode = 'list_objects';
+          currentObj = {};
+          let val = objKvMatch[2].trim().replace(/^["']|["']$/g, '');
+          if (val === 'true') (currentObj as any)[objKvMatch[1]] = true;
+          else if (val === 'false') (currentObj as any)[objKvMatch[1]] = false;
+          else if (!isNaN(Number(val)) && val !== '') (currentObj as any)[objKvMatch[1]] = Number(val);
+          else (currentObj as any)[objKvMatch[1]] = val;
+
+          if (!Array.isArray(frontmatter[currentKey])) {
+            frontmatter[currentKey] = [];
+          }
+          frontmatter[currentKey].push(currentObj);
+        } else {
+          // Simple string item
+          currentMode = 'list_strings';
+          const cleanVal = itemContent.replace(/^["']|["']$/g, '');
+          if (!Array.isArray(frontmatter[currentKey])) {
+            frontmatter[currentKey] = [];
+          }
+          frontmatter[currentKey].push(cleanVal);
         }
         continue;
       }
 
-      // Check key-value
+      // Check sub-property of object in list (e.g. "  title: ...")
+      if (indent > 2 && currentMode === 'list_objects' && currentObj) {
+        const subKvMatch = line.trim().match(/^([a-zA-Z0-9_-]+):\s*(.*)$/);
+        if (subKvMatch) {
+          const subKey = subKvMatch[1];
+          let subVal = subKvMatch[2].trim().replace(/^["']|["']$/g, '');
+          if (subVal === 'true') (currentObj as any)[subKey] = true;
+          else if (subVal === 'false') (currentObj as any)[subKey] = false;
+          else if (!isNaN(Number(subVal)) && subVal !== '') (currentObj as any)[subKey] = Number(subVal);
+          else (currentObj as any)[subKey] = subVal;
+          continue;
+        }
+      }
+
+      // Check sub-property of a nested object map (e.g. metrics: \n  r0: "1.33")
+      if (indent > 0 && currentMode === 'nested_object' && frontmatter[currentKey] && typeof frontmatter[currentKey] === 'object' && !Array.isArray(frontmatter[currentKey])) {
+        const nestedKvMatch = line.trim().match(/^([a-zA-Z0-9_-]+):\s*(.*)$/);
+        if (nestedKvMatch) {
+          const nKey = nestedKvMatch[1];
+          let nVal = nestedKvMatch[2].trim().replace(/^["']|["']$/g, '');
+          frontmatter[currentKey][nKey] = nVal;
+          continue;
+        }
+      }
+
+      // Top-level key-value
       const kvMatch = line.match(/^([a-zA-Z0-9_-]+):\s*(.*)$/);
       if (kvMatch) {
         const key = kvMatch[1];
         let val = kvMatch[2].trim();
 
         if (val === '') {
-          // Could be starting a list or object
+          // Starting list or nested object
           currentKey = key;
-          currentList = [];
-          frontmatter[key] = currentList;
+          currentMode = (key === 'metrics' || key === 'author' || key === 'metadata') ? 'nested_object' : 'list_strings';
+          frontmatter[key] = currentMode === 'nested_object' ? {} : [];
+          currentObj = null;
         } else {
           val = val.replace(/^["']|["']$/g, '');
-          frontmatter[key] = val;
           currentKey = key;
-          currentList = null;
+          currentMode = 'simple';
+          currentObj = null;
+          if (val === 'true') frontmatter[key] = true;
+          else if (val === 'false') frontmatter[key] = false;
+          else if (!isNaN(Number(val)) && val !== '') frontmatter[key] = Number(val);
+          else frontmatter[key] = val;
         }
       }
     }
@@ -148,14 +208,17 @@ export class CliniMdxEngine {
   }
 
   /**
-   * Xử lý và chuyển đổi các Custom MDX tags
+   * Xử lý và chuyển đổi các Custom MDX tags với Frontmatter Context
    */
-  private transformCustomComponents(content: string): string {
+  private transformCustomComponents(content: string, frontmatter: Record<string, any> = {}): string {
     let result = content;
+
+    const sections = frontmatter.sections || frontmatter.pillars || [];
 
     // 1. <EpiPillarsNav />
     result = result.replace(/<EpiPillarsNav\s*\/?>/gi, () => {
-      return renderEpiPillarsNav();
+      const items = Array.isArray(sections) && sections.length > 0 ? sections : undefined;
+      return renderEpiPillarsNav(items ? { pillars: items } : undefined);
     });
 
     // 2. <EpiAlert type="..." title="...">...</EpiAlert>
@@ -298,7 +361,8 @@ export class CliniMdxEngine {
 
     // 5. <PhysioQuickNav />
     result = result.replace(/<PhysioQuickNav\s*\/?>/gi, () => {
-      return renderPhysioQuickNav();
+      const items = Array.isArray(sections) && sections.length > 0 ? sections : undefined;
+      return renderPhysioQuickNav(items ? { items } : undefined);
     });
 
     // 6. <PhysioAlert type="..." title="...">...</PhysioAlert>
@@ -330,7 +394,8 @@ export class CliniMdxEngine {
 
     // 8. <BiochemQuickNav />
     result = result.replace(/<BiochemQuickNav\s*\/?>/gi, () => {
-      return renderBiochemQuickNav();
+      const items = Array.isArray(sections) && sections.length > 0 ? sections : undefined;
+      return renderBiochemQuickNav(items ? { items } : undefined);
     });
 
     // 9. <BiochemAlert type="..." title="...">...</BiochemAlert>
@@ -346,7 +411,8 @@ export class CliniMdxEngine {
 
     // 10. <PathoQuickNav />
     result = result.replace(/<PathoQuickNav\s*\/?>/gi, () => {
-      return renderPathoQuickNav();
+      const items = Array.isArray(sections) && sections.length > 0 ? sections : undefined;
+      return renderPathoQuickNav(items ? { items } : undefined);
     });
 
     // 11. <PathoAlert type="..." title="...">...</PathoAlert>
@@ -377,17 +443,18 @@ export class CliniMdxEngine {
     let codeBlockLines: string[] = [];
     let inMathBlock = false;
     let mathBlockLines: string[] = [];
+    let inSection = false;
 
     const flushTable = () => {
       if (inTable && tableRows.length > 0) {
-        let tableHtml = '<div class="epi-table-wrapper" style="margin: 1.5rem 0; overflow-x: auto;"><table class="epi-table" style="width: 100%; border-collapse: collapse; margin: 1rem 0;">';
+        let tableHtml = '<div class="table-responsive" style="margin: 1.5rem 0; overflow-x: auto;"><table class="table-modern" style="width: 100%; border-collapse: collapse; margin: 1rem 0;">';
         for (let idx = 0; idx < tableRows.length; idx++) {
           const row = tableRows[idx].trim();
           if (idx === 1 && row.includes('---')) continue; // Separator row
           
           const cells = row.split('|').filter((_, cIdx, arr) => cIdx > 0 && cIdx < arr.length - 1);
           const tag = idx === 0 ? 'th' : 'td';
-          const style = idx === 0 ? 'padding: 0.75rem 1rem; background: var(--color-surface-offset, #f8fafc); font-weight: 700;' : 'padding: 0.75rem 1rem; border-top: 1px solid var(--color-border, #e2e8f0);';
+          const style = idx === 0 ? 'padding: 0.75rem 1rem; background: var(--color-surface-2, #f8fafc); font-weight: 700; color: var(--color-text, #0f172a); border-bottom: 2px solid var(--color-border, #cbd5e1);' : 'padding: 0.75rem 1rem; border-top: 1px solid var(--color-border, #e2e8f0); color: var(--color-text, #334155);';
           
           tableHtml += '<tr>';
           for (const cell of cells) {
@@ -416,7 +483,7 @@ export class CliniMdxEngine {
     const flushMathBlock = () => {
       if (inMathBlock) {
         const rawMath = mathBlockLines.join('\n').trim();
-        htmlLines.push(`<div class="mdx-math-block">${this.formatMathContent(rawMath)}</div>`);
+        htmlLines.push(`<div class="mdx-math-block" style="overflow-x: auto; text-align: center; padding: 1rem 1.25rem; margin: 1.25rem 0; background: var(--color-surface-2, #f8fafc); border: 1px solid var(--color-border, #cbd5e1); border-radius: 12px; font-size: 1.15rem; color: var(--color-text, #0f172a);">${this.formatMathContent(rawMath)}</div>`);
         mathBlockLines = [];
         inMathBlock = false;
       }
@@ -437,7 +504,7 @@ export class CliniMdxEngine {
           if (restOfLine.endsWith('$$') && restOfLine.length > 2) {
             // Single-line $$ formula $$
             const formula = restOfLine.slice(0, -2).trim();
-            htmlLines.push(`<div class="mdx-math-block">${this.formatMathContent(formula)}</div>`);
+            htmlLines.push(`<div class="mdx-math-block" style="overflow-x: auto; text-align: center; padding: 1rem 1.25rem; margin: 1.25rem 0; background: var(--color-surface-2, #f8fafc); border: 1px solid var(--color-border, #cbd5e1); border-radius: 12px; font-size: 1.15rem; color: var(--color-text, #0f172a);">${this.formatMathContent(formula)}</div>`);
           } else {
             inMathBlock = true;
             if (restOfLine) mathBlockLines.push(restOfLine);
@@ -493,13 +560,21 @@ export class CliniMdxEngine {
         toc.push({ id: customId, text, level });
 
         if (level === 1) {
+          if (inSection) {
+            htmlLines.push('</section>');
+            inSection = false;
+          }
           htmlLines.push(`<h1 id="${customId}" class="article-main-title" style="scroll-margin-top: 80px;">${this.formatInline(text)}</h1>`);
         } else if (level === 2) {
-          htmlLines.push(`<section class="article-section" id="${customId}" style="scroll-margin-top: 80px; margin-bottom: 2.5rem;"><h2 class="section-title"><i class="fa-solid fa-bookmark"></i>${this.formatInline(text)}</h2>`);
+          if (inSection) {
+            htmlLines.push('</section>');
+          }
+          inSection = true;
+          htmlLines.push(`<section class="article-section" id="${customId}" style="scroll-margin-top: 80px; margin-bottom: 2.5rem;"><h2 class="section-title" style="display: flex; align-items: center; gap: 0.6rem; color: var(--color-primary, #0284c7); font-size: 1.38rem; font-weight: 800; border-bottom: 1.5px solid var(--color-border, #cbd5e1); padding-bottom: 0.65rem; margin-bottom: 1.25rem;"><i class="fa-solid fa-bookmark" style="font-size: 1.1rem; opacity: 0.85;"></i><span>${this.formatInline(text)}</span></h2>`);
         } else if (level === 3) {
-          htmlLines.push(`<h3 id="${customId}" class="subsection-title" style="scroll-margin-top: 80px;">${this.formatInline(text)}</h3>`);
+          htmlLines.push(`<h3 id="${customId}" class="subsection-title" style="scroll-margin-top: 80px; font-size: 1.15rem; font-weight: 700; color: var(--color-text, #0f172a); margin: 1.5rem 0 0.75rem 0;">${this.formatInline(text)}</h3>`);
         } else if (level === 4) {
-          htmlLines.push(`<h4 id="${customId}" class="minor-heading" style="scroll-margin-top: 80px;">${this.formatInline(text)}</h4>`);
+          htmlLines.push(`<h4 id="${customId}" class="minor-heading" style="scroll-margin-top: 80px; font-size: 1rem; font-weight: 700; color: var(--color-text-muted, #475569); margin: 1.25rem 0 0.5rem 0;">${this.formatInline(text)}</h4>`);
         }
         continue;
       }
@@ -513,14 +588,14 @@ export class CliniMdxEngine {
       // Blockquotes
       if (line.trim().startsWith('>')) {
         const quoteText = line.replace(/^>\s*/, '');
-        htmlLines.push(`<blockquote style="border-left: 4px solid #0d9488; padding: 0.8rem 1.2rem; background: var(--color-surface-offset, rgba(13, 148, 136, 0.05)); margin: 1.25rem 0; border-radius: 0 10px 10px 0; color: var(--color-text, #334155); font-style: italic;">${this.formatInline(quoteText)}</blockquote>`);
+        htmlLines.push(`<blockquote style="border-left: 4px solid var(--color-primary, #0284c7); padding: 0.8rem 1.2rem; background: var(--color-surface-2, rgba(2, 132, 199, 0.05)); margin: 1.25rem 0; border-radius: 0 10px 10px 0; color: var(--color-text, #334155); font-style: italic;">${this.formatInline(quoteText)}</blockquote>`);
         continue;
       }
 
       // Bullet lists
       if (line.trim().match(/^[-*]\s+/)) {
         const listText = line.trim().replace(/^[-*]\s+/, '');
-        htmlLines.push(`<div style="margin: 0.4rem 0 0.4rem 1.25rem; font-size: 0.95rem; line-height: 1.6; color: var(--color-text, #1e293b);">• ${this.formatInline(listText)}</div>`);
+        htmlLines.push(`<div style="margin: 0.4rem 0 0.4rem 1.25rem; font-size: 0.95rem; line-height: 1.65; color: var(--color-text, #1e293b);">• ${this.formatInline(listText)}</div>`);
         continue;
       }
 
@@ -528,7 +603,7 @@ export class CliniMdxEngine {
       if (line.trim().match(/^\d+\.\s+/)) {
         const numMatch = line.trim().match(/^(\d+)\.\s+(.*)$/);
         if (numMatch) {
-          htmlLines.push(`<div style="margin: 0.4rem 0 0.4rem 1.25rem; font-size: 0.95rem; line-height: 1.6; color: var(--color-text, #1e293b);"><strong style="color: #0d9488;">${numMatch[1]}.</strong> ${this.formatInline(numMatch[2])}</div>`);
+          htmlLines.push(`<div style="margin: 0.4rem 0 0.4rem 1.25rem; font-size: 0.95rem; line-height: 1.65; color: var(--color-text, #1e293b);"><strong style="color: var(--color-primary, #0284c7);">${numMatch[1]}.</strong> ${this.formatInline(numMatch[2])}</div>`);
         }
         continue;
       }
@@ -538,7 +613,7 @@ export class CliniMdxEngine {
         if (line.trim().startsWith('<')) {
           htmlLines.push(line);
         } else {
-          htmlLines.push(`<p style="font-size: 0.96rem; line-height: 1.7; color: var(--color-text, #1e293b); margin-bottom: 1rem;">${this.formatInline(line)}</p>`);
+          htmlLines.push(`<p style="font-size: 0.96rem; line-height: 1.75; color: var(--color-text, #1e293b); margin-bottom: 1rem;">${this.formatInline(line)}</p>`);
         }
       }
     }
@@ -546,6 +621,10 @@ export class CliniMdxEngine {
     if (inTable) flushTable();
     if (inCodeBlock) flushCodeBlock();
     if (inMathBlock) flushMathBlock();
+    if (inSection) {
+      htmlLines.push('</section>');
+      inSection = false;
+    }
 
     return {
       html: htmlLines.join('\n'),
@@ -562,7 +641,6 @@ export class CliniMdxEngine {
       raw.includes('▼') || raw.includes('▲') || (raw.includes('[') && raw.includes(']') && (raw.includes('|') || raw.includes('->') || raw.includes('►')));
 
     if (isDiagram) {
-      // Trích xuất tiêu đề sơ đồ từ node đầu tiên [Title] nếu có
       let diagramTitle = 'Sơ đồ cơ chế & Lưu đồ tiếp cận';
       const rootMatch = raw.match(/\[(.*?)\]/);
       if (rootMatch && rootMatch[1] && rootMatch[1].length < 60) {
@@ -573,19 +651,19 @@ export class CliniMdxEngine {
       const diagramId = 'diag-' + Math.floor(Math.random() * 100000);
 
       return `
-        <div class="mdx-diagram-card" id="${diagramId}">
-          <div class="mdx-diagram-header">
-            <div class="mdx-diagram-title-wrap">
-              <span class="mdx-diagram-badge"><i class="fa-solid fa-diagram-project"></i> SƠ ĐỒ LÂM SÀNG</span>
-              <span style="font-weight: 700;">${diagramTitle}</span>
+        <div class="mdx-diagram-card" id="${diagramId}" style="margin: 1.5rem 0; background: var(--color-surface, #ffffff); border: 1.5px solid var(--color-border, #cbd5e1); border-radius: 14px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.04);">
+          <div class="mdx-diagram-header" style="background: var(--color-surface-2, #f8fafc); border-bottom: 1px solid var(--color-border, #cbd5e1); padding: 0.65rem 1rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;">
+            <div class="mdx-diagram-title-wrap" style="display: flex; align-items: center; gap: 0.5rem;">
+              <span class="mdx-diagram-badge" style="background: rgba(2,132,199,0.1); color: var(--color-primary, #0284c7); font-size: 0.72rem; font-weight: 800; padding: 2px 7px; border-radius: 6px; text-transform: uppercase;"><i class="fa-solid fa-diagram-project"></i> SƠ ĐỒ LÂM SÀNG</span>
+              <span style="font-weight: 700; font-size: 0.88rem; color: var(--color-text, #0f172a);">${diagramTitle}</span>
             </div>
             <div class="mdx-diagram-actions">
-              <button type="button" class="mdx-diagram-btn" onclick="navigator.clipboard.writeText(decodeURIComponent('${encodeURIComponent(raw)}')); this.innerText='Đã chép!'; setTimeout(()=>this.innerHTML='<i class=\\\'fa-regular fa-copy\\\'></i> Sao chép', 2000);" title="Sao chép sơ đồ">
+              <button type="button" class="mdx-diagram-btn" onclick="navigator.clipboard.writeText(decodeURIComponent('${encodeURIComponent(raw)}')); this.innerText='Đã chép!'; setTimeout(()=>this.innerHTML='<i class=\\'fa-regular fa-copy\\'></i> Sao chép', 2000);" title="Sao chép sơ đồ" style="padding: 0.25rem 0.65rem; border-radius: 6px; border: 1px solid var(--color-border, #cbd5e1); background: var(--color-surface, #fff); font-size: 0.75rem; font-weight: 600; cursor: pointer; color: var(--color-text-muted, #64748b);">
                 <i class="fa-regular fa-copy"></i> Sao chép
               </button>
             </div>
           </div>
-          <pre class="mdx-diagram-canvas"><code>${highlightedCanvas}</code></pre>
+          <pre class="mdx-diagram-canvas" style="padding: 1.25rem; margin: 0; font-family: monospace; font-size: 0.88rem; line-height: 1.6; overflow-x: auto; background: var(--color-surface, #ffffff); color: var(--color-text, #0f172a);"><code>${highlightedCanvas}</code></pre>
         </div>
       `;
     }
@@ -593,8 +671,8 @@ export class CliniMdxEngine {
     // Standard Code Block
     const safeContent = this.escapeHtml(raw);
     return `
-      <div class="mdx-code-block">
-        <pre><code class="language-${lang || 'text'}">${safeContent}</code></pre>
+      <div class="mdx-code-block" style="margin: 1.5rem 0; border-radius: 12px; overflow: hidden; border: 1px solid var(--color-border, #cbd5e1);">
+        <pre style="margin: 0; padding: 1rem 1.25rem; background: var(--color-surface-2, #0f172a); color: #f8fafc; overflow-x: auto; font-family: monospace; font-size: 0.88rem; line-height: 1.6;"><code class="language-${lang || 'text'}">${safeContent}</code></pre>
       </div>
     `;
   }
@@ -607,13 +685,13 @@ export class CliniMdxEngine {
 
     // Highlight Tree Branch lines & Connectors
     safe = safe
-      .replace(/(├──►|└──►|├──|└──|│|─►|──►|──|◄──|◄───|◄───────┘|▼|▲|&gt;)/g, '<span class="diag-branch">$1</span>')
-      .replace(/(\[.*?\])/g, '<span class="diag-bracket">$1</span>')
-      .replace(/(\(.*?\))/g, '<span class="diag-action">$1</span>')
-      .replace(/(█+)/g, '<span class="diag-bar">$1</span>')
-      .replace(/\b(Phản hồi âm tính|Negative Feedback|BÌNH THƯỜNG|Bù trừ tốt|Hồi phục|Hiệu quả|Tế bào T|Lympho B|Tế bào NK)\b/gi, '<span class="diag-success">$1</span>')
-      .replace(/\b(Phản hồi dương|Vòng Luẩn Quẩn|TỬ VONG|Hoại tử|Nguy kịch|Thiếu máu cấp|Sốc|Đột quỵ|Cấp cứu)\b/gi, '<span class="diag-danger">$1</span>')
-      .replace(/\b(Cảnh báo|Ngưỡng|Phân cắt|Kích hoạt|Tăng nhịp tim|Co mạch|Enzym|Convertase|Opsonin hóa)\b/gi, '<span class="diag-warning">$1</span>');
+      .replace(/(├──►|└──►|├──|└──|│|─►|──►|──|◄──|◄───|◄───────┘|▼|▲|&gt;)/g, '<span style="color: var(--color-primary, #0284c7); font-weight: 700;">$1</span>')
+      .replace(/(\[.*?\])/g, '<span style="color: #059669; font-weight: 700;">$1</span>')
+      .replace(/(\(.*?\))/g, '<span style="color: #7c3aed;">$1</span>')
+      .replace(/(█+)/g, '<span style="color: #d97706;">$1</span>')
+      .replace(/\b(Phản hồi âm tính|Negative Feedback|BÌNH THƯỜNG|Bù trừ tốt|Hồi phục|Hiệu quả|Tế bào T|Lympho B|Tế bào NK)\b/gi, '<span style="color: #059669; font-weight: 700;">$1</span>')
+      .replace(/\b(Phản hồi dương|Vòng Luẩn Quẩn|TỬ VONG|Hoại tử|Nguy kịch|Thiếu máu cấp|Sốc|Đột quỵ|Cấp cứu)\b/gi, '<span style="color: #dc2626; font-weight: 700;">$1</span>')
+      .replace(/\b(Cảnh báo|Ngưỡng|Phân cắt|Kích hoạt|Tăng nhịp tim|Co mạch|Enzym|Convertase|Opsonin hóa)\b/gi, '<span style="color: #d97706; font-weight: 700;">$1</span>');
 
     return safe;
   }
@@ -624,13 +702,16 @@ export class CliniMdxEngine {
   private formatMathContent(math: string): string {
     let formatted = math;
 
+    // Handle \mathbf{...}
+    formatted = formatted.replace(/\\mathbf\{([^{}]+)\}/g, '<strong style="font-weight: 800; color: var(--color-primary, #0284c7);">$1</strong>');
+
     // Handle \frac{A}{B}
-    formatted = formatted.replace(/\\frac\{([^{}]+)\}\{([^{}]+)\}/g, '<span class="mdx-math-fraction"><span class="mdx-math-num">$1</span><span class="mdx-math-den">$2</span></span>');
+    formatted = formatted.replace(/\\frac\{([^{}]+)\}\{([^{}]+)\}/g, '<span class="mdx-math-fraction" style="display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; padding: 0 4px;"><span class="mdx-math-num" style="border-bottom: 1.5px solid currentColor; padding-bottom: 2px;">$1</span><span class="mdx-math-den" style="padding-top: 2px;">$2</span></span>');
 
     // Handle \text{...}
-    formatted = formatted.replace(/\\text\{([^{}]+)\}/g, '<span style="font-family: sans-serif; font-style: normal; font-size: 0.9em; margin: 0 2px;">$1</span>');
+    formatted = formatted.replace(/\\text\{([^{}]+)\}/g, '<span style="font-family: var(--font-body, sans-serif); font-style: normal; font-size: 0.92em; margin: 0 2px;">$1</span>');
 
-    // Handle special symbols
+    // Handle Greek & Math symbols
     formatted = formatted
       .replace(/\\approx/g, '≈')
       .replace(/\\mu/g, 'µ')
@@ -641,6 +722,7 @@ export class CliniMdxEngine {
       .replace(/\\ge(q)?/g, '≥')
       .replace(/\\alpha/g, 'α')
       .replace(/\\beta/g, 'β')
+      .replace(/\\pi/g, 'π')
       .replace(/\\Delta/g, 'Δ')
       .replace(/\\infty/g, '∞');
 
@@ -654,9 +736,9 @@ export class CliniMdxEngine {
     return text
       .replace(/\*\*(.*?)\*\*/g, '<strong style="font-weight: 700; color: var(--color-text, #0f172a);">$1</strong>')
       .replace(/\*(.*?)\*/g, '<em>$1</em>')
-      .replace(/`([^`]+)`/g, '<code style="background: var(--color-surface-offset, #f1f5f9); padding: 0.15rem 0.4rem; border-radius: 4px; font-family: monospace; font-size: 0.88em; color: #0f766e;">$1</code>')
+      .replace(/`([^`]+)`/g, '<code style="background: var(--color-surface-2, #f1f5f9); padding: 0.15rem 0.4rem; border-radius: 4px; font-family: monospace; font-size: 0.88em; color: #0284c7; border: 1px solid var(--color-border, #cbd5e1);">$1</code>')
       .replace(/\$([^\$]+)\$/g, (_m, math) => {
-        return `<span class="mdx-math-inline">${this.formatMathContent(math)}</span>`;
+        return `<span class="mdx-math-inline" style="font-family: 'Cambria Math', 'Times New Roman', serif; font-size: 1.05em; color: var(--color-primary, #0284c7); padding: 0 2px;">${this.formatMathContent(math)}</span>`;
       });
   }
 
@@ -671,4 +753,3 @@ export class CliniMdxEngine {
 }
 
 export const cliniMdxEngine = new CliniMdxEngine();
-

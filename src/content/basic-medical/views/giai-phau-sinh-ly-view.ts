@@ -9,6 +9,7 @@ import '../../../styles/components/module-dashboard.css';
 import '../../../styles/components/physio-content.css';
 import '../../../styles/components/formula-vault.css';
 import '../../../styles/components/physio-promax-hub.css';
+import { renderBasicMedicalNav } from './basic-medical-nav';
 
 export function renderGiaiPhauSinhLyView(): string {
   return `
@@ -20,6 +21,9 @@ export function renderGiaiPhauSinhLyView(): string {
         <a href="#/basic-medical" style="color: inherit; text-decoration: none;">Basic Medical Sciences</a> &nbsp;/&nbsp; 
         <span style="color: var(--color-primary, #0284c7); font-weight: 600;">Giải Phẫu & Sinh Lý Học (GP - SL)</span>
       </div>
+
+      <!-- UNIVERSAL STICKY SUB-NAV -->
+      ${renderBasicMedicalNav('giai-phau-sinh-ly')}
 
       <!-- PROMAX LUXURY HERO SECTION -->
       <section class="promax-hero hero-physio-theme" aria-labelledby="hero-title">

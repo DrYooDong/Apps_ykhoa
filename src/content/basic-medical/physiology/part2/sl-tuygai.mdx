@@ -10,7 +10,7 @@ ganongChapter: "Ganong 26th - Chapter 12: Reflex & Voluntary Control of Posture 
 category: "physiology"
 status: "published"
 version: "2.0.0"
-updatedAt: "2026-08-26"
+updatedAt: "2026-08-28"
 description: "Sinh lý học Tủy gai & Các cung phản xạ: Tổ chức chất xám sừng trước/sau/bên và chất trắng, các dải dẫn truyền cảm giác (Cột sau DCML vs Bó gai - đồi thị Spinothalamic) và vận động (Bó tháp Corticospinal), các cung phản xạ tủy (Phản xạ căng cơ đơn synapse, Phản xạ gân Golgi, Phản xạ rút lui và duỗi chéo), phân biệt tổn thương UMN vs LMN và Hội chứng cắt ngang nửa tủy Brown-Séquard."
 tags:
   - "sinh-ly"
@@ -50,14 +50,35 @@ sections:
     icon: "fa-book-medical"
 ---
 
-import { PhysioAlert, PhysioQuickNav, PhysioFeedbackLoop } from '../components'
+# 🧬 SINH LÝ TỦY GAI & CÁC CUNG PHẢN XẠ TỦY
 
-# ⚡ SINH LÝ TỦY GAI & CÁC CUNG PHẢN XẠ TỦY
+<PhysioQuickNav />
 
-
+<!-- DẢI CHỈ SỐ NHANH (QUICK STATS STRIP) -->
+<section class="stats-strip">
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-val blue">PHYS-NERV-04</div>
+      <div class="stat-lbl">Mã chuyên đề • Sinh Lý Hệ Thần Kinh & Cơ</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val green">Nội Môi Ổn Định</div>
+      <div class="stat-lbl">Cân bằng gradient điện hóa & Áp suất thẩm thấu</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val amber">Feedback Loop</div>
+      <div class="stat-lbl">Vòng điều hòa phản hồi thần kinh - thể dịch</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val purple">Dược Lý EBM</div>
+      <div class="stat-lbl">Ứng dụng lâm sàng chuẩn Guyton 14th & Ganong 26th</div>
+    </div>
+  </div>
+</section>
 
 ---
 
+## 1. Cấu Trúc Chất Xám & Chất Trắng {#sec-1}
 
 Tủy gai (*Spinal Cord*) là trung tâm tích hợp phản xạ cấp thấp và là xa lộ dẫn truyền thông tin hai chiều giữa não bộ và ngoại vi:
 
@@ -69,8 +90,10 @@ Tủy gai (*Spinal Cord*) là trung tâm tích hợp phản xạ cấp thấp v�
 ### B. Chất Trắng (White Matter)
 Chia thành 3 cột (thừng): **Cột sau (Dorsal column)**, **Cột bên (Lateral column)** và **Cột trước (Anterior column)** chứa các bó sợi có bao myelin dẫn truyền lên (cảm giác) và xuống (vận động).
 
+
 ---
 
+## 2. Các Bó Dẫn Truyền Cảm Giác (DCML & ALS) {#sec-2}
 
 | Đường dẫn truyền cảm giác | Vị trí bắt chéo | Loại cảm giác dẫn truyền |
 |---|---|---|
@@ -87,8 +110,10 @@ CẢM GIÁC ĐAU & NHIỆT ĐỘ (SPINOTHALAMIC):
 [Thụ thể Nociceptor] ──► [Sừng sau tủy] ──► [BẮT CHÉO NGAY TẠI TỦY] ──► [Cột Bên Đối Bên] ──► [Đồi thị] ──► [Vỏ não S1]
 ```
 
+
 ---
 
+## 3. Các Bó Dẫn Truyền Vận Động (Bó Tháp) {#sec-3}
 
 Hệ thống vận động vỏ não chi phối tủy gai qua **Bó Tháp (Corticospinal Tract)**:
 
@@ -101,8 +126,10 @@ Hệ thống vận động vỏ não chi phối tủy gai qua **Bó Tháp (Corti
    - Đi thẳng xuống cột trước cùng bên, chỉ bắt chéo tại mức khoanh tủy tương ứng trước khi tiếp hợp.
    - *Chức năng*: Chi phối các cơ gốc chi và cơ trục thân mình duy trì tư thế thô sơ.
 
+
 ---
 
+## 4. Các Cung Phản Xạ Tủy Sống {#sec-4}
 
 Mọi cung phản xạ hoàn chỉnh đều bao gồm 5 thành phần: **Thụ thể $\rightarrow$ Sợi hướng tâm $\rightarrow$ Trung tâm tích hợp (Tủy gai) $\rightarrow$ Sợi ly tâm $\rightarrow$ Cơ quan đáp ứng**.
 
@@ -123,11 +150,12 @@ Mọi cung phản xạ hoàn chỉnh đều bao gồm 5 thành phần: **Thụ t
   - *Chân bị đau*: Kích thích cơ gấp co, ức chế cơ duỗi $\rightarrow$ **Rút chân lên tránh đau**.
   - *Chân đối bên (Duỗi chéo)*: Tín hiệu bắt chéo qua tủy đối bên kích thích cơ duỗi co, ức chế cơ gấp $\rightarrow$ **Chống vững chân đối diện để giữ thăng bằng cơ thể không bị ngã**.
 
+
 ---
 
+## 5. Phân Biệt UMN vs LMN & Hội Chứng Tủy {#sec-5}
 
-
-  | Dấu hiệu lâm sàng | Tổn Thương UMN (Vỏ não / Bó tháp) | Tổn Thương LMN (Sừng trước tủy / Dây TK) |
+| Dấu hiệu lâm sàng | Tổn Thương UMN (Vỏ não / Bó tháp) | Tổn Thương LMN (Sừng trước tủy / Dây TK) |
   |---|---|---|
   | **Kiểu liệt** | **Liệt Cứng (Spastic Paralysis)** | **Liệt Mềm (Flaccid Paralysis)** |
   | **Trương lực cơ** | **Tăng trương lực cơ** (Dấu dao gấp Clasp-knife) | **Giảm hoặc mất hoàn toàn trương lực cơ** |
@@ -149,8 +177,28 @@ Mọi cung phản xạ hoàn chỉnh đều bao gồm 5 thành phần: **Thụ t
 
 ---
 
+## 6. Tài Liệu Tham Khảo EBM {#sec-6}
 
 1. **Hall, J. E., & Hall, M. E. (2021)**. *Guyton and Hall Textbook of Medical Physiology* (14th ed.). Philadelphia: Elsevier. Chapter 55: Spinal Cord Motor Functions; the Cord Reflexes.
 2. **Barrett, K. E. et al. (2019)**. *Ganong's Review of Medical Physiology* (26th ed.). New York: McGraw-Hill. Chapter 12: Reflex & Voluntary Control of Posture & Movement.
 3. **Kandel, E. R. et al. (2021)**. *Principles of Neural Science* (6th ed.). New York: McGraw-Hill.
 4. **Ropper, A. H. et al. (2019)**. *Adams and Victor's Principles of Neurology* (11th ed.). McGraw-Hill.
+
+<!-- KHUNG TRÍCH DẪN Y VĂN CHUẨN AMA (CITATION BOX) -->
+<div class="citation-box">
+  <strong>Trích dẫn tài liệu tham khảo chuẩn (AMA Format):</strong><br />
+  1. Hall JE, Hall ME. <em>Guyton and Hall Textbook of Medical Physiology</em>. 14th ed. Philadelphia, PA: Elsevier; 2021.<br />
+2. Barrett KE, Barman SM, Brooks HL, Yuan JXJ. <em>Ganong's Review of Medical Physiology</em>. 26th ed. New York: McGraw-Hill; 2019.<br />
+3. Koeppen BM, Stanton BA. <em>Berne & Levy Physiology</em>. 7th ed. Philadelphia, PA: Elsevier; 2018.
+</div>
+
+<!-- HÀNG NÚT ĐIỀU HƯỚNG SPA -->
+<div class="btn-row">
+  <a href="#/basic-medical/giai-phau-sinh-ly" class="btn btn-primary">
+    <i class="fa-solid fa-arrow-left"></i> Quay lại Mục Lục Giải Phẫu & Sinh Lý
+  </a>
+  <a href="#sec-1" class="btn">
+    <i class="fa-solid fa-arrow-up"></i> Lên đầu trang
+  </a>
+</div>
+

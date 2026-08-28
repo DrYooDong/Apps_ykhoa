@@ -7,6 +7,8 @@ import { getAllNotes, saveNote, updateNote, deleteNote, getNoteById, getActivePr
 import { PersonalNote } from '../types';
 import { renderSidebar, renderDocSpaceHeader, formatDate, formatRelativeDate } from '../docspace-view';
 import { summarizeAndTagNoteWithAI } from '../ai/llm-client';
+import { VAULT_CATALOG } from '../../knowledge-vault/vault-loader';
+import type { VaultPersonalAnnotation } from '../../knowledge-vault/types';
 
 export function renderNotepadView(profileId: string, editId?: string): string {
   const profile = getActiveProfile();
@@ -14,6 +16,13 @@ export function renderNotepadView(profileId: string, editId?: string): string {
 
   const notes = getAllNotes(profileId);
   const editNote = editId ? getNoteById(profileId, editId) : null;
+
+  // Load Vault Annotations / Clinical Pearls
+  let vaultPearls: VaultPersonalAnnotation[] = [];
+  try {
+    const rawPearls = localStorage.getItem(`dsp_vault_annotations_${profileId}`);
+    if (rawPearls) vaultPearls = JSON.parse(rawPearls);
+  } catch {}
 
   // Extract unique tags
   const allTags = Array.from(
@@ -146,6 +155,30 @@ export function renderNotepadView(profileId: string, editId?: string): string {
                 <div class="dsp-list" id="dspNotesList">
                   ${listHtml}
                 </div>
+
+                ${vaultPearls.length > 0 ? `
+                  <div style="border-top: 1px dashed var(--color-border); padding: 1rem;">
+                    <div style="font-size: 13px; font-weight: 800; color: #b45309; display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
+                      <span><i class="fa-solid fa-lightbulb" style="color:#f59e0b;"></i> Đúc Kết Vault (${vaultPearls.length})</span>
+                      <a href="#/vault" style="font-size:11px; text-decoration:none; color:var(--color-primary); font-weight:700;">Mở Vault →</a>
+                    </div>
+                    <div style="display:flex; flex-direction:column; gap:0.5rem;">
+                      ${vaultPearls.slice(0, 5).map(p => {
+                        const art = VAULT_CATALOG.find(a => a.id === p.articleId);
+                        const artTitle = art ? art.title : p.articleId;
+                        return `
+                          <div style="background:var(--color-bg); border:1px solid var(--color-border); border-left:3px solid #f59e0b; border-radius:6px; padding:7px 9px; font-size:11.5px;">
+                            <div style="font-weight:700; color:var(--color-primary); margin-bottom:2px;">
+                              <a href="#/vault?search=${encodeURIComponent(artTitle)}" style="text-decoration:none; color:inherit;">${escapeHtml(artTitle)}</a>
+                            </div>
+                            <div style="color:var(--color-text); line-height:1.4;">${escapeHtml(p.noteText)}</div>
+                            <div style="font-size:10px; color:var(--color-text-muted); margin-top:3px;">${formatRelativeDate(p.createdAt)}</div>
+                          </div>
+                        `;
+                      }).join('')}
+                    </div>
+                  </div>
+                ` : ''}
               </div>
             </div>
           </div>

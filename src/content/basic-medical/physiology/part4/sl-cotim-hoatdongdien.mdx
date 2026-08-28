@@ -10,7 +10,7 @@ ganongChapter: "Ganong 26th - Chapter 28: Origin of the Heartbeat & the Electric
 category: "physiology"
 status: "published"
 version: "2.0.0"
-updatedAt: "2026-08-26"
+updatedAt: "2026-08-28"
 description: "Sinh lý học Điện tim: Hệ thống tạo nhịp và dẫn truyền tự động (Nút xoang SA, Nút AV, Bó His, Purkinje), so sánh điện thế động đáp ứng nhanh (Cơ tâm thất) vs đáp ứng chậm (Nút xoang - dòng Funny If), cơ sở sinh lý của các sóng trên Điện tâm đồ (Sóng P, Khoảng PR, Phức bộ QRS, Đoạn ST, Sóng T, Khoảng QTc) và ứng dụng lâm sàng trong Block nhĩ thất, Hội chứng vành cấp và Loạn nhịp thất."
 tags:
   - "sinh-ly"
@@ -50,14 +50,35 @@ sections:
     icon: "fa-book-medical"
 ---
 
-import { PhysioAlert, PhysioQuickNav, PhysioFeedbackLoop } from '../components'
+# 🧬 SINH LÝ ĐIỆN HỌC CƠ TIM & ĐIỆN TÂM ĐỒ (ECG)
 
-# ⚡ SINH LÝ ĐIỆN HỌC CƠ TIM & ĐIỆN TÂM ĐỒ (ECG)
+<PhysioQuickNav />
 
-
+<!-- DẢI CHỈ SỐ NHANH (QUICK STATS STRIP) -->
+<section class="stats-strip">
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-val blue">PHYS-CARD-01</div>
+      <div class="stat-lbl">Mã chuyên đề • Sinh Lý Tim Mạch & Hô Hấp</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val green">Nội Môi Ổn Định</div>
+      <div class="stat-lbl">Cân bằng gradient điện hóa & Áp suất thẩm thấu</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val amber">Feedback Loop</div>
+      <div class="stat-lbl">Vòng điều hòa phản hồi thần kinh - thể dịch</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val purple">Dược Lý EBM</div>
+      <div class="stat-lbl">Ứng dụng lâm sàng chuẩn Guyton 14th & Ganong 26th</div>
+    </div>
+  </div>
+</section>
 
 ---
 
+## 1. Hệ Thống Dẫn Truyền Tự Động {#sec-1}
 
 Quả tim có khả năng tự phát xung động nhịp nhàng và dẫn truyền đồng bộ khắp các buồng tim nhờ **Hệ thống dẫn truyền chuyên biệt**:
 
@@ -85,8 +106,10 @@ Quả tim có khả năng tự phát xung động nhịp nhàng và dẫn truy�
 [KHỬ CỰC ĐỒNG BỘ TOÀN BỘ CƠ TÂM THẤT TỪ NỘI TÂM MẠC RA NGOẠI TÂM MẠC]
 ```
 
+
 ---
 
+## 2. Điện Thế Động: Đáp Ứng Nhanh vs Chậm {#sec-2}
 
 | Pha điện học | Tế Bào Đáp Ứng Nhanh (Cơ Tâm Thất, Cơ Tâm Nhĩ, Sợi Purkinje) | Tế Bào Đáp Ứng Chậm (Nút Xoang SA, Nút Nhĩ Thất AV) |
 |---|---|---|
@@ -107,8 +130,10 @@ Pha 0(Na+)         \ Pha 3 (K+ ra)                      /         \ Pha 3 (K+)
    ◄──── Pha 4 (-90mV) ────►                          ◄── Tự phát nhịp ──►
 ```
 
+
 ---
 
+## 3. Cơ Sở Sinh Lý Các Sóng Điện Tâm Đồ (ECG) {#sec-3}
 
 Điện tâm đồ bề mặt (12 chuyển đạo) ghi lại tổng đại số các vectơ điện trường phát sinh trong chu kỳ co bóp của tim:
 
@@ -129,8 +154,10 @@ Pha 0(Na+)         \ Pha 3 (K+ ra)                      /         \ Pha 3 (K+)
 - **Sóng T**: Tái cực 2 tâm thất từ ngoại tâm mạc vào nội tâm mạc (ngược chiều với hướng khử cực, do đó sóng T bình thường **cùng chiều dương với phức bộ QRS**).
 - **Sóng U**: Sóng nhỏ xuất hiện sau sóng T, phản ánh sự tái cực muộn của mạng sợi Purkinje hoặc cơ nhú (rõ trong Hạ Kali máu).
 
+
 ---
 
+## 4. Các Đoạn & Khoảng Thời Gian ECG {#sec-4}
 
 | Thông số ECG | Giới hạn bình thường | Ý nghĩa sinh lý & Bệnh học liên quan |
 |---|---|---|
@@ -139,11 +166,12 @@ Pha 0(Na+)         \ Pha 3 (K+ ra)                      /         \ Pha 3 (K+)
 | **Đoạn ST** | Nằm trên đường đẳng điện | Tương ứng Pha 2 Cao nguyên cơ thất.<br />• **ST chênh lên ($\ge 1\text{ mm}$)**: **Nhồi máu cơ tim cấp có ST chênh lên (STEMI)**.<br />• **ST chênh xuống**: Thiếu máu cục bộ cơ tim dưới nội tâm mạc (NSTEMI). |
 | **Khoảng QTc (Hiệu chỉnh)** | **Nam $< 440\text{ ms}$; Nữ $< 460\text{ ms}$** | Tổng thời gian khử cực và tái cực tâm thất.<br />• $QTc > 500\text{ ms}$: **Hội chứng QT kéo dài**, nguy cơ bùng phát **Xoắn đỉnh (Torsades de Pointes)**. |
 
+
 ---
 
+## 5. Ứng Dụng Lâm Sàng & Rối Loạn Nhịp EBM {#sec-5}
 
-
-  1. **Block AV Độ 1**: Dẫn truyền nhĩ-thất bị chậm lại nhưng mọi sóng P đều dẫn được $\rightarrow$ **Khoảng PR kéo dài cố định $> 0.20\text{ s}$ ($> 5\text{ ô nhỏ}$)**, sau mỗi sóng P đều có phức bộ QRS.
+1. **Block AV Độ 1**: Dẫn truyền nhĩ-thất bị chậm lại nhưng mọi sóng P đều dẫn được $\rightarrow$ **Khoảng PR kéo dài cố định $> 0.20\text{ s}$ ($> 5\text{ ô nhỏ}$)**, sau mỗi sóng P đều có phức bộ QRS.
   2. **Block AV Độ 2**:
      - *Mobitz I (Chu kỳ Wenckebach)*: Tổn thương tại nút AV $\rightarrow$ **Khoảng PR dài dần ra qua từng nhịp cho đến khi có 1 sóng P bị block (rớt mất QRS)**, chu kỳ lặp lại; tiên lượng lành tính.
      - *Mobitz II*: Tổn thương dưới nút AV (Bó His) $\rightarrow$ **Khoảng PR cố định không đổi nhưng thỉnh thoảng có 1 sóng P rớt mất QRS**; nguy cơ tiến triển thành vô tâm thu rất cao, có chỉ định cấy máy tạo nhịp tim vĩnh viễn.
@@ -152,8 +180,28 @@ Pha 0(Na+)         \ Pha 3 (K+ ra)                      /         \ Pha 3 (K+)
 
 ---
 
+## 6. Tài Liệu Tham Khảo EBM {#sec-6}
 
 1. **Hall, J. E., & Hall, M. E. (2021)**. *Guyton and Hall Textbook of Medical Physiology* (14th ed.). Philadelphia: Elsevier. Chapters 10–13: Cardiac Electrophysiology & ECG.
 2. **Barrett, K. E. et al. (2019)**. *Ganong's Review of Medical Physiology* (26th ed.). New York: McGraw-Hill. Chapter 28: Electrical Activity of the Heart.
 3. **Goldberger, A. L. et al. (2017)**. *Goldberger's Clinical Electrocardiography: A Simplified Approach* (9th ed.). Elsevier.
 4. **Al-Khatib, S. M. et al. (2018)**. *2017 AHA/ACC/HRS Guideline for Management of Patients With Ventricular Arrhythmias and the Prevention of Sudden Cardiac Death*. Circulation, 138(13), e272-e391.
+
+<!-- KHUNG TRÍCH DẪN Y VĂN CHUẨN AMA (CITATION BOX) -->
+<div class="citation-box">
+  <strong>Trích dẫn tài liệu tham khảo chuẩn (AMA Format):</strong><br />
+  1. Hall JE, Hall ME. <em>Guyton and Hall Textbook of Medical Physiology</em>. 14th ed. Philadelphia, PA: Elsevier; 2021.<br />
+2. Barrett KE, Barman SM, Brooks HL, Yuan JXJ. <em>Ganong's Review of Medical Physiology</em>. 26th ed. New York: McGraw-Hill; 2019.<br />
+3. Koeppen BM, Stanton BA. <em>Berne & Levy Physiology</em>. 7th ed. Philadelphia, PA: Elsevier; 2018.
+</div>
+
+<!-- HÀNG NÚT ĐIỀU HƯỚNG SPA -->
+<div class="btn-row">
+  <a href="#/basic-medical/giai-phau-sinh-ly" class="btn btn-primary">
+    <i class="fa-solid fa-arrow-left"></i> Quay lại Mục Lục Giải Phẫu & Sinh Lý
+  </a>
+  <a href="#sec-1" class="btn">
+    <i class="fa-solid fa-arrow-up"></i> Lên đầu trang
+  </a>
+</div>
+

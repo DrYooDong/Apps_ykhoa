@@ -327,9 +327,44 @@ export function renderTocHtml(tocItems: TocItem[]): string {
 }
 
 /**
- * Render Reader Toolbar (Controls for Zoom, Font, Fullscreen, Copy)
+ * Xác định Clinical Studio phù hợp nhất trong DocSpace dựa trên từ khóa bài viết
+ */
+export function getMatchingDocSpaceStudio(article: VaultArticle): { id: string; name: string; url: string; icon: string } | null {
+  const text = `${article.title} ${article.specialty} ${article.snippet || ''} ${(article.keywords || []).join(' ')}`.toLowerCase();
+  
+  if (text.includes('khí máu') || text.includes('toan kiềm') || text.includes('abg') || text.includes('anion gap') || text.includes('davenport')) {
+    return { id: 'abg', name: 'ABG Studio Pro', url: '#/docspace/studios/abg', icon: 'fa-solid fa-flask-vial' };
+  }
+  if (text.includes('điện tâm đồ') || text.includes('ecg') || text.includes('nhịp tim') || text.includes('rung nhĩ') || text.includes('qt kéo dài')) {
+    return { id: 'ecg', name: 'ECG Lab Studio Pro', url: '#/docspace/studios/ecg', icon: 'fa-solid fa-heart-pulse' };
+  }
+  if (text.includes('sepsis') || text.includes('nhiễm khuẩn huyết') || text.includes('sốc nhiễm') || text.includes('curb-65') || text.includes('qsofa') || text.includes('viêm phổi')) {
+    return { id: 'sepsis', name: 'Sepsis & ICU Studio', url: '#/docspace/studios/sepsis', icon: 'fa-solid fa-lungs-virus' };
+  }
+  if (text.includes('thận') || text.includes('suy thận') || text.includes('egfr') || text.includes('vancomycin') || text.includes('aminoglycoside') || text.includes('ckd-epi')) {
+    return { id: 'renal', name: 'Renal & Dosing Studio', url: '#/docspace/studios/renal', icon: 'fa-solid fa-dna' };
+  }
+  if (text.includes('tim mạch') || text.includes('score2') || text.includes('ascvd') || text.includes('suy tim') || text.includes('lipid')) {
+    return { id: 'cardio', name: 'Cardio Risk Studio', url: '#/docspace/studios/cardio', icon: 'fa-solid fa-chart-pie' };
+  }
+  if (text.includes('xơ gan') || text.includes('meld') || text.includes('child-pugh') || text.includes('gan mật') || text.includes('giãn tĩnh mạch')) {
+    return { id: 'cirrhosis', name: 'Cirrhosis Studio Pro', url: '#/docspace/studios/cirrhosis', icon: 'fa-solid fa-disease' };
+  }
+  if (text.includes('thần kinh') || text.includes('nihss') || text.includes('đột quỵ') || text.includes('gcs') || text.includes('glasgow') || text.includes('màng não')) {
+    return { id: 'neuro', name: 'Neuro-ICU Studio', url: '#/docspace/studios/neuro', icon: 'fa-solid fa-brain' };
+  }
+  if (text.includes('điện giải') || text.includes('hạ natri') || text.includes('ods') || text.includes('cpm') || text.includes('hạ kali') || text.includes('tăng kali')) {
+    return { id: 'electrolyte', name: 'Electrolyte Studio Pro', url: '#/docspace/studios/electrolyte', icon: 'fa-solid fa-droplet' };
+  }
+  return null;
+}
+
+/**
+ * Render Reader Toolbar (Controls for Zoom, Font, Fullscreen, Copy & DocSpace Actions)
  */
 export function renderReaderToolbar(article: VaultArticle): string {
+  const matchingStudio = getMatchingDocSpaceStudio(article);
+
   return `
     <div class="vault-reader-toolbar">
       <div class="vault-reader-toolbar-left">
@@ -341,6 +376,17 @@ export function renderReaderToolbar(article: VaultArticle): string {
       </div>
 
       <div class="vault-reader-toolbar-right">
+        <!-- Nút liên thông DocSpace SOAP -->
+        <button id="btn-apply-to-soap" class="vault-tool-btn" data-id="${article.id}" style="color:#0284c7; font-weight:800; background:rgba(2,132,199,0.1); border-color:rgba(2,132,199,0.3);" title="Nạp phác đồ và khuyến cáo này vào Bệnh án SOAP DocSpace">
+          <i class="fa-solid fa-notes-medical"></i> Áp Dụng Vào SOAP
+        </button>
+
+        ${matchingStudio ? `
+          <a href="${matchingStudio.url}" class="vault-tool-btn" style="color:#8b5cf6; font-weight:800; background:rgba(139,92,246,0.1); border-color:rgba(139,92,246,0.3); text-decoration:none; display:inline-flex; align-items:center; gap:5px;" title="Mở phòng nghiên cứu & tính toán chuyên sâu trong DocSpace">
+            <i class="${matchingStudio.icon}"></i> Mở ${matchingStudio.name}
+          </a>
+        ` : ''}
+
         <button id="btn-open-obsidian" class="vault-tool-btn" data-rel="${escapeHtml(article.relPath)}" style="color:#a855f7; font-weight:700;" title="Mở trực tiếp bài viết này trong ứng dụng Obsidian">
           <i class="fa-solid fa-gem"></i> Mở Obsidian
         </button>
@@ -525,6 +571,36 @@ export function attachReaderProEvents(drawerPanel: HTMLElement, onNavigateArticl
           copyBtn.innerHTML = '<i class="fa-solid fa-quote-right"></i> Trích dẫn';
         }, 2000);
       });
+    });
+  }
+
+  // Apply to Active DocSpace SOAP
+  const applySoapBtn = drawerPanel.querySelector('#btn-apply-to-soap');
+  if (applySoapBtn) {
+    applySoapBtn.addEventListener('click', () => {
+      const title = drawerPanel.querySelector('#vault-drawer-title')?.textContent || 'Tài liệu Knowledge Vault';
+      const snippetEl = drawerPanel.querySelector('.vault-article-content');
+      const snippet = snippetEl ? snippetEl.textContent?.slice(0, 400).trim() || '' : '';
+      
+      const payload = {
+        title,
+        evidence: `[EBM Vault]: ${title}\n• Trích dẫn hướng dẫn: ${snippet}`,
+        appliedAt: new Date().toISOString()
+      };
+
+      try {
+        localStorage.setItem('dsp_pending_vault_import', JSON.stringify(payload));
+        window.dispatchEvent(new CustomEvent('dsp:vault-applied-to-soap', { detail: payload }));
+        
+        applySoapBtn.innerHTML = '<i class="fa-solid fa-check" style="color:#10b981;"></i> Đã Chuyển Sang SOAP';
+        applySoapBtn.setAttribute('style', 'color:#10b981; font-weight:800; background:rgba(16,185,129,0.1); border-color:rgba(16,185,129,0.3);');
+        
+        setTimeout(() => {
+          window.location.hash = `#/docspace/soap?from_vault=${encodeURIComponent(title)}`;
+        }, 300);
+      } catch (e) {
+        alert(`Đã lưu trích dẫn bài viết "${title}" vào bộ đệm lâm sàng.`);
+      }
     });
   }
 

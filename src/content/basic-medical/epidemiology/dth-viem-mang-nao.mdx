@@ -7,7 +7,7 @@ specialtyId: "epi-truyen-nhiem"
 category: "epidemiology"
 status: "published"
 version: "2.0.0"
-updatedAt: "2026-08-26"
+updatedAt: "2026-08-28"
 description: "Dịch tễ học Viêm màng não (Meningitis): Phân tích toàn diện gánh nặng toàn cầu 2.51 triệu ca, phổ căn nguyên vi khuẩn thay đổi theo lứa tuổi (GBS/E. coli ở sơ sinh, Phế cầu/Não mô cầu ở trẻ em & người lớn), dịch tễ Liên cầu lợn (Streptococcus suis) tại Việt Nam, viêm màng não do lao (TBM), nấm Cryptococcus ở bệnh nhân suy giảm miễn dịch và lộ trình 'Defeating Meningitis by 2030' của WHO."
 tags:
   - "meningitis"
@@ -59,14 +59,35 @@ pillars:
     icon: "fa-book-medical"
 ---
 
-import { EpiTriangle, EpiAlert, EpiPillarsNav } from './components'
-
 # 🔬 DỊCH TỄ HỌC VIÊM MÀNG NÃO (MENINGITIS)
 
 <EpiPillarsNav />
 
+<!-- DẢI CHỈ SỐ NHANH (QUICK STATS STRIP) -->
+<section class="stats-strip">
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-val blue">1.5 – 3.0</div>
+      <div class="stat-lbl">Hệ số lây truyền cơ bản ($R_0$)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val green">Vi khuẩn cấp tính: 1 – 10 ngày (trung bình 2 – 4 ngày); Lao màng não (TBM): vài tuần đến vài tháng</div>
+      <div class="stat-lbl">Thời gian ủ bệnh trung bình</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val amber">Người & Véc-tơ</div>
+      <div class="stat-lbl">Véc-tơ / Phương thức lây truyền chính</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val red">Viêm màng não vi khuẩn không điều trị: ~100%; Được điều trị kháng sinh tối ưu: 10% – 25% (di chứng thần kinh vĩnh viễn ở 20% – 30% người sống sót)</div>
+      <div class="stat-lbl">Tỷ lệ tử vong ca bệnh (CFR)</div>
+    </div>
+  </div>
+</section>
+
 ---
 
+## 1. Tam Giác Dịch Tễ Viêm Màng Não {#sec-1}
 
 Dịch tễ học viêm màng não là sự tác động qua lại giữa **Tác nhân (Phế cầu, Não mô cầu, Liên cầu lợn, trực khuẩn Gram âm, Lao, Nấm, Virus)**, **Vật chủ (Trẻ sơ sinh, người già, người suy giảm miễn dịch, người có thói quen ăn tiết canh/thịt lợn chưa chín)** và **Môi trường (Tập trung đông đúc, mùa lạnh/khô, vùng sinh thái chăn nuôi lợn)**.
 
@@ -109,8 +130,10 @@ Dịch tễ học viêm màng não là sự tác động qua lại giữa **Tác
   Viêm màng não mủ do vi khuẩn là một **cấp cứu y khoa tối khẩn**. Mỗi giờ chậm trễ trong việc sử dụng kháng sinh đường tĩnh mạch liều cao thích hợp làm tăng **12.6% tỷ lệ tử vong** hoặc tàn phế thần kinh. Nguyên tắc vàng: Ngay khi nghi ngờ viêm màng não mủ, nếu có chỉ định chụp CT sọ não trước chọc dò dịch não tủy (DNT), **bắt buộc phải cấy máu và tiêm ngay liều kháng sinh đầu tiên (kết hợp Dexamethasone)** trước khi đưa bệnh nhân đi chụp hình ảnh.
 </EpiAlert>
 
+
 ---
 
+## 2. Phổ Căn Nguyên Theo Lứa Tuổi {#sec-2}
 
 | Nhóm tuổi | Căn nguyên vi khuẩn hàng đầu | Phác đồ kháng sinh kinh nghiệm khuyến cáo |
 |---|---|---|
@@ -119,8 +142,10 @@ Dịch tễ học viêm màng não là sự tác động qua lại giữa **Tác
 | **Trẻ lớn & Người lớn (2–50 tuổi)** | *Streptococcus pneumoniae*, *Neisseria meningitidis*, **Streptococcus suis* (Việt Nam)** | **Ceftriaxone + Vancomycin** (+ Dexamethasone) |
 | **Người cao tuổi (≥ 50 tuổi) & SGMD** | *S. pneumoniae*, *N. meningitidis*, *L. monocytogenes*, Trực khuẩn Gram âm đường ruột | **Ceftriaxone + Vancomycin + Ampicillin** (phủ Listeria) |
 
+
 ---
 
+## 3. Dịch Tễ Liên Cầu Lợn (S. suis) Tại VN {#sec-3}
 
 <EpiAlert type="pearl" title="Đặc Điểm Dịch Tễ Liên Cầu Lợn (S. suis) — Bệnh Truyền Nhiễm Hàng Đầu Tại VN">
   - **Dịch tễ học**: *Streptococcus suis* (đặc biệt serotype 2) là nguyên nhân gây viêm màng não mủ **chiếm 40% – 55% tổng số ca bệnh ở người trưởng thành** tại các bệnh viện tuyến cuối ở Hà Nội và TP. Hồ Chí Minh.
@@ -132,8 +157,10 @@ Dịch tễ học viêm màng não là sự tác động qua lại giữa **Tác
     - Thể nhiễm khuẩn huyết bùng phát gây sốc nhiễm khuẩn, ban xuất huyết hoại tử hoại thư chi tương tự hội chứng Waterhouse-Friderichsen của Não mô cầu.
 </EpiAlert>
 
+
 ---
 
+## 4. Lao & Nấm Màng Não (TBM / Cryptococcus) {#sec-4}
 
 1. **Lao màng não (Tuberculous Meningitis - TBM)**:
    - Thể lao ngoài phổi nguy hiểm nhất, xuất phát từ vỡ nốt lao Rich (Rich focus) vào khoang dưới nhện.
@@ -145,8 +172,10 @@ Dịch tễ học viêm màng não là sự tác động qua lại giữa **Tác
    - Nấm men có bao nang polysaccharide dày, xâm nhập qua đường hô hấp từ phân chim bồ câu hoặc đất ô nhiễm.
    - Dịch não tủy đặc trưng bởi áp lực mở rất cao (> 250 – 300 mmH2O), đòi hỏi phải chọc dò tháo dịch DNT hạ áp định kỳ hàng ngày.
 
+
 ---
 
+## 5. Gánh Nặng Dịch Tễ & Vành Đai Châu Phi {#sec-5}
 
 Khoảng **1 trong 5 người sống sót (20%)** sau viêm màng não mủ phải chịu đựng ít nhất một di chứng tàn tật vĩnh viễn suốt đời:
 
@@ -159,8 +188,10 @@ Khoảng **1 trong 5 người sống sót (20%)** sau viêm màng não mủ ph�
         └──► 10% – 20%: Rối loạn hành vi, rối loạn học tập ở trẻ em
 ```
 
+
 ---
 
+## 6. Di Chứng Thần Kinh & DALYs {#sec-6}
 
 <EpiAlert type="surveillance" title="3 Trụ Cột Chiến Lược Đánh Bại Bệnh Viêm Màng Não Toàn Cầu 2030">
   1. **Loại trừ các vụ dịch viêm màng não do vi khuẩn**: Mở rộng tiêm chủng vắc-xin MenACWY-CRM197/TT và MenB, duy trì tỷ lệ bao phủ vắc-xin Phế cầu (PCV) và Hib > 90%.
@@ -168,10 +199,31 @@ Khoảng **1 trong 5 người sống sót (20%)** sau viêm màng não mủ ph�
   3. **Cải thiện chăm sóc & Phục hồi chức năng**: Sàng lọc thính lực sớm cho tất cả bệnh nhân xuất viện sau viêm màng não để can thiệp cấy ốc tai điện tử hoặc máy trợ thính kịp thời.
 </EpiAlert>
 
+
 ---
 
+## 7. Chiến Lược 'Defeating Meningitis 2030' {#sec-7}
 
 1. **World Health Organization (2021)**. *Defeating meningitis by 2030: a global road map*. Geneva: WHO.
 2. **van de Beek, D. et al. (2016)**. *ESCMID guideline: diagnosis and treatment of acute bacterial meningitis*. Clinical Microbiology and Infection, 22, S37-S62.
 3. **Mai, N. T. H. et al. (2008)**. *Streptococcus suis meningitis in adults in Vietnam*. Clinical Infectious Diseases, 46(5), 659-667.
 4. **Thwaites, G. E. et al. (2004)**. *Dexamethasone for the treatment of tuberculous meningitis in adolescents and adults*. New England Journal of Medicine, 351(17), 1741-1751.
+
+<!-- KHUNG TRÍCH DẪN Y VĂN CHUẨN AMA (CITATION BOX) -->
+<div class="citation-box">
+  <strong>Trích dẫn tài liệu tham khảo chuẩn (AMA Format):</strong><br />
+  1. Celentano DD, Szklo M. <em>Gordis Epidemiology</em>. 6th ed. Philadelphia, PA: Elsevier; 2019.<br />
+2. World Health Organization (WHO). <em>Global Surveillance and Vector Control Guidelines</em>. Geneva: WHO Press; 2024.<br />
+3. Centers for Disease Control and Prevention (CDC). <em>Epidemiology and Prevention of Vaccine-Preventable Diseases</em>. 14th ed. Washington, DC; 2024.
+</div>
+
+<!-- HÀNG NÚT ĐIỀU HƯỚNG SPA -->
+<div class="btn-row">
+  <a href="#/basic-medical/dich-te-hoc" class="btn btn-primary">
+    <i class="fa-solid fa-arrow-left"></i> Quay lại Mục Lục Dịch Tễ Học
+  </a>
+  <a href="#sec-1" class="btn">
+    <i class="fa-solid fa-arrow-up"></i> Lên đầu trang
+  </a>
+</div>
+

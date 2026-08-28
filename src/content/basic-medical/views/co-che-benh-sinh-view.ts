@@ -9,6 +9,8 @@ import '../../../styles/components/module-dashboard.css';
 import '../../../styles/components/physio-content.css';
 import '../../../styles/components/physio-promax-hub.css';
 import '../css/physio-shared.css';
+import { renderMoACardHtml } from '../diagrams/moa-visualizer';
+import { renderBasicMedicalNav } from './basic-medical-nav';
 
 export function renderCoCheBenhSinhView(): string {
   return `
@@ -20,6 +22,9 @@ export function renderCoCheBenhSinhView(): string {
         <a href="#/basic-medical" style="color: inherit; text-decoration: none;">Basic Medical Sciences</a> &nbsp;/&nbsp; 
         <span style="color: #059669; font-weight: 600;">Cơ Chế Bệnh Sinh & Sinh Lý Bệnh (CCBS - SBL)</span>
       </div>
+
+      <!-- UNIVERSAL STICKY SUB-NAV -->
+      ${renderBasicMedicalNav('co-che-benh-sinh')}
 
       <!-- PROMAX LUXURY HERO SECTION -->
       <section class="promax-hero hero-patho-theme" aria-labelledby="hero-title">
@@ -124,9 +129,29 @@ export function renderCoCheBenhSinhView(): string {
           <div>
             <span class="promax-bento-tag">Evidence-Based Medicine</span>
             <h4 class="promax-bento-title">Kho Guidelines &amp; RCTs EBM</h4>
-            <p class="promax-bento-desc">Đối chiếu 45+ khuyến cáo lâm sàng quốc tế (ESC, GOLD, GINA, ADA, SSC).</p>
+            <p class="promax-bento-desc">Đối chiếu 59+ khuyến cáo lâm sàng quốc tế (ESC, GOLD, GINA, ADA, KDIGO).</p>
           </div>
         </a>
+      </section>
+
+      <!-- SECTION TRANSLATIONAL MOA (SƠ ĐỒ CƠ CHẾ PHÂN TỬ MoA) -->
+      <section style="margin-bottom: 2rem;">
+        <details style="background: var(--color-surface, #fff); border: 1.5px solid var(--color-border, #e2e8f0); border-radius: 14px; padding: 1rem 1.25rem; box-shadow: 0 4px 16px rgba(0,0,0,0.04);">
+          <summary style="font-size: 1rem; font-weight: 800; color: #0284c7; cursor: pointer; user-select: none; display: flex; align-items: center; justify-content: space-between; list-style: none;">
+            <span style="display: flex; align-items: center; gap: 8px;">
+              <i class="fa-solid fa-atom"></i> 🧬 Sơ Đồ Cơ Chế Phân Tử MoA (Mechanism of Action) Của Các Nhóm Thuốc Then Chốt EBM
+            </span>
+            <span style="font-size: 0.75rem; font-weight: 700; color: #059669; background: rgba(16,185,129,0.1); padding: 3px 8px; border-radius: 6px;">
+              4 Sơ đồ Vector SVG
+            </span>
+          </summary>
+          <div style="margin-top: 1.25rem; display: flex; flex-direction: column; gap: 1.25rem;">
+            ${renderMoACardHtml('sglt2')}
+            ${renderMoACardHtml('arni')}
+            ${renderMoACardHtml('glp1')}
+            ${renderMoACardHtml('doac')}
+          </div>
+        </details>
       </section>
 
       <!-- PROMAX TOOLBAR & SEARCH -->

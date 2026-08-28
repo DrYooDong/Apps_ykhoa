@@ -10,7 +10,7 @@ ganongChapter: "Ganong 26th - Chapter 5: Excitable Tissue: Muscle"
 category: "physiology"
 status: "published"
 version: "2.0.0"
-updatedAt: "2026-08-26"
+updatedAt: "2026-08-28"
 description: "Sinh lý học Cơ tim & Cơ trơn: Cấu trúc hợp bào chức năng qua đĩa xen (Intercalated discs), cơ chế phóng thích canxi do canxi kích hoạt (CICR), thời kỳ trơ kéo dài chống co cứng ở cơ tim; cơ chế co cơ qua Calmodulin và Myosin Light Chain Kinase (MLCK), cơ chế chốt (Latch state) siêu tiết kiệm năng lượng của cơ trơn và ứng dụng lâm sàng của thuốc Chẹn kênh Canxi (CCBs), Nitrates và Thuốc giãn phế quản Beta-2."
 tags:
   - "sinh-ly"
@@ -54,14 +54,35 @@ sections:
     icon: "fa-book-medical"
 ---
 
-import { PhysioAlert, PhysioQuickNav, PhysioFeedbackLoop } from '../components'
+# 🧬 SINH LÝ CƠ TIM & CƠ TRƠN
 
-# ❤️ SINH LÝ CƠ TIM & CƠ TRƠN
+<PhysioQuickNav />
 
-
+<!-- DẢI CHỈ SỐ NHANH (QUICK STATS STRIP) -->
+<section class="stats-strip">
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-val blue">PHYS-NERV-03</div>
+      <div class="stat-lbl">Mã chuyên đề • Sinh Lý Hệ Thần Kinh & Cơ</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val green">Nội Môi Ổn Định</div>
+      <div class="stat-lbl">Cân bằng gradient điện hóa & Áp suất thẩm thấu</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val amber">Feedback Loop</div>
+      <div class="stat-lbl">Vòng điều hòa phản hồi thần kinh - thể dịch</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val purple">Dược Lý EBM</div>
+      <div class="stat-lbl">Ứng dụng lâm sàng chuẩn Guyton 14th & Ganong 26th</div>
+    </div>
+  </div>
+</section>
 
 ---
 
+## 1. Cấu Trúc Hợp Bào & Đĩa Xen Cơ Tim {#sec-1}
 
 Cơ tim (*Cardiac Muscle / Myocardium*) có cấu trúc vân tương tự cơ xương nhưng hoạt động theo cơ chế không tự ý và tạo thành một **Hợp bào chức năng (Functional Syncytium)**:
 - **Tế bào cơ tim**: Có hình trụ ngắn phân nhánh, 1 hoặc 2 nhân nằm ở trung tâm tế bào.
@@ -75,11 +96,12 @@ Cơ tim (*Cardiac Muscle / Myocardium*) có cấu trúc vân tương tự cơ x�
          └──► Điện thế hoạt động lan truyền tức thì qua liên kết khe ─┘
 ```
 
+
 ---
 
+## 2. Cơ Chế CICR & Thời Kỳ Trơ Cơ Tim {#sec-2}
 
-
-  1. **Khử cực màng**: Điện thế hoạt động lan dọc Ống T (ống T của cơ tim có đường kính lớn gấp 5 lần so với cơ xương).
+1. **Khử cực màng**: Điện thế hoạt động lan dọc Ống T (ống T của cơ tim có đường kính lớn gấp 5 lần so với cơ xương).
   2. **Dòng Canxi mồi**: Mở kênh Canxi loại L phụ thuộc điện thế (**$Ca_V1.2$ / DHPR**) trên màng ống T, đưa một lượng nhỏ $Ca^{2+}$ từ dịch ngoại bào vào bào tương.
   3. **Kích hoạt kênh RyR2**: Lượng $Ca^{2+}$ ngoại bào này đóng vai trò là "chất mồi" gắn vào thụ thể **$RyR2$ (Ryanodine Receptor Type 2)** trên màng lưới nội cơ tương (SR).
   4. **Giải phóng Canxi bùng phát (CICR)**: Kênh $RyR2$ mở ra giải phóng ồ ạt $Ca^{2+}$ từ SR vào bào tương (đóng góp **80%–90%** tổng lượng $Ca^{2+}$ cho co cơ).
@@ -102,8 +124,10 @@ Khác với cơ xương có thời kỳ trơ cực ngắn (1–2 ms), **cơ tim 
 
 - **Ý nghĩa sống còn**: Cơ tim **không bao giờ bị co cứng uốn ván (Tetany)** dù bị kích thích dồn dập với tần số cao. Tim bắt buộc phải có giai đoạn giãn tâm trương để hút máu về làm đầy buồng tim.
 
+
 ---
 
+## 3. Cấu Trúc & Phân Loại Cơ Trơn {#sec-3}
 
 Cơ trơn cấu tạo nên thành của các tạng rỗng (ống tiêu hóa, phế quản, bàng quang, tử cung, mạch máu):
 - **Không có Sarcomere, không có vân ngang**: Sợi Actin và Myosin đan chéo nhau hình mắt lưới gắn vào các **Thể đặc (Dense bodies)** trên màng và trong bào tương (tương đương đĩa Z).
@@ -117,8 +141,10 @@ Cơ trơn cấu tạo nên thành của các tạng rỗng (ống tiêu hóa, ph
 | **Kiểm soát thần kinh** | Điều khiển bởi thần kinh tự chủ (ANS) và hormone; có tính tự động | Điều khiển chi tiết từng tế bào bởi các sợi thần kinh tự chủ |
 | **Vị trí phân bố** | **Thành ruột, dạ dày, tử cung, niệu quản, bàng quang** | **Cơ thể mi và cơ mống mắt, cơ dựng lông, ống dẫn tinh** |
 
+
 ---
 
+## 4. Cơ Chế Co Cơ Calmodulin & MLCK {#sec-4}
 
 ```
 [Nồng độ Ca2+ bào tương tăng cao] (Từ ngoại bào qua kênh Ca2+ & từ SR qua IP3R)
@@ -140,20 +166,21 @@ Cơ trơn cấu tạo nên thành của các tạng rỗng (ống tiêu hóa, ph
 - Để giãn cơ, nồng độ $Ca^{2+}$ được bơm ra ngoài màng tế bào và thu hồi vào SR.
 - Enzyme **MLCP (Myosin Light Chain Phosphatase)** xúc tác khử phosphoryl chuỗi nhẹ Myosin, tách rời đầu Myosin khỏi Actin.
 
+
 ---
 
+## 5. Cơ Chế Chốt (Latch State) {#sec-5}
 
-
-  Khi đầu Myosin đã bị khử phosphoryl bởi enzyme MLCP trong lúc vẫn đang gắn kết với Actin, tốc độ tách rời của cầu nối trở nên **cực kỳ chậm chạp**. 
+Khi đầu Myosin đã bị khử phosphoryl bởi enzyme MLCP trong lúc vẫn đang gắn kết với Actin, tốc độ tách rời của cầu nối trở nên **cực kỳ chậm chạp**. 
   
   Cơ chế này "khóa chốt" các cầu nối Actin-Myosin ở trạng thái gắn kết kéo dài, cho phép cơ trơn thành mạch máu (duy trì huyết áp) và cơ vòng môn vị/bàng quang **duy trì lực co thắt trương lực mạnh mẽ liên tục trong nhiều giờ mà chỉ tiêu thụ 1/300 năng lượng ATP** so với cơ vân.
 
 
 ---
 
+## 6. Ứng Dụng Dược Lý Lâm Sàng EBM {#sec-6}
 
-
-  - **Nhóm Dihydropyridine (Amlodipine, Nifedipine, Nicardipine)**: Chọn lọc cao trên kênh $Ca_V1.2$ của **cơ trơn mạch máu** ──► Giảm dòng $Ca^{2+}$ vào tế bào ──► Bất hoạt phức hợp $Ca^{2+}$-Calmodulin-MLCK ──► **GIÃN ĐỘNG MẠCH NGOẠI VI MẠNH MẼ, HẠ HUYẾT ÁP**.
+- **Nhóm Dihydropyridine (Amlodipine, Nifedipine, Nicardipine)**: Chọn lọc cao trên kênh $Ca_V1.2$ của **cơ trơn mạch máu** ──► Giảm dòng $Ca^{2+}$ vào tế bào ──► Bất hoạt phức hợp $Ca^{2+}$-Calmodulin-MLCK ──► **GIÃN ĐỘNG MẠCH NGOẠI VI MẠNH MẼ, HẠ HUYẾT ÁP**.
   - **Nhóm Non-Dihydropyridine (Verapamil, Diltiazem)**: Chọn lọc cao trên kênh $Ca_V1.2$ của **cơ tim và nút xoang/AV** ──► Ức chế co bóp cơ tim (Inotropic (-)) và làm chậm dẫn truyền nút nhĩ thất (Dromotropic (-)), dùng trong kiểm soát nhịp Rung nhĩ và Đau thắt ngực.
 
 
@@ -164,8 +191,28 @@ Cơ trơn cấu tạo nên thành của các tạng rỗng (ống tiêu hóa, ph
 
 ---
 
+## 7. Tài Liệu Tham Khảo EBM {#sec-7}
 
 1. **Hall, J. E., & Hall, M. E. (2021)**. *Guyton and Hall Textbook of Medical Physiology* (14th ed.). Philadelphia: Elsevier. Chapters 8 & 9: Smooth and Cardiac Muscle.
 2. **Barrett, K. E. et al. (2019)**. *Ganong's Review of Medical Physiology* (26th ed.). New York: McGraw-Hill. Chapter 5: Excitable Tissue: Muscle.
 3. **Bers, D. M. (2002)**. *Cardiac excitation-contraction coupling*. Nature, 415(6868), 198-205.
 4. **Somlyo, A. P., & Somlyo, A. V. (2003)**. *Ca2+ sensitivity of smooth muscle and nonmuscle myosin II: modulated by G proteins, kinases, and myosin phosphatase*. Physiological Reviews, 83(4), 1325-1358.
+
+<!-- KHUNG TRÍCH DẪN Y VĂN CHUẨN AMA (CITATION BOX) -->
+<div class="citation-box">
+  <strong>Trích dẫn tài liệu tham khảo chuẩn (AMA Format):</strong><br />
+  1. Hall JE, Hall ME. <em>Guyton and Hall Textbook of Medical Physiology</em>. 14th ed. Philadelphia, PA: Elsevier; 2021.<br />
+2. Barrett KE, Barman SM, Brooks HL, Yuan JXJ. <em>Ganong's Review of Medical Physiology</em>. 26th ed. New York: McGraw-Hill; 2019.<br />
+3. Koeppen BM, Stanton BA. <em>Berne & Levy Physiology</em>. 7th ed. Philadelphia, PA: Elsevier; 2018.
+</div>
+
+<!-- HÀNG NÚT ĐIỀU HƯỚNG SPA -->
+<div class="btn-row">
+  <a href="#/basic-medical/giai-phau-sinh-ly" class="btn btn-primary">
+    <i class="fa-solid fa-arrow-left"></i> Quay lại Mục Lục Giải Phẫu & Sinh Lý
+  </a>
+  <a href="#sec-1" class="btn">
+    <i class="fa-solid fa-arrow-up"></i> Lên đầu trang
+  </a>
+</div>
+

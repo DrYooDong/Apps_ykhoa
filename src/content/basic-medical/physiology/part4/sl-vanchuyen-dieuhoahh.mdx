@@ -10,7 +10,7 @@ ganongChapter: "Ganong 26th - Chapters 34 & 35: Gas Transport & Regulation of Re
 category: "physiology"
 status: "published"
 version: "2.0.0"
-updatedAt: "2026-08-26"
+updatedAt: "2026-08-28"
 description: "Sinh lý học Vận chuyển khí & Điều hòa thông khí: Các dạng chuyên chở O2 (Oxyhemoglobin, công thức CaO2), đường cong phân ly HbO2 và các yếu tố dịch chuyển (Hiệu ứng Bohr - CADET face right), các dạng chuyên chở CO2 (Bicarbonate, hiện tượng Hamburger Chloride Shift, Hiệu ứng Haldane), các trung tâm hô hấp thân não (DRG, VRG, Pneumotaxic, Hering-Breuer) và cơ chế thụ thể hóa học trung ương (PaCO2) vs ngoại vi (PaO2 trong COPD)."
 tags:
   - "sinh-ly"
@@ -50,14 +50,35 @@ sections:
     icon: "fa-book-medical"
 ---
 
-import { PhysioAlert, PhysioQuickNav, PhysioFeedbackLoop } from '../components'
+# 🧬 SINH LÝ VẬN CHUYỂN KHÍ TRONG MÁU & ĐIỀU HÒA HÔ HẤP
 
-# 🫁 SINH LÝ VẬN CHUYỂN KHÍ & ĐIỀU HÒA HÔ HẤP
+<PhysioQuickNav />
 
-
+<!-- DẢI CHỈ SỐ NHANH (QUICK STATS STRIP) -->
+<section class="stats-strip">
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-val blue">PHYS-RESP-03</div>
+      <div class="stat-lbl">Mã chuyên đề • Sinh Lý Tim Mạch & Hô Hấp</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val green">Nội Môi Ổn Định</div>
+      <div class="stat-lbl">Cân bằng gradient điện hóa & Áp suất thẩm thấu</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val amber">Feedback Loop</div>
+      <div class="stat-lbl">Vòng điều hòa phản hồi thần kinh - thể dịch</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val purple">Dược Lý EBM</div>
+      <div class="stat-lbl">Ứng dụng lâm sàng chuẩn Guyton 14th & Ganong 26th</div>
+    </div>
+  </div>
+</section>
 
 ---
 
+## 1. Vận Chuyển Oxy (O2) & Công Thức CaO2 {#sec-1}
 
 Khí $O_2$ được chuyên chở từ mao mạch phổi đến các mô theo 2 dạng:
 1. **Dạng hòa tan vật lý trong huyết tương**: Chiếm **$1.5\%$** tổng lượng oxy (Độ hòa tan $0.003\text{ mL } O_2\text{/dL máu/mmHg } PaO_2 \rightarrow 0.3\text{ mL/dL}$ ở $PaO_2 = 100\text{ mmHg}$). Mặc dù chiếm tỷ lệ rất nhỏ, phân áp hòa tan $PaO_2$ này quyết định độ bão hòa $SaO_2$ của Hemoglobin.
@@ -70,8 +91,10 @@ $$CaO_2 = \left( 1.34 \times [Hb] \times \frac{SaO_2}{100} \right) + (0.003 \tim
 - *Ví dụ ở người khỏe mạnh ($[Hb] = 15\text{ g/dL}, SaO_2 = 98\%, PaO_2 = 100\text{ mmHg}$)*:
   $$CaO_2 = (1.34 \times 15 \times 0.98) + (0.003 \times 100) = 19.7 + 0.3 = \mathbf{20.0\text{ mL } O_2\text{/dL máu (200 mL/L)}}$$
 
+
 ---
 
+## 2. Đường Cong HbO2 & Hiệu Ứng Bohr {#sec-2}
 
 Mối quan hệ giữa phân áp oxy $PaO_2$ và độ bão hòa $SaO_2$ của Hemoglobin có dạng **Hình chữ S (Sigmoidal Curve)** nhờ hiện tượng hợp tác dị lập thể:
 - **$P_{50}$ (Phân áp $PaO_2$ để $50\%$ Hb bão hòa oxy)**: Bình thường ở người là **$26.8\text{ mmHg}$**.
@@ -100,6 +123,7 @@ Mối quan hệ giữa phân áp oxy $PaO_2$ và độ bão hòa $SaO_2$ của H
 
 ---
 
+## 3. Vận Chuyển CO2 & Hiệu Ứng Haldane {#sec-3}
 
 Khí $CO_2$ do các mô chuyển hóa sinh ra được máu chuyên chở về phổi dưới 3 dạng:
 
@@ -122,6 +146,7 @@ Khí $CO_2$ do các mô chuyển hóa sinh ra được máu chuyên chở về p
 
 ---
 
+## 4. Các Trung Tâm Hô Hấp Tại Thân Não {#sec-4}
 
 Nhịp thở được điều khiển tự động bởi mạng lưới neuron tại Thân não:
 
@@ -135,8 +160,10 @@ Nhịp thở được điều khiển tự động bởi mạng lưới neuron t
 4. **Phản Xạ Căng Phổi Hering-Breuer**:
    - Thụ thể căng giãn (*Stretch receptors*) trên phế quản phát xung theo Dây X ức chế DRG khi phổi bị căng giãn quá mức ($TV > 1.000\text{ mL}$), bảo vệ phổi không bị rách vỡ phế nang.
 
+
 ---
 
+## 5. Điều Hòa Hóa Học Trung Ương vs Ngoại Vi {#sec-5}
 
 | Đặc tính so sánh | Thụ Thể Hóa Học Trung Ương (Central) | Thụ Thể Hóa Học Ngoại Vi (Peripheral) |
 |---|---|---|
@@ -152,8 +179,28 @@ Nhịp thở được điều khiển tự động bởi mạng lưới neuron t
 
 ---
 
+## 6. Tài Liệu Tham Khảo EBM {#sec-6}
 
 1. **Hall, J. E., & Hall, M. E. (2021)**. *Guyton and Hall Textbook of Medical Physiology* (14th ed.). Philadelphia: Elsevier. Chapters 41 & 42: Gas Transport & Respiratory Regulation.
 2. **West, J. B., & Luks, A. M. (2021)**. *West's Respiratory Physiology: The Essentials* (11th ed.). Philadelphia: Wolters Kluwer.
 3. **Barrett, K. E. et al. (2019)**. *Ganong's Review of Medical Physiology* (26th ed.). New York: McGraw-Hill. Chapters 34 & 35: Gas Transport & Respiration Control.
 4. **O'Driscoll, B. R. et al. (2017)**. *BTS guideline for oxygen use in adults in healthcare and emergency settings*. Thorax, 72(Suppl 1), ii1-ii90.
+
+<!-- KHUNG TRÍCH DẪN Y VĂN CHUẨN AMA (CITATION BOX) -->
+<div class="citation-box">
+  <strong>Trích dẫn tài liệu tham khảo chuẩn (AMA Format):</strong><br />
+  1. Hall JE, Hall ME. <em>Guyton and Hall Textbook of Medical Physiology</em>. 14th ed. Philadelphia, PA: Elsevier; 2021.<br />
+2. Barrett KE, Barman SM, Brooks HL, Yuan JXJ. <em>Ganong's Review of Medical Physiology</em>. 26th ed. New York: McGraw-Hill; 2019.<br />
+3. Koeppen BM, Stanton BA. <em>Berne & Levy Physiology</em>. 7th ed. Philadelphia, PA: Elsevier; 2018.
+</div>
+
+<!-- HÀNG NÚT ĐIỀU HƯỚNG SPA -->
+<div class="btn-row">
+  <a href="#/basic-medical/giai-phau-sinh-ly" class="btn btn-primary">
+    <i class="fa-solid fa-arrow-left"></i> Quay lại Mục Lục Giải Phẫu & Sinh Lý
+  </a>
+  <a href="#sec-1" class="btn">
+    <i class="fa-solid fa-arrow-up"></i> Lên đầu trang
+  </a>
+</div>
+

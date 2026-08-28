@@ -7,7 +7,7 @@ specialtyId: "epi-tieu-hoa"
 category: "epidemiology"
 status: "published"
 version: "2.0.0"
-updatedAt: "2026-08-26"
+updatedAt: "2026-08-28"
 description: "Dịch tễ học Viêm gan siêu vi C (HCV): Gánh nặng toàn cầu 50 triệu ca mạn tính, 242.000 ca tử vong/năm, dịch tễ Việt Nam hơn 900.000 ca nhiễm (QĐ 2855/QĐ-BYT 2024), tỷ lệ chuyển mạn tính 70-85%, kỷ nguyên thuốc kháng virus tác động trực tiếp (DAAs) với tỷ lệ chữa khỏi >95% và thách thức tái nhiễm ở nhóm nguy cơ cao."
 tags:
   - "hcv"
@@ -59,14 +59,35 @@ pillars:
     icon: "fa-book-medical"
 ---
 
-import { EpiTriangle, EpiAlert, EpiPillarsNav } from './components'
-
 # 🔬 DỊCH TỄ HỌC VIÊM GAN SIÊU VI C (HCV)
 
 <EpiPillarsNav />
 
+<!-- DẢI CHỈ SỐ NHANH (QUICK STATS STRIP) -->
+<section class="stats-strip">
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-val blue">1.5 – 3.0</div>
+      <div class="stat-lbl">Hệ số lây truyền cơ bản ($R_0$)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val green">14 – 180 ngày (trung bình 45 – 60 ngày)</div>
+      <div class="stat-lbl">Thời gian ủ bệnh trung bình</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val amber">Người & Véc-tơ</div>
+      <div class="stat-lbl">Véc-tơ / Phương thức lây truyền chính</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val red">Viêm gan C mạn tính tiến triển Xơ gan / HCC: 15–30% sau 20–30 năm</div>
+      <div class="stat-lbl">Tỷ lệ tử vong ca bệnh (CFR)</div>
+    </div>
+  </div>
+</section>
+
 ---
 
+## 1. Tam Giác Dịch Tễ HCV {#sec-1}
 
 Dịch tễ học HCV được đặc trưng bởi **Tác nhân (RNA virus có tốc độ đột biến cao tạo loài tựa quasispecies né tránh miễn dịch)**, **Vật chủ (70%–85% người lớn nhiễm không thể tự đào thải virus và chuyển thành nhiễm mạn tính thầm lặng)** và **Môi trường lây nhiễm qua đường máu (Tiêm chích ma túy, lọc máu chu kỳ, can thiệp y tế không đảm bảo vô khuẩn)**.
 
@@ -109,8 +130,10 @@ Dịch tễ học HCV được đặc trưng bởi **Tác nhân (RNA virus có t
   Enzym *RNA-dependent RNA polymerase (NS5B)* của HCV thiếu hoạt tính sửa sai (proofreading), dẫn đến tỷ lệ đột biến cực cao (khoảng $10^{-3}$ base substitutions/site/year). Trong cơ thể của một bệnh nhân nhiễm HCV, virus tồn tại dưới dạng một quần thể hỗn hợp các biến thể di truyền liên quan chặt chẽ gọi là **quasispecies**. Quasispecies liên tục thay đổi cấu trúc kháng nguyên bề mặt E1/E2, giúp virus dễ dàng né tránh sự nhận diện của kháng thể trung hòa và tế bào T gây độc (CD8+ CTL), là lý do chính khiến **thế giới đến nay vẫn chưa thể sản xuất thành công vắc-xin phòng viêm gan C**.
 </EpiAlert>
 
+
 ---
 
+## 2. Cấu Trúc RNA, Genotypes & Quasispecies {#sec-2}
 
 | Genotype | Tỷ lệ tại Việt Nam | Vùng phân bố toàn cầu | Đặc điểm đáp ứng thuốc DAAs |
 |---|---|---|---|
@@ -118,8 +141,10 @@ Dịch tễ học HCV được đặc trưng bởi **Tác nhân (RNA virus có t
 | **Genotype 6** (6a-6v) | **~45% – 50%** | **Đặc hữu tại Đông Nam Á (Việt Nam, Lào, Campuchia)** | Đa dạng di truyền phong phú nhất; đáp ứng rất tốt với Sofosbuvir/Velpatasvir hoặc Sofosbuvir/Daclatasvir. |
 | **Genotype 2 & 3** | ~10% – 15% | Genotype 3 phổ biến ở Nam Á và người tiêm chích | Genotype 3 có tốc độ xơ hóa gan nhanh hơn và nguy cơ kháng thuốc cao hơn. |
 
+
 ---
 
+## 3. Đường Lây Đường Máu & Quần Thể Nguy Cơ {#sec-3}
 
 1. **Người tiêm chích ma túy (People Who Inject Drugs - PWID)**:
    - Là nguồn lây nhiễm mới hàng đầu hiện nay (>70% ca mới tại các nước phát triển và đang phát triển).
@@ -134,8 +159,10 @@ Dịch tễ học HCV được đặc trưng bởi **Tác nhân (RNA virus có t
    - Tuy nhiên, nguy cơ tăng cao ở nhóm **nam quan hệ đồng giới (MSM) nhiễm HIV** do quan hệ thô bạo gây tổn thương niêm mạc trực tràng.
    - Tỷ lệ lây truyền mẹ sang con (MTCT) chỉ khoảng **4% – 8%** (tăng lên 15% nếu mẹ đồng nhiễm HIV).
 
+
 ---
 
+## 4. Diễn Tiến Tự Nhiên (70-85% Mạn Tính) {#sec-4}
 
 Khác với viêm gan B (người lớn nhiễm 95% tự khỏi), **nhiễm HCV ở người lớn có 70% – 85% tiến triển thành viêm gan mạn tính**:
 
@@ -152,8 +179,10 @@ Khác với viêm gan B (người lớn nhiễm 95% tự khỏi), **nhiễm HCV 
                                                 └──► 3% – 5%/năm: Xơ gan mất bù & Tử vong
 ```
 
+
 ---
 
+## 5. Gánh Nặng Dịch Tễ Toàn Cầu & VN {#sec-5}
 
 <EpiAlert type="pearl" title="Cách Mạng DAAs: Chữa Khỏi Hoàn Toàn Viêm Gan C Với Tỷ Lệ > 95%">
   Sự ra đời của các thuốc DAAs (Direct-Acting Antivirals) đường uống từ năm 2014 đã thay đổi hoàn toàn cục diện điều trị:
@@ -164,8 +193,10 @@ Khác với viêm gan B (người lớn nhiễm 95% tự khỏi), **nhiễm HCV 
   - **Hiệu quả điều trị**: Phác đồ uống 1 viên/ngày trong **12 tuần** giúp đạt **SVR12 (Sustained Virologic Response - sạch virus sau 12 tuần ngưng thuốc) > 95% – 98%**, dung nạp tuyệt vời và hầu như không có tác dụng phụ nghiêm trọng.
 </EpiAlert>
 
+
 ---
 
+## 6. Kỷ Nguyên DAAs & Đáp Ứng SVR12 {#sec-6}
 
 <EpiAlert type="surveillance" title="Chiến Lược 'Find - Test - Treat' và Chương Trình Giảm Hại (Harm Reduction)">
   1. **Chương trình Giảm hại (Harm Reduction)**: Cung cấp bơm kim tiêm sạch miễn phí (NSP) và điều trị thay thế nghiện các chất dạng thuốc phiện bằng Methadone/Buprenorphine (OST) cho nhóm PWID để cắt đứt chuỗi lây truyền.
@@ -173,10 +204,31 @@ Khác với viêm gan B (người lớn nhiễm 95% tự khỏi), **nhiễm HCV 
   3. **Cảnh báo Tái nhiễm (Reinfection)**: Điều trị khỏi bằng DAAs **không tạo miễn dịch bảo vệ lâu dài**. Bệnh nhân có hành vi nguy cơ tiếp diễn (tiếp tục tiêm chích chung) có tỷ lệ tái nhiễm từ 2% đến 6% mỗi năm, đòi hỏi phải lặp lại xét nghiệm HCV RNA định kỳ hàng năm.
 </EpiAlert>
 
+
 ---
 
+## 7. Chiến Lược Giảm Hại & Loại Trừ 2030 {#sec-7}
 
 1. **Bộ Y Tế Việt Nam (2024)**. *Hướng dẫn chẩn đoán và điều trị bệnh Viêm gan vi rút C* (Ban hành kèm theo Quyết định số 2855/QĐ-BYT).
 2. **World Health Organization (2024)**. *Updated guidelines on the management of chronic hepatitis C*. Geneva: WHO.
 3. **European Association for the Study of the Liver (EASL 2020)**. *Clinical Practice Guidelines on treatment of hepatitis C*. Journal of Hepatology, 73(5), 1170-1218.
 4. **Manns, M. P. et al. (2017)**. *Hepatitis C virus infection*. Nature Reviews Disease Primers, 3, 17006.
+
+<!-- KHUNG TRÍCH DẪN Y VĂN CHUẨN AMA (CITATION BOX) -->
+<div class="citation-box">
+  <strong>Trích dẫn tài liệu tham khảo chuẩn (AMA Format):</strong><br />
+  1. Celentano DD, Szklo M. <em>Gordis Epidemiology</em>. 6th ed. Philadelphia, PA: Elsevier; 2019.<br />
+2. World Health Organization (WHO). <em>Global Surveillance and Vector Control Guidelines</em>. Geneva: WHO Press; 2024.<br />
+3. Centers for Disease Control and Prevention (CDC). <em>Epidemiology and Prevention of Vaccine-Preventable Diseases</em>. 14th ed. Washington, DC; 2024.
+</div>
+
+<!-- HÀNG NÚT ĐIỀU HƯỚNG SPA -->
+<div class="btn-row">
+  <a href="#/basic-medical/dich-te-hoc" class="btn btn-primary">
+    <i class="fa-solid fa-arrow-left"></i> Quay lại Mục Lục Dịch Tễ Học
+  </a>
+  <a href="#sec-1" class="btn">
+    <i class="fa-solid fa-arrow-up"></i> Lên đầu trang
+  </a>
+</div>
+

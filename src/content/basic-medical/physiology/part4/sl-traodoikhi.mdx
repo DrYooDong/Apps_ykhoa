@@ -10,7 +10,7 @@ ganongChapter: "Ganong 26th - Chapter 34: Pulmonary Function & Gas Transport"
 category: "physiology"
 status: "published"
 version: "2.0.0"
-updatedAt: "2026-08-26"
+updatedAt: "2026-08-28"
 description: "Sinh lý học Trao đổi khí: Các định luật Dalton, Henry, Fick; cấu trúc 6 lớp của màng phế nang - mao mạch, dự trữ thời gian khuếch tán khí mao mạch phổi, tỷ lệ thông khí / tưới máu (V/Q Ratio) và 3 vùng phân bố West, cơ chế Shunt (V/Q = 0) vs Khoảng chết (V/Q = vô cùng), phản xạ co mạch phổi do thiếu oxy (HPV), độ chênh oxy phế nang - động mạch (A-a Gradient) và ứng dụng lâm sàng trong Thuyên tắc phổi (PE) & ARDS."
 tags:
   - "sinh-ly"
@@ -50,14 +50,35 @@ sections:
     icon: "fa-book-medical"
 ---
 
-import { PhysioAlert, PhysioQuickNav, PhysioFeedbackLoop } from '../components'
+# 🧬 SINH LÝ TRAO ĐỔI KHÍ & TƯƠNG XỨNG THÔNG KHÍ / TƯỚI MÁU (V/Q)
 
-# 🫁 SINH LÝ TRAO ĐỔI KHÍ & TƯƠNG XỨNG THÔNG KHÍ / TƯỚI MÁU (V/Q)
+<PhysioQuickNav />
 
-
+<!-- DẢI CHỈ SỐ NHANH (QUICK STATS STRIP) -->
+<section class="stats-strip">
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-val blue">PHYS-RESP-02</div>
+      <div class="stat-lbl">Mã chuyên đề • Sinh Lý Tim Mạch & Hô Hấp</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val green">Nội Môi Ổn Định</div>
+      <div class="stat-lbl">Cân bằng gradient điện hóa & Áp suất thẩm thấu</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val amber">Feedback Loop</div>
+      <div class="stat-lbl">Vòng điều hòa phản hồi thần kinh - thể dịch</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val purple">Dược Lý EBM</div>
+      <div class="stat-lbl">Ứng dụng lâm sàng chuẩn Guyton 14th & Ganong 26th</div>
+    </div>
+  </div>
+</section>
 
 ---
 
+## 1. Các Định Luật Khí (Dalton, Henry, Fick) {#sec-1}
 
 1. **Định Luật Dalton Về Phân Áp Khí**: Áp suất toàn phần bằng tổng các phân áp riêng phần:
    - Áp suất khí quyển khô ở mực nước biển: $P_{atm} = 760\text{ mmHg}$.
@@ -72,8 +93,10 @@ $$V_{gas} = \frac{A \cdot D \cdot (P_1 - P_2)}{T}$$
 - $T$: Chiều dày màng phế nang - mao mạch ($\approx 0.2 – 0.6\text{ }\mu\text{m}$).
 - $(P_1 - P_2)$: Chênh lệch phân áp chất khí hai bên màng.
 
+
 ---
 
+## 2. Cấu Trúc Màng Phế Nang - Mao Mạch {#sec-2}
 
 Khí $O_2$ và $CO_2$ khuếch tán thụ động qua một cấu trúc siêu mỏng chỉ dày **$0.2 – 0.6\text{ }\mu\text{m}$** gồm 6 lớp liên tiếp:
 
@@ -96,6 +119,7 @@ Khí $O_2$ và $CO_2$ khuếch tán thụ động qua một cấu trúc siêu m�
 
 ---
 
+## 3. Động Học & Dự Trữ Khuếch Tán Khí {#sec-3}
 
 - Thời gian một hồng cầu lưu thông qua mao mạch phổi lúc nghỉ ngơi: **$0.75\text{ giây}$**.
 - Quá trình khuếch tán trao đổi $O_2$ và $CO_2$ đạt trạng thái cân bằng hoàn tất chỉ sau **$0.25\text{ giây}$ (ngay trong $1/3$ đầu tiên của mao mạch)**:
@@ -113,8 +137,10 @@ Phân áp O2 (mmHg)
 
 - **Ý nghĩa sinh học**: Quả phổi có **Dự trữ khuếch tán an toàn gấp 3 lần**. Khi vận động thể lực đỉnh cao, cung lượng tim tăng làm máu chảy qua mao mạch nhanh gấp 3 lần (thời gian tiếp xúc rút ngắn xuống $0.25\text{ s}$) thì máu rời phổi vẫn đạt độ bão hòa oxy $100\%$.
 
+
 ---
 
+## 4. Tỷ Lệ Thông Khí / Tưới Máu (V/Q Ratio) {#sec-4}
 
 Tỷ lệ lý tưởng giữa Thông khí phế nang ($V_A \approx 4.2\text{ L/min}$) và Tưới máu mao mạch phổi ($Q \approx 5.0\text{ L/min}$) là:
 
@@ -135,8 +161,10 @@ Do trọng lực tác động lên cột máu và cột khí:
 | **Shunt (Luồng thông)** | **$V/Q = 0$** | **Có tưới máu nhưng HOÀN TOÀN KHÔNG CÓ THÔNG KHÍ** (Phế nang xẹp dính, đông đặc dịch mủ trong Viêm phổi, ARDS, Dị tật tim Shunt Phải-Trái). | **HOÀN TOÀN KHÔNG ĐÁP ỨNG** (Máu đi tắt qua phế nang xẹp không thể gặp oxy). |
 | **Khoảng chết (Dead Space)** | **$V/Q = \infty$** | **Có thông khí nhưng HOÀN TOÀN KHÔNG ĐƯỢC TƯỚI MÁU** (Tắc mạch máu trong **Thuyên tắc động mạch phổi PE**). | Thông khí bị lãng phí hoàn toàn. |
 
+
 ---
 
+## 5. Độ Chênh Phế Nang - Động Mạch (A-a Gradient) {#sec-5}
 
 Phương trình khí phế nang giúp ước tính phân áp oxy trong phế nang ($P_A O_2$):
 
@@ -156,10 +184,31 @@ $$P_A O_2 = FiO_2(P_{atm} - P_{H_2O}) - \frac{PaCO_2}{R} = 150 - \frac{40}{0.8} 
                                                                       • Giảm khuếch tán màng (Xơ phổi mô kẽ IPF)
 ```
 
+
 ---
 
+## 6. Tài Liệu Tham Khảo EBM {#sec-6}
 
 1. **Hall, J. E., & Hall, M. E. (2021)**. *Guyton and Hall Textbook of Medical Physiology* (14th ed.). Philadelphia: Elsevier. Chapters 39 & 40: Physical Principles of Gas Exchange & Pulmonary Circulation.
 2. **West, J. B., & Luks, A. M. (2021)**. *West's Respiratory Physiology: The Essentials* (11th ed.). Philadelphia: Wolters Kluwer.
 3. **Barrett, K. E. et al. (2019)**. *Ganong's Review of Medical Physiology* (26th ed.). New York: McGraw-Hill. Chapter 34: Pulmonary Function & Gas Transport.
 4. **Petersson, J., & Glenny, R. W. (2014)**. *Gas exchange and ventilation-perfusion relationships in the lung*. European Respiratory Journal, 44(4), 1023-1041.
+
+<!-- KHUNG TRÍCH DẪN Y VĂN CHUẨN AMA (CITATION BOX) -->
+<div class="citation-box">
+  <strong>Trích dẫn tài liệu tham khảo chuẩn (AMA Format):</strong><br />
+  1. Hall JE, Hall ME. <em>Guyton and Hall Textbook of Medical Physiology</em>. 14th ed. Philadelphia, PA: Elsevier; 2021.<br />
+2. Barrett KE, Barman SM, Brooks HL, Yuan JXJ. <em>Ganong's Review of Medical Physiology</em>. 26th ed. New York: McGraw-Hill; 2019.<br />
+3. Koeppen BM, Stanton BA. <em>Berne & Levy Physiology</em>. 7th ed. Philadelphia, PA: Elsevier; 2018.
+</div>
+
+<!-- HÀNG NÚT ĐIỀU HƯỚNG SPA -->
+<div class="btn-row">
+  <a href="#/basic-medical/giai-phau-sinh-ly" class="btn btn-primary">
+    <i class="fa-solid fa-arrow-left"></i> Quay lại Mục Lục Giải Phẫu & Sinh Lý
+  </a>
+  <a href="#sec-1" class="btn">
+    <i class="fa-solid fa-arrow-up"></i> Lên đầu trang
+  </a>
+</div>
+

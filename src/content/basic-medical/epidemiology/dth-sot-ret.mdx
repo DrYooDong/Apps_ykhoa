@@ -7,7 +7,7 @@ specialtyId: "epi-truyen-nhiem"
 category: "epidemiology"
 status: "published"
 version: "2.0.0"
-updatedAt: "2026-08-26"
+updatedAt: "2026-08-28"
 description: "Dịch tễ học Sốt rét (Malaria): Phân tích toàn diện tam giác dịch tễ học, 5 loài ký sinh trùng Plasmodium, véc-tơ muỗi Anopheles (An. dirus, An. minimus), động học thể ngủ gan (Hypnozoite), 4 mối đe dọa sinh học toàn cầu và chiến lược loại trừ sốt rét tại Việt Nam theo Quyết định 4922/QĐ-BYT."
 tags:
   - "malaria"
@@ -64,14 +64,35 @@ pillars:
     icon: "fa-book-medical"
 ---
 
-import { EpiTriangle, EpiAlert, EpiPillarsNav, EpiVectorTable } from './components'
-
 # 🔬 DỊCH TỄ HỌC SỐT RÉT (MALARIA / PLASMODIUM)
 
 <EpiPillarsNav />
 
+<!-- DẢI CHỈ SỐ NHANH (QUICK STATS STRIP) -->
+<section class="stats-strip">
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-val blue">1.0 – 100+ (vùng lưu hành sốt rét cao châu Phi Sub-Saharan)</div>
+      <div class="stat-lbl">Hệ số lây truyền cơ bản ($R_0$)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val green">9 – 40 ngày (tùy loài: P. falciparum 9-14 ngày, P. vivax 12-18 ngày, P. malariae 18-40 ngày)</div>
+      <div class="stat-lbl">Thời gian ủ bệnh trung bình</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val amber">Muỗi cái Anopheles</div>
+      <div class="stat-lbl">Véc-tơ / Phương thức lây truyền chính</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val red">Sốt rét ác tính P. falciparum không điều trị: >20%; được điều trị kịp thời: 1 – 3%</div>
+      <div class="stat-lbl">Tỷ lệ tử vong ca bệnh (CFR)</div>
+    </div>
+  </div>
+</section>
+
 ---
 
+## 1. Tam Giác Dịch Tễ {#sec-1}
 
 Dịch tễ học sốt rét là sự tương tác phức hợp giữa **Tác nhân (5 loài đơn bào ký sinh *Plasmodium*)**, **Vật chủ (Người & yếu tố bảo vệ di truyền như Thalassemia, HbS, thiếu hụt G6PD)** và **Môi trường sinh cảnh (Rừng núi nhiệt đới, vũng nước trong)** thông qua véc-tơ **Muỗi cái *Anopheles**.
 
@@ -114,8 +135,10 @@ Dịch tễ học sốt rét là sự tương tác phức hợp giữa **Tác nh
   *Plasmodium falciparum* biểu hiện kháng nguyên bề mặt màng hồng cầu **PfEMP1** (Plasmodium falciparum erythrocyte membrane protein 1), liên kết chặt chẽ với các thụ thể nội mô mạch máu như **CD36, ICAM-1, EPCR**. Hiện tượng này gây ra tình trạng kết tụ hồng cầu (cytoadherence, rosetting), làm tắc nghẽn vi tuần hoàn tại não, phổi, thận dẫn đến **Sốt rét thể não (Cerebral Malaria)**, toan chuyển hóa lactic máu và suy đa tạng đe dọa tính mạng trong vòng 24 giờ.
 </EpiAlert>
 
+
 ---
 
+## 2. 5 Loài Plasmodium & Thể Ngủ {#sec-2}
 
 | Loài ký sinh trùng | Chu kỳ hồng cầu | Vùng phân bố chính | Đặc điểm bệnh học then chốt |
 |---|---|---|---|
@@ -129,8 +152,10 @@ Dịch tễ học sốt rét là sự tương tác phức hợp giữa **Tác nh
   Đối với *P. vivax* và *P. ovale*, thoa trùng (sporozoite) sau khi vào tế bào gan có thể biệt hóa thành hai dạng: **Dạng hoạt động (Schizont)** tiếp tục vỡ vào máu gây cơn sốt đầu tiên, và **Dạng ngủ (Hypnozoite)** duy trì trạng thái tiềm sinh trong nhu mô gan từ vài tuần đến nhiều năm. Khi sức đề kháng giảm, Hypnozoite tái hoạt động gây tái phát xa (relapse). Phác đồ điều trị **bắt buộc phải kết hợp Primaquine hoặc Tafenoquine** để diệt sạch thể ngủ gan sau khi đã sàng lọc tình trạng thiếu hụt men G6PD.
 </EpiAlert>
 
+
 ---
 
+## 3. Véc-tơ Muỗi Anopheles {#sec-3}
 
 <EpiVectorTable 
   title="Véc-tơ Sốt Rét Chính Tại VN"
@@ -158,8 +183,10 @@ Dịch tễ học sốt rét là sự tương tác phức hợp giữa **Tác nh
   ]}
 />
 
+
 ---
 
+## 4. Chu Kỳ Lây Truyền & Động Học {#sec-4}
 
 <EpiTransmissionCycle
   title="Chu Kỳ Lây Truyền & Sinh Sản Ký Sinh Trùng Sốt Rét"
@@ -169,16 +196,20 @@ Dịch tễ học sốt rét là sự tương tác phức hợp giữa **Tác nh
   iipDuration="6 – 16 ngày (ở gan) + 24–72 giờ (chu kỳ hồng cầu gây cơn sốt)"
 />
 
+
 ---
 
+## 5. Vật Chủ & Đột Biến HbS/G6PD {#sec-5}
 
 - **Chọn lọc tự nhiên của Sốt rét**: Sốt rét là áp lực chọn lọc tiến hóa mạnh nhất trên bộ gen người trong 10.000 năm qua:
   - **HbS (Hồng cầu hình liềm dị hợp tử)**: Giảm 90% nguy cơ sốt rét ác tính do *P. falciparum* kém nhân lên trong hồng cầu biến dạng.
   - **Thiếu hụt Kháng nguyên Duffy (Fy(a-b-))**: Gần 100% người gốc Tây Phi kháng hoàn toàn với *P. vivax* vì thụ thể Duffy là cổng duy nhất để *P. vivax* bám vào màng hồng cầu.
   - **Thiếu hụt G6PD**: Làm giảm mức độ ký sinh trùng huyết nhưng làm tăng nguy cơ tán huyết cấp khi dùng thuốc diệt thể ngủ nhóm 8-aminoquinoline (Primaquine).
 
+
 ---
 
+## 6. 4 Mối Đe Dọa Sinh Học {#sec-6}
 
 <EpiAlert type="danger" title="4 Thách Thức Sinh Học Đe Dọa Chương Trình Loại Trừ Sốt Rét">
   1. **Kháng Artemisinin & Thuốc phối hợp (ACTs)**: Đột biến gen *kelch13* (K13) tại Tiểu vùng sông Mê Kông và Đông Phi làm kéo dài thời gian sạch ký sinh trùng.
@@ -187,8 +218,10 @@ Dịch tễ học sốt rét là sự tương tác phức hợp giữa **Tác nh
   4. **Sự xâm lấn của *Anopheles stephensi**: Véc-tơ sốt rét đô thị thích nghi với cống rãnh nhân tạo, đang lan tràn từ Nam Á sang các đô thị Châu Phi.
 </EpiAlert>
 
+
 ---
 
+## 7. Loại Trừ Sốt Rét Toàn Cầu & VN {#sec-7}
 
 <EpiAlert type="surveillance" title="Mục Tiêu Loại Trừ Sốt Rét Việt Nam Đến Năm 2030 (QĐ 4922/QĐ-BYT)">
   - **Tiêu chuẩn công nhận Loại trừ sốt rét (WHO)**: Đạt **0 ca sốt rét nội địa (indigenous cases)** liên tục trong ít nhất 3 năm liên tiếp và có hệ thống giám sát cảnh báo dịch bền vững.
@@ -198,10 +231,31 @@ Dịch tễ học sốt rét là sự tương tác phức hợp giữa **Tác nh
     - **Ngày 7**: Triển khai các biện pháp can thiệp dập ổ dịch điểm (phun hóa chất, cấp màn tẩm thuốc, xét nghiệm mở rộng cộng đồng) trong vòng 7 ngày.
 </EpiAlert>
 
+
 ---
 
+## 8. Tài Liệu Tham Khảo EBM {#sec-8}
 
 1. **Bộ Y Tế Việt Nam (2020)**. *Hướng dẫn chẩn đoán và điều trị bệnh Sốt rét* (Ban hành kèm theo Quyết định số 4922/QĐ-BYT).
 2. **World Health Organization (2024)**. *World Malaria Report 2024*. Geneva: WHO.
 3. **White, N. J. et al. (2014)**. *Malaria*. The Lancet, 383(9918), 723-735.
 4. **Ashley, E. A. et al. (2014)**. *Spread of artemisinin resistance in Plasmodium falciparum malaria*. New England Journal of Medicine, 371(5), 411-423.
+
+<!-- KHUNG TRÍCH DẪN Y VĂN CHUẨN AMA (CITATION BOX) -->
+<div class="citation-box">
+  <strong>Trích dẫn tài liệu tham khảo chuẩn (AMA Format):</strong><br />
+  1. Celentano DD, Szklo M. <em>Gordis Epidemiology</em>. 6th ed. Philadelphia, PA: Elsevier; 2019.<br />
+2. World Health Organization (WHO). <em>Global Surveillance and Vector Control Guidelines</em>. Geneva: WHO Press; 2024.<br />
+3. Centers for Disease Control and Prevention (CDC). <em>Epidemiology and Prevention of Vaccine-Preventable Diseases</em>. 14th ed. Washington, DC; 2024.
+</div>
+
+<!-- HÀNG NÚT ĐIỀU HƯỚNG SPA -->
+<div class="btn-row">
+  <a href="#/basic-medical/dich-te-hoc" class="btn btn-primary">
+    <i class="fa-solid fa-arrow-left"></i> Quay lại Mục Lục Dịch Tễ Học
+  </a>
+  <a href="#sec-1" class="btn">
+    <i class="fa-solid fa-arrow-up"></i> Lên đầu trang
+  </a>
+</div>
+

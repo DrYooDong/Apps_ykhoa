@@ -10,7 +10,7 @@ ganongChapter: "Ganong 26th - Chapter 4: Excitable Tissue: Nerve"
 category: "physiology"
 status: "published"
 version: "2.0.0"
-updatedAt: "2026-08-26"
+updatedAt: "2026-08-28"
 description: "Điện sinh lý học tế bào: Cơ chế hình thành điện thế màng lúc nghỉ (Phương trình Nernst & Goldman-Hodgkin-Katz), các pha của điện thế hoạt động (Khử cực, Tái cực, Ưu phân cực), thời kỳ trơ tuyệt đối/tương đối, dẫn truyền nhảy cóc qua eo Ranvier, điện sinh lý cơ tim (đáp ứng nhanh & nút xoang) và ứng dụng lâm sàng trong gây tê (Lidocaine), ngộ độc TTX và rối loạn Kali máu."
 tags:
   - "dien-sinh-ly"
@@ -54,14 +54,35 @@ sections:
     icon: "fa-book-medical"
 ---
 
-import { PhysioAlert, PhysioQuickNav, PhysioFeedbackLoop } from '../components'
+# 🧬 ĐIỆN SINH LÝ HỌC TẾ BÀO & ĐIỆN THẾ HOẠT ĐỘNG
 
-# ⚡ ĐIỆN SINH LÝ HỌC TẾ BÀO & ĐIỆN THẾ HOẠT ĐỘNG
+<PhysioQuickNav />
 
-
+<!-- DẢI CHỈ SỐ NHANH (QUICK STATS STRIP) -->
+<section class="stats-strip">
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-val blue">PHYS-CELL-03</div>
+      <div class="stat-lbl">Mã chuyên đề • Sinh Lý Tế Bào & Nội Môi</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val green">Nội Môi Ổn Định</div>
+      <div class="stat-lbl">Cân bằng gradient điện hóa & Áp suất thẩm thấu</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val amber">Feedback Loop</div>
+      <div class="stat-lbl">Vòng điều hòa phản hồi thần kinh - thể dịch</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val purple">Dược Lý EBM</div>
+      <div class="stat-lbl">Ứng dụng lâm sàng chuẩn Guyton 14th & Ganong 26th</div>
+    </div>
+  </div>
+</section>
 
 ---
 
+## 1. Điện Thế Màng Lúc Nghỉ (RMP) {#sec-1}
 
 Ở trạng thái nghỉ không bị kích thích, tất cả các tế bào sống trong cơ thể đều duy trì một hiệu điện thế qua màng, trong đó **mặt trong màng tế bào tích điện âm hơn so với mặt ngoài màng**.
 
@@ -83,6 +104,7 @@ Bào Tương Nội Bào [ICF]:   [-] [-] [-] [-] [-] (Điện thế nghỉ Vm = 
 
 ---
 
+## 2. Phương Trình Nernst & GHK {#sec-2}
 
 ### A. Phương Trình Nernst (Điện Thế Cân Bằng Của Từng Ion)
 
@@ -105,8 +127,10 @@ $$V_m = 61.5 \log_{10} \left( \frac{P_{K}[K^+]_{out} + P_{Na}[Na^+]_{out} + P_{C
 
 Vì ở trạng thái nghỉ $P_K \gg P_{Na}$, điện thế màng thực tế ($V_m \approx -90\text{ mV}$) nằm rất sát với $E_K$ ($-94\text{ mV}$).
 
+
 ---
 
+## 3. Các Pha Điện Thế Hoạt Động {#sec-3}
 
 Khi kích thích đạt ngưỡng (*Threshold Potential $\approx -55\text{ mV}$*), tế bào thần kinh và cơ sẽ phát sinh một biến đổi điện thế bùng phát cực nhanh tuân theo **Quy luật Tất cả hoặc Không (All-or-None Law)**:
 
@@ -133,8 +157,10 @@ Khi kích thích đạt ngưỡng (*Threshold Potential $\approx -55\text{ mV}$*
 3. **Giai đoạn Ưu Phân Cực (Hyperpolarization / Undershoot)**:
    - Kênh $K^+$ đóng chậm làm một lượng $K^+$ tiếp tục thoát thêm ra ngoài, kéo $V_m$ âm hơn mức nghỉ (tiến sát $-94\text{ mV}$). Bơm $Na^+/K^+$ và kênh rò rỉ nhanh chóng lập lại trạng thái nghỉ $-90\text{ mV}$.
 
+
 ---
 
+## 4. Thời Kỳ Trơ & Dẫn Truyền Nhảy Cóc {#sec-4}
 
 ### A. Thời Kỳ Trơ (Refractory Period)
 
@@ -149,11 +175,12 @@ Khi kích thích đạt ngưỡng (*Threshold Potential $\approx -55\text{ mV}$*
   1. **Tăng tốc độ dẫn truyền lên gấp 50 – 100 lần** (từ 0.5 m/s ở sợi C không myelin lên tới **120 m/s ở sợi $A\alpha$ có myelin**).
   2. **Tiết kiệm năng lượng ATP tối đa** cho bơm $Na^+/K^+$ vì chỉ cần tái lập nồng độ ion tại các nút eo Ranvier nhỏ bé.
 
+
 ---
 
+## 5. Điện Sinh Lý Tim Mạch Đặc Thù {#sec-5}
 
-
-  1. **Điện thế hoạt động đáp ứng nhanh (Cơ tâm thất, tâm nhĩ, Mạng Purkinje)**:
+1. **Điện thế hoạt động đáp ứng nhanh (Cơ tâm thất, tâm nhĩ, Mạng Purkinje)**:
      - *Pha 0*: Khử cực nhanh do dòng $Na^+$ ồ ạt qua kênh $Na_V1.5$.
      - *Pha 1*: Tái cực sớm ngắn do dòng $K^+$ thoát ra qua kênh $I_{to}$.
      - *Pha 2 (Cao nguyên Plateau)*: Kéo dài 200–300 ms do **dòng $Ca^{2+}$ đi vào qua kênh $Ca_V1.2$ (L-type)** cân bằng với dòng $K^+$ đi ra. Đây là pha giúp cơ tim có thời gian co bóp tống máu và ngăn ngừa hiện tượng co cứng uốn ván (Tetany).
@@ -166,9 +193,9 @@ Khi kích thích đạt ngưỡng (*Threshold Potential $\approx -55\text{ mV}$*
 
 ---
 
+## 6. Ứng Dụng Dược Lý & Cấp Cứu EBM {#sec-6}
 
-
-  - **Tăng Kali máu ($K^+ > 5.5\text{ mmol/L}$)**: Làm giảm gradient nồng độ $K^+$ qua màng ──► Theo phương trình Nernst, điện thế nghỉ $V_m$ bị bớt âm hóa (kéo từ $-90\text{ mV}$ lên $-70\text{ mV}$). Tình trạng khử cực mạn tính này làm **bất hoạt liên tục cổng h của kênh $Na^+$**, khiến cơ tim trơ hoàn toàn, xuất hiện sóng T cao nhọn đối xứng, giãn rộng phức bộ QRS và dẫn đến **Rung thất / Vô tâm thu ngừng tim**.
+- **Tăng Kali máu ($K^+ > 5.5\text{ mmol/L}$)**: Làm giảm gradient nồng độ $K^+$ qua màng ──► Theo phương trình Nernst, điện thế nghỉ $V_m$ bị bớt âm hóa (kéo từ $-90\text{ mV}$ lên $-70\text{ mV}$). Tình trạng khử cực mạn tính này làm **bất hoạt liên tục cổng h của kênh $Na^+$**, khiến cơ tim trơ hoàn toàn, xuất hiện sóng T cao nhọn đối xứng, giãn rộng phức bộ QRS và dẫn đến **Rung thất / Vô tâm thu ngừng tim**.
   - **Chỉ định cấp cứu khẩn cấp**: Tiêm ngay **Calcium Gluconate hoặc Calcium Chloride tĩnh mạch** để ổn định màng tế bào cơ tim (kéo ngưỡng kích thích Threshold lên cao tương ứng để ngăn loạn nhịp).
 
 
@@ -179,8 +206,28 @@ Khi kích thích đạt ngưỡng (*Threshold Potential $\approx -55\text{ mV}$*
 
 ---
 
+## 7. Tài Liệu Tham Khảo EBM {#sec-7}
 
 1. **Hall, J. E., & Hall, M. E. (2021)**. *Guyton and Hall Textbook of Medical Physiology* (14th ed.). Philadelphia: Elsevier. Chapter 5: Membrane Potentials and Action Potentials.
 2. **Barrett, K. E. et al. (2019)**. *Ganong's Review of Medical Physiology* (26th ed.). New York: McGraw-Hill. Chapter 4: Excitable Tissue: Nerve.
 3. **Hodgkin, A. L., & Huxley, A. F. (1952)**. *A quantitative description of membrane current and its application to conduction and excitation in nerve*. The Journal of Physiology, 117(4), 500-544.
 4. **Katz, A. M. (2010)**. *Physiology of the Heart* (5th ed.). Philadelphia: Lippincott Williams & Wilkins.
+
+<!-- KHUNG TRÍCH DẪN Y VĂN CHUẨN AMA (CITATION BOX) -->
+<div class="citation-box">
+  <strong>Trích dẫn tài liệu tham khảo chuẩn (AMA Format):</strong><br />
+  1. Hall JE, Hall ME. <em>Guyton and Hall Textbook of Medical Physiology</em>. 14th ed. Philadelphia, PA: Elsevier; 2021.<br />
+2. Barrett KE, Barman SM, Brooks HL, Yuan JXJ. <em>Ganong's Review of Medical Physiology</em>. 26th ed. New York: McGraw-Hill; 2019.<br />
+3. Koeppen BM, Stanton BA. <em>Berne & Levy Physiology</em>. 7th ed. Philadelphia, PA: Elsevier; 2018.
+</div>
+
+<!-- HÀNG NÚT ĐIỀU HƯỚNG SPA -->
+<div class="btn-row">
+  <a href="#/basic-medical/giai-phau-sinh-ly" class="btn btn-primary">
+    <i class="fa-solid fa-arrow-left"></i> Quay lại Mục Lục Giải Phẫu & Sinh Lý
+  </a>
+  <a href="#sec-1" class="btn">
+    <i class="fa-solid fa-arrow-up"></i> Lên đầu trang
+  </a>
+</div>
+

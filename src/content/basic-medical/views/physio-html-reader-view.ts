@@ -8,6 +8,8 @@
 
 import { CliniPortalThemeManager } from '../../../main';
 import { cliniMdxEngine } from '../../../core/mdx-engine';
+import { getGuidelinesForPathoTopic, renderPathoGuidelineWidgetHtml } from '../data/patho-guideline-matrix';
+import { getCrossDisciplinaryLinksForTopic, renderCrossDisciplinaryWidgetHtml } from '../data/biomedical-cross-matrix';
 
 export function renderPhysioHtmlReader(part: string, slug: string): string {
   // Normalize slug & part
@@ -424,6 +426,32 @@ async function fetchAndHydratePhysioArticle(
         <div class="mdx-rendered-article">
           ${parsed.html}
         </div>
+
+        <!-- 🌐 Multi-Disciplinary Knowledge Mesh Widget -->
+        ${(() => {
+          const crossLinks = getCrossDisciplinaryLinksForTopic(baseSlugName + ' ' + cleanTitle);
+          if (crossLinks.length > 0) {
+            return `
+              <div style="margin-top: 2rem; padding-top: 1rem;">
+                ${crossLinks.map(l => renderCrossDisciplinaryWidgetHtml(l)).join('')}
+              </div>
+            `;
+          }
+          return '';
+        })()}
+
+        <!-- 🎯 EBM Guidelines & Landmark Trials Bridge Widget -->
+        ${(() => {
+          const links = getGuidelinesForPathoTopic(baseSlugName + ' ' + cleanTitle);
+          if (links.length > 0) {
+            return `
+              <div style="margin-top: 1rem; padding-top: 1rem; border-top: 2px dashed var(--color-border, #e2e8f0);">
+                ${links.map(l => renderPathoGuidelineWidgetHtml(l)).join('')}
+              </div>
+            `;
+          }
+          return '';
+        })()}
       </div>
     `;
 
@@ -1181,6 +1209,32 @@ async function fetchAndHydratePhysioArticle(
     </style>
     <div class="physio-injected-content">
       ${articleHtml}
+
+      <!-- 🌐 Multi-Disciplinary Knowledge Mesh Widget -->
+      ${(() => {
+        const crossLinks = getCrossDisciplinaryLinksForTopic(baseSlugName + ' ' + cleanTitle);
+        if (crossLinks.length > 0) {
+          return `
+            <div style="margin-top: 2rem; padding-top: 1rem;">
+              ${crossLinks.map(l => renderCrossDisciplinaryWidgetHtml(l)).join('')}
+            </div>
+          `;
+        }
+        return '';
+      })()}
+
+      <!-- 🎯 EBM Guidelines & Landmark Trials Bridge Widget -->
+      ${(() => {
+        const links = getGuidelinesForPathoTopic(baseSlugName + ' ' + cleanTitle);
+        if (links.length > 0) {
+          return `
+            <div style="margin-top: 1rem; padding-top: 1rem; border-top: 2px dashed var(--color-border, #e2e8f0);">
+              ${links.map(l => renderPathoGuidelineWidgetHtml(l)).join('')}
+            </div>
+          `;
+        }
+        return '';
+      })()}
     </div>
   `;
 

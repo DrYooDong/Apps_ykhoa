@@ -24,6 +24,10 @@ export * from './views/physio-html-reader-view';
 export * from './views/patho-hub';
 
 // Dynamic Interactive Modules
+export * from './views/basic-medical-nav';
+export * from './data/biomedical-cross-matrix';
+export * from './data/patho-guideline-matrix';
+export * from './diagrams/moa-visualizer';
 export * from './simulators/physiology-simulators-view';
 export * from './simulators/physiology-simulators-engine';
 export * from './biochemistry/metabolic-navigator-view';

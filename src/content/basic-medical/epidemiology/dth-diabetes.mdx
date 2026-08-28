@@ -7,7 +7,7 @@ specialtyId: "epi-noi-tiet"
 category: "epidemiology"
 status: "published"
 version: "2.0.0"
-updatedAt: "2026-08-26"
+updatedAt: "2026-08-28"
 description: "Dịch tễ học Đái tháo đường Type 2 (T2DM): Phân tích đại dịch toàn cầu với 537 triệu người mắc (dự báo 783 triệu vào 2045 theo IDF Atlas 10th), gánh nặng tiền đái tháo đường, dịch tễ bùng nổ tại Việt Nam (7.3% dân số mắc bệnh, >50% chưa được chẩn đoán theo Bộ Y Tế), các biến chứng mạch máu lớn/mạch máu nhỏ và chiến lược quản lý đa yếu tố theo ADA 2024."
 tags:
   - "diabetes"
@@ -56,14 +56,35 @@ pillars:
     icon: "fa-book-medical"
 ---
 
-import { EpiTriangle, EpiAlert, EpiPillarsNav } from './components'
-
 # 🔬 DỊCH TỄ HỌC ĐÁI THÁO ĐƯỜNG TYPE 2 (T2DM)
 
 <EpiPillarsNav />
 
+<!-- DẢI CHỈ SỐ NHANH (QUICK STATS STRIP) -->
+<section class="stats-strip">
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-val blue">1.5 – 3.0</div>
+      <div class="stat-lbl">Hệ số lây truyền cơ bản ($R_0$)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val green">3 – 7 ngày</div>
+      <div class="stat-lbl">Thời gian ủ bệnh trung bình</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val amber">Người & Véc-tơ</div>
+      <div class="stat-lbl">Véc-tơ / Phương thức lây truyền chính</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val red">Đái tháo đường làm tăng gấp 2 – 4 lần nguy cơ đột quỵ não và nhồi máu cơ tim, là nguyên nhân hàng đầu gây mù lòa, suy thận lọc máu và đoạn chi không do chấn thương</div>
+      <div class="stat-lbl">Tỷ lệ tử vong ca bệnh (CFR)</div>
+    </div>
+  </div>
+</section>
+
 ---
 
+## 1. Tam Giác Dịch Tễ Đái Tháo Đường {#sec-1}
 
 Dịch tễ học đái tháo đường type 2 là hệ quả của sự tương tác giữa **Tác nhân chuyển hóa (Đề kháng Insulin & suy giảm chức năng tế bào beta tụy)**, **Vật chủ (Khuynh hướng di truyền đa gen, béo bụng/mỡ nội tạng, tuổi tác, chủng tộc châu Á)** và **Môi trường sinh hoạt (Chế độ ăn giàu carbohydrate tinh chế/đồ uống có đường, lối sống tĩnh tại, đô thị hóa nhanh)**.
 
@@ -106,8 +127,10 @@ Dịch tễ học đái tháo đường type 2 là hệ quả của sự tương
   Người dân khu vực Châu Á (bao gồm Việt Nam) có đặc điểm chuyển hóa nhân trắc học đặc thù: Với cùng một chỉ số khối cơ thể (BMI), người Châu Á có **tỷ lệ phần trăm mỡ cơ thể và lượng mỡ nội tạng cao hơn đáng kể**, trong khi khối lượng cơ vân ít hơn so với người da trắng phương Tây. Do đó, **ngưỡng phân loại thừa cân/béo phì và sàng lọc đái tháo đường của người Châu Á được hạ thấp (Thừa cân khi BMI ≥ 23 kg/m², Béo phì khi BMI ≥ 25 kg/m²)**.
 </EpiAlert>
 
+
 ---
 
+## 2. Tiêu Chuẩn Chẩn Đoán & Tiền ĐTĐ {#sec-2}
 
 | Phân loại | Đường huyết đói (FPG) | Nghiệm pháp dung nạp (2h-OGTT) | HbA1c (Chuẩn hóa NGSP) |
 |---|---|---|---|
@@ -117,8 +140,10 @@ Dịch tễ học đái tháo đường type 2 là hệ quả của sự tương
 
 *Lưu ý: Nếu không có triệu chứng kinh điển của tăng đường huyết cấp (uống nhiều, tiểu nhiều, ăn nhiều, sụt cân), xét nghiệm chẩn đoán cần được lặp lại lần 2 vào một ngày khác để xác nhận.*
 
+
 ---
 
+## 3. Cơ Chế Kháng Insulin & Suy Tế Bào Beta {#sec-3}
 
 - **Toàn cầu (IDF Diabetes Atlas 10th Edition)**:
   - **537 triệu người** (10.5% dân số 20–79 tuổi) mắc bệnh vào năm 2021; dự báo tăng lên **643 triệu vào năm 2030** và **783 triệu vào năm 2045** (tăng 46%).
@@ -130,8 +155,10 @@ Dịch tễ học đái tháo đường type 2 là hệ quả của sự tương
   - Tỷ lệ **tiền đái tháo đường lên tới 17.8%** (gần 12 triệu người có nguy cơ cao chuyển thành ĐTĐ thực sự).
   - **Khoảng 55% người mắc đái tháo đường trong cộng đồng chưa được phát hiện**.
 
+
 ---
 
+## 4. Gánh Nặng Dịch Tễ IDF & Việt Nam {#sec-4}
 
 ```
 [Tăng Đường Huyết Mạn Tính + Đề Kháng Insulin]
@@ -147,8 +174,10 @@ Dịch tễ học đái tháo đường type 2 là hệ quả của sự tương
                 └── Bệnh động mạch ngoại biên (PAD) + Loét bàn chân ──► Đoạn chi dưới (Amputation)
 ```
 
+
 ---
 
+## 5. Biến Chứng Vi Mạch & Đại Mạch {#sec-5}
 
 <EpiAlert type="pearl" title="Chuyển Dịch Mô Hình Điều Trị: Từ 'Hạ Đường Huyết Đơn Thuần' Sang 'Bảo Vệ Tim - Thận'">
   Hướng dẫn hiện đại của Hiệp hội Đái tháo đường Hoa Kỳ (ADA 2024) và Bộ Y Tế nhấn mạnh:
@@ -156,8 +185,10 @@ Dịch tễ học đái tháo đường type 2 là hệ quả của sự tương
   - Kiểm soát đồng thời bộ tứ: **Đường huyết (HbA1c < 7.0%) + Huyết áp (< 130/80 mmHg) + Lipid máu (LDL-C < 70 hoặc < 55 mg/dL với Statin liều cao) + Cân nặng**.
 </EpiAlert>
 
+
 ---
 
+## 6. Chiến Lược Quản Lý Theo ADA 2024 {#sec-6}
 
 <EpiAlert type="surveillance" title="Thử Nghiệm DPP (Diabetes Prevention Program): Lối Sống Giúp Giảm 58% Nguy Cơ Mắc Bệnh">
   - **Chỉ định sàng lọc**: Tất cả người lớn ≥ 35 tuổi không triệu chứng, hoặc người ở bất kỳ độ tuổi nào có BMI ≥ 23 kg/m² kèm theo ít nhất 1 yếu tố nguy cơ (tăng huyết áp, rối loạn lipid máu, tiền sử đái tháo đường thai kỳ, ít vận động).
@@ -167,10 +198,31 @@ Dịch tễ học đái tháo đường type 2 là hệ quả của sự tương
     3. Cân nhắc dùng **Metformin** cho người tiền đái tháo đường có BMI ≥ 25 kg/m², tuổi < 60 hoặc phụ nữ có tiền sử đái tháo đường thai kỳ.
 </EpiAlert>
 
+
 ---
 
+## 7. Sàng Lọc Sớm & Thay Đổi Lối Sống {#sec-7}
 
 1. **American Diabetes Association (ADA 2024)**. *Standards of Care in Diabetes—2024*. Diabetes Care, 47(Suppl. 1), S1-S343.
 2. **International Diabetes Federation (2021)**. *IDF Diabetes Atlas, 10th edition*. Brussels, Belgium: IDF.
 3. **Bộ Y Tế Việt Nam (2020)**. *Hướng dẫn chẩn đoán và điều trị Đái tháo đường týp 2* (Ban hành kèm theo Quyết định số 5481/QĐ-BYT).
 4. **Knowler, W. C. et al. (2002)**. *Reduction in the incidence of type 2 diabetes with lifestyle intervention or metformin (DPP)*. New England Journal of Medicine, 346(6), 393-403.
+
+<!-- KHUNG TRÍCH DẪN Y VĂN CHUẨN AMA (CITATION BOX) -->
+<div class="citation-box">
+  <strong>Trích dẫn tài liệu tham khảo chuẩn (AMA Format):</strong><br />
+  1. Celentano DD, Szklo M. <em>Gordis Epidemiology</em>. 6th ed. Philadelphia, PA: Elsevier; 2019.<br />
+2. World Health Organization (WHO). <em>Global Surveillance and Vector Control Guidelines</em>. Geneva: WHO Press; 2024.<br />
+3. Centers for Disease Control and Prevention (CDC). <em>Epidemiology and Prevention of Vaccine-Preventable Diseases</em>. 14th ed. Washington, DC; 2024.
+</div>
+
+<!-- HÀNG NÚT ĐIỀU HƯỚNG SPA -->
+<div class="btn-row">
+  <a href="#/basic-medical/dich-te-hoc" class="btn btn-primary">
+    <i class="fa-solid fa-arrow-left"></i> Quay lại Mục Lục Dịch Tễ Học
+  </a>
+  <a href="#sec-1" class="btn">
+    <i class="fa-solid fa-arrow-up"></i> Lên đầu trang
+  </a>
+</div>
+

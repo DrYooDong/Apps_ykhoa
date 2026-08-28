@@ -7,7 +7,7 @@ specialtyId: "epi-tieu-hoa"
 category: "epidemiology"
 status: "published"
 version: "2.0.0"
-updatedAt: "2026-08-26"
+updatedAt: "2026-08-28"
 description: "Dịch tễ học Xuất huyết tiêu hóa trên (Upper Gastrointestinal Bleeding - UGIB): Phân tích gánh nặng cấp cứu tiêu hóa hàng đầu với tỷ lệ mắc 50-150 ca/100.000 dân/năm, sự phân định 2 nhóm nguyên nhân cốt lõi (Do vỡ giãn tĩnh mạch TMTQ vs Không do vỡ giãn), vai trò dịch tễ của Helicobacter pylori, thuốc chống huyết khối (Kháng đông, Kháng kết tập tiểu cầu) và thuốc giảm đau NSAIDs ở người cao tuổi, các thang điểm phân tầng nguy cơ Glasgow-Blatchford & Rockall."
 tags:
   - "ugib"
@@ -56,14 +56,35 @@ pillars:
     icon: "fa-book-medical"
 ---
 
-import { EpiTriangle, EpiAlert, EpiPillarsNav } from './components'
-
 # 🔬 DỊCH TỄ HỌC XUẤT HUYẾT TIÊU HÓA TRÊN (UGIB)
 
 <EpiPillarsNav />
 
+<!-- DẢI CHỈ SỐ NHANH (QUICK STATS STRIP) -->
+<section class="stats-strip">
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-val blue">1.5 – 3.0</div>
+      <div class="stat-lbl">Hệ số lây truyền cơ bản ($R_0$)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val green">3 – 7 ngày</div>
+      <div class="stat-lbl">Thời gian ủ bệnh trung bình</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val amber">Người & Véc-tơ</div>
+      <div class="stat-lbl">Véc-tơ / Phương thức lây truyền chính</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val red">Xuất huyết do loét dạ dày tá tràng: 2% – 5%; Xuất huyết do vỡ giãn tĩnh mạch thực quản ở bệnh nhân xơ gan: 15% – 20% trong vòng 6 tuần</div>
+      <div class="stat-lbl">Tỷ lệ tử vong ca bệnh (CFR)</div>
+    </div>
+  </div>
+</section>
+
 ---
 
+## 1. Tam Giác Dịch Tễ XHTH Trên {#sec-1}
 
 Xuất huyết tiêu hóa trên (chảy máu từ thực quản đến góc Treitz của tá tràng) là một hội chứng cấp cứu nội - ngoại khoa phổ biến, được thúc đẩy bởi **Tác nhân hủy hoại hàng rào niêm mạc & tăng áp lực mạch máu (Axit dạ dày, Pepsin, nhiễm khuẩn *H. pylori*, thuốc NSAIDs/Aspirin, tăng áp lực tĩnh mạch cửa)**, **Vật chủ (Người cao tuổi, bệnh nền xơ gan, bệnh tim mạch xơ vữa đang dùng thuốc chống huyết khối)** và **Môi trường (Sử dụng thuốc bừa bãi, stress thể chất nặng trong ICU, lạm dụng rượu)**.
 
@@ -108,8 +129,10 @@ Xuất huyết tiêu hóa trên (chảy máu từ thực quản đến góc Trei
   - **Xuất huyết không do vỡ giãn (Non-variceal / Peptic Ulcer)**: Chủ yếu do loét dạ dày tá tràng, đáp ứng tốt với ức chế tiết axit liều cao (*PPI tiêm tĩnh mạch*) và can thiệp cầm máu qua nội soi (kẹp clip, đốt điện, tiêm xơ), tỷ lệ tử vong thấp hơn (2% – 5%).
 </EpiAlert>
 
+
 ---
 
+## 2. Phổ Căn Nguyên: Do Giãn vs Không Do Giãn {#sec-2}
 
 | Căn nguyên | Tỷ lệ mắc (%) | Đặc điểm dịch tễ & lâm sàng |
 |---|---|---|
@@ -120,8 +143,10 @@ Xuất huyết tiêu hóa trên (chảy máu từ thực quản đến góc Trei
 | **Dị Dạng Mạch Máu (Dieulafoy, GAVE)** | 2% – 5% | Chảy máu từ động mạch dưới niêm mạc phì đại dị dạng, chảy máu tái phát từng đợt khó chẩn đoán. |
 | **Khối u Ung Thư Dạ Dày (Gastric Cancer)** | 2% – 4% | Chảy máu rỉ rả kèm sụt cân, thiếu máu thiếu sắt ở người lớn tuổi. |
 
+
 ---
 
+## 3. Dịch Tễ H. pylori & NSAIDs / Kháng Đông {#sec-3}
 
 <EpiAlert type="pearl" title="Thang Điểm GBS (Glasgow-Blatchford Score) — Xác Định Bệnh Nhân Nguy Cơ Cực Thấp">
   Thang điểm GBS được tính toán hoàn toàn dựa trên các thông số lâm sàng và xét nghiệm ban đầu (BUN, Hemoglobin, Huyết áp tâm thu, Nhịp tim, Triệu chứng phân đen/ngất, Bệnh gan/tim mạch) mà **không cần chờ kết quả nội soi**:
@@ -129,8 +154,10 @@ Xuất huyết tiêu hóa trên (chảy máu từ thực quản đến góc Trei
   - **GBS ≥ 6 điểm (Nguy cơ cao)**: Có trên 50% khả năng cần can thiệp cầm máu hoặc truyền máu, chỉ định nội soi can thiệp khẩn cấp trong vòng 24 giờ.
 </EpiAlert>
 
+
 ---
 
+## 4. Phân Tầng Nguy Cơ GBS & Rockall {#sec-4}
 
 | Phân độ Forrest | Hình ảnh tổn thương ổ loét qua nội soi | Nguy cơ tái phát nếu không can thiệp | Chỉ định can thiệp nội soi |
 |---|---|---|---|
@@ -141,8 +168,10 @@ Xuất huyết tiêu hóa trên (chảy máu từ thực quản đến góc Trei
 | **Forrest IIc** | Đáy ổ loét có cặn đen/vết sắc tố (Flat pigmented spot) | ~7% – 10% | Không cần can thiệp nội soi, điều trị PPI uống |
 | **Forrest III** | Đáy ổ loét sạch, phủ giả mạc trắng (Clean base) | **< 3%** | **Không cần can thiệp, xuất viện điều trị ngoại trú** |
 
+
 ---
 
+## 5. Phân Loại Nội Soi Forrest & Nguy Cơ Tái Phát {#sec-5}
 
 <EpiAlert type="surveillance" title="Nguyên Tắc Truyền Máu Hạn Chế (Restrictive Transfusion) Trong XHTH Trên">
   - **Thử nghiệm lâm sàng Villanueva et al. (NEJM 2013)** chứng minh: **Chiến lược truyền máu hạn chế (Chỉ truyền hồng cầu lắng khi Hb < 70 g/L, duy trì mục tiêu Hb 70 – 90 g/L)** giúp **giảm đáng kể tỷ lệ tử vong** so với chiến lược truyền máu tự do (ngưỡng Hb < 90 g/L).
@@ -150,10 +179,31 @@ Xuất huyết tiêu hóa trên (chảy máu từ thực quản đến góc Trei
   - **Diệt trừ *Helicobacter pylori**: Sau khi cầm máu ổn định, bắt buộc xét nghiệm và điều trị triệt để *H. pylori* bằng phác đồ 4 thuốc để giảm nguy cơ tái phát loét từ 60% xuống dưới 5%.
 </EpiAlert>
 
+
 ---
 
+## 6. Hồi Sức Huyết Động & Can Thiệp Nội Soi {#sec-6}
 
 1. **Laine, L. et al. (2021)**. *ACG Clinical Guideline: Upper Gastrointestinal and Ulcer Bleeding*. American Journal of Gastroenterology, 116(5), 899-917.
 2. **Gralnek, I. M. et al. (ESGE 2021)**. *Endoscopic diagnosis and management of nonvariceal upper gastrointestinal hemorrhage*. Endoscopy, 53(3), 300-332.
 3. **Villanueva, C. et al. (2013)**. *Transfusion strategies for acute upper gastrointestinal bleeding*. New England Journal of Medicine, 368(1), 11-21.
 4. **de Franchis, R. et al. (Baveno VII 2022)**. *Baveno VII - Renewing consensus in portal hypertension*. Journal of Hepatology, 76(4), 959-974.
+
+<!-- KHUNG TRÍCH DẪN Y VĂN CHUẨN AMA (CITATION BOX) -->
+<div class="citation-box">
+  <strong>Trích dẫn tài liệu tham khảo chuẩn (AMA Format):</strong><br />
+  1. Celentano DD, Szklo M. <em>Gordis Epidemiology</em>. 6th ed. Philadelphia, PA: Elsevier; 2019.<br />
+2. World Health Organization (WHO). <em>Global Surveillance and Vector Control Guidelines</em>. Geneva: WHO Press; 2024.<br />
+3. Centers for Disease Control and Prevention (CDC). <em>Epidemiology and Prevention of Vaccine-Preventable Diseases</em>. 14th ed. Washington, DC; 2024.
+</div>
+
+<!-- HÀNG NÚT ĐIỀU HƯỚNG SPA -->
+<div class="btn-row">
+  <a href="#/basic-medical/dich-te-hoc" class="btn btn-primary">
+    <i class="fa-solid fa-arrow-left"></i> Quay lại Mục Lục Dịch Tễ Học
+  </a>
+  <a href="#sec-1" class="btn">
+    <i class="fa-solid fa-arrow-up"></i> Lên đầu trang
+  </a>
+</div>
+

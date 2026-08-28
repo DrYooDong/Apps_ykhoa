@@ -7,7 +7,7 @@ specialtyId: "epi-tieu-hoa"
 category: "epidemiology"
 status: "published"
 version: "2.0.0"
-updatedAt: "2026-08-26"
+updatedAt: "2026-08-28"
 description: "Dịch tễ học Viêm gan siêu vi B (HBV): Phân tích toàn diện gánh nặng toàn cầu 254 triệu ca mạn tính, 1.1 triệu ca tử vong hàng năm, dịch tễ Việt Nam vùng lưu hành cao (HBsAg ≥ 9.4% theo QĐ 1740/QĐ-BYT), động thái cccDNA, đồng nhiễm HDV và chiến lược tiêm chủng phòng lây truyền mẹ sang con (MTCT)."
 tags:
   - "hbv"
@@ -59,14 +59,35 @@ pillars:
     icon: "fa-book-medical"
 ---
 
-import { EpiTriangle, EpiAlert, EpiPillarsNav } from './components'
-
 # 🔬 DỊCH TỄ HỌC VIÊM GAN SIÊU VI B (HBV)
 
 <EpiPillarsNav />
 
+<!-- DẢI CHỈ SỐ NHANH (QUICK STATS STRIP) -->
+<section class="stats-strip">
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-val blue">1.5 – 3.0</div>
+      <div class="stat-lbl">Hệ số lây truyền cơ bản ($R_0$)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val green">30 – 180 ngày (trung bình 60 – 90 ngày)</div>
+      <div class="stat-lbl">Thời gian ủ bệnh trung bình</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val amber">Người & Véc-tơ</div>
+      <div class="stat-lbl">Véc-tơ / Phương thức lây truyền chính</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val red">Viêm gan B tối cấp (Fulminant): 70–90%; Viêm gan mạn diễn tiến Xơ gan/HCC: 15–25%</div>
+      <div class="stat-lbl">Tỷ lệ tử vong ca bệnh (CFR)</div>
+    </div>
+  </div>
+</section>
+
 ---
 
+## 1. Tam Giác Dịch Tễ HBV {#sec-1}
 
 Dịch tễ học HBV được quy định bởi mối tương tác giữa **Tác nhân (Hepadnavirus với kho cccDNA bền vững trong nhân tế bào gan)**, **Vật chủ (Người với hệ miễn dịch dung thứ ở trẻ sơ sinh hoặc đáp ứng viêm phá hủy tế bào gan ở người trưởng thành)** và **Môi trường lây nhiễm (Tỷ lệ bao phủ vắc-xin sơ sinh, kiểm soát an toàn truyền máu, thủ thuật tiêm chích)**.
 
@@ -109,15 +130,19 @@ Dịch tễ học HBV được quy định bởi mối tương tác giữa **Tá
   Sau khi xâm nhập tế bào gan qua thụ thể **NTCP (Sodium taurocholate cotransporting polypeptide)**, bộ gen rcDNA của HBV được vận chuyển vào nhân và chuyển đổi thành **cccDNA**. cccDNA hoạt động như một nhiễm sắc thể mini độc lập vô cùng bền vững, không bị tiêu diệt bởi các thuốc kháng virus đường uống hiện nay (NUCs như Tenofovir, Entecavir) mà chỉ bị ức chế sao chép. Đây là lý do người bệnh cần điều trị kháng virus kéo dài suốt đời để ngăn ngừa biến chứng xơ gan và ung thư gan.
 </EpiAlert>
 
+
 ---
 
+## 2. Bộ Gen, cccDNA & Tích Hợp Gen {#sec-2}
 
 Khác với virus viêm gan C (HCV chỉ là RNA virus không tích hợp vào ADN người), **HBV có khả năng tích hợp các đoạn DNA của nó vào bộ gen tế bào gan chủ**. 
 
 Quá trình này làm mất ổn định bộ gen (chromosomal instability), kích hoạt các gen sinh ung (oncogenes như *TERT promoter*, *MLL4*, *CCNE1*) và sản sinh protein **HBx** gây ức chế gen ức chế khối u *p53*. Do đó, **HBV có thể gây ung thư gan (HCC) trực tiếp ngay cả khi bệnh nhân chưa xuất hiện xơ gan**.
 
+
 ---
 
+## 3. Đường Lây Truyền & MTCT {#sec-3}
 
 | Đường lây truyền | Cơ chế dịch tễ học | Tỷ lệ & Tầm quan trọng |
 |---|---|---|
@@ -131,8 +156,10 @@ Quá trình này làm mất ổn định bộ gen (chromosomal instability), kí
   2. **Đối với trẻ sinh ra từ mẹ nhiễm HBV**: Tiêm **Kháng huyết thanh viêm gan B (HBIG 100 IU)** kết hợp **Vắc-xin viêm gan B sơ sinh** tại 2 vị trí bắp chân khác nhau trong vòng **24 giờ đầu (lý tưởng nhất trong 12h đầu)**. Biện pháp phối hợp này giảm nguy cơ lây truyền mẹ-con từ >90% xuống dưới 1%.
 </EpiAlert>
 
+
 ---
 
+## 4. Động Thái Tuổi Nhiễm & Mạn Tính {#sec-4}
 
 Tỷ lệ nhiễm HBV cấp tính chuyển thành mạn tính tỉ lệ nghịch tuyệt đối với độ tuổi lúc phơi nhiễm:
 
@@ -146,8 +173,10 @@ Trẻ nhỏ (1-5 tuổi): ██████████ 25-30% chuyển mạn t
 Người lớn (>18t):   ██ 5% chuyển mạn tính (95% tự khỏi hoàn toàn)
 ```
 
+
 ---
 
+## 5. Gánh Nặng Dịch Tễ Toàn Cầu & VN {#sec-5}
 
 - **Toàn cầu (WHO 2024)**:
   - Khoảng **254 triệu người** đang sống chung với viêm gan B mạn tính.
@@ -158,8 +187,10 @@ Người lớn (>18t):   ██ 5% chuyển mạn tính (95% tự khỏi hoàn t
   - Tỷ lệ lưu hành HBsAg trong dân số chung dao động từ **8% đến 12%** (khoảng 6.5 – 8 triệu người nhiễm).
   - Ung thư gan (chủ yếu là HCC do HBV và HCV) là nguyên nhân gây tử vong do ung thư **hàng đầu tại Việt Nam** (vượt qua ung thư phổi).
 
+
 ---
 
+## 6. Đồng Nhiễm HDV & Đột Biến Kháng {#sec-6}
 
 <EpiAlert type="danger" title="Đồng Nhiễm HDV (Hepatitis Delta) — Thể Bệnh Viêm Gan Nặng Nề Nhất">
   HDV là một virus khiếm khuyết (defective RNA virus), bắt buộc phải mượn vỏ bọc kháng nguyên HBsAg của HBV để lắp ráp và nhân lên:
@@ -167,8 +198,10 @@ Người lớn (>18t):   ██ 5% chuyển mạn tính (95% tự khỏi hoàn t
   - **Bội nhiễm trên nền viêm gan B mạn (Super-infection HDV trên HBsAg (+))**: Gây tổn thương hoại tử tế bào gan ồ ạt, **70% – 80% bệnh nhân tiến triển nhanh chóng thành xơ gan trong vòng 5 – 10 năm** và tăng gấp đôi nguy cơ tử vong so với chỉ nhiễm HBV đơn thuần.
 </EpiAlert>
 
+
 ---
 
+## 7. Chiến Lược Dự Phòng & Loại Trừ {#sec-7}
 
 <EpiAlert type="surveillance" title="Mục Tiêu Toàn Cầu WHO 2030: Giảm 90% Ca Nhiễm Mới và Giảm 65% Tử Vong">
   1. **Độ bao phủ tiêm chủng**: Đạt ≥ 90% trẻ sơ sinh được tiêm liều vắc-xin viêm gan B trong 24h đầu và đủ 3 liều cơ bản.
@@ -176,10 +209,31 @@ Người lớn (>18t):   ██ 5% chuyển mạn tính (95% tự khỏi hoàn t
   3. **Mở rộng xét nghiệm & Điều trị (Cascade of Care)**: Đạt 90% người nhiễm HBV được chẩn đoán và 80% người đủ tiêu chuẩn được điều trị liên tục bằng thuốc NUCs (TDF, TAF, ETV).
 </EpiAlert>
 
+
 ---
 
+## 8. Tài Liệu Tham Khảo EBM {#sec-8}
 
 1. **Bộ Y Tế Việt Nam (2019)**. *Hướng dẫn chẩn đoán và điều trị bệnh Viêm gan vi rút B* (Ban hành kèm theo Quyết định số 1740/QĐ-BYT).
 2. **World Health Organization (2024)**. *Global hepatitis report 2024: action for access in low- and middle-income countries*. Geneva: WHO.
 3. **European Association for the Study of the Liver (EASL 2017)**. *Clinical Practice Guidelines on the management of hepatitis B virus infection*. Journal of Hepatology, 67(2), 370-398.
 4. **Lok, A. S. et al. (2016)**. *Hepatitis B: 50 years of progress*. Nature Reviews Gastroenterology & Hepatology, 13(4), 217-230.
+
+<!-- KHUNG TRÍCH DẪN Y VĂN CHUẨN AMA (CITATION BOX) -->
+<div class="citation-box">
+  <strong>Trích dẫn tài liệu tham khảo chuẩn (AMA Format):</strong><br />
+  1. Celentano DD, Szklo M. <em>Gordis Epidemiology</em>. 6th ed. Philadelphia, PA: Elsevier; 2019.<br />
+2. World Health Organization (WHO). <em>Global Surveillance and Vector Control Guidelines</em>. Geneva: WHO Press; 2024.<br />
+3. Centers for Disease Control and Prevention (CDC). <em>Epidemiology and Prevention of Vaccine-Preventable Diseases</em>. 14th ed. Washington, DC; 2024.
+</div>
+
+<!-- HÀNG NÚT ĐIỀU HƯỚNG SPA -->
+<div class="btn-row">
+  <a href="#/basic-medical/dich-te-hoc" class="btn btn-primary">
+    <i class="fa-solid fa-arrow-left"></i> Quay lại Mục Lục Dịch Tễ Học
+  </a>
+  <a href="#sec-1" class="btn">
+    <i class="fa-solid fa-arrow-up"></i> Lên đầu trang
+  </a>
+</div>
+

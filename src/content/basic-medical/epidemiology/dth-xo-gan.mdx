@@ -7,7 +7,7 @@ specialtyId: "epi-tieu-hoa"
 category: "epidemiology"
 status: "published"
 version: "2.0.0"
-updatedAt: "2026-08-26"
+updatedAt: "2026-08-28"
 description: "Dịch tễ học Xơ gan và Bệnh gan mạn tính (Liver Cirrhosis & Chronic Liver Diseases): Phân tích gánh nặng toàn cầu 1.48 triệu ca tử vong/năm (chiếm 2.4% tổng số tử vong toàn cầu theo GBD), sự chuyển dịch mô hình nguyên nhân sang Bệnh gan nhiễm mỡ liên quan chuyển hóa (MASLD/MASH) và Rượu (ALD), động học chuyển tiếp từ Còn bù sang Mất bù (Decompensated Cirrhosis), suy gan cấp trên nền mạn (ACLF) và thang điểm Child-Pugh / MELD-Na."
 tags:
   - "cirrhosis"
@@ -56,14 +56,35 @@ pillars:
     icon: "fa-book-medical"
 ---
 
-import { EpiTriangle, EpiAlert, EpiPillarsNav } from './components'
-
-# 🔬 DỊCH TỄ HỌC XƠ GAN & BỆNH GAN MẠN TÍNH
+# 🔬 DỊCH TỄ HỌC XƠ GAN & BỆNH GAN MẠN TÍNH (CLDS)
 
 <EpiPillarsNav />
 
+<!-- DẢI CHỈ SỐ NHANH (QUICK STATS STRIP) -->
+<section class="stats-strip">
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-val blue">1.5 – 3.0</div>
+      <div class="stat-lbl">Hệ số lây truyền cơ bản ($R_0$)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val green">3 – 7 ngày</div>
+      <div class="stat-lbl">Thời gian ủ bệnh trung bình</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val amber">Người & Véc-tơ</div>
+      <div class="stat-lbl">Véc-tơ / Phương thức lây truyền chính</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val red">Xơ gan còn bù có thời gian sống trung vị > 12 năm; Khi chuyển sang Xơ gan mất bù, thời gian sống trung vị giảm xuống chỉ còn ~1.8 – 2 năm nếu không được ghép gan</div>
+      <div class="stat-lbl">Tỷ lệ tử vong ca bệnh (CFR)</div>
+    </div>
+  </div>
+</section>
+
 ---
 
+## 1. Tam Giác Dịch Tễ Xơ Gan {#sec-1}
 
 Xơ gan là giai đoạn xơ hóa tiến triển cuối cùng của mọi bệnh gan mạn tính, được định hình bởi **Tác nhân hủy hoại tế bào gan mạn tính (HBV, HCV, Rượu ethanol, Tích tụ mỡ độc tính lipotoxicity trong MASLD/MASH, Bệnh tự miễn)**, **Vật chủ (Khuynh hướng di truyền PNPLA3, TM6SF2, đa hình gen chuyển hóa rượu ADH/ALDH, suy dinh dưỡng)** và **Môi trường (Tiêu thụ đồ uống có cồn, đại dịch béo phì/hội chứng chuyển hóa, ô nhiễm độc chất)**.
 
@@ -106,8 +127,10 @@ Xơ gan là giai đoạn xơ hóa tiến triển cuối cùng của mọi bệnh
   Trong khi tỷ lệ xơ gan do virus HBV và HCV đang giảm dần nhờ vắc-xin và thuốc DAAs, **Bệnh gan nhiễm mỡ liên quan rối loạn chuyển hóa (MASLD/MASH)** đang gia tăng với tốc độ chóng mặt, trở thành **nguyên nhân hàng đầu gây xơ gan và chỉ định ghép gan tại các nước phát triển và đang phát triển**. Khoảng **25% – 30% dân số toàn cầu mắc MASLD**, trong đó 20% tiến triển thành MASH (viêm gan thoái hóa mỡ) và 20% ca MASH sẽ tiến triển thành xơ gan thực thụ.
 </EpiAlert>
 
+
 ---
 
+## 2. Sự Chuyển Dịch Căn Nguyên (MASLD/ALD/Virus) {#sec-2}
 
 | Nhóm căn nguyên | Tỷ lệ trước đây (2000–2015) | Tỷ lệ hiện nay & Xu hướng (2024–2030) | Đặc điểm dịch tễ |
 |---|---|---|---|
@@ -116,8 +139,10 @@ Xơ gan là giai đoạn xơ hóa tiến triển cuối cùng của mọi bệnh
 | **MASLD / MASH (Chuyển hóa)** | < 5% | **Tăng nhanh lên ~15% – 20%** | Song hành cùng đại dịch đái tháo đường type 2, béo phì và hội chứng chuyển hóa đô thị. |
 | **Tự miễn & Ứ mật (AIH, PBC, PSC)** | ~2% – 3% | ~2% – 3% | Tỷ lệ ổn định, thường gặp ở nữ giới trung niên. |
 
+
 ---
 
+## 3. Động Học Còn Bù Sang Mất Bù {#sec-3}
 
 Xơ gan diễn tiến qua 2 giai đoạn lâm sàng với tiên lượng hoàn toàn khác biệt:
 
@@ -137,8 +162,10 @@ Xơ gan diễn tiến qua 2 giai đoạn lâm sàng với tiên lượng hoàn t
            • Tỷ lệ tử vong trong 28 ngày: 30% – 80%
 ```
 
+
 ---
 
+## 4. Tăng Áp Lực Tĩnh Mạch Cửa & Biến Chứng {#sec-4}
 
 <EpiAlert type="pearl" title="Đo Đoạn Chênh Áp Lực Tĩnh Mạch Gan (HVPG) — Tiêu Chuẩn Vàng Đánh Giá Áp Lực Cửa">
   - **HVPG bình thường**: 1 – 5 mmHg.
@@ -146,8 +173,10 @@ Xơ gan diễn tiến qua 2 giai đoạn lâm sàng với tiên lượng hoàn t
   - **Ngưỡng nguy cơ xuất huyết tiêu hóa bùng phát**: Khi **HVPG ≥ 12 mmHg**, nguy cơ vỡ búi giãn TMTQ tăng vọt, đòi hỏi phải dùng thuốc chẹn beta không chọn lọc (NSBB - Carvedilol, Propranolol) hoặc thắt vòng cao su (EVL) để dự phòng nguyên phát.
 </EpiAlert>
 
+
 ---
 
+## 5. Suy Gan Cấp Trên Nền Mạn (ACLF) {#sec-5}
 
 1. **Thang điểm Child-Turcotte-Pugh (CTP)**:
    - Đánh giá dựa trên 5 thông số: Bilirubin, Albumin, INR, Cổ trướng, Bệnh não gan.
@@ -160,8 +189,10 @@ Xơ gan diễn tiến qua 2 giai đoạn lâm sàng với tiên lượng hoàn t
    - **Điểm MELD-Na > 15**: Chỉ định đánh giá danh sách chờ ghép gan.
    - **Điểm MELD-Na > 40**: Tỷ lệ tử vong trong 3 tháng lên tới **71.3%**.
 
+
 ---
 
+## 6. Phân Tầng Tiên Lượng Child-Pugh / MELD-Na {#sec-6}
 
 <EpiAlert type="surveillance" title="Chiến Lược Quản Lý Xơ Gan Toàn Diện Theo Hướng Dẫn EASL và AASLD">
   1. **Điều trị nguyên nhân gốc rễ**: Uống thuốc kháng virus ức chế triệt để HBV DNA/HCV RNA, cai nghiện rượu hoàn toàn, giảm 7%–10% cân nặng và kiểm soát đường huyết/mỡ máu ở bệnh nhân MASH.
@@ -169,10 +200,31 @@ Xơ gan diễn tiến qua 2 giai đoạn lâm sàng với tiên lượng hoàn t
   3. **Ghép gan (Liver Transplantation)**: Biện pháp điều trị triệt để duy nhất cho bệnh nhân xơ gan mất bù giai đoạn cuối (MELD ≥ 15, Child-Pugh B/C) hoặc ung thư gan trong tiêu chuẩn Milan.
 </EpiAlert>
 
+
 ---
 
+## 7. Chiến Lược Dự Phòng & Ghép Gan {#sec-7}
 
 1. **European Association for the Study of the Liver (EASL 2018)**. *Clinical Practice Guidelines for the management of patients with decompensed cirrhosis*. Journal of Hepatology, 69(2), 406-460.
 2. **American Association for the Study of Liver Diseases (AASLD 2021)**. *Diagnosis, Evaluation, and Management of Ascites, Spontaneous Bacterial Peritonitis and Hepatorenal Syndrome*. Hepatology, 74(2), 1014-1048.
 3. **GBD 2019 Diseases and Injuries Collaborators (2020)**. *Global burden of 369 diseases and injuries in 204 countries and territories, 1990–2019: a systematic analysis for the Global Burden of Disease Study 2019*. The Lancet, 396(10258), 1204-1222.
 4. **de Franchis, R. et al. (Baveno VII 2022)**. *Baveno VII - Renewing consensus in portal hypertension*. Journal of Hepatology, 76(4), 959-974.
+
+<!-- KHUNG TRÍCH DẪN Y VĂN CHUẨN AMA (CITATION BOX) -->
+<div class="citation-box">
+  <strong>Trích dẫn tài liệu tham khảo chuẩn (AMA Format):</strong><br />
+  1. Celentano DD, Szklo M. <em>Gordis Epidemiology</em>. 6th ed. Philadelphia, PA: Elsevier; 2019.<br />
+2. World Health Organization (WHO). <em>Global Surveillance and Vector Control Guidelines</em>. Geneva: WHO Press; 2024.<br />
+3. Centers for Disease Control and Prevention (CDC). <em>Epidemiology and Prevention of Vaccine-Preventable Diseases</em>. 14th ed. Washington, DC; 2024.
+</div>
+
+<!-- HÀNG NÚT ĐIỀU HƯỚNG SPA -->
+<div class="btn-row">
+  <a href="#/basic-medical/dich-te-hoc" class="btn btn-primary">
+    <i class="fa-solid fa-arrow-left"></i> Quay lại Mục Lục Dịch Tễ Học
+  </a>
+  <a href="#sec-1" class="btn">
+    <i class="fa-solid fa-arrow-up"></i> Lên đầu trang
+  </a>
+</div>
+

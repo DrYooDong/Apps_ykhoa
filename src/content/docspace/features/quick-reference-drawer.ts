@@ -5,10 +5,21 @@
  */
 
 import { escapeHtml } from '../docspace-view';
+import { VAULT_CATALOG } from '../../knowledge-vault/vault-loader';
+import type { VaultArticle } from '../../knowledge-vault/types';
+import { 
+  renderFaganNomogramHtml, 
+  calculatePostTestProbability, 
+  calculateEbmMetrics, 
+  COMMON_DIAGNOSTIC_TESTS 
+} from './ebm-bedside-calculator';
 
 export class QuickReferenceDrawer {
   private drawerEl: HTMLElement;
-  private currentTab: 'formulas' | 'ecg_abg' | 'acls' | 'bedside' = 'formulas';
+  private currentTab: 'vault' | 'formulas' | 'ecg_abg' | 'acls' | 'bedside' | 'ebm_calc' = 'vault';
+  private searchVaultQuery: string = '';
+  private faganPreProb: number = 25;
+  private faganSelectedTestId: string = 'trop_hs';
 
   constructor() {
     this.drawerEl = document.createElement('div');
@@ -33,7 +44,7 @@ export class QuickReferenceDrawer {
     });
   }
 
-  public open(defaultTab: 'formulas' | 'ecg_abg' | 'acls' | 'bedside' = 'formulas') {
+  public open(defaultTab: 'vault' | 'formulas' | 'ecg_abg' | 'acls' | 'bedside' | 'ebm_calc' = 'vault') {
     this.currentTab = defaultTab;
     this.renderLayout();
     this.drawerEl.style.display = 'flex';
@@ -46,7 +57,7 @@ export class QuickReferenceDrawer {
 
   private renderLayout() {
     this.drawerEl.innerHTML = `
-      <div style="background:var(--color-surface, #ffffff); width:100%; max-width:620px; height:100vh; display:flex; flex-direction:column; box-shadow:-10px 0 30px rgba(0,0,0,0.25); border-left:1px solid var(--color-border, #e2e8f0); animation: slideInRight 0.25s ease-out; font-family:inherit;">
+      <div style="background:var(--color-surface, #ffffff); width:100%; max-width:640px; height:100vh; display:flex; flex-direction:column; box-shadow:-10px 0 30px rgba(0,0,0,0.25); border-left:1px solid var(--color-border, #e2e8f0); animation: slideInRight 0.25s ease-out; font-family:inherit;">
         
         <!-- Header -->
         <div style="padding:16px 20px; border-bottom:1px solid var(--color-border, #e2e8f0); display:flex; justify-content:space-between; align-items:center; background:var(--color-bg, #f8fafc); flex-shrink:0;">
@@ -56,7 +67,7 @@ export class QuickReferenceDrawer {
             </div>
             <div>
               <h3 style="margin:0; font-size:16px; font-weight:700; color:var(--color-text, #0f172a);">Quick Reference Drawer</h3>
-              <p style="margin:2px 0 0; font-size:11.5px; color:var(--color-text-muted, #64748b);">Tra cứu nhanh công thức, ECG/ABG & Hồi sức cấp cứu</p>
+              <p style="margin:2px 0 0; font-size:11.5px; color:var(--color-text-muted, #64748b);">Tra cứu nhanh công thức, Knowledge Vault 2.362+ bài, Fagan &amp; Hồi sức</p>
             </div>
           </div>
           <button id="btnCloseQuickRefDrawer" style="background:none; border:none; width:32px; height:32px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:22px; cursor:pointer; color:var(--color-text-muted, #64748b);">&times;</button>
@@ -64,8 +75,11 @@ export class QuickReferenceDrawer {
 
         <!-- Navigation Tabs Strip -->
         <div style="display:flex; padding:8px 12px; background:var(--color-surface-offset, #f1f5f9); border-bottom:1px solid var(--color-border, #e2e8f0); gap:6px; overflow-x:auto; scrollbar-width:thin;">
-          <button class="qrd-tab-btn" data-tab="vault" style="background:${this.currentTab === ('vault' as any) ? 'var(--color-surface, #fff)' : 'transparent'}; color:${this.currentTab === ('vault' as any) ? 'var(--color-primary, #0284c7)' : 'var(--color-text-muted, #64748b)'}; border:none; padding:7px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; display:flex; align-items:center; gap:6px; white-space:nowrap; box-shadow:${this.currentTab === ('vault' as any) ? '0 1px 3px rgba(0,0,0,0.1)' : 'none'};">
-            <i class="fa-solid fa-graduation-cap"></i> Kho Tri Thức (2.330+ Bài)
+          <button class="qrd-tab-btn" data-tab="vault" style="background:${this.currentTab === 'vault' ? 'var(--color-surface, #fff)' : 'transparent'}; color:${this.currentTab === 'vault' ? 'var(--color-primary, #0284c7)' : 'var(--color-text-muted, #64748b)'}; border:none; padding:7px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; display:flex; align-items:center; gap:6px; white-space:nowrap; box-shadow:${this.currentTab === 'vault' ? '0 1px 3px rgba(0,0,0,0.1)' : 'none'};">
+            <i class="fa-solid fa-graduation-cap"></i> Kho Tri Thức (${VAULT_CATALOG.length} Bài)
+          </button>
+          <button class="qrd-tab-btn" data-tab="ebm_calc" style="background:${this.currentTab === 'ebm_calc' ? 'var(--color-surface, #fff)' : 'transparent'}; color:${this.currentTab === 'ebm_calc' ? '#8b5cf6' : 'var(--color-text-muted, #64748b)'}; border:none; padding:7px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; display:flex; align-items:center; gap:6px; white-space:nowrap; box-shadow:${this.currentTab === 'ebm_calc' ? '0 1px 3px rgba(0,0,0,0.1)' : 'none'};">
+            <i class="fa-solid fa-scale-balanced" style="color:#8b5cf6;"></i> Fagan &amp; EBM Tools
           </button>
           <button class="qrd-tab-btn" data-tab="formulas" style="background:${this.currentTab === 'formulas' ? 'var(--color-surface, #fff)' : 'transparent'}; color:${this.currentTab === 'formulas' ? 'var(--color-primary, #0284c7)' : 'var(--color-text-muted, #64748b)'}; border:none; padding:7px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; display:flex; align-items:center; gap:6px; white-space:nowrap; box-shadow:${this.currentTab === 'formulas' ? '0 1px 3px rgba(0,0,0,0.1)' : 'none'};">
             <i class="fa-solid fa-calculator"></i> Thang Điểm (Kho 3.1)
@@ -82,7 +96,7 @@ export class QuickReferenceDrawer {
         </div>
 
         <!-- Content Area -->
-        <div style="flex:1; overflow-y:auto; padding:20px 22px; background:var(--color-surface, #ffffff);">
+        <div style="flex:1; overflow-y:auto; padding:18px 20px; background:var(--color-surface, #ffffff);">
           ${this.renderActiveTabContent()}
         </div>
 
@@ -91,53 +105,100 @@ export class QuickReferenceDrawer {
   }
 
   private renderActiveTabContent(): string {
-    if ((this.currentTab as string) === 'vault') {
+    if (this.currentTab === 'vault') {
+      const q = this.searchVaultQuery.trim().toLowerCase();
+      let searchResults: VaultArticle[] = [];
+      if (q) {
+        searchResults = VAULT_CATALOG.filter(art => {
+          const matchTitle = art.title.toLowerCase().includes(q);
+          const matchSpec = art.specialty.toLowerCase().includes(q);
+          const matchSnippet = (art.snippet || '').toLowerCase().includes(q);
+          const matchKho = art.khoName.toLowerCase().includes(q);
+          const matchIcd = (art.icd10 || []).some(c => c.toLowerCase().includes(q));
+          return matchTitle || matchSpec || matchSnippet || matchKho || matchIcd;
+        }).slice(0, 15);
+      }
+
       return `
         <div style="display:flex; flex-direction:column; gap:14px;">
-          <div style="background:linear-gradient(135deg, rgba(2,132,199,0.08), rgba(139,92,246,0.08)); border:1px solid var(--color-border, #e2e8f0); border-radius:10px; padding:14px; display:flex; justify-content:space-between; align-items:center;">
-            <div>
-              <strong style="font-size:14px; color:var(--color-text, #0f172a);"><i class="fa-solid fa-graduation-cap" style="color:var(--color-primary, #0284c7);"></i> Kho Kiến Thức Y Khoa CliniPortal</strong>
-              <p style="margin:4px 0 0; font-size:12px; color:var(--color-text-muted, #64748b);">Tổng hợp 2.250+ bài viết chuẩn hóa (Cơ sở y khoa, Tiếp cận, Kỹ năng, Chẩn đoán, Phác đồ, Biến chứng)</p>
+          
+          <!-- Search Bar Strip -->
+          <div style="position:relative;">
+            <i class="fa-solid fa-magnifying-glass" style="position:absolute; left:12px; top:50%; transform:translateY(-50%); color:var(--color-text-muted); font-size:13px;"></i>
+            <input type="text" id="qrefVaultSearchInput" class="dsp-input" value="${escapeHtml(this.searchVaultQuery)}" placeholder="Tìm kiếm trong ${VAULT_CATALOG.length} bài viết (ICD-10, Phác đồ, Triệu chứng, Thuốc)..." style="padding-left:34px; font-size:13px; width:100%; border-radius:8px;" />
+          </div>
+
+          ${q ? `
+            <div style="font-size:12px; color:var(--color-text-muted); display:flex; justify-content:space-between; align-items:center;">
+              <span>Kết quả tìm kiếm cho: "<strong>${escapeHtml(q)}</strong>" (${searchResults.length} bài)</span>
+              <button type="button" id="btnResetQrefSearch" style="background:none; border:none; color:var(--color-primary); cursor:pointer; font-size:11.5px; font-weight:700;">Xóa tìm kiếm</button>
             </div>
-            <a href="#/vault" style="padding:6px 12px; background:var(--color-primary, #0284c7); color:#fff; border-radius:6px; font-size:12px; font-weight:600; text-decoration:none; display:flex; align-items:center; gap:5px; white-space:nowrap;">
-              Mở Hub Toàn Màn Hình <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </a>
-          </div>
 
-          <!-- Nhóm Lâm sàng & Bệnh học -->
-          <div style="font-size:12px; font-weight:700; color:var(--color-text, #0f172a); margin-top:2px;">
-            🩺 Phân Hệ Lâm Sàng &amp; Chẩn Đoán Điều Trị:
-          </div>
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
-            <a href="#/vault?kho=TC" style="background:var(--color-bg, #f8fafc); border:1px solid var(--color-border, #e2e8f0); border-radius:8px; padding:8px 10px; text-decoration:none; color:inherit; display:flex; align-items:center; gap:8px;">
-              <div style="width:28px; height:28px; border-radius:6px; background:rgba(14,165,233,0.1); color:#0ea5e9; display:flex; align-items:center; justify-content:center; font-size:12px;"><i class="fa-solid fa-magnifying-glass"></i></div>
-              <div><strong style="font-size:12px;">Tiếp cận Lâm sàng</strong><div style="font-size:10.5px; color:var(--color-text-muted, #64748b);">117 bài • Sơ đồ</div></div>
-            </a>
-            <a href="#/vault?kho=CD" style="background:var(--color-bg, #f8fafc); border:1px solid var(--color-border, #e2e8f0); border-radius:8px; padding:8px 10px; text-decoration:none; color:inherit; display:flex; align-items:center; gap:8px;">
-              <div style="width:28px; height:28px; border-radius:6px; background:rgba(236,72,153,0.1); color:#ec4899; display:flex; align-items:center; justify-content:center; font-size:12px;"><i class="fa-solid fa-clipboard-check"></i></div>
-              <div><strong style="font-size:12px;">Chẩn đoán Bệnh học</strong><div style="font-size:10.5px; color:var(--color-text-muted, #64748b);">480 bài • ICD-10</div></div>
-            </a>
-            <a href="#/vault?kho=PDDT" style="background:var(--color-bg, #f8fafc); border:1px solid var(--color-border, #e2e8f0); border-radius:8px; padding:8px 10px; text-decoration:none; color:inherit; display:flex; align-items:center; gap:8px;">
-              <div style="width:28px; height:28px; border-radius:6px; background:rgba(59,130,246,0.1); color:#3b82f6; display:flex; align-items:center; justify-content:center; font-size:12px;"><i class="fa-solid fa-pills"></i></div>
-              <div><strong style="font-size:12px;">Phác đồ Điều trị</strong><div style="font-size:10.5px; color:var(--color-text-muted, #64748b);">283 bài • Thuốc</div></div>
-            </a>
-            <a href="#/vault?kho=BC" style="background:var(--color-bg, #f8fafc); border:1px solid var(--color-border, #e2e8f0); border-radius:8px; padding:8px 10px; text-decoration:none; color:inherit; display:flex; align-items:center; gap:8px;">
-              <div style="width:28px; height:28px; border-radius:6px; background:rgba(239,68,68,0.1); color:#ef4444; display:flex; align-items:center; justify-content:center; font-size:12px;"><i class="fa-solid fa-triangle-exclamation"></i></div>
-              <div><strong style="font-size:12px;">Biến chứng &amp; Tiên lượng</strong><div style="font-size:10.5px; color:var(--color-text-muted, #64748b);">299 bài</div></div>
-            </a>
-            <a href="#/vault?kho=CC" style="background:var(--color-bg, #f8fafc); border:1px solid var(--color-border, #e2e8f0); border-radius:8px; padding:8px 10px; text-decoration:none; color:inherit; display:flex; align-items:center; gap:8px;">
-              <div style="width:28px; height:28px; border-radius:6px; background:rgba(245,158,11,0.1); color:#f59e0b; display:flex; align-items:center; justify-content:center; font-size:12px;"><i class="fa-solid fa-calculator"></i></div>
-              <div><strong style="font-size:12px;">Thang Điểm &amp; Công Cụ</strong><div style="font-size:10.5px; color:var(--color-text-muted, #64748b);">SOFA, CURB65...</div></div>
-            </a>
-            <a href="#/vault?kho=EBM" style="background:var(--color-bg, #f8fafc); border:1px solid var(--color-border, #e2e8f0); border-radius:8px; padding:8px 10px; text-decoration:none; color:inherit; display:flex; align-items:center; gap:8px;">
-              <div style="width:28px; height:28px; border-radius:6px; background:rgba(6,182,212,0.1); color:#06b6d4; display:flex; align-items:center; justify-content:center; font-size:12px;"><i class="fa-solid fa-scale-balanced"></i></div>
-              <div><strong style="font-size:12px;">NCKH &amp; EBM Guidelines</strong><div style="font-size:10.5px; color:var(--color-text-muted, #64748b);">Khuyến cáo lâm sàng</div></div>
-            </a>
-          </div>
+            <div style="display:flex; flex-direction:column; gap:8px;">
+              ${searchResults.length === 0 ? `
+                <div style="text-align:center; padding:30px; color:var(--color-text-muted);">
+                  <i class="fa-solid fa-folder-open" style="font-size:24px; margin-bottom:8px;"></i>
+                  <div>Không tìm thấy bài viết khớp từ khóa trong Vault.</div>
+                </div>
+              ` : searchResults.map(art => `
+                <div style="background:var(--color-bg, #f8fafc); border:1px solid var(--color-border, #e2e8f0); border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; gap:4px;">
+                  <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:8px;">
+                    <strong style="font-size:13px; color:var(--color-primary, #0284c7);">${escapeHtml(art.title)}</strong>
+                    <span style="font-size:10px; font-weight:700; background:rgba(2,132,199,0.12); color:#0284c7; padding:2px 6px; border-radius:4px; white-space:nowrap;">${escapeHtml(art.khoName)}</span>
+                  </div>
+                  <div style="font-size:11.5px; color:var(--color-text-muted); line-height:1.4;">${escapeHtml(art.snippet || 'Tài liệu hướng dẫn y học chứng cứ CliniPortal.')}</div>
+                  <div style="display:flex; justify-content:space-between; align-items:center; margin-top:4px;">
+                    <span style="font-size:10.5px; color:var(--color-text-muted);"><i class="fa-solid fa-stethoscope"></i> ${escapeHtml(art.specialty)}</span>
+                    <a href="#/vault?search=${encodeURIComponent(art.title)}" class="dsp-btn dsp-btn-sm dsp-btn-outline" style="font-size:11px; padding:2px 8px; text-decoration:none;">
+                      <i class="fa-solid fa-book-open"></i> Đọc bài
+                    </a>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          ` : `
+            <div style="background:linear-gradient(135deg, rgba(2,132,199,0.08), rgba(139,92,246,0.08)); border:1px solid var(--color-border, #e2e8f0); border-radius:10px; padding:12px; display:flex; justify-content:space-between; align-items:center;">
+              <div>
+                <strong style="font-size:13.5px; color:var(--color-text, #0f172a);"><i class="fa-solid fa-graduation-cap" style="color:var(--color-primary, #0284c7);"></i> Kho Kiến Thức Y Khoa CliniPortal</strong>
+                <p style="margin:2px 0 0; font-size:11.5px; color:var(--color-text-muted, #64748b);">Tổng hợp ${VAULT_CATALOG.length} bài viết chuẩn hóa (Cơ sở, Lâm sàng, Phác đồ, Dược, Biến chứng)</p>
+              </div>
+              <a href="#/vault" style="padding:5px 10px; background:var(--color-primary, #0284c7); color:#fff; border-radius:6px; font-size:11.5px; font-weight:600; text-decoration:none; display:flex; align-items:center; gap:4px; white-space:nowrap;">
+                Mở Hub <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
 
-          <div style="margin-top:4px; font-size:11.5px; color:var(--color-text-muted, #64748b); text-align:center;">
-            💡 <em>Nhấn để mở Hub và tìm kiếm trực tiếp trong hơn 2.250 bài viết y khoa chuẩn hóa.</em>
-          </div>
+            <!-- Nhóm Lâm sàng & Bệnh học -->
+            <div style="font-size:12px; font-weight:700; color:var(--color-text, #0f172a); margin-top:2px;">
+              🩺 Phân Hệ Lâm Sàng &amp; Chẩn Đoán Điều Trị:
+            </div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+              <a href="#/vault?kho=TC" style="background:var(--color-bg, #f8fafc); border:1px solid var(--color-border, #e2e8f0); border-radius:8px; padding:8px 10px; text-decoration:none; color:inherit; display:flex; align-items:center; gap:8px;">
+                <div style="width:28px; height:28px; border-radius:6px; background:rgba(14,165,233,0.1); color:#0ea5e9; display:flex; align-items:center; justify-content:center; font-size:12px;"><i class="fa-solid fa-magnifying-glass"></i></div>
+                <div><strong style="font-size:12px;">Tiếp cận Lâm sàng</strong><div style="font-size:10.5px; color:var(--color-text-muted, #64748b);">117 bài • Sơ đồ</div></div>
+              </a>
+              <a href="#/vault?kho=CD" style="background:var(--color-bg, #f8fafc); border:1px solid var(--color-border, #e2e8f0); border-radius:8px; padding:8px 10px; text-decoration:none; color:inherit; display:flex; align-items:center; gap:8px;">
+                <div style="width:28px; height:28px; border-radius:6px; background:rgba(236,72,153,0.1); color:#ec4899; display:flex; align-items:center; justify-content:center; font-size:12px;"><i class="fa-solid fa-clipboard-check"></i></div>
+                <div><strong style="font-size:12px;">Chẩn đoán Bệnh học</strong><div style="font-size:10.5px; color:var(--color-text-muted, #64748b);">480 bài • ICD-10</div></div>
+              </a>
+              <a href="#/vault?kho=PDDT" style="background:var(--color-bg, #f8fafc); border:1px solid var(--color-border, #e2e8f0); border-radius:8px; padding:8px 10px; text-decoration:none; color:inherit; display:flex; align-items:center; gap:8px;">
+                <div style="width:28px; height:28px; border-radius:6px; background:rgba(59,130,246,0.1); color:#3b82f6; display:flex; align-items:center; justify-content:center; font-size:12px;"><i class="fa-solid fa-pills"></i></div>
+                <div><strong style="font-size:12px;">Phác đồ Điều trị</strong><div style="font-size:10.5px; color:var(--color-text-muted, #64748b);">283 bài • Thuốc</div></div>
+              </a>
+              <a href="#/vault?kho=BC" style="background:var(--color-bg, #f8fafc); border:1px solid var(--color-border, #e2e8f0); border-radius:8px; padding:8px 10px; text-decoration:none; color:inherit; display:flex; align-items:center; gap:8px;">
+                <div style="width:28px; height:28px; border-radius:6px; background:rgba(239,68,68,0.1); color:#ef4444; display:flex; align-items:center; justify-content:center; font-size:12px;"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                <div><strong style="font-size:12px;">Biến chứng &amp; Tiên lượng</strong><div style="font-size:10.5px; color:var(--color-text-muted, #64748b);">299 bài</div></div>
+              </a>
+              <a href="#/vault?kho=CC" style="background:var(--color-bg, #f8fafc); border:1px solid var(--color-border, #e2e8f0); border-radius:8px; padding:8px 10px; text-decoration:none; color:inherit; display:flex; align-items:center; gap:8px;">
+                <div style="width:28px; height:28px; border-radius:6px; background:rgba(245,158,11,0.1); color:#f59e0b; display:flex; align-items:center; justify-content:center; font-size:12px;"><i class="fa-solid fa-calculator"></i></div>
+                <div><strong style="font-size:12px;">Thang Điểm &amp; Công Cụ</strong><div style="font-size:10.5px; color:var(--color-text-muted, #64748b);">SOFA, CURB65...</div></div>
+              </a>
+              <a href="#/vault?kho=EBM" style="background:var(--color-bg, #f8fafc); border:1px solid var(--color-border, #e2e8f0); border-radius:8px; padding:8px 10px; text-decoration:none; color:inherit; display:flex; align-items:center; gap:8px;">
+                <div style="width:28px; height:28px; border-radius:6px; background:rgba(6,182,212,0.1); color:#06b6d4; display:flex; align-items:center; justify-content:center; font-size:12px;"><i class="fa-solid fa-scale-balanced"></i></div>
+                <div><strong style="font-size:12px;">NCKH &amp; EBM Guidelines</strong><div style="font-size:10.5px; color:var(--color-text-muted, #64748b);">Khuyến cáo lâm sàng</div></div>
+              </a>
+            </div>
+          `}
+
         </div>
       `;
     }
@@ -337,6 +398,46 @@ export class QuickReferenceDrawer {
       `;
     }
 
+    if (this.currentTab === 'ebm_calc') {
+      const selectedTest = COMMON_DIAGNOSTIC_TESTS.find(t => t.id === this.faganSelectedTestId) || COMMON_DIAGNOSTIC_TESTS[0]!;
+      return `
+        <div style="display:flex; flex-direction:column; gap:16px;">
+          <!-- 1. Fagan Nomogram -->
+          ${renderFaganNomogramHtml(this.faganPreProb, selectedTest.lrPositive, selectedTest.lrNegative)}
+
+          <!-- 2. NNT / ARR / RRR Calculator -->
+          <div style="background:var(--color-bg, #f8fafc); border:1px solid var(--color-border, #e2e8f0); border-radius:10px; padding:16px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+              <strong style="font-size:13.5px; color:#8b5cf6;"><i class="fa-solid fa-calculator"></i> Máy Tính NNT / NNH / Giảm Nguy Cơ Tuyệt Đối (ARR)</strong>
+              <span class="dsp-badge" style="background:rgba(139,92,246,0.1); color:#8b5cf6;">EBM Trial</span>
+            </div>
+            
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:10px;">
+              <div>
+                <label style="font-size:11.5px; font-weight:700; color:var(--color-text-muted);">Tỷ lệ biến cố Nhóm Chứng (CER %):</label>
+                <input type="number" id="ebmCerInput" class="dsp-input" value="15" min="0.1" max="100" step="0.1" style="font-size:12.5px; margin-top:3px;" />
+              </div>
+              <div>
+                <label style="font-size:11.5px; font-weight:700; color:var(--color-text-muted);">Tỷ lệ biến cố Nhóm Can Thiệp (EER %):</label>
+                <input type="number" id="ebmEerInput" class="dsp-input" value="10" min="0.1" max="100" step="0.1" style="font-size:12.5px; margin-top:3px;" />
+              </div>
+            </div>
+
+            <div id="ebmMetricsResultBox" style="background:var(--color-surface, #fff); border:1px solid var(--color-border); border-left:4px solid #8b5cf6; border-radius:6px; padding:10px 12px; font-size:12px; line-height:1.45;">
+              <div style="display:flex; gap:16px; margin-bottom:4px; font-weight:700; color:var(--color-text);">
+                <span>ARR: <strong id="resArrVal" style="color:#059669;">5.0%</strong></span>
+                <span>RRR: <strong id="resRrrVal" style="color:#2563eb;">33.3%</strong></span>
+                <span>NNT: <strong id="resNntVal" style="color:#8b5cf6;">20</strong></span>
+              </div>
+              <div id="resInterpVal" style="color:var(--color-text-muted);">
+                ✨ NNT = 20: Cứ điều trị 20 bệnh nhân bằng phác đồ này sẽ phòng ngừa được 1 biến cố tử vong/nhập viện.
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
     // Bedside Checklist
     return `
       <div style="display:flex; flex-direction:column; gap:16px;">
@@ -394,6 +495,122 @@ export class QuickReferenceDrawer {
         }
       });
     });
+
+    const vaultInput = document.getElementById('qrefVaultSearchInput') as HTMLInputElement | null;
+    let debounceTimer: any = null;
+    vaultInput?.addEventListener('input', () => {
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(() => {
+        this.searchVaultQuery = vaultInput.value;
+        this.renderLayout();
+        this.bindEvents();
+        // Focus back to input
+        const newInput = document.getElementById('qrefVaultSearchInput') as HTMLInputElement | null;
+        if (newInput) {
+          newInput.focus();
+          newInput.setSelectionRange(newInput.value.length, newInput.value.length);
+        }
+      }, 150);
+    });
+
+    document.getElementById('btnResetQrefSearch')?.addEventListener('click', () => {
+      this.searchVaultQuery = '';
+      this.renderLayout();
+      this.bindEvents();
+    });
+
+    // Fagan Nomogram Controls
+    const slider = document.getElementById('faganPreProbSlider') as HTMLInputElement | null;
+    const testSelect = document.getElementById('faganTestSelect') as HTMLSelectElement | null;
+    
+    if (testSelect) {
+      testSelect.value = this.faganSelectedTestId;
+    }
+
+    const updateFaganLive = () => {
+      if (!slider || !testSelect) return;
+      const preP = parseInt(slider.value, 10) || 25;
+      this.faganPreProb = preP;
+      this.faganSelectedTestId = testSelect.value;
+      const selectedOption = testSelect.options[testSelect.selectedIndex];
+      const lrPos = parseFloat(selectedOption?.dataset.lrpos || '10');
+      const lrNeg = parseFloat(selectedOption?.dataset.lrneg || '0.1');
+
+      const preProbVal = document.getElementById('faganPreProbVal');
+      if (preProbVal) preProbVal.textContent = `${preP}%`;
+
+      const postPos = calculatePostTestProbability(preP, lrPos);
+      const postNeg = calculatePostTestProbability(preP, lrNeg);
+
+      const postPosText = document.getElementById('faganPostPosText');
+      if (postPosText) postPosText.textContent = `${postPos}%`;
+
+      const postNegText = document.getElementById('faganPostNegText');
+      if (postNegText) postNegText.textContent = `${postNeg}%`;
+
+      // Update SVG coordinates
+      const getY = (valPercent: number) => {
+        const clamped = Math.max(0.1, Math.min(99.9, valPercent));
+        const logOdds = Math.log(clamped / (100 - clamped));
+        const norm = (logOdds + 6.9) / 13.8;
+        return 320 - (norm * 280);
+      };
+
+      const yPre = getY(preP);
+      const yPostPos = getY(postPos);
+      const yPostNeg = getY(postNeg);
+
+      const linePos = document.getElementById('svgLinePos');
+      if (linePos) {
+        linePos.setAttribute('y1', yPre.toString());
+        linePos.setAttribute('y2', yPostPos.toString());
+      }
+      const dotPre = document.getElementById('svgDotPre');
+      if (dotPre) dotPre.setAttribute('cy', yPre.toString());
+
+      const dotPostPos = document.getElementById('svgDotPostPos');
+      if (dotPostPos) dotPostPos.setAttribute('cy', yPostPos.toString());
+
+      const lineNeg = document.getElementById('svgLineNeg');
+      if (lineNeg) {
+        lineNeg.setAttribute('y1', yPre.toString());
+        lineNeg.setAttribute('y2', yPostNeg.toString());
+      }
+      const dotPostNeg = document.getElementById('svgDotPostNeg');
+      if (dotPostNeg) dotPostNeg.setAttribute('cy', yPostNeg.toString());
+    };
+
+    slider?.addEventListener('input', updateFaganLive);
+    testSelect?.addEventListener('change', updateFaganLive);
+
+    // NNT / ARR Inputs
+    const cerInput = document.getElementById('ebmCerInput') as HTMLInputElement | null;
+    const eerInput = document.getElementById('ebmEerInput') as HTMLInputElement | null;
+
+    const updateEbmMetricsLive = () => {
+      if (!cerInput || !eerInput) return;
+      const cer = parseFloat(cerInput.value) || 0;
+      const eer = parseFloat(eerInput.value) || 0;
+      const res = calculateEbmMetrics(cer, eer);
+
+      const resArr = document.getElementById('resArrVal');
+      if (resArr) {
+        resArr.textContent = `${res.arr}%`;
+        resArr.style.color = res.isHarm ? '#ef4444' : '#059669';
+      }
+      const resRrr = document.getElementById('resRrrVal');
+      if (resRrr) resRrr.textContent = `${res.rrr}%`;
+      const resNnt = document.getElementById('resNntVal');
+      if (resNnt) {
+        resNnt.textContent = res.nnt.toString();
+        resNnt.style.color = res.isHarm ? '#ef4444' : '#8b5cf6';
+      }
+      const resInterp = document.getElementById('resInterpVal');
+      if (resInterp) resInterp.textContent = res.interpretation;
+    };
+
+    cerInput?.addEventListener('input', updateEbmMetricsLive);
+    eerInput?.addEventListener('input', updateEbmMetricsLive);
   }
 }
 

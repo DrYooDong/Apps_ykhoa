@@ -10,7 +10,7 @@ ganongChapter: "Ganong 26th - Chapter 31: Blood as a Circulatory Fluid"
 category: "physiology"
 status: "published"
 version: "2.0.0"
-updatedAt: "2026-08-26"
+updatedAt: "2026-08-28"
 description: "Sinh lý học Nhóm máu & Truyền máu: Hệ thống nhóm máu ABO (Kháng nguyên A, B, H và quy luật Landsteiner), Hệ thống Rhesus (Kháng nguyên RhD và cơ chế bất đồng nhóm máu mẹ con HDN), phương pháp dự phòng bằng RhoGAM, xét nghiệm đọ chéo tại giường (Cross-matching) và xử trí tai biến truyền nhầm nhóm máu cấp cứu."
 tags:
   - "sinh-ly"
@@ -46,14 +46,35 @@ sections:
     icon: "fa-book-medical"
 ---
 
-import { PhysioAlert, PhysioQuickNav, PhysioFeedbackLoop } from '../components'
+# 🧬 SINH LÝ NHÓM MÁU & AN TOÀN TRUYỀN MÁU
 
-# 🩸 SINH LÝ NHÓM MÁU & AN TOÀN TRUYỀN MÁU
+<PhysioQuickNav />
 
-
+<!-- DẢI CHỈ SỐ NHANH (QUICK STATS STRIP) -->
+<section class="stats-strip">
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-val blue">PHYS-BLD-04</div>
+      <div class="stat-lbl">Mã chuyên đề • Sinh Lý Máu & Hệ Miễn Dịch</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val green">Nội Môi Ổn Định</div>
+      <div class="stat-lbl">Cân bằng gradient điện hóa & Áp suất thẩm thấu</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val amber">Feedback Loop</div>
+      <div class="stat-lbl">Vòng điều hòa phản hồi thần kinh - thể dịch</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val purple">Dược Lý EBM</div>
+      <div class="stat-lbl">Ứng dụng lâm sàng chuẩn Guyton 14th & Ganong 26th</div>
+    </div>
+  </div>
+</section>
 
 ---
 
+## 1. Hệ Thống Nhóm Máu ABO & Quy Luật Landsteiner {#sec-1}
 
 Hệ thống ABO do Karl Landsteiner phát hiện năm 1900 dựa trên sự hiện diện của hai kháng nguyên carbohydrate **Kháng nguyên A** và **Kháng nguyên B** trên màng hồng cầu:
 
@@ -82,6 +103,7 @@ Trong huyết tương của một cá thể bình thường, **luôn luôn xuấ
 
 ---
 
+## 2. Hệ Thống Rhesus (Rh) & Bệnh Tan Máu Sơ Sinh (HDN) {#sec-2}
 
 Hệ thống Rh gồm hơn 50 kháng nguyên protein xuyên màng, trong đó **Kháng nguyên D (RhD)** có tính sinh miễn dịch mạnh mẽ nhất:
 - **Người $Rh^+$ (Rh Dương)**: Có biểu hiện kháng nguyên RhD trên màng hồng cầu (**$>99.9\%$ dân số Việt Nam**).
@@ -119,6 +141,7 @@ Hệ thống Rh gồm hơn 50 kháng nguyên protein xuyên màng, trong đó **
 
 ---
 
+## 3. Nguyên Tắc An Toàn & Đọ Chéo (Cross-matching) {#sec-3}
 
 Nguyên tắc truyền máu tối cao: **KHÔNG ĐỂ KHÁNG THỂ TRONG HUYẾT TƯƠNG NGƯỜI NHẬN GẶP VÀ PHÁ HỦY KHÁNG NGUYÊN TƯƠNG ỨNG TRÊN HỒNG CẦU NGƯỜI CHO**.
 
@@ -134,11 +157,12 @@ Nguyên tắc truyền máu tối cao: **KHÔNG ĐỂ KHÁNG THỂ TRONG HUYẾT
           • Đánh giá kháng thể bất thường trong máu người cho (ít nguy hiểm hơn do bị pha loãng nhanh).
 ```
 
+
 ---
 
+## 4. Tai Biến Truyền Máu Cấp Tính EBM {#sec-4}
 
-
-  - **Triệu chứng lâm sàng khởi phát ngay khi truyền vài mL máu**: Bệnh nhân cảm thấy nóng rát dọc tĩnh mạch truyền, rét run, sốt cao, đau thắt ngực dữ dội, đau vùng thắt lưng dữ dội (do tắc vi mạch thận), khó thở, tụt huyết áp trụy mạch và đái tháo sắc tố đỏ nâu (Hemoglobin niệu).
+- **Triệu chứng lâm sàng khởi phát ngay khi truyền vài mL máu**: Bệnh nhân cảm thấy nóng rát dọc tĩnh mạch truyền, rét run, sốt cao, đau thắt ngực dữ dội, đau vùng thắt lưng dữ dội (do tắc vi mạch thận), khó thở, tụt huyết áp trụy mạch và đái tháo sắc tố đỏ nâu (Hemoglobin niệu).
   - **Cơ chế tử vong**: Kháng thể Anti-A/Anti-B ngưng kết hồng cầu và kích hoạt dòng thác Bổ thể đục thủng màng hồng cầu ồ ạt trong lòng mạch $\rightarrow$ Giải phóng Hemoglobin tự do gây hoại tử ống thận cấp, giải phóng các chất hoạt mạch gây sốc và khởi phát **Đông máu nội mạch rải rác (DIC)**.
   - **Hành động cấp cứu tức thì**:
     1. **DỪNG TRUYỀN MÁU NGAY LẬP TỨC**, giữ đường truyền tĩnh mạch và kiểm tra lại túi máu.
@@ -148,8 +172,28 @@ Nguyên tắc truyền máu tối cao: **KHÔNG ĐỂ KHÁNG THỂ TRONG HUYẾT
 
 ---
 
+## 5. Tài Liệu Tham Khảo EBM {#sec-5}
 
 1. **Hall, J. E., & Hall, M. E. (2021)**. *Guyton and Hall Textbook of Medical Physiology* (14th ed.). Philadelphia: Elsevier. Chapter 36: Blood Types; Transfusion.
 2. **Barrett, K. E. et al. (2019)**. *Ganong's Review of Medical Physiology* (26th ed.). New York: McGraw-Hill. Chapter 31: Blood as a Circulatory Fluid.
 3. **Landsteiner, K. (1900)**. *Zur Kenntnis der antifermentativen, lytischen und agglutinierenden Wirkungen des Blutserums und der Lymphe*. Zentralblatt für Bakteriologie, 27, 357-362.
 4. **Moise, K. J., & Argoti, P. S. (2012)**. *Management and prevention of red cell alloimmunization in pregnancy*. Obstetrics & Gynecology, 120(5), 1132-1139.
+
+<!-- KHUNG TRÍCH DẪN Y VĂN CHUẨN AMA (CITATION BOX) -->
+<div class="citation-box">
+  <strong>Trích dẫn tài liệu tham khảo chuẩn (AMA Format):</strong><br />
+  1. Hall JE, Hall ME. <em>Guyton and Hall Textbook of Medical Physiology</em>. 14th ed. Philadelphia, PA: Elsevier; 2021.<br />
+2. Barrett KE, Barman SM, Brooks HL, Yuan JXJ. <em>Ganong's Review of Medical Physiology</em>. 26th ed. New York: McGraw-Hill; 2019.<br />
+3. Koeppen BM, Stanton BA. <em>Berne & Levy Physiology</em>. 7th ed. Philadelphia, PA: Elsevier; 2018.
+</div>
+
+<!-- HÀNG NÚT ĐIỀU HƯỚNG SPA -->
+<div class="btn-row">
+  <a href="#/basic-medical/giai-phau-sinh-ly" class="btn btn-primary">
+    <i class="fa-solid fa-arrow-left"></i> Quay lại Mục Lục Giải Phẫu & Sinh Lý
+  </a>
+  <a href="#sec-1" class="btn">
+    <i class="fa-solid fa-arrow-up"></i> Lên đầu trang
+  </a>
+</div>
+

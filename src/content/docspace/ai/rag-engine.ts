@@ -3,6 +3,9 @@
  * Tải file search-index.json và cung cấp hàm tìm kiếm văn bản đơn giản.
  */
 
+import { VAULT_CATALOG } from '../../knowledge-vault/vault-loader';
+import type { VaultArticle } from '../../knowledge-vault/types';
+
 export interface RAGChunk {
   id: string;
   file: string;
@@ -16,29 +19,56 @@ export interface RAGChunk {
 let searchIndex: RAGChunk[] = [];
 let isLoading = false;
 
+// Khởi tạo RAG Index từ Catalog Knowledge Vault
+function buildVaultRAGChunks(): RAGChunk[] {
+  if (!Array.isArray(VAULT_CATALOG)) return [];
+  return VAULT_CATALOG.map((art: VaultArticle) => ({
+    id: `vault_${art.id}`,
+    file: `#/vault?search=${encodeURIComponent(art.title)}`,
+    title: art.title,
+    specialty: art.specialty,
+    tags: [art.khoCode, art.khoName, ...(art.tags || []), ...(art.icd10 || []), ...(art.keywords || [])],
+    heading: `Kho Tri Thức ${art.khoName} (${art.khoCode})`,
+    content: art.snippet || (art.content ? art.content.slice(0, 500) : '') || art.title
+  }));
+}
+
 // Tải file index vào bộ nhớ RAM
 export async function loadRAGIndex(): Promise<void> {
   if (searchIndex.length > 0 || isLoading) return;
   
   try {
     isLoading = true;
-    console.log('[RAG] Đang tải knowledge index...');
-    // Đường dẫn tương đối từ index.html ở thư mục gốc
-    const response = await fetch('data/search-index.json');
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+    console.log('[RAG] Đang nạp Knowledge Vault RAG index...');
+
+    // 1. Nạp tức thì 2.362+ bài viết từ Knowledge Vault
+    const vaultChunks = buildVaultRAGChunks();
+    const seenIds = new Set<string>(vaultChunks.map(c => c.id));
+    searchIndex = [...vaultChunks];
+
+    // 2. Thử kéo thêm từ search-index.json nếu có
+    try {
+      const response = await fetch('data/search-index.json');
+      if (response.ok) {
+        const extraChunks: RAGChunk[] = await response.json();
+        if (Array.isArray(extraChunks)) {
+          extraChunks.forEach(c => {
+            if (c && c.id && !seenIds.has(c.id)) {
+              seenIds.add(c.id);
+              searchIndex.push(c);
+            }
+          });
+        }
+      }
+    } catch {
+      // Offline mode: Vault chunks are already loaded!
     }
-    searchIndex = await response.json();
-    console.log(`[RAG] Đã tải thành công ${searchIndex.length} khối kiến thức.`);
+
+    console.log(`[RAG] Đã nạp thành công ${searchIndex.length} khối kiến thức y khoa EBM.`);
   } catch (error) {
-    console.warn('[RAG] Lỗi khi tải search-index.json qua fetch:', error);
-    // Fallback: đọc từ inline bundle đã preload vào window
-    const fallback = (window as any).CLINIPORTAL_SEARCH_INDEX;
-    if (Array.isArray(fallback) && fallback.length > 0) {
-      searchIndex = fallback;
-      console.warn('[RAG] Offline fallback — using inline bundle. Đã tải', searchIndex.length, 'khối kiến thức.');
-    } else {
-      console.error('[RAG] Không có dữ liệu bundle inline — search disabled.');
+    console.warn('[RAG] Lỗi khi nạp search index:', error);
+    if (searchIndex.length === 0) {
+      searchIndex = buildVaultRAGChunks();
     }
   } finally {
     isLoading = false;

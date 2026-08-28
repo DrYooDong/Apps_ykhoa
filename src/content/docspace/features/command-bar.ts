@@ -11,6 +11,8 @@ import { drugIntelligencePanel } from './drug-intelligence-panel';
 import { quickReferenceDrawer } from './quick-reference-drawer';
 import { calculatorPicker } from './calculator-picker';
 import { escapeHtml } from '../docspace-view';
+import { VAULT_CATALOG } from '../../knowledge-vault/vault-loader';
+import { KHO_GUIDELINES_STATIC } from '../../ebm/guidelines/js/kho-guidelines-registry';
 
 export interface CommandItem {
   id: string;
@@ -354,8 +356,99 @@ export class ClinicalCommandBar {
           this.close();
           window.location.hash = '#/docspace/studios?tab=cirrhosis';
         }
+      },
+      // 6. EBM Bedside Tools & Shortcuts
+      {
+        id: 'ebm_fagan',
+        title: 'Fagan Nomogram — Xác Suất Hậu Nghiệm Cận Lâm Sàng (>fagan)',
+        category: 'feature',
+        categoryLabel: 'EBM Tool',
+        icon: 'fa-solid fa-chart-line',
+        description: 'Tính toán xác suất mắc bệnh sau khi có kết quả CLS (hs-cTn, D-Dimer, Procalcitonin) bằng định lý Bayes & đồ họa SVG',
+        badge: 'Bayes',
+        action: () => {
+          this.close();
+          quickReferenceDrawer.open('ebm_calc');
+        }
+      },
+      {
+        id: 'ebm_nnt',
+        title: 'Máy Tính NNT / NNH / Giảm Nguy Cơ Tuyệt Đối ARR (>nnt)',
+        category: 'feature',
+        categoryLabel: 'EBM Tool',
+        icon: 'fa-solid fa-calculator',
+        description: 'Tính số bệnh nhân cần điều trị để ngừa 1 biến cố tử vong/nhập viện từ CER và EER',
+        badge: 'NNT',
+        action: () => {
+          this.close();
+          quickReferenceDrawer.open('ebm_calc');
+        }
+      },
+      {
+        id: 'ebm_radar',
+        title: 'Guideline Radar Diff Viewer — So Sánh Thay Đổi Phác Đồ (>radar)',
+        category: 'feature',
+        categoryLabel: 'EBM Radar',
+        icon: 'fa-solid fa-satellite-dish',
+        description: 'GitHub-style Diff View so sánh phác đồ mới vs cũ (ESC 2026, ADA 2026, GOLD 2026, BYT VN) & Khuyến cáo COR/LOE',
+        badge: 'Diff',
+        action: () => {
+          this.close();
+          window.location.hash = '#/ebm/guideline-radar';
+        }
+      },
+      {
+        id: 'ebm_pico_hub',
+        title: 'EBM Master Command Center & PICO Search Engine (>pico)',
+        category: 'feature',
+        categoryLabel: 'EBM Hub',
+        icon: 'fa-solid fa-scale-balanced',
+        description: 'Trung tâm y học chứng cứ, tháp bằng chứng 6S, chu trình 5As và tra cứu câu hỏi lâm sàng PICO',
+        badge: 'EBM',
+        action: () => {
+          this.close();
+          window.location.hash = '#/ebm';
+        }
       }
     );
+
+    // 7. EBM Landmark Trials & Guidelines (59+ Nghiên cứu bản lề)
+    if (Array.isArray(KHO_GUIDELINES_STATIC)) {
+      for (const g of KHO_GUIDELINES_STATIC) {
+        commands.push({
+          id: `ebm_gdl_${g.id}`,
+          title: g.title,
+          category: 'reference',
+          categoryLabel: `EBM Landmark Trial · ${g.specialty || 'Lâm sàng'}`,
+          icon: 'fa-solid fa-book-journal-whills',
+          description: `${g.organization || 'EBM Guideline'} (${g.year || 2026}) — ${g.summary ? g.summary.slice(0, 80) + '…' : g.id}`,
+          badge: 'EBM',
+          action: () => {
+            this.close();
+            window.location.hash = `#/ebm/kho-guidelines`;
+          }
+        });
+      }
+    }
+
+    // 8. Knowledge Vault Articles (2.362+ Bài Viết EBM)
+    if (Array.isArray(VAULT_CATALOG)) {
+      for (const art of VAULT_CATALOG) {
+        commands.push({
+          id: `vault_${art.id}`,
+          title: art.title,
+          category: 'reference',
+          categoryLabel: `Kho Tri Thức · ${art.khoName}`,
+          icon: 'fa-solid fa-graduation-cap',
+          description: art.snippet || `${art.specialty} — ${art.khoName} (${art.khoCode})`,
+          badge: art.khoCode,
+          action: () => {
+            this.close();
+            window.location.hash = `#/vault?search=${encodeURIComponent(art.title)}`;
+          }
+        });
+      }
+    }
 
     return commands;
   }

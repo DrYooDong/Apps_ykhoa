@@ -78,13 +78,44 @@ function mountGlobalDocSpaceControls(): void {
     clinicalCommandBar.open();
   });
 
+  // AI Copilot Modal Trigger
+  const triggerAiCopilot = () => {
+    const profile = getActiveProfile();
+    const patients = profile ? getAllSoapPatients(profile.id) : [];
+    const activePatient = (window as any).dsp_current_soap_patient || patients[0] || {
+      id: 'desk_consultation',
+      patientCode: 'BN-KHAM',
+      bedNumber: 'PK-NgoạiTrú',
+      fullName: 'Bàn Khám Lâm Sàng',
+      age: 50,
+      gender: 'nam',
+      medicalRecordNo: 'HS-DESK',
+      admissionDiagnosis: 'Khám tổng quát',
+      currentDiagnosis: 'Khám tổng quát',
+      isEmrEntered: false,
+      soapStatus: 'chua_lam',
+      dayOfIllness: 1,
+      sNotes: '',
+      oNotes: '',
+      aAssessment: '',
+      pPlan: '',
+      clsOrders: [],
+      clsResults: [],
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString()
+    };
+    aiCopilotModal.open(activePatient);
+  };
+
+  document.getElementById('dspHeaderAiCopilotBtn')?.addEventListener('click', triggerAiCopilot);
+
   // Settings & Utilities Modal Trigger
   document.getElementById('dspHeaderSettingsBtn')?.addEventListener('click', () => {
     docSpaceSettingsModal.open();
   });
 
   // Reaction Chain Engine Drawer
-  document.getElementById('dspHeaderReactionChainBtn')?.addEventListener('click', () => {
+  const triggerReactionChain = () => {
     const activePatient = (window as any).dsp_current_soap_patient || null;
     if (activePatient) {
       reactionChainDrawer.open(activePatient);
@@ -112,12 +143,15 @@ function mountGlobalDocSpaceControls(): void {
         updatedAt: new Date().toISOString()
       });
     }
-  });
+  };
+
+  document.getElementById('dspHeaderReactionChainBtn')?.addEventListener('click', triggerReactionChain);
 
   // Quick Reference Drawer
-  document.getElementById('dspHeaderQuickRefBtn')?.addEventListener('click', () => {
+  const triggerQuickRef = () => {
     quickReferenceDrawer.open();
-  });
+  };
+  document.getElementById('dspHeaderQuickRefBtn')?.addEventListener('click', triggerQuickRef);
 
   // Drug Intelligence Panel
   document.getElementById('dspHeaderDrugIntelBtn')?.addEventListener('click', () => {
@@ -128,6 +162,31 @@ function mountGlobalDocSpaceControls(): void {
   document.getElementById('dspHeaderToolsBtn')?.addEventListener('click', () => {
     calculatorPicker.open();
   });
+
+  // Global Clinical Hotkeys (Ctrl+J, Ctrl+Shift+V, Ctrl+Shift+R)
+  if (!(window as any).dsp_hotkeys_mounted) {
+    (window as any).dsp_hotkeys_mounted = true;
+    window.addEventListener('keydown', (e: KeyboardEvent) => {
+      const isMac = navigator.platform.toUpperCase().indexOf('MAC') >= 0;
+      const mod = isMac ? e.metaKey : e.ctrlKey;
+      
+      // Ctrl+J -> AI Copilot Modal
+      if (mod && !e.shiftKey && e.key.toLowerCase() === 'j') {
+        e.preventDefault();
+        triggerAiCopilot();
+      }
+      // Ctrl+Shift+V -> Quick Reference Knowledge Vault Drawer
+      else if (mod && e.shiftKey && e.key.toLowerCase() === 'v') {
+        e.preventDefault();
+        triggerQuickRef();
+      }
+      // Ctrl+Shift+R -> CRCE 5-Step Reaction Chain Drawer
+      else if (mod && e.shiftKey && e.key.toLowerCase() === 'r') {
+        e.preventDefault();
+        triggerReactionChain();
+      }
+    });
+  }
 
   // Sidebar controls (Desktop Collapsible & Mobile Drawer)
   const sidebarEl = document.getElementById('dspSidebar');

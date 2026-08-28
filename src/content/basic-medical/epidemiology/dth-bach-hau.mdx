@@ -7,7 +7,7 @@ specialtyId: "epi-truyen-nhiem"
 category: "epidemiology"
 status: "published"
 version: "2.0.0"
-updatedAt: "2026-08-26"
+updatedAt: "2026-08-28"
 description: "Dịch tễ học Bệnh Bạch hầu (Diphtheria): Phân tích chi tiết tác nhân trực khuẩn Corynebacterium diphtheriae mang gen độc tố tox+, cơ chế màng giả hoại tử đường thở, độc tố ngoại sinh (Exotoxin) gây viêm cơ tim nhiễm độc và liệt thần kinh sọ, hiện tượng bùng phát dịch trở lại do khoảng trống miễn dịch (Immunity Gap) tại Việt Nam 2023-2024 và chiến lược điều trị kháng độc tố DAT kết hợp tiêm chủng vắc-xin DTP/Td."
 tags:
   - "diphtheria"
@@ -60,14 +60,35 @@ pillars:
     icon: "fa-book-medical"
 ---
 
-import { EpiTriangle, EpiAlert, EpiPillarsNav } from './components'
-
 # 🔬 DỊCH TỄ HỌC BỆNH BẠCH HẦU (DIPHTHERIA)
 
 <EpiPillarsNav />
 
+<!-- DẢI CHỈ SỐ NHANH (QUICK STATS STRIP) -->
+<section class="stats-strip">
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-val blue">4.0 – 5.0 (lây lan mạnh trong cộng đồng chưa có miễn dịch)</div>
+      <div class="stat-lbl">Hệ số lây truyền cơ bản ($R_0$)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val green">2 – 5 ngày (dao động từ 1 – 10 ngày)</div>
+      <div class="stat-lbl">Thời gian ủ bệnh trung bình</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val amber">Người & Véc-tơ</div>
+      <div class="stat-lbl">Véc-tơ / Phương thức lây truyền chính</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val red">5% – 10% (ở trẻ &lt; tuổi và người >40 tuổi có thể lên tới 20%); nguyên nhân tử vong hàng đầu là tắc nghẽn đường thở cấp và viêm cơ tim nhiễm độc</div>
+      <div class="stat-lbl">Tỷ lệ tử vong ca bệnh (CFR)</div>
+    </div>
+  </div>
+</section>
+
 ---
 
+## 1. Tam Giác Dịch Tễ Bạch Hầu {#sec-1}
 
 Dịch tễ học bệnh bạch hầu được định hình bởi **Tác nhân (Trực khuẩn *Corynebacterium diphtheriae* bị thực khuẩn thể beta lysogenic chèn gen mã hóa ngoại độc tố *tox+*)**, **Vật chủ (Người chưa được tiêm chủng hoặc có nồng độ kháng thể kháng độc tố suy giảm theo thời gian)** và **Môi trường (Khu vực tập trung đông đúc, vùng sâu vùng xa có tỷ lệ tiêm chủng gián đoạn)**.
 
@@ -110,8 +131,10 @@ Dịch tễ học bệnh bạch hầu được định hình bởi **Tác nhân 
   Màng giả bạch hầu (Pseudomembrane) được hình thành do ngoại độc tố làm hoại tử tế bào biểu mô niêm mạc, kết hợp với fibrin, bạch cầu thoái hóa và vi khuẩn. Màng giả có màu trắng ngà hoặc xám tro, **dai dính chặt vào niêm mạc bên dưới; nếu cố tình dùng kẹp bóc tách sẽ gây chảy máu ồ ạt** và làm giải phóng một lượng lớn ngoại độc tố tự do vào hệ tuần hoàn. Màng giả lan nhanh xuống thanh - khí - phế quản có thể gây **nghẹt thở cấp và tử vong trong vài giờ**.
 </EpiAlert>
 
+
 ---
 
+## 2. Ngoại Độc Tố & Màng Giả Hoại Tử {#sec-2}
 
 Ngoại độc tố bạch hầu (*Diphtheria Toxin - DT*) là một chuỗi polypeptide gồm 2 tiểu đơn vị liên kết bằng cầu nối disulfide:
 - **Tiểu đơn vị B (Binding/Translocation)**: Gắn vào thụ thể *HB-EGF* trên màng tế bào tim, thần kinh và thận.
@@ -125,16 +148,20 @@ Ngoại Độc Tố Bạch Hầu (DT) ──► Hấp thu vào máu (Toxemia)
         └──► THẬN: Hoại tử ống thận cấp do độc tố
 ```
 
+
 ---
 
+## 3. Động Học Lây Truyền & Khoảng Trống Miễn Dịch {#sec-3}
 
 <EpiAlert type="pearl" title="Khoảng Trống Miễn Dịch Ở Thanh Thiếu Niên và Người Lớn">
   - **Miễn dịch sau tiêm vắc-xin không kéo dài suốt đời**: Nồng độ kháng thể kháng độc tố bạch hầu (*anti-toxin IgG*) đạt đỉnh sau các mũi tiêm cơ bản lúc nhỏ nhưng **suy giảm dần sau mỗi 5 – 10 năm**.
   - **Dịch tễ học chuyển dịch lứa tuổi**: Khi tỷ lệ tiêm nhắc lại vắc-xin Td/Tdap ở lứa tuổi học sinh và thanh thiếu niên bị bỏ quên, quần thể này sẽ hình thành một **"khoảng trống miễn dịch" (Immunity Gap)**. Đây là nguyên nhân các ổ dịch bạch hầu tại Việt Nam gần đây (năm 2020 tại Đắk Lắk/Gia Lai và năm 2023-2024 tại Hà Giang, Nghệ An) chủ yếu xảy ra ở đối tượng từ **10 đến 25 tuổi**.
 </EpiAlert>
 
+
 ---
 
+## 4. Viêm Cơ Tim Nhiễm Độc & Liệt Thần Kinh {#sec-4}
 
 1. **Kháng độc tố bạch hầu từ huyết thanh ngựa (Diphtheria Antitoxin - DAT)**:
    - **Là thuốc điều trị đặc hiệu sống còn duy nhất**. DAT chỉ có khả năng trung hòa độc tố tự do đang lưu hành trong máu; **không thể trung hòa độc tố đã gắn và xâm nhập vào bên trong tế bào tim/thần kinh**.
@@ -145,8 +172,10 @@ Ngoại Độc Tố Bạch Hầu (DT) ──► Hấp thu vào máu (Toxemia)
    - **Erythromycin** (uống 14 ngày) hoặc **Penicillin G** (tiêm bắp/tĩnh mạch 14 ngày).
    - Mục đích: Cắt đứt sự sản sinh độc tố mới và loại bỏ tình trạng mang trùng lây lan ra cộng đồng (bệnh nhân hết khả năng lây truyền sau 48h dùng kháng sinh thích hợp).
 
+
 ---
 
+## 5. Gánh Nặng Dịch Tễ & Ổ Dịch VN 2024 {#sec-5}
 
 <EpiAlert type="surveillance" title="Quy Trình Khoanh Vùng và Xử Trí Ổ Dịch Theo Bộ Y Tế (QĐ 3594/QĐ-BYT)">
   1. **Cách ly ca bệnh**: Cách ly nghiêm ngặt đường hô hấp cho đến khi có 2 mẫu cấy dịch họng âm tính liên tiếp cách nhau ít nhất 24 giờ.
@@ -156,10 +185,31 @@ Ngoại Độc Tố Bạch Hầu (DT) ──► Hấp thu vào máu (Toxemia)
      - Tiêm ngay 1 mũi vắc-xin chứa thành phần bạch hầu (Td / DTP) nếu mũi tiêm gần nhất đã quá 5 năm.
 </EpiAlert>
 
+
 ---
 
+## 6. Kháng Độc Tố DAT & Kháng Sinh Khẩn Cấp {#sec-6}
 
 1. **Bộ Y Tế Việt Nam (2020)**. *Hướng dẫn chẩn đoán, điều trị bệnh Bạch hầu* (Ban hành kèm theo Quyết định số 3594/QĐ-BYT).
 2. **World Health Organization (2018)**. *Diphtheria vaccine: WHO position paper – August 2017*. Weekly Epidemiological Record, 92(31), 417-436.
 3. **Clarke, K. E. et al. (2019)**. *Review of the Global Epidemiology of Diphtheria, 2000–2017*. Emerging Infectious Diseases, 25(10), 1834-1842.
 4. **Truelove, S. A. et al. (2020)**. *Clinical and Epidemiological Aspects of Diphtheria: A Systematic Review and Meta-analysis*. Clinical Infectious Diseases, 71(1), 89-97.
+
+<!-- KHUNG TRÍCH DẪN Y VĂN CHUẨN AMA (CITATION BOX) -->
+<div class="citation-box">
+  <strong>Trích dẫn tài liệu tham khảo chuẩn (AMA Format):</strong><br />
+  1. Celentano DD, Szklo M. <em>Gordis Epidemiology</em>. 6th ed. Philadelphia, PA: Elsevier; 2019.<br />
+2. World Health Organization (WHO). <em>Global Surveillance and Vector Control Guidelines</em>. Geneva: WHO Press; 2024.<br />
+3. Centers for Disease Control and Prevention (CDC). <em>Epidemiology and Prevention of Vaccine-Preventable Diseases</em>. 14th ed. Washington, DC; 2024.
+</div>
+
+<!-- HÀNG NÚT ĐIỀU HƯỚNG SPA -->
+<div class="btn-row">
+  <a href="#/basic-medical/dich-te-hoc" class="btn btn-primary">
+    <i class="fa-solid fa-arrow-left"></i> Quay lại Mục Lục Dịch Tễ Học
+  </a>
+  <a href="#sec-1" class="btn">
+    <i class="fa-solid fa-arrow-up"></i> Lên đầu trang
+  </a>
+</div>
+

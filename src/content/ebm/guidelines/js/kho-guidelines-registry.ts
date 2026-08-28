@@ -912,7 +912,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     year: 2022,
     organization: 'Hiệp hội Nghiên cứu Bệnh Gan Châu Âu (EASL) & Baveno VII Faculty',
     journal: 'J Hepatol',
-    file: '2021-bavenovii-taltmc.html',
+    file: '2022-easl-baveno-vii-portal-hypertension-consensus.html',
     conditionKey: 'gerd-peptic',
     icd10: ['K76.6', 'K74.6', 'I85.0'],
     intervention: 'Đánh giá không xâm lấn cACLD (Quy tắc số 5 LSM 10-15-20-25 kPa), tiêu chuẩn Baveno VI mở rộng tránh nội soi (LSM < 20 + PLT ≥ 150), Carvedilol dự phòng đợt mất bù đầu tiên, lưu đồ cấp cứu AVB 0h-12h-24h/72h (Pre-emptive TIPS)',
@@ -922,7 +922,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     detailedConclusion: 'Áp dụng Quy tắc số 5 của LSM và tiêu chuẩn Baveno VI giúp giảm thiểu nội soi không cần thiết; dùng Carvedilol sớm khi có CSPH và kích hoạt Pre-emptive TIPS trong 72h cho AVB nguy cơ cao là chìa khóa cải thiện sống còn.'
   },
   {
-    id: 'International_Association_of_Pancreatology_Revised_Guidelines_on_Acute_Pancreatitis_2025',
+    id: '2025-iap-acute-pancreatitis',
     title: 'IAP 2025: Hướng Dẫn Đồng Thuận Quốc Tế về Quản Lý Viêm Tụy Cấp',
     titleEn: 'International Association of Pancreatology Revised Guidelines on Acute Pancreatitis 2025',
     sourceType: 'intl-guideline',
@@ -932,7 +932,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     year: 2025,
     organization: 'Hiệp hội Tụy học Quốc tế (IAP), APA, EPC, IPC & JPS',
     journal: 'Pancreatology',
-    file: 'International_Association_of_Pancreatology_Revised_Guidelines_on_Acute_Pancreatitis_2025.html',
+    file: '2025-iap-acute-pancreatitis.html',
     conditionKey: 'gerd-peptic',
     icd10: ['K85', 'K85.0', 'K85.1', 'K85.9'],
     intervention: 'Chẩn đoán 2/3, hồi sức dịch vừa phải 1.5 ml/kg/h bằng Lactated Ringer\'s (WATERFALL), cấm kháng sinh/probiotics dự phòng, ăn đặc ít béo sớm, ERCP khi có viêm đường mật, can thiệp Step-Up hoại tử tụy (PCD/ETD LAMS/VARD) sau 4 tuần',

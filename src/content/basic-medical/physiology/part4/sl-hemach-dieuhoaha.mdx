@@ -10,7 +10,7 @@ ganongChapter: "Ganong 26th - Chapters 31 & 32: Dynamics of Blood and Lymph Flow
 category: "physiology"
 status: "published"
 version: "2.0.0"
-updatedAt: "2026-08-26"
+updatedAt: "2026-08-28"
 description: "Sinh lý học Hệ Mạch & Huyết áp: Cấu trúc chức năng các tầng mạch máu, huyết động lực học Poiseuille (kháng lực tỷ lệ nghịch bán kính lũy thừa 4), công thức huyết áp động mạch trung bình (MAP), cơ chế điều hòa thần kinh ngắn hạn qua phản xạ Baroreceptor (Xoang cảnh & Quai ĐMC), phản xạ thiếu máu não Cushing và cơ chế thể dịch dài hạn của hệ RAA (Renin-Angiotensin-Aldosterone), ADH và Peptides lợi niệu ANP/BNP."
 tags:
   - "sinh-ly"
@@ -50,14 +50,35 @@ sections:
     icon: "fa-book-medical"
 ---
 
-import { PhysioAlert, PhysioQuickNav, PhysioFeedbackLoop } from '../components'
+# 🧬 SINH LÝ HỆ MẠCH & ĐIỀU HÒA HUYẾT ÁP HỆ THỐNG
 
-# 🫀 SINH LÝ HỆ MẠCH & ĐIỀU HÒA HUYẾT ÁP HỆ THỐNG
+<PhysioQuickNav />
 
-
+<!-- DẢI CHỈ SỐ NHANH (QUICK STATS STRIP) -->
+<section class="stats-strip">
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-val blue">PHYS-CARD-03</div>
+      <div class="stat-lbl">Mã chuyên đề • Sinh Lý Tim Mạch & Hô Hấp</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val green">Nội Môi Ổn Định</div>
+      <div class="stat-lbl">Cân bằng gradient điện hóa & Áp suất thẩm thấu</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val amber">Feedback Loop</div>
+      <div class="stat-lbl">Vòng điều hòa phản hồi thần kinh - thể dịch</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val purple">Dược Lý EBM</div>
+      <div class="stat-lbl">Ứng dụng lâm sàng chuẩn Guyton 14th & Ganong 26th</div>
+    </div>
+  </div>
+</section>
 
 ---
 
+## 1. Cấu Trúc & Phân Loại Các Tầng Mạch {#sec-1}
 
 Hệ thống mạch máu trong đại tuần hoàn được chia thành các phân đoạn chức năng chuyên biệt:
 
@@ -71,8 +92,10 @@ Hệ thống mạch máu trong đại tuần hoàn được chia thành các ph�
 [TĨNH MẠCH (Veins & Venules)] ──► Mạch chứa dung tích (Chứa 65% tổng thể tích máu, kiểm soát hồi lưu tiền tải)
 ```
 
+
 ---
 
+## 2. Huyết Động Học & Định Luật Poiseuille {#sec-2}
 
 Dòng chảy của máu trong hệ mạch tuân theo các nguyên lý vật lý thủy động lực học:
 
@@ -92,8 +115,10 @@ $$R = \frac{8 \cdot \eta \cdot L}{\pi \cdot r^4}$$
 
 $$\text{Bán kính giảm } 50\% \quad \Longrightarrow \quad \text{Sức cản mạch máu TĂNG GẤP } 16\text{ LẦN } (2^4 = 16)$$
 
+
 ---
 
+## 3. Huyết Áp Động Mạch Trung Bình (MAP) {#sec-3}
 
 Huyết áp là áp lực của dòng máu tác động lên một đơn vị diện tích thành động mạch:
 - **Huyết áp tâm thu (SBP)**: Đạt đỉnh khi thất trái tống máu ($\approx 120\text{ mmHg}$).
@@ -107,8 +132,10 @@ $$MAP = DBP + \frac{1}{3}(SBP - DBP) = 80 + \frac{1}{3}(120 - 80) = \mathbf{93.3
 
 - **Ý nghĩa lâm sàng**: $MAP$ là áp lực tưới máu thực tế nuôi dưỡng các cơ quan sinh tồn (Não, Thận, Tim). Trong hồi sức cấp cứu sốc, **mục tiêu bắt buộc là duy trì $MAP \ge 65\text{ mmHg}$**.
 
+
 ---
 
+## 4. Điều Hòa Thần Kinh Nhanh (Baroreceptor & Cushing) {#sec-4}
 
 Phản xạ thụ thể áp lực (*Baroreceptor Reflex*) phản ứng trong vòng vài phần giây để điều chỉnh các biến động huyết áp tức thì (khi thay đổi tư thế từ nằm sang đứng):
 
@@ -146,6 +173,7 @@ Làm chậm nhịp tim (M2)                                Giãn tiểu động 
 
 ---
 
+## 5. Điều Hòa Thể Dịch Dài Hạn (Hệ RAA, ADH, ANP) {#sec-5}
 
 Thận là cơ quan giữ vai trò quyết định trong việc thiết lập mức huyết áp nền tảng dài hạn của cơ thể:
 
@@ -175,8 +203,28 @@ Tăng SVR ──► Tăng HA  Giữ Na+ & Nước     Tiết ADH giữ nước  
 
 ---
 
+## 6. Tài Liệu Tham Khảo EBM {#sec-6}
 
 1. **Hall, J. E., & Hall, M. E. (2021)**. *Guyton and Hall Textbook of Medical Physiology* (14th ed.). Philadelphia: Elsevier. Chapters 14–19: Vascular Physics & Arterial Pressure Regulation.
 2. **Barrett, K. E. et al. (2019)**. *Ganong's Review of Medical Physiology* (26th ed.). New York: McGraw-Hill. Chapters 31 & 32: Blood Flow Dynamics & Cardiovascular Regulation.
 3. **Whelton, P. K. et al. (2018)**. *2017 ACC/AHA Guideline for the Prevention, Detection, Evaluation, and Management of High Blood Pressure in Adults*. Journal of the American College of Cardiology, 71(19), e127-e248.
 4. **Cowley, A. W. (1992)**. *Long-term control of arterial pressure*. Physiological Reviews, 72(1), 231-300.
+
+<!-- KHUNG TRÍCH DẪN Y VĂN CHUẨN AMA (CITATION BOX) -->
+<div class="citation-box">
+  <strong>Trích dẫn tài liệu tham khảo chuẩn (AMA Format):</strong><br />
+  1. Hall JE, Hall ME. <em>Guyton and Hall Textbook of Medical Physiology</em>. 14th ed. Philadelphia, PA: Elsevier; 2021.<br />
+2. Barrett KE, Barman SM, Brooks HL, Yuan JXJ. <em>Ganong's Review of Medical Physiology</em>. 26th ed. New York: McGraw-Hill; 2019.<br />
+3. Koeppen BM, Stanton BA. <em>Berne & Levy Physiology</em>. 7th ed. Philadelphia, PA: Elsevier; 2018.
+</div>
+
+<!-- HÀNG NÚT ĐIỀU HƯỚNG SPA -->
+<div class="btn-row">
+  <a href="#/basic-medical/giai-phau-sinh-ly" class="btn btn-primary">
+    <i class="fa-solid fa-arrow-left"></i> Quay lại Mục Lục Giải Phẫu & Sinh Lý
+  </a>
+  <a href="#sec-1" class="btn">
+    <i class="fa-solid fa-arrow-up"></i> Lên đầu trang
+  </a>
+</div>
+
