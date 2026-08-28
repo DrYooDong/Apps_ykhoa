@@ -7,20 +7,20 @@ import { Study } from './guidelines-types';
 
 import './guidelines-types';
 import './guidelinesdata';
-import './data/predatory-blacklist';
-import './js/openalex-service';
-import './js/journal-trust-scorer';
-import './js/guideline-sync';
-import './js/guideline-charts-engine';
-import './js/guideline-table';
-import './js/guideline-modals';
-import './js/drug-linker';
-import './js/guideline-visualizations';
-import './js/guideline-evidence-analytics';
-import './js/guideline-cmd-palette';
-import './js/guideline-cdss';
-import './js/guideline-compare-matrix';
-import './js/guideline-tools';
+import '../data/predatory-blacklist';
+import './openalex-service';
+import './journal-trust-scorer';
+import './guideline-sync';
+import './guideline-charts-engine';
+import './guideline-table';
+import './guideline-modals';
+import './drug-linker';
+import './guideline-visualizations';
+import './guideline-evidence-analytics';
+import './guideline-cmd-palette';
+import './guideline-cdss';
+import './guideline-compare-matrix';
+import './guideline-tools';
 
 export function toggleSidebar(): void {
   const leftNav = document.getElementById('left-nav');

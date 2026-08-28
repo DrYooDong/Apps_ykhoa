@@ -18,7 +18,7 @@ export interface PredatoryAuditResult {
   summary: string;
 }
 
-import '../guidelines-types';
+import '../js/guidelines-types';
 
 export const PREDATORY_PUBLISHERS = [
   { name: 'OMICS International', aliases: ['omics', 'omics group', 'omics publishing'], risk: 'HIGH', reason: 'Nằm trong danh sách cảnh báo FTC và Beall\'s List với tiền lệ giả mạo phản biện và thu phí ẩn.' },
