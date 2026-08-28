@@ -87,6 +87,24 @@
   cursor: pointer;
   transition: all 0.18s ease;
   white-space: nowrap;
+  min-height: var(--touch-min, 44px);
+  user-select: none;
+}
+
+.epi-tool-pill-btn:active,
+.epi-card:active,
+.epi-btn-primary:active,
+.epi-btn-secondary:active {
+  transform: translateY(0) scale(0.975) !important;
+  transition-duration: 80ms !important;
+}
+
+.epi-tool-pill-btn:focus-visible,
+.epi-card:focus-visible,
+.epi-btn-primary:focus-visible,
+.epi-btn-secondary:focus-visible {
+  outline: var(--focus-outline, 3px solid var(--color-primary));
+  outline-offset: var(--focus-outline-offset, 2px);
 }
 
 [data-theme="dark"] .epi-tool-pill-btn {

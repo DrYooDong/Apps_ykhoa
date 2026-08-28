@@ -43,6 +43,13 @@ export class CliniRouter {
 
         // Catch static relative guideline & medical-statistics links
         if (href.endsWith('.html') && !href.startsWith('http') && !href.startsWith('#')) {
+          // Guidelines hub & Kho guidelines return links
+          if (href.endsWith('guidelines.html') || href.endsWith('kho-guidelines/index.html') || href === 'index.html') {
+            e.preventDefault();
+            e.stopPropagation();
+            this.navigate('/ebm/kho-guidelines');
+            return;
+          }
           if (href.includes('medical-statistics/')) {
             const statMatch = href.match(/medical-statistics\/([^/]+?)(?:\.html)?$/i);
             if (statMatch && statMatch[1] && statMatch[1] !== 'thongkeyhoc' && statMatch[1] !== 'index') {
@@ -58,6 +65,11 @@ export class CliniRouter {
               e.preventDefault();
               e.stopPropagation();
               this.navigate(`/ebm/kho-guidelines/${slugMatch[1]}`);
+              return;
+            } else {
+              e.preventDefault();
+              e.stopPropagation();
+              this.navigate('/ebm/kho-guidelines');
               return;
             }
           }

@@ -899,4 +899,12 @@ function hydrateMdxInteractiveTools(mountEl: HTMLElement): void {
       }
     });
   });
+
+  // 4. Normalize Hub / Return Back Links
+  mountEl.querySelectorAll<HTMLAnchorElement>('a').forEach(link => {
+    const href = link.getAttribute('href') || '';
+    if (href.endsWith('guidelines.html') || href.endsWith('kho-guidelines/index.html') || href === 'index.html') {
+      link.setAttribute('href', '#/ebm/kho-guidelines');
+    }
+  });
 }

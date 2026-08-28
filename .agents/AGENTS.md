@@ -27,7 +27,13 @@ d:\Apps_ykhoa\.agents/
 │   ├── FILE_MAP.md                   # Bản đồ cấu trúc file
 │   ├── WORKFLOW_CHECKLISTS.md        # Bộ bảng kiểm quy trình
 │   ├── DESIGN_SQUAD_KANBAN.md        # Bảng điều phối Kanban của Design Squad
-│   └── DESIGN_TO_CODE.md             # Hướng dẫn thiết kế sang mã nguồn
+│   ├── DESIGN_TO_CODE.md             # Hướng dẫn thiết kế sang mã nguồn
+│   └── design-vault/                 # 🏛️ Hệ thống 4 Kho Thiết Kế Chuyên Biệt (Design Vaults)
+│       ├── 0.0_DESIGN_VAULT_INDEX.md
+│       ├── 1.0_DESIGN_TOKENS_VAULT.md
+│       ├── 2.0_UI_PATTERNS_VAULT.md
+│       ├── 3.0_SVG_GRAPHICS_VAULT.md
+│       └── 4.0_ACCESSIBILITY_AND_ERGONOMICS_VAULT.md
 ├── learnings/                        # Bộ nhớ học tập & Lịch sử sửa bug dự án (Lessons Learned)
 │   └── README.md
 ├── rules/                            # Các bộ quy tắc tuân thủ mô-đun hóa
@@ -59,7 +65,7 @@ d:\Apps_ykhoa\.agents/
 | Khi làm task... | Đọc file / Skill... |
 |-----------------|---------------------|
 | Bất kỳ task nào | `.agents/docs/PROJECT_OVERVIEW.md` & `rules/*.md` |
-| Thiết kế UI/UX, Component | `.agents/rules/design-squad-rules.md` & Skill `design-agent-squad` |
+| Thiết kế UI/UX, Component | `.agents/docs/design-vault/0.0_DESIGN_VAULT_INDEX.md` & Skill `core-components` |
 | Quản lý Task Design | `.agents/docs/DESIGN_SQUAD_KANBAN.md` |
 | Tìm file cụ thể | `.agents/docs/FILE_MAP.md` |
 | Checklist quy trình (A/B/C/D) | `.agents/docs/WORKFLOW_CHECKLISTS.md` |

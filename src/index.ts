@@ -714,9 +714,17 @@ function setupGlobalQuickSearch(): void {
       e.preventDefault();
       searchInput.focus();
     }
-    if (e.key === 'Escape' && dropdown.style.display === 'block') {
-      dropdown.style.display = 'none';
-      searchInput.blur();
+    if (e.key === 'Escape') {
+      if (dropdown.style.display === 'block') {
+        dropdown.style.display = 'none';
+        searchInput.blur();
+      }
+      document.querySelectorAll('.notepad-drawer.show, .clini-drawer-jaw.is-open, .cmd-palette-overlay.show, .hotkey-modal-overlay.show, .cheatsheets-modal-overlay, .cp-modal-overlay.show').forEach((el) => {
+        el.classList.remove('show', 'is-open');
+        if (el.id === 'cheatsheetsModalOverlay' && (el as HTMLElement).style.display === 'block') {
+          (el as HTMLElement).style.display = 'none';
+        }
+      });
     }
   });
 

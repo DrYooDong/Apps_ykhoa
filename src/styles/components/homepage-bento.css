@@ -271,6 +271,25 @@
   box-shadow: var(--glass-shadow-sm), var(--glass-inset-highlight);
   position: relative;
   overflow: hidden;
+  user-select: none;
+  min-height: var(--touch-min, 44px);
+}
+
+.emergency-chip:active,
+.module-triad-card:active,
+.tool-belt-card:active,
+.status-pill:active,
+.btn-glass-action:active {
+  transform: translateY(0) scale(0.975) !important;
+  transition-duration: 80ms !important;
+}
+
+.emergency-chip:focus-visible,
+.module-triad-card:focus-visible,
+.tool-belt-card:focus-visible,
+.status-pill:focus-visible {
+  outline: var(--focus-outline, 3px solid var(--color-primary));
+  outline-offset: var(--focus-outline-offset, 2px);
 }
 
 .emergency-chip::before {
@@ -1204,5 +1223,31 @@
   .glass-emergency-strip {
     grid-template-columns: 1fr;
   }
+}
+
+/* ══════════════════════════════════════════════════════════
+   TACTILE MICRO-INTERACTIONS & WCAG 2.1 FOCUS ACCESSIBILITY
+   ══════════════════════════════════════════════════════════ */
+.emergency-chip:active,
+.module-triad-card:active,
+.tool-belt-card:active,
+.status-pill:active,
+.btn-glass-action:active,
+.launcher-item:active,
+.notepad-fab:active {
+  transform: scale(0.975) !important;
+  transition: transform 0.1s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+.emergency-chip:focus-visible,
+.module-triad-card:focus-visible,
+.tool-belt-card:focus-visible,
+.status-pill:focus-visible,
+.btn-glass-action:focus-visible,
+.launcher-item:focus-visible,
+.notepad-fab:focus-visible,
+.header-module-btn:focus-visible {
+  outline: none !important;
+  box-shadow: 0 0 0 3px var(--color-primary, #0284c7), 0 0 0 6px rgba(2, 132, 199, 0.3) !important;
 }
 

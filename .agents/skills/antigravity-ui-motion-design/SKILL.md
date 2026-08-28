@@ -1,50 +1,132 @@
-﻿---
+---
 name: antigravity-ui-motion-design
-description: Kỹ nghệ chuyển động & không gian Antigravity: Hiệu ứng glassmorphism, 3D CSS transforms, scroll-linked animations mượt mà 60fps trên web y khoa.
+description: Kỹ nghệ chuyển động & không gian Antigravity: Hiệu ứng glassmorphism, 3D CSS transforms, Spring physics, Pulse Shimmer, và Micro-animations 60fps mượt mà trên web y khoa.
 ---
 
-# Antigravity UI & Motion Design Expert
+# 🚀 Antigravity UI & Motion Engineering Expert
+## Kỹ Thuật Chuyển Động Vi Tế & Không Gian Trọng Lực (CliniPortal Standard)
 
-## When to Use
-- You are building a highly interactive web interface with spatial depth, glassmorphism, and motion-heavy UI.
-- The design should lean on GSAP, 3D CSS transforms, or React-based 3D presentation patterns.
-- You need a strong visual direction for dashboards, landing pages, or immersive product surfaces rather than a conventional flat UI.
+> **Mục tiêu:** Tạo ra trải nghiệm thị giác sống động, mượt mà (60fps), công thái học cao mà không làm chậm thiết bị y tế hoặc gây mỏi mắt cho bác sĩ.
 
-## ðŸŽ¯ Role Overview
+---
 
-You are a world-class UI/UX Engineer specializing in "Antigravity Design." Your primary skill is building highly interactive, spatial, and weightless web interfaces. You excel at creating isometric grids, floating elements, glassmorphism, and buttery-smooth scroll animations.
+## 🎯 1. Nguyên Tắc Trọng Lực & Chiều Sâu (Antigravity Spatial Depth)
 
-## ðŸ› ï¸ Preferred Tech Stack
+- **Cảm giác Không trọng lượng (Weightlessness)**: Các thẻ (Cards) và Panel công cụ tạo cảm giác lơ lửng bằng bóng đổ phân tán hai tầng (Ambient Light + Direct Light).
+- **Phản hồi Xúc giác (Tactile Spring Physics)**: Mọi tương tác chạm (Tap/Click) đều có độ nén đàn hồi tinh tế thay vì chuyển đổi thô cứng.
+- **Glassmorphism Chuẩn Mực**: Nền bán trong suốt kết hợp độ mờ quang sai cao cấp (`backdrop-filter: blur(16px) saturate(180%)`).
 
-When asked to build or generate UI components, default to the following stack unless instructed otherwise:
+```css
+/* Easing Tokens Chuẩn Chuyển Động Cao Cấp */
+:root {
+  --ease-spring:  cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --ease-out:     cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out:  cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer:  cubic-bezier(0.32, 0.72, 0, 1);  /* Trượt Drawer mượt mà */
 
-- **Framework:** React / Next.js
-- **Styling:** Tailwind CSS (for layout and utility) + Custom CSS for complex 3D transforms
-- **Animation:** GSAP (GreenSock) + ScrollTrigger for scroll-linked motion
-- **3D Elements:** React Three Fiber (R3F) or CSS 3D Transforms (`rotateX`, `rotateY`, `perspective`)
+  --duration-fast: 150ms;
+  --duration-base: 220ms;
+  --duration-slow: 380ms;
+}
+```
 
-## ðŸ“ Design Principles (The "Antigravity" Vibe)
+---
 
-- **Weightlessness:** UI cards and elements should appear to float. Use layered, soft, diffused drop-shadows (e.g., `box-shadow: 0 20px 40px rgba(0,0,0,0.05)`).
-- **Spatial Depth:** Utilize Z-axis layering. Backgrounds should feel deep, and foreground elements should pop out using CSS `perspective`.
-- **Glassmorphism:** Use subtle translucency, background blur (`backdrop-filter: blur(12px)`), and semi-transparent borders to create a glassy, premium feel.
-- **Isometric Snapping:** When building dashboards or card grids, use 3D CSS transforms to tilt them into an isometric perspective (e.g., `transform: rotateX(60deg) rotateZ(-45deg)`).
+## ✨ 2. Micro-Interactions & Animation Keyframes Chuẩn
 
-## ðŸŽ¬ Motion & Animation Rules
+### A. Chấm Nhịp Tim Báo Hiệu Trạng Thái (`.clini-pulse-dot`)
+*Lấy cảm hứng từ Feature Pulse Dot của freeCodeCamp:*
+```css
+.clini-pulse-dot {
+  position: relative;
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--clinical-critical);
+}
 
-- **Never snap instantly:** All state changes (hover, focus, active) must have smooth transitions (minimum `0.3s ease-out`).
-- **Scroll Hijacking (Tasteful):** Use GSAP ScrollTrigger to make elements float into view from the Y-axis with slight rotation as the user scrolls.
-- **Staggered Entrances:** When a grid of cards loads, they should not appear all at once. Stagger their entrance animations by `0.1s` so they drop in like dominoes.
-- **Parallax:** Background elements should move slower than foreground elements on scroll to enhance the 3D illusion.
+.clini-pulse-dot::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: inherit;
+  animation: clini-dot-pulse 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
 
-## ðŸš§ Execution Constraints
+@keyframes clini-dot-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  70% {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+```
 
-- Always write modular, reusable components.
-- Ensure all animations are disabled for users with `prefers-reduced-motion: reduce`.
-- Prioritize performance: Use `will-change: transform` for animated elements to offload rendering to the GPU. Do not animate expensive properties like `box-shadow` or `filter` continuously.
+### B. Skeleton Heartbeat Shimmer (`pulse-1` & `pulse-2`)
+Hai dải xung so le giúp màn hình chờ tải đạt hiệu ứng nhịp tim tự nhiên:
+```css
+@keyframes clini-shimmer-1 {
+  0%, 100% { opacity: 1; transform: scaleY(1); }
+  50% { opacity: 0.45; transform: scaleY(0.98); }
+}
 
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+@keyframes clini-shimmer-2 {
+  0% { opacity: 0.45; transform: scaleY(0.98); }
+  50% { opacity: 1; transform: scaleY(1); }
+  100% { opacity: 0.45; transform: scaleY(0.98); }
+}
+```
 
+### C. Tactile Press Feedback (Nén vật lý)
+```css
+.clini-interactive:active {
+  transform: scale(0.975);
+  transition: transform 80ms var(--ease-spring);
+}
+```
+
+---
+
+## 🛡️ 3. Bảo Vệ Người Dùng Nhạy Cảm Chuyển Động (Reduced Motion)
+
+Bắt buộc tuân thủ quy tắc WCAG 2.2 AA. Khi người dùng bật cài đặt giảm chuyển động trên hệ điều hành, toàn bộ animation phải dừng lại ngay lập tức:
+
+```css
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .clini-pulse-dot::after,
+  .clini-skeleton--line-1,
+  .clini-skeleton--line-2 {
+    animation: none !important;
+    opacity: 0.75 !important;
+  }
+}
+```
+
+---
+
+## ⚡ 4. Tối Ưu Hiệu Năng 60 FPS (Hardware Acceleration)
+
+1. **Chỉ animate `transform` và `opacity`**: Không animate `margin`, `padding`, `width`, `height`, `box-shadow` liên tục để tránh hiện tượng CPU Layout Reflow.
+2. **Kích hoạt GPU Rendering**: Bổ sung `will-change: transform` hoặc `transform: translateZ(0)` cho các card động phức tạp.
+3. **Lazy Animations**: Chỉ kích hoạt chuyển động khi phần tử lọt vào khung nhìn (IntersectionObserver).

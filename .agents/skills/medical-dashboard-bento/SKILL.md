@@ -3,80 +3,84 @@ name: medical-dashboard-bento
 description: Kỹ năng thiết kế và phát triển giao diện Bento Grid Dashboard Y khoa hiện đại (Vanilla HTML/CSS/JS), linh kiện KPI sinh hiệu, đồng hồ an toàn Gauge SVG, mạng lưới Node IoT và Bảng đối sánh y khoa cho CliniPortal.
 ---
 
-# Medical Dashboard Bento Skill — CliniPortal
+# Medical Dashboard Bento Mastery — CliniPortal
 
-Tài liệu hướng dẫn AI thiết kế và phát triển các giao diện Dashboard Y khoa hiện đại dạng **Bento Grid** (dựa trên thiết kế PFL-HCare) bằng công nghệ thuần Vanilla HTML5 / CSS3 / JavaScript (ES6+) không dùng framework.
-
----
-
-## 🎨 1. Quy Chuẩn Thiết Kế Bento Grid Y Khoa
-
-1. **Khung Grid Thống Nhất (`.bento-homepage`)**:
-   - Sử dụng CSS Grid 12 cột tự động co giãn:
-     ```css
-     .bento-homepage {
-       display: grid;
-       grid-template-columns: repeat(12, 1fr);
-       gap: 0.75rem;
-       max-width: 1600px;
-       margin: 0 auto;
-     }
-     ```
-2. **Thẻ Bento Cell Standard (`.bento-cell`)**:
-   - Nền `var(--color-surface)`, viền `var(--color-border)`, bo góc `var(--radius-md, 12px)`.
-   - Hiệu ứng trượt nhẹ khi hover: `transform: translateY(-2px); border-color: var(--color-primary);`.
-3. **Đồng Bộ CSS Tokens (Không Hardcode Màu)**:
-   - Nền: `var(--color-bg)`, Card: `var(--color-surface)`.
-   - Trạng thái: `var(--color-success)` (An toàn), `var(--color-warning)` (Cảnh báo), `var(--color-danger)` (Cấp cứu), `var(--color-info)` (Thông tin).
+Tài liệu hướng dẫn AI thiết kế và phát triển các giao diện Dashboard Y khoa hiện đại dạng **Bento Grid** kết hợp nguyên lý **Data Storytelling & Tỷ lệ Data-Ink (Edward Tufte)** bằng công nghệ thuần Vanilla HTML5 / CSS3 / JavaScript (ES6+).
 
 ---
 
-## 🧩 2. Bộ Linh Kiện Core Bento Components
+## 🍱 1. Cấu Trúc Bento Grid Bất Đối Xứng (Asymmetric Bento Grid)
 
-### 1️⃣ Medical KPI Metric Card (`.bento-kpi-card`)
-Trình bày chỉ số sinh hiệu (HR, BP, SpO2, Temp) hoặc điểm số nguy cơ (NEWS2, qSOFA, Child-Pugh):
+Bố cục Bento hiện đại phân chia không gian thành các ô đa tỷ lệ ($1\times1, 2\times1, 2\times2$) tạo điểm nhấn phân tầng thị giác:
+
+```css
+/* Container Lưới Bento 12 Cột Đáp Ứng Cao */
+.bento-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  max-width: 1560px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1100px) {
+  .bento-grid {
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: minmax(180px, auto);
+  }
+
+  .bento-cell-featured { grid-column: span 2; grid-row: span 2; } /* Khối chính 2x2 */
+  .bento-cell-wide     { grid-column: span 2; }                    /* Khối rộng 2x1 */
+  .bento-cell-tall     { grid-row: span 2; }                       /* Khối cao 1x2 */
+}
+```
+
+---
+
+## 📊 2. Bộ Linh Kiện Data Storytelling Thuần SVG & Canvas
+
+### 1️⃣ Đồng Hồ Đo Sinh Hiệu / Nguy Cơ (Pure SVG Arc Gauge)
+Không cần thư viện nặng, đồng hồ hiển thị điểm số lâm sàng (TIMI, SOFA, NIHSS) bằng SVG thuần:
+```html
+<div class="bento-gauge-wrapper">
+  <svg class="bento-gauge-svg" viewBox="0 0 100 55" data-val="75">
+    <path class="gauge-track" d="M 10 50 A 40 40 0 0 1 90 50" fill="none" stroke="var(--color-border)" stroke-width="8" stroke-linecap="round" />
+    <path class="gauge-fill" d="M 10 50 A 40 40 0 0 1 90 50" fill="none" stroke="var(--color-primary)" stroke-width="8" stroke-linecap="round" stroke-dasharray="125.6" stroke-dashoffset="31.4" />
+  </svg>
+  <div class="gauge-value">75%</div>
+  <div class="gauge-label">Kiểm Soát Đường Huyết</div>
+</div>
+```
+
+### 2️⃣ Sparkline Xu Hướng Thời Gian Thực (Pure HTML5 Canvas)
+Vẽ đường biến thiên huyết áp/nhịp tim trong 24h chỉ với 20 dòng mã Canvas API siêu nhẹ, hỗ trợ hiển thị độ phân giải Retina (`window.devicePixelRatio`).
+
+### 3️⃣ Medical KPI Metric Card (`.bento-kpi-card`)
+Trình bày chỉ số sinh hiệu (HR, BP, SpO2, Temp) với nhãn xu hướng (Trend Badge):
 ```html
 <div class="bento-kpi-card">
   <div class="bento-kpi-header">
-    <span class="bento-kpi-label">Nhịp Tim (HR)</span>
+    <span class="bento-kpi-label">Huyết Áp Tâm Thu</span>
     <div class="bento-kpi-icon"><i class="fa-solid fa-heart-pulse"></i></div>
   </div>
   <div class="bento-kpi-body">
-    <div>
-      <span class="bento-kpi-value">74</span>
-      <span class="bento-kpi-unit">bpm</span>
-    </div>
-    <span class="bento-trend-badge success"><i class="fa-solid fa-arrow-down"></i> Ổn định</span>
+    <span class="bento-kpi-value">128</span>
+    <span class="bento-kpi-unit">mmHg</span>
+    <span class="bento-trend-badge success"><i class="fa-solid fa-check"></i> Đạt mục tiêu</span>
   </div>
 </div>
 ```
 
-### 2️⃣ Clinical Safety & Privacy Gauge (`.bento-safety-gauge`)
-Đồng hồ đo mức độ an toàn hoặc bảo mật riêng tư bằng SVG thuần (Bán kính $R=70$, Chu vi Arc $= 220$):
-```html
-<svg class="bento-gauge-svg" id="safety-gauge" viewBox="0 0 200 120" data-value="85">
-  <path class="gauge-bg-arc" d="M 30,100 A 70,70 0 0,1 170,100" />
-  <path class="gauge-value-arc" d="M 30,100 A 70,70 0 0,1 170,100" />
-  <g class="gauge-center-text" transform="translate(100, 85)">
-    <text class="gauge-val-num">85%</text>
-    <text class="gauge-val-label" y="20">Chỉ số An toàn AI</text>
-  </g>
-</svg>
-```
-
-### 3️⃣ Live Node Network Status (`.bento-node-grid`)
-Mạng lưới theo dõi trạng thái các khoa phòng / thiết bị IoT với chấm nhấp nháy 60fps (`.pulse-dot`):
-- `.pulse-dot.active`: Xanh lá (Hoạt động bình thường)
-- `.pulse-dot.warning`: Vàng (Cần theo dõi)
-- `.pulse-dot.danger`: Đỏ (Cấp cứu / Mất kết nối)
-
-### 4️⃣ Comparison Matrix Table (`.bento-comparison-table`)
-Bảng đối sánh các phương pháp, nhóm thuốc hoặc phác đồ điều trị với nhãn chip badge (`.bento-chip.yes`, `.bento-chip.no`, `.bento-chip.sim`).
-
 ---
 
-## ⚡ 3. JavaScript Performance & Animations
+## ⚡ 3. Nguyên Lý Tương Tác & Hiệu Năng 60fps
 
-- **Không dùng thư viện nặng**: Sử dụng Vanilla JS với `addEventListener` và `requestAnimationFrame`.
-- **Chuyển động mượt mượt**: Sử dụng CSS transition `cubic-bezier(0.16, 1, 0.3, 1)` cho đồng hồ Gauge và hiệu ứng hover.
-- **Tương thích Dark Mode**: Đảm bảo tất cả màu sắc được dereference qua CSS Variables để khi `data-theme="dark"` trên `<html>` thay đổi, toàn bộ Bento Dashboard tự động đổi màu mượt mượt mà không bị lóa mắt.
+- **Xúc giác phản hồi bấm (Tactile Click)**: Nén nhẹ `:active { transform: scale(0.98); }` trên mọi thẻ Bento.
+- **Ánh sáng viền Ambient (Border Glow)**: Sử dụng lớp giả `::before` với `radial-gradient` theo vị trí chuột để tạo chiều sâu công nghệ cao.
+- **Tương thích Dark Mode 100%**: Sử dụng Design Tokens `var(--color-surface)` và `var(--color-border)`.

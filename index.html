@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Lexend:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
     rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
@@ -25,6 +25,8 @@
   <link rel="icon" type="image/png" sizes="192x192" href="./assets/icons/icon-192x192.png">
 
   <link rel="stylesheet" href="./src/styles/reset.css">
+  <link rel="stylesheet" href="./src/styles/tokens.css">
+  <link rel="stylesheet" href="./src/styles/components/ui-core.css">
   <link rel="stylesheet" href="./src/styles/main.css">
   <link rel="stylesheet" href="./src/styles/components/square-ui-tokens.css">
   <link rel="stylesheet" href="./src/styles/components/header.css">
@@ -172,6 +174,9 @@
       </div>
 
       <div class="header-actions">
+        <button id="themeToggleBtn" class="header-settings-btn theme-toggle-btn theme-toggle-trigger" title="Chuyển đổi Chế độ Sáng / Tối" aria-label="Chuyển đổi giao diện Sáng / Tối">
+          <i class="fa-solid fa-moon"></i>
+        </button>
         <button id="header-cheatsheets-btn" class="header-settings-btn open-cheatsheet-btn" title="Tra Cứu Siêu Tốc (Clinical Cheatsheets)" aria-label="Tra cứu siêu tốc">
           <i class="fa-solid fa-bolt" style="color: var(--color-primary);"></i>
         </button>

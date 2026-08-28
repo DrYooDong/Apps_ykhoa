@@ -116,9 +116,23 @@
   --shadow-card-hover:    0 12px 28px -4px rgba(2, 132, 199, 0.14), 0 4px 8px -2px rgba(2, 132, 199, 0.06);
   --shadow-glow:          0 0 24px rgba(2, 132, 199, 0.18);
 
+  /* --- Inset Shadows & Text Shadows (Tailwind v4 Standard) --- */
+  --inset-shadow-xs:      inset 0 1px 1px rgb(0 0 0 / 0.05);
+  --inset-shadow-sm:      inset 0 2px 4px rgb(0 0 0 / 0.05);
+  --text-shadow-xs:       0px 1px 1px rgb(0 0 0 / 0.15);
+  --text-shadow-sm:       0px 1px 0px rgb(0 0 0 / 0.075), 0px 1px 1px rgb(0 0 0 / 0.075), 0px 2px 2px rgb(0 0 0 / 0.075);
+  --text-shadow-md:       0px 1px 1px rgb(0 0 0 / 0.1), 0px 1px 2px rgb(0 0 0 / 0.1), 0px 2px 4px rgb(0 0 0 / 0.1);
+
+  /* --- Focus Accessibility Tokens (WCAG 2.2 AAA Standard) --- */
+  --focus-outline-color:  var(--color-primary);
+  --focus-ring-width:     3px;
+  --focus-outline:        3px solid var(--focus-outline-color);
+  --focus-outline-offset: 2px;
+
   /* --- Motion & Spring Timings (Emil Kowalski Standard) --- */
   --ease-out:             cubic-bezier(0.23, 1, 0.32, 1);
   --ease-in-out:          cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-spring:          cubic-bezier(0.175, 0.885, 0.32, 1.275);
   --ease-drawer:          cubic-bezier(0.32, 0.72, 0, 1);
   --duration-fast:        150ms;
   --duration-base:        220ms;
@@ -127,6 +141,23 @@
   --tr:                   var(--duration-base) var(--ease-out);
   --tr-fast:              var(--duration-fast) var(--ease-out);
   --tr-slow:              var(--duration-slow) var(--ease-out);
+
+  /* --- Aspect Ratios & Container Scales --- */
+  --aspect-video:         16 / 9;
+  --aspect-square:        1 / 1;
+  --aspect-golden:        1.618 / 1;
+
+  --container-xs:         20rem;
+  --container-sm:         24rem;
+  --container-md:         28rem;
+  --container-lg:         32rem;
+  --container-xl:         36rem;
+  --container-2xl:        42rem;
+  --container-3xl:        48rem;
+  --container-4xl:        56rem;
+  --container-5xl:        64rem;
+  --container-6xl:        72rem;
+  --container-7xl:        80rem;
 
   /* --- Layout Bounds --- */
   --header-height:        64px;
@@ -205,4 +236,12 @@
   --shadow-xl:            0 24px 32px -4px rgba(0, 0, 0, 0.65);
   --shadow-card-hover:    0 12px 28px -4px rgba(56, 189, 248, 0.22), 0 4px 8px -2px rgba(56, 189, 248, 0.12);
   --shadow-glow:          0 0 28px rgba(56, 189, 248, 0.22);
+
+  --inset-shadow-xs:      inset 0 1px 1px rgba(0, 0, 0, 0.25);
+  --inset-shadow-sm:      inset 0 2px 4px rgba(0, 0, 0, 0.35);
+  --text-shadow-xs:       0px 1px 1px rgba(0, 0, 0, 0.6);
+  --text-shadow-sm:       0px 1px 2px rgba(0, 0, 0, 0.7);
+
+  --focus-outline-color:  var(--color-primary);
+  --focus-outline:        3px solid var(--focus-outline-color);
 }

@@ -1,269 +1,135 @@
-# Core Components
-## When to Use
+---
+name: core-components
+description: Thư viện linh kiện UI cốt lõi (Vanilla HTML5 & CSS3) của CliniPortal: Buttons, Cards, Superblock Accordions, Drawers, Skeletons, Form Controls, Badges, và Focus States. Kích hoạt khi cần dựng trang mới hoặc tái sử dụng các linh kiện giao diện chuẩn.
+---
 
-Use this skill when you need core component library and design system patterns. Use when building UI, using design tokens, or working with the component library.
+# 🏛️ CliniPortal Core Component Library (Vanilla HTML5 & Modern CSS3)
 
+> **Triết lý:** Pure HTML5 + Vanilla CSS3 (`ui-core.css`, `tokens.css`) + Vanilla JavaScript (ES6+).
+> **Không phụ thuộc bất kỳ Framework hay Build Tool nào.**
 
-## Design System Overview
+---
 
-Use components from your core library instead of raw platform components. This ensures consistent styling and behavior.
+## 🔘 1. Buttons & Action Elements
 
-## Design Tokens
+### Code Mẫu Chuẩn:
+```html
+<!-- 1. Primary Action Button -->
+<button class="clini-btn clini-btn--primary clini-btn--md">
+  <span>Xác Nhận Chỉ Định</span>
+</button>
 
-**NEVER hard-code values. Always use design tokens.**
+<!-- 2. Hero CTA Glow Button -->
+<a href="#kham-lam-sang" class="clini-btn clini-btn--cta-glow clini-btn--lg">
+  <span>Khám Lâm Sàng Ngay</span>
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+</a>
 
-### Spacing Tokens
+<!-- 3. Critical / Emergency Button -->
+<button class="clini-btn clini-btn--critical clini-btn--md">
+  <span class="clini-pulse-dot"></span>
+  <span>Kích Hoạt Code Red</span>
+</button>
 
-```tsx
-// CORRECT - Use tokens
-<Box padding="$4" marginBottom="$2" />
-
-// WRONG - Hard-coded values
-<Box padding={16} marginBottom={8} />
+<!-- 4. Ghost / Secondary Button -->
+<button class="clini-btn clini-btn--ghost clini-btn--sm">
+  <span>Xuất PDF</span>
+</button>
 ```
 
-| Token | Value |
-|-------|-------|
-| `$1` | 4px |
-| `$2` | 8px |
-| `$3` | 12px |
-| `$4` | 16px |
-| `$6` | 24px |
-| `$8` | 32px |
+---
 
-### Color Tokens
+## 🗂️ 2. Superblock Accordions (Phân Cấp Bài Học & Phác Đồ)
 
-```tsx
-// CORRECT - Semantic tokens
-<Text color="$textPrimary" />
-<Box backgroundColor="$backgroundSecondary" />
-
-// WRONG - Hard-coded colors
-<Text color="#333333" />
-<Box backgroundColor="rgb(245, 245, 245)" />
+### Code Mẫu Chuẩn:
+```html
+<div class="clini-accordion">
+  <div class="clini-accordion-chapter">
+    <div class="clini-chapter-header">
+      <a href="./phan-1-chuan-doan.html" class="clini-chapter-title-btn">
+        <span>🩺</span>
+        <span>Phần 1: Chẩn Đoán Xác Định & Phân Tầng Nguy Cơ</span>
+      </a>
+      <button class="clini-chapter-toggle-btn" aria-expanded="false" onclick="toggleAccordion(this)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+    </div>
+    <div class="clini-chapter-collapse" hidden>
+      <ul class="clini-block-list">
+        <li class="clini-block-item"><a href="#tieu-chuan">1.1 Tiêu chuẩn chẩn đoán ESC/AHA</a></li>
+        <li class="clini-block-item"><a href="#troponin">1.2 Động học men tim Troponin</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
 ```
 
-| Semantic Token | Use For |
-|----------------|---------|
-| `$textPrimary` | Main text |
-| `$textSecondary` | Supporting text |
-| `$textTertiary` | Disabled/hint text |
-| `$primary500` | Brand/accent color |
-| `$statusError` | Error states |
-| `$statusSuccess` | Success states |
+---
 
-### Typography Tokens
+## 📱 3. Bottom Drawer / Bedside Calculator Jaw
 
-```tsx
-<Text fontSize="$lg" fontWeight="$semibold" />
+### Code Mẫu Chuẩn:
+```html
+<div id="calculator-drawer" class="clini-drawer-jaw">
+  <div class="clini-jaw-header">
+    <div class="clini-jaw-title">
+      <span>🧮</span>
+      <span>Thang Điểm CHA2DS2-VASc</span>
+    </div>
+    <button class="clini-btn clini-btn--ghost clini-btn--sm" onclick="closeDrawer()">✕</button>
+  </div>
+  <div class="clini-jaw-body">
+    <!-- Nội dung công cụ tính toán tại đây -->
+    <p>Điểm: <strong id="score-result">0 điểm</strong> (Nguy cơ tắc mạch thấp)</p>
+  </div>
+</div>
 ```
 
-| Token | Size |
-|-------|------|
-| `$xs` | 12px |
-| `$sm` | 14px |
-| `$md` | 16px |
-| `$lg` | 18px |
-| `$xl` | 20px |
-| `$2xl` | 24px |
+---
 
-## Core Components
+## ⚡ 4. Skeleton Shimmer & Loading State
 
-### Box
-
-Base layout component with token support:
-
-```tsx
-<Box
-  padding="$4"
-  backgroundColor="$backgroundPrimary"
-  borderRadius="$lg"
->
-  {children}
-</Box>
+### Code Mẫu Chuẩn:
+```html
+<!-- Dải tải dữ liệu mô phỏng bài viết (CLS = 0) -->
+<div class="clini-card">
+  <div class="clini-skeleton clini-skeleton-line-1" style="margin-bottom: 12px;"></div>
+  <div class="clini-skeleton clini-skeleton-line-2" style="margin-bottom: 20px;"></div>
+  <div class="clini-skeleton clini-skeleton-box"></div>
+</div>
 ```
 
-### HStack / VStack
+---
 
-Horizontal and vertical flex layouts:
+## 🏷️ 5. Medical Status Badges & Clinical Pills
 
-```tsx
-<HStack gap="$3" alignItems="center">
-  <Icon name="user" />
-  <Text>Username</Text>
-</HStack>
-
-<VStack gap="$4" padding="$4">
-  <Heading>Title</Heading>
-  <Text>Content</Text>
-</VStack>
+### Code Mẫu Chuẩn:
+```html
+<span class="clini-badge clini-badge--critical clini-badge--pill">Chống Chỉ Định Tuyệt Đối</span>
+<span class="clini-badge clini-badge--warning">Cần Theo Dõi SpO2</span>
+<span class="clini-badge clini-badge--normal">Liều An Toàn</span>
+<span class="clini-badge clini-badge--pearl">💡 Clinical Pearl</span>
+<span class="clini-badge clini-badge--research">Chứng Cứ RCT Mức độ A</span>
 ```
 
-### Text
+---
 
-Typography with token support:
+## 🔍 6. Modern Search Bar with Shortcut
 
-```tsx
-<Text
-  fontSize="$lg"
-  fontWeight="$semibold"
-  color="$textPrimary"
->
-  Hello World
-</Text>
+### Code Mẫu Chuẩn:
+```html
+<div class="clini-search-modern">
+  <svg class="clini-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+  <input type="text" class="clini-input" placeholder="Tìm kiếm thuốc, phác đồ, triệu chứng...">
+  <kbd class="clini-search-kbd">Ctrl K</kbd>
+</div>
 ```
 
-### Button
+---
 
-Interactive button with variants:
-
-```tsx
-<Button
-  onPress={handlePress}
-  variant="solid"
-  size="md"
-  isLoading={loading}
-  isDisabled={disabled}
->
-  Click Me
-</Button>
-```
-
-| Variant | Use For |
-|---------|---------|
-| `solid` | Primary actions |
-| `outline` | Secondary actions |
-| `ghost` | Tertiary/subtle actions |
-| `link` | Inline actions |
-
-### Input
-
-Form input with validation:
-
-```tsx
-<Input
-  value={value}
-  onChangeText={setValue}
-  placeholder="Enter text"
-  error={touched ? errors.field : undefined}
-  label="Field Name"
-/>
-```
-
-### Card
-
-Content container:
-
-```tsx
-<Card padding="$4" gap="$3">
-  <CardHeader>
-    <Heading size="sm">Card Title</Heading>
-  </CardHeader>
-  <CardBody>
-    <Text>Card content</Text>
-  </CardBody>
-</Card>
-```
-
-## Layout Patterns
-
-### Screen Layout
-
-```tsx
-const MyScreen = () => (
-  <Screen>
-    <ScreenHeader title="Page Title" />
-    <ScreenContent padding="$4">
-      {/* Content */}
-    </ScreenContent>
-  </Screen>
-);
-```
-
-### Form Layout
-
-```tsx
-<VStack gap="$4" padding="$4">
-  <Input label="Name" {...nameProps} />
-  <Input label="Email" {...emailProps} />
-  <Button isLoading={loading}>Submit</Button>
-</VStack>
-```
-
-### List Item Layout
-
-```tsx
-<HStack
-  padding="$4"
-  gap="$3"
-  alignItems="center"
-  borderBottomWidth={1}
-  borderColor="$borderLight"
->
-  <Avatar source={{ uri: imageUrl }} size="md" />
-  <VStack flex={1}>
-    <Text fontWeight="$semibold">{title}</Text>
-    <Text color="$textSecondary" fontSize="$sm">{subtitle}</Text>
-  </VStack>
-  <Icon name="chevron-right" color="$textTertiary" />
-</HStack>
-```
-
-## Anti-Patterns
-
-```tsx
-// WRONG - Hard-coded values
-<View style={{ padding: 16, backgroundColor: '#fff' }}>
-
-// CORRECT - Design tokens
-<Box padding="$4" backgroundColor="$backgroundPrimary">
-
-
-// WRONG - Raw platform components
-import { View, Text } from 'react-native';
-
-// CORRECT - Core components
-import { Box, Text } from 'components/core';
-
-
-// WRONG - Inline styles
-<Text style={{ fontSize: 18, fontWeight: '600' }}>
-
-// CORRECT - Token props
-<Text fontSize="$lg" fontWeight="$semibold">
-```
-
-## Component Props Pattern
-
-When creating components, use token-based props:
-
-```tsx
-interface CardProps {
-  padding?: '$2' | '$4' | '$6';
-  variant?: 'elevated' | 'outlined' | 'filled';
-  children: React.ReactNode;
-}
-
-const Card = ({ padding = '$4', variant = 'elevated', children }: CardProps) => (
-  <Box
-    padding={padding}
-    backgroundColor="$backgroundPrimary"
-    borderRadius="$lg"
-    {...variantStyles[variant]}
-  >
-    {children}
-  </Box>
-);
-```
-
-## Integration with Other Skills
-
-- **react-ui-patterns**: Use core components for UI states
-- **testing-patterns**: Mock core components in tests
-- **storybook**: Document component variants
-
-## Limitations
-
-- Use this skill only when the task clearly matches its upstream source and local project context.
-- Verify commands, generated code, dependencies, credentials, and external service behavior before applying changes.
-- Do not treat examples as a substitute for environment-specific tests, security review, or user approval for destructive or costly actions.
+## 📋 Checklist Kiểm Tra Giao Diện Mới
+1. [ ] Đã link `src/styles/tokens.css` và `src/styles/components/ui-core.css`?
+2. [ ] Các nút bấm và ô nhập liệu đều đạt touch target tối thiểu $44\text{px}$ trên mobile?
+3. [ ] Hoạt động trơn tru ở cả 2 giao diện `[data-theme="light"]` và `[data-theme="dark"]`?
+4. [ ] Bàn phím điều hướng (Tab) hiển thị viền focus 3px rõ nét?
+5. [ ] Đã thêm `@media (prefers-reduced-motion: reduce)` cho các chuyển động nếu có viết animation mới?

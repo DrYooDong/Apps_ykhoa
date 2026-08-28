@@ -17,7 +17,10 @@
     "start": "electron platforms/desktop/main-electron.js",
     "desktop": "electron platforms/desktop/main-electron.js",
     "migrate": "node -e \"require('esbuild').buildSync({entryPoints:['tools/scripts/ume-migrate.ts'],outfile:'tools/scripts/ume-migrate.cjs',bundle:true,platform:'node'}); require('./tools/scripts/ume-migrate.cjs'); require('fs').unlinkSync('tools/scripts/ume-migrate.cjs');\"",
-    "migrate:validate": "tsc --noEmit"
+    "migrate:validate": "tsc --noEmit",
+    "lint:content": "node tools/scripts/medical-linter.mjs",
+    "audit:deadcode": "node tools/scripts/tree-shake-audit.mjs",
+    "validate:all": "npm run typecheck && npm run lint:content && npm run audit:deadcode"
   },
   "keywords": [
     "medical",

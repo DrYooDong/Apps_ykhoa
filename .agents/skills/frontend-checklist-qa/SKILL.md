@@ -5,7 +5,7 @@ description: Kỹ năng tra cứu Kho Tiêu chuẩn & Bảng kiểm Front-End (F
 
 # Front-End Checklist & Quality Vault Skill
 
-Skill này cung cấp quy trình kiểm tra chất lượng toàn diện (Front-End & UI/UX Quality Assurance) dựa trên tài liệu kho tiêu chuẩn `.agents/docs/FRONTEND_CHECKLIST_VAULT.md` trong hệ sinh thái CliniPortal.
+Skill này cung cấp quy trình kiểm tra chất lượng toàn diện (Front-End & UI/UX Quality Assurance) dựa trên các công cụ kiểm thử hiện đại (VisBug, Pesticide, Kontrast, Core Web Vitals) trong hệ sinh thái CliniPortal.
 
 ---
 
@@ -18,32 +18,46 @@ Kích hoạt Skill này khi:
 
 ---
 
-## 📋 QUY TRÌNH KIỂM TRA 7 SECTION CHECKLIST
+## 📋 QUY TRÌNH KIỂM TRA 7 SECTION CHECKLIST & DESIGN QA TOOLS
 
-Đọc kỹ và đối chiếu từng mục trong file [FRONTEND_CHECKLIST_VAULT.md](file:///d:/Apps_ykhoa/.agents/docs/FRONTEND_CHECKLIST_VAULT.md):
+### 1. Section 1: Head & Meta Data (SEO, Social, Viewport)
+- Thẻ `<!DOCTYPE html>`, `<html lang="vi" data-theme="light">`.
+- Title độc nhất, Meta description, Open Graph tags (`og:image`, `og:title`), Meta Viewport.
+- Schema.org `MedicalWebPage` JSON-LD hợp lệ.
 
-1. **Section 1: Head & Meta Data (SEO, Social, Viewport)**
-   - Thẻ `<!DOCTYPE html>`, `<html lang="vi" data-theme="light">`.
-   - Title độc nhất, Meta description, Open Graph tags (`og:image`, `og:title`), Meta Viewport.
-2. **Section 2: HTML Semantic & Accessibility (a11y / WCAG 2.1)**
-   - Đúng cấu trúc ngữ nghĩa HTML5, duy nhất 1 thẻ `<h1>`.
-   - Chạy `node tools/tools/scratch/check_tags.js <file.html>` đảm bảo 0 lỗi unclosed tags.
-   - Thẻ ARIA roles, hỗ trợ phím `Tab` navigation.
-3. **Section 3: CSS & Design System (Tokens, Responsive, Dark Mode)**
-   - Dùng Design Tokens `var(--color-...)`. **Cấm hardcode màu hex**.
-   - Kiểm tra `[data-theme="dark"]` không vỡ màu.
-   - Test Responsive ở 375px, 768px, 1280px. Touch target $\ge 44 \times 44\text{px}$.
-4. **Section 4: JavaScript & DOM Performance (Pure JS, Clean Code)**
-   - Khai báo `<script defer src="...">`.
-   - Pure Vanilla JS (ES6+). Xóa sạch `console.log`.
-   - Kiểm tra safe dereferencing (`el?.addEventListener`).
-5. **Section 5: Media & Assets Optimization**
-   - 100% ảnh có `alt="..."` và explicit `width`/`height` để tránh Layout Shift.
-   - Dùng WebP/SVG + `loading="lazy"`.
-6. **Section 6: Bảo mật & Tối ưu hóa (Security & High Performance)**
-   - Thẻ `<a target="_blank">` có `rel="noopener noreferrer"`.
-   - LCP < 2.5s, CLS < 0.1, INP < 200ms.
-7. **Section 7: Quy chuẩn Đặc thù CliniPortal (Medical Web Ecosystem)**
-   - Đường dẫn tương đối chính xác 100% theo cấp thư mục (`./`, `../`, `../../`, `../../../`, `../../../../`).
-   - Dynamic Injection Header/Footer (`data-header-path`, `data-footer-path`).
-   - Cập nhật Registry: `.agents/docs/FILE_MAP.md`, `guidelinesdata.js`, `benh-ly.js`, `cong-cu.html`.
+### 2. Section 2: HTML Semantic & Accessibility (a11y / WCAG 2.1)
+- Đúng cấu trúc ngữ nghĩa HTML5, duy nhất 1 thẻ `<h1>`.
+- Chạy `node tools/scratch/check_tags.js <file.html>` đảm bảo **0 lỗi unclosed tags**.
+- Thẻ ARIA roles (`aria-label`, `aria-expanded`, `aria-modal`), hỗ trợ phím `Tab` navigation và `:focus-visible`.
+
+### 3. Section 3: Bố Cục & Tràn Viền (Layout Debugging với Pesticide)
+- Kiểm tra tràn ngang (Horizontal Scrollbar) trên thiết bị 360px - 375px:
+  ```javascript
+  /* Snippet phát hiện phần tử tràn khung nhanh */
+  document.querySelectorAll('*').forEach(el => {
+    if (el.offsetWidth > document.documentElement.offsetWidth) {
+      console.warn('⚠️ Phần tử tràn viền:', el);
+    }
+  });
+  ```
+- Touch target trên Mobile $\ge 44 \times 44\text{px}$ (Định luật Fitts).
+
+### 4. Section 4: Màu Sắc & Khả Năng Tiếp Cận (WCAG 2.1 & Color-blindness)
+- Tỷ lệ tương phản văn bản so với nền $\ge 4.5:1$ (AA) và $\ge 3:1$ cho đồ họa / icons.
+- Kiểm tra tính độc lập màu sắc: Mọi cảnh báo phải đi kèm Icon + Label chữ (không dùng màu đơn độc).
+- Kiểm tra trên bộ giả lập mù màu Chrome DevTools (Protanopia, Deuteranopia, Achromatopsia).
+
+### 5. Section 5: JavaScript & DOM Performance (Pure JS, Clean Code)
+- Khai báo `<script defer src="...">` hoặc `<script type="module">`.
+- Pure Vanilla JS (ES6+), không thêm thư viện ngoài nặng nề. Xóa sạch `console.log`.
+- Safe dereferencing (`el?.addEventListener`).
+
+### 6. Section 6: Media & Assets & Core Web Vitals
+- 100% ảnh có `alt="..."` và explicit `width`/`height` để tránh Cumulative Layout Shift (CLS $\le 0.1$).
+- Largest Contentful Paint (LCP $\le 2.5\text{s}$), Interaction to Next Paint (INP $\le 200\text{ms}$).
+- Dùng SVG inline hoặc WebP tối ưu qua Squoosh/SVGOMG.
+
+### 7. Section 7: Quy chuẩn Đặc thù CliniPortal
+- Đường dẫn tương đối chính xác 100% theo cấp thư mục (`./`, `../`, `../../`, `../../../`, `../../../../`).
+- Dynamic Injection Header/Footer (`data-header-path`, `data-footer-path`).
+- Cập nhật Registry: `.agents/docs/FILE_MAP.md`, `guidelinesdata.js`.

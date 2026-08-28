@@ -697,6 +697,50 @@ td:has(.summary-parts-menu.active) {
   margin: 1.5rem 0;
 }
 
+/* Flowchart & Mechanism Grids */
+.flow-container, .diagram-container, .flowchart-card {
+  background: var(--surface);
+  border: 1.5px solid var(--border-light);
+  border-radius: 16px;
+  padding: 1.35rem 1.5rem;
+  margin: 1.5rem 0;
+}
+.flow-step-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.flow-step-card {
+  background: var(--surface-2);
+  border: 1.5px solid var(--border-light);
+  border-radius: 12px;
+  padding: 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+.flow-step-title {
+  font-size: 0.98rem;
+  font-weight: 800;
+  color: var(--text);
+}
+.flow-step-desc {
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+.flow-step-impact {
+  margin-top: auto;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
 
 
 

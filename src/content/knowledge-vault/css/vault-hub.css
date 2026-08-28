@@ -193,9 +193,9 @@
 .vault-group-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
-  padding: 0.55rem 1rem;
-  border-radius: 0.75rem;
+  gap: 0.5rem;
+  padding: 0.65rem 1.2rem;
+  border-radius: 9999px;
   border: 1px solid var(--vault-border);
   background: var(--vault-surface);
   color: var(--vault-text);
@@ -203,12 +203,30 @@
   font-size: 0.82rem;
   cursor: pointer;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+  min-height: var(--touch-min, 44px);
 }
 
 .vault-group-btn:hover {
   transform: translateY(-2px);
   border-color: var(--vault-primary);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.vault-group-btn:active,
+.vault-card:active,
+.vault-topic-chip:active,
+.vault-btn-primary:active {
+  transform: translateY(0) scale(0.975) !important;
+  transition-duration: 80ms !important;
+}
+
+.vault-group-btn:focus-visible,
+.vault-card:focus-visible,
+.vault-topic-chip:focus-visible,
+.vault-btn-primary:focus-visible {
+  outline: var(--focus-outline, 3px solid var(--color-primary));
+  outline-offset: var(--focus-outline-offset, 2px);
 }
 
 .vault-group-btn.active {

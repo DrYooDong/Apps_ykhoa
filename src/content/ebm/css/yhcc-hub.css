@@ -66,12 +66,31 @@
       position: relative;
       overflow: hidden;
       transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      user-select: none;
     }
 
     .ebm-holo-bento:hover {
       transform: translateY(-4px) !important;
       box-shadow: 0 14px 30px -4px var(--card-glow, rgba(2, 132, 199, 0.25)), inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
       border-color: var(--card-accent, var(--color-primary)) !important;
+    }
+
+    .ebm-holo-bento:active,
+    .ebm-kpi-holo:active,
+    .hub-pill:active,
+    .studio-tab-btn:active,
+    .pyramid-level:active {
+      transform: translateY(0) scale(0.975) !important;
+      transition-duration: 80ms !important;
+    }
+
+    .ebm-holo-bento:focus-visible,
+    .ebm-kpi-holo:focus-visible,
+    .hub-pill:focus-visible,
+    .studio-tab-btn:focus-visible,
+    .pyramid-level:focus-visible {
+      outline: var(--focus-outline, 3px solid var(--color-primary));
+      outline-offset: var(--focus-outline-offset, 2px);
     }
 
     /* ============================================================
