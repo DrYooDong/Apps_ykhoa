@@ -39,19 +39,7 @@ export function renderEpiPillarsNav(props?: EpiPillarsNavProps | EpiPillarItem[]
   }
 
   return `
-    <nav class="pillars-nav epi-quicknav" aria-label="Mục lục bài học dịch tễ 8 trụ cột" style="
-      position: sticky;
-      top: 60px;
-      z-index: 90;
-      background: var(--color-surface, #ffffff);
-      border: 1px solid var(--color-border, #e2e8f0);
-      border-radius: 14px;
-      padding: 0.75rem 1rem;
-      margin: 1.5rem 0 2rem 0;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-    ">
+    <nav class="pillars-nav epi-quicknav" aria-label="Mục lục bài học dịch tễ 8 trụ cột" style="position: sticky; top: 60px; z-index: 90; background: var(--color-surface, #ffffff); border: 1px solid var(--color-border, #e2e8f0); border-radius: 14px; padding: 0.75rem 1rem; margin: 1.5rem 0 2rem 0; box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);">
       <div style="font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: var(--color-text-muted, #64748b); letter-spacing: 0.05em; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;">
         <span style="display: flex; align-items: center; gap: 0.4rem; color: #0d9488;">
           <i class="fa-solid fa-compass"></i>
@@ -59,34 +47,12 @@ export function renderEpiPillarsNav(props?: EpiPillarsNavProps | EpiPillarItem[]
         </span>
         <span class="badge" style="background: rgba(13,148,136,0.1); color: #0d9488; font-size: 0.7rem; font-weight: 700; padding: 2px 8px; border-radius: 999px;">Gordis Epidemiology 6th</span>
       </div>
-      <div class="pillars-nav-inner" style="
-        display: flex;
-        gap: 0.6rem;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        padding-bottom: 2px;
-      ">
+      <div class="pillars-nav-inner" style="display: flex; gap: 0.6rem; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 2px;">
         ${items.map((p, idx) => {
           const num = p.number !== undefined ? p.number : idx + 1;
           const icon = p.icon || 'fa-solid fa-bookmark';
           return `
-          <a href="#${p.id}" class="pillar-tab p-${num} epi-pillar-tab" style="
-            display: inline-flex;
-            align-items: center;
-            gap: 0.45rem;
-            padding: 0.45rem 0.85rem;
-            border-radius: 10px;
-            font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: var(--color-text-muted, #64748b);
-            border: 1px solid var(--color-border, #e2e8f0);
-            background: var(--color-surface, #ffffff);
-            text-decoration: none;
-            white-space: nowrap;
-            transition: all 0.2s ease;
-            flex-shrink: 0;
-          ">
+          <a href="#${p.id}" class="pillar-tab p-${num} epi-pillar-tab" style="display: inline-flex; align-items: center; gap: 0.45rem; padding: 0.45rem 0.85rem; border-radius: 10px; font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif); font-size: 0.8rem; font-weight: 700; color: var(--color-text-muted, #64748b); border: 1px solid var(--color-border, #e2e8f0); background: var(--color-surface, #ffffff); text-decoration: none; white-space: nowrap; transition: all 0.2s ease; flex-shrink: 0;">
             <i class="${icon.startsWith('fa-') ? icon : 'fa-solid ' + icon}" style="color: #0d9488; font-size: 0.85rem;"></i>
             <span>${num}. ${p.title}</span>
           </a>

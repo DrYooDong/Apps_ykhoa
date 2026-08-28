@@ -72,11 +72,30 @@ export class CliniMdxEngine {
       .replace(/<!--[\s\S]*?-->/g, '')
       .trim();
 
-    // 3. Chuyển đổi Custom MDX Components với Frontmatter Context
-    let transformedBody = this.transformCustomComponents(cleanBody, frontmatter);
+    // Map lưu trữ các khối HTML đã render để tránh bị parser Markdown chia dòng làm hỏng
+    const stash = new Map<string, string>();
+    let blockCounter = 0;
+
+    const stashBlock = (htmlContent: string): string => {
+      const placeholder = `__CLINI_MDX_BLOCK_${blockCounter++}__`;
+      stash.set(placeholder, htmlContent.trim());
+      return `\n\n${placeholder}\n\n`;
+    };
+
+    // 3. Chuyển đổi Custom MDX Components với Frontmatter Context và lưu vào stash
+    let transformedBody = this.transformCustomComponents(cleanBody, frontmatter, stashBlock);
 
     // 4. Chuyển đổi Markdown cú pháp chuẩn
     const { html, toc } = this.renderMarkdown(transformedBody);
+
+    // 5. Hoàn nguyên các block HTML từ stash
+    let finalHtml = html;
+    stash.forEach((renderedHtml, placeholder) => {
+      // Thay thế placeholder kể cả khi bị bao bọc trong <p>
+      const pWrappedRegex = new RegExp(`<p[^>]*>\\s*${placeholder}\\s*<\\/p>`, 'g');
+      finalHtml = finalHtml.replace(pWrappedRegex, renderedHtml);
+      finalHtml = finalHtml.replaceAll(placeholder, renderedHtml);
+    });
 
     const title = frontmatter.title || 'Bài giảng Y khoa';
     const description = frontmatter.description || '';
@@ -85,7 +104,7 @@ export class CliniMdxEngine {
       frontmatter,
       title,
       description,
-      html,
+      html: finalHtml,
       toc
     };
   }
@@ -210,7 +229,11 @@ export class CliniMdxEngine {
   /**
    * Xử lý và chuyển đổi các Custom MDX tags với Frontmatter Context
    */
-  private transformCustomComponents(content: string, frontmatter: Record<string, any> = {}): string {
+  private transformCustomComponents(
+    content: string,
+    frontmatter: Record<string, any> = {},
+    stashBlock: (html: string) => string
+  ): string {
     let result = content;
 
     const sections = frontmatter.sections || frontmatter.pillars || [];
@@ -218,18 +241,18 @@ export class CliniMdxEngine {
     // 1. <EpiPillarsNav />
     result = result.replace(/<EpiPillarsNav\s*\/?>/gi, () => {
       const items = Array.isArray(sections) && sections.length > 0 ? sections : undefined;
-      return renderEpiPillarsNav(items ? { pillars: items } : undefined);
+      return stashBlock(renderEpiPillarsNav(items ? { pillars: items } : undefined));
     });
 
     // 2. <EpiAlert type="..." title="...">...</EpiAlert>
     result = result.replace(/<EpiAlert\s+type=["']([^"']+)["']\s+title=["']([^"']+)["'](?:\s+badge=["']([^"']+)["'])?>([\s\S]*?)<\/EpiAlert>/gi, 
       (_match, type, title, badge, children) => {
-        return renderEpiAlert({
+        return stashBlock(renderEpiAlert({
           type: type as any,
           title,
           badge,
-          children: children.trim()
-        });
+          children: this.formatInline(children.trim())
+        }));
       }
     );
 
@@ -292,7 +315,7 @@ export class CliniMdxEngine {
           centerTitle: centerTitleMatch ? centerTitleMatch[1] : 'TIÊU ĐIỂM DỊCH'
         };
 
-        return renderEpiTriangle(props);
+        return stashBlock(renderEpiTriangle(props));
       } catch (e) {
         console.error('Error rendering EpiTriangle:', e);
         return '';
@@ -316,7 +339,7 @@ export class CliniMdxEngine {
           iipDuration: iipDurationMatch ? iipDurationMatch[1] : undefined,
         };
 
-        return renderEpiTransmissionCycle(props);
+        return stashBlock(renderEpiTransmissionCycle(props));
       } catch (e) {
         console.error('Error rendering EpiTransmissionCycle:', e);
         return '';
@@ -324,63 +347,78 @@ export class CliniMdxEngine {
     });
 
     // 4. <EpiVectorTable ... />
-    result = result.replace(/<EpiVectorTable([\s\S]*?)\/>/gi, (_match) => {
-      const props: EpiVectorTableProps = {
-        title: 'Đặc tính So sánh',
-        primaryName: 'Aedes aegypti',
-        secondaryName: 'Aedes albopictus',
-        rows: [
-          {
-            characteristic: 'Tập tính cư trú',
-            primaryVector: 'Ưa trong nhà, đậu góc tối, rèm cửa, quần áo treo',
-            secondaryVector: 'Ưa ngoài trời, bụi rậm, vườn cây, hốc cây',
-            significance: 'Ae. aegypti tiếp xúc gần người liên tục, hiệu suất lây truyền cao gấp nhiều lần.'
-          },
-          {
-            characteristic: 'Thời điểm đốt máu',
-            primaryVector: 'Ban ngày, đỉnh điểm sáng sớm (6-8h) và chiều tối (16-18h)',
-            secondaryVector: 'Ban ngày, đốt tích cực ngoài trời dưới bóng râm',
-            significance: 'Ngủ màn ban ngày là biện pháp bảo vệ cốt lõi cho trẻ em và người già.'
-          },
-          {
-            characteristic: 'Nơi sinh sản bọ gậy',
-            primaryVector: 'Nước sạch nhân tạo: chum vại, bình hoa, phế thải đọng nước',
-            secondaryVector: 'Nước tự nhiên & nhân tạo: gáo dừa, bẹ lá, vỏ lốp xe',
-            significance: 'Chiến dịch diệt lăng quăng/bọ gậy cần tập trung vào các dụng cụ phế thải sinh hoạt.'
-          },
-          {
-            characteristic: 'Tập tính hút máu',
-            primaryVector: 'Hút máu ngắt quãng (đốt nhiều người trong 1 lần no máu)',
-            secondaryVector: 'Hút máu 1 lần no, ít đổi vật chủ liên tục',
-            significance: '1 con Ae. aegypti mang virus có thể lây truyền cho 3 - 4 người trong cùng 1 gia đình.'
+    result = result.replace(/<EpiVectorTable([\s\S]*?)\/>/gi, (_match, attrs) => {
+      try {
+        const titleMatch = attrs.match(/title\s*=\s*["'`]([^"'`]+)["'`]/i);
+        const primaryNameMatch = attrs.match(/primaryName\s*=\s*["'`]([^"'`]+)["'`]/i);
+        const secondaryNameMatch = attrs.match(/secondaryName\s*=\s*["'`]([^"'`]+)["'`]/i);
+
+        let rows: any[] = [];
+        const rowsMatch = attrs.match(/rows\s*=\s*\{(\[[\s\S]*?\])\}/i);
+        if (rowsMatch) {
+          try {
+            rows = new Function('return (' + rowsMatch[1] + ')')();
+          } catch {
+            const rowObjs = rowsMatch[1].match(/\{[\s\S]*?\}/g);
+            if (rowObjs) {
+              rows = rowObjs.map((r: string) => {
+                const charM = r.match(/characteristic\s*:\s*["'`]([^"'`]+)["'`]/i);
+                const primM = r.match(/primaryVector\s*:\s*["'`]([^"'`]+)["'`]/i);
+                const secM = r.match(/secondaryVector\s*:\s*["'`]([^"'`]+)["'`]/i);
+                const sigM = r.match(/significance\s*:\s*["'`]([^"'`]+)["'`]/i);
+                return {
+                  characteristic: charM ? charM[1] : '',
+                  primaryVector: primM ? primM[1] : '',
+                  secondaryVector: secM ? secM[1] : undefined,
+                  significance: sigM ? sigM[1] : undefined
+                };
+              });
+            }
           }
-        ]
-      };
-      return renderEpiVectorTable(props);
+        }
+
+        const props: EpiVectorTableProps = {
+          title: titleMatch ? titleMatch[1] : 'Đặc tính So sánh',
+          primaryName: primaryNameMatch ? primaryNameMatch[1] : 'Véc-tơ chính',
+          secondaryName: secondaryNameMatch ? secondaryNameMatch[1] : undefined,
+          rows: rows.length > 0 ? rows : [
+            {
+              characteristic: 'Tập tính cư trú',
+              primaryVector: 'Ưa trong nhà, đậu góc tối, rèm cửa, quần áo treo',
+              secondaryVector: 'Ưa ngoài trời, bụi rậm, vườn cây, hốc cây',
+              significance: 'Tiếp xúc gần người liên tục, hiệu suất lây truyền cao.'
+            }
+          ]
+        };
+        return stashBlock(renderEpiVectorTable(props));
+      } catch (e) {
+        console.error('Error rendering EpiVectorTable:', e);
+        return '';
+      }
     });
 
     // 5. <PhysioQuickNav />
     result = result.replace(/<PhysioQuickNav\s*\/?>/gi, () => {
       const items = Array.isArray(sections) && sections.length > 0 ? sections : undefined;
-      return renderPhysioQuickNav(items ? { items } : undefined);
+      return stashBlock(renderPhysioQuickNav(items ? { items } : undefined));
     });
 
     // 6. <PhysioAlert type="..." title="...">...</PhysioAlert>
     result = result.replace(/<PhysioAlert\s+type=["']([^"']+)["']\s+title=["']([^"']+)["'](?:\s+badge=["']([^"']+)["'])?>([\s\S]*?)<\/PhysioAlert>/gi,
       (_match, type, title, badge, children) => {
-        return renderPhysioAlert({
+        return stashBlock(renderPhysioAlert({
           type: type as any,
           title,
           badge,
-          children: children.trim()
-        });
+          children: this.formatInline(children.trim())
+        }));
       }
     );
 
     // 7. <PhysioFeedbackLoop ... />
     result = result.replace(/<PhysioFeedbackLoop\s+type=["']([^"']+)["']\s+title=["']([^"']+)["']\s+stimulus=["']([^"']+)["']\s+receptor=["']([^"']+)["']\s+controlCenter=["']([^"']+)["']\s+effector=["']([^"']+)["']\s+response=["']([^"']+)["']\s*\/?>/gi,
       (_match, type, title, stimulus, receptor, controlCenter, effector, response) => {
-        return renderPhysioFeedbackLoop({
+        return stashBlock(renderPhysioFeedbackLoop({
           type: type as any,
           title,
           stimulus,
@@ -388,41 +426,41 @@ export class CliniMdxEngine {
           controlCenter,
           effector,
           response
-        });
+        }));
       }
     );
 
     // 8. <BiochemQuickNav />
     result = result.replace(/<BiochemQuickNav\s*\/?>/gi, () => {
       const items = Array.isArray(sections) && sections.length > 0 ? sections : undefined;
-      return renderBiochemQuickNav(items ? { items } : undefined);
+      return stashBlock(renderBiochemQuickNav(items ? { items } : undefined));
     });
 
     // 9. <BiochemAlert type="..." title="...">...</BiochemAlert>
     result = result.replace(/<BiochemAlert\s+type=["']([^"']+)["'](?:\s+title=["']([^"']+)["'])?>([\s\S]*?)<\/BiochemAlert>/gi,
       (_match, type, title, children) => {
-        return renderBiochemAlert({
+        return stashBlock(renderBiochemAlert({
           type: type as any,
           title,
-          children: children.trim()
-        });
+          children: this.formatInline(children.trim())
+        }));
       }
     );
 
     // 10. <PathoQuickNav />
     result = result.replace(/<PathoQuickNav\s*\/?>/gi, () => {
       const items = Array.isArray(sections) && sections.length > 0 ? sections : undefined;
-      return renderPathoQuickNav(items ? { items } : undefined);
+      return stashBlock(renderPathoQuickNav(items ? { items } : undefined));
     });
 
     // 11. <PathoAlert type="..." title="...">...</PathoAlert>
     result = result.replace(/<PathoAlert\s+type=["']([^"']+)["'](?:\s+title=["']([^"']+)["'])?>([\s\S]*?)<\/PathoAlert>/gi,
       (_match, type, title, children) => {
-        return renderPathoAlert({
+        return stashBlock(renderPathoAlert({
           type: type as any,
           title,
-          children: children.trim()
-        });
+          children: this.formatInline(children.trim())
+        }));
       }
     );
 
@@ -444,6 +482,7 @@ export class CliniMdxEngine {
     let inMathBlock = false;
     let mathBlockLines: string[] = [];
     let inSection = false;
+    let htmlBlockStack: string[] = [];
 
     const flushTable = () => {
       if (inTable && tableRows.length > 0) {
@@ -491,16 +530,26 @@ export class CliniMdxEngine {
 
     for (let i = 0; i < lines.length; i++) {
       let line = lines[i];
+      const trimmed = line.trim();
+
+      // Block placeholder token __CLINI_MDX_BLOCK_X__
+      if (trimmed.startsWith('__CLINI_MDX_BLOCK_') && trimmed.endsWith('__')) {
+        if (inTable) flushTable();
+        if (inCodeBlock) flushCodeBlock();
+        if (inMathBlock) flushMathBlock();
+        htmlLines.push(trimmed);
+        continue;
+      }
 
       // Handle Multiline Math Block $$ ... $$
-      if (line.trim().startsWith('$$')) {
+      if (trimmed.startsWith('$$')) {
         if (inMathBlock) {
           flushMathBlock();
         } else {
           if (inTable) flushTable();
           if (inCodeBlock) flushCodeBlock();
           
-          const restOfLine = line.trim().slice(2).trim();
+          const restOfLine = trimmed.slice(2).trim();
           if (restOfLine.endsWith('$$') && restOfLine.length > 2) {
             // Single-line $$ formula $$
             const formula = restOfLine.slice(0, -2).trim();
@@ -514,8 +563,8 @@ export class CliniMdxEngine {
       }
 
       if (inMathBlock) {
-        if (line.trim().endsWith('$$')) {
-          const content = line.trim().slice(0, -2).trim();
+        if (trimmed.endsWith('$$')) {
+          const content = trimmed.slice(0, -2).trim();
           if (content) mathBlockLines.push(content);
           flushMathBlock();
         } else {
@@ -525,13 +574,13 @@ export class CliniMdxEngine {
       }
 
       // Handle Fenced Code Block / Diagrams ```
-      if (line.trim().startsWith('```')) {
+      if (trimmed.startsWith('```')) {
         if (inCodeBlock) {
           flushCodeBlock();
         } else {
           if (inTable) flushTable();
           inCodeBlock = true;
-          codeBlockLang = line.trim().slice(3).trim();
+          codeBlockLang = trimmed.slice(3).trim();
         }
         continue;
       }
@@ -541,8 +590,54 @@ export class CliniMdxEngine {
         continue;
       }
 
+      // Track HTML block containers (div, section, nav, table, svg, style, script, details, etc.)
+      const openingTags = trimmed.match(/<([a-zA-Z0-9_-]+)(?:\s+[^>]*)?(?<!\/)>/g);
+      const closingTags = trimmed.match(/<\/([a-zA-Z0-9_-]+)>/g);
+
+      // Check if this line is in an HTML block or starts one
+      const wasInHtmlBlock = htmlBlockStack.length > 0;
+      const isHtmlLine = trimmed.startsWith('<') || wasInHtmlBlock;
+
+      // Update stack
+      if (openingTags) {
+        for (const tag of openingTags) {
+          const tagNameMatch = tag.match(/<([a-zA-Z0-9_-]+)/);
+          if (tagNameMatch) {
+            const tName = tagNameMatch[1].toLowerCase();
+            if (!['br', 'hr', 'img', 'input', 'meta', 'link'].includes(tName) && !tag.endsWith('/>')) {
+              htmlBlockStack.push(tName);
+            }
+          }
+        }
+      }
+      if (closingTags) {
+        for (const tag of closingTags) {
+          const tagNameMatch = tag.match(/<\/([a-zA-Z0-9_-]+)>/);
+          if (tagNameMatch) {
+            const tName = tagNameMatch[1].toLowerCase();
+            const lastIdx = htmlBlockStack.lastIndexOf(tName);
+            if (lastIdx !== -1) {
+              htmlBlockStack.splice(lastIdx, 1);
+            }
+          }
+        }
+      }
+
+      if (isHtmlLine) {
+        if (inTable) flushTable();
+        // If line is raw HTML, keep it directly (format inline if text inside HTML)
+        if (trimmed) {
+          if (trimmed.startsWith('<')) {
+            htmlLines.push(line);
+          } else {
+            htmlLines.push(this.formatInline(line));
+          }
+        }
+        continue;
+      }
+
       // Table line
-      if (line.trim().startsWith('|') && line.trim().endsWith('|')) {
+      if (trimmed.startsWith('|') && trimmed.endsWith('|')) {
         inTable = true;
         tableRows.push(line);
         continue;
@@ -580,41 +675,37 @@ export class CliniMdxEngine {
       }
 
       // Horizontal Rule
-      if (line.trim() === '---' || line.trim() === '***') {
+      if (trimmed === '---' || trimmed === '***') {
         htmlLines.push('<hr style="border: none; border-top: 1px solid var(--color-border, #e2e8f0); margin: 2rem 0;" />');
         continue;
       }
 
       // Blockquotes
-      if (line.trim().startsWith('>')) {
+      if (trimmed.startsWith('>')) {
         const quoteText = line.replace(/^>\s*/, '');
         htmlLines.push(`<blockquote style="border-left: 4px solid var(--color-primary, #0284c7); padding: 0.8rem 1.2rem; background: var(--color-surface-2, rgba(2, 132, 199, 0.05)); margin: 1.25rem 0; border-radius: 0 10px 10px 0; color: var(--color-text, #334155); font-style: italic;">${this.formatInline(quoteText)}</blockquote>`);
         continue;
       }
 
       // Bullet lists
-      if (line.trim().match(/^[-*]\s+/)) {
-        const listText = line.trim().replace(/^[-*]\s+/, '');
+      if (trimmed.match(/^[-*]\s+/)) {
+        const listText = trimmed.replace(/^[-*]\s+/, '');
         htmlLines.push(`<div style="margin: 0.4rem 0 0.4rem 1.25rem; font-size: 0.95rem; line-height: 1.65; color: var(--color-text, #1e293b);">• ${this.formatInline(listText)}</div>`);
         continue;
       }
 
       // Numbered lists
-      if (line.trim().match(/^\d+\.\s+/)) {
-        const numMatch = line.trim().match(/^(\d+)\.\s+(.*)$/);
+      if (trimmed.match(/^\d+\.\s+/)) {
+        const numMatch = trimmed.match(/^(\d+)\.\s+(.*)$/);
         if (numMatch) {
           htmlLines.push(`<div style="margin: 0.4rem 0 0.4rem 1.25rem; font-size: 0.95rem; line-height: 1.65; color: var(--color-text, #1e293b);"><strong style="color: var(--color-primary, #0284c7);">${numMatch[1]}.</strong> ${this.formatInline(numMatch[2])}</div>`);
         }
         continue;
       }
 
-      // Regular Paragraphs or Raw HTML
-      if (line.trim()) {
-        if (line.trim().startsWith('<')) {
-          htmlLines.push(line);
-        } else {
-          htmlLines.push(`<p style="font-size: 0.96rem; line-height: 1.75; color: var(--color-text, #1e293b); margin-bottom: 1rem;">${this.formatInline(line)}</p>`);
-        }
+      // Regular Paragraphs
+      if (trimmed) {
+        htmlLines.push(`<p style="font-size: 0.96rem; line-height: 1.75; color: var(--color-text, #1e293b); margin-bottom: 1rem;">${this.formatInline(line)}</p>`);
       }
     }
 
