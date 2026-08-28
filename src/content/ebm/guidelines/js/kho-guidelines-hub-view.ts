@@ -213,7 +213,17 @@ export function initKhoGuidelinesHub(): void {
       const spec = getSpecialtyBadge(item.specialty);
       const isBYT = item.sourceType === 'vn-moh' || (item.organization || '').includes('Bộ Y tế');
       const isLandmark = item.design === 'rct' || item.sourceType === 'intl-study';
+      const isMeta = item.design === 'meta-analysis' || item.design === 'systematic-review';
       const icdList = getIcdList(item.icd10);
+
+      let designBadge = '';
+      if (isLandmark) {
+        designBadge = '<span class="badge" style="font-size: 0.7rem; font-weight: 800; padding: 0.2rem 0.55rem; border-radius: 6px; background: rgba(5, 150, 105, 0.12); color: #059669; border: 1px solid rgba(5, 150, 105, 0.25);"><i class="fa-solid fa-trophy"></i> RCT Landmark</span>';
+      } else if (isMeta) {
+        designBadge = '<span class="badge" style="font-size: 0.7rem; font-weight: 800; padding: 0.2rem 0.55rem; border-radius: 6px; background: rgba(124, 58, 237, 0.12); color: #7c3aed; border: 1px solid rgba(124, 58, 237, 0.25);"><i class="fa-solid fa-layer-group"></i> Meta-Analysis</span>';
+      } else {
+        designBadge = '<span class="badge" style="font-size: 0.7rem; font-weight: 800; padding: 0.2rem 0.55rem; border-radius: 6px; background: rgba(2, 132, 199, 0.1); color: #0284c7; border: 1px solid rgba(2, 132, 199, 0.25);"><i class="fa-solid fa-file-shield"></i> CPG Guideline</span>';
+      }
 
       return `
         <article class="kho-card" style="background: var(--color-surface, #ffffff); border: 1px solid var(--color-border, #cbd5e1); border-radius: 18px; padding: 1.45rem; display: flex; flex-direction: column; justify-content: space-between; gap: 1rem; position: relative; overflow: hidden; box-shadow: 0 4px 14px rgba(0,0,0,0.03); transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease, border-color 0.25s ease;">
@@ -226,12 +236,13 @@ export function initKhoGuidelinesHub(): void {
                 <span class="badge" style="font-size: 0.74rem; font-weight: 800; padding: 0.25rem 0.6rem; border-radius: 6px; background: ${spec.bg}; color: ${spec.color};">
                   ${spec.label}
                 </span>
+                ${designBadge}
                 <span class="badge" style="font-size: 0.74rem; font-weight: 700; padding: 0.25rem 0.55rem; border-radius: 6px; background: rgba(100,116,139,0.08); color: var(--color-text-muted, #64748b);">
                   ${item.year || 2026}
                 </span>
               </div>
               <span class="badge" style="font-size: 0.72rem; font-weight: 800; padding: 0.2rem 0.55rem; border-radius: 6px; ${isBYT ? 'background: rgba(220,38,38,0.1); color: #dc2626; border: 1px solid rgba(220,38,38,0.25);' : 'background: rgba(2,132,199,0.1); color: #0284c7; border: 1px solid rgba(2,132,199,0.25);'}">
-                ${item.organization || 'EBM'}
+                ${isBYT ? '<i class="fa-solid fa-flag" style="color: #dc2626; margin-right: 4px;"></i>' : ''}${item.organization || 'EBM'}
               </span>
             </div>
 
