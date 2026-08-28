@@ -1032,3 +1032,41 @@
   color: var(--color-text-muted, #94a3b8) !important;
 }
 
+/* ==========================================================================
+   14. EPIDEMIOLOGIC TRIAD BENTO STYLES (MÔ HÌNH TAM GIÁC DỊCH TỄ)
+   ========================================================================== */
+.epi-triangle-wrapper {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.epi-triad-card {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+}
+
+.epi-triad-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="dark"] .epi-triangle-wrapper {
+  background: var(--color-surface, #1e293b) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.3) !important;
+}
+
+[data-theme="dark"] .epi-triad-card.agent-card {
+  background: linear-gradient(180deg, rgba(239, 68, 68, 0.12) 0%, rgba(15, 23, 42, 0.6) 100%) !important;
+  border-color: rgba(239, 68, 68, 0.4) !important;
+}
+
+[data-theme="dark"] .epi-triad-card.host-card {
+  background: linear-gradient(180deg, rgba(59, 130, 246, 0.12) 0%, rgba(15, 23, 42, 0.6) 100%) !important;
+  border-color: rgba(59, 130, 246, 0.4) !important;
+}
+
+[data-theme="dark"] .epi-triad-card.env-card {
+  background: linear-gradient(180deg, rgba(16, 185, 129, 0.12) 0%, rgba(15, 23, 42, 0.6) 100%) !important;
+  border-color: rgba(16, 185, 129, 0.4) !important;
+}
+
+

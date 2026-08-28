@@ -13,7 +13,7 @@
  */
 
 import { renderEpiTriangle } from '../content/basic-medical/epidemiology/components/EpiTriangle';
-import type { EpiTriangleProps } from '../content/basic-medical/epidemiology/components/EpiTriangle';
+import type { EpiTriangleProps, EpiTriangleNode } from '../content/basic-medical/epidemiology/components/EpiTriangle';
 import { renderEpiAlert } from '../content/basic-medical/epidemiology/components/EpiAlert';
 import type { EpiAlertProps } from '../content/basic-medical/epidemiology/components/EpiAlert';
 import { renderEpiPillarsNav } from '../content/basic-medical/epidemiology/components/EpiPillarsNav';
@@ -171,41 +171,62 @@ export class CliniMdxEngine {
     // 3. <EpiTriangle ... />
     result = result.replace(/<EpiTriangle([\s\S]*?)\/>/gi, (_match, attrs) => {
       try {
-        // Fallback default props for Dengue if attributes are inline object strings
+        const parseNode = (name: string): EpiTriangleNode => {
+          const match = attrs.match(new RegExp(`${name}\\s*=\\s*\\{([\\s\\S]*?)\\}\\s*(?=[a-zA-Z0-9_-]+\\s*=\\s*\\{|[a-zA-Z0-9_-]+\\s*=\\s*["']|\\/?>|$)`, 'i'));
+          if (match) {
+            const rawObj = match[1].trim();
+            try {
+              return new Function('return (' + rawObj + ')')();
+            } catch {
+              const titleMatch = rawObj.match(/title\s*:\s*["'`]([^"'`]+)["'`]/i);
+              const subtitleMatch = rawObj.match(/subtitle\s*:\s*["'`]([^"'`]+)["'`]/i);
+              const colorMatch = rawObj.match(/color\s*:\s*["'`]([^"'`]+)["'`]/i);
+              const itemsMatch = rawObj.match(/items\s*:\s*\[([\s\S]*?)\]/i);
+              let items: string[] = [];
+              if (itemsMatch) {
+                const itemStrings = itemsMatch[1].match(/["'`]([^"'`]+)["'`]/g);
+                if (itemStrings) {
+                  items = itemStrings.map((s: string) => s.replace(/^["'`]|["'`]$/g, ''));
+                }
+              }
+              return {
+                title: titleMatch ? titleMatch[1] : name,
+                subtitle: subtitleMatch ? subtitleMatch[1] : '',
+                items,
+                color: colorMatch ? colorMatch[1] : undefined
+              };
+            }
+          }
+          return { title: name, items: [] };
+        };
+
+        const vectorOrBridgeMatch = attrs.match(/vectorOrBridge\s*=\s*["'`]([^"'`]+)["'`]/i);
+        const centerTitleMatch = attrs.match(/centerTitle\s*=\s*["'`]([^"'`]+)["'`]/i);
+
+        const agent = parseNode('agent');
+        const host = parseNode('host');
+        const environment = parseNode('environment');
+
         const props: EpiTriangleProps = {
-          agent: {
-            title: 'Dengue Virus (DENV-1, 2, 3, 4)',
-            subtitle: 'Họ Flaviviridae • RNA (+) chuỗi đơn',
-            items: [
-              '4 Serotypes kháng nguyên khác biệt',
-              'Gây miễn dịch suốt đời với cùng serotype',
-              'Gây cơ chế ADE khi nhiễm thứ phát serotype khác'
-            ],
+          agent: agent.title ? agent : {
+            title: 'Tác nhân gây bệnh',
+            items: ['Đặc tính sinh học', 'Độc lực và biến chủng'],
             color: '#ef4444'
           },
-          host: {
-            title: 'Quần thể Người (Homo sapiens)',
-            subtitle: 'Vật chủ khuếch đại chính (Amplifying Host)',
-            items: [
-              'Trẻ em & người trẻ tuổi nguy cơ sốc cao',
-              'Phụ nữ có thai, béo phì, đái tháo đường',
-              'Kháng thể chéo bán bảo vệ tạo phức hợp miễn dịch'
-            ],
+          host: host.title ? host : {
+            title: 'Vật chủ & Quần thể cảm nhiễm',
+            items: ['Đặc điểm miễn dịch', 'Nhóm nguy cơ cao'],
             color: '#3b82f6'
           },
-          environment: {
-            title: 'Môi trường Đô thị & Khí hậu',
-            subtitle: 'Nhiệt đới & Cận nhiệt đới ẩm',
-            items: [
-              'Nhiệt độ tối ưu 28°C–32°C rút ngắn EIP',
-              'Đô thị hóa tự phát, tích trữ nước sinh hoạt',
-              'Mùa mưa tạo điều kiện bọ gậy phát triển bùng phát'
-            ],
+          environment: environment.title ? environment : {
+            title: 'Môi trường & Sinh cảnh',
+            items: ['Yếu tố tự nhiên', 'Yếu tố kinh tế - xã hội'],
             color: '#10b981'
           },
-          vectorOrBridge: 'VÉC-TƠ: AEDES AEGYPTI',
-          centerTitle: 'TIÊU ĐIỂM DỊCH DENGUE'
+          vectorOrBridge: vectorOrBridgeMatch ? vectorOrBridgeMatch[1] : 'VÉC-TƠ TRUNG GIAN',
+          centerTitle: centerTitleMatch ? centerTitleMatch[1] : 'TIÊU ĐIỂM DỊCH'
         };
+
         return renderEpiTriangle(props);
       } catch (e) {
         console.error('Error rendering EpiTriangle:', e);
