@@ -1069,4 +1069,31 @@
   border-color: rgba(16, 185, 129, 0.4) !important;
 }
 
+/* ==========================================================================
+   15. EPIDEMIOLOGIC TRANSMISSION CYCLE & INCUBATION DYNAMICS
+   ========================================================================== */
+.epi-transmission-cycle-wrapper {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.epi-cycle-step-card {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+}
+
+.epi-cycle-step-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="dark"] .epi-transmission-cycle-wrapper {
+  background: var(--color-surface, #1e293b) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.3) !important;
+}
+
+[data-theme="dark"] .epi-cycle-step-card {
+  background: var(--color-surface-2, #0f172a) !important;
+}
+
+
 

@@ -14,6 +14,8 @@
 
 import { renderEpiTriangle } from '../content/basic-medical/epidemiology/components/EpiTriangle';
 import type { EpiTriangleProps, EpiTriangleNode } from '../content/basic-medical/epidemiology/components/EpiTriangle';
+import { renderEpiTransmissionCycle } from '../content/basic-medical/epidemiology/components/EpiTransmissionCycle';
+import type { EpiTransmissionCycleProps } from '../content/basic-medical/epidemiology/components/EpiTransmissionCycle';
 import { renderEpiAlert } from '../content/basic-medical/epidemiology/components/EpiAlert';
 import type { EpiAlertProps } from '../content/basic-medical/epidemiology/components/EpiAlert';
 import { renderEpiPillarsNav } from '../content/basic-medical/epidemiology/components/EpiPillarsNav';
@@ -230,6 +232,30 @@ export class CliniMdxEngine {
         return renderEpiTriangle(props);
       } catch (e) {
         console.error('Error rendering EpiTriangle:', e);
+        return '';
+      }
+    });
+
+    // 3.5. <EpiTransmissionCycle ... />
+    result = result.replace(/<EpiTransmissionCycle([\s\S]*?)\/>/gi, (_match, attrs) => {
+      try {
+        const titleMatch = attrs.match(/title\s*=\s*["'`]([^"'`]+)["'`]/i);
+        const subtitleMatch = attrs.match(/subtitle\s*=\s*["'`]([^"'`]+)["'`]/i);
+        const vectorNameMatch = attrs.match(/vectorName\s*=\s*["'`]([^"'`]+)["'`]/i);
+        const eipDurationMatch = attrs.match(/eipDuration\s*=\s*["'`]([^"'`]+)["'`]/i);
+        const iipDurationMatch = attrs.match(/iipDuration\s*=\s*["'`]([^"'`]+)["'`]/i);
+
+        const props: EpiTransmissionCycleProps = {
+          title: titleMatch ? titleMatch[1] : undefined,
+          subtitle: subtitleMatch ? subtitleMatch[1] : undefined,
+          vectorName: vectorNameMatch ? vectorNameMatch[1] : undefined,
+          eipDuration: eipDurationMatch ? eipDurationMatch[1] : undefined,
+          iipDuration: iipDurationMatch ? iipDurationMatch[1] : undefined,
+        };
+
+        return renderEpiTransmissionCycle(props);
+      } catch (e) {
+        console.error('Error rendering EpiTransmissionCycle:', e);
         return '';
       }
     });
@@ -581,8 +607,10 @@ export class CliniMdxEngine {
 
     // Highlight Tree Branch lines & Connectors
     safe = safe
-      .replace(/(├──►|└──►|├──|└──|│|─►|──►|──|▼|▲|&gt;)/g, '<span class="diag-branch">$1</span>')
+      .replace(/(├──►|└──►|├──|└──|│|─►|──►|──|◄──|◄───|◄───────┘|▼|▲|&gt;)/g, '<span class="diag-branch">$1</span>')
       .replace(/(\[.*?\])/g, '<span class="diag-bracket">$1</span>')
+      .replace(/(\(.*?\))/g, '<span class="diag-action">$1</span>')
+      .replace(/(█+)/g, '<span class="diag-bar">$1</span>')
       .replace(/\b(Phản hồi âm tính|Negative Feedback|BÌNH THƯỜNG|Bù trừ tốt|Hồi phục|Hiệu quả|Tế bào T|Lympho B|Tế bào NK)\b/gi, '<span class="diag-success">$1</span>')
       .replace(/\b(Phản hồi dương|Vòng Luẩn Quẩn|TỬ VONG|Hoại tử|Nguy kịch|Thiếu máu cấp|Sốc|Đột quỵ|Cấp cứu)\b/gi, '<span class="diag-danger">$1</span>')
       .replace(/\b(Cảnh báo|Ngưỡng|Phân cắt|Kích hoạt|Tăng nhịp tim|Co mạch|Enzym|Convertase|Opsonin hóa)\b/gi, '<span class="diag-warning">$1</span>');

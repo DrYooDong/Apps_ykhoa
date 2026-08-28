@@ -284,15 +284,46 @@
 .mdx-diagram-canvas .diag-bracket,
 .diag-bracket {
   color: var(--color-text, #0f172a);
-  font-weight: 700;
-  background: rgba(0, 0, 0, 0.04);
-  padding: 0.1rem 0.4rem;
-  border-radius: 4px;
+  font-weight: 750;
+  background: rgba(2, 132, 199, 0.08);
+  padding: 0.12rem 0.45rem;
+  border-radius: 6px;
+  border: 1px solid rgba(2, 132, 199, 0.2);
 }
+
 [data-theme="dark"] .mdx-diagram-canvas .diag-bracket,
 [data-theme="dark"] .diag-bracket {
   color: #f1f5f9;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(56, 189, 248, 0.15);
+  border-color: rgba(56, 189, 248, 0.3);
+}
+
+.mdx-diagram-canvas .diag-action,
+.diag-action {
+  color: #0d9488;
+  font-weight: 700;
+  background: rgba(13, 148, 136, 0.08);
+  padding: 0.1rem 0.4rem;
+  border-radius: 6px;
+  border: 1px dashed rgba(13, 148, 136, 0.3);
+}
+
+[data-theme="dark"] .mdx-diagram-canvas .diag-action,
+[data-theme="dark"] .diag-action {
+  color: #2dd4bf;
+  background: rgba(45, 212, 191, 0.12);
+  border-color: rgba(45, 212, 191, 0.35);
+}
+
+.mdx-diagram-canvas .diag-bar,
+.diag-bar {
+  color: #0284c7;
+  letter-spacing: -1px;
+}
+
+[data-theme="dark"] .mdx-diagram-canvas .diag-bar,
+[data-theme="dark"] .diag-bar {
+  color: #38bdf8;
 }
 
 /* --- 5. CLINICAL STEPS, ALGORITHM & DECISION PATHWAY NODES --- */
