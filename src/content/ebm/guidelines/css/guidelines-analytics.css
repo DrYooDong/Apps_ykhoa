@@ -1,39 +1,40 @@
 /**
  * guidelines-analytics.css
- * Styling cho Bento Dashboard Grid, Evidence Gap Map Treemap, SVG Bubble Charts & Heatmap Matrix
- * Pure Vanilla CSS3 cho CliniPortal Guidelines Hub
+ * Bento Dashboard Grid, Evidence Gap Map Treemap, SVG Bubble Charts & Heatmap Matrix
+ * CliniPortal 2026 Medical Design System — Pure Vanilla CSS3
  */
 
 /* ── 1. BENTO DASHBOARD GRID ── */
 .bento-dashboard-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.25rem;
 }
 
 .bento-card {
   background: var(--surface);
   border: 1px solid var(--border-light);
-  border-radius: var(--radius);
-  padding: 1.25rem;
+  border-radius: var(--radius-xl);
+  padding: 1.35rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 0.85rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease;
+  box-shadow: var(--shadow-xs);
+  transition: transform var(--tr-fast), box-shadow var(--tr-fast), border-color var(--tr-fast);
   position: relative;
 }
 
 .bento-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(124, 58, 237, 0.08);
-  border-color: var(--accent-mid);
+  box-shadow: var(--shadow-md);
+  border-color: var(--accent);
 }
 
 .bento-card-spotlight {
   grid-column: span 2;
-  background: linear-gradient(135deg, var(--surface), var(--surface-2));
+  background: var(--accent-gradient-subtle);
+  border-color: var(--border);
 }
 
 .bento-card-header {
@@ -49,7 +50,7 @@
   align-items: center;
   gap: 5px;
   padding: 0.3rem 0.75rem;
-  border-radius: 20px;
+  border-radius: var(--radius-full);
   font-size: 0.75rem;
   font-weight: 700;
 }
@@ -61,15 +62,17 @@
 
 .bento-card-sublabel {
   font-size: 0.72rem;
-  color: var(--text-muted);
-  font-weight: 500;
+  color: var(--text-faint);
+  font-weight: 600;
 }
 
 .bento-stat-num {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 2.2rem;
+  font-family: var(--font-display);
+  font-size: 2.3rem;
   font-weight: 800;
   line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--text);
 }
 
 .bento-spotlight-list {
@@ -82,16 +85,17 @@
 .bento-spotlight-item {
   background: var(--surface);
   border: 1px solid var(--border-light);
-  border-radius: 12px;
-  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  padding: 0.85rem 1.1rem;
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
-  transition: background 0.15s ease;
+  transition: background var(--tr-fast), transform var(--tr-fast);
 }
 
 .bento-spotlight-item:hover {
   background: var(--accent-light);
+  transform: translateX(2px);
 }
 
 .spotlight-title-row {
@@ -102,19 +106,21 @@
 }
 
 .spotlight-title {
-  font-size: 0.85rem;
+  font-family: var(--font-sans);
+  font-size: 0.86rem;
   font-weight: 700;
   color: var(--text);
-  line-height: 1.35;
+  line-height: 1.4;
 }
 
 .spotlight-year {
-  font-size: 0.75rem;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
   font-weight: 800;
   color: var(--accent);
   background: var(--accent-light);
-  padding: 1px 6px;
-  border-radius: 6px;
+  padding: 2px 7px;
+  border-radius: var(--radius-sm);
   flex-shrink: 0;
 }
 
@@ -131,7 +137,7 @@
   font-weight: 700;
   color: var(--accent);
   text-decoration: none;
-  transition: opacity 0.15s ease;
+  transition: opacity var(--tr-fast);
 }
 .btn-spotlight-summary:hover { opacity: 0.8; text-decoration: underline; }
 
@@ -142,9 +148,9 @@
 }
 
 .bento-card-text {
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   color: var(--text-muted);
-  line-height: 1.4;
+  line-height: 1.45;
 }
 
 .bento-card-footer-link {
@@ -158,7 +164,7 @@
 /* Stacked Progress Bar */
 .bento-progress-bar-stacked {
   height: 12px;
-  border-radius: 10px;
+  border-radius: var(--radius-full);
   overflow: hidden;
   display: flex;
   background: var(--surface-2);
@@ -170,10 +176,10 @@
   height: 100%;
   transition: width 0.4s ease, filter 0.2s;
 }
-.bar-segment:hover { filter: brightness(1.2); }
-.bar-rct { background: #3b82f6; }
-.bar-gdl { background: #10b981; }
-.bar-meta { background: #8b5cf6; }
+.bar-segment:hover { filter: brightness(1.15); }
+.bar-rct { background: #0284c7; }
+.bar-gdl { background: #16a34a; }
+.bar-meta { background: #7c3aed; }
 .bar-other { background: #94a3b8; }
 
 .jq-bubble-svg circle {
@@ -210,19 +216,20 @@
 .evidence-analytics-wrapper {
   background: var(--surface);
   border: 1px solid var(--border-light);
-  border-radius: var(--radius);
+  border-radius: var(--radius-xl);
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+  box-shadow: var(--shadow-xs);
 }
 
 .analytics-chart-title {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: var(--font-display);
   font-size: 1.1rem;
   font-weight: 800;
   color: var(--text);
+  letter-spacing: -0.01em;
 }
 
 .analytics-chart-subtitle {
@@ -238,7 +245,7 @@
   align-items: center;
   background: var(--surface-2);
   padding: 1rem 1.25rem;
-  border-radius: 14px;
+  border-radius: var(--radius-lg);
   border: 1px solid var(--border-light);
 }
 
@@ -248,7 +255,7 @@
   align-items: center;
   justify-content: center;
   padding: 0.6rem 1.25rem;
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   background: var(--surface);
   border: 1.5px solid var(--border-light);
   text-align: center;
@@ -265,7 +272,7 @@
 }
 
 .insight-value {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: var(--font-display);
   font-size: 1.4rem;
   font-weight: 800;
   color: var(--text);
@@ -280,15 +287,15 @@
 }
 
 .insight-text {
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   color: var(--text);
-  line-height: 1.45;
+  line-height: 1.5;
 }
 
 .evidence-treemap-container {
   display: flex;
   height: 58px;
-  border-radius: 14px;
+  border-radius: var(--radius-lg);
   overflow: hidden;
   gap: 3px;
   background: var(--surface-2);
@@ -298,7 +305,7 @@
 
 .treemap-cell {
   height: 100%;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   transition: transform 0.15s ease, filter 0.15s ease;
   cursor: pointer;
   display: flex;
@@ -348,12 +355,12 @@
 .evidence-map-wrapper {
   background: var(--surface);
   border: 1px solid var(--border-light);
-  border-radius: var(--radius);
+  border-radius: var(--radius-xl);
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+  box-shadow: var(--shadow-xs);
 }
 
 .evidence-map-header {
@@ -365,10 +372,11 @@
 }
 
 .evidence-map-title {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: var(--font-display);
   font-size: 1.1rem;
   font-weight: 800;
   color: var(--text);
+  letter-spacing: -0.01em;
 }
 
 .evidence-map-subtitle {
@@ -422,14 +430,15 @@
   position: absolute;
   background: var(--surface);
   border: 1px solid var(--border-light);
-  border-radius: 12px;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
   padding: 0.85rem;
   max-width: 280px;
   z-index: 100;
   font-size: 0.8rem;
   pointer-events: none;
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .tooltip-header {
@@ -440,7 +449,7 @@
 .tooltip-title {
   font-weight: 800;
   color: var(--text);
-  line-height: 1.3;
+  line-height: 1.35;
 }
 
 .tooltip-sub {
@@ -478,19 +487,20 @@
 .heatmap-matrix-wrapper {
   background: var(--surface);
   border: 1px solid var(--border-light);
-  border-radius: var(--radius);
+  border-radius: var(--radius-xl);
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+  box-shadow: var(--shadow-xs);
 }
 
 .heatmap-matrix-header h3 {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: var(--font-display);
   font-size: 1.1rem;
   font-weight: 800;
   color: var(--text);
+  letter-spacing: -0.01em;
 }
 
 .heatmap-matrix-header p {
@@ -502,7 +512,7 @@
 .heatmap-table-scroll {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
   border: 1px solid var(--border-light);
   background: var(--surface-2);
   padding: 6px;
@@ -542,7 +552,7 @@
   align-items: center;
   gap: 8px;
   background: var(--surface);
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
 }
 
 .spec-dot {
@@ -556,7 +566,7 @@
 .heatmap-cell {
   text-align: center;
   padding: 0.6rem 0.4rem;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   font-size: 0.82rem;
   font-weight: 700;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
@@ -592,19 +602,19 @@
   .evidence-map-wrapper,
   .heatmap-matrix-wrapper {
     padding: 1rem;
-    border-radius: 12px;
+    border-radius: var(--radius-lg);
   }
 }
 
 /* ── 6. DARK MODE TOKENS FOR ANALYTICS ── */
 [data-theme="dark"] .bento-card-spotlight {
-  background: linear-gradient(135deg, #1e293b, #334155);
+  background: linear-gradient(135deg, var(--surface), var(--surface-2));
 }
 
-[data-theme="dark"] .badge-danger { background: rgba(220, 38, 38, 0.2); color: #fca5a5; border-color: rgba(239, 68, 68, 0.3); }
-[data-theme="dark"] .badge-warning { background: rgba(234, 88, 12, 0.2); color: #fdba74; border-color: rgba(249, 115, 22, 0.3); }
-[data-theme="dark"] .badge-success { background: rgba(13, 148, 136, 0.2); color: #5eead4; border-color: rgba(20, 184, 166, 0.3); }
-[data-theme="dark"] .badge-info { background: rgba(37, 99, 235, 0.2); color: #93c5fd; border-color: rgba(59, 130, 246, 0.3); }
+[data-theme="dark"] .badge-danger { background: rgba(220, 38, 38, 0.2); color: #fca5a5; border-color: rgba(239, 68, 68, 0.35); }
+[data-theme="dark"] .badge-warning { background: rgba(234, 88, 12, 0.2); color: #fdba74; border-color: rgba(249, 115, 22, 0.35); }
+[data-theme="dark"] .badge-success { background: rgba(13, 148, 136, 0.2); color: #5eead4; border-color: rgba(20, 184, 166, 0.35); }
+[data-theme="dark"] .badge-info { background: rgba(37, 99, 235, 0.2); color: #93c5fd; border-color: rgba(59, 130, 246, 0.35); }
 
-[data-theme="dark"] .insight-box.highlight { background: rgba(34, 197, 94, 0.15); border-color: rgba(34, 197, 94, 0.3); }
-[data-theme="dark"] .insight-box.warning { background: rgba(245, 158, 11, 0.15); border-color: rgba(245, 158, 11, 0.3); }
+[data-theme="dark"] .insight-box.highlight { background: rgba(34, 197, 94, 0.15); border-color: rgba(34, 197, 94, 0.35); }
+[data-theme="dark"] .insight-box.warning { background: rgba(245, 158, 11, 0.15); border-color: rgba(245, 158, 11, 0.35); }

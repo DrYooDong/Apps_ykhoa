@@ -2,7 +2,7 @@
  * guidelines-research.css
  * Scientific Research & Critical Appraisal Toolkit Styling
  * (PICO Formulator, Cochrane RoB 2.0, Newcastle-Ottawa Scale, Meta-Analysis Engine, Citation Exporter)
- * Pure Vanilla CSS3
+ * CliniPortal 2026 Medical Design System — Pure Vanilla CSS3
  */
 
 /* ── RESEARCH TOOLKIT MODAL ── */
@@ -19,7 +19,7 @@
   gap: 0.5rem;
   background: var(--surface-2);
   padding: 6px;
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
   border: 1px solid var(--border-light);
   margin-bottom: 1.25rem;
   overflow-x: auto;
@@ -27,7 +27,7 @@
 
 .research-tab-btn {
   padding: 0.5rem 1rem;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   border: none;
   background: transparent;
   color: var(--text-muted);
@@ -38,23 +38,23 @@
   align-items: center;
   gap: 6px;
   white-space: nowrap;
-  transition: all var(--tr);
+  transition: all var(--tr-fast);
 }
 
 .research-tab-btn:hover {
   color: var(--accent);
-  background: rgba(2, 132, 199, 0.08);
+  background: var(--accent-light);
 }
 
 .research-tab-btn.active {
   background: var(--surface);
   color: var(--accent);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow-sm);
 }
 
 .research-panel {
   display: none;
-  animation: tabFadeIn 0.3s ease;
+  animation: tabFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .research-panel.active {
@@ -77,14 +77,14 @@
 .pico-card {
   background: var(--surface-2);
   border: 1.5px solid var(--border-light);
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
   padding: 1rem;
-  transition: border-color var(--tr), box-shadow var(--tr);
+  transition: border-color var(--tr-fast), box-shadow var(--tr-fast);
 }
 
 .pico-card:focus-within {
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.12);
+  box-shadow: 0 0 0 3px var(--accent-light);
 }
 
 .pico-card-header {
@@ -99,37 +99,39 @@
 .pico-badge {
   width: 28px;
   height: 28px;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   color: #fff;
   font-weight: 900;
   font-size: 0.85rem;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-xs);
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
-.pico-p { background: linear-gradient(135deg, #6366f1, #8b5cf6); box-shadow: 0 3px 10px rgba(99, 102, 241, 0.35); }
-.pico-i { background: linear-gradient(135deg, #0284c7, #06b6d4); box-shadow: 0 3px 10px rgba(2, 132, 199, 0.35); }
-.pico-c { background: linear-gradient(135deg, #d97706, #f59e0b); box-shadow: 0 3px 10px rgba(217, 119, 6, 0.35); }
-.pico-o { background: linear-gradient(135deg, #059669, #10b981); box-shadow: 0 3px 10px rgba(5, 150, 105, 0.35); }
+
+.pico-p { background: linear-gradient(135deg, #6366f1, #8b5cf6); }
+.pico-i { background: linear-gradient(135deg, #0284c7, #06b6d4); }
+.pico-c { background: linear-gradient(135deg, #d97706, #f59e0b); }
+.pico-o { background: linear-gradient(135deg, #059669, #10b981); }
 
 .pico-textarea {
   width: 100%;
   border: 1px solid var(--border-light);
-  border-radius: 8px;
-  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-sm);
+  padding: 0.55rem 0.75rem;
   font-size: 0.82rem;
   background: var(--surface);
   color: var(--text);
   resize: vertical;
   min-height: 65px;
+  font-family: inherit;
 }
 
 .query-builder-box {
   background: var(--surface-2);
   border: 1px solid var(--border-light);
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
   padding: 1.15rem;
   margin-top: 1rem;
 }
@@ -142,12 +144,12 @@
 }
 
 .query-output {
-  font-family: 'Consolas', 'Courier New', monospace;
+  font-family: var(--font-mono);
   font-size: 0.82rem;
   background: var(--surface);
   border: 1px solid var(--border-light);
   padding: 0.75rem 1rem;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   color: var(--text);
   word-break: break-all;
   white-space: pre-wrap;
@@ -164,7 +166,7 @@
 .appraisal-domain-card {
   background: var(--surface-2);
   border: 1px solid var(--border-light);
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
   padding: 1rem 1.25rem;
 }
 
@@ -188,7 +190,7 @@
 
 .risk-level-select {
   padding: 0.35rem 0.75rem;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   font-size: 0.8rem;
   font-weight: 700;
   border: 1.5px solid var(--border);
@@ -204,14 +206,14 @@
   margin-top: 1.25rem;
   padding: 1rem;
   background: var(--surface-2);
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
   border: 1px solid var(--border-light);
 }
 
 .traffic-light-item {
   text-align: center;
   padding: 0.6rem;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   background: var(--surface);
   border: 1px solid var(--border-light);
 }
@@ -257,7 +259,7 @@
   font-weight: 800;
   text-align: left;
   border-bottom: 1.5px solid var(--border-light);
-  color: var(--text-muted);
+  color: var(--text-faint);
 }
 
 .meta-trials-table td {
@@ -268,7 +270,7 @@
 .meta-result-panel {
   background: var(--surface-2);
   border: 1px solid var(--border-light);
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
   padding: 1.25rem;
   display: flex;
   flex-direction: column;
@@ -284,12 +286,13 @@
 .meta-stat-box {
   background: var(--surface);
   border: 1px solid var(--border-light);
-  border-radius: 10px;
+  border-radius: var(--radius-md);
   padding: 0.75rem 1rem;
 }
 
 .meta-stat-val {
-  font-size: 1.3rem;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
   font-weight: 800;
   color: var(--accent);
   line-height: 1.2;
@@ -312,19 +315,19 @@
 
 .citation-format-pill {
   padding: 0.4rem 0.85rem;
-  border-radius: 20px;
+  border-radius: var(--radius-full);
   font-size: 0.76rem;
   font-weight: 700;
   border: 1px solid var(--border-light);
   background: var(--surface-2);
   color: var(--text-muted);
   cursor: pointer;
-  transition: all var(--tr);
+  transition: all var(--tr-fast);
 }
 
 .citation-format-pill:hover {
   color: var(--accent);
-  border-color: var(--accent-mid);
+  border-color: var(--accent);
 }
 
 .citation-format-pill.active {
@@ -336,7 +339,7 @@
 .citation-text-box {
   background: var(--surface);
   border: 1.5px solid var(--border-light);
-  border-radius: 10px;
+  border-radius: var(--radius-md);
   padding: 1rem 1.25rem;
   font-size: 0.84rem;
   line-height: 1.6;
@@ -344,3 +347,4 @@
   position: relative;
   min-height: 80px;
 }
+

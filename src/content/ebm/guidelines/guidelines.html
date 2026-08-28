@@ -9,7 +9,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="guidelines.css">
@@ -363,6 +363,15 @@
                 <input type="checkbox" id="asian-data-filter" onchange="handleAsianFilterChange()"> Dữ liệu Châu Á
               </label>
             </div>
+          </div>
+
+          <!-- Active Filter Chips Bar -->
+          <div class="active-filters-bar" id="active-filters-bar" style="display: none;">
+            <span class="active-filters-label">Bộ lọc đang bật:</span>
+            <div class="active-filters-list" id="active-filters-list">
+              <!-- Rendered via JS -->
+            </div>
+            <button class="clear-all-filters-btn" onclick="resetFilters()">Xóa tất cả</button>
           </div>
         </div>
 

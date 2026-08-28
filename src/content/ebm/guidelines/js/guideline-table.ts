@@ -367,8 +367,127 @@ export function renderFilterPills(): void {
     });
     specFilterList.innerHTML = specNavHtml;
   }
+
+  renderActiveFilterChips();
 }
 
+function renderActiveFilterChips(): void {
+  const bar = document.getElementById('active-filters-bar');
+  const list = document.getElementById('active-filters-list');
+  if (!bar || !list) return;
+
+  const chips: { label: string; clear: () => void }[] = [];
+
+  if (window.filters.search) {
+    chips.push({
+      label: `Tìm: "${window.filters.search}"`,
+      clear: () => {
+        window.filters.search = '';
+        const inp = document.getElementById('search-input') as HTMLInputElement | null;
+        if (inp) inp.value = '';
+        renderFilterPills();
+        renderTable();
+      }
+    });
+  }
+
+  if (window.filters.sourceType && window.SOURCE_TYPES && window.SOURCE_TYPES[window.filters.sourceType]) {
+    chips.push({
+      label: `Nguồn: ${window.SOURCE_TYPES[window.filters.sourceType].name}`,
+      clear: () => setFilter('sourceType', null)
+    });
+  }
+
+  if (window.filters.specialty && window.SPECIALTIES && window.SPECIALTIES[window.filters.specialty]) {
+    chips.push({
+      label: `Chuyên khoa: ${window.SPECIALTIES[window.filters.specialty].name}`,
+      clear: () => setFilter('specialty', null)
+    });
+  }
+
+  if (window.filters.condition && window.CLINICAL_CONDITIONS && window.CLINICAL_CONDITIONS[window.filters.condition]) {
+    chips.push({
+      label: `Bệnh: ${window.CLINICAL_CONDITIONS[window.filters.condition].name}`,
+      clear: () => setFilter('condition', null)
+    });
+  }
+
+  if (window.filters.design && window.DESIGNS && window.DESIGNS[window.filters.design]) {
+    chips.push({
+      label: `Thiết kế: ${window.DESIGNS[window.filters.design].name}`,
+      clear: () => setFilter('design', null)
+    });
+  }
+
+  if (window.filters.impact && window.IMPACTS && window.IMPACTS[window.filters.impact]) {
+    chips.push({
+      label: `Ảnh hưởng: ${window.IMPACTS[window.filters.impact].name}`,
+      clear: () => setFilter('impact', null)
+    });
+  }
+
+  if (window.filters.period) {
+    const periodLabel = window.filters.period === 'last5' ? '5 năm gần đây' : `Năm ${window.filters.period}`;
+    chips.push({
+      label: periodLabel,
+      clear: () => setFilter('period', null)
+    });
+  }
+
+  if (window.filters.asianData) {
+    chips.push({
+      label: 'Dữ liệu Châu Á',
+      clear: () => {
+        window.filters.asianData = false;
+        const cb = document.getElementById('asian-data-filter') as HTMLInputElement | null;
+        if (cb) cb.checked = false;
+        renderFilterPills();
+        renderTable();
+      }
+    });
+  }
+
+  if (window.filters.hasSummary) {
+    chips.push({
+      label: 'Có bài tóm tắt',
+      clear: () => {
+        window.filters.hasSummary = false;
+        const btn = document.getElementById('filter-summary-btn');
+        if (btn) btn.classList.remove('active');
+        renderFilterPills();
+        renderTable();
+      }
+    });
+  }
+
+  if (window.filters.icd10) {
+    chips.push({
+      label: `ICD-10: ${window.filters.icd10}`,
+      clear: () => setFilter('icd10', null)
+    });
+  }
+
+  if (chips.length === 0) {
+    bar.style.display = 'none';
+    list.innerHTML = '';
+  } else {
+    bar.style.display = 'flex';
+    list.innerHTML = '';
+    chips.forEach((chip) => {
+      const chipEl = document.createElement('div');
+      chipEl.className = 'active-filter-chip';
+      chipEl.innerHTML = `<span>${escapeHtml(chip.label)}</span><button type="button" class="remove-filter-btn" aria-label="Xóa bộ lọc">&times;</button>`;
+      const removeBtn = chipEl.querySelector('button');
+      if (removeBtn) {
+        removeBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          chip.clear();
+        });
+      }
+      list.appendChild(chipEl);
+    });
+  }
+}
 
 export function setFilter(type: string, value: any): void {
   if (type === 'specialty') {
