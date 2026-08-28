@@ -1,19 +1,31 @@
 /* ============================================================
-   MDX ATOMIC COMPONENT: ALERTS & INFOBOXES (mdx-alerts.css)
-   Semantic Callout Cards (Info / Warning / Danger / Success / Pearl)
+   MDX ATOMIC COMPONENT: ALERTS, CALLOUTS & SPECIAL TEXT (mdx-alerts.css)
+   Semantic Callout Cards (Info / Warning / Danger / Success / Pearl / Key / Lab)
    ============================================================ */
 
+/* --- 1. MASTER INFOBOX & ALERT CARD --- */
 .infobox,
-.mdx-alert {
+.mdx-alert,
+.biochem-alert,
+.epi-alert,
+.patho-alert,
+.physio-alert {
   display: flex;
   align-items: flex-start;
   gap: var(--space-3, 0.85rem);
   padding: var(--space-4, 1rem) var(--space-5, 1.25rem);
-  border-radius: var(--radius-md, 12px);
-  margin-bottom: var(--space-4, 1rem);
+  border-radius: var(--radius-md, 14px);
+  margin: var(--space-4, 1rem) 0;
   font-size: var(--text-sm, 0.88rem);
-  line-height: 1.6;
-  transition: transform var(--tr-fast, 150ms ease-out);
+  line-height: 1.62;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  position: relative;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+}
+
+.infobox:hover,
+.mdx-alert:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .infobox:last-child,
@@ -26,46 +38,74 @@
   font-size: 1.25rem;
   flex-shrink: 0;
   line-height: 1.3;
+  margin-top: 2px;
 }
 
-/* Danger / Critical Callout */
+.infobox-body,
+.mdx-alert-body {
+  flex: 1;
+}
+
+.infobox-title,
+.mdx-alert-title,
+.infobox > div > strong:first-child,
+.mdx-alert > div > strong:first-child {
+  display: block;
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-size: 0.92rem;
+  font-weight: 800;
+  margin-bottom: var(--space-1, 0.25rem);
+  color: var(--color-text, #0f172a);
+}
+
+[data-theme="dark"] .infobox-title,
+[data-theme="dark"] .mdx-alert-title,
+[data-theme="dark"] .infobox > div > strong:first-child,
+[data-theme="dark"] .mdx-alert > div > strong:first-child {
+  color: var(--color-text, #f8fafc);
+}
+
+/* --- 2. DANGER & RED FLAG CALLOUTS (⚠️ / 🚨) --- */
 .infobox.danger,
 .mdx-alert-danger,
 .patho-alert-danger,
-.physio-alert-danger {
-  background: var(--color-danger-hl, #fef2f2);
-  border: 1px solid var(--color-danger-border);
-  border-left: 4px solid var(--color-danger, #dc2626);
+.physio-alert-danger,
+.mdx-red-flag,
+.danger-banner,
+.contraindication-box {
+  background: var(--color-danger-hl, rgba(239, 68, 68, 0.08));
+  border: 1px solid var(--color-danger-border, rgba(239, 68, 68, 0.25));
+  border-left: 4.5px solid var(--color-danger, #dc2626);
   color: var(--color-text, #0f172a);
 }
 
 .infobox.danger .infobox-icon,
-.mdx-alert-danger .mdx-alert-icon {
+.mdx-alert-danger .mdx-alert-icon,
+.mdx-red-flag .mdx-alert-icon {
   color: var(--color-danger, #dc2626);
 }
 
-/* Success / Normal Callout */
-.infobox.success,
-.mdx-alert-success,
-.physio-alert-pearl {
-  background: var(--color-success-hl, #f0fdf4);
-  border: 1px solid var(--color-success-border);
-  border-left: 4px solid var(--color-success, #059669);
-  color: var(--color-text, #0f172a);
+[data-theme="dark"] .infobox.danger,
+[data-theme="dark"] .mdx-alert-danger,
+[data-theme="dark"] .patho-alert-danger,
+[data-theme="dark"] .physio-alert-danger,
+[data-theme="dark"] .mdx-red-flag {
+  background: rgba(239, 68, 68, 0.16);
+  border-color: rgba(248, 113, 113, 0.3);
+  color: #f8fafc;
+}
+[data-theme="dark"] .infobox.danger .infobox-icon,
+[data-theme="dark"] .mdx-alert-danger .mdx-alert-icon {
+  color: #f87171;
 }
 
-.infobox.success .infobox-icon,
-.mdx-alert-success .mdx-alert-icon {
-  color: var(--color-success, #059669);
-}
-
-/* Warning Callout */
+/* --- 3. WARNING CALLOUTS --- */
 .infobox.warning,
 .mdx-alert-warning,
 .patho-alert-warning {
-  background: var(--color-warning-hl, #fffbeb);
-  border: 1px solid var(--color-warning-border);
-  border-left: 4px solid var(--color-warning, #d97706);
+  background: var(--color-warning-hl, rgba(245, 158, 11, 0.08));
+  border: 1px solid var(--color-warning-border, rgba(245, 158, 11, 0.25));
+  border-left: 4.5px solid var(--color-warning, #d97706);
   color: var(--color-text, #0f172a);
 }
 
@@ -74,14 +114,53 @@
   color: var(--color-warning, #d97706);
 }
 
-/* Info / Evidence Callout */
+[data-theme="dark"] .infobox.warning,
+[data-theme="dark"] .mdx-alert-warning,
+[data-theme="dark"] .patho-alert-warning {
+  background: rgba(245, 158, 11, 0.16);
+  border-color: rgba(251, 191, 36, 0.3);
+  color: #f8fafc;
+}
+[data-theme="dark"] .infobox.warning .infobox-icon,
+[data-theme="dark"] .mdx-alert-warning .mdx-alert-icon {
+  color: #fbbf24;
+}
+
+/* --- 4. SUCCESS & NORMAL CALLOUTS --- */
+.infobox.success,
+.mdx-alert-success,
+.physio-alert-pearl {
+  background: var(--color-success-hl, rgba(16, 185, 129, 0.08));
+  border: 1px solid var(--color-success-border, rgba(16, 185, 129, 0.25));
+  border-left: 4.5px solid var(--color-success, #059669);
+  color: var(--color-text, #0f172a);
+}
+
+.infobox.success .infobox-icon,
+.mdx-alert-success .mdx-alert-icon {
+  color: var(--color-success, #059669);
+}
+
+[data-theme="dark"] .infobox.success,
+[data-theme="dark"] .mdx-alert-success,
+[data-theme="dark"] .physio-alert-pearl {
+  background: rgba(16, 185, 129, 0.16);
+  border-color: rgba(74, 222, 128, 0.3);
+  color: #f8fafc;
+}
+[data-theme="dark"] .infobox.success .infobox-icon,
+[data-theme="dark"] .mdx-alert-success .mdx-alert-icon {
+  color: #4ade80;
+}
+
+/* --- 5. INFO & CLINICAL EVIDENCE CALLOUTS --- */
 .infobox.info,
 .mdx-alert-info,
 .patho-alert-mechanism,
 .physio-alert-mechanism {
-  background: var(--color-primary-hl, #eff6ff);
-  border: 1px solid var(--color-primary-border);
-  border-left: 4px solid var(--color-primary, #0284c7);
+  background: var(--color-primary-hl, rgba(2, 132, 199, 0.08));
+  border: 1px solid var(--color-primary-border, rgba(2, 132, 199, 0.25));
+  border-left: 4.5px solid var(--color-primary, #0284c7);
   color: var(--color-text, #0f172a);
 }
 
@@ -90,28 +169,84 @@
   color: var(--color-primary, #0284c7);
 }
 
-/* Teal / Clinical Pearl Callout */
-.infobox.teal,
-.mdx-alert-teal,
-.patho-alert-pearl {
-  background: var(--color-teal-hl, rgba(13, 148, 136, 0.08));
-  border: 1px solid var(--color-teal-border, rgba(13, 148, 136, 0.3));
-  border-left: 4px solid var(--color-teal, #0d9488);
-  color: var(--color-text, #0f172a);
+[data-theme="dark"] .infobox.info,
+[data-theme="dark"] .mdx-alert-info,
+[data-theme="dark"] .patho-alert-mechanism,
+[data-theme="dark"] .physio-alert-mechanism {
+  background: rgba(2, 132, 199, 0.16);
+  border-color: rgba(56, 189, 248, 0.3);
+  color: #f8fafc;
+}
+[data-theme="dark"] .infobox.info .infobox-icon,
+[data-theme="dark"] .mdx-alert-info .mdx-alert-icon {
+  color: #38bdf8;
 }
 
-.infobox.teal .infobox-icon,
-.mdx-alert-teal .mdx-alert-icon {
-  color: var(--color-teal, #0d9488);
+/* --- 6. KEY TAKEAWAYS CARD (🔑) --- */
+.mdx-key-takeaway,
+.key-point-card,
+.core-message {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3, 0.85rem);
+  padding: 1.1rem 1.35rem;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.06) 0%, rgba(217, 119, 6, 0.04) 100%);
+  border: 1.5px solid rgba(245, 158, 11, 0.3);
+  border-left: 5px solid #d97706;
+  border-radius: var(--radius-md, 14px);
+  margin: var(--space-5, 1.25rem) 0;
+  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.05);
 }
 
-.infobox-title,
-.mdx-alert-title,
-.infobox > div > strong:first-child {
-  display: block;
-  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
-  font-size: 0.9rem;
-  font-weight: 700;
-  margin-bottom: var(--space-1, 0.25rem);
-  color: var(--color-text, #0f172a);
+[data-theme="dark"] .mdx-key-takeaway,
+[data-theme="dark"] .key-point-card,
+[data-theme="dark"] .core-message {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(217, 119, 6, 0.08) 100%);
+  border-color: rgba(251, 191, 36, 0.35);
+  color: #f8fafc;
+}
+
+/* --- 7. LAB TESTS & BIOMARKERS HIGHLIGHT CARD (🧪) --- */
+.mdx-lab-highlight,
+.lab-result-strip,
+.biomarker-card {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3, 0.85rem);
+  padding: 1.1rem 1.35rem;
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.06) 0%, rgba(99, 102, 241, 0.04) 100%);
+  border: 1.5px solid rgba(124, 58, 237, 0.25);
+  border-left: 5px solid #7c3aed;
+  border-radius: var(--radius-md, 14px);
+  margin: var(--space-5, 1.25rem) 0;
+  box-shadow: 0 2px 8px rgba(124, 58, 237, 0.05);
+}
+
+[data-theme="dark"] .mdx-lab-highlight,
+[data-theme="dark"] .lab-result-strip,
+[data-theme="dark"] .biomarker-card {
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.16) 0%, rgba(99, 102, 241, 0.1) 100%);
+  border-color: rgba(167, 139, 250, 0.35);
+  color: #f8fafc;
+}
+
+/* --- 8. MOLECULAR & GENETIC MECHANISM CARD (🧬) --- */
+.molecular-mechanism-card,
+.gene-mutation-card {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3, 0.85rem);
+  padding: 1.1rem 1.35rem;
+  background: linear-gradient(135deg, rgba(13, 148, 136, 0.06) 0%, rgba(2, 132, 199, 0.04) 100%);
+  border: 1.5px solid rgba(13, 148, 136, 0.25);
+  border-left: 5px solid #0d9488;
+  border-radius: var(--radius-md, 14px);
+  margin: var(--space-5, 1.25rem) 0;
+}
+
+[data-theme="dark"] .molecular-mechanism-card,
+[data-theme="dark"] .gene-mutation-card {
+  background: linear-gradient(135deg, rgba(13, 148, 136, 0.16) 0%, rgba(2, 132, 199, 0.1) 100%);
+  border-color: rgba(45, 212, 191, 0.35);
+  color: #f8fafc;
 }

@@ -1,113 +1,267 @@
 /* ============================================================
-   MDX ATOMIC COMPONENT: REGIMEN & DATA TABLES (mdx-tables.css)
-   High-Density Clinical Tables, Dosage Regimens & Lab Values
+   MDX ATOMIC COMPONENT: MEDICAL & EBM DATA TABLES (mdx-tables.css)
+   High-Density Clinical Tables, Dosage Regimens, KDIGO Matrices,
+   2x2 Diagnostic Tables & Evidence Pyramids
    ============================================================ */
 
+/* --- 1. MASTER RESPONSIVE TABLE WRAPPER --- */
 .table-wrapper,
-.mdx-table-wrapper {
+.mdx-table-wrapper,
+.table-container,
+.table-responsive {
+  position: relative;
+  width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  border-radius: var(--radius-md, 12px);
-  border: 1px solid var(--color-border, #cbd5e1);
-  margin-bottom: var(--space-4, 1rem);
+  border-radius: var(--radius-md, 14px);
+  border: 1.5px solid var(--color-border, #cbd5e1);
+  margin: var(--space-5, 1.25rem) 0;
   background: var(--color-surface, #ffffff);
-  box-shadow: var(--shadow-sm, 0 1px 3px rgba(0,0,0,0.03));
+  box-shadow: var(--shadow-sm, 0 1px 4px rgba(0,0,0,0.04));
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
+.table-wrapper:hover,
+.mdx-table-wrapper:hover,
+.table-container:hover {
+  border-color: var(--color-primary-border, rgba(2, 132, 199, 0.3));
+  box-shadow: var(--shadow-md, 0 4px 14px rgba(0,0,0,0.06));
+}
+
+[data-theme="dark"] .table-wrapper,
+[data-theme="dark"] .mdx-table-wrapper,
+[data-theme="dark"] .table-container,
+[data-theme="dark"] .table-responsive {
+  background: var(--color-surface, #1e293b);
+  border-color: var(--color-border, #334155);
+}
+
+[data-theme="dark"] .table-wrapper:hover,
+[data-theme="dark"] .mdx-table-wrapper:hover,
+[data-theme="dark"] .table-container:hover {
+  border-color: var(--color-primary-border, rgba(56, 189, 248, 0.4));
+}
+
+/* Custom Table Scrollbar */
+.table-wrapper::-webkit-scrollbar,
+.mdx-table-wrapper::-webkit-scrollbar,
+.table-container::-webkit-scrollbar {
+  height: 6px;
+}
+.table-wrapper::-webkit-scrollbar-track,
+.mdx-table-wrapper::-webkit-scrollbar-track,
+.table-container::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.03);
+}
+.table-wrapper::-webkit-scrollbar-thumb,
+.mdx-table-wrapper::-webkit-scrollbar-thumb,
+.table-container::-webkit-scrollbar-thumb {
+  background: var(--color-primary-hl, rgba(2, 132, 199, 0.3));
+  border-radius: 4px;
+}
+
+/* --- 2. MASTER CLINICAL TABLE STYLING --- */
+table,
 .med-table,
 .data-table,
 .regimen-table,
-.mdx-table {
+.study-table,
+.mdx-table,
+.matrix-table {
   width: 100%;
   border-collapse: collapse;
   font-size: var(--text-xs, 0.86rem);
-  min-width: 600px;
+  min-width: 580px;
   text-align: left;
+  font-variant-numeric: tabular-nums;
 }
 
+/* Table Head */
+table thead,
+.med-table thead,
+.data-table thead,
+.regimen-table thead,
+.study-table thead,
+.mdx-table thead {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+table thead th,
 .med-table thead th,
 .data-table thead th,
 .regimen-table thead th,
+.study-table thead th,
 .mdx-table thead th {
-  padding: 0.85rem 1.15rem;
+  padding: 0.9rem 1.15rem;
   font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
-  font-size: 0.76rem;
+  font-size: 0.78rem;
   font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  background: var(--color-surface-2, #f8fafc);
+  letter-spacing: 0.04em;
+  background: var(--color-surface-offset, #f8fafc);
   color: var(--color-text-muted, #475569);
   border-bottom: 2px solid var(--color-border, #cbd5e1);
   white-space: nowrap;
 }
 
-.med-table td,
-.data-table td,
-.regimen-table td,
-.mdx-table td {
-  padding: 0.85rem 1.15rem;
-  border-bottom: 1px solid var(--color-border, #cbd5e1);
-  vertical-align: middle;
-  line-height: 1.55;
-  color: var(--color-text, #0f172a);
-}
-
-.med-table tbody tr:last-child td,
-.data-table tbody tr:last-child td,
-.regimen-table tbody tr:last-child td,
-.mdx-table tbody tr:last-child td {
-  border-bottom: none;
-}
-
-.med-table tbody tr:nth-child(even),
-.data-table tbody tr:nth-child(even),
-.regimen-table tbody tr:nth-child(even),
-.mdx-table tbody tr:nth-child(even) {
-  background: rgba(248, 250, 252, 0.6);
-}
-
-.med-table tbody tr:hover td,
-.data-table tbody tr:hover td,
-.regimen-table tbody tr:hover td,
-.mdx-table tbody tr:hover td {
-  background: var(--color-surface-2, #f1f5f9);
-}
-
-[data-theme="dark"] .table-wrapper,
-[data-theme="dark"] .mdx-table-wrapper {
-  background: var(--color-surface, #1e293b);
-  border-color: var(--color-border, #334155);
-}
-
+[data-theme="dark"] table thead th,
 [data-theme="dark"] .med-table thead th,
 [data-theme="dark"] .data-table thead th,
 [data-theme="dark"] .regimen-table thead th,
+[data-theme="dark"] .study-table thead th,
 [data-theme="dark"] .mdx-table thead th {
   background: var(--color-surface-2, #0f172a);
   border-bottom-color: var(--color-border, #334155);
   color: var(--color-text-muted, #94a3b8);
 }
 
+/* Table Cells */
+table td,
+.med-table td,
+.data-table td,
+.regimen-table td,
+.study-table td,
+.mdx-table td {
+  padding: 0.85rem 1.15rem;
+  border-bottom: 1px solid var(--color-border, #e2e8f0);
+  vertical-align: middle;
+  line-height: 1.58;
+  color: var(--color-text, #0f172a);
+  transition: background-color 0.15s ease;
+}
+
+[data-theme="dark"] table td,
 [data-theme="dark"] .med-table td,
 [data-theme="dark"] .data-table td,
 [data-theme="dark"] .regimen-table td,
+[data-theme="dark"] .study-table td,
 [data-theme="dark"] .mdx-table td {
   border-bottom-color: var(--color-border, #334155);
   color: var(--color-text, #f8fafc);
 }
 
+table tbody tr:last-child td,
+.med-table tbody tr:last-child td,
+.data-table tbody tr:last-child td,
+.regimen-table tbody tr:last-child td,
+.study-table tbody tr:last-child td,
+.mdx-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Zebra Striping */
+table tbody tr:nth-child(even),
+.med-table tbody tr:nth-child(even),
+.data-table tbody tr:nth-child(even),
+.regimen-table tbody tr:nth-child(even),
+.study-table tbody tr:nth-child(even),
+.mdx-table tbody tr:nth-child(even) {
+  background: rgba(248, 250, 252, 0.7);
+}
+
+[data-theme="dark"] table tbody tr:nth-child(even),
 [data-theme="dark"] .med-table tbody tr:nth-child(even),
 [data-theme="dark"] .data-table tbody tr:nth-child(even),
 [data-theme="dark"] .regimen-table tbody tr:nth-child(even),
+[data-theme="dark"] .study-table tbody tr:nth-child(even),
 [data-theme="dark"] .mdx-table tbody tr:nth-child(even) {
-  background: rgba(15, 23, 42, 0.4);
+  background: rgba(15, 23, 42, 0.45);
 }
 
+/* Row Hover */
+table tbody tr:hover td,
+.med-table tbody tr:hover td,
+.data-table tbody tr:hover td,
+.regimen-table tbody tr:hover td,
+.study-table tbody tr:hover td,
+.mdx-table tbody tr:hover td {
+  background: var(--color-surface-2, #f1f5f9);
+}
+
+[data-theme="dark"] table tbody tr:hover td,
 [data-theme="dark"] .med-table tbody tr:hover td,
 [data-theme="dark"] .data-table tbody tr:hover td,
 [data-theme="dark"] .regimen-table tbody tr:hover td,
+[data-theme="dark"] .study-table tbody tr:hover td,
 [data-theme="dark"] .mdx-table tbody tr:hover td {
-  background: rgba(51, 65, 85, 0.5);
+  background: rgba(51, 65, 85, 0.55);
+}
+
+/* --- 3. CLINICAL RISK & SEMANTIC CELL CLASSIFICATIONS --- */
+.cell-danger,
+.cell-high-risk,
+td.cell-danger {
+  background: rgba(239, 68, 68, 0.12) !important;
+  color: var(--color-danger, #dc2626) !important;
+  font-weight: 700;
+}
+[data-theme="dark"] .cell-danger,
+[data-theme="dark"] .cell-high-risk,
+[data-theme="dark"] td.cell-danger {
+  background: rgba(239, 68, 68, 0.2) !important;
+  color: #fca5a5 !important;
+}
+
+.cell-warning,
+.cell-mod-risk,
+td.cell-warning {
+  background: rgba(245, 158, 11, 0.12) !important;
+  color: var(--color-warning, #d97706) !important;
+  font-weight: 700;
+}
+[data-theme="dark"] .cell-warning,
+[data-theme="dark"] .cell-mod-risk,
+[data-theme="dark"] td.cell-warning {
+  background: rgba(245, 158, 11, 0.2) !important;
+  color: #fde047 !important;
+}
+
+.cell-success,
+.cell-low-risk,
+td.cell-success {
+  background: rgba(16, 185, 129, 0.12) !important;
+  color: var(--color-success, #059669) !important;
+  font-weight: 700;
+}
+[data-theme="dark"] .cell-success,
+[data-theme="dark"] .cell-low-risk,
+[data-theme="dark"] td.cell-success {
+  background: rgba(16, 185, 129, 0.2) !important;
+  color: #86efac !important;
+}
+
+.cell-info,
+.cell-primary,
+td.cell-info {
+  background: rgba(2, 132, 199, 0.1) !important;
+  color: var(--color-primary, #0284c7) !important;
+  font-weight: 700;
+}
+[data-theme="dark"] .cell-info,
+[data-theme="dark"] .cell-primary,
+[data-theme="dark"] td.cell-info {
+  background: rgba(56, 189, 248, 0.18) !important;
+  color: #7dd3fc !important;
+}
+
+.cell-mono,
+td.cell-mono {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.cell-center,
+td.cell-center,
+th.cell-center {
+  text-align: center;
+}
+
+.cell-bold,
+td.cell-bold {
+  font-weight: 800;
 }
 
 .source-cell {
@@ -120,3 +274,99 @@
   gap: var(--space-2, 0.5rem);
   white-space: nowrap;
 }
+
+/* --- 4. 2X2 DIAGNOSTIC CONTINGENCY TABLES (Sensitivity / Specificity) --- */
+.grid-2x2 {
+  margin: var(--space-4, 1rem) 0;
+  border-collapse: separate;
+  border-spacing: 4px;
+}
+
+.grid-2x2 th,
+.grid-2x2 td {
+  padding: 0.85rem;
+  text-align: center;
+  border-radius: var(--radius-xs, 8px);
+}
+
+.grid-2x2 .tp {
+  background: rgba(16, 185, 129, 0.15);
+  border: 1.5px solid var(--color-success, #10b981);
+  color: var(--color-success, #059669);
+  font-weight: 800;
+}
+
+.grid-2x2 .tn {
+  background: rgba(2, 132, 199, 0.15);
+  border: 1.5px solid var(--color-primary, #0284c7);
+  color: var(--color-primary, #0284c7);
+  font-weight: 800;
+}
+
+.grid-2x2 .fp,
+.grid-2x2 .fn {
+  background: rgba(239, 68, 68, 0.12);
+  border: 1.5px solid var(--color-danger, #ef4444);
+  color: var(--color-danger, #dc2626);
+  font-weight: 800;
+}
+
+/* --- 5. EVIDENCE PYRAMID TABLE & STACK (Study Designs) --- */
+.study-pyramid,
+.pyramid-box {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: var(--space-5, 1.25rem) 0;
+  padding: 1.25rem;
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #cbd5e1);
+  border-radius: var(--radius-md, 14px);
+}
+
+[data-theme="dark"] .study-pyramid,
+[data-theme="dark"] .pyramid-box {
+  background: var(--color-surface, #1e293b);
+  border-color: var(--color-border, #334155);
+}
+
+.pyramid-header {
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: var(--color-text, #0f172a);
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.study-pyramid .l1,
+.study-pyramid .l2,
+.study-pyramid .l3,
+.study-pyramid .l4,
+.study-pyramid .l5,
+.study-pyramid .l6 {
+  padding: 0.65rem 1rem;
+  border-radius: var(--radius-xs, 8px);
+  font-weight: 700;
+  font-size: 0.84rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: transform 0.15s ease;
+}
+
+.study-pyramid .l1 { background: rgba(124, 58, 237, 0.15); border-left: 4px solid #7c3aed; color: #7c3aed; } /* Meta-analysis & Sys Reviews */
+.study-pyramid .l2 { background: rgba(2, 132, 199, 0.15); border-left: 4px solid #0284c7; color: #0284c7; } /* RCTs */
+.study-pyramid .l3 { background: rgba(13, 148, 136, 0.15); border-left: 4px solid #0d9488; color: #0d9488; } /* Cohort Studies */
+.study-pyramid .l4 { background: rgba(245, 158, 11, 0.15); border-left: 4px solid #f59e0b; color: #d97706; } /* Case-Control */
+.study-pyramid .l5 { background: rgba(239, 68, 68, 0.15); border-left: 4px solid #ef4444; color: #dc2626; } /* Case Series / Reports */
+.study-pyramid .l6 { background: rgba(100, 116, 139, 0.15); border-left: 4px solid #64748b; color: #64748b; } /* Expert Opinion */
+
+[data-theme="dark"] .study-pyramid .l1 { color: #c084fc; }
+[data-theme="dark"] .study-pyramid .l2 { color: #38bdf8; }
+[data-theme="dark"] .study-pyramid .l3 { color: #2dd4bf; }
+[data-theme="dark"] .study-pyramid .l4 { color: #fbbf24; }
+[data-theme="dark"] .study-pyramid .l5 { color: #f87171; }
+[data-theme="dark"] .study-pyramid .l6 { color: #94a3b8; }

@@ -1,12 +1,12 @@
 /* ============================================================
-   MDX ATOMIC COMPONENT: SECTION CARD (mdx-section-card.css)
-   Bento Section Containers, Gradient Headers & Subtitles
+   MDX ATOMIC COMPONENT: SECTION CARD & CLINICAL WIDGETS (mdx-section-card.css)
+   Bento Section Containers, Gradient Headers, Interactive Scoring & Calculators
    ============================================================ */
 
 @keyframes sec-card-fade-up {
   0% {
     opacity: 0;
-    transform: translateY(14px);
+    transform: translateY(12px);
   }
   100% {
     opacity: 1;
@@ -14,34 +14,80 @@
   }
 }
 
-.sec-card {
+/* --- 1. MASTER SECTION CARD --- */
+.sec-card,
+.section-card {
   background: var(--color-surface, #ffffff);
-  border: 1px solid var(--color-border, #cbd5e1);
+  border: 1.5px solid var(--color-border, #cbd5e1);
   border-radius: var(--radius-lg, 16px);
   overflow: hidden;
   box-shadow: var(--shadow-sm, 0 2px 8px rgba(0,0,0,0.03));
   scroll-margin-top: 110px;
   margin-bottom: var(--space-8, 2rem);
-  transition: border-color var(--tr, 200ms ease-out), box-shadow var(--tr, 200ms ease-out);
-  animation: sec-card-fade-up var(--duration-base, 220ms) var(--ease-out, cubic-bezier(0.23, 1, 0.32, 1)) both;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  animation: sec-card-fade-up 0.22s cubic-bezier(0.23, 1, 0.32, 1) both;
 }
 
-.sec-card:hover {
-  border-color: var(--color-primary-border);
-  box-shadow: var(--shadow-md, 0 4px 12px rgba(0,0,0,0.06));
+.sec-card:hover,
+.section-card:hover {
+  border-color: var(--color-primary-border, rgba(2, 132, 199, 0.35));
+  box-shadow: var(--shadow-md, 0 6px 18px rgba(0,0,0,0.06));
 }
 
+[data-theme="dark"] .sec-card,
+[data-theme="dark"] .section-card {
+  background: var(--color-surface, #1e293b);
+  border-color: var(--color-border, #334155);
+}
+
+[data-theme="dark"] .sec-card:hover {
+  border-color: var(--color-primary-border, rgba(56, 189, 248, 0.4));
+}
+
+/* Section Header */
 .sec-hdr {
-  padding: 1.1rem 1.5rem;
+  padding: 1.15rem 1.5rem;
   border-bottom: 1px solid var(--color-border, #cbd5e1);
-  background: var(--color-surface-2, #f8fafc);
+  background: var(--color-surface-offset, #f8fafc);
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: var(--space-3, 0.75rem);
+  flex-wrap: wrap;
 }
 
 [data-theme="dark"] .sec-hdr {
-  background: var(--color-surface-elevated-dark, rgba(30, 41, 59, 0.7));
+  background: var(--color-surface-2, #0f172a);
+  border-bottom-color: var(--color-border, #334155);
+}
+
+.sec-hdr-left {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.sec-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  background: var(--color-primary-hl, rgba(2, 132, 199, 0.1));
+  color: var(--color-primary, #0284c7);
+  border: 1px solid var(--color-primary-border, rgba(2, 132, 199, 0.25));
+}
+
+[data-theme="dark"] .sec-badge {
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+  border-color: rgba(56, 189, 248, 0.3);
 }
 
 .sec-hdr-icon {
@@ -54,17 +100,21 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--color-primary-border);
+  border: 1px solid var(--color-primary-border, rgba(2, 132, 199, 0.2));
   flex-shrink: 0;
 }
 
 .sec-title {
   font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
-  font-size: var(--text-md, 1.1rem);
+  font-size: var(--text-md, 1.12rem);
   font-weight: 800;
   color: var(--color-text, #0f172a);
   letter-spacing: -0.01em;
   margin: 0;
+}
+
+[data-theme="dark"] .sec-title {
+  color: var(--color-text, #f8fafc);
 }
 
 .sec-body {
@@ -74,17 +124,133 @@
   gap: var(--space-5, 1.25rem);
 }
 
+/* Sub-card & Bento Elements */
+.sub-card {
+  background: var(--color-surface-offset, #f8fafc);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: var(--radius-md, 14px);
+  padding: 1.15rem 1.35rem;
+  margin: var(--space-3, 0.75rem) 0;
+}
+
+[data-theme="dark"] .sub-card {
+  background: var(--color-surface-2, #0f172a);
+  border-color: var(--color-border, #334155);
+}
+
+.sub-card-title {
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: var(--color-text, #0f172a);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+[data-theme="dark"] .sub-card-title {
+  color: var(--color-text, #f8fafc);
+}
+
+/* --- 2. CLINICAL SCORING & CALCULATOR WIDGETS --- */
+.calc-checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  padding: 0.65rem 0.85rem;
+  border-radius: var(--radius-xs, 8px);
+  border: 1px solid var(--color-border, #e2e8f0);
+  background: var(--color-surface, #ffffff);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+  font-size: 0.88rem;
+  margin-bottom: 0.4rem;
+}
+
+.calc-checkbox-label:hover {
+  background: var(--color-surface-offset, #f8fafc);
+  border-color: var(--color-primary, #0284c7);
+}
+
+[data-theme="dark"] .calc-checkbox-label {
+  background: var(--color-surface, #1e293b);
+  border-color: var(--color-border, #334155);
+}
+
+.calc-score-display {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-md, 12px);
+  background: linear-gradient(135deg, rgba(2, 132, 199, 0.1) 0%, rgba(13, 148, 136, 0.1) 100%);
+  border: 1.5px solid var(--color-primary, #0284c7);
+  margin-top: 1rem;
+}
+
+.calc-score-number {
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--color-primary, #0284c7);
+}
+
+[data-theme="dark"] .calc-score-number {
+  color: #38bdf8;
+}
+
+.calc-score-text {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--color-text, #0f172a);
+}
+
+[data-theme="dark"] .calc-score-text {
+  color: #f8fafc;
+}
+
+/* MCQ Interactive Options */
+.mcq-opt {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-sm, 10px);
+  border: 1px solid var(--color-border, #cbd5e1);
+  background: var(--color-surface, #ffffff);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-size: 0.88rem;
+  margin-bottom: 0.45rem;
+}
+
+.mcq-opt:hover {
+  border-color: var(--color-primary, #0284c7);
+  background: var(--color-primary-hl, rgba(2, 132, 199, 0.05));
+}
+
+[data-theme="dark"] .mcq-opt {
+  background: var(--color-surface, #1e293b);
+  border-color: var(--color-border, #334155);
+}
+
 /* Subtitles (H3, H4) */
 .sec-subtitle {
   font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
   font-weight: 800;
-  font-size: var(--text-sm, 0.95rem);
+  font-size: var(--text-sm, 0.96rem);
   color: var(--color-text, #0f172a);
-  margin-top: var(--space-2, 0.5rem);
+  margin-top: var(--space-4, 1rem);
   margin-bottom: var(--space-2, 0.5rem);
   display: flex;
   align-items: center;
   gap: var(--space-2, 0.6rem);
+}
+
+[data-theme="dark"] .sec-subtitle {
+  color: var(--color-text, #f8fafc);
 }
 
 .sec-subtitle i {
@@ -97,7 +263,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--color-primary-border);
+  border: 1px solid var(--color-primary-border, rgba(2, 132, 199, 0.2));
   flex-shrink: 0;
 }
 

@@ -1,0 +1,86 @@
+/* ============================================================
+   CLINIPORTAL ATOMIC MDX COMPONENT: INTERACTIVE RUNTIME STYLES
+   Stylesheet: src/styles/components/mdx/mdx-interactive.css
+   Progress Bar, Active TOC Indicator, Interactive Checkbox & Tooltips
+   ============================================================ */
+
+/* --- 1. READING PROGRESS BAR --- */
+.mdx-reading-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3.5px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--color-primary, #0284c7) 0%, var(--color-teal, #0d9488) 50%, #7c3aed 100%);
+  z-index: 99999;
+  transition: width 0.12s ease-out;
+  box-shadow: 0 1px 6px rgba(2, 132, 199, 0.4);
+}
+
+[data-theme="dark"] .mdx-reading-progress-bar {
+  background: linear-gradient(90deg, #38bdf8 0%, #2dd4bf 50%, #a855f7 100%);
+  box-shadow: 0 1px 8px rgba(56, 189, 248, 0.6);
+}
+
+/* --- 2. ACTIVE TABLE OF CONTENTS (TOC) INDICATOR --- */
+.toc-list .toc-item {
+  position: relative;
+  transition: all 0.2s ease;
+  padding-left: 0.75rem;
+}
+
+.toc-list .toc-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 0%;
+  background: var(--color-primary, #0284c7);
+  border-radius: 2px;
+  transition: height 0.2s ease, background-color 0.2s ease;
+}
+
+.toc-list .toc-item.active::before {
+  height: 80%;
+}
+
+.toc-list .toc-item.active a {
+  color: var(--color-primary, #0284c7) !important;
+  font-weight: 800;
+}
+
+[data-theme="dark"] .toc-list .toc-item.active a {
+  color: #38bdf8 !important;
+}
+
+/* --- 3. INTERACTIVE SCORING CHECKBOX REFINEMENT --- */
+.calc-checkbox-label input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  accent-color: var(--color-primary, #0284c7);
+  cursor: pointer;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.calc-checkbox-label:has(input[type="checkbox"]:checked) {
+  background: var(--color-primary-hl, rgba(2, 132, 199, 0.08));
+  border-color: var(--color-primary, #0284c7);
+}
+
+[data-theme="dark"] .calc-checkbox-label:has(input[type="checkbox"]:checked) {
+  background: rgba(56, 189, 248, 0.15);
+  border-color: #38bdf8;
+}
+
+/* --- 4. COPY BUTTON TOAST ANIMATION --- */
+.mdx-copy-trigger {
+  user-select: none;
+}
+
+.mdx-copy-trigger:active {
+  transform: scale(0.95);
+}

@@ -1,57 +1,262 @@
 /* ============================================================
    MDX ATOMIC COMPONENT: EBM BADGES & RECOMMENDATIONS (mdx-ebm-badges.css)
-   Evidence-Based Medicine Classes (COR I, IIa, IIb, III) & Levels (LOE A, B, C)
+   Evidence-Based Medicine Classes (COR I, IIa, IIb, III),
+   Levels of Evidence (LOE A, B, C, D) & GRADE Recommendation Cards
    ============================================================ */
 
-.ebm-badge-group {
+/* --- 1. BADGE GROUPS & WRAPPERS --- */
+.ebm-badge-group,
+.badge-group {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-1, 0.35rem);
+  gap: var(--space-1, 0.4rem);
   flex-wrap: wrap;
-  margin-right: var(--space-2, 0.4rem);
+  margin-right: var(--space-2, 0.5rem);
   vertical-align: middle;
 }
 
+/* Base Badge Styling */
 .cor-badge,
-.loe-badge {
-  padding: 0.2rem 0.55rem;
-  border-radius: var(--radius-sm, 8px);
-  font-size: var(--text-xs, 0.72rem);
+.loe-badge,
+.grade-badge,
+.rec-tag,
+.score-badge,
+.criteria-tag {
+  padding: 0.22rem 0.6rem;
+  border-radius: var(--radius-xs, 8px);
+  font-size: var(--text-xs, 0.74rem);
   font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
   font-weight: 800;
   display: inline-flex;
   align-items: center;
-  gap: 0.3rem;
+  gap: 0.35rem;
+  line-height: 1.25;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  transition: all 0.15s ease;
 }
 
-/* Class of Recommendation */
-.cor-class-1 { background: #dcfce7; color: #15803d; border: 1px solid #86efac; }
-.cor-class-2a { background: #e0f2fe; color: #0369a1; border: 1px solid #7dd3fc; }
-.cor-class-2b { background: #fef3c7; color: #b45309; border: 1px solid #fcd34d; }
-.cor-class-3 { background: #ffe4e6; color: #be123c; border: 1px solid #fda4af; }
+/* --- 2. CLASS OF RECOMMENDATION (COR) --- */
+.cor-class-1,
+.cor-1,
+.cor-badge.cor-1,
+.cor-badge.class-1 {
+  background: rgba(16, 185, 129, 0.14);
+  color: var(--color-success, #047857);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+}
+[data-theme="dark"] .cor-class-1,
+[data-theme="dark"] .cor-1,
+[data-theme="dark"] .cor-badge.cor-1,
+[data-theme="dark"] .cor-badge.class-1 {
+  background: rgba(16, 185, 129, 0.25);
+  color: #4ade80;
+  border-color: rgba(74, 222, 128, 0.35);
+}
 
-[data-theme="dark"] .cor-class-1 { background: rgba(22, 101, 52, 0.35); color: #4ade80; border-color: rgba(74, 222, 128, 0.3); }
-[data-theme="dark"] .cor-class-2a { background: rgba(3, 105, 161, 0.35); color: #38bdf8; border-color: rgba(56, 189, 248, 0.3); }
-[data-theme="dark"] .cor-class-2b { background: rgba(180, 83, 9, 0.35); color: #fbbf24; border-color: rgba(251, 191, 36, 0.3); }
-[data-theme="dark"] .cor-class-3 { background: rgba(190, 18, 60, 0.35); color: #fb7185; border-color: rgba(251, 113, 133, 0.3); }
+.cor-class-2a,
+.cor-2a,
+.cor-badge.cor-2a,
+.cor-badge.class-2a {
+  background: rgba(2, 132, 199, 0.14);
+  color: var(--color-primary, #0369a1);
+  border: 1px solid rgba(2, 132, 199, 0.35);
+}
+[data-theme="dark"] .cor-class-2a,
+[data-theme="dark"] .cor-2a,
+[data-theme="dark"] .cor-badge.cor-2a,
+[data-theme="dark"] .cor-badge.class-2a {
+  background: rgba(2, 132, 199, 0.25);
+  color: #38bdf8;
+  border-color: rgba(56, 189, 248, 0.35);
+}
 
-/* Level of Evidence */
-.loe-grade-a { background: var(--color-success-hl, rgba(16,185,129,0.12)); color: var(--color-success, #047857); border: 1px solid var(--color-success-border); }
-.loe-grade-b { background: var(--color-info-bg, rgba(59,130,246,0.12)); color: var(--color-info, #1d4ed8); border: 1px solid var(--color-info-border); }
-.loe-grade-c { background: var(--color-warning-hl, rgba(245,158,11,0.12)); color: var(--color-warning, #b45309); border: 1px solid var(--color-warning-border); }
+.cor-class-2b,
+.cor-2b,
+.cor-badge.cor-2b,
+.cor-badge.class-2b {
+  background: rgba(245, 158, 11, 0.14);
+  color: var(--color-warning, #b45309);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+}
+[data-theme="dark"] .cor-class-2b,
+[data-theme="dark"] .cor-2b,
+[data-theme="dark"] .cor-badge.cor-2b,
+[data-theme="dark"] .cor-badge.class-2b {
+  background: rgba(245, 158, 11, 0.25);
+  color: #fbbf24;
+  border-color: rgba(251, 191, 36, 0.35);
+}
 
-/* EBM Recommendation Card */
-.ebm-rec-card {
+.cor-class-3,
+.cor-3,
+.cor-badge.cor-3,
+.cor-badge.class-3 {
+  background: rgba(239, 68, 68, 0.14);
+  color: var(--color-danger, #dc2626);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+}
+[data-theme="dark"] .cor-class-3,
+[data-theme="dark"] .cor-3,
+[data-theme="dark"] .cor-badge.cor-3,
+[data-theme="dark"] .cor-badge.class-3 {
+  background: rgba(239, 68, 68, 0.25);
+  color: #f87171;
+  border-color: rgba(248, 113, 113, 0.35);
+}
+
+/* --- 3. LEVEL OF EVIDENCE (LOE) & GRADE --- */
+.loe-grade-a,
+.loe-a,
+.grade-a,
+.loe-badge.loe-a,
+.grade-badge.grade-a {
+  background: rgba(16, 185, 129, 0.12);
+  color: #047857;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+[data-theme="dark"] .loe-grade-a,
+[data-theme="dark"] .loe-a,
+[data-theme="dark"] .grade-a,
+[data-theme="dark"] .loe-badge.loe-a,
+[data-theme="dark"] .grade-badge.grade-a {
+  background: rgba(16, 185, 129, 0.2);
+  color: #6ee7b7;
+  border-color: rgba(110, 231, 183, 0.3);
+}
+
+.loe-grade-b,
+.loe-b,
+.loe-b-r,
+.loe-b-nr,
+.grade-b,
+.loe-badge.loe-b,
+.grade-badge.grade-b {
+  background: rgba(59, 130, 246, 0.12);
+  color: #1d4ed8;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+[data-theme="dark"] .loe-grade-b,
+[data-theme="dark"] .loe-b,
+[data-theme="dark"] .grade-b,
+[data-theme="dark"] .loe-badge.loe-b,
+[data-theme="dark"] .grade-badge.grade-b {
+  background: rgba(59, 130, 246, 0.2);
+  color: #93c5fd;
+  border-color: rgba(147, 197, 253, 0.3);
+}
+
+.loe-grade-c,
+.loe-c,
+.loe-c-ld,
+.loe-c-eo,
+.grade-c,
+.grade-weak-c,
+.loe-badge.loe-c,
+.grade-badge.grade-c {
+  background: rgba(245, 158, 11, 0.12);
+  color: #b45309;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+[data-theme="dark"] .loe-grade-c,
+[data-theme="dark"] .loe-c,
+[data-theme="dark"] .grade-c,
+[data-theme="dark"] .loe-badge.loe-c,
+[data-theme="dark"] .grade-badge.grade-c {
+  background: rgba(245, 158, 11, 0.2);
+  color: #fde047;
+  border-color: rgba(253, 224, 71, 0.3);
+}
+
+.loe-grade-d,
+.grade-d,
+.grade-weak-d,
+.loe-grade-e {
+  background: rgba(100, 116, 139, 0.12);
+  color: #475569;
+  border: 1px solid rgba(100, 116, 139, 0.3);
+}
+[data-theme="dark"] .loe-grade-d,
+[data-theme="dark"] .grade-d,
+[data-theme="dark"] .loe-grade-e {
+  background: rgba(100, 116, 139, 0.22);
+  color: #94a3b8;
+  border-color: rgba(148, 163, 184, 0.3);
+}
+
+/* Generic Semantic Color Badges */
+.badge-green, .tag-green { background: rgba(16, 185, 129, 0.12); color: #059669; border: 1px solid rgba(16, 185, 129, 0.3); }
+.badge-amber, .tag-amber { background: rgba(245, 158, 11, 0.12); color: #d97706; border: 1px solid rgba(245, 158, 11, 0.3); }
+.badge-red, .tag-red { background: rgba(239, 68, 68, 0.12); color: #dc2626; border: 1px solid rgba(239, 68, 68, 0.3); }
+.badge-blue, .tag-blue { background: rgba(2, 132, 199, 0.12); color: #0284c7; border: 1px solid rgba(2, 132, 199, 0.3); }
+.tag-2d { font-family: var(--font-mono, monospace); font-weight: 700; }
+
+[data-theme="dark"] .badge-green, [data-theme="dark"] .tag-green { color: #4ade80; border-color: rgba(74, 222, 128, 0.3); }
+[data-theme="dark"] .badge-amber, [data-theme="dark"] .tag-amber { color: #fbbf24; border-color: rgba(251, 191, 36, 0.3); }
+[data-theme="dark"] .badge-red, [data-theme="dark"] .tag-red { color: #f87171; border-color: rgba(248, 113, 113, 0.3); }
+[data-theme="dark"] .badge-blue, [data-theme="dark"] .tag-blue { color: #38bdf8; border-color: rgba(56, 189, 248, 0.3); }
+
+/* --- 4. EBM RECOMMENDATION CARDS & BLOCKS --- */
+.ebm-rec-card,
+.ebm-rec-block {
   background: var(--color-surface, #ffffff);
   border: 1px solid var(--color-border, #cbd5e1);
-  border-left: 4px solid var(--color-primary, #0284c7);
-  border-radius: var(--radius-md, 12px);
-  padding: var(--space-4, 1rem) var(--space-5, 1.25rem);
-  margin-bottom: var(--space-3, 0.85rem);
-  box-shadow: var(--shadow-sm, 0 1px 3px rgba(0,0,0,0.03));
+  border-left: 4.5px solid var(--color-primary, #0284c7);
+  border-radius: var(--radius-md, 14px);
+  padding: 1.15rem 1.35rem;
+  margin: var(--space-4, 1rem) 0;
+  box-shadow: var(--shadow-sm, 0 2px 8px rgba(0,0,0,0.03));
+  transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
-.ebm-rec-card.class-1 { border-left-color: var(--color-success, #059669); }
+.ebm-rec-card:hover,
+.ebm-rec-block:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md, 0 6px 18px rgba(0,0,0,0.06));
+}
+
+[data-theme="dark"] .ebm-rec-card,
+[data-theme="dark"] .ebm-rec-block {
+  background: var(--color-surface, #1e293b);
+  border-color: var(--color-border, #334155);
+}
+
+.ebm-rec-card.class-1, .ebm-rec-card.rec-strong { border-left-color: var(--color-success, #059669); }
 .ebm-rec-card.class-2a { border-left-color: var(--color-primary, #0284c7); }
-.ebm-rec-card.class-2b { border-left-color: var(--color-warning, #d97706); }
+.ebm-rec-card.class-2b, .ebm-rec-card.rec-conditional { border-left-color: var(--color-warning, #d97706); }
 .ebm-rec-card.class-3 { border-left-color: var(--color-danger, #dc2626); }
+
+.ebm-rec-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.65rem;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.ebm-rec-title {
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: var(--color-text, #0f172a);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+[data-theme="dark"] .ebm-rec-title {
+  color: var(--color-text, #f8fafc);
+}
+
+.ebm-rec-body {
+  font-size: 0.88rem;
+  color: var(--color-text, #334155);
+  line-height: 1.62;
+  margin: 0;
+}
+
+[data-theme="dark"] .ebm-rec-body {
+  color: var(--color-text-muted, #cbd5e1);
+}

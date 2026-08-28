@@ -522,4 +522,182 @@ td:has(.summary-parts-menu.active) {
   flex-shrink: 0;
 }
 
+/* ── CLINICAL WIDGETS, BPA CALLOUTS & DIAGNOSTIC BOARDS ── */
+.bpa-success, .bpa-tag-green { background: rgba(16, 185, 129, 0.12); color: #059669; border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 6px; padding: 2px 8px; font-weight: 700; }
+.bpa-warning, .bpa-tag-orange { background: rgba(245, 158, 11, 0.12); color: #d97706; border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 6px; padding: 2px 8px; font-weight: 700; }
+.bpa-danger, .bpa-tag-red { background: rgba(239, 68, 68, 0.12); color: #dc2626; border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 6px; padding: 2px 8px; font-weight: 700; }
+.bpa-teal, .bpa-tag-purple { background: rgba(124, 58, 237, 0.12); color: #7c3aed; border: 1px solid rgba(124, 58, 237, 0.3); border-radius: 6px; padding: 2px 8px; font-weight: 700; }
+
+.cdss-tabs, .calc-tabs { display: flex; gap: 6px; margin: 1rem 0; flex-wrap: wrap; }
+.cdss-checkbox-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0.5rem; margin: 0.75rem 0; }
+.cdss-score-badge { display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: 8px; font-weight: 800; font-family: var(--font-display); background: var(--color-primary-hl, rgba(2, 132, 199, 0.1)); color: var(--color-primary, #0284c7); }
+
+.screening-widget, .rome-widget, .figo-board, .doppler-card, .widget-container {
+  background: var(--surface, #ffffff);
+  border: 1.5px solid var(--border-light, #e2e8f0);
+  border-radius: 14px;
+  padding: 1.25rem;
+  margin: 1.25rem 0;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
+}
+
+.screening-title, .rome-title, .figo-board-hdr, .doppler-hdr, .widget-desc {
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-weight: 800;
+  font-size: 1rem;
+  color: var(--text, #0f172a);
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.rome-grid, .figo-grid, .doppler-grid, .pkpd-grid, .team-grid, .toc-grid, .abe-grid, .comor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.75rem;
+  margin: 0.75rem 0;
+}
+
+.st-0, .st-1, .st-2, .st-3, .st-4 {
+  padding: 0.5rem 0.85rem;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  border-left: 4px solid var(--color-primary, #0284c7);
+  background: var(--surface-2, #f8fafc);
+}
+.st-0 { border-left-color: #10b981; }
+.st-1 { border-left-color: #0284c7; }
+.st-2 { border-left-color: #f59e0b; }
+.st-3 { border-left-color: #f97316; }
+.st-4 { border-left-color: #ef4444; }
+
+/* Diagnostic Cards & Grids (FIGO, Doppler, Risk, PK/PD) */
+.doppler-box, .figo-submucosal, .figo-intramural, .figo-subserosal, .figo-special, .leiomyoma, .adenomyosis,
+.risk-col, .biologics-card, .calc-panel, .diagram-container, .citation-card {
+  background: var(--surface-2, #f8fafc);
+  border: 1px solid var(--border-light, #e2e8f0);
+  border-radius: 12px;
+  padding: 1rem 1.15rem;
+  margin-bottom: 0.75rem;
+}
+[data-theme="dark"] .doppler-box, [data-theme="dark"] .figo-submucosal, [data-theme="dark"] .figo-intramural,
+[data-theme="dark"] .figo-subserosal, [data-theme="dark"] .figo-special, [data-theme="dark"] .leiomyoma,
+[data-theme="dark"] .adenomyosis, [data-theme="dark"] .risk-col, [data-theme="dark"] .biologics-card,
+[data-theme="dark"] .calc-panel, [data-theme="dark"] .diagram-container, [data-theme="dark"] .citation-card {
+  background: var(--surface, #1e293b);
+  border-color: var(--border, #334155);
+}
+
+.doppler-title, .risk-col-title, .biologics-title, .diagram-caption, .calc-title, .theory-title, .treatment-branch-title, .rome-verdict-title {
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-weight: 800;
+  font-size: 0.92rem;
+  color: var(--text, #0f172a);
+  margin-bottom: 0.45rem;
+}
+
+.doppler-list, .risk-list, .screening-list, .custom-list, .timeline-list, .chk-list, .theory-guide {
+  list-style: none;
+  padding-left: 0;
+  margin: 0.5rem 0;
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.verdict-red { background: rgba(239, 68, 68, 0.12); color: #dc2626; border-left: 4px solid #ef4444; padding: 0.5rem 0.85rem; border-radius: 6px; }
+.verdict-orange { background: rgba(245, 158, 11, 0.12); color: #d97706; border-left: 4px solid #f59e0b; padding: 0.5rem 0.85rem; border-radius: 6px; }
+.verdict-purple { background: rgba(124, 58, 237, 0.12); color: #7c3aed; border-left: 4px solid #7c3aed; padding: 0.5rem 0.85rem; border-radius: 6px; }
+
+.c-brain { border-top: 3px solid #8b5cf6; }
+.c-bp { border-top: 3px solid #ef4444; }
+.c-resp { border-top: 3px solid #0284c7; }
+.c-kali { border-left: 3px solid #3b82f6; }
+.c-magie { border-left: 3px solid #10b981; }
+.c-canxi { border-left: 3px solid #f59e0b; }
+.c-natri { border-left: 3px solid #ef4444; }
+.c-lipid { border-left: 3px solid #8b5cf6; }
+
+.absorption, .distribution, .metabolism, .elimination, .pkpd-targets, .special-states {
+  padding: 0.75rem;
+  border-radius: 10px;
+  background: var(--surface, #ffffff);
+  border: 1px solid var(--border-light, #e2e8f0);
+}
+[data-theme="dark"] .absorption, [data-theme="dark"] .distribution, [data-theme="dark"] .metabolism,
+[data-theme="dark"] .elimination, [data-theme="dark"] .pkpd-targets, [data-theme="dark"] .special-states {
+  background: var(--surface-2, #0f172a);
+  border-color: var(--border, #334155);
+}
+
+.dose-grid, .dosing-grid, .conclusion-grid, .alert-grid, .risk-cols {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.75rem;
+  margin: 0.75rem 0;
+}
+
+.branch-yes { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; border-radius: 6px; background: rgba(16,185,129,0.12); color: #059669; font-weight: 800; font-size: 0.78rem; }
+.grade-strong-a { background: rgba(16,185,129,0.14); color: #047857; font-weight: 800; border: 1px solid rgba(16,185,129,0.3); border-radius: 6px; padding: 2px 8px; }
+.rec-consensus { background: rgba(2,132,199,0.12); color: #0284c7; font-weight: 800; border-radius: 6px; padding: 2px 8px; }
+.loe-verylow { background: rgba(100,116,139,0.12); color: #475569; font-weight: 700; border-radius: 6px; padding: 2px 8px; }
+.res-safe, .res-eligible { background: rgba(16,185,129,0.12); color: #059669; font-weight: 700; border-radius: 6px; padding: 2px 8px; }
+.res-mod { background: rgba(245,158,11,0.12); color: #d97706; font-weight: 700; border-radius: 6px; padding: 2px 8px; }
+.text-success { color: #059669 !important; }
+.formula-box { padding: 1rem; border-radius: 12px; background: var(--surface-2, #f8fafc); border: 1px solid var(--border-light, #e2e8f0); text-align: center; margin: 1rem 0; }
+.timeline-strip { display: flex; gap: 0.5rem; overflow-x: auto; padding: 0.5rem 0; }
+.tag-1d, .tag-pp, .tag-2b, .tag-2a { font-family: var(--font-mono, monospace); font-weight: 700; padding: 2px 6px; border-radius: 4px; font-size: 0.74rem; background: var(--surface-2, #f8fafc); border: 1px solid var(--border-light, #e2e8f0); }
+
+/* Forest Plots, PICO Tables & Extraction Boxes */
+.forest-plot-card, .pico-table, .fig-extract-box, .mcq-container, .flow-step-box, .chart-box {
+  background: var(--surface, #ffffff);
+  border: 1px solid var(--border-light, #e2e8f0);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  margin: 1rem 0;
+}
+[data-theme="dark"] .forest-plot-card, [data-theme="dark"] .pico-table, [data-theme="dark"] .fig-extract-box,
+[data-theme="dark"] .mcq-container, [data-theme="dark"] .flow-step-box, [data-theme="dark"] .chart-box {
+  background: var(--surface, #1e293b);
+  border-color: var(--border, #334155);
+}
+
+.fig-extract-hdr, .chart-hdr, .fp-hdr {
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: var(--text, #0f172a);
+  margin-bottom: 0.5rem;
+}
+
+.svg-flowchart-container, .svg-container, .flowchart-svg-container {
+  width: 100%;
+  overflow-x: auto;
+  text-align: center;
+  margin: 1rem 0;
+  padding: 0.5rem 0;
+}
+
+.calc-result-grid, .clinical-grid, .subgroup-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.75rem;
+  margin: 0.75rem 0;
+}
+
+.banner-next-part {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(2, 132, 199, 0.08) 0%, rgba(124, 58, 237, 0.08) 100%);
+  border: 1px solid var(--color-primary-border, rgba(2, 132, 199, 0.25));
+  margin: 1.5rem 0;
+}
+
+
+
+
 

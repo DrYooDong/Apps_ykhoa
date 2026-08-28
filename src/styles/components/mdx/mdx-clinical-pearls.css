@@ -1,39 +1,131 @@
 /* ============================================================
-   MDX ATOMIC COMPONENT: CLINICAL PEARLS (mdx-clinical-pearls.css)
-   Emerald Highlight Boxes for Key Clinical Insights
+   MDX ATOMIC COMPONENT: CLINICAL PEARLS & MNEMONICS (mdx-clinical-pearls.css)
+   Emerald Highlight Boxes, Memory Aids (Mnemonics) & Bedside Pearls
    ============================================================ */
 
+/* --- 1. CLINICAL PEARL MASTER CARD --- */
 .clinical-pearl,
 .physio-pearl,
 .ccbs-pearl,
-.mdx-pearl-box {
-  background: var(--color-teal-hl, rgba(13, 148, 136, 0.08));
-  border: 1px solid var(--color-teal-border, rgba(13, 148, 136, 0.3));
-  border-left: 4px solid var(--color-teal, #0d9488);
-  border-radius: var(--radius-md, 12px);
-  padding: var(--space-4, 1rem) var(--space-5, 1.25rem);
+.mdx-pearl-box,
+.pearl-card {
+  background: linear-gradient(135deg, rgba(13, 148, 136, 0.08) 0%, rgba(16, 185, 129, 0.05) 100%);
+  border: 1.5px solid var(--color-teal-border, rgba(13, 148, 136, 0.25));
+  border-left: 5px solid var(--color-teal, #0d9488);
+  border-radius: var(--radius-md, 14px);
+  padding: 1.15rem 1.35rem;
   margin: var(--space-5, 1.25rem) 0;
   position: relative;
-  box-shadow: var(--shadow-sm, 0 1px 3px rgba(0,0,0,0.03));
+  box-shadow: var(--shadow-sm, 0 2px 8px rgba(13, 148, 136, 0.05));
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.clinical-pearl:hover,
+.mdx-pearl-box:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(13, 148, 136, 0.1);
+}
+
+[data-theme="dark"] .clinical-pearl,
+[data-theme="dark"] .physio-pearl,
+[data-theme="dark"] .ccbs-pearl,
+[data-theme="dark"] .mdx-pearl-box,
+[data-theme="dark"] .pearl-card {
+  background: linear-gradient(135deg, rgba(13, 148, 136, 0.18) 0%, rgba(16, 185, 129, 0.1) 100%);
+  border-color: rgba(45, 212, 191, 0.35);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
 }
 
 .clinical-pearl-hdr,
 .ccbs-pearl-hdr,
-.mdx-pearl-hdr {
+.mdx-pearl-hdr,
+.pearl-hdr {
   display: flex;
   align-items: center;
   gap: var(--space-2, 0.5rem);
   font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
   font-weight: 800;
-  font-size: var(--text-sm, 0.92rem);
+  font-size: var(--text-sm, 0.94rem);
   color: var(--color-teal, #0d9488);
-  margin-bottom: var(--space-2, 0.4rem);
+  margin-bottom: var(--space-2, 0.45rem);
+  letter-spacing: -0.01em;
+}
+
+[data-theme="dark"] .clinical-pearl-hdr,
+[data-theme="dark"] .ccbs-pearl-hdr,
+[data-theme="dark"] .mdx-pearl-hdr {
+  color: #2dd4bf;
 }
 
 .clinical-pearl-body,
 .ccbs-pearl-body,
-.mdx-pearl-body {
+.mdx-pearl-body,
+.pearl-body {
   font-size: var(--text-sm, 0.88rem);
   color: var(--color-text, #0f172a);
-  line-height: 1.62;
+  line-height: 1.64;
+}
+
+[data-theme="dark"] .clinical-pearl-body,
+[data-theme="dark"] .ccbs-pearl-body,
+[data-theme="dark"] .mdx-pearl-body {
+  color: var(--color-text, #f8fafc);
+}
+
+/* --- 2. MNEMONICS & MEMORY AIDS CARD (💡) --- */
+.mnemonic-box,
+.mnemonic-card,
+.mdx-mnemonic {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2, 0.5rem);
+  padding: 1.15rem 1.35rem;
+  background: linear-gradient(135deg, rgba(234, 179, 8, 0.08) 0%, rgba(245, 158, 11, 0.05) 100%);
+  border: 1.5px solid rgba(234, 179, 8, 0.3);
+  border-left: 5px solid #eab308;
+  border-radius: var(--radius-md, 14px);
+  margin: var(--space-5, 1.25rem) 0;
+  box-shadow: 0 2px 8px rgba(234, 179, 8, 0.05);
+}
+
+[data-theme="dark"] .mnemonic-box,
+[data-theme="dark"] .mnemonic-card,
+[data-theme="dark"] .mdx-mnemonic {
+  background: linear-gradient(135deg, rgba(234, 179, 8, 0.16) 0%, rgba(245, 158, 11, 0.08) 100%);
+  border-color: rgba(253, 224, 71, 0.35);
+}
+
+.mnemonic-title {
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-weight: 800;
+  font-size: 0.94rem;
+  color: #a16207;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+[data-theme="dark"] .mnemonic-title {
+  color: #fde047;
+}
+
+.mnemonic-letters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.35rem;
+}
+
+.mnemonic-letter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: #eab308;
+  color: #0f172a;
+  font-weight: 800;
+  font-size: 0.88rem;
+  font-family: var(--font-mono, monospace);
 }

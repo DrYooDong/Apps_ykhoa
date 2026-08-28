@@ -1,61 +1,202 @@
 /* ============================================================
    MDX ATOMIC COMPONENT: RX & CLINICAL TAGS (mdx-tags.css)
-   Medication Badges, Drug Status Pills & Enzyme Labels
+   Medication Badges, Biomarkers, Genetic Mutations, Pathogens & ICD Badges
    ============================================================ */
 
+/* Base Tag & Badge */
 .rx-tag,
-.mdx-tag {
+.mdx-tag,
+.tag {
   display: inline-block;
   background: var(--color-surface-2, #f8fafc);
   color: var(--color-text-muted, #475569);
   font-size: var(--text-xs, 0.75rem);
   font-family: var(--font-mono, 'JetBrains Mono', monospace);
-  padding: 0.15rem 0.5rem;
+  padding: 0.18rem 0.55rem;
   border-radius: var(--radius-xs, 6px);
   border: 1px solid var(--color-border, #cbd5e1);
   margin: 0.15rem 0.1rem;
+  line-height: 1.25;
+}
+
+[data-theme="dark"] .rx-tag,
+[data-theme="dark"] .mdx-tag,
+[data-theme="dark"] .tag {
+  background: var(--color-surface-2, #0f172a);
+  border-color: var(--color-border, #334155);
+  color: var(--color-text-muted, #94a3b8);
 }
 
 .rx-tag.preferred,
 .rx-tag.highlight {
   background: var(--color-primary-hl, rgba(2, 132, 199, 0.1));
   color: var(--color-primary, #0284c7);
-  border-color: var(--color-primary-border);
-  font-weight: 600;
+  border-color: var(--color-primary-border, rgba(2, 132, 199, 0.3));
+  font-weight: 700;
 }
 
-.rx-tag.alert {
+.rx-tag.alert,
+.rx-tag.danger {
   background: var(--color-danger-hl, rgba(220, 38, 38, 0.1));
   color: var(--color-danger, #dc2626);
-  border-color: var(--color-danger-border);
-  font-weight: 600;
+  border-color: var(--color-danger-border, rgba(220, 38, 38, 0.3));
+  font-weight: 700;
 }
 
 .rx-tag.warn {
   background: var(--color-warning-hl, rgba(217, 119, 6, 0.1));
   color: var(--color-warning, #d97706);
-  border-color: var(--color-warning-border);
-  font-weight: 600;
+  border-color: var(--color-warning-border, rgba(217, 119, 6, 0.3));
+  font-weight: 700;
 }
 
 .rx-tag.success {
   background: var(--color-success-hl, rgba(5, 150, 105, 0.1));
   color: var(--color-success, #059669);
-  border-color: var(--color-success-border);
-  font-weight: 600;
+  border-color: var(--color-success-border, rgba(5, 150, 105, 0.3));
+  font-weight: 700;
 }
 
-/* Enzyme Tag */
+/* --- 1. ENZYME & PROTEIN BADGES --- */
 .enzyme-badge {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
   padding: 0.18rem 0.55rem;
   border-radius: var(--radius-xs, 6px);
-  background: var(--color-purple-hl, rgba(124, 58, 237, 0.1));
-  color: var(--color-purple, #7c3aed);
-  border: 1px solid var(--color-purple-border, rgba(124, 58, 237, 0.25));
+  background: rgba(124, 58, 237, 0.1);
+  color: #7c3aed;
+  border: 1px solid rgba(124, 58, 237, 0.25);
   font-family: var(--font-mono, monospace);
   font-size: var(--text-xs, 0.78rem);
   font-weight: 700;
+}
+[data-theme="dark"] .enzyme-badge {
+  color: #c084fc;
+  border-color: rgba(192, 132, 252, 0.3);
+}
+
+/* --- 2. GENETIC MUTATIONS & HLA BADGES (🧬) --- */
+.gene-badge,
+.mutation-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-xs, 6px);
+  background: rgba(13, 148, 136, 0.1);
+  color: #0d9488;
+  border: 1px solid rgba(13, 148, 136, 0.25);
+  font-family: var(--font-mono, monospace);
+  font-size: var(--text-xs, 0.76rem);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+[data-theme="dark"] .gene-badge,
+[data-theme="dark"] .mutation-badge {
+  color: #2dd4bf;
+  border-color: rgba(45, 212, 191, 0.3);
+}
+
+/* --- 3. BIOMARKERS & LAB VALUE BADGES (🧪) --- */
+.biomarker-badge,
+.lab-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-xs, 6px);
+  background: rgba(2, 132, 199, 0.1);
+  color: #0284c7;
+  border: 1px solid rgba(2, 132, 199, 0.25);
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-size: var(--text-xs, 0.76rem);
+  font-weight: 800;
+}
+[data-theme="dark"] .biomarker-badge,
+[data-theme="dark"] .lab-badge {
+  color: #38bdf8;
+  border-color: rgba(56, 189, 248, 0.3);
+}
+
+/* --- 4. PATHOGEN & MICROBIOLOGY BADGES (🦠) --- */
+.pathogen-badge,
+.vector-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-xs, 6px);
+  background: rgba(239, 68, 68, 0.1);
+  color: #dc2626;
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  font-style: italic;
+  font-size: var(--text-xs, 0.76rem);
+  font-weight: 700;
+}
+[data-theme="dark"] .pathogen-badge,
+[data-theme="dark"] .vector-badge {
+  color: #f87171;
+  border-color: rgba(248, 113, 113, 0.3);
+}
+
+/* --- 5. ICD-10 / ICD-11 BADGES (🏷️) --- */
+.icd-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.18rem 0.5rem;
+  border-radius: var(--radius-xs, 6px);
+  background: rgba(100, 116, 139, 0.12);
+  color: #475569;
+  border: 1px solid rgba(100, 116, 139, 0.25);
+  font-family: var(--font-mono, monospace);
+  font-size: var(--text-xs, 0.74rem);
+  font-weight: 700;
+}
+[data-theme="dark"] .icd-badge {
+  color: #94a3b8;
+  border-color: rgba(148, 163, 184, 0.3);
+}
+
+/* --- 6. CRITERIA & SCORING ITEMS --- */
+.criteria-list,
+.crit-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin: var(--space-3, 0.75rem) 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.criteria-list li,
+.crit-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--color-text, #0f172a);
+}
+
+[data-theme="dark"] .criteria-list li,
+[data-theme="dark"] .crit-list li {
+  color: var(--color-text, #f8fafc);
+}
+
+.score-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.65rem 0.85rem;
+  background: var(--color-surface-offset, #f8fafc);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: var(--radius-sm, 10px);
+  margin-bottom: 0.4rem;
+}
+
+[data-theme="dark"] .score-item {
+  background: var(--color-surface-2, #0f172a);
+  border-color: var(--color-border, #334155);
 }
