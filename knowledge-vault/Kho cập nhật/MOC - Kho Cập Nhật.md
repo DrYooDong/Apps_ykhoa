@@ -43,7 +43,7 @@ updated: "2026-08-21"
 
 ## 🩺 Tim mạch (1 bài)
 
-- [[CN_Suy tim_P1.md|CN_Suy tim_P1]]
+- [[CN_ESC_Suy tim_2026_P1|CN_Suy tim_P1]]
 
 ## 🩺 Truyền nhiễm & Vi sinh (19 bài)
 
