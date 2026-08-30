@@ -292,13 +292,13 @@ export function renderFlashcardStudioHtml(): string {
       </div>
 
       <!-- 3D Interactive Flip Card -->
-      <div id="flashcard-card-scene" style="perspective: 1000px; width: 100%; min-height: 280px; margin-bottom: 16px; cursor: pointer;">
-        <div id="flashcard-flipper" style="position: relative; width: 100%; min-height: 280px; text-align: left; transition: transform 0.4s ease; transform-style: preserve-3d; transform: ${isCardFlipped ? 'rotateY(180deg)' : 'none'};">
+      <div id="flashcard-card-scene" style="perspective: 1000px; width: 100%; min-height: 280px; margin-bottom: 16px; cursor: pointer; box-sizing: border-box;">
+        <div id="flashcard-flipper" style="position: relative; width: 100%; min-height: 280px; text-align: left; transition: transform 0.4s ease; transform-style: preserve-3d; transform: ${isCardFlipped ? 'rotateY(180deg)' : 'none'}; box-sizing: border-box;">
           
           <!-- MẶT TRƯỚC (FRONT: CÂU HỎI LÂM SÀNG) -->
-          <div style="position: absolute; inset:0; backface-visibility: hidden; background: linear-gradient(135deg, var(--color-surface), var(--color-bg)); border-radius: 12px; padding: 24px; border: 2px solid var(--color-primary); box-shadow: 0 4px 12px rgba(2,132,199,0.08); display:flex; flex-direction:column; justify-content:space-between;">
+          <div style="position: absolute; inset:0; backface-visibility: hidden; background: linear-gradient(135deg, var(--color-surface), var(--color-bg)); border-radius: 12px; padding: 1.25rem; border: 2px solid var(--color-primary); box-shadow: 0 4px 12px rgba(2,132,199,0.08); display:flex; flex-direction:column; justify-content:space-between; box-sizing: border-box; overflow-y: auto;">
             <div>
-              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; flex-wrap:wrap; gap:6px;">
                 <span style="font-size:11px; font-weight:800; text-transform:uppercase; color:var(--color-primary); background:rgba(2,132,199,0.1); padding:3px 10px; border-radius:6px;">
                   <i class="fa-solid fa-stethoscope"></i> ${escapeHtml(card.specialty)}
                 </span>
@@ -306,20 +306,20 @@ export function renderFlashcardStudioHtml(): string {
                   Mức độ thuộc: <strong>${mastery}%</strong>
                 </span>
               </div>
-              <h3 style="font-size:16px; line-height:1.5; color:var(--color-text); margin:0 0 10px;">
+              <h3 style="font-size:15px; line-height:1.5; color:var(--color-text); margin:0 0 10px;">
                 ${escapeHtml(card.frontQuestion)}
               </h3>
             </div>
 
-            <div style="text-align:center; padding:10px; background:rgba(2,132,199,0.05); border-radius:8px; font-size:12px; color:var(--color-primary); font-weight:700;">
+            <div style="text-align:center; padding:10px; background:rgba(2,132,199,0.05); border-radius:8px; font-size:12px; color:var(--color-primary); font-weight:700; margin-top:12px;">
               <i class="fa-solid fa-rotate"></i> Bấm vào thẻ để LẬT XEM ĐÁP ÁN & CƠ CHẾ
             </div>
           </div>
 
           <!-- MẶT SAU (BACK: ĐÁP ÁN & ĐIỂM NGỌC EBM) -->
-          <div style="position: absolute; inset:0; backface-visibility: hidden; transform: rotateY(180deg); background: linear-gradient(135deg, var(--color-surface), rgba(16,185,129,0.02)); border-radius: 12px; padding: 24px; border: 2px solid #10b981; box-shadow: 0 4px 12px rgba(16,185,129,0.08); display:flex; flex-direction:column; justify-content:space-between;">
+          <div style="position: absolute; inset:0; backface-visibility: hidden; transform: rotateY(180deg); background: linear-gradient(135deg, var(--color-surface), rgba(16,185,129,0.02)); border-radius: 12px; padding: 1.25rem; border: 2px solid #10b981; box-shadow: 0 4px 12px rgba(16,185,129,0.08); display:flex; flex-direction:column; justify-content:space-between; box-sizing: border-box; overflow-y: auto;">
             <div>
-              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; flex-wrap:wrap; gap:6px;">
                 <span style="font-size:11px; font-weight:800; text-transform:uppercase; color:#059669; background:rgba(16,185,129,0.1); padding:3px 10px; border-radius:6px;">
                   <i class="fa-solid fa-circle-check"></i> ĐÁP ÁN CHUẨN EBM
                 </span>
@@ -328,18 +328,18 @@ export function renderFlashcardStudioHtml(): string {
                 </span>
               </div>
 
-              <div style="font-size:13.5px; line-height:1.6; color:var(--color-text); white-space:pre-wrap; margin-bottom:12px;">
+              <div style="font-size:13px; line-height:1.55; color:var(--color-text); white-space:pre-wrap; margin-bottom:12px;">
                 ${escapeHtml(card.backAnswer)}
               </div>
 
               ${card.clinicalContext ? `
-                <div style="background:rgba(245,158,11,0.08); border-left:3px solid #f59e0b; padding:8px 12px; border-radius:4px; font-size:12px; color:var(--color-text); line-height:1.4;">
+                <div style="background:rgba(245,158,11,0.08); border-left:3px solid #f59e0b; padding:8px 12px; border-radius:4px; font-size:12px; color:var(--color-text); line-height:1.4; margin-bottom:8px;">
                   <strong><i class="fa-solid fa-lightbulb" style="color:#f59e0b;"></i> Lưu ý lâm sàng:</strong> ${escapeHtml(card.clinicalContext)}
                 </div>
               ` : ''}
             </div>
 
-            <div style="text-align:center; font-size:11.5px; color:var(--color-text-muted);">
+            <div style="text-align:center; font-size:11.5px; color:var(--color-text-muted); margin-top:8px;">
               Đánh giá mức độ nhớ của bạn bên dưới để SM-2 lên lịch ôn tập tiếp theo
             </div>
           </div>
@@ -349,26 +349,26 @@ export function renderFlashcardStudioHtml(): string {
 
       <!-- Rating SM-2 Buttons Bar (Chỉ hiện khi đã lật mặt sau) -->
       <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
-        <button type="button" id="btn-fc-prev" class="vault-tool-btn" style="font-size:12px; padding:6px 12px;">
+        <button type="button" id="btn-fc-prev" class="vault-tool-btn" style="font-size:12px; padding:6px 12px; min-height:40px;">
           <i class="fa-solid fa-arrow-left"></i> Thẻ trước
         </button>
 
         <div style="display:flex; gap:6px; flex-wrap:wrap;">
-          <button type="button" class="js-fc-rate-btn" data-rate="0" style="background:#fee2e2; color:#ef4444; border:1px solid #fca5a5; padding:6px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer;" title="Lặp lại ngày mai (0 ngày)">
+          <button type="button" class="js-fc-rate-btn" data-rate="0" style="background:#fee2e2; color:#ef4444; border:1px solid #fca5a5; padding:6px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; min-height:40px;" title="Lặp lại ngày mai (0 ngày)">
             🔴 Quên hẳn
           </button>
-          <button type="button" class="js-fc-rate-btn" data-rate="2" style="background:#fef3c7; color:#d97706; border:1px solid #fcd34d; padding:6px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer;" title="Nhớ khó khăn (1 ngày)">
+          <button type="button" class="js-fc-rate-btn" data-rate="2" style="background:#fef3c7; color:#d97706; border:1px solid #fcd34d; padding:6px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; min-height:40px;" title="Nhớ khó khăn (1 ngày)">
             🟡 Khó nhớ
           </button>
-          <button type="button" class="js-fc-rate-btn" data-rate="3" style="background:#dcfce7; color:#15803d; border:1px solid #86efac; padding:6px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer;" title="Nhớ tốt (3-6 ngày)">
+          <button type="button" class="js-fc-rate-btn" data-rate="3" style="background:#dcfce7; color:#15803d; border:1px solid #86efac; padding:6px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; min-height:40px;" title="Nhớ tốt (3-6 ngày)">
             🟢 Nhớ tốt
           </button>
-          <button type="button" class="js-fc-rate-btn" data-rate="4" style="background:#e0e7ff; color:#4338ca; border:1px solid #a5b4fc; padding:6px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer;" title="Rất dễ thuộc (> 6 ngày)">
+          <button type="button" class="js-fc-rate-btn" data-rate="4" style="background:#e0e7ff; color:#4338ca; border:1px solid #a5b4fc; padding:6px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; min-height:40px;" title="Rất dễ thuộc (> 6 ngày)">
             🔵 Rất dễ
           </button>
         </div>
 
-        <button type="button" id="btn-fc-next" class="vault-tool-btn" style="font-size:12px; padding:6px 12px;">
+        <button type="button" id="btn-fc-next" class="vault-tool-btn" style="font-size:12px; padding:6px 12px; min-height:40px;">
           Thẻ kế tiếp <i class="fa-solid fa-arrow-right"></i>
         </button>
       </div>

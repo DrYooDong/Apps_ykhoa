@@ -210,57 +210,53 @@ Toàn bộ thân bài viết được bọc trong `<div class="page-content">` v
 
 ---
 
-## THÀNH PHẦN 5: LƯU ĐỒ THUẬT TOÁN PHÁC ĐỒ ĐIỀU TRỊ & PHÂN TẦNG NGUY CƠ
+## THÀNH PHẦN 5: LƯU ĐỒ THUẬT TOÁN PHÁC ĐỒ ĐIỀU TRỊ, TIẾP CẬN & SƠ ĐỒ CƠ CHẾ 2.0
 
-### Dạng A: Ma Trận Cơ Chế / Khối Can Thiệp Đa Cột (`.flow-step-grid`)
+### Dạng A: Clinical Flow Track 2.0 (Linear Stepper với Ray Dẫn Đường & Marker Đổi Màu)
+
+Sử dụng hệ thống `.flow-track-container` cho các quy trình chẩn đoán, sàng lọc hoặc bậc thang điều trị tuần tự:
 
 ```html
-<div class="flow-container">
-  <div style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 1.02rem; color: var(--color-text); margin-bottom: 0.35rem;">
-    Sơ Đồ 1: Các Trụ Cột Can Thiệp Lối Sống Hạ Huyết Áp (AHA/ACC 2025)
+<div class="flow-track-container">
+  <!-- Bước 1 -->
+  <div class="flow-track-step">
+    <div class="flow-track-rail">
+      <div class="flow-track-marker marker-blue">01</div>
+      <div class="flow-track-line"></div>
+    </div>
+    <div class="flow-track-content accent-blue">
+      <div class="flow-step-header">
+        <div class="flow-step-title"><i class="fa-solid fa-stethoscope" style="color: #0284c7;"></i> Bước 1: Tiếp Nhận &amp; Đánh Giá Ban Đầu</div>
+        <span class="flow-step-badge flow-badge-blue">Khởi đầu</span>
+      </div>
+      <div class="flow-step-text">
+        Mô tả chi tiết bước lâm sàng, tiêu chuẩn sàng lọc hoặc các chỉ định cận lâm sàng ban đầu.
+      </div>
+    </div>
   </div>
-  <div style="font-size: 0.84rem; color: var(--color-text-muted); margin-bottom: 1.25rem;">
-    Ước tính mức sụt giảm huyết áp tâm thu (SBP) khi tuân thủ nghiêm ngặt từng biện pháp:
-  </div>
 
-  <div class="flow-step-grid">
-    <!-- Cột 1: Chế độ ăn DASH -->
-    <div class="flow-step-card c-green">
-      <div class="flow-step-num">TRỤ CỘT 01</div>
-      <div class="flow-step-title">Chế Độ Ăn DASH</div>
-      <div class="flow-step-desc">Giàu rau xanh, trái cây, ngũ cốc nguyên hạt, sữa ít béo; giảm chất béo bão hòa.</div>
-      <div class="flow-step-impact">
-        <i class="fa-solid fa-arrow-trend-down"></i> Giảm ~11 mmHg SBP
-      </div>
+  <!-- Bước 2: Kèm Rẽ Nhánh Phân Tuyến Quyết Định -->
+  <div class="flow-track-step">
+    <div class="flow-track-rail">
+      <div class="flow-track-marker marker-teal">02</div>
+      <div class="flow-track-line"></div>
     </div>
-
-    <!-- Cột 2: Giảm Natri -->
-    <div class="flow-step-card c-orange">
-      <div class="flow-step-num">TRỤ CỘT 02</div>
-      <div class="flow-step-title">Cắt Giảm Muối Ăn</div>
-      <div class="flow-step-desc">Mục tiêu tối ưu &lt; 1500 mg Natri/ngày (hoặc cắt giảm ít nhất 1000 mg/ngày).</div>
-      <div class="flow-step-impact">
-        <i class="fa-solid fa-arrow-trend-down"></i> Giảm ~5–6 mmHg SBP
+    <div class="flow-track-content accent-teal">
+      <div class="flow-step-header">
+        <div class="flow-step-title"><i class="fa-solid fa-code-branch" style="color: #0d9488;"></i> Bước 2: Phân Tầng Nguy Cơ &amp; Quyết Định Lâm Sàng</div>
+        <span class="flow-step-badge flow-badge-amber">Rẽ nhánh</span>
       </div>
-    </div>
-
-    <!-- Cột 3: Tăng Kali -->
-    <div class="flow-step-card c-blue">
-      <div class="flow-step-num">TRỤ CỘT 03</div>
-      <div class="flow-step-title">Tăng Nạp Kali Ăn Uống</div>
-      <div class="flow-step-desc">Bổ sung 3500–5000 mg Kali/ngày từ thực phẩm tươi (trừ bệnh nhân CKD giai đoạn muộn).</div>
-      <div class="flow-step-impact">
-        <i class="fa-solid fa-arrow-trend-down"></i> Giảm ~4–5 mmHg SBP
-      </div>
-    </div>
-
-    <!-- Cột 4: Hoạt Động Thể Lực -->
-    <div class="flow-step-card c-purple">
-      <div class="flow-step-num">TRỤ CỘT 04</div>
-      <div class="flow-step-title">Tập Thể Dục Đều Đặn</div>
-      <div class="flow-step-desc">90–150 phút/tuần bài tập Aerobic hoặc bài tập kháng lực đẳng trường (Isometric).</div>
-      <div class="flow-step-impact">
-        <i class="fa-solid fa-arrow-trend-down"></i> Giảm ~5–8 mmHg SBP
+      <div class="flow-step-text">
+        <div class="flow-branch-grid">
+          <div class="flow-branch-card accent-green">
+            <div class="flow-branch-title" style="color: #047857;"><i class="fa-solid fa-circle-check"></i> Nhóm Nguy Cơ Thấp / Đáp Ứng Tốt</div>
+            <div class="flow-branch-desc">Thay đổi lối sống, theo dõi định kỳ mỗi 3–6 tháng.</div>
+          </div>
+          <div class="flow-branch-card accent-rose">
+            <div class="flow-branch-title" style="color: #be123c;"><i class="fa-solid fa-triangle-exclamation"></i> Nhóm Nguy Cơ Cao / Kháng Trị</div>
+            <div class="flow-branch-desc">Khởi trị phối hợp thuốc liều cao hoặc can thiệp chuyên sâu.</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -269,41 +265,33 @@ Toàn bộ thân bài viết được bọc trong `<div class="page-content">` v
 
 ---
 
-### Dạng B: Lưu Đồ Quyết Định Điều Trị Từng Bước (`.flow-steps` + `.flow-step`)
+### Dạng B: Editorial SVG Studio Container (Sơ Đồ Đồ Họa & Cơ Chế Phân Tử Xuất Bản)
+
+Bọc SVG chuẩn trong khung `.flowchart-editorial-card` đạt 100% Dark Mode và responsive:
 
 ```html
-<div class="flow-steps">
-  <!-- Bước 1: Khám & Phân Độ -->
-  <div class="flow-step">
-    <div class="flow-icon">01</div>
-    <div class="flow-content">
-      <div class="flow-title">Bước 1: Xác Định Trị Số Huyết Áp &amp; Phân Tầng Ban Đầu</div>
-      <div class="flow-desc">Đo HA đúng chuẩn tại phòng khám kết hợp kiểm tra tổn thương cơ quan đích (HMOD).</div>
+<div class="flowchart-editorial-card">
+  <div class="flowchart-editorial-hdr">
+    <div class="flowchart-editorial-title">
+      <i class="fa-solid fa-diagram-project" style="color: var(--color-primary, #0284c7);"></i>
+      <span>LƯU ĐỒ QUYẾT ĐỊNH ĐIỀU TRỊ CHUYÊN SÂU (EBM 2026)</span>
     </div>
+    <span class="flow-step-badge flow-badge-blue">Editorial SVG Studio</span>
   </div>
-
-  <!-- Bước 2: Rẽ Nhánh Điều Trị -->
-  <div class="flow-step">
-    <div class="flow-icon">02</div>
-    <div class="flow-content">
-      <div class="flow-title">Bước 2: Lựa Chọn Chiến Lược Khởi Trị</div>
-      <div class="flow-desc">Dựa trên mức huyết áp và phân tầng nguy cơ 10 năm:</div>
-      
-      <div class="flow-branch">
-        <div class="flow-branch-card accent-blue">
-          <strong>🔹 Tăng Huyết Áp Độ 1 (130-139 / 80-89 mmHg):</strong><br />
-          - PREVENT &lt; 7.5%: Thay đổi lối sống 3–6 tháng.<br />
-          - PREVENT &ge; 7.5% hoặc có CVD/CKD/ĐTĐ: Khởi trị 1 thuốc.
-        </div>
-        <div class="flow-branch-card accent-red">
-          <strong>🚨 Tăng Huyết Áp Độ 2 (&ge; 140 / &ge; 90 mmHg):</strong><br />
-          - Khởi trị ngay <strong>SPC 2 nhóm thuốc</strong> (RAASi + CCB hoặc RAASi + Thiazide).<br />
-          - Mục tiêu kiểm soát: HA &lt; 130/80 mmHg trong vòng 1 tháng.
-        </div>
-      </div>
-    </div>
+  <div class="flowchart-editorial-canvas">
+    <svg class="med-svg" viewBox="0 0 960 480" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      <!-- Nền card động -->
+      <rect width="960" height="480" fill="var(--surface)" rx="12" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <!-- Sơ đồ vector y khoa (TUYỆT ĐỐI KHÔNG DÙNG THẺ HTML NHƯ <strong>, <br> TRONG SVG <text>) -->
+    </svg>
+  </div>
+  <div class="flowchart-legend-row">
+    <div class="flowchart-legend-item"><span class="legend-dot" style="background: #10b981;"></span> Nhóm chỉ định ưu tiên</div>
+    <div class="flowchart-legend-item"><span class="legend-dot" style="background: #0284c7;"></span> Nhóm điều trị thay thế</div>
+    <div class="flowchart-legend-item"><span class="legend-dot" style="background: #e11d48;"></span> Chống chỉ định / Nguy cơ cao</div>
   </div>
 </div>
+```
 ```
 
 ---

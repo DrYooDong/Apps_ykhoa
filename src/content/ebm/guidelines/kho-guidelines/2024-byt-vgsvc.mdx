@@ -180,42 +180,60 @@ sections:
           </div>
         </div>
 
-        <div class="sec-subtitle">Sơ Đồ Thuật Toán Chẩn Đoán Nhiễm HCV (Quyết Định 2855/QĐ-BYT)</div>
+        <div class="sec-subtitle"><i class="fa-solid fa-route"></i> Sơ Đồ Thuật Toán Chẩn Đoán Nhiễm HCV (Quyết Định 2855/QĐ-BYT)</div>
 
-        <div class="flowchart-box">
-          <div class="flow-step">
-            <div class="flow-step-hdr">🔍 BƯỚC 1: SÀNG LỌC BAN ĐẦU</div>
-            Thực hiện xét nghiệm kháng thể <strong>Anti-HCV</strong> cho đối tượng nguy cơ hoặc người bệnh cần sàng lọc.
-          </div>
-          <div class="flow-arrow">⬇️</div>
-          <div class="matrix-grid">
-            <div class="flow-step" style="border-left: 4px solid var(--color-success, #10b981);">
-              <div class="flow-step-hdr" style="color: var(--color-success, #10b981);">Kết quả Anti-HCV (-)</div>
-              <strong>KHÔNG NHIỄM HCV</strong><br />
-              <em>(Ngoại trừ người suy giảm miễn dịch nặng hoặc giai đoạn cửa sổ &lt; 8 tuần của nhiễm trùng cấp).</em>
+        <div class="flow-track-container">
+          <!-- Bước 1 -->
+          <div class="flow-track-step">
+            <div class="flow-track-rail">
+              <div class="flow-track-marker marker-blue">01</div>
+              <div class="flow-track-line"></div>
             </div>
-            <div class="flow-step" style="border-left: 4px solid var(--color-warning, #f59e0b);">
-              <div class="flow-step-hdr" style="color: var(--color-warning, #f59e0b);">Kết quả Anti-HCV (+)</div>
-              <strong>ĐÃ TỪNG HOẶC ĐANG NHIỄM HCV</strong><br />
-              Cần thực hiện xét nghiệm khẳng định hiện nhiễm ở Bước 2.
+            <div class="flow-track-content accent-blue">
+              <div class="flow-step-header">
+                <div class="flow-step-title"><i class="fa-solid fa-vial" style="color: #0284c7;"></i> BƯỚC 1: SÀNG LỌC KHÁNG THỂ BAN ĐẦU (Anti-HCV)</div>
+                <span class="flow-step-badge flow-badge-blue">Sàng lọc</span>
+              </div>
+              <div class="flow-step-text">
+                Thực hiện xét nghiệm kháng thể <strong>Anti-HCV</strong> cho đối tượng nguy cơ cao hoặc người bệnh cần sàng lọc.
+                <div class="flow-branch-grid">
+                  <div class="flow-branch-card accent-green">
+                    <div class="flow-branch-title" style="color: #047857;"><i class="fa-solid fa-circle-check"></i> Kết quả Anti-HCV (-)</div>
+                    <div class="flow-branch-desc"><strong>KHÔNG NHIỄM HCV</strong><br /><em>(Ngoại trừ người suy giảm miễn dịch nặng hoặc giai đoạn cửa sổ &lt; 8 tuần của nhiễm trùng cấp).</em></div>
+                  </div>
+                  <div class="flow-branch-card accent-amber">
+                    <div class="flow-branch-title" style="color: #b45309;"><i class="fa-solid fa-triangle-exclamation"></i> Kết quả Anti-HCV (+)</div>
+                    <div class="flow-branch-desc"><strong>ĐÃ TỪNG HOẶC ĐANG NHIỄM HCV</strong><br />Bắt buộc thực hiện xét nghiệm khẳng định hiện nhiễm ở Bước 2.</div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="flow-arrow">⬇️ (Nếu Anti-HCV positive)</div>
-          <div class="flow-step">
-            <div class="flow-step-hdr">🧬 BƯỚC 2: KHẲNG ĐỊNH HIỆN NHIỄM</div>
-            Xét nghiệm đo <strong>Tải lượng HCV RNA</strong> (Định lượng/Định tính) HOẶC xét nghiệm kháng nguyên lõi <strong>HCVcAg</strong>.
-          </div>
-          <div class="flow-arrow">⬇️</div>
-          <div class="matrix-grid">
-            <div class="flow-step" style="border-left: 4px solid var(--color-success, #10b981);">
-              <div class="flow-step-hdr" style="color: var(--color-success, #10b981);">HCV RNA (-) hoặc HCVcAg (-)</div>
-              <strong>KHÔNG HIỆN NHIỄM HCV</strong><br />
-              Đã tự khỏi nhiễm trùng hoặc đã điều trị khỏi thành công.
+
+          <!-- Bước 2 -->
+          <div class="flow-track-step">
+            <div class="flow-track-rail">
+              <div class="flow-track-marker marker-teal">02</div>
+              <div class="flow-track-line"></div>
             </div>
-            <div class="flow-step" style="border-left: 4px solid var(--red);">
-              <div class="flow-step-hdr" style="color: var(--red);">HCV RNA (+) hoặc HCVcAg (+)</div>
-              <strong>ĐANG NHIỄM HCV (XÁC ĐỊNH)</strong><br />
-              Đánh giá xơ hóa gan, bệnh đồng mắc (HBV, HIV, thận), DDI → <strong>CHỈ ĐỊNH ĐIỀU TRỊ DAAs</strong>.
+            <div class="flow-track-content accent-teal">
+              <div class="flow-step-header">
+                <div class="flow-step-title"><i class="fa-solid fa-dna" style="color: #0d9488;"></i> BƯỚC 2: XÉT NGHIỆM KHẲNG ĐỊNH HIỆN NHIỄM (HCV RNA / HCVcAg)</div>
+                <span class="flow-step-badge flow-badge-amber">Khẳng định</span>
+              </div>
+              <div class="flow-step-text">
+                Thực hiện xét nghiệm đo <strong>Tải lượng HCV RNA</strong> (Định lượng hoặc Định tính) HOẶC xét nghiệm kháng nguyên lõi <strong>HCVcAg</strong>:
+                <div class="flow-branch-grid">
+                  <div class="flow-branch-card accent-green">
+                    <div class="flow-branch-title" style="color: #047857;"><i class="fa-solid fa-shield-halved"></i> HCV RNA (-) hoặc HCVcAg (-)</div>
+                    <div class="flow-branch-desc"><strong>KHÔNG HIỆN NHIỄM HCV</strong><br />Bệnh nhân đã tự khỏi nhiễm trùng cấp tính trong quá khứ hoặc đã điều trị khỏi thành công.</div>
+                  </div>
+                  <div class="flow-branch-card accent-rose">
+                    <div class="flow-branch-title" style="color: #be123c;"><i class="fa-solid fa-virus"></i> HCV RNA (+) hoặc HCVcAg (+)</div>
+                    <div class="flow-branch-desc"><strong>ĐANG NHIỄM HCV (XÁC ĐỊNH)</strong><br />Đánh giá giai đoạn xơ hóa gan, bệnh đồng mắc (HBV, HIV, thận), tương tác thuốc DDI &rarr; <strong>CHỈ ĐỊNH ĐIỀU TRỊ THUỐC DAAs</strong>.</div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -538,22 +556,44 @@ sections:
           </div>
         </div>
 
-        <div class="sec-subtitle" style="margin-top: 1.5rem;">Sơ Đồ Xử Trí Khi Bệnh Nhân Quên Thuốc DAA (Sơ Đồ 1 QĐ 2855/QĐ-BYT)</div>
+        <div class="sec-subtitle" style="margin-top: 1.5rem;"><i class="fa-solid fa-clock-rotate-left"></i> Sơ Đồ Xử Trí Khi Bệnh Nhân Quên / Gián Đoạn Thuốc DAA (Sơ Đồ 1 QĐ 2855/QĐ-BYT)</div>
 
-        <div class="flowchart-box">
-          <div class="flow-step-hdr" style="font-size: 1rem; color: var(--color-primary, #0284c7); margin-bottom: 0.75rem;">🔔 BỆNH NHÂN VIÊM GAN C QUÊN / BỎ THUỐC DAA</div>
-          
-          <div class="matrix-grid">
-            
-            <div class="matrix-card" style="border-left: 4px solid var(--blue);">
-              <div class="matrix-card-title"><span>1. Gián Đoạn Trong 28 Ngày Đầu</span> <span class="rx-tag info">Giai đoạn sớm</span></div>
-              <div class="matrix-card-desc">• <strong>Bỏ ≤ 7 ngày:</strong> Uống lại ngay. Uống tiếp tục và hoàn thành phác đồ gốc (8 hoặc 12 tuần).<br /><br /> • <strong>Bỏ ≥ 8 ngày:</strong> Uống lại ngay. XN lại HCV RNA sớm (cùng ngày uống lại):<br /> &amp;nbsp;&amp;nbsp;- <em>HCV RNA &lt; ngưỡng:</em> Hoàn thành phác đồ gốc (riêng genotype 3 và/hoặc xơ gan còn bù thì kéo dài thêm 4 tuần).<br /> &amp;nbsp;&amp;nbsp;- <em>HCV RNA ≥ ngưỡng hoặc không rõ:</em> <strong>Kéo dài thêm 4 tuần điều trị DAA</strong>.</div>
+        <div class="flow-track-container">
+          <div class="flow-track-step">
+            <div class="flow-track-rail">
+              <div class="flow-track-marker marker-amber"><i class="fa-solid fa-bell"></i></div>
+              <div class="flow-track-line"></div>
             </div>
+            <div class="flow-track-content accent-amber">
+              <div class="flow-step-header">
+                <div class="flow-step-title"><i class="fa-solid fa-triangle-exclamation" style="color: #d97706;"></i> Bệnh Nhân Viêm Gan C Bị Quên / Bỏ Thuốc DAA</div>
+                <span class="flow-step-badge flow-badge-amber">Xử trí tuân thủ</span>
+              </div>
+              <div class="flow-step-text">
+                Xử trí phân tầng theo <strong>thời điểm gián đoạn thuốc</strong> (Trong 28 ngày đầu hay sau 28 ngày đầu):
+                <div class="flow-branch-grid">
+                  <div class="flow-branch-card accent-blue">
+                    <div class="flow-branch-title" style="color: #0284c7;"><i class="fa-solid fa-calendar-day"></i> 1. Gián Đoạn Trong 28 Ngày Đầu</div>
+                    <div class="flow-branch-desc">
+                      • <strong>Bỏ thuốc &le; 7 ngày:</strong> Uống lại ngay. Uống tiếp tục và hoàn thành phác đồ gốc (8 hoặc 12 tuần).<br /><br />
+                      • <strong>Bỏ thuốc &ge; 8 ngày:</strong> Uống lại ngay. Làm xét nghiệm HCV RNA cùng ngày uống lại:<br />
+                      &nbsp;&nbsp;+ <em>HCV RNA &lt; ngưỡng phát hiện:</em> Hoàn thành phác đồ gốc (riêng Genotype 3 hoặc xơ gan còn bù kéo dài thêm 4 tuần).<br />
+                      &nbsp;&nbsp;+ <em>HCV RNA &ge; ngưỡng hoặc không rõ:</em> <strong>Kéo dài thêm 4 tuần điều trị DAA</strong>.
+                    </div>
+                  </div>
 
-            
-            <div class="matrix-card" style="border-left: 4px solid var(--color-warning, #f59e0b);">
-              <div class="matrix-card-title"><span>2. Gián Đoạn Sau 28 Ngày Đầu</span> <span class="rx-tag warning">Giai đoạn muộn</span></div>
-              <div class="matrix-card-desc">• <strong>Bỏ ≤ 7 ngày:</strong> Uống lại ngay. Uống tiếp tục và hoàn thành phác đồ gốc.<br /><br /> • <strong>Bỏ 8 – 20 ngày:</strong> Uống lại ngay. XN lại HCV RNA sớm (cùng ngày uống lại):<br /> &amp;nbsp;&amp;nbsp;- <em>HCV RNA &lt; ngưỡng:</em> Hoàn thành phác đồ gốc (riêng genotype 3 và/hoặc xơ gan còn bù kéo dài thêm 4 tuần).<br /> &amp;nbsp;&amp;nbsp;- <em>HCV RNA ≥ ngưỡng hoặc không rõ:</em> <strong>Ngừng điều trị</strong>. Điều trị lại như ca thất bại.<br /><br /> • <strong>Bỏ ≥ 21 ngày:</strong> <strong>Ngừng DAA</strong>, đánh giá SVR12. Nếu không đạt → điều trị lại như ca thất bại.</div>
+                  <div class="flow-branch-card accent-rose">
+                    <div class="flow-branch-title" style="color: #be123c;"><i class="fa-solid fa-calendar-check"></i> 2. Gián Đoạn Sau 28 Ngày Đầu</div>
+                    <div class="flow-branch-desc">
+                      • <strong>Bỏ thuốc &le; 7 ngày:</strong> Uống lại ngay. Tiếp tục và hoàn thành phác đồ gốc.<br /><br />
+                      • <strong>Bỏ thuốc 8 – 20 ngày:</strong> Uống lại ngay. Làm xét nghiệm HCV RNA sớm:<br />
+                      &nbsp;&nbsp;+ <em>HCV RNA &lt; ngưỡng:</em> Hoàn thành phác đồ gốc (riêng Genotype 3 / xơ gan thêm 4 tuần).<br />
+                      &nbsp;&nbsp;+ <em>HCV RNA &ge; ngưỡng hoặc không rõ:</em> <strong>Ngừng điều trị</strong>. Điều trị lại như ca thất bại.<br /><br />
+                      • <strong>Bỏ thuốc &ge; 21 ngày:</strong> <strong>Ngừng DAA</strong>, đánh giá SVR12 sau 12 tuần. Nếu không đạt &rarr; điều trị lại như ca thất bại.
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

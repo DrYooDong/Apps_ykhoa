@@ -41,6 +41,9 @@ Tài liệu này định nghĩa tiêu chuẩn thiết kế, cấu trúc mã ngu�
       </div>
       ```
     - Tuyệt đối không được bỏ sót hình ảnh minh họa có trong file `.md` nguồn.
+13. **CHUẨN HÓA LƯU ĐỒ LÂM SÀNG VỚI FLOW TRACK 2.0 & EDITORIAL SVG STUDIO**: Khi trang Guideline có lưu đồ phác đồ điều trị, chẩn đoán từng bước hoặc sơ đồ cơ chế:
+    - **Lưu đồ từng bước / Bậc thang điều trị**: Bắt buộc sử dụng hệ thống `.flow-track-container` (kèm `.flow-track-step`, `.flow-track-rail`, `.flow-track-marker`, `.flow-track-content`, và `.flow-branch-grid` cho các điểm rẽ nhánh quyết định). Tuyệt đối KHÔNG dùng ASCII text thô `│ ├─ ▼` hay thẻ `<pre class="flowchart-box">` cổ điển.
+    - **Sơ đồ đồ họa vector / Cơ chế sinh lý bệnh**: Bắt buộc bọc trong `.flowchart-editorial-card` (kèm `.flowchart-editorial-hdr`, `.flowchart-editorial-canvas`, và `.flowchart-legend-row` phân loại màu sắc). SVG phải tuân thủ 100% tokens Dark Mode (`var(--surface)`, `var(--color-primary)`, `var(--color-text)`).
 
 ---
 

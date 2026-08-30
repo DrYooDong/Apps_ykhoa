@@ -4617,6 +4617,414 @@
   }
 }
 
+/* ══════════════════════════════════════════════════════════════════════════════
+   33. CLINICAL FLOWCHART & DIAGRAM DESIGN SYSTEM 2.0 (GUIDELINE FLAGSHIP)
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+/* ── 1. Flow Track (Linear Process Stepper) ── */
+.flow-track-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin: 1.5rem 0;
+  padding: 0.5rem 0;
+}
+
+.flow-track-step {
+  display: flex;
+  align-items: stretch;
+  gap: 1.25rem;
+  position: relative;
+  min-height: 80px;
+}
+
+.flow-track-rail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  width: 44px;
+  position: relative;
+}
+
+.flow-track-marker {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: var(--color-surface, #ffffff);
+  border: 2px solid var(--color-primary, #0284c7);
+  color: var(--color-primary, #0284c7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-weight: 800;
+  font-size: 0.88rem;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.18);
+  position: relative;
+  z-index: 3;
+  transition: all 0.25s ease;
+  flex-shrink: 0;
+}
+
+.flow-track-step:hover .flow-track-marker {
+  transform: scale(1.08);
+  box-shadow: 0 6px 18px rgba(2, 132, 199, 0.28);
+}
+
+.flow-track-marker.marker-blue {
+  border-color: #0284c7;
+  color: #0284c7;
+  background: rgba(2, 132, 199, 0.08);
+}
+
+.flow-track-marker.marker-teal {
+  border-color: #0d9488;
+  color: #0d9488;
+  background: rgba(13, 148, 136, 0.08);
+}
+
+.flow-track-marker.marker-amber {
+  border-color: #d97706;
+  color: #d97706;
+  background: rgba(217, 119, 6, 0.08);
+}
+
+.flow-track-marker.marker-green {
+  border-color: #10b981;
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.08);
+}
+
+.flow-track-marker.marker-purple {
+  border-color: #7c3aed;
+  color: #7c3aed;
+  background: rgba(124, 58, 237, 0.08);
+}
+
+.flow-track-marker.marker-rose {
+  border-color: #e11d48;
+  color: #e11d48;
+  background: rgba(225, 29, 72, 0.08);
+}
+
+.flow-track-line {
+  flex: 1;
+  width: 2.5px;
+  background: linear-gradient(180deg, var(--color-border, #cbd5e1) 0%, var(--color-border, #cbd5e1) 100%);
+  margin: 6px 0;
+  position: relative;
+  border-radius: 2px;
+}
+
+.flow-track-step:last-child .flow-track-line {
+  display: none;
+}
+
+.flow-track-content {
+  flex: 1;
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #cbd5e1);
+  border-radius: 14px;
+  padding: 1.15rem 1.35rem;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.flow-track-content::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--color-border, #cbd5e1);
+  transition: background 0.25s ease;
+}
+
+.flow-track-step:hover .flow-track-content {
+  border-color: rgba(2, 132, 199, 0.4);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+}
+
+.flow-track-content.accent-blue::before { background: #0284c7; }
+.flow-track-content.accent-teal::before { background: #0d9488; }
+.flow-track-content.accent-amber::before { background: #d97706; }
+.flow-track-content.accent-green::before { background: #10b981; }
+.flow-track-content.accent-purple::before { background: #7c3aed; }
+.flow-track-content.accent-rose::before { background: #e11d48; }
+
+.flow-step-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.flow-step-title {
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-size: 0.98rem;
+  font-weight: 800;
+  color: var(--color-text, #0f172a);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.flow-step-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.flow-badge-blue { background: rgba(2, 132, 199, 0.12); color: #0284c7; border: 1px solid rgba(2, 132, 199, 0.3); }
+.flow-badge-amber { background: rgba(217, 119, 6, 0.12); color: #b45309; border: 1px solid rgba(217, 119, 6, 0.3); }
+.flow-badge-green { background: rgba(16, 185, 129, 0.12); color: #047857; border: 1px solid rgba(16, 185, 129, 0.3); }
+.flow-badge-purple { background: rgba(124, 58, 237, 0.12); color: #6d28d9; border: 1px solid rgba(124, 58, 237, 0.3); }
+.flow-badge-rose { background: rgba(225, 29, 72, 0.12); color: #be123c; border: 1px solid rgba(225, 29, 72, 0.3); }
+
+.flow-step-text {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--color-text, #334155);
+}
+
+/* ── 2. Decision Branch Grid ── */
+.flow-branch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+  gap: 0.85rem;
+  margin: 0.85rem 0 0.25rem 0;
+}
+
+.flow-branch-card {
+  background: var(--color-surface-2, #f8fafc);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: 10px;
+  padding: 0.9rem 1.05rem;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.flow-branch-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.flow-branch-card.accent-blue {
+  border-left: 3.5px solid #0284c7;
+  background: rgba(2, 132, 199, 0.04);
+}
+
+.flow-branch-card.accent-green {
+  border-left: 3.5px solid #10b981;
+  background: rgba(16, 185, 129, 0.04);
+}
+
+.flow-branch-card.accent-amber {
+  border-left: 3.5px solid #d97706;
+  background: rgba(217, 119, 6, 0.04);
+}
+
+.flow-branch-card.accent-rose {
+  border-left: 3.5px solid #e11d48;
+  background: rgba(225, 29, 72, 0.04);
+}
+
+.flow-branch-card.accent-purple {
+  border-left: 3.5px solid #7c3aed;
+  background: rgba(124, 58, 237, 0.04);
+}
+
+.flow-branch-title {
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-weight: 800;
+  font-size: 0.86rem;
+  margin-bottom: 0.35rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.flow-branch-desc {
+  font-size: 0.84rem;
+  line-height: 1.55;
+  color: var(--color-text-muted, #475569);
+}
+
+/* ── 3. Editorial SVG Flowchart Card ── */
+.flowchart-editorial-card {
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #cbd5e1);
+  border-radius: 16px;
+  overflow: hidden;
+  margin: 1.5rem 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.flowchart-editorial-hdr {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 1.35rem;
+  background: var(--color-surface-2, #f8fafc);
+  border-bottom: 1px solid var(--color-border, #cbd5e1);
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.flowchart-editorial-title {
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-weight: 800;
+  font-size: 0.94rem;
+  color: var(--color-text, #0f172a);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.flowchart-editorial-canvas {
+  padding: 1.25rem;
+  background: var(--color-surface, #ffffff);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.flowchart-legend-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  padding: 0.75rem 1.25rem;
+  background: var(--color-surface-2, #f8fafc);
+  border-top: 1px solid var(--color-border, #cbd5e1);
+  flex-wrap: wrap;
+  font-size: 0.76rem;
+  color: var(--color-text-muted, #64748b);
+  font-weight: 600;
+}
+
+.flowchart-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+/* ── 4. Backward Compatibility Enhancement for .flowchart-box & .flow-arrow ── */
+.flowchart-box {
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #cbd5e1);
+  border-radius: 16px;
+  padding: 1.35rem;
+  margin: 1.25rem 0;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03);
+}
+
+.flow-step {
+  background: var(--color-surface-2, #f8fafc);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: 12px;
+  padding: 1.1rem 1.25rem;
+  position: relative;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  transition: all 0.2s ease;
+}
+
+.flow-step:hover {
+  border-color: var(--color-primary, #0284c7);
+  box-shadow: 0 3px 12px rgba(2, 132, 199, 0.08);
+}
+
+.flow-arrow, .flow-arrow-down {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary, #0284c7);
+  font-size: 1.1rem;
+  margin: 0.65rem 0;
+  position: relative;
+}
+
+.flow-arrow::before, .flow-arrow-down::before {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 100%;
+  background: rgba(2, 132, 199, 0.2);
+  z-index: 0;
+}
+
+/* ── 5. Mobile Responsive Adjustments ── */
+@media (max-width: 768px) {
+  .flow-track-step {
+    gap: 0.75rem;
+  }
+
+  .flow-track-rail {
+    width: 32px;
+  }
+
+  .flow-track-marker {
+    width: 32px;
+    height: 32px;
+    font-size: 0.76rem;
+    border-radius: 8px;
+  }
+
+  .flow-track-content {
+    padding: 0.95rem 1rem;
+  }
+
+  .flow-branch-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── 6. Dark Mode Tokens ── */
+[data-theme="dark"] .flow-track-marker {
+  background: #1e293b;
+}
+
+[data-theme="dark"] .flow-track-content,
+[data-theme="dark"] .flowchart-editorial-card,
+[data-theme="dark"] .flowchart-box {
+  background: var(--color-surface, #1e293b);
+  border-color: var(--color-border, #334155);
+}
+
+[data-theme="dark"] .flowchart-editorial-hdr,
+[data-theme="dark"] .flowchart-legend-row,
+[data-theme="dark"] .flow-step,
+[data-theme="dark"] .flow-branch-card {
+  background: var(--color-surface-2, #0f172a);
+  border-color: var(--color-border, #334155);
+}
+
+[data-theme="dark"] .flow-step-text,
+[data-theme="dark"] .flow-branch-desc {
+  color: var(--color-text, #cbd5e1);
+}
+
+
 
 
 

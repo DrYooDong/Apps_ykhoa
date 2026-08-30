@@ -142,8 +142,7 @@ sections:
           <div class="infobox-icon">⚠️</div>
           <div>
             <strong>Sự Biến Thải Dược Động Học Phức Tạp Ở Bệnh Nhân ICU:</strong>
-            <ul style="margin-left: 1.2rem; margin-top: 0.3rem;">
-<ul style="margin-left: 1.25rem; margin-bottom: 1rem; line-height: 1.65;">
+            <ul style="margin-left: 1.25rem; margin-bottom: 1rem; line-height: 1.65;">
               <li><strong>Tăng thể tích phân bố (V<sub>d</sub>):</strong> Do rò rỉ mao mạch, phù toàn thân, hồi sức dịch thể tích lớn &amp;rarr; làm giảm nhanh nồng độ kháng sinh huyết tương trong giai đoạn đầu.</li>
               <li><strong>Thay đổi độ thanh thải thận (CL<sub>cr</sub>):</strong> Gồm tổn thương thận cấp (AKI), liệu pháp thay thế thận (CRRT/KRT), hoặc hiện tượng <em>Tăng thanh thải thận (Augmented Renal Clearance - ARC)</em> ở người trẻ nguy kịch &amp;rarr; làm đào thải kháng sinh cực nhanh.</li>
               <li><strong>Giảm albumin máu:</strong> Làm gia tăng phân bố và đào thải dạng tự do của các kháng sinh gắn kết protein cao (Ceftriaxone, Ertapenem).</li>
@@ -351,40 +350,92 @@ sections:
       <div class="sec-body">
         <p style="margin-bottom: 1.25rem; font-size: 0.88rem; color: var(--color-text-muted, #64748b);">Khi sự chênh lệch giữa nồng độ quan sát thực tế (C<sub>observed</sub>) và nồng độ dự đoán từ mô hình (C<sub>predicted</sub>) vượt quá <strong>20%</strong>, độ tin cậy của MIPD giảm mạnh. Cần thực hiện 4 bước kiểm tra sau trước khi thay đổi liều:</p>
 
-        <div class="flow-steps">
-          <div class="flow-step">
-            <div class="flow-step-num">1</div>
-            <div class="flow-step-content">
-              <div class="flow-step-title">Bước 1: Đánh giá tính phù hợp của mô hình (Evaluate Model Appropriateness)</div>
-              <div class="flow-step-text">Xem xét các đặc tính hiệp biến của bệnh nhân (cân nặng, chức năng thận, phương thức truyền) có nằm trong quần thể gốc của mô hình PK hay không.</div>
-              <div class="flow-branch branch-no"><i class="fa-solid fa-arrow-right"></i> Nếu không phù hợp: Chuyển sang mô hình PK khác thích hợp hơn.</div>
+        <div class="flow-track-container">
+          <div class="flow-track-step">
+            <div class="flow-track-rail">
+              <div class="flow-track-marker marker-blue">01</div>
+              <div class="flow-track-line"></div>
+            </div>
+            <div class="flow-track-content accent-blue">
+              <div class="flow-step-header">
+                <div class="flow-step-title"><i class="fa-solid fa-calculator" style="color: #0284c7;"></i> Bước 1: Đánh Giá Tính Phù Hợp Của Mô Hình (Evaluate Model Appropriateness)</div>
+                <span class="flow-step-badge flow-badge-blue">Mô hình PK</span>
+              </div>
+              <div class="flow-step-text">
+                Xem xét các đặc tính hiệp biến của bệnh nhân (cân nặng thực, chức năng thận, phương thức truyền tĩnh mạch liên tục hay ngắt quãng) có nằm trong quần thể gốc của mô hình PK hay không.<br />
+                <div class="flow-branch-grid" style="margin-top: 0.5rem;">
+                  <div class="flow-branch-card accent-rose">
+                    <div class="flow-branch-title" style="color: #be123c;"><i class="fa-solid fa-arrow-right"></i> Nếu Không Phù Hợp</div>
+                    <div class="flow-branch-desc">Chuyển sang mô hình PK khác thích hợp hơn với quần thể bệnh nhân ICU.</div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div class="flow-step">
-            <div class="flow-step-num">2</div>
-            <div class="flow-step-content">
-              <div class="flow-step-title">Bước 2: Kiểm tra dữ liệu đầu vào (Evaluate Input Data)</div>
-              <div class="flow-step-text">Rà soát lỗi ghi nhận: Liều dùng thực tế, thời điểm truyền kháng sinh, chính xác giờ rút mẫu máu, và sai số xét nghiệm phòng lab.</div>
-              <div class="flow-branch branch-no"><i class="fa-solid fa-arrow-right"></i> Nếu phát hiện sai dữ liệu: Hiệu chỉnh lại dữ liệu vào phần mềm MIPD.</div>
+          <div class="flow-track-step">
+            <div class="flow-track-rail">
+              <div class="flow-track-marker marker-teal">02</div>
+              <div class="flow-track-line"></div>
+            </div>
+            <div class="flow-track-content accent-teal">
+              <div class="flow-step-header">
+                <div class="flow-step-title"><i class="fa-solid fa-database" style="color: #0d9488;"></i> Bước 2: Kiểm Tra Dữ Liệu Đầu Vào (Evaluate Input Data)</div>
+                <span class="flow-step-badge flow-badge-blue">Dữ liệu gốc</span>
+              </div>
+              <div class="flow-step-text">
+                Rà soát lỗi ghi nhận: Liều dùng thực tế đưa vào cơ thể, thời điểm truyền kháng sinh, chính xác giờ rút mẫu máu, và sai số xét nghiệm phòng lab.<br />
+                <div class="flow-branch-grid" style="margin-top: 0.5rem;">
+                  <div class="flow-branch-card accent-amber">
+                    <div class="flow-branch-title" style="color: #b45309;"><i class="fa-solid fa-arrow-right"></i> Nếu Phát Hiện Sai Dữ Liệu</div>
+                    <div class="flow-branch-desc">Hiệu chỉnh lại dữ liệu chính xác vào phần mềm MIPD trước khi chạy lại thuật toán Bayes.</div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div class="flow-step">
-            <div class="flow-step-num">3</div>
-            <div class="flow-step-content">
-              <div class="flow-step-title">Bước 3: Đánh giá biến đổi sinh lý bệnh nhân (Evaluate Patient Changes)</div>
-              <div class="flow-step-text">Bệnh nhân có biến đổi lâm sàng đột ngột (tụt huyết áp mới xuất hiện, bắt đầu CRRT, thay đổi dịch thể) hoặc có tương tác thuốc mới?</div>
-              <div class="flow-branch branch-action"><i class="fa-solid fa-arrow-right"></i> Nếu biến động: Cập nhật biến số mới nhất vào mô hình.</div>
+          <div class="flow-track-step">
+            <div class="flow-track-rail">
+              <div class="flow-track-marker marker-amber">03</div>
+              <div class="flow-track-line"></div>
+            </div>
+            <div class="flow-track-content accent-amber">
+              <div class="flow-step-header">
+                <div class="flow-step-title"><i class="fa-solid fa-heart-pulse" style="color: #d97706;"></i> Bước 3: Đánh Giá Biến Đổi Sinh Lý Bệnh Nhân (Evaluate Patient Changes)</div>
+                <span class="flow-step-badge flow-badge-amber">Lâm sàng động</span>
+              </div>
+              <div class="flow-step-text">
+                Bệnh nhân có biến đổi lâm sàng đột ngột (tụt huyết áp mới xuất hiện, bắt đầu lọc máu CRRT, quá tải dịch thể) hoặc xuất hiện tương tác thuốc mới?<br />
+                <div class="flow-branch-grid" style="margin-top: 0.5rem;">
+                  <div class="flow-branch-card accent-blue">
+                    <div class="flow-branch-title" style="color: #0284c7;"><i class="fa-solid fa-arrows-rotate"></i> Nếu Biến Động Lâm Sàng</div>
+                    <div class="flow-branch-desc">Cập nhật ngay các biến số sinh lý mới nhất vào mô hình để tái ước lượng độ thanh thải (Cl).</div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div class="flow-step">
-            <div class="flow-step-num">4</div>
-            <div class="flow-step-content">
-              <div class="flow-step-title">Bước 4: Thu thập thêm mẫu &amp; Căn chỉnh mô hình (Gather Additional Sample)</div>
-              <div class="flow-step-text">Nếu dữ liệu đúng nhưng mô hình vẫn dự đoán sai lệch: Tiến hành lấy thêm mẫu máu để tái căn chỉnh (Bayesian feedback fitting).</div>
-              <div class="flow-branch branch-yes"><i class="fa-solid fa-arrow-right"></i> Nếu vẫn tiếp tục sai lệch và không có mô hình thay thế: <strong>Dừng dùng MIPD &amp;rarr; Chuyển sang TDM truyền thống dựa trên nồng độ thực tế.</strong></div>
+          <div class="flow-track-step">
+            <div class="flow-track-rail">
+              <div class="flow-track-marker marker-green">04</div>
+              <div class="flow-track-line"></div>
+            </div>
+            <div class="flow-track-content accent-green">
+              <div class="flow-step-header">
+                <div class="flow-step-title"><i class="fa-solid fa-vial" style="color: #047857;"></i> Bước 4: Thu Thập Thêm Mẫu &amp; Căn Chỉnh Mô Hình (Gather Additional Sample)</div>
+                <span class="flow-step-badge flow-badge-green">Tái căn chỉnh</span>
+              </div>
+              <div class="flow-step-text">
+                Nếu dữ liệu đúng nhưng mô hình vẫn dự đoán sai lệch &gt; 20%: Tiến hành lấy thêm mẫu máu thứ hai để tái căn chỉnh (Bayesian feedback fitting).<br />
+                <div class="flow-branch-grid" style="margin-top: 0.5rem;">
+                  <div class="flow-branch-card accent-rose">
+                    <div class="flow-branch-title" style="color: #be123c;"><i class="fa-solid fa-triangle-exclamation"></i> Nếu Vẫn Tiếp Tục Sai Lệch</div>
+                    <div class="flow-branch-desc"><strong>Dừng sử dụng phần mềm MIPD &rarr; Chuyển sang TDM truyền thống</strong> dựa hoàn toàn trên nồng độ đo đạc thực tế tại phòng lab.</div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -401,30 +452,62 @@ sections:
         </div>
       </div>
       <div class="sec-body">
-        <div class="flow-steps">
-          <div class="flow-step">
-            <div class="flow-step-num">A</div>
-            <div class="flow-step-content">
-              <div class="flow-step-title">Bước 1: Xác định giá trị vi sinh học</div>
-              <div class="flow-step-text">Xác định MIC của chủng vi khuẩn lập bối cảnh trên bệnh nhân, Điểm gãy nhạy cảm (Clinical Breakpoint), và Giá trị ngưỡng dịch tễ học (ECV/ECOFF). <em>(Nếu chưa có kết quả cấy, dùng Breakpoint / ECV của tác nhân nghi ngờ nhất).</em></div>
+        <div class="flow-track-container">
+          <div class="flow-track-step">
+            <div class="flow-track-rail">
+              <div class="flow-track-marker marker-blue">A</div>
+              <div class="flow-track-line"></div>
+            </div>
+            <div class="flow-track-content accent-blue">
+              <div class="flow-step-header">
+                <div class="flow-step-title"><i class="fa-solid fa-bacteria" style="color: #0284c7;"></i> Bước 1: Xác Định Giá Trị Vi Sinh Học Ban Đầu</div>
+                <span class="flow-step-badge flow-badge-blue">Vi sinh</span>
+              </div>
+              <div class="flow-step-text">
+                Xác định nồng độ ức chế tối thiểu <strong>MIC</strong> của chủng vi khuẩn lập bối cảnh trên bệnh nhân, Điểm gãy nhạy cảm (Clinical Breakpoint), và Giá trị ngưỡng dịch tễ học (ECV/ECOFF). <em>(Nếu chưa có kết quả cấy vi sinh, sử dụng Breakpoint / ECV của tác nhân nghi ngờ nhất theo dịch tễ khoa ICU).</em>
+              </div>
             </div>
           </div>
 
-          <div class="flow-step">
-            <div class="flow-step-num">B</div>
-            <div class="flow-step-content">
-              <div class="flow-step-title">Bước 2: So sánh MIC với Breakpoint / ECV</div>
-              <div class="flow-step-text">Do biến thiên kỹ thuật xét nghiệm in vitro (&amp;plusmn;1 đến &amp;plusmn;2 nấc pha loãng), không sử dụng đơn độc 1 giá trị MIC báo cáo nếu nằm sát ngưỡng.</div>
-              <div class="flow-branch branch-no"><i class="fa-solid fa-triangle-exclamation"></i> <strong>MIC &gt; Breakpoint hoặc ECV:</strong> 🛑 CẢNH BẢO KHÁNG THUỐC! Dừng lại, hội chẩn chuyên gia Truyền nhiễm và xem xét kháng sinh thay thế.</div>
-              <div class="flow-branch branch-yes"><i class="fa-solid fa-circle-check"></i> <strong>MIC &amp;le; Breakpoint và ECV:</strong> Chọn giá trị <strong>CAO HƠN</strong> giữa Breakpoint hoặc ECV làm mốc so sánh tính toán &amp;rarr; Tiến hành cá thể hóa liều.</div>
+          <div class="flow-track-step">
+            <div class="flow-track-rail">
+              <div class="flow-track-marker marker-amber">B</div>
+              <div class="flow-track-line"></div>
+            </div>
+            <div class="flow-track-content accent-amber">
+              <div class="flow-step-header">
+                <div class="flow-step-title"><i class="fa-solid fa-scale-balanced" style="color: #d97706;"></i> Bước 2: So Sánh MIC Thực Tế Với Breakpoint / ECV</div>
+                <span class="flow-step-badge flow-badge-amber">Đối chuẩn</span>
+              </div>
+              <div class="flow-step-text">
+                Do biến thiên kỹ thuật xét nghiệm in vitro (&plusmn;1 đến &plusmn;2 nấc pha loãng), không sử dụng đơn độc 1 giá trị MIC báo cáo nếu nằm sát ngưỡng:
+                <div class="flow-branch-grid">
+                  <div class="flow-branch-card accent-rose">
+                    <div class="flow-branch-title" style="color: #be123c;"><i class="fa-solid fa-circle-exclamation"></i> MIC &gt; Breakpoint hoặc ECV</div>
+                    <div class="flow-branch-desc">🛑 <strong>CẢNH BÁO KHÁNG THUỐC!</strong> Dừng lại ngay, hội chẩn chuyên gia Vi sinh / Truyền nhiễm và xem xét đổi sang nhóm kháng sinh thế hệ mới thay thế.</div>
+                  </div>
+                  <div class="flow-branch-card accent-green">
+                    <div class="flow-branch-title" style="color: #047857;"><i class="fa-solid fa-circle-check"></i> MIC &le; Breakpoint và ECV</div>
+                    <div class="flow-branch-desc">Chọn giá trị <strong>CAO HƠN</strong> giữa Breakpoint hoặc ECV làm mốc so sánh tính toán &rarr; Tiến hành cá thể hóa liều dùng.</div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div class="flow-step">
-            <div class="flow-step-num">C</div>
-            <div class="flow-step-content">
-              <div class="flow-step-title">Bước 3: Chọn Mục tiêu PK/PD Tối Thiểu</div>
-              <div class="flow-step-text">Thiết lập mục tiêu liều đạt tối thiểu <strong>100% fT<sub>&gt;MIC</sub></strong> (hoặc 100% fT<sub>&gt;4xMIC</sub> đối với các ổ nhiễm khuẩn sâu/khó thấm).</div>
+          <div class="flow-track-step">
+            <div class="flow-track-rail">
+              <div class="flow-track-marker marker-green">C</div>
+              <div class="flow-track-line"></div>
+            </div>
+            <div class="flow-track-content accent-green">
+              <div class="flow-step-header">
+                <div class="flow-step-title"><i class="fa-solid fa-bullseye" style="color: #047857;"></i> Bước 3: Thiết Lập Mục Tiêu PK/PD Diệt Khuẩn Tối Ưu</div>
+                <span class="flow-step-badge flow-badge-green">Mục tiêu đích</span>
+              </div>
+              <div class="flow-step-text">
+                Thiết lập mục tiêu liều đạt tối thiểu <strong>100% fT<sub>&gt;MIC</sub></strong> (hoặc nâng lên <strong>100% fT<sub>&gt;4xMIC</sub></strong> đối với các ổ nhiễm trùng sâu, khó thấm như viêm phổi thở máy VAP, viêm xương tủy hoặc màng não).
+              </div>
             </div>
           </div>
         </div>

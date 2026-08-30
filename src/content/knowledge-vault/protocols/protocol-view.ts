@@ -52,13 +52,13 @@ export function renderProtocolsHubView(filter: ProtocolFilterState, selectedProt
       </div>
 
       <!-- 3. Search & Triage Filter Row -->
-      <div class="protocols-filter-row" style="display: grid; grid-template-columns: 1fr auto auto; gap: 0.75rem; margin-bottom: 1.5rem;">
-        <div style="position: relative;">
-          <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--color-text-muted, #94a3b8); font-size: 14px;"></i>
-          <input type="text" id="protocol-search-input" value="${escapeHtml(filter.searchQuery)}" placeholder="Tìm kiếm theo tên bệnh, thuốc, mã ICD-10 (VD: A91, Nhồi máu cơ tim, Sốc, GINA...)..." style="width: 100%; padding: 10px 14px 10px 38px; border: 1px solid var(--color-border, #cbd5e1); border-radius: 10px; background: var(--color-surface, #fff); color: var(--color-text, #0f172a); font-size: 13.5px; outline: none;" />
+      <div class="protocols-filter-row">
+        <div style="position: relative; width: 100%; box-sizing: border-box;">
+          <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--color-text-muted, #94a3b8); font-size: 14px; pointer-events: none;"></i>
+          <input type="text" id="protocol-search-input" value="${escapeHtml(filter.searchQuery)}" placeholder="Tìm kiếm theo tên bệnh, thuốc, mã ICD-10 (VD: A91, Nhồi máu cơ tim, Sốc, GINA...)..." style="width: 100%; padding: 10px 14px 10px 38px; border: 1px solid var(--color-border, #cbd5e1); border-radius: 10px; background: var(--color-surface, #fff); color: var(--color-text, #0f172a); font-size: 13.5px; outline: none; box-sizing: border-box; min-height: 44px;" />
         </div>
 
-        <select id="protocol-triage-select" style="padding: 10px 14px; border: 1px solid var(--color-border, #cbd5e1); border-radius: 10px; background: var(--color-surface, #fff); color: var(--color-text, #0f172a); font-size: 13px; font-weight: 600;">
+        <select id="protocol-triage-select" style="padding: 10px 14px; border: 1px solid var(--color-border, #cbd5e1); border-radius: 10px; background: var(--color-surface, #fff); color: var(--color-text, #0f172a); font-size: 13px; font-weight: 600; min-height: 44px; box-sizing: border-box;">
           <option value="all">Tất cả Mức độ Triage</option>
           <option value="emergency" ${filter.triageLevel === 'emergency' ? 'selected' : ''}>🚨 Cấp cứu Tối khẩn</option>
           <option value="inpatient" ${filter.triageLevel === 'inpatient' ? 'selected' : ''}>🏥 Điều trị Nội trú</option>
@@ -67,7 +67,7 @@ export function renderProtocolsHubView(filter: ProtocolFilterState, selectedProt
       </div>
 
       <!-- 4. Protocols Bento Grid -->
-      <div class="protocols-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+      <div class="protocols-grid">
         ${filteredProtocols.length > 0 ? filteredProtocols.map(p => renderProtocolCard(p)).join('') : `
           <div style="grid-column: 1 / -1; text-align: center; padding: 3rem 1rem; background: var(--color-surface, #fff); border: 1px dashed var(--color-border, #cbd5e1); border-radius: 14px;">
             <i class="fa-solid fa-clipboard-question" style="font-size: 2.5rem; color: var(--color-text-muted, #94a3b8); margin-bottom: 0.75rem;"></i>

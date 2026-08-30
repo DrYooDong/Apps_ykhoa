@@ -172,8 +172,7 @@ sections:
           <div class="infobox-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
           <div>
             <strong>Định nghĩa các thể Lao Kháng Thuốc theo Quyết định 162/QĐ-BYT:</strong>
-            <ul style="margin-left: 1.2rem; margin-top: 0.4rem; font-size: 0.83rem;">
-<ul style="margin-left: 1.25rem; margin-bottom: 1rem; line-height: 1.65;">
+            <ul style="margin-left: 1.25rem; margin-bottom: 1rem; line-height: 1.65;">
               <li><strong>Lao nhạy cảm thuốc:</strong> Vi khuẩn nhạy cảm với toàn bộ các thuốc chống lao hàng 1.</li>
               <li><strong>Lao kháng đơn thuốc:</strong> Chỉ kháng duy nhất 01 loại thuốc chống lao hàng 1.</li>
               <li><strong>Lao kháng nhiều thuốc:</strong> Kháng từ 2 thuốc hàng 1 trở lên nhưng <em>không kháng đồng thời cả Rifampicin (R) và Isoniazid (H)</em>.</li>
@@ -361,23 +360,79 @@ sections:
           </div>
         </div>
 
-        <div class="sec-subtitle"><i class="fa-solid fa-diagram-project"></i> Sơ Đồ 1: Quy Trình Chẩn Đoán Lao Phổi Không Có Bằng Chứng Vi Khuẩn (BYT)</div>
-        <div class="flowchart-box">
-          <div class="flow-node primary"><i class="fa-solid fa-user-injured"></i> [1] Người bệnh có triệu chứng nghi ngờ Lao Phổi (Ho > 2 tuần, sốt nhẹ chiều, sút cân...)</div>
-          <div class="flow-arrow">│</div>
-          <div class="flow-arrow">▼</div>
-          <div class="flow-node"><i class="fa-solid fa-x-ray"></i> [2] Chỉ định Chụp X-quang ngực thẳng &amp; Xét nghiệm vi sinh (Xpert Ultra / AFB đờm lần 1)</div>
-          <div class="flow-arrow">├──────────────────────────────────────┐</div>
-          <div class="flow-arrow">▼                                      ▼</div>
-          <div class="flow-node success"><i class="fa-solid fa-check"></i> CÓ bằng chứng vi khuẩn<br />&amp;rarr; CHẨN ĐOÁN LAO PHỔI CÓ BCVK</div>
-          <div class="flow-node danger"><i class="fa-solid fa-xmark"></i> KHÔNG có bằng chứng vi khuẩn<br />&amp;rarr; Điều trị Kháng sinh ngoài lao (KHÔNG dùng FQ) 1-2 tuần</div>
-          <div class="flow-arrow">│</div>
-          <div class="flow-arrow">▼</div>
-          <div class="flow-node">[3] Đánh giá lại Lâm sàng &amp; X-quang ngực sau 1-2 tuần điều trị kháng sinh</div>
-          <div class="flow-arrow">├──────────────────────────────────────┐</div>
-          <div class="flow-arrow">▼                                      ▼</div>
-          <div class="flow-node success">CÓ cải thiện rõ rệt &amp;rarr; LOẠI TRỪ LAO</div>
-          <div class="flow-node danger">KHÔNG cải thiện &amp;rarr; Xét nghiệm vi sinh lần 2 + Chụp CLVT ngực &amp; HỘI CHẨN CHUYÊN MÔN</div>
+        <div class="sec-subtitle"><i class="fa-solid fa-route"></i> Sơ Đồ 1: Quy Trình Chẩn Đoán Lao Phổi Không Có Bằng Chứng Vi Khuẩn (BYT 2024)</div>
+        
+        <div class="flow-track-container">
+          <!-- Bước 1 -->
+          <div class="flow-track-step">
+            <div class="flow-track-rail">
+              <div class="flow-track-marker marker-blue">01</div>
+              <div class="flow-track-line"></div>
+            </div>
+            <div class="flow-track-content accent-blue">
+              <div class="flow-step-header">
+                <div class="flow-step-title"><i class="fa-solid fa-user-injured" style="color: #0284c7;"></i> Bước 1: Tiếp Nhận Người Bệnh Nghi Ngờ Lao Phổi</div>
+                <span class="flow-step-badge flow-badge-blue">Nghi ngờ</span>
+              </div>
+              <div class="flow-step-text">
+                Người bệnh có triệu chứng hô hấp và toàn thân kéo dài: <strong>Ho khạc đờm &gt; 2 tuần</strong>, sốt nhẹ về chiều, ra mồ hôi trộm, đau ngực, sút cân hoặc ho ra máu.
+              </div>
+            </div>
+          </div>
+
+          <!-- Bước 2 -->
+          <div class="flow-track-step">
+            <div class="flow-track-rail">
+              <div class="flow-track-marker marker-teal">02</div>
+              <div class="flow-track-line"></div>
+            </div>
+            <div class="flow-track-content accent-teal">
+              <div class="flow-step-header">
+                <div class="flow-step-title"><i class="fa-solid fa-x-ray" style="color: #0d9488;"></i> Bước 2: Chụp X-Quang Ngực &amp; Xét Nghiệm Vi Sinh Lần 1</div>
+                <span class="flow-step-badge flow-badge-amber">Vi sinh ban đầu</span>
+              </div>
+              <div class="flow-step-text">
+                Chỉ định chụp <strong>X-quang ngực thẳng</strong> kết hợp <strong>GeneXpert MTB/RIF Ultra</strong> (hoặc nhuộm soi AFB đờm):
+                <div class="flow-branch-grid">
+                  <div class="flow-branch-card accent-green">
+                    <div class="flow-branch-title" style="color: #047857;"><i class="fa-solid fa-circle-check"></i> CÓ Bằng Chứng Vi Khuẩn</div>
+                    <div class="flow-branch-desc"><strong>CHẨN ĐOÁN XÁC ĐỊNH LAO PHỔI CÓ BCVK</strong><br />Đăng ký vào chương trình chống lao và khởi động ngay phác đồ A1.</div>
+                  </div>
+                  <div class="flow-branch-card accent-rose">
+                    <div class="flow-branch-title" style="color: #be123c;"><i class="fa-solid fa-circle-xmark"></i> KHÔNG Có Bằng Chứng Vi Khuẩn</div>
+                    <div class="flow-branch-desc"><strong>Điều trị thử Kháng sinh phổ rộng ngoài lao trong 1 - 2 tuần</strong>.<br />⚠️ <em>TUYỆT ĐỐI KHÔNG dùng nhóm Fluoroquinolones (Levofloxacin, Moxifloxacin) vì làm che mờ chẩn đoán lao.</em></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bước 3 -->
+          <div class="flow-track-step">
+            <div class="flow-track-rail">
+              <div class="flow-track-marker marker-green">03</div>
+              <div class="flow-track-line"></div>
+            </div>
+            <div class="flow-track-content accent-green">
+              <div class="flow-step-header">
+                <div class="flow-step-title"><i class="fa-solid fa-clipboard-check" style="color: #047857;"></i> Bước 3: Đánh Giá Lại Lâm Sàng &amp; X-Quang Sau 1 - 2 Tuần</div>
+                <span class="flow-step-badge flow-badge-green">Hội chẩn quyết định</span>
+              </div>
+              <div class="flow-step-text">
+                Đánh giá đáp ứng sau đợt kháng sinh phổ rộng ngoài lao:
+                <div class="flow-branch-grid">
+                  <div class="flow-branch-card accent-green">
+                    <div class="flow-branch-title" style="color: #047857;"><i class="fa-solid fa-shield-halved"></i> CÓ Cải Thiện Rõ Rệt</div>
+                    <div class="flow-branch-desc"><strong>LOẠI TRỪ LAO PHỔI</strong><br />Tiếp tục hoàn thành phác đồ điều trị viêm phổi / nhiễm trùng đường hô hấp thường quy.</div>
+                  </div>
+                  <div class="flow-branch-card accent-rose">
+                    <div class="flow-branch-title" style="color: #be123c;"><i class="fa-solid fa-triangle-exclamation"></i> KHÔNG Cải Thiện</div>
+                    <div class="flow-branch-desc"><strong>Xét nghiệm vi sinh lần 2 + Chụp CLVT lồng ngực (CT Scan)</strong> &amp; đưa ra <strong>HỘI ĐỒNG CHUYÊN MÔN HỘI CHẨN</strong> thống nhất chẩn đoán Lao không có BCVK.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="sec-subtitle"><i class="fa-solid fa-hand-holding-droplet"></i> Phụ Lục 3: Quy Trình Lấy Bệnh Phẩm Đờm Chuẩn Hóa 3 Bước</div>
@@ -401,8 +456,7 @@ sections:
           <div class="infobox-icon"><i class="fa-solid fa-vial-circle-check"></i></div>
           <div>
             <strong>Phân nhánh xử trí lâm sàng khi Xpert Ultra trả kết quả "Vết" (Trace):</strong>
-            <ul style="margin-left: 1.2rem; margin-top: 0.4rem; font-size: 0.83rem;">
-<ul style="margin-left: 1.25rem; margin-bottom: 1rem; line-height: 1.65;">
+            <ul style="margin-left: 1.25rem; margin-bottom: 1rem; line-height: 1.65;">
               <li><strong>Nhánh 1 (Trẻ em &lt; 16t, Người nhiễm HIV, Bệnh phẩm ngoài phổi):</strong> Kết quả "Vết" được <strong>chấp nhận làm tiêu chuẩn chẩn đoán xác định lao hoạt động</strong>. Chỉ định điều trị ngay theo phác đồ nhạy cảm hoặc kháng thuốc phù hợp.</li>
               <li><strong>Nhánh 2 (Người lớn thông thường khác):</strong> Lấy mẫu bệnh phẩm mới làm lại Xpert Ultra lần 2.<br /> <br />&bull; <em>Lần 2 tiếp tục Dương/Vết:</em> Chẩn đoán lao hoạt động và điều trị.<br /> <br />&bull; <em>Nếu có tiền sử điều trị lao trong 5 năm:</em> Thận trọng vì có thể là xác vi khuẩn cũ. Cần kết hợp Xquang mới và theo dõi sát.</li>
             </ul>

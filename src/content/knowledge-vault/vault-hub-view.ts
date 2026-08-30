@@ -184,25 +184,28 @@ export function renderVaultHubView(): string {
             />
           </div>
 
-          <select id="vault-specialty-select" class="vault-filter-select">
-            <option value="ALL">Tất cả Chuyên khoa (${availableSpecialties.length})</option>
-            ${availableSpecialties.map(spec => `
-              <option value="${escapeHtml(spec)}" ${state.activeSpecialty === spec ? 'selected' : ''}>
-                ${escapeHtml(spec)}
-              </option>
-            `).join('')}
-          </select>
+          <div class="vault-filter-select-wrapper">
+            <select id="vault-specialty-select" class="vault-filter-select" aria-label="Lọc theo chuyên khoa y học">
+              <option value="ALL">Tất cả Chuyên khoa (${availableSpecialties.length})</option>
+              ${availableSpecialties.map(spec => `
+                <option value="${escapeHtml(spec)}" ${state.activeSpecialty === spec ? 'selected' : ''}>
+                  ${escapeHtml(spec)}
+                </option>
+              `).join('')}
+            </select>
+            <i class="fa-solid fa-chevron-down vault-filter-select-arrow" aria-hidden="true"></i>
+          </div>
         </div>
 
         <!-- Quick Trending Search Chips -->
-        <div class="vault-trending-chips">
-          <span class="vault-trending-label"><i class="fa-solid fa-fire" style="color:#f59e0b;"></i> Chủ đề nóng:</span>
-          <button type="button" class="vault-trend-chip" onclick="document.getElementById('vault-search-input').value='sốc nhiễm khuẩn'; document.getElementById('vault-search-input').dispatchEvent(new Event('input'));">Sốc nhiễm khuẩn</button>
-          <button type="button" class="vault-trend-chip" onclick="document.getElementById('vault-search-input').value='sốt xuất huyết'; document.getElementById('vault-search-input').dispatchEvent(new Event('input'));">SXHD Dengue</button>
-          <button type="button" class="vault-trend-chip" onclick="document.getElementById('vault-search-input').value='khí máu'; document.getElementById('vault-search-input').dispatchEvent(new Event('input'));">Khí máu ABG</button>
-          <button type="button" class="vault-trend-chip" onclick="document.getElementById('vault-search-input').value='đột quỵ'; document.getElementById('vault-search-input').dispatchEvent(new Event('input'));">Đột quỵ cấp</button>
-          <button type="button" class="vault-trend-chip" onclick="document.getElementById('vault-search-input').value='nhồi máu cơ tim'; document.getElementById('vault-search-input').dispatchEvent(new Event('input'));">Nhồi máu cơ tim</button>
-          <button type="button" class="vault-trend-chip" onclick="document.getElementById('vault-search-input').value='suy hô hấp'; document.getElementById('vault-search-input').dispatchEvent(new Event('input'));">ARDS &amp; Thở máy</button>
+        <div class="vault-trending-chips" role="region" aria-label="Các chủ đề lâm sàng nổi bật">
+          <span class="vault-trending-label"><i class="fa-solid fa-fire" style="color:#f59e0b;" aria-hidden="true"></i> Chủ đề nóng:</span>
+          <button type="button" class="vault-trend-chip" data-search="sốc nhiễm khuẩn">Sốc nhiễm khuẩn</button>
+          <button type="button" class="vault-trend-chip" data-search="sốt xuất huyết">SXHD Dengue</button>
+          <button type="button" class="vault-trend-chip" data-search="khí máu">Khí máu ABG</button>
+          <button type="button" class="vault-trend-chip" data-search="đột quỵ">Đột quỵ cấp</button>
+          <button type="button" class="vault-trend-chip" data-search="nhồi máu cơ tim">Nhồi máu cơ tim</button>
+          <button type="button" class="vault-trend-chip" data-search="suy hô hấp">ARDS &amp; Thở máy</button>
         </div>
       </div>
       ` : ''}
@@ -395,6 +398,18 @@ export function attachVaultEvents(container: HTMLElement): void {
       renderAndRebind(container);
     });
   }
+
+  // Trending Chips click
+  container.querySelectorAll('.vault-trend-chip').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const term = btn.getAttribute('data-search') || '';
+      if (term) {
+        state.searchQuery = term;
+        state.displayLimit = 48;
+        renderAndRebind(container);
+      }
+    });
+  });
 
   // Reset button
   const resetBtn = container.querySelector('#vault-reset-filter');
