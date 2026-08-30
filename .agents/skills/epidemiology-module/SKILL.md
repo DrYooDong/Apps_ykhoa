@@ -1,312 +1,316 @@
 ---
 name: epidemiology-module
 description: >
-  Quy trình tạo và chỉnh sửa bài viết Dịch tễ học Y khoa & Y tế công cộng chuẩn EBM
+  Quy trình tạo và chỉnh sửa bài viết Dịch tễ học Y khoa & Y tế công cộng chuẩn MDX Native (Astro Content Collections)
   trong phân hệ Cơ sở Y khoa (src/content/basic-medical/epidemiology/) của CliniPortal.
   Kích hoạt khi AI cần: tạo bài Dịch tễ học bệnh lý mới từ Knowledge Vault (1.4. Kho dịch tễ học),
-  thêm sơ đồ tam giác dịch tễ / chu kỳ lây truyền vector SVG, tích hợp bảng đối sánh véc-tơ,
-  dữ liệu tỷ lệ mắc/tử vong, hoặc xử lý layout điều hướng sticky .pillars-nav.
+  thêm sơ đồ tam giác dịch tễ / chu kỳ lây truyền vector SVG Editorial, tích hợp bảng đối sánh véc-tơ,
+  dữ liệu tỷ lệ mắc/tử vong, R0, DALYs hoặc xử lý layout điều hướng sticky.
 ---
 
-# Epidemiology Module Skill (Dịch Tễ Học Y Khoa & Y Tế Công Cộng)
+# Epidemiology Module Skill (Dịch Tễ Học Y Khoa & Y Tế Công Cộng — MDX Native)
 
-> Kỹ năng chuyên sâu hướng dẫn cấu trúc, giao diện, bảng số liệu dịch tễ học, sơ đồ vectơ & chu kỳ lây truyền SVG thuần và chuẩn điều hướng mượt mà cho phân hệ **Dịch Tễ Học Y Khoa (Medical Epidemiology & Public Health)** trong CliniPortal.
+> Kỹ năng chuyên sâu hướng dẫn cấu trúc, cú pháp MDX Native, hệ thống linh kiện y khoa (`QuickNav`, `Alert`, `stats-strip`, `table-modern`, `matrix-grid`), sơ đồ tam giác dịch tễ và chu kỳ véc-tơ SVG cho phân hệ **Dịch Tễ Học Y Khoa (Medical Epidemiology & Public Health)** trong CliniPortal.
 
 ---
 
-## 🏛️ 1. Quy hoạch Phân hệ & Cấu Trúc Lưu Trữ
+## 🏛️ 1. Quy hoạch Phân hệ 5 Khối Dịch Tễ Học
 
-Tất cả các bài viết Dịch tễ học được lưu trữ tại `src/content/basic-medical/epidemiology/`:
+Tất cả các bài viết Dịch tễ học được lưu trữ dưới định dạng `.mdx` tại `src/content/basic-medical/epidemiology/`:
 
 ```text
 src/content/basic-medical/epidemiology/
-├── README.md                              # Giới thiệu phân hệ & danh mục bài viết
-├── HUONG_DAN_THIET_KE_DICH_TE.md          # Hướng dẫn thiết kế & Design tokens
-├── WORKFLOW_TAO_TRANG_DICH_TE_HOC.md      # Quy trình biên dịch từ Knowledge Vault sang HTML
-└── dth-[ma-benh-slug].html                # File bài viết dịch tễ học chuyên sâu (Cấp 4)
+├── README.md
+├── dth-dengue.mdx                 # Sốt xuất huyết Dengue (Truyền nhiễm)
+├── dth-sot-ret.mdx                # Sốt rét Plasmodium & Vector Anopheles
+├── dth-tang-huyet-ap.mdx          # Tăng huyết áp & Bệnh tim mạch (Mãn tính)
+├── dth-dai-thao-duong.mdx         # Đái tháo đường Type 2 & Hội chứng chuyển hóa
+└── ...                            # Các bài dịch tễ học chuyên khoa khác
 ```
 
 Nguồn tri thức gốc được lưu trữ tại:
-`knowledge-vault/1.4. Kho dịch tễ học/[Tên chuyên khoa]/DTH_[Tên bệnh].md`
+`knowledge-vault/1.4. Kho dịch tễ học/[Tên Chuyên Khoa]/DTH_[Tên Bệnh].md`
 
 ---
 
-## 🛑 2. Bộ Quy tắc Bất di Bất dịch (Mandatory Rules)
+## 🛑 2. Bộ Quy tắc Bất di Bất dịch (Mandatory Rules for MDX Native)
 
-1. **Đường dẫn tương đối cấp 4**:
-   - Tệp bài viết nằm ở cấp 4 (ví dụ `src/content/basic-medical/epidemiology/dth-dengue.html`).
-   - Root CSS/JS: `../../../../css/` và `../../../../components/`.
-   - Resource module: `../css/physio-shared.css` và `../js/physio-shared.js` (hoặc module tương ứng).
-2. **Cấm xung đột SPA Hash Router**:
-   - Tất cả các thẻ `<a href="#sec-X">` trong thanh điều hướng bài học **bắt buộc** phải có:
-     `onclick="event.preventDefault(); document.getElementById('sec-X')?.scrollIntoView({behavior:'smooth'});"`
-   - Thuộc tính `scroll-margin-top: 80px;` phải được khai báo trên `.article-section` hoặc `.sec-card` để tránh bị toolbar/header che khuất tiêu đề khi cuộn.
-3. **Thanh Mục lục chuẩn Kho Guidelines (`.pillars-nav`)**:
-   - Sử dụng thanh dải sticky nav `.pillars-nav` với các tab `.pillar-tab.p-1` &rarr; `.p-X`.
-   - **Tuyệt đối không** nhân bản 2 khối mục lục (không dùng song song thẻ `.toc-card` trùng lặp).
-4. **Chuẩn Đồ Họa Xuất Bản Cao Cấp (Editorial-Grade Inline SVG Studio)**:
-   - **Tỷ lệ & Kích thước Card**: Thẻ node (Card Base) phải có kích thước tối thiểu `width="260" - "300"`, `height="110" - "135"`, `rx="14"`, không được tạo box quá hẹp dẫn tới tràn/cắt cụt chữ.
-   - **Header Pill Tích Hợp**: Header icon/danh mục phải được tích hợp gọn gàng ở đỉnh thẻ (`<rect x="14" y="-12" width="..." height="26" rx="13" fill="...">`) với icon/text nổi bật, **tuyệt đối không đặt vòng tròn icon lơ lửng đè lên viền hoặc che khuất chữ**.
-   - **Tọa độ & Căn lề đa dòng**: Dùng tọa độ rõ ràng (`x="16"` từ mép trái, `y="32"`, `y="52"`, `y="70"`, `y="88"`...) cho tiêu đề và các dòng bullet point.
-   - **Đường Nối & Arrow Markers**: Dùng đường cong mượt mà (`<path d="M... Q..." />`) hoặc đường trực giao có marker `<defs>` chỉ hướng rõ ràng, không vẽ đường thẳng cắt chéo thô sơ đâm xuyên qua tâm chữ.
-   - **Center Hub**: Giao điểm trung tâm phải có vòng pulse đồng tâm phát sáng (`stroke-width="6"`, `fill-opacity="0.08"`), thể hiện rõ tiêu điểm giao thoa bùng phát dịch.
-   - **Cấm thẻ HTML trong SVG `<text>`**: **TUYỆT ĐỐI CẤM** dùng các thẻ HTML (`<strong>`, `<b>`, `<span>`, `<br>`, `<em>`, `<code>`) bên trong `<text>` của SVG.
-5. **Kiểm tra HTML Integrity & Định Dạng Ký Tự ($ / #)**:
-   - Sau khi tạo hoặc chỉnh sửa tệp HTML, bắt buộc chạy:
+1. **Chuẩn Định Dạng MDX Native — Không Dùng HTML Shell**:
+   - Tệp bài viết có đuôi `.mdx` (ví dụ: `dth-dengue.mdx`, `dth-sot-ret.mdx`).
+   - Tuyệt đối **KHÔNG** dùng `<!DOCTYPE html>`, `<html>`, `<head>`, `<body>`, `<script>`, `<style>`.
+   - Layout được quản lý tập trung qua `src/pages/dich-te-hoc/[...slug].astro` và `ArticleLayout.astro`.
+
+2. **Khối YAML Frontmatter Chuẩn Hóa**:
+   - Mọi tệp `.mdx` bắt buộc bắt đầu bằng Frontmatter đầy đủ: `title`, `slug`, `code`, `domain`, `domainName`, `cdcChapter`, `whoRef`, `category: "epidemiology"`, `status: "published"`, `version: "2.0.0"`, `updatedAt`, `description`, `tags`, `clinicalPearls`, `sections`.
+
+3. **Thanh Mục Lục Tự Động (`<QuickNav />`)**:
+   - Đặt `<QuickNav />` ngay sau thẻ tiêu đề `<h1>` của bài viết.
+   - Các mục trong mảng `sections: [{ id: "sec-1", number: 1, title: "...", icon: "fa-..." }]` tự động đồng bộ với thanh điều hướng nhanh sticky và Sidebar Table of Contents.
+   - Tiêu đề từng phần trong bài dùng cú pháp: `## 1. Tên Phần {#sec-1}`, `## 2. Tên Phần {#sec-2}`.
+
+4. **Chuẩn Đồ Họa Xuất Bản Cao Cấp (Editorial Pure Inline SVG Studio)**:
+   - **Tam Giác Dịch Tễ (Epidemiological Triad)**: Tác nhân (*Agent*) — Vật chủ (*Host*) — Môi trường (*Environment*).
+   - **Chu Kỳ Lây Truyền Véc-tơ**: Dùng đường cong mượt mà (`<path d="M... Q..." />`) hoặc đường trực giao có marker `<defs>` chỉ hướng rõ ràng.
+   - **Cấm thẻ HTML trong SVG `<text>`**: **TUYỆT ĐỐI CẤM** dùng các thẻ HTML (`<strong>`, `<b>`, `<span>`, `<br>`) bên trong `<text>` của SVG. Bắt buộc dùng `<tspan font-weight="700">` hoặc định vị tọa độ `y` rõ ràng.
+
+5. **Kiểm Định Bản Build Bắt Buộc**:
+   - Sau khi tạo hoặc chỉnh sửa tệp `.mdx`, bắt buộc kiểm tra bằng:
      ```bash
-     node tools/tools/scratch/check_tags.js src/content/basic-medical/epidemiology/dth-[ten-bai].html
-     node tools/scratch/check_format_bugs.js src/content/basic-medical/epidemiology/dth-[ten-bai].html
      npm run build
      ```
-   - **Tuyệt đối không để sót ký tự `$` (LaTeX thô)**: Mọi công thức/ký hiệu toán học phải chuyển sang HTML entities, Unicode (`α, β, Δ, →, ₂, ⁺, ⁻, ≥, ≤`) hoặc thẻ semantic (`<sup>`, `<sub>`, `<em>`, `<code>`).
-   - **Tuyệt đối không để sót ký tự `#` (Markdown thô)**: Mọi tiêu đề Markdown (`#`, `##`, `#tag`) phải chuyển đổi hoàn toàn sang các thẻ HTML (`<h1>`, `<h2>`, `<h3>`, `.badge`).
+   - Lệnh này chạy `tsc --noEmit && vite build` để đảm bảo 0 lỗi kiểu dữ liệu TypeScript và biên dịch toàn bộ các module MDX thành công.
 
 ---
 
-## 🎨 3. Hệ Thống Khung Hộp Ngữ Nghĩa Dịch Tễ Học (Callout Boxes)
+## 🎨 3. Hệ Thống Linh Kiện MDX Y Khoa Trong Phân Hệ Dịch Tễ Học
 
-| Loại hộp | Class | Màu chủ đạo | Ý nghĩa dịch tễ học |
-|----------|-------|-------------|---------------------|
-| **Cảnh Báo Dịch Tễ** | `.danger-box` / `.epi-alert-danger` | Đỏ (`#ef4444`) | Bùng phát ổ dịch, nguy cơ tử vong cao, độc lực đột biến |
-| **Động Học Véc-tơ** | `.vector-box` / `.reaction-box` | Tím (`#8b5cf6`) | Sinh học muỗi/bọ gậy, thời kỳ ủ bệnh ngoại lai EIP, cơ chế truyền bệnh |
-| **Điểm Ngọc Lâm Sàng** | `.pearl-box` | Hổ phách (`#f59e0b`) | Dấu hiệu cảnh báo sớm, nhóm nguy cơ cao, bẫy chẩn đoán |
-| **Giám Sát & Y Tế CC** | `.info-box` / `.epi-surveillance-box` | Xanh ngọc (`#0d9488` / `#0284c7`) | Biện pháp can thiệp cộng đồng, chỉ số DALYs, tiêm chủng |
-
----
-
-## 📐 4. Template HTML Mẫu Chuẩn Cho Bài Dịch Tễ Học
+### A. Dải Chỉ Số Dịch Tễ Học Nhanh (`.stats-strip`)
 
 ```html
-<!DOCTYPE html>
-<html lang="vi" data-theme="light">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DTH: [Tên Bệnh/Tác Nhân] – Dịch Tễ Học Y Khoa – CliniPortal</title>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-    
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="../../../../css/reset.css">
-    <link rel="stylesheet" href="../../../../css/main.css">
-    <link rel="stylesheet" href="../../../../css/components/physio-content.css">
-    <link rel="stylesheet" href="../../../../css/components/epidemiology-hub.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-    <style>
-        :root {
-            --epi-accent: #0d9488;
-            --epi-gradient: linear-gradient(135deg, #042f2e 0%, #0f172a 50%, #134e4a 100%);
-        }
-
-        [data-theme="dark"] {
-            --epi-gradient: linear-gradient(135deg, #022c22 0%, #090d16 50%, #042f2e 100%);
-        }
-
-        .epi-article-header {
-            background: var(--epi-gradient);
-            color: #ffffff;
-            padding: 2.5rem 2rem;
-            border-radius: 16px;
-            margin-bottom: 2rem;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(13, 148, 136, 0.3);
-        }
-
-        .epi-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: rgba(45, 212, 191, 0.18);
-            backdrop-filter: blur(8px);
-            padding: 0.35rem 0.85rem;
-            border-radius: 999px;
-            font-size: 0.82rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            border: 1px solid rgba(45, 212, 191, 0.35);
-            color: #2dd4bf;
-            text-transform: uppercase;
-        }
-
-        /* PILLARS STICKY NAV STRIP */
-        .pillars-nav {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: var(--color-surface, #ffffff);
-            border: 1px solid var(--color-border, #e2e8f0);
-            border-radius: 14px;
-            padding: 0.75rem 1rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
-        }
-
-        .pillars-nav-inner {
-            display: flex;
-            gap: 0.6rem;
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .pillar-tab {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            padding: 0.45rem 0.85rem;
-            border-radius: 10px;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 0.78rem;
-            font-weight: 700;
-            color: var(--color-text-muted, #64748b);
-            border: 1px solid var(--color-border, #e2e8f0);
-            background: var(--color-bg, #f8fafc);
-            text-decoration: none;
-            white-space: nowrap;
-            transition: all 0.2s ease;
-            flex-shrink: 0;
-        }
-
-        .pillar-tab:hover, .pillar-tab.active {
-            border-color: var(--epi-accent, #0d9488);
-            color: var(--epi-accent, #0d9488);
-            background: rgba(13, 148, 136, 0.08);
-            transform: translateY(-1px);
-        }
-
-        .pillar-tab.p-1 { border-left: 4px solid #0d9488; }
-        .pillar-tab.p-2 { border-left: 4px solid #3b82f6; }
-        .pillar-tab.p-3 { border-left: 4px solid #8b5cf6; }
-        .pillar-tab.p-4 { border-left: 4px solid #f59e0b; }
-        .pillar-tab.p-5 { border-left: 4px solid #ef4444; }
-        .pillar-tab.p-6 { border-left: 4px solid #10b981; }
-        .pillar-tab.p-7 { border-left: 4px solid #06b6d4; }
-        .pillar-tab.p-8 { border-left: 4px solid #64748b; }
-
-        [data-theme="dark"] .pillars-nav {
-            background: var(--color-surface, #1e293b);
-            border-color: var(--color-border, #334155);
-            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
-        }
-
-        [data-theme="dark"] .pillar-tab {
-            background: var(--color-surface-2, #0f172a);
-            border-color: var(--color-border, #334155);
-            color: var(--color-text-muted, #94a3b8);
-        }
-
-        .article-section {
-            scroll-margin-top: 80px;
-            margin-bottom: 2.5rem;
-        }
-
-        .section-title {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: clamp(1.2rem, 2.4vw, 1.45rem);
-            font-weight: 800;
-            line-height: 1.35;
-            color: var(--color-primary, #0d9488);
-            margin: 2.25rem 0 1.25rem 0;
-            padding-bottom: 0.65rem;
-            border-bottom: 2px solid rgba(13, 148, 136, 0.2);
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 0.65rem;
-        }
-
-        .section-title i {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 34px;
-            height: 34px;
-            font-size: 1.05rem;
-            background: rgba(13, 148, 136, 0.12);
-            color: var(--color-primary, #0d9488);
-            border-radius: 8px;
-            flex-shrink: 0;
-        }
-
-        [data-theme="dark"] .section-title {
-            color: #2dd4bf;
-        }
-
-        [data-theme="dark"] .section-title i {
-            background: rgba(45, 212, 191, 0.15);
-            color: #2dd4bf;
-        }
-
-        .epi-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1.5rem 0;
-            font-size: 0.92rem;
-        }
-        .epi-table th, .epi-table td {
-            border: 1px solid var(--color-border, #e2e8f0);
-            padding: 0.85rem 1rem;
-            text-align: left;
-            vertical-align: top;
-        }
-        .epi-table th {
-            background: var(--color-surface-offset, #f8fafc);
-            font-weight: 700;
-            color: var(--color-text, #0f172a);
-        }
-    </style>
-</head>
-
-<body class="physio-article-body">
-    <div class="physio-article-container">
-
-        <!-- HEADER -->
-        <header class="epi-article-header">
-            <span class="epi-badge"><i class="fa-solid fa-virus-covid"></i> DỊCH TỄ HỌC • TRUYỀN NHIỄM &amp; VI SINH</span>
-            <h1 style="margin: 0.25rem 0 0.75rem 0; font-size: 2rem; font-weight: 800; color: #ffffff; line-height: 1.3;">
-                [Tiêu Đề Dịch Tễ Học Bệnh/Tác Nhân]
-            </h1>
-            <p style="margin: 0; font-size: 1.05rem; opacity: 0.95; line-height: 1.6; max-width: 900px;">
-                [Tóm tắt súc tích tam giác dịch tễ học, đặc điểm véc-tơ truyền bệnh, động thái chu kỳ ủ bệnh và gánh nặng dịch tễ toàn cầu &amp; Việt Nam.]
-            </p>
-        </header>
-
-        <!-- PILLARS STICKY NAV STRIP -->
-        <nav class="pillars-nav" aria-label="Mục lục bài học nhanh">
-            <div class="pillars-nav-inner">
-                <a href="#sec-1" class="pillar-tab p-1" onclick="event.preventDefault(); document.getElementById('sec-1')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-triangle-exclamation"></i> 1. Tam Giác Dịch Tễ</a>
-                <a href="#sec-2" class="pillar-tab p-2" onclick="event.preventDefault(); document.getElementById('sec-2')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-dna"></i> 2. Tác Nhân &amp; Sinh Lý Bệnh</a>
-                <a href="#sec-3" class="pillar-tab p-3" onclick="event.preventDefault(); document.getElementById('sec-3')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-mosquito"></i> 3. Véc-tơ Truyền Bệnh</a>
-                <a href="#sec-4" class="pillar-tab p-4" onclick="event.preventDefault(); document.getElementById('sec-4')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-arrows-spin"></i> 4. Chu Kỳ Lây Truyền</a>
-                <a href="#sec-5" class="pillar-tab p-5" onclick="event.preventDefault(); document.getElementById('sec-5')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-users"></i> 5. Vật Chủ &amp; Nguy Cơ</a>
-                <a href="#sec-6" class="pillar-tab p-6" onclick="event.preventDefault(); document.getElementById('sec-6')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-cloud-sun-rain"></i> 6. Khí Hậu &amp; Xã Hội</a>
-                <a href="#sec-7" class="pillar-tab p-7" onclick="event.preventDefault(); document.getElementById('sec-7')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-earth-americas"></i> 7. Tình Hình Toàn Cầu &amp; VN</a>
-                <a href="#sec-8" class="pillar-tab p-8" onclick="event.preventDefault(); document.getElementById('sec-8')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-book-medical"></i> 8. Tài Liệu Tham Khảo</a>
-            </div>
-        </nav>
-
-        <!-- SECTIONS CONTENT -->
-        <!-- ... -->
-
+<section class="stats-strip">
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-val red">R₀ = 2.0–4.0</div>
+      <div class="stat-lbl">Hệ số lây nhiễm cơ bản trong ổ dịch</div>
     </div>
-</body>
-</html>
+    <div class="stat-card">
+      <div class="stat-val amber">8–12 ngày</div>
+      <div class="stat-lbl">Thời kỳ ủ bệnh ngoại lai (EIP) trong muỗi Aedes</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val blue">390 Triệu</div>
+      <div class="stat-lbl">Ca nhiễm toàn cầu hàng năm (WHO Estimate)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val green">&lt; 0.5%</div>
+      <div class="stat-lbl">Tỷ lệ tử vong khi quản lý bù dịch chuẩn EBM</div>
+    </div>
+  </div>
+</section>
+```
+
+---
+
+### B. Khung Cảnh Báo & Giám Sát Dịch Tễ (`.infobox`)
+
+```html
+<!-- 1. CẢNH BÁO BÙNG PHÁT Ổ DỊCH (DANGER) -->
+<div class="infobox danger">
+  <i class="fa-solid fa-triangle-exclamation infobox-icon" style="color: #dc2626;"></i>
+  <div>
+    <strong>Cảnh Báo Dịch Tễ Học &amp; Bùng Phát (Red Flag):</strong><br />
+    Nhiễm thứ phát với typ huyết thanh khác (Secondary Heterotypic Infection) làm tăng vọt nguy cơ Sốt xuất huyết Dengue nặng do hiện tượng Tăng cường miễn dịch phụ thuộc kháng thể (ADE).
+  </div>
+</div>
+
+<!-- 2. ĐỘNG HỌC VÉC-TƠ & TRUYỀN BỆNH (REACTION) -->
+<div class="infobox reaction">
+  <i class="fa-solid fa-mosquito infobox-icon" style="color: #7c3aed;"></i>
+  <div>
+    <strong>Đặc Điểm Sinh Học Véc-tơ Truyền Bệnh:</strong><br />
+    Muỗi <em>Aedes aegypti</em> hút máu ban ngày (đỉnh điểm lúc sáng sớm và chiều tối), ưa sống trong nhà và đẻ trứng ở các dụng cụ chứa nước sạch nhân tạo.
+  </div>
+</div>
+
+<!-- 3. ĐIỂM NGỌC LÂM SÀNG (PEARL) -->
+<div class="infobox pearl">
+  <i class="fa-solid fa-gem infobox-icon" style="color: #0284c7;"></i>
+  <div>
+    <strong>Điểm Ngọc Lâm Sàng &amp; Dấu Hiệu Cảnh Báo (Clinical Pearl):</strong><br />
+    Giai đoạn nguy hiểm nhất diễn ra từ ngày thứ 3 đến ngày thứ 7 (thời điểm bệnh nhân bắt đầu hạ sốt), cần theo dõi sát hematocrit tăng vọt và tiểu cầu giảm sâu báo hiệu thoát huyết tương.
+  </div>
+</div>
+
+<!-- 4. GIÁM SÁT & Y TẾ CÔNG CỘNG (INFO) -->
+<div class="infobox info">
+  <i class="fa-solid fa-shield-virus infobox-icon" style="color: #0d9488;"></i>
+  <div>
+    <strong>Can Thiệp Y Tế Công Cộng &amp; Kiểm Soát Ổ Dịch:</strong><br />
+    Chiến lược can thiệp cốt lõi là diệt lăng quăng/bọ gậy (chỉ số BI &lt; 20), phun hóa chất ULV diệt muỗi trưởng thành và truyền thông thay đổi hành vi cộng đồng.
+  </div>
+</div>
+```
+
+---
+
+### C. Bảng Đối Sánh Dịch Tễ Học (`.table-responsive` + `.table-modern`)
+
+```html
+<div class="table-responsive">
+  <table class="table-modern">
+    <thead>
+      <tr>
+        <th style="width: 25%;">Chỉ Số Dịch Tễ</th>
+        <th style="width: 37%;">Sốt Xuất Huyết Dengue</th>
+        <th style="width: 38%;">Sốt Rét (Malaria)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Tác nhân gây bệnh</strong></td>
+        <td>Virus Dengue (DENV 1–4, Flavivirus)</td>
+        <td>Ký sinh trùng <em>Plasmodium</em> (P. falciparum, P. vivax...)</td>
+      </tr>
+      <tr>
+        <td><strong>Véc-tơ truyền bệnh chính</strong></td>
+        <td>Muỗi <em>Aedes aegypti</em> &amp; <em>Aedes albopictus</em></td>
+        <td>Muỗi <em>Anopheles</em> cái (hút máu ban đêm)</td>
+      </tr>
+      <tr>
+        <td><strong>Tập tính hút máu</strong></td>
+        <td><span class="rx-tag warning">Ban ngày (Sáng sớm &amp; Chiều tà)</span></td>
+        <td><span class="rx-tag danger">Ban đêm (Từ hoàng hôn đến bình minh)</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+```
+
+---
+
+## 📐 4. Template MDX Mẫu Chuẩn Cho Bài Dịch Tễ Học
+
+```mdx
+---
+title: "Dịch Tễ Học Sốt Xuất Huyết Dengue & Động Thái Véc-tơ"
+slug: "dth-dengue"
+code: "EPI-INF-01"
+domain: "infectious"
+domainName: "Dịch Tễ Bệnh Truyền Nhiễm & Vi Sinh"
+cdcChapter: "CDC Yellow Book - Chapter 4: Dengue"
+whoRef: "WHO Dengue Guidelines for Diagnosis, Treatment, Prevention and Control (2024)"
+category: "epidemiology"
+status: "published"
+version: "2.0.0"
+updatedAt: "2026-08-30"
+description: "Tam giác dịch tễ học Dengue; Đặc điểm sinh học muỗi Aedes; Hiện tượng tăng cường kháng thể (ADE); Gánh nặng dịch tễ toàn cầu và chiến lược kiểm soát ổ dịch tại Việt Nam."
+tags:
+  - "Dịch tễ"
+  - "Dengue"
+  - "Aedes"
+  - "ADE"
+  - "Y tế công cộng"
+clinicalPearls:
+  - "Giai đoạn thoát huyết tương nguy hiểm nhất trùng với thời điểm bệnh nhân bắt đầu hạ sốt (ngày 3-7 của bệnh)."
+  - "Nhiễm thứ phát với typ huyết thanh khác là yếu tố nguy cơ hàng đầu gây sốc sốt xuất huyết Dengue nặng do ADE."
+sections:
+  - id: "sec-1"
+    number: 1
+    title: "Tam Giác Dịch Tễ Học & Mô Hình Lan Truyền"
+    icon: "fa-triangle-exclamation"
+  - id: "sec-2"
+    number: 2
+    title: "Tác Nhân Virus & Sinh Lý Bệnh Học Phân Tử"
+    icon: "fa-dna"
+  - id: "sec-3"
+    number: 3
+    title: "Đặc Điểm Sinh Học Véc-tơ & Chu Kỳ Lây Truyền"
+    icon: "fa-mosquito"
+  - id: "sec-4"
+    number: 4
+    title: "Gánh Nặng Dịch Tễ, Can Thiệp Y Tế CC & Trích Dẫn EBM"
+    icon: "fa-earth-americas"
+---
+
+# 🦟 DỊCH TỄ HỌC SỐT XUẤT HUYẾT DENGUE & ĐỘNG THÁI VÉC-TƠ
+
+<QuickNav />
+
+<!-- DẢI CHỈ SỐ NHANH (QUICK STATS STRIP) -->
+<section class="stats-strip">
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-val red">R₀ = 2.0–4.0</div>
+      <div class="stat-lbl">Hệ số lây nhiễm cơ bản trong vụ dịch</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val amber">8–12 ngày</div>
+      <div class="stat-lbl">Thời kỳ ủ bệnh ngoại lai (EIP)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val blue">390 Triệu</div>
+      <div class="stat-lbl">Ca nhiễm toàn cầu hàng năm (WHO)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val green">&lt; 0.5%</div>
+      <div class="stat-lbl">Tỷ lệ tử vong khi quản lý bù dịch chuẩn</div>
+    </div>
+  </div>
+</section>
+
+---
+
+## 1. Tam Giác Dịch Tễ Học & Mô Hình Lan Truyền {#sec-1}
+
+Phân tích 3 yếu tố cấu thành tam giác dịch tễ: Tác nhân (Virus Dengue 1-4), Vật chủ (Người, tính cảm nhiễm và miễn dịch typ), Môi trường (Đô thị hóa, vật dụng chứa nước, biến đổi khí hậu)...
+
+---
+
+## 2. Tác Nhân Virus & Sinh Lý Bệnh Học Phân Tử {#sec-2}
+
+<div class="infobox danger">
+  <i class="fa-solid fa-triangle-exclamation infobox-icon" style="color: #dc2626;"></i>
+  <div>
+    <strong>Hiện Tượng Tăng Cường Miễn Dịch (ADE):</strong><br />
+    Kháng thể trung hòa chéo không hoàn toàn từ lần nhiễm trước liên kết với virus mới, tạo điều kiện cho virus xâm nhập tế bào đơn nhân qua thụ thể FcγR, tăng tải lượng virus ồ ạt.
+  </div>
+</div>
+
+---
+
+## 3. Đặc Điểm Sinh Học Véc-tơ & Chu Kỳ Lây Truyền {#sec-3}
+
+<div class="infobox reaction">
+  <i class="fa-solid fa-mosquito infobox-icon" style="color: #7c3aed;"></i>
+  <div>
+    <strong>Đặc Điểm Véc-tơ:</strong><br />
+    <em>Aedes aegypti</em> hút máu nhiều lần trong một chu kỳ sinh sản, giúp phát tán virus nhanh chóng giữa các thành viên trong cùng hộ gia đình.
+  </div>
+</div>
+
+---
+
+## 4. Gánh Nặng Dịch Tễ, Can Thiệp Y Tế CC & Trích Dẫn EBM {#sec-4}
+
+<div class="matrix-grid">
+  <div class="matrix-card">
+    <div class="matrix-card-title">
+      <span>1. Giám Sát Chỉ Số Muỗi</span>
+      <span class="rx-tag preferred">BI &lt; 20</span>
+    </div>
+    <div class="matrix-card-desc">
+      Chỉ số Breteau (BI) đo lường số dụng cụ chứa lăng quăng / 100 nhà kiểm tra, ngưỡng an toàn dưới 20.
+    </div>
+  </div>
+</div>
+
+<!-- KHUNG TRÍCH DẪN Y VĂN CHUẨN AMA (CITATION BOX) -->
+<div class="citation-box" style="margin-top: 2rem; padding: 1.25rem 1.5rem; background: var(--color-surface, #ffffff); border: 1px solid var(--color-border, #cbd5e1); border-left: 4px solid var(--color-primary, #0284c7); border-radius: 12px; font-size: 0.88rem; line-height: 1.8; color: var(--color-text-muted, #475569);">
+  <strong style="color: var(--color-text, #0f172a); font-size: 0.95rem;"><i class="fa-solid fa-book-medical"></i> Trích Dẫn Y Văn &amp; Tài Liệu Tham Khảo Chuẩn AMA:</strong>
+  <ol style="margin: 0.5rem 0 0 0; padding-left: 1.25rem;">
+    <li><strong>World Health Organization.</strong> <em>Dengue: Guidelines for Diagnosis, Treatment, Prevention and Control</em>. Geneva: WHO; 2024.</li>
+    <li><strong>Centers for Disease Control and Prevention.</strong> <em>CDC Yellow Book: Health Information for International Travel</em>. Oxford University Press; 2024.</li>
+  </ol>
+</div>
+
+<!-- HÀNG NÚT ĐIỀU HƯỚNG SPA -->
+<div class="btn-row" style="display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;">
+  <a href="#/basic-medical/dich-te-hoc" class="btn btn-primary">
+    <i class="fa-solid fa-arrow-left"></i> Quay lại Mục Lục Dịch Tễ Học
+  </a>
+  <a href="#sec-1" class="btn">
+    <i class="fa-solid fa-arrow-up"></i> Lên đầu trang
+  </a>
+</div>
 ```
 
 ---
 
 ## 🛠️ 5. Checklist Kiểm Định Trước Khi Bàn Giao
 
-- [ ] Đường dẫn tài nguyên đúng cấp 4 (`../../../../` và `../`).
-- [ ] Tất cả liên kết trong `.pillars-nav` có `onclick="event.preventDefault(); document.getElementById('sec-X')?.scrollIntoView({behavior:'smooth'});"`.
-- [ ] Không có khối mục lục thừa lặp lại.
-- [ ] Mọi `.article-section` có `id="sec-X"` và `scroll-margin-top: 80px`.
-- [ ] Đồ họa Pure Inline SVG tuân thủ `viewBox`, không chứa thẻ HTML trong `<text>`, hỗ trợ 100% Dark Mode.
-- [ ] Chạy `node tools/tools/scratch/check_tags.js <file.html>` đạt **PASSED**.
-- [ ] Chạy `node tools/scratch/check_format_bugs.js <file.html>` đạt **0 lỗi $ và 0 lỗi #**.
-- [ ] Chạy `npm run build` không phát sinh lỗi TypeScript.
+- [ ] File lưu đúng định dạng `.mdx` tại `src/content/basic-medical/epidemiology/dth-ten-bai.mdx`.
+- [ ] Khối Frontmatter đầy đủ các trường bắt buộc, mảng `sections` khớp 100% các thẻ `{#sec-X}` trong bài.
+- [ ] Sử dụng linh kiện `<QuickNav />` và các infobox dịch tễ học.
+- [ ] Mọi dấu so sánh `<` được escape thành `&lt;`, dấu `>` thành `&gt;`, `{` thành `&#123;`, `}` thành `&#125;` ngoài JSX props.
+- [ ] Không chứa thẻ HTML trong thẻ `<text>` của SVG đồ họa.
+- [ ] Chạy `npm run build` đạt kết quả thành công (**Exit code 0**, không có lỗi TypeScript hay JSX compilation).

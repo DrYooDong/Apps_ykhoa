@@ -1,48 +1,74 @@
 ---
-title: "Kỹ Thuật Sinh Học Phân Tử Y Học (PCR, Real-time qPCR, NGS)"
+title: "Kỹ Thuật Sinh Học Phân Tử Y Học: PCR, Real-Time qPCR, Giải Trình Tự Sanger & NGS"
 slug: "ky-thuat-pcr-ngs"
 code: "MOL-04"
 block: "block5-molecular-genetics"
 blockName: "Hóa Sinh Di Truyền & Sinh Học Phân Tử"
 order: 22
-harperChapter: "Harper's Illustrated Biochemistry 32nd Edition"
-lippincottChapter: "Lippincott Illustrated Reviews: Biochemistry 8th Edition"
+harperChapter: "Harper's Illustrated Biochemistry 32nd Edition - Chapter 39"
+lippincottChapter: "Lippincott Illustrated Reviews: Biochemistry 8th Edition - Chapter 33 & 34"
 category: "biochemistry"
 status: "published"
 version: "2.0.0"
-updatedAt: "2026-08-28"
-description: "Nguyên lý phản ứng PCR cổ điển (Biến tính, Bắt cặp, Kéo dài); Real-time qPCR đo huỳnh quang (TaqMan probe); Giải trình tự gen Sanger và NGS thế hệ mới; Công nghệ CRISPR-Cas9."
+updatedAt: "2026-08-30"
+description: "Nguyên lý phản ứng PCR cổ điển (Biến tính 95°C, Bắt cặp 55°C, Kéo dài 72°C), hệ kiểm soát ngoại nhiễm UNG/dUTP và điện di Gel Agarose; Real-time qPCR đo huỳnh quang thời gian thực (SYBR Green I, TaqMan probe FRET, Chu kỳ ngưỡng Ct, Định lượng tuyệt đối & 2^-ΔΔCt); Giải trình tự Sanger (ddNTP dừng chuỗi, Điện di mao quản); Giải trình tự thế hệ mới NGS Illumina (Khuếch đại bắc cầu, SBS chất chặn thuận nghịch, TCEP, WGS, WES, RNA-Seq) và Giải trình tự đơn phân tử Nanopore ONT."
 tags:
   - "PCR"
-  - "Real-time PCR"
+  - "Real-time qPCR"
+  - "TaqMan"
+  - "Sanger"
   - "NGS"
+  - "Illumina"
+  - "Nanopore"
   - "Tải lượng virus"
-  - "Điều trị đích"
+  - "Y học chính xác"
 clinicalPearls:
-  - "Real-time RT-qPCR là tiêu chuẩn vàng theo dõi đáp ứng điều trị viêm gan B, C và HIV qua định lượng tải lượng virus trong máu."
-  - "Giải trình tự NGS đa gen giúp phát hiện các đột biến trúng đích (EGFR, ALK, KRAS, BRAF V600E) để lựa chọn thuốc ức chế Tyrosine Kinase trong ung thư học cá thể hóa."
+  - "Trong Real-time qPCR, Chu kỳ ngưỡng (Ct) tỷ lệ nghịch với logarit nồng độ bản sao DNA/RNA ban đầu; Ct càng thấp chứng tỏ tải lượng virus trong máu bệnh nhân càng cao (ví dụ Ct < 20 tương ứng tải lượng virus rất lớn, Ct > 35 là tải lượng vết)."
+  - "Hệ thống kiểm soát chống ngoại nhiễm UNG/dUTP thay thế toàn bộ dTTP bằng dUTP; enzyme Uracil N-Glycosylase (UNG) hoạt hóa ở 40°C sẽ cắt đứt phá hủy mọi sản phẩm PCR cũ mang Uracil lơ lửng trong không khí trước khi phản ứng bắt đầu, loại trừ triệt để kết quả dương tính giả."
+  - "Phương pháp giải trình tự Sanger sử dụng dideoxynucleoside triphosphate (ddNTP) bị khuyết nhóm 3'-OH tự do, khi tích hợp vào chuỗi DNA đang tổng hợp sẽ làm dừng ngay lập tức phản ứng kéo dài, cho phép giải mã chính xác từng nucleotide bằng điện di mao quản."
+  - "Công nghệ NGS Illumina sử dụng 4 loại dNTP mang nhóm chặn kết thúc thuận nghịch 3'-O-azidomethyl và chất phát huỳnh quang; sau khi quét laser ghi nhận base vừa gắn, chất khử TCEP sẽ cắt bỏ nhóm chặn để phục hồi 3'-OH tự do sẵn sàng cho chu kỳ tổng hợp tiếp theo."
 keyReactions:
-  - "Khuếch đại hàm số mũ lượng DNA: N = N0 * 2^n qua n chu kỳ nhiệt."
+  - "Khuếch đại PCR hàm số mũ: N = N0 * 2^n (với n là số chu kỳ luân nhiệt)"
+  - "Định lượng qPCR tương đối: Fold Change = 2^(-ΔΔCt) (với ΔΔCt = ΔCt_mẫu_thử - ΔCt_đối_chứng)"
+  - "Phương trình đường chuẩn qPCR: Ct = a * log10(Sq) + b (Hiệu suất E = 10^(-1/a) - 1 ≈ 95–105%)"
+  - "Phản ứng dừng chuỗi Sanger: Chuỗi DNA-(3'-OH) + ddNTP --(DNA Polymerase)--> Chuỗi DNA-ddNMP (Dừng vĩnh viễn)"
 relatedLabTests:
-  - "HBV-DNA / HCV-RNA TaqMan"
-  - "Panel NGS đột biến khối u (Solid Tumor NGS Panel)"
+  - "Real-time RT-PCR định lượng tải lượng HBV-DNA, HCV-RNA, HIV-RNA (TaqMan)"
+  - "Panel giải trình tự gen ung thư NGS (Solid Tumor & Liquid Biopsy: EGFR, KRAS, BRAF, ALK)"
+  - "Xét nghiệm sàng lọc trước sinh không xâm lấn (NIPT qua giải trình tự cfDNA)"
+  - "Giải trình tự Whole Exome Sequencing (WES) chẩn đoán bệnh hiếm & di truyền"
 sections:
   - id: "sec-1"
     number: 1
-    title: "Cơ Chế Phân Tử & Con Đường Hóa Sinh Nền Tảng"
+    title: "Nguyên Lý Phản Ứng PCR Cổ Điển, Chu Kỳ Nhiệt & Hệ Kiểm Soát UNG/dUTP"
     icon: "fa-dna"
   - id: "sec-2"
     number: 2
-    title: "Các Phản Ứng Enzym & Điểm Chốt Động Học"
-    icon: "fa-flask-vial"
+    title: "Điện Di Gel Agarose, Rây Phân Tử & Các Biến Thể PCR (Multiplex, Nested, RT-PCR)"
+    icon: "fa-bars-staggered"
   - id: "sec-3"
     number: 3
-    title: "Ý Nghĩa Lâm Sàng & Ứng Dụng Xét Nghiệm EBM"
+    title: "Real-Time qPCR: Động Học Chu Kỳ Ngưỡng (Ct), SYBR Green I & Đoạn Dò TaqMan"
+    icon: "fa-chart-line"
+  - id: "sec-4"
+    number: 4
+    title: "Các Phương Pháp Định Lượng qPCR: Biểu Đồ Chuẩn Tuyệt Đối & Công Thức 2^-ΔΔCt"
+    icon: "fa-calculator"
+  - id: "sec-5"
+    number: 5
+    title: "Giải Trình Tự Sanger: Nguyên Lý Dừng Chuỗi ddNTP & Điện Di Mao Quản Tự Động"
+    icon: "fa-barcode"
+  - id: "sec-6"
+    number: 6
+    title: "Giải Trình Tự Thế Hệ Mới NGS (Illumina): Khuếch Đại Bắc Cầu & Sinh Tổng Hợp SBS"
+    icon: "fa-microchip"
+  - id: "sec-7"
+    number: 7
+    title: "Giải Trình Tự Đơn Phân Tử Nanopore (ONT), Cận Lâm Sàng & Trích Dẫn EBM"
     icon: "fa-stethoscope"
-
 ---
 
-# 🧪 KỸ THUẬT SINH HỌC PHÂN TỬ Y HỌC (PCR, REAL-TIME QPCR, NGS)
+# 🧬 KỸ THUẬT SINH HỌC PHÂN TỬ Y HỌC (PCR, REAL-TIME qPCR, NGS)
 
 <BiochemQuickNav />
 
@@ -50,77 +76,358 @@ sections:
 <section class="stats-strip">
   <div class="stats-grid">
     <div class="stat-card">
-      <div class="stat-val blue">30–32 ATP</div>
-      <div class="stat-lbl">Năng lượng sinh học / Hiệu suất chuyển hóa</div>
+      <div class="stat-val blue">2^n Bản Sao</div>
+      <div class="stat-lbl">Hệ số khuếch đại lũy thừa sau n chu kỳ luân nhiệt của phản ứng PCR</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val green">$K_m$ & $V_{max}$</div>
-      <div class="stat-lbl">Điểm chốt động học enzym & Giới hạn tốc độ</div>
+      <div class="stat-val green">Chu Kỳ Ngưỡng (Ct)</div>
+      <div class="stat-lbl">Mốc định lượng cốt lõi trong Real-time qPCR tỷ lệ nghịch với tải lượng virus</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val purple">EBM 2026</div>
-      <div class="stat-lbl">Chuẩn hóa Harper 32nd & Lippincott 8th</div>
+      <div class="stat-val purple">ddNTP (Khuyết 3'-OH)</div>
+      <div class="stat-lbl">Chất dừng chuỗi phân tử kinh điển trong giải trình tự Sanger tự động</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val teal">HBV-DNA / HCV-RNA TaqMan, Panel NGS đột biến khối u (Solid Tumor NGS Panel)</div>
-      <div class="stat-lbl">Cận lâm sàng & Dấu ấn sinh học theo dõi</div>
+      <div class="stat-val red">&lt; 24 Giờ / &lt; $1.000</div>
+      <div class="stat-lbl">Tốc độ và chi phí giải toàn bộ hệ gen người (WGS) nhờ công nghệ NGS Illumina</div>
     </div>
   </div>
 </section>
 
 ---
 
-## 1. Cơ Chế Phân Tử & Con Đường Hóa Sinh Nền Tảng {#sec-1}
+## 1. Nguyên Lý Phản Ứng PCR Cổ Điển, Chu Kỳ Nhiệt & Hệ Kiểm Soát UNG/dUTP {#sec-1}
 
-Nguyên lý phản ứng PCR cổ điển (Biến tính, Bắt cặp, Kéo dài); Real-time qPCR đo huỳnh quang (TaqMan probe); Giải trình tự gen Sanger và NGS thế hệ mới; Công nghệ CRISPR-Cas9.
+**Phản ứng chuỗi Polymerase (PCR)** do Kary Mullis phát minh năm 1983 (Nobel Hóa học 1993) là kỹ thuật nhân bản hàng triệu bản sao đoạn DNA đích *in vitro*.
 
 ```
-ĐẶC ĐIỂM CHUYỂN HÓA & VAI TRÒ SINH HỌC CỐT LÕI:
-  • Khối chuyên đề: Hóa Sinh Di Truyền & Sinh Học Phân Tử
-  • Phân loại phân tử / enzym chủ chốt: PCR, Real-time PCR, NGS, Tải lượng virus, Điều trị đích
-  • Vị trí tế bào: Bào tương, Ty thể, Màng sinh chất hoặc Lưới nội sinh chất.
+  SO SÁNH NHÂN ĐÔI DNA TRONG TẾ BÀO (IN VIVO) VS PCR TRONG ỐNG NGHIỆM (IN VITRO):
+  - Tháo xoắn tách mạch: Helicase + SSB  ──► Thay bằng: Biến tính nhiệt độ cao (95°C)
+  - Đoạn mồi khởi đầu:   Enzyme Primase   ──► Thay bằng: Cặp mồi Oligonucleotide tổng hợp sẵn
+  - Kéo dài chuỗi DNA:   DNA Polymerase   ──► Thay bằng: Taq Polymerase chịu nhiệt (72°C)
 ```
-
 
 ---
 
-## 2. Các Phản Ứng Enzym & Điểm Chốt Động Học {#sec-2}
+### A. Chu Kỳ Nhiệt 3 Bước Tuần Hoàn (30–40 Chu Kỳ)
 
-<BiochemAlert type="reaction" title="Các Phản Ứng Hóa Sinh & Enzyme Giới Hạn Tốc Độ">
-  Các phản ứng then chốt điều hòa con đường chuyển hóa:
-  <ul>
-    <li><code>Khuếch đại hàm số mũ lượng DNA: N = N0 * 2^n qua n chu kỳ nhiệt.</code></li>
-  </ul>
-</BiochemAlert>
+```
+  [1. BIẾN TÍNH (Denaturation): 94 – 96°C (30–60s)] ──► Bẻ gãy liên kết hydro, tách rời 2 sợi đơn làm khuôn.
+                            │
+                            ▼
+  [2. BẮT CẶP MỒI (Annealing): 50 – 65°C (30–60s)]  ──► Cặp mồi đặc hiệu gắn bổ sung vào 2 đầu vùng gen đích.
+                            │
+                            ▼
+  [3. KÉO DÀI (Extension): 72 – 75°C (1–2 phút)]    ──► Taq Polymerase gắn dNTPs kéo dài từ đầu 3'-OH của mồi.
+```
 
+- **Hệ quả**: Sau $n$ chu kỳ, số lượng bản sao DNA tăng lên theo cấp số nhân: $\mathbf{N = N_0 \times 2^n}$.
 
 ---
 
-## 3. Ý Nghĩa Lâm Sàng & Ứng Dụng Xét Nghiệm EBM {#sec-3}
+### B. 6 Thành Phần Cốt Lõi Của Phản Ứng PCR
 
-<BiochemAlert type="pearl" title="Điểm Ngọc Lâm Sàng & Biện Luận Chẩn Đoán (Clinical Pearls)">
-  <ul>
-    <li>Real-time RT-qPCR là tiêu chuẩn vàng theo dõi đáp ứng điều trị viêm gan B, C và HIV qua định lượng tải lượng virus trong máu.</li>
-    <li>Giải trình tự NGS đa gen giúp phát hiện các đột biến trúng đích (EGFR, ALK, KRAS, BRAF V600E) để lựa chọn thuốc ức chế Tyrosine Kinase trong ung thư học cá thể hóa.</li>
-  </ul>
-</BiochemAlert>
+<div class="table-responsive">
+  <table class="table-modern">
+    <thead>
+      <tr>
+        <th style="width: 22%;">Thành Phần Phản Ứng</th>
+        <th style="width: 25%;">Bản Chất &amp; Nồng Độ Chuẩn</th>
+        <th style="width: 25%;">Vai Trò Xúc Tác Cụ Thể</th>
+        <th style="width: 28%;">Lưu Ý Kỹ Thuật Lâm Sàng</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>DNA Khuôn (Template)</strong></td>
+        <td>$10 - 100\text{ ng}$ DNA tinh sạch</td>
+        <td>Khuôn mẫu cho tổng hợp chuỗi mới</td>
+        <td>Tránh nhiễm bẩn protein, phenol, ethanol gây ức chế enzyme.</td>
+      </tr>
+      <tr>
+        <td><strong>Cặp Mồi (Primers)</strong></td>
+        <td>$18 - 30\text{ nt}$; $0.1 - 0.5\,\mu\text{M}$</td>
+        <td>Định vị 2 đầu vùng gen đích</td>
+        <td>$T_m = 55 - 65^\circ\text{C}$; $\%GC = 40 - 60\%$; Tránh tạo <em>Primer Dimer</em>.</td>
+      </tr>
+      <tr>
+        <td><strong>Taq Polymerase</strong></td>
+        <td>$1 - 2.5\text{ units}$ (từ <em>T. aquaticus</em>)</td>
+        <td>Tổng hợp chuỗi DNA mới $5' \rightarrow 3'$</td>
+        <td>Bền nhiệt ở $95^\circ\text{C}$; Không có hoạt tính sửa sai $3' \rightarrow 5'$ exonuclease.</td>
+      </tr>
+      <tr>
+        <td><strong>Hỗn Hợp dNTPs</strong></td>
+        <td>$200\,\mu\text{M}$ mỗi loại (A, T, G, C)</td>
+        <td>Nguyên liệu xây dựng polynucleotide</td>
+        <td>Cần nồng độ cân bằng tuyệt đối giữa 4 loại nucleotide.</td>
+      </tr>
+      <tr>
+        <td><strong>Ion Magiê ($Mg^{2+}$)</strong></td>
+        <td>$1.5 - 2.5\text{ mM } MgCl_2$</td>
+        <td>Cofactor bắt buộc cho Taq Polymerase</td>
+        <td>$Mg^{2+}$ quá thấp enzyme mất hoạt tính; quá cao gây bắt cặp sai không đặc hiệu.</td>
+      </tr>
+      <tr>
+        <td><strong>Dung Dịch Đệm (Buffer)</strong></td>
+        <td>Tris-HCl ($pH 8.3$) + $50\text{ mM } KCl$</td>
+        <td>Ổn định pH và trung hòa tĩnh điện</td>
+        <td>$KCl$ giúp mồi bắt cặp ổn định vào sợi khuôn.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
-<BiochemAlert type="danger" title="Chỉ Số Cận Lâm Sàng & Rối Loạn Chuyển Hóa Liên Quan">
-  Các xét nghiệm hóa sinh bắt buộc theo dõi:
-  <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem;">
-    🧪 HBV-DNA / HCV-RNA TaqMan
-    🧪 Panel NGS đột biến khối u (Solid Tumor NGS Panel)
+---
+
+### C. Hệ Thống Chống Ngoại Nhiễm UNG/dUTP & Hiệu Ứng Bình Nguyên (Plateau)
+
+1. **Kiểm soát chống dương tính giả bằng UNG/dUTP**:
+   - Thay thế toàn bộ **dTTP** trong phản ứng bằng **dUTP** $\rightarrow$ Sản phẩm PCR mới tạo ra chứa Uracil (U).
+   - Trước khi chạy chu kỳ nhiệt mới, ủ hỗn hợp ở **$40^\circ\text{C}$ với enzyme Uracil N-Glycosylase (UNG)** $\rightarrow$ UNG phân hủy cắt đứt mọi sản phẩm cũ mang Uracil lơ lửng rơi vào ống nghiệm $\rightarrow$ Bước gia nhiệt $95^\circ\text{C}$ bất hoạt UNG để bảo vệ sản phẩm mới sinh ra.
+2. **Hiệu ứng Bình nguyên (Plateau Effect)**: Sau khoảng 40 chu kỳ, lượng DNA không thể tăng thêm do cạn kiệt dNTP/mồi và bất hoạt nhiệt của Taq Polymerase.
+
+---
+
+## 2. Điện Di Gel Agarose, Rây Phân Tử & Các Biến Thể PCR (Multiplex, Nested, RT-PCR) {#sec-2}
+
+### A. Kỹ Thuật Điện Di Thạch Agarose Nhúng Chìm
+- **Nguyên tắc**: DNA tích điện âm nhờ bộ khung phosphate, khi đặt trong điện trường sẽ di chuyển từ **Cực Âm (Cathode) $\rightarrow$ Cực Dương (Anode)**.
+- **Cơ chế rây phân tử (*Molecular sieving*)**: Mắt lưới agarose cản trở vật lý; phân tử DNA kích thước ngắn chạy nhanh, phân tử dài chạy chậm.
+- **Thuốc nhuộm**: **Ethidium Bromide (EtBr)** xen kẽ giữa các base phát huỳnh quang cam dưới tia cực tím UV ($340\text{ nm}$); ngày nay ưu tiên dùng chất nhuộm an toàn **GelRed** hoặc **SYBR Green**.
+
+---
+
+### B. Các Biến Thể PCR Phổ Biến Trong Y Học
+
+```
+  1. MULTIPLEX PCR (PCR Đa Mồi):
+     - Tích hợp đồng thời nhiều cặp mồi trong 1 ống nghiệm.
+     - Phát hiện đồng thời nhiều tác nhân vi sinh (Bảng kiểm viêm màng não, viêm đường hô hấp).
+
+  2. NESTED PCR (PCR Tổ 2 Vòng):
+     - Vòng 1 (Mồi ngoài) tạo sản phẩm lớn --> Vòng 2 (Mồi trong) khuếch đại tiếp đoạn đích bên trong.
+     - Triệt tiêu 100% băng bắt cặp sai, độ nhạy tối đa chẩn đoán HBV genotype.
+
+  3. REVERSE TRANSCRIPTION PCR (RT-PCR):
+     - Tác nhân virus có hệ gen là ARN (HIV, HCV, SARS-CoV-2, Cúm).
+     - Bước 1: Enzyme Reverse Transcriptase tổng hợp cDNA từ ARN khuôn (cần chất ức chế RNAsin).
+     - Bước 2: Taq Polymerase tiến hành chu kỳ PCR nhân bản cDNA.
+```
+
+---
+
+## 3. Real-Time qPCR: Động Học Chu Kỳ Ngưỡng (Ct), SYBR Green I & Đoạn Dò TaqMan {#sec-3}
+
+Khác với PCR cổ điển chỉ đọc kết quả điểm cuối, **Real-time qPCR (Quantitative PCR)** đo cường độ huỳnh quang trực tiếp theo thời gian thực ngay trong từng chu kỳ nhiệt.
+
+```
+     Cường độ huỳnh quang (ΔRn)
+        ▲
+        │                                         /─── Giai đoạn Bình nguyên (Plateau)
+        │                                       /
+        │                         /──────────── Giai đoạn Lũy thừa (Log Phase)
+        │                        /
+        │                       /  ◄─── Điểm vượt ngưỡng: CHU KỲ NGƯỠNG (Ct)
+        │                      /
+        │  ───────────────────/────────────── Ngưỡng phát hiện (Threshold)
+        │  ═══════════════════  ◄──────────── Đường nền (Baseline: Chu kỳ 3–15)
+        └────────────────────────────────────────► Số chu kỳ nhiệt (Cycle)
+```
+
+- **Ý nghĩa sinh học của Chu kỳ ngưỡng ($C_t$)**: $C_t$ là chu kỳ nhiệt mà tại đó tín hiệu huỳnh quang vượt lên trên ngưỡng phát hiện; **$C_t$ tỷ lệ nghịch với logarit nồng độ ban đầu của tác nhân đích** (Tải lượng virus càng cao $\rightarrow C_t$ càng thấp).
+
+---
+
+### B. So Sánh 2 Hệ Thống Phát Huỳnh Quang Trong qPCR
+
+<div class="table-responsive">
+  <table class="table-modern">
+    <thead>
+      <tr>
+        <th style="width: 25%;">Đặc Tính Kỹ Thuật</th>
+        <th style="width: 37%;">Chất Nhuộm SYBR Green I</th>
+        <th style="width: 38%;">Đoạn Dò TaqMan Probe (FRET)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Cơ chế phát tín hiệu</strong></td>
+        <td>Xen kẽ tự do vào rãnh nhỏ của <strong>mọi mạch đôi dsDNA</strong>.</td>
+        <td>Gắn đặc hiệu vào vùng giữa 2 mồi; Hoạt tính $5' \rightarrow 3'$ exonuclease của Taq thủy phân giải phóng <strong>Reporter</strong> ra khỏi <strong>Quencher</strong>.</td>
+      </tr>
+      <tr>
+        <td><strong>Độ đặc hiệu phân tử</strong></td>
+        <td>Trung bình (Bám cả vào mồi tự bắt cặp <em>Primer Dimer</em>).</td>
+        <td><span class="rx-tag preferred">Đặc hiệu tuyệt đối 100%</span> (Đòi hỏi 2 mồi + 1 đoạn dò).</td>
+      </tr>
+      <tr>
+        <td><strong>Kiểm tra chất lượng</strong></td>
+        <td>Bắt buộc phân tích <strong>Đường cong nóng chảy (Melting Curve)</strong> tìm đỉnh $T_m$ đặc hiệu.</td>
+        <td>Không cần phân tích đường cong nóng chảy.</td>
+      </tr>
+      <tr>
+        <td><strong>Khả năng làm Multiplex</strong></td>
+        <td>Hạn chế (Không phân biệt được màu).</td>
+        <td><span class="rx-tag info">Tuyệt vời</span> (Gắn nhiều Reporter màu khác nhau: FAM, VIC, CY5).</td>
+      </tr>
+      <tr>
+        <td><strong>Ứng dụng lâm sàng chính</strong></td>
+        <td>Nghiên cứu biểu hiện gen trong phòng thí nghiệm.</td>
+        <td><strong>Đo tải lượng virus lâm sàng (HBV, HCV, HIV, SARS-CoV-2)</strong>.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+---
+
+## 4. Các Phương Pháp Định Lượng qPCR: Biểu Đồ Chuẩn Tuyệt Đối & Công Thức 2^-ΔΔCt {#sec-4}
+
+### A. Phương Pháp Định Lượng Tuyệt Đối (Absolute Quantification)
+- Xây dựng **Đường chuẩn (Standard Curve)** từ dãy mẫu chuẩn đã biết trước số lượng bản sao pha loãng bậc 10 ($10^6 \rightarrow 10^2\text{ bản sao}$):
+  $$C_t = a \cdot \log_{10}(S_q) + b$$
+- **Tiêu chuẩn chất lượng**: Hệ số tương quan $R^2 \ge 0.99$, Độ dốc $a \approx -3.32$, Hiệu suất phản ứng $\mathbf{E = 10^{(-1/a)} - 1 \approx 95 - 105\%}$.
+
+---
+
+### B. Phương Pháp Định Lượng Tương Đối ($2^{-\Delta\Delta C_t}$)
+- So sánh mức biểu hiện gen giữa mô bệnh (U) và mô chứng (Lành) qua gen nội chuẩn (*GAPDH, $\beta$-actin*):
+  1. $\Delta C_t (\text{mẫu}) = C_t (\text{gen đích}) - C_t (\text{gen nội chuẩn})$
+  2. $\Delta\Delta C_t = \Delta C_t (\text{mẫu bệnh}) - \Delta C_t (\text{mẫu chứng})$
+  3. Mức thay đổi biểu hiện gen: $\mathbf{\text{Fold Change} = 2^{-\Delta\Delta C_t}}$.
+
+---
+
+## 5. Giải Trình Tự Sanger: Nguyên Lý Dừng Chuỗi ddNTP & Điện Di Mao Quản Tự Động {#sec-5}
+
+Được Frederick Sanger phát minh năm 1977 (Nobel Hóa học 1980) — Tiêu chuẩn vàng giải mã trình tự DNA.
+
+```
+       CẤU TRÚC PHÂN TỬ DÙNG ĐỂ KÉO DÀI VS DỪNG CHUỖI:
+       - dNTP:  Có nhóm 3'-OH tự do ──► Tạo liên kết phosphodiester kéo dài chuỗi tiếp tục.
+       - ddNTP: MẤT nhóm 3'-OH (chỉ có -H) ──► KHÔNG THỂ tạo liên kết mới ──► DỪNG CHUỖI TỨC THÌ!
+```
+
+```
+  QUY TRÌNH GIẢI TRÌNH TỰ SANGER TỰ ĐỘNG:
+  1. Một ống phản ứng chứa: DNA khuôn + Mồi + DNA Polymerase + 4 dNTP + 4 ddNTP (gắn 4 màu huỳnh quang).
+  2. Phản ứng kéo dài tạo ra hỗn hợp hàng nghìn đoạn DNA dừng ở các vị trí kích thước khác nhau.
+  3. Bơm vào hệ thống Điện di mao quản (Capillary Electrophoresis) phân tách lệch nhau đúng 1 nucleotide.
+  4. Tia Laser quét qua đầu mao quản đọc màu huỳnh quang ──► Phần mềm máy tính vẽ biểu đồ Chromatogram.
+```
+
+---
+
+## 6. Giải Trình Tự Thế Hệ Mới NGS (Illumina): Khuếch Đại Bắc Cầu & Sinh Tổng Hợp SBS {#sec-6}
+
+Công nghệ **Next-Generation Sequencing (NGS)** thực hiện hàng triệu đến hàng tỷ phản ứng giải trình tự song song trên một chip kính phẳng (*Flow cell*).
+
+```
+  3 BƯỚC CỐT LÕI CỦA CÔNG NGHỆ ILLUMINA NGS:
+  1. Chuẩn bị thư viện (Library Prep): Cắt vụn DNA 200–500 bp, gắn đầu nối Adapter 2 đầu.
+  2. Khuếch đại bắc cầu (Bridge Amplification): Đoạn DNA uốn cong tạo cầu nối nhân bản tạo hàng triệu Cụm Đơn Dòng (Clusters) trên bề mặt Flow cell.
+  3. Giải trình tự bằng sinh tổng hợp (Sequencing by Synthesis - SBS):
+     - Bơm 4 dNTP mang nhóm chặn kết thúc thuận nghịch (3'-O-azidomethyl) và 4 chất màu huỳnh quang.
+     - Polymerase gắn đúng 1 base bổ sung ──► Bị chặn không cho kéo dài.
+     - Laser quét chụp ảnh huỳnh quang xác định loại base vừa tích hợp tại từng cụm.
+     - Bơm chất khử TCEP cắt bỏ huỳnh quang và phục hồi 3'-OH tự do cho chu kỳ tiếp theo.
+```
+
+<div class="matrix-grid">
+  <div class="matrix-card">
+    <div class="matrix-card-title">
+      <span>1. Whole Genome Sequencing (WGS)</span>
+      <span class="rx-tag preferred">Giải Toàn Bộ Hệ Gen (3 Tỷ bp)</span>
+    </div>
+    <div class="matrix-card-desc">
+      Đọc toàn bộ vùng mã hóa và không mã hóa; Phát hiện biến thể cấu trúc lớn, nghiên cứu tiến hóa và dịch tễ học phân tử.
+    </div>
   </div>
-</BiochemAlert>
-  <ol style="margin: 0; padding-left: 1.25rem; line-height: 1.8; color: var(--color-text-muted, #475569); font-size: 0.88rem;">
-    <li><strong>Rodwell, V. W. et al. (2022)</strong>. <em>Harper's Illustrated Biochemistry</em> (32nd ed.). McGraw-Hill Education.</li>
-    <li><strong>Ferrier, D. R. (2021)</strong>. <em>Lippincott Illustrated Reviews: Biochemistry</em> (8th ed.). Wolters Kluwer.</li>
-    <li><strong>Rifai, N. et al. (2018)</strong>. <em>Tietz Textbook of Clinical Chemistry and Molecular Diagnostics</em> (6th ed.). Elsevier.</li>
+
+  <div class="matrix-card">
+    <div class="matrix-card-title">
+      <span>2. Whole Exome Sequencing (WES)</span>
+      <span class="rx-tag info">Giải Toàn Bộ Vùng Mã Hóa (Exome 1–2%)</span>
+    </div>
+    <div class="matrix-card-desc">
+      Chỉ tập trung vào 85% đột biến gây bệnh đã biết; Tiết kiệm chi phí, chẩn đoán các bệnh lý di truyền hiếm gặp và dị tật bẩm sinh.
+    </div>
+  </div>
+
+  <div class="matrix-card">
+    <div class="matrix-card-title">
+      <span>3. RNA-Seq (Transcriptome)</span>
+      <span class="rx-tag warning">Giải Trình Tự Hệ Phiên Mã</span>
+    </div>
+    <div class="matrix-card-desc">
+      Chuyển đổi toàn bộ mRNA thành cDNA để định lượng mức độ biểu hiện gen và phát hiện các đột biến dung hợp gen ung thư (Fusion genes).
+    </div>
+  </div>
+</div>
+
+---
+
+## 7. Giải Trình Tự Đơn Phân Tử Nanopore (ONT), Cận Lâm Sàng & Trích Dẫn EBM {#sec-7}
+
+### A. Công Nghệ Giải Trình Tự Thế Hệ Thứ Ba Oxford Nanopore (ONT)
+- **Nguyên lý độc đáo**: Đọc trực tiếp **1 phân tử DNA/RNA đơn lẻ theo thời gian thực mà KHÔNG CẦN KHUẾCH ĐẠI PCR**.
+- Sợi đơn DNA được enzyme Helicase kéo trượt qua kênh nano protein (*Nanopore*) cắm trên màng nhân tạo. Sự cản trở cơ học của từng base (A, T, G, C) làm **dao động dòng điện ion đi qua lỗ theo các biên độ đặc trưng**, được thuật toán AI giải mã tức thời.
+- **Ưu điểm vượt trội**: Lượt đọc siêu dài (*Ultra-long reads* lên tới $1\text{ Mb}$), thiết bị MinION nhỏ gọn như USB mang ra thực địa, đọc trực tiếp dấu ấn biểu sinh (*5-methylcytosine*).
+
+---
+
+### B. Ứng Dụng Lâm Sàng Cốt Lõi Trong Kỷ Nguyên Y Học Chính Xác (Precision Medicine)
+
+<div class="matrix-grid">
+  <div class="matrix-card">
+    <div class="matrix-card-title">
+      <span>1. Đo Tải Lượng Virus (HBV, HCV, HIV)</span>
+      <span class="rx-tag preferred">Định Lượng Real-Time qPCR</span>
+    </div>
+    <div class="matrix-card-desc">
+      Theo dõi đáp ứng điều trị thuốc kháng virus (Tenofovir, Sofosbuvir); Ngưỡng dưới phát hiện $&lt; 10 - 20\text{ IU/mL}$.
+    </div>
+  </div>
+
+  <div class="matrix-card">
+    <div class="matrix-card-title">
+      <span>2. Panel NGS Khối U &amp; Sinh Thiết Lỏng</span>
+      <span class="rx-tag info">Liệu Pháp Điều Trị Trúng Đích</span>
+    </div>
+    <div class="matrix-card-desc">
+      Tìm đột biến <em>EGFR</em> (Exon 19 del, L858R, T790M) dùng Osimertinib, <em>BRAF V600E</em> dùng Dabrafenib, <em>KRAS G12C</em> trong ung thư phổi và đại trực tràng.
+    </div>
+  </div>
+
+  <div class="matrix-card">
+    <div class="matrix-card-title">
+      <span>3. Sàng Lọc Trước Sinh Không Xâm Lấn (NIPT)</span>
+      <span class="rx-tag warning">Giải Trình Tự cfDNA Máu Mẹ</span>
+    </div>
+    <div class="matrix-card-desc">
+      Phát hiện sớm các hội chứng lệch bội nhiễm sắc thể (Down T21, Edwards T18, Patau T13) từ tuần thai thứ 9–10.
+    </div>
+  </div>
+</div>
+
+---
+
+<!-- KHUNG TRÍCH DẪN Y VĂN CHUẨN AMA (CITATION BOX) -->
+<div class="citation-box" style="margin-top: 2rem; padding: 1.25rem 1.5rem; background: var(--color-surface, #ffffff); border: 1px solid var(--color-border, #cbd5e1); border-left: 4px solid var(--color-primary, #0284c7); border-radius: 12px; font-size: 0.88rem; line-height: 1.8; color: var(--color-text-muted, #475569);">
+  <strong style="color: var(--color-text, #0f172a); font-size: 0.95rem;"><i class="fa-solid fa-book-medical"></i> Trích Dẫn Y Văn &amp; Tài Liệu Tham Khảo Chuẩn AMA:</strong>
+  <ol style="margin: 0.5rem 0 0 0; padding-left: 1.25rem;">
+    <li><strong>Kennelly PJ, Botham KM, McGuinness OP, Rodwell VW, Weil PA.</strong> <em>Harper's Illustrated Biochemistry</em>. 32nd ed. New York, NY: McGraw Hill LLC; 2023:515-535.</li>
+    <li><strong>Ferrier DR.</strong> <em>Lippincott Illustrated Reviews: Biochemistry</em>. 8th ed. Philadelphia, PA: Wolters Kluwer; 2021:445-468.</li>
+    <li><strong>Horton HR, Moran LA, Scrimgeour KG, Perry MD, Rawn JD.</strong> <em>Principles of Biochemistry</em>. 5th ed. Boston, MA: Pearson Education, Inc.; 2012:613-625.</li>
+    <li><strong>Baynes JW, Dominiczak MH.</strong> <em>Medical Biochemistry</em>. 5th ed. London, UK: Elsevier; 2019:320-325.</li>
+    <li><strong>Pratt CW, Cornely K.</strong> <em>Essential Biochemistry</em>. 5th ed. Hoboken, NJ: John Wiley & Sons; 2021:614-622.</li>
+    <li><strong>Bộ Môn Hóa Sinh (ĐHYD TP.HCM).</strong> <em>Hóa Sinh Y Học</em>. TP. Hồ Chí Minh: Nhà Xuất Bản Y Học; 2024:405-430.</li>
   </ol>
 </div>
 
 <!-- HÀNG NÚT ĐIỀU HƯỚNG SPA -->
-<div class="btn-row">
+<div class="btn-row" style="display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;">
   <a href="#/basic-medical/hoa-sinh" class="btn btn-primary">
     <i class="fa-solid fa-arrow-left"></i> Quay lại Mục Lục Hóa Sinh Y Học
   </a>

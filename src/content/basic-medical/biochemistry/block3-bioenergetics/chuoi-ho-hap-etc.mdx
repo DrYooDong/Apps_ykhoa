@@ -5,13 +5,13 @@ code: "ENG-03"
 block: "block3-bioenergetics"
 blockName: "Năng Lượng Sinh Học & Chu Trình Krebs"
 order: 13
-harperChapter: "Harper's Illustrated Biochemistry 32nd Edition"
-lippincottChapter: "Lippincott Illustrated Reviews: Biochemistry 8th Edition"
+harperChapter: "Harper's Illustrated Biochemistry 32nd Edition - Chapter 12 & 13"
+lippincottChapter: "Lippincott Illustrated Reviews: Biochemistry 8th Edition - Chapter 6"
 category: "biochemistry"
 status: "published"
 version: "2.0.0"
-updatedAt: "2026-08-28"
-description: "4 phức hợp màng trong ty thể (Complex I - IV), Coenzyme Q, Cytochrome c; Thuyết hóa thẩm Mitchell tạo gradient proton; Hoạt động của FoF1-ATP Synthase; Chất ức chế và chất phá ghép; Gốc tự do ROS."
+updatedAt: "2026-08-30"
+description: "Toàn diện về Chuỗi hô hấp tế bào ty thể & Phosphoryl hóa oxy hóa: Cấu trúc 4 phức hợp (I-IV), Respirasomes, Coenzyme Q, Cytochrome c, động cơ phân tử ATP Synthase, hệ thống thoi NADH, cơ chế chất độc ức chế (Cyanide, CO, Oligomycin) và chất phá ghép (DNP, Thermogenin UCP-1)."
 tags:
   - "ETC"
   - "Ty thể"
@@ -19,29 +19,55 @@ tags:
   - "Cyanua"
   - "ROS"
   - "Uncoupler"
+  - "Respirasome"
+  - "Thermogenin"
+  - "Phosphoryl hóa"
 clinicalPearls:
-  - "Khí độc Cyanua (CN-) và CO ức chế Complex IV (Cytochrome c oxidase), chặn đứng hoàn toàn chuỗi hô hấp tế bào gây chết ngạt mô dù phân áp O2 máu bình thường."
-  - "Protein phá ghép Thermogenin (UCP-1) ở ty thể mô mỡ nâu giải phóng năng lượng dưới dạng nhiệt giúp giữ ấm trẻ sơ sinh."
+  - "Khí độc Cyanua (CN-) và CO ức chế Phức hợp IV (Cytochrome c oxidase) tại Heme a3, chặn đứng hoàn toàn chuỗi hô hấp tế bào gây chết ngạt mô cấp tính dù phân áp O2 máu động mạch bình thường; điều trị cấp bằng Amyl Nitrite / Sodium Nitrite tạo Methemoglobin mồi nhử phối hợp Sodium Thiosulfate."
+  - "Protein phá ghép Thermogenin (UCP-1) ở màng trong ty thể mô mỡ nâu (BAT) giải phóng hoàn toàn gradient proton dưới dạng nhiệt năng, thực hiện cơ chế sinh nhiệt không run cơ (non-shivering thermogenesis) tối quan trọng giữ ấm trẻ sơ sinh."
+  - "2,4-Dinitrophenol (DNP) là chất phá ghép hóa học kỵ nước vận chuyển proton qua màng làm sụp đổ PMF, kích thích ETC chạy tối đa làm tăng vọt chuyển hóa và tiêu tán năng lượng dạng nhiệt, gây sốt cao ác tính tử vong (từng bị lạm dụng làm thuốc giảm cân)."
+  - "Khi màng ngoài ty thể bị tổn thương do stress oxy hóa (ROS), Cytochrome c rò rỉ ra bào tương liên kết với Apaf-1 và dATP tạo phức hợp Apoptosome, kích hoạt chuỗi Caspase cascade khởi động chết rụng tế bào theo chương trình (Apoptosis)."
 keyReactions:
-  - "NADH + H+ + 1/2 O2 + 3 ADP + 3 Pi --> NAD+ + H2O + 3 ATP"
-  - "O2 + e- --> O2•- (Superoxide anion)"
+  - "NADH + H+ + 1/2 O2 + 2.5 ADP + 2.5 Pi --> NAD+ + H2O + 2.5 ATP (ΔG°' ≈ -218.2 kJ/mol)"
+  - "FADH2 + 1/2 O2 + 1.5 ADP + 1.5 Pi --> FAD + H2O + 1.5 ATP (ΔG°' ≈ -150 kJ/mol)"
+  - "QH2 + 2 Cyt c (Fe3+) + 2 H+(matrix) --> Q + 2 Cyt c (Fe2+) + 4 H+(IMS) (Chu trình Q Phức hợp III)"
+  - "O2 + 4 H+(matrix) + 4 e- --> 2 H2O (Phức hợp IV - Khử Oxy hoàn toàn)"
+  - "Δp = Δψ - (2.303 RT/F) ΔpH ≈ 200 mV (Lực đẩy proton hóa thẩm Peter Mitchell)"
 relatedLabTests:
-  - "Khí máu động mạch"
-  - "Đo độ bão hòa oxy máu tĩnh mạch trung tâm (ScvO2)"
+  - "Khí máu động mạch (ABG - PaO2, pH, HCO3-, Anion Gap)"
+  - "Lactate máu động mạch / tĩnh mạch (Chẩn đoán toan Lactic do suy sụp ETC)"
+  - "Đo độ bão hòa oxy máu tĩnh mạch trung tâm (ScvO2 / SvO2)"
+  - "Định lượng Carboxyhemoglobin (COHb) & Methemoglobin (MetHb) bằng Co-oximetry"
+  - "Đo nồng độ Cyanide máu"
 sections:
   - id: "sec-1"
     number: 1
-    title: "Cơ Chế Phân Tử & Con Đường Hóa Sinh Nền Tảng"
+    title: "Cấu Trúc Ty Thể & Nguyên Lý Nhiệt Động Học Điện Hóa"
     icon: "fa-dna"
   - id: "sec-2"
     number: 2
-    title: "Các Phản Ứng Enzym & Điểm Chốt Động Học"
-    icon: "fa-flask-vial"
+    title: "Phức Hợp I, Phức Hợp II & Coenzyme Q (Ubiquinone)"
+    icon: "fa-bolt-lightning"
   - id: "sec-3"
     number: 3
-    title: "Ý Nghĩa Lâm Sàng & Ứng Dụng Xét Nghiệm EBM"
+    title: "Hệ Thống Thoi Vận Chuyển NADH Bào Tương (NADH Shuttles)"
+    icon: "fa-shuffle"
+  - id: "sec-4"
+    number: 4
+    title: "Phức Hợp III (Chu Trình Q), Cytochrome c & Phức Hợp IV"
+    icon: "fa-arrows-spin"
+  - id: "sec-5"
+    number: 5
+    title: "Siêu Phức Hợp (Respirasomes) & Động Cơ Phân Tử ATP Synthase"
+    icon: "fa-dharmachakra"
+  - id: "sec-6"
+    number: 6
+    title: "Các Độc Chất Ức Chế ETC, ATP Synthase & Chất Phá Ghép (Uncouplers)"
+    icon: "fa-skull-crossbones"
+  - id: "sec-7"
+    number: 7
+    title: "Tổng Kết Năng Lượng Sinh Học, Cận Lâm Sàng & Trích Dẫn EBM"
     icon: "fa-stethoscope"
-
 ---
 
 # 🧪 CHUỖI HÔ HẤP TẾ BÀO TY THỂ & PHOSPHORYL HÓA OXY HÓA
@@ -53,77 +79,828 @@ sections:
   <div class="stats-grid">
     <div class="stat-card">
       <div class="stat-val blue">30–32 ATP</div>
-      <div class="stat-lbl">Năng lượng sinh học / Hiệu suất chuyển hóa</div>
+      <div class="stat-lbl">Năng lượng ròng từ 1 phân tử Glucose hoàn chỉnh</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val green">$K_m$ & $V_{max}$</div>
-      <div class="stat-lbl">Điểm chốt động học enzym & Giới hạn tốc độ</div>
+      <div class="stat-val green">10 H⁺ / NADH</div>
+      <div class="stat-lbl">Proton bơm qua màng trong (4 tại I, 4 tại III, 2 tại IV)</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val purple">EBM 2026</div>
-      <div class="stat-lbl">Chuẩn hóa Harper 32nd & Lippincott 8th</div>
+      <div class="stat-val purple">~200 mV</div>
+      <div class="stat-lbl">Lực đẩy proton (PMF = Δψ + dốc hóa học ΔpH)</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val teal">Khí máu động mạch, Đo độ bão hòa oxy máu tĩnh mạch trung tâm (ScvO2)</div>
-      <div class="stat-lbl">Cận lâm sàng & Dấu ấn sinh học theo dõi</div>
+      <div class="stat-val red">-218.2 kJ/mol</div>
+      <div class="stat-lbl">Biến thiên năng lượng tự do Gibbs (ΔG°') từ NADH đến O₂</div>
     </div>
   </div>
 </section>
 
 ---
 
-## 1. Cơ Chế Phân Tử & Con Đường Hóa Sinh Nền Tảng {#sec-1}
+## 1. Cấu Trúc Ty Thể & Nguyên Lý Nhiệt Động Học Điện Hóa {#sec-1}
 
-4 phức hợp màng trong ty thể (Complex I - IV), Coenzyme Q, Cytochrome c; Thuyết hóa thẩm Mitchell tạo gradient proton; Hoạt động của FoF1-ATP Synthase; Chất ức chế và chất phá ghép; Gốc tự do ROS.
+Ty thể (*Mitochondrion*) là bào quan trung tâm chịu trách nhiệm sinh tổng hợp trên 90% lượng ATP cho tế bào thông qua con đường hô hấp hiếu khí. Ty thể được bao bọc bởi hệ thống màng kép, định hình nên hai khoang riêng biệt có thành phần hóa học và tính thấm hoàn toàn khác nhau.
 
 ```
-ĐẶC ĐIỂM CHUYỂN HÓA & VAI TRÒ SINH HỌC CỐT LÕI:
-  • Khối chuyên đề: Năng Lượng Sinh Học & Chu Trình Krebs
-  • Phân loại phân tử / enzym chủ chốt: ETC, Ty thể, ATP Synthase, Cyanua, ROS, Uncoupler
-  • Vị trí tế bào: Bào tương, Ty thể, Màng sinh chất hoặc Lưới nội sinh chất.
+                     [BÀO TƯƠNG / CYTOSOL] (pH ≈ 7.2)
+                                │
+                                ▼
+            ┌───────────────────────────────────┐
+            │   Màng Ngoài Ty Thể (OMM)         │ ◄─── Thấm tự do phân tử < 10,000 Da (Qua Porin/VDAC)
+            └─────────────────┬─────────────────┘
+                              ▼
+            ┌───────────────────────────────────┐
+            │   Khoảng Gian Màng (IMS)          │ ◄─── Chứa Cytochrome c hòa tan, giàu H+ (pH ≈ 7.0 - 7.2)
+            └─────────────────┬─────────────────┘
+                              ▼
+            ┌───────────────────────────────────┐
+            │   Màng Trong Ty Thể (IMM)         │ ◄─── Rất nghiêm ngặt, có nếp gấp Cristae, giàu Cardiolipin,
+            └─────────────────┬─────────────────┘      tích hợp Complex I - V, không thấm ion/H+
+                              ▼
+            ┌───────────────────────────────────┐
+            │   Chất Nền Ty Thể (Matrix)        │ ◄─── Chứa enzyme Krebs, Beta-oxy hóa, PDH, mtDNA,
+            └───────────────────────────────────┘      điện thế âm (-140 đến -180 mV, pH ≈ 7.8 - 8.0)
 ```
 
+### A. Sự Phân Phòng Chức Năng (Compartmentation)
+
+1. **Màng Ngoài Ty Thể (Outer Mitochondrial Membrane - OMM)**:
+   - Là màng sinh học mịn, chứa tỷ lệ lipid cao.
+   - Chứa một lượng lớn các protein màng tích hợp tạo kênh gọi là **porin (Voltage-Dependent Anion Channel - VDAC)**. Kênh này cho phép tất cả các phân tử nhỏ và các ion có khối lượng phân tử dưới 10,000 Da (như pyruvate, các nucleotide ADP/ATP, phosphate) khuếch tán tự do qua lại.
+   - Nồng độ các ion và chất tan nhỏ trong khoảng gian màng tương đương với bào tương tế bào.
+
+2. **Khoảng Gian Màng (Intermembrane Space - IMS)**:
+   - Là khoảng không gian nằm giữa màng ngoài và màng trong. Do OMM thấm tự do với proton qua porin, pH của khoảng gian màng xấp xỉ bằng pH của bào tương (pH $\approx$ 7.0 – 7.2).
+   - Chứa **Cytochrome c** – một protein ngoại vi nhỏ, tan trong nước, di chuyển linh động ở mặt ngoài IMM để vận chuyển điện tử giữa Phức hợp III và Phức hợp IV.
+
+3. **Màng Trong Ty Thể (Inner Mitochondrial Membrane - IMM)**:
+   - **Cấu trúc nếp gấp**: IMM có diện tích bề mặt cực lớn nhờ xếp nếp liên tục tạo thành các mào nhô vào chất nền gọi là **cristae**. Sự tăng diện tích này giúp IMM tích hợp mật độ khổng lồ các phức hợp chuỗi hô hấp (tỷ lệ protein/lipid chiếm tới 80% khối lượng màng).
+   - **Tính bất khả thấm nghiêm ngặt**: IMM **hoàn toàn không thấm đối với hầu hết các ion và phân tử phân cực** (bao gồm proton $H^+$, $Na^+$, $K^+$, anions, $NADH$, $NAD^+$ và các chất trung gian). Đây là điều kiện tiên quyết tuyệt đối để duy trì gradient điện hóa hóa thẩm thấu xuyên màng.
+   - **Thành phần lipid đặc trưng**: Chứa hàm lượng cao **Cardiolipin (diphosphatidylglycerol)** – phospholipid đặc biệt chứa 4 chuỗi acid béo kỵ nước mạnh, giúp triệt tiêu tối đa sự rò rỉ thụ động của ion và proton qua màng.
+
+4. **Chất Nền Ty Thể (Mitochondrial Matrix)**:
+   - Là khoang trung tâm dạng gel đặc chứa nồng độ protein cực cao: các enzyme của chu trình Krebs, con đường $\beta$-oxy hóa acid béo, phức hợp pyruvate dehydrogenase (PDH).
+   - Chứa bộ gen độc lập gồm **ADN vòng ty thể (mtDNA)**, tARN và ribose ty thể phục vụ sinh tổng hợp 13 tiểu đơn vị protein đặc hiệu của chuỗi hô hấp (trong đó có 7 tiểu đơn vị của Phức hợp I, 1 của Phức hợp III, 3 của Phức hợp IV và 2 của Phức hợp V).
+   - Về mặt điện hóa, chất nền mang **điện tích âm mạnh (-140 đến -180 mV)** so với khoảng gian màng do proton liên tục bị bơm ra ngoài.
 
 ---
 
-## 2. Các Phản Ứng Enzym & Điểm Chốt Động Học {#sec-2}
+### B. Nguyên Lý Nhiệt Động Học Điện Hóa Của Chuỗi Truyền Điện Tử
 
-<BiochemAlert type="reaction" title="Các Phản Ứng Hóa Sinh & Enzyme Giới Hạn Tốc Độ">
-  Các phản ứng then chốt điều hòa con đường chuyển hóa:
-  <ul>
-    <li><code>NADH + H+ + 1/2 O2 + 3 ADP + 3 Pi --> NAD+ + H2O + 3 ATP</code></li>
-    <li><code>O2 + e- --> O2•- (Superoxide anion)</code></li>
-  </ul>
+Sự di chuyển của các điện tử dọc theo Chuỗi hô hấp tế bào (*Electron Transport Chain - ETC*) được thúc đẩy bởi sự chênh lệch **Thế khử chuẩn ($E^{0\prime}$)** giữa các cặp oxy hóa khử liên hợp.
+
+- **Thế khử chuẩn ($E^{0\prime}$)** đo lường ái lực ái điện tử hay khuynh hướng chấp nhận điện tử của một chất ở điều kiện chuẩn hóa sinh (pH = 7.0, $25^\circ\text{C}$, nồng độ chất tan 1.0 M).
+- **Chiều truyền điện tử**: Điện tử luôn luôn tự động di chuyển từ cặp oxy hóa khử có **thế khử chuẩn âm hơn** (chất cho điện tử mạnh, ái lực điện tử thấp) sang cặp có **thế khử chuẩn dương hơn** (chất nhận điện tử mạnh, ái lực điện tử cao).
+- Trong chuỗi hô hấp, điện tử đi từ dòng khởi nguồn $NADH$ ($E^{0\prime} = -0.32\text{ V}$) truyền qua một loạt các trung tâm oxy hóa khử trung gian có thế khử chuẩn dương dần, và cuối cùng được tiếp nhận bởi chất nhận điện tử cuối cùng là oxy phân tử $O_2$ ($E^{0\prime} = +0.82\text{ V}$) – chất oxy hóa mạnh nhất trong hệ thống.
+
+<div class="table-responsive">
+  <table class="table-modern">
+    <thead>
+      <tr>
+        <th style="width: 32%;">Cặp Oxy Hóa / Khử Liên Hợp</th>
+        <th style="width: 18%;">$E^{0\prime}$ (Volt)</th>
+        <th style="width: 50%;">Vị Trí &amp; Vai Trò Trong Chuỗi Hô Hấp Ty Thể</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>$\text{NAD}^+ / \text{NADH} + \text{H}^+$</strong></td>
+        <td><span class="rx-tag danger">-0.32 V</span></td>
+        <td>Chất cho điện tử khởi đầu chính của Phức hợp I</td>
+      </tr>
+      <tr>
+        <td><strong>$\text{FMN} / \text{FMNH}_2$</strong></td>
+        <td><span class="rx-tag danger">-0.30 V</span></td>
+        <td>Nhóm ngoại nhận $2e^-$ đầu tiên tại cánh tay ngoại vi Phức hợp I</td>
+      </tr>
+      <tr>
+        <td><strong>Trung tâm $\text{Fe-S}$ (Phức hợp I)</strong></td>
+        <td><span class="rx-tag warning">-0.25 đến -0.05 V</span></td>
+        <td>Dây dẫn điện sinh học 8–9 cụm Fe-S trong Phức hợp I</td>
+      </tr>
+      <tr>
+        <td><strong>$\text{Succinate} / \text{Fumarate}$</strong></td>
+        <td><span class="rx-tag info">+0.03 V</span></td>
+        <td>Cơ chất cho điện tử khởi nguồn cho Phức hợp II (Chu trình Krebs)</td>
+      </tr>
+      <tr>
+        <td><strong>$\text{FAD} / \text{FADH}_2$ (Phức hợp II)</strong></td>
+        <td><span class="rx-tag info">0.00 V</span></td>
+        <td>Nhóm ngoại gắn cộng hóa trị tại tiểu đơn vị SdhA của Phức hợp II</td>
+      </tr>
+      <tr>
+        <td><strong>$\text{Ubiquinone (Q)} / \text{Ubiquinol (QH}_2\text{)}$</strong></td>
+        <td><span class="rx-tag preferred">+0.04 V</span></td>
+        <td>Chất mang điện tử di động kỵ nước hòa tan trong màng kép lipid</td>
+      </tr>
+      <tr>
+        <td><strong>$\text{Cytochrome } b_L$ (Low potential)</strong></td>
+        <td><span class="rx-tag warning">-0.01 V</span></td>
+        <td>Nhóm Heme nằm phía ngoài IMM thuộc Cytochrome b (Phức hợp III)</td>
+      </tr>
+      <tr>
+        <td><strong>$\text{Cytochrome } b_H$ (High potential)</strong></td>
+        <td><span class="rx-tag preferred">+0.03 V</span></td>
+        <td>Nhóm Heme nằm phía chất nền thuộc Cytochrome b (Phức hợp III)</td>
+      </tr>
+      <tr>
+        <td><strong>Trung tâm $\text{Fe-S}$ Rieske</strong></td>
+        <td><span class="rx-tag preferred">+0.28 V</span></td>
+        <td>Cụm $[2\text{Fe}-2\text{S}]$ phối trí $2\text{ Cys} + 2\text{ His}$ của Phức hợp III</td>
+      </tr>
+      <tr>
+        <td><strong>$\text{Cytochrome } c_1$</strong></td>
+        <td><span class="rx-tag preferred">+0.22 V</span></td>
+        <td>Protein màng gắn Heme c nhô ra IMS của Phức hợp III</td>
+      </tr>
+      <tr>
+        <td><strong>$\text{Cytochrome } c$</strong></td>
+        <td><span class="rx-tag preferred">+0.23 V</span></td>
+        <td>Chất mang điện tử di động ngoại vi tan trong nước ở khoảng gian màng</td>
+      </tr>
+      <tr>
+        <td><strong>$\text{Cytochrome } a\ (\text{Cu}_A)$</strong></td>
+        <td><span class="rx-tag preferred">+0.21 đến +0.29 V</span></td>
+        <td>Trung tâm nhận điện tử đầu tiên của Phức hợp IV</td>
+      </tr>
+      <tr>
+        <td><strong>$\text{Cytochrome } a_3\ (\text{Cu}_B)$</strong></td>
+        <td><span class="rx-tag preferred">+0.39 V</span></td>
+        <td>Trung tâm lưỡng kim hạt nhân (Binuclear center) khử Oxy của Phức hợp IV</td>
+      </tr>
+      <tr>
+        <td><strong>$\frac{1}{2}\text{ O}_2 + 2\text{H}^+ / \text{H}_2\text{O}$</strong></td>
+        <td><span class="rx-tag preferred"><strong>+0.82 V</strong></span></td>
+        <td><strong>Chất nhận điện tử cuối cùng</strong> có ái lực oxy hóa khử cao nhất</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### C. Mối Liên Hệ Toán Học Giữa $\Delta E^{0\prime}$ và Năng Lượng Tự Do Gibbs ($\Delta G^{0\prime}$)
+
+Biến thiên năng lượng tự do Gibbs tiêu chuẩn ($\Delta G^{0\prime}$) giải phóng từ phản ứng oxy hóa khử tỷ lệ thuận với độ chênh lệch thế khử chuẩn ($\Delta E^{0\prime}$) giữa chất cho và chất nhận điện tử thông qua phương trình Nernst:
+
+$$\Delta G^{0\prime} = -nF\Delta E^{0\prime}$$
+
+Trong đó:
+- $n$ là số lượng điện tử được chuyển giao (với một cặp điện tử từ NADH, $n = 2$).
+- $F$ là hằng số Faraday ($96.485\text{ kJ}\cdot\text{V}^{-1}\cdot\text{mol}^{-1}$).
+- $\Delta E^{0\prime} = E^{0\prime}_{(\text{chất nhận})} - E^{0\prime}_{(\text{chất cho})}$.
+
+$$\Delta E^{0\prime} = E^{0\prime}_{(\frac{1}{2}\text{O}_2/\text{H}_2\text{O})} - E^{0\prime}_{(\text{NAD}^+/\text{NADH})} = +0.82\text{ V} - (-0.32\text{ V}) = \mathbf{+1.14\text{ V}}$$
+
+$$\Delta G^{0\prime} = -2 \times 96.485\text{ kJ}\cdot\text{V}^{-1}\cdot\text{mol}^{-1} \times 1.14\text{ V} = \mathbf{-218.2\text{ kJ/mol}}$$
+
+<BiochemAlert type="reaction" title="Ý Nghĩa Nhiệt Động Học Nền Tảng">
+  Năng lượng giải phóng cực lớn ($-218.2\text{ kJ/mol}$) khi truyền 1 cặp điện tử từ $\text{NADH}$ đến $\text{O}_2$ cung cấp động lực dư thừa để Chuỗi hô hấp thực hiện công vận chuyển tích cực: <strong>bơm tổng cộng 10 proton $H^+$</strong> từ chất nền ra khoảng gian màng (4 tại Phức hợp I, 4 tại Phức hợp III và 2 tại Phức hợp IV) nhằm kiến tạo thế năng dốc điện hóa.
 </BiochemAlert>
-
 
 ---
 
-## 3. Ý Nghĩa Lâm Sàng & Ứng Dụng Xét Nghiệm EBM {#sec-3}
+## 2. Phức Hợp I, Phức Hợp II & Coenzyme Q (Ubiquinone) {#sec-2}
 
-<BiochemAlert type="pearl" title="Điểm Ngọc Lâm Sàng & Biện Luận Chẩn Đoán (Clinical Pearls)">
-  <ul>
-    <li>Khí độc Cyanua (CN-) và CO ức chế Complex IV (Cytochrome c oxidase), chặn đứng hoàn toàn chuỗi hô hấp tế bào gây chết ngạt mô dù phân áp O2 máu bình thường.</li>
-    <li>Protein phá ghép Thermogenin (UCP-1) ở ty thể mô mỡ nâu giải phóng năng lượng dưới dạng nhiệt giúp giữ ấm trẻ sơ sinh.</li>
-  </ul>
-</BiochemAlert>
+```
+       [CHẤT NỀN TY THỂ - MATRIX]
+         NADH + H+ ───► (Khử) [FMN] ───► [Fe-S clusters (8-9)] ───► (Màng) [Q] ──► QH2
+                                                                     │
+                                  [BƠM PROTON CHỦ ĐỘNG]               ▼
+                    (Matrix) 4 H+ ─────────────────────────────► 4 H+ (Khoảng gian màng - IMS)
+```
 
-<BiochemAlert type="danger" title="Chỉ Số Cận Lâm Sàng & Rối Loạn Chuyển Hóa Liên Quan">
-  Các xét nghiệm hóa sinh bắt buộc theo dõi:
-  <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem;">
-    🧪 Khí máu động mạch
-    🧪 Đo độ bão hòa oxy máu tĩnh mạch trung tâm (ScvO2)
+### A. Phức Hợp I: NADH:Ubiquinone Oxidoreductase (NADH Dehydrogenase)
+
+Phức hợp I là cổng vào chính của chuỗi hô hấp tế bào đối với các điện tử tách ra từ quá trình dị hóa carbohydrat, lipid và protein thông qua NADH ty thể:
+
+1. **Cấu trúc không gian hình chữ L (970 kDa, 45 tiểu đơn vị)**:
+   - **Cánh tay ngoại vi (Hydrophilic arm)**: Nhô hẳn vào bên trong chất nền ty thể, chứa vị trí liên kết với $NADH$, nhóm ngoại **Flavin Mononucleotide (FMN)**, và chuỗi liên tục gồm **8–9 trung tâm Sắt - Lưu huỳnh (Fe-S)** hoạt động như một dây dẫn điện sinh học.
+   - **Nhánh xuyên màng (Hydrophobic arm)**: Nằm chìm hoàn toàn trong IMM, cấu tạo từ nhiều chuỗi xoắn $\alpha$ xuyên màng tích hợp **4 kênh vận chuyển proton** (cấu trúc tương đồng bơm trao đổi $H^+/Na^+$).
+
+2. **Các nhóm ngoại oxy hóa khử (Redox Centers)**:
+   - **Flavin Mononucleotide (FMN)**: Gắn phi cộng hóa trị nhưng cực kỳ chặt chẽ. FMN là chất nhận $2e^-$ dưới dạng một ion hydride ($H^-$ gồm $2e^-$ và $1H^+$) từ $NADH$, và có khả năng độc đáo truyền đi từng điện tử một ($1e^-$) sang trung tâm Fe-S nhờ tạo dạng trung gian bán khử ổn định là **Semiquinone radical ($\text{FMNH}^\bullet$)**.
+   - **Các trung tâm Sắt - Lưu huỳnh (Fe-S clusters)**: Tồn tại dưới dạng $[2\text{Fe}-2\text{S}]$ và $[4\text{Fe}-4\text{S}]$. Fe-S là chất vận chuyển $1e^-$ ($\text{Fe}^{3+} + e^- \rightleftharpoons \text{Fe}^{2+}$). Điện tử di chuyển giữa các cụm Fe-S xếp sát nhau ($< 14\text{ \AA}$) nhờ hiệu ứng **đường hầm lượng tử (quantum tunneling)**.
+
+3. **Cơ chế xúc tác và Dẫn kênh điện tử**:
+   $$\text{NADH} + \text{H}^+ + \text{FMN} \rightarrow \text{NAD}^+ + \text{FMNH}_2$$
+   $$\text{Q} + 2e^- + 2\text{H}^+_{\text{matrix}} \rightarrow \text{QH}_2$$
+
+4. **Cơ chế bơm 4 Proton dạng Piston sinh điện**:
+   - Năng lượng tự do giải phóng khi cặp điện tử truyền từ $NADH$ sang $Q$ ($\Delta G^{0\prime} \approx -69.5\text{ kJ/mol}$) làm biến đổi cấu hình không gian xuyên màng.
+   - Sự khử Ubiquinone tạo lực đẩy làm trượt một thanh xoắn dài chạy dọc IMM như một **piston cơ học**, kích hoạt mở đồng thời 4 kênh proton.
+   - **Hệ quả**: Bơm chính xác **4 proton ($H^+$)** từ chất nền ty thể (phía N tích điện âm) vào khoảng gian màng (phía P tích điện dương) trên mỗi cặp điện tử.
+
+---
+
+### B. Phức Hợp II: Succinate:Ubiquinone Oxidoreductase (Succinate Dehydrogenase)
+
+Phức hợp II là điểm giao thoa độc nhất vô nhị nối liền trực tiếp **Chu trình Krebs (với vai trò là Succinate Dehydrogenase)** và **Chuỗi hô hấp tế bào**:
+
+```
+       [CHẤT NỀN TY THỂ - MATRIX]
+         Succinate ───► FAD ───► Trung tâm Fe-S (3 cụm) ───► (Màng) Q ──► QH2
+                                          ▲
+                                          │  ◄─── Heme b (Bẫy dập lửa dập tắt ROS)
+                                    [KHÔNG BƠM PROTON]
+```
+
+1. **Cấu trúc 4 tiểu đơn vị (SdhA, SdhB, SdhC, SdhD)**:
+   - **Tiểu đơn vị A (SdhA)**: Flavoprotein nhô vào chất nền, chứa nhóm ngoại **FAD** liên kết cộng hóa trị và vị trí liên kết cơ chất **Succinate**.
+   - **Tiểu đơn vị B (SdhB)**: Nhô vào chất nền, chứa **3 trung tâm Fe-S** ($[2\text{Fe}-2\text{S}]$, $[4\text{Fe}-4\text{S}]$, $[3\text{Fe}-4\text{S}]$) dẫn điện tử từ FAD xuống màng.
+   - **Tiểu đơn vị C (SdhC) & D (SdhD)**: Hai protein xuyên màng kỵ nước neo giữ phức hợp vào IMM, tạo vị trí gắn cho **Ubiquinone (Q)** và kẹp giữ một phân tử **Heme b**.
+
+2. **Vai trò bảo vệ tế bào của Heme b**:
+   - Heme b **không tham gia trực tiếp vào con đường vận chuyển điện tử chính** từ succinate sang ubiquinone.
+   - Heme b hoạt động như một "bẫy dập lửa" điện từ: hấp thụ và dập tắt các điện tử bị trượt hướng (leak) khỏi hệ thống xúc tác, ngăn ngừa sự hình thành các gốc tự do hủy hoại tế bào (**Reactive Oxygen Species - ROS**).
+
+3. **Cơ chế chuyển điện tử & Đặc điểm nhiệt động học**:
+   $$\text{Succinate} + \text{FAD-SdhA} \rightarrow \text{Fumarate} + \text{FADH}_2\text{-SdhA}$$
+   $$\text{Q} + 2e^- + 2\text{H}^+_{\text{matrix}} \rightarrow \text{QH}_2$$
+   - **Điểm chốt nhiệt động học**: Biến thiên năng lượng tự do Gibbs chuẩn của phản ứng là rất nhỏ ($\Delta G^{0\prime} \approx -1.5\text{ kJ/mol}$).
+   - Do đó, Phức hợp II **hoàn toàn không có đủ động lực năng lượng để bơm proton qua màng ($0\text{ H}^+$)**. Nó chỉ đóng vai trò thu nhận điện tử từ succinate để đổ thêm vào hồ chứa Ubiquinol ($QH_2$) chung của màng.
+
+---
+
+### C. Coenzyme Q (Ubiquinone / $Q_{10}$) & Ba Trạng Thái Oxy Hóa Khử
+
+Ubiquinone (Coenzyme Q) là một phân tử lipid kỵ nước mạnh, di chuyển tự do với tốc độ cực nhanh bên trong lõi hydrocarbon của lớp kép lipid IMM:
+
+```
+        O                               O•                              OH
+        ║                               │                               │
+     [Ring] ──► +e-, +H+ ───►        [Ring] ──► +e-, +H+ ───►        [Ring]
+        ║                               ║                               │
+        O                               O                               OH
+   Ubiquinone (Q)               Semiquinone radical (•Q-)        Ubiquinol (QH2)
+ (Oxy hóa hoàn toàn)                (Bán khử tự do)               (Khử hoàn toàn)
+```
+
+- **Cấu trúc hóa học**: Gồm vòng **benzoquinone** phân cực gắn với một đuôi hydrocarbon cực dài gồm **10 đơn vị isoprenoid** ($Q_{10}$ ở người). Đuôi kỵ nước này neo giữ phân tử trong lòng màng lipid, biến nó thành một "bể chứa" điện tử linh động kết nối Phức hợp I, Phức hợp II với Phức hợp III.
+- **Chiếc cầu nối chuyển đổi $2e^- \rightarrow 1e^-$**: Coenzyme Q là mắt xích bắt buộc giúp chuyển đổi dòng chảy từ các chất cho 2 điện tử ($NADH, FADH_2$) sang các chất nhận chỉ 1 điện tử (Cytochromes) nhờ 3 trạng thái:
+  1. **Ubiquinone (Q)**: Dạng oxy hóa hoàn toàn với 2 nhóm carbonyl keto.
+  2. **Semiquinone radical ($\text{Q}^{\bullet-}$ hoặc $\text{QH}^\bullet$)**: Dạng bán khử nhận $1e^- + 1H^+$, gốc tự do trung gian tồn tại ổn định nhờ cộng hưởng trên vòng quinone.
+  3. **Ubiquinol ($\text{QH}_2$)**: Dạng khử hoàn toàn nhận $2e^- + 2H^+$, mang 2 nhóm hydroxyl phân cực.
+
+---
+
+## 3. Hệ Thống Thoi Vận Chuyển NADH Bào Tương (NADH Shuttles) {#sec-3}
+
+Quá trình đường phân (*Glycolysis*) tại bào tương liên tục tạo ra đương lượng khử $NADH$. Tuy nhiên, **màng trong ty thể hoàn toàn không có chất vận chuyển cho NADH** (không thấm đối với cả $NADH$ lẫn $NAD^+$). Để đưa điện tử từ $NADH$ bào tương vào chuỗi hô hấp trong chất nền ty thể, tế bào sử dụng hai hệ thống thoi vận chuyển chuyên biệt:
+
+<div class="flow-container">
+  <div style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 1.02rem; color: var(--color-text); margin-bottom: 0.35rem;">
+    Figure 1. Sơ Đồ Hai Hệ Thống Thoi Vận Chuyển Điện Tương Đương Khử NADH
   </div>
+  <div style="font-size: 0.84rem; color: var(--color-text-muted); margin-bottom: 1.25rem;">
+    So sánh con đường vận chuyển điện tử, đích đến tại màng ty thể và hiệu suất tổng hợp ATP:
+  </div>
+
+  <div class="flow-step-grid">
+    <div class="flow-step-card c-kali">
+      <div class="flow-step-num">THOI 01 • TIM, GAN, THẬN</div>
+      <div class="flow-step-title">Thoi Malate - Aspartate</div>
+      <div class="flow-step-desc">
+        Chuyển điện tử từ NADH bào tương vào <strong>NADH ty thể</strong> qua cặp đối vận Malate/α-KG và Aspartate/Glutamate. Đi vào <strong>Phức hợp I</strong>.
+      </div>
+      <div class="flow-step-impact">
+        <i class="fa-solid fa-bolt"></i> Hiệu suất tối đa: <strong>2.5 ATP / NADH</strong>
+      </div>
+    </div>
+
+    <div class="flow-step-card c-magie">
+      <div class="flow-step-num">THOI 02 • CƠ VÂN &amp; NÃO</div>
+      <div class="flow-step-title">Thoi Glycerol-3-Phosphate</div>
+      <div class="flow-step-desc">
+        Khử DHAP thành G3P; G3P Dehydrogenase ty thể gắn FAD oxy hóa G3P và chuyển thẳng điện tử vào <strong>Coenzyme Q</strong> (bỏ qua Phức hợp I).
+      </div>
+      <div class="flow-step-impact">
+        <i class="fa-solid fa-gauge-high"></i> Tốc độ cực nhanh: <strong>1.5 ATP / NADH</strong>
+      </div>
+    </div>
+  </div>
+</div>
+
+### A. Thoi Malate - Aspartate (Malate - Aspartate Shuttle)
+
+- **Phân bố mô**: Hoạt động chủ yếu ở **tim, gan và thận** – những cơ quan có nhu cầu bảo toàn năng lượng tối đa.
+- **Cơ chế 5 bước qua màng trong ty thể**:
+  1. Tại bào tương, enzyme **Malate Dehydrogenase bào tương ($\text{MDH}_c$)** sử dụng $NADH$ bào tương để khử oxaloacetate thành **Malate**.
+  2. Malate đi qua IMM vào chất nền ty thể qua protein đối vận **Malate - $\alpha$-Ketoglutarate translocase**.
+  3. Tại chất nền, **Malate Dehydrogenase ty thể ($\text{MDH}_m$)** oxy hóa malate tái tạo oxaloacetate, đồng thời khử $NAD^+$ ty thể thành **NADH**. Phân tử NADH ty thể này lập tức đi vào Phức hợp I của Chuỗi hô hấp.
+  4. Để quay vòng cơ chất (vì oxaloacetate không thể qua IMM), oxaloacetate ty thể nhận nhóm amin từ glutamate để tạo **Aspartate** và $\alpha$-ketoglutarate (xúc tác bởi **Aspartate Aminotransferase - AST**).
+  5. Aspartate được vận chuyển ra bào tương qua protein đối vận **Glutamate - Aspartate translocase** để tái tạo lại oxaloacetate bào tương.
+- **Hiệu suất sinh học**: Vì điện tử tái sinh trực tiếp thành $NADH$ trong chất nền và đi vào Phức hợp I (bơm đủ $10\text{ H}^+$), thoi này bảo tồn nguyên vẹn năng lượng, mang lại **2.5 ATP cho mỗi phân tử NADH bào tương**.
+
+---
+
+### B. Thoi Glycerol-3-Phosphate (Glycerol-3-Phosphate Shuttle)
+
+- **Phân bố mô**: Hoạt động chủ yếu ở **cơ vân và não** – nơi cần tốc độ tái tạo $NAD^+$ cực nhanh để duy trì cường độ đường phân tối đa.
+- **Cơ chế vận hành**:
+  1. Tại bào tương, enzyme **Glycerol-3-Phosphate Dehydrogenase bào tương** dùng $NADH$ bào tương để khử dihydroxyacetone phosphate (DHAP) thành **Glycerol-3-phosphate (G3P)**.
+  2. G3P khuếch tán qua OMM đến mặt ngoài của IMM. Tại đây, nó bị oxy hóa ngược lại thành DHAP bởi **Glycerol-3-phosphate Dehydrogenase ty thể** (gắn chặt ở mặt ngoài IMM hướng ra IMS).
+  3. Enzyme ty thể này sử dụng nhóm ngoại **FAD** để nhận điện tử từ G3P, sau đó chuyển giao trực tiếp điện tử vào hồ chứa **Coenzyme Q (Ubiquinone)** của chuỗi hô hấp mà không đi qua Phức hợp I.
+- **Hiệu suất sinh học**: Do dòng điện tử bỏ qua bước bơm 4 proton của Phức hợp I và đổ thẳng vào Coenzyme Q tương đương Phức hợp II (chỉ bơm $6\text{ H}^+$ tại Phức hợp III và IV), thoi này chỉ mang lại **1.5 ATP cho mỗi phân tử NADH bào tương**.
+
+<div class="table-responsive">
+  <table class="table-modern">
+    <thead>
+      <tr>
+        <th style="width: 25%;">Đặc Điểm Đối Sánh</th>
+        <th style="width: 37%;">Thoi Malate - Aspartate</th>
+        <th style="width: 38%;">Thoi Glycerol-3-Phosphate</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Phân bố mô chính</strong></td>
+        <td><span class="rx-tag preferred">Tim, Gan, Thận</span></td>
+        <td><span class="rx-tag warning">Cơ vân, Não</span></td>
+      </tr>
+      <tr>
+        <td><strong>Enzyme xúc tác chính</strong></td>
+        <td>Malate Dehydrogenase (MDH) &amp; AST</td>
+        <td>Glycerol-3-Phosphate Dehydrogenase (G3PDH)</td>
+      </tr>
+      <tr>
+        <td><strong>Chất mang qua màng IMM</strong></td>
+        <td>Malate / $\alpha$-Ketoglutarate &amp; Aspartate / Glutamate</td>
+        <td>Không cần qua IMM (G3PDH gắn mặt ngoài IMM)</td>
+      </tr>
+      <tr>
+        <td><strong>Điểm đổ vào Chuỗi Hô Hấp</strong></td>
+        <td><strong>Phức hợp I</strong> (Dưới dạng NADH ty thể)</td>
+        <td><strong>Coenzyme Q</strong> (Dưới dạng $\text{FADH}_2$)</td>
+      </tr>
+      <tr>
+        <td><strong>Số Proton $H^+$ được bơm</strong></td>
+        <td><span class="rx-tag preferred"><strong>10 H⁺</strong> (Qua Complex I, III, IV)</span></td>
+        <td><span class="rx-tag danger"><strong>6 H⁺</strong> (Chỉ qua Complex III, IV)</span></td>
+      </tr>
+      <tr>
+        <td><strong>Năng lượng ATP thu được</strong></td>
+        <td><span class="rx-tag preferred"><strong>2.5 ATP / NADH</strong> (Tối đa)</span></td>
+        <td><span class="rx-tag warning"><strong>1.5 ATP / NADH</strong> (Bớt 1 ATP nhưng tốc độ nhanh)</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+---
+
+## 4. Phức Hợp III (Chu Trình Q), Cytochrome c & Phức Hợp IV {#sec-4}
+
+```
+                 [KHOẢNG GIAN MÀNG - IMS] (Phía P tích điện dương)
+                      ▲                      ▲                     ▲
+              2 H+ ───┤                      ├─── 2 H+        2 H+ ├──────── Bơm Water wire
+                      │  (Vòng 1)   (Vòng 2) │                     │
+                  [ Vị trí Qo ]              [ Vị trí Qo ]    [ Phức hợp IV ]
+                    QH2 (1) ──► Rieske Fe-S ──► Cyt c1 ──► Cyt c ──► CuA ──► Heme a ──► [a3-CuB]
+                      │                                                                   │
+                      ▼ e- (Heme bL ──► Heme bH)                                   O2 + 4H+ ──► 2 H2O
+                  [ Vị trí Qi ]
+                    Q ──► Semiquinone (•Q-) ──► QH2 tái sinh (từ 2 H+ Matrix)
+                      ▲
+                      └──────────────────────── 2 H+ (Chất nền)
+                 [CHẤT NỀN TY THỂ - MATRIX] (Phía N tích điện âm)
+```
+
+### A. Phức Hợp III: Ubiquinol:Cytochrome c Oxidoreductase (Cytochrome $bc_1$ Complex)
+
+Phức hợp III tồn tại dưới dạng một **dimer đối xứng**, mỗi monomer gồm **11 tiểu đơn vị protein** với 3 tiểu đơn vị xúc tác cốt lõi:
+
+1. **Cấu trúc 3 tiểu đơn vị chức năng**:
+   - **Cytochrome b**: Protein kỵ nước lớn nhất, chứa hai nhóm Heme bất đối xứng: **Heme $b_L$** (low potential, $E^{0\prime} \approx -0.01\text{ V}$) nằm sát phía IMS, và **Heme $b_H$** (high potential, $E^{0\prime} \approx +0.03\text{ V}$) nằm sát phía chất nền. Chứa hai vị trí gắn quinone: **Vị trí $Q_o$** (hướng ra IMS) và **Vị trí $Q_i$** (hướng vào chất nền).
+   - **Protein Sắt-Lưu huỳnh Rieske (ISP)**: Chứa cụm $[2\text{Fe}-2\text{S}]$ độc đáo phối trí bởi **$2\text{ Cysteine} + 2\text{ Histidine}$**, đẩy thế khử lên rất dương ($E^{0\prime} \approx +0.28\text{ V}$). Đầu xúc tác của ISP di chuyển linh động (quay/tịnh tiến một khoảng cách $22\text{ \AA}$) giữa vị trí $Q_o$ và Cytochrome $c_1$.
+   - **Cytochrome $c_1$**: Protein màng chứa nhóm Heme c gắn cộng hóa trị nhô ra IMS, nhận điện tử từ ISP để chuyển cho Cytochrome c di động.
+
+2. **Cơ Chế Chu Trình Q (The Q Cycle) Qua 2 Vòng**:
+   - **Vòng 1 (Round 1)**:
+     - Phân tử $\text{QH}_2$ thứ nhất gắn vào vị trí $Q_o$, bị oxy hóa và giải phóng **2 proton ($H^+$) vào IMS**.
+     - *Phân tách điện tử*: Điện tử thứ nhất ($1e^-$) truyền qua Rieske ISP $\rightarrow$ Cytochrome $c_1 \rightarrow$ khử 1 phân tử **Cytochrome c ($\text{Fe}^{3+} \rightarrow \text{Fe}^{2+}$)**. Điện tử thứ hai ($1e^-$) truyền qua Heme $b_L \rightarrow$ Heme $b_H \rightarrow$ khử phân tử $Q$ tại vị trí $Q_i$ tạo thành **Semiquinone radical ($\text{Q}^{\bullet-}$)** kẹp giữ tại $Q_i$.
+   - **Vòng 2 (Round 2)**:
+     - Phân tử $\text{QH}_2$ thứ hai gắn vào vị trí $Q_o$, bị oxy hóa giải phóng tiếp **2 proton ($H^+$) vào IMS**.
+     - Điện tử thứ nhất ($1e^-$) tiếp tục khử phân tử **Cytochrome c thứ hai**.
+     - Điện tử thứ hai ($1e^-$) truyền qua Heme $b_L \rightarrow$ Heme $b_H \rightarrow$ chuyển xuống Semiquinone radical ($\text{Q}^{\bullet-}$) tại $Q_i$. Đồng thời, nó **thu nhận 2 proton ($H^+$) từ chất nền ty thể** để tái sinh hoàn chỉnh một phân tử **$\text{QH}_2$** trả lại màng lipid.
+   - **Phương trình phản ứng ròng tổng quát**:
+     $$\text{QH}_2 + 2\text{ Cyt } c\ (\text{Fe}^{3+}) + 2\text{H}^+_{\text{matrix}} \xrightarrow{\text{Complex III}} \text{Q} + 2\text{ Cyt } c\ (\text{Fe}^{2+}) + 4\text{H}^+_{\text{IMS}}$$
+   - **Hiệu quả**: Tiêu thụ ròng $1\text{ QH}_2$, khử $2\text{ Cyt } c$, và **bơm ròng 4 proton ($H^+$) ra khoảng gian màng** cho mỗi cặp điện tử ($\Delta G^{0\prime} \approx -36.7\text{ kJ/mol}$).
+
+---
+
+### B. Cytochrome c: Chất Mang Điện Tử Di Động Ngoại Vi & Ngòi Nổ Apoptosis
+
+1. **Cấu trúc lý hóa**:
+   - Là một protein đơn chuỗi nhỏ (104 acid amin ở người), tan trong nước, bám lỏng lẻo ở mặt ngoài của IMM hướng ra IMS.
+   - Nhóm ngoại **Heme C** liên kết cộng hóa trị với chuỗi polypeptide qua **hai cầu nối thioester** với Cysteine 14 và Cysteine 17.
+   - Nguyên tử sắt ở trung tâm Heme C được phối trí hệ sáu (hexacoordinated) bởi 4 nguyên tử N của porphyrin, **Histidine 18** và **Methionine 80**. Cấu trúc đóng kín này ngăn không cho oxy gắn trực tiếp vào sắt, đảm bảo sắt chỉ làm nhiệm vụ chuyển giao $1e^-$ thuần túy ($\text{Fe}^{3+} + e^- \rightleftharpoons \text{Fe}^{2+}$).
+   - Bề mặt chứa một vành đai các gốc **Lysine tích điện dương** giúp nó gắn kết tĩnh điện linh hoạt luân chuyển giữa Phức hợp III (Cytochrome $c_1$) và Phức hợp IV (Subunit II).
+
+<BiochemAlert type="pearl" title="Ý Nghĩa Lâm Sàng: Cytochrome c & Ngòi Nổ Chết Rụng Tế Bào (Apoptosis)">
+  Khi tế bào chịu các stress oxy hóa nặng, tổn thương màng ty thể làm giải phóng <strong>Cytochrome c từ IMS rò rỉ ra bào tương</strong>. Tại bào tương, Cytochrome c gắn với <strong>Apaf-1</strong> và dATP để lắp ráp siêu phức hợp <strong>Apoptosome</strong> hình bánh xe. Apoptosome tiến hành cắt và hoạt hóa <strong>Procaspase-9 thành Caspase-9</strong>, kích hoạt dòng thác Caspase hủy diệt tế bào (Apoptosis nội sinh).
 </BiochemAlert>
-  <ol style="margin: 0; padding-left: 1.25rem; line-height: 1.8; color: var(--color-text-muted, #475569); font-size: 0.88rem;">
-    <li><strong>Rodwell, V. W. et al. (2022)</strong>. <em>Harper's Illustrated Biochemistry</em> (32nd ed.). McGraw-Hill Education.</li>
-    <li><strong>Ferrier, D. R. (2021)</strong>. <em>Lippincott Illustrated Reviews: Biochemistry</em> (8th ed.). Wolters Kluwer.</li>
-    <li><strong>Rifai, N. et al. (2018)</strong>. <em>Tietz Textbook of Clinical Chemistry and Molecular Diagnostics</em> (6th ed.). Elsevier.</li>
+
+---
+
+### C. Phức Hợp IV: Cytochrome c Oxidase
+
+Phức hợp IV là enzyme tận cùng của chuỗi hô hấp tế bào, thu nhận các điện tử từ Cytochrome c để khử hoàn toàn phân tử oxy ($O_2$) thành các phân tử nước ($H_2O$):
+
+1. **Cấu trúc 13 tiểu đơn vị (3 tiểu đơn vị cốt lõi mã hóa từ mtDNA)**:
+   - **Subunit I**: Lõi kỵ nước khổng lồ chứa 12 chuỗi xoắn $\alpha$, tích hợp **Heme a**, **Heme $a_3$** và ion đồng **$\text{Cu}_B$**. Heme $a_3$ và $\text{Cu}_B$ phối trí sát nhau tạo thành **Trung tâm lưỡng kim hạt nhân (Binuclear Center $[\text{Heme } a_3 - \text{Cu}_B]$)** – đích nhắm duy nhất khử oxy phân tử.
+   - **Subunit II**: Chứa cấu trúc thùng gấp nếp $\beta$ nhô ra IMS mang vị trí gắn tĩnh điện với Cytochrome c và trung tâm đồng **$\text{Cu}_A$** (gồm 2 nguyên tử Cu phối trí chung) nhận $1e^-$ đầu tiên từ Cytochrome c.
+   - **Subunit III**: 7 chuỗi xoắn $\alpha$ xuyên màng, đóng vai trò lắp ráp và ổn định Subunit I và II.
+
+2. **Cơ chế khử $O_2 \rightarrow 2H_2O$ không sinh ROS**:
+   - Trình tự truyền điện tử: $\text{Cyt } c \rightarrow \text{Cu}_A \rightarrow \text{Heme } a \rightarrow [\text{Heme } a_3 - \text{Cu}_B]$.
+   - Khi cả Heme $a_3$ ($\text{Fe}^{2+}$) và $\text{Cu}_B$ ($\text{Cu}^+$) ở trạng thái khử hoàn toàn, 1 phân tử $O_2$ đi vào kẹp giữa Fe và Cu.
+   - Điện tử chuyển tức thời làm bẻ gãy liên kết $O=O$, tạo dạng trung gian **Ferryl ($\text{Fe}^{4+}=\text{O}^{2-}$)** và **$\text{Cu}_B^{2+}-\text{OH}^-$** với sự trợ giúp của gốc Tyr 244. Bằng cách giữ chặt các gốc oxy trung gian trong túi xúc tác cho đến khi nhận đủ $4e^-$ và $4H^+$, enzyme **ngăn chặn hoàn toàn sự giải phóng các gốc tự do superoxide hay peroxide cực độc**.
+   $$\text{O}_2 + 4\text{H}^+_{\text{matrix}} + 4e^- \xrightarrow{\text{Complex IV}} 2\text{H}_2\text{O}$$
+
+3. **Cơ chế bơm Proton "Dây Nước" (Water Wire / Grotthuss Mechanism)**:
+   - Năng lượng tự do giải phóng lớn ($\Delta G^{0\prime} \approx -110\text{ kJ/mol}$ cho mỗi cặp $e^-$) được dùng để **bơm chủ động 2 proton ($H^+$)** từ chất nền ra IMS thông qua các kênh dẫn được lót bởi một chuỗi phân tử nước liên kết hydro thẳng hàng (Dây nước).
+   - **Tổng kết trên 1 cặp điện tử ($2e^-$)**: Phức hợp IV trực tiếp **bơm 2 proton ($H^+$) chủ động** ra IMS và **tiêu thụ 2 proton ($H^+$)** trong chất nền để tạo nước.
+
+---
+
+## 5. Siêu Phức Hợp (Respirasomes) & Động Cơ Phân Tử ATP Synthase {#sec-5}
+
+```
+                     [KHOẢNG GIAN MÀNG - IMS] (Nồng độ H+ cao, tích điện dương)
+                                      │
+                                      ▼ [ Dòng H+ đi vào nửa kênh a ]
+                     ┌────────────────┴────────────────┐
+                     │   Phần Fo (Rotor vòng c quay)   │ ◄─── Chặn bởi Oligomycin
+                     └────────────────┬────────────────┘
+                                      │ [ Truyền mô-men quay qua trục γ ]
+                     ┌────────────────▼────────────────┐
+                     │   Phần F1 (Đầu catalytic α3β3)  │ ◄─── Paul Boyer: O ──► L ──► T
+                     └────────────────┬────────────────┘
+                                      ▼
+                                ADP + Pi ──► ATP (Giải phóng vào Matrix)
+                     [CHẤT NỀN TY THỂ - MATRIX] (Nồng độ H+ thấp, tích điện âm)
+```
+
+### A. Sự Tổ Chức Siêu Phức Hợp Hô Hấp (Respirasomes)
+
+Nghiên cứu cấu trúc hiển vi điện tử đông lạnh Cryo-EM chứng minh các phức hợp hô hấp không trôi nổi tự do riêng rẽ mà liên kết vật lý chặt chẽ với nhau tạo thành các đại siêu cấu trúc gọi là **Respirasomes**:
+- Cấu trúc phổ biến nhất ở màng trong ty thể cơ tim là **$\text{I}_1\text{III}_2\text{IV}_1$** (1 Phức hợp I + 1 dimer Phức hợp III + 1 Phức hợp IV).
+- **Ý nghĩa sinh học**:
+  1. **Dẫn kênh cơ chất (Substrate Channeling)**: Giảm thiểu tối đa cự ly khuếch tán của Coenzyme Q và Cytochrome c, biến dòng truyền điện tử thành một mạch kín hoạt động với tốc độ cực đại.
+  2. **Hạn chế Stress Oxy Hóa (ROS)**: Ngăn chặn tối đa sự rò rỉ điện tử ra lipid màng tại vị trí semiquinone radical của Phức hợp I và III, triệt tiêu sự hình thành gốc **Superoxide ($O_2^{\bullet-}$)** gây lão hóa và hoại tử tế bào.
+
+---
+
+### B. Thuyết Hóa Thẩm Peter Mitchell & Lực Đẩy Proton (PMF)
+
+- **Thuyết Hóa Thẩm (Chemiosmotic Hypothesis)**: Được Peter Mitchell đề xuất năm 1961 (Nobel Hóa học 1978), chỉ ra rằng năng lượng giải phóng từ dòng điện tử được bảo tồn dưới dạng một gradient điện hóa proton xuyên màng IMM.
+- **Lực đẩy Proton (Protonmotive Force - PMF / $\Delta p$)**: Là thế năng tổng hợp thúc đẩy proton chảy ngược vào chất nền, gồm hai thành phần:
+
+$$\Delta p = \Delta \psi - \frac{2.303 RT}{F}\Delta\text{pH}$$
+
+- **Điện thế màng ($\Delta \psi$)**: Chênh lệch điện tích cực lớn làm mặt trong IMM tích điện âm mạnh (tụ điện sinh học đạt **-140 mV đến -180 mV**).
+- **Dốc nồng độ hóa học ($\Delta\text{pH}$)**: Chênh lệch pH giữa chất nền (pH $\approx$ 7.8 – 8.0) và khoảng gian màng (pH $\approx$ 7.0 – 7.2).
+- Giá trị PMF thực tế trong ty thể sống đạt khoảng **~200 mV**, hoạt động như một đập thủy điện tích trữ năng lượng khổng lồ.
+
+---
+
+### C. Cấu Trúc Động Cơ Phân Tử $F_0F_1$-ATP Synthase (Phức Hợp V)
+
+Phức hợp V là một siêu động cơ quay sinh học nano gồm hai phần chức năng kết nối cơ học:
+
+1. **Phần $F_0$ (Động cơ dòng chảy xuyên màng)**:
+   - **Vòng rotor c (c-ring)**: Gồm **8 tiểu đơn vị c** ở động vật có vú xếp hình trụ rỗng quay tự do trong màng lipid. Mỗi tiểu đơn vị c chứa một gốc acid amin carboxylate (**Aspartate hoặc Glutamate**) ở giữa chuỗi xoắn xuyên màng, hoạt động như "ghế ngồi" gắn nhận proton.
+   - **Tiểu đơn vị stator a**: Nằm cố định cạnh vòng c, chứa **hai nửa kênh dẫn proton bất đối xứng (half-channels)**: một nửa kênh chỉ mở ra phía IMS, nửa kênh còn lại chỉ mở ra phía chất nền.
+   - **Cánh tay stator b (stalk ngoại vi)**: Các chuỗi polypeptide dài ($b_2, \delta$) kẹp giữ cố định đầu catalytic $F_1$, ngăn không cho đầu này tự do quay theo rotor.
+
+2. **Phần $F_1$ (Đầu máy tổng hợp hóa học nhô vào chất nền)**:
+   - **Hexamer $\alpha_3\beta_3$**: Gồm 3 tiểu đơn vị $\alpha$ và 3 tiểu đơn vị $\beta$ xếp xen kẽ như múi cam. **Chỉ 3 tiểu đơn vị $\beta$ mang trung tâm xúc tác tổng hợp ATP**.
+   - **Trục quay trung tâm $\gamma$ (và $\epsilon$)**: Trục protein xoắn bất đối xứng cắm từ vòng c-ring xuyên vào tâm rỗng của hexamer $\alpha_3\beta_3$, quay đồng bộ 100% cùng vòng c.
+
+---
+
+### D. Cơ Chế Quay "Thay Đổi Liên Kết" Của Paul Boyer (Binding Change Mechanism)
+
+Được Paul Boyer đề xuất (Nobel Hóa học 1997), cơ chế mô tả sự biến đổi năng lượng cơ học quay của trục $\gamma$ thành hóa năng trong liên kết ATP:
+
+```
+      [ Trạng thái O ]             [ Trạng thái L ]             [ Trạng thái T ]
+     Ái lực nucleotide thấp       Kẹp giữ lỏng lẻo             Ép chặt ADP + Pi
+     - Giải phóng ATP             - Nhận ADP và Pi             - Tự phát tạo liên kết ATP
+     - Nhận ADP + Pi mới          - Chờ chuyển cấu hình        - Không cần năng lượng
+            │                            │                            │
+            ▼ Quay 120°                  ▼ Quay 120°                  ▼ Quay 120°
+      (Trở thành L)                (Trở thành T)                (Trở thành O)
+```
+
+1. **3 Trạng thái không gian của tiểu đơn vị $\beta$**:
+   - **Trạng thái O (Open - Mở)**: Ái lực rất thấp; giải phóng phân tử ATP vừa tạo thành ra chất nền và tiếp nhận 1 phân tử ADP + $P_i$ mới.
+   - **Trạng thái L (Loose - Lỏng lẻo)**: Kẹp giữ ADP và $P_i$ lỏng lẻo trong túi hoạt động, ngăn phân ly tự do.
+   - **Trạng thái T (Tight - Chặt chẽ)**: Trục $\gamma$ quay ép chặt túi xúc tác, đưa ADP và $P_i$ lại cực gần nhau, thúc đẩy phản ứng ngưng tụ **tự phát tạo liên kết ATP** mà không cần cung cấp thêm năng lượng.
+2. **Động học quay**: Khi dòng proton chảy qua $F_0$ làm quay c-ring và trục $\gamma$ một góc **$120^\circ$**, tương tác bất đối xứng của trục $\gamma$ cưỡng chế 3 tiểu đơn vị $\beta$ đồng thời đổi cấu hình:
+   $$\text{Trạng thái L} \rightarrow \text{Trạng thái T} \quad \text{;} \quad \text{Trạng thái T} \rightarrow \text{Trạng thái O} \quad \text{;} \quad \text{Trạng thái O} \rightarrow \text{Trạng thái L}$$
+3. **Kết quả**: Khi trục $\gamma$ hoàn thành một vòng quay trọn vẹn **$360^\circ$** (gồm 3 bước nhảy $120^\circ$), cả 3 tiểu đơn vị $\beta$ hoàn thành chu kỳ xúc tác, giải phóng ròng **3 phân tử ATP** vào chất nền.
+
+---
+
+### E. Chi Phí Proton Thực Tế & Tỷ Số P:O Chuẩn
+
+1. **Chi phí cơ học của vòng c**: Vòng c người chứa **8 tiểu đơn vị c**, cần đúng **8 proton ($H^+$)** đi qua màng để quay rotor $360^\circ$ và tổng hợp **3 ATP**:
+   $$\text{Chi phí cơ học} = \frac{8\text{ proton}}{3\text{ ATP}} \approx 2.67\text{ H}^+/\text{ATP}$$
+
+2. **Chi phí vận chuyển chất qua màng**:
+   - **Adenine Nucleotide Translocase (ANT)**: Đưa $\text{ATP}^{4-}$ ra ngoài và $\text{ADP}^{3-}$ vào trong, tiêu tốn thế năng điện màng tương đương **~0.7 H⁺**.
+   - **Phosphate Translocase**: Đồng vận chuyển $\text{H}_2\text{PO}_4^-$ cùng **1 H⁺** vào chất nền.
+   - **Tổng chi phí vận chuyển**: Đúng **1 proton ($1\text{ H}^+$) cho mỗi ATP**.
+
+3. **Tổng chi phí năng lượng ròng**:
+   $$\text{Chi phí tổng hợp ròng} \approx 2.67 + 1.0 = \mathbf{3.67\text{ H}^+/\text{ATP} \approx 4.0\text{ H}^+/\text{ATP}}$$
+
+4. **Tỷ số P:O (Phosphate/Oxygen)**:
+   - **Đối với NADH ty thể** (Bơm $10\text{ H}^+$):
+     $$\text{Tỷ số P:O} = \frac{10\text{ H}^+}{4\text{ H}^+/\text{ATP}} = \mathbf{2.5\text{ ATP / NADH}}$$
+   - **Đối với $\text{FADH}_2$ / Succinate / Glycerol-3-P** (Bơm $6\text{ H}^+$):
+     $$\text{Tỷ số P:O} = \frac{6\text{ H}^+}{4\text{ H}^+/\text{ATP}} = \mathbf{1.5\text{ ATP / FADH}_2}$$
+
+---
+
+## 6. Các Độc Chất Ức Chế ETC, ATP Synthase & Chất Phá Ghép (Uncouplers) {#sec-6}
+
+Việc nghiên cứu các độc chất hóa học đóng vai trò then chốt trong việc làm sáng tỏ cơ chế truyền điện tử và có ý nghĩa cấp cứu hồi sức y khoa tối quan trọng:
+
+```
+    NADH ──► Complex I ──► Coenzyme Q ──► Complex III ──► Cytochrome c ──► Complex IV ──► O2
+                │                                │                             │
+   [ỨC CHẾ]: Rotenone,                       Antimycin A                   Cyanide (CN-),
+             Amytal                                                        CO, Azide (N3-)
+```
+
+<div class="matrix-grid">
+  <div class="matrix-card">
+    <div class="matrix-card-title">
+      <span>1. Ức Chế Phức Hợp I</span>
+      <span class="rx-tag danger">Rotenone, Amytal</span>
+    </div>
+    <div class="matrix-card-desc">
+      Khóa vị trí truyền điện tử từ Fe-S sang Coenzyme Q. Chặn đứng oxy hóa cơ chất phụ thuộc NAD+. <strong>Succinate có thể bypass</strong> qua Phức hợp II để duy trì hô hấp.
+    </div>
+  </div>
+
+  <div class="matrix-card">
+    <div class="matrix-card-title">
+      <span>2. Ức Chế Phức Hợp III</span>
+      <span class="rx-tag danger">Antimycin A, Myxothiazol</span>
+    </div>
+    <div class="matrix-card-desc">
+      Antimycin A khóa vị trí $Q_i$ (chặn Heme $b_H \rightarrow \text{Q}^{\bullet-}$); Myxothiazol khóa $Q_o$. Làm đóng băng toàn bộ ETC. Chỉ có <strong>Ascorbate (Vitamin C)</strong> có thể cứu vãn bằng cách hiến điện tử trực tiếp cho Cytochrome c.
+    </div>
+  </div>
+
+  <div class="matrix-card">
+    <div class="matrix-card-title">
+      <span>3. Ức Chế Phức Hợp IV (Tối Cấp)</span>
+      <span class="rx-tag danger">Cyanide, CO, Azide, H₂S</span>
+    </div>
+    <div class="matrix-card-desc">
+      <strong>Cyanide ($CN^-$)</strong> gắn ái lực cực cao vào $\text{Fe}^{3+}$ của Heme $a_3$; <strong>CO</strong> gắn vào $\text{Fe}^{2+}$ của Heme $a_3$. Chặn đứng hoàn toàn khử Oxy, gây tử vong cấp do suy sụp ATP toàn thân.
+    </div>
+  </div>
+
+  <div class="matrix-card">
+    <div class="matrix-card-title">
+      <span>4. Ức Chế ATP Synthase</span>
+      <span class="rx-tag warning">Oligomycin, Atractyloside</span>
+    </div>
+    <div class="matrix-card-desc">
+      <strong>Oligomycin</strong> bít kín kênh $F_0$ (c-ring), dừng tạo ATP. Tích tụ PMF cực đại tạo phản áp tĩnh điện làm <strong>dừng luôn dòng ETC (Kiểm soát hô hấp)</strong>. DNP có thể kích hoạt lại ETC mà không tạo ATP.
+    </div>
+  </div>
+</div>
+
+### A. Phác Đồ Cấp Cứu Giải Độc Cyanide ($CN^-$)
+
+<BiochemAlert type="danger" title="Cấp Cứu Y Khoa: Cơ Chế & Phác Đồ Giải Độc Cyanide">
+  Khi ngộ độc Cyanide, bệnh nhân rơi vào trạng thái ngạt tế bào tối cấp (máu động mạch đỏ tươi, $PaO_2$ bình thường nhưng mô không thể sử dụng oxy, $ScvO_2$ tăng vọt, toan Lactic máu cực nặng).
+  <br />
+  <strong>Phác đồ hồi sức giải độc chuẩn:</strong>
+  <ol style="margin-top: 0.5rem; padding-left: 1.25rem;">
+    <li><strong>Amyl Nitrite / Sodium Nitrite (IV)</strong>: Oxy hóa một lượng nhỏ sắt $\text{Fe}^{2+}$ của Hemoglobin trong máu thành <strong>Methemoglobin ($\text{Fe}^{3+}$)</strong>. Methemoglobin có ái lực với $CN^-$ mạnh hơn Heme $a_3$, hoạt động như một "mồi nhử" hút $CN^-$ ra khỏi ty thể, giải phóng Phức hợp IV hoạt động trở lại.</li>
+    <li><strong>Sodium Thiosulfate (IV)</strong>: Cung cấp gốc lưu huỳnh để enzyme <strong>Rhodanese</strong> tại gan chuyển hóa Cyanide thành <strong>Thiocyanate ($\text{SCN}^-$)</strong> không độc, đào thải an toàn qua nước tiểu.</li>
+    <li><strong>Hydroxocobalamin (Vitamin B12a)</strong>: Phối hợp gắn trực tiếp với Cyanide tạo thành <strong>Cyanocobalamin (Vitamin B12)</strong> đào thải qua thận.</li>
+  </ol>
+</BiochemAlert>
+
+---
+
+### B. Các Chất Phá Ghép (Uncouplers) Hóa Học & Sinh Lý
+
+Chất phá ghép là các tác nhân phá vỡ sự ghép cặp giữa Chuỗi truyền điện tử (ETC) và sự tổng hợp ATP bằng cách **triệt tiêu gradient nồng độ proton qua màng IMM**:
+
+```
+[KHOẢNG GIAN MÀNG - IMS]      MÀNG TRONG TY THỂ (IMM)      [CHẤT NỀN - MATRIX]
+     DNP-H (Proton hóa) ─────────► (Khuếch tán tự do) ─────────► DNP- + H+ (Nhả proton)
+         ▲                                                               │
+         └──────────────── (DNP- khuếch tán ngược lại) ─────────────────┘
+                            (TRIỆT TIÊU DỐC PROTON PMF)
+```
+
+1. **2,4-Dinitrophenol (DNP) - Chất phá ghép hóa học**:
+   - **Bản chất**: Acid yếu thân lipid kỵ nước ($pK_a \approx 7.2$ sát pH sinh lý). Dạng anion $\text{DNP}^-$ vẫn giữ được tính tan trong lipid nhờ cộng hưởng điện tích âm trên vòng benzene.
+   - **Cơ chế**: Tại IMS (pH acid), DNP nhận proton thành $\text{DNP-H}$, khuếch tán qua IMM vào chất nền (pH kiềm), nhả proton ra chất nền rồi quay trở lại IMS.
+   - **Hệ quả**: PMF sụp đổ hoàn toàn $\rightarrow$ **Không tổng hợp được ATP**; Phản áp bị giải tỏa $\rightarrow$ **ETC chạy tự do với tốc độ tối đa**, tiêu thụ oxy điên cuồng và oxy hóa mọi nguồn dự trữ mỡ/đường; Toàn bộ năng lượng bị **tiêu tán 100% dưới dạng nhiệt năng** $\rightarrow$ Sốt cao ác tính (*Malignant hyperthermia*), suy đa tạng tử vong (từng bị lạm dụng làm thuốc giảm cân thập niên 1930).
+
+2. **Thermogenin (UCP-1) - Chất phá ghép sinh lý sinh nhiệt**:
+   - **Vị trí**: Khu trú đặc hiệu tại màng trong ty thể của **Mô mỡ nâu (Brown Adipose Tissue - BAT)** – cực kỳ dồi dào ở trẻ sơ sinh (vùng vai, gáy, quanh thận, trung thất) và động vật ngủ đông.
+   - **Cơ chế sinh học**: Khi tiếp xúc với lạnh, thần kinh giao cảm phóng thích Norepinephrine kích hoạt thủy phân triglyceride giải phóng acid béo tự do. Acid béo trực tiếp mở kênh proton **Thermogenin (UCP-1)**.
+   - **Ý nghĩa sinh lý**: Dòng proton ồ ạt chảy qua UCP-1 vào chất nền sinh nhiệt sưởi ấm dòng máu. Đây là cơ chế **sinh nhiệt không run cơ (non-shivering thermogenesis)** tối quan trọng bảo vệ trẻ sơ sinh khỏi hạ thân nhiệt tử vong do trẻ chưa có hệ cơ xương hoàn chỉnh để run.
+
+<div class="table-responsive">
+  <table class="table-modern">
+    <thead>
+      <tr>
+        <th style="width: 20%;">Nhóm Độc Chất</th>
+        <th style="width: 25%;">Tác Nhân Điển Hình</th>
+        <th style="width: 20%;">Vị Trí Đích Nhắm</th>
+        <th style="width: 17%;">Tiêu Thụ Oxy ($O_2$)</th>
+        <th style="width: 18%;">Tổng Hợp ATP</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Ức chế Complex I</strong></td>
+        <td>Rotenone, Amytal</td>
+        <td>Fe-S $\rightarrow$ Coenzyme Q</td>
+        <td><span class="rx-tag danger">Giảm mạnh / Dừng</span></td>
+        <td><span class="rx-tag danger">Dừng</span></td>
+      </tr>
+      <tr>
+        <td><strong>Ức chế Complex III</strong></td>
+        <td>Antimycin A, Myxothiazol</td>
+        <td>Vị trí $Q_i$ / $Q_o$ (Cyt b)</td>
+        <td><span class="rx-tag danger">Dừng hoàn toàn</span></td>
+        <td><span class="rx-tag danger">Dừng</span></td>
+      </tr>
+      <tr>
+        <td><strong>Ức chế Complex IV</strong></td>
+        <td>Cyanide ($CN^-$), CO, Azide</td>
+        <td>Heme $a_3\ (\text{Fe}^{3+}/\text{Fe}^{2+})$</td>
+        <td><span class="rx-tag danger">Dừng hoàn toàn</span></td>
+        <td><span class="rx-tag danger">Dừng</span></td>
+      </tr>
+      <tr>
+        <td><strong>Ức chế ATP Synthase</strong></td>
+        <td>Oligomycin</td>
+        <td>Tiểu đơn vị c ($F_0$)</td>
+        <td><span class="rx-tag danger">Dừng (do phản áp)</span></td>
+        <td><span class="rx-tag danger">Dừng</span></td>
+      </tr>
+      <tr>
+        <td><strong>Ức chế Translocase</strong></td>
+        <td>Atractyloside, Bongkrekic acid</td>
+        <td>Adenine Nucleotide Translocase</td>
+        <td><span class="rx-tag danger">Dừng (cạn ADP)</span></td>
+        <td><span class="rx-tag danger">Dừng</span></td>
+      </tr>
+      <tr>
+        <td><strong>Chất Phá Ghép Hóa Học</strong></td>
+        <td>2,4-DNP, FCCP, Aspirin liều cao</td>
+        <td>Triệt tiêu gradient proton IMM</td>
+        <td><span class="rx-tag preferred"><strong>Tăng vọt cực đại</strong></span></td>
+        <td><span class="rx-tag danger"><strong>Bằng 0 (Tỏa nhiệt)</strong></span></td>
+      </tr>
+      <tr>
+        <td><strong>Chất Phá Ghép Sinh Lý</strong></td>
+        <td>Thermogenin (UCP-1)</td>
+        <td>Kênh proton màng mô mỡ nâu</td>
+        <td><span class="rx-tag preferred">Tăng mạnh</span></td>
+        <td><span class="rx-tag warning">Giảm (Sinh nhiệt)</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+---
+
+## 7. Tổng Kết Năng Lượng Sinh Học, Cận Lâm Sàng & Trích Dẫn EBM {#sec-7}
+
+### A. Cân Bằng Năng Lượng Toàn Diện Từ 1 Phân Tử Glucose
+
+<div class="table-responsive">
+  <table class="table-modern">
+    <thead>
+      <tr>
+        <th style="width: 25%;">Giai Đoạn Chuyển Hóa</th>
+        <th style="width: 30%;">Sản Phẩm Trực Tiếp</th>
+        <th style="width: 25%;">Cơ Chế Qua ETC / Thoi</th>
+        <th style="width: 20%;">Số ATP Ròng Thu Được</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td rowspan="2"><strong>1. Đường Phân (Glycolysis)</strong><br /><small>Bào tương</small></td>
+        <td>2 ATP (Phosphoryl hóa mức cơ chất)</td>
+        <td>Trực tiếp</td>
+        <td><strong>2 ATP</strong></td>
+      </tr>
+      <tr>
+        <td>2 NADH bào tương</td>
+        <td>Qua Thoi Malate-Aspartate<br />(Hoặc Thoi Glycerol-3-P)</td>
+        <td><strong>3 hoặc 5 ATP</strong><br /><small>(2 × 1.5 hoặc 2 × 2.5)</small></td>
+      </tr>
+      <tr>
+        <td><strong>2. Phức Hợp PDH (x2)</strong><br /><small>Chất nền ty thể</small></td>
+        <td>2 NADH ty thể</td>
+        <td>Vào Complex I (2 × 2.5 ATP)</td>
+        <td><strong>5 ATP</strong></td>
+      </tr>
+      <tr>
+        <td rowspan="3"><strong>3. Chu Trình Krebs (x2)</strong><br /><small>Chất nền ty thể</small></td>
+        <td>2 GTP (hoặc 2 ATP)</td>
+        <td>Phosphoryl hóa mức cơ chất</td>
+        <td><strong>2 ATP</strong></td>
+      </tr>
+      <tr>
+        <td>6 NADH ty thể</td>
+        <td>Vào Complex I (6 × 2.5 ATP)</td>
+        <td><strong>15 ATP</strong></td>
+      </tr>
+      <tr>
+        <td>2 $\text{FADH}_2$ ty thể</td>
+        <td>Vào Complex II (2 × 1.5 ATP)</td>
+        <td><strong>3 ATP</strong></td>
+      </tr>
+      <tr>
+        <td colspan="3" style="text-align: right; font-weight: 800; color: var(--color-primary);">TỔNG NĂNG LƯỢNG SINH HỌC TOÀN DIỆN:</td>
+        <td><span class="rx-tag preferred" style="font-size: 1rem; font-weight: 800;">30 – 32 ATP</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+---
+
+### B. Chỉ Số Cận Lâm Sàng & Dấu Ấn Sinh Học Theo Dõi EBM
+
+<div class="matrix-grid">
+  <div class="matrix-card">
+    <div class="matrix-card-title">
+      <span>1. Khí Máu Động Mạch (ABG)</span>
+      <span class="rx-tag info">Toan Chuyển Hóa</span>
+    </div>
+    <div class="matrix-card-desc">
+      Đánh giá pH máu ($< 7.35$), $HCO_3^-$ giảm, bù trừ bằng tăng thông khí hạ $PaCO_2$. Khoảng trống Anion ($\text{Anion Gap} = [Na^+] - [Cl^-] - [HCO_3^-] > 12\text{ mEq/L}$) tăng vọt khi chuỗi ETC suy sụp.
+    </div>
+  </div>
+
+  <div class="matrix-card">
+    <div class="matrix-card-title">
+      <span>2. Lactate Máu Động Mạch / Tĩnh Mạch</span>
+      <span class="rx-tag danger">&gt; 2.0 – 4.0 mmol/L</span>
+    </div>
+    <div class="matrix-card-desc">
+      Khi ETC bị phong tỏa (ngộ độc Cyanide, CO, thiếu máu cục bộ mô), $NADH$ ứ đọng đẩy phản ứng chuyển Pyruvate thành Lactate bởi LDH, gây Toan Lactic nặng (Lactic Acidosis Type A hoặc B).
+    </div>
+  </div>
+
+  <div class="matrix-card">
+    <div class="matrix-card-title">
+      <span>3. Bão Hòa Oxy Tĩnh Mạch Trung Tâm ($ScvO_2$)</span>
+      <span class="rx-tag danger">&gt; 85% (Bất Thường)</span>
+    </div>
+    <div class="matrix-card-desc">
+      Trong ngộ độc Cyanide hoặc CO liều cao, máu tĩnh mạch đỏ tươi và $ScvO_2$ tăng rất cao ($> 85\%-90\%$) do mô bị liệt Phức hợp IV không thể trích xuất oxy từ hemoglobin trong mao mạch.
+    </div>
+  </div>
+
+  <div class="matrix-card">
+    <div class="matrix-card-title">
+      <span>4. Co-oximetry Huyết Sắc Tố</span>
+      <span class="rx-tag warning">COHb &amp; MetHb</span>
+    </div>
+    <div class="matrix-card-desc">
+      Định lượng Carboxyhemoglobin ($COHb > 3\%$ ở người không hút thuốc, $> 10\%$ ở người hút thuốc, $> 20\%$ ngộ độc nặng) và Methemoglobin ($MetHb > 2\%$, $> 10\%$ gây tím tái, $> 30\%$ đe dọa tính mạng).
+    </div>
+  </div>
+</div>
+
+---
+
+<!-- KHUNG TRÍCH DẪN Y VĂN CHUẨN AMA (CITATION BOX) -->
+<div class="citation-box" style="margin-top: 2rem; padding: 1.25rem 1.5rem; background: var(--color-surface, #ffffff); border: 1px solid var(--color-border, #cbd5e1); border-left: 4px solid var(--color-primary, #0284c7); border-radius: 12px; font-size: 0.88rem; line-height: 1.8; color: var(--color-text-muted, #475569);">
+  <strong style="color: var(--color-text, #0f172a); font-size: 0.95rem;"><i class="fa-solid fa-book-medical"></i> Trích Dẫn Y Văn &amp; Tài Liệu Tham Khảo Chuẩn AMA:</strong>
+  <ol style="margin: 0.5rem 0 0 0; padding-left: 1.25rem;">
+    <li><strong>Kennelly PJ, Botham KM, McGuinness OP, Rodwell VW, Weil PA.</strong> <em>Harper's Illustrated Biochemistry</em>. 32nd ed. New York, NY: McGraw Hill LLC; 2023:114-128, 156-165.</li>
+    <li><strong>Ferrier DR.</strong> <em>Lippincott Illustrated Reviews: Biochemistry</em>. 8th ed. Philadelphia, PA: Wolters Kluwer; 2021:73-88.</li>
+    <li><strong>Horton HR, Moran LA, Scrimgeour KG, Perry MD, Rawn JD.</strong> <em>Principles of Biochemistry</em>. 5th ed. Boston, MA: Pearson Education, Inc.; 2012:417-445.</li>
+    <li><strong>Baynes JW, Dominiczak MH.</strong> <em>Medical Biochemistry</em>. 5th ed. London, UK: Elsevier; 2019:96-108, 120-128.</li>
+    <li><strong>Pratt CW, Cornely K.</strong> <em>Essential Biochemistry</em>. 5th ed. Hoboken, NJ: John Wiley &amp; Sons; 2021:429-452.</li>
+    <li><strong>Bộ Môn Hóa Sinh (ĐHYD TP.HCM).</strong> <em>Hóa Sinh Y Học</em>. TP. Hồ Chí Minh: Nhà Xuất Bản Y Học; 2024:204-228, 315-330.</li>
   </ol>
 </div>
 
 <!-- HÀNG NÚT ĐIỀU HƯỚNG SPA -->
-<div class="btn-row">
+<div class="btn-row" style="display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;">
   <a href="#/basic-medical/hoa-sinh" class="btn btn-primary">
     <i class="fa-solid fa-arrow-left"></i> Quay lại Mục Lục Hóa Sinh Y Học
   </a>

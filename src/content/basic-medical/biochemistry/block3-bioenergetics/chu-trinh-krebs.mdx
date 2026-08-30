@@ -5,43 +5,72 @@ code: "ENG-02"
 block: "block3-bioenergetics"
 blockName: "Năng Lượng Sinh Học & Chu Trình Krebs"
 order: 12
-harperChapter: "Harper's Illustrated Biochemistry 32nd Edition"
-lippincottChapter: "Lippincott Illustrated Reviews: Biochemistry 8th Edition"
+harperChapter: "Harper's Illustrated Biochemistry 32nd Edition - Chapter 16 & 17"
+lippincottChapter: "Lippincott Illustrated Reviews: Biochemistry 8th Edition - Chapter 9"
 category: "biochemistry"
 status: "published"
 version: "2.0.0"
-updatedAt: "2026-08-28"
-description: "Cơ chế 3 enzym & 5 coenzym của phức hợp PDH; 8 phản ứng của chu trình Krebs; Năng lượng tạo thành (3 NADH, 1 FADH2, 1 GTP); Tính chất lưỡng tính (Amphibolic) và phản ứng bổ sung cơ chất."
+updatedAt: "2026-08-30"
+description: "Cơ chế nhập khẩu pyruvat qua màng ti thể; Cấu trúc siêu phân tử E1-E2-E3 & hệ thống 5 coenzym của phức hợp PDC; Diễn biến chi tiết 8 phản ứng của Chu trình Krebs; Cân bằng năng lượng 10 ATP/Acetyl-CoA; Điều hòa dị lập thể & biến đổi đồng hóa trị; Tính chất lưỡng hóa (Amphibolic) & phản ứng bù đắp (Anaplerotic); Đột biến SDH, FH, IDH1/2 tạo oncometabolites (2-HG, Succinate) gây ung thư."
 tags:
   - "Chu trình Krebs"
   - "Pyruvate Dehydrogenase"
   - "Acetyl-CoA"
   - "Citrat"
-  - "Ty thể"
+  - "Isocitrate Dehydrogenase"
+  - "Succinate Dehydrogenase"
+  - "Anaplerotic"
+  - "Oncometabolite"
+  - "2-Hydroxyglutarate"
 clinicalPearls:
-  - "Đột biến gen PDH hoặc thiếu hụt Thiamine (B1) làm tắc nghẽn chuyển pyruvate thành acetyl-CoA, dồn ứ pyruvate chuyển thành lactate gây toan lactic nặng."
-  - "Fluoroacetate (thuốc diệt chuột) chuyển thành Fluorocitrate ức chế enzym Aconitase làm tê liệt chu trình Krebs gây tử vong nhanh chóng."
+  - "Thiếu hụt Thiamine (Vitamin B1) làm tê liệt đồng thời cả hai phức hợp enzyme phụ thuộc TPP là PDC và α-KGDH, gây ứ đọng pyruvat chuyển hướng thành acid lactic dẫn đến toan lactic máu nặng, bệnh Beriberi và hội chứng Wernicke-Korsakoff."
+  - "Đột biến điểm tại trung tâm hoạt động của IDH1 (Arg132) và IDH2 (Arg172) đem lại chức năng mới (Gain-of-Function), xúc tác tạo Oncometabolite D-2-hydroxyglutarate (2-HG) ức chế TET DNA demethylase, gây siêu methyl hóa gen (CIMP) và dẫn đến u thần kinh đệm (Glioma) và bạch cầu cấp dòng tủy (AML)."
+  - "Arsenite (Thạch tín As3+) tạo phức chelate bidentate bền vững gắn chặt vào 2 nhóm -SH của dihydrolipoamide trên tiểu đơn vị E2, khóa vĩnh viễn cả PDC và α-KGDH, làm tê liệt hô hấp tế bào gây tử vong nhanh chóng."
+  - "Đột biến mất chức năng gen SDH (Complex II) hoặc Fumarase (FH) làm tích lũy lượng lớn Succinate và Fumarate, ức chế enzyme Prolyl Hydroxylase (PHD), ổn định hóa yếu tố phiên mã HIF-1α gây phản ứng giả thiếu oxy (Pseudohypoxia) thúc đẩy u tủy thượng thận và ung thư thận HLRCC."
 keyReactions:
-  - "Pyruvate + CoA + NAD+ --(PDH)--> Acetyl-CoA + CO2 + NADH"
-  - "Oxaloacetate + Acetyl-CoA --(Citrate Synthase)--> Citrate"
+  - "Pyruvate + NAD+ + CoA-SH --(PDC)--> Acetyl-CoA + CO2 + NADH + H+ (ΔG°' = -31.4 kJ/mol)"
+  - "Acetyl-CoA + Oxaloacetate + H2O --(Citrate Synthase)--> Citrate + CoA-SH + H+ (ΔG°' = -32.2 kJ/mol)"
+  - "Isocitrate + NAD+ --(IDH)--> α-Ketoglutarate + CO2 + NADH + H+ (ΔG°' = -8.4 kJ/mol)"
+  - "α-Ketoglutarate + NAD+ + CoA-SH --(α-KGDH)--> Succinyl-CoA + CO2 + NADH + H+ (ΔG°' = -33.5 kJ/mol)"
+  - "Succinyl-CoA + GDP + Pi ⇌ Succinate + CoA-SH + GTP (ΔG°' = -2.1 kJ/mol)"
+  - "Succinate + Q --(SDH/Complex II)--> Fumarate + QH2 (ΔG°' ≈ 0 kJ/mol)"
+  - "Fumarate + H2O ⇌ L-Malate (Fumarase)"
+  - "L-Malate + NAD+ ⇌ Oxaloacetate + NADH + H+ (ΔG°' = +29.7 kJ/mol)"
+  - "Pyruvate + HCO3- + ATP --(Pyruvate Carboxylase / Biotin)--> Oxaloacetate + ADP + Pi (Anaplerotic)"
 relatedLabTests:
-  - "Lactate máu"
-  - "Pyruvate máu"
-  - "Khí máu động mạch"
+  - "Lactate máu động mạch & Tỷ số Lactate/Pyruvate"
+  - "Khí máu động mạch (ABG) & Khoảng trống Anion (Anion Gap)"
+  - "Nồng độ Thiamine Pyrophosphate (TPP) trong hồng cầu & Hoạt tính Transketolase"
+  - "Định lượng Oncometabolite 2-Hydroxyglutarate (2-HG) trong dịch não tủy / huyết tương"
 sections:
   - id: "sec-1"
     number: 1
-    title: "Cơ Chế Phân Tử & Con Đường Hóa Sinh Nền Tảng"
-    icon: "fa-dna"
+    title: "Nhập Khẩu Pyruvat Vào Ty Thể & Cấu Trúc Siêu Phân Tử PDC"
+    icon: "fa-door-open"
   - id: "sec-2"
     number: 2
-    title: "Các Phản Ứng Enzym & Điểm Chốt Động Học"
-    icon: "fa-flask-vial"
+    title: "Cơ Chế 5 Bước & Hệ Thống 5 Coenzyme Của Phức Hợp PDC"
+    icon: "fa-arrows-spin"
   - id: "sec-3"
     number: 3
-    title: "Ý Nghĩa Lâm Sàng & Ứng Dụng Xét Nghiệm EBM"
-    icon: "fa-stethoscope"
-
+    title: "Cơ Chế Điều Hòa Phức Hợp PDC & Cân Bằng Trao Đổi Chất"
+    icon: "fa-sliders"
+  - id: "sec-4"
+    number: 4
+    title: "Diễn Biến Chi Tiết 8 Phản Ứng Của Chu Trình Krebs"
+    icon: "fa-circle-notch"
+  - id: "sec-5"
+    number: 5
+    title: "Điều Hòa Tích Hợp & Tổng Kết Năng Lượng Chu Trình Krebs"
+    icon: "fa-battery-full"
+  - id: "sec-6"
+    number: 6
+    title: "Vai Trò Lưỡng Hóa (Amphibolic) & Các Phản Ứng Bù Đắp (Anaplerotic)"
+    icon: "fa-code-branch"
+  - id: "sec-7"
+    number: 7
+    title: "Bệnh Học Phân Tử, Oncometabolites, Cận Lâm Sàng & Trích Dẫn EBM"
+    icon: "fa-dna"
 ---
 
 # 🧪 PHỨC HỢP PYRUVAT DEHYDROGENASE & CHU TRÌNH ACID CITRIC (KREBS)
@@ -52,79 +81,636 @@ sections:
 <section class="stats-strip">
   <div class="stats-grid">
     <div class="stat-card">
-      <div class="stat-val blue">30–32 ATP</div>
-      <div class="stat-lbl">Năng lượng sinh học / Hiệu suất chuyển hóa</div>
+      <div class="stat-val blue">10 ATP / Acetyl-CoA</div>
+      <div class="stat-lbl">Năng lượng ròng thu được từ 1 vòng quay Chu trình Krebs</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val green">$K_m$ & $V_{max}$</div>
-      <div class="stat-lbl">Điểm chốt động học enzym & Giới hạn tốc độ</div>
+      <div class="stat-val green">3 Enzyme &amp; 5 Coenzyme</div>
+      <div class="stat-lbl">Cấu trúc siêu phân tử của Phức hợp PDC &amp; α-KGDH</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val purple">EBM 2026</div>
-      <div class="stat-lbl">Chuẩn hóa Harper 32nd & Lippincott 8th</div>
+      <div class="stat-val red">-31.4 kJ/mol</div>
+      <div class="stat-lbl">Biến thiên ΔG°' của phản ứng PDC (Một chiều không thể đảo ngược)</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val teal">Lactate máu, Pyruvate máu</div>
-      <div class="stat-lbl">Cận lâm sàng & Dấu ấn sinh học theo dõi</div>
+      <div class="stat-val purple">Oncometabolites</div>
+      <div class="stat-lbl">2-HG, Succinate, Fumarate kích hoạt oncogenesis</div>
     </div>
   </div>
 </section>
 
 ---
 
-## 1. Cơ Chế Phân Tử & Con Đường Hóa Sinh Nền Tảng {#sec-1}
+## 1. Nhập Khẩu Pyruvat Vào Ty Thể & Cấu Trúc Siêu Phân Tử PDC {#sec-1}
 
-Cơ chế 3 enzym & 5 coenzym của phức hợp PDH; 8 phản ứng của chu trình Krebs; Năng lượng tạo thành (3 NADH, 1 FADH2, 1 GTP); Tính chất lưỡng tính (Amphibolic) và phản ứng bổ sung cơ chất.
+Pyruvat là sản phẩm cuối cùng của con đường đường phân kỵ khí diễn ra tại bào tương. Để tiếp tục thoái hóa hoàn toàn theo con đường hiếu khí và khai thác tối đa năng lượng, pyruvat bắt buộc phải được vận chuyển vào bên trong **chất nền ty thể (*mitochondrial matrix*)** – nơi định vị toàn bộ hệ thống enzyme của Chu trình Krebs và Chuỗi truyền điện tử.
 
 ```
-ĐẶC ĐIỂM CHUYỂN HÓA & VAI TRÒ SINH HỌC CỐT LÕI:
-  • Khối chuyên đề: Năng Lượng Sinh Học & Chu Trình Krebs
-  • Phân loại phân tử / enzym chủ chốt: Chu trình Krebs, Pyruvate Dehydrogenase, Acetyl-CoA, Citrat, Ty thể
-  • Vị trí tế bào: Bào tương, Ty thể, Màng sinh chất hoặc Lưới nội sinh chất.
+                 [BÀO TƯƠNG]              [KHOẢNG GIAN MÀNG]              [CHẤT NỀN TY THỂ]
+               Pyruvat (Bào tương)            Pyruvat                        Pyruvat
+                      │                         │                               │
+                      ▼                         ▼                               ▼
+               ───────────────► [Màng Ngoài] ───────────────► [Màng Trong] ───────────────► (Đi vào PDC)
+                                (Qua Porin)                   (Pyruvate Translocase
+                                                               đồng vận H+)
 ```
 
+### A. Cơ Chế Vận Chuyển Pyruvat Qua Màng Ty Thể
+
+1. **Màng ngoài ty thể**: Chứa các kênh dẫn nước lớn cấu tạo từ protein **Porin**, cho phép mọi phân tử có kích thước dưới $10,000\text{ Da}$ (bao gồm cả pyruvat) khuếch tán tự do qua khoảng gian màng.
+2. **Màng trong ty thể (IMM)**: Cực kỳ nghiêm ngặt, không thấm đối với các ion và phân tử tích điện. Quá trình nhập khẩu pyruvat vào chất nền bắt buộc thông qua protein vận chuyển đặc hiệu **Pyruvate Translocase (Pyruvate Carrier)**.
+3. **Động lực vận chuyển**: Vận chuyển theo cơ chế **đồng vận chuyển (*symport*) cùng với một proton ($H^+$)**, khai thác năng lượng từ lực đẩy proton (*Proton Motive Force - PMF*) do chuỗi hô hấp tế bào thiết lập.
 
 ---
 
-## 2. Các Phản Ứng Enzym & Điểm Chốt Động Học {#sec-2}
+### B. Ý Nghĩa Nhiệt Động Học Của Phản Ứng Khử Carboxyl Oxy Hóa
 
-<BiochemAlert type="reaction" title="Các Phản Ứng Hóa Sinh & Enzyme Giới Hạn Tốc Độ">
-  Các phản ứng then chốt điều hòa con đường chuyển hóa:
-  <ul>
-    <li><code>Pyruvate + CoA + NAD+ --(PDH)--> Acetyl-CoA + CO2 + NADH</code></li>
-    <li><code>Oxaloacetate + Acetyl-CoA --(Citrate Synthase)--> Citrate</code></li>
-  </ul>
+Sau khi vào chất nền ty thể, pyruvat ngay lập tức trải qua phản ứng **khử carboxyl oxy hóa (*oxidative decarboxylation*)** không thuận nghịch để tạo thành **Acetyl-CoA**:
+
+$$\text{Pyruvat} + \text{NAD}^+ + \text{CoA-SH} \xrightarrow{\text{PDC}} \text{Acetyl-CoA} + \text{CO}_2 + \text{NADH} + \text{H}^+ \quad (\Delta G^{0\prime} \approx -31.4\text{ kJ/mol}, \Delta E^{0\prime} \approx +0.16\text{ V})$$
+
+<BiochemAlert type="reaction" title="Điểm Chốt Nhiệt Động Học: Rào Cản Không Thể Đảo Ngược Của Acetyl-CoA">
+  Do phản ứng tỏa năng lượng rất lớn ($\Delta G^{0\prime} = -31.4\text{ kJ/mol}$), phản ứng PDC là <strong>hoàn toàn một chiều</strong> trong điều kiện sinh lý tế bào. Ở động vật có vú, <em>Acetyl-CoA không bao giờ có thể được chuyển đổi ngược lại thành Pyruvate</em>. Do đó, các acid béo (khi thoái hóa tạo Acetyl-CoA) <strong>không thể dùng để tân tạo Glucose thuần túy</strong>.
 </BiochemAlert>
-
 
 ---
 
-## 3. Ý Nghĩa Lâm Sàng & Ứng Dụng Xét Nghiệm EBM {#sec-3}
+### C. Cấu Trúc Siêu Phân Tử Đa Enzyme Của Phức Hợp PDC
 
-<BiochemAlert type="pearl" title="Điểm Ngọc Lâm Sàng & Biện Luận Chẩn Đoán (Clinical Pearls)">
-  <ul>
-    <li>Đột biến gen PDH hoặc thiếu hụt Thiamine (B1) làm tắc nghẽn chuyển pyruvate thành acetyl-CoA, dồn ứ pyruvate chuyển thành lactate gây toan lactic nặng.</li>
-    <li>Fluoroacetate (thuốc diệt chuột) chuyển thành Fluorocitrate ức chế enzym Aconitase làm tê liệt chu trình Krebs gây tử vong nhanh chóng.</li>
-  </ul>
-</BiochemAlert>
+Phức hợp Pyruvate Dehydrogenase (PDC) có khối lượng phân tử lên tới hơn $4,600\text{ kDa}$ ở vi khuẩn và thậm chí còn lớn hơn ở động vật có vú, được cấu tạo từ 3 tiểu đơn vị enzyme xúc tác chính xếp lồng vào nhau:
 
-<BiochemAlert type="danger" title="Chỉ Số Cận Lâm Sàng & Rối Loạn Chuyển Hóa Liên Quan">
-  Các xét nghiệm hóa sinh bắt buộc theo dõi:
-  <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem;">
-    🧪 Lactate máu
-    🧪 Pyruvate máu
-    🧪 Khí máu động mạch
+```
+                            CẤU TRÚC ĐA ENZYME PHỨC HỢP PDC
+                                           │
+          ┌────────────────────────────────┼────────────────────────────────┐
+          ▼                                ▼                                ▼
+   [E1: PYRUVATE DEHYDROGENASE]   [E2: DIHYDROLIPOYL TRANSACETYLASE] [E3: DIHYDROLIPOYL DEHYDROGENASE]
+   - Heterotetramer α2β2          - Khung lõi 60 Subunits (Khối 12 mặt) - Homodimer α2 gắn qua E3BP
+   - Gắn Coenzyme TPP (Vit B1)   - Gắn Lipoamide (Cánh tay 1.4 nm)   - Gắn Coenzyme FAD (Vit B2)
+   - Khử carboxyl tạo CO2 & HETDP - Chuyển Acetyl sang CoA-SH (Vit B5) - Tái oxy hóa Lipoamide, truyền e- sang NAD+
+```
+
+1. **Pyruvate Dehydrogenase (E1)**:
+   - Cấu trúc: Heterotetramer $\alpha_2\beta_2$, vỏ ngoài phức hợp chứa 42–48 bản sao E1.
+   - Nhóm ngoại: Chứa **Thiamine Pyrophosphate (TPP)** gắn chặt, xúc tác bước khử carboxyl đầu tiên của pyruvat.
+2. **Dihydrolipoyl Transacetylase (E2)**:
+   - Cấu trúc lõi trung tâm: Bộ khung gồm **60 tiểu đơn vị E2** sắp xếp đối xứng thành hình khối 12 mặt đều (*Pentagonal Dodecahedron*) ở sinh vật nhân thực.
+   - Nhóm ngoại: Gốc **Lipoamide** liên kết cộng hóa trị với nhóm $\epsilon$-amino của Lysine, tạo thành cấu trúc "cánh tay quay linh hoạt" (*Swinging Arm*) dài **$1.4\text{ nm}$**.
+3. **Dihydrolipoyl Dehydrogenase (E3)**:
+   - Cấu trúc: Homodimer $\alpha_2$, liên kết vào lõi E2 thông qua protein neo giữ **E3-binding protein (E3BP)**.
+   - Nhóm ngoại: Chứa **Flavin Adenine Dinucleotide (FAD)** liên kết phi cộng hóa trị nhưng cực kỳ chặt chẽ, tái oxy hóa nhóm lipoamide.
+
+---
+
+## 2. Cơ Chế 5 Bước & Hệ Thống 5 Coenzyme Của Phức Hợp PDC {#sec-2}
+
+### A. Bảng Hệ Thống 5 Coenzyme Của Phức Hợp PDC
+
+<div class="table-responsive">
+  <table class="table-modern">
+    <thead>
+      <tr>
+        <th style="width: 25%;">Coenzyme</th>
+        <th style="width: 22%;">Nguồn Gốc Vitamin</th>
+        <th style="width: 23%;">Trạng Thái / Vị Trí</th>
+        <th style="width: 30%;">Vai Trò Xúc Tác Hóa Học</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Thiamine Pyrophosphate (TPP)</strong></td>
+        <td><span class="rx-tag preferred">Vitamin B1 (Thiamine)</span></td>
+        <td>Nhóm ngoại gắn chặt trên E1</td>
+        <td>Tấn công ái nhân vào pyruvat, giải phóng $\text{CO}_2$ và mang nhóm Hydroxyethyl (HETDP).</td>
+      </tr>
+      <tr>
+        <td><strong>Acid Lipoic (Lipoamide)</strong></td>
+        <td><span class="rx-tag info">Không phải vitamin</span></td>
+        <td>Cộng hóa trị với Lysine trên E2</td>
+        <td>Cánh tay quay vận chuyển nhóm acetyl từ E1 sang CoA-SH và chuyển hydro sang E3.</td>
+      </tr>
+      <tr>
+        <td><strong>Coenzyme A (CoA-SH)</strong></td>
+        <td><span class="rx-tag preferred">Vitamin B5 (Acid Pantothenic)</span></td>
+        <td>Đồng cơ chất (Vào/ra tự do)</td>
+        <td>Nhận nhóm acetyl hoạt hóa tạo sản phẩm <strong>Acetyl-CoA</strong> giải phóng vào chất nền.</td>
+      </tr>
+      <tr>
+        <td><strong>Flavin Adenine Dinucleotide (FAD)</strong></td>
+        <td><span class="rx-tag preferred">Vitamin B2 (Riboflavin)</span></td>
+        <td>Nhóm ngoại gắn chặt trên E3</td>
+        <td>Nhận $2\text{H}^+ + 2\text{e}^-$ từ Dihydrolipoamide để chuyển thành $\text{FADH}_2$.</td>
+      </tr>
+      <tr>
+        <td><strong>Nicotinamide Adenine Dinucleotide ($\text{NAD}^+$)</strong></td>
+        <td><span class="rx-tag preferred">Vitamin B3 / PP (Niacin)</span></td>
+        <td>Đồng cơ chất (Vào/ra tự do)</td>
+        <td>Nhận tương đương khử từ $\text{FADH}_2$ tạo ra <strong>NADH + $\text{H}^+$</strong> đi vào chuỗi hô hấp.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+---
+
+### B. Diễn Biến Cơ Chế Phản Ứng 5 Bước Phối Hợp
+
+```
+[BƯỚC 1: KHỬ CARBOXYL PYRUVAT (Xúc tác bởi E1 - TPP)]
+  Pyruvat + TPP ─────────► Hydroxyethyl-TPP (HETDP) + CO2 ↑
+
+[BƯỚC 2: OXY HÓA VÀ CHUYỂN SANG LIPOAMIDE (Xúc tác bởi E1 & E2)]
+  Hydroxyethyl-TPP + Lipoamide (Oxy hóa: -S-S-) ─────────► TPP + Acetyl-dihydrolipoamide
+
+[BƯỚC 3: TẠO ACETYL-COA (Xúc tác bởi E2)]
+  Acetyl-dihydrolipoamide + CoA-SH ─────────► Dihydrolipoamide (Khử: 2 -SH) + Acetyl-CoA (Giải phóng)
+
+[BƯỚC 4: TÁI OXY HÓA DIHYDROLIPOAMIDE (Xúc tác bởi E3 - FAD)]
+  Dihydrolipoamide + E3-FAD ─────────► Lipoamide (Phục hồi -S-S-) + E3-FADH2
+
+[BƯỚC 5: TRUYỀN ĐIỆN TỬ TẠO NADH (Xúc tác bởi E3)]
+  E3-FADH2 + NAD+ ─────────► E3-FAD (Phục hồi) + NADH + H+ (Đi vào Chuỗi hô hấp)
+```
+
+<div class="flow-container">
+  <div style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 1.02rem; color: var(--color-text); margin-bottom: 0.35rem;">
+    Figure 1. Chu Trình Xúc Tác Của Cánh Tay Linh Hoạt Lipoamide (Swinging Arm)
   </div>
-</BiochemAlert>
-  <ol style="margin: 0; padding-left: 1.25rem; line-height: 1.8; color: var(--color-text-muted, #475569); font-size: 0.88rem;">
-    <li><strong>Rodwell, V. W. et al. (2022)</strong>. <em>Harper's Illustrated Biochemistry</em> (32nd ed.). McGraw-Hill Education.</li>
-    <li><strong>Ferrier, D. R. (2021)</strong>. <em>Lippincott Illustrated Reviews: Biochemistry</em> (8th ed.). Wolters Kluwer.</li>
-    <li><strong>Rifai, N. et al. (2018)</strong>. <em>Tietz Textbook of Clinical Chemistry and Molecular Diagnostics</em> (6th ed.). Elsevier.</li>
+  <div style="font-size: 0.84rem; color: var(--color-text-muted); margin-bottom: 1.25rem;">
+    Cánh tay lipoamide ($1.4\text{ nm}$) trên E2 đóng vai trò con thoi vận chuyển cơ chất qua lại giữa 3 trung tâm hoạt động:
+  </div>
+
+  <div class="flow-step-grid">
+    <div class="flow-step-card c-kali">
+      <div class="flow-step-num">BƯỚC 01 • TRUNG TÂM E1</div>
+      <div class="flow-step-title">Khử Carboxyl &amp; Nhận Acetyl</div>
+      <div class="flow-step-desc">
+        Vòng Thiazolium của TPP tấn công pyruvat tạo HETDP, giải phóng $\text{CO}_2$. Cánh tay Lipoamide oxy hóa ($-S-S-$) tiếp cận E1 nhận nhóm acetyl tạo Acetyl-dihydrolipoamide.
+      </div>
+      <div class="flow-step-impact">
+        <i class="fa-solid fa-cloud-arrow-up"></i> Giải phóng $\text{CO}_2$ lần 1
+      </div>
+    </div>
+
+    <div class="flow-step-card c-magie">
+      <div class="flow-step-num">BƯỚC 02 • TRUNG TÂM E2</div>
+      <div class="flow-step-title">Tạo Thioester Acetyl-CoA</div>
+      <div class="flow-step-desc">
+        Cánh tay quay về trung tâm E2, chuyển nhóm acetyl sang Coenzyme A ($\text{CoA-SH}$), tạo ra sản phẩm chính Acetyl-CoA phân ly ra ngoài, để lại Dihydrolipoamide (chứa $2 -SH$).
+      </div>
+      <div class="flow-step-impact">
+        <i class="fa-solid fa-bolt"></i> Tạo liên kết Thioester giàu năng lượng
+      </div>
+    </div>
+
+    <div class="flow-step-card c-canxi">
+      <div class="flow-step-num">BƯỚC 03 • TRUNG TÂM E3</div>
+      <div class="flow-step-title">Tái Sinh Cầu Disulfide &amp; NADH</div>
+      <div class="flow-step-desc">
+        Cánh tay di chuyển sang E3, FAD lấy $2\text{H}^+ + 2\text{e}^-$ phục hồi vòng disulfide $-S-S-$. Sau đó $\text{FADH}_2$ chuyển điện tử cho $\text{NAD}^+$ tạo ra $\text{NADH} + \text{H}^+$.
+      </div>
+      <div class="flow-step-impact">
+        <i class="fa-solid fa-battery-charging"></i> Tạo 1 NADH ($2.5\text{ ATP}$)
+      </div>
+    </div>
+  </div>
+</div>
+
+---
+
+## 3. Cơ Chế Điều Hòa Phức Hợp PDC & Cân Bằng Trao Đổi Chất {#sec-3}
+
+Do là điểm chốt kiểm soát phân phối carbon glucid (thoái hóa sinh năng lượng hay tích lũy mỡ), hoạt tính của PDC được kiểm soát cực kỳ nghiêm ngặt qua 2 tầng điều hòa:
+
+```
+                                    Pyruvat + NAD+ + CoA-SH
+                                               │
+               ┌───────────────────────────────┼───────────────────────────────┐
+               ▼                               ▼                               ▼
+       [KÍCH HOẠT DỊ LẬP THỂ]          [ỨC CHẾ DỊ LẬP THỂ]           [ĐIỀU HÒA ĐỒNG HÓA TRỊ]
+       - AMP, ADP                      - Acetyl-CoA                  - PDK (Kinase) phosphoryl hóa bất hoạt E1
+       - NAD+, CoA-SH                  - NADH, ATP                   - PDP (Phosphatase) khử phosphate kích hoạt E1
+                                       - Acid béo mạch dài
+                                               │
+                                               ▼
+                                   Acetyl-CoA + NADH + CO2
+```
+
+### A. Điều Hòa Dị Lập Thể (Allosteric Regulation)
+- **Ức chế bởi sản phẩm (*Product Inhibition*)**: **Acetyl-CoA** (ức chế cạnh tranh trực tiếp trên E2) và **NADH** (ức chế cạnh tranh trực tiếp trên E3). Khi nồng độ năng lượng cao (**ATP**, **Acid béo mạch dài**), PDC bị khóa lại.
+- **Kích hoạt dị lập thể**: Khi năng lượng tế bào cạn kiệt, sự tích tụ của **ADP**, **AMP**, **$\text{NAD}^+$** và **CoA-SH** sẽ kích hoạt mạnh mẽ PDC thúc đẩy dị hóa.
+
+---
+
+### B. Điều Hòa Bằng Biến Đổi Đồng Hóa Trị (Covalent Modification)
+
+Ở động vật có vú, PDC được gắn kèm 2 enzyme điều hòa trực tiếp trên phức hợp:
+
+<div class="matrix-grid">
+  <div class="matrix-card">
+    <div class="matrix-card-title">
+      <span>1. Pyruvate Dehydrogenase Kinase (PDK)</span>
+      <span class="rx-tag danger">Bất Hoạt PDC</span>
+    </div>
+    <div class="matrix-card-desc">
+      Sử dụng ATP gắn nhóm phosphate vào gốc Serine của E1, làm <strong>bất hoạt hoàn toàn PDC</strong>.<br />
+      • <em>Chất kích hoạt PDK (Khóa PDC):</em> <strong>NADH, Acetyl-CoA, ATP</strong>.<br />
+      • <em>Chất ức chế PDK (Mở PDC):</em> <strong>Pyruvate, ADP, $\text{NAD}^+$, CoA-SH</strong>.
+    </div>
+  </div>
+
+  <div class="matrix-card">
+    <div class="matrix-card-title">
+      <span>2. Pyruvate Dehydrogenase Phosphatase (PDP)</span>
+      <span class="rx-tag preferred">Tái Kích Hoạt PDC</span>
+    </div>
+    <div class="matrix-card-desc">
+      Thủy phân tách nhóm phosphate khỏi Serine của E1, giúp <strong>tái hoạt hóa hoàn toàn PDC</strong>.<br />
+      • <em>Chất kích hoạt PDP (Mở PDC):</em> <strong>$\text{Ca}^{2+}$</strong> (phóng thích khi co cơ), <strong>$\text{Mg}^{2+}$</strong>, và <strong>Insulin</strong> (kích thích tổng hợp mỡ tại mô mỡ).
+    </div>
+  </div>
+</div>
+
+---
+
+## 4. Diễn Biến Chi Tiết 8 Phản Ứng Của Chu Trình Krebs {#sec-4}
+
+Chu trình Acid Citric là con đường dị hóa chung cuối cùng oxy hóa nhóm Acetyl (2C) thành $2\text{ CO}_2$, giải phóng các tương đương khử để nạp vào Chuỗi truyền điện tử.
+
+```
+                              Acetyl-CoA (2C) + Oxaloacetat (4C)
+                                             │
+                                             ▼ [Phản ứng 1] Citrate Synthase (ΔG°' = -32.2 kJ/mol)
+                                        Citrat (6C)
+                                             │
+                                             ▼ [Phản ứng 2] Aconitase (Qua cis-Aconitate trung gian)
+                                       Isocitrat (6C)
+                                             │
+                                             ▼ [Phản ứng 3] Isocitrate Dehydrogenase (Tạo CO2 + NADH)
+                                   α-Ketoglutarate (5C)
+                                             │
+                                             ▼ [Phản ứng 4] α-Ketoglutarate Dehydrogenase (Tạo CO2 + NADH)
+                                    Succinyl-CoA (4C)
+                                             │
+                                             ▼ [Phản ứng 5] Succinyl-CoA Synthetase (Tạo GTP/ATP trực tiếp)
+                                       Succinat (4C)
+                                             │
+                                             ▼ [Phản ứng 6] Succinate Dehydrogenase / Complex II (Tạo QH2)
+                                       Fumarate (4C)
+                                             │
+                                             ▼ [Phản ứng 7] Fumarase (Cộng nước trans tạo L-Malate)
+                                       L-Malate (4C)
+                                             │
+                                             ▼ [Phản ứng 8] Malate Dehydrogenase (Tạo NADH, ΔG°' = +29.7 kJ/mol)
+                                      Oxaloacetat (4C)
+```
+
+---
+
+### Bảng Hệ Thống Chi Tiết 8 Phản Ứng Của Chu Trình Krebs
+
+<div class="table-responsive">
+  <table class="table-modern">
+    <thead>
+      <tr>
+        <th style="width: 5%;">#</th>
+        <th style="width: 25%;">Phản Ứng &amp; Enzyme Xúc Tác</th>
+        <th style="width: 28%;">Cơ Chế &amp; Điểm Chốt Hóa Học</th>
+        <th style="width: 22%;">Sản Phẩm &amp; Cofactor</th>
+        <th style="width: 20%;">$\Delta G^{0\prime}$ (kJ/mol)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>1</strong></td>
+        <td><strong>Citrate Synthase</strong><br />Acetyl-CoA + Oxaloacetate $+ \text{H}_2\text{O} \rightarrow \text{Citrate} + \text{CoA-SH}$</td>
+        <td>Gắn tuần tự bắt buộc: Oxaloacetate gắn trước làm biến đổi cấu hình (*induced fit*) tạo khe cho Acetyl-CoA, qua Citryl-CoA trung gian.</td>
+        <td>Citrate (6C), $\text{CoA-SH}$</td>
+        <td><span class="rx-tag danger"><strong>-32.2</strong> (Tỏa nhiệt mạnh)</span></td>
+      </tr>
+      <tr>
+        <td><strong>2</strong></td>
+        <td><strong>Aconitase</strong><br />Citrate $\rightleftharpoons$ *cis*-Aconitate $\rightleftharpoons$ Isocitrate</td>
+        <td>Đồng phân hóa rượu bậc 3 thành rượu bậc 2; Chứa cụm $[4Fe-4S]$. Thuyết 3 điểm Ogston phân biệt tuyệt đối 2 nhánh đối xứng.</td>
+        <td>Isocitrate (6C)</td>
+        <td><span class="rx-tag warning">+13.3 (Thuận nghịch)</span></td>
+      </tr>
+      <tr>
+        <td><strong>3</strong></td>
+        <td><strong>Isocitrate Dehydrogenase (IDH)</strong><br />Isocitrate $+ \text{NAD}^+ \rightarrow \alpha\text{-KG} + \text{CO}_2 + \text{NADH}$</td>
+        <td>Khử hydro tạo Oxalosuccinate trung gian, sau đó khử carboxyl giải phóng $\text{CO}_2$ lần 1. Phụ thuộc $\text{Mn}^{2+}/\text{Mg}^{2+}$.</td>
+        <td>$\alpha$-Ketoglutarate (5C), $\text{CO}_2$, <strong>NADH</strong></td>
+        <td><span class="rx-tag preferred"><strong>-8.4</strong> (Quyết định tốc độ)</span></td>
+      </tr>
+      <tr>
+        <td><strong>4</strong></td>
+        <td><strong>$\alpha$-Ketoglutarate Dehydrogenase</strong><br />$\alpha\text{-KG} + \text{NAD}^+ + \text{CoA} \rightarrow \text{Succinyl-CoA} + \text{CO}_2 + \text{NADH}$</td>
+        <td>Đa enzyme tương đồng PDC (dùng 5 coenzyme: TPP, Lipoamide, CoA, FAD, $\text{NAD}^+$); E3 đồng nhất về gen. Giải phóng $\text{CO}_2$ lần 2.</td>
+        <td>Succinyl-CoA (4C), $\text{CO}_2$, <strong>NADH</strong></td>
+        <td><span class="rx-tag danger"><strong>-33.5</strong> (Một chiều)</span></td>
+      </tr>
+      <tr>
+        <td><strong>5</strong></td>
+        <td><strong>Succinyl-CoA Synthetase</strong><br />Succinyl-CoA $+ \text{GDP/ADP} + \text{P}_i \rightleftharpoons \text{Succinate} + \text{GTP/ATP}$</td>
+        <td><strong>Phosphoryl hóa mức cơ chất duy nhất</strong>; qua chất trung gian Phospho-histidine (His 246). Isoenzyme ADP ở cơ/não, GDP ở gan/thận.</td>
+        <td>Succinate (4C), <strong>GTP hoặc ATP</strong></td>
+        <td><span class="rx-tag warning">-2.1 (Thuận nghịch)</span></td>
+      </tr>
+      <tr>
+        <td><strong>6</strong></td>
+        <td><strong>Succinate Dehydrogenase (SDH)</strong><br />Succinate $+ \text{Q} \rightarrow \text{Fumarate} + \text{QH}_2$</td>
+        <td><strong>Complex II</strong> gắn chặt vào màng trong ty thể (IMM); FAD liên kết cộng hóa trị + 3 cụm Fe-S. Bị ức chế cạnh tranh bởi <strong>Malonate</strong>.</td>
+        <td>Fumarate (4C, dạng *trans*), <strong>$\text{QH}_2$ ($\text{FADH}_2$)</strong></td>
+        <td><span class="rx-tag info">≈ 0 (Thuận nghịch)</span></td>
+      </tr>
+      <tr>
+        <td><strong>7</strong></td>
+        <td><strong>Fumarase</strong><br />Fumarate $+ \text{H}_2\text{O} \rightleftharpoons \text{L-Malate}$</td>
+        <td>Cộng nước bất đối xứng lập thể theo dạng *trans*, chỉ tạo duy nhất đồng phân dạng L (**L-Malate**).</td>
+        <td>L-Malate (4C)</td>
+        <td><span class="rx-tag warning">-3.4 (Thuận nghịch)</span></td>
+      </tr>
+      <tr>
+        <td><strong>8</strong></td>
+        <td><strong>Malate Dehydrogenase (MDH)</strong><br />L-Malate $+ \text{NAD}^+ \rightleftharpoons \text{Oxaloacetate} + \text{NADH}$</td>
+        <td>Oxy hóa rượu bậc 2 tái tạo Oxaloacetate. Vượt rào cản $\Delta G^{0\prime} > 0$ nhờ Citrate Synthase dọn sạch Oxaloacetate ($< 10^{-6}\text{ M}$).</td>
+        <td>Oxaloacetate (4C), <strong>NADH</strong></td>
+        <td><span class="rx-tag danger"><strong>+29.7</strong> (Vượt rào cản)</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+---
+
+## 5. Điều Hòa Tích Hợp & Tổng Kết Năng Lượng Chu Trình Krebs {#sec-5}
+
+### A. Cân Bằng Năng Lượng Chi Tiết Của Chu Trình Krebs
+
+Phương trình phản ứng tổng quát sau khi oxy hóa hoàn toàn 1 phân tử Acetyl-CoA:
+
+$$\text{Acetyl-CoA} + 3\text{NAD}^+ + \text{FAD} + \text{GDP/ADP} + \text{P}_i + 2\text{H}_2\text{O} \rightarrow \text{CoA-SH} + 2\text{CO}_2 + 3\text{NADH} + \text{FADH}_2 + \text{GTP/ATP} + 2\text{H}^+$$
+
+<div class="table-responsive">
+  <table class="table-modern">
+    <thead>
+      <tr>
+        <th style="width: 30%;">Chất Năng Lượng Thu Được</th>
+        <th style="width: 35%;">Cơ Chế Khai Thác / Đi Vào ETC</th>
+        <th style="width: 35%;">Số ATP Tương Đương (Hóa Năng Khả Dụng)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>3 Phân tử NADH</strong></td>
+        <td>Tái oxy hóa qua Complex I $\rightarrow$ III $\rightarrow$ IV (Bơm $10\text{ H}^+$/NADH)</td>
+        <td><span class="rx-tag preferred"><strong>$3 \times 2.5 = 7.5\text{ ATP}$</strong></span></td>
+      </tr>
+      <tr>
+        <td><strong>1 Phân tử $\text{FADH}_2$ ($\text{QH}_2$)</strong></td>
+        <td>Tái oxy hóa qua Complex II $\rightarrow$ III $\rightarrow$ IV (Bơm $6\text{ H}^+$/$\text{FADH}_2$)</td>
+        <td><span class="rx-tag preferred"><strong>$1 \times 1.5 = 1.5\text{ ATP}$</strong></span></td>
+      </tr>
+      <tr>
+        <td><strong>1 Phân tử GTP (hoặc ATP)</strong></td>
+        <td>Phosphoryl hóa mức cơ chất trực tiếp tại phản ứng 5</td>
+        <td><span class="rx-tag preferred"><strong>$1.0\text{ ATP}$</strong></span></td>
+      </tr>
+      <tr style="background: rgba(2, 132, 199, 0.08);">
+        <td><strong>TỔNG CỘNG / 1 ACETYL-COA</strong></td>
+        <td><strong>Oxy hóa hoàn chỉnh 2 carbon acetyl thành $2\text{ CO}_2$</strong></td>
+        <td><span class="rx-tag danger" style="font-size: 1rem;"><strong>10.0 ATP</strong></span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+---
+
+### B. Mạng Lưới Điều Hòa Dị Lập Thể 3 Điểm Kiểm Soát
+
+```
+                                    Acetyl-CoA + Oxaloacetat
+                                                │
+                                                ▼ ◄─────── [1] Citrate Synthase
+                                             Citrat       (Ức chế: ATP, NADH, Succinyl-CoA, Citrate)
+                                                │
+                                                ▼
+                                            Isocitrat
+                                                │
+                                                ▼ ◄─────── [2] Isocitrate Dehydrogenase (Chính)
+                                        α-Ketoglutarate   (Kích hoạt: ADP, Ca2+; Ức chế: ATP, NADH)
+                                                │
+                                                ▼ ◄─────── [3] α-Ketoglutarate Dehydrogenase
+                                           Succinyl-CoA   (Kích hoạt: Ca2+; Ức chế: Succinyl-CoA, NADH)
+                                                │
+                                                ▼
+                                           Oxaloacetat
+```
+
+1. **Citrate Synthase**: Điều hòa bởi cơ chất Oxaloacetate và Acetyl-CoA; Bị ức chế phản hồi bởi **ATP, NADH, Succinyl-CoA** và chính **Citrate**.
+2. **Isocitrate Dehydrogenase (IDH - Điểm quyết định tốc độ chính)**:
+   - *Kích hoạt:* **ADP** (chỉ điểm thiếu năng lượng) và **$\text{Ca}^{2+}$** (tín hiệu co cơ).
+   - *Ức chế:* **ATP** và **NADH**. Khi tế bào no năng lượng, IDH bị khóa $\rightarrow$ Citrate dồn ứ chuyển ra bào tương để tổng hợp acid béo và ức chế Glycolysis tại PFK-1.
+3. **$\alpha$-Ketoglutarate Dehydrogenase ($\alpha$-KGDH)**:
+   - *Kích hoạt:* **$\text{Ca}^{2+}$** (làm giảm $K_m$ với $\alpha$-KG).
+   - *Ức chế:* **Succinyl-CoA** và **NADH**.
+
+---
+
+## 6. Vai Trò Lưỡng Hóa (Amphibolic) & Các Phản Ứng Bù Đắp (Anaplerotic) {#sec-6}
+
+### A. Tính Lưỡng Hóa (Amphibolic Nature) & Phản Ứng Tiêu Hao (Cataplerotic)
+
+Chu trình Krebs vừa là lò đốt dị hóa carbon, vừa là "ngã tư chuyển hóa" cung cấp các mảnh carbon trung gian cho các con đường sinh tổng hợp:
+
+```
+                                    TÂN TẠO ĐƯỜNG (Gluconeogenesis)
+                                                ▲
+                                                │
+                                           Oxaloacetat ◄────────── Aspartat (AST / GOT)
+                                                │
+       ACID BÉO, CHOLESTEROL ◄────────────── Citrat
+                                                │
+                                            Isocitrat
+                                                │
+             GLUTAMATE, GLUTAMINE ◄─────── α-Ketoglutarate ◄─────── Glutamat (GDH)
+                                                │
+               PORPHYRIN (HEME) ◄───────── Succinyl-CoA ◄───────── Val, Ile, Met, Acid béo chuỗi lẻ
+                                                │
+                                            Succinat
+                                                │
+                                            Fumarate ◄──────────── Phenylalanine, Tyrosine
+                                                │
+                                             L-Malate ◄─────────── Pyruvate (Malic Enzyme)
+```
+
+1. **Citrate** $\rightarrow$ Ra bào tương qua Thoi Citrate để cung cấp Acetyl-CoA tổng hợp **Acid béo và Cholesterol**.
+2. **$\alpha$-Ketoglutarate** $\rightarrow$ Chuyển amin tạo **Glutamate, Glutamine, Proline, Arginine** và Purine.
+3. **Succinyl-CoA** $\rightarrow$ Ngưng tụ với Glycine khởi đầu sinh tổng hợp **Nhân Porphyrin (Heme)** của Hemoglobin và Cytochrome.
+4. **Oxaloacetate** $\rightarrow$ Tham gia **Tân tạo đường (Gluconeogenesis)** và chuyển amin tạo **Aspartate** (tiền chất Pyrimidine).
+
+---
+
+### B. Các Phản Ứng Bù Đắp (Anaplerotic Reactions) Duy Trì Chu Trình
+
+Khi các chất trung gian bị rút đi cho đồng hóa (*Cataplerosis*), chu trình sẽ bị ngừng trệ nếu không có các phản ứng bù đắp nạp carbon (*Anaplerosis*):
+
+<div class="matrix-grid">
+  <div class="matrix-card">
+    <div class="matrix-card-title">
+      <span>1. Pyruvate Carboxylase (PC)</span>
+      <span class="rx-tag preferred">Bù Đắp Quan Trọng Nhất</span>
+    </div>
+    <div class="matrix-card-desc">
+      $\text{Pyruvate} + \text{HCO}_3^- + \text{ATP} \xrightarrow{\text{Biotin (B7)}} \text{Oxaloacetate} + \text{ADP} + \text{P}_i$<br />
+      • <em>Điều hòa:</em> <strong>Acetyl-CoA</strong> là chất kích hoạt dị lập thể dương tính bắt buộc. Khi Acetyl-CoA dư thừa, nó khóa PDC và kích hoạt PC để tạo Oxaloacetate tái khởi động chu trình.
+    </div>
+  </div>
+
+  <div class="matrix-card">
+    <div class="matrix-card-title">
+      <span>2. Glutamate Dehydrogenase (GDH)</span>
+      <span class="rx-tag info">Bổ Sung $\alpha$-KG</span>
+    </div>
+    <div class="matrix-card-desc">
+      $\text{Glutamate} + \text{NAD(P)}^+ + \text{H}_2\text{O} \rightleftharpoons \alpha\text{-Ketoglutarate} + \text{NH}_4^+ + \text{NAD(P)H} + \text{H}^+$<br />
+      Phục hồi lượng $\alpha$-KG thiếu hụt từ kho amino acid (đặc biệt quan trọng trong chuyển hóa năng lượng tế bào ung thư).
+    </div>
+  </div>
+
+  <div class="matrix-card">
+    <div class="matrix-card-title">
+      <span>3. Aspartate Aminotransferase (AST)</span>
+      <span class="rx-tag info">Bổ Sung Oxaloacetate</span>
+    </div>
+    <div class="matrix-card-desc">
+      $\text{Aspartate} + \alpha\text{-KG} \xrightleftharpoons{\text{PLP (Vit B6)}} \text{Oxaloacetate} + \text{Glutamate}$<br />
+      Chuyển nhóm amin giữa Aspartate và $\alpha$-KG, bổ sung tức thời Oxaloacetate cho ti thể.
+    </div>
+  </div>
+
+  <div class="matrix-card">
+    <div class="matrix-card-title">
+      <span>4. Thoái Hóa Acid Amin Chuỗi Nhánh</span>
+      <span class="rx-tag warning">Bổ Sung Succinyl-CoA</span>
+    </div>
+    <div class="matrix-card-desc">
+      Thoái hóa <strong>Valine, Isoleucine, Methionine</strong> và Acid béo chuỗi lẻ tạo Propionyl-CoA, sau đó carboxyl hóa phụ thuộc <strong>Vitamin B12</strong> thành Succinyl-CoA nạp vào chu trình.
+    </div>
+  </div>
+</div>
+
+---
+
+## 7. Bệnh Học Phân Tử, Oncometabolites, Cận Lâm Sàng & Trích Dẫn EBM {#sec-7}
+
+### A. Đột Biến Gen Chu Trình Krebs & Các Oncometabolites Sinh Ung Thư
+
+<div class="table-responsive">
+  <table class="table-modern">
+    <thead>
+      <tr>
+        <th style="width: 25%;">Đột Biến Gen / Enzyme</th>
+        <th style="width: 20%;">Oncometabolite Tích Lũy</th>
+        <th style="width: 30%;">Cơ Chế Bệnh Sinh Phân Tử</th>
+        <th style="width: 25%;">Bệnh Cảnh Lâm Sàng</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Succinate Dehydrogenase (SDHA/B/C/D)</strong></td>
+        <td><span class="rx-tag danger">Succinate</span></td>
+        <td>Succinate rò rỉ ra bào tương ức chế <strong>HIF Prolyl Hydroxylase (PHD)</strong>, ổn định hóa <strong>HIF-1$\alpha$</strong> gây phản ứng giả thiếu oxy (*Pseudohypoxia*), tăng VEGF và tân tạo mạch.</td>
+        <td><strong>U tủy thượng thận (*Pheochromocytoma*)</strong> &amp; U cận hạch (*Paraganglioma*) di truyền.</td>
+      </tr>
+      <tr>
+        <td><strong>Fumarase (Fumarate Hydratase - FH)</strong></td>
+        <td><span class="rx-tag danger">Fumarate</span></td>
+        <td>Fumarate tích lũy ức chế PHD, kích hoạt HIF-1$\alpha$ và gây succinylation biến đổi protein tế bào.</td>
+        <td><strong>Hội chứng HLRCC</strong>: U cơ trơn da, tử cung &amp; Ung thư biểu mô tế bào thận ác tính.</td>
+      </tr>
+      <tr>
+        <td><strong>IDH1 (Arg132) &amp; IDH2 (Arg172)</strong></td>
+        <td><span class="rx-tag danger"><strong>D-2-HG (2-Hydroxyglutarate)</strong></span></td>
+        <td>Đột biến đem lại chức năng mới (*Gain-of-Function*), khử $\alpha$-KG thành <strong>2-HG</strong>. 2-HG ức chế enzyme <strong>TET DNA Demethylase</strong> gây siêu methyl hóa gen (**CIMP**), khóa tế bào ở trạng thái tiền thân.</td>
+        <td><strong>U thần kinh đệm (*Glioma*)</strong> não (>70%), U nguyên bào keo, Bạch cầu cấp dòng tủy (**AML**).</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+---
+
+### B. Các Hội Chứng Rối Loạn Chuyển Hóa Lâm Sàng Kinh Điển
+
+1. **Thiếu Hụt Thiamine (Vitamin B1) & Toan Lactic Máu**:
+   - Tê liệt hoạt tính PDC và $\alpha$-KGDH do thiếu TPP. Pyruvat ứ đọng chuyển thành Lactate gây **toan lactic máu nặng**.
+   - Biểu hiện bệnh **Beriberi** (thể khô: viêm đa dây thần kinh, teo cơ; thể ướt: suy tim cung lượng cao, phù nề) và **Hội chứng Wernicke-Korsakoff** (tam chứng: lú lẫn, thất điều, liệt vận nhãn ở người nghiện rượu).
+
+2. **Ngộ Độc Thạch Tín (Arsenite $As^{3+}$)**:
+   - Tạo phức vòng chelate bidentate bền vững với 2 nhóm $-SH$ của Dihydrolipoamide trên tiểu đơn vị E2, khóa vĩnh viễn cả PDC và $\alpha$-KGDH, làm tê liệt hô hấp tế bào gây tử vong nhanh chóng.
+
+3. **Hội Chứng Leigh & Thiếu Hụt PDC Di Truyền**:
+   - Đột biến gen E1-$\alpha$ (NST X) hoặc E3 làm mất hoạt tính PDC, gây hoại tử đối xứng thân não và hạch nền trên MRI não, chậm phát triển trí tuệ và tử vong sớm. Điều trị hỗ trợ bằng **Dichloroacetate (DCA)** (ức chế PDK để mở khóa PDC) và chế độ ăn sinh ceton (*Ketogenic Diet*).
+
+4. **Hội Chứng Tăng Amoniac Máu (Hyperammonemia) & Hôn Mê Não**:
+   - $\text{NH}_4^+$ nồng độ cao trong suy gan nặng rút $\alpha$-KG thành Glutamate và Glutamine, làm cạn kiệt chất trung gian chu trình Krebs tại mô não, gây suy sụp năng lượng ATP cấp tính và phù não.
+
+---
+
+### C. Chỉ Số Cận Lâm Sàng & Dấu Ấn Sinh Học Theo Dõi EBM
+
+<div class="matrix-grid">
+  <div class="matrix-card">
+    <div class="matrix-card-title">
+      <span>1. Lactate Máu &amp; Tỷ Số L/P</span>
+      <span class="rx-tag danger">&gt; 2.0 mmol/L</span>
+    </div>
+    <div class="matrix-card-desc">
+      Lactate máu tăng cao cùng tỷ số Lactate/Pyruvate tăng phản ánh sự ứ trệ chuyển hóa tại ti thể hoặc thiếu hụt Thiamine/PDC.
+    </div>
+  </div>
+
+  <div class="matrix-card">
+    <div class="matrix-card-title">
+      <span>2. Định Lượng TPP Hồng Cầu</span>
+      <span class="rx-tag warning">Đánh Giá Vitamin B1</span>
+    </div>
+    <div class="matrix-card-desc">
+      Đo nồng độ Thiamine Pyrophosphate trực tiếp hoặc đo mức độ kích hoạt enzyme Transketolase hồng cầu sau khi bổ sung TPP (*ETK activation coefficient*).
+    </div>
+  </div>
+
+  <div class="matrix-card">
+    <div class="matrix-card-title">
+      <span>3. Định Lượng Oncometabolite 2-HG</span>
+      <span class="rx-tag info">Dấu Ấn U Thần Kinh Đệm</span>
+    </div>
+    <div class="matrix-card-desc">
+      Đo nồng độ D-2-Hydroxyglutarate trong dịch não tủy, huyết tương hoặc qua phổ cộng hưởng từ hạt nhân (MRS) để chẩn đoán và theo dõi u não đột biến IDH1/2.
+    </div>
+  </div>
+</div>
+
+---
+
+<!-- KHUNG TRÍCH DẪN Y VĂN CHUẨN AMA (CITATION BOX) -->
+<div class="citation-box" style="margin-top: 2rem; padding: 1.25rem 1.5rem; background: var(--color-surface, #ffffff); border: 1px solid var(--color-border, #cbd5e1); border-left: 4px solid var(--color-primary, #0284c7); border-radius: 12px; font-size: 0.88rem; line-height: 1.8; color: var(--color-text-muted, #475569);">
+  <strong style="color: var(--color-text, #0f172a); font-size: 0.95rem;"><i class="fa-solid fa-book-medical"></i> Trích Dẫn Y Văn &amp; Tài Liệu Tham Khảo Chuẩn AMA:</strong>
+  <ol style="margin: 0.5rem 0 0 0; padding-left: 1.25rem;">
+    <li><strong>Kennelly PJ, Botham KM, McGuinness OP, Rodwell VW, Weil PA.</strong> <em>Harper's Illustrated Biochemistry</em>. 32nd ed. New York, NY: McGraw Hill LLC; 2023:156-165, 703-706.</li>
+    <li><strong>Ferrier DR.</strong> <em>Lippincott Illustrated Reviews: Biochemistry</em>. 8th ed. Philadelphia, PA: Wolters Kluwer; 2021:109-122.</li>
+    <li><strong>Horton HR, Moran LA, Scrimgeour KG, Perry MD, Rawn JD.</strong> <em>Principles of Biochemistry</em>. 5th ed. Boston, MA: Pearson Education, Inc.; 2012:387-415, 436-439.</li>
+    <li><strong>Pratt CW, Cornely K.</strong> <em>Essential Biochemistry</em>. 5th ed. Hoboken, NJ: John Wiley &amp; Sons; 2021:403-418, 563-568.</li>
+    <li><strong>Baynes JW, Dominiczak MH.</strong> <em>Medical Biochemistry</em>. 5th ed. London, UK: Elsevier; 2019:125-138, 413-415.</li>
+    <li><strong>Murphy M, Srivastava R, Deans K.</strong> <em>Clinical Biochemistry: An Illustrated Colour Text</em>. 6th ed. London, UK: Elsevier; 2018:73-76.</li>
+    <li><strong>Bộ Môn Hóa Sinh (ĐHYD TP.HCM).</strong> <em>Hóa Sinh Y Học</em>. TP. Hồ Chí Minh: Nhà Xuất Bản Y Học; 2024:229-239, 267-272, 321-332.</li>
   </ol>
 </div>
 
 <!-- HÀNG NÚT ĐIỀU HƯỚNG SPA -->
-<div class="btn-row">
+<div class="btn-row" style="display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;">
   <a href="#/basic-medical/hoa-sinh" class="btn btn-primary">
     <i class="fa-solid fa-arrow-left"></i> Quay lại Mục Lục Hóa Sinh Y Học
   </a>

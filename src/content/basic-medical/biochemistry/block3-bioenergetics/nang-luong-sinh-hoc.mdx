@@ -5,43 +5,69 @@ code: "ENG-01"
 block: "block3-bioenergetics"
 blockName: "Năng Lượng Sinh Học & Chu Trình Krebs"
 order: 11
-harperChapter: "Harper's Illustrated Biochemistry 32nd Edition"
-lippincottChapter: "Lippincott Illustrated Reviews: Biochemistry 8th Edition"
+harperChapter: "Harper's Illustrated Biochemistry 32nd Edition - Chapter 10 & 11"
+lippincottChapter: "Lippincott Illustrated Reviews: Biochemistry 8th Edition - Chapter 6"
 category: "biochemistry"
 status: "published"
 version: "2.0.0"
-updatedAt: "2026-08-28"
-description: "Nguyên lý nhiệt động học sinh học, khái niệm năng lượng tự do Gibbs (ΔG°'), các dạng liên kết cao năng (~P: Phosphoenolpyruvate, Creatine phosphate, ATP); Cặp ghép phản ứng sinh học."
+updatedAt: "2026-08-30"
+description: "Nguyên lý nhiệt động lực học sinh học, năng lượng tự do Gibbs (ΔG, ΔG°'), hằng số cân bằng Keq; Cơ chế ghép cặp phản ứng; Cấu trúc và bản chất thủy phân ATP; Thang tiềm năng chuyển nhóm phosphate (PEP, 1,3-BPG, Phosphocreatine); Bản chất liên kết Thioester và nhiệt động học oxy hóa khử sinh học."
 tags:
   - "Năng lượng tự do"
   - "ΔG"
   - "ATP"
   - "Dị hóa"
   - "Đồng hóa"
-  - "Liên kết cao năng"
+  - "Ghép cặp phản ứng"
+  - "Phosphocreatine"
+  - "Thioester"
+  - "Acetyl-CoA"
 clinicalPearls:
-  - "Phosphocreatine đóng vai trò là bể dự trữ năng lượng cao năng tức thời của mô cơ, tái tạo ATP nhanh chóng trong 5-10 giây đầu vận động."
-  - "Các phản ứng có ΔG âm lớn là các điểm điều hòa chính không thể đảo ngược của các con đường chuyển hóa."
+  - "Phosphocreatine đóng vai trò là bể dự trữ năng lượng phosphate khẩn cấp của mô cơ và não (nồng độ lúc nghỉ cao gấp 5 lần ATP), tái tạo ATP tức thời trong 3–5 giây đầu vận động mạnh qua enzyme Creatine Kinase (CK)."
+  - "ATP chiếm vị trí trung gian độc đáo trên thang tiềm năng chuyển nhóm phosphate, vừa nhận phosphate từ các chất siêu năng lượng (PEP, 1,3-BPG) để tạo ATP, vừa nhường phosphate hoạt hóa các phân tử nhận (Glucose, Glycerol), đồng thời cực kỳ bền vững về mặt động học khi chưa có enzyme xúc tác."
+  - "Một phản ứng có ΔG°' dương lớn (không thuận lợi trong ống nghiệm) vẫn hoàn toàn có thể diễn ra tự phát (ΔG < 0) trong tế bào sống nếu sản phẩm liên tục bị dọn dẹp để duy trì tỷ số tác dụng khối Q cực nhỏ."
+  - "Phản ứng thủy phân ATP tạo AMP và Pyrophosphate (PPi) giải phóng năng lượng tương đương 2 ATP nhờ enzyme Inorganic Pyrophosphatase liên tục thủy phân PPi thành 2 Pi, kéo các phản ứng sinh tổng hợp acid béo và protein diễn ra một chiều không thể đảo ngược."
 keyReactions:
-  - "ΔG = ΔH - T*ΔS"
+  - "ΔG = ΔH - T*ΔS (Phương trình Gibbs - Helmholtz)"
+  - "ΔG°' = -RT ln Keq = -2.303 RT log10 Keq (Liên hệ nhiệt động học và cân bằng)"
+  - "ΔG = ΔG°' + RT ln Q (Năng lượng tự do thực tế tế bào)"
+  - "Glucose + ATP --(Hexokinase)--> Glucose-6-phosphate + ADP (ΔG°' = -16.7 kJ/mol)"
   - "ATP + H2O ⇌ ADP + Pi (ΔG°' = -30.5 kJ/mol)"
+  - "Creatine + ATP ⇌ Phosphocreatine + ADP (Creatine Kinase)"
+  - "ΔG°' = -nF ΔE°' (Liên hệ năng lượng tự do và thế khử oxy hóa khử)"
 relatedLabTests:
-  - "Creatine Kinase (CK)"
-  - "Lactate máu"
+  - "Creatine Kinase toàn phần (CK) & Isoenzyme (CK-MB, CK-MM, CK-BB)"
+  - "Lactate máu động mạch / tĩnh mạch"
+  - "Điện di Protein & Khí máu động mạch"
 sections:
   - id: "sec-1"
     number: 1
-    title: "Cơ Chế Phân Tử & Con Đường Hóa Sinh Nền Tảng"
-    icon: "fa-dna"
+    title: "Tổng Quan Chuyển Hóa & Các Định Luật Nhiệt Động Học Sinh Học"
+    icon: "fa-fire-flame-curved"
   - id: "sec-2"
     number: 2
-    title: "Các Phản Ứng Enzym & Điểm Chốt Động Học"
-    icon: "fa-flask-vial"
+    title: "Năng Lượng Tự Do Gibbs (ΔG), Tính Tự Phát & Động Học Phản Ứng"
+    icon: "fa-scale-balanced"
   - id: "sec-3"
     number: 3
-    title: "Ý Nghĩa Lâm Sàng & Ứng Dụng Xét Nghiệm EBM"
+    title: "Năng Lượng Tự Do Chuẩn (ΔG°'), Hằng Số Keq & Trạng Thái Tế Bào"
+    icon: "fa-square-root-variable"
+  - id: "sec-4"
+    number: 4
+    title: "Nguyên Lý Ghép Cặp Phản Ứng (Coupled Reactions) & Vai Trò ATP"
+    icon: "fa-arrows-split-up-and-left"
+  - id: "sec-5"
+    number: 5
+    title: "Cấu Trúc ATP, Động Học Thủy Phân & Cơ Chế Tỏa Năng Lượng Cao"
+    icon: "fa-bolt"
+  - id: "sec-6"
+    number: 6
+    title: "Thang Tiềm Năng Chuyển Phosphate, Hệ Phosphagen & Thioester"
+    icon: "fa-cubes-stacked"
+  - id: "sec-7"
+    number: 7
+    title: "Nhiệt Động Học Oxy Hóa Khử Sinh Học, Cận Lâm Sàng & Trích Dẫn EBM"
     icon: "fa-stethoscope"
-
 ---
 
 # 🧪 ĐẠI CƯƠNG CHUYỂN HÓA & NĂNG LƯỢNG TỰ DO (ΔG)
@@ -52,78 +78,622 @@ sections:
 <section class="stats-strip">
   <div class="stats-grid">
     <div class="stat-card">
-      <div class="stat-val blue">30–32 ATP</div>
-      <div class="stat-lbl">Năng lượng sinh học / Hiệu suất chuyển hóa</div>
+      <div class="stat-val blue">-30.5 kJ/mol</div>
+      <div class="stat-lbl">Năng lượng tự do thủy phân chuẩn của ATP (ATP ➔ ADP + Pi)</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val green">$K_m$ & $V_{max}$</div>
-      <div class="stat-lbl">Điểm chốt động học enzym & Giới hạn tốc độ</div>
+      <div class="stat-val red">-61.9 kJ/mol</div>
+      <div class="stat-lbl">Tiềm năng chuyển phosphate cao nhất (Phosphoenolpyruvate)</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val purple">EBM 2026</div>
-      <div class="stat-lbl">Chuẩn hóa Harper 32nd & Lippincott 8th</div>
+      <div class="stat-val green">40% / 60%</div>
+      <div class="stat-lbl">Hiệu suất bảo tồn thành ATP (40%) và Tỏa nhiệt năng (60%)</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val teal">Creatine Kinase (CK), Lactate máu</div>
-      <div class="stat-lbl">Cận lâm sàng & Dấu ấn sinh học theo dõi</div>
+      <div class="stat-val purple">-43.1 kJ/mol</div>
+      <div class="stat-lbl">Năng lượng Phosphocreatine (Bể dự trữ cấp tốc cơ vân &amp; não)</div>
     </div>
   </div>
 </section>
 
 ---
 
-## 1. Cơ Chế Phân Tử & Con Đường Hóa Sinh Nền Tảng {#sec-1}
+## 1. Tổng Quan Chuyển Hóa & Các Định Luật Nhiệt Động Học Sinh Học {#sec-1}
 
-Nguyên lý nhiệt động học sinh học, khái niệm năng lượng tự do Gibbs (ΔG°'), các dạng liên kết cao năng (~P: Phosphoenolpyruvate, Creatine phosphate, ATP); Cặp ghép phản ứng sinh học.
+**Chuyển hóa các chất (*Metabolism*)** mô tả toàn bộ mạng lưới các phản ứng hóa học phức tạp diễn ra liên tục bên trong tế bào sống nhằm tổng hợp, phân giải các hợp chất hữu cơ, đồng thời khai thác, dự trữ và sử dụng năng lượng sinh học (*Bioenergetics*).
 
 ```
-ĐẶC ĐIỂM CHUYỂN HÓA & VAI TRÒ SINH HỌC CỐT LÕI:
-  • Khối chuyên đề: Năng Lượng Sinh Học & Chu Trình Krebs
-  • Phân loại phân tử / enzym chủ chốt: Năng lượng tự do, ΔG, ATP, Dị hóa, Đồng hóa, Liên kết cao năng
-  • Vị trí tế bào: Bào tương, Ty thể, Màng sinh chất hoặc Lưới nội sinh chất.
+                             MẠNG LƯỚI CHUYỂN HÓA (METABOLISM)
+                                             │
+                 ┌───────────────────────────┴───────────────────────────┐
+                 ▼                                                       ▼
+          [DỊ HÓA - CATABOLISM]                                  [ĐỒNG HÓA - ANABOLISM]
+          - Phân giải đại phân tử dinh dưỡng                      - Sinh tổng hợp đại phân tử phức tạp
+          - Quá trình oxy hóa (tách e-)                           - Quá trình khử (nhận e-)
+          - Phát năng lượng (Exergonic, ΔG < 0)                   - Thu năng lượng (Endergonic, ΔG > 0)
+          - Tạo ATP, NADH, FADH2, NADPH                           - Tiêu thụ ATP, NADPH
+          - 40% hóa năng ATP, 60% nhiệt năng                      - Cần tiền chất sườn carbon từ dị hóa
 ```
 
+### A. Hai Quá Trình Cơ Bản Của Chuyển Hóa
+
+1. **Dị Hóa (Catabolism)**:
+   - **Bản chất**: Phân giải các phân tử dinh dưỡng hữu cơ phức tạp (carbohydrat, lipid, protein) từ thức ăn hoặc dự trữ thành các sản phẩm đơn giản hơn ($\text{CO}_2, \text{H}_2\text{O}, \text{urea}, \text{acid lactic}$).
+   - **Bản chất hóa học**: Chủ yếu là **quá trình oxy hóa**, giải phóng các điện tử giàu năng lượng được thu nhận bởi các coenzyme $\text{NAD}^+$ và $\text{FAD}$ tạo thành $\text{NADH}$ và $\text{FADH}_2$.
+   - **Năng lượng**: Quá trình **phát năng (exergonic)**. Khoảng **40% năng lượng** giải phóng được tế bào bắt giữ và bảo tồn dưới dạng hóa năng trong phân tử **Adenosine Triphosphate (ATP)** qua phản ứng phosphoryl hóa ADP. **60% còn lại** tỏa ra dưới dạng nhiệt năng duy trì thân nhiệt.
+
+2. **Đồng Hóa (Anabolism)**:
+   - **Bản chất**: Sinh tổng hợp các đại phân tử sinh học đặc hiệu (protein, acid nucleic, polysaccharide, lipid màng) từ các tiền chất đơn giản hơn.
+   - **Bản chất hóa học**: Là **quá trình khử**, đòi hỏi cung cấp nguyên tử hydro và điện tử tích cực từ chất cho điện tử chuyên biệt là **NADPH**.
+   - **Năng lượng**: Quá trình **thu năng (endergonic)**, đòi hỏi tiêu tốn năng lượng hóa học trực tiếp từ sự thủy phân ATP do dị hóa cung cấp.
+
+3. **Mối Liên Hệ Tương Hỗ Chặt Chẽ**:
+   - Dị hóa cung cấp các sườn carbon trung gian làm **tiền chất** và cung cấp năng lượng hóa học ($\text{ATP}, \text{NADPH}$) làm **động lực** cho đồng hóa.
+   - Theo định luật nhiệt động lực học, tổng năng lượng cần để đồng hóa sinh tổng hợp bất kỳ đại phân tử nào luôn **vượt quá** lượng năng lượng thu hoạch được từ sự dị hóa chính chất đó.
 
 ---
 
-## 2. Các Phản Ứng Enzym & Điểm Chốt Động Học {#sec-2}
+### B. Các Định Luật Nhiệt Động Lực Học Trong Sinh Học
 
-<BiochemAlert type="reaction" title="Các Phản Ứng Hóa Sinh & Enzyme Giới Hạn Tốc Độ">
-  Các phản ứng then chốt điều hòa con đường chuyển hóa:
-  <ul>
-    <li><code>ΔG = ΔH - T*ΔS</code></li>
-    <li><code>ATP + H2O ⇌ ADP + Pi (ΔG°' = -30.5 kJ/mol)</code></li>
-  </ul>
-</BiochemAlert>
+Sinh vật sống tuân thủ nghiêm ngặt các nguyên lý nhiệt động học áp dụng cho vũ trụ vật lý:
 
+1. **Hệ Thống Mở Của Tế Bào Sống**:
+   - *Hệ cô lập (Isolated system)*: Không trao đổi vật chất lẫn năng lượng với môi trường.
+   - *Hệ kín (Closed system)*: Chỉ trao đổi năng lượng, không trao đổi vật chất.
+   - *Hệ mở (Open system)*: Tự do trao đổi cả vật chất và năng lượng với môi trường.
+   - **Tế bào và cơ thể sống là hệ thống mở**: Liên tục thu nhận chất dinh dưỡng, oxy, giải phóng chất thải ($\text{CO}_2, \text{urea}$) và trao đổi nhiệt năng với môi trường. Do đó, tế bào sống không bao giờ ở trạng thái cân bằng tĩnh mà duy trì một **trạng thái dừng động (dynamic steady state)** xa điểm cân bằng.
+
+2. **Định Luật Một Nhiệt Động Lực Học (Bảo Toàn Năng Lượng)**:
+   - *Tổng năng lượng của một hệ thống và môi trường xung quanh nó (vũ trụ) là một hằng số bảo tồn*. Năng lượng không tự sinh ra, không tự mất đi mà chỉ chuyển dạng từ dạng này sang dạng khác.
+   - Biểu thức: $\Delta U = q + w$ (với $\Delta U$ là biến thiên nội năng, $q$ là nhiệt lượng, $w$ là công).
+   - Trong sinh học ở áp suất không đổi ($P = \text{const}$), biến thiên nhiệt lượng được đo bằng **Enthalpy ($\Delta H$)**:
+     $$\Delta H = \Delta U + P\Delta V = q_p$$
+     - $\Delta H < 0$: Phản ứng tỏa nhiệt (*exothermic*).
+     - $\Delta H > 0$: Phản ứng thu nhiệt (*endothermic*).
+   - Sinh vật chuyển hóa hóa năng của thức ăn thành: cơ năng (co cơ), điện năng (dẫn truyền xung động thần kinh), nhiệt năng (thân nhiệt), và thế năng điện hóa (bơm ion màng).
+
+3. **Định Luật Hai Nhiệt Động Lực Học & Nghịch Lý Sự Sống**:
+   - *Mọi quá trình tự phát trong tự nhiên đều diễn ra theo chiều hướng làm tăng tổng Entropy của vũ trụ*:
+     $$\Delta S_{\text{vũ trụ}} = \Delta S_{\text{hệ thống}} + \Delta S_{\text{môi trường}} > 0$$
+   - **Entropy ($S$)**: Đại lượng đo lường mức độ hỗn loạn, vô trật tự của hệ thống.
+   - **Nghịch lý sự sống**: Tế bào sống là những cấu trúc có độ tổ chức cực kỳ tinh vi và trật tự cao (entropy rất thấp). Để duy trì trạng thái trật tự này chống lại xu hướng phân rã tự nhiên, tế bào bắt buộc phải **tiêu tốn liên tục năng lượng từ dị hóa thức ăn**.
+   - Sự giảm entropy nội bào ($\Delta S_{\text{tế bào}} < 0$) được bù đắp bằng sự **tăng vọt entropy lớn hơn ở môi trường xung quanh** thông qua việc thải các phân tử nhỏ phân tán ($\text{CO}_2, \text{H}_2\text{O}$) và tỏa nhiệt làm tăng chuyển động nhiệt hỗn loạn của các phân tử dung môi.
 
 ---
 
-## 3. Ý Nghĩa Lâm Sàng & Ứng Dụng Xét Nghiệm EBM {#sec-3}
+## 2. Năng Lượng Tự Do Gibbs (ΔG), Tính Tự Phát & Động Học Phản Ứng {#sec-2}
 
-<BiochemAlert type="pearl" title="Điểm Ngọc Lâm Sàng & Biện Luận Chẩn Đoán (Clinical Pearls)">
-  <ul>
-    <li>Phosphocreatine đóng vai trò là bể dự trữ năng lượng cao năng tức thời của mô cơ, tái tạo ATP nhanh chóng trong 5-10 giây đầu vận động.</li>
-    <li>Các phản ứng có ΔG âm lớn là các điểm điều hòa chính không thể đảo ngược của các con đường chuyển hóa.</li>
-  </ul>
+### A. Định Nghĩa & Phương Trình Gibbs - Helmholtz
+
+Được Josiah Willard Gibbs đề xuất năm 1878, **Năng lượng tự do Gibbs ($G$)** là phần năng lượng chứa trong hệ thống có khả năng thực hiện công hữu ích trong điều kiện nhiệt độ ($T$) và áp suất ($P$) không đổi:
+
+$$\Delta G = \Delta H - T\Delta S$$
+
+Trong đó:
+- $\Delta G$: Biến thiên năng lượng tự do Gibbs ($\text{kJ/mol}$ hoặc $\text{kcal/mol}$).
+- $\Delta H$: Biến thiên enthalpy (phát nhiệt hay thu nhiệt liên kết hóa học).
+- $T$: Nhiệt độ tuyệt đối tính bằng Kelvin ($K = ^\circ\text{C} + 273.15$).
+- $\Delta S$: Biến thiên entropy của hệ thống.
+
+<div class="table-responsive">
+  <table class="table-modern">
+    <thead>
+      <tr>
+        <th style="width: 22%;">Giá Trị $\Delta G$</th>
+        <th style="width: 25%;">Tính Chất Phản Ứng</th>
+        <th style="width: 28%;">Chiều Hướng Diễn Tiến</th>
+        <th style="width: 25%;">Khả Năng Làm Công</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>$\Delta G < 0$ (Âm)</strong></td>
+        <td><span class="rx-tag preferred">Phát năng (Exergonic)</span></td>
+        <td>Phản ứng diễn ra <strong>tự phát</strong> theo chiều thuận</td>
+        <td><strong>Giải phóng năng lượng</strong> để thực hiện công</td>
+      </tr>
+      <tr>
+        <td><strong>$\Delta G > 0$ (Dương)</strong></td>
+        <td><span class="rx-tag danger">Thu năng (Endergonic)</span></td>
+        <td><strong>Không tự phát</strong> (Cần năng lượng kích hoạt)</td>
+        <td>Đòi hỏi cung cấp năng lượng từ ngoài</td>
+      </tr>
+      <tr>
+        <td><strong>$\Delta G = 0$</strong></td>
+        <td><span class="rx-tag info">Cân bằng (Equilibrium)</span></td>
+        <td>Tốc độ thuận = nghịch, không biến đổi ròng</td>
+        <td><strong>Không có khả năng</strong> làm công ròng</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+---
+
+### B. Phân Biệt Nhiệt Động Học (Spontaneity) & Động Học (Tốc Độ)
+
+<BiochemAlert type="reaction" title="Điểm Chốt Nhiệt Động Học vs Động Học Enzym">
+  <strong>1. Nhiệt động học ($\Delta G$):</strong> Chỉ quyết định chiều hướng tự phát và vị trí cân bằng cuối cùng của phản ứng, hoàn toàn <em>không quyết định tốc độ phản ứng</em>.
+  <br />
+  <strong>2. Động học (Tốc độ):</strong> Được quyết định bởi <strong>Năng lượng hoạt hóa ($E_a$ hay $\Delta G^\ddagger$)</strong> – rào cản năng lượng cần vượt qua để cơ chất đạt trạng thái chuyển tiếp (transition state).
+  <br />
+  <strong>3. Vai trò của Enzyme:</strong> Enzyme làm tăng tốc độ phản ứng lên hàng triệu lần bằng cách <strong>hạ thấp năng lượng hoạt hóa ($E_a$)</strong>. Tuy nhiên, <em>Enzyme tuyệt đối không làm thay đổi $\Delta G$ hay hằng số cân bằng ($K_{\text{eq}}$)</em> của phản ứng.
 </BiochemAlert>
 
-<BiochemAlert type="danger" title="Chỉ Số Cận Lâm Sàng & Rối Loạn Chuyển Hóa Liên Quan">
-  Các xét nghiệm hóa sinh bắt buộc theo dõi:
-  <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem;">
-    🧪 Creatine Kinase (CK)
-    🧪 Lactate máu
+---
+
+## 3. Năng Lượng Tự Do Chuẩn (ΔG°'), Hằng Số Keq & Trạng Thái Tế Bào {#sec-3}
+
+### A. Trạng Thái Chuẩn Hóa Học vs Trạng Thái Chuẩn Hóa Sinh
+
+<div class="table-responsive">
+  <table class="table-modern">
+    <thead>
+      <tr>
+        <th style="width: 25%;">Thông Số Đo Lường</th>
+        <th style="width: 37%;">Chuẩn Hóa Học ($\Delta G^0$)</th>
+        <th style="width: 38%;">Chuẩn Hóa Sinh ($\Delta G^{0\prime}$)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Nồng độ ion $\text{H}^+$ / pH</strong></td>
+        <td>$1.0\text{ M}$ ($\text{pH} = 0$, phá hủy tế bào)</td>
+        <td><span class="rx-tag preferred"><strong>$10^{-7}\text{ M}$ ($\text{pH} = 7.0$)</strong></span></td>
+      </tr>
+      <tr>
+        <td><strong>Nồng độ nước ($\text{H}_2\text{O}$)</strong></td>
+        <td>Không quy định</td>
+        <td><strong>$55.5\text{ M}$</strong> (Gán hoạt độ = 1)</td>
+      </tr>
+      <tr>
+        <td><strong>Nồng độ ion $\text{Mg}^{2+}$</strong></td>
+        <td>Không quy định</td>
+        <td><strong>$1.0\text{ mM}$</strong> (Tạo phức Mg-ATP)</td>
+      </tr>
+      <tr>
+        <td><strong>Nhiệt độ &amp; Áp suất</strong></td>
+        <td>$25^\circ\text{C}$ ($298\text{ K}$), $1\text{ atm}$</td>
+        <td>$25^\circ\text{C}$ ($298\text{ K}$), $1\text{ atm}$</td>
+      </tr>
+      <tr>
+        <td><strong>Nồng độ cơ chất khác</strong></td>
+        <td>$1.0\text{ M}$</td>
+        <td>$1.0\text{ M}$</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+---
+
+### B. Mối Liên Hệ Toán Học Giữa $\Delta G^{0\prime}$ & Hằng Số Cân Bằng $K_{\text{eq}}$
+
+Tại trạng thái cân bằng hóa học, biến thiên năng lượng tự do thực tế $\Delta G = 0$. Mối liên hệ toán học giữa $\Delta G^{0\prime}$ và $K_{\text{eq}}$ được biểu diễn qua phương trình:
+
+$$\Delta G^{0\prime} = -RT \ln K_{\text{eq}} = -2.303 RT \log_{10} K_{\text{eq}}$$
+
+Trong đó:
+- $R = 8.3145\text{ J}\cdot\text{K}^{-1}\cdot\text{mol}^{-1}$ (Hằng số khí lý tưởng).
+- Ở $25^\circ\text{C}$ ($298\text{ K}$): $RT \approx 2.478\text{ kJ/mol}$ và $2.303 RT \approx 5.706\text{ kJ/mol}$.
+
+- **Khi $K_{\text{eq}} > 1.0$**: $\Delta G^{0\prime} < 0$ (Âm), trạng thái cân bằng nghiêng về phía sản phẩm.
+- **Khi $K_{\text{eq}} < 1.0$**: $\Delta G^{0\prime} > 0$ (Dương), trạng thái cân bằng nghiêng về phía chất phản ứng.
+- **Khi $K_{\text{eq}} = 1.0$**: $\Delta G^{0\prime} = 0$.
+
+---
+
+### C. Năng Lượng Thực Tế Tế Bào ($\Delta G$) & Tỷ Số Tác Dụng Khối ($Q$)
+
+Trong tế bào sống, các chất phản ứng không bao giờ ở nồng độ chuẩn $1.0\text{ M}$. Biến thiên năng lượng tự do thực tế ($\Delta G$) quyết định chiều hướng phản ứng sinh thể được tính bằng:
+
+$$\Delta G = \Delta G^{0\prime} + RT \ln Q = \Delta G^{0\prime} + 2.303 RT \log_{10} Q$$
+
+Với phản ứng $A + B \rightleftharpoons C + D$, tỷ số tác dụng khối là:
+$$Q = \frac{[C][D]}{[A][B]}$$
+
+<BiochemAlert type="pearl" title="Ý Nghĩa Sinh Học Trọng Yếu: Cách Tế Bào Đảo Chiều Phản Ứng">
+  Một phản ứng có $\Delta G^{0\prime}$ <strong>dương lớn</strong> (không thuận lợi trong ống nghiệm) <strong>vẫn diễn ra tự phát ($\Delta G < 0$) trong tế bào sống</strong>. Điều này đạt được nhờ tế bào liên tục tiêu thụ sản phẩm ($C, D$) hoặc tích lũy cơ chất ($A, B$) để giữ tỷ số tác dụng khối $Q$ cực kỳ nhỏ. Lúc này, số hạng $RT \ln Q$ mang giá trị âm rất lớn, vượt qua giá trị dương của $\Delta G^{0\prime}$, kéo $\Delta G$ thực tế xuống dưới 0.
+</BiochemAlert>
+
+---
+
+## 4. Nguyên Lý Ghép Cặp Phản Ứng (Coupled Reactions) & Vai Trò ATP {#sec-4}
+
+### A. Tính Cộng Được Của Năng Lượng Tự Do Gibbs (Additive Property)
+
+Do năng lượng tự do $G$ là một hàm trạng thái (chỉ phụ thuộc vào trạng thái đầu và cuối), biến thiên năng lượng tự do của một chuỗi các phản ứng liên tiếp có **tính cộng được**:
+
+$$\text{Phản ứng 1: } A \rightleftharpoons B \quad (\Delta G^{0\prime}_1 > 0 \text{ - Thu năng})$$
+$$\text{Phản ứng 2: } B \rightleftharpoons C \quad (\Delta G^{0\prime}_2 \ll 0 \text{ - Phát năng mạnh})$$
+$$\text{Phản ứng tổng hợp: } A \rightleftharpoons C \quad (\Delta G^{0\prime}_{\text{overall}} = \Delta G^{0\prime}_1 + \Delta G^{0\prime}_2 < 0)$$
+
+- **Cơ chế hoạt động**: Hai phản ứng bắt buộc phải **chia sẻ một chất trung gian chung (*shared intermediate*)**. Năng lượng giải phóng từ phản ứng phát năng đóng vai trò "bánh răng truyền lực" kéo phản ứng thu năng đi tới.
+
+---
+
+### B. Ví Dụ Điển Hình: Sự Phosphoryl Hóa Glucose Xúc Tác Bởi Hexokinase
+
+```
+Phản ứng 1 (Thu năng không tự phát):
+  Glucose + Pi ⇌ Glucose-6-phosphate + H2O             ΔG°'₁ = +13.8 kJ/mol (Keq ≈ 0.0039 M⁻¹)
+
+Phản ứng 2 (Thủy phân ATP phát năng mạnh):
+  ATP + H2O ⇌ ADP + Pi                                 ΔG°'₂ = -30.5 kJ/mol
+
+Phản ứng ghép cặp ròng (Xúc tác bởi Hexokinase):
+  Glucose + ATP ⇌ Glucose-6-phosphate + ADP            ΔG°'net = -16.7 kJ/mol (Keq ≈ 8 × 10²)
+```
+
+<div class="flow-container">
+  <div style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 1.02rem; color: var(--color-text); margin-bottom: 0.35rem;">
+    Figure 1. Sơ Đồ Chuyển Nhóm Năng Lượng Ghép Cặp Của Hexokinase
   </div>
-</BiochemAlert>
-  <ol style="margin: 0; padding-left: 1.25rem; line-height: 1.8; color: var(--color-text-muted, #475569); font-size: 0.88rem;">
-    <li><strong>Rodwell, V. W. et al. (2022)</strong>. <em>Harper's Illustrated Biochemistry</em> (32nd ed.). McGraw-Hill Education.</li>
-    <li><strong>Ferrier, D. R. (2021)</strong>. <em>Lippincott Illustrated Reviews: Biochemistry</em> (8th ed.). Wolters Kluwer.</li>
-    <li><strong>Rifai, N. et al. (2018)</strong>. <em>Tietz Textbook of Clinical Chemistry and Molecular Diagnostics</em> (6th ed.). Elsevier.</li>
+  <div style="font-size: 0.84rem; color: var(--color-text-muted); margin-bottom: 1.25rem;">
+    Trong trung tâm hoạt động của Hexokinase, nhóm phosphate được chuyển trực tiếp từ ATP sang Glucose mà không giải phóng Pi tự do ra môi trường:
+  </div>
+
+  <div class="flow-step-grid">
+    <div class="flow-step-card c-kali">
+      <div class="flow-step-num">BƯỚC 01 • GẮN CƠ CHẤT</div>
+      <div class="flow-step-title">Gắn Glucose &amp; Mg-ATP</div>
+      <div class="flow-step-desc">
+        Glucose và phức hợp Mg-ATP gắn vào hai túi hoạt động cận kề của enzyme Hexokinase.
+      </div>
+      <div class="flow-step-impact">
+        <i class="fa-solid fa-lock"></i> Đóng kín trung tâm hoạt động
+      </div>
+    </div>
+
+    <div class="flow-step-card c-magie">
+      <div class="flow-step-num">BƯỚC 02 • CHUYỂN PHOSPHATE</div>
+      <div class="flow-step-title">Chuyển Gốc γ-Phosphate</div>
+      <div class="flow-step-desc">
+        Nhóm hydroxyl tại C-6 của glucose tấn công ái nhân vào gốc phosphate γ của ATP.
+      </div>
+      <div class="flow-step-impact">
+        <i class="fa-solid fa-arrows-turn-to-dots"></i> Ghép cặp năng lượng trực tiếp
+      </div>
+    </div>
+
+    <div class="flow-step-card c-canxi">
+      <div class="flow-step-num">BƯỚC 03 • GIẢI PHÓNG</div>
+      <div class="flow-step-title">Tạo G6P &amp; ADP</div>
+      <div class="flow-step-desc">
+        Sản phẩm Glucose-6-phosphate mang điện tích âm bị giữ lại trong tế bào và ADP phân ly ra ngoài.
+      </div>
+      <div class="flow-step-impact">
+        <i class="fa-solid fa-bolt"></i> ΔG°' ròng = <strong>-16.7 kJ/mol</strong>
+      </div>
+    </div>
+  </div>
+</div>
+
+---
+
+## 5. Cấu Trúc ATP, Động Học Thủy Phân & Cơ Chế Tỏa Năng Lượng Cao {#sec-5}
+
+### A. Cấu Trúc Phân Tử Adenosine Triphosphate (ATP)
+
+```
+                 NH2
+                 │
+               C ═ N
+             ╱       ╲
+            N         C ── N ═ CH
+            │         ║    ║
+            CH        C ── N
+             ╲       ╱
+                 N
+                 │
+               [Ribose] ── O ── P ═ O ── O ~ P ═ O ── O ~ P ═ O
+                 │              │            │            │
+                OH  OH          O_           O_           O_
+                               (alpha)      (beta)       (gamma)
+                                └─ester─┘    └─anhydride─┘└─anhydride─┘
+```
+
+1. **Thành phần**: Nhân Purine (Adenine) + Đường Pentose (Ribose) + 3 gốc phosphate ($\alpha, \beta, \gamma$).
+2. **Hai loại liên kết phosphate**:
+   - **Liên kết Phosphoester ($\alpha$-ribose)**: Nghèo năng lượng ($\Delta G^{0\prime} \approx -14.2\text{ kJ/mol}$).
+   - **Hai liên kết Phosphoanhydride ($\alpha-\beta$ và $\beta-\gamma$)**: Giàu năng lượng ($\sim\text{P}$), thủy phân giải phóng $\Delta G^{0\prime} \le -30.5\text{ kJ/mol}$.
+
+---
+
+### B. Hai Con Đường Thủy Phân Của ATP
+
+1. **Thủy phân giải phóng Orthophosphate ($P_i$)**:
+   - Phổ biến trong co cơ, bơm ion $Na^+/K^+$-ATPase, vận chuyển chủ động:
+   $$\text{ATP} + \text{H}_2\text{O} \rightleftharpoons \text{ADP} + \text{P}_i + \text{H}^+ \quad (\Delta G^{0\prime} = -30.5\text{ kJ/mol})$$
+
+2. **Thủy phân giải phóng Pyrophosphate ($PP_i$) & Động lực của Pyrophosphatase**:
+   - Đồng hành với các phản ứng sinh tổng hợp lớn (hoạt hóa acid béo tạo Acyl-CoA, hoạt hóa amino acid tổng hợp protein, tổng hợp DNA/RNA):
+   $$\text{ATP} + \text{H}_2\text{O} \rightleftharpoons \text{AMP} + \text{PP}_i + \text{H}^+ \quad (\Delta G^{0\prime} = -45.6\text{ kJ/mol})$$
+   - Phân tử $PP_i$ lập tức bị thủy phân triệt để bởi enzyme **Inorganic Pyrophosphatase**:
+   $$\text{PP}_i + \text{H}_2\text{O} \xrightarrow{\text{Pyrophosphatase}} 2\text{P}_i \quad (\Delta G^{0\prime} = -19.2\text{ kJ/mol})$$
+   - **Ý nghĩa nhiệt động học**: Nồng độ $PP_i$ trong tế bào luôn được giữ ở mức cực thấp ($< 10^{-6}\text{ M}$), kéo toàn bộ con đường sinh tổng hợp diễn ra một chiều không thể đảo ngược (tương đương tiêu tốn **2 phân tử ATP equivalents**).
+
+---
+
+### C. 4 Lý Do Vật Lý Hóa Học Khiến ATP Giải Phóng Năng Lượng Cao
+
+<div class="matrix-grid">
+  <div class="matrix-card">
+    <div class="matrix-card-title">
+      <span>1. Giải Tỏa Lực Đẩy Tĩnh Điện</span>
+      <span class="rx-tag preferred">Electrostatic Repulsion</span>
+    </div>
+    <div class="matrix-card-desc">
+      Ở pH 7.4, phân tử mang 4 điện tích âm ($ATP^{4-}$) xếp sát nhau. Sự thủy phân tách rời $\text{ADP}^{3-}$ và $\text{HPO}_4^{2-}$ giúp giải tỏa sức căng tĩnh điện nội phân tử cực lớn.
+    </div>
+  </div>
+
+  <div class="matrix-card">
+    <div class="matrix-card-title">
+      <span>2. Ổn Định Hóa Cộng Hưởng Sản Phẩm</span>
+      <span class="rx-tag info">Resonance Stabilization</span>
+    </div>
+    <div class="matrix-card-desc">
+      Gốc $P_i$ tự do có nhiều cấu trúc lai cộng hưởng tương đương phân tán điện tích âm đều trên cả 4 nguyên tử Oxy. Khi còn gắn trong ATP, liên kết cầu nối giới hạn sự cộng hưởng này.
+    </div>
+  </div>
+
+  <div class="matrix-card">
+    <div class="matrix-card-title">
+      <span>3. Hiệu Ứng Solvat Hóa Tốt Hơn</span>
+      <span class="rx-tag warning">Solvation Effects</span>
+    </div>
+    <div class="matrix-card-desc">
+      Các ion sản phẩm ($\text{ADP}^{3-}, \text{P}_i^{2-}$) có kích thước nhỏ và phân bố điện tích thuận lợi, được các phân tử nước solvat hóa và giải phóng nhiệt hydrat hóa lớn.
+    </div>
+  </div>
+
+  <div class="matrix-card">
+    <div class="matrix-card-title">
+      <span>4. Vai Trò Của Ion $Mg^{2+}$</span>
+      <span class="rx-tag preferred">Mg-ATP Chelation</span>
+    </div>
+    <div class="matrix-card-desc">
+      $Mg^{2+}$ che chắn bớt điện tích âm, tạo phức hợp Mg-ATP với cấu hình lập thể chuẩn xác để các enzyme Kinase nhận diện và chuyển gốc phosphate.
+    </div>
+  </div>
+</div>
+
+---
+
+## 6. Thang Tiềm Năng Chuyển Phosphate, Hệ Phosphagen & Thioester {#sec-6}
+
+### A. Bảng Thang Đo Tiềm Năng Chuyển Nhóm Phosphate (PGTP)
+
+Tiềm năng chuyển nhóm phosphate được định nghĩa bằng $-\Delta G^{0\prime}_{\text{hydrolysis}}$. Chất có $\Delta G^{0\prime}$ càng âm lớn thì khả năng hiến gốc phosphate cho chất nhận càng mạnh.
+
+<div class="table-responsive">
+  <table class="table-modern">
+    <thead>
+      <tr>
+        <th style="width: 32%;">Hợp Chất Hóa Sinh</th>
+        <th style="width: 25%;">Loại Liên Kết</th>
+        <th style="width: 23%;">$\Delta G^{0\prime}_{\text{hydrolysis}}$ (kJ/mol)</th>
+        <th style="width: 20%;">Phân Nhóm Năng Lượng</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Phosphoenolpyruvate (PEP)</strong></td>
+        <td>Enol-phosphate</td>
+        <td><span class="rx-tag danger"><strong>-61.9</strong></span></td>
+        <td><span class="rx-tag danger">Siêu năng lượng</span></td>
+      </tr>
+      <tr>
+        <td><strong>Carbamoyl phosphate</strong></td>
+        <td>Anhydride hỗn hợp</td>
+        <td><span class="rx-tag danger"><strong>-51.4</strong></span></td>
+        <td><span class="rx-tag danger">Siêu năng lượng</span></td>
+      </tr>
+      <tr>
+        <td><strong>1,3-Bisphosphoglycerate (1,3-BPG)</strong></td>
+        <td>Acyl-phosphate / Mixed anhydride</td>
+        <td><span class="rx-tag danger"><strong>-49.4</strong></span></td>
+        <td><span class="rx-tag danger">Siêu năng lượng</span></td>
+      </tr>
+      <tr>
+        <td><strong>$\text{ATP} \rightarrow \text{AMP} + \text{PP}_i$</strong></td>
+        <td>Phosphoanhydride</td>
+        <td><span class="rx-tag danger"><strong>-45.6</strong></span></td>
+        <td><span class="rx-tag danger">Siêu năng lượng</span></td>
+      </tr>
+      <tr>
+        <td><strong>Phosphocreatine (Creatine-P)</strong></td>
+        <td>Phosphoguanidine</td>
+        <td><span class="rx-tag danger"><strong>-43.1</strong></span></td>
+        <td><span class="rx-tag danger">Siêu năng lượng</span></td>
+      </tr>
+      <tr>
+        <td><strong>Acetyl-CoA</strong></td>
+        <td>Thioester</td>
+        <td><span class="rx-tag danger"><strong>-31.5</strong></span></td>
+        <td><span class="rx-tag danger">Siêu năng lượng</span></td>
+      </tr>
+      <tr style="background: rgba(2, 132, 199, 0.08);">
+        <td><strong>$\text{ATP} \rightarrow \text{ADP} + \text{P}_i$</strong></td>
+        <td>Phosphoanhydride</td>
+        <td><span class="rx-tag preferred"><strong>-30.5</strong></span></td>
+        <td><span class="rx-tag preferred"><strong>MỐC TRUNG GIAN</strong></span></td>
+      </tr>
+      <tr>
+        <td><strong>$\text{ADP} \rightarrow \text{AMP} + \text{P}_i$</strong></td>
+        <td>Phosphoanhydride</td>
+        <td><span class="rx-tag warning">-27.6</span></td>
+        <td><span class="rx-tag warning">Nghèo năng lượng</span></td>
+      </tr>
+      <tr>
+        <td><strong>Glucose-1-phosphate</strong></td>
+        <td>Hemiacetal phosphoester</td>
+        <td><span class="rx-tag warning">-20.9</span></td>
+        <td><span class="rx-tag warning">Nghèo năng lượng</span></td>
+      </tr>
+      <tr>
+        <td><strong>Pyrophosphate ($\text{PP}_i \rightarrow 2\text{P}_i$)</strong></td>
+        <td>Phosphoanhydride</td>
+        <td><span class="rx-tag warning">-19.2</span></td>
+        <td><span class="rx-tag warning">Nghèo năng lượng</span></td>
+      </tr>
+      <tr>
+        <td><strong>Fructose-6-phosphate</strong></td>
+        <td>Phosphoester</td>
+        <td><span class="rx-tag warning">-15.9</span></td>
+        <td><span class="rx-tag warning">Nghèo năng lượng</span></td>
+      </tr>
+      <tr>
+        <td><strong>AMP</strong></td>
+        <td>Phosphoester</td>
+        <td><span class="rx-tag warning">-14.2</span></td>
+        <td><span class="rx-tag warning">Nghèo năng lượng</span></td>
+      </tr>
+      <tr>
+        <td><strong>Glucose-6-phosphate</strong></td>
+        <td>Phosphoester</td>
+        <td><span class="rx-tag warning">-13.8</span></td>
+        <td><span class="rx-tag warning">Nghèo năng lượng</span></td>
+      </tr>
+      <tr>
+        <td><strong>Glycerol-3-phosphate</strong></td>
+        <td>Phosphoester</td>
+        <td><span class="rx-tag warning">-9.2</span></td>
+        <td><span class="rx-tag warning">Nghèo năng lượng</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+---
+
+### B. Vị Trí Môi Giới Trung Gian Độc Đáo & Tính Bền Động Học Của ATP
+
+```
+      [HỢP CHẤT SIÊU NĂNG LƯỢNG] (PEP, 1,3-BPG, Phosphocreatine)
+                  │
+                  ├───────► Cho phosphate sang ADP (Phosphoryl hóa mức cơ chất)
+                  ▼
+                [ATP] ───► Môi giới năng lượng & Bền vững động học (Kinetic stability)
+                  │
+                  ├───────► Cho phosphate sang phân tử nhận (Glucose, Glycerol) qua Kinase
+                  ▼
+      [HỢP CHẤT NGHÈO NĂNG LƯỢNG] (Glucose-6-P, Glycerol-3-P)
+```
+
+1. **Nhận phosphate từ các chất siêu năng lượng**: PEP và 1,3-BPG có tiềm năng cao hơn ATP, tự phát truyền nhóm phosphate cho ADP để tạo ATP trong đường phân (xúc tác bởi Pyruvate Kinase và PGK).
+2. **Cho phosphate để hoạt hóa các chất**: ATP có tiềm năng cao hơn các dẫn xuất phosphoester, dễ dàng nhường phosphate cho Glucose, Fructose, Glycerol để khởi động chuyển hóa.
+3. **Tính bền vững động học (Kinetic Stability)**: Ở điều kiện sinh lý tế bào (không có enzyme), tốc độ tự thủy phân của ATP là cực kỳ chậm. Điều này biến ATP thành kho dự trữ hóa năng an toàn, di chuyển tự do giữa các bào quan mà không bị thất thoát năng lượng.
+
+---
+
+### C. Hệ Thống Phosphagen (Phosphocreatine) Tại Cơ Vân & Não
+
+```
+[LÚC NGHỈ NGƠI: Dồi dào ATP từ Ty thể]
+  Creatine + ATP ─────────────(Creatine Kinase)────────────► Phosphocreatine + ADP (Tích lũy)
+
+[LÚC VẬN ĐỘNG CỰC ĐẠI: Co cơ tức thời]
+  Phosphocreatine + ADP ──────(Creatine Kinase)────────────► ATP (Tái tạo cấp tốc) + Creatine
+```
+
+- **Đặc điểm**: Nồng độ Phosphocreatine trong cơ vân lúc nghỉ cao gấp **5 lần** so với ATP.
+- **Vai trò khẩn cấp**: Khi cơ vân co rút mạnh mẽ đột ngột (chạy nước rút, nâng tạ), Creatine Kinase (CK) lập tức đảo chiều phản ứng, tái tạo ATP tức thời duy trì co cơ trong 3–5 giây đầu trước khi đường phân và hô hấp ty thể kịp tăng tốc.
+- **Thoi Creatine Phosphate**: Vận chuyển phosphate giàu năng lượng nhanh chóng từ màng trong ty thể ra đến tơ cơ bào tương.
+
+---
+
+### D. Thioester (Acetyl-CoA) — Hợp Chất Giàu Năng Lượng Không Chứa Phosphate
+
+Trong liên kết **Thioester**, nguyên tử Oxy của ester thông thường được thay thế bằng nguyên tử **Lưu huỳnh (S)**:
+
+$$\text{Acetyl-CoA} + \text{H}_2\text{O} \rightleftharpoons \text{Acetate} + \text{CoA-SH} + \text{H}^+ \quad (\Delta G^{0\prime} = -31.5\text{ kJ/mol})$$
+
+- **Nguyên nhân giải phóng năng lượng cao**:
+  - *Oxy-ester*: Orbital $2p$ của C và $2p$ của O tương đồng kích thước, electron không chia sẻ của O bất định xứ tốt với nhóm carbonyl $\rightarrow$ **chất phản ứng được ổn định hóa cộng hưởng mạnh**.
+  - *Thioester*: Orbital $3p$ của S lớn hơn nhiều so với $2p$ của C, electron không chia sẻ của S rất khó liên hợp với carbonyl $\rightarrow$ **chất phản ứng kém ổn định hóa cộng hưởng (năng lượng ban đầu cao)**.
+  - Do sản phẩm thủy phân (anion Carboxylate) của cả hai đều bền vững như nhau, khoảng chênh lệch $\Delta G^{0\prime}$ thủy phân của Thioester lớn hơn hẳn so với Oxy-ester.
+
+---
+
+## 7. Nhiệt Động Học Oxy Hóa Khử Sinh Học, Cận Lâm Sàng & Trích Dẫn EBM {#sec-7}
+
+### A. Nhiệt Động Học Điện Hóa & Phương Trình Nernst
+
+Dòng truyền điện tử trong dị hóa hiếu khí được thúc đẩy bởi sự chênh lệch **Thế khử chuẩn ($E^{0\prime}$)**:
+
+$$\Delta G^{0\prime} = -nF\Delta E^{0\prime}$$
+
+$$\Delta E^{0\prime} = E^{0\prime}_{(\text{Chất nhận } e^-)} - E^{0\prime}_{(\text{Chất cho } e^-)}$$
+
+- $F = 96.485\text{ kJ}\cdot\text{V}^{-1}\cdot\text{mol}^{-1}$ (Hằng số Faraday).
+- Phản ứng oxy hóa khử diễn ra tự phát khi **$\Delta E > 0 \rightarrow \Delta G < 0$**.
+
+```
+Tính toán năng lượng oxy hóa 1 mol NADH bởi O2 trong Ty thể:
+  • Nửa phản ứng nhận: 1/2 O2 + 2 H+ + 2 e- ⇌ H2O            E°' = +0.82 V
+  • Nửa phản ứng cho:  NAD+ + H+ + 2 e- ⇌ NADH               E°' = -0.32 V
+
+  ΔE°' = +0.82 V - (-0.32 V) = +1.14 V
+  ΔG°' = -2 × 96.485 kJ/(V·mol) × 1.14 V = -220 kJ/mol (hoặc -218.2 kJ/mol)
+```
+
+Năng lượng phát ra khổng lồ ($-220\text{ kJ/mol}$) được Phức hợp I, III, IV khai thác để **bơm 10 proton ($H^+$) qua màng trong ty thể**, thiết lập lực đẩy proton (PMF) vận hành động cơ quay $F_0F_1$-ATP Synthase tổng hợp nên ATP.
+
+---
+
+### B. Chỉ Số Cận Lâm Sàng & Dấu Ấn Sinh Học Theo Dõi EBM
+
+<div class="matrix-grid">
+  <div class="matrix-card">
+    <div class="matrix-card-title">
+      <span>1. Creatine Kinase Toàn Phần (CK)</span>
+      <span class="rx-tag danger">Hoại Tử Cơ</span>
+    </div>
+    <div class="matrix-card-desc">
+      CK tăng vọt khi tế bào cơ vân hoặc cơ tim bị hủy hoại (Tiêu cơ vân cấp rhabdomyolysis, Nhồi máu cơ tim, Viêm đa cơ).
+    </div>
+  </div>
+
+  <div class="matrix-card">
+    <div class="matrix-card-title">
+      <span>2. Isoenzyme CK-MB &amp; CK-MM</span>
+      <span class="rx-tag warning">Phân Phối Mô</span>
+    </div>
+    <div class="matrix-card-desc">
+      CK-MM chiếm ưu thế ở cơ vân ($98\%$), CK-MB chiếm tỷ lệ cao ở cơ tim ($20\%-30\%$, dấu ấn kinh điển tổn thương tim cấp), CK-BB ở não và ruột.
+    </div>
+  </div>
+
+  <div class="matrix-card">
+    <div class="matrix-card-title">
+      <span>3. Lactate Máu Động Mạch</span>
+      <span class="rx-tag danger">&gt; 2.0 mmol/L</span>
+    </div>
+    <div class="matrix-card-desc">
+      Phản ánh tình trạng giảm tưới máu mô, suy sụp năng lượng ty thể và chuyển hóa kỵ nước bù trừ trong sốc nhiễm khuẩn hoặc sốc tim.
+    </div>
+  </div>
+</div>
+
+---
+
+<!-- KHUNG TRÍCH DẪN Y VĂN CHUẨN AMA (CITATION BOX) -->
+<div class="citation-box" style="margin-top: 2rem; padding: 1.25rem 1.5rem; background: var(--color-surface, #ffffff); border: 1px solid var(--color-border, #cbd5e1); border-left: 4px solid var(--color-primary, #0284c7); border-radius: 12px; font-size: 0.88rem; line-height: 1.8; color: var(--color-text-muted, #475569);">
+  <strong style="color: var(--color-text, #0f172a); font-size: 0.95rem;"><i class="fa-solid fa-book-medical"></i> Trích Dẫn Y Văn &amp; Tài Liệu Tham Khảo Chuẩn AMA:</strong>
+  <ol style="margin: 0.5rem 0 0 0; padding-left: 1.25rem;">
+    <li><strong>Kennelly PJ, Botham KM, McGuinness OP, Rodwell VW, Weil PA.</strong> <em>Harper's Illustrated Biochemistry</em>. 32nd ed. New York, NY: McGraw Hill LLC; 2023:100-114, 118-128.</li>
+    <li><strong>Ferrier DR.</strong> <em>Lippincott Illustrated Reviews: Biochemistry</em>. 8th ed. Philadelphia, PA: Wolters Kluwer; 2021:73-88.</li>
+    <li><strong>Horton HR, Moran LA, Scrimgeour KG, Perry MD, Rawn JD.</strong> <em>Principles of Biochemistry</em>. 5th ed. Boston, MA: Pearson Education, Inc.; 2012:11-15, 305-325, 421-430.</li>
+    <li><strong>Baynes JW, Dominiczak MH.</strong> <em>Medical Biochemistry</em>. 5th ed. London, UK: Elsevier; 2019:120-133, 151-161.</li>
+    <li><strong>Pratt CW, Cornely K.</strong> <em>Essential Biochemistry</em>. 5th ed. Hoboken, NJ: John Wiley &amp; Sons; 2021:353-371, 460-466.</li>
+    <li><strong>Bộ Môn Hóa Sinh (ĐHYD TP.HCM).</strong> <em>Hóa Sinh Y Học</em>. TP. Hồ Chí Minh: Nhà Xuất Bản Y Học; 2024:204-219, 467.</li>
   </ol>
 </div>
 
 <!-- HÀNG NÚT ĐIỀU HƯỚNG SPA -->
-<div class="btn-row">
+<div class="btn-row" style="display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;">
   <a href="#/basic-medical/hoa-sinh" class="btn btn-primary">
     <i class="fa-solid fa-arrow-left"></i> Quay lại Mục Lục Hóa Sinh Y Học
   </a>
