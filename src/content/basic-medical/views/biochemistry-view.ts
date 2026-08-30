@@ -10,6 +10,7 @@ import '../../../styles/components/physio-content.css';
 import '../../../styles/components/formula-vault.css';
 import '../../../styles/components/biochemistry-hub.css';
 import '../../../styles/components/physio-promax-hub.css';
+import '../../../styles/components/epidemiology-hub.css';
 import { BIOCHEMISTRY_DATA } from '../data/biochemistry-data';
 import { BiochemistryBlock, BiochemistryTopic } from '../types/biochemistry.types';
 import { renderBasicMedicalNav } from './basic-medical-nav';
@@ -95,44 +96,31 @@ export function renderBiochemistryView(): string {
         </div>
       </section>
 
-      <!-- PROMAX BENTO ACTION GRID (4 CÔNG CỤ TƯƠNG TÁC CAO CẤP) -->
-      <section class="promax-bento-grid">
-        <a href="#/basic-medical/metabolic-map" class="promax-bento-card" style="--bento-color: #8b5cf6; --bento-bg: rgba(139,92,246,0.1);">
-          <div class="promax-bento-icon"><i class="fa-solid fa-diagram-project"></i></div>
-          <div>
-            <span class="promax-bento-tag">Metabolic Studio</span>
-            <h4 class="promax-bento-title">Bản Đồ Chuyển Hóa Phân Tử</h4>
-            <p class="promax-bento-desc">Khám phá tương tác 5 chu trình năng lượng, tra cứu enzyme, vitamin & đích thuốc.</p>
-          </div>
-        </a>
-
-        <a href="#/basic-medical/quiz" class="promax-bento-card" style="--bento-color: #10b981; --bento-bg: rgba(16,185,129,0.1);">
-          <div class="promax-bento-icon"><i class="fa-solid fa-brain"></i></div>
-          <div>
-            <span class="promax-bento-tag">Cascade Reasoning</span>
-            <h4 class="promax-bento-title">Thử Thách Ca Bệnh & Flashcards</h4>
-            <p class="promax-bento-desc">Luyện tập chuỗi cơ chế chuyển hóa, rối loạn di truyền & Spaced Repetition.</p>
-          </div>
-        </a>
-
-        <a href="#/basic-medical/simulators" class="promax-bento-card" style="--bento-color: #0284c7; --bento-bg: rgba(2,132,199,0.1);">
-          <div class="promax-bento-icon"><i class="fa-solid fa-bolt"></i></div>
-          <div>
-            <span class="promax-bento-tag">Real-Time Canvas</span>
-            <h4 class="promax-bento-title">Mô Phỏng Sinh Lý Động</h4>
-            <p class="promax-bento-desc">Thí nghiệm Nernst, Starling, Frank-Starling & Toan kiềm trực quan.</p>
-          </div>
-        </a>
-
-        <a href="#/basic-medical/formula-vault" class="promax-bento-card" style="--bento-color: #f59e0b; --bento-bg: rgba(245,158,11,0.1);">
-          <div class="promax-bento-icon"><i class="fa-solid fa-calculator"></i></div>
-          <div>
-            <span class="promax-bento-tag">JSON Vault</span>
-            <h4 class="promax-bento-title">Kho Công Thức Định Lượng</h4>
-            <p class="promax-bento-desc">Cơ sở dữ liệu phương trình Nernst, Fick, Starling, GHK kèm máy tính.</p>
-          </div>
-        </a>
-      </section>
+      <!-- COMPACT ISOLATED TOOLKIT SUITE (GÓC CÔNG CỤ HÓA SINH TINH GỌN) -->
+      <div class="epi-compact-toolkit-bar" aria-label="Bộ công cụ hóa sinh học tương tác">
+        <div class="epi-toolkit-badge">
+          <i class="fa-solid fa-toolbox" style="color: #8b5cf6; font-size: 1rem;"></i>
+          <span>Bộ Công Cụ Hỗ Trợ Hóa Sinh:</span>
+        </div>
+        <div class="epi-toolkit-pills">
+          <a href="#/basic-medical/metabolic-map" class="epi-tool-pill-btn tool-metabolic" title="Khám phá tương tác 5 chu trình năng lượng, tra cứu enzyme, vitamin & đích thuốc">
+            <i class="fa-solid fa-diagram-project" style="color: #8b5cf6;"></i>
+            <span>Bản Đồ Chuyển Hóa Phân Tử</span>
+          </a>
+          <a href="#/basic-medical/quiz" class="epi-tool-pill-btn tool-quiz" title="Luyện tập chuỗi cơ chế chuyển hóa, rối loạn di truyền & Spaced Repetition">
+            <i class="fa-solid fa-brain" style="color: #10b981;"></i>
+            <span>Thử Thách Ca Bệnh &amp; Flashcards</span>
+          </a>
+          <a href="#/basic-medical/simulators" class="epi-tool-pill-btn tool-sim" title="Thí nghiệm Nernst, Starling, Frank-Starling & Toan kiềm trực quan">
+            <i class="fa-solid fa-bolt" style="color: #0284c7;"></i>
+            <span>Mô Phỏng Sinh Lý Động</span>
+          </a>
+          <a href="#/basic-medical/formula-vault" class="epi-tool-pill-btn tool-formula" title="Cơ sở dữ liệu phương trình Nernst, Fick, Starling, GHK kèm máy tính">
+            <i class="fa-solid fa-calculator" style="color: #f59e0b;"></i>
+            <span>Kho Công Thức Định Lượng</span>
+          </a>
+        </div>
+      </div>
 
       <!-- PROMAX TOOLBAR & SEARCH -->
       <div class="promax-toolbar">

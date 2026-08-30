@@ -4,6 +4,54 @@
    Rich Aesthetics, Dynamic Animations, Vivid Color Tokens, 100% Dark Mode
    ============================================================ */
 
+/* --- 0. DESIGN TOKEN ALIASES & COMPATIBILITY LAYER --- */
+:root {
+  --accent: var(--color-primary, #0284c7);
+  --accent-rgb: 2, 132, 199;
+  --text: var(--color-text, #0f172a);
+  --text-muted: var(--color-text-muted, #64748b);
+  --surface: var(--color-surface, #ffffff);
+  --surface-2: var(--color-surface-2, #f8fafc);
+  --surface-3: var(--color-surface-3, #f1f5f9);
+  --border: var(--color-border, #cbd5e1);
+  --border-light: var(--color-border, #e2e8f0);
+  --green: var(--color-success, #10b981);
+  --green-bg: rgba(16, 185, 129, 0.08);
+  --orange: var(--color-warning, #f59e0b);
+  --orange-bg: rgba(245, 158, 11, 0.08);
+  --orange-light: rgba(245, 158, 11, 0.25);
+  --danger: var(--color-danger, #ef4444);
+  --danger-bg: rgba(239, 68, 68, 0.08);
+  --teal: var(--color-teal, #0d9488);
+  --teal-bg: rgba(13, 148, 136, 0.08);
+  --purple: var(--color-purple, #8b5cf6);
+  --purple-bg: rgba(139, 92, 246, 0.08);
+  --tr: var(--transition-fast, 0.2s ease);
+}
+
+[data-theme="dark"] {
+  --accent: var(--color-primary, #38bdf8);
+  --accent-rgb: 56, 189, 248;
+  --text: var(--color-text, #f8fafc);
+  --text-muted: var(--color-text-muted, #94a3b8);
+  --surface: var(--color-surface, #1e293b);
+  --surface-2: var(--color-surface-2, #0f172a);
+  --surface-3: var(--color-surface-3, #1e293b);
+  --border: var(--color-border, #334155);
+  --border-light: var(--color-border, #334155);
+  --green: var(--color-success, #34d399);
+  --green-bg: rgba(52, 211, 153, 0.12);
+  --orange: var(--color-warning, #fbbf24);
+  --orange-bg: rgba(251, 191, 36, 0.12);
+  --orange-light: rgba(251, 191, 36, 0.3);
+  --danger: var(--color-danger, #f87171);
+  --danger-bg: rgba(248, 113, 113, 0.12);
+  --teal: var(--color-teal, #2dd4bf);
+  --teal-bg: rgba(45, 212, 191, 0.12);
+  --purple: var(--color-purple, #a78bfa);
+  --purple-bg: rgba(167, 139, 250, 0.12);
+}
+
 /* --- STATS STRIP & KEY METRICS HERO PILLS --- */
 .stats-strip {
   margin: 1.25rem 0 2rem 0;

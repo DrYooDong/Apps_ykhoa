@@ -9,6 +9,7 @@ import '../../../styles/components/module-dashboard.css';
 import '../../../styles/components/physio-content.css';
 import '../../../styles/components/formula-vault.css';
 import '../../../styles/components/physio-promax-hub.css';
+import '../../../styles/components/epidemiology-hub.css';
 import { renderBasicMedicalNav } from './basic-medical-nav';
 
 export function renderGiaiPhauSinhLyView(): string {
@@ -29,45 +30,47 @@ export function renderGiaiPhauSinhLyView(): string {
       <section class="promax-hero hero-physio-theme" aria-labelledby="hero-title">
         <div class="promax-hero-grid">
           <div>
-            <div class="promax-badge-pulse">
-              <span class="pulse-dot"></span>
-              <span>Hệ Thống Tri Thức Chuẩn EBM 2026 • Multi-Scale Engine</span>
+            <div class="promax-badge">
+              <i class="fa-solid fa-dna" style="color: #38bdf8;"></i>
+              <span>Anatomy & Physiology Core Engine • Multi-Specialty</span>
             </div>
-            <h1 id="hero-title" class="promax-hero-title">
-              🧬 GIẢI PHẪU & SINH LÝ HỌC
+            
+            <h1 class="promax-title" id="hero-title">
+              GIẢI PHẬU & SINH LÝ HỌC THEO HỆ CƠ QUAN
             </h1>
-            <p class="promax-hero-desc">
-              Kiến trúc chuẩn hóa chức năng cơ thể người từ mức độ phân tử, tế bào, mô đến 9 hệ cơ quan hoàn chỉnh. Tích hợp giải phẫu ứng dụng lâm sàng, sinh lý thai kỳ sản khoa và sinh lý phát triển nhi khoa.
+            
+            <p class="promax-desc">
+              Cơ sở dữ liệu tích hợp sâu 9 hệ cơ quan (bao gồm Sinh lý Nhi khoa & Sản khoa lâm sàng). Bản đồ tư duy trực quan hóa chức năng tế bào, tương tác cơ quan và ứng dụng lâm sàng gắn kết.
             </p>
 
-            <!-- KPI Metric Bar -->
-            <div class="promax-kpi-bar">
-              <div class="promax-kpi-pill">
-                <i class="fa-solid fa-layer-group" style="font-size: 1.1rem; color: #38bdf8;"></i>
+            <!-- Promax Dynamic Mini KPI Chips -->
+            <div class="promax-hero-kpis">
+              <div class="promax-kpi-chip">
+                <i class="fa-solid fa-layer-group promax-kpi-icon" style="color: #38bdf8;"></i>
                 <div>
                   <div class="promax-kpi-num">9</div>
                   <div class="promax-kpi-lbl">Hệ Cơ Quan</div>
                 </div>
               </div>
-              <div class="promax-kpi-pill">
-                <i class="fa-solid fa-book-medical" style="font-size: 1.1rem; color: #a78bfa;"></i>
+              <div class="promax-kpi-chip">
+                <i class="fa-solid fa-book-medical promax-kpi-icon" style="color: #34d399;"></i>
                 <div>
-                  <div class="promax-kpi-num">45+</div>
-                  <div class="promax-kpi-lbl">Chuyên Đề Chuẩn</div>
+                  <div class="promax-kpi-num">48+</div>
+                  <div class="promax-kpi-lbl">Chuyên Đề Sinh Lý</div>
                 </div>
               </div>
-              <div class="promax-kpi-pill">
-                <i class="fa-solid fa-baby" style="font-size: 1.1rem; color: #ec4899;"></i>
+              <div class="promax-kpi-chip">
+                <i class="fa-solid fa-child-reaching promax-kpi-icon" style="color: #fbbf24;"></i>
                 <div>
-                  <div class="promax-kpi-num">Nhi & Sản</div>
-                  <div class="promax-kpi-lbl">Phân Hệ Mở Rộng</div>
+                  <div class="promax-kpi-num">Peds &amp; Obs</div>
+                  <div class="promax-kpi-lbl">Nhi &amp; Sản Chuyên Biệt</div>
                 </div>
               </div>
-              <div class="promax-kpi-pill">
-                <i class="fa-solid fa-bolt" style="font-size: 1.1rem; color: #fbbf24;"></i>
+              <div class="promax-kpi-chip">
+                <i class="fa-solid fa-microchip promax-kpi-icon" style="color: #a78bfa;"></i>
                 <div>
-                  <div class="promax-kpi-num">100%</div>
-                  <div class="promax-kpi-lbl">Mô Phỏng Vector</div>
+                  <div class="promax-kpi-num">Interactive</div>
+                  <div class="promax-kpi-lbl">Mô Phỏng &amp; Flashcards</div>
                 </div>
               </div>
             </div>
@@ -76,12 +79,11 @@ export function renderGiaiPhauSinhLyView(): string {
           <!-- Hero Vector Artwork -->
           <div class="tcm-hero-decor" style="display: flex; align-items: center; justify-content: center;">
             <svg class="dna-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 140px; height: 140px; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2));">
-              <path d="M20 20 Q 35 50, 50 50 T 80 80" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round" fill="none" />
-              <path d="M20 80 Q 35 50, 50 50 T 80 20" stroke="#38bdf8" stroke-width="4.5" stroke-linecap="round" fill="none" opacity="0.85" />
-              <line x1="26" y1="31" x2="26" y2="69" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" opacity="0.7" />
-              <line x1="38" y1="44" x2="38" y2="56" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" opacity="0.7" />
-              <line x1="62" y1="56" x2="62" y2="44" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" opacity="0.7" />
-              <line x1="74" y1="69" x2="74" y2="31" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" opacity="0.7" />
+              <path d="M20 20 Q50 50 80 20" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round" fill="none" />
+              <path d="M20 80 Q50 50 80 80" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round" fill="none" />
+              <line x1="30" y1="28" x2="30" y2="72" stroke="#ffffff" stroke-width="2.5" stroke-dasharray="3 3" />
+              <line x1="50" y1="46" x2="50" y2="54" stroke="#ffffff" stroke-width="3" />
+              <line x1="70" y1="28" x2="70" y2="72" stroke="#ffffff" stroke-width="2.5" stroke-dasharray="3 3" />
               <circle cx="20" cy="20" r="6" fill="#ffffff" />
               <circle cx="80" cy="80" r="6" fill="#ffffff" />
               <circle cx="20" cy="80" r="6" fill="#38bdf8" />
@@ -91,44 +93,31 @@ export function renderGiaiPhauSinhLyView(): string {
         </div>
       </section>
 
-      <!-- PROMAX BENTO ACTION GRID (4 CÔNG CỤ TƯƠNG TÁC CAO CẤP) -->
-      <section class="promax-bento-grid">
-        <a href="#/basic-medical/simulators" class="promax-bento-card" style="--bento-color: #0284c7; --bento-bg: rgba(2,132,199,0.1);">
-          <div class="promax-bento-icon"><i class="fa-solid fa-bolt"></i></div>
-          <div>
-            <span class="promax-bento-tag">Real-Time Canvas</span>
-            <h4 class="promax-bento-title">Mô Phỏng Sinh Lý Động</h4>
-            <p class="promax-bento-desc">Phòng thí nghiệm Nernst/GHK, Lực Starling, Frank-Starling & Toan kiềm.</p>
-          </div>
-        </a>
-
-        <a href="#/basic-medical/metabolic-map" class="promax-bento-card" style="--bento-color: #8b5cf6; --bento-bg: rgba(139,92,246,0.1);">
-          <div class="promax-bento-icon"><i class="fa-solid fa-diagram-project"></i></div>
-          <div>
-            <span class="promax-bento-tag">Metabolic Studio</span>
-            <h4 class="promax-bento-title">Bản Đồ Chuyển Hóa Phân Tử</h4>
-            <p class="promax-bento-desc">Khám phá 5 chu trình năng lượng, tra cứu enzyme, vitamin & đích thuốc.</p>
-          </div>
-        </a>
-
-        <a href="#/basic-medical/quiz" class="promax-bento-card" style="--bento-color: #10b981; --bento-bg: rgba(16,185,129,0.1);">
-          <div class="promax-bento-icon"><i class="fa-solid fa-brain"></i></div>
-          <div>
-            <span class="promax-bento-tag">Cascade Reasoning</span>
-            <h4 class="promax-bento-title">Thử Thách Ca Bệnh & Flashcards</h4>
-            <p class="promax-bento-desc">Luyện tập chuỗi cơ chế bệnh sinh và Spaced Repetition 3D thẻ lật.</p>
-          </div>
-        </a>
-
-        <a href="#/basic-medical/formula-vault" class="promax-bento-card" style="--bento-color: #f59e0b; --bento-bg: rgba(245,158,11,0.1);">
-          <div class="promax-bento-icon"><i class="fa-solid fa-calculator"></i></div>
-          <div>
-            <span class="promax-bento-tag">JSON Vault</span>
-            <h4 class="promax-bento-title">Kho Công Thức Định Lượng</h4>
-            <p class="promax-bento-desc">Cơ sở dữ liệu phương trình Nernst, Fick, Starling, GHK kèm máy tính.</p>
-          </div>
-        </a>
-      </section>
+      <!-- COMPACT ISOLATED TOOLKIT SUITE (GÓC CÔNG CỤ SINH LÝ TINH GỌN) -->
+      <div class="epi-compact-toolkit-bar" aria-label="Bộ công cụ sinh lý học tương tác">
+        <div class="epi-toolkit-badge">
+          <i class="fa-solid fa-toolbox" style="color: var(--color-primary, #0284c7); font-size: 1rem;"></i>
+          <span>Bộ Công Cụ Hỗ Trợ Sinh Lý:</span>
+        </div>
+        <div class="epi-toolkit-pills">
+          <a href="#/basic-medical/simulators" class="epi-tool-pill-btn tool-sim" title="Phòng thí nghiệm Nernst/GHK, Lực Starling, Frank-Starling & Toan kiềm">
+            <i class="fa-solid fa-bolt" style="color: #0284c7;"></i>
+            <span>Mô Phỏng Sinh Lý Động</span>
+          </a>
+          <a href="#/basic-medical/metabolic-map" class="epi-tool-pill-btn tool-metabolic" title="Khám phá 5 chu trình năng lượng, tra cứu enzyme, vitamin & đích thuốc">
+            <i class="fa-solid fa-diagram-project" style="color: #8b5cf6;"></i>
+            <span>Bản Đồ Chuyển Hóa Phân Tử</span>
+          </a>
+          <a href="#/basic-medical/quiz" class="epi-tool-pill-btn tool-quiz" title="Luyện tập chuỗi cơ chế bệnh sinh và Spaced Repetition 3D thẻ lật">
+            <i class="fa-solid fa-brain" style="color: #10b981;"></i>
+            <span>Thử Thách Ca Bệnh &amp; Flashcards</span>
+          </a>
+          <a href="#/basic-medical/formula-vault" class="epi-tool-pill-btn tool-formula" title="Cơ sở dữ liệu phương trình Nernst, Fick, Starling, GHK kèm máy tính">
+            <i class="fa-solid fa-calculator" style="color: #f59e0b;"></i>
+            <span>Kho Công Thức Định Lượng</span>
+          </a>
+        </div>
+      </div>
 
       <!-- PROMAX TOOLBAR & SEARCH -->
       <div class="promax-toolbar">

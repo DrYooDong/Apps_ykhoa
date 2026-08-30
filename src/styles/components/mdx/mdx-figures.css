@@ -46,20 +46,37 @@
 .mdx-citation-box {
   background: var(--color-surface-2, #f8fafc);
   border: 1px solid var(--color-border, #cbd5e1);
+  border-left: 4.5px solid var(--color-primary, #0284c7);
   border-radius: var(--radius-md, 12px);
-  padding: var(--space-5, 1.25rem);
-  font-size: var(--text-xs, 0.82rem);
+  padding: 1.25rem 1.5rem;
+  font-size: 0.88rem;
   color: var(--color-text-muted, #475569);
-  line-height: 1.75;
+  line-height: 1.8;
+  margin: 1.5rem 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
 }
 
 .citation-box ol,
 .mdx-citation-box ol {
-  padding-left: 1.2rem;
+  padding-left: 1.25rem;
   margin: 0;
 }
 
 .citation-box li,
 .mdx-citation-box li {
-  margin-bottom: var(--space-2, 0.5rem);
+  margin-bottom: 0.55rem;
+}
+
+.citation-box li:last-child,
+.mdx-citation-box li:last-child {
+  margin-bottom: 0;
+}
+
+[data-theme="dark"] .citation-box,
+[data-theme="dark"] .mdx-citation-box {
+  background: var(--color-surface-2, #0f172a);
+  border-color: var(--color-border, #334155);
+  border-left-color: var(--color-primary, #38bdf8);
+  color: var(--color-text-muted, #94a3b8);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }

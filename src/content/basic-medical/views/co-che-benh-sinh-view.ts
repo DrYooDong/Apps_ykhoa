@@ -8,6 +8,7 @@
 import '../../../styles/components/module-dashboard.css';
 import '../../../styles/components/physio-content.css';
 import '../../../styles/components/physio-promax-hub.css';
+import '../../../styles/components/epidemiology-hub.css';
 import '../css/physio-shared.css';
 import { renderMoACardHtml } from '../diagrams/moa-visualizer';
 import { renderBasicMedicalNav } from './basic-medical-nav';
@@ -30,42 +31,45 @@ export function renderCoCheBenhSinhView(): string {
       <section class="promax-hero hero-patho-theme" aria-labelledby="hero-title">
         <div class="promax-hero-grid">
           <div>
-            <div class="promax-badge-pulse">
-              <span class="pulse-dot"></span>
-              <span>Clinical Pathophysiology Engine • Evidence-Based Medicine</span>
+            <div class="promax-badge">
+              <i class="fa-solid fa-microscope" style="color: #34d399;"></i>
+              <span>Pathogenesis Reasoning Matrix • Evidence-Based Medicine</span>
             </div>
-            <h1 id="hero-title" class="promax-hero-title">
-              🔬 CƠ CHẾ BỆNH SINH & SINH LÝ BỆNH
+            
+            <h1 class="promax-title" id="hero-title">
+              CƠ CHẾ BỆNH SINH THEO CHUYÊN KHOA
             </h1>
-            <p class="promax-hero-desc">
-              <strong>Sinh lý bệnh = Bệnh nguyên (etiology) + Cơ chế bệnh sinh (pathogenesis) + Hậu quả chức năng.</strong> Hệ thống hóa chuỗi biến đổi bệnh sinh phân tử, rối loạn chức năng cơ quan và căn nguyên phát sinh bệnh lý qua các chuyên khoa lâm sàng. Tái hiện mối liên hệ tương hỗ giữa tổn thương cơ sở và biểu hiện triệu chứng tại giường bệnh.
+            
+            <p class="promax-desc">
+              <strong>Sinh lý bệnh = Bệnh nguyên (etiology) + Cơ chế bệnh sinh (pathogenesis) + Hậu quả chức năng.</strong> 
+              Hệ thống hóa chuỗi biến đổi bệnh sinh phân tử, rối loạn chức năng cơ quan và căn nguyên phát sinh bệnh lý qua các chuyên khoa lâm sàng. Tái hiện mối liên hệ tương hỗ giữa tổn thương cơ sở và biểu hiện triệu chứng tại giường bệnh.
             </p>
 
-            <!-- KPI Metric Bar -->
-            <div class="promax-kpi-bar">
-              <div class="promax-kpi-pill">
-                <i class="fa-solid fa-hospital" style="font-size: 1.1rem; color: #34d399;"></i>
+            <!-- Promax Dynamic Mini KPI Chips -->
+            <div class="promax-hero-kpis">
+              <div class="promax-kpi-chip">
+                <i class="fa-solid fa-hospital-user promax-kpi-icon" style="color: #34d399;"></i>
                 <div>
                   <div class="promax-kpi-num">16</div>
                   <div class="promax-kpi-lbl">Chuyên Khoa</div>
                 </div>
               </div>
-              <div class="promax-kpi-pill">
-                <i class="fa-solid fa-microscope" style="font-size: 1.1rem; color: #a78bfa;"></i>
+              <div class="promax-kpi-chip">
+                <i class="fa-solid fa-file-waveform promax-kpi-icon" style="color: #a78bfa;"></i>
                 <div>
                   <div class="promax-kpi-num">42+</div>
                   <div class="promax-kpi-lbl">Ca Bệnh Bệnh Sinh</div>
                 </div>
               </div>
-              <div class="promax-kpi-pill">
-                <i class="fa-solid fa-code-merge" style="font-size: 1.1rem; color: #38bdf8;"></i>
+              <div class="promax-kpi-chip">
+                <i class="fa-solid fa-diagram-project promax-kpi-icon" style="color: #38bdf8;"></i>
                 <div>
                   <div class="promax-kpi-num">Cascade</div>
                   <div class="promax-kpi-lbl">Chuỗi Suy Luận</div>
                 </div>
               </div>
-              <div class="promax-kpi-pill">
-                <i class="fa-solid fa-certificate" style="font-size: 1.1rem; color: #fbbf24;"></i>
+              <div class="promax-kpi-chip">
+                <i class="fa-solid fa-certificate promax-kpi-icon" style="color: #fbbf24;"></i>
                 <div>
                   <div class="promax-kpi-num">EBM 1A</div>
                   <div class="promax-kpi-lbl">Y Văn Quốc Tế</div>
@@ -86,53 +90,35 @@ export function renderCoCheBenhSinhView(): string {
         </div>
       </section>
 
-      <!-- PROMAX BENTO ACTION GRID (4 CÔNG CỤ TƯƠNG TÁC CAO CẤP) -->
-      <section class="promax-bento-grid">
-        <a href="#/basic-medical/quiz" class="promax-bento-card" style="--bento-color: #10b981; --bento-bg: rgba(16,185,129,0.1);">
-          <div class="promax-bento-icon"><i class="fa-solid fa-brain"></i></div>
-          <div>
-            <span class="promax-bento-tag">Mechanism Reasoning Hub</span>
-            <h4 class="promax-bento-title">Thử Thách Ca Bệnh, Flashcards & Cascade</h4>
-            <p class="promax-bento-desc">18+ Ca lâm sàng cơ chế đa chuyên khoa, 24 thẻ Spaced Repetition & Lắp ráp chuỗi logic.</p>
-          </div>
-        </a>
-
-        <a href="#/basic-medical/simulators" class="promax-bento-card" style="--bento-color: #0284c7; --bento-bg: rgba(2,132,199,0.1);">
-          <div class="promax-bento-icon"><i class="fa-solid fa-bolt"></i></div>
-          <div>
-            <span class="promax-bento-tag">Real-Time Canvas</span>
-            <h4 class="promax-bento-title">Mô Phỏng Sinh Lý Động</h4>
-            <p class="promax-bento-desc">Nernst/GHK, Lực Starling phù, Frank-Starling & Thăng bằng toan kiềm.</p>
-          </div>
-        </a>
-
-        <a href="#/basic-medical/metabolic-map" class="promax-bento-card" style="--bento-color: #8b5cf6; --bento-bg: rgba(139,92,246,0.1);">
-          <div class="promax-bento-icon"><i class="fa-solid fa-diagram-project"></i></div>
-          <div>
-            <span class="promax-bento-tag">Metabolic Studio</span>
-            <h4 class="promax-bento-title">Bản Đồ Chuyển Hóa Phân Tử</h4>
-            <p class="promax-bento-desc">Tra cứu trực quan 5 chu trình năng lượng, enzyme, vitamin & bệnh di truyền.</p>
-          </div>
-        </a>
-
-        <a href="#/basic-medical/formula-vault" class="promax-bento-card" style="--bento-color: #f59e0b; --bento-bg: rgba(245,158,11,0.1);">
-          <div class="promax-bento-icon"><i class="fa-solid fa-calculator"></i></div>
-          <div>
-            <span class="promax-bento-tag">JSON Vault</span>
-            <h4 class="promax-bento-title">Kho Công Thức Định Lượng</h4>
-            <p class="promax-bento-desc">Cơ sở dữ liệu phương trình Nernst, Fick, Starling, GHK kèm máy tính.</p>
-          </div>
-        </a>
-
-        <a href="#/ebm" class="promax-bento-card" style="--bento-color: #0284c7; --bento-bg: rgba(2,132,199,0.1);">
-          <div class="promax-bento-icon"><i class="fa-solid fa-book-bookmark"></i></div>
-          <div>
-            <span class="promax-bento-tag">Evidence-Based Medicine</span>
-            <h4 class="promax-bento-title">Kho Guidelines &amp; RCTs EBM</h4>
-            <p class="promax-bento-desc">Đối chiếu 59+ khuyến cáo lâm sàng quốc tế (ESC, GOLD, GINA, ADA, KDIGO).</p>
-          </div>
-        </a>
-      </section>
+      <!-- COMPACT ISOLATED TOOLKIT SUITE (GÓC CÔNG CỤ BỆNH SINH TINH GỌN) -->
+      <div class="epi-compact-toolkit-bar" aria-label="Bộ công cụ cơ chế bệnh sinh tương tác">
+        <div class="epi-toolkit-badge">
+          <i class="fa-solid fa-toolbox" style="color: #059669; font-size: 1rem;"></i>
+          <span>Bộ Công Cụ Hỗ Trợ Bệnh Sinh:</span>
+        </div>
+        <div class="epi-toolkit-pills">
+          <a href="#/basic-medical/quiz" class="epi-tool-pill-btn tool-quiz" title="18+ Ca lâm sàng cơ chế đa chuyên khoa, 24 thẻ Spaced Repetition & Lắp ráp chuỗi logic">
+            <i class="fa-solid fa-brain" style="color: #10b981;"></i>
+            <span>Thử Thách Ca Bệnh, Flashcards &amp; Cascade</span>
+          </a>
+          <a href="#/basic-medical/simulators" class="epi-tool-pill-btn tool-sim" title="Mô phỏng sinh lý tương tác Nernst/GHK, Lực Starling phù, Frank-Starling & Thăng bằng toan kiềm">
+            <i class="fa-solid fa-bolt" style="color: #0284c7;"></i>
+            <span>Mô Phỏng Sinh Lý Động</span>
+          </a>
+          <a href="#/basic-medical/metabolic-map" class="epi-tool-pill-btn tool-metabolic" title="Tra cứu trực quan 5 chu trình năng lượng, enzyme, vitamin & bệnh di truyền">
+            <i class="fa-solid fa-diagram-project" style="color: #8b5cf6;"></i>
+            <span>Bản Đồ Chuyển Hóa Phân Tử</span>
+          </a>
+          <a href="#/basic-medical/formula-vault" class="epi-tool-pill-btn tool-formula" title="Cơ sở dữ liệu phương trình Nernst, Fick, Starling, GHK kèm máy tính">
+            <i class="fa-solid fa-calculator" style="color: #f59e0b;"></i>
+            <span>Kho Công Thức Định Lượng</span>
+          </a>
+          <a href="#/ebm" class="epi-tool-pill-btn tool-ebm" title="Đối chiếu 59+ khuyến cáo lâm sàng quốc tế (ESC, GOLD, GINA, ADA, KDIGO)">
+            <i class="fa-solid fa-book-bookmark" style="color: #0284c7;"></i>
+            <span>Kho Guidelines &amp; RCTs EBM</span>
+          </a>
+        </div>
+      </div>
 
       <!-- SECTION TRANSLATIONAL MOA (SƠ ĐỒ CƠ CHẾ PHÂN TỬ MoA) -->
       <section style="margin-bottom: 2rem;">

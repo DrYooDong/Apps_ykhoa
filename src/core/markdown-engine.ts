@@ -262,9 +262,9 @@ export class MarkdownCoreEngine {
       // Inline Math: $E = mc^2$
       .replace(/(?<!\$)\$(?!\$)([^\n$]+)(?<!\$)\$(?!\$)/g, '<span class="mdx-math-inline">$1</span>')
       // Bold
-      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*\*\s*([^*]+?)\s*\*\*/g, '<strong>$1</strong>')
       // Italic
-      .replace(/\*(.*?)\*/g, '<em>$1</em>')
+      .replace(/(?<!\*)\*([^*]+?)\*(?!\*)/g, '<em>$1</em>')
       // Inline Code
       .replace(/`([^`]+)`/g, '<code>$1</code>')
       // Links

@@ -17,13 +17,15 @@ export class CliniPortalThemeManager {
     document.body?.setAttribute('data-theme', theme);
     localStorage.setItem('cliniportal_theme', theme);
 
-    const themeBtn = document.getElementById('theme-toggle-btn') || document.getElementById('themeToggleBtn');
-    if (themeBtn) {
-      const isDark = theme === 'dark';
-      themeBtn.innerHTML = isDark 
-        ? '<i class="fa-solid fa-sun" style="color:#f59e0b;"></i> <span>Chế độ Sáng</span>' 
-        : '<i class="fa-solid fa-moon" style="color:#8b5cf6;"></i> <span>Chế độ Tối</span>';
-    }
+    const isDark = theme === 'dark';
+    const themeBtns = document.querySelectorAll<HTMLElement>('#theme-toggle-btn, #themeToggleBtn, .theme-toggle-btn');
+    themeBtns.forEach(btn => {
+      btn.setAttribute('title', isDark ? 'Chuyển sang Chế độ Sáng' : 'Chuyển sang Chế độ Tối');
+      btn.setAttribute('aria-label', isDark ? 'Chuyển sang Chế độ Sáng' : 'Chuyển sang Chế độ Tối');
+      btn.innerHTML = isDark 
+        ? '<i class="fa-solid fa-sun" style="color:#f59e0b;"></i>' 
+        : '<i class="fa-solid fa-moon" style="color:#8b5cf6;"></i>';
+    });
 
     window.dispatchEvent(new CustomEvent('cliniportal-theme-change', { detail: { theme } }));
   }

@@ -186,6 +186,96 @@
   letter-spacing: 0.03em;
 }
 
+/* Compact Toolkit Bar */
+.epi-compact-toolkit-bar,
+.promax-compact-toolkit-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: 12px;
+  padding: 0.65rem 1rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  flex-wrap: wrap;
+}
+
+[data-theme="dark"] .epi-compact-toolkit-bar,
+[data-theme="dark"] .promax-compact-toolkit-bar {
+  background: var(--color-surface, #1e293b);
+  border-color: var(--color-border, #334155);
+}
+
+.epi-toolkit-badge,
+.promax-toolkit-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-text, #0f172a);
+  white-space: nowrap;
+}
+
+[data-theme="dark"] .epi-toolkit-badge,
+[data-theme="dark"] .promax-toolkit-badge {
+  color: #f1f5f9;
+}
+
+.epi-toolkit-pills,
+.promax-toolkit-pills {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.epi-tool-pill-btn,
+.promax-tool-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid var(--color-border, #cbd5e1);
+  background: var(--color-bg, #f8fafc);
+  color: var(--color-text, #334155);
+  cursor: pointer;
+  transition: all 0.18s ease;
+  white-space: nowrap;
+  min-height: var(--touch-min, 44px);
+  user-select: none;
+}
+
+.epi-tool-pill-btn:active,
+.promax-tool-pill-btn:active {
+  transform: translateY(0) scale(0.975) !important;
+  transition-duration: 80ms !important;
+}
+
+.epi-tool-pill-btn:focus-visible,
+.promax-tool-pill-btn:focus-visible {
+  outline: var(--focus-outline, 3px solid var(--color-primary));
+  outline-offset: var(--focus-outline-offset, 2px);
+}
+
+[data-theme="dark"] .epi-tool-pill-btn,
+[data-theme="dark"] .promax-tool-pill-btn {
+  background: var(--color-bg, #0f172a);
+  color: #cbd5e1;
+  border-color: #334155;
+}
+
+.epi-tool-pill-btn:hover,
+.promax-tool-pill-btn:hover {
+  transform: translateY(-1px);
+}
+
 /* Bento Quick Action Grid */
 .promax-bento-grid {
   display: grid;

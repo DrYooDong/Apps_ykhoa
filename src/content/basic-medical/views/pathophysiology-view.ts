@@ -9,6 +9,7 @@ import '../../../styles/components/module-dashboard.css';
 import '../../../styles/components/physio-content.css';
 import '../../../styles/components/formula-vault.css';
 import '../../../styles/components/physio-promax-hub.css';
+import '../../../styles/components/epidemiology-hub.css';
 import { renderBasicMedicalNav } from './basic-medical-nav';
 
 export function renderPathophysiologyView(activeTab: 'all' | 'sinhly' | 'ccbs' | 'biochem' = 'all'): string {
@@ -29,49 +30,51 @@ export function renderPathophysiologyView(activeTab: 'all' | 'sinhly' | 'ccbs' |
       <!-- UNIVERSAL STICKY SUB-NAV -->
       ${renderBasicMedicalNav('all')}
 
-      <!-- PROMAX LUXURY HERO SECTION (Aurora Biomedical Intelligence) -->
-      <section class="promax-hero hero-physio-theme physio-holo-hero" aria-labelledby="hero-title">
+      <!-- PROMAX LUXURY HERO SECTION -->
+      <section class="promax-hero hero-physio-theme" aria-labelledby="hero-title">
         <div class="promax-hero-grid">
           <div>
             <div class="promax-badge-pulse">
               <span class="pulse-dot"></span>
-              <span>HỆ SINH THÁI CƠ SỞ Y KHOA TOÀN DIỆN • MULTI-DISCIPLINARY BIOMEDICAL SUITE</span>
+              <span>Y Học Cơ Sở • Basic Medical Sciences Mastery Hub</span>
             </div>
-            <h1 id="hero-title" class="promax-hero-title">
-              🧬 BASIC MEDICAL SCIENCES:<br><span class="physio-gradient-text">GP • SL • CCBS • HÓA SINH • DỊCH TỄ HỌC</span>
+            
+            <h1 class="promax-hero-title" id="hero-title">
+              CƠ SỞ Y KHOA (BASIC MEDICAL SCIENCES)
             </h1>
+            
             <p class="promax-hero-desc">
-              Nền tảng tri thức y học cơ sở cốt lõi: kết nối mật thiết giữa Giải phẫu chức năng, Sinh lý học 9 hệ cơ quan, Cơ chế bệnh sinh phân tử, Hóa sinh chuyển hóa và Dịch tễ học quần thể để giải mã bản chất các hội chứng lâm sàng.
+              Kiến trúc chuẩn hóa kiến thức y khoa nền tảng từ Sinh lý học 9 hệ cơ quan, Cơ chế bệnh sinh (CCBS - Pathophysiology), Hóa sinh y học lâm sàng đến Dịch tễ học thực hành. Tái hiện mối liên kết phân tử - lâm sàng tại giường bệnh.
             </p>
 
-            <!-- KPI Metric Bar (4 Pillars) -->
-            <div class="promax-kpi-bar">
-              <div class="promax-kpi-pill physio-kpi-holo">
-                <i class="fa-solid fa-dna" style="font-size: 1.1rem; color: #38bdf8;"></i>
+            <!-- Promax Dynamic Mini KPI Chips -->
+            <div class="promax-hero-kpis">
+              <div class="promax-kpi-chip">
+                <i class="fa-solid fa-layer-group promax-kpi-icon" style="color: #38bdf8;"></i>
                 <div>
-                  <div class="promax-kpi-num">9 Hệ</div>
-                  <div class="promax-kpi-lbl">Giải Phẫu &amp; Sinh Lý</div>
+                  <div class="promax-kpi-num">9+16</div>
+                  <div class="promax-kpi-lbl">Hệ Cơ Quan &amp; Chuyên Khoa</div>
                 </div>
               </div>
-              <div class="promax-kpi-pill physio-kpi-holo">
-                <i class="fa-solid fa-house-medical" style="font-size: 1.1rem; color: #34d399;"></i>
+              <div class="promax-kpi-chip">
+                <i class="fa-solid fa-dna promax-kpi-icon" style="color: #34d399;"></i>
                 <div>
-                  <div class="promax-kpi-num">16 CK</div>
-                  <div class="promax-kpi-lbl">Cơ Chế Bệnh Sinh</div>
+                  <div class="promax-kpi-num">120+</div>
+                  <div class="promax-kpi-lbl">Chuyên Đề &amp; Ca Bệnh</div>
                 </div>
               </div>
-              <div class="promax-kpi-pill physio-kpi-holo">
-                <i class="fa-solid fa-flask-vial" style="font-size: 1.1rem; color: #c084fc;"></i>
+              <div class="promax-kpi-chip">
+                <i class="fa-solid fa-calculator promax-kpi-icon" style="color: #fbbf24;"></i>
                 <div>
-                  <div class="promax-kpi-num">31 Bài</div>
-                  <div class="promax-kpi-lbl">Hóa Sinh Chuyển Hóa</div>
+                  <div class="promax-kpi-num">6 Studio</div>
+                  <div class="promax-kpi-lbl">Bộ Giải Quyết Định Lượng</div>
                 </div>
               </div>
-              <div class="promax-kpi-pill physio-kpi-holo">
-                <i class="fa-solid fa-virus-covid" style="font-size: 1.1rem; color: #2dd4bf;"></i>
+              <div class="promax-kpi-chip">
+                <i class="fa-solid fa-certificate promax-kpi-icon" style="color: #a78bfa;"></i>
                 <div>
-                  <div class="promax-kpi-num">6 Khối</div>
-                  <div class="promax-kpi-lbl">Dịch Tễ &amp; 2×2 Solver</div>
+                  <div class="promax-kpi-num">EBM 1A</div>
+                  <div class="promax-kpi-lbl">Y Văn Quốc Tế</div>
                 </div>
               </div>
             </div>
@@ -79,13 +82,12 @@ export function renderPathophysiologyView(activeTab: 'all' | 'sinhly' | 'ccbs' |
 
           <!-- Hero Vector Artwork -->
           <div class="tcm-hero-decor" style="display: flex; align-items: center; justify-content: center;">
-            <svg class="dna-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 140px; height: 140px; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.25));">
-              <path d="M20 20 Q 35 50, 50 50 T 80 80" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round" fill="none" />
-              <path d="M20 80 Q 35 50, 50 50 T 80 20" stroke="#38bdf8" stroke-width="4.5" stroke-linecap="round" fill="none" opacity="0.85" />
-              <line x1="26" y1="31" x2="26" y2="69" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" opacity="0.7" />
-              <line x1="38" y1="44" x2="38" y2="56" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" opacity="0.7" />
-              <line x1="62" y1="56" x2="62" y2="44" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" opacity="0.7" />
-              <line x1="74" y1="69" x2="74" y2="31" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" opacity="0.7" />
+            <svg class="dna-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 140px; height: 140px; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2));">
+              <path d="M20 20 Q50 50 80 20" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round" fill="none" />
+              <path d="M20 80 Q50 50 80 80" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round" fill="none" />
+              <line x1="30" y1="28" x2="30" y2="72" stroke="#ffffff" stroke-width="2.5" stroke-dasharray="3 3" />
+              <line x1="50" y1="46" x2="50" y2="54" stroke="#ffffff" stroke-width="3" />
+              <line x1="70" y1="28" x2="70" y2="72" stroke="#ffffff" stroke-width="2.5" stroke-dasharray="3 3" />
               <circle cx="20" cy="20" r="6" fill="#ffffff" />
               <circle cx="80" cy="80" r="6" fill="#ffffff" />
               <circle cx="20" cy="80" r="6" fill="#38bdf8" />
@@ -95,44 +97,35 @@ export function renderPathophysiologyView(activeTab: 'all' | 'sinhly' | 'ccbs' |
         </div>
       </section>
 
-      <!-- PROMAX BENTO ACTION GRID (CÁC CÔNG CỤ TƯƠNG TÁC CAO CẤP) -->
-      <section class="promax-bento-grid">
-        <a href="#/basic-medical/dich-te-hoc" class="promax-bento-card" style="--bento-color: #0d9488; --bento-bg: rgba(13,148,136,0.1);">
-          <div class="promax-bento-icon"><i class="fa-solid fa-virus-covid"></i></div>
-          <div>
-            <span class="promax-bento-tag">Epidemiology Studio</span>
-            <h4 class="promax-bento-title">Dịch Tễ Học & 2×2 Solver</h4>
-            <p class="promax-bento-desc">Bộ giải ma trận 2x2, Epicurve, RR/OR/Se/Sp & 9 chuẩn Bradford Hill.</p>
-          </div>
-        </a>
-
-        <a href="#/basic-medical/metabolic-map" class="promax-bento-card" style="--bento-color: #8b5cf6; --bento-bg: rgba(139,92,246,0.1);">
-          <div class="promax-bento-icon"><i class="fa-solid fa-diagram-project"></i></div>
-          <div>
-            <span class="promax-bento-tag">Interactive Studio</span>
-            <h4 class="promax-bento-title">Bản Đồ Chuyển Hóa Phân Tử</h4>
-            <p class="promax-bento-desc">Tra cứu Enzyme, Vitamin, Thuốc & Bệnh bẩm sinh.</p>
-          </div>
-        </a>
-
-        <a href="#/basic-medical/simulators" class="promax-bento-card" style="--bento-color: #0284c7; --bento-bg: rgba(2,132,199,0.1);">
-          <div class="promax-bento-icon"><i class="fa-solid fa-bolt"></i></div>
-          <div>
-            <span class="promax-bento-tag">Real-Time Simulator</span>
-            <h4 class="promax-bento-title">Mô Phỏng Sinh Lý Động</h4>
-            <p class="promax-bento-desc">Nernst/GHK, Starling Phù, Frank-Starling & Toan kiềm.</p>
-          </div>
-        </a>
-
-        <a href="#/basic-medical/quiz" class="promax-bento-card" style="--bento-color: #10b981; --bento-bg: rgba(16,185,129,0.1);">
-          <div class="promax-bento-icon"><i class="fa-solid fa-brain"></i></div>
-          <div>
-            <span class="promax-bento-tag">Reasoning Hub</span>
-            <h4 class="promax-bento-title">Ca Bệnh & Flashcards</h4>
-            <p class="promax-bento-desc">18+ Ca lâm sàng & 24 thẻ Spaced Repetition.</p>
-          </div>
-        </a>
-      </section>
+      <!-- COMPACT ISOLATED TOOLKIT SUITE (GÓC CÔNG CỤ Y KHOA CƠ SỞ TINH GỌN) -->
+      <div class="epi-compact-toolkit-bar" aria-label="Bộ công cụ y khoa cơ sở tương tác">
+        <div class="epi-toolkit-badge">
+          <i class="fa-solid fa-toolbox" style="color: var(--color-primary, #0284c7); font-size: 1rem;"></i>
+          <span>Bộ Công Cụ Hỗ Trợ:</span>
+        </div>
+        <div class="epi-toolkit-pills">
+          <a href="#/basic-medical/dich-te-hoc" class="epi-tool-pill-btn tool-epidemiology" title="Bộ giải ma trận 2x2, Epicurve, RR/OR/Se/Sp & 9 chuẩn Bradford Hill">
+            <i class="fa-solid fa-virus-covid" style="color: #0d9488;"></i>
+            <span>Dịch Tễ Học &amp; 2×2 Solver</span>
+          </a>
+          <a href="#/basic-medical/metabolic-map" class="epi-tool-pill-btn tool-metabolic" title="Tra cứu Enzyme, Vitamin, Thuốc & Bệnh bẩm sinh">
+            <i class="fa-solid fa-diagram-project" style="color: #8b5cf6;"></i>
+            <span>Bản Đồ Chuyển Hóa Phân Tử</span>
+          </a>
+          <a href="#/basic-medical/simulators" class="epi-tool-pill-btn tool-sim" title="Nernst/GHK, Starling Phù, Frank-Starling & Toan kiềm">
+            <i class="fa-solid fa-bolt" style="color: #0284c7;"></i>
+            <span>Mô Phỏng Sinh Lý Động</span>
+          </a>
+          <a href="#/basic-medical/quiz" class="epi-tool-pill-btn tool-quiz" title="18+ Ca lâm sàng & 24 thẻ Spaced Repetition">
+            <i class="fa-solid fa-brain" style="color: #10b981;"></i>
+            <span>Ca Bệnh &amp; Flashcards</span>
+          </a>
+          <a href="#/basic-medical/formula-vault" class="epi-tool-pill-btn tool-formula" title="Cơ sở dữ liệu phương trình Nernst, Fick, Starling, GHK kèm máy tính">
+            <i class="fa-solid fa-calculator" style="color: #f59e0b;"></i>
+            <span>Kho Công Thức Định Lượng</span>
+          </a>
+        </div>
+      </div>
 
       <!-- HUB TABS -->
       <div class="hub-tabs-container" style="margin-bottom: 1.5rem;">

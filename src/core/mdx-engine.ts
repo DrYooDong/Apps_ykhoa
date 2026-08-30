@@ -625,13 +625,9 @@ export class CliniMdxEngine {
 
       if (isHtmlLine) {
         if (inTable) flushTable();
-        // If line is raw HTML, keep it directly (format inline if text inside HTML)
+        // Format inline markdown (bold, italic, code, math) inside and outside raw HTML lines
         if (trimmed) {
-          if (trimmed.startsWith('<')) {
-            htmlLines.push(line);
-          } else {
-            htmlLines.push(this.formatInline(line));
-          }
+          htmlLines.push(this.formatInline(line));
         }
         continue;
       }
@@ -742,19 +738,19 @@ export class CliniMdxEngine {
       const diagramId = 'diag-' + Math.floor(Math.random() * 100000);
 
       return `
-        <div class="mdx-diagram-card" id="${diagramId}" style="margin: 1.5rem 0; background: var(--color-surface, #ffffff); border: 1.5px solid var(--color-border, #cbd5e1); border-radius: 14px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.04);">
-          <div class="mdx-diagram-header" style="background: var(--color-surface-2, #f8fafc); border-bottom: 1px solid var(--color-border, #cbd5e1); padding: 0.65rem 1rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;">
-            <div class="mdx-diagram-title-wrap" style="display: flex; align-items: center; gap: 0.5rem;">
-              <span class="mdx-diagram-badge" style="background: rgba(2,132,199,0.1); color: var(--color-primary, #0284c7); font-size: 0.72rem; font-weight: 800; padding: 2px 7px; border-radius: 6px; text-transform: uppercase;"><i class="fa-solid fa-diagram-project"></i> SƠ ĐỒ LÂM SÀNG</span>
-              <span style="font-weight: 700; font-size: 0.88rem; color: var(--color-text, #0f172a);">${diagramTitle}</span>
+        <div class="mdx-diagram-card" id="${diagramId}">
+          <div class="mdx-diagram-header">
+            <div class="mdx-diagram-title-wrap">
+              <span class="mdx-diagram-badge"><i class="fa-solid fa-diagram-project"></i> SƠ ĐỒ LÂM SÀNG</span>
+              <span>${diagramTitle}</span>
             </div>
             <div class="mdx-diagram-actions">
-              <button type="button" class="mdx-diagram-btn" onclick="navigator.clipboard.writeText(decodeURIComponent('${encodeURIComponent(raw)}')); this.innerText='Đã chép!'; setTimeout(()=>this.innerHTML='<i class=\\'fa-regular fa-copy\\'></i> Sao chép', 2000);" title="Sao chép sơ đồ" style="padding: 0.25rem 0.65rem; border-radius: 6px; border: 1px solid var(--color-border, #cbd5e1); background: var(--color-surface, #fff); font-size: 0.75rem; font-weight: 600; cursor: pointer; color: var(--color-text-muted, #64748b);">
+              <button type="button" class="mdx-diagram-btn" onclick="navigator.clipboard.writeText(decodeURIComponent('${encodeURIComponent(raw)}')); this.innerText='Đã chép!'; setTimeout(()=>this.innerHTML='<i class=\\'fa-regular fa-copy\\'></i> Sao chép', 2000);" title="Sao chép sơ đồ">
                 <i class="fa-regular fa-copy"></i> Sao chép
               </button>
             </div>
           </div>
-          <pre class="mdx-diagram-canvas" style="padding: 1.25rem; margin: 0; font-family: monospace; font-size: 0.88rem; line-height: 1.6; overflow-x: auto; background: var(--color-surface, #ffffff); color: var(--color-text, #0f172a);"><code>${highlightedCanvas}</code></pre>
+          <pre class="mdx-diagram-canvas"><code>${highlightedCanvas}</code></pre>
         </div>
       `;
     }
@@ -762,27 +758,35 @@ export class CliniMdxEngine {
     // Standard Code Block
     const safeContent = this.escapeHtml(raw);
     return `
-      <div class="mdx-code-block" style="margin: 1.5rem 0; border-radius: 12px; overflow: hidden; border: 1px solid var(--color-border, #cbd5e1);">
-        <pre style="margin: 0; padding: 1rem 1.25rem; background: var(--color-surface-2, #0f172a); color: #f8fafc; overflow-x: auto; font-family: monospace; font-size: 0.88rem; line-height: 1.6;"><code class="language-${lang || 'text'}">${safeContent}</code></pre>
+      <div class="mdx-code-block">
+        <pre><code class="language-${lang || 'text'}">${safeContent}</code></pre>
       </div>
     `;
   }
 
   /**
-   * Highlight syntax cho sơ đồ cây ASCII & Flowcharts
+   * Highlight syntax cho sơ đồ cây ASCII & Flowcharts sử dụng CSS classes chuyên biệt
    */
   private highlightDiagramSyntax(raw: string): string {
     let safe = this.escapeHtml(raw);
 
-    // Highlight Tree Branch lines & Connectors
+    // 1. Highlight Clinical Keywords first
     safe = safe
-      .replace(/(├──►|└──►|├──|└──|│|─►|──►|──|◄──|◄───|◄───────┘|▼|▲|&gt;)/g, '<span style="color: var(--color-primary, #0284c7); font-weight: 700;">$1</span>')
-      .replace(/(\[.*?\])/g, '<span style="color: #059669; font-weight: 700;">$1</span>')
-      .replace(/(\(.*?\))/g, '<span style="color: #7c3aed;">$1</span>')
-      .replace(/(█+)/g, '<span style="color: #d97706;">$1</span>')
-      .replace(/\b(Phản hồi âm tính|Negative Feedback|BÌNH THƯỜNG|Bù trừ tốt|Hồi phục|Hiệu quả|Tế bào T|Lympho B|Tế bào NK)\b/gi, '<span style="color: #059669; font-weight: 700;">$1</span>')
-      .replace(/\b(Phản hồi dương|Vòng Luẩn Quẩn|TỬ VONG|Hoại tử|Nguy kịch|Thiếu máu cấp|Sốc|Đột quỵ|Cấp cứu)\b/gi, '<span style="color: #dc2626; font-weight: 700;">$1</span>')
-      .replace(/\b(Cảnh báo|Ngưỡng|Phân cắt|Kích hoạt|Tăng nhịp tim|Co mạch|Enzym|Convertase|Opsonin hóa)\b/gi, '<span style="color: #d97706; font-weight: 700;">$1</span>');
+      .replace(/\b(Phản hồi âm tính|Negative Feedback|BÌNH THƯỜNG|Bù trừ tốt|Hồi phục|Hiệu quả|Tế bào T|Lympho B|Tế bào NK)\b/gi, '<span class="diag-success">$1</span>')
+      .replace(/\b(Phản hồi dương|Vòng Luẩn Quẩn|TỬ VONG|Hoại tử|Nguy kịch|Thiếu máu cấp|Sốc|Đột quỵ|Cấp cứu)\b/gi, '<span class="diag-danger">$1</span>')
+      .replace(/\b(Cảnh báo|Ngưỡng|Phân cắt|Kích hoạt|Tăng nhịp tim|Co mạch|Enzym|Convertase|Opsonin hóa)\b/gi, '<span class="diag-warning">$1</span>');
+
+    // 2. Bracketed Node: [Title] or [Node] (avoid newlines)
+    safe = safe.replace(/\[([^\]\n]+)\]/g, '<span class="diag-bracket">[$1]</span>');
+
+    // 3. Parentheses parameters/ions: (Na+), (K+), (250 ms), (Ca2+)
+    safe = safe.replace(/\(([^)\n]+)\)/g, '<span class="diag-action">($1)</span>');
+
+    // 4. Progress / Level Bars
+    safe = safe.replace(/(█+)/g, '<span class="diag-bar">$1</span>');
+
+    // 5. Tree Branch Lines, Orthogonal Connectors & Arrows
+    safe = safe.replace(/(├──►|└──►|├──|└──|──►|─►|◄───|◄──|◄───────┘|──┐|──┘|┌──|└──|─┼\/|─┼|──┬|──┴|──|│|▼|▲|&gt;|►|◄)/g, '<span class="diag-branch">$1</span>');
 
     return safe;
   }
@@ -825,10 +829,10 @@ export class CliniMdxEngine {
    */
   private formatInline(text: string): string {
     return text
-      .replace(/\*\*(.*?)\*\*/g, '<strong style="font-weight: 700; color: var(--color-text, #0f172a);">$1</strong>')
-      .replace(/\*(.*?)\*/g, '<em>$1</em>')
+      .replace(/\*\*\s*([^*]+?)\s*\*\*/g, '<strong style="font-weight: 700; color: var(--color-text, #0f172a);">$1</strong>')
+      .replace(/(?<!\*)\*([^*]+?)\*(?!\*)/g, '<em>$1</em>')
       .replace(/`([^`]+)`/g, '<code style="background: var(--color-surface-2, #f1f5f9); padding: 0.15rem 0.4rem; border-radius: 4px; font-family: monospace; font-size: 0.88em; color: #0284c7; border: 1px solid var(--color-border, #cbd5e1);">$1</code>')
-      .replace(/\$([^\$]+)\$/g, (_m, math) => {
+      .replace(/(?<!\$)\$(?!\$)([^\n$]+)(?<!\$)\$(?!\$)/g, (_m, math) => {
         return `<span class="mdx-math-inline" style="font-family: 'Cambria Math', 'Times New Roman', serif; font-size: 1.05em; color: var(--color-primary, #0284c7); padding: 0 2px;">${this.formatMathContent(math)}</span>`;
       });
   }
