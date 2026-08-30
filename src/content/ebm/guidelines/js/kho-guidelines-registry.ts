@@ -12,6 +12,26 @@ import { Study } from './guidelines-types';
 export const KHO_GUIDELINES_STATIC: Study[] = [
   // --- TIM MẠCH & CHUYỂN HÓA (CARDIO / METABOLIC) ---
   {
+    id: '2026-esc-udmi-nmct',
+    title: 'Đồng Thuận Toàn Cầu Lần Thứ 5 Về Định Nghĩa Nhồi Máu Cơ Tim (Fifth UDMI 2026)',
+    titleEn: 'Fifth Universal Definition of Myocardial Infarction (2026) — Joint ESC/ACC/AHA/WHF Task Force',
+    sourceType: 'intl-guideline',
+    specialty: 'cardio',
+    design: 'guideline',
+    impact: 'practice-changing',
+    year: 2026,
+    organization: 'ESC / ACC / AHA / WHF',
+    journal: 'Eur Heart J',
+    file: '2026-esc-udmi-nmct.html',
+    conditionKey: 'myocardial-infarction',
+    icd10: ['I21', 'I21.0', 'I21.9', 'I22', 'BA41'],
+    intervention: 'Ngưỡng hs-cTn 99th URL đặc hiệu giới tính, 4 Giai đoạn mô học CMR (Phù nề, Hoại tử, MVO, IMH), Chỉ định sớm CMR trong MINOCA, Lưu đồ 4 thể bệnh, Chuyển dịch mô hình OMI trên ECG (de Winter, Wellens, Sgarbossa cải tiến)',
+    primaryEndpoint: 'Chuẩn hóa chẩn đoán nhồi máu cơ tim toàn cầu, phân biệt tổn thương cơ tim cấp/mạn, tái tưới máu khẩn cấp theo OMI và giảm tử vong do biến cố mạch vành cấp',
+    keyResults: 'Bắt buộc áp dụng ngưỡng troponin đặc hiệu giới tính; CMR phân biệt 4 giai đoạn tổn thương mô học; Nhận diện ~25% ca NSTEMI thực chất là OMI cần can thiệp khẩn cấp.',
+    summary: 'Đồng thuận toàn cầu Fifth UDMI 2026 liên kết ESC/ACC/AHA/WHF: Động học 3 pha hs-cTn, phân tầng mô học CMR 4 stages, chẩn đoán phân biệt MINOCA/Viêm cơ tim/Takotsubo, 4 lưu đồ tiếp cận lâm sàng và cuộc cách mạng chẩn đoán OMI trên điện tâm đồ.',
+    detailedConclusion: 'Chỉ định sớm CMR (<2 tuần) cho MINOCA; tái tưới máu khẩn cấp ngay khi có biểu hiện tương đương OMI trên ECG mà không trì hoãn chờ men tim.'
+  },
+  {
     id: '2026-esc-hf-p1',
     title: 'ESC 2026: Khuyến cáo Chẩn đoán & Điều trị Suy tim Mạn (Phần 1: Định nghĩa, Kiểu hình & Phác đồ Nội khoa)',
     titleEn: '2026 ESC Guidelines for the management of heart failure (Part 1: Definitions, Phenotypes & Medical Therapy)',

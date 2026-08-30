@@ -296,6 +296,9 @@ async function fetchAndHydrateStatArticle(cleanSlug: string, baseSlugName: strin
     </div>
   `;
 
+  // Normalize and fallback images in article
+  normalizeStatImages(mountEl);
+
   // Execute embedded scripts if any
   const scripts = mountEl.querySelectorAll('script');
   scripts.forEach(s => {
@@ -314,6 +317,41 @@ async function fetchAndHydrateStatArticle(cleanSlug: string, baseSlugName: strin
 
   // Sync theme
   updateStatReaderThemeUI();
+}
+
+/**
+ * Chuẩn hóa và thiết lập fallback đa tầng cho ảnh trong bài viết Thống Kê Y Học
+ */
+function normalizeStatImages(mountEl: HTMLElement): void {
+  mountEl.querySelectorAll<HTMLImageElement>('img').forEach(img => {
+    const rawSrc = img.getAttribute('src') || '';
+    if (!rawSrc || rawSrc.startsWith('data:') || rawSrc.startsWith('http://') || rawSrc.startsWith('https://')) return;
+
+    const rawFileName = rawSrc.split('/').pop()?.split('?')[0] || '';
+    if (!rawFileName) return;
+
+    const candidatePaths = [
+      `./assets/images/${rawFileName}`,
+      `/assets/images/${rawFileName}`,
+      `assets/images/${rawFileName}`,
+      `./src/content/ebm/medical-statistics/images/${rawFileName}`,
+      `/src/content/ebm/medical-statistics/images/${rawFileName}`,
+      `./images/${rawFileName}`,
+      `/images/${rawFileName}`
+    ];
+
+    if (!img.src || img.src.endsWith('/images/' + rawFileName) || img.getAttribute('src')?.startsWith('./images/')) {
+      img.src = candidatePaths[0];
+    }
+
+    let attempt = 0;
+    img.onerror = () => {
+      attempt++;
+      if (attempt < candidatePaths.length) {
+        img.src = candidatePaths[attempt];
+      }
+    };
+  });
 }
 
 /**

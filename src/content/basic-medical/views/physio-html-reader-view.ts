@@ -624,6 +624,9 @@ async function fetchAndHydratePhysioArticle(
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
 
+    // Normalize and fallback images in MDX content
+    normalizePhysioImages(mountEl);
+
     setupInPageAnchorScrolling(mountEl);
     return;
   }
@@ -1424,6 +1427,9 @@ async function fetchAndHydratePhysioArticle(
   // 5. Ensure In-Page Anchors & QuickNav Smooth Scrolling without breaking SPA Router
   setupInPageAnchorScrolling(mountEl);
 
+  // 6. Normalize and fallback images
+  normalizePhysioImages(mountEl);
+
   // Hydrate Scripts if any
   const scripts = doc.querySelectorAll('script');
   scripts.forEach(s => {
@@ -1439,6 +1445,43 @@ async function fetchAndHydratePhysioArticle(
         console.warn('Script execution notice:', err);
       }
     }
+  });
+}
+
+/**
+ * Chuẩn hóa và thiết lập Fallback đa tầng cho hình ảnh Cơ sở Y khoa (Sinh lý, Hóa sinh, CCBS)
+ */
+function normalizePhysioImages(mountEl: HTMLElement): void {
+  mountEl.querySelectorAll<HTMLImageElement>('img').forEach(img => {
+    const rawSrc = img.getAttribute('src') || '';
+    if (!rawSrc || rawSrc.startsWith('data:') || rawSrc.startsWith('http://') || rawSrc.startsWith('https://')) return;
+
+    const rawFileName = rawSrc.split('/').pop()?.split('?')[0] || '';
+    if (!rawFileName) return;
+
+    const candidatePaths = [
+      `./assets/images/${rawFileName}`,
+      `/assets/images/${rawFileName}`,
+      `assets/images/${rawFileName}`,
+      `./src/content/basic-medical/images/${rawFileName}`,
+      `/src/content/basic-medical/images/${rawFileName}`,
+      `./src/content/basic-medical/pathophysiology-cases/images/${rawFileName}`,
+      `/src/content/basic-medical/pathophysiology-cases/images/${rawFileName}`,
+      `./images/${rawFileName}`,
+      `/images/${rawFileName}`
+    ];
+
+    if (!img.src || img.src.endsWith('/images/' + rawFileName) || img.getAttribute('src')?.startsWith('./images/')) {
+      img.src = candidatePaths[0];
+    }
+
+    let attempt = 0;
+    img.onerror = () => {
+      attempt++;
+      if (attempt < candidatePaths.length) {
+        img.src = candidatePaths[attempt];
+      }
+    };
   });
 }
 

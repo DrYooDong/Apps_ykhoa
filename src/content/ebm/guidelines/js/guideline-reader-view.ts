@@ -246,6 +246,10 @@ async function fetchAndHydrateGuideline(cleanSlug: string, baseSlugName: string)
       document.head.appendChild(link);
     }
 
+    // Pre-normalize relative image sources inside MDX rendered HTML
+    let renderedHtml = parsed.html;
+    renderedHtml = renderedHtml.replace(/(<img\s+[^>]*?src=["'])(\.\/|\.\.\/)*images\/([^"']+)["']/gi, '$1./src/content/ebm/guidelines/kho-guidelines/images/$3"');
+
     mountEl.innerHTML = `
       <div class="reading-progress-bar" id="reading-progress-bar"></div>
       <div class="guideline-article-container" style="max-width: 1280px; margin: 0 auto;">
@@ -274,10 +278,13 @@ async function fetchAndHydrateGuideline(cleanSlug: string, baseSlugName: string)
 
         <!-- RENDERED CONTENT -->
         <div class="mdx-rendered-article">
-          ${parsed.html}
+          ${renderedHtml}
         </div>
       </div>
     `;
+
+    // Normalize Images & Fallback Cascade
+    normalizeArticleImages(mountEl);
 
     // Hydrate MDX Interactive CDSS Calculators & Smooth Anchors
     hydrateMdxInteractiveTools(mountEl);
@@ -304,30 +311,6 @@ async function fetchAndHydrateGuideline(cleanSlug: string, baseSlugName: string)
 
   // Remove legacy placeholders, duplicate headers, and external stylesheet links
   doc.querySelectorAll('#header-placeholder, #footer-placeholder, .topnav, link[rel="stylesheet"]').forEach(el => el.remove());
-
-  // Rewrite image sources to valid paths in SPA
-  doc.querySelectorAll('img').forEach(img => {
-    const src = img.getAttribute('src') || '';
-    if (!src) return;
-
-    let targetSrc = src;
-    if (src.includes('images/')) {
-      const cleanImg = src.replace(/^(\.\/|\.\.\/)*images\//i, '');
-      targetSrc = `/src/content/ebm/guidelines/kho-guidelines/images/${cleanImg}`;
-    } else if (src.startsWith('./') || (!src.startsWith('http') && !src.startsWith('/') && !src.startsWith('data:'))) {
-      const cleanImg = src.replace(/^\.\//, '');
-      targetSrc = `/src/content/ebm/guidelines/kho-guidelines/${cleanImg}`;
-    }
-
-    img.setAttribute('src', targetSrc);
-
-    // Add robust fallback handler for different server environments (dist/root/local)
-    const rawFileName = (src || '').split('/').pop() || '';
-    img.setAttribute(
-      'onerror',
-      `if(!this.dataset.tried){this.dataset.tried='1';this.src='./src/content/ebm/guidelines/kho-guidelines/images/${rawFileName}';}else if(this.dataset.tried==='1'){this.dataset.tried='2';this.src='src/content/ebm/guidelines/kho-guidelines/images/${rawFileName}';}else if(this.dataset.tried==='2'){this.dataset.tried='3';this.src='../src/content/ebm/guidelines/kho-guidelines/images/${rawFileName}';}else if(this.dataset.tried==='3'){this.dataset.tried='4';this.src='./images/${rawFileName}';}`
-    );
-  });
 
   // Wrap all table elements with responsive scrolling wrappers to prevent mobile overflow
   doc.querySelectorAll('table').forEach(tbl => {
@@ -601,6 +584,9 @@ function hydrateGuidelineScripts(doc: Document, mountEl: HTMLElement): void {
       }
     });
   });
+
+  // 6. Normalize Images & Attach Multi-Tier Fallback Cascade
+  normalizeArticleImages(mountEl);
 }
 
 /**
@@ -813,9 +799,53 @@ if (typeof window !== 'undefined') {
 }
 
 /**
+ * Chuẩn hóa đường dẫn hình ảnh và thiết lập cơ chế fallback đa tầng cho toàn bộ ảnh trong bài viết
+ */
+function normalizeArticleImages(mountEl: HTMLElement): void {
+  mountEl.querySelectorAll<HTMLImageElement>('img').forEach(img => {
+    const rawSrc = img.getAttribute('src') || '';
+    if (!rawSrc || rawSrc.startsWith('data:') || rawSrc.startsWith('http://') || rawSrc.startsWith('https://')) return;
+
+    const rawFileName = rawSrc.split('/').pop()?.split('?')[0] || '';
+    if (!rawFileName) return;
+
+    // Danh sách đường dẫn dự phòng đa tầng cho mọi môi trường
+    const candidatePaths = [
+      `./src/content/ebm/guidelines/kho-guidelines/images/${rawFileName}`,
+      `/src/content/ebm/guidelines/kho-guidelines/images/${rawFileName}`,
+      `src/content/ebm/guidelines/kho-guidelines/images/${rawFileName}`,
+      `../src/content/ebm/guidelines/kho-guidelines/images/${rawFileName}`,
+      `./assets/images/${rawFileName}`,
+      `/assets/images/${rawFileName}`,
+      `assets/images/${rawFileName}`,
+      `./images/${rawFileName}`,
+      `/images/${rawFileName}`,
+      `images/${rawFileName}`
+    ];
+
+    // Gán src ưu tiên số 1
+    if (!img.src || img.src.endsWith('/images/' + rawFileName) || img.getAttribute('src')?.startsWith('./images/')) {
+      img.src = candidatePaths[0];
+    }
+
+    // Gán event listener fallback đa tầng
+    let attempt = 0;
+    img.onerror = () => {
+      attempt++;
+      if (attempt < candidatePaths.length) {
+        img.src = candidatePaths[attempt];
+      }
+    };
+  });
+}
+
+/**
  * Hydrate Interactive CDSS Calculators & Smooth Anchors for MDX Articles
  */
 function hydrateMdxInteractiveTools(mountEl: HTMLElement): void {
+  // 0. Normalize Images in MDX Content
+  normalizeArticleImages(mountEl);
+
   // 1. Replace un-rendered HTML entities like &rarr; in text nodes
   const walker = document.createTreeWalker(mountEl, NodeFilter.SHOW_TEXT);
   let node: Node | null;
