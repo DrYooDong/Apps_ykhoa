@@ -357,10 +357,10 @@ async function fetchAndHydratePhysioArticle(
 
     mountEl.innerHTML = `
       <div class="reading-progress-bar" id="reading-progress-bar"></div>
-      <div class="physio-article-container" style="max-width: 1120px; margin: 0 auto; padding: 1.5rem 1.25rem;">
+      <div class="physio-article-container" style="max-width: 1120px; margin: 0 auto;">
         
         <!-- LUXURY HERO BANNER -->
-        <div style="margin-bottom: 2rem; background: ${headerGradient}; color: #ffffff; padding: 2.5rem 2rem; border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.12); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2); position: relative; overflow: hidden;">
+        <div class="guideline-hero-banner" style="margin-bottom: 2rem; background: ${headerGradient}; color: #ffffff; border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.12); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2); position: relative; overflow: hidden;">
           <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.75rem;">
             <span class="badge" style="background: ${badgeBg}; color: ${badgeColor}; border: 1px solid ${badgeBorder}; font-weight: 700; font-size: 0.8rem; padding: 0.35rem 0.85rem; border-radius: 999px; text-transform: uppercase;">
               <i class="fa-solid ${badgeIcon}"></i> ${badgeText}

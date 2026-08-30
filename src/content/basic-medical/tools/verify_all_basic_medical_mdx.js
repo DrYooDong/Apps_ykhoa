@@ -60,10 +60,7 @@ function checkFile(filePath, modName) {
     issues.push('Thiếu thanh điều hướng nhanh QuickNav / PillarsNav');
   }
 
-  // 6. Check Citation Box & Btn Row
-  if (!content.includes('citation-box')) {
-    issues.push('Thiếu khung trích dẫn AMA (.citation-box)');
-  }
+  // 6. Check Btn Row
   if (!content.includes('btn-row') || !content.includes('btn-primary')) {
     issues.push('Thiếu hàng nút điều hướng (.btn-row / .btn-primary)');
   }

@@ -48,29 +48,29 @@ export function renderPathophysiologyView(activeTab: 'all' | 'sinhly' | 'ccbs' |
             </p>
 
             <!-- Promax Dynamic Mini KPI Chips -->
-            <div class="promax-hero-kpis">
-              <div class="promax-kpi-chip">
+            <div class="promax-kpi-bar">
+              <div class="promax-kpi-pill">
                 <i class="fa-solid fa-layer-group promax-kpi-icon" style="color: #38bdf8;"></i>
                 <div>
                   <div class="promax-kpi-num">9+16</div>
                   <div class="promax-kpi-lbl">Hệ Cơ Quan &amp; Chuyên Khoa</div>
                 </div>
               </div>
-              <div class="promax-kpi-chip">
+              <div class="promax-kpi-pill">
                 <i class="fa-solid fa-dna promax-kpi-icon" style="color: #34d399;"></i>
                 <div>
                   <div class="promax-kpi-num">120+</div>
                   <div class="promax-kpi-lbl">Chuyên Đề &amp; Ca Bệnh</div>
                 </div>
               </div>
-              <div class="promax-kpi-chip">
+              <div class="promax-kpi-pill">
                 <i class="fa-solid fa-calculator promax-kpi-icon" style="color: #fbbf24;"></i>
                 <div>
                   <div class="promax-kpi-num">6 Studio</div>
                   <div class="promax-kpi-lbl">Bộ Giải Quyết Định Lượng</div>
                 </div>
               </div>
-              <div class="promax-kpi-chip">
+              <div class="promax-kpi-pill">
                 <i class="fa-solid fa-certificate promax-kpi-icon" style="color: #a78bfa;"></i>
                 <div>
                   <div class="promax-kpi-num">EBM 1A</div>

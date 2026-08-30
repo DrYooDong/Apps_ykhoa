@@ -30,43 +30,43 @@ export function renderGiaiPhauSinhLyView(): string {
       <section class="promax-hero hero-physio-theme" aria-labelledby="hero-title">
         <div class="promax-hero-grid">
           <div>
-            <div class="promax-badge">
-              <i class="fa-solid fa-dna" style="color: #38bdf8;"></i>
+            <div class="promax-badge-pulse">
+              <span class="pulse-dot" style="background: #38bdf8;"></span>
               <span>Anatomy & Physiology Core Engine • Multi-Specialty</span>
             </div>
             
-            <h1 class="promax-title" id="hero-title">
+            <h1 class="promax-hero-title" id="hero-title">
               GIẢI PHẬU & SINH LÝ HỌC THEO HỆ CƠ QUAN
             </h1>
             
-            <p class="promax-desc">
+            <p class="promax-hero-desc">
               Cơ sở dữ liệu tích hợp sâu 9 hệ cơ quan (bao gồm Sinh lý Nhi khoa & Sản khoa lâm sàng). Bản đồ tư duy trực quan hóa chức năng tế bào, tương tác cơ quan và ứng dụng lâm sàng gắn kết.
             </p>
 
             <!-- Promax Dynamic Mini KPI Chips -->
-            <div class="promax-hero-kpis">
-              <div class="promax-kpi-chip">
+            <div class="promax-kpi-bar">
+              <div class="promax-kpi-pill">
                 <i class="fa-solid fa-layer-group promax-kpi-icon" style="color: #38bdf8;"></i>
                 <div>
                   <div class="promax-kpi-num">9</div>
                   <div class="promax-kpi-lbl">Hệ Cơ Quan</div>
                 </div>
               </div>
-              <div class="promax-kpi-chip">
+              <div class="promax-kpi-pill">
                 <i class="fa-solid fa-book-medical promax-kpi-icon" style="color: #34d399;"></i>
                 <div>
                   <div class="promax-kpi-num">48+</div>
                   <div class="promax-kpi-lbl">Chuyên Đề Sinh Lý</div>
                 </div>
               </div>
-              <div class="promax-kpi-chip">
+              <div class="promax-kpi-pill">
                 <i class="fa-solid fa-child-reaching promax-kpi-icon" style="color: #fbbf24;"></i>
                 <div>
                   <div class="promax-kpi-num">Peds &amp; Obs</div>
                   <div class="promax-kpi-lbl">Nhi &amp; Sản Chuyên Biệt</div>
                 </div>
               </div>
-              <div class="promax-kpi-chip">
+              <div class="promax-kpi-pill">
                 <i class="fa-solid fa-microchip promax-kpi-icon" style="color: #a78bfa;"></i>
                 <div>
                   <div class="promax-kpi-num">Interactive</div>

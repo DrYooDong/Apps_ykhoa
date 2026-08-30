@@ -24,8 +24,7 @@ export const DEFAULT_EPI_PILLARS: EpiPillarItem[] = [
   { id: 'sec-4', number: 4, title: 'Chu Kỳ Lây Truyền', icon: 'fa-solid fa-arrows-spin' },
   { id: 'sec-5', number: 5, title: 'Vật Chủ & Nguy Cơ', icon: 'fa-solid fa-users' },
   { id: 'sec-6', number: 6, title: 'Khí Hậu & Môi Trường', icon: 'fa-solid fa-cloud-sun-rain' },
-  { id: 'sec-7', number: 7, title: 'Tình Hình Toàn Cầu & VN', icon: 'fa-solid fa-earth-americas' },
-  { id: 'sec-8', number: 8, title: 'Tài Liệu Tham Khảo', icon: 'fa-solid fa-book-medical' }
+  { id: 'sec-7', number: 7, title: 'Tình Hình Toàn Cầu & VN', icon: 'fa-solid fa-earth-americas' }
 ];
 
 export function renderEpiPillarsNav(props?: EpiPillarsNavProps | EpiPillarItem[]): string {

@@ -23,8 +23,7 @@ export function renderPhysioQuickNav(props?: PhysioQuickNavProps): string {
     { id: 'sec-2', number: 2, title: 'Động Lực & Vận Chuyển', icon: 'fa-solid fa-shuffle' },
     { id: 'sec-3', number: 3, title: 'Cơ Chế & Chức Năng', icon: 'fa-solid fa-gears' },
     { id: 'sec-4', number: 4, title: 'Điều Hòa Sinh Lý', icon: 'fa-solid fa-sliders' },
-    { id: 'sec-5', number: 5, title: 'Ứng Dụng Dược Lý EBM', icon: 'fa-solid fa-pills' },
-    { id: 'sec-6', number: 6, title: 'Tài Liệu Tham Khảo', icon: 'fa-solid fa-book-medical' }
+    { id: 'sec-5', number: 5, title: 'Ứng Dụng Dược Lý EBM', icon: 'fa-solid fa-pills' }
   ];
 
   const items = props?.items && props.items.length > 0 ? props.items : defaultItems;

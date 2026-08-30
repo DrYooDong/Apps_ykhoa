@@ -4365,6 +4365,239 @@
 .accent { color: var(--color-primary, #0284c7) !important; }
 .rome-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin: 1rem 0; }
 
+/* ============================================================
+   MOBILE RESPONSIVE SYSTEM (FULL-WIDTH EXPANDED MDX READER)
+   Optimized for maximum horizontal real-estate on mobile (<768px & <480px)
+   ============================================================ */
+@media (max-width: 768px) {
+  /* 1. Outer Wrappers & Main Containers */
+  .guideline-reader-wrapper,
+  #physio-reader-wrapper,
+  .mdx-article-wrapper {
+    padding-left: 0.35rem !important;
+    padding-right: 0.35rem !important;
+    padding-top: 0.75rem !important;
+    padding-bottom: 3.5rem !important;
+  }
+
+  .guideline-article-container,
+  .physio-article-container,
+  .article-reader-container,
+  .mdx-article-container {
+    padding-left: 0.25rem !important;
+    padding-right: 0.25rem !important;
+    padding-top: 0.5rem !important;
+    padding-bottom: 1.5rem !important;
+    max-width: 100% !important;
+  }
+
+  .guideline-reader-toolbar {
+    padding: 0.5rem 0.65rem !important;
+    margin-bottom: 0.75rem !important;
+    border-radius: 10px !important;
+    gap: 0.5rem !important;
+  }
+
+  /* 2. Hero Banner */
+  .guideline-hero-banner,
+  .article-hero,
+  .mdx-hero {
+    padding: 1.35rem 0.95rem !important;
+    border-radius: 14px !important;
+    margin-bottom: 1.25rem !important;
+  }
+
+  .guideline-hero-banner h1,
+  .article-hero h1,
+  .mdx-hero h1 {
+    font-size: 1.35rem !important;
+    line-height: 1.3 !important;
+  }
+
+  .guideline-hero-banner p,
+  .article-hero p,
+  .mdx-hero p {
+    font-size: 0.88rem !important;
+    line-height: 1.55 !important;
+  }
+
+  /* 3. Section Cards (Expanded Width & Minimal Padding) */
+  .sec-card,
+  .section-card,
+  .article-card {
+    border-radius: 12px !important;
+    margin-bottom: 1.15rem !important;
+    border-width: 1px !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .sec-hdr {
+    padding: 0.75rem 0.75rem !important;
+    gap: 0.55rem !important;
+  }
+
+  .sec-hdr-icon {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 0.95rem !important;
+    border-radius: 8px !important;
+  }
+
+  .sec-title,
+  .mdx-rendered-article h2.sec-title {
+    font-size: 1.02rem !important;
+    line-height: 1.35 !important;
+  }
+
+  .sec-body {
+    padding: 0.85rem 0.65rem !important;
+    gap: 0.95rem !important;
+  }
+
+  /* 4. Sub-cards, Drug Cards & Bento Grids */
+  .card-grid,
+  .drug-grid,
+  .bento-grid,
+  .rome-grid,
+  .dose-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.6rem !important;
+  }
+
+  .drug-card,
+  .sub-card,
+  .dose-card,
+  .bento-card,
+  .figo-board {
+    padding: 0.75rem 0.75rem !important;
+    border-radius: 10px !important;
+  }
+
+  /* 5. Infoboxes & Callouts */
+  .infobox,
+  .mdx-alert,
+  .physio-alert,
+  .epi-alert,
+  .biochem-alert,
+  .patho-alert,
+  .callout,
+  .clinical-pearl,
+  .pearl-box {
+    padding: 0.75rem 0.75rem !important;
+    border-radius: 10px !important;
+    gap: 0.6rem !important;
+    margin: 0.75rem 0 !important;
+  }
+
+  .infobox-icon,
+  .alert-icon {
+    font-size: 1.1rem !important;
+  }
+
+  /* 6. QuickMenus & Sticky Navigation */
+  .quickmenu {
+    margin: 0.65rem 0 0.85rem 0 !important;
+  }
+
+  .quickmenu-inner,
+  .quicknav,
+  .pillars-nav {
+    padding: 0.3rem 0.35rem !important;
+    gap: 0.35rem !important;
+  }
+
+  .quickmenu-item,
+  .pillar-tab,
+  .quicknav-link {
+    padding: 0.35rem 0.55rem !important;
+    font-size: 0.76rem !important;
+    border-radius: 8px !important;
+  }
+
+  /* 7. Pillars (4 Trụ cột) */
+  .pillars,
+  .pillars-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.5rem !important;
+    margin: 0.65rem 0 1rem 0 !important;
+  }
+
+  .pillar {
+    padding: 0.65rem 0.75rem !important;
+    border-radius: 10px !important;
+  }
+
+  /* 8. Tables & Containers */
+  .table-responsive,
+  .table-container,
+  .hemo-table-wrap {
+    margin: 0.65rem 0 !important;
+    border-radius: 8px !important;
+  }
+
+  .table-responsive table,
+  .table-container table {
+    font-size: 0.82rem !important;
+  }
+
+  .table-responsive th,
+  .table-responsive td,
+  .table-container th,
+  .table-container td {
+    padding: 0.45rem 0.5rem !important;
+  }
+
+  /* 9. Typography on mobile */
+  .mdx-rendered-article {
+    font-size: 0.94rem !important;
+    line-height: 1.65 !important;
+  }
+
+  .sec-subtitle,
+  .mdx-rendered-article h3 {
+    font-size: 0.94rem !important;
+    margin-top: 0.85rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .guideline-reader-wrapper,
+  #physio-reader-wrapper,
+  .mdx-article-wrapper {
+    padding-left: 0.2rem !important;
+    padding-right: 0.2rem !important;
+  }
+
+  .guideline-article-container,
+  .physio-article-container,
+  .article-reader-container,
+  .mdx-article-container {
+    padding-left: 0.15rem !important;
+    padding-right: 0.15rem !important;
+  }
+
+  .sec-card,
+  .section-card {
+    border-radius: 10px !important;
+  }
+
+  .sec-hdr {
+    padding: 0.65rem 0.65rem !important;
+  }
+
+  .sec-body {
+    padding: 0.75rem 0.5rem !important;
+  }
+
+  .infobox,
+  .mdx-alert,
+  .drug-card {
+    padding: 0.65rem 0.6rem !important;
+  }
+}
+
 
 
 

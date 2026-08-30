@@ -31,44 +31,44 @@ export function renderCoCheBenhSinhView(): string {
       <section class="promax-hero hero-patho-theme" aria-labelledby="hero-title">
         <div class="promax-hero-grid">
           <div>
-            <div class="promax-badge">
-              <i class="fa-solid fa-microscope" style="color: #34d399;"></i>
+            <div class="promax-badge-pulse">
+              <span class="pulse-dot" style="background: #34d399;"></span>
               <span>Pathogenesis Reasoning Matrix • Evidence-Based Medicine</span>
             </div>
             
-            <h1 class="promax-title" id="hero-title">
+            <h1 class="promax-hero-title" id="hero-title">
               CƠ CHẾ BỆNH SINH THEO CHUYÊN KHOA
             </h1>
             
-            <p class="promax-desc">
+            <p class="promax-hero-desc">
               <strong>Sinh lý bệnh = Bệnh nguyên (etiology) + Cơ chế bệnh sinh (pathogenesis) + Hậu quả chức năng.</strong> 
               Hệ thống hóa chuỗi biến đổi bệnh sinh phân tử, rối loạn chức năng cơ quan và căn nguyên phát sinh bệnh lý qua các chuyên khoa lâm sàng. Tái hiện mối liên hệ tương hỗ giữa tổn thương cơ sở và biểu hiện triệu chứng tại giường bệnh.
             </p>
 
             <!-- Promax Dynamic Mini KPI Chips -->
-            <div class="promax-hero-kpis">
-              <div class="promax-kpi-chip">
+            <div class="promax-kpi-bar">
+              <div class="promax-kpi-pill">
                 <i class="fa-solid fa-hospital-user promax-kpi-icon" style="color: #34d399;"></i>
                 <div>
                   <div class="promax-kpi-num">16</div>
                   <div class="promax-kpi-lbl">Chuyên Khoa</div>
                 </div>
               </div>
-              <div class="promax-kpi-chip">
+              <div class="promax-kpi-pill">
                 <i class="fa-solid fa-file-waveform promax-kpi-icon" style="color: #a78bfa;"></i>
                 <div>
                   <div class="promax-kpi-num">42+</div>
                   <div class="promax-kpi-lbl">Ca Bệnh Bệnh Sinh</div>
                 </div>
               </div>
-              <div class="promax-kpi-chip">
+              <div class="promax-kpi-pill">
                 <i class="fa-solid fa-diagram-project promax-kpi-icon" style="color: #38bdf8;"></i>
                 <div>
                   <div class="promax-kpi-num">Cascade</div>
                   <div class="promax-kpi-lbl">Chuỗi Suy Luận</div>
                 </div>
               </div>
-              <div class="promax-kpi-chip">
+              <div class="promax-kpi-pill">
                 <i class="fa-solid fa-certificate promax-kpi-icon" style="color: #fbbf24;"></i>
                 <div>
                   <div class="promax-kpi-num">EBM 1A</div>

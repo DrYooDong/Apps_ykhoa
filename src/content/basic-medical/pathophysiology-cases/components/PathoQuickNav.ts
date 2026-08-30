@@ -21,8 +21,7 @@ export function renderPathoQuickNav(props?: PathoQuickNavProps): string {
     { id: 'sec-1', number: 1, title: 'Bệnh Nguyên & Căn Nguyên', icon: 'fa-solid fa-microscope' },
     { id: 'sec-2', number: 2, title: 'Dòng Thác Bệnh Sinh Phân Tử', icon: 'fa-solid fa-code-merge' },
     { id: 'sec-3', number: 3, title: 'Rối Loạn Tạng & Lâm Sàng', icon: 'fa-solid fa-stethoscope' },
-    { id: 'sec-4', number: 4, title: 'Điểm Ngọc & Phác Đồ EBM', icon: 'fa-solid fa-gem' },
-    { id: 'sec-5', number: 5, title: 'Tài Liệu Tham Khảo', icon: 'fa-solid fa-book-medical' }
+    { id: 'sec-4', number: 4, title: 'Điểm Ngọc & Phác Đồ EBM', icon: 'fa-solid fa-gem' }
   ];
 
   const items = props?.items && props.items.length > 0 ? props.items : defaultItems;

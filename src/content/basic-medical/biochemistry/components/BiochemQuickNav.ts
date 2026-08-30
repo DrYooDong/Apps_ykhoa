@@ -20,8 +20,7 @@ export function renderBiochemQuickNav(props?: BiochemQuickNavProps): string {
   const defaultItems: BiochemQuickNavItem[] = [
     { id: 'sec-1', number: 1, title: 'Cơ Chế Phân Tử & Con Đường', icon: 'fa-solid fa-dna' },
     { id: 'sec-2', number: 2, title: 'Phản Ứng Enzym & Động Học', icon: 'fa-solid fa-flask-vial' },
-    { id: 'sec-3', number: 3, title: 'Ý Nghĩa Lâm Sàng & Xét Nghiệm', icon: 'fa-solid fa-stethoscope' },
-    { id: 'sec-4', number: 4, title: 'Tài Liệu Tham Khảo', icon: 'fa-solid fa-book-medical' }
+    { id: 'sec-3', number: 3, title: 'Ý Nghĩa Lâm Sàng & Xét Nghiệm', icon: 'fa-solid fa-stethoscope' }
   ];
 
   const items = props?.items && props.items.length > 0 ? props.items : defaultItems;

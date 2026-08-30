@@ -27,7 +27,7 @@ export function renderGuidelineReader(slug: string): string {
   }, 30);
 
   return `
-    <div class="guideline-reader-wrapper animate-fade-in ${savedWidthMode === 'wide' ? 'reader-mode-wide' : 'reader-mode-standard'}" id="guideline-reader-wrapper" style="min-height: calc(100vh - 60px); background: var(--color-bg, #f0f4f8); padding: 1rem 1.25rem 3.5rem 1.25rem; transition: all 0.25s ease;">
+    <div class="guideline-reader-wrapper animate-fade-in ${savedWidthMode === 'wide' ? 'reader-mode-wide' : 'reader-mode-standard'}" id="guideline-reader-wrapper" style="min-height: calc(100vh - 60px); background: var(--color-bg, #f0f4f8); transition: all 0.25s ease;">
       
       <!-- TOP CONTROL & BREADCRUMB PRO TOOLBAR (KHÔNG ĐÓNG BĂNG KHI CUỘN) -->
       <header class="guideline-reader-toolbar" style="position: relative; z-index: 10; background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--color-border, #e2e8f0); padding: 0.65rem 1.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; box-shadow: 0 2px 10px rgba(0,0,0,0.04); margin-bottom: 1.25rem; border-radius: 12px;">
@@ -248,10 +248,10 @@ async function fetchAndHydrateGuideline(cleanSlug: string, baseSlugName: string)
 
     mountEl.innerHTML = `
       <div class="reading-progress-bar" id="reading-progress-bar"></div>
-      <div class="guideline-article-container" style="max-width: 1280px; margin: 0 auto; padding: 1.5rem 1.25rem;">
+      <div class="guideline-article-container" style="max-width: 1280px; margin: 0 auto;">
         
         <!-- LUXURY EBM HERO BANNER -->
-        <div class="guideline-hero-banner" style="margin-bottom: 2.25rem; background: linear-gradient(135deg, #0b2545 0%, #0f172a 50%, #134e4a 100%); color: #ffffff; padding: 2.75rem 2.25rem; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.15); box-shadow: 0 14px 36px -6px rgba(0, 0, 0, 0.25), 0 0 20px rgba(2, 132, 199, 0.15); position: relative; overflow: hidden;">
+        <div class="guideline-hero-banner" style="margin-bottom: 2.25rem; background: linear-gradient(135deg, #0b2545 0%, #0f172a 50%, #134e4a 100%); color: #ffffff; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.15); box-shadow: 0 14px 36px -6px rgba(0, 0, 0, 0.25), 0 0 20px rgba(2, 132, 199, 0.15); position: relative; overflow: hidden;">
           <div style="position: absolute; top: -60px; right: -60px; width: 220px; height: 220px; background: radial-gradient(circle, rgba(56, 189, 248, 0.2) 0%, transparent 70%); border-radius: 50%; pointer-events: none;"></div>
           <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1rem; position: relative; z-index: 2;">
             <span class="badge" style="background: rgba(251, 191, 36, 0.2); color: #fde047; border: 1.5px solid rgba(251, 191, 36, 0.45); font-weight: 800; font-size: 0.82rem; padding: 0.4rem 0.95rem; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.05em; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
