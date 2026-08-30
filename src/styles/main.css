@@ -265,6 +265,9 @@ h1,h2,h3,h4 { font-family: var(--font-display); line-height: 1.2; text-wrap: bal
 body.dsp-active .app-container,
 body:has(#app .dsp-layout) .app-container,
 body.guidelines-active .app-container,
+body:has(#app .guideline-reader-wrapper) .app-container,
+body:has(#app #physio-reader-wrapper) .app-container,
+body:has(#app .mdx-article-wrapper) .app-container,
 body:has(#app .app-shell) .app-container {
   padding-top: 0 !important;
   margin-top: 0 !important;
@@ -273,6 +276,9 @@ body:has(#app .app-shell) .app-container {
 body.dsp-active #app,
 body:has(#app .dsp-layout) #app,
 body.guidelines-active #app,
+body:has(#app .guideline-reader-wrapper) #app,
+body:has(#app #physio-reader-wrapper) #app,
+body:has(#app .mdx-article-wrapper) #app,
 body:has(#app .app-shell) #app {
   padding: 0 !important;
   margin: 0 !important;
@@ -307,8 +313,14 @@ body:has(#app .dsp-layout) .global-header {
 }
 
 body.guidelines-active .main-wrapper,
+body:has(#app .guideline-reader-wrapper) .main-wrapper,
+body:has(#app #physio-reader-wrapper) .main-wrapper,
+body:has(#app .mdx-article-wrapper) .main-wrapper,
 body:has(#app .app-shell) .main-wrapper,
 body.guidelines-active #app,
+body:has(#app .guideline-reader-wrapper) #app,
+body:has(#app #physio-reader-wrapper) #app,
+body:has(#app .mdx-article-wrapper) #app,
 body:has(#app .app-shell) #app {
   max-width: 100% !important;
   margin: 0 !important;
@@ -1790,9 +1802,26 @@ html[data-embedded="true"] body {
     padding-right: 0.5rem;
   }
 
+  body:has(#app .guideline-reader-wrapper) .app-container,
+  body:has(#app #physio-reader-wrapper) .app-container,
+  body:has(#app .mdx-article-wrapper) .app-container,
+  body.guidelines-active .app-container {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    padding-top: 0 !important;
+  }
+
   .main-wrapper {
     padding: 0.5rem 0.25rem;
     max-width: 100vw;
+  }
+
+  body:has(#app .guideline-reader-wrapper) .main-wrapper,
+  body:has(#app #physio-reader-wrapper) .main-wrapper,
+  body:has(#app .mdx-article-wrapper) .main-wrapper,
+  body.guidelines-active .main-wrapper {
+    padding: 0 !important;
+    max-width: 100vw !important;
   }
 
   .hero-dashboard {

@@ -547,6 +547,12 @@ function initializeRoutes(): void {
       mountToApp(renderPhysioHtmlReader(block, slug));
     });
 
+    router.register(`/${prefix}/hoa-sinh/:block/:slug`, 'Bài Giảng Hóa Sinh Y Học', (params) => {
+      const block = params.block || 'block1-biomolecules';
+      const slug = params.slug || '';
+      mountToApp(renderPhysioHtmlReader(block, slug));
+    });
+
     router.register(`/${prefix}/cases/:slug`, 'Cơ Chế Bệnh Sinh Lâm Sàng', (params) => {
       const slug = params.slug || '';
       mountToApp(renderPhysioHtmlReader('cases', slug));

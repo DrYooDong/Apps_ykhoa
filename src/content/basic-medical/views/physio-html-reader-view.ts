@@ -75,7 +75,7 @@ export function renderPhysioHtmlReader(part: string, slug: string): string {
   }
 
   return `
-    <div class="guideline-reader-wrapper animate-fade-in ${savedWidthMode === 'wide' ? 'reader-mode-wide' : 'reader-mode-standard'}" id="physio-reader-wrapper" style="min-height: calc(100vh - 60px); background: var(--color-bg, #f0f4f8); padding-top: 84px; padding-bottom: 3.5rem; transition: all 0.25s ease;">
+    <div class="guideline-reader-wrapper animate-fade-in ${savedWidthMode === 'wide' ? 'reader-mode-wide' : 'reader-mode-standard'}" id="physio-reader-wrapper" style="min-height: calc(100vh - 60px); background: var(--color-bg, #f0f4f8); transition: all 0.25s ease;">
       
       <header class="guideline-reader-toolbar" style="position: relative; z-index: 10; background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--color-border, #e2e8f0); padding: 0.65rem 1.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; box-shadow: 0 2px 10px rgba(0,0,0,0.04); margin-bottom: 1.25rem; border-radius: 12px;">
         
@@ -308,6 +308,20 @@ async function fetchAndHydratePhysioArticle(
 
   // Handle Native MDX Rendering
   if (isMdx) {
+    // Ensure guidelines-article.css & mdx-base.css are loaded
+    if (!document.querySelector('link[href*="guidelines-article.css"]')) {
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = './src/styles/components/guidelines-article.css';
+      document.head.appendChild(link);
+    }
+    if (!document.querySelector('link[href*="mdx-base.css"]')) {
+      const link2 = document.createElement('link');
+      link2.rel = 'stylesheet';
+      link2.href = './src/styles/components/mdx-base.css';
+      document.head.appendChild(link2);
+    }
+
     const parsed = cliniMdxEngine.parse(htmlText);
     const cleanTitle = parsed.title;
     const crumbEl = document.getElementById('physio-reader-breadcrumb-title');
@@ -342,6 +356,7 @@ async function fetchAndHydratePhysioArticle(
       badgeBg = 'rgba(45, 212, 191, 0.18)';
       badgeBorder = 'rgba(45, 212, 191, 0.35)';
       badgeIcon = 'fa-virus-covid';
+      badgeText = 'DỊCH TỄ BỆNH HỌC • MDX NATIVE';
     } else if (part.includes('guideline') || part.includes('ebm') || part.includes('stat')) {
       headerGradient = 'linear-gradient(135deg, #78350f 0%, #0f172a 50%, #92400e 100%)';
       badgeColor = '#fbbf24';
@@ -356,11 +371,154 @@ async function fetchAndHydratePhysioArticle(
     const tags = frontmatter.tags || [];
 
     mountEl.innerHTML = `
+      <style id="physio-mdx-reader-styles">
+        .guideline-reader-wrapper.reader-mode-wide .guideline-article-container,
+        .guideline-reader-wrapper.reader-mode-wide .physio-article-container {
+          max-width: min(1560px, 96%) !important;
+          margin-left: auto !important;
+          margin-right: auto !important;
+        }
+
+        .guideline-reader-wrapper.reader-mode-standard .guideline-article-container,
+        .guideline-reader-wrapper.reader-mode-standard .physio-article-container {
+          max-width: 1080px !important;
+          margin-left: auto !important;
+          margin-right: auto !important;
+        }
+
+        #physio-article-mount .physio-article-container,
+        .physio-article-container,
+        .guideline-article-container {
+          width: 100% !important;
+          margin: 0 auto !important;
+          padding: 0 1rem;
+          background: transparent !important;
+          border: none !important;
+          box-shadow: none !important;
+          box-sizing: border-box !important;
+        }
+
+        @media (max-width: 768px) {
+          .guideline-reader-wrapper,
+          #physio-reader-wrapper {
+            padding-top: 64px !important;
+            padding-bottom: 2.5rem !important;
+            padding-left: 0.25rem !important;
+            padding-right: 0.25rem !important;
+          }
+
+          .guideline-reader-toolbar {
+            padding: 0.5rem 0.65rem !important;
+            border-radius: 10px !important;
+            margin-bottom: 0.75rem !important;
+          }
+
+          #physio-article-mount .physio-article-container,
+          .physio-article-container,
+          .guideline-article-container {
+            padding-left: 0.15rem !important;
+            padding-right: 0.15rem !important;
+            padding-top: 0.25rem !important;
+            max-width: 100% !important;
+            width: 100% !important;
+          }
+
+          .guideline-hero-banner {
+            padding: 1.25rem 0.85rem !important;
+            border-radius: 12px !important;
+            margin-bottom: 1rem !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+          }
+
+          .guideline-hero-banner h1 {
+            font-size: 1.35rem !important;
+            line-height: 1.3 !important;
+          }
+
+          .guideline-hero-banner p {
+            font-size: 0.88rem !important;
+            line-height: 1.55 !important;
+          }
+
+          .mdx-rendered-article {
+            font-size: 0.94rem !important;
+            line-height: 1.65 !important;
+            width: 100% !important;
+          }
+
+          .sec-card,
+          .section-card,
+          .article-card {
+            border-radius: 12px !important;
+            margin-bottom: 1.15rem !important;
+            border-width: 1px !important;
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+          }
+
+          .sec-hdr {
+            padding: 0.75rem 0.75rem !important;
+            gap: 0.55rem !important;
+          }
+
+          .sec-title,
+          .mdx-rendered-article h2.section-title {
+            font-size: 1.02rem !important;
+            line-height: 1.35 !important;
+          }
+
+          .sec-body {
+            padding: 0.85rem 0.65rem !important;
+            gap: 0.95rem !important;
+          }
+
+          .mdx-rendered-article table {
+            font-size: 0.82rem !important;
+            margin: 0.65rem 0 !important;
+          }
+
+          .mdx-rendered-article th,
+          .mdx-rendered-article td {
+            padding: 0.45rem 0.55rem !important;
+          }
+
+          .table-responsive,
+          .table-wrapper {
+            margin: 0.65rem 0 !important;
+            border-radius: 8px !important;
+            width: 100% !important;
+            overflow-x: auto !important;
+            -webkit-overflow-scrolling: touch !important;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .guideline-reader-wrapper,
+          #physio-reader-wrapper {
+            padding-left: 0.15rem !important;
+            padding-right: 0.15rem !important;
+          }
+
+          #physio-article-mount .physio-article-container,
+          .physio-article-container,
+          .guideline-article-container {
+            padding-left: 0.1rem !important;
+            padding-right: 0.1rem !important;
+          }
+
+          .guideline-hero-banner {
+            padding: 1.1rem 0.75rem !important;
+          }
+        }
+      </style>
       <div class="reading-progress-bar" id="reading-progress-bar"></div>
-      <div class="physio-article-container" style="max-width: 1120px; margin: 0 auto;">
+      <div class="guideline-article-container physio-article-container" style="margin: 0 auto; width: 100%;">
         
         <!-- LUXURY HERO BANNER -->
-        <div class="guideline-hero-banner" style="margin-bottom: 2rem; background: ${headerGradient}; color: #ffffff; border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.12); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2); position: relative; overflow: hidden;">
+        <div class="guideline-hero-banner" style="margin-bottom: 2rem; background: ${headerGradient}; color: #ffffff; border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.12); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2); position: relative; overflow: hidden; width: 100%; box-sizing: border-box; padding: 2.25rem 2rem;">
           <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.75rem;">
             <span class="badge" style="background: ${badgeBg}; color: ${badgeColor}; border: 1px solid ${badgeBorder}; font-weight: 700; font-size: 0.8rem; padding: 0.35rem 0.85rem; border-radius: 999px; text-transform: uppercase;">
               <i class="fa-solid ${badgeIcon}"></i> ${badgeText}
@@ -665,28 +823,53 @@ async function fetchAndHydratePhysioArticle(
         padding: 0 !important;
       }
 
-      /* Centered Elegant Card Container */
-      #physio-article-mount .physio-article-container {
-        max-width: 1140px;
-        margin: 0 auto;
-        padding: 2.25rem 2.5rem;
-        background: var(--color-surface, #ffffff);
-        border-radius: 20px;
-        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
-        border: 1px solid var(--color-border, #e2e8f0);
-        box-sizing: border-box;
+      /* Wide Mode: Expand Containers to 1540px / 96% */
+      .guideline-reader-wrapper.reader-mode-wide .hero-inner,
+      .guideline-reader-wrapper.reader-mode-wide .pillars-inner,
+      .guideline-reader-wrapper.reader-mode-wide .quicknav,
+      .guideline-reader-wrapper.reader-mode-wide .pillars-nav-inner,
+      .guideline-reader-wrapper.reader-mode-wide .page-content,
+      .guideline-reader-wrapper.reader-mode-wide .main-container,
+      .guideline-reader-wrapper.reader-mode-wide .guideline-article-container,
+      .guideline-reader-wrapper.reader-mode-wide .physio-article-container {
+        max-width: min(1560px, 96%) !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
       }
 
-      [data-theme="dark"] #physio-article-mount .physio-article-container {
-        background: var(--color-surface, #1e293b);
-        border-color: var(--color-border, #334155);
-        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+      /* Standard Mode: Centered 1080px */
+      .guideline-reader-wrapper.reader-mode-standard .hero-inner,
+      .guideline-reader-wrapper.reader-mode-standard .pillars-inner,
+      .guideline-reader-wrapper.reader-mode-standard .page-content,
+      .guideline-reader-wrapper.reader-mode-standard .guideline-article-container,
+      .guideline-reader-wrapper.reader-mode-standard .physio-article-container {
+        max-width: 1080px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+      }
+
+      /* Clean Transparent Article Container */
+      #physio-article-mount .physio-article-container,
+      .physio-article-container,
+      .guideline-article-container {
+        width: 100% !important;
+        margin: 0 auto !important;
+        padding: 0 1rem;
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        box-sizing: border-box !important;
       }
 
       @media (max-width: 768px) {
-        #physio-article-mount .physio-article-container {
-          padding: 1.25rem 1rem;
-          border-radius: 12px;
+        #physio-article-mount .physio-article-container,
+        .physio-article-container,
+        .guideline-article-container {
+          padding-left: 0.15rem !important;
+          padding-right: 0.15rem !important;
+          padding-top: 0.25rem !important;
+          max-width: 100% !important;
+          width: 100% !important;
         }
       }
 
