@@ -1,3 +1,19 @@
+---
+title: COVID-19
+aliases:
+  - COVID-19
+keywords:
+  - covid-19
+  - tim mạch
+  - truyền nhiễm & vi sinh
+specialty: Tim mạch
+kho: 1.3. Kho sinh lý bệnh
+tags:
+  - he-co-quan/tim-mach
+  - loai/disease
+  - y-khoa/slb
+updated: 2026-08-21
+---
 Nội dung dưới đây được tổng hợp và đối chiếu chặt chẽ từ các tài liệu hướng dẫn lâm sàng của Tổ chức Y tế Thế giới (WHO), Hiệp hội Truyền nhiễm Hoa Kỳ (IDSA), Viện Y tế Quốc gia Hoa Kỳ (NIH), các nghiên cứu sinh lý bệnh học quốc tế mới nhất, cùng các Hướng dẫn Chẩn đoán và Điều trị của Bộ Y tế Việt Nam. Báo cáo này được cấu trúc hóa nhằm làm sáng tỏ mối liên hệ mật thiết giữa các hiện tượng sinh học ở cấp độ phân tử và biểu hiện lâm sàng, phục vụ trực tiếp cho thực hành điều trị thực tiễn.
 
 ---
@@ -110,5 +126,3 @@ COVID-19 có một đặc trưng sinh lý bệnh rất nổi bật là biến ch
 6. Bộ Y tế Việt Nam. _Hướng dẫn Chẩn đoán và Điều trị COVID-19_ (Ban hành kèm theo Quyết định số /QĐ-BYT năm 2022). Bộ Y tế; 2022.
 
 ---
-
-📊 **Nudge:** Để hỗ trợ đồng nghiệp sâu hơn trong thực hành, tôi có thể phân tích chi tiết về **sự phối hợp lâm sàng giữa phác đồ chống đông của Bộ Y tế và các thang điểm đánh giá nguy cơ đông máu (như Modified IMPROVE hay HAS-BLED)** để tối ưu hóa liều dự phòng huyết khối cho bệnh nhân nặng. Đồng nghiệp có muốn thực hiện nội dung này không?

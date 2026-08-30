@@ -1,19 +1,18 @@
 ---
-title: "VGSV-E"
-part: "P1"
+title: VGSV-E
 aliases:
-  - "VGSV-E"
+  - VGSV-E
 keywords:
-  - "vgsv-e"
-  - "tiêu hóa - gan mật"
-  - "truyền nhiễm & vi sinh"
-specialty: "Tiêu hóa - Gan mật"
-kho: "1.3. Kho sinh lý bệnh"
+  - vgsv-e
+  - tiêu hóa - gan mật
+  - truyền nhiễm & vi sinh
+specialty: Tiêu hóa - Gan mật
+kho: 1.3. Kho sinh lý bệnh
 tags:
-  - "he-co-quan/tieu-hoa"
-  - "loai/disease"
-  - "y-khoa/slb"
-updated: "2026-08-21"
+  - he-co-quan/tieu-hoa
+  - loai/disease
+  - y-khoa/slb
+updated: 2026-08-21
 ---
 
 # CHUYÊN ĐỀ Y KHOA: SINH LÝ BỆNH VÀ CƠ CHẾ BỆNH SINH CỦA VIÊM GAN SIÊU VI E (HEV)

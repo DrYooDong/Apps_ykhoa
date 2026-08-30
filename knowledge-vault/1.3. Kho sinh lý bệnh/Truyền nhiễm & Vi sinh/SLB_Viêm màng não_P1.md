@@ -17,7 +17,6 @@ updated: "2026-08-21"
 ---
 
 
-
 ### 1. Nội Dung Sinh Lý Học Chi Tiết: Cơ Chế Bệnh Sinh Trong [[Viêm màng não]]
 
 **Quá Trình Xâm Nhập Và Lây Truyền Của Mầm Bệnh** Bệnh sinh của [[Viêm màng não]] khởi đầu bằng việc các vi khuẩn gây bệnh (như _Neisseria meningitidis_, _Streptococcus pneumoniae_, và _Haemophilus influenzae_ type b) cư trú tại vùng tỳ hầu (nasopharyngeal tract). Tình trạng nhiễm trùng xâm lấn có thể xảy ra chỉ trong vòng vài ngày sau khi cơ thể người bệnh tiếp xúc và nhiễm phải các chủng vi khuẩn có độc lực cao. Bên cạnh đó, viêm tai giữa cũng là một nguồn lây nhiễm khởi phát thường gặp, đặc biệt trong các trường hợp viêm màng não do phế cầu (_S. pneumoniae_). Ở trẻ sơ sinh, cơ chế lây truyền có sự khác biệt: viêm màng não sơ sinh sớm (trong tuần đầu đời) chủ yếu do lây truyền dọc từ mẹ sang con qua đường sinh dục trong quá trình chuyển dạ, trong khi viêm màng não muộn (tuần thứ 2 đến tuần thứ 6) thường do lây truyền ngang hoặc nhiễm trùng bệnh viện.
