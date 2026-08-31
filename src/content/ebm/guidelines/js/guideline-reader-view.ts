@@ -250,12 +250,32 @@ async function fetchAndHydrateGuideline(cleanSlug: string, baseSlugName: string)
     let renderedHtml = parsed.html;
     renderedHtml = renderedHtml.replace(/(<img\s+[^>]*?src=["'])(\.\/|\.\.\/)*images\/([^"']+)["']/gi, '$1./src/content/ebm/guidelines/kho-guidelines/images/$3"');
 
+    // Build Sticky Quick Navigation Tab Bar from Frontmatter sections
+    const rawSections = Array.isArray(frontmatter.sections) && frontmatter.sections.length > 0
+      ? frontmatter.sections
+      : [];
+
+    let stickyTocHtml = '';
+    if (rawSections.length > 0) {
+      stickyTocHtml = `
+        <nav class="guideline-sticky-toc" id="guideline-sticky-toc" aria-label="Mục lục điều hướng nhanh">
+          <div class="guideline-sticky-toc-inner" id="guideline-sticky-toc-inner">
+            ${rawSections.map((s: any, idx: number) => `
+              <a href="#${s.id}" class="toc-tab ${idx === 0 ? 'active' : ''}" data-target="${s.id}">
+                ${s.number ? `${s.number}. ` : ''}${s.title}
+              </a>
+            `).join('')}
+          </div>
+        </nav>
+      `;
+    }
+
     mountEl.innerHTML = `
       <div class="reading-progress-bar" id="reading-progress-bar"></div>
       <div class="guideline-article-container" style="max-width: 1280px; margin: 0 auto;">
         
         <!-- LUXURY EBM HERO BANNER -->
-        <div class="guideline-hero-banner" style="margin-bottom: 2.25rem; background: linear-gradient(135deg, #0b2545 0%, #0f172a 50%, #134e4a 100%); color: #ffffff; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.15); box-shadow: 0 14px 36px -6px rgba(0, 0, 0, 0.25), 0 0 20px rgba(2, 132, 199, 0.15); position: relative; overflow: hidden;">
+        <div class="guideline-hero-banner" style="margin-bottom: 1.5rem; background: linear-gradient(135deg, #0b2545 0%, #0f172a 50%, #134e4a 100%); color: #ffffff; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.15); box-shadow: 0 14px 36px -6px rgba(0, 0, 0, 0.25), 0 0 20px rgba(2, 132, 199, 0.15); position: relative; overflow: hidden;">
           <div style="position: absolute; top: -60px; right: -60px; width: 220px; height: 220px; background: radial-gradient(circle, rgba(56, 189, 248, 0.2) 0%, transparent 70%); border-radius: 50%; pointer-events: none;"></div>
           <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1rem; position: relative; z-index: 2;">
             <span class="badge" style="background: rgba(251, 191, 36, 0.2); color: #fde047; border: 1.5px solid rgba(251, 191, 36, 0.45); font-weight: 800; font-size: 0.82rem; padding: 0.4rem 0.95rem; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.05em; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
@@ -276,6 +296,9 @@ async function fetchAndHydrateGuideline(cleanSlug: string, baseSlugName: string)
           </p>
         </div>
 
+        <!-- STICKY HORIZONTAL QUICK NAVIGATION (MỤC LỤC ĐÓNG BĂNG KHI CUỘN) -->
+        ${stickyTocHtml}
+
         <!-- RENDERED CONTENT -->
         <div class="mdx-rendered-article">
           ${renderedHtml}
@@ -286,7 +309,7 @@ async function fetchAndHydrateGuideline(cleanSlug: string, baseSlugName: string)
     // Normalize Images & Fallback Cascade
     normalizeArticleImages(mountEl);
 
-    // Hydrate MDX Interactive CDSS Calculators & Smooth Anchors
+    // Hydrate MDX Interactive CDSS Calculators & Smooth Anchors & ScrollSpy
     hydrateMdxInteractiveTools(mountEl);
     return;
   }
@@ -914,8 +937,115 @@ function hydrateMdxInteractiveTools(mountEl: HTMLElement): void {
     calculateBpClass();
   }
 
-  // 3. Smooth scroll in-page anchors
-  mountEl.querySelectorAll<HTMLAnchorElement>('a[href^="#"]').forEach(link => {
+  // 3. Dynamic Sticky TOC fallback for non-MDX or articles without frontmatter sections
+  let stickyNavEl = mountEl.querySelector('.guideline-sticky-toc');
+  const secCards = Array.from(mountEl.querySelectorAll<HTMLElement>('.sec-card[id]'));
+  
+  if (!stickyNavEl && secCards.length > 0) {
+    const nav = document.createElement('nav');
+    nav.className = 'guideline-sticky-toc';
+    nav.id = 'guideline-sticky-toc';
+    nav.setAttribute('aria-label', 'Mục lục điều hướng nhanh');
+    
+    const inner = document.createElement('div');
+    inner.className = 'guideline-sticky-toc-inner';
+    inner.id = 'guideline-sticky-toc-inner';
+    
+    secCards.forEach((sec, idx) => {
+      const id = sec.id;
+      const titleEl = sec.querySelector('.sec-title');
+      const rawTitle = titleEl ? titleEl.textContent?.trim() || id : id;
+      const cleanTitle = rawTitle.replace(/^Phần\s+\d+:\s*/i, '');
+      
+      const a = document.createElement('a');
+      a.href = `#${id}`;
+      a.className = `toc-tab ${idx === 0 ? 'active' : ''}`;
+      a.dataset.target = id;
+      a.textContent = `${idx + 1}. ${cleanTitle}`;
+      inner.appendChild(a);
+    });
+    
+    nav.appendChild(inner);
+    const contentContainer = mountEl.querySelector('.guideline-article-container') || mountEl.querySelector('.guideline-injected-article') || mountEl;
+    const heroBanner = contentContainer.querySelector('.guideline-hero-banner') || contentContainer.querySelector('.hero');
+    if (heroBanner && heroBanner.nextSibling) {
+      contentContainer.insertBefore(nav, heroBanner.nextSibling);
+    } else {
+      contentContainer.prepend(nav);
+    }
+    stickyNavEl = nav;
+  }
+
+  // 4. ScrollSpy & Interactive Tab Navigation for Sticky TOC Bar
+  const tocTabs = Array.from(mountEl.querySelectorAll<HTMLAnchorElement>('.toc-tab'));
+  if (tocTabs.length > 0 && secCards.length > 0) {
+    // Click handler with smooth scrolling and instant tab activation
+    tocTabs.forEach(tab => {
+      tab.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const targetId = tab.dataset.target || tab.getAttribute('href')?.replace(/^#/, '');
+        if (targetId) {
+          const targetEl = document.getElementById(targetId) || mountEl.querySelector(`#${targetId}`);
+          if (targetEl) {
+            targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            tocTabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            tab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+          }
+        }
+      });
+    });
+
+    // Throttled ScrollSpy listener to automatically update active tab on page scroll
+    let isScrollTicking = false;
+    const updateActiveTocTab = () => {
+      const scrollPos = window.scrollY || window.pageYOffset;
+      const headerOffset = 90;
+      let activeSecId = '';
+
+      for (let i = secCards.length - 1; i >= 0; i--) {
+        const sec = secCards[i];
+        const rect = sec.getBoundingClientRect();
+        const top = rect.top + scrollPos;
+        if (scrollPos >= top - headerOffset) {
+          activeSecId = sec.id;
+          break;
+        }
+      }
+
+      if (!activeSecId && secCards.length > 0) {
+        activeSecId = secCards[0].id;
+      }
+
+      if (activeSecId) {
+        tocTabs.forEach(tab => {
+          const target = tab.dataset.target || tab.getAttribute('href')?.replace(/^#/, '');
+          if (target === activeSecId) {
+            if (!tab.classList.contains('active')) {
+              tocTabs.forEach(t => t.classList.remove('active'));
+              tab.classList.add('active');
+              tab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            }
+          }
+        });
+      }
+      isScrollTicking = false;
+    };
+
+    window.addEventListener('scroll', () => {
+      if (!isScrollTicking) {
+        requestAnimationFrame(updateActiveTocTab);
+        isScrollTicking = true;
+      }
+    }, { passive: true });
+
+    // Initial check
+    setTimeout(updateActiveTocTab, 100);
+  }
+
+  // 5. Smooth scroll in-page anchors
+  mountEl.querySelectorAll<HTMLAnchorElement>('a[href^="#"]:not(.toc-tab)').forEach(link => {
     link.addEventListener('click', (e) => {
       const href = link.getAttribute('href');
       if (href && href.startsWith('#') && href.length > 1 && !href.startsWith('#/')) {
@@ -930,7 +1060,7 @@ function hydrateMdxInteractiveTools(mountEl: HTMLElement): void {
     });
   });
 
-  // 4. Normalize Hub / Return Back Links
+  // 6. Normalize Hub / Return Back Links
   mountEl.querySelectorAll<HTMLAnchorElement>('a').forEach(link => {
     const href = link.getAttribute('href') || '';
     if (href.endsWith('guidelines.html') || href.endsWith('kho-guidelines/index.html') || href === 'index.html') {
