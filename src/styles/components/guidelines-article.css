@@ -802,110 +802,250 @@
   color: var(--color-text-muted, #94a3b8);
 }
 
-/* --- TABLES (MED-TABLE, DATA-TABLE & REGIMEN-TABLE) --- */
-.table-wrapper {
+/* --- MASTER CLINICAL & EBM TABLES (DATA-TABLE, REGIMEN-TABLE, TABLE-MODERN, PHYSIO-TABLE) --- */
+.table-wrapper,
+.mdx-table-wrapper,
+.data-table-wrapper,
+.table-container,
+.table-responsive,
+.hemo-table-wrap,
+.physio-table-wrap {
+  width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  border-radius: 16px;
+  border-radius: 14px;
   border: 1px solid var(--color-border, #cbd5e1);
-  margin: 1.35rem 0;
+  margin: 1.25rem 0;
   background: var(--color-surface, #ffffff);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+  box-sizing: border-box;
+}
+
+.table-wrapper::-webkit-scrollbar,
+.mdx-table-wrapper::-webkit-scrollbar,
+.data-table-wrapper::-webkit-scrollbar,
+.table-container::-webkit-scrollbar,
+.table-responsive::-webkit-scrollbar {
+  height: 6px;
+}
+.table-wrapper::-webkit-scrollbar-track,
+.mdx-table-wrapper::-webkit-scrollbar-track,
+.data-table-wrapper::-webkit-scrollbar-track,
+.table-container::-webkit-scrollbar-track,
+.table-responsive::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.04);
+}
+.table-wrapper::-webkit-scrollbar-thumb,
+.mdx-table-wrapper::-webkit-scrollbar-thumb,
+.data-table-wrapper::-webkit-scrollbar-thumb,
+.table-container::-webkit-scrollbar-thumb,
+.table-responsive::-webkit-scrollbar-thumb {
+  background: var(--color-primary, #0284c7);
+  border-radius: 4px;
 }
 
 .med-table,
 .data-table,
 .regimen-table,
-.mdx-rendered-article table {
+.custom-table,
+.table-modern,
+.physio-table,
+.physio-table-compare,
+.pico-table,
+.study-table,
+.matrix-table,
+.mdx-table,
+.mdx-rendered-article table,
+.guideline-article-container table {
   width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
+  border-collapse: collapse;
   font-size: 0.88rem;
-  min-width: 600px;
+  min-width: 540px;
   text-align: left;
+  line-height: 1.6;
+  font-variant-numeric: tabular-nums;
+  margin: 0;
 }
 
 .med-table thead th,
 .data-table thead th,
 .regimen-table thead th,
-.mdx-rendered-article table thead th {
-  padding: 0.95rem 1.25rem;
+.custom-table thead th,
+.table-modern thead th,
+.physio-table thead th,
+.physio-table-compare thead th,
+.pico-table thead th,
+.study-table thead th,
+.matrix-table thead th,
+.mdx-table thead th,
+.mdx-rendered-article table thead th,
+.guideline-article-container table thead th {
+  padding: 0.85rem 1.15rem;
   font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  background: linear-gradient(135deg, rgba(2, 132, 199, 0.08) 0%, rgba(13, 148, 136, 0.04) 100%);
-  color: var(--color-primary, #0284c7);
+  letter-spacing: 0.04em;
+  background: var(--color-surface-2, #f8fafc);
+  color: var(--color-text, #0f172a);
   border-bottom: 2px solid var(--color-border, #cbd5e1);
-  white-space: nowrap;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  white-space: normal; /* Cho phép tiêu đề dài tự động xuống dòng đẹp mắt */
+  word-break: normal;
+  vertical-align: bottom;
 }
 
 .med-table td,
 .data-table td,
 .regimen-table td,
-.mdx-rendered-article table td {
-  padding: 0.95rem 1.25rem;
+.custom-table td,
+.table-modern td,
+.physio-table td,
+.physio-table-compare td,
+.pico-table td,
+.study-table td,
+.matrix-table td,
+.mdx-table td,
+.mdx-rendered-article table td,
+.guideline-article-container table td {
+  padding: 0.85rem 1.15rem;
   border-bottom: 1px solid var(--color-border, #e2e8f0);
+  border-top: none;
+  border-left: none;
+  border-right: none;
   vertical-align: middle;
   line-height: 1.6;
-  color: var(--color-text, #0f172a);
+  color: var(--color-text, #1e293b);
   transition: background 0.15s ease;
+}
+
+/* First Column Emphasis */
+.med-table tbody tr td:first-child,
+.data-table tbody tr td:first-child,
+.regimen-table tbody tr td:first-child,
+.custom-table tbody tr td:first-child,
+.table-modern tbody tr td:first-child,
+.physio-table tbody tr td:first-child,
+.physio-table-compare tbody tr td:first-child,
+.mdx-rendered-article table tbody tr td:first-child {
+  font-weight: 700;
+  color: var(--color-text, #0f172a);
 }
 
 .med-table tbody tr:last-child td,
 .data-table tbody tr:last-child td,
 .regimen-table tbody tr:last-child td,
+.custom-table tbody tr:last-child td,
+.table-modern tbody tr:last-child td,
+.physio-table tbody tr:last-child td,
+.physio-table-compare tbody tr:last-child td,
 .mdx-rendered-article table tbody tr:last-child td {
   border-bottom: none;
 }
 
 .med-table tbody tr:nth-child(even),
 .data-table tbody tr:nth-child(even),
+.regimen-table tbody tr:nth-child(even),
+.custom-table tbody tr:nth-child(even),
+.table-modern tbody tr:nth-child(even),
+.physio-table tbody tr:nth-child(even),
+.physio-table-compare tbody tr:nth-child(even),
 .mdx-rendered-article table tbody tr:nth-child(even) {
-  background: rgba(248, 250, 252, 0.7);
+  background: rgba(248, 250, 252, 0.75);
 }
 
 .med-table tbody tr:hover td,
 .data-table tbody tr:hover td,
 .regimen-table tbody tr:hover td,
+.custom-table tbody tr:hover td,
+.table-modern tbody tr:hover td,
+.physio-table tbody tr:hover td,
+.physio-table-compare tbody tr:hover td,
 .mdx-rendered-article table tbody tr:hover td {
-  background: rgba(2, 132, 199, 0.05);
+  background: rgba(2, 132, 199, 0.06);
 }
 
-[data-theme="dark"] .table-wrapper {
+/* Dark Mode Table Styles */
+[data-theme="dark"] .table-wrapper,
+[data-theme="dark"] .mdx-table-wrapper,
+[data-theme="dark"] .data-table-wrapper,
+[data-theme="dark"] .table-container,
+[data-theme="dark"] .table-responsive,
+[data-theme="dark"] .hemo-table-wrap,
+[data-theme="dark"] .physio-table-wrap {
   background: var(--color-surface, #1e293b);
   border-color: var(--color-border, #334155);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
 }
 
 [data-theme="dark"] .med-table thead th,
 [data-theme="dark"] .data-table thead th,
 [data-theme="dark"] .regimen-table thead th,
-[data-theme="dark"] .mdx-rendered-article table thead th {
-  background: rgba(15, 23, 42, 0.85);
+[data-theme="dark"] .custom-table thead th,
+[data-theme="dark"] .table-modern thead th,
+[data-theme="dark"] .physio-table thead th,
+[data-theme="dark"] .physio-table-compare thead th,
+[data-theme="dark"] .pico-table thead th,
+[data-theme="dark"] .study-table thead th,
+[data-theme="dark"] .mdx-table thead th,
+[data-theme="dark"] .matrix-table thead th,
+[data-theme="dark"] .mdx-rendered-article table thead th,
+[data-theme="dark"] .guideline-article-container table thead th {
+  background: rgba(15, 23, 42, 0.95);
   border-bottom-color: var(--color-border, #334155);
-  color: #38bdf8;
+  color: var(--color-text, #f8fafc);
 }
 
 [data-theme="dark"] .med-table td,
 [data-theme="dark"] .data-table td,
 [data-theme="dark"] .regimen-table td,
-[data-theme="dark"] .mdx-rendered-article table td {
-  border-bottom-color: rgba(51, 65, 85, 0.5);
-  color: #f1f5f9;
+[data-theme="dark"] .custom-table td,
+[data-theme="dark"] .table-modern td,
+[data-theme="dark"] .physio-table td,
+[data-theme="dark"] .physio-table-compare td,
+[data-theme="dark"] .pico-table td,
+[data-theme="dark"] .study-table td,
+[data-theme="dark"] .mdx-table td,
+[data-theme="dark"] .matrix-table td,
+[data-theme="dark"] .mdx-rendered-article table td,
+[data-theme="dark"] .guideline-article-container table td {
+  border-bottom-color: rgba(51, 65, 85, 0.6);
+  color: var(--color-text, #f1f5f9);
+}
+
+[data-theme="dark"] .med-table tbody tr td:first-child,
+[data-theme="dark"] .data-table tbody tr td:first-child,
+[data-theme="dark"] .regimen-table tbody tr td:first-child,
+[data-theme="dark"] .custom-table tbody tr td:first-child,
+[data-theme="dark"] .table-modern tbody tr td:first-child,
+[data-theme="dark"] .physio-table tbody tr td:first-child,
+[data-theme="dark"] .physio-table-compare tbody tr td:first-child,
+[data-theme="dark"] .mdx-rendered-article table tbody tr td:first-child {
+  color: #ffffff;
 }
 
 [data-theme="dark"] .med-table tbody tr:nth-child(even),
 [data-theme="dark"] .data-table tbody tr:nth-child(even),
+[data-theme="dark"] .regimen-table tbody tr:nth-child(even),
+[data-theme="dark"] .custom-table tbody tr:nth-child(even),
+[data-theme="dark"] .table-modern tbody tr:nth-child(even),
+[data-theme="dark"] .physio-table tbody tr:nth-child(even),
+[data-theme="dark"] .physio-table-compare tbody tr:nth-child(even),
 [data-theme="dark"] .mdx-rendered-article table tbody tr:nth-child(even) {
-  background: rgba(15, 23, 42, 0.35);
+  background: rgba(15, 23, 42, 0.45);
 }
 
 [data-theme="dark"] .med-table tbody tr:hover td,
 [data-theme="dark"] .data-table tbody tr:hover td,
 [data-theme="dark"] .regimen-table tbody tr:hover td,
+[data-theme="dark"] .custom-table tbody tr:hover td,
+[data-theme="dark"] .table-modern tbody tr:hover td,
+[data-theme="dark"] .physio-table tbody tr:hover td,
+[data-theme="dark"] .physio-table-compare tbody tr:hover td,
 [data-theme="dark"] .mdx-rendered-article table tbody tr:hover td {
-  background: rgba(56, 189, 248, 0.08);
+  background: rgba(56, 189, 248, 0.1);
 }
 
 .source-cell {
