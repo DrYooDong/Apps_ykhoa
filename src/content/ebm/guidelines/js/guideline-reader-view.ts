@@ -988,10 +988,26 @@ function hydrateMdxInteractiveTools(mountEl: HTMLElement): void {
         if (targetId) {
           const targetEl = document.getElementById(targetId) || mountEl.querySelector(`#${targetId}`);
           if (targetEl) {
-            targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            const headerOffset = window.innerWidth <= 768 ? 105 : 135;
+            const elementTop = targetEl.getBoundingClientRect().top + window.pageYOffset;
+            window.scrollTo({
+              top: Math.max(0, elementTop - headerOffset),
+              behavior: 'smooth'
+            });
+
             tocTabs.forEach(t => t.classList.remove('active'));
             tab.classList.add('active');
-            tab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+
+            const navInner = tab.closest('.guideline-sticky-toc-inner') as HTMLElement | null;
+            if (navInner) {
+              const tabLeft = tab.offsetLeft;
+              const tabWidth = tab.offsetWidth;
+              const innerWidth = navInner.clientWidth;
+              navInner.scrollTo({
+                left: tabLeft - (innerWidth / 2) + (tabWidth / 2),
+                behavior: 'smooth'
+              });
+            }
           }
         }
       });
@@ -1000,15 +1016,13 @@ function hydrateMdxInteractiveTools(mountEl: HTMLElement): void {
     // Throttled ScrollSpy listener to automatically update active tab on page scroll
     let isScrollTicking = false;
     const updateActiveTocTab = () => {
-      const scrollPos = window.scrollY || window.pageYOffset;
-      const headerOffset = 90;
+      const headerOffset = window.innerWidth <= 768 ? 115 : 145;
       let activeSecId = '';
 
       for (let i = secCards.length - 1; i >= 0; i--) {
         const sec = secCards[i];
         const rect = sec.getBoundingClientRect();
-        const top = rect.top + scrollPos;
-        if (scrollPos >= top - headerOffset) {
+        if (rect.top <= headerOffset + 50) {
           activeSecId = sec.id;
           break;
         }
@@ -1025,7 +1039,17 @@ function hydrateMdxInteractiveTools(mountEl: HTMLElement): void {
             if (!tab.classList.contains('active')) {
               tocTabs.forEach(t => t.classList.remove('active'));
               tab.classList.add('active');
-              tab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+
+              const navInner = tab.closest('.guideline-sticky-toc-inner') as HTMLElement | null;
+              if (navInner) {
+                const tabLeft = tab.offsetLeft;
+                const tabWidth = tab.offsetWidth;
+                const innerWidth = navInner.clientWidth;
+                navInner.scrollTo({
+                  left: tabLeft - (innerWidth / 2) + (tabWidth / 2),
+                  behavior: 'smooth'
+                });
+              }
             }
           }
         });
@@ -1041,7 +1065,7 @@ function hydrateMdxInteractiveTools(mountEl: HTMLElement): void {
     }, { passive: true });
 
     // Initial check
-    setTimeout(updateActiveTocTab, 100);
+    setTimeout(updateActiveTocTab, 150);
   }
 
   // 5. Smooth scroll in-page anchors
