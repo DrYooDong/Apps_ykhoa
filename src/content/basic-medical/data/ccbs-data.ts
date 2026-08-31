@@ -7,7 +7,7 @@ import { CcbsDataStore } from '../types/ccbs.types';
 
 export const CCBS_DATA: CcbsDataStore = {
   version: "2.0.0",
-  totalCases: 57,
+  totalCases: 62,
   topics: [
   {
     "id": "ccbs-1",
@@ -517,22 +517,23 @@ export const CCBS_DATA: CcbsDataStore = {
     "id": "ccbs-24",
     "slug": "slb-ccbs-henpq",
     "code": "CCBS-24",
-    "title": "Hen phế quản ở trẻ em",
+    "title": "Hen Phế Quản",
     "system": "respiratory",
     "systemName": "Hô Hấp & Thăng Bằng Khí Máu",
     "order": 24,
-    "overview": "Sinh lý bệnh và Cơ chế bệnh sinh Hen phế quản ở trẻ em (Pediatric Asthma Pathophysiology): Phân tích bản chất viêm mạn tính đường thở, cơ chế đáp ứng Th2/Eosinophil và Neutrophil, tái cấu trúc đường thở (Airway Remodeling), tăng đáp ứng đường thở (AHR), và cơ chế bùng phát cơn hen do siêu vi & vận động gắng sức.",
+    "overview": "Sinh lý bệnh và Cơ chế bệnh sinh Hen phế quản (Asthma Pathophysiology): Phân tích phân thể miễn dịch Type 2 vs Non-Type 2, vai trò kép của Nitric Oxide (iNOS vs eNOS), tái cấu trúc đường thở (Airway Remodeling), nút nhầy tắc nghẽn, các thể đặc thù (AERD, EIB, Hen béo phì) và cơ chế phân tử của các liệu pháp sinh học trúng đích theo GINA 2026.",
     "clinicalPearls": [
-      "Sản xuất Cytokine báo động (Alarmins): Tế bào biểu mô bị tổn thương giải phóng các alarmin như TSLP (Thymic Stromal Lymphopoietin), IL-25 và IL-33.",
-      "IL-5: Đóng vai trò chìa khóa hóa ứng động, chiêu mộ, kích thích sự phát triển và kéo dài tuổi thọ của Bạch cầu ái toan (Eosinophil) tại mô đường thở.",
-      "Tăng sản tế bào đài &amp; tuyến dưới niêm mạc: Dẫn đến tăng tiết đàm nhầy đặc quánh, quá tải dịch tiết lấp lòng đường thở.",
-      "Tăng lắng đọng chất nền ngoại bào (ECM): Tích tụ Collagen type I, III, V trong lớp lưới lamina ngay bên dưới màng đáy, làm dày màng đáy phế quản."
+      "Tắc nghẽn luồng khí dao động trong hen được tạo thành từ 3 cơ chế: Co thắt cơ trơn phế quản cấp, phù nề dày thành đường thở và nút nhầy đặc quánh (mucus plugs).",
+      "Viêm Kiểu 2 (Type 2 High) được điều hòa bởi IL-4 (chuyển lớp IgE), IL-5 (trưởng thành & sống sót Eosinophil), IL-13 (tăng tiết nhầy & iNOS) và các Alarmin (TSLP, IL-33, IL-25).",
+      "Nitric Oxide (NO) có vai trò kép: NO từ iNOS tạo Peroxynitrite (OONO-) gây độc tế bào biểu mô; ngược lại NO từ eNOS kích hoạt cGMP/PKG làm giãn cơ trơn phế quản (cơ chế tác dụng của MgSO4).",
+      "Bệnh hô hấp do NSAIDs/Aspirin (AERD) xuất phát từ rối loạn chuyển hóa Acid Arachidonic: Ức chế COX-1 làm cạn kiệt PGE2 bảo vệ, đẩy dòng chuyển hóa sang 5-LOX sinh bão Cysteinyl Leukotrienes (LTC4, LTD4, LTE4)."
     ],
     "tags": [
       "Hô Hấp",
-      "Hen phế quản ở trẻ em",
+      "Hen Phế Quản",
       "Sinh lý bệnh",
-      "Cơ chế bệnh sinh"
+      "Cơ chế bệnh sinh",
+      "GINA 2026"
     ]
   },
   {
@@ -1257,6 +1258,123 @@ export const CCBS_DATA: CcbsDataStore = {
       "Xuất huyết tiêu hóa trên",
       "Sinh lý bệnh",
       "Cơ chế bệnh sinh"
+    ]
+  },
+  {
+    "id": "ccbs-58",
+    "slug": "slb-ccbs-benh-dai",
+    "code": "CCBS-58",
+    "title": "Bệnh Dại",
+    "system": "neurology",
+    "systemName": "Thần Kinh & Tâm Thần",
+    "order": 58,
+    "overview": "Sinh lý bệnh và Cơ chế bệnh sinh Bệnh dại (Rabies Pathophysiology): Phân tích cơ chế gắn thụ thể nAChR/NCAM/p75NTR, vận chuyển ngược dòng sợi trục thần kinh, nghịch lý rối loạn chức năng không hoại tử tế bào, thể vùi Negri, nhiễm độc kích thích Quinolinate và cơ sở sinh lý học của phác đồ dự phòng sau phơi nhiễm (PEP).",
+    "clinicalPearls": [
+      "Glycoprotein G của virus dại gắn kết đặc hiệu với thụ thể Nicotinic Acetylcholine (nAChR) tại bản vận động thần kinh - cơ và thụ thể NCAM (CD56) / p75NTR trên màng tế bào thần kinh.",
+      "Vận chuyển ngược dòng sợi trục (Retrograde Axonal Transport): Virus di chuyển dọc theo hệ thống vi ống hướng tâm về thân neuron với tốc độ 50 - 100 mm/ngày để xâm nhập tủy sống và não bộ.",
+      "Nghịch lý Bệnh học Thần kinh: Bệnh dại có tỷ lệ tử vong gần 100% nhưng tiêu bản mô học não cho thấy rất ít hoặc không có hoại tử cấu trúc tế bào; bản chất là rối loạn chức năng điện sinh học và nhiễm độc kích thích thụ thể NMDA do tích tụ Quinolinate và Oxit Nitric (NO).",
+      "Cơ sở sinh lý của Dự phòng Sau Phơi nhiễm (PEP): Virus dại có màng lipid nhạy cảm với xà phòng/chất sát khuẩn (rửa vết thương làm giảm 80-90% tải lượng virus); tiêm huyết thanh kháng dại (RIG) và vắc-xin chỉ có hiệu quả trước khi virus lọt vào bên trong bao sợi trục thần kinh."
+    ],
+    "tags": [
+      "Thần Kinh",
+      "Bệnh Dại",
+      "Sinh lý bệnh",
+      "Cơ chế bệnh sinh",
+      "PEP"
+    ]
+  },
+  {
+    "id": "ccbs-59",
+    "slug": "slb-ccbs-ta",
+    "code": "CCBS-59",
+    "title": "Bệnh Tả",
+    "system": "digestive",
+    "systemName": "Tiêu Hóa & Gan Mật",
+    "order": 59,
+    "overview": "Sinh lý bệnh và Cơ chế bệnh sinh Bệnh tả (Cholera Pathophysiology): Phân tích độc tố tả Cholera Toxin (AB5), cơ chế ADP-ribosylation khóa Gs-alpha, tăng vọt cAMP hoạt hóa kênh CFTR, tiêu chảy xuất tiết phân 'nước vo gạo' và cơ sở sinh lý bù nước qua kênh SGLT-1 của dung dịch ORS theo WHO.",
+    "clinicalPearls": [
+      "Vibrio cholerae là vi khuẩn không xâm lấn (Non-invasive): Chỉ bám dính vào vi nhung mao ruột non qua Pili đồng điều hòa độc tố (TCP) mà không xâm lấn mô hay vào máu, giải thích vì sao bệnh nhân tả tiêu chảy ồ ạt nhưng KHÔNG SỐT.",
+      "Cơ chế phân tử của Độc tố Tả (CT - Cấu trúc AB5): Tiểu đơn vị B gắn vào thụ thể Ganglioside GM1; tiểu đơn vị A xúc tác ADP-ribosylation khóa tiểu đơn vị Gs-alpha ở trạng thái hoạt động vĩnh viễn, kích hoạt men Adenylate Cyclase sản sinh bão cAMP nội bào.",
+      "Tăng vọt cAMP nội bào kích thích mở tối đa kênh CFTR tại hốc tuyến ruột gây bài tiết ồ ạt ion Cl- và HCO3-, đồng thời ức chế hấp thu Na+ tại nhung mao, kéo theo lượng nước khổng lồ (lên đến 10 - 20 lít/ngày) tạo phân 'nước vo gạo' mùi tanh cá.",
+      "Cơ sở sinh lý học kỳ diệu của Dung dịch ORS: Kênh đồng vận chuyển Natri - Glucose (SGLT-1) tại viền bàn chải ruột non hoàn toàn không bị ảnh hưởng bởi cAMP; cung cấp đồng thời Glucose và Natri giúp tái hấp thu nước và điện giải cứu sống bệnh nhân sốc giảm thể tích."
+    ],
+    "tags": [
+      "Tiêu Hóa",
+      "Bệnh Tả",
+      "Sinh lý bệnh",
+      "Cơ chế bệnh sinh",
+      "ORS"
+    ]
+  },
+  {
+    "id": "ccbs-60",
+    "slug": "slb-ccbs-lau",
+    "code": "CCBS-60",
+    "title": "Bệnh Lậu",
+    "system": "general",
+    "systemName": "Truyền Nhiễm & Vi Sinh",
+    "order": 60,
+    "overview": "Sinh lý bệnh và Cơ chế bệnh sinh Bệnh lậu (Gonorrhea Pathophysiology): Phân tích cơ chế bám dính Pili Type IV, protein Opa tương tác thụ thể CEACAM, cơ chế lẩn tránh miễn dịch biến đổi pha, viêm vùng chậu (PID), hội chứng Fitz-Hugh-Curtis, lậu lan tỏa (DGI) và cơ chế kháng kháng sinh đa lớp (penA, mtrR, gyrA) theo WHO & CDC 2024.",
+    "clinicalPearls": [
+      "Neisseria gonorrhoeae bám dính và xâm nhập biểu mô trụ niêm mạc qua Pili Type IV và Protein Opa (liên kết với thụ thể CEACAM), sau đó xuyên bào (Transcytosis) xuống mô liên kết dưới niêm.",
+      "Nghịch lý nhiễm trùng không triệu chứng (Asymptomatic): Có tới 50 - 80% phụ nữ và > 90% trường hợp nhiễm lậu hầu họng/trực tràng không có triệu chứng, tạo điều kiện cho vi khuẩn lan truyền ngược dòng gây Viêm vùng chậu (PID), thai ngoài tử cung và vô sinh do tắc vòi trứng.",
+      "Hội chứng Lậu lan tỏa (DGI - Disseminated Gonococcal Infection): Vi khuẩn thoát vào máu ở bệnh nhân thiếu hụt bổ thể C5-C9, biểu hiện tam chứng Viêm bao gân - Đau đa khớp - Tổn thương mụn mủ hoại tử ngoài da hoặc Viêm khớp nhiễm trùng mủ.",
+      "Hầu họng là 'Lò luyện' Kháng thuốc (Antimicrobial Resistance): N. gonorrhoeae trao đổi gen kháng thuốc với các loài Neisseria hội sinh tại hầu họng; đột biến gen penA (thay đổi PBP2) và mtrR (tăng bơm tống thuốc MtrCDE) làm giảm nhạy cảm với Ceftriaxone."
+    ],
+    "tags": [
+      "Truyền Nhiễm",
+      "Bệnh Lậu",
+      "Sinh lý bệnh",
+      "Cơ chế bệnh sinh",
+      "Kháng thuốc"
+    ]
+  },
+  {
+    "id": "ccbs-61",
+    "slug": "slb-ccbs-hiv-aids",
+    "code": "CCBS-61",
+    "title": "HIV / AIDS",
+    "system": "general",
+    "systemName": "Truyền Nhiễm & Vi Sinh",
+    "order": 61,
+    "overview": "Sinh lý bệnh và Cơ chế bệnh sinh HIV / AIDS: Phân tích cơ chế gắn kết gp120/CD4/CCR5, chu kỳ phiên mã ngược & tích hợp provirus, động học miễn dịch GALT, rò rỉ vi khuẩn (Microbial Translocation), hồ chứa virus (Viral Reservoir), bệnh tim mạch gia tốc (REPRIEVE) và bản đồ thuốc ART trúng đích theo EACS 2025 & WHO.",
+    "clinicalPearls": [
+      "Chu kỳ xâm nhập và vỏ Capsid nguyên vẹn: Glycoprotein gp120 gắn kết thụ thể CD4 và đồng thụ thể CCR5 (hoặc CXCR4), kích hoạt gp41 hòa màng; lõi Capsid nguyên vẹn hoạt động như 'áo choàng tàng hình' bảo vệ RNA virus khỏi các thụ thể cảm biến nội bào (cGAS) trên đường di chuyển vào nhân qua phân tử CPSF6.",
+      "Tổn thương mô lympho ruột (GALT) sớm: Ngay trong giai đoạn nhiễm cấp tính, virus tiêu diệt chọn lọc và không thể phục hồi tế bào T CD4+ Th17 tại niêm mạc ruột, phá vỡ hàng rào niêm mạc gây hiện tượng Rò rỉ vi khuẩn (Microbial Translocation) và giải phóng LPS kích hoạt thụ thể TLR4 tạo trạng thái Viêm hệ thống mạn tính.",
+      "Hồ chứa virus hoạt động (Active Reservoir): Provirus tích hợp trong tế bào T CD4+ nhớ nghỉ tự nhân bản qua quá trình tăng sinh dòng (Clonal Expansion); hồ chứa hoạt động vẫn phiên mã dịch mã tạo protein Gag gây phản ứng viêm mạn tính và các đợt bùng phát tải lượng virus thấp (Viral Blips) dù tải lượng huyết thanh được kiểm soát < 20 bản sao/mL.",
+      "Bệnh tim mạch gia tốc & Thử nghiệm bước ngoặt REPRIEVE: Tình trạng viêm nội mạc mạch máu mạn tính làm tăng gấp đôi nguy cơ biến cố tim mạch (MACE); Statin (Pitavastatin) giúp giảm 35% nguy cơ MACE nhờ tác dụng kháng viêm nội mạc độc lập với mức hạ LDL-C (Guideline EACS 2025)."
+    ],
+    "tags": [
+      "Truyền Nhiễm",
+      "HIV/AIDS",
+      "Sinh lý bệnh",
+      "Cơ chế bệnh sinh",
+      "ART",
+      "REPRIEVE"
+    ]
+  },
+  {
+    "id": "ccbs-62",
+    "slug": "slb-ccbs-covid-19",
+    "code": "CCBS-62",
+    "title": "COVID-19",
+    "system": "general",
+    "systemName": "Truyền Nhiễm & Vi Sinh",
+    "order": 62,
+    "overview": "Sinh lý bệnh và Cơ chế bệnh sinh COVID-19: Phân tích toàn diện cơ chế gắn kết Spike-ACE2/TMPRSS2, huyết khối do viêm (Immunothrombosis), lật màng Phosphatidylserine, cục đông Amyloid kháng tiêu sợi huyết, tổn thương nội mạc thoát mạch (CLS), ARDS, tâm phế cấp và hội chứng Long COVID theo IDSA & WHO 2025.",
+    "clinicalPearls": [
+      "Xâm nhập tế bào đích qua trục ACE2 / TMPRSS2: Protein Gai (Spike) gắn kết thụ thể ACE2 trên tế bào biểu mô phế nang Type II và tế bào nội mạc mạch máu, được enzyme Protease serine TMPRSS2 cắt mồi kích hoạt hòa màng trực tiếp hoặc nhập bào.",
+      "Cơ chế Huyết khối do Viêm (Immunothrombosis): SARS-CoV-2 và bão cytokine làm cạn kiệt ATP và tăng Ca2+ nội bào, bất hoạt Flippase/Floppase và kích hoạt Scramblase lật Phosphatidylserine (PS) ra lá ngoài màng; PS mang điện tích âm đóng vai trò là bề mặt xúc tác lắp ráp phức hợp Tenase và Prothrombinase sinh Thrombin ồ ạt.",
+      "Vi huyết khối Amyloid kháng tiêu sợi huyết (Amyloid Microclots): Sợi Fibrin biến tính thành cấu trúc amyloid bền vững kháng lại sự phân hủy của Plasmin; kết hợp với nồng độ PAI-1 tăng vọt từ tế bào nội mạc tổn thương gây trạng thái Tăng đông đi kèm Giảm tiêu sợi huyết (Hypofibrinolysis) kéo dài.",
+      "Tổn thương phổi ARDS & Thoát dịch mao mạch (CLS): Viêm nội mạc (Endotheliitis) làm co rút tế bào, tách rời liên kết liên bào gây thoát huyết tương vào phế nang làm bất hoạt Surfactant, xẹp phổi và bất xứng thông khí/tưới máu (V/Q mismatch) dẫn đến giảm oxy máu trơ."
+    ],
+    "tags": [
+      "Truyền Nhiễm",
+      "COVID-19",
+      "Sinh lý bệnh",
+      "Cơ chế bệnh sinh",
+      "Immunothrombosis",
+      "ARDS"
     ]
   }
 ]

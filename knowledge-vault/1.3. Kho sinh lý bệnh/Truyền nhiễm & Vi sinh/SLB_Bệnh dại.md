@@ -1,22 +1,19 @@
 ---
-title: "Bệnh dại"
-part: "P1"
+title: Bệnh dại
 aliases:
-  - "Bệnh dại"
+  - Bệnh dại
 keywords:
-  - "bệnh dại"
-  - "thần kinh"
-  - "truyền nhiễm & vi sinh"
-specialty: "Thần kinh"
-kho: "1.3. Kho sinh lý bệnh"
+  - bệnh dại
+  - thần kinh
+  - truyền nhiễm & vi sinh
+specialty: Thần kinh
+kho: 1.3. Kho sinh lý bệnh
 tags:
-  - "he-co-quan/than-kinh"
-  - "loai/disease"
-  - "y-khoa/slb"
-updated: "2026-08-21"
+  - he-co-quan/than-kinh
+  - loai/disease
+  - y-khoa/slb
+updated: 2026-08-21
 ---
-
-
 
 [[1. Bệnh truyền nhiễm/2. Bệnh lý lâm sàng/2.1. Nhiễm trùng Thần kinh/Bệnh dại/Bệnh dại.md|← Quay lại Bệnh dại]]
 

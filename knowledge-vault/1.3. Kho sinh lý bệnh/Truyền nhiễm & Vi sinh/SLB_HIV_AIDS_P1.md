@@ -14,100 +14,131 @@ tags:
   - "y-khoa/slb"
 updated: "2026-08-21"
 ---
+# SINH LÝ BỆNH CỦA HIV-AIDS (PHẦN 1): CƠ CHẾ PHÂN TỬ VÀ CHU KỲ NHÂN LÊN CỦA VIRUS
 
-
-
-[[1. Bệnh truyền nhiễm/2. Bệnh lý lâm sàng/2.6. Nhiễm trùng Lây qua đường tình dục & Mãn tính/HIV_AIDS/HIV_AIDS.md|← Quay lại HIV_AIDS]]
-
-## Cơ sở Sinh học Phân tử của Virus HIV và Quá trình Xâm nhập Tế bào
-
-**Cấu trúc và Chu kỳ Nhân lên của Virus** HIV là một retrovirus với bộ gen RNA chuỗi đơn. Tính hướng tế bào (tropism) của virus được quyết định bởi phức hợp glycoprotein vỏ (Env), bao gồm tiểu phần gp120 và gp41. Quá trình lây nhiễm bắt đầu khi gp120 liên kết với thụ thể CD4 trên bề mặt tế bào đích (tế bào lympho T CD4+, đại thực bào, tế bào tua), sau đó trải qua biến đổi cấu hình để tiếp tục gắn với đồng thụ thể chemokine, chủ yếu là CCR5 (đối với chủng R5) hoặc CXCR4 (đối với chủng X4). Sự tương tác này bộc lộ gp41, đâm xuyên vào màng tế bào và kích hoạt quá trình hòa màng, giải phóng lõi virus vào tế bào chất.
-
-Bên trong tế bào, enzyme phiên mã ngược (Reverse Transcriptase - RT) chuyển đổi RNA của virus thành DNA chuỗi kép. Quá trình này rất dễ xảy ra lỗi và không có khả năng sửa sai, với tỷ lệ đột biến xấp xỉ $3 \times 10^{-5}$ cho mỗi nucleotide trong một chu kỳ, tạo ra một quần thể virus vô cùng đa dạng (quasispecies) giúp HIV dễ dàng né tránh hệ miễn dịch và sinh kháng thuốc. Sau đó, DNA của virus di chuyển vào nhân và được enzyme integrase chèn vào bộ gen của tế bào vật chủ, tạo thành nguyên tiền virus (provirus). Provirus có thể nằm yên (tiềm tàng) để trốn tránh hệ miễn dịch hoặc được phiên mã mạnh mẽ khi tế bào T bị kích hoạt bởi yếu tố phiên mã NF-κB.
-
-**Cơ chế Né tránh Miễn dịch qua các Protein Phụ trợ** HIV mã hóa các protein phụ trợ đóng vai trò then chốt trong việc đối kháng lại các yếu tố hạn chế của tế bào vật chủ (host restriction factors):
-
-- **Vif:** Liên kết và phân hủy APOBEC3G (một enzyme của tế bào có khả năng gây đột biến phá hủy bộ gen virus) qua con đường proteasome.
-- **Vpu:** Phá hủy Tetherin (BST-2) - một protein giữ các hạt virus mới nảy chồi ở lại màng tế bào, đồng thời làm giảm biểu hiện CD4 trên bề mặt.
-- **Nef:** Làm giảm biểu hiện CD4 và đặc biệt là phân tử MHC lớp I, giúp tế bào nhiễm virus trốn thoát khỏi sự nhận diện và tiêu diệt của tế bào T gây độc (CD8+).
-- **Vpr:** Dừng chu kỳ tế bào ở pha G2/M, tạo môi trường tối ưu cho quá trình phiên mã của virus.
-
-## Động học Suy giảm Tế bào CD4+ và Quá trình Viêm Mãn tính
-
-Sự suy giảm liên tục của tế bào T CD4+ là dấu ấn bệnh lý cốt lõi của HIV, nhưng cơ chế không chỉ đơn thuần là do virus tiêu diệt trực tiếp.
-
-**Giả thuyết "Vòi nước và Ống thoát" (Tap and Drain) và Sự Chết tế bào trực tiếp** Mỗi ngày, khoảng 1 tỷ hạt HIV mới được tạo ra, tiêu diệt một lượng lớn tế bào CD4+. Cơ thể phản ứng bằng cách liên tục sản xuất T CD4+ mới từ tuyến ức để bù đắp, dẫn đến sự gia tăng chu chuyển tế bào gấp 2-3 lần so với bình thường. Tuy nhiên, sự bù trừ này cuối cùng sẽ cạn kiệt, dẫn đến suy giảm CD4+ không thể đảo ngược.
-
-**Cơ chế Pyroptosis (Chết tế bào do viêm)** Nghiên cứu đột phá chỉ ra rằng chỉ có khoảng 5% sự mất mát tế bào CD4+ ở các mô bạch huyết là do nhiễm trùng trực tiếp dẫn đến apoptosis (chết tế bào theo chương trình). Ngược lại, 95% tế bào T CD4+ "nghỉ" (quiescent) bị tiêu diệt thông qua **pyroptosis** – một cơ chế chết tế bào do viêm cực kỳ mạnh mẽ. Hiện tượng này xảy ra do nhiễm trùng thất bại (abortive infection); sự tích tụ các đoạn DNA virus không hoàn chỉnh trong tế bào chất kích hoạt enzyme Caspase-1. Pyroptosis phá vỡ tế bào, giải phóng ồ ạt các cytokine tiền viêm (như IL-1β) ra môi trường xung quanh, lôi kéo thêm các tế bào CD4+ khác đến hạch bạch huyết và tiếp tục bị tiêu diệt, tạo thành một vòng xoắn bệnh lý tàn khốc.
-
-**Chuyển vị Vi khuẩn và Kích hoạt Miễn dịch Mãn tính** Ngay từ giai đoạn sớm, HIV đã tấn công mạnh mẽ vào Mô bạch huyết liên kết với ruột (GALT), làm cạn kiệt nghiêm trọng các tế bào Th17 vốn đóng vai trò bảo vệ niêm mạc. Sự phá vỡ hàng rào niêm mạc ruột cho phép các sản phẩm của vi khuẩn, điển hình là Lipopolysaccharide (LPS), tràn vào tuần hoàn máu (microbial translocation). LPS kích hoạt liên tục các thụ thể Toll-like (đặc biệt là TLR4) trên tế bào miễn dịch bẩm sinh, gây ra "cơn bão cytokine" và tình trạng kích hoạt miễn dịch mãn tính. Mức độ kích hoạt miễn dịch (hyperimmune activation) này thực chất là yếu tố dự báo tiến triển bệnh thành AIDS chính xác hơn cả tải lượng virus.
-
-## Diễn tiến Sinh lý bệnh Theo Giai đoạn Lâm sàng
-
-1. **Giai đoạn Cấp tính (Acute Infection):** Virus khuếch tán tại niêm mạc và được các tế bào tua (dendritic cells) mang đến hạch bạch huyết qua cơ chế "transinfection" (truyền nhiễm chéo qua các vi khớp thần kinh miễn dịch - virological synapse). Tải lượng virus tăng theo cấp số nhân trong huyết tương, đi kèm với sự sụt giảm CD4+ ban đầu. Cơ thể phản ứng bằng một cơn bão cytokine bẩm sinh (IL-15, IFN-α, IP-10, TNF...) và sự mở rộng mạnh mẽ của tế bào T CD8+ đặc hiệu với HIV. Sau khoảng 31 ngày, phản ứng miễn dịch ép tải lượng virus xuống một ngưỡng ổn định gọi là "set point" (điểm đặt virus). Đáng chú ý, ngay trong giai đoạn này, các hồ chứa virus tiềm tàng (viral reservoirs) đã được thiết lập vĩnh viễn.
-    
-2. **Giai đoạn Mãn tính (Chronic Infection):** Về mặt lâm sàng, bệnh nhân dường như không có triệu chứng, nhưng về mặt sinh lý bệnh, đây là một cuộc chiến khốc liệt. Virus liên tục sao chép và hệ miễn dịch liên tục hoạt động bù trừ. Sự kích hoạt miễn dịch kéo dài dẫn đến hiện tượng kiệt sức của tế bào T (T-cell exhaustion), thể hiện qua việc tăng biểu hiện các dấu ấn như PD-1, Tim-3. Đồng thời, các tế bào T CD4+ mang tiền virus tích hợp bắt đầu nhân lên theo cơ chế nhân bản (clonal expansion), giúp duy trì và mở rộng hồ chứa virus ngay cả khi không có sự sao chép virus mới. Trong giai đoạn này, virus cũng lây lan qua hàng rào máu não nhờ [[Bạch cầu]] đơn nhân, thiết lập một "nơi trú ẩn" (sanctuary site) tại [[Hệ thần kinh trung ương]], gây ra các rối loạn thần kinh nhận thức do HIV.
-    
-3. **Giai đoạn AIDS:** Sự sụp đổ của hệ thống cân bằng nội môi. Số lượng CD4+ giảm xuống dưới ngưỡng tới hạn (<200 tế bào/µL), dẫn đến mất hoàn toàn khả năng đáp ứng miễn dịch qua trung gian tế bào. Bệnh nhân trở nên nhạy cảm với các bệnh nhiễm trùng cơ hội (như viêm [[Phổi]] _Pneumocystis jirovecii_, lao, [[Viêm màng não]] do _Cryptococcus_) và các bệnh lý ác tính (Kaposi sarcoma, u lympho).
-   
-## Ứng dụng Lâm sàng từ Cơ sở Sinh lý bệnh
-
-Phân tích sâu về cơ chế bệnh sinh cung cấp lý luận trực tiếp cho các can thiệp lâm sàng hiện tại và tương lai:
-
-- **Nguyên tắc Điều trị Kháng virus (ART):** Do tỷ lệ đột biến cực cao của enzyme RT, điều trị đơn trị liệu chắc chắn sẽ dẫn đến kháng thuốc. Vì vậy, phác đồ chuẩn luôn cần kết hợp ít nhất 3 loại thuốc đánh vào các khâu khác nhau của chu kỳ nhân lên (như ức chế RT, ức chế Integrase, ức chế Protease) để triệt tiêu sự nhân lên của virus và giảm thiểu nguy cơ đề kháng. Khởi trị ART càng sớm càng tốt giúp bảo vệ mạng lưới GALT, thu hẹp kích thước hồ chứa virus ban đầu và ngăn chặn suy giảm miễn dịch.
-- **Quản lý Bệnh lý Đồng mắc do Viêm:** Vì cơ chế lọt vi khuẩn qua ruột (microbial translocation) và kích hoạt miễn dịch vẫn âm ỉ diễn ra ngay cả khi ART đã ức chế virus hoàn toàn trong máu, bệnh nhân HIV phải đối mặt với tình trạng viêm hệ thống và lão hóa miễn dịch sớm (inflammaging). Điều này làm tăng nguy cơ mắc các bệnh lý không do AIDS, đặc biệt là bệnh [[Tim]] mạch. Các hướng dẫn lâm sàng hiện nay (ví dụ: dựa trên nghiên cứu REPRIEVE) khuyến cáo sử dụng liệu pháp statin sớm để giảm thiểu nguy [[Tim|cơ tim]] mạch ở quần thể này.
-- **Thách thức của Mục tiêu Chữa khỏi (Cure):** Rào cản lớn nhất để chữa khỏi HIV là các "hồ chứa tiềm tàng" trong tế bào T CD4+ nhớ sống dài và ở những vị trí giải phẫu thuốc khó thấm tới (não, hạch bạch huyết sâu). Các provirus này có thể tích hợp vào các vùng "sa mạc gen" không hoạt động hoặc tạo ra các virus lỗi, khiến chúng "vô hình" trước hệ miễn dịch. Do đó, các chiến lược hiện tại đang nhắm đến việc "đánh thức và tiêu diệt" (kick and kill), "khóa chặt" (block and lock) provirus, hoặc sử dụng công nghệ chỉnh sửa gen (CRISPR/Cas9) và liệu pháp tế bào CAR-T để nhắm mục tiêu trực tiếp vào các tế bào mang DNA của virus này. Dựa trên nguyên lý HIV sử dụng CCR5 để xâm nhập, việc cấy ghép tế bào gốc mang đột biến tự nhiên $CCR5\Delta32$ đã mang lại sự thuyên giảm hoàn toàn (chữa khỏi) ở một số ít bệnh nhân ung thư máu.
+Dưới góc nhìn của một bác sĩ lâm sàng chuyên khoa sâu, sinh lý bệnh của HIV không đơn thuần là một chuỗi các phản ứng sinh học tĩnh lặng dưới kính hiển vi, mà là một cuộc chiến động học vô cùng khốc liệt giữa virus và hệ thống miễn dịch của tế bào vật chủ. Việc thấu hiểu tường tận cơ chế phân tử và chu kỳ nhân lên của virus HIV không chỉ giúp chúng ta giải thích bản chất các diễn tiến lâm sàng của người bệnh, mà còn là chìa khóa vàng để thiết kế và tối ưu hóa các phác đồ điều trị kháng virus (ART) cũng như dự phòng thế hệ mới.
 
 ---
 
-# Tài liệu Tham khảo
+## I. Cấu Trúc Đặc Hiệu Phân Tử và Hệ Gen của Virus HIV
 
-1. Zenere G, et al. Extracellular domain, hinge, and transmembrane determinants affecting surface CD4 expression of a novel anti-HIV chimeric antigen receptor (CAR) construct. PLoS ONE. 2024.
-2. Agosto LM, et al. HIV Cell-to-Cell Transmission: Effects on Pathogenesis and Antiretroviral Therapy. Trends Microbiol. 2015.
-3. Ferri KF, et al. Apoptosis Control in Syncytia Induced by the HIV Type 1-Envelope Glycoprotein Complex. J Exp Med. 2000.
-4. HIV - Wikipedia. Reproduction cycle and reverse transcription.
-5. HIV - Wikipedia. Assembly and integration via integrase.
-6. Genetic variability of HIV. HIV - Wikipedia.
-7. Genetic variability and recombination of HIV. HIV - Wikipedia.
-8. HIV Cure Research Information Sheet - Treatment Action Group. Understanding HIV Persistence.
-9. HIV Cure Research Information Sheet. Understanding HIV Persistence states.
-10. HIV Cure Research Information Sheet. HIV preference for activated CD4 T cells and integration.
-11. HIV Cure Research Information Sheet. Gene deserts and persistent integration.
-12. HIV Cure Research Information Sheet. CD4 T cell proliferation and clonal expansion.
-13. HIV Cure Research Information Sheet. Reservoir clearance strategies (Kick & Kill).
-14. HIV Cure Research Information Sheet. Immune Enhancement via bNAbs and CAR-T cells.
-15. HIV Cure Research Information Sheet. Block and Lock strategy.
-16. HIV and AIDS - StatPearls. Failure of humoral immunity and T-helper cells.
-17. HIV and AIDS - StatPearls. Sanctuary sites and clinical evaluation.
-18. HIV and AIDS - StatPearls. AIDS defining conditions.
-19. HIV and AIDS - StatPearls. Antiretroviral drug classes.
-20. HIV and AIDS - StatPearls. Recommended Therapy for Treatment-Naive Patients.
-21. HIV and AIDS - StatPearls. Inadequate Viral Suppression and Development of Resistance.
-22. Haase AT. Population biology of HIV-1 infection. Annu Rev Immunol. 1999.
-23. Ho DD, et al. Rapid turnover of plasma virions and CD4 lymphocytes in HIV-1 infection. Nature. 1995.
-24. Hazenberg MD, et al. Persistent immune activation in HIV-1 infection is associated with progression to AIDS. AIDS. 2003.
-25. Sodora DL, Silvestri G. Immune activation and AIDS pathogenesis. AIDS. 2008.
-26. Brenchley JM, et al. CD4+ T cell depletion during all stages of HIV disease occurs predominantly in the gastrointestinal tract. J Exp Med. 2004.
-27. Doitsh G, et al. Cell death by pyroptosis drives CD4 T-cell depletion in HIV-1 infection. Nature. 2014.
-28. Mogensen TH, et al. Innate immune recognition and activation during HIV infection. Retrovirology. 2010.
-29. Doitsh G, et al. Abortive HIV infection mediates CD4 T cell depletion and inflammation in human lymphoid tissue. Cell. 2010.
-30. Nowroozalizadeh S, et al. Microbial translocation correlates with the severity of both HIV-1 and HIV-2 infections. J Infect Dis. 2010.
-31. Phân tích Chuyên sâu về Tiến trình Y sinh và Chiến lược Kiểm soát HIV/AIDS Toàn cầu. Rủi ro Tim mạch và Nghiên cứu REPRIEVE.
-32. Phân tích Chuyên sâu về Tiến trình Y sinh và Chiến lược Kiểm soát HIV/AIDS Toàn cầu. Lão hóa và Bệnh đồng mắc (Statin).
-33. Phân tích Chuyên sâu về Tiến trình Y sinh và Chiến lược Kiểm soát HIV/AIDS Toàn cầu. Chữa khỏi HIV (Stem cell transplant).
-34. Phân tích Chuyên sâu về Tiến trình Y sinh và Chiến lược Kiểm soát HIV/AIDS Toàn cầu. Liệu pháp CAR-T và CRISPR.
-35. Under the Radar: Immune Evasion, Pathogenesis and Control of HIV Infection - MDPI. Cell-to-Cell Transmission.
-36. Under the Radar: Immune Evasion. Vif and APOBEC3G.
-37. Under the Radar: Immune Evasion. Vpr and Cell Cycle.
-38. Under the Radar: Immune Evasion. Vpu and Tetherin.
-39. Under the Radar: Immune Evasion. Nef and CD4/MHC-I downregulation.
-40. Under the Radar: Immune Evasion. Acute HIV Infection and Spread.
-41. Under the Radar: Immune Evasion. Cytokine Storm.
-42. Under the Radar: Immune Evasion. T-cell activation and exhaustion.
-43. Under the Radar: Immune Evasion. Viral setpoint and latent reservoir establishment.
-44. Under the Radar: Immune Evasion. Chronic HIV Infection and AIDS.
-45. Under the Radar: Immune Evasion. HIV crossing the Blood-Brain Barrier.
-46. Under the Radar: Immune Evasion. Elite controllers and CCR5 mutation.
-47. Under the Radar: Immune Evasion. Impact of Early ART.
-48. Under the Radar: Immune Evasion. CD4 recovery and inflammaging.
-49. Doitsh G, et al. Cell Death by Pyroptosis Drives CD4 T-Cell Depletion in HIV-1 Infection. Nature. 2014.
+### 1. Thành phần cấu trúc và các hạt virus (Virion)
+
+Hạt virus HIV trưởng thành (virion) có dạng cấu trúc hình cầu.
+
+- **Lớp vỏ ngoài (Envelope):** Chứa phức hợp glycoprotein vỏ (Env), là một cấu trúc trimer được tạo bởi sự liên kết phi cộng hóa trị giữa hai phân tử con: **glycoprotein bề mặt gp120** (SU - chịu trách nhiệm nhận diện và gắn kết thụ thể) và **glycoprotein xuyên màng gp41** (TM - chịu trách nhiệm hòa màng).
+- **Lớp vỏ trong và lõi capsid:** Bên dưới lớp màng lipid kép là protein ma trận (MA - p17) liên kết trực tiếp với mặt trong của màng. Lõi capsid (CA - p24) được sắp xếp chặt chẽ thành hình nón cụt đặc trưng, có nhiệm vụ bao bọc và bảo vệ hệ gen của virus.
+- **Hệ gen và enzyme lõi:** Hệ gen của HIV gồm hai sợi đơn ribonucleic acid cực tính dương (ssRNA) giống hệt nhau. Liên kết với các sợi ssRNA là các protein nucleocapsid (NC - p7, p9) đóng vai trò quan trọng trong việc điều hòa biểu hiện gen. Đặc biệt, lõi capsid chứa các enzyme tối quan trọng cho sự sống của virus: enzyme phiên mã ngược (RT), integrase (IN), và protease (PR).
+
+### 2. Các gen cấu trúc và gen điều hòa/phụ trợ (Accessory Genes)
+
+Hệ gen của HIV dài khoảng 10 Kb, giới hạn ở hai đầu bởi các trình tự lặp lại dài (LTR) chứa các vùng khởi động phiên mã. Hệ gen này mã hóa cho các nhóm gen chính:
+
+- **Các gen cấu trúc cơ bản:**
+    - **gen gag:** mã hóa cho polyprotein cấu trúc ma trận (MA), capsid (CA) và nucleocapsid (NC).
+    - **gen pol:** mã hóa cho các enzyme PR, RT, và IN chịu trách nhiệm cho các chức năng xúc tác sinh học cốt lõi.
+    - **gen env:** mã hóa cho glycoprotein vỏ tiền thân gp160, sau đó được cắt bởi enzyme furin của tế bào chủ thành gp120 và gp41.
+- **Các gen điều hòa và phụ trợ (Accessory genes):** Đây là đặc trưng của các retrovirus phức tạp, quyết định trực tiếp khả năng lẩn tránh miễn dịch và tương tác với các yếu tố hạn chế (host restriction factors) của tế bào chủ:
+    - **Tat (Transactivator of transcription):** Protein điều hòa mạnh mẽ, gắn vào trình tự TAR trên RNA tế bào chất, hoạt hóa hoạt động phiên mã tại LTR của virus.
+    - **Rev (Regulator of virion expression):** Gắn vào cấu trúc bậc ba RRE trên RNA để tạo điều kiện xuất khẩu các mRNA chưa cắt nối hoặc cắt nối một phần ra ngoài nhân.
+    - **Nef (Negative regulatory factor):** Giảm biểu hiện phân tử CD4 và MHC-I trên bề mặt tế bào chủ, giúp tế bào nhiễm virus lẩn lách khỏi sự phát hiện và tiêu diệt của tế bào T CD8+ gây độc.
+    - **Vif (Viral infectivity factor):** Thúc đẩy sự phân hủy proteasome của yếu tố hạn chế tế bào chủ **APOBEC3G** (một cytidine deaminase gây đột biến gen virus), bảo toàn độ toàn vẹn của hệ gen virus.
+    - **Vpr (Viral protein R):** Được đóng gói trực tiếp vào hạt virion mới, làm suy thoái protein hạt nhân CCDC137/cPERP-B, gây ngừng chu kỳ tế bào chủ ở pha G2/M - thời điểm quá trình phiên mã của virus đạt mức tối ưu.
+    - **Vpu (Viral protein U - chỉ có ở HIV-1):** Thúc đẩy sự phân hủy thụ thể CD4 trong lưới nội chất và đối kháng với **Tetherin (BST-2)** để tạo điều kiện giải phóng dễ dàng hạt virus ra khỏi màng tế bào vật chủ.
+
+---
+
+## II. Chu Kỳ Nhân Lên Phân Tử: Cơ Chế Tế Bào Bị Chiếm Đoạt
+
+Chu kỳ nhân lên của HIV là một chuỗi các sự kiện phân tử phối hợp nhịp nhàng giữa protein virus và các cấu trúc tế bào vật chủ.
+
+```
+[Hạt virus tự do] ──(gắn gp120 - CD4 & CCR5/CXCR4)──> [Hòa màng gp41]
+                                                              │
+                                                        (Lõi Capsid nguyên vẹn)
+                                                              │
+[Tích hợp DNA nhờ Integrase] <──(Vận chuyển vào nhân qua CPSF6)── [Phiên mã ngược nhờ RT]
+            │
+            └──> [Phiên mã & Dịch mã] ──> [Lắp ráp màng] ──(ESCRT)──> [Nảy chồi & Trưởng thành nhờ Protease]
+```
+
+### 1. Sự bám dính, nhận diện thụ thể và hòa màng (Entry and Fusion)
+
+Sự xâm nhập của virus là bước đầu tiên xác định tính hướng mô của HIV.
+
+- **Gắn kết ban đầu:** Glycoprotein gp120 của HIV gắn với ái lực rất cao vào phân tử **CD4** trên bề mặt tế bào lympho T hỗ trợ, đại thực bào hoặc tế bào dendritic.
+- **Nhận diện đồng thụ thể:** Sự gắn kết này gây ra sự thay đổi cấu hình gp120, bộc lộ vùng liên kết với đồng thụ thể chemokine, thường là **CCR5** (ở giai đoạn đầu, hướng đại thực bào - R5-tropic) hoặc **CXCR4** (ở giai đoạn muộn, hướng tế bào T - X4-tropic).
+- **Hòa màng trực tiếp:** Sự tương tác đồng thụ thể kích hoạt gp41 thay đổi cấu hình, phóng thích và chèn một vùng kỵ nước gọi là **fusion peptide (FP)** vào màng tế bào vật chủ. gp41 gập lại kéo màng virus và màng tế bào lại gần nhau, dẫn đến hiện tượng hòa màng và giải phóng lõi capsid vào tế bào chất.
+
+### 2. Quá trình di chuyển của Capsid và Phiên mã ngược (Capsid Transport & Reverse Transcription)
+
+- **Sự thay đổi quan niệm về "Cởi vỏ" (Uncoating):** Khác với lý thuyết kinh điển cho rằng capsid rã ra ngay trong tế bào chất ngay sau khi xâm nhập, các nghiên cứu y học hiện đại đã chứng minh rằng **lõi capsid của HIV vẫn giữ nguyên cấu trúc nguyên vẹn** khi di chuyển qua tế bào chất. Capsid hoạt động như một "áo choàng tàng hình", che giấu vật liệu di truyền của virus khỏi các thụ thể cảm biến miễn dịch bẩm sinh trong tế bào chất (như cGAS), đồng thời bảo vệ phức hợp phiên mã ngược.
+- **Phiên mã ngược:** Enzyme phiên mã ngược (RT) sử dụng tRNA của tế bào chủ làm mồi để chuyển đổi bộ gen ssRNA của virus thành sợi đôi DNA (dsDNA). Do RT không có hoạt tính sửa sai (proofreading), nó tạo ra tần suất đột biến cực kỳ cao, hình thành các biến thể quasispecies dẫn đến lẩn tránh miễn dịch và kháng thuốc nhanh chóng.
+
+### 3. Vận chuyển vào nhân và tích hợp (Nuclear Import & Integration)
+
+- **Xâm nhập nhân:** Nhờ sự hỗ trợ của yếu tố tế bào chủ **CPSF6** (Cleavage and Polyadenylation Specificity Factor 6), lõi capsid nguyên vẹn đi qua lỗ màng nhân để vào bên trong nhân tế bào chủ, hướng tới các vùng nhiễm sắc chất hoạt động phiên mã mạnh. Tại đây, quá trình cởi vỏ cuối cùng mới diễn ra.
+- **Tích hợp gen vĩnh viễn:** DNA chuỗi kép của virus được tích hợp vào bộ gen của tế bào chủ nhờ enzyme **integrase (IN)** cùng các đồng yếu tố tế bào chủ như **LEDGF/p75** và các enzyme sửa chữa DNA. Một khi đã tích hợp, DNA virus được gọi là **provirus**, thiết lập trạng thái nhiễm trùng vĩnh viễn và không thể đảo ngược.
+
+### 4. Phiên mã, dịch mã, lắp ráp và trưởng thành (Transcription, Assembly & Maturation)
+
+- **Phiên mã và xuất khẩu RNA:** Khi tế bào chủ bị kích hoạt, provirus được phiên mã bởi RNA polymerase II của tế bào chất. Protein Tat thúc đẩy quá trình này thông qua vùng TAR. Ban đầu, các mRNA cắt nối hoàn toàn được tạo ra để dịch mã Tat, Rev và Nef. Sau đó, Rev gắn vào vùng RRE, cho phép xuất khẩu các bản phiên mã RNA chưa cắt nối (để làm gen cho virion mới hoặc dịch mã Gag/Gag-Pol) và cắt nối một phần ra tế bào chất.
+- **Dịch mã và dịch chuyển khung (Ribosomal Frameshift):** Các protein Gag và Gag-Pol được tổng hợp độc lập trong tế bào chất thông qua cơ chế dịch chuyển khung dịch mã ribose với tỷ lệ khoảng 20:1.
+- **Lắp ráp và nảy chồi (Budding):** Các polyprotein Gag và Gag-Pol di chuyển đến màng tế bào chủ, gắn vào màng nhờ quá trình palmitoylation. Gag tự lắp ráp, đóng gói hai sợi ssRNA gen virus cùng protein Vpr. Phức hợp Env (gp120/gp41) được tích hợp lên màng tế bào chủ và kết hợp vào hạt nảy chồi. Quá trình nảy chồi thoát màng được thực hiện nhờ sự hỗ trợ của hệ thống **ESCRT** tế bào chủ.
+- **Trưởng thành sinh học (Maturation):** Ngay trong hoặc sau khi nảy chồi, enzyme protease của virus tự cắt và cắt các polyprotein Gag/Gag-Pol thành các protein MA, CA, NC riêng biệt và các enzyme chức năng. Quá trình tái cấu trúc lõi này tạo ra capsid hình nón cụt đặc trưng, biến virion từ trạng thái không lây nhiễm thành hạt virus trưởng thành có độc lực mạnh mẽ.
+
+---
+
+## III. Ứng Dụng Thực Hành Lâm Sàng: Bản Đồ Thuốc ART Nhắm Trúng Đích
+
+Từ việc nắm lòng chu kỳ sống phân tử của virus, y học lâm sàng hiện đại đã xây dựng được một hệ thống vũ khí trị liệu kháng virus cực kỳ chính xác:
+
+1. **Thuốc ức chế hòa màng và xâm nhập (Fusion & Entry Inhibitors):**
+    - **Maraviroc:** Kháng thụ thể CCR5, ngăn không cho gp120 bám dính. Trên thực tế lâm sàng, maraviroc chỉ có hiệu quả ở những người bệnh được xác định chỉ nhiễm chủng virus hướng CCR5 (R5-tropic).
+    - **Enfuvirtide:** Gắn vào gp41, ngăn chặn quá trình thay đổi cấu hình cần thiết cho sự hòa màng.
+2. **Thuốc ức chế phiên mã ngược (RTIs):**
+    - **NRTIs (Nucleoside Reverse Transcriptase Inhibitors - ví dụ: Tenofovir, Emtricitabine, Lamivudine, Abacavir):** Đóng vai trò là các nucleotide giả, cạnh tranh trực tiếp và gây kết thúc chuỗi DNA đang tổng hợp.
+    - **NNRTIs (Non-Nucleoside RTIs - ví dụ: Efavirenz):** Gắn trực tiếp vào vùng không hoạt động của RT, làm thay đổi cấu hình của enzyme và ức chế hoạt tính xúc tác.
+3. **Thuốc ức chế Integrase (INSTIs - ví dụ: Bictegravir, Dolutegravir):** Ngăn chặn enzyme integrase chèn DNA provirus vào DNA tế bào chủ, hiện là trụ cột của các phác đồ điều trị ban đầu nhờ hiệu quả cao và ít tác dụng phụ.
+4. **Thuốc ức chế Protease (PIs):** Ngăn chặn sự cắt các polyprotein cấu trúc, dẫn đến việc sản sinh ra các hạt virus không trưởng thành và không có khả năng lây nhiễm.
+5. **Đột phá mới - Thuốc ức chế Capsid (Capsid Inhibitor):**
+    - **Lenacapavir:** Một thuốc cực kỳ hứa hẹn (được khuyến cáo lâm sàng năm 2025/2026 cho cả dự phòng PrEP và điều trị tác dụng kéo dài) nhắm trúng lõi capsid của virus, ức chế đồng thời cả quá trình cởi vỏ (uncoating), vận chuyển màng nhân (nuclear import) lẫn quá trình lắp ráp hạt virus mới.
+
+---
+
+## IV. Phân Tích Khoảng Trống: Điểm Chưa Đồng Nhất và Sự Thay Đổi Mô Hình Sinh Lý Bệnh Giữa Các Tài Liệu Nguồn
+
+Là những nhà lâm sàng học, việc đối chiếu và phát hiện các khoảng trống kiến thức hoặc các điểm chưa thống nhất giữa các tài liệu nghiên cứu là tối quan trọng để tiếp cận chân lý khoa học. Qua phân tích, chúng tôi ghi nhận ba điểm mấu chốt có sự mâu thuẫn hoặc dịch chuyển mô hình (model shift) sâu sắc giữa các tài liệu nguồn:
+
+### 1. Sự thay đổi mô hình "Uncoating" (Cởi vỏ Capsid)
+
+- **Mô hình cũ (được ghi nhận trong các giáo trình truyền thống):** Cho rằng capsid (p24) sẽ nhanh chóng bị phân rã, cởi vỏ ngay sau khi hòa màng trong tế bào chất để giải phóng RNA và RT thực hiện phiên mã ngược.
+- **Mô hình hiện đại (theo các nghiên cứu y sinh 2025-2026):** Chứng minh capsid không phân rã trong tế bào chất. Ngược lại, nó đóng vai trò bảo vệ quan trọng cho phức hợp phiên mã ngược, đi xuyên qua lỗ màng nhân nguyên vẹn dưới sự định hướng của CPSF6 và chỉ cởi vỏ khi đã tiến sát đích đến nhiễm sắc thể trong nhân. Việc phát hiện ra thuốc **Lenacapavir** hoạt động dựa trên cơ chế ổn định/ức chế capsid này chính là bằng chứng thực tế lâm sàng mạnh mẽ nhất bác bỏ mô hình cũ.
+
+### 2. Tranh luận về cơ chế suy giảm CD4+: Tiêu diệt trực tiếp vs. Pyroptosis do viêm
+
+- **Mô hình truyền thống (Thuyết "Tap and Drain" của Ho et al.):** Đề xuất cơ chế sụt giảm CD4+ chủ yếu do virus trực tiếp tấn công, nhân lên ồ ạt gây tan tế bào (cytopathic effect) vượt quá khả năng bù trừ của tủy xương và tuyến ức.
+- **Mô hình hiện đại:** Các nghiên cứu của Doitsh et al. đã chỉ ra một sự thật hoàn toàn khác:
+    - Quá trình chết tế bào trực tiếp (Apoptosis qua trung gian Caspase-3) chỉ chiếm khoảng **5%** tổng số CD4+ bị mất (chỉ xảy ra ở các tế bào bị nhiễm trùng hiệu quả).
+    - **95%** sự mất mát CD4+ thực tế là do **Pyroptosis (chết tế bào do viêm qua trung gian Caspase-1)**. Đây là hiện tượng xảy ra ở các tế bào T CD4+ "nghỉ" không cho phép virus nhân lên hoàn chỉnh (abortive infection). Sự tích tụ DNA virus dở dang kích hoạt Caspase-1, giải phóng ồ ạt cytokine viêm (IL-1β), tạo ra vòng xoáy viêm mãn tính kéo thêm các tế bào CD4+ khác đến hạch bạch huyết và tiếp tục bị tiêu diệt.
+
+### 3. Sự khác biệt bệnh sinh cốt lõi giữa HIV-1 và HIV-2: Bài học từ các protein phụ trợ
+
+Mặc dù đều dẫn đến hội chứng suy giảm miễn dịch (AIDS) nếu không điều trị, nhưng tốc độ tiến triển của HIV-2 chậm hơn rất nhiều, với tỷ lệ lớn người bệnh là "người kiểm soát ưu tú" (elite controllers). Nghiên cứu bệnh sinh học so sánh chỉ ra hai sự khác biệt phân tử quyết định:
+
+- **Cơ chế hoạt hóa miễn dịch của Nef:** Protein Nef của HIV-2 có khả năng **giảm biểu hiện (downmodulate) phức hợp thụ thể TCR-CD3** trên bề mặt tế bào T, giúp tế bào nhiễm "tránh" bị kích hoạt quá mức bởi kháng nguyên. Ngược lại, Nef của HIV-1 đã mất khả năng này, khiến tế bào T luôn trong trạng thái nhạy cảm cao độ với kích thích, thúc đẩy hyper-activation và chết theo chương trình.
+- **Yếu tố hạn chế SAMHD1 và protein Vpx:** Tế bào dendritic và myeloid bình thường có protein SAMHD1 ngăn chặn sự nhân lên của retrovirus bằng cách thủy phân dNTPs. HIV-1 thiếu protein Vpx nên không thể vượt qua SAMHD1 ở các tế bào này, giúp nó lẩn trốn miễn dịch tốt hơn. Trái lại, HIV-2 sở hữu **protein Vpx**, giúp phân hủy SAMHD1 và cho phép nhiễm dendritic cells thành công. Điều này tưởng chừng có lợi cho HIV-2, nhưng thực tế việc kích hoạt dendritic cells lại giúp cơ thể vật chủ thiết lập một phản ứng miễn dịch thu được đa năng (polyfunctional) vô cùng hiệu quả, kiểm soát tốt tải lượng virus.
+
+---
+
+## V. Tài Liệu Tham Khảo (References)
+
+1. Tarrés-Freixas F, Trinité B, Carrillo J, Blanco J. Under the Radar: Immune Evasion, Pathogenesis and Control of HIV Infection. _Int J Mol Sci_. 2025;26(23):11381. doi:10.3390/ijms262311381.
+2. Vidya Vijayan KK, Karthigeyan KP, Tripathi SP, Hanna LE. Pathophysiology of CD4+ T-Cell Depletion in HIV-1 and HIV-2 Infections. _Front Immunol_. 2017;8:580. doi:10.3389/fimmu.2017.00580.
+3. Swinkels HM, Nguyen AD, Samandari T, Gulick PG. HIV and AIDS. _StatPearls_. Last Update: January 14, 2026. Available at: https://www.ncbi.nlm.nih.gov/books/NBK534860/.
+4. HIV: Structure, Life Cycle, and Pathogenecity. _Tennessee Research and Creative Exchange_. Tennessee; 2000.
+5. Phân tích Chuyên sâu về Tiến trình Y sinh và Chiến lược Kiểm soát HIV/AIDS Toàn cầu: Từ Cơ chế Phân tử đến Những Đột phá trong Điều trị và Dự phòng Giai đoạn 2025-2030. [Tài liệu Markdown nguồn].
+
+---
+
+🧬 Bạn có muốn chúng ta tiếp tục đi sâu vào **Phần 2 của Sinh lý bệnh HIV-AIDS** – tập trung vào động học miễn dịch của các giai đoạn lâm sàng (cấp tính, mãn tính và AIDS) cùng các cơ chế lẩn tránh miễn dịch sâu hơn không? Hoặc tôi có thể giúp bạn phân tích chi tiết hơn về các trường hợp đã được chữa khỏi hoàn toàn bằng cấy ghép tế bào gốc từ đột biến CCR5Δ32.

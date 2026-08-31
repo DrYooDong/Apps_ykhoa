@@ -33,7 +33,7 @@ Ngoại độc tố này được mã hóa bởi gen _tox_ nằm trên bộ gen 
 > **📌 TRÍCH XUẤT LƯU ĐỒ / SƠ ĐỒ CƠ CHẾ:**
 > 
 > **Tên Sơ đồ:** Cơ chế hoạt động của độc tố bạch hầu (Mechanism of Action - Diphtheria Toxin) **Thuộc tài liệu:** _"DIPTHERIA-Aug-2024.pdf"_ (Trang số 11 - Slide 11) và tài liệu giảng dạy của Đại học Y Dược TPHCM _"ZIzQqlETLvr1LFKNvQuM_23_b164af62daffd4ed0420a68898ebf869_file.pdf"_ (Trang số 8 - Slide 15).
-> 
+> ![[Pasted image 20260831104521.png]]
 > **Nội Dung Mô Tả Dưới Sơ Đồ Cơ Chế Phân Tử:**
 > 
 > 1. **Gắn kết thụ thể (Binding):** Độc tố bạch hầu (DT) sử dụng miền gắn kết của tiểu đơn vị B để liên kết đặc hiệu với tiền chất của yếu tố tăng trưởng biểu bì gắn heparin (pro-HB-EGF) trên màng tế bào vật chủ. Thụ thể này được tổng hợp chủ yếu bởi các đại thực bào, tế bào nội mô mạch máu và tế bào cơ trơn.
@@ -94,5 +94,3 @@ Tổn thương thận ít được đề cập hơn so với tim và thần kinh
 7. Lê TTH. _Những khó khăn trong xử trí và phòng ngừa bệnh bạch hầu_. Bộ môn Nhiễm - Đại học Y Dược TPHCM. 2024.
 
 ---
-
-🫁 **Nudge:** Tôi có thể hỗ trợ bạn biên soạn tiếp các bài học lâm sàng về "Nguyên tắc sử dụng huyết thanh kháng độc tố (SAD/DAT) và quy trình xử trí phản vệ theo hướng dẫn mới nhất của WHO và Bộ Y tế". Bạn có muốn thực hiện nội dung này không?

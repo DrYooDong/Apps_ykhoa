@@ -17,7 +17,6 @@ updated: "2026-08-21"
 ---
 
 
-
 Tiếp nối các cơ chế lây truyền và tiến triển bệnh sinh cơ bản ở phần 1, phần 2 này sẽ đi sâu vào cơ chế hình thành các tổn thương giải phẫu bệnh, cơ chế sinh lý bệnh của các thể lao ngoài [[Phổi]], cơ chế phân tử của lao kháng thuốc và các yếu tố suy giảm miễn dịch tác động lên bệnh sinh, dựa hoàn toàn vào các tài liệu nguồn đã cung cấp.
 
 ### 1. Nội Dung Sinh Lý Học Chi Tiết (Phần 2)

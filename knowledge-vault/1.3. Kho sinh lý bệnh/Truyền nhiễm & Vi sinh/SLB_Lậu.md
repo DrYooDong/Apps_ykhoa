@@ -1,21 +1,18 @@
 ---
-title: "Lậu"
-part: "P1"
+title: Lậu
 aliases:
-  - "Lậu"
+  - Lậu
 keywords:
-  - "lậu"
-  - "truyền nhiễm & vi sinh"
-specialty: "Truyền nhiễm & Vi sinh"
-kho: "1.3. Kho sinh lý bệnh"
+  - lậu
+  - truyền nhiễm & vi sinh
+specialty: Truyền nhiễm & Vi sinh
+kho: 1.3. Kho sinh lý bệnh
 tags:
-  - "he-co-quan/truyen-nhiem"
-  - "loai/disease"
-  - "y-khoa/slb"
-updated: "2026-08-21"
+  - he-co-quan/truyen-nhiem
+  - loai/disease
+  - y-khoa/slb
+updated: 2026-08-21
 ---
-
-
 
 [[1. Bệnh truyền nhiễm/2. Bệnh lý lâm sàng/2.6. Nhiễm trùng Lây qua đường tình dục & Mãn tính/Lậu/Lậu.md|← Quay lại Lậu]]
 

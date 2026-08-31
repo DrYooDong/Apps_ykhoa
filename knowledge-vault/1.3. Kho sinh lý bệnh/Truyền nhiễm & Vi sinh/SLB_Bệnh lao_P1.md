@@ -17,7 +17,6 @@ updated: "2026-08-21"
 ---
 
 
-
 ### 1. Nội Dung Sinh Lý Học Chi Tiết: Cơ Chế Bệnh Sinh Của Bệnh Lao
 
 #### 1.1. Tác Nhân Gây Bệnh Và Cơ Chế Lây Truyền

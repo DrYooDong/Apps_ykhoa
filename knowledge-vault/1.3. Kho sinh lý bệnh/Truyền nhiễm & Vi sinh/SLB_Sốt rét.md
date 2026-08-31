@@ -147,5 +147,3 @@ _Mô tả lâm sàng của Sơ đồ:_
 6. Ahmar H, Jayanti N, Jayanti I, Fatmasari BD, Sharief AS. Malaria in Pregnancy: Systematic Review of Maternal and Fetal Outcomes and Effectiveness of Preventive Strategies. _Journal of Current Health Sciences_. 2025;5(3):155-168. doi:10.47679/jchs.2025123.
 
 ---
-
-📝 Bạn có muốn tôi tạo một **bản infographic tóm tắt** hoặc một **bộ flashcards** về các cơ chế sequestration và biến chứng đa cơ quan trong sốt rét ác tính để tiện cho việc ôn tập lâm sàng không?
