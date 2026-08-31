@@ -62,10 +62,10 @@ updated: "2026-08-21"
 - [[CN_Sốt rét_P1.md|CN_Sốt rét_P1]]
 - [[CN_Sởi_P1.md|CN_Sởi_P1]]
 - [[CN_Sởi_P2.md|CN_Sởi_P2]]
-- [[CN_VGSV-B_P1.md|CN_VGSV-B_P1]]
-- [[CN_VGSV-B_P2.md|CN_VGSV-B_P2]]
-- [[CN_VGSV-C_P1.md|CN_VGSV-C_P1]]
-- [[CN_VGSV-C_P2.md|CN_VGSV-C_P2]]
+- [[CN_BYT_VGSV-B_2026_P1|CN_VGSV-B_P1]]
+- [[CN_BYT_VGSV-B_2026_P2|CN_VGSV-B_P2]]
+- [[CN_BYT_VGSV-C_2024_P1|CN_VGSV-C_P1]]
+- [[CN_BYT_VGSV-C_2024_P2|CN_VGSV-C_P2]]
 
 
 ---

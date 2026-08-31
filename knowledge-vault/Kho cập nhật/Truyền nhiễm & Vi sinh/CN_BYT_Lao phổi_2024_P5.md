@@ -1,19 +1,19 @@
 ---
-title: "Hướng dẫn BYT 2024 (P5)"
-part: "P1"
+title: Hướng dẫn BYT 2024 (P5)
+part: P5
 aliases:
-  - "Hướng dẫn BYT 2024 (P5)"
+  - Hướng dẫn BYT 2024 (P5)
 keywords:
-  - "hướng dẫn byt 2024 (p5)"
-  - "hô hấp"
-  - "truyền nhiễm & vi sinh"
-specialty: "Hô hấp"
-kho: "Kho chưa lọc"
+  - hướng dẫn byt 2024 (p5)
+  - hô hấp
+  - truyền nhiễm & vi sinh
+specialty: Hô hấp
+kho: Kho chưa lọc
 tags:
-  - "he-co-quan/ho-hap"
-  - "loai/general"
-  - "y-khoa/raw"
-updated: "2026-08-21"
+  - he-co-quan/ho-hap
+  - loai/general
+  - y-khoa/raw
+updated: 2026-08-21
 ---
 
 

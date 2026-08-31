@@ -172,5 +172,3 @@ _Thuộc tài liệu: "Hướng dẫn chẩn đoán, điều trị viêm gan vi 
 1. Bộ Y tế Việt Nam. _Hướng dẫn chẩn đoán, điều trị viêm gan vi rút B_ (Ban hành kèm theo Quyết định số 1740/QĐ-BYT ngày 16 tháng 06 năm 2026 của Bộ trưởng Bộ Y tế). Hà Nội: Bộ Y tế; 2026.
 
 ---
-
-📊 **Nudge:** Tôi có thể tiếp tục biên soạn **Phần 2** của Hướng dẫn này, tập trung chi tiết vào **Tiêu chuẩn điều trị viêm gan B mạn, Phác đồ lựa chọn thuốc kháng vi rút mới nhất và Hướng dẫn quản lý trên các đối tượng đặc biệt (như phụ nữ mang thai, trẻ em)** để hoàn thành bài học chuyên sâu này cho bạn nhé?

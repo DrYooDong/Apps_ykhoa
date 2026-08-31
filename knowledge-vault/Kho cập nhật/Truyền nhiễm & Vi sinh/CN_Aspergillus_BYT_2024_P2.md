@@ -1,19 +1,19 @@
 ---
-title: "Aspergillus_BYT_2024 (P2)"
-part: "P1"
+title: Aspergillus_BYT_2024 (P2)
+part: P2
 aliases:
-  - "Aspergillus_BYT_2024 (P2)"
+  - Aspergillus_BYT_2024 (P2)
 keywords:
-  - "aspergillus_byt_2024 (p2)"
-  - "hô hấp"
-  - "truyền nhiễm & vi sinh"
-specialty: "Hô hấp"
-kho: "Kho chưa lọc"
+  - aspergillus_byt_2024 (p2)
+  - hô hấp
+  - truyền nhiễm & vi sinh
+specialty: Hô hấp
+kho: Kho chưa lọc
 tags:
-  - "he-co-quan/ho-hap"
-  - "loai/general"
-  - "y-khoa/raw"
-updated: "2026-08-21"
+  - he-co-quan/ho-hap
+  - loai/general
+  - y-khoa/raw
+updated: 2026-08-21
 ---
 
 # BÀI HỌC: ĐIỀU TRỊ NỘI KHOA, PHẪU THUẬT VÀ XỬ TRÍ BIẾN CHỨNG HO RA MÁU BỆNH NẤM ASPERGILLUS PHỔI MẠN TÍNH (PHẦN 2)
