@@ -1222,9 +1222,50 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     keyResults: 'HBAR: Tiệt trừ Bước 1 VPZ vs PPI: OR 0.28 (p<0.00001) | Bước 2 PAM vs PAC: OR 0.14 (p<0.00001) | Giảm XHTH DAPT + PPI: RR 0.26 (p=0.0002) | Liền sẹo NSAID PPI vs H2RA: OR 0.48 (p<0.00001) | Dự phòng thứ phát NSAID: OR 0.14 (p<0.00001) | COX-2 giảm loét DD: RR 0.21 | Ngừa chảy máu LDA PPI vs H2RA: RR 0.28 (p<0.0001)',
     summary: 'Hướng dẫn thực hành y học chứng cứ (GRADE) toàn diện của Hiệp hội Tiêu hóa Nhật Bản (JSGE) với 28 Câu hỏi lâm sàng (CQ-1 đến CQ-28): Duy trì aspirin ở bệnh nhân nguy cơ huyết khối cao khi xuất huyết, phác đồ tiệt trừ H. pylori bước 1 vượt trội chứa Vonoprazan (P-CAB), phân tầng dự phòng loét và biến chứng chảy máu do NSAIDs / Aspirin liều thấp (LDA), cùng xử trí loét vô căn và loét mỏm cắt dạ dày.',
     detailedConclusion: 'Tiếp tục duy trì Aspirin khi xuất huyết nếu nguy cơ tắc mạch cao; dùng PPI liều chuẩn sau cầm máu nội soi; ưu tiên phác đồ 3 thuốc chứa Vonoprazan (VPZ 20mg x 2 + Amox + Clari/Metro) bước 1; phác đồ cứu vãn bước 2 PAM; phối hợp Celecoxib + PPI ở bệnh nhân tiền sử loét/chảy máu dùng NSAID/LDA; duy trì PPI kéo dài cho loét vô căn và khởi trị ngay bằng PPI cho loét mỏm cắt.'
+  },
+  {
+    id: '2026-apasl-viem-gan-b',
+    title: 'APASL 2026: Hướng Dẫn Thực Hành Lâm Sàng Quản Lý Viêm Gan B Mạn (CHB)',
+    titleEn: 'APASL clinical practice guidelines on the management of chronic hepatitis B infection: a 2026 update',
+    sourceType: 'intl-guideline',
+    specialty: 'gi',
+    design: 'guideline',
+    impact: 'practice-changing',
+    year: 2026,
+    organization: 'Hiệp hội Nghiên cứu Gan Châu Á – Thái Bình Dương (APASL)',
+    journal: 'Hepatol Int',
+    file: '2026-apasl-viem-gan-b.html',
+    conditionKey: 'hepatitis-b',
+    icd10: ['B18.0', 'B18.1', 'B19.1', 'K74.6', 'C22.0'],
+    intervention: 'Chiến lược Treat-all (HBV DNA phát hiện + ALT ≥ 40), NITs đầu tay (FIB-4, APRI, VCTE), NAs mạnh (TAF, TDF, ETV), Peg-IFN add-on hướng tới Functional Cure (HBsAg loss ≥ 6 tháng), Dự phòng MTCT từ tuần 28-32, Bộ 3 tầm soát HCC (Siêu âm + AFP + PIVKA-II) theo mPAGE-B ≥ 9',
+    primaryEndpoint: 'Ức chế virus bền vững, bình thường hóa ALT, đạt khỏi bệnh chức năng (Functional Cure), ngăn ngừa xơ gan mất bù, HCC và tử vong liên quan gan',
+    keyResults: 'HBAR: Ức chế DNA 10 năm TDF: 100% | Ức chế DNA 8 năm TAF: 95% | Đảo ngược xơ gan Ishak≥5 TDF: 74% | Peg-IFN add-on HBsAg loss: RR 4.52 | Chuyển đổi Peg-IFN HBsAg loss: RR 12.15 | Giảm tử vong TDF: aHR 0.06 | Giảm HCC TAF: HR 0.27',
+    summary: 'Tóm tắt toàn diện hướng dẫn thực hành lâm sàng APASL 2026 về quản lý viêm gan B mạn tính (CHB): dịch tễ học GBD 2021 & Polaris 2024, quan điểm sinh bệnh học mới, chiến lược mở rộng Treat-all, phác đồ NAs/Peg-IFN, quản lý cơ địa đặc biệt, 11 thang điểm dự báo HCC và bảng đối đầu hiệu quả điều trị.',
+    detailedConclusion: 'Khởi trị kháng virus ngay cho mọi bệnh nhân có HBV DNA phát hiện được và ALT ≥ 40 IU/L hoặc có xơ hóa; ưu tiên TAF/ETV cho người cao tuổi hoặc bệnh thận/xương; tầm soát HCC mỗi 6 tháng bằng bộ 3 Siêu âm + AFP + PIVKA-II khi mPAGE-B ≥ 9.'
+  },
+  {
+    id: '2025-who-arboviral-diseases',
+    title: 'WHO 2025: Hướng Dẫn Quản Lý Lâm Sàng Các Bệnh Do Arbovirus (Dengue, Chikungunya, Zika, Sốt Vàng)',
+    titleEn: 'WHO guidelines for clinical management of arboviral diseases: dengue, chikungunya, Zika and yellow fever (2025)',
+    sourceType: 'intl-guideline',
+    specialty: 'infect',
+    design: 'guideline',
+    impact: 'practice-changing',
+    year: 2025,
+    organization: 'Tổ chức Y tế Thế giới (WHO)',
+    journal: 'WHO Guidelines Approved by the Guidelines Review Committee',
+    file: '2025-who-arboviral-diseases.html',
+    conditionKey: 'dengue-fever',
+    icd10: ['A90', 'A91', 'A92.0', 'A92.5', 'A95'],
+    intervention: 'Bù dịch đường uống theo phác đồ (Protocolized ORS), Ưu tiên dịch tinh thể đẳng trương (Crystalloids), Hướng dẫn dịch truyền bằng CRT (ép 10s, ngưỡng > 3s) và Lactate máu, Nghiệm pháp nâng chân thụ động (PLR), Phác đồ NAC tĩnh mạch cho suy gan Sốt vàng, Cấm tuyệt đối NSAIDs trong pha cấp',
+    primaryEndpoint: 'Giảm tỷ lệ tử vong do sốc Dengue/Arbovirus, giảm nhu cầu nhập viện không cần thiết, ngăn ngừa xuất huyết nặng và suy đa tạng',
+    keyResults: 'HBAR: Giảm nhập viện ORS phác đồ: RR 0.55 | Biến cố nặng Dịch cao phân tử: RR 7.75 (+27/1000) | Giảm tử vong Lactate-guided: RR 0.65 | Giảm RRT CRT-guided: RR 0.71 | Giảm thở máy PLR: RR 0.52 | Tăng XHTH do Corticoid: RR 1.43',
+    summary: 'Hướng dẫn thực hành lâm sàng toàn diện của WHO 2025 dựa trên phương pháp luận GRADE nghiêm ngặt: Chẩn đoán phân biệt 4 loại Arbovirus, động học 3 pha của Dengue, phác đồ bù dịch đường uống ngoại trú, hồi sức dịch truyền tĩnh mạch theo CRT/Lactate/PLR, đánh giá vai trò của Corticoid, IVIG, truyền tiểu cầu dự phòng và phác đồ NAC tĩnh mạch trong Sốt vàng.',
+    detailedConclusion: 'Áp dụng bù dịch đường uống có ghi chép thể tích cho bệnh nhân ngoại trú; chỉ truyền dịch tinh thể (Ringer\'s Lactate) thay vì cao phân tử; theo dõi sát CRT (> 3s là bất thường) và Lactate máu; tuyệt đối cấm dùng NSAIDs/Aspirin trong giai đoạn cấp; không truyền tiểu cầu dự phòng khi < 50.000/µL nếu không có xuất huyết hoạt động; dùng NAC tĩnh mạch cho suy gan cấp do Sốt vàng.'
   }
 ];
 
 if (typeof window !== 'undefined') {
   (window as any).KHO_GUIDELINES_STATIC = KHO_GUIDELINES_STATIC;
 }
+

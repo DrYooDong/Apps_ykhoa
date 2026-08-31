@@ -1,0 +1,166 @@
+---
+title: 2.4. SLB_Hạ ĐH
+aliases:
+  - 2.4. SLB_Hạ ĐH
+keywords:
+  - 2.4. slb_hạ đh
+  - nội tiết - chuyển hóa
+specialty: Nội tiết - Chuyển hóa
+kho: Kho chưa lọc
+tags:
+  - he-co-quan/noi-tiet
+  - loai/general
+  - y-khoa/raw
+updated: 2026-08-21
+---
+
+# BÀI HỌC: SINH LÝ BỆNH TRONG BIẾN CHỨNG HẠ ĐƯỜNG HUYẾT TRONG ĐÁI THÁO ĐƯỜNG
+
+---
+
+## I. ĐỊNH NGHĨA VÀ PHÂN LOẠI HẠ ĐƯỜNG HUYẾT THEO CÁC MỨC ĐỘ LÂM SÀNG
+
+Hạ đường huyết là yếu tố giới hạn lớn nhất trong việc kiểm soát glucose máu ở người bệnh đái tháo đường. Để chuẩn hóa trong chẩn đoán và điều trị, Hiệp hội Đái tháo đường Hoa Kỳ (ADA) phân loại hạ đường huyết thành 3 mức độ lâm sàng rõ rệt dựa trên nồng độ glucose máu và biểu hiện triệu chứng:
+
+- **Hạ đường huyết độ 1 (Level 1):** Được định nghĩa khi nồng độ glucose máu đo được dưới **70 mg/dL (3.9 mmol/L)** và lớn hơn hoặc bằng **54 mg/dL (3.0 mmol/L)**. Ngưỡng 70 mg/dL được công nhận là mức khởi phát các phản ứng adrenergic đối kháng sinh lý ở người bình thường.
+- **Hạ đường huyết độ 2 (Level 2):** Được định nghĩa khi nồng độ glucose máu dưới **54 mg/dL (3.0 mmol/L)**. Đây là ngưỡng lâm sàng quan trọng mà tại đó các triệu chứng thiếu đường não (neuroglycopenic symptoms) bắt đầu xuất hiện, đòi hỏi phải can thiệp điều trị ngay lập tức bằng carbohydrate tác dụng nhanh để tránh diễn tiến nặng.
+- **Hạ đường huyết độ 3 (Level 3):** Là biến cố hạ đường huyết mức độ nghiêm trọng, đặc trưng bởi tình trạng suy giảm hoặc thay đổi chức năng tâm thần và/hoặc thể chất đến mức người bệnh mất khả năng tự xử trí và bắt buộc phải có sự trợ giúp của người khác để phục hồi, **bất kể nồng độ glucose máu đo được lúc đó là bao nhiêu**.
+
+---
+
+### BẢNG THÔNG TIN PHÂN LOẠI HẠ ĐƯỜNG HUYẾT
+
+Dưới đây là bảng phân loại chi tiết các mức độ hạ đường huyết được trích xuất trực tiếp từ các hướng dẫn cập nhật:
+
+#### **Bảng 6.4 — Phân loại hạ đường huyết (Classification of hypoglycemia)**
+
+_Thuộc tài liệu:_ **standards-of-care-2026.pdf** (hoặc chương mục tương ứng trong **dc26s006.pdf**).
+
+|Mức độ hạ đường huyết|Tiêu chí nồng độ glucose máu và mô tả lâm sàng|
+|:--|:--|
+|**Level 1** _(Hạ đường huyết độ 1)_|Glucose \(<70\text{ mg/dL } (<3.9\text{ mmol/L})\) và \(\ge54\text{ mg/dL } (\ge3.0\text{ mmol/L})\).|
+|**Level 2** _(Hạ đường huyết độ 2)_|Glucose \(<54\text{ mg/dL } (<3.0\text{ mmol/L})\).|
+|**Level 3** _(Hạ đường huyết độ 3)_|Một biến cố nghiêm trọng đặc trưng bởi tình trạng thay đổi trạng thái tâm thần và/hoặc thể chất cần sự hỗ trợ của người khác để điều trị hạ đường huyết, không phụ thuộc vào nồng độ glucose máu đo được.|
+
+---
+
+## II. PHẢN ỨNG SINH LÝ ĐỐI KHÁNG BÌNH THƯỜNG KHI ĐƯỜNG HUYẾT GIẢM
+
+Trong trạng thái sinh lý bình thường, cơ thể duy trì glucose máu ổn định nhờ sự cân bằng động giữa insulin và các hormone đối kháng. Khi nồng độ glucose máu bắt đầu giảm xuống dưới mức bình thường, một chuỗi phản ứng nội tiết đối kháng lập tức được kích hoạt nhằm ngăn chặn tình trạng tụt đường huyết sâu và bảo vệ não bộ:
+
+1. **Ức chế bài tiết insulin:** Phản ứng đầu tiên xảy ra khi glucose máu giảm nhẹ là sự giảm và ngừng bài tiết insulin từ tế bào beta của đảo tụy, nhằm hạn chế sự vận chuyển glucose vào các mô ngoại vi.
+2. **Huy động Glucagon:** Khi glucose máu tiếp tục giảm, tế bào alpha của đảo tụy tăng tiết **glucagon**. Glucagon là hormone đối kháng hàng đầu, tác động trực tiếp lên gan để kích hoạt quá trình phân hủy glycogen (glycogenolysis) và tân tạo glucose (gluconeogenesis), nhanh chóng giải phóng glucose vào máu.
+3. **Kích hoạt Catecholamines (Epinephrine và Norepinephrine):** Nếu glucagon không đủ để khôi phục đường huyết, hệ thần kinh giao cảm và tủy thượng thận sẽ giải phóng **epinephrine** và **norepinephrine**. Epinephrine hoạt động như một hormone đối kháng mạnh mẽ thứ hai, kích thích gan sản xuất glucose, đồng thời ức chế sử dụng glucose ở các mô cơ và mỡ. Sự gia tăng catecholamines trong máu gây ra các triệu chứng cường giao cảm (adrenergic) biểu hiện ra bên ngoài bao gồm: run rẩy, vã mồ hôi, tim đập nhanh, lo âu, và cảm giác đói dữ dội. Đây chính là "hệ thống báo động" sinh lý thúc giục người bệnh tìm kiếm thức ăn chứa carbohydrate.
+4. **Huy động Cortisol và Growth Hormone (Hormone tăng trưởng):** Hai hormone này được tiết ra muộn hơn và tham gia vào việc duy trì đường huyết trong các đợt hạ đường huyết kéo dài. Chúng kích thích quá trình phân hủy lipid (lipolysis) tại các mô mỡ để giải phóng axit béo tự do (FFA) và glycerol, tăng phân hủy protein (proteolysis) tại các cơ để cung cấp axit amin làm cơ chất cho gan tân tạo đường. Đồng thời, chúng gây ra tình trạng đề kháng insulin tạm thời ở các mô ngoại vi để hạn chế tiêu thụ glucose dư thừa.
+
+---
+
+### SƠ ĐỒ ĐỐI CHIẾU TRỰC QUAN VỀ PHẢN ỨNG CỦA CÁC HORMONE ĐỐI KHÁNG TRONG RỐI LOẠN CHUYỂN HÓA
+
+Để hình dung rõ nét vai trò điều hòa của các hormone đối kháng này khi có sự mất cân bằng nội tiết (như sự thiếu hụt insulin tuyệt đối hoặc tương đối kết hợp sự tăng vọt của các hormone đối kháng), người học có thể đối chiếu trực quan với sơ đồ chuyển hóa dưới đây:
+
+#### **Figure 1 — Pathogenesis of DKA and HHS (Cơ chế bệnh sinh của DKA và HHS)**
+
+_Thuộc tài liệu:_ **Diabetes-Care-2024.pdf** (hoặc sơ đồ tương tự trong **Ch11PediatricDiabetes.pdf**).
+
+--Image of: --Pathogenesis of DKA and HHS _(Hình ảnh mô phỏng sơ đồ gốc từ tài liệu)_
+
+_Nội dung mô tả dưới sơ đồ:_ Sơ đồ cơ chế bệnh sinh minh họa sự phối hợp giữa tình trạng thiếu hụt insulin (tuyệt đối hoặc tương đối) và sự gia tăng của các hormone đối kháng (Glucagon, Cortisol, Epinephrine, Growth Hormone). Sự mất cân bằng tỷ lệ insulin/glucagon và sự hoạt hóa catecholamines/cortisol kích thích mạnh mẽ quá trình phân hủy glycogen (glycogenolysis) và tân tạo đường (gluconeogenesis) tại gan, đồng thời ức chế sử dụng glucose ở mô ngoại vi, gây tăng glucose máu nặng nề. Ở nhánh lipolysis, sự tăng vọt hormone đối kháng giải phóng axit béo tự do (FFA) đưa về gan để oxy hóa thành các thể ceton, gây ra toan chuyển hóa.
+
+---
+
+## III. CƠ CHẾ BỆNH SINH CỦA HỘI CHỨNG SUY GIẢM NHẬN BIẾT HẠ ĐƯỜNG HUYẾT (HAAF)
+
+Ở người bệnh đái tháo đường tiến triển lâu năm hoặc được điều trị bằng các liệu pháp insulin tích cực, cơ chế bảo vệ đối kháng tự nhiên nêu trên bị suy giảm hoặc phá hủy hoàn toàn do hai hiện tượng bệnh lý chính:
+
+### 1. Sự mất phản ứng của Glucagon
+
+Vì những lý do chưa được làm sáng tỏ hoàn toàn, tế bào alpha tụy mất khả năng tăng tiết glucagon một cách chọn lọc khi có hạ đường huyết, mặc dù phản ứng tiết glucagon khi kích thích bằng các axit amin khác vẫn nguyên vẹn. Điều này làm mất đi rào cản phòng ngự đầu tiên và quan trọng nhất của cơ thể.
+
+### 2. Hội chứng Suy giảm nhận biết hạ đường huyết (Impaired Hypoglycemia Awareness) hay Suy giao cảm liên quan đến hạ đường huyết (Hypoglycemia-Associated Autonomic Failure - HAAF)
+
+- **Cơ chế hình thành:** Khi người bệnh trải qua các đợt hạ đường huyết lặp đi lặp lại (recurrent hypoglycemia), hệ thần kinh trung ương (đặc biệt là vùng dưới đồi) sẽ thích ứng với tình trạng thiếu hụt glucose liên tục. Sự thích ứng này làm **dịch chuyển ngưỡng kích hoạt** của hệ thần kinh tự chủ xuống mức glucose thấp hơn nữa. Do đó, ở những đợt tụt đường huyết tiếp theo, cơ thể sẽ không kích hoạt phản ứng giao cảm giao cảm và không giải phóng epinephrine ở ngưỡng thông thường.
+- **Mất dấu hiệu cảnh báo:** Do phản ứng thần kinh giao cảm bị suy giảm sâu sắc, người bệnh không còn xuất hiện các triệu chứng adrenergic cảnh báo sớm như run tay, vã mồ hôi, hồi hộp trống ngực hay đói bụng khi glucose máu giảm dưới 70 mg/dL.
+- **Hậu quả lâm sàng nghiêm trọng:** Triệu chứng đầu tiên xuất hiện ở những người bệnh này thường là các triệu chứng thiếu đường não (neuroglycopenic) khi glucose máu đã giảm sâu xuống dưới mức **54 mg/dL (3.0 mmol/L)**. Người bệnh đột ngột rơi vào trạng thái lơ mơ, lú lẫn, hành vi bất thường, mất ý thức hoặc co giật (Hạ đường huyết mức độ 3) mà không hề có bất kỳ dấu hiệu báo động nào trước đó. Điều này làm tăng nguy cơ tử vong hoặc tổn thương não vĩnh viễn lên gấp nhiều lần.
+
+---
+
+### MỐI TƯƠNG QUAN GIỮA SUY GIẢM THẦN KINH TỰ CHỦ VÀ BIẾN CHỨNG ĐÁI THÁO ĐƯỜNG
+
+Tình trạng suy giảm nhận biết hạ đường huyết có mối liên hệ mật thiết và thường đi kèm với bệnh lý thần kinh tự chủ đái tháo đường. Để đối chiếu về cơ chế tổn thương các sợi thần kinh (bao gồm sợi tự chủ C không có myelin), ta xem xét sơ đồ cơ chế bệnh sinh sau:
+
+#### **Hình 1. Cơ chế bệnh sinh biến chứng thần kinh ĐTĐ**
+
+_Thuộc tài liệu:_ **ĐTĐ & bệnh thận _ BYT _ 2025.pdf** (hoặc tài liệu **3510_QD-BYT_680781.doc.pdf**).
+
+--Image of: --Cơ chế bệnh sinh biến chứng thần kinh ĐTĐ _(Hình ảnh sơ đồ gốc từ Bộ Y tế Việt Nam)_
+
+_Nội dung mô tả dưới sơ đồ:_ Sơ đồ thể hiện tình trạng tăng glucose máu mạn tính dẫn đến tích trữ quá mức glucose trong tế bào thần kinh, gây "ngộ độc glucose". Glucose dư thừa hoạt hóa các con đường chuyển hóa bất thường bao gồm: con đường polyol, con đường hexosamine, con đường protein kinase C (PKC) và hình thành các sản phẩm glycation bền vững (AGE). Các bất thường này làm tăng sinh mạnh mẽ các gốc oxy hóa tự do (ROS), gây stress oxy hóa ty thể, tổn thương ADN, viêm và tổn thương các mao mạch nuôi dưỡng dây thần kinh, cuối cùng dẫn đến thoái hóa các sợi thần kinh cảm giác và thần kinh tự chủ.
+
+#### **Hình 3. Các dấu hiệu và triệu chứng tương ứng với sợi thần kinh bị ảnh hưởng**
+
+_Thuộc tài liệu:_ **ĐTĐ & bệnh thận _ BYT _ 2025.pdf** (hoặc tài liệu **3510_QD-BYT_680781.doc.pdf**).
+
+--Image of: --Sợi thần kinh bị ảnh hưởng _(Hình ảnh phân loại sợi thần kinh gốc từ Bộ Y tế Việt Nam)_
+
+_Nội dung mô tả dưới sơ đồ:_ Lưu đồ mô tả việc phân loại các sợi thần kinh bị tổn thương do đái tháo đường. Trong đó, sợi thần kinh tự chủ là loại sợi **không có bao myelin (sợi C)** chịu trách nhiệm điều hòa nhịp tim, huyết áp, đổ mồ hôi và chức năng tiêu hóa. Sự tổn thương sợi C tự chủ này trực tiếp gây ra các biến chứng thần kinh tự chủ nghiêm trọng bao gồm bệnh thần kinh tự chủ tim mạch (CAN), liệt dạ dày, và góp phần làm mất khả năng nhận biết hạ đường huyết giao cảm ở người bệnh.
+
+---
+
+## IV. CÁC YẾU TỐ NGUY CƠ SINH HỌC VÀ LÂM SÀNG THÚC ĐẨY BIẾN CHỨNG HẠ ĐƯỜNG HUYẾT
+
+Hạ đường huyết không chỉ đơn thuần xảy ra do sai sót dùng thuốc, mà là sự tương tác phức tạp giữa các yếu tố sinh lý bệnh nền tảng của từng người bệnh.
+
+---
+
+### BẢNG ĐÁNH GIÁ NGUY CƠ HẠ ĐƯỜNG HUYẾT TOÀN DIỆN
+
+Dưới đây là bảng phân loại các yếu tố nguy cơ được khuyến cáo sàng lọc định kỳ trên lâm sàng để phân tầng nguy cơ hạ đường huyết ở người bệnh:
+
+#### **Bảng 6.5 — Đánh giá nguy cơ hạ đường huyết ở người bệnh điều trị bằng insulin, sulfonylureas, hoặc meglitinides**
+
+_Thuộc tài liệu:_ **standards-of-care-2026.pdf** (hoặc tài liệu **dc26s006.pdf**).
+
+|Nhóm yếu tố nguy cơ|Các yếu tố nguy cơ chính (Major risk factors)|Các yếu tố nguy cơ khác (Other risk factors)|
+|:--|:--|:--|
+|**Yếu tố Lâm sàng & Sinh học** _(Clinical & Biological)_|• Có đợt hạ đường huyết Level 2 hoặc 3 gần đây (trong vòng 3-6 tháng qua)• Liệu pháp điều trị bằng insulin tích cực• Suy giảm nhận biết hạ đường huyết (HAAF)• Suy thận / Bệnh thận giai đoạn cuối• Suy giảm nhận thức hoặc sa sút trí tuệ• Tiền sử phẫu thuật dạ dày/chuyển hóa|• Nhiều đợt hạ đường huyết Level 1 gần đây• Liệu pháp insulin nền đơn thuần• Tuổi cao (\(\ge75\) tuổi)• Giới tính nữ• Dao động đường huyết cao (Glycemic variability)• Đa dược trị liệu (Polypharmacy)• Bệnh tim mạch (CVD)• Bệnh thận mạn tính (\(eGFR < 60\text{ mL/min/1.73 m}^2\) hoặc có albumin niệu)• Bệnh lý đa dây thần kinh ngoại biên• Bệnh võng mạc đái tháo đường• Rối loạn trầm cảm chủ yếu / Bệnh tâm thần nặng• Biến chứng liệt dạ dày (Gastroparesis)• Đang điều trị bằng thuốc chẹn beta (\(\beta\text{-Blocker}\))|
+|**Yếu tố Xã hội, Văn hóa & Kinh tế** _(Social, Cultural & Economic)_|• Không đảm bảo an ninh lương thực (Food insecurity)• Thu nhập thấp• Nhà ở không ổn định• Nhịn ăn vì lý do tôn giáo/văn hóa (ví dụ: tháng lễ Ramadan)• Không có hoặc thiếu bảo hiểm y tế|• Trình độ hiểu biết về sức khỏe thấp (Low health literacy)• Rối loạn sử dụng rượu hoặc chất kích thích|
+
+---
+
+### PHÂN TÍCH CƠ CHẾ SINH LÝ BỆNH CỦA CÁC YẾU TỐ NGUY CƠ ĐẶC THÙ
+
+#### 1. Cơ chế do suy giảm chức năng thận (Kidney failure)
+
+Thận đóng vai trò sinh lý thiết yếu trong việc thanh thải khoảng 30% đến 40% lượng insulin nội sinh và lên đến 60% lượng insulin ngoại sinh trong tuần hoàn. Khi người bệnh bị suy thận hoặc bệnh thận mạn tiến triển (eGFR < 60 mL/min/1.73 m²), **độ thanh thải insulin giảm rõ rệt** (decreased insulin clearance), dẫn đến việc insulin tích lũy và kéo dài thời gian hoạt tính sinh học trong máu. Thêm vào đó, sự suy giảm chức năng vỏ thận làm mất đi khả năng tân tạo glucose nội sinh tại thận, làm mất đi hàng rào bù đắp đường huyết khi đói.
+
+#### 2. Cơ chế thích ứng và lão hóa ở người cao tuổi (Age \(\ge75\) years)
+
+Người cao tuổi bị suy giảm tự nhiên khả năng nhận cảm và điều hòa nội tiết đối kháng. Quá trình tiết glucagon và epinephrine đáp ứng với sự sụt giảm glucose bị **trì hoãn và suy giảm về biên độ** (slowed hormonal regulation and counter-regulation). Bên cạnh đó, tình trạng sa sút trí tuệ hoặc suy giảm nhận thức (cognitive impairment) làm mất khả năng nhận biết, phân tích triệu chứng hạ đường huyết và làm giảm khả năng tự ăn uống hoặc truyền đạt nhu cầu hỗ trợ khi cần thiết.
+
+#### 3. Cơ chế hạ đường huyết phản phản vệ sau phẫu thuật chuyển hóa (Post-metabolic surgery hypoglycemia)
+
+Hạ đường huyết sau phẫu thuật chuyển hóa (như phẫu thuật nối tắt dạ dày kiểu Roux-en-Y) thường xuất hiện muộn (> 1 năm sau phẫu thuật).
+
+- **Cơ chế:** Việc cắt ngắn hoặc nối tắt dạ dày khiến thức ăn chứa nhiều carbohydrate di chuyển cực nhanh xuống ruột non, dẫn đến việc hấp thu glucose vào máu diễn ra ồ ạt.
+- **Tác động nội tiết:** Sự tăng vọt đột ngột của glucose máu kích thích các tế bào nội tiết đường ruột giải phóng một lượng lớn **GLP-1 (Glucagon-like peptide-1)** và các peptide tiêu hóa khác. GLP-1 hoạt động như một chất kích thích cực mạnh lên tế bào beta tụy, gây ra hiện tượng **tăng tiết insulin nội sinh quá mức sau ăn** (excessive postprandial insulin secretion). Sự bài tiết insulin quá mức này gây ra sự sụt giảm đường huyết đột ngột (thường xuất hiện từ 1 đến 3 giờ sau bữa ăn giàu carbohydrate), đẩy người bệnh vào cơn hạ đường huyết sâu.
+
+#### 4. Cơ chế liệt dạ dày do đái tháo đường (Gastroparesis)
+
+Sự tổn thương hệ thần kinh tự chủ phế vị làm giảm nhu động dạ dày, kéo dài thời gian làm rỗng dạ dày đối với thức ăn đặc. Khi người bệnh tiêm insulin prandial (insulin bữa ăn) theo liều lượng thông thường nhưng thức ăn bị giữ lại ở dạ dày không xuống được ruột để hấp thu, sẽ xảy ra sự **mất đồng bộ nghiêm trọng** (mismatch) giữa đỉnh tác dụng của insulin ngoại sinh và thời điểm glucose từ thức ăn vào máu, dẫn đến các cơn hạ đường huyết nghiêm trọng xảy ra sớm sau bữa ăn.
+
+---
+
+## V. TÀI LIỆU THAM KHẢO CHUẨN AMA
+
+1. American Diabetes Association Professional Practice Committee. 6. Glycemic Goals, Hypoglycemia, and Hyperglycemic Crises: Standards of Care in Diabetes—2026. _Diabetes Care_. 2026;49(Suppl 1):S132-S151. doi:10.2337/dc26-S006.
+2. American Diabetes Association Professional Practice Committee. 14. Children and Adolescents: Standards of Care in Diabetes—2026. _Diabetes Care_. 2026;49(Suppl 1):S297-S320. doi:10.2337/dc26-S014.
+3. Bộ Y tế Việt Nam. _Hướng dẫn chẩn đoán và điều trị bệnh đa dây thần kinh và thần kinh tự chủ đái tháo đường_. Hà Nội: Bộ Y tế; 2025. _(Trích xuất từ tài liệu "ĐTĐ & bệnh thận _ BYT _ 2025.pdf" và "3510_QD-BYT_680781.doc.pdf" trong Notebook)._
+4. Glaser N, Fritsch M, Priyambada L, et al. ISPAD Clinical Practice Consensus Guidelines 2022: Diabetic ketoacidosis and hyperglycemic hyperosmolar state. _Pediatric Diabetes_. 2022;23(7):835-856. doi:10.1111/pedi.13406.
+5. Umpierrez GE, Davis GM, ElSayed NA, et al. Hyperglycemic crises in adults with diabetes: a consensus report. _Diabetes Care_. 2024;47(8):1257-1275. doi:10.2337/dci24-0032.
+
+---
+
+### NEXT STEP NUDGE
+
+📊 Tôi có thể hỗ trợ biên soạn thêm một bảng hướng dẫn thực hành lâm sàng chi tiết về quy trình xử trí hạ đường huyết theo "quy tắc 15" hoặc thiết lập kế hoạch điều chỉnh liều insulin để ngăn ngừa biến chứng này dựa trên các tài liệu nguồn của bạn. Bạn có muốn thực hiện điều đó không?

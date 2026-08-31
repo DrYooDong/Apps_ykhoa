@@ -182,4 +182,30 @@ Dùng khi tiếp nhận bất kỳ yêu cầu thiết kế giao diện, bento la
   - Cập nhật `docs/FILE_MAP.md`.
   - Chuyển thẻ sang `Merged` trong `DESIGN_SQUAD_KANBAN.md`.
 
+---
+
+## 📚 Checklist H: Soạn Thảo & Cập Nhật Tóm Tắt Guideline EBM (Astro MDX Native)
+
+Dùng khi tạo mới hoặc cập nhật bài tóm tắt khuyến cáo lâm sàng trong `src/content/ebm/guidelines/kho-guidelines/<slug>.mdx` từ 1 hoặc nhiều file Markdown nguồn (`.md`).
+
+- [ ] **1. Rà soát File Nguồn & Xác Định Ảnh Đính Kèm**:
+  - Đọc toàn bộ các file nguồn (`_P1.md`, `_P2.md`, `_P3.md`...).
+  - Kiểm tra các liên kết ảnh `![[Pasted image ...]]` hoặc `![alt](...)`.
+- [ ] **2. Chạy Script Tiền Xử Lý & Trích Xuất Ảnh Tự Động**:
+  ```bash
+  node .agents/skills/guideline-summary-module/scripts/synthesize_guideline_mdx.js --slug=<slug> --files="<path_to_md_files>"
+  ```
+  - Đảm bảo ảnh được copy sang `src/content/ebm/guidelines/kho-guidelines/images/<slug>-fig<X>.<ext>`.
+  - Kiểm tra làm sạch ký tự `$` math LaTeX.
+- [ ] **3. Soạn Thảo & Nâng Cấp UI Flagship Dashboard**:
+  - YAML Frontmatter đầy đủ: `title`, `slug`, `code`, `organization`, `year`, `category: "guidelines"`, `status: "published"`, `cor`, `loe`, `tags`, `keyRecommendations`, `sections`.
+  - Tổ chức giao diện trực quan: `.stats-strip`, `.pillars`, `.quickmenu`, `.sec-card`, `.updates-grid`, `.fig-card`, `.table-wrapper`, `.regimen-table`, `.infobox (info, warning, danger, success)`.
+  - Bảo tồn 100% dữ liệu số liệu (HR, OR, RR, %, p-value, bảng phân tầng nguy cơ Table 1-5).
+  - Trích dẫn tài liệu tham khảo AMA chuẩn xác trong `.citation-box`.
+- [ ] **4. Ghi File MDX An Toàn**:
+  - Với file lớn (> 30KB), dùng Python/Node script ghi file UTF-8 trực tiếp để tránh lỗi command-line length.
+- [ ] **5. Kiểm Thử Thẻ & Đồng Bộ Registry**:
+  - Chạy `node tools/scratch/check_tags.js src/content/ebm/guidelines/kho-guidelines/<slug>.mdx` → Đảm bảo 0 lỗi.
+  - Cập nhật bản ghi trong `src/content/ebm/guidelines/guidelinesdata.js`.
+
 

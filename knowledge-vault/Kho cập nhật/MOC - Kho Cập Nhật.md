@@ -32,9 +32,9 @@ updated: "2026-08-21"
 
 - [[CN_Cường giáp_P1.md|CN_Cường giáp_P1]]
 - [[CN_Cường giáp_P2.md|CN_Cường giáp_P2]]
-- [[CN_Đái tháo đường_P1.md|CN_Đái tháo đường_P1]]
-- [[CN_Đái tháo đường_P2.md|CN_Đái tháo đường_P2]]
-- [[CN_Đái tháo đường_P3.md|CN_Đái tháo đường_P3]]
+- [[CN_BYT_Đái tháo đường_P1|CN_Đái tháo đường_P1]]
+- [[CN_BYT_Đái tháo đường_P2|CN_Đái tháo đường_P2]]
+- [[CN_BYT_Đái tháo đường_P3|CN_Đái tháo đường_P3]]
 
 ## 🩺 Sản phụ khoa (2 bài)
 
