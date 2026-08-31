@@ -383,3 +383,234 @@ td.cell-bold {
 [data-theme="dark"] .study-pyramid .l4 { color: #fbbf24; }
 [data-theme="dark"] .study-pyramid .l5 { color: #f87171; }
 [data-theme="dark"] .study-pyramid .l6 { color: #94a3b8; }
+
+/* --- 6. KDIGO 2D CLINICAL RISK & MONITORING HEATMAP MATRIX --- */
+.kdigo-heatmap-table {
+  width: 100%;
+  border-collapse: separate !important;
+  border-spacing: 5px !important;
+  min-width: 600px;
+  margin: var(--space-4, 1rem) 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.kdigo-heatmap-table thead th {
+  padding: 0.75rem 0.6rem;
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-align: center;
+  border-radius: var(--radius-xs, 8px);
+  background: var(--color-surface-2, #f8fafc);
+  color: var(--color-text, #0f172a);
+  border: 1px solid var(--color-border, #e2e8f0);
+  vertical-align: middle;
+}
+
+.kdigo-heatmap-table thead th .sub-txt,
+.kdigo-heatmap-table tbody th .sub-txt {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 500;
+  opacity: 0.8;
+  margin-top: 2px;
+  text-transform: none;
+}
+
+.kdigo-heatmap-table th.kdigo-gfr-main-hdr {
+  text-align: center;
+  background: var(--color-surface-2, #f8fafc);
+  color: var(--color-text, #0f172a);
+  font-weight: 800;
+  min-width: 140px;
+  border: 1px solid var(--color-border, #e2e8f0);
+}
+
+.kdigo-heatmap-table th.kdigo-acr-main-hdr {
+  text-align: center;
+  font-size: 0.84rem;
+  background: linear-gradient(135deg, rgba(2, 132, 199, 0.08) 0%, rgba(13, 148, 136, 0.08) 100%);
+  color: var(--color-primary, #0284c7);
+  border: 1.5px solid rgba(2, 132, 199, 0.25);
+  letter-spacing: 0.03em;
+}
+
+.kdigo-heatmap-table th.kdigo-acr-sub-hdr {
+  background: var(--color-surface-2, #f8fafc);
+  color: var(--color-text, #1e293b);
+  border: 1px solid var(--color-border, #e2e8f0);
+  width: 28%;
+}
+
+.kdigo-heatmap-table tbody th {
+  text-align: left;
+  padding: 0.65rem 0.85rem;
+  background: var(--color-surface-2, #f8fafc);
+  color: var(--color-text, #0f172a);
+  font-weight: 800;
+  font-size: 0.82rem;
+  border-radius: var(--radius-xs, 8px);
+  border: 1px solid var(--color-border, #e2e8f0);
+  vertical-align: middle;
+}
+
+.kdigo-heatmap-table td.kdigo-cell {
+  display: table-cell !important;
+  height: 48px;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: var(--radius-xs, 8px);
+  font-weight: 800;
+  font-size: 0.84rem;
+  padding: 0.65rem 0.5rem;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  user-select: none;
+}
+
+.kdigo-heatmap-table td.kdigo-cell:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: var(--shadow-sm, 0 4px 12px rgba(0, 0, 0, 0.1));
+  z-index: 5;
+  position: relative;
+}
+
+/* KDIGO Risk Levels (Low, Moderate, High, Very High, Extremely High) */
+.kdigo-cell.cell-green {
+  background: #d1fae5 !important;
+  color: #065f46 !important;
+  border: 1px solid #a7f3d0 !important;
+}
+
+.kdigo-cell.cell-yellow {
+  background: #fef3c7 !important;
+  color: #92400e !important;
+  border: 1px solid #fde68a !important;
+}
+
+.kdigo-cell.cell-orange {
+  background: #ffedd5 !important;
+  color: #9a3412 !important;
+  border: 1px solid #fed7aa !important;
+}
+
+.kdigo-cell.cell-red {
+  background: #fee2e2 !important;
+  color: #991b1b !important;
+  border: 1px solid #fca5a5 !important;
+}
+
+.kdigo-cell.cell-darkred {
+  background: #fecdd3 !important;
+  color: #881337 !important;
+  border: 1px solid #fda4af !important;
+}
+
+/* Dark Mode Support for KDIGO Heatmap */
+[data-theme="dark"] .kdigo-heatmap-table thead th,
+[data-theme="dark"] .kdigo-heatmap-table tbody th {
+  background: rgba(15, 23, 42, 0.85);
+  border-color: var(--color-border, #334155);
+  color: var(--color-text, #f8fafc);
+}
+
+[data-theme="dark"] .kdigo-heatmap-table th.kdigo-acr-main-hdr {
+  background: rgba(2, 132, 199, 0.15);
+  color: #38bdf8;
+  border-color: rgba(56, 189, 248, 0.35);
+}
+
+[data-theme="dark"] .kdigo-cell.cell-green {
+  background: rgba(16, 185, 129, 0.22) !important;
+  color: #6ee7b7 !important;
+  border-color: rgba(16, 185, 129, 0.4) !important;
+}
+
+[data-theme="dark"] .kdigo-cell.cell-yellow {
+  background: rgba(245, 158, 11, 0.22) !important;
+  color: #fde047 !important;
+  border-color: rgba(245, 158, 11, 0.4) !important;
+}
+
+[data-theme="dark"] .kdigo-cell.cell-orange {
+  background: rgba(249, 115, 22, 0.22) !important;
+  color: #fdba74 !important;
+  border-color: rgba(249, 115, 22, 0.4) !important;
+}
+
+[data-theme="dark"] .kdigo-cell.cell-red {
+  background: rgba(239, 68, 68, 0.25) !important;
+  color: #fca5a5 !important;
+  border-color: rgba(239, 68, 68, 0.4) !important;
+}
+
+[data-theme="dark"] .kdigo-cell.cell-darkred {
+  background: rgba(225, 29, 72, 0.32) !important;
+  color: #fda4af !important;
+  border-color: rgba(225, 29, 72, 0.45) !important;
+}
+
+/* KDIGO Legend Grid */
+.kdigo-legend-wrap {
+  margin: var(--space-3, 0.75rem) 0 var(--space-4, 1rem) 0;
+  padding: 0.85rem 1rem;
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: var(--radius-md, 12px);
+}
+
+[data-theme="dark"] .kdigo-legend-wrap {
+  background: var(--color-surface, #1e293b);
+  border-color: var(--color-border, #334155);
+}
+
+.kdigo-legend-title {
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-text-muted, #64748b);
+  margin-bottom: 0.5rem;
+}
+
+.kdigo-legend-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+}
+
+.kdigo-legend-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text, #1e293b);
+}
+
+[data-theme="dark"] .kdigo-legend-pill {
+  color: var(--color-text, #f8fafc);
+}
+
+.kdigo-legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 4px;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.kdigo-legend-dot.dot-green { background: #10b981; }
+.kdigo-legend-dot.dot-yellow { background: #f59e0b; }
+.kdigo-legend-dot.dot-orange { background: #f97316; }
+.kdigo-legend-dot.dot-red { background: #ef4444; }
+.kdigo-legend-dot.dot-darkred { background: #be123c; }
+
+.kdigo-footnote {
+  font-size: 0.78rem;
+  color: var(--color-text-muted, #64748b);
+  line-height: 1.5;
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+

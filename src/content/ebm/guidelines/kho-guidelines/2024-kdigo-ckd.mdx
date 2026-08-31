@@ -1,5 +1,5 @@
 ---
-title: "KDIGO 2024 về Bệnh Thận Mạn (CKD)"
+title: "KDIGO 2024: Đánh Giá, Tiên Lượng KFRE & Quản Lý Toàn Diện Bệnh Thận Mạn (CKD)"
 slug: "2024-kdigo-ckd"
 code: "GDL-2024-KDIGO-CKD"
 organization: "KDIGO"
@@ -7,581 +7,1005 @@ year: "2024"
 category: "guidelines"
 status: "published"
 version: "2.0.0"
-updatedAt: "2026-08-28"
+updatedAt: "2026-08-31"
 cor: "I"
 loe: "A"
-description: "Tóm tắt Hướng dẫn Lâm sàng KDIGO 2024 về Đánh giá, Phân loại CGA, Tiên lượng Nguy cơ KFRE, Tiếp cận Toàn diện 4 Tầng, Liệu pháp SGLT2i/RASi/ns-MRA và Xử trí Biến chứng CKD."
+description: "Tóm tắt toàn diện Hướng dẫn Lâm sàng KDIGO 2024 về Bệnh Thận Mạn: Phân loại CGA, Race-Free eGFR, Phương trình tiên lượng KFRE, Tiếp cận 4 tầng, Liệu pháp SGLT2i/ns-MRA/RASi, Quy tắc SADMANS và Chuẩn bị KRT."
 tags:
   - "KDIGO"
   - "2024"
-  - "Khuyến cáo lâm sàng"
+  - "Bệnh thận mạn"
+  - "SGLT2i"
+  - "KFRE"
   - "Evidence-Based Medicine"
 keyRecommendations:
-  - "Khuyến cáo chẩn đoán và phân tầng nguy cơ theo tiêu chuẩn KDIGO 2024."
-  - "Khởi trị dược lý và tối ưu hóa liều dùng chuẩn y học chứng cứ."
-  - "Đánh giá đáp ứng lâm sàng, theo dõi an toàn và chỉ số xét nghiệm đích."
-  - "Phòng ngừa biến chứng nặng và bẫy lâm sàng thường gặp trong thực hành."
+  - "Chẩn đoán & phân tầng CGA (Cause - GFR - Albuminuria) với Race-Free eGFR & định lượng ACR."
+  - "Ứng dụng phương trình KFRE tiên lượng nguy cơ suy thận 2 năm và 5 năm (Khuyến cáo 1A)."
+  - "Khởi trị SGLT2i cho T2D + CKD (eGFR ≥ 20) và CKD không T2D (eGFR ≥ 20 + ACR ≥ 200) (Khuyến cáo 1A)."
+  - "Đích Huyết áp tâm thu (SBP) < 120 mmHg chuẩn hóa và tối ưu hóa liều RASi (Khuyến cáo 2B, 1B)."
 sections:
   - id: "sec-1"
     number: 1
-    title: "CGA & Sàng Lọc"
-    icon: "fa-solid fa-book-medical"
+    title: "Định Nghĩa, CGA & Sàng Lọc"
+    icon: "fa-solid fa-clipboard-check"
   - id: "sec-2"
     number: 2
-    title: "GFR & Albumin Niệu"
-    icon: "fa-solid fa-book-medical"
+    title: "Đo Lường GFR, Cystatin C & Albumin Niệu"
+    icon: "fa-solid fa-vial"
   - id: "sec-3"
     number: 3
-    title: "Tiên Lượng KFRE"
-    icon: "fa-solid fa-book-medical"
+    title: "Ma Trận Nguy Cơ 2D & Tiên Lượng KFRE"
+    icon: "fa-solid fa-chart-line"
   - id: "sec-4"
     number: 4
-    title: "Tiếp Cận 4 Tầng & Dược Lý"
-    icon: "fa-solid fa-book-medical"
+    title: "Tiếp Cận 4 Tầng & Dược Lý Bảo Vệ Tim-Thận"
+    icon: "fa-solid fa-shield-heart"
   - id: "sec-5"
     number: 5
-    title: "Biến Chứng & SADMANS"
-    icon: "fa-solid fa-book-medical"
+    title: "Xử Trí Biến Chứng, An Toàn Thuốc & SADMANS"
+    icon: "fa-solid fa-pills"
   - id: "sec-6"
     number: 6
-    title: "Chuyển Tuyến & KRT"
+    title: "Chuyển Tuyến, Đa Chuyên Khoa & Chuẩn Bị KRT"
+    icon: "fa-solid fa-hospital-user"
+  - id: "sec-7"
+    number: 7
+    title: "Tổng Hợp Thử Nghiệm Lâm Sàng & Tài Liệu AMA"
     icon: "fa-solid fa-book-medical"
 ---
 
 <div class="stats-strip">
-    <div class="stats-grid">
-      <div class="stat-card">
-        <div class="stat-val">CGA Staging</div>
-        <div class="stat-lbl">Phân loại Cause - GFR - ACR</div>
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-val blue">CGA Staging</div>
+      <div class="stat-lbl">Phân loại Cause - GFR (G1-G5) - ACR (A1-A3)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val green">SBP &lt; 120 mmHg</div>
+      <div class="stat-lbl">Huyết áp Tâm thu Chuẩn hóa (Class 2B)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val purple">SGLT2i + RASi</div>
+      <div class="stat-lbl">Trụ cột Bảo vệ Tim - Thận Nền tảng (Class 1A)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val red">KFRE 5y / 2y</div>
+      <div class="stat-lbl">Tiên lượng Nguy cơ Tuyệt đối (Class 1A)</div>
+    </div>
+  </div>
+</div>
+
+<div class="page-content">
+
+  {/* SECTION 1 */}
+  <div class="sec-card" id="sec-1">
+    <div class="sec-hdr">
+      <span class="sec-hdr-icon">📌</span>
+      <h2 class="sec-title">Phần 1: Định Nghĩa, Phân Loại CGA &amp; Quy Trình Sàng Lọc CKD</h2>
+    </div>
+    <div class="sec-body">
+      
+      <div class="infobox teal">
+        <span class="infobox-icon">💡</span>
+        <div>
+          <strong>Định nghĩa Bệnh Thận Mạn (CKD - Chronic Kidney Disease):</strong>
+          Bệnh thận mạn được định nghĩa là những bất thường về cấu trúc hoặc chức năng thận, kéo dài <strong>tối thiểu 3 tháng</strong> và có ảnh hưởng đến sức khỏe của người bệnh. Hệ thống phân loại <strong>CGA</strong> được thống nhất toàn cầu dựa trên 3 tiêu chí: <strong>Nguyên nhân (Cause - C)</strong>, <strong>Thể tích lọc cầu thận (GFR - G)</strong> và <strong>Mức độ Albumin niệu (Albuminuria - A)</strong>.
+        </div>
       </div>
-      <div class="stat-card">
-        <div class="stat-val">SBP &lt; 120 mmHg</div>
-        <div class="stat-lbl">Mục tiêu Huyết áp Chuẩn hóa</div>
+
+      <div class="sec-subtitle">1. Tiêu chuẩn Chẩn đoán và Phân giai đoạn CKD (Table 1 KDIGO 2024)</div>
+      
+      <div class="table-wrapper">
+        <table class="med-table">
+          <thead>
+            <tr>
+              <th style="width: 35%;">Tiêu chí Bắt buộc (Tồn tại ≥ 3 tháng)</th>
+              <th>Chỉ số Lâm sàng &amp; Cận lâm sàng Chi tiết</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Dấu hiệu tổn thương thận (Kidney Damage)<br /><span style="font-size: 0.8rem; color: var(--color-text-muted);">Có từ 1 dấu hiệu trở lên</span></strong></td>
+              <td>
+                • <strong>Albumin niệu tăng:</strong> Tỷ lệ ACR nước tiểu ≥ 30 mg/g (≥ 3 mg/mmol) hoặc AER ≥ 30 mg/24h.<br />
+                • <strong>Bất thường cặn lắng nước tiểu:</strong> Tiểu máu vi thể/đại thể dai dẳng, trụ hồng cầu, trụ bạch cầu, trụ hạt.<br />
+                • <strong>Rối loạn điện giải &amp; chuyển hóa:</strong> Các bất thường do bệnh lý ống thận (toan hóa ống thận, mất kali, đái tháo nhạt do thận).<br />
+                • <strong>Bất thường mô bệnh học:</strong> Phát hiện qua sinh thiết thận (xơ hóa cầu thận, teo ống thận, xơ hóa mô kẽ).<br />
+                • <strong>Bất thường cấu trúc trên hình ảnh học:</strong> Thận ứ nước, sỏi thận, loạn sản, thận đa nang (ADPKD), thận teo nhỏ vỏ mỏng.<br />
+                • <strong>Tiền sử ghép thận (Kidney transplantation).</strong>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Giảm mức lọc cầu thận (Decreased GFR)</strong></td>
+              <td>• <strong>GFR &lt; 60 ml/min/1.73 m<sup>2</sup></strong> (Thuộc các phân nhóm GFR từ G3a đến G5).</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-      <div class="stat-card">
-        <div class="stat-val">SGLT2i + RASi</div>
-        <div class="stat-lbl">Liệu pháp Hàng đầu (Class 1A)</div>
+
+      <div class="grid-2col">
+        <div>
+          <div class="sec-subtitle">Bảng Phân nhóm GFR (Table 2 KDIGO 2024)</div>
+          <div class="table-wrapper">
+            <table class="med-table">
+              <thead>
+                <tr>
+                  <th>Mức</th>
+                  <th>GFR (ml/min/1.73m<sup>2</sup>)</th>
+                  <th>Thuật ngữ Lâm sàng</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>G1</strong></td><td>≥ 90</td><td>Bình thường hoặc tăng*</td></tr>
+                <tr><td><strong>G2</strong></td><td>60 – 89</td><td>Giảm nhẹ*</td></tr>
+                <tr><td><strong>G3a</strong></td><td>45 – 59</td><td>Giảm nhẹ đến trung bình</td></tr>
+                <tr><td><strong>G3b</strong></td><td>30 – 44</td><td>Giảm trung bình đến nặng</td></tr>
+                <tr><td><strong>G4</strong></td><td>15 – 29</td><td>Giảm nặng</td></tr>
+                <tr><td><strong>G5</strong></td><td>&lt; 15</td><td>Suy thận (Kidney Failure)</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div style="font-size: 0.78rem; color: var(--color-text-muted); margin-top: 0.25rem;">
+            * <em>Ghi chú:</em> Khi không có dấu hiệu tổn thương thận đi kèm, mức G1 và G2 đơn thuần không đủ tiêu chuẩn chẩn đoán CKD.
+          </div>
+        </div>
+
+        <div>
+          <div class="sec-subtitle">Bảng Phân nhóm Albumin niệu (Table 3 KDIGO 2024)</div>
+          <div class="table-wrapper">
+            <table class="med-table">
+              <thead>
+                <tr>
+                  <th>Mức</th>
+                  <th>ACR (mg/g)</th>
+                  <th>ACR (mg/mmol)</th>
+                  <th>AER (mg/24h)</th>
+                  <th>Mô tả Lâm sàng</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>A1</strong></td><td>&lt; 30</td><td>&lt; 3</td><td>&lt; 30</td><td>Bình thường / Tăng nhẹ</td></tr>
+                <tr><td><strong>A2</strong></td><td>30 – 300</td><td>3 – 30</td><td>30 – 300</td><td>Tăng trung bình (Vi thể)</td></tr>
+                <tr><td><strong>A3</strong></td><td>&gt; 300</td><td>&gt; 30</td><td>&gt; 300</td><td>Tăng nghiêm trọng (Đại thể)</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div style="font-size: 0.78rem; color: var(--color-text-muted); margin-top: 0.25rem;">
+            * <em>Lưu ý:</em> A3 bao gồm cả hội chứng thận hư (thường ACR &gt; 2200 mg/g hoặc protein niệu &gt; 3.5 g/24h).
+          </div>
+        </div>
       </div>
-      <div class="stat-card">
-        <div class="stat-val">KFRE Risk</div>
-        <div class="stat-lbl">Tiên lượng Nguy cơ Suy thận 2y/5y</div>
+
+      <div class="sec-subtitle">2. Quy trình Sàng lọc 6 Bước ở Người lớn (Figure 3 KDIGO 2024)</div>
+      <div class="steps-list">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <strong>Xác định Đối tượng Nguy cơ cao:</strong> Người lớn có Đái tháo đường, Tăng huyết áp, Bệnh tim mạch (suy tim, bệnh mạch vành), Tiền sử tổn thương thận cấp (AKI/AKD), Tiền sử gia đình mắc bệnh thận di truyền, hoặc phơi nhiễm độc chất/thuốc độc thận kéo dài.
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <strong>Xét nghiệm Ban đầu Đồng thời:</strong> Định lượng Creatinine huyết thanh để tính eGFR và định lượng tỷ lệ Albumin-to-Creatinine nước tiểu (ACR) trên mẫu nước tiểu buổi sáng đầu tiên.
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <strong>Đánh giá Kết quả &amp; Loại trừ Tổn thương Thận cấp:</strong>
+            • Nếu GFR &lt; 60 ml/min/1.73 m<sup>2</sup> HOẶC ACR ≥ 30 mg/g (≥ 3 mg/mmol) HOẶC có dấu hiệu tổn thương thận khác: Tiến hành đánh giá loại trừ AKI/AKD. Nếu có AKI, xử trí theo phác đồ AKI.<br />
+            • Nếu các kết quả bình thường: Không mắc CKD tại thời điểm hiện tại. Lập kế hoạch tái sàng lọc định kỳ dựa trên yếu tố nguy cơ cá nhân.
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <strong>Xác định Tính chất Mạn tính (Proof of Chronicity):</strong> Khẳng định tình trạng bất thường kéo dài ≥ 3 tháng thông qua: (1) Hồ sơ xét nghiệm GFR/ACR quá khứ; (2) Kết quả cặn lắng nước tiểu trước đây; (3) Hình ảnh học thận teo nhỏ, vỏ mỏng; (4) Mô bệnh học xơ hóa ống kẽ thận; (5) Bệnh lý nền mạn tính đã biết; hoặc (6) Tái kiểm tra sau mốc 3 tháng.
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">5</div>
+          <div class="step-content">
+            <strong>Tăng độ Chính xác với eGFR<sub>cr-cys</sub>:</strong> Đo lường thêm nồng độ Cystatin C huyết thanh để tính toán phương trình kết hợp eGFR<sub>cr-cys</sub> (nếu có sẵn nguồn lực) nhằm phân tầng giai đoạn chuẩn xác hơn.
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">6</div>
+          <div class="step-content">
+            <strong>Phân giai đoạn CGA &amp; Khởi trị:</strong> Đánh giá nguyên nhân gốc rễ (Figure 8), xác định giai đoạn CGA, tính toán nguy cơ tiến triển KFRE 2 năm / 5 năm và khởi động phác đồ bảo vệ tim-thận toàn diện.
+          </div>
+        </div>
       </div>
+
+      <div class="infobox info" style="margin-top: 1rem;">
+        <span class="infobox-icon">🔬</span>
+        <div>
+          <span class="rec-tag tag-2d">Recommendation 1.1.4.1 - Class 2D</span>
+          <strong>Khuyến cáo về Sinh thiết Thận (Kidney Biopsy):</strong> KDIGO 2024 đề xuất thực hiện sinh thiết thận như một xét nghiệm chẩn đoán an toàn và chấp nhận được để đánh giá nguyên nhân gốc rễ và định hướng các quyết định điều trị đặc hiệu khi phù hợp về mặt lâm sàng.
+        </div>
+      </div>
+
     </div>
   </div>
 
-  
-  <div class="page-content">
-
-    
-    <div class="sec-card" id="sec-1">
-      <div class="sec-hdr"><span class="sec-hdr-icon">📌</span> <h2 class="sec-title">Phần 1: Định Nghĩa, Phân Loại CGA &amp; Quy Trình Sàng Lọc CKD</h2></div>
-      <div class="sec-body">
-        
-        <div class="infobox teal">
-          <span class="infobox-icon">💡</span>
-          <div>
-            <strong>Định nghĩa Bệnh Thận Mạn (CKD):</strong>
-            Bất kỳ bất thường nào về cấu trúc hoặc chức năng thận kéo dài <strong>tối thiểu 3 tháng</strong> và có ảnh hưởng đến sức khỏe người bệnh. Phân loại theo hệ thống <strong>CGA</strong>: Nguyên nhân (Cause - C), Thể tích lọc cầu thận (GFR - G) và Albumin niệu (Albuminuria - A).
-          </div>
-        </div>
-
-        <div class="sec-subtitle">1. Tiêu chuẩn Chẩn đoán và Phân loại CKD</div>
-        
-        <div class="table-wrapper">
-          <table class="med-table">
-            <thead>
-              <tr>
-                <th>Tiêu chí</th>
-                <th>Thông số / Chỉ số Chẩn đoán</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Dấu hiệu tổn thương thận (≥ 1 dấu hiệu, kéo dài ≥ 3 tháng)</strong></td>
-                <td>• Albumin niệu tăng (ACR ≥ 30 mg/g [≥ 3 mg/mmol])<br /> • Bất thường cặn lắng nước tiểu (hồng cầu niệu, trụ tế bào)<br /> • Rối loạn điện giải hoặc bất thường khác do bệnh lý ống thận<br /> • Bất thường mô bệnh học (xơ hóa, teo ống thận trên sinh thiết)<br /> • Bất thường cấu trúc phát hiện qua hình ảnh học (thận nhỏ, nang thận di truyền)<br /> • Tiền sử ghép thận</td>
-              </tr>
-              <tr>
-                <td><strong>Giảm chức năng lọc cầu thận (kéo dài ≥ 3 tháng)</strong></td>
-                <td>• eGFR &lt; 60 ml/min/1.73 m<sup>2</sup> (Giai đoạn G3a - G5)</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="grid-2col">
-          <div>
-            <div class="sec-subtitle">Bảng Phân nhóm GFR (G Categories)</div>
-            <div class="table-wrapper">
-              <table class="med-table">
-                <thead>
-                  <tr>
-                    <th>Mức</th>
-                    <th>GFR (ml/min/1.73m<sup>2</sup>)</th>
-                    <th>Mô tả Chức năng</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr><td><strong>G1</strong></td><td>≥ 90</td><td>Bình thường hoặc tăng</td></tr>
-                  <tr><td><strong>G2</strong></td><td>60 – 89</td><td>Giảm nhẹ</td></tr>
-                  <tr><td><strong>G3a</strong></td><td>45 – 59</td><td>Giảm nhẹ đến trung bình</td></tr>
-                  <tr><td><strong>G3b</strong></td><td>30 – 44</td><td>Giảm trung bình đến nặng</td></tr>
-                  <tr><td><strong>G4</strong></td><td>15 – 29</td><td>Giảm nặng</td></tr>
-                  <tr><td><strong>G5</strong></td><td>&lt; 15</td><td>Suy thận (Kidney Failure)</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          <div>
-            <div class="sec-subtitle">Bảng Phân nhóm Albumin niệu (A Categories)</div>
-            <div class="table-wrapper">
-              <table class="med-table">
-                <thead>
-                  <tr>
-                    <th>Mức</th>
-                    <th>ACR (mg/g)</th>
-                    <th>AER (mg/24h)</th>
-                    <th>Mô tả Lâm sàng</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr><td><strong>A1</strong></td><td>&lt; 30</td><td>&lt; 30</td><td>Bình thường / Tăng nhẹ</td></tr>
-                  <tr><td><strong>A2</strong></td><td>30 – 300</td><td>30 – 300</td><td>Tăng trung bình (Vi thể)</td></tr>
-                  <tr><td><strong>A3</strong></td><td>&gt; 300</td><td>&gt; 300</td><td>Tăng nghiêm trọng (Đại thể)</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-
-        <div class="sec-subtitle">2. Quy trình Sàng lọc 6 Bước ở Người lớn Nguy cơ cao</div>
-        <div class="steps-list">
-          <div class="step-item">
-            <div class="step-num">1</div>
-            <div class="step-content">
-              <strong>Nhận diện Nhóm Nguy cơ cao:</strong> Đái tháo đường, Tăng huyết áp, Bệnh tim mạch (suy tim, xơ vữa), Tiền sử AKI/AKD, Tiền sử gia đình mắc bệnh thận, hoặc phơi nhiễm thuốc độc thận/hóa chất.
-            </div>
-          </div>
-          <div class="step-item">
-            <div class="step-num">2</div>
-            <div class="step-content">
-              <strong>Xét nghiệm ban đầu:</strong> Xét nghiệm đồng thời nồng độ Creatinine huyết thanh để tính eGFR và định lượng tỷ lệ Albumin-to-Creatinine nước tiểu (ACR).
-            </div>
-          </div>
-          <div class="step-item">
-            <div class="step-num">3</div>
-            <div class="step-content">
-              <strong>Đánh giá Bất thường &amp; Loại trừ AKI:</strong> Nếu eGFR &lt; 60 hoặc ACR ≥ 30 mg/g, tiến hành đánh giá tổn thương thận cấp (AKI)/bệnh thận cấp (AKD). Nếu bình thường: Lên lịch tái sàng lọc theo nguy cơ.
-            </div>
-          </div>
-          <div class="step-item">
-            <div class="step-num">4</div>
-            <div class="step-content">
-              <strong>Xác định Bằng chứng Mạn tính (Chronicity):</strong> Khẳng định tình trạng bất thường kéo dài ≥ 3 tháng qua hồ sơ quá khứ, hình ảnh học hoặc tái xét nghiệm sau 3 tháng.
-            </div>
-          </div>
-          <div class="step-item">
-            <div class="step-num">5</div>
-            <div class="step-content">
-              <strong>Xác nhận eGFR chính xác:</strong> Thực hiện đo đồng thời Cystatin C để tính eGFR<sub>cr-cys</sub> (nếu có nguồn lực) nhằm loại bỏ sai số do khối lượng cơ.
-            </div>
-          </div>
-          <div class="step-item">
-            <div class="step-num">6</div>
-            <div class="step-content">
-              <strong>Phân giai đoạn CGA &amp; Khởi trị:</strong> Đánh giá nguyên nhân, xác định giai đoạn CGA, tính toán nguy cơ tiến triển KFRE và bắt đầu các liệu pháp bảo vệ tim-thận.
-            </div>
-          </div>
-        </div>
-
-      </div>
+  {/* SECTION 2 */}
+  <div class="sec-card" id="sec-2">
+    <div class="sec-hdr">
+      <span class="sec-hdr-icon">🧪</span>
+      <h2 class="sec-title">Phần 2: Đo Lường GFR, Vai Trò Cystatin C &amp; Đánh Giá Albumin Niệu</h2>
     </div>
-
-    
-    <div class="sec-card" id="sec-2">
-      <div class="sec-hdr"><span class="sec-hdr-icon">🧪</span> <h2 class="sec-title">Phần 2: Đánh Giá GFR, Albumin Niệu &amp; Sai Số Phòng Xét Nghiệm</h2></div>
-      <div class="sec-body">
-        
-        <div class="sec-subtitle">1. Quy trình Tiếp cận GFR 3 Bước &amp; Không Dùng Chủng Tộc</div>
-        
-        <div class="infobox info">
-          <span class="infobox-icon">ℹ️</span>
-          <div>
-            <span class="rec-tag tag-1d">Rec 1.2.4.1 - 1D</span><span class="rec-tag tag-pp">Practice Point 1.2.4.2</span>
-            <strong>Loại bỏ yếu tố Chủng tộc (Race-Free eGFR):</strong> Hướng dẫn KDIGO 2024 khuyến cáo sử dụng phương trình ước tính GFR đã xác thực và <strong>tuyệt đối không sử dụng yếu tố chủng tộc (Race)</strong> trong công thức tính eGFR vì chủng tộc là khái niệm xã hội, gây sai lệch chẩn đoán và chậm trễ can thiệp.
-          </div>
+    <div class="sec-body">
+      
+      <div class="sec-subtitle">1. Lưu đồ Tiếp Cận Đánh Giá GFR 3 Tầng (Figure 11 KDIGO 2024)</div>
+      
+      <div class="infobox alert" style="margin-bottom: 1rem;">
+        <span class="infobox-icon">🚫</span>
+        <div>
+          <span class="rec-tag tag-1d">Recommendation 1.2.4.1 - Class 1D</span>
+          <span class="rec-tag tag-pp">Practice Point 1.2.4.2</span>
+          <strong>Loại bỏ Hoàn toàn Yếu tố Chủng tộc (Race-Free eGFR Equations):</strong> KDIGO 2024 khuyến cáo sử dụng phương trình ước tính GFR đã được xác thực và <strong>tuyệt đối không áp dụng hệ số hiệu chỉnh chủng tộc (Race)</strong> trong tính toán eGFR, vì chủng tộc là một khái niệm xã hội chứ không phải sinh học, và việc áp dụng hệ số chủng tộc có thể dẫn đến sai lệch chẩn đoán và bất bình đẳng y tế.
         </div>
-
-        <div class="card-box" style="margin-bottom: 1.25rem;">
-          <div class="card-box-title">🔄 Lưu đồ 3 Bước Đánh Giá Chức Năng Lọc Cầu Thận (GFR)</div>
-          <div style="font-size: 0.85rem; line-height: 1.65;">
-            <strong>Bước 1 (Initial Test):</strong> Đo Creatinine huyết thanh &amp;rarr; Tính eGFR<sub>cr</sub>. Xem xét sai số (khối cơ nhỏ/lớn, chế độ ăn, tập thể thao).<br />
-            <strong>Bước 2 (Supportive Test):</strong> Nếu nghi ngờ sai số eGFR<sub>cr</sub> hoặc cần độ chính xác cao để đưa ra quyết định quan trọng (chỉnh liều thuốc độc tính cao, phân giai đoạn ranh giới) &amp;rarr; Đo Cystatin C và tính eGFR<sub>cr-cys</sub>.<br />
-            <strong>Bước 3 (Confirmed mGFR):</strong> Nếu vẫn nghi ngờ sai số eGFR<sub>cr-cys</sub> (tình trạng viêm nặng, steroid liều cao, suy kiệt) hoặc đánh giá người hiến thận &amp;rarr; Đo GFR thực tế (mGFR) bằng chất đánh dấu ngoại sinh (iohexol/iothalamate).
-          </div>
-        </div>
-
-        <div class="sec-subtitle">2. Yếu Tố Gây Nhiễu Sinh Học Trong Đánh Giá Albumin Niệu (ACR)</div>
-        
-        <div class="table-wrapper">
-          <table class="med-table">
-            <thead>
-              <tr>
-                <th>Chiều ảnh hưởng</th>
-                <th>Các yếu tố lâm sàng gây sai lệch tỷ lệ ACR / PCR</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong style="color: var(--red);">Tăng giả tạo (False Elevation)</strong></td>
-                <td>• <strong>Tiểu máu (Hematuria)</strong> hoặc lẫn máu kinh nguyệt (Menstruation)<br /> • <strong>Gắng sức / Tập thể thao</strong> cường độ cao ngay trước khi lấy mẫu<br /> • <strong>Nhiễm trùng đường tiết niệu (UTI)</strong> có triệu chứng<br /> • <strong>Giới tính nữ</strong> (do khối lượng cơ nhỏ làm giảm thải Creatinine niệu &amp;rarr; Tăng tỷ lệ ACR)<br /> • <strong>Cân nặng nhẹ / Suy kiệt cơ</strong> &amp;rarr; Giảm Creatinine niệu ngẫu nhiên</td>
-              </tr>
-              <tr>
-                <td><strong style="color: var(--color-success, #10b981);">Giảm giả tạo (False Reduction)</strong></td>
-                <td>• <strong>Protein không phải Albumin</strong> (như chuỗi nhẹ đơn dòng trong Đa u tủy xương, bị bỏ sót nếu chỉ xét nghiệm que thử Albumin)<br /> • <strong>Giới tính nam</strong> (khối lượng cơ lớn làm tăng thải Creatinine niệu &amp;rarr; Giảm tỷ lệ ACR)<br /> • <strong>Chế độ ăn rất giàu protein</strong> hoặc cơ thể phát triển vạm mỡ</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
       </div>
-    </div>
 
-    
-    <div class="sec-card" id="sec-3">
-      <div class="sec-hdr"><span class="sec-hdr-icon">📈</span> <h2 class="sec-title">Phần 3: Tiên Lượng Nguy Cơ Tiến Triển &amp; Thang Điểm KFRE</h2></div>
-      <div class="sec-body">
-        
-        <div class="sec-subtitle">1. Ma Trận Tần Suất Theo Dõi Định Kỳ GFR &amp; Albumin Niệu (Lần/Năm)</div>
-        <p style="font-size: 0.82rem; color: var(--color-text-muted, #64748b); margin-bottom: 0.75rem;">Tần suất tối thiểu cần xét nghiệm theo dõi định kỳ eGFR và ACR mỗi năm dựa trên các ô nguy cơ CGA:</p>
-
-        <div class="table-wrapper">
-          <table class="heatmap-table">
-            <thead>
-              <tr>
-                <th rowspan="2">Giai đoạn GFR</th>
-                <th colspan="3">Mức độ Albumin niệu (ACR)</th>
-              </tr>
-              <tr>
-                <th>A1 (&lt; 30 mg/g)</th>
-                <th>A2 (30 - 300 mg/g)</th>
-                <th>A3 (&gt; 300 mg/g)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th>G1 (≥ 90)</th>
-                <td class="heatmap-cell hm-green">1 lần/năm*</td>
-                <td class="heatmap-cell hm-yellow">1 lần/năm</td>
-                <td class="heatmap-cell hm-orange">2 lần/năm</td>
-              </tr>
-              <tr>
-                <th>G2 (60 - 89)</th>
-                <td class="heatmap-cell hm-green">1 lần/năm*</td>
-                <td class="heatmap-cell hm-yellow">1 lần/năm</td>
-                <td class="heatmap-cell hm-orange">2 lần/năm</td>
-              </tr>
-              <tr>
-                <th>G3a (45 - 59)</th>
-                <td class="heatmap-cell hm-yellow">1 lần/năm</td>
-                <td class="heatmap-cell hm-orange">2 lần/năm</td>
-                <td class="heatmap-cell hm-red">3 lần/năm</td>
-              </tr>
-              <tr>
-                <th>G3b (30 - 44)</th>
-                <td class="heatmap-cell hm-orange">2 lần/năm</td>
-                <td class="heatmap-cell hm-red">3 lần/năm</td>
-                <td class="heatmap-cell hm-red">3 lần/năm</td>
-              </tr>
-              <tr>
-                <th>G4 (15 - 29)</th>
-                <td class="heatmap-cell hm-red">3 lần/năm</td>
-                <td class="heatmap-cell hm-red">3 lần/năm</td>
-                <td class="heatmap-cell hm-darkred">≥ 4 lần/năm</td>
-              </tr>
-              <tr>
-                <th>G5 (&lt; 15)</th>
-                <td class="heatmap-cell hm-darkred">≥ 4 lần/năm</td>
-                <td class="heatmap-cell hm-darkred">≥ 4 lần/năm</td>
-                <td class="heatmap-cell hm-darkred">≥ 4 lần/năm</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="sec-subtitle">2. Ứng Dụng Phương Trình KFRE &amp; Ngưỡng Can Thiệp Lâm Sàng</div>
-        
-        <div class="infobox success">
-          <span class="infobox-icon">🎯</span>
-          <div>
-            <span class="rec-tag tag-1a">Recommendation 2.2.1 - 1A</span>
-            <strong>Phương trình Nguy cơ Suy thận (KFRE):</strong> Ở bệnh nhân CKD giai đoạn G3-G5, KDIGO khuyến cáo sử dụng phương trình KFRE (Kidney Failure Risk Equation - 4 biến hoặc 8 biến) để ước tính nguy cơ tuyệt đối tiến triển thành suy thận cần lọc máu/ghép thận trong 2 năm và 5 năm.
+      <div class="grid-3col" style="margin-bottom: 1.25rem;">
+        <div class="card-box" style="border-top: 4px solid var(--blue);">
+          <div class="card-box-title">Tầng 1: Xét nghiệm Ban đầu (Initial Test)</div>
+          <div style="font-size: 0.83rem; line-height: 1.6;">
+            • Đo Creatinine huyết thanh &rarr; Tính toán <strong>eGFR<sub>cr</sub></strong>.<br />
+            • Đánh giá các nguồn sai số tiềm tàng của creatinine: thay đổi khối lượng cơ (suy kiệt, cắt cụt chi, tập thể hình), chế độ ăn (ăn chay, ăn nhiều thịt đỏ), hoặc thuốc ức chế bài tiết creatinine ở ống thận (trimethoprim, cimetidine).<br />
+            • <em>Nếu eGFR<sub>cr</sub> chính xác:</em> Dùng cho quyết định thường quy.
           </div>
         </div>
 
-        <div class="grid-2col">
-          <div class="card-box">
-            <div class="card-box-title">📊 Mức sụt eGFR: Dip vs Tiến triển</div>
-            <div style="font-size: 0.83rem; line-height: 1.6;">
-              • <strong>Sụt eGFR ban đầu (Dip ≤ 30%):</strong> Khi khởi đầu các thuốc tác động huyết động (RASi, SGLT2i), mức giảm eGFR đến 30% trong 4 tuần đầu là phản ứng sinh lý chấp nhận được, không ngừng thuốc.<br />
-              • <strong>Tiến triển thực sự (&gt; 20%):</strong> Mức giảm eGFR mạn tính &gt; 20% qua các lần kiểm tra là vượt dao động phòng lab, cần đánh giá lại toàn diện.
-            </div>
-          </div>
-
-          <div class="card-box">
-            <div class="card-box-title">🚨 Ngưỡng Quyết định Lâm sàng từ KFRE</div>
-            <div style="font-size: 0.83rem; line-height: 1.6;">
-              • <strong>KFRE 5 năm 3% - 5%:</strong> Ngưỡng xem xét chuyển tuyến chuyên khoa Thận.<br />
-              • <strong>KFRE 2 năm &gt; 10%:</strong> Ngưỡng bắt đầu Chăm sóc đa chuyên khoa tích hợp (Multidisciplinary care).<br />
-              • <strong>KFRE 2 năm &gt; 40%:</strong> Ngưỡng chuẩn bị Thay thế Thận (giáo dục KRT, phẫu thuật cầu nối mạch máu AVF, đăng ký ghép thận).
-            </div>
+        <div class="card-box" style="border-top: 4px solid var(--color-success, #10b981);">
+          <div class="card-box-title">Tầng 2: Xét nghiệm Hỗ trợ (Supportive Test)</div>
+          <div style="font-size: 0.83rem; line-height: 1.6;">
+            • Khi nghi ngờ eGFR<sub>cr</sub> không chính xác HOẶC cần độ chính xác cao hơn để đưa ra quyết định lâm sàng quan trọng (phân giai đoạn ranh giới G3a, chỉnh liều thuốc độc tính cao) &rarr; <strong>Đo Cystatin C</strong> và tính toán <strong>eGFR<sub>cr-cys</sub></strong>.<br />
+            • Đánh giá sai số của Cystatin C: Viêm nặng, bệnh lý dị hóa, dùng glucocorticoid liều cao, suy giáp/cường giáp.
           </div>
         </div>
 
+        <div class="card-box" style="border-top: 4px solid var(--color-purple, #8b5cf6);">
+          <div class="card-box-title">Tầng 3: Đo GFR Thực tế (mGFR)</div>
+          <div style="font-size: 0.83rem; line-height: 1.6;">
+            • Khi vẫn còn nghi ngờ sai số lớn hoặc cần sự chính xác tuyệt đối (đánh giá người hiến thận sống, tính liều hóa chất điều trị ung thư có khoảng trị liệu hẹp) &rarr; Tiến hành <strong>Đo GFR thực tế (Measured GFR - mGFR)</strong>.<br />
+            • Sử dụng độ thanh thải huyết tương hoặc nước tiểu của các chất đánh dấu ngoại sinh (như <em>iohexol</em> hoặc <em>iothalamate</em>).
+          </div>
+        </div>
       </div>
+
+      <div class="sec-subtitle">2. Tiêu Chuẩn Thực Hành Cho Phòng Xét Nghiệm (Table 11 KDIGO 2024)</div>
+      <div style="font-size: 0.85rem; line-height: 1.65; background: var(--color-surface-2, #f8fafc); padding: 1rem; border-radius: 10px; border: 1px solid var(--color-border, #cbd5e1); margin-bottom: 1.25rem;">
+        • <strong>Đơn vị báo cáo:</strong> Báo cáo eGFR làm tròn đến số nguyên gần nhất theo đơn vị chuẩn <code>ml/min per 1.73 m²</code>. Bất kỳ giá trị eGFR &lt; 60 ml/min/1.73 m² phải được gắn cờ cảnh báo mức lọc thấp (flagged as low).<br />
+        • <strong>Phương pháp định lượng Creatinine:</strong> Ưu tiên sử dụng phương pháp enzym (enzymatic method) có thể truy nguyên theo chuẩn quốc tế (IDMS) với hệ số biến thiên $\text{CV} &lt; 2.3\%$. Hạn chế phương pháp Jaffe do nhiều chất gây nhiễu.<br />
+        • <strong>Xử lý mẫu Cystatin C:</strong> Đo bằng phương pháp miễn dịch đặc hiệu ($\text{CV} &lt; 2.0\%$). Khi đo Cystatin C, phòng xét nghiệm nên đo đồng thời Creatinine trên cùng mẫu máu để tính eGFR<sub>cr-cys</sub>.<br />
+        • <strong>Bảo quản mẫu:</strong> Tách huyết thanh/huyết tương khỏi hồng cầu bằng ly tâm trong vòng 12 giờ sau khi lấy máu.
+      </div>
+
+      <div class="sec-subtitle">3. Đánh Giá Albumin Niệu &amp; Các Yếu Tố Nhiễu Sinh Học (Table 16 KDIGO 2024)</div>
+      
+      <div class="table-wrapper">
+        <table class="med-table">
+          <thead>
+            <tr>
+              <th style="width: 28%;">Chiều Hướng Ảnh Hưởng</th>
+              <th>Cơ Chế &amp; Các Tình Huống Lâm Sàng Gây Sai Lệch Tỷ Lệ ACR / PCR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong style="color: var(--red);">Tăng giả tạo (False Elevation)</strong><br /><span style="font-size: 0.8rem; color: var(--color-text-muted);">Nguy cơ chẩn đoán quá mức</span></td>
+              <td>
+                • <strong>Tiểu máu (Hematuria):</strong> Máu trong nước tiểu làm tăng trực tiếp lượng albumin và protein toàn phần.<br />
+                • <strong>Kỳ kinh nguyệt (Menstruation):</strong> Mẫu nước tiểu lẫn máu kinh gây tăng vọt protein/albumin.<br />
+                • <strong>Gắng sức thể lực nặng (Strenuous Exercise):</strong> Gây tăng tính thấm cầu thận tạm thời trong vòng 24 - 48 giờ.<br />
+                • <strong>Nhiễm trùng đường tiết niệu (UTI):</strong> Tế bào viêm và vi khuẩn làm tăng protein niệu.<br />
+                • <strong>Giới tính nữ (Female Sex):</strong> Nữ giới có khối cơ nhỏ hơn &rarr; bài tiết creatinine niệu thấp hơn &rarr; làm tăng tỷ lệ mẫu số ACR và PCR ở cùng một mức albumin thải ra.<br />
+                • <strong>Thể trạng gầy, suy kiệt (Low Body Weight):</strong> Giảm bài tiết creatinine niệu gây tăng giả tạo tỷ lệ ACR.<br />
+                • <strong>Giai đoạn tổn thương thận cấp (AKI) hoặc chế độ ăn giảm protein:</strong> Giảm thải trừ creatinine.
+              </td>
+            </tr>
+            <tr>
+              <td><strong style="color: var(--color-success, #10b981);">Giảm giả tạo (False Decrease)</strong><br /><span style="font-size: 0.8rem; color: var(--color-text-muted);">Nguy cơ bỏ sót tổn thương</span></td>
+              <td>
+                • <strong>Protein không phải Albumin (Nonalbumin proteins):</strong> Bị bỏ sót hoàn toàn nếu chỉ dùng que thử đặc hiệu cho Albumin (ví dụ: chuỗi nhẹ Bence Jones trong Đa u tủy xương, protein ống thận). Trong trường hợp này cần định lượng PCR.<br />
+                • <strong>Giới tính nam (Male Sex):</strong> Khối cơ bắp phát triển &rarr; bài tiết creatinine niệu cao &rarr; làm giảm tỷ lệ ACR.<br />
+                • <strong>Thể trạng vạm vỡ, tập tạ, béo phì (High Body Weight):</strong> Tăng bài tiết creatinine niệu ngẫu nhiên.<br />
+                • <strong>Chế độ ăn giàu protein / bổ sung Creatine:</strong> Làm tăng nồng độ creatinine niệu tức thời.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
     </div>
+  </div>
 
-    
-    <div class="sec-card" id="sec-4">
-      <div class="sec-hdr"><span class="sec-hdr-icon">🛡️</span> <h2 class="sec-title">Phần 4: Tiếp Cận Điều Trị Toàn Diện 4 Tầng &amp; Dược Lý Bảo Vệ Tim-Thận</h2></div>
-      <div class="sec-body">
+  {/* SECTION 3 */}
+  <div class="sec-card" id="sec-3">
+    <div class="sec-hdr">
+      <span class="sec-hdr-icon">📊</span>
+      <h2 class="sec-title">Phần 3: Ma Trận Nguy Cơ 2D, Tần Suất Theo Dõi &amp; Tiên Lượng KFRE</h2>
+    </div>
+    <div class="sec-body">
+      
+      <div class="sec-subtitle">1. Ma Trận Tần Suất Theo Dõi GFR &amp; Albumin Niệu (Figure 13 KDIGO 2024)</div>
+      
+      <div class="table-wrapper kdigo-table-wrapper" style="margin-bottom: 1.25rem;">
+        <table class="med-table kdigo-heatmap-table">
+          <thead>
+            <tr>
+              <th rowspan="2" class="col-gfr-header">Phân Nhóm GFR (ml/min/1.73m²)</th>
+              <th colspan="3" class="col-acr-header">Phân Nhóm Albumin Niệu (ACR mg/g)</th>
+            </tr>
+            <tr>
+              <th class="col-a1"><strong>A1</strong> (&lt; 30 mg/g)<br /><span class="sub-hdr">Bình thường / Tăng nhẹ</span></th>
+              <th class="col-a2"><strong>A2</strong> (30 – 300 mg/g)<br /><span class="sub-hdr">Tăng trung bình</span></th>
+              <th class="col-a3"><strong>A3</strong> (&gt; 300 mg/g)<br /><span class="sub-hdr">Tăng nghiêm trọng</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="cell-gfr-label"><strong>G1</strong> (≥ 90) <span class="gfr-desc">Bình thường/cao</span></td>
+              <td class="kdigo-cell hm-green"><span class="kdigo-badge-text">Nguy cơ thấp</span><span class="kdigo-freq">1 lần/năm*</span></td>
+              <td class="kdigo-cell hm-yellow"><span class="kdigo-badge-text">Nguy cơ trung bình</span><span class="kdigo-freq">1 lần/năm</span></td>
+              <td class="kdigo-cell hm-orange"><span class="kdigo-badge-text">Nguy cơ cao</span><span class="kdigo-freq">2 lần/năm</span></td>
+            </tr>
+            <tr>
+              <td class="cell-gfr-label"><strong>G2</strong> (60 – 89) <span class="gfr-desc">Giảm nhẹ</span></td>
+              <td class="kdigo-cell hm-green"><span class="kdigo-badge-text">Nguy cơ thấp</span><span class="kdigo-freq">1 lần/năm*</span></td>
+              <td class="kdigo-cell hm-yellow"><span class="kdigo-badge-text">Nguy cơ trung bình</span><span class="kdigo-freq">1 lần/năm</span></td>
+              <td class="kdigo-cell hm-orange"><span class="kdigo-badge-text">Nguy cơ cao</span><span class="kdigo-freq">2 lần/năm</span></td>
+            </tr>
+            <tr>
+              <td class="cell-gfr-label"><strong>G3a</strong> (45 – 59) <span class="gfr-desc">Giảm nhẹ - vừa</span></td>
+              <td class="kdigo-cell hm-yellow"><span class="kdigo-badge-text">Nguy cơ trung bình</span><span class="kdigo-freq">1 lần/năm</span></td>
+              <td class="kdigo-cell hm-orange"><span class="kdigo-badge-text">Nguy cơ cao</span><span class="kdigo-freq">2 lần/năm</span></td>
+              <td class="kdigo-cell hm-red"><span class="kdigo-badge-text">Nguy cơ rất cao</span><span class="kdigo-freq">3 lần/năm</span></td>
+            </tr>
+            <tr>
+              <td class="cell-gfr-label"><strong>G3b</strong> (30 – 44) <span class="gfr-desc">Giảm vừa - nặng</span></td>
+              <td class="kdigo-cell hm-orange"><span class="kdigo-badge-text">Nguy cơ cao</span><span class="kdigo-freq">2 lần/năm</span></td>
+              <td class="kdigo-cell hm-red"><span class="kdigo-badge-text">Nguy cơ rất cao</span><span class="kdigo-freq">3 lần/năm</span></td>
+              <td class="kdigo-cell hm-red"><span class="kdigo-badge-text">Nguy cơ rất cao</span><span class="kdigo-freq">3 lần/năm</span></td>
+            </tr>
+            <tr>
+              <td class="cell-gfr-label"><strong>G4</strong> (15 – 29) <span class="gfr-desc">Giảm nặng</span></td>
+              <td class="kdigo-cell hm-red"><span class="kdigo-badge-text">Nguy cơ rất cao</span><span class="kdigo-freq">3 lần/năm</span></td>
+              <td class="kdigo-cell hm-red"><span class="kdigo-badge-text">Nguy cơ rất cao</span><span class="kdigo-freq">3 lần/năm</span></td>
+              <td class="kdigo-cell hm-darkred"><span class="kdigo-badge-text">Nguy cơ cực cao</span><span class="kdigo-freq">≥ 4 lần/năm</span></td>
+            </tr>
+            <tr>
+              <td class="cell-gfr-label"><strong>G5</strong> (&lt; 15) <span class="gfr-desc">Suy thận</span></td>
+              <td class="kdigo-cell hm-darkred"><span class="kdigo-badge-text">Nguy cơ cực cao</span><span class="kdigo-freq">≥ 4 lần/năm</span></td>
+              <td class="kdigo-cell hm-darkred"><span class="kdigo-badge-text">Nguy cơ cực cao</span><span class="kdigo-freq">≥ 4 lần/năm</span></td>
+              <td class="kdigo-cell hm-darkred"><span class="kdigo-badge-text">Nguy cơ cực cao</span><span class="kdigo-freq">≥ 4 lần/năm</span></td>
+            </tr>
+          </tbody>
+        </table>
         
-        <div class="sec-subtitle">1. Khung Tiếp Cận Toàn Diện 4 Tầng (KDIGO 2024 Holistic Approach)</div>
-
-        <div class="steps-list" style="margin-bottom: 1.25rem;">
-          <div class="step-item" style="border-left: 4px solid var(--blue);">
-            <div class="step-num" style="background: var(--blue);">1</div>
-            <div class="step-content">
-              <strong>Tầng 1 - Thay đổi Lối sống &amp; Chế độ ăn:</strong> Chế độ ăn ưu tiên thực phẩm thực vật (plant-based), hạn chế đồ ăn siêu chế biến. Tập thể dục cường độ trung bình ≥ 150 phút/tuần. Cai hoàn toàn thuốc lá. Kiểm soát cân nặng.<br />
-              • <strong>Protein:</strong> Khuyến cáo duy trì <strong>0.8 g/kg/ngày</strong> cho CKD G3-G5 chưa lọc máu (<span class="rec-tag tag-2c">Rec 2C</span>). Tránh &gt; 1.3 g/kg/ngày. Trẻ em <em>không hạn chế protein</em>.<br />
-              • <strong>Muối (Natri):</strong> Khuyến nghị Natri <strong>&lt; 2 g/ngày</strong> (tương đương &lt; 5 g muối ăn/ngày) (<span class="rec-tag tag-2c">Rec 2C</span>).
-            </div>
-          </div>
-
-          <div class="step-item" style="border-left: 4px solid var(--color-success, #10b981);">
-            <div class="step-num" style="background: var(--color-success, #10b981);">2</div>
-            <div class="step-content">
-              <strong>Tầng 2 - Liệu pháp Nền tảng Hàng đầu (First-line Drugs):</strong><br />
-              • <strong>Thuốc ức chế SGLT2 (SGLT2i):</strong> Khởi trị cho mọi BN CKD + T2D (eGFR ≥ 20) (<span class="rec-tag tag-1a">Rec 1A</span>); CKD không T2D (eGFR ≥ 20 kèm ACR ≥ 200 mg/g) (<span class="rec-tag tag-1a">Rec 1A</span>); hoặc BN Suy tim mọi mức ACR. Duy trì SGLT2i cho đến khi bắt đầu lọc máu/ghép thận.<br />
-              • <strong>Ức chế hệ RAS (ACEi hoặc ARB):</strong> Liều tối đa dung nạp được khi có Tăng huyết áp và Albumin niệu (<span class="rec-tag tag-1b">Rec 1B</span>).<br />
-              • <strong>Huyết áp Mục tiêu:</strong> Huyết áp tâm thu (SBP) <strong>&lt; 120 mmHg</strong> chuẩn hóa (<span class="rec-tag tag-2b">Rec 2B</span>).<br />
-              • <strong>Statin:</strong> Statin cường độ trung bình/cao cho người lớn ≥ 50 tuổi (<span class="rec-tag tag-1a">Rec 1A</span>).
-            </div>
-          </div>
-
-          <div class="step-item" style="border-left: 4px solid var(--color-warning, #f59e0b);">
-            <div class="step-num" style="background: var(--color-warning, #f59e0b);">3</div>
-            <div class="step-content">
-              <strong>Tầng 3 - Liệu pháp Nhắm Mục tiêu Tim-Thận Cụ thể:</strong><br />
-              • <strong>GLP-1 RA:</strong> Ưu tiên chất đồng vận thụ thể GLP-1 cho BN đái tháo đường T2D chưa đạt mục tiêu đường huyết (<span class="rec-tag tag-1b">Rec 1B</span>).<br />
-              • <strong>ns-MRA (Finerenone):</strong> Gợi ý phối hợp Finerenone cho T2D + eGFR &gt; 25, Kali bình thường và ACR tồn dư (≥ 30 mg/g) dù đã tối ưu RASi (<span class="rec-tag tag-2a">Rec 2A</span>).<br />
-              • <strong>CCB Dihydropyridine / Lợi tiểu:</strong> Phối hợp hạ áp để đạt SBP &lt; 120 mmHg.<br />
-              • <strong>Aspirin liều thấp:</strong> Dự phòng thứ phát biến cố xơ vữa động mạch đã thiết lập (<span class="rec-tag tag-1c">Rec 1C</span>).
-            </div>
-          </div>
-
-          <div class="step-item" style="border-left: 4px solid var(--color-purple, #8b5cf6);">
-            <div class="step-num" style="background: var(--color-purple, #8b5cf6);">4</div>
-            <div class="step-content">
-              <strong>Tầng 4 - Điều trị Biến chứng Hệ thống:</strong> Quản lý thiếu máu (Anemia), rối loạn khoáng chất xương (CKD-MBD), toan chuyển hóa và tăng kali máu.
-            </div>
-          </div>
+        <div class="kdigo-legend-wrap">
+          <span class="kdigo-legend-pill"><span class="kdigo-legend-dot dot-green"></span> <strong>Nguy cơ thấp (Xanh lá):</strong> Theo dõi 1 lần/năm*</span>
+          <span class="kdigo-legend-pill"><span class="kdigo-legend-dot dot-yellow"></span> <strong>Nguy cơ trung bình (Vàng):</strong> Theo dõi 1 lần/năm</span>
+          <span class="kdigo-legend-pill"><span class="kdigo-legend-dot dot-orange"></span> <strong>Nguy cơ cao (Cam):</strong> Theo dõi 2 lần/năm</span>
+          <span class="kdigo-legend-pill"><span class="kdigo-legend-dot dot-red"></span> <strong>Nguy cơ rất cao (Đỏ):</strong> Theo dõi 3 lần/năm</span>
+          <span class="kdigo-legend-pill"><span class="kdigo-legend-dot dot-darkred"></span> <strong>Nguy cơ cực cao (Đỏ sẫm):</strong> Theo dõi ≥ 4 lần/năm</span>
         </div>
+        <div class="kdigo-footnote">
+          * <em>Ghi chú:</em> Tần suất 1 lần/năm ở ô màu xanh lá áp dụng cho bệnh nhân đã được chẩn đoán CKD hoặc nhóm đối tượng có yếu tố nguy cơ tim mạch/chuyển hóa cao. Người bình thường khỏe mạnh không có chỉ định sàng lọc định kỳ.
+        </div>
+      </div>
 
-        <div class="sec-subtitle">2. Quy trình Theo Dõi Kali Máu &amp; eGFR Sau Khi Khởi Trị RASi</div>
-        
-        <div class="infobox danger">
-          <span class="infobox-icon">🚫</span>
-          <div>
-            <span class="rec-tag tag-1b">Recommendation 1.B</span>
-            <strong>Chống chỉ định Phối hợp Ức chế RAS kép:</strong> Tuyệt đối không phối hợp ACEi + ARB hoặc phối hợp với thuốc ức chế trực tiếp Renin (Aliskiren) do làm tăng nguy cơ tổn thương thận cấp (AKI) và tăng kali máu nặng.
+      <div class="sec-subtitle">2. Phân Biệt Sụt Giảm eGFR Ban Đầu (Dip) vs Tiến Triển Thực Sự</div>
+      
+      <div class="grid-2col" style="margin-bottom: 1.25rem;">
+        <div class="card-box">
+          <div class="card-box-title">📉 Sụt eGFR Huyết Động Ban Đầu (Dip ≤ 30%)</div>
+          <div style="font-size: 0.83rem; line-height: 1.6;">
+            <span class="rec-tag tag-pp">Practice Point 2.1.4</span><br />
+            • Khi khởi đầu các thuốc tác động lên huyết động cầu thận (thuốc ức chế men chuyển ACEi, chẹn thụ thể ARB, hoặc ức chế SGLT2i), mức giảm eGFR ban đầu <strong>lên đến 30% trong 2 – 4 tuần đầu</strong> là phản ứng sinh lý chấp nhận được (do giảm áp lực nội cầu thận để bảo vệ lâu dài).<br />
+            • <strong>Hành động:</strong> <em>Tuyệt đối không tự ý ngừng thuốc</em> nếu mức sụt eGFR &lt; 30% và kali máu ổn định.
           </div>
         </div>
 
         <div class="card-box">
-          <div class="card-box-title">⏱️ Các bước giám sát RASi (ACEi / ARB) sau 2 - 4 tuần khởi trị:</div>
+          <div class="card-box-title">🚨 Tiến Triển Bệnh Thực Sự (Decline &gt; 20%)</div>
+          <div style="font-size: 0.83rem; line-height: 1.6;">
+            <span class="rec-tag tag-pp">Practice Point 2.1.3</span><br />
+            • Một sự sụt giảm eGFR mạn tính <strong>&gt; 20%</strong> qua các lần kiểm tra liên tiếp vượt quá dao động sinh học/phòng xét nghiệm thông thường.<br />
+            • <strong>Hành động:</strong> Cần tiến hành đánh giá lâm sàng toàn diện: tìm kiếm nguyên nhân đợt cấp (mất nước, nhiễm trùng, thuốc độc thận), đánh giá lại mức độ albumin niệu, và tái tính toán nguy cơ tiến triển KFRE.
+          </div>
+        </div>
+      </div>
+
+      <div class="sec-subtitle">3. Ứng Dụng Phương Trình Nguy Cơ Suy Thận KFRE (Figure 14 KDIGO 2024)</div>
+      
+      <div class="infobox success" style="margin-bottom: 1rem;">
+        <span class="infobox-icon">🎯</span>
+        <div>
+          <span class="rec-tag tag-1a">Recommendation 2.2.1 - Class 1A</span>
+          <strong>Khuyến cáo Ưu tiên Dự báo Nguy cơ Tuyệt đối (Absolute Risk):</strong> Ở những bệnh nhân CKD giai đoạn G3-G5, KDIGO 2024 khuyến cáo sử dụng phương trình tiên lượng nguy cơ đã được xác thực bên ngoài (như <strong>KFRE - Kidney Failure Risk Equation</strong>) để ước tính nguy cơ tuyệt đối dẫn đến suy thận cần lọc máu/ghép thận thay vì chỉ nhìn vào mức eGFR đơn độc.
+        </div>
+      </div>
+
+      <div class="card-box" style="border-left: 4px solid var(--blue);">
+        <div class="card-box-title">⚡ 3 Ngưỡng Quyết Định Lâm Sàng Then Chốt Từ Phương Trình KFRE</div>
+        <div style="font-size: 0.85rem; line-height: 1.7;">
+          <strong>1. Ngưỡng KFRE 5 năm đạt 3% – 5%:</strong> <span class="rec-tag tag-pp">Practice Point 2.2.1</span><br />
+          &rarr; Ngưỡng chỉ định xem xét <strong>chuyển tuyến chuyên khoa Thận học</strong> để phối hợp quản lý và tối ưu hóa điều trị bảo tồn.<br />
+          <strong>2. Ngưỡng KFRE 2 năm &gt; 10%:</strong> <span class="rec-tag tag-pp">Practice Point 2.2.2</span><br />
+          &rarr; Ngưỡng xác định thời điểm bắt đầu đưa người bệnh vào <strong>Mô hình Chăm sóc Đa chuyên khoa tích hợp</strong> (Multidisciplinary Care Team: Bác sĩ Thận, Điều dưỡng chuyên khoa, Dược sĩ lâm sàng, Chuyên gia dinh dưỡng, Chuyên viên tâm lý xã hội).<br />
+          <strong>3. Ngưỡng KFRE 2 năm &gt; 40%:</strong> <span class="rec-tag tag-pp">Practice Point 2.2.3</span><br />
+          &rarr; Ngưỡng bắt đầu <strong>Giáo dục chi tiết về các phương pháp thay thế thận</strong>, tiến hành phẫu thuật tạo cầu nối mạch máu (AV Fistula), chuẩn bị ống thông thẩm phân phúc mạc hoặc đăng ký danh sách ghép thận chủ động trước lọc máu (preemptive kidney transplantation).
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  {/* SECTION 4 */}
+  <div class="sec-card" id="sec-4">
+    <div class="sec-hdr">
+      <span class="sec-hdr-icon">🛡️</span>
+      <h2 class="sec-title">Phần 4: Tiếp Cận Toàn Diện 4 Tầng &amp; Dược Lý Bảo Vệ Tim-Thận</h2>
+    </div>
+    <div class="sec-body">
+      
+      <div class="sec-subtitle">1. Sơ Đồ Tiếp Cận Toàn Diện 4 Tầng (Figure 18 KDIGO 2024)</div>
+
+      <div class="steps-list" style="margin-bottom: 1.25rem;">
+        <div class="step-item" style="border-left: 4px solid var(--blue);">
+          <div class="step-num" style="background: var(--blue);">1</div>
+          <div class="step-content">
+            <strong>Tầng 1: Lối Sống &amp; Dinh Dưỡng Nền Tảng (Lifestyle Modification)</strong><br />
+            • <strong>Chế độ ăn Plant-Based:</strong> Ưu tiên thực phẩm nguồn gốc thực vật, giàu chất xơ, hạn chế tối đa thực phẩm siêu chế biến (ultraprocessed foods) nhằm giảm sản sinh acid nội sinh và độc tố ure huyết.<br />
+            • <strong>Kiểm soát Protein:</strong> Duy trì <strong>0.8 g/kg/ngày</strong> cho người lớn CKD G3-G5 chưa lọc máu (<span class="rec-tag tag-2c">Class 2C</span>). Tránh chế độ ăn giàu đạm &gt; 1.3 g/kg/ngày. <em>Tuyệt đối không hạn chế đạm ở trẻ em bị CKD</em>.<br />
+            • <strong>Kiểm soát Muối (Natri):</strong> Lượng natri nạp vào <strong>&lt; 2 g/ngày</strong> (tương đương &lt; 5 g muối ăn/ngày) (<span class="rec-tag tag-2c">Class 2C</span>).<br />
+            • <strong>Vận động thể lực:</strong> Hoạt động thể chất cường độ trung bình tích lũy <strong>≥ 150 phút/tuần</strong> (<span class="rec-tag tag-1d">Class 1D</span>); trẻ em ≥ 60 phút/ngày. Cai hoàn toàn thuốc lá.
+          </div>
+        </div>
+
+        <div class="step-item" style="border-left: 4px solid var(--color-success, #10b981);">
+          <div class="step-num" style="background: var(--color-success, #10b981);">2</div>
+          <div class="step-content">
+            <strong>Tầng 2: Liệu Pháp Dược Lý Hàng Đầu Cho Hầu Hết Bệnh Nhân (First-Line Drugs)</strong><br />
+            • <strong>Thuốc ức chế SGLT2 (SGLT2i):</strong> Khởi trị cho tất cả BN CKD + ĐTĐ Típ 2 có eGFR ≥ 20 (<span class="rec-tag tag-1a">Class 1A</span>); BN CKD không ĐTĐ có eGFR ≥ 20 kèm ACR ≥ 200 mg/g (<span class="rec-tag tag-1a">Class 1A</span>); hoặc BN Suy tim ở mọi mức ACR. <em>Tiếp tục duy trì SGLT2i cho đến khi bắt đầu lọc máu hoặc ghép thận</em>.<br />
+            • <strong>Huyết áp Tâm thu Mục tiêu:</strong> Kiểm soát huyết áp tâm thu (SBP) <strong>&lt; 120 mmHg</strong> bằng đo chuẩn hóa tại phòng khám khi dung nạp được (<span class="rec-tag tag-2b">Class 2B</span>). Trẻ em: MAP ≤ bách phân vị 50 trên ABPM 24h (<span class="rec-tag tag-2c">Class 2C</span>).<br />
+            • <strong>Ức chế hệ Renin-Angiotensin (RASi: ACEi hoặc ARB):</strong> Tối ưu hóa đến liều tối đa dung nạp được cho BN có tăng huyết áp kèm albumin niệu (<span class="rec-tag tag-1b">Class 1B</span>).<br />
+            • <strong>Điều trị Statin:</strong> Khởi trị Statin cường độ trung bình/cao hoặc Statin/Ezetimibe cho người lớn ≥ 50 tuổi (<span class="rec-tag tag-1a">Class 1A</span>).
+          </div>
+        </div>
+
+        <div class="step-item" style="border-left: 4px solid var(--color-warning, #f59e0b);">
+          <div class="step-num" style="background: var(--color-warning, #f59e0b);">3</div>
+          <div class="step-content">
+            <strong>Tầng 3: Các Liệu Pháp Nhắm Mục Tiêu Bảo Vệ Tim - Thận Bổ Sung (Targeted Therapies)</strong><br />
+            • <strong>Đồng vận thụ thể GLP-1 (GLP-1 RA):</strong> Ưu tiên cho BN ĐTĐ Típ 2 kèm CKD chưa đạt mục tiêu HbA1c cá thể hóa dù đã dùng Metformin và SGLT2i (<span class="rec-tag tag-1b">Class 1B</span>).<br />
+            • <strong>ns-MRA (Finerenone):</strong> Kháng thụ thể mineralocorticoid không steroid cho người lớn ĐTĐ Típ 2 có eGFR &gt; 25, Kali bình thường và ACR tồn dư ≥ 30 mg/g dù đã dùng RASi tối ưu (<span class="rec-tag tag-2a">Class 2A</span>).<br />
+            • <strong>Phối hợp DHP-CCB / Lợi tiểu:</strong> Phối hợp thêm để đạt huyết áp mục tiêu &lt; 120 mmHg.<br />
+            • <strong>Aspirin liều thấp:</strong> Dự phòng thứ phát biến cố tim mạch ở BN có bệnh xơ vữa động mạch (ASCVD) đã xác lập (<span class="rec-tag tag-1c">Class 1C</span>).
+          </div>
+        </div>
+
+        <div class="step-item" style="border-left: 4px solid var(--color-purple, #8b5cf6);">
+          <div class="step-num" style="background: var(--color-purple, #8b5cf6);">4</div>
+          <div class="step-content">
+            <strong>Tầng 4: Điều Trị Biến Chứng Hệ Thống (Targeted Therapies for Complications)</strong><br />
+            • Quản lý toan chuyển hóa (Natri Bicarbonat khi HCO<sub>3</sub><sup>-</sup> &lt; 18 mmol/L), tăng kali máu mạn tính (SZC / Patiromer), thiếu máu (Sắt / ESA / HIF-PHI) và rối loạn khoáng chất xương (CKD-MBD).
+          </div>
+        </div>
+      </div>
+
+      <div class="sec-subtitle">2. Quy Trình Theo Dõi Creatinine &amp; Kali Sau Khởi Trị RASi (Figure 21 KDIGO 2024)</div>
+      
+      <div class="infobox alert" style="margin-bottom: 1rem;">
+        <span class="infobox-icon">⚠️</span>
+        <div>
+          <span class="rec-tag tag-1b">Recommendation 1.B</span>
+          <strong>Chống chỉ định Tuyệt đối Phối hợp Ức chế RAS kép:</strong> Không kết hợp ACEi cùng ARB, hoặc phối hợp với thuốc ức chế trực tiếp renin (Aliskiren) do làm tăng đáng kể nguy cơ tụt huyết áp nặng, tổn thương thận cấp và tăng kali máu gây tử vong.
+        </div>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="med-table">
+          <thead>
+            <tr>
+              <th>Tình Huống Sau 2 – 4 Tuần Khởi Trị / Tăng Liều RASi</th>
+              <th>Đánh Giá Lâm Sàng &amp; Hướng Xử Trí Chuẩn Hóa</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong style="color: var(--color-success, #10b981);">Tình huống 1: Kali bình thường &amp; eGFR giảm &lt; 30%</strong></td>
+              <td>• Đáp ứng huyết động thuận lợi. Tiếp tục tăng liều RASi dần đến liều tối đa được phê duyệt và dung nạp được để đạt hiệu quả bảo vệ tim-thận tối ưu.</td>
+            </tr>
+            <tr>
+              <td><strong style="color: var(--color-warning, #f59e0b);">Tình huống 2: Xuất hiện Tăng Kali Máu (K<sup>+</sup> &gt; 5.5 mmol/L)</strong></td>
+              <td>
+                • Rà soát và ngừng các thuốc giữ kali không cần thiết (NSAIDs, Trimethoprim).<br />
+                • Hạn chế lượng kali nạp vào từ chế độ ăn.<br />
+                • Phối hợp thêm: Thuốc lợi tiểu quai/thiazide, Natri bicarbonat (nếu có toan máu), hoặc các chất gắn kali trao đổi ion thế hệ mới (SZC hoặc Patiromer).<br />
+                • <em>Chỉ giảm liều hoặc ngừng RASi khi tất cả các biện pháp kiểm soát kali trên thất bại.</em>
+              </td>
+            </tr>
+            <tr>
+              <td><strong style="color: var(--red);">Tình huống 3: Mức giảm eGFR ≥ 30% trong vòng 4 tuần</strong></td>
+              <td>
+                • Đánh giá ngay các nguyên nhân gây tổn thương thận cấp (AKI): Tình trạng thiếu dịch/mất nước, dùng thuốc lợi tiểu quá liều, sử dụng đồng thời NSAIDs.<br />
+                • Siêu âm Doppler loại trừ hẹp động mạch thận hai bên.<br />
+                • Bồi phụ thể tích tuần hoàn. Chỉ giảm liều hoặc ngừng RASi nếu mức sụt eGFR không hồi phục sau khi đã can thiệp xử lý các yếu tố thúc đẩy.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="sec-subtitle">3. Chi Tiết Khuyến Cáo Khởi Trị SGLT2i &amp; Các Thuốc Mới</div>
+      
+      <div class="grid-2col">
+        <div class="card-box">
+          <div class="card-box-title">💊 SGLT2i (Dapagliflozin / Empagliflozin)</div>
+          <div style="font-size: 0.83rem; line-height: 1.6;">
+            • <strong>CKD + ĐTĐ Típ 2 (eGFR ≥ 20):</strong> <span class="rec-tag tag-1a">Class 1A</span>. Giảm rõ rệt tỷ lệ tử vong tim mạch và làm chậm tiến triển suy thận.<br />
+            • <strong>CKD không ĐTĐ (eGFR ≥ 20 + ACR ≥ 200 mg/g):</strong> <span class="rec-tag tag-1a">Class 1A</span>.<br />
+            • <strong>CKD có Suy tim đồng mắc (mọi mức ACR):</strong> <span class="rec-tag tag-1a">Class 1A</span>.<br />
+            • <strong>CKD eGFR 20 – 45 + ACR &lt; 200 mg/g:</strong> <span class="rec-tag tag-2b">Class 2B</span>.<br />
+            • <em>Lưu ý duy trì:</em> Không ngừng SGLT2i khi eGFR giảm dưới 20 ml/min; tiếp tục dùng cho đến khi bệnh nhân bắt đầu lọc máu hoặc ghép thận.
+          </div>
+        </div>
+
+        <div class="card-box">
+          <div class="card-box-title">🌿 ns-MRA (Finerenone) &amp; GLP-1 RA</div>
+          <div style="font-size: 0.83rem; line-height: 1.6;">
+            • <strong>ns-MRA (Finerenone):</strong> <span class="rec-tag tag-2a">Class 2A</span>. Chỉ định cho người lớn ĐTĐ Típ 2 có eGFR &gt; 25 ml/min/1.73 m², nồng độ kali máu bình thường, và albumin niệu dai dẳng (ACR ≥ 30 mg/g) dù đã tối ưu hóa liều RASi. Theo dõi kali máu sau 4 tuần khởi trị.<br />
+            • <strong>GLP-1 RA (Semaglutide / Dulaglutide):</strong> <span class="rec-tag tag-1b">Class 1B</span>. Chỉ định cho ĐTĐ Típ 2 kèm CKD chưa đạt mục tiêu HbA1c. Dữ liệu thử nghiệm FLOW chứng minh giảm biến cố thận và tử vong tim mạch.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  {/* SECTION 5 */}
+  <div class="sec-card" id="sec-5">
+    <div class="sec-hdr">
+      <span class="sec-hdr-icon">💊</span>
+      <h2 class="sec-title">Phần 5: Xử Trí Biến Chứng, An Toàn Thuốc &amp; Quy Tắc SADMANS</h2>
+    </div>
+    <div class="sec-body">
+      
+      <div class="sec-subtitle">1. Quản Lý Các Biến Chứng Hệ Thống Cốt Lõi</div>
+
+      <div class="grid-2col" style="margin-bottom: 1.25rem;">
+        <div class="card-box">
+          <div class="card-box-title">🧪 Toan Chuyển Hóa &amp; Rối Loạn Acid Uric</div>
           <div style="font-size: 0.83rem; line-height: 1.65;">
-            1. Tái kiểm tra Kali máu và Creatinine huyết thanh sau <strong>2 đến 4 tuần</strong>.<br />
-            2. <strong>Nếu Kali bình thường &amp; eGFR sụt &lt; 30%:</strong> Tiếp tục tăng liều RASi đến liều tối đa được phê duyệt để bảo vệ tim-thận.<br />
-            3. <strong>Nếu eGFR sụt ≥ 30%:</strong> Đánh giá nguyên nhân AKI (mất nước, dùng lợi tiểu quá mức, NSAID, hẹp động mạch thận). Bồi phụ thể tích. Chỉ giảm/ngừng RASi nếu mức giảm nghiêm trọng không hồi phục.<br />
-            4. <strong>Nếu Tăng Kali máu (&gt; 5.5 mmol/L):</strong> Xử trí tăng kali theo bậc thang (dinh dưỡng, lợi tiểu, Natri Bicarbonat, Potassium Binders). Chỉ giảm/ngừng RASi khi các biện pháp này thất bại.
+            • <strong>Toan chuyển hóa:</strong> Cân nhắc bù kiềm (Natri Bicarbonat đường uống) kết hợp điều chỉnh chế độ ăn khi nồng độ bicarbonate huyết thanh <strong>&lt; 18 mmol/L</strong>. <em>(Ngưỡng này được hạ so với mức &lt; 22 mmol/L trước đây nhằm tối ưu hóa an toàn, giảm nguy cơ giữ natri gây quá tải dịch và tăng huyết áp).</em><br />
+            • <strong>Tăng Acid Uric máu:</strong> Khuyến cáo điều trị thuốc hạ acid uric cho bệnh nhân CKD có tăng acid uric <em>có triệu chứng</em> (cơn gout cấp, tophi) (<span class="rec-tag tag-1c">Class 1C</span>). <strong>Tuyệt đối không dùng thuốc hạ acid uric cho BN tăng không triệu chứng</strong> chỉ nhằm mục đích làm chậm tiến triển CKD (<span class="rec-tag tag-2d">Class 2D</span>).
           </div>
         </div>
 
-      </div>
-    </div>
-
-    
-    <div class="sec-card" id="sec-5">
-      <div class="sec-hdr"><span class="sec-hdr-icon">💊</span> <h2 class="sec-title">Phần 5: Kiểm Soát Biến Chứng Hệ Thống &amp; Quy Tắc SADMANS</h2></div>
-      <div class="sec-body">
-        
-        <div class="sec-subtitle">1. Quản lý Biến chứng Hệ thống</div>
-        
-        <div class="grid-2col" style="margin-bottom: 1.25rem;">
-          <div class="card-box">
-            <div class="card-box-title">🧪 Toan Chuyển Hóa &amp; Acid Uric</div>
-            <div style="font-size: 0.83rem; line-height: 1.6;">
-              • <strong>Toan chuyển hóa:</strong> Điều trị bằng Natri Bicarbonat khi nồng độ Bicarbonate huyết thanh <strong>&lt; 18 mmol/L</strong> (ngưỡng mới hạ so với &lt; 22 mmol/L trước đây để giảm nguy cơ quá tải dịch).<br />
-              • <strong>Tăng Acid Uric:</strong> Chỉ điều trị thuốc khi có triệu chứng (Gout, sỏi uric) (<span class="rec-tag tag-1c">Rec 1C</span>). <em>Tuyệt đối không dùng hạ uric cho BN không triệu chứng</em> để làm chậm CKD (<span class="rec-tag tag-2d">Rec 2D</span>).
-            </div>
+        <div class="card-box">
+          <div class="card-box-title">🫀 Rối Loạn Lipid Máu &amp; Rung Nhĩ Đồng Mắc</div>
+          <div style="font-size: 0.83rem; line-height: 1.65;">
+            • <strong>Lipid máu:</strong> Người lớn ≥ 50 tuổi có eGFR &lt; 60 ml/min (G3a-G5): Khuyến cáo Statin đơn trị hoặc phối hợp Statin/Ezetimibe (<span class="rec-tag tag-1a">Class 1A</span>). Người lớn 18–49 tuổi: Chỉ dùng nếu có yếu tố nguy cơ tim mạch xơ vữa cao (<span class="rec-tag tag-2a">Class 2A</span>).<br />
+            • <strong>Chống kết tập tiểu cầu:</strong> Aspirin liều thấp dự phòng thứ phát cho BN có bệnh xơ vữa động mạch đã thiết lập (<span class="rec-tag tag-1c">Class 1C</span>).<br />
+            • <strong>Rung nhĩ kèm CKD G1-G4:</strong> Khuyến cáo ưu tiên thuốc kháng đông đường uống thế hệ mới (NOACs/DOACs) hơn Warfarin (<span class="rec-tag tag-1c">Class 1C</span>). Hiệu chỉnh liều theo ClCr ở giai đoạn G4-G5.
           </div>
-
-          <div class="card-box">
-            <div class="card-box-title">🫀 Rối Lượng Lipid &amp; Anticoagulation</div>
-            <div style="font-size: 0.83rem; line-height: 1.6;">
-              • <strong>Lipid máu:</strong> Người lớn ≥ 50 tuổi có eGFR &lt; 60: Khuyến cáo Statin hoặc Statin/Ezetimibe (<span class="rec-tag tag-1a">Rec 1A</span>).<br />
-              • <strong>Rung nhĩ kèm CKD G1-G4:</strong> Khuyến cáo ưu tiên sử dụng thuốc kháng đông đường uống thế hệ mới (NOACs/DOACs) hơn Warfarin (<span class="rec-tag tag-1c">Rec 1C</span>).
-            </div>
-          </div>
-        </div>
-
-        <div class="sec-subtitle">2. Quy Tắc Ngày Ốm (Sick Day Rules) - SADMANS</div>
-        
-        <div class="infobox warning">
-          <span class="infobox-icon">⚠️</span>
-          <div>
-            <strong>Quy tắc SADMANS trong Mất nước Cấp tính:</strong> Khi bệnh nhân bị sốt cao, nôn mửa, tiêu chảy cấp hoặc nguy cơ mất nước, cần hướng dẫn <strong>tạm ngừng ngay các nhóm thuốc SADMANS</strong> để tránh gây tổn thương thận cấp (AKI) hoặc ngộ độc tụt đường huyết / toan lactic. Tái khởi động lại thuốc khi sức khỏe bình phục.
-          </div>
-        </div>
-
-        <div class="table-wrapper">
-          <table class="med-table">
-            <thead>
-              <tr>
-                <th>Ký tự</th>
-                <th>Nhóm Thuốc</th>
-                <th>Nguy cơ chính khi mất nước</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td><strong>S</strong></td><td>Sulfonylureas (Gliclazide, Glimepiride...)</td><td>Tụt đường huyết nghiêm trọng do giảm thải trừ</td></tr>
-              <tr><td><strong>A</strong></td><td>ACEi (Thuốc ức chế men chuyển)</td><td>Tụt huyết áp, suy sụp eGFR cấp tính (AKI)</td></tr>
-              <tr><td><strong>D</strong></td><td>Diuretics (Thuốc lợi tiểu Quai / Thiazide)</td><td>Giảm thể tích tuần hoàn nặng, rối loạn điện giải</td></tr>
-              <tr><td><strong>M</strong></td><td>Metformin</td><td>Toan Lactic (Lactic Acidosis) đe dọa tính mạng</td></tr>
-              <tr><td><strong>A</strong></td><td>ARBs (Thuốc chẹn thụ thể Angiotensin)</td><td>Tụt huyết áp, suy sụp eGFR cấp tính (AKI)</td></tr>
-              <tr><td><strong>N</strong></td><td>NSAIDs (Thuốc giảm đau kháng viêm)</td><td>Co mạch thận cấp, gây AKI nặng</td></tr>
-              <tr><td><strong>S</strong></td><td>SGLT2i (Empagliflozin, Dapagliflozin...)</td><td>Mất nước, Nhiễm toan ceton huyết áp bình thường (eDKA)</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="sec-subtitle">3. An Toàn Thuốc Cản Quang &amp; Gadolinium MRI</div>
-        <div style="font-size: 0.83rem; line-height: 1.65; background: var(--color-surface-2, #f8fafc); padding: 1rem; border-radius: 10px; border: 1px solid var(--color-border, #cbd5e1);">
-          • <strong>Thuốc cản quang đường tĩnh mạch:</strong> Đánh giá nguy cơ CA-AKI trước khi chụp. Bồi phụ thể tích NaCl 0.9% trước và sau thủ thuật.<br />
-          • <strong>Chụp MRI dùng Gadolinium:</strong> Ở bệnh nhân có eGFR &lt; 30 ml/min/1.73m<sup>2</sup>, ưu tiên chọn chất cản từ thế hệ mới Nhóm II và III (độ ổn định cao) để triệt tiêu nguy cơ Xơ hóa hệ thống do thận (NSF).
-        </div>
-
-      </div>
-    </div>
-
-    
-    <div class="sec-card" id="sec-6">
-      <div class="sec-hdr"><span class="sec-hdr-icon">🏥</span> <h2 class="sec-title">Phần 6: Tiêu Chuẩn Chuyển Tuyến Thận Học &amp; Chuẩn Bị Thay Thế Thận (KRT)</h2></div>
-      <div class="sec-body">
-        
-        <div class="sec-subtitle">1. Tiêu Chuẩn Chuyển Tuyến Chuyên Khoa Thận Học</div>
-        
-        <div class="table-wrapper">
-          <table class="med-table">
-            <thead>
-              <tr>
-                <th>Phân nhóm Tiêu chí</th>
-                <th>Chỉ định Chuyển tuyến Chuyên khoa Thận cụ thể</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Nguyên nhân (Causes)</strong></td>
-                <td>• Nguyên nhân gây CKD chưa rõ ràng<br /> • Nghi ngờ hoặc xác định mắc bệnh thận di truyền (bệnh thận đa nang ADPKD, hội chứng Alport)<br /> • Tiền sử sỏi thận tái phát nhiều lần</td>
-              </tr>
-              <tr>
-                <td><strong>eGFR &amp; Nguy cơ</strong></td>
-                <td>• Nguy cơ suy thận KFRE 5 năm <strong>vượt quá 3% - 5%</strong><br /> • eGFR &lt; 30 ml/min/1.73m<sup>2</sup> (Giai đoạn G4 - G5)<br /> • Suy giảm eGFR mạn tính nhanh &gt; 20%</td>
-              </tr>
-              <tr>
-                <td><strong>Albumin niệu &amp; Nước tiểu</strong></td>
-                <td>• Có ACR ≥ 300 mg/g kèm tiểu máu vi thể chưa rõ nguyên nhân<br /> • Albumin niệu ACR &gt; 700 mg/g dai dẳng<br /> • Xuất hiện trụ hồng cầu hoặc hồng cầu niệu &gt; 20 cells/HPF dai dẳng</td>
-              </tr>
-              <tr>
-                <td><strong>Biến chứng kèm theo</strong></td>
-                <td>• Tăng huyết áp kháng trị (không đạt mục tiêu dù dùng phối hợp ≥ 4 thuốc)<br /> • Tăng kali máu dai dẳng hoặc rối loạn toan kiềm nặng<br /> • Thiếu máu / bệnh lý xương do thận mức độ trung bình-nặng</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="sec-subtitle">2. Kế Hoạch Chăm Sóc Thay Thế Thận (KRT) &amp; Chăm Sóc Bảo Tồn</div>
-        
-        <div class="grid-2col">
-          <div class="card-box">
-            <div class="card-box-title">👥 Mô hình Đa chuyên khoa (Multidisciplinary Care)</div>
-            <div style="font-size: 0.83rem; line-height: 1.6;">
-              Khi nguy cơ KFRE 2 năm <strong>&gt; 10%</strong>: Chuyển bệnh nhân vào mô hình chăm sóc đa chuyên khoa (Bác sĩ Thận, Điều dưỡng chuyên khoa, Dược sĩ lâm sàng, Chuyên gia dinh dưỡng, Hỗ trợ tâm lý).
-            </div>
-          </div>
-
-          <div class="card-box">
-            <div class="card-box-title">💉 Chuẩn bị KRT / AV Access</div>
-            <div style="font-size: 0.83rem; line-height: 1.6;">
-              Khi nguy cơ KFRE 2 năm <strong>&gt; 40%</strong> hoặc eGFR &lt; 15 – 20: Tiến hành giáo dục các phương pháp KRT (Lọc màng bụng, Thận nhân tạo, Ghép thận), phẫu thuật tạo cầu nối arteriovenous fistula (AVF) hoặc chuẩn bị ghép thận chủ động.
-            </div>
-          </div>
-        </div>
-
-        <div class="infobox info" style="margin-top: 1rem;">
-          <span class="infobox-icon">🕊️</span>
-          <div>
-            <strong>Chăm sóc Bảo tồn Toàn diện (Comprehensive Conservative Management - CCM):</strong> Đối với bệnh nhân lớn tuổi, frail (suy kiệt nặng) hoặc có nhiều bệnh lý đồng mắc nghiêm trọng không lựa chọn lọc máu, cung cấp mô hình CCM tập trung kiểm soát triệu chứng ure huyết (ngứa, mệt mỏi, chán ăn, buồn nôn, đau) nhằm tối ưu hóa chất lượng cuộc sống.
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    
-    <div class="widget-container" id="ckd-interactive-widget">
-      <div class="widget-title"><span>🧮</span> Công Cụ Tương Tác: Tra Cứu CGA Staging &amp; Ngưỡng Can Thiệp KFRE</div>
-      <div class="widget-desc">Nhập chỉ số eGFR và ACR của bệnh nhân để tự động xác định giai đoạn CGA, màu nguy cơ, tần suất theo dõi định kỳ và các khuyến cáo can thiệp chuẩn KDIGO 2024.</div>
-
-      <div class="widget-form">
-        <div class="form-group">
-          <label for="w-egfr">eGFR (ml/min/1.73m²)</label>
-          <input type="number" id="w-egfr" class="form-control" placeholder="VD: 42" value="42" />
-        </div>
-        <div class="form-group">
-          <label for="w-acr">ACR Nước tiểu (mg/g)</label>
-          <input type="number" id="w-acr" class="form-control" placeholder="VD: 150" value="150" />
-        </div>
-        <div class="form-group">
-          <label for="w-kfre2">Dự đoán KFRE 2 năm (%)</label>
-          <input type="number" id="w-kfre2" class="form-control" placeholder="VD: 12" value="12" />
         </div>
       </div>
 
-      <button class="btn-calc">Phân Giai Đoạn &amp; Tra Cứu Khuyến Cáo KDIGO</button>
-
-      <div class="widget-result" id="w-result">
-        
+      <div class="sec-subtitle">2. Xử Trí Tăng Kali Máu Mạn Tính Bậc Thang (Figure 32 KDIGO 2024)</div>
+      
+      <div class="card-box" style="margin-bottom: 1.25rem;">
+        <div class="card-box-title">🪜 Quy trình 3 Bậc Tiếp Cận Tăng Kali Máu (K<sup>+</sup> &gt; 5.5 mmol/L) Nhằm Bảo Tồn Thuốc Bảo Vệ Tim-Thận</div>
+        <div style="font-size: 0.85rem; line-height: 1.7;">
+          <strong>Bậc 1 (First-Line): Can thiệp các yếu tố điều chỉnh được</strong><br />
+          • Rà soát và ngừng các thuốc không thiết yếu làm tăng kali (NSAIDs, Trimethoprim, thuốc bổ sung kali).<br />
+          • Đánh giá chế độ ăn: Tư vấn hạn chế thực phẩm siêu chế biến có phụ gia chứa muối kali; tăng cường giáo dục bởi chuyên gia dinh dưỡng.<br />
+          <strong>Bậc 2: Can thiệp Dược lý Hỗ trợ</strong><br />
+          • Bổ sung thuốc lợi tiểu thải kali (Furosemide hoặc Thiazide).<br />
+          • Kiểm soát toan chuyển hóa bằng Natri Bicarbonat.<br />
+          • Sử dụng thuốc gắn kali thế hệ mới (Potassium Binders: <strong>Sodium Zirconium Cyclosilicate [SZC]</strong> hoặc <strong>Patiromer</strong>) giúp kiểm soát kali mạn tính an toàn và dung nạp tốt hơn Polystyrene Sulfonate.<br />
+          <strong>Bậc 3 (Last Resort - Giải pháp Cuối cùng):</strong><br />
+          • Chỉ xem xét giảm liều hoặc ngừng thuốc bảo vệ tim-thận (RASi, ns-MRA) khi các can thiệp ở Bậc 1 và Bậc 2 hoàn toàn thất bại. <em>(Lưu ý: Ngừng vĩnh viễn RASi làm tăng đáng kể nguy cơ biến cố tim mạch và tử vong toàn thể).</em>
+        </div>
       </div>
-    </div>
 
-    
-    <div class="citation-box">
-      <strong>Trích dẫn Tài liệu Tham khảo Chuẩn AMA:</strong><br />
-      1. Kidney Disease: Improving Global Outcomes (KDIGO) CKD Work Group. KDIGO 2024 Clinical Practice Guideline for the Evaluation and Management of Chronic Kidney Disease. <em>Kidney Int</em>. 2024;105(4S):S117-S314.<br />
-      2. Levin A, Ahmed SB, Carrero JJ, et al. Executive summary of the KDIGO 2024 Clinical Practice Guideline for the Evaluation and Management of Chronic Kidney Disease: known knowns and known unknowns. <em>Kidney Int</em>. 2024;105(4):684-701.<br />
-      3. Kidney Disease: Improving Global Outcomes Diabetes Work Group. KDIGO 2022 Clinical Practice Guideline for Diabetes Management in Chronic Kidney Disease. <em>Kidney Int</em>. 2022;102(5S):S1-S127.
-    </div>
+      <div class="sec-subtitle">3. Quy Tắc Ngày Ốm (Sick Day Rules) - Chữ Viết Tắt SADMANS</div>
+      
+      <div class="infobox alert">
+        <span class="infobox-icon">🚨</span>
+        <div>
+          <strong>Hướng Dẫn Tạm Ngừng Thuốc Trong Giai Đoạn Mất Nước Cấp:</strong>
+          Khi bệnh nhân CKD xuất hiện các tình trạng mất nước cấp tính (như <strong>sốt cao, nôn mửa, tiêu chảy cấp, hoặc ăn uống kém</strong>), cần hướng dẫn bệnh nhân <strong>tạm ngừng ngay các nhóm thuốc SADMANS</strong> để phòng ngừa tổn thương thận cấp (AKI), tụt huyết áp nặng hoặc ngộ độc thuốc đe dọa tính mạng. Thiết lập kế hoạch tái khởi động thuốc khi sức khỏe hồi phục.
+        </div>
+      </div>
 
+      <div class="table-wrapper" style="margin-bottom: 1.25rem;">
+        <table class="med-table">
+          <thead>
+            <tr>
+              <th style="width: 12%;">Ký Tự</th>
+              <th style="width: 38%;">Nhóm Thuốc Cụ Thể</th>
+              <th>Nguy Cơ Chính Khi Bị Mất Nước Cấp Tính</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>S</strong></td><td><strong>Sulfonylureas</strong> (Gliclazide, Glimepiride...)</td><td>Tụt đường huyết nghiêm trọng và kéo dài do giảm thải trừ qua thận.</td></tr>
+            <tr><td><strong>A</strong></td><td><strong>ACEi</strong> (Thuốc ức chế men chuyển: Enalapril, Perindopril...)</td><td>Tụt huyết áp nặng, giãn tiểu động mạch đi &rarr; suy sụp áp lực lọc cầu thận (AKI).</td></tr>
+            <tr><td><strong>D</strong></td><td><strong>Diuretics</strong> (Thuốc lợi tiểu: Furosemide, Indapamide...)</td><td>Gia tăng mất dịch, tụt huyết áp và rối loạn điện giải nghiêm trọng.</td></tr>
+            <tr><td><strong>M</strong></td><td><strong>Metformin</strong></td><td>Tích lũy thuốc gây <strong>Nhiễm toan Lactic (Lactic Acidosis)</strong> tử vong cao.</td></tr>
+            <tr><td><strong>A</strong></td><td><strong>ARBs</strong> (Thuốc chẹn thụ thể: Losartan, Telmisartan...)</td><td>Tương tự ACEi, làm mất cơ chế tự điều hòa cầu thận gây AKI cấp.</td></tr>
+            <tr><td><strong>N</strong></td><td><strong>NSAIDs</strong> (Kháng viêm: Ibuprofen, Celecoxib, Meloxicam...)</td><td>Co thắt tiểu động mạch đến của cầu thận &rarr; khởi phát hoại tử ống thận cấp.</td></tr>
+            <tr><td><strong>S</strong></td><td><strong>SGLT2i</strong> (Empagliflozin, Dapagliflozin...)</td><td>Tăng mất nước qua nước tiểu, kích hoạt <strong>Nhiễm toan ceton đường huyết bình thường (eDKA)</strong>.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="sec-subtitle">4. An Toàn Thuốc Cản Quang &amp; Gadolinium MRI</div>
+      <div style="font-size: 0.85rem; line-height: 1.65; background: var(--color-surface-2, #f8fafc); padding: 1rem; border-radius: 10px; border: 1px solid var(--color-border, #cbd5e1);">
+        • <strong>Thuốc cản quang iod đường tĩnh mạch:</strong> Đánh giá nguy cơ CA-AKI trước thủ thuật. Duy trì bù dịch đẳng trương NaCl 0.9% trước và sau can thiệp cho bệnh nhân có nguy cơ cao.<br />
+        • <strong>Chất cản từ Gadolinium trong chụp MRI:</strong> Ở bệnh nhân có eGFR &lt; 30 ml/min/1.73 m², bắt buộc ưu tiên sử dụng các chất cản từ thế hệ mới Nhóm II và Nhóm III (độ ổn định phân tử cao, macrocyclic) để triệt tiêu nguy cơ biến chứng <em>Xơ hóa hệ thống do thận (Nephrogenic Systemic Fibrosis - NSF)</em>.
+      </div>
+
+    </div>
   </div>
-<div style="margin-top: 1.5rem;">
-  <div class="btn-row">
-    <a href="#/ebm/kho-guidelines" class="btn btn-primary">
-      <i class="fa-solid fa-arrow-left"></i> Quay lại Kho Guidelines
-    </a>
-    <a href="#sec-1" class="btn">
-      <i class="fa-solid fa-arrow-up"></i> Lên đầu trang
-    </a>
+
+  {/* SECTION 6 */}
+  <div class="sec-card" id="sec-6">
+    <div class="sec-hdr">
+      <span class="sec-hdr-icon">🏥</span>
+      <h2 class="sec-title">Phần 6: Tiêu Chuẩn Chuyển Tuyến, Đa Chuyên Khoa &amp; Chuẩn Bị Thay Thế Thận</h2>
+    </div>
+    <div class="sec-body">
+      
+      <div class="sec-subtitle">1. Tiêu Chuẩn Chuyển Tuyến Chuyên Khoa Thận Học (Figure 48 KDIGO 2024)</div>
+      
+      <div class="table-wrapper" style="margin-bottom: 1.25rem;">
+        <table class="med-table">
+          <thead>
+            <tr>
+              <th style="width: 25%;">Nhóm Tiêu Chí</th>
+              <th>Chỉ Định Chuyển Tuyến Chuyên Khoa Thận Cụ Thể</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>1. Nguyên nhân (Causes)</strong></td>
+              <td>
+                • Nguyên nhân gây CKD chưa rõ ràng sau các bước đánh giá ban đầu.<br />
+                • Nghi ngờ hoặc xác định mắc bệnh thận di truyền (thận đa nang ADPKD, hội chứng Alport, bệnh Fabry).<br />
+                • Sỏi thận tái phát nhiều lần hoặc bệnh thận do sỏi.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>2. eGFR &amp; Nguy cơ Suy thận</strong></td>
+              <td>
+                • Nguy cơ tuyệt đối cần điều trị thay thế thận (KRT) trong <strong>5 năm vượt quá 3% – 5%</strong> trên thang điểm KFRE.<br />
+                • eGFR suy giảm nặng <strong>&lt; 30 ml/min/1.73 m² (Giai đoạn G4 – G5)</strong>.<br />
+                • Suy giảm chức năng thận nhanh chóng (giảm eGFR mạn tính &gt; 20%, hoặc giảm &gt; 30% khi dùng liệu pháp huyết động).
+              </td>
+            </tr>
+            <tr>
+              <td><strong>3. Albumin niệu &amp; Nước tiểu</strong></td>
+              <td>
+                • Xuất hiện đồng thời Albumin niệu đáng kể (ACR ≥ 300 mg/g) VÀ tiểu máu vi thể chưa rõ nguyên nhân.<br />
+                • Albumin niệu tăng gấp đôi liên tiếp trong các lần theo dõi.<br />
+                • Đo ACR nước tiểu tăng cao dai dẳng <strong>&gt; 700 mg/g</strong>.<br />
+                • Xuất hiện trụ hồng cầu hoặc hồng cầu niệu biến dạng &gt; 20 tế bào/HPF dai dẳng.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>4. Biến chứng Kèm theo</strong></td>
+              <td>
+                • Tăng huyết áp kháng trị (không đạt mục tiêu dù đã dùng phối hợp từ 4 nhóm thuốc hạ áp trở lên).<br />
+                • Rối loạn nồng độ kali máu hoặc toan kiềm nặng dai dẳng khó kiểm soát.<br />
+                • Thiếu máu do thận, suy dinh dưỡng hoặc rối loạn khoáng chất xương (CKD-MBD) mức độ trung bình – nặng.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="sec-subtitle">2. Kế Hoạch Chuẩn Bị Thay Thế Thận (KRT) &amp; Chăm Sóc Bảo Tồn Toàn Diện</div>
+      
+      <div class="grid-2col" style="margin-bottom: 1.25rem;">
+        <div class="card-box">
+          <div class="card-box-title">👥 Mô Hình Chăm Sóc Đa Chuyên Khoa (KFRE 2y &gt; 10%)</div>
+          <div style="font-size: 0.83rem; line-height: 1.65;">
+            Khi nguy cơ suy thận 2 năm <strong>&gt; 10%</strong>, người bệnh cần được tiếp cận mô hình chăm sóc đa chuyên khoa (Bác sĩ Thận, Điều dưỡng chuyên khoa Thận, Dược sĩ lâm sàng, Chuyên gia dinh dưỡng và Cán bộ hỗ trợ tâm lý xã hội) để kiểm soát biến chứng, tối ưu hóa dinh dưỡng và chuẩn bị tâm lý.
+          </div>
+        </div>
+
+        <div class="card-box">
+          <div class="card-box-title">💉 Chuẩn Bị KRT &amp; Đường Vào Mạch Máu (KFRE 2y &gt; 40%)</div>
+          <div style="font-size: 0.83rem; line-height: 1.65;">
+            Khi nguy cơ suy thận 2 năm <strong>&gt; 40%</strong> hoặc eGFR &lt; 15 – 20 ml/min/1.73 m²: Bắt đầu chương trình giáo dục về các phương thức thay thế thận (Thận nhân tạo HD, Thẩm phân phúc mạc PD, Ghép thận), tiến hành lập kế hoạch phẫu thuật tạo cầu nối động tĩnh mạch (AV Fistula) và chuẩn bị ghép thận chủ động (preemptive transplantation).
+          </div>
+        </div>
+      </div>
+
+      <div class="infobox info">
+        <span class="infobox-icon">🕊️</span>
+        <div>
+          <strong>Chăm Sóc Bảo Tồn Toàn Diện (Comprehensive Conservative Management - CCM):</strong>
+          Đối với những bệnh nhân lớn tuổi, suy kiệt thể chất nặng (frail) hoặc có nhiều bệnh lý đồng mắc nghiêm trọng đồng thuận không lựa chọn lọc máu, cần cung cấp mô hình Chăm sóc bảo tồn toàn diện. Mô hình này tập trung vào <strong>kiểm soát tích cực các triệu chứng ure huyết</strong> (mệt mỏi, ngứa uremic, chán ăn, buồn nôn, đau mạn tính, mất ngủ) và hỗ trợ tâm lý xã hội nhằm nâng cao tối đa chất lượng cuộc sống (QoL) trong giai đoạn cuối thay vì kéo dài sự sống cơ học.
+        </div>
+      </div>
+
+    </div>
   </div>
+
+  {/* SECTION 7 */}
+  <div class="sec-card" id="sec-7">
+    <div class="sec-hdr">
+      <span class="sec-hdr-icon">📚</span>
+      <h2 class="sec-title">Phần 7: Tổng Hợp Thử Nghiệm Lâm Sàng &amp; Tài Liệu Tham Khảo AMA</h2>
+    </div>
+    <div class="sec-body">
+      
+      <div class="sec-subtitle">1. Các Thử Nghiệm Lâm Sàng Bản Lề Kiến Tạo Khuyến Cáo KDIGO 2024</div>
+      
+      <div class="table-wrapper" style="margin-bottom: 1.25rem;">
+        <table class="med-table">
+          <thead>
+            <tr>
+              <th>Thử Nghiệm (Năm)</th>
+              <th>Quần Thể Bệnh Nhân</th>
+              <th>Can Thiệp Nghiên Cứu</th>
+              <th>Kết Quả Cốt Lõi (HR / RRR / p-value)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>DAPA-CKD (2020)</strong></td>
+              <td>4,304 BN CKD (ĐTĐ và không ĐTĐ) có eGFR 25–75, ACR 200–5000</td>
+              <td>Dapagliflozin 10 mg vs Placebo</td>
+              <td><strong>HR = 0.61 (p &lt; 0.001)</strong> giảm tiêu chí gộp biến cố thận và tử vong tim mạch.</td>
+            </tr>
+            <tr>
+              <td><strong>EMPA-KIDNEY (2022)</strong></td>
+              <td>6,609 BN CKD rộng (eGFR 20–45 hoặc eGFR 45–90 kèm ACR ≥ 200)</td>
+              <td>Empagliflozin 10 mg vs Placebo</td>
+              <td><strong>HR = 0.72 (p &lt; 0.001)</strong> giảm tiến triển bệnh thận hoặc tử vong do tim mạch.</td>
+            </tr>
+            <tr>
+              <td><strong>FIDELIO &amp; FIGARO-DKD (2020/2021)</strong></td>
+              <td>13,000+ BN ĐTĐ Típ 2 kèm CKD nhiều giai đoạn</td>
+              <td>Finerenone (ns-MRA) vs Placebo</td>
+              <td><strong>HR = 0.82 (FIDELIO)</strong> và <strong>HR = 0.87 (FIGARO)</strong> giảm biến cố thận &amp; tim mạch.</td>
+            </tr>
+            <tr>
+              <td><strong>FLOW (2024)</strong></td>
+              <td>3,533 BN ĐTĐ Típ 2 kèm CKD có albumin niệu cao</td>
+              <td>Semaglutide 1.0 mg tiêm dưới da hàng tuần vs Placebo</td>
+              <td><strong>HR = 0.76 (p = 0.0003)</strong> giảm 24% nguy cơ biến cố thận lớn và tử vong tim mạch.</td>
+            </tr>
+            <tr>
+              <td><strong>SPRINT (2015/2021)</strong></td>
+              <td>9,361 BN Tăng huyết áp có nguy cơ tim mạch cao (bao gồm nhóm CKD)</td>
+              <td>Hạ áp tích cực (SBP &lt; 120) vs Chuẩn (&lt; 140)</td>
+              <td>Giảm 25% biến cố tim mạch và giảm 27% tử vong do mọi nguyên nhân.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="sec-subtitle">2. Bảng Tổng Hợp Cấp Độ Khuyến Cáo KDIGO 2024 (COR / LOE)</div>
+      
+      <div class="table-wrapper" style="margin-bottom: 1.25rem;">
+        <table class="med-table">
+          <thead>
+            <tr>
+              <th style="width: 20%;">Mục Khuyến Cáo</th>
+              <th style="width: 15%;">Cấp Độ (COR / LOE)</th>
+              <th>Nội Dung Tóm Tắt Khuyến Cáo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Phương trình eGFR</strong></td>
+              <td><span class="rec-tag tag-1d">Class 1D</span></td>
+              <td>Sử dụng phương trình GFR xác thực; tuyệt đối không dùng yếu tố chủng tộc (Race-free).</td>
+            </tr>
+            <tr>
+              <td><strong>Sinh thiết Thận</strong></td>
+              <td><span class="rec-tag tag-2d">Class 2D</span></td>
+              <td>Thực hiện sinh thiết thận như xét nghiệm an toàn để xác định nguyên nhân khi có chỉ định.</td>
+            </tr>
+            <tr>
+              <td><strong>Phương trình KFRE</strong></td>
+              <td><span class="rec-tag tag-1a">Class 1A</span></td>
+              <td>Ứng dụng phương trình KFRE ước tính nguy cơ tuyệt đối suy thận cho CKD G3–G5.</td>
+            </tr>
+            <tr>
+              <td><strong>SGLT2i (ĐTĐ T2D)</strong></td>
+              <td><span class="rec-tag tag-1a">Class 1A</span></td>
+              <td>Khởi trị SGLT2i cho T2D + CKD có eGFR ≥ 20 ml/min; tiếp tục đến khi lọc máu/ghép thận.</td>
+            </tr>
+            <tr>
+              <td><strong>SGLT2i (Không ĐTĐ)</strong></td>
+              <td><span class="rec-tag tag-1a">Class 1A</span></td>
+              <td>Khởi trị SGLT2i cho CKD không ĐTĐ có eGFR ≥ 20 kèm ACR ≥ 200 mg/g hoặc suy tim.</td>
+            </tr>
+            <tr>
+              <td><strong>Mục tiêu Huyết áp</strong></td>
+              <td><span class="rec-tag tag-2b">Class 2B</span></td>
+              <td>Kiểm soát huyết áp tâm thu (SBP) &lt; 120 mmHg bằng đo chuẩn hóa tại phòng khám.</td>
+            </tr>
+            <tr>
+              <td><strong>Khởi trị RASi</strong></td>
+              <td><span class="rec-tag tag-1b">Class 1B</span></td>
+              <td>Khởi trị RASi liều tối đa dung nạp cho ĐTĐ kèm ACR A2/A3 hoặc không ĐTĐ kèm ACR A3.</td>
+            </tr>
+            <tr>
+              <td><strong>ns-MRA (Finerenone)</strong></td>
+              <td><span class="rec-tag tag-2a">Class 2A</span></td>
+              <td>Phối hợp Finerenone cho ĐTĐ T2D có eGFR &gt; 25, Kali bình thường và ACR ≥ 30 mg/g trên nền RASi.</td>
+            </tr>
+            <tr>
+              <td><strong>GLP-1 RA</strong></td>
+              <td><span class="rec-tag tag-1b">Class 1B</span></td>
+              <td>Sử dụng GLP-1 RA tác dụng kéo dài cho ĐTĐ T2D + CKD chưa đạt mục tiêu HbA1c.</td>
+            </tr>
+            <tr>
+              <td><strong>Statin / Ezetimibe</strong></td>
+              <td><span class="rec-tag tag-1a">Class 1A</span></td>
+              <td>Điều trị Statin đơn trị hoặc phối hợp Statin/Ezetimibe cho người lớn ≥ 50 tuổi có CKD G3–G5.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="citation-box">
+        <strong>Trích dẫn Tài liệu Tham khảo Chuẩn AMA:</strong><br />
+        1. Kidney Disease: Improving Global Outcomes (KDIGO) CKD Work Group. KDIGO 2024 Clinical Practice Guideline for the Evaluation and Management of Chronic Kidney Disease. <em>Kidney Int</em>. 2024;105(4S):S117-S314.<br />
+        2. Levin A, Ahmed SB, Carrero JJ, et al. Executive summary of the KDIGO 2024 Clinical Practice Guideline for the Evaluation and Management of Chronic Kidney Disease: known knowns and known unknowns. <em>Kidney Int</em>. 2024;105(4):684-701.<br />
+        3. Kidney Disease: Improving Global Outcomes Diabetes Work Group. KDIGO 2022 Clinical Practice Guideline for Diabetes Management in Chronic Kidney Disease. <em>Kidney Int</em>. 2022;102(5S):S1-S127.<br />
+        4. Heerspink HJL, Stefánsson BV, Correa-Rotter R, et al. Dapagliflozin in Patients with Chronic Kidney Disease. <em>N Engl J Med</em>. 2020;383(15):1436-1446.<br />
+        5. The EMPA-KIDNEY Collaborative Group. Empagliflozin in Patients with Chronic Kidney Disease. <em>N Engl J Med</em>. 2023;388(2):117-127.<br />
+        6. Bakris GL, Agarwal R, Anker SD, et al. Effect of Finerenone on Chronic Kidney Disease Outcomes in Type 2 Diabetes. <em>N Engl J Med</em>. 2020;383(23):2219-2229.<br />
+        7. Perkovic V, Tuttle KR, Rossing P, et al. Effects of Semaglutide on Chronic Kidney Disease in Patients with Type 2 Diabetes. <em>N Engl J Med</em>. 2024;391(2):109-121.
+      </div>
+
+    </div>
+  </div>
+
+  {/* INTERACTIVE CDSS WIDGET */}
+  <div class="widget-container" id="ckd-interactive-widget" style="margin-top: 2rem;">
+    <div class="widget-title"><span>🧮</span> Công Cụ Tương Tác CDSS: Tra Cứu CGA Staging &amp; Khuyến Cáo KDIGO 2024</div>
+    <div class="widget-desc">Nhập chỉ số eGFR, ACR nước tiểu và nguy cơ KFRE 2 năm dự đoán để tự động phân tầng nguy cơ, xác định tần suất khám định kỳ và đưa ra các khuyến cáo can thiệp dược lý cá thể hóa.</div>
+
+    <div class="widget-form">
+      <div class="form-group">
+        <label for="w-egfr">eGFR (ml/min/1.73m²)</label>
+        <input type="number" id="w-egfr" class="form-control" placeholder="VD: 38" value="38" />
+      </div>
+      <div class="form-group">
+        <label for="w-acr">ACR Nước tiểu (mg/g)</label>
+        <input type="number" id="w-acr" class="form-control" placeholder="VD: 180" value="180" />
+      </div>
+      <div class="form-group">
+        <label for="w-kfre2">Dự đoán KFRE 2 năm (%)</label>
+        <input type="number" id="w-kfre2" class="form-control" placeholder="VD: 12" value="12" />
+      </div>
+    </div>
+
+    <button class="btn-calc" id="btn-calc-kdigo">Phân Giai Đoạn CGA &amp; Tra Cứu Khuyến Cáo KDIGO</button>
+
+    <div class="widget-result" id="w-result" style="display: block; margin-top: 1.25rem;">
+      {/* Dynamic result rendered by JavaScript */}
+    </div>
+  </div>
+
+  <div style="margin-top: 1.5rem;">
+    <div class="btn-row">
+      <a href="#/ebm/kho-guidelines" class="btn btn-primary">
+        <i class="fa-solid fa-arrow-left"></i> Quay lại Kho Guidelines
+      </a>
+      <a href="#sec-1" class="btn">
+        <i class="fa-solid fa-arrow-up"></i> Lên đầu trang
+      </a>
+    </div>
+  </div>
+
 </div>
+
+<script>
+  function calculateKDIGO() {
+    const egfrInput = document.getElementById('w-egfr');
+    const acrInput = document.getElementById('w-acr');
+    const kfreInput = document.getElementById('w-kfre2');
+    const resultDiv = document.getElementById('w-result');
+
+    if (!egfrInput || !acrInput || !resultDiv) return;
+
+    const egfr = parseFloat(egfrInput.value) || 0;
+    const acr = parseFloat(acrInput.value) || 0;
+    const kfre2 = parseFloat(kfreInput ? kfreInput.value : '0') || 0;
+
+    let gCategory = '';
+    let gDesc = '';
+    if (egfr >= 90) { gCategory = 'G1'; gDesc = 'Bình thường hoặc cao (≥ 90)'; }
+    else if (egfr >= 60) { gCategory = 'G2'; gDesc = 'Giảm nhẹ (60–89)'; }
+    else if (egfr >= 45) { gCategory = 'G3a'; gDesc = 'Giảm nhẹ đến vừa (45–59)'; }
+    else if (egfr >= 30) { gCategory = 'G3b'; gDesc = 'Giảm vừa đến nặng (30–44)'; }
+    else if (egfr >= 15) { gCategory = 'G4'; gDesc = 'Giảm nặng (15–29)'; }
+    else { gCategory = 'G5'; gDesc = 'Suy thận (< 15)'; }
+
+    let aCategory = '';
+    let aDesc = '';
+    if (acr < 30) { aCategory = 'A1'; aDesc = 'Bình thường / Tăng nhẹ (< 30 mg/g)'; }
+    else if (acr <= 300) { aCategory = 'A2'; aDesc = 'Tăng trung bình (30–300 mg/g)'; }
+    else { aCategory = 'A3'; aDesc = 'Tăng nghiêm trọng (> 300 mg/g)'; }
+
+    // Risk Color Matrix
+    let riskColor = '';
+    let riskLevel = '';
+    let frequency = '';
+
+    if (gCategory === 'G1' || gCategory === 'G2') {
+      if (aCategory === 'A1') { riskColor = '#10b981'; riskLevel = 'Nguy cơ thấp (Xanh lá)'; frequency = '1 lần/năm (nếu có yếu tố nguy cơ)'; }
+      else if (aCategory === 'A2') { riskColor = '#f59e0b'; riskLevel = 'Nguy cơ trung bình (Vàng)'; frequency = '1 lần/năm'; }
+      else { riskColor = '#ea580c'; riskLevel = 'Nguy cơ cao (Cam)'; frequency = '2 lần/năm'; }
+    } else if (gCategory === 'G3a') {
+      if (aCategory === 'A1') { riskColor = '#f59e0b'; riskLevel = 'Nguy cơ trung bình (Vàng)'; frequency = '1 lần/năm'; }
+      else if (aCategory === 'A2') { riskColor = '#ea580c'; riskLevel = 'Nguy cơ cao (Cam)'; frequency = '2 lần/năm'; }
+      else { riskColor = '#dc2626'; riskLevel = 'Nguy cơ rất cao (Đỏ)'; frequency = '3 lần/năm'; }
+    } else if (gCategory === 'G3b') {
+      if (aCategory === 'A1') { riskColor = '#ea580c'; riskLevel = 'Nguy cơ cao (Cam)'; frequency = '2 lần/năm'; }
+      else { riskColor = '#dc2626'; riskLevel = 'Nguy cơ rất cao (Đỏ)'; frequency = '3 lần/năm'; }
+    } else if (gCategory === 'G4') {
+      if (aCategory === 'A1' || aCategory === 'A2') { riskColor = '#dc2626'; riskLevel = 'Nguy cơ rất cao (Đỏ)'; frequency = '3 lần/năm'; }
+      else { riskColor = '#991b1b'; riskLevel = 'Nguy cơ cực cao (Đỏ sẫm)'; frequency = '≥ 4 lần/năm (Thường quy mỗi 1-3 tháng)'; }
+    } else {
+      riskColor = '#991b1b'; riskLevel = 'Nguy cơ cực cao (Đỏ sẫm)'; frequency = '≥ 4 lần/năm (Chuẩn bị KRT)';
+    }
+
+    let recommendations = [];
+    if (egfr >= 20) {
+      recommendations.push('<strong>SGLT2i (Dapagliflozin/Empagliflozin):</strong> Khởi trị bảo vệ tim-thận (Class 1A). Duy trì đến khi lọc máu.');
+    }
+    if (aCategory === 'A2' || aCategory === 'A3') {
+      recommendations.push('<strong>RASi (ACEi hoặc ARB):</strong> Tối ưu liều tối đa dung nạp được (Class 1B). Kiểm tra lại K+ & eGFR sau 2–4 tuần.');
+    }
+    recommendations.push('<strong>Huyết áp Mục tiêu:</strong> Kiểm soát SBP < 120 mmHg chuẩn hóa (Class 2B).');
+    recommendations.push('<strong>Dinh dưỡng:</strong> Protein 0.8 g/kg/ngày (nếu G3-G5 chưa lọc máu), Muối Natri < 2 g/ngày (< 5 g muối ăn).');
+
+    if (kfre2 > 40 || egfr < 20) {
+      recommendations.push('<strong style="color: #dc2626;">KFRE 2 năm > 40%:</strong> Chuẩn bị thay thế thận (KRT), phẫu thuật tạo AVF, đăng ký ghép thận chủ động (Practice Point 2.2.3).');
+    } else if (kfre2 > 10) {
+      recommendations.push('<strong style="color: #ea580c;">KFRE 2 năm > 10%:</strong> Đưa vào Mô hình Chăm sóc Đa chuyên khoa tích hợp (Practice Point 2.2.2).');
+    }
+
+    resultDiv.innerHTML = `
+      <div style="background: var(--color-surface-2, #f8fafc); padding: 1.25rem; border-radius: 10px; border: 1px solid var(--color-border, #cbd5e1);">
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem;">
+          <h4 style="margin: 0; font-size: 1.1rem; color: var(--color-text);">Kết Quả Phân Tầng CGA: <span style="color: var(--color-primary);">${gCategory}${aCategory}</span></h4>
+          <span style="background: ${riskColor}; color: #fff; padding: 0.3rem 0.75rem; border-radius: 20px; font-weight: 700; font-size: 0.85rem;">${riskLevel}</span>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem; margin-bottom: 1rem; font-size: 0.85rem;">
+          <div><strong>Mức lọc GFR:</strong> ${gDesc}</div>
+          <div><strong>Albumin niệu:</strong> ${aDesc}</div>
+          <div><strong>Tần suất theo dõi:</strong> ${frequency}</div>
+        </div>
+        <div style="border-top: 1px solid var(--color-border, #cbd5e1); padding-top: 0.75rem;">
+          <strong style="color: var(--color-primary); font-size: 0.9rem;">Khuyến Cáo Lâm Sàng Cá Thể Hóa KDIGO 2024:</strong>
+          <ul style="margin: 0.5rem 0 0 1.25rem; padding: 0; font-size: 0.85rem; line-height: 1.6;">
+            ${recommendations.map(r => `<li>${r}</li>`).join('')}
+          </ul>
+        </div>
+      </div>
+    `;
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('btn-calc-kdigo');
+    if (btn) {
+      btn.addEventListener('click', calculateKDIGO);
+    }
+    calculateKDIGO();
+  });
+</script>

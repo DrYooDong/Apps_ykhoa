@@ -12,6 +12,26 @@ import { Study } from './guidelines-types';
 export const KHO_GUIDELINES_STATIC: Study[] = [
   // --- TIM MẠCH & CHUYỂN HÓA (CARDIO / METABOLIC) ---
   {
+    id: '2026-esc-cvd-ckd',
+    title: 'ESC 2026: Hướng Dẫn Quản Lý Bệnh Tim Mạch Ở Bệnh Nhân Bệnh Thận Mạn (CVD & CKD)',
+    titleEn: '2026 ESC Guidelines for the management of cardiovascular disease in patients with chronic kidney disease',
+    sourceType: 'intl-guideline',
+    specialty: 'cardio',
+    design: 'guideline',
+    impact: 'practice-changing',
+    year: 2026,
+    organization: 'Hội Tim mạch Châu Âu (ESC)',
+    journal: 'Eur Heart J',
+    file: '2026-esc-cvd-ckd.html',
+    conditionKey: 'cardiorenal-syndrome',
+    icd10: ['I50', 'N18', 'I25', 'I10', 'E11'],
+    intervention: 'Chiến lược STAMP on CKD, Phác đồ Suy tim HFrEF/HFpEF/DHF theo eGFR, Hạ áp SBP 120-129 mmHg, Hạ lipid Statin/Ezetimibe/PCSK9i, Bổ sung sắt truyền tĩnh mạch, Kháng đông DOAC theo chức năng thận',
+    primaryEndpoint: 'Giảm tử vong tim mạch, giảm tái nhập viện vì suy tim, làm chậm tiến triển suy thận và tối ưu hóa an toàn điều trị',
+    keyResults: 'SGLT2i cho mọi BN suy tim eGFR ≥ 20 bất kể LVEF (Class I, A); Hạ áp SBP 120–129 mmHg (Class I, A); Giải áp DHF định hướng Natri niệu uNa ≥ 70 mmol/L; Sắt IV trong HFrEF thiếu sắt (Class IIa, B1).',
+    summary: 'Hướng dẫn thực hành lâm sàng toàn diện ESC 2026 về hội chứng Tim - Thận: Khung tiếp cận STAMP on CKD, phân tầng nguy cơ SCORE2/KFRE, phác đồ điều trị suy tim và suy tim mất bù, kiểm soát huyết áp & lipid, an toàn thuốc và mô hình chăm sóc đa chuyên khoa.',
+    detailedConclusion: 'Tầm soát eGFR + uACR hệ thống cho 100% bệnh nhân tim mạch; duy trì SGLT2i/ARNI khi eGFR sụt giảm; tiếp tục lợi tiểu trong suy tim cấp dù creatinine tăng nhẹ nếu đáp ứng tốt.'
+  },
+  {
     id: '2026-esc-udmi-nmct',
     title: 'Đồng Thuận Toàn Cầu Lần Thứ 5 Về Định Nghĩa Nhồi Máu Cơ Tim (Fifth UDMI 2026)',
     titleEn: 'Fifth Universal Definition of Myocardial Infarction (2026) — Joint ESC/ACC/AHA/WHF Task Force',

@@ -776,7 +776,8 @@
     .heatmap-cell-label.cor-2b { background: #fef3c7; color: #b45309; }
     .heatmap-cell-label.cor-3 { background: #ffe4e6; color: #be123c; }
 
-    .heatmap-cell {
+    .heatmap-grid .heatmap-cell,
+    .radar-heatmap .heatmap-cell {
       background: var(--color-surface);
       border: 1.5px solid var(--color-divider);
       border-radius: 10px;
@@ -790,19 +791,22 @@
       justify-content: center;
     }
 
-    .heatmap-cell:hover {
+    .heatmap-grid .heatmap-cell:hover,
+    .radar-heatmap .heatmap-cell:hover {
       border-color: var(--radar-primary);
       transform: translateY(-2px);
       box-shadow: var(--shadow-sm);
     }
 
-    .heatmap-cell.cell-active {
+    .heatmap-grid .heatmap-cell.cell-active,
+    .radar-heatmap .heatmap-cell.cell-active {
       border-color: var(--radar-accent);
       background: #f0fdf4;
       box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.3);
     }
 
-    .heatmap-cell .count-val {
+    .heatmap-grid .heatmap-cell .count-val,
+    .radar-heatmap .heatmap-cell .count-val {
       font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: 1.1rem;
       font-weight: 800;
@@ -810,7 +814,8 @@
       line-height: 1;
     }
 
-    .heatmap-cell .cell-desc {
+    .heatmap-grid .heatmap-cell .cell-desc,
+    .radar-heatmap .heatmap-cell .cell-desc {
       font-size: 0.68rem;
       color: var(--color-text-muted);
       margin-top: 0.25rem;
