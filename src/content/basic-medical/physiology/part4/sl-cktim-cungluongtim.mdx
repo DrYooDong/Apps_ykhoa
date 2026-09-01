@@ -79,17 +79,38 @@ sections:
 
 Ở tần số tim nghỉ ngơi **75 nhịp/phút**, mỗi chu kỳ tim kéo dài **$0.8\text{ giây}$**, bao gồm 2 giai đoạn chính:
 
-```
-[1 CHU KỲ TIM = 0.8 GIÂY]
-  │
-  ├──► TÂM THU (Systole - 0.3 giây / Thất co tống máu):
-  │       ├── 1. Pha Co Đẳng Tích (0.05s): Đóng van AV (T1), Áp lực thất tăng vọt, Thể tích không đổi
-  │       └── 2. Pha Tống Máu (0.25s): Mở van ĐMC & ĐMP, tống 70 mL máu vào đại tuần hoàn
-  │
-  └──► TÂM TRƯƠNG (Diastole - 0.5 giây / Thất giãn nhận máu):
-          ├── 3. Pha Giãn Đẳng Tích (0.05s): Đóng van ĐMC & ĐMP (T2), Áp lực thất tụt nhanh
-          └── 4. Pha Đổ Đầy Thất (0.45s): Mở van AV, Đổ đầy nhanh (T3) + Đổ đầy chậm + Nhĩ thu (T4)
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: CHU KỲ TIM = 0.8 GIÂY</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 154" width="880" height="154" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: 1 CHU KỲ TIM = 0.8 GIÂY -->
+      <rect x="160.75" y="20" width="558.5" height="96" rx="10" fill="var(--blue-bg, #eff6ff)" stroke="var(--blue, #0284c7)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-primary, #0284c7)">1 CHU KỲ TIM = 0.8 GIÂY</text>
+      <text x="184.75" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ├──► TÂM THU (Systole - 0.3 giây / Thất co tống máu):</text>
+      <text x="184.75" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ├── 3. Pha Giãn Đẳng Tích (0.05s): Đóng van ĐMC &amp; ĐMP (T2),</text>
+      <text x="184.75" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  Áp lực thất tụt nhanh</text>
+    </svg>
+  </div>
+</div>
 
 | Pha chu kỳ tim | Trạng thái Van Tim | Biến đổi Áp lực Tâm Thất Trái | Biến đổi Thể tích Tâm Thất Trái |
 |---|---|---|---|
@@ -106,19 +127,43 @@ sections:
 
 Vòng lặp Áp suất - Thể tích (Pressure-Volume Loop) là công cụ kinh điển khảo sát toàn diện huyết động học tâm thất trái:
 
-```
-Áp lực Thất Trái (mmHg)
-  120 ┌────────────────── C ────── D (Van ĐMC đóng - T2 / ESV = 50mL)
-      │                  /        │
-      │                 /         │
-   80 ┼── B (Van ĐMC mở)          │ (Giãn đẳng tích)
-      │   │                       │
-      │   │ (Co đẳng tích)        │
-   10 ┼── A (Van 2 lá đóng - T1)──┴── E (Van 2 lá mở)
-    0 └───┴───────────────────────┴──────── Thể tích Thất Trái (mL)
-         ESV (50mL)              EDV (120mL)
-          ◄────── SV = 70mL ──────►
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: 2. Biểu Đồ Wiggers &amp; Vòng Lặp PV Loop</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 244" width="880" height="244" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: Áp lực Thất Trái (mmHg) -->
+      <rect x="160.75" y="20" width="558.5" height="186" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Áp lực Thất Trái (mmHg)</text>
+      <text x="184.75" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• 120 ┌────────────────── C ────── D (Van ĐMC đóng - T2 / ESV</text>
+      <text x="184.75" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  = 50mL)</text>
+      <text x="184.75" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• 80 ┼── B (Van ĐMC mở) │ (Giãn đẳng tích)</text>
+      <text x="184.75" y="118" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• 10 ┼── A (Van 2 lá đóng - T1)──┴── E (Van 2 lá mở)</text>
+      <text x="184.75" y="136" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• 0 └───┴───────────────────────┴──────── Thể tích Thất Trái</text>
+      <text x="184.75" y="154" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  (mL)</text>
+      <text x="184.75" y="172" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ESV (50mL) EDV (120mL)</text>
+      <text x="184.75" y="190" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ◄────── SV = 70mL ──────►</text>
+    </svg>
+  </div>
+</div>
 
 - **Thể tích cuối tâm trương (EDV - End-Diastolic Volume)**: Thể tích máu tối đa trong tâm thất trước khi bắt đầu co bóp (**$\approx 120\text{ mL}$**).
 - **Thể tích cuối tâm thu (ESV - End-Systolic Volume)**: Thể tích máu còn lại trong tâm thất sau khi tống máu (**$\approx 50\text{ mL}$**).
@@ -153,17 +198,59 @@ $$\text{Tăng Tiền Tải (EDV)} \quad \Longrightarrow \quad \text{Kéo căng s
 
 ## 4. Tiền Tải, Hậu Tải & Sức Co Bóp Cơ Tim {#sec-4}
 
-```
-                                [THỂ TÍCH NHÁT BÓP (STROKE VOLUME)]
-                                                │
-         ┌──────────────────────────────────────┼──────────────────────────────────────┐
-         ▼                                      ▼                                      ▼
-[1. TIỀN TẢI (PRELOAD)]                 [2. HẬU TẢI (AFTERLOAD)]              [3. SỨC CO BÓP (INOTROPY)]
-  • Độ căng cơ tâm thất cuối tâm trương    • Sức cản dòng máu tống ra (SVR)      • Lực co cơ tim nội tại (Calci)
-  • Tăng bởi: Tăng hồi lưu tĩnh mạch,      • Tăng bởi: Tăng huyết áp, Hẹp van    • Tăng bởi: Giao cảm, Digoxin, Dopamine
-    Truyền dịch, Suy tim ứ dịch              động mạch chủ, Co mạch ngoại vi     • Giảm bởi: Thiếu máu cục bộ, Thuốc
-  • TÁC ĐỘNG: TĂNG SV                      • TÁC ĐỘNG: GIẢM SV & TĂNG ESV          chẹn beta, Suy tim HFrEF
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: THỂ TÍCH NHÁT BÓP (STROKE VOLUME)</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 230" width="880" height="230" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: THỂ TÍCH NHÁT BÓP (STROKE VOLU -->
+      <rect x="250" y="20" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">THỂ TÍCH NHÁT BÓP (STROKE VOLUME)</text>
+      <path d="M 440 66 L 440 80 L 155 80 L 155 94" fill="none" stroke="var(--red, #ef4444)" stroke-width="1.8" marker-end="url(#arrRed)"/>
+      <path d="M 440 80 L 440 80 L 440 94" fill="none" stroke="var(--amber, #f59e0b)" stroke-width="1.8" marker-end="url(#arrAmber)"/>
+      <path d="M 440 80 L 725 80 L 725 94" fill="none" stroke="var(--red, #ef4444)" stroke-width="1.8" marker-end="url(#arrRed)"/>
+      <rect x="30" y="94" width="250" height="98" rx="8" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.5"/>
+      <text x="155" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--red, #dc2626)">1. TIỀN TẢI (PRELOAD)</text>
+      <line x1="45" y1="124" x2="265" y2="124" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="42" y="140" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Độ căng cơ tâm thất cuối tâm trươ</text>
+      <text x="42" y="158" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Tăng bởi: Tăng hồi lưu tĩnh mạch,</text>
+      <text x="42" y="176" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Truyền dịch, Suy tim ứ dịch</text>
+      <text x="42" y="194" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• TÁC ĐỘNG: TĂNG SV</text>
+      <rect x="315" y="94" width="250" height="98" rx="8" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
+      <text x="440" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--amber, #d97706)">2. HẬU TẢI (AFTERLOAD)</text>
+      <line x1="330" y1="124" x2="550" y2="124" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="327" y="140" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• ng    • Sức cản dòng máu tống ra (SVR</text>
+      <text x="327" y="158" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Tăng bởi: Tăng huyết áp, Hẹp van</text>
+      <text x="327" y="176" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• động mạch chủ, Co mạch ngoại vi</text>
+      <text x="327" y="194" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• TÁC ĐỘNG: GIẢM SV &amp; TĂNG</text>
+      <rect x="600" y="94" width="250" height="98" rx="8" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.5"/>
+      <text x="725" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--red, #dc2626)">3. SỨC CO BÓP (INOTROPY)</text>
+      <line x1="615" y1="124" x2="835" y2="124" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="612" y="140" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• )      • Lực co cơ tim nội tại (Calci)</text>
+      <text x="612" y="158" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Tăng bởi: Giao cảm, Digoxin, Dopamine</text>
+      <text x="612" y="176" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Giảm bởi: Thiếu máu cục bộ, Thuốc</text>
+      <text x="612" y="194" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• ESV          chẹn beta, Suy tim HFrEF</text>
+    </svg>
+  </div>
+</div>
 
 
 ---

@@ -118,39 +118,93 @@ Cổ trướng (Ascites) là sự tích tụ dịch bệnh lý trong khoang phú
 
 Thuyết giãn mạch ngoại vi (Peripheral Arterial Vasodilation Hypothesis) là mô hình sinh lý bệnh kinh điển giải thích toàn diện chuỗi biến đổi huyết động hệ thống dẫn đến sự hình thành cổ trướng:
 
-```
-[XƠ GAN ➔ TĂNG SỨC CẢN NỘI GAN ➔ TĂNG ÁP CỬA (HVPG ≥ 8 mmHg)]
-                              │
-                              ▼
-[LỰC MA SÁT DÒNG CHẢY KÍCH HOẠT eNOS TẠI TIỂU ĐỘNG MẠCH TẠNG]
-                              │
-                              ▼
-[GIÃN MẠCH TẠNG NẶNG NỀ (SPLANCHNIC VASODILATION) DO THỪA NO]
-                              │
-                              ▼
-[Ứ ĐỌNG MÁU KHỔNG LỒ TẠI HỆ TẠNG ➔ GIẢM THỂ TÍCH ĐỘNG MẠCH HỮU HIỆU (EABV)]
-                              │
-                              ▼
-[KÍCH HOẠT 3 HỆ THỐNG THẦN KINH - THỂ DỊCH GIỮ MUỐI NƯỚC TẠI THẬN]
-                              │
-       ┌──────────────────────┼──────────────────────┐
-       ▼                      ▼                      ▼
-    [HỆ RAAS]              [HỆ SNS]              [ADH / VASOPRESSIN]
-- Tăng Aldosterone     - Co mạch thận         - Gắn thụ thể V2 ống góp
-- Tái hấp thu Natri    - Giảm mức lọc GFR     - Chèn kênh Aquaporin-2
-  ở ống lượn xa          và giữ thêm Natri    - GIỮ NƯỚC TỰ DO (Hạ Natri máu)
-       │                      │                      │
-       └──────────────────────┼──────────────────────┘
-                              │
-                              ▼
-     [Ứ TRỆ NƯỚC VÀ MUỐI TOÀN THÂN (SODIUM & WATER RETENTION)]
-                              │
-                              ▼
-[TĂNG ÁP LỰC THỦY TĨNH XOANG GAN + GIẢM ALBUMIN MÁU ➔ RÒ RỈ DỊCH QUA BAO GLISSON]
-                              │
-                              ▼
-                    [HÌNH THÀNH CỔ TRƯỚNG]
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: XƠ GAN ➔ TĂNG SỨC CẢN NỘI GAN ➔ TĂNG ÁP CỬA (HVPG ≥ 8 mmHg)</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 832" width="880" height="832" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: XƠ GAN ➔ TĂNG SỨC CẢN NỘI GAN  -->
+      <rect x="155" y="20" width="570" height="60" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">XƠ GAN ➔ TĂNG SỨC CẢN NỘI GAN ➔ TĂNG ÁP CỬA (HVPG ≥ 8</text>
+      <text x="440" y="60" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--amber, #d97706)">mmHg)</text>
+      <line x1="440" y1="80" x2="440" y2="108" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: LỰC MA SÁT DÒNG CHẢY KÍCH HOẠT -->
+      <rect x="150" y="108" width="580" height="60" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
+      <text x="440" y="130" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">LỰC MA SÁT DÒNG CHẢY KÍCH HOẠT eNOS TẠI TIỂU ĐỘNG MẠCH</text>
+      <text x="440" y="148" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--amber, #d97706)">TẠNG</text>
+      <line x1="440" y1="168" x2="440" y2="196" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: GIÃN MẠCH TẠNG NẶNG NỀ (SPLANC -->
+      <rect x="165" y="196" width="550" height="60" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.8"/>
+      <text x="440" y="218" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">GIÃN MẠCH TẠNG NẶNG NỀ (SPLANCHNIC VASODILATION) DO</text>
+      <text x="440" y="236" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--red, #dc2626)">THỪA NO</text>
+      <line x1="440" y1="256" x2="440" y2="284" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: Ứ ĐỌNG MÁU KHỔNG LỒ TẠI HỆ TẠN -->
+      <rect x="160" y="284" width="560" height="60" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
+      <text x="440" y="306" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">Ứ ĐỌNG MÁU KHỔNG LỒ TẠI HỆ TẠNG ➔ GIẢM THỂ TÍCH ĐỘNG</text>
+      <text x="440" y="324" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--amber, #d97706)">MẠCH HỮU HIỆU (EABV)</text>
+      <line x1="440" y1="344" x2="440" y2="372" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: KÍCH HOẠT 3 HỆ THỐNG THẦN KINH -->
+      <rect x="145" y="372" width="590" height="60" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
+      <text x="440" y="394" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">KÍCH HOẠT 3 HỆ THỐNG THẦN KINH - THỂ DỊCH GIỮ MUỐI NƯỚC</text>
+      <text x="440" y="412" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--amber, #d97706)">TẠI THẬN</text>
+      <path d="M 440 432 L 440 446 L 155 446 L 155 460" fill="none" stroke="var(--amber, #f59e0b)" stroke-width="1.8" marker-end="url(#arrAmber)"/>
+      <path d="M 440 446 L 440 446 L 440 460" fill="none" stroke="var(--amber, #f59e0b)" stroke-width="1.8" marker-end="url(#arrAmber)"/>
+      <path d="M 440 446 L 725 446 L 725 460" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <rect x="30" y="460" width="250" height="98" rx="8" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
+      <text x="155" y="482" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--amber, #d97706)">HỆ RAAS</text>
+      <line x1="45" y1="490" x2="265" y2="490" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="42" y="506" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Tăng Aldosterone</text>
+      <text x="42" y="524" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Tái hấp thu Natri</text>
+      <text x="42" y="542" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• ở ống lượn xa</text>
+      <text x="42" y="560" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• └──────────</text>
+      <rect x="315" y="460" width="250" height="98" rx="8" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
+      <text x="440" y="482" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--amber, #d97706)">HỆ SNS</text>
+      <line x1="330" y1="490" x2="550" y2="490" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="327" y="506" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Co mạch thận</text>
+      <text x="327" y="524" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Giảm mức lọc GFR</text>
+      <text x="327" y="542" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• và giữ thêm Natri    - GI</text>
+      <text x="327" y="560" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• ────────────┼─────</text>
+      <rect x="600" y="460" width="250" height="98" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="725" y="482" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text, #0f172a)">ADH / VASOPRESSIN</text>
+      <line x1="615" y1="490" x2="835" y2="490" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="612" y="506" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Gắn thụ thể V2 ống góp</text>
+      <text x="612" y="524" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Chèn kênh Aquaporin-2</text>
+      <text x="612" y="542" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Ữ NƯỚC TỰ DO (Hạ Natri máu)</text>
+      <text x="612" y="560" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• ─────────────────┘</text>
+      <line x1="440" y1="558" x2="440" y2="586" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: Ứ TRỆ NƯỚC VÀ MUỐI TOÀN THÂN ( -->
+      <rect x="145" y="586" width="590" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="608" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Ứ TRỆ NƯỚC VÀ MUỐI TOÀN THÂN (SODIUM &amp; WATER RETENTION)</text>
+      <line x1="440" y1="632" x2="440" y2="660" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: TĂNG ÁP LỰC THỦY TĨNH XOANG GA -->
+      <rect x="145" y="660" width="590" height="60" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
+      <text x="440" y="682" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">TĂNG ÁP LỰC THỦY TĨNH XOANG GAN + GIẢM ALBUMIN MÁU ➔ RÒ</text>
+      <text x="440" y="700" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--amber, #d97706)">RỈ DỊCH QUA BAO GLISSON</text>
+      <line x1="440" y1="720" x2="440" y2="748" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: HÌNH THÀNH CỔ TRƯỚNG -->
+      <rect x="250" y="748" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="770" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">HÌNH THÀNH CỔ TRƯỚNG</text>
+    </svg>
+  </div>
+</div>
 
 ### 2.1. Động Lực Học Starling Tại Màng Mao Mạch Xoang Gan
 - Xoang gan là các mao mạch có cấu trúc đặc biệt với nhiều lỗ thủng lớn (fenestrae) và không có màng đáy hoàn chỉnh, khiến hệ số thấm protein rất cao.
@@ -163,29 +217,72 @@ Thuyết giãn mạch ngoại vi (Peripheral Arterial Vasodilation Hypothesis) l
 
 Nghiên cứu hiện đại chỉ ra rằng cổ trướng không chỉ là một rối loạn huyết động đơn thuần mà còn do **phản ứng viêm toàn thân (Systemic Inflammation)** thúc đẩy:
 
-```
-[TĂNG ÁP CỬA ➔ PHÙ NỀ NIÊM MẠC RUỘT & RỐI LOẠN HỆ VI SINH (DYSBIOSIS)]
-                               │
-                               ▼
-[TĂNG TÍNH THẤM THÀNH RUỘT (LEAKY GUT SYNDROME)]
-                               │
-                               ▼
-[DỊCH CHUYỂN VI KHUẨN & NỘI ĐỘC TỐ (PAMPs / LPS) VÀO HẠCH MẠC TREO VÀ TUẦN HOÀN]
-                               │
-                               ▼
-[KÍCH HOẠT ĐẠI THỰC BÀO & BẠCH CẦU ➔ BÃO CYTOKINE (TNF-α, IL-6, IL-1β)]
-                               │
-            ┌──────────────────┴──────────────────┐
-            ▼                                     ▼
-[KHUẾCH ĐẠI GIÃN MẠCH TẠNG QUA iNOS]   [ĐỘC TÍNH CƠ TIM (CIRRHOTIC CARDIOMYOPATHY)]
-- Tăng NO toàn thân                    - Suy giảm co bóp cơ tim
-- Sụt giảm EABV trầm trọng hơn         - Thất bại cung lượng tim đáp ứng
-            │                                     │
-            └──────────────────┬──────────────────┘
-                               │
-                               ▼
-             [TIẾN TRIỂN THÀNH CỔ TRƯỚNG KHÁNG TRỊ & HRS]
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: TĂNG ÁP CỬA ➔ PHÙ NỀ NIÊM MẠC RUỘT &amp; RỐI LOẠN HỆ VI SINH (DYSBIOSIS)</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 586" width="880" height="586" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: TĂNG ÁP CỬA ➔ PHÙ NỀ NIÊM MẠC  -->
+      <rect x="165" y="20" width="550" height="60" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">TĂNG ÁP CỬA ➔ PHÙ NỀ NIÊM MẠC RUỘT &amp; RỐI LOẠN HỆ VI</text>
+      <text x="440" y="60" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--amber, #d97706)">SINH (DYSBIOSIS)</text>
+      <line x1="440" y1="80" x2="440" y2="108" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: TĂNG TÍNH THẤM THÀNH RUỘT (LEA -->
+      <rect x="190" y="108" width="500" height="46" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
+      <text x="440" y="130" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">TĂNG TÍNH THẤM THÀNH RUỘT (LEAKY GUT SYNDROME)</text>
+      <line x1="440" y1="154" x2="440" y2="182" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: DỊCH CHUYỂN VI KHUẨN &amp; NỘI ĐỘC -->
+      <rect x="165" y="182" width="550" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="204" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">DỊCH CHUYỂN VI KHUẨN &amp; NỘI ĐỘC TỐ (PAMPs / LPS) VÀO</text>
+      <text x="440" y="222" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--color-text, #0f172a)">HẠCH MẠC TREO VÀ TUẦN HOÀN</text>
+      <line x1="440" y1="242" x2="440" y2="270" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: KÍCH HOẠT ĐẠI THỰC BÀO &amp; BẠCH  -->
+      <rect x="180" y="270" width="520" height="60" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
+      <text x="440" y="292" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">KÍCH HOẠT ĐẠI THỰC BÀO &amp; BẠCH CẦU ➔ BÃO CYTOKINE</text>
+      <text x="440" y="310" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--amber, #d97706)">(TNF-α, IL-6, IL-1β)</text>
+      <!-- Bifurcation Path -->
+      <path d="M 440 330 L 440 344 L 235 344 L 235 358" fill="none" stroke="var(--amber, #f59e0b)" stroke-width="1.8" marker-end="url(#arrAmber)"/>
+      <path d="M 440 344 L 645 344 L 645 358" fill="none" stroke="var(--red, #ef4444)" stroke-width="1.8" marker-end="url(#arrRed)"/>
+      <!-- Left Column: KHUẾCH ĐẠI GIÃN MẠCH TẠNG QUA  -->
+      <rect x="40" y="358" width="390" height="116" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
+      <text x="235" y="380" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">KHUẾCH ĐẠI GIÃN MẠCH TẠNG QUA iNOS</text>
+      <line x1="60" y1="394" x2="410" y2="394" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="60" y="410" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Tăng NO toàn thân</text>
+      <text x="60" y="428" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Sụt giảm EABV trầm trọng hơn</text>
+      <text x="60" y="446" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• └────────────</text>
+      <!-- Right Column: ĐỘC TÍNH CƠ TIM (CIRRHOTIC CAR -->
+      <rect x="450" y="358" width="390" height="116" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.5"/>
+      <text x="645" y="380" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">ĐỘC TÍNH CƠ TIM (CIRRHOTIC</text>
+      <text x="645" y="398" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">CARDIOMYOPATHY)</text>
+      <line x1="470" y1="412" x2="820" y2="412" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="470" y="428" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Suy giảm co bóp cơ tim</text>
+      <text x="470" y="446" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Thất bại cung lượng tim đáp ứng</text>
+      <text x="470" y="464" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ──────┬──────────────────┘</text>
+      <line x1="440" y1="474" x2="440" y2="502" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: TIẾN TRIỂN THÀNH CỔ TRƯỚNG KHÁ -->
+      <rect x="210" y="502" width="460" height="46" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.8"/>
+      <text x="440" y="524" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">TIẾN TRIỂN THÀNH CỔ TRƯỚNG KHÁNG TRỊ &amp; HRS</text>
+    </svg>
+  </div>
+</div>
 
 ---
 

@@ -87,20 +87,63 @@ Hội chứng Dumping (Dumping Syndrome) là biến chứng phổ biến sau cá
 
 Xuất hiện rất sớm trong vòng **10 đến 30 phút ngay sau khi ăn**:
 
-```
-[MẤT CƠ THẮT MÔN VỊ ➔ THỨC ĂN CHƯA TIÊU HÓA ƯU TRƯƠNG TỐNG NHANH XUỐNG HỖNG TRÀNG]
-                                     │
-                                     ▼
-[HÚT NƯỚC CỰC NHANH TỪ LÒNG MẠCH VÀO LÒNG RUỘT NON (KHOẢNG 1 LÍT DỊCH / 30 PHÚT)]
-                                     │
-       ┌─────────────────────────────┴─────────────────────────────┐
-       ▼                                                           ▼
-[GIẢM THỂ TÍCH TUẦN HOÀN CẤP TÍNH]                          [CĂNG GIÃN CƠ HỌC QUANH HỖNG TRÀNG]
-- Tụt huyết áp động mạch                                     - Giải phóng Serotonin, VIP, Substance P, Bradykinin
-- Nhịp tim nhanh phản xạ bù trừ                              - Giãn mạch da: Đỏ bừng mặt (Flushing), vã mồ hôi
-- Choáng váng, hoa mắt, ngất thoáng qua                      - TĂNG CO BÓP NHU ĐỘNG RUỘT DỮ DỘI
-- Đòi hỏi bệnh nhân phải nằm nghỉ ngay                       - ĐAU BỤNG QUẶN THẮT & TIÊU CHẢY PHÂN NƯỚC XỐI XẢ
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: MẤT CƠ THẮT MÔN VỊ ➔ THỨC ĂN CHƯA TIÊU HÓA ƯU TRƯƠNG TỐNG NHANH XUỐNG HỖNG TRÀNG</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 404" width="880" height="404" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: MẤT CƠ THẮT MÔN VỊ ➔ THỨC ĂN C -->
+      <rect x="160" y="20" width="560" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">MẤT CƠ THẮT MÔN VỊ ➔ THỨC ĂN CHƯA TIÊU HÓA ƯU TRƯƠNG</text>
+      <text x="440" y="60" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--color-text, #0f172a)">TỐNG NHANH XUỐNG HỖNG TRÀNG</text>
+      <line x1="440" y1="80" x2="440" y2="108" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: HÚT NƯỚC CỰC NHANH TỪ LÒNG MẠC -->
+      <rect x="175" y="108" width="530" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="130" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">HÚT NƯỚC CỰC NHANH TỪ LÒNG MẠCH VÀO LÒNG RUỘT NON</text>
+      <text x="440" y="148" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--color-text, #0f172a)">(KHOẢNG 1 LÍT DỊCH / 30 PHÚT)</text>
+      <!-- Bifurcation Path -->
+      <path d="M 440 168 L 440 182 L 235 182 L 235 196" fill="none" stroke="var(--amber, #f59e0b)" stroke-width="1.8" marker-end="url(#arrAmber)"/>
+      <path d="M 440 182 L 645 182 L 645 196" fill="none" stroke="var(--amber, #f59e0b)" stroke-width="1.8" marker-end="url(#arrAmber)"/>
+      <!-- Left Column: GIẢM THỂ TÍCH TUẦN HOÀN CẤP TÍ -->
+      <rect x="40" y="196" width="390" height="170" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
+      <text x="235" y="218" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">GIẢM THỂ TÍCH TUẦN HOÀN CẤP TÍNH</text>
+      <line x1="60" y1="232" x2="410" y2="232" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="60" y="248" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Tụt huyết áp động mạch</text>
+      <text x="60" y="266" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Nhịp tim nhanh phản xạ bù trừ</text>
+      <text x="60" y="284" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Choáng váng, hoa mắt, ngất thoáng qua</text>
+      <text x="60" y="302" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Đòi hỏi bệnh nhân phải nằm nghỉ ngay</text>
+      <!-- Right Column: CĂNG GIÃN CƠ HỌC QUANH HỖNG TR -->
+      <rect x="450" y="196" width="390" height="170" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
+      <text x="645" y="218" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">CĂNG GIÃN CƠ HỌC QUANH HỖNG TRÀNG</text>
+      <line x1="470" y1="232" x2="820" y2="232" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="470" y="248" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Giải phóng Serotonin, VIP, Substance</text>
+      <text x="470" y="266" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• P, Bradykinin</text>
+      <text x="470" y="284" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Giãn mạch da: Đỏ bừng mặt (Flushing),</text>
+      <text x="470" y="302" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• vã mồ hôi</text>
+      <text x="470" y="320" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• TĂNG CO BÓP NHU ĐỘNG RUỘT DỮ DỘI</text>
+      <text x="470" y="338" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ĐAU BỤNG QUẶN THẮT &amp; TIÊU CHẢY PHÂN</text>
+      <text x="470" y="356" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• NƯỚC XỐI XẢ</text>
+    </svg>
+  </div>
+</div>
 
 ---
 
@@ -108,28 +151,65 @@ Xuất hiện rất sớm trong vòng **10 đến 30 phút ngay sau khi ăn**:
 
 Xuất hiện muộn khoảng **1 đến 3 giờ sau khi ăn**, thường sau bữa ăn giàu carbohydrate hấp thu nhanh:
 
-```
-[CARBOHYDRATE ĐƯỢC TỐNG XUỐNG VÀ HẤP THU Ồ ẠT TẠI HỖNG TRÀNG / HỒI TRÀNG]
-                                    │
-                                    ▼
-[ĐƯỜNG HUYẾT TĂNG VỌT ĐỘT NGỘT (HYPERGLYCEMIC SPIKE)]
-                                    │
-                                    ▼
-[TẾ BÀO L HỒI TRÀNG TIẾT QUÁ MỨC INCRETIN: GLP-1 & GIP]
-                                    │
-                                    ▼
-[KÍCH HOẠT TẾ BÀO BETA TUYẾN TỤY PHÓNG THÍCH LƯỢNG KHỔNG LỒ INSULIN (BÃO INSULIN)]
-                                    │
-                                    ▼
-[GLUCOSE BỊ ĐƯA NHANH VÀO CƠ & MÔ MỠ TRONG KHI NỒNG ĐỘ INSULIN VẪN CAO TRONG MÁU]
-                                    │
-                                    ▼
-[ĐƯỜNG HUYẾT TỤT DỐC KHÔNG PHANH ➔ HẠ ĐƯỜNG HUYẾT PHẢN ỨNG (REACTIVE HYPOGLYCEMIA)]
-(Glucose máu sụt giảm &lt; 50 mg/dL hoặc &lt; 2.8 mmol/L)
-                                    │
-                                    ▼
-[BÙNG PHÁT CƠN PHẢN ỨNG GIAO CẢM: RUN TAY, VÃ MỒ HÔI LẠNH, ĐÁNH TRỐNG NGỰC, LÚ LẪN]
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: CARBOHYDRATE ĐƯỢC TỐNG XUỐNG VÀ HẤP THU Ồ ẠT TẠI HỖNG TRÀNG / HỒI TRÀNG</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 636" width="880" height="636" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: CARBOHYDRATE ĐƯỢC TỐNG XUỐNG V -->
+      <rect x="155" y="20" width="570" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">CARBOHYDRATE ĐƯỢC TỐNG XUỐNG VÀ HẤP THU Ồ ẠT TẠI HỖNG</text>
+      <text x="440" y="60" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--color-text, #0f172a)">TRÀNG / HỒI TRÀNG</text>
+      <line x1="440" y1="80" x2="440" y2="108" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: ĐƯỜNG HUYẾT TĂNG VỌT ĐỘT NGỘT  -->
+      <rect x="165" y="108" width="550" height="46" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
+      <text x="440" y="130" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">ĐƯỜNG HUYẾT TĂNG VỌT ĐỘT NGỘT (HYPERGLYCEMIC SPIKE)</text>
+      <line x1="440" y1="154" x2="440" y2="182" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: TẾ BÀO L HỒI TRÀNG TIẾT QUÁ MỨ -->
+      <rect x="155" y="182" width="570" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="204" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">TẾ BÀO L HỒI TRÀNG TIẾT QUÁ MỨC INCRETIN: GLP-1 &amp; GIP</text>
+      <line x1="440" y1="228" x2="440" y2="256" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: KÍCH HOẠT TẾ BÀO BETA TUYẾN TỤ -->
+      <rect x="145" y="256" width="590" height="60" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
+      <text x="440" y="278" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">KÍCH HOẠT TẾ BÀO BETA TUYẾN TỤY PHÓNG THÍCH LƯỢNG KHỔNG</text>
+      <text x="440" y="296" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--amber, #d97706)">LỒ INSULIN (BÃO INSULIN)</text>
+      <line x1="440" y1="316" x2="440" y2="344" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: GLUCOSE BỊ ĐƯA NHANH VÀO CƠ &amp;  -->
+      <rect x="155" y="344" width="570" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="366" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">GLUCOSE BỊ ĐƯA NHANH VÀO CƠ &amp; MÔ MỠ TRONG KHI NỒNG ĐỘ</text>
+      <text x="440" y="384" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--color-text, #0f172a)">INSULIN VẪN CAO TRONG MÁU</text>
+      <line x1="440" y1="404" x2="440" y2="432" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: ĐƯỜNG HUYẾT TỤT DỐC KHÔNG PHAN -->
+      <rect x="155" y="432" width="570" height="78" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
+      <text x="440" y="454" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">ĐƯỜNG HUYẾT TỤT DỐC KHÔNG PHANH ➔ HẠ ĐƯỜNG HUYẾT PHẢN</text>
+      <text x="440" y="472" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--amber, #d97706)">ỨNG (REACTIVE HYPOGLYCEMIA)</text>
+      <text x="179" y="494" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• (Glucose máu sụt giảm &amp;lt; 50 mg/dL hoặc &amp;lt; 2.8 mmol/L)</text>
+      <line x1="440" y1="510" x2="440" y2="538" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: BÙNG PHÁT CƠN PHẢN ỨNG GIAO CẢ -->
+      <rect x="165" y="538" width="550" height="60" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
+      <text x="440" y="560" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">BÙNG PHÁT CƠN PHẢN ỨNG GIAO CẢM: RUN TAY, VÃ MỒ HÔI</text>
+      <text x="440" y="578" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--amber, #d97706)">LẠNH, ĐÁNH TRỐNG NGỰC, LÚ LẪN</text>
+    </svg>
+  </div>
+</div>
 
 ---
 
@@ -183,17 +263,59 @@ Xuất hiện muộn khoảng **1 đến 3 giờ sau khi ăn**, thường sau b�
 - **Điểm số Sigstad $> 7$:** Khẳng định chẩn đoán Hội chứng Dumping.
 
 ### 5.2. Phác Đồ Can Thiệp Dược Lý EBM
-```
-                                  [HỘP CÔNG CỤ ĐIỀU TRỊ HỘI CHỨNG DUMPING]
-                                                     │
-       ┌─────────────────────────────────────────────┼─────────────────────────────────────────────┐
-       ▼                                             ▼                                             ▼
-[1. ĐIỀU CHỈNH CHẾ ĐỘ ĂN (NỀN TẢNG)]          [2. ACARBOSE (ỨC CHẾ ALPHA-GLUCOSIDASE)]      [3. OCTREOTIDE (ĐỒNG VẬN SOMATOSTATIN)]
-- Chia 5 - 6 bữa nhỏ / ngày                   - Ức chế enzyme thủy phân oligosaccharide     - Ức chế giải phóng GLP-1, GIP, VIP, Insulin
-- KHÔNG UỐNG NƯỚC TRONG BỮA ĂN                - Làm phẳng đỉnh tăng đường huyết sau ăn      - Kéo dài thời gian làm rỗng ruột non
-  (chỉ uống sau ăn 30-45 phút)                 - NGĂN NGỪA HOÀN TOÀN LATE DUMPING            - Chống giãn mạch tạng
-- Tránh đường đơn, tăng đạm và chất xơ hòa tan                                              - LỰA CHỌN VÀNG CHO DUMPING KHÁNG TRỊ
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: HỘP CÔNG CỤ ĐIỀU TRỊ HỘI CHỨNG DUMPING</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 230" width="880" height="230" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: HỘP CÔNG CỤ ĐIỀU TRỊ HỘI CHỨNG -->
+      <rect x="230" y="20" width="420" height="46" rx="10" fill="rgba(16, 185, 129, 0.08)" stroke="var(--color-success, #10b981)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-success, #10b981)">HỘP CÔNG CỤ ĐIỀU TRỊ HỘI CHỨNG DUMPING</text>
+      <path d="M 440 66 L 440 80 L 155 80 L 155 94" fill="none" stroke="var(--amber, #f59e0b)" stroke-width="1.8" marker-end="url(#arrAmber)"/>
+      <path d="M 440 80 L 440 80 L 440 94" fill="none" stroke="var(--amber, #f59e0b)" stroke-width="1.8" marker-end="url(#arrAmber)"/>
+      <path d="M 440 80 L 725 80 L 725 94" fill="none" stroke="var(--red, #ef4444)" stroke-width="1.8" marker-end="url(#arrRed)"/>
+      <rect x="30" y="94" width="250" height="98" rx="8" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
+      <text x="155" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--amber, #d97706)">1. ĐIỀU CHỈNH CHẾ ĐỘ ĂN (NỀN TẢNG)</text>
+      <line x1="45" y1="124" x2="265" y2="124" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="42" y="140" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Chia 5 - 6 bữa nhỏ / ngày</text>
+      <text x="42" y="158" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• KHÔNG UỐNG NƯỚC TRONG BỮA ĂN</text>
+      <text x="42" y="176" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• (chỉ uống sau ăn 30-45 phút)</text>
+      <text x="42" y="194" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Tránh đường đơn, tăng đạm và chất xơ hòa</text>
+      <rect x="315" y="94" width="250" height="98" rx="8" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
+      <text x="440" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--amber, #d97706)">2. ACARBOSE (ỨC CHẾ ALPHA-GLUCOSIDASE)</text>
+      <line x1="330" y1="124" x2="550" y2="124" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="327" y="140" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Ức chế enzyme thủy phân oligosaccharide</text>
+      <text x="327" y="158" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Làm phẳng đỉnh tăng đường huyết sau ăn</text>
+      <text x="327" y="176" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• NGĂN NGỪA HOÀN TOÀN LATE DU</text>
+      <text x="327" y="194" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• tan</text>
+      <rect x="600" y="94" width="250" height="98" rx="8" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.5"/>
+      <text x="725" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--red, #dc2626)">3. OCTREOTIDE (ĐỒNG VẬN SOMATOSTATIN)</text>
+      <line x1="615" y1="124" x2="835" y2="124" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="612" y="140" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Ức chế giải phóng GLP-1, GIP, VIP, Insulin</text>
+      <text x="612" y="158" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Kéo dài thời gian làm rỗng ruột non</text>
+      <text x="612" y="176" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• MPING            - Chống giãn mạch tạng</text>
+      <text x="612" y="194" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• LỰA CHỌN VÀNG CHO DUMPING KHÁNG TRỊ</text>
+    </svg>
+  </div>
+</div>
 
 ---
 

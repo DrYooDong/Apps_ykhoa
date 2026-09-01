@@ -105,18 +105,62 @@ sections:
 
 **Acid Nucleic** được Friedrich Miescher phát hiện năm 1869 trong nhân tế bào bạch cầu mủ (*Nuclein*). Acid nucleic là polymer sinh học cấu tạo từ các mononucleotide liên kết với nhau bằng **liên kết 3',5'-phosphodiester**.
 
-```
-                [ ACID NUCLEIC / POLYNUCLEOTIDE ]
-                                │ (Thủy phân bán phần)
-                                ▼
-                       [ NUCLEOTIDE / NMP ]
-                                │ (Thủy phân loại phosphat)
-                                ▼
-                        [ NUCLEOSIDE ] + [ H3PO4 ]
-                                │ (Thủy phân bẻ gãy glycosid)
-                                ▼
-                  [ PENTOSE ] + [ BASE NITƠ ]
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: ACID NUCLEIC / POLYNUCLEOTIDE</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 414" width="880" height="414" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: ACID NUCLEIC / POLYNUCLEOTIDE -->
+      <rect x="250" y="20" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">ACID NUCLEIC / POLYNUCLEOTIDE</text>
+      <line x1="440" y1="66" x2="440" y2="94" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: NUCLEOTIDE / NMP -->
+      <rect x="250" y="94" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">NUCLEOTIDE / NMP</text>
+      <!-- Bifurcation Path -->
+      <path d="M 440 140 L 440 154 L 235 154 L 235 168" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <path d="M 440 154 L 645 154 L 645 168" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Left Column: NUCLEOSIDE -->
+      <rect x="40" y="168" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="235" y="190" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">NUCLEOSIDE</text>
+      <line x1="60" y1="204" x2="410" y2="204" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <!-- Right Column: H3PO4 -->
+      <rect x="450" y="168" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="645" y="190" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">H3PO4</text>
+      <line x1="470" y1="204" x2="820" y2="204" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="470" y="220" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• (Thủy phân bẻ gãy glycosid)</text>
+      <!-- Bifurcation Path -->
+      <path d="M 440 258 L 440 272 L 235 272 L 235 286" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <path d="M 440 272 L 645 272 L 645 286" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Left Column: PENTOSE -->
+      <rect x="40" y="286" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="235" y="308" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">PENTOSE</text>
+      <line x1="60" y1="322" x2="410" y2="322" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <!-- Right Column: BASE NITƠ -->
+      <rect x="450" y="286" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="645" y="308" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">BASE NITƠ</text>
+      <line x1="470" y1="322" x2="820" y2="322" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+    </svg>
+  </div>
+</div>
 
 ---
 
@@ -324,21 +368,51 @@ Sợi đôi DNA dài **$2\text{ mét}$** ($6.4 \times 10^9\text{ bp}$ ở tế b
   - Đoạn DNA liên kết (Linker DNA): 30 - 54 bp nối 2 nucleosome, được khóa bởi Histone H1.
 ```
 
-```
-  [1. Sợi đôi DNA trần (2 nm)]
-               │
-               ▼
-  [2. Sợi Nucleosome "Chuỗi hạt" (10 nm)] ──► Quấn quanh bát phân Histone (Nén 7–10 lần)
-               │
-               ▼
-  [3. Sợi Solenoid (30 nm)] ──► 6 Nucleosome/vòng, cố định bởi Histone H1 (Nén 40–60 lần)
-               │
-               ▼
-  [4. Vùng vòng lặp Looped Domains (300–700 nm)] ──► Gắn vào khung protein Scaffold nhân
-               │
-               ▼
-  [5. Nhiễm sắc thể Metaphase (1400 nm)] ──► Trạng thái nén xoắn cực hạn (Nén 10.000 lần)
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: Sợi đôi DNA trần (2 nm)</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 400" width="880" height="400" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: 1. Sợi đôi DNA trần (2 nm) -->
+      <rect x="250" y="20" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">1. Sợi đôi DNA trần (2 nm)</text>
+      <line x1="440" y1="66" x2="440" y2="94" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: 2. Sợi Nucleosome &quot;Chuỗi hạt&quot;  -->
+      <rect x="235" y="94" width="410" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">2. Sợi Nucleosome &quot;Chuỗi hạt&quot; (10 nm)</text>
+      <line x1="440" y1="140" x2="440" y2="168" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: 3. Sợi Solenoid (30 nm) -->
+      <rect x="250" y="168" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="190" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">3. Sợi Solenoid (30 nm)</text>
+      <line x1="440" y1="214" x2="440" y2="242" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: 4. Vùng vòng lặp Looped Domain -->
+      <rect x="200" y="242" width="480" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="264" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">4. Vùng vòng lặp Looped Domains (300–700 nm)</text>
+      <line x1="440" y1="288" x2="440" y2="316" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: 5. Nhiễm sắc thể Metaphase (14 -->
+      <rect x="240" y="316" width="400" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="338" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">5. Nhiễm sắc thể Metaphase (1400 nm)</text>
+    </svg>
+  </div>
+</div>
 
 ---
 
@@ -348,16 +422,35 @@ Sợi đôi DNA dài **$2\text{ mét}$** ($6.4 \times 10^9\text{ bp}$ ở tế b
 - Các base nitơ hấp thụ mạnh ánh sáng tử ngoại tại bước sóng **$\lambda = 260\text{ nm}$**.
 - Trong chuỗi xoắn kép, các base xếp chồng khít tự che lấp nhau. Khi bị biến tính tách thành 2 sợi đơn, các base lộ ra làm **tăng độ hấp thụ UV 260 nm từ 12% đến 40%** $\rightarrow$ **Hiệu ứng tăng sắc (Hyperchromicity)**.
 
-```
-       Độ Hấp Thụ (A260)
-             ▲
-             │                       ┌───────────────── Sợi đơn (ssDNA) - Hấp thụ cao
-             │                      /
-             │                     /  ◄── Điểm uốn: Nhiệt độ nóng chảy Tm (50% biến tính)
-             │                    /
-             │     ──────────────┘  ◄──── Sợi đôi (dsDNA) - Hấp thụ thấp
-             └────────────────────────────────────────► Nhiệt Độ (°C)
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: A. Hiện Tượng Biến Tính &amp; Hiệu Ứng Tăng Sắc (Hyperchromicity)</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 104" width="880" height="104" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: Độ Hấp Thụ (A260) -->
+      <rect x="250" y="20" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Độ Hấp Thụ (A260)</text>
+    </svg>
+  </div>
+</div>
 
 ---
 

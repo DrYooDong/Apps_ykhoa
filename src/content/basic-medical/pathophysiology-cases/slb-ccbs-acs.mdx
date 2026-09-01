@@ -104,28 +104,78 @@ $$\text{Cán cân Cung - Cầu Oxy cơ tim} \implies \Delta O_2 = \text{Cung c�
 
 Khi sự mất cân bằng giữa cung và cầu oxy cơ tim diễn ra cấp tính và kéo dài, các tế bào cơ tim sẽ chuyển từ chuyển hóa hiếu khí sang kỵ khí, tích tụ axit lactic, suy kiệt ATP nội bào, rối loạn cân bằng ion màng tế bào, dẫn đến tổn thương cơ tim có thể hồi phục và tiến triển thành **hoại tử tế bào cơ tim không thể hồi phục (Nhồi máu cơ tim)** nếu không được tái tưới máu kịp thời.
 
-```
-                    [MẢNG XƠ VỮA ĐỘNG MẠCH VÀNH KHÔNG ỔN ĐỊNH]
-                                        │
-                                        ▼
-             [GIÁN ĐOẠN BỀ MẶT: NỨT VỠ / XÓI MÒN / NỐT VÔI HÓA]
-                                        │
-                                        ▼
-             [HOẠT HÓA TIỂU CẦU + DÒNG THÁC ĐÔNG MÁU NỘI MẠCH]
-                                        │
-                                        ▼
-             [HÌNH THÀNH HUYẾT KHỐI CẤP TÍNH GÂY NGHẼN LÒNG MẠCH]
-                                        │
-             ┌──────────────────────────┴──────────────────────────┐
-             ▼                                                     ▼
- [TẮC NGHẼN HOÀN TOÀN & LIÊN TỤC]                      [TẮC NGHẼN BÁN PHẦN / TẠM THỜI]
- - Thiếu máu xuyên thành (Transmural)                  - Thiếu máu dưới nội tâm mạc (Subendocardial)
- - ST chênh lên vòm trên ECG                           - ST chênh xuống / Sóng T âm / ECG bình thường
- - Troponin tim tăng rất cao                           - Troponin tăng (NSTEMI) hoặc bình thường (UA)
-             │                                                     │
-             ▼                                                     ▼
-     [STEMI CẤP CỨU]                                       [NSTE-ACS: NSTEMI / UA]
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: MẢNG XƠ VỮA ĐỘNG MẠCH VÀNH KHÔNG ỔN ĐỊNH</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 624" width="880" height="624" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: MẢNG XƠ VỮA ĐỘNG MẠCH VÀNH KHÔ -->
+      <rect x="220" y="20" width="440" height="46" rx="10" fill="rgba(16, 185, 129, 0.08)" stroke="var(--color-success, #10b981)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-success, #10b981)">MẢNG XƠ VỮA ĐỘNG MẠCH VÀNH KHÔNG ỔN ĐỊNH</text>
+      <line x1="440" y1="66" x2="440" y2="94" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: GIÁN ĐOẠN BỀ MẶT: NỨT VỠ / XÓI -->
+      <rect x="180" y="94" width="520" height="46" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.8"/>
+      <text x="440" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">GIÁN ĐOẠN BỀ MẶT: NỨT VỠ / XÓI MÒN / NỐT VÔI HÓA</text>
+      <line x1="440" y1="140" x2="440" y2="168" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: HOẠT HÓA TIỂU CẦU + DÒNG THÁC  -->
+      <rect x="185" y="168" width="510" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="190" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">HOẠT HÓA TIỂU CẦU + DÒNG THÁC ĐÔNG MÁU NỘI MẠCH</text>
+      <line x1="440" y1="214" x2="440" y2="242" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: HÌNH THÀNH HUYẾT KHỐI CẤP TÍNH -->
+      <rect x="170" y="242" width="540" height="46" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.8"/>
+      <text x="440" y="264" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">HÌNH THÀNH HUYẾT KHỐI CẤP TÍNH GÂY NGHẼN LÒNG MẠCH</text>
+      <!-- Bifurcation Path -->
+      <path d="M 440 288 L 440 302 L 235 302 L 235 316" fill="none" stroke="var(--red, #ef4444)" stroke-width="1.8" marker-end="url(#arrRed)"/>
+      <path d="M 440 302 L 645 302 L 645 316" fill="none" stroke="var(--red, #ef4444)" stroke-width="1.8" marker-end="url(#arrRed)"/>
+      <!-- Left Column: TẮC NGHẼN HOÀN TOÀN &amp; LIÊN TỤC -->
+      <rect x="40" y="316" width="390" height="152" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.5"/>
+      <text x="235" y="338" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">TẮC NGHẼN HOÀN TOÀN &amp; LIÊN TỤC</text>
+      <line x1="60" y1="352" x2="410" y2="352" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="60" y="368" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Thiếu máu xuyên thành (Transmural)</text>
+      <text x="60" y="386" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ST chênh lên vòm trên ECG</text>
+      <text x="60" y="404" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Troponin tim tăng rất cao</text>
+      <!-- Right Column: TẮC NGHẼN BÁN PHẦN / TẠM THỜI -->
+      <rect x="450" y="316" width="390" height="152" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.5"/>
+      <text x="645" y="338" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">TẮC NGHẼN BÁN PHẦN / TẠM THỜI</text>
+      <line x1="470" y1="352" x2="820" y2="352" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="470" y="368" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Thiếu máu dưới nội tâm mạc</text>
+      <text x="470" y="386" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• (Subendocardial)</text>
+      <text x="470" y="404" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ST chênh xuống / Sóng T âm / ECG bình</text>
+      <text x="470" y="422" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• thường</text>
+      <text x="470" y="440" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Troponin tăng (NSTEMI) hoặc bình</text>
+      <text x="470" y="458" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• thường (UA)</text>
+      <!-- Bifurcation Path -->
+      <path d="M 440 468 L 440 482 L 235 482 L 235 496" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <path d="M 440 482 L 645 482 L 645 496" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Left Column: STEMI CẤP CỨU -->
+      <rect x="40" y="496" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="235" y="518" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">STEMI CẤP CỨU</text>
+      <line x1="60" y1="532" x2="410" y2="532" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <!-- Right Column: NSTE-ACS: NSTEMI / UA -->
+      <rect x="450" y="496" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="645" y="518" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">NSTE-ACS: NSTEMI / UA</text>
+      <line x1="470" y1="532" x2="820" y2="532" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+    </svg>
+  </div>
+</div>
 
 ---
 
@@ -209,17 +259,59 @@ Trên thực hành lâm sàng, Hội chứng vành cấp được phân định 
 
 Nhờ sự tiến bộ vượt bậc của các phương tiện hình ảnh học nội mạch phân giải cao (OCT và IVUS), các nhà tim mạch học đã xác lập chính xác **ba cơ chế sinh lý bệnh tại chỗ** chịu trách nhiệm cho các biến cố huyết khối xơ vữa trong HCVC:
 
-```
-                       [CÁC CƠ CHẾ SINH HUYẾT KHỐI TẠI CHỖ TRONG HCVC]
-                                              │
-         ┌────────────────────────────────────┼────────────────────────────────────┐
-         ▼                                    ▼                                    ▼
-[NỨT VỠ MẢNG XƠ VỮA (55-60%)]       [XÓI MÒN MẢNG XƠ VỮA (30-40%)]        [NỐT VÔI HÓA (5-8%)]
-- Vỏ xơ mỏng (TCFA &lt; 65 µm)          - Vỏ xơ dày, NGUYÊN VẸN               - Khối calci dạng hạt thô ráp
-- Lõi hoại tử lipid &gt; 40%           - Rối loạn dòng chảy ➔ TLR2           - Lực cơ học uốn bẻ chu kỳ tim
-- Đại thực bào tiết MMP-1,8,13       - Tróc nội mạc + Bạch cầu ➔ NETs      - Đâm xuyên qua lớp vỏ xơ
-- Lộ Tissue Factor ➔ Huyết khối đỏ   - Huyết khối trắng giàu tiểu cầu       - Thất bại can thiệp PCI cao
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: CÁC CƠ CHẾ SINH HUYẾT KHỐI TẠI CHỖ TRONG HCVC</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 230" width="880" height="230" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: CÁC CƠ CHẾ SINH HUYẾT KHỐI TẠI -->
+      <rect x="195" y="20" width="490" height="46" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">CÁC CƠ CHẾ SINH HUYẾT KHỐI TẠI CHỖ TRONG HCVC</text>
+      <path d="M 440 66 L 440 80 L 155 80 L 155 94" fill="none" stroke="var(--red, #ef4444)" stroke-width="1.8" marker-end="url(#arrRed)"/>
+      <path d="M 440 80 L 440 80 L 440 94" fill="none" stroke="var(--red, #ef4444)" stroke-width="1.8" marker-end="url(#arrRed)"/>
+      <path d="M 440 80 L 725 80 L 725 94" fill="none" stroke="var(--blue, #0284c7)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <rect x="30" y="94" width="250" height="98" rx="8" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.5"/>
+      <text x="155" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--red, #dc2626)">NỨT VỠ MẢNG XƠ VỮA (55-60%)</text>
+      <line x1="45" y1="124" x2="265" y2="124" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="42" y="140" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Vỏ xơ mỏng (TCFA &amp;lt; 65 µm)</text>
+      <text x="42" y="158" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Lõi hoại tử lipid &amp;gt; 40%</text>
+      <text x="42" y="176" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Đại thực bào tiết MMP-1,8,13</text>
+      <text x="42" y="194" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Lộ Tissue Factor ➔ Huyết khối đỏ</text>
+      <rect x="315" y="94" width="250" height="98" rx="8" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.5"/>
+      <text x="440" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--red, #dc2626)">XÓI MÒN MẢNG XƠ VỮA (30-40%)</text>
+      <line x1="330" y1="124" x2="550" y2="124" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="327" y="140" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Vỏ xơ dày, NGUYÊN VẸN</text>
+      <text x="327" y="158" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Rối loạn dòng chảy ➔ TLR2</text>
+      <text x="327" y="176" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Tróc nội mạc + Bạch cầu ➔ N</text>
+      <text x="327" y="194" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Huyết khối trắng giàu tiểu cầ</text>
+      <rect x="600" y="94" width="250" height="98" rx="8" fill="var(--blue-bg, #eff6ff)" stroke="var(--blue, #0284c7)" stroke-width="1.5"/>
+      <text x="725" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-primary, #0284c7)">NỐT VÔI HÓA (5-8%)</text>
+      <line x1="615" y1="124" x2="835" y2="124" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="612" y="140" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Khối calci dạng hạt thô ráp</text>
+      <text x="612" y="158" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Lực cơ học uốn bẻ chu kỳ tim</text>
+      <text x="612" y="176" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• ETs      - Đâm xuyên qua lớp vỏ xơ</text>
+      <text x="612" y="194" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• u       - Thất bại can thiệp PCI cao</text>
+    </svg>
+  </div>
+</div>
 
 ---
 
@@ -377,18 +469,62 @@ $$\text{Tỷ lệ mảng TCFA thực sự tiến triển gây biến cố lâm s
 
 Để phản ánh chính xác bản chất hệ thống của HCVC, y học tim mạch hiện đại đã chuyển dịch trọng tâm sang khái niệm **"Bệnh nhân dễ tổn thương" (Vulnerable Patient)** — nhìn nhận biến cố vành cấp là kết quả của sự cộng hưởng đồng thời giữa ba thành tố:
 
-```
-                            [BỆNH NHÂN DỄ TỔN THƯƠNG]
-                                       │
-         ┌─────────────────────────────┼─────────────────────────────┐
-         ▼                             ▼                             ▼
-[MẢNG XƠ VỮA DỄ TỔN THƯƠNG]    [DÒNG MÁU DỄ ĐÔNG]            [CƠ TIM DỄ TỔN THƯƠNG]
-(Vulnerable Plaque)            (Vulnerable Blood)            (Vulnerable Myocardium)
-- TCFA vỏ mỏng &lt; 65 µm        - Tăng hoạt tính tiểu cầu     - Nhạy cảm thiếu máu cục bộ
-- Xói mòn mảng nội mạc         - Tăng các yếu tố đông máu    - Phì đại thất trái / Xơ hóa kẽ
-- Nốt vôi hóa đâm xuyên        - Suy giảm tiêu sợi huyết     - Bất ổn định điện học ➔
-- Viêm hoạt động (hs-CRP)      - Tăng dấu ấn MPO, PAI-1        Rung thất, đột tử do tim
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: BỆNH NHÂN DỄ TỔN THƯƠNG</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 248" width="880" height="248" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: BỆNH NHÂN DỄ TỔN THƯƠNG -->
+      <rect x="250" y="20" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">BỆNH NHÂN DỄ TỔN THƯƠNG</text>
+      <path d="M 440 66 L 440 80 L 155 80 L 155 94" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <path d="M 440 80 L 440 80 L 440 94" fill="none" stroke="var(--amber, #f59e0b)" stroke-width="1.8" marker-end="url(#arrAmber)"/>
+      <path d="M 440 80 L 725 80 L 725 94" fill="none" stroke="var(--color-success, #10b981)" stroke-width="1.8" marker-end="url(#arrGreen)"/>
+      <rect x="30" y="94" width="250" height="116" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="155" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text, #0f172a)">MẢNG XƠ VỮA DỄ TỔN THƯƠNG</text>
+      <line x1="45" y1="124" x2="265" y2="124" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="42" y="140" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• (Vulnerable Plaque)</text>
+      <text x="42" y="158" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• TCFA vỏ mỏng &amp;lt; 65 µm</text>
+      <text x="42" y="176" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Xói mòn mảng nội mạc</text>
+      <text x="42" y="194" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Nốt vôi hóa đâm xuyên</text>
+      <text x="42" y="212" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Viêm hoạt động (hs-CRP)</text>
+      <rect x="315" y="94" width="250" height="116" rx="8" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
+      <text x="440" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--amber, #d97706)">DÒNG MÁU DỄ ĐÔNG</text>
+      <line x1="330" y1="124" x2="550" y2="124" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="327" y="140" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• (Vulnerable Blood)</text>
+      <text x="327" y="158" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Tăng hoạt tính tiểu cầu</text>
+      <text x="327" y="176" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Tăng các yếu tố đông máu</text>
+      <text x="327" y="194" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Suy giảm tiêu sợi huyết</text>
+      <text x="327" y="212" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Tăng dấu ấn MPO, PAI-1</text>
+      <rect x="600" y="94" width="250" height="116" rx="8" fill="rgba(16, 185, 129, 0.08)" stroke="var(--color-success, #10b981)" stroke-width="1.5"/>
+      <text x="725" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-success, #10b981)">CƠ TIM DỄ TỔN THƯƠNG</text>
+      <line x1="615" y1="124" x2="835" y2="124" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="612" y="140" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• (Vulnerable Myocardium)</text>
+      <text x="612" y="158" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Nhạy cảm thiếu máu cục bộ</text>
+      <text x="612" y="176" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Phì đại thất trái / Xơ hóa kẽ</text>
+      <text x="612" y="194" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Bất ổn định điện học ➔</text>
+      <text x="612" y="212" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Rung thất, đột tử do tim</text>
+    </svg>
+  </div>
+</div>
 
 1. **Mảng xơ vữa dễ tổn thương (Vulnerable Plaque):** Cấu trúc kém bền vững (TCFA, xói mòn, nốt vôi) dễ bị phá vỡ dưới tác động của stress dòng chảy.
 2. **Máu dễ đông (Vulnerable Blood):** Trạng thái tăng đông hệ thống (hypercoagulable state) do mất cân bằng giữa hệ đông máu, kháng đông tự nhiên và tiêu sợi huyết (tăng nồng độ Fibrinogen, PAI-1, hs-CRP, hoạt hóa tiểu cầu toàn thân). Khi mảng xơ vữa rách ra, trạng thái máu dễ đông sẽ thúc đẩy cục huyết khối lan rộng nhanh chóng gây tắc nghẽn hoàn toàn thay vì tự giới hạn.
@@ -480,16 +616,42 @@ $$\text{Secondary MI} = \text{Tăng/Giảm Troponin động học} + \text{Bằn
 
 Nhóm nguyên nhân không do xơ vữa chiếm tỷ lệ đáng kể (đặc biệt ở người trẻ, phụ nữ và vận động viên), đòi hỏi chiến lược tiếp cận hoàn toàn chuyên biệt:
 
-```
-                  [CÁC NGUYÊN NHÂN HCVC KHÔNG DO XƠ VỮA ĐỘNG MẠCH]
-                                          │
-    ┌──────────────┬──────────────────────┼──────────────────────┬──────────────┐
-    ▼              ▼                      ▼                      ▼              ▼
- [CO THẮT]      [SCAD]               [CẦU CƠ TIM]           [THUYÊN TẮC]   [TAKOTSUBO]
- - Giảm NO     - Lòng giả đè thật    - LAD ngầm trong cơ    - Trực tiếp    - Bão Catecholamine
- - Tăng RhoK   - Outside-In vasa     - Siết kỳ tâm thu      - Nghịch thường- Co thắt vi mạch
- - Test ACh    - Tránh đặt stent     - Tổn thương nội mạc   - PFO / Rung nhĩ- Choáng váng cơ tim
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: CÁC NGUYÊN NHÂN HCVC KHÔNG DO XƠ VỮA ĐỘNG MẠCH</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 226" width="880" height="226" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: CÁC NGUYÊN NHÂN HCVC KHÔNG DO  -->
+      <rect x="165" y="20" width="550" height="168" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">CÁC NGUYÊN NHÂN HCVC KHÔNG DO XƠ VỮA ĐỘNG MẠCH</text>
+      <text x="189" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• [CO THẮT] [SCAD] [CẦU CƠ TIM] [THUYÊN TẮC] [TAKOTSUBO]</text>
+      <text x="189" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Giảm NO - Lòng giả đè thật - LAD ngầm trong cơ - Trực tiếp -</text>
+      <text x="189" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Bão Catecholamine</text>
+      <text x="189" y="118" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Tăng RhoK - Outside-In vasa - Siết kỳ tâm thu - Nghịch</text>
+      <text x="189" y="136" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• thường- Co thắt vi mạch</text>
+      <text x="189" y="154" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Test ACh - Tránh đặt stent - Tổn thương nội mạc - PFO / Rung</text>
+      <text x="189" y="172" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• nhĩ- Choáng váng cơ tim</text>
+    </svg>
+  </div>
+</div>
 
 ### 5.1. Co Thắt Động Mạch Vành (Coronary Vasospasm)
 - **Sinh lý bệnh:** Tình trạng co thắt dữ dội, thoáng qua của động mạch vành thượng tâm mạc làm tắc nghẽn dòng máu. Bản chất do suy giảm sản xuất **Nitric Oxide (NO)** từ nội mạc, tăng phản ứng quá mức của tế bào cơ trơn mạch máu qua con đường **Rho-kinase**, và tăng trương lực giao cảm vào sáng sớm.
@@ -535,21 +697,54 @@ Nhóm nguyên nhân không do xơ vữa chiếm tỷ lệ đáng kể (đặc bi
   </figcaption>
 </figure>
 
-```
-[CHỤP MẠCH VÀNH XÂM LẤN (ICA): HẸP &lt; 50%]
-                   │
-                   ▼ (Pha 1: Loại trừ sai sót tại phòng DSA)
-[ĐÁNH GIÁ LẠI HÌNH ẢNH MẠCH VÀNH + CHỤP BUỒNG THẤT TRÁI]
-                   │
-                   ▼ (Pha 2: Khảo sát hình ảnh nội mạch)
-[OCT / IVUS] ──► Phát hiện mảng nứt/xói mòn ẩn, SCAD, huyết khối nhỏ
-                   │
-                   ▼ (Pha 3: Tiêu chuẩn vàng phân biệt)
-[CHỤP CỘNG HƯỞNG TỪ TIM (CMR) THỰC HIỆN SỚM &lt; 2 TUẦN]
-                   ├── LGE Dưới nội tâm mạc / Xuyên thành ──► NMCT THỰC SỰ (Căn nguyên mạch vành)
-                   ├── LGE Dưới màng ngoài tim / Lớp giữa ──► VIÊM CƠ TIM CẤP (Myocarditis)
-                   └── Phù nề mỏm thất trái, KHÔNG CÓ LGE ──► HỘI CHỨNG TAKOTSUBO (TTS)
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: CHỤP MẠCH VÀNH XÂM LẤN (ICA): HẸP &amp;lt; 50%</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 436" width="880" height="436" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: CHỤP MẠCH VÀNH XÂM LẤN (ICA):  -->
+      <rect x="210" y="20" width="460" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">CHỤP MẠCH VÀNH XÂM LẤN (ICA): HẸP &amp;lt; 50%</text>
+      <text x="234" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ▼ (Pha 1: Loại trừ sai sót tại phòng DSA)</text>
+      <line x1="440" y1="80" x2="440" y2="108" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: ĐÁNH GIÁ LẠI HÌNH ẢNH MẠCH VÀN -->
+      <rect x="150" y="108" width="580" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="130" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">ĐÁNH GIÁ LẠI HÌNH ẢNH MẠCH VÀNH + CHỤP BUỒNG THẤT TRÁI</text>
+      <text x="174" y="152" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ▼ (Pha 2: Khảo sát hình ảnh nội mạch)</text>
+      <line x1="440" y1="168" x2="440" y2="196" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: OCT / IVUS -->
+      <rect x="250" y="196" width="380" height="60" rx="10" fill="rgba(16, 185, 129, 0.08)" stroke="var(--color-success, #10b981)" stroke-width="1.8"/>
+      <text x="440" y="218" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-success, #10b981)">OCT / IVUS</text>
+      <text x="274" y="240" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ▼ (Pha 3: Tiêu chuẩn vàng phân biệt)</text>
+      <line x1="440" y1="256" x2="440" y2="284" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: CHỤP CỘNG HƯỞNG TỪ TIM (CMR) T -->
+      <rect x="150" y="284" width="580" height="114" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="306" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">CHỤP CỘNG HƯỞNG TỪ TIM (CMR) THỰC HIỆN SỚM &amp;lt; 2 TUẦN</text>
+      <text x="174" y="328" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ├── LGE Dưới nội tâm mạc / Xuyên thành ──► NMCT THỰC SỰ (Căn</text>
+      <text x="174" y="346" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• nguyên mạch vành)</text>
+      <text x="174" y="364" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ├── LGE Dưới màng ngoài tim / Lớp giữa ──► VIÊM CƠ TIM CẤP</text>
+      <text x="174" y="382" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• (Myocarditis)</text>
+    </svg>
+  </div>
+</div>
 
 ---
 
@@ -665,19 +860,65 @@ Hội Tim mạch Canada (CCS) cùng các chuyên gia quốc tế đã chuẩn h�
 
 Hiểu rõ cơ chế sinh lý bệnh học mạch vành đã giúp y học tim mạch hiện đại dịch chuyển từ điều trị can thiệp rập khuôn sang **các liệu pháp y học cá thể hóa nhắm trúng đích cơ chế**:
 
-```
-                       [CÁ THỂ HÓA ĐIỀU TRỊ DỰA TRÊN SINH LÝ BỆNH]
-                                            │
-         ┌──────────────────────────────────┴──────────────────────────────────┐
-         ▼                                                                     ▼
-[CHIẾN LƯỢC STENTLESS TRONG XÓI MÒN]                         [LIỆU PHÁP KHÁNG VIÊM HỆ THỐNG]
-(Thử nghiệm EROSION &amp; EROSION III)                            (Thử nghiệm COLCOT &amp; LoDoCo2)
-- Khẳng định vỏ xơ nguyên vẹn qua OCT                         - Đại thực bào tiết MMP-1,8,13 làm rách vỏ
-- Hẹp &lt; 70% + Dòng chảy TIMI 3                                - Ứng dụng Colchicine liều thấp (0.5 mg/ngày)
-- DAPT mạnh (Aspirin + Ticagrelor) + Heparin                  - Ức chế thể viêm NLRP3 và thoái biến vi ống
-- 78.3% giảm &gt; 50% huyết khối sau 1 tháng                     - Giảm nồng độ hs-CRP, giảm tái phát MACE
-- Tránh biến chứng huyết khối/tái hẹp stent                   - Ổn định bền vững vỏ xơ mảng xơ vữa
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: CÁ THỂ HÓA ĐIỀU TRỊ DỰA TRÊN SINH LÝ BỆNH</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 356" width="880" height="356" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: CÁ THỂ HÓA ĐIỀU TRỊ DỰA TRÊN S -->
+      <rect x="215" y="20" width="450" height="46" rx="10" fill="rgba(16, 185, 129, 0.08)" stroke="var(--color-success, #10b981)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-success, #10b981)">CÁ THỂ HÓA ĐIỀU TRỊ DỰA TRÊN SINH LÝ BỆNH</text>
+      <!-- Bifurcation Path -->
+      <path d="M 440 66 L 440 80 L 235 80 L 235 94" fill="none" stroke="var(--red, #ef4444)" stroke-width="1.8" marker-end="url(#arrRed)"/>
+      <path d="M 440 80 L 645 80 L 645 94" fill="none" stroke="var(--red, #ef4444)" stroke-width="1.8" marker-end="url(#arrRed)"/>
+      <!-- Left Column: CHIẾN LƯỢC STENTLESS TRONG XÓI -->
+      <rect x="40" y="94" width="390" height="224" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.5"/>
+      <text x="235" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">CHIẾN LƯỢC STENTLESS TRONG XÓI MÒN</text>
+      <line x1="60" y1="130" x2="410" y2="130" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="60" y="146" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• (Thử nghiệm EROSION &amp;amp; EROSION III)</text>
+      <text x="60" y="164" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Khẳng định vỏ xơ nguyên vẹn qua OCT</text>
+      <text x="60" y="182" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Hẹp &amp;lt; 70% + Dòng chảy TIMI 3</text>
+      <text x="60" y="200" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• DAPT mạnh (Aspirin + Ticagrelor) +</text>
+      <text x="60" y="218" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Heparin</text>
+      <text x="60" y="236" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• 78.3% giảm &amp;gt; 50% huyết khối sau 1</text>
+      <text x="60" y="254" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• tháng</text>
+      <text x="60" y="272" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Tránh biến chứng huyết khối/tái hẹp</text>
+      <text x="60" y="290" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• stent</text>
+      <!-- Right Column: LIỆU PHÁP KHÁNG VIÊM HỆ THỐNG -->
+      <rect x="450" y="94" width="390" height="224" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.5"/>
+      <text x="645" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">LIỆU PHÁP KHÁNG VIÊM HỆ THỐNG</text>
+      <line x1="470" y1="130" x2="820" y2="130" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="470" y="146" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• (Thử nghiệm COLCOT &amp;amp; LoDoCo2)</text>
+      <text x="470" y="164" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Đại thực bào tiết MMP-1,8,13 làm rách</text>
+      <text x="470" y="182" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• vỏ</text>
+      <text x="470" y="200" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Ứng dụng Colchicine liều thấp (0.5</text>
+      <text x="470" y="218" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• mg/ngày)</text>
+      <text x="470" y="236" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Ức chế thể viêm NLRP3 và thoái biến vi</text>
+      <text x="470" y="254" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ống</text>
+      <text x="470" y="272" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Giảm nồng độ hs-CRP, giảm tái phát</text>
+      <text x="470" y="290" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• MACE</text>
+      <text x="470" y="308" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Ổn định bền vững vỏ xơ mảng xơ vữa</text>
+    </svg>
+  </div>
+</div>
 
 ### 8.1. Chiến Lược Điều Trị Bảo Tồn Không Stent Đối Với Xói Mòn Mảng Xơ Vữa (Stentless Strategy)
 - **Cơ sở sinh lý bệnh:** Khác với nứt vỡ mảng xơ vữa (mất cấu trúc vỏ xơ, lộ lõi hoại tử khổng lồ bắt buộc phải đặt stent để tái tạo lòng mạch), mảng xơ vữa xói mòn có **lớp vỏ xơ dày dặn nguyên vẹn, lòng mạch rộng và huyết khối chủ yếu là tiểu cầu**. Khi huyết khối tiêu đi, thành mạch có khả năng tự sửa chữa và tái phủ nội mạc tự nhiên.

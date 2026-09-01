@@ -215,18 +215,47 @@ $$\text{E} + \text{S} \underset{k_{-1}}{\overset{k_1}{\rightleftharpoons}} \text
 
 $$\mathbf{v_0 = \frac{V_{max}[S]}{K_m + [S]}} \quad \text{với} \quad \mathbf{K_m = \frac{k_{-1} + k_2}{k_1}}$$
 
-```
-       Vận tốc (v0)
-          ▲
-     Vmax ┼─────────────────────────────── (Đường tiệm cận bão hòa: Phản ứng bậc 0)
-          │                            /
-   Vmax/2 ┼───────────────────*       /
-          │                  /│      /
-          │  Vùng bậc 1     / │     /
-          │  (v0 ~ [S])    /  │    /
-          └───────────────/───┼───/────────► Nồng độ cơ chất [S]
-          0                  Km
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: S</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 316" width="880" height="316" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: Vận tốc (v0) -->
+      <rect x="169.25" y="20" width="541.5" height="96" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">Vận tốc (v0)</text>
+      <text x="193.25" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Vmax ┼─────────────────────────────── (Đường tiệm cận bão</text>
+      <text x="193.25" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  hòa: Phản ứng bậc 0)</text>
+      <text x="193.25" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Vmax/2 ┼───────────────────* /</text>
+      <line x1="440" y1="116" x2="440" y2="144" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: S -->
+      <rect x="250" y="144" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="166" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">S</text>
+      <line x1="440" y1="190" x2="440" y2="218" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: S -->
+      <rect x="250" y="218" width="380" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="240" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">S</text>
+      <text x="274" y="262" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• 0 Km</text>
+    </svg>
+  </div>
+</div>
 
 ### Ý Nghĩa Của Các Thông Số Động Học
 
@@ -242,17 +271,41 @@ $$\mathbf{v_0 = \frac{V_{max}[S]}{K_m + [S]}} \quad \text{với} \quad \mathbf{K
 
 $$\mathbf{\frac{1}{v_0} = \left(\frac{K_m}{V_{max}}\right) \frac{1}{[S]} + \frac{1}{V_{max}}}$$
 
-```
-       1/v0
-         ▲
-         │         / (Đường thẳng tuyến tính y = ax + b)
-         │        /
-         │       /   Hệ số góc (Slope) = Km / Vmax
-  1/Vmax ┼──────*
-         │     /│
-  ───────┼────/─┼──────────────────► 1/[S]
-  -1/Km  0
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: S</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 206" width="880" height="206" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: 1/v0 -->
+      <rect x="250" y="20" width="380" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">1/v0</text>
+      <text x="274" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• 1/Vmax ┼──────*</text>
+      <line x1="440" y1="80" x2="440" y2="108" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: S -->
+      <rect x="250" y="108" width="380" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="130" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">S</text>
+      <text x="274" y="152" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• 1/Km 0</text>
+    </svg>
+  </div>
+</div>
 
 ---
 
@@ -306,24 +359,77 @@ $$\mathbf{\frac{1}{v_0} = \left(\frac{K_m}{V_{max}}\right) \frac{1}{[S]} + \frac
 
 Các enzym dị lập thể là các protein đa bán đơn vị có trung tâm hoạt động và **vị trí điều hòa dị lập thể (Allosteric site)** tách biệt.
 
-```
-  TRẠNG THÁI T (Tense - Dạng căng): Ái lực rất thấp với cơ chất ◄─── Gắn chất ức chế dị lập thể (-)
-                                 ▲
-                                 │ Chuyển đổi cân bằng động
-                                 ▼
-  TRẠNG THÁI R (Relaxed - Dạng giãn): Ái lực rất cao với cơ chất ◄─── Gắn chất hoạt hóa dị lập thể (+) / Cơ chất
-```
 
-```
-       Vận tốc (v0)
-          ▲                                    /─── Trạng thái R (Được hoạt hóa: Đường dốc hơn)
-          │                                  /
-          │                     /─────────── [ĐƯỜNG CONG CHỮ S (SIGMOID)]
-          │                    /             - Thể hiện tính hợp tác dương (Cooperativity)
-          │                   /
-          │           /──────/ ◄──────────── Trạng thái T (Bị ức chế)
-          └──────────/────────────────────────► Nồng độ cơ chất [S]
-```
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: 5. Điều Hòa Dị Lập Thể (Allosteric R/T), Đường Cong Sigmoid &amp; Ức Chế Hồi Tiếp</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 154" width="880" height="154" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: TRẠNG THÁI T (Tense - Dạng căn -->
+      <rect x="155" y="20" width="570" height="96" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">TRẠNG THÁI T (Tense - Dạng căng): Ái lực rất thấp với</text>
+      <text x="440" y="60" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--amber, #d97706)">cơ chất ◄─── Gắn chất ức chế dị lập thể (-)</text>
+      <text x="179" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• TRẠNG THÁI R (Relaxed - Dạng giãn): Ái lực rất cao với cơ</text>
+      <text x="179" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  chất ◄─── Gắn chất hoạt hóa dị lập thể (+) / Cơ chất</text>
+    </svg>
+  </div>
+</div>
+
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: ĐƯỜNG CONG CHỮ S (SIGMOID)</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 266" width="880" height="266" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: Vận tốc (v0) -->
+      <rect x="199.00000000000003" y="20" width="481.99999999999994" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Vận tốc (v0)</text>
+      <text x="223.00000000000003" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ▲ /─── Trạng thái R (Được hoạt hóa: Đường dốc hơn)</text>
+      <line x1="440" y1="80" x2="440" y2="108" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: ĐƯỜNG CONG CHỮ S (SIGMOID) -->
+      <rect x="250" y="108" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="130" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">ĐƯỜNG CONG CHỮ S (SIGMOID)</text>
+      <line x1="440" y1="154" x2="440" y2="182" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: S -->
+      <rect x="250" y="182" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="204" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">S</text>
+    </svg>
+  </div>
+</div>
 
 - **Ức chế ngược hồi tiếp (Feedback Inhibition)**: Sản phẩm cuối của con đường chuyển hóa tích lũy sẽ quay lại ức chế dị lập thể âm lên enzym giới hạn tốc độ đầu tiên.
   - *Ví dụ*: Enzym **Aspartate Transcarbamoylase (ATCase)** trong tổng hợp Pyrimidine: bị ức chế dị lập thể bởi **CTP** (sản phẩm cuối, chuyển sang dạng T) và được hoạt hóa bởi **ATP** (Purine, chuyển sang dạng R để cân bằng purine/pyrimidine).
@@ -368,22 +474,46 @@ $$\text{Protein-O-PO}_3^{2-} + \text{H}_2\text{O} \xrightarrow{\text{Protein Pho
 
 Để ngăn ngừa hiện tượng **tự tiêu hủy mô tụy (Autodigestion gây viêm tụy cấp)**, các protease tiêu hóa được tổng hợp dưới dạng tiền chất bất hoạt (**Zymogen**).
 
-```
-                     Màng vi nhung mao ruột tá tràng
-                                   │
-                           [ ENTEROPEPTIDASE ]
-                                   │ (Cắt đoạn hexapeptide đầu N)
-                                   ▼
-       Trypsinogen ──────────────► [ TRYPSIN HOẠT ĐỘNG ] ◄─── (Tự xúc tác khuếch đại)
-                                         │
-                     ┌───────────────────┼───────────────────┐
-                     ▼                   ▼                   ▼
-             Chymotrypsinogen        Proelastase      Procarboxypeptidase
-                     │                   │                   │
-           (Cắt bởi Trypsin)   (Cắt bởi Trypsin)   (Cắt bởi Trypsin)
-                     ▼                   ▼                   ▼
-               CHYMOTRYPSIN           ELASTASE        CARBOXYPEPTIDASE
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: ENTEROPEPTIDASE</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 302" width="880" height="302" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: Màng vi nhung mao ruột tá tràn -->
+      <rect x="250" y="20" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Màng vi nhung mao ruột tá tràng</text>
+      <line x1="440" y1="66" x2="440" y2="94" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: ENTEROPEPTIDASE -->
+      <rect x="250" y="94" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">ENTEROPEPTIDASE</text>
+      <line x1="440" y1="140" x2="440" y2="168" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: TRYPSIN HOẠT ĐỘNG -->
+      <rect x="186.25" y="168" width="507.5" height="96" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="190" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">TRYPSIN HOẠT ĐỘNG</text>
+      <text x="210.25" y="212" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Chymotrypsinogen Proelastase Procarboxypeptidase</text>
+      <text x="210.25" y="230" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• (Cắt bởi Trypsin) (Cắt bởi Trypsin) (Cắt bởi Trypsin)</text>
+      <text x="210.25" y="248" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• CHYMOTRYPSIN ELASTASE CARBOXYPEPTIDASE</text>
+    </svg>
+  </div>
+</div>
 
 - **Cơ chế phân tử của $\alpha$-Chymotrypsin**: Trypsin cắt liên kết **Arg15–Ile16** trên Chymotrypsinogen $\rightarrow$ Nhóm $\alpha\text{-NH}_3^+$ mới của Ile16 xoay vào tạo liên kết muối với **Asp194** $\rightarrow$ Định vị chuẩn xác bộ ba xúc tác **Asp102 – His57 – Ser195** để hình thành $\alpha$-Chymotrypsin hoàn chỉnh gồm 3 chuỗi polypeptid gắn với nhau bằng 5 cầu disulfide.
 

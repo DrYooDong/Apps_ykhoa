@@ -103,21 +103,59 @@ sections:
 
 85% quá trình tổng hợp Hem diễn ra tại tủy xương (tạo hồng cầu) và 15% tại gan (tạo Cytochrome P450).
 
-```
-  [CHẤT NỀN TY THỂ]
-  Succinyl-CoA + Glycine ──(1. ALA Synthase / ALAS + Coenzyme PLP)──► Acid δ-Aminolevulinic (ALA) + CO2
-                                                                                 │
-  [BÀO TƯƠNG (CYTOSOL)] ◄────────────────────────────────────────────────────────┘
-  2 x ALA ──(2. ALA Dehydratase chứa Zn2+ - BỊ CHÌ Pb2+ KHÓA CHẶT)──► Porphobilinogen (PBG)
-  ──(3. HMB Synthase / PBG Deaminase - Trùng hợp 4 PBG)──► Hydroxymethylbilane (HMB - Mạch thẳng)
-  ──(4. Uroporphyrinogen III Synthase - Đóng vòng bất đối xứng)──► Uroporphyrinogen III
-  ──(5. Uroporphyrinogen Decarboxylase - Khử 4 gốc acetate -> methyl)──► Coproporphyrinogen III
-                                                                                 │
-  [CHẤT NỀN TY THỂ] ◄────────────────────────────────────────────────────────────┘
-  Coproporphyrinogen III ──(6. Coproporphyrinogen Oxidase + O2)──► Protoporphyrinogen IX
-  ──(7. Protoporphyrinogen Oxidase + O2 - Tạo cầu methenyl)──► Protoporphyrin IX (Màu đỏ sậm)
-  ──(8. Ferrochelatase + Fe2+ - BỊ CHÌ Pb2+ KHÓA CHẶT)──► HEM HOÀN CHỈNH.
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: CHẤT NỀN TY THỂ</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 528" width="880" height="528" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: CHẤT NỀN TY THỂ -->
+      <rect x="160.75" y="20" width="558.5" height="78" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">CHẤT NỀN TY THỂ</text>
+      <text x="184.75" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Succinyl-CoA + Glycine ──(1. ALA Synthase / ALAS + Coenzyme</text>
+      <text x="184.75" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  PLP)──► Acid δ-Aminolevulinic (ALA) + CO2</text>
+      <line x1="440" y1="98" x2="440" y2="126" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: BÀO TƯƠNG (CYTOSOL) -->
+      <rect x="160.75" y="126" width="558.5" height="186" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="148" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">BÀO TƯƠNG (CYTOSOL)</text>
+      <text x="184.75" y="170" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• 2 x ALA ──(2. ALA Dehydratase chứa Zn2+ - BỊ CHÌ Pb2+ KHÓA</text>
+      <text x="184.75" y="188" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  CHẶT)──► Porphobilinogen (PBG)</text>
+      <text x="184.75" y="206" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ──(3. HMB Synthase / PBG Deaminase - Trùng hợp 4 PBG)──►</text>
+      <text x="184.75" y="224" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  Hydroxymethylbilane (HMB - Mạch thẳng)</text>
+      <text x="184.75" y="242" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ──(4. Uroporphyrinogen III Synthase - Đóng vòng bất đối</text>
+      <text x="184.75" y="260" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  xứng)──► Uroporphyrinogen III</text>
+      <text x="184.75" y="278" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ──(5. Uroporphyrinogen Decarboxylase - Khử 4 gốc acetate -&gt;</text>
+      <text x="184.75" y="296" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  methyl)──► Coproporphyrinogen III</text>
+      <line x1="440" y1="312" x2="440" y2="340" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: CHẤT NỀN TY THỂ -->
+      <rect x="156.5" y="340" width="567" height="150" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="362" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">CHẤT NỀN TY THỂ</text>
+      <text x="180.5" y="384" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Coproporphyrinogen III ──(6. Coproporphyrinogen Oxidase +</text>
+      <text x="180.5" y="402" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  O2)──► Protoporphyrinogen IX</text>
+      <text x="180.5" y="420" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ──(7. Protoporphyrinogen Oxidase + O2 - Tạo cầu methenyl)──►</text>
+      <text x="180.5" y="438" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  Protoporphyrin IX (Màu đỏ sậm)</text>
+      <text x="180.5" y="456" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ──(8. Ferrochelatase + Fe2+ - BỊ CHÌ Pb2+ KHÓA CHẶT)──► HEM</text>
+      <text x="180.5" y="474" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  HOÀN CHỈNH.</text>
+    </svg>
+  </div>
+</div>
 
 <div class="table-responsive">
   <table class="table-modern">
@@ -154,19 +192,53 @@ sections:
 
 Sau 120 ngày, hồng cầu già bị đại thực bào hệ liên võng nội mô (lách, gan, tủy xương) thực bào và tiêu hủy.
 
-```
-  Hemoglobin ──► Tách [ Globin ] (Thủy phân thành acid amin tự do tái sử dụng)
-               └──► Nhóm ngoại [ HEM ]
-                         │
-                         ▼ (Heme Oxygenase + 3 O2 + NADPH) - Cắt cầu nối methenyl-α
-                         ├──────► Sắt Fe2+/Fe3+ (Gắn Ferritin dự trữ, tái sử dụng 100%)
-                         ├──────► Khí CO (Carbon Monoxide) ──► Khuếch tán vào máu thở ra qua phổi
-                         ▼
-                   [ BILIVERDIN IX ] (Chuỗi tetrapyrrole mạch thẳng màu xanh lục)
-                         │
-                         ▼ (Biliverdin Reductase + NADPH)
-                   [ BILIRUBIN TỰ DO ] (Bilirubin gián tiếp - màu vàng cam)
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: Globin</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 426" width="880" height="426" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: Globin -->
+      <rect x="250" y="20" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Globin</text>
+      <line x1="440" y1="66" x2="440" y2="94" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: HEM -->
+      <rect x="156.5" y="94" width="567" height="132" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">HEM</text>
+      <text x="180.5" y="138" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ▼ (Heme Oxygenase + 3 O2 + NADPH) - Cắt cầu nối methenyl-α</text>
+      <text x="180.5" y="156" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ├──────► Sắt Fe2+/Fe3+ (Gắn Ferritin dự trữ, tái sử dụng</text>
+      <text x="180.5" y="174" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  100%)</text>
+      <text x="180.5" y="192" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ├──────► Khí CO (Carbon Monoxide) ──► Khuếch tán vào máu thở</text>
+      <text x="180.5" y="210" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  ra qua phổi</text>
+      <line x1="440" y1="226" x2="440" y2="254" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: BILIVERDIN IX -->
+      <rect x="250" y="254" width="380" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="276" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">BILIVERDIN IX</text>
+      <text x="274" y="298" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ▼ (Biliverdin Reductase + NADPH)</text>
+      <line x1="440" y1="314" x2="440" y2="342" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: BILIRUBIN TỰ DO -->
+      <rect x="250" y="342" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="364" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">BILIRUBIN TỰ DO</text>
+    </svg>
+  </div>
+</div>
 
 - **Tính chất hóa lý của Bilirubin tự do**:
   - Hệ thống liên kết hydro nội phân tử che giấu các nhóm phân cực $\rightarrow$ **Hoàn toàn không tan trong nước, tan mạnh trong lipid**.
@@ -177,21 +249,57 @@ Sau 120 ngày, hồng cầu già bị đại thực bào hệ liên võng nội 
 
 ## 3. Chuyển Hóa Tại Gan & Ruột: Enzyme UGT1A1, Bơm MRP-2, Urobilinogen & Chu Kỳ Gan-Ruột {#sec-3}
 
-```
-  [1. TẾ BÀO GAN (HEPATOCYTES)]:
-  Bilirubin-Albumin ──► Tách Bilirubin qua màng xoang gan ──► Gắn Ligandin (Protein Y) giữ hòa tan bào tương
-  ──► Vào màng Lưới nội sinh chất trơn:
-      Bilirubin + 2 UDP-Glucuronic acid ──(Bilirubin-UGT / UGT1A1)──► BILIRUBIN DIGLUCURONIDE (Trực tiếp, tan trong nước)
-  ──► Bài tiết chủ động qua màng vi quản mật bởi Bơm MRP-2 / MOAT (Tiêu tốn ATP - Bước giới hạn tốc độ).
 
-  [2. TẠI RUỘT (ĐẠI TRÀNG)]:
-  Bilirubin liên hợp ──(Enzyme β-Glucuronidase vi khuẩn)──► Bilirubin tự do
-  ──(Khử liên tiếp bởi vi khuẩn yếm khí)──► UROBILINOGEN & STERCOBILINOGEN (Không màu):
-      • 80% Đào thải qua phân: Oxy hóa bởi không khí thành STERCOBILIN (Tạo màu vàng nâu của phân).
-      • 20% Tái hấp thu qua tĩnh mạch cửa (Chu kỳ gan - ruột):
-          - 99% Gan thu nhận và tái bài tiết lại vào dịch mật.
-          - 1% Thoát ra tuần hoàn chung đến thận ──► Lọc qua cầu thận, oxy hóa thành UROBILIN (Màu vàng nước tiểu).
-```
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: TẾ BÀO GAN (HEPATOCYTES)</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 494" width="880" height="494" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: 1. TẾ BÀO GAN (HEPATOCYTES) -->
+      <rect x="160.75" y="20" width="558.5" height="186" rx="10" fill="var(--blue-bg, #eff6ff)" stroke="var(--blue, #0284c7)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-primary, #0284c7)">1. TẾ BÀO GAN (HEPATOCYTES)</text>
+      <text x="184.75" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Bilirubin-Albumin ──► Tách Bilirubin qua màng xoang gan ──►</text>
+      <text x="184.75" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  Gắn Ligandin (Protein Y) giữ hòa tan bào tương</text>
+      <text x="184.75" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ──► Vào màng Lưới nội sinh chất trơn:</text>
+      <text x="184.75" y="118" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Bilirubin + 2 UDP-Glucuronic acid ──(Bilirubin-UGT /</text>
+      <text x="184.75" y="136" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  UGT1A1)──► BILIRUBIN DIGLUCURONIDE (Trực tiếp, tan trong</text>
+      <text x="184.75" y="154" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  nước)</text>
+      <text x="184.75" y="172" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ──► Bài tiết chủ động qua màng vi quản mật bởi Bơm MRP-2 /</text>
+      <text x="184.75" y="190" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  MOAT (Tiêu tốn ATP - Bước giới hạn tốc độ).</text>
+      <line x1="440" y1="206" x2="440" y2="234" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: 2. TẠI RUỘT (ĐẠI TRÀNG) -->
+      <rect x="165" y="234" width="550" height="222" rx="10" fill="var(--blue-bg, #eff6ff)" stroke="var(--blue, #0284c7)" stroke-width="1.8"/>
+      <text x="440" y="256" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-primary, #0284c7)">2. TẠI RUỘT (ĐẠI TRÀNG)</text>
+      <text x="189" y="278" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Bilirubin liên hợp ──(Enzyme β-Glucuronidase vi khuẩn)──►</text>
+      <text x="189" y="296" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  Bilirubin tự do</text>
+      <text x="189" y="314" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ──(Khử liên tiếp bởi vi khuẩn yếm khí)──► UROBILINOGEN &amp;</text>
+      <text x="189" y="332" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  STERCOBILINOGEN (Không màu):</text>
+      <text x="189" y="350" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• 80% Đào thải qua phân: Oxy hóa bởi không khí thành</text>
+      <text x="189" y="368" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  STERCOBILIN (Tạo màu vàng nâu của phân).</text>
+      <text x="189" y="386" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• 20% Tái hấp thu qua tĩnh mạch cửa (Chu kỳ gan - ruột):</text>
+      <text x="189" y="404" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• 99% Gan thu nhận và tái bài tiết lại vào dịch mật.</text>
+      <text x="189" y="422" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• 1% Thoát ra tuần hoàn chung đến thận ──► Lọc qua cầu thận,</text>
+      <text x="189" y="440" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  oxy hóa thành UROBILIN (Màu vàng nước tiểu).</text>
+    </svg>
+  </div>
+</div>
 
 ---
 
@@ -318,17 +426,51 @@ Sau 120 ngày, hồng cầu già bị đại thực bào hệ liên võng nội 
 
 Porphyria là nhóm bệnh rối loạn di truyền do thiếu hụt một trong các enzyme của chu trình tổng hợp Heme.
 
-```
-  [ỨC CHẾ GIAI ĐOẠN ĐẦU (Phản ứng 2, 3)]:
-  Tích tụ tiền chất ALA & PBG (Độc thần kinh do ALA tương đồng GABA)
-  ──► CƠN ĐAU BỤNG CẤP DỮ DỘI, TĂNG HUYẾT ÁP, LOẠN THẦN (AIP - Acute Intermittent Porphyria)
-  ──► Nước tiểu màu đỏ rượu vang; TUYỆT ĐỐI KHÔNG CÓ MẪN CẢM ÁNH SÁNG.
 
-  [ỨC CHẾ GIAI ĐOẠN SAU (Phản ứng 4 đến 8)]:
-  Tích tụ Porphyrinogen ──(Oxy hóa tự phát)──► Porphyrin tích lũy tại mô da
-  ──(Hấp thụ ánh sáng băng Soret bước sóng 400 nm)──► Tạo gốc tự do Oxy hoạt động (Singlet Oxygen)
-  ──► BỌNG NƯỚC, LOÉT DA SÂU, SẸO CO RÚT BIẾN DẠNG (CEP & Porphyria Cutanea Tarda - PCT).
-```
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: ỨC CHẾ GIAI ĐOẠN ĐẦU (Phản ứng 2, 3)</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 386" width="880" height="386" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: ỨC CHẾ GIAI ĐOẠN ĐẦU (Phản ứng -->
+      <rect x="156.5" y="20" width="567" height="150" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">ỨC CHẾ GIAI ĐOẠN ĐẦU (Phản ứng 2, 3)</text>
+      <text x="180.5" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Tích tụ tiền chất ALA &amp; PBG (Độc thần kinh do ALA tương đồng</text>
+      <text x="180.5" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  GABA)</text>
+      <text x="180.5" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ──► CƠN ĐAU BỤNG CẤP DỮ DỘI, TĂNG HUYẾT ÁP, LOẠN THẦN (AIP -</text>
+      <text x="180.5" y="118" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  Acute Intermittent Porphyria)</text>
+      <text x="180.5" y="136" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ──► Nước tiểu màu đỏ rượu vang; TUYỆT ĐỐI KHÔNG CÓ MẪN CẢM</text>
+      <text x="180.5" y="154" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  ÁNH SÁNG.</text>
+      <line x1="440" y1="170" x2="440" y2="198" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: ỨC CHẾ GIAI ĐOẠN SAU (Phản ứng -->
+      <rect x="160.75" y="198" width="558.5" height="150" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.8"/>
+      <text x="440" y="220" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">ỨC CHẾ GIAI ĐOẠN SAU (Phản ứng 4 đến 8)</text>
+      <text x="184.75" y="242" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Tích tụ Porphyrinogen ──(Oxy hóa tự phát)──► Porphyrin tích</text>
+      <text x="184.75" y="260" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  lũy tại mô da</text>
+      <text x="184.75" y="278" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ──(Hấp thụ ánh sáng băng Soret bước sóng 400 nm)──► Tạo gốc</text>
+      <text x="184.75" y="296" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  tự do Oxy hoạt động (Singlet Oxygen)</text>
+      <text x="184.75" y="314" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ──► BỌNG NƯỚC, LOÉT DA SÂU, SẸO CO RÚT BIẾN DẠNG (CEP &amp;</text>
+      <text x="184.75" y="332" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  Porphyria Cutanea Tarda - PCT).</text>
+    </svg>
+  </div>
+</div>
 
 - **Nguyên tắc điều trị Porphyria cấp**:
   1. **Truyền tĩnh mạch Glucose liều cao**: Ức chế PGC-1$\alpha \rightarrow$ Khóa phiên mã gen *ALAS1*.

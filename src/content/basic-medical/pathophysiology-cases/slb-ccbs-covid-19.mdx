@@ -84,48 +84,140 @@ sections:
 
 SARS-CoV-2 là một loại virus RNA sợi đơn cực tính dương ($+ssRNA$) có vỏ bọc lipid thuộc chi *Betacoronavirus*. Quá trình xâm nhập tế bào ký chủ diễn ra theo cơ chế phân tử đa bước:
 
-```
-[SARS-CoV-2 GẮN PROTEIN GAI (SPIKE S1) VÀO THỤ THỂ ACE2 TRÊN BIỂU MÔ PHẾ NANG / NỘI MẠC]
-                                           │
-                                           ▼
-[PROTEASE SERINE MÀNG TMPRSS2 TIẾN HÀNH CẮT MỒI PROTEIN GAI TẠI VỊ TRÍ S1/S2 VÀ S2']
-                                           │
-       ┌───────────────────────────────────┴───────────────────────────────────┐
-       ▼                                                                       ▼
-[CON ĐƯỜNG HÒA MÀNG TRỰC TIẾP TẠI BỀ MẶT]                       [CON ĐƯỜNG NHẬP BÀO PHỤ THUỘC CATHEPSIN L]
-(Xảy ra ở tế bào biểu hiện nồng độ cao TMPRSS2)                (Xảy ra khi thiếu vắng TMPRSS2 trên màng)
-       │                                                                       │
-       └───────────────────────────────────┬───────────────────────────────────┘
-                                           │
-                                           ▼
-[GIẢI PHÓNG BỘ GEN +ssRNA VÀO BÀO TƯƠNG TẾ BÀO KÝ CHỦ]
-                                           │
-                                           ▼
-[DỊCH MÃ TRỰC TIẾP TẠI RIBOSOME TỔNG HỢP PROTEASE CHÍNH M-pro & PHỨC HỢP SAO CHÉP RdRp]
-                                           │
-                                           ▼
-[LẮP RÁP VIRION MỚI TẠI KHOANG TRUNG GIAN LƯỚI NỘI CHẤT - BỘ MÁY GOLGI (ERGIC)]
-                                           │
-                                           ▼
-[XUẤT BÀO HOẶC ĐÓNG GÓI TRONG CÁC TÚI NGOẠI BÀO (EVs: CƠ CHẾ "NGỰA GỖ THÀNH TROIA")]
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: SARS-CoV-2 GẮN PROTEIN GAI (SPIKE S1) VÀO THỤ THỂ ACE2 TRÊN BIỂU MÔ PHẾ NANG / NỘI MẠC</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 688" width="880" height="688" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: SARS-CoV-2 GẮN PROTEIN GAI (SP -->
+      <rect x="150" y="20" width="580" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">SARS-CoV-2 GẮN PROTEIN GAI (SPIKE S1) VÀO THỤ THỂ ACE2</text>
+      <text x="440" y="60" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--color-text, #0f172a)">TRÊN BIỂU MÔ PHẾ NANG / NỘI MẠC</text>
+      <line x1="440" y1="80" x2="440" y2="108" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: PROTEASE SERINE MÀNG TMPRSS2 T -->
+      <rect x="150" y="108" width="580" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="130" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">PROTEASE SERINE MÀNG TMPRSS2 TIẾN HÀNH CẮT MỒI PROTEIN</text>
+      <text x="440" y="148" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--color-text, #0f172a)">GAI TẠI VỊ TRÍ S1/S2 VÀ S2&apos;</text>
+      <!-- Bifurcation Path -->
+      <path d="M 440 168 L 440 182 L 235 182 L 235 196" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <path d="M 440 182 L 645 182 L 645 196" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Left Column: CON ĐƯỜNG HÒA MÀNG TRỰC TIẾP T -->
+      <rect x="40" y="196" width="390" height="116" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="235" y="218" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">CON ĐƯỜNG HÒA MÀNG TRỰC TIẾP TẠI</text>
+      <text x="235" y="236" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">BỀ MẶT</text>
+      <line x1="60" y1="250" x2="410" y2="250" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="60" y="266" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• (Xảy ra ở tế bào biểu hiện nồng độ cao</text>
+      <text x="60" y="284" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• TMPRSS2)</text>
+      <text x="60" y="302" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• └────────────────────────────────</text>
+      <!-- Right Column: CON ĐƯỜNG NHẬP BÀO PHỤ THUỘC C -->
+      <rect x="450" y="196" width="390" height="116" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="645" y="218" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">CON ĐƯỜNG NHẬP BÀO PHỤ THUỘC</text>
+      <text x="645" y="236" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">CATHEPSIN L</text>
+      <line x1="470" y1="250" x2="820" y2="250" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="470" y="266" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• (Xảy ra khi thiếu vắng TMPRSS2 trên</text>
+      <text x="470" y="284" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• màng)</text>
+      <text x="470" y="302" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ───┬───────────────────────────────────┘</text>
+      <line x1="440" y1="312" x2="440" y2="340" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: GIẢI PHÓNG BỘ GEN +ssRNA VÀO B -->
+      <rect x="160" y="340" width="560" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="362" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">GIẢI PHÓNG BỘ GEN +ssRNA VÀO BÀO TƯƠNG TẾ BÀO KÝ CHỦ</text>
+      <line x1="440" y1="386" x2="440" y2="414" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: DỊCH MÃ TRỰC TIẾP TẠI RIBOSOME -->
+      <rect x="150" y="414" width="580" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="436" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">DỊCH MÃ TRỰC TIẾP TẠI RIBOSOME TỔNG HỢP PROTEASE CHÍNH</text>
+      <text x="440" y="454" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--color-text, #0f172a)">M-pro &amp; PHỨC HỢP SAO CHÉP RdRp</text>
+      <line x1="440" y1="474" x2="440" y2="502" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: LẮP RÁP VIRION MỚI TẠI KHOANG  -->
+      <rect x="150" y="502" width="580" height="60" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
+      <text x="440" y="524" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">LẮP RÁP VIRION MỚI TẠI KHOANG TRUNG GIAN LƯỚI NỘI CHẤT</text>
+      <text x="440" y="542" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--amber, #d97706)">- BỘ MÁY GOLGI (ERGIC)</text>
+      <line x1="440" y1="562" x2="440" y2="590" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: XUẤT BÀO HOẶC ĐÓNG GÓI TRONG C -->
+      <rect x="145" y="590" width="590" height="60" rx="10" fill="var(--blue-bg, #eff6ff)" stroke="var(--blue, #0284c7)" stroke-width="1.8"/>
+      <text x="440" y="612" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-primary, #0284c7)">XUẤT BÀO HOẶC ĐÓNG GÓI TRONG CÁC TÚI NGOẠI BÀO (EVs: CƠ</text>
+      <text x="440" y="630" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--color-primary, #0284c7)">CHẾ &quot;NGỰA GỖ THÀNH TROIA&quot;)</text>
+    </svg>
+  </div>
+</div>
 
 ---
 
 ## 2. Phân Tầng Mức Độ Nghiêm Trọng Lâm Sàng COVID-19 Theo IDSA 2025 {#sec-2}
 
-```
-                                  [PHÂN TẦNG MỨC ĐỘ LÂM SÀNG THEO IDSA 2025]
-                                                       │
-       ┌───────────────────────────────────────────────┼───────────────────────────────────────────────┐
-       ▼                                               ▼                                               ▼
-[1. THỂ NHẸ / TRUNG BÌNH]                      [2. THỂ NẶNG (SEVERE)]                          [3. THỂ NGUY KỊCH (CRITICAL)]
-- SpO2 > 94% khí phòng                         - Viêm phổi thâm nhiễm                          - TỔN THƯƠNG PHỔI TIẾN TRIỂN:
-- Triệu chứng hô hấp trên, sốt, ho, mất vị     - SpO2 < 94% khi thở khí phòng                    Cần thở HFNC, CPAP hoặc NIV
-- KHÔNG CÓ SUY HÔ HẤP                          - CẦN THỞ OXY DÒNG THẤP (≤ 6 L/phút)            - SUY HÔ HẤP NẶNG / ARDS NGUY KỊCH:
-- Điều trị ngoại trú: Paxlovid / Remdesivir    - Chỉ định nhập viện: Dexamethasone +             Cần đặt ống thở máy xâm nhập (IMV)
-  trong 5-7 ngày đầu                             kháng đông dự phòng LMWH                          hoặc can thiệp tim phổi nhân tạo (ECMO)
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: PHÂN TẦNG MỨC ĐỘ LÂM SÀNG THEO IDSA 2025</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 248" width="880" height="248" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: PHÂN TẦNG MỨC ĐỘ LÂM SÀNG THEO -->
+      <rect x="220" y="20" width="440" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">PHÂN TẦNG MỨC ĐỘ LÂM SÀNG THEO IDSA 2025</text>
+      <path d="M 440 66 L 440 80 L 155 80 L 155 94" fill="none" stroke="var(--color-success, #10b981)" stroke-width="1.8" marker-end="url(#arrGreen)"/>
+      <path d="M 440 80 L 440 80 L 440 94" fill="none" stroke="var(--red, #ef4444)" stroke-width="1.8" marker-end="url(#arrRed)"/>
+      <path d="M 440 80 L 725 80 L 725 94" fill="none" stroke="var(--red, #ef4444)" stroke-width="1.8" marker-end="url(#arrRed)"/>
+      <rect x="30" y="94" width="250" height="116" rx="8" fill="rgba(16, 185, 129, 0.08)" stroke="var(--color-success, #10b981)" stroke-width="1.5"/>
+      <text x="155" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-success, #10b981)">1. THỂ NHẸ / TRUNG BÌNH</text>
+      <line x1="45" y1="124" x2="265" y2="124" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="42" y="140" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• SpO2 &gt; 94% khí phòng</text>
+      <text x="42" y="158" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Triệu chứng hô hấp trên, sốt, ho, mất v</text>
+      <text x="42" y="176" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• KHÔNG CÓ SUY HÔ HẤP</text>
+      <text x="42" y="194" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Điều trị ngoại trú: Paxlovid / Remdesivir</text>
+      <text x="42" y="212" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• trong 5-7 ngày đầu</text>
+      <rect x="315" y="94" width="250" height="116" rx="8" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.5"/>
+      <text x="440" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--red, #dc2626)">2. THỂ NẶNG (SEVERE)</text>
+      <line x1="330" y1="124" x2="550" y2="124" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="327" y="140" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Viêm phổi thâm nhiễm</text>
+      <text x="327" y="158" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• ị     - SpO2 &lt; 94% khi thở khí phòng</text>
+      <text x="327" y="176" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• CẦN THỞ OXY DÒNG THẤP (≤ 6 L/phút)</text>
+      <text x="327" y="194" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Chỉ định nhập viện: Dexamethasone +</text>
+      <text x="327" y="212" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• kháng đông dự phòng LMWH</text>
+      <rect x="600" y="94" width="250" height="116" rx="8" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.5"/>
+      <text x="725" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--red, #dc2626)">3. THỂ NGUY KỊCH (CRITICAL)</text>
+      <line x1="615" y1="124" x2="835" y2="124" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="612" y="140" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• TỔN THƯƠNG PHỔI TIẾN TRIỂN:</text>
+      <text x="612" y="158" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Cần thở HFNC, CPAP hoặc NIV</text>
+      <text x="612" y="176" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• SUY HÔ HẤP NẶNG / ARDS NGUY KỊCH:</text>
+      <text x="612" y="194" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Cần đặt ống thở máy xâm nhập (IMV)</text>
+      <text x="612" y="212" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• hoặc can thiệp tim phổi nhân tạo (ECMO)</text>
+    </svg>
+  </div>
+</div>
 
 ---
 
@@ -133,34 +225,87 @@ SARS-CoV-2 là một loại virus RNA sợi đơn cực tính dương ($+ssRNA$)
 
 COVID-19 là một bệnh lý **Viêm nội mạc mạch máu hệ thống (Systemic Endotheliitis)** dẫn đến trạng thái tăng đông đặc biệt:
 
-```
-[SARS-CoV-2 & BÃO CYTOKINE (IL-6, TNF-α, IL-1β) TẤN CÔNG TẾ BÀO NỘI MẠC (ECs)]
-                                       │
-                                       ▼
-[CẠN KIỆT NĂNG LƯỢNG ATP & TĂNG VỌT NỒNG ĐỘ ION Ca2+ NỘI BÀO]
-                                       │
-                                       ▼
-[BẤT HOẠT FLIPPASE/FLOPPASE ➔ KÍCH HOẠT ENZYME SCRAMBLASE]
-                                       │
-                                       ▼
-[PHOSPHATIDYLSERINE (PS) BỊ LẬT TỪ LÁ TRONG RA BỘC LỘ Ở LÁ NGOÀI MÀNG TẾ BÀO & TÚI NGOẠI BÀO EVs]
-                                       │
-       ┌───────────────────────────────┴───────────────────────────────┐
-       ▼                                                               ▼
-[BỀ MẶT TÍCH ĐIỆN ÂM XÚC TÁC ĐÔNG MÁU]                         [TỔN THƯƠNG NỘI MẠC & MẤT KHÁNG ĐÔNG NỘI SINH]
-- Lắp ráp Phức hợp Tenase (FVIIIa-FIXa)                        - Bong tróc lớp áo Glycocalyx bảo vệ
-- Lắp ráp Phức hợp Prothrombinase (FVa-FXa)                    - Mất Antithrombin III, Protein C & TFPI
-- TỔNG HỢP THROMBIN Ồ ẠT ➔ KÍCH HOẠT FIBRIN                     - Phóng thích ồ ạt Yếu tố Von Willebrand (vWF)
-       │                                                               │
-       └───────────────────────────────┬───────────────────────────────┘
-                                       │
-                                       ▼
-[HÌNH THÀNH CỤC ĐÔNG AMYLOID KHÁNG TIÊU SỢI HUYẾT (AMYLOID MICROCLOTS)]
-(Sợi Fibrin biến tính kháng Plasmin + Nồng độ PAI-1 tăng vọt gây GIẢM TIÊU SỢI HUYẾT HYPOFIBRINOLYSIS)
-                                       │
-                                       ▼
-[TẮC NGHẼN HOÀN TOÀN HỆ VI TUẦN HOÀN MAO MẠCH PHỔI VÀ ĐA CƠ QUAN]
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: SARS-CoV-2 &amp; BÃO CYTOKINE (IL-6, TNF-α, IL-1β) TẤN CÔNG TẾ BÀO NỘI MẠC (ECs)</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 792" width="880" height="792" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: SARS-CoV-2 &amp; BÃO CYTOKINE (IL- -->
+      <rect x="145" y="20" width="590" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">SARS-CoV-2 &amp; BÃO CYTOKINE (IL-6, TNF-α, IL-1β) TẤN CÔNG</text>
+      <text x="440" y="60" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--color-text, #0f172a)">TẾ BÀO NỘI MẠC (ECs)</text>
+      <line x1="440" y1="80" x2="440" y2="108" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: CẠN KIỆT NĂNG LƯỢNG ATP &amp; TĂNG -->
+      <rect x="145" y="108" width="590" height="60" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
+      <text x="440" y="130" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">CẠN KIỆT NĂNG LƯỢNG ATP &amp; TĂNG VỌT NỒNG ĐỘ ION Ca2+ NỘI</text>
+      <text x="440" y="148" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--amber, #d97706)">BÀO</text>
+      <line x1="440" y1="168" x2="440" y2="196" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: BẤT HOẠT FLIPPASE/FLOPPASE ➔ K -->
+      <rect x="195" y="196" width="490" height="60" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
+      <text x="440" y="218" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">BẤT HOẠT FLIPPASE/FLOPPASE ➔ KÍCH HOẠT ENZYME</text>
+      <text x="440" y="236" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--amber, #d97706)">SCRAMBLASE</text>
+      <line x1="440" y1="256" x2="440" y2="284" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: PHOSPHATIDYLSERINE (PS) BỊ LẬT -->
+      <rect x="150" y="284" width="580" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="306" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">PHOSPHATIDYLSERINE (PS) BỊ LẬT TỪ LÁ TRONG RA BỘC LỘ Ở</text>
+      <text x="440" y="324" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--color-text, #0f172a)">LÁ NGOÀI MÀNG TẾ BÀO &amp; TÚI NGOẠI BÀO EVs</text>
+      <!-- Bifurcation Path -->
+      <path d="M 440 344 L 440 358 L 235 358 L 235 372" fill="none" stroke="var(--amber, #f59e0b)" stroke-width="1.8" marker-end="url(#arrAmber)"/>
+      <path d="M 440 358 L 645 358 L 645 372" fill="none" stroke="var(--red, #ef4444)" stroke-width="1.8" marker-end="url(#arrRed)"/>
+      <!-- Left Column: BỀ MẶT TÍCH ĐIỆN ÂM XÚC TÁC ĐÔ -->
+      <rect x="40" y="372" width="390" height="170" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
+      <text x="235" y="394" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">BỀ MẶT TÍCH ĐIỆN ÂM XÚC TÁC ĐÔNG</text>
+      <text x="235" y="412" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">MÁU</text>
+      <line x1="60" y1="426" x2="410" y2="426" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="60" y="442" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Lắp ráp Phức hợp Tenase (FVIIIa-FIXa)</text>
+      <text x="60" y="460" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Lắp ráp Phức hợp Prothrombinase</text>
+      <text x="60" y="478" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• (FVa-FXa)</text>
+      <text x="60" y="496" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• TỔNG HỢP THROMBIN Ồ ẠT ➔ KÍCH HOẠT</text>
+      <text x="60" y="514" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• FIBRIN</text>
+      <text x="60" y="532" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• └────────────────────────────</text>
+      <!-- Right Column: TỔN THƯƠNG NỘI MẠC &amp; MẤT KHÁNG -->
+      <rect x="450" y="372" width="390" height="170" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.5"/>
+      <text x="645" y="394" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">TỔN THƯƠNG NỘI MẠC &amp; MẤT KHÁNG</text>
+      <text x="645" y="412" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">ĐÔNG NỘI SINH</text>
+      <line x1="470" y1="426" x2="820" y2="426" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="470" y="442" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Bong tróc lớp áo Glycocalyx bảo vệ</text>
+      <text x="470" y="460" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Mất Antithrombin III, Protein C &amp; TFPI</text>
+      <text x="470" y="478" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Phóng thích ồ ạt Yếu tố Von Willebrand</text>
+      <text x="470" y="496" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• (vWF)</text>
+      <text x="470" y="514" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ───┬───────────────────────────────┘</text>
+      <line x1="440" y1="542" x2="440" y2="570" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: HÌNH THÀNH CỤC ĐÔNG AMYLOID KH -->
+      <rect x="165" y="570" width="550" height="96" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.8"/>
+      <text x="440" y="592" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">HÌNH THÀNH CỤC ĐÔNG AMYLOID KHÁNG TIÊU SỢI HUYẾT</text>
+      <text x="440" y="610" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--red, #dc2626)">(AMYLOID MICROCLOTS)</text>
+      <text x="189" y="632" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• (Sợi Fibrin biến tính kháng Plasmin + Nồng độ PAI-1 tăng vọt</text>
+      <text x="189" y="650" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• gây GIẢM TIÊU SỢI HUYẾT HYPOFIBRINOLYSIS)</text>
+      <line x1="440" y1="666" x2="440" y2="694" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: TẮC NGHẼN HOÀN TOÀN HỆ VI TUẦN -->
+      <rect x="145" y="694" width="590" height="60" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.8"/>
+      <text x="440" y="716" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">TẮC NGHẼN HOÀN TOÀN HỆ VI TUẦN HOÀN MAO MẠCH PHỔI VÀ ĐA</text>
+      <text x="440" y="734" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--red, #dc2626)">CƠ QUAN</text>
+    </svg>
+  </div>
+</div>
 
 ---
 
@@ -210,17 +355,45 @@ COVID-19 là một bệnh lý **Viêm nội mạc mạch máu hệ thống (Syst
 
 ## 6. Bản Đồ Thuốc Kháng Virus, Kháng Viêm & Chống Đông Trúng Đích EBM {#sec-6}
 
-```
-                                  [BẢN ĐỒ PHÁC ĐỒ ĐIỀU TRỊ COVID-19 THEO IDSA 2025]
-                                                          │
-       ┌──────────────────┬───────────────────────────────┼───────────────────────────────┬──────────────────┐
-       ▼                  ▼                               ▼                               ▼                  ▼
-[1. KHÁNG VIRUS SỚM]   [2. KHÁNG VIÊM CORTICOID]       [3. ỨC CHẾ IL-6]                [4. ỨC CHẾ JAK]    [5. KHÁNG ĐÔNG LMWH]
-- Paxlovid (Nirmatrel- - Dexamethasone 6 mg/ngày       - Tocilizumab (tiêm TM):        - Baricitinib:      - Enoxaparin liều
-  vir ức chế M-pro +     (thử nghiệm RECOVERY):          Khóa thụ thể IL-6, dập tắt      Ức chế truyền tín   dự phòng hoặc liều
-  Ritonavir): Giảm 89%   giảm tử vong ở bệnh nhân        bão cytokine ở bệnh nhân        hiệu JAK-STAT ở     điều trị để ngăn chặn
-  nhập viện/tử vong      cần oxy liệu pháp               suy hô hấp tiến triển           bệnh nhân nặng      Immunothrombosis
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: BẢN ĐỒ PHÁC ĐỒ ĐIỀU TRỊ COVID-19 THEO IDSA 2025</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 280" width="880" height="280" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: BẢN ĐỒ PHÁC ĐỒ ĐIỀU TRỊ COVID- -->
+      <rect x="165" y="20" width="550" height="222" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">BẢN ĐỒ PHÁC ĐỒ ĐIỀU TRỊ COVID-19 THEO IDSA 2025</text>
+      <text x="189" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• [1. KHÁNG VIRUS SỚM] [2. KHÁNG VIÊM CORTICOID] [3. ỨC CHẾ</text>
+      <text x="189" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• IL-6] [4. ỨC CHẾ JAK] [5. KHÁNG ĐÔNG LMWH]</text>
+      <text x="189" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Paxlovid (Nirmatrel- - Dexamethasone 6 mg/ngày - Tocilizumab</text>
+      <text x="189" y="118" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• (tiêm TM): - Baricitinib: - Enoxaparin liều</text>
+      <text x="189" y="136" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• vir ức chế M-pro + (thử nghiệm RECOVERY): Khóa thụ thể IL-6,</text>
+      <text x="189" y="154" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• dập tắt Ức chế truyền tín dự phòng hoặc liều</text>
+      <text x="189" y="172" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Ritonavir): Giảm 89% giảm tử vong ở bệnh nhân bão cytokine ở</text>
+      <text x="189" y="190" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• bệnh nhân hiệu JAK-STAT ở điều trị để ngăn chặn</text>
+      <text x="189" y="208" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• nhập viện/tử vong cần oxy liệu pháp suy hô hấp tiến triển</text>
+      <text x="189" y="226" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• bệnh nhân nặng Immunothrombosis</text>
+    </svg>
+  </div>
+</div>
 
 ---
 

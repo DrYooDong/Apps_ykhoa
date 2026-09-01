@@ -79,29 +79,66 @@ sections:
 
 Quả tim có khả năng tự phát xung động nhịp nhàng và dẫn truyền đồng bộ khắp các buồng tim nhờ **Hệ thống dẫn truyền chuyên biệt**:
 
-```
-[NÚT XOANG (SA NODE)] (Chủ nhịp chính: 60 - 100 ck/p; Tốc độ 0.05 m/s)
-         │
-         ├──► Bó Bachmann ──► Khử cực Tâm Nhĩ Trái
-         └──► 3 Đường Liên Nút ──► Khử cực Tâm Nhĩ Phải
-                     │
-                     ▼
-[NÚT NHĨ - THẤT (AV NODE)] (Trạm chậm dẫn truyền: Trễ 0.12s; Tự phát 40 - 60 ck/p; Tốc độ 0.05 m/s)
-                     │
-                     ▼
-[BÓ HIS (BUNDLE OF HIS)] ──► Xuyên qua vòng van xơ cách điện tim
-                     │
-         ┌───────────┴───────────┐
-         ▼                       ▼
-  [NHÁNH PHẢI]             [NHÁNH TRÁI] ──► Phân nhánh Trước Trái & Sau Trái
-         │                       │
-         └───────────┬───────────┘
-                     ▼
-[MẠNG LƯỚI PURKINJE] (Tốc độ siêu tốc: 4.0 m/s; Tự phát thoát 20 - 40 ck/p)
-                     │
-                     ▼
-[KHỬ CỰC ĐỒNG BỘ TOÀN BỘ CƠ TÂM THẤT TỪ NỘI TÂM MẠC RA NGOẠI TÂM MẠC]
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: NÚT XOANG (SA NODE)</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 546" width="880" height="546" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: NÚT XOANG (SA NODE) -->
+      <rect x="237.25" y="20" width="405.5" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">NÚT XOANG (SA NODE)</text>
+      <text x="261.25" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ├──► Bó Bachmann ──► Khử cực Tâm Nhĩ Trái</text>
+      <line x1="440" y1="80" x2="440" y2="108" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: NÚT NHĨ - THẤT (AV NODE) -->
+      <rect x="250" y="108" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="130" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">NÚT NHĨ - THẤT (AV NODE)</text>
+      <line x1="440" y1="154" x2="440" y2="182" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: BÓ HIS (BUNDLE OF HIS) -->
+      <rect x="250" y="182" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="204" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">BÓ HIS (BUNDLE OF HIS)</text>
+      <!-- Bifurcation Path -->
+      <path d="M 440 228 L 440 242 L 235 242 L 235 256" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <path d="M 440 242 L 645 242 L 645 256" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Left Column: NHÁNH PHẢI -->
+      <rect x="40" y="256" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="235" y="278" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">NHÁNH PHẢI</text>
+      <line x1="60" y1="292" x2="410" y2="292" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="60" y="308" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• └───────</text>
+      <!-- Right Column: NHÁNH TRÁI -->
+      <rect x="450" y="256" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="645" y="278" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">NHÁNH TRÁI</text>
+      <line x1="470" y1="292" x2="820" y2="292" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="470" y="308" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ────┬───────────┘</text>
+      <line x1="440" y1="346" x2="440" y2="374" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: MẠNG LƯỚI PURKINJE -->
+      <rect x="250" y="374" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="396" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">MẠNG LƯỚI PURKINJE</text>
+      <line x1="440" y1="420" x2="440" y2="448" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: KHỬ CỰC ĐỒNG BỘ TOÀN BỘ CƠ TÂM -->
+      <rect x="155" y="448" width="570" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="470" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">KHỬ CỰC ĐỒNG BỘ TOÀN BỘ CƠ TÂM THẤT TỪ NỘI TÂM MẠC RA</text>
+      <text x="440" y="488" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--color-text, #0f172a)">NGOẠI TÂM MẠC</text>
+    </svg>
+  </div>
+</div>
 
 
 ---

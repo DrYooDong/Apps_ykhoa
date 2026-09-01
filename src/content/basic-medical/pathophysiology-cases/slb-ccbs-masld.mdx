@@ -83,17 +83,54 @@ sections:
 
 Năm 2023-2024, các hiệp hội gan mật hàng đầu thế giới (AASLD, EASL, ALEH, APASL) đã chính thức thống nhất đổi tên danh pháp từ **NAFLD** (Bệnh gan nhiễm mỡ không do rượu) sang **MASLD** (Bệnh gan nhiễm mỡ liên quan đến rối loạn chức năng chuyển hóa) và **NASH** sang **MASH** (Viêm gan nhiễm mỡ liên quan đến chuyển hóa).
 
-```
-[BỆNH GAN NHIỄM MỠ (STEATOTIC LIVER DISEASE - SLD)]
-                         │
-        ┌────────────────┴────────────────┐
-        ▼                                 ▼
-[MASLD (Chuyển hóa thuần túy)]     [MetALD (MASLD + Rượu mức độ vừa)]
-- Có nhiễm mỡ gan (&gt; 5% tế bào)    - Có nhiễm mỡ gan & yếu tố chuyển hóa
-- Kèm ít nhất 1 trong 5 tiêu chí   - Uống rượu 140-350 g/tuần (Nữ)
-  chuyển hóa (Béo phì, ĐTĐ typ 2,    hoặc 210-420 g/tuần (Nam)
-  Tăng HA, Tăng TG, Giảm HDL-C)
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: BỆNH GAN NHIỄM MỠ (STEATOTIC LIVER DISEASE - SLD)</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 248" width="880" height="248" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: BỆNH GAN NHIỄM MỠ (STEATOTIC L -->
+      <rect x="175" y="20" width="530" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">BỆNH GAN NHIỄM MỠ (STEATOTIC LIVER DISEASE - SLD)</text>
+      <!-- Bifurcation Path -->
+      <path d="M 440 66 L 440 80 L 235 80 L 235 94" fill="none" stroke="var(--amber, #f59e0b)" stroke-width="1.8" marker-end="url(#arrAmber)"/>
+      <path d="M 440 80 L 645 80 L 645 94" fill="none" stroke="var(--amber, #f59e0b)" stroke-width="1.8" marker-end="url(#arrAmber)"/>
+      <!-- Left Column: MASLD (Chuyển hóa thuần túy) -->
+      <rect x="40" y="94" width="390" height="116" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
+      <text x="235" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">MASLD (Chuyển hóa thuần túy)</text>
+      <line x1="60" y1="130" x2="410" y2="130" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="60" y="146" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Có nhiễm mỡ gan (&amp;gt; 5% tế bào)</text>
+      <text x="60" y="164" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Kèm ít nhất 1 trong 5 tiêu chí</text>
+      <text x="60" y="182" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• chuyển hóa (Béo phì, ĐTĐ typ</text>
+      <text x="60" y="200" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Tăng HA, Tăng</text>
+      <!-- Right Column: MetALD (MASLD + Rượu mức độ vừ -->
+      <rect x="450" y="94" width="390" height="116" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
+      <text x="645" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">MetALD (MASLD + Rượu mức độ vừa)</text>
+      <line x1="470" y1="130" x2="820" y2="130" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="470" y="146" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Có nhiễm mỡ gan &amp; yếu tố chuyển hóa</text>
+      <text x="470" y="164" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Uống rượu 140-350 g/tuần (Nữ)</text>
+      <text x="470" y="182" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• 2,    hoặc 210-420 g/tuần (Nam)</text>
+      <text x="470" y="200" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• TG, Giảm HDL-C)</text>
+    </svg>
+  </div>
+</div>
 
 <div class="infobox pearl">
   <div class="infobox-title">💎 5 Tiêu Chuẩn Tim Mạch - Chuyển Hóa Của MASLD (Chỉ cần thỏa mãn ≥ 1 tiêu chuẩn)</div>
@@ -114,25 +151,65 @@ Năm 2023-2024, các hiệp hội gan mật hàng đầu thế giới (AASLD, EA
 
 Cơ chế bệnh sinh của MASLD/MASH được thúc đẩy bởi thuyết đa đòn đánh (Multiple-Hit Hypothesis) diễn ra đồng thời:
 
-```
-[ĐỀ KHÁNG INSULIN TẠI MÔ MỠ & CƠ XƯƠNG]
-                   │
-  ┌────────────────┴────────────────┐
-  ▼                                 ▼
-[MẤT ỨC CHẾ MEN HSL Ở MÔ MỠ]      [TĂNG ĐƯỜNG HUYẾT VÀ TĂNG INSULIN MÁU]
-  │                                 │
-  ▼                                 ▼
-[DÒNG ACID BÉO TỰ DO (FFAs)         [KÍCH HOẠT SREBP-1c & ChREBP TẠI GAN]
- TRÀN NGẬP VỀ GAN (60% nguồn mỡ)]  [TÂN TẠO MỠ TẠI CHỖ (DNL - 25% nguồn mỡ)]
-  │                                 │
-  └────────────────┬────────────────┘
-                   │
-                   ▼
-[QUÁ TẢI TỔNG HỢP VÀ TÍCH TỤ TRIGLYCERIDE TRONG TẾ BÀO GAN (> 5%)]
-                   │
-                   ▼
-      [GAN NHIỄM MỠ ĐƠN THUẦN (MASL)]
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: ĐỀ KHÁNG INSULIN TẠI MÔ MỠ &amp; CƠ XƯƠNG</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 546" width="880" height="546" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: ĐỀ KHÁNG INSULIN TẠI MÔ MỠ &amp; C -->
+      <rect x="235" y="20" width="410" height="46" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">ĐỀ KHÁNG INSULIN TẠI MÔ MỠ &amp; CƠ XƯƠNG</text>
+      <!-- Bifurcation Path -->
+      <path d="M 440 66 L 440 80 L 235 80 L 235 94" fill="none" stroke="var(--amber, #f59e0b)" stroke-width="1.8" marker-end="url(#arrAmber)"/>
+      <path d="M 440 80 L 645 80 L 645 94" fill="none" stroke="var(--amber, #f59e0b)" stroke-width="1.8" marker-end="url(#arrAmber)"/>
+      <!-- Left Column: MẤT ỨC CHẾ MEN HSL Ở MÔ MỠ -->
+      <rect x="40" y="94" width="390" height="90" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
+      <text x="235" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">MẤT ỨC CHẾ MEN HSL Ở MÔ MỠ</text>
+      <line x1="60" y1="130" x2="410" y2="130" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <!-- Right Column: TĂNG ĐƯỜNG HUYẾT VÀ TĂNG INSUL -->
+      <rect x="450" y="94" width="390" height="90" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
+      <text x="645" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">TĂNG ĐƯỜNG HUYẾT VÀ TĂNG INSULIN</text>
+      <text x="645" y="134" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">MÁU</text>
+      <line x1="470" y1="148" x2="820" y2="148" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <line x1="440" y1="184" x2="440" y2="212" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: DÒNG ACID BÉO TỰ DO (FFAs)     -->
+      <rect x="145" y="212" width="590" height="60" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
+      <text x="440" y="234" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">DÒNG ACID BÉO TỰ DO (FFAs) [KÍCH HOẠT SREBP-1c &amp; ChREBP</text>
+      <text x="440" y="252" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--amber, #d97706)">TẠI GAN</text>
+      <line x1="440" y1="272" x2="440" y2="300" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: TÂN TẠO MỠ TẠI CHỖ (DNL - 25%  -->
+      <rect x="225" y="300" width="430" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="322" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">TÂN TẠO MỠ TẠI CHỖ (DNL - 25% nguồn mỡ)</text>
+      <line x1="440" y1="346" x2="440" y2="374" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: QUÁ TẢI TỔNG HỢP VÀ TÍCH TỤ TR -->
+      <rect x="155" y="374" width="570" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="396" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">QUÁ TẢI TỔNG HỢP VÀ TÍCH TỤ TRIGLYCERIDE TRONG TẾ BÀO</text>
+      <text x="440" y="414" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--color-text, #0f172a)">GAN (&gt; 5%)</text>
+      <line x1="440" y1="434" x2="440" y2="462" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: GAN NHIỄM MỠ ĐƠN THUẦN (MASL) -->
+      <rect x="250" y="462" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="484" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">GAN NHIỄM MỠ ĐƠN THUẦN (MASL)</text>
+    </svg>
+  </div>
+</div>
 
 ---
 
@@ -140,52 +217,137 @@ Cơ chế bệnh sinh của MASLD/MASH được thúc đẩy bởi thuyết đa 
 
 Khi khả năng dự trữ Triglyceride lành tính bị vượt ngưỡng, các acid béo tự do dư thừa bị chuyển hóa thành các hợp chất trung gian mang **độc tính lipid (Lipotoxic Intermediates)**:
 
-```
-[DƯ THỪA FFAs BÃO HÒA, DIACYLGLYCEROL (DAG) & CERAMIDES]
-                            │
-       ┌────────────────────┼────────────────────┐
-       ▼                    ▼                    ▼
-[STRESS TY THỂ]      [STRESS LƯỚI NỘI CHẤT]  [STRESS OXY HÓA (ROS)]
-- Ức chế chuỗi ETC   - Kích hoạt con đường   - Peroxy hóa lipid màng
-- Suy kiệt ATP         UPR (IRE1α, PERK)     - Phá hủy DNA nội bào
-       │                    │                    │
-       └────────────────────┼────────────────────┘
-                            │
-                            ▼
-      [KÍCH HOẠT CON ĐƯỜNG KINASE TỬ VONG: JNK & NF-κB]
-                            │
-                            ▼
-[THOÁI HÓA PHỒNG BÓNG TẾ BÀO GAN (BALLOONING DEGENERATION)]
-- Phá hủy bộ khung tế bào Keratin 8/18
-- Tích tụ thể vùi Mallory-Denk trong bào tương
-- Chết tế bào theo chương trình (Apoptosis & Necroptosis)
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: DƯ THỪA FFAs BÃO HÒA, DIACYLGLYCEROL (DAG) &amp; CERAMIDES</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 438" width="880" height="438" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: DƯ THỪA FFAs BÃO HÒA, DIACYLGL -->
+      <rect x="150" y="20" width="580" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">DƯ THỪA FFAs BÃO HÒA, DIACYLGLYCEROL (DAG) &amp; CERAMIDES</text>
+      <path d="M 440 66 L 440 80 L 155 80 L 155 94" fill="none" stroke="var(--amber, #f59e0b)" stroke-width="1.8" marker-end="url(#arrAmber)"/>
+      <path d="M 440 80 L 440 80 L 440 94" fill="none" stroke="var(--amber, #f59e0b)" stroke-width="1.8" marker-end="url(#arrAmber)"/>
+      <path d="M 440 80 L 725 80 L 725 94" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <rect x="30" y="94" width="250" height="90" rx="8" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
+      <text x="155" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--amber, #d97706)">STRESS TY THỂ</text>
+      <line x1="45" y1="124" x2="265" y2="124" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="42" y="140" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Ức chế chuỗi ETC   -</text>
+      <text x="42" y="158" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Suy kiệt ATP</text>
+      <text x="42" y="176" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• └────────</text>
+      <rect x="315" y="94" width="250" height="90" rx="8" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
+      <text x="440" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--amber, #d97706)">STRESS LƯỚI NỘI CHẤT</text>
+      <line x1="330" y1="124" x2="550" y2="124" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="327" y="140" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Kích hoạt con đường</text>
+      <text x="327" y="158" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• UPR (IRE1α, PERK)</text>
+      <text x="327" y="176" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• ────────────┼───</text>
+      <rect x="600" y="94" width="250" height="90" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="725" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text, #0f172a)">STRESS OXY HÓA (ROS)</text>
+      <line x1="615" y1="124" x2="835" y2="124" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="612" y="140" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Peroxy hóa lipid màng</text>
+      <text x="612" y="158" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Phá hủy DNA nội bào</text>
+      <text x="612" y="176" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• ─────────────────┘</text>
+      <line x1="440" y1="184" x2="440" y2="212" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: KÍCH HOẠT CON ĐƯỜNG KINASE TỬ  -->
+      <rect x="185" y="212" width="510" height="46" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.8"/>
+      <text x="440" y="234" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">KÍCH HOẠT CON ĐƯỜNG KINASE TỬ VONG: JNK &amp; NF-κB</text>
+      <line x1="440" y1="258" x2="440" y2="286" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: THOÁI HÓA PHỒNG BÓNG TẾ BÀO GA -->
+      <rect x="186.25" y="286" width="507.5" height="114" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.8"/>
+      <text x="440" y="308" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">THOÁI HÓA PHỒNG BÓNG TẾ BÀO GAN (BALLOONING</text>
+      <text x="440" y="326" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--red, #dc2626)">DEGENERATION)</text>
+      <text x="210.25" y="348" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Phá hủy bộ khung tế bào Keratin 8/18</text>
+      <text x="210.25" y="366" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Tích tụ thể vùi Mallory-Denk trong bào tương</text>
+      <text x="210.25" y="384" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Chết tế bào theo chương trình (Apoptosis &amp; Necroptosis)</text>
+    </svg>
+  </div>
+</div>
 
 ---
 
 ## 4. Dòng Thác Viêm MASH & Hoạt Hóa Tế Bào Hình Sao (HSCs) {#sec-4}
 
-```
-[TẾ BÀO GAN CHẾT GIẢI PHÓNG DAMPs / DNA TY THỂ] + [NỘI ĐỘC TỐ LPS TỪ RUỘT (LEAKY GUT)]
-                                        │
-                                        ▼
-           [GẮN VÀO THỤ THỂ TLR-4 VÀ TLR-9 TRÊN ĐẠI THỰC BÀO KUPFFER]
-                                        │
-                                        ▼
-              [HOẠT HÓA THỂ PHỨC HỢP VIÊM NLRP3 INFLAMMASOME]
-                                        │
-                                        ▼
-           [GIẢI PHÓNG HÀNG LOẠT CYTOKINE TIỀN VIÊM: IL-1β, IL-18, TNF-α]
-                                        │
-                                        ▼
-             [HOẠT HÓA TẾ BÀO HÌNH SAO GAN (HSCs) THÀNH MYOFIBROBLASTS]
-                                        │
-                                        ▼
-             [TĂNG SINH VÀ LẮNG ĐỌNG COLLAGEN TYPE I & III QUANH XOANG GAN]
-                                        │
-                                        ▼
-           [XƠ HÓA GAN TIẾN TRIỂN (PERISINUSOIDAL / BRIDGING FIBROSIS ➔ XƠ GAN)]
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: TẾ BÀO GAN CHẾT GIẢI PHÓNG DAMPs / DNA TY THỂ</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 662" width="880" height="662" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Left Column: TẾ BÀO GAN CHẾT GIẢI PHÓNG DAM -->
+      <rect x="40" y="20" width="390" height="90" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.5"/>
+      <text x="235" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">TẾ BÀO GAN CHẾT GIẢI PHÓNG DAMPs /</text>
+      <text x="235" y="60" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">DNA TY THỂ</text>
+      <line x1="60" y1="74" x2="410" y2="74" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <!-- Right Column: NỘI ĐỘC TỐ LPS TỪ RUỘT (LEAKY  -->
+      <rect x="450" y="20" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="645" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">NỘI ĐỘC TỐ LPS TỪ RUỘT (LEAKY GUT)</text>
+      <line x1="470" y1="56" x2="820" y2="56" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <line x1="440" y1="110" x2="440" y2="138" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: GẮN VÀO THỤ THỂ TLR-4 VÀ TLR-9 -->
+      <rect x="180" y="138" width="520" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="160" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">GẮN VÀO THỤ THỂ TLR-4 VÀ TLR-9 TRÊN ĐẠI THỰC BÀO</text>
+      <text x="440" y="178" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--color-text, #0f172a)">KUPFFER</text>
+      <line x1="440" y1="198" x2="440" y2="226" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: HOẠT HÓA THỂ PHỨC HỢP VIÊM NLR -->
+      <rect x="195" y="226" width="490" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="248" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">HOẠT HÓA THỂ PHỨC HỢP VIÊM NLRP3 INFLAMMASOME</text>
+      <line x1="440" y1="272" x2="440" y2="300" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: GIẢI PHÓNG HÀNG LOẠT CYTOKINE  -->
+      <rect x="150" y="300" width="580" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="322" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">GIẢI PHÓNG HÀNG LOẠT CYTOKINE TIỀN VIÊM: IL-1β, IL-18,</text>
+      <text x="440" y="340" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--color-text, #0f172a)">TNF-α</text>
+      <line x1="440" y1="360" x2="440" y2="388" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: HOẠT HÓA TẾ BÀO HÌNH SAO GAN ( -->
+      <rect x="215" y="388" width="450" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="410" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">HOẠT HÓA TẾ BÀO HÌNH SAO GAN (HSCs) THÀNH</text>
+      <text x="440" y="428" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--color-text, #0f172a)">MYOFIBROBLASTS</text>
+      <line x1="440" y1="448" x2="440" y2="476" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: TĂNG SINH VÀ LẮNG ĐỌNG COLLAGE -->
+      <rect x="170" y="476" width="540" height="60" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
+      <text x="440" y="498" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">TĂNG SINH VÀ LẮNG ĐỌNG COLLAGEN TYPE I &amp; III QUANH</text>
+      <text x="440" y="516" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--amber, #d97706)">XOANG GAN</text>
+      <line x1="440" y1="536" x2="440" y2="564" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: XƠ HÓA GAN TIẾN TRIỂN (PERISIN -->
+      <rect x="180" y="564" width="520" height="60" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
+      <text x="440" y="586" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">XƠ HÓA GAN TIẾN TRIỂN (PERISINUSOIDAL / BRIDGING</text>
+      <text x="440" y="604" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--amber, #d97706)">FIBROSIS ➔ XƠ GAN)</text>
+    </svg>
+  </div>
+</div>
 
 ---
 
@@ -233,18 +395,66 @@ $$\mathbf{FIB-4 = \frac{Tuổi \times AST\ (U/L)}{Tiểu\ cầu\ (10^9/L) \times
 
 ## 6. Cơ Chế Điều Trị Đột Phá: Đồng Vận GLP-1 & Chủ Vận Chọn Lọc THR-β {#sec-6}
 
-```
-                                  [CƠ CHẾ TÁC DỤNG CỦA CÁC THUỐC ĐIỀU TRỊ MASH MỚI]
-                                                          │
-       ┌──────────────────────────────────────────────────┴──────────────────────────────────────────────────┐
-       ▼                                                                                                     ▼
-[RESMETIROM (Thuốc đầu tiên được FDA phê duyệt 2024)]                             [ĐỒNG VẬN THỤ THỂ GLP-1 / GIP (Semaglutide, Tirzepatide)]
-- Chủ vận chọn lọc thụ thể Thyroid Hormone Receptor-Beta (THR-β) ở gan             - Kích hoạt thụ thể GLP-1 ở hệ thần kinh trung ương và ruột
-- Phục hồi tín hiệu hormone giáp nội tế bào gan bị suy giảm trong MASH             - Giảm thèm ăn, làm chậm rỗng dạ dày ➔ Giảm 10-15% cân nặng
-- TĂNG CƯỜNG QUÁ TRÌNH OXY HÓA ACID BÉO TẠI TY THỂ                                - Cải thiện sâu sắc tình trạng Đề kháng Insulin
-- TĂNG THOÁI BIẾN VÀ ĐÀO THẢI MỠ QUA ĐƯỜNG MẬT                                     - Giảm dòng FFAs từ mô mỡ đổ về gan
-- GIẢI QUYẾT ĐỒNG THỜI VIÊM MASH VÀ ĐẢO NGƯỢC XƠ HÓA GAN                           - Làm thoái lui phản ứng viêm MASH
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: CƠ CHẾ TÁC DỤNG CỦA CÁC THUỐC ĐIỀU TRỊ MASH MỚI</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 374" width="880" height="374" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: CƠ CHẾ TÁC DỤNG CỦA CÁC THUỐC  -->
+      <rect x="185" y="20" width="510" height="46" rx="10" fill="rgba(16, 185, 129, 0.08)" stroke="var(--color-success, #10b981)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-success, #10b981)">CƠ CHẾ TÁC DỤNG CỦA CÁC THUỐC ĐIỀU TRỊ MASH MỚI</text>
+      <!-- Bifurcation Path -->
+      <path d="M 440 66 L 440 80 L 235 80 L 235 94" fill="none" stroke="var(--amber, #f59e0b)" stroke-width="1.8" marker-end="url(#arrAmber)"/>
+      <path d="M 440 80 L 645 80 L 645 94" fill="none" stroke="var(--red, #ef4444)" stroke-width="1.8" marker-end="url(#arrRed)"/>
+      <!-- Left Column: RESMETIROM (Thuốc đầu tiên đượ -->
+      <rect x="40" y="94" width="390" height="242" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
+      <text x="235" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">RESMETIROM (Thuốc đầu tiên được</text>
+      <text x="235" y="134" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">FDA phê duyệt 2024)</text>
+      <line x1="60" y1="148" x2="410" y2="148" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="60" y="164" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Chủ vận chọn lọc thụ thể Thyroid</text>
+      <text x="60" y="182" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Hormone Receptor-Beta (THR-β) ở gan</text>
+      <text x="60" y="200" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Phục hồi tín hiệu hormone giáp nội tế</text>
+      <text x="60" y="218" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• bào gan bị suy giảm trong MASH</text>
+      <text x="60" y="236" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• TĂNG CƯỜNG QUÁ TRÌNH OXY HÓA ACID BÉO</text>
+      <text x="60" y="254" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• TẠI TY THỂ</text>
+      <text x="60" y="272" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• TĂNG THOÁI BIẾN VÀ ĐÀO THẢI MỠ QUA</text>
+      <text x="60" y="290" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ĐƯỜNG MẬT</text>
+      <text x="60" y="308" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• GIẢI QUYẾT ĐỒNG THỜI VIÊM MASH VÀ ĐẢO</text>
+      <text x="60" y="326" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• NGƯỢC XƠ HÓA GAN</text>
+      <!-- Right Column: ĐỒNG VẬN THỤ THỂ GLP-1 / GIP ( -->
+      <rect x="450" y="94" width="390" height="242" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.5"/>
+      <text x="645" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">ĐỒNG VẬN THỤ THỂ GLP-1 / GIP</text>
+      <text x="645" y="134" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">(Semaglutide, Tirzepatide)</text>
+      <line x1="470" y1="148" x2="820" y2="148" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="470" y="164" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Kích hoạt thụ thể GLP-1 ở hệ thần kinh</text>
+      <text x="470" y="182" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• trung ương và ruột</text>
+      <text x="470" y="200" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Giảm thèm ăn, làm chậm rỗng dạ dày ➔</text>
+      <text x="470" y="218" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Giảm 10-15% cân nặng</text>
+      <text x="470" y="236" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Cải thiện sâu sắc tình trạng Đề kháng</text>
+      <text x="470" y="254" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Insulin</text>
+      <text x="470" y="272" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Giảm dòng FFAs từ mô mỡ đổ về gan</text>
+      <text x="470" y="290" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Làm thoái lui phản ứng viêm MASH</text>
+    </svg>
+  </div>
+</div>
 
 ---
 

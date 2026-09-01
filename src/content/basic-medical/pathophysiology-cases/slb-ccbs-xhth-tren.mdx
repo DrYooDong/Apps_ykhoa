@@ -79,18 +79,63 @@ sections:
 
 Xuất huyết tiêu hóa trên (Upper Gastrointestinal Bleeding - UGIB) là tình trạng chảy máu trong lòng ống tiêu hóa có nguồn gốc **từ thực quản đến góc Treitz** (dây chằng Treitz / ranh giới giữa tá tràng và hỗng tràng):
 
-```
-                                  [XUẤT HUYẾT TIÊU HÓA TRÊN (TRÊN GÓC TREITZ)]
-                                                        │
-       ┌────────────────────────────────────────────────┴────────────────────────────────────────────────┐
-       ▼                                                                                                 ▼
-[1. DO VỠ GIÃN TĨNH MẠCH CỬA (VARICEAL - 15-20%)]                                 [2. KHÔNG DO VỠ GIÃN (NON-VARICEAL - 80-85%)]
-- Vỡ giãn tĩnh mạch thực quản (EV)                                               - Loét dạ dày - tá tràng (PUD - Chiếm 50-60%)
-- Vỡ giãn tĩnh mạch dạ dày / phình vị (GV - GOV/IGV)                             - Rách tâm vị do nôn (Hội chứng Mallory-Weiss - 5-10%)
-- Vỡ giãn tĩnh mạch lạc chỗ (Ectopic varices)                                    - Tổn thương mạch máu Dieulafoy (Dị sản tiểu động mạch)
-                                                                                 - Viêm trợt dạ dày do thuốc (NSAIDs, Aspirin)
-                                                                                 - Dị sản mạch hang vị dạ dày (GAVE / Dưa hấu)
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: XUẤT HUYẾT TIÊU HÓA TRÊN (TRÊN GÓC TREITZ)</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 374" width="880" height="374" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: XUẤT HUYẾT TIÊU HÓA TRÊN (TRÊN -->
+      <rect x="210" y="20" width="460" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">XUẤT HUYẾT TIÊU HÓA TRÊN (TRÊN GÓC TREITZ)</text>
+      <!-- Bifurcation Path -->
+      <path d="M 440 66 L 440 80 L 235 80 L 235 94" fill="none" stroke="var(--red, #ef4444)" stroke-width="1.8" marker-end="url(#arrRed)"/>
+      <path d="M 440 80 L 645 80 L 645 94" fill="none" stroke="var(--red, #ef4444)" stroke-width="1.8" marker-end="url(#arrRed)"/>
+      <!-- Left Column: 1. DO VỠ GIÃN TĨNH MẠCH CỬA (V -->
+      <rect x="40" y="94" width="390" height="242" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.5"/>
+      <text x="235" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">1. DO VỠ GIÃN TĨNH MẠCH CỬA</text>
+      <text x="235" y="134" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">(VARICEAL - 15-20%)</text>
+      <line x1="60" y1="148" x2="410" y2="148" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="60" y="164" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Vỡ giãn tĩnh mạch thực quản (EV)</text>
+      <text x="60" y="182" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Vỡ giãn tĩnh mạch dạ dày / phình vị</text>
+      <text x="60" y="200" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• (GV - GOV/IGV)</text>
+      <text x="60" y="218" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Vỡ giãn tĩnh mạch lạc chỗ (Ectopic</text>
+      <text x="60" y="236" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• varices)</text>
+      <!-- Right Column: 2. KHÔNG DO VỠ GIÃN (NON-VARIC -->
+      <rect x="450" y="94" width="390" height="242" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.5"/>
+      <text x="645" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">2. KHÔNG DO VỠ GIÃN (NON-VARICEAL</text>
+      <text x="645" y="134" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">- 80-85%)</text>
+      <line x1="470" y1="148" x2="820" y2="148" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="470" y="164" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Loét dạ dày - tá tràng (PUD - Chiếm</text>
+      <text x="470" y="182" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• 50-60%)</text>
+      <text x="470" y="200" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Rách tâm vị do nôn (Hội chứng</text>
+      <text x="470" y="218" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Mallory-Weiss - 5-10%)</text>
+      <text x="470" y="236" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Tổn thương mạch máu Dieulafoy (Dị sản</text>
+      <text x="470" y="254" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• tiểu động mạch)</text>
+      <text x="470" y="272" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Viêm trợt dạ dày do thuốc (NSAIDs,</text>
+      <text x="470" y="290" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Aspirin)</text>
+      <text x="470" y="308" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Dị sản mạch hang vị dạ dày (GAVE / Dưa</text>
+      <text x="470" y="326" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• hấu)</text>
+    </svg>
+  </div>
+</div>
 
 ---
 
@@ -98,19 +143,69 @@ Xuất huyết tiêu hóa trên (Upper Gastrointestinal Bleeding - UGIB) là tì
 
 Áp lực trong lòng búi giãn thực quản hoặc phình vị phụ thuộc trực tiếp vào **Gradient áp lực tĩnh mạch gan (HVPG)**. Khi HVPG vượt quá ngưỡng tới hạn **$12\text{ mmHg}$**, theo định luật Laplace, sức căng thành tĩnh mạch ($T = P \times r / 2w$) vượt quá độ bền cơ học của vách mạch, dẫn đến vỡ tĩnh mạch tạo ra dòng máu phun xối xả đe dọa tử vong ngay lập tức.
 
-```
-[TĂNG ÁP CỬA (HVPG > 12 mmHg)] ➔ [BÚI GIÃN DƯỚI NIÊM MẠC TO NGOẰN NGOÈO (r TĂNG)]
-                                              │
-                                              ▼
-[VÁCH THÀNH MỎNG DẦN (w GIẢM) ➔ SỨC CĂNG THÀNH TĂNG CỰC ĐẠI ➔ VỠ BÚI GIÃN]
-                                              │
-       ┌──────────────────────────────────────┴──────────────────────────────────────┐
-       ▼                                                                             ▼
-[XỬ TRÍ HUYẾT ĐỘNG DƯỢC LÝ SỚM]                                             [CAN THIỆP NỘI SOI & TIPS]
-- Thuốc co mạch tạng: Terlipressin, Somatostatin, Octreotide                  - Thắt vòng cao su nội soi (EVL) cho búi giãn thực quản
-- Giảm lưu lượng dòng máu tĩnh mạch cửa (Q giảm)                              - Tiêm keo sinh học Cyanoacrylate cho búi giãn phình vị
-- Hạ nhanh HVPG giúp ổn định huyết động trước nội soi                        - Đặt Shunt Cửa-Chủ qua da (Preemptive / Salvage TIPS)
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: TĂNG ÁP CỬA (HVPG &gt; 12 mmHg)</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 416" width="880" height="416" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Left Column: TĂNG ÁP CỬA (HVPG &gt; 12 mmHg) -->
+      <rect x="40" y="20" width="390" height="90" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
+      <text x="235" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">TĂNG ÁP CỬA (HVPG &gt; 12 mmHg)</text>
+      <line x1="60" y1="56" x2="410" y2="56" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <!-- Right Column: BÚI GIÃN DƯỚI NIÊM MẠC TO NGOẰ -->
+      <rect x="450" y="20" width="390" height="90" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
+      <text x="645" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">BÚI GIÃN DƯỚI NIÊM MẠC TO NGOẰN</text>
+      <text x="645" y="60" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">NGOÈO (r TĂNG)</text>
+      <line x1="470" y1="74" x2="820" y2="74" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <line x1="440" y1="110" x2="440" y2="138" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: VÁCH THÀNH MỎNG DẦN (w GIẢM) ➔ -->
+      <rect x="150" y="138" width="580" height="60" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.8"/>
+      <text x="440" y="160" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">VÁCH THÀNH MỎNG DẦN (w GIẢM) ➔ SỨC CĂNG THÀNH TĂNG CỰC</text>
+      <text x="440" y="178" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--red, #dc2626)">ĐẠI ➔ VỠ BÚI GIÃN</text>
+      <!-- Bifurcation Path -->
+      <path d="M 440 198 L 440 212 L 235 212 L 235 226" fill="none" stroke="var(--color-success, #10b981)" stroke-width="1.8" marker-end="url(#arrGreen)"/>
+      <path d="M 440 212 L 645 212 L 645 226" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Left Column: XỬ TRÍ HUYẾT ĐỘNG DƯỢC LÝ SỚM -->
+      <rect x="40" y="226" width="390" height="152" rx="10" fill="rgba(16, 185, 129, 0.08)" stroke="var(--color-success, #10b981)" stroke-width="1.5"/>
+      <text x="235" y="248" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-success, #10b981)">XỬ TRÍ HUYẾT ĐỘNG DƯỢC LÝ SỚM</text>
+      <line x1="60" y1="262" x2="410" y2="262" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="60" y="278" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Thuốc co mạch tạng: Terlipressin,</text>
+      <text x="60" y="296" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Somatostatin, Octreotide</text>
+      <text x="60" y="314" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Giảm lưu lượng dòng máu tĩnh mạch cửa</text>
+      <text x="60" y="332" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• (Q giảm)</text>
+      <text x="60" y="350" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Hạ nhanh HVPG giúp ổn định huyết động</text>
+      <text x="60" y="368" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• trước nội soi</text>
+      <!-- Right Column: CAN THIỆP NỘI SOI &amp; TIPS -->
+      <rect x="450" y="226" width="390" height="152" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="645" y="248" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">CAN THIỆP NỘI SOI &amp; TIPS</text>
+      <line x1="470" y1="262" x2="820" y2="262" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="470" y="278" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Thắt vòng cao su nội soi (EVL) cho búi</text>
+      <text x="470" y="296" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• giãn thực quản</text>
+      <text x="470" y="314" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Tiêm keo sinh học Cyanoacrylate cho</text>
+      <text x="470" y="332" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• búi giãn phình vị</text>
+      <text x="470" y="350" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Đặt Shunt Cửa-Chủ qua da (Preemptive /</text>
+      <text x="470" y="368" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Salvage TIPS)</text>
+    </svg>
+  </div>
+</div>
 
 ---
 
@@ -119,21 +214,64 @@ Xuất huyết tiêu hóa trên (Upper Gastrointestinal Bleeding - UGIB) là tì
 ### 3.1. Mối Quan Hệ Giữa pH Dịch Vị Và Tính Ổn Định Của Cục Máu Đông
 Cơ chế sinh lý học cầm máu tại ổ loét dạ dày - tá tràng chịu sự chi phối quyết định của môi trường toan:
 
-```
-[MÔI TRƯỜNG ACID DẠ DÀY pH < 4.0]                        [NÂNG VÀ DUY TRÌ LIÊN TỤC pH > 6.0 (BẰNG PPI)]
-               │                                                              │
-  ┌────────────┴────────────┐                                    ┌────────────┴────────────┐
-  ▼                         ▼                                    ▼                         ▼
-[PEPSIN HOẠT HÓA MẠNH]  [TIỂU CẦU BỊ BẤT HOẠT]              [PEPSIN BỊ BẤT HOẠT VĨNH VIỄN] [NGƯNG TẬP TIỂU CẦU TỐI ƯU]
-  │                         │                                    │                         │
-  ▼                         ▼                                    ▼                         ▼
-[TIÊU SỢI HUYẾT FIBRIN] [KHÔNG TẠO NÚT TIỂU CẦU]            [MẠNG LƯỚI FIBRIN BỀN VỮNG]   [BẢO TỒN NÚT CẦM MÁU]
-  │                         │                                    │                         │
-  └────────────┬────────────┘                                    └────────────┬────────────┘
-               │                                                              │
-               ▼                                                              ▼
-    [TÁI XUẤT HUYẾT Ồ ẠT]                                           [CẦM MÁU ỔN ĐỊNH LÂU DÀI]
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: MÔI TRƯỜNG ACID DẠ DÀY pH &lt; 4.0</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 346" width="880" height="346" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Left Column: MÔI TRƯỜNG ACID DẠ DÀY pH &lt; 4. -->
+      <rect x="40" y="20" width="390" height="170" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="235" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">MÔI TRƯỜNG ACID DẠ DÀY pH &lt; 4.0</text>
+      <line x1="60" y1="56" x2="410" y2="56" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="60" y="72" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ┌────────────┴────────────┐</text>
+      <text x="60" y="90" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• [PEPSIN HOẠT HÓA MẠNH] [TIỂU CẦU BỊ</text>
+      <text x="60" y="108" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• BẤT HOẠT]</text>
+      <text x="60" y="126" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• [TIÊU SỢI HUYẾT FIBRIN] [KHÔNG TẠO NÚT</text>
+      <text x="60" y="144" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• TIỂU CẦU]</text>
+      <text x="60" y="162" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• └────────────┬────────────┘</text>
+      <!-- Right Column: NÂNG VÀ DUY TRÌ LIÊN TỤC pH &gt;  -->
+      <rect x="450" y="20" width="390" height="170" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="645" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">NÂNG VÀ DUY TRÌ LIÊN TỤC pH &gt; 6.0</text>
+      <text x="645" y="60" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">(BẰNG PPI)</text>
+      <line x1="470" y1="74" x2="820" y2="74" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="470" y="90" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ┌────────────┴────────────┐</text>
+      <text x="470" y="108" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• [PEPSIN BỊ BẤT HOẠT VĨNH VIỄN] [NGƯNG</text>
+      <text x="470" y="126" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• TẬP TIỂU CẦU TỐI ƯU]</text>
+      <text x="470" y="144" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• [MẠNG LƯỚI FIBRIN BỀN VỮNG] [BẢO TỒN</text>
+      <text x="470" y="162" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• NÚT CẦM MÁU]</text>
+      <text x="470" y="180" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• └────────────┬────────────┘</text>
+      <!-- Bifurcation Path -->
+      <path d="M 440 190 L 440 204 L 235 204 L 235 218" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <path d="M 440 204 L 645 204 L 645 218" fill="none" stroke="var(--color-success, #10b981)" stroke-width="1.8" marker-end="url(#arrGreen)"/>
+      <!-- Left Column: TÁI XUẤT HUYẾT Ồ ẠT -->
+      <rect x="40" y="218" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="235" y="240" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">TÁI XUẤT HUYẾT Ồ ẠT</text>
+      <line x1="60" y1="254" x2="410" y2="254" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <!-- Right Column: CẦM MÁU ỔN ĐỊNH LÂU DÀI -->
+      <rect x="450" y="218" width="390" height="90" rx="10" fill="rgba(16, 185, 129, 0.08)" stroke="var(--color-success, #10b981)" stroke-width="1.5"/>
+      <text x="645" y="240" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-success, #10b981)">CẦM MÁU ỔN ĐỊNH LÂU DÀI</text>
+      <line x1="470" y1="254" x2="820" y2="254" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+    </svg>
+  </div>
+</div>
 
 <div class="infobox danger">
   <div class="infobox-title">⚠️ Rationale Của Phác Đồ PPI Liều Cao Đường Tĩnh Mạch</div>

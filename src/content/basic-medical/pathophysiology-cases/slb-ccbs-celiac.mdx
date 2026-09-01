@@ -100,29 +100,82 @@ Sự hiện diện của các alen mã hóa phức hợp hòa hợp mô chủ y�
 
 ## 3. Cơ Chế Khử Amid Bởi Enzyme tTG-2 & Dòng Thác Miễn Dịch Kép {#sec-3}
 
-```
-[PEPTIDE 33-MER GLIADIN XÂM NHẬP QUA BIỂU MÔ RUỘT NON (QUA KÊNH ZONULIN)]
-                                    │
-                                    ▼
-[ENZYME TISSUE TRANSGLUTAMINASE-2 (tTG-2) KHỬ AMID CÁC GỐC GLUTAMINE]
-(Chuyển Glutamine trung tính ➔ Glutamic Acid mang điện tích âm)
-                                    │
-                                    ▼
-[PEPTIDE GLIADIN MANG ĐIỆN TÍCH ÂM GẮN CHẶT VÀO HỐC LIÊN KẾT DƯƠNG HLA-DQ2/DQ8]
-                                    │
-       ┌────────────────────────────┴────────────────────────────┐
-       ▼                                                         ▼
-[ĐÁP ỨNG MIỄN DỊCH THÍCH ỨNG (T CD4+)]                 [ĐÁP ỨNG MIỄN DỊCH BẨM SINH (IL-15 & CD8+ IELs)]
-- Tế bào APCs trình diện cho tế bào T CD4+              - Peptide Gliadin kích thích biểu mô tiết IL-15
-- T CD4+ tiết bão IFN-γ, TNF-α                          - IL-15 hoạt hóa tế bào CD8+ Intraepithelial Lymphocyte
-- Kích hoạt tế bào B sản xuất tự kháng thể:             - CD8+ IELs biểu hiện thụ thể sát thủ NKG2D
-  Anti-tTG, Anti-EMA, Anti-DGP                          - Gắn phối tử MICA/MICB trên bề mặt tế bào ruột
-       │                                                         │
-       └────────────────────────────┬────────────────────────────┘
-                                    │
-                                    ▼
-[PHÁ HỦY BIỂU MÔ RUỘT: TEO NHUNG MAO (VILLOUS ATROPHY) & TĂNG SẢN HỐC TUYẾN]
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: PEPTIDE 33-MER GLIADIN XÂM NHẬP QUA BIỂU MÔ RUỘT NON (QUA KÊNH ZONULIN)</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 670" width="880" height="670" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: PEPTIDE 33-MER GLIADIN XÂM NHẬ -->
+      <rect x="160" y="20" width="560" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">PEPTIDE 33-MER GLIADIN XÂM NHẬP QUA BIỂU MÔ RUỘT NON</text>
+      <text x="440" y="60" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--color-text, #0f172a)">(QUA KÊNH ZONULIN)</text>
+      <line x1="440" y1="80" x2="440" y2="108" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: ENZYME TISSUE TRANSGLUTAMINASE -->
+      <rect x="155" y="108" width="570" height="96" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="130" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">ENZYME TISSUE TRANSGLUTAMINASE-2 (tTG-2) KHỬ AMID CÁC</text>
+      <text x="440" y="148" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--color-text, #0f172a)">GỐC GLUTAMINE</text>
+      <text x="179" y="170" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• (Chuyển Glutamine trung tính ➔ Glutamic Acid mang điện tích</text>
+      <text x="179" y="188" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• âm)</text>
+      <line x1="440" y1="204" x2="440" y2="232" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: PEPTIDE GLIADIN MANG ĐIỆN TÍCH -->
+      <rect x="145" y="232" width="590" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="254" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">PEPTIDE GLIADIN MANG ĐIỆN TÍCH ÂM GẮN CHẶT VÀO HỐC LIÊN</text>
+      <text x="440" y="272" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--color-text, #0f172a)">KẾT DƯƠNG HLA-DQ2/DQ8</text>
+      <!-- Bifurcation Path -->
+      <path d="M 440 292 L 440 306 L 235 306 L 235 320" fill="none" stroke="var(--red, #ef4444)" stroke-width="1.8" marker-end="url(#arrRed)"/>
+      <path d="M 440 306 L 645 306 L 645 320" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Left Column: ĐÁP ỨNG MIỄN DỊCH THÍCH ỨNG (T -->
+      <rect x="40" y="320" width="390" height="224" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.5"/>
+      <text x="235" y="342" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">ĐÁP ỨNG MIỄN DỊCH THÍCH ỨNG (T</text>
+      <text x="235" y="360" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">CD4+)</text>
+      <line x1="60" y1="374" x2="410" y2="374" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="60" y="390" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Tế bào APCs trình diện cho tế bào T</text>
+      <text x="60" y="408" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• CD4+</text>
+      <text x="60" y="426" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• T CD4+ tiết bão IFN-γ, TNF-α</text>
+      <text x="60" y="444" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Kích hoạt tế bào B sản xuất tự kháng</text>
+      <text x="60" y="462" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• thể:</text>
+      <text x="60" y="480" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Anti-tTG, Anti-EMA, Anti-DGP</text>
+      <text x="60" y="498" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• └─────────────────────────</text>
+      <!-- Right Column: ĐÁP ỨNG MIỄN DỊCH BẨM SINH (IL -->
+      <rect x="450" y="320" width="390" height="224" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="645" y="342" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">ĐÁP ỨNG MIỄN DỊCH BẨM SINH (IL-15</text>
+      <text x="645" y="360" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">&amp; CD8+ IELs)</text>
+      <line x1="470" y1="374" x2="820" y2="374" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="470" y="390" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Peptide Gliadin kích thích biểu mô</text>
+      <text x="470" y="408" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• tiết IL-15</text>
+      <text x="470" y="426" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• IL-15 hoạt hóa tế bào CD8+</text>
+      <text x="470" y="444" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Intraepithelial Lymphocyte</text>
+      <text x="470" y="462" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• CD8+ IELs biểu hiện thụ thể sát thủ</text>
+      <text x="470" y="480" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• NKG2D</text>
+      <text x="470" y="498" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Gắn phối tử MICA/MICB trên bề mặt tế</text>
+      <text x="470" y="516" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• bào ruột</text>
+      <text x="470" y="534" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ───┬────────────────────────────┘</text>
+      <line x1="440" y1="544" x2="440" y2="572" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: PHÁ HỦY BIỂU MÔ RUỘT: TEO NHUN -->
+      <rect x="145" y="572" width="590" height="60" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
+      <text x="440" y="594" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">PHÁ HỦY BIỂU MÔ RUỘT: TEO NHUNG MAO (VILLOUS ATROPHY) &amp;</text>
+      <text x="440" y="612" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--amber, #d97706)">TĂNG SẢN HỐC TUYẾN</text>
+    </svg>
+  </div>
+</div>
 
 ---
 
@@ -188,17 +241,59 @@ Sự hiện diện của các alen mã hóa phức hợp hòa hợp mô chủ y�
 
 ## 6. Kháng Thể Chẩn Đoán EBM (Anti-tTG, Anti-EMA, Anti-DGP) & Chế Độ GFD {#sec-6}
 
-```
-                                  [BILAN XÉT NGHIỆM HUYẾT THANH CHẨN ĐOÁN CELIAC]
-                                                         │
-        ┌────────────────────────────────────────────────┼────────────────────────────────────────────────┐
-        ▼                                                ▼                                                ▼
-[KHÁNG THỂ ANTI-tTG IgA (TUYẾN ĐẦU)]              [ĐỊNH LƯỢNG IgA TOÀN PHẦN]                      [KHÁNG THỂ ANTI-EMA IgA & ANTI-DGP]
-- Độ nhạy 95-98%, độ đặc hiệu 95-98%             - Bắt buộc làm cùng lúc để loại trừ              - Anti-EMA IgA: Độ đặc hiệu 99%
-- Nồng độ &gt; 10 lần giới hạn trên (ULN)           tình trạng Thiếu hụt IgA bẩm sinh               - Khi IgA toàn phần bị thiếu hụt:
-  cho phép chẩn đoán không cần sinh thiết         - Nếu IgA toàn phần thấp: Chuyển sang            Sử dụng xét nghiệm IgG (Anti-DGP IgG
-  ở trẻ em (theo ESPGHAN 2020)                     xét nghiệm Kháng thể hệ IgG                     hoặc Anti-tTG IgG)
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: BILAN XÉT NGHIỆM HUYẾT THANH CHẨN ĐOÁN CELIAC</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 230" width="880" height="230" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: BILAN XÉT NGHIỆM HUYẾT THANH C -->
+      <rect x="195" y="20" width="490" height="46" rx="10" fill="var(--blue-bg, #eff6ff)" stroke="var(--blue, #0284c7)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-primary, #0284c7)">BILAN XÉT NGHIỆM HUYẾT THANH CHẨN ĐOÁN CELIAC</text>
+      <path d="M 440 66 L 440 80 L 155 80 L 155 94" fill="none" stroke="var(--red, #ef4444)" stroke-width="1.8" marker-end="url(#arrRed)"/>
+      <path d="M 440 80 L 440 80 L 440 94" fill="none" stroke="var(--red, #ef4444)" stroke-width="1.8" marker-end="url(#arrRed)"/>
+      <path d="M 440 80 L 725 80 L 725 94" fill="none" stroke="var(--red, #ef4444)" stroke-width="1.8" marker-end="url(#arrRed)"/>
+      <rect x="30" y="94" width="250" height="98" rx="8" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.5"/>
+      <text x="155" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--red, #dc2626)">KHÁNG THỂ ANTI-tTG IgA (TUYẾN ĐẦU)</text>
+      <line x1="45" y1="124" x2="265" y2="124" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="42" y="140" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Độ nhạy 95-98%, độ đặc hiệu 95-98%</text>
+      <text x="42" y="158" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Nồng độ &amp;gt; 10 lần giới hạn trên (ULN)</text>
+      <text x="42" y="176" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• cho phép chẩn đoán không cần sinh thiết</text>
+      <text x="42" y="194" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• ở trẻ em (theo ESPGHAN 2020)</text>
+      <rect x="315" y="94" width="250" height="98" rx="8" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.5"/>
+      <text x="440" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--red, #dc2626)">ĐỊNH LƯỢNG IgA TOÀN PHẦN</text>
+      <line x1="330" y1="124" x2="550" y2="124" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="327" y="140" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Bắt buộc làm cùng lúc để loại trừ</text>
+      <text x="327" y="158" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• tình trạng Thiếu hụt IgA bẩm sinh</text>
+      <text x="327" y="176" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Nếu IgA toàn phần thấp: Chuyển sang</text>
+      <text x="327" y="194" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• xét nghiệm Kháng thể hệ IgG</text>
+      <rect x="600" y="94" width="250" height="98" rx="8" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.5"/>
+      <text x="725" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--red, #dc2626)">KHÁNG THỂ ANTI-EMA IgA &amp; ANTI-DGP</text>
+      <line x1="615" y1="124" x2="835" y2="124" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="612" y="140" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Anti-EMA IgA: Độ đặc hiệu 99%</text>
+      <text x="612" y="158" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Khi IgA toàn phần bị thiếu hụt:</text>
+      <text x="612" y="176" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Sử dụng xét nghiệm IgG (Anti-DGP IgG</text>
+      <text x="612" y="194" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• hoặc Anti-tTG IgG)</text>
+    </svg>
+  </div>
+</div>
 
 - **Điều trị chuẩn vàng:** Chế độ ăn không chứa Gluten tuyệt đối suốt đời (**Strict Lifelong Gluten-Free Diet - GFD**): Loại bỏ hoàn toàn lúa mì, lúa mạch đen, đại mạch giúp niêm mạc ruột phục hồi hoàn toàn sau $6 - 24\text{ tháng}$.
 

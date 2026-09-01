@@ -150,20 +150,26 @@ export const CCBS_DATA: CcbsDataStore = {
     "id": "ccbs-7",
     "slug": "slb-ccbs-ccs",
     "code": "CCBS-07",
-    "title": "Hội chứng vành mạn",
-    "system": "general",
-    "systemName": "Tổng Quát",
+    "title": "Hội chứng vành mạn (CCS)",
+    "system": "cardiovascular",
+    "systemName": "Tim Mạch & Tuần Hoàn",
     "order": 7,
-    "overview": "Sinh lý bệnh và Cơ chế bệnh sinh Hội chứng vành mạn (Chronic Coronary Syndromes Pathophysiology): Phân tích bất thường cấu trúc/chức năng động mạch thượng tâm mạc, rối loạn chức năng vi tuần hoàn vành (CMD), hội chứng ANOCA/INOCA và mất cân bằng cung-cầu oxy.",
+    "overview": "Sinh lý bệnh và Cơ chế bệnh sinh Hội chứng vành mạn (Chronic Coronary Syndromes - CCS Pathophysiology): Chuyển dịch mô hình sinh bệnh học theo ESC 2024 (Động mạch lớn thượng tâm mạc vs Hệ vi tuần hoàn vành); Thác thiếu máu cục bộ cơ tim (Myocardial Ischemic Cascade); 5 thể lâm sàng và lịch sử tự nhiên; khái niệm ANOCA/INOCA và dịch tễ giới tính; 4 chỉ số sinh lý vi mạch xâm lấn (CFR, IMR, HMR, MRR); tiêu chuẩn COVADIS và quy trình thử nghiệm chức năng mạch vành xâm lấn (ICFT qua Acetylcholine và Adenosine); thử nghiệm bản lề CorMicA và tái định nghĩa đau ngực kháng trị (Refractory Angina / Cầu cơ tim) theo ESC 2025.",
     "clinicalPearls": [
-      "Xơ vữa lan tỏa: Mảng xơ vữa phân bố rải rác, không gây hẹp khu trú nghiêm trọng trên phim chụp mạch vành nhưng vẫn tạo ra sự sụt giảm áp lực tưới máu lũy tiến dọc theo chiều dài mạch máu, làm giảm đáng kể khả năng cung cấp oxy khi gắng sức.",
-      "Bất thường cấu trúc khác: Cầu cơ tim (myocardial bridging - động mạch chạy ngầm trong cơ tim bị siết chặt ở kỳ tâm thu), phình động mạch vành hoặc chèn ép cơ học từ ngoài (do phì đại cơ tim, tăng áp lực cuối tâm trương thất trái trong suy tim).",
-      "Rối loạn chức năng nội mạc: Tế bào nội mô bị tổn thương mất khả năng tiết ra chất giãn mạch Nitric Oxide (NO) dưới tác động của lực trượt dòng chảy (flow-mediated dilation).",
-      "Tái cấu trúc hướng vào trong: Lớp cơ trơn tiểu động mạch phì đại làm hẹp lòng vi mạch."
+      "Thác thiếu máu cục bộ cơ tim diễn tiến tuần tự từ bất thường tưới máu vi mô (PET/SPECT) ➔ rối loạn chức năng tâm trương ➔ rối loạn vận động vùng tâm thu (Stress Echo/CMR) ➔ đau thắt ngực lâm sàng (đỉnh thác).",
+      "Hơn 50% - 70% bệnh nhân nữ đau thắt ngực chụp mạch vành không có hẹp tắc nghẽn thượng tâm mạc (ANOCA/INOCA); cơ chế cốt lõi là rối loạn chức năng vi tuần hoàn (CMD) và co thắt mạch vành.",
+      "Thử nghiệm chức năng mạch vành xâm lấn (ICFT) kết hợp Acetylcholine (kích thích co thắt) và Adenosine (đo CFR, IMR, HMR) giúp phân lập chính xác các phân nhóm bệnh học (endotypes) của ANOCA/INOCA theo tiêu chuẩn COVADIS.",
+      "Thử nghiệm bản lề CorMicA chứng minh chiến lược điều trị cá thể hóa trúng đích theo endotype (CCB cho co thắt, ACEi/Statin/Beta-blocker cho CMD) giúp cải thiện vượt trội triệu chứng đau ngực và chất lượng cuộc sống so với điều trị kinh nghiệm."
     ],
     "tags": [
-      "Tổng Quát",
+      "Tim Mạch",
       "Hội chứng vành mạn",
+      "CCS",
+      "ANOCA",
+      "INOCA",
+      "CMD",
+      "CorMicA",
+      "ESC 2024",
       "Sinh lý bệnh",
       "Cơ chế bệnh sinh"
     ]

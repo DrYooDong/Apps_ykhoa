@@ -171,17 +171,52 @@ Hormon là chất thông tin hóa học được bài tiết bởi các tế bà
 
 Các hormon kỵ nước dễ dàng khuếch tán thụ động qua lớp kép phospholipid màng sinh chất.
 
-```
-  [1. MÔ HÌNH GLUCOCORTICOID (Bào tương)]:
-  Cortisol ──(Qua màng)──► Gắn Thụ thể GR trong bào tương
-  ──► Tách rời Chaperone hsp90 ──► Bộc lộ tín hiệu định vị nhân NLS
-  ──► Homodimer hóa [GR-Cortisol]2 ──► Vào nhân bám vùng GRE (Palindrome: GGTACA NNN TGTTCT) ──► Kích hoạt phiên mã gen.
 
-  [2. MÔ HÌNH TUYẾN GIÁP T3 / RETINOID (Trong nhân)]:
-  Thụ thể TR định vị sẵn trong nhân dạng Heterodimer với RXR bám trên TRE (Direct Repeat DR4: AGGTCA NNNN AGGTCA)
-  ──► Khi KHÔNG có hormon: Gắn phức hợp Corepressor (N-CoR) đóng xoắn chromatin.
-  ──► Khi T3 gắn vào: Tách Corepressor, chiêu mộ Coactivators (CBP/p300 có hoạt tính HAT) ──► Mở xoắn DNA phiên mã.
-```
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: MÔ HÌNH GLUCOCORTICOID (Bào tương)</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 406" width="880" height="406" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: 1. MÔ HÌNH GLUCOCORTICOID (Bào -->
+      <rect x="173.5" y="20" width="533" height="96" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">1. MÔ HÌNH GLUCOCORTICOID (Bào tương)</text>
+      <text x="197.5" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Cortisol ──(Qua màng)──► Gắn Thụ thể GR trong bào tương</text>
+      <text x="197.5" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ──► Tách rời Chaperone hsp90 ──► Bộc lộ tín hiệu định vị</text>
+      <text x="197.5" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  nhân NLS</text>
+      <line x1="440" y1="116" x2="440" y2="144" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: GR-Cortisol -->
+      <rect x="250" y="144" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="166" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">GR-Cortisol</text>
+      <line x1="440" y1="190" x2="440" y2="218" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: 2. MÔ HÌNH TUYẾN GIÁP T3 / RET -->
+      <rect x="160.75" y="218" width="558.5" height="150" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="240" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">2. MÔ HÌNH TUYẾN GIÁP T3 / RETINOID (Trong nhân)</text>
+      <text x="184.75" y="262" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Thụ thể TR định vị sẵn trong nhân dạng Heterodimer với RXR</text>
+      <text x="184.75" y="280" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  bám trên TRE (Direct Repeat DR4: AGGTCA NNNN AGGTCA)</text>
+      <text x="184.75" y="298" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ──► Khi KHÔNG có hormon: Gắn phức hợp Corepressor (N-CoR)</text>
+      <text x="184.75" y="316" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  đóng xoắn chromatin.</text>
+      <text x="184.75" y="334" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ──► Khi T3 gắn vào: Tách Corepressor, chiêu mộ Coactivators</text>
+      <text x="184.75" y="352" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  (CBP/p300 có hoạt tính HAT) ──► Mở xoắn DNA phiên mã.</text>
+    </svg>
+  </div>
+</div>
 
 - **Quy luật Spacing của Direct Repeats (DR)**:
   - **DR3** (ngăn cách bởi 3 base): Vùng đáp ứng Vitamin D3 (VDRE: `AGGTCA NNN AGGTCA`).
@@ -194,28 +229,60 @@ Các hormon kỵ nước dễ dàng khuếch tán thụ động qua lớp kép p
 
 ### A. Cấu Trúc GPCR & Chu Kỳ Hoạt Hóa Protein G Dị Tam Phân ($\alpha\beta\gamma$)
 
-```
-                       [ Hormon ngoại bào bám vào GPCR ]
-                                     │
-                                     ▼
-                     GPCR thay đổi cấu hình nội bào
-                                     │
-                                     ▼
-                Trục xuất GDP khỏi Gα, thế chỗ bằng GTP từ bào tương
-                                     │
-                                     ▼
-            [ Gα-GTP ] (HOẠT ĐỘNG)    +    [ Dimer Gβγ ] (TỰ DO)
-                 │                              │
-                 └──────────┬───────────────────┘
-                            ▼
-                  [ KÍCH HOẠT EFFECTOR ] (Adenylate Cyclase / PLCβ)
-                            │
-                            ▼ (Hoạt tính GTPase nội tại của Gα tự thủy phân GTP -> GDP)
-                  [ Gα-GDP ] (BẤT HOẠT)
-                            │
-                            ▼
-             Tái kết hợp với Gβγ thành thể dị tam phân nghỉ (Gαβγ)
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: Hormon ngoại bào bám vào GPCR</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 430" width="880" height="430" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: Hormon ngoại bào bám vào GPCR -->
+      <rect x="190.5" y="20" width="499" height="78" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Hormon ngoại bào bám vào GPCR</text>
+      <text x="214.5" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• GPCR thay đổi cấu hình nội bào</text>
+      <text x="214.5" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Trục xuất GDP khỏi Gα, thế chỗ bằng GTP từ bào tương</text>
+      <!-- Bifurcation Path -->
+      <path d="M 440 98 L 440 112 L 235 112 L 235 126" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <path d="M 440 112 L 645 112 L 645 126" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Left Column: Gα-GTP -->
+      <rect x="40" y="126" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="235" y="148" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Gα-GTP</text>
+      <line x1="60" y1="162" x2="410" y2="162" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="60" y="178" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• └──────</text>
+      <!-- Right Column: Dimer Gβγ -->
+      <rect x="450" y="126" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="645" y="148" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Dimer Gβγ</text>
+      <line x1="470" y1="162" x2="820" y2="162" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="470" y="178" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ────┬───────────────────┘</text>
+      <line x1="440" y1="216" x2="440" y2="244" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: KÍCH HOẠT EFFECTOR -->
+      <rect x="160.75" y="244" width="558.5" height="60" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
+      <text x="440" y="266" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">KÍCH HOẠT EFFECTOR</text>
+      <text x="184.75" y="288" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ▼ (Hoạt tính GTPase nội tại của Gα tự thủy phân GTP -&gt; GDP)</text>
+      <line x1="440" y1="304" x2="440" y2="332" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: Gα-GDP -->
+      <rect x="186.25" y="332" width="507.5" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="354" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Gα-GDP</text>
+      <text x="210.25" y="376" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Tái kết hợp với Gβγ thành thể dị tam phân nghỉ (Gαβγ)</text>
+    </svg>
+  </div>
+</div>
 
 - **Các lớp G-Protein chính**:
   - **$G_s$ (Stimulatory)**: Glucagon, $\beta$-Adrenergic, TSH, ACTH, PTH $\rightarrow$ Kích hoạt **Adenylate Cyclase** $\rightarrow$ Tăng cAMP $\rightarrow$ PKA.
@@ -236,12 +303,55 @@ $$\text{ATP} \xrightarrow{\text{Adenylate Cyclase, }Mg^{2+}} \text{cAMP} + \text
   R2C2 (Tetramer bất hoạt) + 4 cAMP  <===>  R2-(cAMP)4 + 2 C (Bán đơn vị xúc tác hoạt động)
 ```
 
-```
-  DÒNG THÁC KHUẾCH ĐẠI PHÂN GIẢI GLYCOGEN QUA cAMP (CASCADE AMPLIFICATION):
-  [1 Epinephrine] ──► Kích hoạt [Hàng chục Gs-GTP] ──► [Hàng ngàn cAMP] ──► [Hoạt hóa PKA]
-  ──► Phosphoryl hóa hoạt hóa [Phosphorylase Kinase] ──► Hoạt hóa [Glycogen Phosphorylase a]
-  ──► Xúc tác giải phóng [HÀNG TRIỆU PHÂN TỬ GLUCOSE-1-PHOSPHATE VÀO MÁU].
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: Epinephrine</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 350" width="880" height="350" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: DÒNG THÁC KHUẾCH ĐẠI PHÂN GIẢI -->
+      <rect x="165" y="20" width="550" height="96" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">DÒNG THÁC KHUẾCH ĐẠI PHÂN GIẢI GLYCOGEN QUA cAMP</text>
+      <text x="440" y="60" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--amber, #d97706)">(CASCADE AMPLIFICATION):</text>
+      <text x="189" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• [1 Epinephrine] ──► Kích hoạt [Hàng chục Gs-GTP] ──► [Hàng</text>
+      <text x="189" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  ngàn cAMP] ──► [Hoạt hóa PKA]</text>
+      <!-- Bifurcation Path -->
+      <path d="M 440 116 L 440 130 L 235 130 L 235 144" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <path d="M 440 130 L 645 130 L 645 144" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Left Column: Phosphorylase Kinase -->
+      <rect x="40" y="144" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="235" y="166" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Phosphorylase Kinase</text>
+      <line x1="60" y1="180" x2="410" y2="180" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <!-- Right Column: Glycogen Phosphorylase a -->
+      <rect x="450" y="144" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="645" y="166" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Glycogen Phosphorylase a</text>
+      <line x1="470" y1="180" x2="820" y2="180" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <!-- Reconvergence Path -->
+      <path d="M 235 234 L 235 250 L 440 250 L 440 266" fill="none" stroke="#059669" stroke-width="1.8" marker-end="url(#arrGreen)"/>
+      <path d="M 645 234 L 645 250 L 440 250" fill="none" stroke="#059669" stroke-width="1.8"/>
+      <!-- Single Node: HÀNG TRIỆU PHÂN TỬ GLUCOSE-1-P -->
+      <rect x="190" y="266" width="500" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="288" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">HÀNG TRIỆU PHÂN TỬ GLUCOSE-1-PHOSPHATE VÀO MÁU</text>
+    </svg>
+  </div>
+</div>
 
 - Bán đơn vị C của PKA đi vào nhân phosphoryl hóa **CREB** tại Ser133 $\rightarrow$ Dimer hóa bám vào trình tự **CRE (`TGACGTCA`)** trên DNA kích hoạt phiên mã.
 - Thuốc **Caffeine, Theophylline**: Ức chế men PDE $\rightarrow$ Duy trì cAMP nội bào kéo dài.
@@ -251,33 +361,79 @@ $$\text{ATP} \xrightarrow{\text{Adenylate Cyclase, }Mg^{2+}} \text{cAMP} + \text
 
 ## 4. Con Đường Phosphoinositide: Gq, PLCβ, IP3 Mở Kênh Ca2+ ER & Hoạt Hóa PKC {#sec-4}
 
-```
-                   Hormon bám GPCR (Gq-coupled)
-                                │
-                                ▼
-                       [ Gq-alpha-GTP ]
-                                │
-                                ▼
-             Hoạt hóa [ Phospholipase C-beta (PLCβ) ]
-                                │
-                                ▼ Thủy phân phospholipid màng
-                             [ PIP2 ]
-                                │
-          ┌─────────────────────┴─────────────────────┐
-          ▼ (Tan trong nước khuếch tán bào tương)     ▼ (Ở lại màng tế bào)
-       [ IP3 ]                                     [ DAG ]
-          │                                           │
-          ▼ Bám thụ thể kênh Ca2+ trên màng ER        │
-  Mở kênh giải phóng Ca2+ vào bào tương                │
-          │                                           │
-          ├───────────────────────────────────────────┘
-          │ (Ca2+ + DAG + Phosphatidylserine)
-          ▼
-  [ HOẠT HÓA PROTEIN KINASE C (PKC) ] ──► Phosphoryl hóa các protein đích.
-          │
-          ▼ (Ca2+ gắn Calmodulin tạo phức hợp [Ca2+-CaM]4)
-  [ Hoạt hóa CaM-Kinases ] ──► Co cơ trơn, phân giải glycogen.
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: Gq-alpha-GTP</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 720" width="880" height="720" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: Hormon bám GPCR (Gq-coupled) -->
+      <rect x="250" y="20" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Hormon bám GPCR (Gq-coupled)</text>
+      <line x1="440" y1="66" x2="440" y2="94" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: Gq-alpha-GTP -->
+      <rect x="250" y="94" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Gq-alpha-GTP</text>
+      <line x1="440" y1="140" x2="440" y2="168" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: Phospholipase C-beta (PLCβ) -->
+      <rect x="250" y="168" width="380" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="190" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Phospholipase C-beta (PLCβ)</text>
+      <text x="274" y="212" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ▼ Thủy phân phospholipid màng</text>
+      <line x1="440" y1="228" x2="440" y2="256" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: PIP2 -->
+      <rect x="173.5" y="256" width="533" height="78" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="278" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">PIP2</text>
+      <text x="197.5" y="300" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ▼ (Tan trong nước khuếch tán bào tương) ▼ (Ở lại màng tế</text>
+      <text x="197.5" y="318" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  bào)</text>
+      <!-- Bifurcation Path -->
+      <path d="M 440 334 L 440 348 L 235 348 L 235 362" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <path d="M 440 348 L 645 348 L 645 362" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Left Column: IP3 -->
+      <rect x="40" y="362" width="390" height="98" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="235" y="384" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">IP3</text>
+      <line x1="60" y1="398" x2="410" y2="398" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="60" y="414" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ▼ Bám thụ thể kên</text>
+      <text x="60" y="432" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Mở kênh giải phóng Ca2+ và</text>
+      <text x="60" y="450" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• (Ca2+ + DA</text>
+      <!-- Right Column: DAG -->
+      <rect x="450" y="362" width="390" height="98" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="645" y="384" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">DAG</text>
+      <line x1="470" y1="398" x2="820" y2="398" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="470" y="414" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• h Ca2+ trên màng ER</text>
+      <text x="470" y="432" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• o bào tương</text>
+      <text x="470" y="450" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• G + Phosphatidylserine)</text>
+      <line x1="440" y1="460" x2="440" y2="488" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: HOẠT HÓA PROTEIN KINASE C (PKC -->
+      <rect x="250" y="488" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="510" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">HOẠT HÓA PROTEIN KINASE C (PKC)</text>
+      <line x1="440" y1="534" x2="440" y2="562" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: Ca2+-CaM -->
+      <rect x="250" y="562" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="584" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Ca2+-CaM</text>
+      <line x1="440" y1="608" x2="440" y2="636" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: Hoạt hóa CaM-Kinases -->
+      <rect x="250" y="636" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="658" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Hoạt hóa CaM-Kinases</text>
+    </svg>
+  </div>
+</div>
 
 ---
 
@@ -285,20 +441,77 @@ $$\text{ATP} \xrightarrow{\text{Adenylate Cyclase, }Mg^{2+}} \text{cAMP} + \text
 
 ### A. Thụ Thể Insulin (IR) - Cấu Trúc Dị Tứ Phân ($\alpha_2\beta_2$)
 
-```
-             (Phía ngoại bào)
-            [Chuỗi α]     [Chuỗi α]    <--- Miền nhận diện bám Insulin (135 kDa)
-               │             │
-            ========= Cầu Disulfide =========
-               │             │
-            [Chuỗi β]     [Chuỗi β]    <--- Xoắn xuyên màng đơn (95 kDa)
-            --------------------------- (Màng tế bào)
-               │             │
-             (Phía bào tương)
-            [  TK  ]     [  TK  ]      <--- Miền Tyrosine Kinase xúc tác
-               \             /
-                \--P-Y   Y-P/          <--- TỰ PHOSPHORYL HÓA CHÉO 3 GỐC TYROSINE VÒNG HOẠT HÓA
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: Chuỗi α</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 466" width="880" height="466" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: (Phía ngoại bào) -->
+      <rect x="250" y="20" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">(Phía ngoại bào)</text>
+      <!-- Bifurcation Path -->
+      <path d="M 440 66 L 440 80 L 235 80 L 235 94" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <path d="M 440 80 L 645 80 L 645 94" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Left Column: Chuỗi α -->
+      <rect x="40" y="94" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="235" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Chuỗi α</text>
+      <line x1="60" y1="130" x2="410" y2="130" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="60" y="146" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• =========</text>
+      <!-- Right Column: Chuỗi α -->
+      <rect x="450" y="94" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="645" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Chuỗi α</text>
+      <line x1="470" y1="130" x2="820" y2="130" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="470" y="146" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Cầu Disulfide =========</text>
+      <!-- Bifurcation Path -->
+      <path d="M 440 184 L 440 198 L 235 198 L 235 212" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <path d="M 440 198 L 645 198 L 645 212" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Left Column: Chuỗi β -->
+      <rect x="40" y="212" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="235" y="234" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Chuỗi β</text>
+      <line x1="60" y1="248" x2="410" y2="248" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="60" y="264" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• (</text>
+      <!-- Right Column: Chuỗi β -->
+      <rect x="450" y="212" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="645" y="234" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Chuỗi β</text>
+      <line x1="470" y1="248" x2="820" y2="248" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="470" y="264" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• (Màng tế bào)</text>
+      <text x="470" y="282" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Phía bào tương)</text>
+      <!-- Bifurcation Path -->
+      <path d="M 440 302 L 440 316 L 235 316 L 235 330" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <path d="M 440 316 L 645 316 L 645 330" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Left Column: TK -->
+      <rect x="40" y="330" width="390" height="98" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="235" y="352" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">TK</text>
+      <line x1="60" y1="366" x2="410" y2="366" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="60" y="382" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• \--P-Y Y-P/ &lt;--- TỰ</text>
+      <!-- Right Column: TK -->
+      <rect x="450" y="330" width="390" height="98" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="645" y="352" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">TK</text>
+      <line x1="470" y1="366" x2="820" y2="366" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="470" y="382" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• \ /</text>
+      <text x="470" y="400" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• PHOSPHORYL HÓA CHÉO 3 GỐC TYROSINE</text>
+      <text x="470" y="418" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  VÒNG HOẠT HÓA</text>
+    </svg>
+  </div>
+</div>
 
 ---
 
@@ -342,13 +555,61 @@ $$\text{PIP}_2 + \text{ATP} \xrightarrow{\text{PI3K}} \text{PIP}_3 + \text{ADP} 
 
 ### C. Nhánh Truyền Tín Hiệu Phân Bào & Tăng Trưởng: Grb2 – SOS – Ras – MAPK
 
-```
-  RTK-P (hoặc IRS-P) ──► Gắn miền SH2 của Adapter Grb2 ──► Tuyển dụng SOS (GEF)
-  ──► SOS kích thích Ras-GDP đổi thành [ Ras-GTP (Hoạt động) ]
-  ──► Hoạt hóa [ Raf-1 (MAPKKK) ] ──► Phosphoryl hóa [ MEK (MAPKK) ]
-  ──► Phosphoryl hóa motif TEY trên [ ERK1/2 (MAPK) ]
-  ──► ERK1/2 vào nhân phosphoryl hóa yếu tố phiên mã [ Fos, Jun (AP-1), Myc ] ──► THÚC ĐẨY PHÂN BÀO & SINH TRƯỞNG.
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: Ras-GTP (Hoạt động)</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 462" width="880" height="462" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: RTK-P (hoặc IRS-P) ──► Gắn miề -->
+      <rect x="160" y="20" width="560" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">RTK-P (hoặc IRS-P) ──► Gắn miền SH2 của Adapter Grb2</text>
+      <text x="440" y="60" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--color-text, #0f172a)">──► Tuyển dụng SOS (GEF)</text>
+      <line x1="440" y1="80" x2="440" y2="108" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: Ras-GTP (Hoạt động) -->
+      <rect x="250" y="108" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="130" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Ras-GTP (Hoạt động)</text>
+      <!-- Bifurcation Path -->
+      <path d="M 440 154 L 440 168 L 235 168 L 235 182" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <path d="M 440 168 L 645 168 L 645 182" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Left Column: Raf-1 (MAPKKK) -->
+      <rect x="40" y="182" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="235" y="204" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Raf-1 (MAPKKK)</text>
+      <line x1="60" y1="218" x2="410" y2="218" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <!-- Right Column: MEK (MAPKK) -->
+      <rect x="450" y="182" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="645" y="204" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">MEK (MAPKK)</text>
+      <line x1="470" y1="218" x2="820" y2="218" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <!-- Reconvergence Path -->
+      <path d="M 235 272 L 235 288 L 440 288 L 440 304" fill="none" stroke="#059669" stroke-width="1.8" marker-end="url(#arrGreen)"/>
+      <path d="M 645 272 L 645 288 L 440 288" fill="none" stroke="#059669" stroke-width="1.8"/>
+      <!-- Single Node: ERK1/2 (MAPK) -->
+      <rect x="250" y="304" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="326" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">ERK1/2 (MAPK)</text>
+      <line x1="440" y1="350" x2="440" y2="378" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: Fos, Jun (AP-1), Myc -->
+      <rect x="250" y="378" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="400" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Fos, Jun (AP-1), Myc</text>
+    </svg>
+  </div>
+</div>
 
 - **Chất ức chế khối u PTEN**: Khử phosphate $\text{PIP}_3 \rightarrow \text{PIP}_2$. Đột biến mất chức năng PTEN gây tích tụ $\text{PIP}_3 \rightarrow$ Hoạt hóa Akt liên tục gây ung thư.
 
@@ -358,24 +619,61 @@ $$\text{PIP}_2 + \text{ATP} \xrightarrow{\text{PI3K}} \text{PIP}_3 + \text{ADP} 
 
 Dành cho các hormon thuộc họ Hematopoietin không có hoạt tính kinase nội tại: **Hormon tăng trưởng (GH), Prolactin, Erythropoietin (EPO), Interleukin (IL-2, IL-6), Interferon**.
 
-```
-       [ Ligand ngoại bào ] (GH, Prolactin, EPO)
-                 │
-                 ▼ Dimer hóa thụ thể
-     [ Dimer hóa Thụ thể ] (Kéo 2 phân tử JAK nội bào lại gần nhau)
-                 │
-                 ▼ Tự phosphoryl hóa chéo hoạt hóa JAK (JAK1, JAK2, TYK2)
-      [ JAK-P ] ──► Phosphoryl hóa các gốc Tyrosine trên đuôi thụ thể
-                 │
-                 ▼ Tuyển dụng STAT qua miền SH2
-      [ JAK phosphoryl hóa gốc Tyrosine đuôi C của STAT ]
-                 │
-                 ▼ STAT-P tách ra, dimer hóa đối song qua liên kết phosphotyrosine-SH2
-      [ STAT-Dimer ] (Bộc lộ NLS di chuyển vào nhân)
-                 │
-                 ▼ Bám trực tiếp vào vùng GAS / IRE trên DNA
-      [ KÍCH HOẠT PHIÊN MÃ GEN ] (Ví dụ: GH kích thích tổng hợp IGF-1 tại gan).
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: Ligand ngoại bào</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 562" width="880" height="562" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: Ligand ngoại bào -->
+      <rect x="250" y="20" width="380" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Ligand ngoại bào</text>
+      <text x="274" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ▼ Dimer hóa thụ thể</text>
+      <line x1="440" y1="80" x2="440" y2="108" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: Dimer hóa Thụ thể -->
+      <rect x="173.5" y="108" width="533" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="130" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Dimer hóa Thụ thể</text>
+      <text x="197.5" y="152" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ▼ Tự phosphoryl hóa chéo hoạt hóa JAK (JAK1, JAK2, TYK2)</text>
+      <line x1="440" y1="168" x2="440" y2="196" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: JAK-P -->
+      <rect x="250" y="196" width="380" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="218" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">JAK-P</text>
+      <text x="274" y="240" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ▼ Tuyển dụng STAT qua miền SH2</text>
+      <line x1="440" y1="256" x2="440" y2="284" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: JAK phosphoryl hóa gốc Tyrosin -->
+      <rect x="185" y="284" width="510" height="78" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="306" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">JAK phosphoryl hóa gốc Tyrosine đuôi C của STAT</text>
+      <text x="209" y="328" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ▼ STAT-P tách ra, dimer hóa đối song qua liên kết</text>
+      <text x="209" y="346" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  phosphotyrosine-SH2</text>
+      <line x1="440" y1="362" x2="440" y2="390" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: STAT-Dimer -->
+      <rect x="228.75" y="390" width="422.5" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="412" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">STAT-Dimer</text>
+      <text x="252.75" y="434" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ▼ Bám trực tiếp vào vùng GAS / IRE trên DNA</text>
+      <line x1="440" y1="450" x2="440" y2="478" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: KÍCH HOẠT PHIÊN MÃ GEN -->
+      <rect x="250" y="478" width="380" height="46" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
+      <text x="440" y="500" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">KÍCH HOẠT PHIÊN MÃ GEN</text>
+    </svg>
+  </div>
+</div>
 
 - **Ứng dụng dược lý**: Thuốc **Tofacitinib** ức chế chọn lọc JAK1/JAK3 điều trị viêm khớp dạng thấp và bệnh tự miễn.
 
@@ -395,21 +693,58 @@ $$\text{L-Arginine} + \text{O}_2 + \text{NADPH} \xrightarrow{\text{NOS (FAD, FMN
 
 ### B. Cơ Chế Phân Tử Giãn Cơ Trơn Mạch Máu Của NO
 
-```
-  [TẾ BÀO NỘI MÔ MẠCH MÁU]
-  Acetylcholine / Lực xé dòng máu ──► Gq ──► IP3 ──► Tăng Ca2+ nội bào
-  ──► Phức hợp [Ca2+-Calmodulin] HOẠT HÓA eNOS ──► Tổng hợp khí NO từ L-Arginine.
-                               │
-                               ▼ (NO khuếch tán tự do qua màng trong 3–4 giây)
-  [TẾ BÀO CƠ TRƠN MẠCH MÁU KẾ CẬN]
-  NO gắn vào nguyên tử Sắt của nhóm ngoại HEME thuộc enzyme soluble Guanylyl Cyclase (sGC)
-  ──► Hoạt hóa sGC tăng gấp > 50 lần ──► Chuyển đổi GTP thành cGMP (Chất truyền tin thứ 2)
-  ──► cGMP hoạt hóa Protein Kinase G (PKG):
-      1. Đóng kênh Ca2+ màng và tăng hoạt bơm SERCA hút Ca2+ vào ER.
-      2. Phosphoryl hóa hoạt hóa Myosin Light Chain Phosphatase (MLCP).
-  ──► MLCP khử phosphate chuỗi nhẹ Myosin (MLC-P -> MLC) ──► Bẻ gãy tương tác Actin-Myosin
-  ──► GIÃN CƠ TRƠN MẠCH MÁU ──► GIÃN MẠCH & HẠ HUYẾT ÁP.
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: TẾ BÀO NỘI MÔ MẠCH MÁU</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 510" width="880" height="510" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: TẾ BÀO NỘI MÔ MẠCH MÁU -->
+      <rect x="156.5" y="20" width="567" height="78" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">TẾ BÀO NỘI MÔ MẠCH MÁU</text>
+      <text x="180.5" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Acetylcholine / Lực xé dòng máu ──► Gq ──► IP3 ──► Tăng Ca2+</text>
+      <text x="180.5" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  nội bào</text>
+      <line x1="440" y1="98" x2="440" y2="126" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: Ca2+-Calmodulin -->
+      <rect x="211.75" y="126" width="456.5" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="148" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Ca2+-Calmodulin</text>
+      <text x="235.75" y="170" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ▼ (NO khuếch tán tự do qua màng trong 3–4 giây)</text>
+      <line x1="440" y1="186" x2="440" y2="214" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: TẾ BÀO CƠ TRƠN MẠCH MÁU KẾ CẬN -->
+      <rect x="160.75" y="214" width="558.5" height="258" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
+      <text x="440" y="236" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">TẾ BÀO CƠ TRƠN MẠCH MÁU KẾ CẬN</text>
+      <text x="184.75" y="258" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• NO gắn vào nguyên tử Sắt của nhóm ngoại HEME thuộc enzyme</text>
+      <text x="184.75" y="276" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  soluble Guanylyl Cyclase (sGC)</text>
+      <text x="184.75" y="294" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ──► Hoạt hóa sGC tăng gấp &gt; 50 lần ──► Chuyển đổi GTP thành</text>
+      <text x="184.75" y="312" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  cGMP (Chất truyền tin thứ 2)</text>
+      <text x="184.75" y="330" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ──► cGMP hoạt hóa Protein Kinase G (PKG):</text>
+      <text x="184.75" y="348" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• 1. Đóng kênh Ca2+ màng và tăng hoạt bơm SERCA hút Ca2+ vào</text>
+      <text x="184.75" y="366" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  ER.</text>
+      <text x="184.75" y="384" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• 2. Phosphoryl hóa hoạt hóa Myosin Light Chain Phosphatase</text>
+      <text x="184.75" y="402" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  (MLCP).</text>
+      <text x="184.75" y="420" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ──► MLCP khử phosphate chuỗi nhẹ Myosin (MLC-P -&gt; MLC) ──►</text>
+      <text x="184.75" y="438" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  Bẻ gãy tương tác Actin-Myosin</text>
+      <text x="184.75" y="456" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ──► GIÃN CƠ TRƠN MẠCH MÁU ──► GIÃN MẠCH &amp; HẠ HUYẾT ÁP.</text>
+    </svg>
+  </div>
+</div>
 
 ---
 

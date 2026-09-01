@@ -85,17 +85,64 @@ Vi-rút viêm gan A (**Hepatitis A Virus - HAV**) là một trong những tác n
   - *Genotype nguồn gốc người (Human origin):* Gồm 4 genotype ký hiệu là **I, II, III và VII** (trong đó Genotype IA và IB chiếm ưu thế tại hầu hết các vụ dịch trên thế giới).
   - *Genotype nguồn gốc linh trưởng (Nonhuman primate origin):* Gồm 3 genotype ký hiệu là **IV, V và VI** phân lập từ khỉ đuôi dài (cynomolgus) và khỉ xanh châu Phi.
 
-```diagram
-[HỌ PICORNAVIRIDAE] ──► [CHI HEPATOVIRUS] ──► [1 SEROTYPE DUY NHẤT]
-                                                       │
-         ┌─────────────────────────────────────────────┴─────────────────────────────────────────────┐
-         ▼                                                                                           ▼
-[GENOTYPES NGUỒN GỐC NGƯỜI]                                                 [GENOTYPES LINH TRƯỞNG]
-  ├── Genotype I (IA, IB: Chiếm >80% toàn cầu)                                ├── Genotype IV
-  ├── Genotype II (IIA, IIB)                                                  ├── Genotype V
-  ├── Genotype III (IIIA, IIIB)                                               └── Genotype VI
-  └── Genotype VII
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: HỌ PICORNAVIRIDAE</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 310" width="880" height="310" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <rect x="30" y="20" width="250" height="90" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="155" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text, #0f172a)">HỌ PICORNAVIRIDAE</text>
+      <line x1="45" y1="50" x2="265" y2="50" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="42" y="66" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• ┌────────────────────────</text>
+      <rect x="315" y="20" width="250" height="90" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text, #0f172a)">CHI HEPATOVIRUS</text>
+      <line x1="330" y1="50" x2="550" y2="50" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="327" y="66" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• ─────────────────────┴────────────</text>
+      <rect x="600" y="20" width="250" height="90" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="725" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text, #0f172a)">1 SEROTYPE DUY NHẤT</text>
+      <line x1="615" y1="50" x2="835" y2="50" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="612" y="66" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• ─────────────────────────────────┐</text>
+      <!-- Bifurcation Path -->
+      <path d="M 440 110 L 440 124 L 235 124 L 235 138" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <path d="M 440 124 L 645 124 L 645 138" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Left Column: GENOTYPES NGUỒN GỐC NGƯỜI -->
+      <rect x="40" y="138" width="390" height="134" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="235" y="160" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">GENOTYPES NGUỒN GỐC NGƯỜI</text>
+      <line x1="60" y1="174" x2="410" y2="174" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="60" y="190" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ├── Genotype I (IA, IB: Chiếm &gt;80%</text>
+      <text x="60" y="208" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• toàn cầu)</text>
+      <text x="60" y="226" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ├── Genotype II (IIA, IIB)</text>
+      <text x="60" y="244" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ├── Genotype III (IIIA, IIIB)</text>
+      <text x="60" y="262" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• └── Gen</text>
+      <!-- Right Column: GENOTYPES LINH TRƯỞNG -->
+      <rect x="450" y="138" width="390" height="134" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="645" y="160" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">GENOTYPES LINH TRƯỞNG</text>
+      <line x1="470" y1="174" x2="820" y2="174" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="470" y="190" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ├── Genotype IV</text>
+      <text x="470" y="208" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ├── Genotype V</text>
+      <text x="470" y="226" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• └── Genotype VI</text>
+      <text x="470" y="244" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• otype VII</text>
+    </svg>
+  </div>
+</div>
 
 ### Hiện Tượng Bán Vỏ Bọc Màng Tế Bào (Quasi-enveloped HAV - eHAV)
 
@@ -115,21 +162,62 @@ Một phát hiện mang tính cách mạng trong sinh học vi-rút hiện đạ
 - Trong suốt giai đoạn ủ bệnh kéo dài từ **15 đến 45 ngày (trung bình 28 ngày)**, HAV nhân lên mạnh mẽ với tốc độ lũy thừa trong bào tương tế bào gan. Hàng tỷ hạt virion được bài tiết vào đường mật và máu mỗi ngày mà **hoàn toàn không gây viêm, không làm biến đổi hình thái tế bào và men gan ALT hoàn toàn bình thường**.
 - Sự tổn thương tế bào gan, hoại tử nhu mô và bùng phát triệu chứng lâm sàng (vàng da, sốt, tăng men gan) chỉ thực sự xuất hiện khi **hệ thống miễn dịch của vật chủ nhận diện và phát động tấn công**.
 
-```diagram
-[HAV NHÂN LÊN TRONG TẾ BÀO GAN] (Giai đoạn ủ bệnh: Hoàn toàn không tổn thương mô, ALT bình thường)
-                │
-                ▼
-   [KÍCH HOẠT HỆ MIỄN DỊCH VẬT CHỦ] (Sau 2 - 4 tuần)
-                │
-        ┌───────┴────────────────────────────────────────┐
-        ▼                                                ▼
-[CON ĐƯỜNG MIỄN DỊCH BẨM SINH]                  [CON ĐƯỜNG MIỄN DỊCH THÍCH ỨNG]
-(Cell-intrinsic Apoptosis)                      (Adaptive Immunopathology)
-  • Cảm biến RNA nhận diện sợi kép                • Tế bào T CD8+ gây độc (CTLs) thâm nhiễm
-  • Kích hoạt trục MAVS - IRF3/IRF7              • Nhận diện kháng nguyên HAV qua MHC-I
-  • Cảm ứng gen ISGs proapoptotic                 • Tiết Perforin, Granzyme & Fas/FasL
-  • Tế bào gan tự kích hoạt tự chết               • Tiêu diệt tế bào gan nhiễm ➔ Bùng phát ALT!
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: HAV NHÂN LÊN TRONG TẾ BÀO GAN</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 376" width="880" height="376" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: HAV NHÂN LÊN TRONG TẾ BÀO GAN -->
+      <rect x="250" y="20" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">HAV NHÂN LÊN TRONG TẾ BÀO GAN</text>
+      <line x1="440" y1="66" x2="440" y2="94" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: KÍCH HOẠT HỆ MIỄN DỊCH VẬT CHỦ -->
+      <rect x="250" y="94" width="380" height="46" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
+      <text x="440" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">KÍCH HOẠT HỆ MIỄN DỊCH VẬT CHỦ</text>
+      <!-- Bifurcation Path -->
+      <path d="M 440 140 L 440 154 L 235 154 L 235 168" fill="none" stroke="var(--red, #ef4444)" stroke-width="1.8" marker-end="url(#arrRed)"/>
+      <path d="M 440 154 L 645 154 L 645 168" fill="none" stroke="var(--red, #ef4444)" stroke-width="1.8" marker-end="url(#arrRed)"/>
+      <!-- Left Column: CON ĐƯỜNG MIỄN DỊCH BẨM SINH -->
+      <rect x="40" y="168" width="390" height="170" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.5"/>
+      <text x="235" y="190" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">CON ĐƯỜNG MIỄN DỊCH BẨM SINH</text>
+      <line x1="60" y1="204" x2="410" y2="204" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="60" y="220" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• (Cell-intrinsic Apoptosis)</text>
+      <text x="60" y="238" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Cảm biến RNA nhận diện sợi kép</text>
+      <text x="60" y="256" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Kích hoạt trục MAVS - IRF3/IRF7</text>
+      <text x="60" y="274" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Cảm ứng gen ISGs proapoptotic</text>
+      <text x="60" y="292" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Tế bào gan tự kích hoạt tự chết</text>
+      <!-- Right Column: CON ĐƯỜNG MIỄN DỊCH THÍCH ỨNG -->
+      <rect x="450" y="168" width="390" height="170" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.5"/>
+      <text x="645" y="190" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">CON ĐƯỜNG MIỄN DỊCH THÍCH ỨNG</text>
+      <line x1="470" y1="204" x2="820" y2="204" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="470" y="220" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• (Adaptive Immunopathology)</text>
+      <text x="470" y="238" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Tế bào T CD8+ gây độc (CTLs) thâm</text>
+      <text x="470" y="256" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• nhiễm</text>
+      <text x="470" y="274" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Nhận diện kháng nguyên HAV qua MHC-I</text>
+      <text x="470" y="292" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Tiết Perforin, Granzyme &amp; Fas/FasL</text>
+      <text x="470" y="310" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Tiêu diệt tế bào gan nhiễm ➔ Bùng phát</text>
+      <text x="470" y="328" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ALT!</text>
+    </svg>
+  </div>
+</div>
 
 ### 1. Con Đường Chết Chương Trình Nội Bào Bẩm Sinh (Cell-intrinsic Apoptosis)
 
@@ -216,18 +304,41 @@ Trên tiêu bản sinh thiết gan nhuộm Hematoxylin &amp; Eosin (H&amp;E), vi
 
 ### Động Học Các Chỉ Dấu Huyết Thanh Học (Serological Kinetics)
 
-```diagram
-[PHƠI NHIỄM PHÂN - MIỆNG]
-        │
-        ├──► Tuần 1 - 2: Bắt đầu bài tiết HAV trong phân (Fecal shedding đạt đỉnh trước khi tăng men gan).
-        │
-        ├──► Tuần 3 - 4: Xuất hiện đợt nhiễm eHAV trong máu (Viremia) ➔ Khởi phát ALT/AST bùng phát vọt đỉnh.
-        │
-        ├──► Tuần 4: Kháng thể IgM anti-HAV xuất hiện đồng thời với triệu chứng lâm sàng (Dấu ấn chẩn đoán xác định cấp).
-        │            (Tồn tại kéo dài 3 - 6 tháng rồi thoái lui).
-        │
-        └──► Tuần 6 - 8: Kháng thể IgG anti-HAV xuất hiện, thay thế IgM và tồn tại suốt đời (Miễn dịch bảo vệ vĩnh viễn).
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: PHƠI NHIỄM PHÂN - MIỆNG</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 208" width="880" height="208" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: PHƠI NHIỄM PHÂN - MIỆNG -->
+      <rect x="169.25" y="20" width="541.5" height="150" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">PHƠI NHIỄM PHÂN - MIỆNG</text>
+      <text x="193.25" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ├──► Tuần 1 - 2: Bắt đầu bài tiết HAV trong phân (Fecal</text>
+      <text x="193.25" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• shedding đạt đỉnh trước khi tăng men gan).</text>
+      <text x="193.25" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ├──► Tuần 3 - 4: Xuất hiện đợt nhiễm eHAV trong máu</text>
+      <text x="193.25" y="118" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• (Viremia) ➔ Khởi phát ALT/AST bùng phát vọt đỉnh.</text>
+      <text x="193.25" y="136" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ├──► Tuần 4: Kháng thể IgM anti-HAV xuất hiện đồng thời với</text>
+      <text x="193.25" y="154" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• triệu chứng lâm sàng (Dấu ấn chẩn đoán xác định cấp).</text>
+    </svg>
+  </div>
+</div>
 
 ### Các Thể Lâm Sàng Đặc Biệt Của Viêm Gan A
 

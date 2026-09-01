@@ -131,19 +131,42 @@ Vì ở trạng thái nghỉ $P_K \gg P_{Na}$, điện thế màng thực tế (
 
 Khi kích thích đạt ngưỡng (*Threshold Potential $\approx -55\text{ mV}$*), tế bào thần kinh và cơ sẽ phát sinh một biến đổi điện thế bùng phát cực nhanh tuân theo **Quy luật Tất cả hoặc Không (All-or-None Law)**:
 
-```
- Điện thế (mV)
-   +35 ──┐              ▲ Giai đoạn Vượt ngưỡng (Overshoot)
-         │             / \
-     0 ──┼────────────/───\───────────────────────────
-         │           /     \
-   -55 ──┼──────────/       \  ◄ Ngưỡng kích thích (Threshold)
-         │         /         \
-   -70 ──┼────────/           \
-   -90 ──┴───────/             \__________ ◄ Ưu phân cực (Undershoot)
-             Khử cực        Tái cực
-           (Na+ ùa vào)   (K+ thoát ra)
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: 3. Các Pha Điện Thế Hoạt Động</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 226" width="880" height="226" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: Điện thế (mV) -->
+      <rect x="186.25" y="20" width="507.5" height="168" rx="10" fill="var(--blue-bg, #eff6ff)" stroke="var(--blue, #0284c7)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-primary, #0284c7)">Điện thế (mV)</text>
+      <text x="210.25" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• +35 ──┐ ▲ Giai đoạn Vượt ngưỡng (Overshoot)</text>
+      <text x="210.25" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• 0 ──┼────────────/───\───────────────────────────</text>
+      <text x="210.25" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• 55 ──┼──────────/ \ ◄ Ngưỡng kích thích (Threshold)</text>
+      <text x="210.25" y="118" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• 70 ──┼────────/ \</text>
+      <text x="210.25" y="136" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• 90 ──┴───────/ \__________ ◄ Ưu phân cực (Undershoot)</text>
+      <text x="210.25" y="154" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Khử cực Tái cực</text>
+      <text x="210.25" y="172" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• (Na+ ùa vào) (K+ thoát ra)</text>
+    </svg>
+  </div>
+</div>
 
 1. **Giai đoạn Khử Cực (Depolarization)**:
    - Điện thế màng đạt ngưỡng $-55\text{ mV}$ làm mở đồng loạt **Cổng hoạt hóa (Cổng m)** của kênh Natri phụ thuộc điện thế (*Voltage-Gated $Na^+$ Channel - VGSC*).

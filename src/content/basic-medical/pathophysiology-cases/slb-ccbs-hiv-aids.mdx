@@ -96,54 +96,144 @@ Virus gây suy giảm miễn dịch ở người (Human Immunodeficiency Virus -
 
 ## 2. Chu Kỳ Nhân Lên Phân Tử: Hòa Màng gp41, Capsid Vận Chuyển & Tích Hợp Provirus {#sec-2}
 
-```
-[VIRUS TỰ DO GẮN gp120 VÀO THỤ THỂ CD4 TRÊN TẾ BÀO T HELPER / ĐẠI THỰC BÀO]
-                                  │
-                                  ▼
-[gp120 THAY ĐỔI CẤU HÌNH GẮN VÀO ĐỒNG THỤ THỂ CCR5 (HOẶC CXCR4)]
-                                  │
-                                  ▼
-[gp41 PHÓNG THÍCH PEPTIDE HÒA MÀNG ➔ HÒA MÀNG VIRUS VỚI MÀNG TẾ BÀO CHỦ]
-                                  │
-                                  ▼
-[LÕI CAPSID NGUYÊN VẸN ĐI VÀO BÀO TƯƠNG (ÁO CHOÀNG TÀNG HÌNH TRỐN CẢM BIẾN cGAS)]
-                                  │
-                                  ▼
-[PHIÊN MÃ NGƯỢC NHỜ ENZYME RT: TỔNG HỢP DNA SỢI ĐÔI (dsDNA) TỪ BỘ GEN RNA]
-(RT không có cơ chế sửa sai ➔ tần suất đột biến cao, sinh biến thể kháng thuốc)
-                                  │
-                                  ▼
-[CAPSID ĐI QUA LỖ MÀNG NHÂN VÀO NHÂN NHỜ TƯƠNG TÁC VỚI PHÂN TỬ CPSF6]
-                                  │
-                                  ▼
-[CỞI VỎ TẠI NHÂN & ENZYME INTEGRASE TÍCH HỢP dsDNA VÀO BỘ GEN VẬT CHỦ (PROVIRUS)]
-                                  │
-                                  ▼
-[PHIÊN MÃ QUA TAT/REV ➔ DỊCH MÃ POLYPROTEIN GAG & GAG-POL TRÊN RIBOSOME]
-                                  │
-                                  ▼
-[LẮP RÁP TẠI MÀNG TẾ BÀO CHỦ & NẢY CHỒI THOÁT MÀNG NHỜ PHỨC HỢP ESCRT]
-                                  │
-                                  ▼
-[ENZYME PROTEASE CẮT CÁC POLYPROTEIN TẠO VIRION TRƯỞNG THÀNH CÓ KHẢ NĂNG LÂY NHIỄM]
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: VIRUS TỰ DO GẮN gp120 VÀO THỤ THỂ CD4 TRÊN TẾ BÀO T HELPER / ĐẠI THỰC BÀO</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 946" width="880" height="946" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: VIRUS TỰ DO GẮN gp120 VÀO THỤ  -->
+      <rect x="165" y="20" width="550" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">VIRUS TỰ DO GẮN gp120 VÀO THỤ THỂ CD4 TRÊN TẾ BÀO T</text>
+      <text x="440" y="60" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--color-text, #0f172a)">HELPER / ĐẠI THỰC BÀO</text>
+      <line x1="440" y1="80" x2="440" y2="108" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: gp120 THAY ĐỔI CẤU HÌNH GẮN VÀ -->
+      <rect x="145" y="108" width="590" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="130" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">gp120 THAY ĐỔI CẤU HÌNH GẮN VÀO ĐỒNG THỤ THỂ CCR5 (HOẶC</text>
+      <text x="440" y="148" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--color-text, #0f172a)">CXCR4)</text>
+      <line x1="440" y1="168" x2="440" y2="196" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: gp41 PHÓNG THÍCH PEPTIDE HÒA M -->
+      <rect x="150" y="196" width="580" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="218" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">gp41 PHÓNG THÍCH PEPTIDE HÒA MÀNG ➔ HÒA MÀNG VIRUS VỚI</text>
+      <text x="440" y="236" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--color-text, #0f172a)">MÀNG TẾ BÀO CHỦ</text>
+      <line x1="440" y1="256" x2="440" y2="284" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: LÕI CAPSID NGUYÊN VẸN ĐI VÀO B -->
+      <rect x="150" y="284" width="580" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="306" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">LÕI CAPSID NGUYÊN VẸN ĐI VÀO BÀO TƯƠNG (ÁO CHOÀNG TÀNG</text>
+      <text x="440" y="324" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--color-text, #0f172a)">HÌNH TRỐN CẢM BIẾN cGAS)</text>
+      <line x1="440" y1="344" x2="440" y2="372" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: PHIÊN MÃ NGƯỢC NHỜ ENZYME RT:  -->
+      <rect x="170" y="372" width="540" height="96" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.8"/>
+      <text x="440" y="394" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">PHIÊN MÃ NGƯỢC NHỜ ENZYME RT: TỔNG HỢP DNA SỢI ĐÔI</text>
+      <text x="440" y="412" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--red, #dc2626)">(dsDNA) TỪ BỘ GEN RNA</text>
+      <text x="194" y="434" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• (RT không có cơ chế sửa sai ➔ tần suất đột biến cao, sinh</text>
+      <text x="194" y="452" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• biến thể kháng thuốc)</text>
+      <line x1="440" y1="468" x2="440" y2="496" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: CAPSID ĐI QUA LỖ MÀNG NHÂN VÀO -->
+      <rect x="155" y="496" width="570" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="518" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">CAPSID ĐI QUA LỖ MÀNG NHÂN VÀO NHÂN NHỜ TƯƠNG TÁC VỚI</text>
+      <text x="440" y="536" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--color-text, #0f172a)">PHÂN TỬ CPSF6</text>
+      <line x1="440" y1="556" x2="440" y2="584" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: CỞI VỎ TẠI NHÂN &amp; ENZYME INTEG -->
+      <rect x="155" y="584" width="570" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="606" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">CỞI VỎ TẠI NHÂN &amp; ENZYME INTEGRASE TÍCH HỢP dsDNA VÀO</text>
+      <text x="440" y="624" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--color-text, #0f172a)">BỘ GEN VẬT CHỦ (PROVIRUS)</text>
+      <line x1="440" y1="644" x2="440" y2="672" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: PHIÊN MÃ QUA TAT/REV ➔ DỊCH MÃ -->
+      <rect x="180" y="672" width="520" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="694" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">PHIÊN MÃ QUA TAT/REV ➔ DỊCH MÃ POLYPROTEIN GAG &amp;</text>
+      <text x="440" y="712" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--color-text, #0f172a)">GAG-POL TRÊN RIBOSOME</text>
+      <line x1="440" y1="732" x2="440" y2="760" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: LẮP RÁP TẠI MÀNG TẾ BÀO CHỦ &amp;  -->
+      <rect x="155" y="760" width="570" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="782" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">LẮP RÁP TẠI MÀNG TẾ BÀO CHỦ &amp; NẢY CHỒI THOÁT MÀNG NHỜ</text>
+      <text x="440" y="800" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--color-text, #0f172a)">PHỨC HỢP ESCRT</text>
+      <line x1="440" y1="820" x2="440" y2="848" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: ENZYME PROTEASE CẮT CÁC POLYPR -->
+      <rect x="155" y="848" width="570" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="870" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">ENZYME PROTEASE CẮT CÁC POLYPROTEIN TẠO VIRION TRƯỞNG</text>
+      <text x="440" y="888" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--color-text, #0f172a)">THÀNH CÓ KHẢ NĂNG LÂY NHIỄM</text>
+    </svg>
+  </div>
+</div>
 
 ---
 
 ## 3. Động Học Miễn Dịch: Đỉnh Tải Lượng, Setpoint & Phá Vỡ Mô Ruột GALT {#sec-3}
 
-```
-                                  [DIỄN TIẾN ĐỘNG HỌC MIỄN DỊCH TỰ NHIÊN CỦA HIV]
-                                                         │
-       ┌─────────────────────────────────────────────────┼─────────────────────────────────────────────────┐
-       ▼                                                 ▼                                                 ▼
-[1. GIAI ĐOẠN CẤP TÍNH (STAGE 0)]                 [2. GIAI ĐOẠN MÃN TÍNH (STAGE 1 & 2)]            [3. GIAI ĐOẠN AIDS (STAGE 3 & 4)]
-- 10-14 ngày: Bùng nổ tải lượng virus              - PHÁ HỦY TẾ BÀO Th17 TẠI MÔ RUỘT GALT            - Phá hủy hoàn toàn cấu trúc hạch
-  đạt đỉnh (10^6.7 bản sao/mL)                     - RÒ RỈ VI KHUẨN (MICROBIAL TRANSLOCATION):       - Virus tràn ngập tuần hoàn (Spillover)
-- Bão cytokine (IP-10, IFN-I, TNF-α, IL-6)           LPS rò rỉ vào máu kích hoạt thụ thể TLR4        - Số lượng CD4+ < 200 tế bào/μL
-- Tế bào T CD8+ CTL kéo tải lượng virus             - Tế bào T kiệt quệ (T-cell Exhaustion: PD-1)     - Nhiễm trùng cơ hội (PCP, Nấm não, Lao)
-  xuống ĐIỂM CÂN BẰNG (SETPOINT: 10^4.4/mL)        - Lắng đọng Collagen xơ hóa hạch lympho           - U ác tính (Sarcoma Kaposi, U Lympho)
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: DIỄN TIẾN ĐỘNG HỌC MIỄN DỊCH TỰ NHIÊN CỦA HIV</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 248" width="880" height="248" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: DIỄN TIẾN ĐỘNG HỌC MIỄN DỊCH T -->
+      <rect x="195" y="20" width="490" height="46" rx="10" fill="var(--blue-bg, #eff6ff)" stroke="var(--blue, #0284c7)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-primary, #0284c7)">DIỄN TIẾN ĐỘNG HỌC MIỄN DỊCH TỰ NHIÊN CỦA HIV</text>
+      <path d="M 440 66 L 440 80 L 155 80 L 155 94" fill="none" stroke="var(--blue, #0284c7)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <path d="M 440 80 L 440 80 L 440 94" fill="none" stroke="var(--amber, #f59e0b)" stroke-width="1.8" marker-end="url(#arrAmber)"/>
+      <path d="M 440 80 L 725 80 L 725 94" fill="none" stroke="var(--blue, #0284c7)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <rect x="30" y="94" width="250" height="116" rx="8" fill="var(--blue-bg, #eff6ff)" stroke="var(--blue, #0284c7)" stroke-width="1.5"/>
+      <text x="155" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-primary, #0284c7)">1. GIAI ĐOẠN CẤP TÍNH (STAGE 0)</text>
+      <line x1="45" y1="124" x2="265" y2="124" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="42" y="140" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• 10-14 ngày: Bùng nổ tải lượng virus</text>
+      <text x="42" y="158" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• đạt đỉnh (10^6.7 bản sao/mL)</text>
+      <text x="42" y="176" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Bão cytokine (IP-10, IFN-I, TNF-α, IL-6)</text>
+      <text x="42" y="194" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Tế bào T CD8+ CTL kéo tải lượng virus</text>
+      <text x="42" y="212" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• xuống ĐIỂM CÂN BẰNG (SETPOINT: 10^4.4/mL)</text>
+      <rect x="315" y="94" width="250" height="116" rx="8" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
+      <text x="440" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--amber, #d97706)">2. GIAI ĐOẠN MÃN TÍNH (STAGE 1 &amp; 2)</text>
+      <line x1="330" y1="124" x2="550" y2="124" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="327" y="140" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• PHÁ HỦY TẾ BÀO Th17 TẠI MÔ RUỘT GAL</text>
+      <text x="327" y="158" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• RÒ RỈ VI KHUẨN (MICROBIAL TRANSLOCATION</text>
+      <text x="327" y="176" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• LPS rò rỉ vào máu kích hoạt thụ thể</text>
+      <text x="327" y="194" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Tế bào T kiệt quệ (T-cell Exhaustion: PD</text>
+      <text x="327" y="212" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Lắng đọng Collagen xơ hóa hạch lympho</text>
+      <rect x="600" y="94" width="250" height="116" rx="8" fill="var(--blue-bg, #eff6ff)" stroke="var(--blue, #0284c7)" stroke-width="1.5"/>
+      <text x="725" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-primary, #0284c7)">3. GIAI ĐOẠN AIDS (STAGE 3 &amp; 4)</text>
+      <line x1="615" y1="124" x2="835" y2="124" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="612" y="140" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• T            - Phá hủy hoàn toàn cấu trúc hạch</text>
+      <text x="612" y="158" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• ):       - Virus tràn ngập tuần hoàn (Spillover)</text>
+      <text x="612" y="176" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• TLR4        - Số lượng CD4+ &lt; 200 tế bào/μL</text>
+      <text x="612" y="194" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• 1)     - Nhiễm trùng cơ hội (PCP, Nấm não, Lao)</text>
+      <text x="612" y="212" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• U ác tính (Sarcoma Kaposi, U Lympho)</text>
+    </svg>
+  </div>
+</div>
 
 <div class="infobox pearl">
   <div class="infobox-title">💎 Cơ Chế Phân Tử Của Hiện Tượng Rò Rỉ Vi Khuẩn Ruột (Microbial Translocation)</div>
@@ -200,17 +290,45 @@ Virus gây suy giảm miễn dịch ở người (Human Immunodeficiency Virus -
 
 ## 6. Bản Đồ Cơ Chế Thuốc ART Kháng Virus Nhắm Trúng Đích {#sec-6}
 
-```
-                                  [BẢN ĐỒ CÁC NHÓM THUỐC ART TRÚNG ĐÍCH THEO CƠ CHẾ]
-                                                          │
-       ┌──────────────────┬───────────────────────────────┼───────────────────────────────┬──────────────────┐
-       ▼                  ▼                               ▼                               ▼                  ▼
-[1. ỨC CHẾ XÂM NHẬP] [2. ỨC CHẾ CAPSID]      [3. ỨC CHẾ PHIÊN MÃ NGƯỢC (RTIs)]    [4. ỨC CHẾ INTEGRASE] [5. ỨC CHẾ PROTEASE]
-- Maraviroc (kháng   - Lenacapavir:          - NRTIs (TDF, TAF, 3TC, FTC, ABC):   - INSTIs (Dolutegravir,- PIs (Darunavir,
-  thụ thể CCR5)        Khóa cấu trúc vỏ        Nucleotide giả ngắt chuỗi DNA        Bictegravir, Ralte):   Atazanavir): Khóa
-- Enfuvirtide:         capsid, ngăn vận      - NNRTIs (Efavirenz, Rilpivirine):     Khóa chèn DNA virus    men cắt polyprotein,
-  Khóa hòa màng gp41   chuyển qua lỗ nhân      Gắn vị trí dị lập thể ức chế men RT  vào nhiễm sắc thể chủ  ngăn virion chín
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: BẢN ĐỒ CÁC NHÓM THUỐC ART TRÚNG ĐÍCH THEO CƠ CHẾ</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 280" width="880" height="280" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: BẢN ĐỒ CÁC NHÓM THUỐC ART TRÚN -->
+      <rect x="165" y="20" width="550" height="222" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">BẢN ĐỒ CÁC NHÓM THUỐC ART TRÚNG ĐÍCH THEO CƠ CHẾ</text>
+      <text x="189" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• [1. ỨC CHẾ XÂM NHẬP] [2. ỨC CHẾ CAPSID] [3. ỨC CHẾ PHIÊN MÃ</text>
+      <text x="189" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• NGƯỢC (RTIs)] [4. ỨC CHẾ INTEGRASE] [5. ỨC CHẾ PROTEASE]</text>
+      <text x="189" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Maraviroc (kháng - Lenacapavir: - NRTIs (TDF, TAF, 3TC, FTC,</text>
+      <text x="189" y="118" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ABC): - INSTIs (Dolutegravir,- PIs (Darunavir,</text>
+      <text x="189" y="136" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• thụ thể CCR5) Khóa cấu trúc vỏ Nucleotide giả ngắt chuỗi DNA</text>
+      <text x="189" y="154" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Bictegravir, Ralte): Atazanavir): Khóa</text>
+      <text x="189" y="172" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Enfuvirtide: capsid, ngăn vận - NNRTIs (Efavirenz,</text>
+      <text x="189" y="190" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Rilpivirine): Khóa chèn DNA virus men cắt polyprotein,</text>
+      <text x="189" y="208" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Khóa hòa màng gp41 chuyển qua lỗ nhân Gắn vị trí dị lập thể</text>
+      <text x="189" y="226" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ức chế men RT vào nhiễm sắc thể chủ ngăn virion chín</text>
+    </svg>
+  </div>
+</div>
 
 ---
 

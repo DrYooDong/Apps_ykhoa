@@ -84,13 +84,78 @@ sections:
 Ống lượn gần đảm nhận tái hấp thu phần lớn lượng dịch lọc mà không làm thay đổi áp suất thẩm thấu (Tái hấp thu Đẳng trương):
 - **Tái hấp thu 65% $Na^+, Cl^-$, Nước**, **85% $HCO_3^-$**, **100% Glucose** và **100% Acid amin**.
 
-```
-[LÒNG ỐNG LƯỢN GẦN]                          [TẾ BÀO BIỂU MÔ PCT]                      [MAO MẠCH QUANH ỐNG THẬN]
-  Glucose ──────────► [KÊNH SGLT2 (90%)] ──► Glucose ───────────► [KÊNH GLUT2] ──────► 100% Glucose (Về máu)
-  Acid Amin ────────► [Đồng Vận Na+]     ──► Acid Amin ─────────► [Khuếch tán]  ──────► 100% Acid Amin (Về máu)
-  Na+ ──────────────► [Bơm NHE3 (Đổi H+)] ──► Na+ ───────────────► [Bơm Na+/K+] ──────► 65% Na+ (Về máu)
-  Lọc HCO3- + H+ ───► H2CO3 ──(CA-IV)──► CO2 + H2O khuếch tán vào ──(CA-II)──► H+ + HCO3- ──► 85% HCO3- (Về máu)
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: LÒNG ỐNG LƯỢN GẦN</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 502" width="880" height="502" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <rect x="30" y="20" width="250" height="90" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="155" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text, #0f172a)">LÒNG ỐNG LƯỢN GẦN</text>
+      <line x1="45" y1="50" x2="265" y2="50" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <rect x="315" y="20" width="250" height="90" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text, #0f172a)">TẾ BÀO BIỂU MÔ PCT</text>
+      <line x1="330" y1="50" x2="550" y2="50" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <rect x="600" y="20" width="250" height="90" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="725" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text, #0f172a)">MAO MẠCH QUANH ỐNG THẬN</text>
+      <line x1="615" y1="50" x2="835" y2="50" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <!-- Bifurcation Path -->
+      <path d="M 440 110 L 440 124 L 235 124 L 235 138" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <path d="M 440 124 L 645 124 L 645 138" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Left Column: KÊNH SGLT2 (90%) -->
+      <rect x="40" y="138" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="235" y="160" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">KÊNH SGLT2 (90%)</text>
+      <line x1="60" y1="174" x2="410" y2="174" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <!-- Right Column: KÊNH GLUT2 -->
+      <rect x="450" y="138" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="645" y="160" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">KÊNH GLUT2</text>
+      <line x1="470" y1="174" x2="820" y2="174" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <!-- Bifurcation Path -->
+      <path d="M 440 228 L 440 242 L 235 242 L 235 256" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <path d="M 440 242 L 645 242 L 645 256" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Left Column: Đồng Vận Na+ -->
+      <rect x="40" y="256" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="235" y="278" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Đồng Vận Na+</text>
+      <line x1="60" y1="292" x2="410" y2="292" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <!-- Right Column: Khuếch tán -->
+      <rect x="450" y="256" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="645" y="278" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Khuếch tán</text>
+      <line x1="470" y1="292" x2="820" y2="292" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <!-- Bifurcation Path -->
+      <path d="M 440 346 L 440 360 L 235 360 L 235 374" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <path d="M 440 360 L 645 360 L 645 374" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Left Column: Bơm NHE3 (Đổi H+) -->
+      <rect x="40" y="374" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="235" y="396" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Bơm NHE3 (Đổi H+)</text>
+      <line x1="60" y1="410" x2="410" y2="410" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="60" y="426" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Lọc HCO3- + H+ ───► H2CO3 ──(CA-IV)──►</text>
+      <text x="60" y="444" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  CO2 + H2O khuếc</text>
+      <!-- Right Column: Bơm Na+/K+ -->
+      <rect x="450" y="374" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="645" y="396" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Bơm Na+/K+</text>
+      <line x1="470" y1="410" x2="820" y2="410" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="470" y="426" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• h tán vào ──(CA-II)──► H+ + HCO3- ──►</text>
+      <text x="470" y="444" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  85% HCO3- (Về máu)</text>
+    </svg>
+  </div>
+</div>
 
 
   Kênh **SGLT2** có giới hạn vận chuyển tối đa ($T_m \approx 375\text{ mg/phút}$). Ở người bình thường (Đường huyết $< 180\text{ mg/dL}$), toàn bộ Glucose lọc qua cầu thận được tái hấp thu 100%. **Khi đường huyết vượt quá $180 – 200\text{ mg/dL}$**, kênh SGLT2 bị bão hòa, lượng đường dư thừa bị thải vào nước tiểu gây ra **Đái tháo đường (Glucosuria) và Lợi niệu thẩm thấu (Tiểu nhiều, mất nước)**.
@@ -108,12 +173,39 @@ sections:
    - Kênh $K^+$ màng đỉnh (ROMK) bơm $K^+$ trở lại lòng ống tạo điện tích dương ($+8\text{ mV}$), đẩy các cation hóa trị hai **$Ca^{2+}$ và $Mg^{2+}$ tái hấp thu qua khe gian bào**.
    - Dịch lọc ra khỏi nhánh lên bị pha loãng chỉ còn **$100\text{ mOsm/kg}$ (Đoạn pha loãng)**.
 
-```
-[KÊNH NKCC2 TẠI NHÁNH LÊN DÀY QUAI HENLE]
-  • Kéo 1 Na+ + 1 K+ + 2 Cl- từ lòng ống vào tế bào
-  • BỊ ỨC CHẾ ĐẶC HIỆU BỞI: THUỐC LỢI TIỂU QUAI (FUROSEMIDE)
-  ──► Làm mất điện thế dương lòng ống ──► TĂNG THẢI Na+, Cl-, NƯỚC, Ca2+ VÀ Mg2+!
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: KÊNH NKCC2 TẠI NHÁNH LÊN DÀY QUAI HENLE</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 172" width="880" height="172" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: KÊNH NKCC2 TẠI NHÁNH LÊN DÀY Q -->
+      <rect x="160.75" y="20" width="558.5" height="114" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">KÊNH NKCC2 TẠI NHÁNH LÊN DÀY QUAI HENLE</text>
+      <text x="184.75" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Kéo 1 Na+ + 1 K+ + 2 Cl- từ lòng ống vào tế bào</text>
+      <text x="184.75" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• BỊ ỨC CHẾ ĐẶC HIỆU BỞI: THUỐC LỢI TIỂU QUAI (FUROSEMIDE)</text>
+      <text x="184.75" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ──► Làm mất điện thế dương lòng ống ──► TĂNG THẢI Na+, Cl-,</text>
+      <text x="184.75" y="118" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  NƯỚC, Ca2+ VÀ Mg2+!</text>
+    </svg>
+  </div>
+</div>
 
 
 ---
@@ -131,19 +223,42 @@ sections:
 
 Ống góp là nơi tinh chỉnh cuối cùng thành phần nước tiểu dưới sự chi phối của Hormone:
 
-```
-[TẾ BÀO CHÍNH (PRINCIPAL CELLS)]
-  │
-  ├──► 1. ALDOSTERONE: Kích hoạt KÊNH ENaC kéo Na+ vào và KÊNH ROMK đẩy K+ ra nước tiểu
-  │       • Thuốc Lợi tiểu giữ Kali: Spironolactone (Kháng Aldosterone), Amiloride (Chẹn ENaC)
-  │
-  └──► 2. ADH (VASOPRESSIN): Gắn thụ thể V2 ──► Gắn các KÊNH AQUAPORIN-2 lên màng đỉnh
-          • TÁI HẤP THU NƯỚC TỰ DO VÀO MÁU (Cô đặc nước tiểu tối đa)
 
-[TẾ BÀO KẼ ALPHA (INTERCALATED α CELLS)]
-  │
-  └──► BƠM PROTON H+-ATPase: Bơm chủ động H+ vào nước tiểu để đào thải acid và tái hấp thu HCO3- mới
-```
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: TẾ BÀO CHÍNH (PRINCIPAL CELLS)</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 228" width="880" height="228" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: TẾ BÀO CHÍNH (PRINCIPAL CELLS) -->
+      <rect x="156.5" y="20" width="567" height="96" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">TẾ BÀO CHÍNH (PRINCIPAL CELLS)</text>
+      <text x="180.5" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ├──► 1. ALDOSTERONE: Kích hoạt KÊNH ENaC kéo Na+ vào và KÊNH</text>
+      <text x="180.5" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  ROMK đẩy K+ ra nước tiểu</text>
+      <text x="180.5" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• TÁI HẤP THU NƯỚC TỰ DO VÀO MÁU (Cô đặc nước tiểu tối đa)</text>
+      <line x1="440" y1="116" x2="440" y2="144" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: TẾ BÀO KẼ ALPHA (INTERCALATED  -->
+      <rect x="230" y="144" width="420" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="166" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">TẾ BÀO KẼ ALPHA (INTERCALATED α CELLS)</text>
+    </svg>
+  </div>
+</div>
 
 
 ---

@@ -94,16 +94,53 @@ Bộ gen chứa **4 khung đọc mở gối chồng lên nhau (Overlapping ORFs)
 3. **ORF PreS/S:** Mã hóa cho 3 protein vỏ bề mặt: Large (L-HBsAg chứa miền preS1/preS2/S), Middle (M-HBsAg chứa preS2/S), và Small (S-HBsAg chứa miền S).
 4. **ORF X:** Mã hóa cho **protein phi cấu trúc HBx (16.5 kDa)** — nhân tố điều hòa phiên mã đa năng đóng vai trò trung tâm trong sự nhân lên của virus và cơ chế sinh ung thư gan.
 
-```diagram
-[BỘ GEN HBV 3.2 kb rcDNA] ──► [4 KHUNG ĐỌC MỞ OVERLAPPING]
-                                       │
-        ┌──────────────────────────────┼──────────────────────────────┬──────────────────────────────┐
-        ▼                              ▼                              ▼                              ▼
- [ORF PreC/C]                       [ORF P]                      [ORF PreS/S]                     [ORF X]
-  ├── HBeAg (Tiết ra máu)            ├── Terminal Protein (TP)     ├── L-HBsAg (Miền preS1)        └── Protein HBx
-  └── HBcAg (Vỏ Capsid)              ├── Reverse Transcriptase     ├── M-HBsAg                      (Điều hòa & Sinh ung)
-                                     └── RNase H                   └── S-HBsAg (Gai bề mặt)
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: BỘ GEN HBV 3.2 kb rcDNA</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 228" width="880" height="228" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Left Column: BỘ GEN HBV 3.2 kb rcDNA -->
+      <rect x="40" y="20" width="390" height="170" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="235" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">BỘ GEN HBV 3.2 kb rcDNA</text>
+      <line x1="60" y1="56" x2="410" y2="56" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="60" y="72" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ┌──────────────────────────────┼───────────</text>
+      <text x="60" y="90" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• [ORF PreC/C] [ORF P]</text>
+      <text x="60" y="108" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ├── HBeAg (Tiết ra máu) ├── Terminal</text>
+      <text x="60" y="126" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Protein</text>
+      <text x="60" y="144" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• └── HBcAg (Vỏ Capsid) ├── Reverse</text>
+      <text x="60" y="162" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Transcripta</text>
+      <text x="60" y="180" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• └── RNas</text>
+      <!-- Right Column: 4 KHUNG ĐỌC MỞ OVERLAPPING -->
+      <rect x="450" y="20" width="390" height="170" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="645" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">4 KHUNG ĐỌC MỞ OVERLAPPING</text>
+      <line x1="470" y1="56" x2="820" y2="56" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="470" y="72" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ───────────────────┬──────────────────────────────┐</text>
+      <text x="470" y="90" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• [ORF PreS/S] [ORF X]</text>
+      <text x="470" y="108" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• (TP) ├── L-HBsAg (Miền preS1) └──</text>
+      <text x="470" y="126" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Protein HBx</text>
+      <text x="470" y="144" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• se ├── M-HBsAg (Điều hòa &amp; Sinh ung)</text>
+      <text x="470" y="162" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• e H └── S-HBsAg (Gai bề mặt)</text>
+    </svg>
+  </div>
+</div>
 
 ### 3 Loại Tiểu Thể Lưu Hành & "Mồi Nhử Miễn Dịch" (Immune Decoy)
 
@@ -147,22 +184,46 @@ Tế bào gan nhiễm HBV sản sinh và bài tiết vào tuần hoàn 3 loại 
 
 Quá trình chuyển đổi rcDNA bán kép thành DNA vòng khép kín cộng hóa trị (**covalently closed circular DNA - cccDNA**) hoàn toàn do hệ thống enzyme sửa chữa DNA của tế bào chủ thực hiện:
 
-```diagram
-[rcDNA TRONG NHÂN]
-        │
-        ├──► 1. Tách Polymerase (Deproteination): TDP2 cắt bỏ protein Polymerase đầu 5' mạch âm (-)
-        │
-        ├──► 2. Loại bỏ mồi RNA: Cắt bỏ mồi RNA đầu 5' mạch dương (+)
-        │
-        ├──► 3. Cắt Flap r thừa: FEN1 cắt bỏ trình tự lặp lại dư thừa ở đầu tận
-        │
-        ├──► 4. Sửa chữa chuỗi dương: DNA Polymerase (κ, α, δ) + Topoisomerase điền đầy mạch đơn
-        │
-        ├──► 5 & 6. Đóng kín mạch kép: DNA Ligase 1 & 3 hàn gắn các mối nối thành vòng khép kín
-        │
-        └──► 7. Đóng gói Chromatin (Chromatinization): Liên kết Histone H3/H4, HBcAg và HBx
-               tạo thành cccDNA Minichromosome siêu bền vững!
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: rcDNA TRONG NHÂN</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 298" width="880" height="298" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: rcDNA TRONG NHÂN -->
+      <rect x="169.25" y="20" width="541.5" height="240" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">rcDNA TRONG NHÂN</text>
+      <text x="193.25" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ├──► 1. Tách Polymerase (Deproteination): TDP2 cắt bỏ</text>
+      <text x="193.25" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• protein Polymerase đầu 5&apos; mạch âm (-)</text>
+      <text x="193.25" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ├──► 2. Loại bỏ mồi RNA: Cắt bỏ mồi RNA đầu 5&apos; mạch dương</text>
+      <text x="193.25" y="118" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• (+)</text>
+      <text x="193.25" y="136" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ├──► 3. Cắt Flap r thừa: FEN1 cắt bỏ trình tự lặp lại dư</text>
+      <text x="193.25" y="154" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• thừa ở đầu tận</text>
+      <text x="193.25" y="172" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ├──► 4. Sửa chữa chuỗi dương: DNA Polymerase (κ, α, δ) +</text>
+      <text x="193.25" y="190" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Topoisomerase điền đầy mạch đơn</text>
+      <text x="193.25" y="208" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ├──► 5 &amp; 6. Đóng kín mạch kép: DNA Ligase 1 &amp; 3 hàn gắn các</text>
+      <text x="193.25" y="226" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• mối nối thành vòng khép kín</text>
+      <text x="193.25" y="244" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• tạo thành cccDNA Minichromosome siêu bền vững!</text>
+    </svg>
+  </div>
+</div>
 
 cccDNA tồn tại như một **nhiễm sắc thể thu nhỏ (minichromosome)** độc lập trong nhân tế bào gan, làm khuôn mẫu vĩnh viễn cho RNA Polymerase II của tế bào chủ phiên mã ra toàn bộ các bản sao RNA virus:
 - **pgRNA (3,5 kb):** Vừa dịch mã ra HBcAg và Polymerase, vừa làm khuôn mẫu phiên mã ngược tạo rcDNA thế hệ mới.
@@ -197,18 +258,59 @@ Tương tự HAV, HBV là vi-rút **hoàn toàn không trực tiếp gây độc
 1. **Con đường hủy tế bào (Cytolytic Clearance):** Tế bào **CD8+ CTLs** nhận diện kháng nguyên HBcAg/HBsAg qua MHC Class I, giải phóng perforin/granzyme hoặc qua Fas/FasL gây hoại tử tế bào gan, bùng phát men gan ALT/AST.
 2. **Con đường không hủy tế bào (Non-cytolytic Clearance) qua Deaminase APOBEC3 — Cơ chế bảo tồn mô gan:** Tế bào T giải phóng **IFN-$\gamma$ và TNF-$\alpha$**, kích hoạt tế bào gan biểu hiện các enzym **cytidine deaminase APOBEC3A và APOBEC3B**. Các enzym này đi vào nhân tế bào, khử amin các gốc cytosine trên cccDNA thành uracil ($C \rightarrow U$), dẫn đến sự phân hủy đặc hiệu cccDNA bằng enzym nuclease nội bào mà **hoàn toàn không làm chết hoặc hủy hoại tế bào gan**.
 
-```diagram
-[TẾ BÀO T CD8+ ĐẶC HIỆU HBV]
-              │
-      ┌───────┴────────────────────────────────────────┐
-      ▼                                                ▼
-[CON ĐƯỜNG HỦY TẾ BÀO]                          [CON ĐƯỜNG KHÔNG HỦY TẾ BÀO (APOBEC3)]
-(Cytolytic Clearance)                           (Non-cytolytic cccDNA Decay)
-  • Tiết Perforin & Granzyme B                    • Tiết IFN-γ và TNF-α
-  • Hoạt hóa Fas / FasL                           • Cảm ứng Deaminase APOBEC3A & APOBEC3B
-  • Gây hoại tử tế bào gan                        • Khử amin C ➔ U trên cccDNA minichromosome
-  • Tăng vọt men gan ALT/AST                      • Tiêu hủy cccDNA mà KHÔNG GIẾT TẾ BÀO GAN!
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: TẾ BÀO T CD8+ ĐẶC HIỆU HBV</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 320" width="880" height="320" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: TẾ BÀO T CD8+ ĐẶC HIỆU HBV -->
+      <rect x="250" y="20" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">TẾ BÀO T CD8+ ĐẶC HIỆU HBV</text>
+      <!-- Bifurcation Path -->
+      <path d="M 440 66 L 440 80 L 235 80 L 235 94" fill="none" stroke="var(--red, #ef4444)" stroke-width="1.8" marker-end="url(#arrRed)"/>
+      <path d="M 440 80 L 645 80 L 645 94" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Left Column: CON ĐƯỜNG HỦY TẾ BÀO -->
+      <rect x="40" y="94" width="390" height="188" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.5"/>
+      <text x="235" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">CON ĐƯỜNG HỦY TẾ BÀO</text>
+      <line x1="60" y1="130" x2="410" y2="130" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="60" y="146" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• (Cytolytic Clearance)</text>
+      <text x="60" y="164" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Tiết Perforin &amp; Granzyme B</text>
+      <text x="60" y="182" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Hoạt hóa Fas / FasL</text>
+      <text x="60" y="200" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Gây hoại tử tế bào gan</text>
+      <text x="60" y="218" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Tăng vọt men gan ALT/AST</text>
+      <!-- Right Column: CON ĐƯỜNG KHÔNG HỦY TẾ BÀO (AP -->
+      <rect x="450" y="94" width="390" height="188" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="645" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">CON ĐƯỜNG KHÔNG HỦY TẾ BÀO</text>
+      <text x="645" y="134" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">(APOBEC3)</text>
+      <line x1="470" y1="148" x2="820" y2="148" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="470" y="164" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• (Non-cytolytic cccDNA Decay)</text>
+      <text x="470" y="182" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Tiết IFN-γ và TNF-α</text>
+      <text x="470" y="200" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Cảm ứng Deaminase APOBEC3A &amp; APOBEC3B</text>
+      <text x="470" y="218" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Khử amin C ➔ U trên cccDNA</text>
+      <text x="470" y="236" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• minichromosome</text>
+      <text x="470" y="254" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Tiêu hủy cccDNA mà KHÔNG GIẾT TẾ BÀO</text>
+      <text x="470" y="272" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• GAN!</text>
+    </svg>
+  </div>
+</div>
 
 ### Cơ Chế Cạn Kiệt Miễn Dịch (T-Cell Exhaustion) Trong Nhiễm Mạn
 
@@ -297,22 +399,42 @@ Hoại tử tế bào gan kéo dài kích hoạt đại thực bào giải phón
 
 HBV là virus sinh ung thư trực tiếp ngay cả khi bệnh nhân **chưa bị xơ gan** thông qua 3 cơ chế phối hợp:
 
-```diagram
-[NHIỄM HBV MẠN TÍNH]
-        │
-        ├──► TRỤC 1: VIÊM MẠN & STRESS OXY HÓA (ROS)
-        │      • Chu kỳ hoại tử - tái sinh liên tục ➔ Tích lũy đột biến ngẫu nhiên.
-        │
-        ├──► TRỤC 2: TÍCH HỢP HBV DNA VÀO BỘ GEN NGƯỜI
-        │      • Đột biến chèn gen đè nén khối u / Kích hoạt oncogene (c-myc).
-        │      • Gây mất ổn định nhiễm sắc thể và nhân dòng vô tính ác tính.
-        │
-        └──► TRỤC 3: ĐỘC TÍNH SINH UNG TRỰC TIẾP CỦA PROTEIN HBx
-               ├── Phân hủy phức hợp hạn chế Smc5/6 qua CUL4-DDB1 ligase.
-               ├── Giữ chu kỳ tế bào ở pha G1/S ➔ Tăng tích lũy đứt gãy DNA.
-               ├── Kích hoạt các con đường sinh tồn Ras/MAPK, PI3K/Akt, NF-κB.
-               └── Bất hoạt trực tiếp protein đè nén khối u p53!
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: NHIỄM HBV MẠN TÍNH</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 226" width="880" height="226" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: NHIỄM HBV MẠN TÍNH -->
+      <rect x="173.5" y="20" width="533" height="168" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">NHIỄM HBV MẠN TÍNH</text>
+      <text x="197.5" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ├──► TRỤC 1: VIÊM MẠN &amp; STRESS OXY HÓA (ROS)</text>
+      <text x="197.5" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ├──► TRỤC 2: TÍCH HỢP HBV DNA VÀO BỘ GEN NGƯỜI</text>
+      <text x="197.5" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ├── Phân hủy phức hợp hạn chế Smc5/6 qua CUL4-DDB1 ligase.</text>
+      <text x="197.5" y="118" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ├── Giữ chu kỳ tế bào ở pha G1/S ➔ Tăng tích lũy đứt gãy</text>
+      <text x="197.5" y="136" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• DNA.</text>
+      <text x="197.5" y="154" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ├── Kích hoạt các con đường sinh tồn Ras/MAPK, PI3K/Akt,</text>
+      <text x="197.5" y="172" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• NF-κB.</text>
+    </svg>
+  </div>
+</div>
 
 <figure class="physio-figure" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; margin: 1.75rem auto;">
   <img src="./images/hbv-hcc-pathogenesis.png" 

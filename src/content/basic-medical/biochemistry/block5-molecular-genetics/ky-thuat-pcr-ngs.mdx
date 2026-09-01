@@ -115,15 +115,43 @@ sections:
 
 ### A. Chu Kỳ Nhiệt 3 Bước Tuần Hoàn (30–40 Chu Kỳ)
 
-```
-  [1. BIẾN TÍNH (Denaturation): 94 – 96°C (30–60s)] ──► Bẻ gãy liên kết hydro, tách rời 2 sợi đơn làm khuôn.
-                            │
-                            ▼
-  [2. BẮT CẶP MỒI (Annealing): 50 – 65°C (30–60s)]  ──► Cặp mồi đặc hiệu gắn bổ sung vào 2 đầu vùng gen đích.
-                            │
-                            ▼
-  [3. KÉO DÀI (Extension): 72 – 75°C (1–2 phút)]    ──► Taq Polymerase gắn dNTPs kéo dài từ đầu 3'-OH của mồi.
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: BIẾN TÍNH (Denaturation): 94 – 96°C (30–60s)</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 252" width="880" height="252" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: 1. BIẾN TÍNH (Denaturation): 9 -->
+      <rect x="185" y="20" width="510" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">1. BIẾN TÍNH (Denaturation): 94 – 96°C (30–60s)</text>
+      <line x1="440" y1="66" x2="440" y2="94" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: 2. BẮT CẶP MỒI (Annealing): 50 -->
+      <rect x="190" y="94" width="500" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">2. BẮT CẶP MỒI (Annealing): 50 – 65°C (30–60s)</text>
+      <line x1="440" y1="140" x2="440" y2="168" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: 3. KÉO DÀI (Extension): 72 – 7 -->
+      <rect x="200" y="168" width="480" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="190" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">3. KÉO DÀI (Extension): 72 – 75°C (1–2 phút)</text>
+    </svg>
+  </div>
+</div>
 
 - **Hệ quả**: Sau $n$ chu kỳ, số lượng bản sao DNA tăng lên theo cấp số nhân: $\mathbf{N = N_0 \times 2^n}$.
 
@@ -225,19 +253,35 @@ sections:
 
 Khác với PCR cổ điển chỉ đọc kết quả điểm cuối, **Real-time qPCR (Quantitative PCR)** đo cường độ huỳnh quang trực tiếp theo thời gian thực ngay trong từng chu kỳ nhiệt.
 
-```
-     Cường độ huỳnh quang (ΔRn)
-        ▲
-        │                                         /─── Giai đoạn Bình nguyên (Plateau)
-        │                                       /
-        │                         /──────────── Giai đoạn Lũy thừa (Log Phase)
-        │                        /
-        │                       /  ◄─── Điểm vượt ngưỡng: CHU KỲ NGƯỠNG (Ct)
-        │                      /
-        │  ───────────────────/────────────── Ngưỡng phát hiện (Threshold)
-        │  ═══════════════════  ◄──────────── Đường nền (Baseline: Chu kỳ 3–15)
-        └────────────────────────────────────────► Số chu kỳ nhiệt (Cycle)
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: 3. Real-Time qPCR: Động Học Chu Kỳ Ngưỡng (Ct), SYBR Green I &amp; Đoạn Dò TaqMan</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 104" width="880" height="104" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: Cường độ huỳnh quang (ΔRn) -->
+      <rect x="250" y="20" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Cường độ huỳnh quang (ΔRn)</text>
+    </svg>
+  </div>
+</div>
 
 - **Ý nghĩa sinh học của Chu kỳ ngưỡng ($C_t$)**: $C_t$ là chu kỳ nhiệt mà tại đó tín hiệu huỳnh quang vượt lên trên ngưỡng phát hiện; **$C_t$ tỷ lệ nghịch với logarit nồng độ ban đầu của tác nhân đích** (Tải lượng virus càng cao $\rightarrow C_t$ càng thấp).
 

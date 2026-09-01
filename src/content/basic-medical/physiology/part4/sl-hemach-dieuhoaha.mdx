@@ -79,15 +79,47 @@ sections:
 
 Hệ thống mạch máu trong đại tuần hoàn được chia thành các phân đoạn chức năng chuyên biệt:
 
-```
-[ĐỘNG MẠCH LỚN (ĐMC, ĐM Cảnh)] ──► Giàu sợi chun đàn hồi (Windkessel Effect biến dòng máu ngắt quãng thành liên tục)
-               │
-[TIỂU ĐỘNG MẠCH (Arterioles)] ──► Mạch cản chính (Chứa 2/3 tổng sức cản SVR, kiểm soát tưới máu từng mô)
-               │
-[MAO MẠCH (Capillaries)]      ──► Thành mỏng 1 lớp tế bào nội mô, diện tích bề mặt khổng lồ (1.000 m2) trao đổi chất
-               │
-[TĨNH MẠCH (Veins & Venules)] ──► Mạch chứa dung tích (Chứa 65% tổng thể tích máu, kiểm soát hồi lưu tiền tải)
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: ĐỘNG MẠCH LỚN (ĐMC, ĐM Cảnh)</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 326" width="880" height="326" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: ĐỘNG MẠCH LỚN (ĐMC, ĐM Cảnh) -->
+      <rect x="250" y="20" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">ĐỘNG MẠCH LỚN (ĐMC, ĐM Cảnh)</text>
+      <line x1="440" y1="66" x2="440" y2="94" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: TIỂU ĐỘNG MẠCH (Arterioles) -->
+      <rect x="250" y="94" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">TIỂU ĐỘNG MẠCH (Arterioles)</text>
+      <line x1="440" y1="140" x2="440" y2="168" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: MAO MẠCH (Capillaries) -->
+      <rect x="250" y="168" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="190" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">MAO MẠCH (Capillaries)</text>
+      <line x1="440" y1="214" x2="440" y2="242" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: TĨNH MẠCH (Veins &amp; Venules) -->
+      <rect x="250" y="242" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="264" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">TĨNH MẠCH (Veins &amp; Venules)</text>
+    </svg>
+  </div>
+</div>
 
 
 ---
@@ -136,29 +168,75 @@ $$MAP = DBP + \frac{1}{3}(SBP - DBP) = 80 + \frac{1}{3}(120 - 80) = \mathbf{93.3
 
 Phản xạ thụ thể áp lực (*Baroreceptor Reflex*) phản ứng trong vòng vài phần giây để điều chỉnh các biến động huyết áp tức thì (khi thay đổi tư thế từ nằm sang đứng):
 
-```
-                       [HUYẾT ÁP TĂNG CAO ĐỘT NGỘT]
-                                    │
-         ┌──────────────────────────┴──────────────────────────┐
-         ▼                                                     ▼
-[XOANG ĐỘNG MẠCH CẢNH]                               [QUAI ĐỘNG MẠCH CHỦ]
-(Dẫn truyền theo Dây IX - Thần kinh Hering)           (Dẫn truyền theo Dây X - Dây Mê tẩu)
-         │                                                     │
-         └──────────────────────────┬──────────────────────────┘
-                                    ▼
-                 [NHÂN BÓ ĐƠN ĐỘC TẠI HÀNH NÃO (NTS)]
-                                    │
-         ┌──────────────────────────┴──────────────────────────┐
-         ▼                                                     ▼
-[KÍCH THÍCH TRUNG TÂM ĐỐI GIAO CẢM (Dây X)]           [ỨC CHẾ TRUNG TÂM VẬN MẠCH GIAO CẢM]
-         │                                                     │
-         ▼                                                     ▼
-Làm chậm nhịp tim (M2)                                Giãn tiểu động mạch & Giãn tĩnh mạch
-         │                                                     │
-         └──────────────────────────┬──────────────────────────┘
-                                    ▼
-                [HUYẾT ÁP HẠ NHANH CHÓNG VỀ MỨC CÀI ĐẶT BÌNH THƯỜNG]
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: HUYẾT ÁP TĂNG CAO ĐỘT NGỘT</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 504" width="880" height="504" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: HUYẾT ÁP TĂNG CAO ĐỘT NGỘT -->
+      <rect x="250" y="20" width="380" height="46" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">HUYẾT ÁP TĂNG CAO ĐỘT NGỘT</text>
+      <!-- Bifurcation Path -->
+      <path d="M 440 66 L 440 80 L 235 80 L 235 94" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <path d="M 440 80 L 645 80 L 645 94" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Left Column: XOANG ĐỘNG MẠCH CẢNH -->
+      <rect x="40" y="94" width="390" height="98" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="235" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">XOANG ĐỘNG MẠCH CẢNH</text>
+      <line x1="60" y1="130" x2="410" y2="130" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="60" y="146" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• (Dẫn truyền theo Dây IX - Thần kinh</text>
+      <text x="60" y="164" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  Hering)</text>
+      <text x="60" y="182" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• └──────────────────────</text>
+      <!-- Right Column: QUAI ĐỘNG MẠCH CHỦ -->
+      <rect x="450" y="94" width="390" height="98" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="645" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">QUAI ĐỘNG MẠCH CHỦ</text>
+      <line x1="470" y1="130" x2="820" y2="130" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="470" y="146" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• (Dẫn truyền theo Dây X - Dây Mê tẩu)</text>
+      <text x="470" y="164" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ────┬──────────────────────────┘</text>
+      <line x1="440" y1="192" x2="440" y2="220" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: NHÂN BÓ ĐƠN ĐỘC TẠI HÀNH NÃO ( -->
+      <rect x="250" y="220" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="242" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">NHÂN BÓ ĐƠN ĐỘC TẠI HÀNH NÃO (NTS)</text>
+      <!-- Bifurcation Path -->
+      <path d="M 440 266 L 440 280 L 235 280 L 235 294" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <path d="M 440 280 L 645 280 L 645 294" fill="none" stroke="var(--amber, #f59e0b)" stroke-width="1.8" marker-end="url(#arrAmber)"/>
+      <!-- Left Column: KÍCH THÍCH TRUNG TÂM ĐỐI GIAO  -->
+      <rect x="40" y="294" width="390" height="98" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="235" y="316" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">KÍCH THÍCH TRUNG TÂM ĐỐI GIAO CẢM</text>
+      <text x="235" y="334" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">(Dây X)</text>
+      <line x1="60" y1="348" x2="410" y2="348" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="60" y="364" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Làm chậm nhịp tim (M2)</text>
+      <text x="60" y="382" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• └──────────────────────</text>
+      <!-- Right Column: ỨC CHẾ TRUNG TÂM VẬN MẠCH GIAO -->
+      <rect x="450" y="294" width="390" height="98" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
+      <text x="645" y="316" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">ỨC CHẾ TRUNG TÂM VẬN MẠCH GIAO CẢM</text>
+      <line x1="470" y1="330" x2="820" y2="330" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="470" y="346" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Giãn tiểu động mạch &amp; Giãn tĩnh mạch</text>
+      <text x="470" y="364" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ────┬──────────────────────────┘</text>
+      <line x1="440" y1="392" x2="440" y2="420" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: HUYẾT ÁP HẠ NHANH CHÓNG VỀ MỨC -->
+      <rect x="170" y="420" width="540" height="46" rx="10" fill="rgba(16, 185, 129, 0.08)" stroke="var(--color-success, #10b981)" stroke-width="1.8"/>
+      <text x="440" y="442" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-success, #10b981)">HUYẾT ÁP HẠ NHANH CHÓNG VỀ MỨC CÀI ĐẶT BÌNH THƯỜNG</text>
+    </svg>
+  </div>
+</div>
 
 
   Khi có khối máu tụ nội sọ hoặc phù não làm **Áp lực nội sọ (ICP) tăng vọt vượt quá MAP** $\rightarrow$ Các mạch máu não bị đè bẹp gây thiếu máu nuôi hành não nghiêm trọng $\rightarrow$ Kích hoạt trung tâm giao cảm phát xung cực đại để cố gắng đẩy máu lên não.
@@ -174,23 +252,54 @@ Làm chậm nhịp tim (M2)                                Giãn tiểu động 
 
 Thận là cơ quan giữ vai trò quyết định trong việc thiết lập mức huyết áp nền tảng dài hạn của cơ thể:
 
-```
-[HUYẾT ÁP GIẢM / GIẢM TƯỚI MÁU THẬN / KÍCH THÍCH GIAO CẢM BETA-1]
-                            │
-                            ▼
-[Tế Bào Cạnh Cầu Thận Tiết Enzyme RENIN Vào Máu]
-                            │
-                            ▼
-[Chuyển Angiotensinogen (từ Gan) ──► Angiotensin I (Decapeptide bất hoạt)]
-                            │
-                            ▼ (Enzyme Men Chuyển ACE tại Nội Mô Mao Mạch Phổi)
-[ANGIOTENSIN II (Octapeptide Sinh Học Cực Mạnh)]
-                            │
-         ┌──────────────────┼──────────────────┬──────────────────┐
-         ▼                  ▼                  ▼                  ▼
-[Co Mạnh Tiểu ĐM]   [Tiết ALDOSTERONE]   [Kích Thích Tuyến Yên]   [Tăng Hấp Thu Na+]
-Tăng SVR ──► Tăng HA  Giữ Na+ & Nước     Tiết ADH giữ nước        Trực tiếp tại Ống lượn gần
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: HUYẾT ÁP GIẢM / GIẢM TƯỚI MÁU THẬN / KÍCH THÍCH GIAO CẢM BETA-1</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 440" width="880" height="440" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: HUYẾT ÁP GIẢM / GIẢM TƯỚI MÁU  -->
+      <rect x="160" y="20" width="560" height="60" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">HUYẾT ÁP GIẢM / GIẢM TƯỚI MÁU THẬN / KÍCH THÍCH GIAO</text>
+      <text x="440" y="60" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--amber, #d97706)">CẢM BETA-1</text>
+      <line x1="440" y1="80" x2="440" y2="108" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: Tế Bào Cạnh Cầu Thận Tiết Enzy -->
+      <rect x="190" y="108" width="500" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="130" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Tế Bào Cạnh Cầu Thận Tiết Enzyme RENIN Vào Máu</text>
+      <line x1="440" y1="154" x2="440" y2="182" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: Chuyển Angiotensinogen (từ Gan -->
+      <rect x="175" y="182" width="530" height="78" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="204" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Chuyển Angiotensinogen (từ Gan) ──► Angiotensin I</text>
+      <text x="440" y="222" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--color-text, #0f172a)">(Decapeptide bất hoạt)</text>
+      <text x="199" y="244" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ▼ (Enzyme Men Chuyển ACE tại Nội Mô Mao Mạch Phổi)</text>
+      <line x1="440" y1="260" x2="440" y2="288" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: ANGIOTENSIN II (Octapeptide Si -->
+      <rect x="160.75" y="288" width="558.5" height="114" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
+      <text x="440" y="310" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">ANGIOTENSIN II (Octapeptide Sinh Học Cực Mạnh)</text>
+      <text x="184.75" y="332" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• [Co Mạnh Tiểu ĐM] [Tiết ALDOSTERONE] [Kích Thích Tuyến Yên]</text>
+      <text x="184.75" y="350" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  [Tăng Hấp Thu Na+]</text>
+      <text x="184.75" y="368" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Tăng SVR ──► Tăng HA Giữ Na+ &amp; Nước Tiết ADH giữ nước Trực</text>
+      <text x="184.75" y="386" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  tiếp tại Ống lượn gần</text>
+    </svg>
+  </div>
+</div>
 
 
   - **ANP (Atrial Natriuretic Peptide)**: Do cơ tâm nhĩ tiết ra khi thành nhĩ bị căng giãn quá mức.

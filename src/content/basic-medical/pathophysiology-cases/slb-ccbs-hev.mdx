@@ -93,17 +93,65 @@ Vi-rút viêm gan E (**Hepatitis E Virus - HEV**) thuộc phân họ *Orthohepev
 
 ### Khung Phân Loại "Một Sức Khỏe" (One Health Framework)
 
-```diagram
-[HỌ HEPEVIRIDAE] ──► [LOÀI PASLAHEPEVIRUS BALAYANI]
-                                │
-        ┌───────────────────────┴───────────────────────┐
-        ▼                                               ▼
-[NHÓM GIỚI HẠN Ở NGƯỜI]                         [NHÓM LÂY TRUYỀN TỪ ĐỘNG VẬT (ZOONOTIC)]
-  ├── HEV-1 (Châu Á, Châu Phi)                   ├── HEV-3 & HEV-4 (Lợn nhà, Lợn rừng, Nai)
-  ├── HEV-2 (Mexico, Châu Phi)                   │     └── Gây ca tản phát & Viêm gan mạn ở người suy giảm MD!
-  └── Lây qua nguồn nước ô nhiễm                 ├── HEV-7 & HEV-8 (Lạc đà một bướu)
-      (Gây dịch lớn & Tỷ lệ tử vong thai kỳ cao!)└── Rocahepevirus ratti (HEV-C1 - Chuột)
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: HỌ HEPEVIRIDAE</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 364" width="880" height="364" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Left Column: HỌ HEPEVIRIDAE -->
+      <rect x="40" y="20" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="235" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">HỌ HEPEVIRIDAE</text>
+      <line x1="60" y1="56" x2="410" y2="56" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="60" y="72" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ┌───────────────────</text>
+      <!-- Right Column: LOÀI PASLAHEPEVIRUS BALAYANI -->
+      <rect x="450" y="20" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="645" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">LOÀI PASLAHEPEVIRUS BALAYANI</text>
+      <line x1="470" y1="56" x2="820" y2="56" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="470" y="72" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ────┴───────────────────────┐</text>
+      <!-- Bifurcation Path -->
+      <path d="M 440 110 L 440 124 L 235 124 L 235 138" fill="none" stroke="var(--red, #ef4444)" stroke-width="1.8" marker-end="url(#arrRed)"/>
+      <path d="M 440 124 L 645 124 L 645 138" fill="none" stroke="var(--amber, #f59e0b)" stroke-width="1.8" marker-end="url(#arrAmber)"/>
+      <!-- Left Column: NHÓM GIỚI HẠN Ở NGƯỜI -->
+      <rect x="40" y="138" width="390" height="188" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.5"/>
+      <text x="235" y="160" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">NHÓM GIỚI HẠN Ở NGƯỜI</text>
+      <line x1="60" y1="174" x2="410" y2="174" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="60" y="190" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ├── HEV-1 (Châu Á, Châu Phi)</text>
+      <text x="60" y="208" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ├── HEV-2 (Mexico, Châu Phi)</text>
+      <text x="60" y="226" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• └── Lây qua nguồn nước ô nhiễm</text>
+      <text x="60" y="244" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• (Gây dịch lớn &amp; Tỷ lệ tử vong thai kỳ</text>
+      <!-- Right Column: NHÓM LÂY TRUYỀN TỪ ĐỘNG VẬT (Z -->
+      <rect x="450" y="138" width="390" height="188" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
+      <text x="645" y="160" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">NHÓM LÂY TRUYỀN TỪ ĐỘNG VẬT</text>
+      <text x="645" y="178" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">(ZOONOTIC)</text>
+      <line x1="470" y1="192" x2="820" y2="192" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="470" y="208" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ├── HEV-3 &amp; HEV-4 (Lợn nhà, Lợn rừng,</text>
+      <text x="470" y="226" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Nai)</text>
+      <text x="470" y="244" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• └── Gây ca tản phát &amp; Viêm gan mạn ở</text>
+      <text x="470" y="262" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• người suy giảm MD!</text>
+      <text x="470" y="280" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ├── HEV-7 &amp; HEV-8 (Lạc đà một bướu)</text>
+      <text x="470" y="298" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• cao!)└── Rocahepevirus ratti (HEV-C1 -</text>
+      <text x="470" y="316" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Chuột)</text>
+    </svg>
+  </div>
+</div>
 
 1. **HEV-1 và HEV-2 (Giới hạn ở người):** Lây truyền qua **đường phân – miệng từ nguồn nước ô nhiễm**, gây ra các vụ dịch bùng phát khổng lồ tại các nước đang phát triển (Ấn Độ, Bangladesh, Châu Phi). Nhóm này có tỷ lệ biến chứng suy gan cấp và tử vong đặc biệt cao ở phụ nữ mang thai.
 2. **HEV-3 và HEV-4 (Lây truyền từ động vật - Zoonotic):** Duy trì tự nhiên trong ổ chứa **lợn nhà, lợn rừng và nai**. Lây sang người qua đường tiêu thụ thịt/gan lợn chưa nấu chín kỹ hoặc tiếp xúc nghề nghiệp. Nhóm này chiếm ưu thế ở các nước phát triển (Châu Âu, Bắc Mỹ, Nhật Bản) và có khả năng **gây viêm gan mạn tính ở người suy giảm miễn dịch**.
@@ -157,30 +205,64 @@ Vi-rút viêm gan E (**Hepatitis E Virus - HEV**) thuộc phân họ *Orthohepev
 
 Đặc tính lâm sàng nguy hiểm và bi kịch nhất của viêm gan E là tỷ lệ tử vong cực cao ở **phụ nữ mang thai, đặc biệt trong tam cá nguyệt thứ ba (Tam cá nguyệt 3)**:
 
-```diagram
-[PHỤ NỮ MANG THAI NHIỄM HEV GENOTYPE 1 (Tam cá nguyệt 3)]
-                           │
-                           ▼
-          [MÔI TRƯỜNG NỘI TIẾT THAI KỲ]
-   (Estrogen & Progesterone tăng cao ➔ Ức chế Th1, chuyển dịch Th2)
-                           │
-                           ▼
-         [SUY GIẢM MIỄN DỊCH TẾ BÀO TẠM THỜI]
-       (HEV nhân lên ồ ạt với tải lượng cực cao trong gan)
-                           │
-                           ▼
-       [HỆ MIỄN DỊCH KHỞI ĐỘNG ĐÁP ỨNG TH1 / CTLs MUỘN]
-                           │
-                           ▼
-      [BÃO PHẢN ỨNG VIÊM SIÊU HỦY HOẠI (Hyper-reactive Immune Response)]
-      ├── Hoại tử diện rộng toàn bộ nhu mô gan (Massive Hepatic Necrosis)
-      ├── Giải phóng bão cytokine (TNF-α, IFN-γ, IL-6)
-      ├── Suy gan cấp tối cấp (Acute Liver Failure - ALF) & Bệnh não gan
-      └── Đông máu nội mạch rải rác (DIC) & Băng huyết sau sinh!
-                           │
-                           ▼
-         [TỶ LỆ TỬ VONG SẢN PHỤ LÊN TỚI 15% - 25% (Đỉnh điểm 31%)]
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: PHỤ NỮ MANG THAI NHIỄM HEV GENOTYPE 1 (Tam cá nguyệt 3)</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 624" width="880" height="624" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: PHỤ NỮ MANG THAI NHIỄM HEV GEN -->
+      <rect x="145" y="20" width="590" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">PHỤ NỮ MANG THAI NHIỄM HEV GENOTYPE 1 (Tam cá nguyệt 3)</text>
+      <line x1="440" y1="66" x2="440" y2="94" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: MÔI TRƯỜNG NỘI TIẾT THAI KỲ -->
+      <rect x="169.25" y="94" width="541.5" height="78" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
+      <text x="440" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">MÔI TRƯỜNG NỘI TIẾT THAI KỲ</text>
+      <text x="193.25" y="138" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• (Estrogen &amp; Progesterone tăng cao ➔ Ức chế Th1, chuyển dịch</text>
+      <text x="193.25" y="156" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Th2)</text>
+      <line x1="440" y1="172" x2="440" y2="200" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: SUY GIẢM MIỄN DỊCH TẾ BÀO TẠM  -->
+      <rect x="203.25" y="200" width="473.5" height="60" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
+      <text x="440" y="222" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">SUY GIẢM MIỄN DỊCH TẾ BÀO TẠM THỜI</text>
+      <text x="227.25" y="244" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• (HEV nhân lên ồ ạt với tải lượng cực cao trong gan)</text>
+      <line x1="440" y1="260" x2="440" y2="288" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: HỆ MIỄN DỊCH KHỞI ĐỘNG ĐÁP ỨNG -->
+      <rect x="190" y="288" width="500" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="310" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">HỆ MIỄN DỊCH KHỞI ĐỘNG ĐÁP ỨNG TH1 / CTLs MUỘN</text>
+      <line x1="440" y1="334" x2="440" y2="362" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: BÃO PHẢN ỨNG VIÊM SIÊU HỦY HOẠ -->
+      <rect x="150" y="362" width="580" height="150" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.8"/>
+      <text x="440" y="384" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">BÃO PHẢN ỨNG VIÊM SIÊU HỦY HOẠI (Hyper-reactive Immune</text>
+      <text x="440" y="402" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--red, #dc2626)">Response)</text>
+      <text x="174" y="424" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ├── Hoại tử diện rộng toàn bộ nhu mô gan (Massive Hepatic</text>
+      <text x="174" y="442" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Necrosis)</text>
+      <text x="174" y="460" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ├── Giải phóng bão cytokine (TNF-α, IFN-γ, IL-6)</text>
+      <text x="174" y="478" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ├── Suy gan cấp tối cấp (Acute Liver Failure - ALF) &amp; Bệnh</text>
+      <text x="174" y="496" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• não gan</text>
+      <line x1="440" y1="512" x2="440" y2="540" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: TỶ LỆ TỬ VONG SẢN PHỤ LÊN TỚI  -->
+      <rect x="145" y="540" width="590" height="46" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.8"/>
+      <text x="440" y="562" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">TỶ LỆ TỬ VONG SẢN PHỤ LÊN TỚI 15% - 25% (Đỉnh điểm 31%)</text>
+    </svg>
+  </div>
+</div>
 
 - **Gánh nặng tử vong:** Trong các vụ dịch do HEV-1, tỷ lệ tử vong ở phụ nữ mang thai dao động từ **15% đến 25%**, thậm chí lên tới **31,1%** ở các trại tị nạn.
 - **Cơ chế miễn dịch — nội tiết học:**
@@ -200,19 +282,69 @@ Các hội chứng thần kinh liên quan đến HEV thường xuất hiện ở
 
 ### 2 Con Đường Sinh Bệnh Học Thần Kinh Song Song
 
-```diagram
-[NHIỄM TRÙNG HEV TRONG CƠ THỂ]
-                  │
-        ┌─────────┴─────────────────────────────────────────┐
-        ▼                                                   ▼
-[CON ĐƯỜNG 1: XÂM NHẬP TRỰC TIẾP QUA BBB]          [CON ĐƯỜNG 2: TỰ MIỄN DỊCH QUA TRUNG GIAN KHÁNG THỂ]
-  ├── Tấn công nội mạc vi mạch não                   ├── Hiện tượng bắt chước phân tử (Molecular Mimicry)
-  ├── Ức chế protein liên kết chặt ZO-1,             ├── Tạo tự kháng thể kháng Ganglioside (Anti-GM1/GM2)
-  │   Occludin, Claudin-5 ➔ Thủng BBB!              │     └── Phá hủy bao Myelin sợi thần kinh ngoại vi
-  ├── Virus vào dịch não tủy (CSF quasispecies)      └── Protein capsid ORF2 tự do lưu hành
-  ├── Nhiễm trực tiếp Neurons Glutamatergic          │   tạo phức hợp miễn dịch lắng đọng gây viêm mạch
-  └── Gây Viêm Não, Viêm Màng Não, Viêm Tủy Cắt Ngang!└── Gây Hội Chứng Guillain-Barré (GBS) & Teo Cơ NA!
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: NHIỄM TRÙNG HEV TRONG CƠ THỂ</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 410" width="880" height="410" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: NHIỄM TRÙNG HEV TRONG CƠ THỂ -->
+      <rect x="250" y="20" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">NHIỄM TRÙNG HEV TRONG CƠ THỂ</text>
+      <!-- Bifurcation Path -->
+      <path d="M 440 66 L 440 80 L 235 80 L 235 94" fill="none" stroke="var(--amber, #f59e0b)" stroke-width="1.8" marker-end="url(#arrAmber)"/>
+      <path d="M 440 80 L 645 80 L 645 94" fill="none" stroke="var(--red, #ef4444)" stroke-width="1.8" marker-end="url(#arrRed)"/>
+      <!-- Left Column: CON ĐƯỜNG 1: XÂM NHẬP TRỰC TIẾ -->
+      <rect x="40" y="94" width="390" height="278" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
+      <text x="235" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">CON ĐƯỜNG 1: XÂM NHẬP TRỰC TIẾP</text>
+      <text x="235" y="134" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">QUA BBB</text>
+      <line x1="60" y1="148" x2="410" y2="148" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="60" y="164" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ├── Tấn công nội mạc vi mạch não</text>
+      <text x="60" y="182" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ├── Ức chế protein liên kết chặt ZO-1,</text>
+      <text x="60" y="200" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Occludin, Claudin-5 ➔ Thủng BBB!</text>
+      <text x="60" y="218" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ├── Virus vào dịch não tủy (CSF</text>
+      <text x="60" y="236" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• quasispecie</text>
+      <text x="60" y="254" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ├── Nhiễm trực tiếp Neurons</text>
+      <text x="60" y="272" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Glutamatergic</text>
+      <text x="60" y="290" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• └── Gây Viêm Não, Viêm Màng Não, Viêm</text>
+      <text x="60" y="308" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Tủy Cắt Ngan</text>
+      <!-- Right Column: CON ĐƯỜNG 2: TỰ MIỄN DỊCH QUA  -->
+      <rect x="450" y="94" width="390" height="278" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.5"/>
+      <text x="645" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">CON ĐƯỜNG 2: TỰ MIỄN DỊCH QUA</text>
+      <text x="645" y="134" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">TRUNG GIAN KHÁNG THỂ</text>
+      <line x1="470" y1="148" x2="820" y2="148" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="470" y="164" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ├── Hiện tượng bắt chước phân tử</text>
+      <text x="470" y="182" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• (Molecular Mimicry)</text>
+      <text x="470" y="200" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ├── Tạo tự kháng thể kháng Ganglioside</text>
+      <text x="470" y="218" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• (Anti-GM1/GM2)</text>
+      <text x="470" y="236" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• └── Phá hủy bao Myelin sợi thần kinh</text>
+      <text x="470" y="254" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ngoại vi</text>
+      <text x="470" y="272" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• s) └── Protein capsid ORF2 tự do lưu</text>
+      <text x="470" y="290" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• hành</text>
+      <text x="470" y="308" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• tạo phức hợp miễn dịch lắng đọng gây</text>
+      <text x="470" y="326" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• viêm mạch</text>
+      <text x="470" y="344" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• g!└── Gây Hội Chứng Guillain-Barré</text>
+      <text x="470" y="362" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• (GBS) &amp; Teo Cơ NA!</text>
+    </svg>
+  </div>
+</div>
 
 1. **Con đường Xâm nhập trực tiếp &amp; Phá vỡ hàng rào máu não (BBB):** HEV tấn công tế bào nội mạc vi mạch não, **ức chế biểu hiện các protein liên kết chặt (ZO-1, Occludin, Claudin-5)** làm thủng hàng rào máu não. Virus xâm nhập dịch não tủy, nhân lên độc lập (*compartmentalized CNS replication*) bên trong các **neuron tiết glutamate và dopamine**, gây co ngắn sợi trục thần kinh, hoạt hóa vi đệm và gây **Viêm não, Viêm màng não, Viêm tủy cắt ngang (Acute Transverse Myelitis)**.
 2. **Con đường Tự miễn dịch &amp; Bắt chước phân tử (Molecular Mimicry):** Kích hoạt tế bào B sản sinh tự kháng thể **kháng Ganglioside (Anti-GM1 và Anti-GM2)** tấn công bao myelin sợi thần kinh ngoại biên, gây ra **Hội chứng Guillain-Barré (GBS)** và **Teo cơ đau dây thần kinh (Neuralgic Amyotrophy - NA / Hội chứng Parsonage-Turner)**. Đồng thời, lượng lớn protein capsid ORF2 tự do không mang gen (*genome-free ORF2*) tạo phức hợp miễn dịch lưu hành gây **Viêm cầu thận màng (Glomerulonephritis)** và **Xuất huyết giảm tiểu cầu huyết khối (TTP)**.

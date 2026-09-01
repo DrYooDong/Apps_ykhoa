@@ -105,17 +105,58 @@ sections:
 
 **Lipid** (bắt nguồn từ *lipos* - mỡ) là nhóm các hợp chất hữu cơ dị thể sinh học không tan trong nước nhưng tan nhiều trong các dung môi hữu cơ không phân cực (ether, chloroform, benzen, aceton nóng).
 
-```
-                                  PHÂN LOẠI LIPID TOÀN DIỆN
-                                              │
-         ┌────────────────────────────────────┴────────────────────────────────────┐
-         ▼                                                                         ▼
-  [LIPID THỦY PHÂN ĐƯỢC (Lipid thật)]                       [LIPID KHÔNG THỦY PHÂN ĐƯỢC (Lipoid)]
-  - Chứa liên kết Este hoặc Amid                            - Không chứa liên kết este
-  - Lipid thuần (C, H, O): Glycerid, Cerid, Sterid          - Acid béo tự do (FFA)
-  - Lipid tạp (P, N, S, Glucid): Glycerophospholipid,        - Sterol (Cholesterol) & Hormon Steroid
-    Sphingolipid, Glycosphingolipid                         - Isoprenoid: Carotenoid, Vitamin A, D, E, K
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: LIPID THỦY PHÂN ĐƯỢC (Lipid thật)</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 302" width="880" height="302" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: PHÂN LOẠI LIPID TOÀN DIỆN -->
+      <rect x="250" y="20" width="380" height="46" rx="10" fill="var(--blue-bg, #eff6ff)" stroke="var(--blue, #0284c7)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-primary, #0284c7)">PHÂN LOẠI LIPID TOÀN DIỆN</text>
+      <!-- Bifurcation Path -->
+      <path d="M 440 66 L 440 80 L 235 80 L 235 94" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <path d="M 440 80 L 645 80 L 645 94" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Left Column: LIPID THỦY PHÂN ĐƯỢC (Lipid th -->
+      <rect x="40" y="94" width="390" height="170" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="235" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">LIPID THỦY PHÂN ĐƯỢC (Lipid thật)</text>
+      <line x1="60" y1="130" x2="410" y2="130" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="60" y="146" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Chứa liên kết Este hoặc Amid</text>
+      <text x="60" y="164" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Lipid thuần (C, H, O): Glycerid, Ceri</text>
+      <text x="60" y="182" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Lipid tạp (P, N, S, Glucid):</text>
+      <text x="60" y="200" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  Glycerophospholip</text>
+      <text x="60" y="218" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Sphingolipid, Glycosphingolipid</text>
+      <!-- Right Column: LIPID KHÔNG THỦY PHÂN ĐƯỢC (Li -->
+      <rect x="450" y="94" width="390" height="170" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="645" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">LIPID KHÔNG THỦY PHÂN ĐƯỢC</text>
+      <text x="645" y="134" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">(Lipoid)</text>
+      <line x1="470" y1="148" x2="820" y2="148" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="470" y="164" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Không chứa liên kết este</text>
+      <text x="470" y="182" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• d, Sterid - Acid béo tự do (FFA)</text>
+      <text x="470" y="200" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• id, - Sterol (Cholesterol) &amp; Hormon</text>
+      <text x="470" y="218" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  Steroid</text>
+      <text x="470" y="236" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Isoprenoid: Carotenoid, Vitamin A, D,</text>
+      <text x="470" y="254" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  E, K</text>
+    </svg>
+  </div>
+</div>
 
 ---
 
@@ -199,13 +240,41 @@ Acid béo tự nhiên hầu hết có **số nguyên tử carbon chẵn** ($14 -
 
 Glycerophospholipid gồm: **Khung Glycerol** + **2 Acid béo** (vị trí *sn-1* là acid no, vị trí *sn-2* là acid chưa no) + **Gốc Phosphat tại C3** (tạo Acid Phosphatidic) + **Nhóm phân cực X**.
 
-```
-                C1 (sn-1): Acid béo bão hòa (Palmitic / Stearic)
-                │
-  Glycerol ──── C2 (sn-2): Acid béo chưa bão hòa (Arachidonic / Oleic)
-                │
-                C3 (sn-3): Gốc Phosphat ─── [Nhóm Phân Cực X]
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: Nhóm Phân Cực X</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 210" width="880" height="210" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: C1 (sn-1): Acid béo bão hòa (P -->
+      <rect x="160.75" y="20" width="558.5" height="78" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">C1 (sn-1): Acid béo bão hòa (Palmitic / Stearic)</text>
+      <text x="184.75" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Glycerol ──── C2 (sn-2): Acid béo chưa bão hòa (Arachidonic</text>
+      <text x="184.75" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  / Oleic)</text>
+      <line x1="440" y1="98" x2="440" y2="126" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: Nhóm Phân Cực X -->
+      <rect x="250" y="126" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="148" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Nhóm Phân Cực X</text>
+    </svg>
+  </div>
+</div>
 
 <div class="matrix-grid">
   <div class="matrix-card">
@@ -253,15 +322,41 @@ Glycerophospholipid gồm: **Khung Glycerol** + **2 Acid béo** (vị trí *sn-1
 
 ### B. Vị Trí Phân Cắt Của 4 Loại Enzyme Phospholipase
 
-```
-                  (PLA1)                     (PLA2 - Nọc rắn, giải phóng Arachidonic)
-                    │                               │
-  CH2 ─ O ──────── CO ─ R1        CH ─ O ───────── CO ─ R2
-   │                               │
-   └────────────────────────────── CH2 ─ O ──────── P ──────── O ─ [Base Nitơ X]
-                                                    │          │
-                                                  (PLC)      (PLD)
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: Base Nitơ X</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 206" width="880" height="206" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: (PLA1)                     (PL -->
+      <rect x="185" y="20" width="510" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">(PLA1) (PLA2 - Nọc rắn, giải phóng Arachidonic)</text>
+      <text x="209" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• CH2 ─ O ──────── CO ─ R1 CH ─ O ───────── CO ─ R2</text>
+      <line x1="440" y1="80" x2="440" y2="108" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: Base Nitơ X -->
+      <rect x="250" y="108" width="380" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="130" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Base Nitơ X</text>
+      <text x="274" y="152" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• (PLC) (PLD)</text>
+    </svg>
+  </div>
+</div>
 
 - **Phospholipase $A_2$**: Cắt este ở vị trí C2 giải phóng **Acid Arachidonic** (tiền chất gây viêm) và tạo ra **Lysolecithin** (có nồng độ cao trong nọc rắn, phá hủy màng tế bào gây tan máu cấp tính).
 - **Phospholipase C**: Cắt liên kết glycerol-phosphat, tạo $\text{DAG}$ trong dòng thác tín hiệu tế bào.
@@ -394,24 +489,73 @@ Do lipid kỵ nước không tan trong máu, chúng được đóng gói thành 
 
 ## 6. Nhập Bào LDL, Điều Hòa Cholesterol SREBP/SCAP & Đích Tác Dụng PCSK9 {#sec-6}
 
-```
-  [LDL GẮN THỤ THỂ LDLR TRÊN HÕM PHỦ CLATHRIN]
-                     │
-                     ▼
-             [TÚI NỘI BÀO HÓA (ENDOSOME)]
-                     │
-         ┌───────────┴───────────┐
-         ▼                       ▼
-  [THỤ THỂ LDLR]         [HẠT LDL VÀO LYSOSOME]
-  Tách rời ở pH acid     Acid Hydrolase thủy phân:
-  Tái chế lên màng       - Apo B-100 ──► Acid amin tự do
-                         - Cholesteryl Este ──► CHOLESTEROL TỰ DO (FC)
-                                                       │
-         ┌─────────────────────────────────────────────┴─────────────────────────────────────────────┐
-         ▼                                             ▼                                             ▼
-  [ỨC CHẾ HMG-CoA REDUCTASE]                    [GIẢM BIỂU HIỆN LDLR]                         [KÍCH HOẠT ACAT]
-  Khóa tổng hợp cholesterol nội sinh            Ngừng bắt giữ thêm LDL từ máu                 Chuyển FC thành CE dự trữ
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: LDL GẮN THỤ THỂ LDLR TRÊN HÕM PHỦ CLATHRIN</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 440" width="880" height="440" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: LDL GẮN THỤ THỂ LDLR TRÊN HÕM  -->
+      <rect x="210" y="20" width="460" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">LDL GẮN THỤ THỂ LDLR TRÊN HÕM PHỦ CLATHRIN</text>
+      <line x1="440" y1="66" x2="440" y2="94" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: TÚI NỘI BÀO HÓA (ENDOSOME) -->
+      <rect x="250" y="94" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">TÚI NỘI BÀO HÓA (ENDOSOME)</text>
+      <!-- Bifurcation Path -->
+      <path d="M 440 140 L 440 154 L 235 154 L 235 168" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <path d="M 440 154 L 645 154 L 645 168" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Left Column: THỤ THỂ LDLR -->
+      <rect x="40" y="168" width="390" height="116" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="235" y="190" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">THỤ THỂ LDLR</text>
+      <line x1="60" y1="204" x2="410" y2="204" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="60" y="220" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Tách rời ở pH acid</text>
+      <text x="60" y="238" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Tái chế lên màng - A</text>
+      <text x="60" y="256" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Choleste</text>
+      <text x="60" y="274" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ┌─────────────────────────────────────────</text>
+      <!-- Right Column: HẠT LDL VÀO LYSOSOME -->
+      <rect x="450" y="168" width="390" height="116" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="645" y="190" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">HẠT LDL VÀO LYSOSOME</text>
+      <line x1="470" y1="204" x2="820" y2="204" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="470" y="220" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Acid Hydrolase thủy phân:</text>
+      <text x="470" y="238" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• po B-100 ──► Acid amin tự do</text>
+      <text x="470" y="256" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ryl Este ──► CHOLESTEROL TỰ DO (FC)</text>
+      <text x="470" y="274" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ────┴─────────────────────────────────────────────┐</text>
+      <path d="M 440 284 L 440 298 L 155 298 L 155 312" fill="none" stroke="var(--amber, #f59e0b)" stroke-width="1.8" marker-end="url(#arrAmber)"/>
+      <path d="M 440 298 L 440 298 L 440 312" fill="none" stroke="var(--amber, #f59e0b)" stroke-width="1.8" marker-end="url(#arrAmber)"/>
+      <path d="M 440 298 L 725 298 L 725 312" fill="none" stroke="var(--amber, #f59e0b)" stroke-width="1.8" marker-end="url(#arrAmber)"/>
+      <rect x="30" y="312" width="250" height="90" rx="8" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
+      <text x="155" y="334" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--amber, #d97706)">ỨC CHẾ HMG-CoA REDUCTASE</text>
+      <line x1="45" y1="342" x2="265" y2="342" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="42" y="358" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Khóa tổng hợp cholesterol nội sinh</text>
+      <rect x="315" y="312" width="250" height="90" rx="8" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
+      <text x="440" y="334" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--amber, #d97706)">GIẢM BIỂU HIỆN LDLR</text>
+      <line x1="330" y1="342" x2="550" y2="342" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="327" y="358" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Ngừng bắt giữ thêm LDL từ máu</text>
+      <rect x="600" y="312" width="250" height="90" rx="8" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
+      <text x="725" y="334" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--amber, #d97706)">KÍCH HOẠT ACAT</text>
+      <line x1="615" y1="342" x2="835" y2="342" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="612" y="358" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Chuyển FC thành CE dự trữ</text>
+    </svg>
+  </div>
+</div>
 
 ### A. Hệ Thống Cảm Biến Sterol: SREBP / SCAP / Insig
 - Khi cholesterol nội bào thấp: Phức hợp SCAP/SREBP rời màng ER đến Golgi, bị protease cắt giải phóng domain N-tận vào nhân gắn vào **SRE (Sterol Regulatory Element)** kích hoạt phiên mã HMG-CoA reductase và Thụ thể LDL.

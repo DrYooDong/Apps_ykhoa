@@ -99,16 +99,55 @@ $$\text{BP (Huyết áp)} = \text{CO (Cung lượng tim)} \times \text{SVR (Sứ
 
 $$\text{CO} = \text{SV (Thể tích nhát bóp)} \times \text{HR (Tần số tim)}$$
 
-```
-                            [PHƯƠNG TRÌNH HUYẾT ĐỘNG HỌC]
-                                          │
-         ┌────────────────────────────────┴────────────────────────────────┐
-         ▼                                                                 ▼
-[CUNG LƯỢNG TIM (CO)]                                            [SỨC CẢN NGOẠI VI (SVR)]
-- Tiền tải & Thể tích dịch ngoại bào                             - Bán kính tiểu động mạch (Luật Poiseuille r^4)
-- Sức co bóp cơ tim & Tần số tim                                - Trương lực co mạch giao cảm & Endothelin-1
-- Hoạt tính thần kinh tự chủ giao cảm                            - Trạng thái phì đại & xơ cứng thành mạch
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: PHƯƠNG TRÌNH HUYẾT ĐỘNG HỌC</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 284" width="880" height="284" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: PHƯƠNG TRÌNH HUYẾT ĐỘNG HỌC -->
+      <rect x="250" y="20" width="380" height="46" rx="10" fill="var(--blue-bg, #eff6ff)" stroke="var(--blue, #0284c7)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-primary, #0284c7)">PHƯƠNG TRÌNH HUYẾT ĐỘNG HỌC</text>
+      <!-- Bifurcation Path -->
+      <path d="M 440 66 L 440 80 L 235 80 L 235 94" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <path d="M 440 80 L 645 80 L 645 94" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Left Column: CUNG LƯỢNG TIM (CO) -->
+      <rect x="40" y="94" width="390" height="152" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="235" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">CUNG LƯỢNG TIM (CO)</text>
+      <line x1="60" y1="130" x2="410" y2="130" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="60" y="146" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Tiền tải &amp; Thể tích dịch ngoại bào</text>
+      <text x="60" y="164" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Sức co bóp cơ tim &amp; Tần số tim</text>
+      <text x="60" y="182" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Hoạt tính thần kinh tự chủ giao cảm</text>
+      <!-- Right Column: SỨC CẢN NGOẠI VI (SVR) -->
+      <rect x="450" y="94" width="390" height="152" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="645" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">SỨC CẢN NGOẠI VI (SVR)</text>
+      <line x1="470" y1="130" x2="820" y2="130" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="470" y="146" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Bán kính tiểu động mạch (Luật</text>
+      <text x="470" y="164" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Poiseuille r^4)</text>
+      <text x="470" y="182" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Trương lực co mạch giao cảm &amp;</text>
+      <text x="470" y="200" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Endothelin-1</text>
+      <text x="470" y="218" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Trạng thái phì đại &amp; xơ cứng thành</text>
+      <text x="470" y="236" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• mạch</text>
+    </svg>
+  </div>
+</div>
 
 ### 1.1. Sự Biến Đổi Tự Nhiên Của Huyết Áp Theo Tuổi Tác
 
@@ -207,24 +246,58 @@ Leptin do mô mỡ tiết ra tăng cao tỷ lệ thuận với khối lượng m
 
 **Nhạy cảm muối của huyết áp (Salt Sensitivity of Blood Pressure - SSBP)** là hiện tượng trị số huyết áp thay đổi song hành trực tiếp với lượng natri nạp vào, ảnh hưởng đến khoảng **$50\%$ bệnh nhân tăng huyết áp** và **$25\%$ người có huyết áp bình thường**.
 
-```
-[CHẾ ĐỘ ĂN NHIỀU MUỐI (HIGH SODIUM)]
-                 │
-                 ▼
-[QUÁ TẢI KHẢ NĂNG ĐỆM CỦA LỚP GLYCOCALYX (HỒNG CẦU & NỘI MẠC)]
-                 │
-                 ▼
-[MỎNG VÀ HỦY HOẠI LỚP BÀN CHẢI GLYCOCALYX TÍCH ĐIỆN ÂM]
-                 │
-                 ▼
-[ION Na+ TỰ DO THÂM NHẬP TRỰC TIẾP VÀO THÀNH MẠCH MÁU]
-                 │
-                 ▼
-[ỨC CHẾ GIẢI PHÓNG NITRIC OXIDE (NO) + KÍCH HOẠT VIÊM MẠCH]
-                 │
-                 ▼
-[ĐÁP ỨNG TĂNG ÁP TỨC THÌ VỚI MUỐI (IPROS) & XƠ CỨNG ĐỘNG MẠCH]
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: CHẾ ĐỘ ĂN NHIỀU MUỐI (HIGH SODIUM)</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 516" width="880" height="516" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: CHẾ ĐỘ ĂN NHIỀU MUỐI (HIGH SOD -->
+      <rect x="250" y="20" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">CHẾ ĐỘ ĂN NHIỀU MUỐI (HIGH SODIUM)</text>
+      <line x1="440" y1="66" x2="440" y2="94" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: QUÁ TẢI KHẢ NĂNG ĐỆM CỦA LỚP G -->
+      <rect x="145" y="94" width="590" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">QUÁ TẢI KHẢ NĂNG ĐỆM CỦA LỚP GLYCOCALYX (HỒNG CẦU &amp; NỘI</text>
+      <text x="440" y="134" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--color-text, #0f172a)">MẠC)</text>
+      <line x1="440" y1="154" x2="440" y2="182" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: MỎNG VÀ HỦY HOẠI LỚP BÀN CHẢI  -->
+      <rect x="155" y="182" width="570" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="204" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">MỎNG VÀ HỦY HOẠI LỚP BÀN CHẢI GLYCOCALYX TÍCH ĐIỆN ÂM</text>
+      <line x1="440" y1="228" x2="440" y2="256" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: ION Na+ TỰ DO THÂM NHẬP TRỰC T -->
+      <rect x="160" y="256" width="560" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="278" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">ION Na+ TỰ DO THÂM NHẬP TRỰC TIẾP VÀO THÀNH MẠCH MÁU</text>
+      <line x1="440" y1="302" x2="440" y2="330" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: ỨC CHẾ GIẢI PHÓNG NITRIC OXIDE -->
+      <rect x="160" y="330" width="560" height="60" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
+      <text x="440" y="352" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">ỨC CHẾ GIẢI PHÓNG NITRIC OXIDE (NO) + KÍCH HOẠT VIÊM</text>
+      <text x="440" y="370" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--amber, #d97706)">MẠCH</text>
+      <line x1="440" y1="390" x2="440" y2="418" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: ĐÁP ỨNG TĂNG ÁP TỨC THÌ VỚI MU -->
+      <rect x="145" y="418" width="590" height="60" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
+      <text x="440" y="440" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">ĐÁP ỨNG TĂNG ÁP TỨC THÌ VỚI MUỐI (IPROS) &amp; XƠ CỨNG ĐỘNG</text>
+      <text x="440" y="458" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--amber, #d97706)">MẠCH</text>
+    </svg>
+  </div>
+</div>
 
 ### 3.1. Lớp Glycocalyx Hồng Cầu & Nội Mạc Mạch Máu Như Bộ Đệm Natri
 
@@ -267,16 +340,56 @@ Các đợt tăng vọt huyết áp lặp đi lặp lại sau mỗi bữa ăn m�
 
 Những nghiên cứu công bố trên *Nature Communications (2025)* và *Hypertension (2024)* đã khẳng định da là một **cơ quan nội tiết độc lập** tham gia trực tiếp vào việc điều hòa huyết áp hệ thống:
 
-```
-                            [DA NHƯ CƠ QUAN NỘI TIẾT VẬN MẠCH]
-                                           │
-         ┌─────────────────────────────────┼─────────────────────────────────┐
-         ▼                                 ▼                                 ▼
-[TỔNG HỢP HORMONE TẠI CHỖ]       [BẢO TỒN NƯỚC QUA DA]             [TUYẾN MỒ HÔI: THẬN THU NHỎ]
-- Tế bào sừng & Fibroblasts      - Co mạch đề kháng ở da            - Biểu hiện kênh ENaC
-- Tự tiết Ang II, Aldosterone,    - Giảm mất nước thượng bì         - Bơm Na+/K+-ATPase
-  Catecholamine, Bradykinin      - Giữ dịch ngoại bào quá mức      - Tái hấp thu Na+ dưới tác dụng MR
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: DA NHƯ CƠ QUAN NỘI TIẾT VẬN MẠCH</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 222" width="880" height="222" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: DA NHƯ CƠ QUAN NỘI TIẾT VẬN MẠ -->
+      <rect x="250" y="20" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">DA NHƯ CƠ QUAN NỘI TIẾT VẬN MẠCH</text>
+      <path d="M 440 66 L 440 80 L 155 80 L 155 94" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <path d="M 440 80 L 440 80 L 440 94" fill="none" stroke="var(--red, #ef4444)" stroke-width="1.8" marker-end="url(#arrRed)"/>
+      <path d="M 440 80 L 725 80 L 725 94" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <rect x="30" y="94" width="250" height="90" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="155" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text, #0f172a)">TỔNG HỢP HORMONE TẠI CHỖ</text>
+      <line x1="45" y1="124" x2="265" y2="124" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="42" y="140" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Tế bào sừng &amp; Fibroblasts</text>
+      <text x="42" y="158" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Tự tiết Ang II, Aldosterone</text>
+      <text x="42" y="176" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Catecholamine, Bradykinin</text>
+      <rect x="315" y="94" width="250" height="90" rx="8" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.5"/>
+      <text x="440" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--red, #dc2626)">BẢO TỒN NƯỚC QUA DA</text>
+      <line x1="330" y1="124" x2="550" y2="124" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="327" y="140" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Co mạch đề kháng ở da</text>
+      <text x="327" y="158" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• ,    - Giảm mất nước thượng b</text>
+      <text x="327" y="176" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Giữ dịch ngoại bào quá mức</text>
+      <rect x="600" y="94" width="250" height="90" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="725" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text, #0f172a)">TUYẾN MỒ HÔI: THẬN THU NHỎ</text>
+      <line x1="615" y1="124" x2="835" y2="124" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="612" y="140" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Biểu hiện kênh ENaC</text>
+      <text x="612" y="158" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• ì         - Bơm Na+/K+-ATPase</text>
+      <text x="612" y="176" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Tái hấp thu Na+ dưới tác dụng MR</text>
+    </svg>
+  </div>
+</div>
 
 ### 4.1. Tự Tổng Hợp Các Hormone Vận Mạch Tại Chỗ
 
@@ -299,21 +412,55 @@ Sự thiếu hụt protein liên kết thụ thể Angiotensin II đặc hiệu 
 
 Tăng huyết áp được thúc đẩy trực tiếp bởi tình trạng **viêm mạn tính mức độ thấp (low-grade chronic inflammation)** và sự thâm nhiễm tế bào miễn dịch tại mạch máu, thận, tim và não:
 
-```
-[KÍCH THÍCH BAN ĐẦU: CƯỜNG GIAO CẢM, ĂN MẶN, ANG II]
-                         │
-                         ▼
-[LÁCH & CƠ QUAN LYMPHO PHÓNG THÍCH TẾ BÀO MIỄN DỊCH (TH17, CD8+, ĐẠI THỰC BÀO)]
-                         │
-                         ▼
-[THÂM NHIỄM VÀO THÀNH MẠCH (LỚP MỠ QUANH MẠCH) & MÔ KẼ THẬN]
-                         │
-                         ▼
-[GIẢI PHÓNG CYTOKINES: IL-17, IFN-γ, TNF-α, IL-6 & HOẠT HÓA THỂ VIÊM NLRP3 ➔ IL-1β]
-                         │
-                         ▼
-[STRESS OXY HÓA MẠCH MÁU + TĂNG TÁI HẤP THU NATRI ỐNG THẬN ➔ TĂNG HUYẾT ÁP TIẾN TRIỂN]
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: KÍCH THÍCH BAN ĐẦU: CƯỜNG GIAO CẢM, ĂN MẶN, ANG II</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 456" width="880" height="456" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: KÍCH THÍCH BAN ĐẦU: CƯỜNG GIAO -->
+      <rect x="170" y="20" width="540" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">KÍCH THÍCH BAN ĐẦU: CƯỜNG GIAO CẢM, ĂN MẶN, ANG II</text>
+      <line x1="440" y1="66" x2="440" y2="94" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: LÁCH &amp; CƠ QUAN LYMPHO PHÓNG TH -->
+      <rect x="170" y="94" width="540" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">LÁCH &amp; CƠ QUAN LYMPHO PHÓNG THÍCH TẾ BÀO MIỄN DỊCH</text>
+      <text x="440" y="134" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--color-text, #0f172a)">(TH17, CD8+, ĐẠI THỰC BÀO)</text>
+      <line x1="440" y1="154" x2="440" y2="182" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: THÂM NHIỄM VÀO THÀNH MẠCH (LỚP -->
+      <rect x="155" y="182" width="570" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="204" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">THÂM NHIỄM VÀO THÀNH MẠCH (LỚP MỠ QUANH MẠCH) &amp; MÔ KẼ</text>
+      <text x="440" y="222" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--color-text, #0f172a)">THẬN</text>
+      <line x1="440" y1="242" x2="440" y2="270" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: GIẢI PHÓNG CYTOKINES: IL-17, I -->
+      <rect x="150" y="270" width="580" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="292" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">GIẢI PHÓNG CYTOKINES: IL-17, IFN-γ, TNF-α, IL-6 &amp; HOẠT</text>
+      <text x="440" y="310" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--color-text, #0f172a)">HÓA THỂ VIÊM NLRP3 ➔ IL-1β</text>
+      <line x1="440" y1="330" x2="440" y2="358" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: STRESS OXY HÓA MẠCH MÁU + TĂNG -->
+      <rect x="160" y="358" width="560" height="60" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
+      <text x="440" y="380" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">STRESS OXY HÓA MẠCH MÁU + TĂNG TÁI HẤP THU NATRI ỐNG</text>
+      <text x="440" y="398" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--amber, #d97706)">THẬN ➔ TĂNG HUYẾT ÁP TIẾN TRIỂN</text>
+    </svg>
+  </div>
+</div>
 
 ### 5.1. Thâm Nhiễm Tế Bào Miễn Dịch & Vai Trò Của Cytokine Tiền Viêm
 
@@ -327,16 +474,56 @@ Tăng huyết áp được thúc đẩy trực tiếp bởi tình trạng **viê
 
 Tăng huyết áp thứ phát chiếm khoảng **$5\% - 25\%$** các trường hợp tăng huyết áp ở người lớn. Việc phát hiện sớm giúp điều trị triệt căn nguyên nhân và ngăn ngừa tổn thương cơ quan đích nặng nề:
 
-```
-                            [TĂNG HUYẾT ÁP THỨ PHÁT]
-                                       │
-        ┌──────────────────────────────┼──────────────────────────────┐
-        ▼                              ▼                              ▼
-[CƯỜNG ALDOSTERONE NGUYÊN PHÁT]   [HẸP ĐỘNG MẠCH THẬN (RVH)]    [HỘI CHỨNG NGƯNG THỞ KHI NGỦ (OSA)]
-- Tiết Aldosterone tự trị         - Xơ vữa (90%) / FMD (10%)    - Thiếu oxy gián đoạn (CIH)
-- Giữ Na+, thải K+ qua ENaC       - Thiếu máu thận ➔ ↑ Renin    - Cường giao cảm cực độ ban đêm
-- Renin huyết tương bị ức chế     - Mô hình Goldblatt 1 kẹp/2kẹp - Mất trũng huyết áp (Non-dipper)
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: TĂNG HUYẾT ÁP THỨ PHÁT</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 222" width="880" height="222" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: TĂNG HUYẾT ÁP THỨ PHÁT -->
+      <rect x="250" y="20" width="380" height="46" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">TĂNG HUYẾT ÁP THỨ PHÁT</text>
+      <path d="M 440 66 L 440 80 L 155 80 L 155 94" fill="none" stroke="var(--amber, #f59e0b)" stroke-width="1.8" marker-end="url(#arrAmber)"/>
+      <path d="M 440 80 L 440 80 L 440 94" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <path d="M 440 80 L 725 80 L 725 94" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <rect x="30" y="94" width="250" height="90" rx="8" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
+      <text x="155" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--amber, #d97706)">CƯỜNG ALDOSTERONE NGUYÊN PHÁT</text>
+      <line x1="45" y1="124" x2="265" y2="124" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="42" y="140" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Tiết Aldosterone tự trị</text>
+      <text x="42" y="158" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Giữ Na+, thải K+ qua ENaC</text>
+      <text x="42" y="176" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Renin huyết tương bị ức chế</text>
+      <rect x="315" y="94" width="250" height="90" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="440" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text, #0f172a)">HẸP ĐỘNG MẠCH THẬN (RVH)</text>
+      <line x1="330" y1="124" x2="550" y2="124" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="327" y="140" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Xơ vữa (90%) / FMD (10%)</text>
+      <text x="327" y="158" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Thiếu máu thận ➔ ↑ Renin</text>
+      <text x="327" y="176" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Mô hình Goldblatt 1 kẹp/2kẹp</text>
+      <rect x="600" y="94" width="250" height="90" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="725" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text, #0f172a)">HỘI CHỨNG NGƯNG THỞ KHI NGỦ (OSA)</text>
+      <line x1="615" y1="124" x2="835" y2="124" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="612" y="140" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Thiếu oxy gián đoạn (CIH)</text>
+      <text x="612" y="158" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Cường giao cảm cực độ ban đêm</text>
+      <text x="612" y="176" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Mất trũng huyết áp (Non-dipper)</text>
+    </svg>
+  </div>
+</div>
 
 ### 6.1. Cường Aldosterone Nguyên Phát (Primary Aldosteronism - PA)
 
@@ -442,18 +629,45 @@ Nguyên nhân do Xơ vữa động mạch thận (ARAS, chiếm 90% ở người
 
 Tăng huyết áp kéo dài truyền tải áp lực cơ học cao và sức căng thành mạch liên tục lên hệ vi tuần hoàn, gây tổn thương cơ quan đích (**Hypertension-Mediated Organ Damage - HMOD**):
 
-```
-                        [TỔN THƯƠNG CƠ QUAN ĐÍCH DO TĂNG HUYẾT ÁP (HMOD)]
-                                                │
-         ┌───────────────────────┬──────────────┴───────────────┬───────────────────────┐
-         ▼                       ▼                              ▼                       ▼
-  [TIM MẠCH]                 [NÃO BỘ]                       [THẬN]                  [MẮT / VÕNG MẠC]
-  - Phì đại đồng tâm LVH     - Xuất huyết não (vi phình)    - Xơ cứng mạch nhập     - Co nhỏ tiểu ĐM
-  - Rối loạn tâm trương ➔    - Nhồi máu não (xơ vữa)        - Tăng áp lực lọc       - Xuất huyết ngọn lửa
-    Tiến triển HFpEF         - Dịch chuyển tự điều hòa      - Albumin niệu tiến     - Xuất tiết bông
-  - Bệnh vi mạch vành ➔      - Tổn thương chất trắng ➔        triển suy thận          - Phù gai thị
-    Tiến triển HFrEF           Sa sút trí tuệ mạch máu
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: TỔN THƯƠNG CƠ QUAN ĐÍCH DO TĂNG HUYẾT ÁP (HMOD)</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 280" width="880" height="280" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: TỔN THƯƠNG CƠ QUAN ĐÍCH DO TĂN -->
+      <rect x="165" y="20" width="550" height="222" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">TỔN THƯƠNG CƠ QUAN ĐÍCH DO TĂNG HUYẾT ÁP (HMOD)</text>
+      <text x="189" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• [TIM MẠCH] [NÃO BỘ] [THẬN] [MẮT / VÕNG MẠC]</text>
+      <text x="189" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Phì đại đồng tâm LVH - Xuất huyết não (vi phình) - Xơ cứng</text>
+      <text x="189" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• mạch nhập - Co nhỏ tiểu ĐM</text>
+      <text x="189" y="118" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Rối loạn tâm trương ➔ - Nhồi máu não (xơ vữa) - Tăng áp lực</text>
+      <text x="189" y="136" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• lọc - Xuất huyết ngọn lửa</text>
+      <text x="189" y="154" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Tiến triển HFpEF - Dịch chuyển tự điều hòa - Albumin niệu</text>
+      <text x="189" y="172" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• tiến - Xuất tiết bông</text>
+      <text x="189" y="190" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Bệnh vi mạch vành ➔ - Tổn thương chất trắng ➔ triển suy thận</text>
+      <text x="189" y="208" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• - Phù gai thị</text>
+      <text x="189" y="226" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Tiến triển HFrEF           Sa sút trí tuệ mạch máu</text>
+    </svg>
+  </div>
+</div>
 
 ### 8.1. Tim Mạch: Hai Nhánh Cơ Chế Tiến Triển Đến Suy Tim (HFpEF & HFrEF)
 

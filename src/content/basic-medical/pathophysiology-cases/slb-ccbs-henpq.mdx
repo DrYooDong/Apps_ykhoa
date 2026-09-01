@@ -82,23 +82,64 @@ sections:
 
 Hen phế quản (Bronchial Asthma) là một bệnh lý không đồng nhất (heterogeneous disease), đặc trưng bởi tình trạng **viêm mạn tính của đường dẫn khí**. Bệnh được biểu hiện bởi tiền sử các triệu chứng hô hấp thay đổi theo thời gian và cường độ (khò khè, khó thở, nặng ngực, ho), đi kèm với tình trạng **giới hạn luồng khí thở ra dao động**.
 
-```
-                           [KÍCH THÍCH DỊ NGUYÊN / VIRUS / Ô NHIỄM]
-                                              │
-                                              ▼
-                        [VIÊM MẠN TÍNH & TĂNG ĐÁP ỨNG ĐƯỜNG THỞ (AHR)]
-                                              │
-                   ┌──────────────────────────┼──────────────────────────┐
-                   ▼                          ▼                          ▼
-       [CO THẮT CƠ TRƠN]              [PHÙ NỀ NIÊM MẠC]           [TĂNG TIẾT ĐỜM NHẦY]
-    - Hẹp lòng phế quản cấp        - Thâm nhiễm BC ái toan/     - Nút nhầy (mucus plugs)
-    - Kích thích thụ thể co cơ       bạch cầu trung tính          lấp kín tiểu phế quản
-                   │                          │                          │
-                   └──────────────────────────┼──────────────────────────┘
-                                              │
-                                              ▼
-                [TẮC NGHẼN LUỒNG KHÍ THỞ RA DAO ĐỘNG & BẪY KHÍ PHẾ NANG]
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: KÍCH THÍCH DỊ NGUYÊN / VIRUS / Ô NHIỄM</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 370" width="880" height="370" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: KÍCH THÍCH DỊ NGUYÊN / VIRUS / -->
+      <rect x="230" y="20" width="420" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">KÍCH THÍCH DỊ NGUYÊN / VIRUS / Ô NHIỄM</text>
+      <line x1="440" y1="66" x2="440" y2="94" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: VIÊM MẠN TÍNH &amp; TĂNG ĐÁP ỨNG Đ -->
+      <rect x="200" y="94" width="480" height="46" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
+      <text x="440" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">VIÊM MẠN TÍNH &amp; TĂNG ĐÁP ỨNG ĐƯỜNG THỞ (AHR)</text>
+      <path d="M 440 140 L 440 154 L 155 154 L 155 168" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <path d="M 440 154 L 440 154 L 440 168" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <path d="M 440 154 L 725 154 L 725 168" fill="none" stroke="var(--amber, #f59e0b)" stroke-width="1.8" marker-end="url(#arrAmber)"/>
+      <rect x="30" y="168" width="250" height="90" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="155" y="190" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text, #0f172a)">CO THẮT CƠ TRƠN</text>
+      <line x1="45" y1="198" x2="265" y2="198" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="42" y="214" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Hẹp lòng phế quản cấp</text>
+      <text x="42" y="232" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Kích thích thụ thể co c</text>
+      <text x="42" y="250" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• └────</text>
+      <rect x="315" y="168" width="250" height="90" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="440" y="190" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text, #0f172a)">PHÙ NỀ NIÊM MẠC</text>
+      <line x1="330" y1="198" x2="550" y2="198" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="327" y="214" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Thâm nhiễm BC ái toan</text>
+      <text x="327" y="232" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• ơ       bạch cầu trung tính</text>
+      <text x="327" y="250" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• ──────────────────────┼─</text>
+      <rect x="600" y="168" width="250" height="90" rx="8" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
+      <text x="725" y="190" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--amber, #d97706)">TĂNG TIẾT ĐỜM NHẦY</text>
+      <line x1="615" y1="198" x2="835" y2="198" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="612" y="214" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• /     - Nút nhầy (mucus plugs)</text>
+      <text x="612" y="232" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• lấp kín tiểu phế quản</text>
+      <text x="612" y="250" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• ─────────────────────────┘</text>
+      <line x1="440" y1="258" x2="440" y2="286" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: TẮC NGHẼN LUỒNG KHÍ THỞ RA DAO -->
+      <rect x="150" y="286" width="580" height="46" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.8"/>
+      <text x="440" y="308" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">TẮC NGHẼN LUỒNG KHÍ THỞ RA DAO ĐỘNG &amp; BẪY KHÍ PHẾ NANG</text>
+    </svg>
+  </div>
+</div>
 
 ### 1.1. Tam Chứng Cơ Chế Bệnh Sinh Gây Tắc Nghẽn
 Tình trạng tắc nghẽn lòng phế quản trong hen phế quản được hình thành từ 3 cơ chế bệnh sinh đồng vận:
@@ -184,27 +225,94 @@ Dưới góc độ sinh học phân tử, cơ chế bệnh sinh của hen phế 
 
 Nitric Oxide (NO) trong đường hô hấp được tổng hợp từ amino acid L-Arginine qua 2 enzym đồng dạng (isoforms) mang chức năng sinh bệnh học đối nghịch:
 
-```
-                            [L-ARGININE TRONG ĐƯỜNG THỞ]
-                                         │
-                    ┌────────────────────┴────────────────────┐
-                    ▼                                         ▼
-            [iNOS (Inducible)]                        [eNOS / nNOS (Constitutive)]
-      - Kích hoạt bởi IL-4, IL-13               - Kích hoạt bởi Mg2+, lực căng thành
-      - Sản xuất nồng độ NO khổng lồ            - Sản xuất NO nồng độ sinh lý thấp
-                    │                                         │
-                    ▼                                         ▼
-      [Phản ứng với Superoxide O2•-]            [Kích hoạt Soluble Guanylate Cyclase]
-                    │                                         │
-                    ▼                                         ▼
-         [PEROXYNITRITE (OONO-)]                         [Gia tăng cGMP]
-      - Gốc tự do độc tính tế bào cao                         │
-      - Hoại tử bong tróc biểu mô                             ▼
-      - Thúc đẩy xơ hóa & Remodeling             [Kích hoạt Protein Kinase G (PKG)]
-                    │                                         │
-                    ▼                                         ▼
-      [TĂNG PHẢN ỨNG PHẾ QUẢN]                   [GIẢM CANXI NỘI BÀO ➔ GIÃN CƠ TRƠN]
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: L-ARGININE TRONG ĐƯỜNG THỞ</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 654" width="880" height="654" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: L-ARGININE TRONG ĐƯỜNG THỞ -->
+      <rect x="250" y="20" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">L-ARGININE TRONG ĐƯỜNG THỞ</text>
+      <!-- Bifurcation Path -->
+      <path d="M 440 66 L 440 80 L 235 80 L 235 94" fill="none" stroke="var(--amber, #f59e0b)" stroke-width="1.8" marker-end="url(#arrAmber)"/>
+      <path d="M 440 80 L 645 80 L 645 94" fill="none" stroke="var(--amber, #f59e0b)" stroke-width="1.8" marker-end="url(#arrAmber)"/>
+      <!-- Left Column: iNOS (Inducible) -->
+      <rect x="40" y="94" width="390" height="90" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
+      <text x="235" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">iNOS (Inducible)</text>
+      <line x1="60" y1="130" x2="410" y2="130" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="60" y="146" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Kích hoạt bởi IL-4, IL-13</text>
+      <text x="60" y="164" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Sản xuất nồng độ NO khổng lồ</text>
+      <!-- Right Column: eNOS / nNOS (Constitutive) -->
+      <rect x="450" y="94" width="390" height="90" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
+      <text x="645" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">eNOS / nNOS (Constitutive)</text>
+      <line x1="470" y1="130" x2="820" y2="130" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="470" y="146" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Kích hoạt bởi Mg2+, lực căng thành</text>
+      <text x="470" y="164" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Sản xuất NO nồng độ sinh lý thấp</text>
+      <!-- Bifurcation Path -->
+      <path d="M 440 184 L 440 198 L 235 198 L 235 212" fill="none" stroke="var(--amber, #f59e0b)" stroke-width="1.8" marker-end="url(#arrAmber)"/>
+      <path d="M 440 198 L 645 198 L 645 212" fill="none" stroke="var(--amber, #f59e0b)" stroke-width="1.8" marker-end="url(#arrAmber)"/>
+      <!-- Left Column: Phản ứng với Superoxide O2•- -->
+      <rect x="40" y="212" width="390" height="90" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
+      <text x="235" y="234" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">Phản ứng với Superoxide O2•-</text>
+      <line x1="60" y1="248" x2="410" y2="248" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <!-- Right Column: Kích hoạt Soluble Guanylate Cy -->
+      <rect x="450" y="212" width="390" height="90" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
+      <text x="645" y="234" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">Kích hoạt Soluble Guanylate</text>
+      <text x="645" y="252" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">Cyclase</text>
+      <line x1="470" y1="266" x2="820" y2="266" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <!-- Bifurcation Path -->
+      <path d="M 440 302 L 440 316 L 235 316 L 235 330" fill="none" stroke="var(--red, #ef4444)" stroke-width="1.8" marker-end="url(#arrRed)"/>
+      <path d="M 440 316 L 645 316 L 645 330" fill="none" stroke="var(--amber, #f59e0b)" stroke-width="1.8" marker-end="url(#arrAmber)"/>
+      <!-- Left Column: PEROXYNITRITE (OONO-) -->
+      <rect x="40" y="330" width="390" height="90" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.5"/>
+      <text x="235" y="352" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">PEROXYNITRITE (OONO-)</text>
+      <line x1="60" y1="366" x2="410" y2="366" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="60" y="382" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Gốc tự do độc tính tế b</text>
+      <text x="60" y="400" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Hoại tử bong tróc biểu</text>
+      <!-- Right Column: Gia tăng cGMP -->
+      <rect x="450" y="330" width="390" height="90" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
+      <text x="645" y="352" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">Gia tăng cGMP</text>
+      <line x1="470" y1="366" x2="820" y2="366" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="470" y="382" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ào cao</text>
+      <text x="470" y="400" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• mô                             ▼</text>
+      <!-- Reconvergence Path -->
+      <path d="M 235 420 L 235 436 L 440 436 L 440 452" fill="none" stroke="#059669" stroke-width="1.8" marker-end="url(#arrGreen)"/>
+      <path d="M 645 420 L 645 436 L 440 436" fill="none" stroke="#059669" stroke-width="1.8"/>
+      <!-- Single Node: Kích hoạt Protein Kinase G (PK -->
+      <rect x="250" y="452" width="380" height="46" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
+      <text x="440" y="474" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">Kích hoạt Protein Kinase G (PKG)</text>
+      <!-- Bifurcation Path -->
+      <path d="M 440 498 L 440 512 L 235 512 L 235 526" fill="none" stroke="var(--amber, #f59e0b)" stroke-width="1.8" marker-end="url(#arrAmber)"/>
+      <path d="M 440 512 L 645 512 L 645 526" fill="none" stroke="var(--amber, #f59e0b)" stroke-width="1.8" marker-end="url(#arrAmber)"/>
+      <!-- Left Column: TĂNG PHẢN ỨNG PHẾ QUẢN -->
+      <rect x="40" y="526" width="390" height="90" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
+      <text x="235" y="548" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">TĂNG PHẢN ỨNG PHẾ QUẢN</text>
+      <line x1="60" y1="562" x2="410" y2="562" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <!-- Right Column: GIẢM CANXI NỘI BÀO ➔ GIÃN CƠ T -->
+      <rect x="450" y="526" width="390" height="90" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
+      <text x="645" y="548" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">GIẢM CANXI NỘI BÀO ➔ GIÃN CƠ TRƠN</text>
+      <line x1="470" y1="562" x2="820" y2="562" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+    </svg>
+  </div>
+</div>
 
 ### 3.1. Ứng Dụng Lâm Sàng Của Phân Suất Nitric Oxide Thở Ra (FeNO)
 - **Bản chất sinh học:** FeNO phản ánh trực tiếp mức độ viêm đường thở Kiểu 2 qua con đường IL-4/IL-13 kích hoạt iNOS tại tế bào biểu mô phế quản.
@@ -223,20 +331,70 @@ Nitric Oxide (NO) trong đường hô hấp được tổng hợp từ amino aci
 
 Tình trạng viêm phế quản mạn tính kéo dài không được kiểm soát tối ưu bởi ICS sẽ dẫn đến những biến đổi cấu trúc giải phẫu vĩnh viễn, được gọi là **Tái cấu trúc đường thở (Airway Remodeling)**. Đây là nguyên nhân khiến tốc độ sụt giảm $FEV_1$ hàng năm diễn ra nhanh chóng ($30 - 50\text{ mL/năm}$ so với $15 - 20\text{ mL/năm}$ ở người bình thường), dẫn đến **giới hạn luồng khí thở ra cố định không hồi phục**.
 
-```
-[VIÊM MẠN TÍNH KÉO DÀI] ──► [TỔN THƯƠNG BIỂU MÔ LIÊN TỤC] ──► [TIẾT TGF-β, FGF, PDGF]
-                                                                      │
-        ┌─────────────────────────────────────────────────────────────┼────────────────────────────────────────┐
-        ▼                                                             ▼                                        ▼
-[XƠ HÓA DƯỚI NIÊM MẠC]                                     [PHÌ ĐẠI & TĂNG SẢN CƠ TRƠN]              [TĂNG SẢN TẾ BÀO ĐÀI]
-- Lắng đọng Collagen I, III, V                             - Khối lượng cơ trơn tăng gấp 2-3 lần     - Quá tải MUC5AC & MUC5B
-- Dày lớp lưới màng đáy (Lamina reticularis)               - Tăng lực co thắt cực đại                - Hình thành NÚT NHẦY (Mucus plugs)
-        │                                                             │                                        │
-        └─────────────────────────────────────────────────────────────┼────────────────────────────────────────┘
-                                                                      │
-                                                                      ▼
-                                          [GIỚI HẠN LUỒNG THỞ KHÔNG HỒI PHỤC (FIXED AIRFLOW LIMITATION)]
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: VIÊM MẠN TÍNH KÉO DÀI</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 354" width="880" height="354" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <rect x="30" y="20" width="250" height="90" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="155" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text, #0f172a)">VIÊM MẠN TÍNH KÉO DÀI</text>
+      <line x1="45" y1="50" x2="265" y2="50" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="42" y="66" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• ┌────────────────────────────</text>
+      <rect x="315" y="20" width="250" height="90" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text, #0f172a)">TỔN THƯƠNG BIỂU MÔ LIÊN TỤC</text>
+      <line x1="330" y1="50" x2="550" y2="50" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="327" y="66" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• ─────────────────────────────────┼───</text>
+      <rect x="600" y="20" width="250" height="90" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="725" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text, #0f172a)">TIẾT TGF-β, FGF, PDGF</text>
+      <line x1="615" y1="50" x2="835" y2="50" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="612" y="66" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• ─────────────────────────────────────┐</text>
+      <path d="M 440 110 L 440 124 L 155 124 L 155 138" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <path d="M 440 124 L 440 124 L 440 138" fill="none" stroke="var(--amber, #f59e0b)" stroke-width="1.8" marker-end="url(#arrAmber)"/>
+      <path d="M 440 124 L 725 124 L 725 138" fill="none" stroke="var(--amber, #f59e0b)" stroke-width="1.8" marker-end="url(#arrAmber)"/>
+      <rect x="30" y="138" width="250" height="90" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="155" y="160" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text, #0f172a)">XƠ HÓA DƯỚI NIÊM MẠC</text>
+      <line x1="45" y1="168" x2="265" y2="168" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="42" y="184" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Lắng đọng Collagen I, III, V</text>
+      <text x="42" y="202" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Dày lớp lưới màng đáy (Lamina reticularis)</text>
+      <text x="42" y="220" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• └────────────────────────────</text>
+      <rect x="315" y="138" width="250" height="90" rx="8" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
+      <text x="440" y="160" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--amber, #d97706)">PHÌ ĐẠI &amp; TĂNG SẢN CƠ TRƠN</text>
+      <line x1="330" y1="168" x2="550" y2="168" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="327" y="184" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Khối lượng cơ trơn tă</text>
+      <text x="327" y="202" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Tăng lực co thắt cực đại</text>
+      <text x="327" y="220" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• ─────────────────────────────────┼───</text>
+      <rect x="600" y="138" width="250" height="90" rx="8" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
+      <text x="725" y="160" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--amber, #d97706)">TĂNG SẢN TẾ BÀO ĐÀI</text>
+      <line x1="615" y1="168" x2="835" y2="168" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="612" y="184" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• ng gấp 2-3 lần     - Quá tải MUC5AC &amp; MUC5B</text>
+      <text x="612" y="202" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Hình thành NÚT NHẦY (Mucus plugs)</text>
+      <text x="612" y="220" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• ─────────────────────────────────────┘</text>
+      <line x1="440" y1="228" x2="440" y2="256" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: GIỚI HẠN LUỒNG THỞ KHÔNG HỒI P -->
+      <rect x="180" y="256" width="520" height="60" rx="10" fill="rgba(16, 185, 129, 0.08)" stroke="var(--color-success, #10b981)" stroke-width="1.8"/>
+      <text x="440" y="278" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-success, #10b981)">GIỚI HẠN LUỒNG THỞ KHÔNG HỒI PHỤC (FIXED AIRFLOW</text>
+      <text x="440" y="296" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--color-success, #10b981)">LIMITATION)</text>
+    </svg>
+  </div>
+</div>
 
 ### 4.1. Sinh Lý Bệnh Của Nút Nhầy Đường Thở (Mucus Plugs)
 Nghiên cứu mô bệnh học và chụp CT lồng ngực độ phân giải cao (HRCT) ghi nhận:
@@ -251,24 +409,60 @@ Nghiên cứu mô bệnh học và chụp CT lồng ngực độ phân giải ca
 ### 5.1. Bệnh Hô Hấp Do Aspirin / NSAIDs (AERD - Samter's Triad)
 Hội chứng AERD đặc trưng bởi tam chứng: Hen phế quản nặng, Viêm mũi xoang polyp tái phát và Đợt kịch phát co thắt phế quản cấp dữ dội sau khi dùng thuốc ức chế COX-1.
 
-```
-                     [ACID ARACHIDONIC MÀNG TẾ BÀO]
-                                    │
-           ┌────────────────────────┴────────────────────────┐
-           ▼                                                 ▼
-[CON ĐƯỜNG COX-1] (Bị ức chế bởi NSAIDs/Aspirin)    [CON ĐƯỜNG 5-LIPOXYGENASE (5-LOX)]
-- Mất hoàn toàn PGE2 bảo vệ sinh lý                 - Hoạt động quá mức do mất ức chế từ PGE2
-- PGE2 giảm ➔ Mất khả năng ức chế dưỡng bào        - Tăng biểu hiện enzyme LTC4 Synthase
-                                                             │
-                                                             ▼
-                                                [BÃO CYSTEINYL LEUKOTRIENES]
-                                                (LTC4, LTD4, LTE4 tăng gấp 10-100 lần)
-                                                             │
-                                                             ▼
-                                                - Co thắt phế quản dữ dội kháng trị
-                                                - Phù nề niêm mạc thanh quản/phế quản
-                                                - Tăng tiết chất nhầy tắc nghẽn cấp
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: ACID ARACHIDONIC MÀNG TẾ BÀO</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 372" width="880" height="372" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: ACID ARACHIDONIC MÀNG TẾ BÀO -->
+      <rect x="250" y="20" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">ACID ARACHIDONIC MÀNG TẾ BÀO</text>
+      <!-- Bifurcation Path -->
+      <path d="M 440 66 L 440 80 L 235 80 L 235 94" fill="none" stroke="var(--color-success, #10b981)" stroke-width="1.8" marker-end="url(#arrGreen)"/>
+      <path d="M 440 80 L 645 80 L 645 94" fill="none" stroke="var(--amber, #f59e0b)" stroke-width="1.8" marker-end="url(#arrAmber)"/>
+      <!-- Left Column: CON ĐƯỜNG COX-1 -->
+      <rect x="40" y="94" width="390" height="98" rx="10" fill="rgba(16, 185, 129, 0.08)" stroke="var(--color-success, #10b981)" stroke-width="1.5"/>
+      <text x="235" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-success, #10b981)">CON ĐƯỜNG COX-1</text>
+      <line x1="60" y1="130" x2="410" y2="130" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="60" y="146" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Mất hoàn toàn PGE2 bảo vệ sinh lý</text>
+      <text x="60" y="164" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• PGE2 giảm ➔ Mất khả năng ức chế dưỡng</text>
+      <text x="60" y="182" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• bào</text>
+      <!-- Right Column: CON ĐƯỜNG 5-LIPOXYGENASE (5-LO -->
+      <rect x="450" y="94" width="390" height="98" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
+      <text x="645" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">CON ĐƯỜNG 5-LIPOXYGENASE (5-LOX)</text>
+      <line x1="470" y1="130" x2="820" y2="130" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="470" y="146" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Hoạt động quá mức do mất ức chế từ</text>
+      <text x="470" y="164" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• PGE2</text>
+      <text x="470" y="182" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Tăng biểu hiện enzyme LTC4 Synthase</text>
+      <line x1="440" y1="192" x2="440" y2="220" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: BÃO CYSTEINYL LEUKOTRIENES -->
+      <rect x="250" y="220" width="380" height="114" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.8"/>
+      <text x="440" y="242" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">BÃO CYSTEINYL LEUKOTRIENES</text>
+      <text x="274" y="264" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• (LTC4, LTD4, LTE4 tăng gấp 10-100 lần)</text>
+      <text x="274" y="282" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Co thắt phế quản dữ dội kháng trị</text>
+      <text x="274" y="300" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Phù nề niêm mạc thanh quản/phế quản</text>
+      <text x="274" y="318" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Tăng tiết chất nhầy tắc nghẽn cấp</text>
+    </svg>
+  </div>
+</div>
 
 ### 5.2. Co Thắt Phế Quản Do Gắng Sức (Exercise-Induced Bronchoconstriction - EIB)
 - Khi vận động thể lực cường độ cao, sự gia tăng thông khí phút buộc bệnh nhân thở bằng miệng, luồng khí hít vào không được sưởi ấm và làm ẩm tối ưu.
@@ -285,23 +479,67 @@ Hội chứng AERD đặc trưng bởi tam chứng: Hen phế quản nặng, Vi�
 
 Trong hen phế quản nặng không kiểm soát thuộc kiểu hình viêm Kiểu 2, các kháng thể đơn dòng (Monoclonal Antibodies - Biologics) can thiệp chính xác vào các mắt xích phân tử then chốt:
 
-```
-[Dị nguyên / Virus / Bụi] ──► [Biểu mô hô hấp] ──► TSLP ──(❌ TEZEPELUMAB)──► Ngăn chặn kích hoạt ILC2 & Th2
-                                                      │
-                       ┌──────────────────────────────┴──────────────────────────────┐
-                       ▼                                                             ▼
-                [Tế bào Th2] ──► IL-4 & IL-13 ──(❌ DUPILUMAB - Kháng IL-4Rα)         [Tế bào Th2 / ILC2] ──► IL-5
-                                 - Ức chế chuyển lớp IgE                                                      │
-                                 - Ức chế tăng tiết nhầy & FeNO                                               ├─(❌ MEPOLIZUMAB / RESLIZUMAB)
-                                 │                                                                            │   (Trung hòa IL-5 tự do)
-                                 ▼                                                                            │
-                       [Tế bào B ➔ Tiết IgE]                                                                  └─(❌ BENRALIZUMAB - Kháng IL-5Rα)
-                                 │                                                                                (Kích hoạt NK Cell qua ADCC
-                                 ├─(❌ OMALIZUMAB)                                                                 tiêu diệt hoàn toàn Eosinophil)
-                                 │   (Gắn đoạn Fc của IgE)
-                                 ▼
-                    [Gắn lên FcεRI của Mast Cell]
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: Dị nguyên / Virus / Bụi</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 436" width="880" height="436" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Left Column: Dị nguyên / Virus / Bụi -->
+      <rect x="40" y="20" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="235" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Dị nguyên / Virus / Bụi</text>
+      <line x1="60" y1="56" x2="410" y2="56" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="60" y="72" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ┌───────────────────</text>
+      <!-- Right Column: Biểu mô hô hấp -->
+      <rect x="450" y="20" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="645" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Biểu mô hô hấp</text>
+      <line x1="470" y1="56" x2="820" y2="56" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="470" y="72" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ───────────┴──────────────────────────────┐</text>
+      <!-- Bifurcation Path -->
+      <path d="M 440 110 L 440 124 L 235 124 L 235 138" fill="none" stroke="var(--amber, #f59e0b)" stroke-width="1.8" marker-end="url(#arrAmber)"/>
+      <path d="M 440 124 L 645 124 L 645 138" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Left Column: Tế bào Th2 -->
+      <rect x="40" y="138" width="390" height="98" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
+      <text x="235" y="160" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">Tế bào Th2</text>
+      <line x1="60" y1="174" x2="410" y2="174" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="60" y="190" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Ức chế chuyển lớp Ig</text>
+      <text x="60" y="208" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Ức chế tăng tiết nhầy &amp; FeNO</text>
+      <!-- Right Column: Tế bào Th2 / ILC2 -->
+      <rect x="450" y="138" width="390" height="98" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="645" y="160" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Tế bào Th2 / ILC2</text>
+      <line x1="470" y1="174" x2="820" y2="174" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="470" y="190" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• E</text>
+      <text x="470" y="208" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ├─(❌ MEPOLIZUMAB / RESLIZUMAB)</text>
+      <text x="470" y="226" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• (Trung hòa IL-5 tự do)</text>
+      <line x1="440" y1="236" x2="440" y2="264" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: Tế bào B ➔ Tiết IgE -->
+      <rect x="216" y="264" width="448" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="286" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Tế bào B ➔ Tiết IgE</text>
+      <text x="240" y="308" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ├─(❌ OMALIZUMAB) tiêu diệt hoàn toàn Eosinophil)</text>
+      <line x1="440" y1="324" x2="440" y2="352" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: Gắn lên FcεRI của Mast Cell -->
+      <rect x="250" y="352" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="374" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Gắn lên FcεRI của Mast Cell</text>
+    </svg>
+  </div>
+</div>
 
 <div class="table-responsive">
   <table class="table-modern">

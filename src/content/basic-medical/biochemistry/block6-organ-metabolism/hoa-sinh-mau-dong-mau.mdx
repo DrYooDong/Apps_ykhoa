@@ -105,18 +105,44 @@ sections:
 
 Máu toàn phần gồm các tế bào máu lơ lửng trong môi trường dịch **huyết tương ($60 - 80\text{ g/L}$ protein)**.
 
-```
-                      MÁU TOÀN PHẦN (Lấy máu tĩnh mạch)
-                                     │
-          ┌──────────────────────────┴──────────────────────────┐
-          ▼ (Thêm chất chống đông)                              ▼ (Để đông tự phát)
-       Ly tâm                                                Ly tâm
-          ▼                                                     ▼
-    HUYẾT TƯƠNG (Plasma)                                  HUYẾT THANH (Serum)
-  - Chứa đầy đủ yếu tố đông máu                        - KHÔNG CHỨA FIBRINOGEN (đã tạo cục đông)
-  - Chứa Fibrinogen nguyên vẹn                         - Không chứa chất chống đông ngoại sinh
-  - Chứa chất chống đông được thêm                     - Mẫu chuẩn cho Điện di Protein (SPEP)
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: 1. Phân Biệt Huyết Tương/Huyết Thanh, Chất Chống Đông &amp; Áp Suất Keo Albumin</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 262" width="880" height="262" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: MÁU TOÀN PHẦN (Lấy máu tĩnh mạ -->
+      <rect x="160.75" y="20" width="558.5" height="204" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">MÁU TOÀN PHẦN (Lấy máu tĩnh mạch)</text>
+      <text x="184.75" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ▼ (Thêm chất chống đông) ▼ (Để đông tự phát)</text>
+      <text x="184.75" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Ly tâm Ly tâm</text>
+      <text x="184.75" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• HUYẾT TƯƠNG (Plasma) HUYẾT THANH (Serum)</text>
+      <text x="184.75" y="118" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Chứa đầy đủ yếu tố đông máu - KHÔNG CHỨA FIBRINOGEN (đã tạo</text>
+      <text x="184.75" y="136" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  cục đông)</text>
+      <text x="184.75" y="154" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Chứa Fibrinogen nguyên vẹn - Không chứa chất chống đông</text>
+      <text x="184.75" y="172" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  ngoại sinh</text>
+      <text x="184.75" y="190" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Chứa chất chống đông được thêm - Mẫu chuẩn cho Điện di</text>
+      <text x="184.75" y="208" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  Protein (SPEP)</text>
+    </svg>
+  </div>
+</div>
 
 ---
 
@@ -207,17 +233,42 @@ Máu toàn phần gồm các tế bào máu lơ lửng trong môi trường dị
 
 ### A. Quá Trình Hoạt Hóa Tiểu Cầu Ở Cấp Độ Phân Tử
 
-```
-  Tổn thương thành mạch (Lộ Collagen) ──(Cầu nối vWF gắn GPIb-IX)──► Tiểu cầu bám dính
-                                                                            │
-  Thrombin gắn thụ thể PAR-1/4 ──► Kích hoạt PLC-β ──► Tạo IP3 + DAG ───────┘
-                                                           │
-                                                           ▼
-  IP3 mở kênh giải phóng Ca2+ nội bào ──► PKC phosphoryl hóa Pleckstrin ──► Tống hạt bài tiết ADP & TXA2
-                                                           │
-                                                           ▼
-  Myosin Light Chain Kinase (MLCK) co rút ──► Chuyển dạng cầu gai ──► PHƠI BÀY PHOSPHATIDYLSERINE (PS)
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: A. Quá Trình Hoạt Hóa Tiểu Cầu Ở Cấp Độ Phân Tử</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 226" width="880" height="226" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: Tổn thương thành mạch (Lộ Coll -->
+      <rect x="150" y="20" width="580" height="168" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">Tổn thương thành mạch (Lộ Collagen) ──(Cầu nối vWF gắn</text>
+      <text x="440" y="60" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--amber, #d97706)">GPIb-IX)──► Tiểu cầu bám dính</text>
+      <text x="174" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Thrombin gắn thụ thể PAR-1/4 ──► Kích hoạt PLC-β ──► Tạo IP3</text>
+      <text x="174" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  + DAG ───────┘</text>
+      <text x="174" y="118" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• IP3 mở kênh giải phóng Ca2+ nội bào ──► PKC phosphoryl hóa</text>
+      <text x="174" y="136" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  Pleckstrin ──► Tống hạt bài tiết ADP &amp; TXA2</text>
+      <text x="174" y="154" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Myosin Light Chain Kinase (MLCK) co rút ──► Chuyển dạng cầu</text>
+      <text x="174" y="172" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  gai ──► PHƠI BÀY PHOSPHATIDYLSERINE (PS)</text>
+    </svg>
+  </div>
+</div>
 
 - **Phosphatidylserine (PS)**: Tiểu cầu hoạt hóa tống PS tích điện âm từ lá trong ra lá ngoài $\rightarrow$ Tạo nền tảng điện tích âm bắt buộc để lắp ráp các phức hợp đông máu.
 
@@ -238,25 +289,61 @@ $$\text{Glutamate (Glu)} + CO_2 + O_2 \xrightarrow{\text{Vitamin K khử + Carbo
 
 ## 4. Dòng Thác Đông Máu: Con Đường Ngoại Sinh, Nội Sinh & Phức Hợp Tenase {#sec-4}
 
-```
-      [CON ĐƯỜNG NGOẠI SINH (In Vivo Chính)]                 [CON ĐƯỜNG NỘI SINH (Khuếch Đại)]
-     Tổn thương mô lộ Yếu tố mô (TF / Factor III)          Pha tiếp xúc tích điện âm (Polyphosphate/Kaolin)
-                  │                                                         │
-                  ▼                                                         ▼
-         Phức hợp TF : VIIa                                           XII ──► XIIa (qua Prekallikrein)
-                  │                                                         │
-                  ├────────────────────────────┐                            ▼
-                  ▼                            ▼                      XI ──► XIa
-           Kích hoạt IX                  Kích hoạt X                        │
-                  │                            │                            ▼
-                  ▼                            ▼                      IX ──► IXa
-                (IXa)                          │                            │
-                  │                            │                            ▼ (Gia tốc nhờ VIIIa)
-                  └──────────────────►  [X  ──►  Xa]  ◄─────────────────────┘
-                                               │
-                                               ▼ (Phức hợp Tenase: Ca2+ - VIIIa - IXa - X trên PS)
-                                      (Đi vào Con đường chung)
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: CON ĐƯỜNG NGOẠI SINH (In Vivo Chính)</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 352" width="880" height="352" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Left Column: CON ĐƯỜNG NGOẠI SINH (In Vivo  -->
+      <rect x="40" y="20" width="390" height="188" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
+      <text x="235" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">CON ĐƯỜNG NGOẠI SINH (In Vivo</text>
+      <text x="235" y="60" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">Chính)</text>
+      <line x1="60" y1="74" x2="410" y2="74" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="60" y="90" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Tổn thương mô lộ Yếu tố mô (TF /</text>
+      <text x="60" y="108" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  Factor III)</text>
+      <text x="60" y="126" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Phức hợp TF : VIIa</text>
+      <text x="60" y="144" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ▼</text>
+      <text x="60" y="162" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Kích hoạt IX</text>
+      <text x="60" y="180" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ▼</text>
+      <text x="60" y="198" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• (IXa)</text>
+      <!-- Right Column: CON ĐƯỜNG NỘI SINH (Khuếch Đại -->
+      <rect x="450" y="20" width="390" height="188" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
+      <text x="645" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">CON ĐƯỜNG NỘI SINH (Khuếch Đại)</text>
+      <line x1="470" y1="56" x2="820" y2="56" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="470" y="72" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Pha tiếp xúc tích điện âm</text>
+      <text x="470" y="90" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  (Polyphosphate/Kaolin)</text>
+      <text x="470" y="108" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• XII ──► XIIa (qua Prekallikrein)</text>
+      <text x="470" y="126" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ▼ XI ──► XIa</text>
+      <text x="470" y="144" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Kích hoạt X</text>
+      <text x="470" y="162" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ▼ IX ──► IXa</text>
+      <text x="470" y="180" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ▼ (Gia tốc nhờ VIIIa)</text>
+      <line x1="440" y1="208" x2="440" y2="236" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: X  ──►  Xa -->
+      <rect x="194.75" y="236" width="490.5" height="78" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="258" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">X ──► Xa</text>
+      <text x="218.75" y="280" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ▼ (Phức hợp Tenase: Ca2+ - VIIIa - IXa - X trên PS)</text>
+      <text x="218.75" y="298" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• (Đi vào Con đường chung)</text>
+    </svg>
+  </div>
+</div>
 
 1. **Con đường ngoại sinh (Khởi đầu sinh lý)**:
    - Tổn thương mạch máu bộc lộ **Yếu tố Mô (Tissue Factor - TF)** $\rightarrow$ Gắn Yếu tố VIIa tạo phức hợp **Extrinsic Tenase [$\text{TF}-\text{VIIa}-\text{Ca}^{2+}$]** $\rightarrow$ Cắt kích hoạt Yếu tố X thành Xa (và hoạt hóa chéo Yếu tố IX).
@@ -267,20 +354,52 @@ $$\text{Glutamate (Glu)} + CO_2 + O_2 \xrightarrow{\text{Vitamin K khử + Carbo
 
 ## 5. Con Đường Chung: Phức Hợp Prothrombinase, Fibrin Monomer & Liên Kết Chéo XIIIa {#sec-5}
 
-```
-  1. PHỨC HỢP PROTHROMBINASE TRÊN MÀNG TIỂU CẦU:
-     [Yếu tố Xa (Enzyme) + Yếu tố Va (Cofactor) + Ca2+ + Phosphatidylserine]
-     ──► Cắt Prothrombin (II) tại Arg271-Thr272 và Arg323-Ile324 ──► Giải phóng THROMBIN (IIa) (Gia tốc 300.000 lần).
 
-  2. PHÂN CẮT FIBRINOGEN VÀ TRÙNG HỢP FIBRIN:
-     Fibrinogen (I, Dimer (αβγ)2) ──(Thrombin cắt FPA & FPB)──► Fibrin Monomer
-     ──► Tự trùng hợp phi cộng hóa trị so le ──► Mạng lưới Fibrin Polymer hòa tan (lỏng lẻo).
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: Yếu tố Xa (Enzyme) + Yếu tố Va (Cofactor) + Ca2+ + Phosphatidylserine</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 408" width="880" height="408" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
 
-  3. ỔN ĐỊNH HÓA LƯỚI FIBRIN BẰNG LIÊN KẾT CHÉO CỘNG HÓA TRỊ:
-     Thrombin hoạt hóa Yếu tố XIII thành XIIIa (Transglutaminase)
-     Fibrin-Gln + H2N-Lys-Fibrin ──(XIIIa)──► Liên kết Isopeptide γ-glutamyl-lysine + NH4+
-     ──► MẠNG LƯỚI FIBRIN POLYMER KHÔNG HÒA TAN VỮNG CHẮC.
-```
+      <!-- Single Node: 1. PHỨC HỢP PROTHROMBINASE TRÊ -->
+      <rect x="190" y="20" width="500" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">1. PHỨC HỢP PROTHROMBINASE TRÊN MÀNG TIỂU CẦU:</text>
+      <line x1="440" y1="66" x2="440" y2="94" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: Yếu tố Xa (Enzyme) + Yếu tố Va -->
+      <rect x="156.5" y="94" width="567" height="276" rx="10" fill="rgba(16, 185, 129, 0.08)" stroke="var(--color-success, #10b981)" stroke-width="1.8"/>
+      <text x="440" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-success, #10b981)">Yếu tố Xa (Enzyme) + Yếu tố Va (Cofactor) + Ca2+ +</text>
+      <text x="440" y="134" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--color-success, #10b981)">Phosphatidylserine</text>
+      <text x="180.5" y="156" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ──► Cắt Prothrombin (II) tại Arg271-Thr272 và Arg323-Ile324</text>
+      <text x="180.5" y="174" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  ──► Giải phóng THROMBIN (IIa) (Gia tốc 300.000 lần).</text>
+      <text x="180.5" y="192" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• 2. PHÂN CẮT FIBRINOGEN VÀ TRÙNG HỢP FIBRIN:</text>
+      <text x="180.5" y="210" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Fibrinogen (I, Dimer (αβγ)2) ──(Thrombin cắt FPA &amp; FPB)──►</text>
+      <text x="180.5" y="228" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  Fibrin Monomer</text>
+      <text x="180.5" y="246" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ──► Tự trùng hợp phi cộng hóa trị so le ──► Mạng lưới Fibrin</text>
+      <text x="180.5" y="264" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  Polymer hòa tan (lỏng lẻo).</text>
+      <text x="180.5" y="282" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• 3. ỔN ĐỊNH HÓA LƯỚI FIBRIN BẰNG LIÊN KẾT CHÉO CỘNG HÓA TRỊ:</text>
+      <text x="180.5" y="300" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Thrombin hoạt hóa Yếu tố XIII thành XIIIa (Transglutaminase)</text>
+      <text x="180.5" y="318" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Fibrin-Gln + H2N-Lys-Fibrin ──(XIIIa)──► Liên kết Isopeptide</text>
+      <text x="180.5" y="336" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  γ-glutamyl-lysine + NH4+</text>
+      <text x="180.5" y="354" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ──► MẠNG LƯỚI FIBRIN POLYMER KHÔNG HÒA TAN VỮNG CHẮC.</text>
+    </svg>
+  </div>
+</div>
 
 ---
 
@@ -321,14 +440,41 @@ $$\text{Glutamate (Glu)} + CO_2 + O_2 \xrightarrow{\text{Vitamin K khử + Carbo
 
 ### B. Hệ Thống Tiêu Sợi Huyết (Fibrinolysis) & Ý Nghĩa Xét Nghiệm D-Dimer
 
-```
-  Plasminogen (Gắn sẵn trên Fibrin qua miền Kringle) ──(t-PA từ nội mạc lành)──► PLASMIN
-                                                                                   │
-  Mạng lưới Fibrin liên kết chéo XIIIa ◄───────────────────────────────────────────┘
-                               │
-                               ▼ (Phân cắt ngẫu nhiên các liên kết peptide)
-         Sản phẩm thoái hóa Fibrin (FDPs) + MẢNH D-DIMER (Chứa liên kết chéo 2 thùy D)
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: B. Hệ Thống Tiêu Sợi Huyết (Fibrinolysis) &amp; Ý Nghĩa Xét Nghiệm D-Dimer</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 208" width="880" height="208" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: Plasminogen (Gắn sẵn trên Fibr -->
+      <rect x="165" y="20" width="550" height="150" rx="10" fill="rgba(16, 185, 129, 0.08)" stroke="var(--color-success, #10b981)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-success, #10b981)">Plasminogen (Gắn sẵn trên Fibrin qua miền Kringle)</text>
+      <text x="440" y="60" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--color-success, #10b981)">──(t-PA từ nội mạc lành)──► PLASMIN</text>
+      <text x="189" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Mạng lưới Fibrin liên kết chéo XIIIa</text>
+      <text x="189" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  ◄───────────────────────────────────────────┘</text>
+      <text x="189" y="118" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ▼ (Phân cắt ngẫu nhiên các liên kết peptide)</text>
+      <text x="189" y="136" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Sản phẩm thoái hóa Fibrin (FDPs) + MẢNH D-DIMER (Chứa liên</text>
+      <text x="189" y="154" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  kết chéo 2 thùy D)</text>
+    </svg>
+  </div>
+</div>
 
 - **Ý nghĩa lâm sàng của D-Dimer**:
   - D-Dimer chỉ sinh ra khi có sự tạo cục đông Fibrin liên kết chéo XIIIa và đang diễn ra quá trình tiêu sợi huyết.

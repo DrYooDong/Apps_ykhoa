@@ -87,22 +87,71 @@ Hội chứng Budd-Chiari (Budd-Chiari Syndrome - BCS) là một rối loạn m�
 
 ## 2. Cơ Chế Bệnh Sinh Huyết Động & Ứ Máu Xoang Gan {#sec-2}
 
-```
-                   [TẮC NGHẼN ĐƯỜNG RA TĨNH MẠCH GAN (≥ 2 TM GAN LỚN)]
-                                           │
-                                           ▼
-                   [TĂNG VỌT ÁP LỰC THỦY TĨNH XOANG GAN (SINUSOIDAL HTN)]
-                                           │
-           ┌───────────────────────────────┴───────────────────────────────┐
-           ▼                                                               ▼
-[GIÃN RỘNG XOANG GAN & THOÁT DỊCH KẼ]                           [SỤT GIẢM TƯỚI MÁU GAN NỘI TẠNG]
-- Lưu lượng bạch huyết vượt quá dẫn lưu                          - Giảm dòng máu động mạch gan & TM cửa
-- Rò rỉ dịch qua bao Glisson vào khoang bụng                     - Tắc nghẽn vi tuần hoàn nội gan
-           │                                                               │
-           ▼                                                               ▼
-[CỔ TRƯỚNG LƯỢNG LỚN & ĐAU HẠ SƯỜN PHẢI]                         [THIẾU OXY TẾ BÀO GAN (HYPOXIC INJURY)]
-(Dịch báng SAAG ≥ 1.1 g/dL, Protein ≥ 2.5 g/dL)
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: TẮC NGHẼN ĐƯỜNG RA TĨNH MẠCH GAN (≥ 2 TM GAN LỚN)</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 440" width="880" height="440" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: TẮC NGHẼN ĐƯỜNG RA TĨNH MẠCH G -->
+      <rect x="175" y="20" width="530" height="46" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">TẮC NGHẼN ĐƯỜNG RA TĨNH MẠCH GAN (≥ 2 TM GAN LỚN)</text>
+      <line x1="440" y1="66" x2="440" y2="94" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: TĂNG VỌT ÁP LỰC THỦY TĨNH XOAN -->
+      <rect x="160" y="94" width="560" height="46" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
+      <text x="440" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">TĂNG VỌT ÁP LỰC THỦY TĨNH XOANG GAN (SINUSOIDAL HTN)</text>
+      <!-- Bifurcation Path -->
+      <path d="M 440 140 L 440 154 L 235 154 L 235 168" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <path d="M 440 154 L 645 154 L 645 168" fill="none" stroke="var(--red, #ef4444)" stroke-width="1.8" marker-end="url(#arrRed)"/>
+      <!-- Left Column: GIÃN RỘNG XOANG GAN &amp; THOÁT DỊ -->
+      <rect x="40" y="168" width="390" height="116" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="235" y="190" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">GIÃN RỘNG XOANG GAN &amp; THOÁT DỊCH</text>
+      <text x="235" y="208" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">KẼ</text>
+      <line x1="60" y1="222" x2="410" y2="222" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="60" y="238" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Lưu lượng bạch huyết vượt quá dẫn lưu</text>
+      <text x="60" y="256" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Rò rỉ dịch qua bao Glisson vào khoang</text>
+      <text x="60" y="274" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• bụng</text>
+      <!-- Right Column: SỤT GIẢM TƯỚI MÁU GAN NỘI TẠNG -->
+      <rect x="450" y="168" width="390" height="116" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.5"/>
+      <text x="645" y="190" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">SỤT GIẢM TƯỚI MÁU GAN NỘI TẠNG</text>
+      <line x1="470" y1="204" x2="820" y2="204" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="470" y="220" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Giảm dòng máu động mạch gan &amp; TM cửa</text>
+      <text x="470" y="238" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Tắc nghẽn vi tuần hoàn nội gan</text>
+      <!-- Bifurcation Path -->
+      <path d="M 440 284 L 440 298 L 235 298 L 235 312" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <path d="M 440 298 L 645 298 L 645 312" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Left Column: CỔ TRƯỚNG LƯỢNG LỚN &amp; ĐAU HẠ S -->
+      <rect x="40" y="312" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="235" y="334" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">CỔ TRƯỚNG LƯỢNG LỚN &amp; ĐAU HẠ SƯỜN</text>
+      <text x="235" y="352" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">PHẢI</text>
+      <line x1="60" y1="366" x2="410" y2="366" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="60" y="382" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• (Dịch báng SAAG ≥ 1.1 g</text>
+      <!-- Right Column: THIẾU OXY TẾ BÀO GAN (HYPOXIC  -->
+      <rect x="450" y="312" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="645" y="334" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">THIẾU OXY TẾ BÀO GAN (HYPOXIC</text>
+      <text x="645" y="352" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">INJURY)</text>
+      <line x1="470" y1="366" x2="820" y2="366" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="470" y="382" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• /dL, Protein ≥ 2.5 g/dL)</text>
+    </svg>
+  </div>
+</div>
 
 ### 2.1. Động Học Của Tắc Nghẽn Tĩnh Mạch Gan
 - Sự tắc nghẽn chỉ 1 tĩnh mạch gan đơn lẻ thường được bù trừ hoàn hảo nhờ các nhánh bàng hệ trong gan. Triệu chứng chỉ bùng phát khi **tắc nghẽn từ 2 hoặc cả 3 tĩnh mạch gan lớn**.
@@ -112,16 +161,56 @@ Hội chứng Budd-Chiari (Budd-Chiari Syndrome - BCS) là một rối loạn m�
 
 ## 3. Hoại Tử Vùng 3 Tiểu Thùy, Xơ Hóa & Phì Đại Thùy Đuôi {#sec-3}
 
-```
-                                  [BIẾN ĐỔI MÔ BỆNH HỌC TRONG BUDD-CHIARI]
-                                                     │
-       ┌─────────────────────────────────────────────┼─────────────────────────────────────────────┐
-       ▼                                             ▼                                             ▼
-[HOẠI TỬ VÙNG 3 TRUNG TÂM TIỂU THÙY]         [XƠ HÓA BẮC CẦU TRUNG TÂM - TRUNG TÂM]        [PHÌ ĐẠI BÙ TRỪ THÙY ĐUÔI (75-91%)]
-- Vùng 3 xa nguồn cấp máu giàu oxy           - Dải xơ perivenular lan tỏa                  - Thùy đuôi có TM dẫn lưu riêng vào IVC
-- Ứ trệ tuần hoàn gây thiếu oxy nặng         - Cầu nối Central-to-Central bridging          - Tránh được ứ máu và tăng áp xoang
-- Hoại tử tế bào gan không do viêm (70%)     - Tiến triển thành Xơ gan tắc mạch             - Tăng sinh phì đại ➔ CHÈN ÉP HẸP LÒNG IVC
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: BIẾN ĐỔI MÔ BỆNH HỌC TRONG BUDD-CHIARI</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 222" width="880" height="222" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: BIẾN ĐỔI MÔ BỆNH HỌC TRONG BUD -->
+      <rect x="230" y="20" width="420" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">BIẾN ĐỔI MÔ BỆNH HỌC TRONG BUDD-CHIARI</text>
+      <path d="M 440 66 L 440 80 L 155 80 L 155 94" fill="none" stroke="var(--red, #ef4444)" stroke-width="1.8" marker-end="url(#arrRed)"/>
+      <path d="M 440 80 L 440 80 L 440 94" fill="none" stroke="var(--amber, #f59e0b)" stroke-width="1.8" marker-end="url(#arrAmber)"/>
+      <path d="M 440 80 L 725 80 L 725 94" fill="none" stroke="var(--amber, #f59e0b)" stroke-width="1.8" marker-end="url(#arrAmber)"/>
+      <rect x="30" y="94" width="250" height="90" rx="8" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.5"/>
+      <text x="155" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--red, #dc2626)">HOẠI TỬ VÙNG 3 TRUNG TÂM TIỂU THÙY</text>
+      <line x1="45" y1="124" x2="265" y2="124" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="42" y="140" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Vùng 3 xa nguồn cấp máu giàu oxy</text>
+      <text x="42" y="158" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Ứ trệ tuần hoàn gây thiếu oxy nặng</text>
+      <text x="42" y="176" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Hoại tử tế bào gan không do viêm (70%)</text>
+      <rect x="315" y="94" width="250" height="90" rx="8" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
+      <text x="440" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--amber, #d97706)">XƠ HÓA BẮC CẦU TRUNG TÂM - TRUNG TÂM</text>
+      <line x1="330" y1="124" x2="550" y2="124" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="327" y="140" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Dải xơ perivenular lan tỏa</text>
+      <text x="327" y="158" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Cầu nối Central-to-Central bridging</text>
+      <text x="327" y="176" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Tiến triển thành Xơ gan tắc mạch</text>
+      <rect x="600" y="94" width="250" height="90" rx="8" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
+      <text x="725" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--amber, #d97706)">PHÌ ĐẠI BÙ TRỪ THÙY ĐUÔI (75-91%)</text>
+      <line x1="615" y1="124" x2="835" y2="124" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="612" y="140" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Thùy đuôi có TM dẫn lưu riêng vào IVC</text>
+      <text x="612" y="158" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Tránh được ứ máu và tăng áp xoang</text>
+      <text x="612" y="176" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Tăng sinh phì đại ➔ CHÈN ÉP HẸP LÒNG IVC</text>
+    </svg>
+  </div>
+</div>
 
 ### 3.1. Nghịch Lý Giải Phẫu Của Thùy Đuôi (Phân Thùy I)
 - Thùy đuôi sở hữu hệ thống mạch máu độc lập: Các tĩnh mạch nhỏ của thùy đuôi (emissary veins) **dẫn lưu trực tiếp vào tĩnh mạch chủ dưới (IVC)** mà không thông qua 3 thân tĩnh mạch gan chính.

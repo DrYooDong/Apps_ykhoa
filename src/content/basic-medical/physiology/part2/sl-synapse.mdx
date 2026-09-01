@@ -93,17 +93,45 @@ sections:
 | **Chiều dẫn truyền** | **Hai chiều (Bidirectional)** | **Một chiều duy nhất (Unidirectional: Tiền ──► Hậu)** |
 | **Vị trí điển hình** | Cơ tim, cơ trơn ruột, nhân cạnh não thất | **Hầu như toàn bộ hệ thần kinh trung ương & tiếp hợp thần kinh - cơ** |
 
-```
-[Cúc Tận Cùng Tiền Synapse] (Chứa túi tiết bóng Synapse & Kênh Ca2+ điện thế)
-            │
-            ├──► Xung điện thế mở kênh Ca2+ ──► Ca2+ ùa vào kích hoạt phức hợp SNARE
-            │
-[Khe Synapse 20-40nm] ◄── Giải phóng chất dẫn truyền thần kinh (ACh, Glutamate, GABA)
-            │
-[Màng Sau Synapse] (Chứa thụ thể Kênh Ionotropic hoặc Thụ thể GPCR Metabotropic)
-            │
-            └──► Hình thành điện thế kích thích EPSP hoặc điện thế ức chế IPSP
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: Cúc Tận Cùng Tiền Synapse</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 284" width="880" height="284" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: Cúc Tận Cùng Tiền Synapse -->
+      <rect x="169.25" y="20" width="541.5" height="78" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">Cúc Tận Cùng Tiền Synapse</text>
+      <text x="193.25" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ├──► Xung điện thế mở kênh Ca2+ ──► Ca2+ ùa vào kích hoạt</text>
+      <text x="193.25" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  phức hợp SNARE</text>
+      <line x1="440" y1="98" x2="440" y2="126" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: Khe Synapse 20-40nm -->
+      <rect x="250" y="126" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="148" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Khe Synapse 20-40nm</text>
+      <line x1="440" y1="172" x2="440" y2="200" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Single Node: Màng Sau Synapse -->
+      <rect x="250" y="200" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="222" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Màng Sau Synapse</text>
+    </svg>
+  </div>
+</div>
 
 
 ---
@@ -146,13 +174,54 @@ Mỗi neuron thần kinh trong não bộ tiếp nhận hàng nghìn đến hàng
 1. **Cộng gộp không gian (Spatial Summation)**: Nhiều cúc tận cùng khác nhau phát xung kích thích đồng thời tại nhiều vị trí khác nhau trên thân và đuôi gai neuron.
 2. **Cộng gộp thời gian (Temporal Summation)**: Một cúc tận cùng đơn lẻ phát xung kích thích liên tiếp với tần số cao dồn dập trước khi điện thế EPSP trước đó kịp phân rã.
 
-```
-EPSP (Kích thích) [+] ──┐
-EPSP (Kích thích) [+] ──┼──► [GÒ SỢI TRỤC (AXON HILLOCK)] ──► Vượt ngưỡng (-55mV)?
-IPSP (Ức chế)     [-] ──┘       • Nơi có mật độ kênh Na+ cao nhất      │
-                                • Tổng đại số: Σ(EPSP) - Σ(IPSP)       ├── CÓ ──► PHÁT XUNG HOẠT ĐỘNG
-                                                                       └── KHÔNG ──► KHÔNG PHÁT XUNG
-```
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: +</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 332" width="880" height="332" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- Single Node: + -->
+      <rect x="250" y="20" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">+</text>
+      <!-- Bifurcation Path -->
+      <path d="M 440 66 L 440 80 L 235 80 L 235 94" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <path d="M 440 80 L 645 80 L 645 94" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <!-- Left Column: + -->
+      <rect x="40" y="94" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="235" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">+</text>
+      <line x1="60" y1="130" x2="410" y2="130" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <!-- Right Column: GÒ SỢI TRỤC (AXON HILLOCK) -->
+      <rect x="450" y="94" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="645" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">GÒ SỢI TRỤC (AXON HILLOCK)</text>
+      <line x1="470" y1="130" x2="820" y2="130" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <!-- Reconvergence Path -->
+      <path d="M 235 184 L 235 200 L 440 200 L 440 216" fill="none" stroke="#059669" stroke-width="1.8" marker-end="url(#arrGreen)"/>
+      <path d="M 645 184 L 645 200 L 440 200" fill="none" stroke="#059669" stroke-width="1.8"/>
+      <!-- Single Node: - -->
+      <rect x="173.5" y="216" width="533" height="78" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="238" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">-</text>
+      <text x="197.5" y="260" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Tổng đại số: Σ(EPSP) - Σ(IPSP) ├── CÓ ──► PHÁT XUNG HOẠT</text>
+      <text x="197.5" y="278" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  ĐỘNG</text>
+    </svg>
+  </div>
+</div>
 
 
 ---
