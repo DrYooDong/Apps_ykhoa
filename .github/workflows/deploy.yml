@@ -5,10 +5,10 @@ on:
     branches: [ main, master ]
   workflow_dispatch:
 
-# Allow one concurrent deployment
+# Allow one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
 concurrency:
   group: 'pages'
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 permissions:
   contents: read
@@ -16,10 +16,8 @@ permissions:
   id-token: write
 
 jobs:
-  build-and-deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  # Build job
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -34,7 +32,7 @@ jobs:
       - name: Install dependencies
         run: npm ci || npm install
 
-      - name: Build project with Vite
+      - name: Build project
         run: npm run build
 
       - name: Upload artifact
@@ -42,6 +40,14 @@ jobs:
         with:
           path: ./dist
 
+  # Deploy job
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
