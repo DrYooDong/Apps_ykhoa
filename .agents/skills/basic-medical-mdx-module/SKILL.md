@@ -81,7 +81,13 @@ src/content/basic-medical/
    - SVG thuần dùng `viewBox`, token `var(--color-...)` để tự động chuyển màu trong Dark Mode.
    - Cấm dùng thẻ HTML (`<strong>`, `<b>`, `<span>`, `<br>`) bên trong `<text>` của SVG. Bắt buộc dùng `<tspan font-weight="700">` hoặc định vị `y` rõ ràng.
 
-8. **Kiểm Định Bản Build Cuối Cùng**:
+8. **Bắt Buộc Xử Lý & Nhúng 100% Hình Ảnh Đính Kèm (Image Asset Pipeline)**:
+   - Khi file `.md` nguồn có chứa cú pháp hình ảnh (`![[Pasted image ...]]` hoặc `![alt](path)`):
+   - **Tìm & Sao chép**: Trích xuất tệp ảnh từ `knowledge-vault/_resources/attachments/` sang thư mục `images/` của phân hệ (`src/content/basic-medical/.../images/`), đổi tên theo dạng kebab-case có ý nghĩa.
+   - **Nhúng chuẩn thẻ Figure**: Bọc ảnh trong `<figure class="physio-figure">` với thẻ `<img src="./images/..." class="physio-img lightbox-trigger" ... />` và `<figcaption>` ghi rõ chú thích giải phẫu/bệnh học và nguồn trích dẫn EBM.
+   - **Tuyệt đối không được bỏ quên ảnh đính kèm khi chuyển từ `.md` sang `.mdx`.**
+
+9. **Kiểm Định Bản Build Cuối Cùng**:
    - Sau khi hoàn thành, bắt buộc chạy `npm run build` (`tsc --noEmit && vite build`).
    - Chỉ bàn giao khi kết quả trả về **Exit code 0**.
 
@@ -90,23 +96,25 @@ src/content/basic-medical/
 ## 📐 3. Quy Trình Soạn Bài 4 Bước Từ Knowledge Vault Sang MDX
 
 ```
-[BƯỚC 1: TRÍCH XUẤT NGUỒN TRI THỨC]
-  ├── Đọc file nguồn trong knowledge-vault/ (1.1. Kho sinh lý, 1.2. Kho hóa sinh, 1.4. Kho dịch tễ).
+[BƯỚC 1: TRÍCH XUẤT NGUỒN TRI THỨC & TÀI NGUYÊN ẢNH]
+  ├── Đọc toàn bộ file nguồn trong knowledge-vault/ (1.1. Kho sinh lý, 1.2. Kho hóa sinh, 1.3. Kho sinh lý bệnh, 1.4. Kho dịch tễ).
+  ├── Quét tìm tất cả cú pháp ảnh ![[...]] hoặc ![...](...) ➔ Sao chép & chuẩn hóa tên vào images/.
   └── Hệ thống hóa: Cấu trúc cơ bản, cơ chế phân tử, phương trình phản ứng, điểm chốt lâm sàng và lab tests.
 
 [BƯỚC 2: THIẾT KẾ KHỐI YAML FRONTMATTER & MỤC LỤC]
-  ├── Xác định mã code (PHYS-..., CHEM-..., EPI-..., PATHO-...).
-  ├── Thiết lập 4-7 sections có icon FontAwesome phù hợp.
+  ├── Xác định mã code (PHYS-..., CHEM-..., EPI-..., PATHO-..., CCBS-...).
+  ├── Thiết lập 4-9 sections có icon FontAwesome phù hợp.
   └── Tóm tắt 2-4 Clinical Pearls chất lượng cao.
 
-[BƯỚC 3: DỰNG NỘI DUNG VỚI LINH KIỆN MDX NATIVE]
+[BƯỚC 3: DỰNG NỘI DUNG VỚI LINH KIỆN MDX NATIVE & HÌNH ẢNH TRỰC QUAN]
   ├── Header <h1> + QuickNav + Quick Stats Strip.
   ├── Các phần nội dung có ID neo {#sec-X}.
+  ├── Nhúng 100% sơ đồ hình ảnh <figure class="physio-figure"> kèm <figcaption> và lightbox.
   ├── Tích hợp KaTeX math, bảng đối sánh .table-modern, ma trận .matrix-grid và lưu đồ .flow-steps.
   └── Khung trích dẫn AMA Citation Box & Nút quay lại SPA.
 
 [BƯỚC 4: KIỂM ĐỊNH TOÀN DIỆN & BUILD TEST]
-  ├── Rà soát escape ký tự (<, >, {, }).
+  ├── Rà soát escape ký tự (<, >, {, }) và làm sạch lỗi Math.
   ├── Chạy `npm run build` kiểm tra TypeScript và biên dịch MDX.
   └── Xác nhận trang hiển thị hoàn hảo ở cả Light Mode và Dark Mode.
 ```

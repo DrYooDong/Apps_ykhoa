@@ -194,6 +194,7 @@ Dưới đây là mô tả chi tiết các sơ đồ cơ chế sinh lý bệnh �
 #### **Sơ đồ Cơ Chế 1: Con Đường Bệnh Sinh Dẫn Đến Rung Nhĩ (Mechanisms and Pathways Leading to AF)**
 
 - **Nguồn tài liệu:** _2023 ACC/AHA/ACCP/HRS Guideline for the Diagnosis and Management of Atrial Fibrillation_ (Hình 7 / Figure 7).
+	![[Pasted image 20260901085216.png]]
 - **Mô tả chi tiết sơ đồ:**
     - **Yếu tố khởi đầu từ lối sống và bệnh lý đồng mắc:** Tăng huyết áp, bệnh van tim, bệnh mạch vành, béo phì, lạm dụng rượu, rối loạn thở khi ngủ....
     - **Các con đường trung gian (Upstream Pathways):**
@@ -215,6 +216,7 @@ Dưới đây là mô tả chi tiết các sơ đồ cơ chế sinh lý bệnh �
 #### **Sơ đồ Cơ Chế 2: Các Cơ Chế Sinh Lý Bệnh Của Rung Nhĩ (Pathophysiological Mechanisms of Atrial Fibrillation)**
 
 - **Nguồn tài liệu:** _2024 EHRA/HRS/APHRS/LAHRS Expert Consensus Statement on Catheter and Surgical Ablation of Atrial Fibrillation_ (Hình 1 / Figure 1 - Tác giả Tzeis S và cộng sự, đăng trên _Journal of Arrhythmia_ năm 2024).
+		![[Pasted image 20260901090243.png]]
 - **Mô tả chi tiết sơ đồ:**
     - Sơ đồ phân tích tác động sinh lý bệnh của các yếu tố nguy cơ có thể thay đổi (tăng huyết áp, béo phì, ngưng thở khi ngủ, rượu, đái tháo đường) lên cơ tim nhĩ thông qua 3 con đường tái cấu trúc đồng quy:
         1. **Tái cấu trúc điện học (Electrical remodeling):**
@@ -234,6 +236,7 @@ Dưới đây là mô tả chi tiết các sơ đồ cơ chế sinh lý bệnh �
 #### **Sơ đồ Cơ Chế 3: Vai Trò Của Hệ Thần Kinh Tự Chủ Trong Rung Nhĩ (Contemporary Summary of the Role of the ANS in AF)**
 
 - **Nguồn tài liệu:** _2023 ACC/AHA/ACCP/HRS Guideline for the Diagnosis and Management of Atrial Fibrillation_ (Hình 8 / Figure 8).
+	![[Pasted image 20260901085400.png]]
 - **Mô tả chi tiết sơ đồ:**
     - Sơ đồ minh họa vòng xoáy bệnh lý giữa Hệ thần kinh tự chủ (ANS) và rung nhĩ theo tiến trình thời gian:
         - **Giai đoạn trước rung nhĩ (Pre-AF):** Sự hiện diện của các yếu tố nguy cơ (béo phì, tăng huyết áp, ngưng thở khi ngủ...) gây rối loạn chức năng thần kinh tự chủ tim, giảm biến thiên nhịp tim (HRV), làm tăng nguy cơ mới mắc rung nhĩ.
@@ -253,5 +256,3 @@ Dưới đây là mô tả chi tiết các sơ đồ cơ chế sinh lý bệnh �
 4. Haïssaguerre M, Jaïs P, Shah DC, et al. Spontaneous initiation of atrial fibrillation by ectopic beats originating in the pulmonary veins. _N Engl J Med_. 1998;339(10):659-666. doi:10.1056/NEJM199809033391003.
 
 ---
-
-🔍 Trong phần tiếp theo (Phần 2), chúng ta có thể đi sâu vào quá trình **tái cấu trúc cấu trúc** (atrial fibrosis, vai trò của hệ RAAS, viêm hệ thống, stress oxy hóa mạn tính và thâm nhiễm mỡ) hoặc thảo luận chi tiết các cơ chế của **rung nhĩ sau phẫu thuật (POAF)**. Bạn muốn chúng ta tập trung vào chủ đề nào tiếp theo?

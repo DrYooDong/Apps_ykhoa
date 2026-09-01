@@ -13,6 +13,11 @@ Mọi bài viết, phác đồ, công cụ tính toán và khuyến cáo y khoa 
    </div>
    ```
 4. **Văn phong Y khoa**: Sử dụng Tiếng Việt lâm sàng súc tích, chuyên nghiệp. Loại bỏ các từ ngữ mang dấu vết văn phong AI rườm rà (sử dụng skill `medical-humanizer`).
+5. **BẮT BUỘC XỬ LÝ & NHÚNG 100% HÌNH ẢNH ĐÍNH KÈM TỪ FILE NGUỒN .MD (Image Asset Pipeline)**:
+   - Khi file `.md` nguồn (trong `knowledge-vault/` hoặc các nguồn đầu vào) chứa cú pháp hình ảnh (`![[Pasted image ...]]` hoặc `![alt](path)`):
+   - **Bước 1 (Trích xuất & Sao chép)**: Tìm file ảnh gốc trong `knowledge-vault/_resources/attachments/` và sao chép sang thư mục `images/` của phân hệ tương ứng (`src/content/.../images/`), đổi tên theo định dạng chuẩn kebab-case có ý nghĩa lâm sàng (vd: `<slug>-<feature>.png` hoặc `<slug>-fig<X>.png`).
+   - **Bước 2 (Nhúng trực quan có chú thích)**: Bắt buộc nhúng hình ảnh vào bài `.mdx` bằng thẻ `<figure class="physio-figure">` hoặc `<div class="fig-card">` kèm `<figcaption>` / `<div class="fig-caption">` giải thích cơ chế, trích dẫn rõ nguồn EBM và hỗ trợ lightbox phóng to (`class="... lightbox-trigger"`).
+   - **Tuyệt đối không được bỏ quên hoặc chỉ mô tả bằng chữ mà không nhúng tệp ảnh thực tế.**
 
 ---
 

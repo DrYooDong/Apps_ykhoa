@@ -77,20 +77,6 @@ Sự mất cân bằng giữa sản sinh ROS và hệ thống chống oxy hóa n
 
 ---
 
-### Trích Xuất Sơ Đồ Cơ Chế Từ Tài Liệu Nguồn
-
-#### **Sơ đồ Cơ Chế 4: Tái Cấu Trúc Điện Học Và Cấu Trúc Nhĩ Do Sự Tác Động Của Mô Mỡ Ngoài Màng Tim (EAT)**
-
-- **Nguồn tài liệu:** _2024 EHRA/HRS/APHRS/LAHRS Expert Consensus Statement on Catheter and Surgical Ablation of Atrial Fibrillation_ (Figure 1) phối hợp mô tả từ _Postoperative Atrial Fibrillation: From Mechanisms to Treatment_ (European Heart Journal, 2023).
-- **Mô tả chi tiết sơ đồ:**
-    - **Yếu tố thúc đẩy:** Béo phì mạn tính và rối loạn chuyển hóa hệ thống gây tích tụ và phì đại mô mỡ ngoài màng tim (EAT) kề cận thành tự do tâm nhĩ trái.
-    - **Con đường tác động song song:**
-        1. **Tác động cơ học vật lý (Direct Infiltration):** Adipocyte thâm nhiễm xuyên thành từ màng ngoài tim vào lớp cơ tim giữa \(\rightarrow\) Chia cắt vật lý các sợi cơ tim \(\rightarrow\) Gây block dẫn truyền tại chỗ và làm chậm vận tốc dẫn truyền (\(CV\)).
-        2. **Tác động hóa học cận tiết (Paracrine Secretome):** EAT tiết ra một lượng lớn Interleukin-1beta (IL-1\(\beta\)), các cytokine tiền viêm và các adipokine trực tiếp vào mô kẽ cơ tim \(\rightarrow\) Kích hoạt nguyên bào sợi cơ \(\rightarrow\) Lắng đọng Collagen ngoại bào (Atrial Fibrosis) \(\rightarrow\) Gây bất đồng hóa dẫn truyền nội mạc - ngoại mạc (Endo-epi asynchrony).
-    - **Kết quả:** Sự kết hợp giữa xơ hóa mô kẽ và thâm nhiễm mỡ tạo thành một **chất nền dễ vào lại (Reentry-prone substrate)** cực kỳ bền vững, hỗ trợ các rotor và các vòng vào lại kích thước nhỏ tự duy trì mạn tính.
-
----
-
 ### Rung Nhĩ Sau Phẫu Thuật (Postoperative Atrial Fibrillation - POAF)
 
 Rung nhĩ sau phẫu thuật (POAF) là biến chứng rối loạn nhịp tim phổ biến nhất sau phẫu thuật tim mạch và lồng ngực, gây kéo dài thời gian nằm viện, tăng chi phí điều trị và làm tăng nguy cơ đột quỵ dài hạn.

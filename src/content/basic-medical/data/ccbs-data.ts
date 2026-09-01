@@ -849,21 +849,22 @@ export const CCBS_DATA: CcbsDataStore = {
     "slug": "slb-ccbs-rung-nhi",
     "code": "CCBS-39",
     "title": "Rung Nhĩ (AF)",
-    "system": "pediatrics",
-    "systemName": "Nhi Khoa & Truyền Nhiễm",
+    "system": "cardiovascular",
+    "systemName": "Tim Mạch & Tuần Hoàn",
     "order": 39,
     "overview": "Sinh lý bệnh & Cơ chế bệnh sinh Rung Nhĩ (Atrial Fibrillation Pathophysiology): Ổ khởi kích tĩnh mạch phổi (Haïssaguerre), rối loạn Canxi nội bào (RyR2/NCX/DADs), bước sóng dẫn truyền lambda, tái cấu trúc cấu trúc và xơ hóa cơ tim nhĩ, mô mỡ thượng tâm mạc (EAT), rung nhĩ sau phẫu thuật (POAF) và vòng xoáy AF begets AF.",
     "clinicalPearls": [
-      "Khoảng cách R&ndash;R hoàn toàn không đều (loạn nhịp hoàn toàn khi dẫn truyền nhĩ &ndash; thất còn nguyên vẹn).",
-      "Phức bộ QRS thường hẹp (trừ khi có block nhánh sẵn có hoặc dẫn truyền lệch hướng).",
-      "Gaudino M, Di Franco A, Rong LQ, Piccini J, Mack M. Postoperative atrial fibrillation: from mechanisms to treatment. European Heart Journal. 2023;44(12):1020-1039. doi:10.1093/eurheartj/ehad019.",
-      "Ha&iuml;ssaguerre M, Ja&iuml;s P, Shah DC, et al. Spontaneous initiation of atrial fibrillation by ectopic beats originating in the pulmonary veins. N Engl J Med. 1998;339(10):659-666. doi:10.1056/NEJM199809033391003."
+      "Đa số (> 90%) các cơn rung nhĩ kịch phát được khởi kích bởi các ổ ngoại vị từ bao cơ tĩnh mạch phổi (Haïssaguerre 1998).",
+      "Rối loạn chu kỳ Canxi qua thụ thể RyR2 bị hyperphosphoryl hóa bởi CaMKII gây rò rỉ Ca2+ tâm trương, kích hoạt bơm NCX tạo dòng điện hướng trong sinh điện và DADs.",
+      "Tái cấu trúc điện học diễn ra nhanh chóng trong vài ngày đầu (giảm ICa,L, tăng IK1) làm rút ngắn ERP và bước sóng dẫn truyền (λ = ERP × CV), tạo điều kiện cho rung nhĩ tự duy trì (AF begets AF).",
+      "Mở màng ngoài tim sau bên trái (PLP) giúp dẫn lưu máu đọng và dịch viêm vô trùng, giảm tỷ lệ rung nhĩ sau phẫu thuật tim mở (POAF) ngoạn mục từ 32% xuống 17% (Thử nghiệm ngẫu nhiên PALACS)."
     ],
     "tags": [
-      "Nhi Khoa",
+      "Tim Mạch",
       "Rung Nhĩ",
       "Sinh lý bệnh",
-      "Cơ chế bệnh sinh"
+      "Cơ chế bệnh sinh",
+      "POAF"
     ]
   },
   {
@@ -1047,21 +1048,24 @@ export const CCBS_DATA: CcbsDataStore = {
     "slug": "slb-ccbs-tha",
     "code": "CCBS-48",
     "title": "Tăng huyết áp",
-    "system": "general",
-    "systemName": "Tổng Quát",
+    "system": "cardiovascular",
+    "systemName": "Tim Mạch & Tuần Hoàn",
     "order": 48,
-    "overview": "Sinh lý bệnh và Cơ chế bệnh sinh của Tăng Huyết Áp (THA): Hệ SNS, RAAS, rối loạn nội tiết, cơ chế thận, nhạy cảm muối, rối loạn chức năng nội mô, viêm mạn tính, di truyền và các đối tượng đặc biệt.",
+    "overview": "Sinh lý bệnh & Cơ chế bệnh sinh Tăng Huyết Áp (Hypertension Pathophysiology): Huyết động học BP = CO × SVR, tiến trình lão hóa xơ cứng động mạch, béo phì và trục SNS-RAAS mô mỡ, cơ chế bộ đệm Natri Glycocalyx và đáp ứng IPROS, hệ thống thận thu nhỏ tại da (Cutaneous mini-kidneys), viêm mạn tính và thể viêm NLRP3, tăng huyết áp thứ phát (PA, RVH mô hình Goldblatt, OSA), THA kháng trị & bằng chứng EBM Spironolactone (PATHWAY-2), đích phân tử mới (Aprocitentan, Baxdrostat) và tổn thương 4 cơ quan đích HMOD (Tim, Não, Thận, Mắt) theo chuẩn AHA/ACC 2025, ESC 2024 và ESH 2023.",
     "clinicalPearls": [
-      "Thâm nhiễm tế bào viêm: Natri dư thừa tích tụ ở mô kẽ da và thận, thu hút các tế bào viêm, kích thích phản ứng miễn dịch cục bộ gây xơ hóa mạch máu.",
-      "Magie (Mg2+)\r\n                                Magie hoạt động như một chất chẹn kênh Canxi tự nhiên, ngăn Canxi đi vào tế bào cơ trơn mạch máu để giảm co mạch. Nó cũng kích thích tổng hợp Nitric Oxide (NO) và Prostaglandin E, giảm viêm mạch máu.",
-      "1. Giảm sinh khả dụng Nitric Oxide (NO)\r\n                                    Tình trạng stress oxy hóa phá hủy phân tử NO hoặc ức chế enzyme tổng hợp eNOS, làm mất cơ chế giãn mạch chủ chốt.",
-      "2. Tăng hoạt chất co mạch Endothelin-1\r\n                                    Các tế bào nội mô bị tổn thương tăng tiết Endothelin-1 và Thromboxane A2, thúc đẩy co thắt cơ trơn mạch máu kéo dài và phì đại lớp áo giữa thành mạch."
+      "Bắt đầu từ trị số 115/75 mmHg, nguy cơ tử vong do đột quỵ não hoặc nhồi máu cơ tim tăng gấp đôi với mỗi mức tăng 20/10 mmHg của huyết áp.",
+      "Béo phì chịu trách nhiệm cho 65% - 75% nguy cơ THA nguyên phát qua đề kháng insulin kích thích giao cảm, RAAS nội tại mô mỡ và chèn ép cơ học tủy thận bởi mỡ quanh thận.",
+      "Lớp Glycocalyx tích điện âm trên hồng cầu và nội mạc hoạt động như bộ đệm Natri sinh học; ăn mặn kéo dài phá hủy Glycocalyx, khiến Na+ tự do thâm nhập gây xơ cứng thành mạch và đáp ứng tăng áp tức thì (IPROS).",
+      "AHA/ACC 2025 nâng mức khuyến cáo lên Class 1 (LoE A) đối với mục tiêu SBP < 130 mmHg ở mọi người trưởng thành để bảo vệ vi mạch não và phòng ngừa tối ưu sa sút trí tuệ."
     ],
     "tags": [
-      "Tổng Quát",
+      "Tim Mạch",
       "Tăng huyết áp",
       "Sinh lý bệnh",
-      "Cơ chế bệnh sinh"
+      "Cơ chế bệnh sinh",
+      "Cường Aldosterone",
+      "HMOD",
+      "AHA 2025"
     ]
   },
   {

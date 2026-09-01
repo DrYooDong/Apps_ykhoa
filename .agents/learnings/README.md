@@ -12,4 +12,5 @@ Thư mục này lưu trữ bộ nhớ dự án, bài học kinh nghiệm (Lesson
 
 ## 📚 Danh Sách Bài Học Đã Lưu Trữ
 - [2026-08-guideline-summary-standards.md](file:///d:/Apps_ykhoa/.agents/learnings/2026-08-guideline-summary-standards.md): Tiêu chuẩn thiết kế & Quy tắc bảo tồn 100% nội dung Y khoa cho Kho Guidelines (EBM).
+- [2026-09-knowledge-vault-md-to-mdx-image-pipeline.md](file:///d:/Apps_ykhoa/.agents/learnings/2026-09-knowledge-vault-md-to-mdx-image-pipeline.md): Quy trình bắt buộc trích xuất, sao chép và nhúng 100% hình ảnh từ file nguồn .md sang .mdx.
 
