@@ -57,7 +57,7 @@ export function renderCoCheBenhSinhView(): string {
               <div class="promax-kpi-pill">
                 <i class="fa-solid fa-file-waveform promax-kpi-icon" style="color: #a78bfa;"></i>
                 <div>
-                  <div class="promax-kpi-num">42+</div>
+                  <div class="promax-kpi-num">64+</div>
                   <div class="promax-kpi-lbl">Ca Bệnh Bệnh Sinh</div>
                 </div>
               </div>
@@ -380,7 +380,7 @@ export function renderCoCheBenhSinhView(): string {
                     <span class="part-text">Truyền nhiễm</span>
                   </div>
                   <div class="part-nav-right">
-                    <span class="part-count-badge">6</span>
+                    <span class="part-count-badge">11</span>
                     <i class="fa-solid fa-chevron-down subnav-chevron"></i>
                   </div>
                 </div>
@@ -388,13 +388,13 @@ export function renderCoCheBenhSinhView(): string {
                   <li>
                     <a href="#patho-truyen-nhiem-vikhoan" class="part-sub-nav-item" data-target="patho-truyen-nhiem-vikhoan">
                       <span>Vi khuẩn</span>
-                      <span class="sub-count-badge">2</span>
+                      <span class="sub-count-badge">3</span>
                     </a>
                   </li>
                   <li>
                     <a href="#patho-truyen-nhiem-virus" class="part-sub-nav-item" data-target="patho-truyen-nhiem-virus">
                       <span>Vi rút</span>
-                      <span class="sub-count-badge">3</span>
+                      <span class="sub-count-badge">7</span>
                     </a>
                   </li>
                   <li>
@@ -427,7 +427,7 @@ export function renderCoCheBenhSinhView(): string {
                     <span class="part-text">Thần kinh</span>
                   </div>
                   <div class="part-nav-right">
-                    <span class="part-count-badge">1</span>
+                    <span class="part-count-badge">2</span>
                   </div>
                 </a>
               </li>
@@ -1180,7 +1180,7 @@ export function renderCoCheBenhSinhView(): string {
               <div class="physio-group-header">
                 <div>
                   <h3 id="patho-truyen-nhiem-heading">Bệnh Truyền Nhiễm</h3>
-                  <p style="margin: 0; font-size: 0.8rem; color: var(--color-text-muted);">6 Bài ca lâm sàng – Vi khuẩn, vi rút và ký sinh trùng</p>
+                  <p style="margin: 0; font-size: 0.8rem; color: var(--color-text-muted);">11 Bài ca lâm sàng (15 thể) – Vi khuẩn, vi rút và ký sinh trùng</p>
                 </div>
               </div>
 
@@ -1188,7 +1188,7 @@ export function renderCoCheBenhSinhView(): string {
               <div class="physio-subgroup-container" id="patho-truyen-nhiem-vikhoan">
                 <div class="physio-subgroup-header">
                   <h4 class="physio-subgroup-title">Bệnh Nhiễm Vi Khuẩn</h4>
-                  <span class="physio-subgroup-badge">2 bài học</span>
+                  <span class="physio-subgroup-badge">3 bài học</span>
                 </div>
                 <div class="specialty-grid">
                   <a href="#/basic-medical/cases/slb-ccbs-lao" class="specialty-card">
@@ -1211,6 +1211,22 @@ export function renderCoCheBenhSinhView(): string {
                     </div>
                     <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
                   </a>
+                  <a href="#/basic-medical/cases/slb-ccbs-lau" class="specialty-card">
+                    <div class="specialty-card-top">
+                      <div class="specialty-icon"><i class="fa-solid fa-bacterium"></i></div>
+                      <div class="specialty-info">
+                        <h3>Bệnh Lậu (N. gonorrhoeae)</h3>
+                        <p>Pili Type IV bám dính, Protein Opa gắn CEACAM, xuyên bào, biến đổi pha lẩn tránh miễn dịch, viêm tiểu khung PID và đột biến penA kháng thuốc.</p>
+                      </div>
+                    </div>
+                    <div class="specialty-card-action">
+                      <span>Xem cơ chế</span>
+                      <span style="font-size: 0.72rem; font-weight: 700; color: #0284c7; background: rgba(2,132,199,0.1); padding: 2px 6px; border-radius: 4px; display: inline-flex; align-items: center; gap: 4px;">
+                        CDC/WHO 2024
+                      </span>
+                      <i class="fa-solid fa-chevron-right"></i>
+                    </div>
+                  </a>
                 </div>
               </div>
 
@@ -1218,7 +1234,7 @@ export function renderCoCheBenhSinhView(): string {
               <div class="physio-subgroup-container" id="patho-truyen-nhiem-virus">
                 <div class="physio-subgroup-header">
                   <h4 class="physio-subgroup-title">Bệnh Nhiễm Vi Rút</h4>
-                  <span class="physio-subgroup-badge">3 bài học (7 thể)</span>
+                  <span class="physio-subgroup-badge">7 bài học (11 thể)</span>
                 </div>
                 <div class="specialty-grid">
                   <!-- VIÊM GAN SIÊU VI (A, B, C, D, E) — DROPDOWN CARD -->
@@ -1311,6 +1327,74 @@ export function renderCoCheBenhSinhView(): string {
                     </div>
                     <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
                   </a>
+
+                  <a href="#/basic-medical/cases/slb-ccbs-cum" class="specialty-card">
+                    <div class="specialty-card-top">
+                      <div class="specialty-icon"><i class="fa-solid fa-virus"></i></div>
+                      <div class="specialty-info">
+                        <h3>Bệnh Cúm (Influenza)</h3>
+                        <p>Kháng nguyên HA/NA, cơ chế biến đổi Drift &amp; Shift, tổn thương phế nang, cơn bão cytokine, đột biến kháng thuốc S31N/H275Y và miễn dịch thai kỳ.</p>
+                      </div>
+                    </div>
+                    <div class="specialty-card-action">
+                      <span>Xem cơ chế</span>
+                      <span style="font-size: 0.72rem; font-weight: 700; color: #0284c7; background: rgba(2,132,199,0.1); padding: 2px 6px; border-radius: 4px; display: inline-flex; align-items: center; gap: 4px;">
+                        WHO 2025-26
+                      </span>
+                      <i class="fa-solid fa-chevron-right"></i>
+                    </div>
+                  </a>
+
+                  <a href="#/basic-medical/cases/slb-ccbs-covid-19" class="specialty-card">
+                    <div class="specialty-card-top">
+                      <div class="specialty-icon"><i class="fa-solid fa-virus-covid"></i></div>
+                      <div class="specialty-info">
+                        <h3>COVID-19 (SARS-CoV-2)</h3>
+                        <p>Xâm nhập qua ACE2/TMPRSS2, 'Ngựa gỗ Troia' túi ngoại bào EVs, viêm nội mạc endotheliitis, bão cytokine, vi huyết khối amyloid và hội chứng Long COVID.</p>
+                      </div>
+                    </div>
+                    <div class="specialty-card-action">
+                      <span>Xem cơ chế</span>
+                      <span style="font-size: 0.72rem; font-weight: 700; color: #0284c7; background: rgba(2,132,199,0.1); padding: 2px 6px; border-radius: 4px; display: inline-flex; align-items: center; gap: 4px;">
+                        IDSA 2025
+                      </span>
+                      <i class="fa-solid fa-chevron-right"></i>
+                    </div>
+                  </a>
+
+                  <a href="#/basic-medical/cases/slb-ccbs-hiv-aids" class="specialty-card">
+                    <div class="specialty-card-top">
+                      <div class="specialty-icon"><i class="fa-solid fa-ribbon" style="color: #ef4444;"></i></div>
+                      <div class="specialty-info">
+                        <h3>HIV / AIDS</h3>
+                        <p>Hòa màng gp41, Capsid tàng hình, suy giảm CD4+ qua Pyroptosis (Caspase-1), phá vỡ GALT, hồ chứa provirus hoạt động và đột phá Lenacapavir.</p>
+                      </div>
+                    </div>
+                    <div class="specialty-card-action">
+                      <span>Xem cơ chế</span>
+                      <span style="font-size: 0.72rem; font-weight: 700; color: #0284c7; background: rgba(2,132,199,0.1); padding: 2px 6px; border-radius: 4px; display: inline-flex; align-items: center; gap: 4px;">
+                        EACS/WHO 2026
+                      </span>
+                      <i class="fa-solid fa-chevron-right"></i>
+                    </div>
+                  </a>
+
+                  <a href="#/basic-medical/cases/slb-ccbs-benh-dai" class="specialty-card">
+                    <div class="specialty-card-top">
+                      <div class="specialty-icon"><i class="fa-solid fa-dog"></i></div>
+                      <div class="specialty-info">
+                        <h3>Bệnh Dại (Rabies)</h3>
+                        <p>Gắn kết nAChR/NCAM, vận chuyển ngược dòng sợi trục 50-100mm/ngày, rối loạn điện sinh học không hoại tử, thể vùi Negri và cơ sở PEP.</p>
+                      </div>
+                    </div>
+                    <div class="specialty-card-action">
+                      <span>Xem cơ chế</span>
+                      <span style="font-size: 0.72rem; font-weight: 700; color: #0284c7; background: rgba(2,132,199,0.1); padding: 2px 6px; border-radius: 4px; display: inline-flex; align-items: center; gap: 4px;">
+                        WHO/CDC PEP
+                      </span>
+                      <i class="fa-solid fa-chevron-right"></i>
+                    </div>
+                  </a>
                 </div>
               </div>
 
@@ -1382,7 +1466,7 @@ export function renderCoCheBenhSinhView(): string {
               <div class="physio-group-header">
                 <div>
                   <h3 id="patho-thankinh-heading">Thần Kinh</h3>
-                  <p style="margin: 0; font-size: 0.8rem; color: var(--color-text-muted);">1 Bài ca lâm sàng – Bệnh lý mạch máu não và thoái hóa thần kinh</p>
+                  <p style="margin: 0; font-size: 0.8rem; color: var(--color-text-muted);">2 Bài ca lâm sàng – Bệnh lý mạch máu não, nhiễm trùng thần kinh &amp; phù não</p>
                 </div>
               </div>
               <div class="specialty-grid">
@@ -1395,6 +1479,22 @@ export function renderCoCheBenhSinhView(): string {
                     </div>
                   </div>
                   <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
+                </a>
+                <a href="#/basic-medical/cases/slb-ccbs-viem-mang-nao" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon"><i class="fa-solid fa-head-side-virus"></i></div>
+                    <div class="specialty-info">
+                      <h3>Viêm Màng Não (Meningitis)</h3>
+                      <p>Xâm nhập vượt BBB, 3 cơ chế phù não phối hợp (mạch, độc tế bào, mô kẽ), bão cytokine sau kháng sinh, CSF biến đổi và Dexamethasone cấp cứu.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action">
+                    <span>Xem cơ chế</span>
+                    <span style="font-size: 0.72rem; font-weight: 700; color: #0284c7; background: rgba(2,132,199,0.1); padding: 2px 6px; border-radius: 4px; display: inline-flex; align-items: center; gap: 4px;">
+                      QĐ 4068/BYT
+                    </span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </div>
                 </a>
               </div>
             </div>

@@ -51,7 +51,7 @@ export const BASIC_MEDICAL_TABS: BasicMedicalTabItem[] = [
     icon: 'fa-microscope',
     hash: '#/basic-medical/co-che-benh-sinh',
     color: '#059669',
-    badge: '42+ Ca'
+    badge: '64+ Ca'
   },
   {
     key: 'hoa-sinh',
