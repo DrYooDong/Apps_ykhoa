@@ -770,6 +770,26 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     detailedConclusion: 'Chỉ định POC NAAT và chỉ điều trị khi test (+); dùng Baloxavir liều duy nhất cho cúm nhẹ có nguy cơ cao; dùng Oseltamivir 75mg x 2 cho cúm nặng; tuyệt đối không dùng Corticosteroid thường quy; dự phòng PEP 100% người phơi nhiễm cúm gia cầm H5N1 bằng Oseltamivir liều điều trị 10-14 ngày.'
   },
   {
+    id: '2024-who-bach-hau',
+    title: 'WHO 2024: Hướng Dẫn Lâm Sàng Điều Trị Bệnh Bạch Hầu (Diphtheria)',
+    titleEn: 'WHO Clinical Management of Diphtheria: Guideline (2024)',
+    sourceType: 'intl-guideline',
+    specialty: 'infect',
+    design: 'guideline',
+    impact: 'practice-changing',
+    year: 2024,
+    organization: 'Tổ chức Y tế Thế giới (WHO)',
+    journal: 'WHO Guidelines',
+    file: '2024-who-bach-hau.html',
+    conditionKey: 'diphtheria',
+    icd10: ['A36', 'A36.0', 'A36.1', 'A36.2', 'A36.8', 'A36.9'],
+    intervention: 'Kháng sinh ưu tiên Macrolide (Azithromycin 1 lần/ngày, Erythromycin); Không test da mẫn cảm DAT thường quy; Phác đồ phân liều DAT leo thang 20k-40k-80k IU; Quản lý tắc nghẽn đường thở; Dự phòng phản vệ bằng kháng histamin + corticoid và Adrenaline 1:1000 tại giường',
+    primaryEndpoint: 'Giảm tử vong do bạch hầu hô hấp, giảm tỷ lệ tắc nghẽn đường thở, ngăn ngừa và kiểm soát sớm biến chứng viêm cơ tim, liệt thần kinh sọ và suy thận',
+    keyResults: 'Macrolide ưu tiên hơn Penicillin do tỷ lệ kháng thuốc thấp và dùng 1 lần/ngày; Bỏ test da mẫn cảm DAT giúp cứu sống thêm 12 ca/1000 BN (giảm tử vong từ 4.7% xuống 3.5%); Phân liều DAT leo thang (20k/40k/80k IU) tối ưu hóa nguồn cung toàn cầu khan hiếm.',
+    summary: 'Hướng dẫn thực hành lâm sàng toàn diện của WHO 2024 (WHO/DIPH/Clinical/2024.1) về quản lý bệnh bạch hầu: Khuyến cáo mạnh mẽ Macrolide thay vì Penicillin, khuyến cáo mạnh mẽ chống lại test da DAT thường quy dựa trên mô hình cây quyết định Eisenberg, phác đồ DAT leo thang theo mức độ lan rộng và thời gian khởi phát, kiểm soát đường thở và giám sát biến chứng toàn thân.',
+    detailedConclusion: 'Khởi trị ngay Macrolide (Azithromycin 500mg/ngày cho người lớn, 10-12mg/kg cho trẻ em); tiêm truyền trực tiếp DAT kèm thuốc dự phòng trước tiêm và sẵn sàng Adrenaline tại giường mà không làm test da làm chậm thời gian cấp cứu; áp dụng liều DAT 20.000 - 80.000 IU theo mức độ nặng và mốc 48 giờ.'
+  },
+  {
     id: '2025-byt-cum-mua',
     title: 'BYT 2025: Hướng dẫn Chẩn đoán và Điều trị Cúm Mùa (Influenza)',
     titleEn: 'National Guidelines on Seasonal Influenza Diagnosis and Management',
