@@ -750,6 +750,26 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     detailedConclusion: 'Bổ sung Vitamin A ngay khi chẩn đoán cho mọi trẻ mắc sởi theo lứa tuổi.'
   },
   {
+    id: '2024-who-cum',
+    title: 'WHO 2024: Hướng Dẫn Lâm Sàng Điều Trị & Dự Phòng Bệnh Cúm (Influenza)',
+    titleEn: 'WHO Clinical Practice Guidelines for Influenza (2024)',
+    sourceType: 'intl-guideline',
+    specialty: 'infect',
+    design: 'guideline',
+    impact: 'practice-changing',
+    year: 2024,
+    organization: 'Tổ chức Y tế Thế giới (WHO)',
+    journal: 'Lancet Infect Dis',
+    file: '2024-who-cum.html',
+    conditionKey: 'flu',
+    icd10: ['J09', 'J10', 'J11'],
+    intervention: 'Chỉ định POC NAAT/DIA tại chỗ; Baloxavir liều đơn cho cúm không nặng nguy cơ cao; Oseltamivir khẩn cấp cho cúm nặng & H5N1; Chống chỉ định Tamiflu/Zanamivir/Kháng sinh cho cúm nhẹ; Chống chỉ định Steroid/Macrolide bổ trợ; PEP chọn lọc',
+    primaryEndpoint: 'Rút ngắn thời gian triệu chứng, giảm tỷ lệ nhập viện, giảm tử vong do cúm nặng và cúm động vật độc lực cao, ngăn ngừa bùng phát chủng kháng thuốc và tối ưu hóa QALDs',
+    keyResults: 'Baloxavir giảm 1.02 ngày triệu chứng và giảm 16/1000 nhập viện ở nhóm nguy cơ cao (≤48h); Oseltamivir cho cúm nhẹ không giảm nhập viện mà tăng nôn ói 28/1000; Oseltamivir cho cúm nặng rút ngắn 1.63 ngày nằm viện; Corticosteroid tăng tử vong OR 2.23 và tăng nhiễm trùng BV 103/1000.',
+    summary: 'Hướng dẫn điều trị lâm sàng bệnh cúm toàn diện của WHO 2024 (ISBN 978-92-4-009775-9): Phân tầng nguy cơ nhập viện & tử vong, mô hình 8 chiến lược xét nghiệm QALDs, khuyến cáo dùng Baloxavir và chống lại Oseltamivir cho cúm nhẹ, phác đồ Oseltamivir cúm nặng/cúm gia cầm H5N1, bằng chứng GRADE chống lại Steroid/Macrolide/IVIG và lưu đồ thuật toán Annex 1.',
+    detailedConclusion: 'Chỉ định POC NAAT và chỉ điều trị khi test (+); dùng Baloxavir liều duy nhất cho cúm nhẹ có nguy cơ cao; dùng Oseltamivir 75mg x 2 cho cúm nặng; tuyệt đối không dùng Corticosteroid thường quy; dự phòng PEP 100% người phơi nhiễm cúm gia cầm H5N1 bằng Oseltamivir liều điều trị 10-14 ngày.'
+  },
+  {
     id: '2025-byt-cum-mua',
     title: 'BYT 2025: Hướng dẫn Chẩn đoán và Điều trị Cúm Mùa (Influenza)',
     titleEn: 'National Guidelines on Seasonal Influenza Diagnosis and Management',
