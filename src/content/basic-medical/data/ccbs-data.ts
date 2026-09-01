@@ -13,22 +13,27 @@ export const CCBS_DATA: CcbsDataStore = {
     "id": "ccbs-1",
     "slug": "slb-ccbs-acs",
     "code": "CCBS-01",
-    "title": "Hội chứng vành cấp",
+    "title": "Hội chứng vành cấp (ACS)",
     "system": "cardiovascular",
     "systemName": "Tim Mạch & Tuần Hoàn",
     "order": 1,
-    "overview": "Sinh lý bệnh và Cơ chế bệnh sinh Hội chứng vành cấp (Acute Coronary Syndrome Pathophysiology): Khái niệm",
+    "overview": "Sinh lý bệnh và Cơ chế bệnh sinh Hội chứng vành cấp (Acute Coronary Syndrome Pathophysiology): Phân tích chi tiết 3 cơ chế tại chỗ (Nứt vỡ mảng xơ vữa vỏ mỏng TCFA, Xói mòn mảng xơ vữa qua thụ thể TLR2 và bẫy ngoại bào NETs, Nốt vôi hóa đâm xuyên), chuyển dịch mô hình 'Bệnh nhân dễ tổn thương', phân loại Nhồi máu cơ tim theo UDMI-V 2026 (Primary, Secondary, Procedure-related), các nguyên nhân không do xơ vữa (SCAD, co thắt, cầu cơ tim, Takotsubo), hội chứng làm việc MINOCA, rối loạn vi tuần hoàn, tổn thương tái tưới máu (No-reflow, 4 giai đoạn CMR theo CCS 2024), cùng các liệu pháp điều trị nhắm trúng đích cơ chế (Stentless strategy, Colchicine).",
     "clinicalPearls": [
-      "Dòng máu dễ tạo huyết khối (Vulnerable Blood): Rối loạn cân bằng giữa hệ đông máu và hệ tiêu sợi huyết/chống đông tự nhiên, tạo trạng thái tăng đông.",
-      "Cơ tim dễ bị tổn thương (Vulnerable Myocardium): Nhạy cảm với tình trạng thiếu máu cục bộ, dễ bất ổn định điện học dẫn đến các rối loạn nhịp tim đe dọa tính mạng.",
-      "Đặc điểm huyết khối: Huyết khối hình thành chủ yếu là \"huyết khối trắng\" giàu tiểu cầu, thường gây tắc nghẽn không hoàn toàn hoặc bán cấp lòng mạch vành.",
-      "Nhịp tim nhanh ác tính kéo dài (Rung nhĩ đáp ứng thất nhanh, nhịp nhanh kịch phát trên thất)."
+      "Chỉ dưới 5% mảng xơ vữa vỏ mỏng (TCFA) thực sự tiến triển thành biến cố tắc mạch; sự chuyển dịch sang mô hình 'Bệnh nhân dễ tổn thương' (Vulnerable Patient) phối hợp bộ ba Mảng xơ vữa + Máu tăng đông + Cơ tim nhạy cảm giúp cá thể hóa điều trị toàn diện.",
+      "Xói mòn mảng xơ vữa (Plaque Erosion) có vỏ xơ nguyên vẹn và huyết khối trắng giàu tiểu cầu; nghiên cứu EROSION chứng minh bệnh nhân có thể điều trị bảo tồn an toàn bằng thuốc kháng huyết khối mạnh (Aspirin + Ticagrelor) mà không cần đặt stent (Stentless strategy).",
+      "Đồng thuận toàn cầu lần thứ năm (UDMI-V 2026) bãi bỏ phân loại Type 1-5, chuyển sang phân loại dựa trên sinh lý bệnh: Primary MI (nguyên phát tại mạch vành bao gồm cả SCAD, co thắt), Secondary MI (mất cân bằng cung - cầu oxy) và Procedure-related MI (liên quan can thiệp/phẫu thuật trong 30 ngày).",
+      "MINOCA được tái định nghĩa là 'Tổn thương cơ tim với động mạch vành không tắc nghẽn' (Myocardial Injury); chụp Cộng hưởng từ tim (CMR) sớm trong vòng 2 tuần đầu là tiêu chuẩn vàng (Class I, Level B) để chẩn đoán phân biệt giữa NMCT thực sự, Viêm cơ tim cấp và Hội chứng Takotsubo."
     ],
     "tags": [
       "Tim Mạch",
       "Hội chứng vành cấp",
+      "ACS",
       "Sinh lý bệnh",
-      "Cơ chế bệnh sinh"
+      "Cơ chế bệnh sinh",
+      "UDMI-V 2026",
+      "MINOCA",
+      "SCAD",
+      "Plaque Erosion"
     ]
   },
   {
@@ -959,20 +964,26 @@ export const CCBS_DATA: CcbsDataStore = {
     "id": "ccbs-44",
     "slug": "slb-ccbs-st",
     "code": "CCBS-44",
-    "title": "Suy tim",
-    "system": "general",
-    "systemName": "Tổng Quát",
+    "title": "Suy tim (Heart Failure)",
+    "system": "cardiovascular",
+    "systemName": "Tim Mạch & Tuần Hoàn",
     "order": 44,
-    "overview": "Sinh lý bệnh và Cơ chế bệnh sinh Suy tim (Heart Failure Pathophysiology & Pathogenesis): Rối loạn huyết động, tái cấu trúc thất lệch tâm vs đồng tâm, kích hoạt hệ giao cảm SNS & hệ RAAS, hội chứng viêm mạn tính ở HFpEF, autophagy và ứng dụng lâm sàng Tứ trụ.",
+    "overview": "Sinh lý bệnh và Cơ chế bệnh sinh Suy tim (Heart Failure Pathophysiology & Pathogenesis): Phân tích chi tiết định nghĩa huyết động Universal Definition 2026; suy chức năng co bóp tâm thu và tái cấu trúc lệch tâm trong HFrEF; hội chứng viêm hệ thống mạn tính, suy giảm NO-cGMP-PKG, xơ cứng protein Titin và mô mỡ thượng tâm mạc EAT trong HFpEF; trục thần kinh - thể dịch (SNS, RAAS) và peptide bài niệu (BNP, NT-proBNP); rối loạn chức năng ty thể, đói năng lượng cơ tim và hệ thống tự thực autophagy; sinh lý bệnh sung huyết cấp (quá tải thể tích vs tái phân bố dịch tối cấp); lưu đồ tiếp cận chẩn đoán và kiểm soát sung huyết theo eGFR (ESC 2026) cùng cơ sở phân tử của Tứ trụ điều trị (ARNI, BB, MRA, SGLT2i, GLP-1RA).",
     "clinicalPearls": [
-      "Thuốc chẹn Beta-adrenergic (Beta-blockers): Chẹn tác động độc hại của Catecholamine mạn tính lên tim, làm giảm nhịp tim, kéo dài thời gian tâm trương tưới máu mạch vành, giảm nguy cơ loạn nhịp thất và tử vong đột ngột.",
-      "Thuốc kháng thụ thể Mineralocorticoid (MRA - Spironolactone, Finerenone): Đối kháng Aldosterone tại tim và mạch máu, ngăn chặn sự lắng đọng collagen, giảm xơ hóa khoảng kẽ và hạ nguy cơ hạ kali máu.",
-      "Liori S, Kapelios CJ, Savarese G, Filippatos G. Heart failure evidence update 2026. Heart Failure Reviews. 2026;31:34. doi:10.1007/s10741-026-10609-3.",
-      "Vilceleanu BV, Popescu AM, Cecoltan S, et al. Modern definition and treatment of HFpEF - what is valid in 2025 and what to expect in 2026. R. J. Mil. Med. 2026;CXXIX(2):173-182."
+      "Universal Definition of Heart Failure 2026 định nghĩa suy tim là hội chứng lâm sàng do bất thường cấu trúc/chức năng tim dẫn đến tăng áp lực đổ đầy buồng tim và/hoặc giảm cung lượng tim lúc nghỉ hoặc khi gắng sức.",
+      "Trong HFpEF, viêm hệ thống mạn tính mức độ thấp làm suy giảm sinh khả dụng Nitric Oxide (NO) tại vi mạch vành, giảm hoạt tính trục sGC-cGMP-PKG làm giảm phosphorylation protein titin, khiến cơ tim bị xơ cứng và suy giảm đổ đầy tâm trương.",
+      "Sung huyết trong suy tim cấp có 2 cơ chế đối lập: Quá tải thể tích thực sự (tích tụ muối nước chậm, cần lợi tiểu quai liều cao) và Tái phân bố dịch tối cấp (co thắt tĩnh mạch tạng đẩy máu về phổi gây phù phổi cấp nhưng không phù ngoại biên, cần thuốc giãn mạch Nitroglycerin làm chủ chốt).",
+      "Thuốc ức chế SGLT2 (Dapagliflozin, Empagliflozin) bảo vệ tim thông qua phục hồi con đường AMPK-mTOR dọn dẹp autophagy, cung cấp thể ceton cho ty thể cơ tim, và rút dịch chọn lọc từ khoang kẽ mà không làm giảm thể tích nội mạch."
     ],
     "tags": [
-      "Tổng Quát",
+      "Tim Mạch",
       "Suy tim",
+      "Heart Failure",
+      "HFrEF",
+      "HFpEF",
+      "Tứ Trụ Suy Tim",
+      "ESC 2026",
+      "Universal Definition 2026",
       "Sinh lý bệnh",
       "Cơ chế bệnh sinh"
     ]
@@ -1204,20 +1215,26 @@ export const CCBS_DATA: CcbsDataStore = {
     "id": "ccbs-55",
     "slug": "slb-ccbs-xg",
     "code": "CCBS-55",
-    "title": "Xơ gan",
-    "system": "general",
-    "systemName": "Tổng Quát",
+    "title": "Xơ gan (Liver Cirrhosis)",
+    "system": "digestive",
+    "systemName": "Tiêu Hóa & Gan Mật",
     "order": 55,
-    "overview": "Sinh lý bệnh và Cơ chế bệnh sinh Xơ gan (Liver Cirrhosis Pathophysiology): Phân tích chi tiết quá trình xơ hóa (fibrogenesis, Kupffer cells hoạt hóa, tế bào hình sao HSCs chuyển biệt hóa thành myofibroblasts), hội chứng rối loạn miễn dịch CAIDS, cơ chế báng bụng (ascites) và tuần hoàn tăng động, suy dinh dưỡng (teo cơ sarcopenia do starvation metabolism), hội chứng gan phổi (HPS, giãn mạch phế nang IPVD) và ung thư hóa tế bào gan (HCC).",
+    "overview": "Sinh lý bệnh và Cơ chế bệnh sinh Xơ gan (Liver Cirrhosis Pathophysiology): Tiến trình tự nhiên còn bù ➔ mất bù và phân giai đoạn cACLD theo AASLD 2024; cơ chế tế bào tạo xơ (Kupffer, chuyển biệt hóa tế bào hình sao HSCs thành nguyên bào sợi cơ, mao mạch hóa xoang gan); động lực học tăng áp cửa Ohm (ΔP = Q × R); cơ chế báng bụng (thuyết giãn mạch ngoại vi, hạ natri máu loãng vs giảm thể tích); hội chứng gan thận (HRS-AKI / HRS-NAKI theo ADQI-ICA 2024); chuyển vị vi khuẩn và hội chứng CAIDS / SBP; bệnh não gan (phù tế bào chiêm tinh và teo cơ sarcopenia); hội chứng gan phổi (HPS - Platypnea / Orthodeoxia), tăng áp phổi do cửa (PPHT), bệnh cơ tim do xơ gan (CCM) và cơ chế ung thư hóa HCC.",
     "clinicalPearls": [
-      "Giảm thể tích động mạch hiệu dụng: Việc máu bị ứ ở tuần hoàn tạng làm lượng máu lưu thông hữu hiệu đến các cơ quan đích (như thận) sụt giảm trầm trọng, cơ thể nhận diện đây là tình trạng thiếu dịch nội mạch giả tạo.",
-      "Dị hóa đạm cơ vân: Cơ thể buộc phải huy động acid amin từ cơ bắp thông qua quá trình phân hủy protein để làm nguyên liệu cho gan tân tạo đường (gluconeogenesis). Tiến trình dị hóa cơ liên tục này dẫn đến teo cơ xương mạn tính (sarcopenia).",
-      "Rối loạn hấp thu & Tiêu hóa: Sự chèn ép của báng bụng lên dạ dày gây cảm giác no sớm; tình trạng thiếu kẽm và Vitamin A làm thay đổi vị giác gây chán ăn; và sự giảm bài tiết muối mật do suy gan làm rối loạn hấp thu chất béo ở ruột.",
-      "Đột biến vùng khởi động TERT (Telomerase Reverse Transcriptase): Là đột biến sớm và phổ biến nhất (>60% HCC), giúp tái hoạt hóa enzym telomerase, cho phép tế bào gan tổn thương tránh được sự lão hóa và phân chia vô hạn."
+      "Sự chuyển tiếp từ xơ gan còn bù sang mất bù xảy ra với tốc độ 5% - 7%/năm; thời gian sống trung vị giảm sút nghiêm trọng từ > 12 năm (còn bù) xuống chỉ còn 1.5 - 2 năm (mất bù).",
+      "Tăng áp lực tĩnh mạch cửa được quyết định bởi định luật Ohm ΔP = Q × R: Sức cản nội gan (R) gồm 70% thành phần cấu trúc và 30% thành phần động (co thắt HSCs, giảm NO nội gan); lưu lượng dòng máu tạng (Q) tăng vọt do hiện tượng giãn mạch tạng qua trung gian NO ngoại vi tạo trạng thái tuần hoàn tăng động.",
+      "Theo đồng thuận ADQI-ICA 2024, Hội chứng gan thận được phân loại thành HRS-AKI (suy thận chức năng cấp tính không đáp ứng sau 48h bù Albumin 1 g/kg/ngày và ngưng lợi tiểu) và HRS-NAKI; cơ chế bệnh sinh là sự phối hợp giữa co thắt mạch thận cực độ và bão Cytokine gây nhiễm độc ty thể tế bào ống thận.",
+      "Hội chứng gan phổi (HPS) đặc trưng bởi sự giãn mao mạch phế nang bất thường (IPVD 100 - 500 µm) gây bất tương hợp V/Q và shunt chức năng nội phổi, biểu hiện lâm sàng bằng triệu chứng khó thở khi ngồi (Platypnea) và sụt giảm oxy máu khi đứng thẳng (Orthodeoxia)."
     ],
     "tags": [
-      "Tổng Quát",
+      "Tiêu Hóa",
       "Xơ gan",
+      "Liver Cirrhosis",
+      "Tăng Áp Cửa",
+      "HRS-AKI",
+      "CAIDS",
+      "HPS",
+      "AASLD 2024",
       "Sinh lý bệnh",
       "Cơ chế bệnh sinh"
     ]

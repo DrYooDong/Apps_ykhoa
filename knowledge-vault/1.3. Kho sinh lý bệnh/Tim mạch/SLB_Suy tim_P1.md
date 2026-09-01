@@ -1,104 +1,137 @@
 ---
-title: "Suy tim"
-part: "P1"
+title: Suy tim
+part: P1
 aliases:
-  - "Suy tim"
-  - "Heart Failure"
-  - "HF"
-  - "HFpEF"
-  - "HFrEF"
-  - "HFmrEF"
-  - "Suy tim sung huyết"
-  - "Congestive Heart Failure"
+  - Suy tim
+  - Heart Failure
+  - HF
+  - HFpEF
+  - HFrEF
+  - HFmrEF
+  - Suy tim sung huyết
+  - Congestive Heart Failure
 keywords:
-  - "suy tim"
-  - "tim mạch"
-  - "bnp"
-  - "nt-probnp"
-  - "ef"
-  - "nyha"
-  - "acei"
-  - "arbi"
-  - "arni"
-  - "sglt2i"
-  - "spironolactone"
-  - "furosemide"
-  - "phù phổi cấp"
-  - "quá tải thể tích"
+  - suy tim
+  - tim mạch
+  - bnp
+  - nt-probnp
+  - ef
+  - nyha
+  - acei
+  - arbi
+  - arni
+  - sglt2i
+  - spironolactone
+  - furosemide
+  - phù phổi cấp
+  - quá tải thể tích
 icd10:
-  - "I50"
-  - "I50.1"
-  - "I50.9"
-  - "I42"
-specialty: "Tim mạch"
-kho: "1.3. Kho sinh lý bệnh"
+  - I50
+  - I50.1
+  - I50.9
+  - I42
+specialty: Tim mạch
+kho: 1.3. Kho sinh lý bệnh
 tags:
-  - "he-co-quan/tim-mach"
-  - "loai/disease"
-  - "y-khoa/slb"
-updated: "2026-08-21"
+  - he-co-quan/tim-mach
+  - loai/disease
+  - y-khoa/slb
 ---
-
-
-
-### 1. Đại cương về cơ chế bệnh sinh suy tim
-
-Suy tim là một hội chứng lâm sàng phức tạp, hậu quả của những biến đổi và tổn thương thực thể hoặc rối loạn chức năng của quả tim. Những bất thường này (như nhồi máu [[Tim|cơ tim]], [[Tăng huyết áp]], bệnh van tim, bệnh [[Tim|cơ tim]]) dẫn đến tình trạng tâm thất không đủ khả năng tiếp nhận máu (suy chức năng tâm trương) hoặc tống máu (suy chức năng tâm thu). Hậu quả cuối cùng là giảm cung lượng tim và/hoặc tăng áp lực đổ đầy buồng tim khi nghỉ ngơi hay khi gắng sức.
-
-### 2. Các hệ thống bù trừ thần kinh - thể dịch (Neurohormonal Activation)
-
-Khi cung lượng tim giảm, cơ thể sẽ kích hoạt các cơ chế bù trừ thần kinh - thể dịch để duy trì huyết áp và tưới máu cơ quan. Tuy nhiên, sự kích hoạt quá mức và kéo dài của các hệ thống này chính là "chìa khóa" dẫn đến tiến triển của suy tim.
-
-- **Hệ Renin - Angiotensin - Aldosterone (RAAS):** Sự giảm tưới máu [[Thận]] kích thích tiết Renin, dẫn đến tăng sản xuất Angiotensin II và Aldosterone. Angiotensin II gây co mạch mạnh (tăng hậu tải) và kích thích phì đại cơ tim. Aldosterone thúc đẩy tái hấp thu natri và nước, đồng thời gây phì đại cơ tim, xơ hóa khoảng kẽ, xơ cứng mạch máu và viêm hệ thống.
-- **Hệ thần kinh giao cảm (SNS):** Kích thích thái quá của hệ thần kinh giao cảm làm tăng nhịp tim và tăng co bóp cơ tim tạm thời, nhưng về lâu dài sẽ gây độc trực tiếp lên tế bào cơ tim, dẫn đến hoại tử tế bào và tái cấu trúc cơ tim.
-- **Hệ thống Peptide bài niệu (Natriuretic Peptides):** Khi thành tim bị căng giãn (do tăng áp lực hoặc thể tích), cơ tim sẽ tiết ra các peptide bài niệu (như BNP, NT-proBNP) giúp lợi niệu, giãn mạch và ức chế hệ RAAS cũng như hệ giao cảm. Tuy nhiên, trong suy tim, hệ thống bù trừ có lợi này thường bị lấn át bởi sự hoạt hóa quá mức của RAAS và SNS.
-
-> **Ứng dụng lâm sàng:** Sự hiểu biết về cơ chế này là nền tảng cho "Tứ trụ" trong điều trị suy tim phân suất tống máu giảm (HFrEF). Các thuốc ức chế men chuyển (ACEi)/chẹn thụ thể (ARB) hoặc ARNI (Sacubitril/Valsartan) giúp ức chế hệ RAAS và tăng cường hệ peptide bài niệu; thuốc chẹn beta ức chế hệ giao cảm; và thuốc kháng thụ thể mineralocorticoid (MRA như Spironolactone, Finerenone) giúp đối kháng tác dụng gây xơ hóa và giữ muối nước của Aldosterone.
-
-### 3. Cơ chế bệnh sinh theo kiểu hình suy tim
-
-Trong thực hành lâm sàng, việc phân loại suy tim dựa trên phân suất tống máu (EF) phản ánh các cơ chế bệnh sinh cốt lõi khác nhau:
-
-#### 3.1. Suy tim phân suất tống máu giảm (HFrEF)
-
-Cơ chế chủ yếu xuất phát từ sự mất tế bào cơ tim (cardiomyocyte loss) do thiếu máu cục bộ, nhồi máu cơ tim, độc chất hoặc đột biến di truyền. Sự tổn thương này làm suy giảm khả năng co bóp của thất trái, giảm thể tích nhát bóp. Để bù trừ, thất trái giãn ra (tái cấu trúc lệch tâm - eccentric hypertrophy), làm tăng sức căng thành tim và kích hoạt các vòng xoắn bệnh lý thần kinh - thể dịch.
-
-#### 3.2. Suy tim phân suất tống máu bảo tồn (HFpEF)
-
-HFpEF hiện nay không chỉ được xem là bệnh lý của riêng quả tim mà là một **hội chứng viêm hệ thống**.
-
-- **Cơ chế chuyển hóa - viêm:** Các bệnh lý đồng mắc như béo phì, đái tháo đường, hội chứng chuyển hóa gây ra tình trạng viêm mạn tính mức độ thấp (chronic low-grade inflammation). Tình trạng viêm này làm tăng các cytokine tiền viêm, gây stress oxy hóa và làm giảm sinh khả dụng của Nitric Oxide (NO) tại nội mạc mạch máu.
-- **Rối loạn chức năng vi tuần hoàn và Xơ hóa:** Sự rối loạn chức năng tế bào nội mạc vi mạch vành kích thích các tế bào sợi (fibroblasts) biệt hóa thành myofibroblasts, dẫn đến lắng đọng collagen và xơ hóa cơ tim (tái cấu trúc đồng tâm).
-- **Vai trò của mô mỡ bao tim:** Ở bệnh nhân béo phì, sự tích tụ mô mỡ thượng tâm mạc (epicardial adipose tissue) không chỉ tiết ra các adipokine gây viêm mà còn tạo ra sự gò bó cơ học (mechanical restraint), cản trở sự đổ đầy tâm trương của tâm thất.
-- **Lão hóa nội mô và độ cứng động mạch (Arterial stiffness):** Ở kiểu hình bệnh nhân lớn tuổi có [[Tăng huyết áp]], sự lão hóa của tế bào nội mô mạch máu và tăng độ cứng động mạch làm tăng hậu tải, thúc đẩy phì đại và xơ hóa tâm thất trái, dẫn đến tăng áp lực đổ đầy.
-
-> **Ứng dụng lâm sàng:** Do cơ chế của HFpEF là tình trạng viêm và rối loạn chuyển hóa đa cơ quan, các thuốc truyền thống của HFrEF thường thất bại trong việc giảm tử vong. Hiện nay, thuốc ức chế SGLT2 (Dapagliflozin, Empagliflozin) được coi là nền tảng (Class 1) cho HFpEF nhờ cơ chế giảm viêm, cải thiện chức năng vi mạch, giảm stress oxy hóa và thay đổi chuyển hóa năng lượng cơ tim. Bên cạnh đó, các thuốc đồng vận thụ thể GLP-1 (như Semaglutide) đang mở ra kỷ nguyên mới điều trị nhắm trúng đích kiểu hình HFpEF béo phì bằng cách giảm viêm hệ thống, giảm mô mỡ thượng tâm mạc và giảm sức cản cơ học.
-
-### 4. Cơ chế tế bào, phân tử và vai trò của Autophagy (Cơ chế tự thực)
-
-Ở mức độ tế bào, sự suy giảm năng lượng và rối loạn chức năng bào quan đóng vai trò quan trọng, đặc biệt trong bối cảnh đồng mắc bệnh [[Thận]] mạn (CKD) và đái tháo đường:
-
-- **Rối loạn hệ thống Autophagy-Lysosome:** Quá trình "tự thực" (autophagy) giúp dọn dẹp các protein cuộn gập sai và bào quan hư hỏng để duy trì cân bằng nội môi. Trong suy tim và bệnh thận mạn, quá trình này bị rối loạn (hoạt động quá mức hoặc suy giảm).
-- **Mối liên hệ:** Các thuốc SGLT2i đã được chứng minh có khả năng điều hòa lại quá trình autophagy thông qua con đường tín hiệu AMPK-mTOR và ức chế GSK-3β, giúp đảo ngược tình trạng rối loạn chức năng cơ tim, đồng thời cải thiện khả năng sử dụng cơ chất năng lượng (ưu tiên sử dụng thể ketone thay vì glucose).
-
-### 5. Cơ chế của tình trạng sung huyết trong Suy tim cấp mất bù (ADHF)
-
-Trong đợt cấp của suy tim, biểu hiện sung huyết (chiếm >80% các trường hợp) được giải thích qua hai cơ chế sinh lý bệnh chính:
-
-1. **Quá tải thể tích (Volume Overload):** Do sự ứ đọng thực sự của natri và nước qua thời gian, hậu quả của việc kích hoạt hệ RAAS và giao cảm. Cơ chế này thường gặp ở bệnh nhân có suy tim tiến triển, giảm chức năng thận.
-2. **Tái phân bố dịch (Fluid Redistribution):** Dịch bị dịch chuyển từ hệ tĩnh mạch tạng (nơi chứa máu) vào tuần hoàn [[Phổi]] và tuần hoàn trung tâm do tình trạng co mạch quá mức (kích hoạt thần kinh giao cảm đột ngột). Thường gặp ở bệnh nhân tăng huyết áp cấp cứu hoặc suy tim HFpEF.
-
-> **Ứng dụng lâm sàng:** Đối với quá tải thể tích, chiến lược chính là sử dụng thuốc lợi tiểu quai tiêm tĩnh mạch để thải natri và nước. Tuy nhiên, để tránh hiện tượng đề kháng lợi tiểu (do lợi tiểu quai kích hoạt ngược hệ RAAS), việc phối hợp sớm SGLT2i trong giai đoạn cấp giúp tăng thải natri ở ống lượn gần, làm giảm thể tích mô kẽ một cách chọn lọc mà không làm giảm quá mức thể tích trong lòng mạch, bảo vệ chức năng thận. Đối với tái phân bố dịch, các thuốc giãn mạch (như Nitroglycerin) lại đóng vai trò then chốt để giảm tiền tải và hậu tải.
+### **BÀI HỌC KHOA HỌC: SINH LÝ BỆNH CỦA SUY TIM (PHẦN 1)**
 
 ---
 
-### Tài liệu tham khảo (References)
+### **1. Nội Dung Sinh Lý Học Chi Tiết**
 
-1. Liori S, Kapelios CJ, Savarese G, Filippatos G. Heart failure evidence update 2026. _Heart Failure Reviews_. 2026;31:34. doi:10.1007/s10741-026-10609-3
-2. Vilceleanu BV, Popescu AM, Cecoltan S, et al. Modern definition and treatment of HFpEF - what is valid in 2025 and what to expect in 2026. _R. J. Mil. Med._ 2026;CXXIX(2):173-182.
-3. Wu et al. Sodium-glucose cotransporter-2 inhibitors vs. active comparators in patients with heart failure and end-stage kidney disease. _Frontiers in Cardiovascular Medicine_. 2026;13:1652863.
+#### **Đại cương về rối loạn huyết động và định nghĩa sinh lý bệnh**
+
+**Suy tim (Heart Failure - HF)** là một hội chứng lâm sàng phức tạp, đặc trưng bởi các triệu chứng cơ năng (như khó thở, mệt mỏi, phù ngoại vi) và dấu hiệu thực thể (như tĩnh mạch cổ nổi, ran ở phổi) gây ra bởi các **bất thường về cấu trúc và/hoặc chức năng của tim**. Sự biến đổi bệnh lý này dẫn đến hệ quả huyết động học cốt lõi: **tăng áp lực đổ đầy trong buồng tim (elevated intracardiac pressures)** và/hoặc **giảm cung lượng tim (inadequate cardiac output)** một cách không tương xứng lúc nghỉ ngơi hoặc khi gắng sức.
+
+Mặc dù các kiểu hình suy tim biểu hiện lâm sàng với các triệu chứng tương đồng, cấu trúc cơ tim và tác nhân thúc đẩy lại có sự khác biệt rõ rệt. Cung lượng tim và thể tích nhát bóp ở bệnh nhân suy tim phân suất tống máu bảo tồn (HFpEF) khi gắng sức thường cao hơn đáng kể so với suy tim phân suất tống máu giảm (HFrEF). Tuy nhiên, áp lực đổ đầy tăng vọt do buồng thất cứng kết hợp với các rối loạn vi tuần hoàn ngoại vi khiến khả năng gắng sức thực tế của nhóm bảo tồn bị suy giảm nghiêm trọng.
+
+---
+
+#### **Cơ chế bệnh sinh và tái cấu trúc cơ tim trong Suy tim phân suất tống máu giảm (HFrEF)**
+
+Trong **HFrEF** (được định nghĩa khi phân suất tống máu thất trái **LVEF < 50%** theo phân loại mới nhất), cơ chế bệnh sinh chính là **sự suy giảm nghiêm trọng khả năng co bóp của tâm thất trái (systolic dysfunction)**.
+
+- **Sự mất mát tế bào cơ tim (Cardiomyocyte Loss):** Sự tổn thương thực thể này thường khởi phát sau nhồi máu cơ tim, thiếu máu cục bộ cơ tim mạn tính, viêm cơ tim, đột biến di truyền hoặc độc chất (như hóa trị liệu ung thư, bia rượu).
+- **Tái cấu trúc lệch tâm (Eccentric Remodeling):** Để bù đắp lượng tế bào cơ tim bị mất đi và duy trì thể tích nhát bóp, các tế bào cơ tim còn lại sẽ tăng trưởng theo chiều dọc. Buồng tim giãn rộng ra, làm tăng sức căng thành cơ tim (myocardial wall stress).
+- **Vòng xoắn bệnh lý:** Sự giãn buồng tim và tăng sức căng thành tim kích hoạt mạnh mẽ các hệ thống bù trừ thần kinh - thể dịch (hệ RAAS và hệ giao cảm). Giai đoạn đầu, sự co mạch và giữ muối nước giúp duy trì huyết áp động mạch; tuy nhiên về lâu dài, sự tăng vọt tiền tải và hậu tải vượt quá khả năng chịu đựng của cơ tim giãn, đẩy nhanh quá trình chết theo chương trình (apoptosis) của tế bào cơ tim và gây xơ hóa khoảng kẽ.
+
+##### **Trích xuất Sơ đồ liên quan:**
+
+- **Tên Hình:** _Figure 5: Major contributing causes of heart failure with reduced ejection fraction_
+- **Thuộc tài liệu:** **ehag100.pdf** (Khuyến cáo ESC 2026 về quản lý suy tim).
+- ![[Pasted image 20260901103130.png]]
+- **Nội dung mô tả dưới hình:** Sơ đồ này phân loại các nhóm nguyên nhân thực thể trực tiếp dẫn đến sự tiến triển của HFrEF bao gồm: bệnh mạch vành thiếu máu cục bộ (IHD/CAD), tăng huyết áp, bệnh van tim, rối loạn nhịp và bệnh lý hệ dẫn truyền, bệnh cơ tim (do di truyền hoặc mắc phải), và nhóm độc chất (Toxic - bao gồm cả nhiễm độc do thuốc và nhiễm độc cơ tim liên quan đến hóa trị liệu).
+
+##### **Trích xuất Bảng thông tin liên quan:**
+
+- **Tên Bảng:** _Bảng 3: Nguyên nhân suy tim tâm thu_
+- **Thuộc tài liệu:** _khuyen-cao-cua-hoi-tim-mach-quoc-gia-Viet-Nam-ve-chan-doan-va-dieu-tri-suy-tim-cap-nhat-2017.pdf_ (Tương tự trong tài liệu quyết định 1857/QĐ-BYT của Bộ Y tế).
+- 
+- **Nội dung chi tiết trong bảng:** Bảng phân cấp các nguyên nhân gây suy tim tâm thu (LVEF giảm):
+    1. _Bệnh động mạch vành:_ Nhồi máu cơ tim, thiếu máu cục bộ cơ tim.
+    2. _Tăng tải áp lực mạn tính:_ Tăng huyết áp, bệnh van tim gây nghẽn (như hẹp chủ).
+    3. _Tăng tải thể tích mạn tính:_ Bệnh hở van tim, các dòng chảy thông (shunt) trong và ngoài tim.
+    4. _Bệnh cơ tim giãn nở không do thiếu máu cục bộ:_ Rối loạn di truyền, thâm nhiễm, tổn thương do độc chất/thuốc, bệnh chuyển hóa, virus và tác nhân nhiễm trùng.
+    5. _Rối loạn nhịp và tần số tim:_ Loạn nhịp nhanh hoặc loạn nhịp chậm mạn tính.
+    6. _Bệnh tim do phổi:_ Tâm phế mạn, rối loạn mạch máu phổi.
+    7. _Các tình trạng cung lượng cao và rối loạn chuyển hóa_ (như cường giáp, thiếu máu mạn).
+
+---
+
+#### **Cơ chế bệnh sinh - Hội chứng viêm hệ thống và chuyển hóa trong Suy tim phân suất tống máu bảo tồn (HFpEF)**
+
+Trái ngược với HFrEF, cơ chế bệnh sinh của **HFpEF** (LVEF ≥ 50%) không nằm ở khả năng tống máu mà nằm ở **sự suy giảm khả năng thư giãn và đổ đầy của tâm thất trái (diastolic dysfunction)** dưới áp lực thấp. Thất trái trở nên dày và cứng, đòi hỏi áp lực đổ đầy rất cao để tiếp nhận máu từ tâm nhĩ.
+
+Quan điểm hiện đại coi HFpEF là một **hội chứng viêm hệ thống mạn tính mức độ thấp (chronic low-grade systemic inflammation)**, được thúc đẩy bởi các bệnh lý đồng mắc chuyển hóa.
+
+- **Rối loạn chức năng nội mạc vi mạch (Microvascular Endothelial Dysfunction):** Tình trạng viêm hệ thống do béo phì, đái tháo đường, tăng huyết áp và bệnh thận mạn (CKD) làm tăng các cytokine tiền viêm và các gốc oxy hóa tự do (ROS), làm sụt giảm mạnh sinh khả dụng của **Nitric Oxide (NO)** tại tế bào nội mạc vi mạch vành. Sự thiếu hụt NO làm suy giảm hoạt tính của con đường sGC-cGMP-PKG, dẫn đến giảm phosphorylation của protein khổng lồ titin trong tế bào cơ tim, khiến sợi titin bị cứng và trực tiếp làm tăng độ cứng tâm trương.
+- **Tăng sinh xơ hóa cơ tim (Myocardial Fibrosis):** Các tế bào viêm thâm nhiễm kích hoạt cytokine biến đổi **TGF-β (Transforming Growth Factor-beta)**, thúc đẩy sự biệt hóa của nguyên bào sợi (fibroblasts) thành nguyên bào sợi cơ (myofibroblasts). Quá trình này kích thích lắng đọng collagen quá mức vào khoảng kẽ, gây xơ hóa cơ tim dồn dập.
+- **Kiểu hình Chuyển hóa - Béo phì (Cardiometabolic Phenotype):** Ở bệnh nhân béo phì, sự tích tụ mỡ nội tạng và **mô mỡ thượng tâm mạc (epicardial adipose tissue)** tăng cao. Mô mỡ này không chỉ giải phóng trực tiếp các adipokine gây viêm tại chỗ vào cơ tim mà còn tạo ra **sự gò bó cơ học (mechanical restraint)** quanh tim, cản trở sự giãn nở tâm trương. Đồng thời, thể tích tuần hoàn lớn ở người béo phì làm tăng thể tích nhát bóp và sức căng thành tim, thúc đẩy quá trình phì đại đồng tâm.
+- **Độc tính trực tiếp của Gluco-Metabolic trong Đái tháo đường:** Tình trạng tăng đường huyết kéo dài và kháng insulin gây độc trực tiếp lên tế bào cơ tim thông qua việc tích tụ các sản phẩm chuyển hóa glycat hóa bền vững (AGEs), làm rối loạn cân bằng canxi nội bào và ép buộc cơ tim chuyển sang sử dụng hoàn toàn acid béo làm năng lượng, gây "đói năng lượng" và xơ hóa thất trái.
+
+##### **Trích xuất Sơ đồ liên quan:**
+
+- **Tên Hình:** _Figure 6: Major risk factors of heart failure with preserved ejection fraction_
+- **Thuộc tài liệu:** **ehag100.pdf** (Khuyến cáo ESC 2026 về quản lý suy tim).
+- ![[Pasted image 20260901103318.png]]
+- **Nội dung mô tả dưới hình:** Sơ đồ này biểu diễn mạng lưới đa yếu tố nguy cơ thúc đẩy HFpEF bao gồm: Tuổi cao, Giới tính nữ, Rung nhĩ, Bệnh tim thiếu máu cục bộ, Béo phì, Đái tháo đường type 2, Tăng huyết áp, Lối sống tĩnh tại, Ngưng thở khi ngủ, Bệnh thận mạn, Thiếu máu, Bệnh lý phổi, Bệnh van tim, Các bệnh lý viêm/thâm nhiễm, và các nguyên nhân khác.
+
+##### **Trích xuất Bảng thông tin liên quan:**
+
+- **Tên Bảng:** _Bảng 4: Nguyên nhân suy tim tâm trương_
+- **Thuộc tài liệu:** _khuyen-cao-cua-hoi-tim-mach-quoc-gia-Viet-Nam-ve-chan-doan-va-dieu-tri-suy-tim-cap-nhat-2017.pdf_.
+- **Nội dung chi tiết trong bảng:** Các nguyên nhân hàng đầu gây ra suy tim tâm trương (LVEF bảo tồn):
+    1. Bệnh động mạch vành.
+    2. Tăng huyết áp.
+    3. Hẹp van động mạch chủ.
+    4. Bệnh cơ tim phì đại.
+    5. Bệnh cơ tim hạn chế.
+
+---
+
+#### **Hệ thống thần kinh - thể dịch và vai trò phản điều hòa của Peptide bài niệu**
+
+Khi cung lượng tim suy giảm hoặc áp lực thành tim tăng cao, cơ thể sẽ kích hoạt ba hệ thống nội tiết chính để bù trừ:
+
+1. **Hệ thần kinh giao cảm (SNS):** Tăng tiết Norepinephrine gây co mạch, tăng nhịp tim và sức co bóp cơ tim nhằm duy trì tưới máu cơ quan. Tuy nhiên, kích thích giao cảm kéo dài gây độc trực tiếp tế bào cơ tim, thúc đẩy xơ hóa và tăng nguy cơ rối loạn nhịp thất đột tử.
+2. **Hệ Renin - Angiotensin - Aldosterone (RAAS):** Angiotensin II gây co mạch hệ thống mạnh mẽ (tăng hậu tải) và kích thích nguyên bào sợi. Aldosterone kích hoạt thụ thể mineralocorticoid thúc đẩy giữ muối, giữ nước (gây quá tải thể tích và sung huyết), đồng thời gây xơ hóa cơ tim, xơ cứng mạch máu và viêm hệ thống.
+3. **Hệ thống Peptide bài niệu (Natriuretic Peptides):** Đây là **cơ chế bù trừ có lợi của cơ thể**. Khi vách tim bị căng giãn do quá tải áp lực hoặc thể tích, tế bào cơ tim sẽ sản xuất ProBNP, sau đó phân cắt thành **BNP** (có hoạt tính sinh học) và **NT-proBNP** (không có hoạt tính). BNP gắn vào thụ thể nội mạc giúp giãn mạch, lợi niệu thải natri, giảm huyết áp, đồng thời ức chế ngược hệ RAAS và hệ giao cảm.
+
+Trong suy tim mạn tính, hệ peptide bài niệu bị lấn át hoàn toàn bởi sự hoạt hóa quá mức của hệ RAAS và hệ giao cảm. Hơn nữa, enzyme **Neprilysin** nội sinh liên tục phân hủy và bất hoạt các peptide bài niệu này. Sự ra đời của nhóm thuốc **ARNI (Sacubitril/Valsartan)** giúp ức chế neprilysin (bảo vệ các peptide bài niệu có lợi) song hành với việc chẹn thụ thể AT1 của Angiotensin II, cắt đứt vòng xoắn bệnh lý thần kinh - thể dịch.
+
+---
+
+### **2. Trích Dẫn Tài Liệu Tham Khảo Chuẩn AMA**
+
+1. Task Force for the 2026 ESC Guidelines for the management of heart failure. 2026 ESC Guidelines for the management of heart failure. _Eur Heart J_. Published online August 30, 2026. doi:10.1093/eurheartj/ehag100
+2. Vilceleanu BV, Popescu AM, Cecoltan S, Ionita IT, Dumitrescu SI, Munteanu AE. Diagnostic and Modern definition and treatment of HFpEF - what is valid in 2025 and what to expect in 2026. _R. J. Mil. Med._ 2026;CXXIX(2):173-182. doi:10.55453/rjmm.2026.129.2.6
+3. Grossman J, Kalayeh B, Hocum B. Management Updates in Heart Failure With Mildly Reduced or Preserved Ejection Fraction. _Am J Manag Care_. 2026;32(suppl 6):S87-S94. doi:10.37765/ajmc.2026.89948
 4. Bộ Y tế Việt Nam. _Hướng dẫn chẩn đoán và điều trị suy tim cấp và mạn_. Quyết định số 1857/QĐ-BYT; Hà Nội, 2022.
-5. Walsh MN, Kober L, Sliwa K, et al. AHA/ACC/ESC/WHF Expert Consensus Document: Second Universal Definition of Heart Failure (2026). _Circulation_. 2026;153.
-6. Mateescu DM, Cotet IG, Badalica-Petrescu M, et al. Multidomain Efficacy of SGLT2 Inhibitors in Heart Failure. _J. Clin. Med._ 2026;15:378.
-7. Grossman J, Kalayeh B, Hocum B. Management Updates in Heart Failure With Mildly Reduced or Preserved Ejection Fraction. _Am J Manag Care_. 2026;32(suppl 6):S87-S94.
-8. Lê Thị Đẹp. Giảm xung huyết ở bệnh nhân suy tim cấp: Cập nhật bằng chứng và tiếp cận hiện nay. _Hội nghị khoa học Tim mạch SVCC 19TH 2025_.
+5. Walsh MN, Kober L, Sliwa K, et al. AHA/ACC/ESC/WHF Expert Consensus Document: Second Universal Definition of Heart Failure (2026). _Eur Heart J_. Published online June 30, 2026. doi:10.1093/eurheartj/ehag500
+6. Hội Tim mạch Quốc gia Việt Nam. _Khuyến cáo của Hội Tim mạch Quốc gia Việt Nam về chẩn đoán và điều trị suy tim: Cập nhật 2017_. Phan Thiết, 2017.
+
+--

@@ -51,6 +51,13 @@ Leptin là một hormone do mô mỡ tiết ra để điều hòa lượng thứ
 
 ---
 
+#### TRÍCH XUẤT SƠ ĐỒ MINH HỌA CƠ CHẾ BỆO PHÌ:
+> * **Tên hình:** Figure 1: Phenotypes of obesity (Kiểu hình béo phì)
+> * **Thuộc tài liệu:** *Hypertension News - July 2025 (1753298537.pdf)* [Passage 21]
+> * **Nội dung mô tả dưới hình:** Hình ảnh minh họa hai kiểu hình phân bố mỡ khác nhau trong cơ thể: **Mỡ ngoại vi (Peripheral adiposity)** tích tụ dưới da và **Kho mỡ bụng (Abdominal AT depot)** tích tụ sâu trong khoang tạng xung quanh các cơ quan. Sự tích tụ mỡ tạng vùng bụng và quanh thận là nguồn gốc chính gây viêm, đề kháng insulin hệ thống, và đè ép cơ học trực tiếp lên cấu trúc thận, kích hoạt hệ thần kinh giao cảm và RAAS để thúc đẩy tăng huyết áp.
+
+---
+
 ### 1.3. Cơ chế nhạy cảm muối và Sinh lý bệnh của Natri
 Nhạy cảm muối của huyết áp (Salt Sensitivity of Blood Pressure - SSBP) là hiện tượng trị số huyết áp của một cá nhân thay đổi song hành trực tiếp với lượng muối (natri) nạp vào hàng ngày [28]. Đây là một đặc tính sinh học phức tạp, ảnh hưởng đến khoảng **50% bệnh nhân tăng huyết áp** và **25% cá nhân có huyết áp bình thường** [28]. SSBP là một yếu tố nguy cơ độc lập đối với các biến cố tim mạch và tổn thương thận, ngay cả khi huyết áp nền được kiểm soát [28].
 
@@ -71,7 +78,6 @@ Trái với quan niệm truyền thống cho rằng muối chỉ làm tăng huy�
 #### TRÍCH XUẤT SƠ ĐỒ MINH HỌA BỘ ĐỆM NATRI:
 > * **Tên hình:** Figure 2: Schematic of the red blood cell glycocalyx as a sodium buffer (Sơ đồ cơ chế lớp glycocalyx hồng cầu hoạt động như bộ đệm natri)
 > * **Thuộc tài liệu:** *Hypertension News - July 2025 (1753298537.pdf)* [Passage 29]
-> * ![[Pasted image 20260901091828.png]]
 > * **Nội dung mô tả dưới hình:** Sơ đồ mô tả một tế bào hồng cầu di chuyển trong lòng mạch, được bao phủ bởi một lớp glycocalyx tích điện âm (vùng bàn chải màu xanh dương). 
 >   * **Bên trái (Trạng thái bình thường/Moderate sodium):** Natri ($Na^+$) được gắn kết an toàn vào lớp glycocalyx dày, giữ cho tế bào nội mạc mạch máu được bảo vệ hoàn toàn.
 >   * **Bên phải (Trạng thái mặn/High-salt state):** Lượng natri quá mức làm quá tải và phá hủy cấu trúc glycocalyx (lớp glycocalyx bị mỏng đi rõ rệt), cho phép các ion $Na^+$ tự do xuyên qua màng tế bào nội mạc thâm nhập vào thành mạch, kích hoạt phản ứng viêm (thâm nhiễm tế bào lympho, đại thực bào), gây rối loạn chức năng nội mạc, tăng co thắt mạch và dẫn đến tăng huyết áp nhạy cảm muối.
@@ -118,8 +124,7 @@ Sự kích hoạt kéo dài hệ thần kinh giao cảm kích thích lách giả
 ---
 
 #### TRÍCH XUẤT SƠ ĐỒ TƯƠNG TÁC PHÂN TỬ:
-> * **Tên hình:** Fig. 1: Schematic representation of key molecular pathways involved in the pathogenesis of high blood pressure and sites of therapeutic interactions with different classes of antihypertensive agents.
-> * ![[Pasted image 20260901091929.png]]
+> * **Tên hình:** Fig. 1: Schematic representation of key molecular pathways involved in the pathogenesis of high blood pressure and sites of therapeutic interactions with different classes of antihypertensive agents
 > * **Thuộc tài liệu:** *New Drug Strategies for Treating Resistant Hypertension (s40292-024-00634-4.pdf)* [Passage 841]
 > * **Nội dung mô tả dưới hình:** Sơ đồ mô tả các con đường sinh hóa và phân tử cốt lõi điều hòa huyết áp tại tế bào nội mạc mạch máu và tế bào cơ trơn, bao gồm:
 >   1. **Hệ Renin-Angiotensin-Aldosterone (RAAS):** Angiotensin II tác động lên thụ thể AT1 gây co mạch mạnh. Aldosterone sản sinh từ tuyến thượng thận dưới sự xúc tác của enzyme Aldosterone Synthase (CYP11B2) gắn vào thụ thể Mineralocorticoid (MR) gây giữ muối nước ở thận.
