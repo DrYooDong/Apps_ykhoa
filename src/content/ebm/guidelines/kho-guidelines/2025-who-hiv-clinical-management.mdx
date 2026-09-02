@@ -1,0 +1,914 @@
+---
+title: "WHO 2025: Hướng Dẫn Quản Lý Lâm Sàng HIV — Tối Ưu Hóa ART, Dự Phòng Lây Truyền Mẹ-Con & Dự Phòng Lao (TPT)"
+slug: "2025-who-hiv-clinical-management"
+code: "GDL-2025-WHO-HIV-CLINICAL"
+organization: "Tổ chức Y tế Thế giới (WHO)"
+year: "2025"
+category: "guidelines"
+status: "published"
+version: "3.0.0"
+updatedAt: "2026-09-02"
+cor: "I"
+loe: "A"
+description: "Hướng dẫn thực hành lâm sàng cập nhật của WHO năm 2025 về Quản lý HIV theo hướng tiếp cận sức khỏe cộng đồng: Tối ưu hóa phác đồ ART với Dolutegravir (DTG) và Darunavir/ritonavir (DRV/r), chiến lược tái sử dụng Tenofovir/Abacavir, phác đồ 2 thuốc (DTG+3TC) & tiêm kéo dài (CAB+RPV), phân tầng dự phòng lây truyền mẹ sang con (6 tuần 3 thuốc cho nguy cơ cao) và phác đồ dự phòng Lao 3HP ưu tiên."
+tags:
+  - "WHO"
+  - "HIV/AIDS"
+  - "ART"
+  - "Dolutegravir"
+  - "Darunavir"
+  - "Tenofovir"
+  - "Abacavir"
+  - "Dự phòng mẹ-con"
+  - "Dự phòng Lao"
+  - "3HP"
+  - "Khuyến cáo lâm sàng"
+  - "Evidence-Based Medicine"
+keyRecommendations:
+  - "Trụ cột ART ban đầu: TDF (hoặc TAF) + 3TC (hoặc FTC) + DTG cho người lớn/vị thành niên; ABC + 3TC + DTG cho trẻ em và trẻ sơ sinh (từ ngày sinh)."
+  - "Thất bại phác đồ đầu: Nâng cấp Darunavir/ritonavir (DRV/r) thành boosted PI ưu tiên hàng đầu; tái sử dụng (recycling) TDF/TAF hoặc ABC thay vì chuyển sang AZT độc tính cao."
+  - "Đơn giản hóa điều trị: Phác đồ 2 thuốc đường uống (DTG+3TC) hoặc phác đồ tiêm tác dụng kéo dài (CAB+RPV tiêm 2 tháng/lần) cho ca tải lượng virus dưới ngưỡng; CHỐNG CHỈ ĐỊNH khi đồng nhiễm HBV hoạt lực."
+  - "Dự phòng lây truyền dọc mẹ sang con: Trẻ nguy cơ thấp: 6 tuần 1 thuốc (NVP ưu tiên); Trẻ nguy cơ cao: 6 tuần 3 thuốc (ABC/3TC + DTG) + tiếp tục 1 thuốc kéo dài khi bú mẹ cho đến khi mẹ đạt ức chế virus hoặc cai sữa."
+  - "Nuôi con bằng sữa mẹ: Bú mẹ ít nhất 12 tháng (lên đến 24 tháng hoặc lâu hơn); trao quyền lựa chọn bú mẹ an toàn tại các quốc gia khuyến cáo sữa công thức nếu mẹ đạt ức chế virus hoàn toàn."
+  - "Dự phòng Lao (TPT): Ưu tiên hàng đầu phác đồ ngắn ngày 3HP (Isoniazid + Rifapentine hàng tuần trong 3 tháng) thay thế cho 6H/9H; tương thích tốt với DTG liều chuẩn ở người lớn."
+sections:
+  - id: "sec-tong-quan-art"
+    number: 1
+    title: "Tổng Quan & Trụ Cột Tối Ưu Hóa Phác Đồ ART"
+    icon: "fa-solid fa-virus"
+  - id: "sec-pi-darunavir"
+    number: 2
+    title: "Darunavir/ritonavir (DRV/r) & So Sánh Các Thuốc Ức Chế Protease"
+    icon: "fa-solid fa-capsules"
+  - id: "sec-tai-su-dung-nrti"
+    number: 3
+    title: "Chiến Lược Tái Sử Dụng Tenofovir/Abacavir & So Sánh TAF vs TDF"
+    icon: "fa-solid fa-recycle"
+  - id: "sec-phac-do-ban-dau-tiep-theo"
+    number: 4
+    title: "Ma Trận Phác Đồ ART Ban Đầu & Phác Đồ Tiếp Theo Khi Thất Bại"
+    icon: "fa-solid fa-table-cells"
+  - id: "sec-2dr-va-tiem-keo-dai"
+    number: 5
+    title: "Phác Đồ 2 Thuốc (DTG+3TC) & Phác Đồ Tiêm Kéo Dài (CAB+RPV)"
+    icon: "fa-solid fa-syringe"
+  - id: "sec-du-phong-me-con"
+    number: 6
+    title: "Dự Phòng Lây Truyền Dọc Mẹ Sang Con & Bảng Phân Liều Sơ Sinh"
+    icon: "fa-solid fa-person-breastfeeding"
+  - id: "sec-du-phong-lao-tpt"
+    number: 7
+    title: "Dự Phòng Bệnh Lao (TPT): Ưu Tiên Phác Đồ Ngắn Ngày 3HP"
+    icon: "fa-solid fa-lungs"
+  - id: "sec-luu-do-svg"
+    number: 8
+    title: "Lưu Đồ Thuật Toán Lâm Sàng WHO 2025 (SVG)"
+    icon: "fa-solid fa-diagram-project"
+  - id: "sec-tai-lieu-tham-khao"
+    number: 9
+    title: "Danh Mục Tài Liệu Tham Khảo Y Văn Chuẩn AMA"
+    icon: "fa-solid fa-book-bookmark"
+---
+
+<div class="stats-strip">
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-val green">DRV/r: Boosted PI Ưu Tiên</div>
+      <div class="stat-lbl">Ức chế virus vượt trội LPV/r (OR 1.50) và giảm 57% tỷ lệ ngừng thuốc so với ATV/r</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val blue">Tái Sử Dụng TDF/TAF &amp; ABC</div>
+      <div class="stat-lbl">Duy trì TDF/TAF (người lớn) và ABC (trẻ em) khi thất bại phác đồ 1 thay vì đổi sang AZT độc tính</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val amber">6 Tuần 3 Thuốc: Nguy Cơ Cao</div>
+      <div class="stat-lbl">Trẻ sơ sinh nguy cơ cao: ABC/3TC + DTG 6 tuần + NVP kéo dài suốt thời gian bú mẹ</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val purple">3HP: Ưu Tiên Dự Phòng Lao</div>
+      <div class="stat-lbl">Isoniazid + Rifapentine hàng tuần trong 3 tháng — hoàn thành vượt trội và ít độc gan hơn 6H/9H</div>
+    </div>
+  </div>
+</div>
+
+<div class="pillars">
+  <div class="pillars-inner">
+    <div class="pillar p1">
+      <div class="pillar-icon">🧬</div>
+      <div>
+        <div class="pillar-title">Tối Ưu Hóa Phác Đồ ART Toàn Diện</div>
+        <div class="pillar-desc">Dolutegravir (DTG) là xương sống bậc 1. Darunavir/ritonavir (DRV/r) là boosted PI ưu tiên bậc 2. Tái sử dụng TDF/TAF/ABC giúp đơn giản hóa chuỗi cung ứng và loại bỏ độc tính ức chế tủy của AZT.</div>
+      </div>
+    </div>
+    <div class="pillar p2">
+      <div class="pillar-icon">👶</div>
+      <div>
+        <div class="pillar-title">Phân Tầng Dự Phòng Lây Truyền Dọc Mẹ-Con</div>
+        <div class="pillar-desc">Phân tách rõ nhóm nguy cơ thấp (6 tuần Nevirapine đơn trị) và nguy cơ cao (6 tuần phác đồ 3 thuốc ABC/3TC+DTG phối hợp NVP kéo dài khi bú mẹ). Viên phân tán bẻ 4 tối giản liều lượng sơ sinh.</div>
+      </div>
+    </div>
+    <div class="pillar p3">
+      <div class="pillar-icon">🫁</div>
+      <div>
+        <div class="pillar-title">Chuyển Dịch Phác Đồ Dự Phòng Lao (TPT) Sang 3HP</div>
+        <div class="pillar-desc">Phác đồ ngắn ngày 3HP (Isoniazid + Rifapentine hàng tuần x 3 tháng) chính thức được đề xuất ưu tiên hàng đầu cho người sống chung với HIV, thay thế các phác đồ kéo dài 6H/9H kém tuân thủ.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="quickmenu" id="quickmenu">
+  <div class="quickmenu-inner">
+    <a href="#sec-tong-quan-art" class="quickmenu-item active">1. Tổng quan ART</a>
+    <a href="#sec-pi-darunavir" class="quickmenu-item">2. Darunavir (DRV/r)</a>
+    <a href="#sec-tai-su-dung-nrti" class="quickmenu-item">3. Tái sử dụng TDF/ABC</a>
+    <a href="#sec-phac-do-ban-dau-tiep-theo" class="quickmenu-item">4. Ma trận phác đồ ART</a>
+    <a href="#sec-2dr-va-tiem-keo-dai" class="quickmenu-item">5. 2DR &amp; Tiêm CAB+RPV</a>
+    <a href="#sec-du-phong-me-con" class="quickmenu-item">6. Dự phòng Mẹ-Con</a>
+    <a href="#sec-du-phong-lao-tpt" class="quickmenu-item">7. Dự phòng Lao (TPT)</a>
+    <a href="#sec-luu-do-svg" class="quickmenu-item">8. Lưu đồ thuật toán SVG</a>
+    <a href="#sec-tai-lieu-tham-khao" class="quickmenu-item">9. Tài liệu tham khảo</a>
+  </div>
+</div>
+
+<div class="page-content">
+
+  <!-- ==================== SECTION 1 ==================== -->
+  <div class="sec-card" id="sec-tong-quan-art">
+    <div class="sec-hdr">
+      <span class="sec-hdr-icon">🔬</span>
+      <h2 class="sec-title">1. Tổng Quan &amp; Trụ Cột Tối Ưu Hóa Phác Đồ Điều Trị Kháng Virus (ART)</h2>
+    </div>
+    <div class="sec-body">
+
+      <p style="line-height: 1.7; margin-bottom: 1rem;">
+        Tính đến cuối năm 2024, đại dịch HIV toàn cầu tiếp tục ảnh hưởng đến gần <strong>40 triệu người sống chung với HIV (PLHIV)</strong>, trong đó hơn 30 triệu người đang tiếp cận ART. Hướng dẫn cập nhật năm 2025 của Tổ chức Y tế Thế giới (WHO) chuẩn hóa theo hướng tiếp cận sức khỏe cộng đồng (public health approach) với 4 nguyên tắc trụ cột:
+      </p>
+
+      <div class="updates-grid">
+        <div class="update-card">
+          <div class="update-card-accent" style="background: #16a34a;"></div>
+          <div class="update-card-header">
+            <div class="update-card-icon" style="background: #f0fdf4; color: #16a34a;">⚡</div>
+            <div class="update-card-title">Trụ Cột Điều Trị Ban Đầu: Dolutegravir (DTG)</div>
+          </div>
+          <div class="update-card-body">
+            <p>Phác đồ dựa trên thuốc ức chế tích hợp <strong>Dolutegravir (DTG)</strong> tiếp tục là lựa chọn ưu tiên số 1 cho người lớn, trẻ vị thành niên và trẻ em từ ngày sinh nhờ hiệu lực ức chế virus nhanh, hàng rào kháng thuốc cao và ít tác dụng phụ.</p>
+          </div>
+          <div class="update-verdict verdict-green">DTG là cốt lõi cho điều trị ban đầu</div>
+        </div>
+
+        <div class="update-card">
+          <div class="update-card-accent" style="background: #0284c7;"></div>
+          <div class="update-card-header">
+            <div class="update-card-icon" style="background: #f0f9ff; color: #0284c7;">🛡️</div>
+            <div class="update-card-title">Trụ Cột Bậc 2: Darunavir/ritonavir (DRV/r)</div>
+          </div>
+          <div class="update-card-body">
+            <p>Khi thất bại phác đồ đầu chứa DTG hoặc NNRTI, <strong>Darunavir/ritonavir (DRV/r)</strong> chính thức được nâng cấp thành lựa chọn thuốc ức chế protease tăng cường (boosted PI) <strong>ưu tiên nhất</strong> thay thế cho LPV/r và ATV/r.</p>
+          </div>
+          <div class="update-verdict verdict-blue">DRV/r là boosted PI ưu tiên bậc 2</div>
+        </div>
+
+        <div class="update-card">
+          <div class="update-card-accent" style="background: #7c3aed;"></div>
+          <div class="update-card-header">
+            <div class="update-card-icon" style="background: #faf5ff; color: #7c3aed;">♻️</div>
+            <div class="update-card-title">Đột Phá Tái Sử Dụng (Recycling) NRTI</div>
+          </div>
+          <div class="update-card-body">
+            <p>Duy trì và tái sử dụng <strong>TDF/TAF</strong> ở người lớn hoặc <strong>ABC</strong> ở trẻ em khi thất bại phác đồ đầu thay vì đổi sang Zidovudine (AZT) độc tính cao. Bằng chứng bước ngoặt (D2EFT, NADIA, CHAPAS-4) chứng minh hiệu quả vượt trội.</p>
+          </div>
+          <div class="update-verdict verdict-purple">Tái sử dụng TDF/ABC — Không cần đổi AZT</div>
+        </div>
+
+        <div class="update-card">
+          <div class="update-card-accent" style="background: #d97706;"></div>
+          <div class="update-card-header">
+            <div class="update-card-icon" style="background: #fffbeb; color: #d97706;">💉</div>
+            <div class="update-card-title">Công Thức Mới: 2DR &amp; Tiêm Kéo Dài</div>
+          </div>
+          <div class="update-card-body">
+            <p>Phác đồ 2 thuốc uống (<strong>DTG+3TC</strong>) và phác đồ tiêm kéo dài 2 tháng/lần (<strong>CAB+RPV</strong>) mở ra lựa chọn chuyển đổi khi tải lượng virus dưới ngưỡng. <span class="ebm-grade" style="background:#fef2f2; color:#dc2626;">Chống chỉ định</span> khi đồng nhiễm HBV hoạt lực.</p>
+          </div>
+          <div class="update-verdict verdict-amber">Cá thể hóa điều trị — Cấm khi có HBV</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==================== SECTION 2 ==================== -->
+  <div class="sec-card" id="sec-pi-darunavir">
+    <div class="sec-hdr">
+      <span class="sec-hdr-icon">💊</span>
+      <h2 class="sec-title">2. Khuyến Cáo Darunavir/ritonavir (DRV/r) &amp; So Sánh Các Thuốc Ức Chế Protease (PIs)</h2>
+    </div>
+    <div class="sec-body">
+
+      <div class="infobox success">
+        <span class="infobox-icon">⭐</span>
+        <div>
+          <strong>Khuyến Cáo Chính Thức WHO 2025 Về Thuốc Ức Chế Protease (PIs):</strong>
+          <ul style="margin-top: 0.35rem; line-height: 1.6;">
+            <li><strong>Darunavir/ritonavir (DRV/r)</strong> là lựa chọn thuốc ức chế protease tăng cường (boosted PI) <strong>ƯU TIÊN</strong> cho điều trị kháng virus ở người nhiễm HIV (<em>Khuyến cáo mạnh mẽ, chất lượng bằng chứng trung bình</em>).</li>
+            <li><strong>Atazanavir/ritonavir (ATV/r)</strong> hoặc <strong>Lopinavir/ritonavir (LPV/r)</strong> là các lựa chọn <strong>THAY THẾ</strong> (<em>Khuyến cáo có điều kiện, chất lượng bằng chứng trung bình</em>).</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 style="margin-top: 1.25rem; margin-bottom: 0.5rem; font-size: 1.05rem; color: var(--color-primary);">
+        <i class="fa-solid fa-scale-balanced"></i> Bảng Đối Chiếu 3 Thuốc Ức Chế Protease Tăng Cường (Table 3.1 WHO 2025)
+      </h3>
+
+      <div class="table-wrapper">
+        <table class="regimen-table">
+          <thead>
+            <tr>
+              <th style="width: 28%;">Thông Số Lâm Sàng</th>
+              <th style="width: 24%;">DRV/r (Ưu Tiên)</th>
+              <th style="width: 24%;">ATV/r (Thay Thế)</th>
+              <th style="width: 24%;">LPV/r (Thay Thế)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="source-cell"><strong>Hiệu quả ức chế virus tuần 96</strong></td>
+              <td><span class="ebm-grade">Vượt trội LPV/r</span> (OR 1.50; 95% CrI: 1.14–1.96); tương đương ATV/r (OR 1.08)</td>
+              <td>Tương đương DRV/r; vượt trội LPV/r</td>
+              <td>Thấp hơn đáng kể so với DRV/r và ATV/r</td>
+            </tr>
+            <tr>
+              <td class="source-cell"><strong>Tỷ lệ ngừng thuốc do biến cố bất lợi</strong></td>
+              <td><span class="ebm-grade">Thấp nhất</span> (OR 0.43 vs ATV/r; OR 0.39 vs LPV/r)</td>
+              <td>Cao hơn (ngừng do vàng da tăng bilirubin)</td>
+              <td>Cao nhất (ngừng do tiêu chảy, nôn mửa nặng)</td>
+            </tr>
+            <tr>
+              <td class="source-cell"><strong>Số viên / Tính tiện lợi</strong></td>
+              <td>1–2 viên/ngày (Uống 1 hoặc 2 lần/ngày)</td>
+              <td>1 viên/ngày (Uống 1 lần/ngày)</td>
+              <td><strong>4 viên/ngày</strong> (Uống 2 lần/ngày)</td>
+            </tr>
+            <tr>
+              <td class="source-cell"><strong>Tăng Bilirubin máu (Vàng da)</strong></td>
+              <td><strong>Không (-)</strong> — Không gây kỳ thị</td>
+              <td><span style="color: #dc2626; font-weight: bold;">Rất cao (++)</span> — Vàng da củng mạc mắt</td>
+              <td>Không (-)</td>
+            </tr>
+            <tr>
+              <td class="source-cell"><strong>Không dung nạp đường tiêu hóa</strong></td>
+              <td>Ít (±)</td>
+              <td>Ít (±)</td>
+              <td><span style="color: #dc2626; font-weight: bold;">Rất nặng (++)</span> (Tiêu chảy dai dẳng)</td>
+            </tr>
+            <tr>
+              <td class="source-cell"><strong>An toàn trong thai kỳ</strong></td>
+              <td>An toàn; tỷ lệ ức chế virus cao (+20.6% vs LPV/r)</td>
+              <td>An toàn</td>
+              <td>Tăng sinh non và trẻ nhẹ cân so với tuổi thai</td>
+            </tr>
+            <tr>
+              <td class="source-cell"><strong>Hiệu quả ở trẻ em (CHAPAS-4)</strong></td>
+              <td><span class="ebm-grade">Vượt trội hoàn toàn</span> (OR 1.98 vs LPV/r &amp; ATV/r)</td>
+              <td>Hạn chế dạng bào chế cho trẻ &lt; 6 tuổi</td>
+              <td>Có siro/cốm từ 2 tuần tuổi; mùi vị khó uống</td>
+            </tr>
+            <tr>
+              <td class="source-cell"><strong>Tương tác với thuốc Lao Rifampicin</strong></td>
+              <td>Rifampicin làm giảm sâu DRV; tăng gấp đôi liều có nguy cơ độc gan</td>
+              <td>Tăng gấp đôi liều ATV/r (300/100mg x 2) vượt qua tương tác an toàn</td>
+              <td>Rifampicin làm giảm nồng độ; tăng liều LPV/r gây độc gan nặng</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==================== SECTION 3 ==================== -->
+  <div class="sec-card" id="sec-tai-su-dung-nrti">
+    <div class="sec-hdr">
+      <span class="sec-hdr-icon">♻️</span>
+      <h2 class="sec-title">3. Chiến Lược Tái Sử Dụng (Recycling) Tenofovir / Abacavir &amp; So Sánh TAF vs TDF</h2>
+    </div>
+    <div class="sec-body">
+
+      <div class="updates-grid">
+        <div class="update-card">
+          <div class="update-card-accent" style="background: #16a34a;"></div>
+          <div class="update-card-header">
+            <div class="update-card-icon" style="background: #f0fdf4; color: #16a34a;">🔄</div>
+            <div class="update-card-title">Tái Sử Dụng Tenofovir (TDF/TAF) Ở Người Lớn &amp; Trẻ &gt; 30 kg</div>
+          </div>
+          <div class="update-card-body">
+            <ul style="margin-left: 1rem; line-height: 1.7;">
+              <li><strong>Khuyến cáo:</strong> TDF (hoặc TAF) + 3TC (hoặc FTC) là xương sống NRTI ưu tiên cho cả phác đồ ban đầu và tiếp theo, bao gồm cả người đã từng thất bại với Tenofovir hoặc AZT trước đó.</li>
+              <li><strong>Bằng chứng (NADIA, D2EFT, VISEND):</strong> Duy trì TDF phối hợp với DTG hoặc boosted PI đạt ức chế virus tương đương hoặc vượt trội chuyển sang AZT, phục hồi CD4 tốt hơn và loại trừ độc tính thiếu máu của AZT.</li>
+            </ul>
+          </div>
+          <div class="update-verdict verdict-green">Khuyến cáo mạnh mẽ — Bằng chứng trung bình</div>
+        </div>
+
+        <div class="update-card">
+          <div class="update-card-accent" style="background: #0284c7;"></div>
+          <div class="update-card-header">
+            <div class="update-card-icon" style="background: #f0f9ff; color: #0284c7;">👶</div>
+            <div class="update-card-title">Tái Sử Dụng Abacavir (ABC) Ở Trẻ Em &lt; 30 kg</div>
+          </div>
+          <div class="update-card-body">
+            <ul style="margin-left: 1rem; line-height: 1.7;">
+              <li><strong>Khuyến cáo:</strong> ABC (hoặc TAF) + 3TC (hoặc FTC) là xương sống NRTI được gợi ý cho phác đồ tiếp theo ở trẻ em &lt; 30 kg đã từng điều trị với ABC hoặc AZT.</li>
+              <li><strong>Bằng chứng (CHAPAS-4, ODYSSEY):</strong> Duy trì ABC giảm 45% nguy cơ thất bại virus tại tuần 96 so với chuyển sang AZT (OR 0.55). Kể cả khi có kháng ABC trước đó, duy trì ABC vẫn bảo vệ DTG khỏi đột biến kháng thuốc (OR 0.18).</li>
+            </ul>
+          </div>
+          <div class="update-verdict verdict-blue">Khuyến cáo có điều kiện — Bằng chứng thấp</div>
+        </div>
+      </div>
+
+      <h3 style="margin-top: 1.25rem; margin-bottom: 0.5rem; font-size: 1.05rem; color: var(--color-primary);">
+        <i class="fa-solid fa-code-compare"></i> So Sánh Chi Tiết Tenofovir Alafenamide (TAF) vs Tenofovir Disoproxil Fumarate (TDF) (Table 3.4)
+      </h3>
+
+      <div class="table-wrapper">
+        <table class="regimen-table">
+          <thead>
+            <tr>
+              <th style="width: 25%;">Tiêu Chí Đối Chiếu</th>
+              <th style="width: 15%; text-align: center;">Ưu thế TAF</th>
+              <th style="width: 15%; text-align: center;">Ưu thế TDF</th>
+              <th style="width: 45%;">Nhận Xét &amp; Hướng Dẫn Lâm Sàng Từ WHO</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="source-cell"><strong>Độc tính trên Thận</strong></td>
+              <td style="text-align: center;"><span style="color:#16a34a; font-weight:bold; font-size:1.2rem;">✓</span></td>
+              <td></td>
+              <td>TAF nồng độ huyết tương thấp hơn → ít ảnh hưởng dấu ấn sinh học thận. Lợi ích TAF rõ nhất khi dùng chung với boosted PI (vốn làm tăng nồng độ TDF gây suy thận).</td>
+            </tr>
+            <tr>
+              <td class="source-cell"><strong>Mật độ khoáng Xương (BMD)</strong></td>
+              <td style="text-align: center;"><span style="color:#16a34a; font-weight:bold; font-size:1.2rem;">✓</span></td>
+              <td></td>
+              <td>TAF ít làm giảm mật độ khoáng của xương hơn TDF, có lợi cho người loãng xương hoặc trẻ nhỏ.</td>
+            </tr>
+            <tr>
+              <td class="source-cell"><strong>Lipid máu &amp; Tăng cân</strong></td>
+              <td></td>
+              <td style="text-align: center;"><span style="color:#16a34a; font-weight:bold; font-size:1.2rem;">✓</span></td>
+              <td>TAF liên quan đến tăng cân nhẹ (đặc biệt khi phối hợp INSTI) và tăng nhẹ LDL-C/Triglycerides. TDF trung tính hơn về cân nặng/mỡ máu.</td>
+            </tr>
+            <tr>
+              <td class="source-cell"><strong>Dùng chung với Boosted PI</strong></td>
+              <td style="text-align: center;"><span style="color:#16a34a; font-weight:bold; font-size:1.2rem;">✓</span></td>
+              <td></td>
+              <td>Khi dùng với boosted PI, liều TAF giảm xuống <strong>10 mg</strong> (đã có dạng FDC generic). TDF không có dạng giảm liều cho người lớn.</td>
+            </tr>
+            <tr>
+              <td class="source-cell"><strong>Đồng nhiễm Lao (Rifampicin)</strong></td>
+              <td></td>
+              <td style="text-align: center;"><span style="color:#16a34a; font-weight:bold; font-size:1.2rem;">✓</span></td>
+              <td>Rifampicin làm giảm TAF huyết tương, nhưng nồng độ Tenofovir diphosphat nội bào vẫn cao gấp 4–5 lần TDF chuẩn → <strong>Dùng TAF 25 mg/ngày an toàn với Rifampicin</strong>. TDF không bị ảnh hưởng.</td>
+            </tr>
+            <tr>
+              <td class="source-cell"><strong>Sẵn có &amp; Chi phí tại LMIC</strong></td>
+              <td></td>
+              <td style="text-align: center;"><span style="color:#16a34a; font-weight:bold; font-size:1.2rem;">✓</span></td>
+              <td>Phác đồ TDF (như TLD) phổ biến toàn cầu, giá thành rẻ nhất. TAF đang mở rộng generic.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==================== SECTION 4 ==================== -->
+  <div class="sec-card" id="sec-phac-do-ban-dau-tiep-theo">
+    <div class="sec-hdr">
+      <span class="sec-hdr-icon">📊</span>
+      <h2 class="sec-title">4. Ma Trận Phác Đồ ART Ban Đầu &amp; Phác Đồ Tiếp Theo Khi Thất Bại (WHO 2025)</h2>
+    </div>
+    <div class="sec-body">
+
+      <h3 style="margin-bottom: 0.5rem; font-size: 1.05rem; color: var(--color-primary);">
+        <i class="fa-solid fa-play"></i> Bảng Phác Đồ ART Ban Đầu (Table 3.2 WHO 2025)
+      </h3>
+
+      <div class="table-wrapper">
+        <table class="regimen-table">
+          <thead>
+            <tr>
+              <th style="width: 25%;">Nhóm Đối Tượng</th>
+              <th style="width: 40%;">Phác Đồ Ưu Tiên Ban Đầu</th>
+              <th style="width: 35%;">Phác Đồ Thay Thế Ban Đầu</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="source-cell"><strong>Người lớn &amp; Trẻ vị thành niên</strong></td>
+              <td><span class="rx-tag preferred">Ưu tiên 1</span> <strong>TDF (hoặc TAF) + 3TC (hoặc FTC) + DTG</strong></td>
+              <td>TDF + 3TC + EFV 400mg (nếu kháng tiền điều trị EFV &lt; 10%) • ABC + 3TC + DTG • TDF/TAF + 3TC + DRV/r</td>
+            </tr>
+            <tr>
+              <td class="source-cell"><strong>Trẻ em (&lt; 30 kg)</strong></td>
+              <td><span class="rx-tag preferred">Ưu tiên 1</span> <strong>ABC + 3TC + DTG</strong></td>
+              <td>TAF + 3TC (hoặc FTC) + DTG • ABC + 3TC + DRV/r (cho trẻ ≥ 3 tuổi) hoặc ATV/r hoặc LPV/r</td>
+            </tr>
+            <tr>
+              <td class="source-cell"><strong>Trẻ sơ sinh (&lt; 4 tuần)</strong></td>
+              <td><span class="rx-tag preferred">Ưu tiên 1</span> <strong>ABC + 3TC + DTG</strong> (DTG 5mg cách ngày 2 tuần đầu)</td>
+              <td><strong>AZT + 3TC + NVP</strong> • AZT (hoặc ABC) + 3TC + LPV/r (từ 2 tuần tuổi)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 style="margin-top: 1.5rem; margin-bottom: 0.5rem; font-size: 1.05rem; color: var(--color-primary);">
+        <i class="fa-solid fa-forward"></i> Bảng Phác Đồ ART Tiếp Theo Khi Thất Bại Phác Đồ Ban Đầu (Table 3.3 WHO 2025)
+      </h3>
+
+      <div class="table-wrapper">
+        <table class="regimen-table">
+          <thead>
+            <tr>
+              <th style="width: 25%;">Nhóm Đối Tượng</th>
+              <th style="width: 35%;">Phác Đồ Ban Đầu Thất Bại</th>
+              <th style="width: 40%;">Phác Đồ Tiếp Theo Ưu Tiên</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="source-cell" rowspan="3"><strong>Người lớn, Trẻ vị thành niên &amp; Trẻ &gt; 30 kg</strong></td>
+              <td>TDF (hoặc TAF) + 3TC (hoặc FTC) + <strong>DTG</strong></td>
+              <td><span class="rx-tag preferred">Tái sử dụng TDF</span> <strong>TDF (hoặc TAF) + 3TC (hoặc FTC) + DRV/r</strong></td>
+            </tr>
+            <tr>
+              <td>TDF (hoặc TAF) + 3TC + <strong>EFV</strong> / AZT + 3TC + <strong>EFV</strong></td>
+              <td><span class="rx-tag preferred">Chuyển sang DTG</span> <strong>TDF (hoặc TAF) + 3TC (hoặc FTC) + DTG</strong></td>
+            </tr>
+            <tr>
+              <td>ABC + 3TC + <strong>DTG</strong></td>
+              <td><span class="rx-tag preferred">Tái sử dụng ABC</span> <strong>ABC (hoặc TAF) + 3TC (hoặc FTC) + DRV/r</strong></td>
+            </tr>
+            <tr>
+              <td class="source-cell" rowspan="2"><strong>Trẻ em &lt; 30 kg &amp; Trẻ sơ sinh</strong></td>
+              <td>ABC (hoặc AZT) + 3TC + <strong>LPV/r</strong></td>
+              <td><span class="rx-tag preferred">Tái sử dụng ABC</span> <strong>ABC (hoặc TAF) + 3TC (hoặc FTC) + DTG</strong></td>
+            </tr>
+            <tr>
+              <td>AZT + 3TC + <strong>NVP</strong></td>
+              <td><span class="rx-tag preferred">Chuyển sang DTG</span> <strong>ABC (hoặc TAF) + 3TC (hoặc FTC) + DTG</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==================== SECTION 5 ==================== -->
+  <div class="sec-card" id="sec-2dr-va-tiem-keo-dai">
+    <div class="sec-hdr">
+      <span class="sec-hdr-icon">💉</span>
+      <h2 class="sec-title">5. Phác Đồ 2 Thuốc (DTG+3TC) &amp; Phác Đồ Tiêm Kéo Dài (CAB+RPV)</h2>
+    </div>
+    <div class="sec-body">
+
+      <div class="updates-grid">
+        <div class="update-card">
+          <div class="update-card-accent" style="background: #0284c7;"></div>
+          <div class="update-card-header">
+            <div class="update-card-icon" style="background: #f0f9ff; color: #0284c7;">💊</div>
+            <div class="update-card-title">Phác Đồ 2 Thuốc Đường Uống (DTG + 3TC)</div>
+          </div>
+          <div class="update-card-body">
+            <ul style="margin-left: 1rem; line-height: 1.7;">
+              <li><strong>Chỉ định:</strong> Đơn giản hóa điều trị ở người lớn/vị thành niên có HIV RNA &lt; 50 copies/mL đang dùng 3 thuốc và <strong>không nhiễm viêm gan B hoạt lực</strong>.</li>
+              <li><strong>Hiệu quả:</strong> Tương đương phác đồ 3 thuốc tiêu chuẩn (RR 1.00; 95% CI: 0.99–1.02), giảm độc tính tích lũy suốt đời và giảm tương tác thuốc ở người cao tuổi.</li>
+              <li><span class="ebm-grade" style="background:#fef2f2; color:#dc2626;">Cảnh báo:</span> Bắt buộc test HBsAg trước khi đổi. Không dùng cho người nhiễm HBV vì thiếu Tenofovir gây bùng phát suy gan cấp.</li>
+            </ul>
+          </div>
+          <div class="update-verdict verdict-blue">Giảm độc tính — Bắt buộc loại trừ HBV</div>
+        </div>
+
+        <div class="update-card">
+          <div class="update-card-accent" style="background: #7c3aed;"></div>
+          <div class="update-card-header">
+            <div class="update-card-icon" style="background: #faf5ff; color: #7c3aed;">💉</div>
+            <div class="update-card-title">Phác Đồ Tiêm Kéo Dài (Cabotegravir + Rilpivirine)</div>
+          </div>
+          <div class="update-card-body">
+            <ul style="margin-left: 1rem; line-height: 1.7;">
+              <li><strong>Chỉ định:</strong> Tiêm bắp sâu mỗi 2 tháng (CAB+RPV LAI) cho người lớn/vị thành niên đã đạt ức chế virus ổn định bằng phác đồ uống và không nhiễm HBV hoạt lực.</li>
+              <li><strong>Ưu điểm:</strong> Loại bỏ gánh nặng uống thuốc hàng ngày, bảo đảm sự riêng tư, giảm kỳ thị và cải thiện tính tuân thủ.</li>
+              <li><span class="ebm-grade" style="background:#fef2f2; color:#dc2626;">Cảnh báo:</span> Nếu thất bại, nguy cơ cao kháng chéo nhóm INSTI (mất hiệu lực DTG). Không dùng chung Rifampicin.</li>
+            </ul>
+          </div>
+          <div class="update-verdict verdict-purple">Tiêm mỗi 2 tháng — Nguy cơ kháng chéo INSTI</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==================== SECTION 6 ==================== -->
+  <div class="sec-card" id="sec-du-phong-me-con">
+    <div class="sec-hdr">
+      <span class="sec-hdr-icon">🤱</span>
+      <h2 class="sec-title">6. Quản Lý Lây Truyền Dọc Mẹ Sang Con, Bảng Phân Liều Sơ Sinh &amp; Nuôi Con Bằng Sữa Mẹ</h2>
+    </div>
+    <div class="sec-body">
+
+      <div class="infobox info">
+        <span class="infobox-icon">📋</span>
+        <div>
+          <strong>Phân Tầng Nguy Cơ Phơi Nhiễm Ở Trẻ Sơ Sinh (WHO 2025):</strong>
+          <p style="margin-top: 0.35rem; line-height: 1.6;">
+            <strong>Nguy cơ cao (High Risk):</strong> Trẻ sinh ra từ mẹ dùng ART &lt; 4 tuần trước sinh, hoặc mẹ có tải lượng virus &gt; 1000 bản sao/mL trong 4 tuần trước sinh, hoặc mẹ phát hiện nhiễm HIV mới trong thai kỳ/thời kỳ cho con bú.<br/>
+            <strong>Nguy cơ thấp (Low Risk):</strong> Trẻ sinh ra từ mẹ điều trị ART ổn định, đạt ức chế virus và không thuộc các tiêu chuẩn nguy cơ cao.
+          </p>
+        </div>
+      </div>
+
+      <div class="table-wrapper" style="margin-top: 1rem;">
+        <table class="regimen-table">
+          <thead>
+            <tr>
+              <th style="width: 25%;">Nhóm Nguy Cơ</th>
+              <th style="width: 35%;">Phác Đồ Dự Phòng Sau Sinh (6 Tuần Đầu)</th>
+              <th style="width: 40%;">Dự Phòng Kéo Dài Trong Thời Gian Bú Mẹ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="source-cell"><strong>Nguy cơ thấp (Low Risk)</strong></td>
+              <td><span class="rx-tag preferred">1 Thuốc</span> <strong>Nevirapine (NVP)</strong> trong <strong>6 tuần</strong> (DTG hoặc 3TC là thay thế)</td>
+              <td>Không cần dự phòng kéo dài nếu mẹ duy trì ức chế virus</td>
+            </tr>
+            <tr>
+              <td class="source-cell"><strong>Nguy cơ cao (High Risk)</strong></td>
+              <td><span class="rx-tag alert">3 Thuốc</span> <strong>ABC + 3TC + DTG</strong> trong <strong>6 tuần</strong> (Viên phân tán)</td>
+              <td><span class="rx-tag preferred">1 Thuốc kéo dài</span> <strong>Nevirapine (NVP)</strong> hàng ngày cho đến khi mẹ đạt ức chế virus hoàn toàn hoặc cai sữa hoàn toàn</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 style="margin-top: 1.5rem; margin-bottom: 0.5rem; font-size: 1.05rem; color: var(--color-primary);">
+        <i class="fa-solid fa-calculator"></i> Bảng Phân Liều Tối Giản Cho Trẻ Sơ Sinh &amp; Nhũ Nhi (Table 4.1 WHO 2025)
+      </h3>
+
+      <div class="table-wrapper">
+        <table class="regimen-table">
+          <thead>
+            <tr>
+              <th style="width: 20%;">Hoạt Chất</th>
+              <th style="width: 25%;">Dạng Bào Chế Trẻ Em</th>
+              <th style="width: 25%;">0 đến &lt; 2 Tuần Tuổi</th>
+              <th style="width: 15%;">2 đến &lt; 4 Tuần Tuổi</th>
+              <th style="width: 15%;">&gt; 4 Tuần (3 đến &lt; 6 kg)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="source-cell"><strong>ABC / 3TC</strong></td>
+              <td>Viên phân tán <strong>120 mg / 60 mg</strong> (bẻ 4 - double-scored)</td>
+              <td><span class="rx-tag preferred">¼ viên</span> <strong>cách ngày</strong> (mỗi 48h)</td>
+              <td><span class="rx-tag secondary">¼ viên</span> <strong>hàng ngày</strong></td>
+              <td><span class="rx-tag preferred">½ viên</span> <strong>hàng ngày</strong></td>
+            </tr>
+            <tr>
+              <td class="source-cell"><strong>DTG</strong></td>
+              <td>Viên phân tán <strong>5 mg</strong></td>
+              <td><span class="rx-tag preferred">1 viên</span> <strong>cách ngày</strong> (mỗi 48h)</td>
+              <td><span class="rx-tag secondary">1 viên</span> <strong>hàng ngày</strong></td>
+              <td><span class="rx-tag preferred">1 viên</span> <strong>hàng ngày</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size: 0.85rem; color: var(--color-text-muted, #64748b); margin-top: 0.35rem;">
+        <em>Lưu ý an toàn: Bắt buộc dùng viên ABC/3TC bẻ 4 (double-scored) khi phân liều ¼ viên. Hỗn hợp 3 thuốc pALD (ABC+3TC+DTG) chỉ dùng cho trẻ &gt; 4 tuần tuổi.</em>
+      </p>
+
+      <!-- BREASTFEEDING -->
+      <h3 style="margin-top: 1.5rem; margin-bottom: 0.5rem; font-size: 1.05rem; color: var(--color-primary);">
+        <i class="fa-solid fa-heart"></i> Khuyến Cáo Nuôi Con Bằng Sữa Mẹ
+      </h3>
+      <div class="updates-grid">
+        <div class="update-card">
+          <div class="update-card-accent" style="background: #16a34a;"></div>
+          <div class="update-card-header">
+            <div class="update-card-icon" style="background: #f0fdf4; color: #16a34a;">🤱</div>
+            <div class="update-card-title">Thời Gian Cho Con Bú Khuyến Cáo</div>
+          </div>
+          <div class="update-card-body">
+            <p>Mẹ nhiễm HIV đang điều trị ART nên cho con bú <strong>ít nhất 12 tháng</strong> và có thể tiếp tục <strong>lên đến 24 tháng hoặc lâu hơn</strong> tương tự quần thể chung trong khi được hỗ trợ tuân thủ ART đầy đủ.</p>
+          </div>
+          <div class="update-verdict verdict-green">Bú mẹ ít nhất 12–24 tháng</div>
+        </div>
+
+        <div class="update-card">
+          <div class="update-card-accent" style="background: #0284c7;"></div>
+          <div class="update-card-header">
+            <div class="update-card-icon" style="background: #f0f9ff; color: #0284c7;">🕊️</div>
+            <div class="update-card-title">Quyền Lựa Chọn Bú Mẹ Tại Các Nước Sữa Công Thức</div>
+          </div>
+          <div class="update-card-body">
+            <p>Tại các bối cảnh khuyến cáo sữa công thức: Người mẹ đạt <strong>ức chế virus hoàn toàn</strong> nên được trao quyền lựa chọn nuôi con bằng sữa mẹ và nhận được hỗ trợ y tế toàn diện cho quyết định của mình.</p>
+          </div>
+          <div class="update-verdict verdict-blue">Trao quyền lựa chọn bú mẹ an toàn</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==================== SECTION 7 ==================== -->
+  <div class="sec-card" id="sec-du-phong-lao-tpt">
+    <div class="sec-hdr">
+      <span class="sec-hdr-icon">🫁</span>
+      <h2 class="sec-title">7. Dự Phòng Bệnh Lao (TPT) Ở Người Sống Chung Với HIV: Ưu Tiên Phác Đồ Ngắn Ngày 3HP</h2>
+    </div>
+    <div class="sec-body">
+
+      <div class="infobox success">
+        <span class="infobox-icon">⭐</span>
+        <div>
+          <strong>Khuyến Cáo Chính Thức WHO 2025 Về Dự Phòng Lao (TPT):</strong>
+          <p style="margin-top: 0.35rem; line-height: 1.6;">
+            Phác đồ <strong>3 tháng dùng Isoniazid + Rifapentine hàng tuần (3HP)</strong> là phác đồ <strong>ƯU TIÊN ĐƯỢC ĐỀ XUẤT</strong> cho người lớn và trẻ vị thành niên sống chung với HIV.<br/>
+            Phác đồ <strong>6H hoặc 9H</strong> (Isoniazid hàng ngày 6–9 tháng) là các phác đồ <strong>THAY THẾ</strong> khi không sẵn có Rifapentine.
+          </p>
+        </div>
+      </div>
+
+      <div class="table-wrapper" style="margin-top: 1rem;">
+        <table class="regimen-table">
+          <thead>
+            <tr>
+              <th style="width: 20%;">Phân Tầng</th>
+              <th style="width: 30%;">Phác Đồ &amp; Liệu Trình</th>
+              <th style="width: 50%;">Đặc Điểm Lâm Sàng &amp; Tương Tác Thuốc ARV</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="source-cell"><span class="rx-tag preferred">Ưu Tiên</span></td>
+              <td><strong>3HP</strong><br/>Isoniazid + Rifapentine hàng tuần trong <strong>3 tháng</strong> (12 liều)</td>
+              <td>An toàn cao, tỷ lệ hoàn thành điều trị vượt trội, ít độc tế bào gan. <strong>Tương thích hoàn toàn với DTG liều chuẩn</strong> ở người lớn (không cần chỉnh liều).</td>
+            </tr>
+            <tr>
+              <td class="source-cell"><span class="rx-tag secondary">Thay Thế</span></td>
+              <td><strong>6H / 9H</strong><br/>Isoniazid hàng ngày trong <strong>6 hoặc 9 tháng</strong></td>
+              <td>Chi phí rẻ nhưng thời gian điều trị quá dài, tỷ lệ bỏ trị cao, nguy cơ độc tính trên gan cao. Cần theo dõi men gan và hỗ trợ tuân thủ.</td>
+            </tr>
+            <tr>
+              <td class="source-cell"><span class="rx-tag alert">Đặc Biệt</span></td>
+              <td><strong>1HP</strong><br/>Isoniazid + Rifapentine hàng ngày trong <strong>1 tháng</strong> (28 liều)</td>
+              <td>Chỉ dùng cho người ≥ 13 tuổi. Tương tác dược động học mạnh: <strong>Bắt buộc tăng liều DTG lên 50mg x 2 lần/ngày</strong> khi dùng đồng thời.</td>
+            </tr>
+            <tr>
+              <td class="source-cell"><span class="rx-tag alert">Trẻ Em</span></td>
+              <td><strong>3HR</strong><br/>Isoniazid + Rifampicin hàng ngày trong <strong>3 tháng</strong></td>
+              <td>Thường dùng cho trẻ em. <strong>Chống chỉ định dùng chung PIs, NVP</strong>. Cần thận trọng với TAF và tăng liều DTG/Raltegravir.</td>
+            </tr>
+            <tr>
+              <td class="source-cell"><span class="rx-tag alert">MDR-TB</span></td>
+              <td><strong>6Lfx</strong><br/>Levofloxacin hàng ngày trong <strong>6 tháng</strong></td>
+              <td>Chỉ định chuyên biệt cho người tiếp xúc nguồn lây Lao kháng đa thuốc (MDR-TB) hoặc kháng Rifampicin (RR-TB).</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="infobox warning" style="margin-top: 1rem;">
+        <span class="infobox-icon">⚠️</span>
+        <div>
+          <strong>Cảnh Báo Lâm Sàng Tối Quan Trọng: Bắt Buộc Loại Trừ Bệnh Lao Hoạt Động Trước Khi Kê Đơn TPT</strong>
+          <p style="margin-top: 0.35rem; line-height: 1.6;">
+            Sàng lọc kỹ 4 triệu chứng kinh điển (Sốt, Ho, Sụt cân, Đổ mồ hôi đêm) và chụp X-quang ngực / GeneXpert. Nếu vô tình chỉ định TPT đơn trị liệu cho bệnh nhân đang mắc Lao hoạt động sẽ dẫn đến thảm họa <strong>kháng thuốc Rifampicin/Rifapentine</strong> hệ thống.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==================== SECTION 8: SVG DIAGRAMS ==================== -->
+  <div class="sec-card" id="sec-luu-do-svg">
+    <div class="sec-hdr">
+      <span class="sec-hdr-icon">📊</span>
+      <h2 class="sec-title">8. Lưu Đồ Thuật Toán Lâm Sàng WHO 2025 (SVG Editorial)</h2>
+    </div>
+    <div class="sec-body">
+
+      <!-- SVG 1: ART ALGORITHM -->
+      <h4 style="color: var(--color-primary); margin-bottom: 0.5rem; font-size: 1rem;">
+        <i class="fa-solid fa-diagram-project"></i> Sơ đồ 1: Thuật Toán Lựa Chọn Phác Đồ ART Ban Đầu &amp; Chuyển Đổi Khi Thất Bại
+      </h4>
+      <div style="background: var(--color-surface, #ffffff); border: 1px solid var(--color-border, #e2e8f0); border-radius: 12px; padding: 1rem; overflow-x: auto;">
+        <svg viewBox="0 0 940 540" width="100%" height="auto" style="font-family: system-ui, -apple-system, sans-serif; display: block;" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <marker id="arrH" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#374151"/>
+            </marker>
+          </defs>
+
+          <!-- TOP: ART INITIATION -->
+          <rect x="250" y="15" width="440" height="40" rx="8" fill="#eff6ff" stroke="#0284c7" stroke-width="2"/>
+          <text x="470" y="40" font-size="13" font-weight="bold" fill="#0369a1" text-anchor="middle">KHỞI TRỊ ART BAN ĐẦU (FIRST-LINE ART)</text>
+
+          <!-- FORK TO 3 POPULATIONS -->
+          <path d="M 470 55 L 470 75" stroke="#374151" stroke-width="2" fill="none"/>
+          <path d="M 160 75 L 780 75" stroke="#374151" stroke-width="2" fill="none"/>
+          <path d="M 160 75 L 160 95" stroke="#374151" stroke-width="2" fill="none" marker-end="url(#arrH)"/>
+          <path d="M 470 75 L 470 95" stroke="#374151" stroke-width="2" fill="none" marker-end="url(#arrH)"/>
+          <path d="M 780 75 L 780 95" stroke="#374151" stroke-width="2" fill="none" marker-end="url(#arrH)"/>
+
+          <!-- 3 POPULATION BOXES -->
+          <!-- Adult/Adolescent -->
+          <rect x="30" y="100" width="260" height="70" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+          <text x="160" y="122" font-size="11.5" font-weight="bold" fill="#14532d" text-anchor="middle">Người Lớn &amp; Trẻ Vị Thành Niên</text>
+          <text x="160" y="142" font-size="11" font-weight="bold" fill="#15803d" text-anchor="middle">TDF (hoặc TAF) + 3TC + DTG</text>
+          <text x="160" y="158" font-size="9.5" fill="#64748b" text-anchor="middle">(Phác đồ TLD chuẩn)</text>
+
+          <!-- Children -->
+          <rect x="340" y="100" width="260" height="70" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+          <text x="470" y="122" font-size="11.5" font-weight="bold" fill="#14532d" text-anchor="middle">Trẻ Em (&lt; 30 kg)</text>
+          <text x="470" y="142" font-size="11" font-weight="bold" fill="#15803d" text-anchor="middle">ABC + 3TC + DTG</text>
+          <text x="470" y="158" font-size="9.5" fill="#64748b" text-anchor="middle">(Viên phân tán theo cân nặng)</text>
+
+          <!-- Neonates -->
+          <rect x="650" y="100" width="260" height="70" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+          <text x="780" y="122" font-size="11.5" font-weight="bold" fill="#14532d" text-anchor="middle">Trẻ Sơ Sinh (&lt; 4 tuần)</text>
+          <text x="780" y="142" font-size="11" font-weight="bold" fill="#15803d" text-anchor="middle">ABC + 3TC + DTG</text>
+          <text x="780" y="158" font-size="9.5" fill="#64748b" text-anchor="middle">(DTG 5mg cách ngày 2 tuần đầu)</text>
+
+          <!-- DOWN TO MONITORING -->
+          <path d="M 160 170 L 160 215" stroke="#374151" stroke-width="2" fill="none" marker-end="url(#arrH)"/>
+          <path d="M 470 170 L 470 215" stroke="#374151" stroke-width="2" fill="none" marker-end="url(#arrH)"/>
+          <path d="M 780 170 L 780 215" stroke="#374151" stroke-width="2" fill="none" marker-end="url(#arrH)"/>
+
+          <!-- MONITORING & FAILURE DETECTION -->
+          <rect x="180" y="220" width="580" height="45" rx="8" fill="#fffbeb" stroke="#d97706" stroke-width="1.5"/>
+          <text x="470" y="240" font-size="12" font-weight="bold" fill="#78350f" text-anchor="middle">GIÁM SÁT TẢI LƯỢNG VIRUS (VL) ĐỊNH KỲ</text>
+          <text x="470" y="255" font-size="10.5" fill="#92400e" text-anchor="middle">Nếu VL ≥ 1000 bản sao/mL sau khi hỗ trợ tuân thủ → Xác nhận Thất Bại Điều Trị</text>
+
+          <!-- DOWN TO SECOND-LINE -->
+          <path d="M 470 265 L 470 305" stroke="#dc2626" stroke-width="2" fill="none" marker-end="url(#arrH)"/>
+
+          <!-- SECOND-LINE BOX -->
+          <rect x="100" y="310" width="740" height="40" rx="8" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+          <text x="470" y="335" font-size="13" font-weight="bold" fill="#991b1b" text-anchor="middle">PHÁC ĐỒ TIẾP THEO ƯU TIÊN (SECOND-LINE ART — WHO 2025)</text>
+
+          <!-- 3 SECOND-LINE BRANCHES -->
+          <path d="M 470 350 L 470 370" stroke="#374151" stroke-width="2" fill="none"/>
+          <path d="M 230 370 L 710 370" stroke="#374151" stroke-width="2" fill="none"/>
+          <path d="M 230 370 L 230 390" stroke="#374151" stroke-width="2" fill="none" marker-end="url(#arrH)"/>
+          <path d="M 710 370 L 710 390" stroke="#374151" stroke-width="2" fill="none" marker-end="url(#arrH)"/>
+
+          <!-- Left second-line box: ADULTS (RECYCLING TDF + DRV/r) -->
+          <rect x="50" y="395" width="360" height="110" rx="10" fill="#ffffff" stroke="#0284c7" stroke-width="2"/>
+          <text x="230" y="418" font-size="12" font-weight="bold" fill="#0369a1" text-anchor="middle">Người Lớn Thất Bại Với DTG</text>
+          <line x1="65" y1="426" x2="395" y2="426" stroke="#e2e8f0" stroke-width="1"/>
+          <text x="230" y="445" font-size="11" font-weight="bold" fill="#0f172a" text-anchor="middle">TDF (hoặc TAF) + 3TC/FTC + DRV/r</text>
+          <text x="230" y="465" font-size="10" fill="#16a34a" text-anchor="middle">✓ Tái sử dụng TDF/TAF (Không cần đổi AZT)</text>
+          <text x="230" y="482" font-size="10" fill="#0284c7" text-anchor="middle">✓ DRV/r là boosted PI ưu tiên số 1</text>
+          <text x="230" y="497" font-size="9" fill="#64748b" text-anchor="middle">(Nếu dùng TAF với PI: giảm liều TAF 10mg)</text>
+
+          <!-- Right second-line box: CHILDREN (RECYCLING ABC + DTG/DRV/r) -->
+          <rect x="530" y="395" width="360" height="110" rx="10" fill="#ffffff" stroke="#7c3aed" stroke-width="2"/>
+          <text x="710" y="418" font-size="12" font-weight="bold" fill="#6b21a8" text-anchor="middle">Trẻ Em Thất Bại Phác Đồ Đầu</text>
+          <line x1="545" y1="426" x2="875" y2="426" stroke="#e2e8f0" stroke-width="1"/>
+          <text x="710" y="445" font-size="11" font-weight="bold" fill="#0f172a" text-anchor="middle">ABC (hoặc TAF) + 3TC + DTG</text>
+          <text x="710" y="465" font-size="10" fill="#16a34a" text-anchor="middle">✓ Tái sử dụng ABC (khi thất bại với LPV/r)</text>
+          <text x="710" y="482" font-size="10" fill="#7c3aed" text-anchor="middle">✓ Nếu thất bại với DTG: Đổi sang DRV/r</text>
+          <text x="710" y="497" font-size="9" fill="#64748b" text-anchor="middle">(DRV/r dùng cho trẻ từ ≥ 3 tuổi)</text>
+
+        </svg>
+      </div>
+
+      <!-- SVG 2: MTCT & TPT ALGORITHMS -->
+      <h4 style="color: var(--color-primary); margin-top: 1.5rem; margin-bottom: 0.5rem; font-size: 1rem;">
+        <i class="fa-solid fa-diagram-project"></i> Sơ đồ 2: Thuật Toán Phân Tầng Dự Phòng Lây Truyền Mẹ-Con &amp; Phác Đồ Dự Phòng Lao (TPT)
+      </h4>
+      <div style="background: var(--color-surface, #ffffff); border: 1px solid var(--color-border, #e2e8f0); border-radius: 12px; padding: 1rem; overflow-x: auto;">
+        <svg viewBox="0 0 940 460" width="100%" height="auto" style="font-family: system-ui, -apple-system, sans-serif; display: block;" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <marker id="arrH2" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#374151"/>
+            </marker>
+          </defs>
+
+          <!-- LEFT HALF: MTCT PREVENTION -->
+          <rect x="20" y="15" width="435" height="430" rx="14" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.5"/>
+          <text x="237" y="42" font-size="13" font-weight="bold" fill="#581c87" text-anchor="middle">DỰ PHÒNG LÂY TRUYỀN DỌC MẸ SANG CON</text>
+
+          <rect x="40" y="60" width="395" height="35" rx="6" fill="#ffffff" stroke="#c084fc" stroke-width="1"/>
+          <text x="237" y="82" font-size="11" font-weight="bold" fill="#4c1d95" text-anchor="middle">Đánh Giá Nguy Cơ Phơi Nhiễm Sau Sinh</text>
+
+          <!-- Fork to low and high risk -->
+          <path d="M 237 95 L 237 115" stroke="#374151" stroke-width="1.5" fill="none"/>
+          <path d="M 135 115 L 340 115" stroke="#374151" stroke-width="1.5" fill="none"/>
+          <path d="M 135 115 L 135 130" stroke="#374151" stroke-width="1.5" fill="none" marker-end="url(#arrH2)"/>
+          <path d="M 340 115 L 340 130" stroke="#374151" stroke-width="1.5" fill="none" marker-end="url(#arrH2)"/>
+
+          <!-- Low risk box -->
+          <rect x="40" y="135" width="190" height="45" rx="6" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+          <text x="135" y="155" font-size="11" font-weight="bold" fill="#14532d" text-anchor="middle">NGUY CƠ THẤP</text>
+          <text x="135" y="170" font-size="9" fill="#166534" text-anchor="middle">(Mẹ dùng ART ổn định, VL &lt; 1000)</text>
+
+          <path d="M 135 180 L 135 205" stroke="#374151" stroke-width="1.5" fill="none" marker-end="url(#arrH2)"/>
+          <rect x="40" y="210" width="190" height="75" rx="6" fill="#ffffff" stroke="#16a34a" stroke-width="1"/>
+          <text x="135" y="232" font-size="11" font-weight="bold" fill="#15803d" text-anchor="middle">6 Tuần 1 Thuốc:</text>
+          <text x="135" y="250" font-size="10.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Nevirapine (NVP)</text>
+          <text x="135" y="268" font-size="9" fill="#64748b" text-anchor="middle">(DTG hoặc 3TC thay thế)</text>
+
+          <!-- High risk box -->
+          <rect x="245" y="135" width="190" height="45" rx="6" fill="#fef2f2" stroke="#dc2626" stroke-width="1.5"/>
+          <text x="340" y="155" font-size="11" font-weight="bold" fill="#991b1b" text-anchor="middle">NGUY CƠ CAO</text>
+          <text x="340" y="170" font-size="9" fill="#991b1b" text-anchor="middle">(Mẹ ART &lt; 4 tuần, VL &gt; 1000)</text>
+
+          <path d="M 340 180 L 340 205" stroke="#374151" stroke-width="1.5" fill="none" marker-end="url(#arrH2)"/>
+          <rect x="245" y="210" width="190" height="75" rx="6" fill="#ffffff" stroke="#dc2626" stroke-width="1"/>
+          <text x="340" y="232" font-size="11" font-weight="bold" fill="#dc2626" text-anchor="middle">6 Tuần 3 Thuốc:</text>
+          <text x="340" y="250" font-size="10.5" font-weight="bold" fill="#0f172a" text-anchor="middle">ABC + 3TC + DTG</text>
+          <text x="340" y="268" font-size="9" fill="#64748b" text-anchor="middle">(Viên phân tán bẻ 4)</text>
+
+          <path d="M 340 285 L 340 310" stroke="#374151" stroke-width="1.5" fill="none" marker-end="url(#arrH2)"/>
+          <rect x="245" y="315" width="190" height="60" rx="6" fill="#fffbeb" stroke="#d97706" stroke-width="1"/>
+          <text x="340" y="335" font-size="10" font-weight="bold" fill="#78350f" text-anchor="middle">+ Tiếp tục NVP kéo dài</text>
+          <text x="340" y="350" font-size="9" fill="#92400e" text-anchor="middle">suốt thời gian bú mẹ</text>
+          <text x="340" y="365" font-size="9" fill="#92400e" text-anchor="middle">đến khi mẹ ức chế VL</text>
+
+          <!-- RIGHT HALF: TPT TUBERCULOSIS PREVENTION -->
+          <rect x="480" y="15" width="440" height="430" rx="14" fill="#eff6ff" stroke="#0284c7" stroke-width="1.5"/>
+          <text x="700" y="42" font-size="13" font-weight="bold" fill="#0369a1" text-anchor="middle">DỰ PHÒNG BỆNH LAO (TPT) Ở NGƯỜI NHIỄM HIV</text>
+
+          <rect x="500" y="60" width="400" height="35" rx="6" fill="#ffffff" stroke="#93c5fd" stroke-width="1"/>
+          <text x="700" y="82" font-size="11" font-weight="bold" fill="#1e40af" text-anchor="middle">Loại Trừ Tuyệt Đối Bệnh Lao Hoạt Động</text>
+
+          <!-- PREFERRED 3HP -->
+          <path d="M 700 95 L 700 120" stroke="#374151" stroke-width="1.5" fill="none" marker-end="url(#arrH2)"/>
+          <rect x="500" y="125" width="400" height="100" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+          <text x="700" y="148" font-size="12" font-weight="bold" fill="#14532d" text-anchor="middle">PHÁC ĐỒ ƯU TIÊN: 3HP</text>
+          <text x="700" y="168" font-size="11.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Isoniazid + Rifapentine hàng tuần x 3 tháng</text>
+          <text x="700" y="188" font-size="10" fill="#15803d" text-anchor="middle">✓ Hoàn thành 12 liều — Tỷ lệ tuân thủ cao, ít độc gan</text>
+          <text x="700" y="205" font-size="10" fill="#0369a1" text-anchor="middle">✓ Tương thích hoàn toàn với DTG liều chuẩn ở người lớn</text>
+
+          <!-- ALTERNATIVES & SPECIAL -->
+          <path d="M 700 225 L 700 250" stroke="#374151" stroke-width="1.5" fill="none" marker-end="url(#arrH2)"/>
+          <rect x="500" y="255" width="400" height="165" rx="8" fill="#ffffff" stroke="#64748b" stroke-width="1.5"/>
+          <text x="700" y="278" font-size="11.5" font-weight="bold" fill="#374151" text-anchor="middle">Phác Đồ Thay Thế &amp; Tình Huống Đặc Biệt</text>
+          <line x1="520" y1="286" x2="880" y2="286" stroke="#e2e8f0" stroke-width="1"/>
+          <text x="520" y="306" font-size="10.5" fill="#374151"><strong>• 6H / 9H:</strong> Isoniazid hàng ngày x 6–9 tháng (khi thiếu 3HP)</text>
+          <text x="520" y="326" font-size="10.5" fill="#374151"><strong>• 1HP:</strong> INH + Rifapentine hàng ngày x 1 tháng (<strong>Tăng DTG x2</strong>)</text>
+          <text x="520" y="346" font-size="10.5" fill="#374151"><strong>• 3HR:</strong> INH + Rifampicin hàng ngày x 3 tháng (cho trẻ em)</text>
+          <text x="520" y="366" font-size="10.5" fill="#374151"><strong>• 6Lfx:</strong> Levofloxacin x 6 tháng (tiếp xúc ca MDR-TB)</text>
+          <text x="700" y="398" font-size="9" fill="#dc2626" text-anchor="middle">⚠️ Luôn loại trừ lao hoạt động trước khi kê đơn TPT</text>
+        </svg>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==================== SECTION 9 ==================== -->
+  <div class="sec-card" id="sec-tai-lieu-tham-khao">
+    <div class="sec-hdr">
+      <span class="sec-hdr-icon">📚</span>
+      <h2 class="sec-title">9. Danh Mục Tài Liệu Tham Khảo Y Văn Chuẩn AMA</h2>
+    </div>
+    <div class="sec-body">
+      <div class="citation-box" style="line-height: 1.8;">
+        <strong>Tài liệu gốc &amp; Các nghiên cứu bản lề chuẩn AMA:</strong>
+        <ol style="margin-top: 0.75rem; margin-left: 1.5rem; font-size: 0.92rem;">
+          <li>World Health Organization. <em>WHO updated recommendations on HIV clinical management: recommendations for a public health approach</em>. Geneva: World Health Organization; 2025. Licence: CC BY-NC-SA 3.0 IGO.</li>
+          <li>Paton NI, Musaazi J, Kityo C, et al; NADIA Study Team. Dolutegravir or darunavir in combination with zidovudine or tenofovir to treat HIV. <em>N Engl J Med</em>. 2021;385(4):330-341. doi:10.1056/NEJMoa2101609.</li>
+          <li>Hakim J, Musiime V, Szubert AJ, et al; D2EFT Study Team. Dolutegravir with recycled NRTIs or boosted darunavir for second-line antiretroviral therapy: the D2EFT randomized trial. <em>Lancet HIV</em>. 2024;11(6):e375-e386.</li>
+          <li>Bollen P, Frange P, Chokephaibulkit K, et al; ODYSSEY Trial Team. Dolutegravir dosing for children with HIV: from ODYSSEY to global implementation. <em>Lancet HIV</em>. 2022;9(3):e188-e197.</li>
+          <li>Musiime V, Fillekes Q, Kekitiinwa A, et al; CHAPAS-4 Trial Team. Pharmacokinetics and safety of dolutegravir and darunavir/ritonavir in children with HIV (CHAPAS-4). <em>Lancet Child Adolesc Health</em>. 2023;7(8):546-557.</li>
+          <li>Sterling TR, Villarino ME, Borisov AS, et al; Tuberculosis Trials Consortium PREVENT TB Study Group. Three months of weekly rifapentine and isoniazid for M. tuberculosis infection. <em>N Engl J Med</em>. 2011;365(23):2155-2166. doi:10.1056/NEJMoa1104875.</li>
+          <li>Swindells S, Ramchandani R, Andrade A, et al; BRIEF TB/A5279 Study Team. One month of rifapentine plus isoniazid to prevent tuberculosis in people with HIV. <em>N Engl J Med</em>. 2019;380(11):1001-1011. doi:10.1056/NEJMoa1806808.</li>
+          <li>Rinke de Wit TF, Nguyen VK. Public health approach to HIV clinical management: lessons from global scale-up. <em>J Int AIDS Soc</em>. 2023;26(Suppl 4):e26178.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- BOTTOM NAV -->
+<div style="margin-top: 1.5rem;">
+  <div class="btn-row">
+    <a href="#/ebm/kho-guidelines" class="btn btn-primary">
+      <i class="fa-solid fa-arrow-left"></i> Quay lại Kho Guidelines
+    </a>
+    <a href="#sec-tong-quan-art" class="btn">
+      <i class="fa-solid fa-arrow-up"></i> Lên đầu trang
+    </a>
+  </div>
+</div>

@@ -1524,6 +1524,46 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     keyResults: 'HBAR: Năng lượng tối thiểu: 35 kcal/kg/ngày | Đạm xơ gan mất bù: 1.5 g/kg/ngày | BCAA cải thiện HE và nitơ: Class I, A | Bữa phụ đêm muộn (LES): Bắt buộc | Nhịn ăn trước phẫu thuật: ≤ 6h',
     summary: 'Hướng dẫn thực hành lâm sàng EASL 2019 chuẩn hóa liệu pháp dinh dưỡng cho bệnh gan mạn tính: Đánh giá RFH-NPT, năng lượng 30-35 kcal/kg/ngày, protein 1.2-1.5 g/kg/ngày, LES bắt buộc, BCAA cho HE/bất dung nạp đạm và dinh dưỡng chu phẫu.',
     detailedConclusion: 'Duy trì năng lượng ≥ 35 kcal/kg/ngày và protein 1.2-1.5 g/kg/ngày (cấm hạn chế đạm khi có HE). Bắt buộc dùng bữa phụ đêm muộn (LES) giàu carbohydrate phức hợp/BCAA. Nhịn ăn trước mổ chỉ ≤ 6h thức ăn đặc và ≤ 2h dịch trong.'
+  },
+  {
+    id: '2025-who-hiv-clinical-management',
+    title: 'WHO 2025: Hướng Dẫn Quản Lý Lâm Sàng HIV (Tối Ưu Hóa ART, Dự Phòng Lây Truyền Dọc Mẹ-Con & Dự Phòng Lao 3HP)',
+    titleEn: 'WHO updated recommendations on HIV clinical management: recommendations for a public health approach (2025)',
+    sourceType: 'intl-guideline',
+    specialty: 'infect',
+    design: 'guideline',
+    impact: 'practice-changing',
+    year: 2025,
+    organization: 'Tổ chức Y tế Thế giới (WHO)',
+    journal: 'WHO Guidelines',
+    file: '2025-who-hiv-clinical-management.mdx',
+    conditionKey: 'hiv-aids',
+    icd10: ['B20', 'B24', 'Z21', 'A15', 'O98.7'],
+    intervention: 'Xương sống ART ban đầu DTG; Nâng cấp Darunavir/ritonavir (DRV/r) thành boosted PI ưu tiên bậc 2; Tái sử dụng (Recycling) TDF/TAF ở người lớn và ABC ở trẻ em khi thất bại phác đồ 1; Phác đồ 2 thuốc DTG+3TC & Tiêm kéo dài CAB+RPV (Cấm khi có HBV); Dự phòng lây truyền dọc: 6 tuần 1 thuốc (NVP) cho nguy cơ thấp, 6 tuần 3 thuốc (ABC/3TC+DTG) + NVP kéo dài khi bú mẹ cho nguy cơ cao; Viên phân tán ABC/3TC bẻ 4 cho trẻ sơ sinh; Nuôi con bú mẹ ít nhất 12-24 tháng; Dự phòng Lao (TPT) ưu tiên 3HP (INH + Rifapentine hàng tuần x 3 tháng) tương thích DTG liều chuẩn.',
+    primaryEndpoint: 'Ức chế virus bền vững, giảm tỷ lệ kháng thuốc, giảm biến cố bất lợi do ART, loại trừ lây truyền HIV từ mẹ sang con, giảm tỷ lệ mắc và tử vong do Lao ở người sống chung với HIV.',
+    keyResults: 'HBAR: DRV/r vượt trội LPV/r về ức chế virus: OR 1.50 | Giảm ngừng thuốc DRV/r vs ATV/r: OR 0.43 | Tái sử dụng ABC giảm thất bại ở trẻ em: OR 0.55 | Bảo vệ DTG khỏi kháng thuốc nhờ tái sử dụng ABC: OR 0.18 | 3HP hoàn thành điều trị vượt trội 6H/9H | Dự phòng 3 thuốc giảm MTCT ở nguy cơ cao',
+    summary: 'Hướng dẫn cập nhật năm 2025 của WHO về quản lý lâm sàng HIV theo tiếp cận sức khỏe cộng đồng: Tối ưu hóa phác đồ ART ban đầu (DTG) và tiếp theo (DRV/r + tái sử dụng TDF/ABC), quản lý lây truyền dọc mẹ sang con phân tầng nguy cơ cao/thấp, phân liều sơ sinh tối giản, và ưu tiên phác đồ dự phòng Lao 3HP ngắn ngày.',
+    detailedConclusion: 'Duy trì DTG cho ban đầu; chuyển sang DRV/r và tiếp tục dùng TDF/TAF hoặc ABC khi thất bại phác đồ đầu (loại bỏ AZT). Trẻ sơ sinh nguy cơ cao: dùng phác đồ 3 thuốc ABC/3TC+DTG trong 6 tuần và tiếp tục NVP khi bú mẹ. Dự phòng Lao: ưu tiên phác đồ 3HP dùng hàng tuần trong 3 tháng. Sàng lọc HBV trước khi dùng DTG+3TC hoặc CAB+RPV tiêm kéo dài.'
+  },
+  {
+    id: '2025-who-advanced-hiv-disease-ahd',
+    title: 'WHO 2025: Hướng Dẫn Quản Lý Bệnh HIV Tiến Triển (Advanced HIV Disease - AHD, Gói Chăm Sóc, Nấm Cryptococcus, Lao, Kaposi)',
+    titleEn: 'WHO guidelines on the management of advanced HIV disease (2025)',
+    sourceType: 'intl-guideline',
+    specialty: 'infect',
+    design: 'guideline',
+    impact: 'practice-changing',
+    year: 2025,
+    organization: 'Tổ chức Y tế Thế giới (WHO)',
+    journal: 'WHO Guidelines',
+    file: '2025-who-advanced-hiv-disease-ahd.mdx',
+    conditionKey: 'hiv-aids',
+    icd10: ['B20', 'B24', 'Z21', 'B45', 'B39', 'C46.0'],
+    intervention: 'Định nghĩa AHD (CD4 ≤ 200 hoặc Giai đoạn 3/4; mọi trẻ < 5 tuổi); Đo CD4 là tiêu chuẩn vàng ưu tiên; Gói can thiệp AHD đa tác nhân (sàng lọc CrAg máu, test đồng thời Lao LC-NAAT đờm + LF-LAM nước tiểu, dự phòng Co-trimoxazole, TPT 3HP, Fluconazole sớm); Phác đồ Liposomal Amphotericin B đơn liều cao (10 mg/kg Ngày 1) + Flucytosine + Fluconazole x 14 ngày cho viêm màng não Cryptococcus (Cấm Steroids); Quản lý độc tính điện giải bù pre-hydration Saline + KCl; Kháng nguyên nước tiểu Histoplasma + Liposomal AmB -> Itraconazole; Ung thư Kaposi: Paclitaxel / Pegylated Liposomal Doxorubicin + ART (Cấm Doxorubicin thai kỳ); Quy tắc vàng hoãn ART 4-6 tuần khi có viêm màng não Cryptococcus; Chăm sóc chuyển tiếp sau xuất viện 6 cấu phần.',
+    primaryEndpoint: 'Giảm tỷ lệ tử vong liên quan đến AIDS, giảm tỷ lệ mắc và tử vong do viêm màng não Cryptococcus, Lao, nấm Histoplasma, tăng tỷ lệ duy trì điều trị ngoại trú và giảm tỷ lệ tái nhập viện.',
+    keyResults: 'HBAR: Gói can thiệp AHD giảm tử vong chung (REALITY/REMSTART): 27-28% | Giảm nấm Cryptococcus xâm nhập: 62% | Liposomal AmB đơn liều đạt hiệu lực tương đương và giảm độc tính thận | Chăm sóc chuyển tiếp tăng duy trì điều trị ngoại trú: RR 1.24 (+24%) | Giảm tái nhập viện: RR 0.87 (-13%)',
+    summary: 'Hướng dẫn thực hành y học chứng cứ toàn diện của WHO năm 2025 về Quản lý Bệnh HIV Tiến triển (AHD): Định nghĩa AHD, khuyến cáo sàng lọc CD4 thay vì phân giai đoạn lâm sàng, gói can thiệp chăm sóc tích hợp, phác đồ Liposomal Amphotericin B đơn liều cao cho nấm Cryptococcus, chẩn đoán đồng thời Lao bằng LC-NAAT + LF-LAM, quản lý nấm Histoplasma, ung thư Kaposi và kế hoạch chăm sóc chuyển tiếp sau xuất viện.',
+    detailedConclusion: 'Xác định AHD bằng xét nghiệm CD4 (≤ 200 cells/mm³). Triển khai ngay gói can thiệp AHD gồm sàng lọc CrAg máu, test đồng thời Lao (đờm + nước tiểu), dự phòng Co-trimoxazole + TPT + Fluconazole. Viêm màng não Cryptococcus: dùng Liposomal Amphotericin B 10 mg/kg đơn liều Ngày 1 phối hợp Flucytosine và Fluconazole (bắt buộc hoãn ART 4–6 tuần). Ung thư Kaposi: sinh thiết xác chẩn và hóa trị bằng Paclitaxel hoặc Liposomal Doxorubicin phối hợp ART. Áp dụng kế hoạch chăm sóc chuyển tiếp sau xuất viện để giảm tái nhập viện.'
   }
 ];
 
