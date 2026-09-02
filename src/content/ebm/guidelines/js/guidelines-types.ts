@@ -268,6 +268,9 @@ declare global {
     handleSaveConditionForm?: (event?: Event) => void;
     deleteConditionItem?: (key: string) => void;
     resetConditionRegistryDefault?: () => void;
+    updateConditionDropdownOptions?: (preferredConditionKey?: string) => void;
+    handleSpecialtySelectChange?: () => void;
+    handleConditionSelectChange?: (condKey: string) => void;
 
     openCaseModal?: () => void;
     closeCaseModal?: () => void;
