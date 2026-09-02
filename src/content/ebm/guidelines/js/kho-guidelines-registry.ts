@@ -11,6 +11,27 @@ import { Study } from './guidelines-types';
 
 export const KHO_GUIDELINES_STATIC: Study[] = [
   {
+    id: '2024-jama-wikiguidelines-uti',
+    title: 'JAMA 2024: Đồng Thuận WikiGuidelines Về Dự Phòng, Chẩn Đoán & Điều Trị Nhiễm Trùng Tiết Niệu',
+    titleEn: 'Guidelines for the Prevention, Diagnosis, and Management of Urinary Tract Infections in Pediatrics and Adults: A WikiGuidelines Group Consensus Statement (JAMA 2024)',
+    sourceType: 'intl-guideline',
+    specialty: 'renal',
+    design: 'guideline',
+    impact: 'practice-changing',
+    year: 2024,
+    organization: 'JAMA / WikiGuidelines Group',
+    journal: 'JAMA Netw Open',
+    file: '2024-jama-wikiguidelines-uti.mdx',
+    conditionKey: 'uti',
+    icd10: ['N39.0', 'N30.0', 'N10', 'N41.0', 'A41.51', 'R82.79'],
+    intervention: 'Phương pháp luận 37 câu hỏi (6 khuyến cáo rõ ràng); 3 trụ cột dự phòng không kháng sinh (Cranberry PACs 36mg, Estrogen âm đạo sau mãn kinh, Methenamine hippurate 1g x 2 non-inferior kháng sinh); Diagnostic Stewardship giảm 33% kê đơn sai ASB; Rút ngắn thời gian kháng sinh: 5 ngày Nitrofurantoin (CrCl ≥ 30), 7 ngày Viêm bể thận Beta-lactam liều tối ưu, 7 ngày Nhiễm khuẩn huyết Gram âm hệ niệu (non-inferior 14 ngày); Xuống thang và chuyển uống sớm (Oral Switch).',
+    primaryEndpoint: 'Rút ngắn an toàn thời gian điều trị kháng sinh, giảm thiểu tác dụng phụ và đề kháng kháng sinh, tối ưu hóa chẩn đoán và dự phòng UTI tái phát bằng liệu pháp không kháng sinh được chứng minh qua RCTs.',
+    keyResults: 'HBAR: 7 ngày điều trị nhiễm khuẩn huyết Gram âm hệ niệu tương đương 14 ngày (Khuyến cáo rõ ràng) | 3 biện pháp dự phòng đạt chuẩn RCT: Cranberry, Estrogen âm đạo & Methenamine | Giảm 33% điều trị sai lầm cho ASB nhờ Diagnostic Stewardship | 7 ngày Beta-lactam tối ưu liều trong viêm bể thận cấp.',
+    summary: 'Báo cáo đồng thuận quốc tế WikiGuidelines 2024 công bố trên JAMA Network Open: Rà soát 914 nghiên cứu cho 37 câu hỏi lâm sàng ở trẻ em và người lớn, thiết lập tiêu chuẩn khắt khe chỉ đưa ra khuyến cáo rõ ràng khi có dữ liệu RCT nhất quán, định hình 3 trụ cột dự phòng không kháng sinh, tối ưu hóa hiệu năng xét nghiệm nước tiểu và cuộc cách mạng rút ngắn thời gian điều trị kháng sinh.',
+    detailedConclusion: 'Chỉ định 3 liệu pháp dự phòng đạt khuyến cáo rõ ràng (Cranberry, Estrogen âm đạo, Methenamine). Không điều trị ASB dựa trên xét nghiệm đơn thuần. Áp dụng liệu trình rút ngắn 5 ngày cho viêm bàng quang, 7 ngày cho viêm bể thận và 7 ngày cho nhiễm khuẩn huyết Gram âm nguồn gốc từ hệ niệu khi đã kiểm soát nguồn lây.'
+  },
+
+  {
     id: '2026-eau-urological-infections',
     title: 'EAU 2026: Hướng Dẫn Thực Hành Lâm Sàng Nhiễm Trùng Hệ Tiết Niệu & Nam Khoa',
     titleEn: 'EAU Guidelines on Urological Infections (2026 Update)',
