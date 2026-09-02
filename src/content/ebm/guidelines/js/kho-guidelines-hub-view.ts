@@ -172,8 +172,11 @@ export function initKhoGuidelinesHub(): void {
 
     const filtered = KHO_GUIDELINES_STATIC.filter((item: Study) => {
       // Specialty Filter
-      if (activeSpecialty !== 'all' && item.specialty !== activeSpecialty) {
-        return false;
+      if (activeSpecialty !== 'all') {
+        const match = item.specialty === activeSpecialty || 
+                      item.specialty2 === activeSpecialty || 
+                      (Array.isArray(item.specialties) && item.specialties.includes(activeSpecialty));
+        if (!match) return false;
       }
       // Source Filter
       if (activeSource !== 'all' && item.sourceType !== activeSource) {

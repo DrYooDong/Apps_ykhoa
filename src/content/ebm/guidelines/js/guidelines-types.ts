@@ -18,6 +18,8 @@ export interface Study {
   drug?: string;
   sourceType: 'intl-study' | 'intl-guideline' | 'vn-moh' | 'vn-doh' | 'vn-association' | string;
   specialty: string;
+  specialty2?: string;
+  specialties?: string[];
   design: 'rct' | 'meta' | 'cohort' | 'guideline' | 'review' | 'case-report' | 'other' | string;
   intervention?: string;
   primaryEndpoint?: string;

@@ -489,7 +489,7 @@
               <input type="text" id="study-title" required placeholder="Ví dụ: Khuyến cáo điều trị suy tim VNHA 2023">
             </div>
             
-            <div class="form-row-3">
+            <div class="form-row">
               <div class="form-group">
                 <label for="study-drug">Tên hoạt chất / Nhóm thuốc *</label>
                 <input type="text" id="study-drug" required placeholder="Ví dụ: ARNI, SGLT2i">
@@ -497,10 +497,6 @@
               <div class="form-group">
                 <label for="study-author">Tên tác giả (nếu có)</label>
                 <input type="text" id="study-author" placeholder="Ví dụ: Braunwald, McMurray...">
-              </div>
-              <div class="form-group">
-                <label for="study-icd10">Mã ICD-10 (Cách nhau bởi dấu phẩy)</label>
-                <input type="text" id="study-icd10" placeholder="Ví dụ: I50, I50.9, E11">
               </div>
             </div>
 
@@ -530,9 +526,23 @@
                 </select>
               </div>
               <div class="form-group">
-                <label for="study-specialty">Chuyên khoa *</label>
-                <select id="study-specialty" required>
-                  <option value="">-- Chọn chuyên khoa --</option>
+                <label for="study-impact">Mức ảnh hưởng lâm sàng *</label>
+                <select id="study-impact" required>
+                  <option value="">-- Chọn mức ảnh hưởng --</option>
+                  <option value="practice-changing">Practice-Changing (Thay đổi thực hành)</option>
+                  <option value="informative">Informative (Thông tin hữu ích)</option>
+                  <option value="early-signal">Early Signal (Tín hiệu sớm)</option>
+                  <option value="negative">Negative (Không hiệu quả/Âm tính)</option>
+                  <option value="regulatory">Regulatory (Pháp lý/Phê duyệt)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row-3">
+              <div class="form-group">
+                <label for="study-specialty">Chuyên khoa 1 (Chính) *</label>
+                <select id="study-specialty" required onchange="if(window.handleSpecialtySelectChange) window.handleSpecialtySelectChange()">
+                  <option value="">-- Chọn chuyên khoa 1 --</option>
                   <option value="cardio">Tim mạch (Cardiology)</option>
                   <option value="pulmo">Hô hấp (Pulmonology)</option>
                   <option value="gi">Tiêu hóa (Gastroenterology)</option>
@@ -551,19 +561,40 @@
                   <option value="nutri">Dinh dưỡng (Clinical Nutrition)</option>
                 </select>
               </div>
+              <div class="form-group">
+                <label for="study-specialty-2">Chuyên khoa 2 (Liên quan / Tùy chọn)</label>
+                <select id="study-specialty-2" onchange="if(window.handleSpecialtySelectChange) window.handleSpecialtySelectChange()">
+                  <option value="">-- Không có (Chỉ 1 chuyên khoa) --</option>
+                  <option value="cardio">Tim mạch (Cardiology)</option>
+                  <option value="pulmo">Hô hấp (Pulmonology)</option>
+                  <option value="gi">Tiêu hóa (Gastroenterology)</option>
+                  <option value="endo">Nội tiết (Endocrinology)</option>
+                  <option value="neuro">Thần kinh (Neurology)</option>
+                  <option value="infect">Truyền nhiễm (Infectious Disease)</option>
+                  <option value="renal">Thận học (Nephrology)</option>
+                  <option value="rheum">Cơ xương khớp (Rheumatology)</option>
+                  <option value="hema">Huyết học (Hematology)</option>
+                  <option value="onco">Ung thư (Oncology)</option>
+                  <option value="pedia">Nhi khoa (Pediatrics)</option>
+                  <option value="obgyn">Sản phụ khoa (Obstetrics & Gynecology)</option>
+                  <option value="icu">Hồi sức tích cực (Intensive Care / ICU)</option>
+                  <option value="derma">Da liễu (Dermatology)</option>
+                  <option value="ent">Tai Mũi Họng (ENT / Otorhinolaryngology)</option>
+                  <option value="nutri">Dinh dưỡng (Clinical Nutrition)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="study-condition-key">Vấn đề / Bệnh (Theo chuyên khoa)</label>
+                <select id="study-condition-key" onchange="if(window.handleConditionSelectChange) window.handleConditionSelectChange(this.value)">
+                  <option value="">-- Chọn chuyên khoa trước --</option>
+                </select>
+              </div>
             </div>
 
             <div class="form-row-3">
               <div class="form-group">
-                <label for="study-impact">Mức ảnh hưởng lâm sàng *</label>
-                <select id="study-impact" required>
-                  <option value="">-- Chọn mức ảnh hưởng --</option>
-                  <option value="practice-changing">Practice-Changing (Thay đổi thực hành)</option>
-                  <option value="informative">Informative (Thông tin hữu ích)</option>
-                  <option value="early-signal">Early Signal (Tín hiệu sớm)</option>
-                  <option value="negative">Negative (Không hiệu quả/Âm tính)</option>
-                  <option value="regulatory">Regulatory (Pháp lý/Phê duyệt)</option>
-                </select>
+                <label for="study-icd10">Mã ICD-10 (Tự động điền theo Bệnh)</label>
+                <input type="text" id="study-icd10" placeholder="Ví dụ: I50, I50.9, E11">
               </div>
               <div class="form-group" style="position: relative;">
                 <label for="study-organization">Tổ chức / Tạp chí *</label>

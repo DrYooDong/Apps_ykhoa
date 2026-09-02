@@ -50,6 +50,10 @@ export function openAddModal(): void {
   const form = (document.getElementById('add-form') || document.getElementById('study-form')) as HTMLFormElement | null;
   if (form) form.reset();
   
+  setValueToIds('', 'study-specialty-2');
+  setValueToIds('', 'study-condition-key');
+  updateConditionDropdownOptions();
+
   const partsContainer = document.getElementById('summary-parts-container');
   if (partsContainer) partsContainer.innerHTML = '';
 
@@ -262,6 +266,10 @@ export function openEditModal(id: string): void {
   setValueToIds(study.drug, 'study-drug', 'form-drug');
   setValueToIds(study.sourceType, 'study-source-type', 'form-sourceType');
   setValueToIds(study.specialty, 'study-specialty', 'form-specialty');
+  const spec2Val = study.specialty2 || (Array.isArray(study.specialties) && study.specialties[1] !== study.specialty ? study.specialties[1] : '');
+  setValueToIds(spec2Val, 'study-specialty-2', 'form-specialty-2');
+  updateConditionDropdownOptions(study.conditionKey || undefined);
+  setValueToIds(study.conditionKey || '', 'study-condition-key', 'form-condition-key');
   setValueToIds(study.design, 'study-design', 'form-design');
   setValueToIds(study.intervention, 'study-intervention', 'form-intervention');
   setValueToIds(study.primaryEndpoint, 'study-primary-endpoint', 'form-primaryEndpoint');
@@ -347,13 +355,22 @@ export function handleFormSubmit(event?: Event): void {
   const mainFile = getValueFromIds('study-file', 'form-file');
   const finalFile = mainFile || (partsList.length > 0 ? partsList[0].file : undefined);
 
+  const spec1Val = getValueFromIds('study-specialty', 'form-specialty') || 'cardio';
+  const spec2Val = getValueFromIds('study-specialty-2', 'form-specialty-2');
+  const validSpec2 = (spec2Val && spec2Val !== spec1Val) ? spec2Val : undefined;
+  const specList = [spec1Val, validSpec2].filter(Boolean) as string[];
+  const condKeyVal = getValueFromIds('study-condition-key', 'form-condition-key') || undefined;
+
   const studyData: Study = {
     id: editingStudyId || (window.generateId ? window.generateId() : 'study_' + Date.now()),
     title: title,
     author: getValueFromIds('study-author', 'form-author'),
     drug: getValueFromIds('study-drug', 'form-drug') || 'N/A',
     sourceType: getValueFromIds('study-source-type', 'form-sourceType') || 'intl-study',
-    specialty: getValueFromIds('study-specialty', 'form-specialty') || 'cardio',
+    specialty: spec1Val,
+    specialty2: validSpec2,
+    specialties: specList,
+    conditionKey: condKeyVal,
     design: getValueFromIds('study-design', 'form-design') || 'rct',
     intervention: getValueFromIds('study-intervention', 'form-intervention'),
     primaryEndpoint: getValueFromIds('study-primary-endpoint', 'form-primaryEndpoint'),
@@ -984,4 +1001,72 @@ if (typeof window !== 'undefined') {
   window.resetConditionRegistryDefault = resetConditionRegistryDefault;
   window.updateChartPreview = updateChartPreview;
   window.updateSubgroupPreview = updateSubgroupPreview;
+  window.updateConditionDropdownOptions = updateConditionDropdownOptions;
+  window.handleSpecialtySelectChange = handleSpecialtySelectChange;
+  window.handleConditionSelectChange = handleConditionSelectChange;
+}
+
+export function updateConditionDropdownOptions(preferredConditionKey?: string): void {
+  const condSelect = (document.getElementById('study-condition-key') || document.getElementById('form-condition-key')) as HTMLSelectElement | null;
+  if (!condSelect) return;
+
+  const spec1 = getValueFromIds('study-specialty', 'form-specialty');
+  const spec2 = getValueFromIds('study-specialty-2', 'form-specialty-2');
+  const selectedSpecs = [spec1, spec2].filter(Boolean);
+
+  if (!window.CLINICAL_CONDITIONS) {
+    condSelect.innerHTML = '<option value="">-- Chọn Vấn đề / Bệnh --</option>';
+    return;
+  }
+
+  if (selectedSpecs.length === 0) {
+    condSelect.innerHTML = '<option value="">-- Vui lòng chọn chuyên khoa trước --</option>';
+    return;
+  }
+
+  const specMap = window.CONDITION_SPECIALTY_MAP || {};
+  const matchingEntries = Object.entries(window.CLINICAL_CONDITIONS).filter(([key, cond]) => {
+    const mappedSpecs = specMap[key];
+    if (Array.isArray(mappedSpecs)) {
+      return mappedSpecs.some((s: string) => selectedSpecs.includes(s));
+    }
+    if (typeof mappedSpecs === 'string') {
+      return selectedSpecs.includes(mappedSpecs);
+    }
+    if (cond.specialty) {
+      return selectedSpecs.includes(cond.specialty);
+    }
+    return false;
+  });
+
+  matchingEntries.sort((a, b) => a[1].name.localeCompare(b[1].name, 'vi'));
+
+  let html = '<option value="">-- Chọn Vấn đề / Bệnh tương ứng --</option>';
+  matchingEntries.forEach(([key, cond]) => {
+    const isSel = (preferredConditionKey && preferredConditionKey === key) ? 'selected' : '';
+    html += `<option value="${key}" ${isSel}>${cond.name}</option>`;
+  });
+
+  condSelect.innerHTML = html;
+
+  if (preferredConditionKey) {
+    condSelect.value = preferredConditionKey;
+  }
+}
+
+export function handleSpecialtySelectChange(): void {
+  const currentCond = getValueFromIds('study-condition-key', 'form-condition-key');
+  updateConditionDropdownOptions(currentCond);
+}
+
+export function handleConditionSelectChange(condKey: string): void {
+  if (!condKey || !window.CLINICAL_CONDITIONS) return;
+  const cond = window.CLINICAL_CONDITIONS[condKey];
+  if (cond && cond.icd10) {
+    const icdInput = (document.getElementById('study-icd10') || document.getElementById('form-icd10')) as HTMLInputElement | null;
+    if (icdInput) {
+      const icdStr = Array.isArray(cond.icd10) ? cond.icd10.join(', ') : String(cond.icd10);
+      icdInput.value = icdStr;
+    }
+  }
 }

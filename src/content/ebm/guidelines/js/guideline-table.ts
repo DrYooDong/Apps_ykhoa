@@ -182,6 +182,15 @@ export const CONDITION_SPECIALTY_MAP: Record<string, string[]> = {
   "hiv-aids": [
     "infect"
   ],
+  "antibiotics": [
+    "infect",
+    "icu",
+    "pulmo"
+  ],
+  "microbiology": [
+    "infect",
+    "icu"
+  ],
   "ams-resistance": [
     "infect",
     "icu"
@@ -355,7 +364,11 @@ export function renderFilterPills(): void {
     `;
 
     Object.entries(window.SPECIALTIES).forEach(([key, spec]) => {
-      const count = allStudies.filter(s => s.specialty === key).length;
+      const count = allStudies.filter(s => 
+        s.specialty === key || 
+        s.specialty2 === key || 
+        (Array.isArray(s.specialties) && s.specialties.includes(key))
+      ).length;
       const iconClass = SPEC_ICONS[key] || 'fa-solid fa-stethoscope';
       specNavHtml += `
         <button class="left-nav-link ${window.filters.specialty === key ? 'active' : ''}" onclick="setFilter('specialty', '${key}')">
@@ -842,7 +855,9 @@ export function getFilteredStudies(): Study[] {
     if (window.filters.sourceType && study.sourceType !== window.filters.sourceType) return false;
     if (window.filters.specialty) {
       const activeSpec = window.filters.specialty;
-      const directMatch = (study.specialty === activeSpec);
+      const directMatch = (study.specialty === activeSpec) || 
+                          (study.specialty2 === activeSpec) || 
+                          (Array.isArray(study.specialties) && study.specialties.includes(activeSpec));
       let crossMatch = false;
       if (study.conditionKey && CONDITION_SPECIALTY_MAP[study.conditionKey]) {
         crossMatch = CONDITION_SPECIALTY_MAP[study.conditionKey].includes(activeSpec);
@@ -1083,6 +1098,8 @@ export function renderTable(): void {
     const isSelected = window.selectedIds.has(study.id);
     const isExpanded = window.expandedIds.has(study.id);
     const specObj = window.SPECIALTIES && window.SPECIALTIES[study.specialty] ? window.SPECIALTIES[study.specialty] : { name: study.specialty, color: '#0284c7', bg: '#f0f9ff' };
+    const spec2Key = study.specialty2 || (Array.isArray(study.specialties) && study.specialties[1] !== study.specialty ? study.specialties[1] : null);
+    const spec2Obj = spec2Key && window.SPECIALTIES && window.SPECIALTIES[spec2Key] ? window.SPECIALTIES[spec2Key] : null;
     const sourceObj = window.SOURCE_TYPES && window.SOURCE_TYPES[study.sourceType] ? window.SOURCE_TYPES[study.sourceType] : { name: study.sourceType, color: '#64748b', bg: '#f1f5f9' };
     const designObj = window.DESIGNS && window.DESIGNS[study.design] ? window.DESIGNS[study.design] : { name: study.design };
     const impactObj = window.IMPACTS && window.IMPACTS[study.impact] ? window.IMPACTS[study.impact] : { name: study.impact, color: '#2563eb', bg: '#eff6ff' };
@@ -1103,6 +1120,7 @@ export function renderTable(): void {
               <div class="study-title-text" onclick="toggleExpandRow('${study.id}')">${escapeHtml(study.title)}</div>
               <div class="study-meta-sub">
                 <span class="spec-tag" style="background:${specObj.bg}; color:${specObj.color}; border: 1px solid ${specObj.color}30;">${escapeHtml(specObj.name)}</span>
+                ${spec2Obj ? `<span class="spec-tag" style="background:${spec2Obj.bg}; color:${spec2Obj.color}; border: 1px solid ${spec2Obj.color}30;">${escapeHtml(spec2Obj.name)}</span>` : ''}
                 ${study.drug ? `<span class="drug-tag">💊 ${escapeHtml(study.drug)}</span>` : ''}
                 ${study.year ? `<span class="year-tag">📅 ${study.year}</span>` : ''}
                 ${renderJournalMetricsBadge(study)}
@@ -1115,7 +1133,10 @@ export function renderTable(): void {
           <span class="source-tag" style="background:${sourceObj.bg}; color:${sourceObj.color};">${escapeHtml(sourceObj.name)}</span>
         </td>
         <td class="col-specialty" style="display:${showCol('specialty')};">
-          <span class="spec-tag" style="background:${specObj.bg}; color:${specObj.color};">${escapeHtml(specObj.name)}</span>
+          <div style="display:flex; flex-direction:column; gap:3px;">
+            <span class="spec-tag" style="background:${specObj.bg}; color:${specObj.color};">${escapeHtml(specObj.name)}</span>
+            ${spec2Obj ? `<span class="spec-tag" style="background:${spec2Obj.bg}; color:${spec2Obj.color};">${escapeHtml(spec2Obj.name)}</span>` : ''}
+          </div>
         </td>
         <td class="col-design" style="display:${showCol('design')};">${escapeHtml(designObj.name)}</td>
         <td class="col-org" style="display:${showCol('organization')};">${escapeHtml(study.journal || study.organization || 'N/A')}</td>
