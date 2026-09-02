@@ -10,6 +10,48 @@
 import { Study } from './guidelines-types';
 
 export const KHO_GUIDELINES_STATIC: Study[] = [
+  {
+    id: '2017-idsa-infectious-diarrhea',
+    title: 'IDSA 2017: Hướng Dẫn Thực Hành Lâm Sàng Chẩn Đoán & Quản Lý Tiêu Chảy Nhiễm Trùng',
+    titleEn: '2017 Infectious Diseases Society of America Clinical Practice Guidelines for the Diagnosis and Management of Infectious Diarrhea',
+    sourceType: 'intl-guideline',
+    specialty: 'infect',
+    design: 'guideline',
+    impact: 'practice-changing',
+    year: 2017,
+    organization: 'Infectious Diseases Society of America (IDSA)',
+    journal: 'Clin Infect Dis',
+    file: '2017-idsa-infectious-diarrhea.mdx',
+    conditionKey: 'infectious-diarrhea',
+    icd10: ['A09', 'A08.4', 'A04.9', 'A02.0', 'A03.9', 'A04.3', 'D59.3'],
+    intervention: 'Bù dịch Reduced Osmolarity ORS đầu tay; Nuôi ăn sớm và duy trì bú mẹ; Chỉ định cấy phân & NAAT trúng đích cho tiêu chảy phân máu/sốt; Cảnh báo CHỐNG CHỈ ĐỊNH TUYỆT ĐỐI kháng sinh trong STEC (ngừa HUS); Hạn chế kháng sinh kinh nghiệm; Chống chỉ định Loperamide <18 tuổi & tiêu chảy máu.',
+    primaryEndpoint: 'Ngăn ngừa tử vong do mất nước cấp, phòng ngừa biến chứng hội chứng tán huyết tăng ure máu (HUS) do STEC, hạn chế lạm dụng kháng sinh và giảm nguy cơ phình đại tràng nhiễm độc.',
+    keyResults: 'HBAR: Reduced Osmolarity ORS lựa chọn đầu tay ở mọi lứa tuổi | Tránh 100% kháng sinh trong STEC ngăn ngừa HUS | CẤM Loperamide ở trẻ <18 tuổi và tiêu chảy phân máu/sốt | Nuôi cấy kiểm chứng cho mọi ca NAAT dương tính để làm kháng sinh đồ.',
+    summary: 'Hướng dẫn thực hành lâm sàng toàn diện của IDSA 2017 về tiêu chảy nhiễm trùng: Phân loại thời gian (cấp, kéo dài, mạn), sàng lọc 9 nhóm yếu tố dịch tễ phơi nhiễm, lưu đồ đánh giá lâm sàng (Fig 1), chỉ định xét nghiệm phân/cấy máu/NAAT, phác đồ bù dịch ORS độ thẩm thấu giảm, nguyên tắc sử dụng kháng sinh kinh nghiệm & trúng đích, cảnh báo đỏ STEC/HUS, thuốc hỗ trợ và phương pháp GRADE (Fig 2).',
+    detailedConclusion: 'Bù dịch bằng ORS độ thẩm thấu giảm là biện pháp can thiệp cốt lõi cứu mạng. Không dùng kháng sinh kinh nghiệm thường quy cho tiêu chảy máu ở người miễn dịch bình thường. Tuyệt đối chống chỉ định kháng sinh khi nghi ngờ hoặc xác định STEC để ngăn ngừa biến chứng HUS. Tuyệt đối cấm Loperamide ở trẻ em <18 tuổi và bệnh nhân tiêu chảy phân máu có sốt.'
+  },
+
+  {
+    id: '2023-wgo-probiotics-prebiotics',
+    title: 'WGO 2023: Hướng Dẫn Toàn Cầu Về Probiotics & Prebiotics Trong Lâm Sàng Tiêu Hóa',
+    titleEn: 'World Gastroenterology Organisation Global Guidelines: Probiotics and Prebiotics (2023)',
+    sourceType: 'intl-guideline',
+    specialty: 'gastro',
+    design: 'guideline',
+    impact: 'practice-changing',
+    year: 2023,
+    organization: 'World Gastroenterology Organisation (WGO)',
+    journal: 'WGO Guidelines',
+    file: '2023-wgo-probiotics-prebiotics.mdx',
+    conditionKey: 'ibs',
+    icd10: ['K58', 'K52.9', 'K59.0', 'P77', 'K72.9'],
+    intervention: 'Đặc hiệu chủng (Strain Specificity); LGG & S. boulardii phòng ngừa AAD và tiêu chảy cấp; Tổ hợp B. bifidum MIMBb75, L. plantarum 299v trong IBS; Lactulose & Probiotics đa chủng trong bệnh não gan; LGG & Bifidobacteria bảo vệ trẻ sinh non giảm viêm ruột hoại tử (NEC, NNT=20); L. reuteri DSM 17938 trị khóc dạ đề trẻ bú mẹ.',
+    primaryEndpoint: 'Phòng ngừa tiêu chảy liên quan kháng sinh, giảm tử vong và viêm ruột hoại tử ở trẻ sinh non, cải thiện triệu chứng đau bụng/chướng hơi ở IBS, hạ amoniac máu trong bệnh não gan.',
+    keyResults: 'HBAR: Giảm tử vong & NEC trẻ sinh non (NNT = 20): Level 1 | Phòng ngừa AAD (LGG, S. boulardii): Level 1 | Đảo ngược não gan (Lactulose): Level 1 | Giảm đau ruột kích thích (B. bifidum MIMBb75, L. plantarum 299v): Level 2 | Rút ngắn tiêu chảy cấp ~ 1 ngày: Level 1',
+    summary: 'Hướng dẫn toàn cầu WGO 2023 về Probiotics, Prebiotics, Synbiotics và Postbiotics: Tái cấu trúc 23 chi mới của Lactobacillus, cơ chế sinh học đa tầng, an toàn sinh học ở BN suy giảm miễn dịch, hệ thống hóa bằng chứng thực chứng ở người lớn (AAD, CDI, H. pylori, IBS, HE, NAFLD, UC) và Nhi khoa (Viêm dạ dày ruột cấp, NEC, Khóc dạ đề Colic, Đau bụng chức năng).',
+    detailedConclusion: 'Hiệu quả của probiotic phụ thuộc nghiêm ngặt vào từng chủng cụ thể và liều lượng thử nghiệm lâm sàng (không ngoại suy). Khuyến cáo dùng LGG/S. boulardii phòng ngừa AAD và rút ngắn tiêu chảy cấp; bổ sung probiotic sớm cho trẻ sinh non giảm NEC (NNT=20); sử dụng Lactulose trong bệnh não gan và các chủng đặc hiệu chứng minh hiệu quả trong IBS.'
+  },
+
   // --- TIM MẠCH & CHUYỂN HÓA (CARDIO / METABOLIC) ---
   {
     id: '2026-esc-cvd-ckd',
