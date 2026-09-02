@@ -11,6 +11,27 @@ import { Study } from './guidelines-types';
 
 export const KHO_GUIDELINES_STATIC: Study[] = [
   {
+    id: '2026-eau-urological-infections',
+    title: 'EAU 2026: Hướng Dẫn Thực Hành Lâm Sàng Nhiễm Trùng Hệ Tiết Niệu & Nam Khoa',
+    titleEn: 'EAU Guidelines on Urological Infections (2026 Update)',
+    sourceType: 'intl-guideline',
+    specialty: 'renal',
+    design: 'guideline',
+    impact: 'practice-changing',
+    year: 2026,
+    organization: 'European Association of Urology (EAU)',
+    journal: 'Eur Urol',
+    file: '2026-eau-urological-infections.mdx',
+    conditionKey: 'uti',
+    icd10: ['N39.0', 'N30.0', 'N10', 'N41.0', 'N45.9', 'N49.9', 'A18.1', 'B37.4'],
+    intervention: 'Khung phân loại mới (Localised vs Systemic UTI); Khuyến cáo MẠNH không điều trị ABU bừa bãi (chỉ điều trị thai kỳ & trước can thiệp xâm lấn niêm mạc); Kháng sinh đầu tay viêm bàng quang (Fosfomycin, Nitrofurantoin, Pivmecillinam); CẤM Fluoroquinolones & Aminopenicillins trong viêm bàng quang thông thường; Liệu pháp không kháng sinh (BNO 1045, Cranberry, Methenamine, Estrogen âm đạo, GAG); Kháng sinh IV trong viêm bể thận cấp; Bỏ đường sinh thiết trực tràng (TR) chuyển 100% sang đường Tầng sinh môn (TP) không dùng kháng sinh dự phòng ở ca nguy cơ thấp; CẤM Fluoroquinolones dự phòng sinh thiết; Single-dose PAP cho PCNL & TURP.',
+    primaryEndpoint: 'Tối ưu hóa chẩn đoán và điều trị viêm bàng quang/viêm bể thận, giảm thiểu biến chứng nhiễm khuẩn huyết (urosepsis) sau can thiệp niệu khoa và sinh thiết tuyến tiền liệt, ngăn ngừa kháng thuốc và bảo vệ an toàn người bệnh.',
+    keyResults: 'HBAR: Sinh thiết tầng sinh môn (TP) giảm urosepsis xuống < 0.1% | Cho phép không dùng kháng sinh dự phòng khi sinh thiết TP ở BN nguy cơ thấp | CẤM Fluoroquinolones dự phòng chu phẫu | Không điều trị ABU giảm tái phát UTI (RR 0.28) | Single-dose PAP cho PCNL (giảm 69% sepsis) & TURP (giảm 49% urosepsis).',
+    summary: 'Hướng dẫn thực hành lâm sàng toàn diện của Hiệp hội Tiết niệu Châu Âu (EAU 2026): Tích lũy bằng chứng từ 36 nghiên cứu mới, loại bỏ thuật ngữ có/không biến chứng (Localised vs Systemic UTI), quản lý ABU, viêm bàng quang cấp & tái phát, viêm bể thận cấp, CA-UTIs, viêm niệu đạo, viêm tuyến tiền liệt, viêm mào tinh hoàn, hoại tử Fournier, lao niệu dục, nấm đường niệu và bước đột phá chuyển đổi 100% sinh thiết tuyến tiền liệt đường tầng sinh môn (TP).',
+    detailedConclusion: 'Phân định rõ Localised UTI (ngoại trú) vs Systemic UTI (nội trú/IV). Tuyệt đối không điều trị ABU ở phụ nữ, đái tháo đường, người già, catheter, ghép thận hay UTI tái phát. Bắt buộc chuyển hoàn toàn sang sinh thiết tuyến tiền liệt đường tầng sinh môn và cấm dùng Fluoroquinolones dự phòng chu phẫu.'
+  },
+
+  {
     id: '2017-idsa-infectious-diarrhea',
     title: 'IDSA 2017: Hướng Dẫn Thực Hành Lâm Sàng Chẩn Đoán & Quản Lý Tiêu Chảy Nhiễm Trùng',
     titleEn: '2017 Infectious Diseases Society of America Clinical Practice Guidelines for the Diagnosis and Management of Infectious Diarrhea',
