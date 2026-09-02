@@ -15,8 +15,6 @@ tags:
 updated: "2026-08-21"
 ---
 
-
-
 # PHẦN 1: TỔNG QUAN, CƠ CHẾ BỆNH SINH VÀ CHẨN ĐOÁN NHIỄM NẤM XÂM LẤN
 
 ### 1. Nội Dung Sinh Lý Học, Sinh Lý Bệnh Và Chẩn Đoán Chi Tiết
