@@ -11,6 +11,48 @@ import { Study } from './guidelines-types';
 
 export const KHO_GUIDELINES_STATIC: Study[] = [
   {
+    id: '2024-nice-ng240-viem-mang-nao',
+    title: 'NICE 2024 (NG240): Hướng Dẫn Thực Hành Lâm Sàng Viêm Màng Não Vi Khuẩn & Bệnh Do Não Mô Cầu',
+    titleEn: 'Meningitis (bacterial) and meningococcal disease: recognition, diagnosis and management (NICE NG240 / BMJ 2024)',
+    sourceType: 'intl-guideline',
+    specialty: 'infect',
+    design: 'guideline',
+    impact: 'practice-changing',
+    year: 2024,
+    organization: 'National Institute for Health and Care Excellence (NICE)',
+    journal: 'BMJ',
+    file: '2024-nice-ng240-viem-mang-nao.mdx',
+    conditionKey: 'meningitis',
+    icd10: ['G00', 'G00.9', 'G00.0', 'G00.1', 'A39.0', 'A39.2', 'A39.4', 'H90.5'],
+    intervention: 'Mở rộng đối tượng áp dụng cho cả người lớn; Kích hoạt tổ hợp cờ đỏ (Sốt, Đau đầu, Cứng gáy, Thay đổi ý thức/nhận thức); Cảnh giác không quy kết nhầm thay đổi hành vi ở người trẻ do rượu/ma túy; Kháng sinh trước viện (Ceftriaxone hoặc Benzylpenicillin IM/IV) cho ca nghi não mô cầu; Khung giờ vàng 1 giờ tại bệnh viện khởi động kháng sinh tĩnh mạch dưới sự chỉ đạo của Bác sĩ lâm sàng cao cấp; Chọc dò DNT trước kháng sinh nếu an toàn và không làm chậm thuốc quá 1 giờ; Khuyến cáo an toàn (safety netting); Kế hoạch tái khám bắt buộc sau xuất viện mốc 4-6 tuần cho người lớn và theo dõi phát triển thần kinh kéo dài đến 2 năm cho trẻ em.',
+    primaryEndpoint: 'Nhận diện sớm tại cộng đồng và bệnh viện, giảm thiểu tối đa thời gian trì hoãn dùng kháng sinh cứu mạng, ngăn ngừa tử vong và tàn tật lâu dài ở cả người lớn và trẻ em.',
+    keyResults: 'Mở rộng áp dụng thành công cho người lớn | Tổ hợp 4 dấu hiệu cờ đỏ nâng cao độ nhạy chẩn đoán | Dùng kháng sinh trong 0-3h đầu giảm đáng kể tử vong ở người lớn | Bác sĩ cao cấp giúp vượt qua rào cản thời gian thực tế 3.8 giờ để đạt mục tiêu 1 giờ vàng | Tái khám mốc 4-6 tuần giúp phát hiện sớm điếc và di chứng thần kinh.',
+    summary: 'Hướng dẫn cập nhật toàn diện của Viện Y tế Quốc gia Anh (NICE NG240 / BMJ 2024): Đánh dấu bước chuyển dịch lớn mở rộng áp dụng cho cả người lớn, chuẩn hóa tổ hợp cờ đỏ, bảng triệu chứng theo nhóm tuổi, sơ đồ trực quan BMJ Infographic, kháng sinh trước viện và tại viện trong khung giờ vàng 1h, khắc phục rào cản thời gian cửa - kháng sinh (3.8h) và quy chuẩn kế hoạch tái khám đa chuyên khoa sau xuất viện.',
+    detailedConclusion: 'Bác sĩ lâm sàng nhận diện tổ hợp cờ đỏ và không bỏ sót thay đổi tri giác ở người trẻ. Tiêm ngay kháng sinh trước viện cho ca nghi não mô cầu. Tại bệnh viện, Bác sĩ cao cấp đảm bảo tiêm kháng sinh tĩnh mạch trong vòng 1 giờ vàng. Không cho bệnh nhân xuất viện khi chưa thiết lập kế hoạch tái khám chuyên khoa mốc 4-6 tuần.'
+  },
+
+  {
+    id: '2026-kasl-co-truong-xo-gan',
+    title: 'KASL 2026: Hướng Dẫn Thực Hành Lâm Sàng Cổ Trướng và Biến Chứng Liên Quan Trong Xơ Gan',
+    titleEn: 'KASL Clinical Practice Guidelines for Liver Cirrhosis: Ascites and Related Complications (2026 Update)',
+    sourceType: 'intl-guideline',
+    specialty: 'gi',
+    design: 'guideline',
+    impact: 'practice-changing',
+    year: 2026,
+    organization: 'Korean Association for the Study of the Liver (KASL)',
+    journal: 'Clin Mol Hepatol',
+    file: '2026-kasl-co-truong-xo-gan.mdx',
+    conditionKey: 'ascites',
+    icd10: ['K74.6', 'R18.8', 'K76.7', 'K65.0', 'N17.9', 'E87.1', 'J94.8', 'K42.9'],
+    intervention: 'Chọc dịch chẩn đoán sớm trong 12 - 24 giờ đầu; Phân tầng tăng áp cửa theo SAAG ≥ 1.1 g/dL và protein dịch 2.5 g/dL; Dinh dưỡng 30-35 kcal/kg, đạm 1.2-1.5 g/kg, bữa phụ đêm (LES) và BCAAs; Tiết chế muối < 5g/ngày; Phác đồ lợi tiểu phối hợp Spironolactone : Furosemide (100:40); Chọc tháo dịch lượng lớn (LVP > 5 L) bắt buộc truyền Albumin 6 - 8 g/L; Tiêu chuẩn ADQI-ICA 2024 cho AKI (sCr và nước tiểu ≤ 0.5 mL/kg/h); HRS-AKI điều trị bằng Terlipressin truyền liên tục (2 - 12 mg/ngày) + Albumin; Kháng sinh SBP phân tầng MDRO (Ceftriaxone vs Meropenem/Vancomycin/Daptomycin) + Albumin; Dự phòng SBP bằng Rifaximin; CẤM NSAIDs, cấm đặt ống dẫn lưu màng phổi cho tràn dịch do gan.',
+    primaryEndpoint: 'Kiểm soát nhanh và bền vững cổ trướng, ngăn ngừa biến chứng rối loạn tuần hoàn sau chọc (PICD), suy thận cấp (HRS-AKI) và tử vong, tối ưu hóa điều trị SBP thời kỳ kháng thuốc và nâng cao sống còn không biến cố cho bệnh nhân xơ gan mất bù.',
+    keyResults: 'Chọc dịch trong 12-24h giảm tỷ lệ tử vong nội viện | Truyền Albumin 6-8 g/L ngăn ngừa PICD và AKI khi tháo LVP > 5 L | TIPS giảm tái phát cổ trướng (56% vs 16% sạch dịch) và cải thiện sống còn (HR 0.59) | Truyền liên tục Terlipressin giảm một nửa tác dụng phụ (35% vs 62%) so với tiêm bolus trong HRS-AKI | Rifaximin dự phòng thứ phát SBP vượt trội hơn Norfloxacin (RR 0.32 vs 0.55).',
+    summary: 'Hướng dẫn thực hành lâm sàng toàn diện của Hiệp hội Nghiên cứu Bệnh gan Hàn Quốc (KASL 2026) công bố trên Clinical and Molecular Hepatology: Rà soát và cập nhật hệ thống sau 9 năm về sinh lý bệnh, chẩn đoán phân biệt cổ trướng, liệu pháp dinh dưỡng chống teo cơ, phác đồ lợi tiểu vàng 100:40, chọc tháo LVP kèm Albumin, xử trí cổ trướng kháng trị và TIPS, hạ natri máu loãng, đồng thuận ADQI-ICA 2024 về AKI & HRS-AKI, phác đồ Terlipressin truyền liên tục và quản lý an toàn thuốc toàn hệ thống.',
+    detailedConclusion: 'Bác sĩ lâm sàng thực hiện chọc dịch màng bụng sớm trong 12-24h đầu. Sử dụng phác đồ lợi tiểu tỷ lệ vàng 100:40 và theo dõi sát tỷ số Na/K niệu ngẫu nhiên. Bắt buộc truyền Albumin 6-8 g cho mỗi lít dịch rút khi chọc LVP > 5 L. Tích hợp tiêu chuẩn thể tích nước tiểu để phát hiện sớm AKI và khởi động ngay Terlipressin truyền liên tục phối hợp Albumin khi xác chẩn HRS-AKI. Cá thể hóa kháng sinh SBP theo nguy cơ vi khuẩn đa kháng và tuyệt đối chống chỉ định NSAIDs cũng như dẫn lưu màng phổi trong tràn dịch do gan.'
+  },
+
+  {
     id: '2024-jama-wikiguidelines-uti',
     title: 'JAMA 2024: Đồng Thuận WikiGuidelines Về Dự Phòng, Chẩn Đoán & Điều Trị Nhiễm Trùng Tiết Niệu',
     titleEn: 'Guidelines for the Prevention, Diagnosis, and Management of Urinary Tract Infections in Pediatrics and Adults: A WikiGuidelines Group Consensus Statement (JAMA 2024)',
@@ -911,24 +953,25 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     summary: 'Chuyển đổi COVID-19 sang bệnh truyền nhiễm nhóm B, quản lý tập trung nhóm nguy cơ cao và xử trí cơn bão cytokine.',
     detailedConclusion: 'Paxlovid trong 5 ngày đầu cho bệnh nhân nguy cơ cao; Dexamethasone 6mg/ngày chỉ dùng khi bệnh nhân có giảm SpO2.'
   },
-  {
+    {
     id: '2025-who-viem-mang-nao',
-    title: 'WHO 2025: Lộ trình Toàn cầu và Phác đồ Xử trí Cấp cứu Viêm màng não Vi khuẩn',
-    titleEn: 'WHO Global Roadmap to Defeat Meningitis and Emergency Management',
+    title: 'WHO 2025: Hướng Dẫn Thực Hành Lâm Sàng Chẩn Đoán, Điều Trị & Quản Lý Di Chứng Viêm Màng Não',
+    titleEn: 'WHO Guidelines on Meningitis Diagnosis, Treatment and Care (2025)',
     sourceType: 'intl-guideline',
     specialty: 'infect',
     design: 'guideline',
-    impact: 'regulatory',
+    impact: 'practice-changing',
     year: 2025,
     organization: 'Tổ chức Y tế Thế giới (WHO)',
-    journal: 'Lancet Infect Dis',
-    file: '2025-who-viem-mang-nao.html',
+    journal: 'WHO Guidelines',
+    file: '2025-who-viem-mang-nao.mdx',
     conditionKey: 'meningitis',
-    icd10: ['G00', 'G00.9'],
-    intervention: 'Chọc dò dịch não tủy (CSF) khẩn, Dexamethasone 10mg TM trước hoặc cùng liều kháng sinh đầu tiên, Ceftriaxone/Cefotaxime liều màng não + Vancomycin + Ampicillin (nếu nghi ngờ Listeria)',
-    primaryEndpoint: 'Giảm di chứng điếc, tổn thương thần kinh vĩnh viễn và tử vong',
-    summary: 'Tiếp cận cấp cứu viêm màng não: Không trì hoãn kháng sinh nếu phải chờ chụp CT scan sọ não; dùng Corticoid trước để giảm phản ứng viêm do ly giải vi khuẩn.',
-    detailedConclusion: 'Dexamethasone TM 0.15 mg/kg mỗi 6 giờ x 4 ngày (đặc biệt hiệu quả trong viêm màng não do Phế cầu).'
+    icd10: ['G00', 'G00.9', 'G00.1', 'G00.2', 'A39.0', 'A39.2', 'G03.9', 'H90.5'],
+    intervention: 'Lộ trình WHA73.9 đánh bại bệnh năm 2030; Khung giờ vàng 1 giờ kháng sinh tĩnh mạch liều tối đa (Ceftriaxone hoặc Cefotaxime); Bắt buộc phối hợp Ampicillin/Amoxicillin diệt Listeria ở BN > 60t, có thai hoặc suy giảm miễn dịch; Kháng sinh kinh nghiệm ngừng sau 7 ngày nếu hồi phục lâm sàng hoàn toàn; Dexamethasone tĩnh mạch (0.15 mg/kg mỗi 6h trong tối đa 4 ngày) tiêm đồng thời cùng liều kháng sinh đầu tiên; 6 tiêu chuẩn nguy cơ cao chụp CT sọ não trước chọc dò DNT; Chống chỉ định Glycerol uống & chống chỉ định hạn chế dịch thường quy; Sàng lọc thính lực trong 4 tuần & cấy ốc tai điện tử khẩn cấp phòng cốt hóa ốc tai; Khung phục hồi chức năng PIR 2023.',
+    primaryEndpoint: 'Giảm 50% ca mắc và 70% tử vong do viêm màng não có thể phòng ngừa bằng vắc-xin, ngăn ngừa biến chứng tử vong và di chứng điếc thần kinh, tối ưu hóa phục hồi chức năng toàn diện.',
+    keyResults: 'Khởi động kháng sinh trong 1 giờ vàng giảm rõ rệt tử vong | Chống chỉ định CT thường quy giúp tránh chậm trễ kháng sinh | Bổ sung Ampicillin bảo vệ nhóm nguy cơ cao khỏi Listeria | Dexamethasone liều đầu giảm 50% di chứng điếc do phế cầu | Sàng lọc thính lực và cấy ốc tai sớm ngăn ngừa cốt hóa ốc tai vĩnh viễn.',
+    summary: 'Hướng dẫn thực hành lâm sàng toàn diện của WHO (2025) về Chẩn đoán, Điều trị và Chăm sóc Viêm màng não: Đánh giá 20 câu hỏi PICO theo hệ thống GRADE, thiết lập khung giờ vàng 1 giờ kháng sinh, tiêu chuẩn phân tích DNT & Lactate, chỉ định Dexamethasone đồng thời, phác đồ hạ bậc theo kháng sinh đồ, quản lý co giật & áp lực nội sọ, dự phòng PEP não mô cầu liều duy nhất và khung phục hồi chức năng thần kinh PIR.',
+    detailedConclusion: 'Bác sĩ lâm sàng bắt đầu kháng sinh tĩnh mạch trong vòng 1 giờ ngay khi nghi ngờ. Không chụp CT sọ não thường quy trừ khi có 1 trong 6 dấu hiệu nguy cơ tụt não. Bổ sung Ampicillin cho người > 60 tuổi hoặc suy giảm miễn dịch. Tiêm Dexamethasone đồng thời liều kháng sinh đầu tiên. Bắt buộc sàng lọc thính lực chính quy trước xuất viện và can thiệp cấy ốc tai khẩn cấp khi có chỉ định.'
   },
   {
     id: '2023-byt-marburg',

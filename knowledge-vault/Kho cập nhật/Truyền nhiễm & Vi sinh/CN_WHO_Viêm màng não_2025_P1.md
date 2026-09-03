@@ -15,111 +15,198 @@ tags:
   - "y-khoa/raw"
 updated: "2026-08-21"
 ---
+---
 
+# TÓM TẮT CHI TIẾT HƯỚNG DẪN CỦA WHO VỀ VIÊM MÀNG NÃO (2025)
 
+## PHẦN 1: GIỚI THIỆU (INTRODUCTION)
 
-### 1. Nội Dung Hướng Dẫn Chi Tiết: Khuyến Cáo Mới Nhất Từ WHO (Phần 1 - Giới Thiệu & Chẩn Đoán)
+### 1. Gánh nặng toàn cầu của viêm màng não (Global burden of meningitis)
 
-**Gánh Nặng Bệnh Tật Toàn Cầu Và Lộ Trình Toàn Cầu Đến Năm 2030**
+Viêm màng não tiếp tục là một mối đe dọa sức khỏe cộng đồng nghiêm trọng trên toàn cầu, mặc dù đã có những nỗ lực kiểm soát bệnh thành công ở nhiều quốc gia và khu vực. Gánh nặng về tỷ lệ tử vong và tỷ lệ mắc bệnh vẫn ở mức cao, đặc biệt là ở các quốc gia có thu nhập thấp và trung bình (LMICs) cũng như ở những khu vực thường xuyên xảy ra các vụ dịch lớn mang tính hủy hoại.
 
-- **Thực trạng toàn cầu:** [[Viêm màng não]] tiếp tục là một mối đe dọa nghiêm trọng đối với sức khỏe cộng đồng trên toàn thế giới. Gánh nặng tử vong và tàn tật đặc biệt cao tại các quốc gia thu nhập thấp và trung bình (LMICs) cũng như các khu vực đang đối mặt với dịch bệnh quy mô lớn.
-- **Số liệu thống kê:** Ước tính trong năm 2019 có khoảng **2,51 triệu ca mắc** (khoảng dao động tin cậy 95% UI: 2,11–2,99 triệu) và **236.000 ca tử vong** (95% UI: 204.000–277.000) do [[Viêm màng não]] trên toàn cầu. Trong đó, đối tượng chịu ảnh hưởng nặng nề nhất là trẻ em dưới 5 tuổi với khoảng 1,28 triệu ca mắc và 112.000 ca tử vong.
-- **Hậu quả lâu dài:** Trung bình cứ **1 trong 5 người** sống sót sau viêm màng não do vi khuẩn sẽ phải chịu các biến chứng lâu dài, bao gồm các di chứng về thể chất và tâm lý thần kinh dẫn đến tàn tật. Năm 2021, tổng gánh nặng tàn tật và tử vong sớm do viêm màng não ước tính vượt quá 15 triệu năm sống điều chỉnh theo mức độ tàn tật (DALYs) trên toàn thế giới.
-- **Lộ trình toàn cầu:** Nhằm giải quyết tình trạng này, Đại hội đồng Y tế Thế giới lần thứ 73 đã phê duyệt lộ trình toàn cầu **"Defeating meningitis by 2030"** (Nghị quyết WHA73.9). Tầm nhìn đến năm 2030 tập trung vào 3 mục tiêu chiến lược cốt lõi:
-    1. Loại bỏ hoàn toàn các vụ dịch viêm màng não do vi khuẩn.
-    2. Giảm 50% số ca mắc và 70% số ca tử vong do các tác nhân vi khuẩn có thể phòng ngừa bằng [[Vắc-xin]].
-    3. Giảm thiểu di chứng tàn tật và cải thiện chất lượng cuộc sống sau viêm màng não do bất kỳ nguyên nhân nào.
-
-**Biểu Hiện Lâm Sàng Và Các Biến Chứng Liên Quan**
-
-- **Triệu chứng điển hình:** Viêm màng não cấp tính khởi phát nhanh chóng với các biểu hiện như [[Sốt]], đau đầu, cứng cổ, sợ ánh sáng và/hoặc thay đổi trạng thái tâm thần (lơ mơ, ngủ lịm, nhầm lẫn cho đến [[Hôn mê]]). Tam chứng cổ điển ([[Sốt]], cứng cổ và thay đổi ý thức/đau đầu) giúp định hướng chẩn đoán mạnh mẽ nhưng chỉ xuất hiện ở khoảng một nửa số bệnh nhân. Tuy nhiên, nếu thiếu vắng cả bốn biểu hiện trên, khả năng mắc viêm màng não do vi khuẩn là rất thấp.
-- **Dấu hiệu kích thích màng não:** Các nghiệm pháp kích thích màng não kinh điển như **dấu hiệu Brudzinski và Kernig** cần được thăm khám thường quy. Tuy nhiên, độ nhạy của các dấu hiệu này bị giới hạn và không thể dùng sự vắng mặt của chúng để loại trừ chẩn đoán.
-- **Biểu hiện ở trẻ sơ sinh và trẻ nhỏ:** Triệu chứng thường mơ hồ, khó xác định hơn và rất thay đổi. Các biểu hiện phổ biến bao gồm sốt hoặc hạ thân nhiệt, thóp phồng, lơ mơ, dễ kích thích, bú kém, tiếng khóc bất thường (khóc liên tục, yếu hoặc khóc thét giọng cao), dấu hiệu [[Suy hô hấp]] (ngừng thở, [[[[Khó thở]]|thở nhanh]], rên rỉ) và [[Co giật]].
-- **Biến chứng cấp tính nguy kịch:** Bệnh nhân có thể tiến triển nhanh chóng đến tăng áp lực nội sọ (do [[Phù]] não, tràn [[Dịch nào tủy|dịch não tủy]] hoặc áp-xe) dẫn đến thoát vị não. Ngoài ra, [[Nhiễm trùng huyết]], [[[[Sốc]] nhiễm khuẩn|[[Sốc]] nhiễm trùng]], suy đa tạng và đông máu rải rác trong lòng mạch (DIC) là các biến chứng đe dọa tính mạng. Ở bệnh nhân [[Nhiễm trùng huyết]] do não mô cầu (_meningococcemia_), có thể xuất hiện ban [[Xuất huyết]] hoại tử đặc trưng không biến mất khi ấn kính (_petechial/purpuric rash_), thường tập trung ở thân mình và chi dưới.
+- **Số liệu thống kê (Năm 2019):** Ước tính có khoảng **2,51 triệu ca mắc** (95% UI: 2,11–2,99 triệu) và **236.000 ca tử vong** (95% UI: 204.000–277.000) do viêm màng não trên toàn thế giới. Gánh nặng này đè nặng nhất lên **trẻ em dưới 5 tuổi**, với 1,28 triệu ca mắc (95% UI: 0,95–1,71 triệu) và 112.000 ca tử vong (95% UI: 87.400–145.000).
+- **Di chứng lâu dài:** Khoảng **1 trong 5 người** sống sót sau viêm màng não do vi khuẩn phải gánh chịu các biến chứng lâu dài, bao gồm các di chứng thực thể và tâm lý thần kinh dẫn đến tàn tật và ảnh hưởng sâu sắc đến chất lượng cuộc sống. Vào năm 2021, gánh nặng tử vong sớm và tàn tật do viêm màng não ước tính vượt quá **15 triệu năm sống điều chỉnh theo mức độ tàn tật (DALYs)** trên toàn cầu.
+- **Gánh nặng tài chính:** Việc chăm sóc và điều trị sau viêm màng não tạo ra gánh nặng tài chính đáng kể cho cá nhân, gia đình và cộng đồng. Ở những nơi có nguồn lực hạn chế, các gia đình chăm sóc trẻ có biến chứng thần kinh lâu dài phải đối mặt với khó khăn lớn trong việc chi trả chi phí y tế, đôi khi buộc phải hy sinh các nhu cầu cơ bản của cuộc sống.
 
 ---
 
-**Bảng 1.1: Nguyên nhân gây viêm màng não vi khuẩn cấp tính theo thứ tự tần suất giảm dần**
+### 2. Lộ trình toàn cầu "Đánh bại bệnh viêm màng não vào năm 2030" (Defeating meningitis by 2030: a global road map)
 
-_Trích xuất từ Tài liệu "9789240108042-eng.pdf" - Bảng 1.1 (Table 1.1)._
+Mặc dù nhiều nguyên nhân gây viêm màng não có thể phòng ngừa được bằng vắc-xin, nhưng các lỗ hổng trong chẩn đoán, điều trị và chăm sóc theo dõi vẫn tồn tại, đặc biệt là ở các nước LMICs. Do đó, vào năm 2017, đại diện từ các chính phủ, tổ chức y tế toàn cầu, giới học thuật và xã hội dân sự đã kêu gọi hành động để loại bỏ viêm màng não. WHO đã điều phối xây dựng lộ trình **"Defeating meningitis by 2030: a global road map"**, được Đại hội đồng Y tế Thế giới thông qua vào tháng 11 năm 2020 (Nghị quyết WHA73.9).
 
-|Trẻ em (trên 1 tháng) và trẻ vị thành niên|Người lớn không suy giảm miễn dịch|Người lớn suy giảm miễn dịch hoặc trên 60 tuổi|
-|:--|:--|:--|
-|1. _Neisseria meningitidis_|1. _Streptococcus pneumoniae_|1. _Streptococcus pneumoniae_|
-|2. _Streptococcus pneumoniae_|2. _Neisseria meningitidis_|2. _Neisseria meningitidis_|
-|3. _Haemophilus influenzae_||3. _Listeria monocytogenes_|
-|4. _Non-typhoidal Salmonella_|||
+Lộ trình vạch ra **ba mục tiêu tầm nhìn**:
 
-_Mô tả dưới bảng:_ Bảng phân loại các tác nhân gây viêm màng não vi khuẩn phổ biến nhất tùy thuộc vào độ tuổi và tình trạng miễn dịch của người bệnh. Sự phân bố này hỗ trợ đắc lực cho việc đưa ra quyết định điều trị [[Kháng sinh]] theo kinh nghiệm ban đầu.
+1. Loại bỏ các dịch bệnh viêm màng não do vi khuẩn.
+2. Giảm 50% số ca mắc và 70% số ca tử vong do viêm màng não vi khuẩn có thể phòng ngừa bằng vắc-xin.
+3. Giảm thiểu tàn tật và cải thiện chất lượng cuộc sống sau viêm màng não do bất kỳ nguyên nhân nào.
 
----
+Các hoạt động được tổ chức thành **5 trụ cột liên kết chặt chẽ**: Phòng ngừa và kiểm soát dịch; Chẩn đoán và điều trị; Giám sát; Hỗ trợ và chăm sóc; Tuyên truyền và vận động. Trong đó, hai mục tiêu chiến lược nhấn mạnh việc cải thiện quản lý lâm sàng:
 
-**Các Khuyến Cáo Về Chẩn Đoán Viêm Màng Não Của WHO (WHO 2025)**
-
-**1. Chọc Dò Tủy Sống (Lumbar Puncture - LP)**
-
-- **Khuyến cáo Thực hành tốt (Good practice statement):** Ở những cá nhân nghi ngờ viêm màng não cấp tính, chọc dò tủy sống phải được thực hiện càng sớm càng tốt, tốt nhất là **trước khi bắt đầu điều trị [[Kháng sinh]]**, trừ khi có chống chỉ định cụ thể hoặc lý do trì hoãn.
-- **Lý do trì hoãn hoặc chống chỉ định:** Không được thực hiện LP nếu người bệnh có: rối loạn đông máu/[[Xuất huyết]] nặng; nhiễm trùng da hoặc mô mềm tại vị trí chọc dò; suy tuần hoàn hoặc [[Suy hô hấp]] chưa được kiểm soát ổn định. LP cũng làm tăng nguy cơ thoát vị não ở bệnh nhân có tăng áp lực nội sọ nặng.
-
-**2. Xét Nghiệm [[Dịch nào tủy|Dịch Não Tủy]] (Cerebrospinal Fluid Investigations)**
-
-- **Nhuộm Gram:**
-    - _Khuyến cáo mạnh mẽ (Strong recommendation):_ Nên thực hiện nhuộm Gram trên tất cả các mẫu dịch não tủy của bệnh nhân nghi ngờ viêm màng não.
-    - _Ý nghĩa lâm sàng:_ Nhuộm Gram giúp định hướng nhanh tác nhân: song cầu khuẩn Gram dương gợi ý phế cầu (_S. pneumoniae_); song cầu khuẩn Gram âm gợi ý não mô cầu (_N. meningitidis_); trực cầu khuẩn Gram âm gợi ý _H. influenzae_; trực khuẩn Gram dương gợi ý _Listeria_.
-- **Phân tích tế bào và hóa sinh:**
-    - _Khuyến cáo mạnh mẽ (Strong recommendation):_ Cần định lượng [[Bạch cầu|số lượng bạch cầu]] (tổng số và công thức bạch cầu), nồng độ protein, nồng độ glucose và tỷ lệ glucose dịch não tủy/máu.
-- **Nồng độ Lactate dịch não tủy:**
-    - _Khuyến cáo có điều kiện (Conditional recommendation):_ Xem xét định lượng lactate dịch não tủy hỗ trợ phân biệt viêm màng não vi khuẩn và virus **khi chưa sử dụng kháng sinh**.
-- **Cấy dịch não tủy & Kháng sinh đồ (AST):**
-    - _Khuyến cáo Thực hành tốt (Good practice statement):_ Cấy dịch não tủy và làm kháng sinh đồ vẫn là **tiêu chuẩn vàng** để xác định danh tính vi khuẩn và định hướng phác đồ điều trị tối ưu.
-- **Xét nghiệm sinh học phân tử (PCR):**
-    - _Khuyến cáo mạnh mẽ (Strong recommendation):_ Nên thực hiện các xét nghiệm phân tử dựa trên PCR trên mẫu dịch não tủy để phát hiện nhanh DNA/RNA của các tác nhân gây bệnh. Kết quả PCR cần được diễn giải kết hợp với bệnh cảnh lâm sàng và các kết quả xét nghiệm khác.
+- **Mục tiêu chiến lược 9 (Trụ cột Chẩn đoán và điều trị):** Cung cấp và thực hiện các hướng dẫn, công cụ điều trị và chăm sóc hỗ trợ chất lượng, phù hợp với từng bối cảnh nhằm giảm tử vong, di chứng và nguy cơ kháng kháng sinh.
+- **Mục tiêu chiến lược 13 (Trụ cột Hỗ trợ và chăm sóc):** Tăng cường nhận biết sớm và xử trí các di chứng viêm màng não tại các cơ sở y tế và cộng đồng.
 
 ---
 
-**Bảng 3.1: Các bất thường dịch não tủy điển hình trong viêm màng não do vi khuẩn và do virus**
+### 3. Mục tiêu của hướng dẫn và Đối tượng mục tiêu (Objective of the guidelines and target audience)
 
-_Trích xuất từ Tài liệu "9789240108042-eng.pdf" - Bảng 3.1 (Table 3.1)._
-
-|Chỉ số đánh giá|Viêm màng não do vi khuẩn|Viêm màng não do virus|
-|:--|:--|:--|
-|**Áp lực mở**|Tăng|Bình thường hoặc tăng nhẹ|
-|**Vẻ ngoài**|Đục hoặc mờ|Trong suốt|
-|**Tăng tế bào bạch cầu (pleocytosis)**|Rõ rệt|Vừa phải|
-|**Thành phần tế bào chiếm ưu thế**|[[Bạch cầu|Bạch cầu đa nhân trung tính]] (_neutrophils_)|Bạch cầu lympho (_lymphocytes_)|
-|**Tỷ lệ Glucose dịch não tủy/máu**|Thấp|Bình thường|
-|**Protein**|Tăng rõ rệt|Bình thường hoặc tăng nhẹ|
-|**Lactate**|Tăng (trước khi dùng kháng sinh)|Bình thường|
-
-_Mô tả dưới bảng:_ Bảng so sánh các biến đổi sinh hóa và tế bào trong dịch não tủy giúp bác sĩ lâm sàng nhanh chóng định hướng nguyên nhân gây bệnh để đưa ra phác đồ xử trí ban đầu [[Phù]] hợp.
+- **Mục tiêu:** Hướng dẫn này được xây dựng nhằm cung cấp các khuyến nghị dựa trên bằng chứng, đảm bảo chất lượng cho việc quản lý lâm sàng những người bị viêm màng não, bao gồm cả chăm sóc cấp tính và lâu dài.
+- **Đối tượng mục tiêu:**
+    - Chủ yếu dành cho **các nhân viên y tế** làm việc tại các cơ sở y tế tuyến một hoặc tuyến hai (bao gồm dịch vụ cấp cứu, nội trú và ngoại trú).
+    - Các nhóm cải tiến chất lượng ở tất cả các cấp của hệ thống y tế.
+    - **Các nhà hoạch định chính sách**, nhà lập kế hoạch y tế và quản lý chương trình ở cấp quốc gia và quốc tế (ví dụ: bộ y tế, các cơ quan y tế công cộng quốc gia).
+    - Các tổ chức học thuật, tổ chức phi chính phủ (NGOs) để định hướng nghiên cứu, giảng dạy và nâng cao năng lực.
+- **Phạm vi áp dụng:** Áp dụng trên toàn thế giới, đặc biệt được thiết kế để phù hợp với việc triển khai tại các quốc gia thu nhập thấp và trung bình (LMICs) - nơi có gánh nặng bệnh tật cao nhất.
 
 ---
 
-**3. Xét Nghiệm Máu (Blood Investigations)**
+### 4. Phạm vi của Hướng dẫn (Scope of the guidelines)
 
-- **Cấy máu:** _Khuyến cáo Thực hành tốt (Good practice statement):_ Lấy máu làm xét nghiệm cấy máu càng sớm càng tốt, tốt nhất là trước khi bắt đầu liều kháng sinh đầu tiên.
-- **Công thức máu ngoại vi (WBC):** _Khuyến cáo có điều kiện (Conditional recommendation):_ Đo tổng số và công thức bạch cầu ngoại vi ở những nơi nguồn lực cho phép.
-- **Chất chỉ điểm viêm ([[CRP]] hoặc Procalcitonin):** _Khuyến cáo có điều kiện (Conditional recommendation):_ Định lượng [[CRP]] hoặc Procalcitonin ngoại vi để hỗ trợ phân biệt viêm màng não vi khuẩn và các thể khác.
-- _Lưu ý quan trọng:_ Không có xét nghiệm máu ngoại vi nào được phép sử dụng đơn độc để xác định hoặc loại trừ viêm màng não; tuyệt đối **không trì hoãn việc thực hiện LP** để chờ các kết quả xét nghiệm máu này.
-
-**4. Chẩn Đoán Hình Ảnh Sọ Nao (Cranial Imaging)**
-
-- **Chụp thường quy:** _Khuyến cáo mạnh mẽ KHÔNG thực hiện (Strong recommendation against):_ Không thực hiện chẩn đoán hình ảnh sọ não (như [[CT Scan]]) thường quy cho tất cả các trường hợp nghi ngờ viêm màng não nhằm tránh làm trì hoãn điều trị một cách không cần thiết.
-- **Chụp trước khi LP (Nơi có sẵn trang thiết bị chụp hình ảnh):** _Khuyến cáo mạnh mẽ (Strong recommendation):_ Chỉ thực hiện chụp sọ não trước khi LP để loại trừ tổn thương choán chỗ có di lệch đường giữa nếu có một trong các dấu hiệu nguy cơ sau tại thời điểm nhập viện:
-    1. Điểm Glasgow (GCS) dưới 10.
-    2. Dấu hiệu thần kinh khu trú.
-    3. Liệt dây thần kinh sọ.
-    4. Phù gai thị.
-    5. [[Co giật]] mới khởi phát (ở người lớn).
-    6. Tình trạng suy giảm miễn dịch nghiêm trọng.
-- **Trì hoãn LP (Nơi KHÔNG có sẵn trang thiết bị chụp):** _Khuyến cáo mạnh mẽ (Strong recommendation):_ Phải trì hoãn chọc dò tủy sống nếu xuất hiện bất kỳ dấu hiệu nguy cơ nào ở trên cho đến khi các triệu chứng này thoái lui hoàn toàn.
-- **Không trì hoãn điều trị:** _Khuyến cáo mạnh mẽ (Strong recommendation):_ **Tuyên đối không trì hoãn điều trị kháng sinh** để chờ kết quả chụp hình ảnh hoặc khi LP bị trì hoãn. Trong trường hợp LP bị hoãn, phải cấy máu ngay và bắt đầu điều trị kháng sinh và corticosteroids theo kinh nghiệm càng sớm càng tốt trước khi đưa bệnh nhân đi chụp sọ não.
+Hướng dẫn đề cập đến việc chẩn đoán, điều trị và chăm sóc lâu dài cho **viêm màng não khởi phát cấp tính, mắc phải tại cộng đồng** ở **người lớn, trẻ vị thành niên và trẻ em trên 1 tháng tuổi**. Thuật ngữ "trẻ em" (children) trong tài liệu này bao gồm trẻ sơ sinh trên 1 tháng tuổi, trẻ tập đi và trẻ vị thành niên. Hướng dẫn bao gồm cả bối cảnh dịch bệnh và không có dịch. Do có sự tương đồng lớn về biểu hiện lâm sàng, tiếp cận chẩn đoán ban đầu và chiến lược điều trị, **cả nguyên nhân do vi khuẩn và vi-rút đều nằm trong phạm vi của hướng dẫn này**.
 
 ---
 
-### 2. Trích Dẫn Tài Liệu Tham Khảo Chuẩn AMA:
+### 5. Biểu hiện lâm sàng (Clinical presentation)
 
-1. World Health Organization. _WHO guidelines on meningitis diagnosis, treatment and care_. Geneva: World Health Organization; 2025.
-2. World Health Organization. _WHO guidelines on meningitis diagnosis, treatment and care: executive summary_. Geneva: World Health Organization; 2025.
+Viêm màng não cấp tính đặc trưng bởi sự khởi phát nhanh chóng của các triệu chứng: **sốt, cứng gáy, đau đầu, sợ ánh sáng và/hoặc thay đổi trạng thái tâm thần** (từ thờ ơ, lơ mơ đến lú lẫn và hôn mê).
+
+- **Tam chứng kinh điển:** Sốt, cứng gáy và thay đổi trạng thái tâm thần (hoặc đau đầu) là dấu hiệu gợi ý mạnh mẽ viêm màng não vi khuẩn, nhưng **chỉ được báo cáo ở khoảng một nửa số người bệnh**. Ngược lại, sự vắng mặt của tất cả các biểu hiện này làm giảm đáng kể khả năng do nguyên nhân vi khuẩn.
+- **Nhiễm trùng huyết và biến chứng nặng:** Nhiễm trùng huyết có thể tiến triển như một phần diễn tiến tự nhiên của bệnh. Trong các trường hợp nghiêm trọng, có thể xảy ra sốc nhiễm trùng, suy đa tạng và/hoặc đông máu nội quản rải rác (DIC).
+- **Dấu hiệu da đặc trưng:** Ở những bệnh nhân nhiễm trùng huyết do não mô cầu (_meningococcemia_), một phát ban xuất huyết đặc trưng, không biến mất khi ấn kính (non-blanching skin rash) có thể xuất hiện dưới dạng các nốt xuất huyết (petechiae) hoặc mảng tử ban (purpura), thường gặp nhất ở thân mình và phần dưới cơ thể. Ban này tương quan với mức độ giảm tiểu cầu và có thể xuất hiện trước các biến chứng xuất huyết hoại tử da cực kỳ nghiêm trọng (ví dụ: _purpura fulminans_).
 
 ---
+
+### 6. Căn nguyên (Etiology)
+
+Trong số các thể viêm màng mủ cấp tính, bệnh do vi khuẩn có tỷ lệ tử vong và di chứng cao nhất. Các tác nhân vi khuẩn gây bệnh hàng đầu phụ thuộc lớn vào độ tuổi, tình trạng miễn dịch và các yếu tố nguy cơ đi kèm:
+
+#### 1. _Streptococcus pneumoniae_ (Phế cầu khuẩn)
+
+- Là nguyên nhân thường gặp nhất gây viêm màng não vi khuẩn cấp tính ở người lớn.
+- Việc tiêm phòng vắc-xin phế cầu cộng hợp (PCV) đã làm giảm đáng kể tỷ lệ mắc bệnh xâm lấn ở nhiều nước.
+- Bệnh vẫn xảy ra phổ biến ở những người có yếu tố thuận lợi như: ổ nhiễm trùng kế cận (viêm tai giữa, viêm xương chũm, viêm xoang), chấn thương đầu gây rò rỉ dịch não tủy do nứt sọ nền, mất chức năng lách (anatomical or functional asplenia) và tình trạng suy giảm miễn dịch.
+- Các vụ dịch phế cầu khuẩn (chủ yếu do huyết thanh tuýp 1) đã được ghi nhận ở Trung và Tây Phi trong 20 năm qua, thường có tỷ lệ tử vong cao hơn so với dịch não mô cầu.
+
+#### 2. _Neisseria meningitidis_ (Não mô cầu)
+
+- Là nguyên nhân hàng đầu gây viêm màng não vi khuẩn ở trẻ em.
+- Sáu nhóm huyết thanh (A, B, C, W, X và Y) chịu trách nhiệm cho hơn 95% các trường hợp mắc bệnh não mô cầu xâm lấn trên toàn thế giới.
+- Dịch bệnh dễ xảy ra ở những nơi có tỷ lệ tiêm chủng thấp, điều kiện sống chật chội, tụ họp đông người hoặc vùng có xung đột, trại tị nạn.
+- **Vành đai viêm màng não châu Phi (African meningitis belt):** Kéo dài từ Senegal đến Ethiopia, dịch bệnh xảy ra phổ biến nhất vào mùa khô (từ tháng 12 đến tháng 6). Nhờ vắc-xin cộng hợp nhóm A, nhóm huyết thanh A từng gây dịch lớn chu kỳ 8-12 năm đã giảm, hiện nay các nhóm C, W và X chiếm ưu thế. Ở Trung Đông, dịch liên quan đến xung đột hoặc các sự kiện tôn giáo tụ họp đông người (Hajj và Umrah). Ở các nước thu nhập cao (HICs), các nhóm B, C, W, Y chịu trách nhiệm cho các ca lẻ tẻ.
+- Sự cư trú của vi khuẩn ở vòm họng là điều kiện tiên quyết để phát triển nhiễm trùng hệ thống.
+
+#### 3. _Haemophilus influenzae_
+
+- Nguyên nhân chính gây bệnh ở trẻ dưới 5 tuổi, chủ yếu do các chủng có bao nang (encapsulated).
+- Nhờ vắc-xin Hib chủng ngừa rộng rãi, tỷ lệ mắc bệnh ở trẻ em đã giảm mạnh, nhưng số ca bệnh do các chủng không phải tuýp b (non-b) và không phân tuýp (non-typeable) đang có xu hướng gia tăng.
+
+#### 4. _Streptococcus agalactiae_ (Liên cầu khuẩn nhóm B - GBS)
+
+- Thường trú ở đường tiêu hóa và sinh dục. Gây nhiễm trùng nặng bao gồm viêm màng não ở trẻ sơ sinh dưới 3 tháng tuổi, phụ nữ mang thai/sau sinh, người già và người có bệnh nền mạn tính.
+
+#### 5. _Listeria monocytogenes_
+
+- Gây viêm màng não/viêm não màng não ở người suy giảm miễn dịch, phụ nữ mang thai, người trên 60 tuổi và trẻ sơ sinh. lây truyền qua đường thực phẩm (thực phẩm ăn liền, các sản phẩm sữa chưa tiệt trùng, rau quả tươi) nhờ khả năng sống sót và phát triển ở nhiệt độ tủ lạnh.
+
+#### 6. _Non-typhoidal Salmonellae_ (Salmonella không gây thương hàn)
+
+- Lây truyền qua đường phân - miệng, gây nhiễm khuẩn huyết và viêm màng não. Gánh nặng lớn nhất ở vùng châu Phi cận Sahara, đặc biệt ở trẻ nhỏ, người nhiễm HIV, trẻ bị sốt rét nặng gây thiếu máu, suy dinh dưỡng hoặc có bệnh hồng cầu hình liềm.
+
+#### 7. Các vi khuẩn khác
+
+- Cần chẩn đoán phân biệt ở các vùng lưu hành dịch tễ hoặc có yếu tố nguy cơ cụ thể: Lao, bệnh do Brucella (_brucellosis_), Leptospira (_leptospirosis_), bệnh Lyme, giang mai, rickettsia (sốt mò, sốt phát ban dịch tễ).
+
+#### 8. Vi-rút
+
+- Thường có tiên lượng tốt hơn và tỷ lệ tử vong thấp hơn vi khuẩn.
+- **Enterovirus** (bao gồm Coxsackievirus, echovirus, parechovirus) là nguyên nhân thường gặp nhất, có thể biểu hiện ưu thế theo mùa (mùa hè và mùa thu ở vùng ôn đới, quanh năm ở vùng nhiệt đới).
+- **Herpes simplex virus (HSV)**, đặc biệt là HSV-2, tiếp theo là Varicella-zoster virus (VZV), Epstein-Barr virus (EBV) và Cytomegalovirus (CMV).
+- Các vi-rút truyền qua chân đốt (Arbovirus) như West Nile, viêm não Nhật Bản, viêm não do ve truyền...
+- Cũng có thể gặp trong giai đoạn nhiễm HIV cấp, sởi, quai bị, cúm, COVID-19.
+
+---
+
+### BẢNG THÔNG TIN TRÍCH XUẤT TỪ TÀI LIỆU NGUỒN
+
+Dưới đây là các bảng thông tin quan trọng được trích xuất nguyên bản từ **Phần 1** của tài liệu **"9789240108042-eng.pdf"** trong hệ thống Notebook:
+
+> #### **Bảng 1.1: Căn nguyên của viêm màng não vi khuẩn cấp tính theo thứ tự tần suất giảm dần**
+> 
+> - **Nguồn:** Trích xuất nguyên văn từ mục _1.6 Etiology (Table 1.1)_ trang 6 thuộc tài liệu **9789240108042-eng.pdf**.
+> 
+> | Trẻ em (trên 1 tháng tuổi) và trẻ vị thành niên | Người lớn không suy giảm miễn dịch | Người lớn suy giảm miễn dịch hoặc người lớn trên 60 tuổi | | :--- | :--- | :--- | | 1. _Neisseria meningitidis_ \(^a\)2. _Streptococcus pneumoniae_ \(^a\)3. _Haemophilus influenzae_4. _Non-typhoidal Salmonella_ | 1. _Streptococcus pneumoniae_2. _Neisseria meningitidis_ | 1. _Streptococcus pneumoniae_2. _Neisseria meningitidis_3. _Listeria monocytogenes_ |
+> 
+> _Chú thích dưới bảng trong tài liệu gốc:_
+> 
+> - \(^a\) Tỷ lệ lưu hành tương đối giữa _N. meningitidis_ và _S. pneumoniae_ ở trẻ em có sự khác biệt giữa các vùng địa lý.
+
+---
+
+> #### **Hộp 1.1: Các ấn phẩm và nguồn lực liên quan của WHO**
+> 	
+> - **Nguồn:** Trích xuất nguyên văn từ mục _1.8 Related WHO publications and resources (Box 1.1)_ trang 7 thuộc tài liệu **9789240108042-eng.pdf**.
+>     
+> - _Pocket book of hospital care for children: guidelines for the management of common childhood illnesses, second edition_ (2013)
+>     
+> - _Meningitis outbreak response in sub-Saharan Africa_ (2014)
+>     
+> - _Managing meningitis epidemics in Africa_ (2015)
+>     
+> - _Framework on integrated, people-centred health services: report by the Secretariat_ (2016)
+>     
+> - _Priority assistive products list_ (2016)
+>     
+> - _mhGAP intervention guide for mental, neurological and substance use disorders in non-specialized health settings (Version 2.0)_ (2016)
+>     
+> - _Basic emergency care: approach to the acutely ill and injured: participant workbook_ (2018)
+>     
+> - _Roadmap for access to medicines, vaccines and health product 2019–2023: comprehensive support for access to medicines, vaccines and other health products_ (2019)
+>     
+> - _Defeating meningitis by 2030: a global road map_ (2021)
+>     
+> - _Hearing screening: considerations for implementation_ (2021)
+>     
+> - _World report on hearing_ (2021)
+>     
+> - _Global report on health equity for persons with disabilities_ (2022)
+>     
+> - _The WHO Aware (Access, Watch, Reserve) antibiotic book_ (2022)
+>     
+> - _WHO consolidated guidelines on tuberculosis: module 4: treatment: drug-susceptible tuberculosis treatment_ (2022)
+>     
+> - _WHO consolidated guidelines on tuberculosis: module 4: treatment: drug-resistant tuberculosis treatment, 2022 update_
+>     
+> - _Intersectoral global action plan on epilepsy and other neurological disorders, 2022–2031_ (2023)
+>     
+> - _Mental Health Gap Action Programme (mhGAP) guideline for mental, neurological and substance use disorders_ (2023)
+>     
+> - _Fourth WHO model list of essential in vitro diagnostics_ (2023)
+>     
+> - _WHO model lists of essential medicines [website]_ (2023)
+>     
+> - _Package of interventions for rehabilitation_ (2023)
+>     
+> - _Universal health coverage – fact sheet_ (2023)
+>     
+> - _WHO guidelines for malaria_ (2024)
+>     
+
+---
+
+### 7. Tiêu chuẩn loại trừ (Exclusion criteria)
+
+Do sự khác biệt lớn về biểu hiện lâm sàng và chiến lược quản lý, các danh mục bệnh sau đây **không được đề cập** trong hướng dẫn này:
+
+- Viêm màng não ở trẻ sơ sinh (từ 0 đến 28 ngày tuổi). _(Lưu ý: Hướng dẫn xử trí đối tượng này nằm trong cuốn "WHO pocket book of hospital care for children")._
+- Viêm màng não mắc phải tại bệnh viện, nhiễm trùng bệnh viện và nhiễm trùng liên quan đến chăm sóc y tế.
+- Viêm màng não bán cấp và mạn tính, bao gồm cả viêm màng nấm Cryptococcus, lao màng não và viêm màng não do tăng bạch cầu ái toan.
+- Viêm màng não không do nhiễm trùng, bao gồm viêm màng não do thuốc, bệnh lý ác tính hoặc bệnh tự miễn.
+
+---
+
+## II. TRÍCH DẪN TÀI LIỆU THAM KHẢO CHUẨN AMA
+
+1. World Health Organization. _WHO guidelines on meningitis diagnosis, treatment and care_. Geneva: World Health Organization; 2025. Licence: CC BY-NC-SA 3.0 IGO.
+
+---
+
