@@ -33,6 +33,13 @@ Tài liệu này định nghĩa tiêu chuẩn thiết kế, cấu trúc mã ngu�
        </div>
      </div>
      ```
+4.1. **QUY TẮC CHUYỂN ĐỔI LƯU ĐỒ HÌNH ẢNH SANG CODE TRỰC QUAN (Flowchart Image to Visual Code Rule)**:
+   - **Phát hiện & Phân định vai trò**:
+     - Khi trong file `.md` nguồn có **hình ảnh lưu đồ** (lưu đồ chẩn đoán, phân tầng cấp cứu, thuật toán điều trị, sơ đồ PRISMA, visual summary...) kèm theo **đoạn text mô tả / khối ASCII tóm tắt**:
+     - **Bản chất của đoạn text/ASCII**: Đoạn text/ASCII đó **chỉ là bản tóm tắt ý lại (fallback)** để hỗ trợ đọc khi không có phương tiện xem ảnh.
+   - **Nguyên tắc hành động cốt lõi**:
+     - **NẾU CÓ ẢNH LƯU ĐỒ**: Bắt buộc nhúng ảnh (`.fig-card`) VÀ **sửa/tái hiện thành CODE trực quan** (Inline SVG Editorial Flowchart chuẩn `flowchart-module` hoặc linh kiện HTML/CSS visual nodes/cards tương tác) mô phỏng chính xác cấu trúc phân nhánh, màu sắc và thiết kế của lưu đồ trong ảnh. **Tuyệt đối KHÔNG giữ lại khối text/ASCII sơ sài** khi đã có ảnh lưu đồ.
+     - **NẾU KHÔNG CÓ ẢNH LƯU ĐỒ**: Chỉ khi file nguồn hoàn toàn không có ảnh đính kèm, AI mới sử dụng đoạn text mô tả hoặc khối ASCII chuẩn hóa để tái hiện logic lưu đồ.
 5. **BẢO TỒN 100% TOÀN VẸN NỘI DUNG Y KHOA (100% Medical Content Integrity)**:
    - File `.md` nguồn chứa các tri thức y khoa đã được tóm tắt kỹ lưỡng từ các nghiên cứu/guidelines (mốc chỉ số, tiêu chuẩn chẩn đoán, bảng/sơ đồ TABLE & FIGURE, tên thử nghiệm RCT, chỉ số HR/OR/RR/%, phân tích phân nhóm, tài liệu tham khảo chuẩn AMA).
    - **TUYỆT ĐỐI KHÔNG LƯỢC BỎ, CẮT NGẮN HAY LÀM MẤT BẤT KỲ THÔNG TIN NÀO**.
@@ -263,15 +270,17 @@ sections:
 
 ## ⚡ Quy Trình 5 Bước Thực Hiện Nhanh & Chính Xác
 
-1. **Khảo sát Nguồn & Phát hiện Ảnh**:
+1. **Khảo sát Nguồn & Phát hiện Ảnh / Lưu đồ**:
    - Xác định toàn bộ các file `.md` nguồn được giao.
-   - Tìm kiếm các ảnh `![[Pasted image ...]]` trong nguồn.
+   - Tìm kiếm các ảnh `![[Pasted image ...]]` trong nguồn, đặc biệt là ảnh liên quan đến lưu đồ, thuật toán, phân loại.
+   - **Lưu ý quy tắc Lưu đồ**: Nếu nguồn có ảnh lưu đồ kèm đoạn text tóm tắt ý, đoạn text đó chỉ là fallback; ưu tiên tái hiện thành code visual/SVG theo thiết kế của ảnh.
 2. **Chạy Script Trích Xuất & Tiền Xử Lý**:
    ```bash
    node .agents/skills/guideline-summary-module/scripts/synthesize_guideline_mdx.js --slug=<slug> --files="<path1>,<path2>,..."
    ```
 3. **Biên Tập & Nâng Cấp Giao Diện Dashboard**:
    - Soạn thảo nội dung MDX với đầy đủ các section, stat-cards, pillars, quickmenu, updates-grid, infoboxes, regimen-tables, fig-cards và citation-box.
+   - Nếu có ảnh lưu đồ: Dựng code lưu đồ trực quan (Inline SVG Editorial Flowchart hoặc UI visual diagram component) tương xứng với thiết kế trong ảnh, nhúng ảnh trong `.fig-card` và không để khối text/ASCII sơ sài.
 4. **Ghi File An Toàn & Kiểm Tra Tag Integrity**:
    - Ghi file vào `src/content/ebm/guidelines/kho-guidelines/<slug>.mdx`.
    - Chạy lệnh kiểm tra:

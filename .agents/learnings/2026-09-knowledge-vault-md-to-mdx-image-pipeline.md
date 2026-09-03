@@ -41,11 +41,19 @@
 </figure>
 ```
 
+### Bước 4: Chuyển Đổi Lưu Đồ Hình Ảnh Sang Code Trực Quan (Image-to-Code Flowchart)
+- **Quy tắc phân biệt ảnh vs text mô tả**:
+  - Khi file nguồn có **ảnh lưu đồ** (thuật toán tiếp cận, phân tầng, điều trị, quy trình...) kèm theo **đoạn text tóm tắt ý / khối ASCII**:
+  - Đoạn text/ASCII đó **chỉ là bản tóm tắt ý lại (fallback)** để người đọc tham khảo khi không có ảnh.
+  - **Khi CÓ ẢNH**: Bắt buộc nhúng ảnh và **ưu tiên chuyển đổi/viết thành CODE trực quan** (Inline SVG Editorial Flowchart theo chuẩn `flowchart-module` hoặc UI Visual Flowchart Component) tái hiện đúng thiết kế của ảnh. Tuyệt đối không giữ nguyên khối text/ASCII sơ sài.
+  - **Khi KHÔNG CÓ ẢNH**: Mới dùng đoạn text mô tả hoặc khối ASCII đã chuẩn hóa để biểu diễn logic.
+
 ---
 
 ## 📋 Bảng Kiểm Tra Trước Khi Bàn Giao (Pre-delivery Checklist)
 
 - [ ] Đã quét toàn bộ file `.md` nguồn và liệt kê đầy đủ số lượng ảnh đính kèm.
 - [ ] 100% ảnh đính kèm đã được copy vào thư mục `images/` của phân hệ và đổi tên chuẩn.
-- [ ] 100% ảnh đã được nhúng vào file `.mdx` với thẻ `<figure>` và `<figcaption>` đầy đủ chú thích.
+- [ ] 100% ảnh đã được nhúng vào file `.mdx` với thẻ `<figure>` hoặc `<div class="fig-card">` đầy đủ chú thích.
+- [ ] Nếu ảnh là lưu đồ / thuật toán: Đã chuyển đổi hoặc thiết kế code trực quan (SVG / Visual Flowchart Component) tương xứng với ảnh thay vì để text/ASCII sơ sài.
 - [ ] Chạy `npm run build` xác nhận đóng gói thành công và hình ảnh hiển thị mượt mà.

@@ -1,0 +1,881 @@
+---
+title: "IDSA 2014: Hướng Dẫn Thực Hành Lâm Sàng Chẩn Đoán & Quản Lý Nhiễm Trùng Da & Mô Mềm (SSTI)"
+slug: "2014-idsa-ssti"
+code: "GDL-2014-IDSA-SSTI-GUIDELINE"
+organization: "IDSA"
+year: "2014"
+category: "guidelines"
+status: "published"
+version: "3.0.0"
+updatedAt: "2026-09-03"
+cor: "I"
+loe: "A"
+description: "Hướng dẫn thực hành lâm sàng kinh điển của Hiệp hội Bệnh truyền nhiễm Hoa Kỳ (IDSA 2014 / CID) về chẩn đoán và quản lý nhiễm trùng da và mô mềm (SSTI): 2 lưu đồ thuật toán phân loại có mủ vs không mủ và nhiễm trùng vết mổ; bảng kháng sinh chi tiết cho MSSA/MRSA/hoại tử; corticosteroid bổ trợ; quản lý vết cắn; SSTI ở bệnh nhân sốt giảm bạch cầu và các nhiễm trùng đặc biệt."
+tags:
+  - "IDSA"
+  - "2014"
+  - "CID"
+  - "SSTI"
+  - "Viêm mô tế bào"
+  - "Áp xe"
+  - "Nhiễm trùng vết mổ"
+  - "Viêm cân mạc hoại tử"
+  - "MRSA"
+  - "Vancomycin"
+  - "Corticosteroid"
+  - "Khuyến cáo lâm sàng"
+  - "Evidence-Based Medicine"
+keyRecommendations:
+  - "Phân đôi cấu trúc có mủ vs không mủ theo 3 mức độ nghiêm trọng: Nhiễm trùng có mủ (áp xe) do tụ cầu: nhẹ chỉ cần I&D; trung bình thêm TMP-SMX hoặc Doxycycline uống; nặng nhập viện dùng Vancomycin/Daptomycin. Nhiễm trùng không mủ (viêm mô tế bào) do liên cầu: nhẹ dùng Penicillin VK/Cephalexin uống; trung bình Cefazolin/Ceftriaxone IV; nặng hội chẩn ngoại khẩn thám sát cắt lọc hoại tử + Vancomycin + Piperacillin-Tazobactam."
+  - "Nhiễm trùng vết mổ (SSIs) - Can thiệp ngoại khoa là bắt buộc: Cắt chỉ, mở vết thương và dẫn lưu là nền tảng; chỉ dùng kháng sinh khi có đáp ứng toàn thân (sốt > 38.5°C, HR > 110 bpm, WBC > 12.000) hoặc hồng ban lan rộng > 5 cm tính từ mép vết mổ."
+  - "Hiệu ứng ức chế ngoại độc tố của Clindamycin trong nhiễm trùng hoại tử: Trong viêm cân mạc hoại tử do Streptococcus pyogenes hoặc hoại tử cơ do Clostridium, bắt buộc phối hợp Penicillin liều cao với Clindamycin để ức chế tổng hợp ngoại độc tố theo cơ chế độc lập pha phát triển vi khuẩn (hiệu ứng Eagle)."
+  - "Vai trò của Corticosteroid bổ trợ trong viêm mô tế bào: Khuyến cáo cân nhắc bổ sung Prednisone 40 mg/ngày trong 7 ngày ở người lớn không mắc đái tháo đường để giảm sưng viêm và rút ngắn ngày nằm viện (Khuyến cáo yếu, bằng chứng trung bình)."
+  - "Dự phòng sớm vết cắn động vật/người & Phòng tái phát: Dùng Amoxicillin-Clavulanate 3 - 5 ngày cho vết cắn nguy cơ cao (không đóng kín vết thương sơ khởi trừ vùng mặt); dự phòng Penicillin VK 250mg BID dài hạn cho bệnh nhân viêm mô tế bào tái phát ≥ 3-4 đợt/năm."
+sections:
+  - id: "sec-tong-quan-phan-loai-grade"
+    number: 1
+    title: "Tổng Quan, Hệ Thống Phân Loại SSTI & Phương Pháp Luận GRADE (Table 1)"
+    icon: "fa-solid fa-layer-group"
+  - id: "sec-luu-do-ssti-chinh"
+    number: 2
+    title: "Lưu Đồ Quản Lý SSTI Có Mủ & Không Mủ: Figure 1 & Code Trực Quan"
+    icon: "fa-solid fa-diagram-project"
+  - id: "sec-choc-lo-khang-sinh-tu-cau"
+    number: 3
+    title: "Chốc Lở, Chốc Loét & Bảng Liều Kháng Sinh Tụ Cầu / Liên Cầu (Table 2)"
+    icon: "fa-solid fa-capsules"
+  - id: "sec-nhiem-trung-vet-mo-ssi"
+    number: 4
+    title: "Nhiễm Trùng Vết Mổ (SSIs): Lưu Đồ Figure 2 & Bảng Phác Đồ (Table 3)"
+    icon: "fa-solid fa-scissors"
+  - id: "sec-hoai-tu-viem-co-mu"
+    number: 5
+    title: "Nhiễm Trùng Hoại Tử Mô Sâu & Viêm Cơ Mủ (Pyomyositis): Table 4"
+    icon: "fa-solid fa-biohazard"
+  - id: "sec-vet-can-phong-tai-phat"
+    number: 6
+    title: "Vết Thương Do Động Vật / Người Cắn (Table 5) & Phòng Ngừa SSTI Tái Phát"
+    icon: "fa-solid fa-shield-virus"
+  - id: "sec-suy-giam-mien-dich-steroid"
+    number: 7
+    title: "Corticosteroid Bổ Trợ & SSTI Ở Bệnh Nhân Suy Giảm Miễn Dịch (Table 6, 7)"
+    icon: "fa-solid fa-hospital-user"
+  - id: "sec-nhiem-trung-dac-biet-mcq"
+    number: 8
+    title: "Nhiễm Trùng Da Đặc Biệt (Than, Mèo Cào...), Cheat-Sheet & 5 MCQ"
+    icon: "fa-solid fa-book-medical"
+---
+
+<div class="stats-strip">
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-val blue">Có Mủ vs Không Mủ</div>
+      <div class="stat-lbl">Phân đôi tiếp cận điều trị: Áp xe do Tụ cầu vs Viêm mô tế bào do Liên cầu</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val amber">I&amp;D Là Cốt Lõi</div>
+      <div class="stat-lbl">Áp xe nhẹ chỉ cần rạch dẫn lưu tốt; vết mổ bắt buộc cắt chỉ dẫn lưu trước</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val red">Clindamycin Kháng Độc Tố</div>
+      <div class="stat-lbl">Phối hợp bắt buộc với Penicillin trong hoại tử do liên cầu (hiệu ứng Eagle)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val purple">Prednisone 40mg/7d</div>
+      <div class="stat-lbl">Cân nhắc steroid bổ trợ giảm viêm mô tế bào ở người không đái tháo đường</div>
+    </div>
+  </div>
+</div>
+
+<div class="pillars">
+  <div class="pillars-inner">
+    <div class="pillar p1">
+      <div class="pillar-icon">⚖️</div>
+      <div>
+        <div class="pillar-title">Phân Tầng Tam Cấp SIRS (Nhẹ - Vừa - Nặng)</div>
+        <div class="pillar-desc">Định hình quyết định điều trị ngoại trú vs nhập viện; phân định rõ vai trò của I&amp;D đơn thuần vs kháng sinh uống vs kháng sinh tĩnh mạch phổ rộng.</div>
+      </div>
+    </div>
+    <div class="pillar p2">
+      <div class="pillar-icon">🚨</div>
+      <div>
+        <div class="pillar-title">Khẩn Cấp Ngoại Khoa &amp; Kháng Độc Tố</div>
+        <div class="pillar-desc">Phẫu thuật thám sát cắt lọc cấp cứu là nguyên tắc sống còn trong viêm cân mạc hoại tử; dùng kháng sinh ức chế tổng hợp protein diệt độc tố vi khuẩn.</div>
+      </div>
+    </div>
+    <div class="pillar p3">
+      <div class="pillar-icon">🛡️</div>
+      <div>
+        <div class="pillar-title">Dự Phòng Toàn Diện &amp; Bảo Vệ Cơ Địa Yếu</div>
+        <div class="pillar-desc">Xử trí vết cắn dự phòng sớm bằng Amoxicillin-Clavulanate; Penicillin dự phòng cho thể tái phát; tầm soát nấm/vi trùng cơ hội ở bệnh nhân sốt giảm bạch cầu.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="quickmenu" id="quickmenu">
+  <div class="quickmenu-inner">
+    <a href="#sec-tong-quan-phan-loai-grade" class="quickmenu-item active">1. Tổng Quan &amp; GRADE</a>
+    <a href="#sec-luu-do-ssti-chinh" class="quickmenu-item">2. Lưu Đồ SSTI (Figure 1)</a>
+    <a href="#sec-choc-lo-khang-sinh-tu-cau" class="quickmenu-item">3. Chốc Lở &amp; Tụ Cầu (Table 2)</a>
+    <a href="#sec-nhiem-trung-vet-mo-ssi" class="quickmenu-item">4. Nhiễm Trùng Vết Mổ (Figure 2)</a>
+    <a href="#sec-hoai-tu-viem-co-mu" class="quickmenu-item">5. Hoại Tử &amp; Viêm Cơ Mủ (Table 4)</a>
+    <a href="#sec-vet-can-phong-tai-phat" class="quickmenu-item">6. Vết Cắn &amp; Phòng Tái Phát</a>
+    <a href="#sec-suy-giam-mien-dich-steroid" class="quickmenu-item">7. Suy Giảm Miễn Dịch &amp; Steroid</a>
+    <a href="#sec-nhiem-trung-dac-biet-mcq" class="quickmenu-item">8. Bệnh Đặc Biệt &amp; 5 MCQ</a>
+  </div>
+</div>
+
+<div class="page-content">
+
+  <!-- ==================== SECTION 1 ==================== -->
+  <div class="sec-card" id="sec-tong-quan-phan-loai-grade">
+    <div class="sec-hdr">
+      <span class="sec-hdr-icon">📜</span>
+      <h2 class="sec-title">1. Tổng Quan, Hệ Thống Phân Loại SSTI &amp; Phương Pháp Luận GRADE (Table 1)</h2>
+    </div>
+    <div class="sec-body">
+
+      <div class="infobox info">
+        <span class="infobox-icon">💡</span>
+        <div>
+          <strong>Cột Mốc Lịch Sử Của Hướng Dẫn Lâm Sàng IDSA 2014 (Clinical Infectious Diseases):</strong>
+          Được xuất bản bởi Hiệp hội Bệnh truyền nhiễm Hoa Kỳ (IDSA), hướng dẫn thực hành năm 2014 (Stevens et al.) là văn kiện bản lề định hình toàn bộ cách tiếp cận nhiễm trùng da và mô mềm trên phạm vi toàn cầu. Điểm cách mạng lớn nhất là việc <strong>phân đôi hoàn toàn SSTI thành hai nhánh: Nhiễm trùng có mủ (Purulent) và Không mủ (Non-purulent)</strong>, từ đó giải quyết triệt để tình trạng lạm dụng kháng sinh bao phủ MRSA không cần thiết cho viêm mô tế bào đơn thuần.
+        </div>
+      </div>
+
+      <div class="sec-subtitle">Phương Pháp Luận GRADE Đánh Giá Bằng Chứng &amp; Khuyến Cáo (Table 1 IDSA)</div>
+      <div class="table-wrapper">
+        <table class="regimen-table">
+          <thead>
+            <tr>
+              <th style="width: 25%;">Sức Mạnh Khuyến Cáo &amp; Mức Bằng Chứng</th>
+              <th style="width: 25%;">Cân Bằng Lợi Ích / Tác Hại</th>
+              <th style="width: 25%;">Chất Lượng Phương Pháp Luận</th>
+              <th style="width: 25%;">Ý Nghĩa Áp Dụng Lâm Sàng</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="source-cell"><span class="rx-tag preferred">Mạnh, Cao (Strong, High)</span></td>
+              <td>Lợi ích vượt trội rõ rệt tác hại.</td>
+              <td>Thử nghiệm RCTs thực hiện tốt, kết quả nhất quán.</td>
+              <td>Áp dụng cho hầu hết bệnh nhân; nghiên cứu mới khó làm thay đổi kết luận.</td>
+            </tr>
+            <tr>
+              <td class="source-cell"><span class="rx-tag preferred">Mạnh, TB (Strong, Moderate)</span></td>
+              <td>Lợi ích vượt trội rõ rệt tác hại.</td>
+              <td>RCTs có giới hạn phương pháp hoặc nghiên cứu quan sát mạnh.</td>
+              <td>Áp dụng cho đa số bệnh nhân; nghiên cứu mới có thể tác động.</td>
+            </tr>
+            <tr>
+              <td class="source-cell"><span class="rx-tag alternative">Mạnh, Thấp (Strong, Low)</span></td>
+              <td>Lợi ích vượt trội rõ rệt tác hại.</td>
+              <td>Nghiên cứu quan sát, RCTs có sai sót hoặc bằng chứng gián tiếp.</td>
+              <td>Có thể thay đổi khi có bằng chứng chất lượng cao hơn.</td>
+            </tr>
+            <tr>
+              <td class="source-cell"><span class="rx-tag alternative">Yếu, Cao/TB (Weak, High/Mod)</span></td>
+              <td>Lợi ích và tác hại cân bằng sít sao.</td>
+              <td>Bằng chứng nhất quán từ RCTs hoặc nghiên cứu quan sát.</td>
+              <td>Hành động tối ưu phụ thuộc vào cá thể hóa hoàn cảnh và giá trị bệnh nhân.</td>
+            </tr>
+            <tr>
+              <td class="source-cell"><span class="rx-tag danger">Yếu, Thấp/Rất thấp</span></td>
+              <td>Còn mơ hồ lớn về lợi ích/tác hại.</td>
+              <td>Quan sát lâm sàng không hệ thống hoặc bằng chứng rất gián tiếp.</td>
+              <td>Các giải pháp khác có giá trị tương đương; ước tính hiệu quả không chắc chắn.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==================== SECTION 2 ==================== -->
+  <div class="sec-card" id="sec-luu-do-ssti-chinh">
+    <div class="sec-hdr">
+      <span class="sec-hdr-icon">🔬</span>
+      <h2 class="sec-title">2. Lưu Đồ Quản Lý SSTI Có Mủ &amp; Không Mủ: Figure 1 &amp; Code Trực Quan</h2>
+    </div>
+    <div class="sec-body">
+
+      <!-- FIGURE 1 CARD -->
+      <div class="fig-card">
+        <img src="./images/2014-idsa-ssti-fig1.png" alt="Figure 1. Purulent and Nonpurulent SSTIs Algorithm - IDSA 2014" class="fig-img" loading="lazy" />
+        <div class="fig-caption">
+          <div class="fig-title">Figure 1. Lưu Đồ Phân Loại &amp; Quản Lý SSTI Có Mủ &amp; Không Mủ (IDSA 2014)</div>
+          Lưu đồ bản lề chia tách hai nhánh bệnh lý song song (Có mủ do Tụ cầu vs Không mủ do Liên cầu) với 3 mức độ nặng: Nhẹ (Mild), Trung bình (Moderate) và Nặng (Severe).
+        </div>
+      </div>
+
+      <!-- VISUAL DIAGRAM CODE: TÁI HIỆN CODE LƯU ĐỒ FIGURE 1 -->
+      <div style="margin-top: 1.5rem; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; padding: 1.25rem;">
+        <div style="text-align: center; font-weight: 700; font-size: 1.05rem; color: var(--color-primary); margin-bottom: 1.25rem;">
+          <i class="fa-solid fa-diagram-project"></i> Sơ Đồ Thuật Toán Tái Hiện Bằng Code: Phân Tầng Xử Trí SSTI (IDSA 2014)
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem;">
+          <!-- NHÁNH CÓ MỦ -->
+          <div style="border: 2px solid #dc2626; border-radius: 10px; padding: 1rem; background: rgba(220, 38, 38, 0.03);">
+            <div style="font-weight: 700; color: #dc2626; font-size: 1rem; border-bottom: 1px solid rgba(220, 38, 38, 0.2); padding-bottom: 0.5rem; margin-bottom: 0.75rem;">
+              🩸 NHIỄM TRÙNG CÓ MỦ (PURULENT SSTIs)<br />
+              <span style="font-size: 0.8rem; font-weight: 400; color: var(--color-text-muted);">Áp xe da, nhọt, hậu bối (Chủ yếu do Tụ cầu vàng S. aureus)</span>
+            </div>
+
+            <div style="margin-bottom: 0.75rem; padding: 0.6rem; background: var(--color-surface); border-radius: 8px; border: 1px solid var(--color-border);">
+              <strong style="color: #16a34a;">🟢 NHẸ (Mild):</strong> Áp xe đơn thuần, không có dấu hiệu toàn thân.<br />
+              👉 <strong>Rạch và dẫn lưu (I&amp;D) đơn thuần</strong>. Không cần kháng sinh.
+            </div>
+
+            <div style="margin-bottom: 0.75rem; padding: 0.6rem; background: var(--color-surface); border-radius: 8px; border: 1px solid var(--color-border);">
+              <strong style="color: #d97706;">🟡 TRUNG BÌNH (Moderate):</strong> Có mủ kèm dấu hiệu đáp ứng viêm toàn thân (SIRS).<br />
+              👉 <strong>I&amp;D + Cấy mủ &amp; Kháng sinh đồ</strong>.<br />
+              • Kháng sinh kinh nghiệm uống: <strong>TMP-SMX</strong> hoặc <strong>Doxycycline</strong>.<br />
+              • Đích MRSA: Tiếp tục TMP-SMX. Đích MSSA: Đổi sang <strong>Dicloxacillin</strong> hoặc <strong>Cephalexin</strong>.
+            </div>
+
+            <div style="padding: 0.6rem; background: var(--color-surface); border-radius: 8px; border: 1px solid var(--color-border);">
+              <strong style="color: #dc2626;">🔴 NẶNG (Severe):</strong> Thất bại I&amp;D + kháng sinh uống, hoặc SIRS nặng, hoặc suy giảm miễn dịch.<br />
+              👉 <strong>I&amp;D + Cấy mủ + Nhập viện dùng kháng sinh tĩnh mạch (IV)</strong>.<br />
+              • Kháng sinh kinh nghiệm IV: <strong>Vancomycin</strong>, Daptomycin, Linezolid, Telavancin, hoặc Ceftaroline.<br />
+              • Đích MSSA: Đổi sang <strong>Nafcillin</strong>, <strong>Cefazolin</strong>, hoặc Clindamycin.
+            </div>
+          </div>
+
+          <!-- NHÁNH KHÔNG MỦ -->
+          <div style="border: 2px solid #0284c7; border-radius: 10px; padding: 1rem; background: rgba(2, 132, 199, 0.03);">
+            <div style="font-weight: 700; color: #0284c7; font-size: 1rem; border-bottom: 1px solid rgba(2, 132, 199, 0.2); padding-bottom: 0.5rem; margin-bottom: 0.75rem;">
+              🧠 NHIỄM TRÙNG KHÔNG MỦ (NON-PURULENT SSTIs)<br />
+              <span style="font-size: 0.8rem; font-weight: 400; color: var(--color-text-muted);">Viêm mô tế bào, hồng ban, hoại tử (Chủ yếu do Liên cầu Streptococcus)</span>
+            </div>
+
+            <div style="margin-bottom: 0.75rem; padding: 0.6rem; background: var(--color-surface); border-radius: 8px; border: 1px solid var(--color-border);">
+              <strong style="color: #16a34a;">🟢 NHẸ (Mild):</strong> Viêm mô tế bào/hồng ban khu trú, không có mủ, không có SIRS.<br />
+              👉 <strong>Kháng sinh đường uống ngoại trú:</strong> <strong>Penicillin VK</strong>, <strong>Cephalexin</strong>, Dicloxacillin, hoặc Clindamycin.
+            </div>
+
+            <div style="margin-bottom: 0.75rem; padding: 0.6rem; background: var(--color-surface); border-radius: 8px; border: 1px solid var(--color-border);">
+              <strong style="color: #d97706;">🟡 TRUNG BÌNH (Moderate):</strong> Viêm mô tế bào/hồng ban đi kèm dấu hiệu SIRS.<br />
+              👉 <strong>Nhập viện điều trị kháng sinh truyền tĩnh mạch:</strong> <strong>Penicillin G</strong>, <strong>Ceftriaxone</strong>, <strong>Cefazolin</strong>, hoặc Clindamycin.
+            </div>
+
+            <div style="padding: 0.6rem; background: var(--color-surface); border-radius: 8px; border: 1px solid var(--color-border);">
+              <strong style="color: #dc2626;">🔴 NẶNG (Severe):</strong> Thất bại kháng sinh uống, bọng nước, hoại tử mô sâu, tụt huyết áp.<br />
+              👉 <strong>HỘI CHẨN NGOẠI KHOA CẤP CỨU</strong> thám sát và cắt lọc hoại tử khẩn cấp.<br />
+              • Kháng sinh kinh nghiệm IV: Phối hợp <strong>Vancomycin + Piperacillin-Tazobactam</strong>.<br />
+              • Đích Liên cầu A: <strong>Penicillin + Clindamycin</strong> (ức chế ngoại độc tố).
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 1rem; padding: 0.75rem; background: #fef2f2; border-radius: 8px; border: 1px solid #fecaca; font-size: 0.83rem; color: #991b1b; line-height: 1.6;">
+          ⚠️ <strong>TIÊU CHUẨN ĐÁNH GIÁ ĐÁP ỨNG VIÊM TOÀN THÂN (SIRS):</strong> Có từ 2 dấu hiệu trở lên: Nhiệt độ &gt; 38°C hoặc &lt; 36°C; Nhịp tim &gt; 90 lần/phút; Nhịp thở &gt; 24 lần/phút; Bạch cầu máu &gt; 12.000 /µL hoặc &lt; 400 /µL (hoặc bạch cầu non bands ≥ 10%).
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==================== SECTION 3 ==================== -->
+  <div class="sec-card" id="sec-choc-lo-khang-sinh-tu-cau">
+    <div class="sec-hdr">
+      <span class="sec-hdr-icon">💊</span>
+      <h2 class="sec-title">3. Chốc Lở, Chốc Loét &amp; Bảng Liều Kháng Sinh Tụ Cầu / Liên Cầu (Table 2)</h2>
+    </div>
+    <div class="sec-body">
+
+      <div class="sec-subtitle">Đánh Giá &amp; Điều Trị Chốc Lở (Impetigo) &amp; Chốc Loét (Ecthyma)</div>
+      <div class="grid-2col">
+        <div class="clin-card">
+          <div class="clin-card-accent accent-green"></div>
+          <div class="clin-card-title"><span>Chốc Lở Nhẹ / Thương Tổn Khu Trú</span> <span>🧴</span></div>
+          <div class="clin-card-body">
+            <p>• <strong>Điều trị tại chỗ:</strong> Sử dụng thuốc mỡ bôi ngoài da.</p>
+            <p>• <strong>Mupirocin 2%</strong> hoặc <strong>Retapamulin 1%</strong> bôi 2 lần/ngày (BID) trong vòng <strong>5 ngày</strong> (Khuyến cáo mạnh, bằng chứng cao).</p>
+            <p>• Tránh lạm dụng kháng sinh uống nếu tổn thương nhỏ và ít.</p>
+          </div>
+        </div>
+
+        <div class="clin-card">
+          <div class="clin-card-accent accent-amber"></div>
+          <div class="clin-card-title"><span>Chốc Lở Lan Rộng / Chốc Loét (Ecthyma)</span> <span>💊</span></div>
+          <div class="clin-card-body">
+            <p>• <strong>Điều trị toàn thân:</strong> Chỉ định kháng sinh đường uống trong <strong>7 ngày</strong> (Khuyến cáo mạnh, bằng chứng cao).</p>
+            <p>• Nhạy methicillin (MSSA): <strong>Dicloxacillin</strong> (250mg QID) hoặc <strong>Cephalexin</strong> (250mg QID).</p>
+            <p>• Nghi ngờ/xác định MRSA: <strong>TMP-SMX</strong>, <strong>Doxycycline</strong>, hoặc <strong>Clindamycin</strong>.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="sec-subtitle" style="margin-top: 1.5rem;">Liệu Pháp Kháng Sinh Điều Trị Nhiễm Trùng Da Do Tụ Cầu &amp; Liên Cầu (Table 2 IDSA)</div>
+      <div class="table-wrapper">
+        <table class="regimen-table">
+          <thead>
+            <tr>
+              <th style="width: 25%;">Nhóm Bệnh &amp; Tác Nhân</th>
+              <th style="width: 35%;">Kháng Sinh Đường Uống (PO)</th>
+              <th style="width: 40%;">Kháng Sinh Truyền Tĩnh Mạch (IV)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="source-cell"><strong>Chốc lở / Chốc loét</strong></td>
+              <td>
+                • Dicloxacillin 250 mg QID<br />
+                • Cephalexin 250 mg QID<br />
+                • Clindamycin 300 - 450 mg TID/QID<br />
+                • Amoxicillin-Clavulanate 875/125 mg BID
+              </td>
+              <td>(Thường điều trị ngoại trú đường uống hoặc tại chỗ).</td>
+            </tr>
+            <tr>
+              <td class="source-cell"><span class="rx-tag preferred">Tụ cầu nhạy methicillin (MSSA)</span></td>
+              <td>
+                • <strong>Dicloxacillin</strong> 500 mg QID (ưu tiên)<br />
+                • <strong>Cephalexin</strong> 500 mg QID (thuận tiện dung nạp)<br />
+                • Clindamycin 300 - 450 mg TID
+              </td>
+              <td>
+                • <strong>Nafcillin hoặc Oxacillin</strong> 1 - 2 g IV mỗi 4 giờ (lựa chọn hàng đầu)<br />
+                • <strong>Cefazolin</strong> 1 g IV mỗi 8 giờ (dị ứng penicillin nhẹ)<br />
+                • Clindamycin 600 mg IV mỗi 8 giờ
+              </td>
+            </tr>
+            <tr>
+              <td class="source-cell"><span class="rx-tag danger">Tụ cầu kháng methicillin (MRSA)</span></td>
+              <td>
+                • <strong>TMP-SMX DS</strong> (800/160 mg) 1-2 viên BID<br />
+                • <strong>Doxycycline / Minocycline</strong> 100 mg BID<br />
+                • <strong>Linezolid</strong> 600 mg BID (sinh khả dụng 100%)<br />
+                • Clindamycin 300 - 450 mg TID
+              </td>
+              <td>
+                • <strong>Vancomycin</strong> 15 - 20 mg/kg IV mỗi 8-12h (hàng đầu; mục tiêu đáy 15-20 µg/mL)<br />
+                • <strong>Daptomycin</strong> 4 mg/kg IV mỗi 24 giờ<br />
+                • <strong>Linezolid</strong> 600 mg IV mỗi 12 giờ<br />
+                • <strong>Ceftaroline</strong> 600 mg IV mỗi 12 giờ
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==================== SECTION 4 ==================== -->
+  <div class="sec-card" id="sec-nhiem-trung-vet-mo-ssi">
+    <div class="sec-hdr">
+      <span class="sec-hdr-icon">✂️</span>
+      <h2 class="sec-title">4. Nhiễm Trùng Vết Mổ (SSIs): Lưu Đồ Figure 2 &amp; Bảng Phác Đồ (Table 3)</h2>
+    </div>
+    <div class="sec-body">
+
+      <div class="infobox warning">
+        <span class="infobox-icon">⚠️</span>
+        <div>
+          <strong>Nguyên Tắc Cốt Lõi Về Xử Trí Nhiễm Trùng Vết Mổ (SSIs):</strong>
+          <br />• <strong>Can thiệp ngoại khoa là bắt buộc:</strong> Cắt chỉ khâu, mở vết mổ và dẫn lưu dịch mủ là can thiệp nền tảng quan trọng nhất.
+          <br />• <strong>Không dùng kháng sinh thường quy:</strong> Nếu đã dẫn lưu tốt và vết mổ không lan rộng, không cần dùng kháng sinh.
+          <br />• <strong>Chỉ định dùng kháng sinh toàn thân:</strong> Khi có ít nhất 1 trong các tiêu chuẩn sau: (1) Hồng ban/chai cứng lan rộng <strong>&gt; 5 cm</strong> từ mép vết mổ; (2) Nhiệt độ <strong>&gt; 38.5°C</strong>; (3) Nhịp tim <strong>&gt; 110 lần/phút</strong>; (4) Bạch cầu <strong>&gt; 12.000 /µL</strong>.
+        </div>
+      </div>
+
+      <!-- FIGURE 2 CARD -->
+      <div class="fig-card" style="margin-top: 1.5rem;">
+        <img src="./images/2014-idsa-ssti-fig2.png" alt="Figure 2. Algorithm for management of SSIs - IDSA 2014" class="fig-img" loading="lazy" />
+        <div class="fig-caption">
+          <div class="fig-title">Figure 2. Lưu Đồ Quản Lý &amp; Điều Trị Nhiễm Trùng Vết Mổ (IDSA 2014)</div>
+          Thuật toán phân biệt sốt sớm (&lt; 48 giờ sau mổ) nghi ngờ Liên cầu/Clostridium vs sốt muộn (&gt; 4 ngày sau mổ) và phân tầng can thiệp theo mức độ hồng ban quanh mép mổ.
+        </div>
+      </div>
+
+      <!-- VISUAL DIAGRAM CODE: TÁI HIỆN CODE LƯU ĐỒ FIGURE 2 -->
+      <div style="margin-top: 1.5rem; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; padding: 1.25rem;">
+        <div style="text-align: center; font-weight: 700; font-size: 1.05rem; color: var(--color-primary); margin-bottom: 1.25rem;">
+          <i class="fa-solid fa-diagram-project"></i> Sơ Đồ Thuật Toán Tái Hiện Bằng Code: Xử Trí Sốt Sau Phẫu Thuật &amp; Nhiễm Trùng Vết Mổ
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+          <!-- SỐT SỚM -->
+          <div style="border: 2px solid #f59e0b; border-radius: 10px; padding: 1rem; background: rgba(245, 158, 11, 0.03);">
+            <div style="font-weight: 700; color: #d97706; margin-bottom: 0.5rem;">⏱️ SỐT TRONG VÒNG 48 GIỜ ĐẦU SAU MỔ</div>
+            <div style="font-size: 0.85rem; line-height: 1.6;">
+              • Rất ít khả năng do nhiễm trùng vết mổ.<br />
+              • Nếu vết mổ bình thường: Tìm nguyên nhân sốt khác (xẹp phổi, phản ứng viêm).<br />
+              • Nếu vết mổ chảy dịch/viêm đỏ: Nhuộm Gram dịch mổ tìm <strong>Liên cầu (Streptococcus)</strong> hoặc <strong>Clostridium</strong>.<br />
+              &nbsp;&nbsp;+ <em>Dương tính:</em> Mở vết mổ khẩn cấp, cắt lọc hoại tử + dùng ngay <strong>Penicillin + Clindamycin</strong>.<br />
+              &nbsp;&nbsp;+ <em>Âm tính:</em> Tiếp tục tìm nguồn sốt ngoài vết mổ.
+            </div>
+          </div>
+
+          <!-- SỐT MUỘN -->
+          <div style="border: 2px solid #0284c7; border-radius: 10px; padding: 1rem; background: rgba(2, 132, 199, 0.03);">
+            <div style="font-weight: 700; color: #0284c7; margin-bottom: 0.5rem;">📅 SỐT XUẤT HIỆN MUỘN (&gt; 4 NGÀY SAU MỔ)</div>
+            <div style="font-size: 0.85rem; line-height: 1.6;">
+              • Khám kỹ vết mổ tìm hồng ban hoặc chai cứng:<br />
+              &nbsp;&nbsp;+ <strong>Nhóm Nhẹ (T &lt; 38.5°C, WBC &lt; 12k, hồng ban &lt; 5 cm):</strong> Mở vết mổ dẫn lưu, thay băng tại chỗ; <strong>KHÔNG CẦN KHÁNG SINH</strong>.<br />
+              &nbsp;&nbsp;+ <strong>Nhóm Nặng (T &gt; 38.5°C, WBC &gt; 12k, hồng ban &gt; 5 cm hoặc hoại tử):</strong> Mở dẫn lưu + bắt đầu <strong>kháng sinh toàn thân</strong>.<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;👉 Phẫu thuật sạch thân mình/chi: <strong>Cefazolin</strong> (hoặc Vancomycin nếu nghi MRSA).<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;👉 Phẫu thuật tiêu hóa/tiết niệu/sinh dục: <strong>Cephalosporin + Metronidazole</strong> hoặc Carbapenem.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sec-subtitle" style="margin-top: 1.5rem;">Kháng Sinh Điều Trị Nhiễm Trùng Vết Mổ Nông (Table 3 IDSA)</div>
+      <div class="table-wrapper">
+        <table class="regimen-table">
+          <thead>
+            <tr>
+              <th style="width: 30%;">Vị Trí Phẫu Thuật Ban Đầu</th>
+              <th style="width: 35%;">Phác Đồ Đơn Trị Liệu (IV)</th>
+              <th style="width: 35%;">Phác Đồ Phối Hợp Kháng Sinh</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="source-cell"><strong>Đường ruột, sinh dục, tiết niệu</strong></td>
+              <td>
+                • Piperacillin-Tazobactam 3.375g q6h IV<br />
+                • Meropenem 1g q8h IV<br />
+                • Ertapenem 1g q24h IV
+              </td>
+              <td>
+                • Ceftriaxone 1g q24h + Metronidazole 500mg q8h<br />
+                • Ciprofloxacin 400mg q12h + Metronidazole 500mg q8h<br />
+                • Levofloxacin 750mg q24h + Metronidazole 500mg q8h
+              </td>
+            </tr>
+            <tr>
+              <td class="source-cell"><strong>Thân mình, chi (xa nách/tầng sinh môn)</strong></td>
+              <td>
+                • Cefazolin 1g q8h IV<br />
+                • Oxacillin/Nafcillin 2g q6h IV<br />
+                • Cephalexin 500mg QID PO<br />
+                • Vancomycin 15 mg/kg q12h IV (nếu nghi MRSA)
+              </td>
+              <td>Bổ sung Vancomycin hoặc Daptomycin nếu bệnh nhân có nguy cơ cao khư trú hoặc nhiễm MRSA.</td>
+            </tr>
+            <tr>
+              <td class="source-cell"><strong>Vùng nách hoặc tầng sinh môn</strong></td>
+              <td>N/A (Bắt buộc phối hợp phủ trực khuẩn Gram âm và kỵ khí)</td>
+              <td>Metronidazole 500mg q8h IV phối hợp với:<br />• Ciprofloxacin 400mg q12h IV<br />• Levofloxacin 750mg q24h IV<br />• Ceftriaxone 1g q24h IV</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==================== SECTION 5 ==================== -->
+  <div class="sec-card" id="sec-hoai-tu-viem-co-mu">
+    <div class="sec-hdr">
+      <span class="sec-hdr-icon">☣️</span>
+      <h2 class="sec-title">5. Nhiễm Trùng Hoại Tử Mô Sâu &amp; Viêm Cơ Mủ (Pyomyositis): Table 4</h2>
+    </div>
+    <div class="sec-body">
+
+      <div class="infobox danger">
+        <span class="infobox-icon">🚨</span>
+        <div>
+          <strong>Cấp Cứu Tối Khẩn: Viêm Cân Mạc Hoại Tử (Necrotizing Fasciitis)</strong>
+          <br />• <strong>Cắt lọc ngoại khoa khẩn cấp (Surgical Debridement):</strong> Không được trì hoãn phẫu thuật để chờ kết quả xét nghiệm hay chụp phim.
+          <br />• <strong>Kháng sinh kinh nghiệm phổ rộng:</strong> <strong>Vancomycin hoặc Linezolid</strong> PHỐI HỢP VỚI <strong>Piperacillin-Tazobactam hoặc Carbapenem</strong> (Meropenem/Imipenem).
+          <br />• <strong>Oxy cao áp (HBO):</strong> <em>Không khuyến cáo thường quy</em> do chưa chứng minh được lợi ích vượt trội và làm chậm trễ hồi sức phẫu thuật.
+        </div>
+      </div>
+
+      <div class="sec-subtitle">Phác Đồ Điều Trị Đích Cho Nhiễm Trùng Hoại Tử Theo Tác Nhân (Table 4 IDSA)</div>
+      <div class="table-wrapper">
+        <table class="regimen-table">
+          <thead>
+            <tr>
+              <th style="width: 25%;">Tác Nhân Gây Bệnh</th>
+              <th style="width: 35%;">Phác Đồ Kháng Sinh Hàng Đầu (IV)</th>
+              <th style="width: 40%;">Lưu Ý Sinh Lý Bệnh &amp; Thay Thế Khi Dị Ứng Penicillin</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="source-cell"><span class="rx-tag danger">Liên cầu khuẩn nhóm A (S. pyogenes)</span></td>
+              <td><strong>Penicillin G</strong> (2-4 triệu ĐV q4-6h) + <strong>Clindamycin</strong> (600-900mg q8h IV)</td>
+              <td>
+                <strong style="color: #dc2626;">HIỆU ỨNG EAGLE &amp; KHÁNG ĐỘC TỐ:</strong> Clindamycin ức chế tổng hợp protein ribosom, triệt tiêu sản sinh ngoại độc tố liên cầu (SpeA/B/C) độc lập với pha phát triển vi khuẩn.<br />
+                <em>Dị ứng penicillin:</em> Vancomycin, Linezolid hoặc Daptomycin.
+              </td>
+            </tr>
+            <tr>
+              <td class="source-cell"><span class="rx-tag danger">Hoại tử cơ do Clostridium (Gas Gangrene)</span></td>
+              <td><strong>Penicillin G</strong> (2-4 triệu ĐV q4-6h) + <strong>Clindamycin</strong> (600-900mg q8h IV)</td>
+              <td>Clindamycin ức chế độc tố alpha-toxin gây tan máu và sốc hoại tử tế bào cơ. Cắt lọc triệt để mô cơ hoại tử sinh hơi.</td>
+            </tr>
+            <tr>
+              <td class="source-cell"><strong>Vibrio vulnificus</strong> (nước mặn/hải sản)</td>
+              <td><strong>Doxycycline</strong> (100mg BID) + <strong>Ceftriaxone</strong> (1-2g q24h) hoặc Ceftazidime</td>
+              <td>Thường gặp ở bệnh nhân có bệnh gan mạn tính/xơ gan, ăn hàu sống hoặc vết thương tiếp xúc nước biển.</td>
+            </tr>
+            <tr>
+              <td class="source-cell"><strong>Aeromonas hydrophila</strong> (nước ngọt)</td>
+              <td><strong>Doxycycline</strong> (100mg BID) + <strong>Ciprofloxacin</strong> (400mg q12h) hoặc Ceftriaxone</td>
+              <td>Gặp sau chấn thương xây xước tiếp xúc với bùn đất, sông suối nước ngọt.</td>
+            </tr>
+            <tr>
+              <td class="source-cell"><strong>Nhiễm trùng đa khuẩn (Polymicrobial)</strong></td>
+              <td><strong>Vancomycin</strong> + <strong>Piperacillin-Tazobactam</strong></td>
+              <td>Dị ứng penicillin: Metronidazole + Ciprofloxacin/Aminoglycoside + Vancomycin.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="sec-subtitle" style="margin-top: 1.5rem;">Viêm Cơ Mủ (Pyomyositis)</div>
+      <div class="grid-2col">
+        <div class="clin-card">
+          <div class="clin-card-accent accent-purple"></div>
+          <div class="clin-card-title"><span>Chẩn Đoán &amp; Dẫn Lưu</span> <span>🧲</span></div>
+          <div class="clin-card-body">
+            <p>• <strong>Chụp cộng hưởng từ (MRI):</strong> Phương pháp chẩn đoán hình ảnh lựa chọn hàng đầu.</p>
+            <p>• Bắt buộc cấy máu và cấy mủ ổ áp xe cơ.</p>
+            <p>• Dẫn lưu mủ sớm qua da (dưới hướng dẫn siêu âm/CT) hoặc phẫu thuật mở.</p>
+          </div>
+        </div>
+
+        <div class="clin-card">
+          <div class="clin-card-accent accent-blue"></div>
+          <div class="clin-card-title"><span>Kháng Sinh &amp; Thời Gian Điều Trị</span> <span>⏱️</span></div>
+          <div class="clin-card-body">
+            <p>• Khởi đầu kinh nghiệm: <strong>Vancomycin truyền tĩnh mạch</strong>.</p>
+            <p>• Nếu phân lập được MSSA: Đổi sang <strong>Cefazolin</strong> hoặc Nafcillin.</p>
+            <p>• Chuyển sang kháng sinh uống khi lâm sàng cải thiện và cấy máu âm tính. Tổng thời gian điều trị khuyến cáo: <strong>2 đến 3 tuần</strong>.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==================== SECTION 6 ==================== -->
+  <div class="sec-card" id="sec-vet-can-phong-tai-phat">
+    <div class="sec-hdr">
+      <span class="sec-hdr-icon">🐾</span>
+      <h2 class="sec-title">6. Vết Thương Do Động Vật / Người Cắn (Table 5) &amp; Phòng Ngừa SSTI Tái Phát</h2>
+    </div>
+    <div class="sec-body">
+
+      <div class="sec-subtitle">Xử Trí Vết Thương Do Động Vật (Chó, Mèo) Hoặc Con Người Cắn</div>
+      <div class="updates-grid">
+        <div class="update-card">
+          <div class="update-card-accent" style="background: #16a34a;"></div>
+          <div class="update-card-header">
+            <div class="update-card-icon" style="background: #f0fdf4; color: #16a34a;">🛡️</div>
+            <div class="update-card-title">Kháng Sinh Dự Phòng Sớm (Preemptive 3 - 5 Ngày)</div>
+          </div>
+          <div class="update-card-body">
+            Chỉ định dự phòng kháng sinh sớm 3 - 5 ngày cho vết cắn chưa có biểu hiện nhiễm trùng nếu có yếu tố nguy cơ: <strong>suy giảm miễn dịch, cắt lách, bệnh gan mạn tính, phù nề tại chỗ, vết cắn ở bàn tay hoặc mặt, hoặc nghi ngờ tổn thương màng xương/bao khớp</strong>.
+          </div>
+          <div class="update-verdict verdict-green">Dự phòng 3 - 5 ngày</div>
+        </div>
+
+        <div class="update-card">
+          <div class="update-card-accent" style="background: #0284c7;"></div>
+          <div class="update-card-header">
+            <div class="update-card-icon" style="background: #eff6ff; color: #0284c7;">💊</div>
+            <div class="update-card-title">Kháng Sinh Lựa Chọn Hàng Đầu: Amoxicillin-Clavulanate</div>
+          </div>
+          <div class="update-card-body">
+            Phải bao phủ được <em>Pasteurella multocida</em> (chó/mèo) hoặc <em>Eikenella corrodens</em> (người) cùng vi khuẩn kỵ khí vùng miệng. <strong>Amoxicillin-Clavulanate 875/125 mg uống mỗi 12 giờ</strong> là lựa chọn số 1. Truyền tĩnh mạch: Ampicillin-Sulbactam 1.5 - 3.0g q6-8h.
+          </div>
+          <div class="update-verdict verdict-blue">Ưu tiên Augmentin / Unasyn</div>
+        </div>
+      </div>
+
+      <div class="infobox info" style="margin-top: 1rem;">
+        <span class="infobox-icon">💡</span>
+        <div>
+          <strong>Quy Tắc Đóng Vết Thương &amp; Vắc-xin Phòng Ngừa:</strong>
+          <br />• <strong>Không khâu đóng kín vết thương sơ khởi (No Primary Closure):</strong> Để hở vết thương dẫn lưu tự nhiên. Ngoại lệ: Vết thương vùng mặt có thể khâu đóng sơ khởi sau khi tưới rửa áp lực lớn và dùng kháng sinh dự phòng.
+          <br />• <strong>Phòng ngừa uốn ván:</strong> Tiêm giải độc tố uốn ván (ưu tiên Tdap) nếu mũi tiêm gần nhất &gt; 10 năm. Đánh giá chỉ định tiêm phòng dại theo dịch tễ địa phương.
+        </div>
+      </div>
+
+      <div class="sec-subtitle" style="margin-top: 1.5rem;">Chiến Lược Phòng Ngừa SSTI Tái Phát (Recurrent SSTI)</div>
+      <div class="grid-2col">
+        <div class="clin-card">
+          <div class="clin-card-accent accent-amber"></div>
+          <div class="clin-card-title"><span>Áp Xe Tái Phát (Tụ Cầu)</span> <span>🧼</span></div>
+          <div class="clin-card-body">
+            <ul class="clin-card-list">
+              <li>Loại trừ nguyên nhân cơ học: nang lông tuyến bã vùng cụt, viêm tuyến mồ hôi mủ, dị vật.</li>
+              <li>Cấy mủ và điều trị kháng sinh đích ngắn ngày (<strong>5 - 10 ngày</strong>).</li>
+              <li><strong>Khử khuẩn 5 ngày:</strong> Mỡ Mupirocin 2% tra mũi BID + tắm Chlorhexidine 4% hàng ngày + giặt khăn tắm sạch.</li>
+              <li>Tầm soát rối loạn bạch cầu trung tính nếu tái phát từ nhỏ.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="clin-card">
+          <div class="clin-card-accent accent-blue"></div>
+          <div class="clin-card-title"><span>Viêm Mô Tế Bào Tái Phát (Liên Cầu)</span> <span>💊</span></div>
+          <div class="clin-card-body">
+            <ul class="clin-card-list">
+              <li>Kiểm soát tối đa yếu tố nền: phù chi dưới, béo phì, chàm, suy tĩnh mạch, nấm kẽ ngón chân.</li>
+              <li>Nếu tái phát <strong>≥ 3 đến 4 đợt / năm</strong> dù đã kiểm soát tốt yếu tố thuận lợi:</li>
+              <li>👉 <strong>Penicillin VK 250 mg uống 2 lần/ngày (BID)</strong> kéo dài từ <strong>4 đến 52 tuần</strong> (hoặc Benzathine Penicillin G tiêm bắp mỗi 2 - 4 tuần).</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==================== SECTION 7 ==================== -->
+  <div class="sec-card" id="sec-suy-giam-mien-dich-steroid">
+    <div class="sec-hdr">
+      <span class="sec-hdr-icon">🛡️</span>
+      <h2 class="sec-title">7. Corticosteroid Bổ Trợ &amp; SSTI Ở Bệnh Nhân Suy Giảm Miễn Dịch (Table 6, 7)</h2>
+    </div>
+    <div class="sec-body">
+
+      <div class="sec-subtitle">Liệu Pháp Kháng Viêm Corticosteroid Bổ Trợ Trong Viêm Mô Tế Bào</div>
+      <div class="infobox success">
+        <span class="infobox-icon">⭐</span>
+        <div>
+          <strong>Khuyến Cáo Số 19 Của IDSA (Weak, Moderate Evidence):</strong>
+          Xem xét bổ sung corticosteroid đường toàn thân: <strong>Prednisone 40 mg uống hàng ngày trong vòng 7 ngày</strong> ở những bệnh nhân <strong>người lớn KHÔNG BỊ ĐÁI THÁO ĐƯỜNG</strong> bị viêm mô tế bào.
+          <br />• <em>Lợi ích:</em> Giảm phản ứng viêm mô kẽ quá mức, đẩy nhanh tốc độ thoái lui của hồng ban, sưng nề và rút ngắn thời gian nằm viện.
+          <br />• <strong style="color: #dc2626;">Chống chỉ định:</strong> Bệnh nhân đái tháo đường, nghi ngờ hoại tử mô sâu hoặc suy giảm miễn dịch nặng.
+        </div>
+      </div>
+
+      <div class="sec-subtitle" style="margin-top: 1.5rem;">SSTI Ở Bệnh Nhân Sốt Giảm Bạch Cầu Trung Tính (Fever &amp; Neutropenia)</div>
+      <div class="grid-2col">
+        <div class="clin-card">
+          <div class="clin-card-accent accent-purple"></div>
+          <div class="clin-card-title"><span>Phác Đồ Kháng Sinh Khởi Đầu</span> <span>💉</span></div>
+          <div class="clin-card-body">
+            <p>• Nhập viện cấp cứu, dùng ngay kháng sinh tĩnh mạch phổ rộng bao phủ đồng thời trực khuẩn mủ xanh (*P. aeruginosa*) và MRSA:</p>
+            <p>👉 <strong>Vancomycin + Cefepime</strong> (hoặc Meropenem/Imipenem hoặc Piperacillin-Tazobactam).</p>
+            <p>• Thời gian điều trị chuẩn: <strong>7 đến 14 ngày</strong>.</p>
+            <p>• Hoãn rạch dẫn lưu áp xe cho đến khi mức bạch cầu trung tính hồi phục.</p>
+          </div>
+        </div>
+
+        <div class="clin-card">
+          <div class="clin-card-accent accent-red"></div>
+          <div class="clin-card-title"><span>Sốt Kéo Dài / Tái Diễn (Sau 4 - 7 Ngày)</span> <span>🍄</span></div>
+          <div class="clin-card-body">
+            <p>• <strong>Bắt buộc bổ sung thuốc chống nấm theo kinh nghiệm:</strong></p>
+            <p>• <em>Candida spp.:</em> Dùng nhóm <strong>Echinocandin</strong> (Caspofungin, Micafungin, Anidulafungin).</p>
+            <p>• <em>Aspergillus ngoài da:</em> <strong>Voriconazole</strong> (điều trị 6 đến 12 tuần).</p>
+            <p>• <em>Mucorales:</em> <strong>Liposomal Amphotericin B</strong> hoặc Posaconazole.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="sec-subtitle" style="margin-top: 1.5rem;">Liều Chuẩn Thuốc Kháng Nấm &amp; Thuốc Chống Đa Kháng (Table 6 &amp; Table 7 IDSA)</div>
+      <div class="table-wrapper">
+        <table class="regimen-table">
+          <thead>
+            <tr>
+              <th style="width: 25%;">Tên Thuốc</th>
+              <th style="width: 35%;">Liều Dùng Khuyến Cáo</th>
+              <th style="width: 40%;">Nhận Xét Lâm Sàng Cốt Lõi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="source-cell"><strong>Voriconazole</strong></td>
+              <td>Tải 6 mg/kg IV q12h x 2 liều, sau đó 4 mg/kg q12h (Uống: 200mg q12h)</td>
+              <td>Lựa chọn hàng đầu cho nấm Aspergillus. Theo dõi nồng độ thuốc trong máu; thận trọng tích lũy cyclodextrin khi suy thận.</td>
+            </tr>
+            <tr>
+              <td class="source-cell"><strong>Liposomal Amphotericin B</strong></td>
+              <td>3 - 5 mg/kg/ngày IV</td>
+              <td>Hoạt tính mạnh trên nấm Mucorales/Rhizopus; không có tác dụng trên loài <em>Fusarium</em>.</td>
+            </tr>
+            <tr>
+              <td class="source-cell"><strong>Vancomycin</strong></td>
+              <td>15 - 20 mg/kg IV mỗi 8-12 giờ</td>
+              <td>Duy trì nồng độ đáy huyết thanh (trough) từ <strong>15 - 20 µg/mL</strong> trong nhiễm trùng nặng.</td>
+            </tr>
+            <tr>
+              <td class="source-cell"><strong>Daptomycin</strong></td>
+              <td>4 - 6 mg/kg/ngày IV</td>
+              <td>Bao phủ tốt cầu khuẩn ruột kháng vancomycin (VRE) và MRSA. Theo dõi nồng độ CPK hàng tuần.</td>
+            </tr>
+            <tr>
+              <td class="source-cell"><strong>Colistin</strong></td>
+              <td>Tải 5 mg/kg, sau đó duy trì 2.5 mg/kg mỗi 12 giờ</td>
+              <td>Dành cho trực khuẩn Gram âm đa kháng; độc tính cao trên thận; không có tác dụng trên Gram dương và kỵ khí.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==================== SECTION 8 ==================== -->
+  <div class="sec-card" id="sec-nhiem-trung-dac-biet-mcq">
+    <div class="sec-hdr">
+      <span class="sec-hdr-icon">🔬</span>
+      <h2 class="sec-title">8. Nhiễm Trùng Da Đặc Biệt (Than, Mèo Cào...), Cheat-Sheet &amp; 5 MCQ</h2>
+    </div>
+    <div class="sec-body">
+
+      <div class="sec-subtitle">Phác Đồ Cho Các Bệnh Nhiễm Trùng Da Đặc Thù &amp; Dịch Tễ</div>
+      <div class="table-wrapper">
+        <table class="regimen-table">
+          <thead>
+            <tr>
+              <th style="width: 25%;">Bệnh Lý &amp; Tác Nhân</th>
+              <th style="width: 35%;">Phác Đồ Kháng Sinh Khuyến Cáo</th>
+              <th style="width: 40%;">Thời Gian &amp; Lưu Ý Dịch Tễ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="source-cell"><strong>Bệnh Than ngoài da</strong><br />(<em>Bacillus anthracis</em>)</td>
+              <td>
+                • Thể tự nhiên: <strong>Penicillin V</strong> 500mg QID PO (7 - 10 ngày).<br />
+                • Thể khủng bố sinh học: <strong>Ciprofloxacin</strong> 500mg BID hoặc <strong>Levofloxacin</strong> 500mg daily.
+              </td>
+              <td>Thể khủng bố sinh học bắt buộc điều trị <strong>60 ngày</strong> do nguy cơ hít phải bào tử dạng khí dung.</td>
+            </tr>
+            <tr>
+              <td class="source-cell"><strong>Bệnh Mèo cào</strong><br />(<em>Bartonella henselae</em>)</td>
+              <td><strong>Azithromycin</strong> uống trong <strong>5 ngày</strong>:<br />• &gt; 45 kg: 500 mg Ngày 1, sau đó 250 mg/ngày (Ngày 2-5).<br />• &lt; 45 kg: 10 mg/kg Ngày 1, sau đó 5 mg/kg/ngày.</td>
+              <td>Giúp rút ngắn thời gian sưng viêm hạch bạch huyết vùng.</td>
+            </tr>
+            <tr>
+              <td class="source-cell"><strong>Bệnh Dạng hồng ban</strong><br />(<em>Erysipelothrix rhusiopathiae</em>)</td>
+              <td><strong>Penicillin V</strong> 500mg QID PO hoặc <strong>Amoxicillin</strong> 500mg TID PO trong <strong>7 đến 10 ngày</strong>.</td>
+              <td>Thường gặp ở người chế biến thịt gia súc, thủy hải sản sau khi bị đâm gai/xương.</td>
+            </tr>
+            <tr>
+              <td class="source-cell"><strong>Dịch hạch thể hạch</strong><br />(<em>Yersinia pestis</em>)</td>
+              <td><strong>Streptomycin</strong> 15 mg/kg IM mỗi 12 giờ HOẶC <strong>Doxycycline</strong> 100 mg BID (thay thế: Gentamicin).</td>
+              <td>Lây qua vết cắn bọ chét từ loài gặm nhấm; chẩn đoán bằng cấy dịch chọc hút hạch sưng mủ (buboes).</td>
+            </tr>
+            <tr>
+              <td class="source-cell"><strong>Bệnh Tularemia</strong><br />(<em>Francisella tularensis</em>)</td>
+              <td>• Nặng: <strong>Streptomycin</strong> 15 mg/kg IM q12h hoặc Gentamicin.<br />• Nhẹ: <strong>Doxycycline</strong> 100 mg BID hoặc Tetracycline.</td>
+              <td><strong style="color: #dc2626;">CẢNH BÁO BSL-3:</strong> Bắt buộc báo trước cho phòng xét nghiệm vi sinh vì nguy cơ lây nhiễm phòng lab cực cao.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="sec-subtitle" style="margin-top: 1.5rem;">Cheat-Sheet Tóm Tắt Khung Xử Trí IDSA 2014</div>
+      <div class="infobox info">
+        <span class="infobox-icon">⚡</span>
+        <div style="font-family: monospace; font-size: 0.88rem; line-height: 1.8;">
+          • <strong>Áp xe da nhẹ:</strong> Chỉ rạch dẫn lưu (I&amp;D); KHÔNG cần kháng sinh.<br />
+          • <strong>Áp xe da trung bình/nặng:</strong> I&amp;D + TMP-SMX / Doxycycline (uống) hoặc Vancomycin (tĩnh mạch).<br />
+          • <strong>Viêm mô tế bào nhẹ:</strong> Cephalexin / Penicillin VK 500mg QID uống.<br />
+          • <strong>Nhiễm trùng vết mổ:</strong> Cắt chỉ dẫn lưu; chỉ dùng kháng sinh nếu hồng ban &gt; 5cm hoặc có sốt &gt; 38.5°C.<br />
+          • <strong>Viêm cân mạc hoại tử do Liên cầu A:</strong> Mổ khẩn + Penicillin + Clindamycin (hiệu ứng Eagle).<br />
+          • <strong>Vết cắn động vật/người:</strong> Amoxicillin-Clavulanate 875/125mg BID; không khâu kín (trừ mặt).<br />
+          • <strong>Viêm mô tế bào tái phát:</strong> Penicillin VK 250mg BID dự phòng dài hạn.
+        </div>
+      </div>
+
+      <div class="sec-subtitle" style="margin-top: 1.5rem;">5 Câu Hỏi Trắc Nghiệm Tự Lượng Giá Lâm Sàng (MCQ Quiz)</div>
+
+      <div class="mcq-card" data-correct="0">
+        <div class="mcq-q"><span>Câu 1:</span> Theo lưu đồ phân tầng IDSA 2014 (Figure 1), thái độ xử trí phù hợp nhất đối với một ổ áp xe da đơn thuần mức độ nhẹ (không kèm theo sốt, không có dấu hiệu SIRS) là gì?</div>
+        <div class="mcq-opts">
+          <div class="mcq-opt" data-idx="0">A. Rạch và dẫn lưu (I&amp;D) đơn thuần, chưa cần chỉ định dùng kháng sinh</div>
+          <div class="mcq-opt" data-idx="1">B. Kê đơn kháng sinh Vancomycin truyền tĩnh mạch</div>
+          <div class="mcq-opt" data-idx="2">C. Kê đơn kháng sinh Cephalexin uống trong 10 ngày mà không cần rạch mủ</div>
+          <div class="mcq-opt" data-idx="3">D. Tiêm bắp Penicillin G liều duy nhất</div>
+        </div>
+        <div class="mcq-exp">
+          <strong>Giải thích:</strong> Theo IDSA 2014, áp xe da mức độ nhẹ chỉ cần can thiệp rạch và dẫn lưu (I&amp;D) cơ học sạch mủ là đủ để khỏi bệnh; không có chỉ định dùng kháng sinh thường quy.
+        </div>
+      </div>
+
+      <div class="mcq-card" data-correct="2">
+        <div class="mcq-q"><span>Câu 2:</span> Trong phác đồ điều trị viêm cân mạc hoại tử do Liên cầu khuẩn tan huyết beta nhóm A (S. pyogenes), vai trò của việc bắt buộc phối hợp Clindamycin cùng với Penicillin liều cao là gì?</div>
+        <div class="mcq-opts">
+          <div class="mcq-opt" data-idx="0">A. Nhằm bao phủ trực khuẩn Gram âm đường ruột</div>
+          <div class="mcq-opt" data-idx="1">B. Tăng cường khả năng thẩm thấu vào dịch não tủy</div>
+          <div class="mcq-opt" data-idx="2">C. Ức chế quá trình tổng hợp protein của vi khuẩn để triệt tiêu sinh ngoại độc tố (hiệu ứng Eagle)</div>
+          <div class="mcq-opt" data-idx="3">D. Giảm tác dụng phụ gây suy thận của Penicillin</div>
+        </div>
+        <div class="mcq-exp">
+          <strong>Giải thích:</strong> Penicillin mất tác dụng khi mật độ vi khuẩn quá cao ở pha tĩnh (hiệu ứng Eagle). Clindamycin gắn vào tiểu đơn vị 50S của ribosom, ức chế mạnh mẽ sự sinh tổng hợp ngoại độc tố gây sốc nhiễm độc của liên cầu độc lập với pha phát triển của vi khuẩn.
+        </div>
+      </div>
+
+      <div class="mcq-card" data-correct="1">
+        <div class="mcq-q"><span>Câu 3:</span> Một bệnh nhân sau mổ ruột thừa 5 ngày xuất hiện sốt nhẹ 37.8°C, mép vết mổ viêm đỏ nhẹ dưới 2 cm, bạch cầu máu 9.500 /µL, không có mủ chảy ra. Hướng xử trí đúng theo IDSA 2014 là gì?</div>
+        <div class="mcq-opts">
+          <div class="mcq-opt" data-idx="0">A. Khởi đầu ngay truyền tĩnh mạch Piperacillin-Tazobactam</div>
+          <div class="mcq-opt" data-idx="1">B. Chỉ cần thay băng, chăm sóc vết thương tại chỗ và KHÔNG dùng kháng sinh toàn thân</div>
+          <div class="mcq-opt" data-idx="2">C. Cho uống Ciprofloxacin kết hợp Metronidazole trong 14 ngày</div>
+          <div class="mcq-opt" data-idx="3">D. Đưa ngay vào phòng mổ để cắt lọc diện rộng</div>
+        </div>
+        <div class="mcq-exp">
+          <strong>Giải thích:</strong> Theo lưu đồ nhiễm trùng vết mổ IDSA (Figure 2), ở nhóm nhẹ (hồng ban &lt; 5cm, nhiệt độ &lt; 38.5°C, WBC &lt; 12.000 /µL), chỉ cần mở dẫn lưu nếu có dịch và thay băng tại chỗ, không có chỉ định dùng kháng sinh toàn thân.
+        </div>
+      </div>
+
+      <div class="mcq-card" data-correct="3">
+        <div class="mcq-q"><span>Câu 4:</span> Kháng sinh đường uống nào là lựa chọn hàng đầu để điều trị vết thương do chó hoặc mèo cắn nhằm bao phủ cả vi khuẩn hiếu khí (Pasteurella multocida) và vi khuẩn kỵ khí?</div>
+        <div class="mcq-opts">
+          <div class="mcq-opt" data-idx="0">A. Cephalexin</div>
+          <div class="mcq-opt" data-idx="1">B. Clindamycin đơn trị liệu</div>
+          <div class="mcq-opt" data-idx="2">C. Ciprofloxacin đơn trị liệu</div>
+          <div class="mcq-opt" data-idx="3">D. Amoxicillin-Clavulanate</div>
+        </div>
+        <div class="mcq-exp">
+          <strong>Giải thích:</strong> Amoxicillin-Clavulanate (875/125 mg uống BID) là lựa chọn số 1 cho vết cắn động vật/người nhờ bao phủ tốt cả tụ cầu, liên cầu, kỵ khí và vi khuẩn đặc thù Pasteurella multocida (Clindamycin và Cephalexin bỏ sót Pasteurella).
+        </div>
+      </div>
+
+      <div class="mcq-card" data-correct="0">
+        <div class="mcq-q"><span>Câu 5:</span> Đối với bệnh nhân người lớn không mắc đái tháo đường bị viêm mô tế bào có phản ứng sưng đỏ viêm tại chỗ nặng, hướng dẫn IDSA 2014 khuyến cáo cân nhắc liệu pháp bổ trợ nào?</div>
+        <div class="mcq-opts">
+          <div class="mcq-opt" data-idx="0">A. Prednisone 40 mg uống hàng ngày trong 7 ngày</div>
+          <div class="mcq-opt" data-idx="1">B. Liệu pháp oxy cao áp (HBO) trong 10 ngày</div>
+          <div class="mcq-opt" data-idx="2">C. Truyền Immunoglobulin (IVIG) liều cao</div>
+          <div class="mcq-opt" data-idx="3">D. Bôi mỡ Retapamulin 1% toàn thân</div>
+        </div>
+        <div class="mcq-exp">
+          <strong>Giải thích:</strong> Khuyến cáo số 19 của IDSA 2014 gợi ý có thể xem xét bổ sung Prednisone 40 mg/ngày trong 7 ngày ở bệnh nhân viêm mô tế bào không đái tháo đường để giảm phù nề viêm và rút ngắn thời gian nằm viện.
+        </div>
+      </div>
+
+      <div class="sec-subtitle" style="margin-top: 1.5rem;">Danh Mục Tài Liệu Tham Khảo Chuẩn AMA</div>
+      <div class="citation-box">
+        <strong>Tài liệu gốc chính thức:</strong>
+        <ol style="margin-left: 1.5rem; margin-top: 0.5rem; line-height: 1.8;">
+          <li>Stevens DL, Bisno AL, Chambers HF, et al. Practice guidelines for the diagnosis and management of skin and soft tissue infections: 2014 update by the Infectious Diseases Society of America. <em>Clin Infect Dis</em>. 2014;59(2):147-159. doi:10.1093/cid/ciu444.</li>
+          <li>Guyatt GH, Oxman AD, Kunz R, et al. Going from evidence to recommendations. <em>BMJ</em>. 2008;336(7652):1049-1051. doi:10.1136/bmj.39493.646875.AE.</li>
+          <li>Stevens DL, Bryant AE. Severe group A streptococcal infections. In: Ferretti JJ, Stevens DL, Fischetti VA, eds. <em>Streptococcus pyogenes: Basic Biology to Clinical Manifestations</em>. Oklahoma City: University of Oklahoma Health Sciences Center; 2016.</li>
+          <li>Liu C, Bayer A, Cosgrove SE, et al. Clinical practice guidelines by the Infectious Diseases Society of America for the treatment of methicillin-resistant Staphylococcus aureus infections in adults and children. <em>Clin Infect Dis</em>. 2011;52(3):e18-55. doi:10.1093/cid/ciq146.</li>
+        </ol>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- BOTTOM NAV -->
+<div style="margin-top: 1.5rem;">
+  <div class="btn-row">
+    <a href="#/ebm/kho-guidelines" class="btn btn-primary">
+      <i class="fa-solid fa-arrow-left"></i> Quay lại Kho Guidelines
+    </a>
+    <a href="#sec-tong-quan-phan-loai-grade" class="btn">
+      <i class="fa-solid fa-arrow-up"></i> Lên đầu trang
+    </a>
+  </div>
+</div>

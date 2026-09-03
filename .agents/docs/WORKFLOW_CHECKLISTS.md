@@ -95,6 +95,9 @@ Dùng khi viết hoặc biên tập bài đọc lâm sàng, tóm tắt khuyến 
 - [ ] **6. Định dạng bảng biểu & Lưu đồ trực quan**:
   - Không để đoạn văn quá 5 dòng mà không có ngắt dòng hoặc bullet points.
   - Sử dụng bảng so sánh (`.regimen-table` hoặc `.comparison-card-grid`) khi phân biệt 2 thẻ bệnh hoặc 2 phác đồ.
+- [ ] **7. Quy tắc Lưu đồ: Ưu tiên Code hóa trực quan khi có ảnh (Image-to-Code Flowchart)**:
+  - Nếu file nguồn có **ảnh lưu đồ** (thuật toán, phân tầng, quy trình...) kèm đoạn text mô tả: Đoạn text đó chỉ là bản tóm tắt ý lại (fallback).
+  - **Bắt buộc**: Khi có ảnh, phải nhúng ảnh và ưu tiên dựng thành **CODE trực quan** (Inline SVG Editorial Flowchart theo chuẩn `flowchart-module` hoặc UI Visual Flowchart Component) tái hiện đúng thiết kế của ảnh. Chỉ dùng khối text/ASCII khi nguồn hoàn toàn không có ảnh.
 
 ---
 

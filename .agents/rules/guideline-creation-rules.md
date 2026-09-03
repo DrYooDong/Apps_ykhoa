@@ -19,4 +19,10 @@
 4. **BẮT BUỘC CHUẨN HÓA PHÂN CẤP BẰNG CHỨNG (EBM EVIDENCE HIERARCHY)**:
    - Mọi trang Guideline được khởi tạo hoặc cập nhật từ nay về sau **BẮT BUỘC** phải tích hợp bộ linh kiện Phân cấp Bằng chứng EBM trực quan: Thẻ khuyến cáo `.ebm-rec-card`, nhãn Khuyến cáo `.cor-badge` (Class I, IIa, IIb, III) và nhãn Bằng chứng `.loe-badge` (Level/Grade A, B, C, E) theo đúng chuẩn thiết kế trong Skill `guideline-summary-module`.
 
+5. **QUY TẮC CHUYỂN ĐỔI LƯU ĐỒ HÌNH ẢNH SANG CODE TRỰC QUAN (IMAGE-TO-CODE FLOWCHART RULE)**:
+   - Khi tài liệu nguồn có hình ảnh lưu đồ (lưu đồ chẩn đoán, tiếp cận phân tầng, thuật toán điều trị, quy trình PRISMA flow, visual summary...) kèm theo khối text/ASCII mô tả:
+   - **Xác định vai trò**: Đoạn text/ASCII mô tả chỉ đóng vai trò tóm tắt ý lại (fallback) để tham khảo khi không có ảnh.
+   - **Thực thi khi CÓ ẢNH**: Bắt buộc nhúng ảnh (`.fig-card`) VÀ **ưu tiên chuyển đổi/sửa thành CODE trực quan** (Inline SVG Editorial Flowchart chuẩn `flowchart-module` hoặc linh kiện HTML/CSS visual flowchart nodes/cards) mô phỏng chính xác cấu trúc thiết kế, phân nhánh và màu sắc của lưu đồ trong ảnh. Tuyệt đối không giữ lại khối text/ASCII sơ sài làm mất đi tính trực quan cao cấp của CliniPortal khi đã có ảnh.
+   - **Thực thi khi KHÔNG CÓ ẢNH**: Chỉ khi tài liệu nguồn hoàn toàn không có ảnh lưu đồ đính kèm, AI mới sử dụng đoạn text mô tả / khối ASCII chuẩn hóa để tái hiện logic lưu đồ.
+
 
