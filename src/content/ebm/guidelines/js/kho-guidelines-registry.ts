@@ -11,6 +11,27 @@ import { Study } from './guidelines-types';
 
 export const KHO_GUIDELINES_STATIC: Study[] = [
   {
+    id: '2024-systemic-antibiotic-ssti',
+    title: 'JDVI 2024: Nghiên Cứu Tổng Quan Lựa Chọn Kháng Sinh Hệ Thống Trong Nhiễm Trùng Da & Mô Mềm (SSTI)',
+    titleEn: 'Systemic Antibiotic Selection in Skin and Soft Tissue Infections (Journal of General - Procedural Dermatology & Venereology Indonesia 2024)',
+    sourceType: 'systematic-review',
+    specialty: 'infect',
+    design: 'guideline',
+    impact: 'practice-changing',
+    year: 2024,
+    organization: 'Universitas Indonesia / RSUPN Dr. Cipto Mangunkusumo',
+    journal: 'Journal of General - Procedural Dermatology & Venereology Indonesia (JDVI)',
+    file: '2024-systemic-antibiotic-ssti.mdx',
+    conditionKey: 'ssti',
+    icd10: ['L03', 'L03.9', 'L02', 'L02.9', 'L01', 'L08.9', 'M72.6'],
+    intervention: 'Đánh giá định tính kê đơn kháng sinh bằng Lưu đồ Gyssens (Nhóm I đến VI); Phân loại WHO AWaRe; Nhận diện các yếu tố nguy cơ HA-MRSA vs CA-MRSA và cảnh báo tiền sử dùng Quinolone làm tăng nguy cơ MRSA; Phân tầng lâm sàng theo IDSA sửa đổi, FDA ABSSSI (diện tích ≥ 75 cm²) và Thang điểm Eron Class 1-4; Phác đồ điều trị bệnh da mủ, viêm mô tế bào 5 ngày và các cấp cứu da liễu đe dọa tính mạng (Viêm cân mạc hoại tử 4 type, Sốc độc tố TSS, Bong vảy da do tụ cầu SSSS).',
+    primaryEndpoint: 'Chuẩn hóa quy trình lựa chọn kháng sinh hệ thống theo bằng chứng, kiểm soát định tính chất lượng kê đơn kháng sinh, tối ưu hóa điều trị SSTI và ngăn chặn sự phát tán của vi khuẩn đa kháng AMR/MRSA.',
+    keyResults: 'Tỷ lệ MRSA nội trú lên tới 47% | Tiền sử Quinolone trong 1 năm tăng nguy cơ nhiễm MRSA | Lưu đồ Gyssens tối ưu hóa sử dụng kháng sinh định tính | Áp dụng chuẩn điều trị 5 ngày cho viêm mô tế bào | Clindamycin triệt tiêu độc tố siêu kháng nguyên trong NF type 2, TSS và SSSS.',
+    summary: 'Tổng quan lâm sàng toàn diện công bố tháng 12/2024 trên JDVI: Tích hợp Lưu đồ Gyssens I-VI trực quan hóa, phân loại WHO AWaRe, các hệ thống phân tầng Eron & ABSSSI, nhận diện nguy cơ MRSA liên quan đến quinolone và phác đồ điều trị chi tiết từ bệnh da mủ đến viêm cân mạc hoại tử và hội chứng sốc độc tố.',
+    detailedConclusion: 'Bác sĩ lâm sàng áp dụng Lưu đồ Gyssens để đánh giá chất lượng kê đơn. Khai thác tiền sử dùng Quinolone để cảnh giác MRSA. Tuân thủ 5 ngày điều trị cho viêm mô tế bào. Phối hợp Clindamycin kháng độc tố trong các cấp cứu da liễu hoại tử.'
+  },
+
+  {
     id: '2014-idsa-ssti',
     title: 'IDSA 2014: Hướng Dẫn Thực Hành Lâm Sàng Chẩn Đoán & Quản Lý Nhiễm Trùng Da & Mô Mềm (SSTI)',
     titleEn: 'Practice Guidelines for the Diagnosis and Management of Skin and Soft Tissue Infections: 2014 Update by the Infectious Diseases Society of America (IDSA / CID)',
