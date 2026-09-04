@@ -566,37 +566,190 @@ sections:
       </div>
 
       <div style="margin-top: 1.5rem;">
-        <FlowchartViewer
-          title="Lưu Đồ Tiếp Cận Chẩn Đoán, Can Thiệp Ngoại Khoa & Kháng Sinh Kinh Nghiệm Áp Xe Não (ESCMID 2024)"
-          code={`graph TD
-  START["BỆNH NHÂN NGHI NGỜ ÁP XE NÃO TRÊN HÌNH ẢNH HỌC<br/><small>Tổn thương choán chỗ nội sọ dạng nang • Bắt thuốc viền hình nhẫn</small>"]:::start --> MRI_DWI["CHỤP MRI SỌ NÃO CHUỖI XUNG KHUẾCH TÁN (DWI / ADC)<br/><small>Tiêu chuẩn vàng: Dịch mủ hoại tử hạn chế khuếch tán (DWI tăng, ADC giảm)</small>"]:::action
+        <div class="flowchart-editorial-card">
+          <div class="flowchart-card-header">
+            <div class="flowchart-card-title-group">
+              <span class="flowchart-card-icon">🧠</span>
+              <div>
+                <h3 class="flowchart-card-title">Lưu Đồ Tiếp Cận Chẩn Đoán, Can Thiệp Ngoại Khoa &amp; Kháng Sinh Áp Xe Não</h3>
+                <p class="flowchart-card-subtitle">Hướng dẫn ESCMID 2024 • Trì hoãn kháng sinh an toàn &lt; 24h để cấy mủ • Phân nhóm căn nguyên • Thời gian kháng sinh tĩnh mạch</p>
+              </div>
+            </div>
+            <span class="flowchart-card-badge">ESCMID 2024 • Editorial SVG</span>
+          </div>
 
-  MRI_DWI --> CRITICAL_CHECK{"Đánh Giá Nguy Cơ Nguy Kịch & Tụt Kẹt Não?"}:::question
+          <div class="flowchart-svg-container">
+            <svg class="med-svg" viewBox="0 0 980 940" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <marker id="arr-esc-nao" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 1 1.5 L 8 5 L 1 8.5 Z" fill="var(--color-primary, #0284c7)"/>
+                </marker>
+                <marker id="arr-esc-warn" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 1 1.5 L 8 5 L 1 8.5 Z" fill="var(--color-warning, #f59e0b)"/>
+                </marker>
+                <marker id="arr-esc-danger" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 1 1.5 L 8 5 L 1 8.5 Z" fill="var(--color-danger, #ef4444)"/>
+                </marker>
+                <marker id="arr-esc-success" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 1 1.5 L 8 5 L 1 8.5 Z" fill="var(--color-success, #10b981)"/>
+                </marker>
+              </defs>
 
-  CRITICAL_CHECK -- "NGUY KỊCH: Có Sepsis, GCS < 9 hoặc Phù não dọa thoát vị" --> IMMEDIATE_ABX["KHỞI TRỊ KHÁNG SINH TĨNH MẠCH CẤP CỨU NGAY<br/><small>• Không trì hoãn • Phối hợp Dexamethasone chống phù não cấp</small>"]:::danger
+              {/* CONNECTORS */}
+              {/* START -> MRI_DWI */}
+              <path d="M 490 96 V 126" stroke="var(--color-primary, #0284c7)" stroke-width="2" fill="none" marker-end="url(#arr-esc-nao)"/>
 
-  CRITICAL_CHECK -- "KHÔNG NGUY KỊCH: Huyết động ổn định, không dọa thoát vị não" --> DELAY_ABX["TRÌ HOÃN KHÁNG SINH NGẮN NGÀY (&lt; 24 GIỜ)<br/><small>Khuyến cáo ESCMID 2024: Tăng tỷ lệ cấy mủ dương tính từ 33% lên 80% (OR 10.5)</small>"]:::action
+              {/* MRI_DWI -> CRITICAL_CHECK */}
+              <path d="M 490 196 V 226" stroke="var(--color-primary, #0284c7)" stroke-width="2" fill="none" marker-end="url(#arr-esc-nao)"/>
 
-  DELAY_ABX --> SURGERY["HỘI CHẨN NGOẠI THẦN KINH KHẨN CẤP<br/><small>Ưu tiên chọc hút mủ định vị (Stereotactic Aspiration) hoặc Mở hộp sọ cắt bỏ</small>"]:::start
+              {/* CRITICAL_CHECK -> IMMEDIATE_ABX (Left) */}
+              <path d="M 310 253 H 186 Q 180 253 180 259 V 314" stroke="var(--color-danger, #ef4444)" stroke-width="2" fill="none" marker-end="url(#arr-esc-danger)"/>
 
-  SURGERY --> MICRO["XÉT NGHIỆM VI SINH TOÀN DIỆN BỆNH PHẨM MỦ<br/><small>Nhuộm Gram • Cấy ái khí, kỵ khí • 16S rDNA PCR / Giải trình tự metagenomic NGS</small>"]:::action
+              {/* CRITICAL_CHECK -> DELAY_ABX (Right) */}
+              <path d="M 670 253 H 744 Q 750 253 750 259 V 314" stroke="var(--color-primary, #0284c7)" stroke-width="2" fill="none" marker-end="url(#arr-esc-nao)"/>
 
-  MICRO --> EMPIRIC_ABX{"Lựa Chọn Kháng Sinh Tĩnh Mạch Kinh Nghiệm Theo Phân Nhóm?"}:::question
-  IMMEDIATE_ABX --> EMPIRIC_ABX
+              {/* DELAY_ABX -> SURGERY */}
+              <path d="M 735 425 V 454" stroke="var(--color-success, #10b981)" stroke-width="2" fill="none" marker-end="url(#arr-esc-success)"/>
 
-  EMPIRIC_ABX -- "Mắc phải tại cộng đồng<br/>(Miễn dịch bình thường)" --> REG_COMM["CEFTRIAXONE (2g q12h IV) + METRONIDAZOLE (500mg q8h IV)<br/><small>Bao phủ liên cầu khuẩn, phế cầu và vi khuẩn kỵ khí vùng tai mũi họng/răng</small>"]:::success
+              {/* IMMEDIATE_ABX -> EMPIRIC_ABX */}
+              <path d="M 180 425 V 582 Q 180 588 186 588 H 304" stroke="var(--color-danger, #ef4444)" stroke-width="2" fill="none" marker-end="url(#arr-esc-danger)"/>
 
-  EMPIRIC_ABX -- "Bệnh nhân suy giảm miễn dịch<br/>(Ghép tạng, ung thư, HIV)" --> REG_IMMUNO["CEFTRIAXONE + METRONIDAZOLE + VORICONAZOLE + TMP-SMX<br/><small>Bao phủ mở rộng Nấm Aspergillus, Toxoplasma gondii & Nocardia</small>"]:::danger
+              {/* SURGERY -> EMPIRIC_ABX */}
+              <path d="M 735 545 V 582 Q 735 588 729 588 H 676" stroke="var(--color-primary, #0284c7)" stroke-width="2" fill="none" marker-end="url(#arr-esc-nao)"/>
 
-  EMPIRIC_ABX -- "Sau phẫu thuật ngoại thần kinh / Chấn thương sọ não" --> REG_POSTOP["MEROPENEM (2g q8h IV) + VANCOMYCIN / LINEZOLID<br/><small>Bao phủ MRSA, trực khuẩn Gram âm đa kháng & Pseudomonas</small>"]:::warning
+              {/* EMPIRIC_ABX -> REG_COMM (Left) */}
+              <path d="M 310 588 H 176 Q 170 588 170 594 V 644" stroke="var(--color-success, #10b981)" stroke-width="2" fill="none" marker-end="url(#arr-esc-success)"/>
 
-  REG_COMM --> DURATION{"Thời Gian Điều Trị Kháng Sinh Tĩnh Mạch?"}:::question
-  REG_IMMUNO --> DURATION
-  REG_POSTOP --> DURATION
+              {/* EMPIRIC_ABX -> REG_IMMUNO (Center) */}
+              <path d="M 490 611 V 644" stroke="var(--color-danger, #ef4444)" stroke-width="2" fill="none" marker-end="url(#arr-esc-danger)"/>
 
-  DURATION -- "Ổ áp xe đã được chọc hút mủ (Aspirated)" --> DUR_6W["ĐIỀU TRỊ 6 - 8 TUẦN KHÁNG SINH TĨNH MẠCH"]:::action
-  DURATION -- "Ổ áp xe được phẫu thuật cắt bỏ trọn vẹn (Excised)" --> DUR_4W["ĐIỀU TRỊ 4 TUẦN KHÁNG SINH TĨNH MẠCH"]:::action`}
-        />
+              {/* EMPIRIC_ABX -> REG_POSTOP (Right) */}
+              <path d="M 670 588 H 804 Q 810 588 810 594 V 644" stroke="var(--color-warning, #f59e0b)" stroke-width="2" fill="none" marker-end="url(#arr-esc-warn)"/>
+
+              {/* CONNECTOR LABELS (with background masks) */}
+              <g>
+                <rect x="95" y="241" width="185" height="22" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+                <text x="187" y="256" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-danger, #ef4444)">Nguy kịch / Dọa thoát vị não</text>
+              </g>
+
+              <g>
+                <rect x="670" y="241" width="180" height="22" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+                <text x="760" y="256" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-primary, #0284c7)">Ổn định / Không dọa tụt não</text>
+              </g>
+
+              {/* NODES */}
+              {/* NODE 1: START */}
+              <g class="flow-node">
+                <rect x="240" y="30" width="500" height="66" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+                <rect x="240" y="30" width="500" height="24" rx="10" fill="var(--color-primary, #0284c7)" fill-opacity="0.1"/>
+                <text x="490" y="47" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-primary, #0284c7)" letter-spacing="0.5">BƯỚC 1: NGHI NGỜ ÁP XE NÃO TRÊN HÌNH ẢNH HỌC</text>
+                <text x="490" y="74" text-anchor="middle" font-size="12" font-weight="600" fill="var(--color-text, #1e293b)">Tổn thương choán chỗ nội sọ dạng nang, bắt thuốc cản quang viền hình nhẫn (Ring-enhancing)</text>
+              </g>
+
+              {/* NODE 2: MRI_DWI */}
+              <g class="flow-node">
+                <rect x="230" y="130" width="520" height="66" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+                <rect x="230" y="130" width="520" height="24" rx="10" fill="var(--color-primary, #0284c7)" fill-opacity="0.1"/>
+                <text x="490" y="147" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-primary, #0284c7)" letter-spacing="0.5">BƯỚC 2: TIÊU CHUẨN VÀNG MRI CHUỖI XUNG DWI / ADC</text>
+                <text x="490" y="174" text-anchor="middle" font-size="12" font-weight="600" fill="var(--color-text, #1e293b)">Hạn chế khuếch tán đặc trưng trong lõi mủ hoại tử: DWI tăng tín hiệu sáng rực, ADC giảm thấp</text>
+              </g>
+
+              {/* NODE 3: CRITICAL_CHECK (Decision) */}
+              <g class="flow-node">
+                <rect x="310" y="230" width="360" height="46" rx="23" fill="var(--color-surface, #ffffff)" stroke="var(--color-warning, #f59e0b)" stroke-width="2"/>
+                <text x="490" y="258" text-anchor="middle" font-size="12" font-weight="700" fill="var(--color-warning, #f59e0b)">Đánh Giá Nguy Cơ Nguy Kịch &amp; Tụt Kẹt Não?</text>
+              </g>
+
+              {/* NODE 4: IMMEDIATE_ABX */}
+              <g class="flow-node">
+                <rect x="30" y="320" width="300" height="105" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-danger, #ef4444)" stroke-width="2"/>
+                <rect x="30" y="320" width="300" height="24" rx="10" fill="var(--color-danger, #ef4444)" fill-opacity="0.12"/>
+                <text x="180" y="337" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--color-danger, #ef4444)" letter-spacing="0.5">KHỞI TRỊ KHÁNG SINH TĨNH MẠCH NGAY</text>
+                <text x="45" y="362" font-size="11.5" font-weight="700" fill="var(--color-text, #1e293b)">Khởi trị cấp cứu không được trì hoãn</text>
+                <text x="45" y="381" font-size="11" fill="var(--color-text, #1e293b)">• Phối hợp Dexamethasone giảm phù não dọa thoát vị</text>
+                <text x="45" y="400" font-size="11" font-weight="600" fill="var(--color-danger, #ef4444)">• Chuyển phòng hồi sức ngoại thần kinh cấp cứu</text>
+              </g>
+
+              {/* NODE 5: DELAY_ABX */}
+              <g class="flow-node">
+                <rect x="530" y="320" width="410" height="105" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+                <rect x="530" y="320" width="410" height="24" rx="10" fill="var(--color-primary, #0284c7)" fill-opacity="0.1"/>
+                <text x="735" y="337" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--color-primary, #0284c7)" letter-spacing="0.5">TRÌ HOÃN KHÁNG SINH NGẮN (&lt; 24H ĐỂ LẤY MỦ)</text>
+                <text x="545" y="362" font-size="11.5" font-weight="700" fill="var(--color-primary, #0284c7)">Điểm khuyến cáo đột phá của ESCMID 2024</text>
+                <text x="545" y="381" font-size="11.5" fill="var(--color-text, #1e293b)">• Tăng tỷ lệ nuôi cấy mủ dương tính từ <tspan font-weight="700">33% lên 80% (OR 10.5)</tspan></text>
+                <text x="545" y="400" font-size="11" fill="var(--color-text-muted, #64748b)">• Giúp xác định chính xác vi khuẩn gây bệnh và kháng sinh đồ đích</text>
+              </g>
+
+              {/* NODE 6: SURGERY */}
+              <g class="flow-node">
+                <rect x="530" y="460" width="410" height="85" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-success, #10b981)" stroke-width="2"/>
+                <rect x="530" y="460" width="410" height="24" rx="10" fill="var(--color-success, #10b981)" fill-opacity="0.1"/>
+                <text x="735" y="477" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--color-success, #10b981)" letter-spacing="0.5">HỘI CHẨN NGOẠI THẦN KINH LẤY MỦ KHẨN</text>
+                <text x="545" y="502" font-size="11.5" font-weight="700" fill="var(--color-text, #1e293b)">Ưu tiên chọc hút mủ định vị (Stereotactic Aspiration)</text>
+                <text x="545" y="521" font-size="11" fill="var(--color-text-muted, #64748b)">Xét nghiệm vi sinh toàn diện: Soi Gram, Cấy ái/kỵ khí, 16S rDNA PCR đa mồi</text>
+              </g>
+
+              {/* NODE 7: EMPIRIC_ABX (Decision) */}
+              <g class="flow-node">
+                <rect x="310" y="565" width="360" height="46" rx="23" fill="var(--color-surface, #ffffff)" stroke="var(--color-warning, #f59e0b)" stroke-width="2"/>
+                <text x="490" y="593" text-anchor="middle" font-size="12" font-weight="700" fill="var(--color-warning, #f59e0b)">Lựa Chọn Kháng Sinh Tĩnh Mạch Ban Đầu</text>
+              </g>
+
+              {/* NODE 8: REG_COMM */}
+              <g class="flow-node">
+                <rect x="20" y="650" width="300" height="120" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-success, #10b981)" stroke-width="2"/>
+                <rect x="20" y="650" width="300" height="24" rx="10" fill="var(--color-success, #10b981)" fill-opacity="0.1"/>
+                <text x="170" y="667" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--color-success, #10b981)" letter-spacing="0.5">NHIỄM KHUẨN CỘNG ĐỒNG</text>
+                <text x="35" y="692" font-size="11.5" font-weight="700" fill="var(--color-text, #1e293b)">Ceftriaxone 2g IV mỗi 12h</text>
+                <text x="35" y="711" font-size="11.5" font-weight="700" fill="var(--color-success, #10b981)">+ Metronidazole 500mg IV mỗi 8h</text>
+                <text x="35" y="730" font-size="11" fill="var(--color-text-muted, #64748b)">Bao phủ Liên cầu, Phế cầu &amp; Vi khuẩn kỵ khí tai mũi họng / răng hàm mặt</text>
+                <text x="35" y="749" font-size="10" font-style="italic" fill="var(--color-text-muted, #64748b)">Ngấm dịch não tủy và mô não rất tốt</text>
+              </g>
+
+              {/* NODE 9: REG_IMMUNO */}
+              <g class="flow-node">
+                <rect x="340" y="650" width="300" height="120" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-danger, #ef4444)" stroke-width="2"/>
+                <rect x="340" y="650" width="300" height="24" rx="10" fill="var(--color-danger, #ef4444)" fill-opacity="0.12"/>
+                <text x="490" y="667" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--color-danger, #ef4444)" letter-spacing="0.5">SUY GIẢM MIỄN DỊCH (HIV/GHÉP)</text>
+                <text x="355" y="692" font-size="11" font-weight="600" fill="var(--color-text, #1e293b)">Ceftriaxone + Metronidazole</text>
+                <text x="355" y="711" font-size="11.5" font-weight="700" fill="var(--color-warning, #f59e0b)">+ Voriconazole IV (diệt nấm Aspergillus)</text>
+                <text x="355" y="730" font-size="11.5" font-weight="700" fill="var(--color-danger, #ef4444)">+ Trimethoprim-Sulfamethoxazole</text>
+                <text x="355" y="749" font-size="10.5" fill="var(--color-text-muted, #64748b)">Bao phủ Toxoplasma gondii &amp; Nocardia</text>
+              </g>
+
+              {/* NODE 10: REG_POSTOP */}
+              <g class="flow-node">
+                <rect x="660" y="650" width="300" height="120" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-warning, #f59e0b)" stroke-width="2"/>
+                <rect x="660" y="650" width="300" height="24" rx="10" fill="var(--color-warning, #f59e0b)" fill-opacity="0.12"/>
+                <text x="810" y="667" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--color-warning, #f59e0b)" letter-spacing="0.5">SAU PHẪU THUẬT / CHẤN THƯƠNG</text>
+                <text x="675" y="692" font-size="11.5" font-weight="700" fill="var(--color-danger, #ef4444)">Meropenem 2g IV mỗi 8h</text>
+                <text x="675" y="711" font-size="11.5" font-weight="700" fill="var(--color-primary, #0284c7)">+ Vancomycin IV (hoặc Linezolid)</text>
+                <text x="675" y="730" font-size="11" fill="var(--color-text-muted, #64748b)">Bao phủ tụ cầu kháng Methicillin (MRSA)</text>
+                <text x="675" y="749" font-size="10.5" fill="var(--color-text-muted, #64748b)">Trực khuẩn mủ xanh P. aeruginosa &amp; Gram (-)</text>
+              </g>
+
+              {/* BOTTOM DURATION BAR */}
+              <g class="flow-node">
+                <rect x="20" y="800" width="940" height="95" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+                <rect x="20" y="800" width="940" height="22" rx="10" fill="var(--color-primary, #0284c7)" fill-opacity="0.08"/>
+                <text x="490" y="816" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--color-primary, #0284c7)" letter-spacing="0.5">THỜI GIAN ĐIỀU TRỊ KHÁNG SINH TĨNH MẠCH (TABLE 5 ESCMID 2024)</text>
+                
+                <text x="40" y="845" font-size="12" font-weight="700" fill="var(--color-text, #1e293b)">• Ổ Áp Xe Được Chọc Hút Mủ (Aspirated): <tspan fill="var(--color-primary, #0284c7)">6 – 8 TUẦN KHÁNG SINH TĨNH MẠCH</tspan></text>
+                <text x="40" y="865" font-size="11" fill="var(--color-text-muted, #64748b)">Vỏ bao áp xe vẫn còn tồn tại; cần đủ thời gian kháng sinh thẩm thấu để tiêu diệt triệt để vi khuẩn còn sót.</text>
+                
+                <text x="510" y="845" font-size="12" font-weight="700" fill="var(--color-text, #1e293b)">• Ổ Áp Xe Cắt Bỏ Trọn Vẹn (Excised): <tspan fill="var(--color-success, #10b981)">4 TUẦN KHÁNG SINH TĨNH MẠCH</tspan></text>
+                <text x="510" y="865" font-size="11" fill="var(--color-text-muted, #64748b)">Toàn bộ mô hoại tử và vỏ bao đã được bóc tách loại bỏ hoàn toàn.</text>
+              </g>
+            </svg>
+          </div>
+
+          <div class="flowchart-legend-row">
+            <div class="legend-item"><span class="legend-dot" style="background:var(--color-primary, #0284c7);"></span> Trì hoãn an toàn &lt; 24h để lấy mủ (ESCMID 2024)</div>
+            <div class="legend-item"><span class="legend-dot" style="background:var(--color-danger, #ef4444);"></span> Khởi trị cấp cứu ngay (Dọa tụt kẹt não / Sepsis)</div>
+            <div class="legend-item"><span class="legend-dot" style="background:var(--color-success, #10b981);"></span> Nhiễm khuẩn cộng đồng: Ceftriaxone + Metronidazole</div>
+            <div class="legend-item"><span class="legend-dot" style="background:var(--color-warning, #f59e0b);"></span> Hậu phẫu sọ não: Meropenem + Vancomycin</div>
+          </div>
+        </div>
       </div>
 
     </div>

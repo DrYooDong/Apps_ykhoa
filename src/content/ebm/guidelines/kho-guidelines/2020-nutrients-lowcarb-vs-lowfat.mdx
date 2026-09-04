@@ -468,36 +468,133 @@ sections:
           </div>
         </div>
 
-        <FlowchartViewer 
-          title="Lưu Đồ Cá Thể Hóa Dinh Dưỡng: Lựa Chọn Low-Carb vs Low-Fat Theo Bilan Lipid Máu (Nutrients 2020)"
-          code={`flowchart TD
-            PT([Bệnh nhân thừa cân, béo phì hoặc rối loạn lipid máu cần can thiệp | start | badge: Khám sàng lọc])
-            PROFILE{Đánh giá bilan lipid máu & Nguy cơ biến cố tim mạch (ASCVD)? | question}
+        <div class="flowchart-editorial-card">
+  <div class="flowchart-card-header">
+    <div class="flowchart-card-title">
+      <svg class="flowchart-title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+        <polyline points="2 17 12 22 22 17"></polyline>
+        <polyline points="2 12 12 17 22 12"></polyline>
+      </svg>
+      <span>Lưu Đồ Cá Thể Hóa Lựa Chọn Chế Độ Ăn Low-Carb vs Low-Fat (Nutrients 2020)</span>
+    </div>
+    <div class="flowchart-card-subtitle">Cá thể hóa can thiệp dinh dưỡng dựa trên kiểu hình lipid máu và nguy cơ biến cố tim mạch</div>
+  </div>
+  <div class="flowchart-card-body">
+    <div class="flowchart-svg-wrapper">
+<svg class="med-svg" viewBox="0 0 880 500" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arr-nutr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)"/>
+    </marker>
+  </defs>
 
-            CVD_HIGH[1. Nguy cơ tim mạch cao HOẶC LDL-C tăng cao 🚨 | danger | badge: High ASCVD Risk | subtitle: Tiền sử NMCT/đột quỵ, ĐTĐ, xơ vữa mạch, hoặc LDL-C > 130 mg/dL]
-            METAB_HIGH[2. Hội chứng chuyển hóa: Triglyceride cao + HDL-C thấp 🟡 | warning | badge: Metabolic Syndrome | subtitle: TG > 150 mg/dL, HDL-C < 40/50 mg/dL, đề kháng Insulin]
-            OBESE_ISO[3. Thừa cân / Béo phì đơn thuần (Bilan lipid bình thường) ⚖️ | action | badge: Weight Loss Focus | subtitle: BMI > 25, không có bệnh tim mạch hay rối loạn mỡ máu kèm theo]
+  <!-- Root -->
+  <g transform="translate(270, 20)">
+    <rect width="340" height="50" rx="10" fill="var(--color-surface)" stroke="#0284c7" stroke-width="2"/>
+    <rect x="0" y="0" width="340" height="50" rx="10" fill="#0284c7" fill-opacity="0.08"/>
+    <text x="170" y="22" text-anchor="middle" font-size="10" font-weight="700" fill="#0284c7" letter-spacing="1">NUTRIENTS 2020 GUIDELINES</text>
+    <text x="170" y="39" text-anchor="middle" font-size="13" font-weight="700" fill="var(--color-text)">Bệnh Nhân Thừa Cân / Rối Loạn Lipid Máu</text>
+  </g>
 
-            LOW_FAT[ƯU TIÊN CHẾ ĐỘ ĂN ÍT CHẤT BÉO (LOW-FAT & ĐỊA TRUNG HẢI) 🥗 | success | badge: Giảm LDL-C hiệu quả | subtitle: Chất béo < 30%, chất béo bão hòa < 7% + Tăng chất xơ hòa tan từ đậu, yến mạch, rau củ]
-            LOW_CARB[ƯU TIÊN CHẾ ĐỘ ĂN ÍT CARBOHYDRATE (LOW-CARB 6-12 THÁNG) 🥑 | action | badge: Hạ TG & Tăng HDL | subtitle: Carbohydrate < 40%, tăng chất béo tốt MUFA/PUFA (dầu ô liu, cá béo, bơ) - Tránh mỡ động vật]
-            FLEX[LỰA CHỌN THEO SỞ THÍCH & KHẢ NĂNG DUY TRÌ BỀN VỮNG ⭐ | success | badge: Bền vững trọn đời | subtitle: Thâm hụt 500 kcal/ngày + Giảm thực phẩm siêu chế biến, duy trì tuân thủ lâu dài]
+  <path d="M 440 70 L 440 105" fill="none" stroke="#0284c7" stroke-width="2" marker-end="url(#arr-nutr)"/>
 
-            RECHECK[Đánh giá lại Bilan Lipid & Cân nặng sau 3 - 6 tháng | action]
+  <!-- Decision: Lipid and ASCVD Profile -->
+  <g transform="translate(260, 105)">
+    <rect width="360" height="52" rx="8" fill="var(--color-surface)" stroke="#d97706" stroke-width="1.8"/>
+    <rect x="0" y="0" width="360" height="52" rx="8" fill="#d97706" fill-opacity="0.06"/>
+    <text x="180" y="22" text-anchor="middle" font-size="10" font-weight="700" fill="#d97706">ĐÁNH GIÁ BILAN LIPID &amp; NGUY CƠ TIM MẠCH (ASCVD)</text>
+    <text x="180" y="39" text-anchor="middle" font-size="12" font-weight="600" fill="var(--color-text)">LDL-C cao vs Hội chứng chuyển hóa (TG cao / HDL thấp)</text>
+  </g>
 
-            PT --> PROFILE
-            PROFILE ==>|LDL cao / Nguy cơ tim mạch| CVD_HIGH
-            PROFILE ==>|TG cao / HDL thấp| METAB_HIGH
-            PROFILE -->|Béo phì đơn thuần| OBESE_ISO
+  <!-- 3 Branches -->
+  <path d="M 290 157 L 150 157 L 150 200" fill="none" stroke="#f43f5e" stroke-width="1.8" marker-end="url(#arr-nutr)"/>
+  <path d="M 440 157 L 440 200" fill="none" stroke="#f59e0b" stroke-width="1.8" marker-end="url(#arr-nutr)"/>
+  <path d="M 590 157 L 730 157 L 730 200" fill="none" stroke="#10b981" stroke-width="1.8" marker-end="url(#arr-nutr)"/>
 
-            CVD_HIGH ==> LOW_FAT
-            METAB_HIGH ==> LOW_CARB
-            OBESE_ISO --> FLEX
+  <!-- Col 1: High ASCVD / High LDL -->
+  <g transform="translate(40, 200)">
+    <rect width="220" height="54" rx="8" fill="var(--color-surface)" stroke="#f43f5e" stroke-width="1.5"/>
+    <rect x="0" y="0" width="220" height="54" rx="8" fill="#f43f5e" fill-opacity="0.07"/>
+    <text x="110" y="20" text-anchor="middle" font-size="10" font-weight="700" fill="#f43f5e">NGUY CƠ TIM MẠCH / LDL CAO</text>
+    <text x="110" y="36" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-text)">Tiền sử ASCVD hoặc</text>
+    <text x="110" y="48" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">LDL-C &gt; 130 mg/dL, ĐTĐ</text>
+  </g>
 
-            LOW_FAT --> RECHECK
-            LOW_CARB --> RECHECK
-            FLEX --> RECHECK
-          `}
-        />
+  <!-- Col 2: Metabolic Syndrome (High TG / Low HDL) -->
+  <g transform="translate(330, 200)">
+    <rect width="220" height="54" rx="8" fill="var(--color-surface)" stroke="#f59e0b" stroke-width="1.5"/>
+    <rect x="0" y="0" width="220" height="54" rx="8" fill="#f59e0b" fill-opacity="0.07"/>
+    <text x="110" y="20" text-anchor="middle" font-size="10" font-weight="700" fill="#f59e0b">HỘI CHỨNG CHUYỂN HÓA</text>
+    <text x="110" y="36" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-text)">Triglyceride &gt; 150 mg/dL</text>
+    <text x="110" y="48" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">HDL-C thấp + Đề kháng Insulin</text>
+  </g>
+
+  <!-- Col 3: Isolated Obesity -->
+  <g transform="translate(620, 200)">
+    <rect width="220" height="54" rx="8" fill="var(--color-surface)" stroke="#10b981" stroke-width="1.5"/>
+    <rect x="0" y="0" width="220" height="54" rx="8" fill="#10b981" fill-opacity="0.07"/>
+    <text x="110" y="20" text-anchor="middle" font-size="10" font-weight="700" fill="#10b981">THỪA CÂN / BÉO PHÌ ĐƠN THUẦN</text>
+    <text x="110" y="36" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-text)">BMI &gt; 25 kg/m2</text>
+    <text x="110" y="48" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">Bilan lipid hoàn toàn bình thường</text>
+  </g>
+
+  <!-- Connect to Interventions -->
+  <path d="M 150 254 L 150 285" fill="none" stroke="#10b981" stroke-width="2" marker-end="url(#arr-nutr)"/>
+  <path d="M 440 254 L 440 285" fill="none" stroke="#0ea5e9" stroke-width="2" marker-end="url(#arr-nutr)"/>
+  <path d="M 730 254 L 730 285" fill="none" stroke="#10b981" stroke-width="1.8" marker-end="url(#arr-nutr)"/>
+
+  <!-- Col 1 Rx: Low-Fat and Med -->
+  <g transform="translate(40, 285)">
+    <rect width="220" height="84" rx="8" fill="var(--color-surface)" stroke="#10b981" stroke-width="2"/>
+    <rect x="0" y="0" width="220" height="84" rx="8" fill="#10b981" fill-opacity="0.08"/>
+    <text x="110" y="20" text-anchor="middle" font-size="10" font-weight="700" fill="#10b981">ƯU TIÊN LOW-FAT &amp; ĐỊA TRUNG HẢI 🥗</text>
+    <text x="110" y="38" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-text)">Giảm Tối Đa LDL-C</text>
+    <text x="110" y="54" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">Chất béo &lt; 30%, bão hòa &lt; 7%</text>
+    <text x="110" y="68" text-anchor="middle" font-size="9" fill="var(--color-text-muted)">Tăng chất xơ hòa tan yến mạch, đậu</text>
+  </g>
+
+  <!-- Col 2 Rx: Low-Carb -->
+  <g transform="translate(330, 285)">
+    <rect width="220" height="84" rx="8" fill="var(--color-surface)" stroke="#0ea5e9" stroke-width="2"/>
+    <rect x="0" y="0" width="220" height="84" rx="8" fill="#0ea5e9" fill-opacity="0.08"/>
+    <text x="110" y="20" text-anchor="middle" font-size="10" font-weight="700" fill="#0ea5e9">ƯU TIÊN LOW-CARB 6-12 THÁNG 🥑</text>
+    <text x="110" y="38" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-text)">Hạ Triglyceride &amp; Tăng HDL</text>
+    <text x="110" y="54" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">Carbohydrate &lt; 40% calo</text>
+    <text x="110" y="68" text-anchor="middle" font-size="9" fill="var(--color-text-muted)">Tăng MUFA/PUFA từ dầu ô liu, cá béo</text>
+  </g>
+
+  <!-- Col 3 Rx: Flexible -->
+  <g transform="translate(620, 285)">
+    <rect width="220" height="84" rx="8" fill="var(--color-surface)" stroke="#10b981" stroke-width="1.8"/>
+    <rect x="0" y="0" width="220" height="84" rx="8" fill="#10b981" fill-opacity="0.07"/>
+    <text x="110" y="20" text-anchor="middle" font-size="10" font-weight="700" fill="#10b981">THEO SỞ THÍCH &amp; DUY TRÌ BỀN VỮNG ⭐</text>
+    <text x="110" y="38" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-text)">Thâm Hụt 500 kcal/Ngày</text>
+    <text x="110" y="54" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">Hạn chế thực phẩm siêu chế biến</text>
+    <text x="110" y="68" text-anchor="middle" font-size="9" fill="var(--color-text-muted)">Chế độ ăn người bệnh tuân thủ tốt nhất</text>
+  </g>
+
+  <!-- Re-evaluation Footer -->
+  <path d="M 150 369 L 150 400 L 440 400" fill="none" stroke="var(--color-border)" stroke-width="1.5"/>
+  <path d="M 730 369 L 730 400 L 440 400" fill="none" stroke="var(--color-border)" stroke-width="1.5"/>
+  <path d="M 440 369 L 440 415" fill="none" stroke="#0ea5e9" stroke-width="1.8" marker-end="url(#arr-nutr)"/>
+
+  <g transform="translate(290, 415)">
+    <rect width="300" height="42" rx="8" fill="var(--color-surface)" stroke="#0ea5e9" stroke-width="1.5"/>
+    <text x="150" y="19" text-anchor="middle" font-size="10" font-weight="700" fill="#0ea5e9">ĐÁNH GIÁ LẠI SAU 3 - 6 THÁNG</text>
+    <text x="150" y="33" text-anchor="middle" font-size="11" fill="var(--color-text)">Kiểm tra cân nặng, bilan lipid và tuân thủ lối sống</text>
+  </g>
+</svg>
+    </div>
+  </div>
+  <div class="flowchart-card-footer">
+    <div class="flowchart-legend-row">
+      <span class="legend-item"><span class="legend-dot" style="background: #10b981;"></span>LDL-C cao / Nguy cơ tim mạch: Ưu tiên chế độ Low-Fat &amp; Địa Trung Hải (giảm chất béo bão hòa)</span>
+      <span class="legend-item"><span class="legend-dot" style="background: #0ea5e9;"></span>Triglyceride cao / HDL thấp: Ưu tiên chế độ Low-Carb ngắn hạn 6-12 tháng (tăng MUFA/PUFA)</span>
+      <span class="legend-item"><span class="legend-dot" style="background: #10b981;"></span>Béo phì đơn thuần: Lựa chọn theo sở thích người bệnh đảm bảo thâm hụt calo và duy trì bền vững</span>
+    </div>
+  </div>
+</div>
 
         <div class="sec-subtitle" style="margin-top: 1.5rem;"><i class="fa-solid fa-route"></i> Ma Trận Lựa Chọn Phác Đồ Dinh Dưỡng Theo Kiểu Hình Lâm Sàng</div>
 

@@ -239,35 +239,103 @@ sections:
       </div>
 
       <div style="margin-top: 1.5rem;">
-        <FlowchartViewer
-          title="Lưu Đồ Gyssens Đánh Giá Định Tính Kê Đơn Kháng Sinh Hệ Thống (Gyssens et al. / JDVI 2024)"
-          code={`graph TD
-  START["ĐÁNH GIÁ ĐƠN THUỐC KHÁNG SINH ĐIỀU TRỊ SSTI"]:::start --> D1{"Có Đủ Dữ Liệu Hồ Sơ Bệnh Án?"}:::question
+        <div class="flowchart-editorial-card">
+  <div class="flowchart-card-header">
+    <div class="flowchart-badge-title">
+      <span class="flowchart-badge-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg>
+      </span>
+      <span class="flowchart-badge-text">Lưu Đồ Gyssens Đánh Giá Định Tính Kê Đơn Kháng Sinh Hệ Thống (Gyssens et al. / JDVI 2024)</span>
+    </div>
+    <span class="flowchart-version-tag">Gyssens Method • AMS</span>
+  </div>
+  
+  <div class="flowchart-svg-scroll">
+    <svg class="med-svg" viewBox="0 0 920 460" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+    <defs>
+      <marker id="arr-gys" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-text-muted, #64748b)" />
+      </marker>
+      <marker id="arr-gys-act" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)" />
+      </marker>
+    </defs>
 
-  D1 -- "Không đủ dữ liệu" --> CAT6["NHÓM VI: KHÔNG ĐỦ DỮ LIỆU ĐỂ ĐÁNH GIÁ"]:::action
-  D1 -- "Đầy đủ dữ liệu" --> D2{"Có Chỉ Định Sử Dụng Kháng Sinh Không?"}:::question
+    <g class="flow-node">
+      <rect x="230" y="15" width="460" height="50" rx="8" fill="var(--color-primary-subtle, rgba(2,132,199,0.12))" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+      <text x="460" y="36" font-size="13" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">ĐÁNH GIÁ ĐƠN THUỐC KHÁNG SINH ĐIỀU TRỊ SSTI</text>
+      <text x="460" y="52" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Phương pháp Gyssens định tính chất lượng kê đơn kháng sinh</text>
+    </g>
 
-  D2 -- "Không có chỉ định" --> CAT5["NHÓM V: SỬ DÙNG KHÁNG SINH KHÔNG CÓ CHỈ ĐỊNH<br/><small>Lạm dụng hoặc sai hoàn toàn chỉ định</small>"]:::danger
-  D2 -- "Có chỉ định hợp lý" --> D3{"Có Kháng Sinh Thay Thế Hiệu Quả / Ít Độc / Rẻ Hơn?"}:::question
+    <path d="M 460 65 L 460 90 M 120 90 L 800 90" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+    <path d="M 120 90 L 120 115" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arr-gys)"/>
+    <path d="M 350 90 L 350 115" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arr-gys)"/>
+    <path d="M 570 90 L 570 115" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arr-gys)"/>
+    <path d="M 800 90 L 800 115" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arr-gys)"/>
 
-  D3 -- "Có thuốc hiệu quả hơn" --> CAT4A["NHÓM IVa: CÓ KHÁNG SINH KHÁC HIỆU QUẢ HƠN"]:::warning
-  D3 -- "Có thuốc ít độc hơn" --> CAT4B["NHÓM IVb: CÓ KHÁNG SINH KHÁC ÍT ĐỘC TÍNH HƠN"]:::warning
-  D3 -- "Có thuốc rẻ hơn" --> CAT4C["NHÓM IVc: CÓ KHÁNG SINH KHÁC TIẾT KIỆM CHI PHÍ HƠN"]:::warning
-  D3 -- "Có thuốc phổ hẹp hơn" --> CAT4D["NHÓM IVd: CÓ KHÁNG SINH PHỔ HẸP HƠN (AWaRe)"]:::warning
+    <g class="flow-node">
+      <rect x="20" y="115" width="200" height="75" rx="8" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="120" y="138" font-size="12" font-weight="700" fill="var(--color-text, #334155)" text-anchor="middle">Nhóm VI: Thiếu Dữ Liệu</text>
+      <text x="120" y="156" font-size="10" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Bệnh án không đủ thông tin</text>
+      <text x="120" y="172" font-size="9.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Không thể thẩm định</text>
+    </g>
 
-  D3 -- "Đã là lựa chọn thuốc tối ưu" --> D4{"Thời Gian Dùng Kháng Sinh Có Phù Hợp?"}:::question
+    <g class="flow-node">
+      <rect x="250" y="115" width="200" height="75" rx="8" fill="var(--color-danger-subtle, rgba(239,68,68,0.12))" stroke="var(--color-danger, #ef4444)" stroke-width="1.8"/>
+      <text x="350" y="138" font-size="12" font-weight="700" fill="var(--color-danger, #ef4444)" text-anchor="middle">Nhóm V: Không Chỉ Định</text>
+      <text x="350" y="156" font-size="10" fill="var(--color-text, #334155)" text-anchor="middle">Kê đơn hoàn toàn sai</text>
+      <text x="350" y="172" font-size="9.5" font-weight="600" fill="var(--color-danger, #ef4444)" text-anchor="middle">Lạm dụng kháng sinh</text>
+    </g>
 
-  D4 -- "Dùng quá kéo dài (> 5-7 ngày)" --> CAT3A["NHÓM IIIa: THỜI GIAN ĐIỀU TRỊ QUÁ DÀI"]:::warning
-  D4 -- "Dùng quá ngắn ngày" --> CAT3B["NHÓM IIIb: THỜI GIAN ĐIỀU TRỊ QUÁ NGẮN"]:::warning
+    <g class="flow-node">
+      <rect x="470" y="115" width="200" height="75" rx="8" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="1.8"/>
+      <text x="570" y="138" font-size="12" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">Nhóm IV: Có Thuốc Tốt Hơn</text>
+      <text x="570" y="156" font-size="10" fill="var(--color-text, #334155)" text-anchor="middle">IVa: Hiệu quả hơn • IVb: Ít độc</text>
+      <text x="570" y="172" font-size="9.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">IVc: Rẻ hơn • IVd: Phổ hẹp hơn</text>
+    </g>
 
-  D4 -- "Thời gian chuẩn (5-7 ngày)" --> D5{"Liều Lượng, Khoảng Cách & Đường Dùng?"}:::question
+    <g class="flow-node">
+      <rect x="700" y="115" width="200" height="75" rx="8" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="1.8"/>
+      <text x="800" y="138" font-size="12" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">Nhóm III: Sai Thời Gian</text>
+      <text x="800" y="156" font-size="10" fill="var(--color-text, #334155)" text-anchor="middle">IIIa: Quá dài (&gt; 5–7 ngày)</text>
+      <text x="800" y="172" font-size="9.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">IIIb: Dùng quá ngắn ngày</text>
+    </g>
 
-  D5 -- "Sai liều lượng" --> CAT2A["NHÓM IIa: LIỀU LƯỢNG KHÔNG ĐÚNG"]:::warning
-  D5 -- "Sai khoảng cách liều" --> CAT2B["NHÓM IIb: KHOẢNG CÁCH DÙNG THUỐC SAI"]:::warning
-  D5 -- "Sai đường dùng" --> CAT2C["NHÓM IIc: ĐƯỜNG DÙNG THUỐC KHÔNG PHÙ HỢP"]:::warning
+    <path d="M 570 190 L 570 230 M 350 230 L 570 230" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+    <path d="M 460 230 L 460 255" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arr-gys-act)"/>
 
-  D5 -- "Tất cả thông số đều chuẩn xác" --> CAT1["NHÓM I: KÊ ĐƠN HOÀN TOÀN HỢP LÝ & TỐI ƯU<br/><small>Đạt chuẩn chất lượng Antimicrobial Stewardship cao nhất</small>"]:::success`}
-        />
+    <g class="flow-node">
+      <rect x="250" y="255" width="420" height="60" rx="8" fill="var(--color-surface, #ffffff)" stroke="var(--color-warning, #f59e0b)" stroke-width="1.8"/>
+      <text x="460" y="278" font-size="12.5" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">Nhóm II: Sai Liều Lượng, Khoảng Cách Hoặc Đường Dùng</text>
+      <text x="460" y="296" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">IIa: Sai liều lượng • IIb: Sai khoảng cách dùng thuốc • IIc: Đường dùng không phù hợp</text>
+    </g>
+
+    <path d="M 460 315 L 460 345" fill="none" stroke="var(--color-success, #22c55e)" stroke-width="2" marker-end="url(#arr-gys-act)"/>
+
+    <g class="flow-node">
+      <rect x="180" y="345" width="560" height="70" rx="10" fill="var(--color-success-subtle, rgba(34,197,94,0.12))" stroke="var(--color-success, #22c55e)" stroke-width="2"/>
+      <text x="460" y="370" font-size="13.5" font-weight="700" fill="var(--color-success, #16a34a)" text-anchor="middle">NHÓM I: KÊ ĐƠN HOÀN TOÀN HỢP LÝ &amp; TỐI ƯU</text>
+      <text x="460" y="390" font-size="11" font-weight="600" fill="var(--color-text, #334155)" text-anchor="middle">Đạt chuẩn quản lý sử dụng kháng sinh (Antimicrobial Stewardship - AMS) cao nhất</text>
+      <text x="460" y="405" font-size="10" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Đúng chỉ định • Đúng thuốc • Đúng liều • Đủ thời gian</text>
+    </g>
+  </svg>
+  </div>
+
+  <div class="flowchart-legend-row">
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(34,197,94,0.12); border-color: #22c55e;"></span>
+        <span>Nhóm I: Kê đơn hoàn toàn hợp lý &amp; tối ưu</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(245,158,11,0.12); border-color: #f59e0b;"></span>
+        <span>Nhóm II-IV: Sai liều, sai thời gian hoặc có thuốc tốt hơn</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(239,68,68,0.12); border-color: #ef4444;"></span>
+        <span>Nhóm V: Sử dụng kháng sinh không có chỉ định</span>
+      </div>
+  </div>
+</div>
       </div>
 
       {/* VISUAL DIAGRAM CODE: TÁI HIỆN CODE LƯU ĐỒ GYSSENS */}

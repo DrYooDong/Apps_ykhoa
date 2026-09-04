@@ -228,36 +228,98 @@ sections:
       <h2 class="sec-title">2. Lưu Đồ 1 (Fig 1): Thuật Toán Chẩn Đoán Xơ Gan (Diagnostic Algorithm for Liver Cirrhosis)</h2>
     </div>
     <div class="sec-body">
-      <FlowchartViewer 
-        title="Lưu Đồ 1 (Fig 1): Thuật Toán Chẩn Đoán Xơ Gan (JSGE-JSH 2020)"
-        code={`flowchart TD
-          RISK([1. Bệnh nhân có yếu tố nguy cơ hoặc triệu chứng nghi ngờ | start | badge: Khám sàng lọc | subtitle: Viêm gan B/C, rượu, ĐTĐ/béo phì, sao mạch, hồng ban lòng bàn tay, lách to, cổ trướng])
-          TESTS[2. Xét nghiệm máu & Thang điểm xơ hóa không xâm lấn | action | subtitle: FIB-4 Index, APRI, M2BPGi Nhật Bản, Axit Hyaluronic, Type IV Collagen 7S]
-          
-          FIB_CHECK{Đánh giá nguy cơ xơ hóa gan qua FIB-4 / M2BPGi? | question}
-          LOW[Nguy cơ xơ hóa thấp / Trung bình | success | subtitle: FIB-4 < 1.30 hoặc APRI < 0.5 - Theo dõi định kỳ & kiểm soát bệnh nền]
-          HIGH[Nghi ngờ xơ hóa tiến triển F3 - F4 🚨 | warning | badge: Chỉ định thăm dò sâu | subtitle: FIB-4 > 2.67 hoặc M2BPGi tăng cao]
+      <div class="flowchart-editorial-card">
+  <div class="flowchart-card-header">
+    <div class="flowchart-badge-title">
+      <span class="flowchart-badge-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg>
+      </span>
+      <span class="flowchart-badge-text">Lưu Đồ 1 (Fig 1): Thuật Toán Chẩn Đoán Xơ Gan (JSGE-JSH 2020)</span>
+    </div>
+    <span class="flowchart-version-tag">JSGE-JSH 2020 • Fig 1</span>
+  </div>
+  
+  <div class="flowchart-svg-scroll">
+    <svg class="med-svg" viewBox="0 0 920 480" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+    <defs>
+      <marker id="arr-c1" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-text-muted, #64748b)" />
+      </marker>
+      <marker id="arr-c1-act" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)" />
+      </marker>
+    </defs>
 
-          IMAGING[3. Chẩn đoán hình ảnh học & Siêu âm đàn hồi | action | subtitle: Siêu âm bụng, CT/MRI + Đo độ cứng gan bằng FibroScan / MR Elastography]
-          ENDO[4. Nội soi tiêu hóa trên tìm giãn tĩnh mạch | action | subtitle: Tầm soát giãn tĩnh mạch thực quản / dạ dày phình vị]
+    <!-- Root -->
+    <g class="flow-node">
+      <rect x="220" y="15" width="480" height="52" rx="8" fill="var(--color-primary-subtle, rgba(2,132,199,0.12))" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+      <text x="460" y="36" font-size="13.5" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">1. YẾU TỐ NGUY CƠ HOẶC TRIỆU CHỨNG NGHI NGỜ XƠ GAN</text>
+      <text x="460" y="53" font-size="11" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Viêm gan B/C, rượu, MASLD/ĐTĐ • Sao mạch, lòng bàn tay son, lách to, cổ trướng</text>
+    </g>
 
-          BIOPSY{Kết quả hình ảnh & đàn hồi có mâu thuẫn? | question}
-          PERFORM_BIOPSY[Sinh thiết gan (Liver Biopsy) 🔬 | warning | badge: Khi cần thiết | subtitle: Chỉ định khi các biện pháp không xâm lấn không đồng nhất]
-          CONFIRM[XÁC CHẨN XƠ GAN GIAI ĐOẠN F4 ⭐ | danger | badge: JSGE-JSH 2020 | subtitle: Phân tầng Child-Pugh A/B/C + Lập kế hoạch quản lý biến chứng & tầm soát HCC]
+    <path d="M 460 67 L 460 95" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arr-c1-act)"/>
 
-          RISK --> TESTS
-          TESTS --> FIB_CHECK
-          FIB_CHECK -->|Thấp| LOW
-          FIB_CHECK ==>|Cao| HIGH
-          HIGH --> IMAGING
-          HIGH --> ENDO
-          IMAGING --> BIOPSY
-          ENDO --> BIOPSY
-          BIOPSY -->|Không nhất quán| PERFORM_BIOPSY
-          BIOPSY ==>|Hình ảnh & Đàn hồi rõ rệt| CONFIRM
-          PERFORM_BIOPSY ==> CONFIRM
-        `}
-      />
+    <!-- Step 2: Non-invasive Serology -->
+    <g class="flow-node">
+      <rect x="200" y="95" width="520" height="50" rx="8" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+      <text x="460" y="117" font-size="13" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">2. Xét Nghiệm Máu &amp; Thang Điểm Xơ Hóa Không Xâm Lấn</text>
+      <text x="460" y="134" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">FIB-4 Index, APRI, M2BPGi (Nhật Bản), Hyaluronic Acid, Type IV Collagen 7S</text>
+    </g>
+
+    <path d="M 460 145 L 460 175" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arr-c1-act)"/>
+
+    <!-- FIB-4 Decision -->
+    <g class="flow-node">
+      <polygon points="460,175 650,210 460,245 270,210" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="2"/>
+      <text x="460" y="206" font-size="12" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">Đánh Giá Nguy Cơ Xơ Hóa Qua FIB-4?</text>
+      <text x="460" y="222" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">FIB-4 &lt; 1.30 (Thấp) hay &gt; 2.67 (Cao)?</text>
+    </g>
+
+    <!-- Left: Low Risk -->
+    <path d="M 270 210 L 140 210 L 140 270" fill="none" stroke="var(--color-success, #22c55e)" stroke-width="2" marker-end="url(#arr-c1-act)"/>
+    <g class="flow-node">
+      <rect x="30" y="270" width="220" height="65" rx="8" fill="var(--color-success-subtle, rgba(34,197,94,0.12))" stroke="var(--color-success, #22c55e)" stroke-width="1.8"/>
+      <text x="140" y="293" font-size="12" font-weight="700" fill="var(--color-success, #16a34a)" text-anchor="middle">Nguy Cơ Xơ Hóa Thấp</text>
+      <text x="140" y="311" font-size="10" fill="var(--color-text, #334155)" text-anchor="middle">FIB-4 &lt; 1.30 hoặc APRI &lt; 0.5</text>
+      <text x="140" y="325" font-size="9.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Theo dõi định kỳ &amp; điều trị bệnh nền</text>
+    </g>
+
+    <!-- Right: High Risk -> Imaging and Endoscopy -->
+    <path d="M 650 210 L 760 210 L 760 270" fill="none" stroke="var(--color-danger, #ef4444)" stroke-width="2" marker-end="url(#arr-c1-act)"/>
+    <g class="flow-node">
+      <rect x="620" y="270" width="280" height="65" rx="8" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="1.8"/>
+      <text x="760" y="293" font-size="12" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">Nghi Ngờ Xơ Hóa F3 – F4 (FIB-4 &gt; 2.67)</text>
+      <text x="760" y="311" font-size="10" fill="var(--color-text, #334155)" text-anchor="middle">Siêu âm đàn hồi FibroScan / MRE</text>
+      <text x="760" y="325" font-size="9.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">+ Nội soi EGD tìm búi giãn tĩnh mạch</text>
+    </g>
+
+    <!-- Connect High Risk to Confirmation -->
+    <path d="M 760 335 L 760 380 L 460 380 L 460 405" fill="none" stroke="var(--color-danger, #ef4444)" stroke-width="2" marker-end="url(#arr-c1-act)"/>
+
+    <!-- Bottom: Confirmation Node -->
+    <g class="flow-node">
+      <rect x="180" y="405" width="560" height="60" rx="10" fill="var(--color-danger-subtle, rgba(239,68,68,0.12))" stroke="var(--color-danger, #ef4444)" stroke-width="2"/>
+      <text x="460" y="427" font-size="13" font-weight="700" fill="var(--color-danger, #ef4444)" text-anchor="middle">XÁC CHẨN XƠ GAN GIAI ĐOẠN F4 (JSGE-JSH 2020)</text>
+      <text x="460" y="447" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">Phân tầng Child-Pugh A/B/C • Tầm soát ung thư gan HCC định kỳ 3–6 tháng • Quản lý biến chứng</text>
+    </g>
+  </svg>
+  </div>
+
+  <div class="flowchart-legend-row">
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(34,197,94,0.12); border-color: #22c55e;"></span>
+        <span>FIB-4 < 1.30: Nguy cơ thấp, theo dõi định kỳ</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(245,158,11,0.12); border-color: #f59e0b;"></span>
+        <span>FIB-4 > 2.67: Nghi ngờ xơ hóa tiến triển, chỉ định đàn hồi &amp; EGD</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(239,68,68,0.12); border-color: #ef4444;"></span>
+        <span>Xác chẩn xơ gan F4: Phân tầng Child-Pugh &amp; Tầm soát HCC</span>
+      </div>
+  </div>
+</div>
       <p style="text-align: center; font-size: 0.85rem; color: var(--color-text-muted, #64748b); margin-top: 0.75rem;">
         <em>Lưu đồ 1 (Fig 1 JSGE-JSH 2020): Thuật Toán Chẩn Đoán Xơ Gan — Phối hợp nhóm nguy cơ, triệu chứng thực thể, xét nghiệm sinh xơ hóa, hình ảnh học và nội soi trước khi sinh thiết.</em>
       </p>
@@ -358,39 +420,113 @@ sections:
       <h2 class="sec-title">4. Lưu Đồ 2 (Fig 2): Thuật Toán Liệu Pháp Dinh Dưỡng Trong Xơ Gan (Nutritional Therapy)</h2>
     </div>
     <div class="sec-body">
-      <FlowchartViewer 
-        title="Lưu Đồ 2 (Fig 2): Thuật Toán Liệu Pháp Dinh Dưỡng Xơ Gan (JSGE-JSH 2020)"
-        code={`flowchart TD
-          SCREEN([Bệnh nhân xơ gan xác chẩn | start | badge: Đánh giá dinh dưỡng])
-          CRIT{Kiểm tra 3 tiêu chuẩn phân loại dinh dưỡng JSH? | question}
+      <div class="flowchart-editorial-card">
+  <div class="flowchart-card-header">
+    <div class="flowchart-badge-title">
+      <span class="flowchart-badge-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg>
+      </span>
+      <span class="flowchart-badge-text">Lưu Đồ 2 (Fig 2): Thuật Toán Liệu Pháp Dinh Dưỡng Xơ Gan (JSGE-JSH 2020)</span>
+    </div>
+    <span class="flowchart-version-tag">JSGE-JSH 2020 • Fig 2</span>
+  </div>
+  
+  <div class="flowchart-svg-scroll">
+    <svg class="med-svg" viewBox="0 0 920 500" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+    <defs>
+      <marker id="arr-c2" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-text-muted, #64748b)" />
+      </marker>
+      <marker id="arr-c2-act" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)" />
+      </marker>
+    </defs>
 
-          UNCOMP[Không thỏa tiêu chuẩn nào | success | subtitle: Albumin > 3.5 g/dL, Child-Pugh A, không teo cơ - Duy trì chế độ ăn lành mạnh & theo dõi]
-          MALNUTR[Có ít nhất 1 tiêu chuẩn: PEM Albumin ≤ 3.5 / Child B-C / Teo cơ ⚠️ | warning | badge: Can thiệp dinh dưỡng]
+    <!-- Root -->
+    <g class="flow-node">
+      <rect x="250" y="15" width="420" height="52" rx="8" fill="var(--color-primary-subtle, rgba(2,132,199,0.12))" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+      <text x="460" y="36" font-size="13.5" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">BỆNH NHÂN XƠ GAN XÁC CHẨN</text>
+      <text x="460" y="53" font-size="11" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Đánh giá 3 tiêu chuẩn dinh dưỡng JSH: Albumin ≤ 3.5, Child-Pugh B/C, hoặc Teo cơ</text>
+    </g>
 
-          INTERV[Khởi trị dinh dưỡng nền tảng JSGE-JSH ⭐ | action | subtitle: 25-35 kcal/kg/ngày + Đạm 1.0-1.5 g/kg/ngày + Chia 4-7 bữa/ngày + Bắt buộc bữa phụ đêm LES]
-          REASSESS[Đánh giá lại sau can thiệp định kỳ | action | subtitle: Kiểm tra cân nặng, khẩu phần ăn, Albumin máu, teo cơ & biến chứng]
+    <path d="M 460 67 L 460 95" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arr-c2-act)"/>
 
-          STATUS{Tình trạng lâm sàng & biến chứng sau khởi trị? | question}
-          POOR_INTAKE[Ăn kém, sụt cân hoặc Cổ trướng / Bệnh não gan | danger | subtitle: Kém dung nạp dinh dưỡng thông thường]
-          HYPOALB[Ăn tương đối nhưng Albumin máu vẫn ≤ 3.5 g/dL | warning | subtitle: Giảm tổng hợp protein huyết tương]
-          STABLE[Đáp ứng tốt: Cân nặng & Albumin hồi phục | success | subtitle: Tiếp tục duy trì phác đồ dinh dưỡng & LES]
+    <!-- Baseline Nutrition -->
+    <g class="flow-node">
+      <rect x="180" y="95" width="560" height="56" rx="8" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+      <text x="460" y="118" font-size="13" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">KHỞI TRỊ DINH DƯỠNG NỀN TẢNG JSGE-JSH</text>
+      <text x="460" y="137" font-size="11" fill="var(--color-text, #334155)" text-anchor="middle">25–35 kcal/kg • Đạm 1.0–1.5 g/kg • Chia 4–7 bữa nhỏ/ngày • BẮT BUỘC BỮA PHỤ ĐÊM LES</text>
+    </g>
 
-          BCAA_NUT[Chế phẩm dinh dưỡng giàu BCAA (BCAA-enriched enteral nutrition) 🍼 | action | badge: Aminoleban EN | subtitle: Bù đắp năng lượng thiếu hụt & ức chế thoái hóa đạm cơ]
-          BCAA_GRAN[BCAA dạng hạt (BCAA granules) 💊 | action | badge: Livact | subtitle: Bổ sung Isoleucine, Leucine, Valine kích thích tổng hợp Albumin]
+    <path d="M 460 151 L 460 180" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arr-c2-act)"/>
 
-          SCREEN --> CRIT
-          CRIT -->|Không thỏa| UNCOMP
-          CRIT ==>|Thỏa ≥ 1 tiêu chuẩn| MALNUTR
-          MALNUTR --> INTERV
-          INTERV --> REASSESS
-          REASSESS --> STATUS
-          STATUS -->|Ăn kém / Biến chứng| POOR_INTAKE
-          STATUS -->|Albumin vẫn thấp| HYPOALB
-          STATUS -->|Ổn định| STABLE
-          POOR_INTAKE ==> BCAA_NUT
-          HYPOALB ==> BCAA_GRAN
-        `}
-      />
+    <!-- Reassess Status Decision -->
+    <g class="flow-node">
+      <polygon points="460,180 650,215 460,250 270,215" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="2"/>
+      <text x="460" y="211" font-size="12" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">Đánh Giá Lại Đáp Ứng Lâm Sàng?</text>
+      <text x="460" y="227" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Tình trạng ăn uống, Albumin máu &amp; biến chứng</text>
+    </g>
+
+    <!-- Branch 1: Poor Intake / Complications -> BCAA EN -->
+    <path d="M 270 215 L 140 215 L 140 280" fill="none" stroke="var(--color-danger, #ef4444)" stroke-width="2" marker-end="url(#arr-c2-act)"/>
+    <g class="flow-node">
+      <rect x="20" y="280" width="240" height="75" rx="8" fill="var(--color-danger-subtle, rgba(239,68,68,0.12))" stroke="var(--color-danger, #ef4444)" stroke-width="1.8"/>
+      <text x="140" y="303" font-size="12" font-weight="700" fill="var(--color-danger, #ef4444)" text-anchor="middle">Ăn Kém / Cổ Trướng / Não Gan</text>
+      <text x="140" y="321" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">Không dung nạp khẩu phần ăn</text>
+      <text x="140" y="337" font-size="9.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Thiếu hụt năng lượng trầm trọng</text>
+    </g>
+    <path d="M 140 355 L 140 385" fill="none" stroke="var(--color-danger, #ef4444)" stroke-width="2" marker-end="url(#arr-c2-act)"/>
+    <g class="flow-node">
+      <rect x="20" y="385" width="240" height="90" rx="8" fill="var(--color-primary-subtle, rgba(2,132,199,0.12))" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+      <text x="140" y="408" font-size="12" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">BCAA ĐƯỜNG RUỘT (EN)</text>
+      <text x="140" y="426" font-size="10.5" font-weight="600" fill="var(--color-text, #334155)" text-anchor="middle">Chế phẩm Aminoleban EN</text>
+      <text x="140" y="442" font-size="10" fill="var(--color-text, #334155)" text-anchor="middle">Bổ sung cả calo + BCAA tỷ lệ cao</text>
+      <text x="140" y="458" font-size="9.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Dùng làm bữa phụ đêm LES tối ưu</text>
+    </g>
+
+    <!-- Branch 2: Stable Intake but Low Albumin -> BCAA Granules -->
+    <path d="M 460 250 L 460 280" fill="none" stroke="var(--color-warning, #f59e0b)" stroke-width="2" marker-end="url(#arr-c2-act)"/>
+    <g class="flow-node">
+      <rect x="340" y="280" width="240" height="75" rx="8" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="1.8"/>
+      <text x="460" y="303" font-size="12" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">Ăn Đủ Nhưng Albumin ≤ 3.5</text>
+      <text x="460" y="321" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">Giảm tổng hợp Albumin tại gan</text>
+      <text x="460" y="337" font-size="9.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Tỷ số Fischer (BCAA/AAA) suy giảm</text>
+    </g>
+    <path d="M 460 355 L 460 385" fill="none" stroke="var(--color-warning, #f59e0b)" stroke-width="2" marker-end="url(#arr-c2-act)"/>
+    <g class="flow-node">
+      <rect x="340" y="385" width="240" height="90" rx="8" fill="var(--color-success-subtle, rgba(34,197,94,0.12))" stroke="var(--color-success, #22c55e)" stroke-width="2"/>
+      <text x="460" y="408" font-size="12" font-weight="700" fill="var(--color-success, #16a34a)" text-anchor="middle">BCAA DẠNG HẠT (GRANULES)</text>
+      <text x="460" y="426" font-size="10.5" font-weight="600" fill="var(--color-text, #334155)" text-anchor="middle">Chế phẩm Livact (4g x 3 lần/ngày)</text>
+      <text x="460" y="442" font-size="10" fill="var(--color-text, #334155)" text-anchor="middle">Kích thích trực tiếp tổng hợp Albumin</text>
+      <text x="460" y="458" font-size="9.5" fill="var(--color-success, #16a34a)" text-anchor="middle">Cải thiện sống còn không biến cố</text>
+    </g>
+
+    <!-- Branch 3: Stable -> Maintain -->
+    <path d="M 650 215 L 780 215 L 780 280" fill="none" stroke="var(--color-success, #22c55e)" stroke-width="2" marker-end="url(#arr-c2-act)"/>
+    <g class="flow-node">
+      <rect x="660" y="280" width="240" height="75" rx="8" fill="var(--color-success-subtle, rgba(34,197,94,0.12))" stroke="var(--color-success, #22c55e)" stroke-width="1.8"/>
+      <text x="780" y="303" font-size="12" font-weight="700" fill="var(--color-success, #16a34a)" text-anchor="middle">Hồi Phục Tốt / Ổn Định</text>
+      <text x="780" y="321" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">Cân nặng &amp; Albumin đạt mục tiêu</text>
+      <text x="780" y="337" font-size="9.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Duy trì phác đồ dinh dưỡng &amp; LES</text>
+    </g>
+  </svg>
+  </div>
+
+  <div class="flowchart-legend-row">
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(2,132,199,0.12); border-color: #0284c7;"></span>
+        <span>Ăn kém/biến chứng: BCAA đường ruột (Aminoleban EN)</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(34,197,94,0.12); border-color: #22c55e;"></span>
+        <span>Albumin ≤ 3.5: BCAA dạng hạt (Livact 4g x 3)</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(245,158,11,0.12); border-color: #f59e0b;"></span>
+        <span>Duy trì bữa phụ đêm (Late Evening Snack - LES)</span>
+      </div>
+  </div>
+</div>
       <p style="text-align: center; font-size: 0.85rem; color: var(--color-text-muted, #64748b); margin-top: 0.75rem;">
         <em>Lưu đồ 2 (Fig 2 JSGE-JSH 2020): Thuật toán liệu pháp dinh dưỡng — Phân tầng theo PEM (Albumin ≤ 3.5), Child B/C và teo cơ; phối hợp Bữa phụ đêm muộn (LES) và các chế phẩm BCAA chuyên biệt.</em>
       </p>
@@ -492,34 +628,107 @@ sections:
       <h2 class="sec-title">6. Lưu Đồ 3 (Fig 3): Thuật Toán Chẩn Đoán Phân Biệt Dịch Cổ Trướng Qua Chỉ Số SAAG</h2>
     </div>
     <div class="sec-body">
-      <FlowchartViewer 
-        title="Lưu Đồ 3 (Fig 3): Thuật Toán Chẩn Đoán Phân Biệt Dịch Cổ Trướng & SAAG (JSGE-JSH 2020)"
-        code={`flowchart TD
-          TAP([Chọc dò dịch cổ trướng chẩn đoán (Diagnostic Paracentesis) | start | badge: Khẩn cấp khi nhập viện])
-          MACRO[1. Quan sát đại thể dịch: Màu sắc, độ trong, độ đục | action]
-          LABS[2. Xét nghiệm dịch màng bụng cốt lõi: Albumin, Protein toàn phần, Đếm tế bào & Công thức BC, Cấy vi khuẩn tại giường | action]
+      <div class="flowchart-editorial-card">
+  <div class="flowchart-card-header">
+    <div class="flowchart-badge-title">
+      <span class="flowchart-badge-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg>
+      </span>
+      <span class="flowchart-badge-text">Lưu Đồ 3 (Fig 3): Thuật Toán Chẩn Đoán Phân Biệt Dịch Cổ Trướng &amp; SAAG (JSGE-JSH 2020)</span>
+    </div>
+    <span class="flowchart-version-tag">JSGE-JSH 2020 • Fig 3</span>
+  </div>
+  
+  <div class="flowchart-svg-scroll">
+    <svg class="med-svg" viewBox="0 0 920 480" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+    <defs>
+      <marker id="arr-c3" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-text-muted, #64748b)" />
+      </marker>
+      <marker id="arr-c3-act" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)" />
+      </marker>
+    </defs>
 
-          SAAG_CALC{Tính độ chênh Albumin huyết thanh - dịch báng (SAAG)? | question}
-          HIGH_SAAG[SAAG ≥ 1.1 g/dL: TĂNG ÁP LỰC TĨNH MẠCH CỬA 🌊 | warning | badge: Độ chính xác 97%]
-          LOW_SAAG[SAAG < 1.1 g/dL: KHÔNG LIÊN QUAN TĂNG ÁP CỬA 🔍 | action | badge: Nguyên nhân màng bụng]
+    <!-- Root -->
+    <g class="flow-node">
+      <rect x="230" y="15" width="460" height="52" rx="8" fill="var(--color-primary-subtle, rgba(2,132,199,0.12))" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+      <text x="460" y="36" font-size="13.5" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">CHỌC DÒ DỊCH CỔ TRƯỚNG CHẨN ĐOÁN (PARACENTESIS)</text>
+      <text x="460" y="53" font-size="11" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Bắt buộc khi nhập viện: Màu sắc, Albumin, Protein, Đếm tế bào &amp; Cấy vi khuẩn tại giường</text>
+    </g>
 
-          SBP_CHECK{Bạch cầu đa nhân trung tính (PMN) trong dịch báng? | question}
-          SBP_POS[VIÊM PHÚC MẠC NHIỄM KHUẨN TỰ PHÁT (SBP) 🚨 | danger | badge: Cấp cứu | subtitle: PMN ≥ 250/mm³ HOẶC Cấy vi khuẩn dương tính - Điều trị Cefotaxime/Ceftriaxone IV ngay + Albumin 1.5g/kg]
-          SBP_NEG[Cổ trướng do xơ gan đơn thuần (Không nhiễm trùng) | success | subtitle: PMN < 250/mm³ - Tiếp tục phác đồ kiểm soát muối & lợi tiểu]
+    <path d="M 460 67 L 460 95" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arr-c3-act)"/>
 
-          DIFF_LOW[Chẩn đoán phân biệt: Lao màng bụng, Ung thư di căn màng phúc mạc, Hội chứng thận hư, Viêm tụy cấp | action | subtitle: Làm thêm ADA dịch báng, Cell block tế bào học, Triglyceride, Amylase]
+    <!-- SAAG Decision -->
+    <g class="flow-node">
+      <polygon points="460,95 650,128 460,161 270,128" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="2"/>
+      <text x="460" y="124" font-size="12" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">Độ Chênh Albumin Huyết Thanh – Dịch Báng (SAAG)?</text>
+      <text x="460" y="140" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">SAAG ≥ 1.1 g/dL hay SAAG &lt; 1.1 g/dL?</text>
+    </g>
 
-          TAP --> MACRO
-          MACRO --> LABS
-          LABS --> SAAG_CALC
-          SAAG_CALC ==>|SAAG ≥ 1.1| HIGH_SAAG
-          SAAG_CALC -->|SAAG < 1.1| LOW_SAAG
-          HIGH_SAAG --> SBP_CHECK
-          SBP_CHECK ==>|PMN ≥ 250/mm³| SBP_POS
-          SBP_CHECK -->|PMN < 250/mm³| SBP_NEG
-          LOW_SAAG --> DIFF_LOW
-        `}
-      />
+    <!-- Right: SAAG < 1.1 -> Non-portal -->
+    <path d="M 650 128 L 770 128 L 770 190" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arr-c3-act)"/>
+    <g class="flow-node">
+      <rect x="650" y="190" width="240" height="90" rx="8" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+      <text x="770" y="213" font-size="12.5" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">SAAG &lt; 1.1 g/dL: KHÔNG TĂNG ÁP CỬA</text>
+      <text x="770" y="233" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">• Lao màng bụng (ADA dịch báng)</text>
+      <text x="770" y="249" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">• Ung thư di căn phúc mạc (Cell block)</text>
+      <text x="770" y="265" font-size="10" fill="var(--color-text-muted, #64748b)" text-anchor="middle">• Hội chứng thận hư, Viêm tụy cấp</text>
+    </g>
+
+    <!-- Left: SAAG >= 1.1 -> Portal Hypertension -->
+    <path d="M 270 128 L 150 128 L 150 190" fill="none" stroke="var(--color-warning, #f59e0b)" stroke-width="2" marker-end="url(#arr-c3-act)"/>
+    <g class="flow-node">
+      <rect x="30" y="190" width="240" height="90" rx="8" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="1.8"/>
+      <text x="150" y="213" font-size="12.5" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">SAAG ≥ 1.1: TĂNG ÁP LỰC CỬA</text>
+      <text x="150" y="233" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">Độ chính xác 97% do xơ gan</text>
+      <text x="150" y="249" font-size="10.5" font-weight="600" fill="var(--color-primary, #0284c7)" text-anchor="middle">Khảo sát bạch cầu đa nhân (PMN)</text>
+      <text x="150" y="265" font-size="9.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">để loại trừ nhiễm trùng SBP</text>
+    </g>
+
+    <!-- Connect High SAAG to SBP Check -->
+    <path d="M 150 280 L 150 310 L 460 310 L 460 330" fill="none" stroke="var(--color-warning, #f59e0b)" stroke-width="1.8" marker-end="url(#arr-c3-act)"/>
+
+    <!-- SBP Split -->
+    <g class="flow-node">
+      <polygon points="460,330 650,363 460,396 270,363" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="2"/>
+      <text x="460" y="359" font-size="12" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">Bạch Cầu Đa Nhân Trung Tính PMN?</text>
+      <text x="460" y="375" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">PMN ≥ 250/mm³ hay PMN &lt; 250/mm³?</text>
+    </g>
+
+    <!-- SBP Pos -->
+    <path d="M 270 363 L 150 363 L 150 415" fill="none" stroke="var(--color-danger, #ef4444)" stroke-width="2" marker-end="url(#arr-c3-act)"/>
+    <g class="flow-node">
+      <rect x="20" y="415" width="260" height="55" rx="8" fill="var(--color-danger-subtle, rgba(239,68,68,0.12))" stroke="var(--color-danger, #ef4444)" stroke-width="2"/>
+      <text x="150" y="437" font-size="12" font-weight="700" fill="var(--color-danger, #ef4444)" text-anchor="middle">VIÊM PHÚC MẠC TỰ PHÁT (SBP)</text>
+      <text x="150" y="455" font-size="10" fill="var(--color-text, #334155)" text-anchor="middle">Cefotaxime/Ceftriaxone IV + Albumin 1.5g/kg</text>
+    </g>
+
+    <!-- SBP Neg -->
+    <path d="M 650 363 L 770 363 L 770 415" fill="none" stroke="var(--color-success, #22c55e)" stroke-width="2" marker-end="url(#arr-c3-act)"/>
+    <g class="flow-node">
+      <rect x="640" y="415" width="260" height="55" rx="8" fill="var(--color-success-subtle, rgba(34,197,94,0.12))" stroke="var(--color-success, #22c55e)" stroke-width="1.8"/>
+      <text x="770" y="437" font-size="12" font-weight="700" fill="var(--color-success, #16a34a)" text-anchor="middle">CỔ TRƯỚNG KHÔNG NHIỄM TRÙNG</text>
+      <text x="770" y="455" font-size="10" fill="var(--color-text, #334155)" text-anchor="middle">Tiếp tục phác đồ kiểm soát muối &amp; lợi tiểu</text>
+    </g>
+  </svg>
+  </div>
+
+  <div class="flowchart-legend-row">
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(245,158,11,0.12); border-color: #f59e0b;"></span>
+        <span>SAAG ≥ 1.1 g/dL: Tăng áp lực tĩnh mạch cửa (Xơ gan)</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(239,68,68,0.12); border-color: #ef4444;"></span>
+        <span>PMN ≥ 250/mm³: Viêm phúc mạc tự phát SBP -> Kháng sinh + Albumin</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(34,197,94,0.12); border-color: #22c55e;"></span>
+        <span>SAAG < 1.1 g/dL: Nguyên nhân màng bụng (Lao, K di căn)</span>
+      </div>
+  </div>
+</div>
       <p style="text-align: center; font-size: 0.85rem; color: var(--color-text-muted, #64748b); margin-top: 0.75rem;">
         <em>Lưu đồ 3 (Fig 3 JSGE-JSH 2020): Phân tầng dịch cổ trướng dựa trên SAAG (ngưỡng 1.1 g/dL) và tiêu chuẩn chẩn đoán viêm phúc mạc nhiễm khuẩn tự phát (SBP, PMN ≥ 250/mm³).</em>
       </p>
@@ -533,33 +742,99 @@ sections:
       <h2 class="sec-title">7. Lưu Đồ 4 (Fig 4): Thuật Toán Điều Trị Bậc Thang Cổ Trướng Xơ Gan (Therapeutic Algorithm)</h2>
     </div>
     <div class="sec-body">
-      <FlowchartViewer 
-        title="Lưu Đồ 4 (Fig 4): Thuật Toán Điều Trị Bậc Thang Cổ Trướng Xơ Gan (JSGE-JSH 2020)"
-        code={`flowchart TD
-          ASC_SEV{Phân độ mức độ nặng cổ trướng? | question}
-          GR1[Cổ trướng Độ 1 (Lượng ít trên SA) | success | badge: Nhẹ | subtitle: Hạn chế muối ăn 5-7 g/ngày - Chưa cần dùng lợi tiểu thường quy]
-          GR2[Cổ trướng Độ 2 & 3 (Vừa đến căng to) | warning | badge: Trung bình / Nặng | subtitle: Hạn chế muối 5-7 g/ngày + Spironolactone 25-50 mg/ngày đơn trị]
+      <div class="flowchart-editorial-card">
+  <div class="flowchart-card-header">
+    <div class="flowchart-badge-title">
+      <span class="flowchart-badge-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg>
+      </span>
+      <span class="flowchart-badge-text">Lưu Đồ 4 (Fig 4): Thuật Toán Điều Trị Bậc Thang Cổ Trướng Xơ Gan (JSGE-JSH 2020)</span>
+    </div>
+    <span class="flowchart-version-tag">JSGE-JSH 2020 • Fig 4</span>
+  </div>
+  
+  <div class="flowchart-svg-scroll">
+    <svg class="med-svg" viewBox="0 0 920 520" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+    <defs>
+      <marker id="arr-c4" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-text-muted, #64748b)" />
+      </marker>
+      <marker id="arr-c4-act" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)" />
+      </marker>
+    </defs>
 
-          RESP1{Đáp ứng giảm cân nặng 0.5 kg/ngày? | question}
-          OK1[Duy trì liều hiệu quả thấp nhất | success]
-          ADD_FURO[Tăng liều Spironolactone tới 100mg + Phối hợp Furosemide 20-40 mg/ngày 💊 | action | badge: Bậc 2 | subtitle: Tối đa Spironolactone 100mg + Furosemide 40mg (Tỷ lệ 100:40)]
+    <!-- Root: Severity Split -->
+    <g class="flow-node">
+      <polygon points="460,15 650,48 460,81 270,48" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="2"/>
+      <text x="460" y="44" font-size="12" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">Phân Độ Mức Độ Nặng Cổ Trướng?</text>
+      <text x="460" y="60" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Độ 1 (Lượng ít trên SA) hay Độ 2–3 (Vừa đến căng to)?</text>
+    </g>
 
-          RESP2{Đáp ứng với phối hợp Spironolactone + Furosemide? | question}
-          TOLVAPTAN[TOLVAPTAN 3.75 - 7.5 mg/ngày (Đặc thù Nhật Bản) ⭐ | danger | badge: Đối kháng thụ thể V2 | subtitle: Thải nước tự do (Aquaresis) không mất điện giải - Cực kỳ hiệu quả cho hạ natri máu hoặc giữ muối nước kháng trị]
+    <!-- Left: Grade 1 -->
+    <path d="M 270 48 L 150 48 L 150 105" fill="none" stroke="var(--color-success, #22c55e)" stroke-width="2" marker-end="url(#arr-c4-act)"/>
+    <g class="flow-node">
+      <rect x="30" y="105" width="240" height="60" rx="8" fill="var(--color-success-subtle, rgba(34,197,94,0.12))" stroke="var(--color-success, #22c55e)" stroke-width="1.8"/>
+      <text x="150" y="128" font-size="12" font-weight="700" fill="var(--color-success, #16a34a)" text-anchor="middle">CỔ TRƯỚNG ĐỘ 1 (Ít trên SA)</text>
+      <text x="150" y="146" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">Hạn chế muối 5–7 g/ngày</text>
+      <text x="150" y="159" font-size="9.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Chưa cần dùng lợi tiểu thường quy</text>
+    </g>
 
-          REFRACTORY[CỔ TRƯỚNG KHÁNG TRỊ (REFRACTORY ASCITES) 🚨 | danger | badge: Kháng hoặc bất dung nạp lợi tiểu | subtitle: Chọc tháo lượng lớn LVP + Truyền Albumin (8g/L dịch tháo > 5L) HOẶC Liệu pháp CART Nhật Bản (Lọc cô đặc tái truyền Albumin) -> Cân nhắc TIPS / Ghép gan]
+    <!-- Right: Grade 2 and 3 Step 1 Spironolactone -->
+    <path d="M 650 48 L 760 48 L 760 105" fill="none" stroke="var(--color-warning, #f59e0b)" stroke-width="2" marker-end="url(#arr-c4-act)"/>
+    <g class="flow-node">
+      <rect x="620" y="105" width="280" height="60" rx="8" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="1.8"/>
+      <text x="760" y="128" font-size="12" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">CỔ TRƯỚNG ĐỘ 2 &amp; 3 (BẬC 1)</text>
+      <text x="760" y="146" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">Hạn chế muối 5–7g + Spironolactone 25–50mg</text>
+      <text x="760" y="159" font-size="9.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Mục tiêu: Giảm cân 0.5 kg/ngày</text>
+    </g>
 
-          ASC_SEV -->|Độ 1| GR1
-          ASC_SEV ==>|Độ 2 & 3| GR2
-          GR2 --> RESP1
-          RESP1 -->|Đạt mục tiêu| OK1
-          RESP1 ==>|Không đáp ứng| ADD_FURO
-          ADD_FURO --> RESP2
-          RESP2 -->|Đạt mục tiêu| OK1
-          RESP2 ==>|Không đáp ứng / Giảm Na+| TOLVAPTAN
-          TOLVAPTAN ==>|Thất bại / Kháng thuốc| REFRACTORY
-        `}
-      />
+    <!-- Connect Step 1 to Step 2 Furosemide -->
+    <path d="M 760 165 L 760 195" fill="none" stroke="var(--color-warning, #f59e0b)" stroke-width="2" marker-end="url(#arr-c4-act)"/>
+    <g class="flow-node">
+      <rect x="620" y="195" width="280" height="65" rx="8" fill="var(--color-primary-subtle, rgba(2,132,199,0.12))" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+      <text x="760" y="217" font-size="12" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">BẬC 2: PHỐI HỢP FUROSEMIDE</text>
+      <text x="760" y="235" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">Tăng Spironolactone tới 100 mg</text>
+      <text x="760" y="249" font-size="10" fill="var(--color-text, #334155)" text-anchor="middle">+ Furosemide 20–40 mg (Tỷ lệ 100:40)</text>
+    </g>
+
+    <!-- Connect Step 2 to Tolvaptan (Japan Specific) -->
+    <path d="M 760 260 L 760 290" fill="none" stroke="var(--color-danger, #ef4444)" stroke-width="2" marker-end="url(#arr-c4-act)"/>
+    <g class="flow-node">
+      <rect x="580" y="290" width="320" height="75" rx="8" fill="var(--color-danger-subtle, rgba(239,68,68,0.12))" stroke="var(--color-danger, #ef4444)" stroke-width="2"/>
+      <text x="740" y="313" font-size="12.5" font-weight="700" fill="var(--color-danger, #ef4444)" text-anchor="middle">BẬC 3: TOLVAPTAN (3.75 – 7.5 MG/NGÀY)</text>
+      <text x="740" y="331" font-size="10.5" font-weight="600" fill="var(--color-text, #334155)" text-anchor="middle">Kháng Thụ Thể V2 Thải Nước Tự Do (Aquaresis)</text>
+      <text x="740" y="347" font-size="10" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Cực kỳ hiệu quả khi hạ Natri máu hoặc kháng lợi tiểu</text>
+    </g>
+
+    <!-- Connect Tolvaptan failure to Refractory Ascites and CART -->
+    <path d="M 740 365 L 740 405 L 460 405 L 460 425" fill="none" stroke="var(--color-danger, #ef4444)" stroke-width="2" marker-end="url(#arr-c4-act)"/>
+
+    <!-- Bottom: Refractory Ascites, LVP, CART, TIPS -->
+    <g class="flow-node">
+      <rect x="120" y="425" width="680" height="80" rx="10" fill="var(--color-danger-subtle, rgba(239,68,68,0.12))" stroke="var(--color-danger, #ef4444)" stroke-width="2"/>
+      <text x="460" y="448" font-size="13.5" font-weight="700" fill="var(--color-danger, #ef4444)" text-anchor="middle">CỔ TRƯỚNG KHÁNG TRỊ (REFRACTORY ASCITES)</text>
+      <text x="460" y="468" font-size="11" font-weight="600" fill="var(--color-text, #334155)" text-anchor="middle">• Chọc tháo lượng lớn LVP + Bù Albumin (8g/L nếu tháo &gt; 5L)</text>
+      <text x="460" y="486" font-size="10.5" fill="var(--color-danger, #ef4444)" text-anchor="middle">• Liệu pháp CART Nhật Bản (Lọc cô đặc tái truyền Albumin tự thân) • Cân nhắc TIPS hoặc Ghép gan</text>
+    </g>
+  </svg>
+  </div>
+
+  <div class="flowchart-legend-row">
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(34,197,94,0.12); border-color: #22c55e;"></span>
+        <span>Độ 1: Hạn chế muối 5-7g/ngày, chưa cần lợi tiểu</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(2,132,199,0.12); border-color: #0284c7;"></span>
+        <span>Độ 2-3: Bậc 1 Spironolactone -> Bậc 2 Furosemide (Tỷ lệ 100:40)</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(239,68,68,0.12); border-color: #ef4444;"></span>
+        <span>Kháng trị: Tolvaptan V2 -> Chọc tháo LVP + Albumin hoặc Liệu pháp CART</span>
+      </div>
+  </div>
+</div>
       <p style="text-align: center; font-size: 0.85rem; color: var(--color-text-muted, #64748b); margin-top: 0.75rem;">
         <em>Lưu đồ 4 (Fig 4 JSGE-JSH 2020): Phác đồ bậc thang điều trị cổ trướng — Điểm nhấn vượt trội của Nhật Bản với vai trò của Tolvaptan và kỹ thuật lọc cô đặc dịch báng tái truyền Albumin (CART).</em>
       </p>

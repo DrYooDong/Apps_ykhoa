@@ -441,33 +441,113 @@ sections:
           </div>
         </div>
         <div style="margin-bottom: 1.5rem;">
-          <FlowchartViewer
-            title="Lưu Đồ Thuật Toán Lựa Chọn Chẩn Đoán Hình Ảnh Nghi Ngờ Áp Xe Ổ Bụng (IDSA 2024)"
-            code={`graph TD
-  START["BỆNH NHÂN NGHI NGỜ ÁP XE TRONG Ổ BỤNG CẤP TÍNH<br/><small>Sốt, đau bụng, tăng bạch cầu • Tiền sử sau mổ ổ bụng hoặc bệnh viêm nhiễm nội khoa</small>"]:::start --> POSTOP_CHECK{"Nếu Sau Phẫu Thuật: Đã Đủ Mốc Thời Gian Hình Thành Áp Xe?"}:::question
+          <div class="flowchart-editorial-card">
+  <div class="flowchart-card-header">
+    <div class="flowchart-badge-title">
+      <span class="flowchart-badge-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg>
+      </span>
+      <span class="flowchart-badge-text">Lưu Đồ Thuật Toán Lựa Chọn Chẩn Đoán Hình Ảnh Nghi Ngờ Áp Xe Ổ Bụng (IDSA 2024)</span>
+    </div>
+    <span class="flowchart-version-tag">IDSA 2024 • Intra-abdominal Abscess</span>
+  </div>
+  
+  <div class="flowchart-svg-scroll">
+    <svg class="med-svg" viewBox="0 0 920 480" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+    <defs>
+      <marker id="arr-idsa" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-text-muted, #64748b)" />
+      </marker>
+      <marker id="arr-idsa-act" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)" />
+      </marker>
+    </defs>
 
-  POSTOP_CHECK -- "Ngày 1 - 4 Sau Mổ" --> TOO_EARLY["TRÁNH CHỤP CT QUÁ SỚM<br/><small>Áp xe chưa tạo vỏ xơ; dễ dương tính giả do tụ dịch sinh lý (seroma, máu tụ, dịch rửa)<br/>Ưu tiên theo dõi lâm sàng sát, trừ khi có shock hoặc viêm phúc mạc cấp</small>"]:::warning
+    <g class="flow-node">
+      <rect x="230" y="15" width="460" height="52" rx="8" fill="var(--color-primary-subtle, rgba(2,132,199,0.12))" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+      <text x="460" y="36" font-size="13.5" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">NGHI NGỜ ÁP XE TRONG Ổ BỤNG CẤP TÍNH</text>
+      <text x="460" y="53" font-size="11" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Sốt, đau bụng, tăng bạch cầu sau phẫu thuật hoặc sau viêm nhiễm nội khoa</text>
+    </g>
 
-  POSTOP_CHECK -- "≥ 5 - 7 Ngày Sau Mổ HOẶC Không phẫu thuật" --> POPULATION{"Phân Tầng Theo Nhóm Đối Tượng Bệnh Nhân?"}:::question
+    <path d="M 460 67 L 460 95" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arr-idsa-act)"/>
 
-  POPULATION -- "Người lớn & Vị thành niên" --> ADULT_CT["CHỤP CT BỤNG CÓ CẢN QUANG ĐƯỜNG TĨNH MẠCH (IV)<br/><small>Lựa chọn ban đầu ưu tiên (IDSA 2024) • Độ chính xác cao xuyên qua băng gạc & hơi ruột</small>"]:::action
+    <g class="flow-node">
+      <polygon points="460,95 660,128 460,161 260,128" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="2"/>
+      <text x="460" y="124" font-size="12" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">Nếu Sau Mổ: Đủ Thời Gian Hình Thành Áp Xe?</text>
+      <text x="460" y="140" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Ngày 1–4 sau mổ hay đã qua ≥ 5–7 ngày?</text>
+    </g>
 
-  POPULATION -- "Trẻ em (Nhi khoa)" --> PEDS_US["SIÊU ÂM Ổ BỤNG (US) BAN ĐẦU<br/><small>Ưu tiên hàng đầu tránh bức xạ ion hóa & không cần dùng thuốc an thần</small>"]:::action
+    <!-- Left: Day 1-4 too early -->
+    <path d="M 260 128 L 130 128 L 130 190" fill="none" stroke="var(--color-warning, #f59e0b)" stroke-width="2" marker-end="url(#arr-idsa-act)"/>
+    <g class="flow-node">
+      <rect x="20" y="190" width="220" height="85" rx="8" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="1.8"/>
+      <text x="130" y="213" font-size="12" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">TRÁNH CHỤP CT QUÁ SỚM</text>
+      <text x="130" y="233" font-size="10" fill="var(--color-text, #334155)" text-anchor="middle">Ngày 1–4: Chưa tạo vỏ xơ</text>
+      <text x="130" y="249" font-size="9.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Dễ dương tính giả seroma</text>
+      <text x="130" y="265" font-size="9.5" fill="var(--color-primary, #0284c7)" text-anchor="middle">Ưu tiên theo dõi sát lâm sàng</text>
+    </g>
 
-  POPULATION -- "Phụ nữ mang thai" --> PREG_CHOICE{"Lựa Chọn Theo Tính Sẵn Có & Thảo Luận Với Thai Phụ"}:::question
+    <!-- Right: >= 5-7 days -> 3 Populations -->
+    <path d="M 660 128 L 760 128 L 760 165 M 350 165 L 760 165" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+    <path d="M 350 165 L 350 190" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="1.8" marker-end="url(#arr-idsa-act)"/>
+    <path d="M 550 165 L 550 190" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="1.8" marker-end="url(#arr-primary, #0284c7)"/>
+    <path d="M 760 165 L 760 190" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="1.8" marker-end="url(#arr-idsa-act)"/>
 
-  PREG_CHOICE -- "Siêu âm bụng (US)" --> PREG_US["SIÊU ÂM BỤNG AN TOÀN<br/><small>Phù hợp tam cá nguyệt 1, 2</small>"]:::action
-  PREG_CHOICE -- "Chụp MRI bụng" --> PREG_MRI["CHỤP MRI BỤNG (KHÔNG GADOLINIUM)<br/><small>Ưu tiên khi thai lớn hoặc siêu âm bị che khuất</small>"]:::action
+    <!-- Adults: CT IV -->
+    <g class="flow-node">
+      <rect x="250" y="190" width="200" height="85" rx="8" fill="var(--color-primary-subtle, rgba(2,132,199,0.12))" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+      <text x="350" y="213" font-size="12" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">1. Người Lớn: Chụp CT Bụng</text>
+      <text x="350" y="233" font-size="10" fill="var(--color-text, #334155)" text-anchor="middle">Tiêm cản quang tĩnh mạch</text>
+      <text x="350" y="249" font-size="9.5" font-weight="600" fill="var(--color-primary, #0284c7)" text-anchor="middle">Lựa chọn ưu tiên số 1</text>
+      <text x="350" y="265" font-size="9" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Xuyên qua băng gạc &amp; hơi ruột</text>
+    </g>
 
-  PEDS_US --> PEDS_RESULT{"Kết Quả Siêu Âm Ở Trẻ Em?"}:::question
-  PEDS_RESULT -- "Xác định rõ ổ áp xe" --> DRAINAGE["CAN THIỆP DẪN LƯU QUA DA HOẶC PHẪU THUẬT"]:::success
-  PEDS_RESULT -- "Âm tính hoặc không rõ nhưng lâm sàng nghi ngờ" --> PEDS_CROSS["CHỤP CT HOẶC MRI BỤNG TIẾP NỐI<br/><small>Xác định vị trí và lập kế hoạch can thiệp an toàn</small>"]:::warning
+    <!-- Peds: US first -->
+    <g class="flow-node">
+      <rect x="465" y="190" width="190" height="85" rx="8" fill="var(--color-success-subtle, rgba(34,197,94,0.12))" stroke="var(--color-success, #22c55e)" stroke-width="1.8"/>
+      <text x="560" y="213" font-size="12" font-weight="700" fill="var(--color-success, #16a34a)" text-anchor="middle">2. Trẻ Em: Siêu Âm Đầu Tay</text>
+      <text x="560" y="233" font-size="10" fill="var(--color-text, #334155)" text-anchor="middle">Tránh tia xạ ion hóa</text>
+      <text x="560" y="249" font-size="9.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Không cần an thần</text>
+      <text x="560" y="265" font-size="9" fill="var(--color-warning, #d97706)" text-anchor="middle">CT/MRI khi siêu âm không rõ</text>
+    </g>
 
-  ADULT_CT --> DRAINAGE
-  PREG_US --> DRAINAGE
-  PREG_MRI --> DRAINAGE
-  PEDS_CROSS --> DRAINAGE`}
-          />
+    <!-- Pregnant: US / MRI -->
+    <g class="flow-node">
+      <rect x="670" y="190" width="220" height="85" rx="8" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="780" y="213" font-size="12" font-weight="700" fill="var(--color-text, #334155)" text-anchor="middle">3. Thai Phụ: US hoặc MRI</text>
+      <text x="780" y="233" font-size="10" fill="var(--color-text, #334155)" text-anchor="middle">Siêu âm an toàn tuyệt đối</text>
+      <text x="780" y="249" font-size="9.5" font-weight="600" fill="var(--color-primary, #0284c7)" text-anchor="middle">MRI không Gadolinium</text>
+      <text x="780" y="265" font-size="9" fill="var(--color-text-muted, #64748b)" text-anchor="middle">khi thai lớn che khuất</text>
+    </g>
+
+    <path d="M 350 275 L 350 330 L 560 330" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+    <path d="M 560 275 L 560 330" fill="none" stroke="var(--color-success, #22c55e)" stroke-width="1.8"/>
+    <path d="M 780 275 L 780 330 L 560 330" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+    <path d="M 560 330 L 560 360" fill="none" stroke="var(--color-success, #22c55e)" stroke-width="2" marker-end="url(#arr-idsa-act)"/>
+
+    <g class="flow-node">
+      <rect x="250" y="360" width="620" height="60" rx="10" fill="var(--color-success-subtle, rgba(34,197,94,0.12))" stroke="var(--color-success, #22c55e)" stroke-width="2"/>
+      <text x="560" y="383" font-size="13" font-weight="700" fill="var(--color-success, #16a34a)" text-anchor="middle">CAN THIỆP DẪN LƯU QUA DA HOẶC PHẪU THUẬT CẦM MỦ</text>
+      <text x="560" y="403" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">Dẫn lưu qua da dưới hướng dẫn CT/Siêu âm là tiêu chuẩn vàng • Cấy mủ định danh vi khuẩn &amp; Kháng sinh đích</text>
+    </g>
+  </svg>
+  </div>
+
+  <div class="flowchart-legend-row">
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(245,158,11,0.12); border-color: #f59e0b;"></span>
+        <span>Tránh chụp CT sớm ngày 1–4 sau mổ (dương tính giả)</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(2,132,199,0.12); border-color: #0284c7;"></span>
+        <span>Người lớn: CT bụng có cản quang TM là lựa chọn số 1</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(34,197,94,0.12); border-color: #22c55e;"></span>
+        <span>Trẻ em &amp; Thai phụ: Siêu âm bụng / MRI không Gadolinium</span>
+      </div>
+  </div>
+</div>
         </div>
 
         <div style="margin-top: 1rem; padding: 0.75rem; background: #fffbeb; border-radius: 8px; border: 1px solid #fef3c7; font-size: 0.83rem; color: #92400e; line-height: 1.6;">

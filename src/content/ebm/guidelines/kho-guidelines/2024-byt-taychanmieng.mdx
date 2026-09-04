@@ -418,30 +418,183 @@ sections:
         <h2 class="sec-title">7. Lưu Đồ Phân Loại, Sàng Lọc &amp; Phân Luồng Xử Trí (Phụ lục 1 BYT)</h2>
       </div>
       <div class="sec-body">
-        <FlowchartViewer
-          title="Lưu Đồ Phân Loại, Sàng Lọc & Phân Luồng Điều Trị Bệnh Tay Chân Miệng (QĐ 292/QĐ-BYT)"
-          code={`graph TD
-  START["BỆNH NHÂN ĐẾN KHÁM TẠI CƠ SỞ Y TẾ<br/><small>Đo DHST • Đánh giá tri giác AVPU • Khám phát ban lòng bàn tay chân / loét miệng</small>"]:::start --> CLASSIFY{"Phân Độ Lâm Sàng Theo Tiêu Chuẩn Bộ Y Tế 2024?"}:::question
-  
-  CLASSIFY -- "ĐỘ 1 (Không biến chứng)<br/>Chỉ có loét miệng và/hoặc ban da" --> DEG1["ĐIỀU TRỊ NGOẠI TRÚ TẠI NHÀ<br/><small>• Hạ sốt Paracetamol 10-15 mg/kg, dinh dưỡng nguội mát<br/>• Cách ly 7 – 10 ngày • Tái khám mỗi 1-2 ngày<br/>• Dặn dò dấu hiệu cảnh báo nhập viện khẩn</small>"]:::success
-  
-  CLASSIFY -- "ĐỘ 2a (Biến chứng TK sớm)<br/>Giật mình < 2 lần/30p, Sốt > 39°C, nôn nhiều" --> DEG2A["NHẬP VIỆN NỘI TRÚ (Khoa Nhi)<br/><small>• Nằm đầu cao 30°, hạn chế kích thích<br/>• Uống Phenobarbital 5-7 mg/kg/ngày nếu quấy khóc/khó ngủ<br/>• Theo dõi sát tri giác và giật mình mỗi 4 – 6 giờ</small>"]:::action
-  
-  CLASSIFY -- "ĐỘ 2b (Biến chứng TK nặng)<br/>Giật mình ≥ 2 lần/30p hoặc thất điều, run chi" --> DEG2B{"Phân Nhóm Độ 2b?"}:::question
-  DEG2B -- "Nhóm 1 (Giật mình lúc khám / Mạch > 130)" --> DEG2B_N1["ĐIỀU TRỊ BUỒNG BỆNH NẶNG<br/><small>• Nằm đầu cao 30° • Thở oxy qua canula nếu cần<br/>• Phenobarbital 10-20 mg/kg truyền TM trong 30p<br/>• Theo dõi sát mạch, SpO2, tri giác mỗi 2 giờ</small>"]:::warning
-  DEG2B -- "Nhóm 2 (Mạch > 150, run chi, sốt cao trơ)" --> DEG2B_N2["CHỈ ĐỊNH DÙNG IVIG CẤP<br/><small>• Phenobarbital IV + IVIG 1 g/kg/ngày truyền trong 6-8h<br/>• Xét liều thứ 2 sau 24h nếu còn sốt cao hoặc mạch > 150<br/>• Chuyển phòng cấp cứu / hồi sức</small>"]:::danger
-  
-  CLASSIFY -- "ĐỘ 3 (Rối loạn thần kinh thực vật)<br/>Mạch > 170, HA cao, thở nhanh, vã mồ hôi" --> DEG3["HỒI SỨC CẤP CỨU ICU (ĐỘ 3)<br/><small>• Đặt nội khí quản thở máy sớm bảo vệ phổi<br/>• IVIG 1 g/kg/ngày x 2 ngày liên tiếp<br/>• Milrinone truyền TM (0.4 – 0.8 µg/kg/phút) hạ áp & bảo vệ tim<br/>• Đặt catheter động mạch xâm lấn liên tục</small>"]:::danger
-  
-  CLASSIFY -- "ĐỘ 4 (Sốc / Phù phổi cấp / Ngừng thở)<br/>Tím tái, CRT ≥ 3s, HA tụt/không đo được" --> DEG4["HỒI SỨC SỐC NGUY KỊCH (ĐỘ 4)<br/><small>• Thở máy thông số cao (PEEP cao chống phù phổi cấp)<br/>• Vận mạch: Dobutamin / Adrenaline / Noradrenaline<br/>• Lọc máu liên tục (CRRT) sớm nếu sốc trơ hoặc toan nặng<br/>• Chỉ định VA-ECMO cứu vãn khi suy tuần hoàn kháng trị</small>"]:::danger
+        <div class="flowchart-editorial-card">
+          <div class="flowchart-card-header">
+            <div class="flowchart-card-title-group">
+              <span class="flowchart-card-icon">🩺</span>
+              <div>
+                <h3 class="flowchart-card-title">Lưu Đồ Phân Loại, Sàng Lọc &amp; Phân Luồng Điều Trị Bệnh Tay Chân Miệng</h3>
+                <p class="flowchart-card-subtitle">Hướng dẫn chẩn đoán và điều trị Bộ Y Tế (QĐ 292/QĐ-BYT 2024) • Phân tầng 5 phân độ lâm sàng • Chỉ định IVIG, Milrinone &amp; Hồi sức ICU</p>
+              </div>
+            </div>
+            <span class="flowchart-card-badge">BYT QĐ 292/2024 • Editorial SVG</span>
+          </div>
 
-  classDef start fill:#e0f2fe,stroke:#0284c7,stroke-width:2px,color:#0369a1
-  classDef question fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#854d0e
-  classDef action fill:#eff6ff,stroke:#3b82f6,stroke-width:1.5px,color:#1e40af
-  classDef danger fill:#fee2e2,stroke:#ef4444,stroke-width:2px,color:#991b1b
-  classDef warning fill:#fef3c7,stroke:#f59e0b,stroke-width:2px,color:#92400e
-  classDef success fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#15803d`}
-        />
+          <div class="flowchart-svg-container">
+            <svg class="med-svg" viewBox="0 0 1040 760" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <marker id="arr-tcm" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 1 1.5 L 8 5 L 1 8.5 Z" fill="var(--color-primary, #0284c7)"/>
+                </marker>
+                <marker id="arr-tcm-warn" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 1 1.5 L 8 5 L 1 8.5 Z" fill="var(--color-warning, #f59e0b)"/>
+                </marker>
+                <marker id="arr-tcm-danger" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 1 1.5 L 8 5 L 1 8.5 Z" fill="var(--color-danger, #ef4444)"/>
+                </marker>
+                <marker id="arr-tcm-success" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 1 1.5 L 8 5 L 1 8.5 Z" fill="var(--color-success, #10b981)"/>
+                </marker>
+              </defs>
+
+              {/* CONNECTORS */}
+              {/* START -> CLASSIFY */}
+              <path d="M 520 96 V 126" stroke="var(--color-primary, #0284c7)" stroke-width="2" fill="none" marker-end="url(#arr-tcm)"/>
+
+              {/* CLASSIFY -> DEG1 (Left) */}
+              <path d="M 330 153 H 186 Q 180 153 180 159 V 234" stroke="var(--color-success, #10b981)" stroke-width="2" fill="none" marker-end="url(#arr-tcm-success)"/>
+
+              {/* CLASSIFY -> DEG2A (Center) */}
+              <path d="M 515 176 V 234" stroke="var(--color-primary, #0284c7)" stroke-width="2" fill="none" marker-end="url(#arr-tcm)"/>
+
+              {/* CLASSIFY -> DEG3 (Right) */}
+              <path d="M 710 153 H 850 Q 856 153 856 159 V 234" stroke="var(--color-danger, #ef4444)" stroke-width="2" fill="none" marker-end="url(#arr-tcm-danger)"/>
+
+              {/* DEG2A -> DEG2B (Down) */}
+              <path d="M 515 380 V 414" stroke="var(--color-warning, #f59e0b)" stroke-width="2" fill="none" marker-end="url(#arr-tcm-warn)"/>
+
+              {/* DEG3 -> DEG4 (Down) */}
+              <path d="M 855 415 V 449" stroke="var(--color-danger, #ef4444)" stroke-width="2" fill="none" marker-end="url(#arr-tcm-danger)"/>
+
+              {/* CONNECTOR LABELS (with background masks) */}
+              <g>
+                <rect x="120" y="141" width="125" height="22" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+                <text x="182" y="156" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-success, #10b981)">ĐỘ 1 (Ngoại trú)</text>
+              </g>
+
+              <g>
+                <rect x="430" y="195" width="170" height="22" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+                <text x="515" y="210" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-primary, #0284c7)">ĐỘ 2 (Biến chứng TK)</text>
+              </g>
+
+              <g>
+                <rect x="765" y="141" width="170" height="22" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+                <text x="850" y="156" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-danger, #ef4444)">ĐỘ 3 &amp; ĐỘ 4 (ICU Cấp Cứu)</text>
+              </g>
+
+              <g>
+                <rect x="420" y="388" width="190" height="22" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+                <text x="515" y="403" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--color-warning, #f59e0b)">Giật mình ≥ 2 lần / Run chi / Thất điều</text>
+              </g>
+
+              <g>
+                <rect x="750" y="422" width="210" height="22" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+                <text x="855" y="437" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--color-danger, #ef4444)">Tụt HA / CRT ≥ 3s / Phù phổi cấp</text>
+              </g>
+
+              {/* NODES */}
+              {/* NODE 1: START */}
+              <g class="flow-node">
+                <rect x="270" y="30" width="500" height="66" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+                <rect x="270" y="30" width="500" height="24" rx="10" fill="var(--color-primary, #0284c7)" fill-opacity="0.1"/>
+                <text x="520" y="47" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-primary, #0284c7)" letter-spacing="0.5">BỆNH NHÂN ĐẾN KHÁM TẠI CƠ SỞ Y TẾ</text>
+                <text x="520" y="74" text-anchor="middle" font-size="12" font-weight="600" fill="var(--color-text, #1e293b)">Đo DHST • Đánh giá tri giác AVPU/GCS • Khám loét miệng &amp; phát ban da • Đếm cơn giật mình</text>
+              </g>
+
+              {/* NODE 2: CLASSIFY (Decision) */}
+              <g class="flow-node">
+                <rect x="330" y="130" width="380" height="46" rx="23" fill="var(--color-surface, #ffffff)" stroke="var(--color-warning, #f59e0b)" stroke-width="2"/>
+                <text x="520" y="158" text-anchor="middle" font-size="12" font-weight="700" fill="var(--color-warning, #f59e0b)">Phân Độ Lâm Sàng Theo Quyết Định 292/QĐ-BYT</text>
+              </g>
+
+              {/* NODE 3: DEG1 (Độ 1) */}
+              <g class="flow-node">
+                <rect x="30" y="240" width="300" height="185" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-success, #10b981)" stroke-width="2"/>
+                <rect x="30" y="240" width="300" height="24" rx="10" fill="var(--color-success, #10b981)" fill-opacity="0.1"/>
+                <text x="180" y="257" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--color-success, #10b981)" letter-spacing="0.5">ĐỘ 1: ĐIỀU TRỊ NGOẠI TRÚ TẠI NHÀ</text>
+                <text x="45" y="280" font-size="11.5" font-weight="700" fill="var(--color-text, #1e293b)">Chỉ có loét miệng và/hoặc ban da</text>
+                <text x="45" y="299" font-size="11" fill="var(--color-text, #1e293b)">• Hạ sốt Paracetamol 10–15 mg/kg mỗi 4–6h</text>
+                <text x="45" y="318" font-size="11" fill="var(--color-text, #1e293b)">• Dinh dưỡng thức ăn nguội mát, bù nước oresol</text>
+                <text x="45" y="337" font-size="11" font-weight="600" fill="var(--color-primary, #0284c7)">• Bắt buộc cách ly tại nhà 7 – 10 ngày</text>
+                <text x="45" y="356" font-size="11" fill="var(--color-text-muted, #64748b)">• Hẹn tái khám mỗi 1–2 ngày trong 8–10 ngày</text>
+                <text x="45" y="375" font-size="10.5" font-style="italic" fill="var(--color-danger, #ef4444)">-&gt; Dặn dò kỹ dấu hiệu cảnh báo nhập viện khẩn</text>
+                <text x="45" y="393" font-size="10" fill="var(--color-text-muted, #64748b)">Không dùng kháng sinh, không bôi thuốc có cồn</text>
+              </g>
+
+              {/* NODE 4: DEG2A (Độ 2a) */}
+              <g class="flow-node">
+                <rect x="355" y="240" width="320" height="140" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+                <rect x="355" y="240" width="320" height="24" rx="10" fill="var(--color-primary, #0284c7)" fill-opacity="0.1"/>
+                <text x="515" y="257" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--color-primary, #0284c7)" letter-spacing="0.5">ĐỘ 2a: NHẬP VIỆN KHOA NHI NỘI TRÚ</text>
+                <text x="370" y="280" font-size="11" font-weight="700" fill="var(--color-text, #1e293b)">Giật mình &lt; 2 lần/30p (theo bệnh sử) HOẶC:</text>
+                <text x="370" y="298" font-size="11" fill="var(--color-text-muted, #64748b)">Sốt &gt; 39°C • Sốt &gt; 2 ngày • Nôn nhiều • Quấy khóc</text>
+                <text x="370" y="318" font-size="11.5" fill="var(--color-text, #1e293b)">• Nằm đầu cao 30°, hạn chế kích thích âm thanh/ánh sáng</text>
+                <text x="370" y="337" font-size="11.5" fill="var(--color-text, #1e293b)">• <tspan font-weight="700">Phenobarbital uống 5–7 mg/kg/ngày</tspan> nếu quấy khóc</text>
+                <text x="370" y="356" font-size="11" font-weight="600" fill="var(--color-primary, #0284c7)">• Theo dõi sát tri giác, mạch, giật mình mỗi 4–6 giờ</text>
+              </g>
+
+              {/* NODE 5: DEG2B (Độ 2b) */}
+              <g class="flow-node">
+                <rect x="355" y="420" width="320" height="220" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-warning, #f59e0b)" stroke-width="2"/>
+                <rect x="355" y="420" width="320" height="24" rx="10" fill="var(--color-warning, #f59e0b)" fill-opacity="0.12"/>
+                <text x="515" y="437" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--color-warning, #f59e0b)" letter-spacing="0.5">ĐỘ 2b: BIẾN CHỨNG THẦN KINH NẶNG</text>
+                <text x="370" y="460" font-size="11" font-weight="700" fill="var(--color-warning, #f59e0b)">• NHÓM 1: ĐIỀU TRỊ BUỒNG BỆNH NẶNG</text>
+                <text x="380" y="478" font-size="11" fill="var(--color-text, #1e293b)">Giật mình lúc khám HOẶC Mạch nhanh 130–150 l/p</text>
+                <text x="380" y="496" font-size="11" fill="var(--color-text, #1e293b)">-&gt; <tspan font-weight="700">Phenobarbital 10–20 mg/kg</tspan> truyền TM trong 30p</text>
+                <text x="380" y="514" font-size="11" fill="var(--color-text-muted, #64748b)">-&gt; Thở oxy qua canula nếu SpO2 &lt; 95%, theo dõi q2h</text>
+                <text x="370" y="538" font-size="11" font-weight="700" fill="var(--color-danger, #ef4444)">• NHÓM 2: CHỈ ĐỊNH DÙNG IVIG CẤP</text>
+                <text x="380" y="556" font-size="11" fill="var(--color-text, #1e293b)">Mạch &gt; 150 l/p HOẶC Thất điều, run chi, rung giật mắt</text>
+                <text x="380" y="575" font-size="11.5" font-weight="700" fill="var(--color-danger, #ef4444)">-&gt; IVIG 1 g/kg/ngày truyền TM chậm trong 6–8 giờ</text>
+                <text x="380" y="594" font-size="11" fill="var(--color-text-muted, #64748b)">Xét liều 2 sau 24h nếu còn sốt cao trơ hoặc mạch &gt; 150</text>
+                <text x="380" y="612" font-size="10.5" font-weight="600" fill="var(--color-primary, #0284c7)">-&gt; Chuyển buồng Cấp cứu / Đơn vị Hồi sức nhi</text>
+              </g>
+
+              {/* NODE 6: DEG3 (Độ 3) */}
+              <g class="flow-node">
+                <rect x="700" y="240" width="310" height="175" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-danger, #ef4444)" stroke-width="2"/>
+                <rect x="700" y="240" width="310" height="24" rx="10" fill="var(--color-danger, #ef4444)" fill-opacity="0.12"/>
+                <text x="855" y="257" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--color-danger, #ef4444)" letter-spacing="0.5">ĐỘ 3: SUY THẦN KINH THỰC VẬT (ICU)</text>
+                <text x="715" y="280" font-size="11" font-weight="600" fill="var(--color-text, #1e293b)">Mạch &gt; 170 l/p • Vã mồ hôi, da lạnh • Tăng HA • Thở nhanh</text>
+                <text x="715" y="300" font-size="11.5" font-weight="700" fill="var(--color-primary, #0284c7)">• Đặt nội khí quản thở máy sớm bảo vệ phổi</text>
+                <text x="715" y="320" font-size="11.5" font-weight="700" fill="var(--color-danger, #ef4444)">• IVIG 1 g/kg/ngày x 2 ngày liên tiếp</text>
+                <text x="715" y="340" font-size="11.5" font-weight="700" fill="var(--color-warning, #f59e0b)">• Milrinone 0.4–0.8 μg/kg/phút truyền TM</text>
+                <text x="715" y="358" font-size="11" fill="var(--color-text-muted, #64748b)">Giảm hậu tải, hạ áp và cải thiện co bóp tim</text>
+                <text x="715" y="377" font-size="11" fill="var(--color-text, #1e293b)">• Đặt catheter huyết áp động mạch xâm lấn (IBP)</text>
+                <text x="715" y="394" font-size="10.5" font-style="italic" fill="var(--color-danger, #ef4444)">-&gt; Chuẩn bị phương án sốc nguy kịch</text>
+              </g>
+
+              {/* NODE 7: DEG4 (Độ 4) */}
+              <g class="flow-node">
+                <rect x="700" y="455" width="310" height="185" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-danger, #ef4444)" stroke-width="2"/>
+                <rect x="700" y="455" width="310" height="24" rx="10" fill="var(--color-danger, #ef4444)" fill-opacity="0.18"/>
+                <text x="855" y="472" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--color-danger, #ef4444)" letter-spacing="0.5">ĐỘ 4: SỐC NGUY KỊCH &amp; PHÙ PHỔI CẤP</text>
+                <text x="715" y="495" font-size="11" font-weight="600" fill="var(--color-text, #1e293b)">Mạch triệt, HA tụt/kẹt, CRT ≥ 3s, Sùi bọt hồng, Ngừng thở</text>
+                <text x="715" y="515" font-size="11.5" font-weight="700" fill="var(--color-primary, #0284c7)">• Thở máy PEEP cao chống phù phổi cấp thần kinh</text>
+                <text x="715" y="534" font-size="11.5" font-weight="700" fill="var(--color-danger, #ef4444)">• Vận mạch: Dobutamin ± Noradrenalin / Adrenaline</text>
+                <text x="715" y="553" font-size="11" fill="var(--color-text-muted, #64748b)">Điều chỉnh liều theo huyết động xâm lấn và ScvO2</text>
+                <text x="715" y="573" font-size="11.5" font-weight="700" fill="var(--color-accent, #8b5cf6)">• Lọc máu liên tục (CRRT) sớm trong 24h đầu</text>
+                <text x="715" y="592" font-size="11" fill="var(--color-text-muted, #64748b)">Chỉ định khi sốc trơ hoặc toan chuyển hóa nặng (Lactate cao)</text>
+                <text x="715" y="612" font-size="11.5" font-weight="700" fill="var(--color-danger, #ef4444)">• Chỉ định VA-ECMO cứu vãn khi suy tuần hoàn kháng trị</text>
+              </g>
+
+              {/* BOTTOM WARNING PANEL */}
+              <g class="flow-node">
+                <rect x="30" y="660" width="980" height="75" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-danger, #ef4444)" stroke-width="1.5"/>
+                <rect x="30" y="660" width="980" height="22" rx="10" fill="var(--color-danger, #ef4444)" fill-opacity="0.1"/>
+                <text x="520" y="675" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-danger, #ef4444)" letter-spacing="0.5">DẤU HIỆU CẢNH BÁO NGUY CƠ CHUYỂN ĐỘ NẶNG CẦN NHẬP VIỆN CẤP CỨU LẬP TỨC</text>
+                <text x="50" y="700" font-size="11" fill="var(--color-text, #1e293b)">• <tspan font-weight="700" fill="var(--color-danger, #ef4444)">Giật mình chới với lúc thiu thiu ngủ</tspan> (dấu hiệu sớm quan trọng nhất) • <tspan font-weight="700">Sốt cao ≥ 39°C không hạ sau 48h</tspan> • Mạch nhanh &gt; 130–150 l/p lúc nằm yên</text>
+                <text x="50" y="720" font-size="11" fill="var(--color-text, #1e293b)">• Nôn ói nhiều, ăn uống kém • Run chi, đi đứng loạng choạng, yếu liệt chi • Thở bất thường (thở nhanh, thở rút lõm ngực) • Da nổi vân tím, vã mồ hôi lạnh toàn thân</text>
+              </g>
+            </svg>
+          </div>
+
+          <div class="flowchart-legend-row">
+            <div class="legend-item"><span class="legend-dot" style="background:var(--color-success, #10b981);"></span> Độ 1: Điều trị ngoại trú tại nhà</div>
+            <div class="legend-item"><span class="legend-dot" style="background:var(--color-primary, #0284c7);"></span> Độ 2a: Nhập viện khoa Nhi nội trú</div>
+            <div class="legend-item"><span class="legend-dot" style="background:var(--color-warning, #f59e0b);"></span> Độ 2b Nhóm 1: Buồng bệnh nặng / Phenobarbital IV</div>
+            <div class="legend-item"><span class="legend-dot" style="background:var(--color-danger, #ef4444);"></span> Độ 2b-N2 / Độ 3 / Độ 4: Chỉ định IVIG &amp; Hồi sức ICU</div>
+          </div>
+        </div>
 
         <div class="algo-container" style="margin-top: 1.5rem;">
           <div class="algo-node" style="border-left:4px solid var(--color-primary, #0284c7)">

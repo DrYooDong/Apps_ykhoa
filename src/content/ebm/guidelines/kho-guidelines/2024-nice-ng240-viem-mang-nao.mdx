@@ -650,31 +650,205 @@ sections:
       </div>
 
       <div style="margin-top: 1.5rem;">
-        <FlowchartViewer
-          title="Lưu Đồ Xử Trí Khẩn Viêm Màng Não & Não Mô Cầu — Khung Giờ Vàng 1 Giờ (NICE NG240)"
-          code={`graph TD
-  START["BỆNH NHÂN NGHI NGỜ VIÊM MÀNG NÃO HOẶC BỆNH NÃO MÔ CẦU<br/><small>Có dấu hiệu cờ đỏ: Sốt • Đau đầu • Cứng gáy • Tri giác biến đổi</small>"]:::start --> PREHOSP{"Đánh Giá Nguy Cơ Ngoài Bệnh Viện (Pre-Hospital)?"}:::question
+        <div class="flowchart-editorial-card">
+          <div class="flowchart-card-header">
+            <div class="flowchart-card-title-group">
+              <span class="flowchart-card-icon">⚡</span>
+              <div>
+                <h3 class="flowchart-card-title">Lưu Đồ Xử Trí Khẩn Viêm Màng Não &amp; Bệnh Não Mô Cầu — Khung Giờ Vàng 1 Giờ</h3>
+                <p class="flowchart-card-subtitle">Hướng dẫn lâm sàng NICE 2024 (NG240) • Đánh giá tiền viện • Chỉ định an toàn chọc dò tủy sống • Kháng sinh tĩnh mạch trong 1h</p>
+              </div>
+            </div>
+            <span class="flowchart-card-badge">NICE NG240 • Editorial SVG</span>
+          </div>
 
-  PREHOSP -- "Nghi ngờ Não mô cầu<br/>(Tử ban, ban hoại tử, sốc)" --> IM_ABX["TIÊM KHÁNG SINH NGOÀI VIỆN CÀNG SỚM CÀNG TỐT<br/><small>• Ceftriaxone IM/IV (hoặc Benzylpenicillin IM)<br/>• Trừ khi làm chậm trễ chuyển viện nghiêm trọng<br/>• Chuyển viện cấp cứu lập tức</small>"]:::danger
+          <div class="flowchart-svg-container">
+            <svg class="med-svg" viewBox="0 0 960 960" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <marker id="arr-nice" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 1 1.5 L 8 5 L 1 8.5 Z" fill="var(--color-primary, #0284c7)"/>
+                </marker>
+                <marker id="arr-nice-warn" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 1 1.5 L 8 5 L 1 8.5 Z" fill="var(--color-warning, #f59e0b)"/>
+                </marker>
+                <marker id="arr-nice-danger" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 1 1.5 L 8 5 L 1 8.5 Z" fill="var(--color-danger, #ef4444)"/>
+                </marker>
+                <marker id="arr-nice-success" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 1 1.5 L 8 5 L 1 8.5 Z" fill="var(--color-success, #10b981)"/>
+                </marker>
+              </defs>
 
-  PREHOSP -- "Nghi ngờ Viêm màng não thuần túy<br/>(Không có ban hoại tử)" --> CHECK_DELAY{"Thời gian chuyển viện có bị trì hoãn kéo dài?"}:::question
-  CHECK_DELAY -- "Có trì hoãn" --> IM_ABX
-  CHECK_DELAY -- "Không trì hoãn" --> TRANS_ED["CHUYỂN VIỆN KHẨN ĐẾN KHOA CẤP CỨU (ED)"]:::action
+              {/* CONNECTORS */}
+              {/* START -> PREHOSP */}
+              <path d="M 480 106 V 136" stroke="var(--color-primary, #0284c7)" stroke-width="2" fill="none" marker-end="url(#arr-nice)"/>
 
-  IM_ABX --> TRANS_ED
-  TRANS_ED --> GOLDEN["KÍCH HOẠT QUY TRÌNH 1 GIỜ VÀNG (GOLDEN HOUR)<br/><small>Bác sĩ lâm sàng cao cấp trực tiếp chỉ đạo tại ED</small>"]:::start
+              {/* PREHOSP -> IM_ABX (Left) */}
+              <path d="M 310 163 H 191 Q 185 163 185 169 V 224" stroke="var(--color-danger, #ef4444)" stroke-width="2" fill="none" marker-end="url(#arr-nice-danger)"/>
 
-  GOLDEN --> LP_SAFETY{"Chọc dò tủy sống (LP) có khả thi trong 1h & không có chống chỉ định?"}:::question
+              {/* PREHOSP -> CHECK_DELAY (Right) */}
+              <path d="M 650 163 H 720 Q 726 163 726 169 V 224" stroke="var(--color-primary, #0284c7)" stroke-width="2" fill="none" marker-end="url(#arr-nice)"/>
 
-  LP_SAFETY -- "An toàn & không làm chậm trễ kháng sinh" --> DO_LP["THỰC HIỆN CẤY MÁU + CHỌC DÒ TỦY SỐNG (LP) TRƯỚC<br/><small>Lấy bệnh phẩm DNT làm BC, Protein, Glucose, Soi Gram, PCR</small>"]:::action
+              {/* CHECK_DELAY -> IM_ABX (Yes delay) */}
+              <path d="M 580 255 H 346" stroke="var(--color-danger, #ef4444)" stroke-width="2" fill="none" marker-end="url(#arr-nice-danger)"/>
 
-  LP_SAFETY -- "Có dấu hiệu tăng ALNS, sốc hoặc nguy cơ trễ thuốc >1h" --> DELAY_LP["HOÃN CHỌC DÒ TỦY SỐNG LẬP TỨC<br/><small>Lấy máu cấy STAT • Chụp CT sọ não loại trừ tổn thương khối nếu cần</small>"]:::warning
+              {/* IM_ABX -> TRANS_ED */}
+              <path d="M 185 335 V 371 Q 185 377 191 377 H 304" stroke="var(--color-primary, #0284c7)" stroke-width="2" fill="none" marker-end="url(#arr-nice)"/>
 
-  DO_LP --> GIVE_IV["DÙNG NGAY KHÁNG SINH TĨNH MẠCH TRONG VÒNG 1H ĐẦU<br/><small>• Ceftriaxone 2g IV q12h (hoặc Cefotaxime)<br/>• + Dexamethasone 10mg IV q6h (nếu nghi ngờ Phế cầu)<br/>• + Amoxicillin/Ampicillin nếu ≥60 tuổi / suy giảm MD (Listeria)</small>"]:::success
+              {/* CHECK_DELAY -> TRANS_ED (No delay) */}
+              <path d="M 726 280 V 371 Q 726 377 720 377 H 656" stroke="var(--color-primary, #0284c7)" stroke-width="2" fill="none" marker-end="url(#arr-nice)"/>
 
-  DELAY_LP --> GIVE_IV
-  GIVE_IV --> REASSESS["ĐÁNH GIÁ LÂM SÀNG SAU KHÁNG SINH<br/><small>Chọc dò DNT bổ sung khi bệnh nhân ổn định • Kế hoạch theo dõi 4-6 tuần</small>"]:::action`}
-        />
+              {/* TRANS_ED -> LP_SAFETY */}
+              <path d="M 480 410 V 441" stroke="var(--color-primary, #0284c7)" stroke-width="2" fill="none" marker-end="url(#arr-nice)"/>
+
+              {/* LP_SAFETY -> DO_LP (Left) */}
+              <path d="M 290 468 H 191 Q 185 468 185 474 V 524" stroke="var(--color-success, #10b981)" stroke-width="2" fill="none" marker-end="url(#arr-nice-success)"/>
+
+              {/* LP_SAFETY -> DELAY_LP (Right) */}
+              <path d="M 670 468 H 764 Q 770 468 770 474 V 524" stroke="var(--color-warning, #f59e0b)" stroke-width="2" fill="none" marker-end="url(#arr-nice-warn)"/>
+
+              {/* DO_LP -> GIVE_IV */}
+              <path d="M 185 635 V 671 Q 185 677 191 677 H 234" stroke="var(--color-success, #10b981)" stroke-width="2" fill="none" marker-end="url(#arr-nice-success)"/>
+
+              {/* DELAY_LP -> GIVE_IV */}
+              <path d="M 770 635 V 671 Q 770 677 764 677 H 726" stroke="var(--color-warning, #f59e0b)" stroke-width="2" fill="none" marker-end="url(#arr-nice-warn)"/>
+
+              {/* GIVE_IV -> REASSESS */}
+              <path d="M 480 800 V 834" stroke="var(--color-primary, #0284c7)" stroke-width="2" fill="none" marker-end="url(#arr-nice)"/>
+
+              {/* CONNECTOR LABELS (with background masks) */}
+              <g>
+                <rect x="150" y="151" width="150" height="22" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+                <text x="225" y="166" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-danger, #ef4444)">Nghi ngờ Não mô cầu (Tử ban)</text>
+              </g>
+
+              <g>
+                <rect x="655" y="151" width="160" height="22" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+                <text x="735" y="166" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-primary, #0284c7)">Viêm màng não (Không tử ban)</text>
+              </g>
+
+              <g>
+                <rect x="420" y="244" width="100" height="22" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+                <text x="470" y="259" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-danger, #ef4444)">Có trì hoãn (&gt;1h)</text>
+              </g>
+
+              <g>
+                <rect x="670" y="325" width="115" height="22" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+                <text x="727" y="340" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-success, #10b981)">Không trễ chuyển viện</text>
+              </g>
+
+              <g>
+                <rect x="135" y="457" width="145" height="22" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+                <text x="207" y="472" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-success, #10b981)">An toàn &amp; Không trễ thuốc</text>
+              </g>
+
+              <g>
+                <rect x="680" y="457" width="175" height="22" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+                <text x="767" y="472" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-warning, #f59e0b)">Có CCĐ / Nguy cơ trễ &gt; 1h</text>
+              </g>
+
+              {/* NODES */}
+              {/* NODE 1: START */}
+              <g class="flow-node">
+                <rect x="220" y="30" width="520" height="76" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+                <rect x="220" y="30" width="520" height="24" rx="10" fill="var(--color-primary, #0284c7)" fill-opacity="0.1"/>
+                <text x="480" y="47" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-primary, #0284c7)" letter-spacing="0.5">BƯỚC 1: NGHI NGỜ VIÊM MÀNG NÃO HOẶC BỆNH NÃO MÔ CẦU</text>
+                <text x="480" y="72" text-anchor="middle" font-size="12" font-weight="600" fill="var(--color-text, #1e293b)">Dấu hiệu cờ đỏ: Sốt cấp tính • Đau đầu dữ dội • Cứng gáy • Biến đổi tri giác</text>
+                <text x="480" y="92" text-anchor="middle" font-size="11" fill="var(--color-text-muted, #64748b)">Sợ ánh sáng (Photophobia) • Co giật • Dấu hiệu màng não (Kernig/Brudzinski (+))</text>
+              </g>
+
+              {/* NODE 2: PREHOSP (Decision) */}
+              <g class="flow-node">
+                <rect x="310" y="140" width="340" height="46" rx="23" fill="var(--color-surface, #ffffff)" stroke="var(--color-warning, #f59e0b)" stroke-width="2"/>
+                <text x="480" y="168" text-anchor="middle" font-size="12" font-weight="700" fill="var(--color-warning, #f59e0b)">Đánh Giá Nguy Cơ Ngoài Bệnh Viện (Pre-Hospital)</text>
+              </g>
+
+              {/* NODE 3: IM_ABX */}
+              <g class="flow-node">
+                <rect x="30" y="230" width="310" height="105" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-danger, #ef4444)" stroke-width="2"/>
+                <rect x="30" y="230" width="310" height="24" rx="10" fill="var(--color-danger, #ef4444)" fill-opacity="0.12"/>
+                <text x="185" y="247" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--color-danger, #ef4444)" letter-spacing="0.5">TIÊM KHÁNG SINH TIỀN VIỆN KHẨN</text>
+                <text x="45" y="272" font-size="11.5" font-weight="700" fill="var(--color-text, #1e293b)">Ceftriaxone IM / IV ngay lập tức</text>
+                <text x="45" y="291" font-size="11" fill="var(--color-text, #1e293b)">• Thay thế: Benzylpenicillin IM nếu dị ứng nhẹ</text>
+                <text x="45" y="310" font-size="11" fill="var(--color-text-muted, #64748b)">• Chỉ tiêm khi không làm chậm trễ chuyển viện</text>
+                <text x="45" y="327" font-size="11" font-weight="700" fill="var(--color-danger, #ef4444)">-&gt; Chuyển viện cấp cứu lập tức có báo trước</text>
+              </g>
+
+              {/* NODE 4: CHECK_DELAY (Decision) */}
+              <g class="flow-node">
+                <rect x="580" y="230" width="290" height="50" rx="25" fill="var(--color-surface, #ffffff)" stroke="var(--color-warning, #f59e0b)" stroke-width="2"/>
+                <text x="725" y="253" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--color-warning, #f59e0b)">Thời Gian Chuyển Đến Cấp Cứu</text>
+                <text x="725" y="269" text-anchor="middle" font-size="11" fill="var(--color-text-muted, #64748b)">Có bị trì hoãn &gt; 1 giờ hay không?</text>
+              </g>
+
+              {/* NODE 5: TRANS_ED */}
+              <g class="flow-node">
+                <rect x="310" y="345" width="340" height="65" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+                <rect x="310" y="345" width="340" height="24" rx="10" fill="var(--color-primary, #0284c7)" fill-opacity="0.1"/>
+                <text x="480" y="362" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-primary, #0284c7)" letter-spacing="0.5">TIẾP NHẬN CẤP CỨU &amp; KÍCH HOẠT 1 GIỜ VÀNG</text>
+                <text x="480" y="388" text-anchor="middle" font-size="12" font-weight="600" fill="var(--color-text, #1e293b)">Bác sĩ lâm sàng cao cấp (Senior Clinician) chỉ đạo trực tiếp</text>
+                <text x="480" y="403" text-anchor="middle" font-size="10.5" fill="var(--color-text-muted, #64748b)">Xác lập mục tiêu: Dùng kháng sinh tĩnh mạch trong vòng 1h</text>
+              </g>
+
+              {/* NODE 6: LP_SAFETY (Decision) */}
+              <g class="flow-node">
+                <rect x="290" y="445" width="380" height="46" rx="23" fill="var(--color-surface, #ffffff)" stroke="var(--color-warning, #f59e0b)" stroke-width="2"/>
+                <text x="480" y="473" text-anchor="middle" font-size="12" font-weight="700" fill="var(--color-warning, #f59e0b)">Chọc Dò Tủy Sống (LP) An Toàn Trong 1H?</text>
+              </g>
+
+              {/* NODE 7: DO_LP */}
+              <g class="flow-node">
+                <rect x="30" y="530" width="320" height="105" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-success, #10b981)" stroke-width="2"/>
+                <rect x="30" y="530" width="320" height="24" rx="10" fill="var(--color-success, #10b981)" fill-opacity="0.1"/>
+                <text x="190" y="547" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--color-success, #10b981)" letter-spacing="0.5">CẤY MÁU + CHỌC DÒ DNT (LP) TRƯỚC</text>
+                <text x="45" y="572" font-size="11.5" font-weight="600" fill="var(--color-text, #1e293b)">• Cấy máu 2 chai STAT</text>
+                <text x="45" y="591" font-size="11.5" fill="var(--color-text, #1e293b)">• Xét nghiệm DNT: <tspan font-weight="700">BC + phân loại, Protein, Glucose</tspan></text>
+                <text x="45" y="610" font-size="11" fill="var(--color-text-muted, #64748b)">• Soi nhuộm Gram khẩn, PCR đa tác nhân</text>
+                <text x="45" y="627" font-size="11" font-weight="700" fill="var(--color-success, #10b981)">-&gt; Không được để thủ thuật làm trễ thuốc &gt; 1h</text>
+              </g>
+
+              {/* NODE 8: DELAY_LP */}
+              <g class="flow-node">
+                <rect x="610" y="530" width="320" height="105" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-warning, #f59e0b)" stroke-width="2"/>
+                <rect x="610" y="530" width="320" height="24" rx="10" fill="var(--color-warning, #f59e0b)" fill-opacity="0.12"/>
+                <text x="770" y="547" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--color-warning, #f59e0b)" letter-spacing="0.5">HOÃN CHỌC DÒ TỦY SỐNG LẬP TỨC</text>
+                <text x="625" y="572" font-size="11" font-weight="600" fill="var(--color-text, #1e293b)">• Dấu hiệu tăng ALNS (phù gai, GCS &lt; 9, co giật)</text>
+                <text x="625" y="590" font-size="11" font-weight="600" fill="var(--color-text, #1e293b)">• Sốc tụt HA hoặc rối loạn đông máu nặng</text>
+                <text x="625" y="608" font-size="11" fill="var(--color-text-muted, #64748b)">• Cấy máu STAT • Chụp CT sọ não nếu cần</text>
+                <text x="625" y="627" font-size="11" font-weight="700" fill="var(--color-danger, #ef4444)">-&gt; TUYỆT ĐỐI KHÔNG TRÌ HOÃN KHÁNG SINH</text>
+              </g>
+
+              {/* NODE 9: GIVE_IV */}
+              <g class="flow-node">
+                <rect x="180" y="675" width="600" height="125" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-success, #10b981)" stroke-width="2"/>
+                <rect x="180" y="675" width="600" height="24" rx="10" fill="var(--color-success, #10b981)" fill-opacity="0.1"/>
+                <text x="480" y="692" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-success, #10b981)" letter-spacing="0.5">DÙNG NGAY KHÁNG SINH TĨNH MẠCH TRONG VÒNG 1H ĐẦU (GOLDEN HOUR)</text>
+                <text x="200" y="718" font-size="12" font-weight="700" fill="var(--color-primary, #0284c7)">• Ceftriaxone 2g IV mỗi 12h <tspan font-weight="400" fill="var(--color-text, #1e293b)">(hoặc Cefotaxime 2g IV mỗi 6h nếu có CCĐ Ceftriaxone)</tspan></text>
+                <text x="200" y="738" font-size="11.5" fill="var(--color-text, #1e293b)">• Phối hợp <tspan font-weight="700" fill="var(--color-accent, #8b5cf6)">Dexamethasone 10 mg IV mỗi 6h</tspan> (tiêm trước hoặc cùng lúc liều kháng sinh đầu nếu nghi Phế cầu)</text>
+                <text x="200" y="758" font-size="11.5" fill="var(--color-text, #1e293b)">• Bổ sung <tspan font-weight="700" fill="var(--color-warning, #f59e0b)">Amoxicillin / Ampicillin 2g IV mỗi 4h</tspan> nếu tuổi ≥ 60 hoặc suy giảm MD (diệt <tspan font-style="italic">Listeria</tspan>)</text>
+                <text x="200" y="780" font-size="11" font-style="italic" fill="var(--color-text-muted, #64748b)">-&gt; Thời gian dùng thuốc: Bắt buộc ≤ 1 giờ kể từ lúc tiếp nhận tại khoa cấp cứu</text>
+              </g>
+
+              {/* NODE 10: REASSESS */}
+              <g class="flow-node">
+                <rect x="180" y="840" width="600" height="90" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+                <rect x="180" y="840" width="600" height="24" rx="10" fill="var(--color-primary, #0284c7)" fill-opacity="0.1"/>
+                <text x="480" y="857" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-primary, #0284c7)" letter-spacing="0.5">ĐÁNH GIÁ LÂM SÀNG, CHỌC DÒ BỔ SUNG &amp; THEO DÕI SAU XUẤT VIỆN</text>
+                <text x="200" y="882" font-size="11.5" fill="var(--color-text, #1e293b)">• Thực hiện bổ sung chọc dò tủy sống (LP) an toàn ngay khi bệnh nhân ổn định và hết chống chỉ định</text>
+                <text x="200" y="901" font-size="11.5" fill="var(--color-text, #1e293b)">• Xuống thang hoặc điều chỉnh kháng sinh theo kết quả soi cấy, PCR và kháng sinh đồ</text>
+                <text x="200" y="920" font-size="11" font-weight="600" fill="var(--color-primary, #0284c7)">• Kế hoạch tái khám bắt buộc 4–6 tuần: Đo thính lực chính quy, di chứng vận động, nhận thức &amp; tâm lý</text>
+              </g>
+            </svg>
+          </div>
+
+          <div class="flowchart-legend-row">
+            <div class="legend-item"><span class="legend-dot" style="background:var(--color-danger, #ef4444);"></span> Tình trạng tối cấp / Tiêm ngoài viện khẩn</div>
+            <div class="legend-item"><span class="legend-dot" style="background:var(--color-primary, #0284c7);"></span> Quy trình chuẩn cấp cứu / Tiếp nhận</div>
+            <div class="legend-item"><span class="legend-dot" style="background:var(--color-warning, #f59e0b);"></span> Quyết định an toàn LP / Hoãn LP tạm thời</div>
+            <div class="legend-item"><span class="legend-dot" style="background:var(--color-success, #10b981);"></span> Mục tiêu 1 giờ vàng / Phác đồ IV chuẩn</div>
+            <div class="legend-item"><span class="legend-dot" style="background:var(--color-accent, #8b5cf6);"></span> Dexamethasone phối hợp chống viêm thần kinh</div>
+          </div>
+        </div>
       </div>
 
     </div>

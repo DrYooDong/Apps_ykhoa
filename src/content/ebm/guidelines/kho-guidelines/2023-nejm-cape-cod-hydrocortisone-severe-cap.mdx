@@ -265,32 +265,97 @@ sections:
         <p style="margin-bottom: 1.25rem; font-size: 0.88rem; color: var(--color-text-muted, #64748b);">Thử nghiệm áp dụng phác đồ truyền tĩnh mạch liên tục với liều khởi đầu 200 mg/ngày, phối hợp phác đồ giảm liều cá thể hóa dựa trên đáp ứng lâm sàng tại ngày thứ 4:</p>
 
         
-        <FlowchartViewer 
-          title="Lưu Đồ Phác Đồ Khởi Động & Giảm Liều Hydrocortisone Trong Viêm Phổi Nặng (CAPE COD 2023)"
-          code={`flowchart TD
-            START([Bệnh nhân Viêm phổi cộng đồng nặng nhập ICU | start | badge: NEJM CAPE COD | subtitle: Thỏa tiêu chuẩn SCAP ≥ 10 điểm HOẶC thở máy xâm lấn / không xâm lấn / HFNC])
-            TIMING{Khởi động trong vòng 24 giờ sau nhập ICU? (Thời gian vàng) | question}
+        <div class="flowchart-editorial-card">
+  <div class="flowchart-card-header">
+    <div class="flowchart-badge-title">
+      <span class="flowchart-badge-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg>
+      </span>
+      <span class="flowchart-badge-text">Lưu Đồ Phác Đồ Khởi Động &amp; Giảm Liều Hydrocortisone Trong Viêm Phổi Nặng (CAPE COD 2023)</span>
+    </div>
+    <span class="flowchart-version-tag">NEJM 2023 • CAPE COD Trial</span>
+  </div>
+  
+  <div class="flowchart-svg-scroll">
+    <svg class="med-svg" viewBox="0 0 920 480" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+    <defs>
+      <marker id="arr-cape" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-text-muted, #64748b)" />
+      </marker>
+      <marker id="arr-cape-act" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)" />
+      </marker>
+    </defs>
 
-            LATE[Khởi động muộn > 24-48 giờ | warning | subtitle: Hiệu quả giảm tử vong suy giảm rõ rệt]
-            EARLY[KHỞI ĐỘNG HYDROCORTISONE 200 MG/NGÀY TRUYỀN TĨNH MẠCH LIÊN TỤC ⭐ | danger | badge: Liều tấn công | subtitle: Duy trì truyền TM liên tục 200mg/24h trong 4 ngày đầu tiên (Ngày 1 - 4)]
+    <g class="flow-node">
+      <rect x="230" y="15" width="460" height="52" rx="8" fill="var(--color-primary-subtle, rgba(2,132,199,0.12))" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+      <text x="460" y="36" font-size="13" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">VIÊM PHỔI CỘNG ĐỒNG NẶNG (sCAP) NHẬP ICU</text>
+      <text x="460" y="53" font-size="11" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Thỏa tiêu chuẩn SCAP ≥ 10 điểm HOẶC cần thở máy xâm lấn / không xâm lấn / HFNC</text>
+    </g>
 
-            DAY4{Đánh giá đáp ứng lâm sàng tại Ngày thứ 4 (PaO2/FiO2, cải thiện hô hấp)? | question}
-            
-            FAST[CẢI THIỆN NHANH (PHÁC ĐỒ 8 NGÀY) 🟢 | success | badge: Liệu trình 8 ngày | subtitle: Ngày 5-6: Giảm xuống 100 mg/ngày -> Ngày 7-8: Giảm xuống 50 mg/ngày -> Dừng hoàn toàn]
-            SLOW[CẢI THIỆN CHẬM (PHÁC ĐỒ 14 NGÀY) 🟡 | warning | badge: Liệu trình 14 ngày | subtitle: Ngày 5-8: 100 mg/ngày -> Ngày 9-12: 50 mg/ngày -> Ngày 13-14: 25 mg/ngày -> Dừng]
+    <path d="M 460 67 L 460 95" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arr-cape-act)"/>
 
-            DISCHARGE[NGUYÊN TẮC: DỪNG THUỐC NGAY KHI BỆNH NHÂN XUẤT VIỆN KHỎI ICU 🏥 | action | subtitle: Giảm 41% nguy cơ đặt nội khí quản & giảm tuyệt đối 5.6% tử vong ngày 28]
+    <g class="flow-node">
+      <polygon points="460,95 660,128 460,161 260,128" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="2"/>
+      <text x="460" y="124" font-size="12" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">Thời Điểm Nhập ICU: Khởi Động Trong 24h Đầu?</text>
+      <text x="460" y="140" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Cửa sổ thời gian vàng tối đa hóa lợi ích sống còn</text>
+    </g>
 
-            START --> TIMING
-            TIMING -->|Muộn| LATE
-            TIMING ==>|Sớm < 24h| EARLY
-            EARLY --> DAY4
-            DAY4 -->|Cải thiện nhanh| FAST
-            DAY4 -->|Cải thiện chậm| SLOW
-            FAST --> DISCHARGE
-            SLOW --> DISCHARGE
-          `}
-        />
+    <path d="M 260 128 L 140 128 L 140 190" fill="none" stroke="var(--color-warning, #f59e0b)" stroke-width="2" marker-end="url(#arr-cape-act)"/>
+    <g class="flow-node">
+      <rect x="30" y="190" width="220" height="75" rx="8" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="1.8"/>
+      <text x="140" y="213" font-size="12" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">Khởi Động Muộn (&gt; 24–48h)</text>
+      <text x="140" y="233" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">Hiệu quả suy giảm rõ rệt</text>
+      <text x="140" y="248" font-size="9.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Không còn đạt đỉnh lợi ích NEJM</text>
+    </g>
+
+    <path d="M 660 128 L 740 128 L 740 190" fill="none" stroke="var(--color-danger, #ef4444)" stroke-width="2" marker-end="url(#arr-cape-act)"/>
+    <g class="flow-node">
+      <rect x="610" y="190" width="260" height="75" rx="8" fill="var(--color-danger-subtle, rgba(239,68,68,0.12))" stroke="var(--color-danger, #ef4444)" stroke-width="2"/>
+      <text x="740" y="213" font-size="12.5" font-weight="700" fill="var(--color-danger, #ef4444)" text-anchor="middle">HYDROCORTISONE 200 MG/NGÀY</text>
+      <text x="740" y="233" font-size="10.5" font-weight="600" fill="var(--color-text, #334155)" text-anchor="middle">Truyền Tĩnh Mạch Liên Tục</text>
+      <text x="740" y="248" font-size="10" fill="var(--color-danger, #ef4444)" text-anchor="middle">Duy trì trong 4 ngày đầu (Ngày 1–4)</text>
+    </g>
+
+    <path d="M 740 265 L 740 300 L 460 300 M 240 300 L 680 300" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+    <path d="M 240 300 L 240 325" fill="none" stroke="var(--color-success, #22c55e)" stroke-width="2" marker-end="url(#arr-cape-act)"/>
+    <path d="M 680 300 L 680 325" fill="none" stroke="var(--color-warning, #f59e0b)" stroke-width="2" marker-end="url(#arr-cape-act)"/>
+
+    <g class="flow-node">
+      <rect x="60" y="325" width="360" height="85" rx="8" fill="var(--color-success-subtle, rgba(34,197,94,0.12))" stroke="var(--color-success, #22c55e)" stroke-width="1.8"/>
+      <text x="240" y="348" font-size="12" font-weight="700" fill="var(--color-success, #16a34a)" text-anchor="middle">CẢI THIỆN NHANH (PHÁC ĐỒ 8 NGÀY)</text>
+      <text x="240" y="368" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">• Ngày 5–6: Giảm xuống 100 mg/ngày</text>
+      <text x="240" y="386" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">• Ngày 7–8: Giảm xuống 50 mg/ngày -> DỪNG</text>
+    </g>
+
+    <g class="flow-node">
+      <rect x="500" y="325" width="360" height="85" rx="8" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="1.8"/>
+      <text x="680" y="348" font-size="12" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">CẢI THIỆN CHẬM (PHÁC ĐỒ 14 NGÀY)</text>
+      <text x="680" y="368" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">• Ngày 5–8: 100mg • Ngày 9–12: 50mg</text>
+      <text x="680" y="386" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">• Ngày 13–14: 25 mg/ngày -> DỪNG HOÀN TOÀN</text>
+    </g>
+
+    <path d="M 240 410 L 240 435 L 460 435" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+    <path d="M 680 410 L 680 435 L 460 435" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+    <text x="460" y="455" font-size="11" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">NGUYÊN TẮC: DỪNG THUỐC NGAY KHI BỆNH NHÂN XUẤT VIỆN KHỎI ICU (GIẢM 5.6% TỬ VONG)</text>
+  </svg>
+  </div>
+
+  <div class="flowchart-legend-row">
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(239,68,68,0.12); border-color: #ef4444;"></span>
+        <span>Khởi động sớm < 24h: Hydrocortisone 200mg/24h liên tục</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(34,197,94,0.12); border-color: #22c55e;"></span>
+        <span>Cải thiện nhanh: Giảm liều theo phác đồ 8 ngày</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(245,158,11,0.12); border-color: #f59e0b;"></span>
+        <span>Cải thiện chậm: Giảm liều theo phác đồ 14 ngày</span>
+      </div>
+  </div>
+</div>
 
         <div style="margin-top: 1.5rem;"></div>
         <div class="grid-3col">

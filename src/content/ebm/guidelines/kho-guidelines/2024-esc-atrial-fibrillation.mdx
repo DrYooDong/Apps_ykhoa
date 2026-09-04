@@ -216,28 +216,197 @@ sections:
           </div>
         </div>
 
-        <FlowchartViewer
-          title="Lưu Đồ Thuật Toán Phân Tầng & Chỉ Định Kháng Đông Trong Rung Nhĩ (ESC 2024 AF-CARE)"
-          code={`graph TD
-  START["BỆNH NHÂN RUNG NHĨ (LÂM SÀNG HOẶC ĐIỆN TÂM ĐỒ)"]:::start --> VALVE{"Có Van Tim Cơ Học HOẶC Hẹp 2 Lá Vừa - Nặng?"}:::question
-  
-  VALVE -- "CÓ (Rung nhĩ do bệnh van tim)" --> VKA["CHỈ ĐỊNH BẮT BUỘC KHÁNG VITAMIN K (VKA)<br/><small>Warfarin đích INR 2.0–3.0 (TTR > 70%) • Chống chỉ định DOACs</small>"]:::danger
-  VALVE -- "KHÔNG" --> SPECIAL{"Bệnh Cơ Tim Phì Đại (HCM) hoặc Nhiễm Bột Tim (Amyloid)?"}:::question
-  
-  SPECIAL -- "CÓ" --> OAC_AUTO["CHỈ ĐỊNH OAC TỰ ĐỘNG (Class I, Level B)<br/><small>Bắt buộc dùng kháng đông đường uống không phụ thuộc điểm CHA₂DS₂-VA</small>"]:::success
-  SPECIAL -- "KHÔNG" --> CHA_SCORE{"Đánh Giá Điểm Nguy Cơ CHA₂DS₂-VA (ESC 2024)<br/><small>(HF, Tăng HA, Tuổi ≥75 [2đ], ĐTĐ, Tiền sử đột quỵ [2đ], Bệnh mạch máu, Tuổi 65-74)</small>"}:::question
-  
-  CHA_SCORE -- "Điểm = 0 (Nguy cơ thực sự thấp)" --> NO_OAC["KHÔNG DÙNG THUỐC KHÁNG ĐÔNG HOẶC KHÁNG TIỂU CẦU<br/><small>Aspirin/Clopidogrel bị chống chỉ định (Class III)</small>"]:::action
-  CHA_SCORE -- "Điểm = 1 (Nguy cơ trung bình)" --> OAC_CONSIDER["CÂN NHẮC DÙNG DOAC (Class IIa, Level B)<br/><small>Cá thể hóa theo nguyện vọng bệnh nhân & nguy cơ xuất huyết</small>"]:::warning
-  CHA_SCORE -- "Điểm ≥ 2 (Nguy cơ cao)" --> DOAC_FIRST["CHỈ ĐỊNH DÙNG DOAC HÀNG ĐẦU (Class I, Level A)<br/><small>Ưu tiên Apixaban, Dabigatran, Edoxaban, Rivaroxaban hơn VKA</small>"]:::success
+        <div class="flowchart-editorial-card">
+          <div class="flowchart-card-header">
+            <div class="flowchart-card-title-group">
+              <span class="flowchart-card-icon">🫀</span>
+              <div>
+                <h3 class="flowchart-card-title">Lưu Đồ Thuật Toán Phân Tầng &amp; Chỉ Định Kháng Đông Trong Rung Nhĩ (AF-CARE)</h3>
+                <p class="flowchart-card-subtitle">Hướng dẫn ESC 2024 • Thang điểm CHA₂DS₂-VA (loại bỏ biến số giới tính) • Chỉ định DOACs đầu tay • Phân định bệnh van tim</p>
+              </div>
+            </div>
+            <span class="flowchart-card-badge">ESC 2024 • Editorial SVG</span>
+          </div>
 
-  classDef start fill:#e0f2fe,stroke:#0284c7,stroke-width:2px,color:#0369a1
-  classDef question fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#854d0e
-  classDef action fill:#eff6ff,stroke:#3b82f6,stroke-width:1.5px,color:#1e40af
-  classDef danger fill:#fee2e2,stroke:#ef4444,stroke-width:2px,color:#991b1b
-  classDef warning fill:#fef3c7,stroke:#f59e0b,stroke-width:2px,color:#92400e
-  classDef success fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#15803d`}
-        />
+          <div class="flowchart-svg-container">
+            <svg class="med-svg" viewBox="0 0 960 760" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <marker id="arr-esc" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 1 1.5 L 8 5 L 1 8.5 Z" fill="var(--color-primary, #0284c7)"/>
+                </marker>
+                <marker id="arr-esc-warn" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 1 1.5 L 8 5 L 1 8.5 Z" fill="var(--color-warning, #f59e0b)"/>
+                </marker>
+                <marker id="arr-esc-danger" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 1 1.5 L 8 5 L 1 8.5 Z" fill="var(--color-danger, #ef4444)"/>
+                </marker>
+                <marker id="arr-esc-success" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 1 1.5 L 8 5 L 1 8.5 Z" fill="var(--color-success, #10b981)"/>
+                </marker>
+              </defs>
+
+              {/* CONNECTORS */}
+              {/* START -> VALVE */}
+              <path d="M 480 96 V 126" stroke="var(--color-primary, #0284c7)" stroke-width="2" fill="none" marker-end="url(#arr-esc)"/>
+
+              {/* VALVE -> VKA (Right - Yes) */}
+              <path d="M 680 153 H 764 Q 770 153 770 159 V 214" stroke="var(--color-danger, #ef4444)" stroke-width="2" fill="none" marker-end="url(#arr-esc-danger)"/>
+
+              {/* VALVE -> SPECIAL (Down - No) */}
+              <path d="M 340 176 V 219" stroke="var(--color-primary, #0284c7)" stroke-width="2" fill="none" marker-end="url(#arr-esc)"/>
+
+              {/* SPECIAL -> OAC_AUTO (Left - Yes) */}
+              <path d="M 130 248 H 181 Q 175 248 175 254 V 314" stroke="var(--color-success, #10b981)" stroke-width="2" fill="none" marker-end="url(#arr-esc-success)"/>
+
+              {/* SPECIAL -> CHA_SCORE (Down - No) */}
+              <path d="M 480 271 V 314" stroke="var(--color-primary, #0284c7)" stroke-width="2" fill="none" marker-end="url(#arr-esc)"/>
+
+              {/* CHA_SCORE -> NO_OAC (Left: 0 pts) */}
+              <path d="M 400 380 V 430 Q 400 436 394 436 H 176 Q 170 436 170 442 V 484" stroke="var(--color-primary, #0284c7)" stroke-width="2" fill="none" marker-end="url(#arr-esc)"/>
+
+              {/* CHA_SCORE -> OAC_CONSIDER (Center: 1 pt) */}
+              <path d="M 550 380 V 484" stroke="var(--color-warning, #f59e0b)" stroke-width="2" fill="none" marker-end="url(#arr-esc-warn)"/>
+
+              {/* CHA_SCORE -> DOAC_FIRST (Right: >=2 pts) */}
+              <path d="M 700 380 V 430 Q 700 436 706 436 H 790 Q 796 436 796 442 V 484" stroke="var(--color-success, #10b981)" stroke-width="2" fill="none" marker-end="url(#arr-esc-success)"/>
+
+              {/* CONNECTOR LABELS (with background masks) */}
+              <g>
+                <rect x="695" y="141" width="130" height="22" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+                <text x="760" y="156" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-danger, #ef4444)">CÓ (Bệnh van tim)</text>
+              </g>
+
+              <g>
+                <rect x="300" y="185" width="80" height="22" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+                <text x="340" y="200" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-primary, #0284c7)">KHÔNG</text>
+              </g>
+
+              <g>
+                <rect x="110" y="236" width="120" height="22" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+                <text x="170" y="251" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-success, #10b981)">CÓ (HCM / Amyloid)</text>
+              </g>
+
+              <g>
+                <rect x="440" y="280" width="80" height="22" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+                <text x="480" y="295" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-primary, #0284c7)">KHÔNG</text>
+              </g>
+
+              <g>
+                <rect x="100" y="446" width="140" height="22" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+                <text x="170" y="461" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-primary, #0284c7)">0 Điểm (Nguy cơ thấp)</text>
+              </g>
+
+              <g>
+                <rect x="470" y="446" width="160" height="22" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+                <text x="550" y="461" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-warning, #f59e0b)">1 Điểm (Nguy cơ trung bình)</text>
+              </g>
+
+              <g>
+                <rect x="730" y="446" width="135" height="22" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+                <text x="797" y="461" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-success, #10b981)">≥ 2 Điểm (Nguy cơ cao)</text>
+              </g>
+
+              {/* NODES */}
+              {/* NODE 1: START */}
+              <g class="flow-node">
+                <rect x="230" y="30" width="500" height="66" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+                <rect x="230" y="30" width="500" height="24" rx="10" fill="var(--color-primary, #0284c7)" fill-opacity="0.1"/>
+                <text x="480" y="47" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-primary, #0284c7)" letter-spacing="0.5">BỆNH NHÂN RUNG NHĨ (LÂM SÀNG HOẶC ĐIỆN TÂM ĐỒ)</text>
+                <text x="480" y="74" text-anchor="middle" font-size="12" font-weight="600" fill="var(--color-text, #1e293b)">Xác chẩn qua ECG 12 chuyển đạo tiêu chuẩn hoặc dải nhịp ECG ≥ 30 giây</text>
+              </g>
+
+              {/* NODE 2: VALVE (Decision) */}
+              <g class="flow-node">
+                <rect x="280" y="130" width="400" height="46" rx="23" fill="var(--color-surface, #ffffff)" stroke="var(--color-warning, #f59e0b)" stroke-width="2"/>
+                <text x="480" y="158" text-anchor="middle" font-size="12" font-weight="700" fill="var(--color-warning, #f59e0b)">Có Van Tim Cơ Học Hoặc Hẹp 2 Lá Vừa – Nặng?</text>
+              </g>
+
+              {/* NODE 3: VKA */}
+              <g class="flow-node">
+                <rect x="620" y="220" width="310" height="105" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-danger, #ef4444)" stroke-width="2"/>
+                <rect x="620" y="220" width="310" height="24" rx="10" fill="var(--color-danger, #ef4444)" fill-opacity="0.12"/>
+                <text x="775" y="237" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-danger, #ef4444)" letter-spacing="0.5">BẮT BUỘC KHÁNG VITAMIN K (VKA)</text>
+                <text x="635" y="262" font-size="11.5" font-weight="700" fill="var(--color-text, #1e293b)">Warfarin / Acenocoumarol (Class I, Level A)</text>
+                <text x="635" y="281" font-size="11.5" fill="var(--color-text, #1e293b)">• Đích INR: 2.0–3.0 (duy trì TTR &gt; 70%)</text>
+                <text x="635" y="300" font-size="11" font-weight="700" fill="var(--color-danger, #ef4444)">• CHỐNG CHỈ ĐỊNH DOACs ở nhóm van tim cơ học</text>
+              </g>
+
+              {/* NODE 4: SPECIAL (Decision) */}
+              <g class="flow-node">
+                <rect x="130" y="225" width="420" height="46" rx="23" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+                <text x="340" y="253" text-anchor="middle" font-size="12" font-weight="700" fill="var(--color-primary, #0284c7)">Bệnh Cơ Tim Phì Đại (HCM) Hoặc Amyloid Tim?</text>
+              </g>
+
+              {/* NODE 5: OAC_AUTO */}
+              <g class="flow-node">
+                <rect x="30" y="320" width="290" height="105" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-success, #10b981)" stroke-width="2"/>
+                <rect x="30" y="320" width="290" height="24" rx="10" fill="var(--color-success, #10b981)" fill-opacity="0.1"/>
+                <text x="175" y="337" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-success, #10b981)" letter-spacing="0.5">CHỈ ĐỊNH OAC TỰ ĐỘNG (CLASS I, B)</text>
+                <text x="45" y="362" font-size="11.5" font-weight="700" fill="var(--color-text, #1e293b)">Kháng đông bắt buộc đường uống</text>
+                <text x="45" y="381" font-size="11" fill="var(--color-text-muted, #64748b)">Không phụ thuộc vào điểm CHA₂DS₂-VA</text>
+                <text x="45" y="400" font-size="11.5" fill="var(--color-success, #10b981)">• Ưu tiên lựa chọn DOACs hơn VKA</text>
+              </g>
+
+              {/* NODE 6: CHA_SCORE */}
+              <g class="flow-node">
+                <rect x="360" y="320" width="570" height="60" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+                <rect x="360" y="320" width="570" height="22" rx="10" fill="var(--color-primary, #0284c7)" fill-opacity="0.1"/>
+                <text x="645" y="336" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-primary, #0284c7)" letter-spacing="0.5">PHÂN TẦNG ĐIỂM NGUY CƠ CHA₂DS₂-VA (ESC 2024)</text>
+                <text x="645" y="358" text-anchor="middle" font-size="11.5" fill="var(--color-text, #1e293b)">C: Suy tim (+1) • H: Tăng HA (+1) • A₂: Tuổi ≥75 (+2) • D: ĐTĐ (+1) • S₂: Đột quỵ/TIA (+2) • V: Mạch máu (+1) • A: Tuổi 65–74 (+1)</text>
+                <text x="645" y="373" text-anchor="middle" font-size="10" font-style="italic" fill="var(--color-danger, #ef4444)">*ESC 2024: Đã loại bỏ hoàn toàn yếu tố giới tính nữ (Sex category) khỏi thang điểm</text>
+              </g>
+
+              {/* NODE 7: NO_OAC */}
+              <g class="flow-node">
+                <rect x="30" y="490" width="280" height="115" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+                <rect x="30" y="490" width="280" height="24" rx="10" fill="var(--color-primary, #0284c7)" fill-opacity="0.1"/>
+                <text x="170" y="507" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--color-primary, #0284c7)" letter-spacing="0.5">0 ĐIỂM: NGUY CƠ THỰC SỰ THẤP</text>
+                <text x="45" y="532" font-size="11.5" font-weight="700" fill="var(--color-text, #1e293b)">KHÔNG DÙNG THUỐC KHÁNG ĐÔNG</text>
+                <text x="45" y="551" font-size="11" font-weight="700" fill="var(--color-danger, #ef4444)">• CHỐNG CHỈ ĐỊNH Aspirin / Kháng TC</text>
+                <text x="45" y="569" font-size="11" fill="var(--color-text-muted, #64748b)">Aspirin không ngừa đột quỵ mà tăng XH</text>
+                <text x="45" y="587" font-size="11" fill="var(--color-text-muted, #64748b)">• Đánh giá lại nguy cơ định kỳ mỗi năm</text>
+              </g>
+
+              {/* NODE 8: OAC_CONSIDER */}
+              <g class="flow-node">
+                <rect x="340" y="490" width="280" height="115" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-warning, #f59e0b)" stroke-width="2"/>
+                <rect x="340" y="490" width="280" height="24" rx="10" fill="var(--color-warning, #f59e0b)" fill-opacity="0.12"/>
+                <text x="480" y="507" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--color-warning, #f59e0b)" letter-spacing="0.5">1 ĐIỂM: NGUY CƠ TRUNG BÌNH</text>
+                <text x="355" y="532" font-size="11.5" font-weight="700" fill="var(--color-warning, #f59e0b)">CÂN NHẮC DÙNG DOAC (CLASS IIA, B)</text>
+                <text x="355" y="551" font-size="11" fill="var(--color-text, #1e293b)">• Cân nhắc khởi trị bằng DOAC</text>
+                <text x="355" y="569" font-size="11" fill="var(--color-text, #1e293b)">• Cá thể hóa theo nguyện vọng người bệnh</text>
+                <text x="355" y="587" font-size="11" fill="var(--color-text-muted, #64748b)">• Tối ưu hóa các yếu tố nguy cơ xuất huyết</text>
+              </g>
+
+              {/* NODE 9: DOAC_FIRST */}
+              <g class="flow-node">
+                <rect x="650" y="490" width="280" height="115" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-success, #10b981)" stroke-width="2"/>
+                <rect x="650" y="490" width="280" height="24" rx="10" fill="var(--color-success, #10b981)" fill-opacity="0.1"/>
+                <text x="790" y="507" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--color-success, #10b981)" letter-spacing="0.5">≥ 2 ĐIỂM: NGUY CƠ ĐỘT QUỴ CAO</text>
+                <text x="665" y="532" font-size="11.5" font-weight="700" fill="var(--color-success, #10b981)">CHỈ ĐỊNH DOAC ĐẦU TAY (CLASS I, A)</text>
+                <text x="665" y="551" font-size="11" font-weight="600" fill="var(--color-text, #1e293b)">• Ưu tiên DOACs hơn hẳn VKA:</text>
+                <text x="665" y="569" font-size="11" fill="var(--color-text-muted, #64748b)">Apixaban • Dabigatran • Edoxaban • Rivaroxaban</text>
+                <text x="665" y="587" font-size="11" font-weight="600" fill="var(--color-primary, #0284c7)">• Giảm 50% nguy cơ xuất huyết nội sọ</text>
+              </g>
+
+              {/* BOTTOM PANEL: AF-CARE SYNTHESIS */}
+              <g class="flow-node">
+                <rect x="30" y="635" width="900" height="75" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+                <rect x="30" y="635" width="900" height="22" rx="10" fill="var(--color-primary, #0284c7)" fill-opacity="0.08"/>
+                <text x="480" y="650" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-primary, #0284c7)" letter-spacing="0.5">BỐN TRỤ CỘT QUẢN LÝ RUNG NHĨ THEO CHIẾN LƯỢC AF-CARE (ESC 2024)</text>
+                <text x="50" y="675" font-size="11" fill="var(--color-text, #1e293b)"><tspan font-weight="700" fill="var(--color-primary, #0284c7)">C - Comorbidity:</tspan> Quản lý tích cực bệnh đồng mắc (THA, ĐTĐ, Béo phì, Ngưng thở khi ngủ) • <tspan font-weight="700" fill="var(--color-danger, #ef4444)">A - Avoid stroke:</tspan> Dùng OAC theo thang CHA₂DS₂-VA</text>
+                <text x="50" y="695" font-size="11" fill="var(--color-text, #1e293b)"><tspan font-weight="700" fill="var(--color-warning, #f59e0b)">R - Rate/Rhythm control:</tspan> Kiểm soát tần số thất hoặc chuyển nhịp bằng thuốc/triệt đốt • <tspan font-weight="700" fill="var(--color-success, #10b981)">E - Evaluation:</tspan> Đánh giá lại định kỳ, không dừng OAC theo thể AF</text>
+              </g>
+            </svg>
+          </div>
+
+          <div class="flowchart-legend-row">
+            <div class="legend-item"><span class="legend-dot" style="background:var(--color-danger, #ef4444);"></span> Bắt buộc VKA (Van cơ học / Hẹp 2 lá vừa-nặng)</div>
+            <div class="legend-item"><span class="legend-dot" style="background:var(--color-success, #10b981);"></span> Chỉ định DOAC đầu tay (Class I) / Tự động OAC</div>
+            <div class="legend-item"><span class="legend-dot" style="background:var(--color-warning, #f59e0b);"></span> Cân nhắc DOAC (Class IIa - 1 điểm)</div>
+            <div class="legend-item"><span class="legend-dot" style="background:var(--color-primary, #0284c7);"></span> Không dùng thuốc chống đông (0 điểm)</div>
+          </div>
+        </div>
 
         
         <div class="cdss-box">

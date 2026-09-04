@@ -91,33 +91,210 @@ sections:
       </div>
       <div class="sec-body">
         <p style="font-size:0.86rem; color:var(--color-text-muted, #64748b); margin-bottom:1rem;">Mô hình hóa toàn diện quy trình tiếp cận bệnh nhân nghi ngờ Viêm gan do rượu cấp (AH) theo Hướng dẫn lâm sàng ACG 2024:</p>
-        <FlowchartViewer
-          title="Thuật Toán Tiếp Cận Chẩn Đoán &amp; Điều Trị Viêm Gan Do Rượu (ACG 2024)"
-          code={`graph TD
-  START["NGHI NGỜ VIÊM GAN DO RƯỢU CẤP (AH)<br/><small>Vàng da < 60 ngày + Rượu > 50g/ngày > 6 tháng + Bilirubin > 3 mg/dL + AST 50–400 U/L</small>"]:::danger --> EXCL["LOẠI TRỪ NGUYÊN NHÂN KHÁC<br/><small>Virus A/B/C/E, Tắc mật, DILI, Gan sốc, Viêm gan tự miễn<br/>Xác định: Probable AH (đủ tiêu chuẩn) vs Possible AH (có yếu tố nhiễu → Sinh thiết TJLB)</small>"]:::action
-  
-  EXCL --> SEV{"Phân Tầng Độ Nặng Theo Thang Điểm MELD"}:::question
-  
-  SEV -- "MELD ≤ 20 (Moderate AH)" --> MOD["MELD ≤ 20: Chăm Sóc Nâng Đỡ & Dinh Dưỡng<br/><small>• Bù dịch cẩn trọng, Dinh dưỡng 35 kcal/kg + Thiamine + Kẽm<br/>• Điều trị AUD: Baclofen 5-15mg x 3 lần/ngày</small>"]:::success
-  SEV -- "MELD > 20 (Severe AH)" --> SEV_AH["MELD > 20: Viêm Gan Nặng (Tử vong 90 ngày ~ 20%)<br/><small>• Đánh giá Spontaneous Recovery (Fast fallers)<br/>• Kiểm tra Chống chỉ định của Corticosteroids</small>"]:::warning
-  
-  SEV_AH --> CORT_WINDOW{"Đánh Giá Ngưỡng MELD & Chống Chỉ Định"}:::question
-  
-  CORT_WINDOW -- "MELD 21 – 39 (Lợi ích tối đa)" --> STEROIDS["Prednisolone 40 mg/ngày (hoặc Methylpred IV 32mg)<br/><small>Phối hợp IV N-Acetylcysteine (NAC) trong 5 ngày (giảm tử vong 85% do nhiễm trùng)</small>"]:::start
-  CORT_WINDOW -- "MELD > 50 hoặc Có Chống Chỉ Định" --> NO_STEROID["Chống Chỉ Định Dùng Corticosteroids<br/><small>Nhiễm trùng chưa kiểm soát, Xuất huyết tiêu hóa chưa ổn định<br/>→ Chuyển đánh giá GHÉP GAN SỚM (Early Liver Transplant)</small>"]:::danger
-  
-  STEROIDS --> LILLE{"Đánh Giá Thang Điểm LILLE Ở Ngày Thứ 4 Hoặc Ngày Thứ 7"}:::question
-  
-  LILLE -- "Lille ≤ 0.45 (Đáp ứng - Responder)" --> CONT["Tiếp Tục Prednisolone Đủ 28 Ngày<br/><small>Không cần giảm liều (taper) chậm dần • Chuyển tiếp điều trị kiêng rượu (Baclofen)</small>"]:::success
-  LILLE -- "Lille > 0.45 (Không đáp ứng - Non-responder)" --> STOP["DỪNG NGAY STEROIDS LẬP TỨC<br/><small>• CẤM tiếp tục steroids (tăng nguy cơ nhiễm nấm xâm lấn tử vong)<br/>• CẤM dùng Pentoxifylline làm thuốc cứu vãn (STOPAH vô hiệu)<br/>• Kích hoạt quy trình ĐÁNH GIÁ GHÉP GAN SỚM (SALT score, sống còn 84%)</small>"]:::danger
+        
+        <div class="flowchart-editorial-card">
+          <div class="flowchart-card-header">
+            <div class="flowchart-card-title-group">
+              <span class="flowchart-card-icon">🗺️</span>
+              <div>
+                <h3 class="flowchart-card-title">Thuật Toán Tiếp Cận Chẩn Đoán &amp; Phân Tầng Điều Trị Viêm Gan Do Rượu Cấp (AH)</h3>
+                <p class="flowchart-card-subtitle">Khuyến cáo lâm sàng ACG 2024 (Figure 3) • Phân tầng MELD • Ngưỡng đáp ứng Lille Score • Ghép gan sớm</p>
+              </div>
+            </div>
+            <span class="flowchart-card-badge">ACG 2024 • Editorial SVG</span>
+          </div>
 
-  classDef start fill:#e0f2fe,stroke:#0284c7,stroke-width:2px,color:#0369a1
-  classDef question fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#854d0e
-  classDef action fill:#eff6ff,stroke:#3b82f6,stroke-width:1.5px,color:#1e40af
-  classDef danger fill:#fee2e2,stroke:#ef4444,stroke-width:2px,color:#991b1b
-  classDef warning fill:#fef3c7,stroke:#f59e0b,stroke-width:2px,color:#92400e
-  classDef success fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#15803d`}
-        />
+          <div class="flowchart-svg-container">
+            <svg class="med-svg" viewBox="0 0 960 940" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <marker id="arr-acg" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 1 1.5 L 8 5 L 1 8.5 Z" fill="var(--color-primary, #0284c7)"/>
+                </marker>
+                <marker id="arr-acg-warn" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 1 1.5 L 8 5 L 1 8.5 Z" fill="var(--color-warning, #f59e0b)"/>
+                </marker>
+                <marker id="arr-acg-danger" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 1 1.5 L 8 5 L 1 8.5 Z" fill="var(--color-danger, #ef4444)"/>
+                </marker>
+                <marker id="arr-acg-success" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 1 1.5 L 8 5 L 1 8.5 Z" fill="var(--color-success, #10b981)"/>
+                </marker>
+              </defs>
+
+              {/* CONNECTORS */}
+              {/* START -> EXCL */}
+              <path d="M 480 106 V 136" stroke="var(--color-primary, #0284c7)" stroke-width="2" fill="none" marker-end="url(#arr-acg)"/>
+
+              {/* EXCL -> SEV */}
+              <path d="M 480 216 V 246" stroke="var(--color-primary, #0284c7)" stroke-width="2" fill="none" marker-end="url(#arr-acg)"/>
+
+              {/* SEV -> MOD (Left) */}
+              <path d="M 340 273 H 201 Q 195 273 195 279 V 334" stroke="var(--color-success, #10b981)" stroke-width="2" fill="none" marker-end="url(#arr-acg-success)"/>
+
+              {/* SEV -> SEV_AH (Right) */}
+              <path d="M 620 273 H 720 Q 726 273 726 279 V 334" stroke="var(--color-warning, #f59e0b)" stroke-width="2" fill="none" marker-end="url(#arr-acg-warn)"/>
+
+              {/* SEV_AH -> CORT_WINDOW */}
+              <path d="M 726 445 V 484" stroke="var(--color-warning, #f59e0b)" stroke-width="2" fill="none" marker-end="url(#arr-acg-warn)"/>
+
+              {/* CORT_WINDOW -> STEROID_RX (Left) */}
+              <path d="M 580 513 H 501 Q 495 513 495 519 V 574" stroke="var(--color-primary, #0284c7)" stroke-width="2" fill="none" marker-end="url(#arr-acg)"/>
+
+              {/* CORT_WINDOW -> NO_STEROID (Right) */}
+              <path d="M 870 513 H 874 Q 880 513 880 519 V 574" stroke="var(--color-danger, #ef4444)" stroke-width="2" fill="none" marker-end="url(#arr-acg-danger)"/>
+
+              {/* STEROID_RX -> LILLE */}
+              <path d="M 495 690 V 729" stroke="var(--color-primary, #0284c7)" stroke-width="2" fill="none" marker-end="url(#arr-acg)"/>
+
+              {/* LILLE -> RESPONDER (Left) */}
+              <path d="M 340 758 H 226 Q 220 758 220 764 V 814" stroke="var(--color-success, #10b981)" stroke-width="2" fill="none" marker-end="url(#arr-acg-success)"/>
+
+              {/* LILLE -> NON_RESPONDER (Right) */}
+              <path d="M 650 758 H 720 Q 726 758 726 764 V 814" stroke="var(--color-danger, #ef4444)" stroke-width="2" fill="none" marker-end="url(#arr-acg-danger)"/>
+
+              {/* CONNECTOR LABELS (with background masks) */}
+              <g>
+                <rect x="210" y="261" width="120" height="22" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+                <text x="270" y="276" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-success, #10b981)">MELD ≤ 20 (Thể vừa)</text>
+              </g>
+
+              <g>
+                <rect x="630" y="261" width="130" height="22" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+                <text x="695" y="276" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-warning, #f59e0b)">MELD &gt; 20 (Thể nặng)</text>
+              </g>
+
+              <g>
+                <rect x="495" y="502" width="150" height="22" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+                <text x="570" y="517" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-primary, #0284c7)">MELD 21–39 (Lợi ích tối đa)</text>
+              </g>
+
+              <g>
+                <rect x="800" y="502" width="140" height="22" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+                <text x="870" y="517" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-danger, #ef4444)">MELD &gt; 50 / Chống CĐ</text>
+              </g>
+
+              <g>
+                <rect x="225" y="746" width="150" height="22" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+                <text x="300" y="761" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-success, #10b981)">Lille ≤ 0.45 (Đáp ứng tốt)</text>
+              </g>
+
+              <g>
+                <rect x="650" y="746" width="165" height="22" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+                <text x="732" y="761" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-danger, #ef4444)">Lille &gt; 0.45 (Không đáp ứng)</text>
+              </g>
+
+              {/* NODES */}
+              {/* NODE 1: START */}
+              <g class="flow-node">
+                <rect x="230" y="30" width="500" height="76" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-danger, #ef4444)" stroke-width="2"/>
+                <rect x="230" y="30" width="500" height="24" rx="10" fill="var(--color-danger, #ef4444)" fill-opacity="0.12"/>
+                <text x="480" y="47" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-danger, #ef4444)" letter-spacing="0.5">BƯỚC 1: NGHI NGỜ VIÊM GAN DO RƯỢU CẤP (AH)</text>
+                <text x="480" y="72" text-anchor="middle" font-size="12" font-weight="600" fill="var(--color-text, #1e293b)">Vàng da đột ngột &lt; 60 ngày + Tiêu thụ rượu &gt; 50g/ngày &gt; 6 tháng</text>
+                <text x="480" y="92" text-anchor="middle" font-size="11" fill="var(--color-text-muted, #64748b)">Bilirubin &gt; 3 mg/dL (51.3 μmol/L) • AST 50–400 U/L (Tỷ lệ AST/ALT &gt; 1.5)</text>
+              </g>
+
+              {/* NODE 2: EXCL */}
+              <g class="flow-node">
+                <rect x="210" y="140" width="540" height="76" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+                <rect x="210" y="140" width="540" height="24" rx="10" fill="var(--color-primary, #0284c7)" fill-opacity="0.1"/>
+                <text x="480" y="157" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-primary, #0284c7)" letter-spacing="0.5">BƯỚC 2: LOẠI TRỪ CĂN NGUYÊN KHÁC &amp; PHÂN THỂ THEO NIAAA</text>
+                <text x="480" y="182" text-anchor="middle" font-size="12" font-weight="600" fill="var(--color-text, #1e293b)">Loại trừ: Virus viêm gan A/B/C/E, Tắc mật cơ học, DILI, Gan sốc, Viêm gan tự miễn</text>
+                <text x="480" y="202" text-anchor="middle" font-size="11" fill="var(--color-text-muted, #64748b)">Probable AH (đủ tiêu chuẩn -&gt; Khởi trị ngay) • Possible AH (có nhiễu -&gt; Cân nhắc sinh thiết TJLB)</text>
+              </g>
+
+              {/* NODE 3: SEV (Decision) */}
+              <g class="flow-node">
+                <rect x="340" y="250" width="280" height="46" rx="23" fill="var(--color-surface, #ffffff)" stroke="var(--color-warning, #f59e0b)" stroke-width="2"/>
+                <text x="480" y="278" text-anchor="middle" font-size="12" font-weight="700" fill="var(--color-warning, #f59e0b)">Phân Tầng Nguy Cơ Theo Thang Điểm MELD</text>
+              </g>
+
+              {/* NODE 4: MOD */}
+              <g class="flow-node">
+                <rect x="30" y="340" width="340" height="105" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-success, #10b981)" stroke-width="2"/>
+                <rect x="30" y="340" width="340" height="24" rx="10" fill="var(--color-success, #10b981)" fill-opacity="0.1"/>
+                <text x="200" y="357" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-success, #10b981)" letter-spacing="0.5">MELD ≤ 20: CHĂM SÓC NÂNG ĐỠ &amp; ĐIỀU TRỊ AUD</text>
+                <text x="45" y="382" font-size="11.5" font-weight="600" fill="var(--color-text, #1e293b)">• Dinh dưỡng năng lượng cao: <tspan font-weight="700" fill="var(--color-success, #10b981)">35 kcal/kg/ngày</tspan></text>
+                <text x="45" y="401" font-size="11.5" fill="var(--color-text, #1e293b)">• Protein 1.2–1.5 g/kg • Bổ sung bắt buộc <tspan font-weight="700">Thiamine + Kẽm (Zinc)</tspan></text>
+                <text x="45" y="420" font-size="11.5" fill="var(--color-text-muted, #64748b)">• Trị liệu nghiện rượu AUD an toàn cho gan: <tspan font-weight="700" fill="var(--color-primary, #0284c7)">Baclofen 5–15mg x 3</tspan></text>
+                <text x="45" y="437" font-size="11" font-style="italic" fill="var(--color-success, #10b981)">-&gt; Không có chỉ định dùng Corticosteroids</text>
+              </g>
+
+              {/* NODE 5: SEV_AH */}
+              <g class="flow-node">
+                <rect x="530" y="340" width="390" height="105" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-warning, #f59e0b)" stroke-width="2"/>
+                <rect x="530" y="340" width="390" height="24" rx="10" fill="var(--color-warning, #f59e0b)" fill-opacity="0.12"/>
+                <text x="725" y="357" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-warning, #f59e0b)" letter-spacing="0.5">MELD &gt; 20: VIÊM GAN RƯỢU NẶNG (TỬ VONG 90D ~20%)</text>
+                <text x="545" y="382" font-size="11.5" font-weight="600" fill="var(--color-text, #1e293b)">• Đánh giá động học Bilirubin tuần đầu (Spontaneous recovery):</text>
+                <text x="555" y="401" font-size="11" fill="var(--color-text-muted, #64748b)">Fast fallers (Bilirubin N7 &lt; 0.8x nhập viện) -&gt; Tiên lượng tốt, không cần steroid</text>
+                <text x="545" y="420" font-size="11.5" fill="var(--color-text, #1e293b)">• Tầm soát nhiễm trùng tiềm ẩn, XHTH, theo dõi nguy cơ suy thận cấp (AKI)</text>
+                <text x="545" y="437" font-size="11" font-weight="700" fill="var(--color-danger, #ef4444)">• Chuẩn bị đánh giá chỉ định dùng Corticosteroids</text>
+              </g>
+
+              {/* NODE 6: CORT_WINDOW (Decision) */}
+              <g class="flow-node">
+                <rect x="580" y="490" width="290" height="46" rx="23" fill="var(--color-surface, #ffffff)" stroke="var(--color-warning, #f59e0b)" stroke-width="2"/>
+                <text x="725" y="518" text-anchor="middle" font-size="12" font-weight="700" fill="var(--color-warning, #f59e0b)">Đánh Giá Ngưỡng MELD &amp; Chống Chỉ Định</text>
+              </g>
+
+              {/* NODE 7: STEROID_RX */}
+              <g class="flow-node">
+                <rect x="330" y="580" width="330" height="110" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+                <rect x="330" y="580" width="330" height="24" rx="10" fill="var(--color-primary, #0284c7)" fill-opacity="0.1"/>
+                <text x="495" y="597" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-primary, #0284c7)" letter-spacing="0.5">PHÁC ĐỒ STEROIDS + IV NAC ĐẦU TAY</text>
+                <text x="345" y="622" font-size="11.5" font-weight="700" fill="var(--color-text, #1e293b)">Prednisolone 40 mg/ngày PO (hoặc Methylpred 32mg IV)</text>
+                <text x="345" y="641" font-size="11.5" fill="var(--color-text, #1e293b)">• <tspan font-weight="700" fill="var(--color-primary, #0284c7)">Phối hợp IV N-Acetylcysteine (NAC)</tspan> trong 5 ngày đầu</text>
+                <text x="345" y="660" font-size="11" fill="var(--color-text-muted, #64748b)">-&gt; Giảm 85% nguy cơ tử vong do nhiễm trùng và bảo vệ thận</text>
+                <text x="345" y="679" font-size="11" font-style="italic" fill="var(--color-warning, #f59e0b)">• Đánh giá hiệu quả sớm bằng Lille Score ở ngày 4 hoặc 7</text>
+              </g>
+
+              {/* NODE 8: NO_STEROID */}
+              <g class="flow-node">
+                <rect x="710" y="580" width="230" height="110" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-danger, #ef4444)" stroke-width="2"/>
+                <rect x="710" y="580" width="230" height="24" rx="10" fill="var(--color-danger, #ef4444)" fill-opacity="0.12"/>
+                <text x="825" y="597" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-danger, #ef4444)" letter-spacing="0.5">CHỐNG CHỈ ĐỊNH CORTICOIDS</text>
+                <text x="722" y="622" font-size="11" font-weight="600" fill="var(--color-text, #1e293b)">• Nhiễm khuẩn chưa kiểm soát</text>
+                <text x="722" y="640" font-size="11" font-weight="600" fill="var(--color-text, #1e293b)">• Xuất huyết tiêu hóa chưa ổn định</text>
+                <text x="722" y="658" font-size="11" fill="var(--color-text-muted, #64748b)">• Điểm MELD &gt; 50 (Steroids vô hiệu)</text>
+                <text x="722" y="679" font-size="11" font-weight="700" fill="var(--color-danger, #ef4444)">-&gt; Kích hoạt GHÉP GAN SỚM</text>
+              </g>
+
+              {/* NODE 9: LILLE (Decision) */}
+              <g class="flow-node">
+                <rect x="340" y="735" width="310" height="46" rx="23" fill="var(--color-surface, #ffffff)" stroke="var(--color-accent, #8b5cf6)" stroke-width="2"/>
+                <text x="495" y="763" text-anchor="middle" font-size="12" font-weight="700" fill="var(--color-accent, #8b5cf6)">Đánh Giá Lille Score Ngày 4 Hoặc Ngày 7</text>
+              </g>
+
+              {/* NODE 10: RESPONDER */}
+              <g class="flow-node">
+                <rect x="60" y="820" width="320" height="100" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-success, #10b981)" stroke-width="2"/>
+                <rect x="60" y="820" width="320" height="24" rx="10" fill="var(--color-success, #10b981)" fill-opacity="0.1"/>
+                <text x="220" y="837" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-success, #10b981)" letter-spacing="0.5">LILLE ≤ 0.45: ĐÁP ỨNG ĐIỀU TRỊ TỐT</text>
+                <text x="75" y="862" font-size="11.5" font-weight="700" fill="var(--color-text, #1e293b)">Tiếp tục Prednisolone cho đủ liệu trình 28 ngày</text>
+                <text x="75" y="881" font-size="11.5" fill="var(--color-text, #1e293b)">• Ngừng thuốc sau 28 ngày, <tspan font-weight="700">không cần giảm liều dần (taper)</tspan></text>
+                <text x="75" y="900" font-size="11" fill="var(--color-text-muted, #64748b)">• Chuyển tiếp ngay điều trị kiêng rượu: Baclofen + Tư vấn tâm lý</text>
+              </g>
+
+              {/* NODE 11: NON_RESPONDER */}
+              <g class="flow-node">
+                <rect x="530" y="820" width="390" height="105" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-danger, #ef4444)" stroke-width="2"/>
+                <rect x="530" y="820" width="390" height="24" rx="10" fill="var(--color-danger, #ef4444)" fill-opacity="0.12"/>
+                <text x="725" y="837" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-danger, #ef4444)" letter-spacing="0.5">LILLE &gt; 0.45: KHÔNG ĐÁP ỨNG (NON-RESPONDER)</text>
+                <text x="545" y="862" font-size="11.5" font-weight="700" fill="var(--color-danger, #ef4444)">• DỪNG NGAY PREDNISOLONE LẬP TỨC</text>
+                <text x="555" y="881" font-size="11" fill="var(--color-text-muted, #64748b)">Duy trì steroids làm tăng tử vong do nhiễm trùng / nấm xâm lấn</text>
+                <text x="545" y="900" font-size="11.5" fill="var(--color-text, #1e293b)">• <tspan font-weight="700" fill="var(--color-danger, #ef4444)">CẤM dùng Pentoxifylline</tspan> cứu vãn • Không dùng kháng TNF-alpha</text>
+                <text x="545" y="917" font-size="11" font-weight="700" fill="var(--color-primary, #0284c7)">• KÍCH HOẠT HỘI CHẨN GHÉP GAN SỚM (SALT score, sống còn 84%)</text>
+              </g>
+            </svg>
+          </div>
+
+          <div class="flowchart-legend-row">
+            <div class="legend-item"><span class="legend-dot" style="background:var(--color-danger, #ef4444);"></span> Ca bệnh nghi ngờ / Dừng thuốc khẩn</div>
+            <div class="legend-item"><span class="legend-dot" style="background:var(--color-primary, #0284c7);"></span> Can thiệp chuẩn / Corticosteroids + NAC</div>
+            <div class="legend-item"><span class="legend-dot" style="background:var(--color-warning, #f59e0b);"></span> Quyết định phân tầng MELD</div>
+            <div class="legend-item"><span class="legend-dot" style="background:var(--color-success, #10b981);"></span> Hưởng lợi / Duy trì đủ liệu trình</div>
+            <div class="legend-item"><span class="legend-dot" style="background:var(--color-accent, #8b5cf6);"></span> Đánh giá đáp ứng Lille Score (N4/N7)</div>
+          </div>
+        </div>
       </div>
     </section>
 

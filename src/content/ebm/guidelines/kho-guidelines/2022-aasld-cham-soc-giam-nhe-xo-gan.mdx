@@ -144,32 +144,119 @@ sections:
         </div>
       </div>
 
-      <FlowchartViewer 
-        title="Mô Hình 8 Lĩnh Vực Chăm Sóc Giảm Nhẹ Toàn Diện Trong Xơ Gan (AASLD 2022)"
-        code={`flowchart TD
-          ACP([Quy Trình Lập Kế Hoạch Chăm Sóc Trước (ACP) | start | badge: AASLD 2022 | subtitle: Thảo luận sớm ngay từ khi chẩn đoán xơ gan mất bù hoặc đánh giá ghép gan])
-          
-          HUB[BỆNH NHÂN & NGƯỜI CHĂM SÓC GIA ĐÌNH ⭐ | action | badge: Trọng tâm chăm sóc | subtitle: Phối hợp cùng Nhóm Đa Chuyên Khoa: Gan mật + Chăm sóc giảm nhẹ + Điều dưỡng + Công tác xã hội]
+      <div class="flowchart-editorial-card">
+  <div class="flowchart-card-header">
+    <div class="flowchart-badge-title">
+      <span class="flowchart-badge-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg>
+      </span>
+      <span class="flowchart-badge-text">Mô Hình 8 Lĩnh Vực Chăm Sóc Giảm Nhẹ Toàn Diện Trong Xơ Gan (AASLD 2022)</span>
+    </div>
+    <span class="flowchart-version-tag">AASLD 2022 • Palliative Care</span>
+  </div>
+  
+  <div class="flowchart-svg-scroll">
+    <svg class="med-svg" viewBox="0 0 940 490" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+    <defs>
+      <marker id="arr-pal" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-text-muted, #64748b)" />
+      </marker>
+      <marker id="arr-pal-act" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)" />
+      </marker>
+    </defs>
 
-          D1[1. THỂ CHẤT 💊 | warning | badge: Triệu chứng thể xác | subtitle: Đau, Cổ trướng căng, Khó thở, Chuột rút ban đêm, Mất ngủ, Ngứa do ứ mật]
-          D2[2. TÂM LÝ & TÂM THẦN 🧠 | action | badge: Sức khỏe tinh thần | subtitle: Sàng lọc & can thiệp Lo âu, Trầm cảm, Stress, Nỗi sợ hãi tái phát / Tử vong]
-          D3[3. XÃ HỘI & GIA ĐÌNH 👥 | success | badge: Hỗ trợ cộng đồng | subtitle: Giảm gánh nặng kiệt sức cho người chăm sóc gia đình, giải quyết khó khăn tài chính]
-          D4[4. TÂM LINH & TÔN GIÁO 🕊️ | action | subtitle: Tìm kiếm ý nghĩa cuộc sống, chăm sóc mục vụ tâm linh theo tín ngưỡng]
-          D5[5 & 6. VĂN HÓA & PHÁP LÝ ĐẠO ĐỨC ⚖️ | success | subtitle: Tôn trọng niềm tin văn hóa, xác lập người đại diện hợp pháp & quyền tự quyết]
-          D7[7 & 8. CHĂM SÓC CUỐI ĐỜI & TANG CHẾ 🕯️ | danger | subtitle: Kế hoạch chăm sóc lúc lâm chung, chuẩn bị tâm lý và hỗ trợ gia quyến trong tang chế]
+    <!-- Top Root: ACP -->
+    <g class="flow-node">
+      <rect x="230" y="15" width="480" height="52" rx="8" fill="var(--color-primary-subtle, rgba(2,132,199,0.12))" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+      <text x="470" y="36" font-size="13.5" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">QUY TRÌNH LẬP KẾ HOẠCH CHĂM SÓC TRƯỚC (ACP)</text>
+      <text x="470" y="53" font-size="11" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Thảo luận sớm ngay từ khi chẩn đoán xơ gan mất bù hoặc bắt đầu đánh giá ghép gan</text>
+    </g>
 
-          HOSPICE[CHĂM SÓC HOSPICE TẠI NHÀ HOẶC TRUNG TÂM 🏥 | danger | badge: Tiên lượng ≤ 6 tháng | subtitle: Chuyển dịch toàn bộ mục tiêu sang tối đa hóa sự dễ chịu và phẩm giá khi không còn chỉ định ghép gan]
+    <path d="M 470 67 L 470 95" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arr-pal-act)"/>
 
-          ACP --> HUB
-          HUB --> D1
-          HUB --> D2
-          HUB --> D3
-          HUB --> D4
-          HUB --> D5
-          HUB --> D7
-          D7 ==> HOSPICE
-        `}
-      />
+    <!-- Central Hub: Patient and Family Caregiver -->
+    <g class="flow-node">
+      <rect x="180" y="95" width="580" height="56" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+      <text x="470" y="118" font-size="13.5" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">BỆNH NHÂN &amp; NGƯỜI CHĂM SÓC GIA ĐÌNH LÀ TRỌNG TÂM</text>
+      <text x="470" y="137" font-size="11" fill="var(--color-text, #334155)" text-anchor="middle">Nhóm đa chuyên khoa: Bác sĩ Gan Mật • Chăm sóc giảm nhẹ • Điều dưỡng • Công tác xã hội</text>
+    </g>
+
+    <!-- Connect Hub to 4 Columns of Domains -->
+    <path d="M 470 151 L 470 175 M 120 175 L 820 175" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+    <path d="M 120 175 L 120 195" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arr-pal)"/>
+    <path d="M 350 175 L 350 195" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arr-pal)"/>
+    <path d="M 590 175 L 590 195" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arr-pal)"/>
+    <path d="M 820 175 L 820 195" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arr-pal)"/>
+
+    <!-- Domain 1: Physical -->
+    <g class="flow-node">
+      <rect x="20" y="195" width="200" height="110" rx="8" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="1.8"/>
+      <text x="120" y="218" font-size="12" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">1. THỂ CHẤT &amp; TRIỆU CHỨNG</text>
+      <text x="120" y="238" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">• Đau đớn mạn tính / cấp</text>
+      <text x="120" y="254" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">• Cổ trướng căng, khó thở</text>
+      <text x="120" y="270" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">• Chuột rút cơ ban đêm</text>
+      <text x="120" y="286" font-size="10" fill="var(--color-text-muted, #64748b)" text-anchor="middle">• Mất ngủ, mệt mỏi, ngứa</text>
+    </g>
+
+    <!-- Domain 2: Psychological -->
+    <g class="flow-node">
+      <rect x="250" y="195" width="200" height="110" rx="8" fill="var(--color-primary-subtle, rgba(2,132,199,0.12))" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+      <text x="350" y="218" font-size="12" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">2. TÂM LÝ &amp; TÂM THẦN</text>
+      <text x="350" y="238" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">• Sàng lọc lo âu, trầm cảm</text>
+      <text x="350" y="254" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">• Sang chấn tâm lý bệnh mạn</text>
+      <text x="350" y="270" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">• Sợ hãi tử vong / tái phát</text>
+      <text x="350" y="286" font-size="10" fill="var(--color-text-muted, #64748b)" text-anchor="middle">• Hỗ trợ tâm lý lâm sàng</text>
+    </g>
+
+    <!-- Domain 3 and 4: Social and Spiritual -->
+    <g class="flow-node">
+      <rect x="490" y="195" width="200" height="110" rx="8" fill="var(--color-success-subtle, rgba(34,197,94,0.12))" stroke="var(--color-success, #22c55e)" stroke-width="1.8"/>
+      <text x="590" y="218" font-size="12" font-weight="700" fill="var(--color-success, #16a34a)" text-anchor="middle">3 &amp; 4. XÃ HỘI &amp; TÂM LINH</text>
+      <text x="590" y="238" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">• Giảm tải kiệt sức người nhà</text>
+      <text x="590" y="254" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">• Hỗ trợ gánh nặng tài chính</text>
+      <text x="590" y="270" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">• Ý nghĩa &amp; mục đích sống</text>
+      <text x="590" y="286" font-size="10" fill="var(--color-text-muted, #64748b)" text-anchor="middle">• Mục vụ tôn giáo theo nhu cầu</text>
+    </g>
+
+    <!-- Domain 5-8: Culture, Legal and End of Life -->
+    <g class="flow-node">
+      <rect x="720" y="195" width="200" height="110" rx="8" fill="var(--color-danger-subtle, rgba(239,68,68,0.12))" stroke="var(--color-danger, #ef4444)" stroke-width="1.8"/>
+      <text x="820" y="218" font-size="12" font-weight="700" fill="var(--color-danger, #ef4444)" text-anchor="middle">5 – 8. ĐẠO ĐỨC &amp; CUỐI ĐỜI</text>
+      <text x="820" y="238" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">• Xác lập quyền tự quyết</text>
+      <text x="820" y="254" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">• Người đại diện y tế hợp pháp</text>
+      <text x="820" y="270" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">• Chăm sóc lúc lâm chung</text>
+      <text x="820" y="286" font-size="10" fill="var(--color-text-muted, #64748b)" text-anchor="middle">• Hỗ trợ gia quyến tang chế</text>
+    </g>
+
+    <!-- Connect End-of-Life to Hospice -->
+    <path d="M 820 305 L 820 355 L 470 355 L 470 380" fill="none" stroke="var(--color-danger, #ef4444)" stroke-width="2" marker-end="url(#arr-pal-act)"/>
+
+    <!-- Bottom: Hospice Transition -->
+    <g class="flow-node">
+      <rect x="180" y="380" width="580" height="85" rx="10" fill="var(--color-danger-subtle, rgba(239,68,68,0.12))" stroke="var(--color-danger, #ef4444)" stroke-width="2"/>
+      <text x="470" y="405" font-size="13.5" font-weight="700" fill="var(--color-danger, #ef4444)" text-anchor="middle">CHUYỂN TIẾP CHĂM SÓC HOSPICE TẠI NHÀ HOẶC TRUNG TÂM</text>
+      <text x="470" y="425" font-size="11" font-weight="600" fill="var(--color-text, #334155)" text-anchor="middle">Áp dụng khi tiên lượng sống còn ≤ 6 tháng và không còn chỉ định hoặc không thể ghép gan</text>
+      <text x="470" y="443" font-size="11" fill="var(--color-danger, #ef4444)" text-anchor="middle">Tối đa hóa sự êm dịu, kiểm soát đau và phẩm giá con người — Ngừng các can thiệp xâm lấn vô ích</text>
+    </g>
+  </svg>
+  </div>
+
+  <div class="flowchart-legend-row">
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(2,132,199,0.12); border-color: #0284c7;"></span>
+        <span>Quy trình lập kế hoạch chăm sóc trước (ACP)</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(245,158,11,0.12); border-color: #f59e0b;"></span>
+        <span>Kiểm soát triệu chứng thể xác &amp; tâm lý</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(239,68,68,0.12); border-color: #ef4444;"></span>
+        <span>Chăm sóc cuối đời &amp; chuyển tiếp Hospice</span>
+      </div>
+  </div>
+</div>
 
       {/* TABLE 1: COMPARISON OF MODELS */}
       <h3 style="margin-top: 1.5rem; margin-bottom: 0.75rem; font-size: 1.15rem; color: var(--color-primary);">

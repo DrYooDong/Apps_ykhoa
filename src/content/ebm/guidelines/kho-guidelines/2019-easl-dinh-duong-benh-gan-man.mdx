@@ -259,39 +259,101 @@ sections:
         </div>
       </div>
 
-      <FlowchartViewer 
-        title="Lưu Đồ Sàng Lọc & Phân Tầng Nguy Cơ Dinh Dưỡng RFH-NPT (EASL 2019)"
-        code={`flowchart TD
-          START([Bệnh nhân Xơ Gan / Bệnh gan mạn cACLD | start | badge: EASL 2019])
-          TRIAGE{Sàng lọc ban đầu: BMI & Phân độ Child-Pugh | question}
+      <div class="flowchart-editorial-card">
+  <div class="flowchart-card-header">
+    <div class="flowchart-badge-title">
+      <span class="flowchart-badge-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg>
+      </span>
+      <span class="flowchart-badge-text">Lưu Đồ Sàng Lọc &amp; Phân Tầng Nguy Cơ Dinh Dưỡng RFH-NPT (EASL 2019)</span>
+    </div>
+    <span class="flowchart-version-tag">EASL 2019 • Nutrition in CLD</span>
+  </div>
+  
+  <div class="flowchart-svg-scroll">
+    <svg class="med-svg" viewBox="0 0 920 490" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+    <defs>
+      <marker id="arr-easl" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-text-muted, #64748b)" />
+      </marker>
+      <marker id="arr-easl-act" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)" />
+      </marker>
+    </defs>
 
-          CP_C[Child-Pugh C | danger | badge: Nguy cơ cao lập tức | subtitle: Xơ gan giai đoạn mất bù nặng]
-          LOW_BMI[BMI < 18.5 kg/m² | danger | badge: Nguy cơ cao lập tức | subtitle: Đa số đã có teo cơ lâm sàng]
-          STABLE[Child-Pugh A/B và BMI 18.5 - 29.9 | action | subtitle: Không có dấu hiệu nguy cơ cao rõ]
+    <!-- Root -->
+    <g class="flow-node">
+      <rect x="230" y="15" width="460" height="52" rx="8" fill="var(--color-primary-subtle, rgba(2,132,199,0.12))" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+      <text x="460" y="36" font-size="13.5" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">BỆNH NHÂN XƠ GAN / BỆNH GAN MẠN cACLD</text>
+      <text x="460" y="53" font-size="11" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Khảo sát ban đầu: Phân loại Child-Pugh &amp; Chỉ số khối cơ thể BMI</text>
+    </g>
 
-          RFH{Sàng lọc bằng thang điểm RFH-NPT (< 3 phút) | question}
-          LOW_RISK[Nguy cơ thấp (0 điểm) | success | subtitle: Tái sàng lọc định kỳ mỗi năm]
-          HIGH_RISK[Nguy cơ Trung bình / Cao (>= 1 điểm) | danger | badge: Báo động | subtitle: Chuyển ngay bác sĩ dinh dưỡng]
+    <path d="M 460 67 L 460 95" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arr-easl-act)"/>
 
-          ASSESS[ĐÁNH GIÁ CHI TIẾT CỦA BÁC SĨ DINH DƯỠNG | action | badge: Đánh giá sâu | subtitle: Đo Teo cơ CT L3 SMI, HGS, RFH-GA, Nhật ký ăn uống 3 ngày]
-          RX[CAN THIỆP DINH DƯỠNG ĐÍCH ⭐ | success | badge: Điều trị | subtitle: Năng lượng >= 35 kcal/kg + Đạm 1.2-1.5g + Bữa phụ đêm LES]
+    <!-- Triage Decision -->
+    <g class="flow-node">
+      <polygon points="460,95 650,128 460,161 270,128" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="2"/>
+      <text x="460" y="124" font-size="12" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">Child-Pugh C Hoặc BMI &lt; 18.5 kg/m²?</text>
+      <text x="460" y="140" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Tiêu chí xác định nguy cơ suy dinh dưỡng cao ngay lập tức</text>
+    </g>
 
-          START --> TRIAGE
-          TRIAGE ==>|Child-Pugh C| CP_C
-          TRIAGE ==>|BMI < 18.5| LOW_BMI
-          TRIAGE -->|Child-Pugh A/B & BMI bình thường| STABLE
+    <!-- Left: Yes -> Immediate High Risk -->
+    <path d="M 270 128 L 150 128 L 150 190" fill="none" stroke="var(--color-danger, #ef4444)" stroke-width="2" marker-end="url(#arr-easl-act)"/>
+    <g class="flow-node">
+      <rect x="30" y="190" width="240" height="70" rx="8" fill="var(--color-danger-subtle, rgba(239,68,68,0.12))" stroke="var(--color-danger, #ef4444)" stroke-width="1.8"/>
+      <text x="150" y="213" font-size="12.5" font-weight="700" fill="var(--color-danger, #ef4444)" text-anchor="middle">NGUY CƠ CAO LẬP TỨC</text>
+      <text x="150" y="233" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">Child-Pugh C hoặc BMI &lt; 18.5</text>
+      <text x="150" y="248" font-size="9.5" fill="var(--color-danger, #ef4444)" text-anchor="middle">Đa số đã có suy dinh dưỡng / teo cơ nặng</text>
+    </g>
 
-          CP_C ==> HIGH_RISK
-          LOW_BMI ==> HIGH_RISK
+    <!-- Right: No -> RFH-NPT Screening Tool -->
+    <path d="M 650 128 L 760 128 L 760 190" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arr-easl-act)"/>
+    <g class="flow-node">
+      <rect x="630" y="190" width="260" height="70" rx="8" fill="var(--color-primary-subtle, rgba(2,132,199,0.12))" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+      <text x="760" y="213" font-size="12.5" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">SÀNG LỌC THANG ĐIỂM RFH-NPT</text>
+      <text x="760" y="233" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">Đánh giá nhanh trong &lt; 3 phút</text>
+      <text x="760" y="248" font-size="9.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">≥ 1 điểm: Báo động nguy cơ suy dinh dưỡng</text>
+    </g>
 
-          STABLE --> RFH
-          RFH -->|0 điểm| LOW_RISK
-          RFH ==>|>= 1 điểm| HIGH_RISK
+    <!-- Connect Both to Assessment Node -->
+    <path d="M 150 260 L 150 295 L 460 295" fill="none" stroke="var(--color-danger, #ef4444)" stroke-width="1.8"/>
+    <path d="M 760 260 L 760 295 L 460 295" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+    <path d="M 460 295 L 460 320" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arr-easl-act)"/>
 
-          HIGH_RISK ==> ASSESS
-          ASSESS --> RX
-        `}
-      />
+    <!-- Assessment Node -->
+    <g class="flow-node">
+      <rect x="180" y="320" width="560" height="55" rx="8" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+      <text x="460" y="342" font-size="13" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">ĐÁNH GIÁ CHI TIẾT CỦA BÁC SĨ DINH DƯỠNG LÂM SÀNG</text>
+      <text x="460" y="360" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">Đo teo cơ trên CT L3 (SMI), lực bóp tay HGS, nhật ký ăn uống 3 ngày, RFH-GA</text>
+    </g>
+
+    <path d="M 460 375 L 460 405" fill="none" stroke="var(--color-success, #22c55e)" stroke-width="2" marker-end="url(#arr-easl-act)"/>
+
+    <!-- Treatment Node -->
+    <g class="flow-node">
+      <rect x="140" y="405" width="640" height="70" rx="10" fill="var(--color-success-subtle, rgba(34,197,94,0.12))" stroke="var(--color-success, #22c55e)" stroke-width="2"/>
+      <text x="460" y="428" font-size="13.5" font-weight="700" fill="var(--color-success, #16a34a)" text-anchor="middle">CAN THIỆP DINH DƯỠNG ĐÍCH CHUẨN EASL 2019</text>
+      <text x="460" y="448" font-size="11" font-weight="600" fill="var(--color-text, #334155)" text-anchor="middle">Năng lượng ≥ 35 kcal/kg/ngày • Đạm 1.2 – 1.5 g/kg/ngày • BẮT BUỘC BỮA PHỤ ĐÊM (LES)</text>
+      <text x="460" y="464" font-size="10" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Bổ sung vi chất (Kẽm, Vitamin D, Thiamine) &amp; Tập luyện thể lực kháng lực phù hợp</text>
+    </g>
+  </svg>
+  </div>
+
+  <div class="flowchart-legend-row">
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(239,68,68,0.12); border-color: #ef4444;"></span>
+        <span>Child-Pugh C hoặc BMI < 18.5: Nguy cơ cao lập tức</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(2,132,199,0.12); border-color: #0284c7;"></span>
+        <span>Sàng lọc thang điểm RFH-NPT (< 3 phút)</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(34,197,94,0.12); border-color: #22c55e;"></span>
+        <span>Can thiệp đích: ≥ 35 kcal/kg + Đạm 1.2-1.5g + Bữa phụ đêm LES</span>
+      </div>
+  </div>
+</div>
 
     </div>
   </div>

@@ -268,46 +268,161 @@ sections:
       <div class="sec-body">
         <p style="margin-bottom: 1.25rem; font-size: 0.88rem; color: var(--color-text-muted, #64748b);">Lưu đồ TG18 thiết lập phản ứng cấp cứu theo 3 phân độ nặng: Ưu tiên hồi sức tạng, dùng kháng sinh sớm và chỉ định thời điểm vàng dẫn lưu mật giải áp:</p>
 
-        <FlowchartViewer 
-          title="Lưu Đồ Tiếp Cận Ban Đầu & Dẫn Lưu Mật Cấp Cứu (Tokyo Guidelines 2018)"
-          code={`flowchart TD
-            START([Nghi ngờ Viêm Đường Mật Cấp | start | badge: TG18])
-            TRIAGE{Phân độ nặng TG18: Grade I, II hay III? | question}
+        <div class="flowchart-editorial-card">
+  <div class="flowchart-card-header">
+    <div class="flowchart-card-title">
+      <svg class="flowchart-title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+        <polyline points="2 17 12 22 22 17"></polyline>
+        <polyline points="2 12 12 17 22 12"></polyline>
+      </svg>
+      <span>Lưu Đồ Tiếp Cận Ban Đầu &amp; Dẫn Lưu Mật Cấp Cứu (Tokyo Guidelines 2018)</span>
+    </div>
+    <div class="flowchart-card-subtitle">Hồi sức tạng, dùng kháng sinh sớm và dẫn lưu mật giải áp theo phân độ TG18</div>
+  </div>
+  <div class="flowchart-card-body">
+    <div class="flowchart-svg-wrapper">
+<svg class="med-svg" viewBox="0 0 940 480" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arr-tgch" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)"/>
+    </marker>
+  </defs>
 
-            G1[Độ I - Nhẹ (Grade I) | success | subtitle: Không suy tạng, không yếu tố nguy cơ]
-            G2[Độ II - Vừa (Grade II) | warning | badge: Dẫn lưu sớm | subtitle: WBC >12k hoặc <4k, Sốt >=39°C, Tuổi >=75, Bili >=5]
-            G3[Độ III - Nặng (Grade III) | danger | badge: Hồi sức ICU | subtitle: Rối loạn chức năng ít nhất 1 cơ quan]
+  <!-- Root Start -->
+  <g transform="translate(320, 20)">
+    <rect width="300" height="52" rx="10" fill="var(--color-surface)" stroke="#0284c7" stroke-width="2"/>
+    <rect x="0" y="0" width="300" height="52" rx="10" fill="#0284c7" fill-opacity="0.08"/>
+    <text x="150" y="24" text-anchor="middle" font-size="10" font-weight="700" fill="#0284c7" letter-spacing="1">TOKYO GUIDELINES 2018 (TG18)</text>
+    <text x="150" y="42" text-anchor="middle" font-size="13" font-weight="700" fill="var(--color-text)">Nghi Ngờ Viêm Đường Mật Cấp</text>
+  </g>
 
-            G1_RX[Kháng sinh toàn thân + Đánh giá sau 24h | action]
-            G1_RESP{Đáp ứng tốt với nội khoa sau 24h? | question}
-            G1_SUCC[Hoàn tất KS 4-7 ngày + Lấy sỏi chương trình | success]
-            G1_FAIL[DẪN LƯU MẬT CẤP CỨU (ERCP) | danger]
+  <path d="M 470 72 L 470 105" fill="none" stroke="#0284c7" stroke-width="2" marker-end="url(#arr-tgch)"/>
 
-            G2_DRAIN[DẪN LƯU MẬT SỚM TRONG 24-48H ⭐ | warning | badge: ERCP đầu tay | subtitle: Giảm tử vong 30 ngày từ 3.7% xuống 2.0%]
-            G2_SURG[Điều trị nguyên nhân lấy sỏi 1 hoặc 2 thì | action]
+  <!-- Triage Decision -->
+  <g transform="translate(330, 105)">
+    <rect width="280" height="50" rx="8" fill="var(--color-surface)" stroke="#d97706" stroke-width="1.8"/>
+    <rect x="0" y="0" width="280" height="50" rx="8" fill="#d97706" fill-opacity="0.06"/>
+    <text x="140" y="22" text-anchor="middle" font-size="10" font-weight="700" fill="#d97706">PHÂN ĐỘ NẶNG TG18</text>
+    <text x="140" y="39" text-anchor="middle" font-size="12" font-weight="600" fill="var(--color-text)">Grade I (Nhẹ) | Grade II (Vừa) | Grade III (Nặng)</text>
+  </g>
 
-            G3_ICU[Hồi sức tích cực ICU + Kháng sinh tĩnh mạch tối đa | danger | subtitle: Vận mạch Norepinephrine + Hỗ trợ tạng]
-            G3_EMERG[DẪN LƯU MẬT KHẨN CẤP 🚨 | danger | badge: Khẩn cấp | subtitle: Ngay khi huyết động ổn định sơ bộ - Đặt stent EBS/ENBD]
-            G3_DELAY[Trì hoãn lấy sỏi triệt để | warning | subtitle: Chỉ giải áp, không kéo dài thủ thuật nguy hiểm]
+  <path d="M 330 130 L 150 130 L 150 185" fill="none" stroke="#10b981" stroke-width="1.8" marker-end="url(#arr-tgch)"/>
+  <path d="M 470 155 L 470 185" fill="none" stroke="#f59e0b" stroke-width="1.8" marker-end="url(#arr-tgch)"/>
+  <path d="M 610 130 L 790 130 L 790 185" fill="none" stroke="#f43f5e" stroke-width="1.8" marker-end="url(#arr-tgch)"/>
 
-            START --> TRIAGE
-            TRIAGE -->|Grade I: Nhẹ| G1
-            TRIAGE ==>|Grade II: Vừa| G2
-            TRIAGE ==>|Grade III: Nặng| G3
+  <!-- Labels -->
+  <g transform="translate(190, 120)">
+    <rect width="80" height="20" rx="4" fill="var(--color-surface)" stroke="var(--color-border)" stroke-width="1"/>
+    <text x="40" y="14" text-anchor="middle" font-size="10" font-weight="600" fill="#10b981">Độ I: Nhẹ</text>
+  </g>
+  <g transform="translate(480, 158)">
+    <rect width="80" height="20" rx="4" fill="var(--color-surface)" stroke="var(--color-border)" stroke-width="1"/>
+    <text x="40" y="14" text-anchor="middle" font-size="10" font-weight="600" fill="#f59e0b">Độ II: Vừa</text>
+  </g>
+  <g transform="translate(670, 120)">
+    <rect width="86" height="20" rx="4" fill="var(--color-surface)" stroke="var(--color-border)" stroke-width="1"/>
+    <text x="43" y="14" text-anchor="middle" font-size="10" font-weight="600" fill="#f43f5e">Độ III: Nặng</text>
+  </g>
 
-            G1 --> G1_RX
-            G1_RX --> G1_RESP
-            G1_RESP -->|Có đáp ứng| G1_SUCC
-            G1_RESP ==>|Không đáp ứng| G1_FAIL
+  <!-- COL 1: GRADE I -->
+  <g transform="translate(30, 185)">
+    <rect width="240" height="52" rx="8" fill="var(--color-surface)" stroke="#10b981" stroke-width="1.5"/>
+    <rect x="0" y="0" width="240" height="52" rx="8" fill="#10b981" fill-opacity="0.07"/>
+    <text x="120" y="22" text-anchor="middle" font-size="11" font-weight="700" fill="#10b981">ĐỘ I - NHẸ (GRADE I)</text>
+    <text x="120" y="39" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">Không suy tạng, không yếu tố nguy cơ</text>
+  </g>
 
-            G2 ==> G2_DRAIN
-            G2_DRAIN --> G2_SURG
+  <path d="M 150 237 L 150 262" fill="none" stroke="var(--color-border)" stroke-width="1.5" marker-end="url(#arr-tgch)"/>
 
-            G3 ==> G3_ICU
-            G3_ICU ==> G3_EMERG
-            G3_EMERG --> G3_DELAY
-          `}
-        />
+  <g transform="translate(30, 262)">
+    <rect width="240" height="50" rx="8" fill="var(--color-surface)" stroke="#0ea5e9" stroke-width="1.3"/>
+    <text x="120" y="21" text-anchor="middle" font-size="11" font-weight="700" fill="#0ea5e9">KHÁNG SINH + ĐÁNH GIÁ 24H</text>
+    <text x="120" y="38" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">Có đáp ứng nội khoa sau 24h?</text>
+  </g>
+
+  <path d="M 100 312 L 100 350" fill="none" stroke="#10b981" stroke-width="1.5" marker-end="url(#arr-tgch)"/>
+  <path d="M 200 312 L 200 350" fill="none" stroke="#f43f5e" stroke-width="1.5" marker-end="url(#arr-tgch)"/>
+
+  <g transform="translate(20, 350)">
+    <rect width="150" height="66" rx="8" fill="var(--color-surface)" stroke="#10b981" stroke-width="1.5"/>
+    <rect x="0" y="0" width="150" height="66" rx="8" fill="#10b981" fill-opacity="0.07"/>
+    <text x="75" y="19" text-anchor="middle" font-size="10" font-weight="700" fill="#10b981">ĐÁP ỨNG TỐT</text>
+    <text x="75" y="35" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-text)">Hoàn Tất Kháng Sinh</text>
+    <text x="75" y="51" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">KS 4-7 ngày + Lấy sỏi CT</text>
+  </g>
+
+  <g transform="translate(180, 350)">
+    <rect width="110" height="66" rx="8" fill="var(--color-surface)" stroke="#f43f5e" stroke-width="1.5"/>
+    <rect x="0" y="0" width="110" height="66" rx="8" fill="#f43f5e" fill-opacity="0.07"/>
+    <text x="55" y="19" text-anchor="middle" font-size="9" font-weight="700" fill="#f43f5e">KHÔNG ĐÁP ỨNG</text>
+    <text x="55" y="35" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-text)">ERCP Cấp Cứu</text>
+    <text x="55" y="51" text-anchor="middle" font-size="9" fill="var(--color-text-muted)">Dẫn lưu giải áp</text>
+  </g>
+
+  <!-- COL 2: GRADE II -->
+  <g transform="translate(350, 185)">
+    <rect width="240" height="52" rx="8" fill="var(--color-surface)" stroke="#f59e0b" stroke-width="1.5"/>
+    <rect x="0" y="0" width="240" height="52" rx="8" fill="#f59e0b" fill-opacity="0.07"/>
+    <text x="120" y="22" text-anchor="middle" font-size="11" font-weight="700" fill="#f59e0b">ĐỘ II - VỪA (GRADE II)</text>
+    <text x="120" y="39" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">WBC &gt; 12k/&lt; 4k, Sốt &gt;= 39°C, Tuổi &gt;= 75, Bili &gt;= 5</text>
+  </g>
+
+  <path d="M 470 237 L 470 265" fill="none" stroke="#f59e0b" stroke-width="1.8" marker-end="url(#arr-tgch)"/>
+
+  <g transform="translate(350, 265)">
+    <rect width="240" height="66" rx="8" fill="var(--color-surface)" stroke="#f59e0b" stroke-width="2"/>
+    <rect x="0" y="0" width="240" height="66" rx="8" fill="#f59e0b" fill-opacity="0.08"/>
+    <text x="120" y="20" text-anchor="middle" font-size="10" font-weight="700" fill="#f59e0b">ERCP ĐẦU TAY ⭐</text>
+    <text x="120" y="38" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-text)">DẪN LƯU MẬT SỚM 24-48H</text>
+    <text x="120" y="54" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">Giảm tử vong 30 ngày từ 3.7% xuống 2.0%</text>
+  </g>
+
+  <path d="M 470 331 L 470 365" fill="none" stroke="var(--color-border)" stroke-width="1.5" marker-end="url(#arr-tgch)"/>
+
+  <g transform="translate(360, 365)">
+    <rect width="220" height="48" rx="8" fill="var(--color-surface)" stroke="var(--color-border)" stroke-width="1.3"/>
+    <text x="110" y="21" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-text)">Điều Trị Nguyên Nhân Triệt Để</text>
+    <text x="110" y="37" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">Lấy sỏi đường mật 1 thì hoặc 2 thì</text>
+  </g>
+
+  <!-- COL 3: GRADE III -->
+  <g transform="translate(670, 185)">
+    <rect width="240" height="52" rx="8" fill="var(--color-surface)" stroke="#f43f5e" stroke-width="1.8"/>
+    <rect x="0" y="0" width="240" height="52" rx="8" fill="#f43f5e" fill-opacity="0.08"/>
+    <text x="120" y="22" text-anchor="middle" font-size="11" font-weight="700" fill="#f43f5e">ĐỘ III - NẶNG (GRADE III)</text>
+    <text x="120" y="39" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">Rối loạn chức năng ít nhất 1 cơ quan</text>
+  </g>
+
+  <path d="M 790 237 L 790 265" fill="none" stroke="#f43f5e" stroke-width="1.8" marker-end="url(#arr-tgch)"/>
+
+  <g transform="translate(670, 265)">
+    <rect width="240" height="52" rx="8" fill="var(--color-surface)" stroke="#f43f5e" stroke-width="1.5"/>
+    <rect x="0" y="0" width="240" height="52" rx="8" fill="#f43f5e" fill-opacity="0.07"/>
+    <text x="120" y="21" text-anchor="middle" font-size="11" font-weight="700" fill="#f43f5e">HỒI SỨC ICU + KHÁNG SINH TỐI ĐA</text>
+    <text x="120" y="38" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">Vận mạch Norepinephrine + Hỗ trợ tạng</text>
+  </g>
+
+  <path d="M 790 317 L 790 345" fill="none" stroke="#f43f5e" stroke-width="2" marker-end="url(#arr-tgch)"/>
+
+  <g transform="translate(670, 345)">
+    <rect width="240" height="66" rx="8" fill="var(--color-surface)" stroke="#f43f5e" stroke-width="2"/>
+    <rect x="0" y="0" width="240" height="66" rx="8" fill="#f43f5e" fill-opacity="0.09"/>
+    <text x="120" y="20" text-anchor="middle" font-size="10" font-weight="700" fill="#f43f5e">KHẨN CẤP TUYỆT ĐỐI 🚨</text>
+    <text x="120" y="37" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-text)">DẪN LƯU MẬT KHẨN CẤP</text>
+    <text x="120" y="53" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">Ngay khi HA ổn định sơ bộ - Stent EBS/ENBD</text>
+  </g>
+</svg>
+    </div>
+  </div>
+  <div class="flowchart-card-footer">
+    <div class="flowchart-legend-row">
+      <span class="legend-item"><span class="legend-dot" style="background: #10b981;"></span>Độ I: Kháng sinh toàn thân, đánh giá sau 24h -> ERCP nếu thất bại</span>
+      <span class="legend-item"><span class="legend-dot" style="background: #f59e0b;"></span>Độ II: Dẫn lưu mật sớm trong 24-48h (ERCP đầu tay)</span>
+      <span class="legend-item"><span class="legend-dot" style="background: #f43f5e;"></span>Độ III: Hồi sức ICU + Dẫn lưu mật khẩn cấp (Stent EBS/ENBD giải áp)</span>
+    </div>
+  </div>
+</div>
 
         
         <h3 class="sec-subtitle">Tiêu Chuẩn Chuyển Tuyến Y Tế An Toàn (TG18 Table 5)</h3>

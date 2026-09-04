@@ -160,30 +160,149 @@ sections:
       <span class="fig-title">Hình 1. Lưu Đồ Tiếp Cận Phân Loại Nguyên Nhân Theo TOAST (QĐ 3312/QĐ-BYT)</span>
     </div>
     <div class="fig-body">
-      <FlowchartViewer
-        title="Hình 1. Tiếp Cận Phân Loại Nguyên Nhân Nhồi Máu Não Theo TOAST (QĐ 3312/QĐ-BYT)"
-        code={`graph TD
-  START["Nhồi Máu Não Cấp — Đánh Giá Căn Nguyên<br/><small>CTA/MRA mạch máu • Siêu âm tim Doppler • Holter ECG • Bilan tăng đông</small>"]:::start --> TOAST{"Phân Loại TOAST<br/><small>Dựa trên hình ảnh học + tim mạch + huyết học</small>"}:::question
+      <div class="flowchart-editorial-card">
+  <div class="flowchart-card-header">
+    <div class="flowchart-badge-title">
+      <span class="flowchart-badge-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg>
+      </span>
+      <span class="flowchart-badge-text">Hình 1. Tiếp Cận Phân Loại Nguyên Nhân Nhồi Máu Não Theo TOAST (QĐ 3312/QĐ-BYT)</span>
+    </div>
+    <span class="flowchart-version-tag">QĐ 3312/BYT • TOAST Criteria</span>
+  </div>
   
-  TOAST --> T1["1. Xơ Vữa Động Mạch Lớn<br/><small>Hẹp > 50% ĐM cảnh / ĐM nội sọ</small>"]:::action
-  TOAST --> T2["2. Nhồi Máu Lỗ Khuyết (Lacunar)<br/><small>Tắc nhánh xuyên < 1.5 cm</small>"]:::action
-  TOAST --> T3["3. Căn Nguyên Từ Tim (Cardioembolic)<br/><small>Rung nhĩ, bệnh van tim, huyết khối buồng tim</small>"]:::danger
-  TOAST --> T4["4. Căn Nguyên Khác<br/><small>Bóc tách ĐM, viêm mạch, RCVS</small>"]:::warning
-  TOAST --> T5["5. Căn Nguyên Chưa Rõ (ESUS)<br/><small>Cryptogenic / Không tìm thấy nguồn</small>"]:::action
-  
-  T1 --> TX1["Statin cường độ cao + SAPT/DAPT + Xét phẫu thuật CEA/CAS"]:::success
-  T2 --> TX2["Kháng tiểu cầu đơn (SAPT) + Kiểm soát chặt HA & yếu tố nguy cơ"]:::success
-  T3 --> TX3["Thuốc chống đông đường uống (Ưu tiên DOACs, VKA cho van cơ học)"]:::success
-  T4 --> TX4["Điều trị theo căn nguyên chuyên biệt (Ức chế MD, can thiệp mạch)"]:::success
-  T5 --> TX5["Kháng tiểu cầu đơn + Tiếp tục tầm soát Holter ECG tìm rung nhĩ cơn"]:::action
+  <div class="flowchart-svg-scroll">
+    <svg class="med-svg" viewBox="0 0 1020 380" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <marker id="arr-toast" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-text-muted, #64748b)" />
+    </marker>
+    <marker id="arr-toast-act" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)" />
+    </marker>
+  </defs>
 
-  classDef start fill:#e0f2fe,stroke:#0284c7,stroke-width:2px,color:#0369a1
-  classDef question fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#854d0e
-  classDef action fill:#eff6ff,stroke:#3b82f6,stroke-width:1.5px,color:#1e40af
-  classDef danger fill:#fdf2f8,stroke:#ec4899,stroke-width:1.5px,color:#be185d
-  classDef warning fill:#fff7ed,stroke:#f97316,stroke-width:1.5px,color:#c2410c
-  classDef success fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#15803d`}
-      />
+  <!-- Level 1: Root -->
+  <g class="flow-node">
+    <rect x="270" y="15" width="480" height="60" rx="10" fill="var(--color-primary-subtle, rgba(2,132,199,0.12))" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+    <text x="510" y="38" font-size="14" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">NHỒI MÁU NÃO CẤP — ĐÁNH GIÁ CĂN NGUYÊN</text>
+    <text x="510" y="58" font-size="11" fill="var(--color-text-muted, #64748b)" text-anchor="middle">CTA/MRA Mạch Não • Siêu Âm Tim Doppler • Holter ECG • Bilan Tăng Đông</text>
+  </g>
+
+  <!-- Connect Root to Level 2 -->
+  <path d="M 510 75 L 510 105" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arr-toast-act)"/>
+
+  <!-- Level 2: Decision Hub -->
+  <g class="flow-node">
+    <rect x="330" y="105" width="360" height="46" rx="8" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="2"/>
+    <text x="510" y="133" font-size="13" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">5 NHÓM CĂN NGUYÊN THEO PHÂN LOẠI TOAST</text>
+  </g>
+
+  <!-- Bus line to 5 columns -->
+  <path d="M 510 151 L 510 170 M 110 170 L 910 170" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+  <path d="M 110 170 L 110 190" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arr-toast)"/>
+  <path d="M 310 170 L 310 190" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arr-toast)"/>
+  <path d="M 510 170 L 510 190" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arr-toast)"/>
+  <path d="M 710 170 L 710 190" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arr-toast)"/>
+  <path d="M 910 170 L 910 190" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arr-toast)"/>
+
+  <!-- Col 1: Large Artery Atherosclerosis -->
+  <g class="flow-node">
+    <rect x="20" y="190" width="180" height="65" rx="8" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="1.5"/>
+    <text x="110" y="213" font-size="12" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">1. Xơ Vữa ĐM Lớn</text>
+    <text x="110" y="233" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Hẹp &gt; 50% ĐM cảnh</text>
+    <text x="110" y="247" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">hoặc ĐM nội sọ lớn</text>
+  </g>
+  <path d="M 110 255 L 110 275" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="1.5" marker-end="url(#arr-toast-act)"/>
+  <g class="flow-node">
+    <rect x="20" y="275" width="180" height="85" rx="8" fill="var(--color-success-subtle, rgba(34,197,94,0.12))" stroke="var(--color-success, #22c55e)" stroke-width="1.5"/>
+    <text x="110" y="297" font-size="11.5" font-weight="700" fill="var(--color-success, #16a34a)" text-anchor="middle">Statin Cường Độ Cao</text>
+    <text x="110" y="315" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">+ SAPT hoặc DAPT</text>
+    <text x="110" y="331" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">Xét phẫu thuật CEA</text>
+    <text x="110" y="347" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">hoặc đặt stent CAS</text>
+  </g>
+
+  <!-- Col 2: Small Vessel Lacunar -->
+  <g class="flow-node">
+    <rect x="220" y="190" width="180" height="65" rx="8" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="1.5"/>
+    <text x="310" y="213" font-size="12" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">2. Nhồi Máu Lỗ Khuyết</text>
+    <text x="310" y="233" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Tắc nhánh xuyên nhỏ</text>
+    <text x="310" y="247" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Kích thước &lt; 1.5 cm</text>
+  </g>
+  <path d="M 310 255 L 310 275" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="1.5" marker-end="url(#arr-toast-act)"/>
+  <g class="flow-node">
+    <rect x="220" y="275" width="180" height="85" rx="8" fill="var(--color-success-subtle, rgba(34,197,94,0.12))" stroke="var(--color-success, #22c55e)" stroke-width="1.5"/>
+    <text x="310" y="297" font-size="11.5" font-weight="700" fill="var(--color-success, #16a34a)" text-anchor="middle">Kháng Tiểu Cầu Đơn</text>
+    <text x="310" y="315" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">SAPT (Aspirin/Clopi)</text>
+    <text x="310" y="331" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">Kiểm soát chặt HA</text>
+    <text x="310" y="347" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">&amp; Đái tháo đường</text>
+  </g>
+
+  <!-- Col 3: Cardioembolic -->
+  <g class="flow-node">
+    <rect x="420" y="190" width="180" height="65" rx="8" fill="var(--color-danger-subtle, rgba(239,68,68,0.12))" stroke="var(--color-danger, #ef4444)" stroke-width="1.5"/>
+    <text x="510" y="213" font-size="12" font-weight="700" fill="var(--color-danger, #ef4444)" text-anchor="middle">3. Thuyên Tắc Từ Tim</text>
+    <text x="510" y="233" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Rung nhĩ, bệnh van,</text>
+    <text x="510" y="247" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">huyết khối buồng tim</text>
+  </g>
+  <path d="M 510 255 L 510 275" fill="none" stroke="var(--color-danger, #ef4444)" stroke-width="1.5" marker-end="url(#arr-toast-act)"/>
+  <g class="flow-node">
+    <rect x="420" y="275" width="180" height="85" rx="8" fill="var(--color-success-subtle, rgba(34,197,94,0.12))" stroke="var(--color-success, #22c55e)" stroke-width="1.5"/>
+    <text x="510" y="297" font-size="11.5" font-weight="700" fill="var(--color-success, #16a34a)" text-anchor="middle">Thuốc Chống Đông</text>
+    <text x="510" y="315" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">Ưu tiên DOACs uống</text>
+    <text x="510" y="331" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">VKA cho van cơ học</text>
+    <text x="510" y="347" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Quy tắc DIN (1-3-6-12)</text>
+  </g>
+
+  <!-- Col 4: Other Determined -->
+  <g class="flow-node">
+    <rect x="620" y="190" width="180" height="65" rx="8" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="1.5"/>
+    <text x="710" y="213" font-size="12" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">4. Căn Nguyên Khác</text>
+    <text x="710" y="233" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Bóc tách ĐM, RCVS,</text>
+    <text x="710" y="247" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">viêm mạch, Moyamoya</text>
+  </g>
+  <path d="M 710 255 L 710 275" fill="none" stroke="var(--color-warning, #f59e0b)" stroke-width="1.5" marker-end="url(#arr-toast-act)"/>
+  <g class="flow-node">
+    <rect x="620" y="275" width="180" height="85" rx="8" fill="var(--color-success-subtle, rgba(34,197,94,0.12))" stroke="var(--color-success, #22c55e)" stroke-width="1.5"/>
+    <text x="710" y="297" font-size="11.5" font-weight="700" fill="var(--color-success, #16a34a)" text-anchor="middle">Điều Trị Chuyên Biệt</text>
+    <text x="710" y="315" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">Chống đông/SAPT cho</text>
+    <text x="710" y="331" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">bóc tách ĐM • Liệu pháp</text>
+    <text x="710" y="347" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">ức chế miễn dịch</text>
+  </g>
+
+  <!-- Col 5: Cryptogenic / ESUS -->
+  <g class="flow-node">
+    <rect x="820" y="190" width="180" height="65" rx="8" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="1.5"/>
+    <text x="910" y="213" font-size="12" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">5. Chưa Rõ (ESUS)</text>
+    <text x="910" y="233" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Cryptogenic / Bilan</text>
+    <text x="910" y="247" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">chưa tìm thấy nguồn</text>
+  </g>
+  <path d="M 910 255 L 910 275" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="1.5" marker-end="url(#arr-toast-act)"/>
+  <g class="flow-node">
+    <rect x="820" y="275" width="180" height="85" rx="8" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="1.5"/>
+    <text x="910" y="297" font-size="11.5" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">SAPT + Tìm Rung Nhĩ</text>
+    <text x="910" y="315" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">Aspirin 81-100mg/ngày</text>
+    <text x="910" y="331" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">Theo dõi Holter ECG kéo dài</text>
+    <text x="910" y="347" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Tầm soát PFO luồng thông</text>
+  </g>
+</svg>
+  </div>
+
+  <div class="flowchart-legend-row">
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(2,132,199,0.12); border-color: #0284c7;"></span>
+        <span>Căn nguyên mạch não</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(239,68,68,0.12); border-color: #ef4444;"></span>
+        <span>Thuyên tắc từ tim (Cardioembolic)</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(34,197,94,0.12); border-color: #22c55e;"></span>
+        <span>Phác đồ điều trị đích</span>
+      </div>
+  </div>
+</div>
       <p class="fig-caption mt-2 text-muted">
         <em>Hình 1: Quy trình phân loại nguyên nhân nhồi máu não theo TOAST từ đánh giá lâm sàng, chẩn đoán hình ảnh mạch máu (CTA/MRA), siêu âm Doppler tim và Holter điện tâm đồ. (Nguồn: Quyết định 3312/QĐ-BYT).</em>
       </p>
@@ -210,27 +329,135 @@ sections:
       <span class="fig-title">Hình 2. Sơ Đồ Chẩn Đoán TIA & Đột Quỵ Nhẹ Dựa Trên Thời Gian & MRI DWI</span>
     </div>
     <div class="fig-body">
-      <FlowchartViewer
-        title="Hình 2. Sơ Đồ Chẩn Đoán TIA & Đột Quỵ Nhẹ Dựa Trên Thời Gian & MRI DWI"
-        code={`graph TD
-  START["Khiếm Khuyết Thần Kinh Khu Trú Cấp Tính<br/><small>Triệu chứng tự hồi phục hoàn toàn</small>"]:::start --> D1{"Thời gian kéo dài triệu chứng lâm sàng?"}:::question
+      <div class="flowchart-editorial-card">
+  <div class="flowchart-card-header">
+    <div class="flowchart-badge-title">
+      <span class="flowchart-badge-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg>
+      </span>
+      <span class="flowchart-badge-text">Hình 2. Sơ Đồ Chẩn Đoán TIA & Đột Quỵ Nhẹ Dựa Trên Thời Gian & MRI DWI</span>
+    </div>
+    <span class="flowchart-version-tag">QĐ 3312/BYT • Tissue-based TIA</span>
+  </div>
   
-  D1 -- "≥ 24 giờ" --> STROKE["Nhồi Máu Não Thực Sự<br/><small>Xác nhận đột quỵ theo định nghĩa thời gian cổ điển</small>"]:::danger
-  D1 -- "< 24 giờ" --> SUSP["Nghi Ngờ Cơn Thiếu Máu Não Thoáng Qua (TIA)<br/><small>Chỉ định MRI sọ não chuỗi xung DWI khẩn cấp</small>"]:::warning
-  
-  SUSP --> D2{"MRI DWI có tổn thương ổ nhồi máu mới?"}:::question
-  D2 -- "DWI (+)" --> MINOR["Minor Stroke (Đột Quỵ Nhẹ)<br/><small>Tổn thương hoại tử mô học thực sự dù lâm sàng < 24h</small>"]:::danger
-  D2 -- "DWI (-)" --> TIA["TIA Xác Định Theo Mô Học (Tissue-based)<br/><small>Đánh giá ngay thang điểm ABCD² để phân tầng nguy cơ</small>"]:::success
-  
-  MINOR & TIA --> STRAT["Phân Tầng Nguy Cơ & Khởi Động Liệu Pháp Kháng Tiểu Cầu"]:::start
+  <div class="flowchart-svg-scroll">
+    <svg class="med-svg" viewBox="0 0 920 540" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <marker id="arr-tia" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-text-muted, #64748b)" />
+    </marker>
+    <marker id="arr-tia-act" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)" />
+    </marker>
+  </defs>
 
-  classDef start fill:#e0f2fe,stroke:#0284c7,stroke-width:2px,color:#0369a1
-  classDef question fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#854d0e
-  classDef action fill:#eff6ff,stroke:#3b82f6,stroke-width:1.5px,color:#1e40af
-  classDef danger fill:#fee2e2,stroke:#ef4444,stroke-width:2px,color:#991b1b
-  classDef warning fill:#fef3c7,stroke:#f59e0b,stroke-width:2px,color:#92400e
-  classDef success fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#15803d`}
-      />
+  <!-- Root -->
+  <g class="flow-node">
+    <rect x="260" y="15" width="400" height="60" rx="10" fill="var(--color-primary-subtle, rgba(2,132,199,0.12))" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+    <text x="460" y="38" font-size="14" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">KHIẾM KHUYẾT THẦN KINH KHU TRÚ CẤP TÍNH</text>
+    <text x="460" y="58" font-size="11" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Triệu chứng tự hồi phục hoàn toàn hoặc thoái lui nhanh</text>
+  </g>
+
+  <!-- Flow to Decision 1 -->
+  <path d="M 460 75 L 460 110" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arr-tia-act)"/>
+
+  <!-- Decision 1 -->
+  <g class="flow-node">
+    <polygon points="460,110 630,150 460,190 290,150" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="2"/>
+    <text x="460" y="146" font-size="12.5" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">Thời Gian Kéo Dài</text>
+    <text x="460" y="162" font-size="11" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Triệu Chứng Lâm Sàng?</text>
+  </g>
+
+  <!-- D1 Branch Right: >= 24h -->
+  <path d="M 630 150 L 720 150" fill="none" stroke="var(--color-danger, #ef4444)" stroke-width="2" marker-end="url(#arr-tia-act)"/>
+  <g>
+    <rect x="642" y="132" width="65" height="20" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+    <text x="674" y="146" font-size="10.5" font-weight="600" fill="var(--color-danger, #ef4444)" text-anchor="middle">≥ 24 giờ</text>
+  </g>
+  <g class="flow-node">
+    <rect x="720" y="118" width="180" height="64" rx="8" fill="var(--color-danger-subtle, rgba(239,68,68,0.12))" stroke="var(--color-danger, #ef4444)" stroke-width="1.8"/>
+    <text x="810" y="142" font-size="12.5" font-weight="700" fill="var(--color-danger, #ef4444)" text-anchor="middle">Nhồi Máu Não Thực Sự</text>
+    <text x="810" y="160" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Tiêu chuẩn thời gian cổ điển</text>
+  </g>
+
+  <!-- D1 Branch Down: < 24h -->
+  <path d="M 460 190 L 460 230" fill="none" stroke="var(--color-warning, #f59e0b)" stroke-width="2" marker-end="url(#arr-tia-act)"/>
+  <g>
+    <rect x="428" y="196" width="64" height="20" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+    <text x="460" y="210" font-size="10.5" font-weight="600" fill="var(--color-warning, #d97706)" text-anchor="middle">&lt; 24 giờ</text>
+  </g>
+
+  <!-- Suspect TIA Step -->
+  <g class="flow-node">
+    <rect x="280" y="230" width="360" height="52" rx="8" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="1.5"/>
+    <text x="460" y="252" font-size="12.5" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">Nghi Ngờ Cơn Thiếu Máu Não Thoáng Qua (TIA)</text>
+    <text x="460" y="270" font-size="11" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Chỉ định MRI sọ não chuỗi xung khuếch tán (DWI) khẩn cấp</text>
+  </g>
+
+  <!-- Flow to Decision 2 -->
+  <path d="M 460 282 L 460 320" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arr-tia-act)"/>
+
+  <!-- Decision 2 -->
+  <g class="flow-node">
+    <polygon points="460,320 630,360 460,400 290,360" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="2"/>
+    <text x="460" y="355" font-size="12.5" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">MRI DWI Có Tổn Thương</text>
+    <text x="460" y="372" font-size="11" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Ổ Nhồi Máu Cấp Mới?</text>
+  </g>
+
+  <!-- D2 Branch Left: DWI (+) -->
+  <path d="M 290 360 L 190 360" fill="none" stroke="var(--color-danger, #ef4444)" stroke-width="2" marker-end="url(#arr-tia-act)"/>
+  <g>
+    <rect x="210" y="345" width="60" height="20" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+    <text x="240" y="359" font-size="10.5" font-weight="600" fill="var(--color-danger, #ef4444)" text-anchor="middle">DWI (+)</text>
+  </g>
+  <g class="flow-node">
+    <rect x="30" y="325" width="160" height="70" rx="8" fill="var(--color-danger-subtle, rgba(239,68,68,0.12))" stroke="var(--color-danger, #ef4444)" stroke-width="1.8"/>
+    <text x="110" y="348" font-size="12" font-weight="700" fill="var(--color-danger, #ef4444)" text-anchor="middle">Minor Stroke</text>
+    <text x="110" y="366" font-size="10.5" font-weight="600" fill="var(--color-text, #334155)" text-anchor="middle">(Đột Quỵ Nhẹ)</text>
+    <text x="110" y="382" font-size="9.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Có hoại tử tế bào não</text>
+  </g>
+
+  <!-- D2 Branch Right: DWI (-) -->
+  <path d="M 630 360 L 730 360" fill="none" stroke="var(--color-success, #22c55e)" stroke-width="2" marker-end="url(#arr-tia-act)"/>
+  <g>
+    <rect x="650" y="345" width="60" height="20" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+    <text x="680" y="359" font-size="10.5" font-weight="600" fill="var(--color-success, #16a34a)" text-anchor="middle">DWI (-)</text>
+  </g>
+  <g class="flow-node">
+    <rect x="730" y="325" width="160" height="70" rx="8" fill="var(--color-success-subtle, rgba(34,197,94,0.12))" stroke="var(--color-success, #22c55e)" stroke-width="1.8"/>
+    <text x="810" y="348" font-size="12" font-weight="700" fill="var(--color-success, #16a34a)" text-anchor="middle">TIA Xác Định Mô Học</text>
+    <text x="810" y="366" font-size="10.5" font-weight="600" fill="var(--color-text, #334155)" text-anchor="middle">(Tissue-based TIA)</text>
+    <text x="810" y="382" font-size="9.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Không tổn thương DWI</text>
+  </g>
+
+  <!-- Convergence to ABCD2 and Therapy -->
+  <path d="M 110 395 L 110 465 L 300 465" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+  <path d="M 810 395 L 810 465 L 620 465" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+  <path d="M 460 400 L 460 455" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="1.8" marker-end="url(#arr-tia-act)"/>
+
+  <g class="flow-node">
+    <rect x="250" y="455" width="420" height="65" rx="8" fill="var(--color-primary-subtle, rgba(2,132,199,0.12))" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+    <text x="460" y="480" font-size="13" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">PHÂN TẦNG NGUY CƠ ABCD² &amp; KHỞI ĐỘNG KHÁNG TIỂU CẦU</text>
+    <text x="460" y="502" font-size="11" fill="var(--color-text, #334155)" text-anchor="middle">ABCD² ≥ 4 hoặc NIHSS ≤ 3: DAPT khẩn cấp trong 24h đầu</text>
+  </g>
+</svg>
+  </div>
+
+  <div class="flowchart-legend-row">
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(245,158,11,0.12); border-color: #f59e0b;"></span>
+        <span>Thời gian & chẩn đoán hình ảnh</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(239,68,68,0.12); border-color: #ef4444;"></span>
+        <span>Minor Stroke / Hoại tử mô học</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(34,197,94,0.12); border-color: #22c55e;"></span>
+        <span>TIA mô học xác định</span>
+      </div>
+  </div>
+</div>
       <p class="fig-caption mt-2 text-muted">
         <em>Hình 2: Phân nhánh chẩn đoán xác định TIA vs Nhồi máu não dựa trên thời gian kéo dài triệu chứng lâm sàng (&lt; 24h vs &ge; 24h) và sự xuất hiện của tổn thương trên MRI xung DWI. (Nguồn: Quyết định 3312/QĐ-BYT).</em>
       </p>
@@ -308,25 +535,118 @@ sections:
       <span class="fig-title">Hình 3. Lưu Đồ Sử Dụng Thuốc Chống Kết Tập Tiểu Cầu (QĐ 3312/QĐ-BYT)</span>
     </div>
     <div class="fig-body">
-      <FlowchartViewer
-        title="Hình 3. Lưu Đồ Sử Dụng Thuốc Chống Kết Tập Tiểu Cầu (QĐ 3312/QĐ-BYT)"
-        code={`graph TD
-  START["TIA / Nhồi Máu Não Không Do Tim<br/><small>Xơ vữa động mạch lớn, lacunar hoặc chưa rõ căn nguyên</small>"]:::start --> EVAL{"Phân Tầng Nguy Cơ Lâm Sàng & Mạch Máu?"}:::question
+      <div class="flowchart-editorial-card">
+  <div class="flowchart-card-header">
+    <div class="flowchart-badge-title">
+      <span class="flowchart-badge-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg>
+      </span>
+      <span class="flowchart-badge-text">Hình 3. Lưu Đồ Sử Dụng Thuốc Chống Kết Tập Tiểu Cầu (QĐ 3312/QĐ-BYT)</span>
+    </div>
+    <span class="flowchart-version-tag">QĐ 3312/BYT • DAPT Protocol</span>
+  </div>
   
-  EVAL -- "Nguy cơ thấp<br/>ABCD² < 4 điểm" --> LOW["Kháng Tiểu Cầu Đơn (SAPT)<br/><small>Aspirin 81-100mg/ngày dài hạn (hoặc Clopidogrel 75mg)</small>"]:::success
-  EVAL -- "Nguy cơ cao<br/>ABCD² ≥ 4 hoặc NIHSS ≤ 3" --> HIGH["DAPT CHANCE / POINT<br/><small>Aspirin + Clopidogrel (khởi động sớm trong 24 giờ đầu)</small>"]:::warning
-  EVAL -- "Nguy cơ rất cao<br/>NIHSS ≤ 5 kèm hẹp ĐM > 30%" --> VHIGH["DAPT THALES<br/><small>Aspirin + Ticagrelor 90mg x 2 lần/ngày</small>"]:::danger
-  
-  HIGH --> DUR1["Duy trì DAPT 21 – 90 ngày<br/><small>Sau đó chuyển về SAPT đơn dài hạn</small>"]:::success
-  VHIGH --> DUR2["Duy trì DAPT 30 ngày<br/><small>Sau đó chuyển về SAPT đơn dài hạn</small>"]:::success
+  <div class="flowchart-svg-scroll">
+    <svg class="med-svg" viewBox="0 0 920 440" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <marker id="arr-antipl" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-text-muted, #64748b)" />
+    </marker>
+    <marker id="arr-antipl-act" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)" />
+    </marker>
+  </defs>
 
-  classDef start fill:#e0f2fe,stroke:#0284c7,stroke-width:2px,color:#0369a1
-  classDef question fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#854d0e
-  classDef action fill:#eff6ff,stroke:#3b82f6,stroke-width:1.5px,color:#1e40af
-  classDef danger fill:#fee2e2,stroke:#ef4444,stroke-width:2px,color:#991b1b
-  classDef warning fill:#fef3c7,stroke:#f59e0b,stroke-width:2px,color:#92400e
-  classDef success fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#15803d`}
-      />
+  <!-- Root -->
+  <g class="flow-node">
+    <rect x="250" y="15" width="420" height="58" rx="10" fill="var(--color-primary-subtle, rgba(2,132,199,0.12))" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+    <text x="460" y="38" font-size="14" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">TIA / NHỒI MÁU NÃO KHÔNG DO CĂN NGUYÊN TIM</text>
+    <text x="460" y="56" font-size="11" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Xơ vữa động mạch lớn, nhánh xuyên lỗ khuyết, hoặc ESUS</text>
+  </g>
+
+  <!-- Flow to Stratification -->
+  <path d="M 460 73 L 460 105" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arr-antipl-act)"/>
+
+  <!-- Decision Hub -->
+  <g class="flow-node">
+    <rect x="300" y="105" width="320" height="46" rx="8" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="2"/>
+    <text x="460" y="133" font-size="13" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">PHÂN TẦNG NGUY CƠ LÂM SÀNG &amp; MẠCH MÁU</text>
+  </g>
+
+  <!-- 3 Branches -->
+  <path d="M 460 151 L 460 175 M 150 175 L 770 175" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+  <path d="M 150 175 L 150 205" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arr-antipl)"/>
+  <path d="M 460 175 L 460 205" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arr-antipl)"/>
+  <path d="M 770 175 L 770 205" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arr-antipl)"/>
+
+  <!-- Branch 1: Low Risk -->
+  <g>
+    <rect x="75" y="180" width="150" height="20" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+    <text x="150" y="194" font-size="10.5" font-weight="600" fill="var(--color-success, #16a34a)" text-anchor="middle">Nguy cơ thấp (ABCD² &lt; 4)</text>
+  </g>
+  <g class="flow-node">
+    <rect x="40" y="205" width="220" height="110" rx="8" fill="var(--color-success-subtle, rgba(34,197,94,0.12))" stroke="var(--color-success, #22c55e)" stroke-width="1.8"/>
+    <text x="150" y="230" font-size="13" font-weight="700" fill="var(--color-success, #16a34a)" text-anchor="middle">Kháng Tiểu Cầu Đơn (SAPT)</text>
+    <text x="150" y="255" font-size="11.5" font-weight="600" fill="var(--color-text, #334155)" text-anchor="middle">Aspirin 81 – 100 mg/ngày</text>
+    <text x="150" y="275" font-size="11" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Hoặc Clopidogrel 75 mg/ngày</text>
+    <text x="150" y="295" font-size="10.5" fill="var(--color-success, #16a34a)" text-anchor="middle">Duy trì đơn trị liệu dài hạn</text>
+  </g>
+
+  <!-- Branch 2: High Risk CHANCE/POINT -->
+  <g>
+    <rect x="360" y="180" width="200" height="20" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+    <text x="460" y="194" font-size="10.5" font-weight="600" fill="var(--color-warning, #d97706)" text-anchor="middle">Nguy cơ cao (ABCD² ≥ 4 / NIHSS ≤ 3)</text>
+  </g>
+  <g class="flow-node">
+    <rect x="350" y="205" width="220" height="110" rx="8" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="1.8"/>
+    <text x="460" y="230" font-size="13" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">DAPT CHANCE / POINT</text>
+    <text x="460" y="255" font-size="11" font-weight="600" fill="var(--color-text, #334155)" text-anchor="middle">Aspirin + Clopidogrel</text>
+    <text x="460" y="275" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Khởi động sớm trong 24h đầu</text>
+    <text x="460" y="295" font-size="10.5" fill="var(--color-warning, #d97706)" text-anchor="middle">Duy trì 21 – 90 ngày</text>
+  </g>
+  <path d="M 460 315 L 460 345" fill="none" stroke="var(--color-success, #22c55e)" stroke-width="1.5" marker-end="url(#arr-antipl-act)"/>
+  <g class="flow-node">
+    <rect x="360" y="345" width="200" height="45" rx="6" fill="var(--color-surface, #ffffff)" stroke="var(--color-success, #22c55e)" stroke-width="1.5"/>
+    <text x="460" y="367" font-size="11" font-weight="600" fill="var(--color-success, #16a34a)" text-anchor="middle">Sau đó chuyển về SAPT đơn</text>
+    <text x="460" y="381" font-size="9.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Duy trì phòng ngừa thứ phát dài hạn</text>
+  </g>
+
+  <!-- Branch 3: Very High Risk THALES -->
+  <g>
+    <rect x="665" y="180" width="210" height="20" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+    <text x="770" y="194" font-size="10.5" font-weight="600" fill="var(--color-danger, #ef4444)" text-anchor="middle">Rất cao (NIHSS ≤ 5 + Hẹp ĐM &gt; 30%)</text>
+  </g>
+  <g class="flow-node">
+    <rect x="660" y="205" width="220" height="110" rx="8" fill="var(--color-danger-subtle, rgba(239,68,68,0.12))" stroke="var(--color-danger, #ef4444)" stroke-width="1.8"/>
+    <text x="770" y="230" font-size="13" font-weight="700" fill="var(--color-danger, #ef4444)" text-anchor="middle">DAPT THALES Phác Đồ</text>
+    <text x="770" y="255" font-size="11" font-weight="600" fill="var(--color-text, #334155)" text-anchor="middle">Aspirin + Ticagrelor 90mg x2</text>
+    <text x="770" y="275" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Khởi động sớm trong 24h đầu</text>
+    <text x="770" y="295" font-size="10.5" fill="var(--color-danger, #ef4444)" text-anchor="middle">Duy trì đúng 30 ngày</text>
+  </g>
+  <path d="M 770 315 L 770 345" fill="none" stroke="var(--color-success, #22c55e)" stroke-width="1.5" marker-end="url(#arr-antipl-act)"/>
+  <g class="flow-node">
+    <rect x="670" y="345" width="200" height="45" rx="6" fill="var(--color-surface, #ffffff)" stroke="var(--color-success, #22c55e)" stroke-width="1.5"/>
+    <text x="770" y="367" font-size="11" font-weight="600" fill="var(--color-success, #16a34a)" text-anchor="middle">Sau đó chuyển về SAPT đơn</text>
+    <text x="770" y="381" font-size="9.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Tránh DAPT kéo dài gây xuất huyết</text>
+  </g>
+</svg>
+  </div>
+
+  <div class="flowchart-legend-row">
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(34,197,94,0.12); border-color: #22c55e;"></span>
+        <span>Nguy cơ thấp: SAPT dài hạn</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(245,158,11,0.12); border-color: #f59e0b;"></span>
+        <span>Nguy cơ cao: DAPT Aspirin + Clopidogrel (21-90 ngày)</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(239,68,68,0.12); border-color: #ef4444;"></span>
+        <span>Nguy cơ rất cao: DAPT Aspirin + Ticagrelor (30 ngày)</span>
+      </div>
+  </div>
+</div>
       <p class="fig-caption mt-2 text-muted">
         <em>Hình 3: Lưu đồ phân nhánh chỉ định kháng tiểu cầu kép (DAPT) ngắn hạn dưới 90 ngày chuyển đổi sang đơn trị liệu dài hạn sau 90 ngày. (Nguồn: Quyết định 3312/QĐ-BYT).</em>
       </p>
@@ -353,23 +673,100 @@ sections:
       <span class="fig-title">Hình 4. Lưu Đồ Khuyến Cáo Điều Trị Thuốc Chống Đông (QĐ 3312/QĐ-BYT)</span>
     </div>
     <div class="fig-body">
-      <FlowchartViewer
-        title="Hình 4. Lưu Đồ Khuyến Cáo Điều Trị Thuốc Chống Đông (QĐ 3312/QĐ-BYT)"
-        code={`graph TD
-  START["TIA / Nhồi Máu Não Căn Nguyên Từ Tim<br/><small>Rung nhĩ, bệnh van tim, huyết khối buồng tim</small>"]:::start --> CHECK{"Có hẹp van 2 lá vừa/nặng HOẶC có van tim cơ học?"}:::question
+      <div class="flowchart-editorial-card">
+  <div class="flowchart-card-header">
+    <div class="flowchart-badge-title">
+      <span class="flowchart-badge-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg>
+      </span>
+      <span class="flowchart-badge-text">Hình 4. Lưu Đồ Khuyến Cáo Điều Trị Thuốc Chống Đông (QĐ 3312/QĐ-BYT)</span>
+    </div>
+    <span class="flowchart-version-tag">QĐ 3312/BYT • DIN Rule</span>
+  </div>
   
-  CHECK -- "Có (Van cơ học / Hẹp 2 lá nặng)" --> VKA["Warfarin (Kháng Vitamin K - VKA)<br/><small>Mục tiêu INR 2.5 – 3.5 (van cơ học)<br/>INR 2.0 – 3.0 (hẹp 2 lá / van sinh học)</small>"]:::danger
-  CHECK -- "Không (Rung nhĩ không do van)" --> DOAC["Ưu Tiên Tuyệt Đối DOACs<br/><small>Dabigatran 150mg x2 • Rivaroxaban 20mg • Apixaban 5mg x2 • Edoxaban 60mg</small>"]:::success
-  
-  DOAC --> TIME["Thời Điểm Khởi Động: Quy Tắc DIN (1-3-6-12 Ngày)<br/><small>• Ngày 1: TIA<br/>• Ngày 3: Nhồi máu nhỏ (NIHSS < 8)<br/>• Ngày 6: Nhồi máu vừa (NIHSS 8-15)<br/>• Ngày 12: Nhồi máu lớn (NIHSS > 15, sau CT kiểm tra)</small>"]:::start
+  <div class="flowchart-svg-scroll">
+    <svg class="med-svg" viewBox="0 0 880 380" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <marker id="arr-anticoag" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-text-muted, #64748b)" />
+    </marker>
+    <marker id="arr-anticoag-act" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)" />
+    </marker>
+  </defs>
 
-  classDef start fill:#e0f2fe,stroke:#0284c7,stroke-width:2px,color:#0369a1
-  classDef question fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#854d0e
-  classDef action fill:#eff6ff,stroke:#3b82f6,stroke-width:1.5px,color:#1e40af
-  classDef danger fill:#fee2e2,stroke:#ef4444,stroke-width:2px,color:#991b1b
-  classDef warning fill:#fef3c7,stroke:#f59e0b,stroke-width:2px,color:#92400e
-  classDef success fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#15803d`}
-      />
+  <!-- Root -->
+  <g class="flow-node">
+    <rect x="220" y="15" width="440" height="58" rx="10" fill="var(--color-primary-subtle, rgba(2,132,199,0.12))" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+    <text x="440" y="38" font-size="14" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">TIA / NHỒI MÁU NÃO DO CĂN NGUYÊN TỪ TIM</text>
+    <text x="440" y="56" font-size="11" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Rung nhĩ không do van tim, van cơ học, hẹp hai lá, huyết khối buồng tim</text>
+  </g>
+
+  <!-- Flow to Valve Decision -->
+  <path d="M 440 73 L 440 105" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arr-anticoag-act)"/>
+
+  <!-- Valve Decision -->
+  <g class="flow-node">
+    <polygon points="440,105 630,145 440,185 250,145" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="2"/>
+    <text x="440" y="141" font-size="12.5" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">Van Tim Cơ Học HOẶC</text>
+    <text x="440" y="157" font-size="11" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Hẹp Van Hai Lá Vừa – Nặng?</text>
+  </g>
+
+  <!-- Left: Yes -> VKA -->
+  <path d="M 250 145 L 170 145 L 170 200" fill="none" stroke="var(--color-danger, #ef4444)" stroke-width="2" marker-end="url(#arr-anticoag-act)"/>
+  <g>
+    <rect x="175" y="133" width="60" height="20" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+    <text x="205" y="147" font-size="10.5" font-weight="600" fill="var(--color-danger, #ef4444)" text-anchor="middle">Có (+)</text>
+  </g>
+  <g class="flow-node">
+    <rect x="50" y="200" width="240" height="75" rx="8" fill="var(--color-danger-subtle, rgba(239,68,68,0.12))" stroke="var(--color-danger, #ef4444)" stroke-width="1.8"/>
+    <text x="170" y="224" font-size="13" font-weight="700" fill="var(--color-danger, #ef4444)" text-anchor="middle">Kháng Vitamin K (Warfarin)</text>
+    <text x="170" y="244" font-size="11" font-weight="600" fill="var(--color-text, #334155)" text-anchor="middle">Mục tiêu INR 2.5 – 3.5 (van cơ học)</text>
+    <text x="170" y="260" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">INR 2.0 – 3.0 (hẹp van hai lá hậu thấp)</text>
+  </g>
+
+  <!-- Right: No -> DOACs -->
+  <path d="M 630 145 L 710 145 L 710 200" fill="none" stroke="var(--color-success, #22c55e)" stroke-width="2" marker-end="url(#arr-anticoag-act)"/>
+  <g>
+    <rect x="645" y="133" width="60" height="20" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+    <text x="675" y="147" font-size="10.5" font-weight="600" fill="var(--color-success, #16a34a)" text-anchor="middle">Không (-)</text>
+  </g>
+  <g class="flow-node">
+    <rect x="580" y="200" width="260" height="75" rx="8" fill="var(--color-success-subtle, rgba(34,197,94,0.12))" stroke="var(--color-success, #22c55e)" stroke-width="1.8"/>
+    <text x="710" y="224" font-size="13" font-weight="700" fill="var(--color-success, #16a34a)" text-anchor="middle">Ưu Tiên Tuyệt Đối DOACs</text>
+    <text x="710" y="244" font-size="11" font-weight="600" fill="var(--color-text, #334155)" text-anchor="middle">Dabigatran 150mg x2 • Rivaroxaban 20mg</text>
+    <text x="710" y="260" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Apixaban 5mg x2 • Edoxaban 60mg</text>
+  </g>
+
+  <!-- Convergence to DIN Rule -->
+  <path d="M 170 275 L 170 305 L 300 305" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+  <path d="M 710 275 L 710 305 L 580 305" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+  <path d="M 440 185 L 440 295" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="1.8" marker-end="url(#arr-anticoag-act)"/>
+
+  <g class="flow-node">
+    <rect x="140" y="295" width="600" height="68" rx="8" fill="var(--color-primary-subtle, rgba(2,132,199,0.12))" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+    <text x="440" y="318" font-size="13" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">THỜI ĐIỂM KHỞI ĐỘNG CHỐNG ĐÔNG: QUY TẮC DIN (1 – 3 – 6 – 12 NGÀY)</text>
+    <text x="440" y="338" font-size="11" fill="var(--color-text, #334155)" text-anchor="middle">• Ngày 1: TIA • Ngày 3: Nhồi máu nhỏ (NIHSS &lt; 8) • Ngày 6: Nhồi máu vừa (NIHSS 8–15)</text>
+    <text x="440" y="354" font-size="11" font-weight="600" fill="var(--color-danger, #ef4444)" text-anchor="middle">• Ngày 12 – 14: Nhồi máu lớn (NIHSS &gt; 15, sau khi chụp CT/MRI loại trừ xuất huyết chuyển dạng)</text>
+  </g>
+</svg>
+  </div>
+
+  <div class="flowchart-legend-row">
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(239,68,68,0.12); border-color: #ef4444;"></span>
+        <span>VKA cho van cơ học / Hẹp 2 lá</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(34,197,94,0.12); border-color: #22c55e;"></span>
+        <span>DOACs cho rung nhĩ không van</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(2,132,199,0.12); border-color: #0284c7;"></span>
+        <span>Quy tắc DIN 1-3-6-12 ngày</span>
+      </div>
+  </div>
+</div>
       <p class="fig-caption mt-2 text-muted">
         <em>Hình 4: Lưu đồ lựa chọn thuốc chống đông: Ưu tiên DOACs cho rung nhĩ không van; bắt buộc dùng Kháng vitamin K (Warfarin mục tiêu INR 2.5 – 3.5) cho hẹp van hai lá vừa/nặng hoặc van cơ học. (Nguồn: Quyết định 3312/QĐ-BYT).</em>
       </p>
@@ -470,27 +867,111 @@ sections:
       <span class="fig-title">Hình 5. Lưu Đồ Quy Trình Chẩn Đoán Nhồi Máu Não Cấp (QĐ 3312/QĐ-BYT)</span>
     </div>
     <div class="fig-body">
-      <FlowchartViewer
-        title="Hình 5. Lưu Đồ Quy Trình Chẩn Đoán Nhồi Máu Não Cấp (QĐ 3312/QĐ-BYT)"
-        code={`graph TD
-  EMERG["Tiếp Nhận Nghi Ngờ Đột Quỵ Cấp<br/><small>BE-FAST (+) • Khởi phát đột ngột khiếm khuyết thần kinh khu trú</small>"]:::start --> STAB["Ổn Định Ban Đầu & Triage (≤ 10 phút)<br/><small>Kiểm tra ABC • Đo đường huyết mao mạch ngay • Đánh giá NIHSS & xác định LKW</small>"]:::action
+      <div class="flowchart-editorial-card">
+  <div class="flowchart-card-header">
+    <div class="flowchart-badge-title">
+      <span class="flowchart-badge-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg>
+      </span>
+      <span class="flowchart-badge-text">Hình 5. Lưu Đồ Quy Trình Chẩn Đoán Nhồi Máu Não Cấp (QĐ 3312/QĐ-BYT)</span>
+    </div>
+    <span class="flowchart-version-tag">QĐ 3312/BYT • Code Stroke</span>
+  </div>
   
-  STAB --> IMG["Hình Ảnh Học Thần Kinh Khẩn Cấp (≤ 20–25 phút)<br/><small>CT sọ não không tiêm thuốc (NCCT) hoặc MRI sọ não cấp</small>"]:::action
-  
-  IMG --> BLEED{"Phát hiện xuất huyết não trên NCCT / MRI GRE?"}:::question
-  
-  BLEED -- "Có (+)" --> ICH["Xuất Huyết Não (ICH hoặc SAH)<br/><small>Chuyển quy trình kiểm soát huyết áp & xử trí xuất huyết nội sọ</small>"]:::danger
-  BLEED -- "Không (-)" --> ISCH["Nhồi Máu Não Cấp Xác Định<br/><small>Đánh giá ASPECTS • Khảo sát mạch máu CTA/MRA</small>"]:::success
-  
-  ISCH --> REPERF["Kích Hoạt Quy Trình Tái Tưới Máu Khẩn Cấp<br/><small>Mục tiêu Door-to-Needle < 45-60 phút • Door-to-Puncture < 90 phút</small>"]:::start
+  <div class="flowchart-svg-scroll">
+    <svg class="med-svg" viewBox="0 0 820 530" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <marker id="arr-diag" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-text-muted, #64748b)" />
+    </marker>
+    <marker id="arr-diag-act" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)" />
+    </marker>
+  </defs>
 
-  classDef start fill:#e0f2fe,stroke:#0284c7,stroke-width:2px,color:#0369a1
-  classDef question fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#854d0e
-  classDef action fill:#eff6ff,stroke:#3b82f6,stroke-width:1.5px,color:#1e40af
-  classDef danger fill:#fee2e2,stroke:#ef4444,stroke-width:2px,color:#991b1b
-  classDef warning fill:#fef3c7,stroke:#f59e0b,stroke-width:2px,color:#92400e
-  classDef success fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#15803d`}
-      />
+  <!-- Step 1: Emergency Contact -->
+  <g class="flow-node">
+    <rect x="230" y="15" width="360" height="55" rx="8" fill="var(--color-primary-subtle, rgba(2,132,199,0.12))" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+    <text x="410" y="36" font-size="13.5" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">TIẾP NHẬN NGHI NGỜ ĐỘT QUỴ CẤP</text>
+    <text x="410" y="54" font-size="11" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Dấu hiệu BE-FAST (+) • Khởi phát khiếm khuyết thần kinh khu trú</text>
+  </g>
+
+  <path d="M 410 70 L 410 98" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arr-diag-act)"/>
+
+  <!-- Step 2: Stabilization and Triage -->
+  <g class="flow-node">
+    <rect x="200" y="98" width="420" height="60" rx="8" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+    <text x="410" y="122" font-size="13" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">Ổn Định Ban Đầu &amp; Phân Luồng Triage (≤ 10 Phút)</text>
+    <text x="410" y="142" font-size="11" fill="var(--color-text, #334155)" text-anchor="middle">Kiểm tra ABC • Đo Glucose mao mạch ngay • Tính điểm NIHSS &amp; LKW</text>
+  </g>
+
+  <path d="M 410 158 L 410 188" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arr-diag-act)"/>
+
+  <!-- Step 3: Urgent Imaging -->
+  <g class="flow-node">
+    <rect x="180" y="188" width="460" height="60" rx="8" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+    <text x="410" y="212" font-size="13" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">Hình Ảnh Học Thần Kinh Khẩn Cấp (≤ 20 – 25 Phút)</text>
+    <text x="410" y="232" font-size="11" fill="var(--color-text, #334155)" text-anchor="middle">Chụp CLVT sọ não không cản quang (NCCT) hoặc MRI sọ não cấp</text>
+  </g>
+
+  <path d="M 410 248 L 410 278" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arr-diag-act)"/>
+
+  <!-- Decision: Bleeding? -->
+  <g class="flow-node">
+    <polygon points="410,278 590,315 410,352 230,315" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="2"/>
+    <text x="410" y="311" font-size="12.5" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">Có Xuất Huyết Não</text>
+    <text x="410" y="327" font-size="11" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Trên NCCT / MRI T2* GRE?</text>
+  </g>
+
+  <!-- Left: Bleeding Yes -> ICH Protocol -->
+  <path d="M 230 315 L 140 315 L 140 375" fill="none" stroke="var(--color-danger, #ef4444)" stroke-width="2" marker-end="url(#arr-diag-act)"/>
+  <g>
+    <rect x="150" y="303" width="55" height="20" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+    <text x="177" y="317" font-size="10.5" font-weight="600" fill="var(--color-danger, #ef4444)" text-anchor="middle">Có (+)</text>
+  </g>
+  <g class="flow-node">
+    <rect x="30" y="375" width="220" height="75" rx="8" fill="var(--color-danger-subtle, rgba(239,68,68,0.12))" stroke="var(--color-danger, #ef4444)" stroke-width="1.8"/>
+    <text x="140" y="399" font-size="12.5" font-weight="700" fill="var(--color-danger, #ef4444)" text-anchor="middle">Xuất Huyết Não (ICH / SAH)</text>
+    <text x="140" y="419" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">Kiểm soát HA cấp (HA &lt; 140)</text>
+    <text x="140" y="435" font-size="10" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Đảo ngược kháng đông • Hội chẩn Ngoại TK</text>
+  </g>
+
+  <!-- Right/Down: No -> Ischemia -->
+  <path d="M 410 352 L 410 380" fill="none" stroke="var(--color-success, #22c55e)" stroke-width="2" marker-end="url(#arr-diag-act)"/>
+  <g>
+    <rect x="375" y="356" width="70" height="20" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+    <text x="410" y="370" font-size="10.5" font-weight="600" fill="var(--color-success, #16a34a)" text-anchor="middle">Không (-)</text>
+  </g>
+  <g class="flow-node">
+    <rect x="290" y="380" width="240" height="65" rx="8" fill="var(--color-success-subtle, rgba(34,197,94,0.12))" stroke="var(--color-success, #22c55e)" stroke-width="1.8"/>
+    <text x="410" y="404" font-size="13" font-weight="700" fill="var(--color-success, #16a34a)" text-anchor="middle">Nhồi Máu Não Cấp Xác Định</text>
+    <text x="410" y="424" font-size="11" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Đánh giá ASPECTS • Khảo sát mạch máu CTA</text>
+  </g>
+
+  <!-- Reperfusion activation -->
+  <path d="M 410 445 L 410 475" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arr-diag-act)"/>
+  <g class="flow-node">
+    <rect x="210" y="475" width="400" height="42" rx="8" fill="var(--color-primary, #0284c7)" stroke="var(--color-primary, #0284c7)" stroke-width="1"/>
+    <text x="410" y="501" font-size="12.5" font-weight="700" fill="#ffffff" text-anchor="middle">KÍCH HOẠT QUY TRÌNH TÁI TƯỚI MÁU KHẨN CẤP</text>
+  </g>
+</svg>
+  </div>
+
+  <div class="flowchart-legend-row">
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(2,132,199,0.12); border-color: #0284c7;"></span>
+        <span>Quy trình cấp cứu thần kinh</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(239,68,68,0.12); border-color: #ef4444;"></span>
+        <span>Xuất huyết não (ICH/SAH)</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(34,197,94,0.12); border-color: #22c55e;"></span>
+        <span>Nhồi máu não cấp xác định</span>
+      </div>
+  </div>
+</div>
       <p class="fig-caption mt-2 text-muted">
         <em>Hình 5: Lưu đồ các bước chẩn đoán từ khi tiếp nhận bệnh nhân có khiếm khuyết thần kinh khu trú đến chẩn đoán hình ảnh loại trừ chảy máu não. (Nguồn: Quyết định 3312/QĐ-BYT).</em>
       </p>
@@ -517,31 +998,142 @@ sections:
       <span class="fig-title">Hình 6. Lưu Đồ Quy Trình Điều Trị Tái Tưới Máu Cấp Cứu (QĐ 3312/QĐ-BYT)</span>
     </div>
     <div class="fig-body">
-      <FlowchartViewer
-        title="Hình 6. Lưu Đồ Quy Trình Điều Trị Tái Tưới Máu Cấp Cứu (QĐ 3312/QĐ-BYT)"
-        code={`graph TD
-  STROKE["Nhồi Máu Não Cấp Xác Định<br/><small>Loại trừ xuất huyết não • Xác định chính xác Last Known Well (LKW)</small>"]:::start
+      <div class="flowchart-editorial-card">
+  <div class="flowchart-card-header">
+    <div class="flowchart-badge-title">
+      <span class="flowchart-badge-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg>
+      </span>
+      <span class="flowchart-badge-text">Hình 6. Lưu Đồ Quy Trình Điều Trị Tái Tưới Máu Cấp Cứu (QĐ 3312/QĐ-BYT)</span>
+    </div>
+    <span class="flowchart-version-tag">QĐ 3312/BYT • Bridging Therapy</span>
+  </div>
   
-  STROKE --> IVT_PATH["1. TIÊU SỢI HUYẾT TĨNH MẠCH (IVT)<br/><small>Alteplase 0.9 mg/kg hoặc Tenecteplase 0.25 mg/kg</small>"]:::action
-  STROKE --> EVT_PATH["2. LẤY HUYẾT KHỐI CƠ HỌC (EVT)<br/><small>Stent retriever hoặc hút huyết khối áp lực âm</small>"]:::action
-  
-  IVT_PATH --> WIN_IVT{"Cửa sổ thời gian tính từ LKW?"}:::question
-  WIN_IVT -- "≤ 4.5 giờ" --> IVT_EARLY["Chỉ Định IVT Ngay<br/><small>HA < 185/110 mmHg, PLT ≥ 100k, INR ≤ 1.7, DNT < 45–60 phút</small>"]:::success
-  WIN_IVT -- "4.5 – 9 giờ / Wake-up" --> IVT_LATE["Đánh Giá Mismatch (WAKE-UP / EXTEND)<br/><small>MRI DWI-FLAIR mismatch HOẶC CTP penumbra/core > 1.2</small>"]:::warning
-  
-  EVT_PATH --> CHECK_LVO{"Tắc Động Mạch Lớn (LVO)?<br/><small>ĐM cảnh trong (ICA), đoạn M1 ĐM não giữa</small>"}:::question
-  CHECK_LVO -- "Cửa sổ 0 – 6 giờ" --> EVT_EARLY["Can Thiệp EVT Chuẩn (Class I, Level A)<br/><small>ASPECTS ≥ 6 (hoặc ≥ 3 nếu chọn lọc), mRS trước đó 0-1</small>"]:::success
-  CHECK_LVO -- "Cửa sổ 6 – 24 giờ" --> EVT_EXT["Can Thiệp EVT Mở Rộng<br/><small>Thỏa mãn tiêu chuẩn DAWN hoặc DEFUSE 3 (RAPID CTP/DWI)</small>"]:::warning
-  
-  IVT_EARLY & EVT_EARLY --> BRIDGE["Nguyên Tắc Điều Trị Bắc Cầu (Bridging Therapy)<br/><small>Đủ điều kiện cả 2: Tiêm IVT ngay, song song chuyển phòng DSA • Tuyệt đối không chờ theo dõi hiệu quả IVT</small>"]:::danger
+  <div class="flowchart-svg-scroll">
+    <svg class="med-svg" viewBox="0 0 940 560" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <marker id="arr-reperf" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-text-muted, #64748b)" />
+    </marker>
+    <marker id="arr-reperf-act" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)" />
+    </marker>
+  </defs>
 
-  classDef start fill:#e0f2fe,stroke:#0284c7,stroke-width:2px,color:#0369a1
-  classDef question fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#854d0e
-  classDef action fill:#eff6ff,stroke:#3b82f6,stroke-width:1.5px,color:#1e40af
-  classDef danger fill:#fee2e2,stroke:#ef4444,stroke-width:2px,color:#991b1b
-  classDef warning fill:#fef3c7,stroke:#f59e0b,stroke-width:2px,color:#92400e
-  classDef success fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#15803d`}
-      />
+  <!-- Root -->
+  <g class="flow-node">
+    <rect x="250" y="15" width="440" height="55" rx="10" fill="var(--color-primary-subtle, rgba(2,132,199,0.12))" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+    <text x="470" y="36" font-size="14" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">NHỒI MÁU NÃO CẤP XÁC ĐỊNH</text>
+    <text x="470" y="54" font-size="11" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Đã loại trừ xuất huyết não • Xác định chính xác Last Known Well (LKW)</text>
+  </g>
+
+  <!-- Split to 2 Pillars -->
+  <path d="M 470 70 L 470 95 M 220 95 L 720 95" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+  <path d="M 220 95 L 220 120" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arr-reperf)"/>
+  <path d="M 720 95 L 720 120" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arr-reperf)"/>
+
+  <!-- Left Pillar: IVT -->
+  <g class="flow-node">
+    <rect x="50" y="120" width="340" height="52" rx="8" fill="var(--color-primary-subtle, rgba(2,132,199,0.12))" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+    <text x="220" y="142" font-size="13" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">1. TIÊU SỢI HUYẾT TĨNH MẠCH (IVT)</text>
+    <text x="220" y="159" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Alteplase 0.9 mg/kg hoặc Tenecteplase 0.25 mg/kg</text>
+  </g>
+
+  <path d="M 220 172 L 220 195" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="1.8" marker-end="url(#arr-reperf-act)"/>
+
+  <!-- IVT Decision -->
+  <g class="flow-node">
+    <polygon points="220,195 340,225 220,255 100,225" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="1.8"/>
+    <text x="220" y="222" font-size="12" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">Cửa Sổ Thời Gian</text>
+    <text x="220" y="236" font-size="10" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Tính từ LKW?</text>
+  </g>
+
+  <!-- IVT <= 4.5h -->
+  <path d="M 100 225 L 40 225 L 40 280 L 110 280" fill="none" stroke="var(--color-success, #22c55e)" stroke-width="1.8" marker-end="url(#arr-reperf-act)"/>
+  <g class="flow-node">
+    <rect x="25" y="280" width="185" height="90" rx="8" fill="var(--color-success-subtle, rgba(34,197,94,0.12))" stroke="var(--color-success, #22c55e)" stroke-width="1.8"/>
+    <text x="117" y="303" font-size="12" font-weight="700" fill="var(--color-success, #16a34a)" text-anchor="middle">Chỉ Định IVT Ngay</text>
+    <text x="117" y="321" font-size="10.5" font-weight="600" fill="var(--color-text, #334155)" text-anchor="middle">Cửa sổ ≤ 4.5 giờ</text>
+    <text x="117" y="337" font-size="10" fill="var(--color-text-muted, #64748b)" text-anchor="middle">HA &lt; 185/110, PLT ≥ 100k</text>
+    <text x="117" y="353" font-size="10" fill="var(--color-text-muted, #64748b)" text-anchor="middle">INR ≤ 1.7 • DNT &lt; 45–60 phút</text>
+  </g>
+
+  <!-- IVT 4.5 - 9h Wake up -->
+  <path d="M 340 225 L 400 225 L 400 280 L 330 280" fill="none" stroke="var(--color-warning, #f59e0b)" stroke-width="1.8" marker-end="url(#arr-reperf-act)"/>
+  <g class="flow-node">
+    <rect x="230" y="280" width="185" height="90" rx="8" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="1.8"/>
+    <text x="322" y="303" font-size="12" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">Mismatch Mở Rộng</text>
+    <text x="322" y="321" font-size="10.5" font-weight="600" fill="var(--color-text, #334155)" text-anchor="middle">4.5 – 9h hoặc Wake-up</text>
+    <text x="322" y="337" font-size="10" fill="var(--color-text-muted, #64748b)" text-anchor="middle">MRI DWI-FLAIR mismatch</text>
+    <text x="322" y="353" font-size="10" fill="var(--color-text-muted, #64748b)" text-anchor="middle">hoặc CTP penumbra/core &gt; 1.2</text>
+  </g>
+
+  <!-- Right Pillar: EVT -->
+  <g class="flow-node">
+    <rect x="550" y="120" width="340" height="52" rx="8" fill="var(--color-primary-subtle, rgba(2,132,199,0.12))" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+    <text x="720" y="142" font-size="13" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">2. LẤY HUYẾT KHỐI CƠ HỌC (EVT)</text>
+    <text x="720" y="159" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Stent retriever kết hợp ống hút áp lực âm qua DSA</text>
+  </g>
+
+  <path d="M 720 172 L 720 195" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="1.8" marker-end="url(#arr-reperf-act)"/>
+
+  <!-- EVT Decision -->
+  <g class="flow-node">
+    <polygon points="720,195 840,225 720,255 600,225" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="1.8"/>
+    <text x="720" y="222" font-size="12" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">Tắc ĐM Lớn (LVO)?</text>
+    <text x="720" y="236" font-size="10" fill="var(--color-text-muted, #64748b)" text-anchor="middle">ĐM Cảnh / Đoạn M1 ĐMN Giữa</text>
+  </g>
+
+  <!-- EVT 0 - 6h Standard -->
+  <path d="M 600 225 L 540 225 L 540 280 L 610 280" fill="none" stroke="var(--color-success, #22c55e)" stroke-width="1.8" marker-end="url(#arr-reperf-act)"/>
+  <g class="flow-node">
+    <rect x="525" y="280" width="185" height="90" rx="8" fill="var(--color-success-subtle, rgba(34,197,94,0.12))" stroke="var(--color-success, #22c55e)" stroke-width="1.8"/>
+    <text x="617" y="303" font-size="12" font-weight="700" fill="var(--color-success, #16a34a)" text-anchor="middle">EVT Chuẩn (Class I, A)</text>
+    <text x="617" y="321" font-size="10.5" font-weight="600" fill="var(--color-text, #334155)" text-anchor="middle">Cửa sổ 0 – 6 giờ</text>
+    <text x="617" y="337" font-size="10" fill="var(--color-text-muted, #64748b)" text-anchor="middle">ASPECTS ≥ 6 (hoặc ≥ 3)</text>
+    <text x="617" y="353" font-size="10" fill="var(--color-text-muted, #64748b)" text-anchor="middle">mRS nền 0–1 • Tuần hoàn trước</text>
+  </g>
+
+  <!-- EVT 6 - 24h Extended -->
+  <path d="M 840 225 L 900 225 L 900 280 L 830 280" fill="none" stroke="var(--color-warning, #f59e0b)" stroke-width="1.8" marker-end="url(#arr-reperf-act)"/>
+  <g class="flow-node">
+    <rect x="730" y="280" width="185" height="90" rx="8" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="1.8"/>
+    <text x="822" y="303" font-size="12" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">EVT Mở Rộng 6–24h</text>
+    <text x="822" y="321" font-size="10.5" font-weight="600" fill="var(--color-text, #334155)" text-anchor="middle">Tiêu chuẩn DAWN / DEFUSE 3</text>
+    <text x="822" y="337" font-size="10" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Định lượng Penumbra/Core</text>
+    <text x="822" y="353" font-size="10" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Lõi nhồi máu Core &lt; 70 ml</text>
+  </g>
+
+  <!-- Bridging Banner Bottom -->
+  <path d="M 117 370 L 117 410 L 470 410" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+  <path d="M 617 370 L 617 410 L 470 410" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+  <path d="M 470 410 L 470 435" fill="none" stroke="var(--color-danger, #ef4444)" stroke-width="2" marker-end="url(#arr-reperf-act)"/>
+
+  <g class="flow-node">
+    <rect x="120" y="435" width="700" height="95" rx="10" fill="var(--color-danger-subtle, rgba(239,68,68,0.12))" stroke="var(--color-danger, #ef4444)" stroke-width="2"/>
+    <text x="470" y="462" font-size="13.5" font-weight="700" fill="var(--color-danger, #ef4444)" text-anchor="middle">NGUYÊN TẮC ĐIỀU TRỊ BẮC CẦU (BRIDGING THERAPY)</text>
+    <text x="470" y="484" font-size="11.5" font-weight="600" fill="var(--color-text, #334155)" text-anchor="middle">Nếu đủ tiêu chuẩn cả IVT và EVT: Tiêm thuốc tiêu sợi huyết tĩnh mạch ngay lập tức</text>
+    <text x="470" y="502" font-size="11" fill="var(--color-text, #334155)" text-anchor="middle">Đồng thời chuyển bệnh nhân sang phòng can thiệp mạch số hóa xóa nền (DSA)</text>
+    <text x="470" y="520" font-size="11" font-weight="700" fill="var(--color-danger, #ef4444)" text-anchor="middle">TUYỆT ĐỐI KHÔNG TRÌ HOÃN EVT ĐỂ THEO DÕI ĐÁP ỨNG CỦA IVT!</text>
+  </g>
+</svg>
+  </div>
+
+  <div class="flowchart-legend-row">
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(2,132,199,0.12); border-color: #0284c7;"></span>
+        <span>Tiêu sợi huyết TM (IVT)</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(34,197,94,0.12); border-color: #22c55e;"></span>
+        <span>Lấy huyết khối cơ học (EVT)</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(239,68,68,0.12); border-color: #ef4444;"></span>
+        <span>Điều trị bắc cầu (Bridging) khẩn cấp</span>
+      </div>
+  </div>
+</div>
       <p class="fig-caption mt-2 text-muted">
         <em>Hình 6: Phân nhánh điều trị tái tưới máu theo cửa sổ thời gian: Tiêu sợi huyết tĩnh mạch (&lt; 4.5h hoặc 4.5 – 9h có mismatch) và Lấy huyết khối cơ học (cửa sổ 0 – 6h dựa vào ASPECTS, 6 – 24h dựa vào DAWN/DEFUSE 3). (Nguồn: Quyết định 3312/QĐ-BYT).</em>
       </p>
@@ -620,42 +1212,135 @@ sections:
       <span class="fig-title">Hình 8. Lưu Đồ Sử Dụng Hình Ảnh Học Trong Đột Quỵ Nhồi Máu Não Cấp</span>
     </div>
     <div class="fig-body">
-      <FlowchartViewer
-        title="Hình 8. Lưu Đồ Sử Dụng Hình Ảnh Học Trong Đột Quỵ Nhồi Máu Não Cấp"
-        code={`graph TD
-  NCCT["CLVT Không Tiêm Thuốc<br/><small>Khảo sát đầu tay cấp cứu • Loại trừ xuất huyết não</small>"]:::start -->|Không chảy máu não| EVAL["CLVT Đánh Giá Nhồi Máu Não<br/><small>Các thay đổi sớm trên CLVT • Điểm ASPECTS (≤ 2: ngừng khảo sát)</small>"]:::action
+      <div class="flowchart-editorial-card">
+  <div class="flowchart-card-header">
+    <div class="flowchart-badge-title">
+      <span class="flowchart-badge-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg>
+      </span>
+      <span class="flowchart-badge-text">Hình 8. Lưu Đồ Sử Dụng Hình Ảnh Học Trong Đột Quỵ Nhồi Máu Não Cấp</span>
+    </div>
+    <span class="flowchart-version-tag">QĐ 3312/BYT • Neuroimaging</span>
+  </div>
+  
+  <div class="flowchart-svg-scroll">
+    <svg class="med-svg" viewBox="0 0 940 590" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <marker id="arr-img" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-text-muted, #64748b)" />
+    </marker>
+    <marker id="arr-img-act" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)" />
+    </marker>
+  </defs>
 
-  EVAL --> THK["TIÊU HUYẾT KHỐI<br/><small>Chỉ định tiêu sợi huyết tĩnh mạch (ASPECTS ≥ 7, cửa sổ ≤ 4.5h)</small>"]:::success
-  EVAL --> CTA["CẮT LỚP VI TÍNH MẠCH MÁU (CTA)<br/><small>Tắc mạch lớn (ICA, MCA M1-M2, BA) • Tuần hoàn bàng hệ</small>"]:::action
-  THK --> CTA
+  <!-- Step 1: NCCT -->
+  <g class="flow-node">
+    <rect x="280" y="15" width="380" height="52" rx="8" fill="var(--color-primary-subtle, rgba(2,132,199,0.12))" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+    <text x="470" y="37" font-size="13.5" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">CLVT SỌ NÃO KHÔNG TIÊM THUỐC (NCCT)</text>
+    <text x="470" y="54" font-size="11" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Khảo sát đầu tay cấp cứu • Loại trừ 100% xuất huyết não</text>
+  </g>
 
-  CTA -->|Tắc động mạch lớn| WIN1["Cửa Sổ ≤ 6 Giờ"]:::action
-  CTA -->|Tắc động mạch lớn| WIN2["Cửa Sổ 6 – 12 Giờ"]:::action
-  CTA -->|Tắc động mạch lớn| WIN3["Cửa Sổ 6 – 24 Giờ"]:::action
+  <path d="M 470 67 L 470 95" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arr-img-act)"/>
 
-  WIN1 --> ASP_GE6["ASPECTS Trên CLVT ≥ 6<br/><small>Vùng nhồi máu nhỏ, nhu mô não bảo tồn tốt</small>"]:::success
-  WIN1 --> ASP_35["ASPECTS Trên CLVT 3 – 5<br/><small>Vùng tổn thương diện rộng vừa</small>"]:::warning
-  WIN2 --> ASP_35
+  <!-- Step 2: Early Ischemic Changes and ASPECTS -->
+  <g class="flow-node">
+    <rect x="250" y="95" width="440" height="56" rx="8" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+    <text x="470" y="118" font-size="13" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">Đánh Giá Dấu Hiệu Thiếu Máu Sớm &amp; ASPECTS</text>
+    <text x="470" y="137" font-size="11" fill="var(--color-text, #334155)" text-anchor="middle">Mất dải vỏ đảo • Xóa rãnh cuộn não • Điểm ASPECTS (0 – 10)</text>
+  </g>
 
-  ASP_GE6 --> EVT["CAN THIỆP NỘI MẠCH (EVT)<br/><small>Chỉ định lấy huyết khối cơ học tái thông mạch lớn</small>"]:::success
-  ASP_35 -->|Cần tham khảo thêm ý kiến chuyên gia| EVT
+  <!-- Split: IVT vs CTA -->
+  <path d="M 330 151 L 200 151 L 200 185" fill="none" stroke="var(--color-success, #22c55e)" stroke-width="1.8" marker-end="url(#arr-img-act)"/>
+  <path d="M 610 151 L 700 151 L 700 185" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="1.8" marker-end="url(#arr-img-act)"/>
 
-  WIN3 --> PERF["CLVT / CHT Tưới Máu Não<br/><small>Khảo sát CTP hoặc MRP định lượng Penumbra & Lõi hoại tử</small>"]:::action
-  PERF --> MISMATCH{"Bất Tương Xứng (Mismatch)?<br/><small>Tỷ số Penumbra/Lõi ≥ 1.8 • Thể tích Penumbra – Lõi ≥ 15 ml</small>"}:::question
+  <!-- Left: IVT -->
+  <g class="flow-node">
+    <rect x="90" y="185" width="220" height="60" rx="8" fill="var(--color-success-subtle, rgba(34,197,94,0.12))" stroke="var(--color-success, #22c55e)" stroke-width="1.8"/>
+    <text x="200" y="208" font-size="13" font-weight="700" fill="var(--color-success, #16a34a)" text-anchor="middle">TIÊU SỢI HUYẾT (IVT)</text>
+    <text x="200" y="228" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">ASPECTS ≥ 7 • Cửa sổ ≤ 4.5h</text>
+  </g>
 
-  MISMATCH -- "Có (+)" --> CORE{"Lõi Hoại Tử (Core) < 70 ml?<br/><small>Thể tích lõi nhồi máu không hồi phục < 70 ml</small>"}:::question
-  MISMATCH -- "Không (-)" --> MED["ĐIỀU TRỊ NỘI KHOA<br/><small>Điều trị nội khoa tối ưu • Kiểm soát huyết áp & biến chứng</small>"]:::danger
+  <!-- Right: CTA -->
+  <g class="flow-node">
+    <rect x="540" y="185" width="320" height="60" rx="8" fill="var(--color-primary-subtle, rgba(2,132,199,0.12))" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+    <text x="700" y="208" font-size="13" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">CẮT LỚP VI TÍNH MẠCH MÁU (CTA)</text>
+    <text x="700" y="228" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Tắc ĐM lớn (ICA, M1-M2, BA) • Tuần hoàn bàng hệ</text>
+  </g>
 
-  CORE -- "Có (+)" --> EVT
-  CORE -- "Không (-)" --> MED
+  <!-- CTA to 3 Windows -->
+  <path d="M 700 245 L 700 280 M 340 280 L 830 280" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+  <path d="M 340 280 L 340 310" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arr-img)"/>
+  <path d="M 570 280 L 570 310" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arr-img)"/>
+  <path d="M 800 280 L 800 310" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arr-img)"/>
 
-  classDef start fill:#e0f2fe,stroke:#0284c7,stroke-width:2px,color:#0369a1
-  classDef question fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#854d0e
-  classDef action fill:#eff6ff,stroke:#3b82f6,stroke-width:1.5px,color:#1e40af
-  classDef danger fill:#fee2e2,stroke:#ef4444,stroke-width:2px,color:#991b1b
-  classDef warning fill:#fef3c7,stroke:#f59e0b,stroke-width:2px,color:#92400e
-  classDef success fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#15803d`}
-      />
+  <!-- Window 1: <= 6h -->
+  <g class="flow-node">
+    <rect x="250" y="310" width="180" height="46" rx="6" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+    <text x="340" y="331" font-size="12" font-weight="700" fill="var(--color-text, #334155)" text-anchor="middle">Cửa Sổ ≤ 6 Giờ</text>
+    <text x="340" y="347" font-size="10" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Đánh giá ASPECTS NCCT</text>
+  </g>
+  <path d="M 340 356 L 340 390" fill="none" stroke="var(--color-success, #22c55e)" stroke-width="1.5" marker-end="url(#arr-img-act)"/>
+  <g class="flow-node">
+    <rect x="250" y="390" width="180" height="70" rx="8" fill="var(--color-success-subtle, rgba(34,197,94,0.12))" stroke="var(--color-success, #22c55e)" stroke-width="1.8"/>
+    <text x="340" y="413" font-size="12" font-weight="700" fill="var(--color-success, #16a34a)" text-anchor="middle">EVT Khẩn Cấp</text>
+    <text x="340" y="431" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">ASPECTS ≥ 6: Can thiệp ngay</text>
+    <text x="340" y="447" font-size="10" fill="var(--color-warning, #d97706)" text-anchor="middle">ASPECTS 3–5: Chọn lọc</text>
+  </g>
+
+  <!-- Window 2: 6 - 12h -->
+  <g class="flow-node">
+    <rect x="480" y="310" width="180" height="46" rx="6" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+    <text x="570" y="331" font-size="12" font-weight="700" fill="var(--color-text, #334155)" text-anchor="middle">Cửa Sổ 6 – 12 Giờ</text>
+    <text x="570" y="347" font-size="10" fill="var(--color-text-muted, #64748b)" text-anchor="middle">ASPECTS 3–5 hoặc &gt; 6</text>
+  </g>
+  <path d="M 570 356 L 570 390" fill="none" stroke="var(--color-warning, #f59e0b)" stroke-width="1.5" marker-end="url(#arr-img-act)"/>
+  <g class="flow-node">
+    <rect x="480" y="390" width="180" height="70" rx="8" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="1.8"/>
+    <text x="570" y="413" font-size="12" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">EVT Chọn Lọc</text>
+    <text x="570" y="431" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">Hội chẩn chuyên gia</text>
+    <text x="570" y="447" font-size="10" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Bàng hệ tốt trên CTA</text>
+  </g>
+
+  <!-- Window 3: 6 - 24h Mismatch -->
+  <g class="flow-node">
+    <rect x="710" y="310" width="180" height="46" rx="6" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+    <text x="800" y="331" font-size="12" font-weight="700" fill="var(--color-text, #334155)" text-anchor="middle">Cửa Sổ 6 – 24 Giờ</text>
+    <text x="800" y="347" font-size="10" fill="var(--color-text-muted, #64748b)" text-anchor="middle">CTP / MRP Tưới Máu</text>
+  </g>
+  <path d="M 800 356 L 800 390" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="1.5" marker-end="url(#arr-img-act)"/>
+  <g class="flow-node">
+    <rect x="710" y="390" width="180" height="70" rx="8" fill="var(--color-primary-subtle, rgba(2,132,199,0.12))" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+    <text x="800" y="413" font-size="12" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">Tưới Máu Não Mismatch</text>
+    <text x="800" y="431" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">Tỷ số Penumbra/Core ≥ 1.8</text>
+    <text x="800" y="447" font-size="10" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Và Lõi Core &lt; 70 ml</text>
+  </g>
+
+  <!-- Decision Mismatch to EVT or Med -->
+  <path d="M 800 460 L 800 490" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="1.5" marker-end="url(#arr-img-act)"/>
+  <g class="flow-node">
+    <rect x="670" y="490" width="260" height="50" rx="6" fill="var(--color-success-subtle, rgba(34,197,94,0.12))" stroke="var(--color-success, #22c55e)" stroke-width="1.5"/>
+    <text x="800" y="512" font-size="11.5" font-weight="700" fill="var(--color-success, #16a34a)" text-anchor="middle">Thỏa Mãn: Chỉ Định EVT Lấy Huyết Khối</text>
+    <text x="800" y="528" font-size="10" fill="var(--color-danger, #ef4444)" text-anchor="middle">Không thỏa: Điều trị nội khoa tối ưu</text>
+  </g>
+</svg>
+  </div>
+
+  <div class="flowchart-legend-row">
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(2,132,199,0.12); border-color: #0284c7;"></span>
+        <span>NCCT & ASPECTS</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(34,197,94,0.12); border-color: #22c55e;"></span>
+        <span>CTA & Chỉ định EVT</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(245,158,11,0.12); border-color: #f59e0b;"></span>
+        <span>Tưới máu não CTP/MRP 6-24h</span>
+      </div>
+  </div>
+</div>
       <p class="fig-caption mt-2 text-muted">
         <em>Hình 8: Lưu đồ lựa chọn hình ảnh học: CT không cản quang loại trừ chảy máu &rarr; đánh giá ASPECTS &rarr; CTA tìm tắc mạch lớn trong cửa sổ &le; 6h; bắt buộc làm CT/MR tưới máu (Perfusion) khi bệnh nhân đến trong cửa sổ kéo dài 6 – 24h. (Nguồn: Quyết định 3312/QĐ-BYT).</em>
       </p>
@@ -912,35 +1597,135 @@ sections:
       <span class="fig-title">Hình 10. Lưu Đồ Chẩn Đoán & Điều Trị Vỡ Phình Mạch Não (De Oliveira Manoel)</span>
     </div>
     <div class="fig-body">
-      <FlowchartViewer
-        title="Hình 10. Lưu Đồ Chẩn Đoán & Điều Trị Vỡ Phình Mạch Não (De Oliveira Manoel)"
-        code={`graph TD
-  START["Nghi Ngờ Vỡ Phình Động Mạch Não (SAH)<br/><small>Đau đầu sét đánh (Thunderclap) đột ngột • Cứng gáy • Rối loạn ý thức</small>"]:::start --> NCCT["Chụp CT Sọ Não Không Cản Quang (NCCT) Cấp<br/><small>Độ nhạy > 98% trong 6 – 12 giờ đầu</small>"]:::action
+      <div class="flowchart-editorial-card">
+  <div class="flowchart-card-header">
+    <div class="flowchart-badge-title">
+      <span class="flowchart-badge-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg>
+      </span>
+      <span class="flowchart-badge-text">Hình 10. Lưu Đồ Chẩn Đoán & Điều Trị Vỡ Phình Mạch Não (De Oliveira Manoel)</span>
+    </div>
+    <span class="flowchart-version-tag">De Oliveira Manoel / AHA SAH</span>
+  </div>
   
-  NCCT --> DETECT{"Thấy máu trong khoang dưới nhện (SAH)?"}:::question
-  
-  DETECT -- "Âm tính (-)" --> LP["Chọc Dò Dịch Não Tủy (LP)<br/><small>Thực hiện sau 6–12h để tìm Xanthochromia (dịch vàng)</small>"]:::warning
-  LP --> LP_RES{"Kết quả LP có Xanthochromia / Hồng cầu 3 ống đều?"}:::question
-  LP_RES -- "Âm tính (-)" --> EXCLUDE["Loại trừ chẩn đoán xuất huyết dưới nhện"]:::action
-  LP_RES -- "Dương tính (+)" --> CONFIRMED
-  
-  DETECT -- "Dương tính (+)" --> CONFIRMED["Xác Định Xuất Huyết Dưới Nhện (SAH)<br/><small>• Kiểm soát HA < 160 mmHg • Nimodipine 60mg mỗi 4h chống co thắt</small>"]:::danger
-  
-  CONFIRMED --> ANGIOG["Chụp Mạch Máu Não (CTA và/hoặc DSA)<br/><small>Xác định vị trí, kích thước, cổ túi phình và hình thái</small>"]:::action
-  
-  ANGIOG --> TX_CHOICE{"Lựa Chọn Phương Pháp Can Thiệp Bít Túi Phình?"}:::question
-  TX_CHOICE -- "Ưu tiên cao tuổi, tuần hoàn sau" --> COIL["1. Coiling Nội Mạch Qua Da<br/><small>Thả vòng xoắn kim loại nút tắc túi phình</small>"]:::success
-  TX_CHOICE -- "Ưu tiên người trẻ, MCA, khối máu tụ lớn" --> CLIP["2. Phẫu Thuật Kẹp Cổ Túi Phình (Clipping)<br/><small>Mở nắp sọ vi phẫu kẹp túi phình</small>"]:::action
-  
-  COIL & CLIP --> TIMING["Tiến Hành Bít Tắc Càng Sớm Càng Tốt (Trong 24 – 72 Giờ Đầu)"]:::start
+  <div class="flowchart-svg-scroll">
+    <svg class="med-svg" viewBox="0 0 880 580" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <marker id="arr-sah" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-text-muted, #64748b)" />
+    </marker>
+    <marker id="arr-sah-act" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)" />
+    </marker>
+  </defs>
 
-  classDef start fill:#e0f2fe,stroke:#0284c7,stroke-width:2px,color:#0369a1
-  classDef question fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#854d0e
-  classDef action fill:#eff6ff,stroke:#3b82f6,stroke-width:1.5px,color:#1e40af
-  classDef danger fill:#fee2e2,stroke:#ef4444,stroke-width:2px,color:#991b1b
-  classDef warning fill:#fef3c7,stroke:#f59e0b,stroke-width:2px,color:#92400e
-  classDef success fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#15803d`}
-      />
+  <!-- Root -->
+  <g class="flow-node">
+    <rect x="210" y="15" width="460" height="56" rx="8" fill="var(--color-primary-subtle, rgba(2,132,199,0.12))" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+    <text x="440" y="37" font-size="13.5" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">NGHI NGỜ VỠ PHÌNH ĐỘNG MẠCH NÃO (SAH)</text>
+    <text x="440" y="55" font-size="11" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Đau đầu sét đánh (Thunderclap) • Cứng gáy • Rối loạn ý thức cấp</text>
+  </g>
+
+  <path d="M 440 71 L 440 98" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arr-sah-act)"/>
+
+  <!-- Step 2: NCCT -->
+  <g class="flow-node">
+    <rect x="240" y="98" width="400" height="50" rx="8" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+    <text x="440" y="120" font-size="13" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">Chụp CLVT Sọ Não Không Tiêm Thuốc (NCCT) Cấp</text>
+    <text x="440" y="137" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Độ nhạy &gt; 98% trong 6 – 12 giờ đầu</text>
+  </g>
+
+  <path d="M 440 148 L 440 175" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arr-sah-act)"/>
+
+  <!-- Decision: SAH blood on NCCT? -->
+  <g class="flow-node">
+    <polygon points="440,175 620,210 440,245 260,210" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="2"/>
+    <text x="440" y="206" font-size="12" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">Thấy Máu Trong Khoang</text>
+    <text x="440" y="222" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Dưới Nhện (SAH)?</text>
+  </g>
+
+  <!-- Left: Neg -> LP -->
+  <path d="M 260 210 L 150 210 L 150 260" fill="none" stroke="var(--color-warning, #f59e0b)" stroke-width="1.8" marker-end="url(#arr-sah-act)"/>
+  <g>
+    <rect x="165" y="198" width="65" height="20" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+    <text x="197" y="212" font-size="10" font-weight="600" fill="var(--color-warning, #d97706)" text-anchor="middle">Âm tính (-)</text>
+  </g>
+  <g class="flow-node">
+    <rect x="40" y="260" width="220" height="70" rx="8" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="1.8"/>
+    <text x="150" y="283" font-size="12" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">Chọc Dò Dịch Não Tủy (LP)</text>
+    <text x="150" y="301" font-size="10" fill="var(--color-text, #334155)" text-anchor="middle">Thực hiện sau 6–12h tìm Xanthochromia</text>
+    <text x="150" y="317" font-size="9.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Âm tính: Loại trừ SAH • (+) Tiếp tục</text>
+  </g>
+
+  <!-- Right: Pos -> Confirmed SAH -->
+  <path d="M 620 210 L 710 210 L 710 260" fill="none" stroke="var(--color-danger, #ef4444)" stroke-width="1.8" marker-end="url(#arr-sah-act)"/>
+  <g>
+    <rect x="635" y="198" width="70" height="20" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+    <text x="670" y="212" font-size="10" font-weight="600" fill="var(--color-danger, #ef4444)" text-anchor="middle">Dương tính (+)</text>
+  </g>
+  <g class="flow-node">
+    <rect x="580" y="260" width="260" height="70" rx="8" fill="var(--color-danger-subtle, rgba(239,68,68,0.12))" stroke="var(--color-danger, #ef4444)" stroke-width="1.8"/>
+    <text x="710" y="283" font-size="12.5" font-weight="700" fill="var(--color-danger, #ef4444)" text-anchor="middle">Xác Định Xuất Huyết Dưới Nhện</text>
+    <text x="710" y="301" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">Kiểm soát HA tâm thu &lt; 160 mmHg</text>
+    <text x="710" y="317" font-size="10" fill="var(--color-danger, #ef4444)" text-anchor="middle">Nimodipine 60mg mỗi 4h phòng co thắt</text>
+  </g>
+
+  <!-- LP pos connects to Angiography -->
+  <path d="M 150 330 L 150 355 L 440 355" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+  <path d="M 710 330 L 710 355 L 440 355" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+  <path d="M 440 355 L 440 375" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arr-sah-act)"/>
+
+  <!-- Step: Angiography -->
+  <g class="flow-node">
+    <rect x="250" y="375" width="380" height="50" rx="8" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+    <text x="440" y="397" font-size="13" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">Chụp Mạch Máu Não (CTA và/hoặc DSA)</text>
+    <text x="440" y="414" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Xác định vị trí, kích thước, cổ túi phình và giải phẫu tuần hoàn</text>
+  </g>
+
+  <!-- Split: Coiling vs Clipping -->
+  <path d="M 440 425 L 440 445 M 270 445 L 610 445" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+  <path d="M 270 445 L 270 465" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arr-sah)"/>
+  <path d="M 610 445 L 610 465" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arr-sah)"/>
+
+  <!-- Coiling -->
+  <g class="flow-node">
+    <rect x="160" y="465" width="220" height="65" rx="8" fill="var(--color-success-subtle, rgba(34,197,94,0.12))" stroke="var(--color-success, #22c55e)" stroke-width="1.8"/>
+    <text x="270" y="488" font-size="12" font-weight="700" fill="var(--color-success, #16a34a)" text-anchor="middle">1. Coiling Nội Mạch Qua Da</text>
+    <text x="270" y="506" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">Thả vòng xoắn kim loại nút tắc</text>
+    <text x="270" y="520" font-size="10" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Ưu tiên cao tuổi, tuần hoàn sau</text>
+  </g>
+
+  <!-- Clipping -->
+  <g class="flow-node">
+    <rect x="500" y="465" width="220" height="65" rx="8" fill="var(--color-primary-subtle, rgba(2,132,199,0.12))" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+    <text x="610" y="488" font-size="12" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">2. Phẫu Thuật Kẹp Cổ (Clipping)</text>
+    <text x="610" y="506" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">Mở nắp sọ vi phẫu kẹp cổ</text>
+    <text x="610" y="520" font-size="10" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Ưu tiên người trẻ, MCA, máu tụ lớn</text>
+  </g>
+
+  <!-- Timing bottom -->
+  <path d="M 270 530 L 270 545 L 440 545" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+  <path d="M 610 530 L 610 545 L 440 545" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+  <path d="M 440 545 L 440 555" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="1.5"/>
+  <text x="440" y="570" font-size="11" font-weight="700" fill="var(--color-danger, #ef4444)" text-anchor="middle">BẮT BUỘC TIẾN HÀNH BÍT TẮC TÚI PHÌNH TRONG VÒNG 24 – 72 GIỜ ĐẦU!</text>
+</svg>
+  </div>
+
+  <div class="flowchart-legend-row">
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(2,132,199,0.12); border-color: #0284c7;"></span>
+        <span>Chẩn đoán hình ảnh NCCT / LP</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(239,68,68,0.12); border-color: #ef4444;"></span>
+        <span>Kiểm soát cấp cứu HA & Nimodipine</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(34,197,94,0.12); border-color: #22c55e;"></span>
+        <span>Can thiệp nút túi phình trong 24-72h</span>
+      </div>
+  </div>
+</div>
       <p class="fig-caption mt-2 text-muted">
         <em>Hình 10: Quy trình từ CT sọ não, chọc dịch não tủy khi CT âm tính, chụp mạch CTA/DSA và chụp lại sau 1 – 3 tuần để loại trừ co thắt mạch che lấp túi phình. (Nguồn: Quyết định 3312/QĐ-BYT).</em>
       </p>
@@ -985,26 +1770,108 @@ sections:
       <span class="fig-title">Hình 11. Lưu Đồ Chẩn Đoán & Điều Trị Huyết Khối Tĩnh Mạch Não (AHA/ASA)</span>
     </div>
     <div class="fig-body">
-      <FlowchartViewer
-        title="Hình 11. Lưu Đồ Chẩn Đoán & Điều Trị Huyết Khối Tĩnh Mạch Não (AHA/ASA)"
-        code={`graph TD
-  START["Nghi Ngờ Huyết Khối Tĩnh Mạch Não (CVST)<br/><small>Đau đầu tiến triển • Phù gai thị • Co giật • Người trẻ / Thai kỳ / Thuốc ngừa thai</small>"]:::start --> IMAGING["Chụp Cắt Lớp Tĩnh Mạch (CTV) hoặc MRI Tĩnh Mạch (MRV)<br/><small>Tìm khuyết thuốc xoang tĩnh mạch (Empty Delta sign), phù não, chuyển dạng xuất huyết</small>"]:::action
+      <div class="flowchart-editorial-card">
+  <div class="flowchart-card-header">
+    <div class="flowchart-badge-title">
+      <span class="flowchart-badge-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg>
+      </span>
+      <span class="flowchart-badge-text">Hình 11. Lưu Đồ Chẩn Đoán & Điều Trị Huyết Khối Tĩnh Mạch Não (AHA/ASA)</span>
+    </div>
+    <span class="flowchart-version-tag">AHA/ASA • CVST Protocol</span>
+  </div>
   
-  IMAGING --> ACUTE["KHỞI ĐỘNG CHỐNG ĐÔNG NGAY LẬP TỨC TRONG GIAI ĐOẠN CẤP<br/><small>LMWH (Enoxaparin 1 mg/kg x 2 lần/ngày) hoặc UFH truyền TM chỉnh theo aPTT<br/>BẮT BUỘC DÙNG KỂ CẢ KHI ĐÃ CÓ XUẤT HUYẾT NÃO CHUYỂN DẠNG DO TẮC TĨNH MẠCH</small>"]:::danger
-  
-  ACUTE --> EVAL{"Lâm sàng thần kinh diễn tiến thế nào sau dùng chống đông?"}:::question
-  
-  EVAL -- "Ổn định / Khá hơn" --> ORAL["Chống Đông Đường Uống Duy Trì (Warfarin INR 2-3 hoặc DOACs)<br/><small>• 3 – 6 tháng: Có yếu tố thúc đẩy tạm thời (thai kỳ, thuốc ngừa thai)<br/>• 6 – 12 tháng: CVST tự phát không rõ nguyên nhân<br/>• Suốt đời: Hội chứng kháng phospholipid, tăng đông nặng di truyền</small>"]:::success
-  
-  EVAL -- "Xấu đi / Phù não lớn đe dọa tụt não" --> RESCUE["Can Thiệp Cứu Nguy Cấp Cứu<br/><small>1. Phẫu thuật Mở Sọ Giải Áp (Decompressive Craniectomy) khẩn cấp<br/>2. Can thiệp nội mạch tĩnh mạch: Hút huyết khối cơ học hoặc tiêu sợi huyết tại chỗ</small>"]:::danger
+  <div class="flowchart-svg-scroll">
+    <svg class="med-svg" viewBox="0 0 860 480" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <marker id="arr-cvst" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-text-muted, #64748b)" />
+    </marker>
+    <marker id="arr-cvst-act" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)" />
+    </marker>
+  </defs>
 
-  classDef start fill:#e0f2fe,stroke:#0284c7,stroke-width:2px,color:#0369a1
-  classDef question fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#854d0e
-  classDef action fill:#eff6ff,stroke:#3b82f6,stroke-width:1.5px,color:#1e40af
-  classDef danger fill:#fee2e2,stroke:#ef4444,stroke-width:2px,color:#991b1b
-  classDef warning fill:#fef3c7,stroke:#f59e0b,stroke-width:2px,color:#92400e
-  classDef success fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#15803d`}
-      />
+  <!-- Root -->
+  <g class="flow-node">
+    <rect x="200" y="15" width="460" height="55" rx="8" fill="var(--color-primary-subtle, rgba(2,132,199,0.12))" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+    <text x="430" y="37" font-size="13.5" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">NGHI NGỜ HUYẾT KHỐI TĨNH MẠCH NÃO (CVST)</text>
+    <text x="430" y="55" font-size="11" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Đau đầu tiến triển • Phù gai thị • Co giật • Thai kỳ / Thuốc tránh thai</text>
+  </g>
+
+  <path d="M 430 70 L 430 98" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arr-cvst-act)"/>
+
+  <!-- Step 2: MRV / CTV -->
+  <g class="flow-node">
+    <rect x="180" y="98" width="500" height="50" rx="8" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+    <text x="430" y="120" font-size="13" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">Chụp Cắt Lớp Tĩnh Mạch (CTV) Hoặc MRI Tĩnh Mạch (MRV)</text>
+    <text x="430" y="137" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Tìm khuyết thuốc xoang tĩnh mạch (Empty Delta Sign), phù não &amp; xuất huyết</text>
+  </g>
+
+  <path d="M 430 148 L 430 178" fill="none" stroke="var(--color-danger, #ef4444)" stroke-width="2" marker-end="url(#arr-cvst-act)"/>
+
+  <!-- Step 3: Anticoagulation Mandate -->
+  <g class="flow-node">
+    <rect x="100" y="178" width="660" height="75" rx="10" fill="var(--color-danger-subtle, rgba(239,68,68,0.12))" stroke="var(--color-danger, #ef4444)" stroke-width="2"/>
+    <text x="430" y="202" font-size="13.5" font-weight="700" fill="var(--color-danger, #ef4444)" text-anchor="middle">KHỞI ĐỘNG CHỐNG ĐÔNG NGAY LẬP TỨC TRONG GIAI ĐOẠN CẤP</text>
+    <text x="430" y="222" font-size="11" font-weight="600" fill="var(--color-text, #334155)" text-anchor="middle">LMWH (Enoxaparin 1 mg/kg x 2 lần/ngày) hoặc UFH truyền TM chỉnh theo aPTT</text>
+    <text x="430" y="240" font-size="11" font-weight="700" fill="var(--color-danger, #ef4444)" text-anchor="middle">BẮT BUỘC DÙNG KỂ CẢ KHI ĐÃ CÓ XUẤT HUYẾT NÃO CHUYỂN DẠNG DO TẮC XOANG!</text>
+  </g>
+
+  <path d="M 430 253 L 430 282" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arr-cvst-act)"/>
+
+  <!-- Decision: Clinical Course -->
+  <g class="flow-node">
+    <polygon points="430,282 610,317 430,352 250,317" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="2"/>
+    <text x="430" y="313" font-size="12" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">Diễn Tiến Thần Kinh</text>
+    <text x="430" y="329" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Sau Khởi Động Chống Đông?</text>
+  </g>
+
+  <!-- Left: Stable -> Oral Anticoagulation -->
+  <path d="M 250 317 L 150 317 L 150 375" fill="none" stroke="var(--color-success, #22c55e)" stroke-width="2" marker-end="url(#arr-cvst-act)"/>
+  <g>
+    <rect x="155" y="305" width="85" height="20" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+    <text x="197" y="319" font-size="10" font-weight="600" fill="var(--color-success, #16a34a)" text-anchor="middle">Ổn định / Khá hơn</text>
+  </g>
+  <g class="flow-node">
+    <rect x="30" y="375" width="340" height="85" rx="8" fill="var(--color-success-subtle, rgba(34,197,94,0.12))" stroke="var(--color-success, #22c55e)" stroke-width="1.8"/>
+    <text x="200" y="398" font-size="12.5" font-weight="700" fill="var(--color-success, #16a34a)" text-anchor="middle">Chống Đông Đường Uống Duy Trì</text>
+    <text x="200" y="417" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">Warfarin (mục tiêu INR 2.0 – 3.0) hoặc DOACs</text>
+    <text x="200" y="433" font-size="10" fill="var(--color-text-muted, #64748b)" text-anchor="middle">• 3 – 6 tháng: Có yếu tố kích hoạt tạm thời</text>
+    <text x="200" y="449" font-size="10" fill="var(--color-text-muted, #64748b)" text-anchor="middle">• 6 – 12 tháng: Tự phát • Dài hạn: Hội chứng APLS</text>
+  </g>
+
+  <!-- Right: Worsening -> Rescue -->
+  <path d="M 610 317 L 710 317 L 710 375" fill="none" stroke="var(--color-danger, #ef4444)" stroke-width="2" marker-end="url(#arr-cvst-act)"/>
+  <g>
+    <rect x="625" y="305" width="80" height="20" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+    <text x="665" y="319" font-size="10" font-weight="600" fill="var(--color-danger, #ef4444)" text-anchor="middle">Xấu đi / Phù lớn</text>
+  </g>
+  <g class="flow-node">
+    <rect x="490" y="375" width="340" height="85" rx="8" fill="var(--color-danger-subtle, rgba(239,68,68,0.12))" stroke="var(--color-danger, #ef4444)" stroke-width="1.8"/>
+    <text x="660" y="398" font-size="12.5" font-weight="700" fill="var(--color-danger, #ef4444)" text-anchor="middle">Can Thiệp Cứu Nguy Cấp Cứu</text>
+    <text x="660" y="417" font-size="10.5" font-weight="600" fill="var(--color-danger, #ef4444)" text-anchor="middle">1. Mở Sọ Giải Áp Khẩn Cấp (Decompressive)</text>
+    <text x="660" y="433" font-size="10" fill="var(--color-text, #334155)" text-anchor="middle">Cứu sống bệnh nhân tụt não đe dọa tử vong</text>
+    <text x="660" y="449" font-size="10" fill="var(--color-text-muted, #64748b)" text-anchor="middle">2. Can thiệp nội mạch: Hút huyết khối cơ học</text>
+  </g>
+</svg>
+  </div>
+
+  <div class="flowchart-legend-row">
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(2,132,199,0.12); border-color: #0284c7;"></span>
+        <span>Chẩn đoán CTV / MRV xoang TM</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(239,68,68,0.12); border-color: #ef4444;"></span>
+        <span>Chống đông cấp cứu bắt buộc LMWH/UFH</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(34,197,94,0.12); border-color: #22c55e;"></span>
+        <span>Duy trì uống 3-12 tháng</span>
+      </div>
+  </div>
+</div>
       <p class="fig-caption mt-2 text-muted">
         <em>Hình 11: Lưu đồ điều trị HKTMN: Khởi động thuốc chống đông ngay lập tức (LMWH hoặc Heparin) kể cả khi đã có tổn thương nhồi máu hoặc chảy máu não; theo dõi mở sọ giải áp nếu có hiệu ứng khối đe dọa tụt não. (Nguồn: Quyết định 3312/QĐ-BYT).</em>
       </p>
@@ -1097,29 +1964,128 @@ sections:
       <span class="fig-title">Hình 12. Lưu Đồ Hướng Dẫn Xử Trí Nhồi Máu Não Kèm Còn Lỗ Bầu Dục (PFO)</span>
     </div>
     <div class="fig-body">
-      <FlowchartViewer
-        title="Hình 12. Lưu Đồ Hướng Dẫn Xử Trí Nhồi Máu Não Kèm Còn Lỗ Bầu Dục (PFO)"
-        code={`graph TD
-  START["Nhồi Máu Não Căn Nguyên Chưa Rõ (ESUS)<br/><small>Bệnh nhân trẻ tuổi (18 – 60 tuổi) • Nghi ngờ thuyên tắc nghịch thường</small>"]:::start --> TEE["1. Siêu Âm Tim Qua Thực Quản (TEE) Với Nghiệm Pháp Bọt Cản Âm<br/><small>Phát hiện luồng thông Phải - Trái (Shunt) • Đánh giá phình vách liên nhĩ (ASA)</small>"]:::action
+      <div class="flowchart-editorial-card">
+  <div class="flowchart-card-header">
+    <div class="flowchart-badge-title">
+      <span class="flowchart-badge-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg>
+      </span>
+      <span class="flowchart-badge-text">Hình 12. Lưu Đồ Hướng Dẫn Xử Trí Nhồi Máu Não Kèm Còn Lỗ Bầu Dục (PFO)</span>
+    </div>
+    <span class="flowchart-version-tag">AHA/ASA • PFO Occlusion</span>
+  </div>
   
-  TEE --> DETECT_PFO{"Có tổn thương PFO trên TEE?"}:::question
-  
-  DETECT_PFO -- "Không (-)" --> NO_PFO["Tiếp Tục Tìm Căn Nguyên Khác<br/><small>Điều trị kháng kết tập tiểu cầu đơn (SAPT)</small>"]:::action
-  DETECT_PFO -- "Có (+)" --> BILAN["2. Bilan Loại Trừ Triệt Để Căn Nguyên Khác<br/><small>• Holter ECG ≥ 24–48h loại trừ rung nhĩ • CTA loại hẹp ĐM cảnh<br/>• Bilan huyết khối tĩnh mạch sâu (DVT) & hội chứng tăng đông</small>"]:::warning
-  
-  BILAN --> ROPE_SCORE{"Thang điểm RoPE ≥ 7 điểm VÀ PFO có nguy cơ cao?"}:::question
-  
-  ROPE_SCORE -- "Thỏa mãn (+)" --> CLOSURE["CHỈ ĐỊNH ĐÓNG PFO BẰNG DÙ QUA DA<br/><small>• Phối hợp DAPT trong 1 – 6 tháng sau can thiệp<br/>• Tiếp tục Aspirin đơn ít nhất 5 năm hoặc suốt đời<br/>• Giảm > 60–70% nguy cơ nhồi máu não tái phát</small>"]:::success
-  
-  ROPE_SCORE -- "Không thỏa (-)" --> MEDICAL["Điều Trị Nội Khoa Bảo Tồn<br/><small>Kháng tiểu cầu đơn (hoặc chống đông nếu phát hiện DVT)<br/>Không khuyến cáo can thiệp đóng dù thường quy</small>"]:::action
+  <div class="flowchart-svg-scroll">
+    <svg class="med-svg" viewBox="0 0 860 520" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <marker id="arr-pfo" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-text-muted, #64748b)" />
+    </marker>
+    <marker id="arr-pfo-act" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)" />
+    </marker>
+  </defs>
 
-  classDef start fill:#e0f2fe,stroke:#0284c7,stroke-width:2px,color:#0369a1
-  classDef question fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#854d0e
-  classDef action fill:#eff6ff,stroke:#3b82f6,stroke-width:1.5px,color:#1e40af
-  classDef danger fill:#fee2e2,stroke:#ef4444,stroke-width:2px,color:#991b1b
-  classDef warning fill:#fef3c7,stroke:#f59e0b,stroke-width:2px,color:#92400e
-  classDef success fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#15803d`}
-      />
+  <!-- Root -->
+  <g class="flow-node">
+    <rect x="220" y="15" width="420" height="55" rx="8" fill="var(--color-primary-subtle, rgba(2,132,199,0.12))" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+    <text x="430" y="37" font-size="13.5" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">NHỒI MÁU NÃO CĂN NGUYÊN CHƯA RÕ (ESUS)</text>
+    <text x="430" y="55" font-size="11" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Bệnh nhân trẻ (18 – 60 tuổi) • Nghi ngờ thuyên tắc mạch nghịch thường</text>
+  </g>
+
+  <path d="M 430 70 L 430 98" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arr-pfo-act)"/>
+
+  <!-- Step 2: TEE -->
+  <g class="flow-node">
+    <rect x="180" y="98" width="500" height="50" rx="8" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+    <text x="430" y="120" font-size="13" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">1. Siêu Âm Tim Qua Thực Quản (TEE) Với Nghiệm Pháp Bọt Cản Âm</text>
+    <text x="430" y="137" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Phát hiện luồng thông Phải – Trái (Shunt) &amp; Phình vách liên nhĩ (ASA)</text>
+  </g>
+
+  <path d="M 430 148 L 430 178" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arr-pfo-act)"/>
+
+  <!-- Decision 1: PFO Present? -->
+  <g class="flow-node">
+    <polygon points="430,178 590,213 430,248 270,213" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="2"/>
+    <text x="430" y="209" font-size="12" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">Có Luồng Thông PFO</text>
+    <text x="430" y="225" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Trên Siêu Âm Tim TEE?</text>
+  </g>
+
+  <!-- Left: No PFO -->
+  <path d="M 270 213 L 150 213 L 150 270" fill="none" stroke="var(--color-text-muted, #64748b)" stroke-width="1.8" marker-end="url(#arr-pfo)"/>
+  <g>
+    <rect x="175" y="201" width="60" height="20" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+    <text x="205" y="215" font-size="10" font-weight="600" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Không (-)</text>
+  </g>
+  <g class="flow-node">
+    <rect x="50" y="270" width="200" height="60" rx="8" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+    <text x="150" y="295" font-size="12" font-weight="700" fill="var(--color-text, #334155)" text-anchor="middle">Tiếp Tục Tìm Căn Nguyên Khác</text>
+    <text x="150" y="315" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Duy trì SAPT (Aspirin 81-100mg)</text>
+  </g>
+
+  <!-- Down: Yes PFO -> Exclusion Bilan -->
+  <path d="M 430 248 L 430 278" fill="none" stroke="var(--color-warning, #f59e0b)" stroke-width="2" marker-end="url(#arr-pfo-act)"/>
+  <g>
+    <rect x="405" y="252" width="50" height="20" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+    <text x="430" y="266" font-size="10" font-weight="600" fill="var(--color-warning, #d97706)" text-anchor="middle">Có (+)</text>
+  </g>
+  <g class="flow-node">
+    <rect x="230" y="278" width="400" height="58" rx="8" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="1.8"/>
+    <text x="430" y="301" font-size="12.5" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">2. Bilan Loại Trừ Triệt Để Căn Nguyên Khác</text>
+    <text x="430" y="321" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">Holter ECG ≥ 24–48h loại AF • CTA loại hẹp ĐM cảnh • Siêu âm DVT chân</text>
+  </g>
+
+  <path d="M 430 336 L 430 365" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arr-pfo-act)"/>
+
+  <!-- Decision 2: RoPE Score >= 7 and High risk PFO? -->
+  <g class="flow-node">
+    <polygon points="430,365 610,400 430,435 250,400" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="2"/>
+    <text x="430" y="396" font-size="12" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">Thang Điểm RoPE ≥ 7 Điểm</text>
+    <text x="430" y="412" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">VÀ PFO Nguy Cơ Cao (Shunt Lớn / ASA)?</text>
+  </g>
+
+  <!-- Left: Medical -->
+  <path d="M 250 400 L 150 400 L 150 450" fill="none" stroke="var(--color-text-muted, #64748b)" stroke-width="1.8" marker-end="url(#arr-pfo)"/>
+  <g>
+    <rect x="165" y="388" width="70" height="20" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+    <text x="200" y="402" font-size="10" font-weight="600" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Không thỏa</text>
+  </g>
+  <g class="flow-node">
+    <rect x="40" y="450" width="220" height="60" rx="8" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+    <text x="150" y="473" font-size="12" font-weight="700" fill="var(--color-text, #334155)" text-anchor="middle">Điều Trị Nội Khoa Bảo Tồn</text>
+    <text x="150" y="493" font-size="10" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Kháng tiểu cầu đơn (hoặc DOACs nếu DVT)</text>
+  </g>
+
+  <!-- Right: Closure -->
+  <path d="M 610 400 L 710 400 L 710 450" fill="none" stroke="var(--color-success, #22c55e)" stroke-width="2" marker-end="url(#arr-pfo-act)"/>
+  <g>
+    <rect x="635" y="388" width="70" height="20" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+    <text x="670" y="402" font-size="10" font-weight="600" fill="var(--color-success, #16a34a)" text-anchor="middle">Thỏa mãn (+)</text>
+  </g>
+  <g class="flow-node">
+    <rect x="550" y="450" width="300" height="65" rx="8" fill="var(--color-success-subtle, rgba(34,197,94,0.12))" stroke="var(--color-success, #22c55e)" stroke-width="2"/>
+    <text x="700" y="473" font-size="12.5" font-weight="700" fill="var(--color-success, #16a34a)" text-anchor="middle">CHỈ ĐỊNH ĐÓNG PFO BẰNG DÙ QUA DA</text>
+    <text x="700" y="491" font-size="10" fill="var(--color-text, #334155)" text-anchor="middle">DAPT 1–6 tháng sau bít dù • Tiếp tục Aspirin ≥ 5 năm</text>
+    <text x="700" y="505" font-size="9.5" font-weight="600" fill="var(--color-success, #16a34a)" text-anchor="middle">Giảm &gt; 60 – 70% nguy cơ đột quỵ tái phát</text>
+  </g>
+</svg>
+  </div>
+
+  <div class="flowchart-legend-row">
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(2,132,199,0.12); border-color: #0284c7;"></span>
+        <span>Siêu âm TEE bọt cản âm</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(245,158,11,0.12); border-color: #f59e0b;"></span>
+        <span>Thang điểm RoPE & Bilan loại trừ</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(34,197,94,0.12); border-color: #22c55e;"></span>
+        <span>Can thiệp bít dù PFO qua da</span>
+      </div>
+  </div>
+</div>
       <p class="fig-caption mt-2 text-muted">
         <em>Hình 12: Quy trình chẩn đoán loại trừ căn nguyên khác, đánh giá thang điểm RoPE và chỉ định can thiệp đóng PFO bằng dù qua da kết hợp kháng tiểu cầu kéo dài. (Nguồn: Quyết định 3312/QĐ-BYT).</em>
       </p>

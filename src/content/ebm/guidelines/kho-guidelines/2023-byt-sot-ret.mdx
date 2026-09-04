@@ -366,30 +366,167 @@ sections:
         <div class="sec-subtitle" style="margin-top: 2rem;">B. PHÁC ĐỒ ĐIỀU TRỊ ĐẶC HIỆU SỐT RÉT ÁC TÍNH (ICU PROTOCOL)</div>
         <p style="margin-bottom: 1rem; font-size: 0.9rem;">Bắt buộc sử dụng <strong>thuốc tiêm đặc hiệu</strong> ngay từ giờ đầu tiên cho đến khi người bệnh tỉnh, nói được, hấp thu tốt qua đường tiêu hóa thì <strong>chuyển sang thuốc phối hợp đường uống (Pyramax) đủ 3 ngày</strong>.</p>
 
-        <FlowchartViewer
-          title="Lưu Đồ Phân Tuyến & Cấp Cứu Điều Trị Sốt Rét Ác Tính (QĐ 3377/QĐ-BYT)"
-          code={`graph TD
-  START["BỆNH NHÂN NGHI NGỜ / XÁC ĐỊNH SỐT RÉT<br/><small>Sốt + Xét nghiệm Lam máu / RDT tìm ký sinh trùng sốt rét (+)</small>"]:::start --> EVAL{"Có Ít Nhất 1/12 Tiêu Chuẩn Sốt Rét Ác Tính?<br/><small>Hôn mê, co giật, suy thở, sốc, suy thận, toan chuyển hóa, KST > 10%</small>"}:::question
-  
-  EVAL -- "KHÔNG (Thể thông thường)" --> ORAL["ĐIỀU TRỊ THỂ THÔNG THƯỜNG (ACTs ĐƯỜNG UỐNG)<br/><small>• P. falciparum: Pyramax uống 3 ngày + Primaquin 0.25mg/kg ngày 1<br/>• P. vivax: Chloroquin 3 ngày + Primaquin 0.25mg/kg x 14 ngày</small>"]:::success
-  EVAL -- "CÓ (Sốt rét ác tính)" --> ICU["CẤP CỨU HỒI SỨC ICU NGAY LẬP TỨC<br/><small>Hồi sức ABC, thở oxy/thông khí, chống co giật, kiểm tra đường huyết</small>"]:::danger
-  
-  ICU --> IVT["KHỞI ĐỘNG THUỐC TIÊM ĐẶC HIỆU: ARTESUNAT IV (Ưu tiên số 1)<br/><small>• Người lớn & trẻ > 20kg: 2.4 mg/kg IV<br/>• Trẻ em < 20kg: 3.0 mg/kg IV<br/>• Lịch tiêm: Giờ 0, Giờ 12, Giờ 24, sau đó mỗi 24h (tối thiểu 3 liều)</small>"]:::start
-  
-  IVT --> CLINICAL{"Bệnh nhân đã tỉnh, tự ngồi và dung nạp đường uống tốt?"}:::question
-  
-  CLINICAL -- "Chưa tỉnh / Còn hôn mê" --> CONT_IV["Tiếp Tục Artesunat IV Mỗi 24 Giờ<br/><small>Theo dõi biến chứng: hạ đường huyết, suy thận, phù phổi cấp</small>"]:::warning
-  CONT_IV --> CLINICAL
-  
-  CLINICAL -- "Đã tỉnh & dung nạp tốt" --> SWITCH["CHUYỂN TIẾP SANG THUỐC UỐNG ĐỦ LIỆU TRÌNH<br/><small>• Pyramax (Artesunat + Pyronaridin) uống đủ 3 ngày<br/>• Phối hợp Primaquin diệt giao bào (sau khi test G6PD an toàn)</small>"]:::success
+        <div class="flowchart-editorial-card" style="margin-top: 1.5rem;">
+          <div class="flowchart-editorial-hdr">
+            <div class="flowchart-editorial-title">
+              <i class="fa-solid fa-diagram-project" style="color: var(--color-primary, #0284c7);"></i>
+              <span>LƯU ĐỒ PHÂN TUYẾN &amp; CẤP CỨU ĐIỀU TRỊ SỐT RÉT ÁC TÍNH (QĐ 3377/QĐ-BYT)</span>
+            </div>
+            <span class="flow-step-badge flow-badge-green">Editorial SVG Studio 2.0</span>
+          </div>
+          <div class="flowchart-editorial-canvas">
+            <svg class="med-svg" viewBox="0 0 960 680" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+              <!-- Nền Canvas -->
+              <rect width="960" height="680" fill="var(--color-surface, #ffffff)" rx="12" stroke="var(--color-border, #e2e8f0)" stroke-width="1"/>
 
-  classDef start fill:#e0f2fe,stroke:#0284c7,stroke-width:2px,color:#0369a1
-  classDef question fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#854d0e
-  classDef action fill:#eff6ff,stroke:#3b82f6,stroke-width:1.5px,color:#1e40af
-  classDef danger fill:#fee2e2,stroke:#ef4444,stroke-width:2px,color:#991b1b
-  classDef warning fill:#fef3c7,stroke:#f59e0b,stroke-width:2px,color:#92400e
-  classDef success fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#15803d`}
-        />
+              <!-- DEFS: MŨI TÊN VECTOR -->
+              <defs>
+                <marker id="arrow-default" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1 L 8 5 L 0 9 z" fill="var(--color-text-muted, #64748b)"/>
+                </marker>
+                <marker id="arrow-blue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1 L 8 5 L 0 9 z" fill="#0284c7"/>
+                </marker>
+                <marker id="arrow-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1 L 8 5 L 0 9 z" fill="#10b981"/>
+                </marker>
+                <marker id="arrow-amber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1 L 8 5 L 0 9 z" fill="#f59e0b"/>
+                </marker>
+                <marker id="arrow-red" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1 L 8 5 L 0 9 z" fill="#dc2626"/>
+                </marker>
+              </defs>
+
+              <!-- NODE 1: KHỞI ĐẦU -->
+              <g>
+                <rect x="200" y="20" width="560" height="58" rx="8" class="node-start" stroke-width="2"/>
+                <text x="480" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="800" fill="var(--color-primary, #0284c7)">BỆNH NHÂN NGHI NGỜ HOẶC XÁC ĐỊNH SỐT RÉT</text>
+                <text x="480" y="61" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600" fill="var(--color-text-muted, #64748b)">Sốt cao, rét run, yếu tố dịch tễ • Lam máu nhuộm Giemsa hoặc Test nhanh RDT (+)</text>
+              </g>
+
+              <line x1="480" y1="78" x2="480" y2="105" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arrow-blue)"/>
+
+              <!-- NODE 2: ĐÁNH GIÁ 12 TIÊU CHUẨN ÁC TÍNH -->
+              <g>
+                <rect x="180" y="105" width="600" height="64" rx="8" class="node-decision" stroke-width="1.5"/>
+                <text x="480" y="128" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="800" fill="var(--color-text, #0f172a)">CÓ ÍT NHẤT 1 TRONG 12 TIÊU CHUẨN SỐT RÉT ÁC TÍNH? (BẢNG 1 QĐ 3377)</text>
+                <text x="480" y="146" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="600" fill="var(--color-text-muted, #64748b)">Hôn mê/Glasgow &lt; 11 • Co giật &gt; 2 cơn/24h • Suy hô hấp • Tụt HA/Sốc • Suy thận cấp • Toan máu • KST &gt; 10%</text>
+              </g>
+
+              <!-- RẼ 2 NHÁNH TRỰC GIAO TỪ NODE 2 -->
+              <!-- Đường rẽ trái: KHÔNG CÓ TIÊU CHUẨN ÁC TÍNH -->
+              <path d="M 280 169 L 280 195 L 180 195 L 180 220" fill="none" stroke="#10b981" stroke-width="2" marker-end="url(#arrow-green)"/>
+              <rect x="195" y="184" width="70" height="22" rx="4" fill="var(--color-surface, #ffffff)" stroke="#10b981" stroke-width="1"/>
+              <text x="230" y="199" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="800" fill="#15803d">KHÔNG</text>
+
+              <!-- Đường rẽ phải: CÓ TIÊU CHUẨN ÁC TÍNH -->
+              <path d="M 680 169 L 680 195 L 680 220" fill="none" stroke="#dc2626" stroke-width="2" marker-end="url(#arrow-red)"/>
+              <rect x="645" y="184" width="70" height="22" rx="4" fill="var(--color-surface, #ffffff)" stroke="#dc2626" stroke-width="1"/>
+              <text x="680" y="199" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="800" fill="#b91c1c">CÓ (ÁC TÍNH)</text>
+
+              <!-- NHÁNH TRÁI: THỂ THÔNG THƯỜNG -->
+              <g>
+                <rect x="30" y="220" width="300" height="50" rx="8" class="node-action-green" stroke-width="1.5"/>
+                <text x="180" y="242" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" fill="#15803d">SỐT RÉT THỂ THÔNG THƯỜNG</text>
+                <text x="180" y="258" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text, #0f172a)">Không suy tạng, ăn uống được, tỉnh táo</text>
+              </g>
+
+              <line x1="180" y1="270" x2="180" y2="295" stroke="#10b981" stroke-width="1.5" marker-end="url(#arrow-green)"/>
+
+              <g>
+                <rect x="30" y="295" width="300" height="250" rx="8" fill="var(--color-surface, #ffffff)" stroke="#16a34a" stroke-width="1.5"/>
+                <rect x="30" y="295" width="300" height="26" rx="8" fill="#16a34a"/>
+                <text x="180" y="312" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="800" fill="#ffffff">ĐIỀU TRỊ BẰNG ACTs ĐƯỜNG UỐNG</text>
+
+                <text x="45" y="340" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="#15803d">1. Nhiễm Plasmodium falciparum:</text>
+                <text x="55" y="358" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text, #334155)">• Pyramax (Artesunat + Pyronaridin):</text>
+                <text x="65" y="374" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text, #334155)">Uống 1 lần/ngày x 3 ngày liên tiếp</text>
+                <text x="55" y="392" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text, #334155)">• Primaquin (diệt thể giao bào):</text>
+                <text x="65" y="408" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text, #334155)">0.25 mg base/kg liều duy nhất vào N1</text>
+
+                <text x="45" y="435" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="#0284c7">2. Nhiễm Plasmodium vivax:</text>
+                <text x="55" y="453" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text, #334155)">• Chloroquin phosphat:</text>
+                <text x="65" y="469" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text, #334155)">Tổng liều 25 mg base/kg trong 3 ngày</text>
+                <text x="55" y="487" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text, #334155)">• Primaquin (chống tái phát thể ngủ):</text>
+                <text x="65" y="503" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text, #334155)">0.25 mg base/kg/ngày x 14 ngày</text>
+                <text x="65" y="519" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="700" fill="#dc2626">* Xét nghiệm G6PD trước khi dùng</text>
+
+                <text x="45" y="535" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" fill="var(--color-text-muted, #64748b)">Theo dõi lam máu N3, N7, N14, N28</text>
+              </g>
+
+              <!-- NHÁNH PHẢI: SỐT RÉT ÁC TÍNH (ICU) -->
+              <g>
+                <rect x="420" y="220" width="510" height="50" rx="8" class="node-action-red" stroke-width="2"/>
+                <text x="675" y="242" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" fill="#dc2626">CẤP CỨU HỒI SỨC ICU NGAY LẬP TỨC (GIỜ VÀNG ĐẦU TIÊN)</text>
+                <text x="675" y="258" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text, #0f172a)">Hồi sức ABC • Đặt sonde dạ dày • Chống co giật • Test đường huyết mao mạch mỗi 4h</text>
+              </g>
+
+              <line x1="675" y1="270" x2="675" y2="295" stroke="#dc2626" stroke-width="2" marker-end="url(#arrow-red)"/>
+
+              <!-- KHỐI ARTESUNAT IV -->
+              <g>
+                <rect x="420" y="295" width="510" height="110" rx="8" fill="var(--color-surface, #ffffff)" stroke="#0284c7" stroke-width="1.8"/>
+                <rect x="420" y="295" width="510" height="26" rx="8" fill="#0284c7"/>
+                <text x="675" y="312" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="#ffffff">KHỞI ĐỘNG THUỐC TIÊM ĐẶC HIỆU: ARTESUNAT IV (ƯU TIÊN HÀNG 1)</text>
+
+                <text x="435" y="338" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="700" fill="#0284c7">• Người lớn &amp; Trẻ em &gt; 20 kg:</text>
+                <text x="600" y="338" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="800" fill="#0284c7">2.4 mg/kg tiêm TM chậm</text>
+                <text x="435" y="356" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="700" fill="#0284c7">• Trẻ em &lt; 20 kg:</text>
+                <text x="540" y="356" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="800" fill="#0284c7">3.0 mg/kg tiêm TM chậm</text>
+
+                <text x="435" y="376" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="var(--color-text, #0f172a)">• Lịch tiêm chuẩn:</text>
+                <text x="525" y="376" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text, #334155)">Tiêm vào <tspan font-weight="700" fill="#b91c1c">Giờ thứ 0, Giờ thứ 12</tspan> (ngày đầu), sau đó tiêm mỗi 24 giờ</text>
+                <text x="435" y="394" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="700" fill="#b45309">⚠️ Bắt buộc tiêm tối thiểu 24 giờ (đủ ít nhất 3 liều tiêm) trước khi xem xét chuyển uống</text>
+              </g>
+
+              <line x1="675" y1="405" x2="675" y2="430" stroke="#0284c7" stroke-width="1.5" marker-end="url(#arrow-blue)"/>
+
+              <!-- NODE QUYẾT ĐỊNH CHUYỂN ĐƯỜNG UỐNG -->
+              <g>
+                <rect x="460" y="430" width="430" height="50" rx="8" class="node-decision" stroke-width="1.5"/>
+                <text x="675" y="451" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="800" fill="var(--color-text, #0f172a)">BỆNH NHÂN ĐÃ TỈNH &amp; DUNG NẠP ĐƯỢNG UỐNG TỐT?</text>
+                <text x="675" y="468" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text-muted, #64748b)">Glasgow ≥ 14 • Hết nôn ói, ngồi dậy được, nuốt tốt, huyết động ổn</text>
+              </g>
+
+              <!-- RẼ 2 NHÁNH TỪ DECISION 2 -->
+              <!-- Nhánh Chưa tỉnh: Đi sang trái rồi xuống -->
+              <path d="M 520 480 L 520 515" fill="none" stroke="#f59e0b" stroke-width="1.5" marker-end="url(#arrow-amber)"/>
+              <g>
+                <rect x="420" y="515" width="220" height="95" rx="8" fill="rgba(245, 158, 11, 0.08)" stroke="#f59e0b" stroke-width="1.5"/>
+                <text x="530" y="535" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="800" fill="#b45309">CHƯA TỈNH / NÔN NHIỀU</text>
+                <text x="430" y="555" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="700" fill="var(--color-text, #0f172a)">• Tiếp tục Artesunat IV 2.4 mg/kg</text>
+                <text x="440" y="570" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" fill="var(--color-text, #334155)">mỗi 24 giờ (tối đa không quá 7 ngày)</text>
+                <text x="430" y="588" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="700" fill="#dc2626">• Theo dõi tan máu muộn &amp; thận</text>
+                <text x="430" y="602" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" fill="var(--color-text-muted, #64748b)">• Đánh giá lại mỗi ngày</text>
+              </g>
+
+              <!-- Nhánh Đã tỉnh: Đi sang phải rồi xuống -->
+              <path d="M 830 480 L 830 515" fill="none" stroke="#10b981" stroke-width="2" marker-end="url(#arrow-green)"/>
+              <g>
+                <rect x="670" y="515" width="260" height="110" rx="8" fill="var(--color-surface, #ffffff)" stroke="#16a34a" stroke-width="2"/>
+                <rect x="670" y="515" width="260" height="24" rx="8" fill="#16a34a"/>
+                <text x="800" y="531" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="800" fill="#ffffff">CHUYỂN SANG ĐƯỜNG UỐNG (ORAL SWITCH)</text>
+                
+                <text x="682" y="553" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="#15803d">✓ Uống Pyramax đủ 3 ngày:</text>
+                <text x="692" y="568" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" fill="var(--color-text, #334155)">(Artesunat + Pyronaridin) đủ liều</text>
+                <text x="682" y="586" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="#0284c7">✓ Phối hợp Primaquin liều duy nhất:</text>
+                <text x="692" y="601" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" fill="var(--color-text, #334155)">0.25 mg base/kg để diệt sạch giao bào</text>
+                <text x="682" y="618" font-family="'Plus Jakarta Sans', sans-serif" font-size="8.5" font-weight="600" fill="var(--color-text-muted, #64748b)">* Không dùng Primaquin cho thai phụ &amp; trẻ &lt; 6 tháng</text>
+              </g>
+
+              <!-- MŨI TÊN VÒNG LẶP ĐÁNH GIÁ LẠI (LOOPBACK CONNECTOR) -->
+              <path d="M 640 562 L 655 562 L 655 490 L 640 490" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.2" stroke-dasharray="3,3"/>
+            </svg>
+          </div>
+
+          <div class="flowchart-legend-row">
+            <div class="flowchart-legend-item"><span class="legend-dot" style="background: #10b981;"></span> Thể thông thường (ACTs đường uống: Pyramax / Chloroquin)</div>
+            <div class="flowchart-legend-item"><span class="legend-dot" style="background: #dc2626;"></span> Sốt rét ác tính ICU (Hồi sức ABC &amp; Can thiệp tối khẩn)</div>
+            <div class="flowchart-legend-item"><span class="legend-dot" style="background: #0284c7;"></span> Thuốc tiêm đặc hiệu hàng 1 (Artesunat IV liều 2.4 - 3.0 mg/kg)</div>
+            <div class="flowchart-legend-item"><span class="legend-dot" style="background: #f59e0b;"></span> Chuyển tiếp đường uống (Oral Switch sau tối thiểu 3 liều tiêm)</div>
+          </div>
+        </div>
 
         <div class="table-wrapper">
           <table class="regimen-table">

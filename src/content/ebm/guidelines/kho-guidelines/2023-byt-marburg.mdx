@@ -336,29 +336,184 @@ sections:
         </div>
 
         <div style="margin-top: 1.5rem;">
-          <FlowchartViewer
-            title="Lưu Đồ Phân Luồng Cách Ly, Chẩn Đoán & Hồi Sức Sốt Xuất Huyết Marburg (QĐ 2201/QĐ-BYT 2023)"
-            code={`graph TD
-  START["BỆNH NHÂN CÓ YẾU TỐ DỊCH TỄ VÙNG LƯU HÀNH & SỐT CAO ĐỘT NGỘT<br/><small>Đau đầu dữ dội, đau cơ, tiêu chảy cấp, phát ban dát sẩn hoặc xuất huyết</small>"]:::start --> TRIAGE["KÍCH HOẠT CÁCH LY PHÒNG LÂY NHIỄM CẤP ĐỘ CAO (PPE CẤP 3 - 4)<br/><small>• Cách ly phòng áp lực âm / phòng đơn riêng biệt • Kính bảo hộ, khẩu trang N95, áo choàng chống thấm<br/>• Báo cáo khẩn cơ quan y tế dự phòng • Đóng gói bệnh phẩm máu 3 lớp an toàn sinh học A</small>"]:::danger
+          <div class="flowchart-editorial-card">
+            <div class="flowchart-card-header">
+              <div class="flowchart-card-title-group">
+                <span class="flowchart-card-icon">🛡️</span>
+                <div>
+                  <h3 class="flowchart-card-title">Lưu Đồ Phân Luồng Cách Ly, Chẩn Đoán &amp; Hồi Sức Sốt Xuất Huyết Marburg</h3>
+                  <p class="flowchart-card-subtitle">Hướng dẫn Bộ Y Tế (QĐ 2201/QĐ-BYT 2023) • Kích hoạt phòng hộ PPE cấp 3–4 • Chu kỳ RT-PCR 72h • Hồi sức ICU chống sốc xuất huyết</p>
+                </div>
+              </div>
+              <span class="flowchart-card-badge">BYT 2201/2023 • Editorial SVG</span>
+            </div>
 
-  TRIAGE --> LAB_DX["XÉT NGHIỆM KHẲNG ĐỊNH CĂN NGUYÊN (RT-PCR MÁU)<br/><small>Đồng thời làm CTM (Tiểu cầu, BC), Đông máu (INR, Fibrinogen), Men gan, Creatinine</small>"]:::action
+            <div class="flowchart-svg-container">
+              <svg class="med-svg" viewBox="0 0 980 880" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <marker id="arr-marb" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M 1 1.5 L 8 5 L 1 8.5 Z" fill="var(--color-primary, #0284c7)"/>
+                  </marker>
+                  <marker id="arr-marb-warn" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M 1 1.5 L 8 5 L 1 8.5 Z" fill="var(--color-warning, #f59e0b)"/>
+                  </marker>
+                  <marker id="arr-marb-danger" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M 1 1.5 L 8 5 L 1 8.5 Z" fill="var(--color-danger, #ef4444)"/>
+                  </marker>
+                  <marker id="arr-marb-success" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M 1 1.5 L 8 5 L 1 8.5 Z" fill="var(--color-success, #10b981)"/>
+                  </marker>
+                </defs>
 
-  LAB_DX --> PCR_RES{"Kết Quả Xét Nghiệm RT-PCR Marburg Lần 1?"}:::question
+                {/* CONNECTORS */}
+                {/* START -> TRIAGE */}
+                <path d="M 490 96 V 126" stroke="var(--color-danger, #ef4444)" stroke-width="2" fill="none" marker-end="url(#arr-marb-danger)"/>
 
-  PCR_RES -- "RT-PCR Dương Tính (+)" --> CONFIRMED["XÁC CHẨN SỐT XUẤT HUYẾT MARBURG (MVD)<br/><small>Tiếp tục duy trì cách ly nghiêm ngặt và phân tầng biến chứng</small>"]:::danger
+                {/* TRIAGE -> LAB_DX */}
+                <path d="M 490 200 V 230" stroke="var(--color-primary, #0284c7)" stroke-width="2" fill="none" marker-end="url(#arr-marb)"/>
 
-  PCR_RES -- "RT-PCR Âm Tính (-) nhưng lâm sàng nghi ngờ" --> RETEST["LÀM LẠI RT-PCR SAU 72 GIỜ<br/><small>Không vội gỡ cách ly vì tải lượng vi rút có thể chưa đạt ngưỡng trong 72h đầu</small>"]:::warning
+                {/* LAB_DX -> PCR_RES */}
+                <path d="M 490 301 V 331" stroke="var(--color-primary, #0284c7)" stroke-width="2" fill="none" marker-end="url(#arr-marb)"/>
 
-  CONFIRMED --> STAGE_EVAL{"Đánh Giá Giai Đoạn Bệnh & Biến Chứng Tạng?"}:::question
-  RETEST --> STAGE_EVAL
+                {/* PCR_RES -> CONFIRMED (Left) */}
+                <path d="M 330 358 H 256 Q 250 358 250 364 V 414" stroke="var(--color-danger, #ef4444)" stroke-width="2" fill="none" marker-end="url(#arr-marb-danger)"/>
 
-  STAGE_EVAL -- "Giai đoạn sớm (Khởi phát ngày 1 - 5): Sốt, nôn, tiêu chảy" --> SUPPORT_EARLY["ĐIỀU TRỊ HỖ TRỢ BẢO TỒN SỚM<br/><small>• Hạ sốt Paracetamol (CẤM TUYỆT ĐỐI Aspirin / NSAID / Tiêm bắp)<br/>• Bù nước điện giải đường uống (Oresol) hoặc truyền dịch đẳng trương<br/>• Chống nôn Metoclopramide / Chlorpromazine</small>"]:::success
+                {/* PCR_RES -> RETEST (Right) */}
+                <path d="M 650 358 H 724 Q 730 358 730 364 V 414" stroke="var(--color-warning, #f59e0b)" stroke-width="2" fill="none" marker-end="url(#arr-marb-warn)"/>
 
-  STAGE_EVAL -- "Giai đoạn nặng (Ngày 6 - 16): Xuất huyết tạng, suy thận, sốc" --> ICU_RESUS["HỒI SỨC CẤP CỨU HỒI SỨC TÍCH CỰC (ICU)<br/><small>• Bù thể tích dịch truyền tĩnh mạch có kiểm soát CVP • Vận mạch Noradrenaline duy trì MAP ≥ 65<br/>• Truyền khối hồng cầu, tiểu cầu, huyết tương tươi đông lạnh khi xuất huyết rầm rộ / DIC<br/>• Thở oxy / Thở máy bảo vệ phổi • Lọc máu liên tục CRRT nếu suy thận cấp / toan hóa máu</small>"]:::danger
+                {/* CONFIRMED -> STAGE_EVAL */}
+                <path d="M 250 505 V 547 Q 250 553 256 553 H 304" stroke="var(--color-danger, #ef4444)" stroke-width="2" fill="none" marker-end="url(#arr-marb-danger)"/>
 
-  SUPPORT_EARLY --> DETECT_BLEED["THEO DÕI SÁT TỪ NGÀY 6-8: DẤU HIỆU XUẤT HUYẾT ĐA CƠ QUAN & SỐC MẤT MÁU"]:::start
-  ICU_RESUS --> RECOVERY["THEO DÕI HỒI PHỤC SAU NGÀY 15: BIẾN CHỨNG VIÊM TINH HOÀN & TIÊU CHUẨN XUẤT VIỆN"]:::action`}
-          />
+                {/* RETEST -> STAGE_EVAL */}
+                <path d="M 730 505 V 547 Q 730 553 724 553 H 676" stroke="var(--color-warning, #f59e0b)" stroke-width="2" fill="none" marker-end="url(#arr-marb-warn)"/>
+
+                {/* STAGE_EVAL -> SUPPORT_EARLY (Left) */}
+                <path d="M 310 553 H 246 Q 240 553 240 559 V 609" stroke="var(--color-success, #10b981)" stroke-width="2" fill="none" marker-end="url(#arr-marb-success)"/>
+
+                {/* STAGE_EVAL -> ICU_RESUS (Right) */}
+                <path d="M 670 553 H 704 Q 710 553 710 559 V 609" stroke="var(--color-danger, #ef4444)" stroke-width="2" fill="none" marker-end="url(#arr-marb-danger)"/>
+
+                {/* CONNECTOR LABELS (with background masks) */}
+                <g>
+                  <rect x="160" y="346" width="165" height="22" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+                  <text x="242" y="361" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-danger, #ef4444)">RT-PCR (+) (Xác chẩn)</text>
+                </g>
+
+                <g>
+                  <rect x="660" y="346" width="180" height="22" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+                  <text x="750" y="361" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-warning, #f59e0b)">RT-PCR (-) nhưng nghi ngờ</text>
+                </g>
+
+                <g>
+                  <rect x="150" y="565" width="165" height="22" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+                  <text x="232" y="580" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-success, #10b981)">Giai đoạn sớm (Ngày 1–5)</text>
+                </g>
+
+                <g>
+                  <rect x="680" y="565" width="170" height="22" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+                  <text x="765" y="580" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-danger, #ef4444)">Giai đoạn nặng (Ngày 6–16)</text>
+                </g>
+
+                {/* NODES */}
+                {/* NODE 1: START */}
+                <g class="flow-node">
+                  <rect x="210" y="30" width="560" height="66" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+                  <rect x="210" y="30" width="560" height="24" rx="10" fill="var(--color-primary, #0284c7)" fill-opacity="0.1"/>
+                  <text x="490" y="47" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-primary, #0284c7)" letter-spacing="0.5">BƯỚC 1: DỊCH TỄ VÙNG LƯU HÀNH &amp; SỐT CAO ĐỘT NGỘT</text>
+                  <text x="490" y="74" text-anchor="middle" font-size="12" font-weight="600" fill="var(--color-text, #1e293b)">Đau đầu dữ dội • Đau mỏi cơ khớp • Tiêu chảy cấp xối xả • Buồn nôn • Phát ban dát sẩn</text>
+                </g>
+
+                {/* NODE 2: TRIAGE */}
+                <g class="flow-node">
+                  <rect x="180" y="130" width="620" height="70" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-danger, #ef4444)" stroke-width="2"/>
+                  <rect x="180" y="130" width="620" height="24" rx="10" fill="var(--color-danger, #ef4444)" fill-opacity="0.12"/>
+                  <text x="490" y="147" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-danger, #ef4444)" letter-spacing="0.5">BƯỚC 2: KÍCH HOẠT CÁCH LY PHÒNG LÂY NHIỄM CẤP ĐỘ CAO (PPE CẤP 3–4)</text>
+                  <text x="490" y="172" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--color-text, #1e293b)">Phòng cách ly áp lực âm / phòng đơn riêng • Quần áo phòng hộ chống thấm, kính bảo hộ, N95</text>
+                  <text x="490" y="189" text-anchor="middle" font-size="11" fill="var(--color-text-muted, #64748b)">Báo cáo khẩn kiểm soát nhiễm khuẩn • Đóng gói mẫu bệnh phẩm 3 lớp an toàn sinh học loại A</text>
+                </g>
+
+                {/* NODE 3: LAB_DX */}
+                <g class="flow-node">
+                  <rect x="230" y="235" width="520" height="66" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+                  <rect x="230" y="235" width="520" height="24" rx="10" fill="var(--color-primary, #0284c7)" fill-opacity="0.1"/>
+                  <text x="490" y="252" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-primary, #0284c7)" letter-spacing="0.5">BƯỚC 3: XÉT NGHIỆM KHẲNG ĐỊNH CĂN NGUYÊN (RT-PCR MÁU)</text>
+                  <text x="490" y="279" text-anchor="middle" font-size="12" font-weight="600" fill="var(--color-text, #1e293b)">RT-PCR định danh Marburg virus + Đánh giá CTM (giảm BC/tiểu cầu), Đông máu (INR, Fibrinogen)</text>
+                </g>
+
+                {/* NODE 4: PCR_RES (Decision) */}
+                <g class="flow-node">
+                  <rect x="330" y="335" width="320" height="46" rx="23" fill="var(--color-surface, #ffffff)" stroke="var(--color-warning, #f59e0b)" stroke-width="2"/>
+                  <text x="490" y="363" text-anchor="middle" font-size="12" font-weight="700" fill="var(--color-warning, #f59e0b)">Kết Quả Xét Nghiệm RT-PCR Marburg Lần 1?</text>
+                </g>
+
+                {/* NODE 5: CONFIRMED */}
+                <g class="flow-node">
+                  <rect x="70" y="420" width="360" height="85" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-danger, #ef4444)" stroke-width="2"/>
+                  <rect x="70" y="420" width="360" height="24" rx="10" fill="var(--color-danger, #ef4444)" fill-opacity="0.12"/>
+                  <text x="250" y="437" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--color-danger, #ef4444)" letter-spacing="0.5">XÁC CHẨN SỐT XUẤT HUYẾT MARBURG (MVD)</text>
+                  <text x="85" y="462" font-size="11.5" font-weight="700" fill="var(--color-text, #1e293b)">Tiếp tục duy trì cách ly nghiêm ngặt tuyệt đối</text>
+                  <text x="85" y="481" font-size="11" fill="var(--color-text-muted, #64748b)">• Đăng ký cơ sở dữ liệu bệnh truyền nhiễm nguy hiểm nhóm A</text>
+                  <text x="85" y="497" font-size="11" fill="var(--color-primary, #0284c7)">• Phân tầng biến chứng suy tạng và thiết lập hỗ trợ sinh hiệu</text>
+                </g>
+
+                {/* NODE 6: RETEST */}
+                <g class="flow-node">
+                  <rect x="550" y="420" width="360" height="85" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-warning, #f59e0b)" stroke-width="2"/>
+                  <rect x="550" y="420" width="360" height="24" rx="10" fill="var(--color-warning, #f59e0b)" fill-opacity="0.12"/>
+                  <text x="730" y="437" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--color-warning, #f59e0b)" letter-spacing="0.5">LÀM LẠI RT-PCR SAU 72 GIỜ</text>
+                  <text x="565" y="462" font-size="11.5" font-weight="700" fill="var(--color-danger, #ef4444)">TUYỆT ĐỐI KHÔNG VỘI GỠ CÁCH LY</text>
+                  <text x="565" y="481" font-size="11" fill="var(--color-text-muted, #64748b)">Tải lượng vi rút có thể chưa đạt ngưỡng phát hiện trong 72h đầu</text>
+                  <text x="565" y="497" font-size="11" fill="var(--color-text, #1e293b)">Lấy mẫu máu lần 2 sau 72h để xác nhận chính thức</text>
+                </g>
+
+                {/* NODE 7: STAGE_EVAL (Decision) */}
+                <g class="flow-node">
+                  <rect x="310" y="530" width="360" height="46" rx="23" fill="var(--color-surface, #ffffff)" stroke="var(--color-warning, #f59e0b)" stroke-width="2"/>
+                  <text x="490" y="558" text-anchor="middle" font-size="12" font-weight="700" fill="var(--color-warning, #f59e0b)">Phân Tầng Giai Đoạn Bệnh &amp; Biến Chứng Tạng</text>
+                </g>
+
+                {/* NODE 8: SUPPORT_EARLY */}
+                <g class="flow-node">
+                  <rect x="30" y="615" width="420" height="145" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-success, #10b981)" stroke-width="2"/>
+                  <rect x="30" y="615" width="420" height="24" rx="10" fill="var(--color-success, #10b981)" fill-opacity="0.1"/>
+                  <text x="240" y="632" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--color-success, #10b981)" letter-spacing="0.5">ĐIỀU TRỊ HỖ TRỢ BẢO TỒN (GIAI ĐOẠN 1: NGÀY 1–5)</text>
+                  <text x="45" y="657" font-size="11.5" font-weight="700" fill="var(--color-text, #1e293b)">• Hạ sốt an toàn: <tspan fill="var(--color-success, #10b981)">Paracetamol 10–15 mg/kg</tspan> mỗi 4–6h</text>
+                  <text x="45" y="676" font-size="11.5" font-weight="700" fill="var(--color-danger, #ef4444)">• CẤM TUYỆT ĐỐI Aspirin &amp; NSAIDs (nguy cơ xuất huyết tiêu hóa)</text>
+                  <text x="45" y="695" font-size="11.5" font-weight="700" fill="var(--color-danger, #ef4444)">• CẤM TIÊM BẮP (tránh tạo khối máu tụ lớn không cầm được)</text>
+                  <text x="45" y="714" font-size="11" fill="var(--color-text, #1e293b)">• Bù nước điện giải đường uống (Oresol) hoặc truyền dịch đẳng trương</text>
+                  <text x="45" y="733" font-size="10.5" font-weight="600" fill="var(--color-warning, #f59e0b)">• Cảnh báo N6–N8: Theo dõi sát xuất huyết da niêm và sốc mất máu</text>
+                </g>
+
+                {/* NODE 9: ICU_RESUS */}
+                <g class="flow-node">
+                  <rect x="490" y="615" width="460" height="145" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-danger, #ef4444)" stroke-width="2"/>
+                  <rect x="490" y="615" width="460" height="24" rx="10" fill="var(--color-danger, #ef4444)" fill-opacity="0.12"/>
+                  <text x="720" y="632" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--color-danger, #ef4444)" letter-spacing="0.5">HỒI SỨC CẤP CỨU ICU (GIAI ĐOẠN 2: NGÀY 6–16)</text>
+                  <text x="505" y="657" font-size="11.5" font-weight="600" fill="var(--color-text, #1e293b)">• Hồi sức dịch truyền tĩnh mạch kiểm soát CVP / ScvO2</text>
+                  <text x="505" y="676" font-size="11.5" font-weight="700" fill="var(--color-danger, #ef4444)">• Vận mạch Noradrenaline duy trì MAP ≥ 65 mmHg</text>
+                  <text x="505" y="695" font-size="11.5" fill="var(--color-text, #1e293b)">• Truyền khối hồng cầu, tiểu cầu, huyết tương tươi (FFP) khi có DIC</text>
+                  <text x="505" y="714" font-size="11.5" font-weight="700" fill="var(--color-primary, #0284c7)">• Lọc máu liên tục (CRRT) sớm khi có suy thận cấp vô niệu / toan hóa</text>
+                  <text x="505" y="733" font-size="10.5" fill="var(--color-text-muted, #64748b)">• Thở máy bảo vệ phổi hạn chế tổn thương nội mạc mạch máu phổi</text>
+                </g>
+
+                {/* BOTTOM SUMMARY BAR */}
+                <g class="flow-node">
+                  <rect x="30" y="780" width="920" height="75" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+                  <rect x="30" y="780" width="920" height="22" rx="10" fill="var(--color-primary, #0284c7)" fill-opacity="0.08"/>
+                  <text x="490" y="796" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--color-primary, #0284c7)" letter-spacing="0.5">TIÊU CHUẨN XUẤT VIỆN &amp; AN TOÀN TÌNH DỤC 12 THÁNG (BỘ Y TẾ 2023)</text>
+                  <text x="50" y="821" font-size="11" fill="var(--color-text, #1e293b)">• Tiêu chuẩn xuất viện: Cắt sốt liên tục &gt; 2 ngày + Lâm sàng cải thiện + Hết triệu chứng đào thải + <tspan font-weight="700" fill="var(--color-success, #10b981)">RT-PCR máu âm tính</tspan>.</text>
+                  <text x="50" y="841" font-size="11" fill="var(--color-text, #1e293b)">• <tspan font-weight="700" fill="var(--color-danger, #ef4444)">Cảnh báo an toàn tình dục:</tspan> Virus Marburg bài tiết qua tinh dịch kéo dài <tspan font-weight="700">lên đến 12 tháng</tspan>. Bắt buộc dùng bao cao su khi quan hệ tình dục.</text>
+                </g>
+              </svg>
+            </div>
+
+            <div class="flowchart-legend-row">
+              <div class="legend-item"><span class="legend-dot" style="background:var(--color-danger, #ef4444);"></span> Xác chẩn ca bệnh / Kích hoạt cách ly PPE cấp 3–4</div>
+              <div class="legend-item"><span class="legend-dot" style="background:var(--color-warning, #f59e0b);"></span> RT-PCR âm tính lần 1 / Làm lại sau 72h</div>
+              <div class="legend-item"><span class="legend-dot" style="background:var(--color-success, #10b981);"></span> Giai đoạn sớm (N1–N5): Hỗ trợ bảo tồn, bù nước</div>
+              <div class="legend-item"><span class="legend-dot" style="background:var(--color-primary, #0284c7);"></span> Hồi sức ICU: Noradrenaline, CRRT, chế phẩm máu</div>
+            </div>
+          </div>
         </div>
 
         <div class="sec-subtitle"><i class="fa-solid fa-hospital-user"></i> Phân Tuyến Điều Trị &amp; Tiêu Chuẩn Xuất Viện</div>

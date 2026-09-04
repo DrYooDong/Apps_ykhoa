@@ -288,23 +288,87 @@ sections:
       </div>
 
       {/* SƠ ĐỒ VECTOR ĐỘNG LỰC LÂY TRUYỀN */}
-      <FlowchartViewer 
-        title="Sơ Đồ Động Lực Học & Các Con Đường Lây Truyền Bệnh Đậu Mùa Khỉ (Bộ Y Tế)"
-        code={`flowchart TD
-          RESERVOIR([Nguồn Trữ Tự Nhiên (Động vật) 🐿️ | start | badge: Ổ chứa hoang dã | subtitle: Gặm nhấm rừng, sóc, thú linh trưởng Châu Phi nhiễm vi rút])
-          INFECTED([Người Bệnh Mắc Đậu Mùa Khỉ 🧑‍🤝‍🧑 | start | badge: Nguồn lây người | subtitle: Giai đoạn khởi phát & toàn phát có tổn thương da niêm mạc])
+      <div class="flowchart-editorial-card">
+  <div class="flowchart-card-header">
+    <div class="flowchart-badge-title">
+      <span class="flowchart-badge-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg>
+      </span>
+      <span class="flowchart-badge-text">Sơ Đồ Động Lực Học &amp; Các Con Đường Lây Truyền Bệnh Đậu Mùa Khỉ (Bộ Y Tế)</span>
+    </div>
+    <span class="flowchart-version-tag">QĐ 3999/BYT • Mpox Transmission</span>
+  </div>
+  
+  <div class="flowchart-svg-scroll">
+    <svg class="med-svg" viewBox="0 0 920 400" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+    <defs>
+      <marker id="arr-mpx1" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-text-muted, #64748b)" />
+      </marker>
+      <marker id="arr-mpx1-act" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-danger, #ef4444)" />
+      </marker>
+    </defs>
 
-          ZOONOTIC[Lây truyền từ Động vật sang Người (Zoonotic) 🐾 | action | subtitle: Tiếp xúc trực tiếp máu, dịch thể, vết cào, cắn hoặc giết mổ chế biến thịt thú rừng]
-          HUMAN[Lây truyền từ Người sang Người 🤝 | danger | badge: Tiếp xúc gần | subtitle: 1. Tiếp xúc trực tiếp tổn thương nốt ban/mụn mủ + 2. Quan hệ tình dục + 3. Giọt bắn hô hấp lớn + 4. Đồ dùng cá nhân ô nhiễm chăn ga gối]
+    <g class="flow-node">
+      <rect x="50" y="20" width="360" height="70" rx="8" fill="var(--color-primary-subtle, rgba(2,132,199,0.12))" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+      <text x="230" y="45" font-size="13" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">Ổ CHỨA TỰ NHIÊN (ĐỘNG VẬT)</text>
+      <text x="230" y="65" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Gặm nhấm rừng, sóc, thú linh trưởng Châu Phi</text>
+    </g>
 
-          TARGET[NGƯỜI LÀNH PHƠI NHIỄM & NHIỄM BỆNH ⭐ | warning | badge: Cổng xâm nhập | subtitle: Vi rút xâm nhập qua da trầy xước, niêm mạc hô hấp, kết mạc mắt, niêm mạc sinh dục hoặc hậu môn]
+    <g class="flow-node">
+      <rect x="510" y="20" width="360" height="70" rx="8" fill="var(--color-danger-subtle, rgba(239,68,68,0.12))" stroke="var(--color-danger, #ef4444)" stroke-width="2"/>
+      <text x="690" y="45" font-size="13" font-weight="700" fill="var(--color-danger, #ef4444)" text-anchor="middle">NGƯỜI BỆNH MẮC ĐẬU MÙA KHỈ</text>
+      <text x="690" y="65" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Tổn thương da niêm mạc, dịch phỏng mủ, vảy tiết</text>
+    </g>
 
-          RESERVOIR --> ZOONOTIC
-          INFECTED --> HUMAN
-          ZOONOTIC ==> TARGET
-          HUMAN ==> TARGET
-        `}
-      />
+    <path d="M 230 90 L 230 135" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arr-mpx1-act)"/>
+    <path d="M 690 90 L 690 135" fill="none" stroke="var(--color-danger, #ef4444)" stroke-width="2" marker-end="url(#arr-mpx1-act)"/>
+
+    <g class="flow-node">
+      <rect x="50" y="135" width="360" height="95" rx="8" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+      <text x="230" y="160" font-size="12" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">Lây Từ Động Vật Sang Người (Zoonotic)</text>
+      <text x="230" y="180" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">• Tiếp xúc trực tiếp máu, dịch thể, vết cắn/cào</text>
+      <text x="230" y="198" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">• Giết mổ, chế biến thịt thú rừng chưa nấu chín</text>
+      <text x="230" y="214" font-size="9.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Xâm nhập qua vết xước da, niêm mạc</text>
+    </g>
+
+    <g class="flow-node">
+      <rect x="510" y="135" width="360" height="95" rx="8" fill="var(--color-danger-subtle, rgba(239,68,68,0.12))" stroke="var(--color-danger, #ef4444)" stroke-width="1.8"/>
+      <text x="690" y="160" font-size="12" font-weight="700" fill="var(--color-danger, #ef4444)" text-anchor="middle">Lây Từ Người Sang Người (Tiếp Xúc Gần)</text>
+      <text x="690" y="180" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">• Tiếp xúc da kề da trực tiếp tổn thương nốt ban/mụn mủ</text>
+      <text x="690" y="198" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">• Quan hệ tình dục • Giọt bắn hô hấp lớn khi mặt đối mặt</text>
+      <text x="690" y="214" font-size="9.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">• Đồ dùng cá nhân ô nhiễm (chăn ga gối đệm)</text>
+    </g>
+
+    <path d="M 230 230 L 230 270 L 460 270" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+    <path d="M 690 230 L 690 270 L 460 270" fill="none" stroke="var(--color-danger, #ef4444)" stroke-width="2"/>
+    <path d="M 460 270 L 460 295" fill="none" stroke="var(--color-danger, #ef4444)" stroke-width="2" marker-end="url(#arr-mpx1-act)"/>
+
+    <g class="flow-node">
+      <rect x="180" y="295" width="560" height="75" rx="10" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="2"/>
+      <text x="460" y="320" font-size="13" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">NGƯỜI LÀNH PHƠI NHIỄM &amp; NHIỄM BỆNH</text>
+      <text x="460" y="340" font-size="11" font-weight="600" fill="var(--color-text, #334155)" text-anchor="middle">Cổng xâm nhập: Da trầy xước, niêm mạc hô hấp, kết mạc mắt, niêm mạc sinh dục / hậu môn</text>
+      <text x="460" y="356" font-size="10" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Thời kỳ ủ bệnh 6–13 ngày (dao động 5–21 ngày) trước khi phát ban</text>
+    </g>
+  </svg>
+  </div>
+
+  <div class="flowchart-legend-row">
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(2,132,199,0.12); border-color: #0284c7;"></span>
+        <span>Lây từ động vật hoang dã (Zoonotic)</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(239,68,68,0.12); border-color: #ef4444;"></span>
+        <span>Lây từ người sang người (Tiếp xúc da / QHTD / Giọt bắn)</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(245,158,11,0.12); border-color: #f59e0b;"></span>
+        <span>Cổng xâm nhập niêm mạc &amp; thời kỳ ủ bệnh</span>
+      </div>
+  </div>
+</div>
 
     </div>
   </div>
@@ -906,42 +970,90 @@ sections:
         </div>
       </div>
 
-      <FlowchartViewer 
-        title="Lưu Đồ Phân Tuyến Điều Trị & 5 Dấu Hiệu Báo Động Đỏ Chuyển Tuyến Bệnh Đậu Mùa Khỉ (Bộ Y Tế)"
-        code={`flowchart TD
-          START([Bệnh nhân nghi ngờ hoặc xác định mắc Đậu mùa khỉ | start | badge: Bộ Y Tế QĐ 3999 | subtitle: Sốt, phát ban mụn mủ ly tâm, nổi hạch cổ / bẹn / nách])
-          TRIAGE{Đánh giá mức độ nặng & Yếu tố nguy cơ cao? | question}
+      <div class="flowchart-editorial-card">
+  <div class="flowchart-card-header">
+    <div class="flowchart-badge-title">
+      <span class="flowchart-badge-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg>
+      </span>
+      <span class="flowchart-badge-text">Lưu Đồ Phân Tuyến Điều Trị &amp; 5 Dấu Hiệu Báo Động Đỏ Chuyển Tuyến Bệnh Đậu Mùa Khỉ (Bộ Y Tế)</span>
+    </div>
+    <span class="flowchart-version-tag">QĐ 3999/BYT • Mpox Triage</span>
+  </div>
+  
+  <div class="flowchart-svg-scroll">
+    <svg class="med-svg" viewBox="0 0 920 480" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+    <defs>
+      <marker id="arr-mpx2" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-text-muted, #64748b)" />
+      </marker>
+      <marker id="arr-mpx2-act" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-danger, #ef4444)" />
+      </marker>
+    </defs>
 
-          MILD[THỂ NHẸ: Không triệu chứng nặng, không biến chứng 🟢 | success | badge: Tuyến Cơ Sở | subtitle: Cách ly & điều trị triệu chứng tại Trạm Y tế xã/phường hoặc TTYT huyện]
-          SEVERE[THỂ NẶNG HOẶC CÓ YẾU TỐ NGUY CƠ CHUYỂN NẶNG 🚨 | danger | badge: Tuyến Chuyên Sâu | subtitle: Trẻ < 8 tuổi, phụ nữ có thai, người già, suy giảm miễn dịch HIV/AIDS - Điều trị tại BV Tỉnh / Trung ương]
+    <g class="flow-node">
+      <rect x="230" y="15" width="460" height="52" rx="8" fill="var(--color-primary-subtle, rgba(2,132,199,0.12))" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+      <text x="460" y="36" font-size="13" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">BỆNH NHÂN NGHI NGỜ HOẶC XÁC ĐỊNH MẮC ĐẬU MÙA KHỈ</text>
+      <text x="460" y="53" font-size="11" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Sốt, phát ban mụn mủ ly tâm, nổi hạch cổ / bẹn / nách sưng đau</text>
+    </g>
 
-          MONITOR{Xuất hiện 1 trong 5 DẤU HIỆU BÁO ĐỘNG ĐỎ? | question}
-          RED1[1. Giảm thị lực đột ngột, đau mắt: Loét giác mạc 👁️ | danger]
-          RED2[2. Rối loạn ý thức, co giật, hôn mê: Viêm não màng não 🧠 | danger]
-          RED3[3. Khó thở, thở co kéo, SpO2 < 94%: Viêm phổi hoại tử 🫁 | danger]
-          RED4[4. Xuất huyết tự nhiên, thiểu niệu kéo dài: Suy thận & DIC 🩸 | danger]
-          RED5[5. Tụt huyết áp < 90 mmHg, sốc nhiễm trùng, mạch nhanh ⚡ | danger]
+    <path d="M 460 67 L 460 95" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arr-mpx2-act)"/>
 
-          TRANSFER[CHUYỂN TUYẾN CẤP CỨU KHẨN CẤP LÊN TUYẾN TRÊN ⭐ | danger | badge: Báo động đỏ | subtitle: Vận chuyển an toàn có bảo hộ + Sẵn sàng hồi sức tích cực ICU & thuốc kháng vi rút Tecovirimat]
+    <g class="flow-node">
+      <polygon points="460,95 660,128 460,161 260,128" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="2"/>
+      <text x="460" y="124" font-size="12" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">Phân Tuyến: Thể Nhẹ Hay Có Yếu Tố Nguy Cơ Cao?</text>
+      <text x="460" y="140" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Trẻ &lt; 8 tuổi, thai phụ, người già, HIV/AIDS?</text>
+    </g>
 
-          START --> TRIAGE
-          TRIAGE -->|Thể nhẹ đơn thuần| MILD
-          TRIAGE ==>|Thể nặng / Nguy cơ cao| SEVERE
-          MILD --> MONITOR
-          MONITOR -->|Không có cờ đỏ| MILD
-          MONITOR ==>|Có cờ đỏ| RED1
-          MONITOR ==>|Có cờ đỏ| RED2
-          MONITOR ==>|Có cờ đỏ| RED3
-          MONITOR ==>|Có cờ đỏ| RED4
-          MONITOR ==>|Có cờ đỏ| RED5
+    <path d="M 260 128 L 140 128 L 140 190" fill="none" stroke="var(--color-success, #22c55e)" stroke-width="2" marker-end="url(#arr-mpx2-act)"/>
+    <g class="flow-node">
+      <rect x="30" y="190" width="220" height="75" rx="8" fill="var(--color-success-subtle, rgba(34,197,94,0.12))" stroke="var(--color-success, #22c55e)" stroke-width="1.8"/>
+      <text x="140" y="213" font-size="12" font-weight="700" fill="var(--color-success, #16a34a)" text-anchor="middle">THỂ NHẸ: TUYẾN CƠ SỞ</text>
+      <text x="140" y="231" font-size="10" fill="var(--color-text, #334155)" text-anchor="middle">Không biến chứng, không nguy cơ</text>
+      <text x="140" y="247" font-size="9.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Cách ly &amp; điều trị triệu chứng tại TTYT</text>
+    </g>
 
-          RED1 ==> TRANSFER
-          RED2 ==> TRANSFER
-          RED3 ==> TRANSFER
-          RED4 ==> TRANSFER
-          RED5 ==> TRANSFER
-        `}
-      />
+    <path d="M 660 128 L 760 128 L 760 190" fill="none" stroke="var(--color-danger, #ef4444)" stroke-width="2" marker-end="url(#arr-mpx2-act)"/>
+    <g class="flow-node">
+      <rect x="640" y="190" width="240" height="75" rx="8" fill="var(--color-danger-subtle, rgba(239,68,68,0.12))" stroke="var(--color-danger, #ef4444)" stroke-width="2"/>
+      <text x="760" y="213" font-size="12" font-weight="700" fill="var(--color-danger, #ef4444)" text-anchor="middle">THỂ NẶNG / NGUY CƠ CAO</text>
+      <text x="760" y="231" font-size="10" fill="var(--color-text, #334155)" text-anchor="middle">Trẻ nhỏ, thai phụ, suy giảm miễn dịch</text>
+      <text x="760" y="247" font-size="9.5" font-weight="600" fill="var(--color-danger, #ef4444)" text-anchor="middle">Điều trị tại Bệnh viện Tỉnh / Trung ương</text>
+    </g>
+
+    <!-- 5 Red Flags -->
+    <path d="M 140 265 L 140 300 L 460 300" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+    <path d="M 760 265 L 760 300 L 460 300" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+    <path d="M 460 300 L 460 325" fill="none" stroke="var(--color-danger, #ef4444)" stroke-width="2" marker-end="url(#arr-mpx2-act)"/>
+
+    <g class="flow-node">
+      <rect x="150" y="325" width="620" height="135" rx="10" fill="var(--color-danger-subtle, rgba(239,68,68,0.12))" stroke="var(--color-danger, #ef4444)" stroke-width="2"/>
+      <text x="460" y="350" font-size="13" font-weight="700" fill="var(--color-danger, #ef4444)" text-anchor="middle">XUẤT HIỆN 1 TRONG 5 DẤU HIỆU BÁO ĐỘNG ĐỎ -> CHUYỂN TUYẾN CẤP CỨU</text>
+      <text x="460" y="372" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">1. Mắt: Giảm thị lực, đau mắt, tổn thương giác mạc (nguy cơ mù lòa)</text>
+      <text x="460" y="390" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">2. Thần kinh: Rối loạn ý thức, co giật, hôn mê (viêm não màng não)</text>
+      <text x="460" y="408" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">3. Hô hấp: Khó thở, thở nhanh co kéo, SpO2 &lt; 94% (viêm phổi hoại tử)</text>
+      <text x="460" y="426" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">4. Huyết động: Tụt huyết áp &lt; 90 mmHg, mạch nhanh nhỏ, sốc nhiễm trùng</text>
+      <text x="460" y="444" font-size="10.5" font-weight="700" fill="var(--color-danger, #ef4444)" text-anchor="middle">5. Thận &amp; Đông máu: Thiểu niệu, vô niệu, xuất huyết tự nhiên (DIC &amp; suy đa tạng)</text>
+    </g>
+  </svg>
+  </div>
+
+  <div class="flowchart-legend-row">
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(34,197,94,0.12); border-color: #22c55e;"></span>
+        <span>Thể nhẹ: Điều trị &amp; cách ly tại tuyến cơ sở</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(245,158,11,0.12); border-color: #f59e0b;"></span>
+        <span>Nguy cơ cao: Chăm sóc chuyên sâu tại BV Tỉnh/TW</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(239,68,68,0.12); border-color: #ef4444;"></span>
+        <span>5 dấu hiệu báo động đỏ: Chuyển tuyến cấp cứu khẩn cấp</span>
+      </div>
+  </div>
+</div>
 
       <div class="sec-subtitle" style="margin-top: 1.5rem;"><i class="fa-solid fa-triangle-exclamation"></i> 5 Dấu Hiệu Nguy Hiểm Báo Động Đỏ Cần Chuyển Tuyến Cấp Cứu Khẩn Cấp</div>
 

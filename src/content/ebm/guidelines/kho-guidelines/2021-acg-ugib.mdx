@@ -392,35 +392,124 @@ sections:
 
         
         <div class="sec-subtitle"><i class="fa-solid fa-diagram-project"></i> Figure 2. Lưu đồ Xử trí Tiếp cận UGIB từ Cấp cứu đến Sau Nội soi (Editorial SVG Studio)</div>
-        <FlowchartViewer 
-          title="Lưu Đồ Xử Trí Tiếp Cận UGIB Từ Cấp Cứu Đến Sau Nội Soi (ACG 2021)"
-          code={`flowchart TD
-            START([Tiếp nhận bệnh nhân Xuất huyết tiêu hóa trên (UGIB) | start | badge: Cấp cứu ban đầu | subtitle: Nôn ra máu hoặc đi cầu phân đen])
-            GBS{Đánh giá phân tầng nguy cơ qua thang điểm Glasgow-Blatchford (GBS)? | question}
+        <div class="flowchart-editorial-card">
+  <div class="flowchart-card-header">
+    <div class="flowchart-badge-title">
+      <span class="flowchart-badge-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg>
+      </span>
+      <span class="flowchart-badge-text">Lưu Đồ Xử Trí Tiếp Cận UGIB Từ Cấp Cứu Đến Sau Nội Soi (ACG 2021)</span>
+    </div>
+    <span class="flowchart-version-tag">ACG 2021 • UGIB Guidelines</span>
+  </div>
+  
+  <div class="flowchart-svg-scroll">
+    <svg class="med-svg" viewBox="0 0 920 540" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+    <defs>
+      <marker id="arr-u1" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-text-muted, #64748b)" />
+      </marker>
+      <marker id="arr-u1-act" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)" />
+      </marker>
+    </defs>
 
-            LOW_RISK[GBS = 0 - 1: NGUY CƠ CỰC THẤP (≤ 1%) 🟢 | success | badge: An toàn ngoại trú | subtitle: Tỷ lệ can thiệp nội soi hoặc tử vong cực thấp - Xuất viện sớm an toàn & theo dõi ngoại trú]
-            HIGH_RISK[GBS ≥ 2: CẦN NHẬP VIỆN & HỒI SỨC TÍCH CỰC 🚨 | danger | badge: Nguy cơ cao | subtitle: Đặt 2 đường truyền lớn, theo dõi monitor, duy trì MAP ≥ 65 mmHg]
+    <!-- Root -->
+    <g class="flow-node">
+      <rect x="230" y="15" width="460" height="52" rx="8" fill="var(--color-danger-subtle, rgba(239,68,68,0.12))" stroke="var(--color-danger, #ef4444)" stroke-width="2"/>
+      <text x="460" y="36" font-size="13.5" font-weight="700" fill="var(--color-danger, #ef4444)" text-anchor="middle">TIẾP NHẬN XUẤT HUYẾT TIÊU HÓA TRÊN (UGIB)</text>
+      <text x="460" y="53" font-size="11" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Bệnh nhân nôn ra máu tươi/máu cục hoặc đi cầu phân đen</text>
+    </g>
 
-            RESUS[Hồi sức tiền nội soi chuẩn EBM ACG 2021 💉 | action | subtitle: 1. Truyền máu hạn chế khi Hb < 7 g/dL (Đích 7-9 g/dL) + 2. Erythromycin 250mg IV trước soi 30-90p + 3. Xem xét PPI tiền nội soi]
+    <path d="M 460 67 L 460 95" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arr-u1-act)"/>
 
-            ENDO_TIME{Thời điểm can thiệp nội soi tiêu hóa trên? | question}
-            ENDO_OPT[NỘI SOI TRONG VÒNG 24 GIỜ (KHI ĐÃ ỔN ĐỊNH HUYẾT ĐỘNG) ⭐ | action | badge: ACG Khuyến cáo Mạnh | subtitle: KHÔNG khuyến cáo soi quá sớm < 6 giờ khi chưa hồi sức ổn định]
+    <!-- GBS Decision -->
+    <g class="flow-node">
+      <polygon points="460,95 650,130 460,165 270,130" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="2"/>
+      <text x="460" y="126" font-size="12" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">Phân Tầng Thang Điểm Glasgow-Blatchford</text>
+      <text x="460" y="142" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Điểm GBS của bệnh nhân?</text>
+    </g>
 
-            FORREST{Phân loại tổn thương ổ loét theo Forrest? | question}
-            FORREST_LOW[Nguy cơ thấp: Đáy sạch (FIII), Vết sắc tố (FIIc) 🟢 | success | subtitle: Không cần can thiệp nội soi cầm máu - Dùng PPI uống chuẩn & xuất viện sớm]
-            FORREST_HIGH[Nguy cơ cao: Phun tia (FIa), Rỉ máu (FIb), Mạch lộ (FIIa), Cục máu dính (FIIb) 🚨 | danger | badge: Bắt buộc can thiệp | subtitle: Kẹp Hemoclip hoặc Liệu pháp nhiệt ± Tiêm Epinephrine + PPI liều cao liên tục trong 72 giờ]
+    <!-- Left: GBS 0-1 Low Risk -> Outpatient -->
+    <path d="M 270 130 L 140 130 L 140 190" fill="none" stroke="var(--color-success, #22c55e)" stroke-width="2" marker-end="url(#arr-u1-act)"/>
+    <g>
+      <rect x="150" y="118" width="80" height="20" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="190" y="132" font-size="10" font-weight="600" fill="var(--color-success, #16a34a)" text-anchor="middle">GBS = 0 – 1</text>
+    </g>
+    <g class="flow-node">
+      <rect x="30" y="190" width="220" height="85" rx="8" fill="var(--color-success-subtle, rgba(34,197,94,0.12))" stroke="var(--color-success, #22c55e)" stroke-width="1.8"/>
+      <text x="140" y="213" font-size="12.5" font-weight="700" fill="var(--color-success, #16a34a)" text-anchor="middle">NGUY CƠ CỰC THẤP (≤ 1%)</text>
+      <text x="140" y="233" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">Nguy cơ tử vong / can thiệp &lt; 1%</text>
+      <text x="140" y="250" font-size="10.5" font-weight="600" fill="var(--color-success, #16a34a)" text-anchor="middle">Xuất viện sớm an toàn</text>
+      <text x="140" y="265" font-size="9.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Theo dõi và hẹn soi ngoại trú</text>
+    </g>
 
-            START --> GBS
-            GBS -->|GBS 0-1| LOW_RISK
-            GBS ==>|GBS ≥ 2| HIGH_RISK
-            HIGH_RISK --> RESUS
-            RESUS --> ENDO_TIME
-            ENDO_TIME -->|Ổn định huyết động| ENDO_OPT
-            ENDO_OPT --> FORREST
-            FORREST -->|Forrest IIc, III| FORREST_LOW
-            FORREST ==>|Forrest Ia, Ib, IIa, IIb| FORREST_HIGH
-          `}
-        />
+    <!-- Right: GBS >= 2 High Risk -> Inpatient Resuscitation -->
+    <path d="M 650 130 L 760 130 L 760 190" fill="none" stroke="var(--color-danger, #ef4444)" stroke-width="2" marker-end="url(#arr-u1-act)"/>
+    <g>
+      <rect x="670" y="118" width="70" height="20" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="705" y="132" font-size="10" font-weight="600" fill="var(--color-danger, #ef4444)" text-anchor="middle">GBS ≥ 2</text>
+    </g>
+    <g class="flow-node">
+      <rect x="620" y="190" width="280" height="85" rx="8" fill="var(--color-danger-subtle, rgba(239,68,68,0.12))" stroke="var(--color-danger, #ef4444)" stroke-width="1.8"/>
+      <text x="760" y="213" font-size="12.5" font-weight="700" fill="var(--color-danger, #ef4444)" text-anchor="middle">CẦN NHẬP VIỆN &amp; HỒI SỨC</text>
+      <text x="760" y="233" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">2 đường truyền lớn • Duy trì MAP ≥ 65</text>
+      <text x="760" y="250" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">Truyền máu hạn chế khi Hb &lt; 7 g/dL</text>
+      <text x="760" y="265" font-size="9.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Erythromycin 250mg IV trước soi 30-90p</text>
+    </g>
+
+    <!-- Connect High Risk to Endoscopy Timing -->
+    <path d="M 760 275 L 760 310 L 460 310 L 460 335" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arr-u1-act)"/>
+
+    <!-- Timing Node -->
+    <g class="flow-node">
+      <rect x="230" y="335" width="460" height="50" rx="8" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+      <text x="460" y="357" font-size="13" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">NỘI SOI TRONG VÒNG 24H (KHI HUYẾT ĐỘNG ỔN ĐỊNH)</text>
+      <text x="460" y="374" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">KHÔNG khuyến cáo soi khẩn cấp &lt; 6 giờ khi chưa hồi sức ổn định</text>
+    </g>
+
+    <path d="M 460 385 L 460 415" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arr-u1-act)"/>
+
+    <!-- Forrest Decision -->
+    <g class="flow-node">
+      <polygon points="460,415 650,448 460,481 270,448" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="2"/>
+      <text x="460" y="444" font-size="12" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">Phân Loại Tổn Thương Theo Forrest?</text>
+      <text x="460" y="460" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Đánh giá nguy cơ tái xuất huyết ổ loét</text>
+    </g>
+
+    <!-- Bottom Left: Forrest IIc, III -> Low risk -->
+    <path d="M 270 448 L 160 448 L 160 495" fill="none" stroke="var(--color-success, #22c55e)" stroke-width="1.8" marker-end="url(#arr-u1-act)"/>
+    <g class="flow-node">
+      <rect x="40" y="495" width="240" height="40" rx="6" fill="var(--color-success-subtle, rgba(34,197,94,0.12))" stroke="var(--color-success, #22c55e)" stroke-width="1.5"/>
+      <text x="160" y="515" font-size="11" font-weight="700" fill="var(--color-success, #16a34a)" text-anchor="middle">Forrest IIc, III: Không can thiệp nội soi</text>
+      <text x="160" y="528" font-size="9.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">PPI uống chuẩn • Xuất viện sớm</text>
+    </g>
+
+    <!-- Bottom Right: Forrest Ia, Ib, IIa, IIb -> Endoscopic Therapy -->
+    <path d="M 650 448 L 760 448 L 760 495" fill="none" stroke="var(--color-danger, #ef4444)" stroke-width="1.8" marker-end="url(#arr-u1-act)"/>
+    <g class="flow-node">
+      <rect x="620" y="495" width="280" height="40" rx="6" fill="var(--color-danger-subtle, rgba(239,68,68,0.12))" stroke="var(--color-danger, #ef4444)" stroke-width="1.5"/>
+      <text x="760" y="515" font-size="11" font-weight="700" fill="var(--color-danger, #ef4444)" text-anchor="middle">Forrest Ia, Ib, IIa, IIb: Can thiệp cầm máu</text>
+      <text x="760" y="528" font-size="9.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Hemoclip / Nhiệt + PPI IV liều cao 72h</text>
+    </g>
+  </svg>
+  </div>
+
+  <div class="flowchart-legend-row">
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(34,197,94,0.12); border-color: #22c55e;"></span>
+        <span>GBS 0-1: Nguy cơ cực thấp, ngoại trú an toàn</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(2,132,199,0.12); border-color: #0284c7;"></span>
+        <span>GBS ≥ 2: Nhập viện hồi sức &amp; Soi EGD trong 24h</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(239,68,68,0.12); border-color: #ef4444;"></span>
+        <span>Forrest Ia-IIb: Can thiệp cầm máu &amp; PPI IV 72h</span>
+      </div>
+  </div>
+</div>
 
       </div>
     </section>

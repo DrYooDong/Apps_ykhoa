@@ -368,42 +368,146 @@ sections:
         </div>
       </div>
 
-      <FlowchartViewer 
-        title="Lưu Đồ Phân Tầng Xử Trí Viêm Túi Thừa Đại Tràng Trái ALCD (WSES 2017)"
-        code={`flowchart TD
-          START([Bệnh nhân Viêm Túi Thừa Đại Tràng Trái ALCD | start | badge: WSES 2017])
-          CT{Chụp CT Scan bụng chậu phân loại biến chứng | question}
+      <div class="flowchart-editorial-card">
+  <div class="flowchart-card-header">
+    <div class="flowchart-card-title">
+      <svg class="flowchart-title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+        <polyline points="2 17 12 22 22 17"></polyline>
+        <polyline points="2 12 12 17 22 12"></polyline>
+      </svg>
+      <span>Lưu Đồ Phân Tầng Xử Trí Viêm Túi Thừa Đại Tràng Trái ALCD (WSES 2017)</span>
+    </div>
+    <div class="flowchart-card-subtitle">Phân tầng theo hình ảnh cắt lớp vi tính CT Scan bụng chậu và tình trạng huyết động</div>
+  </div>
+  <div class="flowchart-card-body">
+    <div class="flowchart-svg-wrapper">
+<svg class="med-svg" viewBox="0 0 940 500" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arr-wses" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)"/>
+    </marker>
+  </defs>
 
-          UNCOMP[Chưa biến chứng (Uncomplicated) | success | badge: Khuyến cáo 1A | subtitle: Viêm khu trú, không thủng/áp xe]
-          ABSCESS[Có biến chứng: Ổ áp xe (Abscess) | warning | badge: Hinchey I-II]
-          PERIT[Có biến chứng: Viêm phúc mạc lan tỏa | danger | badge: Hinchey III-IV]
+  <!-- Root -->
+  <g transform="translate(300, 20)">
+    <rect width="340" height="52" rx="10" fill="var(--color-surface)" stroke="#0284c7" stroke-width="2"/>
+    <rect x="0" y="0" width="340" height="52" rx="10" fill="#0284c7" fill-opacity="0.08"/>
+    <text x="170" y="24" text-anchor="middle" font-size="10" font-weight="700" fill="#0284c7" letter-spacing="1">WSES 2017 GUIDELINES</text>
+    <text x="170" y="42" text-anchor="middle" font-size="13" font-weight="700" fill="var(--color-text)">Viêm Túi Thừa Đại Tràng Trái ALCD</text>
+  </g>
 
-          UNCOMP_RX[Theo dõi ngoại trú + Giảm đau | success | subtitle: KHÔNG DÙNG KHÁNG SINH THƯỜNG QUY]
+  <path d="M 470 72 L 470 105" fill="none" stroke="#0284c7" stroke-width="2" marker-end="url(#arr-wses)"/>
 
-          AB_SIZE{Kích thước ổ áp xe trên CT? | question}
-          AB_SMALL[Áp xe nhỏ < 3 - 5 cm | warning | subtitle: Kháng sinh tĩnh mạch đơn thuần]
-          AB_LARGE[Áp xe lớn >= 3 - 5 cm | danger | subtitle: Dẫn lưu qua da dưới hướng dẫn CĐHA + KS tĩnh mạch]
+  <!-- CT Scan Decision -->
+  <g transform="translate(320, 105)">
+    <rect width="300" height="50" rx="8" fill="var(--color-surface)" stroke="#d97706" stroke-width="1.8"/>
+    <rect x="0" y="0" width="300" height="50" rx="8" fill="#d97706" fill-opacity="0.06"/>
+    <text x="150" y="22" text-anchor="middle" font-size="10" font-weight="700" fill="#d97706">CHỤP CT SCAN BỤNG CHẬU CẢN QUANG</text>
+    <text x="150" y="39" text-anchor="middle" font-size="12" font-weight="600" fill="var(--color-text)">Phân loại mức độ biến chứng WSES / Hinchey</text>
+  </g>
 
-          HEMO{Huyết động & Thể trạng người bệnh? | question}
-          HARTMANN[PHẪU THUẬT HARTMANN 🚨 | danger | badge: Khuyến cáo 1B | subtitle: Cắt đoạn đại tràng + Làm hậu môn nhân tạo stoma]
-          RESECT[Cắt đại tràng + Nối ngay có/không stoma | warning | subtitle: Áp dụng khi huyết động ổn định, mô lành tốt]
+  <!-- Connectors to 3 branches -->
+  <path d="M 320 130 L 150 130 L 150 185" fill="none" stroke="#10b981" stroke-width="1.8" marker-end="url(#arr-wses)"/>
+  <path d="M 470 155 L 470 185" fill="none" stroke="#f59e0b" stroke-width="1.8" marker-end="url(#arr-wses)"/>
+  <path d="M 620 130 L 790 130 L 790 185" fill="none" stroke="#f43f5e" stroke-width="1.8" marker-end="url(#arr-wses)"/>
 
-          START --> CT
-          CT -->|Chưa biến chứng| UNCOMP
-          CT -->|Có ổ áp xe| ABSCESS
-          CT ==>|Viêm phúc mạc / Khí tự do lớn| PERIT
+  <!-- Decision labels -->
+  <g transform="translate(190, 120)">
+    <rect width="100" height="20" rx="4" fill="var(--color-surface)" stroke="var(--color-border)" stroke-width="1"/>
+    <text x="50" y="14" text-anchor="middle" font-size="10" font-weight="600" fill="#10b981">Chưa biến chứng</text>
+  </g>
+  <g transform="translate(480, 158)">
+    <rect width="80" height="20" rx="4" fill="var(--color-surface)" stroke="var(--color-border)" stroke-width="1"/>
+    <text x="40" y="14" text-anchor="middle" font-size="10" font-weight="600" fill="#f59e0b">Có ổ áp xe</text>
+  </g>
+  <g transform="translate(660, 120)">
+    <rect width="100" height="20" rx="4" fill="var(--color-surface)" stroke="var(--color-border)" stroke-width="1"/>
+    <text x="50" y="14" text-anchor="middle" font-size="10" font-weight="600" fill="#f43f5e">Viêm phúc mạc</text>
+  </g>
 
-          UNCOMP --> UNCOMP_RX
+  <!-- BRANCH 1: UNCOMPLICATED (x=30) -->
+  <g transform="translate(30, 185)">
+    <rect width="240" height="52" rx="8" fill="var(--color-surface)" stroke="#10b981" stroke-width="1.5"/>
+    <rect x="0" y="0" width="240" height="52" rx="8" fill="#10b981" fill-opacity="0.07"/>
+    <text x="120" y="22" text-anchor="middle" font-size="11" font-weight="700" fill="#10b981">CHƯA BIẾN CHỨNG (1A)</text>
+    <text x="120" y="39" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">Viêm khu trú, không thủng hay áp xe</text>
+  </g>
 
-          ABSCESS --> AB_SIZE
-          AB_SIZE -->|< 3-5 cm| AB_SMALL
-          AB_SIZE ==>|>= 3-5 cm| AB_LARGE
+  <path d="M 150 237 L 150 275" fill="none" stroke="#10b981" stroke-width="1.8" marker-end="url(#arr-wses)"/>
 
-          PERIT --> HEMO
-          HEMO ==>|Không ổn định / Sốc nhiễm khuẩn| HARTMANN
-          HEMO -->|Huyết động ổn định| RESECT
-        `}
-      />
+  <g transform="translate(30, 275)">
+    <rect width="240" height="74" rx="8" fill="var(--color-surface)" stroke="#10b981" stroke-width="2"/>
+    <rect x="0" y="0" width="240" height="74" rx="8" fill="#10b981" fill-opacity="0.08"/>
+    <text x="120" y="22" text-anchor="middle" font-size="10" font-weight="700" fill="#10b981">KHUYẾN CÁO 1A ⭐</text>
+    <text x="120" y="40" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-text)">KHÔNG DÙNG KHÁNG SINH</text>
+    <text x="120" y="56" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">Theo dõi ngoại trú + Giảm đau + Bù nước</text>
+  </g>
+
+  <!-- BRANCH 2: ABSCESS (x=350) -->
+  <g transform="translate(350, 185)">
+    <rect width="240" height="52" rx="8" fill="var(--color-surface)" stroke="#f59e0b" stroke-width="1.5"/>
+    <rect x="0" y="0" width="240" height="52" rx="8" fill="#f59e0b" fill-opacity="0.07"/>
+    <text x="120" y="22" text-anchor="middle" font-size="11" font-weight="700" fill="#f59e0b">CÓ Ổ ÁP XE (HINCHEY I-II)</text>
+    <text x="120" y="39" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">Kích thước ổ áp xe trên phim CT?</text>
+  </g>
+
+  <path d="M 410 237 L 410 275" fill="none" stroke="#f59e0b" stroke-width="1.5" marker-end="url(#arr-wses)"/>
+  <path d="M 530 237 L 530 275" fill="none" stroke="#f43f5e" stroke-width="1.8" marker-end="url(#arr-wses)"/>
+
+  <g transform="translate(330, 275)">
+    <rect width="130" height="74" rx="8" fill="var(--color-surface)" stroke="#f59e0b" stroke-width="1.5"/>
+    <rect x="0" y="0" width="130" height="74" rx="8" fill="#f59e0b" fill-opacity="0.07"/>
+    <text x="65" y="20" text-anchor="middle" font-size="10" font-weight="700" fill="#f59e0b">ÁP XE &lt; 3 - 5 CM</text>
+    <text x="65" y="38" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-text)">Kháng Sinh TM</text>
+    <text x="65" y="54" text-anchor="middle" font-size="9" fill="var(--color-text-muted)">Đơn thuần, theo dõi sát</text>
+  </g>
+
+  <g transform="translate(480, 275)">
+    <rect width="130" height="74" rx="8" fill="var(--color-surface)" stroke="#f43f5e" stroke-width="1.8"/>
+    <rect x="0" y="0" width="130" height="74" rx="8" fill="#f43f5e" fill-opacity="0.08"/>
+    <text x="65" y="20" text-anchor="middle" font-size="10" font-weight="700" fill="#f43f5e">ÁP XE &gt;= 3 - 5 CM</text>
+    <text x="65" y="38" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-text)">Dẫn Lưu Qua Da</text>
+    <text x="65" y="54" text-anchor="middle" font-size="9" fill="var(--color-text-muted)">Dưới CĐHA + KS TM</text>
+  </g>
+
+  <!-- BRANCH 3: PERITONITIS (x=670) -->
+  <g transform="translate(670, 185)">
+    <rect width="240" height="52" rx="8" fill="var(--color-surface)" stroke="#f43f5e" stroke-width="1.8"/>
+    <rect x="0" y="0" width="240" height="52" rx="8" fill="#f43f5e" fill-opacity="0.08"/>
+    <text x="120" y="22" text-anchor="middle" font-size="11" font-weight="700" fill="#f43f5e">VIÊM PHÚC MẠC LAN TỎA</text>
+    <text x="120" y="39" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">Hinchey III-IV / Khí tự do ổ bụng</text>
+  </g>
+
+  <path d="M 740 237 L 740 275" fill="none" stroke="#f43f5e" stroke-width="2" marker-end="url(#arr-wses)"/>
+  <path d="M 840 237 L 840 275" fill="none" stroke="#f59e0b" stroke-width="1.5" marker-end="url(#arr-wses)"/>
+
+  <g transform="translate(660, 275)">
+    <rect width="130" height="74" rx="8" fill="var(--color-surface)" stroke="#f43f5e" stroke-width="2"/>
+    <rect x="0" y="0" width="130" height="74" rx="8" fill="#f43f5e" fill-opacity="0.09"/>
+    <text x="65" y="20" text-anchor="middle" font-size="9" font-weight="700" fill="#f43f5e">SỐC / HUYẾT ĐỘNG XẤU</text>
+    <text x="65" y="38" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-text)">Mổ Hartmann 🚨</text>
+    <text x="65" y="54" text-anchor="middle" font-size="9" fill="var(--color-text-muted)">Cắt đại tràng + Stoma</text>
+  </g>
+
+  <g transform="translate(800, 275)">
+    <rect width="130" height="74" rx="8" fill="var(--color-surface)" stroke="#10b981" stroke-width="1.5"/>
+    <rect x="0" y="0" width="130" height="74" rx="8" fill="#10b981" fill-opacity="0.07"/>
+    <text x="65" y="20" text-anchor="middle" font-size="9" font-weight="700" fill="#10b981">HUYẾT ĐỘNG ỔN ĐỊNH</text>
+    <text x="65" y="38" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-text)">Cắt + Nối Ngay</text>
+    <text x="65" y="54" text-anchor="middle" font-size="9" fill="var(--color-text-muted)">Có hoặc không stoma bảo vệ</text>
+  </g>
+</svg>
+    </div>
+  </div>
+  <div class="flowchart-card-footer">
+    <div class="flowchart-legend-row">
+      <span class="legend-item"><span class="legend-dot" style="background: #10b981;"></span>Chưa biến chứng (1A): Không dùng kháng sinh thường quy, theo dõi ngoại trú</span>
+      <span class="legend-item"><span class="legend-dot" style="background: #f59e0b;"></span>Áp xe: < 3-5cm dùng KS tĩnh mạch; >= 3-5cm dẫn lưu qua da dưới CĐHA</span>
+      <span class="legend-item"><span class="legend-dot" style="background: #f43f5e;"></span>Viêm phúc mạc: Phẫu thuật Hartmann khi sốc nhiễm khuẩn hoặc cắt nối ngay khi ổn định</span>
+    </div>
+  </div>
+</div>
 
       {/* VISUAL DIAGRAM CODE TÁI HIỆN LƯU ĐỒ WSES ALCD */}
       <div style="margin-top: 1.5rem; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; padding: 1.25rem;">

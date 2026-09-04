@@ -210,40 +210,135 @@ sections:
         </div>
       </div>
 
-      <FlowchartViewer 
-        title="Lưu Đồ Phân Tầng Xử Trí SSTI Có Mủ & Không Mủ (IDSA 2014 Figure 1)"
-        code={`flowchart TD
-          SSTI([Nhiễm trùng da và mô mềm SSTI | start | badge: Khám ban đầu])
-          TYPE{Phân loại lâm sàng: Có mủ hay Không mủ? | question}
-          
-          PUR[Nhiễm trùng có mủ (Purulent) | danger | subtitle: Áp xe, nhọt - Chủ yếu Tụ cầu S. aureus]
-          NONPUR[Nhiễm trùng không mủ (Non-purulent) | action | subtitle: Viêm mô tế bào, quầng - Chủ yếu Liên cầu]
-          
-          PUR_MILD[Nhẹ: Áp xe đơn thuần | success | subtitle: Rạch và dẫn lưu I&D - Không cần kháng sinh]
-          PUR_MOD{Trung bình: Kèm SIRS? | question | subtitle: T > 38°C, HR > 90, WBC > 12k}
-          PUR_MOD_RX[I&D + Cấy mủ + Kháng sinh uống | warning | subtitle: TMP-SMX hoặc Doxycycline (phủ MRSA)]
-          PUR_SEV[Nặng: Thất bại I&D hoặc suy giảm MD | danger | badge: Nhập viện IV | subtitle: Vancomycin, Daptomycin hoặc Linezolid]
-          
-          NON_MILD[Nhẹ: Viêm mô tế bào khu trú | success | subtitle: Kháng sinh uống: Penicillin VK, Cephalexin]
-          NON_MOD{Trung bình: Kèm SIRS toàn thân? | question}
-          NON_MOD_RX[Nhập viện dùng kháng sinh IV | warning | subtitle: Cefazolin, Ceftriaxone, Penicillin G]
-          NON_SEV[Nặng: Hoại tử mô sâu hoặc sốc | danger | badge: Khẩn cấp ngoại | subtitle: Thám sát cắt lọc khẩn + Vanco + Pip-Tazo]
+      <div class="flowchart-editorial-card">
+  <div class="flowchart-card-header">
+    <div class="flowchart-card-title">
+      <svg class="flowchart-title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+        <polyline points="2 17 12 22 22 17"></polyline>
+        <polyline points="2 12 12 17 22 12"></polyline>
+      </svg>
+      <span>Lưu Đồ Phân Tầng Xử Trí SSTI Có Mủ &amp; Không Mủ (IDSA 2014 Figure 1)</span>
+    </div>
+    <div class="flowchart-card-subtitle">Chiến lược phân tầng 2 nhánh lớn (Có mủ do Tụ cầu vs Không mủ do Liên cầu) và 3 mức độ nghiêm trọng</div>
+  </div>
+  <div class="flowchart-card-body">
+    <div class="flowchart-svg-wrapper">
+<svg class="med-svg" viewBox="0 0 920 480" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arr-ssti1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)"/>
+    </marker>
+  </defs>
 
-          SSTI --> TYPE
-          TYPE ==>|Có mủ / Áp xe| PUR
-          TYPE -->|Không mủ / Viêm mô tế bào| NONPUR
-          
-          PUR --> PUR_MILD
-          PUR --> PUR_MOD
-          PUR_MOD ==>|Có SIRS| PUR_MOD_RX
-          PUR ==>|Thất bại/Suy giảm MD| PUR_SEV
-          
-          NONPUR --> NON_MILD
-          NONPUR --> NON_MOD
-          NON_MOD ==>|Có SIRS| NON_MOD_RX
-          NONPUR ==>|Dấu hiệu hoại tử/Sốc| NON_SEV
-        `}
-      />
+  <!-- Root -->
+  <g transform="translate(320, 20)">
+    <rect width="280" height="50" rx="10" fill="var(--color-surface)" stroke="#0284c7" stroke-width="2"/>
+    <rect x="0" y="0" width="280" height="50" rx="10" fill="#0284c7" fill-opacity="0.08"/>
+    <text x="140" y="22" text-anchor="middle" font-size="10" font-weight="700" fill="#0284c7" letter-spacing="1">IDSA 2014 GUIDELINES</text>
+    <text x="140" y="39" text-anchor="middle" font-size="13" font-weight="700" fill="var(--color-text)">Nhiễm Trùng Da &amp; Mô Mềm (SSTI)</text>
+  </g>
+
+  <path d="M 460 70 L 460 105" fill="none" stroke="#0284c7" stroke-width="2" marker-end="url(#arr-ssti1)"/>
+
+  <!-- Decision: Purulent vs Non-Purulent -->
+  <g transform="translate(300, 105)">
+    <rect width="320" height="50" rx="8" fill="var(--color-surface)" stroke="#d97706" stroke-width="1.8"/>
+    <rect x="0" y="0" width="320" height="50" rx="8" fill="#d97706" fill-opacity="0.06"/>
+    <text x="160" y="22" text-anchor="middle" font-size="10" font-weight="700" fill="#d97706">PHÂN LOẠI LÂM SÀNG CỐT LÕI</text>
+    <text x="160" y="39" text-anchor="middle" font-size="12" font-weight="600" fill="var(--color-text)">Có Mủ (Purulent) Hay Không Mủ (Non-Purulent)?</text>
+  </g>
+
+  <!-- Split into 2 columns -->
+  <path d="M 300 130 L 230 130 L 230 185" fill="none" stroke="#dc2626" stroke-width="2" marker-end="url(#arr-ssti1)"/>
+  <path d="M 620 130 L 690 130 L 690 185" fill="none" stroke="#0ea5e9" stroke-width="2" marker-end="url(#arr-ssti1)"/>
+
+  <!-- COL 1: PURULENT -->
+  <g transform="translate(90, 185)">
+    <rect width="280" height="52" rx="8" fill="var(--color-surface)" stroke="#dc2626" stroke-width="2"/>
+    <rect x="0" y="0" width="280" height="52" rx="8" fill="#dc2626" fill-opacity="0.08"/>
+    <text x="140" y="22" text-anchor="middle" font-size="11" font-weight="700" fill="#dc2626">NHIỄM TRÙNG CÓ MỦ (PURULENT)</text>
+    <text x="140" y="39" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">Áp xe da, nhọt - Chủ yếu do Tụ cầu S. aureus</text>
+  </g>
+
+  <!-- Mild Purulent -->
+  <path d="M 230 237 L 230 260" fill="none" stroke="#10b981" stroke-width="1.5" marker-end="url(#arr-ssti1)"/>
+  <g transform="translate(80, 260)">
+    <rect width="300" height="52" rx="8" fill="var(--color-surface)" stroke="#10b981" stroke-width="1.5"/>
+    <rect x="0" y="0" width="300" height="52" rx="8" fill="#10b981" fill-opacity="0.07"/>
+    <text x="150" y="20" text-anchor="middle" font-size="10" font-weight="700" fill="#10b981">🟢 NHẸ (MILD): ÁP XE ĐƠN THUẦN</text>
+    <text x="150" y="37" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-text)">Rạch và Dẫn Lưu (I&amp;D) Đơn Thuần</text>
+    <text x="150" y="49" text-anchor="middle" font-size="9" fill="var(--color-text-muted)">KHÔNG CẦN KHÁNG SINH TOÀN THÂN</text>
+  </g>
+
+  <!-- Moderate Purulent -->
+  <path d="M 230 312 L 230 335" fill="none" stroke="#f59e0b" stroke-width="1.5" marker-end="url(#arr-ssti1)"/>
+  <g transform="translate(80, 335)">
+    <rect width="300" height="52" rx="8" fill="var(--color-surface)" stroke="#f59e0b" stroke-width="1.5"/>
+    <rect x="0" y="0" width="300" height="52" rx="8" fill="#f59e0b" fill-opacity="0.07"/>
+    <text x="150" y="20" text-anchor="middle" font-size="10" font-weight="700" fill="#f59e0b">🟡 TRUNG BÌNH (MODERATE): KÈM SIRS</text>
+    <text x="150" y="37" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-text)">I&amp;D + Cấy Mủ + Kháng Sinh Uống</text>
+    <text x="150" y="49" text-anchor="middle" font-size="9" fill="var(--color-text-muted)">TMP-SMX hoặc Doxycycline (phủ MRSA cộng đồng)</text>
+  </g>
+
+  <!-- Severe Purulent -->
+  <path d="M 230 387 L 230 410" fill="none" stroke="#dc2626" stroke-width="2" marker-end="url(#arr-ssti1)"/>
+  <g transform="translate(80, 410)">
+    <rect width="300" height="52" rx="8" fill="var(--color-surface)" stroke="#dc2626" stroke-width="2"/>
+    <rect x="0" y="0" width="300" height="52" rx="8" fill="#dc2626" fill-opacity="0.09"/>
+    <text x="150" y="20" text-anchor="middle" font-size="10" font-weight="700" fill="#dc2626">🔴 NẶNG (SEVERE): THẤT BẠI I&amp;D / SUY GIẢM MD</text>
+    <text x="150" y="37" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-text)">Nhập Viện Kháng Sinh Tĩnh Mạch</text>
+    <text x="150" y="49" text-anchor="middle" font-size="9" fill="var(--color-text-muted)">Vancomycin, Daptomycin, hoặc Linezolid</text>
+  </g>
+
+  <!-- COL 2: NON-PURULENT -->
+  <g transform="translate(550, 185)">
+    <rect width="280" height="52" rx="8" fill="var(--color-surface)" stroke="#0ea5e9" stroke-width="2"/>
+    <rect x="0" y="0" width="280" height="52" rx="8" fill="#0ea5e9" fill-opacity="0.08"/>
+    <text x="140" y="22" text-anchor="middle" font-size="11" font-weight="700" fill="#0ea5e9">NHIỄM TRÙNG KHÔNG MỦ (NON-PURULENT)</text>
+    <text x="140" y="39" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">Viêm mô tế bào, viêm quầng - Chủ yếu Liên cầu</text>
+  </g>
+
+  <!-- Mild Non-purulent -->
+  <path d="M 690 237 L 690 260" fill="none" stroke="#10b981" stroke-width="1.5" marker-end="url(#arr-ssti1)"/>
+  <g transform="translate(540, 260)">
+    <rect width="300" height="52" rx="8" fill="var(--color-surface)" stroke="#10b981" stroke-width="1.5"/>
+    <rect x="0" y="0" width="300" height="52" rx="8" fill="#10b981" fill-opacity="0.07"/>
+    <text x="150" y="20" text-anchor="middle" font-size="10" font-weight="700" fill="#10b981">🟢 NHẸ (MILD): KHU TRÚ</text>
+    <text x="150" y="37" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-text)">Kháng Sinh Uống Phổ Hẹp</text>
+    <text x="150" y="49" text-anchor="middle" font-size="9" fill="var(--color-text-muted)">Penicillin VK, Cephalexin, Dicloxacillin</text>
+  </g>
+
+  <!-- Moderate Non-purulent -->
+  <path d="M 690 312 L 690 335" fill="none" stroke="#f59e0b" stroke-width="1.5" marker-end="url(#arr-ssti1)"/>
+  <g transform="translate(540, 335)">
+    <rect width="300" height="52" rx="8" fill="var(--color-surface)" stroke="#f59e0b" stroke-width="1.5"/>
+    <rect x="0" y="0" width="300" height="52" rx="8" fill="#f59e0b" fill-opacity="0.07"/>
+    <text x="150" y="20" text-anchor="middle" font-size="10" font-weight="700" fill="#f59e0b">🟡 TRUNG BÌNH (MODERATE): KÈM DẤU HIỆU TOÀN THÂN</text>
+    <text x="150" y="37" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-text)">Nhập Viện Kháng Sinh IV</text>
+    <text x="150" y="49" text-anchor="middle" font-size="9" fill="var(--color-text-muted)">Cefazolin, Ceftriaxone, hoặc Penicillin G</text>
+  </g>
+
+  <!-- Severe Non-purulent -->
+  <path d="M 690 387 L 690 410" fill="none" stroke="#dc2626" stroke-width="2.5" marker-end="url(#arr-ssti1)"/>
+  <g transform="translate(540, 410)">
+    <rect width="300" height="52" rx="8" fill="var(--color-surface)" stroke="#dc2626" stroke-width="2.5"/>
+    <rect x="0" y="0" width="300" height="52" rx="8" fill="#dc2626" fill-opacity="0.12"/>
+    <text x="150" y="20" text-anchor="middle" font-size="10" font-weight="700" fill="#dc2626">🔴 NẶNG (SEVERE): HOẠI TỬ MÔ SÂU / SỐC 🚨</text>
+    <text x="150" y="37" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-text)">Thám Sát Ngoại Khoa Cắt Lọc Khẩn</text>
+    <text x="150" y="49" text-anchor="middle" font-size="9" fill="var(--color-text-muted)">Phối hợp Vancomycin + Piperacillin-Tazobactam</text>
+  </g>
+</svg>
+    </div>
+  </div>
+  <div class="flowchart-card-footer">
+    <div class="flowchart-legend-row">
+      <span class="legend-item"><span class="legend-dot" style="background: #10b981;"></span>Áp xe đơn thuần nhẹ: Chỉ cần rạch và dẫn lưu (I&amp;D), KHÔNG cần kháng sinh</span>
+      <span class="legend-item"><span class="legend-dot" style="background: #f59e0b;"></span>Mức độ trung bình kèm SIRS: Cấy vi sinh + Kháng sinh uống bao phủ tác nhân đích</span>
+      <span class="legend-item"><span class="legend-dot" style="background: #dc2626;"></span>Nhiễm trùng nặng/hoại tử mô: Thám sát phẫu thuật khẩn cấp + Kháng sinh tĩnh mạch phổ rộng</span>
+    </div>
+  </div>
+</div>
 
       {/* VISUAL DIAGRAM CODE: TÁI HIỆN CODE LƯU ĐỒ FIGURE 1 */}
       <div style="margin-top: 1.5rem; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; padding: 1.25rem;">
@@ -427,36 +522,115 @@ sections:
         </div>
       </div>
 
-      <FlowchartViewer 
-        title="Lưu Đồ Xử Trí Sốt Sau Mổ & Nhiễm Trùng Vết Mổ SSIs (IDSA 2014 Figure 2)"
-        code={`flowchart TD
-          SSI([Sốt hoặc nghi ngờ nhiễm trùng sau phẫu thuật | start])
-          TIME{Thời điểm khởi phát sốt sau mổ? | question}
-          
-          EARLY[Sốt sớm trong vòng 48h đầu | warning | subtitle: Đánh giá vết mổ kỹ lưỡng]
-          LATE[Sốt muộn > 4 ngày sau mổ | action | subtitle: Khám vết mổ tìm sưng đỏ/chảy dịch]
-          
-          E_NORM[Vết mổ bình thường | success | subtitle: Tìm nguyên nhân ngoài vết mổ: Xẹp phổi, phản ứng viêm]
-          E_ABN{Vết mổ có dịch mủ hoặc hoại tử? | question}
-          E_SURG[Mở vết mổ khẩn + Penicillin + Clindamycin | danger | badge: Khẩn cấp | subtitle: Nhuộm Gram tìm Streptococcus nhóm A hoặc Clostridium]
-          
-          L_CHECK{Dấu hiệu viêm mép mổ & toàn thân? | question}
-          L_MILD[Hồng ban < 5cm & T < 38.5 & WBC < 12k | success | subtitle: Cắt chỉ mở dẫn lưu - KHÔNG CẦN KHÁNG SINH]
-          L_SEV[Hồng ban > 5cm hoặc sốt cao > 38.5 | danger | badge: Cần kháng sinh | subtitle: Mở dẫn lưu + Kháng sinh toàn thân IV theo vị trí mổ]
+      <div class="flowchart-editorial-card">
+  <div class="flowchart-card-header">
+    <div class="flowchart-card-title">
+      <svg class="flowchart-title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+        <polyline points="2 17 12 22 22 17"></polyline>
+        <polyline points="2 12 12 17 22 12"></polyline>
+      </svg>
+      <span>Lưu Đồ Xử Trí Sốt Sau Mổ &amp; Nhiễm Trùng Vết Mổ SSIs (IDSA 2014 Figure 2)</span>
+    </div>
+    <div class="flowchart-card-subtitle">Phân định sốt sớm < 48h (loại trừ Liên cầu hoại tử/Clostridium) và sốt muộn > 4 ngày</div>
+  </div>
+  <div class="flowchart-card-body">
+    <div class="flowchart-svg-wrapper">
+<svg class="med-svg" viewBox="0 0 880 460" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arr-ssi2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)"/>
+    </marker>
+  </defs>
 
-          SSI --> TIME
-          TIME -->|<= 48 giờ| EARLY
-          TIME -->|> 4 ngày| LATE
-          
-          EARLY --> E_NORM
-          EARLY --> E_ABN
-          E_ABN ==>|Dương tính Gram| E_SURG
-          
-          LATE --> L_CHECK
-          L_CHECK -->|Nhẹ / Khu trú| L_MILD
-          L_CHECK ==>|Nặng / Lan rộng| L_SEV
-        `}
-      />
+  <!-- Root -->
+  <g transform="translate(290, 20)">
+    <rect width="300" height="50" rx="10" fill="var(--color-surface)" stroke="#0284c7" stroke-width="2"/>
+    <rect x="0" y="0" width="300" height="50" rx="10" fill="#0284c7" fill-opacity="0.08"/>
+    <text x="150" y="22" text-anchor="middle" font-size="10" font-weight="700" fill="#0284c7" letter-spacing="1">IDSA 2014 GUIDELINES</text>
+    <text x="150" y="39" text-anchor="middle" font-size="13" font-weight="700" fill="var(--color-text)">Sốt Sau Mổ &amp; Nghi Nhiễm Trùng Vết Mổ</text>
+  </g>
+
+  <path d="M 440 70 L 440 105" fill="none" stroke="#0284c7" stroke-width="2" marker-end="url(#arr-ssi2)"/>
+
+  <!-- Decision: Time to Onset -->
+  <g transform="translate(300, 105)">
+    <rect width="280" height="50" rx="8" fill="var(--color-surface)" stroke="#d97706" stroke-width="1.8"/>
+    <rect x="0" y="0" width="280" height="50" rx="8" fill="#d97706" fill-opacity="0.06"/>
+    <text x="140" y="22" text-anchor="middle" font-size="10" font-weight="700" fill="#d97706">THỜI ĐIỂM KHỞI PHÁT SỐT SAU PHẪU THUẬT</text>
+    <text x="140" y="39" text-anchor="middle" font-size="12" font-weight="600" fill="var(--color-text)">Sốt Sớm (&lt;= 48h) Hay Sốt Muộn (&gt; 4 ngày)?</text>
+  </g>
+
+  <path d="M 300 130 L 220 130 L 220 185" fill="none" stroke="#f59e0b" stroke-width="1.8" marker-end="url(#arr-ssi2)"/>
+  <path d="M 580 130 L 660 130 L 660 185" fill="none" stroke="#0ea5e9" stroke-width="1.8" marker-end="url(#arr-ssi2)"/>
+
+  <!-- COL 1: EARLY FEVER (<= 48H) -->
+  <g transform="translate(90, 185)">
+    <rect width="260" height="50" rx="8" fill="var(--color-surface)" stroke="#f59e0b" stroke-width="1.5"/>
+    <rect x="0" y="0" width="260" height="50" rx="8" fill="#f59e0b" fill-opacity="0.07"/>
+    <text x="130" y="21" text-anchor="middle" font-size="11" font-weight="700" fill="#f59e0b">SỐT SỚM TRONG VÒNG 48H ĐẦU</text>
+    <text x="130" y="37" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">Thường do xẹp phổi / phản ứng viêm phẫu thuật</text>
+  </g>
+
+  <path d="M 160 235 L 160 270" fill="none" stroke="#10b981" stroke-width="1.5" marker-end="url(#arr-ssi2)"/>
+  <path d="M 280 235 L 280 270" fill="none" stroke="#f43f5e" stroke-width="2" marker-end="url(#arr-ssi2)"/>
+
+  <g transform="translate(50, 270)">
+    <rect width="180" height="74" rx="8" fill="var(--color-surface)" stroke="#10b981" stroke-width="1.5"/>
+    <rect x="0" y="0" width="180" height="74" rx="8" fill="#10b981" fill-opacity="0.07"/>
+    <text x="90" y="20" text-anchor="middle" font-size="10" font-weight="700" fill="#10b981">VẾT MỔ BÌNH THƯỜNG</text>
+    <text x="90" y="38" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-text)">Không Cần Kháng Sinh</text>
+    <text x="90" y="54" text-anchor="middle" font-size="9" fill="var(--color-text-muted)">Tập thở, vật lý trị liệu hô hấp</text>
+  </g>
+
+  <g transform="translate(240, 270)">
+    <rect width="180" height="74" rx="8" fill="var(--color-surface)" stroke="#f43f5e" stroke-width="2"/>
+    <rect x="0" y="0" width="180" height="74" rx="8" fill="#f43f5e" fill-opacity="0.09"/>
+    <text x="90" y="20" text-anchor="middle" font-size="10" font-weight="700" fill="#f43f5e">DỊCH MỦ / HOẠI TỬ 🚨</text>
+    <text x="90" y="38" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-text)">Mở Vết Mổ Khẩn Cấp</text>
+    <text x="90" y="54" text-anchor="middle" font-size="9" fill="var(--color-text-muted)">Nhuộm Gram Strept A / Clostridium</text>
+    <text x="90" y="66" text-anchor="middle" font-size="9" fill="var(--color-text-muted)">Dùng ngay Penicillin + Clindamycin</text>
+  </g>
+
+  <!-- COL 2: LATE FEVER (> 4 DAYS) -->
+  <g transform="translate(530, 185)">
+    <rect width="260" height="50" rx="8" fill="var(--color-surface)" stroke="#0ea5e9" stroke-width="1.5"/>
+    <rect x="0" y="0" width="260" height="50" rx="8" fill="#0ea5e9" fill-opacity="0.07"/>
+    <text x="130" y="21" text-anchor="middle" font-size="11" font-weight="700" fill="#0ea5e9">SỐT MUỘN &gt; 4 NGÀY SAU MỔ</text>
+    <text x="130" y="37" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">Khám kỹ mép vết mổ: Viêm đỏ, tụ dịch</text>
+  </g>
+
+  <path d="M 600 235 L 600 270" fill="none" stroke="#10b981" stroke-width="1.5" marker-end="url(#arr-ssi2)"/>
+  <path d="M 720 235 L 720 270" fill="none" stroke="#f43f5e" stroke-width="2" marker-end="url(#arr-ssi2)"/>
+
+  <g transform="translate(490, 270)">
+    <rect width="180" height="74" rx="8" fill="var(--color-surface)" stroke="#10b981" stroke-width="1.5"/>
+    <rect x="0" y="0" width="180" height="74" rx="8" fill="#10b981" fill-opacity="0.07"/>
+    <text x="90" y="20" text-anchor="middle" font-size="10" font-weight="700" fill="#10b981">HỒNG BAN &lt; 5 CM, T &lt; 38.5</text>
+    <text x="90" y="38" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-text)">Cắt Chỉ Mở Dẫn Lưu</text>
+    <text x="90" y="54" text-anchor="middle" font-size="9" fill="var(--color-text-muted)">KHÔNG CẦN KHÁNG SINH</text>
+    <text x="90" y="66" text-anchor="middle" font-size="9" fill="var(--color-text-muted)">Chăm sóc vết thương tại chỗ</text>
+  </g>
+
+  <g transform="translate(680, 270)">
+    <rect width="180" height="74" rx="8" fill="var(--color-surface)" stroke="#f43f5e" stroke-width="2"/>
+    <rect x="0" y="0" width="180" height="74" rx="8" fill="#f43f5e" fill-opacity="0.09"/>
+    <text x="90" y="20" text-anchor="middle" font-size="10" font-weight="700" fill="#f43f5e">HỒNG BAN &gt; 5 CM / SỐT CAO</text>
+    <text x="90" y="38" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-text)">Mở Vết Mổ + Kháng Sinh IV</text>
+    <text x="90" y="54" text-anchor="middle" font-size="9" fill="var(--color-text-muted)">Phổ bao phủ theo vị trí phẫu thuật</text>
+    <text x="90" y="66" text-anchor="middle" font-size="9" fill="var(--color-text-muted)">Đánh giá hoại tử mô sâu</text>
+  </g>
+</svg>
+    </div>
+  </div>
+  <div class="flowchart-card-footer">
+    <div class="flowchart-legend-row">
+      <span class="legend-item"><span class="legend-dot" style="background: #f59e0b;"></span>Sốt sớm < 48h: Phần lớn do xẹp phổi; mở vết mổ khẩn nếu có mủ/hoại tử nghi Liên cầu nhóm A</span>
+      <span class="legend-item"><span class="legend-dot" style="background: #10b981;"></span>Nhiễm trùng nông mép mổ < 5cm: Cắt chỉ dẫn lưu đơn thuần, không cần kháng sinh</span>
+      <span class="legend-item"><span class="legend-dot" style="background: #f43f5e;"></span>Hồng ban > 5cm hoặc sốt cao: Mở dẫn lưu vết mổ và dùng kháng sinh toàn thân tĩnh mạch</span>
+    </div>
+  </div>
+</div>
 
       {/* VISUAL DIAGRAM CODE: TÁI HIỆN CODE LƯU ĐỒ FIGURE 2 */}
       <div style="margin-top: 1.5rem; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; padding: 1.25rem;">

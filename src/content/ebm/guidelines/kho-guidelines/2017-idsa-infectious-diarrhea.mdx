@@ -342,48 +342,121 @@ sections:
         </div>
       </div>
 
-      <FlowchartViewer 
-        title="Lưu Đồ Tiếp Cận Lâm Sàng & Phân Tầng Xét Nghiệm Tiêu Chảy Nhiễm Trùng (IDSA 2017)"
-        code={`flowchart TD
-          START([Bệnh nhân Tiêu Chảy | start | badge: IDSA 2017])
-          DURATION{Phân loại thời gian diễn tiến? | question}
+      <div class="flowchart-editorial-card">
+  <div class="flowchart-card-header">
+    <div class="flowchart-card-title">
+      <svg class="flowchart-title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+        <polyline points="2 17 12 22 22 17"></polyline>
+        <polyline points="2 12 12 17 22 12"></polyline>
+      </svg>
+      <span>Lưu Đồ Tiếp Cận Lâm Sàng &amp; Phân Tầng Xét Nghiệm Tiêu Chảy Nhiễm Trùng (IDSA 2017)</span>
+    </div>
+    <div class="flowchart-card-subtitle">Tiếp cận đa chiều dựa trên thời gian, dấu hiệu phân máu và tầm soát Shiga toxin tránh HUS</div>
+  </div>
+  <div class="flowchart-card-body">
+    <div class="flowchart-svg-wrapper">
+<svg class="med-svg" viewBox="0 0 940 520" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arr-diar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)"/>
+    </marker>
+  </defs>
 
-          ACUTE[Tiêu chảy cấp tính < 14 ngày | action | subtitle: Thường do vi khuẩn hoặc virus]
-          PERSIST[Tiêu chảy kéo dài 14 - 29 ngày | warning | subtitle: Nghi ngờ ký sinh trùng hoặc vi khuẩn dai dẳng]
-          CHRONIC[Tiêu chảy mạn tính >= 30 ngày | action | subtitle: Tầm soát ký sinh trùng, IBD, celiac, Brainerd]
+  <!-- Root -->
+  <g transform="translate(330, 20)">
+    <rect width="280" height="52" rx="10" fill="var(--color-surface)" stroke="#0284c7" stroke-width="2"/>
+    <rect x="0" y="0" width="280" height="52" rx="10" fill="#0284c7" fill-opacity="0.08"/>
+    <text x="140" y="24" text-anchor="middle" font-size="10" font-weight="700" fill="#0284c7" letter-spacing="1">IDSA 2017 GUIDELINES</text>
+    <text x="140" y="42" text-anchor="middle" font-size="13" font-weight="700" fill="var(--color-text)">Bệnh Nhân Tiêu Chảy Nhiễm Trùng</text>
+  </g>
 
-          SYM_CHK{Đánh giá biểu hiện lâm sàng & mức độ nặng | question}
+  <path d="M 470 72 L 470 105" fill="none" stroke="#0284c7" stroke-width="2" marker-end="url(#arr-diar)"/>
 
-          WATERY[Tiêu chảy toàn nước tự giới hạn | success | subtitle: Thường do Norovirus/Rotavirus/ETEC]
-          WATERY_RX[Bù dịch Reduced ORS + Dinh dưỡng sớm | success | subtitle: KHÔNG CẦN XÉT NGHIỆM PHÂN THƯỜNG QUY]
+  <!-- Duration Decision -->
+  <g transform="translate(320, 105)">
+    <rect width="300" height="50" rx="8" fill="var(--color-surface)" stroke="#d97706" stroke-width="1.8"/>
+    <rect x="0" y="0" width="300" height="50" rx="8" fill="#d97706" fill-opacity="0.06"/>
+    <text x="150" y="22" text-anchor="middle" font-size="10" font-weight="700" fill="#d97706">PHÂN LOẠI THỜI GIAN DIỄN TIẾN</text>
+    <text x="150" y="39" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-text)">Cấp tính (&lt;14 ngày) | Kéo dài (14-29 ngày) | Mạn tính (&gt;=30 ngày)</text>
+  </g>
 
-          BLOODY[Tiêu chảy phân máu hoặc sốt cao | danger | badge: Cảnh báo | subtitle: STEC, Shigella, Salmonella, Campylobacter, C. diff]
-          TEST_STOOL[Chỉ định xét nghiệm phân chuyên sâu | warning | subtitle: Cấy phân, Shiga toxin EIA, NAAT đa mồi, Độc tố C. diff]
+  <path d="M 320 130 L 220 130 L 220 185" fill="none" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arr-diar)"/>
+  <path d="M 620 130 L 720 130 L 720 185" fill="none" stroke="#f59e0b" stroke-width="1.8" marker-end="url(#arr-diar)"/>
 
-          STEC_WARN{Kết quả Shiga toxin (+) hoặc nghi STEC? | question}
-          NO_ABX[CHỐNG CHỈ ĐỊNH KHÁNG SINH TUYỆT ĐỐI 🚫 | danger | badge: Ngừa HUS | subtitle: Bù dịch tĩnh mạch tích cực, theo dõi sát tiểu cầu và chức năng thận]
-          ABX_TARGET[Xem xét kháng sinh trúng đích theo kháng sinh đồ | action | subtitle: Azithromycin hoặc Ciprofloxacin (trừ khi nhiễm STEC)]
+  <!-- Left: Acute -->
+  <g transform="translate(90, 185)">
+    <rect width="260" height="52" rx="8" fill="var(--color-surface)" stroke="#0ea5e9" stroke-width="1.5"/>
+    <text x="130" y="22" text-anchor="middle" font-size="11" font-weight="700" fill="#0ea5e9">TIÊU CHẢY CẤP TÍNH (&lt; 14 NGÀY)</text>
+    <text x="130" y="39" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">Đánh giá phân máu, sốt cao, đau dữ dội?</text>
+  </g>
 
-          START --> DURATION
-          DURATION -->|< 14 ngày| ACUTE
-          DURATION -->|14-29 ngày| PERSIST
-          DURATION -->|>= 30 ngày| CHRONIC
+  <!-- Right: Persistent / Chronic -->
+  <g transform="translate(590, 185)">
+    <rect width="260" height="52" rx="8" fill="var(--color-surface)" stroke="#f59e0b" stroke-width="1.5"/>
+    <rect x="0" y="0" width="260" height="52" rx="8" fill="#f59e0b" fill-opacity="0.07"/>
+    <text x="130" y="22" text-anchor="middle" font-size="11" font-weight="700" fill="#f59e0b">KÉO DÀI / MẠN TÍNH (&gt;= 14 NGÀY)</text>
+    <text x="130" y="39" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">Tầm soát ký sinh trùng, vi khuẩn dai dẳng, IBD</text>
+  </g>
 
-          ACUTE --> SYM_CHK
-          PERSIST ==> TEST_STOOL
-          CHRONIC ==> TEST_STOOL
+  <!-- Split Acute into Watery vs Bloody -->
+  <path d="M 150 237 L 150 275" fill="none" stroke="#10b981" stroke-width="1.8" marker-end="url(#arr-diar)"/>
+  <path d="M 290 237 L 290 275" fill="none" stroke="#f43f5e" stroke-width="1.8" marker-end="url(#arr-diar)"/>
 
-          SYM_CHK -->|Phân nước, không sốt, không máu| WATERY
-          SYM_CHK ==>|Phân máu / Sốt >= 38.5 / Đau dữ dội| BLOODY
+  <!-- Watery Branch -->
+  <g transform="translate(40, 275)">
+    <rect width="210" height="74" rx="8" fill="var(--color-surface)" stroke="#10b981" stroke-width="2"/>
+    <rect x="0" y="0" width="210" height="74" rx="8" fill="#10b981" fill-opacity="0.08"/>
+    <text x="105" y="20" text-anchor="middle" font-size="10" font-weight="700" fill="#10b981">PHÂN NƯỚC TỰ GIỚI HẠN</text>
+    <text x="105" y="38" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-text)">Bù Dịch ORS + Dinh Dưỡng</text>
+    <text x="105" y="54" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">KHÔNG XÉT NGHIỆM PHÂN</text>
+    <text x="105" y="66" text-anchor="middle" font-size="9" fill="var(--color-text-muted)">thường quy ở người khỏe mạnh</text>
+  </g>
 
-          WATERY --> WATERY_RX
-          BLOODY ==> TEST_STOOL
+  <!-- Connect Bloody and Chronic to Stool Testing -->
+  <path d="M 290 330 L 450 330 L 450 350" fill="none" stroke="#f43f5e" stroke-width="1.8" marker-end="url(#arr-diar)"/>
+  <path d="M 720 237 L 720 330 L 580 330 L 580 350" fill="none" stroke="#f59e0b" stroke-width="1.8" marker-end="url(#arr-diar)"/>
 
-          TEST_STOOL --> STEC_WARN
-          STEC_WARN ==>|Shiga toxin (+)| NO_ABX
-          STEC_WARN -->|Tác nhân khác (Shigella, Salmonella...)| ABX_TARGET
-        `}
-      />
+  <!-- Stool Testing Node -->
+  <g transform="translate(380, 350)">
+    <rect width="270" height="52" rx="8" fill="var(--color-surface)" stroke="#f43f5e" stroke-width="2"/>
+    <rect x="0" y="0" width="270" height="52" rx="8" fill="#f43f5e" fill-opacity="0.08"/>
+    <text x="135" y="20" text-anchor="middle" font-size="10" font-weight="700" fill="#f43f5e">CHỈ ĐỊNH XÉT NGHIỆM PHÂN CHUYÊN SÂU</text>
+    <text x="135" y="36" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-text)">Cấy phân, Shiga toxin EIA, NAAT đa mồi</text>
+    <text x="135" y="48" text-anchor="middle" font-size="9" fill="var(--color-text-muted)">Độc tố C. difficile nếu có dùng kháng sinh</text>
+  </g>
+
+  <path d="M 440 402 L 440 435" fill="none" stroke="#f43f5e" stroke-width="2" marker-end="url(#arr-diar)"/>
+  <path d="M 590 402 L 590 435" fill="none" stroke="#0ea5e9" stroke-width="1.5" marker-end="url(#arr-diar)"/>
+
+  <!-- Shiga Toxin (+) Warning -->
+  <g transform="translate(320, 435)">
+    <rect width="240" height="64" rx="8" fill="var(--color-surface)" stroke="#f43f5e" stroke-width="2"/>
+    <rect x="0" y="0" width="240" height="64" rx="8" fill="#f43f5e" fill-opacity="0.09"/>
+    <text x="120" y="19" text-anchor="middle" font-size="10" font-weight="700" fill="#f43f5e">SHIGA TOXIN (+) / NGHI STEC 🚫</text>
+    <text x="120" y="36" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-text)">CHỐNG CHỈ ĐỊNH KHÁNG SINH</text>
+    <text x="120" y="52" text-anchor="middle" font-size="9" fill="var(--color-text-muted)">Tránh khởi phát HUS - Bù dịch TM tích cực</text>
+  </g>
+
+  <!-- Targeted Antibiotics -->
+  <g transform="translate(580, 435)">
+    <rect width="240" height="64" rx="8" fill="var(--color-surface)" stroke="#0ea5e9" stroke-width="1.5"/>
+    <rect x="0" y="0" width="240" height="64" rx="8" fill="#0ea5e9" fill-opacity="0.07"/>
+    <text x="120" y="19" text-anchor="middle" font-size="10" font-weight="700" fill="#0ea5e9">TÁC NHÂN KHÁC (SHIGELLA, SALMONELLA)</text>
+    <text x="120" y="36" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-text)">Kháng Sinh Trúng Đích</text>
+    <text x="120" y="52" text-anchor="middle" font-size="9" fill="var(--color-text-muted)">Azithromycin / Ciprofloxacin theo KS đồ</text>
+  </g>
+</svg>
+    </div>
+  </div>
+  <div class="flowchart-card-footer">
+    <div class="flowchart-legend-row">
+      <span class="legend-item"><span class="legend-dot" style="background: #10b981;"></span>Tiêu chảy phân nước tự giới hạn: Bù ORS, không xét nghiệm phân thường quy</span>
+      <span class="legend-item"><span class="legend-dot" style="background: #f59e0b;"></span>Tiêu chảy kéo dài >= 14 ngày hoặc sốt/phân máu: Chỉ định xét nghiệm phân chuyên sâu</span>
+      <span class="legend-item"><span class="legend-dot" style="background: #f43f5e;"></span>Shiga toxin (+) / STEC: CHỐNG CHỈ ĐỊNH KHÁNG SINH TUYỆT ĐỐI để phòng ngừa HUS</span>
+    </div>
+  </div>
+</div>
 
     </div>
   </div>

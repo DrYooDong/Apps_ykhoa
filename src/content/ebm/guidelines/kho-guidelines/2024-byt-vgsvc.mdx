@@ -238,27 +238,161 @@ sections:
           </div>
         </div>
 
-        <div style="margin-top: 1.5rem;">
-          <FlowchartViewer
-            title="Lưu Đồ Tiếp Cận Sàng Lọc & Khẳng Định Hiện Nhiễm Viêm Gan C (QĐ 2855/QĐ-BYT)"
-            code={`graph TD
-  START["ĐỐI TƯỢNG CÓ NGUY CƠ HOẶC CẦN SÀNG LỌC VIÊM GAN C<br/><small>Tiền sử tiêm chích, truyền máu, thủ thuật xâm lấn, người nhiễm HIV, tăng men gan kéo dài</small>"]:::start --> ANTI_HCV{"Xét Nghiệm Sàng Lọc Anti-HCV?"}:::question
+        <div class="flowchart-editorial-card" style="margin-top: 1.5rem;">
+          <div class="flowchart-editorial-hdr">
+            <div class="flowchart-editorial-title">
+              <i class="fa-solid fa-diagram-project" style="color: var(--color-primary, #0284c7);"></i>
+              <span>LƯU ĐỒ TIẾP CẬN SÀNG LỌC &amp; KHẲNG ĐỊNH HIỆN NHIỄM VIÊM GAN C (QĐ 2855/QĐ-BYT)</span>
+            </div>
+            <span class="flow-step-badge flow-badge-green">Editorial SVG Studio 2.0</span>
+          </div>
+          <div class="flowchart-editorial-canvas">
+            <svg class="med-svg" viewBox="0 0 960 620" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+              <rect width="960" height="620" fill="var(--color-surface, #ffffff)" rx="12" stroke="var(--color-border, #e2e8f0)" stroke-width="1"/>
 
-  ANTI_HCV -- "Âm Tính (-)" --> NEG_RESULT["KHÔNG NHIỄM HCV<br/><small>Ngoại trừ người suy giảm miễn dịch nặng (lọc máu, HIV) hoặc giai đoạn cửa sổ &lt; 8 tuần</small>"]:::success
-  
-  ANTI_HCV -- "Dương Tính (+)" --> CONFIRM{"Xét Nghiệm Khẳng Định Hiện Nhiễm?"}:::question
+              <defs>
+                <marker id="arrow-default-hcv" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1 L 8 5 L 0 9 z" fill="var(--color-text-muted, #64748b)"/>
+                </marker>
+                <marker id="arrow-blue-hcv" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1 L 8 5 L 0 9 z" fill="#0284c7"/>
+                </marker>
+                <marker id="arrow-green-hcv" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1 L 8 5 L 0 9 z" fill="#10b981"/>
+                </marker>
+                <marker id="arrow-amber-hcv" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1 L 8 5 L 0 9 z" fill="#f59e0b"/>
+                </marker>
+                <marker id="arrow-red-hcv" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1 L 8 5 L 0 9 z" fill="#dc2626"/>
+                </marker>
+              </defs>
 
-  CONFIRM -- "HCV RNA Định lượng / Định tính" --> RNA_CHECK{"Kết Quả HCV RNA?"}:::question
-  CONFIRM -- "HCVcAg (Kháng nguyên lõi nếu không có RNA)" --> CAG_CHECK{"Kết Quả HCVcAg?"}:::question
+              <!-- NODE 1: KHỞI ĐẦU -->
+              <g>
+                <rect x="180" y="20" width="600" height="54" rx="8" class="node-start" stroke-width="2"/>
+                <text x="480" y="41" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="800" fill="var(--color-primary, #0284c7)">ĐỐI TƯỢNG CÓ NGUY CƠ HOẶC CẦN SÀNG LỌC VIÊM GAN C</text>
+                <text x="480" y="59" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="600" fill="var(--color-text-muted, #64748b)">Tiền sử tiêm chích, truyền máu trước 1992, chạy thận, thủ thuật xâm lấn, người nhiễm HIV, tăng men gan kéo dài</text>
+              </g>
 
-  RNA_CHECK -- "Không phát hiện / Dưới ngưỡng" --> CLEARED["ĐÃ NHIỄM VÀ TỰ ĐÀO THẢI / KHỎI BỆNH<br/><small>Không cần điều trị DAA • Theo dõi định kỳ nếu còn nguy cơ tái nhiễm</small>"]:::action
-  CAG_CHECK -- "Âm tính (-)" --> CLEARED
+              <line x1="480" y1="74" x2="480" y2="100" stroke="var(--color-primary, #0284c7)" stroke-width="1.5" marker-end="url(#arrow-blue-hcv)"/>
 
-  RNA_CHECK -- "Dương tính / Trên ngưỡng phát hiện" --> ACTIVE_HCV["HIỆN ĐANG NHIỄM VI RÚT C (HCV HIỆN HÀNH)<br/><small>Chỉ định điều trị bằng thuốc kháng vi rút tác dụng trực tiếp (DAA)</small>"]:::danger
-  CAG_CHECK -- "Dương tính (+)" --> ACTIVE_HCV
+              <!-- NODE 2: SÀNG LỌC ANTI-HCV -->
+              <g>
+                <rect x="250" y="100" width="460" height="50" rx="8" class="node-decision" stroke-width="1.5"/>
+                <text x="480" y="122" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" fill="var(--color-text, #0f172a)">XÉT NGHIỆM HUYẾT THANH SÀNG LỌC: ANTI-HCV</text>
+                <text x="480" y="139" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #64748b)">Kháng thể kháng vi rút viêm gan C (Test nhanh hoặc Miễn dịch tự động EIA/CLIA)</text>
+              </g>
 
-  ACTIVE_HCV --> PRE_TX["ĐÁNH GIÁ TRƯỚC ĐIỀU TRỊ DAA<br/><small>• Phân độ xơ hóa: FIB-4, APRI hoặc FibroScan (F0-F3 vs F4)<br/>• Đánh giá chức năng gan: Thang điểm Child-Pugh (A vs B/C)<br/>• Sàng lọc HBV (HBsAg, anti-HBc) phòng ngừa bùng phát viêm gan B<br/>• Kiểm tra tương tác thuốc (DDI) trước khi kê đơn</small>"]:::action`}
-          />
+              <!-- RẼ 2 NHÁNH TỪ ANTI-HCV -->
+              <!-- Trái: Âm tính (-) -->
+              <path d="M 330 150 L 330 178 L 180 178 L 180 200" fill="none" stroke="#10b981" stroke-width="2" marker-end="url(#arrow-green-hcv)"/>
+              <rect x="200" y="167" width="80" height="20" rx="4" fill="var(--color-surface, #ffffff)" stroke="#10b981" stroke-width="1"/>
+              <text x="240" y="181" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="800" fill="#15803d">ÂM TÍNH (-)</text>
+
+              <!-- Phải: Dương tính (+) -->
+              <path d="M 630 150 L 630 178 L 680 178 L 680 200" fill="none" stroke="#0284c7" stroke-width="2" marker-end="url(#arrow-blue-hcv)"/>
+              <rect x="635" y="167" width="90" height="20" rx="4" fill="var(--color-surface, #ffffff)" stroke="#0284c7" stroke-width="1"/>
+              <text x="680" y="181" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="800" fill="#0284c7">DƯƠNG TÍNH (+)</text>
+
+              <!-- HỘP KẾT QUẢ ÂM TÍNH (TRÁI) -->
+              <g>
+                <rect x="30" y="200" width="300" height="95" rx="8" fill="var(--color-surface, #ffffff)" stroke="#16a34a" stroke-width="1.5"/>
+                <rect x="30" y="200" width="300" height="24" rx="8" fill="#16a34a"/>
+                <text x="180" y="216" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="800" fill="#ffffff">KHÔNG NHIỄM VI RÚT VIÊM GAN C</text>
+                <text x="45" y="240" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="#15803d">✓ Không cần điều trị hoặc xét nghiệm thêm</text>
+                <text x="45" y="258" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text, #334155)">* Ngoại lệ cần làm HCV RNA ngay:</text>
+                <text x="55" y="273" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" fill="var(--color-text-muted, #64748b)">- Người suy giảm miễn dịch nặng (lọc máu, HIV)</text>
+                <text x="55" y="287" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" fill="var(--color-text-muted, #64748b)">- Nghi ngờ nhiễm cấp trong giai đoạn cửa sổ (&lt; 8 tuần)</text>
+              </g>
+
+              <!-- NODE KHẲNG ĐỊNH HIỆN NHIỄM (PHẢI) -->
+              <g>
+                <rect x="440" y="200" width="480" height="60" rx="8" class="node-action-blue" stroke-width="1.5"/>
+                <text x="680" y="222" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" fill="#0284c7">XÉT NGHIỆM KHẲNG ĐỊNH HIỆN NHIỄM (BẮT BUỘC)</text>
+                <text x="680" y="240" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="600" fill="var(--color-text, #0f172a)">• Đo tải lượng HCV RNA (RT-PCR định lượng) — Tiêu chuẩn vàng</text>
+                <text x="680" y="253" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text-muted, #64748b)">• Hoặc xét nghiệm HCVcAg (Kháng nguyên lõi nếu cơ sở không có RT-PCR)</text>
+              </g>
+
+              <!-- RẼ 2 NHÁNH TỪ KHẲNG ĐỊNH -->
+              <!-- Trái: RNA dưới ngưỡng -->
+              <path d="M 540 260 L 540 290 L 460 290 L 460 310" fill="none" stroke="#0d9488" stroke-width="1.5" marker-end="url(#arrow-green-hcv)"/>
+              <rect x="420" y="280" width="80" height="18" rx="3" fill="var(--color-surface, #ffffff)" stroke="#0d9488" stroke-width="0.8"/>
+              <text x="460" y="293" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="8.5" font-weight="700" fill="#0f766e">RNA DƯỚI NGƯỠNG</text>
+
+              <!-- Phải: RNA dương tính -->
+              <path d="M 820 260 L 820 290 L 760 290 L 760 310" fill="none" stroke="#dc2626" stroke-width="2" marker-end="url(#arrow-red-hcv)"/>
+              <rect x="720" y="280" width="80" height="18" rx="3" fill="var(--color-surface, #ffffff)" stroke="#dc2626" stroke-width="1"/>
+              <text x="760" y="293" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="8.5" font-weight="800" fill="#dc2626">RNA DƯƠNG TÍNH</text>
+
+              <!-- KHỐI ĐÃ TỰ ĐÀO THẢI -->
+              <g>
+                <rect x="360" y="310" width="220" height="95" rx="8" fill="var(--color-surface, #ffffff)" stroke="#0d9488" stroke-width="1.5"/>
+                <rect x="360" y="310" width="220" height="22" rx="8" fill="#0d9488"/>
+                <text x="470" y="325" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="800" fill="#ffffff">ĐÃ TỰ ĐÀO THẢI / KHỎI BỆNH</text>
+                <text x="372" y="348" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="700" fill="#0f766e">• Không cần điều trị thuốc DAA</text>
+                <text x="372" y="365" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" fill="var(--color-text, #334155)">• Anti-HCV vẫn dương tính kéo dài</text>
+                <text x="372" y="380" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" fill="var(--color-text-muted, #64748b)">• Theo dõi định kỳ nếu còn hành vi nguy cơ</text>
+                <text x="372" y="394" font-family="'Plus Jakarta Sans', sans-serif" font-size="8.5" fill="var(--color-text-muted, #64748b)">(cảnh giác tái nhiễm vi rút mới)</text>
+              </g>
+
+              <!-- KHỐI HIỆN ĐANG NHIỄM HCV (ACTIVE) -->
+              <g>
+                <rect x="620" y="310" width="310" height="95" rx="8" class="node-action-red" stroke-width="2"/>
+                <rect x="620" y="310" width="310" height="24" rx="8" fill="#dc2626"/>
+                <text x="775" y="326" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="800" fill="#ffffff">HIỆN ĐANG NHIỄM HCV (HCV HIỆN HÀNH)</text>
+                <text x="635" y="350" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="700" fill="#dc2626">✓ CHỈ ĐỊNH ĐIỀU TRỊ THUỐC DAA CHO TẤT CẢ!</text>
+                <text x="635" y="368" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text, #334155)">• Bất kể số lượng tế bào CD4 hay mức men gan</text>
+                <text x="635" y="384" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text, #334155)">• Mục tiêu loại trừ hoàn toàn vi rút, đạt SVR12</text>
+                <text x="635" y="398" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" fill="var(--color-text-muted, #64748b)">• Giảm 85% nguy cơ ung thư gan nguyên phát HCC</text>
+              </g>
+
+              <!-- MŨI TÊN TỚI BƯỚC ĐÁNH GIÁ TRƯỚC ĐIỀU TRỊ -->
+              <path d="M 775 405 L 775 435 L 480 435 L 480 455" fill="none" stroke="#0284c7" stroke-width="2" marker-end="url(#arrow-blue-hcv)"/>
+
+              <!-- KHỐI 4 BƯỚC ĐÁNH GIÁ TRƯỚC ĐIỀU TRỊ -->
+              <g>
+                <rect x="40" y="455" width="880" height="135" rx="10" fill="var(--color-surface, #ffffff)" stroke="#0284c7" stroke-width="2"/>
+                <rect x="40" y="455" width="880" height="28" rx="10" fill="#0284c7"/>
+                <text x="480" y="474" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="800" fill="#ffffff">QUY TRÌNH 4 BƯỚC ĐÁNH GIÁ TOÀN DIỆN TRƯỚC KHI KHỞI ĐỘNG DAA (QĐ 2855/QĐ-BYT)</text>
+
+                <!-- Cột 1 -->
+                <rect x="55" y="493" width="195" height="85" rx="6" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+                <text x="152.5" y="510" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="800" fill="#0284c7">1. ĐÁNH GIÁ XƠ HÓA GAN</text>
+                <text x="65" y="528" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" fill="var(--color-text, #334155)">• Đo độ đàn hồi: FibroScan</text>
+                <text x="65" y="543" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" fill="var(--color-text, #334155)">• Hoặc tính chỉ số APRI, FIB-4</text>
+                <text x="65" y="558" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="700" fill="#b45309">Phân nhóm: F0-F3 vs F4 (Xơ gan)</text>
+
+                <!-- Cột 2 -->
+                <rect x="270" y="493" width="195" height="85" rx="6" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+                <text x="367.5" y="510" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="800" fill="#0284c7">2. ĐÁNH GIÁ CHỨC NĂNG GAN</text>
+                <text x="280" y="528" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" fill="var(--color-text, #334155)">• Thang điểm Child-Pugh</text>
+                <text x="280" y="543" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" fill="var(--color-text, #334155)">• Child-Pugh A: Còn bù</text>
+                <text x="280" y="558" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="700" fill="#dc2626">• Child-Pugh B, C: Xơ gan mất bù</text>
+
+                <!-- Cột 3 -->
+                <rect x="485" y="493" width="200" height="85" rx="6" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+                <text x="585" y="510" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="800" fill="#0284c7">3. SÀNG LỌC ĐỒNG NHIỄM HBV</text>
+                <text x="495" y="528" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" fill="var(--color-text, #334155)">• Xét nghiệm HBsAg &amp; anti-HBc</text>
+                <text x="495" y="543" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="700" fill="#dc2626">⚠️ Nguy cơ bùng phát viêm gan B</text>
+                <text x="495" y="558" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" fill="var(--color-text, #334155)">khi điều trị sạch HCV → Cân nhắc TDF</text>
+
+                <!-- Cột 4 -->
+                <rect x="705" y="493" width="200" height="85" rx="6" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+                <text x="805" y="510" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="800" fill="#0284c7">4. TRA CỨU TƯƠNG TÁC DDI</text>
+                <text x="715" y="528" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" fill="var(--color-text, #334155)">• Tra cứu hep-druginteractions.org</text>
+                <text x="715" y="543" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" fill="var(--color-text, #334155)">• Cảnh giác PPI (giảm hấp thu VEL)</text>
+                <text x="715" y="558" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" fill="var(--color-text, #334155)">• Statin, Amiodarone, chống co giật</text>
+              </g>
+            </svg>
+          </div>
+
+          <div class="flowchart-legend-row">
+            <div class="flowchart-legend-item"><span class="legend-dot" style="background: #10b981;"></span> Sàng lọc ban đầu &amp; Nhóm Anti-HCV âm tính</div>
+            <div class="flowchart-legend-item"><span class="legend-dot" style="background: #0284c7;"></span> Xét nghiệm khẳng định hiện nhiễm (HCV RNA / HCVcAg)</div>
+            <div class="flowchart-legend-item"><span class="legend-dot" style="background: #0d9488;"></span> Đã nhiễm và tự đào thải (Không cần dùng DAA)</div>
+            <div class="flowchart-legend-item"><span class="legend-dot" style="background: #dc2626;"></span> Hiện đang nhiễm HCV (Chỉ định DAA cho mọi đối tượng)</div>
+          </div>
         </div>
 
       </div>
@@ -400,28 +534,153 @@ sections:
             Khác với HBV, HCV không tích hợp DNA vào bộ gen tế bào gan. Mục tiêu điều trị là <strong>loại trừ hoàn toàn HCV</strong> khỏi cơ thể, đạt <strong>SVR12</strong> (HCV RNA dưới ngưỡng phát hiện ở tuần 12 sau ngưng DAA, hoặc tuần 12–24 nếu chưa XN ở tuần 12). Đạt SVR12 giúp <strong>giảm 85% nguy cơ ung thư gan (HCC)</strong> và <strong>giảm 70-75% tử vong</strong>.
           </div>
         </div>
-        <div style="margin-top: 1.5rem; margin-bottom: 1.5rem;">
-          <FlowchartViewer
-            title="Lưu Đồ Lựa Chọn Phác Đồ DAA Điều Trị Viêm Gan C Theo Mức Độ Bệnh Gan (QĐ 2855/QĐ-BYT)"
-            code={`graph TD
-  START["BỆNH NHÂN XÁC CHẨN VIÊM GAN VI RÚT C CẦN ĐIỀU TRỊ DAA<br/><small>Đã đánh giá mức độ xơ hóa và thang điểm Child-Pugh</small>"]:::start --> CIRRHOSIS{"Đánh Giá Giai Đoạn Gan & Tiền Sử DAA?"}:::question
+        <div class="flowchart-editorial-card" style="margin-top: 1.5rem; margin-bottom: 1.5rem;">
+          <div class="flowchart-editorial-hdr">
+            <div class="flowchart-editorial-title">
+              <i class="fa-solid fa-diagram-project" style="color: var(--color-primary, #0284c7);"></i>
+              <span>LƯU ĐỒ LỰA CHỌN PHÁC ĐỒ DAA ĐIỀU TRỊ VIÊM GAN C THEO MỨC ĐỘ BỆNH GAN (QĐ 2855/QĐ-BYT)</span>
+            </div>
+            <span class="flow-step-badge flow-badge-green">Editorial SVG Studio 2.0</span>
+          </div>
+          <div class="flowchart-editorial-canvas">
+            <svg class="med-svg" viewBox="0 0 960 660" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+              <rect width="960" height="660" fill="var(--color-surface, #ffffff)" rx="12" stroke="var(--color-border, #e2e8f0)" stroke-width="1"/>
 
-  CIRRHOSIS -- "Không xơ gan (F0 - F3) HOẶC<br/>Xơ gan còn bù (Child-Pugh A)" --> PANGENO{"Lựa Chọn Phác Đồ Toàn Kiểu Gen (Pan-genotypic)?"}:::question
+              <defs>
+                <marker id="arrow-default-daa" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1 L 8 5 L 0 9 z" fill="var(--color-text-muted, #64748b)"/>
+                </marker>
+                <marker id="arrow-blue-daa" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1 L 8 5 L 0 9 z" fill="#0284c7"/>
+                </marker>
+                <marker id="arrow-green-daa" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1 L 8 5 L 0 9 z" fill="#10b981"/>
+                </marker>
+                <marker id="arrow-amber-daa" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1 L 8 5 L 0 9 z" fill="#f59e0b"/>
+                </marker>
+                <marker id="arrow-red-daa" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1 L 8 5 L 0 9 z" fill="#dc2626"/>
+                </marker>
+              </defs>
 
-  PANGENO -- "Sofosbuvir / Velpatasvir (SOF/VEL 400/100mg)" --> SOF_VEL["SOF / VEL x 12 TUẦN<br/><small>1 viên/ngày uống cùng hoặc không cùng thức ăn • Tỷ lệ SVR12 > 95%</small>"]:::success
+              <!-- NODE 1: KHỞI ĐẦU -->
+              <g>
+                <rect x="180" y="20" width="600" height="54" rx="8" class="node-start" stroke-width="2"/>
+                <text x="480" y="41" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="800" fill="var(--color-primary, #0284c7)">BỆNH NHÂN XÁC CHẨN VIÊM GAN C CÓ CHỈ ĐỊNH ĐIỀU TRỊ DAA</text>
+                <text x="480" y="59" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="600" fill="var(--color-text-muted, #64748b)">HCV RNA (+) hoặc HCVcAg (+) • Đã có kết quả đánh giá xơ hóa gan &amp; thang điểm Child-Pugh</text>
+              </g>
 
-  PANGENO -- "Glecaprevir / Pibrentasvir (G/P 100/40mg)" --> GLE_PIB["GLECAPREVIR / PIBRENTASVIR x 8 TUẦN<br/><small>3 viên/ngày cùng bữa ăn • Phác đồ ngắn ngày ưu tiên</small>"]:::success
+              <line x1="480" y1="74" x2="480" y2="100" stroke="var(--color-primary, #0284c7)" stroke-width="1.5" marker-end="url(#arrow-blue-daa)"/>
 
-  PANGENO -- "Sofosbuvir / Daclatasvir (SOF/DAC)" --> SOF_DAC["SOF (400mg) + DAC (60mg) x 12 TUẦN"]:::action
+              <!-- NODE 2: PHÂN TẦNG GIAI ĐOẠN GAN -->
+              <g>
+                <rect x="220" y="100" width="520" height="50" rx="8" class="node-decision" stroke-width="1.5"/>
+                <text x="480" y="122" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" fill="var(--color-text, #0f172a)">ĐÁNH GIÁ MỨC ĐỘ XƠ HÓA &amp; CHỨC NĂNG GAN (CHILD-PUGH)</text>
+                <text x="480" y="139" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #64748b)">Không xơ gan (F0-F3) / Xơ gan còn bù (Child-Pugh A) vs Xơ gan mất bù (Child-Pugh B, C)</text>
+              </g>
 
-  CIRRHOSIS -- "Xơ gan mất bù (Child-Pugh B hoặc C)" --> DECOMP["XƠ GAN MẤT BÙ (CHILD-PUGH B, C)<br/><small>CHỐNG CHỈ ĐỊNH thuốc ức chế Protease NS3/4A (Glecaprevir)</small>"]:::danger
+              <!-- RẼ 2 NHÁNH TRỰC GIAO TỪ NODE 2 -->
+              <!-- Nhánh Trái: Không xơ gan hoặc Xơ gan còn bù -->
+              <path d="M 320 150 L 320 180 L 290 180 L 290 200" fill="none" stroke="#10b981" stroke-width="2" marker-end="url(#arrow-green-daa)"/>
+              <rect x="180" y="168" width="220" height="22" rx="4" fill="var(--color-surface, #ffffff)" stroke="#10b981" stroke-width="1"/>
+              <text x="290" y="183" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="800" fill="#15803d">F0–F3 HOẶC CHILD-PUGH A</text>
 
-  DECOMP --> DECOMP_TX["PHÁC ĐỒ ƯU TIÊN:<br/>• SOF / VEL + Ribavirin (chỉnh theo CrCl) x 12 TUẦN<br/>• Hoặc SOF / VEL x 24 TUẦN (nếu không dung nạp Ribavirin)<br/>• Quản lý tại cơ sở chuyên khoa gan mật / Xem xét ghép gan</small>"]:::warning
+              <!-- Nhánh Phải: Xơ gan mất bù Child-Pugh B, C -->
+              <path d="M 640 150 L 640 180 L 780 180 L 780 200" fill="none" stroke="#dc2626" stroke-width="2" marker-end="url(#arrow-red-daa)"/>
+              <rect x="690" y="168" width="180" height="22" rx="4" fill="var(--color-surface, #ffffff)" stroke="#dc2626" stroke-width="1"/>
+              <text x="780" y="183" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="800" fill="#dc2626">CHILD-PUGH B HOẶC C</text>
 
-  SOF_VEL --> MONITOR["ĐÁNH GIÁ SVR12 SAU ĐIỀU TRỊ<br/><small>Đo tải lượng HCV RNA ở tuần 12 sau khi kết thúc đợt thuốc DAA</small>"]:::start
-  GLE_PIB --> MONITOR
-  DECOMP_TX --> MONITOR`}
-          />
+              <!-- CỘT TRÁI: PHÁC ĐỒ TOÀN KIỂU GEN (PAN-GENOTYPIC) -->
+              <g>
+                <rect x="30" y="200" width="530" height="50" rx="8" class="node-action-green" stroke-width="1.5"/>
+                <text x="295" y="222" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" fill="#15803d">LỰA CHỌN PHÁC ĐỒ TOÀN KIỂU GEN (PAN-GENOTYPIC) ƯU TIÊN</text>
+                <text x="295" y="238" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="600" fill="var(--color-text, #0f172a)">Không cần xét nghiệm định type vi rút (Genotype) trước điều trị • Tỷ lệ SVR12 &gt; 95%</text>
+              </g>
+
+              <line x1="295" y1="250" x2="295" y2="275" stroke="#10b981" stroke-width="1.5" marker-end="url(#arrow-green-daa)"/>
+
+              <!-- 2 HỘP PHÁC ĐỒ CHÍNH (SONG SONG) -->
+              <!-- Phác đồ 1: G/P 8 tuần -->
+              <g>
+                <rect x="30" y="275" width="255" height="210" rx="8" fill="var(--color-surface, #ffffff)" stroke="#16a34a" stroke-width="2"/>
+                <rect x="30" y="275" width="255" height="26" rx="8" fill="#16a34a"/>
+                <text x="157.5" y="292" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="800" fill="#ffffff">GLECAPREVIR / PIBRENTASVIR (G/P)</text>
+
+                <text x="45" y="320" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="#15803d">LIỆU TRÌNH NGẮN: 8 TUẦN</text>
+                <text x="45" y="338" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text, #334155)">• <tspan font-weight="700">Liều dùng:</tspan> 3 viên (100/40mg)/ngày</text>
+                <text x="45" y="354" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text, #334155)">• Uống cùng 1 lần trong bữa ăn</text>
+                <text x="45" y="372" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="#0284c7">✓ Ưu điểm vượt trội:</text>
+                <text x="55" y="388" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" fill="var(--color-text, #334155)">- Rút ngắn thời gian còn 8 tuần</text>
+                <text x="55" y="403" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" fill="var(--color-text, #334155)">- An toàn tuyệt đối cho người suy thận nặng</text>
+                <text x="55" y="418" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" fill="var(--color-text, #334155)">(eGFR &lt; 30 hoặc đang lọc máu CKD 5)</text>
+                <text x="45" y="440" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="700" fill="#b45309">* Xơ gan còn bù (Child-Pugh A):</text>
+                <text x="55" y="455" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" fill="var(--color-text, #334155)">Điều trị 8 tuần (chưa từng dùng DAA) hoặc 12 tuần</text>
+                <text x="45" y="475" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" fill="var(--color-text-muted, #64748b)">Áp dụng cho người lớn &amp; trẻ ≥ 3 tuổi</text>
+              </g>
+
+              <!-- Phác đồ 2: SOF/VEL 12 tuần -->
+              <g>
+                <rect x="305" y="275" width="255" height="210" rx="8" fill="var(--color-surface, #ffffff)" stroke="#0284c7" stroke-width="2"/>
+                <rect x="305" y="275" width="255" height="26" rx="8" fill="#0284c7"/>
+                <text x="432.5" y="292" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="800" fill="#ffffff">SOFOSBUVIR / VELPATASVIR (SOF/VEL)</text>
+
+                <text x="320" y="320" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="#0284c7">LIỆU TRÌNH CHUẨN: 12 TUẦN</text>
+                <text x="320" y="338" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text, #334155)">• <tspan font-weight="700">Liều dùng:</tspan> 1 viên (400/100mg)/ngày</text>
+                <text x="320" y="354" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text, #334155)">• Uống cùng hoặc không cùng thức ăn</text>
+                <text x="320" y="372" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="#0284c7">✓ Đặc tính lâm sàng:</text>
+                <text x="330" y="388" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" fill="var(--color-text, #334155)">- Phác đồ 1 viên duy nhất/ngày (STR)</text>
+                <text x="330" y="403" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" fill="var(--color-text, #334155)">- Tỷ lệ khỏi bệnh SVR12 &gt; 97%</text>
+                <text x="330" y="418" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" fill="var(--color-text, #334155)">- Dùng an toàn mọi mức độ xơ hóa</text>
+                <text x="320" y="440" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="700" fill="#dc2626">⚠️ Lưu ý tương tác thuốc (DDI):</text>
+                <text x="330" y="455" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" fill="var(--color-text, #334155)">Tránh dùng cùng thuốc ức chế bơm proton PPI</text>
+                <text x="330" y="470" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" fill="var(--color-text, #334155)">(Omeprazole &gt; 20mg làm giảm nồng độ VEL)</text>
+              </g>
+
+              <!-- CỘT PHẢI: XƠ GAN MẤT BÙ (CHILD-PUGH B, C) -->
+              <g>
+                <rect x="600" y="200" width="330" height="285" rx="8" class="node-action-red" stroke-width="2"/>
+                <rect x="600" y="200" width="330" height="26" rx="8" fill="#dc2626"/>
+                <text x="765" y="217" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="800" fill="#ffffff">XƠ GAN MẤT BÙ (CHILD-PUGH B HOẶC C)</text>
+
+                <text x="615" y="245" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="800" fill="#dc2626">⚠️ CẢNH BÁO AN TOÀN TỐI QUAN TRỌNG:</text>
+                <text x="615" y="262" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="700" fill="#b91c1c">❌ CẤM DÙNG NHÓM ỨC CHẾ PROTEASE NS3/4A</text>
+                <text x="615" y="278" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" fill="var(--color-text, #334155)">(Glecaprevir, Grazoprevir) do nguy cơ độc gan tích lũy gây suy gan kịch phát tử vong!</text>
+
+                <text x="615" y="306" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="800" fill="#0284c7">PHÁC ĐỒ ĐIỀU TRỊ CHỈ ĐỊNH:</text>
+                <text x="615" y="326" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="#047857">1. Phác đồ Ưu Tiên Hàng 1:</text>
+                <text x="625" y="343" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="600" fill="var(--color-text, #334155)">• SOF / VEL + Ribavirin (RBV) x 12 TUẦN</text>
+                <text x="635" y="359" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" fill="var(--color-text-muted, #64748b)">Liều RBV: 1000mg (&lt;75kg) hoặc 1200mg (≥75kg)</text>
+                <text x="635" y="373" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" fill="var(--color-text-muted, #64748b)">Chỉnh liều theo độ thanh thải Creatinine &amp; Hb</text>
+
+                <text x="615" y="398" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="#0284c7">2. Phác đồ Thay Thế (Không Dung Nạp RBV):</text>
+                <text x="625" y="415" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="600" fill="var(--color-text, #334155)">• SOF / VEL kéo dài 24 TUẦN (không RBV)</text>
+
+                <text x="615" y="440" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="700" fill="#b45309">🏥 Nơi quản lý &amp; điều trị:</text>
+                <text x="625" y="456" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" fill="var(--color-text, #334155)">Bắt buộc điều trị tại cơ sở chuyên khoa gan mật có</text>
+                <text x="625" y="471" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" fill="var(--color-text, #334155)">đơn vị hồi sức tích cực / Xem xét chỉ định ghép gan</text>
+              </g>
+
+              <!-- HỘI TỤ VỀ ĐÍCH: ĐÁNH GIÁ SVR12 (FOOTER NODE) -->
+              <path d="M 295 485 L 295 515 L 480 515 L 480 535" fill="none" stroke="#10b981" stroke-width="2"/>
+              <path d="M 765 485 L 765 515 L 480 515" fill="none" stroke="#0284c7" stroke-width="2" marker-end="url(#arrow-blue-daa)"/>
+
+              <g>
+                <rect x="120" y="535" width="720" height="95" rx="8" fill="rgba(16, 185, 129, 0.08)" stroke="#10b981" stroke-width="2"/>
+                <text x="480" y="558" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="800" fill="#15803d">TIÊU CHUẨN KHỎI BỆNH: ĐÁNH GIÁ ĐÁP ỨNG VI RÚT BỀN VỮNG (SVR12)</text>
+                <text x="480" y="578" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="var(--color-text, #0f172a)">Đo nồng độ HCV RNA định lượng ở TUẦN THỨ 12 sau khi hoàn tất toàn bộ liệu trình DAA</text>
+                <text x="480" y="596" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="#047857">✓ HCV RNA dưới ngưỡng phát hiện (&lt; 15 IU/mL) = ĐẠT SVR12 (COI NHƯ KHỎI BỆNH 100%)</text>
+                <text x="480" y="613" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">Bệnh nhân xơ gan (F4 / Child-Pugh A-C) dù đã đạt SVR12 vẫn bắt buộc siêu âm bụng &amp; AFP mỗi 6 tháng để tầm soát ung thư gan HCC</text>
+              </g>
+            </svg>
+          </div>
+
+          <div class="flowchart-legend-row">
+            <div class="flowchart-legend-item"><span class="legend-dot" style="background: #10b981;"></span> Nhóm Không xơ gan &amp; Xơ gan còn bù (G/P 8 tuần hoặc SOF/VEL 12 tuần)</div>
+            <div class="flowchart-legend-item"><span class="legend-dot" style="background: #dc2626;"></span> Nhóm Xơ gan mất bù Child-Pugh B, C (CẤM dùng Protease; SOF/VEL + RBV 12 tuần)</div>
+            <div class="flowchart-legend-item"><span class="legend-dot" style="background: #0284c7;"></span> Phác đồ toàn kiểu gen chuẩn (Pan-genotypic)</div>
+            <div class="flowchart-legend-item"><span class="legend-dot" style="background: #15803d;"></span> Đạt SVR12 (Tiêu chuẩn khỏi bệnh hoàn toàn)</div>
+          </div>
         </div>
 
         <div class="sec-subtitle">Bảng 1: Phác Đồ Điều Trị Cho Người Bệnh ≥ 3 Tuổi Không Xơ Gan Hoặc Xơ Gan Còn Bù (Điều Trị Lần Đầu)</div>

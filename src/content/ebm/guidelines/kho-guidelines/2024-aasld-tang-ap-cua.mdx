@@ -416,25 +416,144 @@ sections:
       </div>
 
       <div style="margin-top: 1rem;">
-        <FlowchartViewer
-          title="Lưu Đồ Phân Tầng cACLD & Tiếp Cận CSPH Không Xâm Lấn (AASLD 2024 / Baveno VI)"
-          code={`graph TD
-  START["BỆNH NHÂN CÓ BỆNH GAN MẠN TÍNH<br/><small>Đo độ cứng gan (LSM) bằng FibroScan/TE + Số lượng tiểu cầu</small>"]:::start --> LSM_CHECK{"Đánh Giá Ngưỡng Độ Cứng Gan (LSM)?"}:::question
-
-  LSM_CHECK -- "LSM < 10 kPa" --> RULE_OUT["LOẠI TRỪ cACLD<br/><small>Nguy cơ biến chứng gan rất thấp • Tiếp tục điều trị nguyên nhân nền</small>"]:::success
+        <div class="flowchart-editorial-card">
+  <div class="flowchart-card-header">
+    <div class="flowchart-badge-title">
+      <span class="flowchart-badge-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg>
+      </span>
+      <span class="flowchart-badge-text">Lưu Đồ Phân Tầng cACLD & Tiếp Cận CSPH Không Xâm Lấn (AASLD 2024 / Baveno VI)</span>
+    </div>
+    <span class="flowchart-version-tag">AASLD 2024 • Baveno VI</span>
+  </div>
   
-  LSM_CHECK -- "LSM 10 - 14.9 kPa" --> SUSPECT["NGHI NGỜ cACLD<br/><small>Theo dõi định kỳ hàng năm hoặc làm thêm test chuyên sâu</small>"]:::action
+  <div class="flowchart-svg-scroll">
+    <svg class="med-svg" viewBox="0 0 920 480" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+    <defs>
+      <marker id="arr-p1" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-text-muted, #64748b)" />
+      </marker>
+      <marker id="arr-p1-act" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)" />
+      </marker>
+    </defs>
 
-  LSM_CHECK -- "LSM ≥ 15 kPa" --> CONFIRM_CACLD["XÁC CHẨN cACLD (Xơ gan còn bù)<br/><small>Phân tầng nguy cơ tăng áp lực tĩnh mạch cửa có ý nghĩa (CSPH)</small>"]:::warning
+    <!-- Root -->
+    <g class="flow-node">
+      <rect x="250" y="15" width="420" height="55" rx="8" fill="var(--color-primary-subtle, rgba(2,132,199,0.12))" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+      <text x="460" y="37" font-size="13.5" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">BỆNH NHÂN CÓ BỆNH GAN MẠN TÍNH</text>
+      <text x="460" y="54" font-size="11" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Đo độ cứng gan (LSM) bằng FibroScan/TE + Đếm số lượng tiểu cầu</text>
+    </g>
 
-  CONFIRM_CACLD --> CSPH_CHECK{"Tiêu Chuẩn CSPH Không Xâm Lấn?"}:::question
+    <path d="M 460 70 L 460 98" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arr-p1-act)"/>
 
-  CSPH_CHECK -- "LSM ≥ 25 kPa HOẶC<br/>(LSM 20-24.9 & Tiểu cầu < 150) HOẶC<br/>(LSM 15-19.9 & Tiểu cầu < 110)" --> HAS_CSPH["XÁC CHẨN CÓ CSPH<br/><small>Khởi trị ngay Carvedilol 6.25 - 12.5 mg/ngày<br/>• Ngăn ngừa mất bù đầu tiên (cổ trướng, vỡ giãn)<br/>• KHÔNG CẦN NỘI SOI DẠ DÀY SÀNG LỌC</small>"]:::danger
+    <!-- Decision 1: LSM check -->
+    <g class="flow-node">
+      <polygon points="460,98 640,133 460,168 280,133" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="2"/>
+      <text x="460" y="129" font-size="12" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">Đánh Giá Ngưỡng Độ Cứng Gan</text>
+      <text x="460" y="145" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Phân Tầng Theo LSM (kPa)?</text>
+    </g>
 
-  CSPH_CHECK -- "LSM < 20 kPa & Tiểu cầu ≥ 150" --> BAVENO6["ĐẠT TIÊU CHUẨN BAVENO VI<br/><small>Nguy cơ giãn TM nguy cơ cao < 5%<br/>• TRÁNH NỘI SOI SÀNG LỌC AN TOÀN<br/>• Theo dõi lại LSM và tiểu cầu hàng năm</small>"]:::success
+    <!-- Branch 1: < 10 kPa Rule out -->
+    <path d="M 280 133 L 140 133 L 140 195" fill="none" stroke="var(--color-success, #22c55e)" stroke-width="1.8" marker-end="url(#arr-p1-act)"/>
+    <g>
+      <rect x="155" y="121" width="85" height="20" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="197" y="135" font-size="10" font-weight="600" fill="var(--color-success, #16a34a)" text-anchor="middle">LSM &lt; 10 kPa</text>
+    </g>
+    <g class="flow-node">
+      <rect x="30" y="195" width="220" height="70" rx="8" fill="var(--color-success-subtle, rgba(34,197,94,0.12))" stroke="var(--color-success, #22c55e)" stroke-width="1.8"/>
+      <text x="140" y="218" font-size="12.5" font-weight="700" fill="var(--color-success, #16a34a)" text-anchor="middle">LOẠI TRỪ cACLD</text>
+      <text x="140" y="237" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">Nguy cơ mất bù &lt; 1%</text>
+      <text x="140" y="252" font-size="10" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Điều trị bệnh gan nền • Tái khám định kỳ</text>
+    </g>
 
-  CSPH_CHECK -- "LSM 20 - 24.9 & Tiểu cầu ≥ 150<br/>(Vùng xám không thỏa Baveno VI)" --> EGD_NEEDED["CHỈ ĐỊNH NỘI SOI THỰC QUẢN - DẠ DÀY<br/><small>Nếu có búi giãn nguy cơ cao: Khởi trị Carvedilol hoặc Thắt EVL<br/>Nếu không búi giãn: Nội soi lại sau 1-2 năm</small>"]:::action`}
-        />
+    <!-- Branch 2: 10 - 14.9 kPa Suspect -->
+    <path d="M 360 151 L 360 195" fill="none" stroke="var(--color-warning, #f59e0b)" stroke-width="1.8" marker-end="url(#arr-p1-act)"/>
+    <g>
+      <rect x="315" y="157" width="90" height="20" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="360" y="171" font-size="10" font-weight="600" fill="var(--color-warning, #d97706)" text-anchor="middle">10 – 14.9 kPa</text>
+    </g>
+    <g class="flow-node">
+      <rect x="270" y="195" width="180" height="70" rx="8" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="1.8"/>
+      <text x="360" y="218" font-size="12" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">NGHI NGỜ cACLD</text>
+      <text x="360" y="237" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">Vùng xám lâm sàng</text>
+      <text x="360" y="252" font-size="10" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Lặp lại LSM 12 tháng hoặc đo ELF/FIB-4</text>
+    </g>
+
+    <!-- Branch 3: >= 15 kPa Confirmed cACLD -->
+    <path d="M 640 133 L 740 133 L 740 195" fill="none" stroke="var(--color-danger, #ef4444)" stroke-width="1.8" marker-end="url(#arr-p1-act)"/>
+    <g>
+      <rect x="655" y="121" width="85" height="20" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="697" y="135" font-size="10" font-weight="600" fill="var(--color-danger, #ef4444)" text-anchor="middle">LSM ≥ 15 kPa</text>
+    </g>
+    <g class="flow-node">
+      <rect x="620" y="195" width="240" height="70" rx="8" fill="var(--color-danger-subtle, rgba(239,68,68,0.12))" stroke="var(--color-danger, #ef4444)" stroke-width="1.8"/>
+      <text x="740" y="218" font-size="12.5" font-weight="700" fill="var(--color-danger, #ef4444)" text-anchor="middle">XÁC CHẨN cACLD</text>
+      <text x="740" y="237" font-size="10.5" font-weight="600" fill="var(--color-text, #334155)" text-anchor="middle">Bệnh Gan Mạn Tiến Triển Bù Trừ</text>
+      <text x="740" y="252" font-size="10" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Bắt buộc phân tầng CSPH không xâm lấn</text>
+    </g>
+
+    <!-- Connect cACLD to CSPH Decision -->
+    <path d="M 740 265 L 740 295" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arr-p1-act)"/>
+
+    <!-- CSPH Decision Hub -->
+    <g class="flow-node">
+      <polygon points="740,295 890,328 740,361 590,328" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="2"/>
+      <text x="740" y="324" font-size="12" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">Tiêu Chuẩn CSPH &amp; Baveno VI</text>
+      <text x="740" y="339" font-size="10" fill="var(--color-text-muted, #64748b)" text-anchor="middle">LSM phối hợp Số lượng Tiểu Cầu?</text>
+    </g>
+
+    <!-- Sub-branch 1: Has CSPH -> Carvedilol -->
+    <path d="M 890 328 L 910 328 L 910 395 L 770 395" fill="none" stroke="var(--color-danger, #ef4444)" stroke-width="1.8" marker-end="url(#arr-p1-act)"/>
+    <g class="flow-node">
+      <rect x="520" y="375" width="240" height="95" rx="8" fill="var(--color-danger-subtle, rgba(239,68,68,0.12))" stroke="var(--color-danger, #ef4444)" stroke-width="2"/>
+      <text x="640" y="397" font-size="12" font-weight="700" fill="var(--color-danger, #ef4444)" text-anchor="middle">XÁC CHẨN CÓ CSPH</text>
+      <text x="640" y="415" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">LSM ≥ 25 hoặc (20-24.9 + PLT &lt; 150)</text>
+      <text x="640" y="432" font-size="11" font-weight="700" fill="var(--color-success, #16a34a)" text-anchor="middle">Khởi Trị Ngay Carvedilol 6.25–12.5mg</text>
+      <text x="640" y="450" font-size="10" fill="var(--color-primary, #0284c7)" text-anchor="middle">KHÔNG CẦN NỘI SOI DẠ DÀY SÀNG LỌC</text>
+    </g>
+
+    <!-- Sub-branch 2: Baveno VI criteria -> Avoid EGD -->
+    <path d="M 590 328 L 410 328 L 410 375" fill="none" stroke="var(--color-success, #22c55e)" stroke-width="1.8" marker-end="url(#arr-p1-act)"/>
+    <g>
+      <rect x="420" y="316" width="130" height="20" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="485" y="330" font-size="10" font-weight="600" fill="var(--color-success, #16a34a)" text-anchor="middle">LSM &lt; 20 &amp; PLT ≥ 150</text>
+    </g>
+    <g class="flow-node">
+      <rect x="290" y="375" width="210" height="95" rx="8" fill="var(--color-success-subtle, rgba(34,197,94,0.12))" stroke="var(--color-success, #22c55e)" stroke-width="1.8"/>
+      <text x="395" y="397" font-size="12" font-weight="700" fill="var(--color-success, #16a34a)" text-anchor="middle">ĐẠT BAVENO VI</text>
+      <text x="395" y="415" font-size="10" fill="var(--color-text, #334155)" text-anchor="middle">Nguy cơ vỡ giãn TM &lt; 5%</text>
+      <text x="395" y="432" font-size="10.5" font-weight="700" fill="var(--color-success, #16a34a)" text-anchor="middle">TRÁNH NỘI SOI AN TOÀN</text>
+      <text x="395" y="450" font-size="9.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Theo dõi lại LSM và PLT hàng năm</text>
+    </g>
+
+    <!-- Sub-branch 3: Grey zone -> EGD needed -->
+    <path d="M 740 361 L 740 380 L 800 380 L 800 405 L 810 405" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+    <g class="flow-node">
+      <rect x="780" y="375" width="130" height="95" rx="8" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="845" y="397" font-size="11" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">VÙNG XÁM</text>
+      <text x="845" y="415" font-size="9" fill="var(--color-text-muted, #64748b)" text-anchor="middle">LSM 20-24.9 &amp; PLT ≥150</text>
+      <text x="845" y="433" font-size="10" font-weight="600" fill="var(--color-text, #334155)" text-anchor="middle">Chỉ định EGD</text>
+      <text x="845" y="450" font-size="9" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Khởi Carvedilol nếu búi giãn lớn</text>
+    </g>
+  </svg>
+  </div>
+
+  <div class="flowchart-legend-row">
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(34,197,94,0.12); border-color: #22c55e;"></span>
+        <span>Loại trừ cACLD / Đạt chuẩn Baveno VI tránh nội soi</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(245,158,11,0.12); border-color: #f59e0b;"></span>
+        <span>Vùng xám nghi ngờ (LSM 10-14.9 kPa)</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(239,68,68,0.12); border-color: #ef4444;"></span>
+        <span>Xác chẩn CSPH: Khởi trị Carvedilol ngay</span>
+      </div>
+  </div>
+</div>
       </div>
 
       <div class="updates-grid" style="margin-top: 1.5rem;">
@@ -590,26 +709,110 @@ sections:
       </div>
 
       <div style="margin-top: 1rem;">
-        <FlowchartViewer
-          title="Lưu Đồ Xử Trí Cấp Cứu Xuất Huyết Vỡ Giãn Tĩnh Mạch (AVH) & Preemptive TIPS (AASLD 2024)"
-          code={`graph TD
-  START["CẤP CỨU XUẤT HUYẾT TIÊU HÓA TRÊN NGHI DO VỠ GIÃN TM (AVH)<br/><small>Nôn máu đỏ tươi / Đi ngoài phân đen • Tiền sử bệnh gan mạn</small>"]:::start --> RESUS["GÓI HỒI SỨC BAN ĐẦU (RESUSCITATION BUNDLE)<br/><small>• Khí đạo: Đặt NKQ nếu suy hô hấp/hôn mê • 2 đường truyền lớn<br/>• Truyền máu hạn chế: Đích Hb 7 - 8 g/dL (Không truyền FFP thường quy)<br/>• Thuốc co mạch tạng: Octreotide / Somatostatin / Terlipressin ngay<br/>• Kháng sinh dự phòng: Ceftriaxone 1g/ngày IV</small>"]:::danger
+        <div class="flowchart-editorial-card">
+  <div class="flowchart-card-header">
+    <div class="flowchart-badge-title">
+      <span class="flowchart-badge-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg>
+      </span>
+      <span class="flowchart-badge-text">Lưu Đồ Xử Trí Cấp Cứu Xuất Huyết Vỡ Giãn Tĩnh Mạch (AVH) & Preemptive TIPS (AASLD 2024)</span>
+    </div>
+    <span class="flowchart-version-tag">AASLD 2024 • AVH Protocol</span>
+  </div>
+  
+  <div class="flowchart-svg-scroll">
+    <svg class="med-svg" viewBox="0 0 920 540" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+    <defs>
+      <marker id="arr-p2" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-text-muted, #64748b)" />
+      </marker>
+      <marker id="arr-p2-act" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)" />
+      </marker>
+    </defs>
 
-  RESUS --> EGD["NỘI SOI DẠ DÀY TRONG VÒNG 12 GIỜ ĐẦU<br/><small>Sau khi đã hồi sức ổn định huyết động</small>"]:::action
+    <!-- Root -->
+    <g class="flow-node">
+      <rect x="240" y="15" width="440" height="55" rx="8" fill="var(--color-danger-subtle, rgba(239,68,68,0.12))" stroke="var(--color-danger, #ef4444)" stroke-width="2"/>
+      <text x="460" y="37" font-size="13.5" font-weight="700" fill="var(--color-danger, #ef4444)" text-anchor="middle">NGHI NGỜ / XÁC ĐỊNH XUẤT HUYẾT VỠ GIÃN TM (AVH)</text>
+      <text x="460" y="55" font-size="11" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Nôn ra máu / Đi cầu phân đen trên bệnh nhân xơ gan hoặc tăng áp cửa</text>
+    </g>
 
-  EGD --> SOURCE{"Vị Trí Tổn Thương Chảy Máu Trên Nội Soi?"}:::question
+    <path d="M 460 70 L 460 98" fill="none" stroke="var(--color-danger, #ef4444)" stroke-width="2" marker-end="url(#arr-p2-act)"/>
 
-  SOURCE -- "Giãn TM Thực quản (GOV1 / EV)" --> EV_TX["THẮT VÒNG CAO SU (EVL)<br/><small>Thắt các búi giãn đang chảy máu hoặc có nút tiểu cầu</small>"]:::action
+    <!-- Step 2: Emergency Resuscitation Bundle -->
+    <g class="flow-node">
+      <rect x="140" y="98" width="640" height="75" rx="10" fill="var(--color-primary-subtle, rgba(2,132,199,0.12))" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+      <text x="460" y="121" font-size="13.5" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">GÓI HỒI SỨC BAN ĐẦU KHẨN CẤP (TRƯỚC NỘI SOI)</text>
+      <text x="460" y="141" font-size="11" fill="var(--color-text, #334155)" text-anchor="middle">• Thuốc co mạch tạng: Terlipressin, Octreotide hoặc Somatostatin khởi động NGAY</text>
+      <text x="460" y="157" font-size="11" fill="var(--color-text, #334155)" text-anchor="middle">• Kháng sinh Ceftriaxone 1g/ngày • Truyền máu bảo tồn (Hb đích 7 – 8 g/dL) • CẤM bù FFP</text>
+    </g>
 
-  SOURCE -- "Giãn TM Phình vị (GOV2 / IGV1)" --> GV_TX["TIÊM KEO CYANOACRYLATE<br/><small>Hoặc cân nhắc can thiệp mạch BRTO / TIPS sớm</small>"]:::action
+    <path d="M 460 173 L 460 200" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arr-p2-act)"/>
 
-  EV_TX --> RISK_STRAT{"Phân Tầng Nguy Cơ Thất Bại / Tử Vong Cao?"}:::question
-  GV_TX --> RISK_STRAT
+    <!-- Step 3: Urgent Endoscopy -->
+    <g class="flow-node">
+      <rect x="230" y="200" width="460" height="52" rx="8" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+      <text x="460" y="222" font-size="13" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">NỘI SOI DẠ DÀY CẦM MÁU TRONG VÒNG 12 GIỜ</text>
+      <text x="460" y="239" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Thắt vòng cao su EVL búi giãn thực quản • Tiêm keo Cyanoacrylate nếu giãn phình vị</text>
+    </g>
 
-  RISK_STRAT -- "NGUY CƠ CAO (Child-Pugh C hoặc Child-Pugh B > 7 có máu chảy)" --> PREEMPT_TIPS["ĐẶT PREEMPTIVE TIPS TRONG 24 - 72 GIỜ ĐẦU<br/><small>• Sử dụng stent có màng bọc polytetrafluoroethylene (ePTFE)<br/>• Giảm ngoạn mục nguy cơ tái xuất huyết và cải thiện tỷ lệ sống còn</small>"]:::danger
+    <path d="M 460 252 L 460 280" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arr-p2-act)"/>
 
-  RISK_STRAT -- "NGUY CƠ TIÊU CHUẨN (Child-Pugh A hoặc Child-Pugh B ≤ 7)" --> STD_CARE["DUY TRÌ ĐIỀU TRỊ CHUẨN<br/><small>• Tiếp tục thuốc co mạch tạng 2 - 5 ngày • Kháng sinh 7 ngày<br/>• Bắt đầu Carvedilol sau khi ngừng thuốc co mạch & ổn định<br/>• Thắt EVL định kỳ mỗi 2-4 tuần cho đến khi triệt tiêu búi giãn</small>"]:::success`}
-        />
+    <!-- Decision: Risk Stratification for Preemptive TIPS -->
+    <g class="flow-node">
+      <polygon points="460,280 650,317 460,354 270,317" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="2"/>
+      <text x="460" y="312" font-size="12" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">Phân Tầng Nguy Cơ Thất Bại &amp; Tử Vong</text>
+      <text x="460" y="328" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Child-Pugh B &gt; 7 có máu chảy HOẶC Child-Pugh C &lt; 14?</text>
+    </g>
+
+    <!-- Branch Left: High Risk -> Preemptive TIPS -->
+    <path d="M 270 317 L 170 317 L 170 375" fill="none" stroke="var(--color-danger, #ef4444)" stroke-width="2" marker-end="url(#arr-p2-act)"/>
+    <g>
+      <rect x="180" y="305" width="80" height="20" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="220" y="319" font-size="10" font-weight="600" fill="var(--color-danger, #ef4444)" text-anchor="middle">Nguy cơ cao (+)</text>
+    </g>
+    <g class="flow-node">
+      <rect x="30" y="375" width="340" height="110" rx="10" fill="var(--color-danger-subtle, rgba(239,68,68,0.12))" stroke="var(--color-danger, #ef4444)" stroke-width="2"/>
+      <text x="200" y="400" font-size="13" font-weight="700" fill="var(--color-danger, #ef4444)" text-anchor="middle">ĐẶT PREEMPTIVE TIPS TRONG 24 – 72H</text>
+      <text x="200" y="420" font-size="11" font-weight="600" fill="var(--color-text, #334155)" text-anchor="middle">Stent kim loại có màng bọc PTFE (ePTFE)</text>
+      <text x="200" y="438" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">• Giảm ngoạn mục nguy cơ tái xuất huyết</text>
+      <text x="200" y="454" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">• Cải thiện rõ rệt tỷ lệ sống còn 1 năm</text>
+      <text x="200" y="470" font-size="10" font-weight="700" fill="var(--color-danger, #ef4444)" text-anchor="middle">Bắt buộc hội chẩn can thiệp mạch ngay trong 24h!</text>
+    </g>
+
+    <!-- Branch Right: Standard Care -->
+    <path d="M 650 317 L 750 317 L 750 375" fill="none" stroke="var(--color-success, #22c55e)" stroke-width="2" marker-end="url(#arr-p2-act)"/>
+    <g>
+      <rect x="660" y="305" width="80" height="20" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="700" y="319" font-size="10" font-weight="600" fill="var(--color-success, #16a34a)" text-anchor="middle">Tiêu chuẩn (-)</text>
+    </g>
+    <g class="flow-node">
+      <rect x="550" y="375" width="340" height="110" rx="10" fill="var(--color-success-subtle, rgba(34,197,94,0.12))" stroke="var(--color-success, #22c55e)" stroke-width="1.8"/>
+      <text x="720" y="400" font-size="13" font-weight="700" fill="var(--color-success, #16a34a)" text-anchor="middle">DUY TRÌ ĐIỀU TRỊ CHUẨN</text>
+      <text x="720" y="420" font-size="11" font-weight="600" fill="var(--color-text, #334155)" text-anchor="middle">Child-Pugh A hoặc Child-Pugh B ≤ 7 điểm</text>
+      <text x="720" y="438" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">• Tiếp tục thuốc co mạch tạng 2 – 5 ngày</text>
+      <text x="720" y="454" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">• Kháng sinh đủ 7 ngày • Khởi Carvedilol khi ổn định</text>
+      <text x="720" y="470" font-size="10" fill="var(--color-success, #16a34a)" text-anchor="middle">• Thắt EVL định kỳ mỗi 2–4 tuần triệt tiêu búi giãn</text>
+    </g>
+  </svg>
+  </div>
+
+  <div class="flowchart-legend-row">
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(2,132,199,0.12); border-color: #0284c7;"></span>
+        <span>Gói hồi sức cấp cứu mốc 0h &amp; EGD < 12h</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(239,68,68,0.12); border-color: #ef4444;"></span>
+        <span>Chỉ định Preemptive TIPS trong 24-72h (Child C / B>7)</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(34,197,94,0.12); border-color: #22c55e;"></span>
+        <span>Duy trì phác đồ nội khoa chuẩn &amp; EVL định kỳ</span>
+      </div>
+  </div>
+</div>
       </div>
 
       <div class="updates-grid" style="margin-top: 1.5rem;">

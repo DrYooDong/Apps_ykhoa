@@ -507,28 +507,167 @@ sections:
         </div>
       </div>
 
-      <FlowchartViewer
-        title="Lưu Đồ Theo Dõi eGFR & Nồng Độ Kali Sau Khởi Trị Thuốc Ức Chế RAS (KDIGO 2024)"
-        code={`graph TD
-  START["KHỞI TRỊ HOẶC TĂNG LIỀU RASi / SGLT2i<br/><small>ACEi/ARB liều khởi đầu hoặc SGLT2i (Dapagliflozin/Empagliflozin 10mg)</small>"]:::start --> TEST["Xét Nghiệm Lại Sau 2 – 4 Tuần Khởi Trị<br/><small>Kiểm tra eGFR (Creatinine huyết thanh) & Nồng độ Kali máu (K⁺)</small>"]:::action
-  
-  TEST --> CHECK_GFR{"Độ Sụt Giảm eGFR So Với Ban Đầu?"}:::question
-  
-  CHECK_GFR -- "eGFR giảm < 30%" --> GFR_OK["Đáp ứng huyết động bình thường<br/><small>Hiện tượng sụt eGFR cấp tính do co tiểu ĐM vào là dự kiến trước</small>"]:::success
-  CHECK_GFR -- "eGFR giảm ≥ 30% trong 4 tuần" --> GFR_BAD["CẢNH BÁO TỔN THƯƠNG THẬN CẤP (AKI)<br/><small>• Tìm nguyên nhân mất nước / giảm thể tích tuần hoàn<br/>• Ngưng ngay thuốc độc thận (NSAIDs)<br/>• Loại trừ hẹp động mạch thận hai bên<br/>• Giảm liều hoặc tạm ngưng nếu không hồi phục</small>"]:::danger
-  
-  GFR_OK --> CHECK_K{"Nồng Độ Kali Máu (K⁺)?"}:::question
-  
-  CHECK_K -- "K⁺ ≤ 5.5 mmol/L" --> K_OK["KALI AN TOÀN: Tiếp tục duy trì & tăng liều RASi dần đến liều tối đa được phê duyệt"]:::success
-  CHECK_K -- "K⁺ > 5.5 mmol/L (Tăng Kali)" --> K_BAD["XỬ TRÍ TĂNG KALI MÁU<br/><small>• Giảm lượng Kali trong chế độ ăn • Ngừng thuốc giữ Kali<br/>• Phối hợp thuốc lợi tiểu thiazide/quai, Natri Bicarbonat<br/>• Chỉ định chất gắn Kali trao đổi ion thế hệ mới: Patiromer / SZC<br/>• <i>Chỉ giảm/ngừng RASi khi các biện pháp trên thất bại</i></small>"]:::warning
+      <div class="flowchart-editorial-card">
+        <div class="flowchart-card-header">
+          <div class="flowchart-card-title-group">
+            <span class="flowchart-card-icon">🩺</span>
+            <div>
+              <h3 class="flowchart-card-title">Lưu Đồ Theo Dõi eGFR &amp; Nồng Độ Kali Sau Khởi Trị Thuốc Ức Chế RAS</h3>
+              <p class="flowchart-card-subtitle">Hướng dẫn KDIGO 2024 (Figure 21) • Ngưỡng sụt giảm eGFR 30% • Kiểm soát tăng Kali máu • Bảo toàn chỉ định RASi</p>
+            </div>
+          </div>
+          <span class="flowchart-card-badge">KDIGO 2024 • Editorial SVG</span>
+        </div>
 
-  classDef start fill:#e0f2fe,stroke:#0284c7,stroke-width:2px,color:#0369a1
-  classDef question fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#854d0e
-  classDef action fill:#eff6ff,stroke:#3b82f6,stroke-width:1.5px,color:#1e40af
-  classDef danger fill:#fee2e2,stroke:#ef4444,stroke-width:2px,color:#991b1b
-  classDef warning fill:#fef3c7,stroke:#f59e0b,stroke-width:2px,color:#92400e
-  classDef success fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#15803d`}
-      />
+        <div class="flowchart-svg-container">
+          <svg class="med-svg" viewBox="0 0 960 820" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <marker id="arr-kdigo" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 1 1.5 L 8 5 L 1 8.5 Z" fill="var(--color-primary, #0284c7)"/>
+              </marker>
+              <marker id="arr-kdigo-warn" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 1 1.5 L 8 5 L 1 8.5 Z" fill="var(--color-warning, #f59e0b)"/>
+              </marker>
+              <marker id="arr-kdigo-danger" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 1 1.5 L 8 5 L 1 8.5 Z" fill="var(--color-danger, #ef4444)"/>
+              </marker>
+              <marker id="arr-kdigo-success" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 1 1.5 L 8 5 L 1 8.5 Z" fill="var(--color-success, #10b981)"/>
+              </marker>
+            </defs>
+
+            {/* CONNECTORS */}
+            {/* START -> TEST */}
+            <path d="M 480 96 V 126" stroke="var(--color-primary, #0284c7)" stroke-width="2" fill="none" marker-end="url(#arr-kdigo)"/>
+
+            {/* TEST -> CHECK_GFR */}
+            <path d="M 480 196 V 226" stroke="var(--color-primary, #0284c7)" stroke-width="2" fill="none" marker-end="url(#arr-kdigo)"/>
+
+            {/* CHECK_GFR -> GFR_OK (Left) */}
+            <path d="M 330 253 H 266 Q 260 253 260 259 V 314" stroke="var(--color-success, #10b981)" stroke-width="2" fill="none" marker-end="url(#arr-kdigo-success)"/>
+
+            {/* CHECK_GFR -> GFR_BAD (Right) */}
+            <path d="M 630 253 H 720 Q 726 253 726 259 V 314" stroke="var(--color-danger, #ef4444)" stroke-width="2" fill="none" marker-end="url(#arr-kdigo-danger)"/>
+
+            {/* GFR_OK -> CHECK_K */}
+            <path d="M 260 415 V 454" stroke="var(--color-primary, #0284c7)" stroke-width="2" fill="none" marker-end="url(#arr-kdigo)"/>
+
+            {/* CHECK_K -> K_OK (Left) */}
+            <path d="M 110 483 H 86 Q 80 483 80 489 V 544" stroke="var(--color-success, #10b981)" stroke-width="2" fill="none" marker-end="url(#arr-kdigo-success)"/>
+
+            {/* CHECK_K -> K_BAD (Right) */}
+            <path d="M 410 483 H 684 Q 690 483 690 489 V 544" stroke="var(--color-warning, #f59e0b)" stroke-width="2" fill="none" marker-end="url(#arr-kdigo-warn)"/>
+
+            {/* CONNECTOR LABELS (with background masks) */}
+            <g>
+              <rect x="180" y="241" width="160" height="22" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+              <text x="260" y="256" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-success, #10b981)">eGFR giảm &lt; 30% (Dự kiến)</text>
+            </g>
+
+            <g>
+              <rect x="640" y="241" width="170" height="22" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+              <text x="725" y="256" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-danger, #ef4444)">eGFR giảm ≥ 30% (Bất thường)</text>
+            </g>
+
+            <g>
+              <rect x="25" y="471" width="135" height="22" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+              <text x="92" y="486" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-success, #10b981)">K⁺ ≤ 5.5 mmol/L</text>
+            </g>
+
+            <g>
+              <rect x="490" y="471" width="170" height="22" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+              <text x="575" y="486" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-warning, #f59e0b)">K⁺ &gt; 5.5 mmol/L (Tăng Kali)</text>
+            </g>
+
+            {/* NODES */}
+            {/* NODE 1: START */}
+            <g class="flow-node">
+              <rect x="240" y="30" width="480" height="66" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+              <rect x="240" y="30" width="480" height="24" rx="10" fill="var(--color-primary, #0284c7)" fill-opacity="0.1"/>
+              <text x="480" y="47" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-primary, #0284c7)" letter-spacing="0.5">KHỞI TRỊ HOẶC TĂNG LIỀU RASi (ACEi/ARB) / SGLT2i</text>
+              <text x="480" y="74" text-anchor="middle" font-size="12" font-weight="600" fill="var(--color-text, #1e293b)">Khởi đầu ACEi/ARB hoặc SGLT2i (Dapagliflozin 10mg, Empagliflozin 10mg)</text>
+            </g>
+
+            {/* NODE 2: TEST */}
+            <g class="flow-node">
+              <rect x="250" y="130" width="460" height="66" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+              <rect x="250" y="130" width="460" height="24" rx="10" fill="var(--color-primary, #0284c7)" fill-opacity="0.1"/>
+              <text x="480" y="147" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-primary, #0284c7)" letter-spacing="0.5">TÁI KHÁM &amp; XÉT NGHIỆM SAU 2 – 4 TUẦN</text>
+              <text x="480" y="174" text-anchor="middle" font-size="12" font-weight="600" fill="var(--color-text, #1e293b)">Bắt buộc kiểm tra: Creatinine huyết thanh (tính eGFR) &amp; Nồng độ Kali máu (K⁺)</text>
+            </g>
+
+            {/* NODE 3: CHECK_GFR (Decision) */}
+            <g class="flow-node">
+              <rect x="330" y="230" width="300" height="46" rx="23" fill="var(--color-surface, #ffffff)" stroke="var(--color-warning, #f59e0b)" stroke-width="2"/>
+              <text x="480" y="258" text-anchor="middle" font-size="12" font-weight="700" fill="var(--color-warning, #f59e0b)">Độ Sụt Giảm eGFR So Với Ban Đầu?</text>
+            </g>
+
+            {/* NODE 4: GFR_OK */}
+            <g class="flow-node">
+              <rect x="50" y="320" width="420" height="95" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-success, #10b981)" stroke-width="2"/>
+              <rect x="50" y="320" width="420" height="24" rx="10" fill="var(--color-success, #10b981)" fill-opacity="0.1"/>
+              <text x="260" y="337" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--color-success, #10b981)" letter-spacing="0.5">ĐÁP ỨNG HUYẾT ĐỘNG THUẬN LỢI (DỰ KIẾN TRƯỚC)</text>
+              <text x="65" y="362" font-size="11.5" font-weight="700" fill="var(--color-text, #1e293b)">Giảm áp lực nội cầu thận sinh lý</text>
+              <text x="65" y="381" font-size="11" fill="var(--color-text-muted, #64748b)">Sụt eGFR cấp do giãn tiểu ĐM đi (RASi) hoặc co tiểu ĐM vào (SGLT2i)</text>
+              <text x="65" y="399" font-size="11" font-weight="700" fill="var(--color-success, #10b981)">-&gt; Lợi ích bảo vệ thận lâu dài: TUYỆT ĐỐI KHÔNG NGỪNG THUỐC</text>
+            </g>
+
+            {/* NODE 5: GFR_BAD */}
+            <g class="flow-node">
+              <rect x="520" y="320" width="410" height="135" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-danger, #ef4444)" stroke-width="2"/>
+              <rect x="520" y="320" width="410" height="24" rx="10" fill="var(--color-danger, #ef4444)" fill-opacity="0.12"/>
+              <text x="725" y="337" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--color-danger, #ef4444)" letter-spacing="0.5">CẢNH BÁO TỔN THƯƠNG THẬN CẤP (AKI)</text>
+              <text x="535" y="362" font-size="11.5" font-weight="600" fill="var(--color-text, #1e293b)">• Tìm nguyên nhân: Thiếu dịch, nôn ói, lợi tiểu quá mức</text>
+              <text x="535" y="381" font-size="11.5" font-weight="700" fill="var(--color-danger, #ef4444)">• Rà soát và ngưng ngay thuốc độc thận (NSAIDs)</text>
+              <text x="535" y="400" font-size="11" fill="var(--color-text, #1e293b)">• Siêu âm Doppler loại trừ hẹp động mạch thận hai bên</text>
+              <text x="535" y="418" font-size="11" fill="var(--color-text-muted, #64748b)">• Bồi phụ dịch tuần hoàn; chỉ giảm/ngừng nếu không hồi phục</text>
+            </g>
+
+            {/* NODE 6: CHECK_K (Decision) */}
+            <g class="flow-node">
+              <rect x="110" y="460" width="300" height="46" rx="23" fill="var(--color-surface, #ffffff)" stroke="var(--color-warning, #f59e0b)" stroke-width="2"/>
+              <text x="260" y="488" text-anchor="middle" font-size="12" font-weight="700" fill="var(--color-warning, #f59e0b)">Nồng Độ Kali Máu (K⁺)?</text>
+            </g>
+
+            {/* NODE 7: K_OK */}
+            <g class="flow-node">
+              <rect x="30" y="550" width="380" height="135" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-success, #10b981)" stroke-width="2"/>
+              <rect x="30" y="550" width="380" height="24" rx="10" fill="var(--color-success, #10b981)" fill-opacity="0.1"/>
+              <text x="220" y="567" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--color-success, #10b981)" letter-spacing="0.5">KALI AN TOÀN: TỐI ƯU HÓA LIỀU RASi</text>
+              <text x="45" y="592" font-size="11.5" font-weight="700" fill="var(--color-text, #1e293b)">Duy trì và tăng liều dần đến tối đa</text>
+              <text x="45" y="611" font-size="11.5" fill="var(--color-text, #1e293b)">• Tăng dần liều RASi đến liều tối đa được phê duyệt và dung nạp</text>
+              <text x="45" y="630" font-size="11" fill="var(--color-primary, #0284c7)">• Đạt hiệu quả bảo vệ tim-thận tối ưu theo chứng cứ RCT</text>
+              <text x="45" y="649" font-size="10.5" fill="var(--color-text-muted, #64748b)">• Định kỳ xét nghiệm lại Creatinine và Kali mỗi 3–6 tháng</text>
+            </g>
+
+            {/* NODE 8: K_BAD */}
+            <g class="flow-node">
+              <rect x="450" y="550" width="480" height="145" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-warning, #f59e0b)" stroke-width="2"/>
+              <rect x="450" y="550" width="480" height="24" rx="10" fill="var(--color-warning, #f59e0b)" fill-opacity="0.12"/>
+              <text x="690" y="567" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--color-warning, #f59e0b)" letter-spacing="0.5">XỬ TRÍ TĂNG KALI ĐỂ BẢO TỒN RASi</text>
+              <text x="465" y="592" font-size="11.5" font-weight="600" fill="var(--color-text, #1e293b)">• Giảm lượng Kali trong khẩu phần ăn • Ngừng thuốc giữ Kali</text>
+              <text x="465" y="611" font-size="11.5" fill="var(--color-text, #1e293b)">• Phối hợp thuốc lợi tiểu Thiazide / Quai, Natri Bicarbonat (nếu có toan)</text>
+              <text x="465" y="630" font-size="11.5" font-weight="700" fill="var(--color-primary, #0284c7)">• Chỉ định thuốc gắn Kali thế hệ mới: SZC hoặc Patiromer</text>
+              <text x="465" y="649" font-size="11" fill="var(--color-text-muted, #64748b)">Giúp hạ Kali máu an toàn mà không cần giảm liều thuốc bảo vệ tim thận</text>
+              <text x="465" y="668" font-size="10.5" font-weight="700" fill="var(--color-danger, #ef4444)">-&gt; Chỉ giảm liều hoặc ngừng RASi khi tất cả biện pháp trên thất bại</text>
+            </g>
+
+            {/* BOTTOM SUMMARY BAR */}
+            <g class="flow-node">
+              <rect x="30" y="725" width="900" height="65" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+              <rect x="30" y="725" width="900" height="20" rx="10" fill="var(--color-primary, #0284c7)" fill-opacity="0.08"/>
+              <text x="480" y="740" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--color-primary, #0284c7)" letter-spacing="0.5">NGUYÊN TẮC VÀNG KDIGO 2024: NỖ LỰC DUY TRÌ THUỐC BẢO VỆ TIM - THẬN</text>
+              <text x="50" y="765" font-size="11" fill="var(--color-text, #1e293b)">• RASi và SGLT2i là trụ cột giảm tử vong tim mạch và làm chậm suy thận mạn. Tránh ngừng thuốc vội vàng khi chưa xử lý các nguyên nhân thúc đẩy có thể khắc phục.</text>
+            </g>
+          </svg>
+        </div>
+
+        <div class="flowchart-legend-row">
+          <div class="legend-item"><span class="legend-dot" style="background:var(--color-success, #10b981);"></span> eGFR giảm &lt; 30% / K⁺ an toàn: Tối ưu hóa liều RASi</div>
+          <div class="legend-item"><span class="legend-dot" style="background:var(--color-warning, #f59e0b);"></span> K⁺ &gt; 5.5 mmol/L: Dùng SZC/Patiromer để bảo tồn RASi</div>
+          <div class="legend-item"><span class="legend-dot" style="background:var(--color-danger, #ef4444);"></span> eGFR giảm ≥ 30%: Cảnh báo tổn thương thận cấp AKI</div>
+        </div>
+      </div>
 
       <div class="table-wrapper">
         <table class="med-table">

@@ -438,66 +438,128 @@ sections:
         </div>
       </div>
 
-      <FlowchartViewer 
-        title="Lưu Đồ Thuật Toán Phân Tầng Tiếp Cận Nang Gan (AJR 2014 Figure 16)"
-        code={`flowchart TD
-          START([Phát hiện tổn thương dạng nang ở gan | start | badge: AJR 2014])
-          NUM{Số lượng tổn thương trên hình ảnh? | question}
+      <div class="flowchart-editorial-card">
+  <div class="flowchart-card-header">
+    <div class="flowchart-card-title">
+      <svg class="flowchart-title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+        <polyline points="2 17 12 22 22 17"></polyline>
+        <polyline points="2 12 12 17 22 12"></polyline>
+      </svg>
+      <span>Lưu Đồ Thuật Toán Phân Tầng Tiếp Cận Nang Gan (AJR 2014 Figure 16)</span>
+    </div>
+    <div class="flowchart-card-subtitle">Tiếp cận dựa trên số lượng nang (1-10 vs > 10), hình thái học vách nang và dấu hiệu Central Dot</div>
+  </div>
+  <div class="flowchart-card-body">
+    <div class="flowchart-svg-wrapper">
+<svg class="med-svg" viewBox="0 0 980 540" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arr-ajr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)"/>
+    </marker>
+  </defs>
 
-          FEW[Đơn độc hoặc một vài nang (1 đến 10 nang) | action | badge: 1-10 nang]
-          MANY[Vô số nang lan tỏa khắp gan (> 10 nang) | warning | badge: > 10 nang]
+  <!-- Root -->
+  <g transform="translate(340, 20)">
+    <rect width="300" height="50" rx="10" fill="var(--color-surface)" stroke="#0284c7" stroke-width="2"/>
+    <rect x="0" y="0" width="300" height="50" rx="10" fill="#0284c7" fill-opacity="0.08"/>
+    <text x="150" y="22" text-anchor="middle" font-size="10" font-weight="700" fill="#0284c7" letter-spacing="1">AJR 2014 ALGORITHM</text>
+    <text x="150" y="39" text-anchor="middle" font-size="13" font-weight="700" fill="var(--color-text)">Tổn Thương Dạng Nang Ở Gan</text>
+  </g>
 
-          MORPH_FEW{Hình thái cấu trúc nang? | question}
-          SIMPLE[Cấu trúc nang đơn thuần (Simple) | success | subtitle: Thành mỏng, dịch trong, không vách]
-          COMPLEX[Cấu trúc nang phức tạp (Complex) | danger | subtitle: Thành dày, vách ngăn, nốt sùi]
+  <path d="M 490 70 L 490 105" fill="none" stroke="#0284c7" stroke-width="2" marker-end="url(#arr-ajr)"/>
 
-          S_CLIN{Đặc điểm lâm sàng & Tiền sử? | question}
-          S_TRAUMA[Biloma / Seroma / Hematoma | action | subtitle: Sau chấn thương hoặc sau phẫu thuật]
-          S_PSEUDO[Nang giả tụy trong gan | warning | subtitle: Tiền sử viêm tụy cấp, tăng amylase]
-          S_FOREGUT[Nang ruột trước có lông chuyển | success | subtitle: Sát bao gan phân thùy IV]
-          S_SIMPLE[Nang gan đơn thuần (Simple Cyst) | success | subtitle: Thường gặp nhất, lành tính]
+  <!-- Decision: Number of Cysts -->
+  <g transform="translate(340, 105)">
+    <rect width="300" height="50" rx="8" fill="var(--color-surface)" stroke="#d97706" stroke-width="1.8"/>
+    <rect x="0" y="0" width="300" height="50" rx="8" fill="#d97706" fill-opacity="0.06"/>
+    <text x="150" y="22" text-anchor="middle" font-size="10" font-weight="700" fill="#d97706">SỐ LƯỢNG NANG TRÊN HÌNH ẢNH</text>
+    <text x="150" y="39" text-anchor="middle" font-size="12" font-weight="600" fill="var(--color-text)">1 đến 10 Nang Hay Vô Số Nang Lan Tỏa (&gt;10)?</text>
+  </g>
 
-          C_CLIN{Đặc điểm lâm sàng & Ngấm thuốc? | question}
-          C_METS[Nang di căn (Cystic Metastasis) | danger | subtitle: Tiền sử NET, GIST, K tuyến nhầy]
-          C_HCC[Ung thư biểu mô tế bào gan thể nang | danger | badge: Ác tính | subtitle: Nền gan xơ, ngấm thuốc thì ĐM và thải thuốc]
-          C_INFECT[Áp xe gan do vi khuẩn / Amip / Ký sinh trùng | warning | subtitle: Hội chứng nhiễm trùng, sốt, Double-target sign]
-          C_BCA[U tuyến nang (BCA / BCAC) | danger | badge: Phẫu thuật | subtitle: Nữ trung niên, mô đệm buồng trứng, nốt sùi]
+  <!-- Split Left: 1-10 cysts, Right: >10 cysts -->
+  <path d="M 340 130 L 250 130 L 250 185" fill="none" stroke="#0ea5e9" stroke-width="1.8" marker-end="url(#arr-ajr)"/>
+  <path d="M 640 130 L 770 130 L 770 185" fill="none" stroke="#f59e0b" stroke-width="1.8" marker-end="url(#arr-ajr)"/>
 
-          ENH_MANY{Có ngấm thuốc mạch máu: Central dot sign? | question}
-          CAROLI[Bệnh Caroli / Hội chứng Caroli | danger | badge: Nguy cơ K | subtitle: Dấu hiệu chấm trung tâm, thông với đường mật]
-          NO_ENH{Không ngấm thuốc mạch máu? | question}
-          PLD[Bệnh gan đa nang (PLD) | warning | subtitle: Kèm theo nang thận 2 bên]
-          HAMARTOMA[Hamartoma đường mật (von Meyenburg) | success | subtitle: Vô số nang nhỏ < 15mm ổn định]
-          FUNGAL[Vi áp xe nấm (Candida) | danger | subtitle: Suy giảm miễn dịch nặng, sốt giảm bạch cầu]
+  <!-- Branch Left: 1-10 cysts -->
+  <g transform="translate(130, 185)">
+    <rect width="240" height="48" rx="8" fill="var(--color-surface)" stroke="#0ea5e9" stroke-width="1.5"/>
+    <text x="120" y="20" text-anchor="middle" font-size="11" font-weight="700" fill="#0ea5e9">ĐƠN ĐỘC HOẶC MỘT VÀI NANG (1 - 10)</text>
+    <text x="120" y="36" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">Đánh giá: Hình thái nang đơn thuần vs phức tạp</text>
+  </g>
 
-          START --> NUM
-          NUM -->|1 đến 10 nang| FEW
-          NUM ==>|> 10 nang| MANY
+  <!-- Branch Right: > 10 cysts -->
+  <g transform="translate(650, 185)">
+    <rect width="240" height="48" rx="8" fill="var(--color-surface)" stroke="#f59e0b" stroke-width="1.5"/>
+    <text x="120" y="20" text-anchor="middle" font-size="11" font-weight="700" fill="#f59e0b">VÔ SỐ NANG LAN TỎA (&gt; 10 NANG)</text>
+    <text x="120" y="36" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">Đánh giá dấu hiệu Central Dot trên CT/MRI</text>
+  </g>
 
-          FEW --> MORPH_FEW
-          MORPH_FEW -->|Đơn thuần| SIMPLE
-          MORPH_FEW ==>|Phức tạp| COMPLEX
+  <!-- Left: Simple vs Complex -->
+  <path d="M 190 233 L 130 233 L 130 270" fill="none" stroke="#10b981" stroke-width="1.5" marker-end="url(#arr-ajr)"/>
+  <path d="M 310 233 L 370 233 L 370 270" fill="none" stroke="#f43f5e" stroke-width="2" marker-end="url(#arr-ajr)"/>
 
-          SIMPLE --> S_CLIN
-          S_CLIN -->|Chấn thương/Mổ| S_TRAUMA
-          S_CLIN -->|Viêm tụy cấp| S_PSEUDO
-          S_CLIN -->|Phân thùy IV| S_FOREGUT
-          S_CLIN -->|Không triệu chứng| S_SIMPLE
+  <!-- Simple Cyst Group -->
+  <g transform="translate(30, 270)">
+    <rect width="200" height="110" rx="8" fill="var(--color-surface)" stroke="#10b981" stroke-width="1.8"/>
+    <rect x="0" y="0" width="200" height="110" rx="8" fill="#10b981" fill-opacity="0.06"/>
+    <text x="100" y="20" text-anchor="middle" font-size="10" font-weight="700" fill="#10b981">NANG ĐƠN THUẦN (SIMPLE)</text>
+    <text x="100" y="38" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-text)">• Nang gan đơn thuần</text>
+    <text x="100" y="55" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">Thường gặp nhất, lành tính</text>
+    <text x="100" y="73" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">• Biloma / Nang chấn thương</text>
+    <text x="100" y="91" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">• Nang giả tụy / Nang ruột trước</text>
+  </g>
 
-          COMPLEX --> C_CLIN
-          C_CLIN ==>|Tiền sử ung thư| C_METS
-          C_CLIN ==>|Gan xơ + Thải thuốc| C_HCC
-          C_CLIN -->|Sốt + Bạch cầu cao| C_INFECT
-          C_CLIN ==>|Nữ + Mô đệm buồng trứng| C_BCA
+  <!-- Complex Cyst Group -->
+  <g transform="translate(250, 270)">
+    <rect width="240" height="128" rx="8" fill="var(--color-surface)" stroke="#f43f5e" stroke-width="2"/>
+    <rect x="0" y="0" width="240" height="128" rx="8" fill="#f43f5e" fill-opacity="0.08"/>
+    <text x="120" y="20" text-anchor="middle" font-size="10" font-weight="700" fill="#f43f5e">NANG PHỨC TẠP (COMPLEX) ⚠️</text>
+    <text x="120" y="38" text-anchor="middle" font-size="10" font-weight="700" fill="var(--color-text)">Thành dày, vách ngăn, nốt sùi:</text>
+    <text x="120" y="55" text-anchor="middle" font-size="10" fill="var(--color-text)">• U tuyến nang buồng mật (BCA/BCAC)</text>
+    <text x="120" y="72" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">• Nang di căn (K nhầy, NET, GIST)</text>
+    <text x="120" y="89" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">• HCC thể hoại tử dạng nang</text>
+    <text x="120" y="106" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">• Áp xe gan do vi khuẩn / Ký sinh trùng</text>
+    <text x="120" y="120" text-anchor="middle" font-size="9" font-weight="600" fill="#f43f5e">👉 Chỉ định hội chẩn ngoại / can thiệp</text>
+  </g>
 
-          MANY --> ENH_MANY
-          ENH_MANY ==>|Dương tính (Central dot)| CAROLI
-          ENH_MANY -->|Âm tính| NO_ENH
-          NO_ENH -->|Kèm nang thận| PLD
-          NO_ENH -->|Nang nhỏ < 15mm| HAMARTOMA
-          NO_ENH ==>|Sốt giảm bạch cầu| FUNGAL
-        `}
-      />
+  <!-- Right: Central Dot Sign vs No Enhancement -->
+  <path d="M 720 233 L 640 233 L 640 270" fill="none" stroke="#f43f5e" stroke-width="1.8" marker-end="url(#arr-ajr)"/>
+  <path d="M 820 233 L 870 233 L 870 270" fill="none" stroke="#10b981" stroke-width="1.5" marker-end="url(#arr-ajr)"/>
+
+  <!-- Central Dot (+) -->
+  <g transform="translate(530, 270)">
+    <rect width="210" height="110" rx="8" fill="var(--color-surface)" stroke="#f43f5e" stroke-width="2"/>
+    <rect x="0" y="0" width="210" height="110" rx="8" fill="#f43f5e" fill-opacity="0.08"/>
+    <text x="105" y="20" text-anchor="middle" font-size="10" font-weight="700" fill="#f43f5e">CENTRAL DOT SIGN (+) 🚨</text>
+    <text x="105" y="38" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-text)">Bệnh / Hội Chứng Caroli</text>
+    <text x="105" y="55" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">Giãn đường mật trong gan dạng bọc</text>
+    <text x="105" y="72" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">Nguy cơ sỏi mật, viêm đường mật</text>
+    <text x="105" y="90" text-anchor="middle" font-size="9" font-weight="600" fill="#f43f5e">Nguy cơ ung thư biểu mô đường mật</text>
+  </g>
+
+  <!-- No Enhancement -->
+  <g transform="translate(760, 270)">
+    <rect width="200" height="110" rx="8" fill="var(--color-surface)" stroke="#10b981" stroke-width="1.5"/>
+    <rect x="0" y="0" width="200" height="110" rx="8" fill="#10b981" fill-opacity="0.06"/>
+    <text x="100" y="20" text-anchor="middle" font-size="10" font-weight="700" fill="#10b981">KHÔNG NGẤM THUỐC MẠCH</text>
+    <text x="100" y="38" text-anchor="middle" font-size="10" font-weight="600" fill="var(--color-text)">• Bệnh Gan Đa Nang (PLD)</text>
+    <text x="100" y="53" text-anchor="middle" font-size="9" fill="var(--color-text-muted)">Kèm theo đa nang thận</text>
+    <text x="100" y="69" text-anchor="middle" font-size="10" font-weight="600" fill="var(--color-text)">• Hamartoma Mật (Von Meyenburg)</text>
+    <text x="100" y="84" text-anchor="middle" font-size="9" fill="var(--color-text-muted)">Vô số nang nhỏ &lt; 15mm ổn định</text>
+    <text x="100" y="100" text-anchor="middle" font-size="9" fill="#f43f5e">• Vi áp xe nấm Candida (sốt giảm BC)</text>
+  </g>
+</svg>
+    </div>
+  </div>
+  <div class="flowchart-card-footer">
+    <div class="flowchart-legend-row">
+      <span class="legend-item"><span class="legend-dot" style="background: #10b981;"></span>Nang đơn thuần (thành mỏng, dịch trong): Lành tính, theo dõi không can thiệp</span>
+      <span class="legend-item"><span class="legend-dot" style="background: #f43f5e;"></span>Nang phức tạp (thành dày, vách ngăn, nốt sùi): Tầm soát u tuyến nang, di căn nang hoặc HCC</span>
+      <span class="legend-item"><span class="legend-dot" style="background: #f43f5e;"></span>Vô số nang kèm Central dot sign: Dấu hiệu đặc trưng của bệnh Caroli thông thương đường mật</span>
+    </div>
+  </div>
+</div>
 
       {/* CODE VISUAL FLOWCHART TÁI HIỆN CHÍNH XÁC THIẾT KẾ FIG 16 (VIỆT HÓA CHUYÊN NGÀNH) */}
       <div style="margin-top: 1.5rem; background: var(--color-surface); border: 2px solid var(--color-primary); border-radius: 14px; padding: 1.5rem;">

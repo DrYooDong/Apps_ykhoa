@@ -317,32 +317,155 @@ sections:
       <div class="sec-body">
         <p style="font-size: 0.85rem; color: var(--color-text-muted, #64748b); line-height: 1.65; margin-bottom: 1.25rem;">Quy trình vận hành chuẩn hóa các tiêu chí lâm sàng từ nhận diện ban đầu tại buồng bệnh đến phân nhóm Sốc nhiễm khuẩn (Septic Shock):</p>
 
-        <FlowchartViewer 
-          title="Lưu Đồ Vận Hành Tiêu Chí Lâm Sàng Sepsis-3 & Sốc Nhiễm Khuẩn (JAMA 2016)"
-          code={`flowchart TD
-            N1([Nghi ngờ nhiễm trùng cấp | start | badge: Ban đầu])
-            N2{Sàng lọc qSOFA tại giường | question | subtitle: Thở >=22 | GCS <15 | SBP <=100}
-            N3[qSOFA < 2 tiêu chí | action | subtitle: Theo dõi sát diễn tiến lâm sàng]
-            N4[qSOFA >= 2 tiêu chí | danger | badge: Nguy cơ cao | subtitle: Báo động kết cục xấu - Xét nghiệm SOFA]
-            N5{Đánh giá biến thiên điểm SOFA | question | subtitle: Delta SOFA >= 2 điểm?}
-            N6[Delta SOFA < 2 | action | subtitle: Chưa đủ tiêu chuẩn Sepsis - Tiếp tục tầm soát]
-            N7[XÁC ĐỊNH SEPSIS! | danger | badge: Tử vong > 10% | subtitle: Rối loạn chức năng cơ quan đe dọa tính mạng]
-            N8{Bù đủ dịch truyền mà MAP < 65 & Lactate > 2? | question}
-            N9[Duy trì phác đồ điều trị Sepsis | success | subtitle: Ổn định tưới máu - Kháng sinh theo đích]
-            N10[SỐC NHIỄM KHUẨN (Septic Shock) | danger | badge: Tử vong > 40% | subtitle: Norepinephrine duy trì MAP >= 65 + Bù dịch tích cực]
+        <div class="flowchart-editorial-card">
+  <div class="flowchart-card-header">
+    <div class="flowchart-card-title">
+      <svg class="flowchart-title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+        <polyline points="2 17 12 22 22 17"></polyline>
+        <polyline points="2 12 12 17 22 12"></polyline>
+      </svg>
+      <span>Lưu Đồ Vận Hành Tiêu Chí Lâm Sàng Sepsis-3 &amp; Sốc Nhiễm Khuẩn (JAMA 2016)</span>
+    </div>
+    <div class="flowchart-card-subtitle">Quy trình 4 bước từ sàng lọc qSOFA tại giường đến đánh giá Delta SOFA và chẩn đoán Sốc nhiễm khuẩn</div>
+  </div>
+  <div class="flowchart-card-body">
+    <div class="flowchart-svg-wrapper">
+<svg class="med-svg" viewBox="0 0 860 620" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arr-sep3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)"/>
+    </marker>
+  </defs>
 
-            N1 --> N2
-            N2 -->|< 2 tiêu chí| N3
-            N2 ==>|>= 2 tiêu chí| N4
-            N4 ==> N5
-            N3 -.->|Lâm sàng xấu đi| N5
-            N5 -->|Delta SOFA < 2| N6
-            N5 ==>|Delta SOFA >= 2| N7
-            N7 ==> N8
-            N8 -->|Không thỏa cả 2| N9
-            N8 ==>|Thỏa cả 2 tiêu chí| N10
-          `}
-        />
+  <!-- Step 1: Infection Suspected -->
+  <g transform="translate(280, 20)">
+    <rect width="300" height="50" rx="10" fill="var(--color-surface)" stroke="#0284c7" stroke-width="2"/>
+    <rect x="0" y="0" width="300" height="50" rx="10" fill="#0284c7" fill-opacity="0.08"/>
+    <text x="150" y="22" text-anchor="middle" font-size="10" font-weight="700" fill="#0284c7" letter-spacing="1">SEPSIS-3 CONSENSUS (JAMA 2016)</text>
+    <text x="150" y="39" text-anchor="middle" font-size="13" font-weight="700" fill="var(--color-text)">Nghi Ngờ Nhiễm Trùng Cấp</text>
+  </g>
+
+  <path d="M 430 70 L 430 100" fill="none" stroke="#0284c7" stroke-width="2" marker-end="url(#arr-sep3)"/>
+
+  <!-- Step 2: Bedside qSOFA Screening -->
+  <g transform="translate(260, 100)">
+    <rect width="340" height="56" rx="8" fill="var(--color-surface)" stroke="#d97706" stroke-width="1.8"/>
+    <rect x="0" y="0" width="340" height="56" rx="8" fill="#d97706" fill-opacity="0.06"/>
+    <text x="170" y="22" text-anchor="middle" font-size="11" font-weight="700" fill="#d97706">SÀNG LỌC qSOFA TẠI GIƯỜNG</text>
+    <text x="170" y="38" text-anchor="middle" font-size="11" fill="var(--color-text)">Thở &gt;= 22 l/p | Ý thức GCS &lt; 15 | SBP &lt;= 100 mmHg</text>
+    <text x="170" y="50" text-anchor="middle" font-size="9" fill="var(--color-text-muted)">Thỏa &gt;= 2 tiêu chuẩn báo động kết cục xấu</text>
+  </g>
+
+  <path d="M 330 156 L 200 156 L 200 200" fill="none" stroke="var(--color-border)" stroke-width="1.5" marker-end="url(#arr-sep3)"/>
+  <path d="M 530 156 L 660 156 L 660 200" fill="none" stroke="#f43f5e" stroke-width="2" marker-end="url(#arr-sep3)"/>
+
+  <!-- Labels -->
+  <g transform="translate(210, 146)">
+    <rect width="90" height="20" rx="4" fill="var(--color-surface)" stroke="var(--color-border)" stroke-width="1"/>
+    <text x="45" y="14" text-anchor="middle" font-size="10" font-weight="600" fill="var(--color-text-muted)">&lt; 2 tiêu chí</text>
+  </g>
+  <g transform="translate(560, 146)">
+    <rect width="90" height="20" rx="4" fill="var(--color-surface)" stroke="var(--color-border)" stroke-width="1"/>
+    <text x="45" y="14" text-anchor="middle" font-size="10" font-weight="700" fill="#f43f5e">&gt;= 2 tiêu chí</text>
+  </g>
+
+  <!-- Left: qSOFA < 2 -->
+  <g transform="translate(90, 200)">
+    <rect width="220" height="50" rx="8" fill="var(--color-surface)" stroke="var(--color-border)" stroke-width="1.3"/>
+    <text x="110" y="21" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-text)">Theo Dõi Lâm Sàng Sát</text>
+    <text x="110" y="37" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">Đánh giá lại nếu lâm sàng diễn tiến xấu</text>
+  </g>
+
+  <!-- Right: qSOFA >= 2 -->
+  <g transform="translate(550, 200)">
+    <rect width="220" height="50" rx="8" fill="var(--color-surface)" stroke="#f43f5e" stroke-width="2"/>
+    <rect x="0" y="0" width="220" height="50" rx="8" fill="#f43f5e" fill-opacity="0.08"/>
+    <text x="110" y="20" text-anchor="middle" font-size="10" font-weight="700" fill="#f43f5e">NGUY CƠ CAO KẾT CỤC XẤU 🚨</text>
+    <text x="110" y="37" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-text)">Chỉ Định Bộ Xét Nghiệm SOFA</text>
+  </g>
+
+  <path d="M 660 250 L 660 290 L 490 290" fill="none" stroke="#f43f5e" stroke-width="2" marker-end="url(#arr-sep3)"/>
+  <path d="M 200 250 L 200 290 L 370 290" fill="none" stroke="var(--color-border)" stroke-dasharray="4 4" stroke-width="1.5" marker-end="url(#arr-sep3)"/>
+
+  <!-- Step 3: Delta SOFA Decision -->
+  <g transform="translate(330, 270)">
+    <rect width="200" height="42" rx="8" fill="var(--color-surface)" stroke="#0ea5e9" stroke-width="1.5"/>
+    <text x="100" y="19" text-anchor="middle" font-size="10" font-weight="700" fill="#0ea5e9">ĐÁNH GIÁ BIẾN THIÊN SOFA</text>
+    <text x="100" y="33" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-text)">Delta SOFA &gt;= 2 điểm?</text>
+  </g>
+
+  <path d="M 330 291 L 180 291 L 180 345" fill="none" stroke="var(--color-border)" stroke-width="1.5" marker-end="url(#arr-sep3)"/>
+  <path d="M 430 312 L 430 345" fill="none" stroke="#f43f5e" stroke-width="2" marker-end="url(#arr-sep3)"/>
+
+  <!-- Delta SOFA < 2 -->
+  <g transform="translate(70, 345)">
+    <rect width="220" height="50" rx="8" fill="var(--color-surface)" stroke="var(--color-border)" stroke-width="1.3"/>
+    <text x="110" y="21" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-text)">Chưa Đủ Tiêu Chuẩn Sepsis</text>
+    <text x="110" y="37" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">Tiếp tục điều trị và tầm soát ổ nhiễm</text>
+  </g>
+
+  <!-- Delta SOFA >= 2 -> SEPSIS! -->
+  <g transform="translate(310, 345)">
+    <rect width="240" height="58" rx="8" fill="var(--color-surface)" stroke="#f43f5e" stroke-width="2"/>
+    <rect x="0" y="0" width="240" height="58" rx="8" fill="#f43f5e" fill-opacity="0.09"/>
+    <text x="120" y="20" text-anchor="middle" font-size="10" font-weight="700" fill="#f43f5e">TỬ VONG &gt; 10% ⚠️</text>
+    <text x="120" y="37" text-anchor="middle" font-size="12" font-weight="700" fill="var(--color-text)">XÁC ĐỊNH SEPSIS!</text>
+    <text x="120" y="50" text-anchor="middle" font-size="9" fill="var(--color-text-muted)">Rối loạn chức năng cơ quan đe dọa tính mạng</text>
+  </g>
+
+  <path d="M 430 403 L 430 435" fill="none" stroke="#f43f5e" stroke-width="2" marker-end="url(#arr-sep3)"/>
+
+  <!-- Step 4: Septic Shock Decision -->
+  <g transform="translate(290, 435)">
+    <rect width="280" height="52" rx="8" fill="var(--color-surface)" stroke="#d97706" stroke-width="1.8"/>
+    <rect x="0" y="0" width="280" height="52" rx="8" fill="#d97706" fill-opacity="0.06"/>
+    <text x="140" y="21" text-anchor="middle" font-size="10" font-weight="700" fill="#d97706">TIÊU CHUẨN SỐC NHIỄM KHUẨN?</text>
+    <text x="140" y="37" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-text)">Bù đủ dịch mà MAP &lt; 65 VÀ Lactate &gt; 2?</text>
+    <text x="140" y="48" text-anchor="middle" font-size="9" fill="var(--color-text-muted)">Cần vận mạch để giữ MAP &gt;= 65 mmHg</text>
+  </g>
+
+  <path d="M 290 461 L 180 461 L 180 515" fill="none" stroke="#10b981" stroke-width="1.8" marker-end="url(#arr-sep3)"/>
+  <path d="M 570 461 L 680 461 L 680 515" fill="none" stroke="#f43f5e" stroke-width="2.2" marker-end="url(#arr-sep3)"/>
+
+  <!-- Labels -->
+  <g transform="translate(200, 451)">
+    <rect width="70" height="20" rx="4" fill="var(--color-surface)" stroke="var(--color-border)" stroke-width="1"/>
+    <text x="35" y="14" text-anchor="middle" font-size="10" font-weight="600" fill="#10b981">Không thỏa</text>
+  </g>
+  <g transform="translate(590, 451)">
+    <rect width="80" height="20" rx="4" fill="var(--color-surface)" stroke="var(--color-border)" stroke-width="1"/>
+    <text x="40" y="14" text-anchor="middle" font-size="10" font-weight="700" fill="#f43f5e">Thỏa cả 2</text>
+  </g>
+
+  <!-- Left: Sepsis Treatment -->
+  <g transform="translate(60, 515)">
+    <rect width="240" height="66" rx="8" fill="var(--color-surface)" stroke="#10b981" stroke-width="1.8"/>
+    <rect x="0" y="0" width="240" height="66" rx="8" fill="#10b981" fill-opacity="0.08"/>
+    <text x="120" y="20" text-anchor="middle" font-size="10" font-weight="700" fill="#10b981">ĐIỀU TRỊ SEPSIS CHUẨN</text>
+    <text x="120" y="38" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-text)">Ổn Định Tưới Máu Tạng</text>
+    <text x="120" y="53" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">Kháng sinh theo đích + Kiểm soát nguồn nhiễm</text>
+  </g>
+
+  <!-- Right: Septic Shock -->
+  <g transform="translate(560, 515)">
+    <rect width="240" height="66" rx="8" fill="var(--color-surface)" stroke="#f43f5e" stroke-width="2.5"/>
+    <rect x="0" y="0" width="240" height="66" rx="8" fill="#f43f5e" fill-opacity="0.12"/>
+    <text x="120" y="20" text-anchor="middle" font-size="10" font-weight="700" fill="#f43f5e">TỬ VONG &gt; 40% 🚨</text>
+    <text x="120" y="38" text-anchor="middle" font-size="12" font-weight="700" fill="var(--color-text)">SỐC NHIỄM KHUẨN (Septic Shock)</text>
+    <text x="120" y="53" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">Norepinephrine giữ MAP &gt;= 65 + Bù dịch tối ưu</text>
+  </g>
+</svg>
+    </div>
+  </div>
+  <div class="flowchart-card-footer">
+    <div class="flowchart-legend-row">
+      <span class="legend-item"><span class="legend-dot" style="background: #0ea5e9;"></span>qSOFA tại giường (>= 2 tiêu chuẩn: Thở >=22, GCS <15, SBP <=100) báo động kết cục xấu</span>
+      <span class="legend-item"><span class="legend-dot" style="background: #d97706;"></span>Delta SOFA >= 2 điểm xác định Sepsis (suy đa tạng đe dọa tính mạng, tử vong > 10%)</span>
+      <span class="legend-item"><span class="legend-dot" style="background: #f43f5e;"></span>Sốc nhiễm khuẩn: MAP < 65 cần vận mạch VÀ Lactate > 2 mmol/L dù đã bù đủ dịch (tử vong > 40%)</span>
+    </div>
+  </div>
+</div>
 
         <div class="algo-container" style="margin-top: 1.5rem;">
           

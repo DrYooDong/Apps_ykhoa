@@ -333,30 +333,101 @@ sections:
       </div>
 
       {/* SƠ ĐỒ 1: LƯU ĐỒ CHẨN ĐOÁN NAT */}
-      <FlowchartViewer 
-        title="Sơ Đồ 1. Quy Trình Chẩn Đoán Sớm Nhiễm HIV Ở Trẻ Dưới 18 Tháng Bằng Xét Nghiệm NAT (Bộ Y Tế)"
-        code={`flowchart TD
-          START([Trẻ dưới 18 tháng tuổi có chỉ định xét nghiệm NAT | start | badge: Bộ Y Tế QĐ 5968 | subtitle: Lúc sinh, 4-6 tuần, 9 tháng hoặc có triệu chứng nghi ngờ])
-          NAT1[Làm xét nghiệm NAT lần 1 (NAT 1) 🧪 | action | subtitle: Xét nghiệm axit nucleic tìm HIV-DNA hoặc HIV-RNA]
+      <div class="flowchart-editorial-card">
+  <div class="flowchart-card-header">
+    <div class="flowchart-badge-title">
+      <span class="flowchart-badge-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg>
+      </span>
+      <span class="flowchart-badge-text">Sơ Đồ 1. Quy Trình Chẩn Đoán Sớm Nhiễm HIV Ở Trẻ Dưới 18 Tháng Bằng Xét Nghiệm NAT (Bộ Y Tế)</span>
+    </div>
+    <span class="flowchart-version-tag">QĐ 5968/BYT • Pediatric HIV NAT</span>
+  </div>
+  
+  <div class="flowchart-svg-scroll">
+    <svg class="med-svg" viewBox="0 0 920 480" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+    <defs>
+      <marker id="arr-hiv" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-text-muted, #64748b)" />
+      </marker>
+      <marker id="arr-hiv-act" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)" />
+      </marker>
+    </defs>
 
-          RES1{Kết quả xét nghiệm NAT 1? | question}
-          
-          NAT1_POS[KẾT QUẢ NAT 1 DƯƠNG TÍNH (+) 🚨 | danger | badge: Khẩn cấp | subtitle: 1. Khởi động điều trị ARV ngay lập tức + 2. Lấy mẫu máu thứ hai làm NAT 2 để khẳng định]
-          NAT1_NEG[KẾT QUẢ NAT 1 ÂM TÍNH (-) 🟢 | success | badge: Chưa ghi nhận nhiễm | subtitle: Tiếp tục điều trị dự phòng ARV cho trẻ + Làm lại NAT theo các mốc chuẩn 4-6 tuần, 9 tháng]
+    <g class="flow-node">
+      <rect x="230" y="15" width="460" height="52" rx="8" fill="var(--color-primary-subtle, rgba(2,132,199,0.12))" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+      <text x="460" y="36" font-size="13" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">TRẺ DƯỚI 18 THÁNG TUỔI CÓ CHỈ ĐỊNH XÉT NGHIỆM NAT</text>
+      <text x="460" y="53" font-size="11" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Lúc sinh, 4–6 tuần, 9 tháng tuổi hoặc có dấu hiệu lâm sàng nghi ngờ</text>
+    </g>
 
-          RES2{Kết quả xét nghiệm NAT 2 khẳng định? | question}
-          CONFIRMED[NAT 2 (+): XÁC NHẬN NHIỄM HIV ⭐ | danger | badge: Khẳng định chẩn đoán | subtitle: Duy trì phác đồ điều trị ARV suốt đời + Đăng ký chăm sóc toàn diện]
-          DISCORDANT[NAT 2 (-): KẾT QUẢ KHÔNG ĐỒNG NHẤT ⚠️ | warning | badge: Cần xác minh | subtitle: Hội chẩn chuyên gia HIV nhi + Lấy mẫu làm NAT 3 sau 2-4 tuần (tiếp tục ARV trong thời gian chờ)]
+    <path d="M 460 67 L 460 95" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arr-hiv-act)"/>
 
-          START --> NAT1
-          NAT1 --> RES1
-          RES1 ==>|Dương tính (+)| NAT1_POS
-          RES1 -->|Âm tính (-)| NAT1_NEG
-          NAT1_POS --> RES2
-          RES2 ==>|NAT 2 (+)| CONFIRMED
-          RES2 -->|NAT 2 (-)| DISCORDANT
-        `}
-      />
+    <g class="flow-node">
+      <rect x="250" y="95" width="420" height="50" rx="8" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+      <text x="460" y="117" font-size="12.5" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">XÉT NGHIỆM NAT LẦN 1 (NAT 1)</text>
+      <text x="460" y="133" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Xét nghiệm axit nucleic phát hiện HIV-DNA hoặc HIV-RNA</text>
+    </g>
+
+    <path d="M 460 145 L 460 175" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arr-hiv-act)"/>
+
+    <g class="flow-node">
+      <polygon points="460,175 660,208 460,241 260,208" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="2"/>
+      <text x="460" y="204" font-size="12" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">Kết Quả Xét Nghiệm NAT 1?</text>
+      <text x="460" y="220" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Dương tính (+) hay Âm tính (-)?</text>
+    </g>
+
+    <path d="M 260 208 L 140 208 L 140 265" fill="none" stroke="var(--color-success, #22c55e)" stroke-width="2" marker-end="url(#arr-hiv-act)"/>
+    <g class="flow-node">
+      <rect x="30" y="265" width="220" height="75" rx="8" fill="var(--color-success-subtle, rgba(34,197,94,0.12))" stroke="var(--color-success, #22c55e)" stroke-width="1.8"/>
+      <text x="140" y="288" font-size="12" font-weight="700" fill="var(--color-success, #16a34a)" text-anchor="middle">NAT 1 ÂM TÍNH (-)</text>
+      <text x="140" y="306" font-size="10" fill="var(--color-text, #334155)" text-anchor="middle">Chưa ghi nhận nhiễm HIV</text>
+      <text x="140" y="322" font-size="9.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Tiếp tục ARV dự phòng &amp; xét nghiệm lại</text>
+    </g>
+
+    <path d="M 660 208 L 760 208 L 760 265" fill="none" stroke="var(--color-danger, #ef4444)" stroke-width="2" marker-end="url(#arr-hiv-act)"/>
+    <g class="flow-node">
+      <rect x="630" y="265" width="260" height="75" rx="8" fill="var(--color-danger-subtle, rgba(239,68,68,0.12))" stroke="var(--color-danger, #ef4444)" stroke-width="2"/>
+      <text x="760" y="288" font-size="12.5" font-weight="700" fill="var(--color-danger, #ef4444)" text-anchor="middle">NAT 1 DƯƠNG TÍNH (+)</text>
+      <text x="760" y="306" font-size="10.5" font-weight="600" fill="var(--color-danger, #ef4444)" text-anchor="middle">1. Khởi trị ARV ngay lập tức</text>
+      <text x="760" y="322" font-size="10" fill="var(--color-text, #334155)" text-anchor="middle">2. Lấy mẫu máu thứ 2 làm NAT 2 khẳng định</text>
+    </g>
+
+    <path d="M 760 340 L 760 375 M 540 375 L 850 375" fill="none" stroke="var(--color-danger, #ef4444)" stroke-width="1.8"/>
+    <path d="M 540 375 L 540 395" fill="none" stroke="var(--color-success, #22c55e)" stroke-width="2" marker-end="url(#arr-hiv-act)"/>
+    <path d="M 850 375 L 850 395" fill="none" stroke="var(--color-warning, #f59e0b)" stroke-width="2" marker-end="url(#arr-hiv-act)"/>
+
+    <g class="flow-node">
+      <rect x="420" y="395" width="240" height="65" rx="8" fill="var(--color-danger-subtle, rgba(239,68,68,0.12))" stroke="var(--color-danger, #ef4444)" stroke-width="2"/>
+      <text x="540" y="418" font-size="12" font-weight="700" fill="var(--color-danger, #ef4444)" text-anchor="middle">NAT 2 (+): XÁC NHẬN HIV</text>
+      <text x="540" y="436" font-size="10" fill="var(--color-text, #334155)" text-anchor="middle">Duy trì điều trị ARV suốt đời</text>
+      <text x="540" y="450" font-size="9.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Đăng ký quản lý chăm sóc toàn diện</text>
+    </g>
+
+    <g class="flow-node">
+      <rect x="730" y="395" width="240" height="65" rx="8" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="1.8"/>
+      <text x="850" y="418" font-size="12" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">NAT 2 (-): BẤT ĐỒNG</text>
+      <text x="850" y="436" font-size="10" fill="var(--color-text, #334155)" text-anchor="middle">Hội chẩn chuyên gia HIV nhi</text>
+      <text x="850" y="450" font-size="9.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Làm NAT 3 sau 2–4 tuần (duy trì ARV)</text>
+    </g>
+  </svg>
+  </div>
+
+  <div class="flowchart-legend-row">
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(239,68,68,0.12); border-color: #ef4444;"></span>
+        <span>NAT 1 (+): Khởi trị ARV ngay &amp; Lấy mẫu NAT 2 khẳng định</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(34,197,94,0.12); border-color: #22c55e;"></span>
+        <span>NAT 1 (-): Tiếp tục dự phòng &amp; xét nghiệm lại theo mốc tuổi</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(245,158,11,0.12); border-color: #f59e0b;"></span>
+        <span>Kết quả bất đồng: Hội chẩn chuyên gia &amp; làm NAT 3 sau 2-4 tuần</span>
+      </div>
+  </div>
+</div>
 
     </div>
   </div>

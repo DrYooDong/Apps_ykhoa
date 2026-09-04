@@ -436,25 +436,169 @@ sections:
         </div>
 
         <div style="margin-top: 1.5rem; margin-bottom: 1.5rem;">
-          <FlowchartViewer
-            title="Lưu Đồ Quy Trình Chẩn Đoán Lao Phổi Không Có Bằng Chứng Vi Khuẩn (QĐ 162/QĐ-BYT 2024)"
-            code={`graph TD
-  START["TIẾP NHẬN NGƯỜI BỆNH NGHI NGỜ LAO PHỔI<br/><small>Ho khạc > 2 tuần, sốt nhẹ về chiều, ra mồ hôi trộm, sút cân, ho ra máu</small>"]:::start --> WORKUP["CHỤP X-QUANG NGỰC THẲNG + XÉT NGHIỆM VI SINH LẦN 1<br/><small>Ưu tiên GeneXpert MTB/RIF Ultra hoặc nhuộm soi AFB đờm</small>"]:::action
+          <div class="flowchart-editorial-card">
+            <div class="flowchart-card-header">
+              <div class="flowchart-card-title-group">
+                <span class="flowchart-card-icon">🔬</span>
+                <div>
+                  <h3 class="flowchart-card-title">Lưu Đồ Quy Trình Chẩn Đoán Lao Phổi Không Có Bằng Chứng Vi Khuẩn</h3>
+                  <p class="flowchart-card-subtitle">Hướng dẫn Bộ Y Tế (QĐ 162/QĐ-BYT 2024) • Thử thách kháng sinh 1–2 tuần • Chống chỉ định Quinolones • Hội đồng hội chẩn</p>
+                </div>
+              </div>
+              <span class="flowchart-card-badge">BYT 162/2024 • Editorial SVG</span>
+            </div>
 
-  WORKUP --> BCVK_CHECK{"Có Bằng Chứng Vi Khuẩn (BCVK)?"}:::question
+            <div class="flowchart-svg-container">
+              <svg class="med-svg" viewBox="0 0 960 840" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <marker id="arr-lao1" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M 1 1.5 L 8 5 L 1 8.5 Z" fill="var(--color-primary, #0284c7)"/>
+                  </marker>
+                  <marker id="arr-lao1-warn" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M 1 1.5 L 8 5 L 1 8.5 Z" fill="var(--color-warning, #f59e0b)"/>
+                  </marker>
+                  <marker id="arr-lao1-danger" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M 1 1.5 L 8 5 L 1 8.5 Z" fill="var(--color-danger, #ef4444)"/>
+                  </marker>
+                  <marker id="arr-lao1-success" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M 1 1.5 L 8 5 L 1 8.5 Z" fill="var(--color-success, #10b981)"/>
+                  </marker>
+                </defs>
 
-  BCVK_CHECK -- "BCVK (+) (Xpert Ultra (+) hoặc AFB (+))" --> DX_CONFIRMED["CHẨN ĐOÁN XÁC ĐỊNH: LAO PHỔI CÓ BCVK<br/><small>Đăng ký chương trình chống lao &amp; Khởi động ngay phác đồ điều trị lao</small>"]:::success
+                {/* CONNECTORS */}
+                {/* START -> WORKUP */}
+                <path d="M 480 96 V 126" stroke="var(--color-primary, #0284c7)" stroke-width="2" fill="none" marker-end="url(#arr-lao1)"/>
 
-  BCVK_CHECK -- "BCVK (-) (Xpert Ultra (-) &amp; AFB (-))" --> TRIAL_ABX["ĐIỀU TRỊ THỬ KHÁNG SINH PHỔ RỘNG 1 - 2 TUẦN<br/><small>Dùng Beta-lactam / Macrolide • TUYỆT ĐỐI KHÔNG DÙNG Fluoroquinolones</small>"]:::warning
+                {/* WORKUP -> BCVK_CHECK */}
+                <path d="M 480 196 V 226" stroke="var(--color-primary, #0284c7)" stroke-width="2" fill="none" marker-end="url(#arr-lao1)"/>
 
-  TRIAL_ABX --> RESPONSE{"Đánh Giá Lại Lâm Sàng & X-quang Sau 1 - 2 Tuần?"}:::question
+                {/* BCVK_CHECK -> DX_CONFIRMED (Left) */}
+                <path d="M 330 253 H 196 Q 190 253 190 259 V 314" stroke="var(--color-success, #10b981)" stroke-width="2" fill="none" marker-end="url(#arr-lao1-success)"/>
 
-  RESPONSE -- "Có cải thiện lâm sàng & hình ảnh rõ rệt" --> RULE_OUT["LOẠI TRỪ LAO PHỔI<br/><small>Hoàn thành đợt điều trị viêm phổi / nhiễm trùng hô hấp thông thường</small>"]:::action
+                {/* BCVK_CHECK -> TRIAL_ABX (Right) */}
+                <path d="M 630 253 H 730 Q 736 253 736 259 V 314" stroke="var(--color-warning, #f59e0b)" stroke-width="2" fill="none" marker-end="url(#arr-lao1-warn)"/>
 
-  RESPONSE -- "Không cải thiện / Tổn thương phổi tiến triển" --> SPECIAL_EXAM["XÉT NGHIỆM VI SINH LẦN 2 + CHỤP CT SCAN NGỰC<br/><small>Làm thêm nuôi cấy MGIT, nội soi phế quản rửa phế nang nếu cần</small>"]:::action
+                {/* TRIAL_ABX -> RESPONSE */}
+                <path d="M 736 425 V 464" stroke="var(--color-warning, #f59e0b)" stroke-width="2" fill="none" marker-end="url(#arr-lao1-warn)"/>
 
-  SPECIAL_EXAM --> COUNCIL["HỘI ĐỒNG CHUYÊN MÔN HỘI CHẨN HỘI CHẨN<br/><small>Thống nhất chẩn đoán: Lao phổi không có BCVK & Kê đơn phác đồ điều trị</small>"]:::danger`}
-          />
+                {/* RESPONSE -> RULE_OUT (Left) */}
+                <path d="M 560 493 H 396 Q 390 493 390 499 V 564" stroke="var(--color-primary, #0284c7)" stroke-width="2" fill="none" marker-end="url(#arr-lao1)"/>
+
+                {/* RESPONSE -> SPECIAL_EXAM (Straight down) */}
+                <path d="M 736 516 V 564" stroke="var(--color-primary, #0284c7)" stroke-width="2" fill="none" marker-end="url(#arr-lao1)"/>
+
+                {/* SPECIAL_EXAM -> COUNCIL */}
+                <path d="M 736 680 V 714" stroke="var(--color-danger, #ef4444)" stroke-width="2" fill="none" marker-end="url(#arr-lao1-danger)"/>
+
+                {/* CONNECTOR LABELS (with background masks) */}
+                <g>
+                  <rect x="110" y="241" width="160" height="22" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+                  <text x="190" y="256" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-success, #10b981)">BCVK (+) [Xpert/AFB (+)]</text>
+                </g>
+
+                <g>
+                  <rect x="660" y="241" width="160" height="22" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+                  <text x="740" y="256" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-warning, #f59e0b)">BCVK (-) [Xpert &amp; AFB (-)]</text>
+                </g>
+
+                <g>
+                  <rect x="310" y="481" width="170" height="22" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+                  <text x="395" y="496" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-primary, #0284c7)">Cải thiện lâm sàng &amp; X-quang</text>
+                </g>
+
+                <g>
+                  <rect x="660" y="528" width="160" height="22" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+                  <text x="740" y="543" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-danger, #ef4444)">Không cải thiện / Tiến triển</text>
+                </g>
+
+                {/* NODES */}
+                {/* NODE 1: START */}
+                <g class="flow-node">
+                  <rect x="240" y="30" width="480" height="66" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+                  <rect x="240" y="30" width="480" height="24" rx="10" fill="var(--color-primary, #0284c7)" fill-opacity="0.1"/>
+                  <text x="480" y="47" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-primary, #0284c7)" letter-spacing="0.5">BƯỚC 1: TIẾP NHẬN NGƯỜI BỆNH NGHI NGỜ LAO PHỔI</text>
+                  <text x="480" y="74" text-anchor="middle" font-size="12" font-weight="600" fill="var(--color-text, #1e293b)">Ho khạc &gt; 2 tuần • Sốt nhẹ về chiều • Ra mồ hôi đêm • Sút cân • Đau ngực / Ho ra máu</text>
+                </g>
+
+                {/* NODE 2: WORKUP */}
+                <g class="flow-node">
+                  <rect x="230" y="130" width="500" height="66" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+                  <rect x="230" y="130" width="500" height="24" rx="10" fill="var(--color-primary, #0284c7)" fill-opacity="0.1"/>
+                  <text x="480" y="147" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-primary, #0284c7)" letter-spacing="0.5">BƯỚC 2: CHỤP X-QUANG NGỰC THẲNG + VI SINH LẦN 1</text>
+                  <text x="480" y="174" text-anchor="middle" font-size="12" font-weight="600" fill="var(--color-text, #1e293b)">Ưu tiên xét nghiệm sinh học phân tử GeneXpert MTB/RIF Ultra hoặc nhuộm soi đờm AFB</text>
+                </g>
+
+                {/* NODE 3: BCVK_CHECK (Decision) */}
+                <g class="flow-node">
+                  <rect x="330" y="230" width="300" height="46" rx="23" fill="var(--color-surface, #ffffff)" stroke="var(--color-warning, #f59e0b)" stroke-width="2"/>
+                  <text x="480" y="258" text-anchor="middle" font-size="12" font-weight="700" fill="var(--color-warning, #f59e0b)">Có Bằng Chứng Vi Khuẩn (BCVK)?</text>
+                </g>
+
+                {/* NODE 4: DX_CONFIRMED */}
+                <g class="flow-node">
+                  <rect x="40" y="320" width="300" height="105" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-success, #10b981)" stroke-width="2"/>
+                  <rect x="40" y="320" width="300" height="24" rx="10" fill="var(--color-success, #10b981)" fill-opacity="0.1"/>
+                  <text x="190" y="337" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-success, #10b981)" letter-spacing="0.5">CHẨN ĐOÁN: LAO PHỔI CÓ BCVK</text>
+                  <text x="55" y="362" font-size="11.5" font-weight="700" fill="var(--color-text, #1e293b)">Chẩn đoán xác định lao phổi hoạt động</text>
+                  <text x="55" y="381" font-size="11.5" fill="var(--color-text, #1e293b)">• Đăng ký Chương trình Chống Lao Quốc gia</text>
+                  <text x="55" y="400" font-size="11" fill="var(--color-text-muted, #64748b)">• Khởi động ngay phác đồ điều trị lao nhạy cảm/kháng thuốc</text>
+                </g>
+
+                {/* NODE 5: TRIAL_ABX */}
+                <g class="flow-node">
+                  <rect x="545" y="320" width="380" height="105" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-warning, #f59e0b)" stroke-width="2"/>
+                  <rect x="545" y="320" width="380" height="24" rx="10" fill="var(--color-warning, #f59e0b)" fill-opacity="0.12"/>
+                  <text x="735" y="337" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-warning, #f59e0b)" letter-spacing="0.5">ĐIỀU TRỊ THỬ KHÁNG SINH PHỔ RỘNG 1–2 TUẦN</text>
+                  <text x="560" y="362" font-size="11.5" font-weight="600" fill="var(--color-text, #1e293b)">• Dùng kháng sinh Beta-lactam / Macrolide thông thường</text>
+                  <text x="560" y="381" font-size="11.5" font-weight="700" fill="var(--color-danger, #ef4444)">• TUYỆT ĐỐI KHÔNG DÙNG Fluoroquinolones (Levo/Moxi)</text>
+                  <text x="560" y="400" font-size="11" fill="var(--color-text-muted, #64748b)">Tránh làm lu mờ triệu chứng lao và gây đột biến kháng thuốc</text>
+                </g>
+
+                {/* NODE 6: RESPONSE (Decision) */}
+                <g class="flow-node">
+                  <rect x="550" y="470" width="370" height="46" rx="23" fill="var(--color-surface, #ffffff)" stroke="var(--color-warning, #f59e0b)" stroke-width="2"/>
+                  <text x="735" y="498" text-anchor="middle" font-size="12" font-weight="700" fill="var(--color-warning, #f59e0b)">Đánh Giá Lại Lâm Sàng &amp; X-quang Sau 1–2 Tuần</text>
+                </g>
+
+                {/* NODE 7: RULE_OUT */}
+                <g class="flow-node">
+                  <rect x="240" y="570" width="300" height="110" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+                  <rect x="240" y="570" width="300" height="24" rx="10" fill="var(--color-primary, #0284c7)" fill-opacity="0.1"/>
+                  <text x="390" y="587" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-primary, #0284c7)" letter-spacing="0.5">LOẠI TRỪ LAO PHỔI</text>
+                  <text x="255" y="612" font-size="11.5" font-weight="700" fill="var(--color-text, #1e293b)">Tổn thương phổi do viêm phổi cấp</text>
+                  <text x="255" y="631" font-size="11" fill="var(--color-text, #1e293b)">• Hoàn tất đợt kháng sinh hô hấp thông thường</text>
+                  <text x="255" y="650" font-size="11" fill="var(--color-text-muted, #64748b)">• Hẹn tái khám kiểm tra lại sau 4 tuần nếu tái phát ho sốt</text>
+                </g>
+
+                {/* NODE 8: SPECIAL_EXAM */}
+                <g class="flow-node">
+                  <rect x="575" y="570" width="350" height="110" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+                  <rect x="575" y="570" width="350" height="24" rx="10" fill="var(--color-primary, #0284c7)" fill-opacity="0.1"/>
+                  <text x="750" y="587" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--color-primary, #0284c7)" letter-spacing="0.5">VI SINH LẦN 2 + CHỤP CẮT LỚP VI TÍNH (CT SCAN)</text>
+                  <text x="590" y="612" font-size="11.5" font-weight="600" fill="var(--color-text, #1e293b)">• Làm lại Xpert Ultra lần 2 + Nuôi cấy MGIT lỏng</text>
+                  <text x="590" y="631" font-size="11.5" fill="var(--color-text, #1e293b)">• Chụp CT Scan ngực độ phân giải cao (HRCT)</text>
+                  <text x="590" y="650" font-size="11" fill="var(--color-text-muted, #64748b)">• Cân nhắc nội soi phế quản hút rửa phế nang (BAL) lấy bệnh phẩm</text>
+                </g>
+
+                {/* NODE 9: COUNCIL */}
+                <g class="flow-node">
+                  <rect x="490" y="720" width="440" height="95" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-danger, #ef4444)" stroke-width="2"/>
+                  <rect x="490" y="720" width="440" height="24" rx="10" fill="var(--color-danger, #ef4444)" fill-opacity="0.12"/>
+                  <text x="710" y="737" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-danger, #ef4444)" letter-spacing="0.5">HỘI ĐỒNG CHUYÊN MÔN HỘI CHẨN</text>
+                  <text x="505" y="762" font-size="12" font-weight="700" fill="var(--color-danger, #ef4444)">Chẩn đoán: LAO PHỔI KHÔNG CÓ BCVK</text>
+                  <text x="505" y="781" font-size="11.5" fill="var(--color-text, #1e293b)">• Hội chẩn chuyên khoa Lao + CĐHA + Nội Hô hấp thống nhất</text>
+                  <text x="505" y="799" font-size="11" fill="var(--color-text-muted, #64748b)">• Kê đơn phác đồ điều trị lao chuẩn theo Chương trình Chống lao</text>
+                </g>
+              </svg>
+            </div>
+
+            <div class="flowchart-legend-row">
+              <div class="legend-item"><span class="legend-dot" style="background:var(--color-success, #10b981);"></span> Lao có BCVK xác định (Xpert / AFB (+))</div>
+              <div class="legend-item"><span class="legend-dot" style="background:var(--color-warning, #f59e0b);"></span> Thử thách kháng sinh / Cấm Fluoroquinolones</div>
+              <div class="legend-item"><span class="legend-dot" style="background:var(--color-primary, #0284c7);"></span> Loại trừ lao / Thăm dò chuyên sâu (CT Scan &amp; MGIT)</div>
+              <div class="legend-item"><span class="legend-dot" style="background:var(--color-danger, #ef4444);"></span> Hội đồng chuyên môn hội chẩn xác định</div>
+            </div>
+          </div>
         </div>
 
         <div class="sec-subtitle"><i class="fa-solid fa-hand-holding-droplet"></i> Phụ Lục 3: Quy Trình Lấy Bệnh Phẩm Đờm Chuẩn Hóa 3 Bước</div>

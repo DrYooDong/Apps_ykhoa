@@ -396,30 +396,147 @@ sections:
         <p style="font-size: 0.88rem; color: var(--color-text-muted, #64748b); line-height: 1.6;">Lưu đồ phân luồng chuẩn hóa theo Quyết định số 3651/QĐ-BYT, từ khi tiếp nhận triệu chứng nghi ngờ &gt; 3 tháng, chụp phim sàng lọc, loại trừ Lao/NTM đến chỉ định xét nghiệm kháng thể IgG và can thiệp dịch BALF chuyên sâu.</p>
 
         
-        <FlowchartViewer
-          title="Sơ Đồ Tiếp Cận Chẩn Đoán Phân Luồng CPA (BYT 2024)"
-          code={`graph TD
-  START["Bệnh Nhân Ho Máu / Ho Khạc / Sụt Cân > 3 Tháng"]:::start --> CXR["Chụp X-Quang Ngực Thẳng"]:::action
-  
-  CXR -- "Có tổn thương hang / u nấm" --> TB_EXCL["Loại Trừ Lao / NTM<br/><small>GeneXpert MTB, Soi AFB trực tiếp</small>"]:::warning
-  CXR -- "Không rõ tổn thương" --> CT["CLVT Ngực Cản Quang (HRCT)<br/><small>Đánh giá u nấm, hang, dày màng phổi</small>"]:::action
-  
-  CT -- "Không có hang" --> DIFF["Tìm Nguyên Nhân Khác"]:::action
-  CT -- "Có hang / u nấm / dày màng phổi" --> IGG["Xét Nghiệm Kháng Thể Aspergillus IgG<br/><small>ELISA hoặc Test nhanh LFD</small>"]:::start
-  TB_EXCL --> IGG
-  
-  IGG -- "Dương Tính" --> CONFIRM["CHẨN ĐOÁN XÁC ĐỊNH CPA<br/><small>Thỏa mãn 3 tiêu chuẩn BYT → Khởi động phác đồ điều trị Azole</small>"]:::success
-  IGG -- "Âm Tính / Nghi Ngờ" --> MICRO["Can Thiệp Vi Sinh Chuyên Sâu<br/><small>• Soi tươi KOH tìm sợi nấm đờm / dịch BALF<br/>• Nuôi cấy nấm đờm ≥ 2 mẫu (+)<br/>• Xét nghiệm Galactomannan BALF (cut-off ≥ 0.67) / PCR</small>"]:::warning
-  
-  MICRO -- "Có bằng chứng vi sinh" --> CONFIRM
-  MICRO -- "Không có bằng chứng" --> EXCL["CHƯA ĐỦ TIÊU CHUẨN CPA<br/><small>Theo dõi sát lâm sàng & chụp lại CLVT ngực sau 3-6 tháng</small>"]:::danger
+        <div class="flowchart-editorial-card" style="margin-top: 1.5rem;">
+          <div class="flowchart-editorial-hdr">
+            <div class="flowchart-editorial-title">
+              <i class="fa-solid fa-diagram-project" style="color: var(--color-primary, #0284c7);"></i>
+              <span>SƠ ĐỒ TIẾP CẬN CHẨN ĐOÁN PHÂN LUỒNG CPA (QĐ 3651/QĐ-BYT 2024)</span>
+            </div>
+            <span class="flow-step-badge flow-badge-green">Editorial SVG Studio 2.0</span>
+          </div>
+          <div class="flowchart-editorial-canvas">
+            <svg class="med-svg" viewBox="0 0 960 620" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+              <rect width="960" height="620" fill="var(--color-surface, #ffffff)" rx="12" stroke="var(--color-border, #e2e8f0)" stroke-width="1"/>
 
-  classDef start fill:#e0f2fe,stroke:#0284c7,stroke-width:2px,color:#0369a1
-  classDef action fill:#eff6ff,stroke:#3b82f6,stroke-width:1.5px,color:#1e40af
-  classDef danger fill:#fee2e2,stroke:#ef4444,stroke-width:2px,color:#991b1b
-  classDef warning fill:#fef3c7,stroke:#f59e0b,stroke-width:2px,color:#92400e
-  classDef success fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#15803d`}
-        />
+              <defs>
+                <marker id="arrow-default-cpa" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1 L 8 5 L 0 9 z" fill="var(--color-text-muted, #64748b)"/>
+                </marker>
+                <marker id="arrow-blue-cpa" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1 L 8 5 L 0 9 z" fill="#0284c7"/>
+                </marker>
+                <marker id="arrow-green-cpa" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1 L 8 5 L 0 9 z" fill="#10b981"/>
+                </marker>
+                <marker id="arrow-amber-cpa" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1 L 8 5 L 0 9 z" fill="#f59e0b"/>
+                </marker>
+                <marker id="arrow-red-cpa" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1 L 8 5 L 0 9 z" fill="#dc2626"/>
+                </marker>
+              </defs>
+
+              <!-- NODE 1: KHỞI ĐẦU -->
+              <g>
+                <rect x="220" y="20" width="520" height="54" rx="8" class="node-start" stroke-width="2"/>
+                <text x="480" y="41" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="800" fill="var(--color-primary, #0284c7)">BỆNH NHÂN CÓ TRIỆU CHỨNG HÔ HẤP KÉO DÀI &gt; 3 THÁNG</text>
+                <text x="480" y="59" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600" fill="var(--color-text-muted, #64748b)">Ho ra máu, ho khạc đờm mạn tính, sụt cân, sốt nhẹ về chiều, mệt mỏi trên nền sẹo phổi cũ</text>
+              </g>
+
+              <line x1="480" y1="74" x2="480" y2="100" stroke="var(--color-primary, #0284c7)" stroke-width="1.5" marker-end="url(#arrow-blue-cpa)"/>
+
+              <!-- NODE 2: SÀNG LỌC HÌNH ẢNH BAN ĐẦU -->
+              <g>
+                <rect x="250" y="100" width="460" height="50" rx="8" class="node-action-blue" stroke-width="1.5"/>
+                <text x="480" y="122" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" fill="#0284c7">CHỤP X-QUANG NGỰC THẲNG BAN ĐẦU</text>
+                <text x="480" y="138" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #334155)">Tìm tổn thương hang, dày màng phổi, hình liềm khí hoặc u nấm tròn</text>
+              </g>
+
+              <!-- RẼ NHÁNH TỪ X-QUANG -->
+              <!-- Trái: Có tổn thương hang / u nấm -->
+              <path d="M 330 150 L 330 175 L 200 175 L 200 195" fill="none" stroke="#f59e0b" stroke-width="1.5" marker-end="url(#arrow-amber-cpa)"/>
+              <rect x="220" y="165" width="80" height="20" rx="4" fill="var(--color-surface, #ffffff)" stroke="#f59e0b" stroke-width="0.8"/>
+              <text x="260" y="179" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="700" fill="#b45309">CÓ HANG/U</text>
+
+              <!-- Phải: Không rõ tổn thương -->
+              <path d="M 630 150 L 630 175 L 750 175 L 750 195" fill="none" stroke="#0284c7" stroke-width="1.5" marker-end="url(#arrow-blue-cpa)"/>
+              <rect x="655" y="165" width="85" height="20" rx="4" fill="var(--color-surface, #ffffff)" stroke="#0284c7" stroke-width="0.8"/>
+              <text x="697.5" y="179" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="700" fill="#0284c7">CHƯA RÕ T/T</text>
+
+              <!-- KHỐI LOẠI TRỪ LAO (TRÁI) -->
+              <g>
+                <rect x="40" y="195" width="320" height="70" rx="8" class="node-action-amber" stroke-width="1.5"/>
+                <text x="200" y="217" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="#b45309">BẮT BUỘC LOẠI TRỪ LAO / NTM</text>
+                <text x="200" y="235" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text, #0f172a)">Xét nghiệm GeneXpert MTB/RIF + Soi AFB đờm</text>
+                <text x="200" y="251" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text-muted, #64748b)">(Đồng nhiễm Lao &amp; Nấm gặp ở 15-20% bệnh nhân)</text>
+              </g>
+
+              <!-- KHỐI CHỤP CLVT (PHẢI) -->
+              <g>
+                <rect x="600" y="195" width="310" height="70" rx="8" class="node-action-blue" stroke-width="1.5"/>
+                <text x="755" y="217" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="#0284c7">CLVT NGỰC ĐỘ PHÂN GIẢI CAO (HRCT)</text>
+                <text x="755" y="235" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text, #0f172a)">Đánh giá thành hang, thâm nhiễm nốt vệ tinh</text>
+                <text x="755" y="251" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text-muted, #64748b)">Dày màng phổi liền kề &gt; 3mm • Khối lục giác u nấm</text>
+              </g>
+
+              <!-- HỘI TỤ VÀO XÉT NGHIỆM ASPERGILLUS IGG (NODE 3) -->
+              <path d="M 200 265 L 200 295 L 480 295 L 480 320" fill="none" stroke="#0284c7" stroke-width="1.5"/>
+              <path d="M 755 265 L 755 295 L 480 295" fill="none" stroke="#0284c7" stroke-width="1.5" marker-end="url(#arrow-blue-cpa)"/>
+
+              <g>
+                <rect x="220" y="320" width="520" height="60" rx="8" class="node-start" stroke-width="2"/>
+                <text x="480" y="342" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" fill="var(--color-primary, #0284c7)">XÉT NGHIỆM HUYẾT THANH: KHÁNG THỂ ASPERGILLUS IGG</text>
+                <text x="480" y="361" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="600" fill="var(--color-text, #0f172a)">Kỹ thuật ELISA chuẩn hoặc Test nhanh sắc ký miễn dịch LFD (Độ nhạy &gt; 90%)</text>
+              </g>
+
+              <!-- RẼ 2 NHÁNH TỪ ASPERGILLUS IGG -->
+              <!-- Trái: Dương tính -->
+              <path d="M 320 380 L 320 415 L 210 415 L 210 435" fill="none" stroke="#10b981" stroke-width="2" marker-end="url(#arrow-green-cpa)"/>
+              <rect x="235" y="405" width="70" height="20" rx="4" fill="var(--color-surface, #ffffff)" stroke="#10b981" stroke-width="1"/>
+              <text x="270" y="419" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="800" fill="#15803d">DƯƠNG TÍNH</text>
+
+              <!-- Phải: Âm tính / Nghi ngờ -->
+              <path d="M 640 380 L 640 415 L 750 415 L 750 435" fill="none" stroke="#f59e0b" stroke-width="1.5" marker-end="url(#arrow-amber-cpa)"/>
+              <rect x="665" y="405" width="90" height="20" rx="4" fill="var(--color-surface, #ffffff)" stroke="#f59e0b" stroke-width="0.8"/>
+              <text x="710" y="419" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="700" fill="#b45309">ÂM / NGHI NGỜ</text>
+
+              <!-- XÁC ĐỊNH CPA (TRÁI) -->
+              <g>
+                <rect x="30" y="435" width="360" height="155" rx="8" fill="var(--color-surface, #ffffff)" stroke="#16a34a" stroke-width="2"/>
+                <rect x="30" y="435" width="360" height="26" rx="8" fill="#16a34a"/>
+                <text x="210" y="452" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="#ffffff">CHẨN ĐOÁN XÁC ĐỊNH BỆNH NẤM CPA</text>
+
+                <text x="45" y="480" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="700" fill="#15803d">✓ Thỏa mãn đủ 3 tiêu chuẩn BYT 2024:</text>
+                <text x="55" y="497" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text, #334155)">1. Triệu chứng hô hấp/toàn thân kéo dài &gt; 3 tháng</text>
+                <text x="55" y="513" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text, #334155)">2. Hình ảnh HRCT có hang nấm, dày màng phổi tiến triển</text>
+                <text x="55" y="529" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text, #334155)">3. Bằng chứng huyết thanh (Aspergillus IgG dương tính)</text>
+
+                <text x="45" y="555" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="700" fill="#0284c7">Khởi động phác đồ thuốc kháng nấm Azole đường uống:</text>
+                <text x="55" y="572" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="700" fill="#0284c7">• Itraconazole 200mg x 2 lần/ngày hoặc Voriconazole</text>
+              </g>
+
+              <!-- VI SINH CHUYÊN SÂU (PHẢI) -->
+              <g>
+                <rect x="520" y="435" width="410" height="85" rx="8" class="node-action-amber" stroke-width="1.5"/>
+                <text x="725" y="455" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="#b45309">CAN THIỆP VI SINH HỌC CHUYÊN SÂU</text>
+                <text x="535" y="475" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text, #334155)">• Soi tươi tìm sợi nấm Aspergillus trong đờm hoặc dịch rửa BALF</text>
+                <text x="535" y="492" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text, #334155)">• Nuôi cấy nấm đờm ≥ 2 mẫu (+)</text>
+                <text x="535" y="509" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="700" fill="#0284c7">• Galactomannan trong dịch BALF (cut-off ODI ≥ 0.67) / PCR</text>
+              </g>
+
+              <!-- Phân nhánh vi sinh -->
+              <!-- Có vi sinh -> Xác định CPA -->
+              <path d="M 570 520 L 570 550 L 390 550" fill="none" stroke="#10b981" stroke-width="1.5" marker-end="url(#arrow-green-cpa)"/>
+              <rect x="425" y="540" width="80" height="18" rx="3" fill="var(--color-surface, #ffffff)" stroke="#10b981" stroke-width="0.8"/>
+              <text x="465" y="552" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="8.5" font-weight="700" fill="#15803d">VI SINH (+)</text>
+
+              <!-- Không có vi sinh -> Chưa đủ tiêu chuẩn -->
+              <path d="M 830 520 L 830 550" fill="none" stroke="#dc2626" stroke-width="1.5" marker-end="url(#arrow-red-cpa)"/>
+              <g>
+                <rect x="670" y="550" width="260" height="42" rx="6" fill="rgba(220, 38, 38, 0.06)" stroke="#dc2626" stroke-width="1.2"/>
+                <text x="800" y="567" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="800" fill="#dc2626">CHƯA ĐỦ TIÊU CHUẨN XÁC ĐỊNH CPA</text>
+                <text x="800" y="582" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="8.5" fill="var(--color-text, #334155)">Theo dõi sát lâm sàng &amp; chụp lại HRCT ngực sau 3–6 tháng</text>
+              </g>
+            </svg>
+          </div>
+
+          <div class="flowchart-legend-row">
+            <div class="flowchart-legend-item"><span class="legend-dot" style="background: #0284c7;"></span> Khởi đầu &amp; Chẩn đoán hình ảnh sàng lọc (X-quang / HRCT)</div>
+            <div class="flowchart-legend-item"><span class="legend-dot" style="background: #f59e0b;"></span> Loại trừ Lao / NTM &amp; Thăm dò vi sinh BALF chuyên sâu</div>
+            <div class="flowchart-legend-item"><span class="legend-dot" style="background: #10b981;"></span> Xác định CPA (Thỏa mãn 3 tiêu chuẩn BYT 2024 &amp; Điều trị Azole)</div>
+            <div class="flowchart-legend-item"><span class="legend-dot" style="background: #dc2626;"></span> Chưa đủ tiêu chuẩn (Theo dõi định kỳ 3-6 tháng)</div>
+          </div>
+        </div>
 
       </div>
     </section>
@@ -667,32 +784,147 @@ sections:
         </div>
 
         
-        <FlowchartViewer
-          title="Thuật Toán Xử Trí Cấp Cứu Ho Ra Máu Nặng Trong CPA (BYT 2024 / Radchenko 2017)"
-          code={`graph TD
-  START["HO RA MÁU NẶNG (≥ 200 mL / 24h)"]:::danger --> TRIAGE{"Đánh Giá Suy Hô Hấp & Tắc Nghẽn Đường Thở"}:::question
-  
-  TRIAGE -- "Không có suy hô hấp" --> ICU["Hồi Sức Cấp Cứu & Nội Khoa<br/><small>• Nằm nghiêng về bên phổi chảy máu<br/>• Bồi phụ thể tích tuần hoàn, Acid Tranexamic IV<br/>• Soi phế quản & X-quang tại giường</small>"]:::action
-  TRIAGE -- "Có suy hô hấp / Bít tắc phế quản" --> INTUB["Đặt Nội Khí Quản Cấp Cứu<br/><small>• Đặt ống NKQ nòng đôi / thở máy chọn lọc<br/>• Cô lập bảo vệ bên phổi lành không bị tràn máu sặc<br/>• Hồi sức tuần hoàn tích cực</small>"]:::danger
-  
-  ICU & INTUB --> FOB["Nội Soi Phế Quản Xác Định Vị Trí Chảy Máu"]:::action
-  
-  FOB --> FOB_FIND{"Vị Trí & Hình Thái Tổn Thương Nội Soi?"}:::question
-  FOB_FIND -- "Tổn thương trong lòng PQ" --> TOPICAL1["Can Thiệp Tại Chỗ:<br/><small>Bơm nước muối lạnh 4°C, Adrenaline, đốt nhiệt, Stent</small>"]:::action
-  FOB_FIND -- "Không thấy tổn thương khu trú" --> TOPICAL2["Chèn bóng phế quản, nút silicone, keo sinh học"]:::action
-  
-  TOPICAL1 & TOPICAL2 --> BAE["GÂY TẮC ĐỘNG MẠCH PHẾ QUẢN (BAE) / ĐM HỆ THỐNG<br/><small>Tỷ lệ cầm máu tức thì đạt 67% – 95%</small>"]:::warning
-  
-  BAE -- "Thành công cầm máu" --> MAINT["Tiếp Tục Theo Dõi & Điều Trị Thuốc Kháng Nấm Nội Khoa"]:::success
-  BAE -- "Thất bại / Chảy máu tái diễn đe dọa" --> SURG["XEM XÉT PHẪU THUẬT CẤP CỨU CẮT THÙY PHỔI"]:::danger
+        <div class="flowchart-editorial-card" style="margin-top: 1.5rem;">
+          <div class="flowchart-editorial-hdr">
+            <div class="flowchart-editorial-title">
+              <i class="fa-solid fa-diagram-project" style="color: var(--color-primary, #0284c7);"></i>
+              <span>THUẬT TOÁN XỬ TRÍ CẤP CỨU HO RA MÁU NẶNG TRONG CPA (QĐ 3651/QĐ-BYT &amp; RADCHENKO 2017)</span>
+            </div>
+            <span class="flow-step-badge flow-badge-green">Editorial SVG Studio 2.0</span>
+          </div>
+          <div class="flowchart-editorial-canvas">
+            <svg class="med-svg" viewBox="0 0 960 690" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+              <rect width="960" height="690" fill="var(--color-surface, #ffffff)" rx="12" stroke="var(--color-border, #e2e8f0)" stroke-width="1"/>
 
-  classDef start fill:#e0f2fe,stroke:#0284c7,stroke-width:2px,color:#0369a1
-  classDef question fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#854d0e
-  classDef action fill:#eff6ff,stroke:#3b82f6,stroke-width:1.5px,color:#1e40af
-  classDef danger fill:#fee2e2,stroke:#ef4444,stroke-width:2px,color:#991b1b
-  classDef warning fill:#fef3c7,stroke:#f59e0b,stroke-width:2px,color:#92400e
-  classDef success fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#15803d`}
-        />
+              <defs>
+                <marker id="arrow-default-hem" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1 L 8 5 L 0 9 z" fill="var(--color-text-muted, #64748b)"/>
+                </marker>
+                <marker id="arrow-blue-hem" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1 L 8 5 L 0 9 z" fill="#0284c7"/>
+                </marker>
+                <marker id="arrow-green-hem" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1 L 8 5 L 0 9 z" fill="#10b981"/>
+                </marker>
+                <marker id="arrow-amber-hem" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1 L 8 5 L 0 9 z" fill="#f59e0b"/>
+                </marker>
+                <marker id="arrow-red-hem" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1 L 8 5 L 0 9 z" fill="#dc2626"/>
+                </marker>
+              </defs>
+
+              <!-- NODE 1: KHỞI ĐẦU - HO RA MÁU NẶNG -->
+              <g>
+                <rect x="200" y="20" width="560" height="56" rx="8" class="node-action-red" stroke-width="2"/>
+                <text x="480" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="800" fill="#dc2626">HO RA MÁU NẶNG TRONG BỆNH NẤM CPA (≥ 200 mL / 24 GIỜ)</text>
+                <text x="480" y="60" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600" fill="var(--color-text, #0f172a)">Ho máu sét đánh hoặc chảy máu liên tục đe dọa bít tắc đường thở / tụt huyết áp sốc</text>
+              </g>
+
+              <line x1="480" y1="76" x2="480" y2="102" stroke="#dc2626" stroke-width="2" marker-end="url(#arrow-red-hem)"/>
+
+              <!-- NODE 2: PHÂN TẦNG SUY HÔ HẤP -->
+              <g>
+                <rect x="210" y="102" width="540" height="52" rx="8" class="node-decision" stroke-width="1.5"/>
+                <text x="480" y="123" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" fill="var(--color-text, #0f172a)">ĐÁNH GIÁ SUY HÔ HẤP &amp; TẮC NGHẼN ĐƯỜNG THỞ</text>
+                <text x="480" y="141" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="600" fill="var(--color-text-muted, #64748b)">SpO2 khí trời • Tần số thở • Tri giác • Khả năng ho khạc tự bảo vệ đường thở</text>
+              </g>
+
+              <!-- RẼ 2 NHÁNH TRỰC GIAO TỪ NODE 2 -->
+              <!-- Trái: Chưa có suy hô hấp -->
+              <path d="M 300 154 L 300 180 L 190 180 L 190 200" fill="none" stroke="#0284c7" stroke-width="1.5" marker-end="url(#arrow-blue-hem)"/>
+              <rect x="215" y="170" width="85" height="20" rx="4" fill="var(--color-surface, #ffffff)" stroke="#0284c7" stroke-width="0.8"/>
+              <text x="257.5" y="184" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="700" fill="#0284c7">KHÔNG SUY THỞ</text>
+
+              <!-- Phải: Có suy hô hấp / Bít tắc -->
+              <path d="M 660 154 L 660 180 L 760 180 L 760 200" fill="none" stroke="#dc2626" stroke-width="2" marker-end="url(#arrow-red-hem)"/>
+              <rect x="675" y="170" width="80" height="20" rx="4" fill="var(--color-surface, #ffffff)" stroke="#dc2626" stroke-width="1"/>
+              <text x="715" y="184" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="800" fill="#b91c1c">CÓ SUY THỞ</text>
+
+              <!-- NHÁNH TRÁI: HỒI SỨC NỘI KHOA -->
+              <g>
+                <rect x="40" y="200" width="300" height="85" rx="8" class="node-action-blue" stroke-width="1.5"/>
+                <text x="190" y="222" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="#0284c7">HỒI SỨC CẤP CỨU NỘI KHOA</text>
+                <text x="55" y="242" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text, #334155)">• Nằm nghiêng về bên phổi có tổn thương hang nấm</text>
+                <text x="55" y="258" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text, #334155)">• Thiết lập đường truyền tĩnh mạch lớn, bồi phụ dịch</text>
+                <text x="55" y="274" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="700" fill="#0284c7">• Acid Tranexamic 1g tiêm TM chậm mỗi 8 giờ</text>
+              </g>
+
+              <!-- NHÁNH PHẢI: ĐẶT NKQ NÒNG ĐÔI -->
+              <g>
+                <rect x="610" y="200" width="310" height="85" rx="8" class="node-action-red" stroke-width="2"/>
+                <text x="765" y="222" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="#dc2626">ĐẶT NỘI KHÍ QUẢN CẤP CỨU</text>
+                <text x="625" y="242" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="700" fill="#b91c1c">• Đặt ống NKQ nòng đôi (Double-Lumen Tube)</text>
+                <text x="625" y="258" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text, #334155)">• Thông khí bảo vệ bên phổi lành, tránh sặc máu</text>
+                <text x="625" y="274" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text, #334155)">• Hút sạch đờm máu liên tục • Hồi sức huyết động</text>
+              </g>
+
+              <!-- HỘI TỤ VÀO NỘI SOI PHẾ QUẢN (NODE 3) -->
+              <path d="M 190 285 L 190 310 L 480 310 L 480 325" fill="none" stroke="#0284c7" stroke-width="1.5"/>
+              <path d="M 760 285 L 760 310 L 480 310" fill="none" stroke="#0284c7" stroke-width="1.5" marker-end="url(#arrow-blue-hem)"/>
+
+              <g>
+                <rect x="180" y="325" width="600" height="52" rx="8" class="node-action-blue" stroke-width="1.5"/>
+                <text x="480" y="346" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" fill="#0284c7">NỘI SOI PHẾ QUẢN ỐNG MỀM TẠI GIƯỜNG HOẶC PHÒNG CAN THIỆP</text>
+                <text x="480" y="364" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="600" fill="var(--color-text, #0f172a)">Xác định chính xác vị trí thùy phổi chảy máu • Hút rửa máu đọng • Can thiệp cầm máu tại chỗ</text>
+              </g>
+
+              <line x1="480" y1="377" x2="480" y2="400" stroke="#0284c7" stroke-width="1.5" marker-end="url(#arrow-blue-hem)"/>
+
+              <!-- KHỐI CAN THIỆP TẠI CHỖ QUA NỘI SOI -->
+              <g>
+                <rect x="150" y="400" width="660" height="60" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.2"/>
+                <text x="480" y="420" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="var(--color-text, #0f172a)">CÁC BIỆN PHÁP CẦM MÁU TẠI CHỖ QUA NỘI SOI (BYT 2024):</text>
+                <text x="480" y="437" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text, #334155)">• Bơm nước muối sinh lý lạnh (4°C) • Bơm dung dịch Adrenalin pha loãng (1:10.000)</text>
+                <text x="480" y="451" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text, #334155)">• Bơm keo sinh học (N-Butyl cyanoacrylate) • Đặt bóng chèn phế quản Fogarty cô lập phân thùy</text>
+              </g>
+
+              <line x1="480" y1="460" x2="480" y2="485" stroke="#f59e0b" stroke-width="2" marker-end="url(#arrow-amber-hem)"/>
+
+              <!-- NODE TIÊU ĐIỂM (FOCAL): CAN THIỆP NÚT MẠCH BAE -->
+              <g>
+                <rect x="100" y="485" width="760" height="74" rx="8" class="node-action-amber" stroke-width="2.5"/>
+                <text x="480" y="510" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="800" fill="#b45309">CAN THIỆP GÂY TẮC ĐỘNG MẠCH PHẾ QUẢN (BAE) DƯỚI DSA — ƯU TIÊN SỐ 1</text>
+                <text x="480" y="529" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="#15803d">✓ Kỹ thuật khẩn cấp hàng đầu • Tỷ lệ cầm máu tức thì đạt 67% – 95%</text>
+                <text x="480" y="546" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text, #334155)">Bơm tắc các nhánh phế quản tăng sinh bệnh lý bằng hạt PVA, gel Spongel hoặc Coil kim loại</text>
+              </g>
+
+              <!-- RẼ 2 NHÁNH SAU CAN THIỆP NÚT MẠCH BAE -->
+              <!-- Trái: Thành công cầm máu -->
+              <path d="M 300 559 L 300 585 L 200 585 L 200 605" fill="none" stroke="#10b981" stroke-width="2" marker-end="url(#arrow-green-hem)"/>
+              <rect x="220" y="575" width="85" height="20" rx="4" fill="var(--color-surface, #ffffff)" stroke="#10b981" stroke-width="1"/>
+              <text x="262.5" y="589" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="800" fill="#15803d">THÀNH CÔNG</text>
+
+              <!-- Phải: Thất bại / Chảy máu đe dọa -->
+              <path d="M 660 559 L 660 585 L 760 585 L 760 605" fill="none" stroke="#dc2626" stroke-width="2" marker-end="url(#arrow-red-hem)"/>
+              <rect x="680" y="575" width="90" height="20" rx="4" fill="var(--color-surface, #ffffff)" stroke="#dc2626" stroke-width="1"/>
+              <text x="725" y="589" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="800" fill="#b91c1c">THẤT BẠI / TÁI PHÁT</text>
+
+              <!-- KẾT QUẢ TRÁI: DUY TRÌ NỘI KHOA -->
+              <g>
+                <rect x="40" y="605" width="320" height="65" rx="8" fill="var(--color-surface, #ffffff)" stroke="#16a34a" stroke-width="1.5"/>
+                <text x="200" y="625" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="#15803d">DUY TRÌ ĐIỀU TRỊ NỘI KHOA &amp; THUỐC KHÁNG NẤM</text>
+                <text x="200" y="643" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text, #334155)">Tiếp tục phác đồ Itraconazole / Voriconazole đủ 6–12 tháng</text>
+                <text x="200" y="658" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" fill="var(--color-text-muted, #64748b)">Theo dõi nguy cơ tái chảy máu (tái thông mạch bàng hệ sau BAE)</text>
+              </g>
+
+              <!-- KẾT QUẢ PHẢI: PHẪU THUẬT CẤP CỨU -->
+              <g>
+                <rect x="600" y="605" width="320" height="65" rx="8" class="node-action-red" stroke-width="2"/>
+                <text x="760" y="625" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="#dc2626">XEM XÉT PHẪU THUẬT CẤP CỨU</text>
+                <text x="760" y="643" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="600" fill="var(--color-text, #0f172a)">Phẫu thuật cắt thùy phổi hoặc bóc u nấm khẩn cấp</text>
+                <text x="760" y="658" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" fill="#b91c1c">* Chỉ định khi BAE thất bại và chức năng hô hấp FEV1 cho phép</text>
+              </g>
+            </svg>
+          </div>
+
+          <div class="flowchart-legend-row">
+            <div class="flowchart-legend-item"><span class="legend-dot" style="background: #dc2626;"></span> Ho ra máu nặng &amp; Chỉ định phẫu thuật khẩn cấp</div>
+            <div class="flowchart-legend-item"><span class="legend-dot" style="background: #0284c7;"></span> Hồi sức cấp cứu &amp; Nội soi phế quản tại chỗ</div>
+            <div class="flowchart-legend-item"><span class="legend-dot" style="background: #f59e0b;"></span> Nút động mạch phế quản BAE (Can thiệp số 1 qua DSA)</div>
+            <div class="flowchart-legend-item"><span class="legend-dot" style="background: #10b981;"></span> Ổn định &amp; Duy trì kháng nấm nội khoa Azole</div>
+          </div>
+        </div>
 
       </div>
     </section>

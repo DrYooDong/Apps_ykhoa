@@ -292,42 +292,128 @@ sections:
 
         
         <div class="sec-subtitle" style="margin-top: 1.5rem;">Sơ Đồ Vector: Lưu Đồ Chẩn Đoán GERD Chuẩn ACG 2022 (Figure 1)</div>
-        <FlowchartViewer 
-        title="Hình 1. Lưu Đồ Chẩn Đoán GERD Theo Khuyến Cáo ACG 2022 (EGD & Đo Trào Ngược)"
-        code={`flowchart TD
-          START([Bệnh nhân có triệu chứng ợ nóng hoặc trớ điển hình | start | badge: ACG 2022 | subtitle: Không kèm dấu hiệu báo động cờ đỏ: nuốt khó, sụt cân, thiếu máu, nôn máu])
-          PPI_TRIAL[Thử nghiệm PPI liều chuẩn 8 tuần 💊 | action | subtitle: Uống 30-60 phút trước bữa ăn sáng hàng ngày]
+        <div class="flowchart-editorial-card">
+  <div class="flowchart-card-header">
+    <div class="flowchart-badge-title">
+      <span class="flowchart-badge-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg>
+      </span>
+      <span class="flowchart-badge-text">Hình 1. Lưu Đồ Chẩn Đoán GERD Theo Khuyến Cáo ACG 2022 (EGD & Đo Trào Ngược)</span>
+    </div>
+    <span class="flowchart-version-tag">ACG 2022 • GERD Guidelines</span>
+  </div>
+  
+  <div class="flowchart-svg-scroll">
+    <svg class="med-svg" viewBox="0 0 920 520" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+    <defs>
+      <marker id="arr-g1" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-text-muted, #64748b)" />
+      </marker>
+      <marker id="arr-g1-act" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)" />
+      </marker>
+    </defs>
 
-          RESP{Đáp ứng lâm sàng sau 8 tuần thử PPI? | question}
-          RESOLVED[Đáp ứng hoàn toàn: Hết triệu chứng 🟢 | success | badge: Thành công | subtitle: Thử nghiệm giảm liều dần rồi ngừng PPI - Nếu tái phát: Xác nhận GERD, duy trì liều thấp nhất hiệu quả]
-          FAIL[Không đáp ứng hoặc Tái phát nặng khi ngừng 🚨 | danger | badge: GERD kháng trị | subtitle: Cần thăm dò xâm lấn để làm rõ chẩn đoán]
+    <!-- Root -->
+    <g class="flow-node">
+      <rect x="230" y="15" width="460" height="52" rx="8" fill="var(--color-primary-subtle, rgba(2,132,199,0.12))" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+      <text x="460" y="36" font-size="13.5" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">TRIỆU CHỨNG GERD ĐIỂN HÌNH (Ợ NÓNG / TRỚ CHUA)</text>
+      <text x="460" y="53" font-size="11" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Khởi đầu thử nghiệm PPI liều chuẩn một lần/ngày trước bữa sáng 8 tuần</text>
+    </g>
 
-          EGD[Nội soi thực quản dạ dày (EGD) 🔬 | action | badge: Ngừng PPI 2-4 tuần trước soi | subtitle: Đánh giá niêm mạc theo phân loại Los Angeles (LA) & tầm soát thực quản Barrett]
+    <path d="M 460 67 L 460 95" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arr-g1-act)"/>
 
-          EGD_RES{Kết quả nội soi thực quản EGD? | question}
-          EGD_POS[EGD BẤT THƯỜNG: LA Độ B, C, D hoặc Barrett (> 3cm) ⭐ | danger | badge: Khẳng định 100% GERD | subtitle: Bằng chứng khách quan xác định chắc chắn - Tiếp tục tối ưu hóa PPI dài hạn, không cần đo pH]
-          EGD_NEG[EGD Bình thường (NERD) hoặc LA Độ A 🟣 | warning | badge: Chưa đủ bằng chứng | subtitle: Viêm độ A có thể gặp ở người khỏe mạnh - Bắt buộc đo theo dõi trào ngược để xác minh]
+    <!-- Alarm Signs Decision -->
+    <g class="flow-node">
+      <polygon points="460,95 640,128 460,161 280,128" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="2"/>
+      <text x="460" y="124" font-size="12" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">Dấu Hiệu Cảnh Báo Báo Động</text>
+      <text x="460" y="140" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Nuốt khó, nuốt đau, sụt cân, tiêu máu?</text>
+    </g>
 
-          PH_STUDY[Đo theo dõi trào ngược ngoài điều trị (Off PPI) 📊 | action | subtitle: Đo pH-trở kháng 24h hoặc gắn viên nang Bravo 48-96h]
-          
-          PH_RES{Thời gian tiếp xúc axit thực quản (AET)? | question}
-          GERD_CONFIRMED[AET > 6%: XÁC NHẬN BỆNH TRÀO NGƯỢC DẠ DÀY THỰC QUẢN ⭐ | danger | badge: GERD khách quan | subtitle: Tiếp tục điều trị PPI tối ưu hoặc cân nhắc phẫu thuật / thủ thuật chống trào ngược]
-          NON_GERD[AET < 4%: LOẠI TRỪ GERD (BÌNH THƯỜNG) 🟢 | success | badge: Không phải GERD | subtitle: Khảo sát nguyên nhân khác: Tăng nhạy cảm thực quản hoặc Ợ nóng chức năng]
+    <!-- Left: Alarm Yes -> EGD immediately -->
+    <path d="M 280 128 L 150 128 L 150 190" fill="none" stroke="var(--color-danger, #ef4444)" stroke-width="2" marker-end="url(#arr-g1-act)"/>
+    <g>
+      <rect x="160" y="116" width="60" height="20" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="190" y="130" font-size="10" font-weight="600" fill="var(--color-danger, #ef4444)" text-anchor="middle">Có cờ đỏ</text>
+    </g>
 
-          START --> PPI_TRIAL
-          PPI_TRIAL --> RESP
-          RESP -->|Hết triệu chứng| RESOLVED
-          RESP ==>|Không đáp ứng| FAIL
-          FAIL --> EGD
-          EGD --> EGD_RES
-          EGD_RES ==>|LA Độ B, C, D / Barrett| EGD_POS
-          EGD_RES -->|LA Độ A / Bình thường| EGD_NEG
-          EGD_NEG --> PH_STUDY
-          PH_STUDY --> PH_RES
-          PH_RES ==>|AET > 6%| GERD_CONFIRMED
-          PH_RES -->|AET < 4%| NON_GERD
-        `}
-      />
+    <!-- Right: Alarm No -> Response to PPI? -->
+    <path d="M 640 128 L 740 128 L 740 190" fill="none" stroke="var(--color-success, #22c55e)" stroke-width="2" marker-end="url(#arr-g1-act)"/>
+    <g>
+      <rect x="655" y="116" width="70" height="20" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="690" y="130" font-size="10" font-weight="600" fill="var(--color-success, #16a34a)" text-anchor="middle">Không cờ đỏ</text>
+    </g>
+
+    <!-- Right Node: Response to PPI 8 weeks -->
+    <g class="flow-node">
+      <rect x="630" y="190" width="220" height="60" rx="8" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+      <text x="740" y="213" font-size="12" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">Đáp Ứng Sau 8 Tuần PPI?</text>
+      <text x="740" y="233" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Cải thiện triệu chứng ợ nóng/trớ</text>
+    </g>
+
+    <!-- EGD Hub Left -->
+    <g class="flow-node">
+      <rect x="40" y="190" width="220" height="60" rx="8" fill="var(--color-danger-subtle, rgba(239,68,68,0.12))" stroke="var(--color-danger, #ef4444)" stroke-width="1.8"/>
+      <text x="150" y="213" font-size="12.5" font-weight="700" fill="var(--color-danger, #ef4444)" text-anchor="middle">NỘI SOI EGD KHẨN CẤP</text>
+      <text x="150" y="233" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">Tìm loét, hẹp thực quản, K</text>
+    </g>
+
+    <!-- PPI Refractory connects to EGD Off PPI -->
+    <path d="M 740 250 L 740 280 L 460 280 L 460 305" fill="none" stroke="var(--color-warning, #f59e0b)" stroke-width="1.8" marker-end="url(#arr-g1-act)"/>
+    <path d="M 150 250 L 150 280 L 460 280" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+
+    <!-- Central EGD Findings -->
+    <g class="flow-node">
+      <rect x="330" y="305" width="260" height="50" rx="8" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+      <text x="460" y="327" font-size="12.5" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">Kết Quả Nội Soi EGD</text>
+      <text x="460" y="344" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Phân loại Los Angeles (LA) hoặc Barrett</text>
+    </g>
+
+    <!-- EGD Positive: LA B, C, D / Barrett -->
+    <path d="M 330 330 L 170 330 L 170 390" fill="none" stroke="var(--color-danger, #ef4444)" stroke-width="1.8" marker-end="url(#arr-g1-act)"/>
+    <g>
+      <rect x="180" y="318" width="130" height="20" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="245" y="332" font-size="10" font-weight="600" fill="var(--color-danger, #ef4444)" text-anchor="middle">LA Độ B, C, D / Barrett</text>
+    </g>
+    <g class="flow-node">
+      <rect x="50" y="390" width="240" height="95" rx="8" fill="var(--color-danger-subtle, rgba(239,68,68,0.12))" stroke="var(--color-danger, #ef4444)" stroke-width="2"/>
+      <text x="170" y="413" font-size="12.5" font-weight="700" fill="var(--color-danger, #ef4444)" text-anchor="middle">XÁC CHẨN GERD KHÁCH QUAN</text>
+      <text x="170" y="432" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">Tổn thương niêm mạc thực sự</text>
+      <text x="170" y="449" font-size="10.5" font-weight="600" fill="var(--color-danger, #ef4444)" text-anchor="middle">Điều trị PPI duy trì dài hạn</text>
+      <text x="170" y="466" font-size="10" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Cân nhắc can thiệp phẫu thuật chống trào ngược</text>
+    </g>
+
+    <!-- EGD Negative: Normal / LA A -> Reflux Monitoring (pH-impedance) -->
+    <path d="M 590 330 L 740 330 L 740 390" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="1.8" marker-end="url(#arr-g1-act)"/>
+    <g>
+      <rect x="605" y="318" width="120" height="20" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="665" y="332" font-size="10" font-weight="600" fill="var(--color-primary, #0284c7)" text-anchor="middle">LA Độ A / Bình thường</text>
+    </g>
+    <g class="flow-node">
+      <rect x="620" y="390" width="240" height="95" rx="8" fill="var(--color-primary-subtle, rgba(2,132,199,0.12))" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+      <text x="740" y="413" font-size="12" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">ĐO THEO DÕI TRÀO NGƯỢC (OFF PPI)</text>
+      <text x="740" y="432" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">pH-trở kháng 24h hoặc pH capsule</text>
+      <text x="740" y="449" font-size="10.5" font-weight="700" fill="var(--color-danger, #ef4444)" text-anchor="middle">• AET &gt; 6%: Xác nhận GERD (NERD)</text>
+      <text x="740" y="466" font-size="10" fill="var(--color-success, #16a34a)" text-anchor="middle">• AET &lt; 4%: Loại trừ GERD • Dừng PPI</text>
+    </g>
+  </svg>
+  </div>
+
+  <div class="flowchart-legend-row">
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(2,132,199,0.12); border-color: #0284c7;"></span>
+        <span>Thử nghiệm PPI 8 tuần &amp; EGD</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(239,68,68,0.12); border-color: #ef4444;"></span>
+        <span>Xác chẩn GERD: LA độ B-D hoặc AET > 6%</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(34,197,94,0.12); border-color: #22c55e;"></span>
+        <span>Loại trừ GERD (AET < 4%): Dừng ngay PPI</span>
+      </div>
+  </div>
+</div>
 
         <div class="sec-subtitle">Phân Loại Viêm Thực Quản Bào Mòn Los Angeles (LA Classification)</div>
         <div class="grid-4col">
@@ -637,44 +723,110 @@ sections:
 
         
         <div class="sec-subtitle" style="margin-top: 1.5rem;">Sơ Đồ Vector: Lưu Đồ Chẩn Đoán Triệu Chứng Ngoài Thực Quản (Figure 2)</div>
-        <FlowchartViewer 
-        title="Hình 2. Thuật Toán Tiếp Cận Triệu Chứng Ngoài Thực Quản Nghi Do GERD (ACG 2022)"
-        code={`flowchart TD
-          START([Bệnh nhân có triệu chứng Ngoài Thực Quản: Ho mạn tính, Hen suyễn, Khàn tiếng, LPR, Nuốt vướng Globus | start | badge: ACG 2022])
-          EXCL[Loại trừ các nguyên nhân không do trào ngược (Hô hấp, Tai Mũi Họng, Dị ứng) 🩺 | action]
+        <div class="flowchart-editorial-card">
+  <div class="flowchart-card-header">
+    <div class="flowchart-badge-title">
+      <span class="flowchart-badge-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg>
+      </span>
+      <span class="flowchart-badge-text">Hình 2. Thuật Toán Tiếp Cận Triệu Chứng Ngoài Thực Quản Nghi Do GERD (ACG 2022)</span>
+    </div>
+    <span class="flowchart-version-tag">ACG 2022 • Extra-esophageal GERD</span>
+  </div>
+  
+  <div class="flowchart-svg-scroll">
+    <svg class="med-svg" viewBox="0 0 920 520" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+    <defs>
+      <marker id="arr-g2" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-text-muted, #64748b)" />
+      </marker>
+      <marker id="arr-g2-act" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)" />
+      </marker>
+    </defs>
 
-          SUBGROUP{Phân tầng triệu chứng lâm sàng kèm theo? | question}
-          
-          COMBO[1. Có CẢ triệu chứng trào ngược điển hình (Ợ nóng / Trớ) 🟡 | warning | badge: Triệu chứng kết hợp | subtitle: Vừa có triệu chứng ngoài thực quản vừa có ợ nóng/trớ thường xuyên]
-          EXTRA_ONLY[2. CHỈ CÓ triệu chứng ngoài thực quản đơn độc 🚨 | danger | badge: Đơn độc | subtitle: Hoàn toàn không có ợ nóng hay trớ chua]
+    <!-- Root -->
+    <g class="flow-node">
+      <rect x="220" y="15" width="480" height="55" rx="8" fill="var(--color-primary-subtle, rgba(2,132,199,0.12))" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+      <text x="460" y="37" font-size="13" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">TRIỆU CHỨNG NGOÀI THỰC QUẢN NGHI DO GERD</text>
+      <text x="460" y="55" font-size="11" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Ho mạn tính, Hen suyễn, Khàn tiếng, Viêm thanh quản LPR, Nuốt vướng Globus</text>
+    </g>
 
-          PPI_BID[Thử nghiệm PPI liều gấp đôi (BID) trong 8 - 12 tuần 💊 | action | subtitle: Uống trước bữa ăn sáng và trước bữa ăn tối]
-          RESP_COMBO{Đáp ứng lâm sàng sau 8-12 tuần? | question}
-          COMBO_OK[Triệu chứng cải thiện rõ rệt 🟢 | success | subtitle: Giảm liều dần về liều tối thiểu kiểm soát triệu chứng]
-          COMBO_FAIL[Không cải thiện triệu chứng | warning | subtitle: Đo theo dõi trào ngược ngoài điều trị (Off PPI) để tìm nguyên nhân thực sự]
+    <path d="M 460 70 L 460 98" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arr-g2-act)"/>
 
-          PH_TEST[ĐO THEO DÕI TRÀO NGƯỢC NGOÀI ĐIỀU TRỊ (OFF PPI) NGAY 📊 | action | badge: ACG Khuyến cáo Mạnh | subtitle: Tuyệt đối KHÔNG điều trị thử PPI theo kinh nghiệm khi không có ợ nóng/trớ]
-          PH_RES{Kết quả đo theo dõi trào ngược (AET)? | question}
-          EXTRA_GERD[AET > 6% (Bất thường): Xác nhận trào ngược gây bệnh ⭐ | danger | subtitle: Khởi động điều trị PPI liều tối ưu hoặc can thiệp chống trào ngược]
-          EXTRA_NON[AET < 4% (Bình thường): Loại trừ hoàn toàn GERD 🟢 | success | subtitle: Dừng ngay PPI - Tránh lạm dụng thuốc kéo dài vô ích]
+    <!-- Step 2: Non-GERD Exclusion -->
+    <g class="flow-node">
+      <rect x="240" y="98" width="440" height="48" rx="8" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+      <text x="460" y="120" font-size="12.5" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">Loại Trừ Các Nguyên Nhân Chuyên Khoa Phổ Biến</text>
+      <text x="460" y="136" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Khám Hô hấp, Tai Mũi Họng, Dị ứng loại trừ hen phế quản, UACS, u hạ họng</text>
+    </g>
 
-          START --> EXCL
-          EXCL --> SUBGROUP
-          SUBGROUP ==>|Kèm ợ nóng / trớ| COMBO
-          SUBGROUP ==>|Chỉ có ngoài thực quản| EXTRA_ONLY
+    <path d="M 460 146 L 460 175" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arr-g2-act)"/>
 
-          COMBO --> PPI_BID
-          PPI_BID --> RESP_COMBO
-          RESP_COMBO -->|Cải thiện| COMBO_OK
-          RESP_COMBO -->|Không đỡ| COMBO_FAIL
-          COMBO_FAIL --> PH_TEST
+    <!-- Decision: Clinical Subgroup -->
+    <g class="flow-node">
+      <polygon points="460,175 660,210 460,245 260,210" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="2"/>
+      <text x="460" y="206" font-size="12" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">Phân Tầng Triệu Chứng Kèm Theo?</text>
+      <text x="460" y="222" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Có kèm triệu chứng trào ngược điển hình (Ợ nóng/Trớ)?</text>
+    </g>
 
-          EXTRA_ONLY ==> PH_TEST
-          PH_TEST --> PH_RES
-          PH_RES ==>|Bất thường (AET > 6%)| EXTRA_GERD
-          PH_RES -->|Bình thường (AET < 4%)| EXTRA_NON
-        `}
-      />
+    <!-- Branch Left: Has Typical Symptoms -> Trial PPI BID -->
+    <path d="M 260 210 L 150 210 L 150 265" fill="none" stroke="var(--color-warning, #f59e0b)" stroke-width="2" marker-end="url(#arr-g2-act)"/>
+    <g>
+      <rect x="155" y="198" width="90" height="20" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="200" y="212" font-size="10" font-weight="600" fill="var(--color-warning, #d97706)" text-anchor="middle">Kèm ợ nóng / trớ</text>
+    </g>
+    <g class="flow-node">
+      <rect x="30" y="265" width="240" height="75" rx="8" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="1.8"/>
+      <text x="150" y="288" font-size="12" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">1. THỬ NGHIỆM PPI LIỀU GẤP ĐÔI</text>
+      <text x="150" y="306" font-size="10.5" font-weight="600" fill="var(--color-text, #334155)" text-anchor="middle">PPI BID trong 8 – 12 tuần</text>
+      <text x="150" y="322" font-size="10" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Uống trước bữa ăn sáng và tối 30 phút</text>
+    </g>
+
+    <!-- Branch Right: Extra-esophageal ONLY -> NO PPI trial, Direct Reflux Test -->
+    <path d="M 660 210 L 770 210 L 770 265" fill="none" stroke="var(--color-danger, #ef4444)" stroke-width="2" marker-end="url(#arr-g2-act)"/>
+    <g>
+      <rect x="675" y="198" width="90" height="20" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="720" y="212" font-size="10" font-weight="600" fill="var(--color-danger, #ef4444)" text-anchor="middle">Đơn độc không ợ</text>
+    </g>
+    <g class="flow-node">
+      <rect x="650" y="265" width="240" height="75" rx="8" fill="var(--color-danger-subtle, rgba(239,68,68,0.12))" stroke="var(--color-danger, #ef4444)" stroke-width="2"/>
+      <text x="770" y="288" font-size="12" font-weight="700" fill="var(--color-danger, #ef4444)" text-anchor="middle">2. ĐO TRÀO NGƯỢC NGAY (OFF PPI)</text>
+      <text x="770" y="306" font-size="10.5" font-weight="700" fill="var(--color-danger, #ef4444)" text-anchor="middle">CẤM ĐIỀU TRỊ THỬ PPI THEO KINH NGHIỆM</text>
+      <text x="770" y="322" font-size="10" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Khuyến cáo Mạnh ACG 2022</text>
+    </g>
+
+    <!-- Connect PPI BID failure to Reflux Test -->
+    <path d="M 150 340 L 150 375 L 460 375" fill="none" stroke="var(--color-warning, #f59e0b)" stroke-width="1.8"/>
+    <path d="M 770 340 L 770 375 L 460 375" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+    <path d="M 460 375 L 460 395" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arr-g2-act)"/>
+
+    <!-- Bottom Outcome: Off-PPI pH study -->
+    <g class="flow-node">
+      <rect x="220" y="395" width="480" height="90" rx="10" fill="var(--color-primary-subtle, rgba(2,132,199,0.12))" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+      <text x="460" y="418" font-size="13" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">KẾT QUẢ ĐO THEO DÕI TRÀO NGƯỢC NGOÀI ĐIỀU TRỊ (OFF PPI)</text>
+      <text x="460" y="438" font-size="11" font-weight="600" fill="var(--color-danger, #ef4444)" text-anchor="middle">• AET &gt; 6% (Bất thường): Xác nhận GERD gây bệnh -> Điều trị đích hoặc ngoại khoa</text>
+      <text x="460" y="456" font-size="11" font-weight="700" fill="var(--color-success, #16a34a)" text-anchor="middle">• AET &lt; 4% (Bình thường): Loại trừ hoàn toàn GERD -> DỪNG NGAY PPI!</text>
+      <text x="460" y="472" font-size="10" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Tránh lạm dụng PPI kéo dài gây tác dụng phụ mà không mang lại lợi ích lâm sàng</text>
+    </g>
+  </svg>
+  </div>
+
+  <div class="flowchart-legend-row">
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(245,158,11,0.12); border-color: #f59e0b;"></span>
+        <span>Kèm ợ nóng/trớ: Thử PPI liều gấp đôi (BID) 8-12 tuần</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(239,68,68,0.12); border-color: #ef4444;"></span>
+        <span>Đơn độc ngoài thực quản: Đo trào ngược Off-PPI ngay</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(34,197,94,0.12); border-color: #22c55e;"></span>
+        <span>AET < 4%: Dừng ngay PPI, tránh lạm dụng</span>
+      </div>
+  </div>
+</div>
 
       </div>
     </section>

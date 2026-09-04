@@ -167,32 +167,142 @@ sections:
       <div class="sec-body">
         
         
-        <FlowchartViewer 
-          title="Lưu Đồ Đánh Giá Không Xâm Lấn cACLD & Tăng Áp Lực Tĩnh Mạch Cửa CSPH (Baveno VII 2022)"
-          code={`flowchart TD
-            START([Bệnh nhân nghi ngờ bệnh gan mạn tiến triển | start | badge: Đo độ cứng gan LSM | subtitle: Sử dụng kỹ thuật siêu âm đàn hồi Transient Elastography])
-            LSM{Phân tầng theo độ cứng gan (LSM)? | question}
+        <div class="flowchart-editorial-card">
+  <div class="flowchart-card-header">
+    <div class="flowchart-badge-title">
+      <span class="flowchart-badge-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg>
+      </span>
+      <span class="flowchart-badge-text">Lưu Đồ Đánh Giá Không Xâm Lấn cACLD & Tăng Áp Lực Tĩnh Mạch Cửa CSPH (Baveno VII 2022)</span>
+    </div>
+    <span class="flowchart-version-tag">EASL Baveno VII • Consensus</span>
+  </div>
+  
+  <div class="flowchart-svg-scroll">
+    <svg class="med-svg" viewBox="0 0 920 480" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+    <defs>
+      <marker id="arr-b1" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-text-muted, #64748b)" />
+      </marker>
+      <marker id="arr-b1-act" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)" />
+      </marker>
+    </defs>
 
-            EXCL[LSM < 10 kPa: LOẠI TRỪ cACLD 🟢 | success | badge: Nguy cơ < 1% | subtitle: Bệnh nhân không có bệnh gan mạn tiến triển bù trừ - Theo dõi định kỳ]
-            SUSP[LSM 10 - 15 kPa: NGHI NGỜ cACLD 🟡 | warning | badge: Vùng xám | subtitle: Cần phối hợp thêm chỉ số sinh học FIB-4 hoặc xét nghiệm ELF để phân định]
-            ACLD[LSM > 15 kPa: GIẢ ĐỊNH cACLD (XƠ HÓA NẶNG / XƠ GAN) 🚨 | danger | badge: cACLD xác định | subtitle: Bắt buộc đánh giá tăng áp lực tĩnh mạch cửa có ý nghĩa lâm sàng CSPH]
+    <!-- Root -->
+    <g class="flow-node">
+      <rect x="240" y="15" width="440" height="55" rx="8" fill="var(--color-primary-subtle, rgba(2,132,199,0.12))" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+      <text x="460" y="37" font-size="13.5" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">BỆNH NHÂN NGHI NGỜ BỆNH GAN MẠN TIẾN TRIỂN</text>
+      <text x="460" y="54" font-size="11" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Đo độ cứng gan (LSM) bằng kỹ thuật Transient Elastography (FibroScan)</text>
+    </g>
 
-            CSPH_CHECK{Độ cứng gan LSM ≥ 25 kPa? | question}
-            CSPH_CONFIRMED[LSM ≥ 25 kPa: XÁC CHẨN TĂNG ÁP LỰC TĨNH MẠCH CỬA (CSPH) ⭐ | danger | badge: HVPG ≥ 10 mmHg | subtitle: Khởi động ngay thuốc chẹn beta không chọn lọc NSBB Carvedilol 6.25-12.5mg để phòng ngừa mất bù]
-            ANTICIPATE[LSM 15 - 24.9 kPa: Áp dụng Mô hình ANTICIPATE hoặc Đo độ cứng lách SSM | action | subtitle: Phối hợp số lượng tiểu cầu và LSM để ước tính xác suất CSPH]
+    <path d="M 460 70 L 460 98" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arr-b1-act)"/>
 
-            BAVENO_CRIT[TIÊU CHUẨN BAVENO VI MỞ RỘNG ĐỂ TRÁNH NỘI SOI SÀNG LỌC 🛡️ | success | badge: Tránh nội soi an toàn | subtitle: LSM < 20 kPa VÀ Tiểu cầu ≥ 150 x 10⁹/L -> Nguy cơ vỡ giãn tĩnh mạch < 5%, có thể TRÁNH nội soi EGD an toàn]
+    <!-- LSM Decision -->
+    <g class="flow-node">
+      <polygon points="460,98 640,133 460,168 280,133" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="2"/>
+      <text x="460" y="129" font-size="12" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">Phân Tầng Theo Độ Cứng Gan</text>
+      <text x="460" y="145" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Ngưỡng LSM (kPa) Baveno VII?</text>
+    </g>
 
-            START --> LSM
-            LSM -->|< 10 kPa| EXCL
-            LSM -->|10 - 15 kPa| SUSP
-            LSM ==>|> 15 kPa| ACLD
-            ACLD --> CSPH_CHECK
-            CSPH_CHECK ==>|LSM ≥ 25 kPa| CSPH_CONFIRMED
-            CSPH_CHECK -->|LSM < 25 kPa| ANTICIPATE
-            ACLD --> BAVENO_CRIT
-          `}
-        />
+    <!-- < 10 kPa: Exclude -->
+    <path d="M 280 133 L 130 133 L 130 195" fill="none" stroke="var(--color-success, #22c55e)" stroke-width="1.8" marker-end="url(#arr-b1-act)"/>
+    <g>
+      <rect x="145" y="121" width="85" height="20" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="187" y="135" font-size="10" font-weight="600" fill="var(--color-success, #16a34a)" text-anchor="middle">LSM &lt; 10 kPa</text>
+    </g>
+    <g class="flow-node">
+      <rect x="20" y="195" width="220" height="70" rx="8" fill="var(--color-success-subtle, rgba(34,197,94,0.12))" stroke="var(--color-success, #22c55e)" stroke-width="1.8"/>
+      <text x="130" y="218" font-size="12.5" font-weight="700" fill="var(--color-success, #16a34a)" text-anchor="middle">LOẠI TRỪ cACLD</text>
+      <text x="130" y="237" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">Nguy cơ biến cố gan &lt; 1%</text>
+      <text x="130" y="252" font-size="10" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Theo dõi định kỳ không xâm lấn</text>
+    </g>
+
+    <!-- 10 - 15 kPa: Grey Zone -->
+    <path d="M 360 151 L 360 195" fill="none" stroke="var(--color-warning, #f59e0b)" stroke-width="1.8" marker-end="url(#arr-b1-act)"/>
+    <g>
+      <rect x="315" y="157" width="90" height="20" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="360" y="171" font-size="10" font-weight="600" fill="var(--color-warning, #d97706)" text-anchor="middle">10 – 15 kPa</text>
+    </g>
+    <g class="flow-node">
+      <rect x="270" y="195" width="180" height="70" rx="8" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="1.8"/>
+      <text x="360" y="218" font-size="12" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">NGHI NGỜ cACLD</text>
+      <text x="360" y="237" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">Vùng xám lâm sàng</text>
+      <text x="360" y="252" font-size="10" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Phối hợp thêm chỉ số sinh học FIB-4</text>
+    </g>
+
+    <!-- > 15 kPa: Presumed cACLD -->
+    <path d="M 640 133 L 740 133 L 740 195" fill="none" stroke="var(--color-danger, #ef4444)" stroke-width="1.8" marker-end="url(#arr-b1-act)"/>
+    <g>
+      <rect x="655" y="121" width="85" height="20" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="697" y="135" font-size="10" font-weight="600" fill="var(--color-danger, #ef4444)" text-anchor="middle">LSM &gt; 15 kPa</text>
+    </g>
+    <g class="flow-node">
+      <rect x="620" y="195" width="240" height="70" rx="8" fill="var(--color-danger-subtle, rgba(239,68,68,0.12))" stroke="var(--color-danger, #ef4444)" stroke-width="1.8"/>
+      <text x="740" y="218" font-size="12.5" font-weight="700" fill="var(--color-danger, #ef4444)" text-anchor="middle">GIẢ ĐỊNH cACLD</text>
+      <text x="740" y="237" font-size="10.5" font-weight="600" fill="var(--color-text, #334155)" text-anchor="middle">Xơ Hóa Nặng / Xơ Gan Bù Trừ</text>
+      <text x="740" y="252" font-size="10" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Đánh giá tăng áp cửa CSPH (HVPG ≥ 10)</text>
+    </g>
+
+    <!-- Decision CSPH >= 25 kPa -->
+    <path d="M 740 265 L 740 295" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arr-b1-act)"/>
+    <g class="flow-node">
+      <polygon points="740,295 890,328 740,361 590,328" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="2"/>
+      <text x="740" y="324" font-size="12" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">Độ Cứng Gan LSM ≥ 25 kPa?</text>
+      <text x="740" y="339" font-size="10" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Tiêu chuẩn Rule-in CSPH Baveno VII</text>
+    </g>
+
+    <!-- Right: LSM >= 25 -> Confirmed CSPH Carvedilol -->
+    <path d="M 890 328 L 910 328 L 910 395 L 770 395" fill="none" stroke="var(--color-danger, #ef4444)" stroke-width="1.8" marker-end="url(#arr-b1-act)"/>
+    <g class="flow-node">
+      <rect x="520" y="375" width="240" height="95" rx="8" fill="var(--color-danger-subtle, rgba(239,68,68,0.12))" stroke="var(--color-danger, #ef4444)" stroke-width="2"/>
+      <text x="640" y="397" font-size="12" font-weight="700" fill="var(--color-danger, #ef4444)" text-anchor="middle">XÁC CHẨN CÓ CSPH</text>
+      <text x="640" y="415" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">HVPG ≥ 10 mmHg lâm sàng</text>
+      <text x="640" y="432" font-size="11" font-weight="700" fill="var(--color-success, #16a34a)" text-anchor="middle">Khởi Trị Ngay Carvedilol 6.25–12.5mg</text>
+      <text x="640" y="450" font-size="10" fill="var(--color-primary, #0284c7)" text-anchor="middle">Phòng ngừa mất bù đầu tiên</text>
+    </g>
+
+    <!-- Left: Baveno VI criteria to avoid EGD -->
+    <path d="M 590 328 L 410 328 L 410 375" fill="none" stroke="var(--color-success, #22c55e)" stroke-width="1.8" marker-end="url(#arr-b1-act)"/>
+    <g>
+      <rect x="420" y="316" width="130" height="20" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="485" y="330" font-size="10" font-weight="600" fill="var(--color-success, #16a34a)" text-anchor="middle">LSM &lt; 20 &amp; PLT ≥ 150</text>
+    </g>
+    <g class="flow-node">
+      <rect x="290" y="375" width="210" height="95" rx="8" fill="var(--color-success-subtle, rgba(34,197,94,0.12))" stroke="var(--color-success, #22c55e)" stroke-width="1.8"/>
+      <text x="395" y="397" font-size="12" font-weight="700" fill="var(--color-success, #16a34a)" text-anchor="middle">ĐẠT CHUẨN BAVENO VI</text>
+      <text x="395" y="415" font-size="10" fill="var(--color-text, #334155)" text-anchor="middle">Nguy cơ vỡ búi giãn &lt; 5%</text>
+      <text x="395" y="432" font-size="10.5" font-weight="700" fill="var(--color-success, #16a34a)" text-anchor="middle">TRÁNH NỘI SOI AN TOÀN</text>
+      <text x="395" y="450" font-size="9.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Theo dõi lại LSM và PLT hàng năm</text>
+    </g>
+
+    <!-- Grey zone Anticipate model -->
+    <path d="M 740 361 L 740 380 L 800 380 L 800 405 L 810 405" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+    <g class="flow-node">
+      <rect x="780" y="375" width="130" height="95" rx="8" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="845" y="397" font-size="11" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">MÔ HÌNH ANTICIPATE</text>
+      <text x="845" y="415" font-size="9" fill="var(--color-text-muted, #64748b)" text-anchor="middle">LSM 15 – 24.9 kPa</text>
+      <text x="845" y="433" font-size="10" font-weight="600" fill="var(--color-text, #334155)" text-anchor="middle">Đo độ cứng lách SSM</text>
+      <text x="845" y="450" font-size="9" fill="var(--color-text-muted, #64748b)" text-anchor="middle">SSM &gt; 40 kPa xác nhận CSPH</text>
+    </g>
+  </svg>
+  </div>
+
+  <div class="flowchart-legend-row">
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(34,197,94,0.12); border-color: #22c55e;"></span>
+        <span>Loại trừ cACLD / Tiêu chuẩn Baveno VI tránh nội soi</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(245,158,11,0.12); border-color: #f59e0b;"></span>
+        <span>Vùng xám lâm sàng (LSM 10-15 kPa)</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(239,68,68,0.12); border-color: #ef4444;"></span>
+        <span>Xác chẩn CSPH (LSM ≥ 25 kPa): Chỉ định Carvedilol</span>
+      </div>
+  </div>
+</div>
 
         <div class="infobox teal">
           <span class="infobox-icon">💡</span>
@@ -327,32 +437,110 @@ sections:
 
         
         <h3 class="sec-subtitle">Sơ Đồ 1: Lưu Đồ Cấp Cứu Xuất Huyết Vỡ Giãn Tĩnh Mạch Cấp Tính (AVB)</h3>
-        <FlowchartViewer 
-          title="Sơ Đồ 1: Lưu Đồ Cấp Cứu Xuất Huyết Vỡ Giãn Tĩnh Mạch Cấp Tính (AVB - Baveno VII)"
-          code={`flowchart TD
-            T0([MỐC 0H: TIẾP NHẬN & HỒI SỨC BAN ĐẦU | start | badge: Khẩn cấp | subtitle: Hồi sức huyết động bảo tồn])
-            BUNDLE_T0[GÓI HỒI SỨC CẤP CỨU MỐC 0H 💉 | action | subtitle: 1. Truyền máu bảo tồn Hb đích 7-8 g/dL + 2. Co mạch tạng Terlipressin/Octreotide 2-5 ngày + 3. Kháng sinh Ceftriaxone 1g/ngày + 4. Lactulose phòng não gan + 5. CẤM truyền FFP tránh tăng áp cửa dội ngược]
+        <div class="flowchart-editorial-card">
+  <div class="flowchart-card-header">
+    <div class="flowchart-badge-title">
+      <span class="flowchart-badge-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg>
+      </span>
+      <span class="flowchart-badge-text">Sơ Đồ 1: Lưu Đồ Cấp Cứu Xuất Huyết Vỡ Giãn Tĩnh Mạch Cấp Tính (AVB - Baveno VII)</span>
+    </div>
+    <span class="flowchart-version-tag">EASL Baveno VII • AVB Protocol</span>
+  </div>
+  
+  <div class="flowchart-svg-scroll">
+    <svg class="med-svg" viewBox="0 0 920 540" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+    <defs>
+      <marker id="arr-b2" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-text-muted, #64748b)" />
+      </marker>
+      <marker id="arr-b2-act" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)" />
+      </marker>
+    </defs>
 
-            T12[MỐC < 12H: NỘI SOI THỰC QUẢN DẠ DÀY EGD 🔬 | action | subtitle: Erythromycin 250mg IV trước soi 30-120p + Tiến hành EGD trong 12h: Thắt vòng cao su EVL hoặc Tiêm keo Cyanoacrylate]
+    <!-- Root: 0h -->
+    <g class="flow-node">
+      <rect x="220" y="15" width="480" height="55" rx="8" fill="var(--color-danger-subtle, rgba(239,68,68,0.12))" stroke="var(--color-danger, #ef4444)" stroke-width="2"/>
+      <text x="460" y="37" font-size="13.5" font-weight="700" fill="var(--color-danger, #ef4444)" text-anchor="middle">MỐC 0H: TIẾP NHẬN &amp; HỒI SỨC HUYẾT ĐỘNG BAN ĐẦU</text>
+      <text x="460" y="55" font-size="11" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Bảo vệ đường thở • Đặt 2 đường truyền tĩnh mạch lớn • Hồi sức bảo tồn</text>
+    </g>
 
-            EGD_OUTCOME{Kết quả can thiệp nội soi cầm máu ban đầu? | question}
-            SUCCESS[CẦM MÁU BAN ĐẦU THÀNH CÔNG 🟢 | success | subtitle: Tiếp tục thuốc co mạch tạng 2-5 ngày + Cho ăn sớm đường miệng ngay khi huyết động ổn định]
-            FAILED[CHẢY MÁU TÁI PHÁT HOẶC KHÁNG TRỊ 🚨 | danger | badge: Nguy kịch | subtitle: Đặt bóng chèn Sengstaken-Blakemore hoặc stent kim loại tự nở SEMS bắc cầu tạm thời]
+    <path d="M 460 70 L 460 98" fill="none" stroke="var(--color-danger, #ef4444)" stroke-width="2" marker-end="url(#arr-b2-act)"/>
 
-            TIPS_CHECK{Tiêu chuẩn chỉ định Pre-emptive TIPS (Early TIPS trong 24-72h)? | question}
-            PRE_TIPS[CHỈ ĐỊNH PRE-EMPTIVE TIPS TRONG 24 - 72H ⭐ | danger | badge: Cứu sống tính mạng | subtitle: Child-Pugh C < 14 điểm HOẶC Child-Pugh B > 7 điểm có chảy máu hoạt động trên nội soi HOẶC HVPG > 20 mmHg]
-            SALVAGE_TIPS[SALVAGE TIPS CỨU VÃN KHẨN CẤP 🚨 | danger | subtitle: Khi can thiệp nội soi và thuốc co mạch thất bại hoàn toàn]
+    <!-- Resuscitation Bundle -->
+    <g class="flow-node">
+      <rect x="120" y="98" width="680" height="75" rx="10" fill="var(--color-primary-subtle, rgba(2,132,199,0.12))" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+      <text x="460" y="121" font-size="13.5" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">GÓI HỒI SỨC CẤP CỨU MỐC 0H CHUẨN BAVENO VII</text>
+      <text x="460" y="141" font-size="11" fill="var(--color-text, #334155)" text-anchor="middle">1. Truyền máu bảo tồn Hb đích 7–8 g/dL • 2. Co mạch tạng Terlipressin/Octreotide 2–5 ngày</text>
+      <text x="460" y="157" font-size="11" fill="var(--color-text, #334155)" text-anchor="middle">3. Kháng sinh Ceftriaxone 1g/ngày • 4. Lactulose phòng não gan • 5. CẤM truyền FFP</text>
+    </g>
 
-            T0 --> BUNDLE_T0
-            BUNDLE_T0 --> T12
-            T12 --> EGD_OUTCOME
-            EGD_OUTCOME -->|Cầm máu tốt| SUCCESS
-            EGD_OUTCOME ==>|Thất bại / Chảy máu lại| FAILED
-            SUCCESS --> TIPS_CHECK
-            TIPS_CHECK ==>|Thỏa tiêu chuẩn nguy cơ cao| PRE_TIPS
-            FAILED ==> SALVAGE_TIPS
-          `}
-        />
+    <path d="M 460 173 L 460 200" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arr-b2-act)"/>
+
+    <!-- Mốc < 12h EGD -->
+    <g class="flow-node">
+      <rect x="200" y="200" width="520" height="52" rx="8" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+      <text x="460" y="222" font-size="13" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">MỐC &lt; 12H: NỘI SOI THỰC QUẢN DẠ DÀY CẦM MÁU EGD</text>
+      <text x="460" y="239" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Erythromycin 250mg IV trước soi 30–120p • Thắt vòng EVL hoặc Tiêm keo Cyanoacrylate</text>
+    </g>
+
+    <path d="M 460 252 L 460 280" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arr-b2-act)"/>
+
+    <!-- Outcome Decision -->
+    <g class="flow-node">
+      <polygon points="460,280 650,317 460,354 270,317" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="2"/>
+      <text x="460" y="312" font-size="12" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">Kết Quả Nội Soi Cầm Máu Ban Đầu?</text>
+      <text x="460" y="328" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Đánh giá đáp ứng &amp; Phân tầng nguy cơ thất bại</text>
+    </g>
+
+    <!-- Left: Success -> Preemptive TIPS Check -->
+    <path d="M 270 317 L 160 317 L 160 375" fill="none" stroke="var(--color-success, #22c55e)" stroke-width="2" marker-end="url(#arr-b2-act)"/>
+    <g>
+      <rect x="175" y="305" width="80" height="20" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="215" y="319" font-size="10" font-weight="600" fill="var(--color-success, #16a34a)" text-anchor="middle">Cầm máu tốt</text>
+    </g>
+    <g class="flow-node">
+      <rect x="20" y="375" width="340" height="110" rx="10" fill="var(--color-success-subtle, rgba(34,197,94,0.12))" stroke="var(--color-success, #22c55e)" stroke-width="1.8"/>
+      <text x="190" y="400" font-size="13" font-weight="700" fill="var(--color-success, #16a34a)" text-anchor="middle">CẦM MÁU BAN ĐẦU THÀNH CÔNG</text>
+      <text x="190" y="420" font-size="11" font-weight="600" fill="var(--color-text, #334155)" text-anchor="middle">Duy trì thuốc co mạch tạng 2 – 5 ngày</text>
+      <text x="190" y="438" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">• Cho ăn sớm đường miệng khi huyết động ổn</text>
+      <text x="190" y="454" font-size="10.5" font-weight="700" fill="var(--color-danger, #ef4444)" text-anchor="middle">• Đánh giá tiêu chuẩn Pre-emptive TIPS (24–72h):</text>
+      <text x="190" y="470" font-size="10" fill="var(--color-danger, #ef4444)" text-anchor="middle">Child C &lt; 14 hoặc Child B &gt; 7 có máu chảy trên EGD</text>
+    </g>
+
+    <!-- Right: Failed -> Balloon / SEMS / Salvage TIPS -->
+    <path d="M 650 317 L 760 317 L 760 375" fill="none" stroke="var(--color-danger, #ef4444)" stroke-width="2" marker-end="url(#arr-b2-act)"/>
+    <g>
+      <rect x="670" y="305" width="80" height="20" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="710" y="319" font-size="10" font-weight="600" fill="var(--color-danger, #ef4444)" text-anchor="middle">Thất bại / Chảy lại</text>
+    </g>
+    <g class="flow-node">
+      <rect x="560" y="375" width="340" height="110" rx="10" fill="var(--color-danger-subtle, rgba(239,68,68,0.12))" stroke="var(--color-danger, #ef4444)" stroke-width="2"/>
+      <text x="730" y="400" font-size="13" font-weight="700" fill="var(--color-danger, #ef4444)" text-anchor="middle">CHẢY MÁU TÁI PHÁT HOẶC KHÁNG TRỊ</text>
+      <text x="730" y="420" font-size="11" font-weight="600" fill="var(--color-danger, #ef4444)" text-anchor="middle">Can Thiệp Cứu Nguy Cấp Cứu</text>
+      <text x="730" y="438" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">• Đặt bóng chèn Blakemore hoặc stent tự nở SEMS</text>
+      <text x="730" y="454" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">để bắc cầu tạm thời tối đa 24 – 48 giờ</text>
+      <text x="730" y="470" font-size="10" font-weight="700" fill="var(--color-danger, #ef4444)" text-anchor="middle">• SALVAGE TIPS CỨU VÃN KHẨN CẤP</text>
+    </g>
+  </svg>
+  </div>
+
+  <div class="flowchart-legend-row">
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(2,132,199,0.12); border-color: #0284c7;"></span>
+        <span>Gói cấp cứu mốc 0h &amp; EGD < 12h</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(34,197,94,0.12); border-color: #22c55e;"></span>
+        <span>Cầm máu thành công: Tiếp tục co mạch &amp; Pre-emptive TIPS</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(239,68,68,0.12); border-color: #ef4444;"></span>
+        <span>Kháng trị: Bóng chèn/SEMS bắc cầu &amp; Salvage TIPS</span>
+      </div>
+  </div>
+</div>
       </div>
     </section>
 

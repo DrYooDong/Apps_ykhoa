@@ -1223,33 +1223,92 @@ sections:
       </p>
 
       {/* SVG CLINICAL FLOWCHART */}
-      <FlowchartViewer
-        title="Lưu Đồ Thuật Toán Quyết Định Lâm Sàng Toàn Diện Hợp Nhất (WHO 2024)"
-        code={`graph TD
-  START["BỆNH NHÂN TIẾP CẬN Y TẾ"]:::start --> ILI{"Có Triệu Chứng ILI Nghi Ngờ Cúm?<br/><small>Sốt, ho, đau họng, đau cơ, mệt mỏi</small>"}:::question
+      <div class="flowchart-editorial-card">
+  <div class="flowchart-card-header">
+    <div class="flowchart-badge-title">
+      <span class="flowchart-badge-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg>
+      </span>
+      <span class="flowchart-badge-text">Lưu Đồ Tiếp Cận Điều Trị Kháng Vi Rút &amp; Dự Phòng Sau Phơi Nhiễm (PEP) Cúm (WHO 2024)</span>
+    </div>
+    <span class="flowchart-version-tag">WHO 2024 • Influenza Guidelines</span>
+  </div>
   
-  ILI -- "CÓ (Đang có triệu chứng lâm sàng)" --> SEV{"Đánh Giá Phân Độ Lâm Sàng:<br/>Cúm Nặng vs Cúm Không Nặng?"}:::question
-  ILI -- "KHÔNG (Ủ bệnh / Phơi nhiễm ≤ 48 giờ)" --> EXP{"Phân Loại Nguồn Phơi Nhiễm?"}:::question
-  
-  SEV -- "CÚM NẶNG / H5N1" --> SEV_TX["CÚM NẶNG HOẶC CÚM GIA CẦM H5N1<br/><small>• Nhập viện cấp cứu / ICU ngay<br/>• Oseltamivir 75mg x 2 lần/ngày x 5 ngày<br/>• TUYỆT ĐỐI KHÔNG DÙNG CORTICOID thường quy<br/>• Làm xét nghiệm Real-time RT-PCR khẩn</small>"]:::danger
-  SEV -- "CÚM KHÔNG NẶNG (Ngoại trú)" --> RISK{"Có Yếu Tố Nguy Cơ Bệnh Nặng?<br/><small>Tuổi ≥ 65, bệnh tim phổi mạn, suy giảm miễn dịch, thai phụ</small>"}:::question
-  
-  RISK -- "CÓ (Nguy cơ cao)" --> HIGH_RISK["NHÓM NGUY CƠ CAO NGOẠI TRÚ<br/><small>• Làm test chẩn đoán nhanh POC NAAT / DIA tại chỗ<br/>• Nếu TEST DƯƠNG TÍNH: Baloxavir liều đơn duy nhất trong 48h<br/>• Không lạm dụng Tamiflu • Không dùng kháng sinh</small>"]:::success
-  RISK -- "KHÔNG (Nguy cơ thấp)" --> LOW_RISK["NHÓM NGUY CƠ THẤP (Người khỏe mạnh)<br/><small>• Điều trị triệu chứng: Hạ sốt Paracetamol, bù nước điện giải, nghỉ ngơi<br/>• KHÔNG dùng thuốc kháng virus (Baloxavir/Oseltamivir)<br/>• KHÔNG dùng kháng sinh thường quy</small>"]:::action
-  
-  EXP -- "Phơi nhiễm Cúm Gia Cầm (H5N1, H7N9)" --> AVIAN_PEP["DỰ PHÒNG SAU PHƠI NHIỄM (PEP) 100%<br/><small>• Chỉ định cho TẤT CẢ người tiếp xúc gia cầm ốm/chết<br/>• Oseltamivir liều điều trị: 75mg x 2 lần/ngày x 10 – 14 ngày</small>"]:::danger
-  EXP -- "Phơi nhiễm Cúm Mùa thông thường" --> EXP_RISK{"Đối Tượng Có Nguy Cơ Cực Kỳ Cao?<br/><small>Tuổi ≥ 85, suy giảm MD nặng hoặc đa bệnh nền nặng</small>"}:::question
-  
-  EXP_RISK -- "CÓ (Nguy cơ cực kỳ cao)" --> SEASONAL_PEP["CHỈ ĐỊNH PEP CÚM MÙA<br/><small>• Baloxavir liều đơn duy nhất HOẶC Oseltamivir 75mg x 1/ngày x 10 ngày<br/>• Giảm nguy cơ phát bệnh cúm có triệu chứng</small>"]:::warning
-  EXP_RISK -- "KHÔNG" --> NO_PEP["KHÔNG CHỈ ĐỊNH DỰ PHÒNG PEP THƯỜNG QUY<br/><small>• Tự theo dõi thân nhiệt và triệu chứng trong 7 ngày<br/>• Tránh lạm dụng gây kháng thuốc trong cộng đồng</small>"]:::action
+  <div class="flowchart-svg-scroll">
+    <svg class="med-svg" viewBox="0 0 920 480" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+    <defs>
+      <marker id="arr-flu" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-text-muted, #64748b)" />
+      </marker>
+      <marker id="arr-flu-act" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)" />
+      </marker>
+    </defs>
 
-  classDef start fill:#e0f2fe,stroke:#0284c7,stroke-width:2px,color:#0369a1
-  classDef question fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#854d0e
-  classDef action fill:#eff6ff,stroke:#3b82f6,stroke-width:1.5px,color:#1e40af
-  classDef danger fill:#fee2e2,stroke:#ef4444,stroke-width:2px,color:#991b1b
-  classDef warning fill:#fef3c7,stroke:#f59e0b,stroke-width:2px,color:#92400e
-  classDef success fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#15803d`}
-      />
+    <g class="flow-node">
+      <rect x="240" y="15" width="440" height="52" rx="8" fill="var(--color-primary-subtle, rgba(2,132,199,0.12))" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+      <text x="460" y="36" font-size="13" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">PHÂN TẦNG ĐIỀU TRỊ KHÁNG VI RÚT CÚM (WHO 2024)</text>
+      <text x="460" y="53" font-size="11" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Đánh giá người bệnh cúm mùa hoặc nghi ngờ cúm gia cầm có khả năng gây dịch</text>
+    </g>
+
+    <path d="M 460 67 L 460 95" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arr-flu-act)"/>
+
+    <g class="flow-node">
+      <polygon points="460,95 650,128 460,161 270,128" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="2"/>
+      <text x="460" y="124" font-size="12" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">Phân Nhóm Nguy Cơ Lâm Sàng?</text>
+      <text x="460" y="140" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Cúm nặng / Nguy cơ cao hay Cúm nhẹ không biến chứng?</text>
+    </g>
+
+    <path d="M 270 128 L 150 128 L 150 190" fill="none" stroke="var(--color-danger, #ef4444)" stroke-width="2" marker-end="url(#arr-flu-act)"/>
+    <g class="flow-node">
+      <rect x="30" y="190" width="240" height="95" rx="8" fill="var(--color-danger-subtle, rgba(239,68,68,0.12))" stroke="var(--color-danger, #ef4444)" stroke-width="2"/>
+      <text x="150" y="213" font-size="12" font-weight="700" fill="var(--color-danger, #ef4444)" text-anchor="middle">CÚM NẶNG / NGUY CƠ CAO</text>
+      <text x="150" y="231" font-size="10" fill="var(--color-text, #334155)" text-anchor="middle">Nhập viện, suy hô hấp, SpO2 &lt; 94%</text>
+      <text x="150" y="247" font-size="10.5" font-weight="700" fill="var(--color-success, #16a34a)" text-anchor="middle">Oseltamivir 75mg x 2/ngày x 5 ngày</text>
+      <text x="150" y="265" font-size="9.5" fill="var(--color-danger, #ef4444)" text-anchor="middle">Khởi động CÀNG SỚM CÀNG TỐT (&lt; 48h)</text>
+    </g>
+
+    <path d="M 650 128 L 760 128 L 760 190" fill="none" stroke="var(--color-success, #22c55e)" stroke-width="2" marker-end="url(#arr-flu-act)"/>
+    <g class="flow-node">
+      <rect x="640" y="190" width="240" height="95" rx="8" fill="var(--color-success-subtle, rgba(34,197,94,0.12))" stroke="var(--color-success, #22c55e)" stroke-width="1.8"/>
+      <text x="760" y="213" font-size="12" font-weight="700" fill="var(--color-success, #16a34a)" text-anchor="middle">CÚM NHẸ KHỎE MẠNH</text>
+      <text x="760" y="231" font-size="10" fill="var(--color-text, #334155)" text-anchor="middle">Không bệnh nền, không khó thở</text>
+      <text x="760" y="247" font-size="10.5" font-weight="600" fill="var(--color-primary, #0284c7)" text-anchor="middle">Điều trị triệu chứng bảo tồn</text>
+      <text x="760" y="265" font-size="9.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Tránh lạm dụng thuốc kháng vi rút</text>
+    </g>
+
+    <path d="M 460 161 L 460 310" fill="none" stroke="var(--color-warning, #f59e0b)" stroke-width="1.8" marker-end="url(#arr-flu-act)"/>
+    <g class="flow-node">
+      <rect x="260" y="310" width="400" height="75" rx="8" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="1.8"/>
+      <text x="460" y="333" font-size="12.5" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">DỰ PHÒNG SAU PHƠI NHIỄM (PEP)</text>
+      <text x="460" y="351" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">• Cúm có khả năng gây dịch (H5N1, H7N9): PEP BẮT BUỘC</text>
+      <text x="460" y="367" font-size="10" fill="var(--color-text-muted, #64748b)" text-anchor="middle">• Cúm mùa: Chỉ dùng cho người nguy cơ cực kỳ cao (≥ 85 tuổi, suy giảm MD)</text>
+    </g>
+
+    <path d="M 460 385 L 460 415" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arr-flu-act)"/>
+    <g class="flow-node">
+      <rect x="200" y="415" width="520" height="50" rx="8" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+      <text x="460" y="437" font-size="12.5" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">LỰA CHỌN PEP: BALOXAVIR LIỀU ĐƠN HOẶC OSELTAMIVIR 10 NGÀY</text>
+      <text x="460" y="453" font-size="10" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Uống trong vòng 48 giờ sau phơi nhiễm để đạt hiệu quả bảo vệ tối đa</text>
+    </g>
+  </svg>
+  </div>
+
+  <div class="flowchart-legend-row">
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(239,68,68,0.12); border-color: #ef4444;"></span>
+        <span>Cúm nặng: Oseltamivir 75mg x 2 càng sớm càng tốt</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(245,158,11,0.12); border-color: #f59e0b;"></span>
+        <span>PEP Cúm dịch (H5N1): Bắt buộc Oseltamivir/Baloxavir</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(34,197,94,0.12); border-color: #22c55e;"></span>
+        <span>Cúm nhẹ khỏe mạnh: Điều trị triệu chứng, tránh lạm dụng</span>
+      </div>
+  </div>
+</div>
 
     </div>
   </div>

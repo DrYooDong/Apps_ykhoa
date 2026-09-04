@@ -284,27 +284,182 @@ sections:
         </div>
 
         <div style="margin-top: 1.5rem;">
-          <FlowchartViewer
-            title="Lưu Đồ Phân Tuyến & Lựa Chọn Phác Đồ Điều Trị Lao Nhạy Cảm / Kháng Thuốc (QĐ 162/QĐ-BYT 2024)"
-            code={`graph TD
-  START["BỆNH NHÂN XÁC CHẨN MẮC LAO<br/><small>Có kết quả Xpert MTB/RIF Ultra hoặc Kháng sinh đồ</small>"]:::start --> RIF_RESIST{"Tình Trạng Kháng Rifampicin (RIF)?"}:::question
+          <div class="flowchart-editorial-card">
+            <div class="flowchart-card-header">
+              <div class="flowchart-card-title-group">
+                <span class="flowchart-card-icon">💊</span>
+                <div>
+                  <h3 class="flowchart-card-title">Lưu Đồ Phân Tuyến &amp; Lựa Chọn Phác Đồ Điều Trị Lao Nhạy Cảm / Kháng Thuốc</h3>
+                  <p class="flowchart-card-subtitle">Hướng dẫn Bộ Y Tế (QĐ 162/QĐ-BYT 2024) • Phác đồ chuẩn A1/A2/B1 • Phác đồ đột phá 6 tháng BPaLM • Quản lý tiền XDR</p>
+                </div>
+              </div>
+              <span class="flowchart-card-badge">BYT 162/2024 • Editorial SVG</span>
+            </div>
 
-  RIF_RESIST -- "Nhạy cảm với Rifampicin<br/>(RIF-Susceptible)" --> FORM_TB{"Đánh Giá Vị Trí Tổn Thương & Lứa Tuổi?"}:::question
+            <div class="flowchart-svg-container">
+              <svg class="med-svg" viewBox="0 0 1040 810" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <marker id="arr-lao2" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M 1 1.5 L 8 5 L 1 8.5 Z" fill="var(--color-primary, #0284c7)"/>
+                  </marker>
+                  <marker id="arr-lao2-warn" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M 1 1.5 L 8 5 L 1 8.5 Z" fill="var(--color-warning, #f59e0b)"/>
+                  </marker>
+                  <marker id="arr-lao2-danger" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M 1 1.5 L 8 5 L 1 8.5 Z" fill="var(--color-danger, #ef4444)"/>
+                  </marker>
+                  <marker id="arr-lao2-success" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M 1 1.5 L 8 5 L 1 8.5 Z" fill="var(--color-success, #10b981)"/>
+                  </marker>
+                </defs>
 
-  FORM_TB -- "Lao phổi / ngoài phổi người lớn<br/>(Không ảnh hưởng TK TW / Xương)" --> REG_A1["PHÁC ĐỒ A1: 2HRZE / 4RHE (6 tháng)<br/><small>Tấn công 2 tháng (H,R,Z,E) • Duy trì 4 tháng (R,H,E) uống hàng ngày</small>"]:::success
+                {/* CONNECTORS */}
+                {/* START -> RIF_RESIST */}
+                <path d="M 520 96 V 126" stroke="var(--color-primary, #0284c7)" stroke-width="2" fill="none" marker-end="url(#arr-lao2)"/>
 
-  FORM_TB -- "Lao ở trẻ em" --> REG_A2["PHÁC ĐỒ A2: 2HRZE / 4RH (6 tháng)<br/><small>Hoặc Phác đồ A2a 4 tháng (2HRZE/2RH) nếu tổn thương phổi nhẹ</small>"]:::success
+                {/* RIF_RESIST -> FORM_TB (Left) */}
+                <path d="M 340 153 H 266 Q 260 153 260 159 V 214" stroke="var(--color-success, #10b981)" stroke-width="2" fill="none" marker-end="url(#arr-lao2-success)"/>
 
-  FORM_TB -- "Lao Màng Não / Lao Xương Khớp" --> REG_B1["PHÁC ĐỒ B1: 2HRZE / 10RHE (12 tháng)<br/><small>Duy trì 10 tháng • Bắt buộc phối hợp Corticoid 6-8 tuần đầu nếu lao màng não</small>"]:::action
+                {/* RIF_RESIST -> FQ_CHECK (Right) */}
+                <path d="M 700 153 H 774 Q 780 153 780 159 V 214" stroke="var(--color-danger, #ef4444)" stroke-width="2" fill="none" marker-end="url(#arr-lao2-danger)"/>
 
-  RIF_RESIST -- "Kháng Rifampicin (MDR / RR-TB)" --> FQ_CHECK{"Kết Quả Kháng Fluoroquinolone (Xpert XDR / LPA Hàng 2)?"}:::question
+                {/* FORM_TB -> REG_A1 */}
+                <path d="M 260 266 V 294" stroke="var(--color-success, #10b981)" stroke-width="2" fill="none" marker-end="url(#arr-lao2-success)"/>
 
-  FQ_CHECK -- "Còn nhạy Fluoroquinolone (MDR/RR-TB, tuổi ≥ 14, không có CCĐ)" --> BPALM["PHÁC ĐỒ ĐỘT PHÁ BPaLM (6 tháng)<br/><small>• Bedaquiline + Pretomanid + Linezolid + Moxifloxacin<br/>• Phác đồ siêu ngắn toàn đường uống chuẩn WHO 2024</small>"]:::danger
+                {/* REG_A1 -> REG_A2 */}
+                <path d="M 260 405 V 434" stroke="var(--color-success, #10b981)" stroke-width="2" fill="none" marker-end="url(#arr-lao2-success)"/>
 
-  FQ_CHECK -- "Không đủ điều kiện BPaLM (Trẻ < 14 tuổi, có thai hoặc CCĐ)" --> REG_C["PHÁC ĐỒ C (9 - 11 tháng Bedaquiline)<br/><small>Bdq - Lfx - Lzd - Cfz - Z - E - Hh (Tấn công 4-6 th, duy trì 5 th)</small>"]:::warning
+                {/* REG_A2 -> REG_B1 */}
+                <path d="M 260 540 V 569" stroke="var(--color-primary, #0284c7)" stroke-width="2" fill="none" marker-end="url(#arr-lao2)"/>
 
-  FQ_CHECK -- "Kháng Fluoroquinolone (tiền XDR / pre-XDR-TB)" --> INDIVIDUAL["PHÁC ĐỒ DÀI HẠN CÁ THỂ HÓA (18 - 20 tháng)<br/><small>Phối hợp tối thiểu 4 thuốc hiệu lực: Bdq, Lzd, Cfz, Cs, Dmd theo KSĐ</small>"]:::danger`}
-          />
+                {/* FQ_CHECK -> BPALM */}
+                <path d="M 780 266 V 294" stroke="var(--color-danger, #ef4444)" stroke-width="2" fill="none" marker-end="url(#arr-lao2-danger)"/>
+
+                {/* BPALM -> REG_C */}
+                <path d="M 780 405 V 434" stroke="var(--color-warning, #f59e0b)" stroke-width="2" fill="none" marker-end="url(#arr-lao2-warn)"/>
+
+                {/* REG_C -> INDIVIDUAL */}
+                <path d="M 780 540 V 569" stroke="var(--color-danger, #ef4444)" stroke-width="2" fill="none" marker-end="url(#arr-lao2-danger)"/>
+
+                {/* CONNECTOR LABELS (with background masks) */}
+                <g>
+                  <rect x="165" y="141" width="190" height="22" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+                  <text x="260" y="156" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-success, #10b981)">Nhạy Cảm Rifampicin (RIF-S)</text>
+                </g>
+
+                <g>
+                  <rect x="690" y="141" width="180" height="22" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+                  <text x="780" y="156" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-danger, #ef4444)">Kháng Rifampicin (MDR/RR)</text>
+                </g>
+
+                {/* NODES */}
+                {/* NODE 1: START */}
+                <g class="flow-node">
+                  <rect x="280" y="30" width="480" height="66" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+                  <rect x="280" y="30" width="480" height="24" rx="10" fill="var(--color-primary, #0284c7)" fill-opacity="0.1"/>
+                  <text x="520" y="47" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-primary, #0284c7)" letter-spacing="0.5">BỆNH NHÂN XÁC CHẨN MẮC BỆNH LAO</text>
+                  <text x="520" y="74" text-anchor="middle" font-size="12" font-weight="600" fill="var(--color-text, #1e293b)">Có kết quả GeneXpert MTB/RIF Ultra, Soi AFB hoặc Nuôi cấy vi sinh</text>
+                </g>
+
+                {/* NODE 2: RIF_RESIST (Decision) */}
+                <g class="flow-node">
+                  <rect x="340" y="130" width="360" height="46" rx="23" fill="var(--color-surface, #ffffff)" stroke="var(--color-warning, #f59e0b)" stroke-width="2"/>
+                  <text x="520" y="158" text-anchor="middle" font-size="12" font-weight="700" fill="var(--color-warning, #f59e0b)">Tình Trạng Kháng Thuốc Rifampicin (RIF)?</text>
+                </g>
+
+                {/* NODE 3: FORM_TB (Decision - Left) */}
+                <g class="flow-node">
+                  <rect x="80" y="220" width="360" height="46" rx="23" fill="var(--color-surface, #ffffff)" stroke="var(--color-success, #10b981)" stroke-width="2"/>
+                  <text x="260" y="248" text-anchor="middle" font-size="12" font-weight="700" fill="var(--color-success, #10b981)">Vị Trí Bệnh &amp; Nhóm Tuổi (Lao Nhạy Cảm)</text>
+                </g>
+
+                {/* NODE 4: REG_A1 */}
+                <g class="flow-node">
+                  <rect x="30" y="300" width="460" height="105" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-success, #10b981)" stroke-width="2"/>
+                  <rect x="30" y="300" width="460" height="24" rx="10" fill="var(--color-success, #10b981)" fill-opacity="0.1"/>
+                  <text x="260" y="317" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--color-success, #10b981)" letter-spacing="0.5">PHÁC ĐỒ A1: 2HRZE / 4RHE (6 THÁNG CHUẨN)</text>
+                  <text x="45" y="342" font-size="11.5" font-weight="700" fill="var(--color-text, #1e293b)">Áp dụng: Lao phổi và lao ngoài phổi ở người lớn</text>
+                  <text x="45" y="361" font-size="11" fill="var(--color-text, #1e293b)">• Tấn công 2 tháng: Isoniazid (H) + Rifampicin (R) + Pyrazinamide (Z) + Ethambutol (E)</text>
+                  <text x="45" y="380" font-size="11" fill="var(--color-text, #1e293b)">• Duy trì 4 tháng: Rifampicin (R) + Isoniazid (H) + Ethambutol (E) uống hàng ngày</text>
+                  <text x="45" y="397" font-size="10" fill="var(--color-text-muted, #64748b)">*Không áp dụng cho thể lao màng não hoặc lao xương khớp</text>
+                </g>
+
+                {/* NODE 5: REG_A2 */}
+                <g class="flow-node">
+                  <rect x="30" y="440" width="460" height="100" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-success, #10b981)" stroke-width="2"/>
+                  <rect x="30" y="440" width="460" height="24" rx="10" fill="var(--color-success, #10b981)" fill-opacity="0.1"/>
+                  <text x="260" y="457" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--color-success, #10b981)" letter-spacing="0.5">PHÁC ĐỒ A2: 2HRZE / 4RH (LAO TRẺ EM 6 THÁNG)</text>
+                  <text x="45" y="482" font-size="11.5" font-weight="700" fill="var(--color-text, #1e293b)">Áp dụng cho trẻ em không nghi ngờ kháng thuốc</text>
+                  <text x="45" y="501" font-size="11" fill="var(--color-text, #1e293b)">• Giai đoạn duy trì 4RH (loại bỏ Ethambutol để tránh nguy cơ viêm thị thần kinh)</text>
+                  <text x="45" y="520" font-size="11" fill="var(--color-primary, #0284c7)">• Phác đồ rút ngắn A2a: 2HRZE / 2RH (4 tháng) cho tổn thương phổi nhẹ không hang</text>
+                </g>
+
+                {/* NODE 6: REG_B1 */}
+                <g class="flow-node">
+                  <rect x="30" y="575" width="460" height="110" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+                  <rect x="30" y="575" width="460" height="24" rx="10" fill="var(--color-primary, #0284c7)" fill-opacity="0.1"/>
+                  <text x="260" y="592" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--color-primary, #0284c7)" letter-spacing="0.5">PHÁC ĐỒ B1: 2HRZE / 10RHE (12 THÁNG - MÀNG NÃO / XƯƠNG)</text>
+                  <text x="45" y="617" font-size="11.5" font-weight="700" fill="var(--color-text, #1e293b)">Lao Màng Não &amp; Lao Xương Khớp (Kéo dài duy trì 10 tháng)</text>
+                  <text x="45" y="636" font-size="11" font-weight="600" fill="var(--color-primary, #0284c7)">• BẮT BUỘC PHỐI HỢP DEXAMETHASONE trong 6–8 tuần đầu ở lao màng não</text>
+                  <text x="45" y="655" font-size="11" fill="var(--color-text-muted, #64748b)">Giúp giảm 30% tỷ lệ tử vong và phòng ngừa dính tắc dịch não tủy gây não úng thủy</text>
+                  <text x="45" y="674" font-size="10.5" fill="var(--color-text, #1e293b)">• Lao màng não ở trẻ em: Phác đồ B2 (2HRZE / 10RH)</text>
+                </g>
+
+                {/* NODE 7: FQ_CHECK (Decision - Right) */}
+                <g class="flow-node">
+                  <rect x="600" y="220" width="360" height="46" rx="23" fill="var(--color-surface, #ffffff)" stroke="var(--color-danger, #ef4444)" stroke-width="2"/>
+                  <text x="780" y="248" text-anchor="middle" font-size="12" font-weight="700" fill="var(--color-danger, #ef4444)">Kháng Sinh Đồ Fluoroquinolones (LPA Hàng 2)?</text>
+                </g>
+
+                {/* NODE 8: BPALM */}
+                <g class="flow-node">
+                  <rect x="550" y="300" width="460" height="105" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-danger, #ef4444)" stroke-width="2"/>
+                  <rect x="550" y="300" width="460" height="24" rx="10" fill="var(--color-danger, #ef4444)" fill-opacity="0.12"/>
+                  <text x="780" y="317" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--color-danger, #ef4444)" letter-spacing="0.5">PHÁC ĐỒ ĐỘT PHÁ BPaLM (6 THÁNG TOÀN ĐƯỜNG UỐNG)</text>
+                  <text x="565" y="342" font-size="11.5" font-weight="700" fill="var(--color-danger, #ef4444)">Bedaquiline + Pretomanid + Linezolid + Moxifloxacin</text>
+                  <text x="565" y="361" font-size="11" fill="var(--color-text, #1e293b)">• Rút ngắn từ 18–24 tháng xuống 6 tháng; không dùng thuốc tiêm độc thận/tai</text>
+                  <text x="565" y="380" font-size="11" fill="var(--color-text, #1e293b)">• Chỉ định: MDR/RR-TB tuổi ≥ 14, còn nhạy cảm Fluoroquinolones</text>
+                  <text x="565" y="397" font-size="10" fill="var(--color-text-muted, #64748b)">Nếu có tiền sử kháng FQ: Bỏ Moxifloxacin -&gt; Phác đồ BPaL (6–9 tháng)</text>
+                </g>
+
+                {/* NODE 9: REG_C */}
+                <g class="flow-node">
+                  <rect x="550" y="440" width="460" height="100" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-warning, #f59e0b)" stroke-width="2"/>
+                  <rect x="550" y="440" width="460" height="24" rx="10" fill="var(--color-warning, #f59e0b)" fill-opacity="0.12"/>
+                  <text x="780" y="457" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--color-warning, #f59e0b)" letter-spacing="0.5">PHÁC ĐỒ C: 9 – 11 THÁNG CÓ BEDAQUILINE</text>
+                  <text x="565" y="482" font-size="11.5" font-weight="700" fill="var(--color-text, #1e293b)">4–6 Bdq - Lfx - Lzd - Cfz - Z - E - Hh / 5 Lfx - Cfz - Z - E</text>
+                  <text x="565" y="501" font-size="11" fill="var(--color-text, #1e293b)">• Dành cho người không đủ điều kiện dùng BPaLM (trẻ &lt; 14 tuổi, có thai)</text>
+                  <text x="565" y="520" font-size="11" fill="var(--color-text-muted, #64748b)">• Phác đồ phối hợp nhiều thuốc đường uống đảm bảo hiệu lực diệt khuẩn cao</text>
+                </g>
+
+                {/* NODE 10: INDIVIDUAL */}
+                <g class="flow-node">
+                  <rect x="550" y="575" width="460" height="110" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-danger, #ef4444)" stroke-width="2"/>
+                  <rect x="550" y="575" width="460" height="24" rx="10" fill="var(--color-danger, #ef4444)" fill-opacity="0.18"/>
+                  <text x="780" y="592" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--color-danger, #ef4444)" letter-spacing="0.5">PHÁC ĐỒ CÁ THỂ HÓA DÀI HẠN (18 – 20 THÁNG - PRE-XDR)</text>
+                  <text x="565" y="617" font-size="11.5" font-weight="700" fill="var(--color-danger, #ef4444)">Chỉ định: Kháng Fluoroquinolone (pre-XDR-TB) hoặc thất bại BPaLM</text>
+                  <text x="565" y="636" font-size="11" fill="var(--color-text, #1e293b)">• Bắt buộc gồm tối thiểu 4 thuốc còn hiệu lực: Bdq + Lzd + Cfz + Cs + Dmd</text>
+                  <text x="565" y="655" font-size="11" fill="var(--color-text, #1e293b)">• Thời gian điều trị: Kéo dài ≥ 15–17 tháng sau khi âm hóa nuôi cấy đờm</text>
+                  <text x="565" y="674" font-size="10" fill="var(--color-text-muted, #64748b)">Theo dõi chặt chẽ độc tính thần kinh, thiếu máu và kéo dài khoảng QTc trên ECG</text>
+                </g>
+
+                {/* BOTTOM SUMMARY BAR */}
+                <g class="flow-node">
+                  <rect x="30" y="715" width="980" height="65" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+                  <rect x="30" y="715" width="980" height="20" rx="10" fill="var(--color-primary, #0284c7)" fill-opacity="0.08"/>
+                  <text x="520" y="730" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--color-primary, #0284c7)" letter-spacing="0.5">NGUYÊN TẮC GIÁM SÁT ĐIỀU TRỊ CHỐNG LAO BỘ Y TẾ 2024</text>
+                  <text x="50" y="755" font-size="11" fill="var(--color-text, #1e293b)">• Uống thuốc có kiểm soát trực tiếp (DOT) • Giám sát chức năng gan, thận định kỳ • Theo dõi sát khoảng QTc trên ECG khi dùng Bedaquiline/Moxifloxacin/Clofazimine.</text>
+                </g>
+              </svg>
+            </div>
+
+            <div class="flowchart-legend-row">
+              <div class="legend-item"><span class="legend-dot" style="background:var(--color-success, #10b981);"></span> Lao nhạy cảm Rifampicin (Phác đồ A1, A2)</div>
+              <div class="legend-item"><span class="legend-dot" style="background:var(--color-primary, #0284c7);"></span> Thể màng não / xương khớp (Phác đồ B1 12 tháng)</div>
+              <div class="legend-item"><span class="legend-dot" style="background:var(--color-danger, #ef4444);"></span> Đột phá BPaLM 6 tháng / Cá thể hóa pre-XDR</div>
+              <div class="legend-item"><span class="legend-dot" style="background:var(--color-warning, #f59e0b);"></span> Phác đồ C 9–11 tháng (Trẻ em, phụ nữ có thai)</div>
+            </div>
+          </div>
         </div>
 
       </div>

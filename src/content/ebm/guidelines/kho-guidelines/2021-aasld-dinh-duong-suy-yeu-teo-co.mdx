@@ -732,46 +732,137 @@ sections:
     </div>
     <div class="sec-body">
 
-      <FlowchartViewer 
-        title="Lưu Đồ Tiếp Cận Đánh Giá & Can Thiệp Suy Yếu - Teo Cơ Trong Xơ Gan (AASLD 2021 Toolbox)"
-        code={`flowchart TD
-          CIRR([Bệnh nhân xơ gan còn bù hoặc mất bù | start | badge: AASLD 2021 | subtitle: Tầm soát bắt buộc ngay khi chẩn đoán])
-          SCREEN[1. Sàng lọc Suy yếu & Nguy cơ Dinh dưỡng | action | subtitle: Thang điểm RFH-NPT + Thang điểm Liver Frailty Index (LFI) tại giường]
-          
-          LFI_SCORE{Phân tầng Liver Frailty Index (LFI)? | question}
-          ROBUST[LFI < 3.2: Thể trạng Khỏe (Robust) | success | subtitle: Đánh giá lại mỗi 12 tháng còn bù hoặc mỗi 6 tháng mất bù]
-          PREFRAIL[LFI 3.2 - 4.4: Tiền suy yếu (Prefrail) ⚠️ | warning | subtitle: Đánh giá lại mỗi 3-6 tháng + Khởi động phòng ngừa cấp 2]
-          FRAIL[LFI ≥ 4.5: Suy yếu nặng (Frail) 🚨 | danger | badge: Tiên lượng nặng | subtitle: Tăng nguy cơ tử vong chờ ghép & biến cố mất bù - Đánh giá mỗi 8-12 tuần]
+      <div class="flowchart-editorial-card">
+  <div class="flowchart-card-header">
+    <div class="flowchart-badge-title">
+      <span class="flowchart-badge-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg>
+      </span>
+      <span class="flowchart-badge-text">Lưu Đồ Tiếp Cận Đánh Giá &amp; Can Thiệp Suy Yếu - Teo Cơ Trong Xơ Gan (AASLD 2021 Toolbox)</span>
+    </div>
+    <span class="flowchart-version-tag">AASLD 2021 • Frailty Toolbox</span>
+  </div>
+  
+  <div class="flowchart-svg-scroll">
+    <svg class="med-svg" viewBox="0 0 920 540" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+    <defs>
+      <marker id="arr-fr1" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-text-muted, #64748b)" />
+      </marker>
+      <marker id="arr-fr1-act" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)" />
+      </marker>
+    </defs>
 
-          CT_SARCO{Có sẵn phim chụp CT bụng L3? | question}
-          SARCO_YES[Xác chẩn Teo cơ (Sarcopenia) trên CT L3 | danger | badge: SMI L3 | subtitle: Diện tích cơ xương < 50 cm²/m² ở nam, < 39 cm²/m² ở nữ]
-          SARCO_NO[Đo gián tiếp qua Lực bóp tay & Khám teo cơ thái dương/gốc chi | action]
+    <!-- Root -->
+    <g class="flow-node">
+      <rect x="230" y="15" width="460" height="52" rx="8" fill="var(--color-primary-subtle, rgba(2,132,199,0.12))" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+      <text x="460" y="36" font-size="13.5" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">BỆNH NHÂN XƠ GAN CÒN BÙ HOẶC MẤT BÙ</text>
+      <text x="460" y="53" font-size="11" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Sàng lọc bắt buộc suy yếu &amp; teo cơ bằng RFH-NPT + Liver Frailty Index (LFI)</text>
+    </g>
 
-          TREATMENT[HỘP CÔNG CỤ CAN THIỆP ĐA MÔ THỨC (MANAGEMENT TOOLBOX) ⭐ | action | subtitle: 3 Trục can thiệp cốt lõi AASLD 2021]
+    <path d="M 460 67 L 460 95" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arr-fr1-act)"/>
 
-          AXIS1[Trục 1: Dinh dưỡng tích cực 🍲 | success | subtitle: 35 kcal/kg/ngày + Đạm 1.2-1.5 g/kg/ngày (CẤM kiêng đạm trong não gan) + Bắt buộc bữa phụ đêm LES]
-          AXIS2[Trục 2: Tập luyện F.I.T.T 🏃 | action | subtitle: Aerobic 150-300 min/tuần + Kháng lực 2-3 buổi/tuần sau khi cổ trướng & xuất huyết ổn định]
-          AXIS3[Trục 3: Bù vi chất & Nội khoa 💊 | warning | subtitle: Bù Kẽm 50mg, Vitamin D > 30 ng/mL, B1; Cân nhắc Testosterone nếu suy sinh dục nam]
+    <!-- LFI Score Decision -->
+    <g class="flow-node">
+      <polygon points="460,95 650,130 460,165 270,130" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="2"/>
+      <text x="460" y="126" font-size="12" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">Phân Tầng Thang Điểm LFI?</text>
+      <text x="460" y="142" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Lực bóp tay • Đứng ghế • Thăng bằng</text>
+    </g>
 
-          CIRR --> SCREEN
-          SCREEN --> LFI_SCORE
-          LFI_SCORE -->|LFI < 3.2| ROBUST
-          LFI_SCORE ==>|LFI 3.2-4.4| PREFRAIL
-          LFI_SCORE ==>|LFI ≥ 4.5| FRAIL
+    <!-- 3 LFI branches -->
+    <path d="M 270 130 L 140 130 L 140 190" fill="none" stroke="var(--color-success, #22c55e)" stroke-width="2" marker-end="url(#arr-fr1-act)"/>
+    <path d="M 460 165 L 460 190" fill="none" stroke="var(--color-warning, #f59e0b)" stroke-width="2" marker-end="url(#arr-fr1-act)"/>
+    <path d="M 650 130 L 770 130 L 770 190" fill="none" stroke="var(--color-danger, #ef4444)" stroke-width="2" marker-end="url(#arr-fr1-act)"/>
 
-          PREFRAIL --> CT_SARCO
-          FRAIL --> CT_SARCO
-          CT_SARCO -->|Có phim CT| SARCO_YES
-          CT_SARCO -->|Không có phim CT| SARCO_NO
+    <!-- Robust -->
+    <g class="flow-node">
+      <rect x="30" y="190" width="220" height="70" rx="8" fill="var(--color-success-subtle, rgba(34,197,94,0.12))" stroke="var(--color-success, #22c55e)" stroke-width="1.8"/>
+      <text x="140" y="213" font-size="12.5" font-weight="700" fill="var(--color-success, #16a34a)" text-anchor="middle">LFI &lt; 3.2: THỂ TRẠNG KHỎE</text>
+      <text x="140" y="233" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">Thể trạng Robust ổn định</text>
+      <text x="140" y="248" font-size="10" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Đánh giá lại mỗi 6–12 tháng</text>
+    </g>
 
-          SARCO_YES ==> TREATMENT
-          SARCO_NO ==> TREATMENT
+    <!-- Prefrail -->
+    <g class="flow-node">
+      <rect x="350" y="190" width="220" height="70" rx="8" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="1.8"/>
+      <text x="460" y="213" font-size="12.5" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">LFI 3.2 – 4.4: TIỀN SUY YẾU</text>
+      <text x="460" y="233" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">Cảnh báo nguy cơ mất bù</text>
+      <text x="460" y="248" font-size="10" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Đánh giá lại mỗi 3–6 tháng</text>
+    </g>
 
-          TREATMENT --> AXIS1
-          TREATMENT --> AXIS2
-          TREATMENT --> AXIS3
-        `}
-      />
+    <!-- Frail -->
+    <g class="flow-node">
+      <rect x="660" y="190" width="220" height="70" rx="8" fill="var(--color-danger-subtle, rgba(239,68,68,0.12))" stroke="var(--color-danger, #ef4444)" stroke-width="1.8"/>
+      <text x="770" y="213" font-size="12.5" font-weight="700" fill="var(--color-danger, #ef4444)" text-anchor="middle">LFI ≥ 4.5: SUY YẾU NẶNG</text>
+      <text x="770" y="233" font-size="10.5" font-weight="600" fill="var(--color-danger, #ef4444)" text-anchor="middle">Tăng tử vong chờ ghép gan</text>
+      <text x="770" y="248" font-size="10" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Đánh giá lại mỗi 8–12 tuần</text>
+    </g>
+
+    <!-- Connect Prefrail and Frail to CT Sarcopenia -->
+    <path d="M 460 260 L 460 295" fill="none" stroke="var(--color-warning, #f59e0b)" stroke-width="1.8"/>
+    <path d="M 770 260 L 770 295 L 460 295" fill="none" stroke="var(--color-danger, #ef4444)" stroke-width="1.8"/>
+    <path d="M 460 295 L 460 315" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arr-fr1-act)"/>
+
+    <!-- CT Sarcopenia Node -->
+    <g class="flow-node">
+      <rect x="240" y="315" width="440" height="50" rx="8" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+      <text x="460" y="337" font-size="12.5" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">Xác Chẩn Teo Cơ (Sarcopenia) Trên CT Bụng L3</text>
+      <text x="460" y="353" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">SMI L3 &lt; 50 cm²/m² (Nam) hoặc &lt; 39 cm²/m² (Nữ) • Hoặc đo gián tiếp qua HGS</text>
+    </g>
+
+    <path d="M 460 365 L 460 395" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arr-fr1-act)"/>
+
+    <!-- 3 Core Intervention Axes -->
+    <path d="M 460 395 M 150 395 L 770 395" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+    <path d="M 150 395 L 150 415" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arr-fr1)"/>
+    <path d="M 460 395 L 460 415" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arr-fr1)"/>
+    <path d="M 770 395 L 770 415" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arr-fr1)"/>
+
+    <!-- Axis 1: Nutrition -->
+    <g class="flow-node">
+      <rect x="30" y="415" width="240" height="105" rx="8" fill="var(--color-success-subtle, rgba(34,197,94,0.12))" stroke="var(--color-success, #22c55e)" stroke-width="1.8"/>
+      <text x="150" y="438" font-size="12" font-weight="700" fill="var(--color-success, #16a34a)" text-anchor="middle">Trục 1: Dinh Dưỡng Tích Cực</text>
+      <text x="150" y="458" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">• 35 kcal/kg/ngày</text>
+      <text x="150" y="474" font-size="10.5" font-weight="700" fill="var(--color-danger, #ef4444)" text-anchor="middle">• Đạm 1.2–1.5g (CẤM kiêng đạm)</text>
+      <text x="150" y="492" font-size="10" fill="var(--color-text-muted, #64748b)" text-anchor="middle">• Bắt buộc bữa phụ đêm LES</text>
+    </g>
+
+    <!-- Axis 2: Exercise -->
+    <g class="flow-node">
+      <rect x="340" y="415" width="240" height="105" rx="8" fill="var(--color-primary-subtle, rgba(2,132,199,0.12))" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+      <text x="460" y="438" font-size="12" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">Trục 2: Tập Luyện F.I.T.T</text>
+      <text x="460" y="458" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">• Aerobic 150 – 300 min/tuần</text>
+      <text x="460" y="474" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">• Kháng lực 2 – 3 buổi/tuần</text>
+      <text x="460" y="492" font-size="10" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Tập an toàn khi hết cổ trướng</text>
+    </g>
+
+    <!-- Axis 3: Micronutrients -->
+    <g class="flow-node">
+      <rect x="650" y="415" width="240" height="105" rx="8" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="1.8"/>
+      <text x="770" y="438" font-size="12" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">Trục 3: Bù Vi Chất &amp; Nội Khoa</text>
+      <text x="770" y="458" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">• Kẽm nguyên tố 50 mg/ngày</text>
+      <text x="770" y="474" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">• Vitamin D &gt; 30 ng/mL, Vit B1</text>
+      <text x="770" y="492" font-size="10" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Xem xét Testosterone nếu suy sinh dục</text>
+    </g>
+  </svg>
+  </div>
+
+  <div class="flowchart-legend-row">
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(34,197,94,0.12); border-color: #22c55e;"></span>
+        <span>LFI < 3.2: Thể trạng khỏe (Robust)</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(245,158,11,0.12); border-color: #f59e0b;"></span>
+        <span>LFI 3.2-4.4: Tiền suy yếu (Prefrail)</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(239,68,68,0.12); border-color: #ef4444;"></span>
+        <span>LFI ≥ 4.5: Suy yếu nặng &amp; Teo cơ (Sarcopenia)</span>
+      </div>
+  </div>
+</div>
 
       <div style="margin-top: 1.5rem;"></div>
       {/* FIGURES 4A & 4B EMBED */}

@@ -642,35 +642,133 @@ sections:
     </div>
     <div class="sec-body">
 
-      <FlowchartViewer 
-        title="Lưu Đồ Tiếp Cận Chẩn Đoán & Hồi Sức Tích Cực Suy Gan Cấp (AASLD CPGs)"
-        code={`flowchart TD
-          START([Bệnh nhân Tổn thương gan cấp + Bệnh não gan | start | badge: AASLD 2011 | subtitle: INR >= 1.5, thay đổi tri giác, không có xơ gan mạn])
-          ETIO{Tầm soát căn nguyên & Xét nghiệm khẩn | question}
+      <div class="flowchart-editorial-card">
+  <div class="flowchart-card-header">
+    <div class="flowchart-badge-title">
+      <span class="flowchart-badge-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg>
+      </span>
+      <span class="flowchart-badge-text">Lưu Đồ Tiếp Cận Chẩn Đoán &amp; Hồi Sức Tích Cực Suy Gan Cấp (AASLD CPGs)</span>
+    </div>
+    <span class="flowchart-version-tag">AASLD • Acute Liver Failure</span>
+  </div>
+  
+  <div class="flowchart-svg-scroll">
+    <svg class="med-svg" viewBox="0 0 940 520" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+    <defs>
+      <marker id="arr-alf" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-text-muted, #64748b)" />
+      </marker>
+      <marker id="arr-alf-act" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)" />
+      </marker>
+    </defs>
 
-          WILSON[Nghi ngờ Wilson tối cấp | danger | badge: Khẩn cấp | subtitle: Bili/ALP > 2.0, Coombs (-) -> Đăng ký Ghép gan khẩn]
-          APAP[Quá liều Acetaminophen Paracetamol | warning | badge: Thường gặp nhất | subtitle: AST/ALT > 5.000 -> Truyền ngay N-Acetylcysteine]
-          AIH[Tự miễn hoặc Chưa rõ nguyên nhân | action | badge: Tầm soát sâu | subtitle: Tự kháng thể, Virus, Sinh thiết gan TJLB sớm]
+    <!-- Root -->
+    <g class="flow-node">
+      <rect x="230" y="15" width="480" height="52" rx="8" fill="var(--color-danger-subtle, rgba(239,68,68,0.12))" stroke="var(--color-danger, #ef4444)" stroke-width="2"/>
+      <text x="470" y="36" font-size="13.5" font-weight="700" fill="var(--color-danger, #ef4444)" text-anchor="middle">BỆNH NHÂN TỔN THƯƠNG GAN CẤP + BỆNH NÃO GAN (ALF)</text>
+      <text x="470" y="53" font-size="11" fill="var(--color-text-muted, #64748b)" text-anchor="middle">INR ≥ 1.5 + Rối loạn tri giác ở bệnh nhân không có xơ gan mạn tính</text>
+    </g>
 
-          ICU([HỒI SỨC TÍCH CỰC THẦN KINH & HUYẾT ĐỘNG TẠI ICU | start | badge: Hồi sức chuyên sâu])
-          EDEMA[1. Kiểm soát phù não & Tăng ICP | danger | subtitle: Na+ đích 145-155 mEq/L, Mannitol 20%, Hạ thân nhiệt 32-34°C]
-          HEMO[2. Huyết động & Tưới máu não | action | subtitle: Duy trì MAP > 75 mmHg & CPP 60-80 mmHg, Norepinephrine + Vasopressin]
-          COAG[3. Đông máu tái cân bằng & Ghép gan | success | subtitle: Đánh giá bằng TEG thay cho INR, Tránh rFVIIa, Ghép gan hiến tử vong]
+    <path d="M 470 67 L 470 95" fill="none" stroke="var(--color-danger, #ef4444)" stroke-width="2" marker-end="url(#arr-alf-act)"/>
 
-          START --> ETIO
-          ETIO ==>|Bilirubin/ALP > 2.0| WILSON
-          ETIO -->|Tiền sử dùng thuốc / Men gan cực cao| APAP
-          ETIO -->|Kháng thể (+) / Men gan tăng vừa| AIH
+    <!-- 3 Etiology Pillars -->
+    <path d="M 470 95 M 150 95 L 790 95" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+    <path d="M 150 95 L 150 115" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arr-alf)"/>
+    <path d="M 470 95 L 470 115" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arr-alf)"/>
+    <path d="M 790 95 L 790 115" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arr-alf)"/>
 
-          WILSON ==> ICU
-          APAP --> ICU
-          AIH --> ICU
+    <!-- Etio 1: Wilson -->
+    <g class="flow-node">
+      <rect x="30" y="115" width="240" height="75" rx="8" fill="var(--color-danger-subtle, rgba(239,68,68,0.12))" stroke="var(--color-danger, #ef4444)" stroke-width="1.8"/>
+      <text x="150" y="137" font-size="12" font-weight="700" fill="var(--color-danger, #ef4444)" text-anchor="middle">Wilson Tối Cấp</text>
+      <text x="150" y="155" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">Bilirubin / ALP &gt; 2.0 • Coombs (-)</text>
+      <text x="150" y="171" font-size="10" font-weight="700" fill="var(--color-danger, #ef4444)" text-anchor="middle">Đăng ký Ghép gan khẩn cấp</text>
+    </g>
 
-          ICU ==> EDEMA
-          ICU --> HEMO
-          ICU --> COAG
-        `}
-      />
+    <!-- Etio 2: APAP -->
+    <g class="flow-node">
+      <rect x="350" y="115" width="240" height="75" rx="8" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="1.8"/>
+      <text x="470" y="137" font-size="12" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">Ngộ Độc Acetaminophen (APAP)</text>
+      <text x="470" y="155" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">AST/ALT &gt; 5.000 U/L • Tiền sử quá liều</text>
+      <text x="470" y="171" font-size="10" font-weight="700" fill="var(--color-success, #16a34a)" text-anchor="middle">Truyền ngay N-Acetylcysteine (NAC)</text>
+    </g>
+
+    <!-- Etio 3: AIH / Viral / Indeterminate -->
+    <g class="flow-node">
+      <rect x="670" y="115" width="240" height="75" rx="8" fill="var(--color-primary-subtle, rgba(2,132,199,0.12))" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+      <text x="790" y="137" font-size="12" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">Tự Miễn / Virus / Chưa Rõ</text>
+      <text x="790" y="155" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">Kháng thể ANA, ASMA, IgM anti-HAV/HBc</text>
+      <text x="790" y="171" font-size="10" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Sinh thiết gan qua đường tĩnh mạch TJLB</text>
+    </g>
+
+    <!-- Connect to ICU Resuscitation -->
+    <path d="M 150 190 L 150 220 L 470 220" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+    <path d="M 470 190 L 470 220" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+    <path d="M 790 190 L 790 220 L 470 220" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+    <path d="M 470 220 L 470 245" fill="none" stroke="var(--color-danger, #ef4444)" stroke-width="2" marker-end="url(#arr-alf-act)"/>
+
+    <!-- Central ICU Hub -->
+    <g class="flow-node">
+      <rect x="180" y="245" width="580" height="55" rx="8" fill="var(--color-danger-subtle, rgba(239,68,68,0.12))" stroke="var(--color-danger, #ef4444)" stroke-width="2"/>
+      <text x="470" y="267" font-size="13.5" font-weight="700" fill="var(--color-danger, #ef4444)" text-anchor="middle">HỒI SỨC TÍCH CỰC THẦN KINH &amp; HUYẾT ĐỘNG TẠI ICU</text>
+      <text x="470" y="285" font-size="11" fill="var(--color-text, #334155)" text-anchor="middle">Phòng ngừa phù não đe dọa tụt não &amp; Tái cân bằng đông máu trong suy gan cấp</text>
+    </g>
+
+    <!-- 3 ICU Pillars -->
+    <path d="M 470 300 L 470 330 M 150 330 L 790 330" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+    <path d="M 150 330 L 150 355" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arr-alf)"/>
+    <path d="M 470 330 L 470 355" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arr-alf)"/>
+    <path d="M 790 330 L 790 355" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arr-alf)"/>
+
+    <!-- Pillar 1: Brain Edema -->
+    <g class="flow-node">
+      <rect x="30" y="355" width="240" height="120" rx="8" fill="var(--color-danger-subtle, rgba(239,68,68,0.12))" stroke="var(--color-danger, #ef4444)" stroke-width="1.8"/>
+      <text x="150" y="378" font-size="12" font-weight="700" fill="var(--color-danger, #ef4444)" text-anchor="middle">1. Kiểm Soát Phù Não &amp; ICP</text>
+      <text x="150" y="398" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">• Natri đích 145–155 mEq/L</text>
+      <text x="150" y="414" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">• Mannitol 20% (0.5–1 g/kg)</text>
+      <text x="150" y="430" font-size="10" fill="var(--color-text-muted, #64748b)" text-anchor="middle">• Hạ thân nhiệt 32–34°C cứu nguy</text>
+      <text x="150" y="446" font-size="10" fill="var(--color-danger, #ef4444)" text-anchor="middle">• Đặt catheter đo ICP nếu độ III/IV</text>
+    </g>
+
+    <!-- Pillar 2: Hemodynamics -->
+    <g class="flow-node">
+      <rect x="350" y="355" width="240" height="120" rx="8" fill="var(--color-primary-subtle, rgba(2,132,199,0.12))" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+      <text x="470" y="378" font-size="12" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">2. Huyết Động &amp; Tưới Máu Não</text>
+      <text x="470" y="398" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">• Duy trì MAP &gt; 75 mmHg</text>
+      <text x="470" y="414" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">• Áp lực tưới máu CPP 60–80</text>
+      <text x="470" y="430" font-size="10" fill="var(--color-text-muted, #64748b)" text-anchor="middle">• Vận mạch: Norepinephrine</text>
+      <text x="470" y="446" font-size="10" fill="var(--color-text-muted, #64748b)" text-anchor="middle">• Phối hợp Vasopressin liều thấp</text>
+    </g>
+
+    <!-- Pillar 3: Coagulation and Transplant -->
+    <g class="flow-node">
+      <rect x="670" y="355" width="240" height="120" rx="8" fill="var(--color-success-subtle, rgba(34,197,94,0.12))" stroke="var(--color-success, #22c55e)" stroke-width="1.8"/>
+      <text x="790" y="378" font-size="12" font-weight="700" fill="var(--color-success, #16a34a)" text-anchor="middle">3. Đông Máu &amp; Ghép Gan</text>
+      <text x="790" y="398" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">• Đông máu tái cân bằng</text>
+      <text x="790" y="414" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">• Đánh giá TEG thay vì bù FFP mù</text>
+      <text x="790" y="430" font-size="10" fill="var(--color-text-muted, #64748b)" text-anchor="middle">• Tránh dùng rFVIIa thường quy</text>
+      <text x="790" y="446" font-size="10" font-weight="700" fill="var(--color-success, #16a34a)" text-anchor="middle">• Chỉ định Ghép gan theo King's College</text>
+    </g>
+  </svg>
+  </div>
+
+  <div class="flowchart-legend-row">
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(239,68,68,0.12); border-color: #ef4444;"></span>
+        <span>Wilson tối cấp / Quá liều APAP: NAC ngay lập tức</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(2,132,199,0.12); border-color: #0284c7;"></span>
+        <span>Kiểm soát phù não: Na+ 145-155 mEq/L, Mannitol, MAP > 75</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(34,197,94,0.12); border-color: #22c55e;"></span>
+        <span>Đông máu tái cân bằng (TEG) &amp; Tiêu chuẩn ghép gan King's College</span>
+      </div>
+  </div>
+</div>
 
     </div>
   </div>

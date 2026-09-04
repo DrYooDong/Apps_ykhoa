@@ -295,50 +295,183 @@ sections:
       <div class="sec-body">
         <p style="margin-bottom: 1.25rem; font-size: 0.88rem; color: var(--color-text-muted, #64748b);">Chiến lược điều trị TG18 dựa trên sự cân bằng giữa <strong>Độ nặng bệnh lý</strong> và <strong>Nguy cơ phẫu thuật của người bệnh</strong> (Chỉ số bệnh đồng mắc Charlson - CCI, Thể trạng gây mê - ASA-PS, Tình trạng suy tạng phục hồi nhanh - FOSF, và Yếu tố tiên lượng âm tính).</p>
 
-        <FlowchartViewer 
-          title="Lưu Đồ Xử Trí Lâm Sàng Toàn Diện & Phẫu Thuật Cắt Túi Mật (Tokyo Guidelines 2018)"
-          code={`flowchart TD
-            START([Bệnh nhân Viêm Túi Mật Cấp | start | badge: TG18])
-            TRIAGE{Phân độ nặng TG18: Grade I, II hay III? | question}
+        <div class="flowchart-editorial-card">
+  <div class="flowchart-card-header">
+    <div class="flowchart-card-title">
+      <svg class="flowchart-title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+        <polyline points="2 17 12 22 22 17"></polyline>
+        <polyline points="2 12 12 17 22 12"></polyline>
+      </svg>
+      <span>Lưu Đồ Xử Trí Lâm Sàng Toàn Diện &amp; Phẫu Thuật Cắt Túi Mật (Tokyo Guidelines 2018)</span>
+    </div>
+    <div class="flowchart-card-subtitle">Chiến lược cân bằng độ nặng TG18 và nguy cơ phẫu thuật (CCI, ASA-PS, FOSF)</div>
+  </div>
+  <div class="flowchart-card-body">
+    <div class="flowchart-svg-wrapper">
+<svg class="med-svg" viewBox="0 0 940 520" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arr-tgc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)"/>
+    </marker>
+  </defs>
 
-            G1[Độ I - Nhẹ (Grade I) | success | subtitle: Viêm khu trú, không suy tạng]
-            G2[Độ II - Vừa (Grade II) | warning | badge: Nguy cơ cao | subtitle: WBC >18k, Sờ thấy khối RUQ, Triệu chứng >72h]
-            G3[Độ III - Nặng (Grade III) | danger | badge: Hồi sức ICU | subtitle: Rối loạn chức năng cơ quan]
+  <!-- Root Start -->
+  <g class="node-root" transform="translate(320, 20)">
+    <rect width="300" height="52" rx="10" fill="var(--color-surface)" stroke="#0284c7" stroke-width="2"/>
+    <rect x="0" y="0" width="300" height="52" rx="10" fill="#0284c7" fill-opacity="0.08"/>
+    <text x="150" y="24" text-anchor="middle" font-size="10" font-weight="700" fill="#0284c7" letter-spacing="1">TOKYO GUIDELINES 2018 (TG18)</text>
+    <text x="150" y="42" text-anchor="middle" font-size="13" font-weight="700" fill="var(--color-text)">Bệnh Nhân Viêm Túi Mật Cấp</text>
+  </g>
 
-            G1_RISK{Đánh giá nguy cơ mổ: CCI <= 5 & ASA <= II? | question}
-            G1_SURG[CẮT TÚI MẬT NỘI SOI SỚM (Lap-C < 72h) ⭐ | success | badge: Ưu tiên hàng đầu | subtitle: Kháng sinh quanh phẫu thuật, dừng trong 24h]
-            G1_DELAY[Kháng sinh toàn thân -> Mổ có kế hoạch | action | subtitle: Áp dụng khi người bệnh có nguy cơ cao CCI >= 6]
+  <!-- Connection to Decision -->
+  <path d="M 470 72 L 470 105" fill="none" stroke="#0284c7" stroke-width="2" marker-end="url(#arr-tgc)"/>
 
-            G2_INIT[Kháng sinh + Hồi sức ban đầu 24-48h | action]
-            G2_EVAL{Đáp ứng tốt + PTV có kinh nghiệm + CCI <= 5? | question}
-            G2_SURG[CẮT TÚI MẬT SỚM (Lap-C nâng cao) | success | subtitle: Phẫu thuật viên chuyên khoa, chuyển mổ mở khi cần]
-            G2_DRAIN[DẪN LƯU TÚI MẬT CẤP CỨU (PTGBD) | danger | subtitle: Viêm nặng, sưng nề khó bộc lộ -> Mổ trì hoãn]
+  <!-- Triage Decision -->
+  <g class="node-decision" transform="translate(330, 105)">
+    <rect width="280" height="50" rx="8" fill="var(--color-surface)" stroke="#d97706" stroke-width="1.8"/>
+    <rect x="0" y="0" width="280" height="50" rx="8" fill="#d97706" fill-opacity="0.06"/>
+    <text x="140" y="22" text-anchor="middle" font-size="10" font-weight="700" fill="#d97706">PHÂN TẦNG MỨC ĐỘ NẶNG TG18</text>
+    <text x="140" y="39" text-anchor="middle" font-size="12" font-weight="600" fill="var(--color-text)">Độ I (Nhẹ) | Độ II (Vừa) | Độ III (Nặng)?</text>
+  </g>
 
-            G3_ICU[Hồi sức ICU + Kháng sinh tĩnh mạch phổ rộng | danger | subtitle: Nâng đỡ suy tạng + Đánh giá FOSF]
-            G3_EVAL{Thỏa mãn 4 tiêu chí: Có FOSF, CCI <= 3, Không yếu tố xấu? | question}
-            G3_SURG[Cắt túi mật sớm tại trung tâm chuyên sâu | warning | subtitle: Đòi hỏi ICU hồi sức và kíp mổ giàu kinh nghiệm]
-            G3_DRAIN[DẪN LƯU TÚI MẬT QUA DA CẤP CỨU (PTGBD) ⭐ | danger | badge: Lựa chọn đầu tay | subtitle: Giải áp nguồn nhiễm, trì hoãn phẫu thuật khi ổn định]
+  <!-- Orthogonal Connectors to 3 Tiers -->
+  <!-- Left to Grade I -->
+  <path d="M 330 130 L 150 130 L 150 185" fill="none" stroke="#10b981" stroke-width="1.8" marker-end="url(#arr-tgc)"/>
+  <!-- Middle to Grade II -->
+  <path d="M 470 155 L 470 185" fill="none" stroke="#f59e0b" stroke-width="1.8" marker-end="url(#arr-tgc)"/>
+  <!-- Right to Grade III -->
+  <path d="M 610 130 L 790 130 L 790 185" fill="none" stroke="#f43f5e" stroke-width="1.8" marker-end="url(#arr-tgc)"/>
 
-            START --> TRIAGE
-            TRIAGE -->|Grade I: Nhẹ| G1
-            TRIAGE ==>|Grade II: Vừa| G2
-            TRIAGE ==>|Grade III: Nặng| G3
+  <!-- Decision labels -->
+  <g transform="translate(190, 120)">
+    <rect width="80" height="20" rx="4" fill="var(--color-surface)" stroke="var(--color-border)" stroke-width="1"/>
+    <text x="40" y="14" text-anchor="middle" font-size="10" font-weight="600" fill="#10b981">Độ I: Nhẹ</text>
+  </g>
+  <g transform="translate(480, 158)">
+    <rect width="80" height="20" rx="4" fill="var(--color-surface)" stroke="var(--color-border)" stroke-width="1"/>
+    <text x="40" y="14" text-anchor="middle" font-size="10" font-weight="600" fill="#f59e0b">Độ II: Vừa</text>
+  </g>
+  <g transform="translate(670, 120)">
+    <rect width="86" height="20" rx="4" fill="var(--color-surface)" stroke="var(--color-border)" stroke-width="1"/>
+    <text x="43" y="14" text-anchor="middle" font-size="10" font-weight="600" fill="#f43f5e">Độ III: Nặng</text>
+  </g>
 
-            G1 --> G1_RISK
-            G1_RISK -->|Nguy cơ thấp| G1_SURG
-            G1_RISK -->|Nguy cơ cao| G1_DELAY
+  <!-- COLUMN 1: GRADE I (x=30, w=240) -->
+  <g transform="translate(30, 185)">
+    <rect width="240" height="52" rx="8" fill="var(--color-surface)" stroke="#10b981" stroke-width="1.5"/>
+    <rect x="0" y="0" width="240" height="52" rx="8" fill="#10b981" fill-opacity="0.07"/>
+    <text x="120" y="22" text-anchor="middle" font-size="11" font-weight="700" fill="#10b981">ĐỘ I - NHẸ (GRADE I)</text>
+    <text x="120" y="39" text-anchor="middle" font-size="11" fill="var(--color-text-muted)">Viêm khu trú, không suy tạng</text>
+  </g>
 
-            G2 --> G2_INIT
-            G2_INIT --> G2_EVAL
-            G2_EVAL -->|Có đáp ứng| G2_SURG
-            G2_EVAL ==>|Thất bại/Nguy cơ cao| G2_DRAIN
+  <path d="M 150 237 L 150 262" fill="none" stroke="var(--color-border)" stroke-width="1.5" marker-end="url(#arr-tgc)"/>
 
-            G3 ==> G3_ICU
-            G3_ICU --> G3_EVAL
-            G3_EVAL -->|Thỏa cả 4 tiêu chí| G3_SURG
-            G3_EVAL ==>|Không thỏa tiêu chí| G3_DRAIN
-          `}
-        />
+  <!-- Grade I Eval -->
+  <g transform="translate(30, 262)">
+    <rect width="240" height="50" rx="8" fill="var(--color-surface)" stroke="#0ea5e9" stroke-width="1.3"/>
+    <text x="120" y="21" text-anchor="middle" font-size="10" font-weight="700" fill="#0ea5e9">ĐÁNH GIÁ NGUY CƠ MỔ</text>
+    <text x="120" y="38" text-anchor="middle" font-size="11" fill="var(--color-text)">CCI &lt;= 5 và ASA-PS &lt;= II?</text>
+  </g>
+
+  <path d="M 150 312 L 150 342" fill="none" stroke="#10b981" stroke-width="1.5" marker-end="url(#arr-tgc)"/>
+  <g transform="translate(40, 342)">
+    <rect width="220" height="66" rx="8" fill="var(--color-surface)" stroke="#10b981" stroke-width="2"/>
+    <rect x="0" y="0" width="220" height="66" rx="8" fill="#10b981" fill-opacity="0.08"/>
+    <text x="110" y="20" text-anchor="middle" font-size="10" font-weight="700" fill="#10b981">ƯU TIÊN HÀNG ĐẦU ⭐</text>
+    <text x="110" y="37" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-text)">Cắt Túi Mật Nội Soi Sớm</text>
+    <text x="110" y="53" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">Lap-C &lt; 72h + KS quanh mổ &lt; 24h</text>
+  </g>
+
+  <path d="M 270 287 L 290 287 L 290 440 L 250 440" fill="none" stroke="#f59e0b" stroke-width="1.5" marker-end="url(#arr-tgc)"/>
+  <g transform="translate(40, 420)">
+    <rect width="220" height="50" rx="8" fill="var(--color-surface)" stroke="#f59e0b" stroke-width="1.3"/>
+    <text x="110" y="21" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-text)">Nếu Nguy Cơ Cao (CCI &gt;= 6)</text>
+    <text x="110" y="37" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">Kháng sinh toàn thân -&gt; Mổ có kế hoạch</text>
+  </g>
+
+  <!-- COLUMN 2: GRADE II (x=350, w=240) -->
+  <g transform="translate(350, 185)">
+    <rect width="240" height="52" rx="8" fill="var(--color-surface)" stroke="#f59e0b" stroke-width="1.5"/>
+    <rect x="0" y="0" width="240" height="52" rx="8" fill="#f59e0b" fill-opacity="0.07"/>
+    <text x="120" y="22" text-anchor="middle" font-size="11" font-weight="700" fill="#f59e0b">ĐỘ II - VỪA (GRADE II)</text>
+    <text x="120" y="39" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">WBC &gt; 18k, Sờ thấy khối, Kéo dài &gt; 72h</text>
+  </g>
+
+  <path d="M 470 237 L 470 262" fill="none" stroke="var(--color-border)" stroke-width="1.5" marker-end="url(#arr-tgc)"/>
+
+  <g transform="translate(350, 262)">
+    <rect width="240" height="50" rx="8" fill="var(--color-surface)" stroke="#0ea5e9" stroke-width="1.3"/>
+    <text x="120" y="21" text-anchor="middle" font-size="11" font-weight="700" fill="#0ea5e9">HỒI SỨC + KHÁNG SINH 24-48H</text>
+    <text x="120" y="38" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">Đáp ứng tốt + PTV kinh nghiệm + CCI &lt;= 5?</text>
+  </g>
+
+  <path d="M 420 312 L 420 350" fill="none" stroke="#10b981" stroke-width="1.5" marker-end="url(#arr-tgc)"/>
+  <path d="M 520 312 L 520 350" fill="none" stroke="#f43f5e" stroke-width="1.5" marker-end="url(#arr-tgc)"/>
+
+  <g transform="translate(330, 350)">
+    <rect width="130" height="66" rx="8" fill="var(--color-surface)" stroke="#10b981" stroke-width="1.5"/>
+    <rect x="0" y="0" width="130" height="66" rx="8" fill="#10b981" fill-opacity="0.07"/>
+    <text x="65" y="20" text-anchor="middle" font-size="10" font-weight="700" fill="#10b981">ĐÁP ỨNG TỐT</text>
+    <text x="65" y="37" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-text)">Lap-C Sớm</text>
+    <text x="65" y="53" text-anchor="middle" font-size="9" fill="var(--color-text-muted)">Chuyển mổ hở khi cần</text>
+  </g>
+
+  <g transform="translate(480, 350)">
+    <rect width="130" height="66" rx="8" fill="var(--color-surface)" stroke="#f43f5e" stroke-width="1.5"/>
+    <rect x="0" y="0" width="130" height="66" rx="8" fill="#f43f5e" fill-opacity="0.07"/>
+    <text x="65" y="20" text-anchor="middle" font-size="10" font-weight="700" fill="#f43f5e">THẤT BẠI / NẶNG</text>
+    <text x="65" y="37" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-text)">Dẫn Lưu PTGBD</text>
+    <text x="65" y="53" text-anchor="middle" font-size="9" fill="var(--color-text-muted)">Giải áp, mổ trì hoãn</text>
+  </g>
+
+  <!-- COLUMN 3: GRADE III (x=670, w=240) -->
+  <g transform="translate(670, 185)">
+    <rect width="240" height="52" rx="8" fill="var(--color-surface)" stroke="#f43f5e" stroke-width="1.8"/>
+    <rect x="0" y="0" width="240" height="52" rx="8" fill="#f43f5e" fill-opacity="0.08"/>
+    <text x="120" y="22" text-anchor="middle" font-size="11" font-weight="700" fill="#f43f5e">ĐỘ III - NẶNG (GRADE III)</text>
+    <text x="120" y="39" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">Rối loạn chức năng ít nhất 1 cơ quan</text>
+  </g>
+
+  <path d="M 790 237 L 790 262" fill="none" stroke="#f43f5e" stroke-width="1.8" marker-end="url(#arr-tgc)"/>
+
+  <g transform="translate(670, 262)">
+    <rect width="240" height="50" rx="8" fill="var(--color-surface)" stroke="#f43f5e" stroke-width="1.5"/>
+    <text x="120" y="21" text-anchor="middle" font-size="11" font-weight="700" fill="#f43f5e">HỒI SỨC ICU + KHÁNG SINH TM</text>
+    <text x="120" y="38" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">Nâng đỡ suy tạng + Đánh giá 4 tiêu chí FOSF</text>
+  </g>
+
+  <path d="M 740 312 L 740 350" fill="none" stroke="#f59e0b" stroke-width="1.5" marker-end="url(#arr-tgc)"/>
+  <path d="M 840 312 L 840 350" fill="none" stroke="#f43f5e" stroke-width="1.8" marker-end="url(#arr-tgc)"/>
+
+  <g transform="translate(660, 350)">
+    <rect width="120" height="74" rx="8" fill="var(--color-surface)" stroke="#f59e0b" stroke-width="1.5"/>
+    <rect x="0" y="0" width="120" height="74" rx="8" fill="#f59e0b" fill-opacity="0.07"/>
+    <text x="60" y="20" text-anchor="middle" font-size="9" font-weight="700" fill="#f59e0b">THỎA 4 TIÊU CHÍ</text>
+    <text x="60" y="36" text-anchor="middle" font-size="10" font-weight="700" fill="var(--color-text)">Cắt Túi Mật Sớm</text>
+    <text x="60" y="52" text-anchor="middle" font-size="9" fill="var(--color-text-muted)">Tại trung tâm</text>
+    <text x="60" y="66" text-anchor="middle" font-size="9" fill="var(--color-text-muted)">chuyên sâu</text>
+  </g>
+
+  <g transform="translate(790, 350)">
+    <rect width="140" height="74" rx="8" fill="var(--color-surface)" stroke="#f43f5e" stroke-width="2"/>
+    <rect x="0" y="0" width="140" height="74" rx="8" fill="#f43f5e" fill-opacity="0.09"/>
+    <text x="70" y="20" text-anchor="middle" font-size="9" font-weight="700" fill="#f43f5e">LỰA CHỌN ĐẦU TAY ⭐</text>
+    <text x="70" y="36" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-text)">Dẫn Lưu PTGBD</text>
+    <text x="70" y="52" text-anchor="middle" font-size="9" fill="var(--color-text-muted)">Giải áp túi mật cấp cứu</text>
+    <text x="70" y="66" text-anchor="middle" font-size="9" fill="var(--color-text-muted)">Trì hoãn phẫu thuật</text>
+  </g>
+</svg>
+    </div>
+  </div>
+  <div class="flowchart-card-footer">
+    <div class="flowchart-legend-row">
+      <span class="legend-item"><span class="legend-dot" style="background: #10b981;"></span>Độ I: Cắt túi mật nội soi sớm < 72h (Lap-C)</span>
+      <span class="legend-item"><span class="legend-dot" style="background: #f59e0b;"></span>Độ II: Kháng sinh + Mổ sớm chuyên sâu hoặc Dẫn lưu PTGBD</span>
+      <span class="legend-item"><span class="legend-dot" style="background: #f43f5e;"></span>Độ III: Hồi sức ICU + Dẫn lưu PTGBD qua da cấp cứu đầu tay</span>
+    </div>
+  </div>
+</div>
 
         
         <h3 class="sec-subtitle">Tiêu Chuẩn Chuyển Tuyến Y Tế (TG18 Transfer Criteria)</h3>

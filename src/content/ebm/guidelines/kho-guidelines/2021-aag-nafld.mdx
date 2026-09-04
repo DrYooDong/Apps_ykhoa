@@ -91,32 +91,112 @@ sections:
       </div>
       <div class="sec-body">
         <p style="font-size:0.86rem; color:var(--color-text-muted, #64748b); margin-bottom:1rem;">Sơ đồ tiếp cận toàn diện theo các Khuyến nghị Thực hành Tốt nhất (Best Practice Advices - BPA 1 đến 10) của Hiệp hội Tiêu hóa Hoa Kỳ (AGA):</p>
-        <FlowchartViewer 
-          title="Thuật Toán Quản Lý & Can Thiệp Lối Sống Trong NAFLD/NASH (AGA 2021)"
-          code={`flowchart TD
-            START([Bệnh nhân được chẩn đoán NAFLD / NASH | start | badge: AGA 2021 | subtitle: Tầm soát bệnh đồng mắc chuyển hóa ĐTĐ2, Rối loạn lipid máu, Tăng huyết áp])
-            BMI_CHECK{Phân tầng theo chỉ số khối cơ thể (BMI)? | question}
+        <div class="flowchart-editorial-card">
+  <div class="flowchart-card-header">
+    <div class="flowchart-badge-title">
+      <span class="flowchart-badge-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg>
+      </span>
+      <span class="flowchart-badge-text">Thuật Toán Quản Lý &amp; Can Thiệp Lối Sống Trong NAFLD/NASH (AGA 2021)</span>
+    </div>
+    <span class="flowchart-version-tag">AGA 2021 • NAFLD/NASH</span>
+  </div>
+  
+  <div class="flowchart-svg-scroll">
+    <svg class="med-svg" viewBox="0 0 920 480" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+    <defs>
+      <marker id="arr-naf" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-text-muted, #64748b)" />
+      </marker>
+      <marker id="arr-naf-act" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)" />
+      </marker>
+    </defs>
 
-            LEAN[NAFLD thể gầy (Lean NAFLD) 🌿 | action | badge: BMI ≤ 25 (≤ 23 Châu Á) | subtitle: Mục tiêu: Giảm 3% - 5% trọng lượng cơ thể (TBW)]
-            OBESE[Thừa cân / Béo phì (BPA 1-2) ⚖️ | warning | badge: BMI > 25 (> 23 Châu Á) | subtitle: Mục tiêu: Giảm ≥ 7% - 10% trọng lượng cơ thể (TBW)]
+    <!-- Root -->
+    <g class="flow-node">
+      <rect x="240" y="15" width="440" height="52" rx="8" fill="var(--color-primary-subtle, rgba(2,132,199,0.12))" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+      <text x="460" y="36" font-size="13.5" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">BỆNH NHÂN ĐƯỢC CHẨN ĐOÁN NAFLD / NASH</text>
+      <text x="460" y="53" font-size="11" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Tầm soát bệnh đồng mắc chuyển hóa: ĐTĐ typ 2, Rối loạn lipid máu, Tăng huyết áp</text>
+    </g>
 
-            PILLARS[3 TRỤ CỘT CAN THIỆP LỐI SỐNG NỀN TẢNG (BPA 3, 4, 7, 9) ⭐ | action | subtitle: 1. Dinh dưỡng Địa Trung Hải giảm 500-1000 kcal, kiêng HFCS + 2. Tập thể dục 150-300 min/tuần + 3. Kiêng hoàn toàn thuốc lá & hạn chế rượu bia]
+    <path d="M 460 67 L 460 95" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arr-naf-act)"/>
 
-            STAGE{Phân tầng giai đoạn xơ hóa gan (FIB-4 / FibroScan)? | question}
+    <!-- BMI Decision -->
+    <g class="flow-node">
+      <polygon points="460,95 640,128 460,161 280,128" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="2"/>
+      <text x="460" y="124" font-size="12" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">Phân Tầng Theo Chỉ Số BMI?</text>
+      <text x="460" y="140" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">BMI &gt; 25 (&gt; 23 Châu Á) hay Thể Gầy?</text>
+    </g>
 
-            NON_CIRR[NAFLD / NASH CHƯA XƠ GAN (F0 - F3) 🟢 | success | badge: Mục tiêu giảm cân | subtitle: Giảm ≥ 5% TBW: Giảm mỡ gan -> Giảm ≥ 7%: Thoái lui viêm NASH -> Giảm ≥ 10%: Đảo ngược 45% xơ hóa gan]
-            CIRR_SARC[XƠ GAN DO NASH & NGUY CƠ TEO CƠ (BPA 10) 🚨 | danger | badge: Giai đoạn F4 | subtitle: Đạm 1.2-1.5 g/kg/ngày giàu BCAA + Tránh nhịn đói > 4-6h + Bắt buộc bữa phụ đêm LES ≥ 50g carb phức hợp]
+    <!-- Left: Lean NAFLD -->
+    <path d="M 280 128 L 170 128 L 170 190" fill="none" stroke="var(--color-success, #22c55e)" stroke-width="2" marker-end="url(#arr-naf-act)"/>
+    <g class="flow-node">
+      <rect x="50" y="190" width="240" height="70" rx="8" fill="var(--color-success-subtle, rgba(34,197,94,0.12))" stroke="var(--color-success, #22c55e)" stroke-width="1.8"/>
+      <text x="170" y="213" font-size="12.5" font-weight="700" fill="var(--color-success, #16a34a)" text-anchor="middle">NAFLD THỂ GẦY (LEAN)</text>
+      <text x="170" y="233" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">BMI ≤ 25 (≤ 23 Châu Á)</text>
+      <text x="170" y="248" font-size="10" font-weight="600" fill="var(--color-success, #16a34a)" text-anchor="middle">Mục tiêu: Giảm 3% – 5% cân nặng</text>
+    </g>
 
-            START --> BMI_CHECK
-            BMI_CHECK -->|Thể gầy| LEAN
-            BMI_CHECK ==>|Thừa cân / Béo phì| OBESE
-            LEAN --> PILLARS
-            OBESE --> PILLARS
-            PILLARS --> STAGE
-            STAGE -->|Chưa xơ gan F0-F3| NON_CIRR
-            STAGE ==>|Xơ gan F4 / Teo cơ| CIRR_SARC
-          `}
-        />
+    <!-- Right: Obese / Overweight -->
+    <path d="M 640 128 L 750 128 L 750 190" fill="none" stroke="var(--color-warning, #f59e0b)" stroke-width="2" marker-end="url(#arr-naf-act)"/>
+    <g class="flow-node">
+      <rect x="630" y="190" width="240" height="70" rx="8" fill="var(--color-warning-subtle, rgba(245,158,11,0.12))" stroke="var(--color-warning, #f59e0b)" stroke-width="1.8"/>
+      <text x="750" y="213" font-size="12.5" font-weight="700" fill="var(--color-warning, #d97706)" text-anchor="middle">THỪA CÂN / BÉO PHÌ</text>
+      <text x="750" y="233" font-size="10.5" fill="var(--color-text, #334155)" text-anchor="middle">BMI &gt; 25 (&gt; 23 Châu Á)</text>
+      <text x="750" y="248" font-size="10" font-weight="600" fill="var(--color-warning, #d97706)" text-anchor="middle">Mục tiêu: Giảm ≥ 7% – 10% cân nặng</text>
+    </g>
+
+    <!-- Connect to 3 Pillars -->
+    <path d="M 170 260 L 170 285 L 460 285" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+    <path d="M 750 260 L 750 285 L 460 285" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+    <path d="M 460 285 L 460 305" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arr-naf-act)"/>
+
+    <!-- 3 Pillars Node -->
+    <g class="flow-node">
+      <rect x="150" y="305" width="620" height="60" rx="8" fill="var(--color-primary-subtle, rgba(2,132,199,0.12))" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+      <text x="460" y="327" font-size="13" font-weight="700" fill="var(--color-primary, #0284c7)" text-anchor="middle">3 TRỤ CỘT CAN THIỆP LỐI SỐNG NỀN TẢNG (AGA 2021)</text>
+      <text x="460" y="347" font-size="11" fill="var(--color-text, #334155)" text-anchor="middle">1. Dinh dưỡng Địa Trung Hải giảm 500-1000 kcal • 2. Tập thể dục 150-300 min/tuần • 3. Kiêng rượu &amp; thuốc lá</text>
+    </g>
+
+    <!-- Connect to Fibrosis Stage -->
+    <path d="M 460 365 L 460 385 M 230 385 L 690 385" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+    <path d="M 230 385 L 230 405" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arr-naf)"/>
+    <path d="M 690 385 L 690 405" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arr-naf)"/>
+
+    <!-- Stage F0 - F3 -->
+    <g class="flow-node">
+      <rect x="80" y="405" width="300" height="65" rx="8" fill="var(--color-success-subtle, rgba(34,197,94,0.12))" stroke="var(--color-success, #22c55e)" stroke-width="1.8"/>
+      <text x="230" y="426" font-size="12" font-weight="700" fill="var(--color-success, #16a34a)" text-anchor="middle">GIAI ĐOẠN CHƯA XƠ GAN (F0 – F3)</text>
+      <text x="230" y="444" font-size="10" fill="var(--color-text, #334155)" text-anchor="middle">• Giảm ≥ 5% TBW: Giảm mỡ gan • ≥ 7%: Thoái lui NASH</text>
+      <text x="230" y="458" font-size="9.5" font-weight="600" fill="var(--color-success, #16a34a)" text-anchor="middle">• Giảm ≥ 10%: Đảo ngược 45% xơ hóa gan</text>
+    </g>
+
+    <!-- Stage F4 Cirrhosis -->
+    <g class="flow-node">
+      <rect x="540" y="405" width="300" height="65" rx="8" fill="var(--color-danger-subtle, rgba(239,68,68,0.12))" stroke="var(--color-danger, #ef4444)" stroke-width="1.8"/>
+      <text x="690" y="426" font-size="12" font-weight="700" fill="var(--color-danger, #ef4444)" text-anchor="middle">XƠ GAN DO NASH &amp; NGUY CƠ TEO CƠ (F4)</text>
+      <text x="690" y="444" font-size="10" fill="var(--color-text, #334155)" text-anchor="middle">• Đạm 1.2–1.5 g/kg/ngày giàu BCAA • Tránh đói &gt; 4–6h</text>
+      <text x="690" y="458" font-size="9.5" font-weight="700" fill="var(--color-danger, #ef4444)" text-anchor="middle">• Bắt buộc bữa phụ đêm LES ≥ 50g carb phức hợp</text>
+    </g>
+  </svg>
+  </div>
+
+  <div class="flowchart-legend-row">
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(34,197,94,0.12); border-color: #22c55e;"></span>
+        <span>Thể gầy: Giảm 3-5% cân nặng • F0-F3: Giảm ≥ 7-10% thoái lui xơ hóa</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(2,132,199,0.12); border-color: #0284c7;"></span>
+        <span>3 trụ cột can thiệp lối sống AGA 2021</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: rgba(239,68,68,0.12); border-color: #ef4444;"></span>
+        <span>Xơ gan F4: Chống teo cơ, đạm 1.2-1.5g + Bữa phụ đêm LES</span>
+      </div>
+  </div>
+</div>
       </div>
       </div>
     </section>
