@@ -11,6 +11,26 @@ import { Study } from './guidelines-types';
 
 export const KHO_GUIDELINES_STATIC: Study[] = [
   {
+    id: '2025-esc-eas-dyslipidemia',
+    title: 'ESC/EAS 2025: Hướng Dẫn Cập Nhật Tiêu Điểm Về Quản Lý Rối Loạn Lipid Máu — Tăng Cường Dự Phòng, Phân Tầng Nguy Cơ & Điều Trị Trúng Đích',
+    titleEn: '2025 ESC/EAS Dyslipidemia Guidelines Focused Update: Intensifying Prevention, Risk Stratification, and Therapy (Pradhan et al., Am J Cardiol 2026 / Eur Heart J 2025)',
+    sourceType: 'intl-guideline',
+    specialty: 'cardio',
+    design: 'guideline',
+    impact: 'practice-changing',
+    year: 2025,
+    organization: 'ESC/EAS',
+    journal: 'Am J Cardiol',
+    file: '2025-esc-eas-dyslipidemia.mdx',
+    conditionKey: 'dyslipidemia',
+    icd10: ['E78', 'E78.0', 'E78.1', 'E78.2', 'I25.1', 'I21', 'B20'],
+    intervention: 'Bản cập nhật tiêu điểm của Hiệp hội Tim mạch Châu Âu và Hiệp hội Xơ vữa Động mạch Châu Âu (ESC/EAS 2025) về quản lý rối loạn lipid máu: Hiện đại hóa phân tầng nguy cơ bằng thuật toán SCORE2 (≤ 70 tuổi) và SCORE2-OP (70–89 tuổi) dựa trên Non-HDL-C và dự báo biến cố tử vong lẫn không tử vong; Tích hợp các yếu tố điều chỉnh nguy cơ (Risk Modifiers): Vôi hóa mạch vành CAC > 300 (tái phân loại thẳng vào dự phòng cấp 2), nồng độ Lipoprotein(a) ≥ 50 mg/dL (105 nmol/L), mãn kinh sớm, tiền sản giật và kiểu hình Nam Á; Nguyên tắc ĐÍCH KÉP (Dual Goal): Vừa đạt nồng độ tuyệt đối (< 55 mg/dL ở Very High Risk, < 70 mg/dL ở High Risk), VỪA phải giảm ≥ 50% so với nền; Bổ sung phân nhóm Nguy cơ cực kỳ cao (Extreme Risk: LDL-C < 40 mg/dL / 1.0 mmol/L); Bổ sung Axit Bempedoic (ức chế ACL gan, CLEAR Outcomes giảm 13% MACE, an toàn cho người đau cơ), Inclisiran (siRNA hạ 50% LDL-C), Evinacumab (ức chế ANGPTL3 cho HoFH); Chiến lược "Strike Early and Strong" trong ACS khởi trị phối hợp statin liều cao + ezetimibe tại viện; Icosapent Ethyl 4g/ngày cho TG 135-499 mg/dL; Khuyến cáo đột phá chỉ định Statin dự phòng cấp 1 cho TẤT CẢ bệnh nhân HIV ≥ 40 tuổi (REPRIEVE, ưu tiên Pitavastatin) và dùng Statin bảo vệ tim trong hóa trị Anthracycline (STOP-CA); Khuyến cáo Class III chống lại thực phẩm bổ sung/men gạo đỏ/omega-3 generic.',
+    primaryEndpoint: 'Tối ưu hóa lợi ích phòng ngừa biến cố tim mạch do xơ vữa (ASCVD) thông qua chuyển đổi sang SCORE2/SCORE2-OP, bắt buộc nguyên tắc đích kép LDL-C, mở rộng các liệu pháp non-statin tiên tiến và bảo vệ tim mạch cho các quần thể đặc thù (sau ACS, HIV, hóa trị ung thư).',
+    keyResults: 'SCORE2 và SCORE2-OP mở rộng dự báo biến cố toàn diện đến 89 tuổi | Phối hợp bốn thuốc (Statin + EZE + BA + PCSK9 mAb) giúp hạ LDL-C tối đa ~86% | Đo Lp(a) ít nhất 1 lần trong đời: ngưỡng ≥ 50 mg/dL (105 nmol/L) tăng vọt nguy cơ trọn đời biến cố tim mạch (HR > 2.5-3.0 theo UK Biobank) | Axit Bempedoic giảm 13% MACE ở nhóm không dung nạp statin | Phối hợp đôi sớm tại viện sau ACS rút ngắn cửa sổ nguy cơ nhạy cảm | Pitavastatin dự phòng cấp 1 ở bệnh nhân HIV ≥ 40 tuổi giảm 35% MACE (REPRIEVE) | Atorvastatin giảm gần 3 lần độc tính suy giảm chức năng tim do hóa trị Anthracycline (STOP-CA).',
+    summary: 'Bản cập nhật tiêu điểm mang tính đột phá của Hiệp hội Tim mạch Châu Âu và Hiệp hội Xơ vữa Động mạch Châu Âu (ESC/EAS 2025): Thay thế toàn bộ mô hình SCORE cũ bằng SCORE2/SCORE2-OP; Bắt buộc nguyên tắc Đích kép (đạt mốc tuyệt đối VÀ giảm ≥ 50% so với nền); Xác lập phân nhóm Extreme Risk với đích LDL-C < 40 mg/dL; Tích hợp Axit Bempedoic, Inclisiran, Evinacumab; Khởi trị phối hợp sớm trong ACS; Chỉ định Statin dự phòng cấp 1 đột phá cho người nhiễm HIV ≥ 40 tuổi và bảo vệ tim trong hóa trị Anthracycline.',
+    detailedConclusion: 'Bác sĩ tim mạch, nội tiết & nội tổng quát thực hành theo ESC/EAS 2025: Đánh giá nguy cơ tim mạch bằng SCORE2 (≤ 70t) hoặc SCORE2-OP (70–89t), tích hợp Non-HDL-C. Kiểm tra các yếu tố điều chỉnh nguy cơ (CAC > 300, Lp(a) ≥ 50 mg/dL, tiền sản giật, mãn kinh sớm, Nam Á) để nâng bậc điều trị khi cần. Tuân thủ nguyên tắc ĐÍCH KÉP: Đưa LDL-C < 55 mg/dL ở nhóm Rất cao và < 40 mg/dL ở nhóm Cực kỳ cao, ĐỒNG THỜI phải giảm tối thiểu ≥ 50% so với mức nền ban đầu. Bệnh nhân sau ACS: Khởi trị Statin hoạt lực cao tức thì tại viện và phối hợp thêm Ezetimibe trước xuất viện. Nếu không dung nạp statin do đau cơ: Chỉ định Axit Bempedoic (180 mg/ngày) theo dõi acid uric máu. Bệnh nhân HIV ≥ 40 tuổi: Khởi trị Statin dự phòng cấp 1 ngay (ưu tiên Pitavastatin 2-4 mg). Bệnh nhân dùng Anthracycline: Khởi trị Statin bảo vệ cơ tim. Chống chỉ định thực phẩm chức năng men gạo đỏ hoặc omega-3 generic.'
+  },
+  {
     id: '2024-ilep-ascvd-post-acs',
     title: 'ILEP 2024: Tối Ưu Hóa Liệu Pháp Hạ Lipid Máu Ở Bệnh Nhân ASCVD & Sau Hội Chứng Vành Cấp',
     titleEn: '2024 Recommendations on the Optimal Use of Lipid-Lowering Therapy in Established ASCVD and Post-ACS: A Position Paper of the International Lipid Expert Panel (Banach et al., Drugs 2024)',
