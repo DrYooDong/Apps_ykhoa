@@ -104,6 +104,7 @@ export const CLINICAL_CONDITIONS: Record<string, ClinicalConditionMeta> = {
   'measles': { id: 'measles', name: 'Sởi & Ngoại ban vi rút', icd10: ["B05","B05.9"], color: '#e11d48', bg: '#fff1f2' },
   'hfmd': { id: 'hfmd', name: 'Tay chân miệng (TCM)', icd10: ["B08.4"], color: '#ea580c', bg: '#fff7ed' },
   'mpox': { id: 'mpox', name: 'Đậu mùa khỉ (Mpox)', icd10: ["B04"], color: '#a16207', bg: '#fefce8' },
+  'hantavirus': { id: 'hantavirus', name: 'Vi rút Hanta (HFRS/HPS)', icd10: ["A98.5","B33.4"], color: '#be123c', bg: '#fff1f2' },
   'invasive-fungal': { id: 'invasive-fungal', name: 'Nhiễm nấm xâm lấn & Aspergillus', icd10: ["B49","B44","B37.7","B45"], color: '#854d0e', bg: '#fefce8' },
   'malaria': { id: 'malaria', name: 'Sốt rét', icd10: ["B50","B51","B52","B54"], color: '#d97706', bg: '#fffbeb' },
   'meningitis': { id: 'meningitis', name: 'Viêm màng não & Viêm não', icd10: ["G00","G01","G02","G03","A39"], color: '#7c3aed', bg: '#faf5ff' },
