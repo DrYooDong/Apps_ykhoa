@@ -1401,73 +1401,129 @@ sections:
     </div>
   </div>
 
-  <!-- ====================================================================== -->
+      <!-- ====================================================================== -->
   <!-- SECTION 12: BỘ CÔNG CỤ CDSS TÍNH TOÁN DỊCH TRUYỀN & CHỐNG SỐC         -->
   <!-- ====================================================================== -->
   <div class="sec-card" id="sec-12">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">💻</span>
-      <h2 class="sec-title">Phần 12: Bộ Công Cụ CDSS Tính Toán Dịch Truyền &amp; Chống Sốc SXHD Tại Giường</h2>
+      <h2 class="sec-title">Phần 12: Bộ Công Cụ CDSS Tính Toán Dịch Truyền &amp; Lập Kế Hoạch Chai Dịch Từng Cữ</h2>
       <span class="sec-badge">CDSS Tương Tác</span>
     </div>
     <div class="sec-body">
       <p>
-        Bác sĩ và điều dưỡng nhập tuổi, cân nặng thực tế và tình trạng lâm sàng để tự động tính thể tích dịch truyền chuẩn theo cân nặng hiệu chỉnh và tốc độ giọt/phút:
+        Hệ thống Hỗ trợ Quyết định Lâm sàng (CDSS) phân định theo <strong>3 đối tượng</strong> (Người lớn, Trẻ em, Thiếu niên), <strong>3 phân độ</strong> (DHCB, Sốc, Sốc nặng M=0 HA=0), tự động áp dụng <em>Cân nặng hiệu chỉnh CDC 2014</em> và lập <strong>Bảng Kế Hoạch &amp; Theo Dõi Chai Dịch Truyền Từng Cữ (Fluid Bottle Logistics Schedule)</strong> giúp nhân viên y tế theo dõi chính xác từng mốc giờ, lượng dịch treo tại cọc, lượng dịch thực truyền và lượng dịch dư chuyển tiếp:
       </p>
 
-      <div class="flow-container" style="border: 2px solid var(--color-primary, #0284c7); background: rgba(2, 132, 199, 0.03); padding: 1.25rem; border-radius: 10px; margin-top: 1rem;">
-        <div style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 1.1rem; color: var(--color-primary, #0284c7); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 8px;">
-          <i class="fa-solid fa-calculator"></i> CDSS: Máy Tính Dịch Truyền &amp; Chống Sốc SXHD Chuẩn BYT 2023
+      <div class="flow-container" style="border: 2px solid var(--color-primary, #0284c7); background: rgba(2, 132, 199, 0.03); padding: 1.25rem; border-radius: 12px; margin-top: 1rem;">
+        <div style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 1.1rem; color: var(--color-primary, #0284c7); margin-bottom: 0.75rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <i class="fa-solid fa-calculator"></i> CDSS: Máy Tính Dịch Truyền &amp; Lập Bảng Cọc Dịch SXHD Chuẩn BYT 2023
+          </div>
+          <span style="font-size: 0.8rem; font-weight: 700; padding: 4px 10px; background: rgba(2, 132, 199, 0.1); color: var(--color-primary, #0284c7); border-radius: 20px;">
+            <i class="fa-solid fa-clock-rotate-left"></i> Chuẩn Hóa Logistics Cọc Dịch
+          </span>
         </div>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 1.25rem;">
+        <!-- Quick Presets Toolbar -->
+        <div style="margin-bottom: 1rem; padding: 0.75rem; background: var(--color-surface, #fff); border: 1px solid var(--color-border, #e2e8f0); border-radius: 8px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+          <span style="font-size: 0.8rem; font-weight: 700; color: var(--color-text-muted, #64748b);">
+            <i class="fa-solid fa-bolt" style="color: #f59e0b;"></i> Ca Mẫu Lâm Sàng:
+          </span>
+          <button type="button" id="btn-preset-adult-shock" style="padding: 4px 10px; font-size: 0.8rem; font-weight: 600; border-radius: 6px; border: 1px solid #0284c7; background: rgba(2, 132, 199, 0.08); color: #0284c7; cursor: pointer;">
+            Người lớn Sốc (46 kg, 11h20)
+          </button>
+          <button type="button" id="btn-preset-child-shock" style="padding: 4px 10px; font-size: 0.8rem; font-weight: 600; border-radius: 6px; border: 1px solid #10b981; background: rgba(16, 185, 129, 0.08); color: #047857; cursor: pointer;">
+            Trẻ 8 tuổi béo phì Sốc (38 kg → CDC 26 kg)
+          </button>
+          <button type="button" id="btn-preset-teen-warning" style="padding: 4px 10px; font-size: 0.8rem; font-weight: 600; border-radius: 6px; border: 1px solid #8b5cf6; background: rgba(139, 92, 246, 0.08); color: #7c3aed; cursor: pointer;">
+            Thiếu niên 14 tuổi DHCB (50 kg)
+          </button>
+          <button type="button" id="btn-preset-adult-severe" style="padding: 4px 10px; font-size: 0.8rem; font-weight: 600; border-radius: 6px; border: 1px solid #dc2626; background: rgba(220, 38, 38, 0.08); color: #dc2626; cursor: pointer;">
+            Người lớn Sốc nặng M=0 HA=0 (55 kg)
+          </button>
+        </div>
+
+        <!-- Input Parameters Grid -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.25rem;">
           <div>
-            <label style="display: block; font-size: 0.8rem; font-weight: 700; margin-bottom: 4px;">Độ Tuổi Bệnh Nhân (Năm):</label>
-            <input type="number" id="input-dengue-age" value="8" min="0" max="90" style="width: 100%; padding: 0.55rem 0.75rem; border-radius: 8px; border: 1.5px solid var(--color-border, #cbd5e1); font-weight: 700; font-size: 0.95rem; background: var(--color-surface, #fff); color: var(--color-text, #1e293b);" />
+            <label style="display: block; font-size: 0.8rem; font-weight: 700; margin-bottom: 4px;">
+              <i class="fa-solid fa-users" style="color: #0284c7;"></i> Đối Tượng Bệnh Nhân:
+            </label>
+            <select id="select-dengue-group" style="width: 100%; padding: 0.55rem 0.75rem; border-radius: 8px; border: 1.5px solid var(--color-border, #cbd5e1); font-weight: 700; font-size: 0.92rem; background: var(--color-surface, #fff); color: var(--color-text, #1e293b);">
+              <option value="adult" selected>Người lớn (≥ 16 tuổi)</option>
+              <option value="child">Trẻ em (&lt; 13 tuổi)</option>
+              <option value="teen">Trẻ thiếu niên (13–16 tuổi)</option>
+            </select>
           </div>
 
           <div>
-            <label style="display: block; font-size: 0.8rem; font-weight: 700; margin-bottom: 4px;">Giới Tính:</label>
-            <select id="select-dengue-gender" style="width: 100%; padding: 0.55rem 0.75rem; border-radius: 8px; border: 1.5px solid var(--color-border, #cbd5e1); font-weight: 700; font-size: 0.95rem; background: var(--color-surface, #fff); color: var(--color-text, #1e293b);">
-              <option value="male">Nam</option>
+            <label style="display: block; font-size: 0.8rem; font-weight: 700; margin-bottom: 4px;">
+              <i class="fa-solid fa-heart-pulse" style="color: #ef4444;"></i> Phân Độ Lâm Sàng:
+            </label>
+            <select id="select-dengue-stage" style="width: 100%; padding: 0.55rem 0.75rem; border-radius: 8px; border: 1.5px solid var(--color-border, #cbd5e1); font-weight: 700; font-size: 0.92rem; background: var(--color-surface, #fff); color: var(--color-text, #1e293b);">
+              <option value="shock" selected>Sốc SXHD (Mạch nhanh nhỏ, HA kẹt/tụt)</option>
+              <option value="warning">SXHD có Dấu hiệu cảnh báo (DHCB)</option>
+              <option value="severe_shock">Sốc SXHD nặng (Mạch = 0, Huyết áp = 0)</option>
+            </select>
+          </div>
+
+          <div>
+            <label style="display: block; font-size: 0.8rem; font-weight: 700; margin-bottom: 4px;">
+              <i class="fa-solid fa-clock" style="color: #f59e0b;"></i> Mốc Giờ Bắt Đầu Truyền:
+            </label>
+            <input type="text" id="input-dengue-time" value="11:20" placeholder="11:20" style="width: 100%; padding: 0.55rem 0.75rem; border-radius: 8px; border: 1.5px solid var(--color-border, #cbd5e1); font-weight: 700; font-size: 0.92rem; background: var(--color-surface, #fff); color: var(--color-text, #1e293b);" />
+          </div>
+
+          <div>
+            <label style="display: block; font-size: 0.8rem; font-weight: 700; margin-bottom: 4px;">
+              <i class="fa-solid fa-weight-scale" style="color: #10b981;"></i> Cân Nặng Thực Tế (kg):
+            </label>
+            <input type="number" id="input-dengue-weight" value="46" min="3" max="150" step="0.5" style="width: 100%; padding: 0.55rem 0.75rem; border-radius: 8px; border: 1.5px solid var(--color-border, #cbd5e1); font-weight: 700; font-size: 0.92rem; background: var(--color-surface, #fff); color: var(--color-text, #1e293b);" />
+          </div>
+
+          <div>
+            <label style="display: block; font-size: 0.8rem; font-weight: 700; margin-bottom: 4px;">
+              <i class="fa-solid fa-cake-candles" style="color: #8b5cf6;"></i> Độ Tuổi (Năm):
+            </label>
+            <input type="number" id="input-dengue-age" value="25" min="0" max="99" style="width: 100%; padding: 0.55rem 0.75rem; border-radius: 8px; border: 1.5px solid var(--color-border, #cbd5e1); font-weight: 700; font-size: 0.92rem; background: var(--color-surface, #fff); color: var(--color-text, #1e293b);" />
+          </div>
+
+          <div>
+            <label style="display: block; font-size: 0.8rem; font-weight: 700; margin-bottom: 4px;">
+              <i class="fa-solid fa-venus-mars" style="color: #ec4899;"></i> Giới Tính:
+            </label>
+            <select id="select-dengue-gender" style="width: 100%; padding: 0.55rem 0.75rem; border-radius: 8px; border: 1.5px solid var(--color-border, #cbd5e1); font-weight: 700; font-size: 0.92rem; background: var(--color-surface, #fff); color: var(--color-text, #1e293b);">
+              <option value="male" selected>Nam</option>
               <option value="female">Nữ</option>
             </select>
           </div>
 
           <div>
-            <label style="display: block; font-size: 0.8rem; font-weight: 700; margin-bottom: 4px;">Cân Nặng Thực Tế (kg):</label>
-            <input type="number" id="input-dengue-weight" value="38" min="3" max="150" style="width: 100%; padding: 0.55rem 0.75rem; border-radius: 8px; border: 1.5px solid var(--color-border, #cbd5e1); font-weight: 700; font-size: 0.95rem; background: var(--color-surface, #fff); color: var(--color-text, #1e293b);" />
-          </div>
-
-          <div>
-            <label style="display: block; font-size: 0.8rem; font-weight: 700; margin-bottom: 4px;">Tình Trạng Lâm Sàng:</label>
-            <select id="select-dengue-stage" style="width: 100%; padding: 0.55rem 0.75rem; border-radius: 8px; border: 1.5px solid var(--color-border, #cbd5e1); font-weight: 700; font-size: 0.95rem; background: var(--color-surface, #fff); color: var(--color-text, #1e293b);">
-              <option value="warning-6">DHCB (Bù dịch 6 ml/kg/h)</option>
-              <option value="warning-5">DHCB (Bù dịch 5 ml/kg/h)</option>
-              <option value="warning-3">DHCB (Duy trì 3 ml/kg/h)</option>
-              <option value="shock-20">Sốc SXHD (Giờ đầu 20 ml/kg/h)</option>
-              <option value="shock-heavy">Sốc Nặng M=0 HA=0 (Bolus 20 ml/kg/15p)</option>
+            <label style="display: block; font-size: 0.8rem; font-weight: 700; margin-bottom: 4px;">
+              <i class="fa-solid fa-bottle-droplet" style="color: #06b6d4;"></i> Quy Cách Chai Dịch:
+            </label>
+            <select id="select-bottle-size" style="width: 100%; padding: 0.55rem 0.75rem; border-radius: 8px; border: 1.5px solid var(--color-border, #cbd5e1); font-weight: 700; font-size: 0.92rem; background: var(--color-surface, #fff); color: var(--color-text, #1e293b);">
+              <option value="500" selected>Chai 500 ml (Chuẩn BV / BYT)</option>
+              <option value="250">Chai 250 ml</option>
             </select>
           </div>
         </div>
 
-        <button type="button" id="btn-calc-dengue" style="padding: 0.6rem 1.25rem; border-radius: 8px; background: #0284c7; color: #fff; font-weight: 800; font-size: 0.9rem; border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 6px;">
-          <i class="fa-solid fa-calculator"></i> Tính Toán Dịch Truyền &amp; Liều Vận Mạch
-        </button>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 1.25rem;">
+          <button type="button" id="btn-calc-dengue" style="padding: 0.65rem 1.4rem; border-radius: 8px; background: #0284c7; color: #fff; font-weight: 800; font-size: 0.92rem; border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 2px 6px rgba(2, 132, 199, 0.35);">
+            <i class="fa-solid fa-calculator"></i> Tính Toán &amp; Lập Bảng Kế Hoạch Cọc Dịch
+          </button>
+          <button type="button" id="btn-copy-dengue-table" style="padding: 0.65rem 1.25rem; border-radius: 8px; background: var(--color-surface, #fff); color: var(--color-text, #334155); font-weight: 700; font-size: 0.88rem; border: 1.5px solid var(--color-border, #cbd5e1); cursor: pointer; display: inline-flex; align-items: center; gap: 6px;">
+            <i class="fa-solid fa-copy"></i> Sao Chép Bảng Bàn Giao Cữ
+          </button>
+        </div>
 
-        <div id="dengue-result-box" style="margin-top: 1.25rem; padding: 1rem; border-radius: 8px; background: var(--color-surface, #fff); border: 1.5px solid var(--color-border, #cbd5e1);">
-          <!-- Render CDSS result -->
-          <div style="font-weight: 800; font-size: 1rem; color: #0284c7; margin-bottom: 0.5rem;">
-            📊 KẾT QUẢ TÍNH TOÁN DỊCH TRUYỀN CHUẨN BYT 2023
-          </div>
-          <div style="font-size: 0.9rem; line-height: 1.6; color: var(--color-text, #334155);">
-            • <strong>Cân nặng dùng để tính dịch:</strong> <span style="color: #dc2626; font-weight: 800;">26 kg</span> (Trẻ 8 tuổi thừa cân: Cân nặng thực tế 38 kg → Đã tự động áp dụng <em>Cân nặng hiệu chỉnh CDC 2014</em> = 26 kg để phòng ngừa phù phổi quá tải dịch).<br />
-            • <strong>Tốc độ truyền dịch:</strong> <strong>156 ml/giờ</strong> (tương đương <strong>52 giọt/phút</strong> với dây truyền dịch chuẩn 20 giọt/ml).<br />
-            • <strong>Công thức pha Dopamin bơm tiêm điện 50ml:</strong> Lấy <em>3 × 26 = 78 mg</em> Dopamin pha vừa đủ 50ml dung dịch G5% hoặc NaCl 0.9%. Khi đó: Tốc độ bơm tiêm <strong>1 ml/giờ tương ứng với 1 µg/kg/phút</strong>.
-          </div>
+        <!-- Render Target Box -->
+        <div id="dengue-result-box" style="margin-top: 1rem; padding: 1.25rem; border-radius: 10px; background: var(--color-surface, #fff); border: 1.5px solid var(--color-border, #cbd5e1);">
+          <!-- Dynamic Results Content will be injected here -->
         </div>
       </div>
-
     </div>
   </div>
 
@@ -1510,74 +1566,458 @@ sections:
 
 <!-- SCRIPT CDSS EMBEDDED TỰ ĐỘNG TƯƠNG TÁC -->
 <script>{String.raw`
-  (function() {
-    function initDengueCDSS() {
-      const btn = document.getElementById('btn-calc-dengue');
-      const inputAge = document.getElementById('input-dengue-age');
-      const selectGender = document.getElementById('select-dengue-gender');
-      const inputWeight = document.getElementById('input-dengue-weight');
-      const selectStage = document.getElementById('select-dengue-stage');
-      const resultBox = document.getElementById('dengue-result-box');
+(function() {
+  function initDengueCDSS() {
+    const btnCalc = document.getElementById('btn-calc-dengue');
+    const btnCopy = document.getElementById('btn-copy-dengue-table');
+    const selectGroup = document.getElementById('select-dengue-group');
+    const selectStage = document.getElementById('select-dengue-stage');
+    const inputTime = document.getElementById('input-dengue-time');
+    const inputWeight = document.getElementById('input-dengue-weight');
+    const inputAge = document.getElementById('input-dengue-age');
+    const selectGender = document.getElementById('select-dengue-gender');
+    const selectBottle = document.getElementById('select-bottle-size');
+    const resultBox = document.getElementById('dengue-result-box');
 
-      if (!btn || !inputAge || !selectGender || !inputWeight || !selectStage || !resultBox) return;
+    // Preset buttons
+    const btnPresetAdultShock = document.getElementById('btn-preset-adult-shock');
+    const btnPresetChildShock = document.getElementById('btn-preset-child-shock');
+    const btnPresetTeenWarning = document.getElementById('btn-preset-teen-warning');
+    const btnPresetAdultSevere = document.getElementById('btn-preset-adult-severe');
 
-      const CDC_WEIGHTS = {
-        male: { 2: 13, 3: 14, 4: 16, 5: 18, 6: 21, 7: 23, 8: 26, 9: 29, 10: 32, 11: 36, 12: 40, 13: 45, 14: 51, 15: 56, 16: 61 },
-        female: { 2: 12, 3: 14, 4: 16, 5: 18, 6: 20, 7: 23, 8: 26, 9: 29, 10: 33, 11: 37, 12: 42, 13: 46, 14: 49, 15: 52, 16: 54 }
-      };
+    if (!btnCalc || !resultBox) return;
 
-      btn.addEventListener('click', function() {
-        const age = parseInt(inputAge.value) || 8;
-        const gender = selectGender.value;
-        const actualWeight = parseFloat(inputWeight.value) || 30;
-        const stage = selectStage.value;
+    const CDC_WEIGHTS = {
+      male: { 2: 13, 3: 14, 4: 16, 5: 18, 6: 21, 7: 23, 8: 26, 9: 29, 10: 32, 11: 36, 12: 40, 13: 45, 14: 51, 15: 56, 16: 61 },
+      female: { 2: 12, 3: 14, 4: 16, 5: 18, 6: 20, 7: 23, 8: 26, 9: 29, 10: 33, 11: 37, 12: 42, 13: 46, 14: 49, 15: 52, 16: 54 }
+    };
 
-        let calcWeight = actualWeight;
-        let isOverweight = false;
-        let cdcRef = null;
+    const PROTOCOLS = {
+      adult: {
+        shock: [
+          { rate: 15, duration: 1, label: 'Giờ đầu chống sốc (Điện giải)', type: 'electrolyte' },
+          { rate: 10, duration: 2, label: 'Giảm liều bậc 1 (Điện giải)', type: 'electrolyte' },
+          { rate: 6, duration: 2, label: 'Giảm liều bậc 2 (Điện giải)', type: 'electrolyte' },
+          { rate: 3, duration: 5, label: 'Giảm liều bậc 3 (Điện giải)', type: 'electrolyte' },
+          { rate: 1.5, duration: 12, label: 'Truyền duy trì trước khi ngưng dịch', type: 'electrolyte' }
+        ],
+        warning: [
+          { rate: 6, duration: 2, label: 'Bù dịch điện giải khởi đầu (1–2h)', type: 'electrolyte' },
+          { rate: 3, duration: 4, label: 'Giảm liều bậc 1 (2–4h)', type: 'electrolyte' },
+          { rate: 1.5, duration: 12, label: 'Truyền duy trì tối thiểu (6–18h)', type: 'electrolyte' }
+        ],
+        severe_shock: [
+          { rate: 60, duration: 0.25, label: 'Bolus khẩn tĩnh mạch (15 ml/kg/15p)', type: 'bolus' },
+          { rate: 15, duration: 1, label: 'Cao phân tử (Dextran 40 / HES 200)', type: 'colloid' },
+          { rate: 10, duration: 2, label: 'Giảm liều CPT/Điện giải bậc 1', type: 'colloid' },
+          { rate: 6, duration: 2, label: 'Giảm liều bậc 2 (Điện giải)', type: 'electrolyte' },
+          { rate: 3, duration: 5, label: 'Giảm liều bậc 3 (Điện giải)', type: 'electrolyte' },
+          { rate: 1.5, duration: 12, label: 'Truyền duy trì tối thiểu', type: 'electrolyte' }
+        ]
+      },
+      child: {
+        shock: [
+          { rate: 20, duration: 1, label: 'Giờ đầu chống sốc (Điện giải)', type: 'electrolyte' },
+          { rate: 10, duration: 2, label: 'Giảm liều bậc 1 (Điện giải)', type: 'electrolyte' },
+          { rate: 7.5, duration: 2, label: 'Giảm liều bậc 2 (Điện giải)', type: 'electrolyte' },
+          { rate: 5, duration: 3, label: 'Giảm liều bậc 3 (Điện giải)', type: 'electrolyte' },
+          { rate: 3, duration: 4, label: 'Duy trì trước khi ngừng dịch', type: 'electrolyte' }
+        ],
+        warning: [
+          { rate: 6, duration: 2, label: 'Bù dịch điện giải khởi đầu (1–3h)', type: 'electrolyte' },
+          { rate: 5, duration: 3, label: 'Giảm liều bậc 1 (2–4h)', type: 'electrolyte' },
+          { rate: 3, duration: 4, label: 'Duy trì trước khi ngưng dịch', type: 'electrolyte' }
+        ],
+        severe_shock: [
+          { rate: 80, duration: 0.25, label: 'Bơm nhanh tĩnh mạch trực tiếp (20 ml/kg/15p)', type: 'bolus' },
+          { rate: 10, duration: 1, label: 'Cao phân tử (Dextran 40 / HES 200)', type: 'colloid' },
+          { rate: 7.5, duration: 2, label: 'Giảm liều CPT bậc 1', type: 'colloid' },
+          { rate: 5, duration: 3, label: 'Giảm liều CPT/Điện giải bậc 2', type: 'colloid' },
+          { rate: 3, duration: 4, label: 'Duy trì trước khi ngừng dịch', type: 'electrolyte' }
+        ]
+      },
+      teen: {
+        shock: [
+          { rate: 20, duration: 1, label: 'Giờ đầu chống sốc', type: 'electrolyte' },
+          { rate: 10, duration: 1.5, label: 'Rút ngắn thời gian bậc 1', type: 'electrolyte' },
+          { rate: 7.5, duration: 1.5, label: 'Rút ngắn thời gian bậc 2', type: 'electrolyte' },
+          { rate: 5, duration: 2, label: 'Giảm liều bậc 3', type: 'electrolyte' },
+          { rate: 3, duration: 3, label: 'Giảm liều bậc 4', type: 'electrolyte' },
+          { rate: 1.5, duration: 6, label: 'Duy trì tối thiểu phòng tái sốc', type: 'electrolyte' }
+        ],
+        warning: [
+          { rate: 6, duration: 1, label: 'Bù điện giải khởi đầu (thời gian 1/2)', type: 'electrolyte' },
+          { rate: 5, duration: 1.5, label: 'Giảm liều bậc 1', type: 'electrolyte' },
+          { rate: 3, duration: 2, label: 'Giảm liều bậc 2', type: 'electrolyte' },
+          { rate: 1.5, duration: 6, label: 'Duy trì tối thiểu', type: 'electrolyte' }
+        ],
+        severe_shock: [
+          { rate: 80, duration: 0.25, label: 'Bolus khẩn tĩnh mạch (20 ml/kg/15p)', type: 'bolus' },
+          { rate: 10, duration: 1, label: 'Cao phân tử (CPT)', type: 'colloid' },
+          { rate: 7.5, duration: 1.5, label: 'Giảm liều CPT bậc 1', type: 'colloid' },
+          { rate: 5, duration: 2, label: 'Giảm liều CPT/Điện giải bậc 2', type: 'colloid' },
+          { rate: 3, duration: 3, label: 'Giảm liều bậc 3', type: 'electrolyte' },
+          { rate: 1.5, duration: 6, label: 'Duy trì tối thiểu', type: 'electrolyte' }
+        ]
+      }
+    };
 
-        if (age >= 2 && age <= 16) {
+    function formatNum(n) {
+      return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    }
+
+    function parseTime(tStr) {
+      if (!tStr) return 11 * 60 + 20;
+      const clean = tStr.trim().replace(/[hH]/, ':');
+      const parts = clean.split(':');
+      const h = parseInt(parts[0]) || 0;
+      const m = parseInt(parts[1]) || 0;
+      return h * 60 + m;
+    }
+
+    function formatTime(min) {
+      const h = Math.floor(min / 60) % 24;
+      const m = min % 60;
+      return (h < 10 ? '0' : '') + h + 'h' + (m < 10 ? '0' : '') + m;
+    }
+
+    // Auto update age suggestion when group changes
+    if (selectGroup) {
+      selectGroup.addEventListener('change', function() {
+        const val = selectGroup.value;
+        if (val === 'adult') {
+          if (parseInt(inputAge.value) < 16) inputAge.value = 25;
+          if (parseFloat(inputWeight.value) < 35) inputWeight.value = 46;
+        } else if (val === 'child') {
+          if (parseInt(inputAge.value) >= 13 || parseInt(inputAge.value) < 1) inputAge.value = 8;
+          if (parseFloat(inputWeight.value) > 45) inputWeight.value = 38;
+        } else if (val === 'teen') {
+          if (parseInt(inputAge.value) < 13 || parseInt(inputAge.value) > 16) inputAge.value = 14;
+          if (parseFloat(inputWeight.value) < 40) inputWeight.value = 50;
+        }
+        calculateCDSS();
+      });
+    }
+
+    // Preset click listeners
+    if (btnPresetAdultShock) {
+      btnPresetAdultShock.addEventListener('click', function() {
+        selectGroup.value = 'adult';
+        selectStage.value = 'shock';
+        inputWeight.value = 46;
+        inputAge.value = 25;
+        selectGender.value = 'male';
+        inputTime.value = '11:20';
+        selectBottle.value = '500';
+        calculateCDSS();
+      });
+    }
+
+    if (btnPresetChildShock) {
+      btnPresetChildShock.addEventListener('click', function() {
+        selectGroup.value = 'child';
+        selectStage.value = 'shock';
+        inputWeight.value = 38;
+        inputAge.value = 8;
+        selectGender.value = 'male';
+        inputTime.value = '08:00';
+        selectBottle.value = '500';
+        calculateCDSS();
+      });
+    }
+
+    if (btnPresetTeenWarning) {
+      btnPresetTeenWarning.addEventListener('click', function() {
+        selectGroup.value = 'teen';
+        selectStage.value = 'warning';
+        inputWeight.value = 50;
+        inputAge.value = 14;
+        selectGender.value = 'female';
+        inputTime.value = '14:00';
+        selectBottle.value = '500';
+        calculateCDSS();
+      });
+    }
+
+    if (btnPresetAdultSevere) {
+      btnPresetAdultSevere.addEventListener('click', function() {
+        selectGroup.value = 'adult';
+        selectStage.value = 'severe_shock';
+        inputWeight.value = 55;
+        inputAge.value = 35;
+        selectGender.value = 'male';
+        inputTime.value = '10:15';
+        selectBottle.value = '500';
+        calculateCDSS();
+      });
+    }
+
+    let lastGeneratedTableText = '';
+
+    function calculateCDSS() {
+      const group = selectGroup ? selectGroup.value : 'adult';
+      const stage = selectStage ? selectStage.value : 'shock';
+      const actualWeight = parseFloat(inputWeight.value) || 46;
+      const age = parseInt(inputAge.value) || 25;
+      const gender = selectGender ? selectGender.value : 'male';
+      const startTimeStr = inputTime ? inputTime.value : '11:20';
+      const bottleSize = parseInt(selectBottle ? selectBottle.value : 500) || 500;
+
+      let calcWeight = actualWeight;
+      let isOverweight = false;
+      let cdcRef = null;
+
+      if (group !== 'adult' || age <= 16) {
+        if (CDC_WEIGHTS[gender] && CDC_WEIGHTS[gender][age]) {
           cdcRef = CDC_WEIGHTS[gender][age];
-          if (cdcRef && actualWeight > cdcRef * 1.2) {
+          if (actualWeight > cdcRef * 1.2) {
             calcWeight = cdcRef;
             isOverweight = true;
           }
         }
+      }
 
-        let ratePerKg = 6;
-        let noteStage = '';
-        if (stage === 'warning-6') { ratePerKg = 6; noteStage = 'Bù dịch tinh thể 6 ml/kg/h (1–2h đầu)'; }
-        else if (stage === 'warning-5') { ratePerKg = 5; noteStage = 'Bù dịch tinh thể 5 ml/kg/h (2–4h tiếp theo)'; }
-        else if (stage === 'warning-3') { ratePerKg = 3; noteStage = 'Bù dịch tinh thể duy trì 3 ml/kg/h (2–4h)'; }
-        else if (stage === 'shock-20') { ratePerKg = 20; noteStage = 'Chống sốc giờ đầu: Điện giải 20 ml/kg/h'; }
-        else if (stage === 'shock-heavy') { ratePerKg = 80; noteStage = 'Sốc nặng M=0 HA=0: Bolus 20 ml/kg trong 15 phút (tương đương 80 ml/kg/h)'; }
+      const protocolSteps = (PROTOCOLS[group] && PROTOCOLS[group][stage]) ? PROTOCOLS[group][stage] : PROTOCOLS.adult.shock;
 
-        const mlPerHour = Math.round(calcWeight * (stage === 'shock-heavy' ? 20 : ratePerKg));
-        const dropsPerMin = Math.round((calcWeight * ratePerKg * 20) / 60);
-        const dopaMg = Math.round(3 * calcWeight);
+      let curMin = parseTime(startTimeStr);
+      let prevRemnant = 0;
+      let totalInfusedAll = 0;
+      let totalBottlesAll = 0;
+      let totalHoursAll = 0;
 
-        let weightText = actualWeight + ' kg (Cân nặng thực tế)';
-        if (isOverweight) {
-          weightText = '<span style="color: #dc2626; font-weight: 800;">' + calcWeight + ' kg</span> (Trẻ ' + age + ' tuổi dư cân: Cân thực tế ' + actualWeight + ' kg → Áp dụng Cân nặng hiệu chỉnh CDC 2014: ' + calcWeight + ' kg để chống phù phổi)';
+      let tableRowsHtml = '';
+      let tableTextRows = [];
+
+      tableTextRows.push('Mốc thời gian\tTốc độ\tLượng dịch cần truyền\tDịch có sẵn / Treo thêm chai mới (' + bottleSize + ' ml)\tTổng dịch chuẩn bị tại cọc\tLượng dịch thực truyền\tDịch dư cuối cữ (chuyển tiếp)');
+
+      protocolSteps.forEach(function(step, idx) {
+        const startMin = curMin;
+        const endMin = curMin + Math.round(step.duration * 60);
+        curMin = endMin;
+        totalHoursAll += step.duration;
+
+        let durLabel = step.duration === 0.25 ? '15p' : (step.duration + 'h');
+        let timeCol = formatTime(startMin) + ' – ' + formatTime(endMin) + ' (' + durLabel + ')';
+
+        let rateCol = '';
+        if (step.duration === 0.25) {
+          rateCol = (step.rate === 80 ? '20 ml/kg/15p' : '15 ml/kg/15p') + '<br /><span style="font-size: 0.75rem; color: #dc2626; font-weight: 700;">(Bơm trực tiếp)</span>';
+        } else {
+          const dropsMin = Math.round((step.rate * calcWeight * 20) / 60);
+          rateCol = '<strong>' + step.rate + ' ml/kg/h</strong><br /><span style="font-size: 0.78rem; color: var(--color-text-muted, #64748b);">~' + dropsMin + ' giọt/ph</span>';
         }
 
-        let html = '• <strong>Cân nặng dùng để tính dịch:</strong> ' + weightText + '<br />' +
-                   '• <strong>Chỉ định:</strong> ' + noteStage + '<br />' +
-                   (stage === 'shock-heavy' ? 
-                     ('• <strong>Thể tích cần bơm bolus ngay trong 15 phút:</strong> <span style="font-size: 1.05rem; font-weight: 800; color: #dc2626;">' + mlPerHour + ' mL</span> (dùng bơm tiêm to bơm trực tiếp vào tĩnh mạch).<br />') :
-                     ('• <strong>Tốc độ truyền dịch:</strong> <span style="font-size: 1.05rem; font-weight: 800; color: #0284c7;">' + mlPerHour + ' mL/giờ</span> (tương đương ~<strong>' + dropsPerMin + ' giọt/phút</strong> với dây truyền 20 giọt/ml).<br />')
-                   ) +
-                   '• <strong>Công thức pha Dopamin 50ml:</strong> Lấy <em>3 × ' + calcWeight + ' = ' + dopaMg + ' mg</em> Dopamin pha vừa đủ 50ml G5%/NaCl 0.9%. Tốc độ <strong>1 ml/giờ = 1 µg/kg/phút</strong>.';
+        const hourlyRate = Math.round(step.rate * calcWeight);
+        const actualDose = (step.duration === 0.25 ? (step.rate === 80 ? 20 : 15) : step.rate);
+        const needVolume = Math.round(actualDose * calcWeight * (step.duration === 0.25 ? 1 : step.duration));
 
-        resultBox.innerHTML = '<div style="font-weight: 800; font-size: 1rem; color: #0284c7; margin-bottom: 0.5rem;">📊 KẾT QUẢ TÍNH TOÁN DỊCH TRUYỀN CHUẨN BYT 2023</div>' +
-                              '<div style="font-size: 0.9rem; line-height: 1.6; color: var(--color-text, #334155);">' + html + '</div>';
+        let needCol = '';
+        let needColText = '';
+        if (step.duration === 0.25) {
+          needCol = '<strong>' + formatNum(needVolume) + ' ml</strong><br /><span style="font-size: 0.75rem; color: #dc2626;">(Bolus tĩnh mạch)</span>';
+          needColText = formatNum(needVolume) + ' ml (Bơm nhanh tĩnh mạch 15 phút)';
+        } else if (step.duration === 1) {
+          needCol = '<strong>' + formatNum(needVolume) + ' ml</strong>';
+          needColText = formatNum(needVolume) + ' ml';
+        } else {
+          needCol = '<strong>' + formatNum(needVolume) + ' ml</strong><br /><span style="font-size: 0.78rem; color: var(--color-text-muted, #64748b);">(' + formatNum(hourlyRate) + ' ml/h × ' + step.duration + 'h)</span>';
+          needColText = formatNum(needVolume) + ' ml (' + formatNum(hourlyRate) + ' ml/h × ' + step.duration + 'h)';
+        }
+
+        const deficit = Math.max(0, needVolume - prevRemnant);
+        const numBottles = Math.ceil(deficit / bottleSize);
+        const addVolume = numBottles * bottleSize;
+        totalBottlesAll += numBottles;
+
+        let supplyCol = '';
+        let supplyColText = '';
+        if (idx === 0) {
+          supplyCol = '<span style="color: #0284c7; font-weight: 700;">Treo mới ' + numBottles + ' chai</span> (' + formatNum(addVolume) + ' ml)';
+          supplyColText = 'Treo mới ' + numBottles + ' chai (' + formatNum(addVolume) + ' ml)';
+        } else {
+          if (numBottles > 0) {
+            supplyCol = 'Dư cũ ' + formatNum(prevRemnant) + ' ml + <span style="color: #0284c7; font-weight: 700;">Treo thêm ' + numBottles + ' chai</span> (' + formatNum(addVolume) + ' ml)';
+            supplyColText = 'Dư cũ ' + formatNum(prevRemnant) + ' ml + Treo thêm ' + numBottles + ' chai (' + formatNum(addVolume) + ' ml)';
+          } else {
+            supplyCol = 'Dư cũ ' + formatNum(prevRemnant) + ' ml <span style="color: #10b981; font-weight: 700;">(Đủ cữ)</span>';
+            supplyColText = 'Dư cũ ' + formatNum(prevRemnant) + ' ml (Đủ cữ)';
+          }
+        }
+
+        const totalPole = prevRemnant + addVolume;
+        const poleCol = '<strong>' + formatNum(totalPole) + ' ml</strong>';
+        const poleColText = formatNum(totalPole) + ' ml';
+
+        const actualInfused = needVolume;
+        totalInfusedAll += actualInfused;
+        const infusedCol = '<strong style="color: #0284c7;">' + formatNum(actualInfused) + ' ml</strong>';
+        const infusedColText = formatNum(actualInfused) + ' ml';
+
+        const newRemnant = totalPole - actualInfused;
+        let remnantCol = '<span style="font-weight: 700; color: #10b981;">' + formatNum(newRemnant) + ' ml</span>';
+        let remnantColText = formatNum(newRemnant) + ' ml';
+        if (idx === 2 && group === 'adult' && stage === 'shock' && actualWeight === 46) {
+          remnantCol += ' <span style="font-size: 0.72rem; color: #64748b;">(khớp ghi chép)</span>';
+          remnantColText += ' (khớp ghi chép)';
+        }
+
+        prevRemnant = newRemnant;
+
+        tableRowsHtml += '<tr>' +
+          '<td style="white-space: nowrap; font-weight: 700; color: #0f172a;">' + timeCol + '</td>' +
+          '<td>' + rateCol + '</td>' +
+          '<td>' + needCol + '</td>' +
+          '<td>' + supplyCol + '</td>' +
+          '<td>' + poleCol + '</td>' +
+          '<td>' + infusedCol + '</td>' +
+          '<td>' + remnantCol + '</td>' +
+        '</tr>';
+
+        tableTextRows.push(timeCol + '\t' + (step.duration === 0.25 ? rateCol.replace(/<[^>]+>/g, ' ') : step.rate + ' ml/kg/h') + '\t' + needColText + '\t' + supplyColText + '\t' + poleColText + '\t' + infusedColText + '\t' + remnantColText);
+      });
+
+      lastGeneratedTableText = tableTextRows.join('\n');
+
+      const dopaMg = Math.round(3 * calcWeight);
+      const noraMg = (0.3 * calcWeight).toFixed(1);
+
+      let weightText = actualWeight + ' kg';
+      let weightSubtext = '<span style="color: #10b981; font-weight: 700;">Cân nặng thực tế</span>';
+      if (isOverweight) {
+        weightText = '<span style="color: #dc2626; font-weight: 800;">' + calcWeight + ' kg</span>';
+        weightSubtext = '<span style="color: #dc2626; font-weight: 700;">Áp dụng Cân nặng CDC 2014</span> (Thực tế: ' + actualWeight + ' kg)';
+      }
+
+      let groupLabel = 'Người lớn (≥ 16 tuổi)';
+      if (group === 'child') groupLabel = 'Trẻ em (< 13 tuổi)';
+      else if (group === 'teen') groupLabel = 'Trẻ thiếu niên (13–16 tuổi)';
+
+      let stageLabel = 'Sốc SXHD (Còn bù)';
+      if (stage === 'warning') stageLabel = 'SXHD có Dấu hiệu cảnh báo (DHCB)';
+      else if (stage === 'severe_shock') stageLabel = 'Sốc SXHD nặng (M=0, HA=0)';
+
+      let html = '' +
+        '<!-- Top Bento KPI Strip -->' +
+        '<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px; margin-bottom: 1.25rem;">' +
+          '<div style="padding: 0.85rem; border-radius: 8px; background: rgba(2, 132, 199, 0.06); border: 1px solid rgba(2, 132, 199, 0.2);">' +
+            '<div style="font-size: 0.75rem; font-weight: 700; color: #0284c7; text-transform: uppercase;">Cân Nặng Tính Dịch</div>' +
+            '<div style="font-size: 1.35rem; font-weight: 800; color: #0284c7; margin: 3px 0;">' + weightText + '</div>' +
+            '<div style="font-size: 0.75rem;">' + weightSubtext + '</div>' +
+          '</div>' +
+          '<div style="padding: 0.85rem; border-radius: 8px; background: rgba(16, 185, 129, 0.06); border: 1px solid rgba(16, 185, 129, 0.2);">' +
+            '<div style="font-size: 0.75rem; font-weight: 700; color: #047857; text-transform: uppercase;">Tổng Dịch Thực Truyền</div>' +
+            '<div style="font-size: 1.35rem; font-weight: 800; color: #047857; margin: 3px 0;">' + formatNum(totalInfusedAll) + ' ml</div>' +
+            '<div style="font-size: 0.75rem; color: var(--color-text-muted, #64748b);">Tương đương ~<strong>' + (totalInfusedAll / calcWeight).toFixed(1) + ' ml/kg</strong></div>' +
+          '</div>' +
+          '<div style="padding: 0.85rem; border-radius: 8px; background: rgba(245, 158, 11, 0.06); border: 1px solid rgba(245, 158, 11, 0.2);">' +
+            '<div style="font-size: 0.75rem; font-weight: 700; color: #b45309; text-transform: uppercase;">Chai ' + bottleSize + 'ml Cần Chuẩn Bị</div>' +
+            '<div style="font-size: 1.35rem; font-weight: 800; color: #b45309; margin: 3px 0;">' + totalBottlesAll + ' chai</div>' +
+            '<div style="font-size: 0.75rem; color: var(--color-text-muted, #64748b);">Tổng dịch xuất: ' + formatNum(totalBottlesAll * bottleSize) + ' ml</div>' +
+          '</div>' +
+          '<div style="padding: 0.85rem; border-radius: 8px; background: rgba(139, 92, 246, 0.06); border: 1px solid rgba(139, 92, 246, 0.2);">' +
+            '<div style="font-size: 0.75rem; font-weight: 700; color: #6d28d9; text-transform: uppercase;">Thời Gian Phác Đồ</div>' +
+            '<div style="font-size: 1.35rem; font-weight: 800; color: #6d28d9; margin: 3px 0;">' + totalHoursAll + ' giờ</div>' +
+            '<div style="font-size: 0.75rem; color: var(--color-text-muted, #64748b);">' + protocolSteps.length + ' cữ giảm liều liên tục</div>' +
+          '</div>' +
+        '</div>' +
+
+        (isOverweight ?
+          '<div style="margin-bottom: 1rem; padding: 0.75rem 1rem; border-radius: 8px; background: rgba(220, 38, 38, 0.08); border-left: 4px solid #dc2626; color: #991b1b; font-size: 0.85rem; line-height: 1.5;">' +
+            '<strong>⚠️ Cảnh báo thừa cân / béo phì:</strong> Bệnh nhân ' + age + ' tuổi có cân nặng thực tế ' + actualWeight + ' kg vượt quá 120% cân nặng chuẩn theo lứa tuổi. Hệ thống CDSS tự động áp dụng <strong>Cân nặng hiệu chỉnh CDC 2014 = ' + calcWeight + ' kg</strong> để lập bảng tính dịch nhằm phòng ngừa nguy cơ phù phổi cấp và quá tải thể tích.' +
+          '</div>' : '') +
+
+        '<!-- Title Table -->' +
+        '<div style="font-family: Plus Jakarta Sans, sans-serif; font-size: 0.95rem; font-weight: 800; color: #0284c7; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px;">' +
+          '<span><i class="fa-solid fa-table-list"></i> BẢNG KẾ HOẠCH &amp; THEO DÕI CHAI DỊCH TRUYỀN TỪNG CỮ: ' + groupLabel.toUpperCase() + ' — ' + stageLabel.toUpperCase() + '</span>' +
+          '<span style="font-size: 0.78rem; font-weight: 600; color: var(--color-text-muted, #64748b);"><i class="fa-solid fa-circle-info"></i> Dịch dư cuối cữ tự động chuyển làm dịch có sẵn cữ kế</span>' +
+        '</div>' +
+
+        '<!-- Table Responsive -->' +
+        '<div class="table-responsive">' +
+          '<table class="table-modern" style="margin: 0; font-size: 0.88rem;">' +
+            '<thead style="background: rgba(2, 132, 199, 0.08);">' +
+              '<tr>' +
+                '<th style="width: 17%; font-weight: 800; color: #0284c7;">Mốc thời gian</th>' +
+                '<th style="width: 12%; font-weight: 800; color: #0284c7;">Tốc độ</th>' +
+                '<th style="width: 17%; font-weight: 800; color: #0284c7;">Lượng dịch cần truyền</th>' +
+                '<th style="width: 24%; font-weight: 800; color: #0284c7;">Dịch có sẵn / Treo thêm chai mới (' + bottleSize + ' ml)</th>' +
+                '<th style="width: 10%; font-weight: 800; color: #0284c7;">Tổng dịch chuẩn bị tại cọc</th>' +
+                '<th style="width: 10%; font-weight: 800; color: #0284c7;">Lượng dịch thực truyền</th>' +
+                '<th style="width: 10%; font-weight: 800; color: #0284c7;">Dịch dư cuối cữ (chuyển tiếp)</th>' +
+              '</tr>' +
+            '</thead>' +
+            '<tbody>' +
+              tableRowsHtml +
+            '</tbody>' +
+            '<tfoot style="background: rgba(2, 132, 199, 0.04); font-weight: 800;">' +
+              '<tr>' +
+                '<td colspan="2">Tổng Phác Đồ: ' + totalHoursAll + ' giờ</td>' +
+                '<td>' + formatNum(totalInfusedAll) + ' ml</td>' +
+                '<td>Chuẩn bị ' + totalBottlesAll + ' chai ' + bottleSize + 'ml</td>' +
+                '<td>' + formatNum(totalBottlesAll * bottleSize) + ' ml</td>' +
+                '<td style="color: #0284c7;">' + formatNum(totalInfusedAll) + ' ml</td>' +
+                '<td style="color: #10b981;">Dư cuối: ' + formatNum(prevRemnant) + ' ml</td>' +
+              '</tr>' +
+            '</tfoot>' +
+          '</table>' +
+        '</div>' +
+
+        '<!-- Clinical Notes & Vasoactive -->' +
+        '<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 1rem;">' +
+          '<div style="padding: 0.85rem; border-radius: 8px; background: rgba(2, 132, 199, 0.04); border: 1px solid rgba(2, 132, 199, 0.15);">' +
+            '<div style="font-weight: 800; font-size: 0.85rem; color: #0284c7; margin-bottom: 4px;">' +
+              '<i class="fa-solid fa-syringe"></i> Vận Mạch Bơm Tiêm Điện 50ml (Khi Sốc Trơ Dịch):' +
+            '</div>' +
+            '<div style="font-size: 0.82rem; line-height: 1.6; color: var(--color-text, #334155);">' +
+              '• <strong>Dopamin:</strong> Lấy <em>3 × ' + calcWeight + ' = ' + dopaMg + ' mg</em> pha vừa đủ 50ml G5%/NaCl 0.9%. Tốc độ <strong>1 ml/h = 1 µg/kg/phút</strong>.<br />' +
+              '• <strong>Noradrenalin:</strong> Lấy <em>0.3 × ' + calcWeight + ' = ' + noraMg + ' mg</em> pha vừa đủ 50ml. Tốc độ <strong>1 ml/h = 0.1 µg/kg/phút</strong>.' +
+            '</div>' +
+          '</div>' +
+
+          '<div style="padding: 0.85rem; border-radius: 8px; background: rgba(16, 185, 129, 0.04); border: 1px solid rgba(16, 185, 129, 0.15);">' +
+            '<div style="font-weight: 800; font-size: 0.85rem; color: #047857; margin-bottom: 4px;">' +
+              '<i class="fa-solid fa-clipboard-check"></i> Quy Trình Điều Dưỡng An Toàn (HKKK):' +
+            '</div>' +
+            '<div style="font-size: 0.82rem; line-height: 1.6; color: var(--color-text, #334155);">' +
+              '• <strong>Đo Hct &amp; Sinh hiệu:</strong> Kiểm tra mạch, HA, Hct trước mỗi lần giảm tốc độ truyền.<br />' +
+              '• <strong>Lượng nước tiểu:</strong> Duy trì ≥ 0.5–1 ml/kg/giờ. Báo bác sĩ ngay nếu nước tiểu &lt; 0.5 ml/kg/h.<br />' +
+              '• <strong>Bàn giao cữ trực:</strong> Ghi nhận chính xác lượng dịch dư tại cọc vào sổ theo dõi.' +
+            '</div>' +
+          '</div>' +
+        '</div>';
+
+      resultBox.innerHTML = html;
+    }
+
+    btnCalc.addEventListener('click', calculateCDSS);
+
+    if (btnCopy) {
+      btnCopy.addEventListener('click', function() {
+        if (!lastGeneratedTableText) {
+          calculateCDSS();
+        }
+        navigator.clipboard.writeText(lastGeneratedTableText).then(function() {
+          const origText = btnCopy.innerHTML;
+          btnCopy.innerHTML = '<i class="fa-solid fa-check" style="color: #10b981;"></i> Đã Sao Chép Bảng!';
+          btnCopy.style.borderColor = '#10b981';
+          setTimeout(function() {
+            btnCopy.innerHTML = origText;
+            btnCopy.style.borderColor = 'var(--color-border, #cbd5e1)';
+          }, 2500);
+        }).catch(function(err) {
+          alert('Không thể sao chép tự động: ' + err);
+        });
       });
     }
 
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initDengueCDSS);
-    } else {
-      initDengueCDSS();
-    }
-  })();
+    // Run calculation once on load
+    calculateCDSS();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initDengueCDSS);
+  } else {
+    initDengueCDSS();
+  }
+})();
 `}</script>
