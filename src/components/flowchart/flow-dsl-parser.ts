@@ -310,8 +310,18 @@ export class MedicalFlowDSL {
    */
   private static parseOrGetNode(token: string, nodeMap: Map<string, MedicalFlowNode>): MedicalFlowNode {
     token = token.trim();
+    let customClass = '';
+    const classMatch = token.match(/^(.*?):::([a-zA-Z0-9_-]+)$/);
+    if (classMatch) {
+      token = classMatch[1]!.trim();
+      customClass = classMatch[2]!.trim().toLowerCase();
+    }
+
     const nodeDef = this.parseSingleNodeDefinition(token);
     if (nodeDef) {
+      if (customClass && !nodeDef.type) {
+        nodeDef.type = customClass;
+      }
       if (nodeMap.has(nodeDef.id)) {
         const existing = nodeMap.get(nodeDef.id)!;
         Object.assign(existing, nodeDef);
@@ -323,13 +333,18 @@ export class MedicalFlowDSL {
 
     // Nếu chỉ là ID thuần (VD: node1)
     if (nodeMap.has(token)) {
-      return nodeMap.get(token)!;
+      const existing = nodeMap.get(token)!;
+      if (customClass && !existing.type) {
+        existing.type = customClass;
+      }
+      return existing;
     }
 
     const newNode: MedicalFlowNode = {
       id: token,
       title: token,
-      shape: 'rect'
+      shape: 'rect',
+      type: customClass || undefined
     };
     nodeMap.set(token, newNode);
     return newNode;
@@ -340,6 +355,13 @@ export class MedicalFlowDSL {
    */
   private static parseSingleNodeDefinition(str: string): MedicalFlowNode | null {
     str = str.trim();
+    let customClass = '';
+    const classMatch = str.match(/^(.*?):::([a-zA-Z0-9_-]+)$/);
+    if (classMatch) {
+      str = classMatch[1]!.trim();
+      customClass = classMatch[2]!.trim().toLowerCase();
+    }
+
     // Các cặp ngoặc định dạng hình khối Mermaid:
     // [ ] = chữ nhật
     // { } = hình thoi / quyết định
@@ -361,7 +383,11 @@ export class MedicalFlowDSL {
       if (m) {
         const id = m[1]!.trim();
         const content = m[2]!.trim();
-        return this.parseNodeContent(id, content, shape);
+        const node = this.parseNodeContent(id, content, shape);
+        if (customClass && !node.type) {
+          node.type = customClass;
+        }
+        return node;
       }
     }
 
@@ -372,12 +398,31 @@ export class MedicalFlowDSL {
    * Phân tích nội dung bên trong cặp ngoặc của Node bao gồm title và siêu dữ liệu (| key: value)
    */
   private static parseNodeContent(id: string, content: string, shape: MedicalNodeShape): MedicalFlowNode {
+    // Loại bỏ dấu ngoặc kép hoặc ngoặc đơn bao bọc bên ngoài nếu có
+    if ((content.startsWith('"') && content.endsWith('"')) || (content.startsWith("'") && content.endsWith("'"))) {
+      content = content.slice(1, -1).trim();
+    }
+
+    const cleanText = (s: string) => s.replace(/<[^>]+>/g, '').trim();
+
     const parts = content.split('|').map(s => s.trim());
-    const title = parts[0] || id;
+    let rawTitle = parts[0] || id;
+    let title = rawTitle;
+    let subtitle = '';
+
+    // Tự động phân tách dòng tiêu đề và phụ đề qua thẻ <br/>
+    const brMatch = rawTitle.match(/([\s\S]+?)(?:<br\s*\/?>\s*)([\s\S]+)/i);
+    if (brMatch) {
+      title = cleanText(brMatch[1]!);
+      subtitle = cleanText(brMatch[2]!);
+    } else {
+      title = cleanText(rawTitle);
+    }
 
     const node: MedicalFlowNode = {
       id,
       title,
+      subtitle: subtitle || undefined,
       shape
     };
 
@@ -744,10 +789,12 @@ export class MedicalFlowDSL {
     const { width, height, nodes, edges } = diagram;
 
     const escape = (s: string) => (s || '')
+      .replace(/<[^>]*>/g, '')
       .replace(/&/g, '&amp;')
       .replace(/</g, '&lt;')
       .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;');
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
 
     // 1. Vẽ các đường nối trực giao (Orthogonal Edges)
     const edgesSvg = edges.map(edge => {
@@ -911,7 +958,7 @@ export class MedicalFlowDSL {
       }
 
       return `
-        <g class="flow-node" data-node-id="${node.id}" transform="translate(${x}, ${y})">
+        <g class="flow-node" data-node-id="${escape(node.id)}" transform="translate(${x}, ${y})">
           ${shapeSvg}
           ${badgeSvg}
           ${titleSvg}
@@ -934,11 +981,13 @@ export class MedicalFlowDSL {
             <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--color-success, #10b981)" />
           </marker>
         </defs>
-        <g class="flow-layer-edges">
-          ${edgesSvg}
-        </g>
-        <g class="flow-layer-nodes">
-          ${nodesSvg}
+        <g class="flow-transform-layer" style="transform-origin: 0 0; transition: transform 0.05s ease-out;">
+          <g class="flow-layer-edges">
+            ${edgesSvg}
+          </g>
+          <g class="flow-layer-nodes">
+            ${nodesSvg}
+          </g>
         </g>
       </svg>
     `.trim();

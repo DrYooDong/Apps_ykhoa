@@ -858,11 +858,7 @@ export function getFilteredStudies(): Study[] {
       const directMatch = (study.specialty === activeSpec) || 
                           (study.specialty2 === activeSpec) || 
                           (Array.isArray(study.specialties) && study.specialties.includes(activeSpec));
-      let crossMatch = false;
-      if (study.conditionKey && CONDITION_SPECIALTY_MAP[study.conditionKey]) {
-        crossMatch = CONDITION_SPECIALTY_MAP[study.conditionKey].includes(activeSpec);
-      }
-      if (!directMatch && !crossMatch) return false;
+      if (!directMatch) return false;
     }
     if (window.filters.design && study.design !== window.filters.design) return false;
     if (window.filters.impact && study.impact !== window.filters.impact) return false;

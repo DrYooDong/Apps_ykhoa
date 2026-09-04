@@ -11,6 +11,7 @@
 
 import { CliniPortalThemeManager } from '../../../../main';
 import { cliniMdxEngine } from '../../../../core/mdx-engine';
+import { hydrateFlowchartViewers } from '../../../../components/flowchart/renderFlowchartViewer';
 
 export function renderGuidelineReader(slug: string): string {
   // Normalize slug & base name cleanly
@@ -238,12 +239,18 @@ async function fetchAndHydrateGuideline(cleanSlug: string, baseSlugName: string)
     const cor = frontmatter.cor || '';
     const loe = frontmatter.loe || '';
 
-    // Ensure guidelines-article.css is loaded in DOM
+    // Ensure guidelines-article.css and clinical-flow-engine.css are loaded in DOM
     if (!document.querySelector('link[href*="guidelines-article.css"]')) {
       const link = document.createElement('link');
       link.rel = 'stylesheet';
       link.href = './src/styles/components/guidelines-article.css';
       document.head.appendChild(link);
+    }
+    if (!document.querySelector('link[href*="clinical-flow-engine.css"]')) {
+      const flowLink = document.createElement('link');
+      flowLink.rel = 'stylesheet';
+      flowLink.href = './src/styles/components/clinical-flow-engine.css';
+      document.head.appendChild(flowLink);
     }
 
     // Pre-normalize relative image sources inside MDX rendered HTML
@@ -868,6 +875,9 @@ function normalizeArticleImages(mountEl: HTMLElement): void {
 function hydrateMdxInteractiveTools(mountEl: HTMLElement): void {
   // 0. Normalize Images in MDX Content
   normalizeArticleImages(mountEl);
+
+  // 0.1. Hydrate Interactive Clinical Flowcharts (Pan, Zoom, Fullscreen, Copy, Export)
+  hydrateFlowchartViewers(mountEl);
 
   // 1. Replace un-rendered HTML entities like &rarr; in text nodes
   const walker = document.createTreeWalker(mountEl, NodeFilter.SHOW_TEXT);

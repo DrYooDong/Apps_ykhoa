@@ -34,6 +34,7 @@ import { renderBiochemAlert } from '../content/basic-medical/biochemistry/compon
 import { renderBiochemQuickNav } from '../content/basic-medical/biochemistry/components/BiochemQuickNav';
 import { renderPathoAlert } from '../content/basic-medical/pathophysiology-cases/components/PathoAlert';
 import { renderPathoQuickNav } from '../content/basic-medical/pathophysiology-cases/components/PathoQuickNav';
+import { renderFlowchartViewer } from '../components/flowchart/renderFlowchartViewer';
 import type { EpidemiologyMdxFrontmatter } from '../content/basic-medical/types/epidemiology.types';
 import type { PhysioMdxFrontmatter } from '../content/basic-medical/types/physiology.types';
 import type { BiochemistryMdxFrontmatter } from '../content/basic-medical/types/biochemistry.types';
@@ -237,6 +238,9 @@ export class CliniMdxEngine {
     let result = content;
 
     const sections = frontmatter.sections || frontmatter.pillars || [];
+
+    // 0. <FlowchartViewer ... /> (Lưu đồ lâm sàng tương tác Clinical Flow 2.0)
+    result = this.transformFlowchartViewers(result, stashBlock);
 
     // 1. <EpiPillarsNav />
     result = result.replace(/<EpiPillarsNav\s*\/?>/gi, () => {
@@ -463,6 +467,93 @@ export class CliniMdxEngine {
         }));
       }
     );
+
+    return result;
+  }
+
+  /**
+   * Xử lý và chuyển đổi các thẻ <FlowchartViewer ... /> sang HTML & SVG tương tác hoàn chỉnh
+   */
+  private transformFlowchartViewers(content: string, stashBlock: (html: string) => string): string {
+    let result = '';
+    let pos = 0;
+    const tagStart = '<FlowchartViewer';
+
+    while (pos < content.length) {
+      const startIdx = content.indexOf(tagStart, pos);
+      if (startIdx === -1) {
+        result += content.substring(pos);
+        break;
+      }
+
+      result += content.substring(pos, startIdx);
+
+      // Quét cân bằng dấu ngoặc kép / nháy ngược đến khi gặp '/>' đóng thẻ
+      let cursor = startIdx + tagStart.length;
+      let inBacktick = false;
+      let inDoubleQuote = false;
+      let inSingleQuote = false;
+      let endIdx = -1;
+
+      while (cursor < content.length - 1) {
+        const ch = content[cursor];
+        const nextCh = content[cursor + 1];
+
+        if (ch === '`' && !inDoubleQuote && !inSingleQuote) {
+          inBacktick = !inBacktick;
+        } else if (ch === '"' && !inBacktick && !inSingleQuote) {
+          inDoubleQuote = !inDoubleQuote;
+        } else if (ch === "'" && !inBacktick && !inDoubleQuote) {
+          inSingleQuote = !inSingleQuote;
+        } else if (!inBacktick && !inDoubleQuote && !inSingleQuote && ch === '/' && nextCh === '>') {
+          endIdx = cursor + 2;
+          break;
+        }
+        cursor++;
+      }
+
+      if (endIdx !== -1) {
+        const tagContent = content.substring(startIdx, endIdx);
+
+        // Trích xuất code
+        let code = '';
+        const codeBacktickMatch = tagContent.match(/code\s*=\s*\{`([\s\S]*?)`\}/);
+        if (codeBacktickMatch) {
+          code = codeBacktickMatch[1];
+        } else {
+          const codeQuoteMatch = tagContent.match(/code\s*=\s*["']([\s\S]*?)["']/);
+          if (codeQuoteMatch) code = codeQuoteMatch[1];
+        }
+
+        // Trích xuất title
+        let title = '';
+        const titleMatch = tagContent.match(/title\s*=\s*["']([^"']+)["']/i);
+        if (titleMatch) title = titleMatch[1];
+
+        // Trích xuất height
+        let height = 580;
+        const heightMatch = tagContent.match(/height\s*=\s*\{?(\d+)\}?/i);
+        if (heightMatch) height = parseInt(heightMatch[1], 10);
+
+        // Trích xuất id
+        let id = '';
+        const idMatch = tagContent.match(/id\s*=\s*["']([^"']+)["']/i);
+        if (idMatch) id = idMatch[1];
+
+        const renderedHtml = renderFlowchartViewer({
+          id: id || undefined,
+          title: title || undefined,
+          code,
+          height
+        });
+
+        result += stashBlock(renderedHtml);
+        pos = endIdx;
+      } else {
+        result += content.substring(startIdx, startIdx + tagStart.length);
+        pos = startIdx + tagStart.length;
+      }
+    }
 
     return result;
   }
