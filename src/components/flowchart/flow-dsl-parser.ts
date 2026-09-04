@@ -108,7 +108,7 @@ export class MedicalFlowDSL {
 
     for (let i = 0; i < lines.length; i++) {
       const line = lines[i]!.trim();
-      if (!line || line.startsWith('%%') || line.startsWith('//')) {
+      if (!line || line.startsWith('%%') || line.startsWith('//') || line.startsWith('subgraph') || line === 'end') {
         continue;
       }
 
@@ -224,82 +224,91 @@ export class MedicalFlowDSL {
     nodeMap: Map<string, MedicalFlowNode>, 
     edgeCounter: number
   ): { newEdges: MedicalFlowEdge[] } | null {
-    // Edge connector regex: -->, ==>, -.->, -- nhãn -->
-    const connectorRegex = /(-->|==>|-\.->|--\s*\|([^|]+)\|\s*-->|==\s*\|([^|]+)\|\s*==>|-\.\s*\|([^|]+)\|\s*\.->|-->\s*\|([^|]+)\||==>\s*\|([^|]+)\||-\.->\s*\|([^|]+)\|)/;
-    
-    // Tìm vị trí connector
-    const parts = line.split(connectorRegex).filter(Boolean);
-    if (parts.length < 3) {
-      // Thử regex tổng quát: Source [symbol] Target
-      const genericArrow = line.match(/^(.+?)\s*(-->|==>|-\.->|--)\s*(?:\|([^|]+)\|\s*)?(.+)$/);
-      if (!genericArrow) return null;
+    // Edge connector regex: khớp mọi chuẩn mũi tên Mermaid:
+    // 1. -->|label|, ==>|label|, -.->|label|
+    // 2. -- "label" -->, -- 'label' -->, -- label -->
+    // 3. == "label" ==>, == 'label' ==>, == label ==>
+    // 4. -. "label" .->, -. 'label' .->, -. label .->
+    // 5. -->, ==>, -.->
+    const connectorRegex = /(-->\|[^|]+\||==>\|[^|]+\||-\.->\|[^|]+\||--\s*(?:"[^"]*"|'[^']*'|\|[^|]*\||[^-=>\r\n]+?)\s*-->|==\s*(?:"[^"]*"|'[^']*'|\|[^|]*\||[^-=>\r\n]+?)\s*==>|-\.\s*(?:"[^"]*"|'[^']*'|\|[^|]*\||[^-=>\r\n]+?)\s*\.->|-->|==>|-\.->)/g;
 
-      const rawSource = genericArrow[1]!.trim();
-      const arrowSymbol = genericArrow[2]!.trim();
-      const label = (genericArrow[3] || '').trim();
-      const rawTarget = genericArrow[4]!.trim();
+    const matches: Array<{ raw: string; index: number; length: number; label: string; type: string }> = [];
+    let m: RegExpExecArray | null;
 
-      const sourceNode = this.parseOrGetNode(rawSource, nodeMap);
-      const targetNode = this.parseOrGetNode(rawTarget, nodeMap);
+    while ((m = connectorRegex.exec(line)) !== null) {
+      const raw = m[0];
+      const index = m.index;
+      const length = raw.length;
 
-      const edgeType = arrowSymbol === '==>' ? 'danger' 
-        : arrowSymbol === '-.->' ? 'warning'
-        : label.toLowerCase().includes('không') || label.toLowerCase().includes('âm') ? 'danger'
-        : label.toLowerCase().includes('có') || label.toLowerCase().includes('dương') ? 'success'
-        : 'normal';
+      let label = '';
+      const pipeMatch = raw.match(/\|([^|]+)\|/);
+      if (pipeMatch) {
+        label = pipeMatch[1]!.trim();
+      } else {
+        const quoteMatch = raw.match(/["']([^"']+)["']/);
+        if (quoteMatch) {
+          label = quoteMatch[1]!.trim();
+        } else {
+          const textMatch = raw.match(/--\s*([^->]+?)\s*-->|==\s*([^=>]+?)\s*==>|-\.\s*([^.>]+?)\s*\.->/);
+          if (textMatch) {
+            label = (textMatch[1] || textMatch[2] || textMatch[3] || '').trim();
+          }
+        }
+      }
 
-      const edge: MedicalFlowEdge = {
-        id: `e${edgeCounter}`,
-        source: sourceNode.id,
-        target: targetNode.id,
-        label: label || undefined,
-        type: edgeType,
-        style: 'orthogonal'
-      };
+      let type = 'normal';
+      if (raw.includes('==')) type = 'danger';
+      else if (raw.includes('-.')) type = 'warning';
 
-      return { newEdges: [edge] };
+      matches.push({ raw, index, length, label, type });
     }
 
-    // Trường hợp nối chuỗi nhiều node: A --> B --> C
+    if (matches.length === 0) return null;
+
+    const segments: string[] = [];
+    let lastIndex = 0;
+    for (let i = 0; i < matches.length; i++) {
+      const match = matches[i]!;
+      segments.push(line.substring(lastIndex, match.index).trim());
+      lastIndex = match.index + match.length;
+    }
+    segments.push(line.substring(lastIndex).trim());
+
     const newEdges: MedicalFlowEdge[] = [];
-    let currentIdx = 0;
     let localEdgeCount = edgeCounter;
 
-    while (currentIdx < parts.length - 2) {
-      const srcPart = parts[currentIdx]!.trim();
-      const arrowPart = parts[currentIdx + 1]!.trim();
-      let label = '';
-      let targetPart = '';
+    for (let i = 0; i < matches.length; i++) {
+      const srcStr = segments[i];
+      const tgtStr = segments[i + 1];
+      const conn = matches[i]!;
 
-      // Kiểm tra nhãn |...|
-      if (arrowPart.includes('|')) {
-        const labelMatch = arrowPart.match(/\|([^|]+)\|/);
-        if (labelMatch) label = labelMatch[1]!.trim();
+      if (!srcStr || !tgtStr) continue;
+
+      const srcTokens = srcStr.split('&').map(s => s.trim()).filter(Boolean);
+      const tgtTokens = tgtStr.split('&').map(s => s.trim()).filter(Boolean);
+
+      for (const s of srcTokens) {
+        for (const t of tgtTokens) {
+          const sourceNode = this.parseOrGetNode(s, nodeMap);
+          const targetNode = this.parseOrGetNode(t, nodeMap);
+
+          let edgeType = conn.type;
+          if (edgeType === 'normal') {
+            const lLow = conn.label.toLowerCase();
+            if (lLow.includes('không') || lLow.includes('âm') || lLow.includes('nguy') || lLow.includes('chưa') || lLow.includes('thất bại')) edgeType = 'danger';
+            else if (lLow.includes('có') || lLow.includes('dương') || lLow.includes('ổn') || lLow.includes('đạt') || lLow.includes('thành công')) edgeType = 'success';
+          }
+
+          newEdges.push({
+            id: `e${localEdgeCount++}`,
+            source: sourceNode.id,
+            target: targetNode.id,
+            label: conn.label || undefined,
+            type: edgeType,
+            style: 'orthogonal'
+          });
+        }
       }
-
-      targetPart = parts[currentIdx + 2]!.trim();
-
-      if (srcPart && targetPart) {
-        const sourceNode = this.parseOrGetNode(srcPart, nodeMap);
-        const targetNode = this.parseOrGetNode(targetPart, nodeMap);
-
-        const edgeType = arrowPart.includes('==>') ? 'danger' 
-          : arrowPart.includes('-.->') ? 'warning'
-          : label.toLowerCase().includes('không') || label.toLowerCase().includes('nguy') ? 'danger'
-          : label.toLowerCase().includes('có') || label.toLowerCase().includes('ổn') ? 'success'
-          : 'normal';
-
-        newEdges.push({
-          id: `e${localEdgeCount++}`,
-          source: sourceNode.id,
-          target: targetNode.id,
-          label: label || undefined,
-          type: edgeType,
-          style: 'orthogonal'
-        });
-      }
-
-      currentIdx += 2;
     }
 
     return newEdges.length > 0 ? { newEdges } : null;
@@ -584,14 +593,21 @@ export class MedicalFlowDSL {
     if (rootQueue.length === 0) rootQueue.push(rootId);
 
     const queue = [...rootQueue];
-    while (queue.length > 0) {
+    const maxAllowedDepth = nodes.length;
+    let iterations = 0;
+    const maxIterations = nodes.length * nodes.length + 100;
+
+    while (queue.length > 0 && iterations < maxIterations) {
+      iterations++;
       const currId = queue.shift()!;
       const currDepth = depths.get(currId)!;
+      if (currDepth >= maxAllowedDepth) continue; // Phá vỡ chu trình lặp ngược (Cycle breaking)
+
       const outEdges = edges.filter(e => e.source === currId);
 
       outEdges.forEach(e => {
         const targetDepth = depths.get(e.target);
-        if (targetDepth === undefined || targetDepth < currDepth + 1) {
+        if (targetDepth === undefined || (targetDepth < currDepth + 1 && currDepth + 1 < maxAllowedDepth)) {
           depths.set(e.target, currDepth + 1);
           queue.push(e.target);
         }
@@ -646,13 +662,13 @@ export class MedicalFlowDSL {
         nodesInLevel.forEach((n, idx) => {
           // Tính toán chiều cao động theo số dòng tiêu đề, badge, subtitle và dose
           const titleLines = MedicalFlowDSL.wrapText(n.title, 24, 2);
-          let dynamicH = 70;
+          let dynamicH = 65;
           if (n.badge) dynamicH += 18;
-          if (titleLines.length > 1) dynamicH += 16;
-          if (n.subtitle) dynamicH += 16;
+          dynamicH += titleLines.length * 16;
+          if (n.subtitle) dynamicH += 22;
           if (n.dose) dynamicH += 22;
 
-          n.width = n.width || nodeDefaultWidth;
+          n.width = n.width || (n.shape === 'diamond' ? 260 : nodeDefaultWidth);
           n.height = n.height || Math.max(80, dynamicH);
           n.x = Math.round(startX + idx * (nodeDefaultWidth + siblingSpacing));
           n.y = Math.round(y);
@@ -666,10 +682,10 @@ export class MedicalFlowDSL {
 
         nodesInLevel.forEach((n, idx) => {
           const titleLines = MedicalFlowDSL.wrapText(n.title, 24, 2);
-          let dynamicH = 70;
+          let dynamicH = 65;
           if (n.badge) dynamicH += 18;
-          if (titleLines.length > 1) dynamicH += 16;
-          if (n.subtitle) dynamicH += 16;
+          dynamicH += titleLines.length * 16;
+          if (n.subtitle) dynamicH += 22;
           if (n.dose) dynamicH += 22;
 
           n.width = n.width || nodeDefaultWidth;
@@ -696,6 +712,12 @@ export class MedicalFlowDSL {
           edge.entryY = 0.0;
           edge.exitX = isDirectColumn ? 0.5 : isTargetRight ? 0.7 : 0.3;
           edge.entryX = 0.5;
+        } else if (Math.abs((srcNode.y || 0) - (tgtNode.y || 0)) < 30) {
+          // Cùng hàng ngang (Horizontal same-level connection)
+          edge.exitX = isTargetRight ? 1.0 : 0.0;
+          edge.exitY = 0.5;
+          edge.entryX = isTargetRight ? 0.0 : 1.0;
+          edge.entryY = 0.5;
         } else {
           // Nhánh lặp lại ngược lên trên (Loopback)
           edge.exitX = 1.0;
@@ -819,6 +841,10 @@ export class MedicalFlowDSL {
       if (Math.abs(startX - endX) < 4) {
         pathD = `M ${startX} ${startY} L ${endX} ${endY}`;
         labelY = (startY + endY) / 2;
+      } else if (Math.abs(startY - endY) < 4) {
+        pathD = `M ${startX} ${startY} L ${endX} ${endY}`;
+        labelX = (startX + endX) / 2;
+        labelY = startY;
       } else {
         const midY = startY + (endY - startY) * 0.5;
         const radius = 6;
@@ -901,7 +927,8 @@ export class MedicalFlowDSL {
       }
 
       let shapeSvg = '';
-      if (node.shape === 'diamond') {
+      const isDiamond = node.shape === 'diamond';
+      if (isDiamond) {
         const midX = w / 2;
         const midY = h / 2;
         shapeSvg = `<polygon points="${midX},0 ${w},${midY} ${midX},${h} 0,${midY}" fill="${fill}" stroke="${stroke}" stroke-width="${strokeWidth}" />`;
@@ -912,58 +939,79 @@ export class MedicalFlowDSL {
         shapeSvg = `<rect x="0" y="0" width="${w}" height="${h}" rx="8" ry="8" fill="${fill}" stroke="${stroke}" stroke-width="${strokeWidth}" />`;
       }
 
-      // Huy hiệu (Badge Top)
-      let badgeSvg = '';
-      let textStartY = 28;
-      if (node.badge) {
-        const badgeText = escape(node.badge);
-        const approxBw = Math.min(w - 24, badgeText.length * 7 + 14);
-        badgeSvg = `
-          <rect x="12" y="8" width="${approxBw}" height="18" rx="4" fill="${stroke}" opacity="0.15" />
-          <text x="18" y="21" font-size="9.5" font-weight="700" fill="${stroke}" font-family="Inter, sans-serif">${badgeText}</text>
-        `;
-        textStartY = 42;
-      }
-
-      // Tiêu đề Node (Rule 7: Không dùng thẻ HTML bên trong <text>, dùng <tspan>)
+      // Tiêu đề & Nội dung Node
       const titleLines = MedicalFlowDSL.wrapText(node.title, 24, 2);
-      const titleSvg = `
-        <text x="12" y="${textStartY}" font-size="12" font-weight="700" fill="var(--color-text, #0f172a)" font-family="Inter, sans-serif">
-          ${titleLines.map((line, idx) => `<tspan x="12" dy="${idx === 0 ? 0 : 15}">${escape(line)}</tspan>`).join('')}
-        </text>
-      `;
+      let contentSvg = '';
 
-      // Phụ đề (Subtitle)
-      let subSvg = '';
-      if (node.subtitle) {
-        const subStartY = textStartY + (titleLines.length > 1 ? 20 : 16);
-        subSvg = `
-          <text x="12" y="${subStartY}" font-size="10.5" fill="var(--color-text-muted, #64748b)" font-family="Inter, sans-serif">
-            ${escape(node.subtitle.length > 36 ? node.subtitle.substring(0, 34) + '...' : node.subtitle)}
+      if (isDiamond) {
+        // Trong hình thoi: Căn giữa tuyệt đối chữ để không cọ vào 2 góc nhọn
+        const midX = w / 2;
+        const midY = h / 2;
+        const lineCount = titleLines.length + (node.subtitle ? 1 : 0);
+        const startY = midY - ((lineCount - 1) * 16) / 2 + 4;
+
+        contentSvg = `
+          <text text-anchor="middle" x="${midX}" y="${startY}" font-size="11.5" font-weight="700" fill="var(--color-text, #0f172a)" font-family="Inter, sans-serif">
+            ${titleLines.map((line, idx) => `<tspan x="${midX}" dy="${idx === 0 ? 0 : 15}">${escape(line)}</tspan>`).join('')}
+          </text>
+          ${node.subtitle ? `
+            <text text-anchor="middle" x="${midX}" y="${startY + titleLines.length * 15}" font-size="9.5" fill="var(--color-text-muted, #64748b)" font-family="Inter, sans-serif">
+              ${escape(node.subtitle.length > 36 ? node.subtitle.substring(0, 34) + '...' : node.subtitle)}
+            </text>
+          ` : ''}
+        `;
+      } else {
+        // Huy hiệu (Badge Top)
+        let badgeSvg = '';
+        let textStartY = 28;
+        if (node.badge) {
+          const badgeText = escape(node.badge);
+          const approxBw = Math.min(w - 24, badgeText.length * 7 + 14);
+          badgeSvg = `
+            <rect x="12" y="8" width="${approxBw}" height="18" rx="4" fill="${stroke}" opacity="0.15" />
+            <text x="18" y="21" font-size="9.5" font-weight="700" fill="${stroke}" font-family="Inter, sans-serif">${badgeText}</text>
+          `;
+          textStartY = 42;
+        }
+
+        // Tiêu đề Node (Rule 7: Không dùng thẻ HTML bên trong <text>, dùng <tspan>)
+        const titleSvg = `
+          <text x="12" y="${textStartY}" font-size="12" font-weight="700" fill="var(--color-text, #0f172a)" font-family="Inter, sans-serif">
+            ${titleLines.map((line, idx) => `<tspan x="12" dy="${idx === 0 ? 0 : 15}">${escape(line)}</tspan>`).join('')}
           </text>
         `;
-      }
 
-      // Dược lý / Liều thuốc (Dose Strip)
-      let doseSvg = '';
-      if (node.dose) {
-        doseSvg = `
-          <g transform="translate(12, ${h - 22})">
-            <rect x="0" y="0" width="${w - 24}" height="16" rx="3" fill="var(--color-surface-2, #f1f5f9)" stroke="var(--color-border, #e2e8f0)" stroke-width="0.5" />
-            <text x="6" y="11" font-size="9.5" font-weight="600" fill="var(--color-purple, #8b5cf6)" font-family="Inter, sans-serif">
-              💊 ${escape(node.dose.length > 30 ? node.dose.substring(0, 28) + '...' : node.dose)}
+        // Phụ đề (Subtitle) — tính toán startY cách dòng cuối tiêu đề tối thiểu 18px để chống đè chữ
+        let subSvg = '';
+        if (node.subtitle) {
+          const subStartY = textStartY + (titleLines.length - 1) * 16 + 18;
+          subSvg = `
+            <text x="12" y="${subStartY}" font-size="10" fill="var(--color-text-muted, #64748b)" font-family="Inter, sans-serif">
+              ${escape(node.subtitle.length > 38 ? node.subtitle.substring(0, 36) + '...' : node.subtitle)}
             </text>
-          </g>
-        `;
+          `;
+        }
+
+        // Dược lý / Liều thuốc (Dose Strip)
+        let doseSvg = '';
+        if (node.dose) {
+          doseSvg = `
+            <g transform="translate(12, ${h - 22})">
+              <rect x="0" y="0" width="${w - 24}" height="16" rx="3" fill="var(--color-surface-2, #f1f5f9)" stroke="var(--color-border, #e2e8f0)" stroke-width="0.5" />
+              <text x="6" y="11" font-size="9.5" font-weight="600" fill="var(--color-purple, #8b5cf6)" font-family="Inter, sans-serif">
+                💊 ${escape(node.dose.length > 30 ? node.dose.substring(0, 28) + '...' : node.dose)}
+              </text>
+            </g>
+          `;
+        }
+
+        contentSvg = `${badgeSvg}${titleSvg}${subSvg}${doseSvg}`;
       }
 
       return `
         <g class="flow-node" data-node-id="${escape(node.id)}" transform="translate(${x}, ${y})">
           ${shapeSvg}
-          ${badgeSvg}
-          ${titleSvg}
-          ${subSvg}
-          ${doseSvg}
+          ${contentSvg}
         </g>
       `;
     }).join('\n');
