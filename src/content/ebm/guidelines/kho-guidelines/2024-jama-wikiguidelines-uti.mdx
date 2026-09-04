@@ -118,7 +118,7 @@ sections:
 
 <div class="page-content">
 
-  <!-- SECTION 1 -->
+  {/* SECTION 1 */}
   <div class="sec-card" id="sec-phuong-phap-luan-du-phong">
     <div class="sec-hdr">
       <div class="sec-hdr-left">
@@ -194,7 +194,7 @@ sections:
     </div>
   </div>
 
-  <!-- SECTION 2 -->
+  {/* SECTION 2 */}
   <div class="sec-card" id="sec-dinh-nghia-chan-doan-stewardship">
     <div class="sec-hdr">
       <div class="sec-hdr-left">
@@ -343,7 +343,7 @@ sections:
     </div>
   </div>
 
-  <!-- SECTION 3 -->
+  {/* SECTION 3 */}
   <div class="sec-card" id="sec-dieu-tri-kinh-nghiem-dich">
     <div class="sec-hdr">
       <div class="sec-hdr-left">
@@ -391,7 +391,7 @@ sections:
     </div>
   </div>
 
-  <!-- SECTION 4 -->
+  {/* SECTION 4 */}
   <div class="sec-card" id="sec-thoi-gian-dieu-tri-table4">
     <div class="sec-hdr">
       <div class="sec-hdr-left">
@@ -512,7 +512,7 @@ sections:
     </div>
   </div>
 
-  <!-- SECTION 5 -->
+  {/* SECTION 5 */}
   <div class="sec-card" id="sec-nhi-khoa-efigure2">
     <div class="sec-hdr">
       <div class="sec-hdr-left">
@@ -533,50 +533,30 @@ sections:
 
       <div class="sec-subtitle" style="margin-top: 1.5rem;">Sơ Đồ Khung Đánh Giá &amp; Lựa Chọn Điều Trị Kinh Nghiệm Ở Trẻ Em (eFigure 2 JAMA 2024)</div>
       
-      <div style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; padding: 1.5rem; margin: 1rem 0; overflow-x: auto;">
-        <svg viewBox="0 0 840 340" style="width: 100%; min-width: 680px; font-family: system-ui, -apple-system, sans-serif;">
-          <!-- Step 1 Box -->
-          <rect x="20" y="20" width="240" height="90" rx="10" fill="#eff6ff" stroke="#0284c7" stroke-width="1.5"/>
-          <text x="140" y="48" text-anchor="middle" fill="#1e3a8a" font-weight="bold" font-size="13">BƯỚC 1: ĐÁNH GIÁ LÂM SÀNG</text>
-          <text x="140" y="70" text-anchor="middle" fill="#334155" font-size="11">• Trẻ &lt; 2 tháng vs &gt; 2 tháng tuổi</text>
-          <text x="140" y="90" text-anchor="middle" fill="#334155" font-size="11">• Khả năng dung nạp thuốc uống</text>
+      <FlowchartViewer
+        title="Khung Đánh Giá & Lựa Chọn Điều Trị Kháng Sinh Nhi Khoa (JAMA 2024)"
+        code={`graph TD
+  subgraph EVAL["Quy Trình 3 Bước Đánh Giá Lâm Sàng & Vi Sinh"]
+    S1["BƯỚC 1: ĐÁNH GIÁ LÂM SÀNG<br/><small>• Trẻ < 2 tháng vs > 2 tháng tuổi<br/>• Khả năng dung nạp đường uống</small>"]:::action
+    S2["BƯỚC 2: NGUY CƠ ĐỀ KHÁNG<br/><small>• Sử dụng kháng sinh gần đây<br/>• Tiền sử vi khuẩn đa kháng MDRO / Dị tật niệu</small>"]:::warning
+    S3["BƯỚC 3: PHÂN TẦNG ĐIỀU TRỊ<br/><small>• Viêm bàng quang vs Viêm bể thận<br/>• Lựa chọn đường uống vs Tĩnh mạch</small>"]:::start
+    S1 --> S2 --> S3
+  end
 
-          <!-- Step 2 Box -->
-          <rect x="300" y="20" width="240" height="90" rx="10" fill="#fefce8" stroke="#eab308" stroke-width="1.5"/>
-          <text x="420" y="48" text-anchor="middle" fill="#713f12" font-weight="bold" font-size="13">BƯỚC 2: NGUY CƠ ĐỀ KHÁNG</text>
-          <text x="420" y="70" text-anchor="middle" fill="#334155" font-size="11">• Sử dụng kháng sinh gần đây</text>
-          <text x="420" y="90" text-anchor="middle" fill="#334155" font-size="11">• Tiền sử nhiễm MDRO / Dị tật niệu</text>
+  S3 --> B1["VIÊM BÀNG QUANG CẤP (> 2 Tháng Tuổi)<br/><small>• Kháng sinh đường uống phù hợp kháng sinh đồ địa phương<br/>• Thời gian rút ngắn: 3 đến 5 NGÀY (hiệu quả tương đương 7-14 ngày)</small>"]:::success
+  S3 --> B2["VIÊM BỂ THẬN CẤP / UTI CÓ SỐT<br/><small>• Kháng sinh IV hoặc uống tùy thuộc độ nặng toàn thân<br/>• Thời gian tối ưu: 5 đến 9 NGÀY<br/>• Xuống thang & chuyển sang đường uống sớm khi cắt sốt</small>"]:::action
 
-          <!-- Step 3 Box -->
-          <rect x="580" y="20" width="240" height="90" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
-          <text x="700" y="48" text-anchor="middle" fill="#14532d" font-weight="bold" font-size="13">BƯỚC 3: PHÂN TẦNG ĐIỀU TRỊ</text>
-          <text x="700" y="70" text-anchor="middle" fill="#334155" font-size="11">• Viêm bàng quang vs Viêm bể thận</text>
-          <text x="700" y="90" text-anchor="middle" fill="#334155" font-size="11">• Lựa chọn đường uống vs Tĩnh mạch</text>
-
-          <!-- Arrows to Output Branches -->
-          <path d="M 140 110 L 140 160 L 220 160" stroke="#0284c7" stroke-width="2"/>
-          <path d="M 700 110 L 700 160 L 620 160" stroke="#16a34a" stroke-width="2"/>
-
-          <!-- Branch 1: Cystitis -->
-          <rect x="60" y="180" width="340" height="120" rx="10" fill="var(--color-bg)" stroke="#0284c7" stroke-width="2"/>
-          <text x="230" y="210" text-anchor="middle" fill="#0284c7" font-weight="bold" font-size="14">VIÊM BÀNG QUANG CẤP (&gt; 2 Tháng Tuổi)</text>
-          <text x="230" y="235" text-anchor="middle" fill="#334155" font-size="12">• Kháng sinh đường uống phù hợp dịch tễ</text>
-          <text x="230" y="258" text-anchor="middle" fill="#16a34a" font-weight="bold" font-size="12">• Thời gian rút ngắn: 3 đến 5 NGÀY</text>
-          <text x="230" y="280" text-anchor="middle" fill="#64748b" font-size="11">• Hiệu quả tương đương phác đồ 7–14 ngày</text>
-
-          <!-- Branch 2: Pyelonephritis -->
-          <rect x="440" y="180" width="340" height="120" rx="10" fill="var(--color-bg)" stroke="#16a34a" stroke-width="2"/>
-          <text x="610" y="210" text-anchor="middle" fill="#16a34a" font-weight="bold" font-size="14">VIÊM BỂ THẬN CẤP / UTI CÓ SỐT</text>
-          <text x="610" y="235" text-anchor="middle" fill="#334155" font-size="12">• Kháng sinh IV hoặc uống tùy độ nặng</text>
-          <text x="610" y="258" text-anchor="middle" fill="#16a34a" font-weight="bold" font-size="12">• Thời gian tối ưu: 5 đến 9 NGÀY</text>
-          <text x="610" y="280" text-anchor="middle" fill="#0284c7" font-weight="bold" font-size="11">• Xuống thang &amp; chuyển uống sớm khi cắt sốt</text>
-        </svg>
-      </div>
+  classDef start fill:#e0f2fe,stroke:#0284c7,stroke-width:2px,color:#0369a1
+  classDef action fill:#eff6ff,stroke:#3b82f6,stroke-width:1.5px,color:#1e40af
+  classDef danger fill:#fee2e2,stroke:#ef4444,stroke-width:2px,color:#991b1b
+  classDef warning fill:#fefce8,stroke:#eab308,stroke-width:1.5px,color:#713f12
+  classDef success fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#15803d`}
+      />
 
     </div>
   </div>
 
-  <!-- SECTION 6 -->
+  {/* SECTION 6 */}
   <div class="sec-card" id="sec-doi-tuong-dac-biet-hoi-chung-nang">
     <div class="sec-hdr">
       <div class="sec-hdr-left">
@@ -639,7 +619,7 @@ sections:
     </div>
   </div>
 
-  <!-- SECTION 7 -->
+  {/* SECTION 7 */}
   <div class="sec-card" id="sec-trich-dan-y-van">
     <div class="sec-hdr">
       <div class="sec-hdr-left">
@@ -735,7 +715,7 @@ sections:
 
 </div>
 
-<!-- BOTTOM NAVIGATION -->
+{/* BOTTOM NAVIGATION */}
 <div style="margin-top: 2rem; margin-bottom: 3rem;">
   <div class="btn-row" style="display: flex; gap: 1rem; flex-wrap: wrap;">
     <a href="#/ebm/kho-guidelines" class="btn btn-primary" style="text-decoration: none;">

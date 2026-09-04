@@ -468,7 +468,38 @@ sections:
           </div>
         </div>
 
-        <div class="sec-subtitle"><i class="fa-solid fa-route"></i> Ma Trận Lựa Chọn Phác Đồ Dinh Dưỡng Theo Kiểu Hình Lâm Sàng</div>
+        <FlowchartViewer 
+          title="Lưu Đồ Cá Thể Hóa Dinh Dưỡng: Lựa Chọn Low-Carb vs Low-Fat Theo Bilan Lipid Máu (Nutrients 2020)"
+          code={`flowchart TD
+            PT([Bệnh nhân thừa cân, béo phì hoặc rối loạn lipid máu cần can thiệp | start | badge: Khám sàng lọc])
+            PROFILE{Đánh giá bilan lipid máu & Nguy cơ biến cố tim mạch (ASCVD)? | question}
+
+            CVD_HIGH[1. Nguy cơ tim mạch cao HOẶC LDL-C tăng cao 🚨 | danger | badge: High ASCVD Risk | subtitle: Tiền sử NMCT/đột quỵ, ĐTĐ, xơ vữa mạch, hoặc LDL-C > 130 mg/dL]
+            METAB_HIGH[2. Hội chứng chuyển hóa: Triglyceride cao + HDL-C thấp 🟡 | warning | badge: Metabolic Syndrome | subtitle: TG > 150 mg/dL, HDL-C < 40/50 mg/dL, đề kháng Insulin]
+            OBESE_ISO[3. Thừa cân / Béo phì đơn thuần (Bilan lipid bình thường) ⚖️ | action | badge: Weight Loss Focus | subtitle: BMI > 25, không có bệnh tim mạch hay rối loạn mỡ máu kèm theo]
+
+            LOW_FAT[ƯU TIÊN CHẾ ĐỘ ĂN ÍT CHẤT BÉO (LOW-FAT & ĐỊA TRUNG HẢI) 🥗 | success | badge: Giảm LDL-C hiệu quả | subtitle: Chất béo < 30%, chất béo bão hòa < 7% + Tăng chất xơ hòa tan từ đậu, yến mạch, rau củ]
+            LOW_CARB[ƯU TIÊN CHẾ ĐỘ ĂN ÍT CARBOHYDRATE (LOW-CARB 6-12 THÁNG) 🥑 | action | badge: Hạ TG & Tăng HDL | subtitle: Carbohydrate < 40%, tăng chất béo tốt MUFA/PUFA (dầu ô liu, cá béo, bơ) - Tránh mỡ động vật]
+            FLEX[LỰA CHỌN THEO SỞ THÍCH & KHẢ NĂNG DUY TRÌ BỀN VỮNG ⭐ | success | badge: Bền vững trọn đời | subtitle: Thâm hụt 500 kcal/ngày + Giảm thực phẩm siêu chế biến, duy trì tuân thủ lâu dài]
+
+            RECHECK[Đánh giá lại Bilan Lipid & Cân nặng sau 3 - 6 tháng | action]
+
+            PT --> PROFILE
+            PROFILE ==>|LDL cao / Nguy cơ tim mạch| CVD_HIGH
+            PROFILE ==>|TG cao / HDL thấp| METAB_HIGH
+            PROFILE -->|Béo phì đơn thuần| OBESE_ISO
+
+            CVD_HIGH ==> LOW_FAT
+            METAB_HIGH ==> LOW_CARB
+            OBESE_ISO --> FLEX
+
+            LOW_FAT --> RECHECK
+            LOW_CARB --> RECHECK
+            FLEX --> RECHECK
+          `}
+        />
+
+        <div class="sec-subtitle" style="margin-top: 1.5rem;"><i class="fa-solid fa-route"></i> Ma Trận Lựa Chọn Phác Đồ Dinh Dưỡng Theo Kiểu Hình Lâm Sàng</div>
 
         <div class="table-wrapper">
           <table class="data-table">
@@ -506,7 +537,6 @@ sections:
             <strong>Mục tiêu cốt lõi của can thiệp lối sống:</strong>
             Thay vì ép buộc bệnh nhân tuân theo các chế độ ăn kiêng cực đoan, bác sĩ và chuyên gia dinh dưỡng nên tập trung vào:
             <ul style="margin: 0.4rem 0 0 1.2rem; line-height: 1.6;">
-<ul style="margin-left: 1.25rem; margin-bottom: 1rem; line-height: 1.65;">
               <li>Cắt giảm tối đa <strong>thực phẩm siêu chế biến (Ultra-processed foods)</strong> và đường bổ sung.</li>
               <li>Tạo sự thâm hụt năng lượng (Caloric deficit) vừa phải, kết hợp rèn luyện thể lực.</li>
               <li>Xây dựng mô hình ăn uống phù hợp với văn hóa ẩm thực, sở thích và điều kiện kinh tế để bệnh nhân có thể <strong>duy trì suốt đời</strong>.</li>

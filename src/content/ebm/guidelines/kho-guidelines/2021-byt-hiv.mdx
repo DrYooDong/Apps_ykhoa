@@ -144,7 +144,7 @@ sections:
 
 <div class="page-content">
 
-  <!-- PHẦN 1: PHÁP LÝ & BAN BIÊN SOẠN -->
+  {/* PHẦN 1: PHÁP LÝ & BAN BIÊN SOẠN */}
   <div class="sec-card" id="sec-phaply">
     <div class="sec-hdr">
       <div class="sec-hdr-icon"><i class="fa-solid fa-scale-balanced"></i></div>
@@ -210,7 +210,7 @@ sections:
     </div>
   </div>
 
-  <!-- PHẦN 2: 5CS & CHẨN ĐOÁN NGƯỜI LỚN -->
+  {/* PHẦN 2: 5CS & CHẨN ĐOÁN NGƯỜI LỚN */}
   <div class="sec-card" id="sec-5cs-chandoan">
     <div class="sec-hdr">
       <div class="sec-hdr-icon"><i class="fa-solid fa-check-double"></i></div>
@@ -298,7 +298,7 @@ sections:
     </div>
   </div>
 
-  <!-- PHẦN 3: CHẨN ĐOÁN SỚM TRẺ < 18 THÁNG (NAT) -->
+  {/* PHẦN 3: CHẨN ĐOÁN SỚM TRẺ < 18 THÁNG (NAT) */}
   <div class="sec-card" id="sec-nat-tre-em">
     <div class="sec-hdr">
       <div class="sec-hdr-icon"><i class="fa-solid fa-baby"></i></div>
@@ -332,83 +332,36 @@ sections:
         </div>
       </div>
 
-      <!-- SƠ ĐỒ 1: LƯU ĐỒ CHẨN ĐOÁN NAT -->
-      <div class="sec-subtitle" style="margin-top: 1.5rem;"><i class="fa-solid fa-diagram-project"></i> Sơ Đồ Quy Trình Chẩn Đoán Sớm Bằng Xét Nghiệm NAT (Sơ Đồ 1 — Bộ Y Tế)</div>
+      {/* SƠ ĐỒ 1: LƯU ĐỒ CHẨN ĐOÁN NAT */}
+      <FlowchartViewer 
+        title="Sơ Đồ 1. Quy Trình Chẩn Đoán Sớm Nhiễm HIV Ở Trẻ Dưới 18 Tháng Bằng Xét Nghiệm NAT (Bộ Y Tế)"
+        code={`flowchart TD
+          START([Trẻ dưới 18 tháng tuổi có chỉ định xét nghiệm NAT | start | badge: Bộ Y Tế QĐ 5968 | subtitle: Lúc sinh, 4-6 tuần, 9 tháng hoặc có triệu chứng nghi ngờ])
+          NAT1[Làm xét nghiệm NAT lần 1 (NAT 1) 🧪 | action | subtitle: Xét nghiệm axit nucleic tìm HIV-DNA hoặc HIV-RNA]
 
-      <div style="background: var(--color-surface, #ffffff); border: 1px solid var(--color-border, #e2e8f0); border-radius: 12px; padding: 1.5rem; margin: 1rem 0; overflow-x: auto;">
-        <svg viewBox="0 0 900 340" style="width: 100%; min-width: 720px; font-family: system-ui, -apple-system, sans-serif;">
-          <defs>
-            <marker id="arrow-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-              <path d="M 0 1 L 10 5 L 0 9 z" fill="#0284c7" />
-            </marker>
-            <marker id="arrow-red" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-              <path d="M 0 1 L 10 5 L 0 9 z" fill="#dc2626" />
-            </marker>
-            <marker id="arrow-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-              <path d="M 0 1 L 10 5 L 0 9 z" fill="#16a34a" />
-            </marker>
-            <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
-              <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.08" />
-            </filter>
-          </defs>
+          RES1{Kết quả xét nghiệm NAT 1? | question}
+          
+          NAT1_POS[KẾT QUẢ NAT 1 DƯƠNG TÍNH (+) 🚨 | danger | badge: Khẩn cấp | subtitle: 1. Khởi động điều trị ARV ngay lập tức + 2. Lấy mẫu máu thứ hai làm NAT 2 để khẳng định]
+          NAT1_NEG[KẾT QUẢ NAT 1 ÂM TÍNH (-) 🟢 | success | badge: Chưa ghi nhận nhiễm | subtitle: Tiếp tục điều trị dự phòng ARV cho trẻ + Làm lại NAT theo các mốc chuẩn 4-6 tuần, 9 tháng]
 
-          <!-- KHỐI ĐẦU: TRẺ CÓ CHỈ ĐỊNH -->
-          <g filter="url(#shadow)">
-            <rect x="250" y="20" width="400" height="50" rx="8" fill="#f8fafc" stroke="#64748b" stroke-width="2" />
-            <text x="450" y="42" text-anchor="middle" font-weight="700" font-size="14" fill="#1e293b">TRẺ DƯỚI 18 THÁNG TUỔI CÓ CHỈ ĐỊNH XÉT NGHIỆM</text>
-            <text x="450" y="60" text-anchor="middle" font-size="11" fill="#64748b">(Lúc sinh, 4–6 tuần, 9 tháng hoặc có triệu chứng nghi ngờ)</text>
-          </g>
+          RES2{Kết quả xét nghiệm NAT 2 khẳng định? | question}
+          CONFIRMED[NAT 2 (+): XÁC NHẬN NHIỄM HIV ⭐ | danger | badge: Khẳng định chẩn đoán | subtitle: Duy trì phác đồ điều trị ARV suốt đời + Đăng ký chăm sóc toàn diện]
+          DISCORDANT[NAT 2 (-): KẾT QUẢ KHÔNG ĐỒNG NHẤT ⚠️ | warning | badge: Cần xác minh | subtitle: Hội chẩn chuyên gia HIV nhi + Lấy mẫu làm NAT 3 sau 2-4 tuần (tiếp tục ARV trong thời gian chờ)]
 
-          <!-- KHỐI NAT 1 -->
-          <g filter="url(#shadow)">
-            <rect x="300" y="100" width="300" height="45" rx="8" fill="#eff6ff" stroke="#0284c7" stroke-width="2" />
-            <text x="450" y="128" text-anchor="middle" font-weight="700" font-size="14" fill="#0369a1">LÀM XÉT NGHIỆM NAT LẦN 1 (NAT 1)</text>
-          </g>
-
-          <line x1="450" y1="70" x2="450" y2="95" stroke="#0284c7" stroke-width="2" marker-end="url(#arrow-blue)" />
-
-          <!-- NHÁNH NAT 1 (+) -->
-          <g filter="url(#shadow)">
-            <rect x="40" y="180" width="380" height="75" rx="8" fill="#fef2f2" stroke="#dc2626" stroke-width="2" />
-            <text x="230" y="205" text-anchor="middle" font-weight="700" font-size="13" fill="#b91c1c">KẾT QUẢ NAT 1 DƯƠNG TÍNH (+)</text>
-            <text x="230" y="225" text-anchor="middle" font-size="11.5" fill="#334155">• KHỞI ĐỘNG ĐIỀU TRỊ ARV NGAY LẬP TỨC</text>
-            <text x="230" y="243" text-anchor="middle" font-size="11.5" fill="#334155">• Lấy mẫu thứ 2 làm NAT 2 để khẳng định</text>
-          </g>
-
-          <!-- NHÁNH NAT 1 (-) -->
-          <g filter="url(#shadow)">
-            <rect x="480" y="180" width="380" height="75" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="2" />
-            <text x="670" y="205" text-anchor="middle" font-weight="700" font-size="13" fill="#15803d">KẾT QUẢ NAT 1 ÂM TÍNH (-)</text>
-            <text x="670" y="225" text-anchor="middle" font-size="11.5" fill="#334155">• Tiếp tục điều trị dự phòng ARV cho trẻ</text>
-            <text x="670" y="243" text-anchor="middle" font-size="11.5" fill="#334155">• Xét nghiệm NAT lại theo các mốc (4–6 tuần, 9 tháng)</text>
-          </g>
-
-          <!-- ĐƯỜNG NỐI RẼ NHÁNH -->
-          <path d="M 380 145 L 380 160 L 230 160 L 230 175" fill="none" stroke="#dc2626" stroke-width="2" marker-end="url(#arrow-red)" />
-          <path d="M 520 145 L 520 160 L 670 160 L 670 175" fill="none" stroke="#16a34a" stroke-width="2" marker-end="url(#arrow-green)" />
-
-          <!-- KẾT QUẢ NAT 2 DƯỚI NAT 1 (+) -->
-          <g filter="url(#shadow)">
-            <rect x="40" y="280" width="180" height="45" rx="6" fill="#fef2f2" stroke="#dc2626" stroke-width="1.5" />
-            <text x="130" y="302" text-anchor="middle" font-weight="700" font-size="12" fill="#b91c1c">NAT 2 (+): KHẲNG ĐỊNH</text>
-            <text x="130" y="318" text-anchor="middle" font-size="10.5" fill="#7f1d1d">Duy trì điều trị ARV</text>
-          </g>
-
-          <g filter="url(#shadow)">
-            <rect x="240" y="280" width="180" height="45" rx="6" fill="#fffbeb" stroke="#d97706" stroke-width="1.5" />
-            <text x="330" y="302" text-anchor="middle" font-weight="700" font-size="12" fill="#b45309">NAT 2 (-): KHÔNG ĐỒNG NHẤT</text>
-            <text x="330" y="318" text-anchor="middle" font-size="10.5" fill="#78350f">Làm tiếp NAT 3 (Sơ đồ 2)</text>
-          </g>
-
-          <line x1="130" y1="255" x2="130" y2="275" stroke="#dc2626" stroke-width="1.5" marker-end="url(#arrow-red)" />
-          <line x1="330" y1="255" x2="330" y2="275" stroke="#d97706" stroke-width="1.5" marker-end="url(#arrow-red)" />
-        </svg>
-      </div>
+          START --> NAT1
+          NAT1 --> RES1
+          RES1 ==>|Dương tính (+)| NAT1_POS
+          RES1 -->|Âm tính (-)| NAT1_NEG
+          NAT1_POS --> RES2
+          RES2 ==>|NAT 2 (+)| CONFIRMED
+          RES2 -->|NAT 2 (-)| DISCORDANT
+        `}
+      />
 
     </div>
   </div>
 
-  <!-- PHẦN 4: XỬ TRÍ NAT KHÔNG ĐỒNG NHẤT -->
+  {/* PHẦN 4: XỬ TRÍ NAT KHÔNG ĐỒNG NHẤT */}
   <div class="sec-card" id="sec-nat-khongdongnhat">
     <div class="sec-hdr">
       <div class="sec-hdr-icon"><i class="fa-solid fa-code-fork"></i></div>
@@ -451,7 +404,7 @@ sections:
     </div>
   </div>
 
-  <!-- PHẦN 5: MIỄN DỊCH CD4 & BỆNH HIV TIẾN TRIỂN (AHD) -->
+  {/* PHẦN 5: MIỄN DỊCH CD4 & BỆNH HIV TIẾN TRIỂN (AHD) */}
   <div class="sec-card" id="sec-miendich-ahd">
     <div class="sec-hdr">
       <div class="sec-hdr-icon"><i class="fa-solid fa-chart-line"></i></div>
@@ -540,7 +493,7 @@ sections:
     </div>
   </div>
 
-  <!-- PHẦN 6: CHUYỂN GỬI & MÔ HÌNH XÉT NGHIỆM -->
+  {/* PHẦN 6: CHUYỂN GỬI & MÔ HÌNH XÉT NGHIỆM */}
   <div class="sec-card" id="sec-chuyengui">
     <div class="sec-hdr">
       <div class="sec-hdr-icon"><i class="fa-solid fa-diagram-project"></i></div>
@@ -604,7 +557,7 @@ sections:
     </div>
   </div>
 
-  <!-- PHẦN 7: DỰ PHÒNG TRƯỚC PHƠI NHIỄM (PrEP) -->
+  {/* PHẦN 7: DỰ PHÒNG TRƯỚC PHƠI NHIỄM (PrEP) */}
   <div class="sec-card" id="sec-prep">
     <div class="sec-hdr">
       <div class="sec-hdr-icon"><i class="fa-solid fa-shield-halved"></i></div>
@@ -713,7 +666,7 @@ sections:
     </div>
   </div>
 
-  <!-- PHẦN 8: THEO DÕI & XỬ TRÍ QUÊN THUỐC PrEP -->
+  {/* PHẦN 8: THEO DÕI & XỬ TRÍ QUÊN THUỐC PrEP */}
   <div class="sec-card" id="sec-prep-theodoi">
     <div class="sec-hdr">
       <div class="sec-hdr-icon"><i class="fa-solid fa-calendar-check"></i></div>
@@ -851,7 +804,7 @@ sections:
     </div>
   </div>
 
-  <!-- PHẦN 9: DỰ PHÒNG SAU PHƠI NHIỄM (PEP) TRONG 72H VÀNG -->
+  {/* PHẦN 9: DỰ PHÒNG SAU PHƠI NHIỄM (PEP) TRONG 72H VÀNG */}
   <div class="sec-card" id="sec-pep">
     <div class="sec-hdr">
       <div class="sec-hdr-icon"><i class="fa-solid fa-stopwatch-20"></i></div>
@@ -915,7 +868,7 @@ sections:
     </div>
   </div>
 
-  <!-- PHẦN 10: PHÁC ĐỒ ARV & 7 BƯỚC XỬ TRÍ PHƠI NHIỄM -->
+  {/* PHẦN 10: PHÁC ĐỒ ARV & 7 BƯỚC XỬ TRÍ PHƠI NHIỄM */}
   <div class="sec-card" id="sec-pep-phacdo-7buoc">
     <div class="sec-hdr">
       <div class="sec-hdr-icon"><i class="fa-solid fa-kit-medical"></i></div>
@@ -1028,7 +981,7 @@ sections:
     </div>
   </div>
 
-  <!-- PHẦN 11: TÀI LIỆU THAM KHẢO CHUẨN AMA -->
+  {/* PHẦN 11: TÀI LIỆU THAM KHẢO CHUẨN AMA */}
   <div class="sec-card" id="sec-citation">
     <div class="sec-hdr">
       <div class="sec-hdr-icon"><i class="fa-solid fa-book-bookmark"></i></div>
@@ -1051,7 +1004,7 @@ sections:
 
 </div>
 
-<!-- BOTTOM NAV -->
+{/* BOTTOM NAV */}
 <div style="margin-top: 2rem; margin-bottom: 3rem;">
   <div class="btn-row">
     <a href="#/ebm/kho-guidelines" class="btn btn-primary">

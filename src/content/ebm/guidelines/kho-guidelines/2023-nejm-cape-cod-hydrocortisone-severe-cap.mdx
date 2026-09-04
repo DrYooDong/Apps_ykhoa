@@ -265,6 +265,34 @@ sections:
         <p style="margin-bottom: 1.25rem; font-size: 0.88rem; color: var(--color-text-muted, #64748b);">Thử nghiệm áp dụng phác đồ truyền tĩnh mạch liên tục với liều khởi đầu 200 mg/ngày, phối hợp phác đồ giảm liều cá thể hóa dựa trên đáp ứng lâm sàng tại ngày thứ 4:</p>
 
         
+        <FlowchartViewer 
+          title="Lưu Đồ Phác Đồ Khởi Động & Giảm Liều Hydrocortisone Trong Viêm Phổi Nặng (CAPE COD 2023)"
+          code={`flowchart TD
+            START([Bệnh nhân Viêm phổi cộng đồng nặng nhập ICU | start | badge: NEJM CAPE COD | subtitle: Thỏa tiêu chuẩn SCAP ≥ 10 điểm HOẶC thở máy xâm lấn / không xâm lấn / HFNC])
+            TIMING{Khởi động trong vòng 24 giờ sau nhập ICU? (Thời gian vàng) | question}
+
+            LATE[Khởi động muộn > 24-48 giờ | warning | subtitle: Hiệu quả giảm tử vong suy giảm rõ rệt]
+            EARLY[KHỞI ĐỘNG HYDROCORTISONE 200 MG/NGÀY TRUYỀN TĨNH MẠCH LIÊN TỤC ⭐ | danger | badge: Liều tấn công | subtitle: Duy trì truyền TM liên tục 200mg/24h trong 4 ngày đầu tiên (Ngày 1 - 4)]
+
+            DAY4{Đánh giá đáp ứng lâm sàng tại Ngày thứ 4 (PaO2/FiO2, cải thiện hô hấp)? | question}
+            
+            FAST[CẢI THIỆN NHANH (PHÁC ĐỒ 8 NGÀY) 🟢 | success | badge: Liệu trình 8 ngày | subtitle: Ngày 5-6: Giảm xuống 100 mg/ngày -> Ngày 7-8: Giảm xuống 50 mg/ngày -> Dừng hoàn toàn]
+            SLOW[CẢI THIỆN CHẬM (PHÁC ĐỒ 14 NGÀY) 🟡 | warning | badge: Liệu trình 14 ngày | subtitle: Ngày 5-8: 100 mg/ngày -> Ngày 9-12: 50 mg/ngày -> Ngày 13-14: 25 mg/ngày -> Dừng]
+
+            DISCHARGE[NGUYÊN TẮC: DỪNG THUỐC NGAY KHI BỆNH NHÂN XUẤT VIỆN KHỎI ICU 🏥 | action | subtitle: Giảm 41% nguy cơ đặt nội khí quản & giảm tuyệt đối 5.6% tử vong ngày 28]
+
+            START --> TIMING
+            TIMING -->|Muộn| LATE
+            TIMING ==>|Sớm < 24h| EARLY
+            EARLY --> DAY4
+            DAY4 -->|Cải thiện nhanh| FAST
+            DAY4 -->|Cải thiện chậm| SLOW
+            FAST --> DISCHARGE
+            SLOW --> DISCHARGE
+          `}
+        />
+
+        <div style="margin-top: 1.5rem;"></div>
         <div class="grid-3col">
           <div class="clin-card">
             <div class="clin-card-accent accent-blue"></div>

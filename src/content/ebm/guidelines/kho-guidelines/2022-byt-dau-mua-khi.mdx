@@ -148,7 +148,7 @@ sections:
 
 <div class="page-content">
 
-  <!-- PHẦN 1: PHÁP LÝ & BAN BIÊN SOẠN -->
+  {/* PHẦN 1: PHÁP LÝ & BAN BIÊN SOẠN */}
   <div class="sec-card" id="sec-phaply">
     <div class="sec-hdr">
       <div class="sec-hdr-icon"><i class="fa-solid fa-scale-balanced"></i></div>
@@ -219,7 +219,7 @@ sections:
     </div>
   </div>
 
-  <!-- PHẦN 2: ĐẠI CƯƠNG & ĐỘNG LỰC LÂY TRUYỀN -->
+  {/* PHẦN 2: ĐẠI CƯƠNG & ĐỘNG LỰC LÂY TRUYỀN */}
   <div class="sec-card" id="sec-daicuong">
     <div class="sec-hdr">
       <div class="sec-hdr-icon"><i class="fa-solid fa-virus"></i></div>
@@ -287,78 +287,29 @@ sections:
         </div>
       </div>
 
-      <!-- SƠ ĐỒ VECTOR ĐỘNG LỰC LÂY TRUYỀN -->
-      <div class="sec-subtitle" style="margin-top: 1.5rem;"><i class="fa-solid fa-diagram-project"></i> Sơ Đồ Động Lực Học Các Con Đường Xâm Nhập Của Vi Rút</div>
+      {/* SƠ ĐỒ VECTOR ĐỘNG LỰC LÂY TRUYỀN */}
+      <FlowchartViewer 
+        title="Sơ Đồ Động Lực Học & Các Con Đường Lây Truyền Bệnh Đậu Mùa Khỉ (Bộ Y Tế)"
+        code={`flowchart TD
+          RESERVOIR([Nguồn Trữ Tự Nhiên (Động vật) 🐿️ | start | badge: Ổ chứa hoang dã | subtitle: Gặm nhấm rừng, sóc, thú linh trưởng Châu Phi nhiễm vi rút])
+          INFECTED([Người Bệnh Mắc Đậu Mùa Khỉ 🧑‍🤝‍🧑 | start | badge: Nguồn lây người | subtitle: Giai đoạn khởi phát & toàn phát có tổn thương da niêm mạc])
 
-      <div style="background: var(--color-surface, #ffffff); border: 1px solid var(--color-border, #e2e8f0); border-radius: 12px; padding: 1.5rem; margin: 1rem 0; overflow-x: auto;">
-        <svg viewBox="0 0 900 380" style="width: 100%; min-width: 720px; font-family: system-ui, -apple-system, sans-serif;">
-          <defs>
-            <marker id="arrow-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-              <path d="M 0 1 L 10 5 L 0 9 z" fill="#0284c7" />
-            </marker>
-            <marker id="arrow-red" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-              <path d="M 0 1 L 10 5 L 0 9 z" fill="#dc2626" />
-            </marker>
-            <marker id="arrow-teal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-              <path d="M 0 1 L 10 5 L 0 9 z" fill="#0d9488" />
-            </marker>
-            <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
-              <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.08" />
-            </filter>
-          </defs>
+          ZOONOTIC[Lây truyền từ Động vật sang Người (Zoonotic) 🐾 | action | subtitle: Tiếp xúc trực tiếp máu, dịch thể, vết cào, cắn hoặc giết mổ chế biến thịt thú rừng]
+          HUMAN[Lây truyền từ Người sang Người 🤝 | danger | badge: Tiếp xúc gần | subtitle: 1. Tiếp xúc trực tiếp tổn thương nốt ban/mụn mủ + 2. Quan hệ tình dục + 3. Giọt bắn hô hấp lớn + 4. Đồ dùng cá nhân ô nhiễm chăn ga gối]
 
-          <!-- NGUỒN ĐỘNG VẬT -->
-          <g filter="url(#shadow)">
-            <rect x="30" y="30" width="360" height="70" rx="8" fill="#f0f9ff" stroke="#0284c7" stroke-width="2" />
-            <text x="210" y="58" text-anchor="middle" font-weight="700" font-size="15" fill="#0369a1">NGUỒN TRỮ TỰ NHIÊN (ĐỘNG VẬT)</text>
-            <text x="210" y="82" text-anchor="middle" font-size="12" fill="#0284c7">Gặm nhấm rừng, sóc, thú linh trưởng Châu Phi nhiễm bệnh</text>
-          </g>
+          TARGET[NGƯỜI LÀNH PHƠI NHIỄM & NHIỄM BỆNH ⭐ | warning | badge: Cổng xâm nhập | subtitle: Vi rút xâm nhập qua da trầy xước, niêm mạc hô hấp, kết mạc mắt, niêm mạc sinh dục hoặc hậu môn]
 
-          <!-- NGUỒN NGƯỜI BỆNH -->
-          <g filter="url(#shadow)">
-            <rect x="510" y="30" width="360" height="70" rx="8" fill="#fef2f2" stroke="#dc2626" stroke-width="2" />
-            <text x="690" y="58" text-anchor="middle" font-weight="700" font-size="15" fill="#b91c1c">NGƯỜI BỆNH MẮC ĐẬU MÙA KHỈ</text>
-            <text x="690" y="82" text-anchor="middle" font-size="12" fill="#dc2626">Giai đoạn khởi phát &amp; toàn phát (có bài xuất vi rút)</text>
-          </g>
-
-          <!-- KHỐI TRUNG GIAN ĐỘNG VẬT -->
-          <g filter="url(#shadow)">
-            <rect x="30" y="160" width="360" height="85" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5" />
-            <text x="210" y="185" text-anchor="middle" font-weight="600" font-size="13" fill="#334155">Cơ chế lây truyền Zoonotic:</text>
-            <text x="210" y="208" text-anchor="middle" font-size="12" fill="#64748b">• Tiếp xúc trực tiếp máu, dịch thể, tổn thương da động vật</text>
-            <text x="210" y="228" text-anchor="middle" font-size="12" fill="#64748b">• Vết cào, cắn hoặc giết mổ chế biến thịt thú rừng</text>
-          </g>
-
-          <!-- KHỐI TRUNG GIAN NGƯỜI SANG NGƯỜI -->
-          <g filter="url(#shadow)">
-            <rect x="510" y="145" width="360" height="115" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5" />
-            <text x="690" y="168" text-anchor="middle" font-weight="600" font-size="13" fill="#334155">Cơ chế lây truyền Người - sang - Người:</text>
-            <text x="690" y="190" text-anchor="middle" font-size="11.5" fill="#64748b">• Tiếp xúc trực tiếp da với tổn thương nốt ban / mụn mủ</text>
-            <text x="690" y="208" text-anchor="middle" font-size="11.5" fill="#64748b">• Quan hệ tình dục (tiếp xúc niêm mạc/da thân mật)</text>
-            <text x="690" y="226" text-anchor="middle" font-size="11.5" fill="#64748b">• Giọt bắn hô hấp lớn khi tiếp xúc gần &amp; kéo dài</text>
-            <text x="690" y="244" text-anchor="middle" font-size="11.5" fill="#64748b">• Vật dụng ô nhiễm (chăn, ga, gối) &amp; Lây truyền mẹ - con</text>
-          </g>
-
-          <!-- ĐÍCH ĐẾN: NGƯỜI LÀNH -->
-          <g filter="url(#shadow)">
-            <rect x="250" y="300" width="400" height="65" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="2" />
-            <text x="450" y="326" text-anchor="middle" font-weight="700" font-size="14.5" fill="#15803d">NGƯỜI LÀNH NHIỄM BỆNH</text>
-            <text x="450" y="348" text-anchor="middle" font-size="12" fill="#166534">Vi rút xâm nhập qua da trầy xước, niêm mạc hô hấp, mắt hoặc sinh dục</text>
-          </g>
-
-          <!-- ĐƯỜNG NỐI -->
-          <line x1="210" y1="100" x2="210" y2="155" stroke="#0284c7" stroke-width="2" marker-end="url(#arrow-blue)" />
-          <line x1="690" y1="100" x2="690" y2="140" stroke="#dc2626" stroke-width="2" marker-end="url(#arrow-red)" />
-          
-          <path d="M 210 245 L 210 275 L 380 275 L 380 295" fill="none" stroke="#0284c7" stroke-width="2" marker-end="url(#arrow-blue)" />
-          <path d="M 690 260 L 690 275 L 520 275 L 520 295" fill="none" stroke="#dc2626" stroke-width="2" marker-end="url(#arrow-red)" />
-        </svg>
-      </div>
+          RESERVOIR --> ZOONOTIC
+          INFECTED --> HUMAN
+          ZOONOTIC ==> TARGET
+          HUMAN ==> TARGET
+        `}
+      />
 
     </div>
   </div>
 
-  <!-- PHẦN 3: DIỄN TIẾN LÂM SÀNG 4 GIAI ĐOẠN & ĐỘNG HỌC PHÁT BAN -->
+  {/* PHẦN 3: DIỄN TIẾN LÂM SÀNG 4 GIAI ĐOẠN & ĐỘNG HỌC PHÁT BAN */}
   <div class="sec-card" id="sec-lamsang">
     <div class="sec-hdr">
       <div class="sec-hdr-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
@@ -413,7 +364,7 @@ sections:
 
       </div>
 
-      <!-- SƠ ĐỒ CHU TRÌNH TIẾN TRIỂN HÌNH THÁI BAN -->
+      {/* SƠ ĐỒ CHU TRÌNH TIẾN TRIỂN HÌNH THÁI BAN */}
       <div class="sec-subtitle" style="margin-top: 1.5rem;"><i class="fa-solid fa-arrow-trend-up"></i> Chu Kỳ 6 Dạng Hình Thái Tổn Thương Da Trong Giai Đoạn Toàn Phát</div>
 
       <div class="matrix-grid">
@@ -451,7 +402,7 @@ sections:
     </div>
   </div>
 
-  <!-- PHẦN 4: PHÂN LOẠI THỂ BỆNH & BIẾN CHỨNG -->
+  {/* PHẦN 4: PHÂN LOẠI THỂ BỆNH & BIẾN CHỨNG */}
   <div class="sec-card" id="sec-thebenh">
     <div class="sec-hdr">
       <div class="sec-hdr-icon"><i class="fa-solid fa-layer-group"></i></div>
@@ -561,7 +512,7 @@ sections:
     </div>
   </div>
 
-  <!-- PHẦN 5: CẬN LÂM SÀNG & TIÊU CHUẨN CHẨN ĐOÁN -->
+  {/* PHẦN 5: CẬN LÂM SÀNG & TIÊU CHUẨN CHẨN ĐOÁN */}
   <div class="sec-card" id="sec-canlamsang">
     <div class="sec-hdr">
       <div class="sec-hdr-icon"><i class="fa-solid fa-vial-virus"></i></div>
@@ -652,7 +603,7 @@ sections:
     </div>
   </div>
 
-  <!-- PHẦN 6: CHẨN ĐOÁN PHÂN BIỆT 5 BỆNH PHÁT BAN -->
+  {/* PHẦN 6: CHẨN ĐOÁN PHÂN BIỆT 5 BỆNH PHÁT BAN */}
   <div class="sec-card" id="sec-phanbiet">
     <div class="sec-hdr">
       <div class="sec-hdr-icon"><i class="fa-solid fa-code-compare"></i></div>
@@ -748,7 +699,7 @@ sections:
     </div>
   </div>
 
-  <!-- PHẦN 7: NGUYÊN TẮC & PHÁC ĐỒ ĐIỀU TRỊ THỂ NHẸ -->
+  {/* PHẦN 7: NGUYÊN TẮC & PHÁC ĐỒ ĐIỀU TRỊ THỂ NHẸ */}
   <div class="sec-card" id="sec-dieutri-nhe">
     <div class="sec-hdr">
       <div class="sec-hdr-icon"><i class="fa-solid fa-kit-medical"></i></div>
@@ -819,7 +770,7 @@ sections:
     </div>
   </div>
 
-  <!-- PHẦN 8: CHỈ ĐỊNH & PHÁC ĐỒ THUỐC KHÁNG VI RÚT -->
+  {/* PHẦN 8: CHỈ ĐỊNH & PHÁC ĐỒ THUỐC KHÁNG VI RÚT */}
   <div class="sec-card" id="sec-khangvirus">
     <div class="sec-hdr">
       <div class="sec-hdr-icon"><i class="fa-solid fa-pills"></i></div>
@@ -925,7 +876,7 @@ sections:
     </div>
   </div>
 
-  <!-- PHẦN 9: PHÂN TUYẾN ĐIỀU TRỊ & DẤU HIỆU BÁO ĐỘNG ĐỎ -->
+  {/* PHẦN 9: PHÂN TUYẾN ĐIỀU TRỊ & DẤU HIỆU BÁO ĐỘNG ĐỎ */}
   <div class="sec-card" id="sec-phantuyen">
     <div class="sec-hdr">
       <div class="sec-hdr-icon"><i class="fa-solid fa-truck-medical"></i></div>
@@ -954,6 +905,43 @@ sections:
           </div>
         </div>
       </div>
+
+      <FlowchartViewer 
+        title="Lưu Đồ Phân Tuyến Điều Trị & 5 Dấu Hiệu Báo Động Đỏ Chuyển Tuyến Bệnh Đậu Mùa Khỉ (Bộ Y Tế)"
+        code={`flowchart TD
+          START([Bệnh nhân nghi ngờ hoặc xác định mắc Đậu mùa khỉ | start | badge: Bộ Y Tế QĐ 3999 | subtitle: Sốt, phát ban mụn mủ ly tâm, nổi hạch cổ / bẹn / nách])
+          TRIAGE{Đánh giá mức độ nặng & Yếu tố nguy cơ cao? | question}
+
+          MILD[THỂ NHẸ: Không triệu chứng nặng, không biến chứng 🟢 | success | badge: Tuyến Cơ Sở | subtitle: Cách ly & điều trị triệu chứng tại Trạm Y tế xã/phường hoặc TTYT huyện]
+          SEVERE[THỂ NẶNG HOẶC CÓ YẾU TỐ NGUY CƠ CHUYỂN NẶNG 🚨 | danger | badge: Tuyến Chuyên Sâu | subtitle: Trẻ < 8 tuổi, phụ nữ có thai, người già, suy giảm miễn dịch HIV/AIDS - Điều trị tại BV Tỉnh / Trung ương]
+
+          MONITOR{Xuất hiện 1 trong 5 DẤU HIỆU BÁO ĐỘNG ĐỎ? | question}
+          RED1[1. Giảm thị lực đột ngột, đau mắt: Loét giác mạc 👁️ | danger]
+          RED2[2. Rối loạn ý thức, co giật, hôn mê: Viêm não màng não 🧠 | danger]
+          RED3[3. Khó thở, thở co kéo, SpO2 < 94%: Viêm phổi hoại tử 🫁 | danger]
+          RED4[4. Xuất huyết tự nhiên, thiểu niệu kéo dài: Suy thận & DIC 🩸 | danger]
+          RED5[5. Tụt huyết áp < 90 mmHg, sốc nhiễm trùng, mạch nhanh ⚡ | danger]
+
+          TRANSFER[CHUYỂN TUYẾN CẤP CỨU KHẨN CẤP LÊN TUYẾN TRÊN ⭐ | danger | badge: Báo động đỏ | subtitle: Vận chuyển an toàn có bảo hộ + Sẵn sàng hồi sức tích cực ICU & thuốc kháng vi rút Tecovirimat]
+
+          START --> TRIAGE
+          TRIAGE -->|Thể nhẹ đơn thuần| MILD
+          TRIAGE ==>|Thể nặng / Nguy cơ cao| SEVERE
+          MILD --> MONITOR
+          MONITOR -->|Không có cờ đỏ| MILD
+          MONITOR ==>|Có cờ đỏ| RED1
+          MONITOR ==>|Có cờ đỏ| RED2
+          MONITOR ==>|Có cờ đỏ| RED3
+          MONITOR ==>|Có cờ đỏ| RED4
+          MONITOR ==>|Có cờ đỏ| RED5
+
+          RED1 ==> TRANSFER
+          RED2 ==> TRANSFER
+          RED3 ==> TRANSFER
+          RED4 ==> TRANSFER
+          RED5 ==> TRANSFER
+        `}
+      />
 
       <div class="sec-subtitle" style="margin-top: 1.5rem;"><i class="fa-solid fa-triangle-exclamation"></i> 5 Dấu Hiệu Nguy Hiểm Báo Động Đỏ Cần Chuyển Tuyến Cấp Cứu Khẩn Cấp</div>
 
@@ -987,7 +975,7 @@ sections:
     </div>
   </div>
 
-  <!-- PHẦN 10: TIÊU CHUẨN XUẤT VIỆN & CÁCH LY -->
+  {/* PHẦN 10: TIÊU CHUẨN XUẤT VIỆN & CÁCH LY */}
   <div class="sec-card" id="sec-xuatvien">
     <div class="sec-hdr">
       <div class="sec-hdr-icon"><i class="fa-solid fa-clipboard-check"></i></div>
@@ -1038,7 +1026,7 @@ sections:
     </div>
   </div>
 
-  <!-- PHẦN 11: PHÒNG BỆNH & KIỂM SOÁT NHIỄM KHUẨN -->
+  {/* PHẦN 11: PHÒNG BỆNH & KIỂM SOÁT NHIỄM KHUẨN */}
   <div class="sec-card" id="sec-phongbenh">
     <div class="sec-hdr">
       <div class="sec-hdr-icon"><i class="fa-solid fa-shield-virus"></i></div>
@@ -1101,7 +1089,7 @@ sections:
     </div>
   </div>
 
-  <!-- PHẦN 12: TÀI LIỆU THAM KHẢO CHUẨN AMA -->
+  {/* PHẦN 12: TÀI LIỆU THAM KHẢO CHUẨN AMA */}
   <div class="sec-card" id="sec-citation">
     <div class="sec-hdr">
       <div class="sec-hdr-icon"><i class="fa-solid fa-book-bookmark"></i></div>
@@ -1124,7 +1112,7 @@ sections:
 
 </div>
 
-<!-- BOTTOM NAV -->
+{/* BOTTOM NAV */}
 <div style="margin-top: 2rem; margin-bottom: 3rem;">
   <div class="btn-row">
     <a href="#/ebm/kho-guidelines" class="btn btn-primary">

@@ -183,7 +183,7 @@ sections:
         <div class="sec-subtitle"><i class="fa-solid fa-route"></i> Sơ Đồ Thuật Toán Chẩn Đoán Nhiễm HCV (Quyết Định 2855/QĐ-BYT)</div>
 
         <div class="flow-track-container">
-          <!-- Bước 1 -->
+          {/* Bước 1 */}
           <div class="flow-track-step">
             <div class="flow-track-rail">
               <div class="flow-track-marker marker-blue">01</div>
@@ -210,7 +210,7 @@ sections:
             </div>
           </div>
 
-          <!-- Bước 2 -->
+          {/* Bước 2 */}
           <div class="flow-track-step">
             <div class="flow-track-rail">
               <div class="flow-track-marker marker-teal">02</div>
@@ -236,6 +236,29 @@ sections:
               </div>
             </div>
           </div>
+        </div>
+
+        <div style="margin-top: 1.5rem;">
+          <FlowchartViewer
+            title="Lưu Đồ Tiếp Cận Sàng Lọc & Khẳng Định Hiện Nhiễm Viêm Gan C (QĐ 2855/QĐ-BYT)"
+            code={`graph TD
+  START["ĐỐI TƯỢNG CÓ NGUY CƠ HOẶC CẦN SÀNG LỌC VIÊM GAN C<br/><small>Tiền sử tiêm chích, truyền máu, thủ thuật xâm lấn, người nhiễm HIV, tăng men gan kéo dài</small>"]:::start --> ANTI_HCV{"Xét Nghiệm Sàng Lọc Anti-HCV?"}:::question
+
+  ANTI_HCV -- "Âm Tính (-)" --> NEG_RESULT["KHÔNG NHIỄM HCV<br/><small>Ngoại trừ người suy giảm miễn dịch nặng (lọc máu, HIV) hoặc giai đoạn cửa sổ &lt; 8 tuần</small>"]:::success
+  
+  ANTI_HCV -- "Dương Tính (+)" --> CONFIRM{"Xét Nghiệm Khẳng Định Hiện Nhiễm?"}:::question
+
+  CONFIRM -- "HCV RNA Định lượng / Định tính" --> RNA_CHECK{"Kết Quả HCV RNA?"}:::question
+  CONFIRM -- "HCVcAg (Kháng nguyên lõi nếu không có RNA)" --> CAG_CHECK{"Kết Quả HCVcAg?"}:::question
+
+  RNA_CHECK -- "Không phát hiện / Dưới ngưỡng" --> CLEARED["ĐÃ NHIỄM VÀ TỰ ĐÀO THẢI / KHỎI BỆNH<br/><small>Không cần điều trị DAA • Theo dõi định kỳ nếu còn nguy cơ tái nhiễm</small>"]:::action
+  CAG_CHECK -- "Âm tính (-)" --> CLEARED
+
+  RNA_CHECK -- "Dương tính / Trên ngưỡng phát hiện" --> ACTIVE_HCV["HIỆN ĐANG NHIỄM VI RÚT C (HCV HIỆN HÀNH)<br/><small>Chỉ định điều trị bằng thuốc kháng vi rút tác dụng trực tiếp (DAA)</small>"]:::danger
+  CAG_CHECK -- "Dương tính (+)" --> ACTIVE_HCV
+
+  ACTIVE_HCV --> PRE_TX["ĐÁNH GIÁ TRƯỚC ĐIỀU TRỊ DAA<br/><small>• Phân độ xơ hóa: FIB-4, APRI hoặc FibroScan (F0-F3 vs F4)<br/>• Đánh giá chức năng gan: Thang điểm Child-Pugh (A vs B/C)<br/>• Sàng lọc HBV (HBsAg, anti-HBc) phòng ngừa bùng phát viêm gan B<br/>• Kiểm tra tương tác thuốc (DDI) trước khi kê đơn</small>"]:::action`}
+          />
         </div>
 
       </div>
@@ -376,6 +399,29 @@ sections:
             <span class="infobox-title">Mục Tiêu Tối Thượng: Đạt Đáp Ứng Vi Rút Bền Vững (SVR12)</span>
             Khác với HBV, HCV không tích hợp DNA vào bộ gen tế bào gan. Mục tiêu điều trị là <strong>loại trừ hoàn toàn HCV</strong> khỏi cơ thể, đạt <strong>SVR12</strong> (HCV RNA dưới ngưỡng phát hiện ở tuần 12 sau ngưng DAA, hoặc tuần 12–24 nếu chưa XN ở tuần 12). Đạt SVR12 giúp <strong>giảm 85% nguy cơ ung thư gan (HCC)</strong> và <strong>giảm 70-75% tử vong</strong>.
           </div>
+        </div>
+        <div style="margin-top: 1.5rem; margin-bottom: 1.5rem;">
+          <FlowchartViewer
+            title="Lưu Đồ Lựa Chọn Phác Đồ DAA Điều Trị Viêm Gan C Theo Mức Độ Bệnh Gan (QĐ 2855/QĐ-BYT)"
+            code={`graph TD
+  START["BỆNH NHÂN XÁC CHẨN VIÊM GAN VI RÚT C CẦN ĐIỀU TRỊ DAA<br/><small>Đã đánh giá mức độ xơ hóa và thang điểm Child-Pugh</small>"]:::start --> CIRRHOSIS{"Đánh Giá Giai Đoạn Gan & Tiền Sử DAA?"}:::question
+
+  CIRRHOSIS -- "Không xơ gan (F0 - F3) HOẶC<br/>Xơ gan còn bù (Child-Pugh A)" --> PANGENO{"Lựa Chọn Phác Đồ Toàn Kiểu Gen (Pan-genotypic)?"}:::question
+
+  PANGENO -- "Sofosbuvir / Velpatasvir (SOF/VEL 400/100mg)" --> SOF_VEL["SOF / VEL x 12 TUẦN<br/><small>1 viên/ngày uống cùng hoặc không cùng thức ăn • Tỷ lệ SVR12 > 95%</small>"]:::success
+
+  PANGENO -- "Glecaprevir / Pibrentasvir (G/P 100/40mg)" --> GLE_PIB["GLECAPREVIR / PIBRENTASVIR x 8 TUẦN<br/><small>3 viên/ngày cùng bữa ăn • Phác đồ ngắn ngày ưu tiên</small>"]:::success
+
+  PANGENO -- "Sofosbuvir / Daclatasvir (SOF/DAC)" --> SOF_DAC["SOF (400mg) + DAC (60mg) x 12 TUẦN"]:::action
+
+  CIRRHOSIS -- "Xơ gan mất bù (Child-Pugh B hoặc C)" --> DECOMP["XƠ GAN MẤT BÙ (CHILD-PUGH B, C)<br/><small>CHỐNG CHỈ ĐỊNH thuốc ức chế Protease NS3/4A (Glecaprevir)</small>"]:::danger
+
+  DECOMP --> DECOMP_TX["PHÁC ĐỒ ƯU TIÊN:<br/>• SOF / VEL + Ribavirin (chỉnh theo CrCl) x 12 TUẦN<br/>• Hoặc SOF / VEL x 24 TUẦN (nếu không dung nạp Ribavirin)<br/>• Quản lý tại cơ sở chuyên khoa gan mật / Xem xét ghép gan</small>"]:::warning
+
+  SOF_VEL --> MONITOR["ĐÁNH GIÁ SVR12 SAU ĐIỀU TRỊ<br/><small>Đo tải lượng HCV RNA ở tuần 12 sau khi kết thúc đợt thuốc DAA</small>"]:::start
+  GLE_PIB --> MONITOR
+  DECOMP_TX --> MONITOR`}
+          />
         </div>
 
         <div class="sec-subtitle">Bảng 1: Phác Đồ Điều Trị Cho Người Bệnh ≥ 3 Tuổi Không Xơ Gan Hoặc Xơ Gan Còn Bù (Điều Trị Lần Đầu)</div>

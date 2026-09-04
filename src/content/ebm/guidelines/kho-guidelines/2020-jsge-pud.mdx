@@ -228,109 +228,40 @@ sections:
       <div class="sec-body">
         <p style="font-size: 0.86rem; color: var(--color-text-muted, #64748b); margin-bottom: 1.25rem;">Sơ đồ phác đồ trực quan hóa toàn bộ lộ trình ra quyết định lâm sàng theo Hướng dẫn JSGE 2020: phân luồng cấp cứu biến chứng (Thủng, Hẹp, Xuất huyết), tiếp cận loét theo căn nguyên (NSAIDs, <em>H. pylori</em>, Vô căn, Mỏm cắt) và chiến lược duy trì phòng ngừa tái phát.</p>
 
-        <div class="svg-flowchart-container">
-          <svg viewBox="0 0 920 540" xmlns="http://www.w3.org/2000/svg" font-family="'Plus Jakarta Sans', 'Inter', sans-serif">
-            <defs>
-              <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--text-faint, #94a3b8)"/>
-              </marker>
-              <marker id="arrow-blue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#2563eb"/>
-              </marker>
-              <marker id="arrow-red" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
-              </marker>
-            </defs>
+        <FlowchartViewer 
+          title="Lưu Đồ Thuật Toán Tiếp Cận & Điều Trị Bệnh Loét Dạ Dày - Tá Tràng (JSGE 2020)"
+          code={`flowchart TD
+            START([Bệnh nhân đau thượng vị / Loét dạ dày - tá tràng | start | badge: Đánh giá ban đầu])
+            EMERG{Khảo sát biến chứng cấp tính ngoại khoa? | question}
 
-            
-            <rect x="330" y="20" width="260" height="48" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
-            <text x="460" y="42" font-size="13" font-weight="700" fill="var(--color-text, #0f172a)" text-anchor="middle">BỆNH NHÂN LOÉT DẠ DÀY - TÁ TRÀNG</text>
-            <text x="460" y="56" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Đánh giá ban đầu &amp; Khảo sát biến chứng</text>
+            PERF[Thủng ổ loét hoặc Hẹp môn vị 🚨 | danger | badge: Ngoại khoa | subtitle: Chụp X-quang bụng đứng / CT bụng có hơi tự do - Phẫu thuật cấp cứu hoặc điều trị bảo tồn Taylor]
+            BLEED[Loét biến chứng xuất huyết tiêu hóa 🚨 | danger | badge: Cấp cứu nội soi | subtitle: Nôn ra máu / Đi phân đen - Hồi sức huyết động + Nội soi can thiệp cầm máu trong 24h]
+            UNCOMP[Loét không biến chứng cấp tính | success | subtitle: Thể trạng ổn định, huyết động vững - Phân luồng điều trị theo căn nguyên]
 
-            
-            <path d="M 460 68 L 460 105" stroke="var(--text-faint, #94a3b8)" stroke-width="1.8" fill="none" marker-end="url(#arrow)"/>
+            HEMO_TX[Can thiệp nội soi + PPI liều cao TM ⭐ | action | subtitle: Kẹp Hemoclip / Đốt điện nhiệt / Tiêm xơ + PPI tĩnh mạch - Duy trì LDA nếu nguy cơ huyết khối cao]
 
-            
-            
-            <rect x="40" y="115" width="220" height="58" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--red-light, #fecaca)" stroke-width="1.5"/>
-            <text x="150" y="137" font-size="12" font-weight="700" fill="#991b1b" text-anchor="middle">THỦNG HOẶC HẸP MÔN VỊ</text>
-            <text x="150" y="155" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Phẫu thuật / Điều trị bảo tồn</text>
+            ETIOLOGY{Khảo sát căn nguyên gây loét? | question}
+            NSAID[1. Loét do thuốc NSAIDs 💊 | warning | badge: Căn nguyên thuốc | subtitle: Ngừng NSAIDs ngay + Khởi trị PPI hoặc Vonoprazan; nếu bắt buộc dùng tiếp: Chuyển sang Celecoxib + PPI]
+            HP[2. Nhiễm H. pylori (+) 🔬 | action | badge: Vi sinh vật | subtitle: Phác đồ bước 1: VPZ + Amoxicillin + Clarithromycin trong 7 ngày -> Bước 2: PAM -> Bước 3: Sitafloxacin]
+            LDA[3. Bệnh nhân dùng Aspirin liều thấp (LDA) 🫀 | warning | badge: Dự phòng tim mạch | subtitle: TIẾP TỤC LDA + Phối hợp PPI / Vonoprazan liên tục để phòng ngừa tái xuất huyết]
+            SPEC[4. Loét vô căn / Loét mỏm cắt sau mổ ⚙️ | action | badge: Thể đặc biệt | subtitle: Loét vô căn: PPI dài hạn hoặc H2RA; Loét mỏm cắt: Khởi trị ngay bằng PPI]
 
-            
-            <rect x="340" y="115" width="240" height="58" rx="10" fill="var(--red-bg, #fef2f2)" stroke="#dc2626" stroke-width="2"/>
-            <text x="460" y="137" font-size="12" font-weight="700" fill="#991b1b" text-anchor="middle">LOÉT BIẾN CHỨNG XUẤT HUYẾT</text>
-            <text x="460" y="155" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Nội soi can thiệp cầm máu</text>
+            START --> EMERG
+            EMERG -->|Thủng / Hẹp| PERF
+            EMERG ==>|Xuất huyết tiêu hóa| BLEED
+            EMERG -->|Không biến chứng| UNCOMP
 
-            
-            <rect x="650" y="115" width="230" height="58" rx="10" fill="rgba(16, 185, 129, 0.08)" stroke="var(--green-light, #bbf7d0)" stroke-width="1.5"/>
-            <text x="765" y="137" font-size="12" font-weight="700" fill="#065f46" text-anchor="middle">KHÔNG CÓ BIẾN CHỨNG</text>
-            <text x="765" y="155" font-size="10.5" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Điều trị nội khoa tức thì</text>
+            BLEED ==> HEMO_TX
+            HEMO_TX --> ETIOLOGY
+            UNCOMP --> ETIOLOGY
 
-            
-            <path d="M 460 90 L 150 90 L 150 115" stroke="var(--text-faint, #94a3b8)" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-            <path d="M 460 90 L 765 90 L 765 115" stroke="var(--text-faint, #94a3b8)" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-
-            
-            <path d="M 460 173 L 460 210" stroke="var(--text-faint, #94a3b8)" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-            <rect x="330" y="210" width="260" height="54" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-            <text x="460" y="231" font-size="11.5" font-weight="700" fill="var(--color-text, #0f172a)" text-anchor="middle">PPI Liều Chuẩn + Xem xét IVR/TAE</text>
-            <text x="460" y="249" font-size="10" fill="var(--color-text-muted, #64748b)" text-anchor="middle">Duy trì Aspirin nếu nguy cơ huyết khối cao</text>
-
-            
-            <path d="M 460 264 L 460 300" stroke="var(--text-faint, #94a3b8)" stroke-width="1.5" fill="none"/>
-            <path d="M 765 173 L 765 300 L 140 300" stroke="var(--text-faint, #94a3b8)" stroke-width="1.5" fill="none"/>
-
-            
-            
-            <path d="M 140 300 L 140 330" stroke="var(--text-faint, #94a3b8)" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-            <rect x="30" y="330" width="200" height="175" rx="10" fill="var(--surface, #ffffff)" stroke="var(--color-warning, #f59e0b)" stroke-width="1.5"/>
-            <rect x="30" y="330" width="200" height="30" rx="10" fill="rgba(245, 158, 11, 0.08)"/>
-            <text x="130" y="350" font-size="11.5" font-weight="700" fill="#92400e" text-anchor="middle">1. LOÉT DO NSAIDs</text>
-            <text x="42" y="380" font-size="10.5" font-weight="700" fill="var(--color-text, #0f172a)">• Ngừng NSAIDs + PPI/VPZ</text>
-            <text x="42" y="400" font-size="10" fill="var(--color-text-muted, #64748b)">• Nếu bắt buộc dùng tiếp:</text>
-            <text x="50" y="418" font-size="10" fill="#2563eb">• Ưu tiên PPI hàng đầu</text>
-            <text x="42" y="438" font-size="10" fill="var(--color-text-muted, #64748b)">• Bệnh nhân có tiền sử loét:</text>
-            <text x="50" y="456" font-size="10" fill="#059669">• Celecoxib + PPI</text>
-            <text x="42" y="478" font-size="10" fill="var(--color-text-muted, #64748b)">• Tiệt trừ H. pylori nếu naïve</text>
-
-            
-            <path d="M 360 300 L 360 330" stroke="var(--text-faint, #94a3b8)" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-            <rect x="250" y="330" width="205" height="175" rx="10" fill="var(--surface, #ffffff)" stroke="var(--color-success, #10b981)" stroke-width="1.5"/>
-            <rect x="250" y="330" width="205" height="30" rx="10" fill="rgba(16, 185, 129, 0.08)"/>
-            <text x="352" y="350" font-size="11.5" font-weight="700" fill="#065f46" text-anchor="middle">2. NHIỄM H. PYLORI (+)</text>
-            <text x="262" y="380" font-size="10.5" font-weight="700" fill="#065f46">• Bước 1: VPZ + Amox + Clari</text>
-            <text x="270" y="398" font-size="10" fill="var(--color-text-muted, #64748b)">(Hoặc Amox + Metro)</text>
-            <text x="262" y="420" font-size="10.5" font-weight="700" fill="#2563eb">• Bước 2: PAM (VPZ/PPI +</text>
-            <text x="270" y="438" font-size="10" fill="var(--color-text-muted, #64748b)">Amox + Metronidazole)</text>
-            <text x="262" y="460" font-size="10.5" font-weight="700" fill="#d97706">• Bước 3: Chứa Sitafloxacin</text>
-            <text x="262" y="482" font-size="10" fill="var(--color-text-muted, #64748b)">• Thử lại UBT sau 4-8 tuần</text>
-
-            
-            <path d="M 580 300 L 580 330" stroke="var(--text-faint, #94a3b8)" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-            <rect x="475" y="330" width="205" height="175" rx="10" fill="var(--surface, #ffffff)" stroke="var(--blue, #0284c7)" stroke-width="1.5"/>
-            <rect x="475" y="330" width="205" height="30" rx="10" fill="var(--blue-bg, #eff6ff)"/>
-            <text x="577" y="350" font-size="11.5" font-weight="700" fill="#1e40af" text-anchor="middle">3. DÙNG ASPIRIN (LDA)</text>
-            <text x="487" y="380" font-size="10.5" font-weight="700" fill="var(--color-text, #0f172a)">• TIẾP TỤC LDA + PPI</text>
-            <text x="487" y="400" font-size="10" fill="var(--color-text-muted, #64748b)">• Dự phòng chảy máu:</text>
-            <text x="495" y="418" font-size="10" fill="#059669">• PPI hoặc Vonoprazan</text>
-            <text x="487" y="438" font-size="10" fill="var(--color-text-muted, #64748b)">• Tiền sử chảy máu loét:</text>
-            <text x="495" y="456" font-size="10" fill="#2563eb">• Tiệt trừ HP + Duy trì PPI</text>
-            <text x="487" y="478" font-size="10" fill="var(--color-text-muted, #64748b)">• Nếu phối hợp NSAIDs:</text>
-            <text x="495" y="494" font-size="10" fill="#991b1b">• Celecoxib + PPI</text>
-
-            
-            <path d="M 800 300 L 800 330" stroke="var(--text-faint)" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-            <rect x="700" y="330" width="195" height="175" rx="10" fill="var(--surface)" stroke="var(--color-purple, #8b5cf6)" stroke-width="1.5"/>
-            <rect x="700" y="330" width="195" height="30" rx="10" fill="rgba(139, 92, 246, 0.08)"/>
-            <text x="797" y="350" font-size="11.5" font-weight="700" fill="#5b21b6" text-anchor="middle">4. THỂ ĐẶC BIỆT</text>
-            <text x="710" y="380" font-size="10" font-weight="700" fill="var(--color-text, #0f172a)">• Loét vô căn (Idiopathic):</text>
-            <text x="718" y="398" font-size="9.5" fill="var(--color-text-muted, #64748b)">PPI dài hạn / Duy trì H2RA</text>
-            <text x="710" y="420" font-size="10" font-weight="700" fill="var(--color-text, #0f172a)">• Loét mỏm cắt sau mổ:</text>
-            <text x="718" y="438" font-size="9.5" fill="var(--color-text-muted, #64748b)">Khởi trị ngay bằng PPI</text>
-            <text x="710" y="460" font-size="10" font-weight="700" fill="var(--color-text, #0f172a)">• Loét do thiếu máu:</text>
-            <text x="718" y="478" font-size="9.5" fill="var(--color-text-muted, #64748b)">PPI/Misoprostol + Chụp mạch</text>
-          </svg>
-        </div>
+            ETIOLOGY --> NSAID
+            ETIOLOGY --> HP
+            ETIOLOGY --> LDA
+            ETIOLOGY --> SPEC
+          `}
+        />
+      </div>
       </div>
     </div>
 
@@ -354,7 +285,6 @@ sections:
                 <li style="margin-bottom: 0.4rem;"><strong>A (Cao - High):</strong> Rất tự tin rằng hiệu quả thực tế nằm sát với ước tính hiệu quả.</li>
                 <li style="margin-bottom: 0.4rem;"><strong>B (Trung bình - Moderate):</strong> Tự tin vừa phải; nghiên cứu tương lai có thể ảnh hưởng đến ước tính.</li>
                 <li style="margin-bottom: 0.4rem;"><strong>C (Thấp - Low):</strong> Mức độ tự tin hạn chế; nghiên cứu tiếp theo có khả năng thay đổi kết luận.</li>
-<ul style="margin-left: 1.25rem; margin-bottom: 1rem; line-height: 1.65;">
                 <li><strong>D (Rất thấp - Very Low):</strong> Rất ít tự tin vào ước tính kết quả lâm sàng hiện tại.</li>
               </ul>
             </div>
@@ -366,7 +296,6 @@ sections:
               <ul style="list-style: none; padding-left: 0;">
                 <li style="margin-bottom: 0.4rem;"><strong>Khuyến cáo mạnh (Strong Recommendation):</strong> Lợi ích lâm sàng vượt trội rõ rệt so với nguy cơ hoặc ngược lại; áp dụng cho hầu hết bệnh nhân.</li>
                 <li style="margin-bottom: 0.4rem;"><strong>Khuyến cáo yếu / Gợi ý (Weak/Suggested):</strong> Cần cân nhắc cá thể hóa dựa trên giá trị và nguyện vọng của người bệnh.</li>
-<ul style="margin-left: 1.25rem; margin-bottom: 1rem; line-height: 1.65;">
                 <li><strong>Tiêu chuẩn Đồng thuận:</strong> Bắt buộc đạt <strong>&amp;ge; 70% số phiếu tán thành</strong> từ Hội đồng chuyên gia JSGE. Trong bản 2020, 100% các khuyến nghị đều đạt đồng thuận tuyệt đối.</li>
               </ul>
             </div>
@@ -392,7 +321,6 @@ sections:
           </div>
           <div class="ebm-rec-body">
             <ul>
-<ul style="margin-left: 1.25rem; margin-bottom: 1rem; line-height: 1.65;">
               <li><strong>Tiếp tục Aspirin đơn trị:</strong> <strong>Khuyến cáo tiếp tục duy trì sử dụng aspirin</strong> ở những bệnh nhân có nguy cơ cao xảy ra biến cố huyết khối tắc mạch. <em>(Khuyến cáo mạnh, Bằng chứng B)</em>.</li>
               <li><strong>Chuyển đổi kháng tiểu cầu sang Aspirin:</strong> <strong>Gợi ý chuyển đổi các thuốc kháng tiểu cầu khác (P2Y12) sang aspirin</strong> ở bệnh nhân nguy cơ huyết khối cao. <em>(Khuyến cáo yếu, Bằng chứng D)</em>.</li>
               <li><strong>Tạm ngưng kháng tiểu cầu:</strong> <strong>Gợi ý tạm ngưng sử dụng các thuốc kháng tiểu cầu</strong>, ngoại trừ những trường hợp có nguy cơ tắc mạch cao. <em>(Khuyến cáo yếu, Bằng chứng D)</em>.</li>
@@ -456,7 +384,6 @@ sections:
           </div>
           <div class="ebm-rec-body">
             <ul>
-<ul style="margin-left: 1.25rem; margin-bottom: 1rem; line-height: 1.65;">
               <li><strong>Bệnh nhân dùng Kháng tiểu cầu kép (DAPT):</strong> <strong>Khuyến cáo phối hợp sử dụng PPI</strong> để dự phòng biến chứng xuất huyết tiêu hóa trên (UGIB). <em>(Khuyến cáo mạnh, Bằng chứng A)</em>.</li>
               <li><strong>Bệnh nhân dùng Warfarin:</strong> <strong>Gợi ý phối hợp sử dụng PPI</strong> để dự phòng xuất huyết ở bệnh nhân điều trị bằng warfarin có kết hợp thêm kháng tiểu cầu hoặc NSAIDs. <em>(Khuyến cáo yếu, Bằng chứng C)</em>.</li>
             </ul>
@@ -492,7 +419,6 @@ sections:
           </div>
           <div class="ebm-rec-body">
             <ul>
-<ul style="margin-left: 1.25rem; margin-bottom: 1rem; line-height: 1.65;">
               <li><strong>Phác đồ chứa Vonoprazan (P-CAB):</strong> <strong>Khuyến cáo sử dụng phác đồ 3 thuốc chứa Vonoprazan (VPZ 20mg x 2 lần/ngày)</strong> phối hợp Amoxicillin (750mg-1000mg x 2 lần/ngày) và Clarithromycin (200mg-400mg x 2 lần/ngày) trong 7 ngày làm phác đồ đầu tay nhờ đạt tỷ lệ tiệt trừ vi khuẩn vượt trội rõ rệt so với phác đồ chứa PPI thông thường. <em>(Khuyến cáo mạnh, Bằng chứng A)</em>.</li>
               <li><strong>Khi kháng Clarithromycin cao (> 15%):</strong> Phối hợp <strong>Amoxicillin + Metronidazole</strong> được khuyến cáo mạnh mẽ.</li>
               <li><strong>Nếu sử dụng PPI:</strong> Gợi ý áp dụng liệu pháp nối tiếp (sequential therapy) hoặc phác đồ 4 thuốc đồng thời (concomitant quadruple therapy) để tối ưu hóa tỷ lệ tiệt trừ so với phác đồ 3 thuốc tiêu chuẩn. <em>(Khuyến cáo yếu, Bằng chứng A)</em>.</li>
@@ -584,7 +510,6 @@ sections:
           </div>
           <div class="ebm-rec-body">
             <ul>
-<ul style="margin-left: 1.25rem; margin-bottom: 1rem; line-height: 1.65;">
               <li><strong>Ngừng thuốc NSAIDs:</strong> Khi xuất hiện ổ loét, khuyến cáo hàng đầu là <strong>ngừng sử dụng NSAIDs và bắt đầu điều trị bằng các thuốc chống loét (PPI hoặc P-CAB)</strong>.</li>
               <li><strong>Trường hợp bắt buộc phải tiếp tục sử dụng NSAIDs:</strong> Nếu bệnh lý cơ xương khớp/tim mạch bắt buộc tiếp tục dùng NSAIDs, <strong>thuốc ức chế bơm proton (PPIs) được khuyến cáo là lựa chọn số 1</strong> để làm liền ổ loét. Tỷ lệ liền sẹo loét sau 8 tuần ở nhóm dùng PPI vượt trội hoàn toàn so với H2RA hoặc chất đồng đẳng prostaglandin.</li>
             </ul>
@@ -790,7 +715,6 @@ sections:
           </div>
           <div class="ebm-rec-body">
             <ul>
-<ul style="margin-left: 1.25rem; margin-bottom: 1rem; line-height: 1.65;">
               <li><strong>Định nghĩa:</strong> Loét vô căn là những ổ loét xuất hiện ở bệnh nhân <strong>âm tính với H. pylori và hoàn toàn không sử dụng NSAIDs hay aspirin</strong>.</li>
               <li><strong>Điều trị ban đầu:</strong> Gợi ý sử dụng <strong>PPIs làm liệu pháp điều trị ban đầu</strong>. <em>Lưu ý sinh lý bệnh:</em> Loét vô căn thường kháng trị và khó liền sẹo hơn loét do <em>H. pylori</em> (tỷ lệ liền sẹo sau 12 tuần PPI chỉ đạt 77.4% so với 95.0% ở loét do <em>H. pylori</em>).</li>
               <li><strong>Dự phòng tái phát:</strong> Do loét vô căn có tỷ lệ tái phát tích lũy rất cao (lên tới 42.3% trong vòng 7 năm nếu không điều trị dự phòng), <strong>gợi ý điều trị duy trì kéo dài bằng PPIs hoặc H2RAs</strong> để ngăn ngừa tái phát chảy máu.</li>
@@ -840,7 +764,6 @@ sections:
           </div>
           <div class="ebm-rec-body">
             <ul>
-<ul style="margin-left: 1.25rem; margin-bottom: 1rem; line-height: 1.65;">
               <li><strong>Cơ chế bệnh sinh:</strong> <span class="sub-list"><span class="sub-item">• <em>Nguyên nhân cấp tính:</em> Thường xảy ra sau thủ thuật can thiệp mạch (như nút mạch hóa dầu - TACE điều trị ung thư gan, hoặc nút mạch cầm máu dạ dày tá tràng) gây thuyên tắc mạch nuôi dưỡng, hoặc do huyết khối hệ thống.</span> <span class="sub-item">• <em>Nguyên nhân mạn tính:</em> Xuất hiện ở bệnh nhân xơ vữa động mạch gây hẹp nặng động mạch thân tạng (celiac artery) hoặc động mạch mạc treo tràng trên (SMA).</span></span></li>
               <li><strong>Hình ảnh nội soi đặc trưng:</strong> Xuất hiện các <strong>ổ loét dọc (longitudinal ulcers)</strong>, niêm mạc xung quanh phù nề, xung huyết đỏ sẫm do thiếu máu nuôi.</li>
               <li><strong>Tiếp cận điều trị bảo tồn:</strong> <strong>Gợi ý sử dụng PPIs hoặc Misoprostol</strong> phối hợp nhịn ăn nuôi dưỡng tĩnh mạch. Do vùng hành tá tràng phía sau tiếp xúc với dịch mật và dịch tụy kiềm, Misoprostol có vai trò bảo vệ niêm mạc đặc biệt quan trọng. Bắt buộc chụp mạch hoặc MSCT bụng để khảo sát tái thông mạch hoặc phẫu thuật nếu có hoại tử tiến triển.</li>

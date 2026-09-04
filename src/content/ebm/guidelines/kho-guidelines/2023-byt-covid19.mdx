@@ -234,6 +234,30 @@ sections:
           </div>
         </div>
 
+        <div style="margin-top: 1.5rem;">
+          <FlowchartViewer
+            title="Lưu Đồ Phân Tuyến & Bậc Thang Xử Trí COVID-19 Theo 5 Mức Độ Lâm Sàng (QĐ 2671/QĐ-BYT 2023)"
+            code={`graph TD
+  START["BỆNH NHÂN XÁC CHẨN HOẶC NGHI NGỜ COVID-19<br/><small>Test nhanh kháng nguyên (+) hoặc RT-PCR (+)</small>"]:::start --> SEVERITY{"Phân Loại Mức Độ Lâm Sàng Theo Tiêu Chuẩn Bộ Y Tế 2023?"}:::question
+
+  SEVERITY -- "KHÔNG TRIỆU CHỨNG HOẶC NHẸ<br/>SpO2 ≥ 96%, thở 12-21 l/p, không khó thở" --> MILD_EVAL{"Có Yếu Tố Nguy Cơ Diễn Tiến Nặng?"}:::question
+
+  MILD_EVAL -- "Nguy cơ cao (≥65 tuổi, béo phì, bệnh nền)" --> MILD_HIGH["ĐIỀU TRỊ NGOẠI TRÚ CÓ KIỂM SOÁT<br/><small>• Kháng vi rút sớm trong 5 ngày đầu: Paxlovid hoặc Molnupiravir<br/>• Theo dõi SpO2 tại nhà 2 lần/ngày (cảnh giác Silent Hypoxia)</small>"]:::action
+
+  MILD_EVAL -- "Trẻ khỏe, không bệnh nền" --> MILD_LOW["ĐIỀU TRỊ NGOẠI TRÚ TẠI NHÀ<br/><small>Hạ sốt Paracetamol, dinh dưỡng, vận động nhẹ, bù nước điện giải</small>"]:::success
+
+  SEVERITY -- "TRUNG BÌNH (Viêm phổi)<br/>SpO2 94 - 95%, thở 22-30 l/p, tổn thương < 50%" --> MODERATE["NHẬP VIỆN PHÒNG BỆNH NỘI TRÚ / HDU<br/><small>• Liệu pháp Oxy qua gọng kính (mục tiêu SpO2 ≥ 94%)<br/>• Kháng vi rút Remdesivir IV (200mg N1, 100mg N2-N5)<br/>• KHÔNG dùng Corticoid thường quy nếu chưa cần oxy</small>"]:::action
+
+  SEVERITY -- "NẶNG (Viêm phổi nặng)<br/>SpO2 < 94%, thở > 30 l/p, co kéo cơ hô hấp" --> SEVERE["NHẬP KHOA HỒI SỨC CẤP CỨU (ICU / HDU)<br/><small>• Oxy lưu lượng cao HFNC hoặc CPAP/BiPAP<br/>• Corticoid: Dexamethasone 6mg/ngày IV x 7 - 10 ngày<br/>• Chống đông dự phòng liều cao: Enoxaparin 1 mg/kg/ngày SC<br/>• Remdesivir IV 5 ngày</small>"]:::warning
+
+  SEVERITY -- "NGUY KỊCH (ARDS / Sốc nhiễm trùng)<br/>SpO2 < 92% dù thở oxy, PaO2/FiO2 ≤ 300, Sốc" --> CRITICAL["HỒI SỨC NGUY KỊCH ICU TẬP TRUNG<br/><small>• Đặt NKQ thông khí bảo vệ phổi (Vt 4-6 ml/kg, Pplat ≤ 30)<br/>• Nằm sấp (Prone position) ≥ 16 giờ/ngày<br/>• Dexamethasone IV + Tocilizumab hoặc Baricitinib<br/>• Chống đông liều điều trị • CRRT / Lọc cytokine / ECMO</small>"]:::danger
+
+  MILD_HIGH --> DETECT_WARN["THEO DÕI DẤU HIỆU CHUYỂN NẶNG: SpO2 < 96%, Khó thở, CRP > 125, D-dimer > 1000"]:::start
+  MODERATE --> SEVERE
+  SEVERE --> CRITICAL`}
+          />
+        </div>
+
       </div>
     </div>
 
@@ -496,7 +520,6 @@ sections:
       <div class="sec-body">
         <div class="citation-box">
           <ol>
-<ul style="margin-left: 1.25rem; margin-bottom: 1rem; line-height: 1.65;">
             <li>Bộ Y tế Việt Nam. <em>Hướng dẫn chẩn đoán và điều trị COVID-19</em> (Ban hành kèm theo Quyết định số 2671/QĐ-BYT ngày 26 tháng 6 năm 2023 của Bộ trưởng Bộ Y tế). Hà Nội: Bộ Y tế; 2023.</li>
           </ol>
         </div>

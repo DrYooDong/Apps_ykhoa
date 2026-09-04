@@ -128,7 +128,7 @@ sections:
 
 <div class="page-content">
 
-  <!-- ==================== SECTION 1 ==================== -->
+  {/* ==================== SECTION 1 ==================== */}
   <div class="sec-card" id="sec-tong-quan-nhan-dien">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">🚩</span>
@@ -210,7 +210,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 2 ==================== -->
+  {/* ==================== SECTION 2 ==================== */}
   <div class="sec-card" id="sec-bieu-hien-lam-sang">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">👥</span>
@@ -331,7 +331,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 3 ==================== -->
+  {/* ==================== SECTION 3 ==================== */}
   <div class="sec-card" id="sec-benh-nao-mo-cau-infographic">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">🔬</span>
@@ -394,7 +394,7 @@ sections:
         </table>
       </div>
 
-      <!-- FIGURE 1 CARD: BMJ VISUAL SUMMARY INFOGRAPHIC -->
+      {/* FIGURE 1 CARD: BMJ VISUAL SUMMARY INFOGRAPHIC */}
       <div class="fig-card" style="margin-top: 1.5rem;">
         <img src="./images/2024-nice-ng240-viem-mang-nao-fig1.png" alt="Figure 1. thebmj Visual summary: Identifying bacterial meningitis and meningococcal disease" class="fig-img" loading="lazy" />
         <div class="fig-caption">
@@ -406,14 +406,14 @@ sections:
         </div>
       </div>
 
-      <!-- VISUAL DIAGRAM CODE (TÁI HIỆN CODE TRỰC QUAN THEO THIẾT KẾ CỦA HÌNH ẢNH BMJ) -->
+      {/* VISUAL DIAGRAM CODE (TÁI HIỆN CODE TRỰC QUAN THEO THIẾT KẾ CỦA HÌNH ẢNH BMJ) */}
       <div style="margin-top: 1.5rem; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; padding: 1.25rem; box-shadow: 0 4px 16px rgba(0,0,0,0.04);">
         <div style="text-align: center; font-weight: 700; font-size: 1.05rem; color: var(--color-primary); margin-bottom: 1rem;">
           <i class="fa-solid fa-diagram-project"></i> Sơ Đồ Trực Quan Tái Hiện Từ The BMJ: Phân Biệt Lâm Sàng Hai Bệnh Cảnh
         </div>
 
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem;">
-          <!-- CỘT TRÁI: VIÊM MÀNG NÃO VI KHUẨN -->
+          {/* CỘT TRÁI: VIÊM MÀNG NÃO VI KHUẨN */}
           <div style="border: 2px solid #0284c7; border-radius: 10px; padding: 1rem; background: rgba(2, 132, 199, 0.03);">
             <div style="font-weight: 700; color: #0284c7; font-size: 1rem; border-bottom: 1px solid rgba(2, 132, 199, 0.2); padding-bottom: 0.5rem; margin-bottom: 0.75rem; display: flex; align-items: center; justify-content: space-between;">
               <span>🧠 VIÊM MÀNG NÃO VI KHUẨN</span>
@@ -447,7 +447,7 @@ sections:
             </div>
           </div>
 
-          <!-- CỘT PHẢI: BỆNH DO NÃO MÔ CẦU -->
+          {/* CỘT PHẢI: BỆNH DO NÃO MÔ CẦU */}
           <div style="border: 2px solid #dc2626; border-radius: 10px; padding: 1rem; background: rgba(220, 38, 38, 0.03);">
             <div style="font-weight: 700; color: #dc2626; font-size: 1rem; border-bottom: 1px solid rgba(220, 38, 38, 0.2); padding-bottom: 0.5rem; margin-bottom: 0.75rem; display: flex; align-items: center; justify-content: space-between;">
               <span>🩸 BỆNH DO NÃO MÔ CẦU</span>
@@ -483,7 +483,7 @@ sections:
           </div>
         </div>
 
-        <!-- VÙNG GIAO THOA: CẢ HAI THỂ CÙNG CÓ -->
+        {/* VÙNG GIAO THOA: CẢ HAI THỂ CÙNG CÓ */}
         <div style="margin-top: 1.25rem; border: 2px solid #7c3aed; border-radius: 10px; padding: 1rem; background: rgba(124, 58, 237, 0.04);">
           <div style="font-weight: 700; color: #7c3aed; font-size: 0.95rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
             <span>🤝 VÙNG TRIỆU CHỨNG GIAO THOA (CẢ HAI THỂ BỆNH CÙNG CÓ)</span>
@@ -509,7 +509,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 4 ==================== -->
+  {/* ==================== SECTION 4 ==================== */}
   <div class="sec-card" id="sec-yeu-to-nguy-co-safety-net">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">⚠️</span>
@@ -571,7 +571,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 5 ==================== -->
+  {/* ==================== SECTION 5 ==================== */}
   <div class="sec-card" id="sec-khang-sinh-truoc-va-tai-vien">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">⏱️</span>
@@ -649,10 +649,38 @@ sections:
         </div>
       </div>
 
+      <div style="margin-top: 1.5rem;">
+        <FlowchartViewer
+          title="Lưu Đồ Xử Trí Khẩn Viêm Màng Não & Não Mô Cầu — Khung Giờ Vàng 1 Giờ (NICE NG240)"
+          code={`graph TD
+  START["BỆNH NHÂN NGHI NGỜ VIÊM MÀNG NÃO HOẶC BỆNH NÃO MÔ CẦU<br/><small>Có dấu hiệu cờ đỏ: Sốt • Đau đầu • Cứng gáy • Tri giác biến đổi</small>"]:::start --> PREHOSP{"Đánh Giá Nguy Cơ Ngoài Bệnh Viện (Pre-Hospital)?"}:::question
+
+  PREHOSP -- "Nghi ngờ Não mô cầu<br/>(Tử ban, ban hoại tử, sốc)" --> IM_ABX["TIÊM KHÁNG SINH NGOÀI VIỆN CÀNG SỚM CÀNG TỐT<br/><small>• Ceftriaxone IM/IV (hoặc Benzylpenicillin IM)<br/>• Trừ khi làm chậm trễ chuyển viện nghiêm trọng<br/>• Chuyển viện cấp cứu lập tức</small>"]:::danger
+
+  PREHOSP -- "Nghi ngờ Viêm màng não thuần túy<br/>(Không có ban hoại tử)" --> CHECK_DELAY{"Thời gian chuyển viện có bị trì hoãn kéo dài?"}:::question
+  CHECK_DELAY -- "Có trì hoãn" --> IM_ABX
+  CHECK_DELAY -- "Không trì hoãn" --> TRANS_ED["CHUYỂN VIỆN KHẨN ĐẾN KHOA CẤP CỨU (ED)"]:::action
+
+  IM_ABX --> TRANS_ED
+  TRANS_ED --> GOLDEN["KÍCH HOẠT QUY TRÌNH 1 GIỜ VÀNG (GOLDEN HOUR)<br/><small>Bác sĩ lâm sàng cao cấp trực tiếp chỉ đạo tại ED</small>"]:::start
+
+  GOLDEN --> LP_SAFETY{"Chọc dò tủy sống (LP) có khả thi trong 1h & không có chống chỉ định?"}:::question
+
+  LP_SAFETY -- "An toàn & không làm chậm trễ kháng sinh" --> DO_LP["THỰC HIỆN CẤY MÁU + CHỌC DÒ TỦY SỐNG (LP) TRƯỚC<br/><small>Lấy bệnh phẩm DNT làm BC, Protein, Glucose, Soi Gram, PCR</small>"]:::action
+
+  LP_SAFETY -- "Có dấu hiệu tăng ALNS, sốc hoặc nguy cơ trễ thuốc >1h" --> DELAY_LP["HOÃN CHỌC DÒ TỦY SỐNG LẬP TỨC<br/><small>Lấy máu cấy STAT • Chụp CT sọ não loại trừ tổn thương khối nếu cần</small>"]:::warning
+
+  DO_LP --> GIVE_IV["DÙNG NGAY KHÁNG SINH TĨNH MẠCH TRONG VÒNG 1H ĐẦU<br/><small>• Ceftriaxone 2g IV q12h (hoặc Cefotaxime)<br/>• + Dexamethasone 10mg IV q6h (nếu nghi ngờ Phế cầu)<br/>• + Amoxicillin/Ampicillin nếu ≥60 tuổi / suy giảm MD (Listeria)</small>"]:::success
+
+  DELAY_LP --> GIVE_IV
+  GIVE_IV --> REASSESS["ĐÁNH GIÁ LÂM SÀNG SAU KHÁNG SINH<br/><small>Chọc dò DNT bổ sung khi bệnh nhân ổn định • Kế hoạch theo dõi 4-6 tuần</small>"]:::action`}
+        />
+      </div>
+
     </div>
   </div>
 
-  <!-- ==================== SECTION 6 ==================== -->
+  {/* ==================== SECTION 6 ==================== */}
   <div class="sec-card" id="sec-cham-soc-hau-xuat-vien">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">🩺</span>
@@ -718,7 +746,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 7 ==================== -->
+  {/* ==================== SECTION 7 ==================== */}
   <div class="sec-card" id="sec-thuc-te-nghien-cuu-tuong-lai">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">📊</span>
@@ -803,7 +831,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 8 ==================== -->
+  {/* ==================== SECTION 8 ==================== */}
   <div class="sec-card" id="sec-tham-khao-mcq">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">📚</span>
@@ -908,7 +936,7 @@ sections:
 
 </div>
 
-<!-- BOTTOM NAV -->
+{/* BOTTOM NAV */}
 <div style="margin-top: 1.5rem;">
   <div class="btn-row">
     <a href="#/ebm/kho-guidelines" class="btn btn-primary">

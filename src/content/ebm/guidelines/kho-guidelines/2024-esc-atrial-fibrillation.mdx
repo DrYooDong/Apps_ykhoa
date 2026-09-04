@@ -99,7 +99,6 @@ sections:
 
         <div class="sec-subtitle">Tiêu Chuẩn Chẩn Đoán Rung Nhĩ Lâm Sàng (Clinical AF)</div>
         <ul style="padding-left: 1.25rem; font-size: 0.88rem; line-height: 1.7; margin-bottom: 1rem;">
-<ul style="margin-left: 1.25rem; margin-bottom: 1rem; line-height: 1.65;">
           <li><strong>ECG 12 chuyển đạo tiêu chuẩn</strong> ghi nhận nhịp rung nhĩ.</li>
           <li>Hoặc <strong>ECG 1 chuyển đạo (hoặc đa chuyển đạo) có độ dài ≥ 30 giây</strong> được bác sĩ xác nhận.</li>
           <li><strong>Đặc điểm ECG đặc trưng:</strong> Vắng mặt sóng P rõ ràng và khoảng RR hoàn toàn không đều.</li>
@@ -217,6 +216,29 @@ sections:
           </div>
         </div>
 
+        <FlowchartViewer
+          title="Lưu Đồ Thuật Toán Phân Tầng & Chỉ Định Kháng Đông Trong Rung Nhĩ (ESC 2024 AF-CARE)"
+          code={`graph TD
+  START["BỆNH NHÂN RUNG NHĨ (LÂM SÀNG HOẶC ĐIỆN TÂM ĐỒ)"]:::start --> VALVE{"Có Van Tim Cơ Học HOẶC Hẹp 2 Lá Vừa - Nặng?"}:::question
+  
+  VALVE -- "CÓ (Rung nhĩ do bệnh van tim)" --> VKA["CHỈ ĐỊNH BẮT BUỘC KHÁNG VITAMIN K (VKA)<br/><small>Warfarin đích INR 2.0–3.0 (TTR > 70%) • Chống chỉ định DOACs</small>"]:::danger
+  VALVE -- "KHÔNG" --> SPECIAL{"Bệnh Cơ Tim Phì Đại (HCM) hoặc Nhiễm Bột Tim (Amyloid)?"}:::question
+  
+  SPECIAL -- "CÓ" --> OAC_AUTO["CHỈ ĐỊNH OAC TỰ ĐỘNG (Class I, Level B)<br/><small>Bắt buộc dùng kháng đông đường uống không phụ thuộc điểm CHA₂DS₂-VA</small>"]:::success
+  SPECIAL -- "KHÔNG" --> CHA_SCORE{"Đánh Giá Điểm Nguy Cơ CHA₂DS₂-VA (ESC 2024)<br/><small>(HF, Tăng HA, Tuổi ≥75 [2đ], ĐTĐ, Tiền sử đột quỵ [2đ], Bệnh mạch máu, Tuổi 65-74)</small>"}:::question
+  
+  CHA_SCORE -- "Điểm = 0 (Nguy cơ thực sự thấp)" --> NO_OAC["KHÔNG DÙNG THUỐC KHÁNG ĐÔNG HOẶC KHÁNG TIỂU CẦU<br/><small>Aspirin/Clopidogrel bị chống chỉ định (Class III)</small>"]:::action
+  CHA_SCORE -- "Điểm = 1 (Nguy cơ trung bình)" --> OAC_CONSIDER["CÂN NHẮC DÙNG DOAC (Class IIa, Level B)<br/><small>Cá thể hóa theo nguyện vọng bệnh nhân & nguy cơ xuất huyết</small>"]:::warning
+  CHA_SCORE -- "Điểm ≥ 2 (Nguy cơ cao)" --> DOAC_FIRST["CHỈ ĐỊNH DÙNG DOAC HÀNG ĐẦU (Class I, Level A)<br/><small>Ưu tiên Apixaban, Dabigatran, Edoxaban, Rivaroxaban hơn VKA</small>"]:::success
+
+  classDef start fill:#e0f2fe,stroke:#0284c7,stroke-width:2px,color:#0369a1
+  classDef question fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#854d0e
+  classDef action fill:#eff6ff,stroke:#3b82f6,stroke-width:1.5px,color:#1e40af
+  classDef danger fill:#fee2e2,stroke:#ef4444,stroke-width:2px,color:#991b1b
+  classDef warning fill:#fef3c7,stroke:#f59e0b,stroke-width:2px,color:#92400e
+  classDef success fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#15803d`}
+        />
+
         
         <div class="cdss-box">
           <div class="cdss-title"><span>🧮 CDSS TOOL 1: MÁY TÍNH THANG ĐIỂM CHA₂DS₂-VA (ESC 2024)</span></div>
@@ -242,7 +264,6 @@ sections:
 
         <div class="sec-subtitle">Quy Tắc Lựa Chọn Thuốc Kháng Đông (OAC)</div>
         <ul style="padding-left: 1.25rem; font-size: 0.88rem; line-height: 1.7; margin-bottom: 1rem;">
-<ul style="margin-left: 1.25rem; margin-bottom: 1rem; line-height: 1.65;">
           <li><strong>Kháng đông DOAC (Apixaban, Dabigatran, Edoxaban, Rivaroxaban)</strong> được <strong>khuyến cáo ưu tiên hàng đầu</strong> hơn VKA do giảm 50% nguy cơ xuất huyết nội sọ (<span class="badge badge-green">Class I, Level A</span>).</li>
           <li><strong>Bắt buộc dùng VKA (Warfarin/Acenocoumarol):</strong> Bệnh nhân có <strong>Van tim cơ học</strong> hoặc <strong>Hẹp van hai lá mức độ vừa đến nặng</strong> (<span class="badge badge-green">Class I, Level A</span>). Target INR 2.0–3.0, TTR &gt; 70%.</li>
           <li><strong>Trường hợp đặc biệt:</strong> Khuyến cáo dùng OAC cho <strong>tất cả bệnh nhân Rung nhĩ kèm Bệnh cơ tim phì đại (HCM) hoặc Bệnh thâm nhiễm tinh bột tim (Cardiac Amyloidosis)</strong>, bất kể điểm số CHA₂DS₂-VA (<span class="badge badge-green">Class I, Level B</span>).</li>
@@ -324,7 +345,6 @@ sections:
         
         <div class="sec-subtitle">Kiểm Soát Tần Số Thất (Rate Control)</div>
         <ul style="padding-left: 1.25rem; font-size: 0.88rem; line-height: 1.7; margin-bottom: 1rem;">
-<ul style="margin-left: 1.25rem; margin-bottom: 1rem; line-height: 1.65;">
           <li><strong>Mục tiêu tần số tim:</strong> Kiểm soát nhẹ nhàng (Lenient rate control) với <strong>tần số lúc nghỉ &lt; 110 lần/phút</strong> (<span class="badge badge-blue">Class IIa, Level B</span>).</li>
           <li><strong>Bệnh nhân LVEF &gt; 40%:</strong> Lựa chọn hàng đầu gồm Thuốc chẹn beta, Diltiazem, Verapamil hoặc Digoxin (<span class="badge badge-green">Class I, Level B</span>).</li>
           <li><strong>Bệnh nhân LVEF ≤ 40% (HFrEF):</strong> Thuốc chẹn beta và/hoặc Digoxin (<span class="badge badge-green">Class I, Level B</span>). <strong style="color: var(--red);">Chống chỉ định Verapamil/Diltiazem</strong> do tác dụng ức chế co bóp cơ tim.</li>
@@ -382,7 +402,6 @@ sections:
         </div>
 
         <ul style="padding-left: 1.25rem; font-size: 0.88rem; line-height: 1.7;">
-<ul style="margin-left: 1.25rem; margin-bottom: 1rem; line-height: 1.65;">
           <li><strong>AF Bền bỉ hoặc kháng trị thuốc:</strong> Chỉ định Triệt đốt Class I, Level A để giảm triệu chứng và ngăn tiến triển loạn nhịp.</li>
           <li><strong>Rung nhĩ kèm Suy tim HFrEF nghi ngờ bệnh cơ tim do nhịp nhanh:</strong> Chỉ định Triệt đốt Class I, Level B để phục hồi chức năng thất trái.</li>
           <li><strong>Kháng đông chu phẫu triệt đốt:</strong> Khuyến cáo duy trì <strong>kháng đông không ngắt quãng (Uninterrupted OAC)</strong> trong suốt thủ thuật (<span class="badge badge-green">Class I, Level A</span>).</li>
@@ -398,7 +417,6 @@ sections:
       <div class="sec-body">
         <p style="font-size: 0.88rem; line-height: 1.7; margin-bottom: 1rem;">Rung nhĩ là một bệnh lý động tiến triển theo thời gian. Trụ cột <strong>[E]</strong> yêu cầu bác sĩ tái đánh giá định kỳ tối thiểu mỗi 6–12 tháng về:</p>
         <ul style="padding-left: 1.25rem; font-size: 0.88rem; line-height: 1.7;">
-<ul style="margin-left: 1.25rem; margin-bottom: 1rem; line-height: 1.65;">
           <li>Sự xuất hiện của các yếu tố nguy cơ đột quỵ mới để cập nhật lại điểm số <strong>CHA₂DS₂-VA</strong>.</li>
           <li>Đánh giá lại tuân thủ điều trị kháng đông OAC và chức năng thận (CrCl).</li>
           <li>Đánh giá mức độ cải thiện triệu chứng (thang điểm mEHRA) và tác dụng phụ ngoài tim của thuốc chống loạn nhịp.</li>

@@ -124,8 +124,7 @@ sections:
           <div class="infobox-icon"><i class="fa-solid fa-shield-check"></i></div>
           <div>
             <strong>4 Nguyên Tắc Bắt Buộc Trong Điều Trị Lao (BYT 2024):</strong>
-            <ol style="margin-left: 1.2rem; margin-top: 0.3rem; font-size: 0.83rem;">
-<ul style="margin-left: 1.25rem; margin-bottom: 1rem; line-height: 1.65;">
+            <ol style="margin-left: 1.2rem; margin-top: 0.3rem; font-size: 0.83rem; line-height: 1.65;">
               <li><strong>Phối hợp thuốc:</strong> Nhạy cảm dùng tối thiểu 3 thuốc giai đoạn tấn công &amp; 2 thuốc giai đoạn duy trì.</li>
               <li><strong>Dùng thuốc đúng liều:</strong> Tính chính xác theo cân nặng bệnh nhân (uống xa bữa ăn / lúc đói).</li>
               <li><strong>Dùng thuốc đều đặn &amp; DOT:</strong> Uống đúng cùng khung giờ cố định dưới sự giám sát trực tiếp (DOT).</li>
@@ -284,6 +283,30 @@ sections:
           </div>
         </div>
 
+        <div style="margin-top: 1.5rem;">
+          <FlowchartViewer
+            title="Lưu Đồ Phân Tuyến & Lựa Chọn Phác Đồ Điều Trị Lao Nhạy Cảm / Kháng Thuốc (QĐ 162/QĐ-BYT 2024)"
+            code={`graph TD
+  START["BỆNH NHÂN XÁC CHẨN MẮC LAO<br/><small>Có kết quả Xpert MTB/RIF Ultra hoặc Kháng sinh đồ</small>"]:::start --> RIF_RESIST{"Tình Trạng Kháng Rifampicin (RIF)?"}:::question
+
+  RIF_RESIST -- "Nhạy cảm với Rifampicin<br/>(RIF-Susceptible)" --> FORM_TB{"Đánh Giá Vị Trí Tổn Thương & Lứa Tuổi?"}:::question
+
+  FORM_TB -- "Lao phổi / ngoài phổi người lớn<br/>(Không ảnh hưởng TK TW / Xương)" --> REG_A1["PHÁC ĐỒ A1: 2HRZE / 4RHE (6 tháng)<br/><small>Tấn công 2 tháng (H,R,Z,E) • Duy trì 4 tháng (R,H,E) uống hàng ngày</small>"]:::success
+
+  FORM_TB -- "Lao ở trẻ em" --> REG_A2["PHÁC ĐỒ A2: 2HRZE / 4RH (6 tháng)<br/><small>Hoặc Phác đồ A2a 4 tháng (2HRZE/2RH) nếu tổn thương phổi nhẹ</small>"]:::success
+
+  FORM_TB -- "Lao Màng Não / Lao Xương Khớp" --> REG_B1["PHÁC ĐỒ B1: 2HRZE / 10RHE (12 tháng)<br/><small>Duy trì 10 tháng • Bắt buộc phối hợp Corticoid 6-8 tuần đầu nếu lao màng não</small>"]:::action
+
+  RIF_RESIST -- "Kháng Rifampicin (MDR / RR-TB)" --> FQ_CHECK{"Kết Quả Kháng Fluoroquinolone (Xpert XDR / LPA Hàng 2)?"}:::question
+
+  FQ_CHECK -- "Còn nhạy Fluoroquinolone (MDR/RR-TB, tuổi ≥ 14, không có CCĐ)" --> BPALM["PHÁC ĐỒ ĐỘT PHÁ BPaLM (6 tháng)<br/><small>• Bedaquiline + Pretomanid + Linezolid + Moxifloxacin<br/>• Phác đồ siêu ngắn toàn đường uống chuẩn WHO 2024</small>"]:::danger
+
+  FQ_CHECK -- "Không đủ điều kiện BPaLM (Trẻ < 14 tuổi, có thai hoặc CCĐ)" --> REG_C["PHÁC ĐỒ C (9 - 11 tháng Bedaquiline)<br/><small>Bdq - Lfx - Lzd - Cfz - Z - E - Hh (Tấn công 4-6 th, duy trì 5 th)</small>"]:::warning
+
+  FQ_CHECK -- "Kháng Fluoroquinolone (tiền XDR / pre-XDR-TB)" --> INDIVIDUAL["PHÁC ĐỒ DÀI HẠN CÁ THỂ HÓA (18 - 20 tháng)<br/><small>Phối hợp tối thiểu 4 thuốc hiệu lực: Bdq, Lzd, Cfz, Cs, Dmd theo KSĐ</small>"]:::danger`}
+          />
+        </div>
+
       </div>
     </article>
 
@@ -327,7 +350,6 @@ sections:
           <div>
             <strong>Tiêu chuẩn NGỪNG NGAY TOÀN BỘ THUỐC LAO khi có độc tính gan:</strong>
             <ol style="margin-left: 1.2rem; margin-top: 0.3rem; font-size: 0.83rem;">
-<ul style="margin-left: 1.25rem; margin-bottom: 1rem; line-height: 1.65;">
               <li>Men gan (AST/ALT) tăng cao <strong>&gt; 5 lần giới hạn bình thường trên</strong> (dù có hay không có triệu chứng).</li>
               <li>Men gan tăng <strong>&gt; 3 lần kèm theo triệu chứng lâm sàng</strong> (mệt mỏi, chán ăn, buồn nôn) hoặc vàng da (Bilirubin toàn phần &gt; 3 mg/dL).</li>
             </ol>
@@ -518,7 +540,6 @@ sections:
         <div class="sub-card">
           <div class="sub-card-title"><span>Quy trình xử trí quên liều phác đồ 3HP (Uống hàng tuần):</span> <span class="tag tag-green">Phụ lục 8</span></div>
           <ul style="margin-left: 1.2rem; font-size: 0.82rem; color: var(--color-text-muted, #64748b); line-height: 1.6;">
-<ul style="margin-left: 1.25rem; margin-bottom: 1rem; line-height: 1.65;">
             <li><strong>Quên 1 liều &lt; 2 ngày (&lt; 48h):</strong> Uống ngay liều đã quên. Tiếp tục lịch uống hàng tuần theo lịch cũ bình thường.</li>
             <li><strong>Quên 1 liều &gt; 2 ngày (&gt; 48h):</strong> Uống ngay liều đã quên. Điều chỉnh dời lịch uống tuần tiếp theo sao cho khoảng cách giữa 2 liều liên tiếp <strong>&gt; 72 giờ</strong>.</li>
             <li><strong>Quên 1 - 3 liều liên tiếp:</strong> Tiếp tục uống tuần bình thường và kéo dài liệu trình bù liều (tổng thời gian 12 liều <strong>không quá 16 tuần</strong>).</li>
@@ -546,7 +567,6 @@ sections:
           <div>
             <strong>Động học hạt khí dung chứa vi khuẩn lao:</strong>
             <ul style="margin-left: 1.2rem; margin-top: 0.3rem; font-size: 0.83rem;">
-<ul style="margin-left: 1.25rem; margin-bottom: 1rem; line-height: 1.65;">
               <li>Vi khuẩn lao lây truyền qua các hạt khí dung siêu nhỏ có kích thước <strong>1 - 5 micrô-mét (&amp;mu;m)</strong> phát tán khi bệnh nhân ho, khạc, hắt hơi.</li>
               <li>Nhờ kích thước siêu nhỏ, các hạt này có thể <strong>bay lơ lửng trong không khí từ vài giờ đến 24 giờ</strong>.</li>
               <li>Khả năng lây lan giảm đi rất mạnh sau khi người bệnh được điều trị lao hiệu quả từ <strong>02 đến 04 tuần</strong>.</li>

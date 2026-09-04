@@ -107,7 +107,9 @@
 | `components/non-intrusive-ui.css` | Styling Non-Intrusive Design System (Focus Mode, Slide-over Drawer, Progressive Details, Glance Card, Ambient Toasts) | Mọi trang bài viết & phác đồ |
 | `components/physiology-simulators.css` | Styling Phòng thí nghiệm Mô phỏng Sinh lý định lượng 6 models | `src/content/pathophysiology/simulators/**` |
 | `components/metabolic-navigator.css` | Styling Bản đồ Chuyển hóa Phân tử 8 chu trình & Metabolic Studio | `src/content/pathophysiology/biochemistry/**` |
-| `components/clinical-flow-engine.css` | Styling Hệ thống Render Lưu đồ & Cây Quyết định Y khoa (Clinical Flow Engine) | `pages/clinical-decision-demo.html` |
+| `components/clinical-flow-engine.css` | Styling Hệ thống Render Lưu đồ & Cây Quyết định Y khoa (Clinical Flow Engine 2.0) | `pages/cong-cu/flowchart-studio.astro`, `FlowchartViewer.astro`, `clinical-decision-demo.html` |
+| `components/flowchart/` | Thư mục Component & Parser Lưu đồ Y khoa (`flow-dsl-parser.ts`, `FlowchartViewer.astro`) | Xuyên suốt bài viết MDX, Guideline, Bệnh lý & Studio |
+| `pages/cong-cu/flowchart-studio.astro` | Studio soạn thảo và thiết kế lưu đồ y khoa trực quan 2 màn hình (Mermaid DSL + Pan/Zoom + Gutter) | Phân hệ Công cụ Lâm sàng |
 | `components/clinical-step-player.css` | Styling Thanh điều khiển Timeline & Mô phỏng Cấp cứu theo Thời gian (Clinical Step Player) | `pages/clinical-player-demo.html` |
 | `components/diagnostic-path-finder.css` | Styling Trực quan hóa Đồ thị & Tối ưu Đường dẫn Y khoa (Diagnostic Path Finder & Steiner Tree) | `pages/diagnostic-path-finder-demo.html` |
 | `components/mdx/` | Thư viện 10 CSS Components vi mô nguyên tử chuyên biệt cho bài đọc MDX (`mdx-hero`, `mdx-section-card`, `mdx-alerts`, `mdx-matrix-bento`, `mdx-timeline-steps`, `mdx-ebm-badges`, `mdx-tables`, `mdx-clinical-pearls`, `mdx-tags`, `mdx-figures`, `mdx-pillars`) | Xuyên suốt 223+ bài `.mdx` toàn hệ thống |

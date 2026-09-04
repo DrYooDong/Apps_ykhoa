@@ -120,7 +120,7 @@ sections:
 
 <div class="page-content">
 
-  <!-- SECTION 1 -->
+  {/* SECTION 1 */}
   <div class="sec-card" id="sec-phan-loai-dich-te">
     <div class="sec-hdr">
       <div class="sec-hdr-left">
@@ -276,7 +276,7 @@ sections:
     </div>
   </div>
 
-  <!-- SECTION 2 -->
+  {/* SECTION 2 */}
   <div class="sec-card" id="sec-lam-sang-luu-do">
     <div class="sec-hdr">
       <div class="sec-hdr-left">
@@ -342,10 +342,53 @@ sections:
         </div>
       </div>
 
+      <FlowchartViewer 
+        title="Lưu Đồ Tiếp Cận Lâm Sàng & Phân Tầng Xét Nghiệm Tiêu Chảy Nhiễm Trùng (IDSA 2017)"
+        code={`flowchart TD
+          START([Bệnh nhân Tiêu Chảy | start | badge: IDSA 2017])
+          DURATION{Phân loại thời gian diễn tiến? | question}
+
+          ACUTE[Tiêu chảy cấp tính < 14 ngày | action | subtitle: Thường do vi khuẩn hoặc virus]
+          PERSIST[Tiêu chảy kéo dài 14 - 29 ngày | warning | subtitle: Nghi ngờ ký sinh trùng hoặc vi khuẩn dai dẳng]
+          CHRONIC[Tiêu chảy mạn tính >= 30 ngày | action | subtitle: Tầm soát ký sinh trùng, IBD, celiac, Brainerd]
+
+          SYM_CHK{Đánh giá biểu hiện lâm sàng & mức độ nặng | question}
+
+          WATERY[Tiêu chảy toàn nước tự giới hạn | success | subtitle: Thường do Norovirus/Rotavirus/ETEC]
+          WATERY_RX[Bù dịch Reduced ORS + Dinh dưỡng sớm | success | subtitle: KHÔNG CẦN XÉT NGHIỆM PHÂN THƯỜNG QUY]
+
+          BLOODY[Tiêu chảy phân máu hoặc sốt cao | danger | badge: Cảnh báo | subtitle: STEC, Shigella, Salmonella, Campylobacter, C. diff]
+          TEST_STOOL[Chỉ định xét nghiệm phân chuyên sâu | warning | subtitle: Cấy phân, Shiga toxin EIA, NAAT đa mồi, Độc tố C. diff]
+
+          STEC_WARN{Kết quả Shiga toxin (+) hoặc nghi STEC? | question}
+          NO_ABX[CHỐNG CHỈ ĐỊNH KHÁNG SINH TUYỆT ĐỐI 🚫 | danger | badge: Ngừa HUS | subtitle: Bù dịch tĩnh mạch tích cực, theo dõi sát tiểu cầu và chức năng thận]
+          ABX_TARGET[Xem xét kháng sinh trúng đích theo kháng sinh đồ | action | subtitle: Azithromycin hoặc Ciprofloxacin (trừ khi nhiễm STEC)]
+
+          START --> DURATION
+          DURATION -->|< 14 ngày| ACUTE
+          DURATION -->|14-29 ngày| PERSIST
+          DURATION -->|>= 30 ngày| CHRONIC
+
+          ACUTE --> SYM_CHK
+          PERSIST ==> TEST_STOOL
+          CHRONIC ==> TEST_STOOL
+
+          SYM_CHK -->|Phân nước, không sốt, không máu| WATERY
+          SYM_CHK ==>|Phân máu / Sốt >= 38.5 / Đau dữ dội| BLOODY
+
+          WATERY --> WATERY_RX
+          BLOODY ==> TEST_STOOL
+
+          TEST_STOOL --> STEC_WARN
+          STEC_WARN ==>|Shiga toxin (+)| NO_ABX
+          STEC_WARN -->|Tác nhân khác (Shigella, Salmonella...)| ABX_TARGET
+        `}
+      />
+
     </div>
   </div>
 
-  <!-- SECTION 3 -->
+  {/* SECTION 3 */}
   <div class="sec-card" id="sec-chi-dinh-xet-nghiem">
     <div class="sec-hdr">
       <div class="sec-hdr-left">
@@ -424,7 +467,7 @@ sections:
     </div>
   </div>
 
-  <!-- SECTION 4 -->
+  {/* SECTION 4 */}
   <div class="sec-card" id="sec-bu-dich-dinh-duong">
     <div class="sec-hdr">
       <div class="sec-hdr-left">
@@ -478,7 +521,7 @@ sections:
     </div>
   </div>
 
-  <!-- SECTION 5 -->
+  {/* SECTION 5 */}
   <div class="sec-card" id="sec-khang-sinh-stec">
     <div class="sec-hdr">
       <div class="sec-hdr-left">
@@ -572,7 +615,7 @@ sections:
     </div>
   </div>
 
-  <!-- SECTION 6 -->
+  {/* SECTION 6 */}
   <div class="sec-card" id="sec-thuoc-ho-tro-du-phong-grade">
     <div class="sec-hdr">
       <div class="sec-hdr-left">
@@ -666,7 +709,7 @@ sections:
     </div>
   </div>
 
-  <!-- SECTION 7 -->
+  {/* SECTION 7 */}
   <div class="sec-card" id="sec-trich-dan-y-van">
     <div class="sec-hdr">
       <div class="sec-hdr-left">
@@ -762,7 +805,7 @@ sections:
 
 </div>
 
-<!-- BOTTOM NAVIGATION -->
+{/* BOTTOM NAVIGATION */}
 <div style="margin-top: 2rem; margin-bottom: 3rem;">
   <div class="btn-row" style="display: flex; gap: 1rem; flex-wrap: wrap;">
     <a href="#/ebm/kho-guidelines" class="btn btn-primary" style="text-decoration: none;">

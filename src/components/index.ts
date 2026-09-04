@@ -14,4 +14,5 @@ export * from './tool-view';
 export * from './non-intrusive-ux';
 export * from './medical-svg-factory';
 export * from './clinical-flow-engine';
+export * from './flowchart/flow-dsl-parser';
 

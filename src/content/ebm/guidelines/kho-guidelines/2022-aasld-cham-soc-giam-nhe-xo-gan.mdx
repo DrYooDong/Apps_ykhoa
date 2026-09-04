@@ -126,7 +126,7 @@ sections:
 
 <div class="page-content">
 
-  <!-- ==================== SECTION 1 ==================== -->
+  {/* ==================== SECTION 1 ==================== */}
   <div class="sec-card" id="sec-khai-niem-mo-hinh">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">🏛️</span>
@@ -144,82 +144,34 @@ sections:
         </div>
       </div>
 
-      <!-- SVG EDITORIAL: 8 DOMAINS OF PALLIATIVE CARE -->
-      <div style="background: var(--color-surface, #ffffff); border: 1px solid var(--color-border, #e2e8f0); border-radius: 12px; padding: 1.25rem; margin-top: 1.25rem; margin-bottom: 1.5rem; overflow-x: auto;">
-        <svg viewBox="0 0 880 460" width="100%" height="auto" style="font-family: system-ui, -apple-system, sans-serif; display: block;" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <marker id="pc-arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-              <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
-            </marker>
-          </defs>
+      <FlowchartViewer 
+        title="Mô Hình 8 Lĩnh Vực Chăm Sóc Giảm Nhẹ Toàn Diện Trong Xơ Gan (AASLD 2022)"
+        code={`flowchart TD
+          ACP([Quy Trình Lập Kế Hoạch Chăm Sóc Trước (ACP) | start | badge: AASLD 2022 | subtitle: Thảo luận sớm ngay từ khi chẩn đoán xơ gan mất bù hoặc đánh giá ghép gan])
+          
+          HUB[BỆNH NHÂN & NGƯỜI CHĂM SÓC GIA ĐÌNH ⭐ | action | badge: Trọng tâm chăm sóc | subtitle: Phối hợp cùng Nhóm Đa Chuyên Khoa: Gan mật + Chăm sóc giảm nhẹ + Điều dưỡng + Công tác xã hội]
 
-          <!-- TOP BOX: ACP -->
-          <rect x="290" y="15" width="300" height="45" rx="8" fill="#eff6ff" stroke="#0284c7" stroke-width="2"/>
-          <text x="440" y="42" font-size="14" font-weight="bold" fill="#0369a1" text-anchor="middle">QUY TRÌNH LẬP KẾ HOẠCH TRƯỚC (ACP)</text>
+          D1[1. THỂ CHẤT 💊 | warning | badge: Triệu chứng thể xác | subtitle: Đau, Cổ trướng căng, Khó thở, Chuột rút ban đêm, Mất ngủ, Ngứa do ứ mật]
+          D2[2. TÂM LÝ & TÂM THẦN 🧠 | action | badge: Sức khỏe tinh thần | subtitle: Sàng lọc & can thiệp Lo âu, Trầm cảm, Stress, Nỗi sợ hãi tái phát / Tử vong]
+          D3[3. XÃ HỘI & GIA ĐÌNH 👥 | success | badge: Hỗ trợ cộng đồng | subtitle: Giảm gánh nặng kiệt sức cho người chăm sóc gia đình, giải quyết khó khăn tài chính]
+          D4[4. TÂM LINH & TÔN GIÁO 🕊️ | action | subtitle: Tìm kiếm ý nghĩa cuộc sống, chăm sóc mục vụ tâm linh theo tín ngưỡng]
+          D5[5 & 6. VĂN HÓA & PHÁP LÝ ĐẠO ĐỨC ⚖️ | success | subtitle: Tôn trọng niềm tin văn hóa, xác lập người đại diện hợp pháp & quyền tự quyết]
+          D7[7 & 8. CHĂM SÓC CUỐI ĐỜI & TANG CHẾ 🕯️ | danger | subtitle: Kế hoạch chăm sóc lúc lâm chung, chuẩn bị tâm lý và hỗ trợ gia quyến trong tang chế]
 
-          <!-- CONNECTING LINES FROM ACP -->
-          <path d="M 440 60 L 440 90" stroke="#0284c7" stroke-width="2" fill="none"/>
-          <path d="M 120 90 L 760 90" stroke="#0284c7" stroke-width="2" fill="none"/>
+          HOSPICE[CHĂM SÓC HOSPICE TẠI NHÀ HOẶC TRUNG TÂM 🏥 | danger | badge: Tiên lượng ≤ 6 tháng | subtitle: Chuyển dịch toàn bộ mục tiêu sang tối đa hóa sự dễ chịu và phẩm giá khi không còn chỉ định ghép gan]
 
-          <!-- 3 TOP DOMAINS -->
-          <path d="M 120 90 L 120 115" stroke="#0284c7" stroke-width="2" fill="none" marker-end="url(#pc-arrow)"/>
-          <path d="M 440 90 L 440 115" stroke="#0284c7" stroke-width="2" fill="none" marker-end="url(#pc-arrow)"/>
-          <path d="M 760 90 L 760 115" stroke="#0284c7" stroke-width="2" fill="none" marker-end="url(#pc-arrow)"/>
+          ACP --> HUB
+          HUB --> D1
+          HUB --> D2
+          HUB --> D3
+          HUB --> D4
+          HUB --> D5
+          HUB --> D7
+          D7 ==> HOSPICE
+        `}
+      />
 
-          <!-- DOMAIN 1: PHYSICAL -->
-          <rect x="30" y="120" width="180" height="70" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
-          <text x="120" y="145" font-size="13" font-weight="bold" fill="#14532d" text-anchor="middle">1. THỂ CHẤT</text>
-          <text x="120" y="165" font-size="11" fill="#15803d" text-anchor="middle">Đau, Khó thở, Cổ trướng,</text>
-          <text x="120" y="180" font-size="11" fill="#15803d" text-anchor="middle">Chuột rút, Mất ngủ, Ngứa</text>
-
-          <!-- DOMAIN 2: PSYCHOLOGICAL -->
-          <rect x="350" y="120" width="180" height="70" rx="8" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.5"/>
-          <text x="440" y="145" font-size="13" font-weight="bold" fill="#581c87" text-anchor="middle">2. TÂM LÝ</text>
-          <text x="440" y="165" font-size="11" fill="#6b21a8" text-anchor="middle">Lo âu, Trầm cảm, Stress,</text>
-          <text x="440" y="180" font-size="11" fill="#6b21a8" text-anchor="middle">Sợ hãi tái phát / Tử vong</text>
-
-          <!-- DOMAIN 3: SOCIAL -->
-          <rect x="670" y="120" width="180" height="70" rx="8" fill="#fffbeb" stroke="#d97706" stroke-width="1.5"/>
-          <text x="760" y="145" font-size="13" font-weight="bold" fill="#78350f" text-anchor="middle">3. XÃ HỘI</text>
-          <text x="760" y="165" font-size="11" fill="#92400e" text-anchor="middle">Gánh nặng gia đình, Tài chính,</text>
-          <text x="760" y="180" font-size="11" fill="#92400e" text-anchor="middle">Hỗ trợ người chăm sóc</text>
-
-          <!-- CENTER HUB: PATIENT & FAMILY & TEAM -->
-          <rect x="260" y="215" width="360" height="75" rx="12" fill="#0284c7" stroke="#0369a1" stroke-width="2"/>
-          <text x="440" y="245" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">BỆNH NHÂN &amp; NGƯỜI CHĂM SÓC GIA ĐÌNH</text>
-          <text x="440" y="268" font-size="12" fill="#e0f2fe" text-anchor="middle">Phối hợp cùng Nhóm Đa Chuyên Khoa (Bác sĩ, Điều dưỡng, PC, Xã hội)</text>
-
-          <!-- CONNECTING LINES TO BOTTOM DOMAINS -->
-          <path d="M 120 190 L 120 270 L 260 270" stroke="#0284c7" stroke-width="1.5" fill="none"/>
-          <path d="M 760 190 L 760 270 L 620 270" stroke="#0284c7" stroke-width="1.5" fill="none"/>
-
-          <path d="M 120 270 L 120 310" stroke="#0284c7" stroke-width="1.5" fill="none" marker-end="url(#pc-arrow)"/>
-          <path d="M 440 290 L 440 310" stroke="#0284c7" stroke-width="1.5" fill="none" marker-end="url(#pc-arrow)"/>
-          <path d="M 760 270 L 760 310" stroke="#0284c7" stroke-width="1.5" fill="none" marker-end="url(#pc-arrow)"/>
-
-          <!-- DOMAIN 4: SPIRITUAL -->
-          <rect x="30" y="315" width="180" height="60" rx="8" fill="#fdf2f8" stroke="#db2777" stroke-width="1.5"/>
-          <text x="120" y="340" font-size="13" font-weight="bold" fill="#831843" text-anchor="middle">4. TÂM LINH</text>
-          <text x="120" y="360" font-size="11" fill="#9d174d" text-anchor="middle">Ý nghĩa cuộc sống, Chăm sóc mục vụ</text>
-
-          <!-- DOMAIN 5: CULTURAL & ETHICAL -->
-          <rect x="350" y="315" width="180" height="60" rx="8" fill="#ecfeff" stroke="#0891b2" stroke-width="1.5"/>
-          <text x="440" y="338" font-size="12" font-weight="bold" fill="#155e75" text-anchor="middle">5 &amp; 6. VĂN HÓA &amp; ĐẠO ĐỨC</text>
-          <text x="440" y="358" font-size="11" fill="#0e7490" text-anchor="middle">Tôn trọng niềm tin, Quyền tự quyết</text>
-
-          <!-- DOMAIN 7: END-OF-LIFE CARE -->
-          <rect x="670" y="315" width="180" height="60" rx="8" fill="#fef2f2" stroke="#dc2626" stroke-width="1.5"/>
-          <text x="760" y="338" font-size="12" font-weight="bold" fill="#991b1b" text-anchor="middle">7 &amp; 8. CUỐI ĐỜI &amp; TANG CHẾ</text>
-          <text x="760" y="358" font-size="11" fill="#b91c1c" text-anchor="middle">Hospice, Chăm sóc dễ chịu, Tang chế</text>
-
-          <!-- BOTTOM CONNECTING TO HOSPICE -->
-          <path d="M 440 375 L 440 405" stroke="#dc2626" stroke-width="2" fill="none" marker-end="url(#pc-arrow)"/>
-          <rect x="290" y="410" width="300" height="35" rx="8" fill="#dc2626"/>
-          <text x="440" y="432" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">HOSPICE CARE (KHI TIÊN LƯỢNG SỐNG &le; 6 THÁNG)</text>
-        </svg>
-      </div>
-
-      <!-- TABLE 1: COMPARISON OF MODELS -->
+      {/* TABLE 1: COMPARISON OF MODELS */}
       <h3 style="margin-top: 1.5rem; margin-bottom: 0.75rem; font-size: 1.15rem; color: var(--color-primary);">
         <i class="fa-solid fa-table"></i> Bảng Đối Chiếu 1: Phân Biệt Primary PC, Specialty PC, Hospice &amp; ACP (Table 1 AASLD)
       </h3>
@@ -266,7 +218,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 2 ==================== -->
+  {/* ==================== SECTION 2 ==================== */}
   <div class="sec-card" id="sec-nguoi-cham-soc-rao-can">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">🤝</span>
@@ -308,7 +260,7 @@ sections:
         </div>
       </div>
 
-      <!-- TABLE 2: RCTS AND CLINICAL TRIALS -->
+      {/* TABLE 2: RCTS AND CLINICAL TRIALS */}
       <h3 style="margin-top: 1.5rem; margin-bottom: 0.75rem; font-size: 1.15rem; color: var(--color-primary);">
         <i class="fa-solid fa-flask-vial"></i> Bảng Đối Chiếu 2: Tóm Tắt Các Thử Nghiệm Lâm Sàng Nổi Bật Về Can Thiệp PC Trong Xơ Gan (Table 2)
       </h3>
@@ -355,7 +307,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 3 ==================== -->
+  {/* ==================== SECTION 3 ==================== */}
   <div class="sec-card" id="sec-lap-ke-hoach-acp-giao-tiep">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">💬</span>
@@ -373,7 +325,7 @@ sections:
         </div>
       </div>
 
-      <!-- 9 STEPS IN ACP -->
+      {/* 9 STEPS IN ACP */}
       <h3 style="margin-top: 1.25rem; margin-bottom: 0.75rem; font-size: 1.15rem; color: var(--color-primary);">
         <i class="fa-solid fa-list-ol"></i> Lộ Trình 9 Bước Thực Hành ACP Tuần Tự (Figure 2 AASLD)
       </h3>
@@ -408,7 +360,7 @@ sections:
         </div>
       </div>
 
-      <!-- 3 COMMUNICATION FRAMEWORKS -->
+      {/* 3 COMMUNICATION FRAMEWORKS */}
       <h3 style="margin-top: 1.5rem; margin-bottom: 0.75rem; font-size: 1.15rem; color: var(--color-primary);">
         <i class="fa-solid fa-bullhorn"></i> 3 Khung Cấu Trúc Giao Tiếp Trong Các Cuộc Đối Thoại Phức Tạp (Figure 3)
       </h3>
@@ -468,7 +420,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 4 ==================== -->
+  {/* ==================== SECTION 4 ==================== */}
   <div class="sec-card" id="sec-quan-ly-dau-da-mo-thuc">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">💊</span>
@@ -480,7 +432,7 @@ sections:
         Đau ảnh hưởng từ <strong>30% đến 79%</strong> bệnh nhân xơ gan mất bù (do căng bao gan, lách to, cổ trướng căng, hoặc thoái hóa khớp đồng mắc). Nguyên tắc quản lý cốt lõi là <em>"Bắt đầu liều thấp, tăng liều chậm" (Start low, go slow)</em>:
       </p>
 
-      <!-- TABLE 3: PAIN MANAGEMENT PROTOCOL -->
+      {/* TABLE 3: PAIN MANAGEMENT PROTOCOL */}
       <div class="table-wrapper">
         <table class="regimen-table">
           <thead>
@@ -531,7 +483,7 @@ sections:
         </table>
       </div>
 
-      <!-- CRITICAL WARNING BOX FOR NSAIDS AND TRAMADOL -->
+      {/* CRITICAL WARNING BOX FOR NSAIDS AND TRAMADOL */}
       <div class="updates-grid" style="margin-top: 1.25rem;">
         <div class="update-card">
           <div class="update-card-accent" style="background: #dc2626;"></div>
@@ -564,7 +516,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 5 ==================== -->
+  {/* ==================== SECTION 5 ==================== */}
   <div class="sec-card" id="sec-co-truong-khang-tri-ltcd">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">🌊</span>
@@ -613,7 +565,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 6 ==================== -->
+  {/* ==================== SECTION 6 ==================== */}
   <div class="sec-card" id="sec-phac-do-8-trieu-chung">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">🩺</span>
@@ -687,7 +639,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 7 ==================== -->
+  {/* ==================== SECTION 7 ==================== */}
   <div class="sec-card" id="sec-cham-soc-cuoi-doi-hospice">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">🏥</span>
@@ -743,7 +695,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 8 ==================== -->
+  {/* ==================== SECTION 8 ==================== */}
   <div class="sec-card" id="sec-tai-lieu-tham-khao">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">📚</span>
@@ -775,7 +727,7 @@ sections:
 
 </div>
 
-<!-- BOTTOM NAV -->
+{/* BOTTOM NAV */}
 <div style="margin-top: 1.5rem;">
   <div class="btn-row">
     <a href="#/ebm/kho-guidelines" class="btn btn-primary">

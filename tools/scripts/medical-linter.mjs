@@ -86,7 +86,7 @@ function parseFrontmatter(content) {
   const endLine = match[0].split('\n').length;
 
   const frontmatter = {};
-  const lines = raw.split('\n');
+  const lines = raw.split(/\r?\n/);
   let currentKey = null;
   let inArray = false;
   let inObjectArray = false;

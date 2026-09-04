@@ -172,7 +172,7 @@ sections:
           <div class="infobox-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
           <div>
             <strong>Định nghĩa các thể Lao Kháng Thuốc theo Quyết định 162/QĐ-BYT:</strong>
-            <ul style="margin-left: 1.25rem; margin-bottom: 1rem; line-height: 1.65;">
+            <ul style="margin-left: 1.25rem; margin-top: 0.5rem; line-height: 1.65;">
               <li><strong>Lao nhạy cảm thuốc:</strong> Vi khuẩn nhạy cảm với toàn bộ các thuốc chống lao hàng 1.</li>
               <li><strong>Lao kháng đơn thuốc:</strong> Chỉ kháng duy nhất 01 loại thuốc chống lao hàng 1.</li>
               <li><strong>Lao kháng nhiều thuốc:</strong> Kháng từ 2 thuốc hàng 1 trở lên nhưng <em>không kháng đồng thời cả Rifampicin (R) và Isoniazid (H)</em>.</li>
@@ -363,7 +363,7 @@ sections:
         <div class="sec-subtitle"><i class="fa-solid fa-route"></i> Sơ Đồ 1: Quy Trình Chẩn Đoán Lao Phổi Không Có Bằng Chứng Vi Khuẩn (BYT 2024)</div>
         
         <div class="flow-track-container">
-          <!-- Bước 1 -->
+          {/* Bước 1 */}
           <div class="flow-track-step">
             <div class="flow-track-rail">
               <div class="flow-track-marker marker-blue">01</div>
@@ -380,7 +380,7 @@ sections:
             </div>
           </div>
 
-          <!-- Bước 2 -->
+          {/* Bước 2 */}
           <div class="flow-track-step">
             <div class="flow-track-rail">
               <div class="flow-track-marker marker-teal">02</div>
@@ -407,7 +407,7 @@ sections:
             </div>
           </div>
 
-          <!-- Bước 3 -->
+          {/* Bước 3 */}
           <div class="flow-track-step">
             <div class="flow-track-rail">
               <div class="flow-track-marker marker-green">03</div>
@@ -435,6 +435,28 @@ sections:
           </div>
         </div>
 
+        <div style="margin-top: 1.5rem; margin-bottom: 1.5rem;">
+          <FlowchartViewer
+            title="Lưu Đồ Quy Trình Chẩn Đoán Lao Phổi Không Có Bằng Chứng Vi Khuẩn (QĐ 162/QĐ-BYT 2024)"
+            code={`graph TD
+  START["TIẾP NHẬN NGƯỜI BỆNH NGHI NGỜ LAO PHỔI<br/><small>Ho khạc > 2 tuần, sốt nhẹ về chiều, ra mồ hôi trộm, sút cân, ho ra máu</small>"]:::start --> WORKUP["CHỤP X-QUANG NGỰC THẲNG + XÉT NGHIỆM VI SINH LẦN 1<br/><small>Ưu tiên GeneXpert MTB/RIF Ultra hoặc nhuộm soi AFB đờm</small>"]:::action
+
+  WORKUP --> BCVK_CHECK{"Có Bằng Chứng Vi Khuẩn (BCVK)?"}:::question
+
+  BCVK_CHECK -- "BCVK (+) (Xpert Ultra (+) hoặc AFB (+))" --> DX_CONFIRMED["CHẨN ĐOÁN XÁC ĐỊNH: LAO PHỔI CÓ BCVK<br/><small>Đăng ký chương trình chống lao &amp; Khởi động ngay phác đồ điều trị lao</small>"]:::success
+
+  BCVK_CHECK -- "BCVK (-) (Xpert Ultra (-) &amp; AFB (-))" --> TRIAL_ABX["ĐIỀU TRỊ THỬ KHÁNG SINH PHỔ RỘNG 1 - 2 TUẦN<br/><small>Dùng Beta-lactam / Macrolide • TUYỆT ĐỐI KHÔNG DÙNG Fluoroquinolones</small>"]:::warning
+
+  TRIAL_ABX --> RESPONSE{"Đánh Giá Lại Lâm Sàng & X-quang Sau 1 - 2 Tuần?"}:::question
+
+  RESPONSE -- "Có cải thiện lâm sàng & hình ảnh rõ rệt" --> RULE_OUT["LOẠI TRỪ LAO PHỔI<br/><small>Hoàn thành đợt điều trị viêm phổi / nhiễm trùng hô hấp thông thường</small>"]:::action
+
+  RESPONSE -- "Không cải thiện / Tổn thương phổi tiến triển" --> SPECIAL_EXAM["XÉT NGHIỆM VI SINH LẦN 2 + CHỤP CT SCAN NGỰC<br/><small>Làm thêm nuôi cấy MGIT, nội soi phế quản rửa phế nang nếu cần</small>"]:::action
+
+  SPECIAL_EXAM --> COUNCIL["HỘI ĐỒNG CHUYÊN MÔN HỘI CHẨN HỘI CHẨN<br/><small>Thống nhất chẩn đoán: Lao phổi không có BCVK & Kê đơn phác đồ điều trị</small>"]:::danger`}
+          />
+        </div>
+
         <div class="sec-subtitle"><i class="fa-solid fa-hand-holding-droplet"></i> Phụ Lục 3: Quy Trình Lấy Bệnh Phẩm Đờm Chuẩn Hóa 3 Bước</div>
         <div class="grid-3">
           <div class="sub-card">
@@ -456,9 +478,9 @@ sections:
           <div class="infobox-icon"><i class="fa-solid fa-vial-circle-check"></i></div>
           <div>
             <strong>Phân nhánh xử trí lâm sàng khi Xpert Ultra trả kết quả "Vết" (Trace):</strong>
-            <ul style="margin-left: 1.25rem; margin-bottom: 1rem; line-height: 1.65;">
+            <ul style="margin-left: 1.25rem; margin-top: 0.5rem; line-height: 1.65;">
               <li><strong>Nhánh 1 (Trẻ em &lt; 16t, Người nhiễm HIV, Bệnh phẩm ngoài phổi):</strong> Kết quả "Vết" được <strong>chấp nhận làm tiêu chuẩn chẩn đoán xác định lao hoạt động</strong>. Chỉ định điều trị ngay theo phác đồ nhạy cảm hoặc kháng thuốc phù hợp.</li>
-              <li><strong>Nhánh 2 (Người lớn thông thường khác):</strong> Lấy mẫu bệnh phẩm mới làm lại Xpert Ultra lần 2.<br /> <br />&bull; <em>Lần 2 tiếp tục Dương/Vết:</em> Chẩn đoán lao hoạt động và điều trị.<br /> <br />&bull; <em>Nếu có tiền sử điều trị lao trong 5 năm:</em> Thận trọng vì có thể là xác vi khuẩn cũ. Cần kết hợp Xquang mới và theo dõi sát.</li>
+              <li><strong>Nhánh 2 (Người lớn thông thường khác):</strong> Lấy mẫu bệnh phẩm mới làm lại Xpert Ultra lần 2.<br />- <em>Lần 2 tiếp tục Dương/Vết:</em> Chẩn đoán lao hoạt động và điều trị.<br />- <em>Nếu có tiền sử điều trị lao trong 5 năm:</em> Thận trọng vì có thể là xác vi khuẩn cũ. Cần kết hợp Xquang mới và theo dõi sát.</li>
             </ul>
           </div>
         </div>

@@ -124,7 +124,7 @@ sections:
 
 <div class="page-content">
 
-  <!-- ==================== SECTION 1 ==================== -->
+  {/* ==================== SECTION 1 ==================== */}
   <div class="sec-card" id="sec-tongquan-cacld">
     <div class="sec-hdr"><span class="sec-hdr-icon">🏛️</span> <h2 class="sec-title">1. Tổng Quan, Khái Niệm cACLD &amp; Các Giai Đoạn Tiến Triển Của Xơ Gan</h2></div>
     <div class="sec-body">
@@ -186,7 +186,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 2 ==================== -->
+  {/* ==================== SECTION 2 ==================== */}
   <div class="sec-card" id="sec-sinhlybenh-dichtacdong">
     <div class="sec-hdr"><span class="sec-hdr-icon">🔬</span> <h2 class="sec-title">2. Cơ Chế Sinh Lý Bệnh &amp; Các Đích Tác Động Dược Lý Của Tăng Áp Cửa</h2></div>
     <div class="sec-body">
@@ -284,7 +284,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 3 ==================== -->
+  {/* ==================== SECTION 3 ==================== */}
   <div class="sec-card" id="sec-hvpg-quytrinh12buoc">
     <div class="sec-hdr"><span class="sec-hdr-icon">🩺</span> <h2 class="sec-title">3. Tiêu Chuẩn Vàng Đo Áp Lực Tĩnh Mạch Gan (HVPG) &amp; Quy Trình 12 Bước</h2></div>
     <div class="sec-body">
@@ -400,7 +400,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 4 ==================== -->
+  {/* ==================== SECTION 4 ==================== */}
   <div class="sec-card" id="sec-nilda-baveno-vi">
     <div class="sec-hdr"><span class="sec-hdr-icon">📊</span> <h2 class="sec-title">4. Chẩn Đoán Không Xâm Lấn (NILDA) &amp; Tiêu Chuẩn Baveno VI</h2></div>
     <div class="sec-body">
@@ -413,6 +413,28 @@ sections:
           <div class="fig-title">Figure 3. Noninvasive Staging and Management Algorithm for cACLD</div>
           Lưu đồ tiếp cận từng bước: Phân loại cACLD dựa trên LSM (&lt;10 kPa loại trừ, 10-15 nghi ngờ, &ge;15 xác chẩn), phân tầng CSPH kết hợp số lượng tiểu cầu, và áp dụng tiêu chuẩn Baveno VI để quyết định tránh nội soi sàng lọc hay khởi trị NSBB.
         </div>
+      </div>
+
+      <div style="margin-top: 1rem;">
+        <FlowchartViewer
+          title="Lưu Đồ Phân Tầng cACLD & Tiếp Cận CSPH Không Xâm Lấn (AASLD 2024 / Baveno VI)"
+          code={`graph TD
+  START["BỆNH NHÂN CÓ BỆNH GAN MẠN TÍNH<br/><small>Đo độ cứng gan (LSM) bằng FibroScan/TE + Số lượng tiểu cầu</small>"]:::start --> LSM_CHECK{"Đánh Giá Ngưỡng Độ Cứng Gan (LSM)?"}:::question
+
+  LSM_CHECK -- "LSM < 10 kPa" --> RULE_OUT["LOẠI TRỪ cACLD<br/><small>Nguy cơ biến chứng gan rất thấp • Tiếp tục điều trị nguyên nhân nền</small>"]:::success
+  
+  LSM_CHECK -- "LSM 10 - 14.9 kPa" --> SUSPECT["NGHI NGỜ cACLD<br/><small>Theo dõi định kỳ hàng năm hoặc làm thêm test chuyên sâu</small>"]:::action
+
+  LSM_CHECK -- "LSM ≥ 15 kPa" --> CONFIRM_CACLD["XÁC CHẨN cACLD (Xơ gan còn bù)<br/><small>Phân tầng nguy cơ tăng áp lực tĩnh mạch cửa có ý nghĩa (CSPH)</small>"]:::warning
+
+  CONFIRM_CACLD --> CSPH_CHECK{"Tiêu Chuẩn CSPH Không Xâm Lấn?"}:::question
+
+  CSPH_CHECK -- "LSM ≥ 25 kPa HOẶC<br/>(LSM 20-24.9 & Tiểu cầu < 150) HOẶC<br/>(LSM 15-19.9 & Tiểu cầu < 110)" --> HAS_CSPH["XÁC CHẨN CÓ CSPH<br/><small>Khởi trị ngay Carvedilol 6.25 - 12.5 mg/ngày<br/>• Ngăn ngừa mất bù đầu tiên (cổ trướng, vỡ giãn)<br/>• KHÔNG CẦN NỘI SOI DẠ DÀY SÀNG LỌC</small>"]:::danger
+
+  CSPH_CHECK -- "LSM < 20 kPa & Tiểu cầu ≥ 150" --> BAVENO6["ĐẠT TIÊU CHUẨN BAVENO VI<br/><small>Nguy cơ giãn TM nguy cơ cao < 5%<br/>• TRÁNH NỘI SOI SÀNG LỌC AN TOÀN<br/>• Theo dõi lại LSM và tiểu cầu hàng năm</small>"]:::success
+
+  CSPH_CHECK -- "LSM 20 - 24.9 & Tiểu cầu ≥ 150<br/>(Vùng xám không thỏa Baveno VI)" --> EGD_NEEDED["CHỈ ĐỊNH NỘI SOI THỰC QUẢN - DẠ DÀY<br/><small>Nếu có búi giãn nguy cơ cao: Khởi trị Carvedilol hoặc Thắt EVL<br/>Nếu không búi giãn: Nội soi lại sau 1-2 năm</small>"]:::action`}
+        />
       </div>
 
       <div class="updates-grid" style="margin-top: 1.5rem;">
@@ -456,7 +478,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 5 ==================== -->
+  {/* ==================== SECTION 5 ==================== */}
   <div class="sec-card" id="sec-nsbb-duphongtienphat">
     <div class="sec-hdr"><span class="sec-hdr-icon">💊</span> <h2 class="sec-title">5. Phác Đồ Thuốc Chẹn Beta Không Chọn Lọc (NSBB) &amp; Dự Phòng Tiên Phát</h2></div>
     <div class="sec-body">
@@ -552,7 +574,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 6 ==================== -->
+  {/* ==================== SECTION 6 ==================== */}
   <div class="sec-card" id="sec-xuathuyetcap-avh">
     <div class="sec-hdr"><span class="sec-hdr-icon">🚑</span> <h2 class="sec-title">6. Cấp Cứu Xuất Huyết Do Vỡ Giãn Tĩnh Mạch Cấp Tính (AVH) &amp; Preemptive TIPS</h2></div>
     <div class="sec-body">
@@ -565,6 +587,29 @@ sections:
           <div class="fig-title">Figure 4. Algorithm for the Management of Acute Variceal Hemorrhage (AVH)</div>
           Lưu đồ thuật toán xử trí toàn diện AVH của AASLD 2024: Phân nhánh theo nguồn chảy máu (Thực quản/GOV1 vs Phình vị GOV2/IGV1), các bước hồi sức ban đầu, chỉ định Preemptive TIPS trong 24-72h cho nhóm nguy cơ cao, xử trí cầu nối (SEMS/Bóng chèn) và TIPS giải cứu (Salvage TIPS).
         </div>
+      </div>
+
+      <div style="margin-top: 1rem;">
+        <FlowchartViewer
+          title="Lưu Đồ Xử Trí Cấp Cứu Xuất Huyết Vỡ Giãn Tĩnh Mạch (AVH) & Preemptive TIPS (AASLD 2024)"
+          code={`graph TD
+  START["CẤP CỨU XUẤT HUYẾT TIÊU HÓA TRÊN NGHI DO VỠ GIÃN TM (AVH)<br/><small>Nôn máu đỏ tươi / Đi ngoài phân đen • Tiền sử bệnh gan mạn</small>"]:::start --> RESUS["GÓI HỒI SỨC BAN ĐẦU (RESUSCITATION BUNDLE)<br/><small>• Khí đạo: Đặt NKQ nếu suy hô hấp/hôn mê • 2 đường truyền lớn<br/>• Truyền máu hạn chế: Đích Hb 7 - 8 g/dL (Không truyền FFP thường quy)<br/>• Thuốc co mạch tạng: Octreotide / Somatostatin / Terlipressin ngay<br/>• Kháng sinh dự phòng: Ceftriaxone 1g/ngày IV</small>"]:::danger
+
+  RESUS --> EGD["NỘI SOI DẠ DÀY TRONG VÒNG 12 GIỜ ĐẦU<br/><small>Sau khi đã hồi sức ổn định huyết động</small>"]:::action
+
+  EGD --> SOURCE{"Vị Trí Tổn Thương Chảy Máu Trên Nội Soi?"}:::question
+
+  SOURCE -- "Giãn TM Thực quản (GOV1 / EV)" --> EV_TX["THẮT VÒNG CAO SU (EVL)<br/><small>Thắt các búi giãn đang chảy máu hoặc có nút tiểu cầu</small>"]:::action
+
+  SOURCE -- "Giãn TM Phình vị (GOV2 / IGV1)" --> GV_TX["TIÊM KEO CYANOACRYLATE<br/><small>Hoặc cân nhắc can thiệp mạch BRTO / TIPS sớm</small>"]:::action
+
+  EV_TX --> RISK_STRAT{"Phân Tầng Nguy Cơ Thất Bại / Tử Vong Cao?"}:::question
+  GV_TX --> RISK_STRAT
+
+  RISK_STRAT -- "NGUY CƠ CAO (Child-Pugh C hoặc Child-Pugh B > 7 có máu chảy)" --> PREEMPT_TIPS["ĐẶT PREEMPTIVE TIPS TRONG 24 - 72 GIỜ ĐẦU<br/><small>• Sử dụng stent có màng bọc polytetrafluoroethylene (ePTFE)<br/>• Giảm ngoạn mục nguy cơ tái xuất huyết và cải thiện tỷ lệ sống còn</small>"]:::danger
+
+  RISK_STRAT -- "NGUY CƠ TIÊU CHUẨN (Child-Pugh A hoặc Child-Pugh B ≤ 7)" --> STD_CARE["DUY TRÌ ĐIỀU TRỊ CHUẨN<br/><small>• Tiếp tục thuốc co mạch tạng 2 - 5 ngày • Kháng sinh 7 ngày<br/>• Bắt đầu Carvedilol sau khi ngừng thuốc co mạch & ổn định<br/>• Thắt EVL định kỳ mỗi 2-4 tuần cho đến khi triệt tiêu búi giãn</small>"]:::success`}
+        />
       </div>
 
       <div class="updates-grid" style="margin-top: 1.5rem;">
@@ -593,13 +638,7 @@ sections:
           </div>
           <div class="update-card-body">
             <ul style="margin-left: 1rem; line-height: 1.7;">
-              <li><strong>Thuốc co mạch tạng (Dùng ngay trước nội soi, duy trì 2-5 ngày)</strong>:
-                <ul>
-                  <li><strong>Octreotide</strong>: Bolus 50 mcg i.v. $\rightarrow$ Truyền liên tục 25 - 50 mcg/giờ.</li>
-                  <li><strong>Somatostatin</strong>: Bolus 250 mcg i.v. $\rightarrow$ Truyền liên tục 250 - 500 mcg/giờ.</li>
-                  <li><strong>Terlipressin</strong>: 2 mg i.v. mỗi 4-6h trong 24-48h đầu $\rightarrow$ giảm 1 mg mỗi 4-6h.</li>
-                </ul>
-              </li>
+              <li><strong>Thuốc co mạch tạng (Dùng ngay trước nội soi, duy trì 2-5 ngày)</strong>: <strong>Octreotide</strong> (Bolus 50 mcg i.v. $\rightarrow$ Truyền 25-50 mcg/h), <strong>Somatostatin</strong> (Bolus 250 mcg $\rightarrow$ Truyền 250-500 mcg/h), hoặc <strong>Terlipressin</strong> (2 mg i.v. mỗi 4-6h $\rightarrow$ giảm 1 mg mỗi 4-6h).</li>
               <li><strong>Kháng sinh tĩnh mạch (Dùng ngay, tối đa 5 ngày)</strong>: <strong>Ceftriaxone 1g/24h</strong> (ưu tiên hàng đầu do tỷ lệ kháng Quinolone cao).</li>
             </ul>
           </div>
@@ -615,12 +654,7 @@ sections:
           <div class="update-card-body">
             <ul style="margin-left: 1rem; line-height: 1.7;">
               <li><strong>Nội soi EGD trong vòng 12 giờ</strong>: Thực hiện thắt đai tĩnh mạch thực quản (EVL). Có thể dùng Erythromycin 125-250mg i.v. trước nội soi 30-120p.</li>
-              <li><strong>Đặt TIPS sớm/chủ động (Preemptive TIPS) trong 24 - 72 giờ</strong> (lý tưởng &lt; 24h) bằng stent phủ PTFE cho nhóm nguy cơ cao:
-                <ul>
-                  <li><strong>Child-Pugh C (10 - 13 điểm)</strong>.</li>
-                  <li><strong>Child-Pugh B &gt; 7 điểm CÓ kèm chảy máu hoạt động</strong> khi nội soi lần đầu.</li>
-                </ul>
-              </li>
+              <li><strong>Đặt TIPS sớm/chủ động (Preemptive TIPS) trong 24 - 72 giờ</strong> (lý tưởng &lt; 24h) bằng stent phủ PTFE cho nhóm nguy cơ cao: <strong>Child-Pugh C (10 - 13 điểm)</strong>, hoặc <strong>Child-Pugh B &gt; 7 điểm CÓ kèm chảy máu hoạt động</strong> khi nội soi lần đầu.</li>
               <li><strong>Chảy máu không kiểm soát / Tái phát sớm (&le;5 ngày)</strong>: Đặt stent kim loại tự nở SEMS (giữ &le; 1 tuần) hoặc bóng chèn (&le; 24h) $\rightarrow$ Đặt <strong>Salvage TIPS</strong> khẩn cấp.</li>
             </ul>
           </div>
@@ -631,7 +665,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 7 ==================== -->
+  {/* ==================== SECTION 7 ==================== */}
   <div class="sec-card" id="sec-duphongthuphat-phinhvi-phg">
     <div class="sec-hdr"><span class="sec-hdr-icon">🛡️</span> <h2 class="sec-title">7. Dự Phòng Thứ Phát, Giãn Tĩnh Mạch Phình Vị &amp; Bệnh Dạ Dày Tăng Áp Cửa (PHG)</h2></div>
     <div class="sec-body">
@@ -721,7 +755,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 8 ==================== -->
+  {/* ==================== SECTION 8 ==================== */}
   <div class="sec-card" id="sec-thuocmoi-tuonglai">
     <div class="sec-hdr"><span class="sec-hdr-icon">🚀</span> <h2 class="sec-title">8. Thử Nghiệm Dược Lý Mới Đang Triển Khai &amp; 9 Hướng Nghiên Cứu Tương Lai</h2></div>
     <div class="sec-body">
@@ -850,7 +884,7 @@ sections:
     </div>
   </div>
 
-  <!-- CITATION BOX -->
+  {/* CITATION BOX */}
   <div class="citation-box">
     <strong>Tài liệu gốc (AMA Citation):</strong>
     <br/>
@@ -859,7 +893,7 @@ sections:
 
 </div>
 
-<!-- BOTTOM NAVIGATION -->
+{/* BOTTOM NAVIGATION */}
 <div style="margin-top: 1.5rem;">
   <div class="btn-row">
     <a href="#/ebm/kho-guidelines" class="btn btn-primary">

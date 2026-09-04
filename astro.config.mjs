@@ -2,6 +2,7 @@ import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
+import remarkHeadingId from 'remark-heading-id';
 
 // https://astro.build/config
 export default defineConfig({
@@ -12,7 +13,7 @@ export default defineConfig({
     format: 'file'
   },
   markdown: {
-    remarkPlugins: [remarkMath],
+    remarkPlugins: [remarkHeadingId, remarkMath],
     rehypePlugins: [rehypeKatex],
     shikiConfig: {
       theme: 'github-dark-dimmed'
@@ -20,7 +21,9 @@ export default defineConfig({
   },
   integrations: [
     mdx({
-      gfm: true
+      gfm: true,
+      remarkPlugins: [remarkHeadingId, remarkMath],
+      rehypePlugins: [rehypeKatex]
     })
   ],
   vite: {

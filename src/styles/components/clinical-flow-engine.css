@@ -1,7 +1,8 @@
 /**
  * ════════════════════════════════════════════════════════════════════════════
- *  CLINICAL FLOW ENGINE STYLES — CLINI-PORTAL
+ *  CLINICAL FLOW ENGINE STYLES 2.0 — CLINI-PORTAL
  *  CSS Tokens & Dark Mode quy chuẩn cho Bộ Render Lưu đồ & Cây Quyết định
+ *  Hỗ trợ Pan/Zoom Viewport, Floating Controls & 8 Custom Medical Node Archetypes
  * ════════════════════════════════════════════════════════════════════════════
  */
 
@@ -20,6 +21,7 @@
     }
 }
 
+.clinical-flow-viewport-container,
 .clinical-flow-viewport {
     background: var(--color-surface);
     border: 1px solid var(--color-border);
@@ -28,6 +30,7 @@
     display: flex;
     flex-direction: column;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+    position: relative;
 }
 
 /* Toolbar */
@@ -35,11 +38,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.85rem 1.25rem;
+    padding: 0.75rem 1.25rem;
     background: var(--color-surface-2);
     border-bottom: 1px solid var(--color-divider);
     gap: 1rem;
     flex-wrap: wrap;
+    z-index: 10;
 }
 
 .flow-history-breadcrumbs {
@@ -103,52 +107,120 @@
     background: var(--color-surface-offset);
 }
 
-/* Canvas Area */
+/* Canvas Viewport Area with Pan & Zoom */
+.flow-viewport-canvas-wrapper,
 .flow-svg-canvas-wrapper {
     position: relative;
     width: 100%;
+    height: 600px;
     min-height: 520px;
-    padding: 1rem;
     background: var(--color-bg);
-    overflow-x: auto;
+    overflow: hidden;
     display: flex;
     justify-content: center;
+    cursor: grab;
+    user-select: none;
+    touch-action: none;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    background-image: radial-gradient(var(--color-border) 1px, transparent 1px);
+    background-size: 20px 20px;
 }
 
+.flow-viewport-canvas-wrapper:focus-visible {
+    box-shadow: inset 0 0 0 2px var(--color-primary);
+}
+
+.flow-viewport-canvas-wrapper.is-panning {
+    cursor: grabbing;
+}
+
+.clinical-flow-svg-root,
 .clinical-flow-svg {
-    max-width: 100%;
-    height: auto;
+    width: 100%;
+    height: 100%;
     display: block;
     user-select: none;
+    transform-origin: 0 0;
+}
+
+.flow-transform-layer {
+    transition: none;
+    transform-origin: 0 0;
+    will-change: transform;
+}
+
+.flow-transform-layer.is-animating {
+    transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Floating Viewport Controls (XYFlow-inspired) */
+.flow-floating-controls {
+    position: absolute;
+    bottom: 1.25rem;
+    right: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 0.35rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    z-index: 20;
+}
+
+.flow-btn-floating {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+    background: transparent;
+    border: none;
+    color: var(--color-text);
+    font-size: 0.88rem;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+@media (pointer: coarse), (max-width: 768px) {
+    .flow-btn-floating {
+        width: 44px;
+        height: 44px;
+        font-size: 1rem;
+    }
+}
+
+.flow-btn-floating:hover {
+    background: var(--color-surface-2);
+    color: var(--color-primary);
 }
 
 /* SVG Elements - Nodes */
 .flow-node-group {
     cursor: pointer;
-    transition: opacity 0.3s ease, transform 0.2s ease;
-}
-
-.flow-node-group:hover .flow-node-box {
-    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.08));
+    transition: opacity 0.25s ease;
 }
 
 .flow-node-box {
     fill: var(--color-surface);
     stroke: var(--color-border);
-    stroke-width: 1.5px;
+    stroke-width: 1.2px;
     transition: stroke 0.2s ease, fill 0.2s ease;
 }
 
 .flow-node-title {
     font-family: 'Inter', system-ui, sans-serif;
-    font-size: 13px;
+    font-size: 12.5px;
     font-weight: 700;
     fill: var(--color-text);
 }
 
 .flow-node-subtitle {
     font-family: 'Inter', system-ui, sans-serif;
-    font-size: 11px;
+    font-size: 10.5px;
     font-weight: 500;
     fill: var(--color-text-muted);
 }
@@ -165,7 +237,11 @@
     fill: var(--color-text-muted);
 }
 
-/* Node Types */
+/* ════════════════════════════════════════════════════════════════════════════
+   8 CUSTOM MEDICAL NODE ARCHETYPES
+   ════════════════════════════════════════════════════════════════════════════ */
+
+/* 1. Start Node (Bệnh cảnh ban đầu) */
 .node-type-start .flow-node-box {
     stroke: var(--color-primary);
     stroke-width: 1.5px;
@@ -177,31 +253,105 @@
     fill: var(--color-primary);
 }
 
+/* 2. Danger / Focal / Red Flags Node (Cấp cứu tối khẩn 🚨) */
 .node-type-focal .flow-node-box,
-.node-type-danger .flow-node-box {
+.node-type-danger .flow-node-box,
+.node-type-alert .flow-node-box {
     stroke: var(--color-danger);
     stroke-width: 2px;
 }
 .node-type-focal .flow-node-badge-bg,
-.node-type-danger .flow-node-badge-bg {
+.node-type-danger .flow-node-badge-bg,
+.node-type-alert .flow-node-badge-bg {
     fill: var(--color-danger-hl);
 }
 .node-type-focal .flow-node-badge-text,
-.node-type-danger .flow-node-badge-text {
+.node-type-danger .flow-node-badge-text,
+.node-type-alert .flow-node-badge-text {
     fill: var(--color-danger);
 }
 
-.node-type-question .flow-node-box {
+/* Pulsing Indicator for Focal / Danger Alert */
+.flow-node-alert-pulse {
+    fill: var(--color-danger);
+    animation: focalPulse 1.8s infinite ease-in-out;
+}
+
+@keyframes focalPulse {
+    0% {
+        transform: scale(0.9);
+        opacity: 0.9;
+    }
+    50% {
+        transform: scale(1.3);
+        opacity: 0.4;
+    }
+    100% {
+        transform: scale(0.9);
+        opacity: 0.9;
+    }
+}
+
+/* 3. Question / Triage Decision Node */
+.node-type-question .flow-node-box,
+.node-type-decision .flow-node-box {
     stroke: var(--color-warning);
     stroke-width: 1.5px;
 }
-.node-type-question .flow-node-badge-bg {
+.node-type-question .flow-node-badge-bg,
+.node-type-decision .flow-node-badge-bg {
     fill: var(--color-warning-hl);
 }
-.node-type-question .flow-node-badge-text {
+.node-type-question .flow-node-badge-text,
+.node-type-decision .flow-node-badge-text {
     fill: var(--color-warning);
 }
 
+/* 4. Action / Intervention Node */
+.node-type-action .flow-node-box {
+    stroke: var(--color-teal, #0d9488);
+    stroke-width: 1.5px;
+}
+.node-type-action .flow-node-badge-bg {
+    fill: var(--color-teal-hl, #f0fdfa);
+}
+.node-type-action .flow-node-badge-text {
+    fill: var(--color-teal, #0d9488);
+}
+
+/* 5. Dose & Pharmacology Card Node 💊 */
+.node-type-dose .flow-node-box {
+    stroke: var(--color-purple, #8b5cf6);
+    stroke-width: 1.5px;
+}
+.node-type-dose .flow-node-badge-bg {
+    fill: var(--color-purple-hl, #faf5ff);
+}
+.node-type-dose .flow-node-badge-text {
+    fill: var(--color-purple, #8b5cf6);
+}
+
+.flow-node-dose-strip {
+    fill: var(--color-surface-2);
+    stroke: var(--color-border);
+    stroke-width: 0.5px;
+}
+
+.flow-node-dose-text {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px;
+    font-weight: 700;
+    fill: var(--color-purple, #8b5cf6);
+}
+
+/* 6. Comparison Node ⚖️ */
+.node-type-comparison .flow-node-box {
+    stroke: var(--color-primary);
+    stroke-width: 1.5px;
+    stroke-dasharray: 4,2;
+}
+
+/* 7. Success / Endpoint Node 🛡️ */
 .node-type-success .flow-node-box {
     stroke: var(--color-success);
     stroke-width: 1.5px;
@@ -211,6 +361,18 @@
 }
 .node-type-success .flow-node-badge-text {
     fill: var(--color-success);
+}
+
+/* 8. Tool / CDSS Calculator Link Node 🧮 */
+.node-type-tool .flow-node-box {
+    stroke: var(--color-info, #0284c7);
+    stroke-width: 1.5px;
+}
+.node-type-tool .flow-node-badge-bg {
+    fill: var(--color-info-hl, #f0f9ff);
+}
+.node-type-tool .flow-node-badge-text {
+    fill: var(--color-info, #0284c7);
 }
 
 /* Active & Current Nodes */
@@ -226,7 +388,7 @@
 }
 
 .flow-node-group.dimmed {
-    opacity: 0.28;
+    opacity: 0.22;
     filter: grayscale(0.8);
 }
 
@@ -235,7 +397,7 @@
     fill: none;
     stroke: var(--color-border);
     stroke-width: 1.5px;
-    transition: stroke 0.3s ease, stroke-width 0.3s ease, opacity 0.3s ease;
+    transition: stroke 0.25s ease, stroke-width 0.25s ease, opacity 0.25s ease;
 }
 
 .flow-edge-path.active {
@@ -252,14 +414,14 @@
 }
 
 .flow-edge-path.dimmed {
-    opacity: 0.2;
+    opacity: 0.18;
     stroke-dasharray: 4,4;
 }
 
 /* SVG Elements - Labels */
 .flow-edge-label-group {
     cursor: pointer;
-    transition: transform 0.15s ease, opacity 0.3s ease;
+    transition: transform 0.15s ease, opacity 0.25s ease;
 }
 
 .flow-edge-label-group:hover {
@@ -298,7 +460,7 @@
 }
 
 .flow-edge-label-group.dimmed {
-    opacity: 0.25;
+    opacity: 0.22;
 }
 
 /* ════════════════════════════════════════════════════════════════════════════
@@ -349,9 +511,13 @@
     background: var(--color-success-hl);
     color: var(--color-success);
 }
+.inspector-badge.badge-dose {
+    background: var(--color-purple-hl, #faf5ff);
+    color: var(--color-purple, #8b5cf6);
+}
 
 .inspector-title {
-    font-size: 1.15rem;
+    font-size: 1.12rem;
     font-weight: 800;
     color: var(--color-text);
     margin: 0 0 0.25rem 0;
@@ -368,13 +534,13 @@
     padding: 1.25rem;
     display: flex;
     flex-direction: column;
-    gap: 1.1rem;
+    gap: 1rem;
     max-height: 520px;
     overflow-y: auto;
 }
 
 .inspector-desc {
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     color: var(--color-text);
     line-height: 1.55;
 }
@@ -442,7 +608,7 @@
     color: var(--color-text);
 }
 
-/* EBM & Dose Boxes */
+/* EBM, Dose & Red Flags Boxes */
 .ebm-box {
     border-left: 3px solid var(--color-primary);
 }
@@ -454,7 +620,7 @@
 }
 
 .dose-box {
-    border-left: 3px solid var(--color-purple);
+    border-left: 3px solid var(--color-purple, #8b5cf6);
 }
 
 .dose-content {
@@ -466,7 +632,6 @@
 .redflags-box {
     border-left: 3px solid var(--color-danger);
     background: var(--color-danger-hl);
-    background-opacity: 0.2;
 }
 
 .redflags-list {
@@ -475,4 +640,26 @@
     font-size: 0.82rem;
     color: var(--color-danger);
     font-weight: 600;
+}
+
+.tool-box {
+    border-left: 3px solid var(--color-info, #0284c7);
+}
+
+.btn-inspector-tool {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.55rem 0.9rem;
+    background: var(--color-primary);
+    color: #ffffff;
+    font-size: 0.82rem;
+    font-weight: 600;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: opacity 0.15s ease;
+}
+
+.btn-inspector-tool:hover {
+    opacity: 0.9;
 }

@@ -128,7 +128,7 @@ sections:
 
 <div class="page-content">
 
-  <!-- ==================== SECTION 1 ==================== -->
+  {/* ==================== SECTION 1 ==================== */}
   <div class="sec-card" id="sec-dai-cuong-sepsis-sofa">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">💓</span>
@@ -239,7 +239,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 2 ==================== -->
+  {/* ==================== SECTION 2 ==================== */}
   <div class="sec-card" id="sec-hoi-suc-dich-van-mach">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">💧</span>
@@ -288,7 +288,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 3 ==================== -->
+  {/* ==================== SECTION 3 ==================== */}
   <div class="sec-card" id="sec-viem-ruot-thua-cap">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">🩺</span>
@@ -352,7 +352,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 4 ==================== -->
+  {/* ==================== SECTION 4 ==================== */}
   <div class="sec-card" id="sec-viem-tui-thua-alcd">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">🌿</span>
@@ -368,14 +368,51 @@ sections:
         </div>
       </div>
 
-      <!-- VISUAL DIAGRAM CODE TÁI HIỆN LƯU ĐỒ WSES ALCD -->
+      <FlowchartViewer 
+        title="Lưu Đồ Phân Tầng Xử Trí Viêm Túi Thừa Đại Tràng Trái ALCD (WSES 2017)"
+        code={`flowchart TD
+          START([Bệnh nhân Viêm Túi Thừa Đại Tràng Trái ALCD | start | badge: WSES 2017])
+          CT{Chụp CT Scan bụng chậu phân loại biến chứng | question}
+
+          UNCOMP[Chưa biến chứng (Uncomplicated) | success | badge: Khuyến cáo 1A | subtitle: Viêm khu trú, không thủng/áp xe]
+          ABSCESS[Có biến chứng: Ổ áp xe (Abscess) | warning | badge: Hinchey I-II]
+          PERIT[Có biến chứng: Viêm phúc mạc lan tỏa | danger | badge: Hinchey III-IV]
+
+          UNCOMP_RX[Theo dõi ngoại trú + Giảm đau | success | subtitle: KHÔNG DÙNG KHÁNG SINH THƯỜNG QUY]
+
+          AB_SIZE{Kích thước ổ áp xe trên CT? | question}
+          AB_SMALL[Áp xe nhỏ < 3 - 5 cm | warning | subtitle: Kháng sinh tĩnh mạch đơn thuần]
+          AB_LARGE[Áp xe lớn >= 3 - 5 cm | danger | subtitle: Dẫn lưu qua da dưới hướng dẫn CĐHA + KS tĩnh mạch]
+
+          HEMO{Huyết động & Thể trạng người bệnh? | question}
+          HARTMANN[PHẪU THUẬT HARTMANN 🚨 | danger | badge: Khuyến cáo 1B | subtitle: Cắt đoạn đại tràng + Làm hậu môn nhân tạo stoma]
+          RESECT[Cắt đại tràng + Nối ngay có/không stoma | warning | subtitle: Áp dụng khi huyết động ổn định, mô lành tốt]
+
+          START --> CT
+          CT -->|Chưa biến chứng| UNCOMP
+          CT -->|Có ổ áp xe| ABSCESS
+          CT ==>|Viêm phúc mạc / Khí tự do lớn| PERIT
+
+          UNCOMP --> UNCOMP_RX
+
+          ABSCESS --> AB_SIZE
+          AB_SIZE -->|< 3-5 cm| AB_SMALL
+          AB_SIZE ==>|>= 3-5 cm| AB_LARGE
+
+          PERIT --> HEMO
+          HEMO ==>|Không ổn định / Sốc nhiễm khuẩn| HARTMANN
+          HEMO -->|Huyết động ổn định| RESECT
+        `}
+      />
+
+      {/* VISUAL DIAGRAM CODE TÁI HIỆN LƯU ĐỒ WSES ALCD */}
       <div style="margin-top: 1.5rem; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; padding: 1.25rem;">
         <div style="text-align: center; font-weight: 700; font-size: 1.05rem; color: var(--color-primary); margin-bottom: 1.25rem;">
           <i class="fa-solid fa-diagram-project"></i> Sơ Đồ Thuật Toán WSES: Phân Tầng Xử Trí Viêm Túi Thừa Đại Tràng Trái (ALCD)
         </div>
 
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
-          <!-- CHƯA BIẾN CHỨNG -->
+          {/* CHƯA BIẾN CHỨNG */}
           <div style="border: 2px solid #16a34a; border-radius: 10px; padding: 1rem; background: rgba(22, 163, 74, 0.03);">
             <div style="font-weight: 700; color: #16a34a; margin-bottom: 0.5rem;">🟢 CHƯA BIẾN CHỨNG (UNCOMPLICATED)</div>
             <div style="font-size: 0.85rem; line-height: 1.6;">
@@ -386,7 +423,7 @@ sections:
             </div>
           </div>
 
-          <!-- ÁP XE TÚI THỪA -->
+          {/* ÁP XE TÚI THỪA */}
           <div style="border: 2px solid #f59e0b; border-radius: 10px; padding: 1rem; background: rgba(245, 158, 11, 0.03);">
             <div style="font-weight: 700; color: #d97706; margin-bottom: 0.5rem;">🟡 CÓ BIẾN CHỨNG: Ổ ÁP XE (ABSCESS)</div>
             <div style="font-size: 0.85rem; line-height: 1.6;">
@@ -395,7 +432,7 @@ sections:
             </div>
           </div>
 
-          <!-- VIÊM PHÚC MẠN LAN TỎA -->
+          {/* VIÊM PHÚC MẠN LAN TỎA */}
           <div style="border: 2px solid #dc2626; border-radius: 10px; padding: 1rem; background: rgba(220, 38, 38, 0.03);">
             <div style="font-weight: 700; color: #dc2626; margin-bottom: 0.5rem;">🔴 CÓ BIẾN CHỨNG: VIÊM PHÚC MẠC LAN TỎA</div>
             <div style="font-size: 0.85rem; line-height: 1.6;">
@@ -415,7 +452,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 5 ==================== -->
+  {/* ==================== SECTION 5 ==================== */}
   <div class="sec-card" id="sec-benh-ly-chuyen-biet-o-bung">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">🦠</span>
@@ -492,7 +529,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 6 ==================== -->
+  {/* ==================== SECTION 6 ==================== */}
   <div class="sec-card" id="sec-mo-lai-bung-mo">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">✂️</span>
@@ -534,7 +571,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 7 ==================== -->
+  {/* ==================== SECTION 7 ==================== */}
   <div class="sec-card" id="sec-duoc-dong-hoc-thoi-gian-tri">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">💊</span>
@@ -659,7 +696,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 8 ==================== -->
+  {/* ==================== SECTION 8 ==================== */}
   <div class="sec-card" id="sec-phu-luc-phac-do-mcq">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">📋</span>
@@ -679,7 +716,7 @@ sections:
           </thead>
           <tbody>
             <tr>
-              <td class="source-cell"><strong>Phụ lục 1: CA-IAI<br>KHÔNG NGUY KỊCH</strong></td>
+              <td class="source-cell"><strong>Phụ lục 1: CA-IAI<br />KHÔNG NGUY KỊCH</strong></td>
               <td>
                 • <strong>Amoxicillin/clavulanate</strong> 1.2 - 2.2g IV q6h<br />
                 • HOẶC <strong>Ceftriaxone</strong> 2g IV q24h + <strong>Metronidazole</strong> 500mg IV q6h<br />
@@ -691,7 +728,7 @@ sections:
               </td>
             </tr>
             <tr>
-              <td class="source-cell"><strong>Phụ lục 2: CA-IAI<br>NGUY KỊCH (Sốc / ICU)</strong></td>
+              <td class="source-cell"><strong>Phụ lục 2: CA-IAI<br />NGUY KỊCH (Sốc / ICU)</strong></td>
               <td>
                 • <strong>Piperacillin/tazobactam</strong> 4.5g IV q6h<br />
                 • HOẶC <strong>Cefepime</strong> 2g IV q8h + Metronidazole 500mg IV q6h
@@ -702,7 +739,7 @@ sections:
               </td>
             </tr>
             <tr>
-              <td class="source-cell"><strong>Phụ lục 3: HA-IAI<br>KHÔNG NGUY KỊCH</strong></td>
+              <td class="source-cell"><strong>Phụ lục 3: HA-IAI<br />KHÔNG NGUY KỊCH</strong></td>
               <td>• <strong>Piperacillin/tazobactam</strong> 4.5g IV q6h</td>
               <td>
                 • <em>Nguy cơ đa kháng:</em> Meropenem / Doripenem + Ampicillin.<br />
@@ -711,7 +748,7 @@ sections:
               </td>
             </tr>
             <tr>
-              <td class="source-cell"><strong>Phụ lục 4: HA-IAI<br>NGUY KỊCH (Sốc / ICU)</strong></td>
+              <td class="source-cell"><strong>Phụ lục 4: HA-IAI<br />NGUY KỊCH (Sốc / ICU)</strong></td>
               <td>
                 • <strong>Carbapenem làm nền:</strong> Meropenem 1g q8h hoặc Doripenem / Imipenem<br />
                 • <em>Bảo tồn Carbapenem:</em> <strong>Ceftolozane/tazobactam</strong> + Metro hoặc <strong>Ceftazidime/avibactam</strong> + Metro
@@ -826,7 +863,7 @@ sections:
 
 </div>
 
-<!-- BOTTOM NAV -->
+{/* BOTTOM NAV */}
 <div style="margin-top: 1.5rem;">
   <div class="btn-row">
     <a href="#/ebm/kho-guidelines" class="btn btn-primary">

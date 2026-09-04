@@ -23,7 +23,7 @@ tags:
 keyRecommendations:
   - "Kháng sinh: WHO khuyến cáo MẠNH MẼ sử dụng Macrolide (Azithromycin, Erythromycin) ưu tiên hơn Penicillin do tỷ lệ đề kháng thấp và gánh nặng điều trị nhẹ hơn."
   - "Thử mẫn cảm DAT: WHO khuyến cáo MẠNH MẼ CHỐNG LẠI việc test da thường quy trước khi tiêm DAT vì làm chậm thời gian cứu mạng; giảm 12 ca tử vong/1000 bệnh nhân khi tiêm trực tiếp kèm chuẩn bị cấp cứu."
-  - "Liều DAT leo thang: Áp dụng phác đồ 20.000 IU (nhẹ <48h), 40.000 IU (mũi họng <48h) và 80.000 IU (cổ bạnh, ≥48h hoặc bệnh cảnh nặng) thay vì dùng liều cố định."
+  - "Liều DAT leo thang: Áp dụng phác đồ 20.000 IU (nhẹ < 48h), 40.000 IU (mũi họng < 48h) và 80.000 IU (cổ bạnh, ≥48h hoặc bệnh cảnh nặng) thay vì dùng liều cố định."
   - "Quản lý cấp cứu: Chuẩn bị sẵn sàng Adrenaline 1:1000, trang thiết bị đường thở tại giường truyền DAT; theo dõi sát biến chứng viêm cơ tim, liệt thần kinh sọ và suy thận cấp."
 sections:
   - id: "sec-tongquan"
@@ -122,7 +122,7 @@ sections:
 
 <div class="page-content">
 
-  <!-- ==================== SECTION 1 ==================== -->
+  {/* ==================== SECTION 1 ==================== */}
   <div class="sec-card" id="sec-tongquan">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">🔬</span>
@@ -183,7 +183,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 2 ==================== -->
+  {/* ==================== SECTION 2 ==================== */}
   <div class="sec-card" id="sec-khangsinh">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">💊</span>
@@ -317,7 +317,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 3 ==================== -->
+  {/* ==================== SECTION 3 ==================== */}
   <div class="sec-card" id="sec-test-dat">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">⚡</span>
@@ -365,14 +365,14 @@ sections:
         </div>
       </div>
 
-      <!-- VISUAL DECISION TREE COMPARISON -->
+      {/* VISUAL DECISION TREE COMPARISON */}
       <h3 style="margin-top: 1.5rem; font-size: 1.1rem; color: var(--color-primary); display: flex; align-items: center; gap: 0.5rem;">
         <i class="fa-solid fa-code-fork"></i> Sơ đồ Cây Quyết Định & Xác Suất Tử Vong Mô Phỏng (Figure 25)
       </h3>
 
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem; margin-top: 1rem;">
         
-        <!-- Nhánh Đỏ: Có Test Da -->
+        {/* Nhánh Đỏ: Có Test Da */}
         <div style="background: var(--color-surface); border: 2px solid #ef4444; border-radius: 12px; padding: 1.25rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);">
           <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
             <span style="background: #fee2e2; color: #dc2626; padding: 0.25rem 0.5rem; border-radius: 6px; font-weight: 700; font-size: 0.85rem;">NHÁNH CÓ TEST DA</span>
@@ -380,12 +380,7 @@ sections:
           </div>
           <ul style="line-height: 1.7; font-size: 0.92rem; margin-left: 1rem; color: var(--color-text);">
             <li>Tỷ lệ dị ứng trên test: <strong>26%</strong> | Không dị ứng: <strong>74%</strong>.</li>
-            <li>Nhóm có dị ứng &rarr; Phải giải mẫn cảm (Desensitization):
-              <ul style="margin-left: 1rem;">
-                <li>89% hoàn tất &rarr; Nhận đủ DAT (Tử vong 3%).</li>
-                <li><strong>11% xảy ra phản ứng nghiêm trọng</strong> &rarr; Ngừng DAT &rarr; <strong>Tử vong vọt lên 12%</strong>.</li>
-              </ul>
-            </li>
+            <li>Nhóm có dị ứng &rarr; Phải giải mẫn cảm (Desensitization): 89% hoàn tất nhận đủ DAT (Tử vong 3%); <strong>11% xảy ra phản ứng nghiêm trọng</strong> buộc ngừng DAT &rarr; <strong>Tử vong vọt lên 12%</strong>.</li>
             <li>Nhóm test âm tính (74%): 5% phản ứng muộn &rarr; Ngừng DAT (Tử vong 12%).</li>
           </ul>
           <div style="margin-top: 1rem; padding: 0.75rem; background: #fee2e2; border-radius: 8px; text-align: center;">
@@ -395,7 +390,7 @@ sections:
           </div>
         </div>
 
-        <!-- Nhánh Xanh: Không Test Da (Khuyến Cáo Mới) -->
+        {/* Nhánh Xanh: Không Test Da (Khuyến Cáo Mới) */}
         <div style="background: var(--color-surface); border: 2px solid #16a34a; border-radius: 12px; padding: 1.25rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);">
           <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
             <span style="background: #dcfce7; color: #16a34a; padding: 0.25rem 0.5rem; border-radius: 6px; font-weight: 700; font-size: 0.85rem;">NHÁNH KHÔNG TEST DA</span>
@@ -416,7 +411,7 @@ sections:
 
       </div>
 
-      <!-- HƯỚNG DẪN DỰ PHÒNG & THIẾT BỊ GIÁM SÁT AN TOÀN -->
+      {/* HƯỚNG DẪN DỰ PHÒNG & THIẾT BỊ GIÁM SÁT AN TOÀN */}
       <div class="infobox info" style="margin-top: 1.5rem;">
         <span class="infobox-icon">📋</span>
         <div>
@@ -469,7 +464,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 4 ==================== -->
+  {/* ==================== SECTION 4 ==================== */}
   <div class="sec-card" id="sec-lieu-dat">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">📊</span>
@@ -497,7 +492,7 @@ sections:
         </div>
       </div>
 
-      <!-- BẢNG PHÂN LIỀU DAT THEO LÂM SÀNG -->
+      {/* BẢNG PHÂN LIỀU DAT THEO LÂM SÀNG */}
       <div class="table-wrapper" style="margin-top: 1.25rem;">
         <table class="regimen-table">
           <thead>
@@ -546,10 +541,34 @@ sections:
         </table>
       </div>
 
+      <div style="margin-top: 1.5rem;">
+        <FlowchartViewer
+          title="Lưu Đồ Xử Trí Lâm Sàng Bạch Hầu & Phân Liều Huyết Thanh Kháng Độc Tố DAT Leo Thang (WHO 2024)"
+          code={`graph TD
+  START["BỆNH NHÂN NGHI NGỜ HOẶC XÁC ĐỊNH BẠCH HẦU HÔ HẤP<br/><small>Màng giả dai dính vùng hầu họng, thanh quản, mũi họng • Sốt, nuốt đau</small>"]:::start --> TRIAGE["KHỞI ĐỘNG XỬ TRÍ CẤP CỨU & CÁCH LY<br/><small>• Cách ly giọt bắn • Đảm bảo đường thở thông thoáng • Lấy que phết màng giả làm vi sinh</small>"]:::action
+
+  TRIAGE --> ABX["DÙNG NGAY KHÁNG SINH DIỆT KHUẨN TIỆT CĂN (WHO 2024)<br/><small>• Ưu tiên Macrolide: Azithromycin (10 mg/kg/ngày x 14 ngày) hoặc Erythromycin<br/>• Thay thế: Benzylpenicillin / Penicillin V (nếu không dung nạp Macrolide)</small>"]:::success
+
+  TRIAGE --> DAT_EVAL["ĐÁNH GIÁ CHỈ ĐỊNH HUYẾT THANH KHÁNG ĐỘC TỐ (DAT)<br/><small>⚠️ KHÔNG LÀM TEST DA THƯỜNG QUY (tránh trì hoãn tử vong)<br/>• Tiền dược: Kháng Histamin + Hydrocortisone IV trước 30 phút<br/>• Chuẩn bị sẵn Adrenaline 1:1000 và hộp cấp cứu tại giường</small>"]:::warning
+
+  DAT_EVAL --> DOSE_STRAT{"Phân Tầng Mức Độ Nặng & Thời Gian Khởi Phát Bệnh?"}:::question
+
+  DOSE_STRAT -- "Viêm thanh quản / hầu họng nhẹ VÀ Khởi phát < 48 giờ" --> DOSE_20K["TIÊM TRUYỀN DAT 20.000 IU<br/><small>Tổn thương màng giả khu trú sớm</small>"]:::action
+
+  DOSE_STRAT -- "Bạch hầu mũi họng lan rộng VÀ Khởi phát < 48 giờ" --> DOSE_40K["TIÊM TRUYỀN DAT 40.000 IU<br/><small>Màng giả diện rộng vùng vòm họng</small>"]:::warning
+
+  DOSE_STRAT -- "Có Cổ bạnh (Bull-neck) HOẶC Khởi phát ≥ 48 giờ HOẶC Bệnh nặng/Sốc" --> DOSE_80K["TIÊM TRUYỀN DAT 80.000 IU<br/><small>Tối đa liều giải cứu ngoại độc tố lan tỏa toàn thân</small>"]:::danger
+
+  DOSE_20K --> MONITOR["THEO DÕI BIẾN CHỨNG MUỘN SAU TRUYỀN<br/><small>• Giám sát ECG liên tục (Viêm cơ tim, block nhĩ thất ở tuần 1 - 2)<br/>• Khám thần kinh sọ (Liệt màn hầu, cơ vận nhãn ở tuần 3 - 6)</small>"]:::start
+  DOSE_40K --> MONITOR
+  DOSE_80K --> MONITOR`}
+        />
+      </div>
+
     </div>
   </div>
 
-  <!-- ==================== SECTION 5 ==================== -->
+  {/* ==================== SECTION 5 ==================== */}
   <div class="sec-card" id="sec-duongtho-bienchung">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">🫁</span>
@@ -615,7 +634,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 6 ==================== -->
+  {/* ==================== SECTION 6 ==================== */}
   <div class="sec-card" id="sec-bangchung-pico">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">⚖️</span>
@@ -731,7 +750,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 7 ==================== -->
+  {/* ==================== SECTION 7 ==================== */}
   <div class="sec-card" id="sec-duphong-tiepxuc">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">🛡️</span>
@@ -813,7 +832,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 8 ==================== -->
+  {/* ==================== SECTION 8 ==================== */}
   <div class="sec-card" id="sec-trichdan">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">📚</span>
@@ -836,7 +855,7 @@ sections:
 
 </div>
 
-<!-- BOTTOM NAVIGATION -->
+{/* BOTTOM NAVIGATION */}
 <div style="margin-top: 2rem; margin-bottom: 2rem;">
   <div class="btn-row" style="display: flex; gap: 1rem; flex-wrap: wrap;">
     <a href="#/ebm/kho-guidelines" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.2rem; background: var(--color-primary); color: #fff; border-radius: 8px; text-decoration: none; font-weight: 600;">

@@ -507,6 +507,29 @@ sections:
         </div>
       </div>
 
+      <FlowchartViewer
+        title="Lưu Đồ Theo Dõi eGFR & Nồng Độ Kali Sau Khởi Trị Thuốc Ức Chế RAS (KDIGO 2024)"
+        code={`graph TD
+  START["KHỞI TRỊ HOẶC TĂNG LIỀU RASi / SGLT2i<br/><small>ACEi/ARB liều khởi đầu hoặc SGLT2i (Dapagliflozin/Empagliflozin 10mg)</small>"]:::start --> TEST["Xét Nghiệm Lại Sau 2 – 4 Tuần Khởi Trị<br/><small>Kiểm tra eGFR (Creatinine huyết thanh) & Nồng độ Kali máu (K⁺)</small>"]:::action
+  
+  TEST --> CHECK_GFR{"Độ Sụt Giảm eGFR So Với Ban Đầu?"}:::question
+  
+  CHECK_GFR -- "eGFR giảm < 30%" --> GFR_OK["Đáp ứng huyết động bình thường<br/><small>Hiện tượng sụt eGFR cấp tính do co tiểu ĐM vào là dự kiến trước</small>"]:::success
+  CHECK_GFR -- "eGFR giảm ≥ 30% trong 4 tuần" --> GFR_BAD["CẢNH BÁO TỔN THƯƠNG THẬN CẤP (AKI)<br/><small>• Tìm nguyên nhân mất nước / giảm thể tích tuần hoàn<br/>• Ngưng ngay thuốc độc thận (NSAIDs)<br/>• Loại trừ hẹp động mạch thận hai bên<br/>• Giảm liều hoặc tạm ngưng nếu không hồi phục</small>"]:::danger
+  
+  GFR_OK --> CHECK_K{"Nồng Độ Kali Máu (K⁺)?"}:::question
+  
+  CHECK_K -- "K⁺ ≤ 5.5 mmol/L" --> K_OK["KALI AN TOÀN: Tiếp tục duy trì & tăng liều RASi dần đến liều tối đa được phê duyệt"]:::success
+  CHECK_K -- "K⁺ > 5.5 mmol/L (Tăng Kali)" --> K_BAD["XỬ TRÍ TĂNG KALI MÁU<br/><small>• Giảm lượng Kali trong chế độ ăn • Ngừng thuốc giữ Kali<br/>• Phối hợp thuốc lợi tiểu thiazide/quai, Natri Bicarbonat<br/>• Chỉ định chất gắn Kali trao đổi ion thế hệ mới: Patiromer / SZC<br/>• <i>Chỉ giảm/ngừng RASi khi các biện pháp trên thất bại</i></small>"]:::warning
+
+  classDef start fill:#e0f2fe,stroke:#0284c7,stroke-width:2px,color:#0369a1
+  classDef question fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#854d0e
+  classDef action fill:#eff6ff,stroke:#3b82f6,stroke-width:1.5px,color:#1e40af
+  classDef danger fill:#fee2e2,stroke:#ef4444,stroke-width:2px,color:#991b1b
+  classDef warning fill:#fef3c7,stroke:#f59e0b,stroke-width:2px,color:#92400e
+  classDef success fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#15803d`}
+      />
+
       <div class="table-wrapper">
         <table class="med-table">
           <thead>
@@ -913,99 +936,4 @@ sections:
 
 </div>
 
-<script>
-  function calculateKDIGO() {
-    const egfrInput = document.getElementById('w-egfr');
-    const acrInput = document.getElementById('w-acr');
-    const kfreInput = document.getElementById('w-kfre2');
-    const resultDiv = document.getElementById('w-result');
-
-    if (!egfrInput || !acrInput || !resultDiv) return;
-
-    const egfr = parseFloat(egfrInput.value) || 0;
-    const acr = parseFloat(acrInput.value) || 0;
-    const kfre2 = parseFloat(kfreInput ? kfreInput.value : '0') || 0;
-
-    let gCategory = '';
-    let gDesc = '';
-    if (egfr >= 90) { gCategory = 'G1'; gDesc = 'Bình thường hoặc cao (≥ 90)'; }
-    else if (egfr >= 60) { gCategory = 'G2'; gDesc = 'Giảm nhẹ (60–89)'; }
-    else if (egfr >= 45) { gCategory = 'G3a'; gDesc = 'Giảm nhẹ đến vừa (45–59)'; }
-    else if (egfr >= 30) { gCategory = 'G3b'; gDesc = 'Giảm vừa đến nặng (30–44)'; }
-    else if (egfr >= 15) { gCategory = 'G4'; gDesc = 'Giảm nặng (15–29)'; }
-    else { gCategory = 'G5'; gDesc = 'Suy thận (< 15)'; }
-
-    let aCategory = '';
-    let aDesc = '';
-    if (acr < 30) { aCategory = 'A1'; aDesc = 'Bình thường / Tăng nhẹ (< 30 mg/g)'; }
-    else if (acr <= 300) { aCategory = 'A2'; aDesc = 'Tăng trung bình (30–300 mg/g)'; }
-    else { aCategory = 'A3'; aDesc = 'Tăng nghiêm trọng (> 300 mg/g)'; }
-
-    // Risk Color Matrix
-    let riskColor = '';
-    let riskLevel = '';
-    let frequency = '';
-
-    if (gCategory === 'G1' || gCategory === 'G2') {
-      if (aCategory === 'A1') { riskColor = '#10b981'; riskLevel = 'Nguy cơ thấp (Xanh lá)'; frequency = '1 lần/năm (nếu có yếu tố nguy cơ)'; }
-      else if (aCategory === 'A2') { riskColor = '#f59e0b'; riskLevel = 'Nguy cơ trung bình (Vàng)'; frequency = '1 lần/năm'; }
-      else { riskColor = '#ea580c'; riskLevel = 'Nguy cơ cao (Cam)'; frequency = '2 lần/năm'; }
-    } else if (gCategory === 'G3a') {
-      if (aCategory === 'A1') { riskColor = '#f59e0b'; riskLevel = 'Nguy cơ trung bình (Vàng)'; frequency = '1 lần/năm'; }
-      else if (aCategory === 'A2') { riskColor = '#ea580c'; riskLevel = 'Nguy cơ cao (Cam)'; frequency = '2 lần/năm'; }
-      else { riskColor = '#dc2626'; riskLevel = 'Nguy cơ rất cao (Đỏ)'; frequency = '3 lần/năm'; }
-    } else if (gCategory === 'G3b') {
-      if (aCategory === 'A1') { riskColor = '#ea580c'; riskLevel = 'Nguy cơ cao (Cam)'; frequency = '2 lần/năm'; }
-      else { riskColor = '#dc2626'; riskLevel = 'Nguy cơ rất cao (Đỏ)'; frequency = '3 lần/năm'; }
-    } else if (gCategory === 'G4') {
-      if (aCategory === 'A1' || aCategory === 'A2') { riskColor = '#dc2626'; riskLevel = 'Nguy cơ rất cao (Đỏ)'; frequency = '3 lần/năm'; }
-      else { riskColor = '#991b1b'; riskLevel = 'Nguy cơ cực cao (Đỏ sẫm)'; frequency = '≥ 4 lần/năm (Thường quy mỗi 1-3 tháng)'; }
-    } else {
-      riskColor = '#991b1b'; riskLevel = 'Nguy cơ cực cao (Đỏ sẫm)'; frequency = '≥ 4 lần/năm (Chuẩn bị KRT)';
-    }
-
-    let recommendations = [];
-    if (egfr >= 20) {
-      recommendations.push('<strong>SGLT2i (Dapagliflozin/Empagliflozin):</strong> Khởi trị bảo vệ tim-thận (Class 1A). Duy trì đến khi lọc máu.');
-    }
-    if (aCategory === 'A2' || aCategory === 'A3') {
-      recommendations.push('<strong>RASi (ACEi hoặc ARB):</strong> Tối ưu liều tối đa dung nạp được (Class 1B). Kiểm tra lại K+ & eGFR sau 2–4 tuần.');
-    }
-    recommendations.push('<strong>Huyết áp Mục tiêu:</strong> Kiểm soát SBP < 120 mmHg chuẩn hóa (Class 2B).');
-    recommendations.push('<strong>Dinh dưỡng:</strong> Protein 0.8 g/kg/ngày (nếu G3-G5 chưa lọc máu), Muối Natri < 2 g/ngày (< 5 g muối ăn).');
-
-    if (kfre2 > 40 || egfr < 20) {
-      recommendations.push('<strong style="color: #dc2626;">KFRE 2 năm > 40%:</strong> Chuẩn bị thay thế thận (KRT), phẫu thuật tạo AVF, đăng ký ghép thận chủ động (Practice Point 2.2.3).');
-    } else if (kfre2 > 10) {
-      recommendations.push('<strong style="color: #ea580c;">KFRE 2 năm > 10%:</strong> Đưa vào Mô hình Chăm sóc Đa chuyên khoa tích hợp (Practice Point 2.2.2).');
-    }
-
-    resultDiv.innerHTML = `
-      <div style="background: var(--color-surface-2, #f8fafc); padding: 1.25rem; border-radius: 10px; border: 1px solid var(--color-border, #cbd5e1);">
-        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem;">
-          <h4 style="margin: 0; font-size: 1.1rem; color: var(--color-text);">Kết Quả Phân Tầng CGA: <span style="color: var(--color-primary);">${gCategory}${aCategory}</span></h4>
-          <span style="background: ${riskColor}; color: #fff; padding: 0.3rem 0.75rem; border-radius: 20px; font-weight: 700; font-size: 0.85rem;">${riskLevel}</span>
-        </div>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem; margin-bottom: 1rem; font-size: 0.85rem;">
-          <div><strong>Mức lọc GFR:</strong> ${gDesc}</div>
-          <div><strong>Albumin niệu:</strong> ${aDesc}</div>
-          <div><strong>Tần suất theo dõi:</strong> ${frequency}</div>
-        </div>
-        <div style="border-top: 1px solid var(--color-border, #cbd5e1); padding-top: 0.75rem;">
-          <strong style="color: var(--color-primary); font-size: 0.9rem;">Khuyến Cáo Lâm Sàng Cá Thể Hóa KDIGO 2024:</strong>
-          <ul style="margin: 0.5rem 0 0 1.25rem; padding: 0; font-size: 0.85rem; line-height: 1.6;">
-            ${recommendations.map(r => `<li>${r}</li>`).join('')}
-          </ul>
-        </div>
-      </div>
-    `;
-  }
-
-  document.addEventListener('DOMContentLoaded', () => {
-    const btn = document.getElementById('btn-calc-kdigo');
-    if (btn) {
-      btn.addEventListener('click', calculateKDIGO);
-    }
-    calculateKDIGO();
-  });
-</script>
+<script is:inline dangerouslySetInnerHTML={{ __html: "\n  function calculateKDIGO() {\n    const egfrInput = document.getElementById('w-egfr');\n    const acrInput = document.getElementById('w-acr');\n    const kfreInput = document.getElementById('w-kfre2');\n    const resultDiv = document.getElementById('w-result');\n\n    if (!egfrInput || !acrInput || !resultDiv) return;\n\n    const egfr = parseFloat(egfrInput.value) || 0;\n    const acr = parseFloat(acrInput.value) || 0;\n    const kfre2 = parseFloat(kfreInput ? kfreInput.value : '0') || 0;\n\n    let gCategory = '';\n    let gDesc = '';\n    if (egfr >= 90) { gCategory = 'G1'; gDesc = 'Bình thường hoặc cao (≥ 90)'; }\n    else if (egfr >= 60) { gCategory = 'G2'; gDesc = 'Giảm nhẹ (60–89)'; }\n    else if (egfr >= 45) { gCategory = 'G3a'; gDesc = 'Giảm nhẹ đến vừa (45–59)'; }\n    else if (egfr >= 30) { gCategory = 'G3b'; gDesc = 'Giảm vừa đến nặng (30–44)'; }\n    else if (egfr >= 15) { gCategory = 'G4'; gDesc = 'Giảm nặng (15–29)'; }\n    else { gCategory = 'G5'; gDesc = 'Suy thận (< 15)'; }\n\n    let aCategory = '';\n    let aDesc = '';\n    if (acr < 30) { aCategory = 'A1'; aDesc = 'Bình thường / Tăng nhẹ (< 30 mg/g)'; }\n    else if (acr <= 300) { aCategory = 'A2'; aDesc = 'Tăng trung bình (30–300 mg/g)'; }\n    else { aCategory = 'A3'; aDesc = 'Tăng nghiêm trọng (> 300 mg/g)'; }\n\n    // Risk Color Matrix\n    let riskColor = '';\n    let riskLevel = '';\n    let frequency = '';\n\n    if (gCategory === 'G1' || gCategory === 'G2') {\n      if (aCategory === 'A1') { riskColor = '#10b981'; riskLevel = 'Nguy cơ thấp (Xanh lá)'; frequency = '1 lần/năm (nếu có yếu tố nguy cơ)'; }\n      else if (aCategory === 'A2') { riskColor = '#f59e0b'; riskLevel = 'Nguy cơ trung bình (Vàng)'; frequency = '1 lần/năm'; }\n      else { riskColor = '#ea580c'; riskLevel = 'Nguy cơ cao (Cam)'; frequency = '2 lần/năm'; }\n    } else if (gCategory === 'G3a') {\n      if (aCategory === 'A1') { riskColor = '#f59e0b'; riskLevel = 'Nguy cơ trung bình (Vàng)'; frequency = '1 lần/năm'; }\n      else if (aCategory === 'A2') { riskColor = '#ea580c'; riskLevel = 'Nguy cơ cao (Cam)'; frequency = '2 lần/năm'; }\n      else { riskColor = '#dc2626'; riskLevel = 'Nguy cơ rất cao (Đỏ)'; frequency = '3 lần/năm'; }\n    } else if (gCategory === 'G3b') {\n      if (aCategory === 'A1') { riskColor = '#ea580c'; riskLevel = 'Nguy cơ cao (Cam)'; frequency = '2 lần/năm'; }\n      else { riskColor = '#dc2626'; riskLevel = 'Nguy cơ rất cao (Đỏ)'; frequency = '3 lần/năm'; }\n    } else if (gCategory === 'G4') {\n      if (aCategory === 'A1' || aCategory === 'A2') { riskColor = '#dc2626'; riskLevel = 'Nguy cơ rất cao (Đỏ)'; frequency = '3 lần/năm'; }\n      else { riskColor = '#991b1b'; riskLevel = 'Nguy cơ cực cao (Đỏ sẫm)'; frequency = '≥ 4 lần/năm (Thường quy mỗi 1-3 tháng)'; }\n    } else {\n      riskColor = '#991b1b'; riskLevel = 'Nguy cơ cực cao (Đỏ sẫm)'; frequency = '≥ 4 lần/năm (Chuẩn bị KRT)';\n    }\n\n    let recommendations = [];\n    if (egfr >= 20) {\n      recommendations.push('<strong>SGLT2i (Dapagliflozin/Empagliflozin):</strong> Khởi trị bảo vệ tim-thận (Class 1A). Duy trì đến khi lọc máu.');\n    }\n    if (aCategory === 'A2' || aCategory === 'A3') {\n      recommendations.push('<strong>RASi (ACEi hoặc ARB):</strong> Tối ưu liều tối đa dung nạp được (Class 1B). Kiểm tra lại K+ & eGFR sau 2–4 tuần.');\n    }\n    recommendations.push('<strong>Huyết áp Mục tiêu:</strong> Kiểm soát SBP < 120 mmHg chuẩn hóa (Class 2B).');\n    recommendations.push('<strong>Dinh dưỡng:</strong> Protein 0.8 g/kg/ngày (nếu G3-G5 chưa lọc máu), Muối Natri < 2 g/ngày (< 5 g muối ăn).');\n\n    if (kfre2 > 40 || egfr < 20) {\n      recommendations.push('<strong style=\"color: #dc2626;\">KFRE 2 năm > 40%:</strong> Chuẩn bị thay thế thận (KRT), phẫu thuật tạo AVF, đăng ký ghép thận chủ động (Practice Point 2.2.3).');\n    } else if (kfre2 > 10) {\n      recommendations.push('<strong style=\"color: #ea580c;\">KFRE 2 năm > 10%:</strong> Đưa vào Mô hình Chăm sóc Đa chuyên khoa tích hợp (Practice Point 2.2.2).');\n    }\n\n    resultDiv.innerHTML = `\n      <div style=\"background: var(--color-surface-2, #f8fafc); padding: 1.25rem; border-radius: 10px; border: 1px solid var(--color-border, #cbd5e1);\">\n        <div style=\"display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem;\">\n          <h4 style=\"margin: 0; font-size: 1.1rem; color: var(--color-text);\">Kết Quả Phân Tầng CGA: <span style=\"color: var(--color-primary);\">${gCategory}${aCategory}</span></h4>\n          <span style=\"background: ${riskColor}; color: #fff; padding: 0.3rem 0.75rem; border-radius: 20px; font-weight: 700; font-size: 0.85rem;\">${riskLevel}</span>\n        </div>\n        <div style=\"display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem; margin-bottom: 1rem; font-size: 0.85rem;\">\n          <div><strong>Mức lọc GFR:</strong> ${gDesc}</div>\n          <div><strong>Albumin niệu:</strong> ${aDesc}</div>\n          <div><strong>Tần suất theo dõi:</strong> ${frequency}</div>\n        </div>\n        <div style=\"border-top: 1px solid var(--color-border, #cbd5e1); padding-top: 0.75rem;\">\n          <strong style=\"color: var(--color-primary); font-size: 0.9rem;\">Khuyến Cáo Lâm Sàng Cá Thể Hóa KDIGO 2024:</strong>\n          <ul style=\"margin: 0.5rem 0 0 1.25rem; padding: 0; font-size: 0.85rem; line-height: 1.6;\">\n            ${recommendations.map(r => `<li>${r}</li>`).join('')}\n          </ul>\n        </div>\n      </div>\n    `;\n  }\n\n  document.addEventListener('DOMContentLoaded', () => {\n    const btn = document.getElementById('btn-calc-kdigo');\n    if (btn) {\n      btn.addEventListener('click', calculateKDIGO);\n    }\n    calculateKDIGO();\n  });\n" }} />

@@ -127,7 +127,7 @@ sections:
 
 <div class="page-content">
 
-  <!-- ==================== SECTION 1 ==================== -->
+  {/* ==================== SECTION 1 ==================== */}
   <div class="sec-card" id="sec-pham-vi-dinh-nghia-sinh-ly">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">📋</span>
@@ -213,7 +213,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 2 ==================== -->
+  {/* ==================== SECTION 2 ==================== */}
   <div class="sec-card" id="sec-thoi-diem-hinh-thanh-sau-mo">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">⏳</span>
@@ -259,7 +259,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 3 ==================== -->
+  {/* ==================== SECTION 3 ==================== */}
   <div class="sec-card" id="sec-khuyen-cao-nguoi-lon-ct">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">🩻</span>
@@ -305,7 +305,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 4 ==================== -->
+  {/* ==================== SECTION 4 ==================== */}
   <div class="sec-card" id="sec-khuyen-cao-tre-em-us-mri">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">🧒</span>
@@ -348,7 +348,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 5 ==================== -->
+  {/* ==================== SECTION 5 ==================== */}
   <div class="sec-card" id="sec-khuyen-cao-phu-nu-mang-thai">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">🤰</span>
@@ -392,7 +392,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 6 ==================== -->
+  {/* ==================== SECTION 6 ==================== */}
   <div class="sec-card" id="sec-luu-do-thuat-toan-idsa">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">🌿</span>
@@ -400,14 +400,14 @@ sections:
     </div>
     <div class="sec-body">
 
-      <!-- VISUAL CODE DIAGRAM TÁI HIỆN THUẬT TOÁN IDSA 2024 -->
+      {/* VISUAL CODE DIAGRAM TÁI HIỆN THUẬT TOÁN IDSA 2024 */}
       <div style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; padding: 1.25rem;">
         <div style="text-align: center; font-weight: 700; font-size: 1.05rem; color: var(--color-primary); margin-bottom: 1.25rem;">
           <i class="fa-solid fa-diagram-project"></i> Thuật Toán Lựa Chọn Chẩn Đoán Hình Ảnh Khi Nghi Ngờ Áp Xe Ổ Bụng Cấp Tính (IDSA 2024)
         </div>
 
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
-          <!-- NHÓM 1: NGƯỜI LỚN -->
+          {/* NHÓM 1: NGƯỜI LỚN */}
           <div style="border: 2px solid #0284c7; border-radius: 10px; padding: 1rem; background: rgba(2, 132, 199, 0.03);">
             <div style="font-weight: 700; color: #0284c7; margin-bottom: 0.5rem;">👨 NGƯỜI LỚN &amp; VỊ THÀNH NIÊN</div>
             <div style="font-size: 0.85rem; line-height: 1.6;">
@@ -418,7 +418,7 @@ sections:
             </div>
           </div>
 
-          <!-- NHÓM 2: TRẺ EM -->
+          {/* NHÓM 2: TRẺ EM */}
           <div style="border: 2px solid #16a34a; border-radius: 10px; padding: 1rem; background: rgba(22, 163, 74, 0.03);">
             <div style="font-weight: 700; color: #16a34a; margin-bottom: 0.5rem;">🧒 ĐỐI TƯỢNG NHI KHOA (TRẺ EM)</div>
             <div style="font-size: 0.85rem; line-height: 1.6;">
@@ -429,7 +429,7 @@ sections:
             </div>
           </div>
 
-          <!-- NHÓM 3: PHỤ NỮ MANG THAI -->
+          {/* NHÓM 3: PHỤ NỮ MANG THAI */}
           <div style="border: 2px solid #7c3aed; border-radius: 10px; padding: 1rem; background: rgba(124, 58, 237, 0.03);">
             <div style="font-weight: 700; color: #7c3aed; margin-bottom: 0.5rem;">🤰 PHỤ NỮ MANG THAI</div>
             <div style="font-size: 0.85rem; line-height: 1.6;">
@@ -440,6 +440,35 @@ sections:
             </div>
           </div>
         </div>
+        <div style="margin-bottom: 1.5rem;">
+          <FlowchartViewer
+            title="Lưu Đồ Thuật Toán Lựa Chọn Chẩn Đoán Hình Ảnh Nghi Ngờ Áp Xe Ổ Bụng (IDSA 2024)"
+            code={`graph TD
+  START["BỆNH NHÂN NGHI NGỜ ÁP XE TRONG Ổ BỤNG CẤP TÍNH<br/><small>Sốt, đau bụng, tăng bạch cầu • Tiền sử sau mổ ổ bụng hoặc bệnh viêm nhiễm nội khoa</small>"]:::start --> POSTOP_CHECK{"Nếu Sau Phẫu Thuật: Đã Đủ Mốc Thời Gian Hình Thành Áp Xe?"}:::question
+
+  POSTOP_CHECK -- "Ngày 1 - 4 Sau Mổ" --> TOO_EARLY["TRÁNH CHỤP CT QUÁ SỚM<br/><small>Áp xe chưa tạo vỏ xơ; dễ dương tính giả do tụ dịch sinh lý (seroma, máu tụ, dịch rửa)<br/>Ưu tiên theo dõi lâm sàng sát, trừ khi có shock hoặc viêm phúc mạc cấp</small>"]:::warning
+
+  POSTOP_CHECK -- "≥ 5 - 7 Ngày Sau Mổ HOẶC Không phẫu thuật" --> POPULATION{"Phân Tầng Theo Nhóm Đối Tượng Bệnh Nhân?"}:::question
+
+  POPULATION -- "Người lớn & Vị thành niên" --> ADULT_CT["CHỤP CT BỤNG CÓ CẢN QUANG ĐƯỜNG TĨNH MẠCH (IV)<br/><small>Lựa chọn ban đầu ưu tiên (IDSA 2024) • Độ chính xác cao xuyên qua băng gạc & hơi ruột</small>"]:::action
+
+  POPULATION -- "Trẻ em (Nhi khoa)" --> PEDS_US["SIÊU ÂM Ổ BỤNG (US) BAN ĐẦU<br/><small>Ưu tiên hàng đầu tránh bức xạ ion hóa & không cần dùng thuốc an thần</small>"]:::action
+
+  POPULATION -- "Phụ nữ mang thai" --> PREG_CHOICE{"Lựa Chọn Theo Tính Sẵn Có & Thảo Luận Với Thai Phụ"}:::question
+
+  PREG_CHOICE -- "Siêu âm bụng (US)" --> PREG_US["SIÊU ÂM BỤNG AN TOÀN<br/><small>Phù hợp tam cá nguyệt 1, 2</small>"]:::action
+  PREG_CHOICE -- "Chụp MRI bụng" --> PREG_MRI["CHỤP MRI BỤNG (KHÔNG GADOLINIUM)<br/><small>Ưu tiên khi thai lớn hoặc siêu âm bị che khuất</small>"]:::action
+
+  PEDS_US --> PEDS_RESULT{"Kết Quả Siêu Âm Ở Trẻ Em?"}:::question
+  PEDS_RESULT -- "Xác định rõ ổ áp xe" --> DRAINAGE["CAN THIỆP DẪN LƯU QUA DA HOẶC PHẪU THUẬT"]:::success
+  PEDS_RESULT -- "Âm tính hoặc không rõ nhưng lâm sàng nghi ngờ" --> PEDS_CROSS["CHỤP CT HOẶC MRI BỤNG TIẾP NỐI<br/><small>Xác định vị trí và lập kế hoạch can thiệp an toàn</small>"]:::warning
+
+  ADULT_CT --> DRAINAGE
+  PREG_US --> DRAINAGE
+  PREG_MRI --> DRAINAGE
+  PEDS_CROSS --> DRAINAGE`}
+          />
+        </div>
 
         <div style="margin-top: 1rem; padding: 0.75rem; background: #fffbeb; border-radius: 8px; border: 1px solid #fef3c7; font-size: 0.83rem; color: #92400e; line-height: 1.6;">
           ⏱️ <strong>NGUYÊN TẮC THỜI GIAN HÌNH THÀNH:</strong> Sau phẫu thuật, áp xe cần tối thiểu 5 - 7 ngày để hoàn thiện vỏ bao xơ; tránh chụp CT sớm vào ngày 1 - 4 sau mổ để tránh chẩn đoán nhầm dịch tụ sinh lý.
@@ -449,7 +478,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 7 ==================== -->
+  {/* ==================== SECTION 7 ==================== */}
   <div class="sec-card" id="sec-phan-tich-chung-cu-grade-quadas">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">📊</span>
@@ -534,7 +563,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 8 ==================== -->
+  {/* ==================== SECTION 8 ==================== */}
   <div class="sec-card" id="sec-dinh-huong-nghien-cuu-mcq">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">📚</span>
@@ -677,7 +706,7 @@ sections:
 
 </div>
 
-<!-- BOTTOM NAV -->
+{/* BOTTOM NAV */}
 <div style="margin-top: 1.5rem;">
   <div class="btn-row">
     <a href="#/ebm/kho-guidelines" class="btn btn-primary">

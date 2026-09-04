@@ -119,14 +119,7 @@ sections:
   </p>
   <ul>
     <li><strong>Gánh nặng bệnh tật hàng đầu:</strong> Tại Việt Nam, đột quỵ não liên tục là nguyên nhân tử vong hàng đầu trong giai đoạn 2009 – 2019, vượt qua bệnh tim thiếu máu cục bộ. Ước tính mỗi năm có khoảng <strong>200.000 ca mắc mới</strong>, với tỷ lệ tử vong và tàn phế rất cao.</li>
-    <li><strong>Cơ cấu các thể đột quỵ:</strong>
-      <ul>
-        <li><strong>Nhồi máu não cấp (Ischemic Stroke):</strong> Chiếm tỷ lệ cao nhất với <strong>76.2%</strong> tổng số ca đột quỵ.</li>
-        <li><strong>Chảy máu não tự phát (Intracerebral Hemorrhage — ICH):</strong> Chiếm khoảng <strong>15 – 20%</strong> (cao hơn đáng kể so với các nước phương Tây, liên quan mật thiết đến tỷ lệ tăng huyết áp không kiểm soát).</li>
-        <li><strong>Chảy máu dưới nhện (Subarachnoid Hemorrhage — SAH) do vỡ phình mạch:</strong> Chiếm khoảng <strong>3 – 5%</strong>.</li>
-        <li><strong>Huyết khối tĩnh mạch não (Cerebral Venous Sinus Thrombosis — CVST):</strong> Chiếm khoảng <strong>0.5 – 1%</strong>, ưu thế ở phụ nữ trẻ tuổi.</li>
-      </ul>
-    </li>
+    <li><strong>Cơ cấu các thể đột quỵ:</strong> Nhồi máu não cấp (Ischemic Stroke) chiếm <strong>76.2%</strong>; Chảy máu não tự phát (ICH) chiếm <strong>15 – 20%</strong>; Chảy máu dưới nhện (SAH) do vỡ phình mạch chiếm <strong>3 – 5%</strong>; và Huyết khối tĩnh mạch não (CVST) chiếm <strong>0.5 – 1%</strong>.</li>
   </ul>
 
   <div class="callout callout-danger">
@@ -163,15 +156,33 @@ sections:
 
   <div class="fig-card my-4">
     <div class="fig-header">
-      <span class="fig-badge">Hình Ảnh Tài Liệu Gốc</span>
+      <span class="fig-badge fig-badge--svg">Lưu Đồ Tương Tác</span>
       <span class="fig-title">Hình 1. Lưu Đồ Tiếp Cận Phân Loại Nguyên Nhân Theo TOAST (QĐ 3312/QĐ-BYT)</span>
     </div>
-    <div class="fig-body text-center">
-      <img 
-        src="./images/2024-byt-dot-quy-fig1-toast.png" 
-        alt="Lưu đồ tiếp cận chẩn đoán phân loại nguyên nhân đột quỵ theo TOAST"
-        class="img-fluid rounded border shadow-sm"
-        loading="lazy"
+    <div class="fig-body">
+      <FlowchartViewer
+        title="Hình 1. Tiếp Cận Phân Loại Nguyên Nhân Nhồi Máu Não Theo TOAST (QĐ 3312/QĐ-BYT)"
+        code={`graph TD
+  START["Nhồi Máu Não Cấp — Đánh Giá Căn Nguyên<br/><small>CTA/MRA mạch máu • Siêu âm tim Doppler • Holter ECG • Bilan tăng đông</small>"]:::start --> TOAST{"Phân Loại TOAST<br/><small>Dựa trên hình ảnh học + tim mạch + huyết học</small>"}:::question
+  
+  TOAST --> T1["1. Xơ Vữa Động Mạch Lớn<br/><small>Hẹp > 50% ĐM cảnh / ĐM nội sọ</small>"]:::action
+  TOAST --> T2["2. Nhồi Máu Lỗ Khuyết (Lacunar)<br/><small>Tắc nhánh xuyên < 1.5 cm</small>"]:::action
+  TOAST --> T3["3. Căn Nguyên Từ Tim (Cardioembolic)<br/><small>Rung nhĩ, bệnh van tim, huyết khối buồng tim</small>"]:::danger
+  TOAST --> T4["4. Căn Nguyên Khác<br/><small>Bóc tách ĐM, viêm mạch, RCVS</small>"]:::warning
+  TOAST --> T5["5. Căn Nguyên Chưa Rõ (ESUS)<br/><small>Cryptogenic / Không tìm thấy nguồn</small>"]:::action
+  
+  T1 --> TX1["Statin cường độ cao + SAPT/DAPT + Xét phẫu thuật CEA/CAS"]:::success
+  T2 --> TX2["Kháng tiểu cầu đơn (SAPT) + Kiểm soát chặt HA & yếu tố nguy cơ"]:::success
+  T3 --> TX3["Thuốc chống đông đường uống (Ưu tiên DOACs, VKA cho van cơ học)"]:::success
+  T4 --> TX4["Điều trị theo căn nguyên chuyên biệt (Ức chế MD, can thiệp mạch)"]:::success
+  T5 --> TX5["Kháng tiểu cầu đơn + Tiếp tục tầm soát Holter ECG tìm rung nhĩ cơn"]:::action
+
+  classDef start fill:#e0f2fe,stroke:#0284c7,stroke-width:2px,color:#0369a1
+  classDef question fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#854d0e
+  classDef action fill:#eff6ff,stroke:#3b82f6,stroke-width:1.5px,color:#1e40af
+  classDef danger fill:#fdf2f8,stroke:#ec4899,stroke-width:1.5px,color:#be185d
+  classDef warning fill:#fff7ed,stroke:#f97316,stroke-width:1.5px,color:#c2410c
+  classDef success fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#15803d`}
       />
       <p class="fig-caption mt-2 text-muted">
         <em>Hình 1: Quy trình phân loại nguyên nhân nhồi máu não theo TOAST từ đánh giá lâm sàng, chẩn đoán hình ảnh mạch máu (CTA/MRA), siêu âm Doppler tim và Holter điện tâm đồ. (Nguồn: Quyết định 3312/QĐ-BYT).</em>
@@ -181,18 +192,33 @@ sections:
 
   <div class="fig-card my-4">
     <div class="fig-header">
-      <span class="fig-badge">Hình Ảnh Tài Liệu Gốc</span>
+      <span class="fig-badge fig-badge--svg">Lưu Đồ Tương Tác</span>
       <span class="fig-title">Hình 2. Sơ Đồ Chẩn Đoán TIA & Đột Quỵ Nhẹ Dựa Trên Thời Gian & MRI DWI</span>
     </div>
-    <div class="fig-body text-center">
-      <img 
-        src="./images/2024-byt-dot-quy-fig2-tia.png" 
-        alt="Sơ đồ chẩn đoán cơn thiếu máu não thoáng qua và đột quỵ nhẹ"
-        class="img-fluid rounded border shadow-sm"
-        loading="lazy"
+    <div class="fig-body">
+      <FlowchartViewer
+        title="Hình 2. Sơ Đồ Chẩn Đoán TIA & Đột Quỵ Nhẹ Dựa Trên Thời Gian & MRI DWI"
+        code={`graph TD
+  START["Khiếm Khuyết Thần Kinh Khu Trú Cấp Tính<br/><small>Triệu chứng tự hồi phục hoàn toàn</small>"]:::start --> D1{"Thời gian kéo dài triệu chứng lâm sàng?"}:::question
+  
+  D1 -- "≥ 24 giờ" --> STROKE["Nhồi Máu Não Thực Sự<br/><small>Xác nhận đột quỵ theo định nghĩa thời gian cổ điển</small>"]:::danger
+  D1 -- "< 24 giờ" --> SUSP["Nghi Ngờ Cơn Thiếu Máu Não Thoáng Qua (TIA)<br/><small>Chỉ định MRI sọ não chuỗi xung DWI khẩn cấp</small>"]:::warning
+  
+  SUSP --> D2{"MRI DWI có tổn thương ổ nhồi máu mới?"}:::question
+  D2 -- "DWI (+)" --> MINOR["Minor Stroke (Đột Quỵ Nhẹ)<br/><small>Tổn thương hoại tử mô học thực sự dù lâm sàng < 24h</small>"]:::danger
+  D2 -- "DWI (-)" --> TIA["TIA Xác Định Theo Mô Học (Tissue-based)<br/><small>Đánh giá ngay thang điểm ABCD² để phân tầng nguy cơ</small>"]:::success
+  
+  MINOR & TIA --> STRAT["Phân Tầng Nguy Cơ & Khởi Động Liệu Pháp Kháng Tiểu Cầu"]:::start
+
+  classDef start fill:#e0f2fe,stroke:#0284c7,stroke-width:2px,color:#0369a1
+  classDef question fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#854d0e
+  classDef action fill:#eff6ff,stroke:#3b82f6,stroke-width:1.5px,color:#1e40af
+  classDef danger fill:#fee2e2,stroke:#ef4444,stroke-width:2px,color:#991b1b
+  classDef warning fill:#fef3c7,stroke:#f59e0b,stroke-width:2px,color:#92400e
+  classDef success fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#15803d`}
       />
       <p class="fig-caption mt-2 text-muted">
-        <em>Hình 2: Phân nhánh chẩn đoán xác định TIA vs Nhồi máu não dựa trên thời gian kéo dài triệu chứng lâm sàng (&lt; 24h vs &gt; 24h) và sự xuất hiện của tổn thương trên MRI xung DWI. (Nguồn: Quyết định 3312/QĐ-BYT).</em>
+        <em>Hình 2: Phân nhánh chẩn đoán xác định TIA vs Nhồi máu não dựa trên thời gian kéo dài triệu chứng lâm sàng (&lt; 24h vs &ge; 24h) và sự xuất hiện của tổn thương trên MRI xung DWI. (Nguồn: Quyết định 3312/QĐ-BYT).</em>
       </p>
     </div>
   </div>
@@ -250,15 +276,28 @@ sections:
 
   <div class="fig-card my-4">
     <div class="fig-header">
-      <span class="fig-badge">Hình Ảnh Tài Liệu Gốc</span>
+      <span class="fig-badge fig-badge--svg">Lưu Đồ Tương Tác</span>
       <span class="fig-title">Hình 3. Lưu Đồ Sử Dụng Thuốc Chống Kết Tập Tiểu Cầu (QĐ 3312/QĐ-BYT)</span>
     </div>
-    <div class="fig-body text-center">
-      <img 
-        src="./images/2024-byt-dot-quy-fig3-kttc.png" 
-        alt="Sơ đồ điều trị thuốc chống kết tập tiểu cầu trong TIA và nhồi máu não"
-        class="img-fluid rounded border shadow-sm"
-        loading="lazy"
+    <div class="fig-body">
+      <FlowchartViewer
+        title="Hình 3. Lưu Đồ Sử Dụng Thuốc Chống Kết Tập Tiểu Cầu (QĐ 3312/QĐ-BYT)"
+        code={`graph TD
+  START["TIA / Nhồi Máu Não Không Do Tim<br/><small>Xơ vữa động mạch lớn, lacunar hoặc chưa rõ căn nguyên</small>"]:::start --> EVAL{"Phân Tầng Nguy Cơ Lâm Sàng & Mạch Máu?"}:::question
+  
+  EVAL -- "Nguy cơ thấp<br/>ABCD² < 4 điểm" --> LOW["Kháng Tiểu Cầu Đơn (SAPT)<br/><small>Aspirin 81-100mg/ngày dài hạn (hoặc Clopidogrel 75mg)</small>"]:::success
+  EVAL -- "Nguy cơ cao<br/>ABCD² ≥ 4 hoặc NIHSS ≤ 3" --> HIGH["DAPT CHANCE / POINT<br/><small>Aspirin + Clopidogrel (khởi động sớm trong 24 giờ đầu)</small>"]:::warning
+  EVAL -- "Nguy cơ rất cao<br/>NIHSS ≤ 5 kèm hẹp ĐM > 30%" --> VHIGH["DAPT THALES<br/><small>Aspirin + Ticagrelor 90mg x 2 lần/ngày</small>"]:::danger
+  
+  HIGH --> DUR1["Duy trì DAPT 21 – 90 ngày<br/><small>Sau đó chuyển về SAPT đơn dài hạn</small>"]:::success
+  VHIGH --> DUR2["Duy trì DAPT 30 ngày<br/><small>Sau đó chuyển về SAPT đơn dài hạn</small>"]:::success
+
+  classDef start fill:#e0f2fe,stroke:#0284c7,stroke-width:2px,color:#0369a1
+  classDef question fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#854d0e
+  classDef action fill:#eff6ff,stroke:#3b82f6,stroke-width:1.5px,color:#1e40af
+  classDef danger fill:#fee2e2,stroke:#ef4444,stroke-width:2px,color:#991b1b
+  classDef warning fill:#fef3c7,stroke:#f59e0b,stroke-width:2px,color:#92400e
+  classDef success fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#15803d`}
       />
       <p class="fig-caption mt-2 text-muted">
         <em>Hình 3: Lưu đồ phân nhánh chỉ định kháng tiểu cầu kép (DAPT) ngắn hạn dưới 90 ngày chuyển đổi sang đơn trị liệu dài hạn sau 90 ngày. (Nguồn: Quyết định 3312/QĐ-BYT).</em>
@@ -268,15 +307,26 @@ sections:
 
   <div class="fig-card my-4">
     <div class="fig-header">
-      <span class="fig-badge">Hình Ảnh Tài Liệu Gốc</span>
+      <span class="fig-badge fig-badge--svg">Lưu Đồ Tương Tác</span>
       <span class="fig-title">Hình 4. Lưu Đồ Khuyến Cáo Điều Trị Thuốc Chống Đông (QĐ 3312/QĐ-BYT)</span>
     </div>
-    <div class="fig-body text-center">
-      <img 
-        src="./images/2024-byt-dot-quy-fig4-chong-dong.png" 
-        alt="Sơ đồ khuyến cáo điều trị thuốc chống đông trong đột quỵ do tim"
-        class="img-fluid rounded border shadow-sm"
-        loading="lazy"
+    <div class="fig-body">
+      <FlowchartViewer
+        title="Hình 4. Lưu Đồ Khuyến Cáo Điều Trị Thuốc Chống Đông (QĐ 3312/QĐ-BYT)"
+        code={`graph TD
+  START["TIA / Nhồi Máu Não Căn Nguyên Từ Tim<br/><small>Rung nhĩ, bệnh van tim, huyết khối buồng tim</small>"]:::start --> CHECK{"Có hẹp van 2 lá vừa/nặng HOẶC có van tim cơ học?"}:::question
+  
+  CHECK -- "Có (Van cơ học / Hẹp 2 lá nặng)" --> VKA["Warfarin (Kháng Vitamin K - VKA)<br/><small>Mục tiêu INR 2.5 – 3.5 (van cơ học)<br/>INR 2.0 – 3.0 (hẹp 2 lá / van sinh học)</small>"]:::danger
+  CHECK -- "Không (Rung nhĩ không do van)" --> DOAC["Ưu Tiên Tuyệt Đối DOACs<br/><small>Dabigatran 150mg x2 • Rivaroxaban 20mg • Apixaban 5mg x2 • Edoxaban 60mg</small>"]:::success
+  
+  DOAC --> TIME["Thời Điểm Khởi Động: Quy Tắc DIN (1-3-6-12 Ngày)<br/><small>• Ngày 1: TIA<br/>• Ngày 3: Nhồi máu nhỏ (NIHSS < 8)<br/>• Ngày 6: Nhồi máu vừa (NIHSS 8-15)<br/>• Ngày 12: Nhồi máu lớn (NIHSS > 15, sau CT kiểm tra)</small>"]:::start
+
+  classDef start fill:#e0f2fe,stroke:#0284c7,stroke-width:2px,color:#0369a1
+  classDef question fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#854d0e
+  classDef action fill:#eff6ff,stroke:#3b82f6,stroke-width:1.5px,color:#1e40af
+  classDef danger fill:#fee2e2,stroke:#ef4444,stroke-width:2px,color:#991b1b
+  classDef warning fill:#fef3c7,stroke:#f59e0b,stroke-width:2px,color:#92400e
+  classDef success fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#15803d`}
       />
       <p class="fig-caption mt-2 text-muted">
         <em>Hình 4: Lưu đồ lựa chọn thuốc chống đông: Ưu tiên DOACs cho rung nhĩ không van; bắt buộc dùng Kháng vitamin K (Warfarin mục tiêu INR 2.5 – 3.5) cho hẹp van hai lá vừa/nặng hoặc van cơ học. (Nguồn: Quyết định 3312/QĐ-BYT).</em>
@@ -302,12 +352,7 @@ sections:
   <ul>
     <li><strong>Hỗ trợ hô hấp:</strong> Duy trì đường thở thông thoáng; bổ sung oxy khi <strong>SpO2 &le; 94%</strong>; không thở oxy thường quy cho bệnh nhân không thiếu oxy.</li>
     <li><strong>Kiểm soát thân nhiệt:</strong> Dùng Paracetamol hạ sốt khi thân nhiệt <strong>&gt; 38°C</strong>; tìm kiếm và điều trị các nguyên nhân gây sốt (viêm phổi hít, nhiễm trùng tiểu).</li>
-    <li><strong>Kiểm soát đường huyết:</strong>
-      <ul>
-        <li>Hạ đường huyết: Bù Glucose tĩnh mạch nhanh ngay khi glucose máu <strong>&lt; 60 mg/dL (&lt; 3.3 mmol/L)</strong> để loại trừ tình trạng giả đột quỵ (Stroke mimic).</li>
-        <li>Tăng đường huyết: Sử dụng Insulin hạ đường huyết khi glucose máu <strong>&gt; 180 mg/dL (&gt; 10.0 mmol/L)</strong>; duy trì khoảng đích an toàn từ <strong>140 – 180 mg/dL (7.8 – 10.0 mmol/L)</strong>. Tránh tuyệt đối hạ đường huyết do điều chỉnh quá tay.</li>
-      </ul>
-    </li>
+    <li><strong>Kiểm soát đường huyết:</strong> Hạ đường huyết: Bù Glucose tĩnh mạch ngay khi glucose máu <strong>&lt; 60 mg/dL (&lt; 3.3 mmol/L)</strong> để loại trừ giả đột quỵ; Tăng đường huyết: Dùng Insulin khi glucose <strong>&gt; 180 mg/dL (&gt; 10.0 mmol/L)</strong>, duy trì đích an toàn <strong>140 – 180 mg/dL (7.8 – 10.0 mmol/L)</strong>.</li>
   </ul>
 
   <h3 class="subsection-title">3.3. Chiến Lược Kiểm Soát Huyết Áp Giai Đoạn Cấp (24 Giờ Đầu)</h3>
@@ -365,15 +410,30 @@ sections:
 
   <div class="fig-card my-4">
     <div class="fig-header">
-      <span class="fig-badge">Hình Ảnh Tài Liệu Gốc</span>
+      <span class="fig-badge fig-badge--svg">Lưu Đồ Tương Tác</span>
       <span class="fig-title">Hình 5. Lưu Đồ Quy Trình Chẩn Đoán Nhồi Máu Não Cấp (QĐ 3312/QĐ-BYT)</span>
     </div>
-    <div class="fig-body text-center">
-      <img 
-        src="./images/2024-byt-dot-quy-fig5-chan-doan-nmn.png" 
-        alt="Lưu đồ quy trình chẩn đoán nhồi máu não cấp tính"
-        class="img-fluid rounded border shadow-sm"
-        loading="lazy"
+    <div class="fig-body">
+      <FlowchartViewer
+        title="Hình 5. Lưu Đồ Quy Trình Chẩn Đoán Nhồi Máu Não Cấp (QĐ 3312/QĐ-BYT)"
+        code={`graph TD
+  EMERG["Tiếp Nhận Nghi Ngờ Đột Quỵ Cấp<br/><small>BE-FAST (+) • Khởi phát đột ngột khiếm khuyết thần kinh khu trú</small>"]:::start --> STAB["Ổn Định Ban Đầu & Triage (≤ 10 phút)<br/><small>Kiểm tra ABC • Đo đường huyết mao mạch ngay • Đánh giá NIHSS & xác định LKW</small>"]:::action
+  
+  STAB --> IMG["Hình Ảnh Học Thần Kinh Khẩn Cấp (≤ 20–25 phút)<br/><small>CT sọ não không tiêm thuốc (NCCT) hoặc MRI sọ não cấp</small>"]:::action
+  
+  IMG --> BLEED{"Phát hiện xuất huyết não trên NCCT / MRI GRE?"}:::question
+  
+  BLEED -- "Có (+)" --> ICH["Xuất Huyết Não (ICH hoặc SAH)<br/><small>Chuyển quy trình kiểm soát huyết áp & xử trí xuất huyết nội sọ</small>"]:::danger
+  BLEED -- "Không (-)" --> ISCH["Nhồi Máu Não Cấp Xác Định<br/><small>Đánh giá ASPECTS • Khảo sát mạch máu CTA/MRA</small>"]:::success
+  
+  ISCH --> REPERF["Kích Hoạt Quy Trình Tái Tưới Máu Khẩn Cấp<br/><small>Mục tiêu Door-to-Needle < 45-60 phút • Door-to-Puncture < 90 phút</small>"]:::start
+
+  classDef start fill:#e0f2fe,stroke:#0284c7,stroke-width:2px,color:#0369a1
+  classDef question fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#854d0e
+  classDef action fill:#eff6ff,stroke:#3b82f6,stroke-width:1.5px,color:#1e40af
+  classDef danger fill:#fee2e2,stroke:#ef4444,stroke-width:2px,color:#991b1b
+  classDef warning fill:#fef3c7,stroke:#f59e0b,stroke-width:2px,color:#92400e
+  classDef success fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#15803d`}
       />
       <p class="fig-caption mt-2 text-muted">
         <em>Hình 5: Lưu đồ các bước chẩn đoán từ khi tiếp nhận bệnh nhân có khiếm khuyết thần kinh khu trú đến chẩn đoán hình ảnh loại trừ chảy máu não. (Nguồn: Quyết định 3312/QĐ-BYT).</em>
@@ -383,15 +443,34 @@ sections:
 
   <div class="fig-card my-4">
     <div class="fig-header">
-      <span class="fig-badge">Hình Ảnh Tài Liệu Gốc</span>
+      <span class="fig-badge fig-badge--svg">Lưu Đồ Tương Tác</span>
       <span class="fig-title">Hình 6. Lưu Đồ Quy Trình Điều Trị Tái Tưới Máu Cấp Cứu (QĐ 3312/QĐ-BYT)</span>
     </div>
-    <div class="fig-body text-center">
-      <img 
-        src="./images/2024-byt-dot-quy-fig6-dieu-tri-nmn.png" 
-        alt="Lưu đồ định hướng điều trị tiêu sợi huyết và lấy huyết khối cơ học"
-        class="img-fluid rounded border shadow-sm"
-        loading="lazy"
+    <div class="fig-body">
+      <FlowchartViewer
+        title="Hình 6. Lưu Đồ Quy Trình Điều Trị Tái Tưới Máu Cấp Cứu (QĐ 3312/QĐ-BYT)"
+        code={`graph TD
+  STROKE["Nhồi Máu Não Cấp Xác Định<br/><small>Loại trừ xuất huyết não • Xác định chính xác Last Known Well (LKW)</small>"]:::start
+  
+  STROKE --> IVT_PATH["1. TIÊU SỢI HUYẾT TĨNH MẠCH (IVT)<br/><small>Alteplase 0.9 mg/kg hoặc Tenecteplase 0.25 mg/kg</small>"]:::action
+  STROKE --> EVT_PATH["2. LẤY HUYẾT KHỐI CƠ HỌC (EVT)<br/><small>Stent retriever hoặc hút huyết khối áp lực âm</small>"]:::action
+  
+  IVT_PATH --> WIN_IVT{"Cửa sổ thời gian tính từ LKW?"}:::question
+  WIN_IVT -- "≤ 4.5 giờ" --> IVT_EARLY["Chỉ Định IVT Ngay<br/><small>HA < 185/110 mmHg, PLT ≥ 100k, INR ≤ 1.7, DNT < 45–60 phút</small>"]:::success
+  WIN_IVT -- "4.5 – 9 giờ / Wake-up" --> IVT_LATE["Đánh Giá Mismatch (WAKE-UP / EXTEND)<br/><small>MRI DWI-FLAIR mismatch HOẶC CTP penumbra/core > 1.2</small>"]:::warning
+  
+  EVT_PATH --> CHECK_LVO{"Tắc Động Mạch Lớn (LVO)?<br/><small>ĐM cảnh trong (ICA), đoạn M1 ĐM não giữa</small>"}:::question
+  CHECK_LVO -- "Cửa sổ 0 – 6 giờ" --> EVT_EARLY["Can Thiệp EVT Chuẩn (Class I, Level A)<br/><small>ASPECTS ≥ 6 (hoặc ≥ 3 nếu chọn lọc), mRS trước đó 0-1</small>"]:::success
+  CHECK_LVO -- "Cửa sổ 6 – 24 giờ" --> EVT_EXT["Can Thiệp EVT Mở Rộng<br/><small>Thỏa mãn tiêu chuẩn DAWN hoặc DEFUSE 3 (RAPID CTP/DWI)</small>"]:::warning
+  
+  IVT_EARLY & EVT_EARLY --> BRIDGE["Nguyên Tắc Điều Trị Bắc Cầu (Bridging Therapy)<br/><small>Đủ điều kiện cả 2: Tiêm IVT ngay, song song chuyển phòng DSA • Tuyệt đối không chờ theo dõi hiệu quả IVT</small>"]:::danger
+
+  classDef start fill:#e0f2fe,stroke:#0284c7,stroke-width:2px,color:#0369a1
+  classDef question fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#854d0e
+  classDef action fill:#eff6ff,stroke:#3b82f6,stroke-width:1.5px,color:#1e40af
+  classDef danger fill:#fee2e2,stroke:#ef4444,stroke-width:2px,color:#991b1b
+  classDef warning fill:#fef3c7,stroke:#f59e0b,stroke-width:2px,color:#92400e
+  classDef success fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#15803d`}
       />
       <p class="fig-caption mt-2 text-muted">
         <em>Hình 6: Phân nhánh điều trị tái tưới máu theo cửa sổ thời gian: Tiêu sợi huyết tĩnh mạch (&lt; 4.5h hoặc 4.5 – 9h có mismatch) và Lấy huyết khối cơ học (cửa sổ 0 – 6h dựa vào ASPECTS, 6 – 24h dựa vào DAWN/DEFUSE 3). (Nguồn: Quyết định 3312/QĐ-BYT).</em>
@@ -453,15 +532,31 @@ sections:
 
   <div class="fig-card my-4">
     <div class="fig-header">
-      <span class="fig-badge">Hình Ảnh Tài Liệu Gốc</span>
+      <span class="fig-badge fig-badge--svg">Lưu Đồ Tương Tác</span>
       <span class="fig-title">Hình 8. Lưu Đồ Sử Dụng Hình Ảnh Học Trong Đột Quỵ Nhồi Máu Não Cấp</span>
     </div>
-    <div class="fig-body text-center">
-      <img 
-        src="./images/2024-byt-dot-quy-fig10-hinh-anh-hoc.png" 
-        alt="Lưu đồ thuật toán lựa chọn hình ảnh học trong nhồi máu não cấp"
-        class="img-fluid rounded border shadow-sm"
-        loading="lazy"
+    <div class="fig-body">
+      <FlowchartViewer
+        title="Hình 8. Lưu Đồ Sử Dụng Hình Ảnh Học Trong Đột Quỵ Nhồi Máu Não Cấp"
+        code={`graph TD
+  START["Nghi Ngờ Đột Quỵ Nhồi Máu Não Cấp<br/><small>Khám thần kinh cấp cứu • Xác định Last Known Well (LKW)</small>"]:::start --> IMG["1. Chụp CT Không Cản Quang (NCCT) hoặc MRI Não Cấp<br/><small>Mục tiêu: Loại trừ xuất huyết não (ICH/SAH) • Đánh giá điểm ASPECTS</small>"]:::action
+  
+  IMG --> BLEED{"Có xuất huyết não trên NCCT / T2* GRE?"}:::question
+  BLEED -- "Có (+)" --> ICH["Xuất Huyết Não (ICH / SAH)<br/><small>Chuyển phác đồ xử trí xuất huyết nội sọ / vỡ phình mạch</small>"]:::danger
+  BLEED -- "Không (-)" --> WIN{"Cửa Sổ Thời Gian Tính Từ LKW?"}:::question
+  
+  WIN -- "Cửa sổ 0 – 6 Giờ" --> W06["Cửa Sổ 0 – 6 Giờ: NCCT + CTA Mạch Não<br/><small>• ASPECTS ≥ 6: Đủ điều kiện EVT tiêu chuẩn<br/>• CTA: Tìm tắc ĐM lớn (ICA, M1, M2, Basilar)<br/>• Không bắt buộc chụp tưới máu CTP/MRP</small>"]:::success
+  WIN -- "Cửa sổ 6 – 24 Giờ / Wake-up" --> W624["Cửa Sổ Kéo Dài 6 – 24H: BẮT BUỘC CTP / MRP<br/><small>• Đánh giá Lõi (Core): CBF < 30% (hoại tử)<br/>• Đánh giá Vùng đe dọa (Penumbra): Tmax > 6s<br/>• Thỏa tiêu chuẩn DAWN / DEFUSE 3 (Mismatch > 15ml)</small>"]:::warning
+  
+  W06 --> EVT1["Chỉ Định Can Thiệp EVT Ngay (Class I, Level A)"]:::success
+  W624 --> EVT2["Chỉ Định EVT Cửa Sổ Mở Rộng Thần Tốc"]:::danger
+
+  classDef start fill:#e0f2fe,stroke:#0284c7,stroke-width:2px,color:#0369a1
+  classDef question fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#854d0e
+  classDef action fill:#eff6ff,stroke:#3b82f6,stroke-width:1.5px,color:#1e40af
+  classDef danger fill:#fee2e2,stroke:#ef4444,stroke-width:2px,color:#991b1b
+  classDef warning fill:#fef3c7,stroke:#f59e0b,stroke-width:2px,color:#92400e
+  classDef success fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#15803d`}
       />
       <p class="fig-caption mt-2 text-muted">
         <em>Hình 8: Lưu đồ lựa chọn hình ảnh học: CT không cản quang loại trừ chảy máu &rarr; đánh giá ASPECTS &rarr; CTA tìm tắc mạch lớn trong cửa sổ &le; 6h; bắt buộc làm CT/MR tưới máu (Perfusion) khi bệnh nhân đến trong cửa sổ kéo dài 6 – 24h. (Nguồn: Quyết định 3312/QĐ-BYT).</em>
@@ -537,21 +632,8 @@ sections:
   <ul>
     <li><strong>Cửa sổ điều trị chuẩn:</strong> Khởi phát trong vòng <strong>4.5 giờ (270 phút)</strong> tính từ thời điểm khởi phát triệu chứng hoặc thời điểm cuối cùng bệnh nhân còn bình thường.</li>
     <li><strong>Đích thời gian vàng:</strong> Đích thời gian cửa - kim (Door-to-needle time) <strong>&le; 60 phút</strong> từ lúc tiếp nhận; tại các trung tâm đột quỵ chuyên sâu cần phấn đấu đạt <strong>&le; 45 hoặc &le; 30 phút</strong>.</li>
-    <li><strong>Mở rộng cửa sổ tiêu sợi huyết (4.5 – 9 giờ & Đột quỵ thức giấc):</strong>
-      <ul>
-        <li><em>Đột quỵ thức giấc (Wake-up stroke):</em> Chỉ định dựa trên tiêu chuẩn <strong>Bất tương xứng DWI-FLAIR (DWI-FLAIR Mismatch)</strong> trên MRI (tổn thương rõ trên DWI nhưng chưa xuất hiện trên FLAIR, chứng tỏ nhồi máu mới xuất hiện &lt; 4.5 giờ).</li>
-        <li><em>Cửa sổ 4.5 – 9 giờ:</em> Chỉ định khi có hình ảnh tưới máu não tự động (CTP/PWI) đáp ứng tiêu chuẩn lõi hoại tử &lt; 70 mL, tỷ lệ Penumbra/Lõi &gt; 1.2 và thể tích Penumbra &gt; 10 mL.</li>
-      </ul>
-    </li>
-    <li><strong>Các chống chỉ định tuyệt đối sống còn:</strong>
-      <ul>
-        <li>Tiền sử xuất huyết não hoặc có hình ảnh xuất huyết trên phim chụp CT/MRI cấp.</li>
-        <li>Chấn thương đầu nặng hoặc phẫu thuật sọ não/cột sống trong vòng 3 tháng.</li>
-        <li>Huyết áp không hạ được xuống dưới 185/110 mmHg dù đã dùng thuốc hạ áp tĩnh mạch.</li>
-        <li>Đang dùng thuốc chống đông có <strong>INR &gt; 1.7</strong>, dùng NOAC trong 48 giờ, hoặc Heparin có aPTT kéo dài &gt; 40 giây.</li>
-        <li>Số lượng tiểu cầu <strong>&lt; 100 &times; 10⁹/L</strong>; nồng độ Glucose máu &lt; 50 mg/dL (&lt; 2.7 mmol/L).</li>
-      </ul>
-    </li>
+    <li><strong>Mở rộng cửa sổ tiêu sợi huyết (4.5 – 9 giờ & Đột quỵ thức giấc):</strong> <em>Đột quỵ thức giấc (Wake-up stroke):</em> Chỉ định dựa trên tiêu chuẩn <strong>Bất tương xứng DWI-FLAIR (DWI-FLAIR Mismatch)</strong> trên MRI (tổn thương rõ trên DWI nhưng chưa xuất hiện trên FLAIR, chứng tỏ nhồi máu mới xuất hiện &lt; 4.5 giờ); <em>Cửa sổ 4.5 – 9 giờ:</em> Chỉ định khi có hình ảnh tưới máu não tự động (CTP/PWI) đáp ứng tiêu chuẩn lõi hoại tử &lt; 70 mL, tỷ lệ Penumbra/Lõi &gt; 1.2 và thể tích Penumbra &gt; 10 mL.</li>
+    <li><strong>Các chống chỉ định tuyệt đối sống còn:</strong> Tiền sử xuất huyết não hoặc có hình ảnh xuất huyết trên CT/MRI cấp; Chấn thương đầu nặng hoặc phẫu thuật sọ não/cột sống trong vòng 3 tháng; Huyết áp không hạ được xuống dưới 185/110 mmHg dù đã dùng thuốc hạ áp tĩnh mạch; Đang dùng thuốc chống đông có <strong>INR &gt; 1.7</strong>, dùng NOAC trong 48 giờ, hoặc Heparin có aPTT kéo dài &gt; 40 giây; Số lượng tiểu cầu <strong>&lt; 100 &times; 10⁹/L</strong>; nồng độ Glucose máu &lt; 50 mg/dL (&lt; 2.7 mmol/L).</li>
   </ul>
 
   <h3 class="subsection-title">5.3. Xử Trí Tai Biến Chảy Máu Não Có Triệu Chứng Sau Tiêu Sợi Huyết</h3>
@@ -572,20 +654,9 @@ sections:
 
   <h3 class="subsection-title">6.1. Tiêu Chuẩn Chỉ Định Can Thiệp</h3>
   <ul>
-    <li><strong>Cửa sổ chuẩn &le; 6 giờ đầu:</strong>
-      <ul>
-        <li>Tuổi &ge; 18, điểm mRS trước đột quỵ &le; 1.</li>
-        <li>Tắc động mạch lớn tuần hoàn trước: Đoạn tận động mạch cảnh trong (ICA), đoạn M1 hoặc nhánh lớn M2 động mạch não giữa, hoặc đoạn A1/A2 động mạch não trước.</li>
-        <li>Điểm <strong>NIHSS &ge; 6 điểm</strong> và điểm <strong>ASPECTS &ge; 6 điểm</strong> trên phim CT không cản quang.</li>
-      </ul>
-    </li>
-    <li><strong>Cửa sổ mở rộng 6 – 24 giờ đầu (Tiêu chuẩn DAWN & DEFUSE 3):</strong>
-      <ul>
-        <li><em>Tiêu chuẩn DAWN (6 – 24 giờ):</em> Dựa trên bất tương xứng giữa mức độ thiếu hụt lâm sàng (NIHSS) và thể tích lõi hoại tử trên CTP/DWI (Nhóm &ge; 80 tuổi: NIHSS &ge; 10 và lõi &lt; 21 mL; Nhóm &lt; 80 tuổi: NIHSS &ge; 10 và lõi &lt; 31 mL, hoặc NIHSS &ge; 20 và lõi &lt; 51 mL).</li>
-        <li><em>Tiêu chuẩn DEFUSE 3 (6 – 16 giờ):</em> Tuổi 18 – 90, NIHSS &ge; 6, thể tích lõi nhồi máu &lt; 70 mL, thể tích Penumbra &ge; 15 mL và tỷ số Penumbra/Lõi &ge; 1.8.</li>
-      </ul>
-    </li>
-    <li><strong>Tắc động mạch thân nền (Tuần hoàn sau):</strong> Chỉ định lấy huyết khối cơ học trong cửa sổ <strong>12 – 24 giờ</strong> cho bệnh nhân có NIHSS &ge; 6 điểm để cứu sống vùng thân não.</li>
+    <li><strong>Cửa sổ chuẩn &le; 6 giờ đầu:</strong> Tuổi &ge; 18, điểm mRS trước đột quỵ &le; 1; Tắc động mạch lớn tuần hoàn trước (ICA đoạn tận, M1/M2 MCA, A1/A2 ACA); Điểm <strong>NIHSS &ge; 6 điểm</strong> và điểm <strong>ASPECTS &ge; 6 điểm</strong> trên CT không cản quang.</li>
+    <li><strong>Cửa sổ mở rộng 6 – 24 giờ đầu:</strong> <em>Tiêu chuẩn DAWN (6 – 24 giờ):</em> Bất tương xứng NIHSS và thể tích lõi hoại tử trên CTP/DWI (&ge; 80 tuổi: NIHSS &ge; 10 và lõi &lt; 21 mL; &lt; 80 tuổi: NIHSS &ge; 10 và lõi &lt; 31 mL, hoặc NIHSS &ge; 20 và lõi &lt; 51 mL); <em>Tiêu chuẩn DEFUSE 3 (6 – 16 giờ):</em> Tuổi 18 – 90, NIHSS &ge; 6, thể tích lõi &lt; 70 mL, thể tích Penumbra &ge; 15 mL và tỷ số Penumbra/Lõi &ge; 1.8.</li>
+    <li><strong>Tắc động mạch thân nền (Tuần hoàn sau):</strong> Chỉ định lấy huyết khối cơ học trong cửa sổ <strong>12 – 24 giờ</strong> cho bệnh nhân có NIHSS &ge; 6 điểm để cứu sống thân não.</li>
   </ul>
 
   <h3 class="subsection-title">6.2. Kỹ Thuật Can Thiệp & Đánh Giá Tái Thông Theo Thang Điểm mTICI</h3>
@@ -720,26 +791,43 @@ sections:
   <ul>
     <li><strong>Lâm sàng:</strong> Cơn đau đầu bùng nổ dữ dội kiểu sét đánh (Thunderclap headache), cứng gáy, nôn vọt, rối loạn ý thức.</li>
     <li><strong>Chẩn đoán:</strong> CT sọ không cản quang phát hiện 99% trong 24 giờ đầu. Nếu CT âm tính nhưng lâm sàng nghi ngờ rất cao, <strong>bắt buộc chọc dịch não tủy</strong> tìm hồng cầu không đông qua 3 ống nghiệm hoặc sắc tố vàng (Xanthochromia). Chụp mạch DSA là tiêu chuẩn vàng.</li>
-    <li><strong>Kiểm soát tối cấp:</strong>
-      <ul>
-        <li>Hạ huyết áp tâm thu xuống <strong>&lt; 160 mmHg (hoặc HATB &lt; 110 mmHg)</strong> bằng Nicardipine trước khi túi phình được bít tắc.</li>
-        <li>Chống co thắt mạch não: <strong>Nimodipine 60 mg uống mỗi 4 giờ</strong> (kéo dài liên tục đến hết ngày thứ 21).</li>
-        <li><strong>Bít tắc túi phình sớm:</strong> Tiến hành can thiệp nút vòng xoắn kim loại (Coiling) hoặc phẫu thuật kẹp cổ túi phình (Clipping) trong vòng <strong>24 – 72 giờ đầu</strong> để phòng ngừa biến cố chảy máu tái phát (vốn có tỷ lệ tử vong lên tới 50%).</li>
-      </ul>
-    </li>
+    <li><strong>Kiểm soát tối cấp:</strong> Hạ huyết áp tâm thu xuống <strong>&lt; 160 mmHg (hoặc HATB &lt; 110 mmHg)</strong> bằng Nicardipine trước khi bít tắc túi phình; Chống co thắt mạch: <strong>Nimodipine 60 mg uống mỗi 4 giờ</strong> (đến hết ngày 21); Bít tắc túi phình sớm bằng can thiệp Coiling hoặc phẫu thuật Clipping trong <strong>24 – 72 giờ đầu</strong> để phòng ngừa biến cố chảy máu tái phát.</li>
   </ul>
 
   <div class="fig-card my-4">
     <div class="fig-header">
-      <span class="fig-badge">Hình Ảnh Tài Liệu Gốc</span>
+      <span class="fig-badge fig-badge--svg">Lưu Đồ Tương Tác</span>
       <span class="fig-title">Hình 10. Lưu Đồ Chẩn Đoán & Điều Trị Vỡ Phình Mạch Não (De Oliveira Manoel)</span>
     </div>
-    <div class="fig-body text-center">
-      <img 
-        src="./images/2024-byt-dot-quy-fig7-phinh-mach.png" 
-        alt="Lưu đồ quy trình chẩn đoán và điều trị vỡ phình động mạch não"
-        class="img-fluid rounded border shadow-sm"
-        loading="lazy"
+    <div class="fig-body">
+      <FlowchartViewer
+        title="Hình 10. Lưu Đồ Chẩn Đoán & Điều Trị Vỡ Phình Mạch Não (De Oliveira Manoel)"
+        code={`graph TD
+  START["Nghi Ngờ Vỡ Phình Động Mạch Não (SAH)<br/><small>Đau đầu sét đánh (Thunderclap) đột ngột • Cứng gáy • Rối loạn ý thức</small>"]:::start --> NCCT["Chụp CT Sọ Não Không Cản Quang (NCCT) Cấp<br/><small>Độ nhạy > 98% trong 6 – 12 giờ đầu</small>"]:::action
+  
+  NCCT --> DETECT{"Thấy máu trong khoang dưới nhện (SAH)?"}:::question
+  
+  DETECT -- "Âm tính (-)" --> LP["Chọc Dò Dịch Não Tủy (LP)<br/><small>Thực hiện sau 6–12h để tìm Xanthochromia (dịch vàng)</small>"]:::warning
+  LP --> LP_RES{"Kết quả LP có Xanthochromia / Hồng cầu 3 ống đều?"}:::question
+  LP_RES -- "Âm tính (-)" --> EXCLUDE["Loại trừ chẩn đoán xuất huyết dưới nhện"]:::action
+  LP_RES -- "Dương tính (+)" --> CONFIRMED
+  
+  DETECT -- "Dương tính (+)" --> CONFIRMED["Xác Định Xuất Huyết Dưới Nhện (SAH)<br/><small>• Kiểm soát HA < 160 mmHg • Nimodipine 60mg mỗi 4h chống co thắt</small>"]:::danger
+  
+  CONFIRMED --> ANGIOG["Chụp Mạch Máu Não (CTA và/hoặc DSA)<br/><small>Xác định vị trí, kích thước, cổ túi phình và hình thái</small>"]:::action
+  
+  ANGIOG --> TX_CHOICE{"Lựa Chọn Phương Pháp Can Thiệp Bít Túi Phình?"}:::question
+  TX_CHOICE -- "Ưu tiên cao tuổi, tuần hoàn sau" --> COIL["1. Coiling Nội Mạch Qua Da<br/><small>Thả vòng xoắn kim loại nút tắc túi phình</small>"]:::success
+  TX_CHOICE -- "Ưu tiên người trẻ, MCA, khối máu tụ lớn" --> CLIP["2. Phẫu Thuật Kẹp Cổ Túi Phình (Clipping)<br/><small>Mở nắp sọ vi phẫu kẹp túi phình</small>"]:::action
+  
+  COIL & CLIP --> TIMING["Tiến Hành Bít Tắc Càng Sớm Càng Tốt (Trong 24 – 72 Giờ Đầu)"]:::start
+
+  classDef start fill:#e0f2fe,stroke:#0284c7,stroke-width:2px,color:#0369a1
+  classDef question fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#854d0e
+  classDef action fill:#eff6ff,stroke:#3b82f6,stroke-width:1.5px,color:#1e40af
+  classDef danger fill:#fee2e2,stroke:#ef4444,stroke-width:2px,color:#991b1b
+  classDef warning fill:#fef3c7,stroke:#f59e0b,stroke-width:2px,color:#92400e
+  classDef success fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#15803d`}
       />
       <p class="fig-caption mt-2 text-muted">
         <em>Hình 10: Quy trình từ CT sọ não, chọc dịch não tủy khi CT âm tính, chụp mạch CTA/DSA và chụp lại sau 1 – 3 tuần để loại trừ co thắt mạch che lấp túi phình. (Nguồn: Quyết định 3312/QĐ-BYT).</em>
@@ -767,15 +855,29 @@ sections:
 
   <div class="fig-card my-4">
     <div class="fig-header">
-      <span class="fig-badge">Hình Ảnh Tài Liệu Gốc</span>
+      <span class="fig-badge fig-badge--svg">Lưu Đồ Tương Tác</span>
       <span class="fig-title">Hình 11. Lưu Đồ Chẩn Đoán & Điều Trị Huyết Khối Tĩnh Mạch Não (AHA/ASA)</span>
     </div>
-    <div class="fig-body text-center">
-      <img 
-        src="./images/2024-byt-dot-quy-fig8-hktmn.png" 
-        alt="Lưu đồ chẩn đoán và điều trị huyết khối tĩnh mạch não"
-        class="img-fluid rounded border shadow-sm"
-        loading="lazy"
+    <div class="fig-body">
+      <FlowchartViewer
+        title="Hình 11. Lưu Đồ Chẩn Đoán & Điều Trị Huyết Khối Tĩnh Mạch Não (AHA/ASA)"
+        code={`graph TD
+  START["Nghi Ngờ Huyết Khối Tĩnh Mạch Não (CVST)<br/><small>Đau đầu tiến triển • Phù gai thị • Co giật • Người trẻ / Thai kỳ / Thuốc ngừa thai</small>"]:::start --> IMAGING["Chụp Cắt Lớp Tĩnh Mạch (CTV) hoặc MRI Tĩnh Mạch (MRV)<br/><small>Tìm khuyết thuốc xoang tĩnh mạch (Empty Delta sign), phù não, chuyển dạng xuất huyết</small>"]:::action
+  
+  IMAGING --> ACUTE["KHỞI ĐỘNG CHỐNG ĐÔNG NGAY LẬP TỨC TRONG GIAI ĐOẠN CẤP<br/><small>LMWH (Enoxaparin 1 mg/kg x 2 lần/ngày) hoặc UFH truyền TM chỉnh theo aPTT<br/>BẮT BUỘC DÙNG KỂ CẢ KHI ĐÃ CÓ XUẤT HUYẾT NÃO CHUYỂN DẠNG DO TẮC TĨNH MẠCH</small>"]:::danger
+  
+  ACUTE --> EVAL{"Lâm sàng thần kinh diễn tiến thế nào sau dùng chống đông?"}:::question
+  
+  EVAL -- "Ổn định / Khá hơn" --> ORAL["Chống Đông Đường Uống Duy Trì (Warfarin INR 2-3 hoặc DOACs)<br/><small>• 3 – 6 tháng: Có yếu tố thúc đẩy tạm thời (thai kỳ, thuốc ngừa thai)<br/>• 6 – 12 tháng: CVST tự phát không rõ nguyên nhân<br/>• Suốt đời: Hội chứng kháng phospholipid, tăng đông nặng di truyền</small>"]:::success
+  
+  EVAL -- "Xấu đi / Phù não lớn đe dọa tụt não" --> RESCUE["Can Thiệp Cứu Nguy Cấp Cứu<br/><small>1. Phẫu thuật Mở Sọ Giải Áp (Decompressive Craniectomy) khẩn cấp<br/>2. Can thiệp nội mạch tĩnh mạch: Hút huyết khối cơ học hoặc tiêu sợi huyết tại chỗ</small>"]:::danger
+
+  classDef start fill:#e0f2fe,stroke:#0284c7,stroke-width:2px,color:#0369a1
+  classDef question fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#854d0e
+  classDef action fill:#eff6ff,stroke:#3b82f6,stroke-width:1.5px,color:#1e40af
+  classDef danger fill:#fee2e2,stroke:#ef4444,stroke-width:2px,color:#991b1b
+  classDef warning fill:#fef3c7,stroke:#f59e0b,stroke-width:2px,color:#92400e
+  classDef success fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#15803d`}
       />
       <p class="fig-caption mt-2 text-muted">
         <em>Hình 11: Lưu đồ điều trị HKTMN: Khởi động thuốc chống đông ngay lập tức (LMWH hoặc Heparin) kể cả khi đã có tổn thương nhồi máu hoặc chảy máu não; theo dõi mở sọ giải áp nếu có hiệu ứng khối đe dọa tụt não. (Nguồn: Quyết định 3312/QĐ-BYT).</em>
@@ -786,13 +888,7 @@ sections:
   <h3 class="subsection-title">9.2. Khuyến Cáo Điều Trị Bằng Thuốc Chống Đông</h3>
   <ul>
     <li><strong>Giai đoạn cấp:</strong> Sử dụng ngay Heparin trọng lượng phân tử thấp (LMWH liều điều trị) hoặc Heparin không phân đoạn truyền tĩnh mạch. <em>Chỉ định dùng chống đông bắt buộc ngay cả khi bệnh nhân đã có biến chứng nhồi máu tĩnh mạch kèm chuyển dạng chảy máu não</em>.</li>
-    <li><strong>Thời gian duy trì chống đông đường uống (Warfarin đích INR 2.0 – 3.0 hoặc DOACs):</strong>
-      <ul>
-        <li>Duy trì <strong>3 tháng:</strong> Có yếu tố nguy cơ tạm thời đã giải quyết dứt điểm (sau sinh, nhiễm trùng cấp).</li>
-        <li>Duy trì <strong>6 – 12 tháng:</strong> HKTMN tự phát không rõ nguyên nhân hoặc tăng đông nhẹ.</li>
-        <li>Duy trì <strong>suốt đời:</strong> Có tình trạng tăng đông nặng do di truyền (đột biến gen Prothrombin, thiếu hụt Antithrombin III, Protein C/S) hoặc HKTMN tái phát.</li>
-      </ul>
-    </li>
+    <li><strong>Thời gian duy trì chống đông đường uống (Warfarin đích INR 2.0 – 3.0 hoặc DOACs):</strong> Duy trì <strong>3 tháng</strong> nếu có yếu tố nguy cơ tạm thời đã giải quyết dứt điểm; Duy trì <strong>6 – 12 tháng</strong> nếu HKTMN tự phát không rõ nguyên nhân; Duy trì <strong>suốt đời</strong> nếu có tình trạng tăng đông nặng do di truyền hoặc HKTMN tái phát.</li>
   </ul>
 </section>
 
@@ -806,14 +902,7 @@ sections:
   </p>
   <ul>
     <li><strong>Chẩn đoán:</strong> Tiêu chuẩn DSM-5 kết hợp bộ trắc nghiệm tâm thần kinh (MOCA nhạy hơn MMSE trong phát hiện suy giảm nhận thức do mạch máu).</li>
-    <li><strong>Điều trị nội khoa:</strong>
-      <ul>
-        <li>Kiểm soát nghiêm ngặt các yếu tố nguy cơ mạch máu (Huyết áp &lt; 130/80 mmHg, Statin liều cao, kiểm soát đái tháo đường).</li>
-        <li>Thuốc ức chế men acetylcholinesterase: <strong>Donepezil</strong> (Khuyến cáo Loại I, Hạng A) hoặc Galantamine cho thể sa sút trí tuệ hỗn hợp.</li>
-        <li>Thuốc đối vận thụ thể NMDA: <strong>Memantine</strong> (Khuyến cáo Loại I, Hạng A) giúp làm chậm suy thoái nhận thức.</li>
-        <li>Bổ sung các hợp chất nuôi dưỡng và dinh dưỡng thần kinh: Citicoline, Cerebrolysin concentrate, Ginkgo biloba chuẩn hóa EGb761 (240 mg/ngày), Vinpocetine.</li>
-      </ul>
-    </li>
+    <li><strong>Điều trị nội khoa:</strong> Kiểm soát nghiêm ngặt các yếu tố nguy cơ mạch máu (Huyết áp &lt; 130/80 mmHg, Statin liều cao, kiểm soát đái tháo đường); Thuốc ức chế men acetylcholinesterase: <strong>Donepezil</strong> (Khuyến cáo Loại I, Hạng A) hoặc Galantamine cho thể sa sút trí tuệ hỗn hợp; Thuốc đối vận thụ thể NMDA: <strong>Memantine</strong> (Khuyến cáo Loại I, Hạng A) giúp làm chậm suy thoái nhận thức; Bổ sung các hợp chất nuôi dưỡng và dinh dưỡng thần kinh: Citicoline, Cerebrolysin concentrate, Ginkgo biloba chuẩn hóa EGb761 (240 mg/ngày), Vinpocetine.</li>
   </ul>
 </section>
 
@@ -864,15 +953,32 @@ sections:
 
   <div class="fig-card my-4">
     <div class="fig-header">
-      <span class="fig-badge">Hình Ảnh Tài Liệu Gốc</span>
+      <span class="fig-badge fig-badge--svg">Lưu Đồ Tương Tác</span>
       <span class="fig-title">Hình 12. Lưu Đồ Hướng Dẫn Xử Trí Nhồi Máu Não Kèm Còn Lỗ Bầu Dục (PFO)</span>
     </div>
-    <div class="fig-body text-center">
-      <img 
-        src="./images/2024-byt-dot-quy-fig12-pfo.png" 
-        alt="Lưu đồ hướng dẫn xử trí nhồi máu não kèm PFO ở bệnh nhân 18 đến 60 tuổi"
-        class="img-fluid rounded border shadow-sm"
-        loading="lazy"
+    <div class="fig-body">
+      <FlowchartViewer
+        title="Hình 12. Lưu Đồ Hướng Dẫn Xử Trí Nhồi Máu Não Kèm Còn Lỗ Bầu Dục (PFO)"
+        code={`graph TD
+  START["Nhồi Máu Não Căn Nguyên Chưa Rõ (ESUS)<br/><small>Bệnh nhân trẻ tuổi (18 – 60 tuổi) • Nghi ngờ thuyên tắc nghịch thường</small>"]:::start --> TEE["1. Siêu Âm Tim Qua Thực Quản (TEE) Với Nghiệm Pháp Bọt Cản Âm<br/><small>Phát hiện luồng thông Phải - Trái (Shunt) • Đánh giá phình vách liên nhĩ (ASA)</small>"]:::action
+  
+  TEE --> DETECT_PFO{"Có tổn thương PFO trên TEE?"}:::question
+  
+  DETECT_PFO -- "Không (-)" --> NO_PFO["Tiếp Tục Tìm Căn Nguyên Khác<br/><small>Điều trị kháng kết tập tiểu cầu đơn (SAPT)</small>"]:::action
+  DETECT_PFO -- "Có (+)" --> BILAN["2. Bilan Loại Trừ Triệt Để Căn Nguyên Khác<br/><small>• Holter ECG ≥ 24–48h loại trừ rung nhĩ • CTA loại hẹp ĐM cảnh<br/>• Bilan huyết khối tĩnh mạch sâu (DVT) & hội chứng tăng đông</small>"]:::warning
+  
+  BILAN --> ROPE_SCORE{"Thang điểm RoPE ≥ 7 điểm VÀ PFO có nguy cơ cao?"}:::question
+  
+  ROPE_SCORE -- "Thỏa mãn (+)" --> CLOSURE["CHỈ ĐỊNH ĐÓNG PFO BẰNG DÙ QUA DA<br/><small>• Phối hợp DAPT trong 1 – 6 tháng sau can thiệp<br/>• Tiếp tục Aspirin đơn ít nhất 5 năm hoặc suốt đời<br/>• Giảm > 60–70% nguy cơ nhồi máu não tái phát</small>"]:::success
+  
+  ROPE_SCORE -- "Không thỏa (-)" --> MEDICAL["Điều Trị Nội Khoa Bảo Tồn<br/><small>Kháng tiểu cầu đơn (hoặc chống đông nếu phát hiện DVT)<br/>Không khuyến cáo can thiệp đóng dù thường quy</small>"]:::action
+
+  classDef start fill:#e0f2fe,stroke:#0284c7,stroke-width:2px,color:#0369a1
+  classDef question fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#854d0e
+  classDef action fill:#eff6ff,stroke:#3b82f6,stroke-width:1.5px,color:#1e40af
+  classDef danger fill:#fee2e2,stroke:#ef4444,stroke-width:2px,color:#991b1b
+  classDef warning fill:#fef3c7,stroke:#f59e0b,stroke-width:2px,color:#92400e
+  classDef success fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#15803d`}
       />
       <p class="fig-caption mt-2 text-muted">
         <em>Hình 12: Quy trình chẩn đoán loại trừ căn nguyên khác, đánh giá thang điểm RoPE và chỉ định can thiệp đóng PFO bằng dù qua da kết hợp kháng tiểu cầu kéo dài. (Nguồn: Quyết định 3312/QĐ-BYT).</em>

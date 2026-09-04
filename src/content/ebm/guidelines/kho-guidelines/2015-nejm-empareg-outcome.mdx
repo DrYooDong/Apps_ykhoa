@@ -165,6 +165,42 @@ sections:
             <div class="mech-card-desc">• Giảm cân nặng và mỡ tạng (~2-3 kg).<br /> • Giảm nồng độ acid uric huyết thanh và giảm bài tiết albumin niệu.<br /> • Phục hồi phản hồi ống - cầu thận (tubuloglomerular feedback), co động mạch đi giúp giảm áp lực nội cầu thận.<br /> • Tăng nhẹ dung tích hồng cầu (Hematocrit) và tăng nhẹ LDL-C/HDL-C.</div>
           </div>
         </div>
+
+        <FlowchartViewer 
+          title="Lưu Đồ Cơ Chế Huyết Động & Bảo Vệ Tim - Thận Của Empagliflozin (EMPA-REG OUTCOME)"
+          code={`flowchart TD
+            EMPA([Empagliflozin SGLT2i | start | badge: SGLT2i 10mg / 25mg])
+            S1[Ức chế chọn lọc SGLT2 tại đoạn S1 ống lượn gần | action | subtitle: Thải trừ glucose ~78g/ngày + Tăng thải Natri niệu]
+
+            OSMO[Lợi tiểu thẩm thấu & Thải Natri | warning | subtitle: Giảm thể tích nội mạch & gian bào]
+            TGF[Phục hồi phản hồi Ống - Cầu thận TGF | action | subtitle: Tăng natri đến macula densa -> Co tiểu động mạch vào]
+            METAB[Tối ưu hóa chuyển hóa cơ tim | success | subtitle: Chuyển dịch nhiên liệu sang thể ketone tiêu hao ít oxy hơn]
+
+            BP[Hạ huyết áp tâm thu & tâm trương | action | subtitle: KHÔNG làm tăng nhịp tim phản xạ]
+            LOAD[Giảm tiền tải & hậu tải thất trái | action | subtitle: Giảm căng thành cơ tim]
+            GLOM[Giảm áp lực nội cầu thận | success | subtitle: Bảo tồn độ lọc cầu thận eGFR dài hạn & giảm albumin niệu]
+
+            HF[GIẢM 35% NHẬP VIỆN SUY TIM ⭐ | success | badge: P < 0.001 | subtitle: Xuất hiện sớm ngay từ những tuần đầu tiên]
+            CV_DEATH[GIẢM 38% TỬ VONG TIM MẠCH ⭐ | success | badge: P < 0.001 | subtitle: Giảm đột tử tim mạch & tử vong do suy tim]
+            ALL_DEATH[GIẢM 32% TỬ VONG MỌI NGUYÊN NHÂN | success | badge: P < 0.001]
+
+            EMPA --> S1
+            S1 --> OSMO
+            S1 --> TGF
+            S1 --> METAB
+
+            OSMO --> BP
+            OSMO --> LOAD
+            TGF --> GLOM
+
+            BP --> LOAD
+            LOAD ==> HF
+            METAB ==> HF
+            HF ==> CV_DEATH
+            GLOM --> CV_DEATH
+            CV_DEATH ==> ALL_DEATH
+          `}
+        />
       </div>
     </div>
 

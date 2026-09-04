@@ -1,0 +1,1022 @@
+---
+import BaseLayout from '../../components/layout/BaseLayout.astro';
+import '../../styles/components/clinical-flow-engine.css';
+---
+
+<BaseLayout 
+  title="Clinical Flow Studio Pro — Soạn Thảo & Thiết Kế Lưu Đồ Y Khoa" 
+  description="Công cụ thiết kế lưu đồ thuật toán chẩn đoán và phác đồ điều trị y khoa tương tác, hỗ trợ Text-to-Flowchart DSL, Pan/Zoom và xuất bản SVG chuẩn Editorial."
+>
+  <div class="studio-wrapper">
+    <!-- Top Header / Action Bar -->
+    <header class="studio-header">
+      <div class="studio-header-left">
+        <span class="badge badge-primary"><i class="fa-solid fa-wand-magic-sparkles"></i> Studio Pro</span>
+        <h1 class="studio-title">Clinical Flow Studio</h1>
+      </div>
+
+      <div class="studio-header-actions">
+        <!-- Preset Templates Dropdown -->
+        <div class="action-item">
+          <label for="selectTemplatePreset" class="preset-label">Mẫu phác đồ:</label>
+          <select id="selectTemplatePreset" class="studio-select">
+            <option value="soc_phan_ve">⚡ Phác đồ Xử trí Sốc Phản Vệ (TT 51/2017/TT-BYT)</option>
+            <option value="dot_quy_nao">🧠 Xử trí Đột Quỵ Não Cấp & Tái tưới máu (BYT 2024)</option>
+            <option value="ngung_tuan_hoan">❤️ Cấp cứu Ngừng Tuần Hoàn BLS / ACLS 2025</option>
+            <option value="hen_phe_quan">🫁 Tiếp cận Cơn Hen Phế Quản Cấp (GINA / BYT)</option>
+            <option value="sepsis_shock">🦠 Tiếp cận & Phân tầng Nhiễm Khuẩn Huyết (Sepsis-3)</option>
+          </select>
+          <button type="button" class="btn-studio btn-secondary" id="btnApplyPreset">
+            <i class="fa-solid fa-folder-open"></i> Nạp
+          </button>
+        </div>
+
+        <div class="divider-v"></div>
+
+        <!-- Export & Copy Actions -->
+        <div class="action-item export-group">
+          <button type="button" class="btn-studio btn-outline" id="btnQuickCopySVG" title="Sao chép mã SVG thuần vào clipboard">
+            <i class="fa-solid fa-copy"></i> Chép SVG
+          </button>
+          <button type="button" class="btn-studio btn-outline" id="btnQuickCopyMDX" title="Sao chép thẻ FlowchartViewer cho bài viết MDX">
+            <i class="fa-solid fa-tags"></i> Chép Thẻ MDX
+          </button>
+          <button type="button" class="btn-studio btn-outline" id="btnExportSVG" title="Tải file SVG thuần chuẩn Editorial">
+            <i class="fa-solid fa-file-arrow-down"></i> Tải SVG
+          </button>
+          <button type="button" class="btn-studio btn-outline" id="btnExportPNG" title="Xuất ảnh PNG 2x độ nét cao">
+            <i class="fa-solid fa-file-image"></i> PNG
+          </button>
+          <button type="button" class="btn-studio btn-outline" id="btnExportJSON" title="Tải file cấu trúc JSON">
+            <i class="fa-solid fa-download"></i> JSON
+          </button>
+          <button type="button" class="btn-studio btn-primary" id="btnEmbedCode" title="Lấy mã nhúng Web / Astro">
+            <i class="fa-solid fa-code"></i> Mã Nhúng
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile View Tabs Switcher (Visible on small screens) -->
+    <div class="mobile-tab-bar">
+      <button type="button" class="btn-mobile-tab active" id="btnTabEditor">
+        <i class="fa-solid fa-terminal"></i> Soạn Thảo DSL
+      </button>
+      <button type="button" class="btn-mobile-tab" id="btnTabPreview">
+        <i class="fa-solid fa-desktop"></i> Lưu Đồ & Inspector
+      </button>
+    </div>
+
+    <!-- Main Dual-Pane Workspace -->
+    <div class="studio-workspace" id="studioWorkspace">
+      <!-- Left Pane: DSL Code & Text Editor -->
+      <section class="studio-pane editor-pane" id="paneEditor">
+        <div class="pane-header">
+          <div class="pane-title">
+            <i class="fa-solid fa-terminal"></i> Soạn Thảo Text / Code DSL
+          </div>
+          <div class="editor-header-meta">
+            <span class="save-status-badge" id="saveStatusBadge">
+              <i class="fa-solid fa-cloud-arrow-up text-success"></i> Đã lưu tự động
+            </span>
+            <div class="editor-stats" id="editorStats">7 nodes • 6 edges</div>
+          </div>
+        </div>
+
+        <!-- Quick Snippets Bar -->
+        <div class="snippets-bar">
+          <button type="button" class="btn-snippet" data-snippet="start" title="Thêm Node Khởi đầu">
+            <i class="fa-solid fa-play text-primary"></i> + Start
+          </button>
+          <button type="button" class="btn-snippet" data-snippet="decision" title="Thêm Câu hỏi phân tầng">
+            <i class="fa-solid fa-circle-question text-warning"></i> + Question
+          </button>
+          <button type="button" class="btn-snippet" data-snippet="danger" title="Thêm Cấp cứu tối khẩn">
+            <i class="fa-solid fa-triangle-exclamation text-danger"></i> + Cấp cứu
+          </button>
+          <button type="button" class="btn-snippet" data-snippet="action" title="Thêm Y lệnh điều trị">
+            <i class="fa-solid fa-stethoscope text-teal"></i> + Action
+          </button>
+          <button type="button" class="btn-snippet" data-snippet="dose" title="Thêm Thẻ Liều thuốc">
+            <i class="fa-solid fa-pills text-purple"></i> + Liều thuốc
+          </button>
+          <button type="button" class="btn-snippet" data-snippet="success" title="Thêm Điểm an toàn / Ổn định">
+            <i class="fa-solid fa-circle-check text-success"></i> + Ổn định
+          </button>
+          <button type="button" class="btn-snippet" data-snippet="edge" title="Thêm đường nối có điều kiện">
+            <i class="fa-solid fa-arrow-right"></i> + Nối nhánh
+          </button>
+        </div>
+
+        <!-- Code Textarea with Line Numbers Gutter -->
+        <div class="editor-container">
+          <div class="editor-gutter" id="editorGutter" aria-hidden="true">1</div>
+          <textarea id="dslTextarea" class="dsl-textarea" spellcheck="false" placeholder="Nhập mã phác đồ DSL (cú pháp Mermaid)..."></textarea>
+        </div>
+
+        <!-- Diagnostics & Error Console -->
+        <div class="diagnostics-console" id="diagnosticsConsole">
+          <div class="console-status success" id="consoleStatus">
+            <i class="fa-solid fa-circle-check"></i> Cú pháp hợp lệ • Sẵn sàng biên dịch
+          </div>
+          <div class="console-errors" id="consoleErrors" style="display:none;"></div>
+        </div>
+      </section>
+
+      <!-- Right Pane: Interactive Canvas Viewport & Clinical Inspector -->
+      <section class="studio-pane preview-pane">
+        <div class="pane-header">
+          <div class="pane-title">
+            <i class="fa-solid fa-desktop"></i> Lưu Đồ Tương Tác & Duyệt Quyết Định (Live Preview)
+          </div>
+          <div class="preview-hints">
+            <span class="hint-badge"><i class="fa-solid fa-hand"></i> Kéo để di chuyển</span>
+            <span class="hint-badge"><i class="fa-solid fa-magnifying-glass-plus"></i> Cuộn để zoom</span>
+            <span class="hint-badge"><i class="fa-solid fa-hand-pointer"></i> Nhấp nhãn để rẽ nhánh</span>
+          </div>
+        </div>
+
+        <div class="preview-layout">
+          <!-- Canvas Viewport -->
+          <div class="flow-canvas-container" id="studioFlowCanvas"></div>
+
+          <!-- Inspector Drawer -->
+          <aside class="flow-inspector-container" id="studioFlowInspector"></aside>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- EMBED CODE MODAL -->
+  <div class="modal-overlay" id="embedModal" style="display:none;">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title"><i class="fa-solid fa-code"></i> Mã Nhúng Flowchart Tương Tác</h3>
+        <button type="button" class="modal-close" id="btnCloseEmbedModal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-desc">
+          Sao chép đoạn mã dưới đây để nhúng lưu đồ vào bất kỳ bài viết MDX, Guideline hoặc trang web y khoa nào:
+        </p>
+        <div class="code-box">
+          <textarea id="embedCodeArea" rows="6" readonly class="embed-textarea"></textarea>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn-studio btn-secondary" id="btnCopyEmbed">
+            <i class="fa-solid fa-copy"></i> Sao chép vào Clipboard
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  import { ClinicalFlowEngine } from '../../components/clinical-flow-engine';
+  import { MedicalFlowDSL } from '../../components/flowchart/flow-dsl-parser';
+
+  // 5 Bộ mẫu phác đồ chuẩn lâm sàng
+  const PRESET_TEMPLATES: Record<string, string> = {
+    soc_phan_ve: `flowchart TD
+%% title: Phác đồ Xử trí Cấp cứu Sốc Phản Vệ (Thông tư 51/2017/TT-BYT)
+
+  A[🚨 TIẾP NHẬN BỆNH NHÂN NGHI SỐC PHẢN VỆ | badge: BƯỚC 1 | type: start | icon: notes-medical | sub: Biểu hiện Da, Niêm mạc, Hô hấp, Tiêu hoá, Huyết áp]
+  B[NGỪNG TUẦN HOÀN / THỞ | badge: TỐI KHẨN | type: danger | dose: Adrenalin 1mg IV/IO ngay | redFlags: Mất mạch cảnh, Ngừng thở | icon: truck-medical | detail: Ép tim ngoài lồng ngực 100-120 l/p, Bóp bóng Ambu qua mask có oxy]
+  C{ĐÁNH GIÁ MỨC ĐỘ PHẢN VỆ? | badge: BƯỚC 2 | type: question | icon: stethoscope | sub: Phân loại theo Thông tư 51/2017/TT-BYT | detail: Độ I (Nhẹ: Da, niêm mạc), Độ II (Vừa: Khó thở, HA chưa tụt), Độ III (Nặng: Tụt HA, ngạt thở), Độ IV (Ngừng tuần hoàn)}
+  D[XỬ TRÍ ĐỘ II / III: TIÊM ADRENALIN BẮP NGAY | badge: Y LỆNH KHẨN | type: focal | dose: Người lớn: 0.5 - 1 ống (0.5-1mg) IM; Trẻ em: 0.01 mg/kg | redFlags: Khó thở thanh quản, Tụt huyết áp | detail: Tiêm bắp mặt trước ngoài đùi ngay lập tức. Nằm đầu bằng, chân cao.]
+  E[DUY TRÌ ADRENALIN & BÙ DỊCH NHANH | badge: BƯỚC 3 | type: dose | dose: Adrenalin truyền TM 0.1 - 0.2 mcg/kg/phút | detail: Thiết lập đường truyền TM kim lớn. Bù dịch NaCl 0.9% hoặc Ringer 1000ml trong 30-60 phút.]
+  F[BỆNH NHÂN ỔN ĐỊNH | badge: BƯỚC 4 | type: success | icon: shield-halved | detail: Theo dõi sát sinh hiệu SpO2, HA tối thiểu 24-48 giờ tại Cấp cứu phòng phản ứng pha 2.]
+
+  A ==>|Ngừng tim/thở| B
+  A -->|Còn mạch, thở| C
+  C ==>|Độ II, III| D
+  C -->|Chỉ có mày đay Độ I| F
+  D ==>|Sau 3-5p HA vẫn tụt| E
+  D -->|Huyết áp hồi phục| F
+  E -->|Sinh hiệu ổn định| F`,
+
+    dot_quy_nao: `flowchart TD
+%% title: Xử trí Đột Quỵ Thiếu Máu Não Cấp & Tái Tưới Máu (BYT 2024)
+
+  A[🧠 BỆNH NHÂN NGHI NGỜ ĐỘT QUỴ CẤP | badge: GIỜ VÀNG | type: start | icon: brain | sub: Dấu hiệu FAST: Liệt mặt, Yếu tay, Rối loạn ngôn ngữ | detail: Ghi nhận chính xác thời gian khởi phát cuối cùng bình thường (Last Known Well)]
+  B{CHỤP CẮT LỚP VI TÍNH SỌ NÃO KHÔNG CẢN QUANG | badge: BƯỚC 1 | type: question | icon: vial | sub: Loại trừ xuất huyết não cấp | detail: Chụp CT não trong vòng 20 phút từ khi vào viện. Đánh giá thang điểm ASPECTS.]
+  C[XUẤT HUYẾT NÃO (ICH) | badge: CHỐNG CHỈ ĐỊNH rTPA | type: danger | icon: triangle-exclamation | detail: Kiểm soát huyết áp mục tiêu SBP 140 mmHg. Hội chẩn Phẫu thuật Thần kinh.]
+  D{THỜI GIAN KHỞI PHÁT & TIÊU CHUẨN? | badge: BƯỚC 2 | type: decision | icon: calculator | sub: Thời gian < 4.5h, NIHSS 5-25, Không có CCĐ | tool: ../cong-cu/index.html}
+  E[TIÊU SỢI HUYẾT RTPA ĐƯỜNG TĨNH MẠCH | badge: TÁI TƯỚI MÁU | type: focal | dose: Alteplase 0.9 mg/kg (Max 90mg): 10% bolus 1 phút, 90% truyền 60 phút | redFlags: Huyết áp >= 185/110, Đang dùng NOAC | detail: Giám sát sát huyết áp và tri giác mỗi 15 phút trong khi truyền thuốc.]
+  F[CAN THIỆP LẤY HUYẾT KHỐI CƠ HỌC EVT | badge: THẦN KINH CAN THIỆP | type: action | sub: Cửa sổ 6-24 giờ theo tiêu chuẩn DAWN/DEFUSE-3 | detail: Áp dụng khi có tắc động mạch lớn tuần hoàn trước (ICA, MCA M1).]
+  G[THEO DÕI SÁT TẠI STROKE UNIT | badge: THEO DÕI | type: success | icon: shield-halved | detail: Nằm phòng Đột quỵ, phục hồi chức năng sớm sau 24h, tầm soát nguyên nhân rung nhĩ.]
+
+  A -->|Nhập viện khẩn| B
+  B ==>|Có máu tụ / Xuất huyết| C
+  B -->|Không xuất huyết não| D
+  D ==>|Thời gian < 4.5h & Đủ tiêu chuẩn| E
+  D ==>|Tắc động mạch lớn LVO| F
+  E -->|Sau 24h chụp lại CT| G
+  F -->|Tái thông thành công| G`,
+
+    ngung_tuan_hoan: `flowchart TD
+%% title: Hồi sức Ngừng Tuần Hoàn Nâng Cao (ACLS 2025)
+
+  A[❤️ BỆNH NHÂN ĐỘT NGỘT BẤT TỈNH | badge: BƯỚC 1 | type: start | sub: Không thở hoặc chỉ thở ngáp, Không bắt được mạch cảnh | icon: heart-pulse]
+  B[HỒI SỨC TIM PHỔI CƠ BẢN (CPR 30:2) | badge: KHẨN CẤP | type: danger | dose: Ép tim 100-120 l/p, Độ sâu 5-6cm | redFlags: Gián đoạn ép tim > 10 giây | detail: Ép tim liên tục, gắn máy khử rung tim hoặc monitor ngay khi có sẵn.]
+  C{KIỂM TRA NHỊP TRÊN MONITOR? | badge: PHÂN NHỊP | type: question | icon: stethoscope | sub: Nhịp có chỉ định sốc điện hay không?]
+  D[RUNG THẤT (VF) / NHANH THẤT VÔ MẠCH (pVT) | badge: SỐC ĐIỆN | type: focal | dose: Adrenalin 1mg sau sốc lần 2; Amiodarone 300mg sau sốc lần 3 | detail: Phóng điện 120-200J (Biphasic) ngay. Tiếp tục CPR 2 phút ngay sau sốc.]
+  E[VÔ TÂM THU (ASYSTOLE) / PEA | badge: KHÔNG SỐC | type: danger | dose: Adrenalin 1mg IV/IO càng sớm càng tốt, lặp lại mỗi 3-5 phút | detail: Ép tim liên tục, tìm và điều trị 5T & 5H (Giảm thể tích, Toan máu, Hạ kali...).]
+  F[HỒI PHỤC TUẦN HOÀN TỰ NHIÊN (ROSC) | badge: THÀNH CÔNG | type: success | icon: shield-halved | detail: Hạ thân nhiệt chỉ huy TTM (32-36°C), chụp mạch vành khẩn cấp nếu nghi ACS.]
+
+  A ==>|Không có mạch| B
+  B -->|Gắn máy xong| C
+  C ==>|Rung thất / pVT| D
+  C ==>|Vô tâm thu / PEA| E
+  D -->|Có mạch trở lại| F
+  E -->|Có mạch trở lại| F`,
+
+    hen_phe_quan: `flowchart TD
+%% title: Xử trí Cơn Hen Phế Quản Cấp Nặng (GINA / BYT)
+
+  A[🫁 TIẾP NHẬN CƠN HEN PHẾ QUẢN CẤP | badge: KHỞI ĐẦU | type: start | sub: Khó thở, thở rít, co kéo cơ hô hấp phụ | icon: lungs]
+  B{ĐÁNH GIÁ MỨC ĐỘ NẶNG CƠN HEN | badge: PHÂN TẦNG | type: question | icon: stethoscope | sub: Nhẹ/Vừa, Nặng hay Dọa ngừng thở? | detail: Cơn nặng: Nói từng từ, SpO2 < 90%, Mạch > 120, Thở co kéo mạnh]
+  C[CƠN HEN DỌA NGỪNG THỞ | badge: TỐI KHẨN | type: danger | dose: Adrenalin 0.5mg IM; Đặt NKQ nếu kiệt cơ | redFlags: Lồng ngực im lặng, Lơ mơ, Thở chậm | icon: truck-medical]
+  D[XỬ TRÍ CƠN NẶNG: KHÍ DUNG LIÊN TỤC | badge: ĐIỀU TRỊ | type: focal | dose: Salbutamol 5mg + Ipratropium 0.5mg x 3 lần liên tiếp trong giờ đầu | detail: Thở oxy duy trì SpO2 93-95%. Corticoid toàn thân: Methylprednisolone 40-80mg IV.]
+  E[XỬ TRÍ CƠN NHẸ / VỪA | badge: ĐIỀU TRỊ | type: action | dose: Khí dung Salbutamol 2.5-5mg mỗi 20-30 phút | detail: Uống Prednisolone 40-50mg/ngày trong 5-7 ngày.]
+  F[ĐÁP ỨNG TỐT & THEO DÕI AN TOÀN | badge: ỔN ĐỊNH | type: success | icon: shield-halved | detail: Hết khó thở, PEF > 70%, SpO2 > 94%. Duy trì ICS-Formoterol xuất viện.]
+
+  A -->|Đánh giá nhanh| B
+  B ==>|Dọa ngừng thở| C
+  B ==>|Cơn Hen Nặng| D
+  B -->|Cơn Nhẹ / Vừa| E
+  D ==>|Không đáp ứng sau 1 giờ| C
+  D -->|Thuyên giảm rõ rệt| F
+  E -->|Đáp ứng tốt| F`,
+
+    sepsis_shock: `flowchart TD
+%% title: Tiếp Cận & Hồi Sức Nhiễm Khuẩn Huyết Sepsis-3 (SSC 2026)
+
+  A[🦠 NGHI NGỜ HOẶC XÁC ĐỊNH NHIỄM KHUẨN | badge: GIỜ ĐẦU | type: start | icon: biohazard | sub: Có ổ nhiễm khuẩn (Phổi, Tiết niệu, Tiêu hoá, Da...)]
+  B{ĐÁNH GIÁ THANG ĐIỂM SOFA / QSOFA | badge: ĐÁNH GIÁ | type: question | icon: calculator | tool: ../cong-cu/index.html | sub: qSOFA >= 2 hoặc SOFA tăng >= 2 điểm | detail: Đánh giá PaO2/FiO2, Tiểu cầu, Bilirubin, Huyết áp, Glasgow, Creatinine]
+  C[SỐC NHIỄM KHUẨN (SEPTIC SHOCK) | badge: NGUY KỊCH | type: danger | dose: Noradrenalin 0.05 - 0.5 mcg/kg/phút | redFlags: Lactate > 2 mmol/L dù đã bù đủ dịch, Cần vận mạch để MAP >= 65 | icon: truck-medical]
+  D[GÓI HỒI SỨC 1 GIỜ (HOUR-1 BUNDLE) | badge: Y LỆNH GẤP | type: focal | dose: Bù dịch tinh thể 30 mL/kg trong 3 giờ đầu | detail: 1. Đo Lactate máu; 2. Cấy máu trước kháng sinh; 3. Kháng sinh phổ rộng đường TM; 4. Bù dịch; 5. Dùng Noradrenalin nếu tụt HA.]
+  E[KHÁNG SINH PHỔ RỘNG THÍCH HỢP | badge: DƯỢC LÝ | type: dose | dose: Liều nạp tối ưu, giảm liều theo eGFR | detail: Bắt đầu trong vòng 1 giờ đầu. Hội chẩn Dược lâm sàng để chỉnh liều.]
+  F[HỒI PHỤC & ĐẠT MỤC TIÊU HUYẾT ĐỘNG | badge: TIÊN LƯỢNG TỐT | type: success | icon: shield-halved | detail: MAP >= 65 mmHg, Lactate giảm dần, Lượng nước tiểu > 0.5 mL/kg/h.]
+
+  A -->|Sàng lọc nguy cơ| B
+  B ==>|Tụt HA, Lactate cao| C
+  B ==>|qSOFA >= 2 / Sepsis| D
+  D ==>|HA vẫn tụt sau dịch| C
+  D -->|Kết hợp thuốc| E
+  C -->|Phối hợp điều trị| E
+  E -->|Ổn định huyết động| F`
+  };
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const textarea = document.getElementById('dslTextarea') as HTMLTextAreaElement;
+    const gutterEl = document.getElementById('editorGutter');
+    const statsEl = document.getElementById('editorStats');
+    const statusEl = document.getElementById('consoleStatus');
+    const errorsEl = document.getElementById('consoleErrors');
+    const saveStatusBadge = document.getElementById('saveStatusBadge');
+    const selectPreset = document.getElementById('selectTemplatePreset') as HTMLSelectElement;
+    const btnApplyPreset = document.getElementById('btnApplyPreset');
+
+    const btnQuickCopySVG = document.getElementById('btnQuickCopySVG');
+    const btnQuickCopyMDX = document.getElementById('btnQuickCopyMDX');
+    const btnExportSVG = document.getElementById('btnExportSVG');
+    const btnExportPNG = document.getElementById('btnExportPNG');
+    const btnExportJSON = document.getElementById('btnExportJSON');
+    const btnEmbedCode = document.getElementById('btnEmbedCode');
+    const embedModal = document.getElementById('embedModal');
+    const btnCloseEmbed = document.getElementById('btnCloseEmbedModal');
+    const btnCopyEmbed = document.getElementById('btnCopyEmbed');
+    const embedCodeArea = document.getElementById('embedCodeArea') as HTMLTextAreaElement;
+
+    // Mobile tabs
+    const btnTabEditor = document.getElementById('btnTabEditor');
+    const btnTabPreview = document.getElementById('btnTabPreview');
+    const paneEditor = document.getElementById('paneEditor');
+    const panePreview = document.querySelector('.preview-pane') as HTMLElement;
+
+    // Khởi tạo Engine
+    const engine = new ClinicalFlowEngine({
+      container: '#studioFlowCanvas',
+      inspector: '#studioFlowInspector',
+      width: 1000,
+      height: 640
+    });
+
+    let compileTimer: any = null;
+    let autoSaveTimer: any = null;
+    const STORAGE_KEY = 'clini_flow_dsl_draft';
+
+    function updateGutter() {
+      if (!gutterEl || !textarea) return;
+      const lineCount = textarea.value.split('\n').length;
+      let html = '';
+      for (let i = 1; i <= lineCount; i++) {
+        html += `<div>${i}</div>`;
+      }
+      gutterEl.innerHTML = html;
+      gutterEl.scrollTop = textarea.scrollTop;
+    }
+
+    function scheduleAutoSave() {
+      if (autoSaveTimer) clearTimeout(autoSaveTimer);
+      autoSaveTimer = setTimeout(() => {
+        try {
+          localStorage.setItem(STORAGE_KEY, textarea.value);
+          if (saveStatusBadge) {
+            saveStatusBadge.innerHTML = '<i class="fa-solid fa-cloud-arrow-up text-success"></i> Đã lưu tự động';
+          }
+        } catch (e) {
+          console.warn('Lỗi auto-save localStorage:', e);
+        }
+      }, 800);
+    }
+
+    function compileDsl(immediate = false) {
+      if (compileTimer) clearTimeout(compileTimer);
+
+      const run = () => {
+        const code = textarea.value.trim();
+        updateGutter();
+        scheduleAutoSave();
+
+        if (!code) return;
+
+        const result = MedicalFlowDSL.parse(code);
+
+        if (result.success && result.diagram) {
+          engine.load(result.diagram);
+
+          if (statsEl) {
+            statsEl.textContent = `${result.diagram.nodes.length} nodes • ${result.diagram.edges.length} edges`;
+          }
+
+          if (statusEl) {
+            statusEl.className = 'console-status success';
+            statusEl.innerHTML = '<i class="fa-solid fa-circle-check"></i> Cú pháp hợp lệ • Đã cập nhật Canvas';
+          }
+          if (errorsEl) errorsEl.style.display = 'none';
+        } else {
+          if (statusEl) {
+            statusEl.className = 'console-status error';
+            statusEl.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> Có ${result.errors.length} lỗi cú pháp`;
+          }
+          if (errorsEl) {
+            errorsEl.style.display = 'block';
+            errorsEl.innerHTML = result.errors.map(err => `
+              <div class="error-line"><strong>Dòng ${err.line}:</strong> ${err.message} <code>${escapeHtml(err.raw)}</code></div>
+            `).join('');
+          }
+        }
+      };
+
+      if (immediate) run();
+      else compileTimer = setTimeout(run, 300);
+    }
+
+    function escapeHtml(s: string) {
+      return (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    // Kiểm tra bản nháp đã lưu trong LocalStorage hoặc nạp Preset mặc định
+    try {
+      const savedDraft = localStorage.getItem(STORAGE_KEY);
+      if (savedDraft && savedDraft.trim().length > 20) {
+        textarea.value = savedDraft;
+        if (saveStatusBadge) {
+          saveStatusBadge.innerHTML = '<i class="fa-solid fa-clock-rotate-left text-primary"></i> Đã nạp bản nháp';
+        }
+      } else {
+        textarea.value = PRESET_TEMPLATES.soc_phan_ve;
+      }
+    } catch (e) {
+      textarea.value = PRESET_TEMPLATES.soc_phan_ve;
+    }
+
+    compileDsl(true);
+
+    // Đồng bộ scroll giữa Gutter và Textarea
+    textarea.addEventListener('scroll', () => {
+      if (gutterEl) gutterEl.scrollTop = textarea.scrollTop;
+    });
+
+    // Bắt sự kiện gõ phím
+    textarea.addEventListener('input', () => {
+      if (saveStatusBadge) {
+        saveStatusBadge.innerHTML = '<i class="fa-solid fa-pencil text-warning"></i> Đang chỉnh sửa...';
+      }
+      compileDsl(false);
+    });
+
+    // Nạp Preset
+    btnApplyPreset?.addEventListener('click', () => {
+      const key = selectPreset.value;
+      if (PRESET_TEMPLATES[key]) {
+        textarea.value = PRESET_TEMPLATES[key];
+        compileDsl(true);
+      }
+    });
+
+    // Quick Snippets
+    document.querySelectorAll('.btn-snippet').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const type = btn.getAttribute('data-snippet');
+        let snippet = '';
+        const id = `node_${Date.now().toString(36).slice(-4)}`;
+
+        switch (type) {
+          case 'start':
+            snippet = `\n  ${id}[TIẾP NHẬN BỆNH NHÂN | badge: BƯỚC 1 | type: start | icon: notes-medical]`;
+            break;
+          case 'decision':
+            snippet = `\n  ${id}{ĐÁNH GIÁ NGUY CƠ? | badge: TRIAGE | type: question | icon: stethoscope}`;
+            break;
+          case 'danger':
+            snippet = `\n  ${id}[CẢNH BÁO NGUY KỊCH 🚨 | badge: KHẨN CẤP | type: danger | dose: Thuốc cấp cứu ngay | redFlags: Huyết áp tụt, SpO2 giảm]`;
+            break;
+          case 'action':
+            snippet = `\n  ${id}[Y LỆNH ĐIỀU TRỊ | badge: CAN THIỆP | type: action | detail: Xét nghiệm hoặc can thiệp y khoa]`;
+            break;
+          case 'dose':
+            snippet = `\n  ${id}[DƯỢC LÝ & LIỀU THUỐC 💊 | badge: THUỐC | type: dose | dose: Tên thuốc 0.5mg IV/IM]`;
+            break;
+          case 'success':
+            snippet = `\n  ${id}[BỆNH NHÂN ỔN ĐỊNH 🛡️ | badge: KẾT THÚC | type: success | detail: Cho về an toàn hoặc theo dõi định kỳ]`;
+            break;
+          case 'edge':
+            snippet = `\n  nodeA -->|Có / Đạt| nodeB\n  nodeA ==>|Nguy cơ| nodeC`;
+            break;
+        }
+
+        if (snippet) {
+          const start = textarea.selectionStart;
+          const end = textarea.selectionEnd;
+          const text = textarea.value;
+          textarea.value = text.substring(0, start) + snippet + text.substring(end);
+          textarea.selectionStart = textarea.selectionEnd = start + snippet.length;
+          textarea.focus();
+          compileDsl(true);
+        }
+      });
+    });
+
+    // Sao chép nhanh SVG vào Clipboard
+    btnQuickCopySVG?.addEventListener('click', async () => {
+      const svg = engine.exportSVG();
+      if (!svg) return;
+      try {
+        await navigator.clipboard.writeText(svg);
+        btnQuickCopySVG.innerHTML = '<i class="fa-solid fa-check text-success"></i> Đã chép SVG!';
+        setTimeout(() => {
+          btnQuickCopySVG.innerHTML = '<i class="fa-solid fa-copy"></i> Chép SVG';
+        }, 2000);
+      } catch (err) {
+        alert('Lỗi sao chép clipboard: ' + err);
+      }
+    });
+
+    // Sao chép nhanh thẻ nhúng MDX Component
+    btnQuickCopyMDX?.addEventListener('click', async () => {
+      const code = textarea.value.trim();
+      const title = engine.data?.title || 'Phác đồ Lâm sàng Tương tác';
+      const mdxSnippet = `<FlowchartViewer \n  title="${title}" \n  code={\`${code}\`} \n/>`;
+      try {
+        await navigator.clipboard.writeText(mdxSnippet);
+        btnQuickCopyMDX.innerHTML = '<i class="fa-solid fa-check text-success"></i> Đã chép MDX!';
+        setTimeout(() => {
+          btnQuickCopyMDX.innerHTML = '<i class="fa-solid fa-tags"></i> Chép Thẻ MDX';
+        }, 2000);
+      } catch (err) {
+        alert('Lỗi sao chép clipboard: ' + err);
+      }
+    });
+
+    // Xuất file SVG
+    btnExportSVG?.addEventListener('click', () => {
+      const svg = engine.exportSVG();
+      if (!svg) return;
+      const blob = new Blob([svg], { type: 'image/svg+xml;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `Clinical_Flowchart_Editorial_${Date.now()}.svg`;
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+
+    // Xuất file PNG
+    btnExportPNG?.addEventListener('click', async () => {
+      try {
+        const dataUrl = await engine.exportPNG(2);
+        const a = document.createElement('a');
+        a.href = dataUrl;
+        a.download = `Clinical_Flowchart_HiRes_${Date.now()}.png`;
+        a.click();
+      } catch (err) {
+        alert('Lỗi khi xuất ảnh PNG: ' + err);
+      }
+    });
+
+    // Xuất file JSON
+    btnExportJSON?.addEventListener('click', () => {
+      if (!engine.data) return;
+      const json = JSON.stringify(engine.data, null, 2);
+      const blob = new Blob([json], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `Clinical_Flowchart_Schema_${Date.now()}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+
+    // Lấy mã nhúng Embed Code Modal
+    btnEmbedCode?.addEventListener('click', () => {
+      const code = textarea.value.trim();
+      const embedHtml = `<FlowchartViewer\n  code={\`${code}\`}\n/>`;
+      if (embedCodeArea) embedCodeArea.value = embedHtml;
+      if (embedModal) embedModal.style.display = 'flex';
+    });
+
+    btnCloseEmbed?.addEventListener('click', () => {
+      if (embedModal) embedModal.style.display = 'none';
+    });
+
+    btnCopyEmbed?.addEventListener('click', () => {
+      if (embedCodeArea) {
+        embedCodeArea.select();
+        navigator.clipboard.writeText(embedCodeArea.value);
+        if (btnCopyEmbed) {
+          btnCopyEmbed.innerHTML = '<i class="fa-solid fa-check"></i> Đã sao chép!';
+          setTimeout(() => {
+            btnCopyEmbed.innerHTML = '<i class="fa-solid fa-copy"></i> Sao chép vào Clipboard';
+          }, 2000);
+        }
+      }
+    });
+
+    // Chuyển đổi tab trên thiết bị di động
+    btnTabEditor?.addEventListener('click', () => {
+      btnTabEditor.classList.add('active');
+      btnTabPreview?.classList.remove('active');
+      if (paneEditor) paneEditor.style.display = 'flex';
+      if (panePreview) panePreview.style.display = 'none';
+    });
+
+    btnTabPreview?.addEventListener('click', () => {
+      btnTabPreview.classList.add('active');
+      btnTabEditor?.classList.remove('active');
+      if (panePreview) panePreview.style.display = 'flex';
+      if (paneEditor) paneEditor.style.display = 'none';
+      setTimeout(() => engine.fitView(), 100);
+    });
+  });
+</script>
+
+<style>
+  .studio-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 72px);
+    background: var(--color-bg);
+    overflow: hidden;
+  }
+
+  /* Top Action Bar */
+  .studio-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1.5rem;
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .studio-header-left {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .studio-title {
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--color-text);
+  }
+
+  .studio-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .action-item {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .preset-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    margin: 0;
+  }
+
+  .studio-select {
+    padding: 0.4rem 0.65rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    border-radius: 6px;
+    background: var(--color-surface-2);
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+    outline: none;
+    max-width: 320px;
+  }
+
+  .divider-v {
+    width: 1px;
+    height: 22px;
+    background: var(--color-border);
+  }
+
+  .btn-studio {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.45rem 0.85rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all 0.15s ease;
+  }
+
+  .btn-studio.btn-secondary {
+    background: var(--color-surface-2);
+    border-color: var(--color-border);
+    color: var(--color-text);
+  }
+  .btn-studio.btn-secondary:hover {
+    background: var(--color-surface-offset);
+    border-color: var(--color-primary);
+  }
+
+  .btn-studio.btn-outline {
+    background: var(--color-surface);
+    border-color: var(--color-border);
+    color: var(--color-text);
+  }
+  .btn-studio.btn-outline:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+
+  .btn-studio.btn-primary {
+    background: var(--color-primary);
+    color: #ffffff;
+  }
+  .btn-studio.btn-primary:hover {
+    opacity: 0.9;
+  }
+
+  /* Mobile Tab Bar */
+  .mobile-tab-bar {
+    display: none;
+    background: var(--color-surface-2);
+    border-bottom: 1px solid var(--color-border);
+    padding: 0.35rem 0.75rem;
+    gap: 0.5rem;
+  }
+
+  .btn-mobile-tab {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    padding: 0.5rem;
+    font-size: 0.84rem;
+    font-weight: 700;
+    border-radius: 6px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .btn-mobile-tab.active {
+    background: var(--color-primary-hl);
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+
+  @media (max-width: 900px) {
+    .mobile-tab-bar {
+      display: flex;
+    }
+  }
+
+  /* Dual-Pane Workspace */
+  .studio-workspace {
+    display: grid;
+    grid-template-columns: 460px 1fr;
+    flex: 1;
+    overflow: hidden;
+  }
+
+  @media (max-width: 1100px) {
+    .studio-workspace {
+      grid-template-columns: 1fr;
+      overflow-y: auto;
+    }
+  }
+
+  .studio-pane {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .editor-pane {
+    border-right: 1px solid var(--color-border);
+    background: var(--color-surface);
+  }
+
+  .pane-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.65rem 1rem;
+    background: var(--color-surface-2);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .pane-title {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--color-text);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .editor-header-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .save-status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.72rem;
+    padding: 0.15rem 0.45rem;
+    border-radius: 4px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+
+  .editor-stats {
+    font-size: 0.76rem;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--color-text-muted);
+  }
+
+  .preview-hints {
+    display: flex;
+    gap: 0.4rem;
+  }
+
+  .hint-badge {
+    font-size: 0.72rem;
+    color: var(--color-text-muted);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    padding: 0.15rem 0.45rem;
+    border-radius: 4px;
+  }
+
+  /* Snippets Bar */
+  .snippets-bar {
+    display: flex;
+    gap: 0.35rem;
+    padding: 0.45rem 0.75rem;
+    background: var(--color-surface-offset);
+    border-bottom: 1px solid var(--color-border);
+    overflow-x: auto;
+  }
+
+  .btn-snippet {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.74rem;
+    font-weight: 600;
+    padding: 0.25rem 0.55rem;
+    border-radius: 4px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.15s ease;
+  }
+
+  .btn-snippet:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+
+  /* Code Textarea & Line Numbers Gutter */
+  .editor-container {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .editor-gutter {
+    width: 42px;
+    padding: 1rem 0.4rem 1rem 0.2rem;
+    background: var(--color-surface-2);
+    border-right: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+    font-family: 'JetBrains Mono', Consolas, monospace;
+    font-size: 0.84rem;
+    line-height: 1.6;
+    text-align: right;
+    user-select: none;
+    overflow: hidden;
+    opacity: 0.6;
+  }
+
+  .editor-gutter div {
+    height: 1.6em;
+  }
+
+  .dsl-textarea {
+    flex: 1;
+    height: 100%;
+    border: none;
+    outline: none;
+    padding: 1rem 0.75rem;
+    font-family: 'JetBrains Mono', Consolas, monospace;
+    font-size: 0.84rem;
+    line-height: 1.6;
+    background: var(--color-surface);
+    color: var(--color-text);
+    resize: none;
+    white-space: pre;
+  }
+
+  /* Diagnostics Console */
+  .diagnostics-console {
+    padding: 0.65rem 1rem;
+    background: var(--color-surface-2);
+    border-top: 1px solid var(--color-border);
+    font-size: 0.8rem;
+  }
+
+  .console-status.success {
+    color: var(--color-success);
+    font-weight: 600;
+  }
+
+  .console-status.error {
+    color: var(--color-danger);
+    font-weight: 700;
+  }
+
+  .console-errors {
+    margin-top: 0.4rem;
+    max-height: 80px;
+    overflow-y: auto;
+    font-size: 0.76rem;
+    color: var(--color-danger);
+  }
+
+  .console-errors code {
+    background: var(--color-danger-hl);
+    padding: 1px 4px;
+    border-radius: 3px;
+  }
+
+  /* Preview Pane Layout */
+  .preview-layout {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+  }
+
+  @media (max-width: 1300px) {
+    .preview-layout {
+      grid-template-columns: 1fr;
+    }
+    .flow-inspector-container {
+      display: none;
+    }
+  }
+
+  .flow-canvas-container {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .flow-inspector-container {
+    border-left: 1px solid var(--color-border);
+    background: var(--color-surface);
+    overflow-y: auto;
+    padding: 1rem;
+  }
+
+  /* Modal Dialog */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+  }
+
+  .modal-dialog {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    width: 90%;
+    max-width: 580px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+  }
+
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.25rem;
+    background: var(--color-surface-2);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .modal-title {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-text);
+  }
+
+  .modal-close {
+    background: transparent;
+    border: none;
+    font-size: 1.25rem;
+    color: var(--color-text-muted);
+    cursor: pointer;
+  }
+
+  .modal-body {
+    padding: 1.25rem;
+  }
+
+  .modal-desc {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    margin-top: 0;
+  }
+
+  .embed-textarea {
+    width: 100%;
+    padding: 0.75rem;
+    font-family: monospace;
+    font-size: 0.8rem;
+    border-radius: 6px;
+    border: 1px solid var(--color-border);
+    background: var(--color-bg);
+    color: var(--color-text);
+    resize: none;
+  }
+
+  .modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+  }
+</style>

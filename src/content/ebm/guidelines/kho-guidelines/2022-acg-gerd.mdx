@@ -292,125 +292,42 @@ sections:
 
         
         <div class="sec-subtitle" style="margin-top: 1.5rem;">Sơ Đồ Vector: Lưu Đồ Chẩn Đoán GERD Chuẩn ACG 2022 (Figure 1)</div>
-        <div class="flowchart-container">
-          <svg class="flowchart-svg" viewBox="0 0 880 560" width="100%" height="560" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              &lt;linearGradient id="gBlue" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#0284c7"/>
-                <stop offset="100%" stop-color="#0369a1"/>
-              &lt;/linearGradient>
-              &lt;linearGradient id="gGreen" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#059669"/>
-                <stop offset="100%" stop-color="#047857"/>
-              &lt;/linearGradient>
-              &lt;linearGradient id="gAmber" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#d97706"/>
-                <stop offset="100%" stop-color="#b45309"/>
-              &lt;/linearGradient>
-              &lt;linearGradient id="gPurple" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#7c3aed"/>
-                <stop offset="100%" stop-color="#6d28d9"/>
-              &lt;/linearGradient>
-              &lt;filter id="shadow" x="-4%" y="-4%" width="108%" height="108%">
-                &lt;feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.08"/>
-              &lt;/filter>
-            </defs>
+        <FlowchartViewer 
+        title="Hình 1. Lưu Đồ Chẩn Đoán GERD Theo Khuyến Cáo ACG 2022 (EGD & Đo Trào Ngược)"
+        code={`flowchart TD
+          START([Bệnh nhân có triệu chứng ợ nóng hoặc trớ điển hình | start | badge: ACG 2022 | subtitle: Không kèm dấu hiệu báo động cờ đỏ: nuốt khó, sụt cân, thiếu máu, nôn máu])
+          PPI_TRIAL[Thử nghiệm PPI liều chuẩn 8 tuần 💊 | action | subtitle: Uống 30-60 phút trước bữa ăn sáng hàng ngày]
 
-            
-            <rect x="240" y="20" width="400" height="54" rx="10" fill="url(#gBlue)" filter="url(#shadow)"/>
-            <text x="440" y="44" fill="#ffffff" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700" text-anchor="middle">Triệu chứng Ợ nóng / Trớ điển hình</text>
-            <text x="440" y="62" fill="#bae6fd" font-family="'Inter', sans-serif" font-size="11" text-anchor="middle">(Không kèm triệu chứng báo động cờ đỏ)</text>
+          RESP{Đáp ứng lâm sàng sau 8 tuần thử PPI? | question}
+          RESOLVED[Đáp ứng hoàn toàn: Hết triệu chứng 🟢 | success | badge: Thành công | subtitle: Thử nghiệm giảm liều dần rồi ngừng PPI - Nếu tái phát: Xác nhận GERD, duy trì liều thấp nhất hiệu quả]
+          FAIL[Không đáp ứng hoặc Tái phát nặng khi ngừng 🚨 | danger | badge: GERD kháng trị | subtitle: Cần thăm dò xâm lấn để làm rõ chẩn đoán]
 
-            
-            <line x1="440" y1="74" x2="440" y2="105" stroke="#0284c7" stroke-width="2.5"/>
-            <polygon points="436,105 440,113 444,105" fill="#0284c7"/>
+          EGD[Nội soi thực quản dạ dày (EGD) 🔬 | action | badge: Ngừng PPI 2-4 tuần trước soi | subtitle: Đánh giá niêm mạc theo phân loại Los Angeles (LA) & tầm soát thực quản Barrett]
 
-            
-            <rect x="260" y="113" width="360" height="50" rx="10" fill="#ffffff" stroke="#0284c7" stroke-width="2" filter="url(#shadow)"/>
-            <text x="440" y="135" fill="#0f172a" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700" text-anchor="middle">Thử nghiệm PPI 8 tuần</text>
-            <text x="440" y="152" fill="#475569" font-family="'Inter', sans-serif" font-size="11" text-anchor="middle">(Liều chuẩn 1 lần/ngày, uống 30-60p trước bữa ăn)</text>
+          EGD_RES{Kết quả nội soi thực quản EGD? | question}
+          EGD_POS[EGD BẤT THƯỜNG: LA Độ B, C, D hoặc Barrett (> 3cm) ⭐ | danger | badge: Khẳng định 100% GERD | subtitle: Bằng chứng khách quan xác định chắc chắn - Tiếp tục tối ưu hóa PPI dài hạn, không cần đo pH]
+          EGD_NEG[EGD Bình thường (NERD) hoặc LA Độ A 🟣 | warning | badge: Chưa đủ bằng chứng | subtitle: Viêm độ A có thể gặp ở người khỏe mạnh - Bắt buộc đo theo dõi trào ngược để xác minh]
 
-            
-            <path d="M 440 163 L 440 185 L 200 185 L 200 210" fill="none" stroke="#64748b" stroke-width="2"/>
-            <polygon points="196,210 200,218 204,210" fill="#64748b"/>
-            
-            <path d="M 440 163 L 440 185 L 680 185 L 680 210" fill="none" stroke="#64748b" stroke-width="2"/>
-            <polygon points="676,210 680,218 684,210" fill="#64748b"/>
+          PH_STUDY[Đo theo dõi trào ngược ngoài điều trị (Off PPI) 📊 | action | subtitle: Đo pH-trở kháng 24h hoặc gắn viên nang Bravo 48-96h]
+          
+          PH_RES{Thời gian tiếp xúc axit thực quản (AET)? | question}
+          GERD_CONFIRMED[AET > 6%: XÁC NHẬN BỆNH TRÀO NGƯỢC DẠ DÀY THỰC QUẢN ⭐ | danger | badge: GERD khách quan | subtitle: Tiếp tục điều trị PPI tối ưu hoặc cân nhắc phẫu thuật / thủ thuật chống trào ngược]
+          NON_GERD[AET < 4%: LOẠI TRỪ GERD (BÌNH THƯỜNG) 🟢 | success | badge: Không phải GERD | subtitle: Khảo sát nguyên nhân khác: Tăng nhạy cảm thực quản hoặc Ợ nóng chức năng]
 
-            <rect x="110" y="174" width="130" height="22" rx="6" fill="#f0fdf4" stroke="#86efac" stroke-width="1"/>
-            <text x="175" y="189" fill="#15803d" font-family="'Inter', sans-serif" font-size="10" font-weight="700" text-anchor="middle">Đáp ứng hoàn toàn</text>
-
-            <rect x="630" y="174" width="150" height="22" rx="6" fill="#fef2f2" stroke="#fca5a5" stroke-width="1"/>
-            <text x="705" y="189" fill="#b91c1c" font-family="'Inter', sans-serif" font-size="10" font-weight="700" text-anchor="middle">Không đáp ứng / Tái phát</text>
-
-            
-            <rect x="100" y="218" width="200" height="46" rx="8" fill="#ffffff" stroke="#059669" stroke-width="1.5"/>
-            <text x="200" y="238" fill="#0f172a" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700" text-anchor="middle">Thử nghiệm Ngừng PPI</text>
-            <text x="200" y="253" fill="#64748b" font-family="'Inter', sans-serif" font-size="10" text-anchor="middle">(Giảm liều dần hoặc dừng)</text>
-
-            <path d="M 200 264 L 200 285 L 110 285 L 110 310" fill="none" stroke="#64748b" stroke-width="1.5"/>
-            <polygon points="107,310 110,316 113,310" fill="#64748b"/>
-            
-            <path d="M 200 264 L 200 285 L 290 285 L 290 310" fill="none" stroke="#64748b" stroke-width="1.5"/>
-            <polygon points="287,310 290,316 293,310" fill="#64748b"/>
-
-            <rect x="40" y="316" width="140" height="46" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
-            <text x="110" y="335" fill="#334155" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" text-anchor="middle">Không tái phát</text>
-            <text x="110" y="350" fill="#64748b" font-family="'Inter', sans-serif" font-size="10" text-anchor="middle">Theo dõi / Dừng thuốc</text>
-
-            <rect x="220" y="316" width="140" height="46" rx="8" fill="url(#gGreen)"/>
-            <text x="290" y="335" fill="#ffffff" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" text-anchor="middle">Tái phát triệu chứng</text>
-            <text x="290" y="350" fill="#dcfce7" font-family="'Inter', sans-serif" font-size="10" text-anchor="middle">Xác nhận GERD</text>
-
-            
-            <rect x="560" y="218" width="240" height="48" rx="8" fill="#ffffff" stroke="#d97706" stroke-width="2"/>
-            <text x="680" y="238" fill="#0f172a" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700" text-anchor="middle">Nội soi Thực quản Dạ dày (EGD)</text>
-            <text x="680" y="254" fill="#b45309" font-family="'Inter', sans-serif" font-size="10" font-weight="600" text-anchor="middle">Lý tưởng: Ngừng PPI trước 2–4 tuần</text>
-
-            
-            <path d="M 680 266 L 680 288 L 540 288 L 540 310" fill="none" stroke="#64748b" stroke-width="1.5"/>
-            <polygon points="537,310 540,316 543,310" fill="#64748b"/>
-            
-            <path d="M 680 266 L 680 288 L 800 288 L 800 310" fill="none" stroke="#64748b" stroke-width="1.5"/>
-            <polygon points="797,310 800,316 803,310" fill="#64748b"/>
-
-            
-            <rect x="720" y="316" width="150" height="54" rx="8" fill="url(#gGreen)"/>
-            <text x="795" y="335" fill="#ffffff" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" text-anchor="middle">EGD Bất Thường</text>
-            <text x="795" y="350" fill="#dcfce7" font-family="'Inter', sans-serif" font-size="9.5" text-anchor="middle">LA Độ B, C, D hoặc Barrett</text>
-            <text x="795" y="363" fill="#ffffff" font-family="'Inter', sans-serif" font-size="10" font-weight="700" text-anchor="middle">➔ XÁC NHẬN GERD</text>
-
-            
-            <rect x="440" y="316" width="200" height="54" rx="8" fill="#ffffff" stroke="#7c3aed" stroke-width="1.5"/>
-            <text x="540" y="334" fill="#0f172a" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" text-anchor="middle">EGD Bình thường / LA Độ A</text>
-            <text x="540" y="349" fill="#7c3aed" font-family="'Inter', sans-serif" font-size="10" font-weight="600" text-anchor="middle">Chưa đủ bằng chứng xác nhận</text>
-            <text x="540" y="362" fill="#64748b" font-family="'Inter', sans-serif" font-size="9.5" text-anchor="middle">Cần đo trào ngược ngoài điều trị</text>
-
-            
-            <line x1="540" y1="370" x2="540" y2="400" stroke="#7c3aed" stroke-width="2"/>
-            <polygon points="536,400 540,408 544,400" fill="#7c3aed"/>
-
-            <rect x="420" y="408" width="240" height="48" rx="8" fill="url(#gPurple)"/>
-            <text x="540" y="428" fill="#ffffff" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="700" text-anchor="middle">Đo Theo Dõi Trào Ngược (Off PPI)</text>
-            <text x="540" y="444" fill="#e9d5ff" font-family="'Inter', sans-serif" font-size="10" text-anchor="middle">pH-Impedance 24h hoặc Viên nang Bravo</text>
-
-            
-            <path d="M 540 456 L 540 478 L 440 478 L 440 496" fill="none" stroke="#64748b" stroke-width="1.5"/>
-            <polygon points="437,496 440,502 443,496" fill="#64748b"/>
-
-            <path d="M 540 456 L 540 478 L 640 478 L 640 496" fill="none" stroke="#64748b" stroke-width="1.5"/>
-            <polygon points="637,496 640,502 643,496" fill="#64748b"/>
-
-            <rect x="360" y="502" width="160" height="44" rx="8" fill="url(#gGreen)"/>
-            <text x="440" y="520" fill="#ffffff" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" text-anchor="middle">AET &gt; 6% (Bất thường)</text>
-            <text x="440" y="536" fill="#dcfce7" font-family="'Inter', sans-serif" font-size="10" font-weight="700" text-anchor="middle">➔ XÁC NHẬN GERD</text>
-
-            <rect x="560" y="502" width="160" height="44" rx="8" fill="#f8fafc" stroke="#e11d48" stroke-width="1.5"/>
-            <text x="640" y="520" fill="#be123c" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" text-anchor="middle">AET &lt; 4% (Bình thường)</text>
-            <text x="640" y="536" fill="#64748b" font-family="'Inter', sans-serif" font-size="9.5" text-anchor="middle">Loại trừ GERD ➔ Tìm NN khác</text>
-          </svg>
-          <div class="flowchart-caption">Hình 1. Lưu đồ chẩn đoán GERD theo Khuyến cáo ACG 2022 (Nội soi EGD và Đo theo dõi trào ngược ngoài điều trị).</div>
-        </div>
+          START --> PPI_TRIAL
+          PPI_TRIAL --> RESP
+          RESP -->|Hết triệu chứng| RESOLVED
+          RESP ==>|Không đáp ứng| FAIL
+          FAIL --> EGD
+          EGD --> EGD_RES
+          EGD_RES ==>|LA Độ B, C, D / Barrett| EGD_POS
+          EGD_RES -->|LA Độ A / Bình thường| EGD_NEG
+          EGD_NEG --> PH_STUDY
+          PH_STUDY --> PH_RES
+          PH_RES ==>|AET > 6%| GERD_CONFIRMED
+          PH_RES -->|AET < 4%| NON_GERD
+        `}
+      />
 
         <div class="sec-subtitle">Phân Loại Viêm Thực Quản Bào Mòn Los Angeles (LA Classification)</div>
         <div class="grid-4col">
@@ -623,7 +540,6 @@ sections:
           </div>
           <div class="ebm-rec-body">
             <ul style="padding-left: 1.2rem; margin-top: 0.35rem;">
-<ul style="margin-left: 1.25rem; margin-bottom: 1rem; line-height: 1.65;">
               <li><strong>Prokinetics (Metoclopramide, Domperidone, Itopride):</strong> Không dùng cho GERD trừ khi có bằng chứng khách quan về liệt dạ dày (gastroparesis).</li>
               <li><strong>Baclofen (Chất đồng vận GABA-B):</strong> Không dùng nếu không có bằng chứng khách quan về trào ngược không axit gây triệu chứng.</li>
               <li><strong>Sucralfate:</strong> Không dùng thường quy cho GERD, <em>ngoại trừ trong thời kỳ mang thai</em> do tính an toàn tại chỗ không hấp thu toàn thân.</li>
@@ -721,91 +637,44 @@ sections:
 
         
         <div class="sec-subtitle" style="margin-top: 1.5rem;">Sơ Đồ Vector: Lưu Đồ Chẩn Đoán Triệu Chứng Ngoài Thực Quản (Figure 2)</div>
-        <div class="flowchart-container">
-          <svg class="flowchart-svg" viewBox="0 0 880 480" width="100%" height="480" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              &lt;linearGradient id="gTeal" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#0d9488"/>
-                <stop offset="100%" stop-color="#0f766e"/>
-              &lt;/linearGradient>
-            </defs>
+        <FlowchartViewer 
+        title="Hình 2. Thuật Toán Tiếp Cận Triệu Chứng Ngoài Thực Quản Nghi Do GERD (ACG 2022)"
+        code={`flowchart TD
+          START([Bệnh nhân có triệu chứng Ngoài Thực Quản: Ho mạn tính, Hen suyễn, Khàn tiếng, LPR, Nuốt vướng Globus | start | badge: ACG 2022])
+          EXCL[Loại trừ các nguyên nhân không do trào ngược (Hô hấp, Tai Mũi Họng, Dị ứng) 🩺 | action]
 
-            
-            <rect x="220" y="15" width="440" height="52" rx="10" fill="url(#gTeal)" filter="url(#shadow)"/>
-            <text x="440" y="38" fill="#ffffff" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700" text-anchor="middle">Triệu chứng Ngoài Thực Quản Nghi Do GERD</text>
-            <text x="440" y="55" fill="#ccfbf1" font-family="'Inter', sans-serif" font-size="11" text-anchor="middle">(Ho mạn tính, Hen suyễn, Khàn tiếng, Viêm thanh quản LPR, Globus)</text>
+          SUBGROUP{Phân tầng triệu chứng lâm sàng kèm theo? | question}
+          
+          COMBO[1. Có CẢ triệu chứng trào ngược điển hình (Ợ nóng / Trớ) 🟡 | warning | badge: Triệu chứng kết hợp | subtitle: Vừa có triệu chứng ngoài thực quản vừa có ợ nóng/trớ thường xuyên]
+          EXTRA_ONLY[2. CHỈ CÓ triệu chứng ngoài thực quản đơn độc 🚨 | danger | badge: Đơn độc | subtitle: Hoàn toàn không có ợ nóng hay trớ chua]
 
-            
-            <line x1="440" y1="67" x2="440" y2="92" stroke="#0d9488" stroke-width="2"/>
-            <polygon points="436,92 440,99 444,92" fill="#0d9488"/>
+          PPI_BID[Thử nghiệm PPI liều gấp đôi (BID) trong 8 - 12 tuần 💊 | action | subtitle: Uống trước bữa ăn sáng và trước bữa ăn tối]
+          RESP_COMBO{Đáp ứng lâm sàng sau 8-12 tuần? | question}
+          COMBO_OK[Triệu chứng cải thiện rõ rệt 🟢 | success | subtitle: Giảm liều dần về liều tối thiểu kiểm soát triệu chứng]
+          COMBO_FAIL[Không cải thiện triệu chứng | warning | subtitle: Đo theo dõi trào ngược ngoài điều trị (Off PPI) để tìm nguyên nhân thực sự]
 
-            <rect x="200" y="99" width="480" height="42" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
-            <text x="440" y="117" fill="#0f172a" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="700" text-anchor="middle">1. Loại trừ nguyên nhân không do trào ngược (Hô hấp, TMH, Dị ứng)</text>
-            <text x="440" y="132" fill="#64748b" font-family="'Inter', sans-serif" font-size="10.5" text-anchor="middle">2. Phân tầng thành 2 nhóm lâm sàng:</text>
+          PH_TEST[ĐO THEO DÕI TRÀO NGƯỢC NGOÀI ĐIỀU TRỊ (OFF PPI) NGAY 📊 | action | badge: ACG Khuyến cáo Mạnh | subtitle: Tuyệt đối KHÔNG điều trị thử PPI theo kinh nghiệm khi không có ợ nóng/trớ]
+          PH_RES{Kết quả đo theo dõi trào ngược (AET)? | question}
+          EXTRA_GERD[AET > 6% (Bất thường): Xác nhận trào ngược gây bệnh ⭐ | danger | subtitle: Khởi động điều trị PPI liều tối ưu hoặc can thiệp chống trào ngược]
+          EXTRA_NON[AET < 4% (Bình thường): Loại trừ hoàn toàn GERD 🟢 | success | subtitle: Dừng ngay PPI - Tránh lạm dụng thuốc kéo dài vô ích]
 
-            
-            <path d="M 440 141 L 440 165 L 240 165 L 240 185" fill="none" stroke="#64748b" stroke-width="2"/>
-            <polygon points="236,185 240,192 244,185" fill="#64748b"/>
+          START --> EXCL
+          EXCL --> SUBGROUP
+          SUBGROUP ==>|Kèm ợ nóng / trớ| COMBO
+          SUBGROUP ==>|Chỉ có ngoài thực quản| EXTRA_ONLY
 
-            <path d="M 440 141 L 440 165 L 640 165 L 640 185" fill="none" stroke="#64748b" stroke-width="2"/>
-            <polygon points="636,185 640,192 644,185" fill="#64748b"/>
+          COMBO --> PPI_BID
+          PPI_BID --> RESP_COMBO
+          RESP_COMBO -->|Cải thiện| COMBO_OK
+          RESP_COMBO -->|Không đỡ| COMBO_FAIL
+          COMBO_FAIL --> PH_TEST
 
-            
-            <rect x="110" y="192" width="260" height="46" rx="8" fill="#ffffff" stroke="#0284c7" stroke-width="2"/>
-            <text x="240" y="211" fill="#0284c7" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="700" text-anchor="middle">Nhóm Có CẢ 2 Triệu Chứng</text>
-            <text x="240" y="227" fill="#475569" font-family="'Inter', sans-serif" font-size="10" text-anchor="middle">(Ợ nóng/Trớ + Ngoài thực quản)</text>
-
-            <line x1="240" y1="238" x2="240" y2="265" stroke="#0284c7" stroke-width="2"/>
-            <polygon points="236,265 240,272 244,265" fill="#0284c7"/>
-
-            <rect x="110" y="272" width="260" height="46" rx="8" fill="url(#gBlue)"/>
-            <text x="240" y="291" fill="#ffffff" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" text-anchor="middle">Thử PPI Liều Gấp Đôi (BID)</text>
-            <text x="240" y="307" fill="#bae6fd" font-family="'Inter', sans-serif" font-size="10" text-anchor="middle">Uống trước ăn sáng &amp; tối trong 8–12 tuần</text>
-
-            
-            <path d="M 240 318 L 240 340 L 150 340 L 150 360" fill="none" stroke="#64748b" stroke-width="1.5"/>
-            <polygon points="147,360 150,366 153,360" fill="#64748b"/>
-
-            <path d="M 240 318 L 240 340 L 330 340 L 330 360" fill="none" stroke="#64748b" stroke-width="1.5"/>
-            <polygon points="327,360 330,366 333,360" fill="#64748b"/>
-
-            <rect x="70" y="366" width="160" height="44" rx="8" fill="url(#gGreen)"/>
-            <text x="150" y="384" fill="#ffffff" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" text-anchor="middle">Cải thiện triệu chứng</text>
-            <text x="150" y="399" fill="#dcfce7" font-family="'Inter', sans-serif" font-size="9.5" text-anchor="middle">Tiếp tục duy trì như GERD</text>
-
-            <rect x="250" y="366" width="160" height="44" rx="8" fill="#ffffff" stroke="#7c3aed" stroke-width="1.5"/>
-            <text x="330" y="384" fill="#7c3aed" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" text-anchor="middle">Không cải thiện</text>
-            <text x="330" y="399" fill="#64748b" font-family="'Inter', sans-serif" font-size="9.5" text-anchor="middle">Đo trào ngược Off PPI</text>
-
-            
-            <rect x="510" y="192" width="260" height="46" rx="8" fill="#ffffff" stroke="#e11d48" stroke-width="2"/>
-            <text x="640" y="211" fill="#be123c" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="700" text-anchor="middle">Nhóm CHỈ CÓ Triệu Chứng Ngoài Thực Quản</text>
-            <text x="640" y="227" fill="#475569" font-family="'Inter', sans-serif" font-size="10" text-anchor="middle">(Không kèm ợ nóng hoặc trớ)</text>
-
-            <line x1="640" y1="238" x2="640" y2="265" stroke="#e11d48" stroke-width="2"/>
-            <polygon points="636,265 640,272 644,265" fill="#e11d48"/>
-
-            <rect x="510" y="272" width="260" height="46" rx="8" fill="url(#gPurple)"/>
-            <text x="640" y="291" fill="#ffffff" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" text-anchor="middle">ĐO THEO DÕI TRÀO NGƯỢC (Off PPI)</text>
-            <text x="640" y="307" fill="#e9d5ff" font-family="'Inter', sans-serif" font-size="10" text-anchor="middle">Khảo sát khách quan trước khi kê đơn PPI</text>
-
-            
-            <path d="M 640 318 L 640 340 L 550 340 L 550 360" fill="none" stroke="#64748b" stroke-width="1.5"/>
-            <polygon points="547,360 550,366 553,360" fill="#64748b"/>
-
-            <path d="M 640 318 L 640 340 L 730 340 L 730 360" fill="none" stroke="#64748b" stroke-width="1.5"/>
-            <polygon points="727,360 730,366 733,360" fill="#64748b"/>
-
-            <rect x="470" y="366" width="160" height="44" rx="8" fill="url(#gGreen)"/>
-            <text x="550" y="384" fill="#ffffff" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" text-anchor="middle">Kết quả Bất thường</text>
-            <text x="550" y="399" fill="#dcfce7" font-family="'Inter', sans-serif" font-size="9.5" text-anchor="middle">Khẳng định GERD ➔ Trị PPI</text>
-
-            <rect x="650" y="366" width="160" height="44" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
-            <text x="730" y="384" fill="#334155" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" text-anchor="middle">Kết quả Bình thường</text>
-            <text x="730" y="399" fill="#64748b" font-family="'Inter', sans-serif" font-size="9.5" text-anchor="middle">Loại trừ GERD ➔ Tránh PPI</text>
-          </svg>
-          <div class="flowchart-caption">Hình 2. Thuật toán tiếp cận chẩn đoán các triệu chứng ngoài thực quản nghi do GERD theo ACG 2022.</div>
-        </div>
+          EXTRA_ONLY ==> PH_TEST
+          PH_TEST --> PH_RES
+          PH_RES ==>|Bất thường (AET > 6%)| EXTRA_GERD
+          PH_RES -->|Bình thường (AET < 4%)| EXTRA_NON
+        `}
+      />
 
       </div>
     </section>

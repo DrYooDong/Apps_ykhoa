@@ -201,6 +201,42 @@ sections:
     <article class="sec-card" id="sec-5">
       <div class="sec-hdr"><span class="sec-hdr-icon">🛡️</span> <h2 class="sec-title">5. Tóm Tắt Quy Trình Xử Trí Khẩn Cấp</h2></div>
       <div class="sec-body">
+        <FlowchartViewer 
+          title="Lưu Đồ Tiếp Cận & Gói Hồi Sức 1 Giờ Sốc Nhiễm Khuẩn (Hour-1 Bundle SSC 2021)"
+          code={`flowchart TD
+            START([Bệnh nhân nghi ngờ nhiễm trùng tại Cấp cứu hoặc Khoa phòng | start | badge: Sàng lọc qSOFA])
+            QSOFA{qSOFA ≥ 2 điểm? (Thở ≥ 22, GCS < 15, Huyết áp tâm thu ≤ 100) | question}
+
+            LOW[qSOFA 0 - 1: Theo dõi sát & đánh giá SOFA đầy đủ | success | subtitle: Tiếp tục tìm và điều trị ổ nhiễm khuẩn]
+            HIGH[qSOFA ≥ 2: NGUY CƠ NHIỄM KHUẨN HUYẾT / SỐC NẶNG 🚨 | danger | badge: Báo động đỏ | subtitle: Nguy cơ tử vong tăng vọt - Kích hoạt ngay Gói Hồi Sức 1 Giờ (Hour-1 Bundle)]
+
+            BUNDLE[GÓI HỒI SỨC 1 GIỜ CẤP CỨU (HOUR-1 BUNDLE SSC 2021) ⭐ | action | subtitle: 1. Đo Lactate máu ngay + 2. Cấy máu 2 bộ trước KS + 3. Kháng sinh phổ rộng TM trong 1h + 4. Bù dịch tinh thể 30 mL/kg nếu tụt HA hoặc Lactate ≥ 4]
+
+            HEMO{Huyết áp sau bù dịch 30 mL/kg? (MAP < 65 mmHg hoặc Lactate vẫn cao) | question}
+            
+            SEPTIC_SHOCK[SỐC NHIỄM KHUẨN (SEPTIC SHOCK) XÁC ĐỊNH 🚨 | danger | badge: Cần vận mạch | subtitle: Tụt huyết áp dai dẳng cần thuốc vận mạch để giữ MAP ≥ 65 mmHg VÀ Lactate > 2 mmol/L dù đã bù đủ dịch]
+            STABLE[Huyết động hồi phục ổn định: MAP ≥ 65 mmHg | success | subtitle: Tái đánh giá tưới máu mô & theo dõi độ thanh thải Lactate > 20% mỗi 2-4 giờ]
+
+            VASO[KHỞI ĐỘNG NOREPINEPHRINE ĐƯỜNG TĨNH MẠCH NGAY 💉 | action | badge: Thuốc hàng đầu | subtitle: Khởi đầu 0.05-0.1 mcg/kg/phút -> Tăng liều để giữ MAP ≥ 65 mmHg]
+            ADDON{Norepinephrine liều cao vẫn chưa đạt MAP ≥ 65 mmHg? | question}
+            VASOPRESSIN[Phối hợp thêm Vasopressin 0.03 UI/phút + Cân nhắc Hydrocortisone 200 mg/ngày | warning | subtitle: Thêm Dobutamine nếu có suy giảm co bóp cơ tim]
+            SOURCE[KIỂM SOÁT Ổ NHIỄM TRÙNG (SOURCE CONTROL) TRONG VÒNG 6-12 GIỜ 🛠️ | danger | badge: Sống còn | subtitle: Dẫn lưu áp xe, cắt lọc mô hoại tử hoặc rút bỏ catheter nhiễm trùng]
+
+            START --> QSOFA
+            QSOFA -->|qSOFA 0-1| LOW
+            QSOFA ==>|qSOFA ≥ 2| HIGH
+            HIGH --> BUNDLE
+            BUNDLE --> HEMO
+            HEMO -->|MAP ≥ 65 mmHg| STABLE
+            HEMO ==>|MAP < 65 mmHg / Tụt HA| SEPTIC_SHOCK
+            SEPTIC_SHOCK --> VASO
+            VASO --> ADDON
+            ADDON ==>|Chưa đạt| VASOPRESSIN
+            VASO --> SOURCE
+            VASOPRESSIN --> SOURCE
+          `}
+        />
+        <div style="margin-top: 1.5rem;"></div>
         <div class="infobox danger">
   <span class="infobox-icon">🚫</span>
   <div>

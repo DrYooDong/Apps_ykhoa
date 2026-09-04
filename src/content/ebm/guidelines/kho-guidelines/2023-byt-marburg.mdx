@@ -335,6 +335,32 @@ sections:
           </table>
         </div>
 
+        <div style="margin-top: 1.5rem;">
+          <FlowchartViewer
+            title="Lưu Đồ Phân Luồng Cách Ly, Chẩn Đoán & Hồi Sức Sốt Xuất Huyết Marburg (QĐ 2201/QĐ-BYT 2023)"
+            code={`graph TD
+  START["BỆNH NHÂN CÓ YẾU TỐ DỊCH TỄ VÙNG LƯU HÀNH & SỐT CAO ĐỘT NGỘT<br/><small>Đau đầu dữ dội, đau cơ, tiêu chảy cấp, phát ban dát sẩn hoặc xuất huyết</small>"]:::start --> TRIAGE["KÍCH HOẠT CÁCH LY PHÒNG LÂY NHIỄM CẤP ĐỘ CAO (PPE CẤP 3 - 4)<br/><small>• Cách ly phòng áp lực âm / phòng đơn riêng biệt • Kính bảo hộ, khẩu trang N95, áo choàng chống thấm<br/>• Báo cáo khẩn cơ quan y tế dự phòng • Đóng gói bệnh phẩm máu 3 lớp an toàn sinh học A</small>"]:::danger
+
+  TRIAGE --> LAB_DX["XÉT NGHIỆM KHẲNG ĐỊNH CĂN NGUYÊN (RT-PCR MÁU)<br/><small>Đồng thời làm CTM (Tiểu cầu, BC), Đông máu (INR, Fibrinogen), Men gan, Creatinine</small>"]:::action
+
+  LAB_DX --> PCR_RES{"Kết Quả Xét Nghiệm RT-PCR Marburg Lần 1?"}:::question
+
+  PCR_RES -- "RT-PCR Dương Tính (+)" --> CONFIRMED["XÁC CHẨN SỐT XUẤT HUYẾT MARBURG (MVD)<br/><small>Tiếp tục duy trì cách ly nghiêm ngặt và phân tầng biến chứng</small>"]:::danger
+
+  PCR_RES -- "RT-PCR Âm Tính (-) nhưng lâm sàng nghi ngờ" --> RETEST["LÀM LẠI RT-PCR SAU 72 GIỜ<br/><small>Không vội gỡ cách ly vì tải lượng vi rút có thể chưa đạt ngưỡng trong 72h đầu</small>"]:::warning
+
+  CONFIRMED --> STAGE_EVAL{"Đánh Giá Giai Đoạn Bệnh & Biến Chứng Tạng?"}:::question
+  RETEST --> STAGE_EVAL
+
+  STAGE_EVAL -- "Giai đoạn sớm (Khởi phát ngày 1 - 5): Sốt, nôn, tiêu chảy" --> SUPPORT_EARLY["ĐIỀU TRỊ HỖ TRỢ BẢO TỒN SỚM<br/><small>• Hạ sốt Paracetamol (CẤM TUYỆT ĐỐI Aspirin / NSAID / Tiêm bắp)<br/>• Bù nước điện giải đường uống (Oresol) hoặc truyền dịch đẳng trương<br/>• Chống nôn Metoclopramide / Chlorpromazine</small>"]:::success
+
+  STAGE_EVAL -- "Giai đoạn nặng (Ngày 6 - 16): Xuất huyết tạng, suy thận, sốc" --> ICU_RESUS["HỒI SỨC CẤP CỨU HỒI SỨC TÍCH CỰC (ICU)<br/><small>• Bù thể tích dịch truyền tĩnh mạch có kiểm soát CVP • Vận mạch Noradrenaline duy trì MAP ≥ 65<br/>• Truyền khối hồng cầu, tiểu cầu, huyết tương tươi đông lạnh khi xuất huyết rầm rộ / DIC<br/>• Thở oxy / Thở máy bảo vệ phổi • Lọc máu liên tục CRRT nếu suy thận cấp / toan hóa máu</small>"]:::danger
+
+  SUPPORT_EARLY --> DETECT_BLEED["THEO DÕI SÁT TỪ NGÀY 6-8: DẤU HIỆU XUẤT HUYẾT ĐA CƠ QUAN & SỐC MẤT MÁU"]:::start
+  ICU_RESUS --> RECOVERY["THEO DÕI HỒI PHỤC SAU NGÀY 15: BIẾN CHỨNG VIÊM TINH HOÀN & TIÊU CHUẨN XUẤT VIỆN"]:::action`}
+          />
+        </div>
+
         <div class="sec-subtitle"><i class="fa-solid fa-hospital-user"></i> Phân Tuyến Điều Trị &amp; Tiêu Chuẩn Xuất Viện</div>
 
         <div class="matrix-grid">
@@ -469,7 +495,6 @@ sections:
       <div class="sec-body">
         <div class="citation-box">
           <ol>
-<ul style="margin-left: 1.25rem; margin-bottom: 1rem; line-height: 1.65;">
             <li>Bộ Y tế Việt Nam. <em>Hướng dẫn chẩn đoán, điều trị, dự phòng và kiểm soát lây nhiễm bệnh sốt xuất huyết Marburg</em> (Ban hành kèm theo Quyết định số 2201/QĐ-BYT ngày 16 tháng 5 năm 2023 của Bộ trưởng Bộ Y tế). Hà Nội: Bộ Y tế; 2023.</li>
           </ol>
         </div>

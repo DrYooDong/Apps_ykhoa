@@ -51,7 +51,7 @@ sections:
 
 <PhysioQuickNav />
 
-<!-- DẢI CHỈ SỐ NHANH (QUICK STATS STRIP) -->
+{/* DẢI CHỈ SỐ NHANH (QUICK STATS STRIP) */}
 <section class="stats-strip">
   <div class="stats-grid">
     <div class="stat-card">
@@ -75,8 +75,7 @@ sections:
 
 ---
 
-## 1. Các Pha Trong Chu Kỳ Tim (0.8s) {#sec-1}
-
+## 1. Các Pha Trong Chu Kỳ Tim (0.8s)
 Ở tần số tim nghỉ ngơi **75 nhịp/phút**, mỗi chu kỳ tim kéo dài **$0.8\text{ giây}$**, bao gồm 2 giai đoạn chính:
 
 
@@ -102,7 +101,7 @@ sections:
         </marker>
       </defs>
 
-      <!-- Single Node: 1 CHU KỲ TIM = 0.8 GIÂY -->
+      {/* Single Node: 1 CHU KỲ TIM = 0.8 GIÂY */}
       <rect x="160.75" y="20" width="558.5" height="96" rx="10" fill="var(--blue-bg, #eff6ff)" stroke="var(--blue, #0284c7)" stroke-width="1.8"/>
       <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-primary, #0284c7)">1 CHU KỲ TIM = 0.8 GIÂY</text>
       <text x="184.75" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ├──► TÂM THU (Systole - 0.3 giây / Thất co tống máu):</text>
@@ -123,8 +122,7 @@ sections:
 
 ---
 
-## 2. Biểu Đồ Wiggers & Vòng Lặp PV Loop {#sec-2}
-
+## 2. Biểu Đồ Wiggers & Vòng Lặp PV Loop
 Vòng lặp Áp suất - Thể tích (Pressure-Volume Loop) là công cụ kinh điển khảo sát toàn diện huyết động học tâm thất trái:
 
 
@@ -150,7 +148,7 @@ Vòng lặp Áp suất - Thể tích (Pressure-Volume Loop) là công cụ kinh 
         </marker>
       </defs>
 
-      <!-- Single Node: Áp lực Thất Trái (mmHg) -->
+      {/* Single Node: Áp lực Thất Trái (mmHg) */}
       <rect x="160.75" y="20" width="558.5" height="186" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
       <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Áp lực Thất Trái (mmHg)</text>
       <text x="184.75" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• 120 ┌────────────────── C ────── D (Van ĐMC đóng - T2 / ESV</text>
@@ -174,8 +172,7 @@ Vòng lặp Áp suất - Thể tích (Pressure-Volume Loop) là công cụ kinh 
 
 ---
 
-## 3. Cung Lượng Tim & Định Luật Frank-Starling {#sec-3}
-
+## 3. Cung Lượng Tim & Định Luật Frank-Starling
 ### A. Công Thức Cung Lượng Tim (Cardiac Output - CO)
 Cung lượng tim là tổng thể tích máu mà tâm thất bơm vào tuần hoàn trong thời gian 1 phút:
 
@@ -196,9 +193,7 @@ $$\text{Tăng Tiền Tải (EDV)} \quad \Longrightarrow \quad \text{Kéo căng s
 
 ---
 
-## 4. Tiền Tải, Hậu Tải & Sức Co Bóp Cơ Tim {#sec-4}
-
-
+## 4. Tiền Tải, Hậu Tải & Sức Co Bóp Cơ Tim
 <div class="flowchart-card">
   <div class="flowchart-header">
     <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: THỂ TÍCH NHÁT BÓP (STROKE VOLUME)</div>
@@ -221,7 +216,7 @@ $$\text{Tăng Tiền Tải (EDV)} \quad \Longrightarrow \quad \text{Kéo căng s
         </marker>
       </defs>
 
-      <!-- Single Node: THỂ TÍCH NHÁT BÓP (STROKE VOLU -->
+      {/* Single Node: THỂ TÍCH NHÁT BÓP (STROKE VOLU */}
       <rect x="250" y="20" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
       <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">THỂ TÍCH NHÁT BÓP (STROKE VOLUME)</text>
       <path d="M 440 66 L 440 80 L 155 80 L 155 94" fill="none" stroke="var(--red, #ef4444)" stroke-width="1.8" marker-end="url(#arrRed)"/>
@@ -255,15 +250,13 @@ $$\text{Tăng Tiền Tải (EDV)} \quad \Longrightarrow \quad \text{Kéo căng s
 
 ---
 
-## 5. Sinh Lý Các Tiếng Tim (T1, T2, T3, T4) {#sec-5}
-
+## 5. Sinh Lý Các Tiếng Tim (T1, T2, T3, T4)
 - **Tiếng T1 (S1 - 'LUB')**: Do **ĐÓNG VAN 2 LÁ VÀ VAN 3 LÁ** ở đầu tâm thu. Nghe rõ nhất tại mỏm tim (Khoang liên sườn V đường trung đòn trái).
   - **Tiếng T2 (S2 - 'DUB')**: Do **ĐÓNG VAN ĐỘNG MẠCH CHỦ ($A_2$) VÀ VAN ĐỘNG MẠCH PHỔI ($P_2$)** ở đầu tâm trương. Nghe rõ nhất tại đáy tim (Khoang liên sườn II cạnh ức hai bên). Tách đôi sinh lý khi hít vào sâu.
   - **Tiếng T3 (S3 Gallop - Ngựa phi tâm thất)**: Do dòng máu dội nhanh và mạnh vào thành tâm thất bị giãn nhão và quá tải thể tích ở đầu tâm trương. Gặp trong **Suy tim phân suất tống máu giảm (HFrEF)** và Hở van 2 lá nặng.
   - **Tiếng T4 (S4 Gallop - Ngựa phi tâm nhĩ)**: Do tâm nhĩ co bóp tống máu vào buồng tâm thất dầy cứng, mất độ giãn nở ở cuối tâm trương. Gặp trong **Phì đại thất trái do Tăng huyết áp mạn tính** và Bệnh cơ tim phì đại.
 
-## 6. Tài Liệu Tham Khảo EBM {#sec-6}
-
+## 6. Tài Liệu Tham Khảo EBM
 <div class="citation-box">
   <ol style="margin: 0; padding-left: 1.25rem; line-height: 1.8; color: var(--color-text-muted, #475569); font-size: 0.88rem;">
     <li><strong>Hall, J. E., & Hall, M. E. (2021)</strong>. <em>Guyton and Hall Textbook of Medical Physiology</em> (14th ed.). Philadelphia: Elsevier. Chapters 9 & 20: Cardiac Muscle & Cardiac Output.</li>
@@ -274,7 +267,7 @@ $$\text{Tăng Tiền Tải (EDV)} \quad \Longrightarrow \quad \text{Kéo căng s
 </div>
 
 
-<!-- HÀNG NÚT ĐIỀU HƯỚNG SPA -->
+{/* HÀNG NÚT ĐIỀU HƯỚNG SPA */}
 <div class="btn-row">
   <a href="#/basic-medical/giai-phau-sinh-ly" class="btn btn-primary">
     <i class="fa-solid fa-arrow-left"></i> Quay lại Mục Lục Giải Phẫu & Sinh Lý

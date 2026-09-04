@@ -91,122 +91,33 @@ sections:
       </div>
       <div class="sec-body">
         <p style="font-size:0.86rem; color:var(--color-text-muted, #64748b); margin-bottom:1rem;">Mô hình hóa toàn diện quy trình tiếp cận bệnh nhân nghi ngờ Viêm gan do rượu cấp (AH) theo Hướng dẫn lâm sàng ACG 2024:</p>
-        <div class="svg-container">
-          <svg class="svg-flowchart" viewBox="0 0 940 680" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="940" height="680" rx="12" fill="var(--color-surface-2, #f8fafc)" />
-            
-            
-            <g transform="translate(290, 20)">
-              <rect width="360" height="54" rx="10" fill="#c2410c" stroke="#9a3412" stroke-width="2"/>
-              <text x="180" y="24" fill="#ffffff" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700" text-anchor="middle">NGHI NGỜ VIÊM GAN DO RƯỢU CẤP (AH)</text>
-              <text x="180" y="42" fill="#ffedd5" font-family="'Inter', sans-serif" font-size="10.5" text-anchor="middle">Vàng da &lt; 60 ngày + Rượu > 50g/d > 6 tháng + Bili > 3 mg/dL + AST 50–400 U/L</text>
-            </g>
+        <FlowchartViewer
+          title="Thuật Toán Tiếp Cận Chẩn Đoán &amp; Điều Trị Viêm Gan Do Rượu (ACG 2024)"
+          code={`graph TD
+  START["NGHI NGỜ VIÊM GAN DO RƯỢU CẤP (AH)<br/><small>Vàng da < 60 ngày + Rượu > 50g/ngày > 6 tháng + Bilirubin > 3 mg/dL + AST 50–400 U/L</small>"]:::danger --> EXCL["LOẠI TRỪ NGUYÊN NHÂN KHÁC<br/><small>Virus A/B/C/E, Tắc mật, DILI, Gan sốc, Viêm gan tự miễn<br/>Xác định: Probable AH (đủ tiêu chuẩn) vs Possible AH (có yếu tố nhiễu → Sinh thiết TJLB)</small>"]:::action
+  
+  EXCL --> SEV{"Phân Tầng Độ Nặng Theo Thang Điểm MELD"}:::question
+  
+  SEV -- "MELD ≤ 20 (Moderate AH)" --> MOD["MELD ≤ 20: Chăm Sóc Nâng Đỡ & Dinh Dưỡng<br/><small>• Bù dịch cẩn trọng, Dinh dưỡng 35 kcal/kg + Thiamine + Kẽm<br/>• Điều trị AUD: Baclofen 5-15mg x 3 lần/ngày</small>"]:::success
+  SEV -- "MELD > 20 (Severe AH)" --> SEV_AH["MELD > 20: Viêm Gan Nặng (Tử vong 90 ngày ~ 20%)<br/><small>• Đánh giá Spontaneous Recovery (Fast fallers)<br/>• Kiểm tra Chống chỉ định của Corticosteroids</small>"]:::warning
+  
+  SEV_AH --> CORT_WINDOW{"Đánh Giá Ngưỡng MELD & Chống Chỉ Định"}:::question
+  
+  CORT_WINDOW -- "MELD 21 – 39 (Lợi ích tối đa)" --> STEROIDS["Prednisolone 40 mg/ngày (hoặc Methylpred IV 32mg)<br/><small>Phối hợp IV N-Acetylcysteine (NAC) trong 5 ngày (giảm tử vong 85% do nhiễm trùng)</small>"]:::start
+  CORT_WINDOW -- "MELD > 50 hoặc Có Chống Chỉ Định" --> NO_STEROID["Chống Chỉ Định Dùng Corticosteroids<br/><small>Nhiễm trùng chưa kiểm soát, Xuất huyết tiêu hóa chưa ổn định<br/>→ Chuyển đánh giá GHÉP GAN SỚM (Early Liver Transplant)</small>"]:::danger
+  
+  STEROIDS --> LILLE{"Đánh Giá Thang Điểm LILLE Ở Ngày Thứ 4 Hoặc Ngày Thứ 7"}:::question
+  
+  LILLE -- "Lille ≤ 0.45 (Đáp ứng - Responder)" --> CONT["Tiếp Tục Prednisolone Đủ 28 Ngày<br/><small>Không cần giảm liều (taper) chậm dần • Chuyển tiếp điều trị kiêng rượu (Baclofen)</small>"]:::success
+  LILLE -- "Lille > 0.45 (Không đáp ứng - Non-responder)" --> STOP["DỪNG NGAY STEROIDS LẬP TỨC<br/><small>• CẤM tiếp tục steroids (tăng nguy cơ nhiễm nấm xâm lấn tử vong)<br/>• CẤM dùng Pentoxifylline làm thuốc cứu vãn (STOPAH vô hiệu)<br/>• Kích hoạt quy trình ĐÁNH GIÁ GHÉP GAN SỚM (SALT score, sống còn 84%)</small>"]:::danger
 
-            
-            <path d="M 470 74 L 470 102" stroke="#c2410c" stroke-width="2" marker-end="url(#arr-orange)"/>
-
-            
-            <g transform="translate(190, 102)">
-              <rect width="560" height="54" rx="10" fill="var(--surface)" stroke="#cbd5e1" stroke-width="1.5"/>
-              <text x="280" y="22" fill="var(--color-text, #0f172a)" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="700" text-anchor="middle">LOẠI TRỪ NGUYÊN NHÂN KHÁC (Virus A/B/C/E, Tắc mật, DILI, Gan sốc, Tự miễn)</text>
-              <text x="280" y="40" fill="var(--color-text-muted, #64748b)" font-family="'Inter', sans-serif" font-size="10.5" text-anchor="middle">Xác định: Probable AH (Đủ tiêu chuẩn) vs Possible AH (Có yếu tố nhiễu -> Sinh thiết TJLB)</text>
-            </g>
-
-            
-            <path d="M 470 156 L 470 190" stroke="#0284c7" stroke-width="2"/>
-            <path d="M 470 190 L 260 190 L 260 215" stroke="#059669" stroke-width="2" marker-end="url(#arr-green)"/>
-            <path d="M 470 190 L 680 190 L 680 215" stroke="#dc2626" stroke-width="2" marker-end="url(#arr-red)"/>
-
-            
-            
-            <g transform="translate(110, 215)">
-              <rect width="300" height="90" rx="10" fill="var(--surface)" stroke="#059669" stroke-width="2"/>
-              <text x="150" y="24" fill="#059669" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" text-anchor="middle">MELD ≤ 20 (MODERATE AH)</text>
-              <text x="15" y="44" fill="var(--color-text, #0f172a)" font-family="'Inter', sans-serif" font-size="10.5">• Chăm sóc nâng đỡ &amp; Bù dịch cẩn trọng</text>
-              <text x="15" y="62" fill="var(--color-text, #0f172a)" font-family="'Inter', sans-serif" font-size="10.5">• Dinh dưỡng 35 kcal/kg + Thiamine + Kẽm</text>
-              <text x="15" y="80" fill="#059669" font-family="'Inter', sans-serif" font-size="10.5" font-weight="700">• Điều trị AUD: Baclofen 5-15mg x 3 lần/ngày</text>
-            </g>
-
-            
-            <g transform="translate(530, 215)">
-              <rect width="300" height="90" rx="10" fill="var(--surface)" stroke="#dc2626" stroke-width="2"/>
-              <text x="150" y="24" fill="#dc2626" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" text-anchor="middle">MELD > 20 (SEVERE AH)</text>
-              <text x="15" y="44" fill="var(--color-text, #0f172a)" font-family="'Inter', sans-serif" font-size="10.5">• Tử vong 90 ngày tự nhiên ~ 20%</text>
-              <text x="15" y="62" fill="var(--color-text, #0f172a)" font-family="'Inter', sans-serif" font-size="10.5">• Đánh giá Spontaneous Recovery (Fast fallers)</text>
-              <text x="15" y="80" fill="#dc2626" font-family="'Inter', sans-serif" font-size="10.5" font-weight="700">• Kiểm tra Chống chỉ định của Corticosteroids</text>
-            </g>
-
-            
-            <path d="M 680 305 L 680 340" stroke="#dc2626" stroke-width="2" marker-end="url(#arr-red)"/>
-
-            
-            <g transform="translate(190, 340)">
-              <rect width="560" height="115" rx="12" fill="var(--surface)" stroke="#cbd5e1" stroke-width="1.5"/>
-              <text x="280" y="24" fill="var(--color-text, #0f172a)" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" text-anchor="middle">CỬA SỔ TRỊ LIỆU CORTICOSTEROIDS &amp; PHỐI HỢP IV NAC</text>
-              
-              
-              <rect x="15" y="36" width="255" height="68" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1"/>
-              <text x="142" y="54" fill="#1e40af" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="700" text-anchor="middle">MELD 21–39 (LỢI ÍCH TỐI ĐA)</text>
-              <text x="25" y="72" fill="#0f172a" font-family="'Inter', sans-serif" font-size="10">• Prednisolone 40 mg/ngày (hoặc IV 32mg)</text>
-              <text x="25" y="89" fill="#059669" font-family="'Inter', sans-serif" font-size="10" font-weight="600">• Phối hợp IV NAC trong 5 ngày (giảm tử vong 85%)</text>
-
-              
-              <rect x="290" y="36" width="255" height="68" rx="8" fill="#fef2f2" stroke="#fca5a5" stroke-width="1"/>
-              <text x="417" y="54" fill="#991b1b" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="700" text-anchor="middle">MELD > 50 HOẶC CÓ CHỐNG CHỈ ĐỊNH</text>
-              <text x="300" y="72" fill="#0f172a" font-family="'Inter', sans-serif" font-size="10">• Chống chỉ định: Nhiễm trùng chưa kiểm soát, XHTH</text>
-              <text x="300" y="89" fill="#dc2626" font-family="'Inter', sans-serif" font-size="10" font-weight="600">• Chuyển đánh giá GHÉP GAN SỚM (Early LT)</text>
-            </g>
-
-            
-            <path d="M 332 455 L 332 490" stroke="#0284c7" stroke-width="2" marker-end="url(#arr-blue)"/>
-
-            
-            <g transform="translate(110, 490)">
-              <rect width="440" height="52" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
-              <text x="220" y="22" fill="#38bdf8" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="700" text-anchor="middle">ĐÁNH GIÁ LILLE SCORE Ở NGÀY THỨ 4 HOẶC NGÀY THỨ 7</text>
-              <text x="220" y="39" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="10.5" text-anchor="middle">Quyết định tiếp tục liệu trình 28 ngày hay ngừng khẩn cấp</text>
-            </g>
-
-            
-            <path d="M 230 542 L 230 575" stroke="#059669" stroke-width="2" marker-end="url(#arr-green)"/>
-            <path d="M 430 542 L 430 575" stroke="#dc2626" stroke-width="2" marker-end="url(#arr-red)"/>
-
-            
-            
-            <g transform="translate(60, 575)">
-              <rect width="340" height="85" rx="10" fill="#f0fdf4" stroke="#059669" stroke-width="1.5"/>
-              <text x="170" y="24" fill="#065f46" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" text-anchor="middle">LILLE ≤ 0.45 (RESPONDER)</text>
-              <text x="15" y="44" fill="#0f172a" font-family="'Inter', sans-serif" font-size="10">• Tiếp tục Prednisolone cho đủ liệu trình 28 ngày</text>
-              <text x="15" y="60" fill="#0f172a" font-family="'Inter', sans-serif" font-size="10">• Không cần giảm liều (taper) chậm dần</text>
-              <text x="15" y="76" fill="#059669" font-family="'Inter', sans-serif" font-size="9.5" font-weight="700">✓ Chuyển tiếp điều trị duy trì kiêng cữ rượu bằng Baclofen</text>
-            </g>
-
-            
-            <g transform="translate(420, 575)">
-              <rect width="460" height="85" rx="10" fill="#fef2f2" stroke="#dc2626" stroke-width="1.5"/>
-              <text x="230" y="24" fill="#991b1b" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" text-anchor="middle">LILLE > 0.45 (NON-RESPONDER) -> DỪNG NGAY STEROIDS</text>
-              <text x="15" y="44" fill="#0f172a" font-family="'Inter', sans-serif" font-size="10">• <tspan font-weight="700" fill="#dc2626">CẤM tiếp tục steroids:</tspan> Không tăng sống còn, tăng vọt nấm xâm lấn</text>
-              <text x="15" y="60" fill="#0f172a" font-family="'Inter', sans-serif" font-size="10">• <tspan font-weight="700">CẤM dùng Pentoxifylline</tspan> làm thuốc cứu vãn (STOPAH)</text>
-              <text x="15" y="76" fill="#2563eb" font-family="'Inter', sans-serif" font-size="10" font-weight="700">🚀 ĐÁNH GIÁ GHÉP GAN SỚM (Bỏ quy tắc 6 tháng, SALT score, sống còn 84%)</text>
-            </g>
-
-            
-            <defs>
-              <marker id="arr-orange" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                <path d="M 0 1 L 10 5 L 0 9 z" fill="#c2410c"/>
-              </marker>
-              <marker id="arr-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                <path d="M 0 1 L 10 5 L 0 9 z" fill="#059669"/>
-              </marker>
-              <marker id="arr-red" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                <path d="M 0 1 L 10 5 L 0 9 z" fill="#dc2626"/>
-              </marker>
-              <marker id="arr-blue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                <path d="M 0 1 L 10 5 L 0 9 z" fill="#0284c7"/>
-              </marker>
-            </defs>
-          </svg>
-        </div>
+  classDef start fill:#e0f2fe,stroke:#0284c7,stroke-width:2px,color:#0369a1
+  classDef question fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#854d0e
+  classDef action fill:#eff6ff,stroke:#3b82f6,stroke-width:1.5px,color:#1e40af
+  classDef danger fill:#fee2e2,stroke:#ef4444,stroke-width:2px,color:#991b1b
+  classDef warning fill:#fef3c7,stroke:#f59e0b,stroke-width:2px,color:#92400e
+  classDef success fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#15803d`}
+        />
       </div>
     </section>
 

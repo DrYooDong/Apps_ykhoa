@@ -35,6 +35,15 @@ const tools = [
     badge: 'Sepsis-3'
   },
   {
+    id: 'flowchart-studio',
+    name: 'Clinical Flow Studio Pro — Thiết Kế Lưu Đồ Y Khoa',
+    category: 'Lưu Đồ Lâm Sàng & CDSS',
+    description: 'Trình soạn thảo Text-to-Flowchart DSL, canvas tương tác Pan/Zoom, duyệt rẽ nhánh phác đồ và xuất bản SVG chuẩn Editorial.',
+    icon: 'fa-diagram-project',
+    badge: 'Mới 2.0',
+    url: '/cong-cu/flowchart-studio'
+  },
+  {
     id: 'cardio-risk',
     name: 'Thang Điểm Nguy Cơ Tim Mạch (TIMI, GRACE & CHA2DS2-VASc)',
     category: 'Tim Mạch Lâm Sàng',
@@ -55,7 +64,7 @@ const tools = [
 
     <div class="tools-grid">
       {tools.map((tool) => (
-        <div class="tool-card">
+        <a href={tool.url || `#${tool.id}`} class="tool-card" style="text-decoration:none; color:inherit;">
           <div class="tool-icon-wrap">
             <i class:list={['fas', tool.icon]}></i>
           </div>
@@ -67,7 +76,7 @@ const tools = [
             <h3>{tool.name}</h3>
             <p>{tool.description}</p>
           </div>
-        </div>
+        </a>
       ))}
     </div>
   </div>

@@ -125,7 +125,7 @@ sections:
 
 <div class="page-content">
 
-  <!-- ==================== SECTION 1 ==================== -->
+  {/* ==================== SECTION 1 ==================== */}
   <div class="sec-card" id="sec-tong-quan-ganh-nang">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">🧠</span>
@@ -177,7 +177,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 2 ==================== -->
+  {/* ==================== SECTION 2 ==================== */}
   <div class="sec-card" id="sec-phuong-phap-prisma">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">📋</span>
@@ -231,29 +231,30 @@ sections:
       </div>
 
       <div class="sec-subtitle" style="margin-top: 1.5rem;">Lưu Đồ Quy Trình Sàng Lọc &amp; Tuyển Chọn Nghiên Cứu (PRISMA Flow Diagram)</div>
-      <div class="infobox info">
+      <FlowchartViewer 
+        title="Lưu Đồ Sàng Lọc & Tuyển Chọn Nghiên Cứu Chuẩn PRISMA (IDSA / OFID 2020)"
+        code={`flowchart TD
+          IDENT([Tổng số bản ghi xác định: n = 2.565 | start | badge: Tìm kiếm | subtitle: MEDLINE & EMBASE 2.562 + Nguồn khác 3])
+          DEDUP[Loại bỏ các bản ghi trùng lặp: n = 368 | action | subtitle: Còn lại 2.197 bản ghi độc lập]
+          SCREEN{Sàng lọc tiêu đề & tóm tắt? | question}
+          EXCL_SCR[Loại bỏ qua sàng lọc: n = 1.934 | warning | subtitle: Không liên quan lâm sàng hoặc không đúng đối tượng]
+          FULLTEXT[Đánh giá toàn văn nghiên cứu: n = 264 | action | subtitle: Kiểm tra tiêu chuẩn chọn vào & loại trừ chi tiết]
+          EXCL_FT[Loại bỏ sau đọc toàn văn: n = 225 | danger | subtitle: Không phải TBM 38, Không tách người lớn 58, Thiếu phác đồ chuẩn 30, Ngôn ngữ 27...]
+          QUAL[Tổng hợp định tính: n = 42 nghiên cứu | action | subtitle: Đánh giá chất lượng bằng thang điểm Downs & Black]
+          META[PHÂN TÍCH GỘP ĐỊNH LƯỢNG ⭐ | success | badge: 39 Nghiên Cứu | subtitle: 5.752 bệnh nhân người lớn - Đánh giá tử vong 3 tháng & di chứng thần kinh mRS]
+
+          IDENT --> DEDUP
+          DEDUP --> SCREEN
+          SCREEN -->|Không đạt| EXCL_SCR
+          SCREEN -->|Đủ điều kiện| FULLTEXT
+          FULLTEXT -->|Loại bỏ| EXCL_FT
+          FULLTEXT -->|Phù hợp| QUAL
+          QUAL --> META
+        `}
+      />
+      <div class="infobox info" style="margin-top: 1rem;">
         <span class="infobox-icon">📊</span>
         <div>
-          <strong>Lưu Đồ Sàng Lọc Nghiên Cứu Hệ Thống (Figure 1 OFID):</strong>
-          <pre style="font-family: monospace; font-size: 0.82rem; line-height: 1.6; margin-top: 0.5rem; overflow-x: auto;">
-[ TỔNG SỐ BẢN GHI XÁC ĐỊNH: n = 2565 ] (MEDLINE &amp; EMBASE: 2562 | Nguồn khác: 3)
-                                  │
-                                  ▼
-[ SỐ BẢN GHI SAU LOẠI BỎ TRÙNG LẶP: n = 2197 ]
-                                  │
-                 ┌────────────────┴────────────────┐
-                 ▼                                 ▼
-   [ SÀNG LỌC ĐỦ ĐIỀU KIỆN: n = 264 ]    [ BỊ LOẠI BỎ: n = 1934 ]
-                 │
-                 ├─────────────────────────────────┐
-                 ▼                                 ▼
-   [ NGHIÊN CỨU TỔNG HỢP: n = 42 ]       [ LOẠI BỎ TOÀN VĂN: n = 225 ]
-   (Tổng hợp định tính)                   - Không phải TBM / Không tiêu chuẩn (n=38)
-                 │                        - Dữ liệu người lớn không tách biệt (n=58)
-                 ▼                        - Không nêu rõ loại thuốc kháng lao (n=30)
-   [ PHÂN TÍCH GỘP META: n = 39 ]         - Không báo cáo kết cục quan tâm (n=9)
-   (5.752 bệnh nhân người lớn)            - Ngôn ngữ không phải tiếng Anh (n=27)...
-          </pre>
           Từ 2.565 bản ghi ban đầu, sau quá trình sàng lọc nghiêm ngặt 2 giai đoạn, có <strong>39 nghiên cứu nguyên bản</strong> với tổng cộng <strong>5.752 bệnh nhân người lớn</strong> đủ điều kiện đưa vào phân tích gộp định lượng kết cục tử vong và di chứng tàn tật.
         </div>
       </div>
@@ -261,7 +262,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 3 ==================== -->
+  {/* ==================== SECTION 3 ==================== */}
   <div class="sec-card" id="sec-dac-diem-lam-sang-vi-sinh">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">🔬</span>
@@ -338,7 +339,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 4 ==================== -->
+  {/* ==================== SECTION 4 ==================== */}
   <div class="sec-card" id="sec-ket-qua-tu-vong-3-thang">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">⏱️</span>
@@ -397,7 +398,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 5 ==================== -->
+  {/* ==================== SECTION 5 ==================== */}
   <div class="sec-card" id="sec-nguy-co-hiv-dia-ly">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">🌍</span>
@@ -459,7 +460,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 6 ==================== -->
+  {/* ==================== SECTION 6 ==================== */}
   <div class="sec-card" id="sec-di-chung-than-kinh">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">♿</span>
@@ -501,7 +502,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 7 ==================== -->
+  {/* ==================== SECTION 7 ==================== */}
   <div class="sec-card" id="sec-xu-huong-20-nam-dong-thuan">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">📈</span>
@@ -569,7 +570,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 8 ==================== -->
+  {/* ==================== SECTION 8 ==================== */}
   <div class="sec-card" id="sec-cheatsheet-mcq-ref">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">📚</span>
@@ -676,7 +677,7 @@ sections:
 
 </div>
 
-<!-- BOTTOM NAV -->
+{/* BOTTOM NAV */}
 <div style="margin-top: 1.5rem;">
   <div class="btn-row">
     <a href="#/ebm/kho-guidelines" class="btn btn-primary">

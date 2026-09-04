@@ -145,7 +145,7 @@ sections:
   </div>
 </div>
 
-<!-- SECTION 1: BỐI CẢNH LÂM SÀNG & ĐỊNH NGHĨA -->
+{/* SECTION 1: BỐI CẢNH LÂM SÀNG & ĐỊNH NGHĨA */}
 <div class="sec-card" id="sec-tongquan-bicanh">
   <div class="sec-hdr">
     <div class="sec-hdr-left">
@@ -199,7 +199,7 @@ sections:
   </div>
 </div>
 
-<!-- SECTION 2: PHÂN TÍCH CA LÂM SÀNG & SINH LÝ BỆNH -->
+{/* SECTION 2: PHÂN TÍCH CA LÂM SÀNG & SINH LÝ BỆNH */}
 <div class="sec-card" id="sec-sinhly-ca-benh">
   <div class="sec-hdr">
     <div class="sec-hdr-left">
@@ -262,7 +262,7 @@ sections:
   </div>
 </div>
 
-<!-- SECTION 3: QUY TRÌNH ĐÁNH GIÁ 5 BƯỚC -->
+{/* SECTION 3: QUY TRÌNH ĐÁNH GIÁ 5 BƯỚC */}
 <div class="sec-card" id="sec-quytrinh-5buoc">
   <div class="sec-hdr">
     <div class="sec-hdr-left">
@@ -325,7 +325,7 @@ sections:
   </div>
 </div>
 
-<!-- SECTION 4: LƯU ĐỒ TIẾP CẬN ĐIỀU TRỊ FIGURE 1 -->
+{/* SECTION 4: LƯU ĐỒ TIẾP CẬN ĐIỀU TRỊ FIGURE 1 */}
 <div class="sec-card" id="sec-luodo-figure1">
   <div class="sec-hdr">
     <div class="sec-hdr-left">
@@ -341,7 +341,7 @@ sections:
     </div>
   </div>
   <div class="sec-body">
-    <!-- Image Card (Image Asset Pipeline theo Rule 4) -->
+    {/* Image Card (Image Asset Pipeline theo Rule 4) */}
     <div class="fig-card">
       <img src="./images/2026-chest-toan-chuyen-hoa-fig1.png" alt="Figure 1 – Flow diagram showing the authors' process for treating a critically ill patient with severe metabolic acidemia" class="fig-img" loading="lazy" />
       <div class="fig-caption">
@@ -350,7 +350,7 @@ sections:
       </div>
     </div>
 
-    <!-- Inline SVG Re-creation (Rule 4.1 Flowchart Image to Visual Code) -->
+    {/* Inline SVG Re-creation (Rule 4.1 Flowchart Image to Visual Code) */}
     <div class="fig-card" style="margin-top: 25px;">
       <div style="width: 100%; overflow-x: auto; background: var(--color-surface); padding: 18px; border-radius: 8px; border: 1px solid var(--color-border);">
         <svg viewBox="0 0 960 620" width="100%" height="auto" style="min-width: 820px; font-family: system-ui, -apple-system, sans-serif;">
@@ -363,24 +363,24 @@ sections:
             </marker>
           </defs>
 
-          <!-- Top Node: Severe Metabolic Acidemia -->
+          {/* Top Node: Severe Metabolic Acidemia */}
           <rect x="50" y="25" width="340" height="65" rx="8" fill="#0284c7" stroke="#0369a1" stroke-width="2"/>
           <text x="220" y="50" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">Toan Chuyển Hóa Nặng</text>
           <text x="220" y="73" text-anchor="middle" font-size="14" font-weight="600" fill="#e0f2fe">(pH &lt; 7.20)</text>
 
-          <!-- Vertical line down -->
+          {/* Vertical line down */}
           <line x1="220" y1="90" x2="220" y2="155" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arr-blue)"/>
           <text x="210" y="115" text-anchor="end" font-size="11" font-weight="600" fill="var(--color-text-muted, #64748b)">Xử trí &amp; Đánh giá</text>
           <text x="210" y="132" text-anchor="end" font-size="11" font-weight="600" fill="var(--color-text-muted, #64748b)">tiến hành đồng thời</text>
 
-          <!-- Branch to Workup -->
+          {/* Branch to Workup */}
           <line x1="220" y1="125" x2="420" y2="125" stroke="#059669" stroke-width="2" marker-end="url(#arr-blue)"/>
           <rect x="420" y="105" width="100" height="40" rx="6" fill="#059669"/>
           <text x="470" y="130" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">Workup</text>
 
           <line x1="520" y1="125" x2="550" y2="125" stroke="#059669" stroke-width="2" marker-end="url(#arr-blue)"/>
 
-          <!-- Workup Box (Right) -->
+          {/* Workup Box (Right) */}
           <rect x="550" y="55" width="380" height="145" rx="8" fill="#ecfeff" stroke="#0891b2" stroke-width="1.5"/>
           <text x="570" y="80" font-size="13" font-weight="600" fill="#0e7490">1. Bối cảnh lâm sàng (Clinical Context)</text>
           <text x="570" y="103" font-size="13" font-weight="600" fill="#0e7490">2. Đo Anion Gap hiệu chỉnh Albumin</text>
@@ -388,12 +388,12 @@ sections:
           <text x="570" y="149" font-size="13" font-weight="600" fill="#0e7490">4. Đo Delta Gap &amp; Delta Bicarbonate</text>
           <text x="570" y="172" font-size="13" font-weight="600" fill="#0e7490">5. Xét nghiệm đặc hiệu (Ceton, độc chất, men cơ...)</text>
 
-          <!-- Decision Node: Life-threatening K+ or Fluid contraindication -->
+          {/* Decision Node: Life-threatening K+ or Fluid contraindication */}
           <rect x="50" y="155" width="340" height="70" rx="8" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.5"/>
           <text x="220" y="182" text-anchor="middle" font-size="13" font-weight="700" fill="#0369a1">Tăng Kali Máu Đe Dọa Tính Mạng</text>
           <text x="220" y="205" text-anchor="middle" font-size="13" font-weight="700" fill="#0369a1">HOẶC Chống Chỉ Định Truyền Dịch?</text>
 
-          <!-- Branch Yes -> Urgent RRT -->
+          {/* Branch Yes -> Urgent RRT */}
           <line x1="220" y1="225" x2="220" y2="280" stroke="#ea580c" stroke-width="2"/>
           <line x1="220" y1="280" x2="420" y2="280" stroke="#ea580c" stroke-width="2" marker-end="url(#arr-orange)"/>
           <rect x="420" y="260" width="50" height="35" rx="5" fill="#64748b"/>
@@ -401,34 +401,34 @@ sections:
 
           <line x1="470" y1="280" x2="550" y2="280" stroke="#ea580c" stroke-width="2" marker-end="url(#arr-orange)"/>
 
-          <!-- Urgent RRT Box -->
+          {/* Urgent RRT Box */}
           <rect x="550" y="245" width="380" height="70" rx="8" fill="#ea580c" stroke="#c2410c" stroke-width="2"/>
           <text x="740" y="275" text-anchor="middle" font-size="15" font-weight="800" fill="#ffffff">CÂN NHẮC LỌC MÁU CẤP CỨU</text>
           <text x="740" y="298" text-anchor="middle" font-size="13" font-weight="600" fill="#ffedd5">(Urgent Renal Replacement Therapy - RRT)</text>
 
-          <!-- Branch No -> Consider IV Bicarbonate -->
+          {/* Branch No -> Consider IV Bicarbonate */}
           <line x1="220" y1="280" x2="220" y2="350" stroke="var(--color-border, #cbd5e1)" stroke-width="2" marker-end="url(#arr-blue)"/>
           <rect x="195" y="350" width="50" height="35" rx="5" fill="#64748b"/>
           <text x="220" y="373" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">KHÔNG</text>
 
           <line x1="220" y1="385" x2="220" y2="430" stroke="#ea580c" stroke-width="2" marker-end="url(#arr-orange)"/>
 
-          <!-- Consider Bicarbonate Box -->
+          {/* Consider Bicarbonate Box */}
           <rect x="60" y="430" width="320" height="50" rx="8" fill="#ea580c" stroke="#c2410c" stroke-width="2"/>
           <text x="220" y="460" text-anchor="middle" font-size="14" font-weight="800" fill="#ffffff">CÂN NHẮC NATRI BICARBONATE TM*</text>
 
-          <!-- Avoid in Box (Below Bicarb) -->
+          {/* Avoid in Box (Below Bicarb) */}
           <rect x="50" y="495" width="340" height="105" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-dasharray="4,4" stroke-width="1.5"/>
           <text x="220" y="520" text-anchor="middle" font-size="13" font-weight="800" fill="#dc2626">TRÁNH DÙNG (AVOID IN):</text>
           <text x="70" y="542" font-size="12" fill="#475569">• Hội chứng ly giải u (Tumor Lysis Syndrome)</text>
           <text x="70" y="562" font-size="12" fill="#475569">• Toan ceton do đái tháo đường (DKA)</text>
           <text x="70" y="582" font-size="12" fill="#475569">• Hạ Kali máu hoặc Hạ Canxi ion hóa chưa bù</text>
 
-          <!-- Converge to Etiologic Treatments -->
+          {/* Converge to Etiologic Treatments */}
           <line x1="740" y1="315" x2="740" y2="430" stroke="#ea580c" stroke-width="2" marker-end="url(#arr-orange)"/>
           <line x1="380" y1="455" x2="550" y2="455" stroke="#ea580c" stroke-width="2" marker-end="url(#arr-orange)"/>
 
-          <!-- Final Box: Etiologic Treatments -->
+          {/* Final Box: Etiologic Treatments */}
           <rect x="550" y="430" width="380" height="110" rx="8" fill="#f97316" stroke="#c2410c" stroke-width="2"/>
           <text x="740" y="460" text-anchor="middle" font-size="15" font-weight="800" fill="#ffffff">ĐIỀU TRỊ CĂN NGUYÊN GỐC RỄ**</text>
           <text x="570" y="485" font-size="12" fill="#ffffff">• Sốc: Hồi sức dịch, vận mạch &amp; kiểm soát ổ nhiễm trùng</text>
@@ -444,7 +444,7 @@ sections:
   </div>
 </div>
 
-<!-- SECTION 5: ĐỘNG HỌC BÙ KIỀM -->
+{/* SECTION 5: ĐỘNG HỌC BÙ KIỀM */}
 <div class="sec-card" id="sec-donghoc-bu-kiem">
   <div class="sec-hdr">
     <div class="sec-hdr-left">
@@ -528,7 +528,7 @@ sections:
   </div>
 </div>
 
-<!-- SECTION 6: THỰC CHỨNG LÂM SÀNG BICAR-ICU 1 & 2 -->
+{/* SECTION 6: THỰC CHỨNG LÂM SÀNG BICAR-ICU 1 & 2 */}
 <div class="sec-card" id="sec-thucchung-rct">
   <div class="sec-hdr">
     <div class="sec-hdr-left">
@@ -545,7 +545,7 @@ sections:
   </div>
   <div class="sec-body">
     <div class="updates-grid">
-      <!-- BICAR-ICU 1 -->
+      {/* BICAR-ICU 1 */}
       <div class="update-card">
         <div class="update-hdr">
           <div class="update-icon"><i class="fa-solid fa-flask"></i></div>
@@ -564,7 +564,7 @@ sections:
         </div>
       </div>
 
-      <!-- BICAR-ICU 2 -->
+      {/* BICAR-ICU 2 */}
       <div class="update-card highlight">
         <div class="update-hdr">
           <div class="update-icon"><i class="fa-solid fa-trophy"></i></div>
@@ -581,7 +581,7 @@ sections:
         </div>
       </div>
 
-      <!-- SODa-BIC -->
+      {/* SODa-BIC */}
       <div class="update-card">
         <div class="update-hdr">
           <div class="update-icon"><i class="fa-solid fa-heart-circle-bolt"></i></div>
@@ -599,7 +599,7 @@ sections:
   </div>
 </div>
 
-<!-- SECTION 7: BẢNG TỔNG HỢP 8 THỬ NGHIỆM TABLE 3 -->
+{/* SECTION 7: BẢNG TỔNG HỢP 8 THỬ NGHIỆM TABLE 3 */}
 <div class="sec-card" id="sec-bang-tonghop-rct">
   <div class="sec-hdr">
     <div class="sec-hdr-left">
@@ -707,7 +707,7 @@ sections:
   </div>
 </div>
 
-<!-- SECTION 8: 5 CHỐNG CHỈ ĐỊNH / TRÁNH DÙNG -->
+{/* SECTION 8: 5 CHỐNG CHỈ ĐỊNH / TRÁNH DÙNG */}
 <div class="sec-card" id="sec-chong-chi-dinh">
   <div class="sec-hdr">
     <div class="sec-hdr-left">
@@ -724,7 +724,7 @@ sections:
   </div>
   <div class="sec-body">
     <div class="matrix-grid">
-      <!-- 1. DKA -->
+      {/* 1. DKA */}
       <div class="matrix-card">
         <div class="matrix-hdr">
           <span class="matrix-badge red">Chống Chỉ Định 1</span>
@@ -733,7 +733,7 @@ sections:
         <p>Mặc dù pH có thể giảm rất thấp, các tổng quan hệ thống chứng minh bù NaHCO3 <strong>không rút ngắn thời gian hết toan ceton hay hạ đường huyết</strong>. Ngược lại, kiềm hóa máu kích hoạt dịch chuyển K+ vào nội bào gây <strong>hạ kali máu chết người</strong>, tăng tạo thể ceton nghịch thường ở gan và chậm hồi phục ý thức.</p>
       </div>
 
-      <!-- 2. TLS -->
+      {/* 2. TLS */}
       <div class="matrix-card">
         <div class="matrix-hdr">
           <span class="matrix-badge red">Chống Chỉ Định 2</span>
@@ -742,7 +742,7 @@ sections:
         <p>Trước đây dùng kiềm hóa nước tiểu để hòa tan acid uric. Tuy nhiên, trong TLS luôn có tăng phosphate máu nặng. Kiềm hóa nước tiểu sẽ <strong>thúc đẩy lắng đọng tinh thể Canxi-Phosphate tại ống thận</strong>, gây tắc ống thận cấp và suy thận trơ. Hiện nay Rasburicase đã thay thế hoàn toàn vai trò của bicarbonate.</p>
       </div>
 
-      <!-- 3. Hạ Ca2+ ion hóa -->
+      {/* 3. Hạ Ca2+ ion hóa */}
       <div class="matrix-card highlight">
         <div class="matrix-hdr">
           <span class="matrix-badge amber">Nguy Hiểm Cấp Tính</span>
@@ -751,7 +751,7 @@ sections:
         <p>Toan máu bảo vệ nồng độ Ca2+ ion hóa tự do do làm giảm gắn kết của Ca2+ với albumin. Khi truyền kiềm nâng pH, Ca2+ tăng gắn kết với albumin và tạo phức hợp carbonate, dẫn tới <strong>tụt đột ngột Canxi ion hóa máu</strong>, gây co thắt phế quản, suy sụp co bóp cơ tim và loạn nhịp thất. <em>Bắt buộc bù Ca2+ trước khi truyền kiềm!</em></p>
       </div>
 
-      <!-- 4. Hạ Kali máu -->
+      {/* 4. Hạ Kali máu */}
       <div class="matrix-card">
         <div class="matrix-hdr">
           <span class="matrix-badge amber">Nguy Cơ Ngừng Tim</span>
@@ -760,7 +760,7 @@ sections:
         <p>Kiềm hóa máu kích thích bơm Na+/K+-ATPase đẩy ion K+ ồ ạt vào trong tế bào. Nếu bệnh nhân đã có hạ kali máu từ trước (K+ &lt; 3.5 mmol/L), việc truyền bicarbonate sẽ kích hoạt cơn xoắn đỉnh, rung thất và ngừng tim. Bắt buộc kiểm tra và bù kali máu an toàn trước.</p>
       </div>
 
-      <!-- 5. Phù phổi cấp vô niệu -->
+      {/* 5. Phù phổi cấp vô niệu */}
       <div class="matrix-card">
         <div class="matrix-hdr">
           <span class="matrix-badge red">Chỉ Định Lọc Máu Bắt Buộc</span>
@@ -772,7 +772,7 @@ sections:
   </div>
 </div>
 
-<!-- SECTION 9: CÀI ĐẶT MÁY THỞ & NGUY CƠ VILI -->
+{/* SECTION 9: CÀI ĐẶT MÁY THỞ & NGUY CƠ VILI */}
 <div class="sec-card" id="sec-thong-khi-phut">
   <div class="sec-hdr">
     <div class="sec-hdr-left">
@@ -823,7 +823,7 @@ sections:
   </div>
 </div>
 
-<!-- SECTION 10: KHUYẾN CÁO THỰC HÀNH LÂM SÀNG -->
+{/* SECTION 10: KHUYẾN CÁO THỰC HÀNH LÂM SÀNG */}
 <div class="sec-card" id="sec-khuyen-cao-thuc-hanh">
   <div class="sec-hdr">
     <div class="sec-hdr-left">
@@ -891,7 +891,7 @@ sections:
   </div>
 </div>
 
-<!-- SECTION 11: TÀI LIỆU THAM KHẢO CHUẨN AMA -->
+{/* SECTION 11: TÀI LIỆU THAM KHẢO CHUẨN AMA */}
 <div class="sec-card" id="sec-citation">
   <div class="sec-hdr">
     <div class="sec-hdr-left">

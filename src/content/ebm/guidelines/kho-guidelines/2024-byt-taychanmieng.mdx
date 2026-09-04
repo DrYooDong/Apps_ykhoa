@@ -158,8 +158,7 @@ sections:
             <div class="algo-icon" style="background:var(--blue)">I</div>
             <div class="algo-body">
               <h5>Chỉ đạo &amp; Chủ biên Hội đồng</h5>
-              <ul style="padding-left:1.2rem; margin-top:0.3rem">
-<ul style="margin-left: 1.25rem; margin-bottom: 1rem; line-height: 1.65;">
+              <ul style="padding-left:1.2rem; margin-top:0.3rem; margin-bottom: 1rem; line-height: 1.65;">
                 <li><strong>Chỉ đạo biên soạn:</strong> GS.TS. Trần Văn Thuấn (Thứ trưởng Bộ Y tế).</li>
                 <li><strong>Chủ biên:</strong> GS.TS. Nguyễn Văn Kính (Phó Chủ tịch thường trực Tổng Hội Y học Việt Nam, nguyên Giám đốc Bệnh viện Bệnh Nhiệt đới Trung ương).</li>
                 <li><strong>Đồng chủ biên:</strong> PGS.TS. Lương Ngọc Khuê (Cục trưởng Cục Quản lý Khám, chữa bệnh - Bộ Y tế).</li>
@@ -419,7 +418,32 @@ sections:
         <h2 class="sec-title">7. Lưu Đồ Phân Loại, Sàng Lọc &amp; Phân Luồng Xử Trí (Phụ lục 1 BYT)</h2>
       </div>
       <div class="sec-body">
-        <div class="algo-container">
+        <FlowchartViewer
+          title="Lưu Đồ Phân Loại, Sàng Lọc & Phân Luồng Điều Trị Bệnh Tay Chân Miệng (QĐ 292/QĐ-BYT)"
+          code={`graph TD
+  START["BỆNH NHÂN ĐẾN KHÁM TẠI CƠ SỞ Y TẾ<br/><small>Đo DHST • Đánh giá tri giác AVPU • Khám phát ban lòng bàn tay chân / loét miệng</small>"]:::start --> CLASSIFY{"Phân Độ Lâm Sàng Theo Tiêu Chuẩn Bộ Y Tế 2024?"}:::question
+  
+  CLASSIFY -- "ĐỘ 1 (Không biến chứng)<br/>Chỉ có loét miệng và/hoặc ban da" --> DEG1["ĐIỀU TRỊ NGOẠI TRÚ TẠI NHÀ<br/><small>• Hạ sốt Paracetamol 10-15 mg/kg, dinh dưỡng nguội mát<br/>• Cách ly 7 – 10 ngày • Tái khám mỗi 1-2 ngày<br/>• Dặn dò dấu hiệu cảnh báo nhập viện khẩn</small>"]:::success
+  
+  CLASSIFY -- "ĐỘ 2a (Biến chứng TK sớm)<br/>Giật mình < 2 lần/30p, Sốt > 39°C, nôn nhiều" --> DEG2A["NHẬP VIỆN NỘI TRÚ (Khoa Nhi)<br/><small>• Nằm đầu cao 30°, hạn chế kích thích<br/>• Uống Phenobarbital 5-7 mg/kg/ngày nếu quấy khóc/khó ngủ<br/>• Theo dõi sát tri giác và giật mình mỗi 4 – 6 giờ</small>"]:::action
+  
+  CLASSIFY -- "ĐỘ 2b (Biến chứng TK nặng)<br/>Giật mình ≥ 2 lần/30p hoặc thất điều, run chi" --> DEG2B{"Phân Nhóm Độ 2b?"}:::question
+  DEG2B -- "Nhóm 1 (Giật mình lúc khám / Mạch > 130)" --> DEG2B_N1["ĐIỀU TRỊ BUỒNG BỆNH NẶNG<br/><small>• Nằm đầu cao 30° • Thở oxy qua canula nếu cần<br/>• Phenobarbital 10-20 mg/kg truyền TM trong 30p<br/>• Theo dõi sát mạch, SpO2, tri giác mỗi 2 giờ</small>"]:::warning
+  DEG2B -- "Nhóm 2 (Mạch > 150, run chi, sốt cao trơ)" --> DEG2B_N2["CHỈ ĐỊNH DÙNG IVIG CẤP<br/><small>• Phenobarbital IV + IVIG 1 g/kg/ngày truyền trong 6-8h<br/>• Xét liều thứ 2 sau 24h nếu còn sốt cao hoặc mạch > 150<br/>• Chuyển phòng cấp cứu / hồi sức</small>"]:::danger
+  
+  CLASSIFY -- "ĐỘ 3 (Rối loạn thần kinh thực vật)<br/>Mạch > 170, HA cao, thở nhanh, vã mồ hôi" --> DEG3["HỒI SỨC CẤP CỨU ICU (ĐỘ 3)<br/><small>• Đặt nội khí quản thở máy sớm bảo vệ phổi<br/>• IVIG 1 g/kg/ngày x 2 ngày liên tiếp<br/>• Milrinone truyền TM (0.4 – 0.8 µg/kg/phút) hạ áp & bảo vệ tim<br/>• Đặt catheter động mạch xâm lấn liên tục</small>"]:::danger
+  
+  CLASSIFY -- "ĐỘ 4 (Sốc / Phù phổi cấp / Ngừng thở)<br/>Tím tái, CRT ≥ 3s, HA tụt/không đo được" --> DEG4["HỒI SỨC SỐC NGUY KỊCH (ĐỘ 4)<br/><small>• Thở máy thông số cao (PEEP cao chống phù phổi cấp)<br/>• Vận mạch: Dobutamin / Adrenaline / Noradrenaline<br/>• Lọc máu liên tục (CRRT) sớm nếu sốc trơ hoặc toan nặng<br/>• Chỉ định VA-ECMO cứu vãn khi suy tuần hoàn kháng trị</small>"]:::danger
+
+  classDef start fill:#e0f2fe,stroke:#0284c7,stroke-width:2px,color:#0369a1
+  classDef question fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#854d0e
+  classDef action fill:#eff6ff,stroke:#3b82f6,stroke-width:1.5px,color:#1e40af
+  classDef danger fill:#fee2e2,stroke:#ef4444,stroke-width:2px,color:#991b1b
+  classDef warning fill:#fef3c7,stroke:#f59e0b,stroke-width:2px,color:#92400e
+  classDef success fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#15803d`}
+        />
+
+        <div class="algo-container" style="margin-top: 1.5rem;">
           <div class="algo-node" style="border-left:4px solid var(--color-primary, #0284c7)">
             <div class="algo-icon" style="background:var(--color-primary, #0284c7)"><i class="fa-solid fa-user-check"></i></div>
             <div class="algo-body">
@@ -543,7 +567,6 @@ sections:
           <div>
             <strong>Chỉ định đặt nội khí quản và thở máy ở trẻ Độ 3 (sau 30-60 phút thở oxy đáp ứng kém):</strong>
             <ul style="padding-left:1.2rem; margin-top:0.3rem">
-<ul style="margin-left: 1.25rem; margin-bottom: 1rem; line-height: 1.65;">
               <li>Thở bất thường: cơn ngưng thở, thở nông, thở bụng, khò khè, thở rít thì hít vào, rút lõm ngực nặng.</li>
               <li>Nhịp thở nhanh &gt; 70 lần/phút (khi nằm yên, không sốt).</li>
               <li>Rối loạn thực vật nặng: SpO2 dao động, da xanh tái, vã mồ hôi, mạch &gt; 180 lần/phút (nằm yên, không sốt).</li>
@@ -798,7 +821,6 @@ sections:
       <div class="sec-body">
         <div class="citation-box">
           <ol>
-<ul style="margin-left: 1.25rem; margin-bottom: 1rem; line-height: 1.65;">
             <li>Bộ Y tế Việt Nam. <em>Hướng dẫn Chẩn đoán, điều trị bệnh tay chân miệng</em> (Ban hành kèm theo Quyết định số 292/QĐ-BYT ngày 06 tháng 02 năm 2024 của Bộ trưởng Bộ Y tế; thay thế Quyết định số 1003/QĐ-BYT ngày 30/03/2012). Hà Nội: Bộ Y tế; 2024.</li>
             <li>Bộ Y tế Việt Nam. Phụ lục 1: Phiếu đánh giá, phân độ và xử trí bệnh tay chân miệng; Phụ lục 2: Bảng tính cân nặng hiệu chỉnh ở trẻ em thừa cân béo phì. Hà Nội: Bộ Y tế; 2024.</li>
           </ol>

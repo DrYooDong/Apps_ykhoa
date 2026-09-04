@@ -297,19 +297,21 @@
     </div>
 
     <!-- JavaScript Dependencies -->
-    <script src="../../js/main.js"></script>
-    <script src="../../js/tools/medical-draw-engine.js"></script>
-    <script>
+    <script type="module">
+        import { ClinicalFlowEngine } from './clinical-flow-engine.ts';
+        import { MedicalFlowDSL } from './flowchart/flow-dsl-parser.ts';
+
         document.addEventListener('DOMContentLoaded', () => {
-            // Khởi tạo Medical Draw Engine
-            const engine = new MedicalDrawEngine({
+            // Khởi tạo Clinical Flow Engine 2.0
+            const engine = new ClinicalFlowEngine({
                 container: '#drawEngineViewport',
+                inspector: '#propertySidebar',
                 width: 1200,
                 height: 800,
                 onNodeSelect: (node) => showNodeInspector(node),
-                onEdgeSelect: (edge) => showEdgeInspector(edge),
-                onChange: () => updateEdgeOptions()
+                onStateChange: () => updateEdgeOptions()
             });
+            window.engine = engine;
 
             // Mẫu Sốc Phản Vệ theo Thông tư 51/2017/TT-BYT
             const templateAnaphylaxis = {
@@ -566,46 +568,35 @@
             const raw = document.getElementById('ai-gen-text').value.trim();
             if (!raw) return;
 
-            // Simple Protocol Parser (Split lines by arrows -> or numbers)
-            const lines = raw.split(/\n|->|→/).map(s => s.trim()).filter(Boolean);
-            const nodes = [];
-            const edges = [];
+            // Sử dụng MedicalFlowDSL.parse để phân tích văn bản hoặc mã Mermaid
+            let dslCode = raw;
+            if (!raw.startsWith('flowchart') && !raw.startsWith('graph')) {
+                // Tự động bọc thành flowchart TD nếu nhập danh sách dòng
+                const lines = raw.split(/\n|->|→/).map(s => s.trim()).filter(Boolean);
+                let formattedDsl = 'flowchart TD\n';
+                lines.forEach((line, idx) => {
+                    const id = `node_ai_${idx + 1}`;
+                    let type = idx === 0 ? 'start' : 'action';
+                    if (line.toLowerCase().includes('cấp cứu') || line.toLowerCase().includes('nguy kịch')) type = 'danger';
+                    else if (line.toLowerCase().includes('?') || line.toLowerCase().includes('nếu')) type = 'question';
+                    else if (line.toLowerCase().includes('liều') || line.toLowerCase().includes('mg')) type = 'dose';
+                    else if (line.toLowerCase().includes('ổn định') || line.toLowerCase().includes('cho về')) type = 'success';
 
-            lines.forEach((line, idx) => {
-                const id = `node-ai-${idx + 1}`;
-                let type = 'action';
-                let icon = 'fa-stethoscope';
-                if (idx === 0) { type = 'start'; icon = 'fa-notes-medical'; }
-                else if (line.toLowerCase().includes('nếu') || line.toLowerCase().includes('?') || line.toLowerCase().includes('kiểm tra')) { type = 'question'; icon = 'fa-vial'; }
-                else if (line.toLowerCase().includes('cấp cứu') || line.toLowerCase().includes('nguy') || line.toLowerCase().includes('adrenalin')) { type = 'danger'; icon = 'fa-truck-medical'; }
-                else if (line.toLowerCase().includes('ổn định') || line.toLowerCase().includes('cho về')) { type = 'success'; icon = 'fa-shield-halved'; }
-                else if (line.toLowerCase().includes('liều') || line.toLowerCase().includes('mg')) { type = 'dose'; icon = 'fa-pills'; }
-
-                nodes.push({
-                    id: id,
-                    type: type,
-                    title: line.substr(0, 45),
-                    subtitle: line.length > 45 ? line.substr(45, 60) : '',
-                    icon: icon,
-                    badge: `BƯỚC ${idx + 1}`,
-                    x: 240,
-                    y: 40 + idx * 130,
-                    width: 280
+                    formattedDsl += `  ${id}[${line} | type: ${type} | badge: BƯỚC ${idx + 1}]\n`;
+                    if (idx > 0) {
+                        formattedDsl += `  node_ai_${idx} --> ${id}\n`;
+                    }
                 });
+                dslCode = formattedDsl;
+            }
 
-                if (idx > 0) {
-                    edges.push({
-                        id: `edge-ai-${idx}`,
-                        source: `node-ai-${idx}`,
-                        target: id,
-                        type: type === 'danger' ? 'danger' : 'normal'
-                    });
-                }
-            });
-
-            engine.loadDiagram({ nodes, edges });
-            engine.autoLayout();
-            closeAiModal();
+            const parseRes = MedicalFlowDSL.parse(dslCode);
+            if (parseRes.success && parseRes.diagram) {
+                window.engine.load(parseRes.diagram);
+                closeAiModal();
+            } else {
+                alert('Lỗi cú pháp: ' + parseRes.errors.map(e => e.message).join('\n'));
+            }
         }
 
         function closeEmbedModal() {

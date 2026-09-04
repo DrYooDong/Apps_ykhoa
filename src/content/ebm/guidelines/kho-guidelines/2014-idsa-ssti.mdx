@@ -128,7 +128,7 @@ sections:
 
 <div class="page-content">
 
-  <!-- ==================== SECTION 1 ==================== -->
+  {/* ==================== SECTION 1 ==================== */}
   <div class="sec-card" id="sec-tong-quan-phan-loai-grade">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">📜</span>
@@ -193,7 +193,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 2 ==================== -->
+  {/* ==================== SECTION 2 ==================== */}
   <div class="sec-card" id="sec-luu-do-ssti-chinh">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">🔬</span>
@@ -201,7 +201,7 @@ sections:
     </div>
     <div class="sec-body">
 
-      <!-- FIGURE 1 CARD -->
+      {/* FIGURE 1 CARD */}
       <div class="fig-card">
         <img src="./images/2014-idsa-ssti-fig1.png" alt="Figure 1. Purulent and Nonpurulent SSTIs Algorithm - IDSA 2014" class="fig-img" loading="lazy" />
         <div class="fig-caption">
@@ -210,14 +210,49 @@ sections:
         </div>
       </div>
 
-      <!-- VISUAL DIAGRAM CODE: TÁI HIỆN CODE LƯU ĐỒ FIGURE 1 -->
+      <FlowchartViewer 
+        title="Lưu Đồ Phân Tầng Xử Trí SSTI Có Mủ & Không Mủ (IDSA 2014 Figure 1)"
+        code={`flowchart TD
+          SSTI([Nhiễm trùng da và mô mềm SSTI | start | badge: Khám ban đầu])
+          TYPE{Phân loại lâm sàng: Có mủ hay Không mủ? | question}
+          
+          PUR[Nhiễm trùng có mủ (Purulent) | danger | subtitle: Áp xe, nhọt - Chủ yếu Tụ cầu S. aureus]
+          NONPUR[Nhiễm trùng không mủ (Non-purulent) | action | subtitle: Viêm mô tế bào, quầng - Chủ yếu Liên cầu]
+          
+          PUR_MILD[Nhẹ: Áp xe đơn thuần | success | subtitle: Rạch và dẫn lưu I&D - Không cần kháng sinh]
+          PUR_MOD{Trung bình: Kèm SIRS? | question | subtitle: T > 38°C, HR > 90, WBC > 12k}
+          PUR_MOD_RX[I&D + Cấy mủ + Kháng sinh uống | warning | subtitle: TMP-SMX hoặc Doxycycline (phủ MRSA)]
+          PUR_SEV[Nặng: Thất bại I&D hoặc suy giảm MD | danger | badge: Nhập viện IV | subtitle: Vancomycin, Daptomycin hoặc Linezolid]
+          
+          NON_MILD[Nhẹ: Viêm mô tế bào khu trú | success | subtitle: Kháng sinh uống: Penicillin VK, Cephalexin]
+          NON_MOD{Trung bình: Kèm SIRS toàn thân? | question}
+          NON_MOD_RX[Nhập viện dùng kháng sinh IV | warning | subtitle: Cefazolin, Ceftriaxone, Penicillin G]
+          NON_SEV[Nặng: Hoại tử mô sâu hoặc sốc | danger | badge: Khẩn cấp ngoại | subtitle: Thám sát cắt lọc khẩn + Vanco + Pip-Tazo]
+
+          SSTI --> TYPE
+          TYPE ==>|Có mủ / Áp xe| PUR
+          TYPE -->|Không mủ / Viêm mô tế bào| NONPUR
+          
+          PUR --> PUR_MILD
+          PUR --> PUR_MOD
+          PUR_MOD ==>|Có SIRS| PUR_MOD_RX
+          PUR ==>|Thất bại/Suy giảm MD| PUR_SEV
+          
+          NONPUR --> NON_MILD
+          NONPUR --> NON_MOD
+          NON_MOD ==>|Có SIRS| NON_MOD_RX
+          NONPUR ==>|Dấu hiệu hoại tử/Sốc| NON_SEV
+        `}
+      />
+
+      {/* VISUAL DIAGRAM CODE: TÁI HIỆN CODE LƯU ĐỒ FIGURE 1 */}
       <div style="margin-top: 1.5rem; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; padding: 1.25rem;">
         <div style="text-align: center; font-weight: 700; font-size: 1.05rem; color: var(--color-primary); margin-bottom: 1.25rem;">
           <i class="fa-solid fa-diagram-project"></i> Sơ Đồ Thuật Toán Tái Hiện Bằng Code: Phân Tầng Xử Trí SSTI (IDSA 2014)
         </div>
 
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem;">
-          <!-- NHÁNH CÓ MỦ -->
+          {/* NHÁNH CÓ MỦ */}
           <div style="border: 2px solid #dc2626; border-radius: 10px; padding: 1rem; background: rgba(220, 38, 38, 0.03);">
             <div style="font-weight: 700; color: #dc2626; font-size: 1rem; border-bottom: 1px solid rgba(220, 38, 38, 0.2); padding-bottom: 0.5rem; margin-bottom: 0.75rem;">
               🩸 NHIỄM TRÙNG CÓ MỦ (PURULENT SSTIs)<br />
@@ -244,7 +279,7 @@ sections:
             </div>
           </div>
 
-          <!-- NHÁNH KHÔNG MỦ -->
+          {/* NHÁNH KHÔNG MỦ */}
           <div style="border: 2px solid #0284c7; border-radius: 10px; padding: 1rem; background: rgba(2, 132, 199, 0.03);">
             <div style="font-weight: 700; color: #0284c7; font-size: 1rem; border-bottom: 1px solid rgba(2, 132, 199, 0.2); padding-bottom: 0.5rem; margin-bottom: 0.75rem;">
               🧠 NHIỄM TRÙNG KHÔNG MỦ (NON-PURULENT SSTIs)<br />
@@ -278,7 +313,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 3 ==================== -->
+  {/* ==================== SECTION 3 ==================== */}
   <div class="sec-card" id="sec-choc-lo-khang-sinh-tu-cau">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">💊</span>
@@ -365,7 +400,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 4 ==================== -->
+  {/* ==================== SECTION 4 ==================== */}
   <div class="sec-card" id="sec-nhiem-trung-vet-mo-ssi">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">✂️</span>
@@ -383,7 +418,7 @@ sections:
         </div>
       </div>
 
-      <!-- FIGURE 2 CARD -->
+      {/* FIGURE 2 CARD */}
       <div class="fig-card" style="margin-top: 1.5rem;">
         <img src="./images/2014-idsa-ssti-fig2.png" alt="Figure 2. Algorithm for management of SSIs - IDSA 2014" class="fig-img" loading="lazy" />
         <div class="fig-caption">
@@ -392,14 +427,45 @@ sections:
         </div>
       </div>
 
-      <!-- VISUAL DIAGRAM CODE: TÁI HIỆN CODE LƯU ĐỒ FIGURE 2 -->
+      <FlowchartViewer 
+        title="Lưu Đồ Xử Trí Sốt Sau Mổ & Nhiễm Trùng Vết Mổ SSIs (IDSA 2014 Figure 2)"
+        code={`flowchart TD
+          SSI([Sốt hoặc nghi ngờ nhiễm trùng sau phẫu thuật | start])
+          TIME{Thời điểm khởi phát sốt sau mổ? | question}
+          
+          EARLY[Sốt sớm trong vòng 48h đầu | warning | subtitle: Đánh giá vết mổ kỹ lưỡng]
+          LATE[Sốt muộn > 4 ngày sau mổ | action | subtitle: Khám vết mổ tìm sưng đỏ/chảy dịch]
+          
+          E_NORM[Vết mổ bình thường | success | subtitle: Tìm nguyên nhân ngoài vết mổ: Xẹp phổi, phản ứng viêm]
+          E_ABN{Vết mổ có dịch mủ hoặc hoại tử? | question}
+          E_SURG[Mở vết mổ khẩn + Penicillin + Clindamycin | danger | badge: Khẩn cấp | subtitle: Nhuộm Gram tìm Streptococcus nhóm A hoặc Clostridium]
+          
+          L_CHECK{Dấu hiệu viêm mép mổ & toàn thân? | question}
+          L_MILD[Hồng ban < 5cm & T < 38.5 & WBC < 12k | success | subtitle: Cắt chỉ mở dẫn lưu - KHÔNG CẦN KHÁNG SINH]
+          L_SEV[Hồng ban > 5cm hoặc sốt cao > 38.5 | danger | badge: Cần kháng sinh | subtitle: Mở dẫn lưu + Kháng sinh toàn thân IV theo vị trí mổ]
+
+          SSI --> TIME
+          TIME -->|<= 48 giờ| EARLY
+          TIME -->|> 4 ngày| LATE
+          
+          EARLY --> E_NORM
+          EARLY --> E_ABN
+          E_ABN ==>|Dương tính Gram| E_SURG
+          
+          LATE --> L_CHECK
+          L_CHECK -->|Nhẹ / Khu trú| L_MILD
+          L_CHECK ==>|Nặng / Lan rộng| L_SEV
+        `}
+      />
+
+      {/* VISUAL DIAGRAM CODE: TÁI HIỆN CODE LƯU ĐỒ FIGURE 2 */}
       <div style="margin-top: 1.5rem; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; padding: 1.25rem;">
         <div style="text-align: center; font-weight: 700; font-size: 1.05rem; color: var(--color-primary); margin-bottom: 1.25rem;">
           <i class="fa-solid fa-diagram-project"></i> Sơ Đồ Thuật Toán Tái Hiện Bằng Code: Xử Trí Sốt Sau Phẫu Thuật &amp; Nhiễm Trùng Vết Mổ
         </div>
 
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
-          <!-- SỐT SỚM -->
+          {/* SỐT SỚM */}
           <div style="border: 2px solid #f59e0b; border-radius: 10px; padding: 1rem; background: rgba(245, 158, 11, 0.03);">
             <div style="font-weight: 700; color: #d97706; margin-bottom: 0.5rem;">⏱️ SỐT TRONG VÒNG 48 GIỜ ĐẦU SAU MỔ</div>
             <div style="font-size: 0.85rem; line-height: 1.6;">
@@ -411,7 +477,7 @@ sections:
             </div>
           </div>
 
-          <!-- SỐT MUỘN -->
+          {/* SỐT MUỘN */}
           <div style="border: 2px solid #0284c7; border-radius: 10px; padding: 1rem; background: rgba(2, 132, 199, 0.03);">
             <div style="font-weight: 700; color: #0284c7; margin-bottom: 0.5rem;">📅 SỐT XUẤT HIỆN MUỘN (&gt; 4 NGÀY SAU MỔ)</div>
             <div style="font-size: 0.85rem; line-height: 1.6;">
@@ -471,7 +537,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 5 ==================== -->
+  {/* ==================== SECTION 5 ==================== */}
   <div class="sec-card" id="sec-hoai-tu-viem-co-mu">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">☣️</span>
@@ -558,7 +624,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 6 ==================== -->
+  {/* ==================== SECTION 6 ==================== */}
   <div class="sec-card" id="sec-vet-can-phong-tai-phat">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">🐾</span>
@@ -633,7 +699,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 7 ==================== -->
+  {/* ==================== SECTION 7 ==================== */}
   <div class="sec-card" id="sec-suy-giam-mien-dich-steroid">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">🛡️</span>
@@ -720,7 +786,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 8 ==================== -->
+  {/* ==================== SECTION 8 ==================== */}
   <div class="sec-card" id="sec-nhiem-trung-dac-biet-mcq">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">🔬</span>
@@ -868,7 +934,7 @@ sections:
 
 </div>
 
-<!-- BOTTOM NAV -->
+{/* BOTTOM NAV */}
 <div style="margin-top: 1.5rem;">
   <div class="btn-row">
     <a href="#/ebm/kho-guidelines" class="btn btn-primary">

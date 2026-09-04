@@ -161,7 +161,7 @@ sections:
   </div>
 </div>
 
-<!-- SECTION 1: PHÁP LÝ & HỘI ĐỒNG BIÊN SOẠN -->
+{/* SECTION 1: PHÁP LÝ & HỘI ĐỒNG BIÊN SOẠN */}
 <div class="sec-card" id="sec-phaply">
   <div class="sec-hdr">
     <div class="sec-hdr-left">
@@ -221,7 +221,7 @@ sections:
   </div>
 </div>
 
-<!-- SECTION 2: ĐẠI CƯƠNG & YẾU TỐ NGUY CƠ -->
+{/* SECTION 2: ĐẠI CƯƠNG & YẾU TỐ NGUY CƠ */}
 <div class="sec-card" id="sec-daicuong-dichte">
   <div class="sec-hdr">
     <div class="sec-hdr-left">
@@ -296,7 +296,7 @@ sections:
   </div>
 </div>
 
-<!-- SECTION 3: CĂN NGUYÊN VI SINH & KHÁNG THUỐC -->
+{/* SECTION 3: CĂN NGUYÊN VI SINH & KHÁNG THUỐC */}
 <div class="sec-card" id="sec-vi-sinh-khang-thuoc">
   <div class="sec-hdr">
     <div class="sec-hdr-left">
@@ -391,7 +391,7 @@ sections:
   </div>
 </div>
 
-<!-- SECTION 4: TIÊU CHUẨN EORTC/MSG, ASPICU & BULPA -->
+{/* SECTION 4: TIÊU CHUẨN EORTC/MSG, ASPICU & BULPA */}
 <div class="sec-card" id="sec-tieuchuan-chandoan">
   <div class="sec-hdr">
     <div class="sec-hdr-left">
@@ -465,7 +465,7 @@ sections:
   </div>
 </div>
 
-<!-- SECTION 5: GIÁ TRỊ CẬN LÂM SÀNG & BIOMARKER -->
+{/* SECTION 5: GIÁ TRỊ CẬN LÂM SÀNG & BIOMARKER */}
 <div class="sec-card" id="sec-xet-nghiem-biomarker">
   <div class="sec-hdr">
     <div class="sec-hdr-left">
@@ -534,7 +534,7 @@ sections:
   </div>
 </div>
 
-<!-- SECTION 6: LƯU ĐỒ NHIỄM CANDIDA -->
+{/* SECTION 6: LƯU ĐỒ NHIỄM CANDIDA */}
 <div class="sec-card" id="sec-luodo-candida">
   <div class="sec-hdr">
     <div class="sec-hdr-left">
@@ -551,68 +551,28 @@ sections:
   </div>
   <div class="sec-body">
     <div class="fig-card">
-      <div style="width: 100%; overflow-x: auto; background: var(--color-surface); padding: 18px; border-radius: 8px; border: 1px solid var(--color-border);">
-        <svg viewBox="0 0 920 620" width="100%" height="auto" style="min-width: 780px; font-family: system-ui, -apple-system, sans-serif;">
-          <defs>
-            <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-              <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--color-primary, #0284c7)"/>
-            </marker>
-            <marker id="arrow-red" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-              <path d="M 0 1 L 10 5 L 0 9 z" fill="#dc2626"/>
-            </marker>
-          </defs>
+      <FlowchartViewer 
+        title="Sơ Đồ 1. Lưu Đồ Tiếp Cận Chẩn Đoán, Quản Lý & Tầm Soát Biến Chứng Nhiễm Candida Xâm Lấn (Bộ Y Tế)"
+        code={`flowchart TD
+          START([Bệnh nhân nguy cơ cao: ICU > 7 ngày, KS phổ rộng, CVC, TPN | start | badge: Sàng lọc lâm sàng | subtitle: Sốt kéo dài trơ kháng sinh ≥ 4-7 ngày HOẶC Candida Score ≥ 3])
+          WORKUP[Chỉ định xét nghiệm đồng thời khẩn cấp 🧪 | action | subtitle: Cấy máu ít nhất 2 bộ ≥ 20-30 mL + Xét nghiệm 1,3-beta-D-glucan BDG + Cấy bệnh phẩm vô trùng]
 
-          <!-- Top: Assessment of Risk -->
-          <rect x="230" y="20" width="460" height="65" rx="8" fill="var(--color-surface-elevated, #f8fafc)" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
-          <text x="460" y="45" text-anchor="middle" font-size="15" font-weight="700" fill="var(--color-text, #0f172a)">BỆNH NHÂN NGUY CƠ CAO (ICU &gt; 7 ngày, Kháng sinh phổ rộng, CVC, TPN)</text>
-          <text x="460" y="68" text-anchor="middle" font-size="13" fill="var(--color-text-muted, #64748b)">Sốt kéo dài trơ kháng sinh ≥ 4–7 ngày HOẶC Điểm Candida Score ≥ 3</text>
+          RES{Kết quả cấy máu & xét nghiệm BDG? | question}
+          POS[CẤY MÁU (+) CANDIDA HOẶC BDG (+) CAO 🚨 | danger | badge: Nhiễm Candida xâm lấn | subtitle: Khởi động Echinocandin TM ngay: Caspofungin / Anidulafungin / Micafungin]
+          NEG[Cấy máu (-) và BDG < 60 pg/mL 🟢 | success | badge: VPN > 95% | subtitle: Tìm nguyên nhân nhiễm trùng khác / Cân nhắc ngừng thuốc kháng nấm kinh nghiệm]
 
-          <line x1="460" y1="85" x2="460" y2="125" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arrow)"/>
+          ACTIONS[3 HÀNH ĐỘNG BẮT BUỘC TRONG TUẦN ĐẦU TIÊN ⭐ | warning | subtitle: 1. Rút catheter TMTT trong 24-48h + 2. Soi đáy mắt loại trừ viêm nội nhãn + 3. Cấy máu lặp lại mỗi 48h đến khi âm tính]
 
-          <!-- Step 2: Diagnostic Workup -->
-          <rect x="180" y="125" width="560" height="70" rx="8" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="2"/>
-          <text x="460" y="152" text-anchor="middle" font-size="14" font-weight="700" fill="var(--color-text, #0f172a)">CHỈ ĐỊNH XÉT NGHIỆM ĐỒNG THỜI NGAY LẬP TỨC</text>
-          <text x="460" y="175" text-anchor="middle" font-size="12" fill="var(--color-primary, #0284c7)">• Cấy máu ít nhất 2 bộ (≥ 20–30 mL)  • Xét nghiệm BDG (1,3-beta-D-glucan)  • Cấy bệnh phẩm vô trùng</text>
+          STEPDOWN[Xuống thang Fluconazole đường uống sau 5-7 ngày 💊 | success | badge: Tiêu chuẩn xuống thang | subtitle: Hết sốt, huyết động ổn, cấy máu âm tính & kháng nấm đồ AFST nhạy cảm - Điều trị đủ 14 ngày từ ngày cấy âm đầu tiên]
 
-          <!-- Branching -->
-          <line x1="330" y1="195" x2="230" y2="250" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arrow)"/>
-          <line x1="590" y1="195" x2="690" y2="250" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arrow)"/>
-
-          <!-- Left Branch: Cấy Máu (+) Hoặc BDG (+) -->
-          <rect x="80" y="250" width="320" height="85" rx="8" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
-          <text x="240" y="278" text-anchor="middle" font-size="14" font-weight="700" fill="#dc2626">CẤY MÁU (+) VỚI CANDIDA HOẶC BDG (+) CAO</text>
-          <text x="240" y="300" text-anchor="middle" font-size="12" fill="#7f1d1d">Nhiễm Candida xâm lấn / Nhiễm nấm huyết xác định</text>
-          <text x="240" y="320" text-anchor="middle" font-size="12" font-weight="600" fill="#dc2626">KHỞI ĐỘNG ECHINOCANDIN ĐƯỜNG TĨNH MẠCH NGAY</text>
-
-          <!-- Right Branch: Cấy (-) & BDG (-) -->
-          <rect x="530" y="250" width="320" height="85" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
-          <text x="690" y="278" text-anchor="middle" font-size="14" font-weight="700" fill="#16a34a">CẤY MÁU (-) VÀ BDG &lt; 60 pg/mL</text>
-          <text x="690" y="300" text-anchor="middle" font-size="12" fill="#14532d">Giá trị dự đoán âm tính rất cao (&gt; 95%)</text>
-          <text x="690" y="320" text-anchor="middle" font-size="12" fill="#14532d">Tìm nguyên nhân nhiễm trùng khác / Ngừng thuốc nấm</text>
-
-          <line x1="240" y1="335" x2="240" y2="385" stroke="#dc2626" stroke-width="2" marker-end="url(#arrow-red)"/>
-
-          <!-- 3 Compulsory Actions Box -->
-          <rect x="60" y="385" width="800" height="110" rx="8" fill="var(--color-surface-elevated, #f8fafc)" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
-          <text x="460" y="412" text-anchor="middle" font-size="15" font-weight="800" fill="#dc2626">3 HÀNH ĐỘNG BẮT BUỘC NGAY TRONG TUẦN ĐẦU TIÊN</text>
-          
-          <text x="80" y="440" font-size="13" font-weight="600" fill="var(--color-text, #0f172a)">1. Rút ống thông TMTT (CVC):</text>
-          <text x="280" y="440" font-size="13" fill="var(--color-text-muted, #64748b)">Thực hiện sớm trong 24–48 giờ; cấy đầu catheter định lượng.</text>
-
-          <text x="80" y="465" font-size="13" font-weight="600" fill="var(--color-text, #0f172a)">2. Soi đáy mắt (Ophthalmology):</text>
-          <text x="280" y="465" font-size="13" fill="var(--color-text-muted, #64748b)">Khám chuyên khoa mắt tuần đầu loại trừ Viêm nội nhãn do Candida (Endophthalmitis).</text>
-
-          <text x="80" y="490" font-size="13" font-weight="600" fill="var(--color-text, #0f172a)">3. Cấy máu lặp lại mỗi 48 giờ:</text>
-          <text x="280" y="490" font-size="13" fill="var(--color-text-muted, #64748b)">Theo dõi sát cho đến khi âm tính; thời gian điều trị tối thiểu 14 ngày tính từ ngày cấy âm tính đầu tiên.</text>
-
-          <!-- Step 4: Step-down -->
-          <line x1="460" y1="495" x2="460" y2="535" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arrow)"/>
-
-          <rect x="160" y="535" width="600" height="65" rx="8" fill="var(--color-surface, #ffffff)" stroke="#16a34a" stroke-width="2"/>
-          <text x="460" y="560" text-anchor="middle" font-size="14" font-weight="700" fill="#16a34a">XUỐNG THANG FLUCONAZOLE ĐƯỜNG UỐNG SAU 5–7 NGÀY</text>
-          <text x="460" y="583" text-anchor="middle" font-size="12" fill="var(--color-text-muted, #64748b)">Điều kiện: Hết sốt, huyết động ổn định, cấy máu âm tính, và kết quả AFST xác nhận chủng nhạy cảm.</text>
-        </svg>
-      </div>
+          START --> WORKUP
+          WORKUP --> RES
+          RES ==>|Dương tính (+)| POS
+          RES -->|Âm tính (-)| NEG
+          POS ==> ACTIONS
+          ACTIONS --> STEPDOWN
+        `}
+      />
       <div class="fig-caption">
         <div class="fig-title">Sơ Đồ 1. Lưu đồ tiếp cận chẩn đoán, quản lý và tầm soát biến chứng nhiễm nấm Candida xâm lấn (Theo QĐ 3429/QĐ-BYT).</div>
         Quy trình chuẩn hóa nhấn mạnh vai trò quyết định của nhóm Echinocandins trong giai đoạn khởi đầu, bắt buộc rút catheter TMTT và soi đáy mắt tuần đầu để phòng ngừa mù lòa do viêm nội nhãn.
@@ -621,7 +581,7 @@ sections:
   </div>
 </div>
 
-<!-- SECTION 7: LƯU ĐỒ & CT ASPERGILLUS -->
+{/* SECTION 7: LƯU ĐỒ & CT ASPERGILLUS */}
 <div class="sec-card" id="sec-luodo-aspergillus">
   <div class="sec-hdr">
     <div class="sec-hdr-left">
@@ -638,52 +598,31 @@ sections:
   </div>
   <div class="sec-body">
     <div class="fig-card">
-      <div style="width: 100%; overflow-x: auto; background: var(--color-surface); padding: 18px; border-radius: 8px; border: 1px solid var(--color-border);">
-        <svg viewBox="0 0 920 600" width="100%" height="auto" style="min-width: 780px; font-family: system-ui, -apple-system, sans-serif;">
-          <!-- Top -->
-          <rect x="200" y="20" width="520" height="65" rx="8" fill="var(--color-surface-elevated, #f8fafc)" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
-          <text x="460" y="45" text-anchor="middle" font-size="15" font-weight="700" fill="var(--color-text, #0f172a)">NGHI NGỜ ASPERGILLUS PHỔI XÂM LẤN (IPA)</text>
-          <text x="460" y="68" text-anchor="middle" font-size="13" fill="var(--color-text-muted, #64748b)">Giảm bạch cầu hạt, ghép tạng, COPD nặng dùng Corticoid, Cúm/COVID-19 nặng</text>
+      <FlowchartViewer 
+        title="Sơ Đồ 2. Lưu Đồ Tiếp Cận Chẩn Đoán & Điều Trị Aspergillus Phổi Xâm Lấn (IPA) (Bộ Y Tế)"
+        code={`flowchart TD
+          START([Nghi ngờ Aspergillus phổi xâm lấn (IPA) | start | badge: Yếu tố cơ địa | subtitle: Giảm bạch cầu hạt kéo dài, ghép tạng, dùng Corticoid liều cao, Cúm/COVID-19 nặng])
+          HRCT[Chụp cắt lớp vi tính độ phân giải cao (HRCT ngực) khẩn cấp 🫁 | action | subtitle: Tìm dấu hiệu Halo sign quầng sáng xuất huyết, Air-crescent liềm khí hang hóa, nốt mờ hình chêm]
 
-          <line x1="460" y1="85" x2="460" y2="125" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arrow)"/>
+          BRONCHO{Khả năng thực hiện nội soi phế quản? | question}
+          BAL[Nội soi phế quản lấy dịch rửa phế nang (BAL) 🔬 | action | badge: Tiêu chuẩn vàng | subtitle: Định lượng Galactomannan BAL (ngưỡng ≥ 1.0) + Soi tươi KOH huỳnh quang & Cấy nấm]
+          SERUM[Định lượng Galactomannan (GM) huyết thanh & BDG 🧪 | warning | badge: Không soi được | subtitle: GM huyết thanh đơn lẻ ≥ 1.0 hoặc 2 mẫu liên tiếp ≥ 0.7 + Soi cấy đờm/dịch hút NKQ]
 
-          <!-- Step 2: HRCT Chest -->
-          <rect x="160" y="125" width="600" height="75" rx="8" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
-          <text x="460" y="152" text-anchor="middle" font-size="15" font-weight="700" fill="#b45309">CHỤP CẮT LỚP VI TÍNH ĐỘ PHÂN GIẢI CAO (HRCT NGỰC) NGAY</text>
-          <text x="460" y="175" text-anchor="middle" font-size="12" fill="#78350f">Tìm dấu hiệu Halo sign (quầng sáng xuất huyết), Air crescent (liềm khí hang hóa), nốt mờ hình chêm đáy tựa màng phổi</text>
+          DIAG[XÁC ĐỊNH HOẶC NHIỀU KHẢ NĂNG (PROBABLE) MẮC IPA 🚨 | danger | badge: QĐ 3429/QĐ-BYT | subtitle: Lâm sàng + Hình ảnh HRCT điển hình + GM BAL/máu dương tính]
 
-          <!-- Branching -->
-          <line x1="330" y1="200" x2="240" y2="250" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arrow)"/>
-          <line x1="590" y1="200" x2="680" y2="250" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arrow)"/>
+          TX[KHỞI ĐỘNG VORICONAZOLE ĐƯỜNG TĨNH MẠCH NGAY ⭐ | danger | badge: Lựa chọn ưu tiên số 1 | subtitle: Nạp 6 mg/kg mỗi 12h x 2 liều ngày 1 -> Duy trì 4 mg/kg mỗi 12h (hoặc Isavuconazole 200mg/ngày)]
+          TDM[BẮT BUỘC ĐO NỒNG ĐỘ ĐÁY TDM VORICONAZOLE 📊 | action | badge: Giám sát an toàn | subtitle: Đo Cmin vào ngày thứ 4-7 điều trị, duy trì ngưỡng đích 1.5 - 4.5 µg/mL để phòng độc tính gan/thần kinh]
 
-          <!-- Left Branch: Nội soi phế quản lấy BAL -->
-          <rect x="60" y="250" width="360" height="95" rx="8" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
-          <text x="240" y="278" text-anchor="middle" font-size="14" font-weight="700" fill="var(--color-primary, #0284c7)">NỘI SOI PHẾ QUẢN LẤY DỊCH BAL</text>
-          <text x="240" y="300" text-anchor="middle" font-size="12" fill="var(--color-text, #0f172a)">• Xét nghiệm Galactomannan BAL (ngưỡng ≥ 1.0)</text>
-          <text x="240" y="320" text-anchor="middle" font-size="12" fill="var(--color-text, #0f172a)">• Soi tươi KOH, nhuộm huỳnh quang, cấy định danh nấm</text>
-
-          <!-- Right Branch: Huyết thanh & Không làm BAL được -->
-          <rect x="500" y="250" width="360" height="95" rx="8" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="2"/>
-          <text x="680" y="278" text-anchor="middle" font-size="14" font-weight="700" fill="var(--color-text, #0f172a)">ĐỊNH LƯỢNG GM HUYẾT THANH &amp; BDG</text>
-          <text x="680" y="300" text-anchor="middle" font-size="12" fill="var(--color-text-muted, #64748b)">• GM huyết thanh đơn lẻ ≥ 1.0 hoặc 2 mẫu ≥ 0.7</text>
-          <text x="680" y="320" text-anchor="middle" font-size="12" fill="var(--color-text-muted, #64748b)">• Soi cấy đờm hoặc dịch hút khí quản qua nội khí quản</text>
-
-          <line x1="240" y1="345" x2="350" y2="400" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arrow)"/>
-          <line x1="680" y1="345" x2="570" y2="400" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arrow)"/>
-
-          <!-- Confirmation & Treatment -->
-          <rect x="140" y="400" width="640" height="100" rx="8" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
-          <text x="460" y="428" text-anchor="middle" font-size="15" font-weight="800" fill="#dc2626">KHẲNG ĐỊNH NHIỀU KHẢ NĂNG (PROBABLE) / XÁC ĐỊNH IPA</text>
-          <text x="460" y="452" text-anchor="middle" font-size="13" font-weight="700" fill="#991b1b">ĐIỀU TRỊ ƯU TIÊN SỐ 1: VORICONAZOLE ĐƯỜNG TĨNH MẠCH</text>
-          <text x="460" y="475" text-anchor="middle" font-size="12" fill="#7f1d1d">Liều nạp: 6 mg/kg mỗi 12h x 2 liều ngày 1 → Duy trì: 4 mg/kg mỗi 12h (hoặc Isavuconazole 200mg/ngày)</text>
-
-          <line x1="460" y1="500" x2="460" y2="535" stroke="#dc2626" stroke-width="2" marker-end="url(#arrow-red)"/>
-
-          <!-- Follow-up -->
-          <rect x="200" y="535" width="520" height="50" rx="8" fill="var(--color-surface, #ffffff)" stroke="#d97706" stroke-width="2"/>
-          <text x="460" y="565" text-anchor="middle" font-size="13" font-weight="700" fill="#b45309">BẮT BUỘC ĐO TDM VORICONAZOLE (MỤC TIÊU Cmin: 1.5 – 4.5 µg/mL)</text>
-        </svg>
-      </div>
+          START --> HRCT
+          HRCT --> BRONCHO
+          BRONCHO ==>|Nội soi được| BAL
+          BRONCHO -->|Suy hô hấp nặng| SERUM
+          BAL ==> DIAG
+          SERUM ==> DIAG
+          DIAG ==> TX
+          TX --> TDM
+        `}
+      />
       <div class="fig-caption">
         <div class="fig-title">Sơ Đồ 2. Lưu đồ tiếp cận chẩn đoán và điều trị Aspergillus phổi xâm lấn (IPA) (Theo QĐ 3429/QĐ-BYT).</div>
         HRCT ngực sớm kết hợp xét nghiệm Galactomannan dịch rửa phế quản phế nang (BAL) là chìa khóa vàng giúp xác lập chẩn đoán sớm trước khi tổn thương lan rộng.
@@ -710,7 +649,7 @@ sections:
   </div>
 </div>
 
-<!-- SECTION 8: 4 CHIẾN LƯỢC ĐIỀU TRỊ -->
+{/* SECTION 8: 4 CHIẾN LƯỢC ĐIỀU TRỊ */}
 <div class="sec-card" id="sec-nguyentac-chienluoc">
   <div class="sec-hdr">
     <div class="sec-hdr-left">
@@ -781,7 +720,7 @@ sections:
   </div>
 </div>
 
-<!-- SECTION 9: PHÁC ĐỒ CANDIDA -->
+{/* SECTION 9: PHÁC ĐỒ CANDIDA */}
 <div class="sec-card" id="sec-phacdo-candida">
   <div class="sec-hdr">
     <div class="sec-hdr-left">
@@ -855,7 +794,7 @@ sections:
   </div>
 </div>
 
-<!-- SECTION 10: PHÁC ĐỒ ASPERGILLUS -->
+{/* SECTION 10: PHÁC ĐỒ ASPERGILLUS */}
 <div class="sec-card" id="sec-phacdo-aspergillus">
   <div class="sec-hdr">
     <div class="sec-hdr-left">
@@ -944,7 +883,7 @@ sections:
   </div>
 </div>
 
-<!-- SECTION 11: PHÁC ĐỒ CRYPTOCOCCUS -->
+{/* SECTION 11: PHÁC ĐỒ CRYPTOCOCCUS */}
 <div class="sec-card" id="sec-phacdo-cryptococcus">
   <div class="sec-hdr">
     <div class="sec-hdr-left">
@@ -1015,7 +954,7 @@ sections:
   </div>
 </div>
 
-<!-- SECTION 12: PHÁC ĐỒ PJP, TALAROMYCES & MUCOR -->
+{/* SECTION 12: PHÁC ĐỒ PJP, TALAROMYCES & MUCOR */}
 <div class="sec-card" id="sec-phacdo-pjp-talaro">
   <div class="sec-hdr">
     <div class="sec-hdr-left">
@@ -1032,7 +971,7 @@ sections:
   </div>
   <div class="sec-body">
     <div class="updates-grid">
-      <!-- PJP Card -->
+      {/* PJP Card */}
       <div class="update-card highlight">
         <div class="update-hdr">
           <div class="update-icon"><i class="fa-solid fa-lungs-virus"></i></div>
@@ -1054,7 +993,7 @@ sections:
         </div>
       </div>
 
-      <!-- Talaromyces Card -->
+      {/* Talaromyces Card */}
       <div class="update-card">
         <div class="update-hdr">
           <div class="update-icon"><i class="fa-solid fa-circle-nodes"></i></div>
@@ -1077,7 +1016,7 @@ sections:
       </div>
     </div>
 
-    <!-- Mucorales Alert -->
+    {/* Mucorales Alert */}
     <div class="infobox danger" style="margin-top: 20px;">
       <div class="ib-title"><i class="fa-solid fa-skull-crossbones"></i> 3. Tối Cấp Cứu Nhiễm Nấm Sợi Mucorales (Mucormycosis)</div>
       <div class="ib-body">
@@ -1092,7 +1031,7 @@ sections:
   </div>
 </div>
 
-<!-- SECTION 13: DƯỢC LÂM SÀNG, TDM & ĐỘC TÍNH -->
+{/* SECTION 13: DƯỢC LÂM SÀNG, TDM & ĐỘC TÍNH */}
 <div class="sec-card" id="sec-duoc-tdm-doctinh">
   <div class="sec-hdr">
     <div class="sec-hdr-left">
@@ -1161,7 +1100,7 @@ sections:
   </div>
 </div>
 
-<!-- SECTION 14: TÀI LIỆU THAM KHẢO & PHÁP QUY -->
+{/* SECTION 14: TÀI LIỆU THAM KHẢO & PHÁP QUY */}
 <div class="sec-card" id="sec-citation">
   <div class="sec-hdr">
     <div class="sec-hdr-left">

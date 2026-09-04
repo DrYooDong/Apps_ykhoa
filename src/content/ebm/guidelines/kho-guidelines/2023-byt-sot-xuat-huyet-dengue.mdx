@@ -369,6 +369,33 @@ sections:
       <div class="sec-body">
         <p style="font-size: 0.88rem; color: var(--color-text-muted, #64748b);">Sốc SXHD là tình trạng cấp cứu khẩn cấp do thoát huyết tương ồ ạt dẫn đến suy tuần hoàn. Cần bù nhanh thể tích dịch dưới sự giám sát liên tục.</p>
 
+        <FlowchartViewer
+          title="Lưu Đồ Hồi Sức Chống Sốc Sốt Xuất Huyết Dengue Chuẩn Bậc Thang (QĐ 2760/QĐ-BYT)"
+          code={`graph TD
+  START["SỐC SỐT XUẤT HUYẾT DENGUE<br/><small>Mạch nhanh nhỏ, HA kẹt (hiệu số ≤ 20 mmHg) hoặc tụt HA</small>"]:::danger --> GIO1["BÙ DỊCH TINH THỂ GIỜ ĐẦU TIÊN<br/><small>• Trẻ em: 20 ml/kg/giờ trong 1h (tụt HA: 20 ml/kg trong 30p)<br/>• Người lớn: 15 ml/kg/giờ trong 1h</small>"]:::start
+  
+  GIO1 --> D1{"Đánh Giá Đáp Ứng Huyết Động Sau Giờ Đầu?"}:::question
+  
+  D1 -- "ĐÁP ỨNG TỐT<br/>(Mạch rõ, HA hết kẹt, Hct giảm)" --> STEP_DOWN["HẠ DỊCH BẬC THANG<br/><small>• 10 ml/kg/h (1-2h)<br/>• 6-7.5 ml/kg/h (1-2h)<br/>• 3-5 ml/kg/h (2-4h)<br/>• 1.5-3 ml/kg/h (duy trì)</small>"]:::success
+  STEP_DOWN --> STOP["Ngừng dịch sau 24 – 48 giờ<br/><small>Tránh quá tải thể tích, theo dõi sát nước tiểu</small>"]:::action
+  
+  D1 -- "KHÔNG ĐÁP ỨNG<br/>(HA vẫn kẹt, mạch nhanh nhỏ)" --> CHECK_HCT{"Kiểm Tra Biến Thiên Hematocrit (Hct)?"}:::question
+  
+  CHECK_HCT -- "Hct còn cao / tăng<br/>(Thoát huyết tương tiếp diễn)" --> CPT["CHUYỂN CAO PHÂN TỬ (CPT)<br/><small>Dextran 40 / HES 200: 10 – 15 ml/kg/giờ trong 1 giờ</small>"]:::warning
+  CHECK_HCT -- "Hct giảm nhanh > 20% hoặc < 35%<br/>(Xuất huyết nội ẩn)" --> TRANSFUSE["TRUYỀN MÁU CẤP CỨU<br/><small>Hồng cầu lắng 5-10 ml/kg + CPT song song</small>"]:::danger
+  
+  CPT --> D2{"Đáp ứng sau CPT?"}:::question
+  D2 -- "Tốt" --> STEP_DOWN
+  D2 -- "Kém / Sốc trơ" --> REFRACTORY["SỐC TRƠ DỊCH / NGUY KỊCH<br/><small>• Test dịch CPT 5 ml/kg trong 30p (theo dõi CVP)<br/>• Vận mạch: Noradrenaline / Adrenaline<br/>• Xử trí toan chuyển hóa, hạ Calci (Quy tắc ABCS)</small>"]:::danger
+
+  classDef start fill:#e0f2fe,stroke:#0284c7,stroke-width:2px,color:#0369a1
+  classDef question fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#854d0e
+  classDef action fill:#eff6ff,stroke:#3b82f6,stroke-width:1.5px,color:#1e40af
+  classDef danger fill:#fee2e2,stroke:#ef4444,stroke-width:2px,color:#991b1b
+  classDef warning fill:#fef3c7,stroke:#f59e0b,stroke-width:2px,color:#92400e
+  classDef success fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#15803d`}
+        />
+
         <div class="sec-subtitle"><i class="fa-solid fa-child-reaching"></i> 1. Chống Sốc ở Trẻ em (&lt; 16 tuổi)</div>
         <div class="table-wrapper">
           <table class="data-table">

@@ -127,7 +127,7 @@ sections:
 
 <div class="page-content">
 
-  <!-- ==================== SECTION 1 ==================== -->
+  {/* ==================== SECTION 1 ==================== */}
   <div class="sec-card" id="sec-tong-quan-dich-te-sinh-ly">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">🧠</span>
@@ -214,7 +214,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 2 ==================== -->
+  {/* ==================== SECTION 2 ==================== */}
   <div class="sec-card" id="sec-chan-doan-hinh-anh-mri">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">🧲</span>
@@ -258,7 +258,7 @@ sections:
         </div>
       </div>
 
-      <!-- FIGURE 3 & 4 CARDS -->
+      {/* FIGURE 3 & 4 CARDS */}
       <div class="grid-2col" style="margin-top: 1.5rem;">
         <div class="fig-card">
           <img src="./images/2024-escmid-ap-xe-nao-fig3.png" alt="Figure 3. Forest plot of sensitivity and specificity of MRI DWI/ADC" class="fig-img" loading="lazy" />
@@ -280,7 +280,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 3 ==================== -->
+  {/* ==================== SECTION 3 ==================== */}
   <div class="sec-card" id="sec-tri-hoan-khang-sinh-lay-mau">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">⏳</span>
@@ -323,7 +323,7 @@ sections:
         </div>
       </div>
 
-      <!-- FIGURE 5 CARD -->
+      {/* FIGURE 5 CARD */}
       <div class="fig-card" style="margin-top: 1.5rem;">
         <img src="./images/2024-escmid-ap-xe-nao-fig5.png" alt="Figure 5. Odds ratios of establishing microbiological diagnosis by withholding antibiotics" class="fig-img" loading="lazy" />
         <div class="fig-caption">
@@ -335,7 +335,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 4 ==================== -->
+  {/* ==================== SECTION 4 ==================== */}
   <div class="sec-card" id="sec-xet-nghiem-phan-tu-pcr-ngs">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">🧬</span>
@@ -436,7 +436,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 5 ==================== -->
+  {/* ==================== SECTION 5 ==================== */}
   <div class="sec-card" id="sec-can-thiep-phau-thuat-than-kinh">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">🩺</span>
@@ -480,7 +480,7 @@ sections:
         </div>
       </div>
 
-      <!-- FIGURE 7 & 8 CARDS -->
+      {/* FIGURE 7 & 8 CARDS */}
       <div class="grid-2col" style="margin-top: 1.5rem;">
         <div class="fig-card">
           <img src="./images/2024-escmid-ap-xe-nao-fig7.png" alt="Figure 7. Risk of death according to surgery or not" class="fig-img" loading="lazy" />
@@ -502,7 +502,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 6 ==================== -->
+  {/* ==================== SECTION 6 ==================== */}
   <div class="sec-card" id="sec-phac-do-khang-sinh-kinh-nghiem">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">💊</span>
@@ -522,7 +522,7 @@ sections:
           </thead>
           <tbody>
             <tr>
-              <td class="source-cell"><strong>Áp xe não mắc phải cộng đồng</strong><br>(Miễn dịch bình thường)</td>
+              <td class="source-cell"><strong>Áp xe não mắc phải cộng đồng</strong><br />(Miễn dịch bình thường)</td>
               <td>
                 <span class="rx-tag preferred">Khuyến cáo Mạnh (Strong)</span><br />
                 • <strong>Cephalosporin thế hệ 3</strong> (Cefotaxime 2g q4-6h IV HOẶC Ceftriaxone 2g q12h IV)<br />
@@ -534,7 +534,7 @@ sections:
               </td>
             </tr>
             <tr>
-              <td class="source-cell"><strong>Bệnh nhân suy giảm miễn dịch nặng</strong><br>(Ghép tạng, ung thư, HIV)</td>
+              <td class="source-cell"><strong>Bệnh nhân suy giảm miễn dịch nặng</strong><br />(Ghép tạng, ung thư, HIV)</td>
               <td>
                 <span class="rx-tag alternative">Khuyến cáo Có điều kiện</span><br />
                 Phối hợp 4 thuốc bao phủ toàn diện:<br />
@@ -550,7 +550,7 @@ sections:
               </td>
             </tr>
             <tr>
-              <td class="source-cell"><strong>Áp xe sau phẫu thuật ngoại thần kinh</strong><br>(Post-neurosurgical)</td>
+              <td class="source-cell"><strong>Áp xe sau phẫu thuật ngoại thần kinh</strong><br />(Post-neurosurgical)</td>
               <td>
                 <span class="rx-tag alternative">Khuyến cáo Có điều kiện</span><br />
                 • <strong>Meropenem</strong> 2g IV mỗi 8 giờ<br />
@@ -565,10 +565,44 @@ sections:
         </table>
       </div>
 
+      <div style="margin-top: 1.5rem;">
+        <FlowchartViewer
+          title="Lưu Đồ Tiếp Cận Chẩn Đoán, Can Thiệp Ngoại Khoa & Kháng Sinh Kinh Nghiệm Áp Xe Não (ESCMID 2024)"
+          code={`graph TD
+  START["BỆNH NHÂN NGHI NGỜ ÁP XE NÃO TRÊN HÌNH ẢNH HỌC<br/><small>Tổn thương choán chỗ nội sọ dạng nang • Bắt thuốc viền hình nhẫn</small>"]:::start --> MRI_DWI["CHỤP MRI SỌ NÃO CHUỖI XUNG KHUẾCH TÁN (DWI / ADC)<br/><small>Tiêu chuẩn vàng: Dịch mủ hoại tử hạn chế khuếch tán (DWI tăng, ADC giảm)</small>"]:::action
+
+  MRI_DWI --> CRITICAL_CHECK{"Đánh Giá Nguy Cơ Nguy Kịch & Tụt Kẹt Não?"}:::question
+
+  CRITICAL_CHECK -- "NGUY KỊCH: Có Sepsis, GCS < 9 hoặc Phù não dọa thoát vị" --> IMMEDIATE_ABX["KHỞI TRỊ KHÁNG SINH TĨNH MẠCH CẤP CỨU NGAY<br/><small>• Không trì hoãn • Phối hợp Dexamethasone chống phù não cấp</small>"]:::danger
+
+  CRITICAL_CHECK -- "KHÔNG NGUY KỊCH: Huyết động ổn định, không dọa thoát vị não" --> DELAY_ABX["TRÌ HOÃN KHÁNG SINH NGẮN NGÀY (&lt; 24 GIỜ)<br/><small>Khuyến cáo ESCMID 2024: Tăng tỷ lệ cấy mủ dương tính từ 33% lên 80% (OR 10.5)</small>"]:::action
+
+  DELAY_ABX --> SURGERY["HỘI CHẨN NGOẠI THẦN KINH KHẨN CẤP<br/><small>Ưu tiên chọc hút mủ định vị (Stereotactic Aspiration) hoặc Mở hộp sọ cắt bỏ</small>"]:::start
+
+  SURGERY --> MICRO["XÉT NGHIỆM VI SINH TOÀN DIỆN BỆNH PHẨM MỦ<br/><small>Nhuộm Gram • Cấy ái khí, kỵ khí • 16S rDNA PCR / Giải trình tự metagenomic NGS</small>"]:::action
+
+  MICRO --> EMPIRIC_ABX{"Lựa Chọn Kháng Sinh Tĩnh Mạch Kinh Nghiệm Theo Phân Nhóm?"}:::question
+  IMMEDIATE_ABX --> EMPIRIC_ABX
+
+  EMPIRIC_ABX -- "Mắc phải tại cộng đồng<br/>(Miễn dịch bình thường)" --> REG_COMM["CEFTRIAXONE (2g q12h IV) + METRONIDAZOLE (500mg q8h IV)<br/><small>Bao phủ liên cầu khuẩn, phế cầu và vi khuẩn kỵ khí vùng tai mũi họng/răng</small>"]:::success
+
+  EMPIRIC_ABX -- "Bệnh nhân suy giảm miễn dịch<br/>(Ghép tạng, ung thư, HIV)" --> REG_IMMUNO["CEFTRIAXONE + METRONIDAZOLE + VORICONAZOLE + TMP-SMX<br/><small>Bao phủ mở rộng Nấm Aspergillus, Toxoplasma gondii & Nocardia</small>"]:::danger
+
+  EMPIRIC_ABX -- "Sau phẫu thuật ngoại thần kinh / Chấn thương sọ não" --> REG_POSTOP["MEROPENEM (2g q8h IV) + VANCOMYCIN / LINEZOLID<br/><small>Bao phủ MRSA, trực khuẩn Gram âm đa kháng & Pseudomonas</small>"]:::warning
+
+  REG_COMM --> DURATION{"Thời Gian Điều Trị Kháng Sinh Tĩnh Mạch?"}:::question
+  REG_IMMUNO --> DURATION
+  REG_POSTOP --> DURATION
+
+  DURATION -- "Ổ áp xe đã được chọc hút mủ (Aspirated)" --> DUR_6W["ĐIỀU TRỊ 6 - 8 TUẦN KHÁNG SINH TĨNH MẠCH"]:::action
+  DURATION -- "Ổ áp xe được phẫu thuật cắt bỏ trọn vẹn (Excised)" --> DUR_4W["ĐIỀU TRỊ 4 TUẦN KHÁNG SINH TĨNH MẠCH"]:::action`}
+        />
+      </div>
+
     </div>
   </div>
 
-  <!-- ==================== SECTION 7 ==================== -->
+  {/* ==================== SECTION 7 ==================== */}
   <div class="sec-card" id="sec-thoi-gian-tri-va-corticosteroid">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">⏱️</span>
@@ -627,7 +661,7 @@ sections:
         </div>
       </div>
 
-      <!-- FIGURE 17 CARD -->
+      {/* FIGURE 17 CARD */}
       <div class="fig-card" style="margin-top: 1.5rem;">
         <img src="./images/2024-escmid-ap-xe-nao-fig17.png" alt="Figure 17. Risk of death according to adjunctive dexamethasone treatment" class="fig-img" loading="lazy" />
         <div class="fig-caption">
@@ -639,7 +673,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 8 ==================== -->
+  {/* ==================== SECTION 8 ==================== */}
   <div class="sec-card" id="sec-du-phong-co-giat-mcq">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">⚡</span>
@@ -757,7 +791,7 @@ sections:
 
 </div>
 
-<!-- BOTTOM NAV -->
+{/* BOTTOM NAV */}
 <div style="margin-top: 1.5rem;">
   <div class="btn-row">
     <a href="#/ebm/kho-guidelines" class="btn btn-primary">

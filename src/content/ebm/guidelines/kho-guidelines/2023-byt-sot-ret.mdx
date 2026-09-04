@@ -126,7 +126,6 @@ sections:
             </div>
             <div class="update-card-body">
               <ul>
-<ul style="margin-left: 1.25rem; margin-bottom: 1rem; line-height: 1.65;">
                 <li><strong><i>P. falciparum (P.f):</i></strong> Phổ biến nhất, nguy cơ cao chuyển thành sốt rét ác tính và tử vong.</li>
                 <li><strong><i>P. vivax (P.v) &amp; P. ovale (P.o):</i></strong> Có thể ngủ trong gan (hypnozoite) gây tái phát xa, cần điều trị tiệt căn.</li>
                 <li><strong><i>P. malariae (P.m):</i></strong> Sốt chu kỳ 72 giờ, ít biến chứng nặng.</li>
@@ -366,6 +365,31 @@ sections:
 
         <div class="sec-subtitle" style="margin-top: 2rem;">B. PHÁC ĐỒ ĐIỀU TRỊ ĐẶC HIỆU SỐT RÉT ÁC TÍNH (ICU PROTOCOL)</div>
         <p style="margin-bottom: 1rem; font-size: 0.9rem;">Bắt buộc sử dụng <strong>thuốc tiêm đặc hiệu</strong> ngay từ giờ đầu tiên cho đến khi người bệnh tỉnh, nói được, hấp thu tốt qua đường tiêu hóa thì <strong>chuyển sang thuốc phối hợp đường uống (Pyramax) đủ 3 ngày</strong>.</p>
+
+        <FlowchartViewer
+          title="Lưu Đồ Phân Tuyến & Cấp Cứu Điều Trị Sốt Rét Ác Tính (QĐ 3377/QĐ-BYT)"
+          code={`graph TD
+  START["BỆNH NHÂN NGHI NGỜ / XÁC ĐỊNH SỐT RÉT<br/><small>Sốt + Xét nghiệm Lam máu / RDT tìm ký sinh trùng sốt rét (+)</small>"]:::start --> EVAL{"Có Ít Nhất 1/12 Tiêu Chuẩn Sốt Rét Ác Tính?<br/><small>Hôn mê, co giật, suy thở, sốc, suy thận, toan chuyển hóa, KST > 10%</small>"}:::question
+  
+  EVAL -- "KHÔNG (Thể thông thường)" --> ORAL["ĐIỀU TRỊ THỂ THÔNG THƯỜNG (ACTs ĐƯỜNG UỐNG)<br/><small>• P. falciparum: Pyramax uống 3 ngày + Primaquin 0.25mg/kg ngày 1<br/>• P. vivax: Chloroquin 3 ngày + Primaquin 0.25mg/kg x 14 ngày</small>"]:::success
+  EVAL -- "CÓ (Sốt rét ác tính)" --> ICU["CẤP CỨU HỒI SỨC ICU NGAY LẬP TỨC<br/><small>Hồi sức ABC, thở oxy/thông khí, chống co giật, kiểm tra đường huyết</small>"]:::danger
+  
+  ICU --> IVT["KHỞI ĐỘNG THUỐC TIÊM ĐẶC HIỆU: ARTESUNAT IV (Ưu tiên số 1)<br/><small>• Người lớn & trẻ > 20kg: 2.4 mg/kg IV<br/>• Trẻ em < 20kg: 3.0 mg/kg IV<br/>• Lịch tiêm: Giờ 0, Giờ 12, Giờ 24, sau đó mỗi 24h (tối thiểu 3 liều)</small>"]:::start
+  
+  IVT --> CLINICAL{"Bệnh nhân đã tỉnh, tự ngồi và dung nạp đường uống tốt?"}:::question
+  
+  CLINICAL -- "Chưa tỉnh / Còn hôn mê" --> CONT_IV["Tiếp Tục Artesunat IV Mỗi 24 Giờ<br/><small>Theo dõi biến chứng: hạ đường huyết, suy thận, phù phổi cấp</small>"]:::warning
+  CONT_IV --> CLINICAL
+  
+  CLINICAL -- "Đã tỉnh & dung nạp tốt" --> SWITCH["CHUYỂN TIẾP SANG THUỐC UỐNG ĐỦ LIỆU TRÌNH<br/><small>• Pyramax (Artesunat + Pyronaridin) uống đủ 3 ngày<br/>• Phối hợp Primaquin diệt giao bào (sau khi test G6PD an toàn)</small>"]:::success
+
+  classDef start fill:#e0f2fe,stroke:#0284c7,stroke-width:2px,color:#0369a1
+  classDef question fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#854d0e
+  classDef action fill:#eff6ff,stroke:#3b82f6,stroke-width:1.5px,color:#1e40af
+  classDef danger fill:#fee2e2,stroke:#ef4444,stroke-width:2px,color:#991b1b
+  classDef warning fill:#fef3c7,stroke:#f59e0b,stroke-width:2px,color:#92400e
+  classDef success fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#15803d`}
+        />
 
         <div class="table-wrapper">
           <table class="regimen-table">

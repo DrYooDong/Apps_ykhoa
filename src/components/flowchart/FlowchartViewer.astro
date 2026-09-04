@@ -1,0 +1,127 @@
+---
+/**
+ * FlowchartViewer.astro
+ * Component hiển thị Lưu đồ Y khoa Tương tác (Interactive Clinical Flowchart)
+ * Nhúng dễ dàng vào các trang Astro, MDX Guideline, Bệnh lý hoặc Dược lý.
+ * Hỗ trợ nạp trực tiếp qua mã Text/Code DSL hoặc JSON Schema.
+ */
+import { MedicalFlowDSL, type MedicalFlowDiagram } from './flow-dsl-parser';
+import '../../styles/components/clinical-flow-engine.css';
+
+export interface Props {
+  code?: string;
+  data?: MedicalFlowDiagram;
+  id?: string;
+  height?: number;
+  showInspector?: boolean;
+  title?: string;
+}
+
+const {
+  code,
+  data: inputData,
+  id = `flowchart-${Math.random().toString(36).substring(2, 9)}`,
+  height = 580,
+  showInspector = true,
+  title
+} = Astro.props;
+
+let diagram: MedicalFlowDiagram | null = null;
+let parseErrors: any[] = [];
+
+if (code) {
+  const result = MedicalFlowDSL.parse(code);
+  diagram = result.diagram;
+  parseErrors = result.errors;
+} else if (inputData) {
+  diagram = inputData;
+}
+
+const diagramJson = diagram ? JSON.stringify(diagram) : '';
+---
+
+<div class="clini-flowchart-wrapper" id={id} data-height={height}>
+  {title && (
+    <div class="flowchart-title-bar">
+      <span class="badge badge-primary"><i class="fa-solid fa-diagram-project"></i> Lưu đồ Lâm sàng</span>
+      <h3 class="flowchart-title">{title}</h3>
+    </div>
+  )}
+
+  {parseErrors.length > 0 && (
+    <div class="flow-parse-alert danger">
+      <strong><i class="fa-solid fa-triangle-exclamation"></i> Lỗi cú pháp DSL:</strong>
+      <ul>
+        {parseErrors.map(err => <li>Dòng {err.line}: {err.message}</li>)}
+      </ul>
+    </div>
+  )}
+
+  <div class:list={['clinical-decision-workspace', { 'no-inspector': !showInspector }]}>
+    <div class="clinical-flow-viewport-container flow-canvas-target" id={`${id}-canvas`}></div>
+
+    {showInspector && (
+      <div class="flow-inspector-target" id={`${id}-inspector`}></div>
+    )}
+  </div>
+</div>
+
+<script define:vars={{ id, diagramJson, showInspector }}>
+  import('../../components/clinical-flow-engine.ts').then(({ ClinicalFlowEngine }) => {
+    if (!diagramJson) return;
+
+    try {
+      const data = JSON.parse(diagramJson);
+      const engine = new ClinicalFlowEngine({
+        container: `#${id}-canvas`,
+        inspector: showInspector ? `#${id}-inspector` : undefined,
+        width: data.width || 960,
+        height: data.height || 640
+      });
+
+      engine.load(data);
+    } catch (e) {
+      console.error('Lỗi khởi tạo ClinicalFlowEngine:', e);
+    }
+  });
+</script>
+
+<style>
+  .clini-flowchart-wrapper {
+    margin: 1.75rem 0;
+    width: 100%;
+  }
+
+  .flowchart-title-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .flowchart-title {
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--color-text);
+  }
+
+  .flow-parse-alert {
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    background: var(--color-danger-hl);
+    border: 1px solid var(--color-danger);
+    color: var(--color-danger);
+    font-size: 0.85rem;
+  }
+
+  .flow-parse-alert ul {
+    margin: 0.35rem 0 0 1.25rem;
+    padding: 0;
+  }
+
+  .clinical-decision-workspace.no-inspector {
+    grid-template-columns: 1fr;
+  }
+</style>

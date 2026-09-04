@@ -132,7 +132,7 @@ sections:
 
 <div class="page-content">
 
-  <!-- ==================== SECTION 1 ==================== -->
+  {/* ==================== SECTION 1 ==================== */}
   <div class="sec-card" id="sec-dai-cuong-thuat-ngu">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">🔬</span>
@@ -176,7 +176,7 @@ sections:
         </div>
       </div>
 
-      <!-- BOX 1: TERMINOLOGY AND DEFINITIONS -->
+      {/* BOX 1: TERMINOLOGY AND DEFINITIONS */}
       <h3 style="margin-top: 1.5rem; margin-bottom: 0.75rem; font-size: 1.15rem; color: var(--color-primary);">
         <i class="fa-solid fa-list-ul"></i> Bảng Đối Chiếu 1: Hệ Thống Thuật Ngữ &amp; Định Nghĩa Chuẩn Y Khoa (Box 1 EASL)
       </h3>
@@ -217,7 +217,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 2 ==================== -->
+  {/* ==================== SECTION 2 ==================== */}
   <div class="sec-card" id="sec-sang-loc-rfhnpt">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">🔍</span>
@@ -259,78 +259,44 @@ sections:
         </div>
       </div>
 
-      <!-- SVG EDITORIAL: SCREENING AND ASSESSMENT FLOWCHART (FIG 1) -->
-      <div style="background: var(--color-surface, #ffffff); border: 1px solid var(--color-border, #e2e8f0); border-radius: 12px; padding: 1.25rem; margin-top: 1.5rem; margin-bottom: 1rem; overflow-x: auto;">
-        <svg viewBox="0 0 880 440" width="100%" height="auto" style="font-family: system-ui, -apple-system, sans-serif; display: block;" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <marker id="rfh-arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-              <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
-            </marker>
-          </defs>
+      <FlowchartViewer 
+        title="Lưu Đồ Sàng Lọc & Phân Tầng Nguy Cơ Dinh Dưỡng RFH-NPT (EASL 2019)"
+        code={`flowchart TD
+          START([Bệnh nhân Xơ Gan / Bệnh gan mạn cACLD | start | badge: EASL 2019])
+          TRIAGE{Sàng lọc ban đầu: BMI & Phân độ Child-Pugh | question}
 
-          <!-- TOP BOX: PATIENTS -->
-          <rect x="250" y="15" width="380" height="45" rx="8" fill="#eff6ff" stroke="#0284c7" stroke-width="2"/>
-          <text x="440" y="42" font-size="13" font-weight="bold" fill="#0369a1" text-anchor="middle">BỆNH NHÂN XƠ GAN / BỆNH GAN MẠN TIẾN TRIỂN (cACLD)</text>
+          CP_C[Child-Pugh C | danger | badge: Nguy cơ cao lập tức | subtitle: Xơ gan giai đoạn mất bù nặng]
+          LOW_BMI[BMI < 18.5 kg/m² | danger | badge: Nguy cơ cao lập tức | subtitle: Đa số đã có teo cơ lâm sàng]
+          STABLE[Child-Pugh A/B và BMI 18.5 - 29.9 | action | subtitle: Không có dấu hiệu nguy cơ cao rõ]
 
-          <!-- LINE DOWN -->
-          <path d="M 440 60 L 440 85" stroke="#0284c7" stroke-width="2" fill="none"/>
-          <path d="M 160 85 L 720 85" stroke="#0284c7" stroke-width="2" fill="none"/>
+          RFH{Sàng lọc bằng thang điểm RFH-NPT (< 3 phút) | question}
+          LOW_RISK[Nguy cơ thấp (0 điểm) | success | subtitle: Tái sàng lọc định kỳ mỗi năm]
+          HIGH_RISK[Nguy cơ Trung bình / Cao (>= 1 điểm) | danger | badge: Báo động | subtitle: Chuyển ngay bác sĩ dinh dưỡng]
 
-          <!-- 3 PATHS -->
-          <path d="M 160 85 L 160 110" stroke="#0284c7" stroke-width="2" fill="none" marker-end="url(#rfh-arrow)"/>
-          <path d="M 440 85 L 440 110" stroke="#0284c7" stroke-width="2" fill="none" marker-end="url(#rfh-arrow)"/>
-          <path d="M 720 85 L 720 110" stroke="#0284c7" stroke-width="2" fill="none" marker-end="url(#rfh-arrow)"/>
+          ASSESS[ĐÁNH GIÁ CHI TIẾT CỦA BÁC SĨ DINH DƯỠNG | action | badge: Đánh giá sâu | subtitle: Đo Teo cơ CT L3 SMI, HGS, RFH-GA, Nhật ký ăn uống 3 ngày]
+          RX[CAN THIỆP DINH DƯỠNG ĐÍCH ⭐ | success | badge: Điều trị | subtitle: Năng lượng >= 35 kcal/kg + Đạm 1.2-1.5g + Bữa phụ đêm LES]
 
-          <!-- CRITERIA 1: CHILD-PUGH C -->
-          <rect x="70" y="115" width="180" height="50" rx="8" fill="#fef2f2" stroke="#dc2626" stroke-width="1.5"/>
-          <text x="160" y="145" font-size="13" font-weight="bold" fill="#991b1b" text-anchor="middle">Child-Pugh C</text>
+          START --> TRIAGE
+          TRIAGE ==>|Child-Pugh C| CP_C
+          TRIAGE ==>|BMI < 18.5| LOW_BMI
+          TRIAGE -->|Child-Pugh A/B & BMI bình thường| STABLE
 
-          <!-- CRITERIA 2: BMI < 18.5 -->
-          <rect x="350" y="115" width="180" height="50" rx="8" fill="#fef2f2" stroke="#dc2626" stroke-width="1.5"/>
-          <text x="440" y="145" font-size="13" font-weight="bold" fill="#991b1b" text-anchor="middle">BMI &lt; 18.5 kg/m²</text>
+          CP_C ==> HIGH_RISK
+          LOW_BMI ==> HIGH_RISK
 
-          <!-- CRITERIA 3: CHILD A/B & BMI >= 18.5 -->
-          <rect x="630" y="115" width="180" height="50" rx="8" fill="#f8fafc" stroke="#64748b" stroke-width="1.5"/>
-          <text x="720" y="135" font-size="11" font-weight="bold" fill="#1e293b" text-anchor="middle">Child-Pugh A/B và</text>
-          <text x="720" y="152" font-size="11" fill="#475569" text-anchor="middle">BMI 18.5 – 29.9 kg/m²</text>
+          STABLE --> RFH
+          RFH -->|0 điểm| LOW_RISK
+          RFH ==>|>= 1 điểm| HIGH_RISK
 
-          <!-- FROM CRITERIA 3 TO RFH-NPT -->
-          <path d="M 720 165 L 720 190" stroke="#0284c7" stroke-width="2" fill="none" marker-end="url(#rfh-arrow)"/>
-          <rect x="630" y="195" width="180" height="40" rx="6" fill="#eff6ff" stroke="#0284c7" stroke-width="1.5"/>
-          <text x="720" y="220" font-size="12" font-weight="bold" fill="#0369a1" text-anchor="middle">SÀNG LỌC RFH-NPT</text>
-
-          <!-- FROM HIGH RISK TO DETAILED ASSESSMENT -->
-          <path d="M 160 165 L 160 260 L 320 260" stroke="#dc2626" stroke-width="2" fill="none"/>
-          <path d="M 440 165 L 440 260 L 320 260" stroke="#dc2626" stroke-width="2" fill="none"/>
-
-          <!-- RFH-NPT SPLIT -->
-          <path d="M 680 235 L 680 260 L 560 260" stroke="#d97706" stroke-width="2" fill="none"/>
-          <path d="M 760 235 L 760 300" stroke="#16a34a" stroke-width="2" fill="none" marker-end="url(#rfh-arrow)"/>
-
-          <!-- LOW RISK -->
-          <rect x="680" y="305" width="160" height="45" rx="6" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
-          <text x="760" y="325" font-size="11" font-weight="bold" fill="#14532d" text-anchor="middle">Nguy cơ thấp</text>
-          <text x="760" y="340" font-size="10" fill="#15803d" text-anchor="middle">Sàng lọc lại mỗi năm</text>
-
-          <!-- HIGH/MODERATE RISK HUB -->
-          <rect x="320" y="240" width="240" height="45" rx="8" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
-          <text x="440" y="267" font-size="13" font-weight="bold" fill="#991b1b" text-anchor="middle">NGUY CƠ CAO / TRUNG BÌNH</text>
-
-          <!-- DETAILED ASSESSMENT BOX -->
-          <path d="M 440 285 L 440 310" stroke="#0284c7" stroke-width="2" fill="none" marker-end="url(#rfh-arrow)"/>
-          <rect x="220" y="315" width="440" height="105" rx="10" fill="#f8fafc" stroke="#0284c7" stroke-width="2"/>
-          <text x="440" y="338" font-size="13" font-weight="bold" fill="#0f172a" text-anchor="middle">ĐÁNH GIÁ CHI TIẾT CỦA BÁC SĨ DINH DƯỠNG</text>
-          <line x1="240" y1="348" x2="640" y2="348" stroke="#cbd5e1" stroke-width="1"/>
-          <text x="240" y="370" font-size="11" fill="#334155">• <tspan font-weight="bold">Đo Teo cơ (Sarcopenia):</tspan> CT L3 SMI, Lực bóp tay (HGS), Đo chu vi cơ cánh tay (MAMC)</text>
-          <text x="240" y="390" font-size="11" fill="#334155">• <tspan font-weight="bold">Khảo sát Dinh dưỡng:</tspan> Thang điểm RFH-GA, nhật ký ăn uống 3 ngày, rào cản ăn nhạt</text>
-          <text x="240" y="410" font-size="11" font-weight="bold" fill="#0369a1">• TIẾN HÀNH ĐIỀU TRỊ ĐÍCH: Dinh dưỡng &ge; 35 kcal/kg + Đạm 1.2-1.5g + Bữa phụ đêm LES</text>
-        </svg>
-      </div>
+          HIGH_RISK ==> ASSESS
+          ASSESS --> RX
+        `}
+      />
 
     </div>
   </div>
 
-  <!-- ==================== SECTION 3 ==================== -->
+  {/* ==================== SECTION 3 ==================== */}
   <div class="sec-card" id="sec-danh-gia-chuyen-sau-ct">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">🦴</span>
@@ -391,7 +357,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 4 ==================== -->
+  {/* ==================== SECTION 4 ==================== */}
   <div class="sec-card" id="sec-sinh-ly-benh-truc-gan-co">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">🧬</span>
@@ -415,62 +381,62 @@ sections:
         </div>
       </div>
 
-      <!-- SVG EDITORIAL: MOLECULAR PATHWAYS & TARGETS (FIG 2) -->
-      <div style="background: var(--color-surface, #ffffff); border: 1px solid var(--color-border, #e2e8f0); border-radius: 12px; padding: 1.25rem; margin-top: 1.25rem; margin-bottom: 1rem; overflow-x: auto;">
+      {/* SVG EDITORIAL: MOLECULAR PATHWAYS & TARGETS (FIG 2) */}
+      <div style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; padding: 1.25rem; margin-top: 1.25rem; margin-bottom: 1rem; overflow-x: auto;">
         <svg viewBox="0 0 880 380" width="100%" height="auto" style="font-family: system-ui, -apple-system, sans-serif; display: block;" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <marker id="bio-arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-              <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+              <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-danger, #dc2626)"/>
             </marker>
           </defs>
 
-          <!-- LEFT: LIVER FAILURE & SHUNT -->
-          <rect x="30" y="20" width="220" height="70" rx="8" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
-          <text x="140" y="48" font-size="13" font-weight="bold" fill="#991b1b" text-anchor="middle">SUY GAN &amp; THÔNG NỐI</text>
-          <text x="140" y="68" font-size="11" fill="#7f1d1d" text-anchor="middle">CỬA - CHỦ (Portosystemic Shunt)</text>
+          {/* LEFT: LIVER FAILURE & SHUNT */}
+          <rect x="30" y="20" width="220" height="70" rx="8" fill="var(--color-surface-2, rgba(220,38,38,0.08))" stroke="var(--color-danger, #dc2626)" stroke-width="2"/>
+          <text x="140" y="48" font-size="13" font-weight="bold" fill="var(--color-danger, #dc2626)" text-anchor="middle">SUY GAN &amp; THÔNG NỐI</text>
+          <text x="140" y="68" font-size="11" fill="var(--color-text-muted, #64748b)" text-anchor="middle">CỬA - CHỦ (Portosystemic Shunt)</text>
 
-          <!-- 2 ARROWS OUT -->
-          <path d="M 250 40 L 330 40" stroke="#dc2626" stroke-width="2" fill="none" marker-end="url(#bio-arrow)"/>
-          <path d="M 250 70 L 330 70" stroke="#dc2626" stroke-width="2" fill="none" marker-end="url(#bio-arrow)"/>
+          {/* 2 ARROWS OUT */}
+          <path d="M 250 40 L 330 40" stroke="var(--color-danger, #dc2626)" stroke-width="2" fill="none" marker-end="url(#bio-arrow)"/>
+          <path d="M 250 70 L 330 70" stroke="var(--color-danger, #dc2626)" stroke-width="2" fill="none" marker-end="url(#bio-arrow)"/>
 
-          <!-- BRANCH 1: HORMONE DECREASE -->
-          <rect x="340" y="20" width="220" height="40" rx="6" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.5"/>
-          <text x="450" y="45" font-size="12" font-weight="bold" fill="#581c87" text-anchor="middle">Giảm Testosterone &amp; GH</text>
+          {/* BRANCH 1: HORMONE DECREASE */}
+          <rect x="340" y="20" width="220" height="40" rx="6" fill="var(--color-surface-2, rgba(124,58,237,0.08))" stroke="var(--color-purple, #7c3aed)" stroke-width="1.5"/>
+          <text x="450" y="45" font-size="12" font-weight="bold" fill="var(--color-purple, #7c3aed)" text-anchor="middle">Giảm Testosterone &amp; GH</text>
 
-          <!-- BRANCH 2: HYPERAMMONEMIA -->
-          <rect x="340" y="65" width="220" height="40" rx="6" fill="#fff1f2" stroke="#e11d48" stroke-width="1.5"/>
-          <text x="450" y="90" font-size="12" font-weight="bold" fill="#9f1239" text-anchor="middle">Tăng Amoniac Máu (NH₃)</text>
+          {/* BRANCH 2: HYPERAMMONEMIA */}
+          <rect x="340" y="65" width="220" height="40" rx="6" fill="var(--color-surface-2, rgba(225,29,72,0.08))" stroke="var(--color-danger, #e11d48)" stroke-width="1.5"/>
+          <text x="450" y="90" font-size="12" font-weight="bold" fill="var(--color-danger, #e11d48)" text-anchor="middle">Tăng Amoniac Máu (NH₃)</text>
 
-          <!-- TO MUSCLE CELL -->
-          <path d="M 560 40 L 620 40 L 620 120" stroke="#7c3aed" stroke-width="1.5" fill="none"/>
-          <path d="M 560 85 L 620 85 L 620 120" stroke="#e11d48" stroke-width="1.5" fill="none"/>
+          {/* TO MUSCLE CELL */}
+          <path d="M 560 40 L 620 40 L 620 120" stroke="var(--color-purple, #7c3aed)" stroke-width="1.5" fill="none"/>
+          <path d="M 560 85 L 620 85 L 620 120" stroke="var(--color-danger, #e11d48)" stroke-width="1.5" fill="none"/>
 
-          <!-- MUSCLE CONSEQUENCES BOX -->
-          <rect x="180" y="130" width="580" height="120" rx="10" fill="#f8fafc" stroke="#0284c7" stroke-width="2"/>
-          <text x="470" y="155" font-size="13" font-weight="bold" fill="#0369a1" text-anchor="middle">RỐI LOẠN CÂN BẰNG PROTEIN CƠ XƯƠNG (DYSRGULATED PROTEOSTASIS)</text>
-          <line x1="200" y1="165" x2="740" y2="165" stroke="#cbd5e1" stroke-width="1"/>
+          {/* MUSCLE CONSEQUENCES BOX */}
+          <rect x="180" y="130" width="580" height="120" rx="10" fill="var(--color-surface-2, #1e293b)" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+          <text x="470" y="155" font-size="13" font-weight="bold" fill="var(--color-primary, #0284c7)" text-anchor="middle">RỐI LOẠN CÂN BẰNG PROTEIN CƠ XƯƠNG (DYSREGULATED PROTEOSTASIS)</text>
+          <line x1="200" y1="165" x2="740" y2="165" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
 
-          <text x="200" y="188" font-size="11" fill="#334155">• <tspan font-weight="bold" fill="#dc2626">Kháng Đồng Hóa (Anabolic Resistance):</tspan> Kích hoạt Myostatin ức chế tổng hợp protein cơ</text>
-          <text x="200" y="208" font-size="11" fill="#334155">• <tspan font-weight="bold" fill="#dc2626">Tăng Dị Hóa &amp; Tự Thực (Autophagy):</tspan> Tiêu hủy protein cơ qua trung gian lysosome</text>
-          <text x="200" y="228" font-size="11" fill="#334155">• <tspan font-weight="bold" fill="#dc2626">Cạn Kiệt BCAAs &amp; Suy Ty Thể:</tspan> Giảm ATP, tăng stress oxy hóa ROS</text>
+          <text x="200" y="188" font-size="11" fill="var(--color-text, #f8fafc)">• <tspan font-weight="bold" fill="var(--color-danger, #ef4444)">Kháng Đồng Hóa (Anabolic Resistance):</tspan> Kích hoạt Myostatin ức chế tổng hợp protein cơ</text>
+          <text x="200" y="208" font-size="11" fill="var(--color-text, #f8fafc)">• <tspan font-weight="bold" fill="var(--color-danger, #ef4444)">Tăng Dị Hóa &amp; Tự Thực (Autophagy):</tspan> Tiêu hủy protein cơ qua trung gian lysosome</text>
+          <text x="200" y="228" font-size="11" fill="var(--color-text, #f8fafc)">• <tspan font-weight="bold" fill="var(--color-danger, #ef4444)">Cạn Kiệt BCAAs &amp; Suy Ty Thể:</tspan> Giảm ATP, tăng stress oxy hóa ROS</text>
 
-          <!-- ARROW DOWN TO SARCOPENIA -->
-          <path d="M 470 250 L 470 280" stroke="#dc2626" stroke-width="2" fill="none" marker-end="url(#bio-arrow)"/>
+          {/* ARROW DOWN TO SARCOPENIA */}
+          <path d="M 470 250 L 470 280" stroke="var(--color-danger, #dc2626)" stroke-width="2" fill="none" marker-end="url(#bio-arrow)"/>
 
-          <!-- SARCOPENIA FINAL -->
-          <rect x="330" y="285" width="280" height="40" rx="8" fill="#dc2626"/>
+          {/* SARCOPENIA FINAL */}
+          <rect x="330" y="285" width="280" height="40" rx="8" fill="var(--color-danger, #dc2626)"/>
           <text x="470" y="310" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">TEO CƠ XƠ GAN (SARCOPENIA)</text>
 
-          <!-- TREATMENT TARGETS -->
-          <rect x="50" y="335" width="780" height="35" rx="6" fill="#eff6ff" stroke="#0284c7" stroke-width="1"/>
-          <text x="440" y="357" font-size="11" font-weight="bold" fill="#0369a1" text-anchor="middle">ĐÍCH ĐIỀU TRỊ: Bữa phụ đêm LES + Đạm 1.2-1.5g + BCAA/Leucine + Hạ Amoniac + Testosterone</text>
+          {/* TREATMENT TARGETS */}
+          <rect x="50" y="335" width="780" height="35" rx="6" fill="var(--color-surface)" stroke="var(--color-primary, #0284c7)" stroke-width="1"/>
+          <text x="440" y="357" font-size="11" font-weight="bold" fill="var(--color-primary, #0284c7)" text-anchor="middle">ĐÍCH ĐIỀU TRỊ: Bữa phụ đêm LES + Đạm 1.2-1.5g + BCAA/Leucine + Hạ Amoniac + Testosterone</text>
         </svg>
       </div>
 
     </div>
   </div>
 
-  <!-- ==================== SECTION 5 ==================== -->
+  {/* ==================== SECTION 5 ==================== */}
   <div class="sec-card" id="sec-nguyen-tac-dinh-duong-les">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">🍲</span>
@@ -512,7 +478,7 @@ sections:
         </div>
       </div>
 
-      <!-- MICRONUTRIENTS & SODIUM -->
+      {/* MICRONUTRIENTS & SODIUM */}
       <h3 style="margin-top: 1.5rem; margin-bottom: 0.75rem; font-size: 1.15rem; color: var(--color-primary);">
         <i class="fa-solid fa-capsules"></i> Bù Đắp Vi Chất Dinh Dưỡng &amp; Kiểm Soát Muối Ăn
       </h3>
@@ -554,7 +520,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 6 ==================== -->
+  {/* ==================== SECTION 6 ==================== */}
   <div class="sec-card" id="sec-dinh-duong-he">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">🧠</span>
@@ -579,7 +545,7 @@ sections:
         </div>
       </div>
 
-      <!-- SARCOPENIC OBESITY -->
+      {/* SARCOPENIC OBESITY */}
       <h3 style="margin-top: 1.5rem; margin-bottom: 0.75rem; font-size: 1.15rem; color: var(--color-primary);">
         <i class="fa-solid fa-weight-scale"></i> Quản Lý Béo Phì Teo Cơ (Sarcopenic Obesity)
       </h3>
@@ -619,7 +585,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 7 ==================== -->
+  {/* ==================== SECTION 7 ==================== */}
   <div class="sec-card" id="sec-benh-xuong-do-gan">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">🦴</span>
@@ -661,7 +627,7 @@ sections:
         </div>
       </div>
 
-      <!-- BONE MANAGEMENT TABLE -->
+      {/* BONE MANAGEMENT TABLE */}
       <h3 style="margin-top: 1.5rem; margin-bottom: 0.75rem; font-size: 1.15rem; color: var(--color-primary);">
         <i class="fa-solid fa-pills"></i> Phác Đồ Điều Trị Bảo Vệ Xương Trong Bệnh Gan Mạn Tính (Figure 3)
       </h3>
@@ -703,7 +669,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 8 ==================== -->
+  {/* ==================== SECTION 8 ==================== */}
   <div class="sec-card" id="sec-chu-phau-ghep-gan-icu">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">🏥</span>
@@ -711,7 +677,7 @@ sections:
     </div>
     <div class="sec-body">
 
-      <!-- PRE & POST TRANSPLANT NUTRITION -->
+      {/* PRE & POST TRANSPLANT NUTRITION */}
       <div class="table-wrapper">
         <table class="regimen-table">
           <thead>
@@ -739,7 +705,7 @@ sections:
         </table>
       </div>
 
-      <!-- ICU MANAGEMENT PROTOCOL -->
+      {/* ICU MANAGEMENT PROTOCOL */}
       <h3 style="margin-top: 1.5rem; margin-bottom: 0.75rem; font-size: 1.15rem; color: var(--color-primary);">
         <i class="fa-solid fa-truck-medical"></i> Quản Lý Dinh Dưỡng Tại Khoa Hồi Sức Tích Cực (ICU)
       </h3>
@@ -778,7 +744,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 9 ==================== -->
+  {/* ==================== SECTION 9 ==================== */}
   <div class="sec-card" id="sec-tai-lieu-tham-khao">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">📚</span>
@@ -805,7 +771,7 @@ sections:
 
 </div>
 
-<!-- BOTTOM NAV -->
+{/* BOTTOM NAV */}
 <div style="margin-top: 1.5rem;">
   <div class="btn-row">
     <a href="#/ebm/kho-guidelines" class="btn btn-primary">

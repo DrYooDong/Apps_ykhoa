@@ -2,6 +2,7 @@
 import ArticleLayout from '../../../components/layout/ArticleLayout.astro';
 import Alert from '../../../components/ui/Alert.astro';
 import QuickNav from '../../../components/ui/QuickNav.astro';
+import FlowchartViewer from '../../../components/flowchart/FlowchartViewer.astro';
 
 export async function getStaticPaths() {
   const mdxModules = import.meta.glob('/src/content/ebm/guidelines/kho-guidelines/*.mdx', { eager: true });
@@ -30,6 +31,7 @@ const { Content, frontmatter } = entry;
 >
   <Content components={{
     Alert,
-    QuickNav
+    QuickNav,
+    FlowchartViewer
   }} />
 </ArticleLayout>

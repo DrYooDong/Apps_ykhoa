@@ -127,7 +127,7 @@ sections:
 
 <div class="page-content">
 
-  <!-- ==================== SECTION 1 ==================== -->
+  {/* ==================== SECTION 1 ==================== */}
   <div class="sec-card" id="sec-tong-quan-amr-aware">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">🌍</span>
@@ -213,7 +213,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 2 ==================== -->
+  {/* ==================== SECTION 2 ==================== */}
   <div class="sec-card" id="sec-luu-do-gyssens">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">📊</span>
@@ -229,7 +229,7 @@ sections:
         </div>
       </div>
 
-      <!-- FIGURE 1 CARD -->
+      {/* FIGURE 1 CARD */}
       <div class="fig-card" style="margin-top: 1.5rem;">
         <img src="./images/2024-systemic-antibiotic-ssti-fig1.png" alt="Figure 1. Gyssens Flowchart Qualitative Assessment of Antibiotic Use" class="fig-img" loading="lazy" />
         <div class="fig-caption">
@@ -238,14 +238,46 @@ sections:
         </div>
       </div>
 
-      <!-- VISUAL DIAGRAM CODE: TÁI HIỆN CODE LƯU ĐỒ GYSSENS -->
+      <div style="margin-top: 1.5rem;">
+        <FlowchartViewer
+          title="Lưu Đồ Gyssens Đánh Giá Định Tính Kê Đơn Kháng Sinh Hệ Thống (Gyssens et al. / JDVI 2024)"
+          code={`graph TD
+  START["ĐÁNH GIÁ ĐƠN THUỐC KHÁNG SINH ĐIỀU TRỊ SSTI"]:::start --> D1{"Có Đủ Dữ Liệu Hồ Sơ Bệnh Án?"}:::question
+
+  D1 -- "Không đủ dữ liệu" --> CAT6["NHÓM VI: KHÔNG ĐỦ DỮ LIỆU ĐỂ ĐÁNH GIÁ"]:::action
+  D1 -- "Đầy đủ dữ liệu" --> D2{"Có Chỉ Định Sử Dụng Kháng Sinh Không?"}:::question
+
+  D2 -- "Không có chỉ định" --> CAT5["NHÓM V: SỬ DÙNG KHÁNG SINH KHÔNG CÓ CHỈ ĐỊNH<br/><small>Lạm dụng hoặc sai hoàn toàn chỉ định</small>"]:::danger
+  D2 -- "Có chỉ định hợp lý" --> D3{"Có Kháng Sinh Thay Thế Hiệu Quả / Ít Độc / Rẻ Hơn?"}:::question
+
+  D3 -- "Có thuốc hiệu quả hơn" --> CAT4A["NHÓM IVa: CÓ KHÁNG SINH KHÁC HIỆU QUẢ HƠN"]:::warning
+  D3 -- "Có thuốc ít độc hơn" --> CAT4B["NHÓM IVb: CÓ KHÁNG SINH KHÁC ÍT ĐỘC TÍNH HƠN"]:::warning
+  D3 -- "Có thuốc rẻ hơn" --> CAT4C["NHÓM IVc: CÓ KHÁNG SINH KHÁC TIẾT KIỆM CHI PHÍ HƠN"]:::warning
+  D3 -- "Có thuốc phổ hẹp hơn" --> CAT4D["NHÓM IVd: CÓ KHÁNG SINH PHỔ HẸP HƠN (AWaRe)"]:::warning
+
+  D3 -- "Đã là lựa chọn thuốc tối ưu" --> D4{"Thời Gian Dùng Kháng Sinh Có Phù Hợp?"}:::question
+
+  D4 -- "Dùng quá kéo dài (> 5-7 ngày)" --> CAT3A["NHÓM IIIa: THỜI GIAN ĐIỀU TRỊ QUÁ DÀI"]:::warning
+  D4 -- "Dùng quá ngắn ngày" --> CAT3B["NHÓM IIIb: THỜI GIAN ĐIỀU TRỊ QUÁ NGẮN"]:::warning
+
+  D4 -- "Thời gian chuẩn (5-7 ngày)" --> D5{"Liều Lượng, Khoảng Cách & Đường Dùng?"}:::question
+
+  D5 -- "Sai liều lượng" --> CAT2A["NHÓM IIa: LIỀU LƯỢNG KHÔNG ĐÚNG"]:::warning
+  D5 -- "Sai khoảng cách liều" --> CAT2B["NHÓM IIb: KHOẢNG CÁCH DÙNG THUỐC SAI"]:::warning
+  D5 -- "Sai đường dùng" --> CAT2C["NHÓM IIc: ĐƯỜNG DÙNG THUỐC KHÔNG PHÙ HỢP"]:::warning
+
+  D5 -- "Tất cả thông số đều chuẩn xác" --> CAT1["NHÓM I: KÊ ĐƠN HOÀN TOÀN HỢP LÝ & TỐI ƯU<br/><small>Đạt chuẩn chất lượng Antimicrobial Stewardship cao nhất</small>"]:::success`}
+        />
+      </div>
+
+      {/* VISUAL DIAGRAM CODE: TÁI HIỆN CODE LƯU ĐỒ GYSSENS */}
       <div style="margin-top: 1.5rem; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; padding: 1.25rem;">
         <div style="text-align: center; font-weight: 700; font-size: 1.05rem; color: var(--color-primary); margin-bottom: 1.25rem;">
           <i class="fa-solid fa-diagram-project"></i> Sơ Đồ Thuật Toán Tái Hiện Bằng Code: Cây Quyết Định Phân Loại Gyssens (Nhóm I – VI)
         </div>
 
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
-          <!-- BƯỚC 1 & 2 -->
+          {/* BƯỚC 1 & 2 */}
           <div style="border: 2px solid #64748b; border-radius: 10px; padding: 1rem; background: rgba(100, 116, 139, 0.03);">
             <div style="font-weight: 700; color: #475569; margin-bottom: 0.5rem;">📋 BƯỚC 1 &amp; 2: DỮ LIỆU &amp; CHỈ ĐỊNH</div>
             <div style="font-size: 0.85rem; line-height: 1.6;">
@@ -258,7 +290,7 @@ sections:
             </div>
           </div>
 
-          <!-- BƯỚC 3 -->
+          {/* BƯỚC 3 */}
           <div style="border: 2px solid #f59e0b; border-radius: 10px; padding: 1rem; background: rgba(245, 158, 11, 0.03);">
             <div style="font-weight: 700; color: #d97706; margin-bottom: 0.5rem;">🔄 BƯỚC 3: XÉT THUỐC TỐI ƯU HƠN (NHÓM IV)</div>
             <div style="font-size: 0.85rem; line-height: 1.6;">
@@ -271,7 +303,7 @@ sections:
             </div>
           </div>
 
-          <!-- BƯỚC 4 & 5 -->
+          {/* BƯỚC 4 & 5 */}
           <div style="border: 2px solid #0284c7; border-radius: 10px; padding: 1rem; background: rgba(2, 132, 199, 0.03);">
             <div style="font-weight: 700; color: #0284c7; margin-bottom: 0.5rem;">⏱️ BƯỚC 4 &amp; 5: THỜI GIAN &amp; CÁCH DÙNG</div>
             <div style="font-size: 0.85rem; line-height: 1.6;">
@@ -293,7 +325,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 3 ==================== -->
+  {/* ==================== SECTION 3 ==================== */}
   <div class="sec-card" id="sec-phan-loai-muc-do-nang">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">📑</span>
@@ -370,7 +402,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 4 ==================== -->
+  {/* ==================== SECTION 4 ==================== */}
   <div class="sec-card" id="sec-yeu-to-nguy-co-mrsa">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">⚠️</span>
@@ -424,7 +456,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 5 ==================== -->
+  {/* ==================== SECTION 5 ==================== */}
   <div class="sec-card" id="sec-phac-do-benh-da-mu">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">🧴</span>
@@ -498,7 +530,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 6 ==================== -->
+  {/* ==================== SECTION 6 ==================== */}
   <div class="sec-card" id="sec-viem-mo-te-bao-hong-ban">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">🔴</span>
@@ -568,7 +600,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 7 ==================== -->
+  {/* ==================== SECTION 7 ==================== */}
   <div class="sec-card" id="sec-cap-cuu-hoai-tu-tss-ssss">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">☣️</span>
@@ -640,7 +672,7 @@ sections:
     </div>
   </div>
 
-  <!-- ==================== SECTION 8 ==================== -->
+  {/* ==================== SECTION 8 ==================== */}
   <div class="sec-card" id="sec-nguoi-cao-tuoi-cheat-sheet-mcq">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">👴</span>
@@ -760,7 +792,7 @@ sections:
 
 </div>
 
-<!-- BOTTOM NAV -->
+{/* BOTTOM NAV */}
 <div style="margin-top: 1.5rem;">
   <div class="btn-row">
     <a href="#/ebm/kho-guidelines" class="btn btn-primary">
