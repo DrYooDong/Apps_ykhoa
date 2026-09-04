@@ -265,9 +265,9 @@ Sử dụng hệ thống `.flow-track-container` cho các quy trình chẩn đo�
 
 ---
 
-### Dạng B: Editorial SVG Studio Container (Sơ Đồ Đồ Họa & Cơ Chế Phân Tử Xuất Bản)
+### Dạng B: Editorial SVG Studio Container 2.0 (Sơ Đồ Đồ Họa & Cơ Chế Phân Tử Xuất Bản)
 
-Bọc SVG chuẩn trong khung `.flowchart-editorial-card` đạt 100% Dark Mode và responsive:
+Bọc SVG chuẩn trong khung `.flowchart-editorial-card` đạt 100% Dark Mode adaptive và responsive scrolling mượt mà:
 
 ```html
 <div class="flowchart-editorial-card">
@@ -276,23 +276,40 @@ Bọc SVG chuẩn trong khung `.flowchart-editorial-card` đạt 100% Dark Mode 
       <i class="fa-solid fa-diagram-project" style="color: var(--color-primary, #0284c7);"></i>
       <span>LƯU ĐỒ QUYẾT ĐỊNH ĐIỀU TRỊ CHUYÊN SÂU (EBM 2026)</span>
     </div>
-    <span class="flow-step-badge flow-badge-blue">Editorial SVG Studio</span>
+    <span class="flow-step-badge flow-badge-green">Editorial SVG Studio 2.0</span>
   </div>
   <div class="flowchart-editorial-canvas">
     <svg class="med-svg" viewBox="0 0 960 480" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-      <!-- Nền card động -->
-      <rect width="960" height="480" fill="var(--surface)" rx="12" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <!-- Nền card động theo Design Tokens -->
+      <rect width="960" height="480" fill="var(--color-surface, #ffffff)" rx="12" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
       <!-- Sơ đồ vector y khoa (TUYỆT ĐỐI KHÔNG DÙNG THẺ HTML NHƯ <strong>, <br> TRONG SVG <text>) -->
     </svg>
   </div>
   <div class="flowchart-legend-row">
     <div class="flowchart-legend-item"><span class="legend-dot" style="background: #10b981;"></span> Nhóm chỉ định ưu tiên</div>
     <div class="flowchart-legend-item"><span class="legend-dot" style="background: #0284c7;"></span> Nhóm điều trị thay thế</div>
-    <div class="flowchart-legend-item"><span class="legend-dot" style="background: #e11d48;"></span> Chống chỉ định / Nguy cơ cao</div>
+    <div class="flowchart-legend-item"><span class="legend-dot" style="background: #dc2626;"></span> Chống chỉ định / Nguy cơ cao</div>
   </div>
 </div>
 ```
-```
+
+#### Bảng Tham Chiếu SVG Semantic Classes (Hỗ trợ Dark Mode tự động 100%):
+
+| Nhóm Class | Tên Class CSS | Ý Nghĩa / Mục Đích Sử Dụng |
+|---|---|---|
+| **Node Khởi Đầu** | `.node-start` | Nút tiếp nhận ban đầu / Start node (viền xanh 2px, nền nhạt) |
+| **Node Quyết Định** | `.node-decision` | Nút phân nhánh điều kiện (nền surface-2, viền trung tính) |
+| **Node Hành Động** | `.node-action-blue` / `.node-action-green` | Hành động lâm sàng thường quy / Khuyến cáo ưu tiên |
+| | `.node-action-red` / `.node-action-amber` | Cảnh báo nguy cơ, phân nhánh kháng trị hoặc kiểm soát chặt |
+| | `.node-action-teal` / `.node-action-purple` | Điều trị chuyên khoa, xét nghiệm phân tử, kỹ thuật can thiệp |
+| **Node Đích (Terminal)** | `.node-terminal-green` / `.node-terminal-blue` | Header bar màu đặc kết quả điều trị thành công / duy trì |
+| | `.node-terminal-red` / `.node-terminal-amber` | Header bar màu đặc kết quả thất bại, chuyển tầng hoặc tử vong |
+| **Nhãn Text SVG** | `text.label-primary` | Tiêu đề hoặc nội dung chính (tự đổi sang trắng ở dark mode) |
+| | `text.label-muted` | Chú thích phụ, đơn vị, ngưỡng chỉ số lâm sàng |
+| | `text.label-white` | Chữ trắng trên các khối node có màu nền đậm |
+| **Mũi Tên & Nhánh** | `.arrow-default`, `.arrow-blue`, `.arrow-green`, `.arrow-red` | Đường line/path vector nối giữa các khối quyết định |
+| | `.badge-yes`, `.badge-no` | Khối nhãn "CÓ / KHÔNG", "ĐẠT / KHÔNG ĐẠT" trên đường nối |
+
 
 ---
 

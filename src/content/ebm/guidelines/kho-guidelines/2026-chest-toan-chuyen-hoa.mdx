@@ -351,9 +351,16 @@ sections:
     </div>
 
     {/* Inline SVG Re-creation (Rule 4.1 Flowchart Image to Visual Code) */}
-    <div class="fig-card" style="margin-top: 25px;">
-      <div style="width: 100%; overflow-x: auto; background: var(--color-surface); padding: 18px; border-radius: 8px; border: 1px solid var(--color-border);">
-        <svg viewBox="0 0 960 620" width="100%" height="auto" style="min-width: 820px; font-family: system-ui, -apple-system, sans-serif;">
+    <div class="flowchart-editorial-card">
+      <div class="flowchart-editorial-hdr">
+        <div class="flowchart-editorial-title">
+          <i class="fa-solid fa-diagram-project" style="color: var(--color-primary, #0284c7);"></i>
+          <span>LƯU ĐỒ THUẬT TOÁN PHÂN NHÁNH QUYẾT ĐỊNH ĐIỀU TRỊ TOAN CHUYỂN HÓA NẶNG (CHEST 2026)</span>
+        </div>
+        <span class="flow-step-badge flow-badge-green">Editorial SVG Studio 2.0</span>
+      </div>
+      <div class="flowchart-editorial-canvas">
+        <svg class="med-svg" viewBox="0 0 960 620" width="100%" height="auto" style="min-width: 820px; font-family: system-ui, -apple-system, sans-serif;">
           <defs>
             <marker id="arr-blue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
               <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--color-primary, #0284c7)"/>
@@ -436,9 +443,10 @@ sections:
           <text x="570" y="525" font-size="12" fill="#ffffff">• DKA: Liệu pháp Insulin &amp; bù dịch | TLS: Rasburicase</text>
         </svg>
       </div>
-      <div class="fig-caption">
-        <div class="fig-title">Sơ Đồ 1. Tái hiện thuật toán lâm sàng phân nhánh quyết định điều trị toan chuyển hóa nặng (CHEST 2026).</div>
-        Lưu đồ minh họa hai ngã rẽ cốt tử: Chỉ định lọc máu cấp cứu (Urgent RRT) khi có tăng kali đe dọa hoặc quá tải dịch; hoặc sử dụng Natri Bicarbonate 4.2% như một liệu pháp bắc cầu tạm thời trong khi xử trí triệt để nguyên nhân.
+      <div class="flowchart-legend-row">
+        <div class="flowchart-legend-item"><span class="legend-dot" style="background: #dc2626;"></span> Lọc máu cấp cứu (Urgent RRT): Chỉ định khi kèm tăng K máu đe dọa hoặc quá tải thể tích kháng trị</div>
+        <div class="flowchart-legend-item"><span class="legend-dot" style="background: #0284c7;"></span> Natri Bicarbonate 4.2%: Liệu pháp bắc cầu kiểm soát pH &gt; 7.20 ở bệnh nhân AKI kèm toan nặng</div>
+        <div class="flowchart-legend-item"><span class="legend-dot" style="background: #10b981;"></span> Giải quyết căn nguyên: Kiểm soát toan lactic, DKA, ngộ độc song song hồi sức</div>
       </div>
     </div>
   </div>

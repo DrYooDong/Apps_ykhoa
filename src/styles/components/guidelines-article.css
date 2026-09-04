@@ -5560,6 +5560,481 @@ table td.heatmap-cell:hover {
   color: var(--color-text, #cbd5e1);
 }
 
+/* ══════════════════════════════════════════════════════════
+   34. EDITORIAL SVG FLOWCHART CARD — Dark Mode Adaptive
+   (Editorial SVG Studio 2.0 Standard Specification)
+   ══════════════════════════════════════════════════════════ */
+.flowchart-editorial-card {
+  background: var(--color-surface, #ffffff);
+  border: 1.5px solid var(--color-border, #e2e8f0);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  margin: 1.75rem 0;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.flowchart-editorial-card:hover {
+  border-color: rgba(2, 132, 199, 0.35);
+  box-shadow: 0 8px 32px rgba(2, 132, 199, 0.08);
+}
+
+.flowchart-editorial-hdr {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1.25rem;
+  background: var(--color-surface-2, #f8fafc);
+  border-bottom: 1px solid var(--color-border, #e2e8f0);
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.flowchart-editorial-title {
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-weight: 800;
+  font-size: 0.92rem;
+  color: var(--color-text, #0f172a);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: -0.01em;
+}
+
+.flowchart-editorial-canvas {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 1.25rem;
+  background: var(--color-surface, #ffffff);
+  display: flex;
+  justify-content: center;
+}
+
+.med-svg,
+.flowchart-svg,
+.svg-diagram {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  font-family: var(--font-body, system-ui, -apple-system, sans-serif);
+}
+
+.flowchart-legend-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 1.5rem;
+  padding: 0.75rem 1.25rem;
+  border-top: 1px solid var(--color-border, #e2e8f0);
+  background: var(--color-surface-2, #f8fafc);
+  font-size: 0.8rem;
+  color: var(--color-text-muted, #64748b);
+  line-height: 1.5;
+}
+
+.flowchart-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: inline-block;
+}
+
+/* ── SVG Semantic Node Classes ── */
+.med-svg .node-start,
+.flowchart-svg .node-start,
+.svg-diagram .node-start {
+  fill: rgba(2, 132, 199, 0.08);
+  stroke: #0284c7;
+  stroke-width: 2px;
+}
+
+.med-svg .node-decision,
+.flowchart-svg .node-decision,
+.svg-diagram .node-decision {
+  fill: var(--color-surface-2, #f8fafc);
+  stroke: var(--color-border, #cbd5e1);
+  stroke-width: 1.5px;
+}
+
+.med-svg .node-action-blue,
+.flowchart-svg .node-action-blue,
+.svg-diagram .node-action-blue {
+  fill: rgba(59, 130, 246, 0.06);
+  stroke: #3b82f6;
+  stroke-width: 1.5px;
+}
+
+.med-svg .node-action-green,
+.flowchart-svg .node-action-green,
+.svg-diagram .node-action-green {
+  fill: rgba(16, 185, 129, 0.06);
+  stroke: #10b981;
+  stroke-width: 1.5px;
+}
+
+.med-svg .node-action-red,
+.flowchart-svg .node-action-red,
+.svg-diagram .node-action-red {
+  fill: rgba(220, 38, 38, 0.06);
+  stroke: #dc2626;
+  stroke-width: 1.5px;
+}
+
+.med-svg .node-action-amber,
+.flowchart-svg .node-action-amber,
+.svg-diagram .node-action-amber {
+  fill: rgba(245, 158, 11, 0.08);
+  stroke: #f59e0b;
+  stroke-width: 1.5px;
+}
+
+.med-svg .node-action-teal,
+.flowchart-svg .node-action-teal,
+.svg-diagram .node-action-teal {
+  fill: rgba(13, 148, 136, 0.06);
+  stroke: #0d9488;
+  stroke-width: 1.5px;
+}
+
+.med-svg .node-action-purple,
+.flowchart-svg .node-action-purple,
+.svg-diagram .node-action-purple {
+  fill: rgba(124, 58, 237, 0.06);
+  stroke: #7c3aed;
+  stroke-width: 1.5px;
+}
+
+.med-svg .node-terminal-green,
+.flowchart-svg .node-terminal-green,
+.svg-diagram .node-terminal-green {
+  fill: #16a34a;
+}
+
+.med-svg .node-terminal-blue,
+.flowchart-svg .node-terminal-blue,
+.svg-diagram .node-terminal-blue {
+  fill: #0284c7;
+}
+
+.med-svg .node-terminal-red,
+.flowchart-svg .node-terminal-red,
+.svg-diagram .node-terminal-red {
+  fill: #dc2626;
+}
+
+.med-svg .node-terminal-amber,
+.flowchart-svg .node-terminal-amber,
+.svg-diagram .node-terminal-amber {
+  fill: #d97706;
+}
+
+.med-svg .node-terminal-teal,
+.flowchart-svg .node-terminal-teal,
+.svg-diagram .node-terminal-teal {
+  fill: #0d9488;
+}
+
+.med-svg .node-terminal-purple,
+.flowchart-svg .node-terminal-purple,
+.svg-diagram .node-terminal-purple {
+  fill: #7c3aed;
+}
+
+.med-svg .node-summary,
+.flowchart-svg .node-summary,
+.svg-diagram .node-summary {
+  fill: var(--color-surface-2, #f8fafc);
+  stroke: var(--color-border, #e2e8f0);
+}
+
+/* ── SVG Semantic Text Classes ── */
+.med-svg text.label-primary,
+.flowchart-svg text.label-primary,
+.svg-diagram text.label-primary {
+  fill: var(--color-text, #0f172a);
+}
+
+.med-svg text.label-muted,
+.flowchart-svg text.label-muted,
+.svg-diagram text.label-muted {
+  fill: var(--color-text-muted, #64748b);
+}
+
+.med-svg text.label-white,
+.flowchart-svg text.label-white,
+.svg-diagram text.label-white {
+  fill: #ffffff;
+}
+
+.med-svg text.label-blue,
+.flowchart-svg text.label-blue,
+.svg-diagram text.label-blue {
+  fill: #1e40af;
+}
+
+.med-svg text.label-green,
+.flowchart-svg text.label-green,
+.svg-diagram text.label-green {
+  fill: #166534;
+}
+
+.med-svg text.label-red,
+.flowchart-svg text.label-red,
+.svg-diagram text.label-red {
+  fill: #b91c1c;
+}
+
+.med-svg text.label-amber,
+.flowchart-svg text.label-amber,
+.svg-diagram text.label-amber {
+  fill: #92400e;
+}
+
+.med-svg text.label-teal,
+.flowchart-svg text.label-teal,
+.svg-diagram text.label-teal {
+  fill: #065f46;
+}
+
+.med-svg text.label-purple,
+.flowchart-svg text.label-purple,
+.svg-diagram text.label-purple {
+  fill: #5b21b6;
+}
+
+/* ── SVG Arrow & Badge Classes ── */
+.med-svg .arrow-default,
+.flowchart-svg .arrow-default,
+.svg-diagram .arrow-default {
+  stroke: var(--color-text-muted, #64748b);
+}
+
+.med-svg .arrow-red,
+.flowchart-svg .arrow-red,
+.svg-diagram .arrow-red {
+  stroke: #dc2626;
+}
+
+.med-svg .arrow-green,
+.flowchart-svg .arrow-green,
+.svg-diagram .arrow-green {
+  stroke: #059669;
+}
+
+.med-svg .arrow-blue,
+.flowchart-svg .arrow-blue,
+.svg-diagram .arrow-blue {
+  stroke: #0284c7;
+}
+
+.med-svg .arrow-amber,
+.flowchart-svg .arrow-amber,
+.svg-diagram .arrow-amber {
+  stroke: #f59e0b;
+}
+
+.med-svg .badge-yes,
+.flowchart-svg .badge-yes,
+.svg-diagram .badge-yes {
+  fill: #dcfce7;
+  stroke: #16a34a;
+}
+
+.med-svg .badge-no,
+.flowchart-svg .badge-no,
+.svg-diagram .badge-no {
+  fill: #fee2e2;
+  stroke: #dc2626;
+}
+
+/* ── 34.1 Dark Mode Adaptations ── */
+[data-theme="dark"] .flowchart-editorial-card {
+  background: var(--color-surface, #1e293b);
+  border-color: var(--color-border, #334155);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+}
+
+[data-theme="dark"] .flowchart-editorial-hdr,
+[data-theme="dark"] .flowchart-legend-row {
+  background: var(--color-surface-2, #0f172a);
+  border-color: var(--color-border, #334155);
+}
+
+[data-theme="dark"] .flowchart-editorial-canvas {
+  background: var(--color-surface, #1e293b);
+}
+
+[data-theme="dark"] .flowchart-editorial-title {
+  color: var(--color-text, #f8fafc);
+}
+
+[data-theme="dark"] .flowchart-legend-row {
+  color: var(--color-text-muted, #94a3b8);
+}
+
+[data-theme="dark"] .med-svg .node-start,
+[data-theme="dark"] .flowchart-svg .node-start,
+[data-theme="dark"] .svg-diagram .node-start {
+  fill: rgba(56, 189, 248, 0.15);
+  stroke: #38bdf8;
+}
+
+[data-theme="dark"] .med-svg .node-decision,
+[data-theme="dark"] .flowchart-svg .node-decision,
+[data-theme="dark"] .svg-diagram .node-decision {
+  fill: rgba(30, 41, 59, 0.85);
+  stroke: #475569;
+}
+
+[data-theme="dark"] .med-svg .node-action-blue,
+[data-theme="dark"] .flowchart-svg .node-action-blue,
+[data-theme="dark"] .svg-diagram .node-action-blue {
+  fill: rgba(56, 189, 248, 0.12);
+  stroke: #38bdf8;
+}
+
+[data-theme="dark"] .med-svg .node-action-green,
+[data-theme="dark"] .flowchart-svg .node-action-green,
+[data-theme="dark"] .svg-diagram .node-action-green {
+  fill: rgba(52, 211, 153, 0.12);
+  stroke: #34d399;
+}
+
+[data-theme="dark"] .med-svg .node-action-red,
+[data-theme="dark"] .flowchart-svg .node-action-red,
+[data-theme="dark"] .svg-diagram .node-action-red {
+  fill: rgba(248, 113, 113, 0.12);
+  stroke: #f87171;
+}
+
+[data-theme="dark"] .med-svg .node-action-amber,
+[data-theme="dark"] .flowchart-svg .node-action-amber,
+[data-theme="dark"] .svg-diagram .node-action-amber {
+  fill: rgba(251, 191, 36, 0.12);
+  stroke: #fbbf24;
+}
+
+[data-theme="dark"] .med-svg .node-action-teal,
+[data-theme="dark"] .flowchart-svg .node-action-teal,
+[data-theme="dark"] .svg-diagram .node-action-teal {
+  fill: rgba(45, 212, 191, 0.12);
+  stroke: #2dd4bf;
+}
+
+[data-theme="dark"] .med-svg .node-action-purple,
+[data-theme="dark"] .flowchart-svg .node-action-purple,
+[data-theme="dark"] .svg-diagram .node-action-purple {
+  fill: rgba(167, 139, 250, 0.12);
+  stroke: #a78bfa;
+}
+
+[data-theme="dark"] .med-svg .node-summary,
+[data-theme="dark"] .flowchart-svg .node-summary,
+[data-theme="dark"] .svg-diagram .node-summary {
+  fill: #0f172a;
+  stroke: #334155;
+}
+
+[data-theme="dark"] .med-svg text.label-primary,
+[data-theme="dark"] .flowchart-svg text.label-primary,
+[data-theme="dark"] .svg-diagram text.label-primary {
+  fill: #f8fafc;
+}
+
+[data-theme="dark"] .med-svg text.label-muted,
+[data-theme="dark"] .flowchart-svg text.label-muted,
+[data-theme="dark"] .svg-diagram text.label-muted {
+  fill: #94a3b8;
+}
+
+[data-theme="dark"] .med-svg text.label-blue,
+[data-theme="dark"] .flowchart-svg text.label-blue,
+[data-theme="dark"] .svg-diagram text.label-blue {
+  fill: #7dd3fc;
+}
+
+[data-theme="dark"] .med-svg text.label-green,
+[data-theme="dark"] .flowchart-svg text.label-green,
+[data-theme="dark"] .svg-diagram text.label-green {
+  fill: #6ee7b7;
+}
+
+[data-theme="dark"] .med-svg text.label-red,
+[data-theme="dark"] .flowchart-svg text.label-red,
+[data-theme="dark"] .svg-diagram text.label-red {
+  fill: #fca5a5;
+}
+
+[data-theme="dark"] .med-svg text.label-amber,
+[data-theme="dark"] .flowchart-svg text.label-amber,
+[data-theme="dark"] .svg-diagram text.label-amber {
+  fill: #fcd34d;
+}
+
+[data-theme="dark"] .med-svg text.label-teal,
+[data-theme="dark"] .flowchart-svg text.label-teal,
+[data-theme="dark"] .svg-diagram text.label-teal {
+  fill: #5eead4;
+}
+
+[data-theme="dark"] .med-svg text.label-purple,
+[data-theme="dark"] .flowchart-svg text.label-purple,
+[data-theme="dark"] .svg-diagram text.label-purple {
+  fill: #c4b5fd;
+}
+
+[data-theme="dark"] .med-svg .arrow-default,
+[data-theme="dark"] .flowchart-svg .arrow-default,
+[data-theme="dark"] .svg-diagram .arrow-default {
+  stroke: #94a3b8;
+}
+
+[data-theme="dark"] .med-svg .arrow-red,
+[data-theme="dark"] .flowchart-svg .arrow-red,
+[data-theme="dark"] .svg-diagram .arrow-red {
+  stroke: #f87171;
+}
+
+[data-theme="dark"] .med-svg .arrow-green,
+[data-theme="dark"] .flowchart-svg .arrow-green,
+[data-theme="dark"] .svg-diagram .arrow-green {
+  stroke: #34d399;
+}
+
+[data-theme="dark"] .med-svg .arrow-blue,
+[data-theme="dark"] .flowchart-svg .arrow-blue,
+[data-theme="dark"] .svg-diagram .arrow-blue {
+  stroke: #38bdf8;
+}
+
+[data-theme="dark"] .med-svg .arrow-amber,
+[data-theme="dark"] .flowchart-svg .arrow-amber,
+[data-theme="dark"] .svg-diagram .arrow-amber {
+  stroke: #fbbf24;
+}
+
+[data-theme="dark"] .med-svg .badge-yes,
+[data-theme="dark"] .flowchart-svg .badge-yes,
+[data-theme="dark"] .svg-diagram .badge-yes {
+  fill: rgba(52, 211, 153, 0.2);
+  stroke: #34d399;
+}
+
+[data-theme="dark"] .med-svg .badge-no,
+[data-theme="dark"] .flowchart-svg .badge-no,
+[data-theme="dark"] .svg-diagram .badge-no {
+  fill: rgba(248, 113, 113, 0.2);
+  stroke: #f87171;
+}
+
+
 
 
 

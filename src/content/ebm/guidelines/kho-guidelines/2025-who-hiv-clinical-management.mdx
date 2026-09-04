@@ -707,11 +707,16 @@ sections:
     <div class="sec-body">
 
       {/* SVG 1: ART ALGORITHM */}
-      <h4 style="color: var(--color-primary); margin-bottom: 0.5rem; font-size: 1rem;">
-        <i class="fa-solid fa-diagram-project"></i> Sơ đồ 1: Thuật Toán Lựa Chọn Phác Đồ ART Ban Đầu &amp; Chuyển Đổi Khi Thất Bại
-      </h4>
-      <div style="background: var(--color-surface, #ffffff); border: 1px solid var(--color-border, #e2e8f0); border-radius: 12px; padding: 1rem; overflow-x: auto;">
-        <svg viewBox="0 0 940 540" width="100%" height="auto" style="font-family: system-ui, -apple-system, sans-serif; display: block;" xmlns="http://www.w3.org/2000/svg">
+      <div class="flowchart-editorial-card">
+        <div class="flowchart-editorial-hdr">
+          <div class="flowchart-editorial-title">
+            <i class="fa-solid fa-diagram-project" style="color: var(--color-primary, #0284c7);"></i>
+            <span>SƠ ĐỒ 1: THUẬT TOÁN LỰA CHỌN PHÁC ĐỒ ART BAN ĐẦU &amp; CHUYỂN ĐỔI KHI THẤT BẠI (WHO 2025)</span>
+          </div>
+          <span class="flow-step-badge flow-badge-blue">Editorial SVG Studio 2.0</span>
+        </div>
+        <div class="flowchart-editorial-canvas">
+          <svg class="med-svg" viewBox="0 0 940 540" width="100%" height="auto" style="font-family: system-ui, -apple-system, sans-serif; display: block;" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <marker id="arrH" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
               <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#374151"/>
@@ -753,7 +758,7 @@ sections:
           <path d="M 470 170 L 470 215" stroke="#374151" stroke-width="2" fill="none" marker-end="url(#arrH)"/>
           <path d="M 780 170 L 780 215" stroke="#374151" stroke-width="2" fill="none" marker-end="url(#arrH)"/>
 
-          {/* MONITORING & FAILURE DETECTION */}
+          {/* MONITORING &amp; FAILURE DETECTION */}
           <rect x="180" y="220" width="580" height="45" rx="8" fill="#fffbeb" stroke="#d97706" stroke-width="1.5"/>
           <text x="470" y="240" font-size="12" font-weight="bold" fill="#78350f" text-anchor="middle">GIÁM SÁT TẢI LƯỢNG VIRUS (VL) ĐỊNH KỲ</text>
           <text x="470" y="255" font-size="10.5" fill="#92400e" text-anchor="middle">Nếu VL ≥ 1000 bản sao/mL sau khi hỗ trợ tuân thủ → Xác nhận Thất Bại Điều Trị</text>
@@ -790,14 +795,25 @@ sections:
           <text x="710" y="497" font-size="9" fill="#64748b" text-anchor="middle">(DRV/r dùng cho trẻ từ ≥ 3 tuổi)</text>
 
         </svg>
+        </div>
+        <div class="flowchart-legend-row">
+          <div class="flowchart-legend-item"><span class="legend-dot" style="background: #10b981;"></span> Phác đồ hàng 1 ưu tiên: TDF + 3TC (hoặc FTC) + Dolutegravir (DTG)</div>
+          <div class="flowchart-legend-item"><span class="legend-dot" style="background: #0284c7;"></span> Giám sát tải lượng virus (VL): Xét nghiệm mốc 6 tháng, 12 tháng sau khởi trị ART</div>
+          <div class="flowchart-legend-item"><span class="legend-dot" style="background: #dc2626;"></span> Thất bại điều trị: 2 lần đo VL &ge; 1000 bản sao/mL cách nhau 3 tháng kèm tư vấn tuân thủ</div>
+        </div>
       </div>
 
       {/* SVG 2: MTCT & TPT ALGORITHMS */}
-      <h4 style="color: var(--color-primary); margin-top: 1.5rem; margin-bottom: 0.5rem; font-size: 1rem;">
-        <i class="fa-solid fa-diagram-project"></i> Sơ đồ 2: Thuật Toán Phân Tầng Dự Phòng Lây Truyền Mẹ-Con &amp; Phác Đồ Dự Phòng Lao (TPT)
-      </h4>
-      <div style="background: var(--color-surface, #ffffff); border: 1px solid var(--color-border, #e2e8f0); border-radius: 12px; padding: 1rem; overflow-x: auto;">
-        <svg viewBox="0 0 940 460" width="100%" height="auto" style="font-family: system-ui, -apple-system, sans-serif; display: block;" xmlns="http://www.w3.org/2000/svg">
+      <div class="flowchart-editorial-card">
+        <div class="flowchart-editorial-hdr">
+          <div class="flowchart-editorial-title">
+            <i class="fa-solid fa-diagram-project" style="color: var(--color-primary, #0284c7);"></i>
+            <span>SƠ ĐỒ 2: THUẬT TOÁN DỰ PHÒNG LÂY TRUYỀN MẸ-CON &amp; ĐIỀU TRỊ DỰ PHÒNG LAO TPT (WHO 2025)</span>
+          </div>
+          <span class="flow-step-badge flow-badge-green">Editorial SVG Studio 2.0</span>
+        </div>
+        <div class="flowchart-editorial-canvas">
+          <svg class="med-svg" viewBox="0 0 940 460" width="100%" height="auto" style="font-family: system-ui, -apple-system, sans-serif; display: block;" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <marker id="arrH2" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
               <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#374151"/>
@@ -860,7 +876,7 @@ sections:
           <text x="700" y="188" font-size="10" fill="#15803d" text-anchor="middle">✓ Hoàn thành 12 liều — Tỷ lệ tuân thủ cao, ít độc gan</text>
           <text x="700" y="205" font-size="10" fill="#0369a1" text-anchor="middle">✓ Tương thích hoàn toàn với DTG liều chuẩn ở người lớn</text>
 
-          {/* ALTERNATIVES & SPECIAL */}
+          {/* ALTERNATIVES &amp; SPECIAL */}
           <path d="M 700 225 L 700 250" stroke="#374151" stroke-width="1.5" fill="none" marker-end="url(#arrH2)"/>
           <rect x="500" y="255" width="400" height="165" rx="8" fill="#ffffff" stroke="#64748b" stroke-width="1.5"/>
           <text x="700" y="278" font-size="11.5" font-weight="bold" fill="#374151" text-anchor="middle">Phác Đồ Thay Thế &amp; Tình Huống Đặc Biệt</text>
@@ -871,6 +887,12 @@ sections:
           <text x="520" y="366" font-size="10.5" fill="#374151"><tspan font-weight="bold">• 6Lfx:</tspan> Levofloxacin x 6 tháng (tiếp xúc ca MDR-TB)</text>
           <text x="700" y="398" font-size="9" fill="#dc2626" text-anchor="middle">⚠️ Luôn loại trừ lao hoạt động trước khi kê đơn TPT</text>
         </svg>
+        </div>
+        <div class="flowchart-legend-row">
+          <div class="flowchart-legend-item"><span class="legend-dot" style="background: #10b981;"></span> PMTCT: Mẹ duy trì ART liên tục, trẻ sinh ra dự phòng ARV ngay sau sinh</div>
+          <div class="flowchart-legend-item"><span class="legend-dot" style="background: #0284c7;"></span> TPT ngắn ngày: Phác đồ 3HP (Rifapentine + INH hàng tuần x 3 tháng) hoặc 1HP hàng ngày</div>
+          <div class="flowchart-legend-item"><span class="legend-dot" style="background: #f59e0b;"></span> Sàng lọc trước TPT: Bắt buộc loại trừ lao hoạt tính bằng bộ câu hỏi sàng lọc 4 triệu chứng</div>
+        </div>
       </div>
 
     </div>
