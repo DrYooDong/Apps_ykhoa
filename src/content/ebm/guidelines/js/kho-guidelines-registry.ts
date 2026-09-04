@@ -11,6 +11,27 @@ import { Study } from './guidelines-types';
 
 export const KHO_GUIDELINES_STATIC: Study[] = [
   {
+    id: '2026-jcrc-cai-thuoc-van-mach',
+    title: 'JCRC 2026: Trình Tự & Phương Pháp Cai Thuốc Vận Mạch Trong Sốc Nhiễm Khuẩn — Phân Tích Sai Lệch Phương Pháp Luận & Khung Tiếp Cận Theo Kiểu Hình',
+    titleEn: 'Vasopressor Weaning in Septic Shock: Why the Field Has Been Asking the Wrong Question (Zaidi et al., JCRC 2026/2027)',
+    sourceType: 'intl-study',
+    specialty: 'icu',
+    design: 'review',
+    impact: 'practice-changing',
+    year: 2026,
+    organization: 'Journal of Critical Care (JCRC) / SSC',
+    journal: 'J Crit Care',
+    file: '2026-jcrc-cai-thuoc-van-mach.mdx',
+    conditionKey: 'sepsis',
+    icd10: ['R57.2', 'A41.9', 'I50.9'],
+    intervention: 'Tổng quan hệ thống và phân tích đột phá về trình tự và phương pháp cai thuốc vận mạch trong hồi phục sốc nhiễm khuẩn: Giải mã nghịch lý giữa 2 RCTs (ủng hộ VP-first) vs 11 nghiên cứu quan sát (ủng hộ NE-first); Nhận diện 3 sai lệch phương pháp luận cốt lõi: (1) Sai lệch định nghĩa tụt huyết áp do hành vi bác sĩ (clinician-behavior artifact) bắt nguồn từ khoảng liều rộng của NE (0.01-1.0 µg/kg/phút) vs trần liều cứng của AVP (0.03-0.04 U/phút); (2) Phương pháp ngừng thuốc (giảm liều tiệm tiến vs dừng đột ngột) mang tính quyết định hơn trình tự: phân nhóm dừng đột ngột lệch về NE-first (OR = 0.22) do sập huyết động, trong khi phân nhóm giảm liều tiệm tiến trong RCTs đảo chiều ủng hộ VP-first (OR = 4.04); (3) Tương tác nội tiết qua trục V3-ACTH-cortisol: ngừng AVP đột ngột gây cú sập kép ở người không dùng steroid, trong khi hydrocortisone ngoại sinh trung hòa hoàn toàn hiệu ứng này (Wu 2020); Đề xuất Khung cai thuốc hướng dẫn bởi kiểu hình lâm sàng (Phenotype-guided weaning framework): Phân nhóm suy tim EF ≤ 40% ưu tiên cai Vasopressin trước (VP-first, giảm 6 ngày ICU, giảm 5 ngày thở máy, giảm tái dùng vận mạch aOR 0.20 theo Taylor 2022); Phân nhóm có thiếu hụt Vasopressin (Copeptin thấp) bắt buộc giảm liều tiệm tiến; Phân nhóm dùng steroid đồng thời linh hoạt cả hai trình tự; Đề xuất thiết kế thử nghiệm giai thừa 2x2 (400 BN) với tiêu chí chính là thời gian đạt trạng thái ngừng vận mạch bền vững ≥ 6 giờ.',
+    primaryEndpoint: 'Giải mã mâu thuẫn y văn về trình tự cai vận mạch, chứng minh vai trò quyết định của phương pháp giảm liều tiệm tiến Vasopressin, và xác lập khung tiếp cận cá thể hóa theo kiểu hình chức năng tim (EF ≤ 40%), dấu ấn hormone (Copeptin) và tình trạng dùng Corticosteroid đồng thời.',
+    keyResults: 'Phương pháp ngừng thuốc (giảm liều tiệm tiến vs ngừng đột ngột) mang tính quyết định hơn trình tự cai | Ngừng đột ngột Vasopressin gây cú sốc huyết động do rơi vào khoảng trống thiếu hụt hormone nội sinh | Phân nhóm EF ≤ 40%: Cai Vasopressin trước (VP-first) vượt trội rõ rệt (giảm nằm ICU từ 15 xuống 9 ngày, p = 0.01; giảm thở máy từ 11 xuống 6 ngày, p = 0.029; aOR tái dùng vận mạch 0.20) | Hydrocortisone ngoại sinh trung hòa sự sụp đổ của trục V3-ACTH-cortisol, cho phép linh hoạt chọn trình tự cai | Sai lệch hành vi bác sĩ giải thích toàn bộ sự mâu thuẫn giữa RCTs và nghiên cứu quan sát.',
+    summary: 'Tổng quan hệ thống và phân tích đột phá trên Journal of Critical Care (2026/2027) của TS. Syed Arsalan Akhter Zaidi và cộng sự: Giải mã cuộc tranh luận kéo dài 15 năm về trình tự cai Norepinephrine vs Vasopressin trong sốc nhiễm khuẩn, làm rõ sai lệch định nghĩa do hành vi người thầy thuốc, chứng minh vai trò sống còn của phương pháp giảm liều tiệm tiến và đề xuất mô hình cai thuốc theo kiểu hình lâm sàng (EF, Copeptin, Corticosteroid).',
+    detailedConclusion: 'Bác sĩ hồi sức tiếp cận cai vận mạch ở bệnh nhân hồi phục sốc nhiễm khuẩn (ổn định ≥ 6h, lactate ≤ 2.0 mmol/L): Siêu âm tim tại giường đánh giá LVEF. Nếu EF ≤ 40%: Khuyến cáo cai Vasopressin trước (VP-first) bằng phương pháp giảm liều tiệm tiến để bảo vệ lực co bóp tim qua thụ thể β₁ của Norepinephrine. Bất kể trình tự nào, TUYỆT ĐỐI KHÔNG ngừng Vasopressin đột ngột mà phải giảm liều tiệm tiến (0.03 → 0.02 → 0.01 → 0 U/phút mỗi 2h) để vượt qua khoảng trống thiếu hụt hormone nội sinh. Nếu không dùng Corticosteroid ngoại sinh, ưu tiên cai NE trước để duy trì kích thích bài tiết cortisol nội sinh qua trục V3-ACTH.'
+  },
+
+  {
     id: '2024-byt-dot-quy-nao',
     title: 'Bộ Y Tế 2024: Hướng Dẫn Quốc Gia Chẩn Đoán & Điều Trị Đột Quỵ Não (QĐ 3312/QĐ-BYT)',
     titleEn: 'Vietnam MOH 2024 National Guidelines on Diagnosis and Management of Stroke (Decision 3312/QD-BYT)',
@@ -1134,23 +1155,24 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     detailedConclusion: 'Kháng nấm đường uống Itraconazole 200mg x 2 lần/ngày (theo dõi nồng độ thuốc TDM) tối thiểu 6 tháng.'
   },
   {
-    id: '2023-byt-sot-xuat-huyet',
-    title: 'BYT 2023: Hướng dẫn Chẩn đoán và Điều trị Sốt xuất huyết Dengue',
-    titleEn: 'National Guidelines on Management of Dengue Hemorrhagic Fever',
+    id: '2023-byt-sot-xuat-huyet-dengue',
+    title: 'Bộ Y Tế 2023: Hướng Dẫn Quốc Gia Chẩn Đoán & Điều Trị Sốt Xuất Huyết Dengue (QĐ 2760/QĐ-BYT)',
+    titleEn: 'Vietnam MOH 2023 National Guidelines on Diagnosis and Management of Dengue Hemorrhagic Fever (Decision 2760/QD-BYT)',
     sourceType: 'vn-moh',
     specialty: 'infect',
     design: 'guideline',
-    impact: 'regulatory',
+    impact: 'practice-changing',
     year: 2023,
     organization: 'Bộ Y tế Việt Nam',
     journal: 'Bộ Y tế Việt Nam',
-    file: '2023-byt-sot-xuat-huyet-dengue.html',
-    conditionKey: 'hemorrhagic-fever',
+    file: '2023-byt-sot-xuat-huyet-dengue.mdx',
+    conditionKey: 'dengue',
     icd10: ['A90', 'A91'],
-    intervention: 'Theo dõi dấu hiệu cảnh báo (Warning signs), theo dõi Hct và tiểu cầu, phác đồ truyền dịch chống sốc theo giờ (Điện giải -> Cao phân tử Dextran/HES)',
-    primaryEndpoint: 'Kịp thời phát hiện sốc, tái lập thể tích tuần hoàn, giảm tử vong do sốc thoát huyết tương',
-    summary: 'Quy chuẩn phân độ: SXH Dengue, SXH Dengue có dấu hiệu cảnh báo, và SXH Dengue nặng; sơ đồ truyền dịch chi tiết từng giờ.',
-    detailedConclusion: 'Chỉ định truyền dịch đúng thời điểm khi có dấu hiệu cảnh báo/sốc, tránh quá tải dịch giai đoạn hồi phục.'
+    intervention: 'Hướng dẫn chuẩn quốc gia QĐ 2760/QĐ-BYT: 3 giai đoạn lâm sàng (Sốt D1-3, Nguy hiểm D3-7, Hồi phục D7-10); 3 phân độ (SXHD, SXHD có DHCB, SXHD nặng); Cây phân nhóm tiếp nhận 3 tuyến (Nhóm A ngoại trú, Nhóm B nội trú, Nhóm C ICU); Phác đồ bù dịch điện giải bậc thang (6-7 → 5 → 3 → 1.5 ml/kg/h) rút ngắn thời gian ở thiếu niên; Chống sốc và sốc nặng nguy kịch (bolus 20 ml/kg/15p ở trẻ em, 15 ml/kg/15p ở người lớn); Bảng cân nặng hiệu chỉnh CDC 2014 cho trẻ béo phì; Chỉ định Cao phân tử (Dextran 40/70, HES 200) khi Hct ≥ 40% và truyền máu cấp cứu khi Hct ≤ 35%; Đặt catheter PICC tĩnh mạch nền khuỷu tay Seldinger dưới siêu âm đo CVP và dùng Dopamin/Dobutamin/Noradrenaline; Xử trí suy gan cấp bằng N-Acetylcystein (NAC), chống phù não thể não bằng Mannitol 20% và NaCl 3%; Chọc hút màng bụng/màng phổi giảm áp; Điều trị đối tượng đặc biệt (thai phụ, Thalassemia, nhũ nhi); Quy trình điều dưỡng HKKK.',
+    primaryEndpoint: 'Chuẩn hóa quy trình phân tầng, bù dịch bậc thang có kiểm soát và chống sốc đa tầng nhằm giảm thiểu tử vong do sốc giảm thể tích, ngăn ngừa biến chứng quá tải tuần hoàn và xuất huyết nặng do Sốt xuất huyết Dengue.',
+    keyResults: 'Hạ sốt an toàn bằng Paracetamol đơn chất 10-15 mg/kg, cấm Aspirin/Ibuprofen | Bù dịch điện giải giảm liều dần theo bậc và ngừng sau 24-48h phòng phù phổi | Áp dụng cân nặng hiệu chỉnh cho trẻ béo phì phòng quá tải dịch | Chuyển sớm Cao phân tử khi Hct ≥ 40% hoặc truyền máu khi Hct ≤ 35% | Cấm tiêm chích tĩnh mạch cổ/đùi, ưu tiên đặt PICC khuỷu tay đo CVP | Phác đồ NAC truyền tĩnh mạch bảo vệ tế bào gan trong suy gan cấp | Trì hoãn mổ lấy thai trong giai đoạn nguy hiểm ngày 3-6.',
+    summary: 'Cẩm nang hướng dẫn thực hành lâm sàng tiêu chuẩn quốc gia ban hành theo Quyết định số 2760/QĐ-BYT ngày 04/07/2023 của Bộ Y tế: Tích hợp đầy đủ 15 sơ đồ phụ lục, bảng cân nặng hiệu chỉnh CDC, phác đồ bù dịch 3 lứa tuổi, quy trình chống sốc nguy kịch, xử trí suy đa tạng, can thiệp giảm áp xâm lấn tối thiểu và quy trình điều dưỡng HKKK.',
+    detailedConclusion: 'Bác sĩ lâm sàng tiếp nhận ca nghi ngờ SXHD: Phân định giai đoạn bệnh, tìm 7 dấu hiệu cảnh báo và phân nhóm tiếp nhận (A, B, C). Nếu có DHCB: Nhập viện bù dịch điện giải giảm dần. Nếu sốc: Chống sốc khẩn cấp, theo dõi động học Hct sát sao để chuyển Cao phân tử hoặc truyền máu đúng thời điểm. Cảnh giác cao độ biến chứng quá tải dịch trong giai đoạn hồi phục ngày 7-10.'
   },
   {
     id: '2023-byt-sot-ret',
