@@ -802,6 +802,66 @@ export function attachReaderProEvents(drawerPanel: HTMLElement, onNavigateArticl
 
   // TOC Links Smooth Scroll & Auto-Perspective Switching
   const scrollContainer = drawerPanel.querySelector('.vault-drawer-body') as HTMLElement | null;
+  let isUserClickingToc = false;
+
+  // Helper function: accurately scroll to a heading inside scrollContainer
+  const scrollToTargetHeading = (targetEl: HTMLElement) => {
+    if (!scrollContainer) return;
+    const containerRect = scrollContainer.getBoundingClientRect();
+    const targetRect = targetEl.getBoundingClientRect();
+    const targetScrollTop = scrollContainer.scrollTop + (targetRect.top - containerRect.top) - 20;
+
+    scrollContainer.scrollTo({
+      top: Math.max(0, targetScrollTop),
+      behavior: 'smooth'
+    });
+  };
+
+  // Helper function: accurately update Scrollspy active indicator
+  const updateScrollspy = () => {
+    if (isUserClickingToc || !scrollContainer) return;
+
+    const containerRect = scrollContainer.getBoundingClientRect();
+    const targets = Array.from(drawerPanel.querySelectorAll('.vault-toc-target')) as HTMLElement[];
+
+    // Filter only visible targets (not display: none)
+    const visibleTargets = targets.filter(el => {
+      return el.offsetParent !== null && el.offsetWidth > 0 && el.offsetHeight > 0;
+    });
+
+    if (visibleTargets.length === 0) return;
+
+    let activeTargetId = '';
+
+    for (let i = 0; i < visibleTargets.length; i++) {
+      const el = visibleTargets[i];
+      const rect = el.getBoundingClientRect();
+      const relativeTop = rect.top - containerRect.top;
+
+      // Heading has scrolled into or past the top view area (within 100px threshold)
+      if (relativeTop <= 100) {
+        activeTargetId = el.id;
+      } else {
+        break;
+      }
+    }
+
+    // Default to the first visible heading if at the top of the article
+    if (!activeTargetId && visibleTargets.length > 0) {
+      activeTargetId = visibleTargets[0].id;
+    }
+
+    if (activeTargetId) {
+      drawerPanel.querySelectorAll('.vault-toc-link').forEach(link => {
+        if (link.getAttribute('data-target') === activeTargetId) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+    }
+  };
+
   drawerPanel.querySelectorAll('.vault-toc-link').forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
@@ -809,29 +869,37 @@ export function attachReaderProEvents(drawerPanel: HTMLElement, onNavigateArticl
       if (!targetId || !scrollContainer) return;
 
       const targetEl = drawerPanel.querySelector(`#${targetId}`) as HTMLElement | null;
-      if (targetEl) {
-        // Auto-switch perspective if target is inside a hidden block
-        const parentBlock = targetEl.closest('.vault-perspective-block') as HTMLElement | null;
-        if (parentBlock && parentBlock.style.display === 'none') {
-          if (parentBlock.id === 'vault-perspective-patient') {
-            const patTab = drawerPanel.querySelector('.vault-perspective-tab[data-perspective="patient"]') as HTMLElement | null;
-            if (patTab) patTab.click();
-          } else if (parentBlock.id === 'vault-perspective-doctor') {
-            const docTab = drawerPanel.querySelector('.vault-perspective-tab[data-perspective="doctor"]') as HTMLElement | null;
-            if (docTab) docTab.click();
-          } else if (parentBlock.id === 'vault-perspective-inpatient') {
-            const inpatTab = drawerPanel.querySelector('.vault-perspective-tab[data-perspective="inpatient"]') as HTMLElement | null;
-            if (inpatTab) inpatTab.click();
-          }
-        }
+      if (!targetEl) return;
 
-        setTimeout(() => {
-          scrollContainer.scrollTo({
-            top: targetEl.offsetTop - 20,
-            behavior: 'smooth'
-          });
-        }, 50);
+      // Lock scrollspy temporarily during smooth scroll
+      isUserClickingToc = true;
+      drawerPanel.querySelectorAll('.vault-toc-link').forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+
+      // Auto-switch perspective if target is inside a hidden block
+      const parentBlock = targetEl.closest('.vault-perspective-block') as HTMLElement | null;
+      let delay = 0;
+
+      if (parentBlock && parentBlock.style.display === 'none') {
+        delay = 80;
+        if (parentBlock.id === 'vault-perspective-patient') {
+          const patTab = drawerPanel.querySelector('.vault-perspective-tab[data-perspective="patient"]') as HTMLElement | null;
+          if (patTab) patTab.click();
+        } else if (parentBlock.id === 'vault-perspective-doctor') {
+          const docTab = drawerPanel.querySelector('.vault-perspective-tab[data-perspective="doctor"]') as HTMLElement | null;
+          if (docTab) docTab.click();
+        } else if (parentBlock.id === 'vault-perspective-inpatient') {
+          const inpatTab = drawerPanel.querySelector('.vault-perspective-tab[data-perspective="inpatient"]') as HTMLElement | null;
+          if (inpatTab) inpatTab.click();
+        }
       }
+
+      setTimeout(() => {
+        scrollToTargetHeading(targetEl);
+        setTimeout(() => {
+          isUserClickingToc = false;
+        }, 700);
+      }, delay);
     });
   });
 
@@ -841,32 +909,20 @@ export function attachReaderProEvents(drawerPanel: HTMLElement, onNavigateArticl
       const targetPersp = header.getAttribute('data-perspective-target');
       if (targetPersp) {
         const tab = drawerPanel.querySelector(`.vault-perspective-tab[data-perspective="${targetPersp}"]`) as HTMLElement | null;
-        if (tab) tab.click();
+        if (tab) {
+          tab.click();
+          setTimeout(() => {
+            updateScrollspy();
+          }, 80);
+        }
       }
     });
   });
 
-  // TOC Scrollspy
+  // TOC Scrollspy listener
   if (scrollContainer) {
-    scrollContainer.addEventListener('scroll', () => {
-      const targets = drawerPanel.querySelectorAll('.vault-toc-target');
-      let currentId = '';
-
-      targets.forEach(t => {
-        const el = t as HTMLElement;
-        if (el.offsetTop - scrollContainer.scrollTop <= 80) {
-          currentId = el.id;
-        }
-      });
-
-      drawerPanel.querySelectorAll('.vault-toc-link').forEach(link => {
-        if (link.getAttribute('data-target') === currentId) {
-          link.classList.add('active');
-        } else {
-          link.classList.remove('active');
-        }
-      });
-    });
+    scrollContainer.addEventListener('scroll', updateScrollspy, { passive: true });
+    setTimeout(updateScrollspy, 120);
   }
 
   // Reading Toolbar Controls
@@ -1139,6 +1195,9 @@ export function attachReaderProEvents(drawerPanel: HTMLElement, onNavigateArticl
         if (inpatientBlock) inpatientBlock.style.display = 'block';
         if (annotationsContainer) annotationsContainer.style.display = 'none';
       }
+
+      // Re-evaluate scrollspy for the active perspective
+      setTimeout(updateScrollspy, 80);
     });
   });
 

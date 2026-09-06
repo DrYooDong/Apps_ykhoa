@@ -569,6 +569,7 @@ export async function openArticleDrawer(articleIdOrPath: string): Promise<void> 
   }
 
   drawer.classList.add('active');
+  bodyEl.scrollTop = 0;
 
   bodyEl.innerHTML = `
     <div style="text-align:center; padding:3rem; color:var(--vault-muted);">
