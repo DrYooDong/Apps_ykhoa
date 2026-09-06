@@ -82,13 +82,27 @@ function parseFrontmatter(content) {
 }
 
 function extractSnippet(body) {
-  const clean = body
+  let clean = body
     .replace(/^#+.*$/gm, '')
+    .replace(/\$\$[\s\S]*?\$\$/g, ' ')
+    .replace(/\$[^$]*?\$/g, ' ')
+    .replace(/^-{3,}/gm, ' ')
+    .replace(/^={3,}/gm, ' ')
+    .replace(/\[MÔ HÌNH[\s\S]*?\]/gi, ' ')
+    .replace(/\bMOC\b\s*[-–—:]*/gi, ' ')
+    .replace(/\*\*([^*]+)\*\*/g, '$1')
+    .replace(/__([^_]+)__/g, '$1')
+    .replace(/\[\d+(?:[,\s–-]+\d+)*\]/g, '')
     .replace(/!\[.*?\]\(.*?\)/g, '')
-    .replace(/\[\[.*?\]\]/g, '')
+    .replace(/\[\[(?:[^|\]]*\|)?([^\]]+)\]\]/g, '$1')
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
     .replace(/>.*$/gm, '')
+    .replace(/`([^`]+)`/g, '$1')
     .replace(/\s+/g, ' ')
-    .trim();
+    .trim()
+    .replace(/^[\s\-_–—:,;|./\\]+/, '');
+
+  if (!clean || clean.length < 5) return 'Tài liệu kiến thức y khoa chuẩn hóa theo chứng cứ EBM.';
   return clean.slice(0, 220);
 }
 
@@ -107,7 +121,7 @@ function scanVault() {
 
         if (entry.isDirectory()) {
           walkDir(fullPath, entry.name);
-        } else if (entry.isFile() && entry.name.endsWith('.md')) {
+        } else if (entry.isFile() && entry.name.endsWith('.md') && !entry.name.startsWith('_')) {
           const content = fs.readFileSync(fullPath, 'utf-8');
           const { meta, body } = parseFrontmatter(content);
           const relPath = path.relative(VAULT_ROOT, fullPath).replace(/\\/g, '/');
@@ -120,7 +134,7 @@ function scanVault() {
 
           const context = meta.context || (entry.name.includes('_Noi_') ? 'noi-tru' : (kho.code === 'TV' || entry.name.includes('_Ngoai_') ? 'ngoai-tru' : undefined));
           const topic = meta.topic || (entry.name.includes('_QuenLieu') ? 'quen-lieu' : (entry.name.includes('_TacDungPhu') ? 'tac-dung-phu' : (entry.name.includes('_DauHieuDo') ? 'dau-hieu-do' : (entry.name.includes('_P1') ? 'tong-quan' : undefined))));
-          const perspective = meta.perspective || (kho.code === 'TV' ? (context === 'noi-tru' ? 'triplet' : 'dual') : undefined);
+          const perspective = meta.perspective || (kho.code === 'TV' ? 'patient-only' : undefined);
 
           const article = {
             id: meta.id || `${kho.code}_${title.slice(0, 15).replace(/[^a-zA-Z0-9]/g, '_')}_${Math.random().toString(36).substring(2, 6)}`,

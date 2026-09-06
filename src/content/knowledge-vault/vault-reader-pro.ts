@@ -258,8 +258,29 @@ export function processMarkdownWithToc(rawMarkdown: string, article?: VaultArtic
   const tocItems: TocItem[] = [];
   let headingCounter = 0;
 
+  const isKhoTuVan = !!article && (
+    article.khoCode === 'TV' ||
+    (article.khoName && article.khoName.toLowerCase().includes('tư vấn')) ||
+    (article.khoDir && article.khoDir.toLowerCase().includes('tư vấn')) ||
+    (article.relPath && article.relPath.toLowerCase().includes('tư vấn')) ||
+    (article.fullFileName && article.fullFileName.startsWith('TV_')) ||
+    article.perspective === 'patient-only'
+  );
+
   // 1. Clean frontmatter
   let clean = rawMarkdown.replace(/^---[\s\S]*?---\n*/, '');
+
+  // 1b. In Kho Tư Vấn: Extract ONLY Patient & Inpatient Sections (Discard Doctor Section)
+  if (isKhoTuVan) {
+    const docMatch = clean.match(/^# .*(?:GÓC BÁC SĨ|Góc Bác sĩ)/im);
+    const patMatch = clean.match(/^# .*(?:GÓC NGƯỜI BỆNH|Góc Người bệnh)/im);
+
+    if (docMatch && patMatch && patMatch.index! > docMatch.index!) {
+      const docIdx = docMatch.index!;
+      const patIdx = patMatch.index!;
+      clean = clean.slice(0, docIdx).trim() + (docIdx > 0 ? '\n\n' : '') + clean.slice(patIdx).trim();
+    }
+  }
 
   // 2. Format Math symbols
   clean = clean.replace(/\$([^$\n]+)\$/g, (match, formula) => {
@@ -310,6 +331,18 @@ export function processMarkdownWithToc(rawMarkdown: string, article?: VaultArtic
       </div>`;
     }
     if (t.includes('GÓC NGƯỜI BỆNH') || t.includes('Góc Người bệnh')) {
+      if (isKhoTuVan) {
+        const cleanTitle = article?.title || t.replace(/^.*?GÓC NGƯỜI BỆNH[:\-\s]*/i, '') || 'Tư Vấn & Dặn Dò Cho Người Bệnh';
+        const currentDate = new Date().toLocaleDateString('vi-VN');
+        return `<div class="vault-counseling-header-card">
+          <div class="vault-counseling-header-card__top">
+            <span class="vault-counseling-badge"><i class="fa-solid fa-heart-pulse"></i> CLINIPORTAL • TỜ RƠI DẶN DÒ Y KHOA</span>
+            <span class="vault-counseling-date"><i class="fa-regular fa-calendar-check"></i> Ngày dặn: ${currentDate}</span>
+          </div>
+          <h1 class="vault-counseling-title">${escapeHtml(cleanTitle)}</h1>
+          <p class="vault-counseling-desc">Bản hướng dẫn tự theo dõi an toàn, chế độ dùng thuốc, dinh dưỡng phục hồi và các dấu hiệu cảnh báo đỏ cần nhập viện khẩn cấp.</p>
+        </div>`;
+      }
       return `<div class="vault-perspective-banner vault-perspective-banner--patient">
         <div class="vault-perspective-banner__tag"><i class="fa-solid fa-hospital-user"></i> TƯ VẤN & DẶN DÒ BỆNH NHÂN</div>
         <h1 class="vault-perspective-banner__title">${t}</h1>
@@ -409,10 +442,67 @@ export function processMarkdownWithToc(rawMarkdown: string, article?: VaultArtic
 
   // 16. Wrap Dual/Triplet-Perspective sections as MUTUALLY EXCLUSIVE SIBLINGS (Index-based slicing)
   const docBannerMatch = clean.match(/<div class="vault-perspective-banner vault-perspective-banner--doctor"/i);
-  const patBannerMatch = clean.match(/<div class="vault-perspective-banner vault-perspective-banner--patient"/i);
+  const patBannerMatch = clean.match(/<div class="(?:vault-counseling-header-card|vault-perspective-banner vault-perspective-banner--patient(?: [^"]*)?)"/i);
   const inpatBannerMatch = clean.match(/<div class="vault-perspective-banner vault-perspective-banner--inpatient"/i);
 
-  if (docBannerMatch && patBannerMatch) {
+  const articleTitle = article?.title || 'Tài liệu Dặn dò Y khoa';
+  const currentDate = new Date().toLocaleDateString('vi-VN');
+
+  // Patient Leaflet Header (for Non-KhoTuVan articles having a dual patient perspective)
+  const patientLeafletHeader = `
+    <div class="vault-patient-leaflet-banner">
+      <div class="vault-patient-leaflet-banner__top">
+        <span class="vault-patient-leaflet-badge"><i class="fa-solid fa-heart-pulse"></i> CLINIPORTAL • TỜ RƠI DẶN DÒ Y KHOA</span>
+        <span class="vault-patient-leaflet-date">Ngày dặn: ${currentDate}</span>
+      </div>
+      <h2 class="vault-patient-leaflet-title">${escapeHtml(articleTitle)}</h2>
+      <p class="vault-patient-leaflet-desc">Tài liệu dặn dò tự theo dõi, chế độ dinh dưỡng, dùng thuốc an toàn và dấu hiệu cảnh báo đỏ cần tái khám ngay</p>
+    </div>
+  `;
+
+  // Patient Leaflet Footer with Signatures & Emergency Reminder
+  const patientLeafletFooter = `
+    <div class="vault-patient-leaflet-footer">
+      <div class="vault-patient-leaflet-signature-grid">
+        <div class="vault-patient-sign-box">
+          <span class="vault-sign-title">NGƯỜI BỆNH / THÂN NHÂN</span>
+          <span class="vault-sign-note">(Đã hiểu rõ lời dặn và cam kết theo dõi)</span>
+          <div class="vault-sign-space"></div>
+          <span class="vault-sign-dotline">Ký và ghi rõ họ tên</span>
+        </div>
+        <div class="vault-patient-sign-box">
+          <span class="vault-sign-title">BÁC SĨ ĐIỀU TRỊ / TƯ VẤN</span>
+          <span class="vault-sign-note">(Ký tên & Đóng dấu phòng khám)</span>
+          <div class="vault-sign-space"></div>
+          <span class="vault-sign-dotline">Ký và ghi rõ họ tên</span>
+        </div>
+      </div>
+      <div class="vault-patient-leaflet-emergency-alert">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        <div>
+          <strong>LƯU Ý CẤP CỨU KHẨN CẤP:</strong> Khi xuất hiện bất kỳ dấu hiệu nguy hiểm (Mệt lả, li bì, đau bụng dữ dội, nôn ói nhiều, chảy máu chân răng/chảy máu mũi, nôn ra máu, tay chân lạnh ẩm), phải lập tức đưa người bệnh đến ngay cơ sở y tế gần nhất, không được chần chừ!
+        </div>
+      </div>
+    </div>
+  `;
+
+  if (isKhoTuVan && patBannerMatch) {
+    const patStart = patBannerMatch.index!;
+    const inpatStart = inpatBannerMatch ? inpatBannerMatch.index! : -1;
+    const preContent = clean.slice(0, patStart);
+
+    if (inpatStart > patStart) {
+      const patContent = clean.slice(patStart, inpatStart) + patientLeafletFooter;
+      const inpatContent = clean.slice(inpatStart);
+      clean = `${preContent}
+        <div id="vault-perspective-patient" class="vault-perspective-block perspective-patient-block" style="display:block;">${patContent}</div>
+        <div id="vault-perspective-inpatient" class="vault-perspective-block perspective-inpatient-block" style="display:block;">${inpatContent}</div>`;
+    } else {
+      const patContent = clean.slice(patStart) + patientLeafletFooter;
+      clean = `${preContent}
+        <div id="vault-perspective-patient" class="vault-perspective-block perspective-patient-block" style="display:block; border-left:none; padding-left:0;">${patContent}</div>`;
+    }
+  } else if (docBannerMatch && patBannerMatch) {
     const docStart = docBannerMatch.index!;
     const patStart = patBannerMatch.index!;
     const inpatStart = inpatBannerMatch ? inpatBannerMatch.index! : -1;
@@ -421,45 +511,6 @@ export function processMarkdownWithToc(rawMarkdown: string, article?: VaultArtic
     let docContent = '';
     let patContent = '';
     let inpatContent = '';
-
-    const articleTitle = article?.title || 'Tư vấn Sốt xuất huyết Dengue';
-    const currentDate = new Date().toLocaleDateString('vi-VN');
-
-    // Patient Leaflet Header (for Print and Outpatient counseling)
-    const patientLeafletHeader = `
-      <div class="vault-patient-leaflet-banner">
-        <div class="vault-patient-leaflet-banner__top">
-          <span class="vault-patient-leaflet-badge"><i class="fa-solid fa-heart-pulse"></i> CLINIPORTAL • TỜ RƠI DẶN DÒ Y KHOA</span>
-          <span class="vault-patient-leaflet-date">Ngày dặn: ${currentDate}</span>
-        </div>
-        <h2 class="vault-patient-leaflet-title">${escapeHtml(articleTitle)}</h2>
-        <p class="vault-patient-leaflet-desc">Tài liệu dặn dò tự theo dõi, chế độ dinh dưỡng, dùng thuốc an toàn và dấu hiệu cảnh báo đỏ cần tái khám ngay</p>
-      </div>
-    `;
-
-    // Patient Leaflet Footer with Signatures & Emergency Reminder
-    const patientLeafletFooter = `
-      <div class="vault-patient-leaflet-footer">
-        <div class="vault-patient-leaflet-signature-grid">
-          <div class="vault-patient-sign-box">
-            <span class="vault-sign-title">NGƯỜI BỆNH / THÂN NHÂN</span>
-            <span class="vault-sign-note">(Đã hiểu rõ lời dặn và cam kết theo dõi)</span>
-            <div class="vault-sign-space"></div>
-            <span class="vault-sign-dotline">Ký và ghi rõ họ tên</span>
-          </div>
-          <div class="vault-patient-sign-box">
-            <span class="vault-sign-title">BÁC SĨ ĐIỀU TRỊ / TƯ VẤN</span>
-            <span class="vault-sign-note">(Ký tên & Đóng dấu phòng khám)</span>
-            <div class="vault-sign-space"></div>
-            <span class="vault-sign-dotline">Ký và ghi rõ họ tên</span>
-          </div>
-        </div>
-        <div class="vault-patient-leaflet-emergency-alert">
-          <i class="fa-solid fa-triangle-exclamation"></i>
-          <strong>LƯU Ý CẤP CỨU KHẨN CẤP:</strong> Khi xuất hiện bất kỳ dấu hiệu nguy hiểm (Mệt lả, li bì, đau bụng dữ dội, nôn ói nhiều, chảy máu chân răng/chảy máu mũi, nôn ra máu, tay chân lạnh ẩm), phải lập tức đưa người bệnh đến ngay cơ sở y tế gần nhất, không được chần chừ!
-        </div>
-      </div>
-    `;
 
     if (inpatStart > patStart) {
       docContent = clean.slice(docStart, patStart);
@@ -485,13 +536,58 @@ export function processMarkdownWithToc(rawMarkdown: string, article?: VaultArtic
  * Render thanh điều khiển chuyển đổi góc nhìn đa chiều (Góc Bác Sĩ ↔ Người Bệnh ↔ Kế Hoạch Nội Trú)
  */
 export function renderPerspectiveBar(article: VaultArticle, rawMarkdown: string): string {
-  const isDual = article.khoCode === 'TV' || 
+  const isKhoTuVan = !!article && (
+    article.khoCode === 'TV' ||
+    (article.khoName && article.khoName.toLowerCase().includes('tư vấn')) ||
+    (article.khoDir && article.khoDir.toLowerCase().includes('tư vấn')) ||
+    (article.relPath && article.relPath.toLowerCase().includes('tư vấn')) ||
+    (article.fullFileName && article.fullFileName.startsWith('TV_')) ||
+    article.perspective === 'patient-only'
+  );
+
+  const isDual = isKhoTuVan || 
     ((rawMarkdown.includes('GÓC BÁC SĨ') || rawMarkdown.includes('Góc Bác sĩ')) && 
      (rawMarkdown.includes('GÓC NGƯỜI BỆNH') || rawMarkdown.includes('Góc Người bệnh')));
      
   if (!isDual) return '';
 
   const hasInpatient = rawMarkdown.includes('NỘI TRÚ') || rawMarkdown.includes('Nội trú') || article.context === 'noi-tru' || rawMarkdown.includes('BUỒNG BỆNH');
+
+  if (isKhoTuVan) {
+    return `
+      <div class="vault-perspective-control-bar vault-counseling-action-bar">
+        <div class="vault-perspective-badge-wrap">
+          <span class="vault-perspective-title" style="color: #10b981;">
+            <i class="fa-solid fa-hospital-user"></i>
+            <strong>DẶN DÒ NGƯỜI BỆNH</strong>
+          </span>
+          ${hasInpatient ? `
+          <div class="vault-perspective-tabs">
+            <button type="button" class="vault-perspective-tab active" data-perspective="patient" title="Xem Hướng Dẫn Dặn Dò Bệnh Nhân (Ngoại trú)">
+              <i class="fa-solid fa-house-chimney-medical"></i> <span>Ngoại Trú / Tại Nhà</span>
+            </button>
+            <button type="button" class="vault-perspective-tab" data-perspective="inpatient" title="Xem Kế Hoạch Nội Trú & Hướng Dẫn Nằm Viện">
+              <i class="fa-solid fa-bed-pulse"></i> <span>Kế Hoạch Nội Trú</span>
+            </button>
+          </div>
+          ` : `
+          <span class="vault-counseling-pill-tag">
+            <i class="fa-solid fa-circle-check" style="color:#10b981;"></i> Chuẩn Giao Tiếp & Tờ Rơi In
+          </span>
+          `}
+        </div>
+
+        <div class="vault-perspective-actions">
+          <button type="button" id="btn-print-patient-leaflet" class="vault-clinic-btn vault-clinic-btn--print" title="In tờ rơi dặn dò A4 chuẩn phát cho người bệnh">
+            <i class="fa-solid fa-print"></i> <span>In Tờ Rơi A4</span>
+          </button>
+          <button type="button" id="btn-copy-patient-script" class="vault-clinic-btn vault-clinic-btn--copy" title="Sao chép toàn bộ lời dặn bệnh nhân để dán vào Zalo / SMS / Bệnh án">
+            <i class="fa-regular fa-copy"></i> <span>Chép Lời Dặn (Zalo/SMS)</span>
+          </button>
+        </div>
+      </div>
+    `;
+  }
 
   return `
     <div class="vault-perspective-control-bar">
@@ -602,6 +698,27 @@ export function renderTocHtml(tocItems: TocItem[]): string {
   const inpatientItems = tocItems.filter(t => t.perspective === 'inpatient');
   const otherItems = tocItems.filter(t => !t.perspective || t.perspective === 'all');
 
+  // If there are no doctor items and no inpatient items, display clean single-column TOC without redundant perspective header
+  if (doctorItems.length === 0 && inpatientItems.length === 0) {
+    const allItems = [...otherItems, ...patientItems];
+    return `
+      <div class="vault-toc-sidebar">
+        <div class="vault-toc-title"><i class="fa-solid fa-list-ul"></i> Mục lục bài viết</div>
+        <nav class="vault-toc-nav">
+          ${allItems.map(item => `
+            <a 
+              href="#${item.id}" 
+              class="vault-toc-link vault-toc-level-${item.level}" 
+              data-target="${item.id}"
+            >
+              ${escapeHtml(item.text)}
+            </a>
+          `).join('')}
+        </nav>
+      </div>
+    `;
+  }
+
   return `
     <div class="vault-toc-sidebar">
       <div class="vault-toc-title"><i class="fa-solid fa-list-ul"></i> Mục lục bài viết</div>
@@ -625,7 +742,7 @@ export function renderTocHtml(tocItems: TocItem[]): string {
 
         ${patientItems.length > 0 ? `
           <div class="vault-toc-section-header vault-toc-section--patient" data-perspective-target="patient" title="Bấm để chuyển sang Góc Người Bệnh">
-            <i class="fa-solid fa-hospital-user"></i> <span>GÓC NGƯỜI BỆNH</span>
+            <i class="fa-solid fa-hospital-user"></i> <span>${inpatientItems.length > 0 ? 'NGOẠI TRÚ / TẠI NHÀ' : 'GÓC NGƯỜI BỆNH'}</span>
           </div>
           ${patientItems.map(item => `
             <a href="#${item.id}" class="vault-toc-link vault-toc-level-${item.level}" data-target="${item.id}" data-perspective="patient">
@@ -686,6 +803,44 @@ export function getMatchingDocSpaceStudio(article: VaultArticle): { id: string; 
  * Render Reader Toolbar (Controls for Zoom, Font, Fullscreen, Copy & DocSpace Actions)
  */
 export function renderReaderToolbar(article: VaultArticle): string {
+  const isKhoTuVan = !!article && (
+    article.khoCode === 'TV' ||
+    (article.khoName && article.khoName.toLowerCase().includes('tư vấn')) ||
+    (article.khoDir && article.khoDir.toLowerCase().includes('tư vấn')) ||
+    (article.relPath && article.relPath.toLowerCase().includes('tư vấn')) ||
+    (article.fullFileName && article.fullFileName.startsWith('TV_')) ||
+    article.perspective === 'patient-only'
+  );
+
+  if (isKhoTuVan) {
+    return `
+      <div class="vault-reader-toolbar vault-reader-toolbar--counseling">
+        <div class="vault-reader-toolbar-left">
+          <button id="btn-font-dec" class="vault-tool-btn" title="Giảm cỡ chữ (A-)"><i class="fa-solid fa-font" style="font-size:11px;"></i>-</button>
+          <button id="btn-font-inc" class="vault-tool-btn" title="Tăng cỡ chữ (A+)"><i class="fa-solid fa-font"></i>+</button>
+          <button id="btn-font-family" class="vault-tool-btn" title="Đổi kiểu chữ Serif / Sans">
+            <i class="fa-solid fa-pen-nib"></i> <span id="font-family-label">${readerSettings.fontFamily === 'serif' ? 'Serif' : 'Sans'}</span>
+          </button>
+          <button id="btn-senior-mode" class="vault-tool-btn" style="color:#0284c7; font-weight:700; background:rgba(2,132,199,0.08); border-color:rgba(2,132,199,0.25);" title="Bật cỡ chữ lớn & tương phản cao cho người cao tuổi / bệnh nhân đọc đối diện">
+            <i class="fa-solid fa-glasses"></i> <span>Chữ Lớn Cho BN</span>
+          </button>
+        </div>
+
+        <div class="vault-reader-toolbar-right">
+          <button id="btn-open-obsidian" class="vault-tool-btn" data-rel="${escapeHtml(article.relPath)}" style="color:#a855f7; font-weight:700;" title="Mở trực tiếp bài viết này trong ứng dụng Obsidian">
+            <i class="fa-solid fa-gem"></i> Obsidian Note
+          </button>
+          <button id="btn-copy-vault-path" class="vault-tool-btn" data-rel="${escapeHtml(article.relPath)}" title="Sao chép đường dẫn tệp Markdown trong Vault">
+            <i class="fa-regular fa-copy"></i> Copy Path
+          </button>
+          <button id="btn-fullscreen-reader" class="vault-tool-btn" title="Bật/Tắt chế độ đọc toàn màn hình">
+            <i class="fa-solid ${readerSettings.isFullscreen ? 'fa-compress' : 'fa-expand'}"></i>
+          </button>
+        </div>
+      </div>
+    `;
+  }
+
   const matchingStudio = getMatchingDocSpaceStudio(article);
 
   return `
@@ -957,6 +1112,17 @@ export function attachReaderProEvents(drawerPanel: HTMLElement, onNavigateArticl
       contentEl.style.fontFamily = readerSettings.fontFamily === 'serif' ? '"Merriweather", Georgia, serif' : 'inherit';
       const label = drawerPanel.querySelector('#font-family-label');
       if (label) label.textContent = readerSettings.fontFamily === 'serif' ? 'Serif' : 'Sans';
+    });
+  }
+
+  const seniorModeBtn = drawerPanel.querySelector('#btn-senior-mode');
+  if (seniorModeBtn) {
+    seniorModeBtn.addEventListener('click', () => {
+      const isSenior = drawerPanel.classList.toggle('vault-patient-reading-mode');
+      seniorModeBtn.classList.toggle('active', isSenior);
+      seniorModeBtn.innerHTML = isSenior 
+        ? '<i class="fa-solid fa-glasses"></i> <span>Chữ Thường</span>' 
+        : '<i class="fa-solid fa-glasses"></i> <span>Chữ Lớn Cho BN</span>';
     });
   }
 
@@ -1247,12 +1413,19 @@ export function attachReaderProEvents(drawerPanel: HTMLElement, onNavigateArticl
         text = fullContent ? (fullContent as HTMLElement).innerText : '';
       }
 
+      let cleanBody = text
+        .replace(/CLINIPORTAL • TỜ RƠI DẶN DÒ Y KHOA[\s\S]*?Bản hướng dẫn tự theo dõi[^\n]*/i, '')
+        .replace(/NGƯỜI BỆNH \/ THÂN NHÂN[\s\S]*$/i, '')
+        .replace(/\[\d+(?:,\s*\d+)*\]/g, '')
+        .replace(/\n{3,}/g, '\n\n')
+        .trim();
+
       const scriptHeader = `CLINIPORTAL - BẢN HƯỚNG DẪN & DẶN DÒ Y KHOA (${contextTitle})\n` +
         `BỆNH LÝ: ${title.toUpperCase()}\n` +
         `Thời gian dặn: ${new Date().toLocaleDateString('vi-VN')}\n` +
         `--------------------------------------------------\n\n`;
 
-      navigator.clipboard.writeText(scriptHeader + text).then(() => {
+      navigator.clipboard.writeText(scriptHeader + cleanBody).then(() => {
         copyScriptBtn.innerHTML = '<i class="fa-solid fa-check" style="color:#10b981;"></i> Đã Chép Lời Dặn!';
         setTimeout(() => {
           copyScriptBtn.innerHTML = '<i class="fa-regular fa-copy"></i> <span>Chép Lời Dặn (Zalo/SMS)</span>';

@@ -27,12 +27,17 @@ import type {
   VaultCrceState
 } from './vault-crce-view';
 
-let state: VaultFilterState & { activeGroup: string; displayLimit: number } = {
+let state: VaultFilterState & { 
+  activeGroup: string; 
+  displayLimit: number;
+  activeView: 'grid' | 'list';
+} = {
   searchQuery: '',
   activeKho: 'ALL',
   activeSpecialty: 'ALL',
   activeGroup: 'ALL',
-  displayLimit: 48
+  displayLimit: 48,
+  activeView: (typeof localStorage !== 'undefined' && localStorage.getItem('clini_vault_view') as 'grid' | 'list') || 'grid'
 };
 
 let crceState: VaultCrceState = {
@@ -55,12 +60,207 @@ let protocolsState: {
   activeTab: 'flowchart'
 };
 
+/**
+ * Làm sạch dữ liệu trích dẫn/tóm tắt (Snippet Sanitizer)
+ * Loại bỏ 100% LaTeX ($$...$$, $...$), Markdown bold/italic, MOC tag, frontmatter dashes, citations
+ */
+export function cleanSnippet(text: string): string {
+  if (!text) return 'Tài liệu kiến thức y khoa chuẩn hóa theo chứng cứ EBM.';
+  let clean = text;
 
-export function setVaultInitialState(params: { search?: string; kho?: string; group?: string; specialty?: string; protocolId?: string; disease?: string }): void {
+  // 1. Remove LaTeX blocks & formulas: $$...$$, $...$, \mathbf{...}, \langle...\rangle
+  clean = clean.replace(/\$\$[\s\S]*?\$\$/g, ' ');
+  clean = clean.replace(/\$[^$]*?\$/g, ' ');
+  clean = clean.replace(/\\(?:mathbf|mathit|text|langle|rangle|alpha|beta|gamma|Delta|ge|le|pm|times)\b/gi, ' ');
+  clean = clean.replace(/[\\{}]/g, ' ');
+
+  // 2. Remove frontmatter dividers & horizontal rules
+  clean = clean.replace(/^-{3,}/gm, ' ');
+  clean = clean.replace(/^={3,}/gm, ' ');
+
+  // 3. Remove labels like [MÔ HÌNH DINH DƯỠNG ...] or MOC - ...
+  clean = clean.replace(/\[MÔ HÌNH[\s\S]*?\]/gi, ' ');
+  clean = clean.replace(/\bMOC\b\s*[-–—:]*/gi, ' ');
+
+  // 4. Strip markdown bold, italic, strikethrough
+  clean = clean.replace(/\*\*([^*]+)\*\*/g, '$1');
+  clean = clean.replace(/__([^_]+)__/g, '$1');
+  clean = clean.replace(/\*([^*]+)\*/g, '$1');
+  clean = clean.replace(/_([^_]+)_/g, '$1');
+  clean = clean.replace(/~~([^~]+)~~/g, '$1');
+
+  // 5. Remove citations like [15], [47], [1, 2]
+  clean = clean.replace(/\[\d+(?:[,\s–-]+\d+)*\]/g, '');
+
+  // 6. Remove links and images
+  clean = clean.replace(/!\[.*?\]\(.*?\)/g, '');
+  clean = clean.replace(/\[\[(?:[^|\]]*\|)?([^\]]+)\]\]/g, '$1');
+  clean = clean.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
+
+  // 7. Remove headers, quotes, backticks
+  clean = clean.replace(/^#+.*$/gm, ' ');
+  clean = clean.replace(/>+.*$/gm, ' ');
+  clean = clean.replace(/`([^`]+)`/g, '$1');
+
+  // 8. Normalize whitespaces
+  clean = clean.replace(/\s+/g, ' ').trim();
+
+  // 9. Trim leading punctuation / dashes
+  clean = clean.replace(/^[\s\-_–—:,;|./\\]+/, '').trim();
+
+  if (!clean || clean.length < 5) {
+    return 'Tài liệu kiến thức y khoa chuẩn hóa theo chứng cứ EBM.';
+  }
+
+  // 10. Truncate smartly at word boundary around 130 chars
+  const maxLen = 130;
+  if (clean.length > maxLen) {
+    const sub = clean.slice(0, maxLen);
+    const lastSpace = sub.lastIndexOf(' ');
+    clean = (lastSpace > 50 ? sub.slice(0, lastSpace) : sub).trim() + '...';
+  }
+
+  return clean;
+}
+
+/**
+ * Render danh sách bài viết ở chế độ Lưới Bento (Grid View)
+ */
+function renderArticlesGridView(articles: VaultArticle[]): string {
+  if (articles.length === 0) {
+    return `
+      <div class="vault-empty-state">
+        <i class="fa-solid fa-magnifying-glass vault-empty-icon"></i>
+        <h3>Không tìm thấy bài viết phù hợp</h3>
+        <p>Vui lòng thử từ khóa lâm sàng khác hoặc nhấn nút Đặt lại bộ lọc ở trên.</p>
+      </div>
+    `;
+  }
+
+  return `
+    <div class="vault-articles-grid">
+      ${articles.map(art => `
+        <div class="vault-article-card vault-holo-card vault-article-item" data-id="${art.id}" data-rel="${escapeHtml(art.relPath)}" tabindex="0" role="button" aria-label="${escapeHtml(art.title)}">
+          <div class="vault-article-top">
+            <div class="vault-article-badges">
+              <span class="vault-badge vault-badge--kho" style="--badge-accent: ${art.khoColor || 'var(--vault-primary)'};">
+                <i class="fa-solid ${art.khoIcon}"></i> ${escapeHtml(art.khoName)}
+              </span>
+              <span class="vault-badge vault-badge--spec">
+                ${escapeHtml(art.specialty)}
+              </span>
+              ${art.context === 'noi-tru' ? `
+                <span class="vault-badge vault-badge--inpatient" title="Kịch bản can thiệp đầu giường &amp; Buồng bệnh nội trú">
+                  <i class="fa-solid fa-bed-pulse"></i> NỘI TRÚ
+                </span>
+              ` : (art.khoCode === 'TV' || art.context === 'ngoai-tru' ? `
+                <span class="vault-badge vault-badge--outpatient" title="Kịch bản dặn dò buồng khám ngoại trú">
+                  <i class="fa-solid fa-stethoscope"></i> NGOẠI TRÚ
+                </span>
+              ` : '')}
+              ${art.icd10 && art.icd10.length > 0 ? `
+                <span class="vault-badge vault-badge--icd">
+                  ICD: ${escapeHtml(art.icd10[0])}
+                </span>
+              ` : ''}
+            </div>
+            <h4 class="vault-article-title" title="${escapeHtml(art.title)}">${escapeHtml(art.title)}</h4>
+            <div class="vault-article-snippet">${escapeHtml(cleanSnippet(art.snippet))}</div>
+          </div>
+
+          <div class="vault-article-footer">
+            <span class="vault-read-time"><i class="fa-regular fa-clock"></i> ${art.readTime}</span>
+            <span class="vault-action-link">
+              <span>Đọc bài</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </span>
+          </div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
+/**
+ * Render danh sách bài viết ở chế độ Danh sách rút gọn (Compact List View)
+ */
+function renderArticlesListView(articles: VaultArticle[]): string {
+  if (articles.length === 0) {
+    return `
+      <div class="vault-empty-state">
+        <i class="fa-solid fa-magnifying-glass vault-empty-icon"></i>
+        <h3>Không tìm thấy bài viết phù hợp</h3>
+        <p>Vui lòng thử từ khóa lâm sàng khác hoặc nhấn nút Đặt lại bộ lọc ở trên.</p>
+      </div>
+    `;
+  }
+
+  return `
+    <div class="vault-articles-list" role="list">
+      <div class="vault-list-header">
+        <span class="vault-list-col-main">Tiêu đề bài viết &amp; Tóm tắt</span>
+        <span class="vault-list-col-context">Bối cảnh</span>
+        <span class="vault-list-col-spec">Chuyên khoa</span>
+        <span class="vault-list-col-time">Thời lượng</span>
+        <span class="vault-list-col-action">Thao tác</span>
+      </div>
+      <div class="vault-list-body">
+        ${articles.map(art => `
+          <div class="vault-article-row vault-article-item" data-id="${art.id}" data-rel="${escapeHtml(art.relPath)}" role="listitem" tabindex="0" aria-label="${escapeHtml(art.title)}">
+            <div class="vault-list-col-main">
+              <div class="vault-row-title-line">
+                <span class="vault-row-kho-icon" style="--kho-accent: ${art.khoColor || 'var(--vault-primary)'};" title="${escapeHtml(art.khoName)}">
+                  <i class="fa-solid ${art.khoIcon}"></i>
+                </span>
+                <strong class="vault-row-title" title="${escapeHtml(art.title)}">${escapeHtml(art.title)}</strong>
+                ${art.icd10 && art.icd10.length > 0 ? `
+                  <span class="vault-badge vault-badge--icd">ICD: ${escapeHtml(art.icd10[0])}</span>
+                ` : ''}
+              </div>
+              <p class="vault-row-snippet">${escapeHtml(cleanSnippet(art.snippet))}</p>
+            </div>
+
+            <div class="vault-list-col-context">
+              ${art.context === 'noi-tru' ? `
+                <span class="vault-badge vault-badge--inpatient" title="Kịch bản can thiệp đầu giường &amp; Buồng bệnh nội trú">
+                  <i class="fa-solid fa-bed-pulse"></i> NỘI TRÚ
+                </span>
+              ` : (art.khoCode === 'TV' || art.context === 'ngoai-tru' ? `
+                <span class="vault-badge vault-badge--outpatient" title="Kịch bản dặn dò buồng khám ngoại trú">
+                  <i class="fa-solid fa-stethoscope"></i> NGOẠI TRÚ
+                </span>
+              ` : `
+                <span class="vault-badge vault-badge--spec">CHUNG</span>
+              `)}
+            </div>
+
+            <div class="vault-list-col-spec">
+              <span class="vault-badge vault-badge--spec">${escapeHtml(art.specialty)}</span>
+            </div>
+
+            <div class="vault-list-col-time">
+              <span class="vault-read-time"><i class="fa-regular fa-clock"></i> ${art.readTime}</span>
+            </div>
+
+            <div class="vault-list-col-action">
+              <span class="vault-row-btn" title="Mở bài đọc">
+                <span>Đọc</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </span>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
+}
+
+export function setVaultInitialState(params: { search?: string; kho?: string; group?: string; specialty?: string; protocolId?: string; disease?: string; view?: 'grid' | 'list' }): void {
   if (params.search !== undefined) state.searchQuery = params.search;
   if (params.kho !== undefined) state.activeKho = params.kho;
   if (params.group !== undefined) state.activeGroup = params.group;
   if (params.specialty !== undefined) state.activeSpecialty = params.specialty;
+  if (params.view !== undefined) state.activeView = params.view;
   if (params.protocolId !== undefined) {
     state.activeGroup = 'PROTOCOL';
     protocolsState.selectedId = params.protocolId;
@@ -237,84 +437,61 @@ export function renderVaultHubView(): string {
 
       ${state.activeGroup !== 'PROTOCOL' && state.activeGroup !== 'CRCE' ? `
       <!-- Kho Bento Hero Grid -->
-      <div class="vault-kho-grid">
+      <!-- Kho Bento Hero Grid -->
+      <div class="vault-kho-grid" role="region" aria-label="Danh mục các kho tri thức">
         ${summaries.filter(k => state.activeGroup === 'ALL' || (KHO_DEFINITIONS[k.code] && KHO_DEFINITIONS[k.code].group === state.activeGroup)).map(k => `
-          <div class="vault-kho-card ${state.activeKho === k.code ? 'active' : ''}" data-kho="${k.code}" style="--kho-color: ${k.color};">
+          <div class="vault-kho-card ${state.activeKho === k.code ? 'active' : ''}" data-kho="${k.code}" style="--kho-color: ${k.color};" role="button" tabindex="0" title="Lọc theo kho: ${escapeHtml(k.name)}">
             <div class="vault-kho-card-header">
               <div class="vault-kho-icon"><i class="fa-solid ${k.icon}"></i></div>
-              <div style="flex:1; min-width:0;">
-                <h3 class="vault-kho-card-title">${k.name}</h3>
-                <div class="vault-kho-card-meta">${k.articleCount} bài • ${k.specialties.length} chuyên khoa</div>
+              <div class="vault-kho-card-body">
+                <h3 class="vault-kho-card-title">${escapeHtml(k.name)}</h3>
+                <div class="vault-kho-card-meta">
+                  <span class="vault-kho-count-pill">${k.articleCount} bài</span>
+                  <span class="vault-kho-spec-pill">${k.specialties.length} CK</span>
+                </div>
               </div>
-              <i class="fa-solid fa-chevron-right vault-kho-arrow"></i>
+              <i class="fa-solid fa-chevron-right vault-kho-arrow" aria-hidden="true"></i>
             </div>
           </div>
         `).join('')}
       </div>
 
-      <!-- Results Section & Counter -->
+      <!-- Results Section & Counter & View Switcher -->
       <div id="vault-results-section" class="vault-results-bar">
-        <div class="vault-results-text">
-          ${state.activeKho !== 'ALL' && KHO_DEFINITIONS[state.activeKho] ? `
-            <span class="vault-active-kho-tag">
-              <i class="fa-solid fa-folder-open"></i> Kho: <strong>${KHO_DEFINITIONS[state.activeKho].name}</strong>
-            </span>
+        <div class="vault-results-left">
+          <div class="vault-results-text">
+            ${state.activeKho !== 'ALL' && KHO_DEFINITIONS[state.activeKho] ? `
+              <span class="vault-active-kho-tag">
+                <i class="fa-solid fa-folder-open"></i> Kho: <strong>${KHO_DEFINITIONS[state.activeKho].name}</strong>
+              </span>
+            ` : ''}
+            <span>Hiển thị <strong>${displayedArticles.length}</strong> / <strong>${allFiltered.length}</strong> bài viết</span>
+          </div>
+          ${state.searchQuery || state.activeKho !== 'ALL' || state.activeSpecialty !== 'ALL' || state.activeGroup !== 'ALL' ? `
+            <button id="vault-reset-filter" class="vault-reset-btn" title="Xóa tất cả bộ lọc hiện tại">
+              <i class="fa-solid fa-rotate-left"></i> Đặt lại bộ lọc
+            </button>
           ` : ''}
-          <span>Hiển thị <strong>${displayedArticles.length}</strong> / <strong>${allFiltered.length}</strong> bài viết</span>
         </div>
-        ${state.searchQuery || state.activeKho !== 'ALL' || state.activeSpecialty !== 'ALL' || state.activeGroup !== 'ALL' ? `
-          <button id="vault-reset-filter" class="vault-reset-btn">
-            <i class="fa-solid fa-rotate-left"></i> Đặt lại bộ lọc (Hiện tất cả)
-          </button>
-        ` : ''}
+
+        <div class="vault-view-toggle-wrap">
+          <span class="vault-view-label"><i class="fa-solid fa-sliders"></i> Chế độ xem:</span>
+          <div class="vault-view-toggle" role="group" aria-label="Chế độ hiển thị bài viết">
+            <button type="button" class="vault-view-btn ${state.activeView === 'grid' ? 'active' : ''}" data-view="grid" title="Chế độ Lưới Bento" aria-label="Chế độ Lưới">
+              <i class="fa-solid fa-border-all"></i> <span>Lưới</span>
+            </button>
+            <button type="button" class="vault-view-btn ${state.activeView === 'list' ? 'active' : ''}" data-view="list" title="Chế độ Danh sách gọn (Compact List)" aria-label="Chế độ Danh sách">
+              <i class="fa-solid fa-list-ul"></i> <span>Danh sách</span>
+            </button>
+          </div>
+        </div>
       </div>
 
-      <!-- Articles Grid -->
-      <div class="vault-articles-grid">
-        ${displayedArticles.length > 0 ? displayedArticles.map(art => `
-          <div class="vault-article-card vault-holo-card" data-id="${art.id}" data-rel="${escapeHtml(art.relPath)}">
-            <div class="vault-article-top">
-              <div class="vault-article-badges">
-                <span class="vault-badge vault-badge--kho" style="--badge-accent: ${art.khoColor || 'var(--vault-primary)'};">
-                  <i class="fa-solid ${art.khoIcon}"></i> ${escapeHtml(art.khoName)}
-                </span>
-                <span class="vault-badge vault-badge--spec">
-                  ${escapeHtml(art.specialty)}
-                </span>
-                ${art.context === 'noi-tru' ? `
-                  <span class="vault-badge vault-badge--inpatient" title="Kịch bản can thiệp đầu giường & Buồng bệnh nội trú">
-                    <i class="fa-solid fa-bed-pulse"></i> NỘI TRÚ
-                  </span>
-                ` : (art.khoCode === 'TV' || art.context === 'ngoai-tru' ? `
-                  <span class="vault-badge vault-badge--outpatient" title="Kịch bản dặn dò buồng khám ngoại trú">
-                    <i class="fa-solid fa-stethoscope"></i> NGOẠI TRÚ
-                  </span>
-                ` : '')}
-                ${art.icd10 && art.icd10.length > 0 ? `
-                  <span class="vault-badge vault-badge--icd">
-                    ICD: ${escapeHtml(art.icd10[0])}
-                  </span>
-                ` : ''}
-              </div>
-              <h4 class="vault-article-title">${escapeHtml(art.title)}</h4>
-              <div class="vault-article-snippet">${escapeHtml(art.snippet || 'Tài liệu kiến thức y khoa chuẩn hóa theo chứng cứ EBM.')}</div>
-            </div>
-
-            <div class="vault-article-footer">
-              <span class="vault-read-time"><i class="fa-regular fa-clock"></i> ${art.readTime}</span>
-              <span class="vault-action-link">
-                <span>Đọc bài</span>
-                <i class="fa-solid fa-arrow-right"></i>
-              </span>
-            </div>
-          </div>
-        `).join('') : `
-          <div class="vault-empty-state">
-            <i class="fa-solid fa-magnifying-glass vault-empty-icon"></i>
-            <h3>Không tìm thấy bài viết phù hợp</h3>
-            <p>Vui lòng thử từ khóa lâm sàng khác hoặc nhấn nút Đặt lại bộ lọc ở trên.</p>
-          </div>
-        `}
+      <!-- Articles Container (Grid or Compact List) -->
+      <div class="vault-articles-container">
+        ${state.activeView === 'list' 
+          ? renderArticlesListView(displayedArticles) 
+          : renderArticlesGridView(displayedArticles)}
       </div>
 
       <!-- Load More Button -->
@@ -424,11 +601,32 @@ export function attachVaultEvents(container: HTMLElement): void {
     });
   });
 
-  // Reset button
+  // View Switcher (Grid vs Compact List)
+  container.querySelectorAll('.vault-view-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetView = btn.getAttribute('data-view') as 'grid' | 'list';
+      if (targetView && (targetView === 'grid' || targetView === 'list')) {
+        state.activeView = targetView;
+        try {
+          localStorage.setItem('clini_vault_view', targetView);
+        } catch (_) {}
+        renderAndRebind(container);
+      }
+    });
+  });
+
+  // Reset button (Giữ nguyên tùy chọn activeView của người dùng)
   const resetBtn = container.querySelector('#vault-reset-filter');
   if (resetBtn) {
     resetBtn.addEventListener('click', () => {
-      state = { searchQuery: '', activeKho: 'ALL', activeSpecialty: 'ALL', activeGroup: 'ALL', displayLimit: 48 };
+      state = { 
+        searchQuery: '', 
+        activeKho: 'ALL', 
+        activeSpecialty: 'ALL', 
+        activeGroup: 'ALL', 
+        displayLimit: 48,
+        activeView: state.activeView
+      };
       renderAndRebind(container);
     });
   }
@@ -442,13 +640,22 @@ export function attachVaultEvents(container: HTMLElement): void {
     });
   }
 
-  // Article card click -> Open Reader Drawer
-  container.querySelectorAll('.vault-article-card').forEach(card => {
-    card.addEventListener('click', () => {
-      const id = card.getAttribute('data-id');
-      const rel = card.getAttribute('data-rel');
+  // Article card/row click -> Open Reader Drawer
+  container.querySelectorAll('.vault-article-item').forEach(item => {
+    const handleOpen = () => {
+      const id = item.getAttribute('data-id');
+      const rel = item.getAttribute('data-rel');
       if (id || rel) {
         openArticleDrawer(id || rel || '');
+      }
+    };
+
+    item.addEventListener('click', handleOpen);
+    item.addEventListener('keydown', (e: Event) => {
+      const keyEvent = e as KeyboardEvent;
+      if (keyEvent.key === 'Enter' || keyEvent.key === ' ') {
+        keyEvent.preventDefault();
+        handleOpen();
       }
     });
   });
@@ -554,12 +761,30 @@ export async function openArticleDrawer(articleIdOrPath: string): Promise<void> 
   khoBadge.className = `vault-badge`;
 
   const contextBadge = document.getElementById('vault-drawer-context');
+  const isKhoTuVan = !!article && (
+    article.khoCode === 'TV' ||
+    (article.khoName && article.khoName.toLowerCase().includes('tư vấn')) ||
+    (article.khoDir && article.khoDir.toLowerCase().includes('tư vấn')) ||
+    (article.relPath && article.relPath.toLowerCase().includes('tư vấn')) ||
+    (article.fullFileName && article.fullFileName.startsWith('TV_')) ||
+    article.perspective === 'patient-only'
+  );
+
   if (contextBadge) {
-    if (article.context === 'noi-tru') {
+    if (isKhoTuVan) {
+      contextBadge.style.display = 'inline-flex';
+      if (article.context === 'noi-tru') {
+        contextBadge.className = 'vault-badge vault-badge--inpatient';
+        contextBadge.innerHTML = '<i class="fa-solid fa-bed-pulse"></i> TƯ VẤN NỘI TRÚ';
+      } else {
+        contextBadge.className = 'vault-badge vault-badge--patient';
+        contextBadge.innerHTML = '<i class="fa-solid fa-hospital-user"></i> TƯ VẤN BỆNH NHÂN';
+      }
+    } else if (article.context === 'noi-tru') {
       contextBadge.style.display = 'inline-flex';
       contextBadge.className = 'vault-badge vault-badge--inpatient';
       contextBadge.innerHTML = '<i class="fa-solid fa-bed-pulse"></i> NỘI TRÚ';
-    } else if (article.khoCode === 'TV' || article.context === 'ngoai-tru') {
+    } else if (article.context === 'ngoai-tru') {
       contextBadge.style.display = 'inline-flex';
       contextBadge.className = 'vault-badge vault-badge--outpatient';
       contextBadge.innerHTML = '<i class="fa-solid fa-stethoscope"></i> NGOẠI TRÚ';
@@ -681,24 +906,37 @@ export async function openArticleDrawer(articleIdOrPath: string): Promise<void> 
       </div>
     `;
 
-    // 8. Combine into Reader Pro Grid
-    bodyEl.innerHTML = `
-      ${pathwayRibbonHtml}
-      ${toolbarHtml}
-      ${vaultPathBar}
-      ${metadataBanner}
-      ${protocolSection}
-      ${renderEncyclopediaQuickFactsHtml(article)}
-      ${flowchartSection}
-      ${renderPerspectiveBar(article, rawMarkdown)}
-      <div class="vault-reader-pro-grid">
-        <div class="vault-article-content">
-          ${annotationsHtml}
-          ${htmlContent}
+    // 8. Combine into Reader Pro Grid (Streamlined for Patient Counseling)
+    if (isKhoTuVan) {
+      bodyEl.innerHTML = `
+        ${toolbarHtml}
+        ${renderPerspectiveBar(article, rawMarkdown)}
+        <div class="vault-reader-pro-grid vault-reader-pro-grid--counseling">
+          <div class="vault-article-content vault-counseling-content">
+            ${htmlContent}
+          </div>
+          ${tocHtml}
         </div>
-        ${tocHtml}
-      </div>
-    `;
+      `;
+    } else {
+      bodyEl.innerHTML = `
+        ${pathwayRibbonHtml}
+        ${toolbarHtml}
+        ${vaultPathBar}
+        ${metadataBanner}
+        ${protocolSection}
+        ${renderEncyclopediaQuickFactsHtml(article)}
+        ${flowchartSection}
+        ${renderPerspectiveBar(article, rawMarkdown)}
+        <div class="vault-reader-pro-grid">
+          <div class="vault-article-content">
+            ${annotationsHtml}
+            ${htmlContent}
+          </div>
+          ${tocHtml}
+        </div>
+      `;
+    }
 
     // 8. Attach Reader Pro & Flowchart Events
     attachReaderProEvents(drawerPanel, (targetArticleId) => {
