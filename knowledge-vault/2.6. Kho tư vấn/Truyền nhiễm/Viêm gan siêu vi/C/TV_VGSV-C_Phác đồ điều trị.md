@@ -1,3 +1,14 @@
+---
+title: "Tư vấn Điều trị Viêm gan siêu vi C: Thuốc DAA thế hệ mới & Tỷ lệ chữa khỏi"
+context: "ngoai-tru"
+topic: "phac-do"
+specialty: "Truyền nhiễm"
+kho: "2.6. Kho tư vấn"
+khoCode: "TV"
+perspective: "patient-only"
+icd10:
+  - "B18.2"
+---
 ### Khi nào bạn cần bắt đầu điều trị viêm gan C?
 
 - **Điều trị càng sớm càng tốt:** Tất cả mọi người khi được chẩn đoán **viêm gan C mạn tính** (qua xét nghiệm máu thấy kháng thể **anti-HCV dương tính** kèm theo tải lượng vi-rút **HCV RNA** hoặc kháng nguyên lõi **HCVcAg dương tính**) đều cần uống thuốc điều trị ngay.

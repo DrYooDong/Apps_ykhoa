@@ -1,3 +1,14 @@
+---
+title: "Tư vấn Dịch tễ học Viêm gan siêu vi E: Vệ sinh thực phẩm & Nguồn lây"
+context: "ngoai-tru"
+topic: "dich-te-hoc"
+specialty: "Truyền nhiễm"
+kho: "2.6. Kho tư vấn"
+khoCode: "TV"
+perspective: "patient-only"
+icd10:
+  - "B17.2"
+---
 ### Viêm gan E là gì và mức độ phổ biến tại Việt Nam?
 
 Viêm gan E là bệnh nhiễm trùng gan cấp tính do vi-rút viêm gan E (HEV) gây ra. Tại nước ta, vi-rút này lưu hành âm thầm và rộng rãi hơn chúng ta tưởng. Các nghiên cứu dịch tễ học ghi nhận:

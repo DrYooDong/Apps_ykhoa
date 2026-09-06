@@ -1,3 +1,15 @@
+---
+title: "Tư vấn Dịch tễ học Viêm gan siêu vi B: Đường lây & Bảo vệ gia đình"
+context: "ngoai-tru"
+topic: "dich-te-hoc"
+specialty: "Truyền nhiễm"
+kho: "2.6. Kho tư vấn"
+khoCode: "TV"
+perspective: "patient-only"
+icd10:
+  - "B16"
+  - "B18.1"
+---
 ### Viêm gan B đang phổ biến và ảnh hưởng thế nào đến chúng ta?
 
 - Trên toàn cầu, ước tính có tới **254 triệu** người đang phải sống chung với viêm gan B mạn tính, dẫn đến **1,1 triệu** ca tử vong mỗi năm, đa phần do các biến chứng nguy hiểm như xơ gan và ung thư gan.

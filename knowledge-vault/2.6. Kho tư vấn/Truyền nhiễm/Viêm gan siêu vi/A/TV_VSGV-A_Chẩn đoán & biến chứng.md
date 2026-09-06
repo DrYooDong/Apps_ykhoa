@@ -1,3 +1,14 @@
+---
+title: "Tư vấn Viêm gan siêu vi A: Nhận diện vàng da, Men gan & Biến chứng"
+context: "ngoai-tru"
+topic: "bien-chung"
+specialty: "Truyền nhiễm"
+kho: "2.6. Kho tư vấn"
+khoCode: "TV"
+perspective: "patient-only"
+icd10:
+  - "B15"
+---
 ### 1. Làm thế nào để phát hiện bạn đang nhiễm vi-rút viêm gan A?
 
 Viêm gan vi-rút A (HAV) là bệnh nhiễm trùng gan cấp tính lây truyền chủ yếu qua đường ăn uống do thức ăn hoặc nguồn nước nhiễm bẩn. Khi vi-rút xâm nhập, người bệnh thường có các biểu hiện đột ngột như **sốt, mệt mỏi rã rời, chán ăn, buồn nôn, và sau đó là vàng mắt, vàng da, nước tiểu sậm màu**.

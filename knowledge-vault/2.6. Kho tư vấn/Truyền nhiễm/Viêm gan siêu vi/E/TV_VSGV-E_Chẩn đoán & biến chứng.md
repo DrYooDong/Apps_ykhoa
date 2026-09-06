@@ -1,3 +1,14 @@
+---
+title: "Tư vấn Viêm gan siêu vi E: Cảnh báo nguy hiểm ở Phụ nữ mang thai"
+context: "ngoai-tru"
+topic: "bien-chung"
+specialty: "Truyền nhiễm"
+kho: "2.6. Kho tư vấn"
+khoCode: "TV"
+perspective: "patient-only"
+icd10:
+  - "B17.2"
+---
 ### 1. Làm sao để phát hiện bạn đang bị viêm gan siêu vi E?
 
 - Nghi ngờ khi bạn có các biểu hiện cấp tính như mệt mỏi, vàng mắt, vàng da sau thời gian ủ bệnh trung bình **36 ngày** (từ **15 đến 75 ngày**).

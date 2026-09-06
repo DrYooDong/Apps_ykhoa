@@ -1,3 +1,14 @@
+---
+title: "Tư vấn Điều trị Viêm gan siêu vi B: Tiêu chuẩn dùng thuốc & Tuân thủ"
+context: "ngoai-tru"
+topic: "phac-do"
+specialty: "Truyền nhiễm"
+kho: "2.6. Kho tư vấn"
+khoCode: "TV"
+perspective: "patient-only"
+icd10:
+  - "B18.1"
+---
 ### Khi nào bạn bắt đầu cần dùng thuốc điều trị viêm gan B?
 
 Viêm gan B mạn tính thường diễn tiến rất âm thầm. Theo Hướng dẫn mới nhất của Bộ Y tế, bạn sẽ được chỉ định dùng thuốc kháng vi-rút khi thuộc một trong các trường hợp sau:

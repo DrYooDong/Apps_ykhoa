@@ -1,3 +1,15 @@
+---
+title: "Tư vấn Xơ gan: Chẩn đoán & Nhận diện biến chứng nguy hiểm"
+context: "ngoai-tru"
+topic: "bien-chung"
+specialty: "Tiêu hóa - Gan mật"
+kho: "2.6. Kho tư vấn"
+khoCode: "TV"
+perspective: "patient-only"
+icd10:
+  - "K74"
+  - "K74.6"
+---
 ### Làm sao để biết bạn đã bị xơ gan và mức độ nặng nhẹ ra sao?
 
 - Hiện nay, bác sĩ có thể chẩn đoán xơ gan một cách nhẹ nhàng mà **không cần sinh thiết gan** (chọc kim hút mô gan) gây đau đớn như trước đây.

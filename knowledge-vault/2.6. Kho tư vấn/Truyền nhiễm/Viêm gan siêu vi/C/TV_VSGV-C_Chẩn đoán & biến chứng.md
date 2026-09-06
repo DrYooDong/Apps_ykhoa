@@ -1,3 +1,14 @@
+---
+title: "Tư vấn Viêm gan siêu vi C: Xét nghiệm anti-HCV, HCV RNA & Biến chứng"
+context: "ngoai-tru"
+topic: "bien-chung"
+specialty: "Truyền nhiễm"
+kho: "2.6. Kho tư vấn"
+khoCode: "TV"
+perspective: "patient-only"
+icd10:
+  - "B18.2"
+---
 ### Làm sao để phát hiện bạn đang nhiễm vi-rút viêm gan C?
 
 Khi nghi ngờ nhiễm vi-rút viêm gan C (HCV), bạn cần thực hiện các bước xét nghiệm theo thứ tự để chẩn đoán chính xác:

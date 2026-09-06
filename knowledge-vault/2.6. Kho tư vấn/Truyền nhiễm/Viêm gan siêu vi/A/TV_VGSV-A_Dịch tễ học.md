@@ -1,3 +1,14 @@
+---
+title: "Tư vấn Dịch tễ học Viêm gan siêu vi A: Đường phân - miệng & Phòng ngừa"
+context: "ngoai-tru"
+topic: "dich-te-hoc"
+specialty: "Truyền nhiễm"
+kho: "2.6. Kho tư vấn"
+khoCode: "TV"
+perspective: "patient-only"
+icd10:
+  - "B15"
+---
 ### Viêm gan A phổ biến ra sao ở Việt Nam?
 
 - Tại Việt Nam, viêm gan vi-rút A là một trong những nguyên nhân hàng đầu gây ra các đợt tổn thương gan cấp tính trong cộng đồng.

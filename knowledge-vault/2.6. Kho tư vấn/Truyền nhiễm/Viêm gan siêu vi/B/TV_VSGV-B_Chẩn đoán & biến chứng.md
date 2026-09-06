@@ -1,3 +1,15 @@
+---
+title: "Tư vấn Viêm gan siêu vi B: Giải thích xét nghiệm HBsAg, HBV-DNA & Biến chứng"
+context: "ngoai-tru"
+topic: "bien-chung"
+specialty: "Truyền nhiễm"
+kho: "2.6. Kho tư vấn"
+khoCode: "TV"
+perspective: "patient-only"
+icd10:
+  - "B16"
+  - "B18.1"
+---
 ### Làm sao để biết bạn đang bị viêm gan B cấp hay mạn tính?
 
 Nhiễm vi-rút viêm gan B (HBV) được chia làm hai thể bệnh dựa trên thời gian vi-rút tồn tại trong cơ thể bạn:

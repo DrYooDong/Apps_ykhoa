@@ -1,3 +1,14 @@
+---
+title: "Tư vấn Dịch tễ học Xơ gan: Gánh nặng bệnh tật & Phòng ngừa"
+context: "ngoai-tru"
+topic: "dich-te-hoc"
+specialty: "Tiêu hóa - Gan mật"
+kho: "2.6. Kho tư vấn"
+khoCode: "TV"
+perspective: "patient-only"
+icd10:
+  - "K74"
+---
 ### Xơ gan có phải là căn bệnh thực sự phổ biến không?
 
 - Xơ gan là một gánh nặng y tế lớn trên toàn cầu, chiếm tới **2.4% tổng số ca tử vong** mỗi năm.

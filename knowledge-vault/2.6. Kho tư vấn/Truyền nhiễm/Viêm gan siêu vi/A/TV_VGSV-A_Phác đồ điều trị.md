@@ -1,3 +1,14 @@
+---
+title: "Tư vấn Điều trị Viêm gan siêu vi A: Nghỉ ngơi, Dinh dưỡng & Theo dõi"
+context: "ngoai-tru"
+topic: "phac-do"
+specialty: "Truyền nhiễm"
+kho: "2.6. Kho tư vấn"
+khoCode: "TV"
+perspective: "patient-only"
+icd10:
+  - "B15"
+---
 ### Khi nào người bệnh viêm gan A cần nhập viện điều trị?
 
 - Viêm gan vi-rút A (HAV) là một bệnh nhiễm trùng gan cấp tính, diễn tiến **tự giới hạn** (tự khỏi) và **không chuyển thành mạn tính**.

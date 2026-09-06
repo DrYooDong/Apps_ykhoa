@@ -1,3 +1,14 @@
+---
+title: "Tư vấn Tiên lượng Xơ gan & Các yếu tố ảnh hưởng sống còn"
+context: "ngoai-tru"
+topic: "tien-luong"
+specialty: "Tiêu hóa - Gan mật"
+kho: "2.6. Kho tư vấn"
+khoCode: "TV"
+perspective: "patient-only"
+icd10:
+  - "K74"
+---
 ### Tiên lượng sống còn: Gan còn bù khác biệt thế nào với gan mất bù?
 
 - **Xơ gan còn bù** (giai đoạn gan đã bị xơ hóa nặng nhưng cơ thể vẫn tự bù đắp được chức năng): Đây là giai đoạn vàng để điều trị, người bệnh có thời gian sống trung vị rất tốt, kéo dài **trên 12 năm**.

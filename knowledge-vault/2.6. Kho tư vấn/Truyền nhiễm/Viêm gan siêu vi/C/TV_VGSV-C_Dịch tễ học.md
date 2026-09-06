@@ -1,3 +1,14 @@
+---
+title: "Tư vấn Dịch tễ học Viêm gan siêu vi C: Gánh nặng bệnh tật & Đường lây"
+context: "ngoai-tru"
+topic: "dich-te-hoc"
+specialty: "Truyền nhiễm"
+kho: "2.6. Kho tư vấn"
+khoCode: "TV"
+perspective: "patient-only"
+icd10:
+  - "B18.2"
+---
 # CẢNH BÁO DỊCH TỄ HỌC VIÊM GAN C: NHỮNG CON SỐ BIẾT NÓI VÀ HƯỚNG DẪN BẢO VỆ GIA ĐÌNH BẠN
 
 ### Viêm gan C đáng sợ thế nào và phổ biến ra sao tại Việt Nam?

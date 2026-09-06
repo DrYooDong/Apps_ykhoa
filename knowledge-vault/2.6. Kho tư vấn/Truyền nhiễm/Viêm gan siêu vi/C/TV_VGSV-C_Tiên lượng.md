@@ -1,3 +1,14 @@
+---
+title: "Tư vấn Tiên lượng Viêm gan siêu vi C: Hiệu quả khỏi bệnh & Phòng tái nhiễm"
+context: "ngoai-tru"
+topic: "tien-luong"
+specialty: "Truyền nhiễm"
+kho: "2.6. Kho tư vấn"
+khoCode: "TV"
+perspective: "patient-only"
+icd10:
+  - "B18.2"
+---
 ### Khả năng tự đào thải vi-rút và nguy cơ chuyển thành viêm gan C mạn tính là bao nhiêu?
 
 - **Khả năng tự đào thải tự nhiên:** Khi mới nhiễm vi-rút viêm gan C cấp tính, chỉ có khoảng **15% đến 30%** người bệnh may mắn có khả năng tự sạch vi-rút ra khỏi máu mà không cần dùng thuốc điều trị.

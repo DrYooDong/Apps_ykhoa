@@ -1,3 +1,14 @@
+---
+title: "Tư vấn Tiên lượng Viêm gan siêu vi B: Theo dõi định kỳ & Tầm soát K gan"
+context: "ngoai-tru"
+topic: "tien-luong"
+specialty: "Truyền nhiễm"
+kho: "2.6. Kho tư vấn"
+khoCode: "TV"
+perspective: "patient-only"
+icd10:
+  - "B18.1"
+---
 ### Tiên lượng bệnh viêm gan B của bạn phụ thuộc vào những yếu tố nào?
 
 **Tiên lượng** (khả năng diễn tiến tốt hay xấu) của bệnh viêm gan B mạn tính rất khác nhau ở mỗi người và phụ thuộc chặt chẽ vào hoạt động của vi-rút:

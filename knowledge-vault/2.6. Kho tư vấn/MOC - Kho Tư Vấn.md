@@ -93,16 +93,58 @@ graph TD
 | Tên Kịch Bản | Context | Topic | ICD-10 | Tệp Ghi Chú | Trạng Thái |
 | :--- | :---: | :---: | :---: | :--- | :---: |
 | **Trào ngược dạ dày thực quản (GERD)** | `Ngoai` | `P1` | `K21` | [[Tiêu hóa - Gan mật/TV_Trào ngược dạ dày thực quản (GERD)_P1\|TV_Trào ngược dạ dày thực quản (GERD)_P1]] | ✅ Sẵn sàng |
-| **Viêm gan B mạn tính** | `Ngoai` | `P1` | `B18.1` | [[Tiêu hóa - Gan mật/TV_Viêm gan B mạn tính_P1\|TV_Viêm gan B mạn tính_P1]] | ⏳ Đang biên soạn |
+| **Xơ gan: Chẩn đoán & Biến chứng** | `Ngoai` | `bien-chung` | `K74` | [[Tiêu hóa - Gan mật/Xơ gan/TV_XG_Chẩn đoán và biến chứng\|TV_XG_Chẩn đoán và biến chứng]] | ✅ Sẵn sàng |
+| **Xơ gan: Dịch tễ học** | `Ngoai` | `dich-te-hoc` | `K74` | [[Tiêu hóa - Gan mật/Xơ gan/TV_XG_Dịch tễ học\|TV_XG_Dịch tễ học]] | ✅ Sẵn sàng |
+| **Xơ gan: Phác đồ điều trị** | `Ngoai` | `phac-do` | `K74` | [[Tiêu hóa - Gan mật/Xơ gan/TV_XG_Phác đồ điều trị\|TV_XG_Phác đồ điều trị]] | ✅ Sẵn sàng |
+| **Xơ gan: Tiên lượng** | `Ngoai` | `tien-luong` | `K74` | [[Tiêu hóa - Gan mật/Xơ gan/TV_XG_Tiên lượng\|TV_XG_Tiên lượng]] | ✅ Sẵn sàng |
+| **Viêm gan B mạn tính** | `Ngoai` | `P1` | `B18.1` | [[Truyền nhiễm/Viêm gan siêu vi/B/TV_VGSV-B_Phác đồ điều trị\|TV_VGSV-B_Phác đồ điều trị]] | ✅ Sẵn sàng |
 
 ### 🦟 4. Truyền Nhiễm
 
+#### 4.1. Sốt Xuất Huyết Dengue
 | Tên Kịch Bản | Context | Topic | ICD-10 | Tệp Ghi Chú | Trạng Thái |
 | :--- | :---: | :---: | :---: | :--- | :---: |
-| **SXHD: Chẩn đoán & Phân độ người lớn** | `Ngoai` | `tong-quan` | `A90` | [[TV_SXHD_Chẩn đoán & Phân độ\|TV_SXHD_Chẩn đoán & Phân độ]] | ✅ Sẵn sàng |
-| **SXHD: Phác đồ không Dấu hiệu cảnh báo** | `Ngoai` | `tong-quan` | `A90` | [[TV_SXHD_PDDT ko DHCB\|TV_SXHD_PDDT ko DHCB]] | ✅ Sẵn sàng |
-| **SXHD: Phác đồ có Dấu hiệu cảnh báo** | `Noi` | `tong-quan` | `A91` | [[TV_SXHD_PDDT có DHCB\|TV_SXHD_PDDT có DHCB]] | ✅ Sẵn sàng |
-| **SXHD: Phác đồ nặng thể Sốc (DSS/ICU)** | `Noi` | `tong-quan` | `A91` | [[TV_SXHD_PDDT nặng thể sốc\|TV_SXHD_PDDT nặng thể sốc]] | ✅ Sẵn sàng |
+| **SXHD: Chẩn đoán & Phân độ người lớn** | `Ngoai` | `tong-quan` | `A90` | [[Truyền nhiễm/Sốt xuất huyết/TV_SXHD_Chẩn đoán & Phân độ\|TV_SXHD_Chẩn đoán & Phân độ]] | ✅ Sẵn sàng |
+| **SXHD: Dịch tễ học** | `Ngoai` | `dich-te-hoc` | `A90` | [[Truyền nhiễm/Sốt xuất huyết/TV_SXHD_Dịch tễ học\|TV_SXHD_Dịch tễ học]] | ✅ Sẵn sàng |
+| **SXHD: Biến chứng nguy hiểm** | `Ngoai` | `bien-chung` | `A91` | [[Truyền nhiễm/Sốt xuất huyết/TV_SXHD_Biến chứng\|TV_SXHD_Biến chứng]] | ✅ Sẵn sàng |
+| **SXHD: Phác đồ không Dấu hiệu cảnh báo** | `Ngoai` | `tong-quan` | `A90` | [[Truyền nhiễm/Sốt xuất huyết/TV_SXHD_PDDT ko DHCB\|TV_SXHD_PDDT ko DHCB]] | ✅ Sẵn sàng |
+| **SXHD: Phác đồ có Dấu hiệu cảnh báo** | `Noi` | `tong-quan` | `A91` | [[Truyền nhiễm/Sốt xuất huyết/TV_SXHD_PDDT có DHCB\|TV_SXHD_PDDT có DHCB]] | ✅ Sẵn sàng |
+| **SXHD: Phác đồ nặng thể Sốc (DSS/ICU)** | `Noi` | `tong-quan` | `A91` | [[Truyền nhiễm/Sốt xuất huyết/TV_SXHD_PDDT nặng thể sốc\|TV_SXHD_PDDT nặng thể sốc]] | ✅ Sẵn sàng |
+| **SXHD: Phác đồ nặng thể Xuất huyết** | `Noi` | `tong-quan` | `A91` | [[Truyền nhiễm/Sốt xuất huyết/TV_SXHD_PDDT nặng thể xuất huyết\|TV_SXHD_PDDT nặng thể xuất huyết]] | ✅ Sẵn sàng |
+| **SXHD: Tiên lượng & Hồi phục** | `Ngoai` | `tien-luong` | `A90` | [[Truyền nhiễm/Sốt xuất huyết/TV_SXHD_Tiên lượng\|TV_SXHD_Tiên lượng]] | ✅ Sẵn sàng |
+
+#### 4.2. Bệnh Thủy Đậu
+| Tên Kịch Bản | Context | Topic | ICD-10 | Tệp Ghi Chú | Trạng Thái |
+| :--- | :---: | :---: | :---: | :--- | :---: |
+| **Thủy đậu: Chẩn đoán & Biến chứng** | `Ngoai` | `bien-chung` | `B01` | [[Truyền nhiễm/Thủy đậu/TV_Thủy đậu_Chẩn đoán & Biến chứng\|TV_Thủy đậu_Chẩn đoán & Biến chứng]] | ✅ Sẵn sàng |
+| **Thủy đậu: Dịch tễ học & Đường lây** | `Ngoai` | `dich-te-hoc` | `B01` | [[Truyền nhiễm/Thủy đậu/TV_Thủy đậu_Dịch tễ học\|TV_Thủy đậu_Dịch tễ học]] | ✅ Sẵn sàng |
+| **Thủy đậu: Phác đồ điều trị & Chăm sóc da** | `Ngoai` | `phac-do` | `B01` | [[Truyền nhiễm/Thủy đậu/TV_Thủy đậu_Phác đồ điều trị\|TV_Thủy đậu_Phác đồ điều trị]] | ✅ Sẵn sàng |
+| **Thủy đậu: Tiên lượng & Zona thần kinh** | `Ngoai` | `tien-luong` | `B01` | [[Truyền nhiễm/Thủy đậu/TV_Thủy đậu_Tiên lượng\|TV_Thủy đậu_Tiên lượng]] | ✅ Sẵn sàng |
+
+#### 4.3. Viêm Gan Siêu Vi (A, B, C, E)
+| Tên Kịch Bản | Context | Topic | ICD-10 | Tệp Ghi Chú | Trạng Thái |
+| :--- | :---: | :---: | :---: | :--- | :---: |
+| **VGSV A: Chẩn đoán & Vàng da** | `Ngoai` | `bien-chung` | `B15` | [[Truyền nhiễm/Viêm gan siêu vi/A/TV_VSGV-A_Chẩn đoán & biến chứng\|TV_VSGV-A_Chẩn đoán & biến chứng]] | ✅ Sẵn sàng |
+| **VGSV A: Dịch tễ học** | `Ngoai` | `dich-te-hoc` | `B15` | [[Truyền nhiễm/Viêm gan siêu vi/A/TV_VGSV-A_Dịch tễ học\|TV_VGSV-A_Dịch tễ học]] | ✅ Sẵn sàng |
+| **VGSV A: Phác đồ điều trị** | `Ngoai` | `phac-do` | `B15` | [[Truyền nhiễm/Viêm gan siêu vi/A/TV_VGSV-A_Phác đồ điều trị\|TV_VGSV-A_Phác đồ điều trị]] | ✅ Sẵn sàng |
+| **VGSV B: Chẩn đoán & Xét nghiệm HBsAg** | `Ngoai` | `bien-chung` | `B18.1` | [[Truyền nhiễm/Viêm gan siêu vi/B/TV_VSGV-B_Chẩn đoán & biến chứng\|TV_VSGV-B_Chẩn đoán & biến chứng]] | ✅ Sẵn sàng |
+| **VGSV B: Dịch tễ học & Lây nhiễm** | `Ngoai` | `dich-te-hoc` | `B18.1` | [[Truyền nhiễm/Viêm gan siêu vi/B/TV_VGSV-B_Dịch tễ học\|TV_VGSV-B_Dịch tễ học]] | ✅ Sẵn sàng |
+| **VGSV B: Phác đồ điều trị kháng virus** | `Ngoai` | `phac-do` | `B18.1` | [[Truyền nhiễm/Viêm gan siêu vi/B/TV_VGSV-B_Phác đồ điều trị\|TV_VGSV-B_Phác đồ điều trị]] | ✅ Sẵn sàng |
+| **VGSV B: Tiên lượng & Tầm soát K gan** | `Ngoai` | `tien-luong` | `B18.1` | [[Truyền nhiễm/Viêm gan siêu vi/B/TV_VGSV-B_Tiên lượng\|TV_VGSV-B_Tiên lượng]] | ✅ Sẵn sàng |
+| **VGSV C: Chẩn đoán & Xét nghiệm anti-HCV** | `Ngoai` | `bien-chung` | `B18.2` | [[Truyền nhiễm/Viêm gan siêu vi/C/TV_VSGV-C_Chẩn đoán & biến chứng\|TV_VSGV-C_Chẩn đoán & biến chứng]] | ✅ Sẵn sàng |
+| **VGSV C: Dịch tễ học** | `Ngoai` | `dich-te-hoc` | `B18.2` | [[Truyền nhiễm/Viêm gan siêu vi/C/TV_VGSV-C_Dịch tễ học\|TV_VGSV-C_Dịch tễ học]] | ✅ Sẵn sàng |
+| **VGSV C: Phác đồ điều trị thuốc DAA** | `Ngoai` | `phac-do` | `B18.2` | [[Truyền nhiễm/Viêm gan siêu vi/C/TV_VGSV-C_Phác đồ điều trị\|TV_VGSV-C_Phác đồ điều trị]] | ✅ Sẵn sàng |
+| **VGSV C: Tiên lượng & Chữa khỏi 98%** | `Ngoai` | `tien-luong` | `B18.2` | [[Truyền nhiễm/Viêm gan siêu vi/C/TV_VGSV-C_Tiên lượng\|TV_VGSV-C_Tiên lượng]] | ✅ Sẵn sàng |
+| **VGSV E: Dịch tễ học & Vệ sinh thực phẩm** | `Ngoai` | `dich-te-hoc` | `B17.2` | [[Truyền nhiễm/Viêm gan siêu vi/E/TV_VGSV-E_Dịch tễ học\|TV_VGSV-E_Dịch tễ học]] | ✅ Sẵn sàng |
+| **VGSV E: Cảnh báo Phụ nữ mang thai** | `Ngoai` | `bien-chung` | `B17.2` | [[Truyền nhiễm/Viêm gan siêu vi/E/TV_VSGV-E_Chẩn đoán & biến chứng\|TV_VSGV-E_Chẩn đoán & biến chứng]] | ✅ Sẵn sàng |
+
+#### 4.4. Viêm Màng Não
+| Tên Kịch Bản | Context | Topic | ICD-10 | Tệp Ghi Chú | Trạng Thái |
+| :--- | :---: | :---: | :---: | :--- | :---: |
+| **Viêm màng não: Chọc dò tủy sống & Cấp cứu** | `CapCuu` | `bien-chung` | `G00` | [[Truyền nhiễm/Viêm màng não/TV_VMN_Chẩn đoán và biến chứng\|TV_VMN_Chẩn đoán và biến chứng]] | ✅ Sẵn sàng |
+| **Viêm màng não: Dịch tễ học & Tiêm chủng** | `Ngoai` | `dich-te-hoc` | `G00` | [[Truyền nhiễm/Viêm màng não/TV_VMN_Dịch tễ học\|TV_VMN_Dịch tễ học]] | ✅ Sẵn sàng |
+| **Viêm màng não: Phác đồ kháng sinh tĩnh mạch** | `Noi` | `phac-do` | `G00` | [[Truyền nhiễm/Viêm màng não/TV_VMN_Phác đồ điều trị\|TV_VMN_Phác đồ điều trị]] | ✅ Sẵn sàng |
+| **Viêm màng não: Tiên lượng & Di chứng** | `Noi` | `tien-luong` | `G00` | [[Truyền nhiễm/Viêm màng não/TV_VMN_Tiên lượng\|TV_VMN_Tiên lượng]] | ✅ Sẵn sàng |
 
 ---
 

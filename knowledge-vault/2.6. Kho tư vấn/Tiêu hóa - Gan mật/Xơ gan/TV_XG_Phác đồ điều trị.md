@@ -1,3 +1,14 @@
+---
+title: "Tư vấn Điều trị & Chăm sóc Xơ gan: Dinh dưỡng, Thuốc & Theo dõi"
+context: "ngoai-tru"
+topic: "phac-do"
+specialty: "Tiêu hóa - Gan mật"
+kho: "2.6. Kho tư vấn"
+khoCode: "TV"
+perspective: "patient-only"
+icd10:
+  - "K74"
+---
 ### Khi nào bạn cần bắt đầu điều trị xơ gan?
 
 - Ngay khi bạn được chẩn đoán mắc **xơ gan còn bù** (giai đoạn gan đã bị xơ hóa nặng nhưng cơ thể vẫn tự bù đắp được chức năng, chưa xuất hiện biến chứng rõ rệt).

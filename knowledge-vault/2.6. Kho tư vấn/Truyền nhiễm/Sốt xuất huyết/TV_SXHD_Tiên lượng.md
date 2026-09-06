@@ -1,3 +1,15 @@
+---
+title: "Tư vấn Tiên lượng & Thời điểm hồi phục Sốt xuất huyết Dengue"
+context: "ngoai-tru"
+topic: "tien-luong"
+specialty: "Truyền nhiễm"
+kho: "2.6. Kho tư vấn"
+khoCode: "TV"
+perspective: "patient-only"
+icd10:
+  - "A90"
+  - "A91"
+---
 ### Sốt xuất huyết Dengue có dễ trở nặng không?
 
 Phần lớn ca bệnh sốt xuất huyết Dengue (khoảng **80%**) là thể nhẹ và tự phục hồi. Tuy nhiên, dưới **5%** người bệnh có thể diễn tiến thành các biến chứng nặng đe dọa trực tiếp đến tính mạng như sốc thất thoát huyết tương, xuất huyết ồ ạt hoặc suy đa cơ quan.
