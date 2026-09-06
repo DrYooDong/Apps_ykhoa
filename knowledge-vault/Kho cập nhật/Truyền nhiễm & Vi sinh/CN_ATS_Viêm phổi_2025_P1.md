@@ -1,3 +1,22 @@
+---
+title: "Tóm tắt hướng dẫn lâm sàng ats 2025 (cập nhật chẩn đoán và điều trị viêm phổi cộng đồng ở người lớn)"
+part: "P1"
+aliases:
+  - "Tóm tắt hướng dẫn lâm sàng ats 2025 (cập nhật chẩn đoán và điều trị viêm phổi cộng đồng ở người lớn)"
+  - "ATS Viêm phổi 2025"
+keywords:
+  - "tóm tắt hướng dẫn lâm sàng ats 2025 (cập nhật chẩn đoán và điều trị viêm phổi cộng đồng ở người lớn)"
+  - "truyền nhiễm & vi sinh"
+  - "ats viêm phổi 2025"
+specialty: "Truyền nhiễm & Vi sinh"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/truyen-nhiem"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 ### TÓM TẮT HƯỚNG DẪN LÂM SÀNG ATS 2025 (CẬP NHẬT CHẨN ĐOÁN VÀ ĐIỀU TRỊ VIÊM PHỔI CỘNG ĐỒNG Ở NGƯỜI LỚN) - PHẦN 1
 
 Hướng dẫn lâm sàng cập nhật năm **2025** của **Hiệp hội Lồng ngực Hoa Kỳ (ATS)** cập nhật các khuyến cáo dựa trên bằng chứng khoa học cho 4 câu hỏi then chốt trong chẩn đoán và xử trí viêm phổi mắc phải cộng đồng (CAP) ở người lớn. Dưới đây là tóm tắt chi tiết **Phần 1** của nghiên cứu và hướng dẫn này, tập trung vào mô hình sinh lý bệnh học mới, vai trò của siêu âm phổi (LUS) trong chẩn đoán và chiến lược sử dụng kháng sinh kinh nghiệm khi có xét nghiệm vi-rút dương tính.

@@ -1,3 +1,20 @@
+---
+title: "BYT SXHDengue 2023"
+part: "P3"
+aliases:
+  - "BYT SXHDengue 2023"
+keywords:
+  - "byt sxhdengue 2023"
+  - "truyền nhiễm & vi sinh"
+specialty: "Truyền nhiễm & Vi sinh"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/truyen-nhiem"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 ### 1. Nội Dung Sinh Lý Học, Lâm Sàng & Quy Trình Kỹ Thuật Chi Tiết (Bài học Phần 3)
 
 #### Hồi Sức Hô Hấp Chuyên Sâu và Can Thiệp Xâm Lấn Tối Thiểu

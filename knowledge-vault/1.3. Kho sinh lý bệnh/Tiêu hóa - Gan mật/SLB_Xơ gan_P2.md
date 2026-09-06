@@ -1,3 +1,22 @@
+---
+title: "Sinh lý bệnh của xơ gan (phần 2) - cơ chế các biến chứng mất bù"
+part: "P2"
+aliases:
+  - "Sinh lý bệnh của xơ gan (phần 2) - cơ chế các biến chứng mất bù"
+  - "Xơ gan"
+keywords:
+  - "sinh lý bệnh của xơ gan (phần 2) - cơ chế các biến chứng mất bù"
+  - "tiêu hóa - gan mật"
+  - "xơ gan"
+specialty: "Tiêu hóa - Gan mật"
+kho: "1.3. Kho sinh lý bệnh"
+tags:
+  - "he-co-quan/tieu-hoa"
+  - "loai/disease"
+  - "y-khoa/slb"
+updated: "2026-09-06"
+---
+
 # BÀI HỌC: SINH LÝ BỆNH CỦA XƠ GAN (PHẦN 2) - CƠ CHẾ CÁC BIẾN CHỨNG MẤT BÙ
 
 Nối tiếp **Phần 1** về tổng quan các giai đoạn tiến triển lâm sàng, cơ chế tế bào của quá trình tạo xơ gan (fibrogenesis), và các khái niệm cơ bản về động lực học tăng áp lực tĩnh mạch cửa (PH), **Phần 2** sẽ đi sâu phân tích chi tiết cơ chế sinh lý bệnh học phân tử và hệ thống đứng sau các biến chứng mất bù kinh điển của xơ gan [1, 2]. 

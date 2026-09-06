@@ -1,3 +1,22 @@
+---
+title: "Dịch tễ học của bệnh não gan (HE)"
+part: "P1"
+aliases:
+  - "Dịch tễ học của bệnh não gan (HE)"
+  - "Bệnh não gan"
+keywords:
+  - "dịch tễ học của bệnh não gan (he)"
+  - "tiêu hóa - gan mật"
+  - "bệnh não gan"
+specialty: "Tiêu hóa - Gan mật"
+kho: "1.4. Kho dịch tễ học"
+tags:
+  - "he-co-quan/tieu-hoa"
+  - "loai/epidemiology"
+  - "y-khoa/dth"
+updated: "2026-09-06"
+---
+
 # BÀI HỌC: DỊCH TỄ HỌC CỦA BỆNH NÃO GAN (HE)
 
 Bài học này cung cấp cái nhìn chi tiết và toàn diện về dịch tễ học, tần suất hiện mắc, tỷ lệ mắc mới, các yếu tố nguy cơ và tiên lượng của Bệnh não gan (Hepatic Encephalopathy - HE) ở bệnh nhân xơ gan, dựa trên dữ liệu từ các tài liệu nghiên cứu y khoa, hướng dẫn thực hành lâm sàng của Hiệp hội Nghiên cứu Gan mật Châu Âu (EASL) và các phân tích gộp Cochrane [128, 135, 351, 358, 444].

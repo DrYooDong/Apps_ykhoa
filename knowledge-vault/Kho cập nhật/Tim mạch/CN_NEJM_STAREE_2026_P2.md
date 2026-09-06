@@ -1,4 +1,23 @@
-# BÀI HỌC CHUYÊN SÂU: PHÂN TÍCH THỰC NGHIỆM LÂM SÀNG STAREE - HIỆU QUẢ VÀ TÍNH AN TOÀN CỦA ATORVASTATIN Ở NGƯỜI CAO TUỔI (PHẦN 2)
+---
+title: "Phân tích thực nghiệm lâm sàng STAREE - hiệu quả và tính an toàn của Atorvastatin ở người cao tuổi"
+part: "P2"
+aliases:
+  - "Phân tích thực nghiệm lâm sàng STAREE - hiệu quả và tính an toàn của Atorvastatin ở người cao tuổi"
+  - "NEJM STAREE 2026"
+keywords:
+  - "phân tích thực nghiệm lâm sàng STAREE - hiệu quả và tính an toàn của Atorvastatin ở người cao tuổi"
+  - "tim mạch"
+  - "nejm STAREE 2026"
+specialty: "Tim mạch"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/tim-mach"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
+# BÀI HỌC CHUYÊN SÂU: PHÂN TÍCH THỰC NGHIỆM LÂM SÀNG STAREE - HIỆU QUẢ VÀ TÍNH AN TOÀN CỦA Atorvastatin Ở NGƯỜI CAO TUỔI (PHẦN 2)
 
 _(Tóm tắt thử nghiệm lâm sàng STAREE đăng tải trên The New England Journal of Medicine - NEJM 2026)_
 
@@ -9,13 +28,13 @@ _(Tóm tắt thử nghiệm lâm sàng STAREE đăng tải trên The New England
 ### 1. Hiệu Quả Biến Đổi Nồng Độ Lipid Máu Sau 5.9 Năm Theo Dõi
 
 - **Nồng độ lipid máu nền ban đầu (Baseline)**: Ghi nhận mức tương đương ở cả hai nhóm:
-    - _Cholesterol toàn phần_: **211.2 ± 32.0 mg/dL** (ở nhóm atorvastatin là 210.8 ± 31.6 mg/dL và nhóm giả dược là 211.6 ± 32.5 mg/dL).
-    - _LDL Cholesterol (LDL-C)_: **126.6 ± 28.0 mg/dL** (ở nhóm atorvastatin là 126.2 ± 27.8 mg/dL và nhóm giả dược là 127.0 ± 28.1 mg/dL).
+    - _Cholesterol toàn phần_: **211.2 ± 32.0 mg/dL** (ở nhóm Atorvastatin là 210.8 ± 31.6 mg/dL và nhóm giả dược là 211.6 ± 32.5 mg/dL).
+    - _LDL Cholesterol (LDL-C)_: **126.6 ± 28.0 mg/dL** (ở nhóm Atorvastatin là 126.2 ± 27.8 mg/dL và nhóm giả dược là 127.0 ± 28.1 mg/dL).
     - _HDL Cholesterol (HDL-C)_: **61.6 ± 17.5 mg/dL**.
     - _Triglycerides_: **113.1 ± 53.6 mg/dL**.
 - **Sự sụt giảm lipid máu cuối kỳ theo dõi**:
-    - _Cholesterol toàn phần_: Giảm trung bình **53 mg/dL** (1.37 mmol/L) ở nhóm atorvastatin so với giảm **18 mg/dL** (0.47 mmol/L) ở nhóm giả dược. Chênh lệch giảm ròng giữa hai nhóm là **35 mg/dL** (95% CI, 33 đến 37 mg/dL; tương đương 0.90 mmol/L).
-    - _LDL Cholesterol_: Giảm trung bình **48 mg/dL** (1.23 mmol/L) ở nhóm atorvastatin so với giảm **16 mg/dL** (0.42 mmol/L) ở nhóm giả dược. Chênh lệch giảm ròng thực tế giữa hai nhóm là **31 mg/dL** (95% CI, 30 đến 33 mg/dL; tương đương 0.81 mmol/L), tức là **giảm khoảng 38% nồng độ LDL-C** ở nhóm điều trị so với 13% ở nhóm chứng.
+    - _Cholesterol toàn phần_: Giảm trung bình **53 mg/dL** (1.37 mmol/L) ở nhóm Atorvastatin so với giảm **18 mg/dL** (0.47 mmol/L) ở nhóm giả dược. Chênh lệch giảm ròng giữa hai nhóm là **35 mg/dL** (95% CI, 33 đến 37 mg/dL; tương đương 0.90 mmol/L).
+    - _LDL Cholesterol_: Giảm trung bình **48 mg/dL** (1.23 mmol/L) ở nhóm Atorvastatin so với giảm **16 mg/dL** (0.42 mmol/L) ở nhóm giả dược. Chênh lệch giảm ròng thực tế giữa hai nhóm là **31 mg/dL** (95% CI, 30 đến 33 mg/dL; tương đương 0.81 mmol/L), tức là **giảm khoảng 38% nồng độ LDL-C** ở nhóm điều trị so với 13% ở nhóm chứng.
 
 ---
 
@@ -77,7 +96,7 @@ Thử nghiệm STAREE ghi nhận một phát hiện lâm sàng mang tính phân 
 
 ### 3. Kết Quả Các Tiêu Chí Đánh Giá Phụ (Secondary End Points)
 
-Các phân tích tiêu chí phụ hỗ trợ củng cố thêm phát hiện từ tiêu chí chính, cho thấy tác động của atorvastatin tập trung chủ yếu vào việc ngăn ngừa các biến cố mạch vành không tử vong và nhu cầu can thiệp mạch.
+Các phân tích tiêu chí phụ hỗ trợ củng cố thêm phát hiện từ tiêu chí chính, cho thấy tác động của Atorvastatin tập trung chủ yếu vào việc ngăn ngừa các biến cố mạch vành không tử vong và nhu cầu can thiệp mạch.
 
 - **Nhồi máu cơ tim (tử vong hoặc không tử vong)**: Giảm cực kỳ ấn tượng từ 137 ca ở nhóm giả dược xuống còn 79 ca ở nhóm can thiệp. **HR = 0.57 (95% CI, 0.43 - 0.75)**, tức là giảm đến **43% nguy cơ nhồi máu cơ tim**.
 - **Can thiệp tái thông mạch vành**: Giảm từ 190 ca nhóm giả dược xuống còn 110 ca nhóm can thiệp. **HR = 0.57 (95% CI, 0.45 - 0.72)**, tương đương mức giảm **43% nhu cầu can thiệp đặt stent/phẫu thuật bắc cầu**.
@@ -118,7 +137,7 @@ _*Đơn vị đo lường: Số lượng biến cố xảy ra trên 1000 ngườ
 
 - **Tên hình**: _Figure 2: Subgroup Analyses.
 - ![[Pasted image 20260906110011.png]]
-- Mô tả: Shown are results from prespecified subgroup analyses of the effects of atorvastatin as compared with placebo. Panel A shows the incidence of primary major cardiovascular events (death from cardiovascular causes, nonfatal myocardial infarction or stroke, or coronary revascularization), with associated hazard ratios. Panel B shows the incidence of death from any cause, dementia, or persistent physical disability, with associated hazard ratios, as a measure of disabilityfree survival. To convert the values for cholesterol to millimoles per liter, multiply by 0.02586. Higher scores on the Modified Mini–Mental State (3MS) examination indicate better cognitive functioning. The pandemic refers to the coronavirus disease 2019 pandemic. The widths of the confidence intervals have not been adjusted for multiplicity and should not be used to infer treatment effects. The term eGFR denotes estimated glomerular filtration rate, HDL high­density lipoprotein, and LDL low­density lipoprotein.
+- Mô tả: Shown are results from prespecified subgroup analyses of the effects of Atorvastatin as compared with placebo. Panel A shows the incidence of primary major cardiovascular events (death from cardiovascular causes, nonfatal myocardial infarction or stroke, or coronary revascularization), with associated hazard ratios. Panel B shows the incidence of death from any cause, dementia, or persistent physical disability, with associated hazard ratios, as a measure of disabilityfree survival. To convert the values for cholesterol to millimoles per liter, multiply by 0.02586. Higher scores on the Modified Mini–Mental State (3MS) examination indicate better cognitive functioning. The pandemic refers to the coronavirus disease 2019 pandemic. The widths of the confidence intervals have not been adjusted for multiplicity and should not be used to infer treatment effects. The term eGFR denotes estimated glomerular filtration rate, HDL high­density lipoprotein, and LDL low­density lipoprotein.
 
 ### 4. Hồ Sơ An Toàn Và Các Biến Cố Bất Lợi Đặc Biệt Quan Tâm (Safety & Adverse Events)
 

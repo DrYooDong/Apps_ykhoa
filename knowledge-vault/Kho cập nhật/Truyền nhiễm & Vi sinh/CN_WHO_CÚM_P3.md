@@ -1,3 +1,22 @@
+---
+title: "Tóm tắt hướng dẫn điều trị lâm sàng bệnh cúm - WHO (2024)"
+part: "P3"
+aliases:
+  - "Tóm tắt hướng dẫn điều trị lâm sàng bệnh cúm - WHO (2024)"
+  - "WHO CÚM"
+keywords:
+  - "tóm tắt hướng dẫn điều trị lâm sàng bệnh cúm - who (2024)"
+  - "truyền nhiễm & vi sinh"
+  - "who cúm"
+specialty: "Truyền nhiễm & Vi sinh"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/truyen-nhiem"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 # BÀI HỌC: TÓM TẮT HƯỚNG DẪN ĐIỀU TRỊ LÂM SÀNG BỆNH CÚM - WHO (2024)
 
 ## (PHẦN 3: BỘ CHỈ SỐ LÂM SÀNG, THỬ NGHIỆM ĐIỀU TRỊ HỖ TRỢ, VÀ LƯU ĐỒ QUYẾT ĐỊNH TOÀN DIỆN)

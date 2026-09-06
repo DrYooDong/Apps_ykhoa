@@ -1,3 +1,22 @@
+---
+title: "Trình bệnh án: Thoại Trình BA Lupus BS. Bích Hương"
+part: "P1"
+aliases:
+  - "Trình bệnh án: Thoại Trình BA Lupus BS. Bích Hương"
+  - "Thoại Trình BA Lupus BS. Bích Hương"
+keywords:
+  - "trình bệnh án: thoại trình ba lupus bs. bích hương"
+  - "cơ xương khớp & miễn dịch"
+  - "thoại trình ba lupus bs. bích hương"
+specialty: "Cơ xương khớp & Miễn dịch"
+kho: "Kho bệnh án"
+tags:
+  - "he-co-quan/co-xuong-khop"
+  - "loai/case-presentation"
+  - "y-khoa/ba"
+updated: "2026-09-06"
+---
+
 dù khó nhưng mà ở trong này tự tin rằng
 tất cả các nhóm chúng ta đều học được là
 vì bệnh nhân có vấn đề về suy thận mục

@@ -1,3 +1,22 @@
+---
+title: "Quản lý nhiễm trùng da và mô mềm (ssti) theo idsa 2014"
+part: "P2"
+aliases:
+  - "Quản lý nhiễm trùng da và mô mềm (ssti) theo idsa 2014"
+  - "idsa SSTI 2014"
+keywords:
+  - "quản lý nhiễm trùng da và mô mềm (ssti) theo idsa 2014"
+  - "truyền nhiễm & vi sinh"
+  - "idsa ssti 2014"
+specialty: "Truyền nhiễm & Vi sinh"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/truyen-nhiem"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 # BÀI HỌC: QUẢN LÝ NHIỄM TRÙNG DA VÀ MÔ MỀM (SSTI) THEO IDSA 2014
 ## PHẦN 2: QUẢN LÝ NHIỄM TRÙNG VẾT MỔ, NHIỄM TRÙNG HOẠI TỬ, VẾT THƯƠNG DO ĐỘNG VẬT/NGƯỜI CẮN & PHÒNG NGỪA SSTI TÁI PHÁT
 

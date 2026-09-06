@@ -1,3 +1,22 @@
+---
+title: "Trình bệnh án: Thoại Trình BA AKI BS. Bích Hương"
+part: "P3"
+aliases:
+  - "Trình bệnh án: Thoại Trình BA AKI BS. Bích Hương"
+  - "Thoại Trình BA AKI BS. Bích Hương"
+keywords:
+  - "trình bệnh án: thoại trình ba aki bs. bích hương"
+  - "thận - tiết niệu"
+  - "thoại trình ba aki bs. bích hương"
+specialty: "Thận - Tiết niệu"
+kho: "Kho bệnh án"
+tags:
+  - "he-co-quan/than-tiet-nieu"
+  - "loai/case-presentation"
+  - "y-khoa/ba"
+updated: "2026-09-06"
+---
+
 và điểm khá thấp điểm khá thấp đối với
 bệnh án hội chứng thận hư Chỉ vì một
 chuyện là các em chị đi ở cái mặt phớt

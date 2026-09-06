@@ -1,3 +1,22 @@
+---
+title: "Tiêu chuẩn và phương pháp chẩn đoán nhiễm nấm xâm lấn"
+part: "P2"
+aliases:
+  - "Tiêu chuẩn và phương pháp chẩn đoán nhiễm nấm xâm lấn"
+  - "BYT nhiễm nấm xl 2021"
+keywords:
+  - "tiêu chuẩn và phương pháp chẩn đoán nhiễm nấm xâm lấn"
+  - "truyền nhiễm & vi sinh"
+  - "byt nhiễm nấm xl 2021"
+specialty: "Truyền nhiễm & Vi sinh"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/truyen-nhiem"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 # BÀI HỌC: TIÊU CHUẨN VÀ PHƯƠNG PHÁP CHẨN ĐOÁN NHIỄM NẤM XÂM LẤN (PHẦN 2)
 
 ---

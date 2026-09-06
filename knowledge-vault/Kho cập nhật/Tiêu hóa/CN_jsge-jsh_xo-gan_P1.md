@@ -1,3 +1,22 @@
+---
+title: "Tóm tắt hướng dẫn thực hành lâm sàng jsge-jsh (2020) về xơ gan"
+part: "P1"
+aliases:
+  - "Tóm tắt hướng dẫn thực hành lâm sàng jsge-jsh (2020) về xơ gan"
+  - "jsge-jsh xo-gan"
+keywords:
+  - "tóm tắt hướng dẫn thực hành lâm sàng jsge-jsh (2020) về xơ gan"
+  - "tiêu hóa"
+  - "jsge-jsh xo-gan"
+specialty: "Tiêu hóa"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/tieu-hoa"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 # TÓM TẮT HƯỚNG DẪN THỰC HÀNH LÂM SÀNG JSGE-JSH (2020) VỀ XƠ GAN - PHẦN 1
 
 Tài liệu này được biên soạn chi tiết dựa trên tài liệu gốc **"Evidence-based clinical practice guidelines for Liver Cirrhosis 2020"** do Hiệp hội Tiêu hóa Nhật Bản (JSGE) và Hiệp hội Gan mật Nhật Bản (JSH) đồng thuận xuất bản vào năm 2021 [1]. 

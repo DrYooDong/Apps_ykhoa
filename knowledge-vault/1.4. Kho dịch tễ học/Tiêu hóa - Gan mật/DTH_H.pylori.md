@@ -1,3 +1,22 @@
+---
+title: "Dịch tễ học của nhiễm khuẩn helicobacter pylori"
+part: "P1"
+aliases:
+  - "Dịch tễ học của nhiễm khuẩn helicobacter pylori"
+  - "H.pylori"
+keywords:
+  - "dịch tễ học của nhiễm khuẩn helicobacter pylori"
+  - "tiêu hóa - gan mật"
+  - "h.pylori"
+specialty: "Tiêu hóa - Gan mật"
+kho: "1.4. Kho dịch tễ học"
+tags:
+  - "he-co-quan/tieu-hoa"
+  - "loai/epidemiology"
+  - "y-khoa/dth"
+updated: "2026-09-06"
+---
+
 # BÀI HỌC: DỊCH TỄ HỌC CỦA NHIỄM KHUẨN HELICOBACTER PYLORI
 
 ---

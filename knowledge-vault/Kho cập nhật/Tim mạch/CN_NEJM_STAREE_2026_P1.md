@@ -1,4 +1,23 @@
-# BÀI HỌC CHUYÊN SÂU: PHÂN TÍCH THỬ NGHIỆM LÂM SÀNG STAREE - HIỆU QUẢ VÀ TÍNH AN TOÀN CỦA ATORVASTATIN Ở NGƯỜI CAO TUỔI (PHẦN 1)
+---
+title: "Phân tích thử nghiệm lâm sàng STAREE - hiệu quả và tính an toàn của Atorvastatin ở người cao tuổi"
+part: "P1"
+aliases:
+  - "Phân tích thử nghiệm lâm sàng STAREE - hiệu quả và tính an toàn của Atorvastatin ở người cao tuổi"
+  - "NEJM STAREE 2026"
+keywords:
+  - "phân tích thử nghiệm lâm sàng STAREE - hiệu quả và tính an toàn của Atorvastatin ở người cao tuổi"
+  - "tim mạch"
+  - "nejm STAREE 2026"
+specialty: "Tim mạch"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/tim-mach"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
+# BÀI HỌC CHUYÊN SÂU: PHÂN TÍCH THỬ NGHIỆM LÂM SÀNG STAREE - HIỆU QUẢ VÀ TÍNH AN TOÀN CỦA Atorvastatin Ở NGƯỜI CAO TUỔI (PHẦN 1)
 
 _(Tóm tắt thử nghiệm lâm sàng STAREE đăng tải trên The New England Journal of Medicine - NEJM 2026)_
 

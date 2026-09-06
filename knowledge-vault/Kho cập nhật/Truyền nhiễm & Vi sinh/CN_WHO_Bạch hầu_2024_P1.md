@@ -1,3 +1,22 @@
+---
+title: "Tóm Tắt Hướng Dẫn Điều Trị Bạch Hầu Của WHO (2024)"
+part: "P1"
+aliases:
+  - "Tóm Tắt Hướng Dẫn Điều Trị Bạch Hầu Của WHO (2024)"
+  - "WHO Bạch hầu 2024"
+keywords:
+  - "tóm tắt hướng dẫn điều trị bạch hầu của who (2024)"
+  - "truyền nhiễm & vi sinh"
+  - "who bạch hầu 2024"
+specialty: "Truyền nhiễm & Vi sinh"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/truyen-nhiem"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 ### 1. Nội Dung Hướng Dẫn Lâm Sàng Chi Tiết: Tóm Tắt Hướng Dẫn Điều Trị Bạch Hầu Của WHO (2024) - Phần 1
 
 #### Tổng Quan Và Đặc Điểm Lâm Sàng Của Bạch Hầu Hô Hấp

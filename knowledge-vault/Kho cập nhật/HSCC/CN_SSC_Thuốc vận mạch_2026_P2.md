@@ -1,3 +1,22 @@
+---
+title: "Phần 2: sai lệch định nghĩa lâm sàng, bằng chứng thực chứng và mô hình cai thuốc theo kiểu hình"
+part: "P2"
+aliases:
+  - "Phần 2: sai lệch định nghĩa lâm sàng, bằng chứng thực chứng và mô hình cai thuốc theo kiểu hình"
+  - "SSC Thuốc vận mạch 2026"
+keywords:
+  - "phần 2: sai lệch định nghĩa lâm sàng, bằng chứng thực chứng và mô hình cai thuốc theo kiểu hình"
+  - "hscc"
+  - "ssc thuốc vận mạch 2026"
+specialty: "HSCC"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/hoi-suc"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 ### PHẦN 2: SAI LỆCH ĐỊNH NGHĨA LÂM SÀNG, BẰNG CHỨNG THỰC CHỨNG VÀ MÔ HÌNH CAI THUỐC THEO KIỂU HÌNH
 
 Tiếp tục chuyên đề tóm tắt nghiên cứu hệ thống về quy trình cai thuốc vận mạch ở bệnh nhân hồi phục sau sốc nhiễm khuẩn, Phần 2 sẽ đi sâu phân tích các sai lệch cốt lõi trong phương pháp luận của y văn hiện tại, đối chiếu dữ liệu giữa các thử nghiệm lâm sàng ngẫu nhiên (RCT) với nghiên cứu quan sát, và trình bày mô hình cai thuốc cá thể hóa dựa trên kiểu hình lâm sàng của người bệnh.

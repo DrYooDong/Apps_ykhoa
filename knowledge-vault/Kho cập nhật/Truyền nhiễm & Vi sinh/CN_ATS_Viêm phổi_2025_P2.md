@@ -1,3 +1,20 @@
+---
+title: "ATS Viêm phổi 2025"
+part: "P2"
+aliases:
+  - "ATS Viêm phổi 2025"
+keywords:
+  - "ats viêm phổi 2025"
+  - "truyền nhiễm & vi sinh"
+specialty: "Truyền nhiễm & Vi sinh"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/truyen-nhiem"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 ### 1. Nội Dung Sinh Lý Học và Y Học Lâm Sàng Chi Tiết
 
 Dựa trên các bằng chứng khoa học và đồng thuận chuyên gia mới nhất trong Hướng dẫn Lâm sàng của **Hiệp hội Lồng ngực Hoa Kỳ (ATS) năm 2025**, dưới đây là tóm tắt chi tiết **Phần 2** tập trung vào hai câu hỏi lâm sàng cốt lõi: thời gian điều trị kháng sinh tối ưu và liệu pháp Corticosteroid toàn thân đối với viêm phổi mắc phải cộng đồng (CAP) ở người lớn.

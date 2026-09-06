@@ -1,3 +1,22 @@
+---
+title: "Tóm tắt hướng dẫn của WHO về quản lý bệnh HIV tiến triển (phần 2): lâm sàng sàng lọc, chẩn đoán và phác đồ điều trị các nhiễm trùng cơ hội nguy hiểm"
+part: "P2"
+aliases:
+  - "Tóm tắt hướng dẫn của WHO về quản lý bệnh HIV tiến triển (phần 2): lâm sàng sàng lọc, chẩn đoán và phác đồ điều trị các nhiễm trùng cơ hội nguy hiểm"
+  - "WHO HIV TIẾN TRIỂN"
+keywords:
+  - "tóm tắt hướng dẫn của who về quản lý bệnh hiv tiến triển (phần 2): lâm sàng sàng lọc, chẩn đoán và phác đồ điều trị các nhiễm trùng cơ hội nguy hiểm"
+  - "truyền nhiễm & vi sinh"
+  - "who hiv tiến triển"
+specialty: "Truyền nhiễm & Vi sinh"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/truyen-nhiem"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 # TỐM TẮT HƯỚNG DẪN CỦA WHO VỀ QUẢN LÝ BỆNH HIV TIẾN TRIỂN (PHẦN 2): LÂM SÀNG SÀNG LỌC, CHẨN ĐOÁN VÀ PHÁC ĐỒ ĐIỀU TRỊ CÁC NHIỄM TRÙNG CƠ HỘI NGUY HIỂM
 
 ---

@@ -1,3 +1,22 @@
+---
+title: "Trình bệnh án: Thoại Trình BA AKI BS. Bích Hương"
+part: "P1"
+aliases:
+  - "Trình bệnh án: Thoại Trình BA AKI BS. Bích Hương"
+  - "Thoại Trình BA AKI BS. Bích Hương"
+keywords:
+  - "trình bệnh án: thoại trình ba aki bs. bích hương"
+  - "thận - tiết niệu"
+  - "thoại trình ba aki bs. bích hương"
+specialty: "Thận - Tiết niệu"
+kho: "Kho bệnh án"
+tags:
+  - "he-co-quan/than-tiet-nieu"
+  - "loai/case-presentation"
+  - "y-khoa/ba"
+updated: "2026-09-06"
+---
+
 những cái phần xử trí này thì thôi cũng
 tầm tạm được
 nhưng mà Chính vì thế cho nên hôm nay

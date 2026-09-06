@@ -1,3 +1,22 @@
+---
+title: "Tóm tắt hướng dẫn lâm sàng KASL (2026) về xơ gan"
+part: "P2"
+aliases:
+  - "Tóm tắt hướng dẫn lâm sàng KASL (2026) về xơ gan"
+  - "kasl ascites 2026"
+keywords:
+  - "tóm tắt hướng dẫn lâm sàng kasl (2026) về xơ gan"
+  - "tiêu hóa"
+  - "kasl ascites 2026"
+specialty: "Tiêu hóa"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/tieu-hoa"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 # BÀI HỌC: TÓM TẮT HƯỚNG DẪN LÂM SÀNG KASL (2026) VỀ XƠ GAN - PHẦN 2: CƠ CHẾ VÀ PHÁC ĐỒ ĐIỀU TRỊ BIẾN CHỨNG CHUYÊN SÂU
 
 Tài liệu này được biên soạn chi tiết dựa trên tài liệu gốc **"KASL clinical practice guidelines for liver cirrhosis: Ascites and related complications 2026"** của Hiệp hội Nghiên cứu Bệnh gan Hàn Quốc (KASL) xuất bản trên tạp chí *Clinical and Molecular Hepatology* năm 2026 [2].

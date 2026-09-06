@@ -1,3 +1,22 @@
+---
+title: "1. Nội Dung Nghiên Cứu Chi Tiết"
+part: "P2"
+aliases:
+  - "1. Nội Dung Nghiên Cứu Chi Tiết"
+  - "IDSA VMN do lao 2020"
+keywords:
+  - "1. nội dung nghiên cứu chi tiết"
+  - "truyền nhiễm & vi sinh"
+  - "idsa vmn do lao 2020"
+specialty: "Truyền nhiễm & Vi sinh"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/truyen-nhiem"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 ### 1. Nội Dung Nghiên Cứu Chi Tiết (Phần 2)
 
 #### Kết Quả Phân Tích Gộp Về Tỷ Lệ Tử Vong (Mortality Meta-analysis Results)

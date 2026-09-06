@@ -1,3 +1,22 @@
+---
+title: "Tóm Tắt Hướng Dẫn Điều Trị Bạch Hầu Của WHO (2024)"
+part: "P2"
+aliases:
+  - "Tóm Tắt Hướng Dẫn Điều Trị Bạch Hầu Của WHO (2024)"
+  - "WHO Bạch hầu 2024"
+keywords:
+  - "tóm tắt hướng dẫn điều trị bạch hầu của who (2024)"
+  - "truyền nhiễm & vi sinh"
+  - "who bạch hầu 2024"
+specialty: "Truyền nhiễm & Vi sinh"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/truyen-nhiem"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 ### 1. Nội Dung Hướng Dẫn Lâm Sàng Chi Tiết: Tóm Tắt Hướng Dẫn Điều Trị Bạch Hầu Của WHO (2024) - Phần 2
 
 **A. Quản lý biến chứng tắc nghẽn đường thở khẩn cấp (Emergency Airway Management)** Đối với những bệnh nhân bạch hầu hô hấp có tình trạng đe dọa tắc nghẽn đường thở cấp tính (do màng giả lan rộng hoặc phù nề thanh quản), việc can thiệp đường thở khẩn cấp kịp thời là phương án cứu mạng duy nhất.

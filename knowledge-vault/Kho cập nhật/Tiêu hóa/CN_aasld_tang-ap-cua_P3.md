@@ -1,3 +1,22 @@
+---
+title: "Tóm tắt hướng dẫn lâm sàng AASLD (2024) về phân tầng nguy cơ và quản lý tăng áp lực tĩnh mạch cửa & giãn tĩnh mạch trong xơ gan"
+part: "P3"
+aliases:
+  - "Tóm tắt hướng dẫn lâm sàng AASLD (2024) về phân tầng nguy cơ và quản lý tăng áp lực tĩnh mạch cửa & giãn tĩnh mạch trong xơ gan"
+  - "aasld tang-ap-cua"
+keywords:
+  - "tóm tắt hướng dẫn lâm sàng aasld (2024) về phân tầng nguy cơ và quản lý tăng áp lực tĩnh mạch cửa & giãn tĩnh mạch trong xơ gan"
+  - "tiêu hóa"
+  - "aasld tang-ap-cua"
+specialty: "Tiêu hóa"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/tieu-hoa"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 # TÓM TẮT HƯỚNG DẪN LÂM SÀNG AASLD (2024) VỀ PHÂN TẦNG NGUY CƠ VÀ QUẢN LÝ TĂNG ÁP LỰC TĨNH MẠCH CỬA & GIÃN TĨNH MẠCH TRONG XƠ GAN (PHẦN 3)
 
 Tài liệu này tập trung hệ thống hóa toàn bộ các bảng dữ liệu kỹ thuật, quy trình đo đạc huyết động học xâm lấn, các thử nghiệm lâm sàng dược lý tương lai, phân loại bệnh dạ dày tăng áp cửa, và các định hướng nghiên cứu y khoa trọng điểm chưa được đề cập ở hai phần trước từ tài liệu hướng dẫn lâm sàng chính thức **"AASLD Practice Guidance on Risk Stratification and Management of Portal Hypertension and Varices in Cirrhosis" (2024)** [1].

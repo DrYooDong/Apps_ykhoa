@@ -1,3 +1,20 @@
+---
+title: "CHEST Metabolic Acidosis 2026"
+part: "P2"
+aliases:
+  - "CHEST Metabolic Acidosis 2026"
+keywords:
+  - "chest metabolic acidosis 2026"
+  - "truyền nhiễm & vi sinh"
+specialty: "Truyền nhiễm & Vi sinh"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/truyen-nhiem"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 ### 1. NỘI DUNG SINH LÝ HỌC CHI TIẾT
 
 #### Thực Chứng Lâm Sàng Từ Các Thử Nghiệm Ngẫu Nhiên Lớn (BICAR-ICU 1 & 2, SODa-BIC)

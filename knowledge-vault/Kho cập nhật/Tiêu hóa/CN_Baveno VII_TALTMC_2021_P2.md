@@ -1,3 +1,22 @@
+---
+title: "1. Nội Dung Đồng Thuận Lâm Sàng & Cơ Chế Huyết Động Học Chi Tiết (Baveno VII"
+part: "P2"
+aliases:
+  - "1. Nội Dung Đồng Thuận Lâm Sàng & Cơ Chế Huyết Động Học Chi Tiết (Baveno VII"
+  - "Baveno VII TALTMC 2021"
+keywords:
+  - "1. nội dung đồng thuận lâm sàng & cơ chế huyết động học chi tiết (baveno vii"
+  - "tiêu hóa"
+  - "baveno vii taltmc 2021"
+specialty: "Tiêu hóa"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/tieu-hoa"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 # 1. Nội Dung Đồng Thuận Lâm Sàng & Cơ Chế Huyết Động Học Chi Tiết (Baveno VII - Phần 2)
 
 Đồng thuận **Baveno VII (2021)** tiếp tục chuẩn hóa và cá nhân hóa sâu sắc việc quản lý lâm sàng đối với các biến chứng nặng của tăng áp lực tĩnh mạch cửa. Phần 2 này tập trung vào các nội dung cốt lõi của bốn phiên thảo luận cuối cùng (Sessions 6 - 9): xử trí xuất huyết vỡ giãn cấp tính, ngăn ngừa mất bù tiến triển (dự phòng thứ phát), quản lý huyết khối tĩnh mạch tạng và bệnh lý mạch máu cổng - xoang (PSVD).

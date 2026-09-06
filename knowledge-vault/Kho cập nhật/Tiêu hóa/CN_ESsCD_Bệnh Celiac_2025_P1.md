@@ -1,3 +1,22 @@
+---
+title: "Tóm tắt nghiên cứu được chọn"
+part: "P1"
+aliases:
+  - "Tóm tắt nghiên cứu được chọn"
+  - "ESsCD Bệnh Celiac 2025"
+keywords:
+  - "tóm tắt nghiên cứu được chọn"
+  - "tiêu hóa"
+  - "esscd bệnh celiac 2025"
+specialty: "Tiêu hóa"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/tieu-hoa"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 # TÓM TẮT NGHIÊN CỨU ĐƯỢC CHỌN (PHẦN 1)
 
 **Tài liệu tham khảo được chọn:** *Hướng dẫn cập nhật năm 2025 của Hiệp hội Châu Âu về Nghiên cứu Bệnh Celiac (ESsCD) về Quản lý, Theo dõi và Diễn tiến Bệnh phức tạp ở Người lớn (Phần 2)*. 

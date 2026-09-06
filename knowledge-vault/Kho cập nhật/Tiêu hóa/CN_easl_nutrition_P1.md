@@ -1,3 +1,22 @@
+---
+title: "Hướng dẫn thực hành lâm sàng easl (2019) về dinh dưỡng trong bệnh gan mạn tính"
+part: "P1"
+aliases:
+  - "Hướng dẫn thực hành lâm sàng easl (2019) về dinh dưỡng trong bệnh gan mạn tính"
+  - "easl nutrition"
+keywords:
+  - "hướng dẫn thực hành lâm sàng easl (2019) về dinh dưỡng trong bệnh gan mạn tính"
+  - "tiêu hóa"
+  - "easl nutrition"
+specialty: "Tiêu hóa"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/tieu-hoa"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 # BÀI HỌC: HƯỚNG DẪN THỰC HÀNH LÂM SÀNG EASL (2019) VỀ DINH DƯỠNG TRONG BỆNH GAN MẠN TÍNH (PHẦN 1)
 
 Bài học này được biên soạn chi tiết dựa trên tài liệu đồng thuận chính thức **"EASL Clinical Practice Guidelines on nutrition in chronic liver disease" (2019)** của Hiệp hội Nghiên cứu Bệnh gan Châu Âu (EASL), với ban soạn thảo dẫn đầu bởi Giáo sư Manuela Merli [2].

@@ -1,3 +1,22 @@
+---
+title: "Bài học sinh lý bệnh và cơ chế bệnh sinh: suy gan cấp (acute liver failure - ALF)"
+part: "P1"
+aliases:
+  - "Bài học sinh lý bệnh và cơ chế bệnh sinh: suy gan cấp (acute liver failure - ALF)"
+  - "aasld ALF 2011"
+keywords:
+  - "bài học sinh lý bệnh và cơ chế bệnh sinh: suy gan cấp (acute liver failure - alf)"
+  - "tiêu hóa"
+  - "aasld alf 2011"
+specialty: "Tiêu hóa"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/tieu-hoa"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 # BÀI HỌC SINH LÝ BỆNH VÀ CƠ CHẾ BỆNH SINH: SUY GAN CẤP (ACUTE LIVER FAILURE - ALF)
 
 ---

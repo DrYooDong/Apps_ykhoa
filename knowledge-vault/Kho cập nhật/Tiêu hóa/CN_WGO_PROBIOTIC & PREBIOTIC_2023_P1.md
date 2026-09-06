@@ -1,3 +1,22 @@
+---
+title: "Sinh lý học & cơ chế tác động của probiotic và prebiotic"
+part: "P1"
+aliases:
+  - "Sinh lý học & cơ chế tác động của probiotic và prebiotic"
+  - "WGO PROBIOTIC & PREBIOTIC 2023"
+keywords:
+  - "sinh lý học & cơ chế tác động của probiotic và prebiotic"
+  - "tiêu hóa"
+  - "wgo probiotic & prebiotic 2023"
+specialty: "Tiêu hóa"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/tieu-hoa"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 # BÀI HỌC CHI TIẾT: SINH LÝ HỌC & CƠ CHẾ TÁC ĐỘNG CỦA PROBIOTIC VÀ PREBIOTIC (PHẦN 1)
 
 Bài học này được biên soạn dựa trên chương **"Probiotics and prebiotics—the concept"** thuộc tài liệu hướng dẫn toàn cầu của Tổ chức Tiêu hóa Thế giới (WGO) năm 2023, nhằm cung cấp cái nhìn sâu sắc về lịch sử, định nghĩa, hệ vi sinh vật đường ruột và cơ chế tác động sinh học của các chế phẩm này.

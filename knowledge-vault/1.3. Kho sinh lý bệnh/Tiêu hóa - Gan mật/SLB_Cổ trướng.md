@@ -1,3 +1,22 @@
+---
+title: "Sinh Lý Bệnh Của Cổ Trướng Trong Xơ Gan"
+part: "P1"
+aliases:
+  - "Sinh Lý Bệnh Của Cổ Trướng Trong Xơ Gan"
+  - "Cổ trướng"
+keywords:
+  - "sinh lý bệnh của cổ trướng trong xơ gan"
+  - "tiêu hóa - gan mật"
+  - "cổ trướng"
+specialty: "Tiêu hóa - Gan mật"
+kho: "1.3. Kho sinh lý bệnh"
+tags:
+  - "he-co-quan/tieu-hoa"
+  - "loai/disease"
+  - "y-khoa/slb"
+updated: "2026-09-06"
+---
+
 # 1. Nội Dung Sinh Lý Học Chi Tiết: Sinh Lý Bệnh Của Cổ Trướng Trong Xơ Gan
 
 Cổ trướng (Ascites) là sự tích tụ dịch bất thường trong khoang phúc mạc. Đây là biến chứng mất bù phổ biến nhất của bệnh xơ gan, xuất hiện ở khoảng 5% đến 10% số bệnh nhân xơ gan còn bù mỗi năm. Sự xuất hiện của cổ trướng đánh dấu một bước ngoặt tiên lượng quan trọng trong diễn tiến tự nhiên của bệnh xơ gan, làm giảm tỷ lệ sống sót trung bình của bệnh nhân từ hơn 12 năm ở giai đoạn còn bù xuống còn dưới 1.5 đến 2 năm ở giai đoạn mất bù.

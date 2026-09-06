@@ -1,3 +1,22 @@
+---
+title: "Tóm tắt hướng dẫn của WHO về quản lý lâm sàng HIV (phần 2): dự phòng lây truyền dọc và dự phòng lao ở người sống chung với HIV"
+part: "P2"
+aliases:
+  - "Tóm tắt hướng dẫn của WHO về quản lý lâm sàng HIV (phần 2): dự phòng lây truyền dọc và dự phòng lao ở người sống chung với HIV"
+  - "WHO HIV clinical management 2025"
+keywords:
+  - "tóm tắt hướng dẫn của who về quản lý lâm sàng hiv (phần 2): dự phòng lây truyền dọc và dự phòng lao ở người sống chung với hiv"
+  - "truyền nhiễm & vi sinh"
+  - "who hiv clinical management 2025"
+specialty: "Truyền nhiễm & Vi sinh"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/truyen-nhiem"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 # TỐM TẮT HƯỚNG DẪN CỦA WHO VỀ QUẢN LÝ LÂM SÀNG HIV (PHẦN 2): DỰ PHÒNG LÂY TRUYỀN DỌC VÀ DỰ PHÒNG LAO Ở NGƯỜI SỐNG CHUNG VỚI HIV
 
 Tiếp nối phần 1 về tối ưu hóa phác đồ điều trị kháng virus (ART) cho người lớn và trẻ em, phần 2 này sẽ đi sâu tóm tắt hai nội dung cốt lõi tiếp theo trong Hướng dẫn của Tổ chức Y tế Thế giới (WHO) năm 2025: **Quản lý lây truyền dọc HIV từ mẹ sang con** (bao gồm dự phòng sau sinh cho trẻ sơ sinh và nuôi dưỡng trẻ) và **Dự phòng bệnh Lao (TPT)** ở người sống chung với HIV.

@@ -1,3 +1,22 @@
+---
+title: "Hóa sinh gan, cơ, thận & khung ngoại bào (ECM)"
+part: "P2"
+aliases:
+  - "Hóa sinh gan, cơ, thận & khung ngoại bào (ECM)"
+  - "chuyen hoa gan co than ecm phan 2"
+keywords:
+  - "hóa sinh gan, cơ, thận & khung ngoại bào (ecm)"
+  - "chuyển hóa & sinh học phân tử"
+  - "chuyen hoa gan co than ecm phan 2"
+specialty: "Chuyển hóa & Sinh học phân tử"
+kho: "1.2. Kho hóa sinh y học"
+tags:
+  - "he-co-quan/noi-tiet"
+  - "loai/biochemistry"
+  - "y-khoa/hs"
+updated: "2026-09-06"
+---
+
 # BÀI HỌC CHI TIẾT: HÓA SINH GAN, CƠ, THẬN & KHUNG NGOẠI BÀO (ECM) - PHẦN 2
 
 Bài học này tiếp nối và hoàn thiện chuyên đề về sinh hóa các cơ quan và mô liên kết chuyên biệt. Nội dung tập trung đi sâu phân tích cấu trúc siêu phân tử và con đường sinh tổng hợp, thoái hóa của Glycosaminoglycans (GAGs) & Proteoglycans trong khung ngoại bào (ECM) cùng các hội chứng tích lũy Mucopolysaccharidoses; cơ chế phân tử và điều hòa động lực lực co cơ ở các loại mô cơ; hoạt động siêu lọc, tái hấp thu, bài tiết và vai trò thăng bằng kiềm-toan tích hợp của Thận; và cuối cùng là mạng lưới thải độc Xenobiotics (Pha I và Pha II) tại Gan.

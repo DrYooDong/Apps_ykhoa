@@ -1,3 +1,22 @@
+---
+title: "Cơ chế bệnh sinh và phác đồ điều trị rối loạn lipid máu"
+part: "P2"
+aliases:
+  - "Cơ chế bệnh sinh và phác đồ điều trị rối loạn lipid máu"
+  - "AACE Rối loạn lipid máu 2025"
+keywords:
+  - "cơ chế bệnh sinh và phác đồ điều trị rối loạn lipid máu"
+  - "tim mạch"
+  - "aace rối loạn lipid máu 2025"
+specialty: "Tim mạch"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/tim-mach"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 # BÀI HỌC CHUYÊN SÂU: CƠ CHẾ BỆNH SINH VÀ PHÁC ĐỒ ĐIỀU TRỊ RỐI LOẠN LIPID MÁU (PHẦN 2)
 
 _(Theo Hướng dẫn thực hành lâm sàng của Hiệp hội Nội tiết Lâm sàng Hoa Kỳ - AACE 2025)_

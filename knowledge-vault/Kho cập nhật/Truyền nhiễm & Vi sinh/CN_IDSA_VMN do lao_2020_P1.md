@@ -1,3 +1,22 @@
+---
+title: "Phân tích nghiên cứu hệ thống về kết cục điều trị lao màng não ở người lớn"
+part: "P1"
+aliases:
+  - "Phân tích nghiên cứu hệ thống về kết cục điều trị lao màng não ở người lớn"
+  - "IDSA VMN do lao 2020"
+keywords:
+  - "phân tích nghiên cứu hệ thống về kết cục điều trị lao màng não ở người lớn"
+  - "truyền nhiễm & vi sinh"
+  - "idsa vmn do lao 2020"
+specialty: "Truyền nhiễm & Vi sinh"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/truyen-nhiem"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 # BÀI HỌC: PHÂN TÍCH NGHIÊN CỨU HỆ THỐNG VỀ KẾT CỤC ĐIỀU TRỊ LAO MÀNG NÃO Ở NGƯỜI LỚN (PHẦN 1)
 
 ---

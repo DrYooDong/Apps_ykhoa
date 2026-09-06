@@ -1,3 +1,22 @@
+---
+title: "Phân tích hướng dẫn lâm sàng NICE 2024"
+part: "P2"
+aliases:
+  - "Phân tích hướng dẫn lâm sàng NICE 2024"
+  - "NICE VMN-Não mô cầu 2024"
+keywords:
+  - "phân tích hướng dẫn lâm sàng nice 2024"
+  - "truyền nhiễm & vi sinh"
+  - "nice vmn-não mô cầu 2024"
+specialty: "Truyền nhiễm & Vi sinh"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/truyen-nhiem"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 # BÀI HỌC: PHÂN TÍCH HƯỚNG DẪN LÂM SÀNG NICE 2024 (PHẦN 2)
 
 ## ĐIỀU TRỊ KHÁNG SINH TRƯỚC VIỆN, THỜI GIAN VÀNG DÙNG THUỐC TẠI VIỆN VÀ PHÁC ĐỒ CHĂM SÓC THEO DÕI SAU XUẤT VIỆN

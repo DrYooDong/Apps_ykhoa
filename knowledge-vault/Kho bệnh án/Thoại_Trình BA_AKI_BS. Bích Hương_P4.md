@@ -1,3 +1,22 @@
+---
+title: "Trình bệnh án: Thoại Trình BA AKI BS. Bích Hương"
+part: "P4"
+aliases:
+  - "Trình bệnh án: Thoại Trình BA AKI BS. Bích Hương"
+  - "Thoại Trình BA AKI BS. Bích Hương"
+keywords:
+  - "trình bệnh án: thoại trình ba aki bs. bích hương"
+  - "thận - tiết niệu"
+  - "thoại trình ba aki bs. bích hương"
+specialty: "Thận - Tiết niệu"
+kho: "Kho bệnh án"
+tags:
+  - "he-co-quan/than-tiet-nieu"
+  - "loai/case-presentation"
+  - "y-khoa/ba"
+updated: "2026-09-06"
+---
+
 bài này có một cái bài làm nào
 không có ghi tên
 bệnh án bệnh án không có ghi tên mình

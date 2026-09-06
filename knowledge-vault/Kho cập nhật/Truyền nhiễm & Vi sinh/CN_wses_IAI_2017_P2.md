@@ -1,3 +1,22 @@
+---
+title: "Quản lý nhiễm trùng trong ổ bụng (IAI) theo WSES 2017"
+part: "P2"
+aliases:
+  - "Quản lý nhiễm trùng trong ổ bụng (IAI) theo WSES 2017"
+  - "wses IAI 2017"
+keywords:
+  - "quản lý nhiễm trùng trong ổ bụng (iai) theo wses 2017"
+  - "truyền nhiễm & vi sinh"
+  - "wses iai 2017"
+specialty: "Truyền nhiễm & Vi sinh"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/truyen-nhiem"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 # BÀI HỌC: QUẢN LÝ NHIỄM TRÙNG TRONG Ổ BỤNG (IAI) THEO WSES 2017
 ## PHẦN 2: PHÁC ĐỒ ĐIỀU TRỊ CHI TIẾT CÁC BỆNH LÝ TRONG Ổ BỤNG VÀ CHIẾN LƯỢC MỔ LẠI
 

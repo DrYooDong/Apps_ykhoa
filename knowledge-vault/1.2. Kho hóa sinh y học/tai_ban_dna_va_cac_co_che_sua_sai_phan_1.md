@@ -1,3 +1,22 @@
+---
+title: "Tái bản DNA & các cơ chế sửa sai"
+part: "P1"
+aliases:
+  - "Tái bản DNA & các cơ chế sửa sai"
+  - "tai ban dna va cac co che sua sai phan 1"
+keywords:
+  - "tái bản dna & các cơ chế sửa sai"
+  - "chuyển hóa & sinh học phân tử"
+  - "tai ban dna va cac co che sua sai phan 1"
+specialty: "Chuyển hóa & Sinh học phân tử"
+kho: "1.2. Kho hóa sinh y học"
+tags:
+  - "he-co-quan/noi-tiet"
+  - "loai/biochemistry"
+  - "y-khoa/hs"
+updated: "2026-09-06"
+---
+
 # BÀI HỌC CHI TIẾT: TÁI BẢN DNA & CÁC CƠ CHẾ SỬA SAI - PHẦN 1
 
 Bài học này hệ thống hóa toàn bộ kiến thức hóa sinh học chuyên sâu về cơ chế tái bản (nhân đôi) DNA ở cả sinh vật nhân sơ (Prokaryotes) và sinh vật nhân thực (Eukaryotes). Nội dung bám sát các tài liệu giáo trình y khoa chính thống, tập trung phân tích các đặc điểm cơ bản của chạc ba nhân đôi, hệ thống đa enzyme của replisome, sự khác biệt giữa các DNA polymerase, và các phản ứng xử lý Okazaki kết nối hoàn thiện sợi DNA mới.

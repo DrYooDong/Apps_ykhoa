@@ -1,3 +1,22 @@
+---
+title: "Tóm Tắt Hướng Dẫn Điều Trị Bạch Hầu Của WHO (2024)"
+part: "P3"
+aliases:
+  - "Tóm Tắt Hướng Dẫn Điều Trị Bạch Hầu Của WHO (2024)"
+  - "WHO Bạch hầu 2024"
+keywords:
+  - "tóm tắt hướng dẫn điều trị bạch hầu của who (2024)"
+  - "truyền nhiễm & vi sinh"
+  - "who bạch hầu 2024"
+specialty: "Truyền nhiễm & Vi sinh"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/truyen-nhiem"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 ### 1. Nội Dung Hướng Dẫn Lâm Sàng Chi Tiết: Tóm Tắt Hướng Dẫn Điều Trị Bạch Hầu Của WHO (2024) - Phần 3
 
 Hướng dẫn Lâm sàng Điều trị Bệnh Bạch hầu của Tổ chức Y tế Thế giới (WHO), ban hành ngày 2 tháng 2 năm 2024, chứa đựng các dữ liệu bằng chứng cốt lõi được thể hiện qua hệ thống bảng biểu (Tables) và lưu đồ/sơ đồ cây quyết định (Figures). Dưới đây là phần tóm tắt chi tiết các Figures và Tables quan trọng chưa được đề cập đầy đủ trong các phần trước.

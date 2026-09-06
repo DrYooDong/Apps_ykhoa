@@ -1,3 +1,22 @@
+---
+title: "ĐIỀU TRỊ DỰ PHÒNG TRƯỚC PHƠI NHIỄM (PrEP) VÀ DỰ PHÒNG SAU PHƠI NHIỄM (PEP) VỚI HIV"
+part: "P2"
+aliases:
+  - "ĐIỀU TRỊ DỰ PHÒNG TRƯỚC PHƠI NHIỄM (PrEP) VÀ DỰ PHÒNG SAU PHƠI NHIỄM (PEP) VỚI HIV"
+  - "BYT HIV 2021"
+keywords:
+  - "điều trị dự phòng trước phơi nhiễm (prep) và dự phòng sau phơi nhiễm (pep) với hiv"
+  - "truyền nhiễm & vi sinh"
+  - "byt hiv 2021"
+specialty: "Truyền nhiễm & Vi sinh"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/truyen-nhiem"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 # BÀI HỌC: ĐIỀU TRỊ DỰ PHÒNG TRƯỚC PHƠI NHIỄM (PrEP) VÀ DỰ PHÒNG SAU PHƠI NHIỄM (PEP) VỚI HIV (PHẦN 2)
 
 ---

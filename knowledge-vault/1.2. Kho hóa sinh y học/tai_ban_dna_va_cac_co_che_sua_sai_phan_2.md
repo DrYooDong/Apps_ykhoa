@@ -1,3 +1,22 @@
+---
+title: "Tái bản DNA & các cơ chế sửa sai"
+part: "P2"
+aliases:
+  - "Tái bản DNA & các cơ chế sửa sai"
+  - "tai ban dna va cac co che sua sai phan 2"
+keywords:
+  - "tái bản dna & các cơ chế sửa sai"
+  - "chuyển hóa & sinh học phân tử"
+  - "tai ban dna va cac co che sua sai phan 2"
+specialty: "Chuyển hóa & Sinh học phân tử"
+kho: "1.2. Kho hóa sinh y học"
+tags:
+  - "he-co-quan/noi-tiet"
+  - "loai/biochemistry"
+  - "y-khoa/hs"
+updated: "2026-09-06"
+---
+
 # BÀI HỌC CHI TIẾT: TÁI BẢN DNA & CÁC CƠ CHẾ SỬA SAI - PHẦN 2
 
 Bài học này cung cấp kiến thức hóa sinh học chuyên sâu và toàn diện về cơ chế bảo vệ đầu mút nhiễm sắc thể nhờ **Telomere & Telomerase**, phân tích chi tiết các tác nhân gây tổn thương DNA, và hệ thống hóa **5 con đường sửa sai DNA** ở cấp độ phân tử. Đồng thời, tài liệu tập trung làm rõ các hội chứng lâm sàng di truyền liên quan đến lỗi sửa sai DNA (như bệnh khô da sắc tố XP, hội chứng Cockayne, hội chứng Werner/Bloom, và ung thư đại trực tràng không polyp di truyền HNPCC) cùng mạng lưới kiểm soát số phận tế bào (ATM/ATR - p53 - p21).

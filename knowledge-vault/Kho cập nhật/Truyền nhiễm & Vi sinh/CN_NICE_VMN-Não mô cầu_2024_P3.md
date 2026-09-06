@@ -1,3 +1,22 @@
+---
+title: "1. Nội Dung Chi Tiết Hướng Dẫn Lâm Sàng NICE 2024"
+part: "P3"
+aliases:
+  - "1. Nội Dung Chi Tiết Hướng Dẫn Lâm Sàng NICE 2024"
+  - "NICE VMN-Não mô cầu 2024"
+keywords:
+  - "1. nội dung chi tiết hướng dẫn lâm sàng nice 2024"
+  - "truyền nhiễm & vi sinh"
+  - "nice vmn-não mô cầu 2024"
+specialty: "Truyền nhiễm & Vi sinh"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/truyen-nhiem"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 ### 1. Nội Dung Chi Tiết Hướng Dẫn Lâm Sàng NICE 2024 (Phần 3)
 
 Trong phần này, chúng ta sẽ tập trung phân tích sâu các nội dung, số liệu thực tế, định hướng nghiên cứu tương lai và đặc biệt là **Sơ đồ tóm tắt trực quan (Visual Summary Infographic)** của tạp chí BMJ dành riêng cho Hướng dẫn NICE 2024 chưa được đề cập trong các phần trước.

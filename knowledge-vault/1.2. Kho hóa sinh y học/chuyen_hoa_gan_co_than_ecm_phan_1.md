@@ -1,3 +1,22 @@
+---
+title: "Hóa sinh gan, cơ, thận & khung ngoại bào (ECM)"
+part: "P1"
+aliases:
+  - "Hóa sinh gan, cơ, thận & khung ngoại bào (ECM)"
+  - "chuyen hoa gan co than ecm phan 1"
+keywords:
+  - "hóa sinh gan, cơ, thận & khung ngoại bào (ecm)"
+  - "chuyển hóa & sinh học phân tử"
+  - "chuyen hoa gan co than ecm phan 1"
+specialty: "Chuyển hóa & Sinh học phân tử"
+kho: "1.2. Kho hóa sinh y học"
+tags:
+  - "he-co-quan/noi-tiet"
+  - "loai/biochemistry"
+  - "y-khoa/hs"
+updated: "2026-09-06"
+---
+
 # BÀI HỌC CHI TIẾT: HÓA SINH GAN, CƠ, THẬN & KHUNG NGOẠI BÀO (ECM) - PHẦN 1
 
 Bài học này hệ thống hóa toàn bộ kiến thức hóa sinh học chuyên sâu về hai chủ đề lớn: **Hóa sinh Gan** (vai trò trung tâm điều hòa chuyển hóa glucid, lipid, protid) và **Hóa sinh Khung Ngoại Bào (ECM)** (cấu trúc, sinh tổng hợp, điều hòa và bệnh học liên quan của collagen, elastin, fibrillin, các glycoprotein bám dính, glycosaminoglycan và proteoglycan). Nội dung bám sát các tài liệu giáo trình y khoa chính thống, phục vụ tối ưu cho học tập và nghiên cứu lâm sàng.

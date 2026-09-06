@@ -1,3 +1,22 @@
+---
+title: "1. Nội Dung Thực Hành Lâm Sàng Chi Tiết"
+part: "P4"
+aliases:
+  - "1. Nội Dung Thực Hành Lâm Sàng Chi Tiết"
+  - "ESC Tim & Thận 2026"
+keywords:
+  - "1. nội dung thực hành lâm sàng chi tiết"
+  - "tim mạch"
+  - "esc tim & thận 2026"
+specialty: "Tim mạch"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/tim-mach"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 
 ### **1. Nội Dung Thực Hành Lâm Sàng Chi Tiết**
 

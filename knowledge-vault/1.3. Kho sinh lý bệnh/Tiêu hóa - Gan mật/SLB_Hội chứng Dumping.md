@@ -1,3 +1,22 @@
+---
+title: "Sinh lý bệnh và cơ chế bệnh sinh của hội chứng dumping (dumping syndrome)"
+part: "P1"
+aliases:
+  - "Sinh lý bệnh và cơ chế bệnh sinh của hội chứng dumping (dumping syndrome)"
+  - "Hội chứng Dumping"
+keywords:
+  - "sinh lý bệnh và cơ chế bệnh sinh của hội chứng dumping (dumping syndrome)"
+  - "tiêu hóa - gan mật"
+  - "hội chứng dumping"
+specialty: "Tiêu hóa - Gan mật"
+kho: "1.3. Kho sinh lý bệnh"
+tags:
+  - "he-co-quan/tieu-hoa"
+  - "loai/disease"
+  - "y-khoa/slb"
+updated: "2026-09-06"
+---
+
 # BÀI HỌC: SINH LÝ BỆNH VÀ CƠ CHẾ BỆNH SINH CỦA HỘI CHỨNG DUMPING (DUMPING SYNDROME)
 
 ---

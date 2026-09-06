@@ -1,3 +1,22 @@
+---
+title: "Tiếp cận chẩn đoán lâm sàng & xét nghiệm vi sinh trong nhiễm trùng tiêu hóa"
+part: "P1"
+aliases:
+  - "Tiếp cận chẩn đoán lâm sàng & xét nghiệm vi sinh trong nhiễm trùng tiêu hóa"
+  - "idsa infectious diarrhea"
+keywords:
+  - "tiếp cận chẩn đoán lâm sàng & xét nghiệm vi sinh trong nhiễm trùng tiêu hóa"
+  - "tiêu hóa"
+  - "idsa infectious diarrhea"
+specialty: "Tiêu hóa"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/tieu-hoa"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 # BÀI HỌC CHI TIẾT: TIẾP CẬN CHẨN ĐOÁN LÂM SÀNG & XÉT NGHIỆM VI SINH TRONG NHIỄM TRÙNG TIÊU HÓA (PHẦN 1)
 
 Bài học này được biên soạn dựa trên tài liệu **"2017 Infectious Diseases Society of America (IDSA) Clinical Practice Guidelines for the Diagnosis and Management of Infectious Diarrhea"** (Hướng dẫn Thực hành Lâm sàng của Hiệp hội Bệnh truyền nhiễm Hoa Kỳ năm 2017 về Chẩn đoán và Quản lý Tiêu chảy Nhiễm trùng) [1]. Tài liệu hướng dẫn này được thiết kế để hỗ trợ các nhân viên y tế trong việc chăm sóc trẻ em và người lớn nghi ngờ hoặc xác định mắc tiêu chảy nhiễm trùng [3].

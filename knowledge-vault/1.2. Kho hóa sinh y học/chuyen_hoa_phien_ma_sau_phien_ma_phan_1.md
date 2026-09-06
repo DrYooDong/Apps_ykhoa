@@ -1,3 +1,22 @@
+---
+title: "Phiên mã & xử lý sau phiên mã"
+part: "P1"
+aliases:
+  - "Phiên mã & xử lý sau phiên mã"
+  - "chuyen hoa phien ma sau phien ma phan 1"
+keywords:
+  - "phiên mã & xử lý sau phiên mã"
+  - "chuyển hóa & sinh học phân tử"
+  - "chuyen hoa phien ma sau phien ma phan 1"
+specialty: "Chuyển hóa & Sinh học phân tử"
+kho: "1.2. Kho hóa sinh y học"
+tags:
+  - "he-co-quan/noi-tiet"
+  - "loai/biochemistry"
+  - "y-khoa/hs"
+updated: "2026-09-06"
+---
+
 # BÀI HỌC CHI TIẾT: PHIÊN MÃ & XỬ LÝ SAU PHIÊN MÃ - PHẦN 1
 
 Bài học này hệ thống hóa toàn bộ kiến thức hóa sinh học và sinh học phân tử chuyên sâu về quá trình phiên mã (sự sinh tổng hợp RNA) ở cả sinh vật nhân sơ (Prokaryotes) và sinh vật nhân thực (Eukaryotes). Nội dung bám sát các giáo trình y khoa chính thống, phân tích chi tiết từ đặc điểm cấu trúc phân tử của hệ thống enzyme RNA Polymerase, các yếu tố điều hòa cis-acting (Promoter, Enhancer), đến động học và các giai đoạn xúc tác khởi đầu, kéo dài, và kết thúc phiên mã.

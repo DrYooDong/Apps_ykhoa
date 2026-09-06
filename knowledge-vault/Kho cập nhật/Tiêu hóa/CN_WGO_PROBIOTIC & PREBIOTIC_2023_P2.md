@@ -1,3 +1,22 @@
+---
+title: "Sinh lý học & ứng dụng lâm sàng của probiotic và prebiotic"
+part: "P2"
+aliases:
+  - "Sinh lý học & ứng dụng lâm sàng của probiotic và prebiotic"
+  - "WGO PROBIOTIC & PREBIOTIC 2023"
+keywords:
+  - "sinh lý học & ứng dụng lâm sàng của probiotic và prebiotic"
+  - "tiêu hóa"
+  - "wgo probiotic & prebiotic 2023"
+specialty: "Tiêu hóa"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/tieu-hoa"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 # BÀI HỌC CHI TIẾT: SINH LÝ HỌC & ỨNG DỤNG LÂM SÀNG CỦA PROBIOTIC VÀ PREBIOTIC (PHẦN 2)
 
 Bài học này tiếp tục biên soạn dựa trên tài liệu **"Probiotics and prebiotics—the concept"** thuộc hướng dẫn toàn cầu của Tổ chức Tiêu hóa Thế giới (WGO) năm 2023. Phần này tập trung sâu vào khía cạnh thương mại, liều lượng, an toàn sinh học và hệ thống hóa toàn bộ các bằng chứng lâm sàng thực chứng ở người lớn và trẻ em.

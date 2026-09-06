@@ -1,3 +1,22 @@
+---
+title: "Lựa chọn kháng sinh hệ thống trong nhiễm trùng da và mô mềm (ssti)"
+part: "P1"
+aliases:
+  - "Lựa chọn kháng sinh hệ thống trong nhiễm trùng da và mô mềm (ssti)"
+  - "systemic antibiotic-SSTI 2024"
+keywords:
+  - "lựa chọn kháng sinh hệ thống trong nhiễm trùng da và mô mềm (ssti)"
+  - "truyền nhiễm & vi sinh"
+  - "systemic antibiotic-ssti 2024"
+specialty: "Truyền nhiễm & Vi sinh"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/truyen-nhiem"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 # BÀI HỌC: LỰA CHỌN KHÁNG SINH HỆ THỐNG TRONG NHIỄM TRÙNG DA VÀ MÔ MỀM (SSTI)
 ## PHẦN 1: CÁC NGUYÊN TẮC CƠ BẢN, HỆ THỐNG PHÂN LOẠI & ĐÁNH GIÁ CHẤT LƯỢNG SỬ DỤNG KHÁNG SINH
 

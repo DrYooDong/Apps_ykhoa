@@ -1,3 +1,22 @@
+---
+title: "Chẩn đoán hình ảnh áp xe trong ổ bụng cấp tính theo idsa 2024"
+part: "P1"
+aliases:
+  - "Chẩn đoán hình ảnh áp xe trong ổ bụng cấp tính theo idsa 2024"
+  - "idsa imaging 2024"
+keywords:
+  - "chẩn đoán hình ảnh áp xe trong ổ bụng cấp tính theo idsa 2024"
+  - "truyền nhiễm & vi sinh"
+  - "idsa imaging 2024"
+specialty: "Truyền nhiễm & Vi sinh"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/truyen-nhiem"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 # BÀI HỌC: CHẨN ĐOÁN HÌNH ẢNH ÁP XE TRONG Ổ BỤNG CẤP TÍNH THEO IDSA 2024
 ## PHẦN 1: PHẠM VI HƯỚNG DẪN, CƠ SỞ LÂM SÀNG & KHUYẾN CÁO CHẨN ĐOÁN HÌNH ẢNH CHO CÁC ĐỐI TƯỢNG (NGƯỜI LỚN, TRẺ EM, PHỤ NỮ MANG THAI)
 

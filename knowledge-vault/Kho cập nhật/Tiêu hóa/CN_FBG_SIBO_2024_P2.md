@@ -1,3 +1,22 @@
+---
+title: "Tóm tắt nghiên cứu: đồng thuận của liên đoàn tiêu hóa brazil về chẩn đoán và điều trị SIBO"
+part: "P2"
+aliases:
+  - "Tóm tắt nghiên cứu: đồng thuận của liên đoàn tiêu hóa brazil về chẩn đoán và điều trị SIBO"
+  - "FBG SIBO 2024"
+keywords:
+  - "tóm tắt nghiên cứu: đồng thuận của liên đoàn tiêu hóa brazil về chẩn đoán và điều trị sibo"
+  - "tiêu hóa"
+  - "fbg sibo 2024"
+specialty: "Tiêu hóa"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/tieu-hoa"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 # TÓM TẮT NGHIÊN CỨU: ĐỒNG THUẬN CỦA LIÊN ĐOÀN TIÊU HÓA BRAZIL VỀ CHẨN ĐOÁN VÀ ĐIỀU TRỊ SIBO (PHẦN 2)
 
 Dưới đây là phần tiếp theo của bản tóm tắt chi tiết dựa trên tài liệu đồng thuận chính thức của Liên đoàn Tiêu hóa Brazil (FBG) năm 2024 (**"tải xuống.pdf"**), tập trung vào quy trình chuẩn bị và thực hiện Test thở (Breath Test), chiến lược điều trị bằng kháng sinh, vai trò của chế độ ăn ít FODMAP, probiotics, và quản lý thể tăng sinh cổ khuẩn sinh metan (IMO).

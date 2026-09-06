@@ -1,3 +1,22 @@
+---
+title: "Trình bệnh án: Thoại Trình BA Lupus BS. Bích Hương"
+part: "P2"
+aliases:
+  - "Trình bệnh án: Thoại Trình BA Lupus BS. Bích Hương"
+  - "Thoại Trình BA Lupus BS. Bích Hương"
+keywords:
+  - "trình bệnh án: thoại trình ba lupus bs. bích hương"
+  - "cơ xương khớp & miễn dịch"
+  - "thoại trình ba lupus bs. bích hương"
+specialty: "Cơ xương khớp & Miễn dịch"
+kho: "Kho bệnh án"
+tags:
+  - "he-co-quan/co-xuong-khop"
+  - "loai/case-presentation"
+  - "y-khoa/ba"
+updated: "2026-09-06"
+---
+
 à à
 ví dụ rồi ok
 em thiệt rồi Thôi được rồi còn nhóm

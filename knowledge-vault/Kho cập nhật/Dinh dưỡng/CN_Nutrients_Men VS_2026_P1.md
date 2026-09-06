@@ -1,3 +1,22 @@
+---
+title: "Tác động của công thức phối hợp men vi sinh và dưỡng chất thực vật lên đi tiêu và hàng rào ruột"
+part: "P1"
+aliases:
+  - "Tác động của công thức phối hợp men vi sinh và dưỡng chất thực vật lên đi tiêu và hàng rào ruột"
+  - "Nutrients Men VS 2026"
+keywords:
+  - "tác động của công thức phối hợp men vi sinh và dưỡng chất thực vật lên đi tiêu và hàng rào ruột"
+  - "dinh dưỡng"
+  - "nutrients men vs 2026"
+specialty: "Dinh dưỡng"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/tieu-hoa"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 # TÓM TẮT NGHIÊN CỨU LÂM SÀNG: TÁC ĐỘNG CỦA CÔNG THỨC PHỐI HỢP MEN VI SINH VÀ DƯỠNG CHẤT THỰC VẬT LÊN ĐI TIÊU VÀ HÀNG RÀO RUỘT (PHẦN 1)
 
 ## 1. Nội Dung Sinh Lý Học Chi Tiết

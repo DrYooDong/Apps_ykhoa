@@ -1,3 +1,22 @@
+---
+title: "Tóm tắt khuyến cáo chẩn đoán và điều trị tăng kali máu"
+part: "P1"
+aliases:
+  - "Tóm tắt khuyến cáo chẩn đoán và điều trị tăng kali máu"
+  - "VUNA Tăng kali máu 2026"
+keywords:
+  - "tóm tắt khuyến cáo chẩn đoán và điều trị tăng kali máu"
+  - "thận - tiết niệu"
+  - "vuna tăng kali máu 2026"
+specialty: "Thận - Tiết niệu"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/than-tiet-nieu"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 **TÓM TẮT KHUYẾN CÁO CHẨN ĐOÁN VÀ ĐIỀU TRỊ TĂNG KALI MÁU (PHẦN 1)**
 
 ## 1. NỘI DUNG SINH LÝ HỌC & LÂM SÀNG CHI TIẾT

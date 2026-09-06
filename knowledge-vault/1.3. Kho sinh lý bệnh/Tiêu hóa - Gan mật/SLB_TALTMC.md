@@ -1,3 +1,22 @@
+---
+title: "Tăng Áp Lực Tĩnh Mạch Cửa"
+part: "P1"
+aliases:
+  - "Tăng Áp Lực Tĩnh Mạch Cửa"
+  - "TALTMC"
+keywords:
+  - "tăng áp lực tĩnh mạch cửa"
+  - "tiêu hóa - gan mật"
+  - "taltmc"
+specialty: "Tiêu hóa - Gan mật"
+kho: "1.3. Kho sinh lý bệnh"
+tags:
+  - "he-co-quan/tieu-hoa"
+  - "loai/disease"
+  - "y-khoa/slb"
+updated: "2026-09-06"
+---
+
 # 1. Nội Dung Sinh Lý Học Chi Tiết: Tăng Áp Lực Tĩnh Mạch Cửa
 
 ## Định Nghĩa Và Huyết Động Học Cơ Bản Của Tăng Áp Lực Tĩnh Mạch Cửa (Portal Hypertension - PH)

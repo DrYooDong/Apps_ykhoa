@@ -1,3 +1,22 @@
+---
+title: "Phiên mã & xử lý sau phiên mã"
+part: "P2"
+aliases:
+  - "Phiên mã & xử lý sau phiên mã"
+  - "chuyen hoa phien ma sau phien ma phan 2"
+keywords:
+  - "phiên mã & xử lý sau phiên mã"
+  - "chuyển hóa & sinh học phân tử"
+  - "chuyen hoa phien ma sau phien ma phan 2"
+specialty: "Chuyển hóa & Sinh học phân tử"
+kho: "1.2. Kho hóa sinh y học"
+tags:
+  - "he-co-quan/noi-tiet"
+  - "loai/biochemistry"
+  - "y-khoa/hs"
+updated: "2026-09-06"
+---
+
 # BÀI HỌC CHI TIẾT: PHIÊN MÃ & XỬ LÝ SAU PHIÊN MÃ - PHẦN 2
 
 Bài học này hệ thống hóa toàn bộ kiến thức hóa sinh học chuyên sâu về các quá trình biến đổi, sửa đổi sau phiên mã (post-transcriptional modifications) của các loại RNA ở sinh vật nhân thực và nhân sơ. Nội dung bám sát các tài liệu giáo trình y khoa chính thống, tập trung phân tích cơ chế phân tử của sự gắn mũ 5', gắn đuôi poly(A), cắt nối intron (splicing), sửa đổi RNA (RNA editing), quá trình xử lý cơ chất tRNA/rRNA, các độc chất/kháng sinh ức chế phiên mã và các liên hệ bệnh học lâm sàng mật thiết.

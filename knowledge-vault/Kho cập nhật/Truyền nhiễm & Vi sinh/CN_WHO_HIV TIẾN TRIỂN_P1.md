@@ -1,3 +1,22 @@
+---
+title: "Tóm tắt hướng dẫn của WHO về quản lý bệnh HIV tiến triển"
+part: "P1"
+aliases:
+  - "Tóm tắt hướng dẫn của WHO về quản lý bệnh HIV tiến triển"
+  - "WHO HIV TIẾN TRIỂN"
+keywords:
+  - "tóm tắt hướng dẫn của who về quản lý bệnh hiv tiến triển"
+  - "truyền nhiễm & vi sinh"
+  - "who hiv tiến triển"
+specialty: "Truyền nhiễm & Vi sinh"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/truyen-nhiem"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 # TỐM TẮT HƯỚNG DẪN CỦA WHO VỀ QUẢN LÝ BỆNH HIV TIẾN TRIỂN (PHẦN 1): ĐỊNH NGHĨA, PHƯƠNG PHÁP SÀNG LỌC VÀ GÓI CHĂM SÓC LÂM SÀNG (AHD)
 
 ---

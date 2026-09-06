@@ -1,3 +1,22 @@
+---
+title: "Hướng dẫn lâm sàng NICE ng250 (cập nhật 2025 - 2026): điều trị kháng sinh, corticosteroid, hỗ trợ hô hấp và tiêu chuẩn xuất viện"
+part: "P2"
+aliases:
+  - "Hướng dẫn lâm sàng NICE ng250 (cập nhật 2025 - 2026): điều trị kháng sinh, corticosteroid, hỗ trợ hô hấp và tiêu chuẩn xuất viện"
+  - "NICE Viêm phổi 2025"
+keywords:
+  - "hướng dẫn lâm sàng nice ng250 (cập nhật 2025 - 2026): điều trị kháng sinh, corticosteroid, hỗ trợ hô hấp và tiêu chuẩn xuất viện"
+  - "truyền nhiễm & vi sinh"
+  - "nice viêm phổi 2025"
+specialty: "Truyền nhiễm & Vi sinh"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/truyen-nhiem"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 ### HƯỚNG DẪN LÂM SÀNG NICE NG250 (CẬP NHẬT 2025 - 2026): ĐIỀU TRỊ KHÁNG SINH, CORTICOSTEROID, HỖ TRỢ HÔ HẤP VÀ TIÊU CHUẨN XUẤT VIỆN (PHẦN 2)
 
 Dưới đây là tóm tắt chi tiết **Phần 2** của hướng dẫn lâm sàng **NICE NG250** (công bố ngày 2 tháng 9 năm 2025 và cập nhật mới nhất vào tháng 1 năm 2026). Nội dung tập trung vào các phác đồ điều trị thuốc cụ thể, các liệu pháp hỗ trợ hô hấp không xâm lấn và các tiêu chuẩn xuất viện an toàn.

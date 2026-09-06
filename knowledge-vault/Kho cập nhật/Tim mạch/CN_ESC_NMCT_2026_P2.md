@@ -1,3 +1,22 @@
+---
+title: "Đồng thuận toàn cầu lần thứ 5 về định nghĩa nhồi máu cơ tim (2026)"
+part: "P2"
+aliases:
+  - "Đồng thuận toàn cầu lần thứ 5 về định nghĩa nhồi máu cơ tim (2026)"
+  - "ESC NMCT 2026"
+keywords:
+  - "đồng thuận toàn cầu lần thứ 5 về định nghĩa nhồi máu cơ tim (2026)"
+  - "tim mạch"
+  - "esc nmct 2026"
+specialty: "Tim mạch"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/tim-mach"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 # ĐỒNG THUẬN TOÀN CẦU LẦN THỨ 5 VỀ ĐỊNH NGHĨA NHỒI MÁU CƠ TIM (2026) — PHẦN 2
 
 Chào bạn! Dưới đây là biên soạn chi tiết cho **Phần 2** — phần cuối cùng hoàn thiện loạt bài học về **Đồng thuận Toàn cầu lần thứ 5 về Định nghĩa Nhồi máu cơ tim (Fifth Universal Definition of Myocardial Infarction - Fifth UDMI 2026)**. Phần này sẽ tập trung toàn diện vào **các lưu đồ (pathways) chẩn đoán lâm sàng**, **tiêu chuẩn chẩn đoán tổn thương cơ tim cấp/mạn tính (Acute and Chronic Myocardial Injury)**, **chẩn đoán sau tử vong đột ngột**, và đặc biệt là **sự dịch chuyển quan điểm trong chẩn đoán điện tâm đồ (ECG) hướng tới mô hình Tắc nghẽn mạch vành cấp tính (Occlusion Myocardial Infarction - OMI)**.

@@ -1,3 +1,20 @@
+---
+title: "SSC Thuốc vận mạch 2026"
+part: "P1"
+aliases:
+  - "SSC Thuốc vận mạch 2026"
+keywords:
+  - "ssc thuốc vận mạch 2026"
+  - "hscc"
+specialty: "HSCC"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/hoi-suc"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 ### 1. NỘI DUNG SINH LÝ HỌC CHI TIẾT
 
 #### **Tổng Quan và Nghịch Lý Lâm Sàng Về Trình Tự Cai Thuốc Vận Mạch**

@@ -1,3 +1,22 @@
+---
+title: "Chản đoán và phân loại tổn thương nang gan chuyên sâu"
+part: "P3"
+aliases:
+  - "Chản đoán và phân loại tổn thương nang gan chuyên sâu"
+  - "AJR nang gan 2014"
+keywords:
+  - "chản đoán và phân loại tổn thương nang gan chuyên sâu"
+  - "truyền nhiễm & vi sinh"
+  - "ajr nang gan 2014"
+specialty: "Truyền nhiễm & Vi sinh"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/truyen-nhiem"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 # BÀI HỌC: CHẢN ĐOÁN VÀ PHÂN LOẠI TỔN THƯƠNG NANG GAN CHUYÊN SÂU
 ## PHẦN 3: TỔN THƯƠNG TÂN SẢN (NEOPLASTIC), CÁC TỔN THƯƠNG KHÁC (MISCELLANEOUS) VÀ CÁC THƯƠNG TỔN GIẢ NANG
 

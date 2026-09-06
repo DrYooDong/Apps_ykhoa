@@ -1,3 +1,22 @@
+---
+title: "Phác đồ điều trị đặc hiệu, điều trị kinh nghiệm và phòng ngừa nhiễm nấm xâm lấn"
+part: "P3"
+aliases:
+  - "Phác đồ điều trị đặc hiệu, điều trị kinh nghiệm và phòng ngừa nhiễm nấm xâm lấn"
+  - "BYT nhiễm nấm xl 2021"
+keywords:
+  - "phác đồ điều trị đặc hiệu, điều trị kinh nghiệm và phòng ngừa nhiễm nấm xâm lấn"
+  - "truyền nhiễm & vi sinh"
+  - "byt nhiễm nấm xl 2021"
+specialty: "Truyền nhiễm & Vi sinh"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/truyen-nhiem"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 # BÀI HỌC: PHÁC ĐỒ ĐIỀU TRỊ ĐẶC HIỆU, ĐIỀU TRỊ KINH NGHIỆM VÀ PHÒNG NGỪA NHIỄM NẤM XÂM LẤN (PHẦN 3)
 
 ---

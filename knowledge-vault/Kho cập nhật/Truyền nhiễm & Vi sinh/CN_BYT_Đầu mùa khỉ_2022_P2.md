@@ -1,3 +1,22 @@
+---
+title: "Nguyên tắc điều trị, phác đồ phân tuyến, thuốc kháng vi rút đặc hiệu và biện pháp phòng bệnh đậu mùa khỉ"
+part: "P2"
+aliases:
+  - "Nguyên tắc điều trị, phác đồ phân tuyến, thuốc kháng vi rút đặc hiệu và biện pháp phòng bệnh đậu mùa khỉ"
+  - "BYT Đầu mùa khỉ 2022"
+keywords:
+  - "nguyên tắc điều trị, phác đồ phân tuyến, thuốc kháng vi rút đặc hiệu và biện pháp phòng bệnh đậu mùa khỉ"
+  - "truyền nhiễm & vi sinh"
+  - "byt đầu mùa khỉ 2022"
+specialty: "Truyền nhiễm & Vi sinh"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/truyen-nhiem"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 # BÀI HỌC: NGUYÊN TẮC ĐIỀU TRỊ, PHÁC ĐỒ PHÂN TUYẾN, THUỐC KHÁNG VI RÚT ĐẶC HIỆU VÀ BIỆN PHÁP PHÒNG BỆNH ĐẬU MÙA KHỈ (PHẦN 2)
 
 ---

@@ -1,3 +1,22 @@
+---
+title: "Tóm tắt hướng dẫn thực hành lâm sàng AASLD (2022)"
+part: "P2"
+aliases:
+  - "Tóm tắt hướng dẫn thực hành lâm sàng AASLD (2022)"
+  - "aasld palliative-care"
+keywords:
+  - "tóm tắt hướng dẫn thực hành lâm sàng aasld (2022)"
+  - "tiêu hóa"
+  - "aasld palliative-care"
+specialty: "Tiêu hóa"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/tieu-hoa"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 # TÓM TẮT HƯỚNG DẪN THỰC HÀNH LÂM SÀNG AASLD (2022) - PHẦN 2
 ## CHĂM SÓC GIẢM NHẸ VÀ QUẢN LÝ TRIỆU CHỨNG TRONG XƠ GAN MẤT BÙ
 

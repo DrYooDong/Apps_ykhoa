@@ -1,3 +1,22 @@
+---
+title: "1. Nội dung Phương pháp luận và Đánh giá GRADE trong WHO Guidelines 2025"
+part: "P3"
+aliases:
+  - "1. Nội dung Phương pháp luận và Đánh giá GRADE trong WHO Guidelines 2025"
+  - "WHO arboviral diseases 2026"
+keywords:
+  - "1. nội dung phương pháp luận và đánh giá grade trong who guidelines 2025"
+  - "truyền nhiễm & vi sinh"
+  - "who arboviral diseases 2026"
+specialty: "Truyền nhiễm & Vi sinh"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/truyen-nhiem"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 ### 1. Nội dung Phương pháp luận và Đánh giá GRADE trong WHO Guidelines 2025
 
 Dưới góc nhìn của các nhà hoạch định chính sách lâm sàng, sự thay đổi lớn nhất trong **Hướng dẫn Quản lý Lâm sàng các Bệnh Arbovirus của WHO năm 2025** chính là việc áp dụng hệ thống phân loại bằng chứng **GRADE (Grading of Recommendations Assessment, Development and Evaluation)** một cách nghiêm ngặt. Để đưa ra các khuyến nghị, Hội đồng Phát triển Hướng dẫn (GDG) của WHO đã thiết lập các ngưỡng quan trọng về mặt lâm sàng và phân tích các bảng tóm tắt kết quả (Summary of Findings - SoF) từ các thử nghiệm lâm sàng ngẫu nhiên đối chứng (RCTs).

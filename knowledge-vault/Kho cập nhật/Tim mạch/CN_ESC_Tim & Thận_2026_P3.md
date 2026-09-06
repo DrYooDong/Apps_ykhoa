@@ -1,3 +1,22 @@
+---
+title: "Kiểm soát huyết áp, lipid và các biến chứng đồng mắc trên bệnh nhân tim - thận theo khuyến cáo ESC 2026"
+part: "P3"
+aliases:
+  - "Kiểm soát huyết áp, lipid và các biến chứng đồng mắc trên bệnh nhân tim - thận theo khuyến cáo ESC 2026"
+  - "ESC Tim & Thận 2026"
+keywords:
+  - "kiểm soát huyết áp, lipid và các biến chứng đồng mắc trên bệnh nhân tim - thận theo khuyến cáo esc 2026"
+  - "tim mạch"
+  - "esc tim & thận 2026"
+specialty: "Tim mạch"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/tim-mach"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 ### **BÀI HỌC LÂM SÀNG: KIỂM SOÁT HUYẾT ÁP, LIPID VÀ CÁC BIẾN CHỨNG ĐỒNG MẮC TRÊN BỆNH NHÂN TIM - THẬN THEO KHUYẾN CÁO ESC 2026 (PHẦN 3)**
 
 ---

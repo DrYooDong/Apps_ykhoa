@@ -1,3 +1,22 @@
+---
+title: "Sinh lý bệnh của tăng huyết áp"
+part: "P2"
+aliases:
+  - "Sinh lý bệnh của tăng huyết áp"
+  - "Tăng huyết áp"
+keywords:
+  - "sinh lý bệnh của tăng huyết áp"
+  - "tim mạch"
+  - "tăng huyết áp"
+specialty: "Tim mạch"
+kho: "1.3. Kho sinh lý bệnh"
+tags:
+  - "he-co-quan/tim-mach"
+  - "loai/disease"
+  - "y-khoa/slb"
+updated: "2026-09-06"
+---
+
 # BÀI GIẢNG: SINH LÝ BỆNH CỦA TĂNG HUYẾT ÁP (PHẦN 2)
 
 ---

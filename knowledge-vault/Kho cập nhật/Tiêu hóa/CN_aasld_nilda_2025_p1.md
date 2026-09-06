@@ -1,3 +1,22 @@
+---
+title: "Tóm tắt hướng dẫn lâm sàng AASLD (2025): đánh giá bệnh gan không xâm lấn bằng chỉ dấu sinh học máu"
+part: "P1"
+aliases:
+  - "Tóm tắt hướng dẫn lâm sàng AASLD (2025): đánh giá bệnh gan không xâm lấn bằng chỉ dấu sinh học máu"
+  - "aasld nilda 2025"
+keywords:
+  - "tóm tắt hướng dẫn lâm sàng aasld (2025): đánh giá bệnh gan không xâm lấn bằng chỉ dấu sinh học máu"
+  - "tiêu hóa"
+  - "aasld nilda 2025"
+specialty: "Tiêu hóa"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/tieu-hoa"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 # TÓM TẮT HƯỚNG DẪN LÂM SÀNG AASLD (2025): ĐÁNH GIÁ BỆNH GAN KHÔNG XÂM LẤN BẰNG CHỈ DẤU SINH HỌC MÁU (PHẦN 1)
 
 *Tài liệu tóm tắt Hướng dẫn thực hành lâm sàng của Hiệp hội Nghiên cứu Bệnh gan Hoa Kỳ (AASLD) xuất bản năm 2025 về vai trò của các xét nghiệm máu không xâm lấn (NILDA) trong đánh giá độ xơ hóa và nhiễm mỡ gan ở bệnh nhân bệnh gan mạn tính.*

@@ -1,3 +1,22 @@
+---
+title: "Tóm tắt hướng dẫn của WHO về quản lý lâm sàng HIV"
+part: "P1"
+aliases:
+  - "Tóm tắt hướng dẫn của WHO về quản lý lâm sàng HIV"
+  - "WHO HIV clinical management 2025"
+keywords:
+  - "tóm tắt hướng dẫn của who về quản lý lâm sàng hiv"
+  - "truyền nhiễm & vi sinh"
+  - "who hiv clinical management 2025"
+specialty: "Truyền nhiễm & Vi sinh"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/truyen-nhiem"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 # TÓM TẮT HƯỚNG DẪN CỦA WHO VỀ QUẢN LÝ LÂM SÀNG HIV (PHẦN 1): TỐI ƯU HÓA PHÁC ĐỒ ĐIỀU TRỊ KHÁNG VIRUS (ART)
 
 ---

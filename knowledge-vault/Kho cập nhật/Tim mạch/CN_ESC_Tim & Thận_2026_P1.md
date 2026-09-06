@@ -1,3 +1,22 @@
+---
+title: "Quản lý bệnh tim mạch trên bệnh nhân thận mạn theo khuyến cáo ESC 2026"
+part: "P1"
+aliases:
+  - "Quản lý bệnh tim mạch trên bệnh nhân thận mạn theo khuyến cáo ESC 2026"
+  - "ESC Tim & Thận 2026"
+keywords:
+  - "quản lý bệnh tim mạch trên bệnh nhân thận mạn theo khuyến cáo esc 2026"
+  - "tim mạch"
+  - "esc tim & thận 2026"
+specialty: "Tim mạch"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/tim-mach"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 ### **BÀI HỌC LÂM SÀNG: QUẢN LÝ BỆNH TIM MẠCH TRÊN BỆNH NHÂN THẬN MẠN THEO KHUYẾN CÁO ESC 2026 (PHẦN 1)**
 
 ---

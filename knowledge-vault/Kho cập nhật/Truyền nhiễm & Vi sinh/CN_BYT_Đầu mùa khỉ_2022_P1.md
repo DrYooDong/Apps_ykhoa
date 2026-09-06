@@ -1,3 +1,22 @@
+---
+title: "Đại cương, diễn tiến lâm sàng, phân loại thể bệnh và quy trình chẩn đoán bệnh đậu mùa khỉ"
+part: "P1"
+aliases:
+  - "Đại cương, diễn tiến lâm sàng, phân loại thể bệnh và quy trình chẩn đoán bệnh đậu mùa khỉ"
+  - "BYT Đầu mùa khỉ 2022"
+keywords:
+  - "đại cương, diễn tiến lâm sàng, phân loại thể bệnh và quy trình chẩn đoán bệnh đậu mùa khỉ"
+  - "truyền nhiễm & vi sinh"
+  - "byt đầu mùa khỉ 2022"
+specialty: "Truyền nhiễm & Vi sinh"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/truyen-nhiem"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 # BÀI HỌC: ĐẠI CƯƠNG, DIỄN TIẾN LÂM SÀNG, PHÂN LOẠI THỂ BỆNH VÀ QUY TRÌNH CHẨN ĐOÁN BỆNH ĐẬU MÙA KHỈ (PHẦN 1)
 
 ---

@@ -1,3 +1,22 @@
+---
+title: "Phần 1: tiếp cận chẩn đoán và đánh giá toan chuyển hóa nặng tại khoa hồi sức tích cực (icu)"
+part: "P1"
+aliases:
+  - "Phần 1: tiếp cận chẩn đoán và đánh giá toan chuyển hóa nặng tại khoa hồi sức tích cực (icu)"
+  - "CHEST Metabolic Acidosis 2026"
+keywords:
+  - "phần 1: tiếp cận chẩn đoán và đánh giá toan chuyển hóa nặng tại khoa hồi sức tích cực (icu)"
+  - "truyền nhiễm & vi sinh"
+  - "chest metabolic acidosis 2026"
+specialty: "Truyền nhiễm & Vi sinh"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/truyen-nhiem"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 ### PHẦN 1: TIẾP CẬN CHẨN ĐOÁN VÀ ĐÁNH GIÁ TOAN CHUYỂN HÓA NẶNG TẠI KHOA HỒI SỨC TÍCH CỰC (ICU)
 
 Toan chuyển hóa nặng (pH < 7.20) là một tình trạng rối loạn thăng bằng toan kiềm đe dọa tính mạng, thường gặp ở những bệnh nhân nguy kịch tại khoa Hồi sức tích cực. Nhằm giúp các bác sĩ lâm sàng có cái nhìn sâu sắc và hệ thống hóa thực hành, bài viết này biên soạn Phần 1 của chuyên đề "Toan chuyển hóa nặng" dựa trên nghiên cứu và hướng dẫn lâm sàng mới nhất.

@@ -1,3 +1,22 @@
+---
+title: "Khuyến cáo chẩn đoán và điều trị tăng kali máu"
+part: "P2"
+aliases:
+  - "Khuyến cáo chẩn đoán và điều trị tăng kali máu"
+  - "VUNA Tăng kali máu 2026"
+keywords:
+  - "khuyến cáo chẩn đoán và điều trị tăng kali máu"
+  - "thận - tiết niệu"
+  - "vuna tăng kali máu 2026"
+specialty: "Thận - Tiết niệu"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/than-tiet-nieu"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 # BÀI HỌC CHUYÊN SÂU: KHUYẾN CÁO CHẨN ĐOÁN VÀ ĐIỀU TRỊ TĂNG KALI MÁU (PHẦN 2)
 
 Hướng dẫn này kế thừa và chi tiết hóa các giải pháp **Dược trị liệu lâm sàng** và **Lưu đồ xử trí** theo nội dung đồng thuận quốc gia năm 2026 của Hội Hồi sức Cấp cứu và Chống độc Việt Nam (VUNA) phối hợp cùng Hội Tiết niệu - Thận học Việt Nam.

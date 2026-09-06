@@ -1,3 +1,22 @@
+---
+title: "Tóm tắt hướng dẫn lâm sàng AASLD (2022) về chăm sóc giảm nhẹ và quản lý triệu chứng trong xơ gan mất bù"
+part: "P1"
+aliases:
+  - "Tóm tắt hướng dẫn lâm sàng AASLD (2022) về chăm sóc giảm nhẹ và quản lý triệu chứng trong xơ gan mất bù"
+  - "aasld palliative-care"
+keywords:
+  - "tóm tắt hướng dẫn lâm sàng aasld (2022) về chăm sóc giảm nhẹ và quản lý triệu chứng trong xơ gan mất bù"
+  - "tiêu hóa"
+  - "aasld palliative-care"
+specialty: "Tiêu hóa"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/tieu-hoa"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 # TÓM TẮT HƯỚNG DẪN LÂM SÀNG AASLD (2022) VỀ CHĂM SÓC GIẢM NHẸ VÀ QUẢN LÝ TRIỆU CHỨNG TRONG XƠ GAN MẤT BÙ (PHẦN 1)
 
 Tài liệu này được biên soạn chi tiết dựa trên tài liệu hướng dẫn chính thức **"AASLD Practice Guidance: Palliative care and symptom-based management in decompensated cirrhosis" (2022)** của Hiệp hội Nghiên cứu Bệnh gan Hoa Kỳ (AASLD) [1].

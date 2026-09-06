@@ -1,3 +1,22 @@
+---
+title: "Bài học sinh lý học, sinh lý bệnh và cơ chế bệnh sinh của nhiễm trùng đường tiết niệu"
+part: "P3"
+aliases:
+  - "Bài học sinh lý học, sinh lý bệnh và cơ chế bệnh sinh của nhiễm trùng đường tiết niệu"
+  - "EAU Nhiễm trùng tiết niệu 2026"
+keywords:
+  - "bài học sinh lý học, sinh lý bệnh và cơ chế bệnh sinh của nhiễm trùng đường tiết niệu"
+  - "truyền nhiễm & vi sinh"
+  - "eau nhiễm trùng tiết niệu 2026"
+specialty: "Truyền nhiễm & Vi sinh"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/truyen-nhiem"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 # BÀI HỌC SINH LÝ HỌC, SINH LÝ BỆNH VÀ CƠ CHẾ BỆNH SINH CỦA NHIỄM TRÙNG ĐƯỜNG TIẾT NIỆU (PHẦN 3)
 
 _Tài liệu tham khảo chính: Hướng dẫn về Nhiễm trùng Hệ tiết niệu của Hiệp hội Tiết niệu Châu Âu năm 2026 (EAU Guidelines on Urological Infections 2026)_

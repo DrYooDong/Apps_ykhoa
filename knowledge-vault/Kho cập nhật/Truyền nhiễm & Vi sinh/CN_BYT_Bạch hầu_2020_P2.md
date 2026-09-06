@@ -1,3 +1,22 @@
+---
+title: "Chẩn Đoán & Điều Trị Bạch Hầu (Bộ Y Tế"
+part: "P2"
+aliases:
+  - "Chẩn Đoán & Điều Trị Bạch Hầu (Bộ Y Tế"
+  - "BYT Bạch hầu 2020"
+keywords:
+  - "chẩn đoán & điều trị bạch hầu (bộ y tế"
+  - "truyền nhiễm & vi sinh"
+  - "byt bạch hầu 2020"
+specialty: "Truyền nhiễm & Vi sinh"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/truyen-nhiem"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 ### 1. Nội Dung Hướng Dẫn Lâm Sàng Chi Tiết: Chẩn Đoán & Điều Trị Bạch Hầu (Bộ Y Tế - Phần 2)
 
 #### Hỗ Trợ Hô Hấp Trong Bạch Hầu Thanh Quản Và Suy Hô Hấp Cấp

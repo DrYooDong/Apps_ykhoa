@@ -1,3 +1,22 @@
+---
+title: "Bài học khuyến cáo KDIGO 2024 về đánh giá và tiên lượng nguy cơ bệnh thận mạn (CKD)"
+part: "P1"
+aliases:
+  - "Bài học khuyến cáo KDIGO 2024 về đánh giá và tiên lượng nguy cơ bệnh thận mạn (CKD)"
+  - "kdigo ckd 2024"
+keywords:
+  - "bài học khuyến cáo kdigo 2024 về đánh giá và tiên lượng nguy cơ bệnh thận mạn (ckd)"
+  - "thận - tiết niệu"
+  - "kdigo ckd 2024"
+specialty: "Thận - Tiết niệu"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/than-tiet-nieu"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 # BÀI HỌC KHUYẾN CÁO KDIGO 2024 VỀ ĐÁNH GIÁ VÀ TIÊN LƯỢNG NGUY CƠ BỆNH THẬN MẠN (CKD) - PHẦN 1
 
 ## 1. NỘI DUNG BỆNH LÝ HỌC CHI TIẾT

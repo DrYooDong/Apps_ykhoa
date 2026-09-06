@@ -1,3 +1,22 @@
+---
+title: "Trình bệnh án: Thoại Trình BA CKD BS. Bích Hương"
+part: "P2"
+aliases:
+  - "Trình bệnh án: Thoại Trình BA CKD BS. Bích Hương"
+  - "Thoại Trình BA CKD BS. Bích Hương"
+keywords:
+  - "trình bệnh án: thoại trình ba ckd bs. bích hương"
+  - "thận - tiết niệu"
+  - "thoại trình ba ckd bs. bích hương"
+specialty: "Thận - Tiết niệu"
+kho: "Kho bệnh án"
+tags:
+  - "he-co-quan/than-tiet-nieu"
+  - "loai/case-presentation"
+  - "y-khoa/ba"
+updated: "2026-09-06"
+---
+
 xe
 máy một cái nền Đó cái này này là khá
 tốt rồi này kia rồi chúng ta thấy là bài

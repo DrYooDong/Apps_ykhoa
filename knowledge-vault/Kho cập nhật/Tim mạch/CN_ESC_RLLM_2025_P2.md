@@ -1,3 +1,22 @@
+---
+title: "Cập nhật hướng dẫn điều trị rối loạn lipid máu ESC/EAS 2025"
+part: "P2"
+aliases:
+  - "Cập nhật hướng dẫn điều trị rối loạn lipid máu ESC/EAS 2025"
+  - "ESC RLLM 2025"
+keywords:
+  - "cập nhật hướng dẫn điều trị rối loạn lipid máu esc/eas 2025"
+  - "tim mạch"
+  - "esc rllm 2025"
+specialty: "Tim mạch"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/tim-mach"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 # BÀI HỌC CHUYÊN SÂU: CẬP NHẬT HƯỚNG DẪN ĐIỀU TRỊ RỐI LOẠN LIPID MÁU ESC/EAS 2025 (PHẦN 2)
 
 _(Tóm tắt Hướng dẫn cập nhật tiêu điểm của Hiệp hội Tim mạch Châu Âu và Hiệp hội Xơ vữa động mạch Châu Âu - ESC/EAS 2025)_

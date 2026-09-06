@@ -1,3 +1,22 @@
+---
+title: "Sinh lý bệnh của hội chứng vành cấp"
+part: "P1"
+aliases:
+  - "Sinh lý bệnh của hội chứng vành cấp"
+  - "Hội chứng vành cấp"
+keywords:
+  - "sinh lý bệnh của hội chứng vành cấp"
+  - "tim mạch"
+  - "hội chứng vành cấp"
+specialty: "Tim mạch"
+kho: "1.3. Kho sinh lý bệnh"
+tags:
+  - "he-co-quan/tim-mach"
+  - "loai/disease"
+  - "y-khoa/slb"
+updated: "2026-09-06"
+---
+
 # BÀI HỌC: SINH LÝ BỆNH CỦA HỘI CHỨNG VÀNH CẤP (PHẦN 1)
 
 ## I. TỔNG QUAN VỀ HỘI CHỨNG VÀNH CẤP VÀ PHÂN LOẠI LÂM SÀNG

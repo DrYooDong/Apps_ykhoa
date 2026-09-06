@@ -1,3 +1,22 @@
+---
+title: "Phác đồ điều trị và theo dõi suy tim trên bệnh nhân thận mạn theo khuyến cáo ESC 2026"
+part: "P2"
+aliases:
+  - "Phác đồ điều trị và theo dõi suy tim trên bệnh nhân thận mạn theo khuyến cáo ESC 2026"
+  - "ESC Tim & Thận 2026"
+keywords:
+  - "phác đồ điều trị và theo dõi suy tim trên bệnh nhân thận mạn theo khuyến cáo esc 2026"
+  - "tim mạch"
+  - "esc tim & thận 2026"
+specialty: "Tim mạch"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/tim-mach"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 ### **BÀI HỌC LÂM SÀNG: PHÁC ĐỒ ĐIỀU TRỊ VÀ THEO DÕI SUY TIM TRÊN BỆNH NHÂN THẬN MẠN THEO KHUYẾN CÁO ESC 2026 (PHẦN 2)**
 
 ---

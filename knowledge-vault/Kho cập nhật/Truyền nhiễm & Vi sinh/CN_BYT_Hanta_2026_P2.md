@@ -1,3 +1,22 @@
+---
+title: "Quản lý điều trị, hồi sức tích cực và dự phòng bệnh do vi rút hanta"
+part: "P2"
+aliases:
+  - "Quản lý điều trị, hồi sức tích cực và dự phòng bệnh do vi rút hanta"
+  - "BYT Hanta 2026"
+keywords:
+  - "quản lý điều trị, hồi sức tích cực và dự phòng bệnh do vi rút hanta"
+  - "truyền nhiễm & vi sinh"
+  - "byt hanta 2026"
+specialty: "Truyền nhiễm & Vi sinh"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/truyen-nhiem"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 # BÀI HỌC: QUẢN LÝ ĐIỀU TRỊ, HỒI SỨC TÍCH CỰC VÀ DỰ PHÒNG BỆNH DO VI RÚT HANTA (PHẦN 2)
 
 ---

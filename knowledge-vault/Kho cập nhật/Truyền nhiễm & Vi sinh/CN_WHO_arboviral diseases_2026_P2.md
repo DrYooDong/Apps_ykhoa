@@ -1,3 +1,22 @@
+---
+title: "1. Nội Dung Điều Trị & Hồi Sức Bệnh Nhân Nặng Chi Tiết (WHO Guidelines 2025"
+part: "P2"
+aliases:
+  - "1. Nội Dung Điều Trị & Hồi Sức Bệnh Nhân Nặng Chi Tiết (WHO Guidelines 2025"
+  - "WHO arboviral diseases 2026"
+keywords:
+  - "1. nội dung điều trị & hồi sức bệnh nhân nặng chi tiết (who guidelines 2025"
+  - "truyền nhiễm & vi sinh"
+  - "who arboviral diseases 2026"
+specialty: "Truyền nhiễm & Vi sinh"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/truyen-nhiem"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 ### 1. Nội Dung Điều Trị & Hồi Sức Bệnh Nhân Nặng Chi Tiết (WHO Guidelines 2025 - Phần 2)
 
 #### Hồi sức Dịch truyền Tĩnh mạch: Lựa chọn Dịch tinh thể hay Dịch cao phân tử?

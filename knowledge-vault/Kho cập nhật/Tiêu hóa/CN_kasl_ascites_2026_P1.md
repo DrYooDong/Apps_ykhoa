@@ -1,3 +1,22 @@
+---
+title: "Tóm tắt hướng dẫn thực hành lâm sàng KASL (2026) về xơ gan: cổ trướng và các biến chứng liên quan"
+part: "P1"
+aliases:
+  - "Tóm tắt hướng dẫn thực hành lâm sàng KASL (2026) về xơ gan: cổ trướng và các biến chứng liên quan"
+  - "kasl ascites 2026"
+keywords:
+  - "tóm tắt hướng dẫn thực hành lâm sàng kasl (2026) về xơ gan: cổ trướng và các biến chứng liên quan"
+  - "tiêu hóa"
+  - "kasl ascites 2026"
+specialty: "Tiêu hóa"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/tieu-hoa"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 # TÓM TẮT HƯỚNG DẪN THỰC HÀNH LÂM SÀNG KASL (2026) VỀ XƠ GAN: CỔ TRƯỚNG VÀ CÁC BIẾN CHỨNG LIÊN QUAN (PHẦN 1)
 
 Tài liệu này được biên soạn chi tiết và nghiêm ngặt dựa trên văn bản hướng dẫn chính thức **"KASL clinical practice guidelines for liver cirrhosis: Ascites and related complications 2026"** đăng trên tạp chí *Clinical and Molecular Hepatology 2026;32:961-1028* [2]. Hướng dẫn được cập nhật bởi Ủy ban sửa đổi hướng dẫn thực hành lâm sàng của Hiệp hội Nghiên cứu Bệnh gan Hàn Quốc (KASL) [6].

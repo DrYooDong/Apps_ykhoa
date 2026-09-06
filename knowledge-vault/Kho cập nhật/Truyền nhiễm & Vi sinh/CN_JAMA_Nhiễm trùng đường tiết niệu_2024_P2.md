@@ -1,3 +1,22 @@
+---
+title: "Bài học sinh lý học, sinh lý bệnh và cơ chế bệnh sinh của nhiễm trùng đường tiết niệu"
+part: "P2"
+aliases:
+  - "Bài học sinh lý học, sinh lý bệnh và cơ chế bệnh sinh của nhiễm trùng đường tiết niệu"
+  - "JAMA Nhiễm trùng đường tiết niệu 2024"
+keywords:
+  - "bài học sinh lý học, sinh lý bệnh và cơ chế bệnh sinh của nhiễm trùng đường tiết niệu"
+  - "truyền nhiễm & vi sinh"
+  - "jama nhiễm trùng đường tiết niệu 2024"
+specialty: "Truyền nhiễm & Vi sinh"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/truyen-nhiem"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 # BÀI HỌC SINH LÝ HỌC, SINH LÝ BỆNH VÀ CƠ CHẾ BỆNH SINH CỦA NHIỄM TRÙNG ĐƯỜNG TIẾT NIỆU (PHẦN 2)
 
 _Tài liệu học tập được biên soạn dựa trên báo cáo đồng thuận y khoa quốc tế: "Guidelines for the Prevention, Diagnosis, and Management of Urinary Tract Infections in Pediatrics and Adults: A WikiGuidelines Group Consensus Statement" đăng tải trên tạp chí JAMA Network Open năm 2024._

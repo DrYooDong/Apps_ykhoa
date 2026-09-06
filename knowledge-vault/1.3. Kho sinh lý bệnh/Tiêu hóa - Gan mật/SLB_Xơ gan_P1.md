@@ -1,3 +1,22 @@
+---
+title: "Sinh lý bệnh của xơ gan"
+part: "P1"
+aliases:
+  - "Sinh lý bệnh của xơ gan"
+  - "Xơ gan"
+keywords:
+  - "sinh lý bệnh của xơ gan"
+  - "tiêu hóa - gan mật"
+  - "xơ gan"
+specialty: "Tiêu hóa - Gan mật"
+kho: "1.3. Kho sinh lý bệnh"
+tags:
+  - "he-co-quan/tieu-hoa"
+  - "loai/disease"
+  - "y-khoa/slb"
+updated: "2026-09-06"
+---
+
 # BÀI HỌC: SINH LÝ BỆNH CỦA XƠ GAN (PHẦN 1)
 
 ## I. Tổng Quan và Các Giai Đoạn Tiến Triển của Bệnh Gan Mạn Tính

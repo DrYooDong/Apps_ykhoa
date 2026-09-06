@@ -1,3 +1,22 @@
+---
+title: "Quản lý nhiễm trùng da và mô mềm (ssti) ở người lớn"
+part: "P3"
+aliases:
+  - "Quản lý nhiễm trùng da và mô mềm (ssti) ở người lớn"
+  - "UCSF ssti 2026"
+keywords:
+  - "quản lý nhiễm trùng da và mô mềm (ssti) ở người lớn"
+  - "truyền nhiễm & vi sinh"
+  - "ucsf ssti 2026"
+specialty: "Truyền nhiễm & Vi sinh"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/truyen-nhiem"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 # BÀI HỌC: QUẢN LÝ NHIỄM TRÙNG DA VÀ MÔ MỀM (SSTI) Ở NGƯỜI LỚN
 ## PHẦN 3: LỊCH SỬ THỂ CHẾ, CƠ SỞ Y HỌC CHỨNG CỨ & CÁC CẢNH BÁO LÂM SÀNG CHUYÊN SÂU
 

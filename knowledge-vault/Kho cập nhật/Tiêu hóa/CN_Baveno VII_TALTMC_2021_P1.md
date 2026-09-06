@@ -1,3 +1,22 @@
+---
+title: "1. Nội Dung Đồng Thuận Lâm Sàng & Cơ Chế Huyết Động Học Chi Tiết (Baveno VII"
+part: "P1"
+aliases:
+  - "1. Nội Dung Đồng Thuận Lâm Sàng & Cơ Chế Huyết Động Học Chi Tiết (Baveno VII"
+  - "Baveno VII TALTMC 2021"
+keywords:
+  - "1. nội dung đồng thuận lâm sàng & cơ chế huyết động học chi tiết (baveno vii"
+  - "tiêu hóa"
+  - "baveno vii taltmc 2021"
+specialty: "Tiêu hóa"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/tieu-hoa"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 # 1. Nội Dung Đồng Thuận Lâm Sàng & Cơ Chế Huyết Động Học Chi Tiết (Baveno VII - Phần 1)
 
 Đồng thuận **Baveno VII (2021)** với chủ đề **"Cá nhân hóa chăm sóc tăng áp lực tĩnh mạch cửa" (Personalized Care for Portal Hypertension)** đánh dấu bước chuyển dịch lớn từ các khuyến cáo chung sang tiếp cận cá thể hóa dựa trên các bằng chứng huyết động học và các công cụ chẩn đoán không xâm lấn. Dưới đây là nội dung chi tiết được tóm tắt từ 5 phiên thảo luận đầu tiên (Sessions 1 - 5) của đồng thuận này.

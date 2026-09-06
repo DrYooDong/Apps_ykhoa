@@ -1,3 +1,22 @@
+---
+title: "1. Nội Dung Phác Đồ Điều Trị Ngoại Trú, Nội Trú và Hồi Sức Tích Cực Chi Tiết"
+part: "P2"
+aliases:
+  - "1. Nội Dung Phác Đồ Điều Trị Ngoại Trú, Nội Trú và Hồi Sức Tích Cực Chi Tiết"
+  - "BYT SXHDengue 2023"
+keywords:
+  - "1. nội dung phác đồ điều trị ngoại trú, nội trú và hồi sức tích cực chi tiết"
+  - "truyền nhiễm & vi sinh"
+  - "byt sxhdengue 2023"
+specialty: "Truyền nhiễm & Vi sinh"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/truyen-nhiem"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 ### 1. Nội Dung Phác Đồ Điều Trị Ngoại Trú, Nội Trú và Hồi Sức Tích Cực Chi Tiết
 
 #### 1.1. Điều Trị Sốt Xuất Huyết Dengue Có Dấu Hiệu Cảnh Báo (DHCB)

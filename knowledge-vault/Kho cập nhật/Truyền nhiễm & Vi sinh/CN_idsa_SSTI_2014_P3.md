@@ -1,3 +1,22 @@
+---
+title: "Quản lý nhiễm trùng da và mô mềm (ssti) theo idsa 2014"
+part: "P3"
+aliases:
+  - "Quản lý nhiễm trùng da và mô mềm (ssti) theo idsa 2014"
+  - "idsa SSTI 2014"
+keywords:
+  - "quản lý nhiễm trùng da và mô mềm (ssti) theo idsa 2014"
+  - "truyền nhiễm & vi sinh"
+  - "idsa ssti 2014"
+specialty: "Truyền nhiễm & Vi sinh"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/truyen-nhiem"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 # BÀI HỌC: QUẢN LÝ NHIỄM TRÙNG DA VÀ MÔ MỀM (SSTI) THEO IDSA 2014
 ## PHẦN 3: PHÂN LOẠI GRADE, LIỆU PHÁP CORTICOSTEROID BỔ TRỢ, SSTI Ở BỆNH NHÂN SUY GIẢM MIỄN DỊCH & CÁC NHIỄM TRÙNG ĐẶC BIỆT
 

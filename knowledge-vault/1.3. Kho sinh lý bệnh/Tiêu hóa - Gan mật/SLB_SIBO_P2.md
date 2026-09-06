@@ -1,3 +1,22 @@
+---
+title: "Sinh lý bệnh tăng sinh vi khuẩn ruột non (SIBO)"
+part: "P2"
+aliases:
+  - "Sinh lý bệnh tăng sinh vi khuẩn ruột non (SIBO)"
+  - "SIBO"
+keywords:
+  - "sinh lý bệnh tăng sinh vi khuẩn ruột non (sibo)"
+  - "tiêu hóa - gan mật"
+  - "sibo"
+specialty: "Tiêu hóa - Gan mật"
+kho: "1.3. Kho sinh lý bệnh"
+tags:
+  - "he-co-quan/tieu-hoa"
+  - "loai/disease"
+  - "y-khoa/slb"
+updated: "2026-09-06"
+---
+
 # SINH LÝ BỆNH TĂNG SINH VI KHUẨN RUỘT NON (SIBO) - PHẦN 2
 
 ## I. Các Yếu Tố Nguy Cơ và Bệnh Lý Tiền Đề Gây SIBO

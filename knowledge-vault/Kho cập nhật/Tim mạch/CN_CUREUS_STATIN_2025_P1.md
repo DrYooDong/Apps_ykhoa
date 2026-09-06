@@ -1,3 +1,22 @@
+---
+title: "Đánh giá tác động của liệu pháp statin trên kết cục lâm sàng ở bệnh nhân có nguy cơ tim mạch — phân tích hệ thống và tổng hợp"
+part: "P1"
+aliases:
+  - "Đánh giá tác động của liệu pháp statin trên kết cục lâm sàng ở bệnh nhân có nguy cơ tim mạch — phân tích hệ thống và tổng hợp"
+  - "CUREUS STATIN 2025"
+keywords:
+  - "đánh giá tác động của liệu pháp statin trên kết cục lâm sàng ở bệnh nhân có nguy cơ tim mạch — phân tích hệ thống và tổng hợp"
+  - "tim mạch"
+  - "cureus statin 2025"
+specialty: "Tim mạch"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/tim-mach"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 # BÀI HỌC CHUYÊN SÂU: ĐÁNH GIÁ TÁC ĐỘNG CỦA LIỆU PHÁP STATIN TRÊN KẾT CỤC LÂM SÀNG Ở BỆNH NHÂN CÓ NGUY CƠ TIM MẠCH — PHÂN TÍCH HỆ THỐNG VÀ TỔNG HỢP (PHẦN 1)
 
 _(Tóm tắt nghiên cứu hệ thống đăng tải trên Tạp chí Y khoa Cureus - Tháng 07/2025)_

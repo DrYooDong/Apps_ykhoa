@@ -1,3 +1,22 @@
+---
+title: "Tiếp cận điều trị và dự phòng tiêu chảy nhiễm trùng theo idsa 2017"
+part: "P2"
+aliases:
+  - "Tiếp cận điều trị và dự phòng tiêu chảy nhiễm trùng theo idsa 2017"
+  - "idsa infectious diarrhea"
+keywords:
+  - "tiếp cận điều trị và dự phòng tiêu chảy nhiễm trùng theo idsa 2017"
+  - "tiêu hóa"
+  - "idsa infectious diarrhea"
+specialty: "Tiêu hóa"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/tieu-hoa"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 # BÀI HỌC CHI TIẾT: TIẾP CẬN ĐIỀU TRỊ VÀ DỰ PHÒNG TIÊU CHẢY NHIỄM TRÙNG THEO IDSA 2017 (PHẦN 2)
 
 Bài học này được biên soạn dựa trên Hướng dẫn Thực hành Lâm sàng năm 2017 của Hiệp hội Bệnh truyền nhiễm Hoa Kỳ (IDSA) về Chẩn đoán và Quản lý Tiêu chảy Nhiễm trùng (Tài liệu tham khảo chính: **cix959.pdf**). Phần này tập trung vào các phác đồ bù dịch, điều trị kinh nghiệm, điều trị theo tác nhân cụ thể, liệu pháp hỗ trợ và các chiến lược dự phòng y tế công cộng.

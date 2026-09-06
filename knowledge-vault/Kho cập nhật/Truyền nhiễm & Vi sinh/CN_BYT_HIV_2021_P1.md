@@ -1,3 +1,22 @@
+---
+title: "Quy trình xét nghiệm, chẩn đoán và phân loại giai đoạn lâm sàng/miễn dịch nhiễm HIV"
+part: "P1"
+aliases:
+  - "Quy trình xét nghiệm, chẩn đoán và phân loại giai đoạn lâm sàng/miễn dịch nhiễm HIV"
+  - "BYT HIV 2021"
+keywords:
+  - "quy trình xét nghiệm, chẩn đoán và phân loại giai đoạn lâm sàng/miễn dịch nhiễm hiv"
+  - "truyền nhiễm & vi sinh"
+  - "byt hiv 2021"
+specialty: "Truyền nhiễm & Vi sinh"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/truyen-nhiem"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 # BÀI HỌC: QUY TRÌNH XÉT NGHIỆM, CHẨN ĐOÁN VÀ PHÂN LOẠI GIAI ĐOẠN LÂM SÀNG/MIỄN DỊCH NHIỄM HIV (PHẦN 1)
 
 ---

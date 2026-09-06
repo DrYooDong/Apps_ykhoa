@@ -1,3 +1,22 @@
+---
+title: "Đại cương, đặc điểm dịch tễ học, biểu hiện lâm sàng và chẩn đoán bệnh do vi rút hanta"
+part: "P1"
+aliases:
+  - "Đại cương, đặc điểm dịch tễ học, biểu hiện lâm sàng và chẩn đoán bệnh do vi rút hanta"
+  - "BYT Hanta 2026"
+keywords:
+  - "đại cương, đặc điểm dịch tễ học, biểu hiện lâm sàng và chẩn đoán bệnh do vi rút hanta"
+  - "truyền nhiễm & vi sinh"
+  - "byt hanta 2026"
+specialty: "Truyền nhiễm & Vi sinh"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/truyen-nhiem"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 # BÀI HỌC: ĐẠI CƯƠNG, ĐẶC ĐIỂM DỊCH TỄ HỌC, BIỂU HIỆN LÂM SÀNG VÀ CHẨN ĐOÁN BỆNH DO VI RÚT HANTA (PHẦN 1)
 
 ---

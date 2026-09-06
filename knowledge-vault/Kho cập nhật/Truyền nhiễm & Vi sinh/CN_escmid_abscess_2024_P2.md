@@ -1,3 +1,22 @@
+---
+title: "Hướng dẫn chẩn đoán và điều trị áp xe não theo escmid 2024"
+part: "P2"
+aliases:
+  - "Hướng dẫn chẩn đoán và điều trị áp xe não theo escmid 2024"
+  - "escmid abscess 2024"
+keywords:
+  - "hướng dẫn chẩn đoán và điều trị áp xe não theo escmid 2024"
+  - "truyền nhiễm & vi sinh"
+  - "escmid abscess 2024"
+specialty: "Truyền nhiễm & Vi sinh"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/truyen-nhiem"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 # BÀI HỌC: HƯỚNG DẪN CHẨN ĐOÁN VÀ ĐIỀU TRỊ ÁP XE NÃO THEO ESCMID 2024
 ## PHẦN 2: PHÁC ĐỒ PHẪU THUẬT, LIỆU PHÁP KHÁNG SINH KINH NGHIỆM, ĐIỀU TRỊ ĐÍCH VÀ CORTICOSTEROID BỔ TRỢ
 

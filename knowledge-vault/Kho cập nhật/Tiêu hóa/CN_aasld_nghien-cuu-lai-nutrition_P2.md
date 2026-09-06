@@ -1,3 +1,22 @@
+---
+title: "Quản lý suy dinh dưỡng, suy yếu và teo cơ trong xơ gan"
+part: "P2"
+aliases:
+  - "Quản lý suy dinh dưỡng, suy yếu và teo cơ trong xơ gan"
+  - "aasld nghien-cuu-lai-nutrition"
+keywords:
+  - "quản lý suy dinh dưỡng, suy yếu và teo cơ trong xơ gan"
+  - "tiêu hóa"
+  - "aasld nghien-cuu-lai-nutrition"
+specialty: "Tiêu hóa"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/tieu-hoa"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 # BÀI HỌC: QUẢN LÝ SUY DINH DƯỠNG, SUY YẾU VÀ TEO CƠ TRONG XƠ GAN (PHẦN 2)
 
 Tài liệu này được biên soạn chi tiết dựa trên tài liệu gốc **"Malnutrition, Frailty, and Sarcopenia in Patients With Cirrhosis: 2021 Practice Guidance by the American Association for the Study of Liver Diseases"** (AASLD 2021) [1].

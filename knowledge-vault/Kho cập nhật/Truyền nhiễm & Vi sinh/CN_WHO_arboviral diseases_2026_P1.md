@@ -1,3 +1,22 @@
+---
+title: "1. Nội dung Tóm tắt Chi tiết Hướng dẫn WHO 2025"
+part: "P1"
+aliases:
+  - "1. Nội dung Tóm tắt Chi tiết Hướng dẫn WHO 2025"
+  - "WHO arboviral diseases 2026"
+keywords:
+  - "1. nội dung tóm tắt chi tiết hướng dẫn who 2025"
+  - "truyền nhiễm & vi sinh"
+  - "who arboviral diseases 2026"
+specialty: "Truyền nhiễm & Vi sinh"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/truyen-nhiem"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 ### 1. Nội dung Tóm tắt Chi tiết Hướng dẫn WHO 2025 (Phần 1)
 
 #### 1.1. Đại cương và Bối cảnh Dịch tễ học Arbovirus Toàn cầu

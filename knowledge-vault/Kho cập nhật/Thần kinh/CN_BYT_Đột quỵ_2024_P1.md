@@ -1,3 +1,22 @@
+---
+title: "1. Nội Dung Khuyến Cáo Chi Tiết"
+part: "P1"
+aliases:
+  - "1. Nội Dung Khuyến Cáo Chi Tiết"
+  - "BYT Đột quỵ 2024"
+keywords:
+  - "1. nội dung khuyến cáo chi tiết"
+  - "thần kinh"
+  - "byt đột quỵ 2024"
+specialty: "Thần kinh"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/than-kinh"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 ### 1. Nội Dung Khuyến Cáo Chi Tiết
 
 Dưới đây là tóm tắt các hướng dẫn chuyên môn và khuyến cáo được ban hành kèm theo **Quyết định số 3312/QĐ-BYT ngày 05 tháng 11 năm 2024** của Bộ trưởng Bộ Y tế Việt Nam về việc ban hành tài liệu _"Hướng dẫn chẩn đoán và điều trị đột quỵ não"_. Phần 1 này sẽ tập trung vào ba chương đầu tiên trong hướng dẫn: **Đột quỵ nhẹ và cơn thiếu máu não thoáng qua**, **Nhồi máu não cấp** và **Chảy máu não**.

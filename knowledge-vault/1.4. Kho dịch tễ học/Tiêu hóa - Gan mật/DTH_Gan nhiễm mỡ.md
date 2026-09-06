@@ -1,3 +1,20 @@
+---
+title: "Gan nhiễm mỡ"
+part: "P1"
+aliases:
+  - "Gan nhiễm mỡ"
+keywords:
+  - "gan nhiễm mỡ"
+  - "tiêu hóa - gan mật"
+specialty: "Tiêu hóa - Gan mật"
+kho: "1.4. Kho dịch tễ học"
+tags:
+  - "he-co-quan/tieu-hoa"
+  - "loai/epidemiology"
+  - "y-khoa/dth"
+updated: "2026-09-06"
+---
+
 ### 1. Nội Dung Sinh Lý Học và Dịch Tễ Học Chi Tiết
 
 #### Gánh Nặng Bệnh Lý Toàn Cầu của NAFLD, MASLD và MAFLD

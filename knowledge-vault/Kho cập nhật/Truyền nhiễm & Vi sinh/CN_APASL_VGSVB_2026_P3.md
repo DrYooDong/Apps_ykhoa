@@ -1,3 +1,22 @@
+---
+title: "Bài học sinh lý bệnh và các khuyến cáo lâm sàng của guideline APASL 2026"
+part: "P3"
+aliases:
+  - "Bài học sinh lý bệnh và các khuyến cáo lâm sàng của guideline APASL 2026"
+  - "APASL VGSVB 2026"
+keywords:
+  - "bài học sinh lý bệnh và các khuyến cáo lâm sàng của guideline apasl 2026"
+  - "truyền nhiễm & vi sinh"
+  - "apasl vgsvb 2026"
+specialty: "Truyền nhiễm & Vi sinh"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/truyen-nhiem"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 # BÀI HỌC SINH LÝ BỆNH VÀ CÁC KHUYẾN CÁO LÂM SÀNG CỦA GUIDELINE APASL 2026 (PHẦN 3)
 
 ---

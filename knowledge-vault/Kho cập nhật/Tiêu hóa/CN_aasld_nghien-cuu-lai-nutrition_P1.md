@@ -1,3 +1,22 @@
+---
+title: "Dinh dưỡng, suy yếu và teo cơ ở bệnh nhân xơ gan"
+part: "P1"
+aliases:
+  - "Dinh dưỡng, suy yếu và teo cơ ở bệnh nhân xơ gan"
+  - "aasld nghien-cuu-lai-nutrition"
+keywords:
+  - "dinh dưỡng, suy yếu và teo cơ ở bệnh nhân xơ gan"
+  - "tiêu hóa"
+  - "aasld nghien-cuu-lai-nutrition"
+specialty: "Tiêu hóa"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/tieu-hoa"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 # BÀI HỌC: DINH DƯỠNG, SUY YẾU VÀ TEO CƠ Ở BỆNH NHÂN XƠ GAN (PHẦN 1)
 
 Bài học này được biên soạn chi tiết dựa trên tài liệu hướng dẫn lâm sàng chính thức đầu tiên của Hiệp hội Nghiên cứu Bệnh gan Hoa Kỳ (AASLD) năm 2021: **"Malnutrition, Frailty, and Sarcopenia in Patients With Cirrhosis: 2021 Practice Guidance by the American Association for the Study of Liver Diseases"** được thực hiện bởi Jennifer C. Lai, Puneeta Tandon và cộng sự [1].

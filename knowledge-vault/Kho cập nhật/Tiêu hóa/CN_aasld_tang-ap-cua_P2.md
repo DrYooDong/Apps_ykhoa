@@ -1,3 +1,22 @@
+---
+title: "Bản tóm tắt hướng dẫn lâm sàng AASLD (2024)"
+part: "P2"
+aliases:
+  - "Bản tóm tắt hướng dẫn lâm sàng AASLD (2024)"
+  - "aasld tang-ap-cua"
+keywords:
+  - "bản tóm tắt hướng dẫn lâm sàng aasld (2024)"
+  - "tiêu hóa"
+  - "aasld tang-ap-cua"
+specialty: "Tiêu hóa"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/tieu-hoa"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 # BẢN TÓM TẮT HƯỚNG DẪN LÂM SÀNG AASLD (2024) - PHẦN 2
 ## PHÂN TẦNG NGUY CƠ VÀ QUẢN LÝ TĂNG ÁP LỰC TĨNH MẠCH CỬA & GIÃN TĨNH MẠCH TRONG XƠ GAN
 

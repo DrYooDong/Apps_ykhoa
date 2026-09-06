@@ -1,3 +1,22 @@
+---
+title: "Đồng thuận wikiguidelines 2024 về dự phòng và chẩn đoán nhiễm trùng đường tiết niệu"
+part: "P1"
+aliases:
+  - "Đồng thuận wikiguidelines 2024 về dự phòng và chẩn đoán nhiễm trùng đường tiết niệu"
+  - "JAMA Nhiễm trùng đường tiết niệu 2024"
+keywords:
+  - "đồng thuận wikiguidelines 2024 về dự phòng và chẩn đoán nhiễm trùng đường tiết niệu"
+  - "truyền nhiễm & vi sinh"
+  - "jama nhiễm trùng đường tiết niệu 2024"
+specialty: "Truyền nhiễm & Vi sinh"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/truyen-nhiem"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 # BÀI HỌC CHUYÊN SÂU: ĐỒNG THUẬN WIKIGUIDELINES 2024 VỀ DỰ PHÒNG VÀ CHẨN ĐOÁN NHIỄM TRÙNG ĐƯỜNG TIẾT NIỆU (PHẦN 1)
 
 _Tài liệu học tập được biên soạn dựa trên báo cáo đồng thuận y khoa quốc tế: "Guidelines for the Prevention, Diagnosis, and Management of Urinary Tract Infections in Pediatrics and Adults: A WikiGuidelines Group Consensus Statement" đăng tải trên tạp chí JAMA Network Open năm 2024._

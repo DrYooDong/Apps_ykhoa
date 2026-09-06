@@ -1,3 +1,22 @@
+---
+title: "Tóm tắt hướng dẫn lâm sàng idsa 2014"
+part: "P1"
+aliases:
+  - "Tóm tắt hướng dẫn lâm sàng idsa 2014"
+  - "idsa SSTI 2014"
+keywords:
+  - "tóm tắt hướng dẫn lâm sàng idsa 2014"
+  - "truyền nhiễm & vi sinh"
+  - "idsa ssti 2014"
+specialty: "Truyền nhiễm & Vi sinh"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/truyen-nhiem"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 # TÓM TẮT HƯỚNG DẪN LÂM SÀNG IDSA 2014 (PHẦN 1)
 ## CHẨN ĐOÁN VÀ QUẢN LÝ NHIỄM TRÙNG DA VÀ MÔ MỀM (SSTI)
 

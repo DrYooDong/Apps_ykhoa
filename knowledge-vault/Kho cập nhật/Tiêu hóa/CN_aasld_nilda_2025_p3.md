@@ -1,3 +1,22 @@
+---
+title: "Tóm tắt hướng dẫn lâm sàng AASLD (2025) về đánh giá bệnh gan không xâm lấn bằng xét nghiệm máu"
+part: "P3"
+aliases:
+  - "Tóm tắt hướng dẫn lâm sàng AASLD (2025) về đánh giá bệnh gan không xâm lấn bằng xét nghiệm máu"
+  - "aasld nilda 2025"
+keywords:
+  - "tóm tắt hướng dẫn lâm sàng aasld (2025) về đánh giá bệnh gan không xâm lấn bằng xét nghiệm máu"
+  - "tiêu hóa"
+  - "aasld nilda 2025"
+specialty: "Tiêu hóa"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/tieu-hoa"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 # BÀI HỌC: TÓM TẮT HƯỚNG DẪN LÂM SÀNG AASLD (2025) VỀ ĐÁNH GIÁ BỆNH GAN KHÔNG XÂM LẤN BẰNG XÉT NGHIỆM MÁU (PHẦN 3)
 
 ## I. Giới Thiệu

@@ -1,3 +1,22 @@
+---
+title: "Tóm tắt hướng dẫn lâm sàng NICE ng250 (cập nhật 2025 - 2026): chẩn đoán và đánh giá viêm phổi"
+part: "P1"
+aliases:
+  - "Tóm tắt hướng dẫn lâm sàng NICE ng250 (cập nhật 2025 - 2026): chẩn đoán và đánh giá viêm phổi"
+  - "NICE Viêm phổi 2025"
+keywords:
+  - "tóm tắt hướng dẫn lâm sàng nice ng250 (cập nhật 2025 - 2026): chẩn đoán và đánh giá viêm phổi"
+  - "truyền nhiễm & vi sinh"
+  - "nice viêm phổi 2025"
+specialty: "Truyền nhiễm & Vi sinh"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/truyen-nhiem"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 ### TÓM TẮT HƯỚNG DẪN LÂM SÀNG NICE NG250 (CẬP NHẬT 2025 - 2026): CHẨN ĐOÁN VÀ ĐÁNH GIÁ VIÊM PHỔI (PHẦN 1)
 
 Hướng dẫn lâm sàng **NICE NG250** do Viện Y tế và Chất lượng Điều trị Quốc gia Anh Quốc (NICE) công bố vào ngày 2 tháng 9 năm 2025 và cập nhật mới nhất vào tháng 1 năm 2026. Hướng dẫn này chính thức tích hợp, thay thế hoàn toàn cho các hướng dẫn kê đơn kháng sinh đối với viêm phổi mắc phải cộng đồng (CAP) và viêm phổi bệnh viện (HAP) năm 2019, đồng thời thay thế một phần hướng dẫn CG191 năm 2014.

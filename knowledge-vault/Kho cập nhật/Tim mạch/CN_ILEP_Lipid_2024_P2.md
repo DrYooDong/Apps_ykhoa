@@ -1,3 +1,22 @@
+---
+title: "Khuyến cáo tối ưu hóa liệu pháp hạ lipid máu ở bệnh nhân tim mạch do xơ vữa và sau hội chứng vành cấp"
+part: "P2"
+aliases:
+  - "Khuyến cáo tối ưu hóa liệu pháp hạ lipid máu ở bệnh nhân tim mạch do xơ vữa và sau hội chứng vành cấp"
+  - "ILEP Lipid 2024"
+keywords:
+  - "khuyến cáo tối ưu hóa liệu pháp hạ lipid máu ở bệnh nhân tim mạch do xơ vữa và sau hội chứng vành cấp"
+  - "tim mạch"
+  - "ilep lipid 2024"
+specialty: "Tim mạch"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/tim-mach"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 # BÀI HỌC CHUYÊN SÂU: KHUYẾN CÁO TỐI ƯU HÓA LIỆU PHÁP HẠ LIPID MÁU Ở BỆNH NHÂN TIM MẠCH DO XƠ VỮA VÀ SAU HỘI CHỨNG VÀNH CẤP (PHẦN 2)
 
 _(Tóm tắt đồng thuận lâm sàng năm 2024 của Hội đồng Chuyên gia Lipid Quốc tế - ILEP)_

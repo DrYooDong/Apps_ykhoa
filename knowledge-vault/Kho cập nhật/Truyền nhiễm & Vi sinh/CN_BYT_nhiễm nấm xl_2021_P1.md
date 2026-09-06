@@ -1,3 +1,22 @@
+---
+title: "Đại cương, cơ chế bệnh sinh, dịch tễ học và sự kháng thuốc của nhiễm nấm xâm lấn"
+part: "P1"
+aliases:
+  - "Đại cương, cơ chế bệnh sinh, dịch tễ học và sự kháng thuốc của nhiễm nấm xâm lấn"
+  - "BYT nhiễm nấm xl 2021"
+keywords:
+  - "đại cương, cơ chế bệnh sinh, dịch tễ học và sự kháng thuốc của nhiễm nấm xâm lấn"
+  - "truyền nhiễm & vi sinh"
+  - "byt nhiễm nấm xl 2021"
+specialty: "Truyền nhiễm & Vi sinh"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/truyen-nhiem"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 # BÀI HỌC: ĐẠI CƯƠNG, CƠ CHẾ BỆNH SINH, DỊCH TỄ HỌC VÀ SỰ KHÁNG THUỐC CỦA NHIỄM NẤM XÂM LẤN (PHẦN 1)
 
 ---

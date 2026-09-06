@@ -1,3 +1,22 @@
+---
+title: "Tóm tắt nghiên cứu: đồng thuận của liên đoàn tiêu hóa brazil về chẩn đoán và điều trị SIBO"
+part: "P1"
+aliases:
+  - "Tóm tắt nghiên cứu: đồng thuận của liên đoàn tiêu hóa brazil về chẩn đoán và điều trị SIBO"
+  - "FBG SIBO 2024"
+keywords:
+  - "tóm tắt nghiên cứu: đồng thuận của liên đoàn tiêu hóa brazil về chẩn đoán và điều trị sibo"
+  - "tiêu hóa"
+  - "fbg sibo 2024"
+specialty: "Tiêu hóa"
+kho: "Kho cập nhật"
+tags:
+  - "he-co-quan/tieu-hoa"
+  - "loai/guideline"
+  - "y-khoa/cn"
+updated: "2026-09-06"
+---
+
 # TÓM TẮT NGHIÊN CỨU: ĐỒNG THUẬN CỦA LIÊN ĐOÀN TIÊU HÓA BRAZIL VỀ CHẨN ĐOÁN VÀ ĐIỀU TRỊ SIBO (PHẦN 1)
 
 Nội dung dưới đây được biên soạn chi tiết từ tài liệu đồng thuận chính thức của Liên đoàn Tiêu hóa Brazil (FBG) năm 2024, tập trung vào định nghĩa, dịch tễ học, các cơ chế sinh lý bệnh, yếu tố nguy cơ và phương pháp chẩn đoán tiêu chuẩn vàng của SIBO.
