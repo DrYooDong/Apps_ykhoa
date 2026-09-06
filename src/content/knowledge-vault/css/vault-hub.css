@@ -1686,11 +1686,490 @@
   position: relative;
 }
 
+/* Perspective Header Banners */
+.vault-perspective-banner {
+  padding: 1.25rem 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  position: relative;
+  border: 1.5px solid transparent;
+}
+
+.vault-perspective-banner--doctor {
+  background: linear-gradient(135deg, rgba(2, 132, 199, 0.08) 0%, rgba(59, 130, 246, 0.03) 100%);
+  border-color: rgba(2, 132, 199, 0.25);
+}
+
+.vault-perspective-banner--doctor .vault-perspective-banner__tag {
+  background: #0284c7;
+  color: #ffffff;
+}
+
+.vault-perspective-banner--patient {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.04) 100%);
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+.vault-perspective-banner--patient .vault-perspective-banner__tag {
+  background: #10b981;
+  color: #ffffff;
+}
+
+.vault-perspective-banner--inpatient {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.08) 0%, rgba(124, 58, 237, 0.03) 100%);
+  border-color: rgba(139, 92, 246, 0.25);
+}
+
+.vault-perspective-banner--inpatient .vault-perspective-banner__tag {
+  background: #8b5cf6;
+  color: #ffffff;
+}
+
+.vault-perspective-banner__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  margin-bottom: 0.6rem;
+}
+
+.vault-perspective-banner__title {
+  margin: 0 0 0.4rem 0 !important;
+  font-size: 1.35rem !important;
+  font-weight: 800 !important;
+  color: var(--vault-text) !important;
+  line-height: 1.35 !important;
+  border: none !important;
+  padding: 0 !important;
+}
+
+.vault-perspective-banner__desc {
+  margin: 0 !important;
+  font-size: 0.9rem !important;
+  color: var(--vault-muted) !important;
+  line-height: 1.55 !important;
+}
+
+/* Editorial Medical Callouts */
+.vault-callout {
+  border-left: 4px solid var(--vault-border);
+  border-top: 1px solid var(--vault-border);
+  border-right: 1px solid var(--vault-border);
+  border-bottom: 1px solid var(--vault-border);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  margin: 1.5rem 0;
+  background: var(--vault-surface);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+  position: relative;
+}
+
+.vault-callout__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.vault-callout__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 2.5px 8px;
+  border-radius: 4px;
+}
+
+.vault-callout__title {
+  font-size: 0.94rem;
+  font-weight: 700;
+  color: var(--vault-text);
+}
+
+.vault-callout__body {
+  font-size: 0.94rem;
+  line-height: 1.65;
+  color: var(--vault-text);
+}
+
+/* Callout Theme Variants */
+.vault-callout--trial {
+  border-left-color: #ec4899;
+  border-color: rgba(236, 72, 153, 0.22);
+  background: rgba(236, 72, 153, 0.04);
+}
+.vault-callout--trial .vault-callout__badge {
+  background: #ec4899;
+  color: #ffffff;
+}
+
+.vault-callout--warning {
+  border-left-color: #f59e0b;
+  border-color: rgba(245, 158, 11, 0.25);
+  background: rgba(245, 158, 11, 0.05);
+}
+.vault-callout--warning .vault-callout__badge {
+  background: #f59e0b;
+  color: #ffffff;
+}
+
+.vault-callout--danger {
+  border-left-color: #ef4444;
+  border-color: rgba(239, 68, 68, 0.25);
+  background: rgba(239, 68, 68, 0.05);
+}
+.vault-callout--danger .vault-callout__badge {
+  background: #ef4444;
+  color: #ffffff;
+}
+
+.vault-callout--pearl {
+  border-left-color: #8b5cf6;
+  border-color: rgba(139, 92, 246, 0.25);
+  background: rgba(139, 92, 246, 0.05);
+}
+.vault-callout--pearl .vault-callout__badge {
+  background: #8b5cf6;
+  color: #ffffff;
+}
+
+.vault-callout--dosing {
+  border-left-color: #06b6d4;
+  border-color: rgba(6, 182, 212, 0.25);
+  background: rgba(6, 182, 212, 0.05);
+}
+.vault-callout--dosing .vault-callout__badge {
+  background: #06b6d4;
+  color: #ffffff;
+}
+
+.vault-callout--note {
+  border-left-color: #0284c7;
+  border-color: rgba(2, 132, 199, 0.25);
+  background: rgba(2, 132, 199, 0.05);
+}
+.vault-callout--note .vault-callout__badge {
+  background: #0284c7;
+  color: #ffffff;
+}
+
+.vault-callout--tip {
+  border-left-color: #10b981;
+  border-color: rgba(16, 185, 129, 0.25);
+  background: rgba(16, 185, 129, 0.05);
+}
+.vault-callout--tip .vault-callout__badge {
+  background: #10b981;
+  color: #ffffff;
+}
+
+.vault-callout--teachback {
+  border-left-color: #3b82f6;
+  border-color: rgba(59, 130, 246, 0.25);
+  background: rgba(59, 130, 246, 0.05);
+}
+.vault-callout--teachback .vault-callout__badge {
+  background: #3b82f6;
+  color: #ffffff;
+}
+
+/* Timeline & ASCII Diagram Card */
+.vault-timeline-card {
+  border: 1px solid var(--vault-border);
+  border-radius: 10px;
+  background: var(--vault-bg);
+  margin: 1.5rem 0;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.vault-timeline-card__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: var(--vault-surface);
+  border-bottom: 1px solid var(--vault-border);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--vault-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.vault-timeline-code {
+  margin: 0 !important;
+  padding: 1rem 1.25rem !important;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace !important;
+  font-size: 0.88rem !important;
+  line-height: 1.6 !important;
+  color: var(--vault-text) !important;
+  background: transparent !important;
+  overflow-x: auto !important;
+  white-space: pre !important;
+}
+
+/* Semantic Lists & Typography */
+.vault-list {
+  padding-left: 1.5rem;
+  margin: 0.85rem 0 1.25rem 0;
+}
+
+.vault-list li {
+  margin-bottom: 0.5rem;
+  line-height: 1.65;
+  color: var(--vault-text);
+}
+
+.vault-list--ordered {
+  list-style-type: decimal;
+}
+
+.vault-list--unordered {
+  list-style-type: disc;
+}
+
+.vault-math-inline {
+  font-family: inherit;
+  font-weight: 700;
+  color: var(--vault-primary);
+  padding: 0 2px;
+}
+
+.vault-ref-pill {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--vault-primary);
+  background: rgba(2, 132, 199, 0.08);
+  border-radius: 4px;
+  padding: 0 4px;
+  margin: 0 2px;
+  vertical-align: baseline;
+  cursor: default;
+}
+
+.vault-divider {
+  border: none;
+  border-top: 1px solid var(--vault-border);
+  margin: 2rem 0;
+  opacity: 0.6;
+}
+
+/* TOC Section Headers */
+.vault-toc-section-header {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 8px 10px 4px 10px;
+  margin-top: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.15s ease;
+}
+
+.vault-toc-section--doctor {
+  color: #0284c7;
+  border-bottom: 1.5px solid rgba(2, 132, 199, 0.2);
+}
+
+.vault-toc-section--patient {
+  color: #10b981;
+  border-bottom: 1.5px solid rgba(16, 185, 129, 0.2);
+}
+
+.vault-toc-section--inpatient {
+  color: #8b5cf6;
+  border-bottom: 1.5px solid rgba(139, 92, 246, 0.2);
+}
+
+.vault-toc-section-header:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+/* Highlight TOC links based on active perspective */
+.vault-toc-sidebar.perspective-active-doctor .vault-toc-link[data-perspective="patient"],
+.vault-toc-sidebar.perspective-active-doctor .vault-toc-link[data-perspective="inpatient"] {
+  opacity: 0.45;
+}
+
+.vault-toc-sidebar.perspective-active-patient .vault-toc-link[data-perspective="doctor"],
+.vault-toc-sidebar.perspective-active-patient .vault-toc-link[data-perspective="inpatient"] {
+  opacity: 0.45;
+}
+
+.vault-toc-sidebar.perspective-active-patient .vault-toc-link[data-perspective="patient"] {
+  font-weight: 700;
+  color: #059669;
+}
+
+/* Patient Leaflet Specific Components */
+.vault-patient-leaflet-banner {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(6, 182, 212, 0.05) 100%);
+  border: 1.5px solid rgba(16, 185, 129, 0.3);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.vault-patient-leaflet-banner__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.vault-patient-leaflet-badge {
+  background: #10b981;
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.vault-patient-leaflet-date {
+  font-size: 0.8rem;
+  color: var(--vault-muted);
+  font-weight: 600;
+}
+
+.vault-patient-leaflet-title {
+  margin: 0 0 0.35rem 0 !important;
+  font-size: 1.25rem !important;
+  font-weight: 800 !important;
+  color: var(--vault-text) !important;
+}
+
+.vault-patient-leaflet-desc {
+  margin: 0 !important;
+  font-size: 0.88rem !important;
+  color: var(--vault-muted) !important;
+  line-height: 1.5 !important;
+}
+
+.vault-patient-leaflet-footer {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 2px dashed rgba(16, 185, 129, 0.3);
+}
+
+.vault-patient-leaflet-signature-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.vault-patient-sign-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.vault-sign-title {
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--vault-text);
+}
+
+.vault-sign-note {
+  font-size: 0.75rem;
+  color: var(--vault-muted);
+  font-style: italic;
+  margin-top: 2px;
+}
+
+.vault-sign-space {
+  height: 60px;
+}
+
+.vault-sign-dotline {
+  font-size: 0.75rem;
+  color: var(--vault-muted);
+  border-top: 1px dotted var(--vault-border);
+  padding-top: 4px;
+  min-width: 180px;
+}
+
+.vault-patient-leaflet-emergency-alert {
+  background: rgba(239, 68, 68, 0.08);
+  border: 1.5px solid rgba(239, 68, 68, 0.3);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: #b91c1c;
+}
+
 /* ==========================================================================
    6. Outpatient Print Leaflet Format (@media print)
    ========================================================================== */
 @media print {
-  /* Hide all UI Chrome */
+  /* Page Setup for A4 Leaflet */
+  @page {
+    size: A4 portrait;
+    margin: 15mm 15mm 15mm 15mm;
+  }
+
+  /* Hide entire website chrome & background */
+  body > *:not(#vault-drawer) {
+    display: none !important;
+  }
+
+  /* Keep #vault-drawer as the clean printable root container */
+  #vault-drawer,
+  #vault-drawer.vault-modal-overlay,
+  .vault-drawer-panel,
+  .vault-modal-dialog {
+    display: block !important;
+    position: static !important;
+    background: #ffffff !important;
+    color: #111827 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  .vault-modal-body,
+  .vault-drawer-body,
+  .vault-article-content {
+    background: #ffffff !important;
+    color: #111827 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: visible !important;
+  }
+
+  /* Hide all UI Chrome and Doctor / Inpatient Content */
   .vault-navbar,
   .vault-reader-toolbar,
   .vault-path-bar,
@@ -1699,39 +2178,89 @@
   .vault-pathway-container,
   .vault-perspective-control-bar,
   .vault-drawer-header,
-  .vault-drawer-overlay,
   .vault-modal-header,
-  .vault-modal-overlay,
-  #theme-toggle,
+  .vault-perspective-banner--doctor,
+  .vault-perspective-banner--inpatient,
   .perspective-doctor-block,
-  .perspective-inpatient-block {
+  .perspective-inpatient-block,
+  #theme-toggle,
+  #vault-load-more,
+  .vault-modal-ctrl-btn {
     display: none !important;
   }
 
-  body, #vault-drawer, .vault-drawer-panel, .vault-modal-dialog, .vault-article-content {
-    background: #ffffff !important;
-    color: #111827 !important;
-    position: static !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    border: none !important;
-    box-shadow: none !important;
-    overflow: visible !important;
-  }
-
+  /* Patient Leaflet is printed cleanly on A4 */
   .perspective-patient-block {
     display: block !important;
-    border-left: none !important;
-    padding-left: 0 !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: transparent !important;
+  }
+
+  .vault-patient-leaflet-banner {
+    border: 2px solid #059669 !important;
+    background: #f0fdf4 !important;
+    padding: 14px 18px !important;
+    margin-bottom: 20px !important;
+    page-break-inside: avoid;
+  }
+
+  .vault-patient-leaflet-badge {
+    background: #059669 !important;
+    color: #ffffff !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .vault-patient-leaflet-title {
+    color: #065f46 !important;
+    font-size: 16pt !important;
   }
 
   .vault-article-content h1,
   .vault-article-content h2,
-  .vault-article-content h3 {
-    color: #000000 !important;
+  .vault-article-content h3,
+  .vault-article-content h4 {
+    color: #111827 !important;
     page-break-after: avoid;
+  }
+
+  .vault-callout {
+    border: 1.5px solid #333 !important;
+    background: #f9fafb !important;
+    color: #000000 !important;
+    page-break-inside: avoid;
+    box-shadow: none !important;
+    margin: 12px 0 !important;
+  }
+
+  .vault-callout--warning,
+  .vault-callout--danger {
+    border-left: 5px solid #dc2626 !important;
+  }
+
+  .vault-callout__badge {
+    border: 1px solid #333 !important;
+    color: #000000 !important;
+    background: #e5e7eb !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .vault-timeline-card {
+    border: 1px solid #4b5563 !important;
+    page-break-inside: avoid;
+  }
+
+  .vault-timeline-card__header {
+    background: #f3f4f6 !important;
+    color: #111827 !important;
+  }
+
+  .vault-timeline-code {
+    font-size: 9.5pt !important;
+    color: #000000 !important;
   }
 
   .vault-data-table {
@@ -1743,15 +2272,21 @@
   .vault-data-table th,
   .vault-data-table td {
     border: 1px solid #666 !important;
-    color: #000 !important;
-    font-size: 11pt !important;
+    color: #000000 !important;
+    font-size: 10pt !important;
     padding: 6px 8px !important;
   }
 
-  .dsp-callout {
-    border: 1.5px solid #444 !important;
-    background: #f8fafc !important;
-    color: #000 !important;
+  .vault-patient-leaflet-footer {
+    border-top: 2px solid #059669 !important;
+    page-break-inside: avoid;
+    margin-top: 24px !important;
+  }
+
+  .vault-patient-leaflet-emergency-alert {
+    border: 2px solid #dc2626 !important;
+    background: #fef2f2 !important;
+    color: #991b1b !important;
     page-break-inside: avoid;
   }
 }

@@ -179,54 +179,204 @@ export function renderPathwayRibbon(currentArticle: VaultArticle): string {
 }
 
 /**
+ * Format Medical Callouts into professional editorial cards
+ */
+function formatMedicalCallouts(text: string): string {
+  const calloutRegex = /(?:^|\n)> \[!([A-Z]+)\][ \t]*(?:\(([^)\n]+)\)|([^\n]*))?\n((?:[ \t]*>.*(?:\n|$))*)/g;
+
+  const typeConfig: Record<string, { label: string; icon: string; themeClass: string }> = {
+    TRIAL: { label: 'CHỨNG CỨ LÂM SÀNG / EBM', icon: 'fa-solid fa-flask-vial', themeClass: 'vault-callout--trial' },
+    WARNING: { label: 'CẢNH BÁO LÂM SÀNG (RED FLAGS)', icon: 'fa-solid fa-triangle-exclamation', themeClass: 'vault-callout--warning' },
+    CAUTION: { label: 'CHỐNG CHỈ ĐỊNH & NGUY CƠ CAO', icon: 'fa-solid fa-circle-exclamation', themeClass: 'vault-callout--danger' },
+    DANGER: { label: 'NGUY CƠ NGUY KỊCH', icon: 'fa-solid fa-radiation', themeClass: 'vault-callout--danger' },
+    PEARL: { label: 'ĐIỂM NGỌC LÂM SÀNG (CLINICAL PEARL)', icon: 'fa-solid fa-gem', themeClass: 'vault-callout--pearl' },
+    DOSING: { label: 'CHỈ ĐỊNH & HIỆU CHỈNH LIỀU', icon: 'fa-solid fa-pills', themeClass: 'vault-callout--dosing' },
+    NOTE: { label: 'GHI CHÚ THỰC HÀNH', icon: 'fa-solid fa-circle-info', themeClass: 'vault-callout--note' },
+    TIP: { label: 'LỜI KHUYÊN BÁC SĨ', icon: 'fa-solid fa-lightbulb', themeClass: 'vault-callout--tip' },
+    TEACHBACK: { label: 'KỸ THUẬT TEACH-BACK', icon: 'fa-solid fa-comments', themeClass: 'vault-callout--teachback' }
+  };
+
+  return text.replace(calloutRegex, (match, type, titleParen, titlePlain, bodyLines) => {
+    const config = typeConfig[type] || {
+      label: type,
+      icon: 'fa-solid fa-circle-info',
+      themeClass: 'vault-callout--note'
+    };
+
+    const cleanTitle = (titleParen || titlePlain || '').trim().replace(/^[:\-\s]+/, '');
+
+    const cleanBodyLines = (bodyLines as string)
+      .split('\n')
+      .map(line => line.replace(/^[ \t]*>[ \t]?/, '').trim())
+      .filter(line => line.length > 0);
+
+    const bodyHtml = cleanBodyLines.map(line => {
+      let l = line.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+      l = l.replace(/\*(.*?)\*/g, '<em>$1</em>');
+      return l;
+    }).join('<br/>');
+
+    return `\n\n<div class="vault-callout ${config.themeClass}">
+      <div class="vault-callout__header">
+        <span class="vault-callout__badge"><i class="${config.icon}"></i> ${config.label}</span>
+        ${cleanTitle ? `<span class="vault-callout__title">${cleanTitle}</span>` : ''}
+      </div>
+      <div class="vault-callout__body">${bodyHtml}</div>
+    </div>\n\n`;
+  });
+}
+
+/**
+ * Format Markdown Lists (Ordered and Unordered)
+ */
+function formatMarkdownLists(text: string): string {
+  // Ordered lists: 1. 2. 3.
+  text = text.replace(/(?:^|\n)((?:[ \t]*\d+\.\s+[^\n]+(?:\n|$))+)/g, (match, block) => {
+    const items = block.trim().split('\n').map((line: string) => {
+      const itemText = line.replace(/^[ \t]*\d+\.\s+/, '').trim();
+      return `<li>${itemText}</li>`;
+    }).join('');
+    return `\n\n<ol class="vault-list vault-list--ordered">${items}</ol>\n\n`;
+  });
+
+  // Unordered lists: - or *
+  text = text.replace(/(?:^|\n)((?:[ \t]*[-*]\s+[^\n]+(?:\n|$))+)/g, (match, block) => {
+    const items = block.trim().split('\n').map((line: string) => {
+      const itemText = line.replace(/^[ \t]*[-*]\s+/, '').trim();
+      return `<li>${itemText}</li>`;
+    }).join('');
+    return `\n\n<ul class="vault-list vault-list--unordered">${items}</ul>\n\n`;
+  });
+
+  return text;
+}
+
+/**
  * Parse Markdown & Generate Dynamic TOC
  */
-export function processMarkdownWithToc(rawMarkdown: string): { htmlContent: string; tocItems: TocItem[] } {
+export function processMarkdownWithToc(rawMarkdown: string, article?: VaultArticle): { htmlContent: string; tocItems: TocItem[] } {
   const tocItems: TocItem[] = [];
   let headingCounter = 0;
 
-  // Clean frontmatter
+  // 1. Clean frontmatter
   let clean = rawMarkdown.replace(/^---[\s\S]*?---\n*/, '');
 
-  // Extract and replace headings with IDs
-  clean = clean.replace(/^(#{2,3})\s+(.+)$/gm, (match, hashes, titleText) => {
+  // 2. Format Math symbols
+  clean = clean.replace(/\$([^$\n]+)\$/g, (match, formula) => {
+    let f = formula
+      .replace(/\\le/g, '≤')
+      .replace(/\\ge/g, '≥')
+      .replace(/\\pm/g, '±')
+      .replace(/\\approx/g, '≈')
+      .replace(/\\times/g, '×')
+      .replace(/\\text\{\s*([^}]+)\s*\}/g, ' $1 ')
+      .replace(/\\mu/g, 'μ')
+      .replace(/\\Delta/g, 'Δ')
+      .trim();
+    return `<span class="vault-math-inline">${f}</span>`;
+  });
+
+  // 3. Format Code Blocks (Timelines & Clinical Algorithms)
+  clean = clean.replace(/```(?:[a-zA-Z0-9_-]+)?\n([\s\S]*?)```/g, (match, code) => {
+    return `\n\n<div class="vault-timeline-card">
+      <div class="vault-timeline-card__header">
+        <i class="fa-solid fa-code-branch"></i>
+        <span>Sơ đồ Động học & Diễn tiến Lâm sàng</span>
+      </div>
+      <pre class="vault-timeline-code"><code>${escapeHtml(code.trimEnd())}</code></pre>
+    </div>\n\n`;
+  });
+
+  // 4. Format Medical Callouts
+  clean = formatMedicalCallouts(clean);
+
+  // 5. Pre-calculate perspective offsets in text
+  const docMatch = clean.match(/^# .*(?:GÓC BÁC SĨ|Góc Bác sĩ)/im);
+  const patMatch = clean.match(/^# .*(?:GÓC NGƯỜI BỆNH|Góc Người bệnh)/im);
+  const inpatMatch = clean.match(/^# .*(?:NỘI TRÚ|Nội trú|BUỒNG BỆNH)/im);
+
+  const docOffset = docMatch ? docMatch.index! : -1;
+  const patOffset = patMatch ? patMatch.index! : -1;
+  const inpatOffset = inpatMatch ? inpatMatch.index! : -1;
+
+  // 6. Format H1 Banners
+  clean = clean.replace(/^# (.*$)/gim, (match, titleText) => {
+    const t = titleText.trim();
+    if (t.includes('GÓC BÁC SĨ') || t.includes('Góc Bác sĩ')) {
+      return `<div class="vault-perspective-banner vault-perspective-banner--doctor">
+        <div class="vault-perspective-banner__tag"><i class="fa-solid fa-stethoscope"></i> GÓC NHÌN CHUYÊN MÔN</div>
+        <h1 class="vault-perspective-banner__title">${t}</h1>
+        <p class="vault-perspective-banner__desc">Dành cho Thầy thuốc: Tiêu chuẩn Chẩn đoán, Phân tầng Nguy cơ, Y học Chứng cứ & Cạm bẫy Lâm sàng</p>
+      </div>`;
+    }
+    if (t.includes('GÓC NGƯỜI BỆNH') || t.includes('Góc Người bệnh')) {
+      return `<div class="vault-perspective-banner vault-perspective-banner--patient">
+        <div class="vault-perspective-banner__tag"><i class="fa-solid fa-hospital-user"></i> TƯ VẤN & DẶN DÒ BỆNH NHÂN</div>
+        <h1 class="vault-perspective-banner__title">${t}</h1>
+        <p class="vault-perspective-banner__desc">Bản hướng dẫn dành cho Người bệnh & Thân nhân: Dấu hiệu Cảnh báo Đỏ, Lối sống, Dinh dưỡng & Tự theo dõi An toàn tại nhà</p>
+      </div>`;
+    }
+    if (t.includes('NỘI TRÚ') || t.includes('Nội trú') || t.includes('BUỒNG BỆNH')) {
+      return `<div class="vault-perspective-banner vault-perspective-banner--inpatient">
+        <div class="vault-perspective-banner__tag"><i class="fa-solid fa-bed-pulse"></i> PHÁC ĐỒ NỘI TRÚ</div>
+        <h1 class="vault-perspective-banner__title">${t}</h1>
+        <p class="vault-perspective-banner__desc">Kế hoạch Điều trị Nội trú, Hồi sức Truyền dịch & Tiêu chuẩn Xuất viện</p>
+      </div>`;
+    }
+    return `<h1 class="vault-h1">${t}</h1>`;
+  });
+
+  // 7. Extract and replace headings with IDs and Perspective tagging
+  clean = clean.replace(/^(#{2,3})\s+(.+)$/gm, (match, hashes, titleText, offset) => {
     headingCounter++;
     const level = hashes.length;
-    const cleanText = titleText.replace(/[*_]/g, '').replace(/\x60/g, '').trim();
+    const cleanText = titleText.replace(/[*_]/g, '').replace(/`/g, '').trim();
     const headingId = `vault-heading-${headingCounter}`;
+
+    let perspective: 'doctor' | 'patient' | 'inpatient' | 'all' = 'all';
+    if (inpatOffset !== -1 && offset >= inpatOffset) {
+      perspective = 'inpatient';
+    } else if (patOffset !== -1 && offset >= patOffset) {
+      perspective = 'patient';
+    } else if (docOffset !== -1 && offset >= docOffset) {
+      perspective = 'doctor';
+    }
 
     tocItems.push({
       id: headingId,
       text: cleanText,
-      level: level
+      level: level,
+      perspective: perspective
     });
 
-    return `<h${level} id="${headingId}" class="vault-h${level} vault-toc-target">${titleText}</h${level}>`;
+    return `<h${level} id="${headingId}" class="vault-h${level} vault-toc-target" data-perspective="${perspective}">${titleText}</h${level}>`;
   });
 
-  // Format H1
-  clean = clean.replace(/^# (.*$)/gim, '<h1 class="vault-h1">$1</h1>');
   clean = clean.replace(/^#### (.*$)/gim, '<h4 class="vault-h4">$1</h4>');
 
-  // Format Bold & Italic
+  // 8. Format Bold & Italic
   clean = clean.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
   clean = clean.replace(/\*(.*?)\*/g, '<em>$1</em>');
 
-  // Format Markdown Tables
+  // 9. Format Horizontal Rules
+  clean = clean.replace(/^---$/gm, '<hr class="vault-divider" />');
+
+  // 10. Format Markdown Lists
+  clean = formatMarkdownLists(clean);
+
+  // 11. Format Markdown Tables
   clean = formatMarkdownTables(clean);
 
-  // Determine base path for attachments (SPA root vs Standalone HTML)
+  // 12. Attachments & Images
   const isSpaMode = !window.location.pathname.includes('/src/content/knowledge-vault/');
   const attachmentBase = isSpaMode ? './knowledge-vault/_resources/attachments/' : '../../../knowledge-vault/_resources/attachments/';
 
-  // Format Obsidian Image Embeds ![[image.png]]
   clean = clean.replace(/!\[\[(.*?)\]\]/g, (match, fileName) => {
     const trimmed = fileName.trim();
     const encoded = encodeURI(trimmed);
     return `<div class="vault-img-card" style="text-align:center; margin:1.5rem 0;"><img src="${attachmentBase}${encoded}" alt="${escapeHtml(trimmed)}" style="max-width:100%; height:auto; border-radius:8px; border:1px solid var(--vault-border); box-shadow:0 4px 12px rgba(0,0,0,0.06);" loading="lazy" /><div style="font-size:11px; color:var(--vault-muted); margin-top:6px; font-style:italic;"><i class="fa-regular fa-image"></i> ${escapeHtml(trimmed)}</div></div>`;
   });
 
-  // Format Standard Markdown Images ![alt](src)
   clean = clean.replace(/!\[(.*?)\]\((.*?)\)/g, (match, altText, src) => {
     const trimmedSrc = src.trim();
     const resolvedSrc = trimmedSrc.startsWith('http') || trimmedSrc.startsWith('/') 
@@ -235,52 +385,96 @@ export function processMarkdownWithToc(rawMarkdown: string): { htmlContent: stri
     return `<div class="vault-img-card" style="text-align:center; margin:1.5rem 0;"><img src="${resolvedSrc}" alt="${escapeHtml(altText)}" style="max-width:100%; height:auto; border-radius:8px; border:1px solid var(--vault-border); box-shadow:0 4px 12px rgba(0,0,0,0.06);" loading="lazy" />${altText ? `<div style="font-size:11px; color:var(--vault-muted); margin-top:6px; font-style:italic;">${escapeHtml(altText)}</div>` : ''}</div>`;
   });
 
-  // Obsidian Wikilinks [[Target|Label]] or [[Target]]
+  // 13. Obsidian Wikilinks
   clean = clean.replace(/\[\[([^\]|\n]+)(?:\|([^\]\n]+))?\]\]/g, (match, target, label) => {
     const displayLabel = (label || target).trim();
     const cleanTarget = target.trim();
     return `<button type="button" class="vault-wikilink-btn" data-wikilink="${escapeHtml(cleanTarget)}" title="Nhảy đến bài viết / ghi chú: ${escapeHtml(displayLabel)}"><i class="fa-solid fa-link" style="font-size:10px; opacity:0.8;"></i> ${escapeHtml(displayLabel)}</button>`;
   });
 
-  // Extended Medical Callouts & Bách khoa Toàn thư Badges
-  clean = clean.replace(/> \[!NOTE\]\s*([\s\S]*?)(?=\n\n|$)/g, '<div class="dsp-callout dsp-callout-note" style="border-left:4px solid #0284c7; background:rgba(2,132,199,0.08); padding:0.75rem 1rem; border-radius:6px; margin:1rem 0;"><i class="fa-solid fa-circle-info" style="color:#0284c7;"></i> <strong>Ghi chú:</strong> $1</div>');
-  clean = clean.replace(/> \[!TIP\]\s*([\s\S]*?)(?=\n\n|$)/g, '<div class="dsp-callout dsp-callout-tip" style="border-left:4px solid #10b981; background:rgba(16,185,129,0.08); padding:0.75rem 1rem; border-radius:6px; margin:1rem 0;"><i class="fa-solid fa-lightbulb" style="color:#10b981;"></i> <strong>Điểm ngọc lâm sàng (Clinical Pearl):</strong> $1</div>');
-  clean = clean.replace(/> \[!WARNING\]\s*([\s\S]*?)(?=\n\n|$)/g, '<div class="dsp-callout dsp-callout-warning" style="border-left:4px solid #f59e0b; background:rgba(245,158,11,0.08); padding:0.75rem 1rem; border-radius:6px; margin:1rem 0;"><i class="fa-solid fa-triangle-exclamation" style="color:#f59e0b;"></i> <strong>Cảnh báo (Red Flags):</strong> $1</div>');
-  clean = clean.replace(/> \[!CAUTION\]\s*([\s\S]*?)(?=\n\n|$)/g, '<div class="dsp-callout dsp-callout-danger" style="border-left:4px solid #ef4444; background:rgba(239,68,68,0.08); padding:0.75rem 1rem; border-radius:6px; margin:1rem 0;"><i class="fa-solid fa-circle-exclamation" style="color:#ef4444;"></i> <strong>Chống chỉ định & Nguy hiểm:</strong> $1</div>');
-  clean = clean.replace(/> \[!PEARL\]\s*([\s\S]*?)(?=\n\n|$)/g, '<div class="dsp-callout" style="border-left:4px solid #8b5cf6; background:rgba(139,92,246,0.08); padding:0.75rem 1rem; border-radius:6px; margin:1rem 0;"><i class="fa-solid fa-gem" style="color:#8b5cf6;"></i> <strong>Kinh nghiệm thực chiến:</strong> $1</div>');
-  clean = clean.replace(/> \[!DOSING\]\s*([\s\S]*?)(?=\n\n|$)/g, '<div class="dsp-callout" style="border-left:4px solid #06b6d4; background:rgba(6,182,212,0.08); padding:0.75rem 1rem; border-radius:6px; margin:1rem 0;"><i class="fa-solid fa-pills" style="color:#06b6d4;"></i> <strong>Liều & Chỉnh liều:</strong> $1</div>');
-  clean = clean.replace(/> \[!TRIAL\]\s*([\s\S]*?)(?=\n\n|$)/g, '<div class="dsp-callout" style="border-left:4px solid #ec4899; background:rgba(236,72,153,0.08); padding:0.75rem 1rem; border-radius:6px; margin:1rem 0;"><i class="fa-solid fa-flask-vial" style="color:#ec4899;"></i> <strong>Chứng cứ Landmark Trial / EBM:</strong> $1</div>');
+  // 14. Format Citations [28, 421]
+  clean = clean.replace(/(?<=\s)\[(\d+(?:,\s*\d+)*)\]/g, '<span class="vault-ref-pill" title="Tài liệu tham khảo số $1">[$1]</span>');
 
-  // Format Paragraphs
+  // 15. Format Paragraphs
   clean = clean.split('\n\n').map(p => {
-    if (p.startsWith('<h') || p.startsWith('<div') || p.startsWith('<table') || p.startsWith('<ul') || p.startsWith('<ol')) {
-      return p;
+    const trimmed = p.trim();
+    if (!trimmed) return '';
+    if (trimmed.startsWith('<h') || trimmed.startsWith('<div') || trimmed.startsWith('<table') || 
+        trimmed.startsWith('<ul') || trimmed.startsWith('<ol') || trimmed.startsWith('<hr') || 
+        trimmed.startsWith('<pre')) {
+      return trimmed;
     }
-    return `<p>${p.replace(/\n/g, '<br/>')}</p>`;
-  }).join('\n');
+    return `<p>${trimmed.replace(/\n/g, '<br/>')}</p>`;
+  }).filter(Boolean).join('\n\n');
 
-  // Wrap Dual/Triplet-Perspective sections if present
-  const hasDoctorSection = clean.includes('GÓC BÁC SĨ') || clean.includes('Góc Bác sĩ');
-  const hasPatientSection = clean.includes('GÓC NGƯỜI BỆNH') || clean.includes('Góc Người bệnh');
-  const hasInpatientSection = clean.includes('NỘI TRÚ') || clean.includes('Nội trú') || clean.includes('BUỒNG BỆNH');
+  // 16. Wrap Dual/Triplet-Perspective sections as MUTUALLY EXCLUSIVE SIBLINGS (Index-based slicing)
+  const docBannerMatch = clean.match(/<div class="vault-perspective-banner vault-perspective-banner--doctor"/i);
+  const patBannerMatch = clean.match(/<div class="vault-perspective-banner vault-perspective-banner--patient"/i);
+  const inpatBannerMatch = clean.match(/<div class="vault-perspective-banner vault-perspective-banner--inpatient"/i);
 
-  if (hasDoctorSection && hasPatientSection && hasInpatientSection) {
-    const docRegex = /(<h1[^>]*>[\s\S]*?(?:GÓC BÁC SĨ|Góc Bác sĩ)[\s\S]*?)(?=<h1[^>]*>[\s\S]*?(?:GÓC NGƯỜI BỆNH|Góc Người bệnh))/i;
-    const patRegex = /(<h1[^>]*>[\s\S]*?(?:GÓC NGƯỜI BỆNH|Góc Người bệnh)[\s\S]*?)(?=<h1[^>]*>[\s\S]*?(?:NỘI TRÚ|Nội trú|BUỒNG BỆNH))/i;
-    const inpatRegex = /(<h1[^>]*>[\s\S]*?(?:NỘI TRÚ|Nội trú|BUỒNG BỆNH)[\s\S]*$)/i;
+  if (docBannerMatch && patBannerMatch) {
+    const docStart = docBannerMatch.index!;
+    const patStart = patBannerMatch.index!;
+    const inpatStart = inpatBannerMatch ? inpatBannerMatch.index! : -1;
 
-    if (docRegex.test(clean) && patRegex.test(clean) && inpatRegex.test(clean)) {
-      clean = clean.replace(docRegex, '<div id="vault-perspective-doctor" class="vault-perspective-block perspective-doctor-block">$1</div>\n');
-      clean = clean.replace(patRegex, '<div id="vault-perspective-patient" class="vault-perspective-block perspective-patient-block">$1</div>\n');
-      clean = clean.replace(inpatRegex, '<div id="vault-perspective-inpatient" class="vault-perspective-block perspective-inpatient-block">$1</div>\n');
-    }
-  } else if (hasDoctorSection && hasPatientSection) {
-    const docRegex = /(<h1[^>]*>[\s\S]*?(?:GÓC BÁC SĨ|Góc Bác sĩ)[\s\S]*?)(?=<h1[^>]*>[\s\S]*?(?:GÓC NGƯỜI BỆNH|Góc Người bệnh))/i;
-    const patRegex = /(<h1[^>]*>[\s\S]*?(?:GÓC NGƯỜI BỆNH|Góc Người bệnh)[\s\S]*$)/i;
+    const preContent = clean.slice(0, docStart);
+    let docContent = '';
+    let patContent = '';
+    let inpatContent = '';
 
-    if (docRegex.test(clean) && patRegex.test(clean)) {
-      clean = clean.replace(docRegex, '<div id="vault-perspective-doctor" class="vault-perspective-block perspective-doctor-block">$1</div>\n');
-      clean = clean.replace(patRegex, '<div id="vault-perspective-patient" class="vault-perspective-block perspective-patient-block">$1</div>\n');
+    const articleTitle = article?.title || 'Tư vấn Sốt xuất huyết Dengue';
+    const currentDate = new Date().toLocaleDateString('vi-VN');
+
+    // Patient Leaflet Header (for Print and Outpatient counseling)
+    const patientLeafletHeader = `
+      <div class="vault-patient-leaflet-banner">
+        <div class="vault-patient-leaflet-banner__top">
+          <span class="vault-patient-leaflet-badge"><i class="fa-solid fa-heart-pulse"></i> CLINIPORTAL • TỜ RƠI DẶN DÒ Y KHOA</span>
+          <span class="vault-patient-leaflet-date">Ngày dặn: ${currentDate}</span>
+        </div>
+        <h2 class="vault-patient-leaflet-title">${escapeHtml(articleTitle)}</h2>
+        <p class="vault-patient-leaflet-desc">Tài liệu dặn dò tự theo dõi, chế độ dinh dưỡng, dùng thuốc an toàn và dấu hiệu cảnh báo đỏ cần tái khám ngay</p>
+      </div>
+    `;
+
+    // Patient Leaflet Footer with Signatures & Emergency Reminder
+    const patientLeafletFooter = `
+      <div class="vault-patient-leaflet-footer">
+        <div class="vault-patient-leaflet-signature-grid">
+          <div class="vault-patient-sign-box">
+            <span class="vault-sign-title">NGƯỜI BỆNH / THÂN NHÂN</span>
+            <span class="vault-sign-note">(Đã hiểu rõ lời dặn và cam kết theo dõi)</span>
+            <div class="vault-sign-space"></div>
+            <span class="vault-sign-dotline">Ký và ghi rõ họ tên</span>
+          </div>
+          <div class="vault-patient-sign-box">
+            <span class="vault-sign-title">BÁC SĨ ĐIỀU TRỊ / TƯ VẤN</span>
+            <span class="vault-sign-note">(Ký tên & Đóng dấu phòng khám)</span>
+            <div class="vault-sign-space"></div>
+            <span class="vault-sign-dotline">Ký và ghi rõ họ tên</span>
+          </div>
+        </div>
+        <div class="vault-patient-leaflet-emergency-alert">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          <strong>LƯU Ý CẤP CỨU KHẨN CẤP:</strong> Khi xuất hiện bất kỳ dấu hiệu nguy hiểm (Mệt lả, li bì, đau bụng dữ dội, nôn ói nhiều, chảy máu chân răng/chảy máu mũi, nôn ra máu, tay chân lạnh ẩm), phải lập tức đưa người bệnh đến ngay cơ sở y tế gần nhất, không được chần chừ!
+        </div>
+      </div>
+    `;
+
+    if (inpatStart > patStart) {
+      docContent = clean.slice(docStart, patStart);
+      patContent = patientLeafletHeader + clean.slice(patStart, inpatStart) + patientLeafletFooter;
+      inpatContent = clean.slice(inpatStart);
+      clean = `${preContent}
+        <div id="vault-perspective-doctor" class="vault-perspective-block perspective-doctor-block">${docContent}</div>
+        <div id="vault-perspective-patient" class="vault-perspective-block perspective-patient-block">${patContent}</div>
+        <div id="vault-perspective-inpatient" class="vault-perspective-block perspective-inpatient-block">${inpatContent}</div>`;
+    } else {
+      docContent = clean.slice(docStart, patStart);
+      patContent = patientLeafletHeader + clean.slice(patStart) + patientLeafletFooter;
+      clean = `${preContent}
+        <div id="vault-perspective-doctor" class="vault-perspective-block perspective-doctor-block">${docContent}</div>
+        <div id="vault-perspective-patient" class="vault-perspective-block perspective-patient-block">${patContent}</div>`;
     }
   }
 
@@ -377,24 +571,79 @@ export function renderEncyclopediaQuickFactsHtml(article: VaultArticle): string 
 }
 
 /**
- * Render Sticky Table of Contents Sidebar HTML
+ * Render Sticky Table of Contents Sidebar HTML with Section Categorization
  */
 export function renderTocHtml(tocItems: TocItem[]): string {
   if (tocItems.length < 2) return '';
+
+  const hasPerspectives = tocItems.some(t => t.perspective && t.perspective !== 'all');
+
+  if (!hasPerspectives) {
+    return `
+      <div class="vault-toc-sidebar">
+        <div class="vault-toc-title"><i class="fa-solid fa-list-ul"></i> Mục lục bài viết</div>
+        <nav class="vault-toc-nav">
+          ${tocItems.map(item => `
+            <a 
+              href="#${item.id}" 
+              class="vault-toc-link vault-toc-level-${item.level}" 
+              data-target="${item.id}"
+            >
+              ${escapeHtml(item.text)}
+            </a>
+          `).join('')}
+        </nav>
+      </div>
+    `;
+  }
+
+  const doctorItems = tocItems.filter(t => t.perspective === 'doctor');
+  const patientItems = tocItems.filter(t => t.perspective === 'patient');
+  const inpatientItems = tocItems.filter(t => t.perspective === 'inpatient');
+  const otherItems = tocItems.filter(t => !t.perspective || t.perspective === 'all');
 
   return `
     <div class="vault-toc-sidebar">
       <div class="vault-toc-title"><i class="fa-solid fa-list-ul"></i> Mục lục bài viết</div>
       <nav class="vault-toc-nav">
-        ${tocItems.map(item => `
-          <a 
-            href="#${item.id}" 
-            class="vault-toc-link vault-toc-level-${item.level}" 
-            data-target="${item.id}"
-          >
+        ${otherItems.map(item => `
+          <a href="#${item.id}" class="vault-toc-link vault-toc-level-${item.level}" data-target="${item.id}">
             ${escapeHtml(item.text)}
           </a>
         `).join('')}
+
+        ${doctorItems.length > 0 ? `
+          <div class="vault-toc-section-header vault-toc-section--doctor" data-perspective-target="doctor" title="Bấm để chuyển sang Góc Bác Sĩ">
+            <i class="fa-solid fa-stethoscope"></i> <span>GÓC BÁC SĨ</span>
+          </div>
+          ${doctorItems.map(item => `
+            <a href="#${item.id}" class="vault-toc-link vault-toc-level-${item.level}" data-target="${item.id}" data-perspective="doctor">
+              ${escapeHtml(item.text)}
+            </a>
+          `).join('')}
+        ` : ''}
+
+        ${patientItems.length > 0 ? `
+          <div class="vault-toc-section-header vault-toc-section--patient" data-perspective-target="patient" title="Bấm để chuyển sang Góc Người Bệnh">
+            <i class="fa-solid fa-hospital-user"></i> <span>GÓC NGƯỜI BỆNH</span>
+          </div>
+          ${patientItems.map(item => `
+            <a href="#${item.id}" class="vault-toc-link vault-toc-level-${item.level}" data-target="${item.id}" data-perspective="patient">
+              ${escapeHtml(item.text)}
+            </a>
+          `).join('')}
+        ` : ''}
+
+        ${inpatientItems.length > 0 ? `
+          <div class="vault-toc-section-header vault-toc-section--inpatient" data-perspective-target="inpatient" title="Bấm để chuyển sang Kế Hoạch Nội Trú">
+            <i class="fa-solid fa-bed-pulse"></i> <span>KẾ HOẠCH NỘI TRÚ</span>
+          </div>
+          ${inpatientItems.map(item => `
+            <a href="#${item.id}" class="vault-toc-link vault-toc-level-${item.level}" data-target="${item.id}" data-perspective="inpatient">
+              ${escapeHtml(item.text)}
+            </a>
+          `).join('')}
+        ` : ''}
       </nav>
     </div>
   `;
@@ -551,7 +800,7 @@ export function attachReaderProEvents(drawerPanel: HTMLElement, onNavigateArticl
     });
   }
 
-  // TOC Links Smooth Scroll
+  // TOC Links Smooth Scroll & Auto-Perspective Switching
   const scrollContainer = drawerPanel.querySelector('.vault-drawer-body') as HTMLElement | null;
   drawerPanel.querySelectorAll('.vault-toc-link').forEach(link => {
     link.addEventListener('click', (e) => {
@@ -561,10 +810,38 @@ export function attachReaderProEvents(drawerPanel: HTMLElement, onNavigateArticl
 
       const targetEl = drawerPanel.querySelector(`#${targetId}`) as HTMLElement | null;
       if (targetEl) {
-        scrollContainer.scrollTo({
-          top: targetEl.offsetTop - 20,
-          behavior: 'smooth'
-        });
+        // Auto-switch perspective if target is inside a hidden block
+        const parentBlock = targetEl.closest('.vault-perspective-block') as HTMLElement | null;
+        if (parentBlock && parentBlock.style.display === 'none') {
+          if (parentBlock.id === 'vault-perspective-patient') {
+            const patTab = drawerPanel.querySelector('.vault-perspective-tab[data-perspective="patient"]') as HTMLElement | null;
+            if (patTab) patTab.click();
+          } else if (parentBlock.id === 'vault-perspective-doctor') {
+            const docTab = drawerPanel.querySelector('.vault-perspective-tab[data-perspective="doctor"]') as HTMLElement | null;
+            if (docTab) docTab.click();
+          } else if (parentBlock.id === 'vault-perspective-inpatient') {
+            const inpatTab = drawerPanel.querySelector('.vault-perspective-tab[data-perspective="inpatient"]') as HTMLElement | null;
+            if (inpatTab) inpatTab.click();
+          }
+        }
+
+        setTimeout(() => {
+          scrollContainer.scrollTo({
+            top: targetEl.offsetTop - 20,
+            behavior: 'smooth'
+          });
+        }, 50);
+      }
+    });
+  });
+
+  // TOC Section Header clicks switch perspective tab
+  drawerPanel.querySelectorAll('.vault-toc-section-header[data-perspective-target]').forEach(header => {
+    header.addEventListener('click', () => {
+      const targetPersp = header.getAttribute('data-perspective-target');
+      if (targetPersp) {
+        const tab = drawerPanel.querySelector(`.vault-perspective-tab[data-perspective="${targetPersp}"]`) as HTMLElement | null;
+        if (tab) tab.click();
       }
     });
   });
@@ -831,28 +1108,41 @@ export function attachReaderProEvents(drawerPanel: HTMLElement, onNavigateArticl
       const doctorBlock = drawerPanel.querySelector('#vault-perspective-doctor') as HTMLElement | null;
       const patientBlock = drawerPanel.querySelector('#vault-perspective-patient') as HTMLElement | null;
       const inpatientBlock = drawerPanel.querySelector('#vault-perspective-inpatient') as HTMLElement | null;
+      const annotationsContainer = drawerPanel.querySelector('.vault-annotations-container') as HTMLElement | null;
+      const tocSidebar = drawerPanel.querySelector('.vault-toc-sidebar') as HTMLElement | null;
+
+      if (tocSidebar) {
+        tocSidebar.classList.remove('perspective-active-doctor', 'perspective-active-patient', 'perspective-active-inpatient');
+        if (perspective && perspective !== 'all') {
+          tocSidebar.classList.add(`perspective-active-${perspective}`);
+        }
+      }
 
       if (perspective === 'all') {
         if (doctorBlock) doctorBlock.style.display = 'block';
         if (patientBlock) patientBlock.style.display = 'block';
         if (inpatientBlock) inpatientBlock.style.display = 'block';
+        if (annotationsContainer) annotationsContainer.style.display = 'block';
       } else if (perspective === 'doctor') {
         if (doctorBlock) doctorBlock.style.display = 'block';
         if (patientBlock) patientBlock.style.display = 'none';
         if (inpatientBlock) inpatientBlock.style.display = 'none';
+        if (annotationsContainer) annotationsContainer.style.display = 'block';
       } else if (perspective === 'patient') {
         if (doctorBlock) doctorBlock.style.display = 'none';
         if (patientBlock) patientBlock.style.display = 'block';
         if (inpatientBlock) inpatientBlock.style.display = 'none';
+        if (annotationsContainer) annotationsContainer.style.display = 'none';
       } else if (perspective === 'inpatient') {
         if (doctorBlock) doctorBlock.style.display = 'none';
         if (patientBlock) patientBlock.style.display = 'none';
         if (inpatientBlock) inpatientBlock.style.display = 'block';
+        if (annotationsContainer) annotationsContainer.style.display = 'none';
       }
     });
   });
 
-  // Print Patient Leaflet Action
+  // Print Patient Leaflet Action (In tờ rơi dặn dò chuẩn cho người bệnh)
   const printLeafletBtn = drawerPanel.querySelector('#btn-print-patient-leaflet');
   if (printLeafletBtn) {
     printLeafletBtn.addEventListener('click', () => {
@@ -860,10 +1150,17 @@ export function attachReaderProEvents(drawerPanel: HTMLElement, onNavigateArticl
       const patientTab = drawerPanel.querySelector('.vault-perspective-tab[data-perspective="patient"]') as HTMLElement | null;
       if (patientTab) patientTab.click();
 
-      // 2. Kích hoạt in ấn
+      // 2. Gắn cờ class chuyên biệt khi in
+      document.body.classList.add('vault-printing-patient-leaflet');
+
+      // 3. Kích hoạt in ấn sau khi layout hoàn tất
       setTimeout(() => {
         window.print();
-      }, 250);
+      }, 300);
+
+      window.addEventListener('afterprint', () => {
+        document.body.classList.remove('vault-printing-patient-leaflet');
+      }, { once: true });
     });
   }
 

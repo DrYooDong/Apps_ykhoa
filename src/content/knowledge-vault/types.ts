@@ -60,6 +60,7 @@ export interface TocItem {
   id: string;
   text: string;
   level: number;
+  perspective?: 'doctor' | 'patient' | 'inpatient' | 'all';
 }
 
 export interface VaultPersonalAnnotation {

@@ -593,7 +593,7 @@ export async function openArticleDrawer(articleIdOrPath: string): Promise<void> 
     const toolbarHtml = renderReaderToolbar(article);
 
     // 3. Process Markdown & Dynamic TOC
-    const { htmlContent, tocItems } = processMarkdownWithToc(rawMarkdown);
+    const { htmlContent, tocItems } = processMarkdownWithToc(rawMarkdown, article);
     const tocHtml = renderTocHtml(tocItems);
 
     // 4. Check for matched interactive flowchart
