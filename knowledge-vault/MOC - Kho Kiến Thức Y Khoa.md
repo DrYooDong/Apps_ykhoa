@@ -50,7 +50,7 @@ updated: "2026-08-11"
 | **09** | 📋 **Tiêu chuẩn chẩn đoán** | `2.3. Kho chẩn đoán` | [[2.3. Kho chẩn đoán/MOC - Kho Chẩn Đoán|MOC Tiêu chuẩn chẩn đoán]] |
 | **10** | 💊 **Phác đồ** | `2.4. Kho phác đồ điều trị` & `Kho cập nhật` | [[2.4. Kho phác đồ điều trị/MOC - Kho Phác Đồ Điều Trị|MOC Phác đồ]] |
 | **11** | 💊 **Dược** | `3.2. Kho dược thư & tương tác thuốc` | [[3.2. Kho dược thư & tương tác thuốc/MOC - Kho Dược Thư|MOC Dược]] |
-| **12** | 🥗 **Tư vấn** | `Kho dinh dưỡng lâm sàng` | [[Kho dinh dưỡng lâm sàng/MOC - Kho Dinh Dưỡng Lâm Sàng|MOC Tư vấn]] |
+| **12** | 🗣️ **Tư vấn** | `2.6. Kho tư vấn` & `Kho dinh dưỡng lâm sàng` | [[2.6. Kho tư vấn/MOC - Kho Tư Vấn|MOC Tư vấn]] |
 | **13** | 💔 **Biến chứng** | `2.5. Kho biến chứng` | [[2.5. Kho biến chứng/MOC - Kho Biến Chứng|MOC Biến chứng]] |
 
 ### 📊 3. Nhóm Hỗ Trợ (3 Kho)

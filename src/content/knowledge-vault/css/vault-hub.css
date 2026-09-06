@@ -692,44 +692,67 @@
 .vault-badge.badge-slb { background: rgba(245, 158, 11, 0.1); color: #f59e0b; }
 .vault-badge.badge-dth { background: rgba(16, 185, 129, 0.1); color: #10b981; }
 
-/* Modal / Drawer for Reading */
-.vault-drawer-overlay {
+/* ==========================================================================
+   BẢNG THÔNG BÁO TRUNG TÂM & CLINICAL READER MODAL DIALOG (Thay thế Drawer)
+   ========================================================================== */
+.vault-drawer-overlay,
+.vault-modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.45);
-  backdrop-filter: blur(4px);
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   z-index: 9999;
   display: none;
-  justify-content: flex-end;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.vault-drawer-overlay.active {
+.vault-drawer-overlay.active,
+.vault-modal-overlay.active {
   display: flex;
+  opacity: 1;
 }
 
-.vault-drawer-panel {
-  width: 100%;
-  max-width: 980px;
-  height: 100%;
+.vault-drawer-panel,
+.vault-modal-dialog {
+  margin: auto !important;
+  width: min(92vw, 1200px);
+  height: min(88vh, 880px);
+  max-height: 88vh;
   background: var(--vault-surface);
+  border: 1px solid var(--vault-border);
+  border-radius: 16px;
   display: flex;
   flex-direction: column;
-  box-shadow: -8px 0 24px rgba(0, 0, 0, 0.15);
-  animation: slideInRight 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  transition: max-width 0.3s ease;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.08);
+  transform: scale(0.94) translateY(10px);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), width 0.25s ease, height 0.25s ease;
+  overflow: hidden;
 }
 
-.vault-drawer-panel.fullscreen-mode {
-  max-width: 100vw;
+.vault-drawer-overlay.active .vault-drawer-panel,
+.vault-modal-overlay.active .vault-modal-dialog {
+  transform: scale(1) translateY(0);
 }
 
-@keyframes slideInRight {
-  from { transform: translateX(100%); }
-  to { transform: translateX(0); }
+.vault-drawer-panel.fullscreen-mode,
+.vault-modal-dialog.fullscreen-mode {
+  width: 100vw !important;
+  height: 100vh !important;
+  max-width: 100vw !important;
+  max-height: 100vh !important;
+  border-radius: 0 !important;
+  border: none !important;
+  transform: scale(1) translateY(0) !important;
 }
 
-.vault-drawer-header {
-  padding: 1.1rem 1.5rem;
+.vault-drawer-header,
+.vault-modal-header {
+  padding: 0.85rem 1.4rem;
   border-bottom: 1px solid var(--vault-border);
   display: flex;
   justify-content: space-between;
@@ -738,14 +761,63 @@
   position: sticky;
   top: 0;
   z-index: 10;
+  flex-shrink: 0;
 }
 
-.vault-drawer-body {
+.vault-drawer-body,
+.vault-modal-body {
   flex: 1;
   overflow-y: auto;
   padding: 1.5rem 2rem;
   line-height: 1.75;
   background: var(--vault-bg);
+}
+
+.vault-modal-ctrl-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  border: 1px solid var(--vault-border);
+  background: var(--vault-bg);
+  color: var(--vault-muted);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.vault-modal-ctrl-btn:hover {
+  background: var(--vault-surface);
+  color: var(--vault-primary);
+  border-color: var(--vault-primary);
+  transform: translateY(-1px);
+}
+
+.vault-modal-close-btn:hover {
+  background: rgba(239, 68, 68, 0.12);
+  color: #ef4444;
+  border-color: rgba(239, 68, 68, 0.35);
+}
+
+/* Context Badges (Nội trú & Ngoại trú) */
+.vault-badge--inpatient {
+  background: rgba(139, 92, 246, 0.12) !important;
+  color: #8b5cf6 !important;
+  border: 1px solid rgba(139, 92, 246, 0.25) !important;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.02em;
+}
+
+.vault-badge--outpatient {
+  background: rgba(16, 185, 129, 0.12) !important;
+  color: #10b981 !important;
+  border: 1px solid rgba(16, 185, 129, 0.25) !important;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.02em;
 }
 
 /* Clinical Pathway Ribbon */
@@ -1397,16 +1469,27 @@
     min-height: 40px;
   }
 
-  /* Drawer Pro */
-  .vault-drawer-panel {
-    max-width: 100vw;
-    width: 100vw;
-    border-radius: 0;
+  /* Bảng Thông Báo / Modal Dialog trên Mobile */
+  .vault-drawer-overlay,
+  .vault-modal-overlay {
+    padding: 0 !important;
   }
-  .vault-drawer-header {
+  .vault-drawer-panel,
+  .vault-modal-dialog {
+    max-width: 100vw !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    max-height: 100vh !important;
+    border-radius: 0 !important;
+    border: none !important;
+    transform: none !important;
+  }
+  .vault-drawer-header,
+  .vault-modal-header {
     padding: 0.85rem 1rem;
   }
-  .vault-drawer-body {
+  .vault-drawer-body,
+  .vault-modal-body {
     padding: 1rem 0.85rem 4rem 0.85rem;
   }
   .vault-article-content {
@@ -1448,3 +1531,228 @@
     font-size: 0.68rem;
   }
 }
+
+/* ==========================================================================
+   5. Dual-Perspective Clinical Counseling Styles (Kho Tư Vấn 2.6)
+   ========================================================================== */
+.vault-perspective-control-bar {
+  background: var(--vault-surface);
+  border: 1.5px solid var(--vault-border);
+  border-radius: 12px;
+  padding: 0.75rem 1.15rem;
+  margin: 1.25rem 0 1.5rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+.vault-perspective-badge-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.vault-perspective-title {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--vault-text);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.vault-perspective-tabs {
+  display: inline-flex;
+  background: rgba(148, 163, 184, 0.12);
+  padding: 3px;
+  border-radius: 999px;
+  border: 1px solid var(--vault-border);
+  gap: 2px;
+}
+
+.vault-perspective-tab {
+  background: transparent;
+  color: var(--vault-muted);
+  border: none;
+  padding: 0.4rem 0.95rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.vault-perspective-tab:hover {
+  color: var(--vault-text);
+}
+
+.vault-perspective-tab.active {
+  background: var(--vault-surface);
+  color: var(--vault-primary);
+  font-weight: 800;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.vault-perspective-tab.active[data-perspective="doctor"] {
+  color: #0284c7;
+}
+
+.vault-perspective-tab.active[data-perspective="patient"] {
+  color: #10b981;
+}
+
+.vault-perspective-tab.active[data-perspective="inpatient"] {
+  color: #8b5cf6;
+}
+
+.vault-perspective-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.vault-clinic-btn {
+  padding: 0.45rem 0.85rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.vault-clinic-btn--print {
+  background: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+.vault-clinic-btn--print:hover {
+  background: #10b981;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.vault-clinic-btn--copy {
+  background: rgba(139, 92, 246, 0.1);
+  color: #8b5cf6;
+  border-color: rgba(139, 92, 246, 0.3);
+}
+
+.vault-clinic-btn--copy:hover {
+  background: #8b5cf6;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+}
+
+/* Perspective Content Blocks */
+.vault-perspective-block {
+  transition: opacity 0.2s ease;
+}
+
+.perspective-doctor-block {
+  border-left: 4px solid #0284c7;
+  padding-left: 1.25rem;
+  margin-bottom: 2.5rem;
+  position: relative;
+}
+
+.perspective-patient-block {
+  border-left: 4px solid #10b981;
+  padding-left: 1.25rem;
+  margin-bottom: 2.5rem;
+  position: relative;
+}
+
+.perspective-inpatient-block {
+  border-left: 4px solid #8b5cf6;
+  background: rgba(139, 92, 246, 0.03);
+  padding: 1.25rem;
+  border-radius: 0 10px 10px 0;
+  margin-bottom: 2.5rem;
+  position: relative;
+}
+
+/* ==========================================================================
+   6. Outpatient Print Leaflet Format (@media print)
+   ========================================================================== */
+@media print {
+  /* Hide all UI Chrome */
+  .vault-navbar,
+  .vault-reader-toolbar,
+  .vault-path-bar,
+  .vault-toc-sidebar,
+  .vault-annotations-container,
+  .vault-pathway-container,
+  .vault-perspective-control-bar,
+  .vault-drawer-header,
+  .vault-drawer-overlay,
+  .vault-modal-header,
+  .vault-modal-overlay,
+  #theme-toggle,
+  .perspective-doctor-block,
+  .perspective-inpatient-block {
+    display: none !important;
+  }
+
+  body, #vault-drawer, .vault-drawer-panel, .vault-modal-dialog, .vault-article-content {
+    background: #ffffff !important;
+    color: #111827 !important;
+    position: static !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+  }
+
+  .perspective-patient-block {
+    display: block !important;
+    border-left: none !important;
+    padding-left: 0 !important;
+  }
+
+  .vault-article-content h1,
+  .vault-article-content h2,
+  .vault-article-content h3 {
+    color: #000000 !important;
+    page-break-after: avoid;
+  }
+
+  .vault-data-table {
+    border: 1px solid #333 !important;
+    width: 100% !important;
+    page-break-inside: avoid;
+  }
+
+  .vault-data-table th,
+  .vault-data-table td {
+    border: 1px solid #666 !important;
+    color: #000 !important;
+    font-size: 11pt !important;
+    padding: 6px 8px !important;
+  }
+
+  .dsp-callout {
+    border: 1.5px solid #444 !important;
+    background: #f8fafc !important;
+    color: #000 !important;
+    page-break-inside: avoid;
+  }
+}
+

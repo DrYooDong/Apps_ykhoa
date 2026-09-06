@@ -21,6 +21,9 @@ export interface VaultArticle {
   keywords?: string[];
   icd10?: string[];
   tags?: string[];
+  context?: string;
+  topic?: string;
+  perspective?: string;
   content?: string;
 }
 

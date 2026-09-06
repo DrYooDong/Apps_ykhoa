@@ -5,7 +5,7 @@
 
 import { VAULT_CATALOG, getKhoSummaries, filterVaultArticles, getArticleByIdOrPath, KHO_DEFINITIONS } from './vault-loader';
 import type { VaultFilterState, VaultArticle } from './types';
-import { renderPathwayRibbon, processMarkdownWithToc, renderTocHtml, renderReaderToolbar, renderAnnotationsBoxHtml, renderEncyclopediaQuickFactsHtml, attachReaderProEvents } from './vault-reader-pro';
+import { renderPathwayRibbon, processMarkdownWithToc, renderTocHtml, renderReaderToolbar, renderAnnotationsBoxHtml, renderEncyclopediaQuickFactsHtml, renderPerspectiveBar, attachReaderProEvents } from './vault-reader-pro';
 import { renderFlowchartStudioHtml, attachFlowchartEvents, CLINICAL_FLOWCHARTS_REGISTRY } from './vault-flowchart-engine';
 import { renderFlashcardStudioHtml, attachFlashcardEvents, DEFAULT_MEDICAL_FLASHCARDS } from './vault-flashcard-engine';
 import { 
@@ -281,6 +281,15 @@ export function renderVaultHubView(): string {
                 <span class="vault-badge vault-badge--spec">
                   ${escapeHtml(art.specialty)}
                 </span>
+                ${art.context === 'noi-tru' ? `
+                  <span class="vault-badge vault-badge--inpatient" title="Kịch bản can thiệp đầu giường & Buồng bệnh nội trú">
+                    <i class="fa-solid fa-bed-pulse"></i> NỘI TRÚ
+                  </span>
+                ` : (art.khoCode === 'TV' || art.context === 'ngoai-tru' ? `
+                  <span class="vault-badge vault-badge--outpatient" title="Kịch bản dặn dò buồng khám ngoại trú">
+                    <i class="fa-solid fa-stethoscope"></i> NGOẠI TRÚ
+                  </span>
+                ` : '')}
                 ${art.icd10 && art.icd10.length > 0 ? `
                   <span class="vault-badge vault-badge--icd">
                     ICD: ${escapeHtml(art.icd10[0])}
@@ -320,21 +329,25 @@ export function renderVaultHubView(): string {
     </div>
 
 
-    <!-- Article Reader Drawer -->
-    <div id="vault-drawer" class="vault-drawer-overlay">
-      <div class="vault-drawer-panel">
-        <div class="vault-drawer-header">
-          <div id="vault-drawer-meta">
+    <!-- Clinical Reader Bảng Thông Báo Trung Tâm (Central Notification Modal Dialog) -->
+    <div id="vault-drawer" class="vault-modal-overlay vault-drawer-overlay" role="dialog" aria-modal="true" aria-labelledby="vault-drawer-title">
+      <div class="vault-modal-dialog vault-drawer-panel">
+        <div class="vault-modal-header vault-drawer-header">
+          <div id="vault-drawer-meta" style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; min-width: 0;">
             <span id="vault-drawer-kho" class="vault-badge">KHO</span>
-            <strong id="vault-drawer-title" style="margin-left: 0.5rem; font-size: 1.1rem;">Tiêu đề bài viết</strong>
+            <span id="vault-drawer-context" class="vault-badge" style="display: none;"></span>
+            <strong id="vault-drawer-title" style="font-size: 1.12rem; font-weight: 800; color: var(--vault-text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 650px;">Tiêu đề bài viết</strong>
           </div>
-          <div style="display: flex; gap: 0.5rem;">
-            <button id="vault-drawer-close" style="background:none; border:none; font-size:1.4rem; cursor:pointer; color:var(--vault-muted);">
+          <div style="display: flex; gap: 0.5rem; align-items: center; flex-shrink: 0;">
+            <button id="vault-drawer-fullscreen" class="vault-modal-ctrl-btn" title="Toàn màn hình / Thu nhỏ">
+              <i class="fa-solid fa-expand"></i>
+            </button>
+            <button id="vault-drawer-close" class="vault-modal-ctrl-btn vault-modal-close-btn" title="Đóng bảng thông báo (Phím Esc)">
               <i class="fa-solid fa-xmark"></i>
             </button>
           </div>
         </div>
-        <div id="vault-drawer-body" class="vault-drawer-body">
+        <div id="vault-drawer-body" class="vault-modal-body vault-drawer-body">
           <div class="dsp-loading-spinner" style="text-align:center; padding:3rem;"><i class="fa-solid fa-spinner fa-spin fa-2x"></i></div>
         </div>
       </div>
@@ -473,13 +486,45 @@ export function attachVaultEvents(container: HTMLElement): void {
     attachFlashcardEvents(flashcardMount);
   }
 
-  // Drawer Close
+  // Modal / Drawer Close, Escape Key & Fullscreen Handlers
   const closeBtn = document.getElementById('vault-drawer-close');
   const drawer = document.getElementById('vault-drawer');
+  const fsBtn = document.getElementById('vault-drawer-fullscreen');
+  const drawerPanel = drawer?.querySelector('.vault-drawer-panel') as HTMLElement | null;
+
   if (closeBtn && drawer) {
-    closeBtn.addEventListener('click', () => drawer.classList.remove('active'));
+    closeBtn.addEventListener('click', () => {
+      drawer.classList.remove('active');
+      drawerPanel?.classList.remove('fullscreen-mode');
+    });
     drawer.addEventListener('click', (e) => {
-      if (e.target === drawer) drawer.classList.remove('active');
+      if (e.target === drawer) {
+        drawer.classList.remove('active');
+        drawerPanel?.classList.remove('fullscreen-mode');
+      }
+    });
+  }
+
+  if (fsBtn && drawerPanel) {
+    fsBtn.addEventListener('click', () => {
+      drawerPanel.classList.toggle('fullscreen-mode');
+      const isFs = drawerPanel.classList.contains('fullscreen-mode');
+      fsBtn.innerHTML = isFs ? '<i class="fa-solid fa-compress"></i>' : '<i class="fa-solid fa-expand"></i>';
+      fsBtn.title = isFs ? 'Thu nhỏ bảng thông báo' : 'Phóng to toàn màn hình';
+    });
+  }
+
+  // Global Escape key listener (attach once)
+  if (!(window as any).__vaultEscapeBound) {
+    (window as any).__vaultEscapeBound = true;
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        const activeDrawer = document.getElementById('vault-drawer');
+        if (activeDrawer && activeDrawer.classList.contains('active')) {
+          activeDrawer.classList.remove('active');
+          activeDrawer.querySelector('.vault-drawer-panel')?.classList.remove('fullscreen-mode');
+        }
+      }
     });
   }
 }
@@ -507,6 +552,22 @@ export async function openArticleDrawer(articleIdOrPath: string): Promise<void> 
   titleEl.textContent = article.title;
   khoBadge.textContent = `${article.khoName} • ${article.specialty} (${article.part})`;
   khoBadge.className = `vault-badge`;
+
+  const contextBadge = document.getElementById('vault-drawer-context');
+  if (contextBadge) {
+    if (article.context === 'noi-tru') {
+      contextBadge.style.display = 'inline-flex';
+      contextBadge.className = 'vault-badge vault-badge--inpatient';
+      contextBadge.innerHTML = '<i class="fa-solid fa-bed-pulse"></i> NỘI TRÚ';
+    } else if (article.khoCode === 'TV' || article.context === 'ngoai-tru') {
+      contextBadge.style.display = 'inline-flex';
+      contextBadge.className = 'vault-badge vault-badge--outpatient';
+      contextBadge.innerHTML = '<i class="fa-solid fa-stethoscope"></i> NGOẠI TRÚ';
+    } else {
+      contextBadge.style.display = 'none';
+    }
+  }
+
   drawer.classList.add('active');
 
   bodyEl.innerHTML = `
@@ -628,6 +689,7 @@ export async function openArticleDrawer(articleIdOrPath: string): Promise<void> 
       ${protocolSection}
       ${renderEncyclopediaQuickFactsHtml(article)}
       ${flowchartSection}
+      ${renderPerspectiveBar(article, rawMarkdown)}
       <div class="vault-reader-pro-grid">
         <div class="vault-article-content">
           ${annotationsHtml}

@@ -25,6 +25,7 @@ const KHO_MAPPINGS = [
   { dir: '2.4. Kho phác đồ điều trị', code: 'PDDT', name: 'Phác đồ', group: 'Chuyên sâu', icon: 'fa-pills', color: '#3b82f6' },
   { dir: 'Kho cập nhật', code: 'PDDT', name: 'Phác đồ', group: 'Chuyên sâu', icon: 'fa-pills', color: '#3b82f6' },
   { dir: '3.2. Kho dược thư & tương tác thuốc', code: 'DUOC', name: 'Dược', group: 'Chuyên sâu', icon: 'fa-capsules', color: '#06b6d4' },
+  { dir: '2.6. Kho tư vấn', code: 'TV', name: 'Tư vấn', group: 'Chuyên sâu', icon: 'fa-hand-holding-medical', color: '#84cc16' },
   { dir: 'Kho dinh dưỡng lâm sàng', code: 'TV', name: 'Tư vấn', group: 'Chuyên sâu', icon: 'fa-hand-holding-medical', color: '#84cc16' },
   { dir: '2.5. Kho biến chứng', code: 'BC', name: 'Biến chứng', group: 'Chuyên sâu', icon: 'fa-heart-crack', color: '#ef4444' },
 
@@ -117,6 +118,10 @@ function scanVault() {
           const part = meta.part || (entry.name.includes('_P2') ? 'P2' : (entry.name.includes('_P3') ? 'P3' : 'P1'));
           const snippet = extractSnippet(body);
 
+          const context = meta.context || (entry.name.includes('_Noi_') ? 'noi-tru' : (kho.code === 'TV' || entry.name.includes('_Ngoai_') ? 'ngoai-tru' : undefined));
+          const topic = meta.topic || (entry.name.includes('_QuenLieu') ? 'quen-lieu' : (entry.name.includes('_TacDungPhu') ? 'tac-dung-phu' : (entry.name.includes('_DauHieuDo') ? 'dau-hieu-do' : (entry.name.includes('_P1') ? 'tong-quan' : undefined))));
+          const perspective = meta.perspective || (kho.code === 'TV' ? (context === 'noi-tru' ? 'triplet' : 'dual') : undefined);
+
           const article = {
             id: meta.id || `${kho.code}_${title.slice(0, 15).replace(/[^a-zA-Z0-9]/g, '_')}_${Math.random().toString(36).substring(2, 6)}`,
             title,
@@ -129,6 +134,9 @@ function scanVault() {
             khoColor: kho.color,
             specialty,
             part,
+            context,
+            topic,
+            perspective,
             relPath,
             snippet,
             readTime: meta.readTime || '8-12 phút',

@@ -259,7 +259,81 @@ export function processMarkdownWithToc(rawMarkdown: string): { htmlContent: stri
     return `<p>${p.replace(/\n/g, '<br/>')}</p>`;
   }).join('\n');
 
+  // Wrap Dual/Triplet-Perspective sections if present
+  const hasDoctorSection = clean.includes('GÓC BÁC SĨ') || clean.includes('Góc Bác sĩ');
+  const hasPatientSection = clean.includes('GÓC NGƯỜI BỆNH') || clean.includes('Góc Người bệnh');
+  const hasInpatientSection = clean.includes('NỘI TRÚ') || clean.includes('Nội trú') || clean.includes('BUỒNG BỆNH');
+
+  if (hasDoctorSection && hasPatientSection && hasInpatientSection) {
+    const docRegex = /(<h1[^>]*>[\s\S]*?(?:GÓC BÁC SĨ|Góc Bác sĩ)[\s\S]*?)(?=<h1[^>]*>[\s\S]*?(?:GÓC NGƯỜI BỆNH|Góc Người bệnh))/i;
+    const patRegex = /(<h1[^>]*>[\s\S]*?(?:GÓC NGƯỜI BỆNH|Góc Người bệnh)[\s\S]*?)(?=<h1[^>]*>[\s\S]*?(?:NỘI TRÚ|Nội trú|BUỒNG BỆNH))/i;
+    const inpatRegex = /(<h1[^>]*>[\s\S]*?(?:NỘI TRÚ|Nội trú|BUỒNG BỆNH)[\s\S]*$)/i;
+
+    if (docRegex.test(clean) && patRegex.test(clean) && inpatRegex.test(clean)) {
+      clean = clean.replace(docRegex, '<div id="vault-perspective-doctor" class="vault-perspective-block perspective-doctor-block">$1</div>\n');
+      clean = clean.replace(patRegex, '<div id="vault-perspective-patient" class="vault-perspective-block perspective-patient-block">$1</div>\n');
+      clean = clean.replace(inpatRegex, '<div id="vault-perspective-inpatient" class="vault-perspective-block perspective-inpatient-block">$1</div>\n');
+    }
+  } else if (hasDoctorSection && hasPatientSection) {
+    const docRegex = /(<h1[^>]*>[\s\S]*?(?:GÓC BÁC SĨ|Góc Bác sĩ)[\s\S]*?)(?=<h1[^>]*>[\s\S]*?(?:GÓC NGƯỜI BỆNH|Góc Người bệnh))/i;
+    const patRegex = /(<h1[^>]*>[\s\S]*?(?:GÓC NGƯỜI BỆNH|Góc Người bệnh)[\s\S]*$)/i;
+
+    if (docRegex.test(clean) && patRegex.test(clean)) {
+      clean = clean.replace(docRegex, '<div id="vault-perspective-doctor" class="vault-perspective-block perspective-doctor-block">$1</div>\n');
+      clean = clean.replace(patRegex, '<div id="vault-perspective-patient" class="vault-perspective-block perspective-patient-block">$1</div>\n');
+    }
+  }
+
   return { htmlContent: clean, tocItems };
+}
+
+/**
+ * Render thanh điều khiển chuyển đổi góc nhìn đa chiều (Góc Bác Sĩ ↔ Người Bệnh ↔ Kế Hoạch Nội Trú)
+ */
+export function renderPerspectiveBar(article: VaultArticle, rawMarkdown: string): string {
+  const isDual = article.khoCode === 'TV' || 
+    ((rawMarkdown.includes('GÓC BÁC SĨ') || rawMarkdown.includes('Góc Bác sĩ')) && 
+     (rawMarkdown.includes('GÓC NGƯỜI BỆNH') || rawMarkdown.includes('Góc Người bệnh')));
+     
+  if (!isDual) return '';
+
+  const hasInpatient = rawMarkdown.includes('NỘI TRÚ') || rawMarkdown.includes('Nội trú') || article.context === 'noi-tru' || rawMarkdown.includes('BUỒNG BỆNH');
+
+  return `
+    <div class="vault-perspective-control-bar">
+      <div class="vault-perspective-badge-wrap">
+        <span class="vault-perspective-title">
+          <i class="fa-solid fa-arrows-split-up-and-left" style="color: #84cc16;"></i>
+          <strong>Góc Nhìn Đa Chiều:</strong>
+        </span>
+        <div class="vault-perspective-tabs">
+          <button type="button" class="vault-perspective-tab active" data-perspective="all" title="Xem toàn diện tất cả các góc nhìn">
+            <i class="fa-solid fa-layer-group"></i> <span>Toàn Diện</span>
+          </button>
+          <button type="button" class="vault-perspective-tab" data-perspective="doctor" title="Chỉ xem Góc Bác Sĩ: Chuyên môn, Cạm bẫy & Kỹ thuật Teach-Back">
+            <i class="fa-solid fa-user-doctor"></i> <span>🩺 Góc Bác Sĩ</span>
+          </button>
+          <button type="button" class="vault-perspective-tab" data-perspective="patient" title="Chỉ xem Góc Người Bệnh: Dấu hiệu đỏ, Lối sống & Xử trí quên liều">
+            <i class="fa-solid fa-hospital-user"></i> <span>👤 Góc Người Bệnh</span>
+          </button>
+          ${hasInpatient ? `
+          <button type="button" class="vault-perspective-tab" data-perspective="inpatient" title="Chỉ xem Kế Hoạch Nội Trú & Checklist Xuất Viện">
+            <i class="fa-solid fa-bed-pulse"></i> <span>🏥 Kế Hoạch Nội Trú</span>
+          </button>
+          ` : ''}
+        </div>
+      </div>
+
+      <div class="vault-perspective-actions">
+        <button type="button" id="btn-print-patient-leaflet" class="vault-clinic-btn vault-clinic-btn--print" title="In tờ rơi dặn dò A4 chuẩn phát cho người bệnh">
+          <i class="fa-solid fa-print"></i> <span>In Tờ Rơi Bệnh Nhân</span>
+        </button>
+        <button type="button" id="btn-copy-patient-script" class="vault-clinic-btn vault-clinic-btn--copy" title="Sao chép toàn bộ lời dặn bệnh nhân để dán vào Zalo / SMS / Bệnh án">
+          <i class="fa-regular fa-copy"></i> <span>Chép Lời Dặn (Zalo/SMS)</span>
+        </button>
+      </div>
+    </div>
+  `;
 }
 
 /**
@@ -744,6 +818,90 @@ export function attachReaderProEvents(drawerPanel: HTMLElement, onNavigateArticl
       setTimeout(() => {
         exportMdBtn.innerHTML = '<i class="fa-solid fa-file-arrow-down"></i> Xuất MD';
       }, 2000);
+    });
+  }
+
+  // Dual/Triplet-Perspective Switcher Tabs
+  drawerPanel.querySelectorAll('.vault-perspective-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      drawerPanel.querySelectorAll('.vault-perspective-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      const perspective = tab.getAttribute('data-perspective');
+      const doctorBlock = drawerPanel.querySelector('#vault-perspective-doctor') as HTMLElement | null;
+      const patientBlock = drawerPanel.querySelector('#vault-perspective-patient') as HTMLElement | null;
+      const inpatientBlock = drawerPanel.querySelector('#vault-perspective-inpatient') as HTMLElement | null;
+
+      if (perspective === 'all') {
+        if (doctorBlock) doctorBlock.style.display = 'block';
+        if (patientBlock) patientBlock.style.display = 'block';
+        if (inpatientBlock) inpatientBlock.style.display = 'block';
+      } else if (perspective === 'doctor') {
+        if (doctorBlock) doctorBlock.style.display = 'block';
+        if (patientBlock) patientBlock.style.display = 'none';
+        if (inpatientBlock) inpatientBlock.style.display = 'none';
+      } else if (perspective === 'patient') {
+        if (doctorBlock) doctorBlock.style.display = 'none';
+        if (patientBlock) patientBlock.style.display = 'block';
+        if (inpatientBlock) inpatientBlock.style.display = 'none';
+      } else if (perspective === 'inpatient') {
+        if (doctorBlock) doctorBlock.style.display = 'none';
+        if (patientBlock) patientBlock.style.display = 'none';
+        if (inpatientBlock) inpatientBlock.style.display = 'block';
+      }
+    });
+  });
+
+  // Print Patient Leaflet Action
+  const printLeafletBtn = drawerPanel.querySelector('#btn-print-patient-leaflet');
+  if (printLeafletBtn) {
+    printLeafletBtn.addEventListener('click', () => {
+      // 1. Tự động chuyển sang góc người bệnh
+      const patientTab = drawerPanel.querySelector('.vault-perspective-tab[data-perspective="patient"]') as HTMLElement | null;
+      if (patientTab) patientTab.click();
+
+      // 2. Kích hoạt in ấn
+      setTimeout(() => {
+        window.print();
+      }, 250);
+    });
+  }
+
+  // Copy Patient Advice Script Action
+  const copyScriptBtn = drawerPanel.querySelector('#btn-copy-patient-script');
+  if (copyScriptBtn) {
+    copyScriptBtn.addEventListener('click', () => {
+      const activeTab = drawerPanel.querySelector('.vault-perspective-tab.active')?.getAttribute('data-perspective');
+      const patientEl = drawerPanel.querySelector('#vault-perspective-patient') as HTMLElement | null;
+      const inpatientEl = drawerPanel.querySelector('#vault-perspective-inpatient') as HTMLElement | null;
+      const title = drawerPanel.querySelector('#vault-drawer-title')?.textContent || 'Tài liệu dặn dò';
+
+      let text = '';
+      let contextTitle = 'NGOẠI TRÚ / BUỒNG KHÁM';
+      if (activeTab === 'inpatient' && inpatientEl) {
+        text = inpatientEl.innerText;
+        contextTitle = 'NỘI TRÚ / CHECKLIST XUẤT VIỆN';
+      } else if (patientEl) {
+        text = patientEl.innerText;
+        contextTitle = 'NGƯỜI BỆNH / TỜ RƠI DẶN DÒ';
+      }
+
+      if (!text) {
+        const fullContent = drawerPanel.querySelector('.vault-article-content') as HTMLElement | null;
+        text = fullContent ? (fullContent as HTMLElement).innerText : '';
+      }
+
+      const scriptHeader = `CLINIPORTAL - BẢN HƯỚNG DẪN & DẶN DÒ Y KHOA (${contextTitle})\n` +
+        `BỆNH LÝ: ${title.toUpperCase()}\n` +
+        `Thời gian dặn: ${new Date().toLocaleDateString('vi-VN')}\n` +
+        `--------------------------------------------------\n\n`;
+
+      navigator.clipboard.writeText(scriptHeader + text).then(() => {
+        copyScriptBtn.innerHTML = '<i class="fa-solid fa-check" style="color:#10b981;"></i> Đã Chép Lời Dặn!';
+        setTimeout(() => {
+          copyScriptBtn.innerHTML = '<i class="fa-regular fa-copy"></i> <span>Chép Lời Dặn (Zalo/SMS)</span>';
+        }, 2500);
+      });
     });
   }
 }
