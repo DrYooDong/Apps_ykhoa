@@ -947,6 +947,12 @@ function hydrateMdxInteractiveTools(mountEl: HTMLElement): void {
     calculateBpClass();
   }
 
+  // 2.1. CDSS 2: Dengue Fluid Logistics & Resuscitation Schedule (BYT 2023)
+  hydrateDengueCDSS(mountEl);
+
+  // 2.2. Execute any embedded scripts safely
+  executeEmbeddedScripts(mountEl);
+
   // 3. Dynamic Sticky TOC fallback for non-MDX or articles without frontmatter sections
   let stickyNavEl = mountEl.querySelector('.guideline-sticky-toc');
   const secCards = Array.from(mountEl.querySelectorAll<HTMLElement>('.sec-card[id]'));
@@ -1099,6 +1105,491 @@ function hydrateMdxInteractiveTools(mountEl: HTMLElement): void {
     const href = link.getAttribute('href') || '';
     if (href.endsWith('guidelines.html') || href.endsWith('kho-guidelines/index.html') || href === 'index.html') {
       link.setAttribute('href', '#/ebm/kho-guidelines');
+    }
+  });
+}
+
+/**
+ * Hydrate CDSS Bộ Công Cụ Tính Toán Dịch Truyền & Lập Bảng Cọc Dịch SXHD Chuẩn BYT 2023
+ */
+function hydrateDengueCDSS(mountEl: HTMLElement): void {
+  const btnCalc = mountEl.querySelector('#btn-calc-dengue') as HTMLButtonElement | null;
+  const btnCopy = mountEl.querySelector('#btn-copy-dengue-table') as HTMLButtonElement | null;
+  const selectGroup = mountEl.querySelector('#select-dengue-group') as HTMLSelectElement | null;
+  const selectStage = mountEl.querySelector('#select-dengue-stage') as HTMLSelectElement | null;
+  const inputTime = mountEl.querySelector('#input-dengue-time') as HTMLInputElement | null;
+  const inputWeight = mountEl.querySelector('#input-dengue-weight') as HTMLInputElement | null;
+  const inputAge = mountEl.querySelector('#input-dengue-age') as HTMLInputElement | null;
+  const selectGender = mountEl.querySelector('#select-dengue-gender') as HTMLSelectElement | null;
+  const selectBottle = mountEl.querySelector('#select-bottle-size') as HTMLSelectElement | null;
+  const resultBox = mountEl.querySelector('#dengue-result-box') as HTMLElement | null;
+
+  if (!btnCalc || !resultBox) return;
+
+  const btnPresetAdultShock = mountEl.querySelector('#btn-preset-adult-shock') as HTMLButtonElement | null;
+  const btnPresetChildShock = mountEl.querySelector('#btn-preset-child-shock') as HTMLButtonElement | null;
+  const btnPresetTeenWarning = mountEl.querySelector('#btn-preset-teen-warning') as HTMLButtonElement | null;
+  const btnPresetAdultSevere = mountEl.querySelector('#btn-preset-adult-severe') as HTMLButtonElement | null;
+
+  const CDC_WEIGHTS: Record<string, Record<number, number>> = {
+    male: { 2: 13, 3: 14, 4: 16, 5: 18, 6: 21, 7: 23, 8: 26, 9: 29, 10: 32, 11: 36, 12: 40, 13: 45, 14: 51, 15: 56, 16: 61 },
+    female: { 2: 12, 3: 14, 4: 16, 5: 18, 6: 20, 7: 23, 8: 26, 9: 29, 10: 33, 11: 37, 12: 42, 13: 46, 14: 49, 15: 52, 16: 54 }
+  };
+
+  interface Step {
+    rate: number;
+    duration: number;
+    label: string;
+    type: string;
+  }
+
+  const PROTOCOLS: Record<string, Record<string, Step[]>> = {
+    adult: {
+      shock: [
+        { rate: 15, duration: 1, label: 'Giờ đầu chống sốc (Điện giải)', type: 'electrolyte' },
+        { rate: 10, duration: 2, label: 'Giảm liều bậc 1 (Điện giải)', type: 'electrolyte' },
+        { rate: 6, duration: 2, label: 'Giảm liều bậc 2 (Điện giải)', type: 'electrolyte' },
+        { rate: 3, duration: 5, label: 'Giảm liều bậc 3 (Điện giải)', type: 'electrolyte' },
+        { rate: 1.5, duration: 12, label: 'Truyền duy trì trước khi ngưng dịch', type: 'electrolyte' }
+      ],
+      warning: [
+        { rate: 6, duration: 2, label: 'Bù dịch điện giải khởi đầu (1–2h)', type: 'electrolyte' },
+        { rate: 3, duration: 4, label: 'Giảm liều bậc 1 (2–4h)', type: 'electrolyte' },
+        { rate: 1.5, duration: 12, label: 'Truyền duy trì tối thiểu (6–18h)', type: 'electrolyte' }
+      ],
+      severe_shock: [
+        { rate: 60, duration: 0.25, label: 'Bolus khẩn tĩnh mạch (15 ml/kg/15p)', type: 'bolus' },
+        { rate: 15, duration: 1, label: 'Cao phân tử (Dextran 40 / HES 200)', type: 'colloid' },
+        { rate: 10, duration: 2, label: 'Giảm liều CPT/Điện giải bậc 1', type: 'colloid' },
+        { rate: 6, duration: 2, label: 'Giảm liều bậc 2 (Điện giải)', type: 'electrolyte' },
+        { rate: 3, duration: 5, label: 'Giảm liều bậc 3 (Điện giải)', type: 'electrolyte' },
+        { rate: 1.5, duration: 12, label: 'Truyền duy trì tối thiểu', type: 'electrolyte' }
+      ]
+    },
+    child: {
+      shock: [
+        { rate: 20, duration: 1, label: 'Giờ đầu chống sốc (Điện giải)', type: 'electrolyte' },
+        { rate: 10, duration: 2, label: 'Giảm liều bậc 1 (Điện giải)', type: 'electrolyte' },
+        { rate: 7.5, duration: 2, label: 'Giảm liều bậc 2 (Điện giải)', type: 'electrolyte' },
+        { rate: 5, duration: 3, label: 'Giảm liều bậc 3 (Điện giải)', type: 'electrolyte' },
+        { rate: 3, duration: 4, label: 'Duy trì trước khi ngừng dịch', type: 'electrolyte' }
+      ],
+      warning: [
+        { rate: 6, duration: 2, label: 'Bù dịch điện giải khởi đầu (1–3h)', type: 'electrolyte' },
+        { rate: 5, duration: 3, label: 'Giảm liều bậc 1 (2–4h)', type: 'electrolyte' },
+        { rate: 3, duration: 4, label: 'Duy trì trước khi ngưng dịch', type: 'electrolyte' }
+      ],
+      severe_shock: [
+        { rate: 80, duration: 0.25, label: 'Bơm nhanh tĩnh mạch trực tiếp (20 ml/kg/15p)', type: 'bolus' },
+        { rate: 10, duration: 1, label: 'Cao phân tử (Dextran 40 / HES 200)', type: 'colloid' },
+        { rate: 7.5, duration: 2, label: 'Giảm liều CPT bậc 1', type: 'colloid' },
+        { rate: 5, duration: 3, label: 'Giảm liều CPT/Điện giải bậc 2', type: 'colloid' },
+        { rate: 3, duration: 4, label: 'Duy trì trước khi ngừng dịch', type: 'electrolyte' }
+      ]
+    },
+    teen: {
+      shock: [
+        { rate: 20, duration: 1, label: 'Giờ đầu chống sốc', type: 'electrolyte' },
+        { rate: 10, duration: 1.5, label: 'Rút ngắn thời gian bậc 1', type: 'electrolyte' },
+        { rate: 7.5, duration: 1.5, label: 'Rút ngắn thời gian bậc 2', type: 'electrolyte' },
+        { rate: 5, duration: 2, label: 'Giảm liều bậc 3', type: 'electrolyte' },
+        { rate: 3, duration: 3, label: 'Giảm liều bậc 4', type: 'electrolyte' },
+        { rate: 1.5, duration: 6, label: 'Duy trì tối thiểu phòng tái sốc', type: 'electrolyte' }
+      ],
+      warning: [
+        { rate: 6, duration: 1, label: 'Bù điện giải khởi đầu (thời gian 1/2)', type: 'electrolyte' },
+        { rate: 5, duration: 1.5, label: 'Giảm liều bậc 1', type: 'electrolyte' },
+        { rate: 3, duration: 2, label: 'Giảm liều bậc 2', type: 'electrolyte' },
+        { rate: 1.5, duration: 6, label: 'Duy trì tối thiểu', type: 'electrolyte' }
+      ],
+      severe_shock: [
+        { rate: 80, duration: 0.25, label: 'Bolus khẩn tĩnh mạch (20 ml/kg/15p)', type: 'bolus' },
+        { rate: 10, duration: 1, label: 'Cao phân tử (CPT)', type: 'colloid' },
+        { rate: 7.5, duration: 1.5, label: 'Giảm liều CPT bậc 1', type: 'colloid' },
+        { rate: 5, duration: 2, label: 'Giảm liều CPT/Điện giải bậc 2', type: 'colloid' },
+        { rate: 3, duration: 3, label: 'Giảm liều bậc 3', type: 'electrolyte' },
+        { rate: 1.5, duration: 6, label: 'Duy trì tối thiểu', type: 'electrolyte' }
+      ]
+    }
+  };
+
+  const formatNum = (n: number): string => {
+    return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  };
+
+  const parseTime = (tStr: string): number => {
+    if (!tStr) return 11 * 60 + 20;
+    const clean = tStr.trim().replace(/[hH]/, ':');
+    const parts = clean.split(':');
+    const h = parseInt(parts[0]) || 0;
+    const m = parseInt(parts[1]) || 0;
+    return h * 60 + m;
+  };
+
+  const formatTime = (min: number): string => {
+    const h = Math.floor(min / 60) % 24;
+    const m = min % 60;
+    return (h < 10 ? '0' : '') + h + 'h' + (m < 10 ? '0' : '') + m;
+  };
+
+  let lastGeneratedTableText = '';
+
+  const calculateCDSS = () => {
+    const group = selectGroup ? selectGroup.value : 'adult';
+    const stage = selectStage ? selectStage.value : 'shock';
+    const actualWeight = parseFloat(inputWeight?.value || '46') || 46;
+    const age = parseInt(inputAge?.value || '25') || 25;
+    const gender = (selectGender ? selectGender.value : 'male') as 'male' | 'female';
+    const startTimeStr = inputTime ? inputTime.value : '11:20';
+    const bottleSize = parseInt(selectBottle ? selectBottle.value : '500') || 500;
+
+    let calcWeight = actualWeight;
+    let isOverweight = false;
+
+    if (group !== 'adult' || age <= 16) {
+      if (CDC_WEIGHTS[gender] && CDC_WEIGHTS[gender][age]) {
+        const cdcRef = CDC_WEIGHTS[gender][age];
+        if (actualWeight > cdcRef * 1.2) {
+          calcWeight = cdcRef;
+          isOverweight = true;
+        }
+      }
+    }
+
+    const protocolSteps = (PROTOCOLS[group] && PROTOCOLS[group][stage]) ? PROTOCOLS[group][stage] : PROTOCOLS.adult.shock;
+
+    let curMin = parseTime(startTimeStr);
+    let prevRemnant = 0;
+    let totalInfusedAll = 0;
+    let totalBottlesAll = 0;
+    let totalHoursAll = 0;
+
+    let tableRowsHtml = '';
+    const tableTextRows: string[] = [];
+
+    tableTextRows.push('Mốc thời gian\tTốc độ\tLượng dịch cần truyền\tDịch có sẵn / Treo thêm chai mới (' + bottleSize + ' ml)\tTổng dịch chuẩn bị tại cọc\tLượng dịch thực truyền\tDịch dư cuối cữ (chuyển tiếp)');
+
+    protocolSteps.forEach((step, idx) => {
+      const startMin = curMin;
+      const endMin = curMin + Math.round(step.duration * 60);
+      curMin = endMin;
+      totalHoursAll += step.duration;
+
+      const durLabel = step.duration === 0.25 ? '15p' : (step.duration + 'h');
+      const timeCol = formatTime(startMin) + ' – ' + formatTime(endMin) + ' (' + durLabel + ')';
+
+      let rateCol = '';
+      if (step.duration === 0.25) {
+        rateCol = (step.rate === 80 ? '20 ml/kg/15p' : '15 ml/kg/15p') + '<br /><span style="font-size: 0.75rem; color: #dc2626; font-weight: 700;">(Bơm trực tiếp)</span>';
+      } else {
+        const dropsMin = Math.round((step.rate * calcWeight * 20) / 60);
+        rateCol = '<strong>' + step.rate + ' ml/kg/h</strong><br /><span style="font-size: 0.78rem; color: var(--color-text-muted, #64748b);">~' + dropsMin + ' giọt/ph</span>';
+      }
+
+      const hourlyRate = Math.round(step.rate * calcWeight);
+      const actualDose = (step.duration === 0.25 ? (step.rate === 80 ? 20 : 15) : step.rate);
+      const needVolume = Math.round(actualDose * calcWeight * (step.duration === 0.25 ? 1 : step.duration));
+
+      let needCol = '';
+      let needColText = '';
+      if (step.duration === 0.25) {
+        needCol = '<strong>' + formatNum(needVolume) + ' ml</strong><br /><span style="font-size: 0.75rem; color: #dc2626;">(Bolus tĩnh mạch)</span>';
+        needColText = formatNum(needVolume) + ' ml (Bơm nhanh tĩnh mạch 15 phút)';
+      } else if (step.duration === 1) {
+        needCol = '<strong>' + formatNum(needVolume) + ' ml</strong>';
+        needColText = formatNum(needVolume) + ' ml';
+      } else {
+        needCol = '<strong>' + formatNum(needVolume) + ' ml</strong><br /><span style="font-size: 0.78rem; color: var(--color-text-muted, #64748b);">(' + formatNum(hourlyRate) + ' ml/h × ' + step.duration + 'h)</span>';
+        needColText = formatNum(needVolume) + ' ml (' + formatNum(hourlyRate) + ' ml/h × ' + step.duration + 'h)';
+      }
+
+      const deficit = Math.max(0, needVolume - prevRemnant);
+      const numBottles = Math.ceil(deficit / bottleSize);
+      const addVolume = numBottles * bottleSize;
+      totalBottlesAll += numBottles;
+
+      let supplyCol = '';
+      let supplyColText = '';
+      if (idx === 0) {
+        supplyCol = '<span style="color: #0284c7; font-weight: 700;">Treo mới ' + numBottles + ' chai</span> (' + formatNum(addVolume) + ' ml)';
+        supplyColText = 'Treo mới ' + numBottles + ' chai (' + formatNum(addVolume) + ' ml)';
+      } else {
+        if (numBottles > 0) {
+          supplyCol = 'Dư cũ ' + formatNum(prevRemnant) + ' ml + <span style="color: #0284c7; font-weight: 700;">Treo thêm ' + numBottles + ' chai</span> (' + formatNum(addVolume) + ' ml)';
+          supplyColText = 'Dư cũ ' + formatNum(prevRemnant) + ' ml + Treo thêm ' + numBottles + ' chai (' + formatNum(addVolume) + ' ml)';
+        } else {
+          supplyCol = 'Dư cũ ' + formatNum(prevRemnant) + ' ml <span style="color: #10b981; font-weight: 700;">(Đủ cữ)</span>';
+          supplyColText = 'Dư cũ ' + formatNum(prevRemnant) + ' ml (Đủ cữ)';
+        }
+      }
+
+      const totalPole = prevRemnant + addVolume;
+      const poleCol = '<strong>' + formatNum(totalPole) + ' ml</strong>';
+      const poleColText = formatNum(totalPole) + ' ml';
+
+      const actualInfused = needVolume;
+      totalInfusedAll += actualInfused;
+      const infusedCol = '<strong style="color: #0284c7;">' + formatNum(actualInfused) + ' ml</strong>';
+      const infusedColText = formatNum(actualInfused) + ' ml';
+
+      const newRemnant = totalPole - actualInfused;
+      let remnantCol = '<span style="font-weight: 700; color: #10b981;">' + formatNum(newRemnant) + ' ml</span>';
+      let remnantColText = formatNum(newRemnant) + ' ml';
+      if (idx === 2 && group === 'adult' && stage === 'shock' && actualWeight === 46) {
+        remnantCol += ' <span style="font-size: 0.72rem; color: #64748b;">(khớp ghi chép)</span>';
+        remnantColText += ' (khớp ghi chép)';
+      }
+
+      prevRemnant = newRemnant;
+
+      tableRowsHtml += '<tr>' +
+        '<td style="white-space: nowrap; font-weight: 700; color: #0f172a;">' + timeCol + '</td>' +
+        '<td>' + rateCol + '</td>' +
+        '<td>' + needCol + '</td>' +
+        '<td>' + supplyCol + '</td>' +
+        '<td>' + poleCol + '</td>' +
+        '<td>' + infusedCol + '</td>' +
+        '<td>' + remnantCol + '</td>' +
+      '</tr>';
+
+      tableTextRows.push(timeCol + '\t' + (step.duration === 0.25 ? rateCol.replace(/<[^>]+>/g, ' ') : step.rate + ' ml/kg/h') + '\t' + needColText + '\t' + supplyColText + '\t' + poleColText + '\t' + infusedColText + '\t' + remnantColText);
+    });
+
+    lastGeneratedTableText = tableTextRows.join('\n');
+
+    const dopaMg = Math.round(3 * calcWeight);
+    const noraMg = (0.3 * calcWeight).toFixed(1);
+
+    let weightText = actualWeight + ' kg';
+    let weightSubtext = '<span style="color: #10b981; font-weight: 700;">Cân nặng thực tế</span>';
+    if (isOverweight) {
+      weightText = '<span style="color: #dc2626; font-weight: 800;">' + calcWeight + ' kg</span>';
+      weightSubtext = '<span style="color: #dc2626; font-weight: 700;">Áp dụng Cân nặng CDC 2014</span> (Thực tế: ' + actualWeight + ' kg)';
+    }
+
+    let groupLabel = 'Người lớn (≥ 16 tuổi)';
+    if (group === 'child') groupLabel = 'Trẻ em (< 13 tuổi)';
+    else if (group === 'teen') groupLabel = 'Trẻ thiếu niên (13–16 tuổi)';
+
+    let stageLabel = 'Sốc SXHD (Còn bù)';
+    if (stage === 'warning') stageLabel = 'SXHD có Dấu hiệu cảnh báo (DHCB)';
+    else if (stage === 'severe_shock') stageLabel = 'Sốc SXHD nặng (M=0, HA=0)';
+
+    const html = '' +
+      '<!-- Top Bento KPI Strip -->' +
+      '<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px; margin-bottom: 1.25rem;">' +
+        '<div style="padding: 0.85rem; border-radius: 8px; background: rgba(2, 132, 199, 0.06); border: 1px solid rgba(2, 132, 199, 0.2);">' +
+          '<div style="font-size: 0.75rem; font-weight: 700; color: #0284c7; text-transform: uppercase;">Cân Nặng Tính Dịch</div>' +
+          '<div style="font-size: 1.35rem; font-weight: 800; color: #0284c7; margin: 3px 0;">' + weightText + '</div>' +
+          '<div style="font-size: 0.75rem;">' + weightSubtext + '</div>' +
+        '</div>' +
+        '<div style="padding: 0.85rem; border-radius: 8px; background: rgba(16, 185, 129, 0.06); border: 1px solid rgba(16, 185, 129, 0.2);">' +
+          '<div style="font-size: 0.75rem; font-weight: 700; color: #047857; text-transform: uppercase;">Tổng Dịch Thực Truyền</div>' +
+          '<div style="font-size: 1.35rem; font-weight: 800; color: #047857; margin: 3px 0;">' + formatNum(totalInfusedAll) + ' ml</div>' +
+          '<div style="font-size: 0.75rem; color: var(--color-text-muted, #64748b);">Tương đương ~<strong>' + (totalInfusedAll / calcWeight).toFixed(1) + ' ml/kg</strong></div>' +
+        '</div>' +
+        '<div style="padding: 0.85rem; border-radius: 8px; background: rgba(245, 158, 11, 0.06); border: 1px solid rgba(245, 158, 11, 0.2);">' +
+          '<div style="font-size: 0.75rem; font-weight: 700; color: #b45309; text-transform: uppercase;">Chai ' + bottleSize + 'ml Cần Chuẩn Bị</div>' +
+          '<div style="font-size: 1.35rem; font-weight: 800; color: #b45309; margin: 3px 0;">' + totalBottlesAll + ' chai</div>' +
+          '<div style="font-size: 0.75rem; color: var(--color-text-muted, #64748b);">Tổng dịch xuất: ' + formatNum(totalBottlesAll * bottleSize) + ' ml</div>' +
+        '</div>' +
+        '<div style="padding: 0.85rem; border-radius: 8px; background: rgba(139, 92, 246, 0.06); border: 1px solid rgba(139, 92, 246, 0.2);">' +
+          '<div style="font-size: 0.75rem; font-weight: 700; color: #6d28d9; text-transform: uppercase;">Thời Gian Phác Đồ</div>' +
+          '<div style="font-size: 1.35rem; font-weight: 800; color: #6d28d9; margin: 3px 0;">' + totalHoursAll + ' giờ</div>' +
+          '<div style="font-size: 0.75rem; color: var(--color-text-muted, #64748b);">' + protocolSteps.length + ' cữ giảm liều liên tục</div>' +
+        '</div>' +
+      '</div>' +
+
+      (isOverweight ?
+        '<div style="margin-bottom: 1rem; padding: 0.75rem 1rem; border-radius: 8px; background: rgba(220, 38, 38, 0.08); border-left: 4px solid #dc2626; color: #991b1b; font-size: 0.85rem; line-height: 1.5;">' +
+          '<strong>⚠️ Cảnh báo thừa cân / béo phì:</strong> Bệnh nhân ' + age + ' tuổi có cân nặng thực tế ' + actualWeight + ' kg vượt quá 120% cân nặng chuẩn theo lứa tuổi. Hệ thống CDSS tự động áp dụng <strong>Cân nặng hiệu chỉnh CDC 2014 = ' + calcWeight + ' kg</strong> để lập bảng tính dịch nhằm phòng ngừa nguy cơ phù phổi cấp và quá tải thể tích.' +
+        '</div>' : '') +
+
+      '<!-- Title Table -->' +
+      '<div style="font-family: Plus Jakarta Sans, sans-serif; font-size: 0.95rem; font-weight: 800; color: #0284c7; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px;">' +
+        '<span><i class="fa-solid fa-table-list"></i> BẢNG KẾ HOẠCH &amp; THEO DÕI CHAI DỊCH TRUYỀN TỪNG CỮ: ' + groupLabel.toUpperCase() + ' — ' + stageLabel.toUpperCase() + '</span>' +
+        '<span style="font-size: 0.78rem; font-weight: 600; color: var(--color-text-muted, #64748b);"><i class="fa-solid fa-circle-info"></i> Dịch dư cuối cữ tự động chuyển làm dịch có sẵn cữ kế</span>' +
+      '</div>' +
+
+      '<!-- Table Responsive -->' +
+      '<div class="table-responsive">' +
+        '<table class="table-modern" style="margin: 0; font-size: 0.88rem;">' +
+          '<thead style="background: rgba(2, 132, 199, 0.08);">' +
+            '<tr>' +
+              '<th style="width: 17%; font-weight: 800; color: #0284c7;">Mốc thời gian</th>' +
+              '<th style="width: 12%; font-weight: 800; color: #0284c7;">Tốc độ</th>' +
+              '<th style="width: 17%; font-weight: 800; color: #0284c7;">Lượng dịch cần truyền</th>' +
+              '<th style="width: 24%; font-weight: 800; color: #0284c7;">Dịch có sẵn / Treo thêm chai mới (' + bottleSize + ' ml)</th>' +
+              '<th style="width: 10%; font-weight: 800; color: #0284c7;">Tổng dịch chuẩn bị tại cọc</th>' +
+              '<th style="width: 10%; font-weight: 800; color: #0284c7;">Lượng dịch thực truyền</th>' +
+              '<th style="width: 10%; font-weight: 800; color: #0284c7;">Dịch dư cuối cữ (chuyển tiếp)</th>' +
+            '</tr>' +
+          '</thead>' +
+          '<tbody>' +
+            tableRowsHtml +
+          '</tbody>' +
+          '<tfoot style="background: rgba(2, 132, 199, 0.04); font-weight: 800;">' +
+            '<tr>' +
+              '<td colspan="2">Tổng Phác Đồ: ' + totalHoursAll + ' giờ</td>' +
+              '<td>' + formatNum(totalInfusedAll) + ' ml</td>' +
+              '<td>Chuẩn bị ' + totalBottlesAll + ' chai ' + bottleSize + 'ml</td>' +
+              '<td>' + formatNum(totalBottlesAll * bottleSize) + ' ml</td>' +
+              '<td style="color: #0284c7;">' + formatNum(totalInfusedAll) + ' ml</td>' +
+              '<td style="color: #10b981;">Dư cuối: ' + formatNum(prevRemnant) + ' ml</td>' +
+            '</tr>' +
+          '</tfoot>' +
+        '</table>' +
+      '</div>' +
+
+      '<!-- Clinical Notes & Vasoactive -->' +
+      '<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 1rem;">' +
+        '<div style="padding: 0.85rem; border-radius: 8px; background: rgba(2, 132, 199, 0.04); border: 1px solid rgba(2, 132, 199, 0.15);">' +
+          '<div style="font-weight: 800; font-size: 0.85rem; color: #0284c7; margin-bottom: 4px;">' +
+            '<i class="fa-solid fa-syringe"></i> Vận Mạch Bơm Tiêm Điện 50ml (Khi Sốc Trơ Dịch):' +
+          '</div>' +
+          '<div style="font-size: 0.82rem; line-height: 1.6; color: var(--color-text, #334155);">' +
+            '• <strong>Dopamin:</strong> Lấy <em>3 × ' + calcWeight + ' = ' + dopaMg + ' mg</em> pha vừa đủ 50ml G5%/NaCl 0.9%. Tốc độ <strong>1 ml/h = 1 µg/kg/phút</strong>.<br />' +
+            '• <strong>Noradrenalin:</strong> Lấy <em>0.3 × ' + calcWeight + ' = ' + noraMg + ' mg</em> pha vừa đủ 50ml. Tốc độ <strong>1 ml/h = 0.1 µg/kg/phút</strong>.' +
+          '</div>' +
+        '</div>' +
+
+        '<div style="padding: 0.85rem; border-radius: 8px; background: rgba(16, 185, 129, 0.04); border: 1px solid rgba(16, 185, 129, 0.15);">' +
+          '<div style="font-weight: 800; font-size: 0.85rem; color: #047857; margin-bottom: 4px;">' +
+            '<i class="fa-solid fa-clipboard-check"></i> Quy Trình Điều Dưỡng An Toàn (HKKK):' +
+          '</div>' +
+          '<div style="font-size: 0.82rem; line-height: 1.6; color: var(--color-text, #334155);">' +
+            '• <strong>Đo Hct &amp; Sinh hiệu:</strong> Kiểm tra mạch, HA, Hct trước mỗi lần giảm tốc độ truyền.<br />' +
+            '• <strong>Lượng nước tiểu:</strong> Duy trì ≥ 0.5–1 ml/kg/giờ. Báo bác sĩ ngay nếu nước tiểu &lt; 0.5 ml/kg/h.<br />' +
+            '• <strong>Bàn giao cữ trực:</strong> Ghi nhận chính xác lượng dịch dư tại cọc vào sổ theo dõi.' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+
+    resultBox.innerHTML = html;
+  };
+
+  btnCalc.addEventListener('click', calculateCDSS);
+
+  if (selectGroup) {
+    selectGroup.addEventListener('change', () => {
+      const val = selectGroup.value;
+      if (inputAge && inputWeight) {
+        if (val === 'adult') {
+          if (parseInt(inputAge.value) < 16) inputAge.value = '25';
+          if (parseFloat(inputWeight.value) < 35) inputWeight.value = '46';
+        } else if (val === 'child') {
+          if (parseInt(inputAge.value) >= 13 || parseInt(inputAge.value) < 1) inputAge.value = '8';
+          if (parseFloat(inputWeight.value) > 45) inputWeight.value = '38';
+        } else if (val === 'teen') {
+          if (parseInt(inputAge.value) < 13 || parseInt(inputAge.value) > 16) inputAge.value = '14';
+          if (parseFloat(inputWeight.value) < 40) inputWeight.value = '50';
+        }
+      }
+      calculateCDSS();
+    });
+  }
+
+  if (selectStage) selectStage.addEventListener('change', calculateCDSS);
+  if (inputTime) inputTime.addEventListener('input', calculateCDSS);
+  if (inputWeight) inputWeight.addEventListener('input', calculateCDSS);
+  if (inputAge) inputAge.addEventListener('input', calculateCDSS);
+  if (selectGender) selectGender.addEventListener('change', calculateCDSS);
+  if (selectBottle) selectBottle.addEventListener('change', calculateCDSS);
+
+  if (btnPresetAdultShock) {
+    btnPresetAdultShock.addEventListener('click', () => {
+      if (selectGroup) selectGroup.value = 'adult';
+      if (selectStage) selectStage.value = 'shock';
+      if (inputWeight) inputWeight.value = '46';
+      if (inputAge) inputAge.value = '25';
+      if (selectGender) selectGender.value = 'male';
+      if (inputTime) inputTime.value = '11:20';
+      if (selectBottle) selectBottle.value = '500';
+      calculateCDSS();
+    });
+  }
+
+  if (btnPresetChildShock) {
+    btnPresetChildShock.addEventListener('click', () => {
+      if (selectGroup) selectGroup.value = 'child';
+      if (selectStage) selectStage.value = 'shock';
+      if (inputWeight) inputWeight.value = '38';
+      if (inputAge) inputAge.value = '8';
+      if (selectGender) selectGender.value = 'male';
+      if (inputTime) inputTime.value = '08:00';
+      if (selectBottle) selectBottle.value = '500';
+      calculateCDSS();
+    });
+  }
+
+  if (btnPresetTeenWarning) {
+    btnPresetTeenWarning.addEventListener('click', () => {
+      if (selectGroup) selectGroup.value = 'teen';
+      if (selectStage) selectStage.value = 'warning';
+      if (inputWeight) inputWeight.value = '50';
+      if (inputAge) inputAge.value = '14';
+      if (selectGender) selectGender.value = 'female';
+      if (inputTime) inputTime.value = '14:00';
+      if (selectBottle) selectBottle.value = '500';
+      calculateCDSS();
+    });
+  }
+
+  if (btnPresetAdultSevere) {
+    btnPresetAdultSevere.addEventListener('click', () => {
+      if (selectGroup) selectGroup.value = 'adult';
+      if (selectStage) selectStage.value = 'severe_shock';
+      if (inputWeight) inputWeight.value = '55';
+      if (inputAge) inputAge.value = '35';
+      if (selectGender) selectGender.value = 'male';
+      if (inputTime) inputTime.value = '10:15';
+      if (selectBottle) selectBottle.value = '500';
+      calculateCDSS();
+    });
+  }
+
+  if (btnCopy) {
+    btnCopy.addEventListener('click', () => {
+      if (!lastGeneratedTableText) {
+        calculateCDSS();
+      }
+      navigator.clipboard.writeText(lastGeneratedTableText).then(() => {
+        const origText = btnCopy.innerHTML;
+        btnCopy.innerHTML = '<i class="fa-solid fa-check" style="color: #10b981;"></i> Đã Sao Chép Bảng!';
+        btnCopy.style.borderColor = '#10b981';
+        setTimeout(() => {
+          btnCopy.innerHTML = origText;
+          btnCopy.style.borderColor = 'var(--color-border, #cbd5e1)';
+        }, 2500);
+      }).catch(err => {
+        alert('Không thể sao chép tự động: ' + err);
+      });
+    });
+  }
+
+  // Run calculation immediately on load!
+  calculateCDSS();
+}
+
+/**
+ * Execute any embedded scripts in MDX safely
+ */
+function executeEmbeddedScripts(mountEl: HTMLElement): void {
+  mountEl.querySelectorAll('script').forEach(script => {
+    let code = script.textContent || '';
+    if (!script.src && code.trim()) {
+      let cleanCode = code.trim();
+      if (cleanCode.startsWith('{String.raw`') && cleanCode.endsWith('`}')) {
+        cleanCode = cleanCode.slice('{String.raw`'.length, -2);
+      } else if (cleanCode.startsWith('{`') && cleanCode.endsWith('`}')) {
+        cleanCode = cleanCode.slice(2, -2);
+      }
+      try {
+        const runScript = new Function(cleanCode);
+        runScript();
+      } catch (err) {
+        console.debug('MDX script execution note:', err);
+      }
     }
   });
 }

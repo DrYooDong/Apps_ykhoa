@@ -83,8 +83,23 @@ export class CliniMdxEngine {
       return `\n\n${placeholder}\n\n`;
     };
 
+    // 2.5. Bảo vệ các khối <script> và <style> khỏi bị markdown parser và formatInline phá hoại cú pháp
+    let preprocessedBody = cleanBody.replace(/<script(?:\s+[^>]*)?>([\s\S]*?)<\/script>/gi, (_full, scriptContent) => {
+      let code = scriptContent.trim();
+      if (code.startsWith('{String.raw`') && code.endsWith('`}')) {
+        code = code.slice('{String.raw`'.length, -2);
+      } else if (code.startsWith('{`') && code.endsWith('`}')) {
+        code = code.slice(2, -2);
+      }
+      return stashBlock(`<script type="text/javascript">${code}</script>`);
+    });
+
+    preprocessedBody = preprocessedBody.replace(/<style(?:\s+[^>]*)?>([\s\S]*?)<\/style>/gi, (_full, styleContent) => {
+      return stashBlock(`<style>${styleContent}</style>`);
+    });
+
     // 3. Chuyển đổi Custom MDX Components với Frontmatter Context và lưu vào stash
-    let transformedBody = this.transformCustomComponents(cleanBody, frontmatter, stashBlock);
+    let transformedBody = this.transformCustomComponents(preprocessedBody, frontmatter, stashBlock);
 
     // 4. Chuyển đổi Markdown cú pháp chuẩn
     const { html, toc } = this.renderMarkdown(transformedBody);
