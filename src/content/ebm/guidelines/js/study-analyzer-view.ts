@@ -3,7 +3,14 @@
  * Path: src/content/ebm/guidelines/study-analyzer-view.ts
  */
 
-import { escapeHtml } from '../../../docspace/docspace-view';
+function escapeHtml(str?: string): string {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
 import { EbmStatisticsEngine, Rob2Evaluator, GradeProfiler, EbmReportGenerator, EbmStatisticalResults, Rob2Assessment, GradeAssessment } from './study-analyzer-suite';
 
 export function renderStudyAnalyzerView(): string {

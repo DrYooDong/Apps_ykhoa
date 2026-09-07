@@ -793,7 +793,10 @@ export function createSoapFromCurrentGuideline(): void {
   const hash = window.location.hash || '';
   const match = hash.match(/kho-guidelines\/([^\/?#]+)/i) || hash.match(/reader\/([^\/?#]+)/i);
   const slug = match ? match[1] : breadcrumbTitle;
-  window.location.hash = `#/docspace/soap?from_guideline=${encodeURIComponent(slug)}`;
+  
+  // Điều hướng chính xác sang DocSpace Clinical Case Analysis kèm tham số URL from_guideline
+  const targetUrl = `../../docspace/index.html?from_guideline=${encodeURIComponent(slug)}`;
+  window.location.href = targetUrl;
 }
 
 /**
