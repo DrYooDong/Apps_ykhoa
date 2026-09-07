@@ -51,4 +51,3 @@ icd10:
 
 ---
 
-👉 Bạn có muốn tôi thiết kế một **Bảng thực đơn mẫu giàu đạm, ít muối trong 1 tuần** được cá thể hóa cho người bệnh xơ gan chướng bụng nước tại nhà để giúp gia đình dễ dàng chuẩn bị bữa ăn không?

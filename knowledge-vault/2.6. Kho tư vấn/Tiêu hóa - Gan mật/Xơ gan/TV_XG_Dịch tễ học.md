@@ -53,5 +53,3 @@ icd10:
 4. Alsudaney M, Ayoub W, Kosari K, et al. Pathophysiology of liver cirrhosis and risk correlation between immune status and the pathogenesis of hepatocellular carcinoma. _Hepatoma Res_. 2025;11:7. doi:10.20517/2394-5079.2024.141.
 
 ---
-
-👉 Bạn có muốn tôi giúp thiết kế một **Bảng thực đơn mẫu trong 1 tuần** được cá thể hóa cho người bệnh gan nhiễm mỡ hoặc xơ gan do rượu để hỗ trợ gia đình dễ dàng chăm sóc dinh dưỡng hàng ngày tại nhà không?

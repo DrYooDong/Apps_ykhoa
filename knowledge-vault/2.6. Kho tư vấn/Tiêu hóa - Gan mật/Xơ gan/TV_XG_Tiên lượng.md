@@ -57,4 +57,3 @@ icd10:
 
 ---
 
-👉 Bạn có muốn tôi giúp xây dựng một **Kế hoạch ăn uống và sinh hoạt hàng ngày chuẩn y khoa** giúp người bệnh cung cấp tối đa năng lượng, bảo vệ khối cơ bắp và đẩy nhanh tiến trình đạt trạng thái "tái bù lâm sàng" an toàn tại nhà không?

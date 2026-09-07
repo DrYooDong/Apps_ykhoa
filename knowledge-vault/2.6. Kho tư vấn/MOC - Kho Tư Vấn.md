@@ -145,6 +145,43 @@ graph TD
 | **Viêm màng não: Dịch tễ học & Tiêm chủng** | `Ngoai` | `dich-te-hoc` | `G00` | [[Truyền nhiễm/Viêm màng não/TV_VMN_Dịch tễ học\|TV_VMN_Dịch tễ học]] | ✅ Sẵn sàng |
 | **Viêm màng não: Phác đồ kháng sinh tĩnh mạch** | `Noi` | `phac-do` | `G00` | [[Truyền nhiễm/Viêm màng não/TV_VMN_Phác đồ điều trị\|TV_VMN_Phác đồ điều trị]] | ✅ Sẵn sàng |
 | **Viêm màng não: Tiên lượng & Di chứng** | `Noi` | `tien-luong` | `G00` | [[Truyền nhiễm/Viêm màng não/TV_VMN_Tiên lượng\|TV_VMN_Tiên lượng]] | ✅ Sẵn sàng |
+| **Viêm màng não: Phòng ngừa & Tiêm vắc-xin** | `Ngoai` | `phong-ngua` | `G00`, `Z23` | [[Truyền nhiễm/Viêm màng não/TV_VMN_Phòng ngừa\|TV_VMN_Phòng ngừa]] | ✅ Sẵn sàng |
+
+#### 4.5. Bệnh Bạch Hầu
+| Tên Kịch Bản | Context | Topic | ICD-10 | Tệp Ghi Chú | Trạng Thái |
+| :--- | :---: | :---: | :---: | :--- | :---: |
+| **Bạch hầu: Giả mạc & Biến chứng tim, thần kinh** | `CapCuu` | `bien-chung` | `A36` | [[Truyền nhiễm/Bạch hầu/TV_BH_Chẩn đoán & biến chứng\|TV_BH_Chẩn đoán & biến chứng]] | ✅ Sẵn sàng |
+| **Bạch hầu: Dịch tễ học & Giọt bắn hô hấp** | `Ngoai` | `dich-te-hoc` | `A36` | [[Truyền nhiễm/Bạch hầu/TV_BH_Dịch tễ học\|TV_BH_Dịch tễ học]] | ✅ Sẵn sàng |
+| **Bạch hầu: Phác đồ DAT, Kháng sinh & Cách ly** | `Noi` | `phac-do` | `A36` | [[Truyền nhiễm/Bạch hầu/TV_BH_Phác đồ điều trị\|TV_BH_Phác đồ điều trị]] | ✅ Sẵn sàng |
+| **Bạch hầu: Phòng ngừa & Vắc-xin phối hợp** | `Ngoai` | `phong-ngua` | `A36`, `Z20.8` | [[Truyền nhiễm/Bạch hầu/TV_BH_Phòng ngừa\|TV_BH_Phòng ngừa]] | ✅ Sẵn sàng |
+| **Bạch hầu: Tiên lượng & Biến chứng viêm cơ tim** | `Noi` | `tien-luong` | `A36` | [[Truyền nhiễm/Bạch hầu/TV_BH_Tiên lượng\|TV_BH_Tiên lượng]] | ✅ Sẵn sàng |
+
+#### 4.6. Bệnh Cúm Mùa
+| Tên Kịch Bản | Context | Topic | ICD-10 | Tệp Ghi Chú | Trạng Thái |
+| :--- | :---: | :---: | :---: | :--- | :---: |
+| **Cúm mùa: Chẩn đoán & Biến chứng viêm phổi** | `Ngoai` | `bien-chung` | `J10`, `J11` | [[Truyền nhiễm/Cúm/TV_Cúm_Chẩn đoán & Biến chứng\|TV_Cúm_Chẩn đoán & Biến chứng]] | ✅ Sẵn sàng |
+| **Cúm mùa: Dịch tễ học & Nhóm nguy cơ cao** | `Ngoai` | `dich-te-hoc` | `J10`, `J11` | [[Truyền nhiễm/Cúm/TV_Cúm_Dịch tễ học\|TV_Cúm_Dịch tễ học]] | ✅ Sẵn sàng |
+| **Cúm mùa: Phác đồ Oseltamivir & Chăm sóc** | `Ngoai` | `phac-do` | `J10`, `J11` | [[Truyền nhiễm/Cúm/TV_Cúm_Phác đồ điều trị\|TV_Cúm_Phác đồ điều trị]] | ✅ Sẵn sàng |
+| **Cúm mùa: Phòng ngừa & Tiêm chủng hàng năm** | `Ngoai` | `phong-ngua` | `J10`, `Z25.1` | [[Truyền nhiễm/Cúm/TV_Cúm_Phòng ngừa\|TV_Cúm_Phòng ngừa]] | ✅ Sẵn sàng |
+| **Cúm mùa: Tiên lượng & Khả năng hồi phục** | `Ngoai` | `tien-luong` | `J10`, `J11` | [[Truyền nhiễm/Cúm/TV_Cúm_Tiên lượng\|TV_Cúm_Tiên lượng]] | ✅ Sẵn sàng |
+
+#### 4.7. Nhiễm HIV / AIDS
+| Tên Kịch Bản | Context | Topic | ICD-10 | Tệp Ghi Chú | Trạng Thái |
+| :--- | :---: | :---: | :---: | :--- | :---: |
+| **HIV: 3 xét nghiệm khẳng định & Đo CD4** | `Ngoai` | `bien-chung` | `B20`, `Z21` | [[Truyền nhiễm/HIV/TV_HIV_Chẩn đoán & biến chứng\|TV_HIV_Chẩn đoán & biến chứng]] | ✅ Sẵn sàng |
+| **HIV: Dịch tễ học, Đường lây & K=K** | `Ngoai` | `dich-te-hoc` | `B20` | [[Truyền nhiễm/HIV/TV_HIV_Dịch tễ học\|TV_HIV_Dịch tễ học]] | ✅ Sẵn sàng |
+| **HIV: Khởi động ART trong ngày & Tuân thủ** | `Ngoai` | `phac-do` | `B20` | [[Truyền nhiễm/HIV/TV_HIV_Phác đồ điều trị\|TV_HIV_Phác đồ điều trị]] | ✅ Sẵn sàng |
+| **HIV: Dự phòng PrEP, PEP & Bảo vệ bạn đời** | `Ngoai` | `phong-ngua` | `Z20.6`, `Z21` | [[Truyền nhiễm/HIV/TV_HIV_Phòng ngừa\|TV_HIV_Phòng ngừa]] | ✅ Sẵn sàng |
+| **HIV: Tiên lượng sống & Tuổi thọ bình thường** | `Ngoai` | `tien-luong` | `B20` | [[Truyền nhiễm/HIV/TV_HIV_Tiên lượng\|TV_HIV_Tiên lượng]] | ✅ Sẵn sàng |
+
+#### 4.8. Bệnh Sốt Rét
+| Tên Kịch Bản | Context | Topic | ICD-10 | Tệp Ghi Chú | Trạng Thái |
+| :--- | :---: | :---: | :---: | :--- | :---: |
+| **Sốt rét: Cơn sốt 3 giai đoạn & Cảnh báo ác tính** | `Ngoai` | `bien-chung` | `B50`, `B54` | [[Truyền nhiễm/Sốt rét/TV_SR_Chẩn đoán & Biến chứng\|TV_SR_Chẩn đoán & Biến chứng]] | ✅ Sẵn sàng |
+| **Sốt rét: Muỗi Anopheles & Vùng dịch tễ** | `Ngoai` | `dich-te-hoc` | `B50`, `B54` | [[Truyền nhiễm/Sốt rét/TV_SR_Dịch tễ học\|TV_SR_Dịch tễ học]] | ✅ Sẵn sàng |
+| **Sốt rét: Phác đồ thuốc ACT & Diệt thể ngủ gan** | `Ngoai` | `phac-do` | `B50`, `B51` | [[Truyền nhiễm/Sốt rét/TV_SR_Phác đồ điều trị\|TV_SR_Phác đồ điều trị]] | ✅ Sẵn sàng |
+| **Sốt rét: Nằm màn tẩm hóa chất & Dự phòng du lịch** | `Ngoai` | `phong-ngua` | `B54`, `Z20.8` | [[Truyền nhiễm/Sốt rét/TV_SR_Phòng ngừa\|TV_SR_Phòng ngừa]] | ✅ Sẵn sàng |
+| **Sốt rét: Tiên lượng & Cấp cứu sốt rét ác tính** | `Noi` | `tien-luong` | `B50`, `B54` | [[Truyền nhiễm/Sốt rét/TV_SR_Tiên lượng\|TV_SR_Tiên lượng]] | ✅ Sẵn sàng |
 
 ---
 
