@@ -1299,15 +1299,17 @@ export function mountSoapController(profileId: string): void {
 
   // Tự động nạp dữ liệu từ Knowledge Vault (1-Click Vault Article to SOAP)
   const fromVaultTitle = urlParams.get('from_vault');
+  const fromVaultIcd = urlParams.get('from_vault_icd') || '';
   if (fromVaultTitle) {
     const allSoap = getAllSoapPatients(profileId);
-    let targetSoap = allSoap.find(s => s.admissionDiagnosis === fromVaultTitle || s.currentDiagnosis === fromVaultTitle);
+    let targetSoap = allSoap.find(s => s.admissionDiagnosis === fromVaultTitle || s.currentDiagnosis === fromVaultTitle || (fromVaultIcd && s.icd10Code === fromVaultIcd));
 
-    const aAssessment = `[Chẩn đoán & Tham chiếu Tri Thức Vault]:\n• Chẩn đoán chính: ${fromVaultTitle}\n• Tra cứu chuỗi bệnh học: Cơ chế SLB ➔ Tiêu chuẩn chẩn đoán ➔ Phác đồ điều trị ➔ Biến chứng.`;
+    const diagLabel = fromVaultIcd ? `${fromVaultTitle} (${fromVaultIcd})` : fromVaultTitle;
+    const aAssessment = `[Chẩn đoán & Tham chiếu Tri Thức Vault]:\n• Chẩn đoán chính: ${fromVaultTitle}${fromVaultIcd ? ` (Mã ICD: ${fromVaultIcd})` : ''}\n• Tra cứu chuỗi bệnh học: Cơ chế SLB ➔ Tiêu chuẩn chẩn đoán ➔ Phác đồ điều trị ➔ Biến chứng.`;
     const pPlan = `[Kế hoạch Điều trị & Theo dõi]:\n• [Tham chiếu Phác đồ Vault: ${fromVaultTitle}]\n• Đánh giá đáp ứng lâm sàng sau 24-48 giờ.`;
 
     if (!targetSoap) {
-      const patientCode = `VAULT-${Date.now().toString().slice(-4)}`;
+      const patientCode = fromVaultIcd ? `VAULT-${fromVaultIcd.replace(/[^a-zA-Z0-9]/g, '')}` : `VAULT-${Date.now().toString().slice(-4)}`;
       const fullName = `Ca Thực Hành: ${fromVaultTitle}`;
       targetSoap = saveSoapPatient(profileId, {
         patientCode,
@@ -1316,8 +1318,10 @@ export function mountSoapController(profileId: string): void {
         age: 55,
         gender: 'nam',
         medicalRecordNo: patientCode,
-        admissionDiagnosis: fromVaultTitle,
-        currentDiagnosis: fromVaultTitle,
+        admissionDiagnosis: diagLabel,
+        currentDiagnosis: diagLabel,
+        icd10Code: fromVaultIcd,
+        icd10Label: diagLabel,
         isEmrEntered: false,
         soapStatus: 'da_lam',
         dayOfIllness: 1,
@@ -1332,6 +1336,55 @@ export function mountSoapController(profileId: string): void {
 
     // Mở ngay modal chỉnh sửa SOAP cho ca này
     window.location.hash = `#/docspace/soap?edit=${targetSoap.id}`;
+  }
+
+  // Tự động nạp ca bệnh từ Web App Tra Cứu ICD-10 của Knowledge Vault
+  const fromIcdCase = urlParams.get('from_icd_case');
+  if (fromIcdCase === '1') {
+    const rawData = localStorage.getItem('dsp_pending_icd_case');
+    if (rawData) {
+      try {
+        const caseData = JSON.parse(rawData);
+        const primaryCode = caseData.primaryCode || 'R69';
+        const primaryName = caseData.primaryName || 'Chưa rõ chẩn đoán';
+        const primaryFull = `${primaryName} (${primaryCode})`;
+        const secondaryLines = (caseData.secondaries || []).map((s: any) => `• Bệnh kèm: ${s.name} (${s.code})`).join('\n');
+
+        const aAssessment = `[Chẩn đoán Xác định Theo ICD-10 Bộ Y Tế]:\n• Bệnh chính: ${primaryName} (Mã ICD: ${primaryCode})\n${secondaryLines ? `${secondaryLines}\n` : ''}• Thẩm định hồ sơ: Đã đối soát quy tắc mã hóa chuẩn BHYT TT 06/2026.`;
+        const pPlan = `[Kế hoạch Điều trị & Theo dõi]:\n• Phác đồ bệnh chính: Kiểm soát tích cực ${primaryName}.\n• Theo dõi tương thích cận lâm sàng và thuốc BHYT theo Thông tư 35 & 30.`;
+
+        const patientCode = `ICD-${primaryCode.replace(/[^a-zA-Z0-9]/g, '')}-${Date.now().toString().slice(-4)}`;
+        const fullName = `Ca Bệnh: ${primaryName}`;
+
+        const newPatient = saveSoapPatient(profileId, {
+          patientCode,
+          bedNumber: 'PK-Nội Ngoại Trú',
+          fullName,
+          age: 58,
+          gender: 'nam',
+          medicalRecordNo: patientCode,
+          admissionDiagnosis: primaryFull,
+          currentDiagnosis: primaryFull,
+          icd10Code: primaryCode,
+          icd10Label: primaryFull,
+          isEmrEntered: false,
+          soapStatus: 'da_lam',
+          dayOfIllness: 1,
+          sNotes: `[Lý do nhập viện]: Khám và điều trị ${primaryName}.`,
+          oNotes: `Sinh hiệu: Mạch 80 l/p, Huyết áp 120/80 mmHg, Thở 18 l/p, SpO2 98%.`,
+          aAssessment,
+          pPlan,
+          clsOrders: [],
+          clsResults: []
+        });
+
+        localStorage.removeItem('dsp_pending_icd_case');
+        window.location.hash = `#/docspace/soap?edit=${newPatient.id}`;
+        return;
+      } catch (err) {
+        console.error('Lỗi khi nạp ca bệnh ICD từ Vault:', err);
+      }
+    }
   }
 
   // Tự động nạp dữ liệu từ Guideline Radar (1-Click Guideline Diff to SOAP)

@@ -68,7 +68,8 @@ const KHO_CONFIG = {
   '3.3. Kho cận lâm sàng & xét nghiệm': { code: 'cls', loai: 'lab' },
   'Kho dinh dưỡng lâm sàng': { code: 'tv', loai: 'nutrition' },
   'Kho nghiên cứu khoa học & EBM': { code: 'ebm', loai: 'ebm' },
-  'Kho chưa lọc': { code: 'raw', loai: 'draft' }
+  'Kho CDSS': { code: 'cdss', loai: 'cdss' },
+  'Kho ICD-10': { code: 'icd10', loai: 'icd10' }
 };
 
 function walkSync(dir, filelist = []) {

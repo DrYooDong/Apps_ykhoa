@@ -191,7 +191,12 @@ export class IcdPicker {
               <p style="margin:2px 0 0 0; font-size:11.5px; color:var(--color-text-muted);">Tìm kiếm không dấu tiếng Việt, tự động gắn kết Phác đồ điều trị, Thang điểm &amp; Thuốc gợi ý</p>
             </div>
           </div>
-          <button id="btnCloseIcdPicker" style="background:none; border:none; font-size:24px; cursor:pointer; color:var(--color-text-muted);">&times;</button>
+          <div style="display:flex; align-items:center; gap:8px;">
+            <a href="../knowledge-vault/tools/icd10/index.html" target="_blank" class="dsp-btn dsp-btn-sm dsp-btn-outline" style="text-decoration:none; display:inline-flex; align-items:center; gap:6px; font-size:11.5px; font-weight:700; color:var(--color-primary); border:1px solid var(--color-primary); padding:4px 10px; border-radius:6px;" title="Mở ứng dụng Tra cứu 15.844 mã & Thẩm định BHYT trong tab mới">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> Web App Tra Cứu (15.844 mã)
+            </a>
+            <button id="btnCloseIcdPicker" style="background:none; border:none; font-size:24px; cursor:pointer; color:var(--color-text-muted);">&times;</button>
+          </div>
         </div>
         
         <!-- Search Bar -->
@@ -223,34 +228,60 @@ export class IcdPicker {
   }
 
   private async loadIcdData() {
+    // 1. Nếu window.ICD10_DATA đã có sẵn trong bộ nhớ (15.844 mã bệnh chuẩn Bộ Y tế)
+    if ((window as any).ICD10_DATA && Array.isArray((window as any).ICD10_DATA) && (window as any).ICD10_DATA.length > 0) {
+      this.fullIcdList = (window as any).ICD10_DATA.map((item: any) => ({
+        code: item.code,
+        name: item.name,
+        nameEn: item.nameEn,
+        chapter: item.chapter ? `Chương ${item.chapter}` : undefined
+      }));
+      return;
+    }
+
     if ((window as any).ICD10_DB && Array.isArray((window as any).ICD10_DB)) {
       this.fullIcdList = (window as any).ICD10_DB;
       return;
     }
 
-    const candidatePaths = [
-      'src/content/approaches/data/icd10-db.json',
-      './src/content/approaches/data/icd10-db.json',
-      '../src/content/approaches/data/icd10-db.json'
+    // 2. Nạp động script icd10-data.js từ Knowledge Vault
+    const candidateScriptPaths = [
+      '../knowledge-vault/tools/icd10/icd10-data.js',
+      './src/content/knowledge-vault/tools/icd10/icd10-data.js',
+      'src/content/knowledge-vault/tools/icd10/icd10-data.js',
+      '/src/content/knowledge-vault/tools/icd10/icd10-data.js'
     ];
 
-    for (const path of candidatePaths) {
+    for (const scriptPath of candidateScriptPaths) {
       try {
-        const resp = await fetch(path);
-        if (resp.ok) {
-          const data = await resp.json();
-          if (Array.isArray(data) && data.length > 0) {
-            (window as any).ICD10_DB = data;
-            this.fullIcdList = data;
+        await new Promise<void>((resolve, reject) => {
+          const existingScript = document.querySelector(`script[src="${scriptPath}"]`);
+          if (existingScript) {
+            resolve();
             return;
           }
+          const script = document.createElement('script');
+          script.src = scriptPath;
+          script.onload = () => resolve();
+          script.onerror = () => reject(new Error('Load script failed'));
+          document.head.appendChild(script);
+        });
+
+        if ((window as any).ICD10_DATA && Array.isArray((window as any).ICD10_DATA) && (window as any).ICD10_DATA.length > 0) {
+          this.fullIcdList = (window as any).ICD10_DATA.map((item: any) => ({
+            code: item.code,
+            name: item.name,
+            nameEn: item.nameEn,
+            chapter: item.chapter ? `Chương ${item.chapter}` : undefined
+          }));
+          return;
         }
       } catch {
-        // Fallback to embedded
+        // Thử đường dẫn tiếp theo
       }
     }
 
-    // Default fallback to Core Database
+    // 3. Fallback danh mục cơ bản
     this.fullIcdList = CORE_ICD10_DATABASE;
   }
 
@@ -363,6 +394,23 @@ export class IcdPicker {
             </div>
             <div style="font-size:12.5px; color:var(--color-text); line-height:1.5;">
               ${escapeHtml(orderSet.summary)}
+            </div>
+          </div>
+
+          <!-- Knowledge Vault Guideline & BHYT Reference -->
+          <div style="background:var(--color-surface); border:1px solid var(--color-border); border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap;">
+            <div style="font-size:12px; display:flex; align-items:center; gap:8px; color:var(--color-text);">
+              <i class="fa-solid fa-book-medical" style="color:var(--color-primary); font-size:14px;"></i>
+              <span><strong>Tài liệu Kho ICD-10 Vault:</strong> ${
+                r.code.startsWith('S') || r.code.startsWith('T')
+                  ? (r.code.startsWith('T8') ? 'Quy tắc mã Biến chứng phẫu thuật & thủ thuật (T80–T88)' : 'Quy tắc mã kép Chấn thương & Ngộ độc (S/T + V–Y)')
+                  : (r.code.startsWith('O') || r.code.startsWith('P') ? 'Quy tắc mã hóa Sản phụ khoa & Chu sinh' : 'Cẩm nang mã hóa lâm sàng & Quy tắc BHYT')
+              }</span>
+            </div>
+            <div style="display:flex; gap:6px; align-items:center;">
+              <a href="../knowledge-vault/tools/icd10/index.html" target="_blank" class="dsp-btn dsp-btn-sm dsp-btn-ghost" style="font-size:11px; padding:3px 8px; color:var(--color-primary); text-decoration:none; border:1px solid var(--color-border); border-radius:6px;" title="Mở ứng dụng Tra cứu 15.844 mã & Thẩm định BHYT của Knowledge Vault">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i> Tra cứu BHYT 15.844 mã
+              </a>
             </div>
           </div>
 

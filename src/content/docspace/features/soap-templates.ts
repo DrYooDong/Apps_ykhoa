@@ -27,6 +27,7 @@ import { reactionChainDrawer } from './reaction-chain-drawer';
 import { renderProtocolQuickApplyBtn, renderSoapToProtocolBtn, initSoapAiBridgeEvents } from './ai-soap-features';
 import { checkClass3HarmConflicts, renderClass3AlertsHtml } from './ebm-class3-checker';
 import { auditHFrEFGDMT, renderGDMTScorecardHtml } from './gdmt-audit-engine';
+import { auditSoapForBhytCompliance, renderBhytAuditAlertsHtml } from './bhyt-audit-engine';
 
 export const ALERT_KEYWORDS = [
   'hạ kali', 'tụt kali', 'tăng kali',
@@ -706,6 +707,14 @@ export function renderEditSoapModalContent(p: SoapPatientRecord): string {
             return renderGDMTScorecardHtml(auditRes);
           }
           return '';
+        })()}
+
+        <!-- 🛡️ BHYT Audit Compliance Banner (Quy tắc xuất toán TT 35, 50, 30 & Kho ICD-10) -->
+        ${(() => {
+          const dxText = `${p.admissionDiagnosis || ''} ${p.currentDiagnosis || ''} ${p.aAssessment || ''} ${p.icd10Code || ''}`;
+          const clsText = p.clsOrders && p.clsOrders.length > 0 ? p.clsOrders.map(c => c.name || '').join(' ') : (p.oNotes || '');
+          const bhytAlerts = auditSoapForBhytCompliance(dxText, clsText, p.prescriptions || []);
+          return renderBhytAuditAlertsHtml(bhytAlerts);
         })()}
 
         <form id="formEditSoap">

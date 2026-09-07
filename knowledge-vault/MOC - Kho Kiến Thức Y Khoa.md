@@ -53,12 +53,13 @@ updated: "2026-08-11"
 | **12** | 🗣️ **Tư vấn** | `2.6. Kho tư vấn` & `Kho dinh dưỡng lâm sàng` | [[2.6. Kho tư vấn/MOC - Kho Tư Vấn|MOC Tư vấn]] |
 | **13** | 💔 **Biến chứng** | `2.5. Kho biến chứng` | [[2.5. Kho biến chứng/MOC - Kho Biến Chứng|MOC Biến chứng]] |
 
-### 📊 3. Nhóm Hỗ Trợ (3 Kho)
+### 📊 3. Nhóm Hỗ Trợ (4 Kho)
 | STT | Phân Hệ / Kho Chuyên Môn | Thư Mục | Link MOC Phân Hệ |
 |:---:|:---|:---|:---|
 | **14** | 🧮 **Công cụ & Thang điểm** | `3.1. Kho công cụ & thang điểm` | [[3.1. Kho công cụ & thang điểm/MOC - Kho Công Cụ & Thang Điểm|MOC Công cụ & Thang điểm]] |
 | **15** | 📊 **NCKH & EBM** | `Kho nghiên cứu khoa học & EBM` | [[Kho nghiên cứu khoa học & EBM/MOC - Kho Nghiên Cứu Khoa Học & EBM|MOC NCKH & EBM]] |
-| **16** | 📦 **Kho chưa lọc** | `Kho chưa lọc` | [[Kho chưa lọc/MOC - Kho Chưa Lọc|MOC Kho chưa lọc]] |
+| **16** | 💻 **Kho CDSS** | `Kho CDSS` | [[Kho CDSS/MOC - Kho CDSS|MOC Kho CDSS]] |
+| **17** | 🏷️ **Kho ICD-10** | `Kho ICD-10` | [[Kho ICD-10/MOC - Kho ICD-10|MOC Kho ICD-10]] |
 
 ---
 

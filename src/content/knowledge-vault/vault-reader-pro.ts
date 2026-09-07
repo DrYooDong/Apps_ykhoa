@@ -356,6 +356,18 @@ export function processMarkdownWithToc(rawMarkdown: string, article?: VaultArtic
         <p class="vault-perspective-banner__desc">Kế hoạch Điều trị Nội trú, Hồi sức Truyền dịch & Tiêu chuẩn Xuất viện</p>
       </div>`;
     }
+    if (isKhoTuVan) {
+      const cleanTitle = article?.title || t;
+      const currentDate = new Date().toLocaleDateString('vi-VN');
+      return `<div class="vault-counseling-header-card">
+        <div class="vault-counseling-header-card__top">
+          <span class="vault-counseling-badge"><i class="fa-solid fa-heart-pulse"></i> CLINIPORTAL • TỜ RƠI DẶN DÒ Y KHOA</span>
+          <span class="vault-counseling-date"><i class="fa-regular fa-calendar-check"></i> Ngày dặn: ${currentDate}</span>
+        </div>
+        <h1 class="vault-counseling-title">${escapeHtml(cleanTitle)}</h1>
+        <p class="vault-counseling-desc">Bản hướng dẫn tự theo dõi an toàn, chế độ dùng thuốc, dinh dưỡng phục hồi và các dấu hiệu cảnh báo đỏ cần nhập viện khẩn cấp.</p>
+      </div>`;
+    }
     return `<h1 class="vault-h1">${t}</h1>`;
   });
 
@@ -486,21 +498,47 @@ export function processMarkdownWithToc(rawMarkdown: string, article?: VaultArtic
     </div>
   `;
 
-  if (isKhoTuVan && patBannerMatch) {
-    const patStart = patBannerMatch.index!;
-    const inpatStart = inpatBannerMatch ? inpatBannerMatch.index! : -1;
-    const preContent = clean.slice(0, patStart);
+  if (isKhoTuVan) {
+    const defaultCounselingHeader = `
+      <div class="vault-counseling-header-card">
+        <div class="vault-counseling-header-card__top">
+          <span class="vault-counseling-badge"><i class="fa-solid fa-heart-pulse"></i> CLINIPORTAL • TỜ RƠI DẶN DÒ Y KHOA</span>
+          <span class="vault-counseling-date"><i class="fa-regular fa-calendar-check"></i> Ngày dặn: ${currentDate}</span>
+        </div>
+        <h1 class="vault-counseling-title">${escapeHtml(articleTitle)}</h1>
+        <p class="vault-counseling-desc">Bản hướng dẫn tự theo dõi an toàn, chế độ dùng thuốc, dinh dưỡng phục hồi và các dấu hiệu cảnh báo đỏ cần nhập viện khẩn cấp.</p>
+      </div>
+    `;
 
-    if (inpatStart > patStart) {
-      const patContent = clean.slice(patStart, inpatStart) + patientLeafletFooter;
-      const inpatContent = clean.slice(inpatStart);
-      clean = `${preContent}
-        <div id="vault-perspective-patient" class="vault-perspective-block perspective-patient-block" style="display:block;">${patContent}</div>
-        <div id="vault-perspective-inpatient" class="vault-perspective-block perspective-inpatient-block" style="display:block;">${inpatContent}</div>`;
+    if (patBannerMatch) {
+      const patStart = patBannerMatch.index!;
+      const inpatStart = inpatBannerMatch ? inpatBannerMatch.index! : -1;
+      const preContent = clean.slice(0, patStart);
+
+      if (inpatStart > patStart) {
+        const patContent = clean.slice(patStart, inpatStart) + patientLeafletFooter;
+        const inpatContent = clean.slice(inpatStart);
+        clean = `${preContent}
+          <div id="vault-perspective-patient" class="vault-perspective-block perspective-patient-block" style="display:block;">${patContent}</div>
+          <div id="vault-perspective-inpatient" class="vault-perspective-block perspective-inpatient-block" style="display:block;">${inpatContent}</div>`;
+      } else {
+        const patContent = clean.slice(patStart) + patientLeafletFooter;
+        clean = `${preContent}
+          <div id="vault-perspective-patient" class="vault-perspective-block perspective-patient-block" style="display:block; border-left:none; padding-left:0;">${patContent}</div>`;
+      }
     } else {
-      const patContent = clean.slice(patStart) + patientLeafletFooter;
-      clean = `${preContent}
-        <div id="vault-perspective-patient" class="vault-perspective-block perspective-patient-block" style="display:block; border-left:none; padding-left:0;">${patContent}</div>`;
+      const inpatStart = inpatBannerMatch ? inpatBannerMatch.index! : -1;
+      if (inpatStart > -1) {
+        const patContent = defaultCounselingHeader + clean.slice(0, inpatStart) + patientLeafletFooter;
+        const inpatContent = clean.slice(inpatStart);
+        clean = `
+          <div id="vault-perspective-patient" class="vault-perspective-block perspective-patient-block" style="display:block; border-left:none; padding-left:0;">${patContent}</div>
+          <div id="vault-perspective-inpatient" class="vault-perspective-block perspective-inpatient-block" style="display:block;">${inpatContent}</div>`;
+      } else {
+        const patContent = defaultCounselingHeader + clean + patientLeafletFooter;
+        clean = `
+          <div id="vault-perspective-patient" class="vault-perspective-block perspective-patient-block" style="display:block; border-left:none; padding-left:0;">${patContent}</div>`;
+      }
     }
   } else if (docBannerMatch && patBannerMatch) {
     const docStart = docBannerMatch.index!;
@@ -1151,13 +1189,17 @@ export function attachReaderProEvents(drawerPanel: HTMLElement, onNavigateArticl
   const applySoapBtn = drawerPanel.querySelector('#btn-apply-to-soap');
   if (applySoapBtn) {
     applySoapBtn.addEventListener('click', () => {
+      const articleId = applySoapBtn.getAttribute('data-id');
+      const article = VAULT_CATALOG.find(a => a.id === articleId);
       const title = drawerPanel.querySelector('#vault-drawer-title')?.textContent || 'Tài liệu Knowledge Vault';
       const snippetEl = drawerPanel.querySelector('.vault-article-content');
       const snippet = snippetEl ? snippetEl.textContent?.slice(0, 400).trim() || '' : '';
+      const icdCode = (article && article.icd10 && article.icd10.length > 0) ? article.icd10[0] : '';
       
       const payload = {
         title,
-        evidence: `[EBM Vault]: ${title}\n• Trích dẫn hướng dẫn: ${snippet}`,
+        icd10: icdCode,
+        evidence: `[EBM Vault]: ${title}${icdCode ? ` (Mã ICD: ${icdCode})` : ''}\n• Trích dẫn hướng dẫn: ${snippet}`,
         appliedAt: new Date().toISOString()
       };
 
@@ -1169,7 +1211,8 @@ export function attachReaderProEvents(drawerPanel: HTMLElement, onNavigateArticl
         applySoapBtn.setAttribute('style', 'color:#10b981; font-weight:800; background:rgba(16,185,129,0.1); border-color:rgba(16,185,129,0.3);');
         
         setTimeout(() => {
-          window.location.hash = `#/docspace/soap?from_vault=${encodeURIComponent(title)}`;
+          const icdParam = icdCode ? `&from_vault_icd=${encodeURIComponent(icdCode)}` : '';
+          window.location.hash = `#/docspace/soap?from_vault=${encodeURIComponent(title)}${icdParam}`;
         }, 300);
       } catch (e) {
         alert(`Đã lưu trích dẫn bài viết "${title}" vào bộ đệm lâm sàng.`);

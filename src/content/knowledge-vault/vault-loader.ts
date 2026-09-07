@@ -26,10 +26,11 @@ export const KHO_DEFINITIONS: Record<string, { name: string; group: string; icon
   BC:   { name: 'Biến chứng',           group: 'Chuyên sâu', icon: 'fa-heart-crack',           color: '#ef4444' },
 
   // 3. Nhóm Hỗ trợ
-  CC:   { name: 'Công cụ & Thang điểm', group: 'Hỗ trợ', icon: 'fa-calculator',           color: '#f59e0b' },
-  EBM:  { name: 'NCKH & EBM',           group: 'Hỗ trợ', icon: 'fa-chart-pie',             color: '#64748b' },
-  RAW:  { name: 'Kho chưa lọc',         group: 'Hỗ trợ', icon: 'fa-box-archive',          color: '#78716c' },
-  CORE: { name: 'Thực thể Hạt nhân',    group: 'Hỗ trợ', icon: 'fa-dna',                  color: '#a855f7' }
+  CC:    { name: 'Công cụ & Thang điểm', group: 'Hỗ trợ', icon: 'fa-calculator',           color: '#f59e0b' },
+  EBM:   { name: 'NCKH & EBM',           group: 'Hỗ trợ', icon: 'fa-chart-pie',             color: '#64748b' },
+  CDSS:  { name: 'Kho CDSS',             group: 'Hỗ trợ', icon: 'fa-laptop-medical',        color: '#0284c7' },
+  ICD10: { name: 'Kho ICD-10',           group: 'Hỗ trợ', icon: 'fa-barcode',               color: '#0ea5e9' },
+  CORE:  { name: 'Thực thể Hạt nhân',    group: 'Hỗ trợ', icon: 'fa-dna',                  color: '#a855f7' }
 };
 
 /**

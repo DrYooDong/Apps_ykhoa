@@ -2600,46 +2600,94 @@
   /* Page Setup for A4 Leaflet */
   @page {
     size: A4 portrait;
-    margin: 15mm 15mm 15mm 15mm;
+    margin: 12mm 15mm 12mm 15mm;
   }
 
-  /* Hide entire website chrome & background */
-  body > *:not(#vault-drawer) {
+  /* 1. Global Reset: Remove all backgrounds, overflow traps, and fixed sizes */
+  html,
+  body {
+    background: #ffffff !important;
+    color: #111827 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+  }
+
+  /* 2. Hide entire website chrome & top navigation outside reader */
+  .vault-navbar,
+  .vault-hub-container,
+  #theme-toggle,
+  #vault-load-more,
+  .vault-modal-ctrl-btn {
     display: none !important;
   }
 
-  /* Keep #vault-drawer as the clean printable root container */
+  /* 3. Keep #vault-app as a transparent, auto-height block container */
+  #vault-app {
+    display: block !important;
+    position: static !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    background: transparent !important;
+  }
+
+  /* 4. Hide all siblings of #vault-drawer inside #vault-app */
+  #vault-app > *:not(#vault-drawer) {
+    display: none !important;
+  }
+
+  /* 5. Keep #vault-drawer as the clean printable root container */
   #vault-drawer,
   #vault-drawer.vault-modal-overlay,
+  #vault-drawer.vault-drawer-overlay,
   .vault-drawer-panel,
   .vault-modal-dialog {
     display: block !important;
     position: static !important;
+    inset: auto !important;
+    transform: none !important;
     background: #ffffff !important;
     color: #111827 !important;
     width: 100% !important;
     max-width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
     margin: 0 !important;
     padding: 0 !important;
     border: none !important;
+    border-radius: 0 !important;
     box-shadow: none !important;
     overflow: visible !important;
     opacity: 1 !important;
     visibility: visible !important;
   }
 
+  /* 6. Clean drawer body and article containers */
   .vault-modal-body,
   .vault-drawer-body,
-  .vault-article-content {
+  .vault-article-content,
+  .vault-counseling-content {
+    display: block !important;
+    position: static !important;
     background: #ffffff !important;
     color: #111827 !important;
     padding: 0 !important;
     margin: 0 !important;
     overflow: visible !important;
+    height: auto !important;
+    max-height: none !important;
+    min-height: 0 !important;
   }
 
-  /* Hide all UI Chrome and Doctor / Inpatient Content */
-  .vault-navbar,
+  /* 7. Hide all interactive UI tools, sidebars, doctor & inpatient sections */
   .vault-reader-toolbar,
   .vault-path-bar,
   .vault-toc-sidebar,
@@ -2652,14 +2700,18 @@
   .vault-perspective-banner--inpatient,
   .perspective-doctor-block,
   .perspective-inpatient-block,
-  #theme-toggle,
-  #vault-load-more,
-  .vault-modal-ctrl-btn {
+  .vault-encyclopedia-card,
+  .vault-obsidian-badge,
+  .vault-protocol-section,
+  .vault-flowchart-card,
+  .vault-wikilink-btn i,
+  .vault-ref-pill {
     display: none !important;
   }
 
-  /* Patient Leaflet is printed cleanly on A4 */
-  .perspective-patient-block {
+  /* 8. Patient Leaflet is printed cleanly on A4 */
+  .perspective-patient-block,
+  .vault-counseling-content {
     display: block !important;
     border: none !important;
     padding: 0 !important;
@@ -2672,10 +2724,7 @@
     display: block !important;
     width: 100% !important;
     margin: 0 !important;
-  }
-
-  .vault-ref-pill {
-    display: none !important;
+    padding: 0 !important;
   }
 
   .vault-patient-leaflet-banner,

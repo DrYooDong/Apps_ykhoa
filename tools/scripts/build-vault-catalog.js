@@ -32,7 +32,8 @@ const KHO_MAPPINGS = [
   // 3. Nhóm Hỗ trợ
   { dir: '3.1. Kho công cụ & thang điểm', code: 'CC', name: 'Công cụ & Thang điểm', group: 'Hỗ trợ', icon: 'fa-calculator', color: '#f59e0b' },
   { dir: 'Kho nghiên cứu khoa học & EBM', code: 'EBM', name: 'NCKH & EBM', group: 'Hỗ trợ', icon: 'fa-chart-pie', color: '#64748b' },
-  { dir: 'Kho chưa lọc', code: 'RAW', name: 'Kho chưa lọc', group: 'Hỗ trợ', icon: 'fa-box-archive', color: '#78716c' },
+  { dir: 'Kho CDSS', code: 'CDSS', name: 'Kho CDSS', group: 'Hỗ trợ', icon: 'fa-laptop-medical', color: '#0284c7' },
+  { dir: 'Kho ICD-10', code: 'ICD10', name: 'Kho ICD-10', group: 'Hỗ trợ', icon: 'fa-barcode', color: '#0ea5e9' },
   { dir: '0. Kho thực thể hạt nhân', code: 'CORE', name: 'Thực thể Hạt nhân', group: 'Hỗ trợ', icon: 'fa-dna', color: '#a855f7' }
 ];
 

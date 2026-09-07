@@ -72,13 +72,25 @@ graph TD
 
 ### ❤️ 1. Tim Mạch
 
+#### 1.1. Tăng Huyết Áp
 | Tên Kịch Bản | Context | Topic | ICD-10 | Tệp Ghi Chú | Trạng Thái |
 | :--- | :---: | :---: | :---: | :--- | :---: |
-| **Tăng huyết áp (Ngoại trú)** | `Ngoai` | `P1` | `I10-I15` | [[Tim mạch/TV_Tăng huyết áp_P1\|TV_Tăng huyết áp_P1]] | ✅ Sẵn sàng |
-| **Tăng huyết áp (Nội trú)** | `Noi` | `P1` | `I10-I16` | [[Tim mạch/TV_Tăng huyết áp_Noi_P1\|TV_Tăng huyết áp_Noi_P1]] | ✅ Sẵn sàng |
-| **Tăng huyết áp — Xử trí quên liều** | `Ngoai` | `QuenLieu` | `I10`, `T46.5` | [[Tim mạch/TV_Tăng huyết áp_Ngoai_QuenLieu\|TV_Tăng huyết áp_Ngoai_QuenLieu]] | ✅ Sẵn sàng |
-| **Rối loạn lipid máu** | `Ngoai` | `P1` | `E78` | [[Tim mạch/TV_Rối loạn lipid máu_P1\|TV_Rối loạn lipid máu_P1]] | ⏳ Đang biên soạn |
-| **Suy tim mạn nội & ngoại trú** | `Noi`/`Ngoai` | `P1` | `I50` | [[Tim mạch/TV_Suy tim_P1\|TV_Suy tim_P1]] | ⏳ Đang biên soạn |
+| **THA: Chẩn đoán & Biến chứng cơ quan đích** | `Ngoai` | `bien-chung` | `I10` | [[Tim mạch/Tăng huyết áp/TV_THA_Chẩn đoán & Biến chứng\|TV_THA_Chẩn đoán & Biến chứng]] | ✅ Sẵn sàng |
+| **THA: Chế độ ăn DASH & Thay đổi lối sống** | `Ngoai` | `dinh-duong` | `I10` | [[Tim mạch/Tăng huyết áp/TV_THA_Dinh dưỡng\|TV_THA_Dinh dưỡng]] | ✅ Sẵn sàng |
+| **THA: Dịch tễ học — Kẻ giết người thầm lặng** | `Ngoai` | `dich-te-hoc` | `I10` | [[Tim mạch/Tăng huyết áp/TV_THA_Dịch tễ học\|TV_THA_Dịch tễ học]] | ✅ Sẵn sàng |
+| **THA: Phác đồ điều trị & Phối hợp thuốc** | `Ngoai` | `phac-do` | `I10` | [[Tim mạch/Tăng huyết áp/TV_THA_Phác đồ điều trị\|TV_THA_Phác đồ điều trị]] | ✅ Sẵn sàng |
+| **THA: Sinh lý bệnh & Xơ vữa mạch máu** | `Ngoai` | `sinh-ly-benh` | `I10` | [[Tim mạch/Tăng huyết áp/TV_THA_Sinh lý bệnh\|TV_THA_Sinh lý bệnh]] | ✅ Sẵn sàng |
+| **THA: Tiên lượng & Cơn tăng huyết áp khẩn cấp** | `Ngoai` | `tien-luong` | `I10` | [[Tim mạch/Tăng huyết áp/TV_THA_Tiên lượng\|TV_THA_Tiên lượng]] | ✅ Sẵn sàng |
+
+#### 1.2. Suy Tim
+| Tên Kịch Bản | Context | Topic | ICD-10 | Tệp Ghi Chú | Trạng Thái |
+| :--- | :---: | :---: | :---: | :--- | :---: |
+| **Suy tim: Chẩn đoán & Biến chứng loạn nhịp, thận** | `Ngoai` | `bien-chung` | `I50` | [[Tim mạch/Suy tim/TV_ST_Chẩn đoán & Biến chứng\|TV_ST_Chẩn đoán & Biến chứng]] | ✅ Sẵn sàng |
+| **Suy tim: Dinh dưỡng & Cân bằng muối nước** | `Ngoai` | `dinh-duong` | `I50` | [[Tim mạch/Suy tim/TV_ST_Dinh dưỡng\|TV_ST_Dinh dưỡng]] | ✅ Sẵn sàng |
+| **Suy tim: Dịch tễ học & Yếu tố thúc đẩy đợt cấp** | `Ngoai` | `dich-te-hoc` | `I50` | [[Tim mạch/Suy tim/TV_ST_Dịch tễ học\|TV_ST_Dịch tễ học]] | ✅ Sẵn sàng |
+| **Suy tim: Phác đồ điều trị Tứ trụ GDMT** | `Ngoai` | `phac-do` | `I50` | [[Tim mạch/Suy tim/TV_ST_Phác đồ điều trị\|TV_ST_Phác đồ điều trị]] | ✅ Sẵn sàng |
+| **Suy tim: Sinh lý bệnh & Phân độ NYHA** | `Ngoai` | `sinh-ly-benh` | `I50` | [[Tim mạch/Suy tim/TV_ST_Sinh lý bệnh\|TV_ST_Sinh lý bệnh]] | ✅ Sẵn sàng |
+| **Suy tim: Tiên lượng & Dấu hiệu báo động đỏ** | `Ngoai` | `tien-luong` | `I50` | [[Tim mạch/Suy tim/TV_ST_Tiên lượng\|TV_ST_Tiên lượng]] | ✅ Sẵn sàng |
 
 ### 🧬 2. Nội Tiết - Chuyển Hóa
 
@@ -182,6 +194,35 @@ graph TD
 | **Sốt rét: Phác đồ thuốc ACT & Diệt thể ngủ gan** | `Ngoai` | `phac-do` | `B50`, `B51` | [[Truyền nhiễm/Sốt rét/TV_SR_Phác đồ điều trị\|TV_SR_Phác đồ điều trị]] | ✅ Sẵn sàng |
 | **Sốt rét: Nằm màn tẩm hóa chất & Dự phòng du lịch** | `Ngoai` | `phong-ngua` | `B54`, `Z20.8` | [[Truyền nhiễm/Sốt rét/TV_SR_Phòng ngừa\|TV_SR_Phòng ngừa]] | ✅ Sẵn sàng |
 | **Sốt rét: Tiên lượng & Cấp cứu sốt rét ác tính** | `Noi` | `tien-luong` | `B50`, `B54` | [[Truyền nhiễm/Sốt rét/TV_SR_Tiên lượng\|TV_SR_Tiên lượng]] | ✅ Sẵn sàng |
+
+#### 4.9. Vi Khuẩn Helicobacter pylori (HP)
+| Tên Kịch Bản | Context | Topic | ICD-10 | Tệp Ghi Chú | Trạng Thái |
+| :--- | :---: | :---: | :---: | :--- | :---: |
+| **HP: Chẩn đoán, Biến chứng loét & K dạ dày** | `Ngoai` | `bien-chung` | `B98.0`, `K29` | [[Truyền nhiễm/H.pylori/TV_HP_Chẩn đoán & Biến chứng\|TV_HP_Chẩn đoán & Biến chứng]] | ✅ Sẵn sàng |
+| **HP: Dịch tễ học & Đường lây truyền** | `Ngoai` | `dich-te-hoc` | `B98.0` | [[Truyền nhiễm/H.pylori/TV_HP_Dịch tễ học\|TV_HP_Dịch tễ học]] | ✅ Sẵn sàng |
+| **HP: Lịch uống thuốc & Xử trí tác dụng phụ** | `Ngoai` | `lich-uong-thuoc` | `B98.0`, `K25` | [[Truyền nhiễm/H.pylori/TV_HP_Lịch uống thuốc\|TV_HP_Lịch uống thuốc]] | ✅ Sẵn sàng |
+| **HP: Phác đồ điều trị 4 thuốc Bismuth 14 ngày** | `Ngoai` | `phac-do` | `B98.0`, `K29` | [[Truyền nhiễm/H.pylori/TV_HP_Phác đồ điều trị\|TV_HP_Phác đồ điều trị]] | ✅ Sẵn sàng |
+| **HP: Sinh lý bệnh men Urease & Chuỗi Correa** | `Ngoai` | `sinh-ly-benh` | `B98.0`, `K29` | [[Truyền nhiễm/H.pylori/TV_HP_Sinh lý bệnh\|TV_HP_Sinh lý bệnh]] | ✅ Sẵn sàng |
+
+#### 4.10. Nhiễm Trùng Tiêu Hóa
+| Tên Kịch Bản | Context | Topic | ICD-10 | Tệp Ghi Chú | Trạng Thái |
+| :--- | :---: | :---: | :---: | :--- | :---: |
+| **NTTH: Chẩn đoán & Biến chứng sốc mất nước** | `Ngoai` | `bien-chung` | `A09` | [[Truyền nhiễm/Nhiễm trùng tiêu hóa/TV_NTTH_Chẩn đoán & Biến chứng\|TV_NTTH_Chẩn đoán & Biến chứng]] | ✅ Sẵn sàng |
+| **NTTH: Phác đồ điều trị & Bù nước Oresol** | `Ngoai` | `phac-do` | `A09` | [[Truyền nhiễm/Nhiễm trùng tiêu hóa/TV_NTTH_Phác đồ điều trị\|TV_NTTH_Phác đồ điều trị]] | ✅ Sẵn sàng |
+| **NTTH: Sinh lý bệnh, Độc tố & Bơm Natri-Glucose** | `Ngoai` | `sinh-ly-benh` | `A09` | [[Truyền nhiễm/Nhiễm trùng tiêu hóa/TV_NTTH_Sinh lý bệnh\|TV_NTTH_Sinh lý bệnh]] | ✅ Sẵn sàng |
+
+### 🧠 5. Thần Kinh
+
+#### 5.1. Đột Quỵ Não (Tai Biến Mạch Máu Não)
+| Tên Kịch Bản | Context | Topic | ICD-10 | Tệp Ghi Chú | Trạng Thái |
+| :--- | :---: | :---: | :---: | :--- | :---: |
+| **Đột quỵ: Chẩn đoán, Phân biệt & Biến chứng cấp** | `Ngoai` | `bien-chung` | `I63`, `I61`, `I64` | [[Thần kinh/Đột qụy/TV_ĐQ_Chẩn đoán & Biến chứng\|TV_ĐQ_Chẩn đoán & Biến chứng]] | ✅ Sẵn sàng |
+| **Đột quỵ: Dịch tễ học & Yếu tố nguy cơ** | `Ngoai` | `dich-te-hoc` | `I63`, `I64` | [[Thần kinh/Đột qụy/TV_ĐQ_Dịch tễ học\|TV_ĐQ_Dịch tễ học]] | ✅ Sẵn sàng |
+| **Đột quỵ: Phác đồ điều trị rtPA & Lấy huyết khối** | `CapCuu` | `phac-do` | `I63`, `I64` | [[Thần kinh/Đột qụy/TV_ĐQ_Phác đồ điều trị\|TV_ĐQ_Phác đồ điều trị]] | ✅ Sẵn sàng |
+| **Đột quỵ: Phòng ngừa cấp 1 & cấp 2** | `Ngoai` | `phong-ngua` | `I63`, `I64`, `Z13.6` | [[Thần kinh/Đột qụy/TV_ĐQ_Phòng ngừa\|TV_ĐQ_Phòng ngừa]] | ✅ Sẵn sàng |
+| **Đột quỵ: Sinh lý bệnh Penumbra & Time is Brain** | `Ngoai` | `sinh-ly-benh` | `I63`, `I61`, `I64` | [[Thần kinh/Đột qụy/TV_ĐQ_Sinh lý bệnh\|TV_ĐQ_Sinh lý bệnh]] | ✅ Sẵn sàng |
+| **Đột quỵ: Tiên lượng & Phục hồi chức năng** | `Noi` | `tien-luong` | `I63`, `I64` | [[Thần kinh/Đột qụy/TV_ĐQ_Tiên lượng\|TV_ĐQ_Tiên lượng]] | ✅ Sẵn sàng |
+| **Đột quỵ: Nhận diện BE-FAST & Xử trí ban đầu** | `CapCuu` | `xu-tri-ban-dau` | `I63`, `I64` | [[Thần kinh/Đột qụy/TV_ĐQ_Xử trí ban đầu\|TV_ĐQ_Xử trí ban đầu]] | ✅ Sẵn sàng |
 
 ---
 
