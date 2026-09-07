@@ -1,0 +1,1284 @@
+/**
+ * CliniPortal — Knowledge Vault Medical Reader Pro Stylesheet
+ * File: src/content/knowledge-vault/css/vault-reader.css
+ * 
+ * Bộ quy chuẩn giao diện chuyên biệt cho phần văn bản đọc y khoa (Reader Pro):
+ * 1. Design Tokens & Reader Typography (Inter, Merriweather, JetBrains Mono, Plus Jakarta Sans)
+ * 2. 2-Column Reader Pro Grid & Responsive Single-Column Counseling Mode
+ * 3. Sticky Reader Pro Toolbar (Phân tầng góc nhìn, Zoom font, Serif/Sans, In ấn, Trích dẫn)
+ * 4. Clinical Pathway Matrix Ribbon (8 Khía cạnh bệnh học)
+ * 5. 7 Chủng loại Medical Callout Y khoa (Danger, Warning, Pearl, Dosing, Note, Tip, Teach-Back)
+ * 6. Sơ đồ động học & Diễn tiến lâm sàng (Timeline & ASCII Diagram Cards)
+ * 7. Bảng số liệu cận lâm sàng & phác đồ eGFR (Medical Data Tables)
+ * 8. Dynamic Sticky TOC & Scrollspy Navigation
+ * 9. Tờ rơi dặn dò bệnh nhân & Giấy xuất viện (Patient Counseling Leaflet with Signatures)
+ * 10. Ghi chú đúc kết lâm sàng cá nhân của Bác sĩ (Doctor Clinical Pearls)
+ * 11. Obsidian Wikilinks, Math KaTeX Inline & Reference Citation Pills
+ * 12. Dark Mode hoàn chỉnh & High-Contrast Senior Reading Mode
+ * 13. A4 Clinical Print Stylesheet (@media print)
+ */
+
+/* ==========================================================================
+   1. DESIGN TOKENS & TYPOGRAPHY CHO VĂN BẢN ĐỌC Y KHOA
+   ========================================================================== */
+:root {
+  --reader-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --reader-font-serif: 'Merriweather', 'Charter', Georgia, Cambria, 'Times New Roman', serif;
+  --reader-font-mono: 'JetBrains Mono', 'Fira Code', Menlo, Monaco, Consolas, monospace;
+  --reader-font-display: 'Plus Jakarta Sans', var(--reader-font-sans);
+
+  --reader-line-height: 1.82;
+  --reader-line-height-heading: 1.35;
+  --reader-base-size: 1rem;
+  --reader-max-width: 920px;
+
+  /* Callout Accent Colors */
+  --callout-danger-border: #ef4444;
+  --callout-danger-bg: rgba(239, 68, 68, 0.05);
+  --callout-danger-badge: #ef4444;
+
+  --callout-warning-border: #f59e0b;
+  --callout-warning-bg: rgba(245, 158, 11, 0.06);
+  --callout-warning-badge: #f59e0b;
+
+  --callout-pearl-border: #8b5cf6;
+  --callout-pearl-bg: rgba(139, 92, 246, 0.05);
+  --callout-pearl-badge: #8b5cf6;
+
+  --callout-dosing-border: #0284c7;
+  --callout-dosing-bg: rgba(2, 132, 199, 0.05);
+  --callout-dosing-badge: #0284c7;
+
+  --callout-note-border: #0ea5e9;
+  --callout-note-bg: rgba(14, 165, 233, 0.05);
+  --callout-note-badge: #0ea5e9;
+
+  --callout-tip-border: #10b981;
+  --callout-tip-bg: rgba(16, 185, 129, 0.05);
+  --callout-tip-badge: #10b981;
+
+  --callout-teachback-border: #ec4899;
+  --callout-teachback-bg: rgba(236, 72, 153, 0.05);
+  --callout-teachback-badge: #ec4899;
+
+  --callout-trial-border: #6366f1;
+  --callout-trial-bg: rgba(99, 102, 241, 0.05);
+  --callout-trial-badge: #6366f1;
+}
+
+[data-theme="dark"] {
+  --callout-danger-bg: rgba(239, 68, 68, 0.12);
+  --callout-warning-bg: rgba(245, 158, 11, 0.12);
+  --callout-pearl-bg: rgba(139, 92, 246, 0.12);
+  --callout-dosing-bg: rgba(2, 132, 199, 0.12);
+  --callout-note-bg: rgba(14, 165, 233, 0.12);
+  --callout-tip-bg: rgba(16, 185, 129, 0.12);
+  --callout-teachback-bg: rgba(236, 72, 153, 0.12);
+  --callout-trial-bg: rgba(99, 102, 241, 0.12);
+}
+
+/* ==========================================================================
+   2. BỐ CỤC CHÍNH CỦA VĂN BẢN ĐỌC (READER PRO GRID)
+   ========================================================================== */
+.vault-reader-pro-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 260px;
+  gap: 2rem;
+  align-items: start;
+  margin-top: 1.25rem;
+}
+
+.vault-reader-pro-grid--counseling {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 260px;
+  gap: 2rem;
+  align-items: start;
+  max-width: 1200px;
+  margin: 1.25rem auto 0;
+}
+
+/* Article Reading Canvas */
+.vault-article-content {
+  background: var(--vault-surface);
+  border: 1px solid var(--vault-border);
+  border-radius: var(--vault-radius, 12px);
+  padding: 2.25rem 2.5rem;
+  font-size: var(--reader-base-size);
+  line-height: var(--reader-line-height);
+  color: var(--vault-text);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+  min-width: 0;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.vault-counseling-content {
+  font-size: 1.05rem;
+  line-height: 1.85;
+  border-top: 3px solid #10b981;
+}
+
+/* Serif Reading Mode */
+.vault-article-content[data-font="serif"],
+.vault-article-content.font-serif {
+  font-family: var(--reader-font-serif);
+  font-size: 1.06rem;
+  line-height: 1.9;
+}
+
+.vault-article-content[data-font="sans"],
+.vault-article-content.font-sans {
+  font-family: var(--reader-font-sans);
+}
+
+/* ==========================================================================
+   3. STICKY READER TOOLBAR (THANH ĐIỀU KHIỂN ĐỌC ĐA NĂNG)
+   ========================================================================== */
+.vault-reader-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 25;
+  background: var(--vault-surface);
+  border: 1px solid var(--vault-border);
+  border-radius: 10px;
+  padding: 0.6rem 1rem;
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+}
+
+[data-theme="light"] .vault-reader-toolbar {
+  background: rgba(255, 255, 255, 0.94);
+}
+
+[data-theme="dark"] .vault-reader-toolbar {
+  background: rgba(30, 41, 59, 0.94);
+}
+
+.vault-reader-toolbar-left,
+.vault-reader-toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* Perspective Switcher Tabs */
+.vault-perspective-tabs {
+  display: inline-flex;
+  background: var(--vault-bg);
+  padding: 3px;
+  border-radius: 8px;
+  border: 1px solid var(--vault-border);
+}
+
+.vault-perspective-tab {
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  padding: 5px 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--vault-muted);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.18s ease;
+}
+
+.vault-perspective-tab:hover {
+  color: var(--vault-text);
+}
+
+.vault-perspective-tab.active {
+  background: var(--vault-surface);
+  color: var(--vault-primary);
+  font-weight: 700;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.vault-perspective-tab.active[data-perspective="patient"] {
+  color: #10b981;
+}
+
+.vault-perspective-tab.active[data-perspective="inpatient"] {
+  color: #f59e0b;
+}
+
+/* Reader Tool Buttons (Zoom, Serif, Fullscreen, Copy, Print) */
+.vault-tool-btn {
+  background: var(--vault-surface);
+  border: 1px solid var(--vault-border);
+  color: var(--vault-text);
+  border-radius: 7px;
+  padding: 5px 10px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  line-height: 1.2;
+}
+
+.vault-tool-btn:hover {
+  border-color: var(--vault-primary);
+  color: var(--vault-primary);
+  transform: translateY(-1px);
+}
+
+.vault-tool-btn:active {
+  transform: translateY(0);
+}
+
+.vault-clinic-btn--print {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(5, 150, 105, 0.05));
+  border-color: rgba(16, 185, 129, 0.4);
+  color: #059669;
+  font-weight: 700;
+}
+
+.vault-clinic-btn--print:hover {
+  background: #10b981;
+  color: #ffffff !important;
+  border-color: #10b981;
+}
+
+[data-theme="dark"] .vault-clinic-btn--print {
+  color: #34d399;
+}
+
+.vault-clinic-btn--copy:hover {
+  border-color: var(--vault-primary);
+  color: var(--vault-primary);
+}
+
+/* ==========================================================================
+   4. TYPOGRAPHY CHI TIẾT & TIÊU ĐỀ (HEADINGS, PARAGRAPHS, LISTS)
+   ========================================================================== */
+.vault-article-content h1,
+.vault-article-content h2,
+.vault-article-content h3,
+.vault-article-content h4,
+.vault-article-content h5 {
+  font-family: var(--reader-font-display);
+  color: var(--vault-text);
+  line-height: var(--reader-line-height-heading);
+  scroll-margin-top: 75px;
+}
+
+.vault-h1,
+.vault-article-content > h1 {
+  font-size: 1.85rem;
+  font-weight: 800;
+  margin-top: 1.25rem;
+  margin-bottom: 1rem;
+  letter-spacing: -0.025em;
+  color: var(--vault-text);
+}
+
+.vault-h2,
+.vault-article-content > h2 {
+  font-size: 1.38rem;
+  font-weight: 750;
+  margin-top: 2.25rem;
+  margin-bottom: 0.85rem;
+  padding-bottom: 0.45rem;
+  border-bottom: 1.5px solid var(--vault-border);
+  letter-spacing: -0.015em;
+}
+
+.vault-h3,
+.vault-article-content > h3 {
+  font-size: 1.16rem;
+  font-weight: 700;
+  margin-top: 1.75rem;
+  margin-bottom: 0.65rem;
+  color: var(--vault-primary);
+}
+
+[data-theme="dark"] .vault-h3,
+[data-theme="dark"] .vault-article-content > h3 {
+  color: #38bdf8;
+}
+
+.vault-h4,
+.vault-article-content > h4 {
+  font-size: 1.02rem;
+  font-weight: 650;
+  margin-top: 1.35rem;
+  margin-bottom: 0.5rem;
+  color: var(--vault-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.vault-article-content p {
+  margin-top: 0;
+  margin-bottom: 1.35rem;
+  line-height: var(--reader-line-height);
+  text-wrap: pretty;
+}
+
+.vault-article-content strong {
+  font-weight: 700;
+  color: var(--vault-text);
+}
+
+.vault-article-content em {
+  font-style: italic;
+}
+
+/* Horizontal Rule Divider */
+.vault-divider {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--vault-border) 20%, var(--vault-border) 80%, transparent);
+  margin: 2.25rem 0;
+}
+
+/* Lists */
+.vault-list {
+  margin: 1rem 0 1.5rem;
+  padding-left: 1.6rem;
+}
+
+.vault-list li {
+  margin-bottom: 0.55rem;
+  line-height: 1.7;
+}
+
+.vault-list li::marker {
+  color: var(--vault-primary);
+}
+
+.vault-list--ordered {
+  list-style-type: decimal;
+}
+
+.vault-list--unordered {
+  list-style-type: disc;
+}
+
+/* ==========================================================================
+   5. CLINICAL PATHWAY MATRIX RIBBON (8 KHÍA CẠNH BỆNH HỌC TOÀN DIỆN)
+   ========================================================================== */
+.vault-pathway-container {
+  background: var(--vault-surface);
+  border: 1px solid var(--vault-border);
+  border-radius: 10px;
+  padding: 0.85rem 1.15rem;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+.vault-pathway-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.65rem;
+  font-size: 0.82rem;
+  color: var(--vault-text);
+  font-weight: 600;
+}
+
+.vault-pathway-count {
+  font-size: 0.75rem;
+  font-weight: 700;
+  background: rgba(2, 132, 199, 0.1);
+  color: var(--vault-primary);
+  padding: 2px 8px;
+  border-radius: 9999px;
+}
+
+.vault-pathway-ribbon {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.vault-pathway-pill {
+  padding: 5px 11px;
+  border-radius: 7px;
+  border: 1px solid var(--vault-border);
+  background: var(--vault-bg);
+  color: var(--vault-text);
+  font-size: 0.78rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.vault-pathway-pill:hover:not(.disabled) {
+  border-color: var(--vault-primary);
+  background: var(--vault-surface);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.vault-pathway-pill.active {
+  background: var(--vault-primary);
+  color: #ffffff !important;
+  border-color: var(--vault-primary);
+  font-weight: 700;
+  box-shadow: 0 3px 10px rgba(2, 132, 199, 0.3);
+}
+
+.vault-pathway-pill.disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  border-style: dashed;
+}
+
+/* ==========================================================================
+   6. 7 CHỦNG LOẠI MEDICAL CALLOUT Y KHOA CHUẨN MỰC
+   ========================================================================== */
+.vault-callout {
+  border-left: 4px solid var(--vault-border);
+  border-top: 1px solid var(--vault-border);
+  border-right: 1px solid var(--vault-border);
+  border-bottom: 1px solid var(--vault-border);
+  border-radius: 10px;
+  padding: 1.1rem 1.35rem;
+  margin: 1.6rem 0;
+  background: var(--vault-surface);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.vault-callout__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.vault-callout__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 3px 9px;
+  border-radius: 5px;
+  color: #ffffff;
+}
+
+.vault-callout__title {
+  font-size: 0.95rem;
+  font-weight: 750;
+  color: var(--vault-text);
+  font-family: var(--reader-font-display);
+}
+
+.vault-callout__body {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--vault-text);
+}
+
+.vault-callout__body p:last-child {
+  margin-bottom: 0;
+}
+
+/* 6.1 DANGER / RED FLAGS (Cảnh báo đỏ & Cấp cứu khẩn cấp) */
+.vault-callout--danger {
+  border-left-color: var(--callout-danger-border);
+  border-color: rgba(239, 68, 68, 0.3);
+  background: var(--callout-danger-bg);
+}
+.vault-callout--danger .vault-callout__badge {
+  background: var(--callout-danger-badge);
+}
+
+/* 6.2 WARNING (Thận trọng & Chống chỉ định) */
+.vault-callout--warning {
+  border-left-color: var(--callout-warning-border);
+  border-color: rgba(245, 158, 11, 0.3);
+  background: var(--callout-warning-bg);
+}
+.vault-callout--warning .vault-callout__badge {
+  background: var(--callout-warning-badge);
+}
+
+/* 6.3 PEARL (Điểm ngọc lâm sàng / Clinical Pearl) */
+.vault-callout--pearl {
+  border-left-color: var(--callout-pearl-border);
+  border-color: rgba(139, 92, 246, 0.3);
+  background: var(--callout-pearl-bg);
+}
+.vault-callout--pearl .vault-callout__badge {
+  background: var(--callout-pearl-badge);
+}
+
+/* 6.4 DOSING (Chỉ định & Hiệu chỉnh liều) */
+.vault-callout--dosing {
+  border-left-color: var(--callout-dosing-border);
+  border-color: rgba(2, 132, 199, 0.3);
+  background: var(--callout-dosing-bg);
+}
+.vault-callout--dosing .vault-callout__badge {
+  background: var(--callout-dosing-badge);
+}
+
+/* 6.5 NOTE (Ghi chú thực hành lâm sàng) */
+.vault-callout--note {
+  border-left-color: var(--callout-note-border);
+  border-color: rgba(14, 165, 233, 0.3);
+  background: var(--callout-note-bg);
+}
+.vault-callout--note .vault-callout__badge {
+  background: var(--callout-note-badge);
+}
+
+/* 6.6 TIP (Lời khuyên chuyên môn bác sĩ) */
+.vault-callout--tip {
+  border-left-color: var(--callout-tip-border);
+  border-color: rgba(16, 185, 129, 0.3);
+  background: var(--callout-tip-bg);
+}
+.vault-callout--tip .vault-callout__badge {
+  background: var(--callout-tip-badge);
+}
+
+/* 6.7 TEACHBACK (Kỹ thuật đối thoại Teach-Back) */
+.vault-callout--teachback {
+  border-left-color: var(--callout-teachback-border);
+  border-color: rgba(236, 72, 153, 0.3);
+  background: var(--callout-teachback-bg);
+}
+.vault-callout--teachback .vault-callout__badge {
+  background: var(--callout-teachback-badge);
+}
+
+/* 6.8 TRIAL (Thử nghiệm lâm sàng / RCT Landmark) */
+.vault-callout--trial {
+  border-left-color: var(--callout-trial-border);
+  border-color: rgba(99, 102, 241, 0.3);
+  background: var(--callout-trial-bg);
+}
+.vault-callout--trial .vault-callout__badge {
+  background: var(--callout-trial-badge);
+}
+
+/* ==========================================================================
+   7. SƠ ĐỒ ĐỘNG HỌC & DIỄN TIẾN LÂM SÀNG (TIMELINE CARDS)
+   ========================================================================== */
+.vault-timeline-card {
+  background: #0f172a;
+  color: #f8fafc;
+  border: 1px solid #334155;
+  border-radius: 10px;
+  margin: 1.75rem 0;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .vault-timeline-card {
+  background: #090d16;
+  border-color: #1e293b;
+}
+
+.vault-timeline-card__header {
+  background: #1e293b;
+  padding: 0.6rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #38bdf8;
+  border-bottom: 1px solid #334155;
+}
+
+.vault-timeline-code {
+  font-family: var(--reader-font-mono);
+  font-size: 0.85rem;
+  line-height: 1.55;
+  padding: 1rem 1.25rem;
+  margin: 0;
+  overflow-x: auto;
+  white-space: pre;
+  color: #e2e8f0;
+}
+
+/* ==========================================================================
+   8. BẢNG DỮ LIỆU Y KHOA & CẬN LÂM SÀNG (MEDICAL DATA TABLES)
+   ========================================================================== */
+.vault-table-wrapper {
+  overflow-x: auto;
+  margin: 1.75rem 0;
+  border: 1px solid var(--vault-border);
+  border-radius: 10px;
+  background: var(--vault-surface);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+}
+
+.vault-data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+  text-align: left;
+}
+
+.vault-data-table thead {
+  background: var(--vault-bg);
+  border-bottom: 2px solid var(--vault-border);
+}
+
+.vault-data-table th {
+  padding: 0.85rem 1.15rem;
+  font-weight: 700;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--vault-text);
+  white-space: nowrap;
+}
+
+.vault-data-table td {
+  padding: 0.75rem 1.15rem;
+  border-bottom: 1px solid var(--vault-border);
+  color: var(--vault-text);
+  line-height: 1.6;
+}
+
+.vault-data-table tbody tr:nth-child(even) {
+  background: rgba(2, 132, 199, 0.015);
+}
+
+[data-theme="dark"] .vault-data-table tbody tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.vault-data-table tbody tr:hover {
+  background: rgba(2, 132, 199, 0.04);
+}
+
+[data-theme="dark"] .vault-data-table tbody tr:hover {
+  background: rgba(56, 189, 248, 0.05);
+}
+
+.vault-data-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ==========================================================================
+   9. DYNAMIC STICKY TOC & SCROLLSPY (MỤC LỤC ĐỘNG BÊN CẠNH)
+   ========================================================================== */
+.vault-toc-sidebar {
+  background: var(--vault-surface);
+  border: 1px solid var(--vault-border);
+  border-radius: 10px;
+  padding: 1.25rem;
+  position: sticky;
+  top: 4.5rem;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+  scrollbar-width: thin;
+  scrollbar-color: var(--vault-border) transparent;
+}
+
+.vault-toc-title {
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--vault-muted);
+  margin-bottom: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.vault-toc-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.vault-toc-link {
+  font-size: 0.84rem;
+  color: var(--vault-muted);
+  text-decoration: none;
+  padding: 4px 8px;
+  border-radius: 6px;
+  border-left: 2px solid transparent;
+  line-height: 1.45;
+  transition: all 0.15s ease;
+  display: block;
+}
+
+.vault-toc-link:hover {
+  color: var(--vault-text);
+  background: var(--vault-bg);
+}
+
+.vault-toc-link.active {
+  color: var(--vault-primary);
+  font-weight: 700;
+  border-left-color: var(--vault-primary);
+  background: rgba(2, 132, 199, 0.06);
+}
+
+.vault-toc-level-2 {
+  padding-left: 8px;
+  font-weight: 600;
+}
+
+.vault-toc-level-3 {
+  padding-left: 18px;
+  font-size: 0.8rem;
+}
+
+.vault-toc-section-header {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 6px 8px 3px;
+  margin-top: 0.6rem;
+  border-top: 1px dashed var(--vault-border);
+}
+
+.vault-toc-section--doctor {
+  color: var(--vault-primary);
+}
+
+.vault-toc-section--patient {
+  color: #10b981;
+}
+
+.vault-toc-section--inpatient {
+  color: #f59e0b;
+}
+
+/* ==========================================================================
+   10. TỜ RƠI DẶN DÒ BỆNH NHÂN (PATIENT COUNSELING LEAFLET WITH SIGNATURES)
+   ========================================================================== */
+.vault-counseling-header-card,
+.vault-patient-leaflet-banner {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(5, 150, 105, 0.02) 100%);
+  border: 1.5px solid #10b981;
+  border-radius: 12px;
+  padding: 1.5rem 1.75rem;
+  margin-bottom: 2rem;
+}
+
+.vault-counseling-header-card__top,
+.vault-patient-leaflet-banner__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.vault-counseling-badge,
+.vault-patient-leaflet-badge {
+  background: #10b981;
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 3px 9px;
+  border-radius: 5px;
+  letter-spacing: 0.04em;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.vault-counseling-date,
+.vault-patient-leaflet-date {
+  font-size: 0.8rem;
+  color: var(--vault-muted);
+  font-weight: 600;
+}
+
+.vault-counseling-title,
+.vault-patient-leaflet-title {
+  margin: 0 0 0.5rem;
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--vault-text);
+  border: none;
+  padding: 0;
+  letter-spacing: -0.015em;
+}
+
+.vault-counseling-desc,
+.vault-patient-leaflet-desc {
+  margin: 0;
+  font-size: 0.94rem;
+  color: var(--vault-muted);
+  line-height: 1.55;
+}
+
+/* Perspective Banners (Góc Bác Sĩ, Nội Trú) */
+.vault-perspective-banner {
+  border-radius: 12px;
+  padding: 1.5rem 1.75rem;
+  margin-bottom: 2rem;
+  border: 1.5px solid var(--vault-border);
+}
+
+.vault-perspective-banner--doctor {
+  background: linear-gradient(135deg, rgba(2, 132, 199, 0.07) 0%, rgba(99, 102, 241, 0.02) 100%);
+  border-color: #0284c7;
+}
+
+.vault-perspective-banner--doctor .vault-perspective-banner__tag {
+  background: #0284c7;
+  color: #ffffff;
+}
+
+.vault-perspective-banner--inpatient {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.08) 0%, rgba(217, 119, 6, 0.02) 100%);
+  border-color: #f59e0b;
+}
+
+.vault-perspective-banner--inpatient .vault-perspective-banner__tag {
+  background: #f59e0b;
+  color: #ffffff;
+}
+
+.vault-perspective-banner__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  padding: 3px 10px;
+  border-radius: 5px;
+  margin-bottom: 0.65rem;
+}
+
+.vault-perspective-banner__title {
+  margin: 0 0 0.45rem !important;
+  font-size: 1.45rem !important;
+  font-weight: 800 !important;
+  color: var(--vault-text) !important;
+  border: none !important;
+  padding: 0 !important;
+}
+
+.vault-perspective-banner__desc {
+  margin: 0 !important;
+  font-size: 0.92rem !important;
+  color: var(--vault-muted) !important;
+  line-height: 1.5 !important;
+}
+
+/* Patient Leaflet Footer with Signatures */
+.vault-patient-leaflet-footer {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 2px dashed var(--vault-border);
+}
+
+.vault-patient-leaflet-signature-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 1.75rem;
+}
+
+.vault-patient-sign-box {
+  text-align: center;
+  padding: 1.25rem 1rem;
+  border: 1px dashed var(--vault-border);
+  border-radius: 8px;
+  background: var(--vault-bg);
+}
+
+.vault-sign-title {
+  display: block;
+  font-weight: 800;
+  font-size: 0.88rem;
+  color: var(--vault-text);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.vault-sign-note {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--vault-muted);
+  font-style: italic;
+  margin-top: 2px;
+}
+
+.vault-sign-space {
+  height: 70px;
+}
+
+.vault-sign-dotline {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--vault-muted);
+  border-top: 1px dotted var(--vault-border);
+  padding-top: 6px;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.vault-patient-leaflet-emergency-alert {
+  background: rgba(239, 68, 68, 0.08);
+  border: 1.5px solid #ef4444;
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  color: #ef4444;
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+[data-theme="dark"] .vault-patient-leaflet-emergency-alert {
+  background: rgba(239, 68, 68, 0.15);
+  color: #fca5a5;
+}
+
+.vault-patient-leaflet-emergency-alert i {
+  font-size: 1.25rem;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   11. WIKILINKS, CITATIONS & INLINE FORMULAS
+   ========================================================================== */
+.vault-wikilink-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(168, 85, 247, 0.09);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  color: #a855f7;
+  font-weight: 600;
+  font-size: 0.88em;
+  padding: 2px 9px;
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.18s ease;
+  vertical-align: baseline;
+  margin: 0 2px;
+}
+
+.vault-wikilink-btn:hover {
+  background: rgba(168, 85, 247, 0.2);
+  border-color: #a855f7;
+  color: #9333ea;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(168, 85, 247, 0.15);
+}
+
+[data-theme="dark"] .vault-wikilink-btn {
+  color: #c084fc;
+  border-color: rgba(192, 132, 252, 0.35);
+  background: rgba(192, 132, 252, 0.1);
+}
+
+.vault-ref-pill {
+  font-size: 0.75em;
+  font-weight: 700;
+  color: var(--vault-primary);
+  background: rgba(2, 132, 199, 0.08);
+  padding: 1px 5px;
+  border-radius: 4px;
+  vertical-align: super;
+  cursor: help;
+  margin: 0 2px;
+}
+
+.vault-math-inline {
+  font-family: var(--reader-font-mono);
+  font-size: 0.9em;
+  background: var(--vault-bg);
+  border: 1px solid var(--vault-border);
+  padding: 2px 7px;
+  border-radius: 5px;
+  color: var(--vault-text);
+  font-weight: 600;
+  margin: 0 2px;
+}
+
+.vault-img-card {
+  text-align: center;
+  margin: 1.75rem 0;
+}
+
+.vault-img-card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  border: 1px solid var(--vault-border);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+/* ==========================================================================
+   12. HIGH CONTRAST & SENIOR PATIENT READING MODE
+   ========================================================================== */
+.vault-patient-reading-mode .vault-article-content,
+.vault-patient-reading-mode .vault-counseling-content {
+  font-size: 1.25rem !important;
+  line-height: 1.95 !important;
+}
+
+.vault-patient-reading-mode .vault-article-content p,
+.vault-patient-reading-mode .vault-article-content li {
+  font-size: 1.22rem !important;
+  line-height: 1.9 !important;
+}
+
+.vault-patient-reading-mode .vault-callout {
+  padding: 1.35rem 1.6rem !important;
+}
+
+.vault-patient-reading-mode .vault-callout__title {
+  font-size: 1.2rem !important;
+}
+
+.vault-patient-reading-mode .vault-callout__body {
+  font-size: 1.18rem !important;
+}
+
+.vault-patient-reading-mode .vault-h2,
+.vault-patient-reading-mode .vault-counseling-title {
+  font-size: 1.65rem !important;
+}
+
+.vault-patient-reading-mode .vault-h3 {
+  font-size: 1.38rem !important;
+}
+
+/* ==========================================================================
+   13. RESPONSIVE MOBILE & TABLET STYLING
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .vault-reader-pro-grid,
+  .vault-reader-pro-grid--counseling {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .vault-toc-sidebar {
+    position: static;
+    max-height: 350px;
+    margin-top: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .vault-article-content {
+    padding: 1.35rem 1.15rem;
+    border-radius: 8px;
+    font-size: 0.98rem;
+    line-height: 1.75;
+  }
+
+  .vault-reader-toolbar {
+    padding: 0.5rem 0.75rem;
+    gap: 0.5rem;
+  }
+
+  .vault-perspective-tab {
+    padding: 4px 8px;
+    font-size: 0.75rem;
+  }
+
+  .vault-h1 {
+    font-size: 1.5rem;
+  }
+
+  .vault-h2 {
+    font-size: 1.25rem;
+  }
+
+  .vault-h3 {
+    font-size: 1.08rem;
+  }
+
+  .vault-callout {
+    padding: 0.95rem 1.1rem;
+    margin: 1.25rem 0;
+  }
+
+  .vault-patient-leaflet-signature-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .vault-timeline-code {
+    font-size: 0.78rem;
+    padding: 0.75rem;
+  }
+}
+
+/* ==========================================================================
+   14. A4 CLINICAL PRINT STYLESHEET (@media print)
+   Chuẩn in ấn tờ rơi dặn dò xuất viện & phác đồ không bị tràn lề hay lem màu
+   ========================================================================== */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 11pt !important;
+    line-height: 1.5 !important;
+  }
+
+  /* Ẩn toàn bộ thanh điều hướng, nút bấm, drawer chrome */
+  .vault-navbar,
+  .vault-reader-toolbar,
+  .vault-toc-sidebar,
+  .vault-drawer-close,
+  .vault-drawer-overlay,
+  .vault-pathway-container,
+  .vault-path-bar,
+  #vault-annotation-form,
+  .js-delete-annotation,
+  #btn-toggle-add-annotation {
+    display: none !important;
+  }
+
+  .vault-drawer {
+    position: static !important;
+    background: transparent !important;
+  }
+
+  .vault-drawer-panel {
+    position: static !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+  }
+
+  .vault-reader-pro-grid,
+  .vault-reader-pro-grid--counseling {
+    display: block !important;
+    margin: 0 !important;
+  }
+
+  .vault-article-content {
+    border: none !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    color: #000000 !important;
+  }
+
+  .vault-counseling-header-card,
+  .vault-patient-leaflet-banner {
+    border: 1.5pt solid #000000 !important;
+    background: #f8fafc !important;
+    color: #000000 !important;
+    page-break-inside: avoid;
+  }
+
+  .vault-counseling-title,
+  .vault-patient-leaflet-title {
+    color: #000000 !important;
+  }
+
+  .vault-callout {
+    border: 1pt solid #cbd5e1 !important;
+    border-left: 4pt solid #000000 !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    page-break-inside: avoid;
+  }
+
+  .vault-callout__title,
+  .vault-callout__body {
+    color: #000000 !important;
+  }
+
+  .vault-callout__badge {
+    background: #000000 !important;
+    color: #ffffff !important;
+  }
+
+  .vault-table-wrapper {
+    border: 1pt solid #000000 !important;
+    page-break-inside: avoid;
+  }
+
+  .vault-data-table th {
+    background: #f1f5f9 !important;
+    color: #000000 !important;
+    border-bottom: 1pt solid #000000 !important;
+  }
+
+  .vault-data-table td {
+    border-bottom: 0.5pt solid #cbd5e1 !important;
+    color: #000000 !important;
+  }
+
+  .vault-patient-leaflet-footer {
+    page-break-inside: avoid;
+  }
+
+  .vault-patient-sign-box {
+    border: 1pt solid #000000 !important;
+    background: #ffffff !important;
+  }
+
+  .vault-patient-leaflet-emergency-alert {
+    border: 1.5pt solid #000000 !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    page-break-inside: avoid;
+  }
+
+  .vault-wikilink-btn {
+    border: none !important;
+    background: none !important;
+    color: #000000 !important;
+    padding: 0 !important;
+    font-weight: 700 !important;
+  }
+
+  .vault-timeline-card {
+    background: #ffffff !important;
+    border: 1pt solid #000000 !important;
+    color: #000000 !important;
+    page-break-inside: avoid;
+  }
+
+  .vault-timeline-card__header {
+    background: #f1f5f9 !important;
+    color: #000000 !important;
+    border-bottom: 1pt solid #000000 !important;
+  }
+
+  .vault-timeline-code {
+    color: #000000 !important;
+  }
+}

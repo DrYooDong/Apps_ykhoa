@@ -7,7 +7,7 @@
 - **Nghiệm pháp dung nạp glucose**: Chỉ số đường huyết đạt mức **≥ 200 mg/dL** (tương đương **11.1 mmol/L**) sau **2 giờ** uống **75g** nước đường sinh lý.
 - **Đường huyết bất kỳ**: Đạt mức **≥ 200 mg/dL** (tương đương **11.1 mmol/L**) đo ở thời điểm bất kỳ trong ngày, kèm theo các triệu chứng điển hình như tiểu nhiều, khát nhiều, sút cân nhanh không rõ nguyên nhân.
 
-Nếu bạn hoàn toàn không có triệu chứng lâm sàng rõ rệt, bác sĩ bắt buộc phải thực hiện lại xét nghiệm lần thứ hai vào một ngày khác để khẳng định chắc chắn chẩn đoán trước khi kết luận.
+Nếu bạn hoàn toàn không có triệu chứng lâm sàng rõ rệt, bác sĩ bắt buộc phải thực hiện lại ==xét nghiệm lần thứ hai== vào một ngày khác để khẳng định chắc chắn chẩn đoán trước khi kết luận.
 
 ---
 
@@ -56,5 +56,3 @@ Bàn chân của người đái tháo đường rất dễ bị loét và nhiễ
 6. Rodriguez Alvarez M, et al. Diagnosis and management of diabetic ketoacidosis and hyperglycemic hyperosmolar state in adults. _Cleveland Clinic Journal of Medicine_. 2025;92(3):152-160.
 
 ---
-
-💡 Bạn có muốn tôi thiết kế một bảng theo dõi chỉ số đường huyết và lịch hẹn khám định kỳ cá nhân hóa dành riêng cho bạn hoặc người thân không?
