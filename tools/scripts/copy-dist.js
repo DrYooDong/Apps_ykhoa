@@ -56,6 +56,14 @@ if (fs.existsSync(srcContentPath)) {
   console.log('[Post-Build] Copied src/content -> dist/src/content');
 }
 
+// 4b. Copy built DocSpace dist -> dist/src/content/docspace
+const srcDocSpaceDist = path.join(rootDir, 'src', 'content', 'docspace', 'dist');
+const destDocSpaceDist = path.join(distDir, 'src', 'content', 'docspace');
+if (fs.existsSync(srcDocSpaceDist)) {
+  fs.cpSync(srcDocSpaceDist, destDocSpaceDist, { recursive: true, force: true });
+  console.log('[Post-Build] Overlaid built DocSpace dist -> dist/src/content/docspace');
+}
+
 // 5. Copy src/components/ -> dist/src/components & dist/components
 const srcComponentsPath = path.join(rootDir, 'src', 'components');
 if (fs.existsSync(srcComponentsPath)) {

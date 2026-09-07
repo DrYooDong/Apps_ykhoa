@@ -3,12 +3,15 @@
   "version": "2.0.0",
   "description": "CliniPortal — Hệ sinh thái Web & App Y khoa Offline Đa nền tảng",
   "main": "platforms/desktop/main-electron.js",
+  "workspaces": [
+    "src/content/docspace"
+  ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc --noEmit && vite build && node tools/scripts/copy-dist.js",
+    "build": "npm --prefix src/content/docspace run build && tsc --noEmit && vite build && node tools/scripts/copy-dist.js",
     "preview": "vite preview",
     "vite:dev": "vite",
-    "vite:build": "tsc --noEmit && vite build && node tools/scripts/copy-dist.js",
+    "vite:build": "npm --prefix src/content/docspace run build && tsc --noEmit && vite build && node tools/scripts/copy-dist.js",
     "astro:dev": "astro dev",
     "astro:build": "astro build",
     "astro:preview": "astro preview",

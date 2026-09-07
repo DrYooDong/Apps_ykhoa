@@ -30,7 +30,9 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm ci || npm install
+        run: |
+          npm ci || npm install
+          if [ -f "src/content/docspace/package.json" ]; then npm --prefix src/content/docspace install; fi
 
       - name: Build project
         run: npm run build
