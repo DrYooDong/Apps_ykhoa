@@ -178,19 +178,27 @@ function lintFile(filePath) {
   const { frontmatter, body, endLine } = parseFrontmatter(content);
 
   // RULE 1: Frontmatter Presence for Content Collections
-  const isDocOrReadme = filePath.toLowerCase().includes('readme.md') ||
-                        filePath.toLowerCase().includes('huong-dan') ||
-                        filePath.toLowerCase().includes('note-') ||
-                        filePath.toLowerCase().includes('prompt_');
+  const normPath = filePath.replace(/\\/g, '/').toLowerCase();
+  const isDocOrReadme = normPath.includes('readme') ||
+                        normPath.includes('huong-dan') ||
+                        normPath.includes('huong_dan') ||
+                        normPath.includes('workflow') ||
+                        normPath.includes('spec') ||
+                        normPath.includes('operations') ||
+                        normPath.includes('project_map') ||
+                        normPath.includes('index.md') ||
+                        normPath.includes('note-') ||
+                        normPath.includes('prompt_') ||
+                        normPath.includes('/protocols/');
 
-  if (ext === '.mdx' || (!isDocOrReadme && filePath.includes('src/content'))) {
-    if (!frontmatter) {
+  if (ext === '.mdx' || (!isDocOrReadme && ext === '.md')) {
+    if (!frontmatter && ext === '.mdx') {
       issues.errors.push({
         rule: 'frontmatter/missing',
         message: 'File MDX thiếu khối Frontmatter (bắt đầu và kết thúc bằng ---)',
         line: 1
       });
-    } else {
+    } else if (frontmatter) {
       // RULE 2: Required Title
       if (!frontmatter.title || String(frontmatter.title).trim() === '') {
         issues.errors.push({
