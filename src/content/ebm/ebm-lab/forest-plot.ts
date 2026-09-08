@@ -221,7 +221,7 @@ export function initForestPlotBuilder(): void {
       t.setAttribute("font-size", fs);
       t.setAttribute("fill", fill);
       t.setAttribute("text-anchor", anchor);
-      t.setAttribute("font-family", "'Plus Jakarta Sans', sans-serif");
+      t.setAttribute("font-family", "var(--dsp-font-body, 'Be Vietnam Pro', sans-serif)");
       t.textContent = txt;
       svgCanvas.appendChild(t);
       return t;

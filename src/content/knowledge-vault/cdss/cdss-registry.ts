@@ -77,6 +77,42 @@ export const CDSS_MODULES: CDSSModuleMeta[] = [
     badge: 'PACS Workstation',
     isStandalone: true,
     standaloneUrl: 'xray/index.html'
+  },
+  {
+    id: 'cdss-hepa-biochem',
+    slug: 'hepa',
+    title: 'Phân Tích Sinh Hóa Gan & Quyết Định Lâm Sàng (HepaCDSS)',
+    titleEn: 'Liver Biochemistry & Clinical Decision Support System',
+    shortDesc: 'Phân tích sinh hóa gan chuẩn ACG, WHO: lưu đồ tiếp cận, tính tỷ số R-ratio, De Ritis, FIB-4, APRI, phân tầng viêm gan virus, xơ gan Child-Pugh, MELD-Na và tổn thương gan do thuốc (DILI).',
+    category: 'gastroenterology',
+    categoryName: 'Tiêu hóa & Gan mật',
+    version: '2.0.0',
+    updatedAt: '2026-09-08',
+    author: 'CliniPortal HepaCDSS Squad & ACG Guidelines',
+    guidelineSource: 'ACG Clinical Guideline: Evaluation of Abnormal Liver Chemistries (Am J Gastroenterol 2017)',
+    icd10: ['K71', 'K72', 'K73', 'K74', 'K76', 'B18'],
+    icon: 'fa-solid fa-virus',
+    badge: 'ACG & WHO Standard',
+    isStandalone: true,
+    standaloneUrl: 'hepa/index.html'
+  },
+  {
+    id: 'cdss-neuro-exam',
+    slug: 'neuro',
+    title: 'Thần Kinh Lâm Sàng & Mô Phỏng Y Khoa (NeuroExam Pro)',
+    titleEn: 'Clinical Neurological Examination & Simulation CDSS',
+    shortDesc: 'Nền tảng tra cứu lâm sàng và khám thần kinh: mô phỏng động 2D/3D (phản xạ ánh sáng đồng tử, vận nhãn, khoanh da, dáng đi, thoát vị não), thang điểm cấp cứu NIHSS, GCS và định vị tổn thương tủy/não.',
+    category: 'neurology',
+    categoryName: 'Thần kinh & Đột quỵ',
+    version: '2.0.0',
+    updatedAt: '2026-09-08',
+    author: 'CliniPortal NeuroExam Squad',
+    guidelineSource: 'AHA/ASA Guidelines for the Early Management of Patients With Acute Ischemic Stroke',
+    icd10: ['I63', 'I61', 'G40', 'G45', 'R40'],
+    icon: 'fa-solid fa-brain',
+    badge: 'Mô Phỏng 2D/3D',
+    isStandalone: true,
+    standaloneUrl: 'neuro/index.html'
   }
 ];
 

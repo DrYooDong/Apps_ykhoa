@@ -88,7 +88,7 @@ export interface SupabaseConfig {
   key: string;
 }
 
-export type DbStatus = 'connected' | 'disconnected' | 'error';
+export type DbStatus = 'connected' | 'disconnected' | 'error' | 'syncing';
 
 export interface ColumnVisibilityState {
   sourceType: boolean;
@@ -353,11 +353,18 @@ declare global {
     handleSaveSupabaseConfig?: (event?: Event) => void;
     handleDisconnectSupabase?: () => void;
     testSupabaseConnection?: () => Promise<void>;
-    updateSupabaseStatus?: (status: DbStatus, text: string) => void;
+    updateSupabaseStatus?: (status: DbStatus | 'syncing', text: string) => void;
+    showMedicalToast?: (options: any) => void;
+    renderSupabaseSyncBanner?: () => void;
+    dismissSyncBanner?: () => void;
+    pullCloudToLocal?: () => Promise<void>;
+    copySupabaseSql?: () => void;
+    setupSupabaseRealtime?: () => void;
+    _sbCloudCount?: number;
     dbFetchStudies?: () => Promise<Study[] | null>;
     dbSaveStudy?: (study: Study, silent?: boolean) => Promise<void | boolean>;
     dbDeleteStudy?: (id: string) => Promise<void | boolean>;
-    syncStudiesWithSupabase?: () => Promise<void>;
+    syncStudiesWithSupabase?: (mode?: 'bi-directional' | 'pull' | 'push') => Promise<void>;
     syncAllLocalToSupabase?: () => Promise<void>;
     loadStudies?: () => void;
     saveStudies?: () => void;

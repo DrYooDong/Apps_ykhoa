@@ -68,14 +68,19 @@ window.sortAsc = window.sortAsc !== undefined ? window.sortAsc : true;
 
 export function resolveStudyFile(filePath?: string): string {
   if (!filePath) return '';
-  const normalized = filePath.replace(/^Kho Guidelines\//i, 'kho-guidelines/');
-  const cleanSlug = normalized.replace(/^kho-guidelines\//i, '').replace(/\.html$/i, '');
+  const normalized = filePath.replace(/^(?:kho-guidelines|Kho Guidelines)\//i, '');
+  const cleanSlug = normalized.replace(/\.(?:html|mdx)$/i, '');
   
-  if (typeof window !== 'undefined' && window.location && (window.location.hash.startsWith('#/') || !window.location.pathname.endsWith('.html'))) {
-    return `#/ebm/kho-guidelines/${cleanSlug}`;
+  if (typeof window !== 'undefined' && window.location) {
+    // Khi đang trong môi trường SPA router (hash router hoặc pathname không kết thúc bằng guidelines.html)
+    if (window.location.hash.startsWith('#/') || !window.location.pathname.endsWith('guidelines.html')) {
+      return `#/ebm/kho-guidelines/${cleanSlug}`;
+    }
+    // Khi mở trực tiếp file guidelines.html độc lập trên trình duyệt/file://
+    return `../../../../index.html#/ebm/kho-guidelines/${cleanSlug}`;
   }
   
-  return normalized.startsWith('kho-guidelines/') ? normalized : `kho-guidelines/${normalized}`;
+  return `#/ebm/kho-guidelines/${cleanSlug}`;
 }
 
 export function getIcd10Name(code?: string): string {
@@ -94,18 +99,262 @@ export function getIcd10Name(code?: string): string {
 }
 
 // ════════════════════════════════════════════════════════════════
-// SUPABASE CONFIG & SYNC (Account Isolation & Data Privacy)
+// MEDICAL TOAST NOTIFICATION SYSTEM (Zero-dependency, Non-intrusive)
 // ════════════════════════════════════════════════════════════════
 
+export interface ToastOptions {
+  type?: 'success' | 'info' | 'warning' | 'error' | 'sync';
+  title?: string;
+  message: string;
+  duration?: number;
+}
+
+export function showMedicalToast(options: ToastOptions | string): void {
+  if (typeof document === 'undefined') return;
+  const opts: ToastOptions = typeof options === 'string' ? { message: options, type: 'info' } : options;
+  const type = opts.type || 'info';
+  const duration = opts.duration !== undefined ? opts.duration : (type === 'error' ? 6000 : 4000);
+
+  let container = document.getElementById('clini-toast-container');
+  if (!container) {
+    container = document.createElement('div');
+    container.id = 'clini-toast-container';
+    container.className = 'clini-toast-container';
+    document.body.appendChild(container);
+  }
+
+  const icons: Record<string, string> = {
+    success: '<i class="fa-solid fa-circle-check"></i>',
+    error: '<i class="fa-solid fa-triangle-exclamation"></i>',
+    warning: '<i class="fa-solid fa-circle-exclamation"></i>',
+    info: '<i class="fa-solid fa-circle-info"></i>',
+    sync: '<i class="fa-solid fa-rotate"></i>'
+  };
+
+  const defaultTitles: Record<string, string> = {
+    success: 'Thành công',
+    error: 'Đã xảy ra lỗi',
+    warning: 'Cảnh báo',
+    info: 'Thông báo',
+    sync: 'Đang đồng bộ'
+  };
+
+  const toast = document.createElement('div');
+  toast.className = `clini-toast clini-toast-${type}`;
+  toast.setAttribute('role', 'alert');
+  toast.setAttribute('aria-live', 'polite');
+
+  const escapeHtmlToast = (str?: string) => {
+    if (!str) return '';
+    return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  };
+
+  toast.innerHTML = `
+    <div class="clini-toast-icon">${icons[type] || icons.info}</div>
+    <div class="clini-toast-content">
+      <div class="clini-toast-title">${escapeHtmlToast(opts.title || defaultTitles[type] || 'Thông báo')}</div>
+      <div class="clini-toast-message">${escapeHtmlToast(opts.message)}</div>
+    </div>
+    <button type="button" class="clini-toast-close" aria-label="Đóng">&times;</button>
+    ${duration > 0 ? `<div class="clini-toast-progress" style="animation-duration: ${duration}ms;"></div>` : ''}
+  `;
+
+  container.appendChild(toast);
+
+  // Animation trigger
+  requestAnimationFrame(() => {
+    toast.classList.add('toast-show');
+  });
+
+  const dismiss = () => {
+    toast.classList.remove('toast-show');
+    toast.classList.add('toast-hide');
+    setTimeout(() => {
+      if (toast.parentElement) toast.parentElement.removeChild(toast);
+    }, 300);
+  };
+
+  const closeBtn = toast.querySelector('.clini-toast-close');
+  if (closeBtn) closeBtn.addEventListener('click', dismiss);
+
+  if (duration > 0) {
+    setTimeout(dismiss, duration);
+  }
+}
+
+// ════════════════════════════════════════════════════════════════
+// SUPABASE SYNC INLINE BANNER COMPONENT
+// ════════════════════════════════════════════════════════════════
+
+export function renderSupabaseSyncBanner(): void {
+  const banner = document.getElementById('supabase-sync-banner');
+  if (!banner) return;
+
+  const status = window.dbStatus || 'disconnected';
+  const lastSync = localStorage.getItem('sb_last_sync_time');
+  const cloudCount = window._sbCloudCount !== undefined ? window._sbCloudCount : (status === 'connected' ? (window.studies || []).length : 0);
+  const isDismissed = sessionStorage.getItem('sb_banner_dismissed') === 'true';
+
+  if (isDismissed && status !== 'error' && status !== 'syncing') {
+    banner.style.display = 'none';
+    return;
+  }
+
+  banner.style.display = 'flex';
+  banner.className = `supabase-sync-banner banner-${status}`;
+
+  if (status === 'connected') {
+    banner.innerHTML = `
+      <div class="sync-banner-left">
+        <span class="sync-banner-dot"></span>
+        <span class="sync-banner-text">☁️ Supabase Cloud: Đã kết nối & Đồng bộ</span>
+        <span class="sync-banner-meta">(${cloudCount} bài trên Cloud ${lastSync ? `• Cập nhật ${lastSync}` : ''})</span>
+      </div>
+      <div class="sync-banner-actions">
+        <button class="sync-banner-btn" onclick="syncStudiesWithSupabase('bi-directional')" title="Đồng bộ 2 chiều ngay lập tức">
+          <i class="fa-solid fa-rotate"></i> Đồng bộ ngay
+        </button>
+        <button class="sync-banner-btn" onclick="openSupabaseModal()" title="Cài đặt Supabase">
+          <i class="fa-solid fa-gear"></i> Cài đặt
+        </button>
+        <button class="sync-banner-dismiss" onclick="dismissSyncBanner()" title="Thu gọn">&times;</button>
+      </div>
+    `;
+  } else if (status === 'syncing') {
+    banner.innerHTML = `
+      <div class="sync-banner-left">
+        <span class="sync-banner-dot"></span>
+        <span class="sync-banner-text">⏳ Đang đồng bộ dữ liệu với Supabase Cloud...</span>
+        <span class="sync-banner-meta">Vui lòng chờ giây lát</span>
+      </div>
+      <div class="sync-banner-actions">
+        <button class="sync-banner-dismiss" onclick="dismissSyncBanner()" title="Thu gọn">&times;</button>
+      </div>
+    `;
+  } else if (status === 'error') {
+    banner.innerHTML = `
+      <div class="sync-banner-left">
+        <span class="sync-banner-dot"></span>
+        <span class="sync-banner-text">⚠️ Kết nối Supabase gặp sự cố</span>
+        <span class="sync-banner-meta">(Dữ liệu vẫn được bảo vệ an toàn trên thiết bị này)</span>
+      </div>
+      <div class="sync-banner-actions">
+        <button class="sync-banner-btn" onclick="testSupabaseConnection(); openSupabaseModal();" style="border-color: #ef4444; color: #ef4444;">
+          🔍 Kiểm tra lỗi
+        </button>
+        <button class="sync-banner-btn" onclick="syncStudiesWithSupabase('bi-directional')">
+          <i class="fa-solid fa-rotate"></i> Thử lại
+        </button>
+        <button class="sync-banner-dismiss" onclick="dismissSyncBanner()" title="Thu gọn">&times;</button>
+      </div>
+    `;
+  } else {
+    banner.innerHTML = `
+      <div class="sync-banner-left">
+        <span class="sync-banner-dot"></span>
+        <span class="sync-banner-text">💾 Chế độ Ngoại tuyến (Local Mode)</span>
+        <span class="sync-banner-meta">Dữ liệu được lưu trong trình duyệt. Kết nối Supabase để đồng bộ mọi thiết bị.</span>
+      </div>
+      <div class="sync-banner-actions">
+        <button class="sync-banner-btn" onclick="openSupabaseModal()" style="border-color: var(--accent, #0284c7); color: var(--accent, #0284c7);">
+          ☁️ Kết nối Supabase
+        </button>
+        <button class="sync-banner-dismiss" onclick="dismissSyncBanner()" title="Thu gọn">&times;</button>
+      </div>
+    `;
+  }
+}
+
+export function dismissSyncBanner(): void {
+  const banner = document.getElementById('supabase-sync-banner');
+  if (banner) banner.style.display = 'none';
+  sessionStorage.setItem('sb_banner_dismissed', 'true');
+}
+
+// ════════════════════════════════════════════════════════════════
+// SUPABASE CONFIG & SYNC (Account Isolation, Realtime & Data Privacy)
+// ════════════════════════════════════════════════════════════════
+
+let realtimeChannel: any = null;
+
+export function setupSupabaseRealtime(): void {
+  if (!window.supabaseClient || typeof window.supabaseClient.channel !== 'function') return;
+  if (realtimeChannel) {
+    try {
+      window.supabaseClient.removeChannel(realtimeChannel);
+    } catch (e) {}
+    realtimeChannel = null;
+  }
+
+  try {
+    realtimeChannel = window.supabaseClient
+      .channel('clinical_guidelines_realtime')
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'clinical_guidelines' }, (payload: any) => {
+        console.log('[Supabase Realtime] Nhận tín hiệu thay đổi:', payload);
+        const eventType = payload.eventType;
+        const newRecord = payload.new;
+        const oldRecord = payload.old;
+
+        if (eventType === 'INSERT' && newRecord) {
+          const processed = processStudyFields(newRecord);
+          const current = window.studies || [];
+          if (!current.some(s => s.id === processed.id)) {
+            window.studies = [processed, ...current];
+            saveStudies();
+            if (window.renderTable) window.renderTable();
+            if (window.renderUpdates) window.renderUpdates();
+            showMedicalToast({
+              type: 'info',
+              title: '☁️ Cập nhật Realtime',
+              message: `Đã tự động thêm bài mới: "${(processed.title || '').substring(0, 40)}..."`
+            });
+          }
+        } else if (eventType === 'UPDATE' && newRecord) {
+          const processed = processStudyFields(newRecord);
+          const current = window.studies || [];
+          const idx = current.findIndex(s => s.id === processed.id);
+          if (idx >= 0) {
+            current[idx] = processed;
+            window.studies = [...current];
+            saveStudies();
+            if (window.renderTable) window.renderTable();
+            showMedicalToast({
+              type: 'info',
+              title: '☁️ Cập nhật Realtime',
+              message: `Đã cập nhật bài: "${(processed.title || '').substring(0, 40)}..."`
+            });
+          }
+        } else if (eventType === 'DELETE' && oldRecord && oldRecord.id) {
+          saveDeletedStudyId(oldRecord.id);
+          window.studies = (window.studies || []).filter(s => s.id !== oldRecord.id);
+          saveStudies();
+          if (window.renderTable) window.renderTable();
+          if (window.renderUpdates) window.renderUpdates();
+          showMedicalToast({
+            type: 'warning',
+            title: '☁️ Cập nhật Realtime',
+            message: `Một nghiên cứu đã được xóa từ thiết bị khác.`
+          });
+        }
+      })
+      .subscribe((status: string) => {
+        console.log('[Supabase Realtime] Trạng thái kênh:', status);
+      });
+  } catch (err) {
+    console.warn('[Supabase Realtime] Không thể khởi tạo subscription:', err);
+  }
+}
+
 export function initSupabase(): boolean {
-  const url = localStorage.getItem('supabaseUrl');
-  const key = localStorage.getItem('supabaseKey');
+  const url = (localStorage.getItem('supabaseUrl') || '').trim().replace(/\/+$/, '');
+  const key = (localStorage.getItem('supabaseKey') || '').trim();
   
   if (url && key && window.supabase) {
     window.supabaseConfig = { url, key };
     try {
       window.supabaseClient = window.supabase.createClient(url, key);
       updateSupabaseStatus('connected', 'Supabase: Connected');
+      setupSupabaseRealtime();
       return true;
     } catch (err) {
       console.error('Supabase initialization failed:', err);
@@ -119,20 +368,31 @@ export function initSupabase(): boolean {
   }
 }
 
-export function updateSupabaseStatus(status: DbStatus, text: string): void {
+export function updateSupabaseStatus(status: DbStatus | 'syncing', text: string): void {
   window.dbStatus = status;
   const dot = document.getElementById('supabase-status-dot');
   const txt = document.getElementById('supabase-status-text');
+  const btn = document.getElementById('supabase-status-btn');
   if (dot && txt) {
     txt.textContent = text;
     if (status === 'connected') {
-      dot.style.background = '#22c55e'; // Green
+      dot.style.background = '#10b981'; // Green
+      dot.style.boxShadow = '0 0 8px rgba(16, 185, 129, 0.4)';
+    } else if (status === 'syncing') {
+      dot.style.background = '#8b5cf6'; // Purple
+      dot.style.boxShadow = '0 0 8px rgba(139, 92, 246, 0.6)';
     } else if (status === 'error') {
       dot.style.background = '#ef4444'; // Red
+      dot.style.boxShadow = '0 0 8px rgba(239, 68, 68, 0.4)';
     } else {
       dot.style.background = '#94a3b8'; // Gray
+      dot.style.boxShadow = 'none';
     }
   }
+  if (btn) {
+    btn.setAttribute('title', text);
+  }
+  renderSupabaseSyncBanner();
 }
 
 export function openSupabaseModal(): void {
@@ -142,6 +402,18 @@ export function openSupabaseModal(): void {
   const keyInput = document.getElementById('sb-key') as HTMLInputElement | null;
   if (urlInput) urlInput.value = url;
   if (keyInput) keyInput.value = key;
+
+  // Cập nhật số liệu thống kê trong Modal Dashboard
+  const localCountEl = document.getElementById('sb-modal-local-count');
+  const cloudCountEl = document.getElementById('sb-modal-cloud-count');
+  const lastSyncEl = document.getElementById('sb-modal-last-sync');
+  const pingEl = document.getElementById('sb-modal-ping');
+
+  if (localCountEl) localCountEl.textContent = String((window.studies || []).length);
+  if (cloudCountEl) cloudCountEl.textContent = window._sbCloudCount !== undefined ? String(window._sbCloudCount) : '—';
+  if (lastSyncEl) lastSyncEl.textContent = localStorage.getItem('sb_last_sync_time') || 'Chưa đồng bộ';
+  if (pingEl) pingEl.textContent = '—';
+
   const modal = document.getElementById('supabase-modal');
   if (modal) modal.classList.add('active');
 
@@ -159,8 +431,8 @@ export async function testSupabaseConnection(): Promise<void> {
   const keyInput = document.getElementById('sb-key') as HTMLInputElement | null;
   const testResultEl = document.getElementById('sb-test-result');
 
-  const url = urlInput ? urlInput.value.trim() : (localStorage.getItem('supabaseUrl') || '');
-  const key = keyInput ? keyInput.value.trim() : (localStorage.getItem('supabaseKey') || '');
+  const url = (urlInput ? urlInput.value.trim() : (localStorage.getItem('supabaseUrl') || '')).replace(/\/+$/, '');
+  const key = (keyInput ? keyInput.value.trim() : (localStorage.getItem('supabaseKey') || ''));
 
   if (!testResultEl) return;
 
@@ -169,7 +441,7 @@ export async function testSupabaseConnection(): Promise<void> {
     testResultEl.style.background = '#fef2f2';
     testResultEl.style.color = '#dc2626';
     testResultEl.style.border = '1px solid #fca5a5';
-    testResultEl.innerHTML = '⚠️ Vui lòng nhập đầy đủ Supabase URL và Anon Key!';
+    testResultEl.innerHTML = '⚠️ Vui lòng nhập đầy đủ Supabase Project URL và Anon Key!';
     return;
   }
 
@@ -177,7 +449,7 @@ export async function testSupabaseConnection(): Promise<void> {
   testResultEl.style.background = '#eff6ff';
   testResultEl.style.color = '#2563eb';
   testResultEl.style.border = '1px solid #bfdbfe';
-  testResultEl.innerHTML = '⏳ Đang kiểm tra kết nối tới Supabase Cloud...';
+  testResultEl.innerHTML = '<i class="fa-solid fa-rotate fa-spin"></i> Đang kiểm tra kết nối và đo độ trễ tới Supabase Cloud...';
 
   if (!window.supabase || typeof window.supabase.createClient !== 'function') {
     testResultEl.style.background = '#fef2f2';
@@ -191,9 +463,9 @@ export async function testSupabaseConnection(): Promise<void> {
     const client = window.supabase.createClient(url, key);
     const startTime = Date.now();
 
-    const { error } = await client
+    const { data, count, error } = await client
       .from('clinical_guidelines')
-      .select('id')
+      .select('id', { count: 'exact' })
       .limit(1);
 
     const elapsed = Date.now() - startTime;
@@ -201,7 +473,7 @@ export async function testSupabaseConnection(): Promise<void> {
     if (error) {
       let hint = '';
       if (error.code === '42P01' || (error.message && error.message.includes('relation "clinical_guidelines" does not exist'))) {
-        hint = 'Bảng <code>clinical_guidelines</code> chưa được tạo trên Supabase. Vui lòng mở SQL Editor và chạy câu lệnh SQL mẫu bên dưới!';
+        hint = 'Bảng <code>clinical_guidelines</code> chưa được tạo trên Supabase. Bấm nút <strong>"Sao chép SQL"</strong> bên dưới, mở Supabase SQL Editor và chạy để tạo bảng!';
       } else if (error.code === 'PGRST301' || error.status === 401 || (error.message && error.message.includes('JWT'))) {
         hint = 'Mã Anon Key không hợp lệ hoặc đã hết hạn. Hãy copy đúng khóa <code>anon / public</code> trong Settings -> API.';
       } else if (error.code === '42501' || (error.message && error.message.includes('permission'))) {
@@ -217,10 +489,24 @@ export async function testSupabaseConnection(): Promise<void> {
       testResultEl.innerHTML = `❌ Lỗi kết nối Supabase (${elapsed}ms):<br><strong>${hint}</strong>`;
     } else {
       window._warmSupabaseClient = { client, url, key };
+      const totalCount = count !== null && count !== undefined ? count : (Array.isArray(data) ? data.length : 0);
+      window._sbCloudCount = totalCount;
+
+      const countEl = document.getElementById('sb-modal-cloud-count');
+      if (countEl) countEl.textContent = String(totalCount);
+      const pingEl = document.getElementById('sb-modal-ping');
+      if (pingEl) pingEl.textContent = `${elapsed}ms`;
+
       testResultEl.style.background = '#f0fdf4';
       testResultEl.style.color = '#15803d';
       testResultEl.style.border = '1px solid #86efac';
-      testResultEl.innerHTML = `✅ Kết nối thành công tới Supabase! (${elapsed}ms)<br>Bảng <code>clinical_guidelines</code> đã sẵn sàng đồng bộ.<br><small style="opacity:0.8">💡 Bấm <strong>Lưu & Kết nối</strong> ngay để tránh cold-start lần 2.</small>`;
+      testResultEl.innerHTML = `✅ Kết nối thành công tới Supabase Cloud! (Độ trễ: <strong>${elapsed}ms</strong>)<br>Tìm thấy <strong>${totalCount}</strong> tài liệu trên Cloud. Sẵn sàng đồng bộ 2 chiều!`;
+      
+      showMedicalToast({
+        type: 'success',
+        title: 'Supabase Online',
+        message: `Đã kết nối thành công (${elapsed}ms) • ${totalCount} bài trên Cloud.`
+      });
     }
   } catch (err: any) {
     window._warmSupabaseClient = null;
@@ -231,15 +517,89 @@ export async function testSupabaseConnection(): Promise<void> {
   }
 }
 
+export function copySupabaseSql(): void {
+  const sql = `-- Tạo bảng clinical_guidelines trên Supabase
+create table if not exists clinical_guidelines (
+  id text primary key,
+  title text not null,
+  "titleEn" text,
+  author text,
+  drug text,
+  "sourceType" text,
+  specialty text,
+  "specialty2" text,
+  design text,
+  intervention text,
+  "primaryEndpoint" text,
+  "keyResults" text,
+  impact text,
+  year integer,
+  organization text,
+  journal text,
+  phase text,
+  "sampleSize" integer,
+  population text,
+  summary text,
+  "detailedConclusion" text,
+  "fdaStatus" text,
+  "sourceUrl" text,
+  file text,
+  "asianData" boolean,
+  bookmarked boolean,
+  icd10 text,
+  subgroups text,
+  parts text,
+  "conditionKey" text,
+  "impactFactor" numeric,
+  quartile text,
+  sjr numeric,
+  snip numeric,
+  "hIndex" integer,
+  "oldRegimen" text,
+  "newRegimen" text,
+  "createdAt" timestamp with time zone default timezone('utc'::text, now()),
+  "updatedAt" timestamp with time zone default timezone('utc'::text, now())
+);
+
+-- Phân quyền Row Level Security (RLS) cho truy cập anon/public
+alter table clinical_guidelines enable row level security;
+drop policy if exists "Allow anon select" on clinical_guidelines;
+create policy "Allow anon select" on clinical_guidelines for select using (true);
+drop policy if exists "Allow anon insert" on clinical_guidelines;
+create policy "Allow anon insert" on clinical_guidelines for insert with check (true);
+drop policy if exists "Allow anon update" on clinical_guidelines;
+create policy "Allow anon update" on clinical_guidelines for update using (true);
+drop policy if exists "Allow anon delete" on clinical_guidelines;
+create policy "Allow anon delete" on clinical_guidelines for delete using (true);`;
+
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(sql).then(() => {
+      showMedicalToast({
+        type: 'success',
+        title: 'Đã sao chép SQL',
+        message: 'Đã sao chép toàn bộ câu lệnh tạo bảng & RLS vào Clipboard!'
+      });
+    }).catch(() => {
+      prompt('Sao chép SQL bên dưới:', sql);
+    });
+  } else {
+    prompt('Sao chép SQL bên dưới:', sql);
+  }
+}
+
 export function saveSupabaseConfig(event?: Event): void {
   if (event) event.preventDefault();
   const urlInput = document.getElementById('sb-url') as HTMLInputElement | null;
   const keyInput = document.getElementById('sb-key') as HTMLInputElement | null;
-  const url = urlInput ? urlInput.value.trim() : '';
+  const url = urlInput ? urlInput.value.trim().replace(/\/+$/, '') : '';
   const key = keyInput ? keyInput.value.trim() : '';
   
   if (!url || !key) {
-    alert('⚠️ Vui lòng nhập đầy đủ Supabase URL và Anon Key!');
+    showMedicalToast({
+      type: 'warning',
+      title: 'Thiếu thông tin',
+      message: 'Vui lòng nhập đầy đủ Supabase Project URL và Anon Key!'
+    });
     return;
   }
 
@@ -250,13 +610,19 @@ export function saveSupabaseConfig(event?: Event): void {
     window.supabaseClient = window._warmSupabaseClient.client;
     window.supabaseConfig = { url, key };
     updateSupabaseStatus('connected', 'Supabase: Connected');
+    setupSupabaseRealtime();
     window._warmSupabaseClient = null;
   } else {
     initSupabase();
   }
 
   closeSupabaseModal();
-  syncStudiesWithSupabase();
+  showMedicalToast({
+    type: 'success',
+    title: 'Đã lưu cấu hình',
+    message: 'Đang tiến hành đồng bộ 2 chiều với Supabase Cloud...'
+  });
+  syncStudiesWithSupabase('bi-directional');
 }
 
 export function clearSupabaseConfig(): void {
@@ -268,6 +634,8 @@ export function clearSupabaseConfig(): void {
     localStorage.removeItem('cliniportal_custom_studies');
     localStorage.removeItem('cliniportal_deleted_study_ids');
     localStorage.removeItem('cliniportal_custom_conditions');
+    localStorage.removeItem('sb_last_sync_time');
+    window._sbCloudCount = undefined;
     
     if (window.DEFAULT_CLINICAL_CONDITIONS) {
       window.CLINICAL_CONDITIONS = JSON.parse(JSON.stringify(window.DEFAULT_CLINICAL_CONDITIONS));
@@ -280,6 +648,11 @@ export function clearSupabaseConfig(): void {
     if (urlInput) urlInput.value = '';
     if (keyInput) keyInput.value = '';
     
+    if (realtimeChannel && window.supabaseClient) {
+      try { window.supabaseClient.removeChannel(realtimeChannel); } catch (e) {}
+      realtimeChannel = null;
+    }
+
     window.supabaseClient = null;
     window.supabaseConfig = { url: '', key: '' };
     
@@ -293,7 +666,11 @@ export function clearSupabaseConfig(): void {
     if (window.renderTimeline) window.renderTimeline();
     if (window.renderTable) window.renderTable();
     if (window.renderUpdates) window.renderUpdates();
-    alert('🔒 Đã đăng xuất thành công! Dữ liệu nghiên cứu và danh mục bệnh cá nhân đã được xóa sạch khỏi thiết bị hiện tại.');
+    showMedicalToast({
+      type: 'info',
+      title: 'Đã đăng xuất',
+      message: 'Đã xóa dữ liệu tài khoản Supabase khỏi thiết bị an toàn.'
+    });
   }
 }
 
@@ -353,7 +730,7 @@ export async function fetchSupabaseDataWithTimeout(timeoutMs = 15000): Promise<a
   return Array.isArray(data) ? data : [];
 }
 
-export async function syncStudiesWithSupabase(): Promise<void> {
+export async function syncStudiesWithSupabase(mode: 'bi-directional' | 'pull' | 'push' = 'bi-directional'): Promise<void> {
   loadStudies();
   if (window.renderTable) window.renderTable();
   if (window.renderUpdates) window.renderUpdates();
@@ -365,7 +742,7 @@ export async function syncStudiesWithSupabase(): Promise<void> {
     return;
   }
   
-  updateSupabaseStatus('connected', 'Supabase: Đang đồng bộ dữ liệu...');
+  updateSupabaseStatus('syncing', 'Supabase: Đang đồng bộ dữ liệu...');
   try {
     const data = await fetchSupabaseDataWithTimeout(15000);
 
@@ -382,6 +759,7 @@ export async function syncStudiesWithSupabase(): Promise<void> {
 
       const validRemoteData = data.filter(s => s && s.id && !isStudyDeleted(s, deletedList));
       const cloudIdSet = new Set(validRemoteData.map(s => s.id));
+      window._sbCloudCount = validRemoteData.length;
 
       let customLocal: any[] = [];
       try {
@@ -392,7 +770,7 @@ export async function syncStudiesWithSupabase(): Promise<void> {
             customLocal = parsed.filter(s => s && s.id && !isStudyDeleted(s, deletedList));
           }
         }
-      } catch(e) {}
+      } catch (e) {}
 
       const remoteStudies = validRemoteData.map(s => processStudyFields(s));
       const combined = [...remoteStudies, ...customLocal, ...(window.SAMPLE_STUDIES || [])];
@@ -406,23 +784,34 @@ export async function syncStudiesWithSupabase(): Promise<void> {
       if (isChanged && window.renderTable) window.renderTable();
       if (isChanged && window.renderUpdates) window.renderUpdates();
       
-      const missingOnCloud = newStudies.filter(s => s && s.id && !cloudIdSet.has(s.id));
-      if (missingOnCloud.length > 0) {
-        console.log(`[Supabase Auto-Sync] Đang tự động đẩy ${missingOnCloud.length} bài nghiên cứu mới lên Supabase Cloud...`);
-        for (const study of missingOnCloud) {
-          try {
-            await dbSaveStudy(study, true);
-          } catch (e) {
-            console.warn('Lỗi auto-sync bài mới lên Supabase:', study.title, e);
+      if (mode === 'bi-directional' || mode === 'push') {
+        const missingOnCloud = newStudies.filter(s => s && s.id && !cloudIdSet.has(s.id));
+        if (missingOnCloud.length > 0) {
+          console.log(`[Supabase Auto-Sync] Đang tự động đẩy ${missingOnCloud.length} bài nghiên cứu mới lên Supabase Cloud...`);
+          for (const study of missingOnCloud) {
+            try {
+              await dbSaveStudy(study, true);
+            } catch (e) {
+              console.warn('Lỗi auto-sync bài mới lên Supabase:', study.title, e);
+            }
           }
         }
       }
+
+      const timeStr = new Date().toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' });
+      localStorage.setItem('sb_last_sync_time', timeStr);
 
       const finalCount = newStudies.length;
       const countMsg = finalCount > 0 
         ? `Supabase: Đã nạp ${finalCount} bài từ Đám mây`
         : `Supabase: Đã kết nối (Cơ sở dữ liệu trống)`;
       updateSupabaseStatus('connected', countMsg);
+
+      showMedicalToast({
+        type: 'success',
+        title: 'Đồng bộ hoàn tất',
+        message: `Đã đồng bộ ${finalCount} tài liệu y khoa thành công (${timeStr}).`
+      });
     }
   } catch (err: any) {
     console.warn('Supabase Sync failed or timed out:', err);
@@ -431,7 +820,7 @@ export async function syncStudiesWithSupabase(): Promise<void> {
     const code = (err && err.code) ? err.code : '';
 
     if (msg.includes('Timeout')) {
-      errDetail = 'Timeout (Ấn "Test kết nối" trong Cài đặt)';
+      errDetail = 'Timeout (Bấm "Kiểm tra lỗi" để chẩn đoán)';
     } else if (code === '42P01' || msg.includes('bảng') || msg.includes('does not exist')) {
       errDetail = 'Bảng chưa tạo (Mở Cài đặt xem SQL)';
     } else if (code === '42501' || msg.includes('RLS') || msg.includes('permission')) {
@@ -443,6 +832,58 @@ export async function syncStudiesWithSupabase(): Promise<void> {
     }
 
     updateSupabaseStatus('error', `Supabase: ${errDetail}`);
+    showMedicalToast({
+      type: 'error',
+      title: 'Đồng bộ thất bại',
+      message: errDetail
+    });
+  }
+}
+
+export async function pullCloudToLocal(): Promise<void> {
+  const url = localStorage.getItem('supabaseUrl');
+  const key = localStorage.getItem('supabaseKey');
+  if (!url || !key) {
+    showMedicalToast({ type: 'warning', title: 'Chưa kết nối', message: 'Vui lòng cấu hình Supabase URL và Anon Key!' });
+    return;
+  }
+
+  showMedicalToast({ type: 'sync', title: 'Đang tải dữ liệu', message: 'Đang lấy toàn bộ dữ liệu từ Supabase Cloud...' });
+  updateSupabaseStatus('syncing', 'Supabase: Đang kéo dữ liệu về máy...');
+
+  try {
+    const data = await fetchSupabaseDataWithTimeout(15000);
+    if (Array.isArray(data)) {
+      const deletedList = getDeletedStudyIds();
+      const validRemoteData = data.filter(s => s && s.id && !isStudyDeleted(s, deletedList));
+      const remoteStudies = validRemoteData.map(s => processStudyFields(s));
+      const combined = [...remoteStudies, ...(window.SAMPLE_STUDIES || [])];
+      const newStudies = processAndDeduplicateStudies(combined);
+      newStudies.sort((a, b) => new Date(b.createdAt || 0).getTime() - new Date(a.createdAt || 0).getTime());
+
+      window.studies = newStudies;
+      saveStudies();
+      if (window.renderTable) window.renderTable();
+      if (window.renderUpdates) window.renderUpdates();
+
+      const timeStr = new Date().toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' });
+      localStorage.setItem('sb_last_sync_time', timeStr);
+      window._sbCloudCount = validRemoteData.length;
+
+      updateSupabaseStatus('connected', `Supabase: Đã nạp ${newStudies.length} bài`);
+      showMedicalToast({
+        type: 'success',
+        title: 'Tải thành công',
+        message: `Đã nạp ${validRemoteData.length} bản ghi từ Supabase Cloud về máy!`
+      });
+    }
+  } catch (err: any) {
+    updateSupabaseStatus('error', 'Lỗi tải Supabase: ' + (err?.message || 'Error'));
+    showMedicalToast({
+      type: 'error',
+      title: 'Tải thất bại',
+      message: err?.message || 'Không thể lấy dữ liệu từ Cloud. Kiểm tra kết nối!'
+    });
   }
 }
 
@@ -451,17 +892,30 @@ export async function syncAllLocalToSupabase(): Promise<void> {
   const key = localStorage.getItem('supabaseKey') || (window.supabaseConfig && window.supabaseConfig.key);
 
   if (!url || !key) {
-    alert('⚠️ Chưa cấu hình Supabase! Vui lòng nhập URL và Anon Key trong phần Cài đặt.');
+    showMedicalToast({
+      type: 'warning',
+      title: 'Chưa cấu hình Supabase',
+      message: 'Vui lòng nhập URL và Anon Key trong phần Cài đặt.'
+    });
     return;
   }
 
   if (!window.studies || window.studies.length === 0) {
-    alert('⚠️ Không có nghiên cứu nào trong bộ nhớ để đồng bộ!');
+    showMedicalToast({
+      type: 'info',
+      title: 'Bộ nhớ trống',
+      message: 'Không có nghiên cứu nào trong bộ nhớ để đồng bộ!'
+    });
     return;
   }
 
   const total = window.studies.length;
-  updateSupabaseStatus('connected', `Supabase: Đang đẩy ${total} bài lên Cloud...`);
+  updateSupabaseStatus('syncing', `Supabase: Đang đẩy ${total} bài lên Cloud...`);
+  showMedicalToast({
+    type: 'sync',
+    title: 'Đang sao lưu',
+    message: `Đang đẩy ${total} bài nghiên cứu lên Supabase Cloud...`
+  });
 
   let successCount = 0;
   let failCount = 0;
@@ -475,11 +929,23 @@ export async function syncAllLocalToSupabase(): Promise<void> {
     }
   }
 
+  const timeStr = new Date().toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' });
+  localStorage.setItem('sb_last_sync_time', timeStr);
+  window._sbCloudCount = successCount;
+
   updateSupabaseStatus('connected', `Supabase: Đã nạp ${successCount} bài từ Đám mây`);
   if (failCount === 0) {
-    alert(`🎉 Đã đồng bộ thành công toàn bộ ${successCount} nghiên cứu lên Supabase Cloud!`);
+    showMedicalToast({
+      type: 'success',
+      title: 'Đã đẩy lên Cloud',
+      message: `Đã đồng bộ thành công toàn bộ ${successCount} nghiên cứu lên Supabase Cloud!`
+    });
   } else {
-    alert(`⚠️ Đồng bộ hoàn tất: ${successCount} thành công, ${failCount} thất bại. Vui lòng kiểm tra lại kết nối và quyền RLS!`);
+    showMedicalToast({
+      type: 'warning',
+      title: 'Đồng bộ có lỗi',
+      message: `Hoàn tất: ${successCount} thành công, ${failCount} thất bại. Kiểm tra lại quyền RLS!`
+    });
   }
 }
 
@@ -496,10 +962,12 @@ export async function dbSaveStudy(study: Study, silent = false): Promise<void> {
   const payload: any = {
     id: study.id,
     title: study.title,
+    titleEn: study.titleEn || '',
     author: study.author || '',
     drug: study.drug || '',
     sourceType: study.sourceType || 'intl-study',
     specialty: study.specialty || 'cardio',
+    specialty2: study.specialty2 || '',
     design: study.design || 'rct',
     intervention: study.intervention || '',
     primaryEndpoint: study.primaryEndpoint || '',
@@ -507,6 +975,7 @@ export async function dbSaveStudy(study: Study, silent = false): Promise<void> {
     impact: study.impact || 'informative',
     year: typeof study.year === 'number' ? study.year : (parseInt(String(study.year), 10) || new Date().getFullYear()),
     organization: study.organization || '',
+    journal: study.journal || '',
     phase: study.phase || '',
     sampleSize: typeof study.sampleSize === 'number' ? study.sampleSize : (parseInt(String(study.sampleSize), 10) || null),
     population: study.population || '',
@@ -521,7 +990,15 @@ export async function dbSaveStudy(study: Study, silent = false): Promise<void> {
     icd10: study.icd10 ? (typeof study.icd10 === 'string' ? study.icd10 : JSON.stringify(study.icd10)) : null,
     subgroups: study.subgroups ? (typeof study.subgroups === 'object' ? JSON.stringify(study.subgroups) : study.subgroups) : null,
     conditionKey: study.conditionKey || null,
-    createdAt: study.createdAt || new Date().toISOString()
+    impactFactor: study.impactFactor !== undefined ? study.impactFactor : (study.if || null),
+    quartile: study.quartile || '',
+    sjr: study.sjr || null,
+    snip: study.snip || null,
+    hIndex: study.hIndex || null,
+    oldRegimen: study.oldRegimen || '',
+    newRegimen: study.newRegimen || '',
+    createdAt: study.createdAt || new Date().toISOString(),
+    updatedAt: new Date().toISOString()
   };
 
   try {
@@ -533,10 +1010,22 @@ export async function dbSaveStudy(study: Study, silent = false): Promise<void> {
       if (error && (error.code === 'PGRST204' || (error.message && error.message.toLowerCase().includes('column')))) {
         console.warn('Supabase schema missing optional columns, retrying with core payload:', error);
         const corePayload = { ...payload };
+        delete corePayload.titleEn;
+        delete corePayload.specialty2;
+        delete corePayload.journal;
+        delete corePayload.impactFactor;
+        delete corePayload.quartile;
+        delete corePayload.sjr;
+        delete corePayload.snip;
+        delete corePayload.hIndex;
+        delete corePayload.oldRegimen;
+        delete corePayload.newRegimen;
+        delete corePayload.updatedAt;
         delete corePayload.parts;
         delete corePayload.icd10;
         delete corePayload.subgroups;
         delete corePayload.conditionKey;
+
         const retryRes = await window.supabaseClient
           .from('clinical_guidelines')
           .upsert(corePayload, { onConflict: 'id' });
@@ -566,16 +1055,26 @@ export async function dbSaveStudy(study: Study, silent = false): Promise<void> {
     const totalCount = (window.studies || []).length;
     if (!silent) {
       updateSupabaseStatus('connected', `Supabase: Đã nạp ${totalCount} bài từ Đám mây`);
+      showMedicalToast({
+        type: 'success',
+        title: 'Đã lưu Cloud',
+        message: `Đã lưu bản ghi "${study.title.substring(0, 35)}..." lên Supabase Cloud.`
+      });
     }
   } catch (err: any) {
     console.error('Failed to save to Supabase:', err);
     if (!silent) {
       updateSupabaseStatus('error', 'Lỗi Supabase: ' + (err?.message || 'Save Failed'));
-      alert('⚠️ Không thể lưu lên Supabase: ' + (err?.message || 'Kiểm tra lại quyền truy cập hoặc kết nối!'));
+      showMedicalToast({
+        type: 'error',
+        title: 'Lưu Cloud thất bại',
+        message: err?.message || 'Kiểm tra lại quyền truy cập hoặc kết nối!'
+      });
     }
     throw err;
   }
 }
+
 
 export async function dbDeleteStudy(id: string): Promise<void> {
   if (!id) return;
@@ -1063,6 +1562,12 @@ if (typeof window !== 'undefined') {
   window.testSupabaseConnection = testSupabaseConnection;
   window.syncStudiesWithSupabase = syncStudiesWithSupabase;
   window.syncAllLocalToSupabase = syncAllLocalToSupabase;
+  window.pullCloudToLocal = pullCloudToLocal;
+  window.copySupabaseSql = copySupabaseSql;
+  window.setupSupabaseRealtime = setupSupabaseRealtime;
+  window.showMedicalToast = showMedicalToast;
+  window.renderSupabaseSyncBanner = renderSupabaseSyncBanner;
+  window.dismissSyncBanner = dismissSyncBanner;
 
   window.dbSaveStudy = dbSaveStudy;
   window.dbDeleteStudy = dbDeleteStudy;

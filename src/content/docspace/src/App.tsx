@@ -12,6 +12,7 @@ import { AuthModal } from './components/AuthModal.tsx';
 import { AboutModal } from './components/AboutModal.tsx';
 import { PrintReportModal } from './components/PrintReportModal.tsx';
 import { VaultDrawer } from './components/VaultDrawer.tsx';
+import { CdssModal, CdssToolSlug } from './components/CdssModal.tsx';
 import { DEFAULT_KNOWLEDGE_BASE, SampleCase } from './data/seedData.ts';
 import {
   ClinicalFormState,
@@ -85,11 +86,30 @@ export function MainApp() {
   const [vaultQuery, setVaultQuery] = useState('');
   const [vaultDisease, setVaultDisease] = useState('');
   const [vaultKho, setVaultKho] = useState('ALL');
+  const [isCdssOpen, setIsCdssOpen] = useState(false);
+  const [activeCdssTool, setActiveCdssTool] = useState<CdssToolSlug>('hub');
 
   // Active Guideline integration banner state
   const [activeGuidelineBanner, setActiveGuidelineBanner] = useState<GuidelineStudy | null>(null);
 
+  const handleOpenCdss = (tool: CdssToolSlug = 'hub') => {
+    setActiveCdssTool(tool);
+    setIsCdssOpen(true);
+  };
+
   const handleOpenVaultDrawer = (diseaseName?: string, query?: string, khoCode?: string) => {
+    if (khoCode === 'CDSS') {
+      let tool: CdssToolSlug = 'hub';
+      const q = (query || diseaseName || '').toLowerCase();
+      if (q.includes('dengue') || q.includes('xuất huyết')) tool = 'dengue';
+      else if (q.includes('ecg') || q.includes('điện tim') || q.includes('tim')) tool = 'ecg';
+      else if (q.includes('khí máu') || q.includes('abg')) tool = 'abg';
+      else if (q.includes('xquang') || q.includes('x-quang') || q.includes('xray') || q.includes('radai')) tool = 'xray';
+      else if (q.includes('gan') || q.includes('hepa') || q.includes('men gan') || q.includes('xơ gan') || q.includes('viêm gan')) tool = 'hepa';
+      else if (q.includes('thần kinh') || q.includes('neuro') || q.includes('não') || q.includes('liệt') || q.includes('đột quỵ')) tool = 'neuro';
+      handleOpenCdss(tool);
+      return;
+    }
     setVaultDisease(diseaseName || '');
     setVaultQuery(query || '');
     setVaultKho(khoCode || 'ALL');
@@ -555,6 +575,13 @@ export function MainApp() {
         initialQuery={vaultQuery}
         initialKho={vaultKho}
         initialDiseaseName={vaultDisease}
+        onOpenCdssModal={handleOpenCdss}
+      />
+
+      <CdssModal
+        isOpen={isCdssOpen}
+        onClose={() => setIsCdssOpen(false)}
+        initialTool={activeCdssTool}
       />
 
       <AuthModal

@@ -1120,6 +1120,7 @@ export function renderTable(): void {
                 ${study.drug ? `<span class="drug-tag">💊 ${escapeHtml(study.drug)}</span>` : ''}
                 ${study.year ? `<span class="year-tag">📅 ${study.year}</span>` : ''}
                 ${renderJournalMetricsBadge(study)}
+                ${study.sourceUrl ? `<a href="${escapeHtml(study.sourceUrl)}" target="_blank" rel="noopener noreferrer" class="badge-source-link" onclick="event.stopPropagation()" title="Mở tài liệu gốc (PubMed / BYT)"><i class="fa-solid fa-arrow-up-right-from-square"></i> Nguồn gốc</a>` : ''}
                 ${renderSummaryButton(study, 'badge')}
               </div>
             </div>
@@ -1152,6 +1153,7 @@ export function renderTable(): void {
             <button class="btn btn-small" onclick="window.GuidelineTools && window.GuidelineTools.addToCompare('${study.id}')" title="Thêm vào đối sánh">⚖️</button>
             <button class="btn btn-small" onclick="window.openResearchToolkitModal && window.openResearchToolkitModal('citation', window.studies.find(s=>s.id==='${study.id}'))" title="Trích dẫn &amp; Thẩm định khoa học">🔬</button>
             ${renderSummaryActionButton(study)}
+            ${study.sourceUrl ? `<a href="${escapeHtml(study.sourceUrl)}" target="_blank" rel="noopener noreferrer" class="btn btn-small" title="Mở tài liệu gốc / văn bản BYT" onclick="event.stopPropagation()">🔗</a>` : ''}
             <button class="btn btn-small" onclick="window.openEditModal ? window.openEditModal('${study.id}') : null" title="Chỉnh sửa">✏️</button>
             <button class="btn btn-small btn-danger" onclick="deleteStudy('${study.id}')" title="Xóa nghiên cứu này">🗑️</button>
           </div>
@@ -1166,6 +1168,7 @@ export function renderTable(): void {
           <td colspan="15" style="padding: 1.25rem; background: var(--surface-2); border-bottom: 2.5px solid var(--accent);">
             <div style="display:flex; flex-direction:column; gap:0.75rem; font-size:0.85rem; line-height:1.6; color:var(--text);">
               <div><strong>💡 Tóm tắt chi tiết:</strong> ${escapeHtml(study.detailedConclusion || study.summary || 'Chưa có thông tin')}</div>
+              ${study.sourceUrl ? `<div><strong>🔗 Liên kết tài liệu gốc:</strong> <a href="${escapeHtml(study.sourceUrl)}" target="_blank" rel="noopener noreferrer" class="badge-source-link" style="display:inline-flex; vertical-align:middle; text-decoration:none;"><i class="fa-solid fa-arrow-up-right-from-square"></i> ${escapeHtml(study.sourceUrl)}</a></div>` : ''}
               ${subgroupChart ? `<div><strong>🧬 Phân tích Phân nhóm (Subgroups):</strong>${subgroupChart}</div>` : ''}
               <div style="display:flex; gap:8px; margin-top:4px; flex-wrap:wrap;">
                 <button class="btn btn-small btn-primary" onclick="window.openResearchToolkitModal && window.openResearchToolkitModal('pico', window.studies.find(s=>s.id==='${study.id}'))">

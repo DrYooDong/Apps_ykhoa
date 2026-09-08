@@ -8,7 +8,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
   <link rel="stylesheet" href="../../../../css/reset.css">
@@ -20,6 +20,7 @@
   <script type="module" src="../../../../components/header.ts" defer></script>
   <script type="module" src="../../../../components/footer.ts" defer></script>
 
+  <link rel="stylesheet" href="../css/ebm-design-tokens.css">
   <link rel="stylesheet" href="../css/ebm-premium-system.css">
   <link rel="stylesheet" href="radar.css">
 </head>
@@ -554,7 +555,7 @@
         <div class="matrix-card">
           <div class="matrix-card-header">
             <div>
-              <h2 style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.25rem; font-weight: 800; color: var(--color-text); margin-bottom: 0.3rem;">
+              <h2 style="font-family: var(--dsp-font-display); font-size: 1.25rem; font-weight: 800; color: var(--color-text); margin-bottom: 0.3rem;">
                 🇻🇳 Ma Trận Đối Sánh Phác Đồ Quốc Tế vs Bộ Y Tế Việt Nam
               </h2>
               <p style="font-size: 0.85rem; color: var(--color-text-muted); margin: 0;">
@@ -594,12 +595,12 @@
   <div class="radar-modal-backdrop" id="algoModalBackdrop">
     <div class="radar-modal-box">
       <button class="modal-close-icon" id="modalCloseBtn"><i class="fa-solid fa-xmark"></i></button>
-      <h2 style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 1.35rem; color: var(--color-text);" id="modalTitle">So Sánh Lưu Đồ Thuật Toán Chẩn Đoán & Điều Trị</h2>
+      <h2 style="font-family: var(--dsp-font-display); font-weight: 800; font-size: 1.35rem; color: var(--color-text);" id="modalTitle">So Sánh Lưu Đồ Thuật Toán Chẩn Đoán & Điều Trị</h2>
       <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 0.25rem;" id="modalSubtitle">So sánh lưu đồ vector trực quan giữa phác đồ truyền thống ❌ và khuyến cáo mới nhất ✅</p>
 
       <!-- SVG FLOWCHART CONTAINER -->
       <div id="svg-flowchart-wrapper" class="svg-flowchart-wrapper">
-        <svg id="algo-flowchart-svg" viewBox="0 0 960 460" width="100%" height="440" style="font-family: Inter, sans-serif;">
+        <svg id="algo-flowchart-svg" viewBox="0 0 960 460" width="100%" height="440" style="font-family: var(--dsp-font-body);">
           <!-- Dynamically rendered SVG Flowchart -->
         </svg>
       </div>
@@ -623,7 +624,7 @@
   <div class="radar-modal-backdrop" id="exportModalBackdrop">
     <div class="radar-modal-box">
       <button class="modal-close-icon" id="exportModalCloseBtn"><i class="fa-solid fa-xmark"></i></button>
-      <h2 style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 1.35rem; color: var(--color-text);">
+      <h2 style="font-family: var(--dsp-font-display); font-weight: 800; font-size: 1.35rem; color: var(--color-text);">
         <i class="fa-solid fa-share-nodes" style="color: var(--radar-accent);"></i> Thẻ Báo Cáo Infographic Diff Viewer
       </h2>
       <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 0.25rem;">

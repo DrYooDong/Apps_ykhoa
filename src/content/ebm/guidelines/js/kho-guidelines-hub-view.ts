@@ -52,7 +52,7 @@ export function renderKhoGuidelinesHubView(): string {
               </span>
             </div>
 
-            <h1 style="font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif); font-size: clamp(1.8rem, 3.5vw, 2.35rem); font-weight: 800; color: #ffffff; margin: 0.5rem 0 0.85rem 0; line-height: 1.25; letter-spacing: -0.02em;">
+            <h1 style="font-family: var(--dsp-font-display, 'Space Grotesk', sans-serif); font-size: clamp(1.8rem, 3.5vw, 2.35rem); font-weight: 800; color: #ffffff; margin: 0.5rem 0 0.85rem 0; line-height: 1.25; letter-spacing: -0.02em;">
               Kho Tóm Tắt Hướng Dẫn Điều Trị &amp; Nghiên Cứu Lâm Sàng (EBM Guidelines)
             </h1>
 
@@ -250,7 +250,7 @@ export function initKhoGuidelinesHub(): void {
             </div>
 
             <!-- TITLE -->
-            <h2 style="font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif); font-size: 1.05rem; font-weight: 800; color: var(--color-text, #0f172a); margin: 0 0 0.5rem 0; line-height: 1.45; letter-spacing: -0.01em;">
+            <h2 style="font-family: var(--dsp-font-display, 'Space Grotesk', sans-serif); font-size: 1.05rem; font-weight: 800; color: var(--color-text, #0f172a); margin: 0 0 0.5rem 0; line-height: 1.45; letter-spacing: -0.01em;">
               <a href="#/ebm/kho-guidelines/${slug}" style="color: inherit; text-decoration: none; transition: color 0.15s;" onmouseover="this.style.color='var(--color-primary, #0284c7)'" onmouseout="this.style.color='inherit'">
                 ${item.title}
               </a>
@@ -273,13 +273,13 @@ export function initKhoGuidelinesHub(): void {
           <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; padding-top: 0.75rem; border-top: 1px solid var(--color-border, #f1f5f9);">
             <div style="display: flex; gap: 0.3rem; flex-wrap: wrap;">
               ${icdList.slice(0, 3).map((icd: string) => `
-                <span style="font-size: 0.72rem; font-family: monospace; font-weight: 700; padding: 2px 6px; border-radius: 4px; background: rgba(2,132,199,0.08); color: var(--color-primary, #0284c7);">
+                <span style="font-size: 0.72rem; font-family: var(--dsp-font-mono, 'IBM Plex Mono', monospace); font-weight: 700; padding: 2px 6px; border-radius: 4px; background: rgba(2,132,199,0.08); color: var(--color-primary, #0284c7);">
                   ${icd}
                 </span>
               `).join('')}
             </div>
 
-            <a href="#/ebm/kho-guidelines/${slug}" class="btn-read-summary" style="padding: 0.45rem 0.95rem; border-radius: 8px; background: linear-gradient(135deg, #0284c7 0%, #0284c7 100%); color: #ffffff; text-decoration: none; font-size: 0.82rem; font-weight: 700; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 2px 8px rgba(2, 132, 199, 0.25); transition: all 0.2s ease;">
+            <a href="#/ebm/kho-guidelines/${slug}" class="btn-read-summary" style="padding: 0.45rem 0.95rem; border-radius: 8px; background: linear-gradient(135deg, #0284c7 0%, #0284c7 100%); color: #ffffff; text-decoration: none; font-size: 0.82rem; font-weight: 700; font-family: var(--dsp-font-display, 'Space Grotesk', sans-serif); display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 2px 8px rgba(2, 132, 199, 0.25); transition: all 0.2s ease;">
               <span>Đọc tóm tắt</span>
               <i class="fa-solid fa-arrow-right" style="font-size: 0.75rem;"></i>
             </a>

@@ -6,7 +6,21 @@ import { defineConfig } from 'vite';
 export default defineConfig(() => {
   return {
     base: './',
-    plugins: [react(), tailwindcss()],
+    plugins: [
+      react(),
+      tailwindcss(),
+      {
+        name: 'cdss-rewrite-fallback',
+        configureServer(server) {
+          server.middlewares.use((req, _res, next) => {
+            if (req.url && req.url.startsWith('/knowledge-vault/cdss/')) {
+              req.url = req.url.replace('/knowledge-vault/cdss/', '/cdss/');
+            }
+            next();
+          });
+        },
+      },
+    ],
     resolve: {
       alias: {
         '@': path.resolve(__dirname, './src'),
@@ -16,6 +30,9 @@ export default defineConfig(() => {
       port: 5173,
       host: true,
       hmr: true,
+      fs: {
+        allow: ['..', '../..'],
+      },
     },
   };
 });

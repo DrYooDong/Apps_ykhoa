@@ -34,7 +34,7 @@ export class EBMOutcomeCard {
     let html = `
       <div class="ebm-outcome-card-wrapper" style="background: var(--color-surface, #ffffff); border: 1.5px solid var(--color-divider, #e2e8f0); border-radius: 16px; padding: 1.25rem; margin: 1.5rem 0; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--color-divider, #e2e8f0);">
-          <div style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 1.1rem; color: var(--color-text, #0f172a);">
+          <div style="font-family: var(--dsp-font-display, 'Space Grotesk', sans-serif); font-weight: 800; font-size: 1.1rem; color: var(--color-text, #0f172a);">
             <i class="fa-solid fa-microscope" style="color: #0284c7; margin-right: 0.4rem;"></i> ${data.title || "Bảng Đối Sánh Kết Cục Lâm Sàng (Outcome Matrix)"}
           </div>
           ${data.evidenceGrade ? `<span style="background: #e0e7ff; color: #3730a3; font-weight: 700; font-size: 0.75rem; padding: 0.25rem 0.6rem; border-radius: 20px;">Grade ${data.evidenceGrade}</span>` : ''}

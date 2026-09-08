@@ -30,6 +30,7 @@ import {
   SOURCE_TYPE_LABELS,
 } from '../lib/guidelineBridge.ts';
 import { GuidelineStudy } from '../types.ts';
+import { CdssToolSlug } from './CdssModal.tsx';
 
 interface VaultDrawerProps {
   isOpen: boolean;
@@ -37,6 +38,7 @@ interface VaultDrawerProps {
   initialQuery?: string;
   initialKho?: string;
   initialDiseaseName?: string;
+  onOpenCdssModal?: (tool: CdssToolSlug) => void;
 }
 
 export const VaultDrawer: React.FC<VaultDrawerProps> = ({
@@ -45,6 +47,7 @@ export const VaultDrawer: React.FC<VaultDrawerProps> = ({
   initialQuery = '',
   initialKho = 'ALL',
   initialDiseaseName,
+  onOpenCdssModal,
 }) => {
   const [searchTerm, setSearchTerm] = useState(initialQuery || initialDiseaseName || '');
   const [activeKho, setActiveKho] = useState(initialKho);
@@ -574,17 +577,31 @@ export const VaultDrawer: React.FC<VaultDrawerProps> = ({
                 {/* Khi mở Kho CDSS: Hiển thị 4 trạm công cụ CDSS lâm sàng tương tác độc lập */}
                 {activeKho === 'CDSS' && (
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-2.5">
-                    <a
-                      href={getCdssAppUrl('dengue')}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="p-3 bg-gradient-to-br from-blue-50 to-indigo-50/50 hover:from-blue-100/70 hover:to-indigo-100/70 border border-blue-200 rounded-lg transition-all flex flex-col justify-between group shadow-2xs text-left"
+                    <div
+                      onClick={() => {
+                        if (onOpenCdssModal) {
+                          onOpenCdssModal('dengue');
+                          onClose();
+                        } else {
+                          window.open(getCdssAppUrl('dengue'), '_blank');
+                        }
+                      }}
+                      className="p-3 bg-gradient-to-br from-blue-50 to-indigo-50/50 hover:from-blue-100/70 hover:to-indigo-100/70 border border-blue-200 rounded-lg transition-all flex flex-col justify-between group shadow-2xs text-left cursor-pointer"
                     >
                       <div className="flex items-start justify-between gap-1 mb-1">
                         <span className="px-1.5 py-0.5 rounded text-[10px] font-bold text-blue-700 bg-blue-100 border border-blue-300">
                           BYT QĐ 2760
                         </span>
-                        <ExternalLink className="w-3.5 h-3.5 text-blue-500 group-hover:translate-x-0.5 transition-transform" />
+                        <a
+                          href={getCdssAppUrl('dengue')}
+                          target="_blank"
+                          rel="noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="p-1 text-blue-500 hover:text-blue-700 rounded hover:bg-blue-100/80 transition-colors"
+                          title="Mở tab riêng"
+                        >
+                          <ExternalLink className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                        </a>
                       </div>
                       <h4 className="text-xs font-bold text-blue-950 group-hover:text-blue-700 transition-colors">
                         1. CDSS Dịch Truyền SXHD Dengue
@@ -592,19 +609,33 @@ export const VaultDrawer: React.FC<VaultDrawerProps> = ({
                       <p className="text-[11px] text-slate-500 mt-1 line-clamp-2">
                         Tính cọc dịch 4 cột động học, hiệu chỉnh cân nặng CDC 2014 và pha vận mạch.
                       </p>
-                    </a>
+                    </div>
 
-                    <a
-                      href={getCdssAppUrl('ecg')}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="p-3 bg-gradient-to-br from-rose-50 to-orange-50/50 hover:from-rose-100/70 hover:to-orange-100/70 border border-rose-200 rounded-lg transition-all flex flex-col justify-between group shadow-2xs text-left"
+                    <div
+                      onClick={() => {
+                        if (onOpenCdssModal) {
+                          onOpenCdssModal('ecg');
+                          onClose();
+                        } else {
+                          window.open(getCdssAppUrl('ecg'), '_blank');
+                        }
+                      }}
+                      className="p-3 bg-gradient-to-br from-rose-50 to-orange-50/50 hover:from-rose-100/70 hover:to-orange-100/70 border border-rose-200 rounded-lg transition-all flex flex-col justify-between group shadow-2xs text-left cursor-pointer"
                     >
                       <div className="flex items-start justify-between gap-1 mb-1">
                         <span className="px-1.5 py-0.5 rounded text-[10px] font-bold text-rose-700 bg-rose-100 border border-rose-300">
                           12-Lead Canvas
                         </span>
-                        <ExternalLink className="w-3.5 h-3.5 text-rose-500 group-hover:translate-x-0.5 transition-transform" />
+                        <a
+                          href={getCdssAppUrl('ecg')}
+                          target="_blank"
+                          rel="noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="p-1 text-rose-500 hover:text-rose-700 rounded hover:bg-rose-100/80 transition-colors"
+                          title="Mở tab riêng"
+                        >
+                          <ExternalLink className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                        </a>
                       </div>
                       <h4 className="text-xs font-bold text-rose-950 group-hover:text-rose-700 transition-colors">
                         2. CDSS Phân Tích ECG 12 Đạo Trình
@@ -612,19 +643,33 @@ export const VaultDrawer: React.FC<VaultDrawerProps> = ({
                       <p className="text-[11px] text-slate-500 mt-1 line-clamp-2">
                         Vẽ sóng trực quan, đo trục, QTc, phân tích hội chứng vành cấp STEMI và loạn nhịp.
                       </p>
-                    </a>
+                    </div>
 
-                    <a
-                      href={getCdssAppUrl('abg')}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="p-3 bg-gradient-to-br from-cyan-50 to-sky-50/50 hover:from-cyan-100/70 hover:to-sky-100/70 border border-cyan-200 rounded-lg transition-all flex flex-col justify-between group shadow-2xs text-left"
+                    <div
+                      onClick={() => {
+                        if (onOpenCdssModal) {
+                          onOpenCdssModal('abg');
+                          onClose();
+                        } else {
+                          window.open(getCdssAppUrl('abg'), '_blank');
+                        }
+                      }}
+                      className="p-3 bg-gradient-to-br from-cyan-50 to-sky-50/50 hover:from-cyan-100/70 hover:to-sky-100/70 border border-cyan-200 rounded-lg transition-all flex flex-col justify-between group shadow-2xs text-left cursor-pointer"
                     >
                       <div className="flex items-start justify-between gap-1 mb-1">
                         <span className="px-1.5 py-0.5 rounded text-[10px] font-bold text-cyan-700 bg-cyan-100 border border-cyan-300">
                           6-Step Analysis
                         </span>
-                        <ExternalLink className="w-3.5 h-3.5 text-cyan-500 group-hover:translate-x-0.5 transition-transform" />
+                        <a
+                          href={getCdssAppUrl('abg')}
+                          target="_blank"
+                          rel="noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="p-1 text-cyan-500 hover:text-cyan-700 rounded hover:bg-cyan-100/80 transition-colors"
+                          title="Mở tab riêng"
+                        >
+                          <ExternalLink className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                        </a>
                       </div>
                       <h4 className="text-xs font-bold text-cyan-950 group-hover:text-cyan-700 transition-colors">
                         3. CDSS Khí Máu Động Mạch (ABG Pro)
@@ -632,19 +677,33 @@ export const VaultDrawer: React.FC<VaultDrawerProps> = ({
                       <p className="text-[11px] text-slate-500 mt-1 line-clamp-2">
                         Đánh giá toan kiềm 6 bước, Anion Gap hiệu chỉnh Albumin, Delta-Delta, P/F và SOAP format.
                       </p>
-                    </a>
+                    </div>
 
-                    <a
-                      href={getCdssAppUrl('xray')}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="p-3 bg-gradient-to-br from-purple-50 to-indigo-50/50 hover:from-purple-100/70 hover:to-indigo-100/70 border border-purple-200 rounded-lg transition-all flex flex-col justify-between group shadow-2xs text-left"
+                    <div
+                      onClick={() => {
+                        if (onOpenCdssModal) {
+                          onOpenCdssModal('xray');
+                          onClose();
+                        } else {
+                          window.open(getCdssAppUrl('xray'), '_blank');
+                        }
+                      }}
+                      className="p-3 bg-gradient-to-br from-purple-50 to-indigo-50/50 hover:from-purple-100/70 hover:to-indigo-100/70 border border-purple-200 rounded-lg transition-all flex flex-col justify-between group shadow-2xs text-left cursor-pointer"
                     >
                       <div className="flex items-start justify-between gap-1 mb-1">
                         <span className="px-1.5 py-0.5 rounded text-[10px] font-bold text-purple-700 bg-purple-100 border border-purple-300">
                           PACS Workstation
                         </span>
-                        <ExternalLink className="w-3.5 h-3.5 text-purple-500 group-hover:translate-x-0.5 transition-transform" />
+                        <a
+                          href={getCdssAppUrl('xray')}
+                          target="_blank"
+                          rel="noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="p-1 text-purple-500 hover:text-purple-700 rounded hover:bg-purple-100/80 transition-colors"
+                          title="Mở tab riêng"
+                        >
+                          <ExternalLink className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                        </a>
                       </div>
                       <h4 className="text-xs font-bold text-purple-950 group-hover:text-purple-700 transition-colors">
                         4. CDSS Phân Tích X-Quang (RadAI)
@@ -652,7 +711,75 @@ export const VaultDrawer: React.FC<VaultDrawerProps> = ({
                       <p className="text-[11px] text-slate-500 mt-1 line-clamp-2">
                         Trạm đọc PACS ngực & bụng, phát hiện đông đặc, tràn khí, bóng tim, tắc ruột và xuất SOAP.
                       </p>
-                    </a>
+                    </div>
+
+                    <div
+                      onClick={() => {
+                        if (onOpenCdssModal) {
+                          onOpenCdssModal('hepa');
+                          onClose();
+                        } else {
+                          window.open(getCdssAppUrl('hepa'), '_blank');
+                        }
+                      }}
+                      className="p-3 bg-gradient-to-br from-emerald-50 to-teal-50/50 hover:from-emerald-100/70 hover:to-teal-100/70 border border-emerald-200 rounded-lg transition-all flex flex-col justify-between group shadow-2xs text-left cursor-pointer"
+                    >
+                      <div className="flex items-start justify-between gap-1 mb-1">
+                        <span className="px-1.5 py-0.5 rounded text-[10px] font-bold text-emerald-700 bg-emerald-100 border border-emerald-300">
+                          ACG &amp; WHO
+                        </span>
+                        <a
+                          href={getCdssAppUrl('hepa')}
+                          target="_blank"
+                          rel="noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="p-1 text-emerald-500 hover:text-emerald-700 rounded hover:bg-emerald-100/80 transition-colors"
+                          title="Mở tab riêng"
+                        >
+                          <ExternalLink className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                        </a>
+                      </div>
+                      <h4 className="text-xs font-bold text-emerald-950 group-hover:text-emerald-700 transition-colors">
+                        5. CDSS Sinh Hóa Gan (HepaCDSS)
+                      </h4>
+                      <p className="text-[11px] text-slate-500 mt-1 line-clamp-2">
+                        Phân tích tổn thương gan, tính R-ratio, De Ritis, FIB-4, APRI, MELD-Na, Child-Pugh &amp; DILI.
+                      </p>
+                    </div>
+
+                    <div
+                      onClick={() => {
+                        if (onOpenCdssModal) {
+                          onOpenCdssModal('neuro');
+                          onClose();
+                        } else {
+                          window.open(getCdssAppUrl('neuro'), '_blank');
+                        }
+                      }}
+                      className="p-3 bg-gradient-to-br from-amber-50 to-orange-50/50 hover:from-amber-100/70 hover:to-orange-100/70 border border-amber-200 rounded-lg transition-all flex flex-col justify-between group shadow-2xs text-left cursor-pointer"
+                    >
+                      <div className="flex items-start justify-between gap-1 mb-1">
+                        <span className="px-1.5 py-0.5 rounded text-[10px] font-bold text-amber-700 bg-amber-100 border border-amber-300">
+                          Mô Phỏng 2D/3D
+                        </span>
+                        <a
+                          href={getCdssAppUrl('neuro')}
+                          target="_blank"
+                          rel="noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="p-1 text-amber-500 hover:text-amber-700 rounded hover:bg-amber-100/80 transition-colors"
+                          title="Mở tab riêng"
+                        >
+                          <ExternalLink className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                        </a>
+                      </div>
+                      <h4 className="text-xs font-bold text-amber-950 group-hover:text-amber-700 transition-colors">
+                        6. CDSS Khám Thần Kinh (NeuroExam)
+                      </h4>
+                      <p className="text-[11px] text-slate-500 mt-1 line-clamp-2">
+                        Mô phỏng phản xạ đồng tử, vận nhãn, khoanh da, dáng đi, thoát vị não &amp; thang điểm NIHSS/GCS.
+                      </p>
+                    </div>
                   </div>
                 )}
 

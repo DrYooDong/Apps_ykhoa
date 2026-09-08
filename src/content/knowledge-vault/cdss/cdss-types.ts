@@ -11,7 +11,9 @@ export type CDSSCategory =
   | 'radiology'       // Chẩn đoán hình ảnh X-Quang
   | 'pediatrics'      // Nhi khoa
   | 'nephrology'      // Thận - Tiết niệu
-  | 'pharmacology';   // Dược lý lâm sàng
+  | 'pharmacology'    // Dược lý lâm sàng
+  | 'gastroenterology'// Tiêu hóa & Gan mật
+  | 'neurology';      // Thần kinh
 
 export interface CDSSModuleMeta {
   id: string;

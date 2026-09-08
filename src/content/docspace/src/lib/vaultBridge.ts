@@ -361,12 +361,12 @@ export function getCdssForCondition(diseaseName: string = ''): VaultArticle[] {
   const normName = diseaseName.toLowerCase();
 
   if (normName.includes('dengue') || normName.includes('xuất huyết')) {
-    const dengue = allCdss.find((a) => a.id === 'CDSS_H__Th_ng_CDSS_T_pcmb');
+    const dengue = allCdss.find((a) => a.id === 'CDSS_H__Th_ng_CDSS_T_8qvf' || a.id.includes('CDSS_H__Th_ng_CDSS_T_'));
     return dengue ? [dengue] : allCdss;
   }
 
   if (normName.includes('kháng sinh') || normName.includes('nhiễm') || normName.includes('viêm') || normName.includes('suy thận')) {
-    const abx = allCdss.find((a) => a.id === 'CDSS_B_ng_T_nh_Li_u__rzym');
+    const abx = allCdss.find((a) => a.id === 'CDSS_B_ng_T_nh_Li_u__v7o9' || a.id.includes('CDSS_B_ng_T_nh_Li_u__'));
     return abx ? [abx] : allCdss;
   }
 
@@ -391,21 +391,28 @@ export function getKnowledgeVaultWebUrl(articleId?: string, query?: string, khoC
 
 /**
  * Tạo URL mở trực tiếp công cụ CDSS độc lập (Dengue, ECG, ABG, X-Ray hoặc CDSS Hub)
+ * Đường dẫn tĩnh nội bộ trong public/cdss/ của DocSpace giúp hoạt động 100% trên cả dev server và production
  */
-export function getCdssAppUrl(moduleSlug: 'dengue' | 'ecg' | 'abg' | 'xray' | 'hub' = 'hub'): string {
+export function getCdssAppUrl(moduleSlug: 'dengue' | 'ecg' | 'abg' | 'xray' | 'hepa' | 'neuro' | 'hub' = 'hub'): string {
   if (moduleSlug === 'dengue') {
-    return `../knowledge-vault/cdss/dengue/index.html`;
+    return `./cdss/dengue/index.html`;
   }
   if (moduleSlug === 'ecg') {
-    return `../knowledge-vault/cdss/ecg/index.html`;
+    return `./cdss/ecg/index.html`;
   }
   if (moduleSlug === 'abg') {
-    return `../knowledge-vault/cdss/abg/index.html`;
+    return `./cdss/abg/index.html`;
   }
   if (moduleSlug === 'xray') {
-    return `../knowledge-vault/cdss/xray/index.html`;
+    return `./cdss/xray/index.html`;
   }
-  return `../knowledge-vault/cdss/index.html`;
+  if (moduleSlug === 'hepa') {
+    return `./cdss/hepa/index.html`;
+  }
+  if (moduleSlug === 'neuro') {
+    return `./cdss/neuro/index.html`;
+  }
+  return `./cdss/index.html`;
 }
 
 /**

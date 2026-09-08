@@ -44,6 +44,11 @@ Mỗi bài tóm tắt Guideline trong CliniPortal được thiết kế như m�
 --cor-3-bg: rgba(220, 38, 38, 0.12);
 --cor-3-border: #dc2626;
 --cor-3-text: #dc2626;        /* Chống chỉ định / Không có lợi / Gây hại */
+
+/* DocSpace Unified Typography Tokens */
+--dsp-font-body:    'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+--dsp-font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+--dsp-font-mono:    'IBM Plex Mono', monospace;
 ```
 
 ---

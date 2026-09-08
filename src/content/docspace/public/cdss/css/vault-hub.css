@@ -1,0 +1,2850 @@
+/**
+ * CliniPortal — Knowledge Vault Hub & Reader Stylesheet
+ * 100% Design Tokens & Dark Mode Compliant
+ */
+@import url('./vault-design-tokens.css');
+@import url('./vault-reader.css');
+
+:root {
+  --vault-primary:       var(--dsp-sky);
+  --vault-surface:       var(--dsp-surface);
+  --vault-surface-2:     var(--dsp-surface-2);
+  --vault-bg:            var(--dsp-bg);
+  --vault-border:        var(--dsp-border);
+  --vault-border-hover:  var(--dsp-border-hover);
+  --vault-text:          var(--dsp-text);
+  --vault-muted:         var(--dsp-text-muted);
+  --vault-radius:        var(--dsp-radius-lg);
+  --vault-glass-bg:      var(--dsp-glass-bg);
+  --vault-glass-border:  var(--dsp-glass-border);
+  --vault-glass-shadow:  var(--dsp-glass-shadow);
+}
+
+[data-theme="dark"] {
+  --vault-surface:       var(--dsp-surface);
+  --vault-surface-2:     var(--dsp-surface-2);
+  --vault-bg:            var(--dsp-bg);
+  --vault-border:        var(--dsp-border);
+  --vault-text:          var(--dsp-text);
+  --vault-muted:         var(--dsp-text-muted);
+}
+
+/* Keyframes */
+@keyframes vault-pulse-glow {
+  0%, 100% { transform: scale(1); opacity: 0.9; box-shadow: 0 0 15px var(--dsp-sky-glow); }
+  50% { transform: scale(1.04); opacity: 1; box-shadow: 0 0 28px var(--dsp-sky-glow); }
+}
+
+@keyframes vault-live-dot {
+  0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 8px var(--dsp-emerald); }
+  50% { opacity: 0.4; transform: scale(0.85); box-shadow: 0 0 2px var(--dsp-emerald); }
+}
+
+@keyframes vault-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.vault-gradient-text {
+  background: linear-gradient(135deg, var(--dsp-sky) 0%, var(--dsp-indigo) 50%, var(--dsp-violet) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+[data-theme="light"] .vault-gradient-text {
+  background: linear-gradient(135deg, var(--dsp-sky-dark) 0%, #4338ca 50%, #6d28d9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.vault-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 1.75rem 1.5rem;
+  color: var(--vault-text);
+  font-family: var(--font-body, 'Inter', sans-serif);
+}
+
+/* Header Banner (Aurora Medical Hero) */
+.vault-header {
+  background: linear-gradient(135deg, rgba(2, 132, 199, 0.25) 0%, rgba(15, 23, 42, 0.96) 50%, rgba(99, 102, 241, 0.2) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--dsp-radius-xl);
+  padding: 2.5rem 2.5rem;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.75rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--dsp-shadow-lg), 0 20px 50px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+[data-theme="light"] .vault-header {
+  background: linear-gradient(135deg, #e0f2fe 0%, #ffffff 50%, #f5f3ff 100%);
+  border-color: rgba(2, 132, 199, 0.25);
+  box-shadow: var(--dsp-shadow-md), 0 10px 30px -5px rgba(2, 132, 199, 0.1);
+}
+
+.vault-header-glow {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, var(--dsp-sky-glow) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.vault-header-title {
+  position: relative;
+  z-index: 2;
+  max-width: 780px;
+}
+
+.vault-header-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: var(--dsp-radius-full);
+  background: var(--dsp-sky-light);
+  border: 1px solid rgba(2, 132, 199, 0.35);
+  color: #38bdf8;
+  margin-bottom: 0.65rem;
+  letter-spacing: 0.05em;
+}
+
+[data-theme="light"] .vault-header-tag {
+  color: var(--dsp-sky);
+  background: var(--dsp-sky-light);
+}
+
+.vault-tag-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--dsp-emerald);
+  box-shadow: 0 0 8px var(--dsp-emerald);
+  animation: dsp-live-dot 2s infinite ease-in-out;
+}
+
+.vault-header-title h1 {
+  margin: 0 0 0.5rem 0;
+  font-size: 2.1rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--vault-text);
+  letter-spacing: -0.02em;
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+}
+
+.vault-header-title p {
+  margin: 0;
+  color: var(--vault-muted);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.vault-header-stats {
+  display: flex;
+  gap: 1rem;
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+}
+
+.vault-stat-badge {
+  background: var(--dsp-glass-bg);
+  backdrop-filter: var(--dsp-backdrop-blur);
+  -webkit-backdrop-filter: var(--dsp-backdrop-blur);
+  border: 1px solid var(--dsp-border);
+  border-radius: var(--dsp-radius-lg);
+  padding: 0.95rem 1.35rem;
+  text-align: center;
+  box-shadow: var(--dsp-shadow-sm);
+  min-width: 125px;
+  transition: all var(--dsp-transition);
+}
+
+.vault-stat-badge:hover {
+  transform: translateY(-2px);
+  border-color: var(--dsp-border-hover);
+  box-shadow: var(--dsp-shadow-md), var(--dsp-shadow-glow);
+}
+
+.vault-stat-badge .num {
+  font-size: 1.45rem;
+  font-weight: 900;
+  color: var(--vault-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.vault-stat-badge .label {
+  font-size: 0.72rem;
+  color: var(--vault-muted);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: 0.25rem;
+}
+
+/* Group Filter Tabs (Pill Bar) */
+.vault-group-tabs-bar {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.vault-group-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.2rem;
+  border-radius: var(--dsp-radius-full);
+  border: 1px solid var(--dsp-border);
+  background: var(--dsp-glass-bg);
+  backdrop-filter: var(--dsp-backdrop-blur);
+  -webkit-backdrop-filter: var(--dsp-backdrop-blur);
+  color: var(--dsp-text);
+  font-weight: 700;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: all var(--dsp-transition);
+  user-select: none;
+  min-height: var(--touch-min, 44px);
+  white-space: nowrap;
+}
+
+.vault-group-btn:hover {
+  transform: translateY(-2px);
+  border-color: var(--dsp-sky);
+  box-shadow: var(--dsp-shadow-sm);
+}
+
+.vault-group-btn:active,
+.vault-card:active,
+.vault-topic-chip:active,
+.vault-btn-primary:active {
+  transform: translateY(0) scale(0.975) !important;
+  transition-duration: 80ms !important;
+}
+
+.vault-group-btn:focus-visible,
+.vault-card:focus-visible,
+.vault-topic-chip:focus-visible,
+.vault-btn-primary:focus-visible {
+  outline: 2px solid var(--dsp-sky);
+  outline-offset: 2px;
+}
+
+.vault-group-btn.active {
+  background: var(--dsp-sky);
+  border-color: var(--dsp-sky);
+  color: #ffffff;
+  box-shadow: 0 4px 14px var(--dsp-sky-glow);
+}
+
+.vault-group-btn--crce.active {
+  background: var(--dsp-amber);
+  border-color: var(--dsp-amber);
+  color: #ffffff;
+  box-shadow: 0 4px 14px var(--dsp-amber-glow);
+}
+
+.vault-group-btn--protocol.active {
+  background: var(--dsp-rose);
+  border-color: var(--dsp-rose);
+  color: #ffffff;
+  box-shadow: 0 4px 14px var(--dsp-rose-glow);
+}
+
+.vault-group-btn--flowchart.active {
+  background: var(--dsp-teal);
+  border-color: var(--dsp-teal);
+  color: #ffffff;
+  box-shadow: 0 4px 14px var(--dsp-teal-glow);
+}
+
+.vault-group-btn--flashcard.active {
+  background: var(--dsp-violet);
+  border-color: var(--dsp-violet);
+  color: #ffffff;
+  box-shadow: 0 4px 14px var(--dsp-violet-glow);
+}
+
+.vault-tab-pill-count {
+  display: inline-block;
+  padding: 0.1rem 0.45rem;
+  border-radius: var(--dsp-radius-full);
+  background: rgba(0, 0, 0, 0.12);
+  font-size: 0.7rem;
+  font-weight: 800;
+}
+
+[data-theme="dark"] .vault-tab-pill-count {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.vault-group-btn.active .vault-tab-pill-count {
+  background: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+}
+
+/* Control Bar (Search, Select & Trending Chips) */
+.vault-control-bar {
+  background: var(--dsp-glass-bg);
+  backdrop-filter: var(--dsp-backdrop-blur);
+  -webkit-backdrop-filter: var(--dsp-backdrop-blur);
+  border: 1px solid var(--dsp-border);
+  border-radius: var(--dsp-radius-xl);
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--dsp-shadow-sm);
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.vault-search-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.vault-search-box {
+  flex: 1 1 260px;
+  min-width: 0;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.vault-search-box i {
+  position: absolute;
+  left: 1.15rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--vault-muted);
+  font-size: 1rem;
+  pointer-events: none;
+}
+
+.vault-search-input {
+  width: 100%;
+  padding: 0.75rem 1.15rem 0.75rem 2.85rem;
+  border: 1px solid var(--dsp-border);
+  border-radius: var(--dsp-radius-md);
+  background: var(--dsp-surface-2);
+  color: var(--dsp-text);
+  font-size: 0.95rem;
+  font-weight: 500;
+  outline: none;
+  transition: all var(--dsp-transition);
+  box-sizing: border-box;
+  min-height: var(--touch-min, 44px);
+}
+
+.vault-search-input:focus {
+  border-color: var(--dsp-sky);
+  box-shadow: 0 0 0 3px var(--dsp-sky-glow);
+  background: var(--dsp-surface);
+}
+
+.vault-filter-select-wrapper {
+  position: relative;
+  flex: 0 0 auto;
+  min-width: 220px;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.vault-filter-select {
+  width: 100%;
+  padding: 0.75rem 2.25rem 0.75rem 1.15rem;
+  border: 1px solid var(--dsp-border);
+  border-radius: var(--dsp-radius-md);
+  background: var(--dsp-surface-2);
+  color: var(--dsp-text);
+  font-size: 0.88rem;
+  font-weight: 600;
+  outline: none;
+  cursor: pointer;
+  transition: all var(--dsp-transition);
+  box-sizing: border-box;
+  min-height: var(--touch-min, 44px);
+  appearance: none;
+  -webkit-appearance: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.vault-filter-select:focus {
+  border-color: var(--dsp-sky);
+  box-shadow: 0 0 0 3px var(--dsp-sky-glow);
+}
+
+.vault-filter-select-arrow {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--vault-muted);
+  font-size: 0.8rem;
+  pointer-events: none;
+}
+
+/* Trending Chips */
+.vault-trending-chips {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.85rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--vault-border);
+  flex-wrap: wrap;
+}
+
+.vault-trending-label {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--vault-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.vault-trend-chip {
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  background: rgba(2, 132, 199, 0.08);
+  border: 1px solid rgba(2, 132, 199, 0.2);
+  color: var(--vault-primary);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 32px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.vault-trend-chip:hover {
+  background: var(--vault-primary);
+  color: #ffffff;
+  border-color: var(--vault-primary);
+  transform: translateY(-1px);
+}
+
+/* 14 Kho Bento Strip & Category Hub */
+.vault-kho-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.vault-kho-card {
+  background: var(--vault-surface);
+  border: 1px solid var(--vault-border);
+  border-radius: 0.85rem;
+  padding: 0.75rem 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+.vault-kho-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px -3px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border-color: var(--kho-color, var(--vault-primary));
+}
+
+.vault-kho-card.active {
+  border-color: var(--kho-color, var(--vault-primary));
+  box-shadow: 0 0 0 2px var(--kho-color, var(--vault-primary)), 0 4px 14px rgba(2, 132, 199, 0.12);
+  background: linear-gradient(180deg, var(--vault-surface) 0%, rgba(2, 132, 199, 0.06) 100%);
+}
+
+.vault-kho-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.vault-kho-icon {
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
+  border-radius: 0.65rem;
+  background: rgba(2, 132, 199, 0.08);
+  color: var(--kho-color, var(--vault-primary));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.05rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.vault-kho-card-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.vault-kho-card-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  margin: 0 0 0.2rem 0;
+  color: var(--vault-text);
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.vault-kho-card-meta {
+  font-size: 0.72rem;
+  color: var(--vault-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.vault-kho-count-pill {
+  background: rgba(2, 132, 199, 0.1);
+  color: var(--vault-primary);
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 0.72rem;
+}
+
+.vault-kho-spec-pill {
+  color: var(--vault-muted);
+  font-size: 0.72rem;
+}
+
+.vault-kho-arrow {
+  color: var(--vault-muted);
+  font-size: 0.75rem;
+  transition: transform 0.2s ease, color 0.2s ease;
+  margin-left: auto;
+  opacity: 0.6;
+}
+
+.vault-kho-card:hover .vault-kho-arrow {
+  color: var(--kho-color, var(--vault-primary));
+  transform: translateX(2px);
+  opacity: 1;
+}
+
+/* Results Section Bar & View Switcher */
+.vault-results-bar {
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 0.65rem 1rem;
+  background: var(--vault-surface);
+  border: 1px solid var(--vault-border);
+  border-radius: 0.85rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+}
+
+.vault-results-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.vault-results-text {
+  font-size: 0.86rem;
+  color: var(--vault-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.vault-active-kho-tag {
+  font-weight: 700;
+  color: var(--vault-primary);
+  background: rgba(2, 132, 199, 0.1);
+  padding: 0.2rem 0.6rem;
+  border-radius: 0.45rem;
+  font-size: 0.82rem;
+}
+
+.vault-reset-btn {
+  background: rgba(2, 132, 199, 0.08);
+  border: 1px solid rgba(2, 132, 199, 0.25);
+  border-radius: 0.55rem;
+  padding: 0.35rem 0.75rem;
+  color: var(--vault-primary);
+  cursor: pointer;
+  font-size: 0.78rem;
+  font-weight: 700;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.vault-reset-btn:hover {
+  background: var(--vault-primary);
+  color: #ffffff;
+}
+
+/* View Switcher Controls */
+.vault-view-toggle-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.vault-view-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--vault-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.vault-view-toggle {
+  display: inline-flex;
+  padding: 3px;
+  background: var(--vault-bg);
+  border: 1px solid var(--vault-border);
+  border-radius: 0.65rem;
+  gap: 2px;
+}
+
+.vault-view-btn {
+  border: none;
+  background: transparent;
+  color: var(--vault-muted);
+  padding: 0.35rem 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.vault-view-btn:hover {
+  color: var(--vault-text);
+}
+
+.vault-view-btn.active {
+  background: var(--vault-surface);
+  color: var(--vault-primary);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   CHẾ ĐỘ LƯỚI BENTO NÂNG CẤP (GRID VIEW)
+   ========================================================================== */
+.vault-articles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  gap: 1.25rem;
+}
+
+.vault-article-card {
+  background: var(--dsp-glass-bg);
+  backdrop-filter: var(--dsp-backdrop-blur);
+  -webkit-backdrop-filter: var(--dsp-backdrop-blur);
+  border: 1px solid var(--dsp-border);
+  border-radius: var(--dsp-radius-lg);
+  padding: 1.35rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all var(--dsp-transition);
+  text-decoration: none;
+  color: inherit;
+  box-shadow: var(--dsp-shadow-sm);
+  position: relative;
+  overflow: hidden;
+  min-height: 220px;
+  cursor: pointer;
+}
+
+.vault-holo-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--dsp-shadow-md), var(--dsp-shadow-glow), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  border-color: var(--dsp-sky);
+}
+
+.vault-article-top {
+  margin-bottom: 0.85rem;
+}
+
+.vault-article-badges {
+  display: flex;
+  gap: 0.4rem;
+  margin-bottom: 0.65rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.vault-badge {
+  font-size: 0.68rem;
+  padding: 0.22rem 0.55rem;
+  border-radius: var(--dsp-radius-xs);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  white-space: nowrap;
+}
+
+.vault-badge--kho {
+  background: var(--dsp-sky-light);
+  color: var(--badge-accent, var(--dsp-sky));
+  border: 1px solid rgba(2, 132, 199, 0.25);
+}
+
+.vault-badge--spec {
+  background: var(--dsp-surface-2);
+  border: 1px solid var(--dsp-border);
+  color: var(--dsp-text-secondary);
+}
+
+.vault-badge--icd {
+  background: var(--dsp-rose-light);
+  color: var(--dsp-rose);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  font-weight: 800;
+}
+
+.vault-badge--neutral {
+  background: rgba(148, 163, 184, 0.12);
+  color: var(--vault-muted);
+}
+
+.vault-article-title {
+  font-size: 1.08rem;
+  font-weight: 800;
+  color: var(--vault-text);
+  margin: 0 0 0.45rem 0;
+  line-height: 1.4;
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  letter-spacing: -0.01em;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 2.8em;
+}
+
+.vault-article-snippet {
+  font-size: 0.84rem;
+  color: var(--vault-muted);
+  line-height: 1.55;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 3.1em;
+}
+
+.vault-article-footer {
+  margin-top: 1rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid var(--vault-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.78rem;
+  color: var(--vault-muted);
+}
+
+.vault-read-time {
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.vault-action-link {
+  color: var(--vault-primary);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: transform 0.2s ease;
+}
+
+.vault-article-card:hover .vault-action-link {
+  transform: translateX(3px);
+}
+
+/* ==========================================================================
+   CHẾ ĐỘ DANH SÁCH RÚT GỌN (COMPACT LIST VIEW)
+   ========================================================================== */
+.vault-articles-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.vault-list-header {
+  display: grid;
+  grid-template-columns: 1fr 125px 145px 105px 75px;
+  gap: 1rem;
+  padding: 0.6rem 1.25rem;
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--vault-muted);
+  border-bottom: 1px solid var(--vault-border);
+  align-items: center;
+}
+
+.vault-list-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.vault-article-row {
+  display: grid;
+  grid-template-columns: 1fr 125px 145px 105px 75px;
+  gap: 1rem;
+  align-items: center;
+  padding: 0.8rem 1.25rem;
+  background: var(--vault-surface);
+  border: 1px solid var(--vault-border);
+  border-radius: 0.75rem;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  color: inherit;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.02);
+}
+
+.vault-article-row:hover {
+  transform: translateY(-1px);
+  border-color: var(--vault-primary);
+  box-shadow: 0 6px 16px -2px rgba(2, 132, 199, 0.08);
+}
+
+.vault-article-row:focus-visible,
+.vault-article-card:focus-visible {
+  outline: 2px solid var(--vault-primary);
+  outline-offset: 2px;
+}
+
+.vault-list-col-main {
+  min-width: 0;
+}
+
+.vault-row-title-line {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.25rem;
+}
+
+.vault-row-kho-icon {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  border-radius: 6px;
+  background: rgba(2, 132, 199, 0.1);
+  color: var(--kho-accent, var(--vault-primary));
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+}
+
+.vault-row-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--vault-text);
+  line-height: 1.35;
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+}
+
+.vault-row-snippet {
+  font-size: 0.8rem;
+  color: var(--vault-muted);
+  margin: 0;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.vault-list-col-context,
+.vault-list-col-spec {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.vault-list-col-time {
+  font-size: 0.78rem;
+  color: var(--vault-muted);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.vault-list-col-action {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.vault-row-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--vault-primary);
+  padding: 0.3rem 0.65rem;
+  border-radius: 0.5rem;
+  background: rgba(2, 132, 199, 0.08);
+  transition: all 0.2s ease;
+}
+
+.vault-article-row:hover .vault-row-btn {
+  background: var(--vault-primary);
+  color: #ffffff;
+  transform: translateX(2px);
+}
+
+.vault-empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 4.5rem 1.5rem;
+  color: var(--vault-muted);
+  background: var(--vault-surface);
+  border: 1.5px dashed var(--vault-border);
+  border-radius: 1.5rem;
+}
+
+.vault-empty-icon {
+  font-size: 2.75rem;
+  margin-bottom: 1rem;
+  opacity: 0.4;
+  color: var(--vault-primary);
+}
+
+.vault-badge.badge-hs { background: rgba(139, 92, 246, 0.1); color: #8b5cf6; }
+.vault-badge.badge-slb { background: rgba(245, 158, 11, 0.1); color: #f59e0b; }
+.vault-badge.badge-dth { background: rgba(16, 185, 129, 0.1); color: #10b981; }
+.vault-badge.vault-badge--patient { background: rgba(16, 185, 129, 0.15); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.3); font-weight: 700; }
+.vault-badge.vault-badge--outpatient { background: rgba(2, 132, 199, 0.12); color: #0284c7; border: 1px solid rgba(2, 132, 199, 0.3); font-weight: 700; }
+.vault-badge.vault-badge--inpatient { background: rgba(139, 92, 246, 0.15); color: #8b5cf6; border: 1px solid rgba(139, 92, 246, 0.3); font-weight: 700; }
+
+
+/* ==========================================================================
+   BẢNG THÔNG BÁO TRUNG TÂM & CLINICAL READER MODAL DIALOG (Thay thế Drawer)
+   ========================================================================== */
+.vault-drawer-overlay,
+.vault-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(9, 13, 22, 0.75);
+  backdrop-filter: var(--dsp-backdrop-blur);
+  -webkit-backdrop-filter: var(--dsp-backdrop-blur);
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  transition: opacity var(--dsp-transition);
+}
+
+.vault-drawer-overlay.active,
+.vault-modal-overlay.active {
+  display: flex;
+  opacity: 1;
+}
+
+.vault-drawer-panel,
+.vault-modal-dialog {
+  margin: auto !important;
+  width: min(92vw, 1200px);
+  height: min(88vh, 880px);
+  max-height: 88vh;
+  background: var(--dsp-surface);
+  border: 1px solid var(--dsp-border);
+  border-radius: var(--dsp-radius-xl);
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--dsp-shadow-lg), 0 25px 60px -15px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transform: scale(0.96) translateY(8px);
+  transition: transform var(--dsp-transition), width 0.25s ease, height 0.25s ease;
+  overflow: hidden;
+}
+
+.vault-drawer-overlay.active .vault-drawer-panel,
+.vault-modal-overlay.active .vault-modal-dialog {
+  transform: scale(1) translateY(0);
+}
+
+.vault-drawer-panel.fullscreen-mode,
+.vault-modal-dialog.fullscreen-mode {
+  width: 100vw !important;
+  height: 100vh !important;
+  max-width: 100vw !important;
+  max-height: 100vh !important;
+  border-radius: 0 !important;
+  border: none !important;
+  transform: scale(1) translateY(0) !important;
+}
+
+.vault-drawer-header,
+.vault-modal-header {
+  padding: 0.95rem 1.5rem;
+  border-bottom: 1px solid var(--dsp-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--dsp-surface);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  flex-shrink: 0;
+}
+
+.vault-drawer-body,
+.vault-modal-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.5rem 2rem;
+  line-height: 1.75;
+  background: var(--dsp-bg);
+}
+
+.vault-modal-ctrl-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--dsp-radius-sm);
+  border: 1px solid var(--dsp-border);
+  background: var(--vault-bg);
+  color: var(--vault-muted);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.vault-modal-ctrl-btn:hover {
+  background: var(--vault-surface);
+  color: var(--vault-primary);
+  border-color: var(--vault-primary);
+  transform: translateY(-1px);
+}
+
+.vault-modal-close-btn:hover {
+  background: rgba(239, 68, 68, 0.12);
+  color: #ef4444;
+  border-color: rgba(239, 68, 68, 0.35);
+}
+
+/* Context Badges (Nội trú & Ngoại trú) */
+.vault-badge--inpatient {
+  background: rgba(139, 92, 246, 0.12) !important;
+  color: #8b5cf6 !important;
+  border: 1px solid rgba(139, 92, 246, 0.25) !important;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.02em;
+}
+
+.vault-badge--outpatient {
+  background: rgba(16, 185, 129, 0.12) !important;
+  color: #10b981 !important;
+  border: 1px solid rgba(16, 185, 129, 0.25) !important;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.02em;
+}
+
+/* Clinical Pathway Ribbon */
+.vault-pathway-container {
+  background: var(--vault-surface);
+  border: 1px solid var(--vault-border);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+}
+
+.vault-pathway-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--vault-text);
+}
+
+.vault-pathway-count {
+  font-size: 0.75rem;
+  background: rgba(2, 132, 199, 0.1);
+  color: var(--vault-primary);
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.vault-pathway-ribbon {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.vault-pathway-pill {
+  padding: 0.5rem 0.85rem;
+  border-radius: 8px;
+  border: 1px solid var(--vault-border);
+  background: var(--vault-surface);
+  color: var(--vault-text);
+  font-size: 0.8rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.vault-pathway-pill:hover:not(.disabled) {
+  border-color: var(--pill-color, var(--vault-primary));
+  color: var(--pill-color, var(--vault-primary));
+  background: rgba(2, 132, 199, 0.05);
+  transform: translateY(-1px);
+}
+
+.vault-pathway-pill.active {
+  background: var(--pill-color, var(--vault-primary));
+  color: #ffffff;
+  border-color: var(--pill-color, var(--vault-primary));
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+/* Reading Toolbar */
+.vault-reader-toolbar {
+  background: var(--vault-surface);
+  border: 1px solid var(--vault-border);
+  border-radius: 8px;
+  padding: 0.45rem 0.85rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.vault-reader-toolbar-left,
+.vault-reader-toolbar-right {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.vault-tool-btn {
+  background: var(--vault-bg);
+  border: 1px solid var(--vault-border);
+  border-radius: 6px;
+  padding: 0.35rem 0.65rem;
+  font-size: 0.8rem;
+  color: var(--vault-text);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: all 0.15s ease;
+}
+
+.vault-tool-btn:hover {
+  border-color: var(--vault-primary);
+  color: var(--vault-primary);
+}
+
+/* 2-Column Reader Pro Grid */
+.vault-reader-pro-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 240px;
+  gap: 2rem;
+  align-items: start;
+}
+
+.vault-article-content {
+  background: var(--vault-surface);
+  border: 1px solid var(--vault-border);
+  border-radius: 10px;
+  padding: 2rem;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--vault-text);
+}
+
+.vault-article-content h1, .vault-article-content h2, .vault-article-content h3, .vault-article-content h4 {
+  color: var(--vault-text);
+  margin-top: 1.75rem;
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+  scroll-margin-top: 20px;
+}
+
+.vault-article-content h2 {
+  font-size: 1.35rem;
+  border-bottom: 1px solid var(--vault-border);
+  padding-bottom: 0.4rem;
+}
+
+.vault-article-content h3 {
+  font-size: 1.15rem;
+  color: var(--vault-primary);
+}
+
+/* Sticky TOC Sidebar */
+.vault-toc-sidebar {
+  background: var(--vault-surface);
+  border: 1px solid var(--vault-border);
+  border-radius: 10px;
+  padding: 1.25rem;
+  position: sticky;
+  top: 1rem;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+}
+
+.vault-toc-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--vault-muted);
+  margin-bottom: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.vault-toc-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.vault-toc-link {
+  font-size: 0.85rem;
+  color: var(--vault-muted);
+  text-decoration: none;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  border-left: 2px solid transparent;
+  transition: all 0.2s ease;
+  line-height: 1.4;
+}
+
+.vault-toc-link.vault-toc-level-3 {
+  padding-left: 1.2rem;
+  font-size: 0.8rem;
+}
+
+.vault-toc-link:hover {
+  color: var(--vault-primary);
+  background: rgba(2, 132, 199, 0.05);
+}
+
+.vault-toc-link.active {
+  color: var(--vault-primary);
+  font-weight: 600;
+  background: rgba(2, 132, 199, 0.08);
+  border-left-color: var(--vault-primary);
+}
+
+/* Tables in Reader */
+.vault-table-wrapper {
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  border: 1px solid var(--vault-border);
+  border-radius: 8px;
+}
+
+.vault-data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  background: var(--vault-surface);
+}
+
+.vault-data-table th {
+  background: var(--vault-bg);
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  border-bottom: 1px solid var(--vault-border);
+}
+
+.vault-data-table td {
+  padding: 0.65rem 1rem;
+  border-bottom: 1px solid var(--vault-border);
+}
+
+.vault-data-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Two-Way Obsidian & Wikilink Elements */
+.vault-wikilink-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(168, 85, 247, 0.08);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  color: #a855f7;
+  font-weight: 600;
+  font-size: 0.88em;
+  padding: 2px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  vertical-align: baseline;
+  margin: 0 2px;
+}
+
+.vault-wikilink-btn:hover {
+  background: rgba(168, 85, 247, 0.18);
+  border-color: #a855f7;
+  color: #9333ea;
+  transform: translateY(-1px);
+}
+
+.vault-path-bar {
+  background: var(--vault-surface);
+  border: 1px solid var(--vault-border);
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 12px;
+}
+
+.vault-path-text {
+  color: var(--vault-muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: monospace;
+}
+
+.vault-obsidian-badge {
+  background: rgba(168, 85, 247, 0.1);
+  color: #a855f7;
+  border: 1px solid rgba(168, 85, 247, 0.25);
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+}
+
+/* Encyclopedia Quick Facts Card */
+.vault-encyclopedia-card {
+  transition: all 0.2s ease;
+}
+
+.vault-encyclopedia-card:hover {
+  border-color: var(--vault-primary);
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.08);
+}
+
+.dsp-callout {
+  transition: transform 0.15s ease;
+}
+
+.dsp-callout:hover {
+  transform: translateX(2px);
+}
+
+/* ==========================================================================
+   CLINICAL PROTOCOLS HUB, FLASHCARDS & FLOWCHARTS STYLES
+   ========================================================================== */
+.protocols-hub-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  color: var(--vault-text);
+  box-sizing: border-box;
+}
+
+.protocols-header-banner {
+  background: linear-gradient(135deg, rgba(2, 132, 199, 0.08) 0%, rgba(13, 148, 136, 0.08) 100%);
+  border: 1px solid var(--vault-border);
+  border-radius: 16px;
+  padding: 1.5rem 2rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.protocols-specialties-bar {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.25rem;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+
+.protocols-filter-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  align-items: center;
+}
+
+.protocols-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.protocol-card {
+  background: var(--vault-surface);
+  border: 1px solid var(--vault-border);
+  border-radius: 14px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  position: relative;
+}
+
+.protocol-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px -4px rgba(0, 0, 0, 0.1);
+  border-color: var(--vault-primary);
+}
+
+.protocol-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(4px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.protocol-modal-dialog {
+  background: var(--vault-surface);
+  width: 100%;
+  max-width: 1200px;
+  max-height: 90vh;
+  border-radius: 18px;
+  border: 1px solid var(--vault-border);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* Flashcard Studio Responsive */
+.flashcard-studio-container {
+  background: var(--vault-surface);
+  border-radius: 14px;
+  padding: 1.5rem;
+  border: 1px solid var(--vault-border);
+}
+
+/* Flowchart Studio Responsive */
+.flowchart-studio-container {
+  background: var(--vault-surface);
+  border-radius: 14px;
+  padding: 1.5rem;
+  border: 1px solid var(--vault-border);
+}
+
+#flowchart-svg-viewport {
+  width: 100%;
+  height: 420px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN SYSTEM & MOBILE ADAPTATION
+   Breakpoints: 1024px (Tablet Land), 768px (Tablet Port), 640px (Phablet), 480px (Mobile), 360px (Small Mobile)
+   ========================================================================== */
+
+/* 1. Tablet Landscape & Medium Desktops (<= 1024px) */
+@media (max-width: 1024px) {
+  .vault-container {
+    padding: 1.5rem 1.25rem 5rem 1.25rem;
+  }
+  .vault-articles-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.15rem;
+  }
+}
+
+/* 2. Tablet Portrait (<= 900px & <= 768px) */
+@media (max-width: 900px) {
+  .vault-reader-pro-grid {
+    grid-template-columns: 1fr;
+  }
+  .vault-toc-sidebar {
+    display: none;
+  }
+  .vault-drawer-panel {
+    max-width: 100%;
+  }
+  .vault-drawer-body {
+    padding: 1.25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .vault-container {
+    padding: 1.25rem 1rem 5.5rem 1rem;
+  }
+
+  /* Header banner */
+  .vault-header {
+    padding: 1.5rem 1.25rem;
+    border-radius: 1.25rem;
+    margin-bottom: 1.25rem;
+    gap: 1.25rem;
+  }
+  .vault-header-title h1 {
+    font-size: 1.65rem;
+  }
+  .vault-header-title p {
+    font-size: 0.88rem;
+  }
+  .vault-header-stats {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.65rem;
+  }
+  .vault-stat-badge {
+    min-width: 0;
+    padding: 0.65rem 0.85rem;
+  }
+  .vault-stat-badge .num {
+    font-size: 1.25rem;
+  }
+
+  /* Smooth horizontal scrollable Group Pill Bar on Tablet/Mobile */
+  .vault-group-tabs-bar {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 4px 2px 8px 2px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 0.45rem;
+    margin-bottom: 1rem;
+  }
+  .vault-group-tabs-bar::-webkit-scrollbar {
+    display: none;
+  }
+  .vault-group-btn {
+    flex-shrink: 0;
+    padding: 0.55rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  /* Control bar */
+  .vault-control-bar {
+    padding: 1rem 1.15rem;
+    border-radius: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .vault-kho-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0.85rem;
+  }
+  .vault-kho-card {
+    padding: 1rem 1.15rem;
+  }
+}
+
+/* 3. Phablet & Standard Mobile (<= 640px) */
+@media (max-width: 640px) {
+  .vault-container {
+    padding: 1rem 0.85rem 6rem 0.85rem;
+  }
+
+  .vault-navbar {
+    padding: 0.65rem 1rem;
+  }
+  .vault-nav-brand {
+    font-size: 1rem;
+    gap: 0.6rem;
+  }
+  .vault-nav-brand-icon {
+    width: 1.75rem;
+    height: 1.75rem;
+    font-size: 0.85rem;
+  }
+  .vault-nav-links .vault-nav-btn span {
+    display: none;
+  }
+  .vault-nav-links .vault-nav-btn {
+    padding: 0.45rem 0.65rem;
+  }
+
+  /* Header banner */
+  .vault-header {
+    padding: 1.25rem 1rem;
+    border-radius: 1rem;
+    gap: 1rem;
+  }
+  .vault-header-tag {
+    font-size: 0.65rem;
+    padding: 3px 8px;
+    letter-spacing: 0.02em;
+    line-height: 1.3;
+  }
+  .vault-header-title h1 {
+    font-size: 1.4rem;
+    gap: 0.5rem;
+  }
+
+  /* Search & Dropdown Row - Full Width Column on Mobile */
+  .vault-search-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.65rem;
+  }
+  .vault-search-box {
+    width: 100%;
+    min-width: 0;
+    flex: 1 1 auto;
+  }
+  .vault-search-input {
+    font-size: 0.9rem;
+    padding: 0.65rem 1rem 0.65rem 2.6rem;
+  }
+  .vault-filter-select-wrapper {
+    width: 100%;
+    min-width: 0;
+    flex: 1 1 auto;
+  }
+  .vault-filter-select {
+    width: 100%;
+    font-size: 0.85rem;
+    padding: 0.65rem 2rem 0.65rem 1rem;
+  }
+
+  /* Trending chips horizontal touch scroll */
+  .vault-trending-chips {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 0.65rem 0 4px 0;
+    margin-top: 0.65rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 0.4rem;
+  }
+  .vault-trending-chips::-webkit-scrollbar {
+    display: none;
+  }
+  .vault-trending-label {
+    flex-shrink: 0;
+    font-size: 0.72rem;
+  }
+  .vault-trend-chip {
+    flex-shrink: 0;
+    padding: 0.3rem 0.7rem;
+    font-size: 0.74rem;
+  }
+
+  /* Grids to 1 column */
+  .vault-kho-grid {
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+  }
+  .vault-articles-grid {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+  .vault-article-card {
+    padding: 1.15rem;
+    border-radius: 1rem;
+  }
+  .vault-article-title {
+    font-size: 1.05rem;
+  }
+
+  /* Results bar & View Toggle on Mobile */
+  .vault-results-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+    padding: 0.85rem 1rem;
+  }
+  .vault-results-left {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .vault-reset-btn {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    display: inline-flex;
+    align-items: center;
+    padding: 0.6rem 1rem;
+    min-height: 40px;
+  }
+  .vault-view-toggle-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--vault-border);
+  }
+  .vault-view-toggle {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    flex: 1;
+    margin-left: 0.5rem;
+  }
+  .vault-view-btn {
+    justify-content: center;
+    padding: 0.45rem;
+  }
+
+  /* Compact List View on Mobile */
+  .vault-list-header {
+    display: none;
+  }
+  .vault-article-row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.65rem;
+    padding: 1rem;
+    border-radius: 0.95rem;
+  }
+  .vault-list-col-main {
+    width: 100%;
+  }
+  .vault-row-snippet {
+    -webkit-line-clamp: 2;
+  }
+  .vault-list-col-context,
+  .vault-list-col-spec,
+  .vault-list-col-time {
+    display: inline-flex;
+  }
+  .vault-list-col-action {
+    width: 100%;
+    padding-top: 0.5rem;
+    border-top: 1px dashed var(--vault-border);
+  }
+  .vault-row-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 0.5rem;
+    min-height: 38px;
+    font-size: 0.82rem;
+  }
+
+  /* Bảng Thông Báo / Modal Dialog trên Mobile */
+  .vault-drawer-overlay,
+  .vault-modal-overlay {
+    padding: 0 !important;
+  }
+  .vault-drawer-panel,
+  .vault-modal-dialog {
+    max-width: 100vw !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    max-height: 100vh !important;
+    border-radius: 0 !important;
+    border: none !important;
+    transform: none !important;
+  }
+  .vault-drawer-header,
+  .vault-modal-header {
+    padding: 0.85rem 1rem;
+  }
+  .vault-drawer-body,
+  .vault-modal-body {
+    padding: 1rem 0.85rem 4rem 0.85rem;
+  }
+  .vault-article-content {
+    padding: 1.15rem 1rem;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    border-radius: 8px;
+  }
+  .vault-reader-toolbar {
+    padding: 0.4rem 0.6rem;
+    gap: 0.4rem;
+  }
+  .vault-tool-btn {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.5rem;
+  }
+}
+
+/* 4. Small Mobile (<= 400px) */
+@media (max-width: 400px) {
+  .vault-container {
+    padding: 0.85rem 0.65rem 6.5rem 0.65rem;
+  }
+  .vault-header {
+    padding: 1rem 0.85rem;
+    border-radius: 0.85rem;
+  }
+  .vault-header-title h1 {
+    font-size: 1.25rem;
+  }
+  .vault-control-bar {
+    padding: 0.85rem 0.75rem;
+    border-radius: 0.85rem;
+  }
+  .vault-stat-badge .num {
+    font-size: 1.15rem;
+  }
+  .vault-stat-badge .label {
+    font-size: 0.68rem;
+  }
+}
+
+/* ==========================================================================
+   5. Dual-Perspective Clinical Counseling Styles (Kho Tư Vấn 2.6)
+   ========================================================================== */
+.vault-perspective-control-bar {
+  background: var(--vault-surface);
+  border: 1.5px solid var(--vault-border);
+  border-radius: 12px;
+  padding: 0.75rem 1.15rem;
+  margin: 1.25rem 0 1.5rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+.vault-perspective-badge-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.vault-perspective-title {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--vault-text);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.vault-perspective-tabs {
+  display: inline-flex;
+  background: rgba(148, 163, 184, 0.12);
+  padding: 3px;
+  border-radius: 999px;
+  border: 1px solid var(--vault-border);
+  gap: 2px;
+}
+
+.vault-perspective-tab {
+  background: transparent;
+  color: var(--vault-muted);
+  border: none;
+  padding: 0.4rem 0.95rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.vault-perspective-tab:hover {
+  color: var(--vault-text);
+}
+
+.vault-perspective-tab.active {
+  background: var(--vault-surface);
+  color: var(--vault-primary);
+  font-weight: 800;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.vault-perspective-tab.active[data-perspective="doctor"] {
+  color: #0284c7;
+}
+
+.vault-perspective-tab.active[data-perspective="patient"] {
+  color: #10b981;
+}
+
+.vault-perspective-tab.active[data-perspective="inpatient"] {
+  color: #8b5cf6;
+}
+
+.vault-perspective-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.vault-clinic-btn {
+  padding: 0.45rem 0.85rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.vault-clinic-btn--print {
+  background: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+.vault-clinic-btn--print:hover {
+  background: #10b981;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.vault-clinic-btn--copy {
+  background: rgba(139, 92, 246, 0.1);
+  color: #8b5cf6;
+  border-color: rgba(139, 92, 246, 0.3);
+}
+
+.vault-clinic-btn--copy:hover {
+  background: #8b5cf6;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+}
+
+/* Perspective Content Blocks */
+.vault-perspective-block {
+  transition: opacity 0.2s ease;
+}
+
+.perspective-doctor-block {
+  border-left: 4px solid #0284c7;
+  padding-left: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+.perspective-patient-block {
+  border-left: 4px solid #10b981;
+  padding-left: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+.perspective-inpatient-block {
+  border-left: 4px solid #8b5cf6;
+  background: rgba(139, 92, 246, 0.03);
+  padding: 1.25rem;
+  border-radius: 0 10px 10px 0;
+  margin-bottom: 2.5rem;
+}
+
+/* Perspective Header Banners */
+.vault-perspective-banner {
+  padding: 1.25rem 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  position: relative;
+  border: 1.5px solid transparent;
+}
+
+.vault-perspective-banner--doctor {
+  background: linear-gradient(135deg, rgba(2, 132, 199, 0.08) 0%, rgba(59, 130, 246, 0.03) 100%);
+  border-color: rgba(2, 132, 199, 0.25);
+}
+
+.vault-perspective-banner--doctor .vault-perspective-banner__tag {
+  background: #0284c7;
+  color: #ffffff;
+}
+
+.vault-perspective-banner--patient {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.04) 100%);
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+.vault-perspective-banner--patient .vault-perspective-banner__tag {
+  background: #10b981;
+  color: #ffffff;
+}
+
+.vault-perspective-banner--inpatient {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.08) 0%, rgba(124, 58, 237, 0.03) 100%);
+  border-color: rgba(139, 92, 246, 0.25);
+}
+
+.vault-perspective-banner--inpatient .vault-perspective-banner__tag {
+  background: #8b5cf6;
+  color: #ffffff;
+}
+
+/* Patient Counseling Banner & Header Card (Kho Tư Vấn) */
+.vault-counseling-banner,
+.vault-counseling-header-card {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.12) 0%, rgba(6, 182, 212, 0.05) 100%) !important;
+  border: 1.5px solid rgba(16, 185, 129, 0.35) !important;
+  border-radius: 14px !important;
+  padding: 1.35rem 1.6rem !important;
+  margin-bottom: 1.75rem !important;
+  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.06) !important;
+}
+
+.vault-counseling-header-card__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.6rem;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.vault-counseling-badge {
+  background: #10b981;
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.vault-counseling-date {
+  font-size: 0.82rem;
+  color: var(--vault-muted);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.vault-counseling-title {
+  margin: 0 0 0.4rem 0 !important;
+  font-size: 1.4rem !important;
+  font-weight: 800 !important;
+  color: var(--vault-text) !important;
+  line-height: 1.35 !important;
+  border: none !important;
+  padding: 0 !important;
+}
+
+.vault-counseling-desc {
+  margin: 0 !important;
+  font-size: 0.92rem !important;
+  color: var(--vault-muted) !important;
+  line-height: 1.55 !important;
+}
+
+.vault-counseling-mode-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(16, 185, 129, 0.12);
+  color: #059669;
+  font-size: 0.8rem;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.vault-counseling-pill-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--vault-muted);
+}
+
+/* Counseling Layout Grid */
+.vault-reader-pro-grid--counseling {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 260px;
+  gap: 2rem;
+  align-items: start;
+  margin-top: 1rem;
+}
+
+@media (max-width: 900px) {
+  .vault-reader-pro-grid--counseling {
+    grid-template-columns: 1fr;
+  }
+}
+
+.vault-counseling-content {
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+.vault-counseling-content h2 {
+  color: var(--vault-text);
+  border-bottom: 2px solid rgba(16, 185, 129, 0.25);
+  padding-bottom: 0.45rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.vault-counseling-content h3 {
+  color: var(--vault-text);
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Senior / High-Contrast Patient Reading Mode */
+.vault-patient-reading-mode .vault-counseling-content,
+.vault-patient-reading-mode .vault-article-content {
+  font-size: 1.25rem !important;
+  line-height: 1.9 !important;
+}
+
+.vault-patient-reading-mode .vault-article-content p,
+.vault-patient-reading-mode .vault-article-content li {
+  font-size: 1.22rem !important;
+  line-height: 1.85 !important;
+}
+
+.vault-patient-reading-mode .vault-callout {
+  padding: 1.25rem 1.5rem !important;
+  font-size: 1.2rem !important;
+}
+
+.vault-patient-reading-mode .vault-callout__title {
+  font-size: 1.2rem !important;
+}
+
+.vault-patient-reading-mode .vault-h2,
+.vault-patient-reading-mode .vault-counseling-content h2 {
+  font-size: 1.6rem !important;
+}
+
+.vault-patient-reading-mode .vault-h3,
+.vault-patient-reading-mode .vault-counseling-content h3 {
+  font-size: 1.35rem !important;
+}
+
+.vault-counseling-banner .vault-perspective-banner__tag {
+  background: #10b981 !important;
+  color: #ffffff !important;
+}
+
+
+.vault-perspective-banner__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  margin-bottom: 0.6rem;
+}
+
+.vault-perspective-banner__title {
+  margin: 0 0 0.4rem 0 !important;
+  font-size: 1.35rem !important;
+  font-weight: 800 !important;
+  color: var(--vault-text) !important;
+  line-height: 1.35 !important;
+  border: none !important;
+  padding: 0 !important;
+}
+
+.vault-perspective-banner__desc {
+  margin: 0 !important;
+  font-size: 0.9rem !important;
+  color: var(--vault-muted) !important;
+  line-height: 1.55 !important;
+}
+
+/* Editorial Medical Callouts */
+.vault-callout {
+  border-left: 4px solid var(--vault-border);
+  border-top: 1px solid var(--vault-border);
+  border-right: 1px solid var(--vault-border);
+  border-bottom: 1px solid var(--vault-border);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  margin: 1.5rem 0;
+  background: var(--vault-surface);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+  position: relative;
+}
+
+.vault-callout__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.vault-callout__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 2.5px 8px;
+  border-radius: 4px;
+}
+
+.vault-callout__title {
+  font-size: 0.94rem;
+  font-weight: 700;
+  color: var(--vault-text);
+}
+
+.vault-callout__body {
+  font-size: 0.94rem;
+  line-height: 1.65;
+  color: var(--vault-text);
+}
+
+/* Callout Theme Variants */
+.vault-callout--trial {
+  border-left-color: #ec4899;
+  border-color: rgba(236, 72, 153, 0.22);
+  background: rgba(236, 72, 153, 0.04);
+}
+.vault-callout--trial .vault-callout__badge {
+  background: #ec4899;
+  color: #ffffff;
+}
+
+.vault-callout--warning {
+  border-left-color: #f59e0b;
+  border-color: rgba(245, 158, 11, 0.25);
+  background: rgba(245, 158, 11, 0.05);
+}
+.vault-callout--warning .vault-callout__badge {
+  background: #f59e0b;
+  color: #ffffff;
+}
+
+.vault-callout--danger {
+  border-left-color: #ef4444;
+  border-color: rgba(239, 68, 68, 0.25);
+  background: rgba(239, 68, 68, 0.05);
+}
+.vault-callout--danger .vault-callout__badge {
+  background: #ef4444;
+  color: #ffffff;
+}
+
+.vault-callout--pearl {
+  border-left-color: #8b5cf6;
+  border-color: rgba(139, 92, 246, 0.25);
+  background: rgba(139, 92, 246, 0.05);
+}
+.vault-callout--pearl .vault-callout__badge {
+  background: #8b5cf6;
+  color: #ffffff;
+}
+
+.vault-callout--dosing {
+  border-left-color: #06b6d4;
+  border-color: rgba(6, 182, 212, 0.25);
+  background: rgba(6, 182, 212, 0.05);
+}
+.vault-callout--dosing .vault-callout__badge {
+  background: #06b6d4;
+  color: #ffffff;
+}
+
+.vault-callout--note {
+  border-left-color: #0284c7;
+  border-color: rgba(2, 132, 199, 0.25);
+  background: rgba(2, 132, 199, 0.05);
+}
+.vault-callout--note .vault-callout__badge {
+  background: #0284c7;
+  color: #ffffff;
+}
+
+.vault-callout--tip {
+  border-left-color: #10b981;
+  border-color: rgba(16, 185, 129, 0.25);
+  background: rgba(16, 185, 129, 0.05);
+}
+.vault-callout--tip .vault-callout__badge {
+  background: #10b981;
+  color: #ffffff;
+}
+
+.vault-callout--teachback {
+  border-left-color: #3b82f6;
+  border-color: rgba(59, 130, 246, 0.25);
+  background: rgba(59, 130, 246, 0.05);
+}
+.vault-callout--teachback .vault-callout__badge {
+  background: #3b82f6;
+  color: #ffffff;
+}
+
+/* Timeline & ASCII Diagram Card */
+.vault-timeline-card {
+  border: 1px solid var(--vault-border);
+  border-radius: 10px;
+  background: var(--vault-bg);
+  margin: 1.5rem 0;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.vault-timeline-card__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: var(--vault-surface);
+  border-bottom: 1px solid var(--vault-border);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--vault-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.vault-timeline-code {
+  margin: 0 !important;
+  padding: 1rem 1.25rem !important;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace !important;
+  font-size: 0.88rem !important;
+  line-height: 1.6 !important;
+  color: var(--vault-text) !important;
+  background: transparent !important;
+  overflow-x: auto !important;
+  white-space: pre !important;
+}
+
+/* Semantic Lists & Typography */
+.vault-list {
+  padding-left: 1.5rem;
+  margin: 0.85rem 0 1.25rem 0;
+}
+
+.vault-list li {
+  margin-bottom: 0.5rem;
+  line-height: 1.65;
+  color: var(--vault-text);
+}
+
+.vault-list--ordered {
+  list-style-type: decimal;
+}
+
+.vault-list--unordered {
+  list-style-type: disc;
+}
+
+.vault-math-inline {
+  font-family: inherit;
+  font-weight: 700;
+  color: var(--vault-primary);
+  padding: 0 2px;
+}
+
+.vault-ref-pill {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--vault-primary);
+  background: rgba(2, 132, 199, 0.08);
+  border-radius: 4px;
+  padding: 0 4px;
+  margin: 0 2px;
+  vertical-align: baseline;
+  cursor: default;
+}
+
+.vault-divider {
+  border: none;
+  border-top: 1px solid var(--vault-border);
+  margin: 2rem 0;
+  opacity: 0.6;
+}
+
+/* TOC Section Headers */
+.vault-toc-section-header {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 8px 10px 4px 10px;
+  margin-top: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.15s ease;
+}
+
+.vault-toc-section--doctor {
+  color: #0284c7;
+  border-bottom: 1.5px solid rgba(2, 132, 199, 0.2);
+}
+
+.vault-toc-section--patient {
+  color: #10b981;
+  border-bottom: 1.5px solid rgba(16, 185, 129, 0.2);
+}
+
+.vault-toc-section--inpatient {
+  color: #8b5cf6;
+  border-bottom: 1.5px solid rgba(139, 92, 246, 0.2);
+}
+
+.vault-toc-section-header:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+/* Highlight TOC links based on active perspective */
+.vault-toc-sidebar.perspective-active-doctor .vault-toc-link[data-perspective="patient"],
+.vault-toc-sidebar.perspective-active-doctor .vault-toc-link[data-perspective="inpatient"] {
+  opacity: 0.45;
+}
+
+.vault-toc-sidebar.perspective-active-patient .vault-toc-link[data-perspective="doctor"],
+.vault-toc-sidebar.perspective-active-patient .vault-toc-link[data-perspective="inpatient"] {
+  opacity: 0.45;
+}
+
+.vault-toc-sidebar.perspective-active-patient .vault-toc-link[data-perspective="patient"] {
+  font-weight: 700;
+  color: #059669;
+}
+
+/* Patient Leaflet Specific Components */
+.vault-patient-leaflet-banner {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(6, 182, 212, 0.05) 100%);
+  border: 1.5px solid rgba(16, 185, 129, 0.3);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.vault-patient-leaflet-banner__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.vault-patient-leaflet-badge {
+  background: #10b981;
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.vault-patient-leaflet-date {
+  font-size: 0.8rem;
+  color: var(--vault-muted);
+  font-weight: 600;
+}
+
+.vault-patient-leaflet-title {
+  margin: 0 0 0.35rem 0 !important;
+  font-size: 1.25rem !important;
+  font-weight: 800 !important;
+  color: var(--vault-text) !important;
+}
+
+.vault-patient-leaflet-desc {
+  margin: 0 !important;
+  font-size: 0.88rem !important;
+  color: var(--vault-muted) !important;
+  line-height: 1.5 !important;
+}
+
+.vault-patient-leaflet-footer {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 2px dashed rgba(16, 185, 129, 0.3);
+}
+
+.vault-patient-leaflet-signature-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.vault-patient-sign-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.vault-sign-title {
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--vault-text);
+}
+
+.vault-sign-note {
+  font-size: 0.75rem;
+  color: var(--vault-muted);
+  font-style: italic;
+  margin-top: 2px;
+}
+
+.vault-sign-space {
+  height: 60px;
+}
+
+.vault-sign-dotline {
+  font-size: 0.75rem;
+  color: var(--vault-muted);
+  border-top: 1px dotted var(--vault-border);
+  padding-top: 4px;
+  min-width: 180px;
+}
+
+.vault-patient-leaflet-emergency-alert {
+  background: rgba(239, 68, 68, 0.08);
+  border: 1.5px solid rgba(239, 68, 68, 0.3);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: #b91c1c;
+}
+
+/* ==========================================================================
+   6. Outpatient Print Leaflet Format (@media print)
+   ========================================================================== */
+@media print {
+  /* Page Setup for A4 Leaflet */
+  @page {
+    size: A4 portrait;
+    margin: 12mm 15mm 12mm 15mm;
+  }
+
+  /* 1. Global Reset: Remove all backgrounds, overflow traps, and fixed sizes */
+  html,
+  body {
+    background: #ffffff !important;
+    color: #111827 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+  }
+
+  /* 2. Hide entire website chrome & top navigation outside reader */
+  .vault-navbar,
+  .vault-hub-container,
+  #theme-toggle,
+  #vault-load-more,
+  .vault-modal-ctrl-btn {
+    display: none !important;
+  }
+
+  /* 3. Keep #vault-app as a transparent, auto-height block container */
+  #vault-app {
+    display: block !important;
+    position: static !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    background: transparent !important;
+  }
+
+  /* 4. Hide all siblings of #vault-drawer inside #vault-app */
+  #vault-app > *:not(#vault-drawer) {
+    display: none !important;
+  }
+
+  /* 5. Keep #vault-drawer as the clean printable root container */
+  #vault-drawer,
+  #vault-drawer.vault-modal-overlay,
+  #vault-drawer.vault-drawer-overlay,
+  .vault-drawer-panel,
+  .vault-modal-dialog {
+    display: block !important;
+    position: static !important;
+    inset: auto !important;
+    transform: none !important;
+    background: #ffffff !important;
+    color: #111827 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  /* 6. Clean drawer body and article containers */
+  .vault-modal-body,
+  .vault-drawer-body,
+  .vault-article-content,
+  .vault-counseling-content {
+    display: block !important;
+    position: static !important;
+    background: #ffffff !important;
+    color: #111827 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    height: auto !important;
+    max-height: none !important;
+    min-height: 0 !important;
+  }
+
+  /* 7. Hide all interactive UI tools, sidebars, doctor & inpatient sections */
+  .vault-reader-toolbar,
+  .vault-path-bar,
+  .vault-toc-sidebar,
+  .vault-annotations-container,
+  .vault-pathway-container,
+  .vault-perspective-control-bar,
+  .vault-drawer-header,
+  .vault-modal-header,
+  .vault-perspective-banner--doctor,
+  .vault-perspective-banner--inpatient,
+  .perspective-doctor-block,
+  .perspective-inpatient-block,
+  .vault-encyclopedia-card,
+  .vault-obsidian-badge,
+  .vault-protocol-section,
+  .vault-flowchart-card,
+  .vault-wikilink-btn i,
+  .vault-ref-pill {
+    display: none !important;
+  }
+
+  /* 8. Patient Leaflet is printed cleanly on A4 */
+  .perspective-patient-block,
+  .vault-counseling-content {
+    display: block !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: transparent !important;
+  }
+
+  .vault-reader-pro-grid--counseling,
+  .vault-reader-pro-grid {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .vault-patient-leaflet-banner,
+  .vault-counseling-header-card {
+    border: 2px solid #059669 !important;
+    background: #f0fdf4 !important;
+    padding: 14px 18px !important;
+    margin-bottom: 20px !important;
+    page-break-inside: avoid;
+    box-shadow: none !important;
+  }
+
+  .vault-patient-leaflet-badge,
+  .vault-counseling-badge {
+    background: #059669 !important;
+    color: #ffffff !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .vault-patient-leaflet-title,
+  .vault-counseling-title {
+    color: #065f46 !important;
+    font-size: 16pt !important;
+  }
+
+  .vault-article-content h1,
+  .vault-article-content h2,
+  .vault-article-content h3,
+  .vault-article-content h4 {
+    color: #111827 !important;
+    page-break-after: avoid;
+  }
+
+  .vault-callout {
+    border: 1.5px solid #333 !important;
+    background: #f9fafb !important;
+    color: #000000 !important;
+    page-break-inside: avoid;
+    box-shadow: none !important;
+    margin: 12px 0 !important;
+  }
+
+  .vault-callout--warning,
+  .vault-callout--danger {
+    border-left: 5px solid #dc2626 !important;
+  }
+
+  .vault-callout__badge {
+    border: 1px solid #333 !important;
+    color: #000000 !important;
+    background: #e5e7eb !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .vault-timeline-card {
+    border: 1px solid #4b5563 !important;
+    page-break-inside: avoid;
+  }
+
+  .vault-timeline-card__header {
+    background: #f3f4f6 !important;
+    color: #111827 !important;
+  }
+
+  .vault-timeline-code {
+    font-size: 9.5pt !important;
+    color: #000000 !important;
+  }
+
+  .vault-data-table {
+    border: 1px solid #333 !important;
+    width: 100% !important;
+    page-break-inside: avoid;
+  }
+
+  .vault-data-table th,
+  .vault-data-table td {
+    border: 1px solid #666 !important;
+    color: #000000 !important;
+    font-size: 10pt !important;
+    padding: 6px 8px !important;
+  }
+
+  .vault-patient-leaflet-footer {
+    border-top: 2px solid #059669 !important;
+    page-break-inside: avoid;
+    margin-top: 24px !important;
+  }
+
+  .vault-patient-leaflet-emergency-alert {
+    border: 2px solid #dc2626 !important;
+    background: #fef2f2 !important;
+    color: #991b1b !important;
+    page-break-inside: avoid;
+  }
+}
+

@@ -48,11 +48,23 @@
   --dsp-sbar-a:             var(--dsp-sky);
   --dsp-sbar-r:             var(--dsp-emerald);
 
-  /* --- Typography & Text Tiers (Dark Default) --- */
+  /* --- Typography & Text Tiers (DocSpace Medical OS Standard) --- */
+  --dsp-font-body:          'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --dsp-font-display:       'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --dsp-font-mono:          'IBM Plex Mono', 'JetBrains Mono', monospace;
+
+  --font-body:              var(--dsp-font-body);
+  --font-display:           var(--dsp-font-display);
+  --font-mono:              var(--dsp-font-mono);
+
   --dsp-text:               #f1f5f9;
   --dsp-text-secondary:     #94a3b8;
   --dsp-text-muted:         #64748b;
   --dsp-text-inverse:       #0f172a;
+
+  /* --- Ambient Mesh & Canvas Texture --- */
+  --dsp-ambient-bg:         radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  --dsp-ambient-size:       20px 20px;
 
   /* --- Surface, Glass & Border Tiers (Dark Default) --- */
   --dsp-bg:                 var(--color-bg, #090d16);
@@ -163,6 +175,10 @@
   --dsp-glass-bg:           rgba(255, 255, 255, 0.88);
   --dsp-glass-border:       rgba(226, 232, 240, 0.9);
   --dsp-glass-shadow:       0 10px 30px 0 rgba(15, 23, 42, 0.08);
+
+  /* Light Theme Ambient Dot Grid */
+  --dsp-ambient-bg:         radial-gradient(rgba(203, 213, 225, 0.5) 0.8px, transparent 0.8px);
+  --dsp-ambient-size:       16px 16px;
 
   --dsp-shadow-sm:          0 1px 3px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
   --dsp-shadow-md:          0 4px 14px -2px rgba(15, 23, 42, 0.08), 0 2px 6px -1px rgba(15, 23, 42, 0.05);
@@ -329,4 +345,57 @@
   background: var(--dsp-rose-light);
   color: var(--dsp-rose);
   border: 1px solid rgba(239, 68, 68, 0.25);
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   6. DOCSPACE TYPOGRAPHY & AMBIENT CANVAS ENFORCEMENT
+   ══════════════════════════════════════════════════════════════════════════ */
+
+body {
+  font-family: var(--dsp-font-body);
+  background-color: var(--dsp-bg);
+  background-image: var(--dsp-ambient-bg);
+  background-size: var(--dsp-ambient-size);
+  color: var(--dsp-text);
+}
+
+h1, h2, h3, h4, h5, h6,
+.font-display,
+.dsp-title,
+.ebm-title,
+.hub-hero-title-main,
+.hub-hero-eyebrow-badge,
+.hub-section-title,
+.bento-card-title,
+.metric-counter {
+  font-family: var(--dsp-font-display);
+  letter-spacing: -0.02em;
+}
+
+code, kbd, samp, pre,
+.font-mono,
+.font-mono-custom,
+.dsp-mono,
+.badge-mono,
+.stat-number,
+.gdl-code,
+.evidence-tag,
+.metric-mono {
+  font-family: var(--dsp-font-mono);
+}
+
+/* Custom compact scrollbars for high density clinical panels (DocSpace Standard) */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--dsp-surface-2);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--dsp-border);
+  border-radius: var(--dsp-radius-full);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--dsp-sky);
 }

@@ -9,7 +9,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="guidelines.css">
@@ -52,6 +52,9 @@
 </head>
 
 <body>
+  <!-- Toast Notification Container -->
+  <div id="clini-toast-container" class="clini-toast-container"></div>
+
   <!-- TOP NAV -->
   <nav class="topnav">
     <button class="sidebar-toggle-btn" id="sidebar-toggle-btn" onclick="toggleSidebar()" title="Thu gọn / Mở rộng Sidebar (Alt+S)" aria-label="Thu gọn hoặc mở rộng Sidebar">
@@ -229,6 +232,9 @@
       <!-- ══ PANEL: DANH SÁCH / ĐÃ LƯU ══ -->
       <section class="content-panel active" id="panel-studies">
         
+        <!-- Supabase Connection & Sync Status Banner -->
+        <div id="supabase-sync-banner" class="supabase-sync-banner banner-local" style="display:none;"></div>
+
         <!-- ══ CÓ GÌ MỚI (CHỈ HIỆN Ở GIAO DIỆN DANH SÁCH) ══ -->
         <section class="updates-section" id="section-recent-updates">
           <div class="updates-header" style="display: flex; align-items: center; justify-content: space-between; gap: 1rem; cursor: pointer;" onclick="toggleRecentUpdatesSec()">
@@ -878,39 +884,84 @@
     </div>
   </div>
 
-  <!-- SUPABASE SETTINGS MODAL -->
+  <!-- SUPABASE SETTINGS & SYNC DASHBOARD MODAL -->
   <div class="modal-overlay" id="supabase-modal">
-    <div class="modal" style="max-width: 500px;">
+    <div class="modal modal-large" style="max-width: 620px;">
       <div class="modal-header">
-        <h3>☁️ Cấu hình Supabase</h3>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="font-size: 1.3rem;">☁️</span>
+          <div>
+            <h3 style="margin: 0; font-size: 1.15rem;">Cấu Hình & Đồng Bộ Supabase Cloud</h3>
+            <p style="font-size: 0.74rem; color: var(--text-muted); margin: 0;">Đồng bộ dữ liệu tài liệu & nghiên cứu 2 chiều trên mọi thiết bị</p>
+          </div>
+        </div>
         <button class="modal-close" onclick="closeSupabaseModal()">&times;</button>
       </div>
       <div class="modal-body">
-        <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 1rem; line-height: 1.5;">
-          Đồng bộ dữ liệu tài liệu & nghiên cứu lên đám mây Supabase để đồng bộ hóa trên mọi thiết bị. Dữ liệu sẽ tự động lưu tạm thời tại LocalStorage khi ngoại tuyến.
-        </p>
+        
+        <!-- Live Cloud Dashboard Card -->
+        <div class="sb-dashboard-card">
+          <div class="sb-stats-grid">
+            <div class="sb-stat-box">
+              <div class="sb-stat-val" id="sb-modal-local-count">0</div>
+              <div class="sb-stat-label">Bản ghi trên máy</div>
+            </div>
+            <div class="sb-stat-box">
+              <div class="sb-stat-val" id="sb-modal-cloud-count" style="color: var(--accent, #0284c7);">—</div>
+              <div class="sb-stat-label">Bản ghi trên Cloud</div>
+            </div>
+            <div class="sb-stat-box">
+              <div class="sb-stat-val" id="sb-modal-ping" style="color: #10b981;">—</div>
+              <div class="sb-stat-label">Độ trễ (Ping)</div>
+            </div>
+            <div class="sb-stat-box">
+              <div class="sb-stat-val" id="sb-modal-last-sync" style="font-size: 0.82rem; font-weight: 700;">Chưa đồng bộ</div>
+              <div class="sb-stat-label">Lần đồng bộ gần nhất</div>
+            </div>
+          </div>
+
+          <div class="sb-sync-actions-panel">
+            <button type="button" class="btn-sb-action btn-sb-sync-2way" onclick="syncStudiesWithSupabase('bi-directional')" title="Tự động hợp nhất dữ liệu máy và Cloud">
+              <i class="fa-solid fa-rotate"></i> Đồng bộ 2 chiều
+            </button>
+            <button type="button" class="btn-sb-action btn-sb-pull" onclick="pullCloudToLocal()" title="Tải toàn bộ tài liệu từ Cloud về máy">
+              <i class="fa-solid fa-cloud-arrow-down"></i> Tải từ Cloud về máy
+            </button>
+            <button type="button" class="btn-sb-action btn-sb-push" onclick="syncAllLocalToSupabase()" title="Đẩy toàn bộ tài liệu trên máy lên Cloud">
+              <i class="fa-solid fa-cloud-arrow-up"></i> Đẩy lên Cloud
+            </button>
+          </div>
+        </div>
+
         <form id="supabase-form" onsubmit="saveSupabaseConfig(event)">
           <div class="form-group">
             <label for="sb-url">Supabase Project URL</label>
             <input type="url" id="sb-url" placeholder="https://xxxxxxxxxxxxxx.supabase.co" required>
           </div>
           <div class="form-group">
-            <label for="sb-key">Supabase Anon Key (Public Key)</label>
+            <label for="sb-key">Supabase Anon Key (Public API Key)</label>
             <input type="password" id="sb-key" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." required>
           </div>
 
           <div id="sb-test-result" style="display: none; padding: 10px 12px; border-radius: 8px; font-size: 0.78rem; margin-top: 10px; line-height: 1.5;"></div>
 
-          <details style="margin-top: 1rem; border: 1px solid var(--border-light); border-radius: 8px; padding: 0.5rem;">
-            <summary style="font-size: 0.75rem; font-weight: 700; color: var(--accent); cursor: pointer; user-select: none;">💡 Câu lệnh SQL tạo bảng & Phân quyền RLS trên Supabase</summary>
-            <pre style="font-size: 0.68rem; background: var(--surface-2); padding: 0.5rem; border-radius: 6px; overflow-x: auto; margin-top: 0.5rem; color: var(--text-muted); text-align: left; max-height: 160px; font-family: monospace;">
+          <details style="margin-top: 1rem; border: 1px solid var(--border-light); border-radius: 8px; padding: 0.65rem;">
+            <summary class="sb-sql-header" style="font-size: 0.75rem; font-weight: 700; color: var(--accent); cursor: pointer; user-select: none;">
+              <span>💡 Cấu trúc bảng SQL & Phân quyền RLS đầy đủ</span>
+              <button type="button" class="btn-copy-sql" onclick="copySupabaseSql(); event.preventDefault(); event.stopPropagation();">
+                <i class="fa-solid fa-copy"></i> Sao chép SQL
+              </button>
+            </summary>
+            <pre style="font-size: 0.68rem; background: var(--surface-2); padding: 0.65rem; border-radius: 6px; overflow-x: auto; margin-top: 0.5rem; color: var(--text-muted); text-align: left; max-height: 160px; font-family: monospace;">
 create table if not exists clinical_guidelines (
   id text primary key,
   title text not null,
+  "titleEn" text,
   author text,
   drug text,
   "sourceType" text,
   specialty text,
+  "specialty2" text,
   design text,
   intervention text,
   "primaryEndpoint" text,
@@ -918,6 +969,7 @@ create table if not exists clinical_guidelines (
   impact text,
   year integer,
   organization text,
+  journal text,
   phase text,
   "sampleSize" integer,
   population text,
@@ -932,23 +984,38 @@ create table if not exists clinical_guidelines (
   subgroups text,
   parts text,
   "conditionKey" text,
-  "createdAt" timestamp with time zone default timezone('utc'::text, now())
+  "impactFactor" numeric,
+  quartile text,
+  sjr numeric,
+  snip numeric,
+  "hIndex" integer,
+  "oldRegimen" text,
+  "newRegimen" text,
+  "createdAt" timestamp with time zone default timezone('utc'::text, now()),
+  "updatedAt" timestamp with time zone default timezone('utc'::text, now())
 );
 
--- Phân quyền RLS truy cập cho role public/anon:
+-- Phân quyền Row Level Security (RLS):
 alter table clinical_guidelines enable row level security;
+drop policy if exists "Allow anon select" on clinical_guidelines;
 create policy "Allow anon select" on clinical_guidelines for select using (true);
+drop policy if exists "Allow anon insert" on clinical_guidelines;
 create policy "Allow anon insert" on clinical_guidelines for insert with check (true);
+drop policy if exists "Allow anon update" on clinical_guidelines;
 create policy "Allow anon update" on clinical_guidelines for update using (true);
+drop policy if exists "Allow anon delete" on clinical_guidelines;
 create policy "Allow anon delete" on clinical_guidelines for delete using (true);</pre>
           </details>
           
           <div style="display: flex; gap: 0.5rem; justify-content: flex-end; margin-top: 1.25rem; flex-wrap: wrap;">
-            <button type="button" class="btn" onclick="testSupabaseConnection()" style="color: var(--accent); border-color: var(--accent-light);">🔍 Test kết nối</button>
-            <button type="button" class="btn" onclick="syncAllLocalToSupabase()" style="color: #0284c7; border-color: #38bdf8;" title="Đẩy toàn bộ nghiên cứu/hướng dẫn trên máy lên Supabase Cloud"><i class="fa-solid fa-cloud-arrow-up"></i> Đẩy toàn bộ lên Cloud</button>
-            <button type="button" class="btn" style="color: #ef4444; border-color: rgba(239, 68, 68, 0.3);" onclick="clearSupabaseConfig()"><i class="fa-solid fa-right-from-bracket"></i> Đăng xuất</button>
-            <button type="button" class="btn" onclick="closeSupabaseModal()">Hủy</button>
-            <button type="submit" class="btn btn-primary">💾 Lưu & Kết nối</button>
+            <button type="button" class="btn" onclick="testSupabaseConnection()" style="color: var(--accent); border-color: var(--accent-light);">
+              <i class="fa-solid fa-bolt"></i> Test kết nối
+            </button>
+            <button type="button" class="btn" style="color: #ef4444; border-color: rgba(239, 68, 68, 0.3);" onclick="clearSupabaseConfig()">
+              <i class="fa-solid fa-right-from-bracket"></i> Đăng xuất
+            </button>
+            <button type="button" class="btn" onclick="closeSupabaseModal()">Đóng</button>
+            <button type="submit" class="btn btn-primary">💾 Lưu & Đồng bộ</button>
           </div>
         </form>
 
@@ -1398,7 +1465,7 @@ create policy "Allow anon delete" on clinical_guidelines for delete using (true)
   <!-- Supabase JS Client Library -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <!-- Main Guidelines TypeScript Entry -->
-  <script type="module" src="./guidelines.ts"></script>
+  <script type="module" src="./js/guidelines.ts"></script>
 </body>
 </html>
 
