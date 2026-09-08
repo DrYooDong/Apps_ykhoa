@@ -120,3 +120,14 @@ export interface DengueCDSSPlan {
   soapExportText: string;
   createdAt: string;
 }
+
+declare global {
+  interface Window {
+    dengueData?: any;
+    ecgData?: any;
+    ecgCanvas?: any;
+    xrayData?: any;
+    xrayViewer?: any;
+  }
+}
+

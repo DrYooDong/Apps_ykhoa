@@ -3,8 +3,8 @@
  * Powers reader.html with dynamic Markdown loading, SVG diagrams, and MathJax
  */
 
-import { PhysioMDEngine } from './physio-md-engine.js';
-import { PhysioPathwayViewer } from './physio-pathway-viewer.js';
+import { PhysioMDEngine } from './physio-md-engine';
+import { PhysioPathwayViewer } from './physio-pathway-viewer';
 
 export async function initReader(): Promise<void> {
   const urlParams = new URLSearchParams(window.location.search);

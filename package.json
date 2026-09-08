@@ -1,36 +1,51 @@
 {
-  "name": "sandbox-workspace",
-  "private": true,
-  "type": "module",
+  "name": "cliniportal",
+  "version": "2.0.0",
+  "description": "CliniPortal — Hệ sinh thái Web & App Y khoa Offline Đa nền tảng",
+  "main": "platforms/desktop/main-electron.js",
+  "workspaces": [
+    "src/content/docspace"
+  ],
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "typecheck": "tsc --noEmit"
+    "build": "npm --prefix src/content/docspace run build && tsc --noEmit && vite build && node tools/scripts/copy-dist.js",
+    "preview": "vite preview",
+    "vite:dev": "vite",
+    "vite:build": "npm --prefix src/content/docspace run build && tsc --noEmit && vite build && node tools/scripts/copy-dist.js",
+    "astro:dev": "astro dev",
+    "astro:build": "astro build",
+    "astro:preview": "astro preview",
+    "typecheck": "tsc --noEmit",
+    "deploy": "npm run build && git subtree push --prefix dist origin gh-pages",
+    "start": "electron platforms/desktop/main-electron.js",
+    "desktop": "electron platforms/desktop/main-electron.js",
+    "migrate": "node -e \"require('esbuild').buildSync({entryPoints:['tools/scripts/ume-migrate.ts'],outfile:'tools/scripts/ume-migrate.cjs',bundle:true,platform:'node'}); require('./tools/scripts/ume-migrate.cjs'); require('fs').unlinkSync('tools/scripts/ume-migrate.cjs');\"",
+    "migrate:validate": "tsc --noEmit",
+    "lint:content": "node tools/scripts/medical-linter.mjs",
+    "audit:deadcode": "node tools/scripts/tree-shake-audit.mjs",
+    "validate:all": "npm run typecheck && npm run lint:content && npm run audit:deadcode"
+  },
+  "keywords": [
+    "medical",
+    "cliniportal",
+    "calculators",
+    "guidelines",
+    "ebm",
+    "offline-first",
+    "electron",
+    "pwa"
+  ],
+  "author": "CliniPortal Team",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^5.8.0",
+    "vite": "^6.3.0"
   },
   "dependencies": {
-    "@dnd-kit/core": "^6.1.0",
-    "@dnd-kit/sortable": "^8.0.0",
-    "@dnd-kit/utilities": "^3.2.2",
-    "@supabase/supabase-js": "^2.98.0",
-    "canvas-confetti": "^1.9.3",
-    "date-fns": "^2.30.0",
-    "framer-motion": "^11.16.1",
-    "lucide-react": "^0.294.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.8.0",
-    "recharts": "^2.10.0",
-    "uuid": "^9.0.1"
-  },
-  "devDependencies": {
-    "@tailwindcss/vite": "^4.1.7",
-    "@types/canvas-confetti": "^1.6.4",
-    "@types/react": "^18.2.0",
-    "@types/react-dom": "^18.2.0",
-    "@types/uuid": "^9.0.7",
-    "@vitejs/plugin-react": "^4.3.4",
-    "tailwindcss": "^4.1.7",
-    "typescript": "^5.7.0",
-    "vite": "^6.3.5"
+    "@astrojs/mdx": "^7.0.8",
+    "astro": "^7.2.7",
+    "rehype-katex": "^7.0.1",
+    "remark-heading-id": "^1.0.1",
+    "remark-math": "^6.0.0"
   }
 }
