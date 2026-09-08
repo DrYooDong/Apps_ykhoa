@@ -598,7 +598,7 @@ export const Step1DataIngestion: React.FC<Step1Props> = ({
             <span className="text-purple-600 font-bold">⚡</span>
             <span>Kho CDSS Quyết định</span>
             <span className="bg-purple-100 text-purple-800 text-[10px] font-mono-custom font-bold px-1.5 py-0.2 rounded-full border border-purple-200">
-              3
+              4
             </span>
           </button>
         </div>
@@ -1543,6 +1543,28 @@ export const Step1DataIngestion: React.FC<Step1Props> = ({
                     <span>🩸</span>
                     <span>Biện luận ABG 6 bước</span>
                   </button>
+
+                  <a
+                    href="../knowledge-vault/cdss/abg/index.html"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-1 px-2 py-0.5 text-[11px] font-bold text-cyan-800 bg-cyan-50 hover:bg-cyan-100 border border-cyan-300 rounded transition-colors"
+                    title="Mở Hệ thống CDSS Phân Tích Khí Máu Động Mạch (ABG Pro) độc lập"
+                  >
+                    <span>🩸</span>
+                    <span>CDSS ABG Pro ↗</span>
+                  </a>
+
+                  <a
+                    href="../knowledge-vault/cdss/xray/index.html"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-1 px-2 py-0.5 text-[11px] font-bold text-purple-800 bg-purple-50 hover:bg-purple-100 border border-purple-300 rounded transition-colors"
+                    title="Mở Hệ thống CDSS Phân Tích X-Quang Ngực & Bụng (RadAI PACS) độc lập"
+                  >
+                    <span>🩻</span>
+                    <span>CDSS RadAI X-Ray ↗</span>
+                  </a>
                 </div>
               </div>
 

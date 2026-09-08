@@ -346,25 +346,28 @@ export function renderVaultHubView(): string {
           <i class="fa-solid fa-layer-group"></i> <span>Tất cả Phân hệ</span> <span class="vault-tab-pill-count">${totalArticles}</span>
         </button>
         <button class="vault-group-btn vault-group-btn--crce ${state.activeGroup === 'CRCE' ? 'active' : ''}" data-group="CRCE">
-          <i class="fa-solid fa-bolt" style="color:#f59e0b;"></i> <span>Chuỗi CRCE</span> <span class="vault-tab-pill-count">30</span>
+          <i class="fa-solid fa-bolt" style="color:var(--dsp-amber);"></i> <span>Chuỗi CRCE</span> <span class="vault-tab-pill-count">30</span>
         </button>
         <button class="vault-group-btn vault-group-btn--protocol ${state.activeGroup === 'PROTOCOL' ? 'active' : ''}" data-group="PROTOCOL">
-          <i class="fa-solid fa-syringe" style="color:#f43f5e;"></i> <span>Phác Đồ</span> <span class="vault-tab-pill-count">${KHO_PROTOCOLS_REGISTRY.length}</span>
+          <i class="fa-solid fa-syringe" style="color:var(--dsp-rose);"></i> <span>Phác Đồ</span> <span class="vault-tab-pill-count">${KHO_PROTOCOLS_REGISTRY.length}</span>
         </button>
+        <a href="cdss/index.html" class="vault-group-btn" style="text-decoration: none; border-color: var(--dsp-sky-glow); color: var(--dsp-primary); background: var(--dsp-sky-light);" title="Mở Kho CDSS Lâm Sàng Độc Lập">
+          <i class="fa-solid fa-microchip" style="color: var(--dsp-primary);"></i> <span>Kho CDSS</span> <span class="vault-tab-pill-count" style="background: var(--dsp-primary); color: #fff;">2</span>
+        </a>
         <button class="vault-group-btn vault-group-btn--flowchart ${state.activeGroup === 'FLOWCHART' ? 'active' : ''}" data-group="FLOWCHART">
-          <i class="fa-solid fa-sitemap" style="color:#14b8a6;"></i> <span>Lưu Đồ Thuật Toán</span> <span class="vault-tab-pill-count">${CLINICAL_FLOWCHARTS_REGISTRY.length}</span>
+          <i class="fa-solid fa-sitemap" style="color:var(--dsp-teal);"></i> <span>Lưu Đồ Thuật Toán</span> <span class="vault-tab-pill-count">${CLINICAL_FLOWCHARTS_REGISTRY.length}</span>
         </button>
         <button class="vault-group-btn vault-group-btn--flashcard ${state.activeGroup === 'FLASHCARD' ? 'active' : ''}" data-group="FLASHCARD">
-          <i class="fa-solid fa-brain" style="color:#8b5cf6;"></i> <span>Flashcards</span> <span class="vault-tab-pill-count">${DEFAULT_MEDICAL_FLASHCARDS.length}</span>
+          <i class="fa-solid fa-brain" style="color:var(--dsp-violet);"></i> <span>Flashcards</span> <span class="vault-tab-pill-count">${DEFAULT_MEDICAL_FLASHCARDS.length}</span>
         </button>
         <button class="vault-group-btn ${state.activeGroup === 'Cơ sở' ? 'active' : ''}" data-group="Cơ sở">
-          <i class="fa-solid fa-dna" style="color:#0284c7;"></i> <span>1. Cơ sở</span> <span class="vault-tab-pill-count">${coSoCount}</span>
+          <i class="fa-solid fa-dna" style="color:var(--dsp-sky);"></i> <span>1. Cơ sở</span> <span class="vault-tab-pill-count">${coSoCount}</span>
         </button>
         <button class="vault-group-btn ${state.activeGroup === 'Chuyên sâu' ? 'active' : ''}" data-group="Chuyên sâu">
-          <i class="fa-solid fa-stethoscope" style="color:#10b981;"></i> <span>2. Chuyên sâu</span> <span class="vault-tab-pill-count">${chuyenSauCount}</span>
+          <i class="fa-solid fa-stethoscope" style="color:var(--dsp-emerald);"></i> <span>2. Chuyên sâu</span> <span class="vault-tab-pill-count">${chuyenSauCount}</span>
         </button>
         <button class="vault-group-btn ${state.activeGroup === 'Hỗ trợ' ? 'active' : ''}" data-group="Hỗ trợ">
-          <i class="fa-solid fa-flask" style="color:#d97706;"></i> <span>3. Hỗ trợ</span> <span class="vault-tab-pill-count">${hoTroCount}</span>
+          <i class="fa-solid fa-flask" style="color:var(--dsp-amber);"></i> <span>3. Hỗ trợ</span> <span class="vault-tab-pill-count">${hoTroCount}</span>
         </button>
       </div>
 

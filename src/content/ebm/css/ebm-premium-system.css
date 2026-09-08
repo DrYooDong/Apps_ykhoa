@@ -1,45 +1,43 @@
 /**
- * ebm-premium-system.css
- * Hệ thống UI/UX Premium dùng chung cho phân hệ EBM
- * Glassmorphism, Micro-Animations, Skeletons, FAB, Reading Progress
+ * CliniPortal — EBM Premium System (Micro-UX & Interactivity)
+ * Path: src/content/ebm/css/ebm-premium-system.css
+ * Unified with DocSpace Medical OS Design System ($5000 Grade)
+ * Glassmorphism, Micro-Animations, Skeletons, FAB, Reading Progress, Toast Engine
  */
 
-:root {
-  --ebm-glass-bg: rgba(255, 255, 255, 0.7);
-  --ebm-glass-border: rgba(255, 255, 255, 0.3);
-  --ebm-glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
-  --ebm-tr-smooth: 400ms cubic-bezier(0.16, 1, 0.3, 1);
-  --ebm-tr-bounce: 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
-}
+@import './ebm-design-tokens.css';
 
-[data-theme="dark"] {
-  --ebm-glass-bg: rgba(15, 23, 42, 0.75);
-  --ebm-glass-border: rgba(255, 255, 255, 0.1);
-  --ebm-glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+:root {
+  --ebm-glass-bg:     var(--dsp-glass-bg);
+  --ebm-glass-border: var(--dsp-glass-border);
+  --ebm-glass-shadow: var(--dsp-glass-shadow);
+  --ebm-tr-smooth:    var(--dsp-transition);
+  --ebm-tr-bounce:    var(--dsp-transition-spring);
 }
 
 /* ==========================================================================
    1. Glassmorphism Utilities
    ========================================================================== */
-.glass-panel {
-  background: var(--ebm-glass-bg);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--ebm-glass-border);
-  box-shadow: var(--ebm-glass-shadow);
+.glass-panel,
+.dsp-glass-panel {
+  background: var(--dsp-glass-bg);
+  backdrop-filter: var(--dsp-backdrop-blur);
+  -webkit-backdrop-filter: var(--dsp-backdrop-blur);
+  border: 1px solid var(--dsp-glass-border);
+  box-shadow: var(--dsp-glass-shadow);
+  border-radius: var(--dsp-radius-lg);
 }
 
 /* ==========================================================================
    2. Micro-Animations Library
    ========================================================================== */
-/* Fade In Up */
 .anim-fade-in-up {
   opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 0.6s var(--ebm-tr-smooth) forwards;
+  transform: translateY(14px);
+  animation: dspFadeInUp 0.5s var(--dsp-transition) forwards;
 }
 
-@keyframes fadeInUp {
+@keyframes dspFadeInUp {
   to {
     opacity: 1;
     transform: translateY(0);
@@ -47,19 +45,19 @@
 }
 
 /* Delay modifiers */
-.anim-d-1 { animation-delay: 100ms; }
-.anim-d-2 { animation-delay: 200ms; }
-.anim-d-3 { animation-delay: 300ms; }
-.anim-d-4 { animation-delay: 400ms; }
+.anim-d-1 { animation-delay: 80ms; }
+.anim-d-2 { animation-delay: 160ms; }
+.anim-d-3 { animation-delay: 240ms; }
+.anim-d-4 { animation-delay: 320ms; }
 
 /* Scale In / Pop */
 .anim-pop {
   opacity: 0;
-  transform: scale(0.9);
-  animation: popIn 0.5s var(--ebm-tr-bounce) forwards;
+  transform: scale(0.95);
+  animation: dspPopIn 0.4s var(--dsp-transition-spring) forwards;
 }
 
-@keyframes popIn {
+@keyframes dspPopIn {
   to {
     opacity: 1;
     transform: scale(1);
@@ -68,27 +66,43 @@
 
 /* Hover Effects */
 .hover-lift {
-  transition: transform var(--ebm-tr-smooth), box-shadow var(--ebm-tr-smooth), border-color var(--ebm-tr-smooth);
+  transition: transform var(--dsp-transition), box-shadow var(--dsp-transition), border-color var(--dsp-transition);
 }
+
 .hover-lift:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  transform: translateY(-3px);
+  box-shadow: var(--dsp-shadow-md);
 }
 
 .hover-glow-blue:hover {
-  border-color: #0284c7;
-  box-shadow: 0 0 15px rgba(2, 132, 199, 0.3);
+  border-color: var(--dsp-sky);
+  box-shadow: 0 0 16px var(--dsp-sky-glow);
 }
+
 .hover-glow-purple:hover {
-  border-color: #7c3aed;
-  box-shadow: 0 0 15px rgba(124, 58, 237, 0.3);
+  border-color: var(--dsp-violet);
+  box-shadow: 0 0 16px var(--dsp-violet-glow);
 }
 
 /* ==========================================================================
    3. Skeleton Loading System
    ========================================================================== */
 .skeleton {
-  background: #f1f5f9;
+  background: var(--dsp-surface-2);
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0,
+    rgba(255, 255, 255, 0.08) 20%,
+    rgba(255, 255, 255, 0) 40%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-repeat: no-repeat;
+  background-size: 200% 100%;
+  animation: dspShimmer 1.5s infinite linear;
+  border-radius: var(--dsp-radius-xs);
+}
+
+[data-theme="light"] .skeleton {
   background-image: linear-gradient(
     90deg,
     rgba(255, 255, 255, 0) 0,
@@ -96,24 +110,9 @@
     rgba(255, 255, 255, 0) 40%,
     rgba(255, 255, 255, 0) 100%
   );
-  background-repeat: no-repeat;
-  background-size: 200% 100%;
-  animation: shimmer 1.5s infinite linear;
-  border-radius: 4px;
 }
 
-[data-theme="dark"] .skeleton {
-  background-color: #1e293b;
-  background-image: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0) 0,
-    rgba(255, 255, 255, 0.05) 20%,
-    rgba(255, 255, 255, 0) 40%,
-    rgba(255, 255, 255, 0) 100%
-  );
-}
-
-@keyframes shimmer {
+@keyframes dspShimmer {
   0% { background-position: 100% 0; }
   100% { background-position: -100% 0; }
 }
@@ -123,16 +122,19 @@
   margin-bottom: 8px;
   width: 100%;
 }
+
 .skeleton-text.short { width: 60%; }
+
 .skeleton-title {
   height: 20px;
   margin-bottom: 12px;
   width: 80%;
 }
+
 .skeleton-circle {
   border-radius: 50%;
-  width: 48px;
-  height: 48px;
+  width: 44px;
+  height: 44px;
 }
 
 /* ==========================================================================
@@ -154,9 +156,9 @@
   flex-direction: column;
   gap: 10px;
   opacity: 0;
-  transform: translateY(20px) scale(0.8);
+  transform: translateY(16px) scale(0.85);
   pointer-events: none;
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: all var(--dsp-transition);
   transform-origin: bottom center;
 }
 
@@ -170,39 +172,45 @@
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: var(--surface, #fff);
-  border: 1px solid var(--border-light, #e2e8f0);
-  color: var(--text, #0f172a);
+  background: var(--dsp-glass-bg);
+  backdrop-filter: var(--dsp-backdrop-blur);
+  -webkit-backdrop-filter: var(--dsp-backdrop-blur);
+  border: 1px solid var(--dsp-border);
+  color: var(--dsp-text);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: all 0.2s;
+  box-shadow: var(--dsp-shadow-sm);
+  transition: all var(--dsp-transition);
   position: relative;
   text-decoration: none;
 }
 
 .ebm-fab-item:hover {
-  background: var(--surface-2, #f8fafc);
-  transform: scale(1.1);
+  background: var(--dsp-surface-2);
+  transform: scale(1.08);
+  border-color: var(--dsp-sky);
+  box-shadow: var(--dsp-shadow-md);
 }
 
 .ebm-fab-item::before {
   content: attr(data-tooltip);
   position: absolute;
   right: calc(100% + 12px);
-  background: rgba(15, 23, 42, 0.85);
-  color: #fff;
+  background: var(--dsp-surface);
+  color: var(--dsp-text);
+  border: 1px solid var(--dsp-border);
   padding: 4px 10px;
-  border-radius: 6px;
+  border-radius: var(--dsp-radius-sm);
   font-size: 0.75rem;
   font-weight: 600;
   white-space: nowrap;
   opacity: 0;
   pointer-events: none;
-  transform: translateX(10px);
-  transition: all 0.2s;
+  transform: translateX(8px);
+  transition: all var(--dsp-transition);
+  box-shadow: var(--dsp-shadow-sm);
 }
 
 .ebm-fab-item:hover::before {
@@ -211,30 +219,30 @@
 }
 
 .ebm-fab-main {
-  width: 56px;
-  height: 56px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  background: linear-gradient(135deg, var(--dsp-sky) 0%, var(--dsp-sky-dark) 100%);
   color: #fff;
   border: none;
-  box-shadow: 0 8px 24px rgba(2, 132, 199, 0.4);
+  box-shadow: 0 8px 24px var(--dsp-sky-glow);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s;
+  font-size: 1.4rem;
+  transition: transform var(--dsp-transition), box-shadow var(--dsp-transition);
 }
 
 .ebm-fab-main:hover {
-  transform: scale(1.05);
-  box-shadow: 0 12px 32px rgba(2, 132, 199, 0.5);
+  transform: scale(1.06);
+  box-shadow: 0 12px 30px rgba(2, 132, 199, 0.55);
 }
 
 .ebm-fab-container.active .ebm-fab-main {
   transform: rotate(45deg);
   background: linear-gradient(135deg, #475569 0%, #334155 100%);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
 }
 
 /* ==========================================================================
@@ -254,9 +262,9 @@
 .reading-progress-bar {
   height: 100%;
   width: 0%;
-  background: linear-gradient(90deg, #0284c7, #38bdf8, #7c3aed);
+  background: linear-gradient(90deg, var(--dsp-sky), #38bdf8, var(--dsp-violet));
   transition: width 0.1s ease-out;
-  box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+  box-shadow: 0 0 10px var(--dsp-sky-glow);
 }
 
 /* ==========================================================================
@@ -274,11 +282,13 @@
 }
 
 .ebm-toast {
-  background: var(--surface, #fff);
-  border: 1px solid var(--border-light, #e2e8f0);
-  border-radius: 12px;
+  background: var(--dsp-glass-bg);
+  backdrop-filter: var(--dsp-backdrop-blur);
+  -webkit-backdrop-filter: var(--dsp-backdrop-blur);
+  border: 1px solid var(--dsp-border);
+  border-radius: var(--dsp-radius-md);
   padding: 12px 16px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  box-shadow: var(--dsp-shadow-lg);
   display: flex;
   align-items: flex-start;
   gap: 12px;
@@ -286,7 +296,7 @@
   max-width: 380px;
   transform: translateX(-120%);
   opacity: 0;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all var(--dsp-transition);
   pointer-events: auto;
 }
 
@@ -300,19 +310,15 @@
   opacity: 0;
 }
 
-[data-theme="dark"] .ebm-toast {
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-}
-
 .ebm-toast-icon {
   font-size: 1.25rem;
   flex-shrink: 0;
 }
 
-.ebm-toast-icon.success { color: #10b981; }
-.ebm-toast-icon.error { color: #ef4444; }
-.ebm-toast-icon.info { color: #3b82f6; }
-.ebm-toast-icon.warning { color: #f59e0b; }
+.ebm-toast-icon.success { color: var(--dsp-emerald); }
+.ebm-toast-icon.error   { color: var(--dsp-rose); }
+.ebm-toast-icon.info    { color: var(--dsp-sky); }
+.ebm-toast-icon.warning { color: var(--dsp-amber); }
 
 .ebm-toast-content {
   flex: 1;
@@ -321,25 +327,26 @@
 .ebm-toast-title {
   font-weight: 700;
   font-size: 0.88rem;
-  color: var(--text, #0f172a);
+  color: var(--dsp-text);
   margin-bottom: 2px;
 }
 
 .ebm-toast-desc {
   font-size: 0.78rem;
-  color: var(--text-muted, #475569);
+  color: var(--dsp-text-muted);
   line-height: 1.4;
 }
 
 .ebm-toast-close {
   background: none;
   border: none;
-  color: var(--text-faint, #94a3b8);
+  color: var(--dsp-text-muted);
   cursor: pointer;
   padding: 2px;
   font-size: 1rem;
-  transition: color 0.2s;
+  transition: color var(--dsp-transition);
 }
+
 .ebm-toast-close:hover {
-  color: var(--text, #0f172a);
+  color: var(--dsp-text);
 }

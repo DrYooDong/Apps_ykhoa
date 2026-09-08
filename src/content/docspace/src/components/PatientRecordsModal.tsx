@@ -166,11 +166,15 @@ export const PatientRecordsModal: React.FC<PatientRecordsModalProps> = ({
               <Database className="w-4 h-4" />
             </div>
             <div>
-              <h2 className="font-display font-bold text-base text-slate-800">
-                Hồ sơ bệnh án điện tử (Supabase / EMR)
+              <h2 className="font-display font-bold text-base text-slate-800 flex items-center gap-2">
+                <span>Kho ca lâm sàng & Bệnh án điện tử</span>
+                <span className="px-2 py-0.5 rounded text-[10.5px] font-mono-custom font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                  <span>Supabase Cloud DB</span>
+                </span>
               </h2>
               <p className="text-[11px] text-slate-500">
-                Quản lý hồ sơ bệnh nhân, kết quả suy luận & y lệnh điều trị chuẩn hóa
+                Lưu trữ đám mây Supabase PostgreSQL: Hồ sơ bệnh nhân, suy luận lâm sàng & y lệnh chuẩn hóa
               </p>
             </div>
           </div>
@@ -181,7 +185,7 @@ export const PatientRecordsModal: React.FC<PatientRecordsModalProps> = ({
               className="flex items-center gap-1.5 px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold rounded-md transition-colors cursor-pointer shadow-xs"
             >
               <FilePlus className="w-3.5 h-3.5" />
-              <span>Lưu ca hiện tại vào DB</span>
+              <span>Lưu ca lên Supabase</span>
             </button>
 
             <button

@@ -702,4 +702,114 @@
 | `subagent-coding-workflow/` | Workflow & Meta | Kỷ luật lập trình AI, cô lập vùng làm việc Git Worktree và báo cáo theo milestone |
 | `medical-qa-standards/` | QA & Testing | Bộ tiêu chuẩn kiểm tra chất lượng và an toàn y tế |
 
+---
+
+## 🏛️ src/content/knowledge-vault/ (Kho Tri Thức Y Khoa Knowledge Vault)
+
+| File | Vai trò | Phân hệ |
+|------|---------|---------|
+| `index.html` | Cổng thông tin trung tâm Knowledge Vault HTML | Knowledge Vault Hub |
+| `index.ts` | Entry point TypeScript & controller chính | Knowledge Vault Hub |
+| `vault-hub-view.ts` | Hub View Controller render giao diện tìm kiếm, danh mục, filter và Bento cards | Knowledge Vault UI |
+| `vault-reader-pro.ts` | Slide-out Reader Controller & Modal đọc bài viết lâm sàng 2.400+ chủ đề | Knowledge Vault Reader |
+| `vault-crce-pro.ts` | CRCE Clinical Reasoning Case Engine & phác đồ điều trị | Knowledge Vault CRCE |
+| `css/vault-design-tokens.css` | Hệ thống Master Design Tokens 80+ tokens kế thừa DocSpace Medical OS | Vault Tokens |
+| `css/vault-hub.css` | Stylesheet master của Knowledge Vault Hub (Aurora Hero, Bento Grid, Search Bar) | Vault Hub CSS |
+| `css/vault-reader.css` | Stylesheet Slide-out Reader, Typography y khoa và 7 Callouts chuyên sâu | Vault Reader CSS |
+| `css/vault-crce.css` | Stylesheet CRCE Clinical Reasoning Engine & case cards | Vault CRCE CSS |
+
+---
+
+## 🧠 src/content/knowledge-vault/cdss/ (Hệ Thống CDSS Lâm Sàng Độc Lập)
+
+| File | Vai trò | Phân hệ |
+|------|---------|---------|
+| `cdss/index.html` | Cổng chính Hub Kho CDSS Lâm Sàng Độc Lập | Core CDSS Hub |
+| `cdss/index.ts` | Entry point & exports của toàn bộ các modules CDSS | Core CDSS Hub |
+| `cdss/cdss-types.ts` | Định nghĩa schema TypeScript dùng chung và types cho CDSS | Core CDSS Types |
+| `cdss/cdss-registry.ts` | Registry quản lý danh mục các module CDSS đang hoạt động | Core CDSS Registry |
+| `cdss/css/cdss-hub.css` | Stylesheet giao diện trung tâm Kho CDSS | Core CDSS CSS |
+| `cdss/dengue/index.html` | Trang công cụ CDSS Tính Dịch Truyền & Chống Sốc SXHD Dengue | CDSS Dengue |
+| `cdss/dengue/dengue-data.ts` | Bảng chuẩn CDC 2014, template 4 cột và quy trình điều dưỡng HKKK | CDSS Dengue |
+| `cdss/dengue/dengue-engine.ts` | Thuật toán hiệu chỉnh cân nặng béo phì, tính cọc dịch và vận mạch 50ml | CDSS Dengue |
+| `cdss/dengue/dengue-ui.ts` | Controller giao diện tương tác, dropdown đổi giờ, bàn giao ca & SOAP plan | CDSS Dengue |
+| `cdss/dengue/css/dengue-cdss.css` | Stylesheet bảng cọc dịch 4 cột, thẻ liều vận mạch & in phiếu | CDSS Dengue |
+| `cdss/ecg/index.html` | Trang công cụ CDSS Phân Tích Điện Tâm Đồ 12 Chuyển Đạo & Hỗ Trợ Chẩn Đoán | CDSS ECG |
+| `cdss/ecg/ecg-types.ts` | Schema sóng điện tim, 12 đạo trình, thông số ECG và ca bệnh lâm sàng | CDSS ECG |
+| `cdss/ecg/ecg-math.ts` | Mô hình toán học tọa độ ECG 25mm/s, 10mm/mV, tiếng bíp QRS & mốc sóng | CDSS ECG |
+| `cdss/ecg/ecg-cases.ts` | Thư viện ca lâm sàng (STEMI, Brugada, Rung nhĩ, Tăng K+, Bloc nhánh, Normal) | CDSS ECG |
+| `cdss/ecg/ecg-canvas-renderer.ts` | Engine render Canvas độ phân giải cao, lưới ECG chuẩn, Caliper & nhãn sóng | CDSS ECG |
+| `cdss/ecg/ecg-ui.ts` | Controller giao diện phân tích ECG, chẩn đoán rule-based, tiêu chuẩn & SOAP plan | CDSS ECG |
+| `cdss/ecg/css/ecg-cdss.css` | Stylesheet giao diện ECG, 3 themes (giấy hồng, CRT monitor, amber) & tab | CDSS ECG |
+
+---
+
+## 🔬 src/content/ebm/ (Trung Tâm Y Học Chứng Cứ EBM Command Center)
+
+| File | Vai trò | Phân hệ |
+|------|---------|---------|
+| `yhcc.html` | Cổng thông tin trung tâm Y Học Chứng Cứ HTML | EBM Core Hub |
+| `index.ts` | Entry point chính của toàn bộ phân hệ EBM | EBM Core Hub |
+| `renderer.ts` | Trình kết xuất TypeScript & helper cho EBM | EBM Core Hub |
+| `ebm-view.ts` | View controller và template render toàn bộ EBM Command Center | EBM Core Hub |
+| `css/ebm-design-tokens.css` | Hệ thống Design Tokens chuẩn hóa kế thừa từ DocSpace Medical OS | EBM Design Tokens |
+| `css/yhcc-hub.css` | Stylesheet master của trung tâm EBM Hub (Glassmorphism & Bento) | EBM Hub CSS |
+| `css/ebm-premium-system.css` | Stylesheet hiệu ứng cao cấp, micro-interactions, toast, FAB | EBM Premium CSS |
+| `css/ebm-bedside-copilot.css` | Stylesheet công cụ Copilot & living systematic review | EBM Copilot CSS |
+| `css/pubmed-guidelines-board.css` | Stylesheet bảng tin khuyến cáo PubMed & tích hợp Gemini AI | EBM PubMed Board CSS |
+| `guideline-radar/radar.css` | Stylesheet radar theo dõi cập nhật khuyến cáo y khoa | EBM Radar CSS |
+| `ebm-lab/ebm-lab.css` | Stylesheet phòng thí nghiệm thực hành EBM | EBM Lab CSS |
+| `medical-statistics/text-style.css` | Stylesheet tài liệu và bài học thống kê y học | EBM Statistics CSS |
+
+---
+
+## 🧬 src/content/basic-medical/ (Cơ Sở Y Khoa Basic Medical Sciences)
+
+| File | Vai trò | Phân hệ |
+|------|---------|---------|
+| `index.ts` | Entry point TypeScript & router điều phối toàn bộ phân hệ Basic Medical | Basic Medical Hub |
+| `views/basic-medical-nav.ts` | Universal Sticky Sub-Nav điều hướng 8 phân hệ Cơ sở Y khoa | Basic Medical Nav |
+| `views/giai-phau-sinh-ly-view.ts` | View Controller render 9 hệ cơ quan Sinh lý học | Sinh Lý Học |
+| `views/co-che-benh-sinh-view.ts` | View Controller render 64+ ca lâm sàng Cơ chế bệnh sinh | Sinh Lý Bệnh CCBS |
+| `views/biochemistry-view.ts` | View Controller render 7 khối Hóa sinh chuyển hóa | Hóa Sinh Y Học |
+| `views/epidemiology-view.ts` | View Controller render Dịch tễ học & Y tế công cộng | Dịch Tễ Học |
+| `views/formula-vault-view.ts` | View Controller Kho công thức y sinh định lượng | Công Thức Y Sinh |
+| `views/physio-html-reader-view.ts` | Slide-out Reader Controller đọc bài giảng & ca bệnh | Reader Pro |
+| `css/basic-medical-design-tokens.css` | Hệ thống Master Design Tokens 80+ tokens kế thừa DocSpace Medical OS | Basic Medical Tokens |
+| `css/physio-shared.css` | Stylesheet master của toàn bộ phân hệ Cơ sở Y khoa (Aurora Hero, Badges, Typography) | Master Physio CSS |
+| `css/physio-callouts.css` | Stylesheet 7 loại khung thông tin y khoa chuyên sâu (Danger, Warning, Pearl, Dosing, Note, Tip, Teach-back) | Atomic Callouts CSS |
+| `css/physio-concept-cards.css` | Stylesheet thẻ Bento Grid & Concept Cards y sinh | Atomic Bento Cards CSS |
+| `css/physio-headings.css` | Stylesheet tiêu đề H1-H4 & section header chuẩn hóa | Atomic Headings CSS |
+| `css/physio-tables.css` | Stylesheet bảng đối sánh lâm sàng và thông số y khoa | Atomic Tables CSS |
+| `css/physio-quiz.css` | Stylesheet bài tập trắc nghiệm tự lượng giá & rationale | Atomic Quiz CSS |
+| `css/physio-accordions.css` | Stylesheet hộp đóng mở chuyên sâu (accordion drawers) | Atomic Accordions CSS |
+| `MDX_COMPONENT_DESIGN_SPEC.md` | Đặc tả quy chuẩn thiết kế linh kiện MDX chuẩn DocSpace | Design Spec Doc |
+
+---
+
+## ⚡ src/content/knowledge-vault/cdss/ (Kho CDSS Hỗ Trợ Quyết Định Lâm Sàng Độc Lập)
+
+| File | Vai trò | Phân hệ |
+|------|---------|---------|
+| `index.html` | Trang chủ Bento Hub CDSS điều phối 4 hệ thống hỗ trợ quyết định lâm sàng | CDSS Hub Portal |
+| `index.ts` | Entry point & exports của toàn bộ các module CDSS | CDSS Module Index |
+| `cdss-types.ts` | Type definitions cốt lõi cho các phân loại CDSS | CDSS Types |
+| `cdss-registry.ts` | Registry danh mục đăng ký 4 hệ thống CDSS | CDSS Registry |
+| `css/cdss-hub.css` | Stylesheet master cho Bento Cards CDSS | CDSS Hub CSS |
+| `dengue/index.html` | Trang standalone CDSS Bù dịch & Chống sốc SXHD Dengue (BYT 2023) | CDSS Dengue |
+| `dengue/dengue-engine.ts` | Thuật toán tính cọc dịch 4 cột, CDC 2014 và vận mạch Dopamin/Noradrenalin | CDSS Dengue Engine |
+| `dengue/dengue-ui.ts` | Controller giao diện cọc dịch động học & bàn giao ca trực | CDSS Dengue UI |
+| `ecg/index.html` | Trang standalone CDSS Phân tích Điện tâm đồ 12 Chuyển đạo | CDSS ECG |
+| `ecg/ecg-canvas-renderer.ts` | Bộ dựng hình sóng điện tim 12 đạo trình trên Canvas 2D độ nét cao | CDSS ECG Canvas |
+| `ecg/ecg-ui.ts` | Controller phân tích sóng P-QRS-T, STEMI/NSTEMI và loạn nhịp tim | CDSS ECG UI |
+| `abg/index.html` | Trang standalone CDSS Khí Máu Động Mạch & Xử Trí Lâm Sàng (ABG Pro) | CDSS ABG Pro |
+| `abg/abg-engine.ts` | Thuật toán 6 bước đọc khí máu, Anion Gap hiệu chỉnh Albumin, Delta-Delta, P/F | CDSS ABG Engine |
+| `abg/abg-ui.ts` | Controller giao diện nhập liệu, đánh giá toan kiềm & nút xuất Bệnh Án SOAP | CDSS ABG UI |
+| `abg/css/abg-cdss.css` | Stylesheet chuẩn DocSpace Clinical Aesthetic cho phân hệ ABG | CDSS ABG CSS |
+| `xray/index.html` | Trang standalone CDSS Phân Tích X-Quang Ngực & Bụng Thông Minh (RadAI) | CDSS RadAI X-Ray |
+| `xray/xray-canvas-renderer.ts` | Bộ mô phỏng hình ảnh X-quang PACS kỹ thuật số Canvas 2D (Ngực & Bụng) | CDSS X-Ray Canvas |
+| `xray/xray-ui.ts` | Controller trạm đọc PACS, nhận diện tổn thương & xuất kết luận hình ảnh SOAP | CDSS X-Ray UI |
+| `xray/css/xray-cdss.css` | Stylesheet trạm đọc PACS kết hợp DocSpace Clinical Design Tokens | CDSS X-Ray CSS |
+
 *Cập nhật file này mỗi khi thêm trang/skill mới vào hệ thống.*
+

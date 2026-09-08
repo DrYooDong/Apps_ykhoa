@@ -1,40 +1,36 @@
 /* ============================================================
    EBM PRACTICE LAB — STYLESHEET
-   Location: src/content/ebm/EBM Lab/ebm-lab.css
+   Location: src/content/ebm/ebm-lab/ebm-lab.css
 ============================================================ */
+@import '../css/ebm-design-tokens.css';
 
 :root {
-  --ebm-primary: #0284c7;
-  --ebm-primary-dark: #0369a1;
-  --ebm-primary-light: #e0f2fe;
-  --ebm-purple: #7c3aed;
-  --ebm-purple-light: #ede9fe;
-  --ebm-success: #10b981;
-  --ebm-success-light: #dcfce7;
-  --ebm-warning: #f59e0b;
-  --ebm-warning-light: #fef3c7;
-  --ebm-danger: #ef4444;
-  --ebm-danger-light: #fee2e2;
-  --ebm-surface: var(--color-surface, #ffffff);
-  --ebm-surface-2: var(--color-surface-2, #f8fafc);
-  --ebm-border: var(--color-divider, #e2e8f0);
-  --ebm-text: var(--color-text, #0f172a);
-  --ebm-text-muted: var(--color-text-muted, #475569);
-  --ebm-radius: 16px;
-  --ebm-tr: 250ms cubic-bezier(0.16, 1, 0.3, 1);
+  --ebm-primary:        var(--dsp-sky);
+  --ebm-primary-dark:   var(--dsp-sky-dark);
+  --ebm-primary-light:  var(--dsp-sky-light);
+  --ebm-purple:         var(--dsp-violet);
+  --ebm-purple-light:   var(--dsp-violet-light);
+  --ebm-success:        var(--dsp-emerald);
+  --ebm-success-light:  var(--dsp-emerald-light);
+  --ebm-warning:        var(--dsp-amber);
+  --ebm-warning-light:  var(--dsp-amber-light);
+  --ebm-danger:         var(--dsp-rose);
+  --ebm-danger-light:   var(--dsp-rose-light);
+  --ebm-surface:        var(--dsp-surface);
+  --ebm-surface-2:      var(--dsp-surface-2);
+  --ebm-border:         var(--dsp-border);
+  --ebm-text:           var(--dsp-text);
+  --ebm-text-muted:     var(--dsp-text-muted);
+  --ebm-radius:         var(--dsp-radius-lg);
+  --ebm-tr:             var(--dsp-transition);
 }
 
 [data-theme="dark"] {
-  --ebm-surface: var(--color-surface, #1e293b);
-  --ebm-surface-2: var(--color-surface-2, #0f172a);
-  --ebm-border: var(--color-divider, #334155);
-  --ebm-text: var(--color-text, #f8fafc);
-  --ebm-text-muted: var(--color-text-muted, #94a3b8);
-  --ebm-primary-light: rgba(56, 189, 248, 0.15);
-  --ebm-purple-light: rgba(124, 58, 237, 0.15);
-  --ebm-success-light: rgba(16, 185, 129, 0.15);
-  --ebm-warning-light: rgba(245, 158, 11, 0.15);
-  --ebm-danger-light: rgba(239, 68, 68, 0.15);
+  --ebm-surface:        var(--dsp-surface);
+  --ebm-surface-2:      var(--dsp-surface-2);
+  --ebm-border:         var(--dsp-border);
+  --ebm-text:           var(--dsp-text);
+  --ebm-text-muted:     var(--dsp-text-muted);
 }
 
 /* ── HERO BANNER ── */
@@ -42,11 +38,11 @@
   background: linear-gradient(135deg, #0c4a6e 0%, #0369a1 50%, #0d9488 100%);
   color: #ffffff;
   padding: 2.5rem 2rem;
-  border-radius: 24px;
+  border-radius: var(--dsp-radius-xl);
   margin-bottom: 2rem;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(3, 105, 161, 0.18);
+  box-shadow: var(--dsp-shadow-lg), 0 10px 30px rgba(3, 105, 161, 0.25);
 }
 
 .lab-hero::after {

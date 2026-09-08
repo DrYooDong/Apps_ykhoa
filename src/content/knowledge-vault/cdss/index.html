@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kho CDSS Lâm Sàng Độc Lập — CliniPortal</title>
+  <meta name="description" content="Hệ thống CDSS hỗ trợ quyết định lâm sàng độc lập của CliniPortal: Tính toán dịch truyền SXHD Dengue và Phân tích điện tâm đồ ECG 12 chuyển đạo.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <link rel="stylesheet" href="../../../styles/tokens.css">
+  <link rel="stylesheet" href="../../../styles/main.css">
+  <link rel="stylesheet" href="../css/vault-design-tokens.css">
+  <link rel="stylesheet" href="../css/vault-hub.css">
+  <link rel="stylesheet" href="css/cdss-hub.css">
+
+  <style>
+    body {
+      background-color: var(--dsp-bg-base);
+      color: var(--dsp-text-primary);
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      font-family: var(--dsp-font-sans);
+      -webkit-font-smoothing: antialiased;
+    }
+    .vault-navbar {
+      background: var(--dsp-glass-bg);
+      border-bottom: 1px solid var(--dsp-border-subtle);
+      padding: 0.75rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: var(--dsp-z-sticky);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: var(--dsp-shadow-sm);
+    }
+    [data-theme="light"] .vault-navbar {
+      background: rgba(255, 255, 255, 0.88);
+      border-bottom-color: var(--dsp-border-subtle);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    }
+    .vault-nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      font-family: var(--dsp-font-display);
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: var(--dsp-text-primary);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+    .vault-nav-brand-icon {
+      width: 2rem;
+      height: 2rem;
+      border-radius: var(--dsp-radius-md);
+      background: linear-gradient(135deg, var(--dsp-primary) 0%, var(--dsp-indigo) 100%);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      box-shadow: 0 4px 14px var(--dsp-primary-glow);
+    }
+    .vault-nav-links {
+      display: flex;
+      gap: 0.65rem;
+      align-items: center;
+    }
+    .vault-nav-btn {
+      padding: 0.5rem 0.95rem;
+      border-radius: var(--dsp-radius-md);
+      border: 1px solid var(--dsp-border-subtle);
+      background: var(--dsp-surface);
+      color: var(--dsp-text-primary);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      cursor: pointer;
+      transition: var(--dsp-transition);
+    }
+    .vault-nav-btn:hover {
+      border-color: var(--dsp-border-focus);
+      color: var(--dsp-primary-light);
+      transform: translateY(-1px);
+      box-shadow: var(--dsp-shadow-sm);
+    }
+    .vault-nav-btn--theme {
+      width: 2.25rem;
+      height: 2.25rem;
+      padding: 0;
+      justify-content: center;
+      border-radius: var(--dsp-radius-md);
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Top Bar -->
+  <header class="vault-navbar">
+    <a href="../index.html" class="vault-nav-brand">
+      <div class="vault-nav-brand-icon">
+        <i class="fa-solid fa-microchip"></i>
+      </div>
+      <span>CliniPortal <span style="font-weight:500; color:var(--vault-muted); font-size: 0.95rem;">| Kho CDSS Độc Lập</span></span>
+    </a>
+
+    <div class="vault-nav-links">
+      <a href="../index.html" class="vault-nav-btn" title="Quay lại Knowledge Vault Hub">
+        <i class="fa-solid fa-graduation-cap"></i> <span>Knowledge Vault</span>
+      </a>
+      <a href="../../docspace/index.html" class="vault-nav-btn" title="Hồ Sơ Bệnh Án DocSpace">
+        <i class="fa-solid fa-user-doctor"></i> <span>DocSpace Pro</span>
+      </a>
+      <button id="theme-toggle" class="vault-nav-btn vault-nav-btn--theme" title="Chuyển chế độ Sáng/Tối" aria-label="Toggle Theme">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- CDSS Hub Application Container -->
+  <main id="cdss-hub-app"></main>
+
+  <script type="module">
+    import { initCDSSHub } from './index.ts';
+
+    // Theme toggle
+    const themeBtn = document.getElementById('theme-toggle');
+    if (themeBtn) {
+      const savedTheme = localStorage.getItem('cliniportal_theme') || 
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      themeBtn.innerHTML = savedTheme === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+
+      themeBtn.addEventListener('click', () => {
+        const current = document.documentElement.getAttribute('data-theme') || 'light';
+        const next = current === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('cliniportal_theme', next);
+        themeBtn.innerHTML = next === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+      });
+    }
+
+    // Initialize Hub
+    initCDSSHub('cdss-hub-app');
+  </script>
+</body>
+</html>

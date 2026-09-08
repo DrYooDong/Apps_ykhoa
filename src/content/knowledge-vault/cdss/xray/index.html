@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CDSS Phân Tích X-Quang Ngực & Bụng Thông Minh (RadAI) — CliniPortal</title>
+  <meta name="description" content="Hệ thống Hỗ trợ Quyết định Lâm sàng Phân tích Hình ảnh X-Quang Kỹ Thuật Số: Khảo sát X-quang ngực thẳng/nghiêng, X-quang bụng đứng/nằm, điều khiển PACS và xuất kết luận chuẩn Bệnh Án DocSpace SOAP.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Grotesk:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <link rel="stylesheet" href="../../../../styles/tokens.css">
+  <link rel="stylesheet" href="../../../../styles/main.css">
+  <link rel="stylesheet" href="../../css/vault-design-tokens.css">
+  <link rel="stylesheet" href="../../css/vault-hub.css">
+  <link rel="stylesheet" href="css/xray-cdss.css">
+
+  <style>
+    .cdss-navbar {
+      background: rgba(255, 255, 255, 0.92);
+      border-bottom: 1px solid var(--xray-line);
+      padding: 0.65rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+    }
+    [data-theme="dark"] .cdss-navbar {
+      background: rgba(17, 24, 39, 0.92);
+      border-bottom-color: var(--xray-line);
+    }
+    .cdss-nav-breadcrumbs {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.85rem;
+      color: var(--xray-muted);
+    }
+    .cdss-nav-breadcrumbs a {
+      color: var(--xray-muted);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+    .cdss-nav-breadcrumbs a:hover {
+      color: var(--xray-primary);
+    }
+    .cdss-nav-breadcrumbs .active {
+      color: var(--xray-ink);
+      font-weight: 700;
+    }
+    .cdss-nav-right {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+    .cdss-nav-link-btn {
+      padding: 0.45rem 0.85rem;
+      border-radius: 8px;
+      border: 1px solid var(--xray-line);
+      background: var(--xray-panel);
+      color: var(--xray-ink);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .cdss-nav-link-btn:hover {
+      border-color: var(--xray-primary);
+      color: var(--xray-primary);
+    }
+    .cdss-theme-toggle {
+      width: 36px;
+      height: 36px;
+      padding: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      border: 1px solid var(--xray-line);
+      background: var(--xray-panel);
+      color: var(--xray-ink);
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Top Bar -->
+  <header class="cdss-navbar">
+    <div class="cdss-nav-left">
+      <div class="cdss-nav-breadcrumbs">
+        <a href="../../index.html"><i class="fa-solid fa-graduation-cap"></i> Knowledge Vault</a>
+        <i class="fa-solid fa-chevron-right" style="font-size: 0.65rem;"></i>
+        <a href="../index.html"><i class="fa-solid fa-microchip"></i> Kho CDSS</a>
+        <i class="fa-solid fa-chevron-right" style="font-size: 0.65rem;"></i>
+        <span class="active"><i class="fa-solid fa-x-ray text-blue-600"></i> Phân Tích X-Quang (RadAI)</span>
+      </div>
+    </div>
+
+    <div class="cdss-nav-right">
+      <a href="../../docspace/index.html" class="cdss-nav-link-btn" title="Mở trong Hồ Sơ Bệnh Án DocSpace">
+        <i class="fa-solid fa-user-doctor"></i> <span>DocSpace Pro</span>
+      </a>
+      <a href="../index.html" class="cdss-nav-link-btn" title="Trở về Trung Tâm CDSS">
+        <i class="fa-solid fa-th-large"></i> <span>Danh Mục CDSS</span>
+      </a>
+      <button id="theme-toggle" class="cdss-theme-toggle" title="Chuyển chế độ Sáng/Tối" aria-label="Toggle Theme">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mount Point for RadAI X-Ray CDSS Application -->
+  <div id="xray-cdss-container"></div>
+
+  <script type="module">
+    import { XRayCDSSController } from './xray-ui.ts';
+
+    // Initialize Controller
+    new XRayCDSSController('xray-cdss-container');
+
+    // Theme toggle
+    const themeBtn = document.getElementById('theme-toggle');
+    if (themeBtn) {
+      const savedTheme = localStorage.getItem('cliniportal_theme') || 
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      themeBtn.innerHTML = savedTheme === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+
+      themeBtn.addEventListener('click', () => {
+        const current = document.documentElement.getAttribute('data-theme') || 'light';
+        const next = current === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('cliniportal_theme', next);
+        themeBtn.innerHTML = next === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+      });
+    }
+  </script>
+</body>
+</html>

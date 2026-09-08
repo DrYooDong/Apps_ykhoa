@@ -1,6 +1,7 @@
 /* ============================================================
    BASIC MEDICAL ATOMIC: COMPARATIVE & SUMMARY TABLES (physio-tables.css)
    Side-by-Side Physiological Parameter Matrices, Lab Ranges & Spec Tables
+   100% Unified with DocSpace Medical OS Tokens
    ============================================================ */
 
 .table-responsive,
@@ -10,10 +11,12 @@
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   margin: 1.5rem 0;
-  border-radius: var(--radius-lg, 14px);
-  box-shadow: var(--shadow-sm, 0 2px 8px rgba(0, 0, 0, 0.03));
-  border: 1px solid var(--color-border, #cbd5e1);
-  background: var(--color-surface, #ffffff);
+  border-radius: var(--dsp-radius-lg);
+  box-shadow: var(--dsp-shadow-sm);
+  border: 1px solid var(--dsp-border-subtle);
+  background: var(--dsp-surface);
+  backdrop-filter: var(--dsp-backdrop-blur);
+  -webkit-backdrop-filter: var(--dsp-backdrop-blur);
 }
 
 .table-responsive table,
@@ -28,7 +31,7 @@
   border-radius: 0;
   width: 100%;
   border-collapse: collapse;
-  font-size: var(--text-xs, 0.86rem);
+  font-size: 0.86rem;
   min-width: 600px;
   text-align: left;
 }
@@ -40,15 +43,15 @@
 .epi-table thead th,
 .physio-table-compare thead th,
 .physio-table-summary thead th {
-  padding: 0.85rem 1.15rem;
-  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
-  font-size: 0.76rem;
+  padding: 0.95rem 1.25rem;
+  font-family: var(--dsp-font-display);
+  font-size: 0.78rem;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  background: var(--color-surface-2, #f8fafc);
-  color: var(--color-text-muted, #475569);
-  border-bottom: 2px solid var(--color-border, #cbd5e1);
+  background: var(--dsp-surface-2);
+  color: var(--dsp-text-secondary);
+  border-bottom: 2px solid var(--dsp-border-subtle);
   white-space: nowrap;
 }
 
@@ -59,11 +62,12 @@
 .epi-table td,
 .physio-table-compare td,
 .physio-table-summary td {
-  padding: 0.85rem 1.15rem;
-  border-bottom: 1px solid var(--color-border, #cbd5e1);
+  padding: 0.95rem 1.25rem;
+  border-bottom: 1px solid var(--dsp-border-subtle);
   vertical-align: middle;
   line-height: 1.55;
-  color: var(--color-text, #0f172a);
+  color: var(--dsp-text-primary);
+  transition: background-color var(--dsp-transition-fast);
 }
 
 .table-responsive tbody tr:last-child td,
@@ -80,7 +84,14 @@
 .physio-table tbody tr:nth-child(even),
 .med-table tbody tr:nth-child(even),
 .epi-table tbody tr:nth-child(even) {
-  background: rgba(248, 250, 252, 0.6);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+[data-theme="light"] .table-responsive tbody tr:nth-child(even),
+[data-theme="light"] .physio-table tbody tr:nth-child(even),
+[data-theme="light"] .med-table tbody tr:nth-child(even),
+[data-theme="light"] .epi-table tbody tr:nth-child(even) {
+  background: rgba(241, 245, 249, 0.5);
 }
 
 /* Hover Row */
@@ -90,74 +101,24 @@
 .epi-table tbody tr:hover td,
 .physio-table-compare tbody tr:hover td,
 .physio-table-summary tbody tr:hover td {
-  background: var(--color-surface-2, #f1f5f9);
+  background: var(--dsp-surface-2);
 }
 
 /* Comparative Table Spec Column */
 .physio-table-compare th {
-  background: var(--color-primary-hl, rgba(2, 132, 199, 0.08));
-  color: var(--color-primary, #0284c7);
+  background: var(--dsp-sky-light);
+  color: var(--dsp-primary);
 }
 
 .physio-table-compare td:first-child {
   font-weight: 700;
-  color: var(--color-text, #0f172a);
-  background-color: var(--color-surface-2, #f8fafc);
+  color: var(--dsp-text-primary);
+  background-color: var(--dsp-surface-2);
   width: 28%;
 }
 
 /* Summary Table Specifics */
 .physio-table-summary th {
-  background: var(--color-surface-offset, #f1f5f9);
-  color: var(--color-text, #0f172a);
-}
-
-/* --- DARK MODE --- */
-[data-theme="dark"] .table-responsive,
-[data-theme="dark"] .epi-table-wrapper,
-[data-theme="dark"] .physio-table-wrapper {
-  background: var(--color-surface, #1e293b);
-  border-color: var(--color-border, #334155);
-}
-
-[data-theme="dark"] .table-responsive thead th,
-[data-theme="dark"] .physio-table thead th,
-[data-theme="dark"] .med-table thead th,
-[data-theme="dark"] .epi-table thead th,
-[data-theme="dark"] .physio-table-compare thead th,
-[data-theme="dark"] .physio-table-summary thead th {
-  background: var(--color-surface-2, #0f172a);
-  border-bottom-color: var(--color-border, #334155);
-  color: var(--color-text-muted, #94a3b8);
-}
-
-[data-theme="dark"] .table-responsive td,
-[data-theme="dark"] .physio-table td,
-[data-theme="dark"] .med-table td,
-[data-theme="dark"] .epi-table td,
-[data-theme="dark"] .physio-table-compare td,
-[data-theme="dark"] .physio-table-summary td {
-  border-bottom-color: var(--color-border, #334155);
-  color: var(--color-text, #f8fafc);
-}
-
-[data-theme="dark"] .table-responsive tbody tr:nth-child(even),
-[data-theme="dark"] .physio-table tbody tr:nth-child(even),
-[data-theme="dark"] .med-table tbody tr:nth-child(even),
-[data-theme="dark"] .epi-table tbody tr:nth-child(even) {
-  background: rgba(15, 23, 42, 0.4);
-}
-
-[data-theme="dark"] .table-responsive tbody tr:hover td,
-[data-theme="dark"] .physio-table tbody tr:hover td,
-[data-theme="dark"] .med-table tbody tr:hover td,
-[data-theme="dark"] .epi-table tbody tr:hover td,
-[data-theme="dark"] .physio-table-compare tbody tr:hover td,
-[data-theme="dark"] .physio-table-summary tbody tr:hover td {
-  background: rgba(51, 65, 85, 0.5);
-}
-
-[data-theme="dark"] .physio-table-compare td:first-child {
-  background-color: rgba(15, 23, 42, 0.6);
-  color: var(--color-primary-light, #38bdf8);
+  background: var(--dsp-surface-2);
+  color: var(--dsp-text-primary);
 }

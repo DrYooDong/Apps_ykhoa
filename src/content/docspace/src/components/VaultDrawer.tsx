@@ -16,6 +16,7 @@ import {
   X,
 } from 'lucide-react';
 import {
+  getCdssAppUrl,
   getKhoSummaries,
   getKnowledgeVaultWebUrl,
   KHO_DEFINITIONS,
@@ -200,10 +201,10 @@ export const VaultDrawer: React.FC<VaultDrawerProps> = ({
                       ? 'bg-purple-600 text-white shadow-xs ring-2 ring-purple-400/40'
                       : 'bg-purple-50 text-purple-800 border border-purple-200 hover:bg-purple-100'
                   }`}
-                  title="Xem 3 hệ thống hỗ trợ ra quyết định lâm sàng (Kháng sinh eGFR, Dịch truyền Dengue)"
+                  title="Xem 4 hệ thống hỗ trợ ra quyết định lâm sàng (Dengue, ECG, ABG Pro, X-Ray)"
                 >
                   <span>⚡</span>
-                  <span>Kho CDSS ({khoSummaries.find((k) => k.code === 'CDSS')?.articleCount || 3})</span>
+                  <span>Kho CDSS ({khoSummaries.find((k) => k.code === 'CDSS')?.articleCount || 4})</span>
                 </button>
               </div>
             </div>
@@ -567,6 +568,91 @@ export const VaultDrawer: React.FC<VaultDrawerProps> = ({
                     >
                       Xem Guidelines &rarr;
                     </button>
+                  </div>
+                )}
+
+                {/* Khi mở Kho CDSS: Hiển thị 4 trạm công cụ CDSS lâm sàng tương tác độc lập */}
+                {activeKho === 'CDSS' && (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-2.5">
+                    <a
+                      href={getCdssAppUrl('dengue')}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="p-3 bg-gradient-to-br from-blue-50 to-indigo-50/50 hover:from-blue-100/70 hover:to-indigo-100/70 border border-blue-200 rounded-lg transition-all flex flex-col justify-between group shadow-2xs text-left"
+                    >
+                      <div className="flex items-start justify-between gap-1 mb-1">
+                        <span className="px-1.5 py-0.5 rounded text-[10px] font-bold text-blue-700 bg-blue-100 border border-blue-300">
+                          BYT QĐ 2760
+                        </span>
+                        <ExternalLink className="w-3.5 h-3.5 text-blue-500 group-hover:translate-x-0.5 transition-transform" />
+                      </div>
+                      <h4 className="text-xs font-bold text-blue-950 group-hover:text-blue-700 transition-colors">
+                        1. CDSS Dịch Truyền SXHD Dengue
+                      </h4>
+                      <p className="text-[11px] text-slate-500 mt-1 line-clamp-2">
+                        Tính cọc dịch 4 cột động học, hiệu chỉnh cân nặng CDC 2014 và pha vận mạch.
+                      </p>
+                    </a>
+
+                    <a
+                      href={getCdssAppUrl('ecg')}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="p-3 bg-gradient-to-br from-rose-50 to-orange-50/50 hover:from-rose-100/70 hover:to-orange-100/70 border border-rose-200 rounded-lg transition-all flex flex-col justify-between group shadow-2xs text-left"
+                    >
+                      <div className="flex items-start justify-between gap-1 mb-1">
+                        <span className="px-1.5 py-0.5 rounded text-[10px] font-bold text-rose-700 bg-rose-100 border border-rose-300">
+                          12-Lead Canvas
+                        </span>
+                        <ExternalLink className="w-3.5 h-3.5 text-rose-500 group-hover:translate-x-0.5 transition-transform" />
+                      </div>
+                      <h4 className="text-xs font-bold text-rose-950 group-hover:text-rose-700 transition-colors">
+                        2. CDSS Phân Tích ECG 12 Đạo Trình
+                      </h4>
+                      <p className="text-[11px] text-slate-500 mt-1 line-clamp-2">
+                        Vẽ sóng trực quan, đo trục, QTc, phân tích hội chứng vành cấp STEMI và loạn nhịp.
+                      </p>
+                    </a>
+
+                    <a
+                      href={getCdssAppUrl('abg')}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="p-3 bg-gradient-to-br from-cyan-50 to-sky-50/50 hover:from-cyan-100/70 hover:to-sky-100/70 border border-cyan-200 rounded-lg transition-all flex flex-col justify-between group shadow-2xs text-left"
+                    >
+                      <div className="flex items-start justify-between gap-1 mb-1">
+                        <span className="px-1.5 py-0.5 rounded text-[10px] font-bold text-cyan-700 bg-cyan-100 border border-cyan-300">
+                          6-Step Analysis
+                        </span>
+                        <ExternalLink className="w-3.5 h-3.5 text-cyan-500 group-hover:translate-x-0.5 transition-transform" />
+                      </div>
+                      <h4 className="text-xs font-bold text-cyan-950 group-hover:text-cyan-700 transition-colors">
+                        3. CDSS Khí Máu Động Mạch (ABG Pro)
+                      </h4>
+                      <p className="text-[11px] text-slate-500 mt-1 line-clamp-2">
+                        Đánh giá toan kiềm 6 bước, Anion Gap hiệu chỉnh Albumin, Delta-Delta, P/F và SOAP format.
+                      </p>
+                    </a>
+
+                    <a
+                      href={getCdssAppUrl('xray')}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="p-3 bg-gradient-to-br from-purple-50 to-indigo-50/50 hover:from-purple-100/70 hover:to-indigo-100/70 border border-purple-200 rounded-lg transition-all flex flex-col justify-between group shadow-2xs text-left"
+                    >
+                      <div className="flex items-start justify-between gap-1 mb-1">
+                        <span className="px-1.5 py-0.5 rounded text-[10px] font-bold text-purple-700 bg-purple-100 border border-purple-300">
+                          PACS Workstation
+                        </span>
+                        <ExternalLink className="w-3.5 h-3.5 text-purple-500 group-hover:translate-x-0.5 transition-transform" />
+                      </div>
+                      <h4 className="text-xs font-bold text-purple-950 group-hover:text-purple-700 transition-colors">
+                        4. CDSS Phân Tích X-Quang (RadAI)
+                      </h4>
+                      <p className="text-[11px] text-slate-500 mt-1 line-clamp-2">
+                        Trạm đọc PACS ngực & bụng, phát hiện đông đặc, tràn khí, bóng tim, tắc ruột và xuất SOAP.
+                      </p>
+                    </a>
                   </div>
                 )}
 

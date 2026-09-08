@@ -1,0 +1,248 @@
+/**
+ * CliniPortal — Basic Medical Sciences Master Design Tokens
+ * Path: src/content/basic-medical/css/basic-medical-design-tokens.css
+ * Unified with DocSpace Medical OS Design System ($5000 Grade)
+ * Prefix: --dsp-*, .dsp-bm-*
+ * Standards: Dark-First Architecture, Glass Tiers, Micro-Interactions, WCAG 2.2 AAA Contrast
+ */
+
+/* ══════════════════════════════════════════════════════════════════════════
+   1. CORE MEDICAL OS DESIGN TOKENS (DARK DEFAULT)
+   ══════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* --- Brand & Primary Clinical Semantics --- */
+  --dsp-sky:                #0284c7;
+  --dsp-sky-glow:           rgba(2, 132, 199, 0.35);
+  --dsp-sky-light:          rgba(2, 132, 199, 0.12);
+  --dsp-sky-dark:           #0369a1;
+
+  --dsp-teal:               #0d9488;
+  --dsp-teal-glow:          rgba(13, 148, 136, 0.35);
+  --dsp-teal-light:         rgba(13, 148, 136, 0.12);
+
+  --dsp-emerald:            #10b981;
+  --dsp-emerald-glow:       rgba(16, 185, 129, 0.35);
+  --dsp-emerald-light:      rgba(16, 185, 129, 0.12);
+  --dsp-emerald-dark:       #059669;
+
+  --dsp-violet:             #8b5cf6;
+  --dsp-violet-glow:        rgba(139, 92, 246, 0.35);
+  --dsp-violet-light:       rgba(139, 92, 246, 0.12);
+
+  --dsp-rose:               #ef4444;
+  --dsp-rose-glow:          rgba(239, 68, 68, 0.35);
+  --dsp-rose-light:         rgba(239, 68, 68, 0.12);
+
+  --dsp-amber:              #f59e0b;
+  --dsp-amber-glow:         rgba(245, 158, 11, 0.35);
+  --dsp-amber-light:        rgba(245, 158, 11, 0.12);
+
+  --dsp-indigo:             #6366f1;
+  --dsp-indigo-glow:        rgba(99, 102, 241, 0.35);
+  --dsp-indigo-light:       rgba(99, 102, 241, 0.12);
+
+  --dsp-pink:               #ec4899;
+  --dsp-pink-glow:          rgba(236, 72, 153, 0.35);
+  --dsp-pink-light:         rgba(236, 72, 153, 0.12);
+
+  /* --- Primary Brand Aliases --- */
+  --dsp-primary:            var(--dsp-sky);
+  --dsp-primary-light:      #38bdf8;
+  --dsp-primary-dark:       var(--dsp-sky-dark);
+  --dsp-primary-glow:       var(--dsp-sky-glow);
+
+  /* --- SBAR 4-Pillar Semantics --- */
+  --dsp-sbar-s:             var(--dsp-rose);
+  --dsp-sbar-b:             var(--dsp-amber);
+  --dsp-sbar-a:             var(--dsp-sky);
+  --dsp-sbar-r:             var(--dsp-emerald);
+
+  /* --- Typography & Text Tiers (Dark Default) --- */
+  --dsp-font-sans:          'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --dsp-font-display:       'Plus Jakarta Sans', 'Inter', sans-serif;
+  --dsp-font-mono:          'JetBrains Mono', monospace;
+  --dsp-font-serif:         'Merriweather', Georgia, serif;
+
+  --dsp-text:               #f1f5f9;
+  --dsp-text-primary:       var(--dsp-text);
+  --dsp-text-secondary:     #94a3b8;
+  --dsp-text-muted:         #64748b;
+  --dsp-text-inverse:       #0f172a;
+
+  /* --- Surface, Glass & Border Tiers (Dark Default) --- */
+  --dsp-bg:                 var(--color-bg, #090d16);
+  --dsp-bg-base:            var(--dsp-bg);
+  --dsp-surface:            var(--color-surface, #0f172a);
+  --dsp-surface-2:          rgba(30, 41, 59, 0.7);
+  --dsp-surface-3:          rgba(51, 65, 85, 0.5);
+  --dsp-border:             rgba(255, 255, 255, 0.08);
+  --dsp-border-subtle:      var(--dsp-border);
+  --dsp-border-hover:       rgba(2, 132, 199, 0.45);
+  --dsp-border-focus:       var(--dsp-border-hover);
+  --dsp-glass-bg:           rgba(15, 23, 42, 0.82);
+  --dsp-glass-border:       rgba(255, 255, 255, 0.09);
+  --dsp-glass-shadow:       0 12px 36px 0 rgba(0, 0, 0, 0.45);
+  --dsp-backdrop-blur:      blur(16px);
+
+  /* --- Z-Index Hierarchy --- */
+  --dsp-z-base:             1;
+  --dsp-z-sticky:           100;
+  --dsp-z-drawer:           500;
+  --dsp-z-modal:            1000;
+  --dsp-z-toast:            2000;
+
+  /* --- Elevation Shadows --- */
+  --dsp-shadow-sm:          0 1px 3px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.15);
+  --dsp-shadow-md:          0 4px 14px -2px rgba(0, 0, 0, 0.35), 0 2px 6px -1px rgba(0, 0, 0, 0.2);
+  --dsp-shadow-lg:          0 14px 34px -4px rgba(0, 0, 0, 0.5), 0 6px 14px -2px rgba(0, 0, 0, 0.3);
+  --dsp-shadow-glow:        0 0 24px var(--dsp-sky-glow);
+  --dsp-shadow-glow-emerald:0 0 24px var(--dsp-emerald-glow);
+  --dsp-shadow-glow-rose:   0 0 24px var(--dsp-rose-glow);
+  --dsp-shadow-glow-amber:  0 0 24px var(--dsp-amber-glow);
+  --dsp-shadow-glow-violet: 0 0 24px var(--dsp-violet-glow);
+
+  /* --- Radii Scale --- */
+  --dsp-radius-xs:          4px;
+  --dsp-radius-sm:          8px;
+  --dsp-radius-md:          12px;
+  --dsp-radius-lg:          16px;
+  --dsp-radius-xl:          22px;
+  --dsp-radius-full:        9999px;
+
+  /* --- Motion & Transitions --- */
+  --dsp-transition:         0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  --dsp-transition-fast:    0.15s cubic-bezier(0.16, 1, 0.3, 1);
+  --dsp-transition-spring:  0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* ══════════════════════════════════════════════════════════════════════
+     2. BASIC MEDICAL BACKWARD-COMPATIBILITY ALIASES
+     ══════════════════════════════════════════════════════════════════════ */
+  --color-primary:          var(--dsp-sky);
+  --color-primary-dark:     var(--dsp-sky-dark);
+  --color-primary-rgb:      2, 132, 199;
+  --color-primary-hl:       var(--dsp-sky-light);
+  --color-primary-hover:    var(--dsp-primary-light);
+
+  --color-surface:          var(--dsp-surface);
+  --color-surface-2:        var(--dsp-surface-2);
+  --color-surface-3:        var(--dsp-surface-3);
+  --color-bg:               var(--dsp-bg);
+  --color-border:           var(--dsp-border);
+  --color-text:             var(--dsp-text);
+  --color-text-muted:       var(--dsp-text-muted);
+
+  --color-danger:           var(--dsp-rose);
+  --color-danger-rgb:       239, 68, 68;
+  --color-danger-hl:        var(--dsp-rose-light);
+  --color-danger-border:    rgba(239, 68, 68, 0.3);
+
+  --color-warning:          var(--dsp-amber);
+  --color-warning-rgb:      245, 158, 11;
+  --color-warning-hl:       var(--dsp-amber-light);
+  --color-warning-border:   rgba(245, 158, 11, 0.3);
+
+  --color-success:          var(--dsp-emerald);
+  --color-success-rgb:      16, 185, 129;
+  --color-success-hl:       var(--dsp-emerald-light);
+  --color-success-border:   rgba(16, 185, 129, 0.3);
+
+  --color-purple:           var(--dsp-violet);
+  --color-purple-rgb:       139, 92, 246;
+  --color-purple-hl:        var(--dsp-violet-light);
+  --color-purple-border:    rgba(139, 92, 246, 0.3);
+
+  --color-teal:             var(--dsp-teal);
+  --color-teal-rgb:         13, 148, 136;
+  --color-teal-hl:          var(--dsp-teal-light);
+  --color-teal-border:      rgba(13, 148, 136, 0.3);
+
+  --radius-xs:              var(--dsp-radius-xs);
+  --radius-sm:              var(--dsp-radius-sm);
+  --radius-md:              var(--dsp-radius-md);
+  --radius-lg:              var(--dsp-radius-lg);
+  --radius-xl:              var(--dsp-radius-xl);
+
+  --shadow-sm:              var(--dsp-shadow-sm);
+  --shadow-md:              var(--dsp-shadow-md);
+  --shadow-lg:              var(--dsp-shadow-lg);
+
+  --font-sans:              var(--dsp-font-sans);
+  --font-display:           var(--dsp-font-display);
+  --font-body:              var(--dsp-font-sans);
+
+  --tr:                     var(--dsp-transition);
+  --tr-fast:                var(--dsp-transition-fast);
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   3. LIGHT THEME OVERRIDES
+   ══════════════════════════════════════════════════════════════════════════ */
+
+[data-theme="light"],
+:root[data-theme="light"] {
+  --dsp-text:               #0f172a;
+  --dsp-text-primary:       var(--dsp-text);
+  --dsp-text-secondary:     #475569;
+  --dsp-text-muted:         #64748b;
+  --dsp-text-inverse:       #ffffff;
+
+  --dsp-bg:                 var(--color-bg, #f8fafc);
+  --dsp-bg-base:            var(--dsp-bg);
+  --dsp-surface:            var(--color-surface, #ffffff);
+  --dsp-surface-2:          #f1f5f9;
+  --dsp-surface-3:          #e2e8f0;
+  --dsp-border:             rgba(203, 213, 225, 0.85);
+  --dsp-border-subtle:      var(--dsp-border);
+  --dsp-border-hover:       rgba(2, 132, 199, 0.6);
+  --dsp-border-focus:       var(--dsp-border-hover);
+  --dsp-glass-bg:           rgba(255, 255, 255, 0.9);
+  --dsp-glass-border:       rgba(226, 232, 240, 0.92);
+  --dsp-glass-shadow:       0 10px 30px 0 rgba(15, 23, 42, 0.08);
+
+  --dsp-shadow-sm:          0 1px 3px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
+  --dsp-shadow-md:          0 4px 14px -2px rgba(15, 23, 42, 0.08), 0 2px 6px -1px rgba(15, 23, 42, 0.05);
+  --dsp-shadow-lg:          0 14px 34px -4px rgba(15, 23, 42, 0.12), 0 6px 14px -2px rgba(15, 23, 42, 0.08);
+
+  --color-surface:          var(--dsp-surface);
+  --color-surface-2:        var(--dsp-surface-2);
+  --color-surface-3:        var(--dsp-surface-3);
+  --color-bg:               var(--dsp-bg);
+  --color-border:           var(--dsp-border);
+  --color-text:             var(--dsp-text);
+  --color-text-muted:       var(--dsp-text-muted);
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   4. SHARED UTILITY CLASSES & KEYFRAMES
+   ══════════════════════════════════════════════════════════════════════════ */
+
+@keyframes bm-pulse-glow {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.9;
+    box-shadow: 0 0 15px var(--dsp-sky-glow);
+  }
+  50% {
+    transform: scale(1.04);
+    opacity: 1;
+    box-shadow: 0 0 28px var(--dsp-sky-glow);
+  }
+}
+
+@keyframes bm-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.bm-gradient-text {
+  background: linear-gradient(135deg, var(--dsp-sky) 0%, var(--dsp-indigo) 50%, var(--dsp-violet) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+[data-theme="light"] .bm-gradient-text {
+  background: linear-gradient(135deg, var(--dsp-sky-dark) 0%, #4338ca 50%, #6d28d9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

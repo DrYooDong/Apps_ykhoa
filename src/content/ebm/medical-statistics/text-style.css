@@ -1,8 +1,9 @@
-﻿/* ============================================================
+/* ============================================================
    SHARED TYPOGRAPHY & TEXT STYLES FOR LESSONS
-   Location: src/content/ebm/Thống kê y học/text-style.css
+   Location: src/content/ebm/medical-statistics/text-style.css
    Author: CliniPortal Pair Programming
 ============================================================ */
+@import '../css/ebm-design-tokens.css';
 
 /* Theme Variables (Fallback support with automatic Dark Mode integration) */
 :root {
@@ -12,42 +13,42 @@
   --font-display-lesson: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --font-body-lesson: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   
-  /* Color Palette - Light Theme (Default) */
-  --text-primary: #1e293b;
-  --text-secondary: #475569;
-  --text-muted-faint: #cbd5e1;
-  --border-light: #f1f5f9;
-  --border-mid: #e2e8f0;
-  --bg-subtle: #f8fafc;
+  /* Color Palette - Unified DocSpace Medical OS */
+  --text-primary: var(--dsp-text);
+  --text-secondary: var(--dsp-text-secondary);
+  --text-muted-faint: var(--dsp-text-muted);
+  --border-light: var(--dsp-border);
+  --border-mid: var(--dsp-border);
+  --bg-subtle: var(--dsp-surface-2);
   
-  --primary-accent: #0284c7;
-  --primary-accent-light: #f0f9ff;
-  --primary-accent-dark: #0369a1;
+  --primary-accent: var(--dsp-sky);
+  --primary-accent-light: var(--dsp-sky-light);
+  --primary-accent-dark: var(--dsp-sky-dark);
   
-  --success-color: #059669;
-  --success-bg: #f0fdf4;
-  --success-border: #d1fae5;
+  --success-color: var(--dsp-emerald);
+  --success-bg: var(--dsp-emerald-light);
+  --success-border: rgba(16, 185, 129, 0.3);
 
-  --warning-color: #d97706;
-  --warning-bg: #fffbeb;
-  --warning-border: #fef3c7;
+  --warning-color: var(--dsp-amber);
+  --warning-bg: var(--dsp-amber-light);
+  --warning-border: rgba(245, 158, 11, 0.3);
 
-  --danger-color: #e11d48;
-  --danger-bg: #fff1f2;
-  --danger-border: #ffe4e6;
+  --danger-color: var(--dsp-rose);
+  --danger-bg: var(--dsp-rose-light);
+  --danger-border: rgba(239, 68, 68, 0.3);
   
   /* Interactive Callout Text Colors */
   --callout-info-text: var(--primary-accent-dark);
-  --callout-success-text: #065f46;
-  --callout-warning-text: #92400e;
-  --callout-danger-text: #b91c1c;
+  --callout-success-text: var(--dsp-emerald);
+  --callout-warning-text: var(--dsp-amber);
+  --callout-danger-text: var(--dsp-rose);
 
   /* Elevation Shadows */
-  --shadow-lesson-sm: 0 1px 3px rgba(15, 23, 42, 0.05), 0 1px 2px rgba(15, 23, 42, 0.03);
-  --shadow-lesson-md: 0 4px 12px rgba(15, 23, 42, 0.06), 0 2px 4px rgba(15, 23, 42, 0.03);
-  --shadow-lesson-lg: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.03);
+  --shadow-lesson-sm: var(--dsp-shadow-sm);
+  --shadow-lesson-md: var(--dsp-shadow-md);
+  --shadow-lesson-lg: var(--dsp-shadow-lg);
   
-  --tr-lesson: 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  --tr-lesson: var(--dsp-transition);
 
   /* TOC Fallbacks (for independent lessons running without main.css) */
   --header-height: 54px;

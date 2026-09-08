@@ -116,45 +116,27 @@ export const Header: React.FC<HeaderProps> = ({
 
         {/* Navigation Action Buttons */}
         <nav className="flex items-center gap-1.5 sm:gap-2">
-          {/* Quick Vault Drawer Button */}
-          <button
-            id="btn-nav-vault-drawer"
-            onClick={() => onOpenVault()}
-            className="flex items-center gap-1.5 px-2.5 py-1 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200 rounded text-xs font-semibold transition-colors cursor-pointer shadow-2xs"
-            title="Mở ngăn kéo tra cứu nhanh 2.400+ bài viết Knowledge Vault"
-          >
-            <BookOpen className="w-3.5 h-3.5 text-indigo-600" />
-            <span className="hidden sm:inline">Vault EBM</span>
-          </button>
-
+          {/* Unified Kho tri thức Button */}
           <button
             id="btn-nav-kb"
             onClick={onOpenKB}
-            className="flex items-center gap-1.5 px-2.5 py-1 bg-slate-50 hover:bg-slate-100 text-slate-700 border border-slate-200 rounded text-xs font-medium transition-colors cursor-pointer"
-            title="Xem cơ sở tri thức suy luận"
+            className="flex items-center gap-1.5 px-3 py-1 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200 rounded text-xs font-semibold transition-colors cursor-pointer shadow-2xs"
+            title="Xem Kho tri thức y khoa, tiêu chuẩn chẩn đoán & 2.400+ bài viết Knowledge Vault"
           >
-            <Database className="w-3.5 h-3.5 text-blue-600" />
-            <span className="hidden md:inline">Kho tri thức</span>
+            <BookOpen className="w-3.5 h-3.5 text-indigo-600" />
+            <span>Kho tri thức</span>
           </button>
 
+          {/* Kho ca lâm sàng (Supabase Cloud Storage) */}
           <button
             id="btn-nav-records"
             onClick={onOpenRecords}
             className="flex items-center gap-1.5 px-2.5 py-1 bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 rounded text-xs font-semibold transition-colors cursor-pointer shadow-xs"
-            title="Quản lý các ca lâm sàng đúc kết trong Supabase / Cục bộ"
+            title="Quản lý và lưu trữ hồ sơ ca lâm sàng trên Supabase Cloud Database"
           >
             <Stethoscope className="w-3.5 h-3.5 text-blue-600" />
             <span>Kho ca lâm sàng</span>
-          </button>
-
-          <button
-            id="btn-nav-export-kb"
-            onClick={onExportKB}
-            title="Xuất cơ sở tri thức dạng JSON"
-            className="hidden lg:flex items-center gap-1 px-2 py-1 text-xs font-medium rounded border border-slate-200 text-slate-600 hover:bg-slate-50 transition-colors cursor-pointer"
-          >
-            <Download className="w-3.5 h-3.5 text-slate-500" />
-            <span>JSON</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" title="Đồng bộ Supabase Cloud"></span>
           </button>
 
           <button

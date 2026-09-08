@@ -2,35 +2,42 @@
  * CliniPortal — Knowledge Vault Hub & Reader Stylesheet
  * 100% Design Tokens & Dark Mode Compliant
  */
+@import url('./vault-design-tokens.css');
 @import url('./vault-reader.css');
 
 :root {
-  --vault-primary: var(--color-primary, #0284c7);
-  --vault-surface: var(--color-surface, #ffffff);
-  --vault-bg: var(--color-bg, #f8fafc);
-  --vault-border: var(--color-border, #e2e8f0);
-  --vault-text: var(--color-text, #0f172a);
-  --vault-muted: var(--color-text-muted, #64748b);
-  --vault-radius: 12px;
+  --vault-primary:       var(--dsp-sky);
+  --vault-surface:       var(--dsp-surface);
+  --vault-surface-2:     var(--dsp-surface-2);
+  --vault-bg:            var(--dsp-bg);
+  --vault-border:        var(--dsp-border);
+  --vault-border-hover:  var(--dsp-border-hover);
+  --vault-text:          var(--dsp-text);
+  --vault-muted:         var(--dsp-text-muted);
+  --vault-radius:        var(--dsp-radius-lg);
+  --vault-glass-bg:      var(--dsp-glass-bg);
+  --vault-glass-border:  var(--dsp-glass-border);
+  --vault-glass-shadow:  var(--dsp-glass-shadow);
 }
 
 [data-theme="dark"] {
-  --vault-surface: var(--color-surface, #1e293b);
-  --vault-bg: var(--color-bg, #0f172a);
-  --vault-border: var(--color-border, #334155);
-  --vault-text: var(--color-text, #f8fafc);
-  --vault-muted: var(--color-text-muted, #94a3b8);
+  --vault-surface:       var(--dsp-surface);
+  --vault-surface-2:     var(--dsp-surface-2);
+  --vault-bg:            var(--dsp-bg);
+  --vault-border:        var(--dsp-border);
+  --vault-text:          var(--dsp-text);
+  --vault-muted:         var(--dsp-text-muted);
 }
 
 /* Keyframes */
 @keyframes vault-pulse-glow {
-  0%, 100% { transform: scale(1); opacity: 0.9; box-shadow: 0 0 15px rgba(2, 132, 199, 0.35); }
-  50% { transform: scale(1.05); opacity: 1; box-shadow: 0 0 25px rgba(2, 132, 199, 0.5); }
+  0%, 100% { transform: scale(1); opacity: 0.9; box-shadow: 0 0 15px var(--dsp-sky-glow); }
+  50% { transform: scale(1.04); opacity: 1; box-shadow: 0 0 28px var(--dsp-sky-glow); }
 }
 
 @keyframes vault-live-dot {
-  0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 8px #10b981; }
-  50% { opacity: 0.4; transform: scale(0.85); box-shadow: 0 0 2px #10b981; }
+  0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 8px var(--dsp-emerald); }
+  50% { opacity: 0.4; transform: scale(0.85); box-shadow: 0 0 2px var(--dsp-emerald); }
 }
 
 @keyframes vault-shimmer {
@@ -39,13 +46,13 @@
 }
 
 .vault-gradient-text {
-  background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
+  background: linear-gradient(135deg, var(--dsp-sky) 0%, var(--dsp-indigo) 50%, var(--dsp-violet) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 [data-theme="light"] .vault-gradient-text {
-  background: linear-gradient(135deg, #0284c7 0%, #4f46e5 50%, #7c3aed 100%);
+  background: linear-gradient(135deg, var(--dsp-sky-dark) 0%, #4338ca 50%, #6d28d9 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -60,11 +67,11 @@
 
 /* Header Banner (Aurora Medical Hero) */
 .vault-header {
-  background: linear-gradient(135deg, rgba(2, 132, 199, 0.2) 0%, rgba(15, 23, 42, 0.95) 50%, rgba(139, 92, 246, 0.15) 100%);
-  border: 1px solid rgba(56, 189, 248, 0.3);
-  border-radius: 1.5rem;
-  padding: 2.25rem 2.5rem;
-  margin-bottom: 1.75rem;
+  background: linear-gradient(135deg, rgba(2, 132, 199, 0.25) 0%, rgba(15, 23, 42, 0.96) 50%, rgba(99, 102, 241, 0.2) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--dsp-radius-xl);
+  padding: 2.5rem 2.5rem;
+  margin-bottom: 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -72,13 +79,13 @@
   gap: 1.75rem;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  box-shadow: var(--dsp-shadow-lg), 0 20px 50px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 [data-theme="light"] .vault-header {
   background: linear-gradient(135deg, #e0f2fe 0%, #ffffff 50%, #f5f3ff 100%);
   border-color: rgba(2, 132, 199, 0.25);
-  box-shadow: 0 10px 30px -5px rgba(2, 132, 199, 0.08);
+  box-shadow: var(--dsp-shadow-md), 0 10px 30px -5px rgba(2, 132, 199, 0.1);
 }
 
 .vault-header-glow {
@@ -87,7 +94,7 @@
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(56, 189, 248, 0.08) 0%, transparent 60%);
+  background: radial-gradient(circle, var(--dsp-sky-glow) 0%, transparent 60%);
   pointer-events: none;
 }
 
@@ -104,26 +111,26 @@
   font-size: 0.72rem;
   font-weight: 800;
   padding: 4px 12px;
-  border-radius: 9999px;
-  background: rgba(14, 165, 233, 0.15);
-  border: 1px solid rgba(14, 165, 233, 0.35);
+  border-radius: var(--dsp-radius-full);
+  background: var(--dsp-sky-light);
+  border: 1px solid rgba(2, 132, 199, 0.35);
   color: #38bdf8;
   margin-bottom: 0.65rem;
   letter-spacing: 0.05em;
 }
 
 [data-theme="light"] .vault-header-tag {
-  color: #0284c7;
-  background: rgba(2, 132, 199, 0.08);
+  color: var(--dsp-sky);
+  background: var(--dsp-sky-light);
 }
 
 .vault-tag-dot {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #10b981;
-  box-shadow: 0 0 8px #10b981;
-  animation: vault-live-dot 2s infinite ease-in-out;
+  background: var(--dsp-emerald);
+  box-shadow: 0 0 8px var(--dsp-emerald);
+  animation: dsp-live-dot 2s infinite ease-in-out;
 }
 
 .vault-header-title h1 {
@@ -154,13 +161,22 @@
 }
 
 .vault-stat-badge {
-  background: var(--vault-surface);
-  border: 1px solid var(--vault-border);
-  border-radius: 1rem;
-  padding: 0.85rem 1.25rem;
+  background: var(--dsp-glass-bg);
+  backdrop-filter: var(--dsp-backdrop-blur);
+  -webkit-backdrop-filter: var(--dsp-backdrop-blur);
+  border: 1px solid var(--dsp-border);
+  border-radius: var(--dsp-radius-lg);
+  padding: 0.95rem 1.35rem;
   text-align: center;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.06);
-  min-width: 120px;
+  box-shadow: var(--dsp-shadow-sm);
+  min-width: 125px;
+  transition: all var(--dsp-transition);
+}
+
+.vault-stat-badge:hover {
+  transform: translateY(-2px);
+  border-color: var(--dsp-border-hover);
+  box-shadow: var(--dsp-shadow-md), var(--dsp-shadow-glow);
 }
 
 .vault-stat-badge .num {
@@ -196,14 +212,16 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.65rem 1.2rem;
-  border-radius: 9999px;
-  border: 1px solid var(--vault-border);
-  background: var(--vault-surface);
-  color: var(--vault-text);
+  border-radius: var(--dsp-radius-full);
+  border: 1px solid var(--dsp-border);
+  background: var(--dsp-glass-bg);
+  backdrop-filter: var(--dsp-backdrop-blur);
+  -webkit-backdrop-filter: var(--dsp-backdrop-blur);
+  color: var(--dsp-text);
   font-weight: 700;
   font-size: 0.82rem;
   cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all var(--dsp-transition);
   user-select: none;
   min-height: var(--touch-min, 44px);
   white-space: nowrap;
@@ -211,8 +229,8 @@
 
 .vault-group-btn:hover {
   transform: translateY(-2px);
-  border-color: var(--vault-primary);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-color: var(--dsp-sky);
+  box-shadow: var(--dsp-shadow-sm);
 }
 
 .vault-group-btn:active,
@@ -227,49 +245,49 @@
 .vault-card:focus-visible,
 .vault-topic-chip:focus-visible,
 .vault-btn-primary:focus-visible {
-  outline: var(--focus-outline, 3px solid var(--color-primary));
-  outline-offset: var(--focus-outline-offset, 2px);
+  outline: 2px solid var(--dsp-sky);
+  outline-offset: 2px;
 }
 
 .vault-group-btn.active {
-  background: var(--vault-primary);
-  border-color: var(--vault-primary);
+  background: var(--dsp-sky);
+  border-color: var(--dsp-sky);
   color: #ffffff;
-  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
+  box-shadow: 0 4px 14px var(--dsp-sky-glow);
 }
 
 .vault-group-btn--crce.active {
-  background: #f59e0b;
-  border-color: #f59e0b;
+  background: var(--dsp-amber);
+  border-color: var(--dsp-amber);
   color: #ffffff;
-  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.35);
+  box-shadow: 0 4px 14px var(--dsp-amber-glow);
 }
 
 .vault-group-btn--protocol.active {
-  background: #f43f5e;
-  border-color: #f43f5e;
+  background: var(--dsp-rose);
+  border-color: var(--dsp-rose);
   color: #ffffff;
-  box-shadow: 0 4px 14px rgba(244, 63, 94, 0.35);
+  box-shadow: 0 4px 14px var(--dsp-rose-glow);
 }
 
 .vault-group-btn--flowchart.active {
-  background: #14b8a6;
-  border-color: #14b8a6;
+  background: var(--dsp-teal);
+  border-color: var(--dsp-teal);
   color: #ffffff;
-  box-shadow: 0 4px 14px rgba(20, 184, 166, 0.35);
+  box-shadow: 0 4px 14px var(--dsp-teal-glow);
 }
 
 .vault-group-btn--flashcard.active {
-  background: #8b5cf6;
-  border-color: #8b5cf6;
+  background: var(--dsp-violet);
+  border-color: var(--dsp-violet);
   color: #ffffff;
-  box-shadow: 0 4px 14px rgba(139, 92, 246, 0.35);
+  box-shadow: 0 4px 14px var(--dsp-violet-glow);
 }
 
 .vault-tab-pill-count {
   display: inline-block;
   padding: 0.1rem 0.45rem;
-  border-radius: 9999px;
+  border-radius: var(--dsp-radius-full);
   background: rgba(0, 0, 0, 0.12);
   font-size: 0.7rem;
   font-weight: 800;
@@ -286,12 +304,14 @@
 
 /* Control Bar (Search, Select & Trending Chips) */
 .vault-control-bar {
-  background: var(--vault-surface);
-  border: 1px solid var(--vault-border);
-  border-radius: 1.25rem;
+  background: var(--dsp-glass-bg);
+  backdrop-filter: var(--dsp-backdrop-blur);
+  -webkit-backdrop-filter: var(--dsp-backdrop-blur);
+  border: 1px solid var(--dsp-border);
+  border-radius: var(--dsp-radius-xl);
   padding: 1.25rem 1.5rem;
   margin-bottom: 1.5rem;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  box-shadow: var(--dsp-shadow-sm);
   box-sizing: border-box;
   width: 100%;
 }
@@ -325,22 +345,22 @@
 .vault-search-input {
   width: 100%;
   padding: 0.75rem 1.15rem 0.75rem 2.85rem;
-  border: 1px solid var(--vault-border);
-  border-radius: 0.85rem;
-  background: var(--vault-bg);
-  color: var(--vault-text);
+  border: 1px solid var(--dsp-border);
+  border-radius: var(--dsp-radius-md);
+  background: var(--dsp-surface-2);
+  color: var(--dsp-text);
   font-size: 0.95rem;
   font-weight: 500;
   outline: none;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all var(--dsp-transition);
   box-sizing: border-box;
   min-height: var(--touch-min, 44px);
 }
 
 .vault-search-input:focus {
-  border-color: var(--vault-primary);
-  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.2);
-  background: var(--vault-surface);
+  border-color: var(--dsp-sky);
+  box-shadow: 0 0 0 3px var(--dsp-sky-glow);
+  background: var(--dsp-surface);
 }
 
 .vault-filter-select-wrapper {
@@ -354,15 +374,15 @@
 .vault-filter-select {
   width: 100%;
   padding: 0.75rem 2.25rem 0.75rem 1.15rem;
-  border: 1px solid var(--vault-border);
-  border-radius: 0.85rem;
-  background: var(--vault-bg);
-  color: var(--vault-text);
+  border: 1px solid var(--dsp-border);
+  border-radius: var(--dsp-radius-md);
+  background: var(--dsp-surface-2);
+  color: var(--dsp-text);
   font-size: 0.88rem;
   font-weight: 600;
   outline: none;
   cursor: pointer;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition: all var(--dsp-transition);
   box-sizing: border-box;
   min-height: var(--touch-min, 44px);
   appearance: none;
@@ -373,8 +393,8 @@
 }
 
 .vault-filter-select:focus {
-  border-color: var(--vault-primary);
-  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.2);
+  border-color: var(--dsp-sky);
+  box-shadow: 0 0 0 3px var(--dsp-sky-glow);
 }
 
 .vault-filter-select-arrow {
@@ -657,17 +677,19 @@
 }
 
 .vault-article-card {
-  background: var(--vault-surface);
-  border: 1px solid var(--vault-border);
-  border-radius: 1.15rem;
+  background: var(--dsp-glass-bg);
+  backdrop-filter: var(--dsp-backdrop-blur);
+  -webkit-backdrop-filter: var(--dsp-backdrop-blur);
+  border: 1px solid var(--dsp-border);
+  border-radius: var(--dsp-radius-lg);
   padding: 1.35rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all var(--dsp-transition);
   text-decoration: none;
   color: inherit;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.03);
+  box-shadow: var(--dsp-shadow-sm);
   position: relative;
   overflow: hidden;
   min-height: 220px;
@@ -675,9 +697,9 @@
 }
 
 .vault-holo-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 14px 28px -4px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.15);
-  border-color: var(--vault-primary);
+  transform: translateY(-3px);
+  box-shadow: var(--dsp-shadow-md), var(--dsp-shadow-glow), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  border-color: var(--dsp-sky);
 }
 
 .vault-article-top {
@@ -695,7 +717,7 @@
 .vault-badge {
   font-size: 0.68rem;
   padding: 0.22rem 0.55rem;
-  border-radius: 0.45rem;
+  border-radius: var(--dsp-radius-xs);
   font-weight: 700;
   letter-spacing: 0.02em;
   display: inline-flex;
@@ -705,19 +727,20 @@
 }
 
 .vault-badge--kho {
-  background: rgba(2, 132, 199, 0.1);
-  color: var(--badge-accent, var(--vault-primary));
-  border: 1px solid rgba(2, 132, 199, 0.2);
+  background: var(--dsp-sky-light);
+  color: var(--badge-accent, var(--dsp-sky));
+  border: 1px solid rgba(2, 132, 199, 0.25);
 }
 
 .vault-badge--spec {
-  background: rgba(100, 116, 139, 0.1);
-  color: var(--vault-muted);
+  background: var(--dsp-surface-2);
+  border: 1px solid var(--dsp-border);
+  color: var(--dsp-text-secondary);
 }
 
 .vault-badge--icd {
-  background: rgba(239, 68, 68, 0.1);
-  color: #ef4444;
+  background: var(--dsp-rose-light);
+  color: var(--dsp-rose);
   border: 1px solid rgba(239, 68, 68, 0.25);
   font-weight: 800;
 }
@@ -956,16 +979,16 @@
 .vault-modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(15, 23, 42, 0.7);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: rgba(9, 13, 22, 0.75);
+  backdrop-filter: var(--dsp-backdrop-blur);
+  -webkit-backdrop-filter: var(--dsp-backdrop-blur);
   z-index: 9999;
   display: none;
   align-items: center;
   justify-content: center;
   padding: 1.5rem;
   opacity: 0;
-  transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity var(--dsp-transition);
 }
 
 .vault-drawer-overlay.active,
@@ -980,14 +1003,14 @@
   width: min(92vw, 1200px);
   height: min(88vh, 880px);
   max-height: 88vh;
-  background: var(--vault-surface);
-  border: 1px solid var(--vault-border);
-  border-radius: 16px;
+  background: var(--dsp-surface);
+  border: 1px solid var(--dsp-border);
+  border-radius: var(--dsp-radius-xl);
   display: flex;
   flex-direction: column;
-  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.08);
-  transform: scale(0.94) translateY(10px);
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), width 0.25s ease, height 0.25s ease;
+  box-shadow: var(--dsp-shadow-lg), 0 25px 60px -15px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transform: scale(0.96) translateY(8px);
+  transition: transform var(--dsp-transition), width 0.25s ease, height 0.25s ease;
   overflow: hidden;
 }
 
@@ -1009,12 +1032,12 @@
 
 .vault-drawer-header,
 .vault-modal-header {
-  padding: 0.85rem 1.4rem;
-  border-bottom: 1px solid var(--vault-border);
+  padding: 0.95rem 1.5rem;
+  border-bottom: 1px solid var(--dsp-border);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: var(--vault-surface);
+  background: var(--dsp-surface);
   position: sticky;
   top: 0;
   z-index: 10;
@@ -1027,14 +1050,14 @@
   overflow-y: auto;
   padding: 1.5rem 2rem;
   line-height: 1.75;
-  background: var(--vault-bg);
+  background: var(--dsp-bg);
 }
 
 .vault-modal-ctrl-btn {
-  width: 34px;
-  height: 34px;
-  border-radius: 8px;
-  border: 1px solid var(--vault-border);
+  width: 36px;
+  height: 36px;
+  border-radius: var(--dsp-radius-sm);
+  border: 1px solid var(--dsp-border);
   background: var(--vault-bg);
   color: var(--vault-muted);
   display: inline-flex;

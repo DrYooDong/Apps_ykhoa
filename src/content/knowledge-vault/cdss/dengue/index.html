@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CDSS Tính Dịch Truyền & Chống Sốc SXHD Dengue (Bộ Y Tế 2023) — CliniPortal</title>
+  <meta name="description" content="Hệ thống Hỗ trợ Quyết định Lâm sàng CDSS điều trị SXHD Dengue: Tính cân nặng hiệu chỉnh CDC 2014, lập bảng cọc dịch 4 cột động học và liều vận mạch bơm tiêm điện 50ml.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <link rel="stylesheet" href="../../../../styles/tokens.css">
+  <link rel="stylesheet" href="../../../../styles/main.css">
+  <link rel="stylesheet" href="../../css/vault-hub.css">
+  <link rel="stylesheet" href="css/dengue-cdss.css">
+
+  <style>
+    body {
+      background-color: var(--cdss-bg);
+      color: var(--cdss-text);
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      font-family: var(--font-body, 'Inter', sans-serif);
+      -webkit-font-smoothing: antialiased;
+    }
+    .cdss-navbar {
+      background: rgba(15, 23, 42, 0.9);
+      border-bottom: 1px solid var(--cdss-border);
+      padding: 0.65rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    [data-theme="light"] .cdss-navbar {
+      background: rgba(255, 255, 255, 0.92);
+      border-bottom-color: rgba(226, 232, 240, 0.9);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+    }
+    .cdss-nav-left {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .cdss-nav-breadcrumbs {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.85rem;
+      color: var(--cdss-muted);
+    }
+    .cdss-nav-breadcrumbs a {
+      color: var(--cdss-muted);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+    .cdss-nav-breadcrumbs a:hover {
+      color: var(--cdss-primary);
+    }
+    .cdss-nav-breadcrumbs .active {
+      color: var(--cdss-text);
+      font-weight: 700;
+    }
+    .cdss-nav-right {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+    .cdss-nav-link-btn {
+      padding: 0.45rem 0.85rem;
+      border-radius: 8px;
+      border: 1px solid var(--cdss-border);
+      background: var(--cdss-surface);
+      color: var(--cdss-text);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .cdss-nav-link-btn:hover {
+      border-color: var(--cdss-primary);
+      color: var(--cdss-primary);
+    }
+    .cdss-theme-toggle {
+      width: 36px;
+      height: 36px;
+      padding: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      border: 1px solid var(--cdss-border);
+      background: var(--cdss-surface);
+      color: var(--cdss-text);
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Top Bar -->
+  <header class="cdss-navbar">
+    <div class="cdss-nav-left">
+      <div class="cdss-nav-breadcrumbs">
+        <a href="../../index.html"><i class="fa-solid fa-graduation-cap"></i> Knowledge Vault</a>
+        <i class="fa-solid fa-chevron-right" style="font-size: 0.65rem;"></i>
+        <a href="../index.html"><i class="fa-solid fa-network-wired"></i> Kho CDSS</a>
+        <i class="fa-solid fa-chevron-right" style="font-size: 0.65rem;"></i>
+        <span class="active"><i class="fa-solid fa-droplet"></i> SXHD Dengue</span>
+      </div>
+    </div>
+
+    <div class="cdss-nav-right">
+      <a href="../../docspace/index.html" class="cdss-nav-link-btn" title="Mở trong Hồ Sơ Bệnh Án DocSpace">
+        <i class="fa-solid fa-user-doctor"></i> <span>DocSpace Pro</span>
+      </a>
+      <a href="../index.html" class="cdss-nav-link-btn" title="Trở về Trung Tâm CDSS">
+        <i class="fa-solid fa-th-large"></i> <span>Danh Mục CDSS</span>
+      </a>
+      <button id="theme-toggle" class="cdss-theme-toggle" title="Chuyển chế độ Sáng/Tối" aria-label="Toggle Theme">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mount Point for Dengue CDSS Application -->
+  <div id="dengue-cdss-container"></div>
+
+  <script type="module">
+    import { DengueCDSSController } from './dengue-ui.ts';
+
+    // Initialize Controller
+    new DengueCDSSController('dengue-cdss-container');
+
+    // Theme toggle handling
+    const themeBtn = document.getElementById('theme-toggle');
+    if (themeBtn) {
+      // Check saved or system theme
+      const savedTheme = localStorage.getItem('cliniportal_theme') || 
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      themeBtn.innerHTML = savedTheme === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+
+      themeBtn.addEventListener('click', () => {
+        const current = document.documentElement.getAttribute('data-theme') || 'light';
+        const next = current === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('cliniportal_theme', next);
+        themeBtn.innerHTML = next === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+      });
+    }
+  </script>
+</body>
+</html>

@@ -372,3 +372,23 @@ export function getKnowledgeVaultWebUrl(articleId?: string, query?: string, khoC
   }
   return `../knowledge-vault/index.html`;
 }
+
+/**
+ * Tạo URL mở trực tiếp công cụ CDSS độc lập (Dengue, ECG, ABG, X-Ray hoặc CDSS Hub)
+ */
+export function getCdssAppUrl(moduleSlug: 'dengue' | 'ecg' | 'abg' | 'xray' | 'hub' = 'hub'): string {
+  if (moduleSlug === 'dengue') {
+    return `../knowledge-vault/cdss/dengue/index.html`;
+  }
+  if (moduleSlug === 'ecg') {
+    return `../knowledge-vault/cdss/ecg/index.html`;
+  }
+  if (moduleSlug === 'abg') {
+    return `../knowledge-vault/cdss/abg/index.html`;
+  }
+  if (moduleSlug === 'xray') {
+    return `../knowledge-vault/cdss/xray/index.html`;
+  }
+  return `../knowledge-vault/cdss/index.html`;
+}
+

@@ -9,60 +9,61 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="../../../css/main.css">
+  <link rel="stylesheet" href="css/vault-design-tokens.css">
   <link rel="stylesheet" href="css/vault-hub.css">
   <link rel="stylesheet" href="css/vault-crce.css">
   <link rel="stylesheet" href="css/vault-reader.css">
   <style>
     body {
-      background-color: var(--vault-bg);
-      color: var(--vault-text);
+      background-color: var(--dsp-bg-base);
+      color: var(--dsp-text-primary);
       min-height: 100vh;
       margin: 0;
       padding: 0;
-      font-family: var(--font-body, 'Inter', sans-serif);
+      font-family: var(--dsp-font-sans);
       -webkit-font-smoothing: antialiased;
     }
     .vault-navbar {
-      background: rgba(15, 23, 42, 0.85);
-      border-bottom: 1px solid var(--vault-border);
+      background: var(--dsp-glass-bg);
+      border-bottom: 1px solid var(--dsp-border-subtle);
       padding: 0.75rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: var(--dsp-z-sticky);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      box-shadow: var(--dsp-shadow-sm);
     }
     [data-theme="light"] .vault-navbar {
-      background: rgba(255, 255, 255, 0.9);
-      border-bottom-color: rgba(226, 232, 240, 0.9);
+      background: rgba(255, 255, 255, 0.88);
+      border-bottom-color: var(--dsp-border-subtle);
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
     }
     .vault-nav-brand {
       display: flex;
       align-items: center;
       gap: 0.85rem;
-      font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+      font-family: var(--dsp-font-display);
       font-weight: 800;
       font-size: 1.15rem;
-      color: var(--vault-text);
+      color: var(--dsp-text-primary);
       text-decoration: none;
       letter-spacing: -0.02em;
     }
     .vault-nav-brand-icon {
       width: 2rem;
       height: 2rem;
-      border-radius: 0.6rem;
-      background: linear-gradient(135deg, #0284c7 0%, #6366f1 100%);
+      border-radius: var(--dsp-radius-md);
+      background: linear-gradient(135deg, var(--dsp-primary) 0%, var(--dsp-indigo) 100%);
       color: #fff;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 1rem;
-      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.35);
+      box-shadow: 0 4px 14px var(--dsp-primary-glow);
     }
     .vault-nav-links {
       display: flex;
@@ -72,10 +73,10 @@
     }
     .vault-nav-btn {
       padding: 0.5rem 0.95rem;
-      border-radius: 0.65rem;
-      border: 1px solid var(--vault-border);
-      background: var(--vault-surface);
-      color: var(--vault-text);
+      border-radius: var(--dsp-radius-md);
+      border: 1px solid var(--dsp-border-subtle);
+      background: var(--dsp-surface);
+      color: var(--dsp-text-primary);
       text-decoration: none;
       font-size: 0.82rem;
       font-weight: 600;
@@ -83,30 +84,31 @@
       align-items: center;
       gap: 0.45rem;
       cursor: pointer;
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: var(--dsp-transition);
     }
     .vault-nav-btn:hover {
-      border-color: var(--vault-primary);
-      color: var(--vault-primary);
+      border-color: var(--dsp-border-focus);
+      color: var(--dsp-primary-light);
       transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      box-shadow: var(--dsp-shadow-sm);
     }
     .vault-nav-btn--obsidian {
       background: rgba(168, 85, 247, 0.1);
       border-color: rgba(168, 85, 247, 0.3);
-      color: #a855f7 !important;
+      color: #c084fc !important;
       font-weight: 700;
     }
     .vault-nav-btn--obsidian:hover {
       background: rgba(168, 85, 247, 0.2);
       border-color: #a855f7;
+      box-shadow: 0 4px 14px rgba(168, 85, 247, 0.25);
     }
     .vault-nav-btn--theme {
       width: 2.25rem;
       height: 2.25rem;
       padding: 0;
       justify-content: center;
-      border-radius: 0.65rem;
+      border-radius: var(--dsp-radius-md);
     }
   </style>
 </head>
@@ -117,12 +119,15 @@
       <div class="vault-nav-brand-icon">
         <i class="fa-solid fa-graduation-cap"></i>
       </div>
-      <span>CliniPortal <span style="font-weight:500; color:var(--vault-muted); font-size: 0.95rem;">| Knowledge Vault</span></span>
+      <span>CliniPortal <span style="font-weight:500; color:var(--dsp-text-muted); font-size: 0.95rem;">| Knowledge Vault</span></span>
     </a>
 
     <div class="vault-nav-links">
       <a href="obsidian://open?vault=Apps_ykhoa" class="vault-nav-btn vault-nav-btn--obsidian" title="Mở trực tiếp trong Obsidian App">
         <i class="fa-solid fa-gem"></i> <span>Obsidian DeepLink</span>
+      </a>
+      <a href="cdss/index.html" class="vault-nav-btn" style="border-color: rgba(2, 132, 199, 0.4); color: var(--dsp-primary-light);" title="Hệ thống CDSS hỗ trợ quyết định lâm sàng độc lập">
+        <i class="fa-solid fa-microchip"></i> <span>Kho CDSS</span>
       </a>
       <a href="../docspace/index.html" class="vault-nav-btn">
         <i class="fa-solid fa-user-doctor"></i> <span>DocSpace Pro</span>
@@ -142,21 +147,27 @@
   <!-- Main Knowledge Vault Hub App -->
   <main id="vault-app">
     <div style="text-align: center; padding: 5rem 1rem;">
-      <i class="fa-solid fa-spinner fa-spin fa-2x" style="color: var(--vault-primary);"></i>
-      <p style="margin-top: 1rem; color: var(--vault-muted);">Đang khởi tạo Kho Kiến Thức Y Khoa...</p>
+      <i class="fa-solid fa-spinner fa-spin fa-2x" style="color: var(--dsp-primary);"></i>
+      <p style="margin-top: 1rem; color: var(--dsp-text-muted);">Đang khởi tạo Kho Kiến Thức Y Khoa...</p>
     </div>
   </main>
 
   <script type="module">
     import { initKnowledgeVault } from './index.ts';
     
-    // Theme toggle
+    // Theme toggle & persistence
     const themeBtn = document.getElementById('theme-toggle');
     if (themeBtn) {
+      const savedTheme = localStorage.getItem('cliniportal_theme') || 
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      themeBtn.innerHTML = savedTheme === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+
       themeBtn.addEventListener('click', () => {
-        const current = document.documentElement.getAttribute('data-theme') || 'light';
+        const current = document.documentElement.getAttribute('data-theme') || 'dark';
         const next = current === 'dark' ? 'light' : 'dark';
         document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('cliniportal_theme', next);
         themeBtn.innerHTML = next === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
       });
     }

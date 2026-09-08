@@ -1,0 +1,332 @@
+/**
+ * CliniPortal — EBM Master Design Tokens & Core Primitives
+ * Path: src/content/ebm/css/ebm-design-tokens.css
+ * Unified with DocSpace Medical OS Design System ($5000 Grade)
+ * Prefix: --dsp-*, .dsp-ebm-*
+ * Standards: Dark-First Architecture, Glass Tiers, Micro-Interactions, WCAG 2.2 AAA Contrast
+ */
+
+/* ══════════════════════════════════════════════════════════════════════════
+   1. CORE DESIGN TOKENS (DARK DEFAULT)
+   ══════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* --- Brand & Primary Clinical Semantics --- */
+  --dsp-sky:                #0284c7;
+  --dsp-sky-glow:           rgba(2, 132, 199, 0.35);
+  --dsp-sky-light:          rgba(2, 132, 199, 0.12);
+  --dsp-sky-dark:           #0369a1;
+
+  --dsp-teal:               #0d9488;
+  --dsp-teal-glow:          rgba(13, 148, 136, 0.35);
+  --dsp-teal-light:         rgba(13, 148, 136, 0.12);
+
+  --dsp-emerald:            #10b981;
+  --dsp-emerald-glow:       rgba(16, 185, 129, 0.35);
+  --dsp-emerald-light:      rgba(16, 185, 129, 0.12);
+  --dsp-emerald-dark:       #059669;
+
+  --dsp-violet:             #8b5cf6;
+  --dsp-violet-glow:        rgba(139, 92, 246, 0.35);
+  --dsp-violet-light:       rgba(139, 92, 246, 0.12);
+
+  --dsp-rose:               #ef4444;
+  --dsp-rose-glow:          rgba(239, 68, 68, 0.35);
+  --dsp-rose-light:         rgba(239, 68, 68, 0.12);
+
+  --dsp-amber:              #f59e0b;
+  --dsp-amber-glow:         rgba(245, 158, 11, 0.35);
+  --dsp-amber-light:        rgba(245, 158, 11, 0.12);
+
+  --dsp-indigo:             #6366f1;
+  --dsp-indigo-glow:        rgba(99, 102, 241, 0.35);
+  --dsp-indigo-light:       rgba(99, 102, 241, 0.12);
+
+  /* --- SBAR 4-Pillar Semantics (Situation, Background, Assessment, Recommendation) --- */
+  --dsp-sbar-s:             var(--dsp-rose);
+  --dsp-sbar-b:             var(--dsp-amber);
+  --dsp-sbar-a:             var(--dsp-sky);
+  --dsp-sbar-r:             var(--dsp-emerald);
+
+  /* --- Typography & Text Tiers (Dark Default) --- */
+  --dsp-text:               #f1f5f9;
+  --dsp-text-secondary:     #94a3b8;
+  --dsp-text-muted:         #64748b;
+  --dsp-text-inverse:       #0f172a;
+
+  /* --- Surface, Glass & Border Tiers (Dark Default) --- */
+  --dsp-bg:                 var(--color-bg, #090d16);
+  --dsp-surface:            var(--color-surface, #0f172a);
+  --dsp-surface-2:          rgba(30, 41, 59, 0.7);
+  --dsp-surface-3:          rgba(51, 65, 85, 0.5);
+  --dsp-border:             rgba(255, 255, 255, 0.08);
+  --dsp-border-hover:       rgba(2, 132, 199, 0.45);
+  --dsp-glass-bg:           rgba(15, 23, 42, 0.78);
+  --dsp-glass-border:       rgba(255, 255, 255, 0.09);
+  --dsp-glass-shadow:       0 12px 36px 0 rgba(0, 0, 0, 0.45);
+  --dsp-backdrop-blur:      blur(16px);
+
+  /* --- Elevation Shadows --- */
+  --dsp-shadow-sm:          0 1px 3px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.15);
+  --dsp-shadow-md:          0 4px 14px -2px rgba(0, 0, 0, 0.35), 0 2px 6px -1px rgba(0, 0, 0, 0.2);
+  --dsp-shadow-lg:          0 14px 34px -4px rgba(0, 0, 0, 0.5), 0 6px 14px -2px rgba(0, 0, 0, 0.3);
+  --dsp-shadow-glow:        0 0 24px var(--dsp-sky-glow);
+  --dsp-shadow-glow-emerald:0 0 24px var(--dsp-emerald-glow);
+  --dsp-shadow-glow-rose:   0 0 24px var(--dsp-rose-glow);
+
+  /* --- Radii Scale --- */
+  --dsp-radius-xs:          4px;
+  --dsp-radius-sm:          8px;
+  --dsp-radius-md:          12px;
+  --dsp-radius-lg:          16px;
+  --dsp-radius-xl:          22px;
+  --dsp-radius-full:        9999px;
+
+  /* --- Motion & Transitions --- */
+  --dsp-transition:         0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  --dsp-transition-fast:    0.15s cubic-bezier(0.16, 1, 0.3, 1);
+  --dsp-transition-spring:  0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* ══════════════════════════════════════════════════════════════════════
+     2. EBM & HUB BACKWARD-COMPATIBILITY ALIASES (OLD PREFIX MAPPINGS)
+     ══════════════════════════════════════════════════════════════════════ */
+  --hub-primary:            var(--dsp-sky);
+  --hub-primary-glow:       var(--dsp-sky-glow);
+  --hub-secondary:          var(--dsp-indigo);
+  --hub-accent:             var(--dsp-teal);
+  --hub-bg:                 var(--dsp-bg);
+  --hub-surface:            var(--dsp-surface);
+  --hub-surface-subtle:     var(--dsp-surface-2);
+  --hub-surface-elevated:   var(--dsp-surface-3);
+  --hub-border:             var(--dsp-border);
+  --hub-border-hover:       var(--dsp-border-hover);
+  --hub-text-main:          var(--dsp-text);
+  --hub-text-secondary:     var(--dsp-text-secondary);
+  --hub-text-muted:         var(--dsp-text-muted);
+  --hub-glass-bg:           var(--dsp-glass-bg);
+  --hub-glass-border:       var(--dsp-glass-border);
+  --hub-glass-shadow:       var(--dsp-glass-shadow);
+  --hub-shadow-sm:          var(--dsp-shadow-sm);
+  --hub-shadow-md:          var(--dsp-shadow-md);
+  --hub-shadow-lg:          var(--dsp-shadow-lg);
+  --hub-radius-sm:          var(--dsp-radius-sm);
+  --hub-radius-md:          var(--dsp-radius-md);
+  --hub-radius-lg:          var(--dsp-radius-lg);
+  --hub-radius-xl:          var(--dsp-radius-xl);
+  --hub-transition:         var(--dsp-transition);
+
+  --ebm-primary:            var(--dsp-sky);
+  --ebm-accent:             var(--dsp-teal);
+  --ebm-bg:                 var(--dsp-bg);
+  --ebm-surface:            var(--dsp-surface);
+  --ebm-surface-glass:      var(--dsp-glass-bg);
+  --ebm-border:             var(--dsp-border);
+  --ebm-border-glow:        var(--dsp-border-hover);
+  --ebm-text:               var(--dsp-text);
+  --ebm-text-muted:         var(--dsp-text-muted);
+  --ebm-glow:               var(--dsp-sky-glow);
+  --ebm-radius-sm:          var(--dsp-radius-sm);
+  --ebm-radius-md:          var(--dsp-radius-md);
+  --ebm-radius-lg:          var(--dsp-radius-lg);
+  --ebm-radius-xl:          var(--dsp-radius-xl);
+
+  --copilot-bg:             var(--dsp-glass-bg);
+  --copilot-border:         var(--dsp-glass-border);
+  --copilot-surface:        var(--dsp-surface);
+  --copilot-primary:        var(--dsp-sky);
+  --copilot-text:           var(--dsp-text);
+
+  --radar-primary:          var(--dsp-sky);
+  --radar-bg:               var(--dsp-bg);
+  --radar-surface:          var(--dsp-surface);
+  --radar-border:           var(--dsp-border);
+  --radar-glass:            var(--dsp-glass-bg);
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   3. LIGHT THEME OVERRIDES
+   ══════════════════════════════════════════════════════════════════════════ */
+
+[data-theme="light"],
+:root[data-theme="light"] {
+  --dsp-text:               #0f172a;
+  --dsp-text-secondary:     #475569;
+  --dsp-text-muted:         #64748b;
+  --dsp-text-inverse:       #ffffff;
+
+  --dsp-bg:                 var(--color-bg, #f8fafc);
+  --dsp-surface:            var(--color-surface, #ffffff);
+  --dsp-surface-2:          #f1f5f9;
+  --dsp-surface-3:          #e2e8f0;
+  --dsp-border:             rgba(203, 213, 225, 0.85);
+  --dsp-border-hover:       rgba(2, 132, 199, 0.6);
+  --dsp-glass-bg:           rgba(255, 255, 255, 0.88);
+  --dsp-glass-border:       rgba(226, 232, 240, 0.9);
+  --dsp-glass-shadow:       0 10px 30px 0 rgba(15, 23, 42, 0.08);
+
+  --dsp-shadow-sm:          0 1px 3px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
+  --dsp-shadow-md:          0 4px 14px -2px rgba(15, 23, 42, 0.08), 0 2px 6px -1px rgba(15, 23, 42, 0.05);
+  --dsp-shadow-lg:          0 14px 34px -4px rgba(15, 23, 42, 0.12), 0 6px 14px -2px rgba(15, 23, 42, 0.08);
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   4. KEYFRAME ANIMATIONS
+   ══════════════════════════════════════════════════════════════════════════ */
+
+@keyframes dsp-pulse-glow {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.9;
+    box-shadow: 0 0 15px var(--dsp-sky-glow);
+  }
+  50% {
+    transform: scale(1.04);
+    opacity: 1;
+    box-shadow: 0 0 28px var(--dsp-sky-glow);
+  }
+}
+
+@keyframes dsp-live-dot {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 8px var(--dsp-emerald);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(0.85);
+    box-shadow: 0 0 2px var(--dsp-emerald);
+  }
+}
+
+@keyframes dsp-radar-ping {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.85;
+  }
+  70% {
+    transform: scale(2.3);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(2.3);
+    opacity: 0;
+  }
+}
+
+@keyframes dsp-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes dsp-float-orb {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(3deg); }
+}
+
+@keyframes dsp-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes dsp-spring-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.96) translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   5. SHARED CYBER-MEDICAL UTILITY CLASSES
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.dsp-gradient-text {
+  background: linear-gradient(135deg, var(--dsp-sky) 0%, var(--dsp-indigo) 50%, var(--dsp-violet) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+[data-theme="light"] .dsp-gradient-text {
+  background: linear-gradient(135deg, var(--dsp-sky-dark) 0%, #4338ca 50%, #6d28d9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dsp-glass-panel {
+  background: var(--dsp-glass-bg);
+  backdrop-filter: var(--dsp-backdrop-blur);
+  -webkit-backdrop-filter: var(--dsp-backdrop-blur);
+  border: 1px solid var(--dsp-glass-border);
+  box-shadow: var(--dsp-glass-shadow);
+  border-radius: var(--dsp-radius-lg);
+}
+
+.dsp-bento-card {
+  background: var(--dsp-glass-bg);
+  backdrop-filter: var(--dsp-backdrop-blur);
+  -webkit-backdrop-filter: var(--dsp-backdrop-blur);
+  border: 1px solid var(--dsp-glass-border);
+  border-radius: var(--dsp-radius-xl);
+  padding: 1.5rem;
+  box-shadow: var(--dsp-shadow-md);
+  transition: all var(--dsp-transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.dsp-bento-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--dsp-border-hover);
+  box-shadow: var(--dsp-shadow-lg), var(--dsp-shadow-glow);
+}
+
+.dsp-icon-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: var(--dsp-radius-md);
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.dsp-icon-badge--sky {
+  background: var(--dsp-sky-light);
+  color: var(--dsp-sky);
+  border: 1px solid rgba(2, 132, 199, 0.25);
+}
+
+.dsp-icon-badge--emerald {
+  background: var(--dsp-emerald-light);
+  color: var(--dsp-emerald);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.dsp-icon-badge--violet {
+  background: var(--dsp-violet-light);
+  color: var(--dsp-violet);
+  border: 1px solid rgba(139, 92, 246, 0.25);
+}
+
+.dsp-icon-badge--amber {
+  background: var(--dsp-amber-light);
+  color: var(--dsp-amber);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+}
+
+.dsp-icon-badge--rose {
+  background: var(--dsp-rose-light);
+  color: var(--dsp-rose);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+}

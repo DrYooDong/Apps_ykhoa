@@ -1,22 +1,8 @@
 /**
  * CliniPortal — Knowledge Vault Medical Reader Pro Stylesheet
  * File: src/content/knowledge-vault/css/vault-reader.css
- * 
- * Bộ quy chuẩn giao diện chuyên biệt cho phần văn bản đọc y khoa (Reader Pro):
- * 1. Design Tokens & Reader Typography (Inter, Merriweather, JetBrains Mono, Plus Jakarta Sans)
- * 2. 2-Column Reader Pro Grid & Responsive Single-Column Counseling Mode
- * 3. Sticky Reader Pro Toolbar (Phân tầng góc nhìn, Zoom font, Serif/Sans, In ấn, Trích dẫn)
- * 4. Clinical Pathway Matrix Ribbon (8 Khía cạnh bệnh học)
- * 5. 7 Chủng loại Medical Callout Y khoa (Danger, Warning, Pearl, Dosing, Note, Tip, Teach-Back)
- * 6. Sơ đồ động học & Diễn tiến lâm sàng (Timeline & ASCII Diagram Cards)
- * 7. Bảng số liệu cận lâm sàng & phác đồ eGFR (Medical Data Tables)
- * 8. Dynamic Sticky TOC & Scrollspy Navigation
- * 9. Tờ rơi dặn dò bệnh nhân & Giấy xuất viện (Patient Counseling Leaflet with Signatures)
- * 10. Ghi chú đúc kết lâm sàng cá nhân của Bác sĩ (Doctor Clinical Pearls)
- * 11. Obsidian Wikilinks, Math KaTeX Inline & Reference Citation Pills
- * 12. Dark Mode hoàn chỉnh & High-Contrast Senior Reading Mode
- * 13. A4 Clinical Print Stylesheet (@media print)
  */
+@import url('./vault-design-tokens.css');
 
 /* ==========================================================================
    1. DESIGN TOKENS & TYPOGRAPHY CHO VĂN BẢN ĐỌC Y KHOA
@@ -32,49 +18,38 @@
   --reader-base-size: 1rem;
   --reader-max-width: 920px;
 
-  /* Callout Accent Colors */
-  --callout-danger-border: #ef4444;
-  --callout-danger-bg: rgba(239, 68, 68, 0.05);
-  --callout-danger-badge: #ef4444;
+  /* Callout Accent Colors (DocSpace OKLCH Engine) */
+  --callout-danger-border:    var(--dsp-rose);
+  --callout-danger-bg:        var(--dsp-rose-light);
+  --callout-danger-badge:     var(--dsp-rose);
 
-  --callout-warning-border: #f59e0b;
-  --callout-warning-bg: rgba(245, 158, 11, 0.06);
-  --callout-warning-badge: #f59e0b;
+  --callout-warning-border:   var(--dsp-amber);
+  --callout-warning-bg:       var(--dsp-amber-light);
+  --callout-warning-badge:    var(--dsp-amber);
 
-  --callout-pearl-border: #8b5cf6;
-  --callout-pearl-bg: rgba(139, 92, 246, 0.05);
-  --callout-pearl-badge: #8b5cf6;
+  --callout-pearl-border:     var(--dsp-violet);
+  --callout-pearl-bg:         var(--dsp-violet-light);
+  --callout-pearl-badge:      var(--dsp-violet);
 
-  --callout-dosing-border: #0284c7;
-  --callout-dosing-bg: rgba(2, 132, 199, 0.05);
-  --callout-dosing-badge: #0284c7;
+  --callout-dosing-border:    var(--dsp-sky);
+  --callout-dosing-bg:        var(--dsp-sky-light);
+  --callout-dosing-badge:     var(--dsp-sky);
 
-  --callout-note-border: #0ea5e9;
-  --callout-note-bg: rgba(14, 165, 233, 0.05);
-  --callout-note-badge: #0ea5e9;
+  --callout-note-border:      var(--dsp-teal);
+  --callout-note-bg:          var(--dsp-teal-light);
+  --callout-note-badge:       var(--dsp-teal);
 
-  --callout-tip-border: #10b981;
-  --callout-tip-bg: rgba(16, 185, 129, 0.05);
-  --callout-tip-badge: #10b981;
+  --callout-tip-border:       var(--dsp-emerald);
+  --callout-tip-bg:           var(--dsp-emerald-light);
+  --callout-tip-badge:        var(--dsp-emerald);
 
-  --callout-teachback-border: #ec4899;
-  --callout-teachback-bg: rgba(236, 72, 153, 0.05);
-  --callout-teachback-badge: #ec4899;
+  --callout-teachback-border: var(--dsp-pink);
+  --callout-teachback-bg:     var(--dsp-pink-light);
+  --callout-teachback-badge:  var(--dsp-pink);
 
-  --callout-trial-border: #6366f1;
-  --callout-trial-bg: rgba(99, 102, 241, 0.05);
-  --callout-trial-badge: #6366f1;
-}
-
-[data-theme="dark"] {
-  --callout-danger-bg: rgba(239, 68, 68, 0.12);
-  --callout-warning-bg: rgba(245, 158, 11, 0.12);
-  --callout-pearl-bg: rgba(139, 92, 246, 0.12);
-  --callout-dosing-bg: rgba(2, 132, 199, 0.12);
-  --callout-note-bg: rgba(14, 165, 233, 0.12);
-  --callout-tip-bg: rgba(16, 185, 129, 0.12);
-  --callout-teachback-bg: rgba(236, 72, 153, 0.12);
-  --callout-trial-bg: rgba(99, 102, 241, 0.12);
+  --callout-trial-border:     var(--dsp-indigo);
+  --callout-trial-bg:         var(--dsp-indigo-light);
+  --callout-trial-badge:      var(--dsp-indigo);
 }
 
 /* ==========================================================================

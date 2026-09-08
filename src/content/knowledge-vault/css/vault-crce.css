@@ -2,31 +2,34 @@
  * CliniPortal Knowledge Vault — Clinical Reaction Chain (CRCE v3.0) Stylesheet
  * 100% Design Tokens & Dark Mode Compliant
  */
+@import url('./vault-design-tokens.css');
 
 .vault-crce-container {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  animation: fadeIn 0.3s ease-out;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(6px); }
-  to { opacity: 1; transform: translateY(0); }
+  animation: dsp-fade-up 0.3s ease-out;
 }
 
 /* CRCE Hero Header */
 .vault-crce-hero {
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(2, 132, 199, 0.1) 100%);
-  border: 1px solid rgba(245, 158, 11, 0.25);
-  border-radius: var(--vault-radius);
-  padding: 1.5rem 1.75rem;
+  background: linear-gradient(135deg, var(--dsp-amber-light) 0%, rgba(15, 23, 42, 0.95) 60%, var(--dsp-sky-light) 100%);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: var(--dsp-radius-xl);
+  padding: 1.75rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   gap: 1.25rem;
-  backdrop-filter: blur(8px);
+  backdrop-filter: var(--dsp-backdrop-blur);
+  -webkit-backdrop-filter: var(--dsp-backdrop-blur);
+  box-shadow: var(--dsp-shadow-md);
+}
+
+[data-theme="light"] .vault-crce-hero {
+  background: linear-gradient(135deg, #fef3c7 0%, #ffffff 60%, #e0f2fe 100%);
+  border-color: rgba(245, 158, 11, 0.35);
 }
 
 .vault-crce-hero-left h2 {
@@ -53,18 +56,27 @@
 }
 
 .vault-crce-stat-card {
-  background: var(--vault-surface);
-  border: 1px solid var(--vault-border);
-  border-radius: 8px;
-  padding: 0.5rem 0.9rem;
+  background: var(--dsp-glass-bg);
+  backdrop-filter: var(--dsp-backdrop-blur);
+  -webkit-backdrop-filter: var(--dsp-backdrop-blur);
+  border: 1px solid var(--dsp-border);
+  border-radius: var(--dsp-radius-sm);
+  padding: 0.55rem 0.95rem;
   text-align: center;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+  box-shadow: var(--dsp-shadow-sm);
+  transition: all var(--dsp-transition);
+}
+
+.vault-crce-stat-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--dsp-amber);
+  box-shadow: 0 4px 14px var(--dsp-amber-glow);
 }
 
 .vault-crce-stat-card .val {
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   font-weight: 800;
-  color: #f59e0b;
+  color: var(--dsp-amber);
 }
 
 .vault-crce-stat-card .lbl {

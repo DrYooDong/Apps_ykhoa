@@ -1,6 +1,7 @@
 /* ============================================================
    BASIC MEDICAL ATOMIC: CONCEPT CARDS (physio-concept-cards.css)
-   Grid Concept Cards, Factor Boxes, Pathogen & Cellular Cards
+   Grid Concept Cards, Factor Boxes, Pathogen & Cellular Bento Cards
+   100% Unified with DocSpace Medical OS Tokens
    ============================================================ */
 
 .physio-grid,
@@ -35,17 +36,19 @@
 .physio-grid-card,
 .physio-card,
 .concept-card {
-  background: var(--color-surface, #ffffff);
-  border: 1px solid var(--color-border, #cbd5e1);
-  border-radius: var(--radius-lg, 14px);
+  background: var(--dsp-surface);
+  border: 1px solid var(--dsp-border-subtle);
+  border-radius: var(--dsp-radius-lg);
   padding: 1.25rem 1.4rem;
-  transition: transform var(--tr, 200ms ease-out), border-color var(--tr, 200ms ease-out), box-shadow var(--tr, 200ms ease-out);
-  box-shadow: var(--shadow-sm, 0 2px 8px rgba(0, 0, 0, 0.03));
+  transition: transform var(--dsp-transition), border-color var(--dsp-transition), box-shadow var(--dsp-transition);
+  box-shadow: var(--dsp-shadow-sm);
   position: relative;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  backdrop-filter: var(--dsp-backdrop-blur);
+  -webkit-backdrop-filter: var(--dsp-backdrop-blur);
 }
 
 .physio-grid-card::before,
@@ -56,62 +59,83 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 3.5px;
-  background: var(--color-primary, #0284c7);
-  transition: height var(--tr-fast, 150ms ease-out);
+  height: 3px;
+  background: var(--dsp-primary);
+  transition: height var(--dsp-transition-fast);
 }
 
 .physio-grid-card:hover,
 .physio-card:hover,
 .concept-card:hover {
-  transform: translateY(-2px);
-  border-color: var(--color-primary, #0284c7);
-  box-shadow: var(--shadow-card-hover, 0 8px 24px rgba(2, 132, 199, 0.12));
+  transform: translateY(-4px);
+  border-color: var(--dsp-border-focus);
+  box-shadow: var(--dsp-shadow-md), 0 0 16px var(--dsp-sky-glow);
+}
+
+.physio-grid-card:hover::before,
+.physio-card:hover::before,
+.concept-card:hover::before {
+  height: 4px;
 }
 
 /* Color Accent Variations */
 .physio-grid-card.card-danger::before,
 .physio-card.card-danger::before,
-.concept-card.card-danger::before { background: var(--color-danger, #dc2626); }
+.concept-card.card-danger::before { background: var(--dsp-rose); }
 .physio-grid-card.card-danger:hover,
 .physio-card.card-danger:hover,
-.concept-card.card-danger:hover { border-color: var(--color-danger, #dc2626); box-shadow: 0 8px 24px rgba(220, 38, 38, 0.12); }
+.concept-card.card-danger:hover { 
+  border-color: var(--dsp-rose); 
+  box-shadow: var(--dsp-shadow-md), 0 0 16px var(--dsp-rose-glow); 
+}
 
 .physio-grid-card.card-warning::before,
 .physio-card.card-warning::before,
-.concept-card.card-warning::before { background: var(--color-warning, #d97706); }
+.concept-card.card-warning::before { background: var(--dsp-amber); }
 .physio-grid-card.card-warning:hover,
 .physio-card.card-warning:hover,
-.concept-card.card-warning:hover { border-color: var(--color-warning, #d97706); box-shadow: 0 8px 24px rgba(217, 119, 6, 0.12); }
+.concept-card.card-warning:hover { 
+  border-color: var(--dsp-amber); 
+  box-shadow: var(--dsp-shadow-md), 0 0 16px var(--dsp-amber-glow); 
+}
 
 .physio-grid-card.card-success::before,
 .physio-card.card-success::before,
-.concept-card.card-success::before { background: var(--color-success, #059669); }
+.concept-card.card-success::before { background: var(--dsp-emerald); }
 .physio-grid-card.card-success:hover,
 .physio-card.card-success:hover,
-.concept-card.card-success:hover { border-color: var(--color-success, #059669); box-shadow: 0 8px 24px rgba(5, 150, 105, 0.12); }
+.concept-card.card-success:hover { 
+  border-color: var(--dsp-emerald); 
+  box-shadow: var(--dsp-shadow-md), 0 0 16px var(--dsp-emerald-glow); 
+}
 
 .physio-grid-card.card-teal::before,
 .physio-card.card-teal::before,
-.concept-card.card-teal::before { background: var(--color-teal, #0d9488); }
+.concept-card.card-teal::before { background: var(--dsp-teal); }
 .physio-grid-card.card-teal:hover,
 .physio-card.card-teal:hover,
-.concept-card.card-teal:hover { border-color: var(--color-teal, #0d9488); box-shadow: 0 8px 24px rgba(13, 148, 136, 0.12); }
+.concept-card.card-teal:hover { 
+  border-color: var(--dsp-teal); 
+  box-shadow: var(--dsp-shadow-md), 0 0 16px var(--dsp-teal-glow); 
+}
 
 .physio-grid-card.card-purple::before,
 .physio-card.card-purple::before,
-.concept-card.card-purple::before { background: var(--color-purple, #7c3aed); }
+.concept-card.card-purple::before { background: var(--dsp-violet); }
 .physio-grid-card.card-purple:hover,
 .physio-card.card-purple:hover,
-.concept-card.card-purple:hover { border-color: var(--color-purple, #7c3aed); box-shadow: 0 8px 24px rgba(124, 58, 237, 0.12); }
+.concept-card.card-purple:hover { 
+  border-color: var(--dsp-violet); 
+  box-shadow: var(--dsp-shadow-md), 0 0 16px var(--dsp-violet-glow); 
+}
 
 .physio-grid-title,
 .physio-card-title,
 .concept-card-title {
-  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-family: var(--dsp-font-display);
   font-size: 0.98rem;
   font-weight: 800;
-  color: var(--color-text, #0f172a);
+  color: var(--dsp-text-primary);
   margin-bottom: 0.35rem;
   display: flex;
   align-items: center;
@@ -122,29 +146,9 @@
 .physio-grid-card p,
 .physio-card p,
 .concept-card p {
-  font-size: var(--text-sm, 0.86rem);
-  color: var(--color-text-muted, #475569);
+  font-size: 0.86rem;
+  color: var(--dsp-text-secondary);
   line-height: 1.6;
   margin-bottom: 0;
   text-align: left;
-}
-
-/* --- DARK MODE --- */
-[data-theme="dark"] .physio-grid-card,
-[data-theme="dark"] .physio-card,
-[data-theme="dark"] .concept-card {
-  background: var(--color-surface, #1e293b);
-  border-color: var(--color-border, #334155);
-}
-
-[data-theme="dark"] .physio-grid-title,
-[data-theme="dark"] .physio-card-title,
-[data-theme="dark"] .concept-card-title {
-  color: var(--color-text, #f8fafc);
-}
-
-[data-theme="dark"] .physio-grid-card p,
-[data-theme="dark"] .physio-card p,
-[data-theme="dark"] .concept-card p {
-  color: var(--color-text-muted, #94a3b8);
 }

@@ -2,16 +2,13 @@ import React, { useMemo, useState } from 'react';
 import {
   Activity,
   ArrowRight,
-  BarChart3,
   BookOpen,
   ChevronDown,
   ChevronUp,
   Clock,
-  Code2,
-  Database,
+  ClipboardCheck,
   Download,
   ExternalLink,
-  FileCode,
   Filter,
   Layers,
   Pill,
@@ -32,13 +29,17 @@ import {
   VAULT_CATALOG,
   VaultArticle,
 } from '../lib/vaultBridge.ts';
+import {
+  buildDiagnosticCards,
+  DiagnosticCardData,
+} from '../lib/diagnosticCriteriaService.ts';
 
 interface Step4Props {
   kb: KnowledgeBase;
   onExportKB: () => void;
   onImportKB: (file: File) => void;
   onGoToProtocol?: (diseaseId: string) => void;
-  onOpenVaultDrawer?: (diseaseName: string, icd?: string) => void;
+  onOpenVaultDrawer?: (diseaseName: string, khoCode?: string) => void;
 }
 
 export const Step4KnowledgeBase: React.FC<Step4Props> = ({
@@ -48,7 +49,8 @@ export const Step4KnowledgeBase: React.FC<Step4Props> = ({
   onGoToProtocol,
   onOpenVaultDrawer,
 }) => {
-  const [activeTab, setActiveTab] = useState<'diseases' | 'symptoms' | 'rules' | 'stats' | 'vault'>('diseases');
+  const [activeTab, setActiveTab] = useState<'criteria' | 'symptoms' | 'rules' | 'vault'>('criteria');
+  const [criteriaSource, setCriteriaSource] = useState<'all' | 'core' | 'vault'>('all');
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedGroup, setSelectedGroup] = useState<string>('all');
   const [selectedVaultKho, setSelectedVaultKho] = useState<string>('ALL');
@@ -56,23 +58,53 @@ export const Step4KnowledgeBase: React.FC<Step4Props> = ({
 
   const khoSummaries = useMemo(() => getKhoSummaries(), []);
 
-  const vaultResults = useMemo(() => {
-    return searchVaultArticles(searchTerm, selectedVaultKho, 'ALL', 60);
-  }, [searchTerm, selectedVaultKho]);
+  // Toàn bộ thẻ tiêu chuẩn chẩn đoán từ Kho Chẩn Đoán (2.3) kết hợp luật CDSS
+  const allDiagnosticCards = useMemo(() => {
+    return buildDiagnosticCards(kb);
+  }, [kb]);
+
+  const coreCardsCount = useMemo(() => {
+    return allDiagnosticCards.filter((c) => c.isCoreCdss).length;
+  }, [allDiagnosticCards]);
+
+  const vaultCardsCount = useMemo(() => {
+    return allDiagnosticCards.filter((c) => !c.isCoreCdss).length;
+  }, [allDiagnosticCards]);
+
+  // Danh sách chuyên khoa từ toàn bộ thẻ tiêu chuẩn
+  const specialtyOptions = useMemo(() => {
+    const set = new Set<string>();
+    allDiagnosticCards.forEach((c) => set.add(c.nhom));
+    return Array.from(set).sort();
+  }, [allDiagnosticCards]);
 
   const normalizedSearch = normalizeText(searchTerm);
 
-  const filteredDiseases = useMemo(() => {
-    return kb.benh.filter((b) => {
-      const matchGroup = selectedGroup === 'all' || b.nhom === selectedGroup;
+  // Lọc tiêu chuẩn chẩn đoán
+  const filteredCriteriaCards = useMemo(() => {
+    return allDiagnosticCards.filter((c) => {
+      // Lọc theo nguồn (Tất cả / Trọng số CDSS / Kho Chẩn Đoán 2.3)
+      if (criteriaSource === 'core' && !c.isCoreCdss) return false;
+      if (criteriaSource === 'vault' && c.isCoreCdss) return false;
+
+      // Lọc theo chuyên khoa
+      const matchGroup = selectedGroup === 'all' || c.nhom === selectedGroup;
+
+      // Lọc theo tìm kiếm
       const matchSearch =
         !normalizedSearch ||
-        normalizeText(b.ten).includes(normalizedSearch) ||
-        normalizeText(b.icd).includes(normalizedSearch) ||
-        normalizeText(b.tomTat).includes(normalizedSearch);
+        normalizeText(c.ten).includes(normalizedSearch) ||
+        normalizeText(c.icd).includes(normalizedSearch) ||
+        normalizeText(c.tomTat).includes(normalizedSearch) ||
+        c.tieuChuan.some((tc) => normalizeText(tc.ten).includes(normalizedSearch));
+
       return matchGroup && matchSearch;
     });
-  }, [kb.benh, selectedGroup, normalizedSearch]);
+  }, [allDiagnosticCards, criteriaSource, selectedGroup, normalizedSearch]);
+
+  const vaultResults = useMemo(() => {
+    return searchVaultArticles(searchTerm, selectedVaultKho, 'ALL', 60);
+  }, [searchTerm, selectedVaultKho]);
 
   const filteredSymptoms = useMemo(() => {
     return kb.trieuChung.filter((tc) => {
@@ -91,31 +123,6 @@ export const Step4KnowledgeBase: React.FC<Step4Props> = ({
     return kb.trieuChung.filter((tc) => tc.map !== null);
   }, [kb.trieuChung]);
 
-  const vocabMap = useMemo(() => {
-    return new Map<string, TrieuChung>(kb.trieuChung.map((t) => [t.id, t]));
-  }, [kb.trieuChung]);
-
-  // Knowledge base statistics
-  const stats = useMemo(() => {
-    const totalDiseases = kb.benh.length;
-    const emergencyDiseases = kb.benh.filter((b) => b.baoDong).length;
-    const totalSymptoms = kb.trieuChung.length;
-    const mappedRules = derivationRules.length;
-    const totalCriteria = kb.benh.reduce((acc, b) => acc + b.dd.length, 0);
-    const avgCriteria = totalDiseases > 0 ? (totalCriteria / totalDiseases).toFixed(1) : 0;
-    const specialtiesCount = new Set(kb.benh.map((b) => b.nhom)).size;
-
-    return {
-      totalDiseases,
-      emergencyDiseases,
-      totalSymptoms,
-      mappedRules,
-      totalCriteria,
-      avgCriteria,
-      specialtiesCount,
-    };
-  }, [kb, derivationRules]);
-
   return (
     <div className="flex flex-col gap-4">
       {/* KB Header */}
@@ -126,11 +133,11 @@ export const Step4KnowledgeBase: React.FC<Step4Props> = ({
               Kho tri thức y khoa & Suy luận diễn dịch (Evidence Base)
             </h2>
             <span className="px-2 py-0.5 rounded text-[11px] font-mono-custom bg-blue-50 text-blue-700 border border-blue-200 font-semibold">
-              v{kb.meta?.phienBan || '2.0'} · Cập nhật {kb.meta?.capNhat || '2025'}
+              v{kb.meta?.phienBan || '2.0'} · Cập nhật {kb.meta?.capNhat || '2026'}
             </span>
           </div>
           <p className="text-xs text-slate-500 mt-0.5">
-            Mạng lưới liên kết hội chứng, trọng số bằng chứng lâm sàng, quy tắc tự suy và phác đồ điều trị
+            Mạng lưới tiêu chuẩn chẩn đoán, trọng số bằng chứng lâm sàng từ Kho Chẩn Đoán (2.3) và liên kết phác đồ điều trị
           </p>
         </div>
 
@@ -165,17 +172,18 @@ export const Step4KnowledgeBase: React.FC<Step4Props> = ({
 
       {/* Control Bar: Sub-Tabs, Search, Specialty Filter */}
       <div className="flex flex-wrap items-center justify-between gap-3 bg-white border border-slate-200 rounded-lg p-2.5 shadow-xs">
-        {/* Sub tabs */}
-        <div className="flex border border-slate-200 rounded-md overflow-hidden p-0.5 bg-slate-100 text-xs">
+        {/* Sub tabs (Thống kê & Cấu trúc đã được gỡ bỏ) */}
+        <div className="flex border border-slate-200 rounded-md overflow-hidden p-0.5 bg-slate-100 text-xs flex-wrap">
           <button
-            onClick={() => setActiveTab('diseases')}
-            className={`px-3 py-1 font-semibold rounded transition-all cursor-pointer ${
-              activeTab === 'diseases'
+            onClick={() => setActiveTab('criteria')}
+            className={`px-3 py-1 font-semibold rounded transition-all cursor-pointer flex items-center gap-1.5 ${
+              activeTab === 'criteria'
                 ? 'bg-blue-600 text-white shadow-2xs'
                 : 'text-slate-600 hover:text-slate-900'
             }`}
           >
-            Bệnh học ({kb.benh.length})
+            <ClipboardCheck className="w-3.5 h-3.5" />
+            <span>Tiêu chuẩn chẩn đoán ({allDiagnosticCards.length})</span>
           </button>
           <button
             onClick={() => setActiveTab('symptoms')}
@@ -198,16 +206,6 @@ export const Step4KnowledgeBase: React.FC<Step4Props> = ({
             Quy tắc tự suy ⚙ ({derivationRules.length})
           </button>
           <button
-            onClick={() => setActiveTab('stats')}
-            className={`px-3 py-1 font-semibold rounded transition-all cursor-pointer ${
-              activeTab === 'stats'
-                ? 'bg-blue-600 text-white shadow-2xs'
-                : 'text-slate-600 hover:text-slate-900'
-            }`}
-          >
-            Thống kê & Cấu trúc
-          </button>
-          <button
             onClick={() => setActiveTab('vault')}
             className={`px-3 py-1 font-semibold rounded transition-all cursor-pointer flex items-center gap-1.5 ${
               activeTab === 'vault'
@@ -221,202 +219,315 @@ export const Step4KnowledgeBase: React.FC<Step4Props> = ({
         </div>
 
         {/* Search & Filter */}
-        {(activeTab === 'diseases' || activeTab === 'symptoms' || activeTab === 'rules' || activeTab === 'vault') && (
-          <div className="flex items-center gap-2 flex-1 max-w-lg justify-end">
-            <div className="relative flex-1 min-w-[180px]">
-              <Search className="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-2.5" />
-              <input
-                type="text"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                placeholder={
-                  activeTab === 'vault'
-                    ? 'Tìm trong 2.400+ bài viết EBM (ICD, thuốc, phác đồ)...'
-                    : 'Tìm kiếm bệnh, ICD, triệu chứng, từ khóa...'
-                }
-                className="w-full pl-7 pr-3 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-md focus:outline-none focus:border-blue-500 text-slate-800"
-              />
-            </div>
+        <div className="flex items-center gap-2 flex-1 max-w-lg justify-end">
+          <div className="relative flex-1 min-w-[180px]">
+            <Search className="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-2.5" />
+            <input
+              type="text"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              placeholder={
+                activeTab === 'criteria'
+                  ? 'Tìm theo tên bệnh, ICD, triệu chứng, tiêu chuẩn...'
+                  : activeTab === 'vault'
+                  ? 'Tìm trong 2.400+ bài viết EBM (ICD, thuốc, phác đồ)...'
+                  : 'Tìm kiếm bệnh, ICD, triệu chứng, từ khóa...'
+              }
+              className="w-full pl-7 pr-3 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-md focus:outline-none focus:border-blue-500 text-slate-800"
+            />
+          </div>
 
-            {/* Specialty select for internal KB */}
-            {activeTab !== 'vault' ? (
-              <div className="flex items-center gap-1 shrink-0">
-                <Filter className="w-3.5 h-3.5 text-slate-400 hidden sm:inline" />
-                <select
-                  value={selectedGroup}
-                  onChange={(e) => setSelectedGroup(e.target.value)}
-                  className="border border-slate-200 rounded-md p-1.5 text-xs bg-slate-50 focus:outline-none focus:border-blue-500 text-slate-800 font-medium max-w-[150px]"
-                >
-                  <option value="all">Tất cả chuyên khoa</option>
-                  {Object.entries(GROUP_NAMES).map(([k, v]) => (
+          {/* Specialty select */}
+          {activeTab !== 'vault' ? (
+            <div className="flex items-center gap-1 shrink-0">
+              <Filter className="w-3.5 h-3.5 text-slate-400 hidden sm:inline" />
+              <select
+                value={selectedGroup}
+                onChange={(e) => setSelectedGroup(e.target.value)}
+                className="border border-slate-200 rounded-md p-1.5 text-xs bg-slate-50 focus:outline-none focus:border-blue-500 text-slate-800 font-medium max-w-[170px]"
+              >
+                <option value="all">Tất cả chuyên khoa</option>
+                {activeTab === 'criteria' ? (
+                  specialtyOptions.map((sp) => (
+                    <option key={sp} value={sp}>
+                      {sp}
+                    </option>
+                  ))
+                ) : (
+                  Object.entries(GROUP_NAMES).map(([k, v]) => (
                     <option key={k} value={k}>
                       {v}
                     </option>
-                  ))}
-                </select>
-              </div>
-            ) : (
-              <div className="flex items-center gap-1 shrink-0">
-                <Filter className="w-3.5 h-3.5 text-slate-400 hidden sm:inline" />
-                <select
-                  value={selectedVaultKho}
-                  onChange={(e) => setSelectedVaultKho(e.target.value)}
-                  className="border border-slate-200 rounded-md p-1.5 text-xs bg-slate-50 focus:outline-none focus:border-indigo-500 text-slate-800 font-medium max-w-[170px]"
-                >
-                  <option value="ALL">Tất cả 18 Kho</option>
-                  {khoSummaries.map((k) => (
-                    <option key={k.code} value={k.code}>
-                      {k.name} ({k.articleCount})
-                    </option>
-                  ))}
-                </select>
-              </div>
-            )}
-          </div>
-        )}
+                  ))
+                )}
+              </select>
+            </div>
+          ) : (
+            <div className="flex items-center gap-1 shrink-0">
+              <Filter className="w-3.5 h-3.5 text-slate-400 hidden sm:inline" />
+              <select
+                value={selectedVaultKho}
+                onChange={(e) => setSelectedVaultKho(e.target.value)}
+                className="border border-slate-200 rounded-md p-1.5 text-xs bg-slate-50 focus:outline-none focus:border-indigo-500 text-slate-800 font-medium max-w-[170px]"
+              >
+                <option value="ALL">Tất cả 18 Kho</option>
+                {khoSummaries.map((k) => (
+                  <option key={k.code} value={k.code}>
+                    {k.name} ({k.articleCount})
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
+        </div>
       </div>
 
-      {/* Tab 1: Diseases & Attached Clinical Protocols */}
-      {activeTab === 'diseases' && (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
-          {filteredDiseases.map((b) => {
-            const groupColor = GROUP_COLORS[b.nhom] || '#2563eb';
-            const isExpanded = expandedDiseaseId === b.id;
-
-            return (
-              <div
-                key={b.id}
-                className="bg-white border border-slate-200 hover:border-slate-300 rounded-lg p-4 shadow-xs transition-all flex flex-col justify-between"
-                style={{ borderTopWidth: '3px', borderTopColor: groupColor }}
+      {/* Tab 1: Tiêu chuẩn chẩn đoán (Dữ liệu Kho Chẩn Đoán 2.3 + Trọng số CDSS) */}
+      {activeTab === 'criteria' && (
+        <div className="flex flex-col gap-3">
+          {/* Sub-filter bar: Source toggle */}
+          <div className="flex items-center justify-between flex-wrap gap-2 px-1 text-xs">
+            <div className="flex items-center gap-1.5">
+              <span className="text-slate-500 font-medium">Nguồn dữ liệu:</span>
+              <button
+                type="button"
+                onClick={() => setCriteriaSource('all')}
+                className={`px-2.5 py-1 rounded text-xs font-semibold cursor-pointer transition-colors ${
+                  criteriaSource === 'all'
+                    ? 'bg-blue-600 text-white shadow-2xs'
+                    : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50'
+                }`}
               >
-                <div>
-                  <div className="flex items-start justify-between gap-2 mb-1">
-                    <div className="flex items-center gap-2 flex-wrap">
-                      <h3 className="font-display text-sm sm:text-base font-bold text-slate-800">
-                        {b.ten}
-                      </h3>
-                      <span className="px-1.5 py-0.5 text-[10.5px] font-mono-custom bg-slate-800 text-white rounded">
-                        {b.icd}
-                      </span>
+                Tất cả tiêu chuẩn ({allDiagnosticCards.length})
+              </button>
+              <button
+                type="button"
+                onClick={() => setCriteriaSource('core')}
+                className={`px-2.5 py-1 rounded text-xs font-semibold cursor-pointer transition-colors ${
+                  criteriaSource === 'core'
+                    ? 'bg-blue-600 text-white shadow-2xs'
+                    : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50'
+                }`}
+              >
+                Có trọng số CDSS ({coreCardsCount})
+              </button>
+              <button
+                type="button"
+                onClick={() => setCriteriaSource('vault')}
+                className={`px-2.5 py-1 rounded text-xs font-semibold cursor-pointer transition-colors ${
+                  criteriaSource === 'vault'
+                    ? 'bg-blue-600 text-white shadow-2xs'
+                    : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50'
+                }`}
+              >
+                Kho Chẩn Đoán 2.3 ({vaultCardsCount})
+              </button>
+            </div>
+
+            <div className="text-[11px] text-slate-500">
+              Đang hiển thị <b>{filteredCriteriaCards.length}</b> bệnh lý · Tự động đối chiếu với <b>Kho Phác Đồ 2.4</b>
+            </div>
+          </div>
+
+          {/* Cards Grid: EXACT visual layout from Hình 1 */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+            {filteredCriteriaCards.map((b) => {
+              const groupColor = b.nhomColor || '#2563eb';
+              const isExpanded = expandedDiseaseId === b.id;
+
+              return (
+                <div
+                  key={b.id}
+                  className="bg-white border border-slate-200 hover:border-slate-300 rounded-lg p-4 shadow-xs transition-all flex flex-col justify-between"
+                  style={{ borderTopWidth: '3px', borderTopColor: groupColor }}
+                >
+                  <div>
+                    {/* Header: Title + ICD + Emergency Badge */}
+                    <div className="flex items-start justify-between gap-2 mb-1">
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <h3 className="font-display text-sm sm:text-base font-bold text-slate-800">
+                          {b.ten}
+                        </h3>
+                        <span className="px-1.5 py-0.5 text-[10.5px] font-mono-custom bg-slate-800 text-white rounded font-semibold">
+                          {b.icd}
+                        </span>
+                      </div>
+
+                      {b.baoDong && (
+                        <span className="px-2 py-0.5 text-[10px] font-bold bg-red-50 text-red-700 border border-red-200 rounded shrink-0 flex items-center gap-1">
+                          <ShieldAlert className="w-3 h-3" />
+                          <span>CẤP CỨU</span>
+                        </span>
+                      )}
                     </div>
 
-                    {b.baoDong && (
-                      <span className="px-2 py-0.5 text-[10px] font-bold bg-red-50 text-red-700 border border-red-200 rounded shrink-0 flex items-center gap-1">
-                        <ShieldAlert className="w-3 h-3" />
-                        <span>CẤP CỨU</span>
+                    {/* Specialty & Source Subtitle */}
+                    <div className="flex items-center justify-between gap-2 mb-1.5 flex-wrap">
+                      <span className="text-[11px] font-semibold text-slate-500">
+                        {b.nhom}
                       </span>
+                      {b.isCoreCdss ? (
+                        <span className="px-1.5 py-0.2 rounded text-[10px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                          Bộ luật CDSS
+                        </span>
+                      ) : (
+                        <span className="px-1.5 py-0.2 rounded text-[10px] font-semibold bg-pink-50 text-pink-700 border border-pink-200">
+                          Kho Chẩn Đoán 2.3
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Summary Description */}
+                    <p className="text-xs text-slate-600 mb-2.5 leading-relaxed">{b.tomTat}</p>
+
+                    {/* Demographic Specs Box (Blue Tint) */}
+                    {b.danSo && (
+                      <div className="mb-2.5 text-[11px] text-blue-800 bg-blue-50/60 p-2 rounded border border-blue-100 font-mono-custom flex flex-wrap gap-2">
+                        <span>Giới: {b.danSo.gioiTinh}</span>
+                        {b.danSo.tuoiMin != null && (
+                          <span>Tuổi: {b.danSo.tuoiMin}–{b.danSo.tuoiMax ?? '+'}</span>
+                        )}
+                      </div>
+                    )}
+
+                    {/* Diagnostic Criteria and Weight Chips (Hình 1) */}
+                    <div>
+                      <span className="text-[11px] font-bold text-slate-800 uppercase tracking-wider block mb-1">
+                        Tiêu chuẩn & trọng số ({b.tieuChuan.length}):
+                      </span>
+                      <div className="flex flex-wrap gap-1.5 max-h-36 overflow-y-auto pr-1">
+                        {b.tieuChuan.map((tc, idx) => {
+                          const roleCfg = ROLE_LABELS[tc.role] || {
+                            label: 'đặc trưng',
+                            badgeClass: 'text-blue-700 border border-blue-200 bg-blue-50',
+                          };
+                          return (
+                            <div
+                              key={idx}
+                              className="px-2 py-0.5 bg-slate-50 border border-slate-200 rounded text-[11px] flex items-center gap-1"
+                            >
+                              <span className="text-slate-800 font-medium">{tc.ten}</span>
+                              <span className={`text-[9.5px] px-1 rounded ${roleCfg.badgeClass}`}>
+                                {roleCfg.label}
+                              </span>
+                              <b className="font-mono-custom text-blue-600">+{tc.trongSo}</b>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+
+                    {/* Expandable Embedded Treatment Protocol Preview */}
+                    {isExpanded && b.phacDoPreview && (
+                      <div className="mt-3 pt-3 border-t border-slate-200 bg-slate-50 p-3 rounded-lg text-xs space-y-2.5 animate-fadeIn">
+                        <div>
+                          <span className="font-bold text-slate-800 uppercase text-[10.5px] block mb-1">
+                            Quy trình xử trí:
+                          </span>
+                          <ul className="list-disc pl-4 space-y-1 text-slate-700">
+                            {b.phacDoPreview.tuyen.map((step, idx) => (
+                              <li key={idx}>{step}</li>
+                            ))}
+                          </ul>
+                        </div>
+
+                        {b.phacDoPreview.thuoc.length > 0 && (
+                          <div>
+                            <span className="font-bold text-slate-800 uppercase text-[10.5px] block mb-1">
+                              Thuốc điều trị chính:
+                            </span>
+                            <div className="space-y-1">
+                              {b.phacDoPreview.thuoc.map(([drug, dose, note], idx) => (
+                                <div
+                                  key={idx}
+                                  className="p-1.5 bg-white border border-slate-200 rounded flex justify-between"
+                                >
+                                  <span className="font-bold text-slate-800">{drug}</span>
+                                  <span className="font-mono-custom text-blue-700">{dose}</span>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+
+                        {b.phacDoPreview.luuY.length > 0 && (
+                          <div className="text-amber-800 bg-amber-50 p-2 rounded border border-amber-200 text-[11px]">
+                            <b>Lưu ý: </b>
+                            {b.phacDoPreview.luuY.join(' · ')}
+                          </div>
+                        )}
+                      </div>
                     )}
                   </div>
 
-                  <span className="text-[11px] font-semibold text-slate-500 block mb-1.5">
-                    {GROUP_NAMES[b.nhom] || b.nhom}
-                  </span>
+                  {/* Card Footer: Links to EBM Chẩn Đoán, EBM Phác Đồ & Step 3 */}
+                  <div className="mt-3 pt-2.5 border-t border-slate-100 flex flex-wrap items-center justify-between gap-2 text-[11px]">
+                    <div className="flex items-center gap-2">
+                      {b.phacDoPreview && (
+                        <button
+                          type="button"
+                          onClick={() => setExpandedDiseaseId(isExpanded ? null : b.id)}
+                          className="text-slate-600 hover:text-slate-900 font-medium flex items-center gap-1 cursor-pointer"
+                        >
+                          <span>{isExpanded ? 'Thu gọn' : 'Xem phác đồ tóm tắt'}</span>
+                          {isExpanded ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
+                        </button>
+                      )}
 
-                  <p className="text-xs text-slate-600 mb-2.5 leading-relaxed">{b.tomTat}</p>
+                      {/* Link sang Kho Chẩn Đoán EBM */}
+                      {b.cdArticle && (
+                        <button
+                          type="button"
+                          onClick={() => onOpenVaultDrawer?.(b.cdArticle!.title, 'CD')}
+                          className="text-pink-600 hover:text-pink-800 font-semibold flex items-center gap-1 cursor-pointer"
+                          title="Mở toàn văn tiêu chuẩn chẩn đoán từ Kho Chẩn Đoán 2.3"
+                        >
+                          <span>Tiêu chuẩn EBM</span>
+                          <ExternalLink className="w-3 h-3" />
+                        </button>
+                      )}
 
-                  {/* Demographic specs */}
-                  {b.danSo && (
-                    <div className="mb-2.5 text-[11px] text-blue-800 bg-blue-50/60 p-2 rounded border border-blue-100 font-mono-custom flex flex-wrap gap-2">
-                      <span>Giới: {b.danSo.gioiTinh === 'any' ? 'Nam / Nữ' : b.danSo.gioiTinh}</span>
-                      {b.danSo.tuoiMin != null && (
-                        <span>Tuổi: {b.danSo.tuoiMin}–{b.danSo.tuoiMax || '+'}</span>
+                      {/* Link sang Kho Phác Đồ EBM */}
+                      {b.pddtArticle && (
+                        <button
+                          type="button"
+                          onClick={() => onOpenVaultDrawer?.(b.pddtArticle!.title, 'PDDT')}
+                          className="text-indigo-600 hover:text-indigo-800 font-medium flex items-center gap-1 cursor-pointer"
+                          title="Mở toàn văn phác đồ từ Kho Phác Đồ 2.4"
+                        >
+                          <span>Phác đồ EBM</span>
+                          <ExternalLink className="w-3 h-3" />
+                        </button>
                       )}
                     </div>
-                  )}
 
-                  {/* Diagnostic criteria and weight chips */}
-                  <div>
-                    <span className="text-[11px] font-bold text-slate-800 uppercase tracking-wider block mb-1">
-                      Tiêu chuẩn & trọng số ({b.dd.length}):
-                    </span>
-                    <div className="flex flex-wrap gap-1.5 max-h-36 overflow-y-auto pr-1">
-                      {b.dd.map(([tcId, w, role], idx) => {
-                        const tc = vocabMap.get(tcId);
-                        const roleCfg = ROLE_LABELS[role];
-                        return (
-                          <div
-                            key={idx}
-                            className="px-2 py-0.5 bg-slate-50 border border-slate-200 rounded text-[11px] flex items-center gap-1"
-                          >
-                            <span className="text-slate-800 font-medium">{tc?.ten || tcId}</span>
-                            <span className={`text-[9.5px] px-1 rounded ${roleCfg.badgeClass}`}>
-                              {roleCfg.label}
-                            </span>
-                            <b className="font-mono-custom text-blue-600">+{w}</b>
-                          </div>
-                        );
-                      })}
+                    {/* Nút hành động mở Phác đồ điều trị */}
+                    <div>
+                      {b.hasStep3Protocol && onGoToProtocol ? (
+                        <button
+                          type="button"
+                          onClick={() => onGoToProtocol(b.id)}
+                          className="text-blue-600 hover:text-blue-800 font-bold flex items-center gap-1 cursor-pointer"
+                        >
+                          <span>Mở phác đồ & ra y lệnh</span>
+                          <ArrowRight className="w-3 h-3" />
+                        </button>
+                      ) : b.pddtArticle ? (
+                        <button
+                          type="button"
+                          onClick={() => onOpenVaultDrawer?.(b.pddtArticle!.title, 'PDDT')}
+                          className="text-blue-600 hover:text-blue-800 font-semibold flex items-center gap-1 cursor-pointer"
+                        >
+                          <span>Mở phác đồ điều trị</span>
+                          <ArrowRight className="w-3 h-3" />
+                        </button>
+                      ) : null}
                     </div>
                   </div>
-
-                  {/* Expandable Embedded Treatment Protocol Preview */}
-                  {isExpanded && b.phacDo && (
-                    <div className="mt-3 pt-3 border-t border-slate-200 bg-slate-50 p-3 rounded-lg text-xs space-y-2.5 animate-fadeIn">
-                      <div>
-                        <span className="font-bold text-slate-800 uppercase text-[10.5px] block mb-1">
-                          Quy trình xử trí:
-                        </span>
-                        <ul className="list-disc pl-4 space-y-1 text-slate-700">
-                          {b.phacDo.tuyen.map((step, idx) => (
-                            <li key={idx}>{step}</li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      {b.phacDo.thuoc.length > 0 && (
-                        <div>
-                          <span className="font-bold text-slate-800 uppercase text-[10.5px] block mb-1">
-                            Thuốc điều trị chính:
-                          </span>
-                          <div className="space-y-1">
-                            {b.phacDo.thuoc.map(([drug, dose, note], idx) => (
-                              <div
-                                key={idx}
-                                className="p-1.5 bg-white border border-slate-200 rounded flex justify-between"
-                              >
-                                <span className="font-bold text-slate-800">{drug}</span>
-                                <span className="font-mono-custom text-blue-700">{dose}</span>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-
-                      {b.phacDo.luuY.length > 0 && (
-                        <div className="text-amber-800 bg-amber-50 p-2 rounded border border-amber-200 text-[11px]">
-                          <b>Lưu ý: </b>
-                          {b.phacDo.luuY.join(' · ')}
-                        </div>
-                      )}
-                    </div>
-                  )}
                 </div>
-
-                {/* Card footer with actions */}
-                <div className="mt-3 pt-2.5 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
-                  <button
-                    type="button"
-                    onClick={() => setExpandedDiseaseId(isExpanded ? null : b.id)}
-                    className="text-slate-600 hover:text-slate-900 font-medium flex items-center gap-1 cursor-pointer"
-                  >
-                    <span>{isExpanded ? 'Thu gọn' : 'Xem phác đồ tóm tắt'}</span>
-                    {isExpanded ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
-                  </button>
-
-                  {onGoToProtocol && (
-                    <button
-                      type="button"
-                      onClick={() => onGoToProtocol(b.id)}
-                      className="text-blue-600 hover:text-blue-800 font-semibold flex items-center gap-1 cursor-pointer"
-                    >
-                      <span>Mở phác đồ & ra y lệnh</span>
-                      <ArrowRight className="w-3 h-3" />
-                    </button>
-                  )}
-                </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
       )}
 
@@ -533,36 +644,7 @@ export const Step4KnowledgeBase: React.FC<Step4Props> = ({
         </div>
       )}
 
-      {/* Tab 4: Knowledge Graph Statistics & Topology */}
-      {activeTab === 'stats' && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
-          <div className="bg-white border border-slate-200 rounded-lg p-4 shadow-xs">
-            <div className="text-xs text-slate-500 uppercase tracking-wider font-semibold">Tổng số bệnh học</div>
-            <div className="font-display font-bold text-2xl text-blue-600 mt-1">{stats.totalDiseases}</div>
-            <div className="text-[11px] text-slate-400 mt-1">{stats.emergencyDiseases} bệnh thuộc diện cấp cứu khẩn</div>
-          </div>
-
-          <div className="bg-white border border-slate-200 rounded-lg p-4 shadow-xs">
-            <div className="text-xs text-slate-500 uppercase tracking-wider font-semibold">Từ điển triệu chứng</div>
-            <div className="font-display font-bold text-2xl text-emerald-600 mt-1">{stats.totalSymptoms}</div>
-            <div className="text-[11px] text-slate-400 mt-1">Bao gồm cơ năng, thực thể, tiền căn, CLS</div>
-          </div>
-
-          <div className="bg-white border border-slate-200 rounded-lg p-4 shadow-xs">
-            <div className="text-xs text-slate-500 uppercase tracking-wider font-semibold">Quy tắc tự suy ⚙</div>
-            <div className="font-display font-bold text-2xl text-amber-600 mt-1">{stats.mappedRules}</div>
-            <div className="text-[11px] text-slate-400 mt-1">Tự động liên kết từ sinh hiệu và xét nghiệm</div>
-          </div>
-
-          <div className="bg-white border border-slate-200 rounded-lg p-4 shadow-xs">
-            <div className="text-xs text-slate-500 uppercase tracking-wider font-semibold">Mật độ bằng chứng</div>
-            <div className="font-display font-bold text-2xl text-slate-800 mt-1">{stats.avgCriteria}</div>
-            <div className="text-[11px] text-slate-400 mt-1">Trung bình tiêu chuẩn đối chiếu trên mỗi bệnh</div>
-          </div>
-        </div>
-      )}
-
-      {/* Tab 5: CliniPortal Knowledge Vault 2,400+ EBM Articles */}
+      {/* Tab 4: CliniPortal Knowledge Vault 2,400+ EBM Articles */}
       {activeTab === 'vault' && (
         <div className="flex flex-col gap-4">
           {/* Vault Banner & Quick Navigation */}
@@ -676,19 +758,19 @@ export const Step4KnowledgeBase: React.FC<Step4Props> = ({
                     ⚡
                   </div>
                   <span className="px-2 py-0.5 rounded-full text-[11px] font-mono-custom font-bold bg-purple-100 text-purple-800 border border-purple-200">
-                    3 hệ thống
+                    4 hệ thống
                   </span>
                 </div>
                 <h4 className="font-display font-bold text-sm text-slate-900 mb-1">
                   Hệ thống Hỗ trợ Ra Quyết định (CDSS)
                 </h4>
                 <p className="text-xs text-slate-600 leading-relaxed">
-                  3 hệ thống ra quyết định lâm sàng tương tác: Bảng tính liều kháng sinh theo eGFR & PK/PD, Hệ thống CDSS theo dõi bù dịch chống sốc SXHD Dengue...
+                  4 hệ thống ra quyết định lâm sàng tương tác: Bù dịch SXHD Dengue (BYT 2023), Phân tích ECG 12 đạo trình, Khí máu động mạch (ABG Pro) 6 bước, Phân tích X-quang PACS thông minh...
                 </p>
               </div>
 
               <div className="mt-3 pt-2.5 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-purple-700">
-                <span>Duyệt 3 hệ thống CDSS</span>
+                <span>Duyệt 4 hệ thống CDSS</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </div>
             </div>

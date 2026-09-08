@@ -1,3 +1,6 @@
+/* Import Master Design Tokens */
+@import url('basic-medical-design-tokens.css');
+
 /* Import Module Component Styles */
 @import url('physio-quiz.css');
 @import url('physio-progress.css');
@@ -26,63 +29,73 @@
 /* 1. INLINE KEYWORD HIGHLIGHTING */
 .term-hl {
   display: inline-block;
-  background-color: var(--color-primary-hl);
-  color: var(--color-primary);
-  padding: 0.1rem 0.4rem;
-  border-radius: var(--radius-sm);
+  background-color: var(--dsp-sky-light);
+  color: var(--dsp-primary);
+  padding: 0.1rem 0.45rem;
+  border-radius: var(--dsp-radius-sm);
   font-weight: 600;
   font-size: 0.9em;
-  border: 1px solid rgba(var(--color-primary-rgb), 0.15);
+  border: 1px solid var(--dsp-sky-glow);
   margin: 0 0.1rem;
-  transition: all var(--tr);
+  transition: var(--dsp-transition);
 }
 
 .term-hl:hover {
-  background-color: var(--color-primary);
-  color: var(--color-surface);
+  background-color: var(--dsp-primary);
+  color: #ffffff;
   transform: translateY(-1px);
-  box-shadow: 0 2px 4px rgba(var(--color-primary-rgb), 0.2);
+  box-shadow: 0 2px 8px var(--dsp-sky-glow);
 }
 
 /* Secondary high-yield terms (e.g. enzymes, channels) */
 .term-hl-secondary {
   display: inline-block;
-  background-color: var(--color-purple-hl);
-  color: var(--color-purple);
-  padding: 0.1rem 0.4rem;
-  border-radius: var(--radius-sm);
+  background-color: var(--dsp-violet-light);
+  color: var(--dsp-violet);
+  padding: 0.1rem 0.45rem;
+  border-radius: var(--dsp-radius-sm);
   font-weight: 600;
   font-size: 0.9em;
-  border: 1px solid rgba(var(--color-purple-rgb), 0.15);
+  border: 1px solid var(--dsp-violet-glow);
   margin: 0 0.1rem;
-  transition: all var(--tr);
+  transition: var(--dsp-transition);
 }
 
 .term-hl-secondary:hover {
-  background-color: var(--color-purple);
-  color: var(--color-surface);
+  background-color: var(--dsp-violet);
+  color: #ffffff;
   transform: translateY(-1px);
-  box-shadow: 0 2px 4px rgba(var(--color-purple-rgb), 0.2);
+  box-shadow: 0 2px 8px var(--dsp-violet-glow);
 }
 
 /* 1.5 CLINICAL & MEDICAL HEADINGS SYSTEM (H1, H2, H3, H4) */
 .chapter-header,
 .biochem-article-header,
 .physio-article-header {
-  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #0284c7 100%);
-  color: #ffffff;
-  padding: 2.25rem 2rem;
-  border-radius: 16px;
+  background: 
+    radial-gradient(ellipse 90% 70% at 5% 0%, var(--dsp-sky-glow) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 60% at 95% 100%, var(--dsp-indigo-glow) 0%, transparent 60%),
+    linear-gradient(135deg, var(--dsp-surface) 0%, var(--dsp-bg-base) 100%);
+  border: 1px solid var(--dsp-border-subtle);
+  color: var(--dsp-text-primary);
+  padding: 2.5rem 2rem;
+  border-radius: var(--dsp-radius-xl);
   margin-bottom: 1.75rem;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--dsp-shadow-md);
   position: relative;
   overflow: hidden;
+  backdrop-filter: var(--dsp-backdrop-blur);
 }
 
-[data-theme="dark"] .chapter-header,
-[data-theme="dark"] .biochem-article-header,
-[data-theme="dark"] .physio-article-header {
-  background: linear-gradient(135deg, #020617 0%, #0f172a 50%, #1e3a8a 100%);
+[data-theme="light"] .chapter-header,
+[data-theme="light"] .biochem-article-header,
+[data-theme="light"] .physio-article-header {
+  background: 
+    radial-gradient(ellipse 90% 70% at 5% 0%, rgba(2, 132, 199, 0.1) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 60% at 95% 100%, rgba(99, 102, 241, 0.08) 0%, transparent 60%),
+    linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  border-color: var(--dsp-border-subtle);
+  box-shadow: var(--dsp-shadow-sm);
 }
 
 .physio-badge,
@@ -90,16 +103,16 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: rgba(255, 255, 255, 0.18);
+  background: var(--dsp-sky-light);
+  color: var(--dsp-primary);
   backdrop-filter: blur(8px);
   padding: 0.35rem 0.85rem;
-  border-radius: 999px;
+  border-radius: var(--dsp-radius-full);
   font-size: 0.82rem;
   font-weight: 700;
   margin-bottom: 0.85rem;
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border: 1px solid var(--dsp-sky-glow);
   text-transform: uppercase;
-  color: #ffffff;
 }
 
 h1.article-title,
@@ -107,26 +120,19 @@ h1.article-title,
 .biochem-article-header h1,
 .visual-container > h1,
 .physio-article-container h1 {
-  font-family: var(--font-display, 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif);
+  font-family: var(--dsp-font-display);
   font-size: clamp(1.65rem, 3.5vw, 2.25rem);
   font-weight: 800;
   line-height: 1.28;
   letter-spacing: -0.02em;
-  color: var(--color-text, #0f172a);
+  color: var(--dsp-text-primary);
   margin: 0.5rem 0 1rem 0;
-}
-
-.chapter-header h1,
-.biochem-article-header h1,
-.chapter-header.gradient-header h1,
-.physio-article-header h1 {
-  color: #ffffff !important;
 }
 
 .chapter-header p,
 .biochem-article-header p,
 .physio-article-header p {
-  color: rgba(255, 255, 255, 0.92);
+  color: var(--dsp-text-secondary);
   font-size: 1rem;
   line-height: 1.6;
   margin: 0;

@@ -1,0 +1,803 @@
+/**
+ * CliniPortal CDSS — ECG Stylesheet
+ * Path: src/content/knowledge-vault/cdss/ecg/css/ecg-cdss.css
+ */
+
+.ecg-cdss-app {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  color: var(--vault-text);
+  font-family: var(--font-body, 'Inter', sans-serif);
+}
+
+/* Header Card */
+.ecg-top-card {
+  background: var(--vault-surface);
+  border: 1px solid var(--vault-border);
+  border-radius: var(--vault-radius, 12px);
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+  margin-bottom: 1.25rem;
+}
+
+.ecg-header-main {
+  flex: 1;
+  min-width: 320px;
+}
+
+.ecg-badge-group {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+}
+
+.ecg-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.25rem 0.65rem;
+  border-radius: 9999px;
+  letter-spacing: 0.02em;
+}
+
+.ecg-badge--cardio {
+  background: rgba(239, 68, 68, 0.12);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.ecg-badge--live {
+  background: rgba(16, 185, 129, 0.12);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.ecg-badge--danger {
+  background: #ef4444;
+  color: #ffffff;
+}
+
+.ecg-badge--secondary {
+  background: var(--vault-bg);
+  color: var(--vault-muted);
+  border: 1px solid var(--vault-border);
+}
+
+.ecg-app-title {
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-size: 1.45rem;
+  font-weight: 800;
+  margin: 0;
+  color: var(--vault-text);
+  letter-spacing: -0.02em;
+}
+
+.ecg-case-selector-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.ecg-case-selector-wrap label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--vault-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.ecg-select {
+  padding: 0.6rem 0.95rem;
+  border-radius: 8px;
+  border: 1px solid var(--vault-border);
+  background: var(--vault-bg);
+  color: var(--vault-text);
+  font-size: 0.88rem;
+  font-weight: 600;
+  max-width: 450px;
+}
+
+.ecg-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.15rem;
+  font-size: 0.84rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.2s;
+  min-height: 40px;
+}
+
+.ecg-btn--primary {
+  background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+}
+
+.ecg-btn--primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(2, 132, 199, 0.35);
+}
+
+/* Patient Banner */
+.ecg-patient-banner {
+  background: var(--vault-surface);
+  border: 1px solid var(--vault-border);
+  border-radius: var(--vault-radius, 12px);
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+}
+
+.ecg-patient-grid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .ecg-patient-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ecg-patient-name-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.4rem;
+}
+
+.ecg-patient-name {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--vault-text);
+}
+
+.ecg-patient-demog {
+  font-size: 0.85rem;
+  color: var(--vault-muted);
+}
+
+.ecg-patient-complaint {
+  font-size: 0.88rem;
+  margin: 0.25rem 0;
+  color: var(--vault-text);
+}
+
+.ecg-patient-history {
+  font-size: 0.82rem;
+  color: var(--vault-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.ecg-patient-vitals-col {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+  background: var(--vault-bg);
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid var(--vault-border);
+}
+
+.ecg-vital-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.ecg-vital-label {
+  font-size: 0.72rem;
+  color: var(--vault-muted);
+  font-weight: 600;
+}
+
+.ecg-vital-val {
+  font-size: 0.95rem;
+}
+
+.ecg-vital-item--highlight {
+  grid-column: span 2;
+  border-top: 1px dashed var(--vault-border);
+  padding-top: 0.35rem;
+  margin-top: 0.2rem;
+}
+
+/* Canvas Toolbar */
+.ecg-canvas-toolbar {
+  background: var(--vault-surface);
+  border: 1px solid var(--vault-border);
+  border-top-left-radius: var(--vault-radius, 12px);
+  border-top-right-radius: var(--vault-radius, 12px);
+  padding: 0.75rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  border-bottom: none;
+}
+
+.ecg-tool-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ecg-tool-label {
+  font-size: 0.78rem;
+  color: var(--vault-muted);
+  font-weight: 600;
+}
+
+.ecg-tool-btn {
+  padding: 0.45rem 0.85rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-radius: 6px;
+  background: var(--vault-bg);
+  border: 1px solid var(--vault-border);
+  color: var(--vault-text);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all 0.15s;
+}
+
+.ecg-tool-btn:hover {
+  border-color: #0284c7;
+  color: #0284c7;
+}
+
+.ecg-tool-btn.active {
+  background: rgba(2, 132, 199, 0.12);
+  border-color: #0284c7;
+  color: #0284c7;
+}
+
+.ecg-select-sm {
+  padding: 0.4rem 0.65rem;
+  font-size: 0.8rem;
+  border-radius: 6px;
+  border: 1px solid var(--vault-border);
+  background: var(--vault-bg);
+  color: var(--vault-text);
+}
+
+/* Annotation Toolbar */
+.ecg-annotation-toolbar {
+  background: var(--vault-bg);
+  border-left: 1px solid var(--vault-border);
+  border-right: 1px solid var(--vault-border);
+  padding: 0.5rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.ecg-ann-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--vault-muted);
+}
+
+.ecg-ann-btn-group {
+  display: flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.ecg-ann-btn {
+  padding: 0.3rem 0.65rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 4px;
+  background: var(--vault-surface);
+  border: 1px solid var(--vault-border);
+  color: var(--vault-text);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.ecg-ann-btn:hover {
+  border-color: #ef4444;
+  color: #ef4444;
+}
+
+.ecg-ann-btn.active {
+  background: #ef4444;
+  color: #fff;
+  border-color: #ef4444;
+}
+
+.ecg-ann-btn--clear {
+  margin-left: 0.5rem;
+  background: transparent;
+  color: var(--vault-muted);
+}
+
+.ecg-ann-btn--clear:hover {
+  color: #ef4444;
+}
+
+/* Canvas Wrapper */
+.ecg-canvas-wrapper {
+  background: var(--vault-surface);
+  border: 1px solid var(--vault-border);
+  border-bottom-left-radius: var(--vault-radius, 12px);
+  border-bottom-right-radius: var(--vault-radius, 12px);
+  overflow: hidden;
+  box-shadow: 0 4px 25px -4px rgba(0, 0, 0, 0.08);
+  margin-bottom: 1.5rem;
+}
+
+/* Diagnostic Subsystem */
+.ecg-diagnostic-section {
+  background: var(--vault-surface);
+  border: 1px solid var(--vault-border);
+  border-radius: var(--vault-radius, 12px);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.ecg-diag-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--vault-border);
+  background: var(--vault-bg);
+  overflow-x: auto;
+}
+
+.ecg-tab-btn {
+  padding: 0.85rem 1.25rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--vault-muted);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+.ecg-tab-btn:hover {
+  color: #0284c7;
+}
+
+.ecg-tab-btn.active {
+  color: #0284c7;
+  border-bottom-color: #0284c7;
+  background: var(--vault-surface);
+  font-weight: 700;
+}
+
+.ecg-tab-content {
+  padding: 1.5rem;
+}
+
+/* Diagnosis Tab */
+.ecg-diag-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .ecg-diag-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ecg-diag-card {
+  background: var(--vault-bg);
+  border: 1px solid var(--vault-border);
+  border-radius: 10px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.ecg-diag-card--primary {
+  border-color: rgba(2, 132, 199, 0.35);
+  background: radial-gradient(circle at 100% 0%, rgba(2, 132, 199, 0.06) 0%, var(--vault-bg) 70%);
+}
+
+.ecg-diag-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.ecg-diag-card-header h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 0;
+  flex: 1;
+}
+
+.ecg-confidence-tag {
+  font-size: 0.75rem;
+  color: #0284c7;
+  font-weight: 700;
+  background: rgba(2, 132, 199, 0.12);
+  padding: 0.2rem 0.5rem;
+  border-radius: 9999px;
+}
+
+.ecg-primary-diagnosis {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #ef4444;
+  line-height: 1.4;
+}
+
+.ecg-culprit-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  padding: 0.75rem;
+  background: var(--vault-surface);
+  border: 1px solid var(--vault-border);
+  border-radius: 8px;
+  font-size: 0.85rem;
+}
+
+.ecg-culprit-box p {
+  margin: 0.2rem 0 0;
+  color: var(--vault-muted);
+}
+
+.ecg-key-findings-list {
+  font-size: 0.85rem;
+}
+
+.ecg-key-findings-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.ecg-key-findings-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  line-height: 1.45;
+}
+
+.ecg-treatment-steps {
+  padding-left: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin: 0;
+}
+
+.ecg-treatment-steps li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  font-size: 0.85rem;
+  line-height: 1.45;
+}
+
+.ecg-step-num {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #0284c7;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.ecg-differentials-box {
+  background: var(--vault-surface);
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid var(--vault-border);
+  font-size: 0.8rem;
+}
+
+.ecg-differentials-box p {
+  margin: 0.25rem 0 0;
+  color: var(--vault-muted);
+}
+
+.ecg-learning-box {
+  display: flex;
+  gap: 0.65rem;
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  padding: 0.75rem;
+  border-radius: 8px;
+  font-size: 0.82rem;
+}
+
+.ecg-learning-box i {
+  color: #10b981;
+  margin-top: 0.2rem;
+}
+
+.ecg-learning-box p {
+  margin: 0.2rem 0;
+}
+
+/* Criteria Tab */
+.ecg-criteria-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .ecg-criteria-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ecg-criteria-card {
+  background: var(--vault-bg);
+  border: 1px solid var(--vault-border);
+  border-radius: 10px;
+  padding: 1.25rem;
+}
+
+.ecg-criteria-card h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0 0 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ecg-metrics-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.ecg-metrics-table td {
+  padding: 0.55rem 0.5rem;
+  border-bottom: 1px solid var(--vault-border);
+}
+
+.ecg-criteria-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.ecg-crit-item {
+  background: var(--vault-surface);
+  border: 1px solid var(--vault-border);
+  border-radius: 8px;
+  padding: 0.75rem;
+}
+
+.ecg-crit-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.25rem;
+  font-size: 0.85rem;
+}
+
+.ecg-crit-val {
+  font-weight: 700;
+  color: #0284c7;
+}
+
+.ecg-crit-desc {
+  font-size: 0.78rem;
+  color: var(--vault-muted);
+  margin: 0;
+}
+
+/* Anatomy Grid */
+.ecg-anatomy-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.ecg-lead-anatomy-card {
+  background: var(--vault-bg);
+  border: 1px solid var(--vault-border);
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.ecg-lead-anatomy-header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.ecg-lead-code {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #0284c7;
+  font-family: var(--font-mono, monospace);
+}
+
+.ecg-lead-region {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--vault-text);
+}
+
+.ecg-lead-vessel {
+  font-size: 0.78rem;
+  color: var(--vault-muted);
+}
+
+.ecg-lead-desc {
+  font-size: 0.76rem;
+  color: var(--vault-muted);
+  margin: 0;
+  line-height: 1.45;
+}
+
+/* Annotation Tab */
+.ecg-empty-ann-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--vault-muted);
+}
+
+.ecg-empty-ann-state h3 {
+  margin: 1rem 0 0.5rem;
+  color: var(--vault-text);
+}
+
+.ecg-empty-ann-state p {
+  max-width: 500px;
+  margin: 0 auto;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.ecg-ann-summary-card {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  background: var(--vault-bg);
+  border: 1px solid var(--vault-border);
+  border-radius: 10px;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.ecg-ann-score-box {
+  text-align: center;
+  min-width: 100px;
+}
+
+.ecg-ann-score {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #10b981;
+  display: block;
+  line-height: 1;
+}
+
+.ecg-ann-score-label {
+  font-size: 0.75rem;
+  color: var(--vault-muted);
+  font-weight: 600;
+}
+
+.ecg-ann-summary-text h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1.05rem;
+}
+
+.ecg-ann-feedback {
+  font-size: 0.85rem;
+  margin: 0 0 0.4rem;
+}
+
+.ecg-ann-pearl {
+  font-size: 0.82rem;
+  color: var(--vault-muted);
+  margin: 0;
+}
+
+.ecg-ann-items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.ecg-ann-items-list h4 {
+  margin: 0 0 0.35rem;
+  font-size: 0.95rem;
+}
+
+.ecg-ann-result-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--vault-border);
+  background: var(--vault-bg);
+}
+
+.ecg-ann-result-row--EXACT {
+  border-color: rgba(16, 185, 129, 0.4);
+  background: rgba(16, 185, 129, 0.05);
+}
+
+.ecg-ann-result-row--CLOSE {
+  border-color: rgba(245, 158, 11, 0.4);
+  background: rgba(245, 158, 11, 0.05);
+}
+
+.ecg-ann-result-row--MISPLACED {
+  border-color: rgba(239, 68, 68, 0.4);
+  background: rgba(239, 68, 68, 0.05);
+}
+
+.ecg-ann-wave-badge {
+  font-weight: 800;
+  font-size: 0.85rem;
+  min-width: 60px;
+}
+
+.ecg-ann-item-desc {
+  flex: 1;
+  font-size: 0.82rem;
+}
+
+.ecg-ann-item-desc p {
+  margin: 0.2rem 0 0;
+  color: var(--vault-muted);
+}
+
+/* Toast */
+.ecg-toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: #0f172a;
+  color: #fff;
+  padding: 0.85rem 1.5rem;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.25);
+  z-index: 9999;
+  border: 1px solid #334155;
+}

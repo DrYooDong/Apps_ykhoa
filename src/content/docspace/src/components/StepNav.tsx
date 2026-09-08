@@ -19,7 +19,7 @@ export const StepNav: React.FC<StepNavProps> = ({
     { id: 't1', num: '2', title: '2. Nạp dữ kiện', subtitle: 'Sinh hiệu · Xét nghiệm · Triệu chứng' },
     { id: 't2', num: '3', title: '3. Phân tích lâm sàng', subtitle: 'Chẩn đoán sơ bộ · Phân biệt' },
     { id: 't3', num: '4', title: '4. Phác đồ điều trị', subtitle: 'Xử trí cấp cứu · Y lệnh · Chuyển viện' },
-    { id: 't4', num: '⛁', title: '5. Kho tri thức EBM', subtitle: 'Nền tảng bằng chứng & 2.400+ bài' },
+    { id: 't4', num: '5', title: '5. Kho tri thức', subtitle: 'Nền tảng bằng chứng & 2.400+ bài' },
   ];
 
   return (

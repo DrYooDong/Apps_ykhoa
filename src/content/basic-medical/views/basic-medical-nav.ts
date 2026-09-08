@@ -4,6 +4,7 @@
  * 
  * Thanh điều hướng thống nhất xuất hiện đồng bộ ở đầu tất cả các phân hệ Cơ Sở Y Khoa:
  * Tổng Quan Hub • Giải Phẫu - Sinh Lý • Cơ Chế Bệnh Sinh • Hóa Sinh • Dịch Tễ • Mô Phỏng • Công Thức • Trắc Nghiệm
+ * 100% Unified with DocSpace Medical OS Design Tokens
  */
 
 export type BasicMedicalTabKey = 
@@ -33,7 +34,7 @@ export const BASIC_MEDICAL_TABS: BasicMedicalTabItem[] = [
     shortLabel: 'Hub',
     icon: 'fa-layer-group',
     hash: '#/basic-medical',
-    color: '#0284c7'
+    color: 'var(--dsp-sky)'
   },
   {
     key: 'giai-phau-sinh-ly',
@@ -41,7 +42,7 @@ export const BASIC_MEDICAL_TABS: BasicMedicalTabItem[] = [
     shortLabel: 'GP - SL',
     icon: 'fa-heart-pulse',
     hash: '#/basic-medical/giai-phau-sinh-ly',
-    color: '#0284c7',
+    color: 'var(--dsp-sky)',
     badge: '9 Hệ'
   },
   {
@@ -50,7 +51,7 @@ export const BASIC_MEDICAL_TABS: BasicMedicalTabItem[] = [
     shortLabel: 'CCBS - SBL',
     icon: 'fa-microscope',
     hash: '#/basic-medical/co-che-benh-sinh',
-    color: '#059669',
+    color: 'var(--dsp-emerald)',
     badge: '64+ Ca'
   },
   {
@@ -59,7 +60,7 @@ export const BASIC_MEDICAL_TABS: BasicMedicalTabItem[] = [
     shortLabel: 'Hóa Sinh',
     icon: 'fa-flask-vial',
     hash: '#/basic-medical/hoa-sinh',
-    color: '#8b5cf6',
+    color: 'var(--dsp-violet)',
     badge: '7 Khối'
   },
   {
@@ -68,7 +69,7 @@ export const BASIC_MEDICAL_TABS: BasicMedicalTabItem[] = [
     shortLabel: 'Dịch Tễ',
     icon: 'fa-virus-covid',
     hash: '#/basic-medical/dich-te-hoc',
-    color: '#0d9488',
+    color: 'var(--dsp-teal)',
     badge: '2×2 Solver'
   },
   {
@@ -77,7 +78,7 @@ export const BASIC_MEDICAL_TABS: BasicMedicalTabItem[] = [
     shortLabel: 'Mô Phỏng',
     icon: 'fa-bolt',
     hash: '#/basic-medical/simulators',
-    color: '#f59e0b',
+    color: 'var(--dsp-amber)',
     badge: 'Dynamic'
   },
   {
@@ -86,7 +87,7 @@ export const BASIC_MEDICAL_TABS: BasicMedicalTabItem[] = [
     shortLabel: 'Công Thức',
     icon: 'fa-calculator',
     hash: '#/basic-medical/formula-vault',
-    color: '#06b6d4',
+    color: 'var(--dsp-sky)',
     badge: 'Calculators'
   },
   {
@@ -95,7 +96,7 @@ export const BASIC_MEDICAL_TABS: BasicMedicalTabItem[] = [
     shortLabel: 'Trắc Nghiệm',
     icon: 'fa-brain',
     hash: '#/basic-medical/quiz',
-    color: '#ec4899',
+    color: 'var(--dsp-pink)',
     badge: 'Exam Bank'
   }
 ];
@@ -105,7 +106,7 @@ export const BASIC_MEDICAL_TABS: BasicMedicalTabItem[] = [
  */
 export function renderBasicMedicalNav(activeKey: BasicMedicalTabKey): string {
   return `
-    <nav class="basic-medical-universal-nav" aria-label="Phân hệ Cơ sở Y khoa" style="background:var(--color-surface, #ffffff); border:1px solid var(--color-border, #e2e8f0); border-radius:14px; padding:6px; margin-bottom:1.5rem; box-shadow:0 4px 16px rgba(0,0,0,0.03); position:sticky; top:64px; z-index:30; backdrop-filter:blur(12px);">
+    <nav class="basic-medical-universal-nav" aria-label="Phân hệ Cơ sở Y khoa" style="background:var(--dsp-glass-bg); border:1px solid var(--dsp-border-subtle); border-radius:var(--dsp-radius-lg); padding:6px; margin-bottom:1.5rem; box-shadow:var(--dsp-shadow-sm); position:sticky; top:64px; z-index:var(--dsp-z-sticky); backdrop-filter:var(--dsp-backdrop-blur); -webkit-backdrop-filter:var(--dsp-backdrop-blur);">
       <div style="display:flex; gap:6px; overflow-x:auto; -webkit-overflow-scrolling:touch; padding-bottom:2px;" class="hide-scrollbar">
         ${BASIC_MEDICAL_TABS.map(tab => {
           const isActive = tab.key === activeKey;
@@ -115,15 +116,15 @@ export function renderBasicMedicalNav(activeKey: BasicMedicalTabKey): string {
               align-items:center;
               gap:7px;
               padding:7px 13px;
-              border-radius:10px;
+              border-radius:var(--dsp-radius-md);
               font-size:12.5px;
               font-weight:${isActive ? '800' : '600'};
               text-decoration:none;
               white-space:nowrap;
-              color:${isActive ? '#ffffff' : 'var(--color-text, #334155)'};
+              color:${isActive ? '#ffffff' : 'var(--dsp-text-secondary)'};
               background:${isActive ? tab.color : 'transparent'};
-              box-shadow:${isActive ? '0 2px 8px rgba(0,0,0,0.12)' : 'none'};
-              transition:all 0.18s ease;
+              box-shadow:${isActive ? 'var(--dsp-shadow-sm)' : 'none'};
+              transition:var(--dsp-transition);
               flex-shrink:0;
             ">
               <i class="fa-solid ${tab.icon}" style="color:${isActive ? '#ffffff' : tab.color}; font-size:12px;"></i>
@@ -132,10 +133,10 @@ export function renderBasicMedicalNav(activeKey: BasicMedicalTabKey): string {
                 <span style="
                   font-size:9.5px;
                   font-weight:800;
-                  padding:1.5px 5.5px;
-                  border-radius:999px;
-                  background:${isActive ? 'rgba(255,255,255,0.25)' : 'rgba(0,0,0,0.06)'};
-                  color:${isActive ? '#ffffff' : 'var(--color-text-muted, #64748b)'};
+                  padding:1.5px 6px;
+                  border-radius:var(--dsp-radius-full);
+                  background:${isActive ? 'rgba(255,255,255,0.25)' : 'var(--dsp-surface-3)'};
+                  color:${isActive ? '#ffffff' : 'var(--dsp-text-muted)'};
                 ">${tab.badge}</span>
               ` : ''}
             </a>

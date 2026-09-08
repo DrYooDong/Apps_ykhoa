@@ -1,0 +1,497 @@
+/**
+ * CliniPortal CDSS — RadAI X-Ray Stylesheet (DocSpace PACS Aesthetic)
+ * Path: src/content/knowledge-vault/cdss/xray/css/xray-cdss.css
+ */
+
+:root {
+  --xray-bg: #f8fafc;
+  --xray-panel: #ffffff;
+  --xray-card: #ffffff;
+  --xray-ink: #0f172a;
+  --xray-ink2: #475569;
+  --xray-muted: #64748b;
+  --xray-line: #e2e8f0;
+  --xray-line-subtle: #f1f5f9;
+
+  --xray-primary: #2563eb;
+  --xray-primary-hover: #1d4ed8;
+  --xray-primary-bg: #eff6ff;
+  --xray-primary-border: #bfdbfe;
+
+  --xray-pacs-bg: #090d16;
+  --xray-pacs-border: #1e293b;
+
+  --xray-red: #ef4444;
+  --xray-red-bg: #fef2f2;
+  --xray-red-border: #fecaca;
+
+  --xray-amber: #f59e0b;
+  --xray-amber-bg: #fffbeb;
+  --xray-amber-border: #fde68a;
+
+  --xray-green: #10b981;
+  --xray-green-bg: #ecfdf5;
+  --xray-green-border: #a7f3d0;
+
+  --xray-font-sans: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --xray-font-display: 'Space Grotesk', -apple-system, sans-serif;
+  --xray-font-mono: 'IBM Plex Mono', monospace;
+
+  --xray-radius-sm: 6px;
+  --xray-radius-md: 10px;
+  --xray-radius-lg: 14px;
+  --xray-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --xray-shadow-md: 0 4px 12px -2px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="dark"] {
+  --xray-bg: #0b1120;
+  --xray-panel: #111827;
+  --xray-card: #1e293b;
+  --xray-ink: #f8fafc;
+  --xray-ink2: #cbd5e1;
+  --xray-muted: #94a3b8;
+  --xray-line: #334155;
+  --xray-line-subtle: #1e293b;
+
+  --xray-primary: #3b82f6;
+  --xray-primary-hover: #60a5fa;
+  --xray-primary-bg: rgba(59, 130, 246, 0.15);
+  --xray-primary-border: rgba(59, 130, 246, 0.35);
+
+  --xray-red-bg: rgba(239, 68, 68, 0.15);
+  --xray-red-border: rgba(239, 68, 68, 0.3);
+
+  --xray-amber-bg: rgba(245, 158, 11, 0.15);
+  --xray-amber-border: rgba(245, 158, 11, 0.3);
+
+  --xray-green-bg: rgba(16, 185, 129, 0.15);
+  --xray-green-border: rgba(16, 185, 129, 0.3);
+}
+
+body {
+  background-color: var(--xray-bg);
+  background-image: radial-gradient(rgba(148, 163, 184, 0.25) 0.75px, transparent 0.75px);
+  background-size: 16px 16px;
+  color: var(--xray-ink);
+  font-family: var(--xray-font-sans);
+  margin: 0;
+  padding: 0;
+}
+
+.xray-app-container {
+  max-width: 1450px;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 4rem;
+}
+
+/* Header Card */
+.xray-header-card {
+  background: var(--xray-panel);
+  border: 1px solid var(--xray-line);
+  border-radius: var(--xray-radius-lg);
+  padding: 1.5rem 2rem;
+  box-shadow: var(--xray-shadow-sm);
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.xray-brand-wrap {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.xray-brand-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+}
+
+.xray-header-title {
+  font-family: var(--xray-font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--xray-ink);
+  margin: 0 0 0.25rem;
+  letter-spacing: -0.02em;
+}
+
+.xray-header-subtitle {
+  font-size: 0.85rem;
+  color: var(--xray-muted);
+  margin: 0;
+}
+
+.xray-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+/* Patient Demographics Banner */
+.xray-patient-banner {
+  background: var(--xray-panel);
+  border: 1px solid var(--xray-line);
+  border-radius: var(--xray-radius-md);
+  padding: 0.85rem 1.5rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.xray-demographics-list {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 0.84rem;
+}
+
+.xray-demographics-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--xray-muted);
+}
+
+.xray-demographics-item b {
+  color: var(--xray-ink);
+  font-weight: 700;
+}
+
+/* Buttons */
+.xray-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.1rem;
+  border-radius: var(--xray-radius-md);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+  text-decoration: none;
+}
+
+.xray-btn--primary {
+  background: var(--xray-primary);
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.25);
+}
+
+.xray-btn--primary:hover {
+  background: var(--xray-primary-hover);
+  transform: translateY(-1px);
+}
+
+.xray-btn--outline {
+  background: var(--xray-panel);
+  border-color: var(--xray-line);
+  color: var(--xray-ink2);
+}
+
+.xray-btn--outline:hover {
+  border-color: var(--xray-primary);
+  color: var(--xray-primary);
+  background: var(--xray-primary-bg);
+}
+
+.xray-btn--soap {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.25);
+}
+
+.xray-btn--soap:hover {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+
+/* Tabs */
+.xray-tabs-bar {
+  display: flex;
+  gap: 0.5rem;
+  background: var(--xray-panel);
+  padding: 0.4rem;
+  border-radius: var(--xray-radius-md);
+  border: 1px solid var(--xray-line);
+  margin-bottom: 1.5rem;
+  overflow-x: auto;
+}
+
+.xray-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.25rem;
+  border-radius: var(--xray-radius-sm);
+  border: none;
+  background: transparent;
+  color: var(--xray-muted);
+  font-weight: 600;
+  font-size: 0.86rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.xray-tab-btn:hover {
+  color: var(--xray-ink);
+  background: var(--xray-line-subtle);
+}
+
+.xray-tab-btn.active {
+  background: var(--xray-primary-bg);
+  color: var(--xray-primary);
+  border: 1px solid var(--xray-primary-border);
+  box-shadow: var(--xray-shadow-sm);
+}
+
+/* Workstation Grid Layout */
+.xray-workstation-grid {
+  display: grid;
+  grid-template-columns: minmax(500px, 640px) 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+@media (max-width: 1120px) {
+  .xray-workstation-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* PACS Viewer Box */
+.xray-pacs-card {
+  background: var(--xray-pacs-bg);
+  border: 1px solid var(--xray-pacs-border);
+  border-radius: var(--xray-radius-lg);
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+}
+
+/* PACS Toolbar */
+.xray-pacs-toolbar {
+  background: #0f172a;
+  border-bottom: 1px solid #1e293b;
+  padding: 0.6rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.xray-pacs-tool-group {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.xray-pacs-btn {
+  background: #1e293b;
+  border: 1px solid #334155;
+  color: #e2e8f0;
+  padding: 0.4rem 0.65rem;
+  border-radius: 6px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: all 0.15s ease;
+}
+
+.xray-pacs-btn:hover {
+  background: #334155;
+  border-color: #60a5fa;
+  color: #ffffff;
+}
+
+.xray-pacs-btn.active {
+  background: #2563eb;
+  border-color: #60a5fa;
+  color: #ffffff;
+}
+
+/* Slider Controls Bar */
+.xray-pacs-sliders {
+  background: #0b1120;
+  border-bottom: 1px solid #1e293b;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  font-size: 0.74rem;
+  color: #94a3b8;
+}
+
+.xray-slider-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.xray-slider-item input[type="range"] {
+  width: 90px;
+  height: 4px;
+  accent-color: #3b82f6;
+}
+
+/* Canvas Viewport */
+.xray-canvas-viewport {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000000;
+  overflow: hidden;
+  cursor: crosshair;
+  min-height: 520px;
+}
+
+.xray-canvas-viewport canvas {
+  display: block;
+}
+
+/* Findings & Diagnosis Panel */
+.xray-findings-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.xray-findings-card {
+  background: var(--xray-panel);
+  border: 1px solid var(--xray-line);
+  border-radius: var(--xray-radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--xray-shadow-sm);
+}
+
+.xray-findings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.xray-finding-item {
+  background: var(--xray-bg);
+  border: 1px solid var(--xray-line);
+  border-radius: var(--xray-radius-md);
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.xray-finding-item:hover {
+  border-color: var(--xray-primary);
+  transform: translateY(-1px);
+}
+
+.xray-finding-item.active {
+  border-color: var(--xray-primary);
+  background: var(--xray-primary-bg);
+  box-shadow: 0 0 0 2px var(--xray-primary-border);
+}
+
+.xray-finding-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.35rem;
+}
+
+.xray-finding-title {
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--xray-ink);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.xray-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: 9999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.xray-badge--critical { background: var(--xray-red-bg); color: var(--xray-red); border: 1px solid var(--xray-red-border); }
+.xray-badge--severe { background: var(--xray-amber-bg); color: #d97706; border: 1px solid var(--xray-amber-border); }
+.xray-badge--moderate { background: var(--xray-amber-bg); color: var(--xray-amber); border: 1px solid var(--xray-amber-border); }
+.xray-badge--mild { background: var(--xray-green-bg); color: var(--xray-green); border: 1px solid var(--xray-green-border); }
+
+.xray-finding-desc {
+  font-size: 0.84rem;
+  color: var(--xray-ink2);
+  margin: 0 0 0.5rem;
+  line-height: 1.5;
+}
+
+.xray-finding-details {
+  background: var(--xray-panel);
+  border-radius: 8px;
+  padding: 0.75rem;
+  border: 1px dashed var(--xray-line);
+  font-size: 0.78rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+/* Toast */
+.xray-toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: #0f172a;
+  color: #ffffff;
+  padding: 0.85rem 1.4rem;
+  border-radius: var(--xray-radius-md);
+  box-shadow: var(--xray-shadow-md);
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  z-index: 9999;
+  transform: translateY(100px);
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.xray-toast.show {
+  transform: translateY(0);
+  opacity: 1;
+}

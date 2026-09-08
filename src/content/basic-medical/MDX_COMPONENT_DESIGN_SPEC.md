@@ -21,34 +21,43 @@
 
 ## 1. NGUYÊN TẮC & HỆ THỐNG DESIGN TOKENS
 
-Mọi thành phần trong MDX bắt buộc tuân thủ hệ thống CSS Variables chung của CliniPortal:
+Mọi thành phần trong MDX bắt buộc tuân thủ hệ thống Master Design Tokens của CliniPortal (`basic-medical-design-tokens.css` kết nối chuẩn DocSpace Medical OS):
 
 ```css
-/* Color Tokens */
---color-primary: #0284c7;        /* Màu chủ đạo (Sky Blue) */
---color-primary-dark: #0369a1;   /* Màu nhấn tương phản */
---color-surface: #ffffff;        /* Nền thẻ / Container (Light) */
---color-surface-2: #f8fafc;      /* Nền phụ (Light) */
---color-bg: #f0f4f8;             /* Nền toàn trang */
---color-border: #cbd5e1;         /* Viền tiêu chuẩn */
---color-text: #0f172a;           /* Chữ chính */
---color-text-muted: #475569;     /* Chữ phụ / Chú thích */
+/* --- Brand & Primary Clinical Semantics --- */
+--dsp-sky:                #0284c7;        /* Xanh dương lâm sàng chủ đạo */
+--dsp-sky-glow:           rgba(2, 132, 199, 0.35);
+--dsp-sky-light:          rgba(2, 132, 199, 0.12);
 
-/* Clinical Semantic Accents */
---color-success: #059669;        /* Sinh lý bình thường, Tiên lượng tốt */
---color-warning: #d97706;        /* Theo dõi, Nguy cơ trung bình */
---color-danger: #dc2626;         /* Cấp cứu, Cờ đỏ (Red Flags), Độc tính */
---color-purple: #7c3aed;         /* Chuyển hóa, Dược lý, Gen di truyền */
---color-teal: #0d9488;           /* Cận lâm sàng, Xét nghiệm Lab */
+--dsp-emerald:            #10b981;        /* Sinh lý bình thường, Tiên lượng tốt */
+--dsp-rose:               #ef4444;        /* Cấp cứu, Cờ đỏ (Red Flags), Độc tính */
+--dsp-amber:              #f59e0b;        /* Cảnh báo, Nguy cơ trung bình, Theo dõi */
+--dsp-violet:             #8b5cf6;        /* Chuyển hóa, Hóa sinh, Dược lý, Gen */
+--dsp-teal:               #0d9488;        /* Cận lâm sàng, Xét nghiệm Lab */
+--dsp-indigo:             #6366f1;        /* Bằng chứng EBM, Landmark Trials */
+--dsp-pink:               #ec4899;        /* Teach-back & Hướng dẫn người bệnh */
 
-/* Dark Mode Tokens (Tự động kích hoạt với [data-theme="dark"]) */
-[data-theme="dark"] {
-  --color-surface: #1e293b;
-  --color-surface-2: #0f172a;
-  --color-bg: #0b1120;
-  --color-border: #334155;
-  --color-text: #f1f5f9;
-  --color-text-muted: #94a3b8;
+/* --- Dark-First Surface & Glass Tiers --- */
+:root {
+  --dsp-bg:               #090d16;        /* Nền tối sâu mặc định */
+  --dsp-surface:          #0f172a;        /* Nền thẻ lâm sàng */
+  --dsp-surface-2:        rgba(30, 41, 59, 0.7);
+  --dsp-border:           rgba(255, 255, 255, 0.08);
+  --dsp-text:             #f1f5f9;        /* Chữ chính */
+  --dsp-text-secondary:   #94a3b8;
+  --dsp-glass-bg:         rgba(15, 23, 42, 0.82);
+  --dsp-backdrop-blur:    blur(16px);
+}
+
+/* Light Mode Overrides (Tự động kích hoạt với [data-theme="light"]) */
+[data-theme="light"] {
+  --dsp-bg:               #f8fafc;
+  --dsp-surface:          #ffffff;
+  --dsp-surface-2:        #f1f5f9;
+  --dsp-border:           rgba(203, 213, 225, 0.85);
+  --dsp-text:             #0f172a;
+  --dsp-text-secondary:   #475569;
+  --dsp-glass-bg:         rgba(255, 255, 255, 0.9);
 }
 ```
 

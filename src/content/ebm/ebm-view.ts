@@ -3,6 +3,9 @@
  * Path: src/content/ebm/ebm-view.ts
  */
 
+import './css/ebm-design-tokens.css';
+import './css/ebm-premium-system.css';
+import './css/ebm-bedside-copilot.css';
 import './css/yhcc-hub.css';
 import './css/pubmed-guidelines-board.css';
 import '../../styles/components/evidence-bridge.css';
@@ -12,12 +15,12 @@ export function renderEbmView(): string {
     <div class="ebm-hub-page-wrapper" style="width: 100%; max-width: 1520px; margin: 0 auto; padding-top: 1.5rem; padding-bottom: 3rem;">
       
       <!-- BREADCRUMB -->
-      <div class="breadcrumb" style="font-size: 0.82rem; color: var(--color-text-muted, #64748b); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.45rem; font-weight: 500;">
+      <div class="breadcrumb" style="font-size: 0.82rem; color: var(--dsp-text-muted, #64748b); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.45rem; font-weight: 500;">
         <a href="#/" style="color: inherit; text-decoration: none; display: flex; align-items: center; gap: 4px;">
           <i class="fa-solid fa-house" style="font-size: 0.75rem;"></i> Trang chủ
         </a>
         <span>/</span>
-        <span style="color: var(--color-primary, #0284c7); font-weight: 800; display: flex; align-items: center; gap: 4px;">
+        <span style="color: var(--dsp-sky, #0284c7); font-weight: 800; display: flex; align-items: center; gap: 4px;">
           <i class="fa-solid fa-scale-balanced" style="font-size: 0.8rem;"></i> Y Học Chứng Cứ (EBM Master Command Center)
         </span>
       </div>
@@ -122,7 +125,7 @@ export function renderEbmView(): string {
         <div class="ebm-bento-4-grid">
           
           <!-- Card 1: Thống Kê Y Học & Thiết Kế Nghiên Cứu -->
-          <a href="#/ebm/thong-ke-y-hoc" class="ebm-bento-card-compact ebm-holo-bento" style="--card-accent:#0284c7; --card-icon-bg:rgba(2,132,199,0.1); --card-glow:rgba(2,132,199,0.2);">
+          <a href="#/ebm/thong-ke-y-hoc" class="ebm-bento-card-compact ebm-holo-bento" style="--card-accent:var(--dsp-sky); --card-icon-bg:var(--dsp-sky-light); --card-glow:var(--dsp-sky-glow);">
             <div>
               <div class="ebm-bento-top-row-sm">
                 <div class="ebm-bento-icon-box-sm">
@@ -146,7 +149,7 @@ export function renderEbmView(): string {
           </a>
 
           <!-- Card 2: Web Guidelines & Cơ Sở Dữ Liệu Phác Đồ -->
-          <a href="#/ebm/guidelines" class="ebm-bento-card-compact ebm-holo-bento" style="--card-accent:#7c3aed; --card-icon-bg:rgba(124,58,237,0.1); --card-glow:rgba(124,58,237,0.2);">
+          <a href="#/ebm/guidelines" class="ebm-bento-card-compact ebm-holo-bento" style="--card-accent:var(--dsp-violet); --card-icon-bg:var(--dsp-violet-light); --card-glow:var(--dsp-violet-glow);">
             <div>
               <div class="ebm-bento-top-row-sm">
                 <div class="ebm-bento-icon-box-sm">
@@ -170,7 +173,7 @@ export function renderEbmView(): string {
           </a>
 
           <!-- Card 3: Guideline Radar (Diff Studio) -->
-          <a href="#/ebm/radar" class="ebm-bento-card-compact ebm-holo-bento" style="--card-accent:#10b981; --card-icon-bg:rgba(16,185,129,0.1); --card-glow:rgba(16,185,129,0.2);">
+          <a href="#/ebm/radar" class="ebm-bento-card-compact ebm-holo-bento" style="--card-accent:var(--dsp-emerald); --card-icon-bg:var(--dsp-emerald-light); --card-glow:var(--dsp-emerald-glow);">
             <div>
               <div class="ebm-bento-top-row-sm">
                 <div class="ebm-bento-icon-box-sm">
@@ -194,7 +197,7 @@ export function renderEbmView(): string {
           </a>
 
           <!-- Card 4: EBM Practice Lab & Bedside Tools -->
-          <a href="#/ebm/ebm-lab" class="ebm-bento-card-compact ebm-holo-bento" style="--card-accent:#06b6d4; --card-icon-bg:rgba(6,182,212,0.1); --card-glow:rgba(6,182,212,0.2);">
+          <a href="#/ebm/ebm-lab" class="ebm-bento-card-compact ebm-holo-bento" style="--card-accent:var(--dsp-teal); --card-icon-bg:var(--dsp-teal-light); --card-glow:var(--dsp-teal-glow);">
             <div>
               <div class="ebm-bento-top-row-sm">
                 <div class="ebm-bento-icon-box-sm">
@@ -373,30 +376,30 @@ export function renderEbmView(): string {
             
             <!-- 5As Stepper Navigation Cards -->
             <div class="ebm-5as-stepper-bar">
-              <div class="ebm-5as-step-card is-active js-5as-step-btn" data-step="1" style="--step-accent:#0284c7;">
-                <div style="font-size: 1.1rem; color:#0284c7;"><i class="fa-solid fa-circle-question"></i></div>
-                <div style="font-size: 0.8rem; font-weight: 800; color: var(--hub-text);">1. Ask</div>
-                <div style="font-size: 0.68rem; color: var(--hub-text-muted);">Đặt câu hỏi PICO</div>
+              <div class="ebm-5as-step-card is-active js-5as-step-btn" data-step="1" style="--step-accent:var(--dsp-sky);">
+                <div style="font-size: 1.1rem; color:var(--dsp-sky);"><i class="fa-solid fa-circle-question"></i></div>
+                <div style="font-size: 0.8rem; font-weight: 800; color: var(--dsp-text);">1. Ask</div>
+                <div style="font-size: 0.68rem; color: var(--dsp-text-muted);">Đặt câu hỏi PICO</div>
               </div>
-              <div class="ebm-5as-step-card js-5as-step-btn" data-step="2" style="--step-accent:#7c3aed;">
-                <div style="font-size: 1.1rem; color:#7c3aed;"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
-                <div style="font-size: 0.8rem; font-weight: 800; color: var(--hub-text);">2. Acquire</div>
-                <div style="font-size: 0.68rem; color: var(--hub-text-muted);">Tìm kiếm y văn</div>
+              <div class="ebm-5as-step-card js-5as-step-btn" data-step="2" style="--step-accent:var(--dsp-violet);">
+                <div style="font-size: 1.1rem; color:var(--dsp-violet);"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+                <div style="font-size: 0.8rem; font-weight: 800; color: var(--dsp-text);">2. Acquire</div>
+                <div style="font-size: 0.68rem; color: var(--dsp-text-muted);">Tìm kiếm y văn</div>
               </div>
-              <div class="ebm-5as-step-card js-5as-step-btn" data-step="3" style="--step-accent:#10b981;">
-                <div style="font-size: 1.1rem; color:#10b981;"><i class="fa-solid fa-scale-balanced"></i></div>
-                <div style="font-size: 0.8rem; font-weight: 800; color: var(--hub-text);">3. Appraise</div>
-                <div style="font-size: 0.68rem; color: var(--hub-text-muted);">Thẩm định giá trị</div>
+              <div class="ebm-5as-step-card js-5as-step-btn" data-step="3" style="--step-accent:var(--dsp-emerald);">
+                <div style="font-size: 1.1rem; color:var(--dsp-emerald);"><i class="fa-solid fa-scale-balanced"></i></div>
+                <div style="font-size: 0.8rem; font-weight: 800; color: var(--dsp-text);">3. Appraise</div>
+                <div style="font-size: 0.68rem; color: var(--dsp-text-muted);">Thẩm định giá trị</div>
               </div>
-              <div class="ebm-5as-step-card js-5as-step-btn" data-step="4" style="--step-accent:#f59e0b;">
-                <div style="font-size: 1.1rem; color:#f59e0b;"><i class="fa-solid fa-user-doctor"></i></div>
-                <div style="font-size: 0.8rem; font-weight: 800; color: var(--hub-text);">4. Apply</div>
-                <div style="font-size: 0.68rem; color: var(--hub-text-muted);">Ứng dụng lâm sàng</div>
+              <div class="ebm-5as-step-card js-5as-step-btn" data-step="4" style="--step-accent:var(--dsp-amber);">
+                <div style="font-size: 1.1rem; color:var(--dsp-amber);"><i class="fa-solid fa-user-doctor"></i></div>
+                <div style="font-size: 0.8rem; font-weight: 800; color: var(--dsp-text);">4. Apply</div>
+                <div style="font-size: 0.68rem; color: var(--dsp-text-muted);">Ứng dụng lâm sàng</div>
               </div>
-              <div class="ebm-5as-step-card js-5as-step-btn" data-step="5" style="--step-accent:#ef4444;">
-                <div style="font-size: 1.1rem; color:#ef4444;"><i class="fa-solid fa-chart-pie"></i></div>
-                <div style="font-size: 0.8rem; font-weight: 800; color: var(--hub-text);">5. Assess</div>
-                <div style="font-size: 0.68rem; color: var(--hub-text-muted);">Lượng giá &amp; Audit</div>
+              <div class="ebm-5as-step-card js-5as-step-btn" data-step="5" style="--step-accent:var(--dsp-rose);">
+                <div style="font-size: 1.1rem; color:var(--dsp-rose);"><i class="fa-solid fa-chart-pie"></i></div>
+                <div style="font-size: 0.8rem; font-weight: 800; color: var(--dsp-text);">5. Assess</div>
+                <div style="font-size: 0.68rem; color: var(--dsp-text-muted);">Lượng giá &amp; Audit</div>
               </div>
             </div>
 

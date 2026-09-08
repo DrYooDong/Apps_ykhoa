@@ -1,42 +1,45 @@
 /* ============================================================
    BASIC MEDICAL ATOMIC: ACCORDIONS & DETAILS (physio-accordions.css)
    Collapsible Deep-Dive Panels, Mechanism Drawers & Interactive Detail Cards
+   100% Unified with DocSpace Medical OS Tokens
    ============================================================ */
 
 .physio-details {
-  background: var(--color-surface, #ffffff);
-  border: 1px solid var(--color-border, #cbd5e1);
-  border-radius: var(--radius-md, 14px);
+  background: var(--dsp-surface);
+  border: 1px solid var(--dsp-border-subtle);
+  border-radius: var(--dsp-radius-lg);
   margin: 1.5rem 0;
   overflow: hidden;
-  transition: border-color var(--tr, 200ms ease-out), box-shadow var(--tr, 200ms ease-out);
-  box-shadow: var(--shadow-sm, 0 2px 8px rgba(0, 0, 0, 0.03));
+  transition: border-color var(--dsp-transition), box-shadow var(--dsp-transition);
+  box-shadow: var(--dsp-shadow-sm);
+  backdrop-filter: var(--dsp-backdrop-blur);
+  -webkit-backdrop-filter: var(--dsp-backdrop-blur);
 }
 
 .physio-details[open] {
-  border-color: var(--color-primary, #0284c7);
-  box-shadow: var(--shadow-card-hover, 0 6px 18px rgba(2, 132, 199, 0.08));
+  border-color: var(--dsp-border-focus);
+  box-shadow: var(--dsp-shadow-md), 0 0 16px var(--dsp-sky-glow);
 }
 
 .physio-details summary {
   padding: 1rem 1.35rem;
-  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-family: var(--dsp-font-display);
   font-weight: 700;
   font-size: 0.94rem;
-  color: var(--color-text, #0f172a);
+  color: var(--dsp-text-primary);
   cursor: pointer;
-  background: var(--color-surface-2, #f8fafc);
+  background: var(--dsp-surface-2);
   user-select: none;
   list-style: none;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: background-color var(--tr-fast, 150ms ease-out), color var(--tr-fast, 150ms ease-out);
+  transition: background-color var(--dsp-transition-fast), color var(--dsp-transition-fast);
 }
 
 .physio-details summary:hover {
-  background: var(--color-surface-offset, #f1f5f9);
-  color: var(--color-primary, #0284c7);
+  background: var(--dsp-surface-3);
+  color: var(--dsp-primary-light);
 }
 
 .physio-details summary::-webkit-details-marker {
@@ -46,42 +49,20 @@
 .physio-details summary::after {
   content: '▼';
   font-size: 0.72rem;
-  transition: transform var(--tr, 200ms ease-out), color var(--tr, 200ms ease-out);
-  color: var(--color-text-muted, #64748b);
+  transition: transform var(--dsp-transition), color var(--dsp-transition);
+  color: var(--dsp-text-muted);
 }
 
 .physio-details[open] summary::after {
   transform: rotate(180deg);
-  color: var(--color-primary, #0284c7);
+  color: var(--dsp-primary-light);
 }
 
 .physio-details-content {
   padding: 1.25rem 1.4rem;
-  border-top: 1px solid var(--color-border, #cbd5e1);
-  background: var(--color-surface, #ffffff);
-  font-size: var(--text-sm, 0.88rem);
-  color: var(--color-text, #334155);
+  border-top: 1px solid var(--dsp-border-subtle);
+  background: var(--dsp-surface);
+  font-size: 0.88rem;
+  color: var(--dsp-text-primary);
   line-height: 1.65;
-}
-
-/* --- DARK MODE --- */
-[data-theme="dark"] .physio-details {
-  background: var(--color-surface, #1e293b);
-  border-color: var(--color-border, #334155);
-}
-
-[data-theme="dark"] .physio-details summary {
-  background: var(--color-surface-2, #0f172a);
-  color: var(--color-text, #f8fafc);
-}
-
-[data-theme="dark"] .physio-details summary:hover {
-  background: rgba(51, 65, 85, 0.5);
-  color: var(--color-primary-light, #38bdf8);
-}
-
-[data-theme="dark"] .physio-details-content {
-  background: var(--color-surface, #1e293b);
-  border-top-color: var(--color-border, #334155);
-  color: var(--color-text, #f1f5f9);
 }
