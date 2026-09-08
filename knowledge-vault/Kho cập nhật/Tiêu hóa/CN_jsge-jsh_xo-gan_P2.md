@@ -15,6 +15,8 @@ tags:
   - "loai/guideline"
   - "y-khoa/cn"
 updated: "2026-09-06"
+icd10:
+  - "K74"
 ---
 
 # TÓM TẮT HƯỚNG DẪN THỰC HÀNH LÂM SÀNG JSGE-JSH (2020) VỀ XƠ GAN - PHẦN 2

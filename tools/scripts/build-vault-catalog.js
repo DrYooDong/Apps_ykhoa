@@ -1,6 +1,7 @@
 /**
  * CliniPortal — Knowledge Vault Catalog Builder Script
  * Quét toàn bộ markdown trong knowledge-vault/ và biên dịch sang vault-catalog.json
+ * Tự động đồng bộ sang cả Knowledge Vault Hub và DocSpace MedLens
  */
 
 const fs = require('fs');
@@ -8,6 +9,7 @@ const path = require('path');
 
 const VAULT_ROOT = path.resolve(__dirname, '../../knowledge-vault');
 const OUTPUT_FILE = path.resolve(__dirname, '../../src/content/knowledge-vault/data/vault-catalog.json');
+const DOCSPACE_OUTPUT_FILE = path.resolve(__dirname, '../../src/content/docspace/src/data/vault-catalog.json');
 
 const KHO_MAPPINGS = [
   // 1. Nhóm Cơ sở
@@ -23,13 +25,16 @@ const KHO_MAPPINGS = [
   { dir: '3.3. Kho cận lâm sàng & xét nghiệm', code: 'CLS', name: 'Cận lâm sàng', group: 'Chuyên sâu', icon: 'fa-flask-vial', color: '#6366f1' },
   { dir: '2.3. Kho chẩn đoán', code: 'CD', name: 'Tiêu chuẩn chẩn đoán', group: 'Chuyên sâu', icon: 'fa-clipboard-check', color: '#ec4899' },
   { dir: '2.4. Kho phác đồ điều trị', code: 'PDDT', name: 'Phác đồ', group: 'Chuyên sâu', icon: 'fa-pills', color: '#3b82f6' },
-  { dir: 'Kho cập nhật', code: 'PDDT', name: 'Phác đồ', group: 'Chuyên sâu', icon: 'fa-pills', color: '#3b82f6' },
+  { dir: 'Kho cập nhật', code: 'CN', name: 'Cập nhật Hướng dẫn', group: 'Chuyên sâu', icon: 'fa-arrows-rotate', color: '#2563eb' },
   { dir: '3.2. Kho dược thư & tương tác thuốc', code: 'DUOC', name: 'Dược', group: 'Chuyên sâu', icon: 'fa-capsules', color: '#06b6d4' },
   { dir: '2.6. Kho tư vấn', code: 'TV', name: 'Tư vấn', group: 'Chuyên sâu', icon: 'fa-hand-holding-medical', color: '#84cc16' },
-  { dir: 'Kho dinh dưỡng lâm sàng', code: 'TV', name: 'Tư vấn', group: 'Chuyên sâu', icon: 'fa-hand-holding-medical', color: '#84cc16' },
   { dir: '2.5. Kho biến chứng', code: 'BC', name: 'Biến chứng', group: 'Chuyên sâu', icon: 'fa-heart-crack', color: '#ef4444' },
 
-  // 3. Nhóm Hỗ trợ
+  // 3. Nhóm Thực hành & Bệnh án
+  { dir: 'Kho bệnh án', code: 'BA', name: 'Bệnh án SOAP', group: 'Thực hành', icon: 'fa-book-medical', color: '#10b981' },
+
+  // 4. Nhóm Hỗ trợ
+  { dir: 'Kho dinh dưỡng lâm sàng', code: 'DD', name: 'Dinh dưỡng lâm sàng', group: 'Hỗ trợ', icon: 'fa-utensils', color: '#eab308' },
   { dir: '3.1. Kho công cụ & thang điểm', code: 'CC', name: 'Công cụ & Thang điểm', group: 'Hỗ trợ', icon: 'fa-calculator', color: '#f59e0b' },
   { dir: 'Kho nghiên cứu khoa học & EBM', code: 'EBM', name: 'NCKH & EBM', group: 'Hỗ trợ', icon: 'fa-chart-pie', color: '#64748b' },
   { dir: 'Kho CDSS', code: 'CDSS', name: 'Kho CDSS', group: 'Hỗ trợ', icon: 'fa-laptop-medical', color: '#0284c7' },
@@ -121,7 +126,10 @@ function scanVault() {
         const fullPath = path.join(dirPath, entry.name);
 
         if (entry.isDirectory()) {
-          walkDir(fullPath, entry.name);
+          // Bỏ qua thư mục _ (như _raw_transcripts) và .obsidian
+          if (!entry.name.startsWith('_') && !entry.name.startsWith('.')) {
+            walkDir(fullPath, entry.name);
+          }
         } else if (entry.isFile() && entry.name.endsWith('.md') && !entry.name.startsWith('_')) {
           const content = fs.readFileSync(fullPath, 'utf-8');
           const { meta, body } = parseFrontmatter(content);
@@ -130,7 +138,7 @@ function scanVault() {
           const baseTitle = entry.name.replace(/\.md$/, '').replace(/^[A-Z0-9]+_/, '').replace(/_P\d+$/, '');
           const title = meta.title || baseTitle;
           const specialty = meta.specialty || specialtyName || 'Tổng quát';
-          const part = meta.part || (entry.name.includes('_P2') ? 'P2' : (entry.name.includes('_P3') ? 'P3' : 'P1'));
+          const part = meta.part || (entry.name.includes('_P2') ? 'P2' : (entry.name.includes('_P3') ? 'P3' : (entry.name.startsWith('MOC') ? 'MOC' : 'P1')));
           const snippet = extractSnippet(body);
 
           const context = meta.context || (entry.name.includes('_Noi_') ? 'noi-tru' : (kho.code === 'TV' || entry.name.includes('_Ngoai_') ? 'ngoai-tru' : undefined));
@@ -158,7 +166,18 @@ function scanVault() {
             aliases: Array.isArray(meta.aliases) ? meta.aliases : (meta.aliases ? [meta.aliases] : [title]),
             keywords: Array.isArray(meta.keywords) ? meta.keywords : (meta.keywords ? [meta.keywords] : [title.toLowerCase()]),
             icd10: Array.isArray(meta.icd10) ? meta.icd10 : (meta.icd10 ? [meta.icd10] : []),
-            tags: Array.isArray(meta.tags) ? meta.tags : (meta.tags ? [meta.tags] : [`y-khoa/${kho.code.toLowerCase()}`])
+            tags: Array.isArray(meta.tags) ? meta.tags : (meta.tags ? [meta.tags] : [`y-khoa/${kho.code.toLowerCase()}`]),
+
+            // SOAP & Case extensions
+            caseId: meta.caseId || undefined,
+            experienceLevel: meta.experienceLevel || undefined,
+            difficultyRating: meta.difficultyRating ? Number(meta.difficultyRating) : undefined,
+            authorDoctor: meta.authorDoctor || undefined,
+            demographicContext: meta.demographicContext || undefined,
+            historyPearls: meta.historyPearls || undefined,
+            objectivePitfalls: meta.objectivePitfalls || undefined,
+            diagnosticPearls: meta.diagnosticPearls || undefined,
+            takeawayLessons: meta.takeawayLessons || undefined,
           };
 
           catalog.push(article);
@@ -196,12 +215,17 @@ function scanVault() {
     });
   }
 
-  // Ensure output directory exists
+  // Ensure output directory exists for Knowledge Vault Hub
   const outDir = path.dirname(OUTPUT_FILE);
   if (!fs.existsSync(outDir)) fs.mkdirSync(outDir, { recursive: true });
-
   fs.writeFileSync(OUTPUT_FILE, JSON.stringify(catalog, null, 2), 'utf-8');
   console.log(`[VAULT CATALOG] Successfully indexed ${catalog.length} articles into: ${OUTPUT_FILE}`);
+
+  // Ensure output directory exists for DocSpace MedLens
+  const docspaceOutDir = path.dirname(DOCSPACE_OUTPUT_FILE);
+  if (!fs.existsSync(docspaceOutDir)) fs.mkdirSync(docspaceOutDir, { recursive: true });
+  fs.writeFileSync(DOCSPACE_OUTPUT_FILE, JSON.stringify(catalog, null, 2), 'utf-8');
+  console.log(`[VAULT CATALOG] Successfully synced to DocSpace: ${DOCSPACE_OUTPUT_FILE}`);
 }
 
 scanVault();

@@ -15,6 +15,8 @@ tags:
   - "loai/guideline"
   - "y-khoa/cn"
 updated: "2026-09-06"
+icd10:
+  - "N39.0"
 ---
 
 # BÀI HỌC SINH LÝ HỌC, SINH LÝ BỆNH VÀ CƠ CHẾ BỆNH SINH CỦA NHIỄM TRÙNG ĐƯỜNG TIẾT NIỆU (PHẦN 1)

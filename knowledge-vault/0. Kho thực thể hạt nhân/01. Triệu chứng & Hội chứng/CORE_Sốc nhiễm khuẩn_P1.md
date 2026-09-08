@@ -14,9 +14,9 @@ tags:
   - "loai/concept"
   - "y-khoa/core"
 updated: "2026-08-21"
+icd10:
+  - "A41"
 ---
-
-
 
 [[0. Thực thể hạt nhân/MOC - Thực thể Hạt nhân|← MOC Thực thể Hạt nhân]]
 

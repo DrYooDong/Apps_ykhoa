@@ -6,7 +6,10 @@ specialty: "Hồi sức cấp cứu / Truyền nhiễm"
 kho: "2.6. Kho tư vấn"
 khoCode: "TV"
 perspective: "patient-only"
+icd10:
+  - "A97"
 ---
+
 ### Làm thế nào nhận biết bệnh nhân đang bị xuất huyết nặng?
 
 Bác sĩ và gia đình có thể nhận diện sớm tình trạng xuất huyết nặng (chảy máu ồ ạt bên trong hoặc bên ngoài cơ thể) qua các biểu hiện lâm sàng và cận lâm sàng cụ thể:

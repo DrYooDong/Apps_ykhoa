@@ -15,6 +15,8 @@ tags:
   - "loai/guideline"
   - "y-khoa/cn"
 updated: "2026-09-06"
+icd10:
+  - "K74"
 ---
 
 # BÀI HỌC: TÓM TẮT HƯỚNG DẪN LÂM SÀNG KASL (2026) VỀ XƠ GAN - PHẦN 2: CƠ CHẾ VÀ PHÁC ĐỒ ĐIỀU TRỊ BIẾN CHỨNG CHUYÊN SÂU

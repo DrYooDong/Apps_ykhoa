@@ -149,8 +149,8 @@ export function buildDiagnosticCards(kb: KnowledgeBase): DiagnosticCardData[] {
       tomTat: b.tomTat,
       danSo: b.danSo ? {
         gioiTinh: b.danSo.gioiTinh === 'any' ? 'Nam / Nữ' : b.danSo.gioiTinh,
-        tuoiMin: b.danSo.tuoiMin,
-        tuoiMax: b.danSo.tuoiMax,
+        tuoiMin: b.danSo.tuoiMin ?? undefined,
+        tuoiMax: b.danSo.tuoiMax ?? undefined,
       } : undefined,
       tieuChuan,
       cdArticle: cdArt,

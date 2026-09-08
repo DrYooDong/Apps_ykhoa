@@ -15,6 +15,8 @@ tags:
   - "loai/disease"
   - "y-khoa/slb"
 updated: "2026-09-06"
+icd10:
+  - "K74"
 ---
 
 # BÀI HỌC: SINH LÝ BỆNH CỦA XƠ GAN (PHẦN 2) - CƠ CHẾ CÁC BIẾN CHỨNG MẤT BÙ

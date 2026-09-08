@@ -15,6 +15,8 @@ tags:
   - "loai/guideline"
   - "y-khoa/cn"
 updated: "2026-09-06"
+icd10:
+  - "I50"
 ---
 
 ### **BÀI HỌC LÂM SÀNG: PHÁC ĐỒ ĐIỀU TRỊ VÀ THEO DÕI SUY TIM TRÊN BỆNH NHÂN THẬN MẠN THEO KHUYẾN CÁO ESC 2026 (PHẦN 2)**

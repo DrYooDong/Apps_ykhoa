@@ -25,6 +25,17 @@ export interface VaultArticle {
   icd10?: string[];
   tags?: string[];
   topic?: string;
+
+  // SOAP & Case extensions
+  caseId?: string;
+  experienceLevel?: 'essential' | 'pitfall' | 'rare' | 'advanced';
+  difficultyRating?: number;
+  authorDoctor?: string;
+  demographicContext?: string;
+  historyPearls?: string;
+  objectivePitfalls?: string;
+  diagnosticPearls?: string;
+  takeawayLessons?: string;
 }
 
 export interface VaultKhoSummary {
@@ -65,11 +76,16 @@ export const KHO_DEFINITIONS: Record<string, { name: string; group: string; icon
   CLS:  { name: 'Cận lâm sàng', group: 'Chuyên sâu', icon: 'FileText', color: '#6366f1' },
   CD:   { name: 'Tiêu chuẩn chẩn đoán', group: 'Chuyên sâu', icon: 'ClipboardCheck', color: '#ec4899' },
   PDDT: { name: 'Phác đồ điều trị', group: 'Chuyên sâu', icon: 'Pill', color: '#3b82f6' },
+  CN:   { name: 'Cập nhật Hướng dẫn', group: 'Chuyên sâu', icon: 'RotateCw', color: '#2563eb' },
   DUOC: { name: 'Dược lý học', group: 'Chuyên sâu', icon: 'ShieldAlert', color: '#06b6d4' },
   TV:   { name: 'Tư vấn người bệnh', group: 'Chuyên sâu', icon: 'UserCheck', color: '#84cc16' },
   BC:   { name: 'Biến chứng', group: 'Chuyên sâu', icon: 'AlertOctagon', color: '#ef4444' },
 
-  // 3. Hỗ trợ
+  // 3. Thực hành & Bệnh án
+  BA:   { name: 'Bệnh án SOAP', group: 'Thực hành', icon: 'BookOpen', color: '#10b981' },
+
+  // 4. Hỗ trợ
+  DD:   { name: 'Dinh dưỡng lâm sàng', group: 'Hỗ trợ', icon: 'Utensils', color: '#eab308' },
   CC:   { name: 'Thang điểm lâm sàng', group: 'Hỗ trợ', icon: 'Calculator', color: '#f59e0b' },
   EBM:  { name: 'NCKH & EBM Guidelines', group: 'Hỗ trợ', icon: 'BookOpen', color: '#64748b' },
   CDSS: { name: 'Kho CDSS', group: 'Hỗ trợ', icon: 'Cpu', color: '#0284c7' },
@@ -391,4 +407,76 @@ export function getCdssAppUrl(moduleSlug: 'dengue' | 'ecg' | 'abg' | 'xray' | 'h
   }
   return `../knowledge-vault/cdss/index.html`;
 }
+
+/**
+ * Lấy toàn bộ các ca bệnh án lâm sàng chuẩn SOAP từ Kho Bệnh Án (BA)
+ */
+export function getSoapCasesFromVault(): VaultArticle[] {
+  return VAULT_CATALOG.filter((a) => a.khoCode === 'BA');
+}
+
+/**
+ * Xuất hồ sơ ca bệnh SOAP từ DocSpace thành file Markdown chuẩn Obsidian
+ */
+export function exportSoapCaseToMarkdown(experience: any): string {
+  const frontmatter = [
+    '---',
+    `title: "${(experience.title || 'Ca lâm sàng').replace(/"/g, '\\"')}"`,
+    `caseId: "${experience.id || 'soap-case'}"`,
+    experience.a?.icd10 ? `icd10:\n${(experience.a.icd10.split(/[·,]/).map((c: string) => `  - "${c.trim()}"`).filter(Boolean).join('\n'))}` : '',
+    `specialty: "${experience.specialty || 'Tổng quát'}"`,
+    `experienceLevel: "${experience.experienceLevel || 'essential'}"`,
+    experience.difficultyRating ? `difficultyRating: ${experience.difficultyRating}` : '',
+    experience.authorDoctor ? `authorDoctor: "${experience.authorDoctor.replace(/"/g, '\\"')}"` : '',
+    'tags:',
+    '  - "y-khoa/ba"',
+    '  - "loai/soap-case"',
+    experience.specialty ? `  - "he-co-quan/${experience.specialty.toLowerCase().replace(/[^a-z0-9]/g, '-')}"` : '',
+    experience.demographicContext ? `demographicContext: "${experience.demographicContext.replace(/"/g, '\\"')}"` : '',
+    experience.s?.historyPearls ? `historyPearls: "${experience.s.historyPearls.replace(/"/g, '\\"')}"` : '',
+    experience.o?.objectivePitfalls ? `objectivePitfalls: "${experience.o.objectivePitfalls.replace(/"/g, '\\"')}"` : '',
+    experience.a?.diagnosticPearls ? `diagnosticPearls: "${experience.a.diagnosticPearls.replace(/"/g, '\\"')}"` : '',
+    experience.p?.takeawayLessons ? `takeawayLessons: "${experience.p.takeawayLessons.replace(/"/g, '\\"')}"` : '',
+    `updated: "${new Date().toISOString().split('T')[0]}"`,
+    '---',
+    '',
+    `# 🩺 Ca Lâm Sàng: ${experience.title}`,
+    '',
+    experience.demographicContext ? `> **Bối cảnh**: ${experience.demographicContext}` : '',
+    '',
+    '## 1. 📝 S — Subjective (Bệnh Sử & Triệu Chứng)',
+    `- **Lý do nhập viện / Than phiền chính**: ${experience.s?.chiefComplaint || 'Không ghi nhận'}`,
+    `- **Bệnh sử chi tiết**: ${experience.s?.historyOfPresentIllness || 'Không ghi nhận'}`,
+    `- **Tiền căn**: ${experience.s?.pastMedicalHistory || 'Chưa ghi nhận tiền căn đặc biệt'}`,
+    experience.s?.symptomsList?.length ? `- **Triệu chứng chính**: ${experience.s.symptomsList.join(', ')}` : '',
+    experience.s?.historyPearls ? `\n> ⚡ **CLINICAL PEARL**:\n> ${experience.s.historyPearls}\n` : '',
+    '',
+    '## 2. 🔬 O — Objective (Khám Thực Thể & Cận Lâm Sàng)',
+    '- **Sinh hiệu**:',
+    `  - Huyết áp: ${experience.o?.vitals?.bp || '--'} mmHg`,
+    `  - Mạch: ${experience.o?.vitals?.pulse || '--'} ck/p`,
+    `  - Thân nhiệt: ${experience.o?.vitals?.temp || '--'} °C`,
+    `  - Nhịp thở: ${experience.o?.vitals?.resp || '--'} ck/p`,
+    `  - SpO₂: ${experience.o?.vitals?.spo2 || '--'} %`,
+    `- **Khám thực thể**: ${experience.o?.physicalExam || 'Chưa ghi nhận bất thường'}`,
+    `- **Cận lâm sàng & Hình ảnh**: ${experience.o?.labsAndImaging || 'Chưa có kết quả'}`,
+    experience.o?.objectivePitfalls ? `\n> ⚠️ **OBJECTIVE PITFALL**:\n> ${experience.o.objectivePitfalls}\n` : '',
+    '',
+    '## 3. 🧠 A — Assessment (Chẩn Đoán & Biện Luận)',
+    `- **Chẩn đoán xác định**: ${experience.a?.primaryDiagnosis || 'Chưa xác định'}`,
+    experience.a?.icd10 ? `- **Mã ICD-10**: \`${experience.a.icd10}\`` : '',
+    experience.a?.differentials?.length ? `- **Chẩn đoán phân biệt**:\n${experience.a.differentials.map((d: string) => `  - ${d}`).join('\n')}` : '',
+    experience.a?.riskStratification ? `- **Phân tầng nguy cơ**: ${experience.a.riskStratification}` : '',
+    experience.a?.diagnosticPearls ? `\n> 🧠 **DIAGNOSTIC PEARL**:\n> ${experience.a.diagnosticPearls}\n` : '',
+    '',
+    '## 4. 📋 P — Plan (Kế Hoạch Điều Trị & Đơn Thuốc)',
+    `- **Xử trí tức thì**: ${experience.p?.immediateActions || 'Nghỉ ngơi, theo dõi sinh hiệu'}`,
+    experience.p?.medications?.length ? `- **Đơn thuốc chỉ định**:\n${experience.p.medications.map((m: any) => `  - **${m.drug}**: ${m.dose} (${m.route || 'Đường dùng'})${m.note ? ` — *${m.note}*` : ''}`).join('\n')}` : '',
+    `- **Kế hoạch theo dõi & Mục tiêu**: ${experience.p?.monitoringAndTargets || 'Theo dõi sinh hiệu định kỳ'}`,
+    experience.p?.takeawayLessons ? `\n> 🎯 **TAKEAWAY LESSON**:\n> ${experience.p.takeawayLessons}\n` : '',
+  ];
+
+  return frontmatter.filter((line) => line !== undefined).join('\n');
+}
+
 

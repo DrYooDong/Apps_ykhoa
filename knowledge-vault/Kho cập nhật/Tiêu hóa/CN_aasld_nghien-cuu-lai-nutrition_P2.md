@@ -15,6 +15,8 @@ tags:
   - "loai/guideline"
   - "y-khoa/cn"
 updated: "2026-09-06"
+icd10:
+  - "K74"
 ---
 
 # BÀI HỌC: QUẢN LÝ SUY DINH DƯỠNG, SUY YẾU VÀ TEO CƠ TRONG XƠ GAN (PHẦN 2)

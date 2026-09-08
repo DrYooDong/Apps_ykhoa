@@ -15,6 +15,8 @@ tags:
   - "loai/guideline"
   - "y-khoa/cn"
 updated: "2026-09-06"
+icd10:
+  - "N39.0"
 ---
 
 # BÀI HỌC CHUYÊN SÂU: ĐỒNG THUẬN WIKIGUIDELINES 2024 VỀ DỰ PHÒNG VÀ CHẨN ĐOÁN NHIỄM TRÙNG ĐƯỜNG TIẾT NIỆU (PHẦN 3)

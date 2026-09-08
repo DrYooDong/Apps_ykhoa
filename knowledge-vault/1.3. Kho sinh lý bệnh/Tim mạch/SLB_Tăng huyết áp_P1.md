@@ -15,6 +15,8 @@ tags:
   - "loai/disease"
   - "y-khoa/slb"
 updated: "2026-09-06"
+icd10:
+  - "I10"
 ---
 
 # BÀI GIẢNG: SINH LÝ BỆNH CỦA TĂNG HUYẾT ÁP (PHẦN 1)

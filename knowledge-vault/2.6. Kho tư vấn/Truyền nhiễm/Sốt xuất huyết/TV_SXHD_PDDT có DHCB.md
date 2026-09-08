@@ -6,7 +6,10 @@ specialty: "Truyền nhiễm / Hồi sức Cấp cứu"
 kho: "2.6. Kho tư vấn"
 khoCode: "TV"
 perspective: "patient-only"
+icd10:
+  - "A97"
 ---
+
 ### Tại sao bạn bắt buộc phải nhập viện ngay?
 
 Khi xuất hiện ít nhất một **dấu hiệu cảnh báo** (như đau bụng liên tục, nôn ói nhiều, lừ đừ, hoặc chảy máu niêm mạc), điều đó chứng tỏ cơ thể người bệnh đang có hiện tượng **thoát huyết tương** (thất thoát phần dịch của máu ra ngoài mạch máu) diễn ra mạnh mẽ.

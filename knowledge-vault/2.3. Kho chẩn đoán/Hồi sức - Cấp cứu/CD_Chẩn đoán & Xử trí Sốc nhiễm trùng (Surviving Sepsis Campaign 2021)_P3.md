@@ -14,9 +14,9 @@ tags:
   - "loai/diagnostic"
   - "y-khoa/cd"
 updated: "2026-08-21"
+icd10:
+  - "A41"
 ---
-
-
 
 # CHẨN ĐOÁN & XỬ TRÍ [[[[Sốc]] nhiễm khuẩn|[[Sốc]] NHIỄM TRÙNG]] (SURVIVING [[Nhiễm trùng huyết|SEPSIS]] CAMPAIGN 2021)
 

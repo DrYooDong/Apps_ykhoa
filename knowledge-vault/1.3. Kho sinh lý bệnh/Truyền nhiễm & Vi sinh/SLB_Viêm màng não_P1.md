@@ -14,8 +14,9 @@ tags:
   - "loai/disease"
   - "y-khoa/slb"
 updated: "2026-08-21"
+icd10:
+  - "G00"
 ---
-
 
 ### 1. Nội Dung Sinh Lý Học Chi Tiết: Cơ Chế Bệnh Sinh Trong [[Viêm màng não]]
 

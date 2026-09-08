@@ -15,6 +15,8 @@ tags:
   - "loai/guideline"
   - "y-khoa/cn"
 updated: "2026-09-06"
+icd10:
+  - "J18"
 ---
 
 ### TÓM TẮT HƯỚNG DẪN LÂM SÀNG NICE NG250 (CẬP NHẬT 2025 - 2026): CHẨN ĐOÁN VÀ ĐÁNH GIÁ VIÊM PHỔI (PHẦN 1)

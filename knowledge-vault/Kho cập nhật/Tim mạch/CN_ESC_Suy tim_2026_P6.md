@@ -30,7 +30,10 @@ tags:
   - giai-phau/tim-mach
   - loai/co-quan
   - y-khoa/giai-phau
+icd10:
+  - "I50"
 ---
+
 **Tóm tắt Khuyến cáo về Suy tim của Hội Tim mạch Châu Âu (ESC 2026) - Phần 6: Bản đồ Quy trình Thực hành Lâm sàng và Các Sơ đồ Chưa Đề Cập**.
 
 Phần này sẽ hệ thống hóa toàn bộ các quy trình chẩn đoán, hồi sức nội viện, tiêu chuẩn chuyển tuyến và phác đồ can thiệp mạch vành đồng mắc thông qua việc phân tích chi tiết các Sơ đồ (Figures) cốt lõi của tài liệu gốc mà các phần trước chưa đi sâu:

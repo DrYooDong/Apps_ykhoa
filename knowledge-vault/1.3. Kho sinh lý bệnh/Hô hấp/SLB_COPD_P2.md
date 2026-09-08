@@ -7,16 +7,16 @@ keywords:
   - "copd"
   - "tim mạch"
   - "hô hấp"
-specialty: "Tim mạch"
+specialty: "Hô hấp"
 kho: "1.3. Kho sinh lý bệnh"
 tags:
   - "he-co-quan/tim-mach"
   - "loai/disease"
   - "y-khoa/slb"
 updated: "2026-08-21"
+icd10:
+  - "J44"
 ---
-
-
 
 ### 1. Nội Dung Bệnh Lý Học Chi Tiết
 

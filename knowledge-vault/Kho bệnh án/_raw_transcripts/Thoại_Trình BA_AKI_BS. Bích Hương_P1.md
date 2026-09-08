@@ -15,6 +15,8 @@ tags:
   - "loai/case-presentation"
   - "y-khoa/ba"
 updated: "2026-09-06"
+icd10:
+  - "N17"
 ---
 
 những cái phần xử trí này thì thôi cũng

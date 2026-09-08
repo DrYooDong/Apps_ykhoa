@@ -15,6 +15,8 @@ tags:
   - "loai/guideline"
   - "y-khoa/cn"
 updated: "2026-09-06"
+icd10:
+  - "N18"
 ---
 
 # BÀI HỌC KHUYẾN CÁO KDIGO 2024 VỀ ĐIỀU TRỊ VÀ QUẢN LÝ BỆNH THẬN MẠN (CKD) - PHẦN 2

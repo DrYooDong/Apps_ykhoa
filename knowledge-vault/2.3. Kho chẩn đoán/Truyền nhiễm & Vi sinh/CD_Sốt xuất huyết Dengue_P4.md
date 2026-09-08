@@ -13,9 +13,9 @@ tags:
   - "loai/diagnostic"
   - "y-khoa/cd"
 updated: "2026-08-21"
+icd10:
+  - "A97"
 ---
-
-
 
 Tiêu chuẩn chẩn đoán bệnh [[Sốt]] [[Xuất huyết]] Dengue (SXHD) của Tổ chức Y tế Thế giới (WHO) và Bộ Y tế Việt Nam đã trải qua những thay đổi mang tính bước ngoặt nhằm phản ánh đúng bản chất động học của bệnh và hỗ trợ các bác sĩ lâm sàng can thiệp sớm hơn.
 # 1. Sự thay đổi tiêu chuẩn chẩn đoán của WHO qua các thời kỳ

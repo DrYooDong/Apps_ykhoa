@@ -3,6 +3,8 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
   workflow_dispatch:
 
 # Allow one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
@@ -34,6 +36,9 @@ jobs:
           npm ci || npm install
           if [ -f "src/content/docspace/package.json" ]; then npm --prefix src/content/docspace install; fi
 
+      - name: Run automated quality gates (Typecheck, Linter, Tree-shake)
+        run: npm run validate:all
+
       - name: Build project
         run: npm run build
 
@@ -44,6 +49,7 @@ jobs:
 
   # Deploy job
   deploy:
+    if: github.event_name != 'pull_request'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

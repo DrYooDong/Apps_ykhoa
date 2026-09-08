@@ -13,9 +13,9 @@ tags:
   - "loai/complication"
   - "y-khoa/bc"
 updated: "2026-08-21"
+icd10:
+  - "A97"
 ---
-
-
 
 Tiên lượng trong bệnh [[Sốt]] [[Xuất huyết]] Dengue (SXHD) phụ thuộc vào sự tương tác phức tạp giữa đặc điểm của virus, tình trạng miễn dịch của ký chủ, các bệnh lý nền đi kèm và khả năng nhận diện sớm các dấu hiệu cảnh báo để can thiệp kịp thời. Phần lớn bệnh nhân sẽ trải qua thể bệnh nhẹ và tự hồi phục, tuy nhiên, một tỷ lệ nhỏ sẽ chuyển sang giai đoạn nguy hiểm với tiên lượng xấu, đe dọa tính mạng do [[Sốc]] giảm thể tích, [[Xuất huyết]] nặng và suy đa tạng. Dưới góc độ lâm sàng, việc đánh giá tiên lượng cần được thực hiện cá thể hóa và theo dõi sát sao.
 

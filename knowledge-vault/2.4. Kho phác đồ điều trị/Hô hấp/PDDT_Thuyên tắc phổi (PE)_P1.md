@@ -21,7 +21,7 @@ keywords:
 icd10:
   - "I26"
   - "I26.9"
-specialty: "Tim mạch"
+specialty: "Hô hấp"
 kho: "2.4. Kho phác đồ điều trị"
 tags:
   - "he-co-quan/tim-mach"
@@ -29,8 +29,6 @@ tags:
   - "y-khoa/pddt"
 updated: "2026-08-21"
 ---
-
-
 
 [[3. Nội tổng quát/3.2. Hô hấp/3.2.3. Bệnh lý Nhu mô, Màng phổi & Mạch máu phổi/Thuyên tắc phổi (PE)/Thuyên tắc phổi (PE).md|← Quay lại Thuyên tắc phổi (PE)]]
 

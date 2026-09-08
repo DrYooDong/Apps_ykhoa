@@ -5,6 +5,8 @@ topic: "dich-te-hoc"
 specialty: "Truyền nhiễm"
 kho: "2.6. Kho tư vấn"
 khoCode: "TV"
+icd10:
+  - "A97"
 ---
 
 ### Sốt xuất huyết lây lan sang bạn bằng cách nào?

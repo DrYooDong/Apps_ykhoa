@@ -6,6 +6,8 @@ specialty: "Truyền nhiễm"
 kho: "2.6. Kho tư vấn"
 khoCode: "TV"
 perspective: "patient-only"
+icd10:
+  - "A97"
 ---
 
 ### Làm sao biết bạn nghi ngờ mắc Sốt xuất huyết Dengue?

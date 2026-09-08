@@ -14,9 +14,9 @@ tags:
   - "loai/disease"
   - "y-khoa/slb"
 updated: "2026-08-21"
+icd10:
+  - "G00"
 ---
-
-
 
 # Tổng quan về Căn nguyên gây [[Viêm màng não]]
 

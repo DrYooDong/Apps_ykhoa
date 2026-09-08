@@ -30,7 +30,10 @@ tags:
   - giai-phau/tim-mach
   - loai/co-quan
   - y-khoa/giai-phau
+icd10:
+  - "I50"
 ---
+
 ### **1. Nội Dung Chi Tiết: Các Bằng Chứng Lâm Sàng Và Phân Cấp Khuyến Cáo Trong Điều Trị Suy Tim**
 
 #### **Hệ thống phân cấp khuyến cáo và phân loại mức độ bằng chứng mới của ESC 2026**

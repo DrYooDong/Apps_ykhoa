@@ -14,9 +14,9 @@ tags:
   - "loai/diagnostic"
   - "y-khoa/cd"
 updated: "2026-08-21"
+icd10:
+  - "G00"
 ---
-
-
 
 Tiếp cận cận lâm sàng trong [[Viêm màng não]] (VMN) không chỉ nhằm mục đích xác nhận chẩn đoán mà còn để phân định chính xác căn nguyên (vi khuẩn, virus, lao, nấm), từ đó quyết định chiến lược điều trị đặc hiệu. Dưới đây là phân tích chuyên sâu về các công cụ cận lâm sàng, sự liên quan mật thiết với cơ chế bệnh sinh và cách ứng dụng vào thực tiễn.
 

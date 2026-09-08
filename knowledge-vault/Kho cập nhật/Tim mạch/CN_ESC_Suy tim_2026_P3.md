@@ -30,7 +30,10 @@ tags:
   - giai-phau/tim-mach
   - loai/co-quan
   - y-khoa/giai-phau
+icd10:
+  - "I50"
 ---
+
 ### **1. Nội dung Điều trị học Chi tiết: Hồi sức Suy tim cấp mất bù (DHF) và Liệu pháp Thiết bị (CIED/GDIT)**
 
 #### **Định nghĩa mới và Sàng lọc Chẩn đoán Suy tim mất bù (Decompensated Heart Failure - DHF)**

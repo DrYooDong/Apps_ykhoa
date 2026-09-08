@@ -13,6 +13,8 @@ tags:
   - "loai/guideline"
   - "y-khoa/cn"
 updated: "2026-09-06"
+icd10:
+  - "J18"
 ---
 
 Chào bác sĩ, tiếp nối các nội dung tóm tắt chuyên sâu từ Phần 1 và Phần 2 của Hướng dẫn Lâm sàng ATS 2025 về viêm phổi mắc phải cộng đồng (CAP) ở người lớn, dưới đây là **Phần 3**. Phần này sẽ tập trung chi tiết vào các bảng dữ liệu lâm sàng cốt lõi, tiêu chuẩn phân loại mức độ nặng, định nghĩa sức mạnh khuyến cáo, vai trò của người bệnh trong ra quyết định lâm sàng và các khoảng trống nghiên cứu ưu tiên chưa được đề cập trước đây.

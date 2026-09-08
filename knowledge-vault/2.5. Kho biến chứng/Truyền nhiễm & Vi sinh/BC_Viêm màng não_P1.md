@@ -14,9 +14,9 @@ tags:
   - "loai/complication"
   - "y-khoa/bc"
 updated: "2026-08-21"
+icd10:
+  - "G00"
 ---
-
-
 
 Việc chẩn đoán và điều trị [[Viêm màng não]] không chỉ dừng lại ở việc tiêu diệt mầm bệnh mà còn phải chủ động dự phòng, phát hiện và kiểm soát các biến chứng. Các biến chứng của [[Viêm màng não]] có thể đe dọa tính mạng ngay lập tức hoặc để lại di chứng thần kinh vĩnh viễn.
 

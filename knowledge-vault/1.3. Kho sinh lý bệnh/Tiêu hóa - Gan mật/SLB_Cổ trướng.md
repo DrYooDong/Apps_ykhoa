@@ -15,6 +15,8 @@ tags:
   - "loai/disease"
   - "y-khoa/slb"
 updated: "2026-09-06"
+icd10:
+  - "K74"
 ---
 
 # 1. Nội Dung Sinh Lý Học Chi Tiết: Sinh Lý Bệnh Của Cổ Trướng Trong Xơ Gan

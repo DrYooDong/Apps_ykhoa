@@ -461,7 +461,7 @@ export class AbgCDSSController {
   private renderProtocolsView(): string {
     return `
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 1.5rem;">
-        ${TREATMENT_PROTOCOLS.map(proto => `
+        ${TREATMENT_PROTOCOLS.map((proto: TreatmentProtocol) => `
           <div class="abg-input-card">
             <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.75rem;">
               <div>
@@ -475,7 +475,7 @@ export class AbgCDSSController {
 
             <!-- Steps -->
             <div style="margin-top: 1rem; display: flex; flex-direction: column; gap: 0.65rem;">
-              ${proto.steps.map((step, idx) => `
+              ${proto.steps.map((step: { title: string; action: string; notes?: string }, idx: number) => `
                 <div style="background: var(--abg-bg); padding: 0.75rem; border-radius: 8px; border: 1px solid var(--abg-line-subtle);">
                   <div style="font-weight: 700; font-size: 0.82rem; color: var(--abg-primary); margin-bottom: 0.2rem;">
                     Bước ${idx + 1}: ${step.title}
@@ -491,7 +491,7 @@ export class AbgCDSSController {
               <div style="margin-top: 1rem; padding: 0.75rem; background: var(--abg-amber-bg); border: 1px solid var(--abg-amber-border); border-radius: 8px;">
                 <div style="font-size: 0.78rem; font-weight: 700; color: #b45309; margin-bottom: 0.25rem;">Lưu ý cấm kỵ:</div>
                 <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.78rem; color: #92400e;">
-                  ${proto.cautions.map(c => `<li>${c}</li>`).join('')}
+                  ${proto.cautions.map((c: string) => `<li>${c}</li>`).join('')}
                 </ul>
               </div>
             ` : ''}

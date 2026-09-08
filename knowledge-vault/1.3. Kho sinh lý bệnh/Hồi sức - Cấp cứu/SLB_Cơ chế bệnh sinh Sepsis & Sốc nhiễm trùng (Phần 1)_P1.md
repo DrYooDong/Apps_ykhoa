@@ -14,9 +14,9 @@ tags:
   - "loai/disease"
   - "y-khoa/slb"
 updated: "2026-08-21"
+icd10:
+  - "A41"
 ---
-
-
 
 ### 1. Nội Dung Sinh Lý Học Chi Tiết Về Cơ Chế Bệnh Sinh Của [[Nhiễm trùng huyết|Sepsis]] Và Shock Sepsis
 

@@ -15,6 +15,8 @@ tags:
   - "loai/case-presentation"
   - "y-khoa/ba"
 updated: "2026-09-06"
+icd10:
+  - "N17"
 ---
 
 là tại vì tôi thấy những em này là ngay

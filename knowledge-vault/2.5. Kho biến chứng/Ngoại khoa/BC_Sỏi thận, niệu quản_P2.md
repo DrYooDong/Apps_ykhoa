@@ -14,9 +14,10 @@ tags:
   - "loai/complication"
   - "y-khoa/bc"
 updated: "2026-08-21"
+icd10:
+  - "N20"
+  - "N23"
 ---
-
-
 
 [[7. Ngoại khoa/Bệnh lý cụ thể/Bệnh thận - niệu quản/Sỏi thận, niệu quản/Sỏi thận, niệu quản.md|← Quay lại Sỏi thận, niệu quản]]
 

@@ -13,6 +13,9 @@ tags:
   - loai/general
   - y-khoa/raw
 updated: 2026-08-21
+icd10:
+  - "E11"
+  - "E10"
 ---
 
 # BÀI HỌC CHUYÊN SÂU: SINH LÝ BỆNH CỦA THỂ TOAN CETON ĐƯỜNG HUYẾT BÌNH THƯỜNG (EUGYCYEMIC DKA) LIÊN QUAN ĐẾN THUỐC ỨC CHẾ SGLT2 (SGLT2i)

@@ -26,7 +26,7 @@ icd10:
   - "J15"
   - "J13"
   - "J18.9"
-specialty: "Tim mạch"
+specialty: "Hô hấp"
 kho: "1.3. Kho sinh lý bệnh"
 tags:
   - "he-co-quan/tim-mach"
@@ -34,8 +34,6 @@ tags:
   - "y-khoa/slb"
 updated: "2026-08-21"
 ---
-
-
 
 ### 1. Đại cương về Sinh lý bệnh Viêm phổi
 

@@ -14,9 +14,9 @@ tags:
   - "loai/diagnostic"
   - "y-khoa/cd"
 updated: "2026-08-21"
+icd10:
+  - "A97"
 ---
-
-
 
 ## 📌 Danh Mục Nội Dung
 

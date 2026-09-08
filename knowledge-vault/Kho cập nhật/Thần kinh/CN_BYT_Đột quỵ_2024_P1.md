@@ -15,6 +15,8 @@ tags:
   - "loai/guideline"
   - "y-khoa/cn"
 updated: "2026-09-06"
+icd10:
+  - "I63"
 ---
 
 ### 1. Nội Dung Khuyến Cáo Chi Tiết

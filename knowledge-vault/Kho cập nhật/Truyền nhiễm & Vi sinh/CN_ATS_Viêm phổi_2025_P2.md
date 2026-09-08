@@ -13,6 +13,8 @@ tags:
   - "loai/guideline"
   - "y-khoa/cn"
 updated: "2026-09-06"
+icd10:
+  - "J18"
 ---
 
 ### 1. Nội Dung Sinh Lý Học và Y Học Lâm Sàng Chi Tiết

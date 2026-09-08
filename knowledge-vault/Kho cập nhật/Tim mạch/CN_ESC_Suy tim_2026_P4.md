@@ -30,7 +30,10 @@ tags:
   - giai-phau/tim-mach
   - loai/co-quan
   - y-khoa/giai-phau
+icd10:
+  - "I50"
 ---
+
 Chào bạn, dưới góc độ chuyên gia tim mạch, tôi xin gửi tới bạn bản **Tóm tắt Khuyến cáo mới nhất về Suy tim từ Hội Tim mạch Châu Âu (ESC 2026) - Phần 4 (Phần cuối)**. Đây là phần tóm tắt toàn diện tập trung vào những mảng chuyên sâu và quan trọng còn lại trong Khuyến cáo ESC 2026 bao gồm: Quản lý Suy tim Tiến triển (Stage D), Rung nhĩ và Rối loạn nhịp, can thiệp bệnh van tim/bạch vành đồng mắc, bệnh lý nhiễm bột cơ tim (Cardiac Amyloidosis) và các bệnh đồng mắc không do tim mạch khác (ĐTĐ, béo phì, suy thận...).
 
 ---

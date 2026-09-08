@@ -15,6 +15,8 @@ tags:
   - "loai/guideline"
   - "y-khoa/cn"
 updated: "2026-09-06"
+icd10:
+  - "J18"
 ---
 
 ### TÓM TẮT HƯỚNG DẪN LÂM SÀNG ATS 2025 (CẬP NHẬT CHẨN ĐOÁN VÀ ĐIỀU TRỊ VIÊM PHỔI CỘNG ĐỒNG Ở NGƯỜI LỚN) - PHẦN 1

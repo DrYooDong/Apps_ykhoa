@@ -14,9 +14,9 @@ tags:
   - "loai/protocol"
   - "y-khoa/pddt"
 updated: "2026-08-21"
+icd10:
+  - "A41"
 ---
-
-
 
 ## 1. Nội Dung Sinh Lý Học Chi Tiết: Tóm Tắt Nghiên Cứu Đồng Thuận Sepsis-3 (Phần 1)
 

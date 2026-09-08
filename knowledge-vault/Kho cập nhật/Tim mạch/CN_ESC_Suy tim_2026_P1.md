@@ -30,7 +30,10 @@ tags:
   - giai-phau/tim-mach
   - loai/co-quan
   - y-khoa/giai-phau
+icd10:
+  - "I50"
 ---
+
 Chào bạn, dưới góc độ chuyên gia tim mạch, tôi xin gửi tới bạn bản **Tóm tắt Khuyến cáo mới nhất về Suy tim từ Hội Tim mạch Châu Âu (ESC 2026) - Phần 1**. Đây là khuyến cáo mang tính lịch sử được công bố tại Đại hội ESC vào cuối tháng 8 năm 2026, mang lại những thay đổi mang tính cách mạng trong phân loại kiểu hình, phân giai đoạn bệnh, phân nhóm điều trị và tiếp cận chẩn đoán thực hành.
 
 ---

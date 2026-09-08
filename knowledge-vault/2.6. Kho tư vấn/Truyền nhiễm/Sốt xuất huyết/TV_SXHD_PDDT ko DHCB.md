@@ -6,7 +6,10 @@ specialty: "Truyền nhiễm / Y học gia đình"
 kho: "2.6. Kho tư vấn"
 khoCode: "TV"
 perspective: "patient-only"
+icd10:
+  - "A97"
 ---
+
 ### Ai được chăm sóc tại nhà và ai cần vào viện ngay?
 
 Hầu hết người bệnh sốt xuất huyết Dengue thể nhẹ (không có dấu hiệu cảnh báo) sẽ được **điều trị và theo dõi ngoại trú tại nhà**. Tuy nhiên, bác sĩ sẽ chỉ định **nhập viện ngay** cho các nhóm có nguy cơ diễn tiến nặng sau:

@@ -6,6 +6,8 @@ specialty: "Truyền nhiễm"
 kho: "2.6. Kho tư vấn"
 khoCode: "TV"
 perspective: "patient-only"
+icd10:
+  - "A97"
 ---
 
 ### 1. Tại sao sốt xuất huyết có thể nguy hiểm đến tính mạng?

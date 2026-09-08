@@ -15,6 +15,8 @@ tags:
   - "loai/guideline"
   - "y-khoa/cn"
 updated: "2026-09-06"
+icd10:
+  - "K74"
 ---
 
 # TÓM TẮT HƯỚNG DẪN LÂM SÀNG AASLD (2022) VỀ CHĂM SÓC GIẢM NHẸ VÀ QUẢN LÝ TRIỆU CHỨNG TRONG XƠ GAN MẤT BÙ (PHẦN 1)

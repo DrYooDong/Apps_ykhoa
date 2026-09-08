@@ -14,9 +14,9 @@ tags:
   - "loai/disease"
   - "y-khoa/dth"
 updated: "2026-08-21"
+icd10:
+  - "M32"
 ---
-
-
 
 [[4. Huyết học & ung thư/Bệnh lý cụ thể/Tự miễn/Lupus ban đỏ hệ thống (SLE)/Lupus ban đỏ hệ thống (SLE).md|← Quay lại Lupus ban đỏ hệ thống (SLE)]]
 

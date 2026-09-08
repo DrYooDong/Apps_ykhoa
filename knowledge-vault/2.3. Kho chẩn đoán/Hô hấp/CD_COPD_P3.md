@@ -13,9 +13,9 @@ tags:
   - "loai/diagnostic"
   - "y-khoa/cd"
 updated: "2026-08-21"
+icd10:
+  - "J44"
 ---
-
-
 
 [[3. Nội tổng quát/3.2. Hô hấp/3.2.1. Bệnh lý đường thở tắc nghẽn/COPD/COPD.md|← Quay lại COPD]]
 

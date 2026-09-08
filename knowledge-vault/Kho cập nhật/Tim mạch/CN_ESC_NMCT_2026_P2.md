@@ -15,6 +15,8 @@ tags:
   - "loai/guideline"
   - "y-khoa/cn"
 updated: "2026-09-06"
+icd10:
+  - "I21"
 ---
 
 # ĐỒNG THUẬN TOÀN CẦU LẦN THỨ 5 VỀ ĐỊNH NGHĨA NHỒI MÁU CƠ TIM (2026) — PHẦN 2

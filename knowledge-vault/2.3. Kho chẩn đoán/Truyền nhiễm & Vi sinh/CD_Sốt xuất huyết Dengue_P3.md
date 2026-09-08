@@ -13,9 +13,9 @@ tags:
   - "loai/diagnostic"
   - "y-khoa/cd"
 updated: "2026-08-21"
+icd10:
+  - "A97"
 ---
-
-
 
 # Cơ chế Sinh lý bệnh và Động học các Dấu ấn Sinh học trong SXH Dengue
 

@@ -201,7 +201,7 @@ export class XRayCDSSController {
             </p>
             ${this.currentCase.tags && this.currentCase.tags.length > 0 ? `
               <div style="display: flex; gap: 0.35rem; flex-wrap: wrap;">
-                ${this.currentCase.tags.map(t => `<span class="xray-badge xray-badge--mild" style="font-size: 0.68rem;">#${t}</span>`).join('')}
+                ${this.currentCase.tags.map((t: string) => `<span class="xray-badge xray-badge--mild" style="font-size: 0.68rem;">#${t}</span>`).join('')}
               </div>
             ` : ''}
           </div>
@@ -324,7 +324,7 @@ export class XRayCDSSController {
               </p>
               ${entry.tags && entry.tags.length > 0 ? `
                 <div style="display: flex; gap: 0.3rem; flex-wrap: wrap; border-top: 1px dashed var(--xray-line); padding-top: 0.5rem;">
-                  ${entry.tags.map(t => `<span style="font-size: 0.72rem; color: var(--xray-muted);">#${t}</span>`).join(' ')}
+                  ${entry.tags.map((t: string) => `<span style="font-size: 0.72rem; color: var(--xray-muted);">#${t}</span>`).join(' ')}
                 </div>
               ` : ''}
             </div>

@@ -30,7 +30,10 @@ tags:
   - giai-phau/tim-mach
   - loai/co-quan
   - y-khoa/giai-phau
+icd10:
+  - "I50"
 ---
+
 ### **1. Nội Dung Điều Trị Học Chi Tiết: Phác Đồ Điều Trị Nội Khoa Suy Tim Theo ESC 2026**
 
 #### **Khái Quát về Phác đồ Điều trị Nội khoa theo Khuyến cáo ESC 2026**

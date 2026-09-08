@@ -14,9 +14,9 @@ tags:
   - "loai/complication"
   - "y-khoa/bc"
 updated: "2026-08-21"
+icd10:
+  - "K81"
 ---
-
-
 
 [[Viêm túi mật cấp|← Quay lại Viêm túi mật cấp]]
 

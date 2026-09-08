@@ -69,6 +69,7 @@ import {
   soapUpdate,
 } from '../lib/soapApi.ts';
 import { isSupabaseConfigured } from '../lib/supabase.ts';
+import { exportSoapCaseToMarkdown } from '../lib/vaultBridge.ts';
 
 interface SoapBoardProps {
   onOpenVaultDrawer?: (diseaseName?: string, query?: string, khoCode?: string) => void;
@@ -229,6 +230,22 @@ export const SoapExperienceBoard: React.FC<SoapBoardProps> = ({
     a.download = `docspace-soap-experiences-${new Date().toISOString().slice(0, 10)}.json`;
     a.click();
     URL.revokeObjectURL(url);
+  };
+
+  // Export current case to Obsidian Markdown for Knowledge Vault
+  const handleExportVaultMarkdown = () => {
+    if (!currentCase) return;
+    const mdContent = exportSoapCaseToMarkdown(currentCase);
+    const blob = new Blob([mdContent], { type: 'text/markdown;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    const cleanTitle = (currentCase.title || 'ca-benh').toLowerCase().replace(/[^a-z0-9]/g, '_').slice(0, 30);
+    a.download = `BA_SOAP_${cleanTitle}.md`;
+    a.click();
+    URL.revokeObjectURL(url);
+    setSyncFeedback('Đã tải file Markdown chuẩn Obsidian để lưu vào Knowledge Vault/Kho bệnh án/');
+    setTimeout(() => setSyncFeedback(null), 5000);
   };
 
   // Supabase Sync Trigger
@@ -632,6 +649,16 @@ export const SoapExperienceBoard: React.FC<SoapBoardProps> = ({
             title="Xuất file JSON sao lưu danh mục kinh nghiệm"
           >
             <Download className="w-3.5 h-3.5" />
+          </button>
+
+          <button
+            type="button"
+            onClick={handleExportVaultMarkdown}
+            className="flex items-center gap-1.5 px-2.5 py-2 bg-emerald-800 hover:bg-emerald-700 text-emerald-100 border border-emerald-700 text-xs rounded-lg transition-colors cursor-pointer no-print"
+            title="Lưu ca bệnh này thành file Markdown chuẩn Obsidian (.md) cho Knowledge Vault"
+          >
+            <BookOpen className="w-3.5 h-3.5" />
+            <span className="hidden lg:inline">Lưu vào Vault</span>
           </button>
         </div>
       </div>

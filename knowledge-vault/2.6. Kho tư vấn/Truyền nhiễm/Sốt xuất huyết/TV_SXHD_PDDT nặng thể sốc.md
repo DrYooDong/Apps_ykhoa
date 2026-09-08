@@ -6,7 +6,10 @@ specialty: "Hồi sức Cấp cứu / Truyền nhiễm"
 kho: "2.6. Kho tư vấn"
 khoCode: "TV"
 perspective: "patient-only"
+icd10:
+  - "A97"
 ---
+
 ### Sốc sốt xuất huyết là gì và tại sao nó cực kỳ nguy hiểm?
 
 Sốc sốt xuất huyết Dengue xảy ra khi huyết tương (phần dịch của máu) bị thoát mạnh ra ngoài lòng mạch qua các lỗ hở nhỏ của thành mạch. Hiện tượng này làm thể tích máu trong cơ thể bị tụt giảm nghiêm trọng, dẫn đến thiếu oxy và máu nuôi dưỡng các cơ quan quan trọng như tim, gan, thận.

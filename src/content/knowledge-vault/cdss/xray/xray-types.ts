@@ -34,7 +34,7 @@ export interface Finding {
   id: string;
   type: FindingType;
   name: string;
-  nameVi: string;
+  nameVi?: string;
   description: string;
   location: string;
   severity: Severity;
@@ -45,21 +45,41 @@ export interface Finding {
   radiographicSign?: string;
   measurements?: { label: string; value: string }[];
   clinicalSignificance?: string;
+  clinicalCorrelation?: string;
   differentialDiagnosis?: string[];
   recommendedActions?: string[];
 }
 
 export interface CaseStudy {
   id: string;
-  patientId: string;
-  patientName: string;
-  age: number;
-  gender: 'M' | 'F';
-  examDate: string;
+  title?: string;
+  patientId?: string;
+  patientName?: string;
+  patientAge?: number;
+  age?: number;
+  patientGender?: 'M' | 'F';
+  gender?: 'M' | 'F';
+  examDate?: string;
   examType: ExamType;
   clinicalHistory: string;
   findings: Finding[];
-  impression: string;
+  impression?: string;
+  diagnosis?: string;
+  notes?: string;
+  tags?: string[];
+  createdAt?: string;
+  isTemplate?: boolean;
+}
+
+export interface KnowledgeEntry {
+  id: string;
+  title: string;
+  category: string;
+  content: string;
+  tags?: string[];
+  author?: string;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 export interface RadiographicKnowledge {

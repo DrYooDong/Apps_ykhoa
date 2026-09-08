@@ -15,6 +15,8 @@ tags:
   - "loai/guideline"
   - "y-khoa/cn"
 updated: "2026-09-06"
+icd10:
+  - "K74"
 ---
 
 # TÓM TẮT HƯỚNG DẪN LÂM SÀNG AASLD (2024) VỀ PHÂN TẦNG NGUY CƠ VÀ QUẢN LÝ TĂNG ÁP LỰC TĨNH MẠCH CỬA & GIÃN TĨNH MẠCH TRONG XƠ GAN (PHẦN 3)

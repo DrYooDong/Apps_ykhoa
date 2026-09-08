@@ -14,9 +14,9 @@ tags:
   - "loai/protocol"
   - "y-khoa/pddt"
 updated: "2026-08-21"
+icd10:
+  - "G00"
 ---
-
-
 
 # 1. Nguyên tắc chung và Tiếp cận Cấp cứu
 

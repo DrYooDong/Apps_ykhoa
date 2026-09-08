@@ -15,6 +15,8 @@ tags:
   - "loai/guideline"
   - "y-khoa/cn"
 updated: "2026-09-06"
+icd10:
+  - "K74"
 ---
 
 # BÀI HỌC: DINH DƯỠNG, SUY YẾU VÀ TEO CƠ Ở BỆNH NHÂN XƠ GAN (PHẦN 1)

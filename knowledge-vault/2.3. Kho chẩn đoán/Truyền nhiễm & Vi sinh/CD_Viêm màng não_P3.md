@@ -14,9 +14,9 @@ tags:
   - "loai/diagnostic"
   - "y-khoa/cd"
 updated: "2026-08-21"
+icd10:
+  - "G00"
 ---
-
-
 
 # 1. Tiếp cận Lâm sàng và Liên hệ Cơ chế Bệnh sinh
 

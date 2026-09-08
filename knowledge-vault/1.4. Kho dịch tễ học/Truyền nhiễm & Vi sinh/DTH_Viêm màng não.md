@@ -13,7 +13,10 @@ tags:
   - loai/disease
   - y-khoa/dth
 updated: 2026-08-21
+icd10:
+  - "G00"
 ---
+
 ### 1. Nội Dung Dịch Tễ Học Chi Tiết: Gánh Nặng Và Phân Bố Viêm Màng Não Toàn Cầu
 
 **Gánh Nặng Bệnh Tật Toàn Cầu (Global Burden of Meningitis)**

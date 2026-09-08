@@ -15,6 +15,8 @@ tags:
   - "loai/case-presentation"
   - "y-khoa/ba"
 updated: "2026-09-06"
+icd10:
+  - "M32"
 ---
 
 dù khó nhưng mà ở trong này tự tin rằng

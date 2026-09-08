@@ -14,9 +14,9 @@ tags:
   - "loai/diagnostic"
   - "y-khoa/cd"
 updated: "2026-08-21"
+icd10:
+  - "G00"
 ---
-
-
 
 Dưới đây là phân tích chi tiết về biểu hiện lâm sàng của bệnh lý viêm màng não, kết hợp với cơ chế bệnh sinh để ứng dụng vào thực tế điều trị.
 

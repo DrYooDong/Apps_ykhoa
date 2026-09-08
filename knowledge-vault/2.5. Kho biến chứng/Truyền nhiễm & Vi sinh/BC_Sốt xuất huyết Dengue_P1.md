@@ -14,9 +14,9 @@ tags:
   - "loai/complication"
   - "y-khoa/bc"
 updated: "2026-08-21"
+icd10:
+  - "A97"
 ---
-
-
 
 # [[Sốc]] Do Thoát Huyết Tương (Dengue Shock Syndrome - DSS)
 
