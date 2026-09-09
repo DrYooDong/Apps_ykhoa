@@ -9,6 +9,7 @@
   "scripts": {
     "dev": "vite",
     "build": "npm --prefix src/content/docspace run build && tsc --noEmit && vite build && node tools/scripts/copy-dist.js",
+    "build:ci": "npm --prefix src/content/docspace run build && vite build && node tools/scripts/copy-dist.js",
     "preview": "vite preview",
     "vite:dev": "vite",
     "vite:build": "npm --prefix src/content/docspace run build && tsc --noEmit && vite build && node tools/scripts/copy-dist.js",
