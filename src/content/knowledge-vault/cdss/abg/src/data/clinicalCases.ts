@@ -1,4 +1,4 @@
-import { ClinicalCase } from './abg-types';
+import { ClinicalCase } from '../types/abg';
 
 export const CLINICAL_CASES: ClinicalCase[] = [
   {

@@ -257,21 +257,3 @@ export const CLINICAL_PROTOCOLS: ClinicalProtocol[] = [
     sourceReference: 'Arterial Blood Gases Made Easy (Chương 1.6, tr. 48-53; Chương 1.7, tr. 56; Ca 29, 30)'
   }
 ];
-
-import type { TreatmentProtocol } from './abg-types';
-
-export const TREATMENT_PROTOCOLS: TreatmentProtocol[] = CLINICAL_PROTOCOLS.map(cp => ({
-  id: cp.id,
-  title: cp.title,
-  subtitle: cp.subtitle,
-  category: cp.category,
-  severityBadge: cp.treatmentSteps.some(s => s.priority === 'Khẩn cấp') ? 'Cấp cứu' : 'Điều trị',
-  indications: cp.diagnosticCriteria,
-  goals: [cp.summary],
-  steps: cp.treatmentSteps.map(ts => ({
-    title: ts.title,
-    action: ts.description,
-    notes: `Ưu tiên: ${ts.priority}`
-  })),
-  cautions: cp.pitfallsAndWarnings
-}));

@@ -1,4 +1,4 @@
-import { EcgCase, LeadName, LeadWaveData } from "./ecg-types";
+import { EcgCase, LeadName, LeadWaveData } from "../types";
 
 // Helper for generating standard normal baseline lead
 function createNormalLead(lead: LeadName): LeadWaveData {

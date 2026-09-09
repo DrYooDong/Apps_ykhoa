@@ -7,7 +7,7 @@ import {
   AnnotationValidationReport,
   AnnotationValidationItem,
   WaveType,
-} from './ecg-types';
+} from "../types";
 
 export interface EcgPoint {
   x: number; // in millimeters (1mm = 0.04s)

@@ -1,11 +1,9 @@
 export interface GlossaryTerm {
   id: string;
   term: string;
-  symbol?: string;
   fullName: string;
   category: 'Chỉ số cơ bản' | 'Công thức & Tỷ số' | 'Sinh lý học' | 'Bảng mã lâm sàng' | 'Kỹ thuật xét nghiệm';
   normalRange?: string;
-  unit?: string;
   definition: string;
   clinicalSignificance: string;
   pearlsAndWarnings?: string;
@@ -344,5 +342,3 @@ export const ABG_GLOSSARY_TERMS: GlossaryTerm[] = [
     tags: ['kiềm chuyển hóa', 'nhạy clo', 'kháng clo', 'nôn ói']
   }
 ];
-
-export const ABG_GLOSSARY = ABG_GLOSSARY_TERMS;

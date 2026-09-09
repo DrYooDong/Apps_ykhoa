@@ -1,8 +1,3 @@
-/**
- * CliniPortal CDSS — ECG Module Types
- * Path: src/content/knowledge-vault/cdss/ecg/ecg-types.ts
- */
-
 export type LeadName =
   | "I"
   | "II"
@@ -100,7 +95,7 @@ export interface EcgCase {
     };
   };
   learningNotes: {
-    chapterRef: string; // reference to clinical handbook
+    chapterRef: string; // reference to BS Nguyễn Tôn Kinh Thi handbook
     coreTakeaway: string;
     pitfallToAvoid: string;
   };
@@ -146,19 +141,19 @@ export interface AiAnalysisResult {
 }
 
 export type LeadFilterMode =
-  | "ALL"
-  | "LIMB_BIPOLAR"
-  | "LIMB_UNIPOLAR"
-  | "LIMB_ALL"
-  | "CHEST_ALL"
-  | "INFERIOR"
-  | "SEPTAL"
-  | "ANTERIOR"
-  | "LATERAL"
-  | "ANTEROSEPTAL"
-  | "CUSTOM";
+  | "ALL" // Toàn bộ 12 chuyển đạo
+  | "LIMB_BIPOLAR" // Lưỡng cực chi (I, II, III) - Einthoven
+  | "LIMB_UNIPOLAR" // Đơn cực chi tăng cường (aVR, aVL, aVF) - Goldberger
+  | "LIMB_ALL" // Tất cả 6 chuyển đạo chi (I, II, III, aVR, aVL, aVF)
+  | "CHEST_ALL" // 6 Chuyển đạo trước tim / thành ngực (V1 - V6) - Wilson
+  | "INFERIOR" // Thành dưới: II, III, aVF (RCA/LCx)
+  | "SEPTAL" // Vách liên thất: V1, V2 (LAD Septal)
+  | "ANTERIOR" // Thành trước: V3, V4 (LAD)
+  | "LATERAL" // Thành bên: I, aVL, V5, V6 (LCx/LAD Diag)
+  | "ANTEROSEPTAL" // Vách & Trước: V1 - V4
+  | "CUSTOM"; // Tùy chọn riêng lẻ từng chuyển đạo
 
-export type EcgDisplayTheme = "paper" | "monitor" | "amber";
+export type EcgDisplayTheme = "paper" | "night" | "monitor" | "amber";
 
 export interface LeadAnatomyInfo {
   lead: LeadName;
@@ -176,9 +171,9 @@ export interface ManualAnnotation {
   id: string;
   lead: LeadName;
   waveType: WaveType;
-  x: number;
+  x: number; // coordinate relative to lead viewBox
   y: number;
-  timeMs: number;
+  timeMs: number; // approximate relative time within cycle
   voltageMv: number;
   note?: string;
   createdTime: number;
@@ -189,7 +184,7 @@ export interface AnnotationValidationItem {
   waveType: WaveType;
   lead: LeadName;
   status: "EXACT" | "CLOSE" | "MISPLACED";
-  score: number;
+  score: number; // 0 - 100
   actualTimeMs: number;
   expectedTimeMs: number;
   message: string;

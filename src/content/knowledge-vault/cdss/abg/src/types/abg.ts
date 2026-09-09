@@ -1,8 +1,3 @@
-/**
- * CliniPortal CDSS — Arterial Blood Gas (ABG Pro) Type Definitions
- * Path: src/content/knowledge-vault/cdss/abg/abg-types.ts
- */
-
 export type PressureUnit = 'mmHg' | 'kPa';
 
 export interface ABGInput {
@@ -13,7 +8,8 @@ export interface ABGInput {
   hco3: number;
   be: number;
   sao2: number;
-  fio2: number; // e.g. 21 for 21% (0.21)
+  fio2: number; // e.g. 21 for 21%, or fraction 0.21
+  // Optional laboratory parameters
   na?: number;
   k?: number;
   cl?: number;
@@ -21,7 +17,7 @@ export interface ABGInput {
   glucose?: number;
   albumin?: number;
   patientAge?: number;
-  coHb?: number;
+  coHb?: number; // Carbon monoxide Hb %
   isVenousSample?: boolean;
 }
 
@@ -125,7 +121,7 @@ export interface ABGAnalysisResult {
 
 export interface ClinicalCase {
   id: number;
-  source: string;
+  source: 'Hennessey & Japp (Made Easy)' | 'Pierre & Ranson (Case Study)';
   caseNumberDisplay: string;
   title: string;
   patientProfile: string;
@@ -153,32 +149,4 @@ export interface ClinicalCase {
     clinicalAction: string;
     physiologicalInsight: string;
   };
-}
-
-export interface TreatmentProtocol {
-  id: string;
-  title: string;
-  subtitle: string;
-  category: string;
-  severityBadge: string;
-  indications: string[];
-  goals: string[];
-  steps: {
-    title: string;
-    action: string;
-    notes?: string;
-  }[];
-  cautions: string[];
-}
-
-export interface GlossaryItem {
-  id: string;
-  term: string;
-  symbol: string;
-  normalRange: string;
-  unit: string;
-  definition: string;
-  clinicalSignificance: string;
-  highCauses: string[];
-  lowCauses: string[];
 }

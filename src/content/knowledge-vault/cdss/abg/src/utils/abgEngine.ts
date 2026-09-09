@@ -7,7 +7,7 @@ import {
   AcidBaseCategory,
   CompensationStatus,
   StepEvaluation
-} from './abg-types';
+} from '../types/abg';
 
 export const KPA_TO_MMHG = 7.50062;
 export const MMHG_TO_KPA = 1 / KPA_TO_MMHG;
@@ -396,7 +396,7 @@ export function analyzeABG(input: ABGInput): ABGAnalysisResult {
     criticalWarnings.push('🚨 NGUY CƠ TỬ VONG: PaO2 < 60 mmHg (< 8.0 kPa) rơi vào "ĐOẠN DỐC" của đường cong phân ly Oxyhemoglobin. Bất kỳ sự sụt giảm PaO2 nào tiếp theo đều làm tụt dốc SaO2 đột ngột gây thiếu oxy mô trầm trọng!');
   }
 
-  if (pco2MmHg > 45 && gasExchangeCategory === 'type2_respiratory_impairment' && pH < 7.25) {
+  if (pco2MmHg > 45 && gasExchangeCategory.includes('type2') && pH < 7.25) {
     criticalWarnings.push('🚨 CẤP CỨU HÔ HẤP: PaCO2 tăng kèm toan máu nặng (pH < 7.25) là dấu hiệu kiệt cơ hô hấp (Exhaustion) hoặc suy thông khí tối cấp, cần chuẩn bị hỗ trợ thông khí (BiPAP hoặc đặt Nội khí quản) ngay lập tức!');
   }
 
