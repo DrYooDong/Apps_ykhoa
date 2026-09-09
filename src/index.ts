@@ -123,6 +123,38 @@ function syncBottomNavActiveState(): void {
 }
 
 /**
+ * Đồng bộ trạng thái active của Bộ chuyển đổi 4 Dự án trên Header (Zone 2) với Hash URL hiện tại
+ */
+function syncHeaderProjectActiveState(): void {
+  const rawHash = window.location.hash || '#/';
+  const clean = rawHash.replace(/^#\/?/, '').trim();
+  const firstSeg = clean.split('/')[0] || '';
+
+  document.querySelectorAll<HTMLElement>('.header-project-switcher .project-tab-btn').forEach(tab => {
+    const project = tab.getAttribute('data-project') || '';
+    let isMatch = false;
+
+    if (project === 'docspace' && firstSeg === 'docspace') {
+      isMatch = true;
+    } else if (project === 'basic' && (firstSeg === 'basic-medical' || firstSeg === 'pathophysiology')) {
+      isMatch = true;
+    } else if (project === 'vault' && (firstSeg === 'knowledge-vault' || firstSeg === 'vault')) {
+      isMatch = true;
+    } else if (project === 'ebm' && (firstSeg === 'ebm' || firstSeg === 'guidelines')) {
+      isMatch = true;
+    }
+
+    if (isMatch) {
+      tab.classList.add('active');
+      tab.setAttribute('aria-current', 'page');
+    } else {
+      tab.classList.remove('active');
+      tab.removeAttribute('aria-current');
+    }
+  });
+}
+
+/**
  * Hàm hỗ trợ mount HTML vào container #app
  * Tự động chuyển đổi giữa trang chủ Dashboard (#mainContent) và SPA View (#app)
  */
@@ -765,11 +797,13 @@ function initCliniPortal(): void {
   setupGlobalQuickSearch();
   syncSidebarActiveState();
   syncBottomNavActiveState();
+  syncHeaderProjectActiveState();
   initHeaderModals();
 
   window.addEventListener('hashchange', () => {
     syncSidebarActiveState();
     syncBottomNavActiveState();
+    syncHeaderProjectActiveState();
   });
 
   // Khởi tạo hệ thống Non-Intrusive UX (Focus Mode, Slide Drawer, Toast) và EBM Provenance

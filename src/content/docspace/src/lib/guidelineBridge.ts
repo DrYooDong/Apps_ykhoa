@@ -5,6 +5,7 @@
 
 import guidelinesRaw from '../../../ebm/guidelines/data/guidelines-db.json';
 import { Benh, GuidelineRecommendationItem, GuidelineStudy } from '../types.ts';
+import { normalizeText, parseIcdList } from './normalizeUtils.ts';
 
 // Danh sách toàn bộ 78 nghiên cứu & hướng dẫn EBM chính thức
 export const GUIDELINE_STUDIES: GuidelineStudy[] = ((guidelinesRaw as any).studies || []) as GuidelineStudy[];
@@ -37,27 +38,8 @@ export const SOURCE_TYPE_LABELS: Record<string, { label: string; badgeClass: str
   'intl-study': { label: 'Nghiên cứu Landmark RCT', badgeClass: 'bg-indigo-50 text-indigo-700 border-indigo-200' },
 };
 
-/**
- * Chuẩn hóa chuỗi văn bản phục vụ tìm kiếm
- */
-function normalize(str: string): string {
-  return (str || '')
-    .toLowerCase()
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .trim();
-}
-
-/**
- * Trích xuất danh sách mã ICD sạch từ string phân cách dấu phẩy hoặc gạch chéo
- */
-function parseIcdList(icdStr: string): string[] {
-  if (!icdStr) return [];
-  return icdStr
-    .split(/[\/,;]/)
-    .map((s) => s.trim().toUpperCase())
-    .filter(Boolean);
-}
+// Alias for internal use
+const normalize = normalizeText;
 
 /**
  * Ánh xạ thông minh: Tìm các Guidelines liên quan mật thiết nhất với mặt bệnh đang chọn

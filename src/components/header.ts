@@ -9,7 +9,7 @@ export function renderHeaderHtml(projectRoot = './'): string {
 
   return `
     <header class="global-header" id="siteHeader">
-      <!-- TRÁI: Brand & Live Knowledge Stats -->
+      <!-- TRÁI: Brand Logo & Mobile Toggle -->
       <div class="header-left">
         <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Mở menu điều hướng">
           <i class="fa-solid fa-bars"></i>
@@ -24,80 +24,70 @@ export function renderHeaderHtml(projectRoot = './'): string {
             <span class="brand-badge">CLINIPORTAL</span>
           </div>
         </a>
-
-        <div class="live-knowledge-stats" title="Quy mô cơ sở dữ liệu y khoa trực tiếp">
-          <span class="live-dot-pulse"></span>
-          <span>Tri thức:</span>
-          <b>14</b> bệnh · <b>92</b> từ vựng · <span class="stat-blue">2.400+</span> bài Vault · <span class="stat-rose">78</span> Guidelines
-        </div>
       </div>
 
-      <!-- GIỮA: 4 Nút Trợ Thủ Lâm Sàng + Luồng Thông Liên Phân Hệ -->
+      <!-- GIỮA: ZONE 2 — BỘ CHUYỂN ĐỔI 4 DỰ ÁN (PROJECT SWITCHER TABS) -->
       <div class="header-center">
-        <div class="clinical-shortcuts-strip" aria-label="Lối tắt lâm sàng">
-          <a href="${root}#/ebm/kho-guidelines" class="shortcut-chip chip-guidelines" title="Kho Guidelines EBM">
-            <span>📚</span><span>Guidelines</span>
+        <nav class="header-project-switcher" id="headerProjectSwitcher" aria-label="Bộ chuyển đổi 4 dự án cốt lõi">
+          <!-- 1. DocSpace Pro (Lâm sàng / Workstation) -->
+          <a href="${root}#/docspace" class="project-tab-btn tab-docspace" data-project="docspace" title="DocSpace Pro — Trực ca, Phân tầng Triage, SBAR & Ca lâm sàng">
+            <span class="project-tab-icon"><i class="fa-solid fa-id-badge"></i></span>
+            <span class="project-tab-name">DocSpace Pro</span>
+            <span class="project-tab-pill">Workstation</span>
           </a>
-          <a href="${root}#/calculators" class="shortcut-chip chip-tools" title="Kho Công cụ & Thang điểm CDSS">
-            <span>🧮</span><span>Công cụ</span>
-          </a>
-          <a href="${root}#/docspace" class="shortcut-chip chip-icd" title="Kho ICD-10 & BHYT">
-            <span>🏷️</span><span>ICD-10</span>
-          </a>
-          <a href="${root}#/docspace" class="shortcut-chip chip-cdss" title="Kho CDSS Hỗ trợ quyết định lâm sàng">
-            <span>⚡</span><span>CDSS</span>
-          </a>
-        </div>
 
-        <div class="header-v-divider" aria-hidden="true"></div>
-
-        <nav class="header-nav-bridges" aria-label="Phân hệ chính">
-          <a href="${root}#/vault" class="nav-bridge-btn bridge-vault" title="Kho Tri thức Y khoa Toàn diện Knowledge Vault">
-            <i class="fa-solid fa-book-open"></i>
-            <span>Kho tri thức</span>
-          </a>
-          <a href="${root}#/docspace" class="nav-bridge-btn bridge-cases" title="DocSpace & Kho ca lâm sàng">
-            <i class="fa-solid fa-notes-medical"></i>
-            <span>Kho ca lâm sàng</span>
-            <span class="bridge-pulse-dot" title="Đồng bộ thời gian thực"></span>
-          </a>
-          <div class="header-module-dropdown-wrapper">
-            <button type="button" class="nav-bridge-btn bridge-basic header-dropdown-trigger" title="Cơ sở Y khoa (GP, Sinh lý, CCBS, Hóa sinh, Dịch tễ)">
-              <i class="fa-solid fa-dna" style="color: #8b5cf6;"></i>
-              <span>Cơ sở</span>
-              <i class="fa-solid fa-chevron-down dropdown-arrow" style="font-size: 0.62rem; margin-left: 1px; opacity: 0.7;"></i>
-            </button>
-            <div class="header-dropdown-menu">
-              <a href="${root}#/basic-medical/giai-phau-sinh-ly" class="header-dropdown-item">
-                <span class="dropdown-item-icon">🧬</span>
-                <div class="dropdown-item-text">
+          <!-- 2. Basic Sciences (Cơ sở Y khoa + Dropdown Menu) -->
+          <div class="header-project-dropdown-wrapper">
+            <a href="${root}#/basic-medical" class="project-tab-btn tab-basic" data-project="basic" title="Cơ sở Y khoa — GP, Sinh lý, Bệnh sinh CCBS, Hóa sinh, Dịch tễ">
+              <span class="project-tab-icon"><i class="fa-solid fa-dna"></i></span>
+              <span class="project-tab-name">Basic Sciences</span>
+              <i class="fa-solid fa-chevron-down project-dropdown-arrow" aria-hidden="true"></i>
+            </a>
+            <div class="project-dropdown-menu">
+              <a href="${root}#/basic-medical/giai-phau-sinh-ly" class="project-dropdown-item">
+                <span class="pdrop-icon">🧬</span>
+                <div class="pdrop-info">
                   <strong>GP - SL</strong>
-                  <span>Giải phẫu & Sinh lý</span>
+                  <span>Giải phẫu & Sinh lý học</span>
                 </div>
               </a>
-              <a href="${root}#/basic-medical/co-che-benh-sinh" class="header-dropdown-item">
-                <span class="dropdown-item-icon">🔬</span>
-                <div class="dropdown-item-text">
+              <a href="${root}#/basic-medical/co-che-benh-sinh" class="project-dropdown-item">
+                <span class="pdrop-icon">🔬</span>
+                <div class="pdrop-info">
                   <strong>CCBS - SBL</strong>
                   <span>Cơ chế bệnh sinh & Sinh lý bệnh</span>
                 </div>
               </a>
-              <a href="${root}#/basic-medical/hoa-sinh" class="header-dropdown-item">
-                <span class="dropdown-item-icon">🧪</span>
-                <div class="dropdown-item-text">
+              <a href="${root}#/basic-medical/hoa-sinh" class="project-dropdown-item">
+                <span class="pdrop-icon">🧪</span>
+                <div class="pdrop-info">
                   <strong>Hóa Sinh</strong>
                   <span>Hóa sinh Y học & Chuyển hóa</span>
                 </div>
               </a>
-              <a href="${root}#/basic-medical/dich-te-hoc" class="header-dropdown-item">
-                <span class="dropdown-item-icon">🦠</span>
-                <div class="dropdown-item-text">
+              <a href="${root}#/basic-medical/dich-te-hoc" class="project-dropdown-item">
+                <span class="pdrop-icon">🦠</span>
+                <div class="pdrop-info">
                   <strong>Dịch Tễ</strong>
                   <span>Dịch tễ học & Y tế công cộng</span>
                 </div>
               </a>
             </div>
           </div>
+
+          <!-- 3. Knowledge Vault (Kho Tri Thức 14 Chuyên Khoa) -->
+          <a href="${root}#/vault" class="project-tab-btn tab-vault" data-project="vault" title="Knowledge Vault — 14 Kho chuyên khoa, Chuỗi CRCF & Phác đồ">
+            <span class="project-tab-icon"><i class="fa-solid fa-book-open"></i></span>
+            <span class="project-tab-name">Knowledge Vault</span>
+            <span class="project-tab-pill">2.4k+</span>
+          </a>
+
+          <!-- 4. EBM Suite (Y Học Chứng Cứ & Guidelines) -->
+          <a href="${root}#/ebm" class="project-tab-btn tab-ebm" data-project="ebm" title="Y Học Chứng Cứ — Tháp 6S Haynes, Phác đồ Bộ Y Tế & Radar Diff">
+            <span class="project-tab-icon"><i class="fa-solid fa-scale-balanced"></i></span>
+            <span class="project-tab-name">EBM Suite</span>
+            <span class="project-tab-pill">Chứng Cứ</span>
+          </a>
         </nav>
       </div>
 

@@ -608,7 +608,7 @@ export function renderTimeline(): void {
             <span class="spec-tag" style="background: ${specObj.color}15; color: ${specObj.color}; border: 1px solid ${specObj.color}30;">${escapeHtml(specObj.name)}</span>
             <span class="impact-tag" style="background: ${impactObj.color}15; color: ${impactObj.color};">${escapeHtml(impactObj.name)}</span>
           </div>
-          <div style="font-weight: 700; font-size: 0.88rem; color: var(--text); line-height: 1.35;">${escapeHtml(study.title)}</div>
+          <div class="tl-item-title">${escapeHtml(study.title)}</div>
           ${study.drug ? `<div style="font-size: 0.76rem; color: var(--text-muted); margin-top: 4px;">💊 ${escapeHtml(study.drug)}</div>` : ''}
           ${study.summary ? `<div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 6px; line-height: 1.4;">${escapeHtml(study.summary.slice(0, 150))}...</div>` : ''}
         </div>

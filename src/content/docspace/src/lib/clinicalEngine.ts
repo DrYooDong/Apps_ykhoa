@@ -10,14 +10,8 @@ import {
   TrieuChung,
   VitalsState,
 } from '../types.ts';
-
-export function normalizeText(s: string | null | undefined): string {
-  return String(s ?? '')
-    .toLowerCase()
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .replace(/đ/g, 'd');
-}
+import { normalizeText } from './normalizeUtils.ts';
+export { normalizeText };
 
 export function evaluateThreshold(
   tc: TrieuChung,
