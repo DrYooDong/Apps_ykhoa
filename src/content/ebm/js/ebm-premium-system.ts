@@ -45,18 +45,27 @@ export function initReadingProgress(): void {
     top: 0;
     left: 0;
     width: 100%;
-    height: 3px;
+    height: 3.5px;
+    max-height: 3.5px;
     background: transparent;
-    z-index: 9999;
+    z-index: 10001;
+    overflow: hidden;
+    pointer-events: none;
   `;
 
   const bar = document.createElement('div');
   bar.className = 'reading-progress-bar';
   bar.style.cssText = `
-    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 3.5px;
+    max-height: 3.5px;
+    min-height: 0;
     width: 0%;
     background: linear-gradient(90deg, var(--color-primary, #0284c7), #06b6d4);
     transition: width 0.1s;
+    pointer-events: none;
   `;
 
   container.appendChild(bar);

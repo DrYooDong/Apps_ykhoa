@@ -516,21 +516,33 @@ async function fetchAndHydratePhysioArticle(
           width: 100% !important;
           height: 3.5px !important;
           max-height: 3.5px !important;
+          min-height: 0 !important;
           z-index: 10001 !important;
           pointer-events: none !important;
+          background: transparent !important;
+          overflow: hidden !important;
         }
         .reading-progress-bar {
+          position: fixed !important;
+          top: 0 !important;
+          left: 0 !important;
           height: 3.5px !important;
           max-height: 3.5px !important;
+          min-height: 0 !important;
           pointer-events: none !important;
         }
         .reading-progress-container .reading-progress-bar {
-          height: 100% !important;
-          max-height: 100% !important;
+          position: absolute !important;
+          top: 0 !important;
+          left: 0 !important;
+          height: 3.5px !important;
+          max-height: 3.5px !important;
+          min-height: 0 !important;
+          pointer-events: none !important;
         }
       </style>
-      <div class="reading-progress-container" style="position: fixed; top: 0; left: 0; width: 100%; height: 3.5px; z-index: 10001; pointer-events: none;">
-        <div class="reading-progress-bar" id="reading-progress-bar" style="height: 3.5px; max-height: 3.5px; width: 0%; pointer-events: none;"></div>
+      <div class="reading-progress-container" style="position: fixed; top: 0; left: 0; width: 100%; height: 3.5px; max-height: 3.5px; z-index: 10001; pointer-events: none; overflow: hidden; background: transparent;">
+        <div class="reading-progress-bar" id="reading-progress-bar" style="position: absolute; top: 0; left: 0; height: 3.5px; max-height: 3.5px; min-height: 0; width: 0%; pointer-events: none;"></div>
       </div>
       <div class="guideline-article-container physio-article-container" style="margin: 0 auto; width: 100%;">
         

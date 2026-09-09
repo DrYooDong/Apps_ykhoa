@@ -9,12 +9,15 @@
   position: fixed;
   top: 0;
   left: 0;
-  height: 3.5px;
+  height: 3.5px !important;
+  max-height: 3.5px !important;
+  min-height: 0 !important;
   width: 0%;
   background: linear-gradient(90deg, var(--color-primary, #0284c7) 0%, var(--color-teal, #0d9488) 50%, #7c3aed 100%);
   z-index: 99999;
   transition: width 0.12s ease-out;
   box-shadow: 0 1px 6px rgba(2, 132, 199, 0.4);
+  pointer-events: none !important;
 }
 
 [data-theme="dark"] .mdx-reading-progress-bar {
