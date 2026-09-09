@@ -3,72 +3,81 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CDSS Khí Máu Động Mạch & Xử Trí Lâm Sàng (ABG Pro) — CliniPortal</title>
-  <meta name="description" content="Hệ thống Hỗ trợ Quyết định Lâm sàng Phân tích Khí Máu Động Mạch 6 Bước: Tính Anion Gap hiệu chỉnh Albumin, Delta-Delta, A-a gradient, PaO2/FiO2 và liên kết Bệnh Án DocSpace SOAP.">
+  <title>Khí Máu Động Mạch & Xử Trí Lâm Sàng (ABG Pro) | CliniPortal CDSS</title>
+  <meta name="description" content="Hệ thống phân tích khí máu động mạch (ABG) 6 bước chuyên sâu, lưu đồ rẽ nhánh tương tác, máy tính Anion Gap tự động, phác đồ xử trí toan kiềm và thư viện 24 ca lâm sàng có giải thích.">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Grotesk:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
   <link rel="stylesheet" href="../../../../styles/tokens.css">
   <link rel="stylesheet" href="../../../../styles/main.css">
-  <link rel="stylesheet" href="../../css/vault-design-tokens.css">
   <link rel="stylesheet" href="../../css/vault-hub.css">
-  <link rel="stylesheet" href="css/abg-cdss.css">
+  <link rel="stylesheet" crossorigin href="./assets/index-DN1kuW6j.css">
 
   <style>
-    .cdss-navbar {
-      background: rgba(255, 255, 255, 0.92);
-      border-bottom: 1px solid var(--abg-line);
-      padding: 0.65rem 1.5rem;
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+      background-color: #f8fafc;
+      color: #0f172a;
+    }
+    .cdss-portal-navbar {
+      background: rgba(15, 23, 42, 0.95);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 0.55rem 1.5rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       position: sticky;
       top: 0;
-      z-index: 1000;
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+      z-index: 100;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
     }
-    [data-theme="dark"] .cdss-navbar {
-      background: rgba(17, 24, 39, 0.92);
-      border-bottom-color: var(--abg-line);
+    [data-theme="light"] .cdss-portal-navbar {
+      background: rgba(255, 255, 255, 0.95);
+      border-bottom: 1px solid #e2e8f0;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
     }
-    .cdss-nav-breadcrumbs {
+    .cdss-portal-nav-breadcrumbs {
       display: flex;
       align-items: center;
-      gap: 0.45rem;
-      font-size: 0.85rem;
-      color: var(--abg-muted);
+      gap: 0.5rem;
+      font-size: 0.82rem;
+      color: #64748b;
     }
-    .cdss-nav-breadcrumbs a {
-      color: var(--abg-muted);
+    .cdss-portal-nav-breadcrumbs a {
+      color: #64748b;
       text-decoration: none;
       font-weight: 500;
       transition: color 0.15s;
     }
-    .cdss-nav-breadcrumbs a:hover {
-      color: var(--abg-primary);
+    .cdss-portal-nav-breadcrumbs a:hover {
+      color: #2563eb;
     }
-    .cdss-nav-breadcrumbs .active {
-      color: var(--abg-ink);
+    .cdss-portal-nav-breadcrumbs .active {
+      color: #0f172a;
       font-weight: 700;
     }
-    .cdss-nav-right {
+    [data-theme="dark"] .cdss-portal-nav-breadcrumbs .active {
+      color: #f8fafc;
+    }
+    .cdss-portal-nav-right {
       display: flex;
       align-items: center;
       gap: 0.65rem;
     }
-    .cdss-nav-link-btn {
-      padding: 0.45rem 0.85rem;
+    .cdss-portal-nav-btn {
+      padding: 0.4rem 0.8rem;
       border-radius: 8px;
-      border: 1px solid var(--abg-line);
-      background: var(--abg-panel);
-      color: var(--abg-ink);
+      border: 1px solid #cbd5e1;
+      background: #ffffff;
+      color: #334155;
       text-decoration: none;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 600;
       display: inline-flex;
       align-items: center;
@@ -76,76 +85,95 @@
       cursor: pointer;
       transition: all 0.2s;
     }
-    .cdss-nav-link-btn:hover {
-      border-color: var(--abg-primary);
-      color: var(--abg-primary);
+    [data-theme="dark"] .cdss-portal-nav-btn {
+      background: #1e293b;
+      border-color: #334155;
+      color: #cbd5e1;
     }
-    .cdss-theme-toggle {
-      width: 36px;
-      height: 36px;
+    .cdss-portal-nav-btn:hover {
+      border-color: #2563eb;
+      color: #2563eb;
+    }
+    .cdss-portal-theme-btn {
+      width: 34px;
+      height: 34px;
       padding: 0;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       border-radius: 8px;
-      border: 1px solid var(--abg-line);
-      background: var(--abg-panel);
-      color: var(--abg-ink);
+      border: 1px solid #cbd5e1;
+      background: #ffffff;
+      color: #334155;
       cursor: pointer;
     }
+    [data-theme="dark"] .cdss-portal-theme-btn {
+      background: #1e293b;
+      border-color: #334155;
+      color: #f8fafc;
+    }
   </style>
+
+  <script type="module" crossorigin src="./assets/index-74D1-lFY.js"></script>
 </head>
 <body>
-  <!-- Navigation Top Bar -->
-  <header class="cdss-navbar">
-    <div class="cdss-nav-left">
-      <div class="cdss-nav-breadcrumbs">
-        <a href="../../index.html"><i class="fa-solid fa-graduation-cap"></i> Knowledge Vault</a>
-        <i class="fa-solid fa-chevron-right" style="font-size: 0.65rem;"></i>
-        <a href="../index.html"><i class="fa-solid fa-microchip"></i> Kho CDSS</a>
-        <i class="fa-solid fa-chevron-right" style="font-size: 0.65rem;"></i>
-        <span class="active"><i class="fa-solid fa-lungs text-blue-600"></i> Khí Máu Động Mạch (ABG Pro)</span>
-      </div>
+  <!-- CliniPortal Master Navigation Bar -->
+  <header class="cdss-portal-navbar">
+    <div class="cdss-portal-nav-breadcrumbs">
+      <a href="../../index.html"><i class="fa-solid fa-graduation-cap"></i> Knowledge Vault</a>
+      <i class="fa-solid fa-chevron-right" style="font-size: 0.6rem;"></i>
+      <a href="../index.html"><i class="fa-solid fa-network-wired"></i> Kho CDSS</a>
+      <i class="fa-solid fa-chevron-right" style="font-size: 0.6rem;"></i>
+      <span class="active"><i class="fa-solid fa-lungs text-blue-600"></i> ABG Pro (24 Ca Lâm Sàng & Lưu Đồ)</span>
     </div>
 
-    <div class="cdss-nav-right">
-      <a href="../../docspace/index.html" class="cdss-nav-link-btn" title="Mở trong Hồ Sơ Bệnh Án DocSpace">
+    <div class="cdss-portal-nav-right">
+      <a href="../../docspace/index.html" class="cdss-portal-nav-btn" title="Mở trong Hồ Sơ Bệnh Án DocSpace">
         <i class="fa-solid fa-user-doctor"></i> <span>DocSpace Pro</span>
       </a>
-      <a href="../index.html" class="cdss-nav-link-btn" title="Trở về Trung Tâm CDSS">
+      <a href="../index.html" class="cdss-portal-nav-btn" title="Trở về Trung Tâm CDSS">
         <i class="fa-solid fa-th-large"></i> <span>Danh Mục CDSS</span>
       </a>
-      <button id="theme-toggle" class="cdss-theme-toggle" title="Chuyển chế độ Sáng/Tối" aria-label="Toggle Theme">
+      <button id="theme-toggle" class="cdss-portal-theme-btn" title="Chuyển chế độ Sáng/Tối" aria-label="Toggle Theme">
         <i class="fa-solid fa-moon"></i>
       </button>
     </div>
   </header>
 
-  <!-- Mount Point for ABG CDSS Application -->
-  <div id="abg-cdss-container"></div>
+  <!-- Mount Point for Full React Application -->
+  <div id="root"></div>
 
-  <script type="module">
-    import { AbgCDSSController } from './abg-bundle.js';
+  <!-- Offline file:/// Fallback Loader -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Theme toggle support
+      const themeBtn = document.getElementById('theme-toggle');
+      if (themeBtn) {
+        const savedTheme = localStorage.getItem('cliniportal_theme') || 
+          (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        themeBtn.innerHTML = savedTheme === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
 
-    // Initialize Controller
-    new AbgCDSSController('abg-cdss-container');
+        themeBtn.addEventListener('click', () => {
+          const current = document.documentElement.getAttribute('data-theme') || 'light';
+          const next = current === 'dark' ? 'light' : 'dark';
+          document.documentElement.setAttribute('data-theme', next);
+          localStorage.setItem('cliniportal_theme', next);
+          themeBtn.innerHTML = next === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+        });
+      }
 
-    // Theme toggle
-    const themeBtn = document.getElementById('theme-toggle');
-    if (themeBtn) {
-      const savedTheme = localStorage.getItem('cliniportal_theme') || 
-        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-      document.documentElement.setAttribute('data-theme', savedTheme);
-      themeBtn.innerHTML = savedTheme === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
-
-      themeBtn.addEventListener('click', () => {
-        const current = document.documentElement.getAttribute('data-theme') || 'light';
-        const next = current === 'dark' ? 'light' : 'dark';
-        document.documentElement.setAttribute('data-theme', next);
-        localStorage.setItem('cliniportal_theme', next);
-        themeBtn.innerHTML = next === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
-      });
-    }
+      // If module is blocked under file:/// protocol, dynamically load IIFE bundle
+      setTimeout(() => {
+        const rootEl = document.getElementById('root');
+        if (rootEl && rootEl.children.length === 0) {
+          console.info('Module blocked or pending, activating standalone IIFE bundle...');
+          const s = document.createElement('script');
+          s.src = './assets/abg-app.iife.js';
+          document.body.appendChild(s);
+        }
+      }, 300);
+    });
   </script>
 </body>
 </html>

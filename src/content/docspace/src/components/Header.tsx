@@ -139,6 +139,16 @@ export const Header: React.FC<HeaderProps> = ({
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" title="Đồng bộ Supabase Cloud"></span>
           </button>
 
+          {/* Cầu nối sang Cơ sở Y khoa & EBM CliniPortal */}
+          <a
+            href="../../../index.html#/basic-medical"
+            className="hidden xl:flex items-center gap-1.5 px-2.5 py-1 bg-slate-50 hover:bg-slate-100 text-slate-700 border border-slate-200 rounded text-xs font-semibold transition-colors no-underline shadow-2xs"
+            title="Mở phân hệ Cơ sở Y khoa (GP, Sinh lý, Hóa sinh, Dịch tễ)"
+          >
+            <Database className="w-3.5 h-3.5 text-purple-600" />
+            <span>Cơ sở Y khoa</span>
+          </a>
+
           <button
             id="btn-nav-about"
             onClick={onOpenAbout}

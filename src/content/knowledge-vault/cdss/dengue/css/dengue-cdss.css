@@ -870,10 +870,458 @@
   border: 1px solid #334155;
 }
 
+/* Drug Tag Variants */
+.cdss-drug-tag--warning {
+  color: var(--cdss-warning);
+}
+.cdss-drug-tag--purple {
+  color: #a855f7;
+}
+
+/* Section Dividers in Sidebar Form */
+.cdss-section-divider {
+  display: flex;
+  align-items: center;
+  margin: 1.25rem 0 0.75rem;
+  border-top: 1px dashed var(--cdss-border);
+  position: relative;
+}
+
+.cdss-section-divider span {
+  background: var(--cdss-surface);
+  padding: 0.2rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--cdss-primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  position: relative;
+  top: -0.65rem;
+  border-radius: 4px;
+}
+
+/* Sidebar Boxes */
+.cdss-special-box,
+.cdss-cln-box {
+  background: var(--cdss-bg);
+  border: 1px solid var(--cdss-border);
+  border-radius: var(--cdss-radius-sm);
+  padding: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.cdss-checkbox-row {
+  display: flex;
+  flex-direction: column;
+}
+
+.cdss-check-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.84rem;
+  cursor: pointer;
+  color: var(--cdss-text);
+  user-select: none;
+}
+
+.cdss-check-label input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--cdss-primary);
+  cursor: pointer;
+}
+
+.cdss-check-label--danger input[type="checkbox"] {
+  accent-color: var(--cdss-danger);
+}
+
+.cdss-chip-btn--warning {
+  border-color: rgba(245, 158, 11, 0.4);
+  color: #b45309;
+}
+[data-theme="dark"] .cdss-chip-btn--warning {
+  color: #fcd34d;
+}
+
+.cdss-chip-btn--info {
+  border-color: rgba(6, 182, 212, 0.4);
+  color: #0e7490;
+}
+[data-theme="dark"] .cdss-chip-btn--info {
+  color: #67e8f9;
+}
+
+/* KHỐI NHÁNH QUYẾT ĐỊNH LÂM SÀNG */
+.cdss-branch-panel {
+  border-left: 4px solid var(--cdss-primary);
+}
+
+.cdss-branch-box {
+  border-radius: var(--cdss-radius-sm);
+  padding: 1.25rem;
+  background: var(--cdss-bg);
+  border: 1px solid var(--cdss-border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.cdss-branch-box--standard {
+  border-color: rgba(16, 185, 129, 0.3);
+  background: rgba(16, 185, 129, 0.04);
+}
+
+.cdss-branch-box--warning {
+  border-color: rgba(245, 158, 11, 0.4);
+  background: rgba(245, 158, 11, 0.06);
+}
+
+.cdss-branch-box--danger {
+  border-color: rgba(239, 68, 68, 0.4);
+  background: rgba(239, 68, 68, 0.06);
+}
+
+.cdss-branch-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.cdss-branch-title {
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--cdss-text);
+}
+
+.cdss-branch-fluid {
+  font-size: 0.9rem;
+  background: var(--cdss-surface);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--cdss-radius-sm);
+  border: 1px solid var(--cdss-border);
+}
+
+.cdss-branch-reasoning {
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--cdss-text);
+  margin: 0;
+}
+
+.cdss-branch-warnings {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.cdss-branch-warnings li {
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: var(--cdss-danger);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.cdss-cpt-conversion-box {
+  background: var(--cdss-surface);
+  border: 1px solid var(--cdss-border);
+  border-radius: var(--cdss-radius-sm);
+  padding: 0.85rem 1rem;
+  margin-top: 0.5rem;
+}
+
+.cdss-cpt-conversion-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--cdss-primary);
+  margin-bottom: 0.35rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.cdss-cpt-conversion-content {
+  font-size: 0.8rem;
+  line-height: 1.55;
+  color: var(--cdss-muted);
+}
+
+/* KHỐI CHẾ PHẨM MÁU */
+.cdss-blood-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+@media (max-width: 850px) {
+  .cdss-blood-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cdss-blood-card {
+  background: var(--cdss-bg);
+  border: 1px solid var(--cdss-border);
+  border-radius: var(--cdss-radius-sm);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  transition: all 0.2s;
+}
+
+.cdss-blood-card--active {
+  border-color: var(--cdss-danger);
+  background: rgba(239, 68, 68, 0.05);
+  box-shadow: 0 0 0 1px rgba(239, 68, 68, 0.3);
+}
+
+.cdss-blood-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cdss-blood-card-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  font-size: 0.95rem;
+  color: var(--cdss-text);
+}
+
+.cdss-blood-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  font-size: 0.82rem;
+}
+
+.cdss-blood-dose {
+  background: var(--cdss-surface);
+  padding: 0.4rem 0.65rem;
+  border-radius: 6px;
+  border: 1px solid var(--cdss-border);
+}
+
+.cdss-blood-ind,
+.cdss-blood-target {
+  line-height: 1.45;
+  color: var(--cdss-text);
+}
+
+.cdss-blood-prec {
+  font-size: 0.75rem;
+  color: var(--cdss-muted);
+  line-height: 1.4;
+  margin-top: 0.2rem;
+}
+
+/* KHỐI BIẾN CHỨNG & ABCS */
+.cdss-complication-box {
+  background: var(--cdss-bg);
+  border: 1px solid var(--cdss-border);
+  border-radius: var(--cdss-radius-sm);
+  padding: 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.cdss-complication-box--danger {
+  border-color: rgba(239, 68, 68, 0.5);
+  background: rgba(239, 68, 68, 0.05);
+}
+
+.cdss-complication-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.cdss-complication-title {
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--cdss-text);
+}
+
+.cdss-complication-summary {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  margin: 0;
+  color: var(--cdss-text);
+}
+
+.cdss-table--sm th,
+.cdss-table--sm td {
+  padding: 0.45rem 0.65rem;
+  font-size: 0.8rem;
+}
+
+.cdss-complication-precautions {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.cdss-complication-precautions li {
+  font-size: 0.8rem;
+  color: var(--cdss-muted);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.45rem;
+}
+
+/* ABCS Checklist Grid */
+.cdss-abcs-wrap {
+  background: var(--cdss-surface);
+  border: 1px solid var(--cdss-border);
+  border-radius: var(--cdss-radius-sm);
+  padding: 1.15rem;
+}
+
+.cdss-abcs-header-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin: 0 0 1rem;
+  color: var(--cdss-text);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cdss-abcs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+@media (max-width: 850px) {
+  .cdss-abcs-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cdss-abcs-card {
+  display: flex;
+  gap: 0.85rem;
+  background: var(--cdss-bg);
+  border: 1px solid var(--cdss-border);
+  border-radius: var(--cdss-radius-sm);
+  padding: 0.85rem;
+}
+
+.cdss-abcs-badge {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  color: #fff;
+  font-weight: 900;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cdss-abcs-badge--a { background: #ef4444; }
+.cdss-abcs-badge--b { background: #f97316; }
+.cdss-abcs-badge--c { background: #0284c7; }
+.cdss-abcs-badge--s { background: #10b981; }
+
+.cdss-abcs-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-size: 0.82rem;
+}
+
+.cdss-abcs-card-title {
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: var(--cdss-text);
+}
+
+.cdss-abcs-card-crit {
+  color: var(--cdss-muted);
+  line-height: 1.4;
+}
+
+.cdss-abcs-card-act {
+  color: var(--cdss-text);
+  line-height: 1.45;
+}
+
+/* Extra Complications Grid */
+.cdss-extra-complications-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+@media (max-width: 850px) {
+  .cdss-extra-complications-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cdss-extra-comp-card {
+  background: var(--cdss-bg);
+  border: 1px solid var(--cdss-border);
+  border-radius: var(--cdss-radius-sm);
+  padding: 0.85rem 1rem;
+}
+
+.cdss-extra-comp-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+  color: var(--cdss-text);
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.cdss-extra-comp-desc {
+  font-size: 0.8rem;
+  line-height: 1.55;
+  color: var(--cdss-muted);
+  margin: 0;
+}
+
+/* Helpers & Spacing */
+.cdss-mt-1 { margin-top: 0.5rem; }
+.cdss-mt-2 { margin-top: 0.75rem; }
+.cdss-mt-3 { margin-top: 1.25rem; }
+
 /* Helpers */
 .text-danger { color: var(--cdss-danger) !important; }
 .text-primary { color: var(--cdss-primary) !important; }
 .text-muted { color: var(--cdss-muted) !important; }
+.text-warning { color: var(--cdss-warning) !important; }
+.text-success { color: var(--cdss-success) !important; }
 .font-bold { font-weight: 800 !important; }
 
 /* Print Media */

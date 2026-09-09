@@ -276,9 +276,10 @@ async function fetchAndHydrateGuideline(cleanSlug: string, baseSlugName: string)
         </nav>
       `;
     }
-
     mountEl.innerHTML = `
-      <div class="reading-progress-bar" id="reading-progress-bar"></div>
+      <div class="reading-progress-container" style="position: fixed; top: 0; left: 0; width: 100%; height: 3.5px; z-index: 10001; pointer-events: none;">
+        <div class="reading-progress-bar" id="reading-progress-bar" style="height: 3.5px; max-height: 3.5px; width: 0%; pointer-events: none;"></div>
+      </div>
       <div class="guideline-article-container" style="max-width: 1280px; margin: 0 auto;">
         
         <!-- LUXURY EBM HERO BANNER -->

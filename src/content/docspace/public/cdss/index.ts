@@ -8,6 +8,11 @@ export * from './cdss-registry';
 export * from './dengue/dengue-data';
 export * from './dengue/dengue-engine';
 export * from './dengue/dengue-ui';
+export * from './ecg/ecg-types';
+export * from './ecg/ecg-cases';
+export * from './ecg/ecg-math';
+export * from './ecg/ecg-canvas-renderer';
+export * from './ecg/ecg-ui';
 export * from './abg/abg-types';
 export * from './abg/abg-engine';
 export * from './abg/abg-ui';
@@ -92,3 +97,10 @@ export function initCDSSHub(containerId: string): void {
     </div>
   `;
 }
+
+if (typeof window !== 'undefined') {
+  (window as any).initCDSSHub = initCDSSHub;
+  (window as any).CDSS_MODULES = CDSS_MODULES;
+  (window as any).getCDSSModuleById = getCDSSModuleById;
+}
+

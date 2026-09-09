@@ -603,3 +603,422 @@ body {
   transform: translateY(0);
   opacity: 1;
 }
+
+/* ==========================================================================
+   Tab 5 & 6 Styles: Nomogram, Decision Trees, Procedures & Physiology
+   ========================================================================== */
+.abg-knowledge-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.abg-knowledge-subnav {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--abg-panel);
+  border: 1px solid var(--abg-line);
+  padding: 0.5rem;
+  border-radius: var(--abg-radius-md);
+  overflow-x: auto;
+}
+
+.abg-subnav-pill {
+  padding: 0.45rem 0.9rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-radius: var(--abg-radius-sm);
+  border: none;
+  background: transparent;
+  color: var(--abg-ink2);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+.abg-subnav-pill:hover {
+  background: var(--abg-line-subtle);
+  color: var(--abg-primary);
+}
+
+.abg-subnav-pill.active {
+  background: var(--abg-primary);
+  color: #fff;
+}
+
+/* Nomogram Card */
+.abg-nomogram-card {
+  background: var(--abg-card);
+  border: 1px solid var(--abg-line);
+  border-radius: var(--abg-radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--abg-shadow-sm);
+}
+
+.abg-nomogram-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  border-bottom: 1px solid var(--abg-line-subtle);
+  padding-bottom: 1rem;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.abg-nomogram-header h3 {
+  margin: 0.4rem 0 0.2rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--abg-ink);
+}
+
+.abg-nomogram-grid {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 1.5rem;
+}
+
+@media (max-width: 860px) {
+  .abg-nomogram-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.abg-nomogram-sliders {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.abg-slider-group {
+  background: var(--abg-bg);
+  border: 1px solid var(--abg-line);
+  border-radius: var(--abg-radius-md);
+  padding: 1rem 1.25rem;
+}
+
+.abg-slider-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--abg-ink);
+  margin-bottom: 0.6rem;
+}
+
+.abg-slider-group input[type="range"] {
+  width: 100%;
+  accent-color: var(--abg-primary);
+  cursor: pointer;
+}
+
+.abg-slider-ticks {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  color: var(--abg-muted);
+  margin-top: 0.35rem;
+}
+
+.abg-nomogram-readout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  background: var(--abg-bg);
+  border: 1px solid var(--abg-line);
+  border-radius: var(--abg-radius-md);
+  padding: 1.25rem;
+  align-content: start;
+}
+
+.abg-readout-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  font-size: 0.8rem;
+  color: var(--abg-muted);
+}
+
+.abg-readout-item strong {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--abg-primary);
+}
+
+/* Decision Tree Styles */
+.abg-tree-card,
+.abg-proc-card {
+  background: var(--abg-card);
+  border: 1px solid var(--abg-line);
+  border-radius: var(--abg-radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--abg-shadow-sm);
+}
+
+.abg-tree-header,
+.abg-proc-head {
+  border-bottom: 1px solid var(--abg-line-subtle);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.abg-tree-header h4,
+.abg-proc-head h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--abg-ink);
+}
+
+.abg-tree-header p,
+.abg-proc-head p {
+  margin: 0;
+  font-size: 0.84rem;
+  color: var(--abg-muted);
+}
+
+.abg-tree-branches {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  margin-top: 1rem;
+}
+
+@media (max-width: 860px) {
+  .abg-tree-branches {
+    grid-template-columns: 1fr;
+  }
+}
+
+.abg-tree-branch {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.abg-branch-cond {
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.3rem 0.65rem;
+  border-radius: 9999px;
+  background: var(--abg-line-subtle);
+  color: var(--abg-ink);
+  align-self: flex-start;
+}
+
+.abg-tree-leaf {
+  background: var(--abg-bg);
+  border: 1px solid var(--abg-line);
+  border-radius: var(--abg-radius-md);
+  padding: 1rem;
+  font-size: 0.84rem;
+  line-height: 1.5;
+  color: var(--abg-ink);
+}
+
+.abg-tree-leaf--ok {
+  border-color: var(--abg-green-border);
+  background: var(--abg-green-bg);
+}
+
+.abg-tree-leaf--alert {
+  border-color: var(--abg-red-border);
+  background: var(--abg-red-bg);
+}
+
+.abg-tree-subbranches {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-top: 0.75rem;
+}
+
+.abg-tree-subleaf {
+  background: var(--abg-card);
+  border: 1px solid var(--abg-line);
+  border-radius: var(--abg-radius-sm);
+  padding: 0.75rem;
+}
+
+.abg-tree-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+@media (max-width: 860px) {
+  .abg-tree-grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.abg-tree-card-sub {
+  background: var(--abg-bg);
+  border: 1px solid var(--abg-line);
+  border-radius: var(--abg-radius-md);
+  padding: 1.25rem;
+}
+
+.abg-sub-head {
+  font-weight: 700;
+  font-size: 0.92rem;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.abg-sub-list {
+  padding-left: 1.25rem;
+  margin: 0;
+  font-size: 0.83rem;
+  line-height: 1.6;
+  color: var(--abg-ink);
+}
+
+.abg-goldmark-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.83rem;
+  color: var(--abg-ink);
+}
+
+.abg-gold-letter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  background: #ef4444;
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.75rem;
+  margin-right: 0.45rem;
+}
+
+/* Procedures & Physiology */
+.abg-proc-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+@media (max-width: 860px) {
+  .abg-proc-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.abg-proc-box {
+  background: var(--abg-bg);
+  border: 1px solid var(--abg-line);
+  border-radius: var(--abg-radius-md);
+  padding: 1.25rem;
+  font-size: 0.84rem;
+  line-height: 1.55;
+  color: var(--abg-ink);
+}
+
+.abg-proc-box h4 {
+  margin: 0 0 0.65rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--abg-ink);
+}
+
+.abg-proc-box ul,
+.abg-proc-box ol {
+  padding-left: 1.25rem;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.abg-proc-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+  margin-top: 0.5rem;
+}
+
+.abg-proc-table th,
+.abg-proc-table td {
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--abg-line);
+  text-align: left;
+}
+
+.abg-proc-table th {
+  background: var(--abg-panel);
+  color: var(--abg-ink);
+  font-weight: 700;
+}
+
+.abg-allen-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+@media (max-width: 960px) {
+  .abg-allen-steps-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .abg-allen-steps-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.abg-allen-step {
+  background: var(--abg-bg);
+  border: 1px solid var(--abg-line);
+  border-radius: var(--abg-radius-md);
+  padding: 1rem;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.abg-allen-step--result {
+  grid-column: 1 / -1;
+  background: var(--abg-green-bg);
+  border-color: var(--abg-green-border);
+}
+
+.abg-step-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #fff;
+  background: var(--abg-primary);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  align-self: flex-start;
+}
+
+.abg-formula-box {
+  background: var(--abg-card);
+  border: 1px dashed var(--abg-primary);
+  padding: 0.75rem 1rem;
+  border-radius: var(--abg-radius-sm);
+  color: var(--abg-primary);
+  font-size: 0.95rem;
+  font-family: var(--abg-font-mono);
+}
+

@@ -88,74 +88,107 @@
 </head>
 
 <body>
-  <!-- ===================== HEADER ===================== -->
-  <header class="global-header">
+  <!-- ===================== HEADER (DOCSPACE MEDLENS SAAS MASTER) ===================== -->
+  <header class="global-header" id="siteHeader">
+    <!-- TRÁI: Brand & Live Knowledge Stats -->
     <div class="header-left">
-      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Mở menu">
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Mở menu điều hướng">
         <i class="fa-solid fa-bars"></i>
       </button>
-      <a href="#/" class="logo-brand"
-        style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 0.5rem;">
-        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-          <rect width="28" height="28" rx="7" fill="#0284c7" />
-          <path d="M14 6v16M8 11h12M8 17h8" stroke="white" stroke-width="2" stroke-linecap="round" />
-        </svg>
-        <span class="logo-text">CliniPortal</span>
+
+      <a href="#/" class="logo-brand" title="Về Trang chủ CliniPortal">
+        <div class="logo-icon-box">
+          <i class="fa-solid fa-stethoscope"></i>
+        </div>
+        <div class="brand-text-group">
+          <span class="logo-title">CliniPortal <span class="text-primary-accent">MedLens</span></span>
+          <span class="brand-badge">CLINIPORTAL</span>
+        </div>
       </a>
+
+      <!-- Live Knowledge & Vault Metrics Strip -->
+      <div class="live-knowledge-stats" title="Quy mô cơ sở dữ liệu y khoa trực tiếp">
+        <span class="live-dot-pulse"></span>
+        <span>Tri thức:</span>
+        <b>14</b> bệnh · <b>92</b> từ vựng · <span class="stat-blue">2.400+</span> bài Vault · <span class="stat-rose">78</span> Guidelines
+      </div>
     </div>
 
-    <nav class="header-nav-modules" aria-label="Phân hệ y khoa">
-      <div class="header-module-dropdown-wrapper">
-        <button type="button" class="header-module-btn header-dropdown-trigger" title="Basic Medical Sciences (Giải phẫu, Sinh lý, Cơ chế bệnh sinh, Hóa sinh & Dịch tễ học)">
-          <i class="fa-solid fa-dna" style="color: #8b5cf6;"></i>
-          <span>Basic Sciences</span>
-          <i class="fa-solid fa-chevron-down dropdown-arrow" style="font-size: 0.65rem; margin-left: 2px; opacity: 0.7;"></i>
-        </button>
-        <div class="header-dropdown-menu">
-          <a href="#/basic-medical/giai-phau-sinh-ly" class="header-dropdown-item">
-            <span class="dropdown-item-icon">🧬</span>
-            <div class="dropdown-item-text">
-              <strong>GP - SL</strong>
-              <span>Giải phẫu & Sinh lý</span>
-            </div>
-          </a>
-          <a href="#/basic-medical/co-che-benh-sinh" class="header-dropdown-item">
-            <span class="dropdown-item-icon">🔬</span>
-            <div class="dropdown-item-text">
-              <strong>CCBS - SBL</strong>
-              <span>Cơ chế bệnh sinh & Sinh lý bệnh</span>
-            </div>
-          </a>
-          <a href="#/basic-medical/hoa-sinh" class="header-dropdown-item">
-            <span class="dropdown-item-icon">🧪</span>
-            <div class="dropdown-item-text">
-              <strong>Hóa Sinh</strong>
-              <span>Hóa sinh Y học & Chuyển hóa</span>
-            </div>
-          </a>
-          <a href="#/basic-medical/dich-te-hoc" class="header-dropdown-item">
-            <span class="dropdown-item-icon">🦠</span>
-            <div class="dropdown-item-text">
-              <strong>Dịch Tễ</strong>
-              <span>Dịch tễ học & Y tế công cộng</span>
-            </div>
-          </a>
-        </div>
+    <!-- GIỮA: 4 Nút Trợ Thủ Lâm Sàng + Luồng Thông Liên Phân Hệ -->
+    <div class="header-center">
+      <!-- 4 Kho Trợ Thủ Lâm Sàng (Shortcuts) -->
+      <div class="clinical-shortcuts-strip" aria-label="Lối tắt lâm sàng">
+        <a href="#/ebm/kho-guidelines" class="shortcut-chip chip-guidelines" title="Kho 78 văn bản Khuyến cáo EBM Bộ Y Tế, ESC, AHA & Landmark RCTs">
+          <span>📚</span><span>Guidelines</span>
+        </a>
+        <a href="#/calculators" class="shortcut-chip chip-tools" title="Kho Công cụ & Thang điểm CDSS (CURB-65, Wells, GCS, NIHSS...)">
+          <span>🧮</span><span>Công cụ</span>
+        </a>
+        <a href="#/docspace" class="shortcut-chip chip-icd" title="Kho ICD-10 & Quy tắc phòng ngừa xuất toán BHYT">
+          <span>🏷️</span><span>ICD-10</span>
+        </a>
+        <a href="#/docspace" class="shortcut-chip chip-cdss" title="Kho CDSS: Hỗ trợ quyết định kháng sinh, dịch truyền & ca cấp cứu">
+          <span>⚡</span><span>CDSS</span>
+        </a>
       </div>
-      <a href="#/ebm" class="header-module-btn" data-route="#/ebm" title="Y học chứng cứ & Kho Guidelines">
-        <i class="fa-solid fa-flask" style="color: #06b6d4;"></i>
-        <span>Chứng cứ</span>
-      </a>
-      <a href="#/vault" class="header-module-btn" data-route="#/vault" title="Kho Kiến Thức Y Khoa (Knowledge Vault 2.250+ bài)">
-        <i class="fa-solid fa-graduation-cap" style="color: #8b5cf6;"></i>
-        <span>Kho Tri Thức</span>
-      </a>
-      <a href="#/docspace" class="header-module-btn bento-badge-docspace" id="docspaceHeaderBtn" title="DocSpace — Không gian Lâm sàng Tích hợp & Command Bar (Ctrl+K)">
-        <i class="fa-solid fa-id-badge" style="color: var(--color-primary);"></i>
-        <span>DocSpace Pro</span>
-      </a>
-    </nav>
 
+      <div class="header-v-divider" aria-hidden="true"></div>
+
+      <!-- Navigation Action Bridges -->
+      <nav class="header-nav-bridges" aria-label="Phân hệ chính">
+        <a href="#/vault" class="nav-bridge-btn bridge-vault" title="Kho Tri thức Y khoa Toàn diện (2.400+ bài viết, 7 khối dữ liệu)">
+          <i class="fa-solid fa-book-open"></i>
+          <span>Kho tri thức</span>
+        </a>
+        <a href="#/docspace" class="nav-bridge-btn bridge-cases" title="Không gian Phân tích Bệnh án SOAP & Kho ca lâm sàng (Đồng bộ Cloud)">
+          <i class="fa-solid fa-notes-medical"></i>
+          <span>Kho ca lâm sàng</span>
+          <span class="bridge-pulse-dot" title="Đồng bộ thời gian thực"></span>
+        </a>
+        <div class="header-module-dropdown-wrapper">
+          <button type="button" class="nav-bridge-btn bridge-basic header-dropdown-trigger" title="Cơ sở Y khoa (GP, Sinh lý, CCBS, Hóa sinh, Dịch tễ)">
+            <i class="fa-solid fa-dna" style="color: #8b5cf6;"></i>
+            <span>Cơ sở</span>
+            <i class="fa-solid fa-chevron-down dropdown-arrow" style="font-size: 0.62rem; margin-left: 1px; opacity: 0.7;"></i>
+          </button>
+          <div class="header-dropdown-menu">
+            <a href="#/basic-medical/giai-phau-sinh-ly" class="header-dropdown-item">
+              <span class="dropdown-item-icon">🧬</span>
+              <div class="dropdown-item-text">
+                <strong>GP - SL</strong>
+                <span>Giải phẫu & Sinh lý</span>
+              </div>
+            </a>
+            <a href="#/basic-medical/co-che-benh-sinh" class="header-dropdown-item">
+              <span class="dropdown-item-icon">🔬</span>
+              <div class="dropdown-item-text">
+                <strong>CCBS - SBL</strong>
+                <span>Cơ chế bệnh sinh & Sinh lý bệnh</span>
+              </div>
+            </a>
+            <a href="#/basic-medical/hoa-sinh" class="header-dropdown-item">
+              <span class="dropdown-item-icon">🧪</span>
+              <div class="dropdown-item-text">
+                <strong>Hóa Sinh</strong>
+                <span>Hóa sinh Y học & Chuyển hóa</span>
+              </div>
+            </a>
+            <a href="#/basic-medical/dich-te-hoc" class="header-dropdown-item">
+              <span class="dropdown-item-icon">🦠</span>
+              <div class="dropdown-item-text">
+                <strong>Dịch Tễ</strong>
+                <span>Dịch tễ học & Y tế công cộng</span>
+              </div>
+            </a>
+          </div>
+        </div>
+        <button class="nav-icon-help-btn" id="headerHelpBtn" onclick="document.getElementById('hotkeyModalOverlay')?.classList.add('show');" title="Xem bảng phím tắt & trợ giúp (?)">
+          <i class="fa-regular fa-circle-question"></i>
+        </button>
+      </nav>
+    </div>
+
+    <!-- PHẢI: Search, Theme, Doctor Profile & Settings -->
     <div class="header-right">
       <div class="search-bar-container">
         <div class="search-container">
@@ -165,9 +198,9 @@
                 d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z" />
             </g>
           </svg>
-          <input class="input" type="search" placeholder="Tìm ứng dụng, phác đồ, công cụ…" aria-label="Tìm kiếm hệ sinh thái">
+          <input class="input" type="search" placeholder="Tìm kiếm hệ sinh thái…" aria-label="Tìm kiếm hệ sinh thái">
           <kbd class="search-kbd-hint" id="searchKbdHint" title="Bấm phím Ctrl K hoặc / để tìm kiếm">Ctrl K</kbd>
-          <button class="voice-search-btn" id="voiceSearchBtn" title="Tìm kiếm bằng giọng nói y khoa (Click để nói)" aria-label="Voice Search">
+          <button class="voice-search-btn" id="voiceSearchBtn" title="Tìm kiếm bằng giọng nói y khoa" aria-label="Voice Search">
             <i class="fa-solid fa-microphone"></i>
           </button>
         </div>
@@ -181,6 +214,16 @@
         <button id="header-cheatsheets-btn" class="header-settings-btn open-cheatsheet-btn" title="Tra Cứu Siêu Tốc (Clinical Cheatsheets)" aria-label="Tra cứu siêu tốc">
           <i class="fa-solid fa-bolt" style="color: var(--color-primary);"></i>
         </button>
+
+        <!-- Doctor User Profile Chip (DocSpace Style) -->
+        <a href="#/docspace" class="doctor-profile-badge" id="doctorProfileBadge" title="Thông tin Bác sĩ Lâm sàng & Phiên làm việc">
+          <div class="doctor-avatar">Đ</div>
+          <div class="doctor-meta">
+            <span class="doctor-name">BS.CKII Nguyễn Văn ...</span>
+            <span class="doctor-sub">Tim mạch & Cấp cứu</span>
+          </div>
+        </a>
+
         <button id="sync-settings-btn" class="header-settings-btn" title="Cài đặt & Đồng bộ" aria-label="Settings and Sync">
           <i class="fa-solid fa-gear"></i>
         </button>

@@ -507,14 +507,31 @@ async function fetchAndHydratePhysioArticle(
           .guideline-article-container {
             padding-left: 0.1rem !important;
             padding-right: 0.1rem !important;
-          }
+        }
 
-          .guideline-hero-banner {
-            padding: 1.1rem 0.75rem !important;
-          }
+        .reading-progress-container {
+          position: fixed !important;
+          top: 0 !important;
+          left: 0 !important;
+          width: 100% !important;
+          height: 3.5px !important;
+          max-height: 3.5px !important;
+          z-index: 10001 !important;
+          pointer-events: none !important;
+        }
+        .reading-progress-bar {
+          height: 3.5px !important;
+          max-height: 3.5px !important;
+          pointer-events: none !important;
+        }
+        .reading-progress-container .reading-progress-bar {
+          height: 100% !important;
+          max-height: 100% !important;
         }
       </style>
-      <div class="reading-progress-bar" id="reading-progress-bar"></div>
+      <div class="reading-progress-container" style="position: fixed; top: 0; left: 0; width: 100%; height: 3.5px; z-index: 10001; pointer-events: none;">
+        <div class="reading-progress-bar" id="reading-progress-bar" style="height: 3.5px; max-height: 3.5px; width: 0%; pointer-events: none;"></div>
+      </div>
       <div class="guideline-article-container physio-article-container" style="margin: 0 auto; width: 100%;">
         
         <!-- LUXURY HERO BANNER -->

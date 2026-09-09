@@ -259,12 +259,26 @@
   pointer-events: none;
 }
 
-.reading-progress-bar {
+.reading-progress-container .reading-progress-bar {
   height: 100%;
   width: 0%;
   background: linear-gradient(90deg, var(--dsp-sky), #38bdf8, var(--dsp-violet));
   transition: width 0.1s ease-out;
   box-shadow: 0 0 10px var(--dsp-sky-glow);
+}
+
+.reading-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3.5px !important;
+  max-height: 3.5px !important;
+  width: 0%;
+  background: linear-gradient(90deg, var(--dsp-sky), #38bdf8, var(--dsp-violet));
+  transition: width 0.1s ease-out;
+  box-shadow: 0 0 10px var(--dsp-sky-glow);
+  z-index: 10001;
+  pointer-events: none;
 }
 
 /* ==========================================================================

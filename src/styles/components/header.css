@@ -3,52 +3,45 @@
 ============================================================ */
 .global-header {
   position: fixed;
-  top: 1rem;
-  left: 50%;
-  transform: translateX(-50%);
-  width: calc(100% - 2rem);
-  height: var(--header-height, 60px);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-height, 56px);
   z-index: 200;
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--color-border, #e2e8f0);
+  border-radius: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 1.25rem;
-  gap: 1rem;
-  max-width: 1600px;
-  box-shadow: 
-    0 10px 30px -10px rgba(0, 0, 0, 0.15),
-    inset 0 1px 1px rgba(255, 255, 255, 0.6);
+  padding: 0 1rem;
+  gap: 0.75rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
   transition: all var(--tr);
+  box-sizing: border-box;
 }
 
 [data-theme="dark"] .global-header {
-  background: rgba(15, 23, 42, 0.6);
-  border-color: rgba(255, 255, 255, 0.1);
-  box-shadow: 
-    0 10px 30px -10px rgba(0, 0, 0, 0.5),
-    inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  background: rgba(15, 23, 42, 0.95);
+  border-bottom-color: var(--color-border, #334155);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
 }
 
-/* Removed top accent line for pill design */
-
-/* ── Zone 1: Header Left (Logo, Mobile Menu, Quay lại) ── */
+/* ── Zone 1: Header Left (Brand, Logo Box & Live Knowledge Stats) ── */
 .header-left {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.65rem;
   flex: 0 0 auto;
 }
 
 .mobile-menu-btn {
-  width: 36px; height: 36px;
+  width: 34px; height: 34px;
   display: flex; align-items: center; justify-content: center;
-  border-radius: var(--radius-md, 8px);
-  font-size: 1.1rem;
+  border-radius: 6px;
+  font-size: 1rem;
   color: var(--color-text-muted);
   background: transparent;
   border: none;
@@ -59,30 +52,115 @@
 .mobile-menu-btn:hover {
   background: var(--color-surface-offset);
   color: var(--color-primary);
-  transform: scale(1.05);
+}
+
+/* DocSpace Stethoscope Logo Icon Box */
+.logo-icon-box {
+  width: 32px;
+  height: 32px;
+  background: var(--color-primary, #0284c7);
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 0.95rem;
+  box-shadow: 0 1px 3px rgba(2, 132, 199, 0.25);
+  flex-shrink: 0;
 }
 
 .logo-brand {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: var(--text-md, 1.1rem);
-  letter-spacing: -0.02em;
-  white-space: nowrap;
   text-decoration: none;
   transition: opacity var(--tr);
 }
-.logo-brand:hover { opacity: 0.88; }
-.logo-icon { font-size: 1.2rem; }
+.logo-brand:hover { opacity: 0.9; }
 
-/* Gradient text effect for logo */
-.logo-text {
-  background: var(--gradient-accent);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.brand-text-group {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+}
+
+.logo-title {
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-weight: 800;
+  font-size: 1.05rem;
+  color: var(--color-text, #0f172a);
+  letter-spacing: -0.025em;
+  white-space: nowrap;
+}
+
+.logo-title .text-primary-accent {
+  color: var(--color-primary, #0284c7);
+  font-weight: 800;
+}
+
+.brand-badge {
+  display: none;
+  padding: 0.12rem 0.45rem;
+  background: rgba(2, 132, 199, 0.08);
+  border: 1px solid rgba(2, 132, 199, 0.25);
+  border-radius: 4px;
+  font-size: 9.5px;
+  font-weight: 800;
+  color: var(--color-primary, #0284c7);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+@media (min-width: 640px) {
+  .brand-badge {
+    display: inline-flex;
+  }
+}
+
+/* Live Knowledge Stats Pill */
+.live-knowledge-stats {
+  display: none;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  color: var(--color-text-muted, #64748b);
+  background: var(--color-surface-offset, #f8fafc);
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  border: 1px solid var(--color-border, #e2e8f0);
+  margin-left: 0.25rem;
+  white-space: nowrap;
+  user-select: none;
+}
+
+@media (min-width: 1440px) {
+  .live-knowledge-stats {
+    display: inline-flex;
+  }
+}
+
+.live-dot-pulse {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-primary, #0284c7);
+  box-shadow: 0 0 6px var(--color-primary, #0284c7);
+  animation: live-pulse 2s infinite ease-in-out;
+  flex-shrink: 0;
+}
+
+@keyframes live-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.8); }
+}
+
+.live-knowledge-stats .stat-blue {
+  color: var(--color-primary, #0284c7);
+  font-weight: 700;
+}
+.live-knowledge-stats .stat-rose {
+  color: #e11d48;
+  font-weight: 700;
 }
 
 /* Button Back — Modern Tech Design */
@@ -131,7 +209,220 @@
   box-shadow: 0 1px 4px rgba(var(--color-primary-rgb, 2, 132, 199), 0.1);
 }
 
-/* ── Zone 2: Header Center (Nav Module Links) ── */
+/* ── Zone 2: Header Center (DocSpace SaaS Shortcuts & Inter-module Bridges) ── */
+.header-center {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex: 1 1 auto;
+  justify-content: center;
+  min-width: 0;
+}
+
+/* 4 Clinical Shortcuts Strip */
+.clinical-shortcuts-strip {
+  display: none;
+  align-items: center;
+  gap: 0.35rem;
+  background: var(--color-surface-offset, #f1f5f9);
+  padding: 0.2rem 0.35rem;
+  border-radius: 8px;
+  border: 1px solid var(--color-border, #e2e8f0);
+}
+
+@media (min-width: 1080px) {
+  .clinical-shortcuts-strip {
+    display: inline-flex;
+  }
+}
+
+.shortcut-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.22rem 0.55rem;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.shortcut-chip.chip-guidelines {
+  color: #881337;
+  background: #fff1f2;
+  border-color: #fecdd3;
+}
+.shortcut-chip.chip-guidelines:hover {
+  background: #ffe4e6;
+  transform: translateY(-1px);
+}
+
+.shortcut-chip.chip-tools {
+  color: #78350f;
+  background: #fffbeb;
+  border-color: #fde68a;
+}
+.shortcut-chip.chip-tools:hover {
+  background: #fef3c7;
+  transform: translateY(-1px);
+}
+
+.shortcut-chip.chip-icd {
+  color: #0c4a6e;
+  background: #f0f9ff;
+  border-color: #bae6fd;
+}
+.shortcut-chip.chip-icd:hover {
+  background: #e0f2fe;
+  transform: translateY(-1px);
+}
+
+.shortcut-chip.chip-cdss {
+  color: #581c87;
+  background: #faf5ff;
+  border-color: #e9d5ff;
+}
+.shortcut-chip.chip-cdss:hover {
+  background: #f3e8ff;
+  transform: translateY(-1px);
+}
+
+[data-theme="dark"] .shortcut-chip.chip-guidelines {
+  color: #fda4af;
+  background: rgba(225, 29, 72, 0.15);
+  border-color: rgba(225, 29, 72, 0.3);
+}
+[data-theme="dark"] .shortcut-chip.chip-tools {
+  color: #fcd34d;
+  background: rgba(217, 119, 6, 0.15);
+  border-color: rgba(217, 119, 6, 0.3);
+}
+[data-theme="dark"] .shortcut-chip.chip-icd {
+  color: #7dd3fc;
+  background: rgba(2, 132, 199, 0.15);
+  border-color: rgba(2, 132, 199, 0.3);
+}
+[data-theme="dark"] .shortcut-chip.chip-cdss {
+  color: #d8b4fe;
+  background: rgba(147, 51, 234, 0.15);
+  border-color: rgba(147, 51, 234, 0.3);
+}
+
+.header-v-divider {
+  width: 1px;
+  height: 16px;
+  background: var(--color-border, #cbd5e1);
+  display: none;
+}
+@media (min-width: 1080px) {
+  .header-v-divider {
+    display: block;
+  }
+}
+
+/* Navigation Bridges (Kho tri thức, Kho ca lâm sàng, Cơ sở) */
+.header-nav-bridges {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.nav-bridge-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.38rem;
+  padding: 0.28rem 0.7rem;
+  border-radius: 6px;
+  font-size: 11.5px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+  border: 1px solid transparent;
+}
+
+.nav-bridge-btn.bridge-vault {
+  background: #eef2ff;
+  color: #4338ca;
+  border-color: #c7d2fe;
+}
+.nav-bridge-btn.bridge-vault:hover {
+  background: #e0e7ff;
+  transform: translateY(-1px);
+}
+
+.nav-bridge-btn.bridge-cases {
+  background: #eff6ff;
+  color: #1d4ed8;
+  border-color: #bfdbfe;
+  position: relative;
+}
+.nav-bridge-btn.bridge-cases:hover {
+  background: #dbeafe;
+  transform: translateY(-1px);
+}
+
+.bridge-pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 6px #10b981;
+  animation: live-pulse 1.8s infinite ease-in-out;
+  margin-left: 1px;
+}
+
+.nav-bridge-btn.bridge-basic {
+  background: var(--color-surface-offset, #f8fafc);
+  color: var(--color-text, #0f172a);
+  border-color: var(--color-border, #cbd5e1);
+}
+.nav-bridge-btn.bridge-basic:hover {
+  background: var(--color-primary-hl, rgba(2, 132, 199, 0.08));
+  border-color: var(--color-primary, #0284c7);
+  color: var(--color-primary, #0284c7);
+}
+
+[data-theme="dark"] .nav-bridge-btn.bridge-vault {
+  background: rgba(99, 102, 241, 0.15);
+  color: #a5b4fc;
+  border-color: rgba(99, 102, 241, 0.35);
+}
+[data-theme="dark"] .nav-bridge-btn.bridge-cases {
+  background: rgba(37, 99, 235, 0.15);
+  color: #93c5fd;
+  border-color: rgba(37, 99, 235, 0.35);
+}
+[data-theme="dark"] .nav-bridge-btn.bridge-basic {
+  background: var(--color-surface, #1e293b);
+  color: var(--color-text, #f8fafc);
+  border-color: var(--color-border, #334155);
+}
+
+.nav-icon-help-btn {
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  color: var(--color-text-muted, #64748b);
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: all 0.15s ease;
+}
+.nav-icon-help-btn:hover {
+  color: var(--color-primary, #0284c7);
+  background: var(--color-surface-offset);
+}
+
+/* Backward compatibility for legacy header-nav-modules */
 .header-nav-modules {
   display: flex;
   align-items: center;
@@ -399,6 +690,82 @@
 
 .theme-toggle-btn:hover {
   transform: scale(1.06) rotate(15deg);
+}
+
+/* Doctor User Profile Badge */
+.doctor-profile-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.2rem 0.6rem 0.2rem 0.3rem;
+  background: var(--color-surface-offset, #f8fafc);
+  border: 1px solid var(--color-border, #cbd5e1);
+  border-radius: 7px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+  text-decoration: none;
+}
+.doctor-profile-badge:hover {
+  background: var(--color-primary-hl, rgba(2, 132, 199, 0.08));
+  border-color: var(--color-primary, #0284c7);
+}
+
+.doctor-avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--color-primary, #0284c7);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 11px;
+  flex-shrink: 0;
+  box-shadow: 0 1px 3px rgba(2, 132, 199, 0.3);
+}
+
+.doctor-meta {
+  display: none;
+  flex-direction: column;
+  line-height: 1.15;
+  text-align: left;
+}
+@media (min-width: 1280px) {
+  .doctor-meta {
+    display: flex;
+  }
+}
+
+.doctor-name {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-text, #0f172a);
+  max-width: 130px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.doctor-sub {
+  font-size: 9.5px;
+  color: var(--color-text-muted, #64748b);
+  max-width: 130px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+[data-theme="dark"] .doctor-profile-badge {
+  background: var(--color-surface, #1e293b);
+  border-color: var(--color-border, #334155);
+}
+[data-theme="dark"] .doctor-name {
+  color: #f8fafc;
+}
+[data-theme="dark"] .doctor-sub {
+  color: #94a3b8;
 }
 
 /* Settings Modal Setting Buttons */

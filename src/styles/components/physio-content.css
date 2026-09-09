@@ -893,12 +893,14 @@ h4.minor-heading:hover,
   position: fixed;
   top: 0;
   left: 0;
-  height: 3.5px;
+  height: 3.5px !important;
+  max-height: 3.5px !important;
   width: 0%;
   background: linear-gradient(90deg, #0284c7, #38bdf8, #8b5cf6, #10b981);
-  z-index: 9999;
+  z-index: 10001;
   transition: width 0.08s ease-out;
   box-shadow: 0 0 10px rgba(56, 189, 248, 0.6);
+  pointer-events: none;
 }
 
 .patho-alert, .biochem-alert, .physio-alert, .epi-alert {

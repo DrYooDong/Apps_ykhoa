@@ -12,7 +12,7 @@ export class EcgCDSSController {
   private container: HTMLElement;
   private currentCase: EcgCase;
   private renderer: EcgCanvasRenderer | null = null;
-  private currentTab: 'diagnosis' | 'criteria' | 'anatomy' | 'annotation' = 'diagnosis';
+  private currentTab: 'diagnosis' | 'criteria' | 'anatomy' | 'annotation' | 'guide' = 'diagnosis';
 
   constructor(containerId: string) {
     const el = document.getElementById(containerId);
@@ -146,7 +146,10 @@ export class EcgCDSSController {
               <i class="fa-solid fa-diagram-project"></i> Giải Phẫu Chuyển Đạo & Nhánh Mạch Vành
             </button>
             <button class="ecg-tab-btn" data-tab="annotation">
-              <i class="fa-solid fa-award"></i> Bảng Đánh Giá Chấm Mốc Sóng (${this.currentCase.id})
+              <i class="fa-solid fa-award"></i> Chấm Mốc Sóng
+            </button>
+            <button class="ecg-tab-btn" data-tab="guide">
+              <i class="fa-solid fa-book-medical"></i> Cẩm Nang 10 Bước & Kinh Điển ECG
             </button>
           </div>
 
@@ -381,6 +384,8 @@ export class EcgCDSSController {
       this.renderCriteriaTab(wrap);
     } else if (this.currentTab === 'anatomy') {
       this.renderAnatomyTab(wrap);
+    } else if (this.currentTab === 'guide') {
+      this.renderGuideTab(wrap);
     } else {
       this.renderAnnotationTab(this.renderer?.lastValidationReport || null);
     }
@@ -599,6 +604,141 @@ export class EcgCDSSController {
     `;
   }
 
+  
+  private renderGuideTab(wrap: HTMLElement): void {
+    wrap.innerHTML = `
+      <div class="ecg-guide-container">
+        <!-- Header Banner -->
+        <div class="ecg-guide-banner">
+          <div class="ecg-guide-banner-icon">
+            <i class="fa-solid fa-book-bookmark"></i>
+          </div>
+          <div>
+            <h3>Cẩm Nang Hướng Dẫn Đọc Điện Tâm Đồ Căn Bản & Chuyên Sâu</h3>
+            <p>Biên soạn hệ thống hóa theo chuyên khảo <strong>"Đọc Điện Tâm Đồ Dễ Hơn"</strong> (BS Nguyễn Tôn Kinh Thi) &amp; giáo trình quốc tế kinh điển <strong>"ECG Made Easy" 4th Edition</strong> (Dr. Atul Luthra).</p>
+          </div>
+        </div>
+
+        <!-- Guide Subsections Grid -->
+        <div class="ecg-guide-grid">
+          <!-- 10 Steps System -->
+          <div class="ecg-guide-card">
+            <div class="ecg-guide-card-header">
+              <i class="fa-solid fa-list-check text-primary"></i>
+              <h4>1. Quy Trình 10 Bước Phân Tích ECG Chuẩn</h4>
+            </div>
+            <ol class="ecg-guide-steps-list">
+              <li><strong>1. Nhịp tim (Rhythm):</strong> Nhịp xoang (P đồng dạng, P(+) ở DI, DII, aVF, P(-) ở aVR; tỷ lệ P:QRS 1:1) hay loạn nhịp (rung nhĩ, cuồng nhĩ, nhịp nhanh thất, nhịp bộ nối).</li>
+              <li><strong>2. Tần số tim (Rate):</strong> Đều: 300 / số ô lớn (hoặc 1500 / số ô nhỏ). Không đều: Đếm số QRS trong 30 ô lớn (6 giây) nhân 10.</li>
+              <li><strong>3. Trục điện tim (Axis):</strong> Dựa vào DI và aVF: Trục trung gian (-30° đến +90°), Trục trái (-30° đến -90°), Trục phải (+90° đến +180°), Vô định.</li>
+              <li><strong>4. Sóng P:</strong> Thời gian < 120ms (3 ô nhỏ), Biên độ < 2.5mm ở DII; P phế (cao nhọn ≥ 2.5mm do dày nhĩ phải) vs P nhĩ (hai đỉnh chẻ > 40ms do dày nhĩ trái).</li>
+              <li><strong>5. Khoảng PR:</strong> 120 - 200ms (3 - 5 ô nhỏ). PR ngắn (< 120ms) gợi ý hội chứng kích thích sớm WPW/LGL; PR dài (> 200ms) là Bloc nhĩ thất độ I.</li>
+              <li><strong>6. Phức bộ QRS:</strong> Rộng khi ≥ 120ms (Bloc nhánh, nhịp thất). Đánh giá sóng Q hoại tử (> 40ms hoặc > 25% R). Tiêu chuẩn dày thất Sokolow-Lyon, Cornell.</li>
+              <li><strong>7. Đoạn ST:</strong> Đo tại điểm J; ST chênh lên dạng vòm (STEMI, Brugada) hay lõm (viêm màng ngoài tim); ST chênh xuống (thiếu máu dưới nội tâm mạc, ngấm Digoxin).</li>
+              <li><strong>8. Sóng T:</strong> Bình thường cùng hướng QRS; T cao nhọn đối xứng hẹp đáy (Tăng Kali máu); T dẹt/âm (Hạ Kali máu, thiếu máu cơ tim cấp/mạn).</li>
+              <li><strong>9. Khoảng QT/QTc:</strong> QTc = QT / √(RR); Bình thường ≤ 440ms (Nam), ≤ 460ms (Nữ). Kéo dài > 500ms báo động đỏ nguy cơ bùng phát xoắn đỉnh (Torsades de Pointes).</li>
+              <li><strong>10. Sóng U:</strong> Bình thường nhỏ < 2mm cùng chiều sóng T; Nổi cao bất thường tạo hiệu ứng "lưng lạc đà" khi Kali máu hạ nặng (< 2.5 mEq/L).</li>
+            </ol>
+          </div>
+
+          <!-- STEMI Localization & Culprit Vessels -->
+          <div class="ecg-guide-card">
+            <div class="ecg-guide-card-header">
+              <i class="fa-solid fa-heart-pulse text-danger"></i>
+              <h4>2. Định Khu Nhồi Máu Cơ Tim & Động Mạch Thủ Phạm</h4>
+            </div>
+            <table class="ecg-guide-table">
+              <thead>
+                <tr>
+                  <th>Vùng giải phẫu</th>
+                  <th>Chuyển đạo ST chênh lên</th>
+                  <th>Chuyển đạo soi gương</th>
+                  <th>Động mạch thủ phạm</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Trước rộng</strong></td>
+                  <td>V1 đến V6, DI, aVL</td>
+                  <td>DII, DIII, aVF</td>
+                  <td>LAD đoạn gần (Nguy kịch)</td>
+                </tr>
+                <tr>
+                  <td><strong>Trước vách</strong></td>
+                  <td>V1, V2, V3, V4</td>
+                  <td>Không rõ / nhẹ</td>
+                  <td>LAD đoạn giữa</td>
+                </tr>
+                <tr>
+                  <td><strong>Thành dưới</strong></td>
+                  <td>DII, DIII, aVF</td>
+                  <td>DI, aVL</td>
+                  <td>RCA (85-90%) hoặc LCx</td>
+                </tr>
+                <tr>
+                  <td><strong>Thành bên</strong></td>
+                  <td>DI, aVL, V5, V6</td>
+                  <td>DII, DIII, aVF</td>
+                  <td>LCx hoặc Nhánh chéo Diagonal</td>
+                </tr>
+                <tr>
+                  <td><strong>Thất phải</strong></td>
+                  <td>V3R, V4R (ST↑ ≥ 1mm)</td>
+                  <td>—</td>
+                  <td>Đoạn gần RCA (Tránh Nitroglycerin!)</td>
+                </tr>
+                <tr>
+                  <td><strong>Thành sau thực</strong></td>
+                  <td>V7, V8, V9 (ST↑ ≥ 0.5mm)</td>
+                  <td>ST↓ V1, V2, V3 (R cao)</td>
+                  <td>LCx hoặc PDA</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Bundle Branch Blocks & Brugada -->
+          <div class="ecg-guide-card">
+            <div class="ecg-guide-card-header">
+              <i class="fa-solid fa-bolt text-warning"></i>
+              <h4>3. Bloc Nhánh & Thuật Toán Brugada (VT vs SVT)</h4>
+            </div>
+            <div class="ecg-guide-block">
+              <h5>Bloc Nhánh Trái (LBBB) vs Phải (RBBB):</h5>
+              <ul>
+                <li><strong>LBBB:</strong> QRS ≥ 120ms, sóng R rộng khía chữ M ở DI, aVL, V5-V6; dạng QS sâu ở V1-V3. Luôn coi LBBB mới xuất hiện là tương đương STEMI!</li>
+                <li><strong>RBBB:</strong> QRS ≥ 120ms, dạng tai thỏ rsR' hoặc rSR' ở V1-V2; sóng S rộng sâu ở DI, V5-V6.</li>
+              </ul>
+              <h5 style="margin-top: 0.75rem;">Thuật Toán Brugada 4 Bước (Phân biệt VT với SVT QRS Rộng):</h5>
+              <ol class="ecg-guide-brugada-steps">
+                <li><strong>Bước 1:</strong> Có sự vắng mặt hoàn toàn của phức bộ RS ở tất cả các chuyển đạo V1-V6 không? → <em>Nếu CÓ: Chẩn đoán Nhịp nhanh thất (VT).</em></li>
+                <li><strong>Bước 2:</strong> Khoảng cách RS dài nhất ở bất kỳ chuyển đạo trước tim nào có > 100ms không? → <em>Nếu CÓ: Chẩn đoán VT.</em></li>
+                <li><strong>Bước 3:</strong> Có dấu hiệu phân ly nhĩ - thất (AV dissociation, nhát bắt được thất, nhát hỗn hợp) không? → <em>Nếu CÓ: Khẳng định 100% VT.</em></li>
+                <li><strong>Bước 4:</strong> Đạt tiêu chuẩn hình thái kinh điển của VT ở cả V1/V2 và V6 không? → <em>Nếu CÓ: VT; Nếu KHÔNG: SVT dẫn truyền lệch hướng.</em></li>
+              </ol>
+            </div>
+          </div>
+
+          <!-- Electrolytes & Pharmacology -->
+          <div class="ecg-guide-card">
+            <div class="ecg-guide-card-header">
+              <i class="fa-solid fa-flask-vial text-success"></i>
+              <h4>4. Rối Loạn Điện Giải & Dược Lý Tim Mạch</h4>
+            </div>
+            <div class="ecg-guide-block">
+              <ul>
+                <li><strong>Tăng Kali máu (Hyperkalemia):</strong> K+ > 5.5: Sóng T cao nhọn đối xứng hẹp đáy → K+ > 6.5: PR kéo dài, P dẹt/biến mất → K+ > 7.5: QRS dãn rộng hòa vào sóng T tạo hình sin (Sine-wave) → Rung thất / Vô tâm thu. Xử trí ngay Calcium Gluconate 10% để ổn định màng tế bào tim!</li>
+                <li><strong>Hạ Kali máu (Hypokalemia):</strong> K+ < 3.5: Đoạn ST chênh xuống, sóng T dẹt, sóng U nhô cao (hình ảnh 2 bướu lạc đà Camel-hump). Nguy cơ xoắn đỉnh khi phối hợp thuốc chống loạn nhịp.</li>
+                <li><strong>Ngộ độc Digoxin:</strong> Đoạn ST chênh xuống hình đáy chén Salvador Dali (Scooped ST), rút ngắn khoảng QT, rối loạn nhịp thất (ngoại tâm thu nhịp đôi Bigeminy, nhịp nhanh bộ nối).</li>
+                <li><strong>Hội chứng Brugada:</strong> Type 1: ST chênh lên dạng vòm (coved-type) ≥ 2mm ở V1-V2 tiếp nối bằng T âm đối xứng. Rất nguy hiểm, nguy cơ đột tử ban đêm ở người trẻ (SUDS).</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
   private exportSoapPlan(): void {
     const c = this.currentCase;
     const p = c.patient;
@@ -640,4 +780,9 @@ export class EcgCDSSController {
       toast.classList.remove('fade-in');
     }, 3200);
   }
+}
+
+
+if (typeof window !== 'undefined') {
+  (window as any).EcgCDSSController = EcgCDSSController;
 }

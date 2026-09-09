@@ -467,3 +467,32 @@
   }
 }
 
+/* ============================================================
+   READING PROGRESS BAR SAFETY OVERRIDE (ANTI-FULLPAGE-OVERLAY)
+   Ngăn chặn triệt để lỗi height: 100% biến thanh cuộn thành màn hình màu
+   ============================================================ */
+.reading-progress-container {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 3.5px !important;
+  max-height: 3.5px !important;
+  z-index: 10001 !important;
+  pointer-events: none !important;
+  background: transparent !important;
+}
+
+.reading-progress-bar {
+  height: 3.5px !important;
+  max-height: 3.5px !important;
+  pointer-events: none !important;
+}
+
+.reading-progress-container .reading-progress-bar {
+  height: 100% !important;
+  max-height: 100% !important;
+  pointer-events: none !important;
+}
+
+

@@ -130,28 +130,35 @@
   <!-- CDSS Hub Application Container -->
   <main id="cdss-hub-app"></main>
 
-  <script type="module">
-    import { initCDSSHub } from './cdss-hub-bundle.js';
+  <!-- Load CDSS Hub Bundle (IIFE Global window.initCDSSHub) -->
+  <script src="./cdss-hub-bundle.js"></script>
 
-    // Theme toggle
-    const themeBtn = document.getElementById('theme-toggle');
-    if (themeBtn) {
-      const savedTheme = localStorage.getItem('cliniportal_theme') || 
-        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-      document.documentElement.setAttribute('data-theme', savedTheme);
-      themeBtn.innerHTML = savedTheme === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Theme toggle
+      const themeBtn = document.getElementById('theme-toggle');
+      if (themeBtn) {
+        const savedTheme = localStorage.getItem('cliniportal_theme') || 
+          (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        themeBtn.innerHTML = savedTheme === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
 
-      themeBtn.addEventListener('click', () => {
-        const current = document.documentElement.getAttribute('data-theme') || 'light';
-        const next = current === 'dark' ? 'light' : 'dark';
-        document.documentElement.setAttribute('data-theme', next);
-        localStorage.setItem('cliniportal_theme', next);
-        themeBtn.innerHTML = next === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
-      });
-    }
+        themeBtn.addEventListener('click', () => {
+          const current = document.documentElement.getAttribute('data-theme') || 'light';
+          const next = current === 'dark' ? 'light' : 'dark';
+          document.documentElement.setAttribute('data-theme', next);
+          localStorage.setItem('cliniportal_theme', next);
+          themeBtn.innerHTML = next === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+        });
+      }
 
-    // Initialize Hub
-    initCDSSHub('cdss-hub-app');
+      // Initialize Hub
+      if (window.initCDSSHub) {
+        window.initCDSSHub('cdss-hub-app');
+      } else if (window.CDSSHub && window.CDSSHub.initCDSSHub) {
+        window.CDSSHub.initCDSSHub('cdss-hub-app');
+      }
+    });
   </script>
 </body>
 </html>

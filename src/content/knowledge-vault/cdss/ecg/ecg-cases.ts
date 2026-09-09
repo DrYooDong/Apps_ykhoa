@@ -1,4 +1,4 @@
-import { EcgCase, LeadName, LeadWaveData } from './ecg-types';
+import { EcgCase, LeadName, LeadWaveData } from "./ecg-types";
 
 // Helper for generating standard normal baseline lead
 function createNormalLead(lead: LeadName): LeadWaveData {
@@ -964,6 +964,791 @@ export const ECG_CASES: EcgCase[] = [
       chapterRef: "Chương 4: Các bước căn bản đọc điện tâm đồ (Trang 12-18, 111-113)",
       coreTakeaway: "10 bước chuẩn mực khi đọc bất kỳ ECG nào: 1. Nhịp -> 2. Tần số -> 3. Trục & góc alpha -> 4. Sóng P -> 5. PR -> 6. QRS -> 7. ST -> 8. T -> 9. QT/QTc -> 10. Sóng U.",
       pitfallToAvoid: "Luôn kiểm tra kỹ thuật test 1mV (cao 10mm) và tốc độ giấy 25mm/s trước khi kết luận điện tim bình thường.",
+    },
+  },
+  {
+    id: "case-lbbb",
+    category: "Conduction",
+    title: "Bloc Nhánh Trái Hoàn Toàn (Complete LBBB)",
+    subtitle: "QRS dãn rộng 145ms, sóng R chẻ đôi hình chữ M ở DI, aVL, V5, V6; dạng QS sâu ở V1-V3",
+    severity: "Cảnh giác cao",
+    patient: {
+      name: "Trần Văn Hùng",
+      age: 67,
+      gender: "Nam",
+      chiefComplaint: "Mệt mỏi, khó thở khi gắng sức (NYHA II), cảm giác tức nặng ngực trái âm ỉ",
+      clinicalHistory: "Bệnh nhân nam 67 tuổi, tiền sử Tăng huyết áp 15 năm và bệnh cơ tim giãn, điều trị không liên tục. Gần đây mệt mỏi tăng khi leo cầu thang, thỉnh thoảng cảm giác hồi hộp tức ngực.",
+      vitals: { bp: "155/90", hr: 75, spo2: 97, temp: 36.7 },
+      labs: { k: 4.1, ca: 2.3, mg: 0.85, troponinI: "0.02 ng/mL (bình thường)", bnp: "420 pg/mL" },
+    },
+    metrics: {
+      heartRate: 75,
+      rhythmType: "Nhịp xoang kèm Bloc nhánh trái hoàn toàn (Complete LBBB)",
+      regularity: "Đều",
+      axis: "Trục lệch trái",
+      alphaAngle: -25,
+      prInterval: 175,
+      qrsDuration: 145,
+      qt: 420,
+      qtc: 470,
+    },
+    leadsData: (() => {
+      const leads = cloneNormalLeads();
+      // Lateral leads: wide notched R wave (M shape), no Q waves, ST depression, inverted asymmetric T
+      const lateralLeads: LeadName[] = ["I", "aVL", "V5", "V6"];
+      for (const l of lateralLeads) {
+        leads[l].qWave = { amp: 0, dur: 0.01 }; // Mất sóng q sinh lý
+        leads[l].rWave = { amp: l === "V5" || l === "V6" ? 2.2 : 1.4, dur: 0.08, notched: true };
+        leads[l].sWave = { amp: -0.1, dur: 0.02 };
+        leads[l].stSegment = { elevation: -0.15, slope: "downsloping" };
+        leads[l].tWave = { amp: -0.38, dur: 0.16, shape: "inverted" };
+        leads[l].qrsDuration = 145;
+      }
+      // Right precordial leads: tiny r, deep wide QS or S wave, secondary discordant ST elevation
+      const septalLeads: LeadName[] = ["V1", "V2", "V3"];
+      for (const l of septalLeads) {
+        leads[l].rWave = { amp: 0.1, dur: 0.02 };
+        leads[l].sWave = { amp: l === "V2" ? -2.5 : -2.0, dur: 0.08, wide: true };
+        leads[l].stSegment = { elevation: 0.18, slope: "upsloping" }; // ST chênh lên thứ phát bất tương xứng
+        leads[l].tWave = { amp: 0.45, dur: 0.16, shape: "normal" };
+        leads[l].qrsDuration = 145;
+      }
+      return leads;
+    })(),
+    leadsSummary: {
+      limbLeadsSummary: "DI, aVL: Phức bộ QRS dãn rộng 145ms, sóng R chẻ đôi có khía hình chữ M (notched R), mất sóng q vách, ST chênh xuống và T âm thứ phát trái chiều với QRS.",
+      chestLeadsSummary: "V1-V3: Sóng r cực nhỏ hoặc dạng QS rất sâu và rộng, ST chênh lên thứ phát dạng vòm lượn. V5-V6: Sóng R đỉnh tù chẻ đôi, thời gian nhánh nội điện kéo dài > 60ms.",
+    },
+    diagnosis: {
+      primary: "Bloc Nhánh Trái Hoàn Toàn (Complete Left Bundle Branch Block - LBBB)",
+      culpritVesselOrCause: "Tổn thương nhánh trái bó His do tăng huyết áp mạn tính kéo dài, xơ hóa thoái hóa hệ dẫn truyền (bệnh Lev/Lenègre) hoặc bệnh mạch vành",
+      differentials: [
+        "Phì đại thất trái đơn thuần (QRS thường < 120ms, không mất sóng q ở V5-V6)",
+        "Hội chứng WPW Type B (có sóng Delta, khoảng PR ngắn < 120ms)",
+        "Nhịp tự thất chậm (tần số thường < 40 l/p, phân ly nhĩ thất)",
+      ],
+      keyFindings: [
+        "QRS dãn rộng ≥ 120ms (thực tế 145ms)",
+        "Sóng R rộng có khía chẻ đôi hình chữ M ở các chuyển đạo bên (DI, aVL, V5, V6)",
+        "Mất hoàn toàn sóng q sinh lý ở DI, V5, V6 do đảo ngược chiều khử cực vách liên thất",
+        "Dạng rS hoặc QS rất sâu và rộng ở V1-V3",
+        "Biến đổi ST-T thứ phát luôn ngược chiều với phức bộ QRS (ST chênh xuống và T âm ở V5-V6; ST chênh lên nhẹ ở V1-V3)",
+      ],
+      clinicalNote: "Khi xuất hiện LBBB mới hoặc nghi ngờ mới, LBBB che khuất các biến đổi ST-T của nhồi máu cơ tim. Cần áp dụng Tiêu chuẩn Sgarbossa cải biên để chẩn đoán NMCT cấp.",
+      treatment: [
+        "Đánh giá toàn diện bệnh tim thực thể nền (Siêu âm tim Doppler màu, chụp MSCT mạch vành nếu đau ngực).",
+        "Kiểm soát huyết áp tối ưu với thuốc ức chế men chuyển (ACEi) / ARB và thuốc chẹn beta.",
+        "Nếu kèm suy tim nặng EF ≤ 35% và QRS ≥ 130-150ms: xem xét chỉ định liệu pháp tái đồng bộ cơ tim (CRT-D / CRT-P).",
+      ],
+      confidence: { primary: 98.6, secondaryName: "Phì đại thất trái có rối loạn dẫn truyền", secondaryConfidence: 1.2 },
+    },
+    learningNotes: {
+      chapterRef: "Atul Luthra - Chương 7: Abnormalities of QRS Complex (Trang 79-81, 95 - Hình 7.10)",
+      coreTakeaway: "Đặc trưng cốt lõi của LBBB: QRS ≥ 120ms, mất sóng q vách, sóng R chẻ đôi hình chữ M ở V5-V6 và biến đổi ST-T luôn ngược chiều (discordant) với phức bộ QRS.",
+      pitfallToAvoid: "Đừng vội chẩn đoán NMCT cấp chỉ vì thấy ST chênh lên ở V1-V3 trong LBBB, vì đây là chênh lên thứ phát tự nhiên (discordant ST elevation). Hãy tìm ST chênh cùng chiều (concordant) theo tiêu chuẩn Sgarbossa.",
+    },
+  },
+  {
+    id: "case-rbbb",
+    category: "Conduction",
+    title: "Bloc Nhánh Phải Hoàn Toàn (Complete RBBB)",
+    subtitle: "Phức bộ dạng tai thỏ rsR' ở V1-V2 (QRS 135ms), sóng S rộng sâu và tù ở DI, aVL, V5, V6",
+    severity: "Ổn định",
+    patient: {
+      name: "Lê Hoàng Nam",
+      age: 42,
+      gender: "Nam",
+      chiefComplaint: "Khám sức khỏe tổng quát định kỳ, hoàn toàn không đau ngực hay khó thở",
+      clinicalHistory: "Bệnh nhân nam 42 tuổi, làm việc văn phòng, không tiền sử bệnh lý tim mạch. Khám tim nghe tiếng tim T2 tách đôi rộng cố định nhẹ, không có tiếng thổi bệnh lý.",
+      vitals: { bp: "120/78", hr: 70, spo2: 99, temp: 36.5 },
+      labs: { k: 4.3, ca: 2.35, mg: 0.9, troponinI: "Âm tính" },
+    },
+    metrics: {
+      heartRate: 70,
+      rhythmType: "Nhịp xoang kèm Bloc nhánh phải hoàn toàn (Complete RBBB)",
+      regularity: "Đều",
+      axis: "Trục phải nhẹ",
+      alphaAngle: 100,
+      prInterval: 160,
+      qrsDuration: 135,
+      qt: 390,
+      qtc: 421,
+    },
+    leadsData: (() => {
+      const leads = cloneNormalLeads();
+      // V1 & V2: classic triphasic rsR' "rabbit ears" pattern with taller R' wave
+      leads["V1"].rWave = { amp: 0.35, dur: 0.03 };
+      leads["V1"].sWave = { amp: -0.4, dur: 0.03 };
+      leads["V1"].rPrimeWave = { amp: 1.4, dur: 0.06 };
+      leads["V1"].stSegment = { elevation: -0.08, slope: "downsloping" };
+      leads["V1"].tWave = { amp: -0.3, dur: 0.14, shape: "inverted" };
+      leads["V1"].qrsDuration = 135;
+
+      leads["V2"].rWave = { amp: 0.5, dur: 0.03 };
+      leads["V2"].sWave = { amp: -0.45, dur: 0.03 };
+      leads["V2"].rPrimeWave = { amp: 1.25, dur: 0.05 };
+      leads["V2"].stSegment = { elevation: -0.05, slope: "downsloping" };
+      leads["V2"].tWave = { amp: -0.22, dur: 0.14, shape: "inverted" };
+      leads["V2"].qrsDuration = 135;
+
+      // Lateral leads I, aVL, V5, V6: normal R wave followed by wide, slurred S wave
+      const lateralLeads: LeadName[] = ["I", "aVL", "V5", "V6"];
+      for (const l of lateralLeads) {
+        leads[l].sWave = { amp: -0.65, dur: 0.06, wide: true }; // S sâu và bè rộng (slurred S)
+        leads[l].qrsDuration = 135;
+      }
+      return leads;
+    })(),
+    leadsSummary: {
+      limbLeadsSummary: "DI, aVL: Phức bộ QRS dãn rộng 135ms với sóng S sâu, rộng và tù (slurred S wave). Đoạn ST và sóng T bình thường.",
+      chestLeadsSummary: "V1-V2: Dạng sóng 3 pha kinh điển rsR' hình 'tai thỏ' (M-shaped complex), trong đó đỉnh R' thứ hai cao và rộng hơn sóng r ban đầu. Sóng T âm thứ phát ở V1-V2. V5-V6: Sóng S rộng, tù.",
+    },
+    diagnosis: {
+      primary: "Bloc Nhánh Phải Hoàn Toàn (Complete Right Bundle Branch Block - RBBB)",
+      culpritVesselOrCause: "Dẫn truyền qua nhánh phải bó His bị chậm trễ hoặc nghẽn, khử cực thất phải xảy ra muộn qua con đường cơ tim thông thường",
+      differentials: [
+        "Hội chứng Brugada (có ST chênh vòm coved ở V1-V2, không có sóng S rộng ở DI, V6)",
+        "Phì đại thất phải (RVH) (sóng R đơn pha cao ở V1, QRS < 120ms)",
+        "Hội chứng Wolff-Parkinson-White Type A (PR ngắn, có sóng delta)",
+      ],
+      keyFindings: [
+        "Thời gian phức bộ QRS dãn rộng ≥ 120ms (thực tế 135ms)",
+        "Dạng sóng 3 pha rsR' hình 'tai thỏ' ở chuyển đạo trước tim phải V1, V2",
+        "Sóng S rộng và tù (slurred S wave) kéo dài > 40ms ở DI, aVL, V5, V6",
+        "Sóng T âm thứ phát ngược chiều với R' ở V1 và V2",
+        "Không làm biến dạng giai đoạn đầu của phức bộ QRS (vẫn chẩn đoán được NMCT cấp)",
+      ],
+      clinicalNote: "RBBB đơn độc có thể gặp ở người hoàn toàn khỏe mạnh mà không có ý nghĩa bệnh lý tim mạch nguy hiểm. Tuy nhiên, nếu RBBB xuất hiện mới đột ngột, cần tầm soát ngay thuyên tắc phổi cấp hoặc nhồi máu cơ tim thành trước vách.",
+      treatment: [
+        "Nếu RBBB đơn độc ở người trẻ không triệu chứng: Không cần điều trị đặc hiệu, trấn an bệnh nhân.",
+        "Siêu âm tim loại trừ bệnh tim bẩm sinh kín đáo như thông liên nhĩ lỗ thứ hai (Ostium secundum ASD).",
+        "Theo dõi định kỳ hàng năm.",
+      ],
+      confidence: { primary: 99.2 },
+    },
+    learningNotes: {
+      chapterRef: "Atul Luthra - Chương 7: Abnormalities of QRS Complex (Trang 79-81, 94-96 - Hình 7.9)",
+      coreTakeaway: "Bộ ba dấu hiệu RBBB: 1. QRS ≥ 120ms; 2. rsR' (tai thỏ) ở V1-V2; 3. Sóng S rộng tù ở DI và V6. Điểm đặc biệt: RBBB không làm mất sóng Q hoại tử nên vẫn chẩn đoán được NMCT!",
+      pitfallToAvoid: "Phân biệt RBBB với Brugada: Brugada có ST chênh lên vòm cao đặc thù ở V1-V2 và hoàn toàn không có sóng S rộng tù ở chuyển đạo bên DI, V6.",
+    },
+  },
+  {
+    id: "case-lvh-strain",
+    category: "Hypertrophy",
+    title: "Phì Đại Thất Trái Kèm Tăng Gánh Tâm Thu (LVH with Systolic Strain)",
+    subtitle: "Sokolow-Lyon 50mm (>35mm), ST chênh xuống và T âm sâu bất đối xứng ở V5-V6, dày nhĩ trái (P mitrale)",
+    severity: "Cảnh giác cao",
+    patient: {
+      name: "Đỗ Văn Thành",
+      age: 62,
+      gender: "Nam",
+      chiefComplaint: "Đau đầu vùng chẩm, chóng mặt, tức ngực trái âm ỉ khi lao động nặng",
+      clinicalHistory: "Bệnh nhân nam 62 tuổi, tiền sử tăng huyết áp vô căn 12 năm điều trị không đều đặn, hút thuốc lá 20 bao-năm. Huyết áp phòng khám đo được 185/105 mmHg, mỏm tim đập dội mạnh ở khoang liên sườn 6 ngoài đường trung đòn trái.",
+      vitals: { bp: "185/105", hr: 78, spo2: 98, temp: 36.8 },
+      labs: { k: 4.1, ca: 2.38, mg: 0.88, troponinI: "0.01 ng/mL", bnp: "180 pg/mL" },
+    },
+    metrics: {
+      heartRate: 78,
+      rhythmType: "Nhịp xoang kèm phì đại thất trái và dày nhĩ trái",
+      regularity: "Đều",
+      axis: "Trục lệch trái",
+      alphaAngle: -35,
+      prInterval: 180,
+      qrsDuration: 105,
+      qt: 410,
+      qtc: 468,
+      sokolowLyon: 50, // SV1 (24mm) + RV5 (26mm) = 50mm (> 35mm)
+      cornellCriteria: 32, // RaVL (14mm) + SV3 (18mm) = 32mm (> 28mm ở nam)
+    },
+    leadsData: (() => {
+      const leads = cloneNormalLeads();
+      // P mitrale in DII: broad and notched
+      leads["II"].pWave = { amp: 0.18, dur: 0.12, shape: "bifid" };
+      // P biphasic with deep negative terminal component in V1
+      leads["V1"].pWave = { amp: -0.12, dur: 0.10, shape: "biphasic" };
+      leads["V1"].rWave = { amp: 0.2, dur: 0.02 };
+      leads["V1"].sWave = { amp: -2.4, dur: 0.05 }; // S sâu 24mm
+      leads["V1"].stSegment = { elevation: 0.08, slope: "upsloping" };
+
+      leads["V2"].sWave = { amp: -2.8, dur: 0.05 };
+      leads["V3"].sWave = { amp: -1.8, dur: 0.04 };
+
+      // aVL tall R
+      leads["aVL"].rWave = { amp: 1.4, dur: 0.04 }; // RaVL = 14mm (>11mm)
+      leads["aVL"].stSegment = { elevation: -0.12, slope: "downsloping" };
+      leads["aVL"].tWave = { amp: -0.25, dur: 0.16, shape: "inverted" };
+
+      // Lateral leads V5, V6: massive R wave + asymmetric T inversion & ST depression (strain pattern)
+      leads["V5"].rWave = { amp: 2.6, dur: 0.05 }; // RV5 = 26mm
+      leads["V5"].stSegment = { elevation: -0.2, slope: "downsloping" };
+      leads["V5"].tWave = { amp: -0.5, dur: 0.18, shape: "inverted" };
+
+      leads["V6"].rWave = { amp: 2.2, dur: 0.05 };
+      leads["V6"].stSegment = { elevation: -0.18, slope: "downsloping" };
+      leads["V6"].tWave = { amp: -0.45, dur: 0.18, shape: "inverted" };
+
+      return leads;
+    })(),
+    leadsSummary: {
+      limbLeadsSummary: "Trục QRS lệch trái (-35°). Sóng P ở DII rộng 120ms có hai đỉnh (P mitrale). Sóng R ở aVL cao 14mm (> 11mm). ST chênh xuống và T âm ở DI, aVL.",
+      chestLeadsSummary: "Sóng S cực sâu ở V1 (24mm) và V2 (28mm). Sóng R cao vút ở V5 (26mm) và V6 (22mm). Chỉ số Sokolow-Lyon = 50mm (ngưỡng bình thường < 35mm). Kiểu biến đổi tăng gánh thất trái (LV Strain) rõ rệt với ST chênh dốc xuống và T âm sâu bất đối xứng.",
+    },
+    diagnosis: {
+      primary: "Phì Đại Thất Trái Nặng Kèm Kiểu Tăng Gánh Tâm Thu (Severe LVH with Systolic Strain Pattern)",
+      culpritVesselOrCause: "Quá tải áp lực tâm thu kéo dài do tăng huyết áp vô căn mạn tính chưa được kiểm soát tốt",
+      differentials: [
+        "Bệnh cơ tim phì đại mỏm tim (Apical HCM) (thường có sóng T âm khổng lồ > 10mm đối xứng)",
+        "Thiếu máu cơ tim dưới nội mạc thành bên (ST chênh xuống đi ngang, T âm đối xứng nhọn)",
+        "Bloc nhánh trái không hoàn toàn (QRS thường dãn rộng hơn, không đáp ứng trọn vẹn tiêu chuẩn điện thế)",
+      ],
+      keyFindings: [
+        "Tiêu chuẩn điện thế Sokolow-Lyon: S(V1) + R(V5) = 24 + 26 = 50 mm (tiêu chuẩn > 35 mm)",
+        "Tiêu chuẩn Cornell: R(aVL) + S(V3) = 14 + 18 = 32 mm (tiêu chuẩn ở nam > 28 mm)",
+        "Tiêu chuẩn Framingham: R(aVL) = 14 mm (> 11 mm)",
+        "Dấu hiệu quá tải tâm thu (Systolic Strain): ST chênh xuống dốc xuống và T âm bất đối xứng (sườn xuống thoai thoải, sườn lên dốc đứng) ở V5, V6, DI, aVL",
+        "Dày nhĩ trái phối hợp (P mitrale): P hai đỉnh ở DII và pha âm sâu > 1mm² ở V1",
+      ],
+      clinicalNote: "Dấu hiệu quá tải tâm thu thất trái (LV Strain) trên ECG phản ánh tình trạng tái cấu trúc phì đại cơ tim tiến triển, làm tăng gấp 3 lần nguy cơ biến cố mạch vành và suy tim.",
+      treatment: [
+        "Hạ huyết áp mục tiêu dần về < 130/80 mmHg bằng thuốc ức chế men chuyển/chẹn thụ thể (ACEi/ARB) phối hợp thuốc chẹn kênh calci nhóm DHP (Amlodipine).",
+        "Siêu âm tim để đo độ dày vách liên thất (IVSd), bề dày thành sau thất trái (LVPWd) và tính chỉ số khối cơ thất trái (LVMI).",
+        "Thay đổi lối sống: Giảm muối (< 5g/ngày), bỏ thuốc lá, giảm cân và tập thể dục vừa sức.",
+      ],
+      confidence: { primary: 99.1, secondaryName: "Bệnh tim tăng huyết áp", secondaryConfidence: 0.9 },
+    },
+    learningNotes: {
+      chapterRef: "Atul Luthra - Chương 7 & 8: Abnormalities of QRS & T Wave - LVH with Strain (Trang 74-77, 90, 92, 109 - Hình 7.8, Hình 8.7A)",
+      coreTakeaway: "Phân biệt tăng gánh tâm thu (systolic strain - ST chênh xuống dốc xuống, T âm bất đối xứng) với tăng gánh tâm trương (diastolic overload - sóng q sâu hẹp ở V5-V6 đi kèm sóng T cao nhọn).",
+      pitfallToAvoid: "Không nên chỉ dựa vào tiêu chuẩn điện thế đơn thuần ở người trẻ hoặc vận động viên điền kinh (thành ngực mỏng, sinh lý). Phải tìm thêm trục lệch trái, dày nhĩ trái và dấu hiệu strain.",
+    },
+  },
+  {
+    id: "case-brugada-type1",
+    category: "Channelopathy",
+    title: "Hội Chứng Brugada Type 1 (Brugada Syndrome - Dạng Vòm Coved)",
+    subtitle: "ST chênh lên dạng vòm coved ≥ 2mm ở V1-V2 tiếp nối T âm đối xứng, nguy cơ đột tử đêm (SUDS)",
+    severity: "Khẩn cấp",
+    patient: {
+      name: "Phạm Văn Hậu",
+      age: 34,
+      gender: "Nam",
+      chiefComplaint: "Tỉnh dậy sau cơn ngất xỉu và vã mồ hôi lúc nửa đêm, gia đình hoảng hốt đưa đi cấp cứu",
+      clinicalHistory: "Bệnh nhân nam 34 tuổi, thể trạng khỏe mạnh, không bệnh nền. Đêm nay sau khi uống bia và có sốt nhẹ (37.8°C), bệnh nhân thở rên rỉ rồi ngất đi khoảng 2 phút. Khai thác gia đình ghi nhận có người anh ruột đột tử trong lúc ngủ năm 29 tuổi.",
+      vitals: { bp: "115/70", hr: 68, spo2: 98, temp: 37.8 },
+      labs: { k: 4.2, ca: 2.3, mg: 0.85, troponinI: "Âm tính", ckmb: "12 U/L" },
+    },
+    metrics: {
+      heartRate: 68,
+      rhythmType: "Nhịp xoang kèm hình ảnh Brugada Type 1 (Coved-type ST elevation)",
+      regularity: "Đều",
+      axis: "Trục trung gian",
+      alphaAngle: 60,
+      prInterval: 190,
+      qrsDuration: 112,
+      qt: 400,
+      qtc: 426,
+    },
+    leadsData: (() => {
+      const leads = cloneNormalLeads();
+      // V1: Classic Brugada Type 1 coved ST elevation >= 2mm followed by negative T wave
+      leads["V1"].rWave = { amp: 0.4, dur: 0.03 };
+      leads["V1"].sWave = { amp: -0.3, dur: 0.02 };
+      leads["V1"].rPrimeWave = { amp: 0.6, dur: 0.03 }; // pseudo-RBBB rSr'
+      leads["V1"].stSegment = { elevation: 0.32, slope: "coved" }; // +3.2mm coved elevation
+      leads["V1"].tWave = { amp: -0.35, dur: 0.14, shape: "inverted" };
+      leads["V1"].qrsDuration = 112;
+
+      // V2: Coved elevation
+      leads["V2"].rWave = { amp: 0.6, dur: 0.03 };
+      leads["V2"].sWave = { amp: -0.3, dur: 0.02 };
+      leads["V2"].rPrimeWave = { amp: 0.7, dur: 0.03 };
+      leads["V2"].stSegment = { elevation: 0.26, slope: "coved" }; // +2.6mm
+      leads["V2"].tWave = { amp: -0.3, dur: 0.14, shape: "inverted" };
+      leads["V2"].qrsDuration = 112;
+
+      return leads;
+    })(),
+    leadsSummary: {
+      limbLeadsSummary: "Các chuyển đạo ngoại biên DI, DII, DIII, aVR, aVL, aVF hoàn toàn trong giới hạn bình thường. Không có hình ảnh soi gương thiếu máu cơ tim.",
+      chestLeadsSummary: "V1 và V2: Đoạn ST chênh lên dạng vòm lồi cong (coved-type ST elevation) rất cao (3.2mm ở V1 và 2.6mm ở V2), bắt đầu từ đỉnh sóng r' và hạ dần xuống nối liền vào sóng T âm đối xứng sâu. Không có sóng S tù ở V5-V6.",
+    },
+    diagnosis: {
+      primary: "Hội Chứng Brugada Type 1 - Dạng Vòm Điển Hình (Brugada Syndrome Type 1 Coved Pattern)",
+      culpritVesselOrCause: "Bệnh lý kênh ion Natri tim (Channelopathy) do đột biến gen SCN5A di truyền trội trên nhiễm sắc thể thường, gây rối loạn điện sinh lý tái cực thất phải",
+      differentials: [
+        "Bloc nhánh phải hoàn toàn (RBBB) (có sóng S rộng tù ở DI, V6; ST chênh xuống thay vì chênh lên vòm cao)",
+        "Nhồi máu cơ tim cấp trước vách (ST chênh lên có hình ảnh soi gương ở DII, DIII, aVF, men tim tăng)",
+        "Viêm màng ngoài tim cấp (ST chênh lên lõm lan tỏa nhiều chuyển đạo, PR chênh xuống)",
+      ],
+      keyFindings: [
+        "Đoạn ST chênh lên dạng vòm (coved ST elevation) ≥ 2 mm (0.2 mV) ở ≥ 1 chuyển đạo trước tim phải (V1, V2)",
+        "Đoạn ST chênh lên tiếp nối trực tiếp vào sóng T âm đối xứng",
+        "Dạng giả bloc nhánh phải (pseudo-RBBB / rSr') nhưng không có sóng S rộng ở DI và V6",
+        "Tiền sử ngất ban đêm và tiền sử gia đình có người thân đột tử khi ngủ (SUDS)",
+        "Dấu hiệu điện tim có thể bộc lộ rõ hơn khi bệnh nhân bị sốt cao hoặc dùng thuốc chẹn kênh natri",
+      ],
+      clinicalNote: "Hội chứng Brugada Type 1 là dạng duy nhất có giá trị chẩn đoán xác định độc lập. Bệnh nhân có nguy cơ cao xảy ra các cơn nhanh thất đa hình và rung thất gây tử vong trong lúc ngủ.",
+      treatment: [
+        "Chỉ định cấy máy phá rung tự động (ICD - Implantable Cardioverter Defibrillator) để dự phòng đột tử tiên phát.",
+        "Hạ sốt tích cực và nhanh chóng bằng Paracetamol khi có sốt (sốt là yếu tố kích hoạt loạn nhịp ác tính).",
+        "Tránh tuyệt đối các thuốc chống chỉ định trong danh sách BrugadaDrugs.org (thuốc chống loạn nhịp nhóm IC như Flecainide, thuốc chống trầm cảm 3 vòng, rượu bia).",
+        "Tầm soát điện tâm đồ và xét nghiệm di truyền cho tất cả người thân thế hệ thứ nhất trong gia đình.",
+      ],
+      brugadaAnalysis: "Dạng vòm Coved Type 1 kinh điển ở V1-V2 (ST chênh lên 3.2mm + T âm). Bệnh nhân có triệu chứng ngất và tiền sử gia đình đột tử -> Phân tầng nguy cơ RẤT CAO, chỉ định cấy ICD khẩn.",
+      confidence: { primary: 98.9, secondaryName: "Brugada Type 2 chuyển dạng", secondaryConfidence: 0.8 },
+    },
+    learningNotes: {
+      chapterRef: "Atul Luthra - Chương 7: Abnormalities of QRS Complex - The Brugada Syndrome (Trang 82, 97 - Hình 7.11)",
+      coreTakeaway: "Hội chứng Brugada là bệnh lý kênh ion di truyền. Dạng Type 1: ST chênh lên dạng vòm (coved) ≥ 2mm theo sau bởi T âm ở V1-V2; khác với RBBB vì không có sóng S rộng ở DI, V6.",
+      pitfallToAvoid: "Đừng nhầm Brugada Type 1 với NMCT cấp trước vách. Brugada không có hình ảnh soi gương ở thành dưới, men tim âm tính và ST chênh lên chủ yếu khu trú ở V1-V2.",
+    },
+  },
+  {
+    id: "case-torsades-de-pointes",
+    category: "Arrhythmia",
+    title: "Xoắn Đỉnh (Torsades de Pointes) Trên Nền Hội Chứng QT Kéo Dài",
+    subtitle: "QTc kéo dài 560ms, ngoại tâm thu R-on-T khởi phát cơn nhanh thất đa hình xoắn trục quanh đường đẳng điện",
+    severity: "Nguy kịch",
+    patient: {
+      name: "Nguyễn Thị Mai",
+      age: 52,
+      gender: "Nữ",
+      chiefComplaint: "Đột ngột ngất xỉu, co giật ngắn 30 giây rồi tỉnh lại, thở hổn hển, người vã mồ hôi",
+      clinicalHistory: "Bệnh nhân nữ 52 tuổi đang điều trị nhiễm trùng hô hấp bằng Erythromycin phối hợp với Ketoconazole (thuốc kháng nấm) và Simvastatin. Trước khi ngất có cảm giác tim đập hụt hẫng dữ dội. Khi gắn monitor tại phòng cấp cứu, ghi nhận các cơn nhịp nhanh thất tự hết xen kẽ nhịp tim chậm.",
+      vitals: { bp: "85/50", hr: 210, spo2: 92, temp: 37.1 },
+      labs: { k: 3.2, ca: 2.1, mg: 0.65, troponinI: "0.03 ng/mL" },
+    },
+    metrics: {
+      heartRate: 210,
+      rhythmType: "Nhịp nhanh thất đa hình xoắn đỉnh (Torsades de Pointes) trên nền QT kéo dài",
+      regularity: "Không đều",
+      axis: "Trục biến thiên liên tục",
+      alphaAngle: 0,
+      prInterval: 0,
+      qrsDuration: 160,
+      qt: 560,
+      qtc: 580,
+    },
+    leadsData: (() => {
+      const leads = cloneNormalLeads();
+      // Twisting polymorphic ventricular tachycardia waveforms
+      const leadKeys: LeadName[] = ["I", "II", "III", "aVR", "aVL", "aVF", "V1", "V2", "V3", "V4", "V5", "V6"];
+      for (const l of leadKeys) {
+        leads[l].pWave = { amp: 0, dur: 0.01, shape: "flat" };
+        leads[l].prSegment = { dur: 0.01 };
+        leads[l].qWave = { amp: 0, dur: 0.01 };
+        leads[l].rWave = { amp: 1.6, dur: 0.08 };
+        leads[l].sWave = { amp: -1.2, dur: 0.08 };
+        leads[l].stSegment = { elevation: 0.1, slope: "upsloping" };
+        leads[l].tWave = { amp: 0.6, dur: 0.22, shape: "peaked" }; // T rộng kéo dài QT
+        leads[l].qrsDuration = 160;
+      }
+      return leads;
+    })(),
+    leadsSummary: {
+      limbLeadsSummary: "Cơn nhịp nhanh thất đa hình với biên độ và trục phức bộ QRS thay đổi liên tục, xoay tròn quanh đường đẳng điện (twisting of points). Nhịp cơ bản trước cơn có khoảng QTc kéo dài > 560ms.",
+      chestLeadsSummary: "V1-V6: Các phức bộ QRS dãn rộng dị dạng 160ms, liên tục đảo chiều từ dương sang âm rồi ngược lại theo chu kỳ 5-15 nhịp, tần số thất rất nhanh 200-240 chu kỳ/phút.",
+    },
+    diagnosis: {
+      primary: "Xoắn Đỉnh (Torsades de Pointes) Thứ Phát Do Thuốc Kéo Dài Khoảng QT và Hạ Magne/Kali Máu",
+      culpritVesselOrCause: "Tương tác ức chế chuyển hóa enzym gan CYP3A4 giữa kháng sinh Macrolide (Erythromycin) và kháng nấm Azole làm tăng nồng độ thuốc, gây ức chế kênh kali IKr làm chậm tái cực thất",
+      differentials: [
+        "Nhịp nhanh thất đơn hình thái (Monomorphic VT) (các phức bộ QRS có cùng hình dạng và trục không đổi)",
+        "Rung thất (Ventricular Fibrillation) (hoàn toàn hỗn loạn, vô tổ chức, không thành chu kỳ xoắn trục)",
+        "Rung nhĩ dẫn truyền qua đường phụ WPW (nhịp hoàn toàn không đều, tần số biến thiên rất lớn)",
+      ],
+      keyFindings: [
+        "Cơn nhịp nhanh thất đa hình thái với các đỉnh QRS xoắn vặn quanh đường đẳng điện",
+        "Khoảng QT/QTc cơ bản kéo dài rõ rệt (> 500ms, ca này 580ms)",
+        "Hiện tượng R-on-T: Ngoại tâm thu thất khởi phát rơi trúng sóng T của nhát bóp trước đó",
+        "Tần số thất trong cơn 180 - 250 chu kỳ/phút",
+        "Bệnh nhân có sử dụng các thuốc kéo dài QT kết hợp hạ Kali và Magne máu",
+      ],
+      clinicalNote: "Torsades de Pointes là cấp cứu tối khẩn. Cơn có thể tự cắt cơn ngắn nhưng rất dễ thoái triển thành rung thất (VF) gây tử vong tức thì nếu không được bù Magne và cắt nguồn kích hoạt.",
+      treatment: [
+        "Ngừng ngay lập tức tất cả các thuốc nghi ngờ gây kéo dài khoảng QT (Erythromycin, Ketoconazole).",
+        "Tiêm tĩnh mạch chậm Magnesium Sulfate 2g (hòa trong 100ml Dextrose 5% truyền trong 10-15 phút) - Đây là thuốc lựa chọn hàng đầu bất kể nồng độ Magne máu bình thường hay giảm!",
+        "Bù Kali máu tích cực để duy trì nồng độ Kali máu ở mức cao an toàn: 4.5 - 5.0 mEq/L.",
+        "Nếu nhịp tim chậm cơ bản kích hoạt xoắn đỉnh: dùng Isoproterenol hoặc đặt máy tạo nhịp tạm thời vượt tần số (Overdrive pacing 90-110 l/p) để rút ngắn khoảng QT.",
+        "Nếu bệnh nhân tụt huyết áp, mất ý thức: Sốc điện khử rung không đồng bộ (Defibrillation) 200J ngay lập tức.",
+      ],
+      confidence: { primary: 98.7, secondaryName: "Nhịp nhanh thất đa hình không kèm QT dài", secondaryConfidence: 1.1 },
+    },
+    learningNotes: {
+      chapterRef: "Atul Luthra - Chương 13 & 19: Abnormalities of Q-T Interval & Fast Wide QRS Rhythm (Trang 128, 143, 186-187, 201-202 - Hình 19.2)",
+      coreTakeaway: "Torsades de Pointes là một thuật ngữ múa ballet tiếng Pháp có nghĩa là 'xoắn quanh một điểm'. Chìa khóa điều trị: Magnesium Sulfate tĩnh mạch là thần dược cắt cơn!",
+      pitfallToAvoid: "Chống chỉ định tuyệt đối các thuốc chống loạn nhịp nhóm IA (Quinidine, Procainamide) và nhóm III (Amiodarone, Sotalol) vì chúng làm kéo dài thêm khoảng QT và gây ngừng tim.",
+    },
+  },
+  {
+    id: "case-aivr",
+    category: "Arrhythmia",
+    title: "Nhịp Tự Thất Gia Tăng (Accelerated Idioventricular Rhythm - AIVR)",
+    subtitle: "Nhịp thất rộng đều 74 l/p, phân ly nhĩ thất, rối loạn nhịp tái tưới máu lành tính sau can thiệp mạch vành",
+    severity: "Ổn định",
+    patient: {
+      name: "Vũ Đình Toàn",
+      age: 58,
+      gender: "Nam",
+      chiefComplaint: "Đang nằm theo dõi tại phòng Hồi sức Tim mạch (CCU) sau can thiệp nong stent động mạch vành",
+      clinicalHistory: "Bệnh nhân nam 58 tuổi, nhập viện vì nhồi máu cơ tim cấp thành trước giờ thứ 2. Đã được chụp và can thiệp đặt stent thành công tái thông hoàn toàn dòng chảy TIMI 3 nhánh LAD. 30 phút sau khi về CCU, monitor theo dõi phát hiện nhịp chuyển sang phức bộ QRS rộng đều đặn nhưng huyết áp và tri giác hoàn toàn ổn định.",
+      vitals: { bp: "125/80", hr: 74, spo2: 99, temp: 36.6 },
+      labs: { k: 4.4, ca: 2.32, mg: 0.9, troponinI: "Đạt đỉnh 45 ng/mL (dấu hiệu rửa trôi men tim)" },
+    },
+    metrics: {
+      heartRate: 74,
+      rhythmType: "Nhịp tự thất gia tăng (AIVR) - Dấu hiệu tái tưới máu mạch vành",
+      regularity: "Đều",
+      axis: "Trục lệch trái",
+      alphaAngle: -45,
+      prInterval: 0, // Phân ly nhĩ thất
+      qrsDuration: 140,
+      qt: 410,
+      qtc: 455,
+    },
+    leadsData: (() => {
+      const leads = cloneNormalLeads();
+      // Wide regular QRS at rate 74 bpm with AV dissociation
+      const leadKeys: LeadName[] = ["I", "II", "III", "aVR", "aVL", "aVF", "V1", "V2", "V3", "V4", "V5", "V6"];
+      for (const l of leadKeys) {
+        leads[l].pWave = { amp: 0.08, dur: 0.08, shape: "flat" }; // independent P waves
+        leads[l].prSegment = { dur: 0.02 };
+        leads[l].qWave = { amp: 0, dur: 0.01 };
+        leads[l].rWave = { amp: l.startsWith("V") ? 1.4 : 1.1, dur: 0.08 };
+        leads[l].sWave = { amp: -0.7, dur: 0.06 };
+        leads[l].stSegment = { elevation: 0.05, slope: "horizontal" };
+        leads[l].tWave = { amp: -0.3, dur: 0.16, shape: "inverted" };
+        leads[l].qrsDuration = 140;
+      }
+      return leads;
+    })(),
+    leadsSummary: {
+      limbLeadsSummary: "Phức bộ QRS dãn rộng 140ms, nhịp đều 74 chu kỳ/phút (nhanh hơn tần số tự thất thông thường 20-40 l/p nhưng chậm hơn nhịp nhanh thất VT > 100 l/p). Phân ly nhĩ thất (AV dissociation).",
+      chestLeadsSummary: "V1-V6: QRS dãn rộng đồng nhất, sóng T đảo chiều thứ phát nhẹ. Thỉnh thoảng xuất hiện các nhát bóp hỗn hợp (fusion beats) khi nút xoang bắt lại nhịp tim.",
+    },
+    diagnosis: {
+      primary: "Nhịp Tự Thất Gia Tăng (Accelerated Idioventricular Rhythm - AIVR) / Rối Loạn Nhịp Tái Tưới Máu (Reperfusion Arrhythmia)",
+      culpritVesselOrCause: "Dòng máu tái tưới máu đột ngột vào vùng cơ tim bị thiếu máu nuôi sau can thiệp stent mạch vành, làm tăng tính tự động của ổ chủ nhịp thất",
+      differentials: [
+        "Nhịp nhanh thất (Ventricular Tachycardia) (tần số > 100-120 l/p, thường gây tụt huyết áp và nguy kịch)",
+        "Nhịp xoang kèm Bloc nhánh trái hoàn toàn (có sóng P đi trước QRS với khoảng PR cố định)",
+        "Nhịp thoát bộ nối gia tăng (QRS thường thanh mảnh < 120ms)",
+      ],
+      keyFindings: [
+        "Tần số thất đều đặn trong khoảng 60 đến 100 chu kỳ/phút ('Nhịp nhanh thất chậm')",
+        "Phức bộ QRS dãn rộng và dị dạng (thời gian > 120ms, thực tế 140ms)",
+        "Phân ly nhĩ thất (AV dissociation): sóng P xoang phát nhịp độc lập với tần số chậm hơn tần số thất",
+        "Có sự xuất hiện của các nhát bắt được thất (capture beats) hoặc nhát hỗn hợp (fusion beats)",
+        "Bối cảnh lâm sàng xuất hiện ngay sau khi tái thông mạch vành thành công bằng can thiệp hoặc tiêu sợi huyết",
+      ],
+      clinicalNote: "AIVR được các nhà tim mạch học gọi là 'rối loạn nhịp bạn bè' (benign friend): Đây là chỉ dấu lâm sàng đáng tin cậy khẳng định mạch vành đã tái thông thành công, tiên lượng rất tốt và thường tự kết thúc.",
+      treatment: [
+        "Giữ thái độ theo dõi sát (Watchful Waiting), KHÔNG dùng thuốc chống loạn nhịp (Amiodarone hay Lidocaine).",
+        "Tránh sốc điện chuyển nhịp vì đây không phải nhịp nhanh thất ác tính.",
+        "Nếu tần số tim chậm làm huyết áp giảm nhẹ do mất co bóp đồng bộ nhĩ: có thể dùng Atropine 0.5mg tiêm tĩnh mạch để tăng tần số xoang vượt qua tần số ổ ngoại vị.",
+        "Tiếp tục duy trì phác đồ điều trị sau nhồi máu cơ tim (kháng kết tập tiểu cầu kép DAPT, Statin liều cao, chẹn beta khi huyết động ổn định).",
+      ],
+      confidence: { primary: 99.4 },
+    },
+    learningNotes: {
+      chapterRef: "Atul Luthra - Chương 20: Normal Regular Rhythm with Wide QRS (Trang 195-198, 210-213 - Hình 20.1)",
+      coreTakeaway: "AIVR (60-100 l/p) là dấu hiệu kinh điển của tái tưới máu mạch vành. Rối loạn nhịp này mang tính lành tính, thoáng qua và tự biến mất khi nhịp xoang tăng lên.",
+      pitfallToAvoid: "Sai lầm nguy hiểm là nhầm AIVR với nhịp nhanh thất ác tính (VT) rồi vội vã tiêm Lidocaine hoặc Amiodarone; thuốc sẽ ức chế ổ tự thất duy nhất đang cứu sống bệnh nhân và dẫn đến vô tâm thu (asystole)!",
+    },
+  },
+  {
+    id: "case-atrial-flutter",
+    category: "Arrhythmia",
+    title: "Cuồng Nhĩ Điển Hình Dẫn Truyền 2:1 (Atrial Flutter with 2:1 AV Conduction)",
+    subtitle: "Sóng F hình răng cưa liên tục tần số 300 l/p ở DII, DIII, aVF; nhịp thất đều 150 l/p",
+    severity: "Cảnh giác cao",
+    patient: {
+      name: "Trần Đình Trọng",
+      age: 68,
+      gender: "Nam",
+      chiefComplaint: "Cảm giác hồi hộp, tim đập nhanh liên hồi như đánh trống ngực, mệt mỏi và hụt hơi",
+      clinicalHistory: "Bệnh nhân nam 68 tuổi, tiền sử bệnh phổi tắc nghẽn mạn tính (COPD) 10 năm và suy tim sung huyết. Cơn hồi hộp xuất hiện đột ngột cách nhập viện 4 giờ, không giảm khi nghỉ ngơi.",
+      vitals: { bp: "128/82", hr: 150, spo2: 95, temp: 36.8 },
+      labs: { k: 4.0, ca: 2.25, mg: 0.82, troponinI: "0.02 ng/mL" },
+    },
+    metrics: {
+      heartRate: 150,
+      rhythmType: "Cuồng nhĩ điển hình (Atrial Flutter) dẫn truyền nhĩ-thất 2:1",
+      regularity: "Đều",
+      axis: "Trục trung gian",
+      alphaAngle: 70,
+      prInterval: 0,
+      qrsDuration: 88,
+      qt: 280,
+      qtc: 442,
+    },
+    leadsData: (() => {
+      const leads = cloneNormalLeads();
+      // Continuous saw-toothed flutter F waves in inferior leads
+      const infLeads: LeadName[] = ["II", "III", "aVF"];
+      for (const l of infLeads) {
+        leads[l].pWave = { amp: -0.25, dur: 0.10, shape: "inverted" }; // Negative saw-tooth
+        leads[l].prSegment = { dur: 0.04, deviation: -0.05 };
+        leads[l].rWave = { amp: 1.2, dur: 0.04 };
+        leads[l].stSegment = { elevation: 0, slope: "horizontal" };
+        leads[l].tWave = { amp: 0.2, dur: 0.12, shape: "normal" };
+      }
+      return leads;
+    })(),
+    leadsSummary: {
+      limbLeadsSummary: "DII, DIII, aVF: Xuất hiện liên tục các sóng F cuồng nhĩ hình răng cưa sắc nét (saw-tooth waves), tần số nhĩ đều đặn 300 chu kỳ/phút, không có đường đẳng điện phẳng giữa các sóng. Nhịp thất đều đặn 150 l/p do bloc nhĩ thất 2:1.",
+      chestLeadsSummary: "V1: Sóng F thường dương nhô cao. V2-V6: Phức bộ QRS thanh mảnh bình thường (88ms). Dẫn truyền nhĩ-thất tỷ lệ cố định 2:1.",
+    },
+    diagnosis: {
+      primary: "Cuồng Nhĩ Điển Hình Dẫn Truyền 2:1 (Typical Atrial Flutter with 2:1 AV Conduction)",
+      culpritVesselOrCause: "Vòng vào lại lớn (Macro-reentry circuit) quay ngược chiều kim đồng hồ quanh vòng van ba lá và eo tĩnh mạch chủ dưới (Cavo-tricuspid isthmus - CTI)",
+      differentials: [
+        "Nhịp nhanh xoang (Sinus Tachycardia) (có sóng P xoang bình thường và có đoạn đẳng điện rõ ràng)",
+        "Nhịp nhanh kịch phát trên thất (AVNRT / AVRT) (tần số thường > 160-200 l/p, không có sóng răng cưa F)",
+        "Rung nhĩ đáp ứng thất nhanh (nhịp hoàn toàn không đều, không có sóng răng cưa đồng dạng)",
+      ],
+      keyFindings: [
+        "Sóng cuồng nhĩ (sóng F) hình răng cưa liên tục, đồng dạng ở các chuyển đạo thành dưới (DII, DIII, aVF)",
+        "Hoàn toàn không có khoảng đẳng điện phẳng giữa các sóng F",
+        "Tần số nhĩ (sóng F) cực nhanh và hằng định: 250 đến 350 chu kỳ/phút (điển hình 300 bpm)",
+        "Tần số thất bằng phân số chẵn của tần số nhĩ: dẫn truyền 2:1 tạo nhịp thất 150 bpm (hoặc 4:1 tạo nhịp 75 bpm)",
+        "Nghiệm pháp xoa xoang cảnh làm chậm dẫn truyền nút AV thoáng qua, bộc lộ rõ sóng răng cưa 4:1",
+      ],
+      clinicalNote: "Bất kỳ bệnh nhân nào có nhịp nhanh đều đặn chính xác 150 chu kỳ/phút trên lâm sàng, điều đầu tiên bác sĩ cần nghĩ đến là Cuồng nhĩ dẫn truyền 2:1 cho đến khi có bằng chứng ngược lại!",
+      treatment: [
+        "Kiểm soát tần số thất: Dùng thuốc ức chế nút AV như chẹn beta (Metoprolol) hoặc chẹn kênh calci Non-DHP (Diltiazem).",
+        "Chuyển nhịp về nhịp xoang: Sốc điện đồng bộ (Synchronized Cardioversion) với mức năng lượng thấp rất hiệu quả (chỉ cần 20 - 50 Joules).",
+        "Phòng ngừa đột quỵ tắc mạch: Đánh giá thang điểm CHA2DS2-VASc và chỉ định thuốc chống đông đường uống (NOAC / VKA) tương tự rung nhĩ.",
+        "Điều trị triệt để lâu dài: Triệt đốt điện sinh lý bằng sóng radio (RF Ablation) vòng eo van ba lá (CTI) với tỷ lệ thành công > 95%.",
+      ],
+      confidence: { primary: 98.8, secondaryName: "Nhịp nhanh kịch phát trên thất", secondaryConfidence: 1.0 },
+    },
+    learningNotes: {
+      chapterRef: "Atul Luthra - Chương 16: Fast Regular Rhythm with Narrow QRS - Atrial Flutter (Trang 158-159, 173-174 - Hình 16.3)",
+      coreTakeaway: "Định luật lâm sàng vàng: Nhịp nhanh đều QRS hẹp 150 l/p -> Hãy nghi ngờ ngay cuồng nhĩ 2:1! Sóng F hình răng cưa không có đường đẳng điện phẳng ở DII, DIII, aVF.",
+      pitfallToAvoid: "Một sóng F thường bị vùi lấp bên trong phức bộ QRS hoặc sóng T làm ta dễ nhìn lầm thành nhịp xoang 150 l/p. Xoa xoang cảnh sẽ làm bộc lộ trọn vẹn cả 2 sóng F!",
+    },
+  },
+  {
+    id: "case-severe-hypokalemia",
+    category: "Electrolyte",
+    title: "Hạ Kali Máu Nặng Kèm Sóng U Nổi Rõ - Hiệu Ứng Lưng Lạc Đà (Camel-Hump Effect)",
+    subtitle: "Kali máu 2.1 mEq/L, ST chênh xuống, sóng T dẹt và sóng U nhô cao tạo hình ảnh 2 bướu lạc đà",
+    severity: "Khẩn cấp",
+    patient: {
+      name: "Nguyễn Thị Lan",
+      age: 45,
+      gender: "Nữ",
+      chiefComplaint: "Yếu liệt mềm tứ chi tăng dần không đi lại được, chuột rút bắp chân dữ dội, chướng bụng",
+      clinicalHistory: "Bệnh nhân nữ 45 tuổi, tiền sử tự mua thuốc lợi tiểu Furosemide uống giảm cân liên tục 2 tuần nay, kèm tiêu chảy phân lỏng 3 ngày. Khám thấy cơ lực hai chi dưới giảm 2/5, mất phản xạ gân xương, bụng chướng hơi do liệt ruột cơ năng.",
+      vitals: { bp: "100/60", hr: 62, spo2: 98, temp: 36.7 },
+      labs: { k: 2.1, ca: 2.25, mg: 0.68, troponinI: "Âm tính" },
+    },
+    metrics: {
+      heartRate: 62,
+      rhythmType: "Nhịp xoang kèm biến đổi hạ Kali máu nặng (Sóng U khổng lồ, giả kéo dài QT)",
+      regularity: "Đều",
+      axis: "Trục trung gian",
+      alphaAngle: 45,
+      prInterval: 195,
+      qrsDuration: 90,
+      qt: 360,
+      qtc: 366, // QT thực sự
+    },
+    leadsData: (() => {
+      const leads = cloneNormalLeads();
+      // Severe hypokalemia: ST depression, flat T wave, and giant prominent U wave creating camel-hump
+      const midPrecordial: LeadName[] = ["V2", "V3", "V4", "V5", "II"];
+      for (const l of midPrecordial) {
+        leads[l].stSegment = { elevation: -0.09, slope: "downsloping" };
+        leads[l].tWave = { amp: 0.08, dur: 0.12, shape: "flat" }; // T rất dẹt
+        leads[l].uWave = { amp: 0.32, dur: 0.14 }; // Sóng U nhô cao gấp 3-4 lần sóng T!
+      }
+      return leads;
+    })(),
+    leadsSummary: {
+      limbLeadsSummary: "DII, aVF: Đoạn ST chênh xuống nhẹ (0.8mm). Sóng T phẳng dẹt và sóng U xuất hiện rõ nét phía sau sóng T.",
+      chestLeadsSummary: "V2, V3, V4: Sóng T hạ thấp gần như hòa lẫn vào đường đẳng điện, trong khi sóng U nhô cao vượt trội (0.32mV) theo ngay sau sóng T, tạo thành hình ảnh '2 bướu lưng lạc đà' (camel-hump pattern). Khoảng Q-U kéo dài tạo cảm giác giả kéo dài QT.",
+    },
+    diagnosis: {
+      primary: "Hạ Kali Máu Mức Độ Nặng (Severe Hypokalemia - K+ 2.1 mEq/L) Kèm Sóng U Khổng Lồ",
+      culpritVesselOrCause: "Mất kali ồ ạt qua đường tiêu hóa do tiêu chảy cấp kết hợp lạm dụng thuốc lợi tiểu quai làm tăng thải kali qua thận",
+      differentials: [
+        "Hội chứng QT kéo dài bẩm sinh hoặc do thuốc (sóng T thực sự kéo dài và rộng, không có sóng U phân tách)",
+        "Thiếu máu cơ tim dưới nội tâm mạc (ST chênh xuống nhưng T thường âm nhọn đối xứng, không có sóng U nổi trội)",
+        "Ngộ độc Digoxin (ST hình đáy chén Salvador Dali, QT ngắn lại)",
+      ],
+      keyFindings: [
+        "Sóng T dẹt hoặc giảm biên độ thấp (< 1mm)",
+        "Sóng U nhô cao nổi bật (biên độ > 1mm và lớn hơn biên độ sóng T đi trước), rõ nhất ở V2-V4",
+        "Hiệu ứng 'lưng lạc đà' (camel-hump effect) do sóng T dẹt đứng cạnh sóng U nhô cao",
+        "ST chênh xuống nhẹ (0.5 - 1.0mm)",
+        "Giả kéo dài khoảng QT (thực chất là khoảng Q-U đo được lên đến 560-600ms)",
+      ],
+      clinicalNote: "Hạ kali máu nặng kéo dài thời gian tái cực màng tế bào cơ tim, tạo điều kiện thuận lợi cho cơ chế vòng vào lại và khởi phát các loạn nhịp thất chết người như xoắn đỉnh và rung thất.",
+      treatment: [
+        "Bù Kali tĩnh mạch khẩn trương qua đường truyền tĩnh mạch trung tâm hoặc ngoại vi có kiểm soát: KCl truyền tốc độ 10-20 mEq/giờ dưới theo dõi monitor liên tục.",
+        "Đồng thời bù Magne Sulfate tĩnh mạch vì hạ Magne máu luôn đi kèm và cản trở hồi phục nồng độ Kali trong tế bào.",
+        "Ngừng ngay lập tức các thuốc lợi tiểu làm mất kali.",
+        "Theo dõi nồng độ Kali máu mỗi 2-4 giờ cho đến khi đạt mức an toàn > 3.5 mEq/L.",
+      ],
+      confidence: { primary: 99.0, secondaryName: "Hội chứng QT dài mắc phải", secondaryConfidence: 0.8 },
+    },
+    learningNotes: {
+      chapterRef: "Atul Luthra - Chương 8 & 9: Abnormalities of T Wave & U Wave - Hypokalemia (Trang 90, 100-101, 105, 115-117, 122-123 - Hình 8.2, Hình 9.1)",
+      coreTakeaway: "Bộ ba biến đổi ECG của Hạ Kali máu: 1. ST chênh xuống; 2. Sóng T dẹt; 3. Sóng U khổng lồ tạo hiệu ứng 'lưng lạc đà' (camel-hump) và giả kéo dài QT.",
+      pitfallToAvoid: "Đừng đo nhầm khoảng Q-U thành khoảng Q-T kéo dài. Đo chính xác điểm kết thúc của sóng T trước khi sóng U bắt đầu sẽ thấy khoảng QT thực sự hoàn toàn bình thường!",
+    },
+  },
+  {
+    id: "case-ventricular-fibrillation",
+    category: "Arrhythmia",
+    title: "Rung Thất Sóng Lớn (Coarse Ventricular Fibrillation - VF) - Ngưng Tuần Hoàn",
+    subtitle: "Sóng lăn tăn hỗn loạn vô tổ chức > 350 l/p, mất toàn bộ cấu trúc P-QRS-T, ngưng tuần hoàn đột tử",
+    severity: "Nguy kịch",
+    patient: {
+      name: "Hoàng Văn Quý",
+      age: 59,
+      gender: "Nam",
+      chiefComplaint: "Đột ngột gồng cứng, trợn mắt, mất ý thức, ngưng thở và ngừng tim tại phòng cấp cứu",
+      clinicalHistory: "Bệnh nhân nam 59 tuổi, tiền sử hút thuốc lá nặng, vừa được đưa vào viện vì cơn đau thắt ngực dữ dội như xé sau xương ức giờ thứ 1. Trong lúc bác sĩ đang chuẩn bị điện tim thì bệnh nhân đột ngột co giật ngắn, mất mạch cảnh và mạch bẹn, đồng tử bắt đầu giãn.",
+      vitals: { bp: "0/0", hr: 0, spo2: 0, temp: 36.5 },
+      labs: { k: 4.1, ca: 2.3, mg: 0.85, troponinI: "Đang chờ kết quả khẩn" },
+    },
+    metrics: {
+      heartRate: 400,
+      rhythmType: "Rung thất sóng lớn (Coarse VF) - Ngưng tuần hoàn hô hấp",
+      regularity: "Loạn nhịp hoàn toàn",
+      axis: "Vô định",
+      alphaAngle: 0,
+      prInterval: 0,
+      qrsDuration: 0,
+      qt: 0,
+      qtc: 0,
+    },
+    leadsData: (() => {
+      const leads = cloneNormalLeads();
+      // Chaotic fibrillatory waves with no identifiable P, QRS, or T
+      const leadKeys: LeadName[] = ["I", "II", "III", "aVR", "aVL", "aVF", "V1", "V2", "V3", "V4", "V5", "V6"];
+      for (const l of leadKeys) {
+        leads[l].pWave = { amp: 0, dur: 0.01, shape: "flat" };
+        leads[l].prSegment = { dur: 0.01 };
+        leads[l].qWave = { amp: 0, dur: 0.01 };
+        leads[l].rWave = { amp: 0.9, dur: 0.07 };
+        leads[l].sWave = { amp: -0.8, dur: 0.07 };
+        leads[l].stSegment = { elevation: 0.0, slope: "horizontal" };
+        leads[l].tWave = { amp: 0.1, dur: 0.05, shape: "flat" };
+      }
+      return leads;
+    })(),
+    leadsSummary: {
+      limbLeadsSummary: "Mất hoàn toàn mọi dạng sóng định hình P, QRS hay T. Thay thế bằng các dao động điện học hình sin gợn sóng hoàn toàn hỗn loạn, biên độ từ 0.5 đến 1.2 mV (rung thất sóng lớn), tần số > 350-450 chu kỳ/phút.",
+      chestLeadsSummary: "V1-V6: Đường cơ bản liên tục chao đảo dữ dội, không thể nhận diện được bất kỳ phức bộ khử cực hay tái cực nào. Tâm thất không thể bơm máu.",
+    },
+    diagnosis: {
+      primary: "Rung Thất Sóng Lớn (Coarse Ventricular Fibrillation - VF) / Ngừng Tuần Hoàn Đột Tử",
+      culpritVesselOrCause: "Tắc nghẽn cấp tính nhánh thân chung (LMCA) hoặc đoạn gần động mạch vành LAD gây thiếu máu cơ tim tối cấp và phân rã điện học cơ tim thành vô số tiểu đảo kích thích độc lập",
+      differentials: [
+        "Cuồng thất (Ventricular Flutter) (sóng hình sin đều đặn và đồng dạng hơn)",
+        "Nhiễu điện cơ do bệnh nhân run rẩy (Artifact) (vẫn sờ thấy mạch cảnh nẩy theo nhịp)",
+        "Vô tâm thu (Asystole) (đường đẳng điện phẳng lì, biên độ < 0.1mV)",
+      ],
+      keyFindings: [
+        "Mất hoàn toàn các sóng P, phức bộ QRS và sóng T có thể nhận dạng",
+        "Đường đẳng điện chao đảo với các sóng biến thiên liên tục về biên độ, thời gian và hình dạng",
+        "Tần số dao động rất nhanh (> 350 đến 500 chu kỳ/phút)",
+        "Rung thất sóng lớn (biên độ > 0.5 mV) có khả năng sốc điện thành công cao hơn rung thất sóng nhỏ",
+        "Lâm sàng ngừng tuần hoàn: Hôn mê, mất mạch cảnh/mạch bẹn, ngừng thở",
+      ],
+      clinicalNote: "Thời gian là mạng sống! Cứ mỗi 1 phút trì hoãn sốc điện khử rung, tỷ lệ cứu sống bệnh nhân rung thất giảm đi 7-10%. Sau 4 phút thiếu oxy não, tổn thương thần kinh không thể phục hồi.",
+      treatment: [
+        "GỌI HỖ TRỢ BÁO ĐỘNG ĐỎ CẤP CỨU NGỪNG TIM NGAY LẬP TỨC (Code Blue).",
+        "Ép tim ngoài lồng ngực chất lượng cao ngay lập tức: Tần số 100-120 lần/phút, độ sâu 5-6 cm, tỷ lệ 30:2.",
+        "SỐC ĐIỆN KHỬ RUNG KHÔNG ĐỒNG BỘ (Defibrillation) CÀNG SỚM CÀNG TỐT: Mức năng lượng 200 Joules (máy hai pha Biphasic) hoặc 360 Joules (máy đơn pha Monophasic).",
+        "Tiếp tục CPR ngay trong 2 phút sau sốc điện mà không dừng lại kiểm tra mạch.",
+        "Thuốc vận mạch: Adrenaline 1mg tiêm tĩnh mạch/trong xương mỗi 3-5 phút.",
+        "Thuốc chống loạn nhịp: Amiodarone 300mg tiêm tĩnh mạch sau cú sốc thứ 3; nếu tái phát thêm 150mg.",
+      ],
+      confidence: { primary: 99.9 },
+    },
+    learningNotes: {
+      chapterRef: "Atul Luthra - Chương 21: Fast Irregular Rhythm with Bizarre QRS - Ventricular Fibrillation (Trang 199-205, 215-220 - Hình 21.2)",
+      coreTakeaway: "Rung thất là cấp cứu tối khẩn số 1 trong y khoa. Sốc điện khử rung không đồng bộ kết hợp CPR liên tục trong vòng 1-3 phút đầu là chìa khóa duy nhất cứu sống bệnh nhân!",
+      pitfallToAvoid: "Đừng nhầm rung thất với nhiễu run cơ (Artifact). Luôn kiểm tra ngay mạch cảnh hoặc mạch bẹn: Nếu mất mạch -> Lập tức sốc điện và ép tim!",
+    },
+  },
+  {
+    id: "case-av-block-mobitz1",
+    category: "Conduction",
+    title: "Bloc Nhĩ Thất Độ II Mobitz I - Chu Kỳ Wenckebach (Mobitz Type I AV Block)",
+    subtitle: "Khoảng PR dài dần theo từng nhát bóp cho đến khi rớt 1 phức bộ QRS, nhịp chậm không đều có chu kỳ",
+    severity: "Cảnh giác cao",
+    patient: {
+      name: "Lê Văn Tuấn",
+      age: 64,
+      gender: "Nam",
+      chiefComplaint: "Cảm giác thỉnh thoảng hụt hẫng nhịp trong lồng ngực, chóng mặt thoáng qua khi đứng dậy",
+      clinicalHistory: "Bệnh nhân nam 64 tuổi, đang nằm điều trị ngày thứ 2 sau nhồi máu cơ tim cấp thành dưới đã can thiệp đặt stent RCA. Bệnh nhân tỉnh táo, tiếp xúc tốt, huyết áp ổn định 115/70 mmHg, cảm thấy thỉnh thoảng tim ngưng lại một nhịp.",
+      vitals: { bp: "115/70", hr: 58, spo2: 98, temp: 36.6 },
+      labs: { k: 4.2, ca: 2.3, mg: 0.85, troponinI: "3.2 ng/mL (giảm dần)" },
+    },
+    metrics: {
+      heartRate: 58,
+      rhythmType: "Bloc nhĩ thất độ II Mobitz I (Chu kỳ Wenckebach 4:3)",
+      regularity: "Không đều có chu kỳ",
+      axis: "Trục trung gian",
+      alphaAngle: 60,
+      prInterval: 260, // trung bình
+      qrsDuration: 90,
+      qt: 410,
+      qtc: 402,
+    },
+    leadsData: (() => {
+      const leads = cloneNormalLeads();
+      // Mobitz I with progressive PR prolongation
+      const leadKeys: LeadName[] = ["I", "II", "III", "aVR", "aVL", "aVF", "V1", "V2", "V3", "V4", "V5", "V6"];
+      for (const l of leadKeys) {
+        leads[l].pWave = { amp: 0.14, dur: 0.09, shape: "normal" };
+        leads[l].prSegment = { dur: 0.14 }; // Progressive PR
+        leads[l].rWave = { amp: l === "II" ? 1.4 : 1.0, dur: 0.04 };
+        leads[l].stSegment = { elevation: 0.0, slope: "horizontal" };
+        leads[l].tWave = { amp: 0.3, dur: 0.16, shape: "normal" };
+        leads[l].qrsDuration = 90;
+      }
+      return leads;
+    })(),
+    leadsSummary: {
+      limbLeadsSummary: "DII: Khoảng PR dài dần ra rõ rệt qua các nhát bóp kế tiếp (200ms -> 260ms -> 320ms) cho đến khi có một sóng P đi đơn độc hoàn toàn không có phức bộ QRS theo sau (nhát bóp bị rớt). Nhát bóp ngay sau khoảng nghỉ có khoảng PR ngắn nhất (200ms).",
+      chestLeadsSummary: "V1-V6: Phức bộ QRS thanh mảnh bình thường (90ms) do vị trí tắc nghẽn nằm cao tại ngay cấu trúc nút nhĩ thất (AV node).",
+    },
+    diagnosis: {
+      primary: "Bloc Nhĩ Thất Độ II Mobitz I - Chu Kỳ Wenckebach (Second-Degree AV Block Mobitz Type I)",
+      culpritVesselOrCause: "Thiếu máu thoáng qua hoặc tăng trương lực phế vị tại nút nhĩ thất (AV node) sau nhồi máu cơ tim thành dưới (nhánh nuôi nút AV của ĐM vành phải RCA)",
+      differentials: [
+        "Bloc nhĩ thất độ II Mobitz II (Khoảng PR cố định trước khi rớt QRS, QRS thường dãn rộng, nguy cơ cao tiến triển bloc hoàn toàn)",
+        "Ngoại tâm thu nhĩ bị nghẽn (Blocked APC) (sóng P đến sớm, dị dạng biến dạng sóng T đi trước)",
+        "Bloc xoang nhĩ độ II (mất cả sóng P lẫn phức bộ QRS)",
+      ],
+      keyFindings: [
+        "Khoảng PR dài dần ra qua từng chu kỳ tim liên tiếp",
+        "Có một sóng P không dẫn truyền được sang tâm thất (rớt một phức bộ QRS)",
+        "Sau nhát rớt, khoảng PR của nhát kế tiếp rút ngắn lại về mức bình thường hoặc gần bình thường",
+        "Khoảng R-R có xu hướng ngắn dần trước khi nhát rớt xảy ra",
+        "Phức bộ QRS thanh mảnh hẹp (< 100ms) vì vị trí tắc nghẽn xảy ra tại tầng nút nhĩ thất",
+      ],
+      clinicalNote: "Mobitz I (Wenckebach) hầu như luôn là tổn thương tại nút AV, có tiên lượng tốt, mang tính tự hồi phục sau vài ngày điều trị NMCT thành dưới, đáp ứng rất nhạy với Atropine và hiếm khi cần đặt máy tạo nhịp vĩnh viễn.",
+      treatment: [
+        "Nếu bệnh nhân không có triệu chứng và huyết áp ổn định: Tiếp tục theo dõi sát trên monitor phòng hồi sức tim mạch, không cần can thiệp cấp cứu.",
+        "Nếu xuất hiện nhịp chậm có triệu chứng tụt huyết áp hoặc chóng mặt: Tiêm tĩnh mạch Atropine 0.5 - 1.0 mg (có thể lặp lại đến tổng liều 3mg).",
+        "Rà soát và tạm ngừng các thuốc làm chậm dẫn truyền qua nút AV (thuốc chẹn beta, chẹn calci diltiazem/verapamil, digoxin).",
+        "Rất hiếm khi cần đặt máy tạo nhịp tạm thời trừ khi có triệu chứng nặng không đáp ứng Atropine.",
+      ],
+      confidence: { primary: 98.9, secondaryName: "Bloc nhĩ thất độ II Mobitz II", secondaryConfidence: 1.0 },
+    },
+    learningNotes: {
+      chapterRef: "Atul Luthra - Chương 15: Pauses During Regular Rhythm - Second-Degree AV Block Mobitz I (Trang 146-147, 161 - Hình 15.4)",
+      coreTakeaway: "Quy luật Wenckebach: PR dài dần -> Rớt 1 QRS -> PR nhát sau ngắn lại. Tổn thương tại nút AV nên QRS hẹp, tiên lượng lành tính hơn nhiều so với Mobitz II!",
+      pitfallToAvoid: "Đừng nhầm Mobitz I với Mobitz II. Mobitz II có PR cố định, vị trí block dưới nút His-Purkinje nên QRS thường rộng và có nguy cơ đột ngột chuyển thành bloc nhĩ thất hoàn toàn.",
     },
   },
 ];

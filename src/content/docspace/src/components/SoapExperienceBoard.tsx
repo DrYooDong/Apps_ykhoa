@@ -540,35 +540,37 @@ export const SoapExperienceBoard: React.FC<SoapBoardProps> = ({
   return (
     <div className="flex flex-col gap-4 animate-fadeIn">
       {/* 1. Header Banner: Sổ Tay Kinh Nghiệm Lâm Sàng Chuẩn SOAP */}
-      <div className="bg-gradient-to-r from-slate-900 via-indigo-950 to-blue-950 text-white rounded-xl p-5 sm:p-6 shadow-sm border border-slate-800 flex flex-wrap items-center justify-between gap-4">
+      <div className="bg-white border border-slate-200/90 rounded-2xl p-5 sm:p-6 shadow-xs relative overflow-hidden flex flex-wrap items-center justify-between gap-4">
+        {/* Subtle decorative top accent bar */}
+        <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-blue-600 via-indigo-500 to-teal-500" />
+
         <div className="max-w-3xl">
-          <div className="flex items-center gap-2 mb-1.5 flex-wrap">
-            <span className="px-2.5 py-0.5 rounded-full text-[10.5px] font-bold tracking-wider uppercase font-mono-custom bg-blue-600/90 text-white shadow-xs">
-              MÔ HÌNH Y KHOA QUỐC TẾ
+          <div className="flex items-center gap-2 mb-2 flex-wrap">
+            <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold tracking-wider uppercase font-mono-custom bg-blue-50 text-blue-700 border border-blue-200/80">
+              Mô hình Y khoa Quốc tế
             </span>
-            <span className="px-2.5 py-0.5 rounded-full text-[10.5px] font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 flex items-center gap-1">
-              <Check className="w-3 h-3" />
+            <span className="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-emerald-50 text-emerald-700 border border-emerald-200/80 flex items-center gap-1">
+              <Check className="w-3 h-3 text-emerald-600" />
               <span>Phi danh tính hóa · Chuẩn lưu trữ kinh nghiệm</span>
             </span>
-            <span className="text-xs text-slate-400 font-mono-custom">
+            <span className="text-xs text-slate-500 font-mono-custom bg-slate-100 px-2.5 py-0.5 rounded-md">
               {experiences.length} ca kinh nghiệm đã lưu
             </span>
           </div>
 
-          <h1 className="font-display text-xl sm:text-2xl font-bold tracking-tight text-white flex items-center gap-2.5">
+          <h1 className="font-display text-xl sm:text-2xl font-bold tracking-tight text-slate-900 flex items-center gap-2.5 flex-wrap">
             <span>Sổ Tay Kinh Nghiệm Lâm Sàng Chuẩn SOAP</span>
-            <span className="text-sm font-mono-custom font-normal text-indigo-300">
-              [S · O · A · P Matrix]
+            <span className="text-xs font-mono-custom font-semibold text-blue-700 bg-blue-50 px-2.5 py-0.5 rounded-md border border-blue-200/70">
+              S · O · A · P Matrix
             </span>
           </h1>
 
-          <p className="text-xs sm:text-sm text-slate-300 mt-1.5 leading-relaxed">
+          <p className="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed">
             Hệ thống đúc kết tri thức ca bệnh thực chiến, bẫy chẩn đoán và bài học điều trị theo 4 cột{' '}
-            <b className="text-cyan-300">S (Chủ quan)</b> ·{' '}
-            <b className="text-blue-300">O (Khách quan)</b> ·{' '}
-            <b className="text-amber-300">A (Đánh giá)</b> ·{' '}
-            <b className="text-emerald-300">P (Kế hoạch)</b>. Lưu trữ an toàn, hỗ trợ đồng bộ Supabase
-            Cloud và hoạt động Offline-first.
+            <span className="font-semibold text-sky-800 bg-sky-50 px-1.5 py-0.5 rounded border border-sky-200/80">S (Chủ quan)</span> ·{' '}
+            <span className="font-semibold text-indigo-800 bg-indigo-50 px-1.5 py-0.5 rounded border border-indigo-200/80">O (Khách quan)</span> ·{' '}
+            <span className="font-semibold text-amber-800 bg-amber-50 px-1.5 py-0.5 rounded border border-amber-200/80">A (Đánh giá)</span> ·{' '}
+            <span className="font-semibold text-teal-800 bg-teal-50 px-1.5 py-0.5 rounded border border-teal-200/80">P (Kế hoạch)</span>. Lưu trữ an toàn, hỗ trợ đồng bộ Supabase Cloud và hoạt động Offline-first.
           </p>
         </div>
 
@@ -579,12 +581,12 @@ export const SoapExperienceBoard: React.FC<SoapBoardProps> = ({
             type="button"
             onClick={handleSyncCloud}
             disabled={isSyncing}
-            className={`flex items-center gap-1.5 px-3 py-2 font-semibold text-xs rounded-lg transition-all cursor-pointer border ${
+            className={`flex items-center gap-1.5 px-3 h-9 font-semibold text-xs rounded-lg transition-all cursor-pointer border ${
               isSupabaseConfigured
                 ? syncStats.localOnly > 0
-                  ? 'bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border-amber-500/40 animate-pulse'
-                  : 'bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border-emerald-500/40'
-                : 'bg-slate-800 hover:bg-slate-700 text-slate-300 border-slate-700'
+                  ? 'bg-amber-50 hover:bg-amber-100 text-amber-800 border-amber-300 shadow-2xs'
+                  : 'bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border-emerald-300'
+                : 'bg-slate-50 hover:bg-slate-100 text-slate-700 border-slate-200'
             }`}
             title={
               isSupabaseConfigured
@@ -593,11 +595,11 @@ export const SoapExperienceBoard: React.FC<SoapBoardProps> = ({
             }
           >
             {isSyncing ? (
-              <RefreshCw className="w-3.5 h-3.5 animate-spin text-cyan-400" />
+              <RefreshCw className="w-3.5 h-3.5 animate-spin text-blue-600" />
             ) : isSupabaseConfigured ? (
-              <Cloud className="w-3.5 h-3.5 text-cyan-400" />
+              <Cloud className="w-3.5 h-3.5 text-blue-600" />
             ) : (
-              <HardDrive className="w-3.5 h-3.5 text-slate-400" />
+              <HardDrive className="w-3.5 h-3.5 text-slate-500" />
             )}
             <span>
               {isSyncing
@@ -611,7 +613,7 @@ export const SoapExperienceBoard: React.FC<SoapBoardProps> = ({
           <button
             type="button"
             onClick={openCreateModal}
-            className="flex items-center gap-1.5 px-3.5 py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-lg shadow-xs transition-all cursor-pointer hover:shadow-md"
+            className="flex items-center gap-1.5 px-3.5 h-9 bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs rounded-lg shadow-xs transition-all cursor-pointer hover:shadow-sm"
             title="Thêm ca kinh nghiệm lâm sàng mới theo chuẩn 4 cột SOAP"
           >
             <Plus className="w-4 h-4" />
@@ -621,13 +623,13 @@ export const SoapExperienceBoard: React.FC<SoapBoardProps> = ({
           <button
             type="button"
             onClick={handleCopySummary}
-            className="flex items-center gap-1.5 px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-semibold text-xs rounded-lg transition-colors cursor-pointer"
+            className="flex items-center gap-1.5 px-3 h-9 bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 font-medium text-xs rounded-lg transition-colors cursor-pointer"
             title="Sao chép tóm tắt SOAP ca hiện tại để chia sẻ hoặc lưu EMR"
           >
             {copiedNotification ? (
-              <Check className="w-3.5 h-3.5 text-emerald-400" />
+              <Check className="w-3.5 h-3.5 text-emerald-600" />
             ) : (
-              <Share2 className="w-3.5 h-3.5" />
+              <Share2 className="w-3.5 h-3.5 text-slate-500" />
             )}
             <span>{copiedNotification ? 'Đã sao chép!' : 'Sao chép SOAP'}</span>
           </button>
@@ -635,29 +637,29 @@ export const SoapExperienceBoard: React.FC<SoapBoardProps> = ({
           <button
             type="button"
             onClick={() => window.print()}
-            className="flex items-center gap-1.5 px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-semibold text-xs rounded-lg transition-colors cursor-pointer no-print"
+            className="flex items-center gap-1.5 px-3 h-9 bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 font-medium text-xs rounded-lg transition-colors cursor-pointer no-print"
             title="In bảng SOAP ra giấy hoặc xuất PDF"
           >
-            <Printer className="w-3.5 h-3.5" />
+            <Printer className="w-3.5 h-3.5 text-slate-500" />
             <span>In bảng SOAP</span>
           </button>
 
           <button
             type="button"
             onClick={handleExportJson}
-            className="flex items-center gap-1.5 px-2.5 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs rounded-lg transition-colors cursor-pointer no-print"
+            className="flex items-center justify-center w-9 h-9 bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 text-xs rounded-lg transition-colors cursor-pointer no-print"
             title="Xuất file JSON sao lưu danh mục kinh nghiệm"
           >
-            <Download className="w-3.5 h-3.5" />
+            <Download className="w-3.5 h-3.5 text-slate-500" />
           </button>
 
           <button
             type="button"
             onClick={handleExportVaultMarkdown}
-            className="flex items-center gap-1.5 px-2.5 py-2 bg-emerald-800 hover:bg-emerald-700 text-emerald-100 border border-emerald-700 text-xs rounded-lg transition-colors cursor-pointer no-print"
+            className="flex items-center gap-1.5 px-3 h-9 bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold rounded-lg transition-colors cursor-pointer no-print shadow-xs"
             title="Lưu ca bệnh này thành file Markdown chuẩn Obsidian (.md) cho Knowledge Vault"
           >
-            <BookOpen className="w-3.5 h-3.5" />
+            <BookOpen className="w-3.5 h-3.5 text-slate-200" />
             <span className="hidden lg:inline">Lưu vào Vault</span>
           </button>
         </div>
@@ -665,14 +667,14 @@ export const SoapExperienceBoard: React.FC<SoapBoardProps> = ({
 
       {/* Sync Feedback Toast Alert */}
       {syncFeedback && (
-        <div className="bg-slate-900 border border-cyan-500/40 text-cyan-200 text-xs px-4 py-2.5 rounded-lg flex items-center justify-between shadow-md animate-fadeIn">
+        <div className="bg-blue-50 border border-blue-200 text-blue-900 text-xs px-4 py-2.5 rounded-xl flex items-center justify-between shadow-xs animate-fadeIn">
           <div className="flex items-center gap-2">
-            <Sparkles className="w-4 h-4 text-cyan-400 shrink-0" />
+            <Sparkles className="w-4 h-4 text-blue-600 shrink-0" />
             <span>{syncFeedback}</span>
           </div>
           <button
             onClick={() => setSyncFeedback(null)}
-            className="text-slate-400 hover:text-white ml-2"
+            className="text-slate-400 hover:text-slate-700 ml-2 cursor-pointer"
           >
             <X className="w-3.5 h-3.5" />
           </button>
@@ -680,81 +682,81 @@ export const SoapExperienceBoard: React.FC<SoapBoardProps> = ({
       )}
 
       {/* 2. Quick Stats Banner (Bento-style 4 Metrics) */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-        <div className="bg-white border border-slate-200 rounded-xl p-3 shadow-2xs flex items-center gap-3">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <div className="bg-white border border-slate-200/80 rounded-xl p-3.5 shadow-2xs hover:shadow-xs transition-all flex items-center gap-3.5">
           <div className="w-9 h-9 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-base shrink-0">
-            <BookOpen className="w-5 h-5" />
+            <BookOpen className="w-4 h-4" />
           </div>
           <div>
-            <div className="text-[11px] font-medium text-slate-500">Tổng ca lưu trữ</div>
-            <div className="text-base font-bold text-slate-900 font-mono-custom">
+            <div className="text-[11.5px] font-medium text-slate-500">Tổng ca lưu trữ</div>
+            <div className="text-lg font-bold text-slate-900 font-mono-custom tracking-tight">
               {experiences.length}{' '}
-              <span className="text-[11px] font-normal text-slate-400 font-sans">ca</span>
+              <span className="text-xs font-normal text-slate-400 font-sans">ca</span>
             </div>
           </div>
         </div>
 
-        <div className="bg-white border border-slate-200 rounded-xl p-3 shadow-2xs flex items-center gap-3">
+        <div className="bg-white border border-slate-200/80 rounded-xl p-3.5 shadow-2xs hover:shadow-xs transition-all flex items-center gap-3.5">
           <div className="w-9 h-9 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-base shrink-0">
-            <Cloud className="w-5 h-5" />
+            <Cloud className="w-4 h-4" />
           </div>
           <div>
-            <div className="text-[11px] font-medium text-slate-500">Đồng bộ Cloud</div>
-            <div className="text-base font-bold text-emerald-700 font-mono-custom">
+            <div className="text-[11.5px] font-medium text-slate-500">Đồng bộ Cloud</div>
+            <div className="text-lg font-bold text-emerald-700 font-mono-custom tracking-tight">
               {syncStats.synced}{' '}
-              <span className="text-[11px] font-normal text-slate-400 font-sans">
+              <span className="text-xs font-normal text-slate-400 font-sans">
                 / {syncStats.total}
               </span>
             </div>
           </div>
         </div>
 
-        <div className="bg-white border border-slate-200 rounded-xl p-3 shadow-2xs flex items-center gap-3">
+        <div className="bg-white border border-slate-200/80 rounded-xl p-3.5 shadow-2xs hover:shadow-xs transition-all flex items-center gap-3.5">
           <div className="w-9 h-9 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center font-bold text-base shrink-0">
-            <Star className="w-5 h-5 fill-current" />
+            <Star className="w-4 h-4 fill-current" />
           </div>
           <div>
-            <div className="text-[11px] font-medium text-slate-500">Ca đánh dấu Yêu thích</div>
-            <div className="text-base font-bold text-amber-700 font-mono-custom">
+            <div className="text-[11.5px] font-medium text-slate-500">Đánh dấu Yêu thích</div>
+            <div className="text-lg font-bold text-amber-700 font-mono-custom tracking-tight">
               {syncStats.favorites}{' '}
-              <span className="text-[11px] font-normal text-slate-400 font-sans">ca</span>
+              <span className="text-xs font-normal text-slate-400 font-sans">ca</span>
             </div>
           </div>
         </div>
 
-        <div className="bg-white border border-slate-200 rounded-xl p-3 shadow-2xs flex items-center gap-3">
-          <div className="w-9 h-9 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center font-bold text-base shrink-0">
-            <Eye className="w-5 h-5" />
+        <div className="bg-white border border-slate-200/80 rounded-xl p-3.5 shadow-2xs hover:shadow-xs transition-all flex items-center gap-3.5">
+          <div className="w-9 h-9 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold text-base shrink-0">
+            <Eye className="w-4 h-4" />
           </div>
           <div>
-            <div className="text-[11px] font-medium text-slate-500">Lượt tham khảo học tập</div>
-            <div className="text-base font-bold text-purple-700 font-mono-custom">
+            <div className="text-[11.5px] font-medium text-slate-500">Lượt tham khảo học tập</div>
+            <div className="text-lg font-bold text-indigo-700 font-mono-custom tracking-tight">
               {experiences.reduce((acc, c) => acc + (c.viewCount || 0), 0)}{' '}
-              <span className="text-[11px] font-normal text-slate-400 font-sans">lượt</span>
+              <span className="text-xs font-normal text-slate-400 font-sans">lượt</span>
             </div>
           </div>
         </div>
       </div>
 
-      {/* 3. Filter & Case Selection Carousel */}
-      <div className="bg-white border border-slate-200 rounded-xl p-3.5 sm:p-4 shadow-xs flex flex-col gap-3">
+      {/* 3. Filter & Case Selection Toolbar */}
+      <div className="bg-white border border-slate-200/90 rounded-2xl p-4 shadow-xs flex flex-col gap-3">
         {/* Row 1: Specialty Filters & Search */}
-        <div className="flex flex-wrap items-center justify-between gap-2.5 pb-2 border-b border-slate-100">
-          <div className="flex items-center gap-2 flex-wrap">
-            <span className="text-xs font-bold text-slate-700 flex items-center gap-1">
+        <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-slate-100">
+          <div className="flex items-center gap-2 flex-1 min-w-[280px]">
+            <span className="text-xs font-bold text-slate-700 flex items-center gap-1.5 shrink-0">
               <Filter className="w-3.5 h-3.5 text-blue-600" />
               <span>Chuyên khoa:</span>
             </span>
 
-            <div className="flex items-center gap-1 overflow-x-auto max-w-xl py-0.5 no-scrollbar">
+            <div className="flex items-center gap-1.5 overflow-x-auto py-0.5 no-scrollbar flex-1">
               {SOAP_SPECIALTIES.map((spec) => (
                 <button
                   key={spec}
                   onClick={() => setSelectedSpecialty(spec)}
-                  className={`px-2.5 py-1 rounded-md text-xs font-medium whitespace-nowrap transition-all cursor-pointer ${
+                  className={`px-3 py-1 rounded-lg text-xs font-medium whitespace-nowrap transition-all cursor-pointer ${
                     selectedSpecialty === spec
-                      ? 'bg-blue-600 text-white font-bold shadow-2xs'
-                      : 'bg-slate-100 hover:bg-slate-200 text-slate-700'
+                      ? 'bg-blue-600 text-white font-semibold shadow-2xs'
+                      : 'bg-slate-100 hover:bg-slate-200/80 text-slate-600 hover:text-slate-900'
                   }`}
                 >
                   {spec}
@@ -763,21 +765,21 @@ export const SoapExperienceBoard: React.FC<SoapBoardProps> = ({
             </div>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 shrink-0">
             {/* Search Input */}
-            <div className="relative w-48 sm:w-64">
+            <div className="relative w-52 sm:w-64">
               <Search className="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-2.5" />
               <input
                 type="text"
                 value={searchKeyword}
                 onChange={(e) => setSearchKeyword(e.target.value)}
                 placeholder="Tìm bệnh, ICD, thuốc, triệu chứng..."
-                className="w-full pl-8 pr-7 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-md focus:outline-none focus:border-blue-500 text-slate-800"
+                className="w-full pl-8 pr-7 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:bg-white focus:border-blue-500 text-slate-800 placeholder:text-slate-400 transition-colors"
               />
               {searchKeyword && (
                 <button
                   onClick={() => setSearchKeyword('')}
-                  className="absolute right-2 top-2 text-slate-400 hover:text-slate-600"
+                  className="absolute right-2 top-2 text-slate-400 hover:text-slate-600 cursor-pointer"
                 >
                   <X className="w-3.5 h-3.5" />
                 </button>
@@ -787,24 +789,25 @@ export const SoapExperienceBoard: React.FC<SoapBoardProps> = ({
             <button
               type="button"
               onClick={handleResetToSample}
-              className="text-[11px] text-slate-500 hover:text-blue-600 underline cursor-pointer shrink-0"
+              className="flex items-center gap-1 text-[11.5px] text-slate-500 hover:text-blue-600 font-medium transition-colors cursor-pointer shrink-0 ml-1"
               title="Khôi phục lại toàn bộ ca mẫu chuẩn"
             >
-              Nạp lại ca mẫu
+              <RotateCcw className="w-3 h-3" />
+              <span>Nạp lại ca mẫu</span>
             </button>
           </div>
         </div>
 
         {/* Row 2: Secondary Filters & Sort Controls */}
-        <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-slate-600">
+        <div className="flex flex-wrap items-center justify-between gap-3 text-xs text-slate-600">
           <div className="flex items-center gap-3 flex-wrap">
             {/* Level Filter */}
             <div className="flex items-center gap-1.5">
-              <span className="font-semibold text-slate-600">Cấp độ:</span>
+              <span className="font-medium text-slate-500">Cấp độ:</span>
               <select
                 value={selectedLevel}
                 onChange={(e) => setSelectedLevel(e.target.value)}
-                className="bg-slate-50 border border-slate-200 rounded px-2 py-1 text-xs font-medium text-slate-700 focus:outline-none"
+                className="bg-slate-50 hover:bg-white border border-slate-200 rounded-lg px-2.5 py-1 text-xs font-medium text-slate-700 focus:outline-none focus:border-blue-500 transition-colors cursor-pointer"
               >
                 <option value="all">Tất cả cấp độ</option>
                 <option value="essential">Ca kinh điển</option>
@@ -816,11 +819,11 @@ export const SoapExperienceBoard: React.FC<SoapBoardProps> = ({
 
             {/* Difficulty Filter */}
             <div className="flex items-center gap-1.5">
-              <span className="font-semibold text-slate-600">Độ khó:</span>
+              <span className="font-medium text-slate-500">Độ khó:</span>
               <select
                 value={selectedDifficulty}
                 onChange={(e) => setSelectedDifficulty(Number(e.target.value))}
-                className="bg-slate-50 border border-slate-200 rounded px-2 py-1 text-xs font-medium text-slate-700 focus:outline-none"
+                className="bg-slate-50 hover:bg-white border border-slate-200 rounded-lg px-2.5 py-1 text-xs font-medium text-slate-700 focus:outline-none focus:border-blue-500 transition-colors cursor-pointer"
               >
                 <option value={0}>Tất cả độ khó</option>
                 <option value={1}>1 Sao (Đơn giản)</option>
@@ -833,11 +836,11 @@ export const SoapExperienceBoard: React.FC<SoapBoardProps> = ({
 
             {/* Sync Filter */}
             <div className="flex items-center gap-1.5">
-              <span className="font-semibold text-slate-600">Lưu trữ:</span>
+              <span className="font-medium text-slate-500">Lưu trữ:</span>
               <select
                 value={selectedSyncFilter}
                 onChange={(e) => setSelectedSyncFilter(e.target.value as any)}
-                className="bg-slate-50 border border-slate-200 rounded px-2 py-1 text-xs font-medium text-slate-700 focus:outline-none"
+                className="bg-slate-50 hover:bg-white border border-slate-200 rounded-lg px-2.5 py-1 text-xs font-medium text-slate-700 focus:outline-none focus:border-blue-500 transition-colors cursor-pointer"
               >
                 <option value="all">Tất cả nguồn</option>
                 <option value="synced">Đã đồng bộ Cloud</option>
@@ -848,11 +851,11 @@ export const SoapExperienceBoard: React.FC<SoapBoardProps> = ({
 
           {/* Sort By */}
           <div className="flex items-center gap-1.5">
-            <span className="font-semibold text-slate-600">Sắp xếp:</span>
+            <span className="font-medium text-slate-500">Sắp xếp:</span>
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as any)}
-              className="bg-slate-50 border border-slate-200 rounded px-2 py-1 text-xs font-semibold text-slate-800 focus:outline-none"
+              className="bg-slate-50 hover:bg-white border border-slate-200 rounded-lg px-2.5 py-1 text-xs font-semibold text-slate-800 focus:outline-none focus:border-blue-500 transition-colors cursor-pointer"
             >
               <option value="newest">Mới cập nhật nhất</option>
               <option value="oldest">Cũ nhất</option>
@@ -863,7 +866,7 @@ export const SoapExperienceBoard: React.FC<SoapBoardProps> = ({
         </div>
 
         {/* Case Cards Horizontal Scroll Strip */}
-        <div className="flex items-center gap-2.5 overflow-x-auto pb-1.5 pt-0.5 no-scrollbar">
+        <div className="flex items-center gap-3 overflow-x-auto pb-1 pt-1 no-scrollbar">
           {filteredCases.map((c) => {
             const isSelected = c.id === currentCase.id;
             const levelInfo = EXPERIENCE_LEVEL_LABELS[c.experienceLevel];
@@ -872,24 +875,24 @@ export const SoapExperienceBoard: React.FC<SoapBoardProps> = ({
               <div
                 key={c.id}
                 onClick={() => handleSelectCase(c.id)}
-                className={`min-w-[280px] max-w-[340px] p-3 rounded-lg border transition-all cursor-pointer flex flex-col justify-between shrink-0 shadow-2xs ${
+                className={`min-w-[285px] max-w-[330px] p-3.5 rounded-xl border transition-all cursor-pointer flex flex-col justify-between shrink-0 shadow-2xs ${
                   isSelected
-                    ? 'bg-blue-50/80 border-blue-500 ring-2 ring-blue-400/40 shadow-xs'
-                    : 'bg-white border-slate-200 hover:border-slate-300 hover:bg-slate-50/70'
+                    ? 'bg-blue-50/40 border-blue-500 ring-2 ring-blue-500/20 shadow-xs'
+                    : 'bg-white border-slate-200/90 hover:border-slate-300 hover:shadow-xs'
                 }`}
               >
                 <div>
-                  <div className="flex items-center justify-between gap-1 mb-1.5">
+                  <div className="flex items-center justify-between gap-1 mb-2">
                     <span
                       className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider ${levelInfo.bg} ${levelInfo.text} border ${levelInfo.border}`}
                     >
                       {levelInfo.label}
                     </span>
-                    <div className="flex items-center gap-1 text-[11px]">
+                    <div className="flex items-center gap-1.5 text-[11px]">
                       {/* Sync Status Badge */}
                       {c.syncStatus === 'synced' ? (
                         <span
-                          className="flex items-center gap-0.5 text-[10px] font-medium text-emerald-700 bg-emerald-50 px-1 py-0.2 rounded border border-emerald-200"
+                          className="flex items-center gap-0.5 text-[10px] font-medium text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200/80"
                           title="Đã đồng bộ với Supabase Cloud"
                         >
                           <Cloud className="w-2.5 h-2.5 text-emerald-600" />
@@ -897,7 +900,7 @@ export const SoapExperienceBoard: React.FC<SoapBoardProps> = ({
                         </span>
                       ) : (
                         <span
-                          className="flex items-center gap-0.5 text-[10px] font-medium text-amber-700 bg-amber-50 px-1 py-0.2 rounded border border-amber-200"
+                          className="flex items-center gap-0.5 text-[10px] font-medium text-amber-700 bg-amber-50 px-1.5 py-0.5 rounded border border-amber-200/80"
                           title="Lưu trữ tại Local, chưa đẩy lên Cloud"
                         >
                           <HardDrive className="w-2.5 h-2.5 text-amber-600" />
@@ -905,7 +908,7 @@ export const SoapExperienceBoard: React.FC<SoapBoardProps> = ({
                         </span>
                       )}
 
-                      <span className="font-mono-custom font-semibold text-slate-600 bg-slate-100 px-1.5 py-0.2 rounded border border-slate-200">
+                      <span className="font-mono-custom text-[10px] font-semibold text-slate-600 bg-slate-100 px-1.5 py-0.5 rounded border border-slate-200">
                         {c.a.icd10.split(' ')[0]}
                       </span>
                     </div>
@@ -920,9 +923,11 @@ export const SoapExperienceBoard: React.FC<SoapBoardProps> = ({
                   </p>
                 </div>
 
-                <div className="mt-2.5 pt-2 border-t border-slate-200/60 flex items-center justify-between text-[10.5px] text-slate-500">
+                <div className="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
                   <div className="flex items-center gap-2">
-                    <span className="font-medium text-blue-700">{c.specialty}</span>
+                    <span className="font-semibold text-blue-700 bg-blue-50 px-1.5 py-0.2 rounded border border-blue-100">
+                      {c.specialty}
+                    </span>
                     <span className="flex items-center gap-0.5 text-slate-400">
                       <Eye className="w-3 h-3" />
                       <span>{c.viewCount || 0}</span>
@@ -934,7 +939,7 @@ export const SoapExperienceBoard: React.FC<SoapBoardProps> = ({
                     <button
                       type="button"
                       onClick={(e) => openEditModal(c, e)}
-                      className="p-1 text-slate-400 hover:text-blue-600 transition-colors"
+                      className="p-1 text-slate-400 hover:text-blue-600 transition-colors cursor-pointer rounded hover:bg-slate-100"
                       title="Chỉnh sửa ca này"
                     >
                       <Edit3 className="w-3 h-3" />
@@ -942,7 +947,7 @@ export const SoapExperienceBoard: React.FC<SoapBoardProps> = ({
                     <button
                       type="button"
                       onClick={(e) => handleToggleFavorite(c.id, e)}
-                      className={`p-1 transition-colors ${
+                      className={`p-1 transition-colors cursor-pointer rounded hover:bg-slate-100 ${
                         c.isFavorite ? 'text-amber-500' : 'text-slate-300 hover:text-amber-400'
                       }`}
                       title={c.isFavorite ? 'Bỏ yêu thích' : 'Đánh dấu yêu thích'}
@@ -952,7 +957,7 @@ export const SoapExperienceBoard: React.FC<SoapBoardProps> = ({
                     <button
                       type="button"
                       onClick={(e) => handleDeleteCase(c.id, e)}
-                      className="p-1 text-slate-300 hover:text-rose-500 transition-colors"
+                      className="p-1 text-slate-300 hover:text-rose-500 transition-colors cursor-pointer rounded hover:bg-slate-100"
                       title="Xóa ca này"
                     >
                       <Trash2 className="w-3 h-3" />
@@ -967,11 +972,12 @@ export const SoapExperienceBoard: React.FC<SoapBoardProps> = ({
 
       {/* 4. Selected Case Summary Header Card */}
       {currentCase && (
-        <div className="bg-white border border-slate-200 rounded-xl p-4 sm:p-5 shadow-xs flex flex-wrap items-start justify-between gap-4">
-          <div className="flex flex-col gap-1.5 max-w-4xl">
+        <div className="bg-white border border-slate-200/90 rounded-2xl p-5 shadow-xs flex flex-wrap items-start justify-between gap-4">
+          <div className="flex flex-col gap-2 max-w-4xl flex-1">
+            {/* Primary Category Row */}
             <div className="flex items-center gap-2 flex-wrap">
               <span
-                className={`px-2.5 py-0.5 rounded text-xs font-bold uppercase tracking-wider ${
+                className={`px-2.5 py-0.5 rounded-md text-xs font-bold uppercase tracking-wider ${
                   EXPERIENCE_LEVEL_LABELS[currentCase.experienceLevel].bg
                 } ${EXPERIENCE_LEVEL_LABELS[currentCase.experienceLevel].text} border ${
                   EXPERIENCE_LEVEL_LABELS[currentCase.experienceLevel].border
@@ -979,48 +985,50 @@ export const SoapExperienceBoard: React.FC<SoapBoardProps> = ({
               >
                 {EXPERIENCE_LEVEL_LABELS[currentCase.experienceLevel].label}
               </span>
-              <span className="px-2.5 py-0.5 bg-slate-800 text-white font-mono-custom text-xs font-bold rounded">
-                Mã ICD: {currentCase.a.icd10}
+              <span className="px-2.5 py-0.5 bg-slate-100 text-slate-800 font-mono-custom text-xs font-bold rounded-md border border-slate-200">
+                ICD-10: {currentCase.a.icd10}
               </span>
-              <span className="px-2.5 py-0.5 bg-blue-100 text-blue-800 text-xs font-semibold rounded">
+              <span className="px-2.5 py-0.5 bg-blue-50 text-blue-700 text-xs font-semibold rounded-md border border-blue-200/70">
                 {currentCase.specialty}
               </span>
               {currentCase.clinicalContext && (
-                <span className="px-2.5 py-0.5 bg-indigo-50 text-indigo-700 border border-indigo-200 text-xs font-medium rounded">
-                  🏥 {currentCase.clinicalContext}
+                <span className="px-2.5 py-0.5 bg-slate-50 text-slate-600 border border-slate-200 text-xs font-medium rounded-md flex items-center gap-1">
+                  <span>🏥</span>
+                  <span>{currentCase.clinicalContext}</span>
                 </span>
               )}
               {currentCase.difficultyRating && (
-                <span className="px-2 py-0.5 bg-amber-50 text-amber-800 border border-amber-200 text-xs font-semibold rounded flex items-center gap-1">
+                <span className="px-2 py-0.5 bg-amber-50 text-amber-800 border border-amber-200 text-xs font-semibold rounded-md flex items-center gap-1">
                   <span>{'★'.repeat(currentCase.difficultyRating)}</span>
-                  <span className="text-[10px] text-amber-600">({currentCase.difficultyRating}/5)</span>
+                  <span className="text-[10.5px] text-amber-600 font-mono-custom">({currentCase.difficultyRating}/5)</span>
                 </span>
               )}
               {currentCase.isFavorite && (
-                <span className="px-2 py-0.5 bg-amber-100 text-amber-800 text-xs font-semibold rounded flex items-center gap-1">
-                  <Star className="w-3 h-3 fill-current" />
+                <span className="px-2 py-0.5 bg-amber-50 text-amber-800 border border-amber-200 text-xs font-semibold rounded-md flex items-center gap-1">
+                  <Star className="w-3 h-3 fill-current text-amber-500" />
                   <span>Yêu thích</span>
                 </span>
               )}
             </div>
 
-            <h2 className="font-display text-lg sm:text-xl font-bold text-slate-950 tracking-tight mt-0.5">
+            <h2 className="font-display text-xl sm:text-2xl font-bold text-slate-900 tracking-tight leading-snug">
               {currentCase.title}
             </h2>
 
-            <div className="flex items-center gap-3 text-xs text-slate-600 flex-wrap">
-              <span className="font-medium text-slate-700 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">
+            {/* Context & Meta Bar */}
+            <div className="bg-slate-50/80 border border-slate-200/80 rounded-xl p-2.5 px-3 text-xs text-slate-600 flex items-center gap-2.5 flex-wrap">
+              <span className="font-semibold text-slate-700 bg-white px-2 py-0.5 rounded border border-slate-200">
                 {currentCase.demographicContext}
               </span>
-              <span>·</span>
+              <span className="text-slate-300">·</span>
               <span>
-                Đúc kết bởi: <b>{currentCase.authorDoctor || 'Bác sĩ lâm sàng'}</b>
+                Đúc kết bởi: <b className="text-slate-800">{currentCase.authorDoctor || 'Bác sĩ lâm sàng'}</b>
               </span>
-              <span>·</span>
-              <span>Ngày lưu: {currentCase.createdAt}</span>
+              <span className="text-slate-300">·</span>
+              <span>Ngày lưu: <span className="font-mono-custom">{currentCase.createdAt}</span></span>
               {currentCase.sourceReference && (
                 <>
-                  <span>·</span>
+                  <span className="text-slate-300">·</span>
                   <span className="text-blue-700 italic">
                     Nguồn: {currentCase.sourceReference}
                   </span>
@@ -1029,19 +1037,19 @@ export const SoapExperienceBoard: React.FC<SoapBoardProps> = ({
             </div>
 
             {/* Tags & Outcome */}
-            <div className="flex items-center gap-1.5 flex-wrap mt-1">
+            <div className="flex items-center gap-1.5 flex-wrap mt-0.5">
               {currentCase.tags.map((t, idx) => (
                 <span
                   key={idx}
-                  className="px-2 py-0.5 bg-slate-50 text-slate-600 border border-slate-200 rounded text-[11px] font-medium"
+                  className="px-2 py-0.5 bg-white text-slate-600 border border-slate-200 rounded-md text-[11px] font-medium hover:border-slate-300 transition-colors"
                 >
                   #{t}
                 </span>
               ))}
 
               {currentCase.outcomeNotes && (
-                <span className="px-2 py-0.5 bg-emerald-50 text-emerald-800 border border-emerald-200 rounded text-[11px] font-medium flex items-center gap-1">
-                  <Award className="w-3 h-3 text-emerald-600" />
+                <span className="px-2.5 py-0.5 bg-emerald-50 text-emerald-800 border border-emerald-200 rounded-md text-[11px] font-medium flex items-center gap-1.5">
+                  <Award className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
                   <span>Kết cục: {currentCase.outcomeNotes}</span>
                 </span>
               )}
@@ -1049,13 +1057,13 @@ export const SoapExperienceBoard: React.FC<SoapBoardProps> = ({
           </div>
 
           {/* Quick Jump & Tool Shortcuts */}
-          <div className="flex flex-col items-end gap-2 shrink-0">
-            <div className="flex items-center gap-1.5">
+          <div className="flex flex-col items-end gap-2.5 shrink-0">
+            <div className="flex items-center gap-1.5 flex-wrap justify-end">
               {/* Edit Selected Case Button */}
               <button
                 type="button"
                 onClick={() => openEditModal(currentCase)}
-                className="px-2.5 py-1 text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 border border-slate-300 rounded-md transition-colors cursor-pointer flex items-center gap-1"
+                className="px-3 py-1.5 text-xs font-semibold text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-200 rounded-lg transition-colors cursor-pointer flex items-center gap-1.5 shadow-2xs"
                 title="Chỉnh sửa chi tiết ca kinh nghiệm SOAP này"
               >
                 <Edit3 className="w-3.5 h-3.5 text-blue-600" />
@@ -1065,7 +1073,7 @@ export const SoapExperienceBoard: React.FC<SoapBoardProps> = ({
               <button
                 type="button"
                 onClick={() => onOpenVaultDrawer?.(undefined, undefined, 'CC')}
-                className="px-2.5 py-1 text-xs font-semibold text-amber-900 bg-amber-50 hover:bg-amber-100 border border-amber-200 rounded-md transition-colors cursor-pointer flex items-center gap-1"
+                className="px-2.5 py-1.5 text-xs font-medium text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 rounded-lg transition-colors cursor-pointer flex items-center gap-1.5 shadow-2xs"
                 title="Mở 19 công cụ và thang điểm lâm sàng trong Kho CC"
               >
                 <span>🧮</span>
@@ -1075,7 +1083,7 @@ export const SoapExperienceBoard: React.FC<SoapBoardProps> = ({
               <button
                 type="button"
                 onClick={() => onOpenVaultDrawer?.(undefined, undefined, 'ICD10')}
-                className="px-2.5 py-1 text-xs font-semibold text-sky-900 bg-sky-50 hover:bg-sky-100 border border-sky-200 rounded-md transition-colors cursor-pointer flex items-center gap-1"
+                className="px-2.5 py-1.5 text-xs font-medium text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 rounded-lg transition-colors cursor-pointer flex items-center gap-1.5 shadow-2xs"
                 title="Mở Cẩm nang ICD-10 và Bẫy lỗi BHYT trong Kho ICD10"
               >
                 <span>🏷️</span>
@@ -1085,7 +1093,7 @@ export const SoapExperienceBoard: React.FC<SoapBoardProps> = ({
               <button
                 type="button"
                 onClick={() => onOpenVaultDrawer?.(undefined, undefined, 'CDSS')}
-                className="px-2.5 py-1 text-xs font-semibold text-purple-900 bg-purple-50 hover:bg-purple-100 border border-purple-200 rounded-md transition-colors cursor-pointer flex items-center gap-1"
+                className="px-2.5 py-1.5 text-xs font-medium text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 rounded-lg transition-colors cursor-pointer flex items-center gap-1.5 shadow-2xs"
                 title="Mở Hệ thống hỗ trợ ra quyết định lâm sàng trong Kho CDSS"
               >
                 <span>⚡</span>
@@ -1094,13 +1102,13 @@ export const SoapExperienceBoard: React.FC<SoapBoardProps> = ({
             </div>
 
             {/* View Mode Switcher */}
-            <div className="flex items-center gap-1 border border-slate-200 rounded-lg p-0.5 bg-slate-50 text-xs no-print">
+            <div className="flex items-center gap-1 border border-slate-200/90 rounded-xl p-1 bg-slate-100/80 text-xs no-print shadow-2xs">
               <button
                 type="button"
                 onClick={() => setViewMode('board')}
-                className={`px-2 py-1 rounded font-semibold transition-all cursor-pointer ${
+                className={`px-2.5 py-1 rounded-lg font-semibold transition-all cursor-pointer ${
                   viewMode === 'board'
-                    ? 'bg-blue-600 text-white shadow-2xs'
+                    ? 'bg-white text-blue-700 shadow-xs'
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
@@ -1109,9 +1117,9 @@ export const SoapExperienceBoard: React.FC<SoapBoardProps> = ({
               <button
                 type="button"
                 onClick={() => setViewMode('focus-s')}
-                className={`px-2 py-1 rounded font-semibold transition-all cursor-pointer ${
+                className={`px-2.5 py-1 rounded-lg font-semibold transition-all cursor-pointer ${
                   viewMode === 'focus-s'
-                    ? 'bg-cyan-600 text-white'
+                    ? 'bg-white text-sky-700 shadow-xs'
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
@@ -1120,9 +1128,9 @@ export const SoapExperienceBoard: React.FC<SoapBoardProps> = ({
               <button
                 type="button"
                 onClick={() => setViewMode('focus-o')}
-                className={`px-2 py-1 rounded font-semibold transition-all cursor-pointer ${
+                className={`px-2.5 py-1 rounded-lg font-semibold transition-all cursor-pointer ${
                   viewMode === 'focus-o'
-                    ? 'bg-blue-600 text-white'
+                    ? 'bg-white text-indigo-700 shadow-xs'
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
@@ -1131,9 +1139,9 @@ export const SoapExperienceBoard: React.FC<SoapBoardProps> = ({
               <button
                 type="button"
                 onClick={() => setViewMode('focus-a')}
-                className={`px-2 py-1 rounded font-semibold transition-all cursor-pointer ${
+                className={`px-2.5 py-1 rounded-lg font-semibold transition-all cursor-pointer ${
                   viewMode === 'focus-a'
-                    ? 'bg-amber-600 text-white'
+                    ? 'bg-white text-amber-700 shadow-xs'
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
@@ -1142,9 +1150,9 @@ export const SoapExperienceBoard: React.FC<SoapBoardProps> = ({
               <button
                 type="button"
                 onClick={() => setViewMode('focus-p')}
-                className={`px-2 py-1 rounded font-semibold transition-all cursor-pointer ${
+                className={`px-2.5 py-1 rounded-lg font-semibold transition-all cursor-pointer ${
                   viewMode === 'focus-p'
-                    ? 'bg-emerald-600 text-white'
+                    ? 'bg-white text-teal-700 shadow-xs'
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
@@ -1166,58 +1174,58 @@ export const SoapExperienceBoard: React.FC<SoapBoardProps> = ({
           {/* CỘT S: SUBJECTIVE — CHỦ QUAN & KHAI THÁC BỆNH SỬ                          */}
           {/* ========================================================================= */}
           {(viewMode === 'board' || viewMode === 'focus-s') && (
-            <div className="bg-white border-2 border-cyan-500/80 rounded-xl shadow-sm flex flex-col overflow-hidden">
+            <div className="bg-white border border-sky-200/90 rounded-2xl shadow-xs flex flex-col overflow-hidden hover:border-sky-300 transition-colors">
               {/* Column S Header */}
-              <div className="bg-gradient-to-r from-cyan-700 to-teal-700 text-white p-3.5 px-4 flex items-center justify-between shrink-0">
+              <div className="bg-gradient-to-r from-sky-600 via-sky-700 to-cyan-700 text-white p-3.5 px-4 flex items-center justify-between shrink-0">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-lg bg-white/20 flex items-center justify-center font-display font-black text-lg text-white shadow-inner">
+                  <div className="w-7 h-7 rounded-md bg-white/20 flex items-center justify-center font-display font-black text-sm text-white shadow-inner">
                     S
                   </div>
                   <div>
-                    <h3 className="font-display font-bold text-sm uppercase tracking-wide">
+                    <h3 className="font-display font-bold text-xs uppercase tracking-wider">
                       SUBJECTIVE
                     </h3>
-                    <p className="text-[10.5px] text-cyan-100">
+                    <p className="text-[10.5px] text-sky-100">
                       Chủ quan · Bệnh sử & Khai thác
                     </p>
                   </div>
                 </div>
-                <span className="px-2 py-0.5 rounded bg-cyan-800/80 text-[10px] font-mono-custom font-bold border border-cyan-600">
+                <span className="px-2 py-0.5 rounded-full bg-sky-800/60 text-sky-100 text-[10px] font-mono-custom font-semibold border border-sky-400/30">
                   Lắng nghe
                 </span>
               </div>
 
               {/* Column S Body Content */}
-              <div className="p-4 flex-1 flex flex-col gap-3.5 text-xs text-slate-800 bg-gradient-to-b from-cyan-50/20 to-white">
+              <div className="p-4 flex-1 flex flex-col gap-3.5 text-xs text-slate-800 bg-white">
                 {/* 1. Than phiền chính */}
                 <div>
-                  <span className="font-bold text-cyan-950 uppercase tracking-wider text-[11px] block mb-1 flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-600"></span>
+                  <span className="font-bold text-slate-800 uppercase tracking-wider text-[11px] block mb-1.5 flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-sky-600"></span>
                     1. Than phiền chính (Chief Complaint):
                   </span>
-                  <div className="p-2.5 bg-cyan-50/70 border border-cyan-200 rounded-lg font-medium text-cyan-950 leading-relaxed shadow-2xs">
+                  <div className="p-3 bg-sky-50/80 border border-sky-200/80 rounded-xl font-medium text-sky-950 leading-relaxed shadow-2xs">
                     "{currentCase.s.chiefComplaint}"
                   </div>
                 </div>
 
                 {/* 2. Bệnh sử PQRST */}
                 <div>
-                  <span className="font-bold text-slate-800 uppercase tracking-wider text-[11px] block mb-1 flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-600"></span>
+                  <span className="font-bold text-slate-800 uppercase tracking-wider text-[11px] block mb-1.5 flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-sky-600"></span>
                     2. Diễn tiến bệnh sử (PQRST):
                   </span>
-                  <p className="text-slate-700 leading-relaxed bg-slate-50 p-2.5 rounded-lg border border-slate-200">
+                  <p className="text-slate-700 leading-relaxed bg-slate-50 p-3 rounded-xl border border-slate-200/80">
                     {currentCase.s.historyOfPresentIllness}
                   </p>
                 </div>
 
                 {/* 3. Tiền căn & Dược sử */}
                 <div>
-                  <span className="font-bold text-slate-800 uppercase tracking-wider text-[11px] block mb-1 flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-600"></span>
+                  <span className="font-bold text-slate-800 uppercase tracking-wider text-[11px] block mb-1.5 flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-sky-600"></span>
                     3. Tiền căn & Thuốc đang dùng (PMH):
                   </span>
-                  <p className="text-slate-700 leading-relaxed bg-slate-50 p-2.5 rounded-lg border border-slate-200">
+                  <p className="text-slate-700 leading-relaxed bg-slate-50 p-3 rounded-xl border border-slate-200/80">
                     {currentCase.s.pastMedicalHistory}
                   </p>
                 </div>
@@ -1225,14 +1233,14 @@ export const SoapExperienceBoard: React.FC<SoapBoardProps> = ({
                 {/* 4. Triệu chứng cơ năng ghi nhận */}
                 <div>
                   <span className="font-bold text-slate-800 uppercase tracking-wider text-[11px] block mb-1.5 flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-600"></span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-sky-600"></span>
                     4. Triệu chứng cơ năng ghi nhận:
                   </span>
                   <div className="flex flex-wrap gap-1.5">
                     {currentCase.s.symptomsList.map((sym, idx) => (
                       <span
                         key={idx}
-                        className="px-2 py-0.5 rounded-md bg-cyan-100/70 text-cyan-900 border border-cyan-300/80 font-medium text-[11px]"
+                        className="px-2.5 py-1 rounded-lg bg-sky-50 text-sky-800 border border-sky-200 font-medium text-[11px]"
                       >
                         • {sym}
                       </span>
@@ -1242,12 +1250,12 @@ export const SoapExperienceBoard: React.FC<SoapBoardProps> = ({
 
                 {/* 5. Dấu ấn khai thác bệnh sử (History Pearls) */}
                 <div className="mt-auto pt-2">
-                  <div className="p-3 bg-gradient-to-br from-cyan-900 to-teal-950 text-white rounded-lg border border-cyan-800 shadow-xs">
-                    <div className="flex items-center gap-1.5 font-display font-bold text-[11.5px] text-cyan-200 mb-1">
-                      <Lightbulb className="w-3.5 h-3.5 text-amber-300" />
+                  <div className="p-3.5 bg-sky-50/80 border-l-4 border-l-sky-500 border border-sky-200/80 rounded-r-xl text-sky-950 shadow-2xs">
+                    <div className="flex items-center gap-1.5 font-display font-bold text-[11px] text-sky-900 mb-1.5">
+                      <Lightbulb className="w-4 h-4 text-sky-600 shrink-0" />
                       <span>DẤU ẤN HỎI BỆNH (HISTORY PEARL)</span>
                     </div>
-                    <p className="text-[11px] text-cyan-100/90 leading-relaxed italic">
+                    <p className="text-xs text-sky-900/90 leading-relaxed italic">
                       {currentCase.s.historyPearls}
                     </p>
                   </div>
@@ -1260,57 +1268,57 @@ export const SoapExperienceBoard: React.FC<SoapBoardProps> = ({
           {/* CỘT O: OBJECTIVE — KHÁCH QUAN & KHÁM THỰC THỂ / CẬN LÂM SÀNG              */}
           {/* ========================================================================= */}
           {(viewMode === 'board' || viewMode === 'focus-o') && (
-            <div className="bg-white border-2 border-blue-500/80 rounded-xl shadow-sm flex flex-col overflow-hidden">
+            <div className="bg-white border border-indigo-200/90 rounded-2xl shadow-xs flex flex-col overflow-hidden hover:border-indigo-300 transition-colors">
               {/* Column O Header */}
-              <div className="bg-gradient-to-r from-blue-700 to-indigo-700 text-white p-3.5 px-4 flex items-center justify-between shrink-0">
+              <div className="bg-gradient-to-r from-indigo-600 via-indigo-700 to-blue-700 text-white p-3.5 px-4 flex items-center justify-between shrink-0">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-lg bg-white/20 flex items-center justify-center font-display font-black text-lg text-white shadow-inner">
+                  <div className="w-7 h-7 rounded-md bg-white/20 flex items-center justify-center font-display font-black text-sm text-white shadow-inner">
                     O
                   </div>
                   <div>
-                    <h3 className="font-display font-bold text-sm uppercase tracking-wide">
+                    <h3 className="font-display font-bold text-xs uppercase tracking-wider">
                       OBJECTIVE
                     </h3>
-                    <p className="text-[10.5px] text-blue-100">
+                    <p className="text-[10.5px] text-indigo-100">
                       Khách quan · Khám & Cận lâm sàng
                     </p>
                   </div>
                 </div>
-                <span className="px-2 py-0.5 rounded bg-blue-800/80 text-[10px] font-mono-custom font-bold border border-blue-600">
+                <span className="px-2 py-0.5 rounded-full bg-indigo-800/60 text-indigo-100 text-[10px] font-mono-custom font-semibold border border-indigo-400/30">
                   Đo lường
                 </span>
               </div>
 
               {/* Column O Body Content */}
-              <div className="p-4 flex-1 flex flex-col gap-3.5 text-xs text-slate-800 bg-gradient-to-b from-blue-50/20 to-white">
+              <div className="p-4 flex-1 flex flex-col gap-3.5 text-xs text-slate-800 bg-white">
                 {/* 1. Dấu hiệu sinh tồn (Vitals Grid) */}
                 <div>
-                  <span className="font-bold text-blue-950 uppercase tracking-wider text-[11px] block mb-1.5 flex items-center gap-1.5">
-                    <Activity className="w-3.5 h-3.5 text-blue-600" />
+                  <span className="font-bold text-slate-800 uppercase tracking-wider text-[11px] block mb-1.5 flex items-center gap-1.5">
+                    <Activity className="w-3.5 h-3.5 text-indigo-600" />
                     1. Dấu hiệu sinh tồn (Vitals):
                   </span>
                   <div className="grid grid-cols-3 gap-1.5 font-mono-custom text-center">
-                    <div className="bg-blue-50/80 border border-blue-200 rounded p-1.5">
+                    <div className="bg-slate-50 border border-slate-200/80 rounded-lg p-2">
                       <span className="block text-[9.5px] text-slate-500 font-sans">Nhiệt độ</span>
                       <b className="text-xs text-slate-900">{currentCase.o.vitals.temp || '—'}°C</b>
                     </div>
-                    <div className="bg-blue-50/80 border border-blue-200 rounded p-1.5">
+                    <div className="bg-slate-50 border border-slate-200/80 rounded-lg p-2">
                       <span className="block text-[9.5px] text-slate-500 font-sans">Mạch</span>
                       <b className="text-xs text-slate-900">{currentCase.o.vitals.pulse || '—'} l/p</b>
                     </div>
-                    <div className="bg-blue-50/80 border border-blue-200 rounded p-1.5">
+                    <div className="bg-slate-50 border border-slate-200/80 rounded-lg p-2">
                       <span className="block text-[9.5px] text-slate-500 font-sans">Huyết áp</span>
                       <b className="text-xs text-rose-700">{currentCase.o.vitals.bp || '—'}</b>
                     </div>
-                    <div className="bg-blue-50/80 border border-blue-200 rounded p-1.5">
+                    <div className="bg-slate-50 border border-slate-200/80 rounded-lg p-2">
                       <span className="block text-[9.5px] text-slate-500 font-sans">Nhịp thở</span>
                       <b className="text-xs text-slate-900">{currentCase.o.vitals.resp || '—'} l/p</b>
                     </div>
-                    <div className="bg-blue-50/80 border border-blue-200 rounded p-1.5">
+                    <div className="bg-slate-50 border border-slate-200/80 rounded-lg p-2">
                       <span className="block text-[9.5px] text-slate-500 font-sans">SpO₂</span>
                       <b className="text-xs text-emerald-700">{currentCase.o.vitals.spo2 || '—'}%</b>
                     </div>
-                    <div className="bg-blue-50/80 border border-blue-200 rounded p-1.5">
+                    <div className="bg-slate-50 border border-slate-200/80 rounded-lg p-2">
                       <span className="block text-[9.5px] text-slate-500 font-sans">BMI</span>
                       <b className="text-xs text-slate-900">{currentCase.o.vitals.bmi || '—'}</b>
                     </div>
@@ -1319,34 +1327,34 @@ export const SoapExperienceBoard: React.FC<SoapBoardProps> = ({
 
                 {/* 2. Khám thực thể trọng tâm */}
                 <div>
-                  <span className="font-bold text-slate-800 uppercase tracking-wider text-[11px] block mb-1 flex items-center gap-1.5">
-                    <Stethoscope className="w-3.5 h-3.5 text-blue-600" />
+                  <span className="font-bold text-slate-800 uppercase tracking-wider text-[11px] block mb-1.5 flex items-center gap-1.5">
+                    <Stethoscope className="w-3.5 h-3.5 text-indigo-600" />
                     2. Khám thực thể định hướng:
                   </span>
-                  <p className="text-slate-700 leading-relaxed bg-slate-50 p-2.5 rounded-lg border border-slate-200">
+                  <p className="text-slate-700 leading-relaxed bg-slate-50 p-3 rounded-xl border border-slate-200/80">
                     {currentCase.o.physicalExam}
                   </p>
                 </div>
 
                 {/* 3. Cận lâm sàng then chốt */}
                 <div>
-                  <span className="font-bold text-slate-800 uppercase tracking-wider text-[11px] block mb-1 flex items-center gap-1.5">
-                    <FileCheck className="w-3.5 h-3.5 text-blue-600" />
+                  <span className="font-bold text-slate-800 uppercase tracking-wider text-[11px] block mb-1.5 flex items-center gap-1.5">
+                    <FileCheck className="w-3.5 h-3.5 text-indigo-600" />
                     3. Cận lâm sàng & Xét nghiệm định lượng:
                   </span>
-                  <p className="text-slate-700 leading-relaxed bg-slate-50 p-2.5 rounded-lg border border-slate-200 font-mono-custom text-[11px]">
+                  <p className="text-slate-700 leading-relaxed bg-slate-50 p-3 rounded-xl border border-slate-200/80 font-mono-custom text-[11px]">
                     {currentCase.o.labsAndImaging}
                   </p>
                 </div>
 
                 {/* 4. Bẫy cận lâm sàng (Objective Pitfalls) */}
                 <div className="mt-auto pt-2">
-                  <div className="p-3 bg-gradient-to-br from-rose-950 via-slate-900 to-slate-950 text-white rounded-lg border border-rose-800/80 shadow-xs">
-                    <div className="flex items-center gap-1.5 font-display font-bold text-[11.5px] text-rose-300 mb-1">
-                      <AlertTriangle className="w-3.5 h-3.5 text-rose-400" />
-                      <span>BẪY CẬN LÂM SÀNG (PITFALL)</span>
+                  <div className="p-3.5 bg-rose-50/80 border-l-4 border-l-rose-500 border border-rose-200/80 rounded-r-xl text-rose-950 shadow-2xs">
+                    <div className="flex items-center gap-1.5 font-display font-bold text-[11px] text-rose-900 mb-1.5">
+                      <AlertTriangle className="w-4 h-4 text-rose-600 shrink-0" />
+                      <span>BẪY CẬN LÂM SÀNG (OBJECTIVE PITFALL)</span>
                     </div>
-                    <p className="text-[11px] text-rose-100/90 leading-relaxed italic">
+                    <p className="text-xs text-rose-900/90 leading-relaxed italic">
                       {currentCase.o.objectivePitfalls}
                     </p>
                   </div>
@@ -1359,15 +1367,15 @@ export const SoapExperienceBoard: React.FC<SoapBoardProps> = ({
           {/* CỘT A: ASSESSMENT — ĐÁNH GIÁ & CHẨN ĐOÁN / BIỆN LUẬN LÂM SÀNG             */}
           {/* ========================================================================= */}
           {(viewMode === 'board' || viewMode === 'focus-a') && (
-            <div className="bg-white border-2 border-amber-500/80 rounded-xl shadow-sm flex flex-col overflow-hidden">
+            <div className="bg-white border border-amber-200/90 rounded-2xl shadow-xs flex flex-col overflow-hidden hover:border-amber-300 transition-colors">
               {/* Column A Header */}
-              <div className="bg-gradient-to-r from-amber-600 to-orange-700 text-white p-3.5 px-4 flex items-center justify-between shrink-0">
+              <div className="bg-gradient-to-r from-amber-600 via-amber-700 to-orange-700 text-white p-3.5 px-4 flex items-center justify-between shrink-0">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-lg bg-white/20 flex items-center justify-center font-display font-black text-lg text-white shadow-inner">
+                  <div className="w-7 h-7 rounded-md bg-white/20 flex items-center justify-center font-display font-black text-sm text-white shadow-inner">
                     A
                   </div>
                   <div>
-                    <h3 className="font-display font-bold text-sm uppercase tracking-wide">
+                    <h3 className="font-display font-bold text-xs uppercase tracking-wider">
                       ASSESSMENT
                     </h3>
                     <p className="text-[10.5px] text-amber-100">
@@ -1375,25 +1383,25 @@ export const SoapExperienceBoard: React.FC<SoapBoardProps> = ({
                     </p>
                   </div>
                 </div>
-                <span className="px-2 py-0.5 rounded bg-amber-800/80 text-[10px] font-mono-custom font-bold border border-amber-500">
+                <span className="px-2 py-0.5 rounded-full bg-amber-800/60 text-amber-100 text-[10px] font-mono-custom font-semibold border border-amber-400/30">
                   Tư duy
                 </span>
               </div>
 
               {/* Column A Body Content */}
-              <div className="p-4 flex-1 flex flex-col gap-3.5 text-xs text-slate-800 bg-gradient-to-b from-amber-50/20 to-white">
+              <div className="p-4 flex-1 flex flex-col gap-3.5 text-xs text-slate-800 bg-white">
                 {/* 1. Chẩn đoán xác định */}
                 <div>
-                  <span className="font-bold text-amber-950 uppercase tracking-wider text-[11px] block mb-1 flex items-center gap-1.5">
+                  <span className="font-bold text-slate-800 uppercase tracking-wider text-[11px] block mb-1.5 flex items-center gap-1.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-amber-600"></span>
                     1. Chẩn đoán sơ bộ / Xác định:
                   </span>
-                  <div className="p-2.5 bg-amber-50 border border-amber-300 rounded-lg shadow-2xs">
+                  <div className="p-3 bg-amber-50/70 border border-amber-200/90 rounded-xl shadow-2xs">
                     <div className="font-bold text-xs text-amber-950 leading-snug">
                       {currentCase.a.primaryDiagnosis}
                     </div>
                     <div className="mt-1.5 flex items-center gap-1.5 flex-wrap">
-                      <span className="font-mono-custom text-[10px] font-bold bg-amber-200/80 text-amber-900 px-1.5 py-0.5 rounded border border-amber-300">
+                      <span className="font-mono-custom text-[10px] font-bold bg-amber-100 text-amber-900 px-2 py-0.5 rounded border border-amber-300">
                         ICD-10: {currentCase.a.icd10}
                       </span>
                     </div>
@@ -1402,11 +1410,11 @@ export const SoapExperienceBoard: React.FC<SoapBoardProps> = ({
 
                 {/* 2. Chẩn đoán phân biệt */}
                 <div>
-                  <span className="font-bold text-slate-800 uppercase tracking-wider text-[11px] block mb-1 flex items-center gap-1.5">
+                  <span className="font-bold text-slate-800 uppercase tracking-wider text-[11px] block mb-1.5 flex items-center gap-1.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-amber-600"></span>
                     2. Chẩn đoán phân biệt cần loại trừ:
                   </span>
-                  <div className="space-y-1 bg-slate-50 p-2.5 rounded-lg border border-slate-200">
+                  <div className="space-y-1 bg-slate-50 p-3 rounded-xl border border-slate-200/80">
                     {currentCase.a.differentials.map((diff, idx) => (
                       <div key={idx} className="flex items-start gap-1.5 text-slate-700">
                         <span className="text-amber-600 font-bold">≠</span>
@@ -1418,23 +1426,23 @@ export const SoapExperienceBoard: React.FC<SoapBoardProps> = ({
 
                 {/* 3. Phân tầng nguy cơ */}
                 <div>
-                  <span className="font-bold text-slate-800 uppercase tracking-wider text-[11px] block mb-1 flex items-center gap-1.5">
+                  <span className="font-bold text-slate-800 uppercase tracking-wider text-[11px] block mb-1.5 flex items-center gap-1.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-amber-600"></span>
                     3. Phân tầng nguy cơ & Thang điểm:
                   </span>
-                  <p className="text-slate-700 leading-relaxed bg-slate-50 p-2.5 rounded-lg border border-slate-200">
+                  <p className="text-slate-700 leading-relaxed bg-slate-50 p-3 rounded-xl border border-slate-200/80">
                     {currentCase.a.riskStratification}
                   </p>
                 </div>
 
                 {/* 4. Đúc kết biện luận chẩn đoán (Diagnostic Pearls) */}
                 <div className="mt-auto pt-2">
-                  <div className="p-3 bg-gradient-to-br from-amber-950 via-stone-900 to-slate-950 text-white rounded-lg border border-amber-800/80 shadow-xs">
-                    <div className="flex items-center gap-1.5 font-display font-bold text-[11.5px] text-amber-300 mb-1">
-                      <Zap className="w-3.5 h-3.5 text-amber-400" />
+                  <div className="p-3.5 bg-amber-50/80 border-l-4 border-l-amber-500 border border-amber-200/80 rounded-r-xl text-amber-950 shadow-2xs">
+                    <div className="flex items-center gap-1.5 font-display font-bold text-[11px] text-amber-900 mb-1.5">
+                      <Zap className="w-4 h-4 text-amber-600 shrink-0" />
                       <span>ĐÚC KẾT BIỆN LUẬN (DIAGNOSTIC PEARL)</span>
                     </div>
-                    <p className="text-[11px] text-amber-100/90 leading-relaxed italic">
+                    <p className="text-xs text-amber-900/90 leading-relaxed italic">
                       {currentCase.a.diagnosticPearls}
                     </p>
                   </div>
@@ -1447,58 +1455,58 @@ export const SoapExperienceBoard: React.FC<SoapBoardProps> = ({
           {/* CỘT P: PLAN — KẾ HOẠCH & ĐIỀU TRỊ / THEO DÕI                              */}
           {/* ========================================================================= */}
           {(viewMode === 'board' || viewMode === 'focus-p') && (
-            <div className="bg-white border-2 border-emerald-500/80 rounded-xl shadow-sm flex flex-col overflow-hidden">
+            <div className="bg-white border border-teal-200/90 rounded-2xl shadow-xs flex flex-col overflow-hidden hover:border-teal-300 transition-colors">
               {/* Column P Header */}
-              <div className="bg-gradient-to-r from-emerald-700 to-teal-800 text-white p-3.5 px-4 flex items-center justify-between shrink-0">
+              <div className="bg-gradient-to-r from-teal-600 via-teal-700 to-emerald-700 text-white p-3.5 px-4 flex items-center justify-between shrink-0">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-lg bg-white/20 flex items-center justify-center font-display font-black text-lg text-white shadow-inner">
+                  <div className="w-7 h-7 rounded-md bg-white/20 flex items-center justify-center font-display font-black text-sm text-white shadow-inner">
                     P
                   </div>
                   <div>
-                    <h3 className="font-display font-bold text-sm uppercase tracking-wide">PLAN</h3>
-                    <p className="text-[10.5px] text-emerald-100">
+                    <h3 className="font-display font-bold text-xs uppercase tracking-wider">PLAN</h3>
+                    <p className="text-[10.5px] text-teal-100">
                       Kế hoạch · Xử trí, Thuốc & Bài học
                     </p>
                   </div>
                 </div>
-                <span className="px-2 py-0.5 rounded bg-emerald-800/80 text-[10px] font-mono-custom font-bold border border-emerald-500">
+                <span className="px-2 py-0.5 rounded-full bg-teal-800/60 text-teal-100 text-[10px] font-mono-custom font-semibold border border-teal-400/30">
                   Hành động
                 </span>
               </div>
 
               {/* Column P Body Content */}
-              <div className="p-4 flex-1 flex flex-col gap-3.5 text-xs text-slate-800 bg-gradient-to-b from-emerald-50/20 to-white">
+              <div className="p-4 flex-1 flex flex-col gap-3.5 text-xs text-slate-800 bg-white">
                 {/* 1. Xử trí cấp cứu ban đầu */}
                 <div>
-                  <span className="font-bold text-emerald-950 uppercase tracking-wider text-[11px] block mb-1 flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                  <span className="font-bold text-slate-800 uppercase tracking-wider text-[11px] block mb-1.5 flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-teal-600"></span>
                     1. Xử trí cấp cứu & Ban đầu:
                   </span>
-                  <p className="text-slate-700 leading-relaxed bg-emerald-50/70 p-2.5 rounded-lg border border-emerald-200">
+                  <p className="text-slate-700 leading-relaxed bg-teal-50/60 p-3 rounded-xl border border-teal-200/80">
                     {currentCase.p.immediateActions}
                   </p>
                 </div>
 
                 {/* 2. Y lệnh thuốc chi tiết */}
                 <div>
-                  <span className="font-bold text-slate-800 uppercase tracking-wider text-[11px] block mb-1 flex items-center gap-1.5">
-                    <Pill className="w-3.5 h-3.5 text-emerald-600" />
+                  <span className="font-bold text-slate-800 uppercase tracking-wider text-[11px] block mb-1.5 flex items-center gap-1.5">
+                    <Pill className="w-3.5 h-3.5 text-teal-600" />
                     2. Y lệnh thuốc cụ thể:
                   </span>
                   <div className="space-y-1.5">
                     {currentCase.p.medications.map((med, idx) => (
                       <div
                         key={idx}
-                        className="p-2 bg-slate-50 rounded border border-slate-200 flex flex-col gap-0.5"
+                        className="p-2.5 bg-slate-50 rounded-xl border border-slate-200/80 flex flex-col gap-0.5"
                       >
                         <div className="flex items-center justify-between font-bold text-slate-900">
                           <span>{med.drug}</span>
-                          <span className="font-mono-custom text-[11px] text-emerald-700">
+                          <span className="font-mono-custom text-[11px] text-teal-700 bg-teal-50 px-1.5 py-0.2 rounded border border-teal-200">
                             {med.dose}
                           </span>
                         </div>
-                        <div className="text-[10.5px] text-slate-500 flex items-center justify-between">
-                          <span>Đường dùng: <b>{med.route}</b></span>
+                        <div className="text-[10.5px] text-slate-500 flex items-center justify-between mt-0.5">
+                          <span>Đường dùng: <b className="text-slate-700">{med.route}</b></span>
                           {med.note && <span className="italic text-slate-600">{med.note}</span>}
                         </div>
                       </div>
@@ -1508,23 +1516,23 @@ export const SoapExperienceBoard: React.FC<SoapBoardProps> = ({
 
                 {/* 3. Chỉ tiêu theo dõi */}
                 <div>
-                  <span className="font-bold text-slate-800 uppercase tracking-wider text-[11px] block mb-1 flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                  <span className="font-bold text-slate-800 uppercase tracking-wider text-[11px] block mb-1.5 flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-teal-600"></span>
                     3. Theo dõi & Mục tiêu lâm sàng:
                   </span>
-                  <p className="text-slate-700 leading-relaxed bg-slate-50 p-2.5 rounded-lg border border-slate-200">
+                  <p className="text-slate-700 leading-relaxed bg-slate-50 p-3 rounded-xl border border-slate-200/80">
                     {currentCase.p.monitoringAndTargets}
                   </p>
                 </div>
 
                 {/* 4. Bài học kinh nghiệm điều trị cốt lõi */}
                 <div className="mt-auto pt-2">
-                  <div className="p-3 bg-gradient-to-br from-emerald-950 via-slate-900 to-teal-950 text-white rounded-lg border border-emerald-800 shadow-xs">
-                    <div className="flex items-center gap-1.5 font-display font-bold text-[11.5px] text-emerald-300 mb-1">
-                      <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
+                  <div className="p-3.5 bg-teal-50/80 border-l-4 border-l-teal-600 border border-teal-200/80 rounded-r-xl text-teal-950 shadow-2xs">
+                    <div className="flex items-center gap-1.5 font-display font-bold text-[11px] text-teal-900 mb-1.5">
+                      <Sparkles className="w-4 h-4 text-teal-600 shrink-0" />
                       <span>BÀI HỌC KINH NGHIỆM ĐIỀU TRỊ (TAKEAWAY)</span>
                     </div>
-                    <p className="text-[11px] text-emerald-100/90 leading-relaxed italic">
+                    <p className="text-xs text-teal-900/90 leading-relaxed italic">
                       {currentCase.p.takeawayLessons}
                     </p>
                   </div>
@@ -1537,42 +1545,41 @@ export const SoapExperienceBoard: React.FC<SoapBoardProps> = ({
 
       {/* 6. MODAL: CREATE & EDIT SOAP CLINICAL EXPERIENCE */}
       {isNewModalOpen && (
-        <div className="fixed inset-0 z-50 bg-slate-900/70 backdrop-blur-xs flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
+        <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
           <div className="bg-white rounded-2xl max-w-3xl w-full shadow-2xl border border-slate-200 max-h-[92vh] flex flex-col overflow-hidden animate-fadeIn">
             {/* Modal Header */}
-            <div className="bg-gradient-to-r from-slate-900 to-indigo-950 text-white p-4 px-6 flex items-center justify-between shrink-0">
+            <div className="bg-white border-b border-slate-200/90 p-4 sm:p-5 px-6 flex items-center justify-between shrink-0">
               <div>
-                <h3 className="font-display font-bold text-base sm:text-lg text-white flex items-center gap-2">
-                  <FilePlus className="w-5 h-5 text-blue-400" />
+                <h3 className="font-display font-bold text-base sm:text-lg text-slate-900 flex items-center gap-2">
+                  <FilePlus className="w-5 h-5 text-blue-600" />
                   <span>
                     {editingCaseId
                       ? 'Chỉnh Sửa Ca Kinh Nghiệm SOAP'
                       : 'Thêm Ca Kinh Nghiệm Lâm Sàng Mới'}
                   </span>
                 </h3>
-                <p className="text-xs text-slate-300 mt-0.5">
-                  Đúc kết kinh nghiệm lâm sàng chuẩn 4 cột SOAP (Tuyệt đối không lưu tên, CCCD hay
-                  danh tính cá nhân).
+                <p className="text-xs text-slate-500 mt-0.5">
+                  Đúc kết kinh nghiệm lâm sàng chuẩn 4 cột SOAP (Tuyệt đối không lưu tên, CCCD hay danh tính cá nhân).
                 </p>
               </div>
               <button
                 type="button"
                 onClick={() => setIsNewModalOpen(false)}
-                className="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-slate-800 transition-colors"
+                className="text-slate-400 hover:text-slate-700 p-1.5 rounded-lg hover:bg-slate-100 transition-colors cursor-pointer"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
             {/* Modal Step Tabs for fast navigation */}
-            <div className="flex items-center gap-1 border-b border-slate-200 px-6 py-2 bg-slate-50 text-xs overflow-x-auto no-scrollbar shrink-0">
+            <div className="flex items-center gap-1 border-b border-slate-200/80 px-6 py-2.5 bg-slate-50 text-xs overflow-x-auto no-scrollbar shrink-0">
               <button
                 type="button"
                 onClick={() => setModalActiveTab('general')}
-                className={`px-3 py-1.5 rounded-md font-semibold transition-all cursor-pointer whitespace-nowrap ${
+                className={`px-3 py-1.5 rounded-lg font-semibold transition-all cursor-pointer whitespace-nowrap ${
                   modalActiveTab === 'general'
                     ? 'bg-blue-600 text-white shadow-2xs'
-                    : 'text-slate-600 hover:bg-slate-200'
+                    : 'text-slate-600 hover:bg-slate-200/70'
                 }`}
               >
                 1. Thông tin chung
@@ -1580,10 +1587,10 @@ export const SoapExperienceBoard: React.FC<SoapBoardProps> = ({
               <button
                 type="button"
                 onClick={() => setModalActiveTab('s')}
-                className={`px-3 py-1.5 rounded-md font-semibold transition-all cursor-pointer whitespace-nowrap ${
+                className={`px-3 py-1.5 rounded-lg font-semibold transition-all cursor-pointer whitespace-nowrap ${
                   modalActiveTab === 's'
-                    ? 'bg-cyan-600 text-white'
-                    : 'text-slate-600 hover:bg-slate-200'
+                    ? 'bg-sky-600 text-white shadow-2xs'
+                    : 'text-slate-600 hover:bg-slate-200/70'
                 }`}
               >
                 2. S (Chủ quan)
@@ -1591,10 +1598,10 @@ export const SoapExperienceBoard: React.FC<SoapBoardProps> = ({
               <button
                 type="button"
                 onClick={() => setModalActiveTab('o')}
-                className={`px-3 py-1.5 rounded-md font-semibold transition-all cursor-pointer whitespace-nowrap ${
+                className={`px-3 py-1.5 rounded-lg font-semibold transition-all cursor-pointer whitespace-nowrap ${
                   modalActiveTab === 'o'
-                    ? 'bg-blue-600 text-white'
-                    : 'text-slate-600 hover:bg-slate-200'
+                    ? 'bg-indigo-600 text-white shadow-2xs'
+                    : 'text-slate-600 hover:bg-slate-200/70'
                 }`}
               >
                 3. O (Khách quan)
@@ -1602,10 +1609,10 @@ export const SoapExperienceBoard: React.FC<SoapBoardProps> = ({
               <button
                 type="button"
                 onClick={() => setModalActiveTab('a')}
-                className={`px-3 py-1.5 rounded-md font-semibold transition-all cursor-pointer whitespace-nowrap ${
+                className={`px-3 py-1.5 rounded-lg font-semibold transition-all cursor-pointer whitespace-nowrap ${
                   modalActiveTab === 'a'
-                    ? 'bg-amber-600 text-white'
-                    : 'text-slate-600 hover:bg-slate-200'
+                    ? 'bg-amber-600 text-white shadow-2xs'
+                    : 'text-slate-600 hover:bg-slate-200/70'
                 }`}
               >
                 4. A (Đánh giá)
@@ -1613,10 +1620,10 @@ export const SoapExperienceBoard: React.FC<SoapBoardProps> = ({
               <button
                 type="button"
                 onClick={() => setModalActiveTab('p')}
-                className={`px-3 py-1.5 rounded-md font-semibold transition-all cursor-pointer whitespace-nowrap ${
+                className={`px-3 py-1.5 rounded-lg font-semibold transition-all cursor-pointer whitespace-nowrap ${
                   modalActiveTab === 'p'
-                    ? 'bg-emerald-600 text-white'
-                    : 'text-slate-600 hover:bg-slate-200'
+                    ? 'bg-teal-600 text-white shadow-2xs'
+                    : 'text-slate-600 hover:bg-slate-200/70'
                 }`}
               >
                 5. P (Kế hoạch)

@@ -70,7 +70,7 @@ export function MainApp() {
   const [vitals, setVitals] = useState<VitalsState>(initialVitals);
   const [labs, setLabs] = useState<LabsState>(initialLabs);
   const [selected, setSelected] = useState<Set<string>>(
-    new Set(['dau_nguc_sau_xuong_uc', 'va_mo_hoi', 'kho_tho', 'tang_huyet_ap'])
+    new Set(['dau_nguc', 'va_mo_hoi', 'kho_tho', 'thc_tha'])
   );
   const [negated, setNegated] = useState<Set<string>>(new Set(['sot']));
 
@@ -183,27 +183,47 @@ export function MainApp() {
     return analyzeClinicalCase(kb, form, selected, derived, negated);
   }, [kb, form, selected, derived, negated]);
 
-  // Dynamic clinical summary text
+  // Dynamic clinical summary text (Định dạng chuẩn tóm tắt bệnh án y khoa EMR)
   const summaryText = useMemo(() => {
-    const parts: string[] = [];
+    const lines: string[] = [];
     const ageStr = form.tuoi ? `${form.tuoi} tuổi` : '';
     const genderStr = form.gioiTinh === 'nam' ? 'Nam' : form.gioiTinh === 'nu' ? 'Nữ' : 'chưa rõ giới tính';
     const jobStr = form.ngheNghiep ? `, nghề nghiệp ${form.ngheNghiep}` : '';
-    const reasonStr = form.lyDo ? `, vào viện vì ${form.lyDo}` : '';
+    const reasonStr = form.lyDo ? form.lyDo : 'Đau ngực dữ dội';
 
-    parts.push(`Bệnh nhân ${genderStr} ${ageStr}${jobStr}${reasonStr}.`);
+    // 1. Hành chính & Lý do vào viện
+    lines.push(`1. HÀNH CHÍNH & LÝ DO VÀO VIỆN:`);
+    lines.push(`• Bệnh nhân: ${genderStr}${ageStr ? `, ${ageStr}` : ''}${jobStr}`);
+    lines.push(`• Vào viện vì: ${reasonStr}`);
 
-    const vocabMap = new Map<string, TrieuChung>(kb.trieuChung.map((t) => [t.id, t]));
-    const posNames = [...selected, ...derived].map((id) => vocabMap.get(id)?.ten || id);
+    // Map vocabulary with fallback & aliases
+    const vocabMap = new Map<string, string>();
+    kb.trieuChung.forEach((t) => vocabMap.set(t.id, t.ten));
+    vocabMap.set('dau_nguc_sau_xuong_uc', 'Đau thắt ngực sau xương ức');
+    vocabMap.set('tang_huyet_ap', 'Tăng huyết áp');
+    vocabMap.set('thc_tha', 'Tăng huyết áp');
+    vocabMap.set('troponin', 'Troponin tăng');
+
+    const resolveSymptomName = (id: string) => {
+      if (vocabMap.has(id)) return vocabMap.get(id)!;
+      return id.replace(/_/g, ' ');
+    };
+
+    // 2. Dấu chứng dương tính có giá trị
+    const posNames = [...selected, ...derived].map(resolveSymptomName);
     if (posNames.length > 0) {
-      parts.push(`Ghi nhận các triệu chứng & dấu chứng dương tính: ${posNames.join(', ')}.`);
+      lines.push(`\n2. DẤU CHỨNG DƯƠNG TÍNH CÓ GIÁ TRỊ:`);
+      lines.push(`• Ghi nhận: ${posNames.join(', ')}`);
     }
 
+    // 3. Dữ kiện âm tính có giá trị loại trừ
     if (negated.size > 0) {
-      const negNames = [...negated].map((id) => vocabMap.get(id)?.ten || id);
-      parts.push(`Dữ kiện âm tính có giá trị loại trừ: không có ${negNames.join(', ')}.`);
+      const negNames = [...negated].map(resolveSymptomName);
+      lines.push(`\n3. DỮ KIỆN ÂM TÍNH (LOẠI TRỪ):`);
+      lines.push(`• Không ghi nhận: ${negNames.join(', ')}`);
     }
 
+    // 4. Sinh hiệu
     const vitalsSummary: string[] = [];
     if (vitals.vNhiet) vitalsSummary.push(`T: ${vitals.vNhiet}°C`);
     if (vitals.vMach) vitalsSummary.push(`Mạch: ${vitals.vMach} l/p`);
@@ -212,16 +232,19 @@ export function MainApp() {
     if (vitals.vSpo2) vitalsSummary.push(`SpO₂: ${vitals.vSpo2}%`);
 
     if (vitalsSummary.length > 0) {
-      parts.push(`Sinh hiệu: ${vitalsSummary.join(', ')}.`);
+      lines.push(`\n4. DẤU HIỆU SINH TỒN:`);
+      lines.push(`• ${vitalsSummary.join(' | ')}`);
     }
 
+    // 5. Định hướng chẩn đoán sơ bộ
     if (results.length > 0) {
-      parts.push(
-        `Nghĩ nhiều đến ${results[0].b.ten} (${results[0].b.icd}) với độ phù hợp ${results[0].pct}%.`
+      lines.push(`\n5. HƯỚNG CHẨN ĐOÁN SƠ BỘ:`);
+      lines.push(
+        `• Nghĩ nhiều đến: ${results[0].b.ten} [Mã ICD: ${results[0].b.icd}] — Độ phù hợp: ${results[0].pct}%`
       );
     }
 
-    return parts.join(' ');
+    return lines.join('\n');
   }, [form, selected, derived, negated, vitals, results, kb]);
 
   // Handlers

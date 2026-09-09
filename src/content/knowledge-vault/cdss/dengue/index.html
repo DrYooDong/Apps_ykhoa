@@ -137,11 +137,14 @@
   <!-- Mount Point for Dengue CDSS Application -->
   <div id="dengue-cdss-container"></div>
 
-  <script type="module">
-    import { DengueCDSSController } from './dengue-bundle.js';
-
+  <!-- Dengue CDSS Bundle (IIFE, 100% offline file:/// and server compatible) -->
+  <script src="./dengue-bundle.js"></script>
+  <script>
     // Initialize Controller
-    new DengueCDSSController('dengue-cdss-container');
+    const Controller = window.DengueCDSSController || (window.DengueCDSS && window.DengueCDSS.DengueCDSSController);
+    if (Controller) {
+      new Controller('dengue-cdss-container');
+    }
 
     // Theme toggle handling
     const themeBtn = document.getElementById('theme-toggle');

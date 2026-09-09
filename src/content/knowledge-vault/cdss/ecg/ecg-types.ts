@@ -74,7 +74,7 @@ export interface EcgMetrics {
 
 export interface EcgCase {
   id: string;
-  category: "Ischemia" | "Arrhythmia" | "Conduction" | "Electrolyte" | "Hypertrophy" | "Normal" | "Pediatric";
+  category: "Ischemia" | "Arrhythmia" | "Conduction" | "Electrolyte" | "Hypertrophy" | "Normal" | "Pediatric" | "Channelopathy";
   title: string;
   subtitle: string;
   severity: "Khẩn cấp" | "Nguy kịch" | "Cảnh giác cao" | "Ổn định";

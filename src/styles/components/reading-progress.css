@@ -14,7 +14,7 @@
   pointer-events: none;
 }
 
-.reading-progress-bar {
+.reading-progress-container .reading-progress-bar {
   height: 100%;
   width: 0%;
   background: var(--gradient-accent, linear-gradient(90deg, #0284c7 0%, #38bdf8 50%, #818cf8 100%));
@@ -22,6 +22,22 @@
   transition: width 80ms ease-out;
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px;
+}
+
+.reading-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3.5px !important;
+  max-height: 3.5px !important;
+  width: 0%;
+  background: var(--gradient-accent, linear-gradient(90deg, #0284c7 0%, #38bdf8 50%, #818cf8 100%));
+  box-shadow: 0 0 8px rgba(2, 132, 199, 0.6);
+  transition: width 80ms ease-out;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+  z-index: 10001;
+  pointer-events: none;
 }
 
 /* Optional Pill Float Counter at bottom-right or top-right */
