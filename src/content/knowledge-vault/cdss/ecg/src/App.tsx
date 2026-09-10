@@ -1,6 +1,6 @@
 /**
- * @license
- * SPDX-License-Identifier: Apache-2.0
+ * CliniPortal CDSS — ECG Master Workstation
+ * Path: src/content/knowledge-vault/cdss/ecg/src/App.tsx
  */
 
 import { useState } from "react";
@@ -16,20 +16,17 @@ import {
   HeartPulse,
   BrainCircuit,
   BookOpen,
-  FolderHeart,
   Settings,
   Ruler,
   AlertTriangle,
-  User,
-  Clock,
   Sparkles,
-  Stethoscope,
-  ChevronRight,
-  ChevronLeft,
-  ChevronDown,
-  ChevronUp,
-  ShieldCheck,
   CheckCircle2,
+  Copy,
+  Check,
+  Stethoscope,
+  ExternalLink,
+  ChevronRight,
+  ShieldAlert,
 } from "lucide-react";
 
 export default function App() {
@@ -51,7 +48,7 @@ export default function App() {
     deltaMv: 0,
   });
 
-  // Active top-level navigation tab (merged workstation + cases)
+  // Active top-level navigation tab
   const [activeTab, setActiveTab] = useState<
     "workstation" | "ai" | "guide" | "settings"
   >("workstation");
@@ -62,17 +59,8 @@ export default function App() {
   // Active sub-tab inside settings
   const [settingsSubTab, setSettingsSubTab] = useState<SettingsSubTab>("caliper");
 
-  const currentCaseIndex = CLINICAL_ECG_CASES.findIndex((c) => c.id === currentCase.id);
-
-  const handlePrevCase = () => {
-    const prevIndex = (currentCaseIndex - 1 + CLINICAL_ECG_CASES.length) % CLINICAL_ECG_CASES.length;
-    handleSelectCase(CLINICAL_ECG_CASES[prevIndex]);
-  };
-
-  const handleNextCase = () => {
-    const nextIndex = (currentCaseIndex + 1) % CLINICAL_ECG_CASES.length;
-    handleSelectCase(CLINICAL_ECG_CASES[nextIndex]);
-  };
+  // Copy SOAP feedback state
+  const [copiedSoap, setCopiedSoap] = useState(false);
 
   const handleUpdateCaliper = (updated: Partial<CaliperMeasurement>) => {
     setCaliperState((prev) => ({ ...prev, ...updated }));
@@ -83,39 +71,55 @@ export default function App() {
     setSelectedLead("All");
   };
 
+  const handleCopySoap = () => {
+    const text = `[CDSS ECG MASTER - TÓM TẮT ĐIỆN TÂM ĐỒ]
+- Ca bệnh: ${currentCase.title} (Mức độ: ${currentCase.severity})
+- Bệnh nhân: ${currentCase.patient.gender}, ${currentCase.patient.age} tuổi | HA: ${currentCase.patient.vitals?.bp || "120/80"}
+- Bệnh cảnh: ${currentCase.patient.chiefComplaint}
+- Kết luận ECG: ${currentCase.diagnosis.primary}
+${currentCase.diagnosis.culpritVesselOrCause ? `- Động mạch thủ phạm: ${currentCase.diagnosis.culpritVesselOrCause}\n` : ""}- Chỉ số: Nhịp ${currentCase.metrics.rhythmType}, HR ${currentCase.metrics.heartRate} bpm, Trục ${currentCase.metrics.alphaAngle}°, PR ${currentCase.metrics.prInterval || 160}ms, QRS ${currentCase.metrics.qrsDuration}ms, QTc ${currentCase.metrics.qtcInterval || 420}ms
+- Dấu hiệu then chốt: ${currentCase.diagnosis.keyFindings.join("; ")}
+- Hướng xử trí: ${currentCase.diagnosis.treatment.join("; ")}`;
+
+    navigator.clipboard.writeText(text).then(() => {
+      setCopiedSoap(true);
+      setTimeout(() => setCopiedSoap(false), 2000);
+    });
+  };
+
   return (
-    <div className="min-h-screen bg-slate-100 text-slate-900 flex flex-col font-sans">
+    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans transition-colors duration-150">
       {/* Top Application Header */}
-      <header className="sticky top-0 z-40 border-b border-slate-200/90 bg-white/95 backdrop-blur-md shadow-xs">
+      <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/95 backdrop-blur-md shadow-xs">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 gap-3">
+          <div className="flex items-center justify-between h-14 sm:h-16 gap-2">
             {/* Brand / Logo */}
-            <div className="flex items-center gap-3 shrink-0">
+            <div className="flex items-center gap-2.5 shrink-0">
               <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-tr from-rose-600 to-red-500 text-white shadow-xs">
-                <HeartPulse className="h-5 w-5" />
+                <HeartPulse className="h-5 w-5 shrink-0" />
               </div>
-              <div>
-                <div className="flex items-center gap-2">
-                  <h1 className="text-base sm:text-lg font-black tracking-tight text-slate-900">
+              <div className="leading-tight">
+                <div className="flex items-center gap-1.5">
+                  <span className="text-base sm:text-lg font-black tracking-tight text-slate-900">
                     ECG MASTER
-                  </h1>
-                  <span className="hidden sm:inline-block rounded-md bg-rose-50 border border-rose-200/70 px-2 py-0.5 text-[10px] font-bold text-rose-700 uppercase tracking-wide">
-                    12 Chuyển Đạo &amp; AI
+                  </span>
+                  <span className="rounded-md bg-rose-50 border border-rose-200 px-1.5 py-0.5 text-[10px] font-bold text-rose-700 uppercase tracking-wide">
+                    12 Đạo Trình &amp; AI
                   </span>
                 </div>
-                <p className="text-[11px] text-slate-500 hidden md:block">
-                  Hệ thống chẩn đoán điện tâm đồ &amp; chuyên khảo BS Nguyễn Tôn Kinh Thi
+                <p className="text-[11px] text-slate-500 hidden sm:block">
+                  Chuyên khảo BS Nguyễn Tôn Kinh Thi &amp; Phân tích điện tâm đồ AI
                 </p>
               </div>
             </div>
 
-            {/* Navigation Tabs (Unified: Workstation + Cases merged) */}
+            {/* Navigation Tabs (Single Clean Label, No Duplication, Horizontal Align) */}
             <nav className="flex items-center gap-1 overflow-x-auto py-1">
               {[
-                { id: "workstation", label: "Màn Hình ECG & Ca Lâm Sàng", shortLabel: "ECG & Ca Bệnh", icon: Activity },
-                { id: "ai", label: "Chẩn Đoán Học Sâu AI", shortLabel: "Chẩn Đoán AI", icon: BrainCircuit },
-                { id: "guide", label: "Hướng Dẫn Đọc Căn Bản", shortLabel: "Sổ Tay BS Thi", icon: BookOpen },
-                { id: "settings", label: "Cài Đặt", shortLabel: "Cài Đặt", icon: Settings },
+                { id: "workstation", label: "ECG & Ca Bệnh", icon: Activity },
+                { id: "ai", label: "Chẩn Đoán AI", icon: BrainCircuit },
+                { id: "guide", label: "Sổ Tay 10 Bước", icon: BookOpen },
+                { id: "settings", label: "Thước Đo & Trục", icon: Ruler },
               ].map((tab) => {
                 const Icon = tab.icon;
                 const isActive = activeTab === tab.id;
@@ -123,18 +127,15 @@ export default function App() {
                   <button
                     key={tab.id}
                     id={`nav-tab-${tab.id}`}
-                    onClick={() => {
-                      setActiveTab(tab.id as any);
-                    }}
-                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-colors ${
+                    onClick={() => setActiveTab(tab.id as any)}
+                    className={`inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap transition-all ${
                       isActive
                         ? "bg-rose-600 text-white shadow-xs"
                         : "text-slate-600 hover:bg-slate-100 hover:text-slate-900"
                     }`}
                   >
                     <Icon className="w-3.5 h-3.5 shrink-0" />
-                    <span className="hidden lg:inline">{tab.label}</span>
-                    <span className="lg:hidden">{tab.shortLabel}</span>
+                    <span>{tab.label}</span>
                   </button>
                 );
               })}
@@ -157,7 +158,7 @@ export default function App() {
       />
 
       {/* Main Content Body */}
-      <main className="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8 space-y-6">
+      <main className="flex-1 max-w-7xl w-full mx-auto p-3 sm:p-5 lg:p-6 space-y-5">
         {/* VIEW 1: Primary Workstation (Merged ECG Canvas + Integrated Clinical Cases) */}
         {activeTab === "workstation" && (
           <div className="space-y-5">
@@ -167,6 +168,7 @@ export default function App() {
                 currentCaseId={currentCase.id}
                 onSelectCase={(c) => {
                   handleSelectCase(c);
+                  setIsCaseLibraryOpen(false);
                 }}
                 onClose={() => setIsCaseLibraryOpen(false)}
               />
@@ -181,165 +183,188 @@ export default function App() {
               onSelectLead={setSelectedLead}
             />
 
-            {/* Sub-grid: Clinical Findings, Diagnostic Panel, Caliper Tool & Triage */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
-              {/* Left 2 Cols: Automated Diagnostic Summary */}
-              <div className="lg:col-span-2 space-y-4">
-                <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-xs space-y-4">
-                  <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-                    <div className="flex items-center gap-2">
-                      <Sparkles className="w-4 h-4 text-indigo-600" />
-                      <h3 className="text-sm font-bold text-slate-900">
-                        Chẩn Đoán Tự Động &amp; Các Chỉ Số Điện Học
-                      </h3>
-                    </div>
-                    <button
-                      id="view-full-ai-btn"
-                      onClick={() => setActiveTab("ai")}
-                      className="text-xs font-bold text-indigo-600 hover:text-indigo-800 transition flex items-center gap-1"
-                    >
-                      Hỏi Đáp Sâu Cùng AI &rarr;
-                    </button>
+            {/* Diagnostic Bento Grid: 3 Modern Clinical Cards */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-start">
+              {/* Card 1: Automated Diagnosis & Culprit Vessel (5 cols) */}
+              <div className="lg:col-span-5 rounded-2xl border border-slate-200 bg-white p-4 sm:p-5 shadow-xs space-y-3.5">
+                <div className="flex items-center justify-between border-b border-slate-100 pb-2.5">
+                  <div className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-900">
+                    <Sparkles className="w-4 h-4 text-indigo-600 shrink-0" />
+                    <span>Kết Luận Điện Tâm Đồ</span>
                   </div>
-
-                  {/* Primary Diagnosis Headline */}
-                  <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
-                    <div className="flex items-center justify-between">
-                      <span className="text-[11px] font-bold text-rose-700 uppercase tracking-wide">
-                        KẾT LUẬN ĐIỆN TÂM ĐỒ:
-                      </span>
-                      <span className="text-[11px] font-mono text-slate-500">
-                        Phân loại: {currentCase.category}
-                      </span>
-                    </div>
-                    <div className="text-base font-black text-slate-900">
-                      {currentCase.diagnosis.primary}
-                    </div>
-                    {currentCase.diagnosis.culpritVesselOrCause && (
-                      <div className="text-xs text-slate-600 font-medium">
-                        <b>Động mạch thủ phạm / Căn nguyên:</b> {currentCase.diagnosis.culpritVesselOrCause}
-                      </div>
-                    )}
-                  </div>
-
-                  {/* 6 Key ECG Metrics Grid */}
-                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2 text-center text-xs">
-                    <div className="p-2 rounded-lg bg-slate-50 border border-slate-200">
-                      <div className="text-slate-400 text-[10px] font-medium">Nhịp Cơ Bản</div>
-                      <div className="font-bold text-slate-800 truncate mt-0.5">{currentCase.metrics.rhythmType}</div>
-                    </div>
-                    <div className="p-2 rounded-lg bg-slate-50 border border-slate-200">
-                      <div className="text-slate-400 text-[10px] font-medium">Tần Số Tim</div>
-                      <div className="font-bold text-rose-600 font-mono mt-0.5">{currentCase.metrics.heartRate} bpm</div>
-                    </div>
-                    <div className="p-2 rounded-lg bg-slate-50 border border-slate-200">
-                      <div className="text-slate-400 text-[10px] font-medium">Trục Alpha</div>
-                      <div className="font-bold text-slate-800 font-mono mt-0.5">{currentCase.metrics.alphaAngle}°</div>
-                    </div>
-                    <div className="p-2 rounded-lg bg-slate-50 border border-slate-200">
-                      <div className="text-slate-400 text-[10px] font-medium">Khoảng PR</div>
-                      <div className="font-bold text-slate-800 font-mono mt-0.5">{currentCase.metrics.prInterval ? `${currentCase.metrics.prInterval} ms` : "160 ms"}</div>
-                    </div>
-                    <div className="p-2 rounded-lg bg-slate-50 border border-slate-200">
-                      <div className="text-slate-400 text-[10px] font-medium">Phức Bộ QRS</div>
-                      <div className="font-bold text-slate-800 font-mono mt-0.5">{currentCase.metrics.qrsDuration} ms</div>
-                    </div>
-                    <div className="p-2 rounded-lg bg-slate-50 border border-slate-200">
-                      <div className="text-slate-400 text-[10px] font-medium">Khoảng QTc</div>
-                      <div className="font-bold text-slate-800 font-mono mt-0.5">{currentCase.metrics.qtcInterval ? `${currentCase.metrics.qtcInterval} ms` : "420 ms"}</div>
-                    </div>
-                  </div>
-
-                  {/* Key Findings List */}
-                  <div className="space-y-1.5 text-xs text-slate-700">
-                    <div className="font-bold text-slate-900">Dấu hiệu nhận diện then chốt:</div>
-                    <ul className="space-y-1 pl-1">
-                      {currentCase.diagnosis.keyFindings.slice(0, 3).map((f, i) => (
-                        <li key={i} className="flex items-start gap-2">
-                          <span className="h-1.5 w-1.5 rounded-full bg-rose-500 shrink-0 mt-1.5" />
-                          <span>{f}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                  <span className="text-[11px] font-mono font-semibold px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200">
+                    AI Khớp: {currentCase.diagnosis.confidence.primary}%
+                  </span>
                 </div>
 
-                {/* Practical Clinical Pearls from BS Nguyễn Tôn Kinh Thi */}
-                <div className="rounded-xl border border-amber-200/90 bg-amber-50/40 p-4 text-xs space-y-2">
-                  <div className="flex items-center justify-between font-bold text-amber-950">
-                    <span className="flex items-center gap-1.5">
-                      <BookOpen className="w-4 h-4 text-amber-700" />
-                      Ghi Nhớ Thực Hành ({currentCase.learningNotes.chapterRef})
-                    </span>
-                    <button
-                      onClick={() => setActiveTab("guide")}
-                      className="text-[11px] text-amber-800 font-semibold hover:underline"
-                    >
-                      Mở Sổ Tay ECG &rarr;
-                    </button>
+                <div className="rounded-xl bg-slate-50 border border-slate-200/80 p-3.5 space-y-2">
+                  <div className="text-[10px] font-bold text-rose-700 uppercase tracking-wide">
+                    CHẨN ĐOÁN LÂM SÀNG:
                   </div>
-                  <p className="text-slate-700 leading-relaxed">
-                    {currentCase.learningNotes.coreTakeaway}
-                  </p>
-                  <p className="text-amber-900 font-medium">
-                    ⚠️ <b>Cạm bẫy lâm sàng:</b> {currentCase.learningNotes.pitfallToAvoid}
-                  </p>
+                  <div className="text-base font-black text-slate-900 leading-snug">
+                    {currentCase.diagnosis.primary}
+                  </div>
+
+                  {currentCase.diagnosis.culpritVesselOrCause && (
+                    <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-800 bg-white px-2.5 py-1 rounded-lg border border-slate-200">
+                      <Stethoscope className="w-3.5 h-3.5 text-rose-600 shrink-0" />
+                      <span>Thủ phạm: <b>{currentCase.diagnosis.culpritVesselOrCause}</b></span>
+                    </div>
+                  )}
+                </div>
+
+                {/* Key Findings */}
+                <div className="space-y-1.5 text-xs">
+                  <div className="font-bold text-slate-800 text-[11px] uppercase tracking-wide">
+                    Dấu hiệu then chốt trên 12 đạo trình:
+                  </div>
+                  <ul className="space-y-1.5">
+                    {currentCase.diagnosis.keyFindings.map((f, i) => (
+                      <li key={i} className="flex items-start gap-2 text-slate-700">
+                        <span className="h-1.5 w-1.5 rounded-full bg-rose-500 shrink-0 mt-1.5" />
+                        <span className="leading-snug">{f}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="pt-2 flex items-center justify-between border-t border-slate-100">
+                  <button
+                    onClick={handleCopySoap}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-300 text-xs font-bold text-slate-700 hover:bg-slate-50 hover:text-slate-900 transition"
+                  >
+                    {copiedSoap ? (
+                      <>
+                        <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                        <span className="text-emerald-700">Đã Sao Chép SOAP!</span>
+                      </>
+                    ) : (
+                      <>
+                        <Copy className="w-3.5 h-3.5 shrink-0" />
+                        <span>Chép Tóm Tắt SOAP</span>
+                      </>
+                    )}
+                  </button>
+
+                  <button
+                    onClick={() => setActiveTab("ai")}
+                    className="inline-flex items-center gap-1 text-xs font-bold text-indigo-600 hover:text-indigo-800 transition"
+                  >
+                    <span>Phân tích AI sâu</span>
+                    <ChevronRight className="w-3.5 h-3.5 shrink-0" />
+                  </button>
                 </div>
               </div>
 
-              {/* Right 1 Col: Quick Caliper Measurement status & Actions */}
-              <div className="space-y-4">
-                <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-xs space-y-3">
-                  <div className="flex items-center gap-2 text-sm font-bold text-slate-900 border-b border-slate-100 pb-2">
-                    <Ruler className="w-4 h-4 text-amber-600" />
-                    Thước Đo Compa (Caliper)
+              {/* Card 2: 6 Electrophysiological Metrics (4 cols) */}
+              <div className="lg:col-span-4 rounded-2xl border border-slate-200 bg-white p-4 sm:p-5 shadow-xs space-y-3.5">
+                <div className="flex items-center justify-between border-b border-slate-100 pb-2.5">
+                  <div className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-900">
+                    <Activity className="w-4 h-4 text-rose-600 shrink-0" />
+                    <span>Bộ 6 Chỉ Số Điện Thế</span>
                   </div>
-
-                  <p className="text-xs text-slate-600 leading-relaxed">
-                    Bật thước đo trên thanh công cụ canvas, sau đó kéo chuột giữa 2 điểm sóng để đo khoảng cách thời gian và biên độ điện thế.
-                  </p>
-
-                  <div className="bg-slate-50 p-3 rounded-lg border border-slate-200 text-xs font-mono space-y-1.5">
-                    <div className="flex justify-between">
-                      <span className="text-slate-500">Khoảng thời gian:</span>
-                      <span className="font-bold text-slate-900">{caliperState.deltaMs} ms</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-slate-500">Tần số tương ứng:</span>
-                      <span className="font-bold text-rose-600">{caliperState.deltaBpm} l/p</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-slate-500">Biên độ điện thế:</span>
-                      <span className="font-bold text-blue-600">{caliperState.deltaMv} mV</span>
-                    </div>
-                  </div>
-
                   <button
-                    id="open-axis-tool-btn"
                     onClick={() => {
                       setSettingsSubTab("caliper");
                       setActiveTab("settings");
                     }}
-                    className="w-full py-2 rounded-lg border border-slate-300 text-xs font-bold text-slate-700 hover:bg-slate-50 transition"
+                    className="text-[11px] font-bold text-slate-500 hover:text-rose-600 transition"
                   >
-                    Mở Bộ Tính Trục Alpha &amp; QTc Đầy Đủ &rarr;
+                    Tính QTc &amp; Trục &rarr;
                   </button>
                 </div>
 
-                {/* Emergency Triage Checklist */}
-                <div className="rounded-xl border border-rose-200 bg-white p-5 shadow-xs space-y-3">
-                  <div className="flex items-center gap-2 text-xs font-bold text-rose-900 uppercase">
-                    <AlertTriangle className="w-3.5 h-3.5 text-rose-600" />
-                    Xử Trí Khẩn Cấp Ca Này
+                <div className="grid grid-cols-2 gap-2.5 text-xs">
+                  <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+                    <div className="text-slate-500 text-[10px] font-medium">Nhịp Cơ Bản</div>
+                    <div className="font-bold text-slate-900 mt-1 truncate" title={currentCase.metrics.rhythmType}>
+                      {currentCase.metrics.rhythmType}
+                    </div>
                   </div>
-                  <ul className="space-y-1.5 text-xs text-slate-700">
-                    {currentCase.diagnosis.treatment.map((act, i) => (
-                      <li key={i} className="flex items-start gap-2">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
-                        <span>{act}</span>
-                      </li>
-                    ))}
-                  </ul>
+
+                  <div className="p-2.5 rounded-xl bg-rose-50/60 border border-rose-200/80">
+                    <div className="text-rose-700 text-[10px] font-medium">Tần Số Tim</div>
+                    <div className="font-mono font-black text-rose-700 text-sm mt-0.5">
+                      {currentCase.metrics.heartRate} <span className="text-[10px] font-bold">bpm</span>
+                    </div>
+                  </div>
+
+                  <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+                    <div className="text-slate-500 text-[10px] font-medium">Trục Alpha</div>
+                    <div className="font-mono font-bold text-slate-900 text-sm mt-0.5">
+                      {currentCase.metrics.alphaAngle}°
+                    </div>
+                  </div>
+
+                  <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+                    <div className="text-slate-500 text-[10px] font-medium">Khoảng PR</div>
+                    <div className="font-mono font-bold text-slate-900 text-sm mt-0.5">
+                      {currentCase.metrics.prInterval ? `${currentCase.metrics.prInterval} ms` : "160 ms"}
+                    </div>
+                  </div>
+
+                  <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+                    <div className="text-slate-500 text-[10px] font-medium">Phức Bộ QRS</div>
+                    <div className="font-mono font-bold text-slate-900 text-sm mt-0.5">
+                      {currentCase.metrics.qrsDuration} ms
+                    </div>
+                  </div>
+
+                  <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+                    <div className="text-slate-500 text-[10px] font-medium">Khoảng QTc</div>
+                    <div className="font-mono font-bold text-slate-900 text-sm mt-0.5">
+                      {currentCase.metrics.qtcInterval ? `${currentCase.metrics.qtcInterval} ms` : "420 ms"}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Live Caliper Quick Status Widget */}
+                <div className="rounded-xl border border-amber-200 bg-amber-50/50 p-3 text-xs space-y-1.5">
+                  <div className="inline-flex items-center gap-1.5 font-bold text-amber-950 text-[11px]">
+                    <Ruler className="w-3.5 h-3.5 text-amber-700 shrink-0" />
+                    <span>Thước Đo Compa (Caliper Hiện Tại)</span>
+                  </div>
+                  <div className="flex items-center justify-between font-mono text-[11px] text-amber-900 pt-0.5">
+                    <span>Thời gian: <b>{caliperState.deltaMs} ms</b></span>
+                    <span>Tần số: <b>{caliperState.deltaBpm} l/p</b></span>
+                    <span>Biên độ: <b>{caliperState.deltaMv} mV</b></span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 3: Emergency Actions & Dr. Thi Clinical Pearls (3 cols) */}
+              <div className="lg:col-span-3 rounded-2xl border border-slate-200 bg-white p-4 sm:p-5 shadow-xs space-y-3.5">
+                <div className="flex items-center justify-between border-b border-slate-100 pb-2.5">
+                  <div className="inline-flex items-center gap-1.5 text-xs font-bold text-rose-900">
+                    <AlertTriangle className="w-4 h-4 text-rose-600 shrink-0" />
+                    <span>Xử Trí Cấp Cứu</span>
+                  </div>
+                  <span className="text-[10px] font-bold text-rose-600 bg-rose-50 px-2 py-0.5 rounded-md border border-rose-200">
+                    {currentCase.severity}
+                  </span>
+                </div>
+
+                <ul className="space-y-1.5 text-xs">
+                  {currentCase.diagnosis.treatment.map((act, i) => (
+                    <li key={i} className="flex items-start gap-2 text-slate-800">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                      <span className="leading-snug">{act}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                {/* Practical Clinical Pearl */}
+                <div className="rounded-xl border border-slate-200 bg-slate-50 p-3 text-xs space-y-1.5">
+                  <div className="inline-flex items-center gap-1.5 font-bold text-slate-900 text-[11px]">
+                    <BookOpen className="w-3.5 h-3.5 text-amber-600 shrink-0" />
+                    <span>Kinh Nghiệm Thực Hành ({currentCase.learningNotes.chapterRef})</span>
+                  </div>
+                  <p className="text-slate-600 leading-snug">
+                    {currentCase.learningNotes.coreTakeaway}
+                  </p>
+                  <p className="text-amber-900 font-medium text-[11px]">
+                    ⚠️ <b>Cạm bẫy:</b> {currentCase.learningNotes.pitfallToAvoid}
+                  </p>
                 </div>
               </div>
             </div>
@@ -372,17 +397,17 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-slate-200 bg-white py-4 px-6 text-center text-xs text-slate-500">
+      <footer className="border-t border-slate-200 bg-white py-3 px-4 sm:px-6 text-center text-xs text-slate-500">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
-          <div>
-            <b>ECG MASTER</b> • Hệ Thống Phân Tích Điện Tâm Đồ 12 Chuyển Đạo &amp; Học Sâu Y Khoa
+          <div className="inline-flex items-center gap-1.5">
+            <HeartPulse className="w-3.5 h-3.5 text-rose-600 shrink-0" />
+            <span><b>ECG MASTER</b> • Hệ Thống Phân Tích Điện Tâm Đồ 12 Chuyển Đạo &amp; Học Sâu Y Khoa</span>
           </div>
           <div className="text-[11px] text-slate-400">
-            Biên soạn &amp; phát triển dựa trên tài liệu <i>&quot;Đọc Điện tâm đồ dễ hơn&quot;</i> - BS Nguyễn Tôn Kinh Thi
+            Biên soạn theo tài liệu <i>&quot;Đọc Điện tâm đồ dễ hơn&quot;</i> — BS Nguyễn Tôn Kinh Thi
           </div>
         </div>
       </footer>
     </div>
   );
 }
-

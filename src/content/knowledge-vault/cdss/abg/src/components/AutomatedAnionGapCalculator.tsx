@@ -152,12 +152,12 @@ export const AutomatedAnionGapCalculator: React.FC<AutomatedAnionGapCalculatorPr
   }
 
   return (
-    <div className="bg-white rounded-2xl border border-indigo-200 shadow-xs overflow-hidden transition-all">
+    <div className="bg-white dark:bg-slate-900 rounded-2xl border border-indigo-200 dark:border-indigo-900/60 shadow-xs overflow-hidden transition-all">
       {/* Header Bar */}
       <div className="bg-gradient-to-r from-slate-900 via-indigo-950 to-blue-900 p-4 text-white flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-        <div className="flex items-center space-x-2.5">
-          <div className="p-2 bg-indigo-500/30 rounded-xl border border-indigo-400/40">
-            <Calculator className="w-5 h-5 text-indigo-300" />
+        <div className="inline-flex items-center gap-2.5">
+          <div className="p-2 bg-indigo-500/30 rounded-xl border border-indigo-400/40 shrink-0">
+            <Calculator className="w-5 h-5 text-indigo-300 shrink-0" />
           </div>
           <div>
             <div className="flex items-center space-x-2">

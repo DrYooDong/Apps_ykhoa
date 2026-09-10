@@ -1,3 +1,8 @@
+/**
+ * CliniPortal CDSS — ECG Case Library Selector & Command Bar
+ * Path: src/content/knowledge-vault/cdss/ecg/src/components/CaseLibrarySelector.tsx
+ */
+
 import { useState } from "react";
 import { EcgCase } from "../types";
 import { CLINICAL_ECG_CASES } from "../data/ecgCases";
@@ -12,9 +17,9 @@ import {
   User,
   HeartPulse,
   Sparkles,
-  CheckCircle2,
-  X,
   Layers,
+  Stethoscope,
+  AlertTriangle,
 } from "lucide-react";
 
 interface CaseLibrarySelectorProps {
@@ -56,32 +61,32 @@ export function CaseLibrarySelector({
   });
 
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-5 sm:p-6 shadow-md space-y-5 animate-in fade-in duration-200">
+    <div className="rounded-2xl border border-slate-200 bg-white p-4 sm:p-6 shadow-md space-y-4 animate-in fade-in duration-200">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-3.5">
         <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-rose-600 text-white shadow-xs">
-            <FolderHeart className="h-5 w-5" />
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-rose-600 text-white shadow-xs shrink-0">
+            <FolderHeart className="h-5 w-5 shrink-0" />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <h3 className="text-sm font-bold text-slate-900">
-                Kho Tàng {CLINICAL_ECG_CASES.length} Tình Huống Lâm Sàng Điển Hình &amp; Kinh Nghiệm Thực Tế
+              <h3 className="text-sm sm:text-base font-bold text-slate-900">
+                Kho Tàng {CLINICAL_ECG_CASES.length} Tình Huống Lâm Sàng &amp; Phân Tích Thực Tế
               </h3>
-              <span className="text-[11px] font-semibold text-rose-600 bg-rose-50 px-2 py-0.5 rounded-full border border-rose-200">
-                Tư Liệu Giảng Dạy Mẫu
+              <span className="hidden sm:inline-block text-[10px] font-bold text-rose-700 bg-rose-50 px-2 py-0.5 rounded-full border border-rose-200 uppercase tracking-wide">
+                Chuyên Khảo Giảng Dạy
               </span>
             </div>
             <p className="text-xs text-slate-500 mt-0.5">
-              Kho lưu trữ các ca điện tâm đồ mẫu điển hình phục vụ học tập, đào tạo và đối chiếu kinh nghiệm chẩn đoán lâm sàng.
+              Bộ dữ liệu điện tâm đồ thực chứng đối chiếu trường phái BS Nguyễn Tôn Kinh Thi &amp; AHA/ESC Guidelines.
             </p>
           </div>
         </div>
 
         {/* Right action tools: Search + Close button if present */}
-        <div className="flex items-center gap-2">
-          <div className="relative w-full sm:w-64">
-            <Search className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-2.5" />
+        <div className="flex items-center gap-2 w-full sm:w-auto">
+          <div className="relative flex-1 sm:w-64">
+            <Search className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-2.5 shrink-0" />
             <input
               id="search-ecg-cases-input"
               type="text"
@@ -95,11 +100,11 @@ export function CaseLibrarySelector({
           {onClose && (
             <button
               onClick={onClose}
-              className="flex items-center gap-1 px-3 py-1.5 rounded-lg border border-slate-300 text-xs font-bold text-slate-700 hover:bg-slate-100 transition shrink-0"
+              className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-slate-300 text-xs font-bold text-slate-700 hover:bg-slate-100 transition shrink-0"
               title="Thu gọn bảng thư viện ca bệnh"
             >
-              <ChevronUp className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">Thu Gọn</span>
+              <ChevronUp className="w-3.5 h-3.5 shrink-0" />
+              <span>Thu Gọn</span>
             </button>
           )}
         </div>
@@ -115,7 +120,7 @@ export function CaseLibrarySelector({
               key={cat.id}
               id={`filter-case-${cat.id}`}
               onClick={() => setSelectedCategory(cat.id)}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
+              className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-semibold transition ${
                 isSelected
                   ? "bg-rose-600 text-white shadow-xs"
                   : "bg-slate-100 text-slate-600 hover:bg-slate-200/80 hover:text-slate-900"
@@ -135,12 +140,12 @@ export function CaseLibrarySelector({
       </div>
 
       {/* Case cards grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 pt-1">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 pt-1 max-h-[60vh] overflow-y-auto pr-1">
         {filteredCases.map((c) => {
           const isSelected = c.id === currentCaseId;
           const severityColors = {
             "Khẩn cấp": "bg-rose-50 text-rose-800 border-rose-200",
-            "Nguy kịch": "bg-red-50 text-red-900 border-red-200",
+            "Nguy kịch": "bg-red-50 text-red-900 border-red-300 font-bold",
             "Cảnh giác cao": "bg-amber-50 text-amber-900 border-amber-200",
             "Ổn định": "bg-emerald-50 text-emerald-800 border-emerald-200",
           }[c.severity];
@@ -149,18 +154,21 @@ export function CaseLibrarySelector({
             <div
               key={c.id}
               onClick={() => onSelectCase(c)}
-              className={`group flex flex-col justify-between rounded-xl border p-4 cursor-pointer transition-all ${
+              className={`group flex flex-col justify-between rounded-xl border p-3.5 cursor-pointer transition-all ${
                 isSelected
-                  ? "border-rose-600 bg-rose-50/40 shadow-xs ring-2 ring-rose-500/20"
-                  : "border-slate-200 bg-white hover:border-slate-300 hover:shadow-xs"
+                  ? "border-rose-600 bg-rose-50/50 shadow-xs ring-2 ring-rose-500/20"
+                  : "border-slate-200 bg-white hover:border-rose-300 hover:shadow-xs"
               }`}
             >
-              <div className="space-y-2.5">
+              <div className="space-y-2">
                 <div className="flex items-start justify-between gap-2">
-                  <span className={`px-2 py-0.5 rounded-md text-[10px] font-bold border ${severityColors}`}>
-                    {c.severity}
+                  <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] border ${severityColors}`}>
+                    {(c.severity === "Nguy kịch" || c.severity === "Khẩn cấp") && (
+                      <span className="cardiac-pulse-dot shrink-0" style={{ width: 6, height: 6 }} />
+                    )}
+                    <span>{c.severity}</span>
                   </span>
-                  <span className="text-[11px] font-mono text-slate-500 font-medium">
+                  <span className="text-[11px] font-mono text-slate-500 font-semibold">
                     HR {c.metrics.heartRate} bpm
                   </span>
                 </div>
@@ -169,16 +177,16 @@ export function CaseLibrarySelector({
                   {c.title}
                 </h4>
 
-                <div className="flex items-center gap-1.5 text-[11px] text-slate-600">
-                  <span className="font-semibold text-slate-700 bg-slate-100 px-1.5 py-0.5 rounded text-[10px]">
+                <div className="flex items-center gap-1 text-[11px] text-slate-600">
+                  <span className="font-semibold text-slate-700 bg-slate-100 px-1.5 py-0.5 rounded text-[10px] shrink-0">
                     Bệnh cảnh:
                   </span>
-                  <span>{c.patient.gender} {c.patient.age} tuổi</span>
+                  <span className="shrink-0">{c.patient.gender} {c.patient.age}T</span>
                   <span className="text-slate-400">&bull;</span>
                   <span className="truncate">{c.patient.chiefComplaint}</span>
                 </div>
 
-                <div className="bg-slate-50 p-2.5 rounded-lg border border-slate-200/80 text-[11px] space-y-1">
+                <div className="bg-slate-50 p-2 rounded-lg border border-slate-200/80 text-[11px] space-y-0.5">
                   <div className="font-bold text-slate-900 truncate">
                     {c.diagnosis.primary}
                   </div>
@@ -188,12 +196,13 @@ export function CaseLibrarySelector({
                 </div>
               </div>
 
-              <div className="mt-3.5 flex items-center justify-between border-t border-slate-100 pt-2.5 text-[11px]">
-                <span className="font-mono text-indigo-700 font-semibold flex items-center gap-1">
-                  <Sparkles className="w-3 h-3 text-indigo-500" /> AI {c.diagnosis.confidence.primary}%
+              <div className="mt-2.5 flex items-center justify-between border-t border-slate-100 pt-2 text-[11px]">
+                <span className="font-mono text-indigo-700 font-semibold inline-flex items-center gap-1">
+                  <Sparkles className="w-3 h-3 text-indigo-500 shrink-0" />
+                  <span>AI {c.diagnosis.confidence.primary}%</span>
                 </span>
-                <span className="font-semibold text-rose-600 flex items-center gap-0.5 group-hover:translate-x-0.5 transition">
-                  {isSelected ? "Đang Chọn" : "Nạp ECG &rarr;"}
+                <span className="font-bold text-rose-600 inline-flex items-center gap-0.5 group-hover:translate-x-0.5 transition">
+                  {isSelected ? "Đang Khảo Sát" : "Nạp ECG &rarr;"}
                 </span>
               </div>
             </div>
@@ -234,14 +243,14 @@ export function ClinicalCaseBar({
 
   const severityBadgeClass = {
     "Khẩn cấp": "bg-rose-100 text-rose-800 border-rose-300",
-    "Nguy kịch": "bg-red-100 text-red-900 border-red-400 font-black",
+    "Nguy kịch": "bg-red-100 text-red-900 border-red-400 font-bold",
     "Cảnh giác cao": "bg-amber-100 text-amber-900 border-amber-300",
     "Ổn định": "bg-emerald-100 text-emerald-800 border-emerald-300",
   }[currentCase.severity] || "bg-slate-100 text-slate-800 border-slate-300";
 
   return (
-    <section className="border-b border-slate-200 bg-white px-4 sm:px-6 lg:px-8 py-2.5 shadow-2xs">
-      <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3 text-xs">
+    <section className="border-b border-slate-200 bg-white px-3 sm:px-6 lg:px-8 py-2 shadow-2xs">
+      <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2.5 text-xs">
         {/* Left: Teaching Case & Vignette summary */}
         <div className="flex flex-wrap items-center gap-2">
           <div className="inline-flex items-center gap-1.5 font-medium text-slate-800 bg-slate-100/90 border border-slate-200 px-2.5 py-1 rounded-lg">
@@ -273,7 +282,7 @@ export function ClinicalCaseBar({
               title="Chuyển sang ca trước"
               className="p-1 rounded text-slate-600 hover:bg-white hover:text-slate-900 transition"
             >
-              <ChevronLeft className="w-3.5 h-3.5" />
+              <ChevronLeft className="w-3.5 h-3.5 shrink-0" />
             </button>
 
             {/* Smart Case Dropdown Picker */}
@@ -284,7 +293,7 @@ export function ClinicalCaseBar({
                 const found = CLINICAL_ECG_CASES.find((c) => c.id === e.target.value);
                 if (found) onSelectCase(found);
               }}
-              className="bg-transparent px-2 py-0.5 text-xs font-bold text-slate-800 focus:outline-hidden cursor-pointer max-w-[200px] sm:max-w-[280px] truncate"
+              className="bg-transparent px-2 py-0.5 text-xs font-bold text-slate-800 focus:outline-hidden cursor-pointer max-w-[200px] sm:max-w-[260px] truncate"
               title={`Chọn trực tiếp một trong ${CLINICAL_ECG_CASES.length} ca lâm sàng`}
             >
               {CLINICAL_ECG_CASES.map((c, i) => (
@@ -300,20 +309,23 @@ export function ClinicalCaseBar({
               title="Chuyển sang ca kế tiếp"
               className="p-1 rounded text-slate-600 hover:bg-white hover:text-slate-900 transition"
             >
-              <ChevronRight className="w-3.5 h-3.5" />
+              <ChevronRight className="w-3.5 h-3.5 shrink-0" />
             </button>
           </div>
 
           {/* Severity Tag */}
-          <span className={`px-2 py-0.5 rounded-md text-[11px] font-bold border ${severityBadgeClass}`}>
-            {currentCase.severity}
+          <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[11px] font-bold border ${severityBadgeClass}`}>
+            {(currentCase.severity === "Nguy kịch" || currentCase.severity === "Khẩn cấp") && (
+              <span className="cardiac-pulse-dot shrink-0" style={{ width: 6, height: 6 }} />
+            )}
+            <span>{currentCase.severity}</span>
           </span>
         </div>
 
         {/* Right: Heart rate & Toggle Full Library Button */}
         <div className="flex items-center gap-2">
           <div className="inline-flex items-center gap-1 bg-rose-50 border border-rose-200 px-2.5 py-1 rounded-lg font-mono text-rose-900">
-            <HeartPulse className="w-3.5 h-3.5 text-rose-600" />
+            <HeartPulse className="w-3.5 h-3.5 text-rose-600 shrink-0" />
             <span className="font-bold">{currentCase.metrics.heartRate}</span>
             <span className="text-[10px] text-rose-600">bpm</span>
           </div>
@@ -321,19 +333,19 @@ export function ClinicalCaseBar({
           <button
             id="toggle-case-library-btn"
             onClick={onToggleLibrary}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold border transition ${
+            className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold border transition ${
               isLibraryOpen
                 ? "bg-rose-600 border-rose-700 text-white shadow-xs"
                 : "bg-slate-50 border-slate-300 text-slate-700 hover:bg-slate-100 shadow-2xs"
             }`}
             title={`Mở bảng tìm kiếm và phân loại ${CLINICAL_ECG_CASES.length} ca cấp cứu tim mạch`}
           >
-            <Layers className="w-3.5 h-3.5 text-rose-500" />
+            <Layers className="w-3.5 h-3.5 text-rose-500 shrink-0" />
             <span>Thư Viện ({CLINICAL_ECG_CASES.length} Ca)</span>
             {isLibraryOpen ? (
-              <ChevronUp className="w-3.5 h-3.5" />
+              <ChevronUp className="w-3.5 h-3.5 shrink-0" />
             ) : (
-              <ChevronDown className="w-3.5 h-3.5" />
+              <ChevronDown className="w-3.5 h-3.5 shrink-0" />
             )}
           </button>
         </div>
@@ -342,5 +354,4 @@ export function ClinicalCaseBar({
   );
 }
 
-// Alias for backwards compatibility if needed
 export const CaseQuickBar = ClinicalCaseBar;

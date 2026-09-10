@@ -3,6 +3,7 @@ import {
   BookOpen,
   Database,
   HelpCircle,
+  Home,
   Stethoscope,
   Activity,
   Layers,
@@ -136,14 +137,14 @@ export const Header: React.FC<HeaderProps> = ({
           </button>
         </div>
 
-        {/* Cầu nối sang Cơ sở Y khoa CliniPortal */}
+        {/* Nút về Trang chủ chính CliniPortal */}
         <a
-          href="../../../index.html#/basic-medical"
-          className="hidden 2xl:flex items-center gap-1.5 px-2.5 py-1 bg-slate-50 hover:bg-slate-100 text-slate-700 border border-slate-200 rounded text-xs font-semibold transition-colors no-underline shadow-2xs"
-          title="Mở phân hệ Cơ sở Y khoa"
+          href="../../../index.html#/"
+          className="hidden md:flex items-center gap-1.5 px-2.5 py-1 bg-slate-50 hover:bg-slate-100 text-slate-700 border border-slate-200 rounded text-xs font-semibold transition-colors no-underline shadow-2xs"
+          title="Về Trang chủ chính CliniPortal"
         >
-          <Database className="w-3.5 h-3.5 text-purple-600" />
-          <span>Cơ sở Y khoa</span>
+          <Home className="w-3.5 h-3.5 text-blue-600" />
+          <span>Trang chủ</span>
         </a>
 
         <button
