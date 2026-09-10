@@ -3,7 +3,7 @@
  * Kết nối ứng dụng MedLens với 2.400+ bài viết Y học chứng cứ (EBM) từ Knowledge Vault
  */
 
-import rawCatalog from '../data/vault-catalog.json';
+import rawCatalog from '@vault/data/vault-catalog.json';
 import {
   VaultArticle,
   VaultKhoSummary,

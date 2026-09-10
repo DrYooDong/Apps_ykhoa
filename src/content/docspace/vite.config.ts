@@ -24,6 +24,7 @@ export default defineConfig(() => {
     resolve: {
       alias: {
         '@': path.resolve(__dirname, './src'),
+        '@vault': path.resolve(__dirname, '../knowledge-vault'),
       },
     },
     server: {

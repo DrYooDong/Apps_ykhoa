@@ -3,7 +3,6 @@ import { Download, Loader2, Printer, ShieldAlert, X } from 'lucide-react';
 import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
 import { AnalysisResult, ClinicalFormState, KnowledgeBase, LabsState, VitalsState } from '../types.ts';
-import { useAuth } from '../context/AuthContext.tsx';
 import { calculateClinicalRiskScore, ClinicalRiskScore } from '../lib/riskScore.ts';
 
 interface PrintReportModalProps {
@@ -27,7 +26,6 @@ export const PrintReportModal: React.FC<PrintReportModalProps> = ({
   kb,
   summaryText,
 }) => {
-  const { user } = useAuth();
   const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
 
   // Compute Clinical Risk Score for the official report
@@ -391,7 +389,7 @@ export const PrintReportModal: React.FC<PrintReportModalProps> = ({
               <div className="text-[11px] text-neutral-400 italic mt-0.5">(Ký, đóng dấu và ghi rõ họ tên)</div>
               <div className="h-16"></div>
               <div className="font-bold text-xs text-neutral-900">
-                {user?.name || 'BS.CKI Nguyễn Văn Minh'}
+                Bác sĩ điều trị
               </div>
             </div>
           </div>

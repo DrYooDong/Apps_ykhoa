@@ -2,7 +2,8 @@ import React from 'react';
 import { Database, FileCheck, Download, Upload, RotateCcw } from 'lucide-react';
 
 interface DataActionsBarProps {
-  onSaveToPostgres: () => void;
+  onPrintReport?: () => void;
+  onSaveToPostgres?: () => void;
   onExportCase: () => void;
   onImportCase: (file: File) => void;
   onReset?: () => void;
@@ -10,7 +11,7 @@ interface DataActionsBarProps {
 }
 
 export const DataActionsBar: React.FC<DataActionsBarProps> = ({
-  onSaveToPostgres,
+  onPrintReport,
   onExportCase,
   onImportCase,
   onReset,
@@ -24,7 +25,7 @@ export const DataActionsBar: React.FC<DataActionsBarProps> = ({
       <div className="flex items-center justify-between">
         <h3 className="font-display font-bold text-xs sm:text-sm text-slate-800 flex items-center gap-1.5">
           <Database className="w-4 h-4 text-blue-600" />
-          <span>Quản lý hồ sơ bệnh án</span>
+          <span>Dữ kiện bệnh án</span>
         </h3>
         {onReset && (
           <button
@@ -40,16 +41,17 @@ export const DataActionsBar: React.FC<DataActionsBarProps> = ({
       </div>
 
       <div className="flex flex-col gap-2">
-        {/* Primary Save Action */}
-        <button
-          type="button"
-          id="btn-save-postgres-quick"
-          onClick={onSaveToPostgres}
-          className="w-full flex items-center justify-center gap-1.5 py-2 px-3 bg-blue-600 text-white text-xs font-semibold rounded-md hover:bg-blue-700 transition-colors cursor-pointer shadow-xs"
-        >
-          <FileCheck className="w-3.5 h-3.5" />
-          <span>Lưu vào CSDL PostgreSQL</span>
-        </button>
+        {onPrintReport && (
+          <button
+            type="button"
+            id="btn-print-report-quick"
+            onClick={onPrintReport}
+            className="w-full flex items-center justify-center gap-1.5 py-2 px-3 bg-blue-600 text-white text-xs font-semibold rounded-md hover:bg-blue-700 transition-colors cursor-pointer shadow-xs"
+          >
+            <FileCheck className="w-3.5 h-3.5" />
+            <span>In / Xuất Báo Cáo Lâm Sàng</span>
+          </button>
+        )}
 
         {/* Secondary Import/Export Action Group */}
         <div className="grid grid-cols-2 gap-2">

@@ -18,7 +18,10 @@
     "resolveJsonModule": true,
     "paths": {
       "@/*": [
-        "./*"
+        "./src/*"
+      ],
+      "@vault/*": [
+        "../knowledge-vault/*"
       ]
     },
     "allowImportingTsExtensions": true,
@@ -26,7 +29,8 @@
   },
   "include": [
     "src/**/*",
-    "public/**/*"
+    "public/**/*",
+    "../knowledge-vault/data/*.json"
   ],
   "exclude": [
     "dist",

@@ -1,14 +1,11 @@
 import React, { useMemo, useState } from 'react';
-import { AuthProvider } from './context/AuthContext.tsx';
-import { Header } from './components/Header.tsx';
-import { StepNav, TabId } from './components/StepNav.tsx';
+import { Header, MainViewMode } from './components/Header.tsx';
+import { StepNav, ClinicalStepId } from './components/StepNav.tsx';
 import { SoapExperienceBoard } from './components/SoapExperienceBoard.tsx';
 import { Step1DataIngestion } from './components/Step1DataIngestion.tsx';
 import { Step2Analysis } from './components/Step2Analysis.tsx';
 import { Step3Protocol } from './components/Step3Protocol.tsx';
 import { Step4KnowledgeBase } from './components/Step4KnowledgeBase.tsx';
-import { PatientRecordsModal } from './components/PatientRecordsModal.tsx';
-import { AuthModal } from './components/AuthModal.tsx';
 import { AboutModal } from './components/AboutModal.tsx';
 import { PrintReportModal } from './components/PrintReportModal.tsx';
 import { VaultDrawer } from './components/VaultDrawer.tsx';
@@ -19,11 +16,10 @@ import {
   GuidelineStudy,
   KnowledgeBase,
   LabsState,
-  MedicalRecord,
+  SoapClinicalExperience,
   TrieuChung,
   VitalsState,
 } from './types.ts';
-import { GUIDELINE_STUDIES } from './lib/guidelineBridge.ts';
 import {
   analyzeClinicalCase,
   computeAllDerived,
@@ -62,8 +58,9 @@ const initialLabs: LabsState = {
 
 export function MainApp() {
   const [kb, setKb] = useState<KnowledgeBase>(DEFAULT_KNOWLEDGE_BASE);
-  const [currentTab, setCurrentTab] = useState<TabId>('soap');
-  const [completedSteps, setCompletedSteps] = useState<Set<TabId>>(new Set(['soap']));
+  const [activeMode, setActiveMode] = useState<MainViewMode>('clinical');
+  const [clinicalStep, setClinicalStep] = useState<ClinicalStepId>('t1');
+  const [completedSteps, setCompletedSteps] = useState<Set<ClinicalStepId>>(new Set(['t1']));
 
   // Clinical input states
   const [form, setForm] = useState<ClinicalFormState>(initialForm);
@@ -78,8 +75,6 @@ export function MainApp() {
   const [selectedDiseaseId, setSelectedDiseaseId] = useState<string | null>('nmct_stemi');
 
   // Modals state
-  const [isRecordsOpen, setIsRecordsOpen] = useState(false);
-  const [isAuthOpen, setIsAuthOpen] = useState(false);
   const [isAboutOpen, setIsAboutOpen] = useState(false);
   const [isPrintOpen, setIsPrintOpen] = useState(false);
   const [isVaultDrawerOpen, setIsVaultDrawerOpen] = useState(false);
@@ -92,199 +87,111 @@ export function MainApp() {
   // Active Guideline integration banner state
   const [activeGuidelineBanner, setActiveGuidelineBanner] = useState<GuidelineStudy | null>(null);
 
+  // User Ingested SOAP Cases
+  const [userSoapCases, setUserSoapCases] = useState<SoapClinicalExperience[]>([]);
+  const [selectedSoapCaseId, setSelectedSoapCaseId] = useState<string>('');
+
+  const handleAddUserSoapCase = (newCase: SoapClinicalExperience) => {
+    setUserSoapCases((prev) => [newCase, ...prev]);
+    setSelectedSoapCaseId(newCase.id);
+  };
+
+  const handleNavigateToSoapCase = (caseId: string) => {
+    setSelectedSoapCaseId(caseId);
+    setActiveMode('soap');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const handleOpenCdss = (tool: CdssToolSlug = 'hub') => {
     setActiveCdssTool(tool);
     setIsCdssOpen(true);
   };
 
   const handleOpenVaultDrawer = (diseaseName?: string, query?: string, khoCode?: string) => {
-    if (khoCode === 'CDSS') {
-      let tool: CdssToolSlug = 'hub';
-      const q = (query || diseaseName || '').toLowerCase();
-      if (q.includes('dengue') || q.includes('xuất huyết')) tool = 'dengue';
-      else if (q.includes('ecg') || q.includes('điện tim') || q.includes('tim')) tool = 'ecg';
-      else if (q.includes('khí máu') || q.includes('abg')) tool = 'abg';
-      else if (q.includes('xquang') || q.includes('x-quang') || q.includes('xray') || q.includes('radai')) tool = 'xray';
-      else if (q.includes('gan') || q.includes('hepa') || q.includes('men gan') || q.includes('xơ gan') || q.includes('viêm gan')) tool = 'hepa';
-      else if (q.includes('thần kinh') || q.includes('neuro') || q.includes('não') || q.includes('liệt') || q.includes('đột quỵ')) tool = 'neuro';
-      handleOpenCdss(tool);
-      return;
-    }
     setVaultDisease(diseaseName || '');
     setVaultQuery(query || '');
     setVaultKho(khoCode || 'ALL');
     setIsVaultDrawerOpen(true);
   };
 
-  // Deep linking: Nhận diện tham số URL ?from_guideline=... khi chuyển tiếp từ Chuyên trang EBM
-  React.useEffect(() => {
-    try {
-      const urlParams = new URLSearchParams(window.location.search);
-      const hashParams = window.location.hash.includes('?')
-        ? new URLSearchParams(window.location.hash.split('?')[1])
-        : null;
-      const guidelineParam =
-        urlParams.get('from_guideline') ||
-        urlParams.get('guideline') ||
-        hashParams?.get('from_guideline');
-
-      if (guidelineParam) {
-        const normParam = guidelineParam.toLowerCase().trim();
-        const matched =
-          GUIDELINE_STUDIES.find(
-            (s) =>
-              s.id === guidelineParam ||
-              s.id.toLowerCase().includes(normParam) ||
-              normParam.includes(s.id.toLowerCase()) ||
-              (s.file && s.file.toLowerCase().includes(normParam))
-          ) || GUIDELINE_STUDIES.find((s) => s.title.toLowerCase().includes(normParam));
-
-        if (matched) {
-          setActiveGuidelineBanner(matched);
-
-          // Điền lý do khám / chẩn đoán sơ bộ theo khuyến cáo
-          setForm((prev) => ({
-            ...prev,
-            lyDo: prev.lyDo || `Khám và điều trị theo khuyến cáo ${matched.organization} (${matched.year})`,
-            text: {
-              ...prev.text,
-              tc: prev.text.tc
-                ? `${prev.text.tc}\n[EBM Guideline]: Áp dụng phác đồ ${matched.title}`
-                : `[EBM Guideline]: Áp dụng phác đồ ${matched.title}`,
-            },
-          }));
-
-          // Tự động chọn bệnh tương ứng trong danh mục nếu khớp mã ICD-10
-          const matchedDisease = kb.benh.find((b) => {
-            const studyIcds = (matched.icd10Codes || []).map((c) => c.toUpperCase().trim());
-            const bIcds = b.icd.split(/[\/,;]/).map((c) => c.toUpperCase().trim());
-            return bIcds.some((bi) =>
-              studyIcds.some((si) => si.startsWith(bi) || bi.startsWith(si))
-            );
-          });
-
-          if (matchedDisease) {
-            setSelectedDiseaseId(matchedDisease.id);
-          }
-        }
-      }
-    } catch {
-      // Bỏ qua nếu môi trường không có window
-    }
-  }, [kb.benh]);
-
-  // Derived auto-symptoms from vitals and labs
-  const { derived, vitalsList: derivedVitalsList, labsList: derivedLabsList } = useMemo(() => {
+  // Compute derived symptoms from Vitals, Labs, and Free texts
+  const derivedInfo = useMemo(() => {
     return computeAllDerived(kb, vitals, labs, form.gioiTinh, selected);
   }, [kb, vitals, labs, form.gioiTinh, selected]);
 
-  // Real-time Deduction Engine calculation
+  const derived = derivedInfo.derived;
+  const derivedVitalsList = derivedInfo.vitalsList;
+  const derivedLabsList = derivedInfo.labsList;
+
+  // Live Deduction Engine Analysis
   const results = useMemo(() => {
-    return analyzeClinicalCase(kb, form, selected, derived, negated);
+    return analyzeClinicalCase(
+      kb,
+      form,
+      selected,
+      derived,
+      negated
+    );
   }, [kb, form, selected, derived, negated]);
 
-  // Dynamic clinical summary text (Định dạng chuẩn tóm tắt bệnh án y khoa EMR)
+  // Summary Text Generator
   const summaryText = useMemo(() => {
-    const lines: string[] = [];
-    const ageStr = form.tuoi ? `${form.tuoi} tuổi` : '';
-    const genderStr = form.gioiTinh === 'nam' ? 'Nam' : form.gioiTinh === 'nu' ? 'Nữ' : 'chưa rõ giới tính';
-    const jobStr = form.ngheNghiep ? `, nghề nghiệp ${form.ngheNghiep}` : '';
-    const reasonStr = form.lyDo ? form.lyDo : 'Đau ngực dữ dội';
+    const parts: string[] = [];
+    parts.push(
+      `Bệnh nhân ${form.gioiTinh === 'nam' ? 'Nam' : 'Nữ'}, ${form.tuoi || '--'} tuổi, nghề nghiệp: ${
+        form.ngheNghiep || 'Chưa ghi nhận'
+      }.`
+    );
+    if (form.lyDo) parts.push(`Lý do vào viện: ${form.lyDo}.`);
 
-    // 1. Hành chính & Lý do vào viện
-    lines.push(`1. HÀNH CHÍNH & LÝ DO VÀO VIỆN:`);
-    lines.push(`• Bệnh nhân: ${genderStr}${ageStr ? `, ${ageStr}` : ''}${jobStr}`);
-    lines.push(`• Vào viện vì: ${reasonStr}`);
+    const vitalsPart: string[] = [];
+    if (vitals.vNhiet) vitalsPart.push(`T: ${vitals.vNhiet}°C`);
+    if (vitals.vMach) vitalsPart.push(`M: ${vitals.vMach} l/p`);
+    if (vitals.vHATT && vitals.vHATTr) vitalsPart.push(`HA: ${vitals.vHATT}/${vitals.vHATTr} mmHg`);
+    if (vitals.vTho) vitalsPart.push(`NT: ${vitals.vTho} l/p`);
+    if (vitals.vSpo2) vitalsPart.push(`SpO2: ${vitals.vSpo2}%`);
+    if (vitalsPart.length > 0) parts.push(`Sinh hiệu: ${vitalsPart.join(', ')}.`);
 
-    // Map vocabulary with fallback & aliases
-    const vocabMap = new Map<string, string>();
-    kb.trieuChung.forEach((t) => vocabMap.set(t.id, t.ten));
-    vocabMap.set('dau_nguc_sau_xuong_uc', 'Đau thắt ngực sau xương ức');
-    vocabMap.set('tang_huyet_ap', 'Tăng huyết áp');
-    vocabMap.set('thc_tha', 'Tăng huyết áp');
-    vocabMap.set('troponin', 'Troponin tăng');
+    const selNames: string[] = [];
+    selected.forEach((id) => {
+      const tc = kb.trieuChung.find((t) => t.id === id);
+      if (tc) selNames.push(tc.ten);
+    });
+    if (selNames.length > 0) parts.push(`Triệu chứng ghi nhận (+): ${selNames.join(', ')}.`);
 
-    const resolveSymptomName = (id: string) => {
-      if (vocabMap.has(id)) return vocabMap.get(id)!;
-      return id.replace(/_/g, ' ');
-    };
+    const negNames: string[] = [];
+    negated.forEach((id) => {
+      const tc = kb.trieuChung.find((t) => t.id === id);
+      if (tc) negNames.push(tc.ten);
+    });
+    if (negNames.length > 0) parts.push(`Triệu chứng loại trừ (-): ${negNames.join(', ')}.`);
 
-    // 2. Dấu chứng dương tính có giá trị
-    const posNames = [...selected, ...derived].map(resolveSymptomName);
-    if (posNames.length > 0) {
-      lines.push(`\n2. DẤU CHỨNG DƯƠNG TÍNH CÓ GIÁ TRỊ:`);
-      lines.push(`• Ghi nhận: ${posNames.join(', ')}`);
-    }
-
-    // 3. Dữ kiện âm tính có giá trị loại trừ
-    if (negated.size > 0) {
-      const negNames = [...negated].map(resolveSymptomName);
-      lines.push(`\n3. DỮ KIỆN ÂM TÍNH (LOẠI TRỪ):`);
-      lines.push(`• Không ghi nhận: ${negNames.join(', ')}`);
-    }
-
-    // 4. Sinh hiệu
-    const vitalsSummary: string[] = [];
-    if (vitals.vNhiet) vitalsSummary.push(`T: ${vitals.vNhiet}°C`);
-    if (vitals.vMach) vitalsSummary.push(`Mạch: ${vitals.vMach} l/p`);
-    if (vitals.vHATT && vitals.vHATTr) vitalsSummary.push(`HA: ${vitals.vHATT}/${vitals.vHATTr} mmHg`);
-    if (vitals.vTho) vitalsSummary.push(`NT: ${vitals.vTho} l/p`);
-    if (vitals.vSpo2) vitalsSummary.push(`SpO₂: ${vitals.vSpo2}%`);
-
-    if (vitalsSummary.length > 0) {
-      lines.push(`\n4. DẤU HIỆU SINH TỒN:`);
-      lines.push(`• ${vitalsSummary.join(' | ')}`);
-    }
-
-    // 5. Định hướng chẩn đoán sơ bộ
     if (results.length > 0) {
-      lines.push(`\n5. HƯỚNG CHẨN ĐOÁN SƠ BỘ:`);
-      lines.push(
-        `• Nghĩ nhiều đến: ${results[0].b.ten} [Mã ICD: ${results[0].b.icd}] — Độ phù hợp: ${results[0].pct}%`
+      const top = results[0];
+      parts.push(
+        `Chẩn đoán sơ bộ hướng tới nhiều nhất: ${top.b.ten} (ICD-10: ${top.b.icd}) với độ phù hợp ${top.pct}%.`
       );
     }
-
-    return lines.join('\n');
-  }, [form, selected, derived, negated, vitals, results, kb]);
+    return parts.join(' ');
+  }, [form, vitals, selected, negated, results, kb.trieuChung]);
 
   // Handlers
   const handleRunAnalysis = () => {
-    setCompletedSteps((prev) => new Set(prev).add('t1').add('t2'));
-    if (results.length > 0) {
-      setSelectedDiseaseId(results[0].b.id);
-    }
-    setCurrentTab('t2');
+    setCompletedSteps((prev) => new Set(prev).add('t2'));
+    setClinicalStep('t2');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleReset = () => {
-    if (!confirm('Bạn có chắc muốn xóa tất cả dữ liệu bệnh án hiện tại để nhập ca mới?')) return;
-    setForm({
-      gioiTinh: 'nam',
-      tuoi: '',
-      ngheNghiep: '',
-      lyDo: '',
-      text: { cn: '', tt: '', tc: '', cls: '' },
-    });
-    setVitals({
-      vNhiet: '',
-      vMach: '',
-      vHATT: '',
-      vHATTr: '',
-      vTho: '',
-      vSpo2: '',
-    });
-    setLabs({
-      lBC: '',
-      lTC: '',
-      lHct: '',
-      lGlu: '',
-      lTrop: '',
-    });
-    setSelected(new Set());
-    setNegated(new Set());
-    setCompletedSteps(new Set());
-    setCurrentTab('t1');
+    if (window.confirm('Bạn có chắc chắn muốn xóa toàn bộ dữ kiện đang nhập?')) {
+      setForm(initialForm);
+      setVitals(initialVitals);
+      setLabs(initialLabs);
+      setSelected(new Set());
+      setNegated(new Set());
+      setCompletedSteps(new Set(['t1']));
+      setClinicalStep('t1');
+    }
   };
 
   const handleLoadSample = (sample: SampleCase) => {
@@ -295,33 +202,41 @@ export function MainApp() {
       lyDo: sample.form.lyDo,
       text: { ...sample.form.text },
     });
-    if (sample.vitals) setVitals({ ...initialVitals, ...sample.vitals });
-    if (sample.labs) setLabs({ ...initialLabs, ...sample.labs });
-    if (sample.selected) setSelected(new Set(sample.selected));
-    else if (sample.sel) setSelected(new Set(sample.sel));
-    if (sample.negated) setNegated(new Set(sample.negated));
-    else setNegated(new Set());
+    if (sample.vitals) {
+      setVitals((prev) => ({ ...prev, ...sample.vitals }));
+    }
+    if (sample.labs) {
+      setLabs((prev) => ({ ...prev, ...sample.labs }));
+    }
+    setSelected(new Set(sample.sel));
+    setNegated(new Set());
     setCompletedSteps(new Set(['t1', 't2']));
+    setClinicalStep('t2');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleExportCase = () => {
-    const caseData = {
-      version: 'medlens-1.0',
-      timestamp: new Date().toISOString(),
+    const data = {
       form,
       vitals,
       labs,
       selected: Array.from(selected),
       negated: Array.from(negated),
-      summaryText,
+      results: results.slice(0, 5).map((r) => ({
+        benhId: r.b.id,
+        ten: r.b.ten,
+        icd: r.b.icd,
+        pct: r.pct,
+      })),
+      timestamp: new Date().toISOString(),
     };
-    const blob = new Blob([JSON.stringify(caseData, null, 2)], {
+    const blob = new Blob([JSON.stringify(data, null, 2)], {
       type: 'application/json',
     });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `medlens-case-${new Date().toISOString().slice(0, 10)}.json`;
+    a.download = `benh-an-${normalizeText(form.lyDo || 'medlens')}-${new Date().toISOString().slice(0, 10)}.json`;
     a.click();
     URL.revokeObjectURL(url);
   };
@@ -337,8 +252,9 @@ export function MainApp() {
         if (data.selected) setSelected(new Set(data.selected));
         if (data.negated) setNegated(new Set(data.negated));
         setCompletedSteps(new Set(['t1', 't2']));
+        setClinicalStep('t2');
       } catch (err) {
-        alert('File không hợp lệ: ' + (err as Error).message);
+        alert('Lỗi đọc file JSON: ' + (err as Error).message);
       }
     };
     reader.readAsText(file);
@@ -377,26 +293,8 @@ export function MainApp() {
   const handleGoToProtocol = (diseaseId: string) => {
     setSelectedDiseaseId(diseaseId);
     setCompletedSteps((prev) => new Set(prev).add('t3'));
-    setCurrentTab('t3');
+    setClinicalStep('t3');
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const handleLoadRecordToState = (record: MedicalRecord) => {
-    setForm((prev) => ({
-      ...prev,
-      tuoi: record.age ? String(record.age) : '',
-      gioiTinh: (record.gender || 'nam') as any,
-      lyDo: record.admissionReason || prev.lyDo,
-      text: (record.freeTexts as any) || prev.text,
-    }));
-    if (record.vitals) setVitals((prev) => ({ ...prev, ...(record.vitals as any) }));
-    if (record.labs) setLabs((prev) => ({ ...prev, ...(record.labs as any) }));
-    if (record.selectedSymptoms) setSelected(new Set(record.selectedSymptoms));
-    if (record.negatedSymptoms) setNegated(new Set(record.negatedSymptoms));
-    if (record.primaryDiagnosis?.id) setSelectedDiseaseId(record.primaryDiagnosis.id);
-
-    setCompletedSteps(new Set(['t1', 't2']));
-    setCurrentTab('t2');
   };
 
   return (
@@ -404,23 +302,23 @@ export function MainApp() {
       {/* App Header */}
       <Header
         kb={kb}
-        onOpenKB={() => setCurrentTab('t4')}
+        activeMode={activeMode}
+        onChangeMode={setActiveMode}
         onOpenVault={(khoCode, query) => handleOpenVaultDrawer(undefined, query, khoCode)}
-        onOpenRecords={() => setIsRecordsOpen(true)}
-        onOpenAuth={() => setIsAuthOpen(true)}
         onOpenAbout={() => setIsAboutOpen(true)}
-        onExportKB={handleExportKB}
       />
 
-      {/* 4-Step Navigation */}
-      <StepNav
-        currentTab={currentTab}
-        completedSteps={completedSteps}
-        onSelectTab={setCurrentTab}
-      />
+      {/* 3-Step Clinical Navigation (chỉ hiện khi đang ở Chu trình lâm sàng) */}
+      {activeMode === 'clinical' && (
+        <StepNav
+          currentStep={clinicalStep}
+          completedSteps={completedSteps}
+          onSelectStep={setClinicalStep}
+        />
+      )}
 
       {/* Banner thông báo đang nạp Guideline từ EBM */}
-      {activeGuidelineBanner && (
+      {activeGuidelineBanner && activeMode === 'clinical' && (
         <div className="bg-gradient-to-r from-emerald-600 to-teal-700 text-white px-4 sm:px-6 py-2.5 shadow-sm border-b border-emerald-500 flex items-center justify-between gap-3 text-xs sm:text-sm">
           <div className="flex items-center gap-2.5 overflow-hidden">
             <span className="px-2 py-0.5 rounded bg-emerald-800/80 font-bold text-[11px] uppercase tracking-wide shrink-0 border border-emerald-400/40">
@@ -429,11 +327,6 @@ export function MainApp() {
             <div className="truncate">
               <span className="font-semibold text-emerald-100">Đang phân tích ca theo Guideline:</span>{' '}
               <span className="font-bold text-white">{activeGuidelineBanner.title}</span>
-              {(activeGuidelineBanner.keyResults || activeGuidelineBanner.summary) && (
-                <span className="hidden md:inline ml-2 text-emerald-100/80 italic text-xs">
-                  — "{(activeGuidelineBanner.keyResults || activeGuidelineBanner.summary).slice(0, 90)}..."
-                </span>
-              )}
             </div>
           </div>
           <div className="flex items-center gap-2 shrink-0">
@@ -448,9 +341,9 @@ export function MainApp() {
             <button
               onClick={() => {
                 if (selectedDiseaseId) {
-                  setCurrentTab('t3');
+                  setClinicalStep('t3');
                 } else {
-                  setCurrentTab('t1');
+                  setClinicalStep('t1');
                 }
               }}
               className="px-2.5 py-1 rounded bg-white text-emerald-800 font-bold text-xs hover:bg-emerald-50 transition-colors shadow-xs cursor-pointer"
@@ -462,9 +355,7 @@ export function MainApp() {
               className="p-1 text-emerald-200 hover:text-white rounded hover:bg-emerald-800/50 transition-colors cursor-pointer"
               title="Đóng thông báo"
             >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-              </svg>
+              ✕
             </button>
           </div>
         </div>
@@ -472,88 +363,105 @@ export function MainApp() {
 
       {/* Main View Area */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-5">
-        {currentTab === 'soap' && (
+        {/* PHÂN HỆ 1: CHU TRÌNH LÂM SÀNG 3 BƯỚC */}
+        {activeMode === 'clinical' && (
+          <>
+            {clinicalStep === 't1' && (
+              <Step1DataIngestion
+                kb={kb}
+                form={form}
+                setForm={setForm}
+                vitals={vitals}
+                setVitals={setVitals}
+                labs={labs}
+                setLabs={setLabs}
+                selected={selected}
+                setSelected={setSelected}
+                derived={derived}
+                setDerived={() => {}}
+                negated={negated}
+                setNegated={setNegated}
+                derivedVitalsList={derivedVitalsList}
+                derivedLabsList={derivedLabsList}
+                liveResults={results}
+                onRunAnalysis={handleRunAnalysis}
+                onReset={handleReset}
+                onLoadSample={handleLoadSample}
+                onExportCase={handleExportCase}
+                onImportCase={handleImportCase}
+                onSaveToPostgres={() => setIsPrintOpen(true)}
+                summaryText={summaryText}
+                onOpenVaultDrawer={handleOpenVaultDrawer}
+              />
+            )}
+
+            {clinicalStep === 't2' && (
+              <Step2Analysis
+                kb={kb}
+                results={results}
+                form={form}
+                vitals={vitals}
+                labs={labs}
+                selectedCount={selected.size}
+                derivedCount={derived.size}
+                negatedCount={negated.size}
+                onGoToProtocol={handleGoToProtocol}
+                onSaveToPostgres={() => setIsPrintOpen(true)}
+                onPrintReport={() => setIsPrintOpen(true)}
+                onOpenVaultDrawer={handleOpenVaultDrawer}
+              />
+            )}
+
+            {clinicalStep === 't3' && (
+              <Step3Protocol
+                kb={kb}
+                selectedDiseaseId={selectedDiseaseId}
+                onSelectDisease={setSelectedDiseaseId}
+                onBackToAnalysis={() => setClinicalStep('t2')}
+                onSaveToPostgres={() => setIsPrintOpen(true)}
+                onPrintReport={() => setIsPrintOpen(true)}
+                onOpenVaultDrawer={handleOpenVaultDrawer}
+                onNavigateToSoapCase={handleNavigateToSoapCase}
+                form={form}
+                vitals={vitals}
+                labs={labs}
+              />
+            )}
+          </>
+        )}
+
+        {/* PHÂN HỆ 2: KINH NGHIỆM LÂM SÀNG SOAP (HUB RIÊNG BIỆT) */}
+        {activeMode === 'soap' && (
           <SoapExperienceBoard
             onOpenVaultDrawer={handleOpenVaultDrawer}
+            userCases={userSoapCases}
+            onAddUserCase={handleAddUserSoapCase}
+            initialSelectedCaseId={selectedSoapCaseId}
             onNavigateToAnalysis={() => {
-              setCurrentTab('t1');
+              setActiveMode('clinical');
+              setClinicalStep('t1');
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
             onNavigateToProtocol={(diseaseId) => {
               if (diseaseId) setSelectedDiseaseId(diseaseId);
-              setCurrentTab('t3');
+              setActiveMode('clinical');
+              setClinicalStep('t3');
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
           />
         )}
 
-        {currentTab === 't1' && (
-          <Step1DataIngestion
-            kb={kb}
-            form={form}
-            setForm={setForm}
-            vitals={vitals}
-            setVitals={setVitals}
-            labs={labs}
-            setLabs={setLabs}
-            selected={selected}
-            setSelected={setSelected}
-            derived={derived}
-            setDerived={() => {}}
-            negated={negated}
-            setNegated={setNegated}
-            derivedVitalsList={derivedVitalsList}
-            derivedLabsList={derivedLabsList}
-            liveResults={results}
-            onRunAnalysis={handleRunAnalysis}
-            onReset={handleReset}
-            onLoadSample={handleLoadSample}
-            onExportCase={handleExportCase}
-            onImportCase={handleImportCase}
-            onSaveToPostgres={() => setIsRecordsOpen(true)}
-            summaryText={summaryText}
-            onOpenVaultDrawer={handleOpenVaultDrawer}
-          />
-        )}
-
-        {currentTab === 't2' && (
-          <Step2Analysis
-            kb={kb}
-            results={results}
-            form={form}
-            vitals={vitals}
-            labs={labs}
-            selectedCount={selected.size}
-            derivedCount={derived.size}
-            negatedCount={negated.size}
-            onGoToProtocol={handleGoToProtocol}
-            onSaveToPostgres={() => setIsRecordsOpen(true)}
-            onPrintReport={() => setIsPrintOpen(true)}
-            onOpenVaultDrawer={handleOpenVaultDrawer}
-          />
-        )}
-
-        {currentTab === 't3' && (
-          <Step3Protocol
-            kb={kb}
-            selectedDiseaseId={selectedDiseaseId}
-            onSelectDisease={setSelectedDiseaseId}
-            onBackToAnalysis={() => setCurrentTab('t2')}
-            onSaveToPostgres={() => setIsRecordsOpen(true)}
-            onPrintReport={() => setIsPrintOpen(true)}
-            onOpenVaultDrawer={handleOpenVaultDrawer}
-            form={form}
-            vitals={vitals}
-            labs={labs}
-          />
-        )}
-
-        {currentTab === 't4' && (
+        {/* PHÂN HỆ 3: KHO TRI THỨC VAULT (EXPLORER RIÊNG BIỆT) */}
+        {activeMode === 'kb' && (
           <Step4KnowledgeBase
             kb={kb}
             onExportKB={handleExportKB}
             onImportKB={handleImportKB}
-            onGoToProtocol={handleGoToProtocol}
+            onGoToProtocol={(dId) => {
+              setSelectedDiseaseId(dId);
+              setActiveMode('clinical');
+              setClinicalStep('t3');
+            }}
             onOpenVaultDrawer={handleOpenVaultDrawer}
           />
         )}
@@ -563,11 +471,11 @@ export function MainApp() {
       <footer className="h-9 bg-white border-t border-slate-200 flex items-center justify-between px-4 sm:px-6 shrink-0 text-xs text-slate-500 no-print">
         <div className="max-w-7xl w-full mx-auto flex items-center justify-between gap-4">
           <div className="flex items-center gap-4 text-[11px]">
-            <span className="flex items-center gap-1.5 font-medium text-slate-600">
-              <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span> Supabase / Local Storage
+            <span className="flex items-center gap-1.5 font-medium text-emerald-700">
+              <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span> 100% Client-Side
             </span>
-            <span className="hidden sm:flex items-center gap-1.5 font-medium text-slate-600">
-              <span className="w-1.5 h-1.5 bg-indigo-500 rounded-full"></span> Knowledge Vault 2.400+ EBM
+            <span className="hidden sm:flex items-center gap-1.5 font-medium text-indigo-700">
+              <span className="w-1.5 h-1.5 bg-indigo-500 rounded-full"></span> Knowledge Vault Single Source of Truth
             </span>
           </div>
           <div className="text-[11px] text-slate-400 font-medium">
@@ -576,22 +484,7 @@ export function MainApp() {
         </div>
       </footer>
 
-      {/* Modals */}
-      <PatientRecordsModal
-        isOpen={isRecordsOpen}
-        onClose={() => setIsRecordsOpen(false)}
-        onLoadRecordToState={handleLoadRecordToState}
-        currentAnalysisData={{
-          form,
-          vitals,
-          labs,
-          selected,
-          negated,
-          results,
-          summaryText,
-        }}
-      />
-
+      {/* Modals & Drawers */}
       <VaultDrawer
         isOpen={isVaultDrawerOpen}
         onClose={() => setIsVaultDrawerOpen(false)}
@@ -605,11 +498,6 @@ export function MainApp() {
         isOpen={isCdssOpen}
         onClose={() => setIsCdssOpen(false)}
         initialTool={activeCdssTool}
-      />
-
-      <AuthModal
-        isOpen={isAuthOpen}
-        onClose={() => setIsAuthOpen(false)}
       />
 
       <AboutModal
@@ -632,9 +520,5 @@ export function MainApp() {
 }
 
 export default function App() {
-  return (
-    <AuthProvider>
-      <MainApp />
-    </AuthProvider>
-  );
+  return <MainApp />;
 }

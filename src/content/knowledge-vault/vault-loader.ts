@@ -24,6 +24,7 @@ export const KHO_DEFINITIONS: Record<string, { name: string; group: string; icon
   DUOC: { name: 'Dược',                 group: 'Chuyên sâu', icon: 'fa-capsules',              color: '#06b6d4' },
   TV:   { name: 'Tư vấn',               group: 'Chuyên sâu', icon: 'fa-hand-holding-medical',  color: '#84cc16' },
   BC:   { name: 'Biến chứng',           group: 'Chuyên sâu', icon: 'fa-heart-crack',           color: '#ef4444' },
+  BA:   { name: 'Bệnh án SOAP',         group: 'Thực hành',   icon: 'fa-book-medical',          color: '#10b981' },
 
   // 3. Nhóm Hỗ trợ
   CC:    { name: 'Công cụ & Thang điểm', group: 'Hỗ trợ', icon: 'fa-calculator',           color: '#f59e0b' },

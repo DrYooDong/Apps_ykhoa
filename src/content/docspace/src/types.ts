@@ -115,69 +115,7 @@ export interface AnalysisResult {
   notes: string[];
 }
 
-// Backend Entity Types
-export interface DoctorUser {
-  uid: string;
-  email: string;
-  name: string;
-  role: string;
-  specialty?: string;
-}
 
-export interface Patient {
-  id: number;
-  patientCode: string;
-  fullName: string;
-  gender: string;
-  age?: number;
-  occupation?: string;
-  phoneNumber?: string;
-  idCard?: string;
-  address?: string;
-  notes?: string;
-  createdAt: string;
-  updatedAt: string;
-}
-
-export interface MedicalRecord {
-  id: number;
-  recordCode: string;
-  patientId?: number;
-  patientCode: string;
-  patientName: string;
-  gender: string;
-  age?: number;
-  occupation?: string;
-  doctorUid: string;
-  doctorName?: string;
-  admissionReason?: string;
-  clinicalSummary?: string;
-  vitals?: Partial<VitalsState>;
-  labs?: Partial<LabsState>;
-  selectedSymptoms?: string[];
-  derivedSymptoms?: string[];
-  negatedSymptoms?: string[];
-  freeTexts?: { cn: string; tt: string; tc: string; cls: string };
-  primaryDiagnosis?: {
-    id: string;
-    name: string;
-    icd: string;
-    percentage: number;
-    score: number;
-    max: number;
-    alert?: boolean;
-  };
-  differentialDiagnoses?: Array<{
-    id: string;
-    name: string;
-    icd: string;
-    percentage: number;
-  }>;
-  treatmentProtocol?: PhacDo;
-  status: string;
-  createdAt: string;
-  updatedAt: string;
-}
 
 // SOAP Clinical Experience Interfaces (Kinh nghiệm lâm sàng - Không chứa danh tính bệnh nhân)
 export interface SoapSubjective {
@@ -236,7 +174,6 @@ export interface SoapClinicalExperience {
   updatedAt?: string; // Timestamp cập nhật lần cuối
   authorDoctor?: string; // Bác sĩ / Giảng viên lâm sàng đúc kết
   isFavorite?: boolean;
-  syncStatus?: 'local' | 'synced' | 'conflict'; // Trạng thái đồng bộ Supabase
   viewCount?: number; // Số lượt xem / tham khảo
   sourceReference?: string; // Nguồn tham khảo (Guideline, Sách, Ca thực tế lâm sàng)
   clinicalContext?: string; // Bối cảnh khoa phòng (ICU, Cấp cứu, Phòng khám, Nội trú...)

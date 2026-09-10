@@ -688,14 +688,7 @@ export const Step2Analysis: React.FC<Step2Props> = ({
                 <span>Tra cứu Vault EBM</span>
               </button>
 
-              <button
-                id="btn-save-record-step2"
-                onClick={onSaveToPostgres}
-                className="flex items-center gap-1.5 px-3 py-1.5 bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 font-semibold text-xs rounded-md cursor-pointer transition-colors shadow-xs"
-              >
-                <FileCheck className="w-3.5 h-3.5" />
-                <span>Lưu bệnh án (Supabase)</span>
-              </button>
+
 
               <button
                 id="btn-print-report"

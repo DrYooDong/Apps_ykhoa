@@ -34,6 +34,25 @@ export interface VaultArticle {
   objectivePitfalls?: string;
   diagnosticPearls?: string;
   takeawayLessons?: string;
+  context?: string | Record<string, any>;
+  historyOfPresentIllness?: string;
+  pastMedicalHistory?: string;
+  vitals?: Record<string, any>;
+  physicalExam?: string;
+  labsAndImaging?: string;
+  differentials?: string[];
+  riskStratification?: string;
+  immediateActions?: string;
+  medications?: any[];
+  monitoringAndTargets?: string;
+  consultationOrReferral?: string;
+  updated?: string;
+  createdAt?: string;
+  updatedAt?: string;
+  viewCount?: number;
+  sourceReference?: string;
+  clinicalContext?: string;
+  outcomeNotes?: string;
 }
 
 export interface VaultKhoSummary {

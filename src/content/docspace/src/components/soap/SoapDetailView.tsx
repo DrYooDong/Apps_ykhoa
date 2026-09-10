@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import {
   Activity,
   AlertTriangle,
   Award,
+  BookOpen,
+  ChevronRight,
   Edit3,
   FileCheck,
+  Layers,
   Lightbulb,
   Pill,
   Sparkles,
@@ -14,12 +17,12 @@ import {
 } from 'lucide-react';
 import { SoapClinicalExperience } from '../../types.ts';
 import { EXPERIENCE_LEVEL_LABELS } from '../../data/soapSeedData.ts';
+import { getRelatedVaultArticlesForSoap } from '../../lib/crossReferenceEngine.ts';
 
 interface SoapDetailViewProps {
   currentCase: SoapClinicalExperience;
   viewMode: 'board' | 'focus-s' | 'focus-o' | 'focus-a' | 'focus-p';
   setViewMode: (mode: 'board' | 'focus-s' | 'focus-o' | 'focus-a' | 'focus-p') => void;
-  onEditCase: (c: SoapClinicalExperience) => void;
   onOpenVaultDrawer?: (diseaseName?: string, query?: string, khoCode?: string) => void;
   className?: string;
 }
@@ -28,10 +31,14 @@ export const SoapDetailView: React.FC<SoapDetailViewProps> = ({
   currentCase,
   viewMode,
   setViewMode,
-  onEditCase,
   onOpenVaultDrawer,
   className = '',
 }) => {
+  const crossRefs = useMemo(
+    () => getRelatedVaultArticlesForSoap(currentCase),
+    [currentCase]
+  );
+
   return (
     <div id="soap-detail-view" className={`flex flex-col gap-4 ${className}`}>
       {/* Case Header Card */}
@@ -128,12 +135,12 @@ export const SoapDetailView: React.FC<SoapDetailViewProps> = ({
           <div className="flex items-center gap-1.5 flex-wrap justify-end">
             <button
               type="button"
-              onClick={() => onEditCase(currentCase)}
+              onClick={() => onOpenVaultDrawer?.(currentCase.title, currentCase.title)}
               className="px-3 py-1.5 text-xs font-semibold text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-200 rounded-lg transition-colors cursor-pointer flex items-center gap-1.5 shadow-2xs"
-              title="Chỉnh sửa chi tiết ca kinh nghiệm SOAP này"
+              title="Tra cứu bài viết liên quan trong Knowledge Vault"
             >
-              <Edit3 className="w-3.5 h-3.5 text-blue-600" />
-              <span>Sửa ca này</span>
+              <Sparkles className="w-3.5 h-3.5 text-blue-600" />
+              <span>Tra cứu Vault EBM</span>
             </button>
 
             <button
@@ -599,6 +606,182 @@ export const SoapDetailView: React.FC<SoapDetailViewProps> = ({
           </div>
         )}
       </div>
+
+      {/* 5. Deep Cross-References to Knowledge Vault */}
+      {crossRefs.totalCount > 0 && (
+        <div className="bg-white border border-slate-200/90 rounded-2xl p-5 shadow-xs flex flex-col gap-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100">
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 rounded-lg bg-blue-50 text-blue-700 flex items-center justify-center font-bold">
+                <BookOpen className="w-4 h-4" />
+              </div>
+              <div>
+                <h4 className="text-sm font-bold text-slate-900 flex items-center gap-2">
+                  <span>Tài Liệu EBM & Phác Đồ Liên Quan</span>
+                  <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-blue-100 text-blue-800 border border-blue-200">
+                    {crossRefs.totalCount} bài trong Knowledge Vault
+                  </span>
+                </h4>
+                <p className="text-[11px] text-slate-500">
+                  Đối chiếu y học chứng cứ, tiêu chuẩn chẩn đoán và dược lý lâm sàng liên quan đến chẩn đoán: <b>{currentCase.a.primaryDiagnosis}</b>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+            {/* Phác đồ điều trị */}
+            {crossRefs.protocols.length > 0 && (
+              <div className="bg-slate-50/70 border border-slate-200/70 rounded-xl p-3 flex flex-col gap-2">
+                <div className="text-xs font-bold text-blue-900 flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-blue-600" />
+                  <span>Phác Đồ Điều Trị (PDDT)</span>
+                </div>
+                <div className="space-y-1.5">
+                  {crossRefs.protocols.map((art) => (
+                    <button
+                      key={art.id}
+                      type="button"
+                      onClick={() => onOpenVaultDrawer?.(art.title, art.title, art.khoCode)}
+                      className="w-full text-left p-2 rounded-lg bg-white border border-slate-200/80 hover:border-blue-300 hover:bg-blue-50/40 text-xs flex items-center justify-between group transition-colors cursor-pointer"
+                    >
+                      <span className="font-medium text-slate-800 group-hover:text-blue-700 line-clamp-1">
+                        {art.title}
+                      </span>
+                      <ChevronRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-blue-600 shrink-0 ml-1" />
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Tiêu chuẩn chẩn đoán */}
+            {crossRefs.diagnostics.length > 0 && (
+              <div className="bg-slate-50/70 border border-slate-200/70 rounded-xl p-3 flex flex-col gap-2">
+                <div className="text-xs font-bold text-pink-900 flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-pink-600" />
+                  <span>Tiêu Chuẩn Chẩn Đoán (CD)</span>
+                </div>
+                <div className="space-y-1.5">
+                  {crossRefs.diagnostics.map((art) => (
+                    <button
+                      key={art.id}
+                      type="button"
+                      onClick={() => onOpenVaultDrawer?.(art.title, art.title, art.khoCode)}
+                      className="w-full text-left p-2 rounded-lg bg-white border border-slate-200/80 hover:border-pink-300 hover:bg-pink-50/40 text-xs flex items-center justify-between group transition-colors cursor-pointer"
+                    >
+                      <span className="font-medium text-slate-800 group-hover:text-pink-700 line-clamp-1">
+                        {art.title}
+                      </span>
+                      <ChevronRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-pink-600 shrink-0 ml-1" />
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Dược lý lâm sàng */}
+            {crossRefs.pharmacology.length > 0 && (
+              <div className="bg-slate-50/70 border border-slate-200/70 rounded-xl p-3 flex flex-col gap-2">
+                <div className="text-xs font-bold text-cyan-900 flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-cyan-600" />
+                  <span>Dược Lý & Thuốc (DUOC)</span>
+                </div>
+                <div className="space-y-1.5">
+                  {crossRefs.pharmacology.map((art) => (
+                    <button
+                      key={art.id}
+                      type="button"
+                      onClick={() => onOpenVaultDrawer?.(art.title, art.title, art.khoCode)}
+                      className="w-full text-left p-2 rounded-lg bg-white border border-slate-200/80 hover:border-cyan-300 hover:bg-cyan-50/40 text-xs flex items-center justify-between group transition-colors cursor-pointer"
+                    >
+                      <span className="font-medium text-slate-800 group-hover:text-cyan-700 line-clamp-1">
+                        {art.title}
+                      </span>
+                      <ChevronRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-cyan-600 shrink-0 ml-1" />
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Khuyến cáo & EBM */}
+            {crossRefs.guidelines.length > 0 && (
+              <div className="bg-slate-50/70 border border-slate-200/70 rounded-xl p-3 flex flex-col gap-2">
+                <div className="text-xs font-bold text-indigo-900 flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-indigo-600" />
+                  <span>Hướng Dẫn & EBM (EBM)</span>
+                </div>
+                <div className="space-y-1.5">
+                  {crossRefs.guidelines.map((art) => (
+                    <button
+                      key={art.id}
+                      type="button"
+                      onClick={() => onOpenVaultDrawer?.(art.title, art.title, art.khoCode)}
+                      className="w-full text-left p-2 rounded-lg bg-white border border-slate-200/80 hover:border-indigo-300 hover:bg-indigo-50/40 text-xs flex items-center justify-between group transition-colors cursor-pointer"
+                    >
+                      <span className="font-medium text-slate-800 group-hover:text-indigo-700 line-clamp-1">
+                        {art.title}
+                      </span>
+                      <ChevronRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-indigo-600 shrink-0 ml-1" />
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Thang điểm lâm sàng */}
+            {crossRefs.clinicalScores.length > 0 && (
+              <div className="bg-slate-50/70 border border-slate-200/70 rounded-xl p-3 flex flex-col gap-2">
+                <div className="text-xs font-bold text-amber-900 flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-amber-600" />
+                  <span>Thang Điểm Lượng Giá (CC)</span>
+                </div>
+                <div className="space-y-1.5">
+                  {crossRefs.clinicalScores.map((art) => (
+                    <button
+                      key={art.id}
+                      type="button"
+                      onClick={() => onOpenVaultDrawer?.(art.title, art.title, art.khoCode)}
+                      className="w-full text-left p-2 rounded-lg bg-white border border-slate-200/80 hover:border-amber-300 hover:bg-amber-50/40 text-xs flex items-center justify-between group transition-colors cursor-pointer"
+                    >
+                      <span className="font-medium text-slate-800 group-hover:text-amber-700 line-clamp-1">
+                        {art.title}
+                      </span>
+                      <ChevronRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-amber-600 shrink-0 ml-1" />
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Cơ chế sinh lý bệnh */}
+            {crossRefs.pathology.length > 0 && (
+              <div className="bg-slate-50/70 border border-slate-200/70 rounded-xl p-3 flex flex-col gap-2">
+                <div className="text-xs font-bold text-emerald-900 flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-emerald-600" />
+                  <span>Cơ Chế Sinh Lý Bệnh (SLB)</span>
+                </div>
+                <div className="space-y-1.5">
+                  {crossRefs.pathology.map((art) => (
+                    <button
+                      key={art.id}
+                      type="button"
+                      onClick={() => onOpenVaultDrawer?.(art.title, art.title, art.khoCode)}
+                      className="w-full text-left p-2 rounded-lg bg-white border border-slate-200/80 hover:border-emerald-300 hover:bg-emerald-50/40 text-xs flex items-center justify-between group transition-colors cursor-pointer"
+                    >
+                      <span className="font-medium text-slate-800 group-hover:text-emerald-700 line-clamp-1">
+                        {art.title}
+                      </span>
+                      <ChevronRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-emerald-600 shrink-0 ml-1" />
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

@@ -1,0 +1,103 @@
+================================================================================
+PROMPT MASTER: SOẠN CA LÂM SÀNG CHUẨN SOAP CHO NOTEBOOKLM
+Dự án: CliniPortal MedLens — Knowledge Vault (Kho Bệnh Án Thực Chiến khoCode: BA)
+================================================================================
+
+[HƯỚNG DẪN BÁC SĨ / NGƯỜI SOẠN]:
+1. Truy cập https://notebooklm.google.com/
+2. Tạo 1 Notebook mới mang tên chuyên khoa hoặc chủ đề bệnh (Ví dụ: "Tim Mạch - Hội Chứng Vành Cấp").
+3. Tải lên (Upload) các tài liệu nguồn chuẩn mực:
+   - Hướng dẫn chẩn đoán và điều trị của Bộ Y Tế Việt Nam
+   - Khuyến cáo của các Hội chuyên khoa quốc tế (ESC, ACC/AHA, GOLD, KDIGO, GINA...)
+   - Sách giáo khoa Y học lâm sàng hoặc báo cáo ca lâm sàng thực tế
+4. Dán toàn bộ nội dung prompt dưới đây vào khung Chat của NotebookLM và tùy biến các biến số [BỆNH LÝ MONG MUỐN], [CHUYÊN KHOA], [PHÂN LOẠI].
+
+--------------------------------------------------------------------------------
+[BẮT ĐẦU PROMPT NOTEBOOKLM]
+--------------------------------------------------------------------------------
+Bạn là một Bác sĩ Giảng viên Lâm sàng kỳ cựu và Chuyên gia Y học Chứng cứ (EBM).
+Dựa DUY NHẤT và CHẶT CHẼ trên các nguồn tài liệu đã tải lên trong Notebook này, hãy xây dựng 01 Ca Bệnh Án Lâm Sàng Điển Hình theo đúng cấu trúc SOAP chuẩn quốc tế và định dạng Markdown bên dưới.
+
+Yêu cầu lâm sàng:
+- Mặt bệnh cần xây dựng: [ĐIỀN TÊN BỆNH, VÍ DỤ: Cơn đau thắt ngực không ổn định / Viêm phổi cộng đồng nặng / Sốt xuất huyết Dengue cảnh báo]
+- Chuyên khoa: [ĐIỀN CHUYÊN KHOA: Tim mạch | Hô hấp | Tiêu hóa - Gan mật | Hồi sức - Cấp cứu | Thần kinh | Nhiễm trùng - Nhiệt đới | Nội tiết - Thận | Nhi khoa | Sản phụ khoa | Cơ xương khớp | Ngoại khoa - Chấn thương]
+- Phân loại ca: [essential (Ca kinh điển) | pitfall (Bẫy lâm sàng) | rare (Tình huống hiếm) | advanced (Chuyên sâu EBM)]
+- Mức độ phức tạp: [1 đến 5] (1: Đơn giản -> 5: Rất phức tạp)
+
+Định dạng xuất bản (BẮT BUỘC tuân thủ chính xác 100% cú pháp Markdown Frontmatter dưới đây):
+
+---
+title: "[Tên ca bệnh: Tên bệnh + Cơ địa/Điểm nhấn lâm sàng, ví dụ: Nhồi máu cơ tim cấp không ST chênh lên ở người cao tuổi Đái tháo đường]"
+caseId: "soap-[slug-viet-tat-cua-benh]-[so-thu-tu, vi du: soap-nstemi-elderly-01]"
+specialty: "[Tên chuyên khoa]"
+experienceLevel: "[essential | pitfall | rare | advanced]"
+difficultyRating: [1-5]
+authorDoctor: "[Bác sĩ / Giảng viên lâm sàng đề xuất]"
+icd10:
+  - "[Mã ICD-10 chính, ví dụ: I21.4]"
+  - "[Mã ICD-10 kèm theo nếu có, ví dụ: E11.9]"
+tags:
+  - "[Từ khóa 1]"
+  - "[Từ khóa 2]"
+  - "[Từ khóa 3]"
+demographicContext: "Bối cảnh: Bệnh nhân [Tuổi] tuổi, giới tính [Nam/Nữ], nghề nghiệp [Nghề], thể trạng [BMI...], tiền căn [Tiền căn nổi bật...]"
+historyPearls: "⚡ BÀI HỌC KHAI THÁC BỆNH SỬ: [Đúc kết 1 câu hỏi vàng hoặc kỹ năng hỏi bệnh giúp nhận diện sớm bệnh]"
+objectivePitfalls: "⚠️ BẪY CẬN LÂM SÀNG & KHÁM: [Chỉ rõ dấu hiệu cơ thể hoặc bẫy diễn giải xét nghiệm/ECG/X-quang rất dễ bị bỏ sót hoặc đọc sai]"
+diagnosticPearls: "🧠 ĐÚC KẾT BIỆN LUẬN: [Lập luận chẩn đoán phân biệt cốt lõi, ngưỡng quyết định điều trị]"
+takeawayLessons: "🎯 BÀI HỌC KINH NGHIỆM ĐIỀU TRỊ: [Khuyến cáo điều trị, đơn thuốc cá thể hóa, phòng ngừa tai biến]"
+sourceReference: "[Tên Guideline hoặc tài liệu nguồn chính xác trong Notebook đã trích dẫn]"
+clinicalContext: "[Khoa Cấp cứu / Hồi sức tích cực / Phòng khám ngoại trú / Nội tổng hợp...]"
+outcomeNotes: "[Kết cục điều trị: Thời gian nằm viện, can thiệp thành công, di chứng nếu có]"
+updated: "2026-09-10"
+---
+
+# 🩺 Ca Lâm Sàng: [Lặp lại Tên ca bệnh]
+
+> **Bối cảnh**: [Lặp lại demographicContext]
+
+## 1. 📝 S — Subjective (Bệnh Sử & Triệu Chứng)
+- **Lý do nhập viện / Than phiền chính**: [Mô tả ngắn gọn triệu chứng khiến bệnh nhân phải đến khám]
+- **Bệnh sử chi tiết**: [Khai thác theo trình tự thời gian, thuộc tính PQRST: khởi phát, vị trí, tính chất, hướng lan, mức độ đau, yếu tố tăng/giảm, triệu chứng kèm theo]
+- **Tiền căn**: [Bản thân: bệnh mạn tính, dược sử đang dùng, dị ứng, thói quen; Gia đình nếu có liên quan]
+- **Triệu chứng chính ghi nhận**: [Liệt kê danh sách các triệu chứng cơ năng bằng gạch đầu dòng]
+
+> ⚡ **CLINICAL PEARL (BỆNH SỬ)**:
+> [Chi tiết kinh nghiệm khai thác bệnh sử lâm sàng]
+
+## 2. 🔬 O — Objective (Khám Thực Thể & Cận Lâm Sàng)
+- **Sinh hiệu**:
+  - Huyết áp: [HATT/HATTr] mmHg
+  - Mạch: [Nhịp tim] ck/p
+  - Thân nhiệt: [Nhiệt độ] °C
+  - Nhịp thở: [Số lần] ck/p
+  - SpO₂: [Tỷ lệ %] (khí trời hay thở oxy)
+  - BMI: [Chỉ số khối cơ thể nếu có]
+- **Khám thực thể trọng tâm**: [Mô tả chi tiết tri giác, da niêm, tim mạch, lồng ngực/phổi, bụng, thần kinh, các dấu chứng chuyên khoa đặc hiệu]
+- **Cận lâm sàng & Hình ảnh học**: [Kết quả công thức máu, sinh hóa, men tim/vi sinh, ECG 12 chuyển đạo, X-quang, Siêu âm, CT... có số liệu cụ thể và ghi chú giá trị bất thường]
+
+> ⚠️ **OBJECTIVE PITFALL (BẪY CẬN LÂM SÀNG)**:
+> [Cảnh báo các bẫy thường gặp khi đọc kết quả xét nghiệm/hình ảnh]
+
+## 3. 🧠 A — Assessment (Chẩn Đoán & Biện Luận)
+- **Chẩn đoán xác định**: [Chẩn đoán đầy đủ: Bệnh chính + Thể lâm sàng/Giai đoạn/Biến chứng + Bệnh kèm theo]
+- **Mã ICD-10**: `[Mã ICD-10]`
+- **Chẩn đoán phân biệt cần loại trừ**:
+  - [Bệnh 1]: [Dấu hiệu ủng hộ và dấu hiệu giúp loại trừ]
+  - [Bệnh 2]: [Dấu hiệu ủng hộ và dấu hiệu giúp loại trừ]
+  - [Bệnh 3]: [Dấu hiệu ủng hộ và dấu hiệu giúp loại trừ]
+- **Phân tầng nguy cơ & Thang điểm lượng giá**: [Áp dụng thang điểm cụ thể như GRACE, TIMI, CURB-65, qSOFA, Wells, NIHSS, Glasgow... với số điểm và phân tầng cụ thể]
+
+> 🧠 **DIAGNOSTIC PEARL (ĐÚC KẾT BIỆN LUẬN)**:
+> [Quy tắc vàng trong lập luận chẩn đoán phân biệt và xử trí khẩn cấp]
+
+## 4. 📋 P — Plan (Kế Hoạch Điều Trị & Đơn Thuốc)
+- **Xử trí cấp cứu & Ban đầu**: [Các biện pháp xử trí tức thì: tư thế, đường truyền, oxy liệu pháp, theo dõi monitor...]
+- **Đơn thuốc chỉ định cụ thể**:
+  - **[Tên hoạt chất / Biệt dược]**: [Liều lượng] ([Đường dùng: Uống / Tiêm TMC / TDD / Truyền tĩnh mạch]), [Tần suất dùng: 1 lần/ngày, q12h, q8h...] — *[Ghi chú: Liều nạp, hiệu chỉnh theo eGFR, thời điểm dùng]*
+- **Chỉ tiêu theo dõi & Mục tiêu lâm sàng**: [Tần suất đo sinh hiệu, xét nghiệm lặp lại, chỉ số huyết động hoặc xét nghiệm cần đạt]
+- **Tiêu chuẩn hội chẩn / Chuyển viện / Can thiệp**: [Chỉ định can thiệp xâm lấn, hội chẩn chuyên khoa hoặc tiêu chuẩn chuyển tuyến trên]
+
+> 🎯 **TAKEAWAY LESSON (BÀI HỌC KINH NGHIỆM ĐIỀU TRỊ)**:
+> [Đúc kết 2-3 điểm cốt lõi nhất bác sĩ cần ghi nhớ khi điều trị thể bệnh này]
+--------------------------------------------------------------------------------
+[KẾT THÚC PROMPT NOTEBOOKLM]
