@@ -170,12 +170,49 @@ export function getGuidelineById(id: string): GuidelineStudy | undefined {
 }
 
 /**
- * Tạo URL mở trực tiếp bài đọc Guideline
- * Trỏ tới chuyên trang Guidelines Hub hoặc bài đọc MDX
+ * Tìm Guideline theo slug hoặc ID hoặc tiêu đề gần đúng
+ */
+export function getGuidelineBySlugOrId(query: string): GuidelineStudy | undefined {
+  if (!query) return undefined;
+  const cleanQ = query.trim();
+  const normQ = normalize(cleanQ);
+
+  // 1. Khớp chính xác ID
+  const exactId = GUIDELINE_STUDIES.find((s) => s.id === cleanQ);
+  if (exactId) return exactId;
+
+  // 2. Khớp chuyển đổi slug <-> study_id
+  const convertedId = 'study_' + cleanQ.replace(/-/g, '_');
+  const matchedConverted = GUIDELINE_STUDIES.find((s) => s.id === convertedId);
+  if (matchedConverted) return matchedConverted;
+
+  // 3. Khớp trong trường file (kho-guidelines/<slug>.html)
+  const matchedFile = GUIDELINE_STUDIES.find((s) => s.file && s.file.toLowerCase().includes(cleanQ.toLowerCase()));
+  if (matchedFile) return matchedFile;
+
+  // 4. Khớp theo tiêu đề gần đúng
+  return GUIDELINE_STUDIES.find((s) => normalize(s.title).includes(normQ));
+}
+
+/**
+ * Tạo URL mở trực tiếp bài đọc Guideline Reader trong CliniPortal Master Router
  */
 export function getGuidelineWebUrl(study: GuidelineStudy): string {
-  // Đường dẫn tương đối từ src/content/docspace sang src/content/ebm/guidelines/guidelines.html
-  return `../ebm/guidelines/guidelines.html#reader/${encodeURIComponent(study.id)}`;
+  // Trích xuất slug chuẩn từ study.file hoặc study.id
+  let slug = '';
+  if (study.file) {
+    slug = study.file.replace(/^kho-guidelines\//, '').replace(/\.(html|mdx)$/, '');
+  } else {
+    slug = study.id.replace(/^study_/, '').replace(/_/g, '-');
+  }
+
+  // Nếu đang chạy trong môi trường CliniPortal (đường dẫn có /src/content/docspace/):
+  if (typeof window !== 'undefined' && window.location.pathname.includes('/src/content/docspace/')) {
+    return `../../../index.html#/ebm/kho-guidelines/${encodeURIComponent(slug)}`;
+  }
+
+  // Fallback khi chạy standalone dev server
+  return `#/ebm/kho-guidelines/${encodeURIComponent(slug)}`;
 }
 
 /**

@@ -220,6 +220,30 @@ export function renderEbmView(): string {
             </div>
           </a>
 
+          <!-- Card 5: DocSpace MedLens Clinical Case & SOAP Studio -->
+          <a href="#/docspace" class="ebm-bento-card-compact ebm-holo-bento" style="--card-accent:#0284c7; --card-icon-bg:rgba(2,132,199,0.12); --card-glow:rgba(2,132,199,0.25);">
+            <div>
+              <div class="ebm-bento-top-row-sm">
+                <div class="ebm-bento-icon-box-sm" style="color: #0284c7;">
+                  <i class="fa-solid fa-stethoscope"></i>
+                </div>
+                <span class="ebm-bento-badge-pill-sm" style="color: #0284c7; background: rgba(2,132,199,0.1);">Lâm Sàng</span>
+              </div>
+              <h2 class="ebm-bento-title-sm">DocSpace MedLens</h2>
+              <p class="ebm-bento-desc-sm">
+                Áp dụng Guidelines vào Bệnh án SOAP, Suy luận chẩn đoán & Y lệnh điều trị.
+              </p>
+              <div class="ebm-bento-tags-row-sm">
+                <span class="ebm-bento-tag-item-sm">SOAP Studio</span>
+                <span class="ebm-bento-tag-item-sm">Clinical CDSS</span>
+              </div>
+            </div>
+            <div class="ebm-bento-action-btn-sm" style="color: #0284c7;">
+              <span>Mở Không Gian Lâm Sàng</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </a>
+
         </div>
       </section>
 

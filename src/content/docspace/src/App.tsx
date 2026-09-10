@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Header, MainViewMode } from './components/Header.tsx';
 import { StepNav, ClinicalStepId } from './components/StepNav.tsx';
 import { SoapExperienceBoard } from './components/SoapExperienceBoard.tsx';
@@ -25,6 +25,12 @@ import {
   computeAllDerived,
   normalizeText,
 } from './lib/clinicalEngine.ts';
+import {
+  receiveClinicalIntent,
+  clearClinicalIntent,
+  parseUrlIntentFallback,
+} from './lib/clinicalIntent.ts';
+import { getGuidelineBySlugOrId } from './lib/guidelineBridge.ts';
 
 const initialForm: ClinicalFormState = {
   gioiTinh: 'nam',
@@ -113,6 +119,98 @@ export function MainApp() {
     setVaultKho(khoCode || 'ALL');
     setIsVaultDrawerOpen(true);
   };
+
+  // Tiếp nhận Clinical Intent hai chiều từ EBM / Vault hoặc URL fallback
+  useEffect(() => {
+    // 1. Kiểm tra intent từ sessionStorage
+    const intent = receiveClinicalIntent();
+    if (intent) {
+      if (intent.action === 'create-soap-from-guideline') {
+        const payload = intent.payload || {};
+        const term = payload.slug || payload.title || '';
+        const found = getGuidelineBySlugOrId(term);
+        if (found) {
+          setActiveGuidelineBanner(found);
+        } else if (payload.title || payload.slug) {
+          setActiveGuidelineBanner({
+            id: payload.slug || 'study_custom',
+            title: payload.title || payload.slug,
+            organization: 'EBM Evidence',
+            year: 2026,
+            drug: '',
+            sourceType: 'intl-guideline',
+            specialty: 'icu',
+            design: 'guideline',
+            icd10Codes: [],
+            intervention: '',
+            primaryEndpoint: '',
+            keyResults: '',
+            impact: 'practice-changing',
+            phase: 'Clinical Practice Guideline',
+            population: '',
+            summary: payload.title || '',
+            detailedConclusion: '',
+          });
+        }
+        setActiveMode('clinical');
+        setClinicalStep('t3');
+      } else if (intent.action === 'open-cdss-studio') {
+        const studio = (intent.payload?.studio || 'hub').toLowerCase();
+        const validTools: CdssToolSlug[] = ['dengue', 'ecg', 'abg', 'xray', 'hepa', 'neuro', 'hub'];
+        if (validTools.includes(studio as CdssToolSlug)) {
+          handleOpenCdss(studio as CdssToolSlug);
+        } else {
+          handleOpenVaultDrawer(undefined, studio, 'PROTOCOL');
+        }
+      } else if (intent.action === 'search-vault') {
+        const { query, khoCode } = intent.payload || {};
+        handleOpenVaultDrawer(undefined, query, khoCode);
+      }
+      clearClinicalIntent();
+      return;
+    }
+
+    // 2. URL search & hash query fallback
+    const fallback = parseUrlIntentFallback();
+    if (fallback.fromGuideline) {
+      const found = getGuidelineBySlugOrId(fallback.fromGuideline);
+      if (found) {
+        setActiveGuidelineBanner(found);
+      } else {
+        setActiveGuidelineBanner({
+          id: fallback.fromGuideline,
+          title: decodeURIComponent(fallback.fromGuideline),
+          organization: 'EBM Evidence',
+          year: 2026,
+          drug: '',
+          sourceType: 'intl-guideline',
+          specialty: 'icu',
+          design: 'guideline',
+          icd10Codes: [],
+          intervention: '',
+          primaryEndpoint: '',
+          keyResults: '',
+          impact: 'practice-changing',
+          phase: 'Clinical Practice Guideline',
+          population: '',
+          summary: decodeURIComponent(fallback.fromGuideline),
+          detailedConclusion: '',
+        });
+      }
+      setActiveMode('clinical');
+      setClinicalStep('t3');
+    } else if (fallback.studio) {
+      const studio = fallback.studio.toLowerCase();
+      const validTools: CdssToolSlug[] = ['dengue', 'ecg', 'abg', 'xray', 'hepa', 'neuro', 'hub'];
+      if (validTools.includes(studio as CdssToolSlug)) {
+        handleOpenCdss(studio as CdssToolSlug);
+      } else {
+        handleOpenVaultDrawer(undefined, studio, 'PROTOCOL');
+      }
+    } else if (fallback.vaultSearch) {
+      handleOpenVaultDrawer(undefined, fallback.vaultSearch);
+    }
+  }, []);
 
   // Compute derived symptoms from Vitals, Labs, and Free texts
   const derivedInfo = useMemo(() => {

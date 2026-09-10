@@ -12,6 +12,7 @@
 import { CliniPortalThemeManager } from '../../../../main';
 import { cliniMdxEngine } from '../../../../core/mdx-engine';
 import { hydrateFlowchartViewers } from '../../../../components/flowchart/renderFlowchartViewer';
+import { sendClinicalIntent } from '../../../../core/clinical-intent';
 
 export function renderGuidelineReader(slug: string): string {
   // Normalize slug & base name cleanly
@@ -794,10 +795,25 @@ export function createSoapFromCurrentGuideline(): void {
   const hash = window.location.hash || '';
   const match = hash.match(/kho-guidelines\/([^\/?#]+)/i) || hash.match(/reader\/([^\/?#]+)/i);
   const slug = match ? match[1] : breadcrumbTitle;
+  const articleTitle = document.querySelector('.guideline-article-title, .reader-content h1, h1')?.textContent?.trim() || breadcrumbTitle || slug;
+
+  // Đóng gói Clinical Intent gửi sang DocSpace qua sessionStorage
+  sendClinicalIntent({
+    action: 'create-soap-from-guideline',
+    payload: {
+      slug,
+      title: articleTitle,
+      sourceUrl: window.location.href,
+    },
+    source: 'ebm',
+  });
   
-  // Điều hướng chính xác sang DocSpace Clinical Case Analysis kèm tham số URL from_guideline
-  const targetUrl = `../../docspace/index.html?from_guideline=${encodeURIComponent(slug)}`;
-  window.location.href = targetUrl;
+  // Điều hướng chính xác sang DocSpace Clinical Case Analysis kèm tham số URL fallback
+  let targetUrl = './src/content/docspace/index.html';
+  if (typeof window !== 'undefined' && window.location.pathname.includes('/src/content/ebm/')) {
+    targetUrl = '../../docspace/index.html';
+  }
+  window.location.href = `${targetUrl}?from_guideline=${encodeURIComponent(slug)}`;
 }
 
 /**

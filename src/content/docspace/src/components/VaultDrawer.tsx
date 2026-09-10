@@ -840,7 +840,11 @@ export const VaultDrawer: React.FC<VaultDrawerProps> = ({
             </span>
             <div className="flex items-center gap-3">
               <a
-                href="../ebm/guidelines/guidelines.html"
+                href={
+                  typeof window !== 'undefined' && window.location.pathname.includes('/src/content/docspace/')
+                    ? '../../../index.html#/ebm/kho-guidelines'
+                    : '../ebm/guidelines/guidelines.html'
+                }
                 target="_blank"
                 rel="noreferrer"
                 className="font-semibold text-rose-600 hover:text-rose-800 flex items-center gap-1"
