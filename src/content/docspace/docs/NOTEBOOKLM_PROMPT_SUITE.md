@@ -45,6 +45,8 @@ Mỗi kho tri thức có tiền tố (Prefix) định danh riêng và cấu trú
 | **Dược Thư & Tương Tác Thuốc**<br>*(Dược động học, Bảng liều eGFR/gan, Blackbox warnings, Live DDI)* | `DUOC` | `knowledge-vault/3.2. Kho dược thư & tương tác thuốc/` | `DUOC_{Tên thuốc}_P1.md` | `05-prompt-duoc-duoc-thu.txt` |
 | **Biến Chứng Bệnh Học**<br>*(Biến chứng cấp/mạn, Cờ đỏ sinh hiệu, Cấp cứu khẩn, Dự phòng)* | `BC` | `knowledge-vault/2.5. Kho biến chứng/{Chuyên khoa}/` | `BC_{Tên bệnh}_P1.md` | `06-prompt-bc-bien-chung.txt` |
 | **Tư Vấn Người Bệnh**<br>*(3 Góc nhìn Bác sĩ Teach-Back - Người bệnh Cờ đỏ - Kế hoạch ra viện)* | `TV` | `knowledge-vault/2.6. Kho tư vấn/{Chuyên khoa}/` | `TV_{Tên bệnh}_P1.md` | `07-prompt-tv-tu-van.txt` |
+| **CSDL Chẩn Đoán & CDSS (Tạo Mới)**<br>*(TypeScript Entry chuẩn DiseaseReactionChainDefinition có ngưỡng CLS & phác đồ thuốc)* | `CDSS` | `src/content/docspace/data/` | Thêm vào `diagnostic-criteria-database.ts` hoặc `kho-chan-doan-db.ts` | `08-prompt-db-entry-generator.txt` |
+| **Làm Giàu CSDL Chẩn Đoán (Batch Enrich)**<br>*(Xóa bỏ template placeholder Hình 1, nâng cấp lên chuẩn lâm sàng Hình 2)* | `ENRICH` | `src/content/docspace/data/` | Cập nhật entry trong `kho-chan-doan-db.ts` | `09-prompt-db-batch-enricher.txt` |
 
 ### 📊 Thống Kê Hiện Trạng 7 Kho Tri Thức Cốt Lõi (Dữ Liệu Disk Hiện Tại)
 

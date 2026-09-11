@@ -12,8 +12,31 @@
 - Hướng dẫn tham chiếu: [ĐIỀN NGUỒN CHÍNH, ví dụ: ATS/IDSA 2025 / SSC 2026 / BYT 2023]
 
 [PROMPT DÁN VÀO NOTEBOOKLM]:
-"Dựa trên các tài liệu đã tải lên trong Notebook, hãy đóng vai trò Bác sĩ Điều trị Cấp cao và biên soạn một bài viết PHÁC ĐỒ ĐIỀU TRỊ CHUẨN LÂM SÀNG cho bệnh lý: [TÊN BỆNH LÝ].
+"Dựa trên các tài liệu đã tải lên trong Notebook, hãy đóng vai trò Bác sĩ Điều trị Cấp cao kiêm Chuyên gia Hồi sức Cấp cứu và Dược Lâm sàng, biên soạn một bài viết PHÁC ĐỒ ĐIỀU TRỊ CHUẨN LÂM SÀNG & EBM TOÀN DIỆN cho bệnh lý: [TÊN BỆNH LÝ].
 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚠️ QUY TẮC CẤM VI PHẠM (ANTI-SLOP & ANTI-TEMPLATE QUALITY GATES):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. TUYỆT ĐỐI KHÔNG sử dụng các cụm từ placeholder mẫu sau đây:
+   ❌ 'Dùng kháng sinh / thuốc theo kinh nghiệm hoặc kháng sinh đồ...'
+   ❌ 'Bù dịch theo phác đồ chống sốc chuẩn...'
+   ❌ 'Chỉnh liều theo mức lọc cầu thận eGFR...'
+   ❌ 'Thuốc điều trị bậc 1 / đầu tay cho [Tên bệnh]...'
+   ❌ 'Theo dõi sát sinh hiệu và diễn tiến lâm sàng...'
+   ❌ 'Điều trị hỗ trợ và nâng đỡ thể trạng...'
+2. MỌI THUỐC ĐIỀU TRỊ PHẢI CỤ THỂ 100%:
+   - Phải gọi đích danh tên hoạt chất quốc tế (Generic/INN), không viết tên nhóm chung chung.
+   - Liều dùng phải có số học rõ ràng: liều chuẩn mg hoặc mg/kg, khoảng cách liều (mỗi ... giờ), đường dùng (IV/PO/SC/khí dung) và thời gian dùng.
+   - Phân định rõ thứ tự ưu tiên: First-line (Đầu tay), Alternative (Thay thế khi dị ứng/kháng thuốc), Phối hợp.
+3. HỒI SỨC BAN ĐẦU & GIỜ VÀNG CỤ THỂ:
+   - Xử trí cấp cứu ABCDE phải có chỉ số đích sinh hiệu số học (HATT, HATTr, MAP ≥ 65 mmHg, SpO2 ≥ 92-95%, Nhịp thở, Nước tiểu ≥ 0.5 mL/kg/h).
+   - Loại dịch bù phải chỉ định rõ (Ringer Lactate, NaCl 0.9%, Albumin...), tốc độ mL/kg/giờ và tiêu chuẩn dừng bù dịch.
+4. BẢNG CHỈNH LIỀU SUY THẬN & SUY GAN:
+   - Bắt buộc điền số liệu giảm liều hoặc giãn khoảng cách liều cho từng nấc eGFR: ≥50, 30-49, 15-29, <15 mL/phút hoặc chạy thận.
+5. CẢNH BÁO AN TOÀN & TƯƠNG TÁC:
+   - Ghi rõ chống chỉ định tuyệt đối và các cặp tương tác thuốc nguy hiểm (DDI) hay gặp trên thực tế kèm cơ chế.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 BẮT BUỘC TUÂN THỦ CẤU TRÚC VÀ QUY CHUẨN SAU:
 
 ---
@@ -110,4 +133,25 @@ Trình bày bảng hướng dẫn chỉnh liều cho các thuốc chủ chốt �
 ---
 
 ## 📚 TRÍCH DẪN TÀI LIỆU THAM KHẢO CHUẨN EBM
+1. Tổ chức / Hiệp hội chuyên khoa. Tên Hướng dẫn điều trị lâm sàng. *Tên Tạp chí Y khoa*. Năm;Tập(Số):Trang. DOI/PMID.
+2. Bộ Y Tế Việt Nam. Quyết định ban hành Hướng dẫn chẩn đoán và điều trị [Tên bệnh]. Hà Nội, Năm.
+"
 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📋 BẢNG KIỂM CHẤT LƯỢNG ĐẦU RA (QUALITY CHECKLIST - MINIMUM 5 ĐIỂM):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Trước khi lưu bài viết vào knowledge-vault/2.4. Kho phác đồ điều trị/, hãy kiểm tra:
+[ ] 1. 100% thuốc có tên Generic/INN chuẩn, liều lượng số học (mg hoặc mg/kg), đường dùng và thời gian.
+[ ] 2. Xử trí cấp cứu ban đầu (ABCDE) có đầy đủ chỉ số đích sinh hiệu (MAP, SpO2, nhịp thở, nước tiểu).
+[ ] 3. Bảng chỉnh liều eGFR có đầy đủ 4 nấc phân tầng chức năng thận kèm số liệu cụ thể, không để trống.
+[ ] 4. Có ít nhất 1 cảnh báo chống chỉ định tuyệt đối và 1 cặp tương tác thuốc nguy hiểm (DDI) có cơ chế rõ ràng.
+[ ] 5. TUYỆT ĐỐI không còn bất kỳ câu chữ placeholder hoặc khái niệm chung chung nào chưa được cụ thể hóa.
+
+---
+
+## 🔗 HƯỚNG DẪN KẾT NỐI CƠ SỞ DỮ LIỆU CDSS (DOCSPACE):
+> [!NOTE]
+> Sau khi biên soạn xong bài viết Markdown cho Kho Phác Đồ Điều Trị (2.4), nếu bạn muốn đưa phác đồ thuốc này vào
+> **Hệ thống Ra quyết định Lâm sàng & Chuỗi Phản ứng CDSS (DocSpace MedLens)**:
+> - Sử dụng **Prompt 08** (`08-prompt-db-entry-generator.txt`): Để trích xuất các trường `firstLineDrugs`, `secondLineDrugs`, `criteriaRule` và `complications` chuẩn định dạng JSON.
+> - Sử dụng **Prompt 09** (`09-prompt-db-batch-enricher.txt`): Nếu cần làm giàu liều dùng thuốc và cảnh báo trực cho bệnh lý đã có trong `kho-chan-doan-db.ts`.

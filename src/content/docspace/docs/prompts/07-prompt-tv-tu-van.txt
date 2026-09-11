@@ -13,8 +13,33 @@
 - Nguồn tham chiếu: [ĐIỀN NGUỒN CHÍNH, ví dụ: Hội Tim mạch VN / ADA 2026 / GINA 2025 / Bộ Y Tế]
 
 [PROMPT DÁN VÀO NOTEBOOKLM]:
-"Dựa trên các tài liệu đã tải lên trong Notebook, hãy đóng vai trò Bác sĩ Điều trị có kỹ năng Giao tiếp Lâm sàng Xuất sắc và biên soạn một kịch bản TƯ VẤN VÀ DẶN DÒ NGƯỜI BỆNH ĐA GÓC NHÌN CHUẨN Y KHOA cho bệnh lý: [TÊN BỆNH LÝ].
+"Dựa trên các tài liệu đã tải lên trong Notebook, hãy đóng vai trò Bác sĩ Điều trị có kỹ năng Giao tiếp Lâm sàng Xuất sắc kiêm Chuyên gia Giáo dục Sức khỏe, biên soạn một kịch bản TƯ VẤN VÀ DẶN DÒ NGƯỜI BỆNH ĐA GÓC NHÌN CHUẨN Y KHOA cho bệnh lý: [TÊN BỆNH LÝ].
 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚠️ QUY TẮC CẤM VI PHẠM (ANTI-SLOP & ANTI-TEMPLATE QUALITY GATES):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. TUYỆT ĐỐI KHÔNG sử dụng các cụm từ placeholder mẫu sau đây:
+   ❌ 'Bác sĩ giải thích tình trạng bệnh cho bệnh nhân và người nhà hiểu rõ...'
+   ❌ 'Nếu thấy mệt nhiều hoặc cảm thấy khó chịu bất thường thì đi khám lại...'
+   ❌ 'Uống thuốc đúng theo đơn và không được tự ý ngừng thuốc...'
+   ❌ 'Ăn uống kiêng cữ hợp lý và tích cực tập thể dục nâng cao thể trạng...'
+   ❌ 'Bệnh nhân cần tuân thủ dặn dò của nhân viên y tế...'
+   ❌ 'Tái khám định kỳ theo hẹn của bác sĩ...'
+2. PHẢI CÓ ĐẦY ĐỦ 3 GÓC NHÌN ĐỘC LẬP:
+   - Góc 1 (Bác sĩ Desk): Nhận diện 2 bẫy tâm lý tuân thủ lớn nhất + Kỹ thuật Teach-Back với 3 câu hỏi đối thoại nguyên văn trong ngoặc kép.
+   - Góc 2 (Bệnh nhân Corner): Lời giải thích bản chất bệnh bằng hình tượng đời thường, không dùng biệt ngữ chuyên môn khó hiểu.
+   - Góc 3 (Kế hoạch xuất viện): Tiêu chuẩn xuất viện an toàn (4 tiêu chí số học/lâm sàng) + Lịch tái khám kèm danh mục xét nghiệm cụ thể.
+3. DẤU HIỆU CỜ ĐỎ (RED FLAGS) BẮT BUỘC ĐẶC HIỆU CHO BỆNH NÀY:
+   - Phải có ít nhất 4 dấu hiệu cảnh báo khẩn cấp gắn liền với biến chứng nặng của chính bệnh lý đó (không viết cờ đỏ chung chung).
+   - Nêu rõ hành động: 'Đến cấp cứu tại bệnh viện ngay lập tức, không chờ đến ngày tái khám'.
+4. QUY TẮC SỰ CỐ DÙNG THUỐC CỤ THỂ:
+   - Phải có hướng dẫn chi tiết cách xử trí khi: (1) Quên 1 liều thuốc, (2) Nôn ói sau uống thuốc (< 30 phút vs > 1 giờ), (3) Đi xa/công tác/du lịch.
+5. CHẾ ĐỘ DINH DƯỠNG & LỐI SỐNG PHẢI ĐỊNH LƯỢNG:
+   - Lượng muối (< 5g/ngày hoặc < 1 thìa cà phê gạt), lượng nước uống (cụ thể số lít hoặc mL/kg), thời gian tập thể dục (phút/ngày và ngày/tuần).
+6. TỜ RƠI DẶN DÒ RA VIỆN (PATIENT LEAFLET):
+   - Đóng khung ASCII rõ ràng, ngắn gọn, súc tích, in ra phát ngay cho bệnh nhân.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 BẮT BUỘC TUÂN THỦ CẤU TRÚC VÀ QUY CHUẨN SAU:
 
 ---
@@ -138,3 +163,22 @@ Bác sĩ yêu cầu người bệnh nhắc lại bằng lời của họ trướ
 1. Tác giả / Tổ chức ban hành. Hướng dẫn tư vấn và giáo dục người bệnh. *Tên Tạp chí Y khoa*. Năm;Tập(Số):Trang. DOI/PMID.
 2. Bộ Y Tế Việt Nam. Quy định về tư vấn và dặn dò người bệnh ra viện. Hà Nội.
 "
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📋 BẢNG KIỂM CHẤT LƯỢNG ĐẦU RA (QUALITY CHECKLIST - MINIMUM 5 ĐIỂM):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Trước khi lưu bài viết vào knowledge-vault/2.6. Kho tư vấn/, hãy kiểm tra:
+[ ] 1. Có đủ 3 góc nhìn: Bác sĩ giao tiếp - Bệnh nhân bình dân - Kế hoạch xuất viện.
+[ ] 2. Kỹ thuật Teach-Back có đủ 3 câu hỏi đối thoại nguyên văn cụ thể bằng lời thoại bác sĩ.
+[ ] 3. Dấu hiệu cờ đỏ (Red Flags) có ít nhất 4 dấu hiệu đặc hiệu đe dọa tính mạng của bệnh lý này.
+[ ] 4. Có hướng dẫn xử trí sự cố dùng thuốc cụ thể: Quên liều, nôn ói sau uống và mang thuốc khi đi xa.
+[ ] 5. Tờ rơi dặn dò ra viện (Patient Leaflet) đóng khung ASCII chuẩn, sẵn sàng in ấn cho người bệnh.
+
+---
+
+## 🔗 HƯỚNG DẪN KẾT NỐI CƠ SỞ DỮ LIỆU CDSS (DOCSPACE):
+> [!NOTE]
+> Các nội dung tư vấn cờ đỏ và dấu hiệu báo động là cơ sở để thiết lập
+> **Hướng dẫn Dặn dò Tự động & Hỗ trợ Ra viện (Discharge Decision Support)** trong DocSpace:
+> - Sử dụng **Prompt 08** (`08-prompt-db-entry-generator.txt`): Để trích xuất các dấu hiệu báo động `warningSigns` trong trường `complications` để cảnh báo cho người bệnh.
+> - Sử dụng **Prompt 09** (`09-prompt-db-batch-enricher.txt`): Để đồng bộ hóa các dấu hiệu cờ đỏ vào cơ sở dữ liệu CDSS chung.

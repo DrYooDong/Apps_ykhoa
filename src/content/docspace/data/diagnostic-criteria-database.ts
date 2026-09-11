@@ -78,10 +78,14 @@ export interface DiseaseReactionChainDefinition {
 }
 
 import { KHO_CHAN_DOAN_DATABASE } from './kho-chan-doan-db';
+import { ENRICHED_DISEASES } from './enriched';
 
 export const DIAGNOSTIC_CHAIN_DATABASE: Record<string, DiseaseReactionChainDefinition> = {
   // ── Toàn bộ 164 bệnh lý đồng bộ tự động từ Kho Chẩn Đoán (2.3) ─────────────
   ...KHO_CHAN_DOAN_DATABASE,
+
+  // ── Toàn bộ các bệnh lý đã làm giàu chuyên sâu từ Prompt 08/09 (thư mục enriched/) ──
+  ...ENRICHED_DISEASES,
 
   // ── 30 Bệnh lý Trọng tâm được biên soạn thủ công & chi tiết chuyên sâu ──────
   // (Ghi đè để bảo toàn bộ tiêu chuẩn & phác đồ thuốc phân tầng chi tiết nhất)

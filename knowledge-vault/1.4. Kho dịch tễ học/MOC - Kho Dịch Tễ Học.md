@@ -295,7 +295,7 @@ updated: "2026-08-21"
 - [[DTH_Sốt mò (Scrub typhus)_P1.md|DTH_Sốt mò (Scrub typhus)_P1]]
 - [[DTH_Sốt mò_P1.md|DTH_Sốt mò_P1]]
 - [[DTH_Sốt rét|DTH_Sốt rét_P1]]
-- [[DTH_Sốt xuất huyết Dengue_P1.md|DTH_Sốt xuất huyết Dengue_P1]]
+- [[DTH_Sốt xuất huyết Dengue|DTH_Sốt xuất huyết Dengue_P1]]
 - [[DTH_Sởi_P1.md|DTH_Sởi_P1]]
 - [[DTH_Taenia spp. (Sán dải heo & bò)_P1.md|DTH_Taenia spp. (Sán dải heo & bò)_P1]]
 - [[DTH_Talaromyces marneffei_P1.md|DTH_Talaromyces marneffei_P1]]

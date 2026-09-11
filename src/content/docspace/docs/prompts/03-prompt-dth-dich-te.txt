@@ -12,8 +12,31 @@
 - Nguồn số liệu: [ĐIỀN NGUỒN CHÍNH, ví dụ: WHO 2024 / GBD 2023 / Viện Pasteur / Cục Y tế Dự phòng BYT]
 
 [PROMPT DÁN VÀO NOTEBOOKLM]:
-"Dựa trên các tài liệu đã tải lên trong Notebook, hãy đóng vai trò Chuyên gia Dịch tễ học Lâm sàng & Y tế Công cộng và biên soạn một bài viết DỊCH TỄ HỌC CHUYÊN SÂU cho bệnh lý: [TÊN BỆNH LÝ].
+"Dựa trên các tài liệu đã tải lên trong Notebook, hãy đóng vai trò Chuyên gia Dịch tễ học Lâm sàng & Y tế Công cộng Cấp cao, biên soạn một bài viết DỊCH TỄ HỌC CHUYÊN SÂU & GÁNH NẶNG BỆNH TẬT TOÀN DIỆN cho bệnh lý: [TÊN BỆNH LÝ].
 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚠️ QUY TẮC CẤM VI PHẠM (ANTI-SLOP & ANTI-TEMPLATE QUALITY GATES):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. TUYỆT ĐỐI KHÔNG sử dụng các cụm từ placeholder mẫu sau đây:
+   ❌ 'Bệnh lưu hành phổ biến tại nhiều tỉnh thành ở Việt Nam...'
+   ❌ 'Tỷ lệ tử vong thay đổi tùy thuộc vào mức độ tiếp cận điều trị...'
+   ❌ 'Vector truyền bệnh là muỗi hoặc các loại côn trùng tiết túc...'
+   ❌ 'Hệ số lây nhiễm tùy thuộc vào miễn dịch của cộng đồng...'
+   ❌ 'Mùa dịch thường xuất hiện vào mùa mưa hoặc đông xuân...'
+   ❌ 'Số liệu dịch tễ học tại Việt Nam chưa được ghi nhận đầy đủ...'
+2. SỐ LIỆU DỊCH TỄ PHẢI ĐỊNH LƯỢNG KÈM ĐƠN VỊ CHUẨN:
+   - Tỷ lệ mắc phải có đơn vị: ca/100.000 dân/năm (hoặc triệu ca/năm toàn cầu), kèm 95% CI nếu có.
+   - Tỷ lệ tử vong và Tỷ số chết trên mắc (Case Fatality Ratio - CFR) phải là % số học cụ thể (ví dụ: CFR chung < 1%, nhưng thể sốc/nặng có thể lên đến 2-5%).
+   - Gánh nặng bệnh tật GBD phải nêu số triệu DALYs (Disability-Adjusted Life Years) hoặc xếp hạng trong nhóm nguyên nhân hàng đầu.
+3. ĐẶC ĐIỂM TẠI VIỆT NAM PHẢI RÕ ĐỊA DỊCH TỄ & CHỦNG LƯU HÀNH:
+   - Phân tích theo 3-4 vùng: Miền Nam & ĐBSCL, Miền Trung - Tây Nguyên, Miền Bắc.
+   - Phải nêu rõ chủng/kiểu gen (Serotypes / Genotypes) lưu hành chủ yếu tại Việt Nam (ví dụ: Dengue DENV-1, DENV-2; HBV genotype B; Lao chủng Bắc Kinh...).
+4. DANH PHÁP VÉC-TƠ & ĐỘNG THÁI LÂY TRUYỀN CHUẨN SINH HỌC:
+   - Tên véc-tơ phải viết đúng danh pháp khoa học quốc tế (in nghiêng: *Aedes aegypti*, *Aedes albopictus*, *Anopheles dirus*...).
+   - Hệ số lây nhiễm cơ bản ($R_0$) phải có khoảng giá trị số học (ví dụ: $R_0 = 1.5 - 2.5$).
+   - Thời gian ủ bệnh phải có mốc ngày/tuần cụ thể (ví dụ: 4-10 ngày, trung bình 5-7 ngày).
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 BẮT BUỘC TUÂN THỦ CẤU TRÚC VÀ QUY CHUẨN SAU:
 
 ---
@@ -110,4 +133,26 @@ Phân tích 3 đỉnh của tam giác dịch tễ học:
 ---
 
 ## 📚 TRÍCH DẪN TÀI LIỆU THAM KHẢO CHUẨN EBM
-  
+1. GBD Collaborators. Global incidence, prevalence, and years lived with disability for [Disease]. *The Lancet*. Năm;Tập(Số):Trang. DOI/PMID.
+2. World Health Organization (WHO). Epidemiological update on [Disease]. Geneva: WHO, Năm.
+3. Cục Y tế Dự phòng - Bộ Y Tế Việt Nam. Báo cáo tình hình dịch bệnh truyền nhiễm quốc gia. Hà Nội, Năm.
+"
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📋 BẢNG KIỂM CHẤT LƯỢNG ĐẦU RA (QUALITY CHECKLIST - MINIMUM 5 ĐIỂM):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Trước khi lưu bài viết vào knowledge-vault/1.4. Kho dịch tễ học/, hãy kiểm tra:
+[ ] 1. Toàn bộ số liệu mắc, tử vong, CFR có đơn vị số học rõ ràng (ca/100.000 dân, %, DALYs), không dùng từ ngữ ước lệ.
+[ ] 2. Có phân tích chi tiết thực trạng tại Việt Nam theo vùng miền và serotypes/genotypes chủ đạo.
+[ ] 3. Tên tác nhân và vector truyền bệnh viết đúng chuẩn danh pháp in nghiêng quốc tế.
+[ ] 4. Có khoảng giá trị hệ số lây nhiễm cơ bản R0 và mốc thời gian ủ bệnh bằng ngày/tuần cụ thể.
+[ ] 5. Không còn bất kỳ câu placeholder chung chung hoặc phỏng đoán thiếu căn cứ số liệu.
+
+---
+
+## 🔗 HƯỚNG DẪN KẾT NỐI CƠ SỞ DỮ LIỆU CDSS (DOCSPACE):
+> [!NOTE]
+> Dữ liệu dịch tễ học (vùng lưu hành, mùa vụ, véc-tơ, serotypes) là căn cứ quan trọng để xây dựng
+> **Bộ lọc Tiền đề & Yếu tố Nguy cơ Dịch tễ (Epidemiological Risk Priors)** trong DocSpace CDSS:
+> - Sử dụng **Prompt 08** (`08-prompt-db-entry-generator.txt`): Để đưa yếu tố dịch tễ vào `criteria[]` nhóm `mandatory` hoặc `major` (ví dụ: 'Yếu tố dịch tễ sống/đi đến vùng lưu hành trong 14 ngày').
+> - Sử dụng **Prompt 09** (`09-prompt-db-batch-enricher.txt`): Để bổ sung tiêu chí tiền sử dịch tễ vào các bệnh lý truyền nhiễm trong `kho-chan-doan-db.ts`.

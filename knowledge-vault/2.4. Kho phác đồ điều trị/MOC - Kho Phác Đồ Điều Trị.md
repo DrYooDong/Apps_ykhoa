@@ -297,7 +297,7 @@ updated: "2026-08-21"
 - [[PDDT_Suy gan cấp do nhiễm trùng_P1.md|PDDT_Suy gan cấp do nhiễm trùng_P1]]
 - [[PDDT_Sốt mò_P1.md|PDDT_Sốt mò_P1]]
 - [[PDDT_Sốt rét_P1.md|PDDT_Sốt rét_P1]]
-- [[PDDT_Sốt xuất huyết Dengue_P1.md|PDDT_Sốt xuất huyết Dengue_P1]]
+- [[PDDT_Sốt xuất huyết Dengue_không DHCB|PDDT_Sốt xuất huyết Dengue_P1]]
 - [[PDDT_Sốt xuất huyết Dengue_P10.md|PDDT_Sốt xuất huyết Dengue_P10]]
 - [[PDDT_Sốt xuất huyết Dengue_P2.md|PDDT_Sốt xuất huyết Dengue_P2]]
 - [[PDDT_Sốt xuất huyết Dengue_P3.md|PDDT_Sốt xuất huyết Dengue_P3]]

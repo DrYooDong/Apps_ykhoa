@@ -14,8 +14,34 @@
 - Nguồn tham chiếu: [ĐIỀN NGUỒN CHÍNH, ví dụ: Dược thư Quốc gia VN 2024 / UpToDate 2026 / FDA / ESC Guidelines]
 
 [PROMPT DÁN VÀO NOTEBOOKLM]:
-"Dựa trên các tài liệu đã tải lên trong Notebook, hãy đóng vai trò Bác sĩ Chuyên khoa Dược Lâm sàng & Điều trị Nội khoa Cấp cao và biên soạn một bài viết BÁCH KHOA DƯỢC THƯ TOÀN DIỆN CHO HOẠT CHẤT: [TÊN HOẠT CHẤT].
+"Dựa trên các tài liệu đã tải lên trong Notebook, hãy đóng vai trò Bác sĩ Chuyên khoa Dược Lâm sàng & Điều trị Nội khoa Cấp cao, biên soạn một bài viết BÁCH KHOA DƯỢC THƯ TOÀN DIỆN, THÔNG SỐ DƯỢC ĐỘNG HỌC & AN TOÀN SỐNG CÒN CHO HOẠT CHẤT: [TÊN HOẠT CHẤT].
 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚠️ QUY TẮC CẤM VI PHẠM (ANTI-SLOP & ANTI-TEMPLATE QUALITY GATES):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. TUYỆT ĐỐI KHÔNG sử dụng các cụm từ placeholder mẫu sau đây:
+   ❌ 'Thuốc được hấp thu tốt qua đường tiêu hóa sau khi uống...'
+   ❌ 'Chuyển hóa chủ yếu qua gan và đào thải qua thận...'
+   ❌ 'Các nghiên cứu lâm sàng chứng minh thuốc có hiệu quả vượt trội...'
+   ❌ 'Thận trọng khi sử dụng cho bệnh nhân suy giảm chức năng thận/gan...'
+   ❌ 'Tránh phối hợp với các thuốc có tương tác bất lợi...'
+   ❌ 'Liều lượng có thể điều chỉnh tùy theo đáp ứng lâm sàng...'
+2. THÔNG SỐ DƯỢC ĐỘNG HỌC (PK) BẮT BUỘC ĐẦY ĐỦ CÁC CHỈ SỐ:
+   - Sinh khả dụng (Bioavailability F%): Điền số % cụ thể (kèm ảnh hưởng bữa ăn).
+   - Nồng độ đỉnh ($T_{max}$): Điền số giờ cụ thể.
+   - Thể tích phân bố ($V_d$): Điền L hoặc L/kg; Tỷ lệ gắn protein huyết tương (%).
+   - Enzym chuyển hóa: Gọi đích danh isoenzym CYP450 (CYP3A4, CYP2C9, CYP2D6...) hoặc enzym liên hợp (UGT1A1...).
+   - Thải trừ & Bán thải ($t_{1/2}$): Điền số giờ bán thải và % tỷ lệ đào thải qua thận vs phân.
+3. THỬ NGHIỆM LÂM SÀNG MỐC SON (EBM LANDMARKS) PHẢI CỤ THỂ:
+   - Phải nêu tên ít nhất 2 thử nghiệm RCT lớn (ví dụ: DAPA-HF, DELIVER, EMPEROR-Reduced, PLATO, COMPASS...).
+   - Kết quả biến cố chính phải có Hazard Ratio (HR) kèm 95% CI và p-value.
+4. BẢNG CHỈNH LIỀU eGFR & GAN PHẢI CÓ LIỀU SỐ HỌC:
+   - Điền rõ liều lượng (mg/ngày hoặc giãn khoảng cách) cho từng nấc eGFR CKD-EPI: ≥60, 30-59, 15-29, <15 hoặc lọc máu.
+   - Điền rõ khuyến cáo cho Child-Pugh A, B, C (dùng liều nào, giảm bao nhiêu %, hoặc chống chỉ định).
+5. TƯƠNG TÁC THUỐC DDI & HỘP ĐEN (BLACKBOX):
+   - Nêu đích danh hoạt chất tương tác (ít nhất 3 thuốc đại diện cho 3 mức độ: Chống chỉ định, Nghiêm trọng, Cần theo dõi) kèm cơ chế dược lực/dược động và khuyến cáo xử trí.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 BẮT BUỘC TUÂN THỦ CẤU TRÚC VÀ QUY CHUẨN SAU:
 
 ---
@@ -127,3 +153,25 @@ Tóm tắt 2-3 nghiên cứu RCT kinh điển định hình khuyến cáo quốc
 ---
 
 ## 📚 TRÍCH DẪN TÀI LIỆU THAM KHẢO CHUẨN AMA
+1. McMurray JJV, Solomon SD, Inzucchi SE, et al. Dapagliflozin in patients with heart failure and reduced ejection fraction. *New England Journal of Medicine*. 2019;381(21):1995-2008.
+2. Hội đồng Dược thư Quốc gia. Dược thư Quốc gia Việt Nam. Hà Nội: Nhà xuất bản Y học; 2024.
+"
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📋 BẢNG KIỂM CHẤT LƯỢNG ĐẦU RA (QUALITY CHECKLIST - MINIMUM 5 ĐIỂM):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Trước khi lưu bài viết vào knowledge-vault/3.2. Kho dược thư & tương tác thuốc/, hãy kiểm tra:
+[ ] 1. Toàn bộ thông số Dược động học (F%, Tmax, Vd, CYP, t1/2) đều có con số và đơn vị cụ thể.
+[ ] 2. Trích dẫn ít nhất 1-2 thử nghiệm RCT mốc son có chỉ số hiệu quả định lượng (HR, 95% CI, p).
+[ ] 3. Bảng chỉnh liều eGFR CKD-EPI có đầy đủ 4 nấc phân tầng kèm liều lượng số học (mg/ngày).
+[ ] 4. Bảng chỉnh liều suy gan Child-Pugh A, B, C có khuyến cáo định lượng rõ ràng.
+[ ] 5. Bảng tương tác thuốc (DDI) có đủ 3 cấp độ (Chống chỉ định, Nghiêm trọng, Cần theo dõi) kèm cơ chế và hành động xử trí.
+
+---
+
+## 🔗 HƯỚNG DẪN KẾT NỐI CƠ SỞ DỮ LIỆU CDSS (DOCSPACE):
+> [!NOTE]
+> Dữ liệu Dược thư và Chỉnh liều eGFR là lõi của
+> **Công cụ Kiểm tra Đơn thuốc An toàn & Cảnh báo Chống chỉ định (Prescription Safety Engine)** trong DocSpace:
+> - Sử dụng **Prompt 08** (`08-prompt-db-entry-generator.txt`): Để trích xuất chính xác tên hoạt chất, liều lượng chuẩn cho `firstLineDrugs` và `secondLineDrugs` của bệnh lý liên quan.
+> - Sử dụng **Prompt 09** (`09-prompt-db-batch-enricher.txt`): Để cập nhật phác đồ thuốc chuẩn liều mg/kg vào CSDL `kho-chan-doan-db.ts`.

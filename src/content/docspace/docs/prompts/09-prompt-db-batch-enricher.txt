@@ -1,0 +1,62 @@
+# ==============================================================================
+# CLINIPORTAL NOTEBOOKLM — PROMPT LÀM GIÀU & CHUẨN HÓA ENTRY PLACEHOLDER (PROMPT 09)
+# ==============================================================================
+# SỬ DỤNG KHI: Bạn có 01 hoặc NHIỀU entry trong `kho-chan-doan-db.ts` đang bị
+# template hóa (placeholder) với các câu chung chung như:
+# "Triệu chứng lâm sàng cơ năng & thực thể đặc trưng của...", "Thuốc điều trị bậc 1 cho..."
+# và muốn NotebookLM / AI nâng cấp thành dữ liệu lâm sàng cụ thể, có ngưỡng số học,
+# tên thuốc thực và tiêu chuẩn vàng chính xác 100%.
+# ==============================================================================
+
+[YÊU CẦU ĐẦU VÀO]:
+- Dán đoạn JSON entry hiện tại cần làm giàu: [DÁN KHỐI JSON TỪ kho-chan-doan-db.ts VÀO ĐÂY]
+- Tài liệu y khoa tham chiếu trong Notebook: [TÊN TÀI LIỆU GUIDELINE ĐÃ NẠP]
+
+[PROMPT DÁN VÀO NOTEBOOKLM / AI]:
+"Bạn là Hội đồng Chuyên gia Thẩm định Dữ liệu Lâm sàng (Clinical Data Review Board) của CliniPortal.
+
+Dưới đây là một entry JSON hiện tại trong cơ sở dữ liệu CDSS đang ở trạng thái 'BẢN THÔ / TEMPLATE MẪU' (chứa các câu chung chung do script tự động tạo):
+
+```json
+[DÁN ĐOẠN JSON HIỆN TẠI VÀO ĐÂY]
+```
+
+Dựa trên các hướng dẫn điều trị chuẩn (Guidelines Bộ Y Tế, WHO, CDC, hiệp hội chuyên khoa quốc tế) đã nạp trong Notebook, hãy LÀM GIÀU (ENRICH) và CHUẨN HÓA TOÀN DIỆN entry này theo các nguyên tắc sống còn sau:
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🛠️ QUY TẮC LÀM GIÀU DỮ LIỆU (DATA ENRICHMENT RULES):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. GIỮ NGUYÊN BẢO TOÀN:
+   - Key gốc của bệnh (ví dụ: 'ghe', 'sot_mo', 'uon_van'...).
+   - `icdCode`, `icdPrefixes`, `diseaseName`, `specialty`, `severity`.
+2. XÓA BỎ VÀ THAY THẾ 100% CÁC CỤM TỪ PLACEHOLDER:
+   - `goldStandard`: Phải thay bằng phương pháp chẩn đoán xác định cụ thể (ví dụ: 'Soi tươi dưới kính hiển vi quang học tìm thấy cái ghẻ, trứng hoặc chất thải Scybala').
+   - `criteriaRule.ruleDescription`: Phải thay bằng công thức logic chẩn đoán cụ thể (ví dụ: 'Chẩn đoán xác định khi: Thấy cái ghẻ trên soi vi thể HOẶC có sẩn mụn nước ở vị trí đặc hiệu kèm ngứa đêm + tiền sử gia đình lây nhiễm').
+   - `criteria[]`: Thay thế 3 tiêu chuẩn mẫu bằng 5 - 8 tiêu chuẩn thực tế:
+     * Cần có ít nhất 1-2 triệu chứng cơ năng điển hình (ngứa tăng về đêm, đau bụng dữ dội...).
+     * Cần có dấu hiệu thực thể khám xét đặc trưng (rãnh ghẻ kẽ ngón tay, sẩn mụn nước, vết loét eschar, co cứng cơ...).
+     * Cần có cận lâm sàng với ngưỡng số học cụ thể (labThreshold: 'Bạch cầu > 12.000/µL', 'D-dimer > 500 ng/mL'...).
+     * Đặt ID gợi nhớ (ví dụ: 'ghe_itch', 'ghe_burrow', 'ghe_microscopy').
+   - `protocol.targetGoals`: Thay bằng 3 mục tiêu lâm sàng cụ thể của bệnh.
+   - `protocol.initialManagement`: Thay bằng 3 hành động thực hành tại giường bệnh.
+   - `protocol.firstLineDrugs`: Phải có ít nhất 1-2 thuốc đầu tay cụ thể:
+     * Tên thuốc Generic chuẩn quốc tế (ví dụ: 'Permethrin 5% cream', 'Doxycycline', 'Artesunate IV'...).
+     * Liều dùng chuẩn (ví dụ: 'Bôi 1 tuýp 30g từ cổ xuống chân, lưu thuốc 8-14 giờ', '100mg x 2 lần/ngày'...).
+     * Đường dùng, tần suất, hướng dẫn sử dụng chi tiết.
+   - `protocol.secondLineDrugs`: Thuốc thay thế khi dị ứng hoặc kháng thuốc (ví dụ: 'Ivermectin 200 mcg/kg uống liều duy nhất').
+   - `complications`: Thay thế các câu chung chung bằng biến chứng nguy hiểm thực tế của bệnh (ví dụ: Nhiễm trùng thứ phát do gãi tụ cầu/liên cầu gây viêm vi cầu thận cấp; Sốc nhiễm khuẩn; Co thắt thanh quản...).
+     * warningSigns PHẢI có dấu hiệu báo động nhận diện tại giường bệnh.
+     * onCallAlertText: Lệnh trực ngắn gọn cho điều dưỡng/bác sĩ trực.
+   - `monitoringLabs`: Danh mục xét nghiệm kiểm tra đáp ứng hoặc độc tính thuốc.
+   - `vaultPathways`: Cập nhật `searchKeyword` đúng bản chất bệnh học để hệ thống liên kết tới 16 Kho Tri Thức.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎯 BẢNG KIỂM CHẤT LƯỢNG ĐẦU RA (QUALITY CHECKLIST):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- [ ] Không còn bất kỳ từ nào: 'Triệu chứng lâm sàng cơ năng & thực thể đặc trưng của...'
+- [ ] Không còn từ: 'Thuốc điều trị bậc 1 cho...'
+- [ ] Có tên thuốc, hàm lượng, liều dùng cụ thể.
+- [ ] Có tiêu chuẩn vàng đích danh.
+- [ ] Cú pháp JSON chuẩn xác 100%, không lỗi ngoặc, có thể parse trực tiếp bằng JSON.parse().
+
+XUẤT DUY NHẤT KHỐI JSON ĐÃ LÀM GIÀU:"

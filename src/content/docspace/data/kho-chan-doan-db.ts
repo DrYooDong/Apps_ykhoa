@@ -273,133 +273,167 @@ export const KHO_CHAN_DOAN_DATABASE: Record<string, DiseaseReactionChainDefiniti
     ]
   },
   "ghe": {
-    "icdCode": "R69",
+    "icdCode": "B86",
     "icdPrefixes": [
-      "R69"
+      "B86"
     ],
-    "diseaseName": "Ghẻ",
+    "diseaseName": "Bệnh Ghẻ (Scabies)",
     "specialty": "Da liễu - Cơ xương khớp",
     "severity": "routine",
-    "summary": "Tài liệu hướng dẫn chẩn đoán và phân tầng lâm sàng theo chứng cứ y khoa cho Ghẻ.",
-    "goldStandard": "Tiêu chuẩn vàng xác định dựa trên cận lâm sàng đặc hiệu, mô bệnh học hoặc khuyến cáo chuyên khoa Da liễu - Cơ xương khớp",
+    "summary": "Bệnh da do ký sinh trùng Sarcoptes scabiei var. hominis gây ra. Lây truyền qua tiếp xúc trực tiếp da-với-da hoặc qua đồ dùng chung. Đặc trưng bởi ngứa dữ dội tăng về đêm, rãnh ghẻ (burrows) và sẩn mụn nước tại các vị trí nếp gấp.",
+    "goldStandard": "Soi tươi trực tiếp dưới kính hiển vi quang học (cạo vảy da đầu luống ghẻ với dầu khoáng/KOH 10%) tìm thấy cái ghẻ sống, ấu trùng, trứng hoặc bã phân (scybala)",
     "criteriaRule": {
-      "minMajorRequired": 1,
-      "minMinorRequired": 1,
       "mandatoryIds": [],
-      "ruleDescription": "Chẩn đoán xác định khi thỏa mãn các tiêu chuẩn lâm sàng kết hợp cận lâm sàng chuyên khoa (Da liễu - Cơ xương khớp)"
+      "minMajorRequired": 2,
+      "minMinorRequired": 1,
+      "ruleDescription": "Chẩn đoán xác định theo đồng thuận IACS 2020 khi: (1) Soi vi thể thấy ký sinh trùng/trứng HOẶC (2) Có rãnh ghẻ điển hình + ngứa tăng về đêm + tiền sử tiếp xúc người trong gia đình cùng bị ngứa"
     },
     "criteria": [
       {
-        "id": "ghe_c1",
+        "id": "ghe_microscopy",
+        "type": "mandatory",
+        "label": "Soi tươi cạo rãnh ghẻ hoặc soi da Dermoscopy thấy cái ghẻ hình tam giác (Delta-wing sign), trứng hoặc bã phân",
+        "description": "Lấy mẫu tại luống ghẻ ở kẽ ngón tay, cổ tay, nếp gấp sinh dục",
+        "sourceGuideline": "IACS 2020 Consensus"
+      },
+      {
+        "id": "ghe_nocturnal_pruritus",
         "type": "major",
-        "label": "Triệu chứng lâm sàng cơ năng & thực thể đặc trưng của Ghẻ",
-        "description": "ghẻ, da liễu - cơ xương khớp",
-        "sourceGuideline": "Da liễu - Cơ xương khớp"
+        "label": "Ngứa dữ dội toàn thân, ngứa tăng vọt về ban đêm khi đi ngủ hoặc khi thời tiết ấm áp",
+        "description": "Phản ứng quá mẫn chậm type IV với kháng nguyên của cái ghẻ",
+        "sourceGuideline": "Bộ Y Tế / CDC 2024"
       },
       {
-        "id": "ghe_c2",
-        "type": "lab",
-        "label": "Xét nghiệm cận lâm sàng & dấu ấn sinh học đặc hiệu hỗ trợ xác định Ghẻ",
-        "labThreshold": "Biến đổi trên ngưỡng tham chiếu bình thường",
-        "sourceGuideline": "Da liễu - Cơ xương khớp"
+        "id": "ghe_burrow",
+        "type": "major",
+        "label": "Khám da thấy đường hầm ghẻ (rãnh ghẻ - Burrows) ngoằn ngoèo dài 2-10 mm kèm mụn nước nhỏ ở đầu rãnh",
+        "description": "Vị trí đặc hiệu: kẽ ngón tay, mặt trước cổ tay, khuỷu tay, nách, quanh rốn, kẽ mông, vùng sinh dục nam",
+        "sourceGuideline": "IACS 2020"
       },
       {
-        "id": "ghe_c3",
-        "type": "imaging",
-        "label": "Chẩn đoán hình ảnh học hoặc thăm dò chức năng chuyên sâu trong Ghẻ",
-        "description": "Định vị thương tổn và đánh giá mức độ nặng / giai đoạn bệnh",
-        "sourceGuideline": "Da liễu - Cơ xương khớp"
+        "id": "ghe_contact_history",
+        "type": "minor",
+        "label": "Tiền sử dịch tễ tiếp xúc: Có người thân trong gia đình, bạn cùng phòng hoặc bạn tình có triệu chứng ngứa tương tự",
+        "sourceGuideline": "CDC / WHO"
+      },
+      {
+        "id": "ghe_crusted_norwegian",
+        "type": "major",
+        "label": "Dạng ghẻ Na Uy (Ghẻ vảy - Crusted Scabies): Dày sừng, vảy tiết đóng mảng như vỏ cây ở lòng bàn tay/chân kèm hàng triệu ký sinh trùng",
+        "description": "Thường gặp trên người suy giảm miễn dịch (HIV, dùng Corticoid kéo dài, người già suy kiệt)",
+        "sourceGuideline": "IACS 2020"
       }
     ],
     "protocol": {
-      "title": "Phác đồ Tiếp cận & Điều trị Ghẻ (Da liễu - Cơ xương khớp)",
-      "guideline": "Hướng dẫn Chẩn đoán & Điều trị Ghẻ - Bộ Y Tế & Quốc Tế",
+      "title": "Phác đồ Điều trị Bệnh Ghẻ Toàn diện (Bộ Y Tế / CDC 2024 / IACS)",
+      "guideline": "Hướng dẫn chẩn đoán và điều trị bệnh da liễu - Bộ Y Tế & CDC Scabies Guidelines",
       "targetGoals": [
-        "Kiểm soát triệu chứng cấp tính & ổn định sinh hiệu",
-        "Điều trị căn nguyên đặc hiệu & ngăn ngừa biến chứng",
-        "Đánh giá đáp ứng điều trị và theo dõi dài hạn"
+        "Diệt sạch toàn bộ ký sinh trùng, ấu trùng và trứng Sarcoptes scabiei",
+        "Cắt đứt chu kỳ lây nhiễm trong gia đình và tập thể",
+        "Kiểm soát ngứa, ngăn ngừa bội nhiễm vi khuẩn thứ phát (Viêm cầu thận sau nhiễm liên cầu)"
       ],
       "initialManagement": [
-        "Đánh giá toàn diện sinh hiệu, tri giác và các dấu hiệu cảnh báo đỏ (Red Flags)",
-        "Thiết lập đường truyền tĩnh mạch và lấy mẫu xét nghiệm chẩn đoán ban đầu",
-        "Phân tầng độ nặng và quyết định hướng xử trí (ngoại trú / nhập viện / hồi sức tích cực)"
+        "Điều trị đồng thời cho TẤT CẢ các thành viên cùng sống trong gia đình hoặc tiếp xúc gần dù chưa có triệu chứng",
+        "Tắm rửa sạch sẽ, lau khô người trước khi bôi thuốc diệt ghẻ",
+        "Giặt nước nóng (≥ 60°C) và sấy khô toàn bộ quần áo, ga giường, chăn màn; hoặc bọc kín túi nilon trong ≥ 72 giờ"
       ],
       "firstLineDrugs": [
         {
-          "drugName": "Thuốc điều trị bậc 1 cho Ghẻ",
-          "class": "Thuốc đặc hiệu chuyên khoa Da liễu - Cơ xương khớp",
-          "route": "Uống / Tiêm truyền",
-          "dosage": "Theo cân nặng và chức năng gan thận",
-          "frequency": "Theo phác đồ chuẩn",
-          "instructions": "Sử dụng theo đúng chỉ định chuyên khoa, theo dõi sát tác dụng phụ",
-          "isFirstLine": true
+          "drugName": "Permethrin 5% cream",
+          "class": "Thuốc diệt ký sinh trùng Pyrethroid tại chỗ",
+          "route": "Bôi ngoài da",
+          "dosage": "1 tuýp 30g bôi toàn thân từ cổ xuống chân (trẻ em < 2 tuổi bôi cả đầu và mặt)",
+          "frequency": "Lưu thuốc trên da 8-14 giờ rồi tắm sạch. BẮT BUỘC nhắc lại liều thứ hai sau 7-14 ngày",
+          "instructions": "Bôi kỹ kẽ ngón tay, nách, rốn, nếp bẹn và dưới móng tay. Nếu rửa tay trong vòng 8h phải bôi lại",
+          "isFirstLine": true,
+          "notes": "Lựa chọn hàng đầu cho phụ nữ có thai và trẻ sơ sinh > 2 tháng tuổi",
+          "contraindications": ["Tiền sử dị ứng Pyrethroid hoặc hoa cúc"]
         }
       ],
-      "secondLineDrugs": [],
+      "secondLineDrugs": [
+        {
+          "drugName": "Ivermectin",
+          "class": "Thuốc diệt ký sinh trùng đường uống",
+          "route": "Uống (PO)",
+          "dosage": "200 µg/kg liều duy nhất",
+          "frequency": "Uống 1 liều, bắt buộc lặp lại liều thứ 2 sau 7-14 ngày",
+          "instructions": "Uống với nước khi bụng đói hoặc kèm bữa ăn nhẹ. Chỉ định khi thất bại điều trị bôi tại chỗ hoặc ghẻ vảy Na Uy",
+          "isFirstLine": false,
+          "notes": "Chống chỉ định cho trẻ em < 15 kg và phụ nữ mang thai"
+        },
+        {
+          "drugName": "D.E.P (Diethylphthalate) hoặc Benzyl Benzoate 25%",
+          "class": "Thuốc diệt ghẻ truyền thống",
+          "route": "Bôi ngoài da",
+          "dosage": "Bôi 1 lần/ngày vào buổi tối trong 3 đêm liên tiếp",
+          "frequency": "Mỗi 24 giờ",
+          "instructions": "Tắm sạch trước khi bôi, tránh để dính vào mắt và niêm mạc",
+          "isFirstLine": false
+        }
+      ],
       "supportiveCare": [
-        "Theo dõi sát dấu hiệu sinh tồn và diễn tiến lâm sàng",
-        "Bù đủ dịch, cân bằng điện giải và dinh dưỡng hợp lý",
-        "Tái khám định kỳ hoặc hội chẩn đa chuyên khoa khi không đáp ứng"
+        "Thuốc kháng Histamin H1 (Cetirizine 10mg hoặc Loratadine 10mg uống tối) để giảm ngứa",
+        "Bôi kem dưỡng ẩm, kem Calamine hoặc Hydrocortisone nhẹ sau khi hoàn thành đợt thuốc diệt ghẻ",
+        "Nếu có mụn mủ bội nhiễm tụ cầu/liên cầu: Dùng kháng sinh bôi (Fucidic acid) hoặc kháng sinh uống (Cephalexin/Amoxicillin-Clavulanate)"
       ]
     },
     "complications": [
       {
-        "name": "Biến chứng cấp tính của Ghẻ",
-        "timeframe": "acute_24h",
-        "warningSigns": "Diễn tiến nặng đột ngột, suy hô hấp, rối loạn huyết động hoặc thay đổi tri giác",
-        "preventiveAction": "Phát hiện sớm dấu hiệu cảnh báo và xử trí cấp cứu theo phác đồ",
-        "onCallAlertText": "Báo động biến chứng cấp trên bệnh nhân Ghẻ: Kiểm tra sinh hiệu và báo bác sĩ trực ngay"
+        "name": "Nhiễm trùng da thứ phát (Chốc lở, Viêm mô tế bào) do gãi trầy xước",
+        "timeframe": "subacute_7d",
+        "warningSigns": "Vết loét có mủ vàng, sưng nóng đỏ đau lan rộng quanh vết gãi, sốt > 38°C",
+        "preventiveAction": "Cắt ngắn móng tay, giữ vệ sinh, dùng kháng sinh bôi/uống sớm",
+        "onCallAlertText": "Nghi ngờ bội nhiễm vi khuẩn trên nền ghẻ: Đánh giá sưng mủ và chỉ định kháng sinh"
       },
       {
-        "name": "Di chứng hoặc biến chứng mạn tính",
+        "name": "Viêm cầu thận cấp sau nhiễm liên cầu (Post-streptococcal Glomerulonephritis)",
         "timeframe": "chronic",
-        "warningSigns": "Suy giảm chức năng cơ quan đích kéo dài",
-        "preventiveAction": "Điều trị duy trì và tái khám theo dõi định kỳ",
-        "onCallAlertText": "Theo dõi tiến triển mạn tính và tuân thủ điều trị"
+        "warningSigns": "Phù mặt/chân, tiểu ít, nước tiểu màu xá xị hoặc đỏ máu, tăng huyết áp",
+        "preventiveAction": "Điều trị triệt để các ổ nhiễm trùng mủ da do liên cầu khuẩn",
+        "onCallAlertText": "Bệnh nhân ghẻ có phù + tiểu sẫm màu: Khẩn cấp xét nghiệm tổng phân tích nước tiểu & Creatinine"
       }
     ],
     "monitoringLabs": [
-      "Công thức máu toàn phần (CBC)",
-      "Sinh hóa máu: Chức năng gan (AST, ALT), Chức năng thận (Creatinine, Urea)",
-      "Điện giải đồ (Na, K, Cl)",
-      "Các dấu ấn chuyên khoa đặc hiệu theo dõi đáp ứng điều trị"
+      "Tổng phân tích nước tiểu (tìm Protein niệu và Hồng cầu niệu) nếu có bội nhiễm mủ",
+      "Soi tươi lại tổn thương da sau 2-4 tuần nếu triệu chứng ngứa và sẩn mới vẫn còn xuất hiện",
+      "Đánh giá men gan và chức năng thận nếu dùng Ivermectin liều lặp lại"
     ],
     "vaultPathways": [
       {
         "khoCode": "TC",
         "khoName": "Kho Lâm Sàng",
-        "articleTitle": "Tiếp cận chẩn đoán Ghẻ",
-        "searchKeyword": "ghẻ"
+        "articleTitle": "Tiếp cận bệnh nhân Ngứa toàn thân & Sẩn ngứa ban đêm",
+        "searchKeyword": "ngứa da liễu"
       },
       {
         "khoCode": "CD",
         "khoName": "Kho Tiêu Chuẩn CĐ",
-        "articleTitle": "Tiêu chuẩn chẩn đoán Ghẻ",
-        "searchKeyword": "ghẻ"
+        "articleTitle": "Tiêu chuẩn chẩn đoán Bệnh Ghẻ theo IACS 2020",
+        "searchKeyword": "ghẻ scabies"
       },
       {
         "khoCode": "CLS",
         "khoName": "Kho Cận Lâm Sàng",
-        "articleTitle": "Xét nghiệm & Cận lâm sàng Ghẻ",
-        "searchKeyword": "ghẻ"
+        "articleTitle": "Kỹ thuật cạo luống ghẻ soi tươi và Dermoscopy chẩn đoán",
+        "searchKeyword": "soi tươi ghẻ"
       },
       {
         "khoCode": "PDDT",
         "khoName": "Kho Phác Đồ",
-        "articleTitle": "Phác đồ điều trị Ghẻ",
-        "searchKeyword": "ghẻ"
+        "articleTitle": "Phác đồ điều trị Ghẻ và Ghẻ vảy CDC/BYT",
+        "searchKeyword": "permethrin ivermectin"
       },
       {
         "khoCode": "DUOC",
         "khoName": "Kho Dược",
-        "articleTitle": "Dược thư & Sử dụng thuốc Ghẻ",
-        "searchKeyword": "ghẻ"
+        "articleTitle": "Dược thư Permethrin 5% và Ivermectin",
+        "searchKeyword": "permethrin"
       },
       {
         "khoCode": "BC",
         "khoName": "Kho Biến Chứng",
-        "articleTitle": "Biến chứng & Tiên lượng Ghẻ",
-        "searchKeyword": "ghẻ"
+        "articleTitle": "Biến chứng bội nhiễm tụ cầu và viêm cầu thận sau ghẻ",
+        "searchKeyword": "bội nhiễm ghẻ"
       }
     ]
   },

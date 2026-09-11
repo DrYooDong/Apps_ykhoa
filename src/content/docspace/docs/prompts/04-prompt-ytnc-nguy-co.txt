@@ -12,8 +12,30 @@
 - Nghiên cứu / Guideline tham chiếu: [ĐIỀN NGUỒN CHÍNH, ví dụ: INTERHEART / INTERSTROKE / ESC Prevention 2024 / ADA 2026 / WHO]
 
 [PROMPT DÁN VÀO NOTEBOOKLM]:
-"Dựa trên các tài liệu đã tải lên trong Notebook, hãy đóng vai trò Chuyên gia Y học Dự phòng & Dịch tễ học Lâm sàng và biên soạn một bài viết PHÂN TÍCH CHUYÊN SÂU VỀ YẾU TỐ NGUY CƠ VÀ MÔ HÌNH DỰ BÁO cho bệnh lý: [TÊN BỆNH LÝ].
+"Dựa trên các tài liệu đã tải lên trong Notebook, hãy đóng vai trò Chuyên gia Y học Dự phòng & Dịch tễ học Lâm sàng Cấp cao, biên soạn một bài viết PHÂN TÍCH CHUYÊN SÂU VỀ YẾU TỐ NGUY CƠ, MA TRẬN ĐỊNH LƯỢNG & MÔ HÌNH DỰ BÁO cho bệnh lý: [TÊN BỆNH LÝ].
 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚠️ QUY TẮC CẤM VI PHẠM (ANTI-SLOP & ANTI-TEMPLATE QUALITY GATES):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. TUYỆT ĐỐI KHÔNG sử dụng các cụm từ placeholder mẫu sau đây:
+   ❌ 'Yếu tố nguy cơ quan trọng bao gồm tuổi cao, lối sống ít vận động...'
+   ❌ 'Các thang điểm tiên lượng giúp đánh giá mức độ nguy cơ...'
+   ❌ 'Tăng nguy cơ đáng kể khi mắc kèm các bệnh lý khác...'
+   ❌ 'Dự phòng bằng cách thay đổi lối sống lành mạnh và ăn uống hợp lý...'
+   ❌ 'Các dấu ấn sinh học mới đang được nghiên cứu thêm...'
+   ❌ 'Tỷ lệ nguy cơ chưa có số liệu thống kê cụ thể...'
+2. MA TRẬN NGUY CƠ BẮT BUỘC ĐỊNH LƯỢNG BẰNG CHỈ SỐ THỐNG KÊ (OR / RR / PAR%):
+   - Mỗi yếu tố nguy cơ (ít nhất 5 yếu tố) phải có: Tỷ số chênh (Odds Ratio - OR) hoặc Nguy cơ tương đối (Relative Risk - RR) kèm khoảng tin cậy 95% CI (ví dụ: OR = 2.45, 95% CI: 1.82 - 3.29, p < 0.001).
+   - Phần trăm Nguy cơ quy trách dân số (Population Attributable Risk - PAR%) phải ghi số % cụ thể.
+   - Phân định rõ: Nhóm có thể thay đổi được (Modifiable) vs Không thể thay đổi (Non-modifiable).
+3. MÔ HÌNH DỰ BÁO PHẢI GỌI ĐÍCH DANH THANG ĐIỂM QUỐC TẾ:
+   - Gọi đích danh tên thang điểm: SCORE2, ASCVD Risk Estimator, Framingham, CHA2DS2-VASc, Wells, FIB-4, Child-Pugh...
+   - Liệt kê đầy đủ 5 nhóm biến số đầu vào và bảng phân tầng 4 mức (Rất cao, Cao, Trung bình, Thấp) với ngưỡng xác suất biến cố 5-10 năm.
+4. CHỈ TIÊU DỰ PHÒNG PHẢI ĐỊNH LƯỢNG NGƯỠNG MỤC TIÊU:
+   - Chỉ tiêu lâm sàng: Huyết áp mục tiêu (< 130/80 mmHg), LDL-C (< 1.4 mmol/L hoặc < 55 mg/dL), HbA1c (< 7.0%), Vòng eo (< 90 cm nam, < 80 cm nữ).
+   - Chỉ tiêu lối sống: Lượng muối (< 5g/ngày), Vận động (≥ 150 phút/tuần cường độ trung bình).
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 BẮT BUỘC TUÂN THỦ CẤU TRÚC VÀ QUY CHUẨN SAU:
 
 ---
@@ -123,3 +145,25 @@ Khi bệnh nhân ở nhóm nguy cơ trung bình hoặc giáp ranh, các yếu t�
 ---
 
 ## 📚 6. TRÍCH DẪN TÀI LIỆU THAM KHẢO CHUẨN AMA
+1. Yusuf S, Hawken S, Ôunpuu S, et al. Effect of potentially modifiable risk factors associated with myocardial infarction in 52 countries (the INTERHEART study). *The Lancet*. 2004;364(9438):937-952.
+2. Visseren FLJ, Mach F, Smulders YM, et al. 2021 ESC Guidelines on cardiovascular disease prevention in clinical practice. *European Heart Journal*. 2021;42(34):3227-3337.
+"
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📋 BẢNG KIỂM CHẤT LƯỢNG ĐẦU RA (QUALITY CHECKLIST - MINIMUM 5 ĐIỂM):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Trước khi lưu bài viết vào knowledge-vault/1.5. Kho yếu tố nguy cơ/, hãy kiểm tra:
+[ ] 1. Có ít nhất 5 yếu tố nguy cơ được định lượng đầy đủ với chỉ số OR hoặc RR kèm 95% CI và PAR%.
+[ ] 2. Thang điểm dự báo có tên gọi quốc tế chính thức, biến số đầu vào và bảng phân tầng 4 mức xác suất biến cố.
+[ ] 3. Chỉ tiêu can thiệp dự phòng tiên phát và thứ phát có ngưỡng mục tiêu số học rõ ràng (huyết áp, lipid, HbA1c, muối, vận động).
+[ ] 4. Có phân tích các yếu tố tăng cường nguy cơ (Risk Enhancers / Biomarkers) giúp tái phân tầng nhóm giáp ranh.
+[ ] 5. Bộ Flashcards spaced repetition có câu hỏi tình huống thực tế và đáp án số liệu chính xác.
+
+---
+
+## 🔗 HƯỚNG DẪN KẾT NỐI CƠ SỞ DỮ LIỆU CDSS (DOCSPACE):
+> [!NOTE]
+> Các yếu tố nguy cơ định lượng (OR/RR) là thành phần then chốt để tính toán
+> **Xác suất Hậu nghiệm & Phân tầng Nguy cơ Bệnh nhân (Pre-test Probability & Risk Stratification)** trong DocSpace:
+> - Sử dụng **Prompt 08** (`08-prompt-db-entry-generator.txt`): Để ánh xạ các yếu tố nguy cơ có OR cao nhất vào `criteria[]` với trọng số 'major' hoặc 'minor'.
+> - Sử dụng **Prompt 09** (`09-prompt-db-batch-enricher.txt`): Để bổ sung tiêu chí nguy cơ nền vào các ca bệnh phức tạp trong `kho-chan-doan-db.ts`.
