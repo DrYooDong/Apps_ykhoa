@@ -12,12 +12,14 @@ interface NavbarProps {
   activeTab: 'analyzer' | 'guide' | 'cases' | 'protocols';
   setActiveTab: (tab: 'analyzer' | 'guide' | 'cases' | 'protocols') => void;
   onNavigateToGlossaryInGuide?: () => void;
+  onOpenGlossary?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
   activeTab,
   setActiveTab,
-  onNavigateToGlossaryInGuide
+  onNavigateToGlossaryInGuide,
+  onOpenGlossary
 }) => {
   return (
     <header className="sticky top-0 z-50 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-xs transition-colors">
@@ -54,10 +56,10 @@ export const Navbar: React.FC<NavbarProps> = ({
               id="tab-analyzer"
               type="button"
               onClick={() => setActiveTab('analyzer')}
-              className={`inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all whitespace-nowrap cursor-pointer ${
+              className={`inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all whitespace-nowrap cursor-pointer ${
                 activeTab === 'analyzer'
-                  ? 'bg-blue-600 text-white shadow-sm shadow-blue-500/25'
-                  : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'
+                  ? 'bg-blue-600 text-white shadow-md shadow-blue-500/30 ring-1 ring-blue-700'
+                  : 'text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'
               }`}
             >
               <Sparkles className="w-4 h-4 shrink-0" />
@@ -68,10 +70,10 @@ export const Navbar: React.FC<NavbarProps> = ({
               id="tab-guide"
               type="button"
               onClick={() => setActiveTab('guide')}
-              className={`inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all whitespace-nowrap cursor-pointer ${
+              className={`inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all whitespace-nowrap cursor-pointer ${
                 activeTab === 'guide'
-                  ? 'bg-blue-600 text-white shadow-sm shadow-blue-500/25'
-                  : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'
+                  ? 'bg-blue-600 text-white shadow-md shadow-blue-500/30 ring-1 ring-blue-700'
+                  : 'text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'
               }`}
             >
               <BookOpen className="w-4 h-4 shrink-0" />
@@ -85,10 +87,10 @@ export const Navbar: React.FC<NavbarProps> = ({
               id="tab-cases"
               type="button"
               onClick={() => setActiveTab('cases')}
-              className={`inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all whitespace-nowrap cursor-pointer ${
+              className={`inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all whitespace-nowrap cursor-pointer ${
                 activeTab === 'cases' || activeTab === 'protocols'
-                  ? 'bg-blue-600 text-white shadow-sm shadow-blue-500/25'
-                  : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'
+                  ? 'bg-blue-600 text-white shadow-md shadow-blue-500/30 ring-1 ring-blue-700'
+                  : 'text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'
               }`}
             >
               <ClipboardList className="w-4 h-4 shrink-0" />
@@ -97,6 +99,19 @@ export const Navbar: React.FC<NavbarProps> = ({
                 24 Ca Mẫu
               </span>
             </button>
+
+            {onOpenGlossary && (
+              <button
+                id="nav-glossary-btn"
+                type="button"
+                onClick={onOpenGlossary}
+                className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs sm:text-sm font-bold text-purple-700 dark:text-purple-300 bg-purple-50 dark:bg-purple-950/60 hover:bg-purple-100 dark:hover:bg-purple-900/60 border border-purple-200 dark:border-purple-800/60 transition-all cursor-pointer whitespace-nowrap shadow-2xs"
+                title="Mở bảng tra cứu Từ Điển Viết Tắt & Thuật Ngữ Khí Máu"
+              >
+                <HelpCircle className="w-4 h-4 text-purple-600 dark:text-purple-400 shrink-0" />
+                <span>Từ Điển Viết Tắt</span>
+              </button>
+            )}
           </nav>
         </div>
       </div>

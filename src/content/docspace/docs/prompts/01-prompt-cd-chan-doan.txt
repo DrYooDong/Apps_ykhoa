@@ -3,14 +3,13 @@
 # ==============================================================================
 # SỬ DỤNG KHI: Bạn muốn NotebookLM trích xuất nội dung CHẨN ĐOÁN TOÀN DIỆN
 # (Lâm sàng, Cận lâm sàng, Tiêu chuẩn vàng, Bộ tiêu chuẩn xác định & Chẩn đoán phân biệt)
-# để lưu vào: knowledge-vault/2.3. Kho chẩn đoán/{Chuyên khoa}/CD_{Tên bệnh}_P1.md
+# để lưu vào: knowledge-vault/2.3. Kho chẩn đoán/{Chuyên khoa}/CD_{Tên bệnh}.md
 # ==============================================================================
 
 [YÊU CẦU ĐẦU VÀO]:
 - Tên bệnh lý: [ĐIỀN TÊN BỆNH LÝ, ví dụ: Suy tim / Hội chứng vành cấp / Viêm tụy cấp / Bỏng / Ghẻ]
 - Chuyên khoa: [ĐIỀN CHUYÊN KHOA, ví dụ: Tim mạch / Hô hấp / Tiêu hóa / Da liễu - Cơ xương khớp]
 - Hướng dẫn tham chiếu: [ĐIỀN NGUỒN CHÍNH, ví dụ: ESC 2023 / BYT 2024 / Atlanta 2012 / KDIGO 2024]
-- Cấu trúc bài xuất bản: [Chọn "P1 - Toàn diện" (mặc định) HOẶC "P1 - Lâm sàng", "P2 - Cận lâm sàng", "P3 - Tiêu chuẩn & Phân biệt"]
 
 [PROMPT DÁN VÀO NOTEBOOKLM - CHẾ ĐỘ TOÀN DIỆN ALL-IN-ONE (P1)]:
 "Dựa trên các tài liệu đã tải lên trong Notebook, hãy đóng vai trò Bác sĩ Chuyên khoa Nội/Nhi/Ngoại/Da liễu Cấp cao và biên soạn một bài viết CHẨN ĐOÁN TOÀN DIỆN CHUẨN Y HỌC CHỨNG CỨ cho bệnh lý: [TÊN BỆNH LÝ].
@@ -19,7 +18,6 @@ BẮT BUỘC TUÂN THỦ CẤU TRÚC VÀ QUY CHUẨN SAU:
 
 ---
 title: \"Chẩn đoán: [Tên bệnh lý chuẩn y khoa tiếng Việt]\"
-part: \"P1\"
 aliases:
   - \"Chẩn đoán [Tên bệnh]\"
   - \"[Tên viết tắt y khoa, ví dụ: HF, ACS, AP]\"
@@ -129,6 +127,3 @@ Trình bày sơ đồ logic các bước tiếp cận tại giường bệnh:
 
 ## 📚 TRÍCH DẪN TÀI LIỆU THAM KHẢO CHUẨN EBM
 Trích dẫn đầy đủ các tài liệu nguồn y văn theo chuẩn AMA:
-1. Tác giả / Hiệp hội. Tiêu đề khuyến cáo chẩn đoán. *Tên Tạp chí*. Năm;Tập(Số):Trang. DOI/PMID.
-2. Bộ Y Tế Việt Nam. Hướng dẫn chẩn đoán và điều trị... Quyết định số.../QĐ-BYT. Hà Nội.
-"

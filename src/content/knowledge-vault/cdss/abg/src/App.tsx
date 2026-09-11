@@ -100,6 +100,7 @@ export default function App() {
           }
         }}
         onNavigateToGlossaryInGuide={handleNavigateToGuideGlossary}
+        onOpenGlossary={() => handleOpenGlossary()}
       />
 
       {/* Main Tab Content */}
@@ -132,17 +133,6 @@ export default function App() {
           />
         )}
       </main>
-
-      {/* Floating Quick Glossary Action Button */}
-      <button
-        id="btn-quick-glossary"
-        onClick={handleNavigateToGuideGlossary}
-        className="fixed bottom-6 right-6 z-40 bg-purple-600 hover:bg-purple-700 active:scale-95 text-white p-3 sm:px-4 sm:py-3 rounded-full shadow-lg border border-purple-400/40 flex items-center space-x-2 transition-all hover:scale-105 cursor-pointer group"
-        title="Mở Từ Điển Thuật Ngữ & Viết Tắt trong Cẩm Nang & Sơ Đồ"
-      >
-        <HelpCircle className="w-5 h-5 text-purple-100 group-hover:text-white transition-colors" />
-        <span className="text-xs font-bold hidden sm:inline">Từ Điển Cẩm Nang</span>
-      </button>
 
       {/* Medical Footer & Reference Disclaimers */}
       <footer className="bg-white border-t border-slate-200 mt-auto py-8">

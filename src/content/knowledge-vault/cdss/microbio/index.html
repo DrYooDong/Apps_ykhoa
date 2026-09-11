@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hệ Thống Vi Sinh Lâm Sàng &amp; Định Danh Vi Khuẩn (Mahon CDSS) | CliniPortal</title>
+  <meta name="description" content="Nền tảng vi sinh chẩn đoán chuyên sâu theo giáo trình Mahon 6th Ed. và tiêu chuẩn CLSI M100: Lưu đồ định danh tương tác, tra cứu 50+ vi khuẩn/nấm, kính hiển vi 2D/3D mô phỏng hình thái, độc tố học, kháng sinh đồ (AST) và xuất báo cáo PDF chuẩn SOAP.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+      background-color: #f8fafc;
+      color: #0f172a;
+    }
+    .cdss-portal-navbar {
+      background: rgba(15, 23, 42, 0.95);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 0.55rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    [data-theme="light"] .cdss-portal-navbar {
+      background: rgba(255, 255, 255, 0.95);
+      border-bottom: 1px solid #e2e8f0;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+    }
+    .cdss-portal-nav-breadcrumbs {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.82rem;
+      color: #64748b;
+    }
+    .cdss-portal-nav-breadcrumbs a {
+      color: #64748b;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+    .cdss-portal-nav-breadcrumbs a:hover {
+      color: #4f46e5;
+    }
+    .cdss-portal-nav-breadcrumbs .active {
+      color: #0f172a;
+      font-weight: 700;
+    }
+    [data-theme="dark"] .cdss-portal-nav-breadcrumbs .active {
+      color: #f8fafc;
+    }
+    .cdss-portal-nav-right {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+    .cdss-portal-nav-btn {
+      padding: 0.4rem 0.8rem;
+      border-radius: 8px;
+      border: 1px solid #cbd5e1;
+      background: #ffffff;
+      color: #334155;
+      text-decoration: none;
+      font-size: 0.78rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    [data-theme="dark"] .cdss-portal-nav-btn {
+      background: #1e293b;
+      border-color: #334155;
+      color: #cbd5e1;
+    }
+    .cdss-portal-nav-btn:hover {
+      border-color: #4f46e5;
+      color: #4f46e5;
+    }
+    .cdss-portal-theme-btn {
+      width: 34px;
+      height: 34px;
+      padding: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      border: 1px solid #cbd5e1;
+      background: #ffffff;
+      color: #334155;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    [data-theme="dark"] .cdss-portal-theme-btn {
+      background: #1e293b;
+      border-color: #334155;
+      color: #f8fafc;
+    }
+  </style>
+
+  <link rel="stylesheet" href="./assets/index-0VvTvHu6.css">
+  <script type="module" crossorigin src="./assets/index-Cr3ACuPQ.js"></script>
+</head>
+<body>
+  <!-- CliniPortal Master Navigation Bar -->
+  <header class="cdss-portal-navbar">
+    <div class="cdss-portal-nav-breadcrumbs">
+      <a href="../../index.html"><i class="fa-solid fa-graduation-cap"></i> Knowledge Vault</a>
+      <i class="fa-solid fa-chevron-right" style="font-size: 0.6rem;"></i>
+      <a href="../index.html"><i class="fa-solid fa-network-wired"></i> Kho CDSS</a>
+      <i class="fa-solid fa-chevron-right" style="font-size: 0.6rem;"></i>
+      <span class="active"><i class="fa-solid fa-bacterium text-indigo-600"></i> Vi Sinh Lâm Sàng (Mahon CDSS)</span>
+    </div>
+
+    <div class="cdss-portal-nav-right">
+      <a href="../../docspace/index.html" class="cdss-portal-nav-btn" title="Mở trong Hồ Sơ Bệnh Án DocSpace">
+        <i class="fa-solid fa-user-doctor"></i> <span>DocSpace Pro</span>
+      </a>
+      <a href="../index.html" class="cdss-portal-nav-btn" title="Trở về Trung Tâm CDSS">
+        <i class="fa-solid fa-th-large"></i> <span>Danh Mục CDSS</span>
+      </a>
+      <button id="theme-toggle" class="cdss-portal-theme-btn" title="Chuyển chế độ Sáng/Tối" aria-label="Toggle Theme">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mount Point for Full React Application -->
+  <div id="root"></div>
+
+  <!-- Offline file:/// Fallback Loader -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Theme toggle support
+      const themeBtn = document.getElementById('theme-toggle');
+      if (themeBtn) {
+        const savedTheme = localStorage.getItem('cliniportal_theme') || 
+          (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        themeBtn.innerHTML = savedTheme === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+
+        themeBtn.addEventListener('click', () => {
+          const current = document.documentElement.getAttribute('data-theme') || 'light';
+          const next = current === 'dark' ? 'light' : 'dark';
+          document.documentElement.setAttribute('data-theme', next);
+          localStorage.setItem('cliniportal_theme', next);
+          themeBtn.innerHTML = next === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+        });
+      }
+
+      // If module is blocked under file:/// protocol, dynamically load IIFE bundle
+      setTimeout(() => {
+        const rootEl = document.getElementById('root');
+        if (rootEl && rootEl.children.length === 0) {
+          console.info('Module blocked or pending, activating standalone IIFE bundle...');
+          const s = document.createElement('script');
+          s.src = './assets/microbio-app.iife.js?v=' + Date.now();
+          document.body.appendChild(s);
+        }
+      }, 300);
+    });
+  </script>
+</body>
+</html>

@@ -808,6 +808,9 @@
 | `abg/css/abg-cdss.css` | Stylesheet chuẩn DocSpace Clinical Aesthetic cho phân hệ ABG | CDSS ABG CSS |
 | `xray/index.html` | Trang standalone CDSS Phân Tích X-Quang Ngực & Bụng Thông Minh (RadAI) | CDSS RadAI X-Ray |
 | `xray/xray-canvas-renderer.ts` | Bộ mô phỏng hình ảnh X-quang PACS kỹ thuật số Canvas 2D (Ngực & Bụng) | CDSS X-Ray Canvas |
+| `hepa/index.html` | Trang standalone CDSS Phân Tích Sinh Hóa Gan & Quyết Định Lâm Sàng (HepaCDSS) | CDSS Hepa |
+| `neuro/index.html` | Trang standalone CDSS Thần Kinh Lâm Sàng & Mô Phỏng Y Khoa (NeuroExam Pro) | CDSS Neuro |
+| `microbio/index.html` | Trang standalone CDSS Hệ Thống Vi Sinh Lâm Sàng & Định Danh Vi Khuẩn (Mahon CDSS) | CDSS Microbiology |
 ## 🏥 src/content/docspace/ (DocSpace MedLens & Clinical Deduction Engine)
 
 | File | Vai trò | Phân hệ |

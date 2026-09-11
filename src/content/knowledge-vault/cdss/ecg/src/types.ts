@@ -153,7 +153,7 @@ export type LeadFilterMode =
   | "ANTEROSEPTAL" // Vách & Trước: V1 - V4
   | "CUSTOM"; // Tùy chọn riêng lẻ từng chuyển đạo
 
-export type EcgDisplayTheme = "paper" | "night" | "monitor" | "amber";
+export type EcgDisplayTheme = "paper" | "clinic" | "night" | "monitor" | "amber";
 
 export interface LeadAnatomyInfo {
   lead: LeadName;

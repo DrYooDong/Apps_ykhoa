@@ -113,6 +113,24 @@ export const CDSS_MODULES: CDSSModuleMeta[] = [
     badge: 'Bản Nâng Cấp 2.5: 3D + Thân Não + JCS + Rối Loạn Vận Động',
     isStandalone: true,
     standaloneUrl: 'neuro/index.html'
+  },
+  {
+    id: 'cdss-microbiology-mahon',
+    slug: 'microbio',
+    title: 'Hệ Thống Vi Sinh Lâm Sàng & Định Danh Vi Khuẩn (Mahon CDSS)',
+    titleEn: 'Clinical Diagnostic Microbiology System (Mahon & Lehman)',
+    shortDesc: 'Nền tảng vi sinh chẩn đoán chuyên sâu theo giáo trình Mahon 6th Ed. và tiêu chuẩn CLSI M100: Lưu đồ định danh tương tác, tra cứu toàn diện 50+ tác nhân, kính hiển vi 2D/3D mô phỏng hình thái, độc tố học, ma trận kháng sinh đồ (AST/CLSI) và xuất báo cáo PDF chuẩn SOAP.',
+    category: 'infectious',
+    categoryName: 'Truyền nhiễm & Vi sinh',
+    version: '2.0.0 (Mahon 6th Ed. & CLSI M100)',
+    updatedAt: '2026-09-11',
+    author: 'CliniPortal CDSS Squad & Connie R. Mahon, Donald C. Lehman',
+    guidelineSource: "Mahon's Textbook of Diagnostic Microbiology, 6th Edition & CLSI M100 Performance Standards",
+    icd10: ['A41', 'A49', 'B95', 'B96', 'Z16'],
+    icon: 'fa-solid fa-bacterium',
+    badge: 'Mahon 6th Ed. + AST/CLSI',
+    isStandalone: true,
+    standaloneUrl: 'microbio/index.html'
   }
 ];
 

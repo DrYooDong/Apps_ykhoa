@@ -77,7 +77,14 @@ export interface DiseaseReactionChainDefinition {
   vaultPathways: VaultPathwayLink[];
 }
 
+import { KHO_CHAN_DOAN_DATABASE } from './kho-chan-doan-db';
+
 export const DIAGNOSTIC_CHAIN_DATABASE: Record<string, DiseaseReactionChainDefinition> = {
+  // ── Toàn bộ 164 bệnh lý đồng bộ tự động từ Kho Chẩn Đoán (2.3) ─────────────
+  ...KHO_CHAN_DOAN_DATABASE,
+
+  // ── 30 Bệnh lý Trọng tâm được biên soạn thủ công & chi tiết chuyên sâu ──────
+  // (Ghi đè để bảo toàn bộ tiêu chuẩn & phác đồ thuốc phân tầng chi tiết nhất)
   // ─────────────────────────────────────────────────────────────────────────────
   // 1. VIÊM PHỔI MẮC PHẢI CỘNG ĐỒNG (CAP / HAP) - J13-J18
   // ─────────────────────────────────────────────────────────────────────────────

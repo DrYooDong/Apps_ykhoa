@@ -192,8 +192,8 @@ export function EcgCanvas({
   const lastBeepTimeRef = useRef<number>(0);
 
   // Pixel scale calculation:
-  // 1 mm on standard paper = ~3.78 px at 96 dpi
-  const pxPerMm = 3.7795;
+  // 1 mm on standard paper = 4 px (1mm = 4px, 5mm = 20px, perfect 5:1 ratio, 0 blur)
+  const pxPerMm = 4;
   const pixelsPerMmX = pxPerMm * (paperSpeed / 25) * zoomLevel;
   const pixelsPerMmY = pxPerMm * voltageGain * zoomLevel;
 
@@ -517,15 +517,37 @@ export function EcgCanvas({
     );
   }, [annotations]);
 
-  // Theme visual styles (with specialized Night Mode for observing fine waveform deflections)
+  // Theme visual styles (Standard Pink Paper, Clinic White, Night Shift Dark, ICU Monitor)
   const themeStyles = useMemo(() => {
+    if (displayTheme === "clinic") {
+      return {
+        containerBg: "bg-[#ffffff]",
+        grid1mm: "rgba(96, 165, 250, 0.22)",
+        grid5mm: "rgba(37, 99, 235, 0.48)",
+        waveStroke: "#0f172a",
+        waveShadow: "none",
+        calibrationStroke: "#0f172a",
+        isoLineStroke: "rgba(37, 99, 235, 0.35)",
+        headerBg: "bg-slate-50 border-slate-200 text-slate-900",
+        leadBadgeBg: "bg-blue-50 text-blue-900 border-blue-200 shadow-2xs",
+        sweepBarColor: "#2563eb",
+        dividerBorder: "border-blue-200/80",
+        rowDivide: "divide-blue-100",
+        cardBg: "bg-white/90 border-blue-200 text-slate-800",
+        rhythmBorder: "border-blue-400/80",
+        rhythmHeader: "text-blue-900",
+        rhythmBadge: "bg-blue-600 text-white",
+        rhythmMetaText: "text-slate-600",
+        singleLeadCardBg: "bg-white border-blue-200 text-slate-900",
+      };
+    }
     if (displayTheme === "night") {
       return {
         containerBg: "bg-[#070b14]",
         grid1mm: "rgba(56, 189, 248, 0.12)",
-        grid5mm: "rgba(56, 189, 248, 0.32)",
+        grid5mm: "rgba(56, 189, 248, 0.35)",
         waveStroke: "#38bdf8", // High-contrast luminescent Ice-Blue / Cyan
-        waveShadow: "drop-shadow(0 0 2.5px rgba(56, 189, 248, 0.65))",
+        waveShadow: "drop-shadow(0 0 2px rgba(56, 189, 248, 0.65))",
         calibrationStroke: "#7dd3fc",
         isoLineStroke: "rgba(56, 189, 248, 0.35)",
         headerBg: "bg-[#0c1427] border-[#1e293b] text-sky-200",
@@ -543,24 +565,24 @@ export function EcgCanvas({
     }
     if (displayTheme === "monitor") {
       return {
-        containerBg: "bg-[#040812]",
-        grid1mm: "rgba(34, 197, 94, 0.08)",
-        grid5mm: "rgba(34, 197, 94, 0.28)",
+        containerBg: "bg-[#020804]",
+        grid1mm: "rgba(34, 197, 94, 0.10)",
+        grid5mm: "rgba(34, 197, 94, 0.35)",
         waveStroke: "#22c55e",
-        waveShadow: "drop-shadow(0 0 2.5px rgba(34, 197, 94, 0.6))",
+        waveShadow: "drop-shadow(0 0 2px rgba(34, 197, 94, 0.65))",
         calibrationStroke: "#4ade80",
         isoLineStroke: "rgba(74, 222, 128, 0.35)",
-        headerBg: "bg-[#091224] border-[#132a4a] text-emerald-300",
+        headerBg: "bg-[#041408] border-[#064e3b] text-emerald-300",
         leadBadgeBg: "bg-emerald-950/80 text-emerald-300 border-emerald-700/60",
         sweepBarColor: "#4ade80",
         dividerBorder: "border-emerald-900/60",
         rowDivide: "divide-emerald-950/70",
-        cardBg: "bg-[#091522]/80 border-emerald-800/60 text-emerald-200",
+        cardBg: "bg-[#041408]/90 border-emerald-800/60 text-emerald-200",
         rhythmBorder: "border-emerald-800/70",
         rhythmHeader: "text-emerald-300",
         rhythmBadge: "bg-emerald-600 text-white",
         rhythmMetaText: "text-emerald-400/80",
-        singleLeadCardBg: "bg-[#091522]/90 border-emerald-800 text-emerald-100",
+        singleLeadCardBg: "bg-[#041408]/90 border-emerald-800 text-emerald-100",
       };
     }
     if (displayTheme === "amber") {
@@ -585,25 +607,26 @@ export function EcgCanvas({
         singleLeadCardBg: "bg-[#181108]/90 border-amber-800 text-amber-100",
       };
     }
+    // Default: Medical Pink Paper
     return {
-      containerBg: "bg-[#fff5f5]",
+      containerBg: "bg-[#fff4f4]",
       grid1mm: "rgba(244, 63, 94, 0.22)",
-      grid5mm: "rgba(225, 29, 72, 0.48)",
-      waveStroke: "#0a0f1d",
+      grid5mm: "rgba(225, 29, 72, 0.52)",
+      waveStroke: "#090d16",
       waveShadow: "none",
-      calibrationStroke: "#0a0f1d",
+      calibrationStroke: "#090d16",
       isoLineStroke: "rgba(225, 29, 72, 0.35)",
       headerBg: "bg-[#fff1f2] border-rose-200 text-rose-900",
       leadBadgeBg: "bg-white/95 text-slate-900 border-rose-200 shadow-2xs",
       sweepBarColor: "#e11d48",
       dividerBorder: "border-rose-300/80",
       rowDivide: "divide-rose-200/70",
-      cardBg: "bg-white/70 border-rose-200/90 text-slate-800",
+      cardBg: "bg-white/80 border-rose-200 text-slate-800",
       rhythmBorder: "border-rose-400/80",
       rhythmHeader: "text-rose-900",
       rhythmBadge: "bg-rose-600 text-white",
       rhythmMetaText: "text-slate-700",
-      singleLeadCardBg: "bg-white/85 border-rose-300 text-slate-900",
+      singleLeadCardBg: "bg-white/90 border-rose-300 text-slate-900",
     };
   }, [displayTheme]);
 
@@ -1073,10 +1096,10 @@ export function EcgCanvas({
                 </div>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-1">
                   {[
-                    { id: "paper", label: "Giấy Y Tế", icon: "📄" },
+                    { id: "paper", label: "Giấy Hồng", icon: "📄" },
+                    { id: "clinic", label: "Phòng Khám", icon: "🏥" },
                     { id: "night", label: "Ban Đêm", icon: "🌙" },
                     { id: "monitor", label: "Monitor ICU", icon: "🟢" },
-                    { id: "amber", label: "Hổ Phách", icon: "🟠" },
                   ].map((thm) => (
                     <button
                       key={thm.id}
@@ -1085,6 +1108,10 @@ export function EcgCanvas({
                         displayTheme === thm.id
                           ? thm.id === "night"
                             ? "bg-slate-900 text-sky-300 border border-sky-500 shadow-2xs"
+                            : thm.id === "clinic"
+                            ? "bg-blue-600 text-white shadow-2xs"
+                            : thm.id === "monitor"
+                            ? "bg-emerald-700 text-white shadow-2xs"
                             : "bg-rose-600 text-white shadow-2xs"
                           : "bg-white border border-slate-300 text-slate-700 hover:bg-slate-100"
                       }`}
@@ -1370,7 +1397,10 @@ export function EcgCanvas({
               ) : (
                 /* Desktop / Paper Full-Sheet 3x4 Medical Layout */
                 <div className="flex flex-col gap-1 w-full">
-                  <div className="grid grid-cols-4 gap-2 w-full">
+                  <div
+                    className="grid grid-cols-4 gap-2 w-full"
+                    style={{ display: "grid", gridTemplateColumns: "repeat(4, minmax(0, 1fr))" }}
+                  >
                     {/* Column 1: I, II, III */}
                     <div className={`flex flex-col divide-y ${themeStyles.rowDivide} border-r ${themeStyles.dividerBorder} pr-2 min-w-0 transition-colors`}>
                       {(["I", "II", "III"] as LeadName[]).map((lead) => (
