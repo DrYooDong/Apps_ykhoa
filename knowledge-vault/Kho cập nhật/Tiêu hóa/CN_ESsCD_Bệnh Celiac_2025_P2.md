@@ -16,7 +16,6 @@ tags:
   - "y-khoa/cn"
 updated: "2026-09-06"
 ---
-
 # TÓM TẮT NGHIÊN CỨU ĐƯỢC CHỌN (PHẦN 2)
 
 **Tài liệu tham khảo được chọn:** _Hướng dẫn cập nhật năm 2025 của Hiệp hội Châu Âu về Nghiên cứu Bệnh Celiac (ESsCD) về Quản lý, Theo dõi và Diễn tiến Bệnh phức tạp ở Người lớn (Phần 2)_.
@@ -95,7 +94,7 @@ Hiện tại chưa có phương pháp điều trị y khoa dựa trên bằng ch
 #### 1. Bảng Phác đồ Liều lượng và Cách dùng Thuốc trong RCD:
 
 - **Tên Bảng**: **Bảng 8: Các lựa chọn điều trị dược lý trong RCD-I và RCD-II** (_TABLE 8 Options for pharmacological treatment in RCD-I and RCD-II_)
-- **Thuộc Tài Liệu**: **"UEG Journal - 2026 - Al‐Toma - European Society for the Study of Coeliac Disease ESsCD 2025 Updated Guidelines on the.pdf"** trong Notebook này.
+- **Thuộc Tài Liệu**: **"UEG Journal - 2026 - Al‐Toma - European Society for the Study of Coeliac Disease ESsCD 2025 Updated Guidelines on the.pdf"** trong y văn.
 
 |Thể bệnh|Hoạt chất / Biện pháp|Hướng dẫn liều lượng và cách xử trí chi tiết|
 |:--|:--|:--|

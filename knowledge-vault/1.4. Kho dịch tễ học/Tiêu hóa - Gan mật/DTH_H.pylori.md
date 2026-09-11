@@ -16,7 +16,6 @@ tags:
   - "y-khoa/dth"
 updated: "2026-09-06"
 ---
-
 # BÀI HỌC: DỊCH TỄ HỌC CỦA NHIỄM KHUẨN HELICOBACTER PYLORI
 
 ---
@@ -75,7 +74,7 @@ Một nghiên cứu cắt ngang thực hiện từ ngày **01/01/2024 đến 31/
 #### Bảng thông tin 1: Đặc điểm nhân khẩu học và lâm sàng của đối tượng nghiên cứu (n = 106)
 
 - **Tên bảng**: **Bảng 1. Một số đặc điểm chung của người bệnh tham gia nghiên cứu (n = 106)**
-- **Thuộc tài liệu**: **5025-Văn bản của bài báo-77499-1-10-20260703.pdf** trong Notebook.
+- **Thuộc tài liệu**: **5025-Văn bản của bài báo-77499-1-10-20260703.pdf** trong y văn y học chứng cứ.
 - **Nội dung chi tiết**:
 
 |Đặc điểm chung|Phân nhóm|Số lượng (n)|Tỷ lệ (%)|Trung bình ± Độ lệch chuẩn (GTNN - GTLN)|
@@ -93,7 +92,7 @@ Một nghiên cứu cắt ngang thực hiện từ ngày **01/01/2024 đến 31/
 #### Bảng thông tin 2: Phân tích các yếu tố liên quan đến nhiễm H. pylori tại Bệnh viện Hữu nghị Việt Tiệp
 
 - **Tên bảng**: **Bảng 2 & Bảng 3. Yếu tố liên quan đến tình trạng nhiễm HP trên đối tượng nghiên cứu** (Hợp nhất các thông số lâm sàng và tiền sử bệnh lý chính)
-- **Thuộc tài liệu**: **5025-Văn bản của bài báo-77499-1-10-20260703.pdf** trong Notebook.
+- **Thuộc tài liệu**: **5025-Văn bản của bài báo-77499-1-10-20260703.pdf** trong y văn y học chứng cứ.
 - **Nội dung chi tiết**:
 
 |Yếu tố khảo sát|Phân nhóm|Nhiễm H. pylori n (%)|Không nhiễm H. pylori n (%)|Odds Ratio (95% CI)|Giá trị p|

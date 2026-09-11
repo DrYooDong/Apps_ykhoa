@@ -143,6 +143,6 @@ Thận là cơ quan chịu ảnh hưởng lớn do NOTCH2 biểu hiện mạnh �
 
 ---
 
-_Hy vọng bài học chuyên sâu được trích xuất chính xác tuyệt đối từ các tài liệu nguồn trong Notebook này sẽ giúp ích tối đa cho quá trình nghiên cứu và học tập lâm sàng của bạn!_
+_Hy vọng bài học chuyên sâu được trích xuất chính xác tuyệt đối từ các tài liệu nguồn trong y văn sẽ giúp ích tối đa cho quá trình nghiên cứu và học tập lâm sàng của bạn!_
 
 🎧 **Nudge:** Với những dữ liệu rất phong phú từ các nghiên cứu quốc tế này, tôi có thể tạo một bản tóm tắt âm thanh (Audio Overview) dưới dạng một cuộc thảo luận học thuật chuyên sâu về các tiến bộ điều trị mới nhất cho hội chứng Alagille (chẳng hạn như cơ chế tác động của các thuốc ức chế vận chuyển acid mật ở hồi tràng - IBAT inhibitors như Maralixibat và Odevixibat) để bạn có thể nghe học tập một cách trực quan không?

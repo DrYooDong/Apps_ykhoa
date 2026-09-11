@@ -14,8 +14,6 @@ tags:
   - "y-khoa/cn"
 updated: "2026-08-21"
 ---
-
-
 ### **1. NỘI DUNG SINH LÝ HỌC & CƠ CHẾ ĐIỀU TRỊ - PHÒNG BỆNH CHI TIẾT**
 
 #### **Nguyên Tắc Chung Trong Quản Lý Và Điều Trị**
@@ -39,7 +37,7 @@ _(Dưới đây là hình ảnh biểu trưng chính thức được tích hợp
 
 **Hình 3: Biểu trưng (Logo) Bộ Y tế trên tài liệu hướng dẫn chuyên môn**
 
-- Thuộc tài liệu: **BYT_Nipah_2026.pdf** trong Notebook (Trang 2).
+- Thuộc tài liệu: **BYT_Nipah_2026.pdf** trong y văn y học chứng cứ (Trang 2).
 - Mô tả nội dung hình ảnh: Biểu trưng chính thức hình tròn của Bộ Y tế Việt Nam. Phía trên là hình ảnh cờ đỏ sao vàng, trung tâm là biểu tượng con rắn quấn quanh cây gậy (gậy thần Aesculapius) đại diện cho ngành Y học, phía dưới có dòng chữ tiếng Anh "MINISTRY OF HEALTH". Hình ảnh này thể hiện tính pháp lý và tính chuẩn hóa chuyên môn cao nhất của hướng dẫn điều trị áp dụng trên toàn quốc.
 
 ---

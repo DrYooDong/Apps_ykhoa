@@ -14,7 +14,6 @@ tags:
   - "y-khoa/cn"
 updated: "2026-09-06"
 ---
-
 ### 1. NỘI DUNG SINH LÝ HỌC CHI TIẾT
 
 #### **Tổng Quan và Nghịch Lý Lâm Sàng Về Trình Tự Cai Thuốc Vận Mạch**
@@ -71,7 +70,7 @@ Dưới đây là mô hình trực quan mô tả sự khác biệt về dược 
 ```
 
 - **Tên Hình/Sơ Đồ:** **Fig. 1. Pharmacokinetic decay after vasopressor discontinuation.** (Động học phân rã sau khi ngừng thuốc vận mạch) ``.
-- **Thuộc Tài Liệu:** "1-s2.0-S0883944126003072-main.pdf" trong Notebook này (Tác giả: Syed Arsalan Akhter Zaidi, Sumit Kapoor, Firas Abdulmajeed) ``.
+- **Thuộc Tài Liệu:** "1-s2.0-S0883944126003072-main.pdf" trong y văn (Tác giả: Syed Arsalan Akhter Zaidi, Sumit Kapoor, Firas Abdulmajeed) ``.
 - **Nội dung mô tả dưới hình/sơ đồ:**
     - Trục tung biểu thị nồng độ thuốc trong huyết tương (%), trục hoành biểu thị thời gian tính bằng phút sau khi ngừng truyền thuốc ``.
     - Đường màu xanh nét liền (Norepinephrine) biểu thị sự sụt giảm nồng độ dốc đứng (pharmacokinetic cliff), biến mất khỏi huyết tương sau khoảng 10–15 phút do thời gian bán thải cực ngắn ``.

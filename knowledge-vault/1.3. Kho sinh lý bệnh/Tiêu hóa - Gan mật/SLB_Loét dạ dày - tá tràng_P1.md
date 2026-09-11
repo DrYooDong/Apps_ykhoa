@@ -14,7 +14,6 @@ tags:
   - "y-khoa/slb"
 updated: "2026-08-21"
 ---
-
 [[3. Nội tổng quát/3.3. Tiêu hóa - gan mật/3.3.1. Bệnh lý Thực quản & Dạ dày - Tá tràng/Bệnh lý liên quan tăng tiết acid dạ dày/Loét dạ dày - tá tràng/Loét dạ dày - tá tràng.md|← Quay lại Loét dạ dày - tá tràng]]
 
 ﻿
@@ -50,7 +49,7 @@ Cơ chế gây loét của H. pylori phụ thuộc chặt chẽ vào **vùng d�
 #### Sơ đồ cơ chế 1: Sự khu trú của H. pylori gây ra các bệnh gastroduodenal khác nhau
 
 - **Tên hình**: **Figure 2. Depicting colonization of H. pylori in different regions of the stomach leading to various gastroduodenal diseases**
-- **Thuộc tài liệu**: **GSCARR-2025-0156.pdf** trong Notebook.
+- **Thuộc tài liệu**: **GSCARR-2025-0156.pdf** trong y văn y học chứng cứ.
 - **Mô tả dưới lưu đồ**: Sơ đồ biểu diễn tiến trình từ nhiễm khuẩn mạn tính H. pylori (kích hoạt các phản ứng viêm thông qua giải phóng cytokine IL-1B, COX-2, iNOS) rẽ nhánh thành 3 con đường sinh bệnh lý rõ rệt:
     - **Antral predominant gastritis** (Viêm ưu thế hang vị) \(\rightarrow\) Làm giảm pH dịch vị (tăng toan) \(\rightarrow\) Gây tổn thương hành tá tràng tạo ra **Duodenum ulcer** (Loét tá tràng).
     - **Mild-mixed gastritis** (Viêm nhẹ hỗn hợp) \(\rightarrow\) Không làm thay đổi lượng bài tiết acid dịch vị mà chỉ gây tăng gastrin máu đơn thuần.
@@ -60,7 +59,7 @@ Cơ chế gây loét của H. pylori phụ thuộc chặt chẽ vào **vùng d�
 
 - **Tên hình**: **Fig. 2.- A diagram illustrating the pathogenetic mechanism of Helicobacter pylori infection**
 	![[Pasted image 20260818182605.png]]
-- **Thuộc tài liệu**: **helicobacter.pdf** trong Notebook.
+- **Thuộc tài liệu**: **helicobacter.pdf** trong y văn y học chứng cứ.
 - **Mô tả dưới hình**: Sơ đồ được thiết kế bởi Ủy ban Nobel mô tả 3 giai đoạn tiến triển chính của bệnh lý do vi khuẩn H. pylori gây ra:
     1. **Infection (Nhiễm khuẩn)**: H. pylori xâm nhập và khu trú tại phần thấp của dạ dày (vùng hang vị - antrum).
     2. **Inflammation (Viêm)**: Vi khuẩn kích thích sản xuất các chất trung gian hóa học gây viêm niêm mạc dạ dày (viêm dạ dày - gastritis), quá trình này thường diễn ra âm thầm và không có triệu chứng lâm sàng.
@@ -70,7 +69,7 @@ Cơ chế gây loét của H. pylori phụ thuộc chặt chẽ vào **vùng d�
 
 - **Tên hình**: **Fig. 3.- The natural history of Helicobacter pylori infection outlined**
 	![[Pasted image 20260818182640.png]]
-- **Thuộc tài liệu**: **helicobacter.pdf** trong Notebook.
+- **Thuộc tài liệu**: **helicobacter.pdf** trong y văn y học chứng cứ.
 - **Mô tả dưới sơ đồ**: Lưu đồ phác thảo chu kỳ tiến hóa bệnh lý tự nhiên của niêm mạc dạ dày từ thời điểm nhiễm trùng H. pylori tiên phát gây viêm dạ dày nông (superficial gastritis) và kích hoạt các nang lympho (lymphoid follicles):
     - **Hướng tiến triển 1**: Gây viêm loét dạ dày - tá tràng trực tiếp (**Ulcer**).
     - **Hướng tiến triển 2**: Thâm nhiễm lymphocytic cực mạnh liên kết với các yếu tố di truyền của ký chủ thúc đẩy phát triển thành u lympho bào B mạn tính - **Linfom MALT (MALT lymphoma)**.
@@ -93,7 +92,7 @@ Cơ chế gây loét của H. pylori phụ thuộc chặt chẽ vào **vùng d�
 #### Sơ đồ cơ chế 4: Sơ đồ dòng thác tổn thương niêm mạc dạ dày do NSAID
 
 - **Tên hình**: **Figure 5. Nonsteroidal anti-inflammatory drugs induced mucosal injury**
-- **Thuộc tài liệu**: **GSCARR-2025-0156.pdf** trong Notebook.
+- **Thuộc tài liệu**: **GSCARR-2025-0156.pdf** trong y văn y học chứng cứ.
 - **Mô tả dưới lưu đồ**: Sơ đồ này biểu diễn chi tiết hai con đường tác động của NSAID lên niêm mạc tiêu hóa:
     - **Nhánh ức chế COX-1 hệ thống (COX 1 inhibition)** \(\rightarrow\) Suy giảm chức năng bảo vệ đường tiêu hóa (GI protection) thông qua: Giảm dòng máu tưới niêm mạc (mucosal blood flow), giảm bài tiết chất nhầy (mucus) và bicarbonate \(\rightarrow\) Dẫn đến **Tổn thương niêm mạc (Mucosal injury)**.
     - **Nhánh kích ứng tại chỗ (Topical irritation) & Ức chế COX-2 (COX 2 inhibition)** \(\rightarrow\) Gây co mạch và giảm lưu lượng máu cục bộ \(\rightarrow\) Tổn hại tế bào biểu mô (Epithelial damage) \(\rightarrow\) Tăng bám dính của bạch cầu vào thành mạch (Leucocyte adhesion) \(\rightarrow\) Hoạt hóa bạch cầu đa nhân trung tính (PMN activation) \(\rightarrow\) Dẫn đến tổn thương niêm mạc tiêu hóa sâu sắc và **giảm sản sinh Nitric Oxide (NO)** bảo vệ mạch máu.
@@ -101,7 +100,7 @@ Cơ chế gây loét của H. pylori phụ thuộc chặt chẽ vào **vùng d�
 #### Bảng: Phân loại mức độ nguy cơ tiêu hóa của các thuốc NSAID thông dụng
 
 - **Tên bảng**: **Table 1. Classification of NSAIDs by gastrointestinal risk**
-- **Thuộc tài liệu**: **kjhugr-2025-0004.pdf** trong Notebook.
+- **Thuộc tài liệu**: **kjhugr-2025-0004.pdf** trong y văn y học chứng cứ.
 - **Nội dung bảng**: Bảng phân loại các NSAIDs lâm sàng dựa theo mức độ nguy cơ gây tổn thương loét và biến chứng tiêu hóa:
 
 |Phân nhóm nguy cơ tiêu hóa|Các thuốc NSAID tương ứng|
@@ -125,7 +124,7 @@ Cơ chế gây loét của H. pylori phụ thuộc chặt chẽ vào **vùng d�
 #### Sơ đồ cơ chế 5: Sơ đồ mô tả vùng tam giác Gastrinoma trong cơ chế ZES
 
 - **Tên hình**: **Figure: Gastrinoma Triangle**
-- **Thuộc tài liệu**: **CR02707032.PDF** trong Notebook.
+- **Thuộc tài liệu**: **CR02707032.PDF** trong y văn y học chứng cứ.
 	![[Pasted image 20260818182838.png]]
 - **Mô tả dưới hình**: Sơ đồ giải phẫu học định vị vùng **"tam giác gastrinoma"** - nơi cư trú của hơn 80% khối u gastrinoma gây ra hội chứng ZES. Tam giác này được giới hạn bởi 3 mốc giải phẫu:
     
@@ -138,7 +137,7 @@ Cơ chế gây loét của H. pylori phụ thuộc chặt chẽ vào **vùng d�
 #### Bảng: Tiêu chuẩn khảo sát bài tiết acid dịch vị trong hội chứng Zollinger-Ellison (ZES)
 
 - **Tên bảng**: **TABLE I. ZOLLINGER-ELLISON SYNDROME ACID STUDY CRITERIA**
-- **Thuộc tài liệu**: **mee-1985-the-zollinger-ellison-syndrome-diagnosis-and-management.pdf** trong Notebook.
+- **Thuộc tài liệu**: **mee-1985-the-zollinger-ellison-syndrome-diagnosis-and-management.pdf** trong y văn y học chứng cứ.
 - **Nội dung bảng**: Tiêu chuẩn xét nghiệm dịch vị giúp chẩn đoán phân biệt trạng thái tăng tiết toan cực độ trong ZES:
 
 |Chỉ số khảo sát dịch vị|Giá trị tiêu chuẩn chẩn đoán trong ZES|
@@ -150,7 +149,7 @@ Cơ chế gây loét của H. pylori phụ thuộc chặt chẽ vào **vùng d�
 #### Bảng: Các tình trạng gây tăng gastrin máu không phù hợp cần chẩn đoán phân biệt
 
 - **Tên bảng**: **TABLE II. INAPPROPRIATE HYPERGASTRINAEMIA**
-- **Thuộc tài liệu**: **mee-1985-the-zollinger-ellison-syndrome-diagnosis-and-management.pdf** trong Notebook.
+- **Thuộc tài liệu**: **mee-1985-the-zollinger-ellison-syndrome-diagnosis-and-management.pdf** trong y văn y học chứng cứ.
 - **Nội dung bảng**: Danh mục các bệnh lý lâm sàng có sự kết hợp bất thường giữa tăng nồng độ gastrin máu huyết thanh đồng thời với bài tiết acid dạ dày cao cần phân biệt với ZES:
 
 1. Hội chứng Zollinger-Ellison (ZES).
@@ -177,4 +176,4 @@ Cơ chế gây loét của H. pylori phụ thuộc chặt chẽ vào **vùng d�
 
 ---
 
-📊 Tôi có thể tổng hợp tiếp **Phần 2** của Sinh lý bệnh loét dạ dày - tá tràng, tập trung chi tiết vào các biến chứng nguy hiểm như **Xuất huyết tiêu hóa (mô tả theo thang phân loại Forrest lâm sàng)** và **Thủng ổ loét dạ dày - tá tràng** dựa trên các nguồn tài liệu hiện có trong Notebook của bạn. Bạn có muốn tiếp tục không?
+📊 Tôi có thể tổng hợp tiếp **Phần 2** của Sinh lý bệnh loét dạ dày - tá tràng, tập trung chi tiết vào các biến chứng nguy hiểm như **Xuất huyết tiêu hóa (mô tả theo thang phân loại Forrest lâm sàng)** và **Thủng ổ loét dạ dày - tá tràng** dựa trên các nguồn tài liệu hiện có trong y văn. Bạn có muốn tiếp tục không?

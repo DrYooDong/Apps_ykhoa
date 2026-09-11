@@ -84,7 +84,7 @@ export function renderAnnotationsBoxHtml(article: VaultArticle): string {
         <span style="font-size:12px; font-weight:800; color:#b45309; display:flex; align-items:center; gap:6px; text-transform:uppercase; letter-spacing:0.04em;">
           <i class="fa-solid fa-lightbulb" style="color:#f59e0b;"></i> Đúc Kết Kinh Nghiệm Lâm Sàng Của Bác Sĩ (${annotations.length})
         </span>
-        <button type="button" id="btn-toggle-add-annotation" class="vault-tool-btn" style="background:#fff; color:#b45309; font-weight:700; border-color:rgba(245,158,11,0.4); font-size:11px; padding:2px 8px;">
+        <button type="button" id="btn-toggle-add-annotation" class="vault-tool-btn" style="background:var(--vault-surface); color:#b45309; font-weight:700; border-color:rgba(245,158,11,0.4); font-size:11px; padding:2px 8px;">
           <i class="fa-solid fa-plus"></i> Thêm kinh nghiệm
         </button>
       </div>
@@ -182,48 +182,170 @@ export function renderPathwayRibbon(currentArticle: VaultArticle): string {
  * Format Medical Callouts into professional editorial cards
  */
 function formatMedicalCallouts(text: string): string {
-  const calloutRegex = /(?:^|\n)> \[!([A-Z]+)\][ \t]*(?:\(([^)\n]+)\)|([^\n]*))?\n((?:[ \t]*>.*(?:\n|$))*)/g;
-
   const typeConfig: Record<string, { label: string; icon: string; themeClass: string }> = {
-    TRIAL: { label: 'CHỨNG CỨ LÂM SÀNG / EBM', icon: 'fa-solid fa-flask-vial', themeClass: 'vault-callout--trial' },
-    WARNING: { label: 'CẢNH BÁO LÂM SÀNG (RED FLAGS)', icon: 'fa-solid fa-triangle-exclamation', themeClass: 'vault-callout--warning' },
-    CAUTION: { label: 'CHỐNG CHỈ ĐỊNH & NGUY CƠ CAO', icon: 'fa-solid fa-circle-exclamation', themeClass: 'vault-callout--danger' },
-    DANGER: { label: 'NGUY CƠ NGUY KỊCH', icon: 'fa-solid fa-radiation', themeClass: 'vault-callout--danger' },
-    PEARL: { label: 'ĐIỂM NGỌC LÂM SÀNG (CLINICAL PEARL)', icon: 'fa-solid fa-gem', themeClass: 'vault-callout--pearl' },
-    DOSING: { label: 'CHỈ ĐỊNH & HIỆU CHỈNH LIỀU', icon: 'fa-solid fa-pills', themeClass: 'vault-callout--dosing' },
-    NOTE: { label: 'GHI CHÚ THỰC HÀNH', icon: 'fa-solid fa-circle-info', themeClass: 'vault-callout--note' },
-    TIP: { label: 'LỜI KHUYÊN BÁC SĨ', icon: 'fa-solid fa-lightbulb', themeClass: 'vault-callout--tip' },
-    TEACHBACK: { label: 'KỸ THUẬT TEACH-BACK', icon: 'fa-solid fa-comments', themeClass: 'vault-callout--teachback' }
+    // 1. Chứng cứ & EBM
+    TRIAL:     { label: 'CHỨNG CỨ LÂM SÀNG / EBM',          icon: 'fa-solid fa-flask-vial',           themeClass: 'vault-callout--trial' },
+    EBM:       { label: 'Y HỌC CHỨNG CỨ / RCT',             icon: 'fa-solid fa-scale-balanced',       themeClass: 'vault-callout--trial' },
+
+    // 2. Cảnh báo nguy cơ & Chống chỉ định
+    WARNING:   { label: 'CẢNH BÁO LÂM SÀNG (RED FLAGS)',     icon: 'fa-solid fa-triangle-exclamation', themeClass: 'vault-callout--warning' },
+    CAUTION:   { label: 'CHỐNG CHỈ ĐỊNH & NGUY CƠ CAO',     icon: 'fa-solid fa-circle-exclamation',   themeClass: 'vault-callout--danger' },
+    DANGER:    { label: 'NGUY CƠ NGUY KỊCH',                icon: 'fa-solid fa-radiation',            themeClass: 'vault-callout--danger' },
+    CRITICAL:  { label: 'CẤP CỨU & KHẨN CẤP',              icon: 'fa-solid fa-bell-slash',           themeClass: 'vault-callout--danger' },
+
+    // 3. Quan trọng & Lưu ý bắt buộc
+    IMPORTANT: { label: 'LƯU Ý QUAN TRỌNG / BẮT BUỘC',       icon: 'fa-solid fa-triangle-exclamation', themeClass: 'vault-callout--important' },
+    ALERT:     { label: 'CẢNH BÁO / LƯU Ý BẮT BUỘC',        icon: 'fa-solid fa-circle-exclamation',   themeClass: 'vault-callout--important' },
+
+    // 4. Thực hành & Kinh nghiệm
+    PEARL:     { label: 'ĐIỂM NGỌC LÂM SÀNG (CLINICAL PEARL)', icon: 'fa-solid fa-gem',               themeClass: 'vault-callout--pearl' },
+    DOSING:    { label: 'CHỈ ĐỊNH & HIỆU CHỈNH LIỀU',       icon: 'fa-solid fa-pills',                themeClass: 'vault-callout--dosing' },
+    NOTE:      { label: 'GHI CHÚ THỰC HÀNH',                icon: 'fa-solid fa-circle-info',          themeClass: 'vault-callout--note' },
+    INFO:      { label: 'THÔNG TIN BỔ TRỢ',                 icon: 'fa-solid fa-circle-info',          themeClass: 'vault-callout--note' },
+    TIP:       { label: 'LỜI KHUYÊN BÁC SĨ',                icon: 'fa-solid fa-lightbulb',            themeClass: 'vault-callout--tip' },
+    TEACHBACK: { label: 'KỸ THUẬT TEACH-BACK',              icon: 'fa-solid fa-comments',             themeClass: 'vault-callout--teachback' },
+
+    // 5. Kiểm tra & Chuẩn tắc
+    CHECK:     { label: 'BẢNG KIỂM AN TOÀN',                icon: 'fa-solid fa-circle-check',         themeClass: 'vault-callout--check' },
+    SUCCESS:   { label: 'TIÊU CHUẨN AN TOÀN ĐẠT',           icon: 'fa-solid fa-circle-check',         themeClass: 'vault-callout--check' },
+    EXAMPLE:   { label: 'VÍ DỤ / CA BỆNH ĐIỂN HÌNH',        icon: 'fa-solid fa-book-medical',         themeClass: 'vault-callout--note' },
+    QUESTION:  { label: 'CÂU HỎI LÂM SÀNG THƯỜNG GẶP',      icon: 'fa-solid fa-circle-question',      themeClass: 'vault-callout--note' }
   };
 
-  return text.replace(calloutRegex, (match, type, titleParen, titlePlain, bodyLines) => {
+  const calloutRegex = /(?:^|\n)>[ \t]*\[!([A-Za-z0-9_-]+)\][ \t]*([^\n]*)(?:\n((?:[ \t]*>.*(?:\n|$))*))?/g;
+
+  return text.replace(calloutRegex, (match, rawType, rawFirstLine, rawBodyLines) => {
+    const type = (rawType || '').toUpperCase();
     const config = typeConfig[type] || {
       label: type,
       icon: 'fa-solid fa-circle-info',
       themeClass: 'vault-callout--note'
     };
 
-    const cleanTitle = (titleParen || titlePlain || '').trim().replace(/^[:\-\s]+/, '');
+    let title = '';
+    let bodyLines: string[] = [];
 
-    const cleanBodyLines = (bodyLines as string)
-      .split('\n')
-      .map(line => line.replace(/^[ \t]*>[ \t]?/, '').trim())
-      .filter(line => line.length > 0);
+    const firstLine = (rawFirstLine || '').trim();
+    if (rawBodyLines) {
+      bodyLines = (rawBodyLines as string)
+        .split('\n')
+        .map(l => l.replace(/^[ \t]*>[ \t]?/, ''))
+        .filter((l, idx, arr) => !(l.trim() === '' && idx === arr.length - 1));
+    }
 
-    const bodyHtml = cleanBodyLines.map(line => {
-      let l = line.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-      l = l.replace(/\*(.*?)\*/g, '<em>$1</em>');
-      return l;
-    }).join('<br/>');
+    // 1. Phân tích dòng đầu tiên để tách thông minh giữa Title và Body
+    if (firstLine) {
+      const parenMatch = firstLine.match(/^\(([^)]+)\)[ \t]*(.*)$/);
+      const boldMatch = firstLine.match(/^\*\*([^*]+)\*\*[:\-\s]*(.*)$/);
+
+      if (parenMatch) {
+        title = parenMatch[1].trim();
+        if (parenMatch[2].trim()) bodyLines.unshift(parenMatch[2].trim());
+      } else if (boldMatch) {
+        title = boldMatch[1].trim();
+        if (boldMatch[2].trim()) bodyLines.unshift(boldMatch[2].trim());
+      } else {
+        if (firstLine.length < 60 && bodyLines.length > 0 && !firstLine.includes('.')) {
+          title = firstLine.replace(/^[:\-\s]+/, '').replace(/[:\-\s]+$/, '').trim();
+        } else {
+          bodyLines.unshift(firstLine);
+        }
+      }
+    }
+
+    // 2. Nếu dòng đầu không có title, kiểm tra xem dòng đầu tiên của body có phải là **Tiêu đề**: không
+    if (!title && bodyLines.length > 0) {
+      const firstBody = bodyLines[0].trim();
+      const boldPrefixMatch = firstBody.match(/^\*\*([^*]+)\*\*[:\-\s]*(.*)$/);
+      if (boldPrefixMatch) {
+        title = boldPrefixMatch[1].trim();
+        if (boldPrefixMatch[2].trim()) {
+          bodyLines[0] = boldPrefixMatch[2].trim();
+        } else {
+          bodyLines.shift();
+        }
+      }
+    }
+
+    // 3. Render Body thành HTML với đầy đủ lists, bold, italic, links
+    const bodyHtml = renderCalloutBodyHtml(bodyLines.join('\n'));
+
+    // 4. Làm sạch title nếu còn sót ký tự Markdown
+    const cleanTitle = title.replace(/\*\*(.*?)\*\*/g, '$1').replace(/\*(.*?)\*/g, '$1').trim();
 
     return `\n\n<div class="vault-callout ${config.themeClass}">
       <div class="vault-callout__header">
         <span class="vault-callout__badge"><i class="${config.icon}"></i> ${config.label}</span>
-        ${cleanTitle ? `<span class="vault-callout__title">${cleanTitle}</span>` : ''}
+        ${cleanTitle ? `<span class="vault-callout__title">${escapeHtml(cleanTitle)}</span>` : ''}
       </div>
-      <div class="vault-callout__body">${bodyHtml}</div>
+      ${bodyHtml ? `<div class="vault-callout__body">${bodyHtml}</div>` : ''}
     </div>\n\n`;
   });
+}
+
+/**
+ * Render Callout Body Markdown (Lists, Bold, Italic, Inline Code, Links, Wikilinks)
+ */
+function renderCalloutBodyHtml(content: string): string {
+  if (!content || !content.trim()) return '';
+
+  const lines = content.trim().split('\n');
+  const result: string[] = [];
+  let inUl = false;
+  let inOl = false;
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i].trim();
+    if (!line) {
+      if (inUl) { result.push('</ul>'); inUl = false; }
+      if (inOl) { result.push('</ol>'); inOl = false; }
+      continue;
+    }
+
+    // Unordered list (- hoặc *)
+    const ulMatch = line.match(/^[-*]\s+(.*)$/);
+    if (ulMatch) {
+      if (inOl) { result.push('</ol>'); inOl = false; }
+      if (!inUl) { result.push('<ul class="vault-callout-list">'); inUl = true; }
+      result.push(`<li>${formatCalloutInlineMarkdown(ulMatch[1])}</li>`);
+      continue;
+    }
+
+    // Ordered list (1. 2. 3.)
+    const olMatch = line.match(/^\d+\.\s+(.*)$/);
+    if (olMatch) {
+      if (inUl) { result.push('</ul>'); inUl = false; }
+      if (!inOl) { result.push('<ol class="vault-callout-list vault-callout-list--ordered">'); inOl = true; }
+      result.push(`<li>${formatCalloutInlineMarkdown(olMatch[1])}</li>`);
+      continue;
+    }
+
+    // Close any open lists before normal paragraph
+    if (inUl) { result.push('</ul>'); inUl = false; }
+    if (inOl) { result.push('</ol>'); inOl = false; }
+
+    result.push(`<p>${formatCalloutInlineMarkdown(line)}</p>`);
+  }
+
+  if (inUl) result.push('</ul>');
+  if (inOl) result.push('</ol>');
+
+  return result.join('\n');
+}
+
+/**
+ * Format inline Markdown inside Callout
+ */
+function formatCalloutInlineMarkdown(text: string): string {
+  return text
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.*?)\*/g, '<em>$1</em>')
+    .replace(/`([^`]+)`/g, '<code>$1</code>')
+    .replace(/\[\[([^\]|\n]+)(?:\|([^\]\n]+))?\]\]/g, (match, target, label) => {
+      const display = (label || target).trim();
+      return `<button type="button" class="vault-wikilink-btn" data-wikilink="${escapeHtml(target.trim())}" title="Nhảy đến: ${escapeHtml(display)}"><i class="fa-solid fa-link" style="font-size:10px; opacity:0.8;"></i> ${escapeHtml(display)}</button>`;
+    })
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener" class="vault-external-link">$1</a>');
 }
 
 /**
@@ -457,7 +579,10 @@ export function processMarkdownWithToc(rawMarkdown: string, article?: VaultArtic
   const patBannerMatch = clean.match(/<div class="(?:vault-counseling-header-card|vault-perspective-banner vault-perspective-banner--patient(?: [^"]*)?)"/i);
   const inpatBannerMatch = clean.match(/<div class="vault-perspective-banner vault-perspective-banner--inpatient"/i);
 
-  const articleTitle = article?.title || 'Tài liệu Dặn dò Y khoa';
+  const rawTitle = article?.title || (article?.fullFileName ? article.fullFileName.replace(/\.md$/i, '') : '') || 'Tài liệu Dặn dò Y khoa';
+  const articleTitle = rawTitle.startsWith('TV_') || rawTitle.includes('_')
+    ? (article?.title && !article.title.startsWith('TV_') ? article.title : rawTitle.replace(/^[A-Z0-9]+_/i, '').replace(/_/g, ' '))
+    : rawTitle;
   const currentDate = new Date().toLocaleDateString('vi-VN');
 
   // Patient Leaflet Header (for Non-KhoTuVan articles having a dual patient perspective)

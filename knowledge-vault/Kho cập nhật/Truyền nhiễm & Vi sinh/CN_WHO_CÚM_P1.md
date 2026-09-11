@@ -1,4 +1,30 @@
-
+---
+title: "Tóm tắt Hướng dẫn Điều trị Lâm sàng Bệnh Cúm - WHO 2024"
+part: "P1"
+aliases:
+  - "Hướng dẫn Cúm WHO 2024"
+  - "WHO Influenza Clinical Guidelines"
+  - "Điều trị cúm mùa và cúm gia cầm"
+keywords:
+  - "cúm mùa"
+  - "who influenza 2024"
+  - "oseltamivir"
+  - "baloxavir marboxil"
+  - "h5n1"
+icd10:
+  - "J09 (Cúm do virus cúm xác định)"
+  - "J10 (Cúm do virus cúm mùa)"
+specialty: "Truyền nhiễm & Vi sinh"
+kho: "Kho cập nhật"
+type: "guideline-update"
+tags:
+  - "CliniPortal"
+  - "CapNhatGuideline"
+  - "KhoCapNhat"
+  - "y-khoa/cn"
+updated: "2026-09-11"
+sources:
+  - "WHO Guidelines for the clinical management of severe illness from influenza virus infections"
 ---
 
 # TÓM TẮT HƯỚNG DẪN ĐIỀU TRỊ LÂM SÀNG BỆNH CÚM - WHO (2024)

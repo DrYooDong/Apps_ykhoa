@@ -16,7 +16,6 @@ tags:
   - "y-khoa/cn"
 updated: "2026-09-06"
 ---
-
 # BÀI HỌC SINH LÝ BỆNH VÀ CÁC KHUYẾN CÁO LÂM SÀNG CỦA GUIDELINE APASL 2026 (PHẦN 2)
 
 ---
@@ -96,7 +95,7 @@ Dưới đây là bảng thông tin chi tiết về các mô hình dự báo ngu
 ### Thống Kê Các Mô Hình Dự Đoán Nguy Cơ HCC Ở Bệnh Nhân Viêm Gan B Mạn Tính Đang Điều Trị
 
 - **Tên bảng:** Table 5 - Available HCC risk scores applicable to treatment-experienced patients with chronic hepatitis B
-- **Thuộc tài liệu:** _APASL clinical practice guidelines on the management of chronic hepatitis B infection: a 2026 update_ trong Notebook này.
+- **Thuộc tài liệu:** _APASL clinical practice guidelines on the management of chronic hepatitis B infection: a 2026 update_ trong y văn.
 - **Dữ liệu chi tiết trích xuất từ bảng:**
 
 |Tên Thang Điểm (Năm công bố)|Các thông số đầu vào (Parameters)|Quần thể nghiên cứu xây dựng điểm (Population)|Phân tầng nguy cơ HCC (Risk Stratification)*|

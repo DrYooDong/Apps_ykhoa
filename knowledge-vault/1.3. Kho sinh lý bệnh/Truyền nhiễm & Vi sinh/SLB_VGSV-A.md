@@ -14,10 +14,9 @@ tags:
   - y-khoa/slb
 updated: 2026-08-21
 ---
-
 # CHUYÊN ĐỀ Y KHOA: SINH LÝ BỆNH VÀ CƠ CHẾ BỆNH SINH CỦA VIÊM GAN SIÊU VI A (HAV)
 
-_Bài học chuyên sâu này được biên soạn dựa trên các tài liệu nghiên cứu y khoa và công trình so sánh bệnh học có trong Notebook, đặc biệt là tài liệu "Comparative Pathology of Hepatitis A Virus and Hepatitis E Virus Infection" của John M. Cullen và Stanley M. Lemon đăng trên Cold Spring Harbor Perspectives in Medicine, đi sâu phân tích từ cấu trúc phân tử, cơ chế miễn dịch bẩm sinh/thích ứng gây tổn thương tế bào gan, cho đến các biểu hiện mô bệnh học đặc hiệu trên lâm sàng._
+_Bài học chuyên sâu này được biên soạn dựa trên các tài liệu nghiên cứu y khoa và công trình so sánh bệnh học trong y văn y học chứng cứ, đặc biệt là tài liệu "Comparative Pathology of Hepatitis A Virus and Hepatitis E Virus Infection" của John M. Cullen và Stanley M. Lemon đăng trên Cold Spring Harbor Perspectives in Medicine, đi sâu phân tích từ cấu trúc phân tử, cơ chế miễn dịch bẩm sinh/thích ứng gây tổn thương tế bào gan, cho đến các biểu hiện mô bệnh học đặc hiệu trên lâm sàng._
 
 ---
 
@@ -104,7 +103,7 @@ Dưới đây là các hình ảnh và tiêu bản mô học được trích xu�
 
 #### **Hình 1: Section of liver from a human patient with acute hepatitis A stained with hematoxylin and eosin (H&E).**
 
-_Thuộc tài liệu:_ `cshperspectmed-HAE-a033456.pdf` (Hình 1, Trang 3) trong Notebook.
+_Thuộc tài liệu:_ `cshperspectmed-HAE-a033456.pdf` (Hình 1, Trang 3) trong y văn y học chứng cứ.
 ![[Pasted image 20260818184937.png]]
 
 ```
@@ -123,7 +122,7 @@ _Thuộc tài liệu:_ `cshperspectmed-HAE-a033456.pdf` (Hình 1, Trang 3) trong
 
 #### **Hình 2: Acute hepatitis A in a human. Staining with hematoxylin and eosin (H&E).**
 
-_Thuộc tài liệu:_ `cshperspectmed-HAE-a033456.pdf` (Hình 2, Trang 4) trong Notebook.
+_Thuộc tài liệu:_ `cshperspectmed-HAE-a033456.pdf` (Hình 2, Trang 4) trong y văn y học chứng cứ.
 ![[Pasted image 20260818184954.png]]
 
 ```
@@ -140,7 +139,7 @@ _Thuộc tài liệu:_ `cshperspectmed-HAE-a033456.pdf` (Hình 2, Trang 4) trong
 
 #### **Hình 3: Sequential liver biopsies taken from an acutely infected adult chimpanzee (Pan troglodytes) inoculated intravenously with HM175 virus.**
 
-_Thuộc tài liệu:_ `cshperspectmed-HAE-a033456.pdf` (Hình 3, Trang 5) trong Notebook.
+_Thuộc tài liệu:_ `cshperspectmed-HAE-a033456.pdf` (Hình 3, Trang 5) trong y văn y học chứng cứ.
 ![[Pasted image 20260818185012.png]]
 
 ```
@@ -159,7 +158,7 @@ _Thuộc tài liệu:_ `cshperspectmed-HAE-a033456.pdf` (Hình 3, Trang 5) trong
 
 #### **Hình 4: Acute hepatitis A in a New World owl monkey (Aotus trivirgatus). Staining with hematoxylin and eosin (H&E).**
 
-_Thuộc tài liệu:_ `cshperspectmed-HAE-a033456.pdf` (Hình 4, Trang 7) trong Notebook.
+_Thuộc tài liệu:_ `cshperspectmed-HAE-a033456.pdf` (Hình 4, Trang 7) trong y văn y học chứng cứ.
 ![[Pasted image 20260818185028.png]]
 
 ```
@@ -176,7 +175,7 @@ _Thuộc tài liệu:_ `cshperspectmed-HAE-a033456.pdf` (Hình 4, Trang 7) trong
 
 #### **Hình 5: Hepatitis A in genetically deficient Ifnar1- mice that lack expression of the type I interferon (IFN)a/b receptor.**
 
-_Thuộc tài liệu:_ `cshperspectmed-HAE-a033456.pdf` (Hình 5, Trang 10) trong Notebook.
+_Thuộc tài liệu:_ `cshperspectmed-HAE-a033456.pdf` (Hình 5, Trang 10) trong y văn y học chứng cứ.
 ![[Pasted image 20260818185043.png]]
 ```
 [Tiêu bản mô học gan viêm gan A ở chuột knockout Ifnar1-/-]

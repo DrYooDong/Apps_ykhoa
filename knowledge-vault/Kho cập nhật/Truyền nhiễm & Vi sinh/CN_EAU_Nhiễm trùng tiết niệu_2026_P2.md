@@ -18,7 +18,6 @@ updated: "2026-09-06"
 icd10:
   - "N39.0"
 ---
-
 # BÀI HỌC SINH LÝ HỌC, SINH LÝ BỆNH VÀ CƠ CHẾ BỆNH SINH CỦA NHIỄM TRÙNG ĐƯỜNG TIẾT NIỆU (PHẦN 2)
 
 _Tài liệu tham khảo chính: Hướng dẫn về Nhiễm trùng Hệ tiết niệu của Hiệp hội Tiết niệu Châu Âu năm 2026 (EAU Guidelines on Urological Infections 2026)_
@@ -46,7 +45,7 @@ _Tài liệu tham khảo chính: Hướng dẫn về Nhiễm trùng Hệ tiết 
 > **TRÍCH XUẤT BẢNG THÔNG TIN KHUYẾN CÁO LÂM SÀNG**
 > 
 > - **Tên bảng:** **Table 5: Recommendations for diagnostic evaluation, disease management and prevention of CA-UTI (Khuyến cáo chẩn đoán, điều trị và dự phòng CA-UTI)**
-> - **Thuộc tài liệu:** _EAU Guidelines on Urological Infections 2026_ trong Notebook này.
+> - **Thuộc tài liệu:** _EAU Guidelines on Urological Infections 2026_ trong y văn.
 > 
 > | Nội dung khuyến cáo | Mức độ khuyến cáo (Strength rating) | | :--- | :--- | | **Chẩn đoán:** • Không cấy nước tiểu thường quy ở bệnh nhân đặt ống thông không có triệu chứng. • Không dùng bạch cầu niệu làm chỉ số duy nhất để chẩn đoán CA-UTI. • Không dựa đơn độc vào nước tiểu đục hay có mùi để phân biệt CA-ABU và CA-UTI. | **Mạnh (Strong)** **Mạnh (Strong)** **Mạnh (Strong)** | | **Điều trị & Dự phòng:** • Điều trị CA-UTI có triệu chứng theo khuyến cáo của nhiễm trùng tiết niệu khu trú/toàn thân. • Thực hiện cấy nước tiểu trước khi bắt đầu điều trị kháng sinh ở bệnh nhân đặt ống thông đã được rút. • Không điều trị kháng sinh đối với vi khuẩn niệu không triệu chứng liên quan đến ống thông (CA-ABU) nói chung. • Điều trị CA-ABU trước các can thiệp tiết niệu có xâm lấn gây tổn thương niêm mạc (như cắt nội soi tuyến tiền liệt - TURP). • Thay thế hoặc rút ống thông tiểu lưu trước khi bắt đầu điều trị kháng sinh. • Không bôi chất sát trùng tại chỗ hoặc kháng sinh lên ống thông, niệu đạo hoặc lỗ niệu đạo ngoài. • Không dùng kháng sinh dự phòng thường quy để ngăn ngừa CA-UTIs hoặc ngăn ngừa nhiễm trùng sau khi rút ống thông tiểu. | **Mạnh (Strong)** **Mạnh (Strong)** **Mạnh (Strong)** **Mạnh (Strong)** **Mạnh (Strong)** **Mạnh (Strong)** **Mạnh (Strong)** / **Yếu (Weak)** (đối với rút ống) | | **Quản lý ống thông:** • Tối thiểu hóa thời gian đặt ống thông. • Sử dụng ống thông phủ hydrophilic để giảm nguy cơ nhiễm trùng liên quan đến đặt thông tiểu ngắt quãng (IC). | **Mạnh (Strong)** **Mạnh (Strong)** |
 > 
@@ -72,7 +71,7 @@ _Tài liệu tham khảo chính: Hướng dẫn về Nhiễm trùng Hệ tiết 
 > **TRÍCH XUẤT PHÁC ĐỒ ĐIỀU TRỊ KHÁNG SINH VIÊM NIỆU ĐẠO**
 > 
 > - **Tên bảng:** **Table 9 & 10: Suggested regimens for antimicrobial therapy for urethritis (Các phác đồ điều trị khuyến cáo cho viêm niệu đạo)**
-> - **Thuộc tài liệu:** _EAU Guidelines on Urological Infections 2026_ trong Notebook này.
+> - **Thuộc tài liệu:** _EAU Guidelines on Urological Infections 2026_ trong y văn.
 > 
 > | Bệnh cảnh lâm sàng / Tác nhân | Kháng sinh khuyến cáo đầu tay | Phác đồ thay thế | Ghi chú lâm sàng | | :--- | :--- | :--- | :--- | | **Nghi ngờ nhiễm Lậu cầu (GU)** | • **Ceftriaxone 1-2 g** tiêm bắp (IM) hoặc truyền tĩnh mạch (IV) liều duy nhất **+ Doxycycline 100 mg** uống x 2 lần/ngày trong 7 ngày | • Nếu dị ứng Doxycycline: Thay bằng **Azithromycin** phác đồ 4 ngày (Ngày 1: 1g; Ngày 2-4: 500mg/ngày) | • Việc dùng Ceftriaxone đường tĩnh mạch đã được chứng minh là an toàn, hiệu quả và giúp tránh cảm giác đau đớn khi tiêm bắp cho bệnh nhân. | | **Nghi ngờ Viêm niệu đạo không do lậu (NGU)** | • **Doxycycline 100 mg** uống x 2 lần/ngày trong 7 ngày | • **Azithromycin** phác đồ 4 ngày (Ngày 1: 1g; Ngày 2-4: 500mg/ngày) | | | **Đã xác định tác nhân vi sinh cụ thể:** | | | | | • _Chlamydia trachomatis_ | • **Doxycycline 100 mg** uống x 2 lần/ngày trong 7 ngày | • **Azithromycin** 1 g uống liều duy nhất (nếu đã loại trừ _M. genitalium_) hoặc phác đồ 4 ngày (nếu chưa loại trừ) | • Trong điều trị mắt xích _C. trachomatis_ ở nam giới, Azithromycin có thể kém hiệu quả hơn Doxycycline về mặt vi sinh. | | • _Mycoplasma genitalium_ | • **Azithromycin** phác đồ 4 ngày (nếu không có đột biến kháng Macrolide) • **Moxifloxacin 400 mg** uống x 1 lần/ngày trong 7 ngày (nếu có đột biến kháng Macrolide hoặc thất bại với Azithromycin) | • **Sitafloxacin 100 mg** uống x 2 lần/ngày trong 7 ngày (nếu thất bại với cả hai thuốc trên) | | | • _Ureaplasma urealyticum_ | • **Doxycycline 100 mg** uống x 2 lần/ngày trong 7 ngày | • **Azithromycin 1 g** uống liều duy nhất | • Hiệu quả của hai phác đồ này là tương đương nhau. | | • _Trichomonas vaginalis_ | • **Metronidazole 1.5 - 2 g** uống liều duy nhất | • **Tinidazole 2 g** uống liều duy nhất | |
 > 
@@ -99,7 +98,7 @@ _Tài liệu tham khảo chính: Hướng dẫn về Nhiễm trùng Hệ tiết 
 > **TRÍCH XUẤT PHÁC ĐỒ KHÁNG SINH VIÊM TUYẾN TIỀN LIỆT**
 > 
 > - **Tên bảng:** **Table 10: Suggested regimens for antimicrobial therapy for chronic bacterial prostatitis (Phác đồ kháng sinh khuyến cáo trong viêm tuyến tiền liệt mạn tính)**
-> - **Thuộc tài liệu:** _EAU Guidelines on Urological Infections 2026_ trong Notebook này.
+> - **Thuộc tài liệu:** _EAU Guidelines on Urological Infections 2026_ trong y văn.
 > 
 > | Tác nhân / Loại kháng sinh | Liều dùng hàng ngày | Thời gian điều trị | Ghi chú lâm sàng | | :--- | :--- | :--- | :--- | | **ABP (Viêm cấp tính)** | Theo phác đồ nhiễm trùng toàn thân đường tĩnh mạch (như Ceftriaxone, Piperacillin/tazobactam). | 2 - 4 tuần (uống sau khi hết sốt). | Cần dẫn lưu nước tiểu bằng mở thông bàng quang ra da nếu có bí tiểu cấp. | | **CBP (Viêm mạn tính):** | | | | | • Fluoroquinolones (như Ciprofloxacin, Levofloxacin) | Liều tối ưu đường uống | **4 - 6 tuần**. | Là lựa chọn đầu tay nhờ khả năng thâm nhập vượt trội vào mô và dịch tuyến tiền liệt. | | • Doxycycline | 100 mg x 2 lần/ngày | **10 ngày** (lên tới 3-4 tuần). | Chỉ định khi xác định tác nhân là _C. trachomatis_ hoặc _Mycoplasma_. | | • Azithromycin | 500 mg x 1 lần/ngày | **Lên tới 3 tuần**. | Chỉ định đối với nhiễm _C. trachomatis_. | | • Metronidazole | 500 mg x 3 lần/ngày | **14 ngày**. | Chỉ định đối với nhiễm _Trichomonas vaginalis_. |
 > 
@@ -121,7 +120,7 @@ _Tài liệu tham khảo chính: Hướng dẫn về Nhiễm trùng Hệ tiết 
 > **TRÍCH XUẤT LƯU ĐỒ CHẨN ĐOÁN VÀ ĐIỀU TRỊ**
 > 
 > - **Tên hình:** **Figure 2: Diagnostic and treatment algorithm for men with acute epididymitis (Thuật toán chẩn đoán và điều trị viêm mào tinh hoàn cấp)**
-> - **Thuộc tài liệu:** _EAU Guidelines on Urological Infections 2026_ trong Notebook này.
+> - **Thuộc tài liệu:** _EAU Guidelines on Urological Infections 2026_ trong y văn.
 > ![[Pasted image 20260902214817.png]]
 > **Mô tả chi tiết các bước xử trí theo thuật toán:**
 > 
@@ -150,7 +149,7 @@ _Tài liệu tham khảo chính: Hướng dẫn về Nhiễm trùng Hệ tiết 
 > **TRÍCH XUẤT PHÁC ĐỒ KHÁNG SINH FOURNIER**
 > 
 > - **Tên bảng:** **Table 11: Suggested regimens for empirical antimicrobial therapy in Fournier's gangrene (Phác đồ kháng sinh kinh nghiệm trong hoại tử Fournier)**
-> - **Thuộc tài liệu:** _EAU Guidelines on Urological Infections 2026_ trong Notebook này.
+> - **Thuộc tài liệu:** _EAU Guidelines on Urological Infections 2026_ trong y văn.
 > 
 > | Các phác đồ kháng sinh phối hợp đường tĩnh mạch (IV) | Liều lượng khuyến cáo | | :--- | :--- | | • **Piperacillin-tazobactam** • **Vancomycin** | 4.5 g mỗi 6 - 8 giờ (truyền IV) 15 mg/kg mỗi 12 giờ (IV) | | • **Imipenem-cilastatin** | 0.5 g - 1 g mỗi 6 giờ | | • **Meropenem** | 1 g mỗi 8 giờ | | • **Ertapenem** | 1 g uống hoặc truyền tĩnh mạch hàng ngày | | • **Cefotaxime** • **Metronidazole** (hoặc Clindamycin) | 2 g mỗi 6 giờ 500 mg mỗi 6 giờ (Clindamycin: 600-900mg mỗi 8 giờ) | | • **Cefotaxime** • **Fosfomycin** • **Metronidazole** | 2 g mỗi 6 giờ 5 g mỗi 8 giờ 500 mg mỗi 6 giờ |
 > 
@@ -175,7 +174,7 @@ _Tài liệu tham khảo chính: Hướng dẫn về Nhiễm trùng Hệ tiết 
 > **TRÍCH XUẤT BẢNG THÔNG TIN LIỀU LƯỢNG THUỐC LAO**
 > 
 > - **Tên bảng:** **Table 12: Regimens for antimicrobial therapy for GUTB (Liều lượng thuốc lao hệ niệu - sinh dục)**
-> - **Thuộc tài liệu:** _EAU Guidelines on Urological Infections 2026_ trong Notebook này.
+> - **Thuộc tài liệu:** _EAU Guidelines on Urological Infections 2026_ trong y văn.
 > 
 > | Thuốc chống lao | Liều lượng hàng ngày | Liều tối đa hàng ngày | Ghi chú lâm sàng | | :--- | :--- | :--- | :--- | | • **Isoniazid** | 5 mg/kg | 300 mg | Tránh tác dụng phụ gây viêm dây thần kinh ngoại biên. | | • **Rifampicin** | 10 mg/kg | 600 mg | Chất cảm ứng enzyme gan mạnh. | | • **Pyrazinamide** | 25 mg/kg | 2,000 mg | Cần theo dõi nồng độ axit uric máu. | | • **Ethambutol** | 15 - 20 mg/kg | 800 - 1,600 mg (tùy cân nặng) | Độc tính thị giác (viêm dây thần kinh thị giác). |
 
@@ -194,7 +193,7 @@ _Tài liệu tham khảo chính: Hướng dẫn về Nhiễm trùng Hệ tiết 
 > **TRÍCH XUẤT PHÁC ĐỒ ĐIỀU TRỊ KHÁNG NẤM ĐƯỜNG TIẾT NIỆU**
 > 
 > - **Tên bảng:** **Table 13: Recommended regimens for fungal UTI (Khuyến cáo điều trị nấm hệ tiết niệu)**
-> - **Thuộc tài liệu:** _EAU Guidelines on Urological Infections 2026_ trong Notebook này.
+> - **Thuộc tài liệu:** _EAU Guidelines on Urological Infections 2026_ trong y văn.
 > 
 > | Nhóm bệnh nhân & Tác nhân | Kháng nấm khuyến cáo | Liều lượng và thời gian | Hiệu chỉnh liều theo chức năng thận | | :--- | :--- | :--- | :--- | | **Nhiễm nấm bàng quang khu trú (Fungal Cystitis):** | | | | | • Chủng nhạy cảm Fluconazole | **Fluconazole** | 200 mg/ngày uống trong 14 ngày (Nếu nhiễm _C. glabrata_ nhạy cảm: dùng liều cao 800 mg/ngày). | • eGFR < 50 mL/min: Giảm 50% liều duy trì. • Chạy thận nhân tạo: Dùng liều đầy đủ 3 lần/tuần sau lọc máu. | | • Chủng kháng Fluconazole (như _C. glabrata_ kháng, _C. krusei_) | **Amphotericin B deoxycholate** | Bơm rửa bàng quang: 200 mg/L pha trong túi 100 mL Glucose 5%, bơm rửa x 3 lần/ngày trong 7 ngày. | Không cần hiệu chỉnh liều. | | | **Amphotericin B deoxycholate** (IV) | 0.3 - 0.6 mg/kg/ngày truyền tĩnh mạch trong 1 - 7 ngày. | Không cần hiệu chỉnh liều. | | | **Caspofungin** | 70 mg truyền IV ngày 1, sau đó 50 mg/ngày trong 2 - 3 tuần. | Không cần hiệu chỉnh liều. | | **Nhiễm nấm toàn thân (Systemic Fungal UTI - như viêm bể thận do nấm):** | | | | | • Chủng nhạy cảm Fluconazole | **Fluconazole** | 200 - 400 mg/ngày uống trong 14 ngày (Ca nặng dùng liều nạp 400-800mg ngày đầu). | Hiệu chỉnh tương tự như trên. | | • Chủng kháng Fluconazole | **Flucytosine** | 25 mg/kg uống hoặc truyền IV x 4 lần/ngày trong 14 ngày. | • eGFR 21-40: 25 mg/kg x 2 lần/ngày. • eGFR 10-20: 25 mg/kg x 1 lần/ngày. • eGFR < 10: 25 mg/kg mỗi 48 giờ. |
 
@@ -205,4 +204,3 @@ _Tài liệu tham khảo chính: Hướng dẫn về Nhiễm trùng Hệ tiết 
 1. Bonkat G, Kranz J, Cai T, Geerlings SE, Köves B, Lambregts MMC, Mantica G, Pilatz A, Medina-Polo J, Schneidewind L, Schubert S, Vallée M, Veeratterapillay R, Wagenlehner F. _EAU Guidelines on Urological Infections 2026_. Arnhem, The Netherlands: European Association of Urology Guidelines Office; 2026.
 
 ---
-

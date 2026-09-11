@@ -16,7 +16,6 @@ updated: "2026-09-06"
 icd10:
   - "J18"
 ---
-
 Chào bác sĩ, tiếp nối các nội dung tóm tắt chuyên sâu từ Phần 1 và Phần 2 của Hướng dẫn Lâm sàng ATS 2025 về viêm phổi mắc phải cộng đồng (CAP) ở người lớn, dưới đây là **Phần 3**. Phần này sẽ tập trung chi tiết vào các bảng dữ liệu lâm sàng cốt lõi, tiêu chuẩn phân loại mức độ nặng, định nghĩa sức mạnh khuyến cáo, vai trò của người bệnh trong ra quyết định lâm sàng và các khoảng trống nghiên cứu ưu tiên chưa được đề cập trước đây.
 
 ---
@@ -29,7 +28,7 @@ Việc phân tầng chính xác bệnh nhân mắc CAP mức độ nặng đóng
 
 **Tên Bảng:** Table 2 - 2007 and 2019 Infectious Diseases Society of America/American Thoracic Society Criteria for Defining Severe Community-acquired Pneumonia.
 
-- **Thuộc tài liệu:** _rccm.202507-1692st.pdf_ trong Notebook này.
+- **Thuộc tài liệu:** _rccm.202507-1692st.pdf_ trong y văn.
 
 |Nhóm tiêu chuẩn|Chi tiết các tiêu chí lâm sàng và cận lâm sàng|
 |:--|:--|
@@ -46,7 +45,7 @@ Hướng dẫn ATS 2025 nhấn mạnh rằng các khuyến cáo chung không đ�
 
 **Tên Bảng:** Table 1 - Clinical Factors to Consider That Strengthen or Weaken Each Recommendation.
 
-- **Thuộc tài liệu:** _rccm.202507-1692st.pdf_ trong Notebook này.
+- **Thuộc tài liệu:** _rccm.202507-1692st.pdf_ trong y văn.
 
 |Câu hỏi lâm sàng & Khuyến cáo|Các yếu tố làm TĂNG sức mạnh khuyến cáo|Các yếu tố làm GIẢM sức mạnh khuyến cáo|
 |:--|:--|:--|
@@ -65,7 +64,7 @@ Hướng dẫn ATS 2025 nhấn mạnh rằng các khuyến cáo chung không đ�
 
 **Tên Bảng:** Table 3 - Strength of Recommendations.
 
-- **Thuộc tài liệu:** _rccm.202507-1692st.pdf_ trong Notebook này.
+- **Thuộc tài liệu:** _rccm.202507-1692st.pdf_ trong y văn.
 
 |Đối tượng áp dụng|Khuyến nghị MẠNH (Strong Recommendation)*(Dùng cụm từ "Chúng tôi khuyến nghị...")*|Khuyến cáo ĐIỀU KIỆN (Conditional Recommendation)*(Dùng cụm từ "Chúng tôi gợi ý...")*|
 |:--|:--|:--|

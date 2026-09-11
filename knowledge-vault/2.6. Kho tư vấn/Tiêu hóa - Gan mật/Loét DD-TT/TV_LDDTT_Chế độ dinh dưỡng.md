@@ -1,3 +1,32 @@
+---
+title: "Tư vấn Bệnh nhân: Chế độ Ăn uống & Dinh dưỡng trong Loét Dạ dày - Tá tràng"
+part: "P1"
+aliases:
+  - "Tư vấn Loét dạ dày tá tràng Dinh dưỡng"
+  - "Chế độ ăn cho người đau dạ dày"
+keywords:
+  - "loét dạ dày tá tràng"
+  - "chế độ dinh dưỡng dạ dày"
+  - "kiêng rượu bia đồ cay chua"
+  - "tư vấn bệnh nhân"
+icd10:
+  - "K25 (Loét dạ dày)"
+  - "K26 (Loét tá tràng)"
+  - "K27 (Loét dạ dày tá tràng không đặc hiệu)"
+specialty: "Tiêu hóa - Gan mật"
+kho: "2.6. Kho tư vấn"
+type: "patient-counseling"
+tags:
+  - "CliniPortal"
+  - "TuVanBenhNhan"
+  - "KhoTuVan"
+  - "y-khoa/tv"
+updated: "2026-09-11"
+sources:
+  - "ACG Clinical Guideline: Treatment of Helicobacter pylori Infection"
+  - "Hướng dẫn Chẩn đoán và Điều trị Loét Dạ dày - Tá tràng - Bộ Y Tế"
+---
+
 ### Ăn uống đúng giờ — Không để dạ dày quá rỗng
 
 - Đau bụng do loét dạ dày - tá tràng thường có xu hướng khởi phát hoặc tăng lên dữ dội vào thời điểm **dạ dày trống rỗng** (bụng đói).

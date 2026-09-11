@@ -16,7 +16,6 @@ tags:
   - "y-khoa/cn"
 updated: "2026-09-06"
 ---
-
 # BÀI HỌC: QUY TRÌNH XÉT NGHIỆM, CHẨN ĐOÁN VÀ PHÂN LOẠI GIAI ĐOẠN LÂM SÀNG/MIỄN DỊCH NHIỄM HIV (PHẦN 1)
 
 ---
@@ -212,5 +211,3 @@ Cơ sở thực hiện xét nghiệm có trách nhiệm kết nối, chuyển g�
 ---
 
 💡 Chúng ta đã hoàn thành bài học hệ thống hóa chuyên sâu **Phần 1** về cơ sở pháp lý, quy trình xét nghiệm chẩn đoán xác định cho người lớn, quy trình NAT chẩn đoán sớm cho trẻ dưới 18 tháng tuổi, phân loại giai đoạn miễn dịch và kết nối chuyển gửi của Bộ Y tế.
-
-Tôi có thể hỗ trợ bạn tiếp tục tóm tắt **Phần 2** đi sâu vào chi tiết các phác đồ điều trị dự phòng trước phơi nhiễm (PrEP hằng ngày, PrEP tình huống 2+1+1, xử trí khi quên thuốc) và phác đồ điều trị dự phòng sau phơi nhiễm (PEP) trong vòng 72 giờ vàng không?

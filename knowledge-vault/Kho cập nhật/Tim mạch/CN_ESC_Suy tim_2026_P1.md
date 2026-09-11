@@ -33,7 +33,6 @@ tags:
 icd10:
   - "I50"
 ---
-
 Chào bạn, dưới góc độ chuyên gia tim mạch, tôi xin gửi tới bạn bản **Tóm tắt Khuyến cáo mới nhất về Suy tim từ Hội Tim mạch Châu Âu (ESC 2026) - Phần 1**. Đây là khuyến cáo mang tính lịch sử được công bố tại Đại hội ESC vào cuối tháng 8 năm 2026, mang lại những thay đổi mang tính cách mạng trong phân loại kiểu hình, phân giai đoạn bệnh, phân nhóm điều trị và tiếp cận chẩn đoán thực hành.
 
 ---
@@ -57,7 +56,7 @@ Vì vậy, **Khuyến cáo ESC 2026 đã chính thức loại bỏ hoàn toàn n
 
 ##### **Trích xuất Sơ đồ/Bảng biểu liên quan:**
 
-- **Tên Bảng:** _Table 4: New concepts_ thuộc tài liệu _ehag100.pdf_ trong Notebook này.
+- **Tên Bảng:** _Table 4: New concepts_ thuộc tài liệu _ehag100.pdf_ trong y văn.
 	![[Pasted image 20260830193028.png]]
 - **Mô tả nội dung dưới bảng:** Bảng này chỉ ra các khái niệm mới mang tính đột phá của phiên bản 2026 so với năm 2021, cụ thể: mở rộng nhóm HFrEF để bao gồm tất cả bệnh nhân có LVEF <50%; xóa bỏ hoàn toàn phân nhóm HFmrEF; nhóm HFpEF tính từ ngưỡng LVEF ≥50%; thuật ngữ "suy tim mất bù" (Decompensated HF) chính thức thay thế cho "suy tim cấp" (acute HF); đồng thuận áp dụng phân loại suy tim theo các giai đoạn từ A đến D và đưa vào hệ thống thuật ngữ phân loại điều trị mới.
 
@@ -74,7 +73,7 @@ ESC 2026 đã chính thức đồng thuận và áp dụng phân loại suy tim 
 
 ##### **Trích xuất Sơ đồ/Bảng biểu liên quan:**
 
-- **Tên Hình:** _Figure 2: Heart failure stages and classifications_ thuộc tài liệu _ehag100.pdf_ trong Notebook này.
+- **Tên Hình:** _Figure 2: Heart failure stages and classifications_ thuộc tài liệu _ehag100.pdf_ trong y văn.
 ![[Pasted image 20260830193121.png]]
 - **Mô tả nội dung dưới hình:** Hình vẽ trực quan thể hiện 4 giai đoạn tiến triển liên tục của suy tim từ Stage A (At risk), Stage B (Pre-HF), Stage C (Symptomatic) cho đến Stage D (Advanced HF). Sơ đồ định nghĩa chi tiết tiêu chuẩn chuyển giai đoạn dựa trên sự xuất hiện của biến đổi cấu trúc, biến đổi biomarker và sự bộc phát triệu chứng lâm sàng. Ở Stage C, đường đi lâm sàng được phân nhánh rõ rệt thành hai kiểu hình HFrEF (LVEF <50%) và HFpEF (LVEF ≥50%).
 
@@ -92,7 +91,7 @@ Nhằm phản ánh đúng vai trò đồng bộ của cả nội khoa, thiết b
 
 ##### **Trích xuất Sơ đồ/Bảng biểu liên quan:**
 
-- **Tên Hình:** _Figure 3: New nomenclature for heart failure therapies_ thuộc tài liệu _ehag100.pdf_ trong Notebook này.
+- **Tên Hình:** _Figure 3: New nomenclature for heart failure therapies_ thuộc tài liệu _ehag100.pdf_ trong y văn.
 	![[Pasted image 20260830193154.png]]
 - **Mô tả nội dung dưới hình:** Mô hình tháp tam giác phân cấp các liệu pháp điều trị suy tim hiện đại. Trong đó, Liệu pháp Nội khoa Nền tảng (FMT) tạo nên phần móng vững chắc và rộng lớn nhất ở đáy tháp. Phần đỉnh tháp được chia đều cho hai nhánh bổ trợ song hành là Liệu pháp Nội khoa Bổ sung (AMT) và các Can thiệp có Khuyến cáo (GDIT), giúp cá thể hóa tối ưu theo từng đặc điểm lâm sàng của người bệnh.
 
@@ -144,7 +143,7 @@ _Xác suất chẩn đoán HFpEF sẽ tăng lên tương ứng với số lượ
 
 ##### **Trích xuất Sơ đồ/Bảng biểu liên quan:**
 
-- **Tên Hình:** _Figure 4: Diagnostic algorithm for chronic heart failure presenting in the outpatient or community setting_ thuộc tài liệu _ehag100.pdf_ trong Notebook này.
+- **Tên Hình:** _Figure 4: Diagnostic algorithm for chronic heart failure presenting in the outpatient or community setting_ thuộc tài liệu _ehag100.pdf_ trong y văn.
 	![[Pasted image 20260830193239.png]]
 - **Mô tả nội dung dưới hình:** Sơ đồ hướng dẫn quy trình thực hành lâm sàng từng bước để chẩn đoán suy tim mạn tính tại môi trường ngoại trú: Bắt đầu từ triệu chứng và yếu tố nguy cơ lâm sàng -> Thực hiện ECG và định lượng NT-proBNP/BNP sàng lọc -> Chuyển làm siêu âm tim trong vòng 2 tuần nếu NT-proBNP >2000 pg/mL -> Xác định kiểu hình suy tim (HFrEF LVEF <50% vs HFpEF LVEF ≥50%) -> Tầm soát sâu hơn để điều trị trúng đích nguyên nhân sinh bệnh.
 

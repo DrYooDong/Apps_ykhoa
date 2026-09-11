@@ -16,7 +16,6 @@ tags:
   - "y-khoa/slb"
 updated: "2026-09-06"
 ---
-
 # SINH LÝ BỆNH TĂNG SINH VI KHUẨN RUỘT NON (SIBO) - PHẦN 2
 
 ## I. Các Yếu Tố Nguy Cơ và Bệnh Lý Tiền Đề Gây SIBO
@@ -106,7 +105,7 @@ Dưới đây là mô tả trực quan về sự hiện diện của màng sinh 
 ```
 
 - **Tên Hình:** Figure 3. Endoscopic visualization of biofilm negative (BF¯) and biofilm positive (BF+) patients. _(Hình ảnh trực quan nội soi bệnh nhân có màng sinh học âm tính và dương tính)_.
-- **Thuộc tài liệu:** **20251213-97367-pwzol9.pdf** trong Notebook này (được trích dẫn và hiệu chỉnh từ nghiên cứu gốc của tác giả Baumgartner M và cộng sự, đăng trên tạp chí _Gastroenterology_ năm 2021).
+- **Thuộc tài liệu:** **20251213-97367-pwzol9.pdf** trong y văn (được trích dẫn và hiệu chỉnh từ nghiên cứu gốc của tác giả Baumgartner M và cộng sự, đăng trên tạp chí _Gastroenterology_ năm 2021).
 - **Mô tả chi tiết dưới hình gốc:** Hình ảnh nội soi so sánh bề mặt niêm mạc ruột giữa người không có biofilm (BF¯) và người có biofilm thực thể bám dính (BF+). Nghiên cứu lâm sàng quy mô lớn trên 1.400 bệnh nhân cho thấy màng sinh học niêm mạc là một đặc điểm nội soi nổi bật ở bệnh nhân mắc Hội chứng ruột kích thích (IBS) (chiếm tỷ lệ 57%) và Viêm loét đại tràng (UC) (chiếm 34%), trong khi chỉ xuất hiện ở 6% nhóm chứng khỏe mạnh. Sự xuất hiện của lớp chất nền này bảo vệ các vi sinh vật khỏi các tác nhân kháng khuẩn, góp phần tạo nên tính chất mãn tính và sự kháng trị của các hội chứng dysbiosis đường ruột như SIBO/IMO.
 
 ---

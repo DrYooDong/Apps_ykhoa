@@ -18,7 +18,6 @@ updated: "2026-09-06"
 icd10:
   - "I50"
 ---
-
 ### **BÀI HỌC LÂM SÀNG: PHÁC ĐỒ ĐIỀU TRỊ VÀ THEO DÕI SUY TIM TRÊN BỆNH NHÂN THẬN MẠN THEO KHUYẾN CÁO ESC 2026 (PHẦN 2)**
 
 ---
@@ -34,7 +33,7 @@ Sự ra đời của **thuốc ức chế đồng vận natri-glucose 2 (SGLT2i)
 ##### **Trích xuất Sơ đồ liên quan:**
 
 - **Tên Sơ đồ:** _Figure 9: Pharmacological treatment of patients with heart failure and chronic kidney disease_
-- **Thuộc tài liệu:** **ehag098.pdf** trong Notebook này.
+- **Thuộc tài liệu:** **ehag098.pdf** trong y văn.
 	![[Pasted image 20260831194054.png]]
 - **Mô tả nội dung dưới sơ đồ:** Sơ đồ này phân cấp rõ ràng phác đồ sử dụng các nhóm thuốc điều trị suy tim theo dải phân suất tống máu và mức lọc cầu thận eGFR:
     1. _Điều trị bất kể LVEF:_ Lợi tiểu quai (Class I) cho bệnh nhân có triệu chứng sung huyết; Ức chế SGLT2 (Class I) áp dụng cho eGFR ≥ 20 mL/min/1.73 m².
@@ -53,7 +52,7 @@ Việc khởi trị và tối ưu hóa liều lượng các thuốc điều tr�
 ##### **Trích xuất Sơ đồ liên quan:**
 
 - **Tên Sơ đồ:** _Figure 11: Monitoring kidney function in the treatment of chronic heart failure with reduced ejection fraction and chronic kidney disease_
-- **Thuộc tài liệu:** **ehag098.pdf** trong Notebook này.
+- **Thuộc tài liệu:** **ehag098.pdf** trong y văn.
 	![[Pasted image 20260831194158.png]]
 - **Mô tả nội dung dưới sơ đồ:** Sơ đồ Figure 11 hướng dẫn chi tiết quy trình chẩn đoán, phân loại eGFR nền tảng, khởi trị thuốc, tăng liều và theo dõi định kỳ:
     1. _Phân nhóm eGFR nền tảng tại thời điểm Baseline để quyết định điều trị:_
@@ -80,7 +79,7 @@ Khi bệnh nhân CKD nhập viện vì đợt suy tim mất bù (DHF), tình tr�
 ##### **Trích xuất Sơ đồ liên quan:**
 
 - **Tên Sơ đồ:** _Figure 10: Management of decompensated heart failure in the setting of chronic kidney disease_
-- **Thuộc tài liệu:** **ehag098.pdf** trong Notebook này.
+- **Thuộc tài liệu:** **ehag098.pdf** trong y văn.
 	![[Pasted image 20260831194234.png]]
 - **Mô tả nội dung dưới sơ đồ:** Sơ đồ thuật toán Figure 10 quy chuẩn hóa quy trình điều trị lợi tiểu và giải áp sung huyết nội viện:
     1. _Đánh giá ban đầu:_ Xác định chẩn đoán DHF, tầm soát các nguyên nhân đe dọa tính mạng (CHAMPIT), đánh giá tình trạng giảm tưới máu (Hypoperfusion) và suy hô hấp để có liệu pháp hỗ trợ thích hợp (vận mạch, tăng co bóp, thông khí nhân tạo, hoặc lọc máu cấp cứu KRT).
@@ -103,7 +102,7 @@ Trong quá trình sử dụng lợi tiểu tĩnh mạch liều cao để giải 
 
 - **Tên Sơ đồ:** _Figure 12: Monitoring kidney function in the treatment of decompensated heart failure and chronic kidney disease_
 	![[Pasted image 20260831194506.png]]
-- **Thuộc tài liệu:** **ehag098.pdf** trong Notebook này.
+- **Thuộc tài liệu:** **ehag098.pdf** trong y văn.
 - **Mô tả nội dung dưới sơ đồ:** Sơ đồ Figure 12 hướng dẫn xử trí khi xuất hiện tình trạng sụt giảm chức năng thận (Worsening Renal Function - WRF) - định nghĩa là creatinine huyết thanh tăng > 26.5 µmol/L (hoặc > 0.3 mg/dL) trong quá trình điều trị:
     1. _Theo dõi thường quy:_ Trong pha giải áp tích cực, bắt buộc đo creatinine huyết thanh, BUN, natri và kali máu **hàng ngày (Class I)**, và nên theo dõi đáp ứng lợi tiểu uNa/lượng nước tiểu **(Class IIa)**.
     2. _Nếu không xuất hiện WRF:_ Tiếp tục liệu pháp lợi tiểu cho đến khi đạt trạng thái thể tích tuần hoàn bình thường (euvolaemic).

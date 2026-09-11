@@ -808,8 +808,48 @@
 | `abg/css/abg-cdss.css` | Stylesheet chuẩn DocSpace Clinical Aesthetic cho phân hệ ABG | CDSS ABG CSS |
 | `xray/index.html` | Trang standalone CDSS Phân Tích X-Quang Ngực & Bụng Thông Minh (RadAI) | CDSS RadAI X-Ray |
 | `xray/xray-canvas-renderer.ts` | Bộ mô phỏng hình ảnh X-quang PACS kỹ thuật số Canvas 2D (Ngực & Bụng) | CDSS X-Ray Canvas |
-| `xray/xray-ui.ts` | Controller trạm đọc PACS, nhận diện tổn thương & xuất kết luận hình ảnh SOAP | CDSS X-Ray UI |
-| `xray/css/xray-cdss.css` | Stylesheet trạm đọc PACS kết hợp DocSpace Clinical Design Tokens | CDSS X-Ray CSS |
+## 🏥 src/content/docspace/ (DocSpace MedLens & Clinical Deduction Engine)
+
+| File | Vai trò | Phân hệ |
+|------|---------|---------|
+| `index.html` | Cổng thông tin & trạm làm việc lâm sàng MedLens SOAP Workspace | DocSpace App Entry |
+| `src/App.tsx` | Master Component điều phối luồng 4 bước lâm sàng (S-O-A-P) & tích hợp Vault Drawer | DocSpace App |
+| `src/types.ts` | Type definitions cốt lõi cho Triệu chứng, Bệnh học, Phác đồ, Vitals, Labs & GuidelineStudy | DocSpace Types |
+| `src/data/diagnostic-criteria-database.ts` | CSDL Tiêu chuẩn chẩn đoán 30 bệnh lý trọng tâm (TypeScript typed) | Tầng 3 Deduction Engine |
+| `src/data/clinical-rules-kb.json` | Tri thức quy tắc suy luận lâm sàng (32 bệnh, 187 triệu chứng chuẩn hóa) | Tầng 3 Deduction Engine |
+| `src/data/epidemiology-context-database.ts` | CSDL Bối cảnh Dịch tễ học lâm sàng, vùng lưu hành, mùa dịch, véc-tơ (Kho DTH) | Tầng 3 Deduction Engine |
+| `src/data/risk-factors-database.ts` | CSDL Yếu tố nguy cơ bệnh học có thể/không thể thay đổi (Kho YTNC) | Tầng 3 Deduction Engine |
+| `src/data/lab-reference-database.ts` | CSDL Bảng tham chiếu cận lâm sàng, khoảng bình thường & Panic Values (Kho CLS) | Tầng 3 Deduction Engine |
+| `src/data/scoring-tools-registry.ts` | Đăng ký 14 Thang điểm & Công cụ tính toán lâm sàng tự động (Kho CC) | Tầng 3 Deduction Engine |
+| `src/data/drug-interaction-database.ts` | CSDL Dược thư lâm sàng, chỉnh liều eGFR / Child-Pugh & Kiểm tra tương tác thuốc (Kho DUOC) | Tầng 3 Deduction Engine |
+| `src/data/complications-database.ts` | CSDL Biến chứng bệnh học, Cảnh báo cờ đỏ sinh hiệu & Dự phòng biến chứng (Kho BC) | Tầng 3 Deduction Engine |
+| `src/components/SafePrescribingDdiPanel.tsx` | Component rà soát tương tác thuốc tức thì (Live DDI) & Chỉnh liều eGFR tự động (Kho DUOC) | DocSpace Component |
+| `src/components/ComplicationSentinelPanel.tsx` | Component cảnh báo sớm nguy cơ biến chứng & Bảng kiểm dự phòng biến chứng (Kho BC) | DocSpace Component |
+| `src/components/PatientCounselingPanel.tsx` | Component tư vấn đa góc nhìn (Bác sĩ Teach-Back, Bệnh nhân Cờ đỏ) & Tạo Tờ rơi A4 (Kho TV) | DocSpace Component |
+| `src/data/vault-catalog.json` | Bản sao chỉ mục 2.319+ bài viết EBM phục vụ tra cứu tức thì tại DocSpace | DocSpace Catalog |
+| `docs/NOTEBOOKLM_PROMPT_SUITE.md` | Cẩm nang hướng dẫn Bác sĩ biên soạn & nạp dữ liệu Knowledge Vault từ NotebookLM | Hướng dẫn & Quy chuẩn |
+| `docs/prompts/00-master-system-instruction.txt` | Master System Instruction thiết lập phong cách chuyên gia y khoa hàn lâm cho NotebookLM | Prompt Master |
+| `docs/prompts/01-prompt-cd-chan-doan.txt` | Prompt chuẩn hóa trích xuất Tiêu chuẩn chẩn đoán (Kho CD) cho NotebookLM | Prompt Kho CD |
+| `docs/prompts/02-prompt-pddt-phac-do.txt` | Prompt chuẩn hóa trích xuất Phác đồ điều trị phân tầng & liều thuốc (Kho PDDT) cho NotebookLM | Prompt Kho PDDT |
+| `docs/prompts/03-prompt-dth-dich-te.txt` | Prompt chuẩn hóa trích xuất Dịch tễ học lâm sàng, GBD & Vùng lưu hành VN (Kho DTH) cho NotebookLM | Prompt Kho DTH |
+| `docs/prompts/04-prompt-ytnc-nguy-co.txt` | Prompt chuẩn hóa trích xuất Yếu tố nguy cơ định lượng (OR, RR, PAR%) & Mô hình dự báo (Kho YTNC) | Prompt Kho YTNC |
+| `docs/prompts/05-prompt-duoc-duoc-thu.txt` | Prompt chuẩn hóa trích xuất Dược thư, Bảng liều eGFR & Tương tác thuốc (Kho DUOC) | Prompt Kho DUOC |
+| `docs/prompts/06-prompt-bc-bien-chung.txt` | Prompt chuẩn hóa trích xuất Biến chứng cấp/mạn, Cờ đỏ sinh hiệu & Dự phòng (Kho BC) | Prompt Kho BC |
+| `docs/prompts/07-prompt-tv-tu-van.txt` | Prompt chuẩn hóa trích xuất Tư vấn 3 góc nhìn Teach-Back, Dấu hiệu đỏ & Ra viện (Kho TV) | Prompt Kho TV |
+
+---
+
+## 🛠️ tools/scripts/ (Công Cụ Tự Động Hóa Knowledge Vault & Migration)
+
+| File | Vai trò | Phân hệ |
+|------|---------|---------|
+| `build-vault-catalog.js` | Quét toàn bộ 2.312+ file .md trong `knowledge-vault/`, parse frontmatter, xuất và đồng bộ `vault-catalog.json` sang cả Tầng 2 và Tầng 3 | Vault Catalog Pipeline |
+| `vault-readiness-check.mjs` | Script kiểm toán 13 tiêu chí "độ chín" và tính toàn vẹn của Knowledge Vault & DocSpace trước khi nạp ca lâm sàng | Vault Quality Gate |
+| `vault-conversion-extractor.js` | Script CLI AI-assisted trích xuất bán tự động dữ liệu từ .md (CD, CC, CLS, PDDT, DUOC) sang TypeScript/JSON rules | Vault Conversion Pipeline |
+| `clean-vault-slop.mjs` | Script quét và tự động chuẩn hóa, loại bỏ câu chào thừa/conversational filler của NotebookLM khỏi các file Vault | Vault Content Sanitizer |
+| `ingest-notebooklm-case.mjs` | Pipeline tự động nạp ca lâm sàng SOAP do NotebookLM sinh ra vào kho `src/content/knowledge-vault/ba/` | NotebookLM Ingestion Tool |
+
+---
 
 *Cập nhật file này mỗi khi thêm trang/skill mới vào hệ thống.*
 

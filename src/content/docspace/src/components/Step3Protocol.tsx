@@ -60,6 +60,9 @@ import {
   SOURCE_TYPE_LABELS,
 } from '../lib/guidelineBridge.ts';
 import { getSimilarSoapCases } from '../lib/crossReferenceEngine.ts';
+import { SafePrescribingDdiPanel } from './SafePrescribingDdiPanel.tsx';
+import { ComplicationSentinelPanel } from './ComplicationSentinelPanel.tsx';
+import { PatientCounselingPanel } from './PatientCounselingPanel.tsx';
 
 interface CustomOrder {
   id: string;
@@ -204,6 +207,27 @@ export const Step3Protocol: React.FC<Step3Props> = ({
       }
     );
   }, [currentDisease]);
+
+  // Combined drug names for DDI & Counseling
+  const allPrescribedDrugNames = useMemo(() => {
+    const list: string[] = [];
+    if (phacDo?.thuoc) {
+      phacDo.thuoc.forEach(([d]) => list.push(d));
+    }
+    customOrders.forEach((co) => list.push(co.drug));
+    return list;
+  }, [phacDo, customOrders]);
+
+  const handleAddPreventionOrder = (drugName: string, dosage: string, note: string) => {
+    const newOrder: CustomOrder = {
+      id: `prevention_${Date.now()}`,
+      drug: drugName,
+      dosage: dosage,
+      note: note,
+      completed: false,
+    };
+    setCustomOrders((prev) => [...prev, newOrder]);
+  };
 
   // Filtered diseases for selector dropdown / quick search
   const filteredDiseases = useMemo(() => {
@@ -1015,6 +1039,17 @@ export const Step3Protocol: React.FC<Step3Props> = ({
                 </button>
               </div>
             </div>
+
+            {/* Safe Prescribing DDI & eGFR Sentinel Panel (Kho DUOC) */}
+            <div className="mt-3">
+              <SafePrescribingDdiPanel
+                prescribedDrugNames={allPrescribedDrugNames}
+                patientAge={form?.tuoi}
+                patientGender={form?.gioiTinh}
+                patientCreatinine={labs?.lCre}
+                onOpenVaultDrawer={onOpenVaultDrawer}
+              />
+            </div>
           </div>
 
           {/* Section 3: Quick Clinical Risk Calculator (CURB-65 / Killip) */}
@@ -1258,8 +1293,32 @@ export const Step3Protocol: React.FC<Step3Props> = ({
               </ul>
             </div>
 
+            {/* Complications Sentinel & Vigilance Panel (Kho BC) */}
+            <div className="col-span-1 md:col-span-2">
+              <ComplicationSentinelPanel
+                diseaseId={currentDisease.id}
+                diseaseName={currentDisease.ten}
+                vitals={vitals}
+                labs={labs}
+                onAddPreventionOrder={handleAddPreventionOrder}
+                onOpenVaultDrawer={onOpenVaultDrawer}
+              />
+            </div>
+
+            {/* Patient Counseling, Education & Leaflet Panel (Kho TV) */}
+            <div className="col-span-1 md:col-span-2">
+              <PatientCounselingPanel
+                diseaseName={currentDisease.ten}
+                icd10={currentDisease.icd}
+                patientAge={form?.tuoi}
+                patientGender={form?.gioiTinh}
+                prescribedDrugs={allPrescribedDrugNames}
+                onOpenVaultDrawer={onOpenVaultDrawer}
+              />
+            </div>
+
             {/* 6. Knowledge Vault Evidence & Chuỗi Bệnh Học Đa Chiều */}
-            <div className="bg-gradient-to-br from-indigo-50/70 via-blue-50/40 to-slate-50 border border-indigo-200 rounded-lg p-4 sm:p-5 flex flex-col gap-3">
+            <div className="col-span-1 md:col-span-2 bg-gradient-to-br from-indigo-50/70 via-blue-50/40 to-slate-50 border border-indigo-200 rounded-lg p-4 sm:p-5 flex flex-col gap-3">
               <div className="flex flex-wrap items-center justify-between gap-2 border-b border-indigo-100 pb-3">
                 <div className="flex items-center gap-2">
                   <div className="w-7 h-7 rounded-md bg-indigo-600 text-white flex items-center justify-center shadow-xs">

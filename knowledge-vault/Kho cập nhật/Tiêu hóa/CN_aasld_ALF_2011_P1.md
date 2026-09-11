@@ -16,7 +16,6 @@ tags:
   - "y-khoa/cn"
 updated: "2026-09-06"
 ---
-
 # BÀI HỌC SINH LÝ BỆNH VÀ CƠ CHẾ BỆNH SINH: SUY GAN CẤP (ACUTE LIVER FAILURE - ALF)
 
 ---
@@ -95,7 +94,7 @@ updated: "2026-09-06"
 
 ### 2. Trích Dẫn Tài Liệu Tham Khảo Chuẩn AMA
 
-Dưới đây là danh mục tài liệu tham khảo được trích xuất chính xác theo chuẩn AMA từ tài liệu gốc trong Notebook:
+Dưới đây là danh mục tài liệu tham khảo được trích xuất chính xác theo chuẩn AMA từ tài liệu gốc trong y văn y học chứng cứ:
 
 1. Poff JA, Coakley FV, Qayyum A, Yeh BM, Browne LW, Merriman RB, et al. Frequency and histopathologic basis of hepatic surface nodularity in patients with fulminant hepatic failure. _Radiology_. 2008;249:518-523.
 2. Korman JD, Volenberg I, Balko J, Webster J, Schiodt FV, Squires RH, Jr., et al. Screening for Wilson disease in acute liver failure: a comparison of currently available diagnostic tests. _HEPATOLOGY_. 2008;48:1167-1174.

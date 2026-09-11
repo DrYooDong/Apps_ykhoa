@@ -1,3 +1,30 @@
+---
+title: "Tư vấn Bệnh nhân: Đái tháo đường — Chẩn đoán & Nhận biết Biến chứng"
+part: "P1"
+aliases:
+  - "Tư vấn ĐTĐ Chẩn đoán & Biến chứng"
+  - "Biến chứng đái tháo đường"
+keywords:
+  - "tư vấn đái tháo đường"
+  - "hba1c"
+  - "đường huyết đói"
+  - "biến chứng mắt thận bàn chân"
+icd10:
+  - "E11 (Đái tháo đường típ 2)"
+specialty: "Nội tiết - Chuyển hóa"
+kho: "2.6. Kho tư vấn"
+type: "patient-counseling"
+tags:
+  - "CliniPortal"
+  - "TuVanBenhNhan"
+  - "KhoTuVan"
+  - "y-khoa/tv"
+updated: "2026-09-11"
+sources:
+  - "ADA Standards of Care in Diabetes 2025"
+  - "Hướng dẫn Chẩn đoán và Điều trị ĐTĐ típ 2 - Bộ Y Tế Việt Nam"
+---
+
 ### Làm sao để biết bạn đã mắc bệnh đái tháo đường?
 
 Để xác định một người có thực sự mắc bệnh đái tháo đường hay không, các bác sĩ sẽ dựa vào các chỉ số xét nghiệm máu tĩnh mạch đạt chuẩn:

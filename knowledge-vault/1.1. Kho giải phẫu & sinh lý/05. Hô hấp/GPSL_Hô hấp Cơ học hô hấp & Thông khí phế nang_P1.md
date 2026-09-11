@@ -15,15 +15,6 @@ tags:
   - "y-khoa/gpsl"
 updated: "2026-08-21"
 ---
-
-
-
-Dưới đây là nội dung chi tiết về Sinh lý Cơ học Hô hấp và Thông khí phế nang, được biên soạn bám sát các tài liệu (Ganong, Berne & Levy, Color Atlas, và bài giảng video), loại trừ hoàn toàn các nguồn không được yêu cầu. Các hình ảnh/biểu đồ được trích xuất và giải thích chi tiết theo đúng định dạng.
-
-### 1. NỘI DUNG SINH LÝ HỌC CHI TIẾT
-
-#### I. Cấu trúc chức năng của Hệ Hô hấp
-Hệ hô hấp được chia thành hai vùng chức năng chính:
 *   **Vùng dẫn khí (Conducting airway):** Bắt đầu từ khí quản phân chia nhánh liên tục (16 thế hệ đầu tiên) cho đến tiểu phế quản tận cùng. Vùng này không tham gia trao đổi khí (tạo thành khoảng chết giải phẫu) mà có chức năng dẫn khí, làm ấm, làm ẩm và lọc bụi bẩn nhờ hệ thống lông chuyển và nhầy. 
 *   **Vùng hô hấp (Respiratory zone):** Bao gồm 7 thế hệ phân nhánh cuối cùng: tiểu phế quản hô hấp, ống phế nang và phế nang. Diện tích mặt cắt ngang của đường thở tăng vọt (từ $2.5~cm^{2}$ ở khí quản lên $11.800~cm^{2}$ ở phế nang), làm cho vận tốc dòng khí giảm xuống mức rất thấp, tạo điều kiện thuận lợi cho sự khuếch tán khí.
 

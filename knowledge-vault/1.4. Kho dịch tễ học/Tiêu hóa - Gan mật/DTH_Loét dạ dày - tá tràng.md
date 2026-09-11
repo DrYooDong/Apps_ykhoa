@@ -40,7 +40,7 @@ Theo các phân tích hệ thống từ Nghiên cứu Gánh nặng Bệnh tật 
 #### Sơ đồ cơ chế 1: Biến động tỷ lệ chuẩn hóa theo tuổi của PUD toàn cầu theo thời gian và giới tính
 
 - **Tên hình**: **Figure 1. Age-standardized prevalence (A), mortality (B) and DALYs (C) rates of peptic ulcer disease from 1990 to 2019 by sex at the global level**
-- **Thuộc tài liệu**: **dyac033.pdf** trong Notebook.
+- **Thuộc tài liệu**: **dyac033.pdf** trong y văn y học chứng cứ.
 - **Mô tả dưới hình**: Sơ đồ biểu diễn xu hướng sụt giảm liên tục của ba chỉ số dịch tễ học PUD từ năm 1990 đến năm 2019 trên toàn cầu:
     - _Biểu đồ A (Tỷ lệ lưu hành)_: Ghi nhận tỷ lệ chuẩn hóa theo tuổi giảm liên tục từ năm 1990 đến năm 2015, sau đó có xu hướng tăng nhẹ từ năm 2015 đến năm 2019 (do sự gia tăng sử dụng NSAIDs ở quần thể già hóa). Tỷ lệ ở nam giới luôn cao hơn nữ giới trong suốt giai đoạn khảo sát.
     - _Biểu đồ B (Tỷ lệ tử vong)_ và _Biểu đồ C (Tỷ lệ DALYs)_: Thể hiện xu hướng sụt giảm đều đặn, tuyến tính và mạnh mẽ ở cả hai giới, phản ánh hiệu quả vượt trội của các phương pháp điều trị nội khoa và kiểm soát biến chứng hiện đại.
@@ -61,7 +61,7 @@ Bệnh loét dạ dày - tá tràng thể hiện sự phân hóa địa lý và 
 #### Sơ đồ cơ chế 2: Tương quan giữa chỉ số phát triển SDI và gánh nặng bệnh loét dạ dày - tá tràng
 
 - **Tên hình**: **Figure 2. Correlation of the age-standardized prevalence (A), mortality (B) and DALYs (C) rates of peptic ulcer disease in 2019 with different SDI in 204 countries and territories**
-- **Thuộc tài liệu**: **dyac033.pdf** trong Notebook.
+- **Thuộc tài liệu**: **dyac033.pdf** trong y văn y học chứng cứ.
 - **Mô tả dưới lưu đồ**: Hệ thống đồ thị phân tán biểu diễn mối tương quan nghịch rất mạnh giữa chỉ số SDI của 204 quốc gia/vùng lãnh thổ và gánh nặng PUD năm 2019:
     - _Hệ số tương quan đồ thị A (Prevalence)_: \(R = -0,52\) (\(p < 0,05\)), thể hiện tỷ lệ lưu hành PUD có xu hướng giảm dần khi chỉ số phát triển kinh tế xã hội tăng lên. Một số quốc gia có mức SDI thấp như Kiribati và Vanuatu nằm ở đỉnh cao nhất của đồ thị.
     - _Hệ số tương quan đồ thị C (DALYs)_: \(R = -0,74\) (\(p < 0,05\)), chứng minh mối liên quan chặt chẽ giữa trình độ phát triển kinh tế, chất lượng chăm sóc y tế và sự sụt giảm số năm sống bị mất do tàn tật hoặc tử vong sớm do PUD.
@@ -106,7 +106,7 @@ Dù tỷ lệ loét dạ dày - tá tràng không biến chứng đã giảm m�
 #### Bảng thông tin 1: So sánh đặc điểm dịch tễ học và lâm sàng giữa hai biến chứng Complicated PUD
 
 - **Tên bảng**: **Table: Epidemiological and Clinical Comparison of Complicated Peptic Ulcer Disease**
-- **Thuộc tài liệu**: Tổng hợp từ dữ liệu của **s13017-019-0283-9.pdf** và **kjhugr-2025-0004.pdf** trong Notebook.
+- **Thuộc tài liệu**: Tổng hợp từ dữ liệu của **s13017-019-0283-9.pdf** và **kjhugr-2025-0004.pdf** trong y văn y học chứng cứ.
 - **Nội dung chi tiết**:
 
 |Chỉ số dịch tễ học & Lâm sàng|Biến chứng Xuất huyết tiêu hóa do loét (PUB)|Biến chứng Thủng ổ loét dạ dày - tá tràng (PPU)|

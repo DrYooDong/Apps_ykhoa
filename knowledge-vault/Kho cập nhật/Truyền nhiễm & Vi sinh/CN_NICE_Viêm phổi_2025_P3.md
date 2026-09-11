@@ -1,7 +1,31 @@
-
-
 ---
-
+title: "Cập nhật Khuyến cáo IDSA/ATS & NICE: Viêm phổi cộng đồng nặng"
+part: "P3"
+aliases:
+  - "Cập nhật Hướng dẫn Viêm phổi ATS 2025"
+  - "Severe CAP Guidelines"
+  - "NICE CAP Guideline"
+keywords:
+  - "cập nhật viêm phổi"
+  - "severe cap"
+  - "idsa ats 2025"
+  - "nice guideline"
+  - "corticosteroid viêm phổi"
+icd10:
+  - "J18.9 (Viêm phổi)"
+specialty: "Hô hấp & Truyền nhiễm"
+kho: "Kho cập nhật"
+type: "guideline-update"
+tags:
+  - "CliniPortal"
+  - "CapNhatGuideline"
+  - "KhoCapNhat"
+  - "y-khoa/cn"
+updated: "2026-09-11"
+sources:
+  - "ATS/IDSA Community-Acquired Pneumonia Guidelines 2025"
+  - "NICE Guideline NG138"
+---
 ### 1. Nội Dung Sinh Lý Học Chi Tiết
 
 #### 1.1. Tiêu chuẩn IDSA/ATS phân loại Viêm phổi cộng đồng nặng (Severe CAP)
@@ -10,7 +34,7 @@ Việc phân tầng chính xác bệnh nhân mắc CAP mức độ nặng đóng
 
 **Tên Bảng:** Table 2 - 2007 and 2019 Infectious Diseases Society of America/American Thoracic Society Criteria for Defining Severe Community-acquired Pneumonia.
 
-- **Thuộc tài liệu:** _rccm.202507-1692st.pdf_ trong Notebook này.
+- **Thuộc tài liệu:** _rccm.202507-1692st.pdf_ trong y văn.
 
 |Nhóm tiêu chuẩn|Chi tiết các tiêu chí lâm sàng và cận lâm sàng|
 |:--|:--|
@@ -27,7 +51,7 @@ Hướng dẫn ATS 2025 nhấn mạnh rằng các khuyến cáo chung không đ�
 
 **Tên Bảng:** Table 1 - Clinical Factors to Consider That Strengthen or Weaken Each Recommendation.
 
-- **Thuộc tài liệu:** _rccm.202507-1692st.pdf_ trong Notebook này.
+- **Thuộc tài liệu:** _rccm.202507-1692st.pdf_ trong y văn.
 
 |Câu hỏi lâm sàng & Khuyến cáo|Các yếu tố làm TĂNG sức mạnh khuyến cáo|Các yếu tố làm GIẢM sức mạnh khuyến cáo|
 |:--|:--|:--|
@@ -46,7 +70,7 @@ Hướng dẫn ATS 2025 nhấn mạnh rằng các khuyến cáo chung không đ�
 
 **Tên Bảng:** Table 3 - Strength of Recommendations.
 
-- **Thuộc tài liệu:** _rccm.202507-1692st.pdf_ trong Notebook này.
+- **Thuộc tài liệu:** _rccm.202507-1692st.pdf_ trong y văn.
 
 |Đối tượng áp dụng|Khuyến nghị MẠNH (Strong Recommendation)*(Dùng cụm từ "Chúng tôi khuyến nghị...")*|Khuyến cáo ĐIỀU KIỆN (Conditional Recommendation)*(Dùng cụm từ "Chúng tôi gợi ý...")*|
 |:--|:--|:--|

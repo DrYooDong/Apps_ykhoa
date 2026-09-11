@@ -3,6 +3,7 @@ import { Header, MainViewMode } from './components/Header.tsx';
 import { StepNav, ClinicalStepId } from './components/StepNav.tsx';
 import { SoapExperienceBoard } from './components/SoapExperienceBoard.tsx';
 import { Step1DataIngestion } from './components/Step1DataIngestion.tsx';
+import { Step2ProblemStatement } from './components/Step2ProblemStatement.tsx';
 import { Step2Analysis } from './components/Step2Analysis.tsx';
 import { Step3Protocol } from './components/Step3Protocol.tsx';
 import { Step4KnowledgeBase } from './components/Step4KnowledgeBase.tsx';
@@ -13,9 +14,11 @@ import { CdssModal, CdssToolSlug } from './components/CdssModal.tsx';
 import { DEFAULT_KNOWLEDGE_BASE, SampleCase } from './data/seedData.ts';
 import {
   ClinicalFormState,
+  EpidemiologyContext,
   GuidelineStudy,
   KnowledgeBase,
   LabsState,
+  ProblemStatementEntry,
   SoapClinicalExperience,
   TrieuChung,
   VitalsState,
@@ -34,9 +37,9 @@ import { getGuidelineBySlugOrId } from './lib/guidelineBridge.ts';
 
 const initialForm: ClinicalFormState = {
   gioiTinh: 'nam',
-  tuoi: '58',
-  ngheNghiep: 'Tài xế',
-  lyDo: 'Đau ngực dữ dội',
+  tuoi: '',
+  ngheNghiep: '',
+  lyDo: '',
   text: {
     cn: '',
     tt: '',
@@ -46,20 +49,31 @@ const initialForm: ClinicalFormState = {
 };
 
 const initialVitals: VitalsState = {
-  vNhiet: '37.0',
-  vMach: '95',
-  vHATT: '135',
-  vHATTr: '85',
-  vTho: '20',
-  vSpo2: '96',
+  vNhiet: '',
+  vMach: '',
+  vHATT: '',
+  vHATTr: '',
+  vTho: '',
+  vSpo2: '',
 };
 
 const initialLabs: LabsState = {
-  lBC: '9.2',
-  lTC: '230',
-  lHct: '41',
-  lGlu: '6.2',
-  lTrop: '45',
+  lBC: '',
+  lTC: '',
+  lHct: '',
+  lGlu: '',
+  lTrop: '',
+};
+
+const initialEpiContext: EpidemiologyContext = {
+  contactHistory: '',
+  travelHistory: '',
+  endemicArea: '',
+  seasonalContext: '',
+  outbreakAlert: '',
+  vectorExposure: '',
+  occupationalRisk: '',
+  waterFoodRisk: '',
 };
 
 export function MainApp() {
@@ -68,17 +82,17 @@ export function MainApp() {
   const [clinicalStep, setClinicalStep] = useState<ClinicalStepId>('t1');
   const [completedSteps, setCompletedSteps] = useState<Set<ClinicalStepId>>(new Set(['t1']));
 
-  // Clinical input states
+  // Clinical input states - Clean slate for user's custom cases
   const [form, setForm] = useState<ClinicalFormState>(initialForm);
   const [vitals, setVitals] = useState<VitalsState>(initialVitals);
   const [labs, setLabs] = useState<LabsState>(initialLabs);
-  const [selected, setSelected] = useState<Set<string>>(
-    new Set(['dau_nguc', 'va_mo_hoi', 'kho_tho', 'thc_tha'])
-  );
-  const [negated, setNegated] = useState<Set<string>>(new Set(['sot']));
+  const [epiContext, setEpiContext] = useState<EpidemiologyContext>(initialEpiContext);
+  const [problems, setProblems] = useState<ProblemStatementEntry[]>([]);
+  const [selected, setSelected] = useState<Set<string>>(new Set());
+  const [negated, setNegated] = useState<Set<string>>(new Set());
 
   // Protocol tab selection
-  const [selectedDiseaseId, setSelectedDiseaseId] = useState<string | null>('nmct_stemi');
+  const [selectedDiseaseId, setSelectedDiseaseId] = useState<string | null>(null);
 
   // Modals state
   const [isAboutOpen, setIsAboutOpen] = useState(false);
@@ -153,7 +167,7 @@ export function MainApp() {
           });
         }
         setActiveMode('clinical');
-        setClinicalStep('t3');
+        setClinicalStep('t4');
       } else if (intent.action === 'open-cdss-studio') {
         const studio = (intent.payload?.studio || 'hub').toLowerCase();
         const validTools: CdssToolSlug[] = ['dengue', 'ecg', 'abg', 'xray', 'hepa', 'neuro', 'hub'];
@@ -198,7 +212,7 @@ export function MainApp() {
         });
       }
       setActiveMode('clinical');
-      setClinicalStep('t3');
+      setClinicalStep('t4');
     } else if (fallback.studio) {
       const studio = fallback.studio.toLowerCase();
       const validTools: CdssToolSlug[] = ['dengue', 'ecg', 'abg', 'xray', 'hepa', 'neuro', 'hub'];
@@ -220,17 +234,20 @@ export function MainApp() {
   const derived = derivedInfo.derived;
   const derivedVitalsList = derivedInfo.vitalsList;
   const derivedLabsList = derivedInfo.labsList;
+  const primaryProblem = useMemo(() => problems.find((p) => p.isPrimary), [problems]);
 
-  // Live Deduction Engine Analysis
+  // Real-time Deduction Engine kết hợp Tam Giác Dịch Tễ & Vấn Đề Chính
   const results = useMemo(() => {
     return analyzeClinicalCase(
       kb,
       form,
       selected,
       derived,
-      negated
+      negated,
+      epiContext,
+      primaryProblem
     );
-  }, [kb, form, selected, derived, negated]);
+  }, [kb, form, selected, derived, negated, epiContext, primaryProblem]);
 
   // Summary Text Generator
   const summaryText = useMemo(() => {
@@ -275,8 +292,8 @@ export function MainApp() {
 
   // Handlers
   const handleRunAnalysis = () => {
-    setCompletedSteps((prev) => new Set(prev).add('t2'));
-    setClinicalStep('t2');
+    setCompletedSteps((prev) => new Set(prev).add('t1'));
+    setClinicalStep('t2'); // Chuyển sang Bước 2: Tóm tắt & Đặt vấn đề
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -285,8 +302,11 @@ export function MainApp() {
       setForm(initialForm);
       setVitals(initialVitals);
       setLabs(initialLabs);
+      setEpiContext(initialEpiContext);
+      setProblems([]);
       setSelected(new Set());
       setNegated(new Set());
+      setSelectedDiseaseId(null);
       setCompletedSteps(new Set(['t1']));
       setClinicalStep('t1');
     }
@@ -390,8 +410,8 @@ export function MainApp() {
 
   const handleGoToProtocol = (diseaseId: string) => {
     setSelectedDiseaseId(diseaseId);
-    setCompletedSteps((prev) => new Set(prev).add('t3'));
-    setClinicalStep('t3');
+    setCompletedSteps((prev) => new Set(prev).add('t3').add('t4'));
+    setClinicalStep('t4');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -490,10 +510,35 @@ export function MainApp() {
                 onSaveToPostgres={() => setIsPrintOpen(true)}
                 summaryText={summaryText}
                 onOpenVaultDrawer={handleOpenVaultDrawer}
+                epiContext={epiContext}
+                onUpdateEpiContext={setEpiContext}
               />
             )}
 
+            {/* Bước 2: Tóm tắt bệnh án & Đặt vấn đề (Chuẩn Thầy Sĩ & Thầy Tuấn, Tam giác DTH) */}
             {clinicalStep === 't2' && (
+              <Step2ProblemStatement
+                form={form}
+                vitals={vitals}
+                labs={labs}
+                selectedIds={selected}
+                negatedIds={negated}
+                kb={kb}
+                epiContext={epiContext}
+                onUpdateEpiContext={setEpiContext}
+                problems={problems}
+                onUpdateProblems={setProblems}
+                onGoToStep={(stepId) => {
+                  setCompletedSteps((prev) => new Set(prev).add('t2'));
+                  setClinicalStep(stepId);
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                onOpenVaultDrawer={handleOpenVaultDrawer}
+              />
+            )}
+
+            {/* Bước 3: Phân tích & Biện luận chẩn đoán */}
+            {clinicalStep === 't3' && (
               <Step2Analysis
                 kb={kb}
                 results={results}
@@ -507,15 +552,22 @@ export function MainApp() {
                 onSaveToPostgres={() => setIsPrintOpen(true)}
                 onPrintReport={() => setIsPrintOpen(true)}
                 onOpenVaultDrawer={handleOpenVaultDrawer}
+                primaryProblem={primaryProblem}
+                problems={problems}
+                epiContext={epiContext}
               />
             )}
 
-            {clinicalStep === 't3' && (
+            {/* Bước 4: Phác đồ điều trị */}
+            {clinicalStep === 't4' && (
               <Step3Protocol
                 kb={kb}
                 selectedDiseaseId={selectedDiseaseId}
                 onSelectDisease={setSelectedDiseaseId}
-                onBackToAnalysis={() => setClinicalStep('t2')}
+                onBackToAnalysis={() => {
+                  setClinicalStep('t3');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
                 onSaveToPostgres={() => setIsPrintOpen(true)}
                 onPrintReport={() => setIsPrintOpen(true)}
                 onOpenVaultDrawer={handleOpenVaultDrawer}
@@ -543,7 +595,7 @@ export function MainApp() {
             onNavigateToProtocol={(diseaseId) => {
               if (diseaseId) setSelectedDiseaseId(diseaseId);
               setActiveMode('clinical');
-              setClinicalStep('t3');
+              setClinicalStep('t4');
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
           />
@@ -558,7 +610,7 @@ export function MainApp() {
             onGoToProtocol={(dId) => {
               setSelectedDiseaseId(dId);
               setActiveMode('clinical');
-              setClinicalStep('t3');
+              setClinicalStep('t4');
             }}
             onOpenVaultDrawer={handleOpenVaultDrawer}
           />

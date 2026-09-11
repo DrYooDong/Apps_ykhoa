@@ -33,7 +33,6 @@ tags:
 icd10:
   - "I50"
 ---
-
 **Tóm tắt Khuyến cáo về Suy tim của Hội Tim mạch Châu Âu (ESC 2026) - Phần 6: Bản đồ Quy trình Thực hành Lâm sàng và Các Sơ đồ Chưa Đề Cập**.
 
 Phần này sẽ hệ thống hóa toàn bộ các quy trình chẩn đoán, hồi sức nội viện, tiêu chuẩn chuyển tuyến và phác đồ can thiệp mạch vành đồng mắc thông qua việc phân tích chi tiết các Sơ đồ (Figures) cốt lõi của tài liệu gốc mà các phần trước chưa đi sâu:
@@ -48,7 +47,7 @@ Việc xác định nguyên nhân suy tim là bắt buộc để điều trị t
 
 ##### **Trích xuất Sơ đồ liên quan:**
 
-- **Tên Hình:** _Figure 5: Major contributing causes of heart failure with reduced ejection fraction_ thuộc tài liệu _ehag100.pdf_ trong Notebook này.
+- **Tên Hình:** _Figure 5: Major contributing causes of heart failure with reduced ejection fraction_ thuộc tài liệu _ehag100.pdf_ trong y văn.
 	![[Pasted image 20260830200143.png]]
 - **Mô tả nội dung hình:** Sơ đồ phân loại các nguyên nhân chính gây HFrEF thành các nhóm lớn bao gồm: bệnh mạch vành thiếu máu cơ tim (CAD), tăng huyết áp, bệnh van tim, rối loạn nhịp (nhịp nhanh hoặc block dẫn truyền nhĩ thất), các bệnh cơ tim di truyền hoặc mắc phải, và nhóm độc chất (Toxic). Chú thích dưới hình nêu rõ nhóm độc chất bao gồm cả nhiễm độc do thuốc (drug-related) và nhiễm độc cơ tim do hóa trị liệu ung thư (chemotherapy-related causes).
 
@@ -61,7 +60,7 @@ Việc xác định nguyên nhân suy tim là bắt buộc để điều trị t
 
 ##### **Trích xuất Sơ đồ liên quan:**
 
-- **Tên Hình:** _Figure 7: Multiparametric approach to aetiology assessment in heart failure_ thuộc tài liệu _ehag100.pdf_ trong Notebook này.
+- **Tên Hình:** _Figure 7: Multiparametric approach to aetiology assessment in heart failure_ thuộc tài liệu _ehag100.pdf_ trong y văn.
 	![[Pasted image 20260830200405.png]]
 - **Mô tả nội dung hình:** Sơ đồ này cung cấp một thuật toán tích hợp các phương pháp thăm dò để tìm nguyên nhân đặc hiệu gây suy tim: bắt đầu từ điện tâm đồ (ECG) và siêu âm tim -> định hướng chụp cộng hưởng từ tim (CMR) để tìm vùng sẹo/xơ hóa cơ tim hoặc bệnh cơ tim thâm nhiễm -> chụp cắt lớp vi tính động mạch vành (CTCA) hoặc chụp mạch vành qua ống thông (ICA) nếu nghi ngờ bệnh mạch vành -> xạ hình xương (DPD/PYP/HMDP) kết hợp SPECT nếu nghi ngờ ATTR-CA -> chụp PET/CT với FDG (18F-FDG-PET) nếu nghi ngờ viêm cơ tim hoạt động/sarcoidosis -> sinh thiết nội mạc cơ tim (EMB) hoặc thông tim phải (RHC) trong các trường hợp phức tạp, kháng trị.
 
@@ -71,7 +70,7 @@ Bệnh mạch vành (CAD) là nguyên nhân phổ biến nhất gây HFrEF. Sơ 
 
 ##### **Trích xuất Sơ đồ liên quan:**
 
-- **Tên Hình:** _Figure 8: Diagnosis of heart failure due to ischaemic aetiology_ thuộc tài liệu _ehag100.pdf_ trong Notebook này.
+- **Tên Hình:** _Figure 8: Diagnosis of heart failure due to ischaemic aetiology_ thuộc tài liệu _ehag100.pdf_ trong y văn.
 	![[Pasted image 20260830200426.png]]
 - **Mô tả nội dung hình:** Sơ đồ thuật toán quyết định lâm sàng phân nhánh như sau:
     1. **Đánh giá ban đầu:** Khảo sát triệu chứng lâm sàng (sung huyết vs đau ngực/đau thắt ngực), bệnh sử mạch vành, các yếu tố nguy cơ tim mạch và tiền sử can thiệp tái thông hoặc bệnh động mạch ngoại biên (PAD).
@@ -89,7 +88,7 @@ Quy trình điều trị bệnh nhân nhập viện vì suy tim mất bù đư�
 
 ##### **Trích xuất Sơ đồ liên quan:**
 
-- **Tên Hình:** _Figure 12: Phases and goals for in-hospital management of decompensated heart failure_ thuộc tài liệu _ehag100.pdf_ trong Notebook này.
+- **Tên Hình:** _Figure 12: Phases and goals for in-hospital management of decompensated heart failure_ thuộc tài liệu _ehag100.pdf_ trong y văn.
 	![[Pasted image 20260830200519.png]]
 - **Mô tả nội dung hình:** Lưu đồ phân cấp quá trình nằm viện thành 4 pha rõ rệt:
     - _Pha 1: Tiếp nhận cấp cứu (Admission):_ Tập trung đánh giá huyết động, hỗ trợ hô hấp, giải áp sung huyết khẩn cấp bằng lợi tiểu IV và tầm soát các nguyên nhân đe dọa tính mạng (như hội chứng mạch vành cấp, loạn nhịp...).
@@ -103,7 +102,7 @@ Quy trình điều trị bệnh nhân nhập viện vì suy tim mất bù đư�
 
 ##### **Trích xuất Sơ đồ liên quan:**
 
-- **Tên Hình:** _Figure 14: Tools used for assessment of decongestion during the pre-discharge phase_ thuộc tài liệu _ehag100.pdf_ trong Notebook này.
+- **Tên Hình:** _Figure 14: Tools used for assessment of decongestion during the pre-discharge phase_ thuộc tài liệu _ehag100.pdf_ trong y văn.
 	![[Pasted image 20260830200559.png]]
 - **Mô tả nội dung hình:** Sơ đồ giới thiệu một bộ công cụ đa phương tiện để bác sĩ lâm sàng đánh giá mức độ giải áp sung huyết (lưu ý các công cụ này là tùy chọn do chưa có bằng chứng RCT đối chứng trực tiếp):
     1. **Lâm sàng:** Đánh giá thang điểm sung huyết (CSI - Congestion Score Index); giải sung huyết hoàn toàn khi điểm số bằng 0 (bệnh nhân hoàn toàn hết khó thở, hết khó thở khi nằm đầu thấp orthopnoea, không mệt mỏi, phổi hết rales ẩm, hết phù ngoại vi và tĩnh mạch cổ xẹp).
@@ -119,7 +118,7 @@ Khi bệnh nhân suy tim Stage C bắt đầu có các dấu hiệu kháng trị
 
 ##### **Trích xuất Sơ đồ liên quan:**
 
-- **Tên Hình:** _Figure 16: Triage and timely referral of patients with advanced heart failure_ thuộc tài liệu _ehag100.pdf_ trong Notebook này.
+- **Tên Hình:** _Figure 16: Triage and timely referral of patients with advanced heart failure_ thuộc tài liệu _ehag100.pdf_ trong y văn.
 	![[Pasted image 20260830200721.png]]
 - **Mô tả nội dung hình:** Sơ đồ hướng dẫn quy trình phân loại và chuyển viện kịp thời bệnh nhân suy tim tiến triển:
     1. **Sàng lọc ban đầu:** Đánh giá bệnh nhân suy tim Stage C có các triệu chứng dai dẳng (NYHA Class III-IV) mặc dù đã dùng tối ưu FMT và GDIT.
@@ -137,7 +136,7 @@ Khi bệnh nhân suy tim Stage C bắt đầu có các dấu hiệu kháng trị
 
 ##### **Trích xuất Sơ đồ liên quan:**
 
-- **Tên Hình:** _Figure 19: Management of coronary artery disease in patients with heart failure_ thuộc tài liệu _ehag100.pdf_ trong Notebook này.
+- **Tên Hình:** _Figure 19: Management of coronary artery disease in patients with heart failure_ thuộc tài liệu _ehag100.pdf_ trong y văn.
 	![[Pasted image 20260830200748.png]]
 - **Mô tả nội dung hình:** Sơ đồ thuật toán xử trí bệnh mạch vành ở bệnh nhân suy tim có Obstructive CAD và là ứng viên phù hợp để tái thông mạch:
     1. **Phân nhánh ban đầu theo phân suất tống máu:**

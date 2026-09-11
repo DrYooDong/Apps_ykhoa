@@ -1,3 +1,30 @@
+---
+title: "Tư vấn Bệnh nhân: Tiên lượng & Kéo dài Tuổi thọ trong Đái tháo đường Típ 2"
+part: "P1"
+aliases:
+  - "Tư vấn ĐTĐ Tiên lượng"
+  - "Tiên lượng đái tháo đường"
+keywords:
+  - "tiên lượng đái tháo đường"
+  - "legacy effect"
+  - "bảo vệ tim thận"
+  - "tuổi thọ đái tháo đường"
+icd10:
+  - "E11 (Đái tháo đường típ 2)"
+specialty: "Nội tiết - Chuyển hóa"
+kho: "2.6. Kho tư vấn"
+type: "patient-counseling"
+tags:
+  - "CliniPortal"
+  - "TuVanBenhNhan"
+  - "KhoTuVan"
+  - "y-khoa/tv"
+updated: "2026-09-11"
+sources:
+  - "UKPDS 24-year follow-up study"
+  - "ADA Standards of Care in Diabetes 2025"
+---
+
 ### Tiên lượng bệnh đái tháo đường của bạn phụ thuộc vào yếu tố nào?
 
 Độ dài và chất lượng cuộc sống (tiên lượng sống) của người bệnh đái tháo đường không giống nhau. Tiên lượng này phụ thuộc rất lớn vào **độ tuổi khi phát hiện bệnh**, **mức độ kiểm soát đường huyết**, và quan trọng nhất là **sự hiện diện của các biến chứng** đi kèm.

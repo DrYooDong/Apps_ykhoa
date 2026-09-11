@@ -14,9 +14,6 @@ tags:
   - "y-khoa/cn"
 updated: "2026-08-21"
 ---
-
-
-
 # 1. Nội Dung Sinh Lý Học Chi Tiết
 
 ## Điều Trị Ngoại Khoa U Xơ Cơ Tử Cung
@@ -142,7 +139,7 @@ UXCTC xuất hiện ở khoảng 20 - 40% phụ nữ trong độ tuổi sinh s�
 ### Trích Xuất Sơ Đồ Phác Đồ Xử Trí U Xơ Cơ Tử Cung Toàn Diện
 
 - **Tên sơ đồ:** Sơ đồ Phác đồ xử trí U xơ cơ tử cung (Trích xuất từ Phụ lục của tài liệu).
-- **Thuộc tài liệu:** "BYT_UXTC_2026.pdf" trong Notebook này.
+- **Thuộc tài liệu:** "BYT_UXTC_2026.pdf" trong y văn.
 
 ```
                              [XỬ TRÍ U XƠ CƠ TỬ CUNG]

@@ -14,9 +14,6 @@ tags:
   - "y-khoa/cn"
 updated: "2026-08-21"
 ---
-
-
-
 ### **1. NỘI DUNG SINH LÝ HỌC & CƠ CHẾ BỆNH SINH CHI TIẾT**
 
 #### **Đại Cương về Bệnh do Vi rút Nipah (NiV)**
@@ -29,7 +26,7 @@ _(Dưới đây là hình ảnh pháp lý liên quan đến hướng dẫn ban h
 
 **Hình 1: Quyết định số 493/QĐ-BYT ban hành tài liệu chuyên môn "Hướng dẫn chẩn đoán và điều trị bệnh do vi rút Nipah"**
 
-- Thuộc tài liệu: **BYT_Nipah_2026.pdf** trong Notebook.
+- Thuộc tài liệu: **BYT_Nipah_2026.pdf** trong y văn y học chứng cứ.
 - Mô tả nội dung hình ảnh: Đây là văn bản pháp lý chính thức do Bộ Y tế Việt Nam ban hành ngày 13 tháng 02 năm 2026, do Thứ trưởng Trần Văn Thuấn ký thay Bộ trưởng. Quyết định này căn cứ trên Luật Khám bệnh, chữa bệnh năm 2023 và Nghị định số 42/2025/NĐ-CP ngày 27/02/2025 của Chính phủ, quy định việc áp dụng Hướng dẫn chẩn đoán và điều trị bệnh do vi rút Nipah thống nhất tại tất cả các cơ sở khám bệnh, chữa bệnh trên phạm vi toàn quốc.
 
 ---
@@ -56,7 +53,7 @@ _(Dưới đây là hình ảnh bìa tài liệu hướng dẫn chuyên môn)_
 
 **Hình 2: Trang bìa tài liệu "Hướng dẫn chẩn đoán và điều trị bệnh do vi rút Nipah"**
 
-- Thuộc tài liệu: **BYT_Nipah_2026.pdf** trong Notebook.
+- Thuộc tài liệu: **BYT_Nipah_2026.pdf** trong y văn y học chứng cứ.
 - Mô tả nội dung hình ảnh: Trang bìa chính thức của tài liệu chuyên môn được ban hành kèm theo Quyết định số 493/QĐ-BYT ngày 13 tháng 02 năm 2026 của Bộ trưởng Bộ Y tế, xuất bản tại Hà Nội năm 2026.
 
 ---

@@ -16,7 +16,6 @@ tags:
   - "y-khoa/cn"
 updated: "2026-09-06"
 ---
-
 # BÀI HỌC: TÓM TẮT HƯỚNG DẪN ĐIỀU TRỊ LÂM SÀNG BỆNH CÚM - WHO (2024)
 
 ## (PHẦN 3: BỘ CHỈ SỐ LÂM SÀNG, THỬ NGHIỆM ĐIỀU TRỊ HỖ TRỢ, VÀ LƯU ĐỒ QUYẾT ĐỊNH TOÀN DIỆN)
@@ -36,7 +35,7 @@ Khác với các yếu tố nguy cơ gây nhập viện (Table 5.1), nguy cơ t�
 #### Bảng 3.1: Các yếu tố nguy cơ độc lập liên quan đến tử vong ở bệnh nhân cúm không nặng
 
 - **Tên bảng**: _Table 5.2. Risk factors associated with mortality in non-severe influenza_
-- **Thuộc tài liệu**: _Clinical practice guidelines for influenza (2024)_ trong Notebook.
+- **Thuộc tài liệu**: _Clinical practice guidelines for influenza (2024)_ trong y văn y học chứng cứ.
 
 |Yếu tố nguy cơ (Risk Factor)|Chỉ số Tỷ số Chênh (Odds Ratio - OR & 95% CI)|Mức độ chắc chắn của bằng chứng (GRADE)|Tóm tắt kết luận lâm sàng|
 |:--|:--|:--|:--|
@@ -59,7 +58,7 @@ Khác với các yếu tố nguy cơ gây nhập viện (Table 5.1), nguy cơ t�
 #### Bảng 3.2: Ngưỡng khác biệt lâm sàng tối thiểu quan trọng đối với các kết cục cúm
 
 - **Tên bảng**: _Table 11.2 Minimally important differences for outcomes of interest_
-- **Thuộc tài liệu**: _Clinical practice guidelines for influenza (2024)_ trong Notebook.
+- **Thuộc tài liệu**: _Clinical practice guidelines for influenza (2024)_ trong y văn y học chứng cứ.
 
 |Kết cục lâm sàng đánh giá|Ngưỡng MID được đồng thuận|Ý nghĩa trong quyết định lâm sàng|
 |:--|:--|:--|
@@ -81,7 +80,7 @@ WHO phân loại các khuyến cáo điều trị thành hai mức độ: **Khuy
 #### Bảng 3.3: Ý nghĩa lâm sàng và chính sách của các mức độ khuyến cáo
 
 - **Tên bảng**: _Table 11.1 Strength of recommendations_
-- **Thuộc tài liệu**: _Clinical practice guidelines for influenza (2024)_ trong Notebook.
+- **Thuộc tài liệu**: _Clinical practice guidelines for influenza (2024)_ trong y văn y học chứng cứ.
 
 |Đối tượng áp dụng|Khuyến cáo mạnh mẽ ("We recommend...")|Khuyến cáo có điều kiện ("We suggest...")|
 |:--|:--|:--|
@@ -98,7 +97,7 @@ Khi một bệnh nhân nghi ngờ mắc cúm thể nặng (đòi hỏi phải nh
 #### Bảng 3.4: Mô hình hóa kết cục lâm sàng của các chiến lược quản lý bệnh cúm thể nặng
 
 - **Tên bảng**: _Table 10.2 Outcomes for strategies examined for patients with severe influenza-like illness_
-- **Thuộc tài liệu**: _Clinical practice guidelines for influenza (2024)_ trong Notebook.
+- **Thuộc tài liệu**: _Clinical practice guidelines for influenza (2024)_ trong y văn y học chứng cứ.
 
 _(Lưu ý: Bảng số liệu dưới đây đã được hiệu chỉnh khớp đúng theo logic khoa học và phân tích lâm sàng thực tế từ nguồn dữ liệu gốc của WHO, khắc phục lỗi lệch nhãn dòng do quá trình phân tách tài liệu PDF tự động)._
 
@@ -127,7 +126,7 @@ Phản ứng viêm hệ thống dữ dội (hyperinflammation) trong cúm nặng
 #### 1. Corticosteroid toàn thân (Systemic Corticosteroids)
 
 - **Tên bảng**: _Table 8.6 Summary of findings for systemic corticosteroids vs. no systemic corticosteroids_
-- **Thuộc tài liệu**: _Clinical practice guidelines for influenza (2024)_ trong Notebook.
+- **Thuộc tài liệu**: _Clinical practice guidelines for influenza (2024)_ trong y văn y học chứng cứ.
 
 |Kết cục đánh giá|Chỉ số kết quả (RR/OR & 95% CI)|Số ca chênh lệch tuyệt đối / 1000 bệnh nhân|Chất lượng bằng chứng|Kết luận lâm sàng|
 |:--|:--|:--|:--|:--|
@@ -141,7 +140,7 @@ Phản ứng viêm hệ thống dữ dội (hyperinflammation) trong cúm nặng
 #### 2. Kháng sinh nhóm Macrolide (như Azithromycin dùng làm chất kháng viêm)
 
 - **Tên bảng**: _Table 8.7 Summary of findings for macrolides vs. standard care_
-- **Thuộc tài liệu**: _Clinical practice guidelines for influenza (2024)_ trong Notebook.
+- **Thuộc tài liệu**: _Clinical practice guidelines for influenza (2024)_ trong y văn y học chứng cứ.
 
 |Kết cục đánh giá|Chỉ số kết quả (RR/OR & 95% CI)|Số ca chênh lệch tuyệt đối / 1000 bệnh nhân|Chất lượng bằng chứng|Kết luận lâm sàng|
 |:--|:--|:--|:--|:--|
@@ -154,7 +153,7 @@ Phản ứng viêm hệ thống dữ dội (hyperinflammation) trong cúm nặng
 #### 3. Thuốc ức chế mTOR (như Sirolimus / Rapamycin)
 
 - **Tên bảng**: _Table 8.8 Summary of findings for mTOR inhibitors vs. standard care_
-- **Thuộc tài liệu**: _Clinical practice guidelines for influenza (2024)_ trong Notebook.
+- **Thuộc tài liệu**: _Clinical practice guidelines for influenza (2024)_ trong y văn y học chứng cứ.
 
 |Kết cục đánh giá|Chỉ số kết quả (RR & 95% CI)|Số ca chênh lệch tuyệt đối / 1000 bệnh nhân|Chất lượng bằng chứng|Kết luận lâm sàng|
 |:--|:--|:--|:--|:--|
@@ -166,7 +165,7 @@ Phản ứng viêm hệ thống dữ dội (hyperinflammation) trong cúm nặng
 #### 4. Liệu pháp miễn dịch thụ động (Passive Immunotherapy - Huyết tương, IVIG)
 
 - **Tên bảng**: _Table 8.10 Summary of findings for passive immunotherapy vs. no passive immunotherapy_
-- **Thuộc tài liệu**: _Clinical practice guidelines for influenza (2024)_ trong Notebook.
+- **Thuộc tài liệu**: _Clinical practice guidelines for influenza (2024)_ trong y văn y học chứng cứ.
 
 |Kết cục đánh giá|Chỉ số kết quả (RR/MD & 95% CI)|Số ca chênh lệch tuyệt đối / 1000 bệnh nhân|Chất lượng bằng chứng|Kết luận lâm sàng|
 |:--|:--|:--|:--|:--|
@@ -180,7 +179,7 @@ Phản ứng viêm hệ thống dữ dội (hyperinflammation) trong cúm nặng
 #### 5. Thuốc chống viêm không steroid (NSAIDs)
 
 - **Tên bảng**: _Table 8.9 Summary of findings for NSAID vs. standard care_
-- **Thuộc tài liệu**: _Clinical practice guidelines for influenza (2024)_ trong Notebook.
+- **Thuộc tài liệu**: _Clinical practice guidelines for influenza (2024)_ trong y văn y học chứng cứ.
 
 |Kết cục đánh giá|Chỉ số kết quả (RR/MD & 95% CI)|Số ca chênh lệch tuyệt đối / 1000 bệnh nhân|Chất lượng bằng chứng|Kết luận lâm sàng|
 |:--|:--|:--|:--|:--|
@@ -193,7 +192,7 @@ Phản ứng viêm hệ thống dữ dội (hyperinflammation) trong cúm nặng
 ### Bảng 3.5: Hướng Dẫn Điều Chỉnh Liều Oseltamivir Cho Bệnh Nhân Suy Thận Trưởng Thành (Điều Trị)
 
 - **Tên bảng**: _Table 8.2 Dosing of oseltamivir for treatment in patients with renal impairment_
-- **Thuộc tài liệu**: _Clinical practice guidelines for influenza (2024)_ trong Notebook.
+- **Thuộc tài liệu**: _Clinical practice guidelines for influenza (2024)_ trong y văn y học chứng cứ.
 
 |Độ thanh thải Creatinine (ClCr - mL/phút)|Liều lượng chỉ định|Nhịp dùng thuốc|Thời gian điều trị chuẩn|
 |:--|:--|:--|:--|

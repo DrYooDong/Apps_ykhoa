@@ -18,7 +18,6 @@ updated: "2026-09-06"
 icd10:
   - "N39.0"
 ---
-
 # BÀI HỌC CHUYÊN SÂU: ĐỒNG THUẬN WIKIGUIDELINES 2024 VỀ DỰ PHÒNG VÀ CHẨN ĐOÁN NHIỄM TRÙNG ĐƯỜNG TIẾT NIỆU (PHẦN 3)
 
 _Tài liệu học tập được biên soạn dựa trên báo cáo đồng thuận y khoa quốc tế: "Guidelines for the Prevention, Diagnosis, and Management of Urinary Tract Infections in Pediatrics and Adults: A WikiGuidelines Group Consensus Statement" đăng tải trên tạp chí JAMA Network Open năm 2024._
@@ -56,7 +55,7 @@ Dưới đây là nội dung bài biên soạn chi tiết theo đúng cấu trú
 > **TRÍCH XUẤT LƯU ĐỒ KHUNG ĐÁNH GIÁ ĐIỀU TRỊ KINH NGHIỆM Ở TRẺ EM**
 > 
 > - **Tên sơ đồ:** **eFigure 2: Empiric Treatment Assessment Framework for Pediatrics (Sơ đồ khung đánh giá lựa chọn điều trị kinh nghiệm ở trẻ em)**
-> - **Thuộc tài liệu:** _Guidelines for the Prevention, Diagnosis, and Management of Urinary Tract Infections in Pediatrics and Adults: A WikiGuidelines Group Consensus Statement (JAMA Network Open, 2024)_ trong Notebook này.
+> - **Thuộc tài liệu:** _Guidelines for the Prevention, Diagnosis, and Management of Urinary Tract Infections in Pediatrics and Adults: A WikiGuidelines Group Consensus Statement (JAMA Network Open, 2024)_ trong y văn.
 > 
 > **Mô tả chi tiết các bước xử trí theo lưu đồ bổ sung:** Sơ đồ này cung cấp một thuật toán tiếp cận từng bước cho bác sĩ nhi khoa khi đứng trước một bệnh nhi nghi ngờ nhiễm trùng tiết niệu:
 > 

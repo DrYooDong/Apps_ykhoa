@@ -1,0 +1,119 @@
+# ==============================================================================
+# CLINIPORTAL NOTEBOOKLM — PROMPT KHO BIẾN CHỨNG (KHO BC)
+# ==============================================================================
+# SỬ DỤNG KHI: Bạn muốn NotebookLM trích xuất phân loại biến chứng cấp/mạn,
+# cơ chế sinh bệnh, dấu hiệu cảnh báo sớm, xử trí cấp cứu và chiến lược dự phòng để lưu vào:
+# knowledge-vault/2.5. Kho biến chứng/{Chuyên khoa}/BC_{Tên bệnh}_P1.md
+# ==============================================================================
+
+[YÊU CẦU ĐẦU VÀO]:
+- Tên bệnh lý: [ĐIỀN TÊN BỆNH LÝ, ví dụ: Hội chứng vành cấp / Viêm tụy cấp / Sốt xuất huyết Dengue / Đái tháo đường / Đột quỵ não]
+- Chuyên khoa: [ĐIỀN CHUYÊN KHOA, ví dụ: Tim mạch / Tiêu hóa / Truyền nhiễm / Nội tiết / Thần kinh]
+- Nguồn tham chiếu: [ĐIỀN NGUỒN CHÍNH, ví dụ: ESC / ACC / Atlanta / WHO / ADA / Bộ Y Tế]
+
+[PROMPT DÁN VÀO NOTEBOOKLM]:
+"Dựa trên các tài liệu đã tải lên trong Notebook, hãy đóng vai trò Bác sĩ Chuyên khoa Hồi sức Cấp cứu & Nội khoa Cấp cao và biên soạn một bài viết TOÀN DIỆN VỀ BIẾN CHỨNG BỆNH HỌC cho bệnh lý: [TÊN BỆNH LÝ].
+
+BẮT BUỘC TUÂN THỦ CẤU TRÚC VÀ QUY CHUẨN SAU:
+
+---
+title: \"Biến chứng: [Tên bệnh lý chuẩn y khoa tiếng Việt]\"
+part: \"P1\"
+aliases:
+  - \"Biến chứng [Tên bệnh]\"
+  - \"Complications of [Tên tiếng Anh]\"
+  - \"Di chứng [Tên bệnh]\"
+  - \"Tiên lượng xấu [Tên bệnh]\"
+keywords:
+  - \"biến chứng [tên bệnh]\"
+  - \"biến chứng cấp tính tối khẩn\"
+  - \"dấu hiệu cảnh báo sớm early warning\"
+  - \"suy đa tạng shock\"
+  - \"dự phòng biến chứng\"
+icd10:
+  - \"[Mã ICD-10 chính xác kèm tên]\"
+specialty: \"[Tên chuyên khoa]\"
+kho: \"2.5. Kho biến chứng\"
+type: \"complication\"
+tags:
+  - \"CliniPortal\"
+  - \"Complication\"
+  - \"KhoBienChung\"
+  - \"y-khoa/bc\"
+updated: \"2026-09-11\"
+sources:
+  - \"[Hướng dẫn điều trị hoặc Nghiên cứu biến chứng chính thức kèm năm]\"
+---
+
+# ⚠️ CÁC BIẾN CHỨNG TRONG [TÊN BỆNH LÝ]: CƠ CHẾ BỆNH SINH, LÂM SÀNG VÀ XỬ TRÍ
+
+> **Tóm tắt cốt lõi**: [Đoạn văn 3-4 câu tóm tắt các biến chứng nguy hiểm nhất có thể cướp đi sinh mạng người bệnh hoặc để lại tàn phế suốt đời, thời điểm cửa sổ vàng phát sinh biến chứng, và nguyên tắc tầm soát dự phòng chủ động].
+
+---
+
+## 🚨 1. BẢNG PHÂN LOẠI & MA TRẬN NGUY CƠ BIẾN CHỨNG (COMPLICATIONS MATRIX)
+
+| Nhóm Biến Chứng | Tên Biến Chứng Cụ Thể | Tỷ Lệ Gặp (%) | Thời Điểm Xuất Hiện | Mức Độ Nguy Hiểm | Tiên Lượng Tử Vong Nặng |
+|:---|:---|:---:|:---:|:---:|:---:|
+| **I. Tối khẩn / Đe dọa tính mạng** | 1. [Biến chứng 1]<br>2. [Biến chứng 2] | ...% | Giờ 0 - 24 / Ngày 1-3 | 🔴 Cực kỳ cao | $> 30 - 50\%$ nếu không cấp cứu |
+| **II. Cấp tính nội viện** | 1. [Biến chứng 3]<br>2. [Biến chứng 4] | ...% | Ngày 3 - 7 | 🟠 Cao | Tăng thời gian nằm ICU |
+| **III. Bán cấp & Nhiễm trùng thứ phát** | 1. [Biến chứng 5] | ...% | Tuần 2 - 4 | 🟡 Trung bình | Kéo dài thời gian nằm viện |
+| **IV. Mạn tính & Di chứng lâu dài** | 1. [Biến chứng 6] | ...% | Tháng - Năm | 🔵 Suy giảm chức năng | Ảnh hưởng chất lượng sống |
+
+---
+
+## 🔬 2. CƠ CHẾ BỆNH SINH & DẤU HIỆU CẢNH BÁO SỚM (EARLY WARNING SIGNS)
+- **Cơ chế dẫn đến biến chứng**: [Phân tích tổn thương nội mạc, bão cytokine, thiếu máu cục bộ, hoại tử mô hoặc rối loạn chuyển hóa...].
+- **Các dấu hiệu cảnh báo sớm (Early Warning Signs)**:
+  - Biến đổi sinh hiệu: [Mạch nhanh > ... l/p, Huyết áp tụt < ... mmHg, Nhịp thở > ... l/p, SpO2 < ...%].
+  - Dấu ấn sinh học cận lâm sàng báo động: [Lactate máu tăng, Men tim tăng vọt, Giảm tiểu cầu, Tăng Creatinine...].
+  - Triệu chứng thực thể báo hiệu biến cố: [Thay đổi tri giác, thiểu niệu, tím tái đầu chi, đau tái phát dữ dội...].
+
+---
+
+## ⚡ 3. PHÂN TÍCH CHI TIẾT TỪNG BIẾN CHỨNG CẤP NGUY HIỂM
+
+### 3.1. [Tên Biến Chứng Cấp Số 1: ví dụ Sốc tim / Hoại tử tụy / Suy hô hấp cấp ARDS / Phù phổi cấp]
+- **Biểu hiện lâm sàng & Cận lâm sàng xác định**: [Nêu rõ dấu hiệu khám và xét nghiệm khẳng định biến chứng].
+- **Phác đồ xử trí cấp cứu khẩn cấp**:
+  - Hồi sức ban đầu: [Dịch truyền, thở máy/oxy, vận mạch...].
+  - Can thiệp chuyên khoa đặc hiệu: [Phẫu thuật cấp cứu, can thiệp mạch, lọc máu liên tục...].
+
+### 3.2. [Tên Biến Chứng Cấp Số 2: ví dụ Rối loạn nhịp thất đe dọa tính mạng / Toan chuyển hóa nặng / Tái sốc]
+- **Biểu hiện lâm sàng & Cận lâm sàng**: ...
+- **Phác đồ xử trí cấp cứu**: ...
+
+---
+
+## 🛡️ 4. CHIẾN LƯỢC DỰ PHÒNG & BẢNG KIỂM THEO DÕI LÂM SÀNG (PREVENTION CHECKLIST)
+
+### 4.1. Các biện pháp can thiệp dự phòng sớm chủ động:
+- [Biện pháp 1: Ví dụ Dùng thuốc chống đông dự phòng DVT, Dùng PPI dự phòng loét stress...].
+- [Biện pháp 2: Điều chỉnh dịch truyền tránh quá tải hoặc thiếu dịch...].
+- [Biện pháp 3: Kiểm soát đường huyết, huyết áp mục tiêu...].
+
+### 4.2. Bảng kiểm theo dõi lâm sàng tại buồng bệnh (Monitoring Checklist):
+| Thông Số Cần Theo Dõi | Tần Suất Giám Sát | Ngưỡng Báo Động (Cần Báo Bác Sĩ Ngay) | Hành Động Xử Trí Tức Thời |
+|:---|:---:|:---|:---|
+| **Dấu hiệu sinh tồn (Mạch, HA, SpO2, Thở)** | Mỗi 1-2 giờ | Mạch $> 120$ hoặc $< 50$, HA $< 90/60$ | Đặt đường truyền, thở oxy, đo ECG |
+| **Nước tiểu 24 giờ** | Mỗi 4-6 giờ | $< 0.5\text{ mL/kg/giờ}$ kéo dài $> 2$ giờ | Đánh giá lại tiền gánh, xét nghiệm Creatinine |
+| **Xét nghiệm cận lâm sàng kiểm tra** | Mỗi 12-24 giờ | Lactate $> 2\text{ mmol/L}$, Khí máu toan | Khởi động quy trình chống sốc/ICU |
+
+---
+
+## 💎 5. ĐIỂM NGỌC LÂM SÀNG TRÁNH BỎ SÓT BIẾN CHỨNG (CLINICAL PEARLS)
+> [!WARNING]
+> **Cạm bẫy lâm sàng thường gặp**:
+> - ...
+> - ...
+
+> [!TIP]
+> **Kinh nghiệm theo dõi & nhận diện sớm**:
+> - ...
+
+---
+
+## 📚 TRÍCH DẪN TÀI LIỆU THAM KHẢO CHUẨN EBM
+1. Tác giả / Hiệp hội. Tên bài viết về biến chứng hoặc Hướng dẫn hồi sức cấp cứu. *Tên Tạp chí Y khoa*. Năm;Tập(Số):Trang. DOI/PMID.
+2. Bộ Y Tế Việt Nam. Hướng dẫn chẩn đoán và điều trị cấp cứu hồi sức tích cực... Hà Nội.
+"

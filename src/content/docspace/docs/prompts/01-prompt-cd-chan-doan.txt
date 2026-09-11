@@ -1,0 +1,134 @@
+# ==============================================================================
+# CLINIPORTAL NOTEBOOKLM — PROMPT KHO CHẨN ĐOÁN (KHO CD)
+# ==============================================================================
+# SỬ DỤNG KHI: Bạn muốn NotebookLM trích xuất nội dung CHẨN ĐOÁN TOÀN DIỆN
+# (Lâm sàng, Cận lâm sàng, Tiêu chuẩn vàng, Bộ tiêu chuẩn xác định & Chẩn đoán phân biệt)
+# để lưu vào: knowledge-vault/2.3. Kho chẩn đoán/{Chuyên khoa}/CD_{Tên bệnh}_P1.md
+# ==============================================================================
+
+[YÊU CẦU ĐẦU VÀO]:
+- Tên bệnh lý: [ĐIỀN TÊN BỆNH LÝ, ví dụ: Suy tim / Hội chứng vành cấp / Viêm tụy cấp / Bỏng / Ghẻ]
+- Chuyên khoa: [ĐIỀN CHUYÊN KHOA, ví dụ: Tim mạch / Hô hấp / Tiêu hóa / Da liễu - Cơ xương khớp]
+- Hướng dẫn tham chiếu: [ĐIỀN NGUỒN CHÍNH, ví dụ: ESC 2023 / BYT 2024 / Atlanta 2012 / KDIGO 2024]
+- Cấu trúc bài xuất bản: [Chọn "P1 - Toàn diện" (mặc định) HOẶC "P1 - Lâm sàng", "P2 - Cận lâm sàng", "P3 - Tiêu chuẩn & Phân biệt"]
+
+[PROMPT DÁN VÀO NOTEBOOKLM - CHẾ ĐỘ TOÀN DIỆN ALL-IN-ONE (P1)]:
+"Dựa trên các tài liệu đã tải lên trong Notebook, hãy đóng vai trò Bác sĩ Chuyên khoa Nội/Nhi/Ngoại/Da liễu Cấp cao và biên soạn một bài viết CHẨN ĐOÁN TOÀN DIỆN CHUẨN Y HỌC CHỨNG CỨ cho bệnh lý: [TÊN BỆNH LÝ].
+
+BẮT BUỘC TUÂN THỦ CẤU TRÚC VÀ QUY CHUẨN SAU:
+
+---
+title: \"Chẩn đoán: [Tên bệnh lý chuẩn y khoa tiếng Việt]\"
+part: \"P1\"
+aliases:
+  - \"Chẩn đoán [Tên bệnh]\"
+  - \"[Tên viết tắt y khoa, ví dụ: HF, ACS, AP]\"
+  - \"[Tên tiếng Anh quốc tế]\"
+  - \"Tiêu chuẩn chẩn đoán [Tên bệnh]\"
+keywords:
+  - \"chẩn đoán [tên bệnh]\"
+  - \"tiêu chuẩn vàng gold standard\"
+  - \"triệu chứng lâm sàng cơ năng thực thể\"
+  - \"cận lâm sàng xét nghiệm hình ảnh học\"
+  - \"chẩn đoán phân biệt differential diagnosis\"
+  - \"độ nhạy độ đặc hiệu sensitivity specificity\"
+icd10:
+  - \"[Mã ICD-10 chính xác kèm tên]\"
+specialty: \"[Tên chuyên khoa]\"
+kho: \"2.3. Kho chẩn đoán\"
+type: \"diagnostic\"
+tags:
+  - \"CliniPortal\"
+  - \"Diagnostic\"
+  - \"KhoChanDoan\"
+  - \"y-khoa/cd\"
+updated: \"2026-09-11\"
+sources:
+  - \"[Tên Guideline/Khuyến cáo chính thức được trích dẫn kèm năm]\"
+---
+
+# 🩺 CHẨN ĐOÁN Y KHOA TOÀN DIỆN: [TÊN BỆNH LÝ]
+
+> **Tóm tắt cốt lõi**: [Đoạn văn 3-4 câu tóm tắt định nghĩa bệnh học, dấu hiệu then chốt gợi ý chẩn đoán, tiêu chuẩn vàng để xác định bệnh và tầm quan trọng của việc chẩn đoán sớm đối với tiên lượng người bệnh].
+
+---
+
+## 🔍 1. BỆNH SỬ & TRIỆU CHỨNG LÂM SÀNG (SYMPTOMS & SIGNS)
+- **Triệu chứng cơ năng (Symptoms)**:
+  - Triệu chứng kinh điển / Dấu hiệu cảnh báo sớm: [Mô tả chi tiết vị trí, tính chất, thời gian, hướng lan, yếu tố tăng/giảm].
+  - Các triệu chứng kèm theo và triệu chứng toàn thân: [Sốt, sụt cân, mệt mỏi, vã mồ hôi...].
+- **Khám thực thể (Physical Examination)**:
+  - Nhìn, sờ, gõ, nghe hoặc các nghiệm pháp khám chuyên khoa đặc hiệu: [Nêu rõ tên nghiệm pháp và dấu hiệu dương tính].
+  - Dấu hiệu cờ đỏ nguy hiểm (Red Flags) báo hiệu biến chứng cấp: [Liệt kê các dấu hiệu sinh hiệu/thực thể đe dọa tính mạng].
+
+---
+
+## 🧪 2. CHIẾN LƯỢC CẬN LÂM SÀNG CHẨN ĐOÁN (DIAGNOSTIC INVESTIGATIONS)
+- **Xét nghiệm thường quy & Dấu ấn sinh học (Biomarkers)**:
+  - Công thức máu, sinh hóa máu, điện giải đồ, chức năng gan thận...
+  - Các dấu ấn sinh học đặc hiệu: [Troponin, NT-proBNP, D-Dimer, Amylase/Lipase, Procalcitonin, Kháng thể tự miễn... kèm ngưỡng cut-off bình thường vs bệnh lý].
+- **Thăm dò chức năng & Chẩn đoán hình ảnh (Imaging & Function Tests)**:
+  - ECG, X-quang, Siêu âm (Doppler/Tim/Bụng), CT-Scanner, MRI, Nội soi...
+- **Bảng tổng hợp giá trị chẩn đoán của cận lâm sàng**:
+
+| Phương Tiện Cận Lâm Sàng | Vai Trò Trong Chẩn Đoán | Độ Nhạy (Sn) | Độ Đặc Hiệu (Sp) | Khuyến Cáo (Class / LoE) |
+|:---|:---|:---:|:---:|:---:|
+| [Xét nghiệm 1: Dấu ấn sinh học] | Sàng lọc ban đầu / Loại trừ | ...% | ...% | Class I, LoE A |
+| [Xét nghiệm 2: Thăm dò chức năng] | Xác định biến đổi điện học/chức năng | ...% | ...% | Class I, LoE B |
+| [Xét nghiệm 3: Hình ảnh học] | Định vị thương tổn & Phân độ nặng | ...% | ...% | Class I, LoE A |
+
+---
+
+## 🏛️ 3. TIÊU CHUẨN VÀNG & BỘ TIÊU CHÍ CHẨN ĐOÁN XÁC ĐỊNH
+- **Tiêu chuẩn vàng (Gold Standard)**: [Nêu rõ tiêu chuẩn vàng xác định bệnh, ví dụ: Sinh thiết mô học, Chụp mạch vành, Cấy vi sinh phân lập...].
+- **Bộ tiêu chí chẩn đoán theo khuyến cáo quốc tế / Bộ Y Tế**:
+  Trình bày dưới dạng bảng rõ ràng giữa Tiêu chuẩn Chính (Major) và Tiêu chuẩn Phụ (Minor):
+
+| Nhóm Tiêu Chuẩn | Tiêu Chí Chi Tiết (Triệu chứng, Cận lâm sàng, Hình ảnh học) | Ngưỡng Giá Trị & Điều Kiện Thỏa Mãn |
+|:---|:---|:---|
+| **I. TIÊU CHUẨN CHÍNH (Major Criteria)** | 1. ...<br>2. ...<br>3. ... | Cần thỏa mãn ít nhất bao nhiêu tiêu chuẩn |
+| **II. TIÊU CHUẨN PHỤ (Minor Criteria)** | 1. ...<br>2. ...<br>3. ... | Cần thỏa mãn ít nhất bao nhiêu tiêu chuẩn |
+
+- **Quy tắc phối hợp để kết luận chẩn đoán xác định**: [Nêu rõ công thức kết luận: Ví dụ: Thỏa mãn ≥ 2 tiêu chuẩn chính HOẶC 1 tiêu chuẩn chính + ≥ 2 tiêu chuẩn phụ].
+
+---
+
+## ⚖️ 4. BẢNG ĐỐI SÁNH CHẨN ĐOÁN PHÂN BIỆT (DIFFERENTIAL DIAGNOSIS)
+Lập bảng so sánh giữa bệnh lý này với 3-4 bệnh lý có biểu hiện lâm sàng hoặc cận lâm sàng tương tự:
+
+| Bệnh Lý Phân Biệt | Đặc Điểm Lâm Sàng Trùng Lắp | Điểm Then Chốt Để Phân Biệt / Loại Trừ | Xét Nghiệm Quyết Định Khẳng Định |
+|:---|:---|:---|:---|
+| 1. [Bệnh phân biệt 1] | ... | ... | ... |
+| 2. [Bệnh phân biệt 2] | ... | ... | ... |
+| 3. [Bệnh phân biệt 3] | ... | ... | ... |
+
+---
+
+## 🔀 5. LƯU ĐỒ THUẬT TOÁN TIẾP CẬN CHẨN ĐOÁN (DIAGNOSTIC ALGORITHM)
+Trình bày sơ đồ logic các bước tiếp cận tại giường bệnh:
+- **Bước 1 (Sàng lọc)**: Tiếp nhận triệu chứng gợi ý ban đầu...
+- **Bước 2 (Loại trừ cờ đỏ)**: Đánh giá sinh hiệu và dấu hiệu nguy hiểm cần cấp cứu...
+- **Bước 3 (Thực hiện CLS)**: Thứ tự chỉ định xét nghiệm từ không xâm lấn đến chuyên sâu...
+- **Bước 4 (Áp dụng tiêu chuẩn)**: Đối chiếu bộ tiêu chí chẩn đoán xác định...
+- **Bước 5 (Phân loại & Giai đoạn)**: Xác định thể lâm sàng, giai đoạn tiến triển và biến chứng...
+
+---
+
+## 💎 6. ĐIỂM NGỌC LÂM SÀNG & CẠM BẪY THƯỜNG GẶP (PEARLS & PITFALLS)
+> [!TIP]
+> **Điểm ngọc lâm sàng (Clinical Pearls)**:
+> - ...
+> - ...
+
+> [!WARNING]
+> **Cạm bẫy chẩn đoán thường gặp (Diagnostic Pitfalls)**:
+> - ...
+> - ...
+
+---
+
+## 📚 TRÍCH DẪN TÀI LIỆU THAM KHẢO CHUẨN EBM
+Trích dẫn đầy đủ các tài liệu nguồn y văn theo chuẩn AMA:
+1. Tác giả / Hiệp hội. Tiêu đề khuyến cáo chẩn đoán. *Tên Tạp chí*. Năm;Tập(Số):Trang. DOI/PMID.
+2. Bộ Y Tế Việt Nam. Hướng dẫn chẩn đoán và điều trị... Quyết định số.../QĐ-BYT. Hà Nội.
+"

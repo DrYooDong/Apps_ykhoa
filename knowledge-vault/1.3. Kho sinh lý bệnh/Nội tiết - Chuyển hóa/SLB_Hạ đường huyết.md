@@ -13,7 +13,6 @@ tags:
   - y-khoa/raw
 updated: 2026-08-21
 ---
-
 # BÀI HỌC: SINH LÝ BỆNH TRONG BIẾN CHỨNG HẠ ĐƯỜNG HUYẾT TRONG ĐÁI THÁO ĐƯỜNG
 
 ---
@@ -155,7 +154,7 @@ Sự tổn thương hệ thần kinh tự chủ phế vị làm giảm nhu độ
 
 1. American Diabetes Association Professional Practice Committee. 6. Glycemic Goals, Hypoglycemia, and Hyperglycemic Crises: Standards of Care in Diabetes—2026. _Diabetes Care_. 2026;49(Suppl 1):S132-S151. doi:10.2337/dc26-S006.
 2. American Diabetes Association Professional Practice Committee. 14. Children and Adolescents: Standards of Care in Diabetes—2026. _Diabetes Care_. 2026;49(Suppl 1):S297-S320. doi:10.2337/dc26-S014.
-3. Bộ Y tế Việt Nam. _Hướng dẫn chẩn đoán và điều trị bệnh đa dây thần kinh và thần kinh tự chủ đái tháo đường_. Hà Nội: Bộ Y tế; 2025. _(Trích xuất từ tài liệu "ĐTĐ & bệnh thận _ BYT _ 2025.pdf" và "3510_QD-BYT_680781.doc.pdf" trong Notebook)._
+3. Bộ Y tế Việt Nam. _Hướng dẫn chẩn đoán và điều trị bệnh đa dây thần kinh và thần kinh tự chủ đái tháo đường_. Hà Nội: Bộ Y tế; 2025. _(Trích xuất từ tài liệu "ĐTĐ & bệnh thận _ BYT _ 2025.pdf" và "3510_QD-BYT_680781.doc.pdf" trong y văn y học chứng cứ)._
 4. Glaser N, Fritsch M, Priyambada L, et al. ISPAD Clinical Practice Consensus Guidelines 2022: Diabetic ketoacidosis and hyperglycemic hyperosmolar state. _Pediatric Diabetes_. 2022;23(7):835-856. doi:10.1111/pedi.13406.
 5. Umpierrez GE, Davis GM, ElSayed NA, et al. Hyperglycemic crises in adults with diabetes: a consensus report. _Diabetes Care_. 2024;47(8):1257-1275. doi:10.2337/dci24-0032.
 

@@ -26,9 +26,6 @@ tags:
   - "y-khoa/noi-tiet"
 updated: "2026-08-21"
 ---
-
-
-
 # TÓM TẮT HƯỚNG DẪN BỘ Y TẾ (PHẦN 1)
 
 _Văn bản gốc: "Hướng dẫn chẩn đoán và điều trị bệnh thần kinh đái tháo đường" (Ban hành kèm theo Quyết định số 3510/QĐ-BYT ngày 11 tháng 11 năm 2025 của Bộ trưởng Bộ Y tế)_
@@ -76,7 +73,7 @@ Các tế bào thần kinh rất dễ bị tổn thương khi nồng độ gluco
 #### **Sơ đồ 1: Cơ chế bệnh sinh biến chứng thần kinh và loét bàn chân ĐTĐ**
 
 _Tên hình:_ **Hình 1. Cơ chế bệnh sinh biến chứng thần kinh ĐTĐ** (hoặc _Cơ chế bệnh sinh biến chứng bàn chân ĐTĐ_)  
-_Thuộc tài liệu:_ `ĐTĐ & bệnh thận _ BYT _ 2025.pdf` trong Notebook.
+_Thuộc tài liệu:_ `ĐTĐ & bệnh thận _ BYT _ 2025.pdf` trong y văn y học chứng cứ.
 
 ```
                          [ ĐÁI THÁO ĐƯỜNG ]
@@ -118,7 +115,7 @@ _Thuộc tài liệu:_ `ĐTĐ & bệnh thận _ BYT _ 2025.pdf` trong Notebook.
 #### **Sơ đồ 2: Cơ chế gây stress oxy hóa tế bào thần kinh**
 
 _Tên hình:_ **Hình 2. Cơ chế gây stress oxy hóa tế bào thần kinh ở người bệnh ĐTĐ**  
-_Thuộc tài liệu:_ `ĐTĐ & bệnh thận _ BYT _ 2025.pdf` trong Notebook.
+_Thuộc tài liệu:_ `ĐTĐ & bệnh thận _ BYT _ 2025.pdf` trong y văn y học chứng cứ.
 
 ```
 [Glucose tăng] ───► [Con đường polyol] ─────────────────────────────► [Stress oxy hóa]
@@ -172,7 +169,7 @@ Dựa trên biểu hiện lâm sàng và sợi thần kinh bị ảnh hưởng, 
 #### **Sơ đồ 3: Các loại sợi thần kinh và triệu chứng tương ứng khi bị tổn thương**
 
 _Tên hình:_ **Hình 3. Các dấu hiệu và triệu chứng tương ứng với sợi thần kinh bị ảnh hưởng**  
-_Thuộc tài liệu:_ `ĐTĐ & bệnh thận _ BYT _ 2025.pdf` trong Notebook.
+_Thuộc tài liệu:_ `ĐTĐ & bệnh thận _ BYT _ 2025.pdf` trong y văn y học chứng cứ.
 
 ```
   [Sợi TK vận động]            [Sợi TK cảm giác]                [TK tự chủ]

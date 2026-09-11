@@ -33,7 +33,6 @@ tags:
 icd10:
   - "I50"
 ---
-
 Chào bạn, dưới góc độ chuyên gia tim mạch, tôi xin gửi tới bạn bản **Tóm tắt Khuyến cáo mới nhất về Suy tim từ Hội Tim mạch Châu Âu (ESC 2026) - Phần 4 (Phần cuối)**. Đây là phần tóm tắt toàn diện tập trung vào những mảng chuyên sâu và quan trọng còn lại trong Khuyến cáo ESC 2026 bao gồm: Quản lý Suy tim Tiến triển (Stage D), Rung nhĩ và Rối loạn nhịp, can thiệp bệnh van tim/bạch vành đồng mắc, bệnh lý nhiễm bột cơ tim (Cardiac Amyloidosis) và các bệnh đồng mắc không do tim mạch khác (ĐTĐ, béo phì, suy thận...).
 
 ---
@@ -48,14 +47,14 @@ Quy trình quản lý suy tim tiến triển đòi hỏi sự phối hợp chặ
 
 ##### **Trích xuất Sơ đồ/Bảng biểu liên quan:**
 
-- **Tên Sơ đồ:** _Figure 18: Treatment for advanced heart failure_ thuộc tài liệu _ehag100.pdf_ trong Notebook này.
+- **Tên Sơ đồ:** _Figure 18: Treatment for advanced heart failure_ thuộc tài liệu _ehag100.pdf_ trong y văn.
 	![[Pasted image 20260830194443.png]]
 - **Mô tả nội dung dưới sơ đồ:** Lưu đồ hướng dẫn điều trị suy tim tiến triển dựa trên phân độ huyết động của hệ thống phân loại INTERMACS (Interagency Registry for Mechanically Assisted Circulatory Support):
     
     - _INTERMACS 1-2 (Bệnh nhân sốc tim sâu sắc hoặc suy sụp huyết động nhanh):_ Khuyến cáo sử dụng **Hỗ trợ tuần hoàn cơ học tạm thời (Temporary MCS) - chỉ định Class IIa**. Nếu tổn thương cơ quan đích nặng nề và không thể phục hồi, cân nhắc chuyển sang chăm sóc giảm nhẹ hoặc rút thiết bị hỗ trợ.
     - _INTERMACS 3-4 (Bệnh nhân suy tim lệ thuộc thuốc tăng co bóp cơ tim liên tục):_ Nếu có sự phục hồi cơ quan đích nhưng không có hồi phục cơ tim, khuyến cáo cấy **Thiết bị hỗ trợ thất trái dài hạn (Durable LVAD) - chỉ định Class I** (áp dụng cho các chiến lược: cầu nối đến ghép tim BTT, cầu nối để quyết định BTC, hoặc điều trị đích lâu dài DT).
     - _INTERMACS >4:_ Nếu thuộc nhóm nguy cơ cao (nhập viện tái phát, sung huyết kháng trị, suy cơ quan đích tiến triển, VO2 đỉnh <12-14 mL/kg/min hoặc <50% giá trị dự báo), khuyến cáo cấy LVAD hoặc đưa vào danh sách ghép tim (Class I). Nếu không thuộc nhóm nguy cơ cao, có thể trì hoãn can thiệp nâng cao và theo dõi sát.
-- **Tên Bảng:** _Table 17: Indications and contraindications for heart transplantation_ thuộc tài liệu _ehag100.pdf_ trong Notebook này.
+- **Tên Bảng:** _Table 17: Indications and contraindications for heart transplantation_ thuộc tài liệu _ehag100.pdf_ trong y văn.
     ![[Pasted image 20260830194519.png]]
 - **Mô tả nội dung dưới bảng:** Bảng phân loại chi tiết các tiêu chuẩn chỉ định và đặc biệt là các **Chống chỉ định tuyệt đối** đối với liệu pháp Ghép tim ở bệnh nhân suy tim Stage D:
     
@@ -99,11 +98,11 @@ Sự đồng mắc giữa suy tim và rung nhĩ làm trầm trọng thêm các r
 
 **Trích Sơ đồ/Bảng biểu liên quan:**
 
-- **Tên Sơ đồ:** _Figure 20: Management of secondary mitral regurgitation in patients with heart failure with reduced ejection fraction_ thuộc tài liệu _ehag100.pdf_ trong Notebook này.
+- **Tên Sơ đồ:** _Figure 20: Management of secondary mitral regurgitation in patients with heart failure with reduced ejection fraction_ thuộc tài liệu _ehag100.pdf_ trong y văn.
     ![[Pasted image 20260830194642.png]]
 - **Mô tả nội dung dưới sơ đồ:** Sơ đồ thuật toán hướng dẫn xử trí hở hai lá thứ phát ở bệnh nhân HFrEF. Bước đầu tiên là tối ưu hóa FMT và CRT (nếu có chỉ định). Nếu tình trạng hở hai lá nặng vẫn dai dẳng, đánh giá xem bệnh nhân có đáp ứng các tiêu chuẩn lâm sàng và siêu âm tim (tiêu chuẩn COAPT-like trong Table 19) hay không. Nếu có (Yes), khuyến cáo can thiệp **Sửa van hai lá qua ống thông (Mitral TEER) - chỉ định Class I**. Nếu không đáp ứng (No), đánh giá xem có suy tim tiến triển (Stage D) hay không; nếu có Stage D, ưu tiên lựa chọn cấy LVAD hoặc ghép tim, còn TEER chỉ là chỉ định cân nhắc thêm (Class IIb).
     
-- **Tên Bảng:** _Table 19: Selection criteria for mitral transcatheter edge-to-edge repair in heart failure with reduced ejection fraction_ thuộc tài liệu _ehag100.pdf_ trong Notebook này.
+- **Tên Bảng:** _Table 19: Selection criteria for mitral transcatheter edge-to-edge repair in heart failure with reduced ejection fraction_ thuộc tài liệu _ehag100.pdf_ trong y văn.
     
 - **Mô tả nội dung dưới bảng:** Bảng liệt kê các tiêu chuẩn lựa chọn khắt khe để đảm bảo hiệu quả tối ưu của thủ thuật TEER giúp cải thiện tiên lượng sống còn (dựa trên tiêu chuẩn của thử nghiệm COAPT):
     
@@ -129,14 +128,14 @@ Bệnh cơ tim nhiễm bột (đặc biệt là thể ATTR-CA) là một nguyên
 
 ##### **Trích xuất Sơ đồ/Bảng biểu liên quan:**
 
-- **Tên Sơ đồ:** _Figure 23: Diagnosis and treatment of cardiac amyloidosis in heart failure patients_ thuộc tài liệu _ehag100.pdf_ trong Notebook này.
+- **Tên Sơ đồ:** _Figure 23: Diagnosis and treatment of cardiac amyloidosis in heart failure patients_ thuộc tài liệu _ehag100.pdf_ trong y văn.
     ![[Pasted image 20260830194905.png]]
 - **Mô tả nội dung dưới sơ đồ:** Sơ đồ hướng dẫn quy trình chẩn đoán không xâm lấn cực kỳ hiện đại: Khi nghi ngờ bệnh nhân có CA, thực hiện song song hai nhánh xét nghiệm:
     
     - _Nhánh 1: Tầm soát huyết học (để tìm thể AL-CA):_ Định lượng chuỗi nhẹ tự do huyết thanh, điện di cố định miễn dịch huyết thanh và nước tiểu. Nếu có bất thường, chuyển ngay chuyên khoa Huyết học để hóa trị.
     - _Nhánh 2: Xạ hình xương bằng chất gắn Phosphonate (99mTc-DPD/HMDP/PYP):_ Nếu không có bất thường huyết học và xạ hình xương đạt Grade 2-3 độ tập trung phóng xạ tại cơ tim -> Chẩn đoán xác định thể **ATTR-CA (Transthyretin Cardiac Amyloidosis) không cần sinh thiết cơ tim**.
     
-- **Tên Bảng:** _Table 20: 'Red flags' for most common forms of cardiac amyloidosis_ thuộc tài liệu _ehag100.pdf_ trong Notebook này.
+- **Tên Bảng:** _Table 20: 'Red flags' for most common forms of cardiac amyloidosis_ thuộc tài liệu _ehag100.pdf_ trong y văn.
     ![[Pasted image 20260830194940.png]]
 - **Mô tả nội dung dưới bảng:** Bảng tổng hợp các **"Dấu hiệu cảnh báo đỏ" (Red Flags)** để bác sĩ lâm sàng nghi ngờ CA ở bệnh nhân suy tim có dày thành thất trái:
     

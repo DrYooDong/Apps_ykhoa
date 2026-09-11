@@ -14,10 +14,9 @@ tags:
   - y-khoa/slb
 updated: 2026-08-21
 ---
-
 # CHUYÊN ĐỀ Y KHOA: SINH LÝ BỆNH VÀ CƠ CHẾ BỆNH SINH CỦA VIÊM GAN SIÊU VI C (HCV)
 
-_Bài học chuyên sâu này được biên soạn dựa trên các tài liệu y khoa và hướng dẫn chuyên môn trong Notebook. Nội dung tập trung phân tích chi tiết từ đặc điểm vi-rút học, chu kỳ sinh học, cơ chế gây mỡ hóa gan, đề kháng insulin, xơ hóa nhu mô gan cho đến các phản ứng miễn dịch tế bào trong bệnh cảnh nhiễm HCV._
+_Bài học chuyên sâu này được biên soạn dựa trên các tài liệu y khoa và hướng dẫn chuyên môn trong y văn y học chứng cứ. Nội dung tập trung phân tích chi tiết từ đặc điểm vi-rút học, chu kỳ sinh học, cơ chế gây mỡ hóa gan, đề kháng insulin, xơ hóa nhu mô gan cho đến các phản ứng miễn dịch tế bào trong bệnh cảnh nhiễm HCV._
 
 ---
 

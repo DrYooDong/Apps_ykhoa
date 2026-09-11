@@ -33,7 +33,6 @@ tags:
 icd10:
   - "I50"
 ---
-
 ### **1. Nội Dung Điều Trị Học Chi Tiết: Phác Đồ Điều Trị Nội Khoa Suy Tim Theo ESC 2026**
 
 #### **Khái Quát về Phác đồ Điều trị Nội khoa theo Khuyến cáo ESC 2026**
@@ -42,7 +41,7 @@ icd10:
 
 **Sơ đồ liên quan:**
 
-- **Tên Sơ đồ:** _Figure 1: Central illustration. Management of heart failure_ thuộc tài liệu _ehag100.pdf_ trong Notebook này.
+- **Tên Sơ đồ:** _Figure 1: Central illustration. Management of heart failure_ thuộc tài liệu _ehag100.pdf_ trong y văn.
 	![[Pasted image 20260830193348.png]]
 - **Mô tả nội dung dưới sơ đồ:** Sơ đồ này là bức tranh tổng quan toàn diện về phác đồ điều trị suy tim hiện đại dựa trên phân suất tống máu thất trái (LVEF) từ <20% đến ≥65%. Ở phần đỉnh sơ đồ là Liệu pháp Nội khoa Nền tảng (FMT) áp dụng cho tất cả bệnh nhân suy tim: SGLT2i và MRA là chỉ định Class I cho mọi dải EF; riêng đối với nhóm LVEF <50% (HFrEF), FMT được bổ sung thêm thuốc ức chế hệ RAAS (ACE-I/ARNI/ARB) và chẹn Beta (BB). Phần giữa sơ đồ thể hiện các Liệu pháp Nội khoa Bổ sung (AMT) được cá thể hóa theo triệu chứng và bệnh đồng mắc (sung huyết, thiếu sắt, nhịp tim nhanh, béo phì...). Phần đáy sơ đồ phân cấp các biện pháp can thiệp cơ học và thiết bị điện học (CIED như ICD, CRT) cùng các can thiệp ngoại khoa/qua ống thông (sửa van tim TEER, bắc cầu mạch vành CABG, thay van TAVI...) được mã hóa màu sắc theo mức độ khuyến cáo (Màu xanh lá: Class I, Màu vàng: Class IIa, Màu cam: Class IIb).
 
@@ -79,7 +78,7 @@ _Lưu ý đối với các thuốc khác trong HFpEF:_ Việc sử dụng ACE-I,
 
 **Bảng thông tin liên quan:**
 
-- **Tên Bảng:** _Table 11: Evidence-based doses of disease-modifying drugs in key randomized trials in patients with heart failure_ thuộc tài liệu _ehag100.pdf_ trong Notebook này.
+- **Tên Bảng:** _Table 11: Evidence-based doses of disease-modifying drugs in key randomized trials in patients with heart failure_ thuộc tài liệu _ehag100.pdf_ trong y văn.
 - **Nội dung chi tiết trích xuất từ Table 11:**
 
 |Nhóm thuốc / Tên hoạt chất|Liều khởi đầu (Starting Dose)|Liều mục tiêu (Target Dose)|

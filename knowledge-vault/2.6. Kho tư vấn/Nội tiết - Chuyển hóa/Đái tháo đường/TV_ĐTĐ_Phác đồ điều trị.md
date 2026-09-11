@@ -1,3 +1,31 @@
+---
+title: "Tư vấn Bệnh nhân: Phác đồ Thuốc & Điều trị Đái tháo đường Típ 2"
+part: "P1"
+aliases:
+  - "Tư vấn ĐTĐ Phác đồ điều trị"
+  - "Hướng dẫn dùng thuốc đái tháo đường"
+keywords:
+  - "phác đồ đái tháo đường"
+  - "metformin"
+  - "sglt2i"
+  - "insulin"
+  - "tư vấn dùng thuốc"
+icd10:
+  - "E11 (Đái tháo đường típ 2)"
+specialty: "Nội tiết - Chuyển hóa"
+kho: "2.6. Kho tư vấn"
+type: "patient-counseling"
+tags:
+  - "CliniPortal"
+  - "TuVanBenhNhan"
+  - "KhoTuVan"
+  - "y-khoa/tv"
+updated: "2026-09-11"
+sources:
+  - "ADA Standards of Care in Diabetes 2025"
+  - "Phác đồ Điều trị ĐTĐ típ 2 - Bộ Y Tế Việt Nam"
+---
+
 ### Khi nào bạn bắt đầu phải dùng thuốc điều trị?
 
 - Ngay khi bạn được chẩn đoán mắc đái tháo đường típ 2, việc thay đổi lối sống kết hợp dùng thuốc kiểm soát đường huyết sẽ được bác sĩ khuyến cáo khởi trị ngay lập tức.

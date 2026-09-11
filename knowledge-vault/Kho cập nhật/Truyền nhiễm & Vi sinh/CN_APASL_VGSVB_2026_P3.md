@@ -16,7 +16,6 @@ tags:
   - "y-khoa/cn"
 updated: "2026-09-06"
 ---
-
 # BÀI HỌC SINH LÝ BỆNH VÀ CÁC KHUYẾN CÁO LÂM SÀNG CỦA GUIDELINE APASL 2026 (PHẦN 3)
 
 ---
@@ -28,7 +27,7 @@ updated: "2026-09-06"
 Để đảm bảo tính khách quan, khoa học và khả năng áp dụng lâm sàng đồng thuận cao, tất cả các khuyến cáo trong Hướng dẫn APASL 2026 được xây dựng một cách nghiêm ngặt dựa trên hệ thống phân loại GRADE (Grading of Recommendations Assessment, Development, and Evaluation). Hệ thống này giúp các nhà lâm sàng phân định rõ ràng giữa chất lượng chứng cứ khoa học hiện có và sức mạnh của từng khuyến cáo can thiệp y khoa.
 
 - **Tên bảng:** Table 2 - GRADE system
-- **Thuộc tài liệu:** _APASL clinical practice guidelines on the management of chronic hepatitis B infection: a 2026 update_ trong Notebook này.
+- **Thuộc tài liệu:** _APASL clinical practice guidelines on the management of chronic hepatitis B infection: a 2026 update_ trong y văn.
 - **Chi tiết bảng thông tin:**
 
 |Phân Loại GRADE|Ký hiệu / Định nghĩa|Diễn giải ý nghĩa y học lâm sàng|Cách hành văn chuẩn trong Guideline|
@@ -47,7 +46,7 @@ updated: "2026-09-06"
 Các khuyến cáo lâm sàng trong Guideline APASL 2026 được cấu trúc chặt chẽ nhằm trả lời trực tiếp cho 13 lĩnh vực thực hành cốt lõi của y học gan mật.
 
 - **Tên bảng:** Table 3 - Summary of the CHB CPG.
-- **Thuộc tài liệu:** _APASL clinical practice guidelines on the management of chronic hepatitis B infection: a 2026 update_ trong Notebook này.
+- **Thuộc tài liệu:** _APASL clinical practice guidelines on the management of chronic hepatitis B infection: a 2026 update_ trong y văn.
 - **Nội dung mô tả cấu trúc dưới bảng:**
     1. **Tiêm phòng (Vaccination):** Tối ưu hóa thời điểm tiêm birth dose sơ sinh, xét nghiệm huyết thanh anti-HBs sau tiêm chủng và chỉ định liều vaccine nhắc lại cho nhóm nguy cơ cao.
     2. **Sàng lọc (Screening):** Tiêu chuẩn và phương pháp sàng lọc HBV phổ rộng (universal) và sàng lọc dựa trên yếu tố nguy cơ (risk-based).
@@ -70,7 +69,7 @@ Các khuyến cáo lâm sàng trong Guideline APASL 2026 được cấu trúc ch
 Nhiễm HBV mạn tính tiếp tục là một cuộc khủng hoảng y tế công cộng lớn tại Châu Á - Thái Bình Dương (AP), nơi đang là "nhà" của hơn 2/3 tổng số ca nhiễm trên thế giới. APASL 2026 nhấn mạnh rằng 8 quốc gia có gánh nặng bệnh tật lớn nhất trong khu vực, bao gồm Việt Nam, chiếm tới gần 90% tổng số ca nhiễm và tử vong liên quan đến HBV tại đây.
 
 - **Tên bảng:** Table 1 - Burden of diseases in Asia Pacific region (GBD 2021 & Polaris 2024).
-- **Thuộc tài liệu:** _APASL clinical practice guidelines on the management of chronic hepatitis B infection: a 2026 update_ trong Notebook này.
+- **Thuộc tài liệu:** _APASL clinical practice guidelines on the management of chronic hepatitis B infection: a 2026 update_ trong y văn.
 - **Mô tả dữ liệu chi tiết từ bảng:**
     - **Gánh nặng toàn cầu (Global Burden):** Ước tính có khoảng **257 triệu người** nhiễm HBV mạn tính (Prevalence) và khoảng **1,13 triệu ca tử vong hàng năm** liên quan đến các biến chứng gan mật.
     - **Khu vực Châu Á - Thái Bình Dương (Asian-Pacific Region):** Chiếm tới **67% gánh nặng tử vong toàn cầu** với gần **757.000 ca tử vong hàng năm** và khoảng **15,7 triệu DALYs (số năm sống hiệu chỉnh theo mức độ tàn tật)** do HBV gây ra.
@@ -85,7 +84,7 @@ Nhiễm HBV mạn tính tiếp tục là một cuộc khủng hoảng y tế cô
 Việc lựa chọn thuốc kháng vi-rút viêm gan B mạn tính dựa trên các bằng chứng lâm sàng so sánh đối đầu chi tiết giữa các thuốc tương tự nucleos(t)ide (NAs) và liệu pháp miễn dịch Peg-IFN-alpha.
 
 - **Tên bảng:** Table 4 - Effectiveness of current CHB treatment strategies.
-- **Thuộc tài liệu:** _APASL clinical practice guidelines on the management of chronic hepatitis B infection: a 2026 update_ trong Notebook này.
+- **Thuộc tài liệu:** _APASL clinical practice guidelines on the management of chronic hepatitis B infection: a 2026 update_ trong y văn.
 - **Diễn giải chi tiết hiệu quả điều trị theo các mục tiêu từ tài liệu tham khảo:**
 
 #### 1. Mục tiêu ngắn hạn (Short-term goals): Kiểm soát vi-rút và hạ men gan
@@ -135,7 +134,7 @@ Việc lựa chọn thuốc kháng vi-rút viêm gan B mạn tính dựa trên c
 Việc sử dụng các thang điểm dự báo nguy cơ giúp phân tầng chính xác những bệnh nhân cần đưa vào chương trình sàng lọc ung thư gan định kỳ.
 
 - **Tên bảng:** Table 5 - Available HCC risk scores applicable to treatment-experienced patients with chronic hepatitis B based on large external validation studies and systematic review, and meta-analysis
-- **Thuộc tài liệu:** _APASL clinical practice guidelines on the management of chronic hepatitis B infection: a 2026 update_ trong Notebook này.
+- **Thuộc tài liệu:** _APASL clinical practice guidelines on the management of chronic hepatitis B infection: a 2026 update_ trong y văn.
 - **Diễn giải chi tiết nội dung bảng:**
     1. **Thang điểm PAGED-B (2024):** Dựa trên tuổi, giới tính, tiểu cầu, nồng độ HBV DNA tại năm 0 và đái tháo đường. Xây dựng trên quần thể người Châu Á (Hàn Quốc) không xơ gan. Ngưỡng cắt phân tầng: Thấp (0-6 điểm), Cao (7-12 điểm).
     2. **Thang điểm aMAP (2020):** Sử dụng các thông số đơn giản gồm tuổi, giới tính, tiểu cầu, albumin và bilirubin. Thử nghiệm trên quần thể người Châu Á có 19% xơ gan. Phân tầng: Thấp (0-49.9), Trung bình (50-59.9), Cao (60-100).
@@ -156,4 +155,3 @@ Việc sử dụng các thang điểm dự báo nguy cơ giúp phân tầng chí
 1. You H, Maiwall R, Chen J, Ahn SH, Dokmeci K, Dou X, El-Sayed M, Fan JG, Gani R, Gao Z, George J, Ghazinian H, Goh G, Hamid S, Hou J, Huang SC, Ji D, Jia J, Kanda T, Kao JH, Kim YJ, Lesmana CRA, Mohamed R, Ning Q, Ormeci N, Otsuka M, Payawal D, Pham TT, Sailey K, Sharma MK, Sollano JD, Sun J, Tanwandee T, Thompson A, Wang FS, Wang G, Wei L, Wong GLH, Wong VWS, Yeoh EK, Yip TCF, Yu ML, Zhang W, Zhuang H, Lai CL, Omata M, Sarin SK, Lau G. APASL clinical practice guidelines on the management of chronic hepatitis B infection: a 2026 update. _Hepatol Int_. 2026. doi:10.1007/s12072-026-11108-1.
 
 ---
-

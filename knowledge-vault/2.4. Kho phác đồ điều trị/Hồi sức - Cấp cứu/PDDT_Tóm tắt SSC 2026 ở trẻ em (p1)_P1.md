@@ -15,9 +15,6 @@ tags:
   - "y-khoa/pddt"
 updated: "2026-08-21"
 ---
-
-
-
 ### 1. Nội Dung Sinh Lý Học Chi Tiết: Tóm Tắt Khuyến Cáo Surviving Sepsis Campaign 2026 (Phần 1)
 
 [[Nhiễm trùng huyết|Nhiễm khuẩn huyết]] (sepsis) là tình trạng rối loạn chức năng cơ quan cấp tính đe dọa tính mạng do phản ứng mất điều hòa của ký chủ đối với nhiễm trùng. Đây là một ưu tiên y tế toàn cầu với ước tính khoảng 49 triệu ca mắc và 13 triệu ca tử vong liên quan mỗi năm. Hướng dẫn của Chiến dịch Sống sót sau [[Nhiễm trùng huyết|Nhiễm khuẩn huyết]] (Surviving Sepsis Campaign - SSC) năm 2026 được đồng tài trợ và phát triển bởi Hội Y học Hồi sức Cấp cứu Hoa Kỳ (SCCM) và Hội Hồi sức Cấp cứu Châu Âu (ESICM) nhằm cung cấp các khuyến cáo dựa trên bằng chứng lâm sàng mới nhất.
@@ -69,7 +66,7 @@ updated: "2026-08-21"
 
 ---
 
-> **Bảng 3: Thuật ngữ Nhiễm khuẩn huyết trong Hướng dẫn này (Sepsis Terminology in This Guideline)** _Trích từ tài liệu: "surviving-sepsis-campaign-international-guidelines-for.pdf" trong Notebook này._
+> **Bảng 3: Thuật ngữ Nhiễm khuẩn huyết trong Hướng dẫn này (Sepsis Terminology in This Guideline)** _Trích từ tài liệu: "surviving-sepsis-campaign-international-guidelines-for.pdf" trong y văn._
 > 
 > | Thuật ngữ | Định nghĩa dựa trên lâm sàng | | :--- | :--- | | **Nhiễm khuẩn huyết chắc chắn** _(Definite sepsis)_ | Nhiễm khuẩn huyết được xác nhận dựa trên bệnh sử, thăm khám lâm sàng và xét nghiệm chẩn đoán. Một chẩn đoán thay thế khác là rất ít khả năng xảy ra. | | **Nhiễm khuẩn huyết có khả năng** _(Probable sepsis)_ | Nghi ngờ cao về nhiễm khuẩn huyết. Sepsis là chẩn đoán có khả năng nhất dựa trên bệnh sử, lâm sàng và xét nghiệm. Chẩn đoán thay thế ít khả năng xảy ra hơn. | | **Nhiễm khuẩn huyết có thể** _(Possible sepsis)_ | Nghi ngờ trung bình về nhiễm khuẩn huyết. Sepsis là một chẩn đoán có thể xảy ra; tuy nhiên, một chẩn đoán thay thế cũng có khả năng tương đương dựa trên bệnh sử, lâm sàng và xét nghiệm. | | **Nhiễm khuẩn huyết ít khả năng** _(Unlikely sepsis)_ | Nghi ngờ thấp về nhiễm khuẩn huyết. Đánh giá lâm sàng không [[Phù]] hợp với nhiễm khuẩn huyết, hoặc một chẩn đoán thay thế khác có khả năng xảy ra cao hơn dựa trên bệnh sử, lâm sàng và xét nghiệm. |
 
@@ -85,7 +82,7 @@ updated: "2026-08-21"
 
 ---
 
-> **Bảng 4: Thể tích dịch 30 mL/kg tính bằng Lít, theo Cân nặng và Chiều cao (30 mL/kg in Liters, by Weight and Height)** _Trích từ tài liệu: "surviving-sepsis-campaign-international-guidelines-for.pdf" trong Notebook này._ _(Chú thích: Chữ số thường áp dụng cho bệnh nhân có $BMI \le 30\text{ kg/m}^2$ dựa trên cân nặng thực tế. Chữ số in nghiêng áp dụng cho bệnh nhân có $BMI > 30\text{ kg/m}^2$ dựa trên cân nặng hiệu chỉnh được tính bằng công thức Devine cho nam giới)_
+> **Bảng 4: Thể tích dịch 30 mL/kg tính bằng Lít, theo Cân nặng và Chiều cao (30 mL/kg in Liters, by Weight and Height)** _Trích từ tài liệu: "surviving-sepsis-campaign-international-guidelines-for.pdf" trong y văn._ _(Chú thích: Chữ số thường áp dụng cho bệnh nhân có $BMI \le 30\text{ kg/m}^2$ dựa trên cân nặng thực tế. Chữ số in nghiêng áp dụng cho bệnh nhân có $BMI > 30\text{ kg/m}^2$ dựa trên cân nặng hiệu chỉnh được tính bằng công thức Devine cho nam giới)_
 > 
 > | Cân nặng (kg) | Chiều cao 1.5 m _(4'11")_ | Chiều cao 1.7 m _(5'7")_ | Chiều cao 1.9 m _(6'3")_ | | :--- | :---: | :---: | :---: | | **50 kg** | 1.5 L | 1.5 L | 1.5 L | | **60 kg** | 1.8 L | 1.8 L | 1.8 L | | **70 kg** | 2.1 L | 2.1 L | 2.1 L | | **80 kg** | _1.9 L_ | 2.4 L | 2.4 L | | **90 kg** | _2.0 L_ | _2.4 L_ | 2.7 L | | **100 kg** | _2.1 L_ | _2.5 L_ | _3.0 L_ | | **110 kg** | _2.2 L_ | _2.6 L_ | _3.3 L_ | | **120 kg** | _2.3 L_ | _2.7 L_ | _3.0 L_ |
 
@@ -129,7 +126,7 @@ Việc sử dụng kháng sinh sớm là can thiệp cốt lõi để giảm t�
 
 ---
 
-> **Sơ Đồ Figure 2: Khung thời gian sử dụng kháng sinh (Antimicrobial timing framework)** _Trích từ tài liệu: "surviving-sepsis-campaign-international-guidelines-for.pdf" trong Notebook này._
+> **Sơ Đồ Figure 2: Khung thời gian sử dụng kháng sinh (Antimicrobial timing framework)** _Trích từ tài liệu: "surviving-sepsis-campaign-international-guidelines-for.pdf" trong y văn._
 > 
 > ```
 >                           [ NGHI NGỜ NHIỄM KHUẨN HUYẾT ]

@@ -33,7 +33,6 @@ tags:
 icd10:
   - "I50"
 ---
-
 ### **1. Nội Dung Chi Tiết: Các Bằng Chứng Lâm Sàng Và Phân Cấp Khuyến Cáo Trong Điều Trị Suy Tim**
 
 #### **Hệ thống phân cấp khuyến cáo và phân loại mức độ bằng chứng mới của ESC 2026**
@@ -42,7 +41,7 @@ Trong Khuyến cáo ESC 2026, tất cả các khuyến cáo điều trị và ch
 
 ##### **Trích xuất Sơ đồ/Bảng biểu liên quan:**
 
-- **Tên Bảng:** _Table 2: Levels of evidence—therapy and prevention_ thuộc tài liệu _ehag100.pdf_ trong Notebook này.
+- **Tên Bảng:** _Table 2: Levels of evidence—therapy and prevention_ thuộc tài liệu _ehag100.pdf_ trong y văn.
     
 - **Mô tả nội dung dưới bảng:** Bảng này phân chia mức độ bằng chứng áp dụng riêng cho các biện pháp điều trị và dự phòng:
     
@@ -50,7 +49,7 @@ Trong Khuyến cáo ESC 2026, tất cả các khuyến cáo điều trị và ch
     - **Level B1:** Bằng chứng gợi ý từ ít nhất một RCT được thiết kế đủ mạnh không có sai lệch lớn, hoặc một phân tích gộp của các RCT như vậy, với một số bằng chứng chống lại tác động của yếu tố ngẫu nhiên (ví dụ: \(P < 0.05\) cho tính vượt trội).
     - **Level B2:** Bằng chứng giới hạn từ ít nhất hai nghiên cứu không ngẫu nhiên được kiểm soát cẩn thận các nguồn sai lệch lớn và có bằng chứng thuyết phục chống lại tác động ngẫu nhiên (\(P < 0.005\)), hoặc từ một phân tích gộp của các RCT nhỏ, thiết kế chưa đủ mạnh với một số bằng chứng chống lại tác động ngẫu nhiên (\(P < 0.05\)).
     - **Level C:** Bằng chứng sơ bộ từ các nghiên cứu không ngẫu nhiên không có kiểm soát cẩn thận sai lệch lớn, một RCT nhỏ đơn lẻ chưa đủ mạnh, hoặc đồng thuận chuyên gia.
-- **Tên Bảng:** _Table 3: Levels of evidence—diagnostic tests and prediction models_ thuộc tài liệu _ehag100.pdf_ trong Notebook này.
+- **Tên Bảng:** _Table 3: Levels of evidence—diagnostic tests and prediction models_ thuộc tài liệu _ehag100.pdf_ trong y văn.
     
 - **Mô tả nội dung dưới bảng:** Bảng này phân cấp mức độ bằng chứng áp dụng riêng cho các test chẩn đoán và mô hình dự báo lâm sàng:
     

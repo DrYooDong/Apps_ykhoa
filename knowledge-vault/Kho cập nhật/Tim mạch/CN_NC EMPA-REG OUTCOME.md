@@ -14,8 +14,6 @@ tags:
   - y-khoa/raw
 updated: 2026-08-21
 ---
-
-
 # BÀI HỌC LÂM SÀNG: NGHIÊN CỨU EMPA-REG OUTCOME
 
 ---
@@ -56,7 +54,7 @@ Nghiên cứu **EMPA-REG OUTCOME** (Empagliflozin, Cardiovascular Outcomes, and 
 #### **Mô tả Hình họa: Các biểu đồ tích lũy biến cố lâm sàng**
 
 _Tên hình:_ **Figure 1. Cardiovascular Outcomes and Death from Any Cause**  
-_Thuộc tài liệu:_ `NEJMoa1504720.pdf` trong Notebook.
+_Thuộc tài liệu:_ `NEJMoa1504720.pdf` trong y văn y học chứng cứ.
 
 ```
   A. Tiêu chí gộp chính (3-point MACE)          B. Tử vong do nguyên nhân Tim mạch
@@ -87,7 +85,7 @@ _Thuộc tài liệu:_ `NEJMoa1504720.pdf` trong Notebook.
 #### **Bảng thông tin: Tóm tắt các kết cục tim mạch và tử vong chính**
 
 _Tên bảng:_ **Table 1. Primary and Secondary Cardiovascular Outcomes**  
-_Tài liệu tham khảo:_ `NEJMoa1504720.pdf` trong Notebook.
+_Tài liệu tham khảo:_ `NEJMoa1504720.pdf` trong y văn y học chứng cứ.
 
 |Tiêu chí kết cục lâm sàng|Nhóm Placebo (N=2333)|Nhóm Empagliflozin gộp (N=4687)|Tỷ số nguy hại HR (95% CI)|Trị số P|
 |:--|:-:|:-:|:-:|:-:|
@@ -107,7 +105,7 @@ _*Ghi chú:_ Không bao gồm nhồi máu cơ tim thầm lặng (silent myocardi
 #### **Sơ đồ & Hướng dẫn: Đánh giá phân nhóm đối với tử vong do Tim mạch**
 
 _Tên hình:_ **Figure 2. Subgroup Analyses for the Primary Outcome and Death from Cardiovascular Causes**  
-_Tài liệu tham khảo:_ `NEJMoa1504720.pdf` trong Notebook.
+_Tài liệu tham khảo:_ `NEJMoa1504720.pdf` trong y văn y học chứng cứ.
 
 ```
                  [ PHÂN TÍCH PHÂN NHÓM TỬ VONG TIM MẠCH ]
@@ -130,7 +128,7 @@ _Tài liệu tham khảo:_ `NEJMoa1504720.pdf` trong Notebook.
 #### **Mô tả Hình họa: Diễn tiến mức HbA1c trong nghiên cứu**
 
 _Tên hình:_ **Figure 3. Glycated Hemoglobin Levels**  
-_Tài liệu tham khảo:_ `NEJMoa1504720.pdf` trong Notebook.
+_Tài liệu tham khảo:_ `NEJMoa1504720.pdf` trong y văn y học chứng cứ.
 
 ```
    Adjusted Mean HbA1c (%)
@@ -157,7 +155,7 @@ Tỷ lệ gặp các biến cố bất lợi tổng thể, biến cố bất l�
 #### **Bảng thông tin: Tóm tắt các biến cố bất lợi chọn lọc**
 
 _Tên bảng:_ **Table 2. Adverse Events**  
-_Tài liệu tham khảo:_ `NEJMoa1504720.pdf` trong Notebook.
+_Tài liệu tham khảo:_ `NEJMoa1504720.pdf` trong y văn y học chứng cứ.
 
 |Biến cố bất lợi chọn lọc|Nhóm Placebo (N=2333)|Nhóm Empagliflozin gộp (N=4687)|Ý nghĩa thống kê (Trị số P)|
 |:--|:-:|:-:|:-:|
@@ -187,4 +185,4 @@ _Tài liệu tham khảo:_ `NEJMoa1504720.pdf` trong Notebook.
 
 ---
 
-🩺 **Ý tưởng thảo luận tiếp theo**: Bạn có muốn tôi tiến hành phân tích sâu hơn về **cơ chế huyết động và sinh lý thận bảo vệ tim mạch** của nhóm thuốc SGLT2i dựa trên các tài liệu đồng thuận y khoa hiện có trong Notebook không?
+🩺 **Ý tưởng thảo luận tiếp theo**: Bạn có muốn tôi tiến hành phân tích sâu hơn về **cơ chế huyết động và sinh lý thận bảo vệ tim mạch** của nhóm thuốc SGLT2i dựa trên các tài liệu đồng thuận y khoa hiện trong y văn y học chứng cứ không?

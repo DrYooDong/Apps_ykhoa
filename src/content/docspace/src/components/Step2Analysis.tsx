@@ -22,7 +22,15 @@ import {
   Sparkles,
   Stethoscope,
 } from 'lucide-react';
-import { AnalysisResult, ClinicalFormState, KnowledgeBase, LabsState, VitalsState } from '../types.ts';
+import {
+  AnalysisResult,
+  ClinicalFormState,
+  EpidemiologyContext,
+  KnowledgeBase,
+  LabsState,
+  ProblemStatementEntry,
+  VitalsState,
+} from '../types.ts';
 import { ROLE_LABELS } from '../data/seedData.ts';
 import { calculateClinicalRiskScore, ClinicalRiskScore } from '../lib/riskScore.ts';
 import {
@@ -46,6 +54,9 @@ interface Step2Props {
   vitals?: VitalsState;
   labs?: LabsState;
   form?: ClinicalFormState;
+  primaryProblem?: ProblemStatementEntry;
+  problems?: ProblemStatementEntry[];
+  epiContext?: EpidemiologyContext;
 }
 
 export const Step2Analysis: React.FC<Step2Props> = ({
@@ -61,6 +72,9 @@ export const Step2Analysis: React.FC<Step2Props> = ({
   vitals,
   labs,
   form,
+  primaryProblem,
+  problems = [],
+  epiContext,
 }) => {
   const [expandedDiffs, setExpandedDiffs] = useState<Record<string, boolean>>({});
   const [diffFilter, setDiffFilter] = useState<'all' | 'alert' | 'high'>('all');
@@ -237,6 +251,44 @@ export const Step2Analysis: React.FC<Step2Props> = ({
           </button>
         </div>
       </div>
+
+      {/* Trục Biện Luận Theo Vấn Đề Chính & Tam Giác Chẩn Đoán Truyền Nhiễm */}
+      {primaryProblem && (
+        <div className="bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 text-white rounded-xl p-4 shadow-sm border border-blue-800 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+          <div className="space-y-1">
+            <div className="flex items-center gap-2 flex-wrap">
+              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-amber-400 text-amber-950">
+                <Sparkles className="w-3 h-3" />
+                Trục Biện Luận Chính
+              </span>
+              <span className="text-xs text-blue-200">
+                Theo phương pháp luận PGS.TS Hoàng Văn Sĩ & BSCKI Trần Thanh Tuấn
+              </span>
+            </div>
+            <h3 className="text-base sm:text-lg font-bold text-white flex items-center gap-2">
+              <span>Vấn đề chính:</span>
+              <span className="text-amber-300">"{primaryProblem.label}"</span>
+            </h3>
+            <p className="text-xs text-blue-100/80 leading-relaxed">
+              Toàn bộ chẩn đoán sơ bộ và phân biệt bên dưới được máy tính xếp hạng dựa trên khả năng giải thích vấn đề chính này kết hợp với <strong>Tam giác Dịch tễ — Lâm sàng — Cận lâm sàng</strong>.
+            </p>
+          </div>
+
+          {epiContext && (epiContext.outbreakAlert || epiContext.vectorExposure || epiContext.endemicArea) && (
+            <div className="bg-emerald-950/80 border border-emerald-500/40 rounded-lg p-3 text-xs text-emerald-100 space-y-1 shrink-0 max-w-sm">
+              <div className="flex items-center gap-1.5 font-bold text-emerald-300">
+                <ShieldAlert className="w-3.5 h-3.5" />
+                <span>Yếu tố Dịch tễ tác động điểm số:</span>
+              </div>
+              <div className="text-[11px] text-emerald-200 leading-snug">
+                {epiContext.outbreakAlert && <div>• Ổ dịch: {epiContext.outbreakAlert}</div>}
+                {epiContext.vectorExposure && <div>• Vector: {epiContext.vectorExposure}</div>}
+                {epiContext.endemicArea && <div>• Vùng: {epiContext.endemicArea}</div>}
+              </div>
+            </div>
+          )}
+        </div>
+      )}
 
       {/* NEW FEATURE: Clinical Risk Score & Triage Urgency Level Card */}
       <div
@@ -498,6 +550,12 @@ export const Step2Analysis: React.FC<Step2Props> = ({
               <span className="px-2 py-0.5 rounded text-[11px] font-mono-custom font-semibold bg-slate-800 text-white">
                 {top.b.icd || '—'}
               </span>
+              {top.epiBoost?.boosted && (
+                <span className="px-2 py-0.5 rounded text-[10px] font-bold tracking-wide uppercase bg-emerald-100 text-emerald-800 border border-emerald-300 flex items-center gap-1">
+                  <Sparkles className="w-3 h-3 text-emerald-600" />
+                  <span>+{top.epiBoost.points}% Tam giác DTH: {top.epiBoost.reason}</span>
+                </span>
+              )}
             </div>
 
             <h3 className="font-display text-xl sm:text-2xl font-bold text-slate-800 tracking-tight">

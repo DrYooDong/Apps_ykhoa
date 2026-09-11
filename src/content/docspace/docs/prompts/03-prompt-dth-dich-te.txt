@@ -1,0 +1,116 @@
+# ==============================================================================
+# CLINIPORTAL NOTEBOOKLM — PROMPT KHO DỊCH TỄ HỌC (KHO DTH)
+# ==============================================================================
+# SỬ DỤNG KHI: Bạn muốn NotebookLM trích xuất số liệu dịch tễ học lâm sàng,
+# gánh nặng bệnh tật (DALYs, CFR), vector và địa bàn lưu hành tại Việt Nam để lưu vào:
+# knowledge-vault/1.4. Kho dịch tễ học/{Chuyên khoa}/DTH_{Tên bệnh}_P1.md
+# ==============================================================================
+
+[YÊU CẦU ĐẦU VÀO]:
+- Tên bệnh lý / Tác nhân: [ĐIỀN TÊN BỆNH LÝ, ví dụ: Sốt xuất huyết Dengue / Bệnh Lao / Sốt rét / Leptospira]
+- Chuyên khoa: [ĐIỀN CHUYÊN KHOA, ví dụ: Truyền nhiễm & Vi sinh / Y tế công cộng / Hô hấp]
+- Nguồn số liệu: [ĐIỀN NGUỒN CHÍNH, ví dụ: WHO 2024 / GBD 2023 / Viện Pasteur / Cục Y tế Dự phòng BYT]
+
+[PROMPT DÁN VÀO NOTEBOOKLM]:
+"Dựa trên các tài liệu đã tải lên trong Notebook, hãy đóng vai trò Chuyên gia Dịch tễ học Lâm sàng & Y tế Công cộng và biên soạn một bài viết DỊCH TỄ HỌC CHUYÊN SÂU cho bệnh lý: [TÊN BỆNH LÝ].
+
+BẮT BUỘC TUÂN THỦ CẤU TRÚC VÀ QUY CHUẨN SAU:
+
+---
+title: \"Dịch tễ học: [Tên bệnh lý / Tác nhân chuẩn y khoa]\"
+part: \"P1\"
+aliases:
+  - \"Dịch tễ [Tên bệnh]\"
+  - \"Dịch tễ học lâm sàng [Tên bệnh]\"
+  - \"Epidemiology of [Tên tiếng Anh]\"
+  - \"Gánh nặng bệnh tật [Tên bệnh]\"
+keywords:
+  - \"dịch tễ học [tên bệnh]\"
+  - \"tỷ lệ mắc morbidity\"
+  - \"tỷ lệ tử vong mortality cfr\"
+  - \"dalys gbd\"
+  - \"vùng lưu hành việt nam\"
+  - \"vector truyền bệnh\"
+icd10:
+  - \"[Mã ICD-10 chính xác kèm tên]\"
+specialty: \"[Tên chuyên khoa]\"
+kho: \"1.4. Kho dịch tễ học\"
+type: \"epidemiology\"
+tags:
+  - \"CliniPortal\"
+  - \"Epidemiology\"
+  - \"KhoDichTe\"
+  - \"y-khoa/dth\"
+updated: \"2026-09-11\"
+sources:
+  - \"[Báo cáo dịch tễ chính thức WHO/GBD/BYT kèm năm]\"
+---
+
+# 🌐 DỊCH TỄ HỌC LÂM SÀNG & GÁNH NẶNG BỆNH TẬT: [TÊN BỆNH LÝ]
+
+> **Tóm tắt cốt lõi**: [Đoạn văn 3-4 câu tóm tắt số liệu mắc và tử vong toàn cầu hàng năm, số năm sống hiệu chỉnh theo tàn tật DALYs, và bối cảnh dịch tễ học then chốt tại Việt Nam].
+
+---
+
+## 🌍 1. GÁNH NẶNG BỆNH TẬT TOÀN CẦU (GLOBAL BURDEN OF DISEASE)
+- **Tỷ lệ mắc hàng năm (Annual Morbidity)**: [Số ca mắc mới/năm, tỷ lệ trên 100.000 dân (95% CI)].
+- **Tỷ lệ tử vong & Tỷ số chết trên mắc (Mortality & Case Fatality Ratio - CFR)**:
+  - Số ca tử vong hàng năm toàn cầu...
+  - Tỷ lệ tử vong thể nhẹ vs thể biến chứng nặng...
+- **Số năm sống hiệu chỉnh mức độ tàn tật (DALYs)**: [Số triệu DALYs/năm, phân bố theo vùng thu nhập].
+- **Bảng phân bố gánh nặng bệnh tật theo khu vực địa lý toàn cầu (GBD Regions)**:
+
+| Vùng Địa Dịch Tễ (WHO / GBD) | Tỷ Lệ Mắc (ca/100.000 dân) | Tỷ Lệ Tử Vong (ca/100.000 dân) | Tỷ Trọng Gánh Nặng Toàn Cầu (%) |
+|:---|:---:|:---:|:---:|
+| Đông Nam Á (South-East Asia) | ... | ... | ...% |
+| Tây Thái Bình Dương (Western Pacific) | ... | ... | ...% |
+| Châu Phi cận Sahara | ... | ... | ...% |
+| Châu Mỹ & Vùng Caribe | ... | ... | ...% |
+| Châu Âu & Bắc Mỹ | ... | ... | ...% |
+
+## 🇻🇳 2. ĐẶC ĐIỂM DỊCH TỄ HỌC TẠI VIỆT NAM
+- **Thực trạng lưu hành quốc gia**:
+  - Số ca mắc và số ca tử vong ghi nhận hàng năm tại Việt Nam...
+  - Xếp hạng gánh nặng bệnh tật của Việt Nam trong khu vực Tây Thái Bình Dương...
+- **Bản đồ các vùng trọng điểm / Điểm nóng dịch tễ**:
+  - Miền Nam & Đồng bằng sông Cửu Long: [Đặc điểm lưu hành]
+  - Miền Trung & Tây Nguyên: [Đặc điểm lưu hành]
+  - Miền Bắc: [Đặc điểm lưu hành theo mùa]
+- **Phân bố chủng / Kiểu gen (Genotypes / Serotypes) lưu hành chủ yếu tại Việt Nam**: [Liệt kê các chủng phổ biến nhất và ý nghĩa kháng thuốc/độc lực].
+
+## 🔺 3. TAM GIÁC DỊCH TỄ HỌC LÂM SÀNG (EPIDEMIOLOGICAL TRIAD)
+Phân tích 3 đỉnh của tam giác dịch tễ học:
+- **1. Tác nhân gây bệnh (Agent)**: [Đặc điểm sinh học, chủng độc lực, khả năng đề kháng môi trường].
+- **2. Ký chủ / Vật chủ (Host)**: [Tình trạng miễn dịch, tính cảm nhiễm, bệnh nền, hành vi phơi nhiễm].
+- **3. Môi trường (Environment)**: [Độ ẩm, nhiệt độ, nguồn nước, vệ sinh đô thị/nông thôn].
+
+## 🦟 4. ĐỘNG THÁI TRUYỀN BỆNH & VÉC-TƠ LÂY NHIỄM
+- **Đường lây truyền chính**: [Giọt bắn hô hấp / Đường máu / Vector côn trùng đốt / Tiêu hóa / Tiếp xúc da niêm].
+- **Véc-tơ truyền bệnh hoặc Ổ chứa tự nhiên (Reservoirs & Vectors)**:
+  - Tên khoa học của véc-tơ (ví dụ: Muỗi Aedes aegypti, Muỗi Anopheles, Chuột Rattus...):
+  - Tập tính sinh học, bán kính bay, thời điểm hoạt động kiếm mồi.
+- **Thời gian ủ bệnh (Incubation Period)**: [Thời gian tối thiểu, tối đa và trung bình].
+- **Hệ số lây nhiễm cơ bản ($R_0$)**: [Giá trị R0 và ý nghĩa bùng phát dịch].
+
+## 🌦️ 5. TÍNH CHẤT MÙA VỤ & ĐỘNG THÁI THIÊN TAI / KHÍ HẬU
+- **Mùa dịch cao điểm**: [Tháng mấy trong năm, mối liên quan với mùa mưa/mùa đông xuân].
+- **Tác động của hiện tượng thời tiết cực đoan**: [Lũ lụt, triều cường, El Niño/La Niña thúc đẩy ổ dịch như thế nào].
+
+## 👥 6. PHÂN TẦNG QUẦN THỂ NGUY CƠ CAO (HIGH-RISK POPULATIONS)
+- **Đặc điểm theo Độ tuổi & Giới tính**: [Tỷ số nam:nữ, nhóm tuổi gánh chịu tỷ lệ mắc/tử vong cao nhất].
+- **Nhóm nguy cơ nghề nghiệp**: [Nông dân, công nhân vệ sinh, nhân viên y tế, người chăn nuôi...].
+- **Nhóm có nguy cơ tiến triển nặng / Tử vong cao**:
+  - Trẻ sơ sinh & Trẻ nhỏ...
+  - Phụ nữ mang thai...
+  - Người cao tuổi & Người có bệnh nền mạn tính...
+
+## 🛡️ 7. CHIẾN LƯỢC GIÁM SÁT DỊCH & CAN THIỆP Y TẾ CÔNG CỘNG
+- Định nghĩa ca bệnh giám sát (Ca nghi ngờ, Ca có thể, Ca xác định).
+- Biện pháp can thiệp cộng đồng: Diệt véc-tơ, xử lý nguồn nước, tiêm chủng vắc-xin, điều trị dự phòng hóa dược.
+
+---
+
+## 📚 TRÍCH DẪN TÀI LIỆU THAM KHẢO CHUẨN EBM
+1. WHO / GBD Collaborators. Tên báo cáo dịch tễ học toàn cầu. *Tên Tạp chí/Tổ chức*. Năm;Tập(Số):Trang. DOI/PMID.
+2. Cục Y tế Dự phòng - Bộ Y Tế Việt Nam. Báo cáo giám sát bệnh truyền nhiễm... Hà Nội.
+"

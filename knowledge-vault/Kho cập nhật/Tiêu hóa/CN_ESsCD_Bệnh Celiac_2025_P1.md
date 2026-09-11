@@ -16,7 +16,6 @@ tags:
   - "y-khoa/cn"
 updated: "2026-09-06"
 ---
-
 # TÓM TẮT NGHIÊN CỨU ĐƯỢC CHỌN (PHẦN 1)
 
 **Tài liệu tham khảo được chọn:** *Hướng dẫn cập nhật năm 2025 của Hiệp hội Châu Âu về Nghiên cứu Bệnh Celiac (ESsCD) về Quản lý, Theo dõi và Diễn tiến Bệnh phức tạp ở Người lớn (Phần 2)*. 
@@ -63,7 +62,7 @@ Dưới đây là nội dung tóm tắt chi tiết Phần 1 của tài liệu h�
 
 #### 1. Bảng so sánh các phương pháp đánh giá sự tuân thủ GFD:
 * **Tên Bảng**: **Bảng 2: Tổng quan về các phương pháp đánh giá sự tuân thủ chế độ ăn không gluten** (*TABLE 2: Overview of methods for assessing adherence to the gluten-free diet*)
-* **Thuộc Tài Liệu**: **"UEG Journal - 2026 - Al‐Toma - European Society for the Study of Coeliac Disease  ESsCD  2025 Updated Guidelines on the.pdf"** trong Notebook này.
+* **Thuộc Tài Liệu**: **"UEG Journal - 2026 - Al‐Toma - European Society for the Study of Coeliac Disease  ESsCD  2025 Updated Guidelines on the.pdf"** trong y văn.
 
 | Phương pháp (Method) | Chi tiết ứng dụng lâm sàng và giới hạn (Details) |
 | :--- | :--- |
@@ -77,7 +76,7 @@ Dưới đây là nội dung tóm tắt chi tiết Phần 1 của tài liệu h�
 
 #### 2. Danh mục thông tin trong "Hộ chiếu Celiac":
 * **Tên Mục kiểm**: **Hộ chiếu Celiac - Bảng kiểm** (*Coeliac Passport-Checklist*)
-* **Thuộc Tài Liệu**: **"UEG Journal - 2026 - Al‐Toma - European Society for the Study of Coeliac Disease  ESsCD  2025 Updated Guidelines on the.pdf"** trong Notebook này.
+* **Thuộc Tài Liệu**: **"UEG Journal - 2026 - Al‐Toma - European Society for the Study of Coeliac Disease  ESsCD  2025 Updated Guidelines on the.pdf"** trong y văn.
 
 Để đảm bảo chuyển giao an toàn từ Nhi khoa sang phòng khám Người lớn, "Hộ chiếu Celiac" của bệnh nhân cần có đầy đủ các thông tin cốt lõi sau:
 * Biểu hiện lâm sàng chính tại thời điểm chẩn đoán ban đầu (*Main clinical presentation at diagnosis*).

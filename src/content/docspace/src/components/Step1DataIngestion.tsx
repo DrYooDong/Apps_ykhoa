@@ -37,6 +37,7 @@ import {
 import {
   AnalysisResult,
   ClinicalFormState,
+  EpidemiologyContext,
   Gender,
   KnowledgeBase,
   LabsState,
@@ -53,6 +54,7 @@ import { SampleCaseBar } from './step1/SampleCaseBar.tsx';
 import { PatientInfoPanel } from './step1/PatientInfoPanel.tsx';
 import { TextFreeEntryPanel } from './step1/TextFreeEntryPanel.tsx';
 import { DataActionsBar } from './step1/DataActionsBar.tsx';
+import { EpidemiologyPanel } from './step1/EpidemiologyPanel.tsx';
 
 export interface SyndromePreset {
   id: string;
@@ -146,6 +148,8 @@ interface Step1Props {
   onSaveToPostgres: () => void;
   summaryText: string;
   onOpenVaultDrawer?: (diseaseName?: string, query?: string, khoCode?: string) => void;
+  epiContext?: EpidemiologyContext;
+  onUpdateEpiContext?: (epi: EpidemiologyContext) => void;
 }
 
 export const Step1DataIngestion: React.FC<Step1Props> = ({
@@ -173,6 +177,8 @@ export const Step1DataIngestion: React.FC<Step1Props> = ({
   onSaveToPostgres,
   summaryText,
   onOpenVaultDrawer,
+  epiContext,
+  onUpdateEpiContext,
 }) => {
   // Filters & Interaction State
   const [chipFilter, setChipFilter] = useState('');
@@ -791,6 +797,15 @@ export const Step1DataIngestion: React.FC<Step1Props> = ({
           {/* Mục A: Hành chính & Lý do vào viện */}
           {(activeSection === 'all' || activeSection === 'hc') && (
             <PatientInfoPanel form={form} setForm={setForm} />
+          )}
+
+          {/* Mục Dịch Tễ Học (Tam Giác Chẩn Đoán Truyền Nhiễm) */}
+          {(activeSection === 'all' || activeSection === 'hc') && epiContext && onUpdateEpiContext && (
+            <EpidemiologyPanel
+              epiContext={epiContext}
+              onUpdateEpiContext={onUpdateEpiContext}
+              onOpenVaultDrawer={onOpenVaultDrawer}
+            />
           )}
 
           {/* Clinical Fast Selector & Orientation Control Center */}

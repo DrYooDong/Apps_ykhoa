@@ -148,47 +148,131 @@
   --callout-dosing-bg:       var(--dsp-sky-light);
   --callout-dosing-badge:    var(--dsp-sky);
 
-  --callout-note-border:     var(--dsp-teal);
-  --callout-note-bg:         var(--dsp-teal-light);
-  --callout-note-badge:      var(--dsp-teal);
+  --callout-important-border: #d97706;
+  --callout-important-bg:     rgba(217, 119, 6, 0.1);
+  --callout-important-badge:  #d97706;
 
-  --callout-tip-border:      var(--dsp-emerald);
-  --callout-tip-bg:          var(--dsp-emerald-light);
-  --callout-tip-badge:       var(--dsp-emerald);
+  --callout-check-border:     #059669;
+  --callout-check-bg:         rgba(5, 150, 105, 0.1);
+  --callout-check-badge:      #059669;
 
-  --callout-teachback-border:var(--dsp-pink);
-  --callout-teachback-bg:    var(--dsp-pink-light);
-  --callout-teachback-badge: var(--dsp-pink);
+  --callout-note-border:      var(--dsp-teal);
+  --callout-note-bg:          var(--dsp-teal-light);
+  --callout-note-badge:       var(--dsp-teal);
 
-  --callout-trial-border:    var(--dsp-indigo);
-  --callout-trial-bg:        var(--dsp-indigo-light);
-  --callout-trial-badge:     var(--dsp-indigo);
+  --callout-tip-border:       var(--dsp-emerald);
+  --callout-tip-bg:           var(--dsp-emerald-light);
+  --callout-tip-badge:        var(--dsp-emerald);
+
+  --callout-teachback-border: var(--dsp-pink);
+  --callout-teachback-bg:     var(--dsp-pink-light);
+  --callout-teachback-badge:  var(--dsp-pink);
+
+  --callout-trial-border:     var(--dsp-indigo);
+  --callout-trial-bg:         var(--dsp-indigo-light);
+  --callout-trial-badge:      var(--dsp-indigo);
 }
 
 /* ══════════════════════════════════════════════════════════════════════════
-   3. LIGHT THEME OVERRIDES
+   3. LIGHT THEME OVERRIDES (Unified with CliniPortal Core)
    ══════════════════════════════════════════════════════════════════════════ */
 
 [data-theme="light"],
 :root[data-theme="light"] {
-  --dsp-text:               #0f172a;
-  --dsp-text-secondary:     #475569;
-  --dsp-text-muted:         #64748b;
+  --dsp-text:               var(--color-text, #0f172a);
+  --dsp-text-primary:       var(--dsp-text);
+  --dsp-text-secondary:     var(--color-text-muted, #475569);
+  --dsp-text-muted:         var(--color-text-faint, #64748b);
   --dsp-text-inverse:       #ffffff;
 
   --dsp-bg:                 var(--color-bg, #f8fafc);
+  --dsp-bg-base:            var(--dsp-bg);
   --dsp-surface:            var(--color-surface, #ffffff);
   --dsp-surface-2:          #f1f5f9;
   --dsp-surface-3:          #e2e8f0;
-  --dsp-border:             rgba(203, 213, 225, 0.85);
+  --dsp-border:             var(--color-border, rgba(203, 213, 225, 0.85));
+  --dsp-border-subtle:      var(--dsp-border);
   --dsp-border-hover:       rgba(2, 132, 199, 0.6);
-  --dsp-glass-bg:           rgba(255, 255, 255, 0.9);
+  --dsp-glass-bg:           rgba(255, 255, 255, 0.92);
   --dsp-glass-border:       rgba(226, 232, 240, 0.92);
   --dsp-glass-shadow:       0 10px 30px 0 rgba(15, 23, 42, 0.08);
 
   --dsp-shadow-sm:          0 1px 3px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
   --dsp-shadow-md:          0 4px 14px -2px rgba(15, 23, 42, 0.08), 0 2px 6px -1px rgba(15, 23, 42, 0.05);
   --dsp-shadow-lg:          0 14px 34px -4px rgba(15, 23, 42, 0.12), 0 6px 14px -2px rgba(15, 23, 42, 0.08);
+
+  /* Vault Mappings for Light Theme */
+  --vault-surface:          var(--dsp-surface);
+  --vault-surface-2:        var(--dsp-surface-2);
+  --vault-bg:               var(--dsp-bg);
+  --vault-border:           var(--dsp-border);
+  --vault-border-hover:     var(--dsp-border-hover);
+  --vault-text:             var(--dsp-text);
+  --vault-muted:            var(--dsp-text-muted);
+  --vault-glass-bg:         var(--dsp-glass-bg);
+  --vault-glass-border:     var(--dsp-glass-border);
+  --vault-glass-shadow:     var(--dsp-glass-shadow);
+
+  /* Callout Tinted Backgrounds for Light Theme */
+  --callout-danger-bg:      rgba(239, 68, 68, 0.06);
+  --callout-warning-bg:     rgba(245, 158, 11, 0.07);
+  --callout-important-bg:   rgba(217, 119, 6, 0.07);
+  --callout-pearl-bg:       rgba(139, 92, 246, 0.06);
+  --callout-dosing-bg:      rgba(2, 132, 199, 0.06);
+  --callout-note-bg:        rgba(13, 148, 136, 0.06);
+  --callout-tip-bg:         rgba(16, 185, 129, 0.06);
+  --callout-teachback-bg:   rgba(236, 72, 153, 0.06);
+  --callout-trial-bg:       rgba(99, 102, 241, 0.06);
+  --callout-check-bg:       rgba(5, 150, 105, 0.06);
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   3b. DARK THEME OVERRIDES (Unified with CliniPortal Core)
+   ══════════════════════════════════════════════════════════════════════════ */
+
+[data-theme="dark"],
+:root[data-theme="dark"] {
+  --dsp-text:               var(--color-text, #f1f5f9);
+  --dsp-text-primary:       var(--dsp-text);
+  --dsp-text-secondary:     var(--color-text-muted, #94a3b8);
+  --dsp-text-muted:         var(--color-text-faint, #64748b);
+  --dsp-text-inverse:       #0f172a;
+
+  --dsp-bg:                 var(--color-bg, #090d16);
+  --dsp-bg-base:            var(--dsp-bg);
+  --dsp-surface:            var(--color-surface, #0f172a);
+  --dsp-surface-2:          rgba(30, 41, 59, 0.7);
+  --dsp-surface-3:          rgba(51, 65, 85, 0.5);
+  --dsp-border:             var(--color-border, rgba(255, 255, 255, 0.08));
+  --dsp-border-subtle:      var(--dsp-border);
+  --dsp-border-hover:       rgba(56, 189, 248, 0.45);
+  --dsp-glass-bg:           rgba(15, 23, 42, 0.85);
+  --dsp-glass-border:       rgba(255, 255, 255, 0.1);
+  --dsp-glass-shadow:       0 12px 36px 0 rgba(0, 0, 0, 0.45);
+
+  /* Vault Mappings for Dark Theme */
+  --vault-surface:          var(--dsp-surface);
+  --vault-surface-2:        var(--dsp-surface-2);
+  --vault-bg:               var(--dsp-bg);
+  --vault-border:           var(--dsp-border);
+  --vault-border-hover:     var(--dsp-border-hover);
+  --vault-text:             var(--dsp-text);
+  --vault-muted:            var(--dsp-text-muted);
+  --vault-glass-bg:         var(--dsp-glass-bg);
+  --vault-glass-border:     var(--dsp-glass-border);
+  --vault-glass-shadow:     var(--dsp-glass-shadow);
+
+  /* Callout Tinted Backgrounds for Dark Theme */
+  --callout-danger-bg:      rgba(239, 68, 68, 0.14);
+  --callout-warning-bg:     rgba(245, 158, 11, 0.14);
+  --callout-important-bg:   rgba(217, 119, 6, 0.14);
+  --callout-pearl-bg:       rgba(139, 92, 246, 0.14);
+  --callout-dosing-bg:      rgba(2, 132, 199, 0.14);
+  --callout-note-bg:        rgba(13, 148, 136, 0.14);
+  --callout-tip-bg:         rgba(16, 185, 129, 0.14);
+  --callout-teachback-bg:   rgba(236, 72, 153, 0.14);
+  --callout-trial-bg:       rgba(99, 102, 241, 0.14);
+  --callout-check-bg:       rgba(5, 150, 105, 0.14);
 }
 
 /* ══════════════════════════════════════════════════════════════════════════

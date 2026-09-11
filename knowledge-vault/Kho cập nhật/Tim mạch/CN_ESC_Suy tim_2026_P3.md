@@ -33,7 +33,6 @@ tags:
 icd10:
   - "I50"
 ---
-
 ### **1. Nội dung Điều trị học Chi tiết: Hồi sức Suy tim cấp mất bù (DHF) và Liệu pháp Thiết bị (CIED/GDIT)**
 
 #### **Định nghĩa mới và Sàng lọc Chẩn đoán Suy tim mất bù (Decompensated Heart Failure - DHF)**
@@ -44,7 +43,7 @@ Quy trình sàng lọc và chẩn đoán DHF được hệ thống hóa chặt c
 
 ##### **Trích xuất Sơ đồ liên quan:**
 
-- **Tên Sơ đồ:** _Figure 11: Diagnosing decompensated heart failure_ thuộc tài liệu _ehag100.pdf_ trong Notebook này.
+- **Tên Sơ đồ:** _Figure 11: Diagnosing decompensated heart failure_ thuộc tài liệu _ehag100.pdf_ trong y văn.
 	![[Pasted image 20260830193555.png]]
 - **Mô tả nội dung dưới sơ đồ:** Lưu đồ hướng dẫn chẩn đoán thực hành lâm sàng đối với bệnh nhân nghi ngờ suy tim mất bù. Quy trình bắt đầu bằng việc đánh giá toàn diện bệnh sử, sinh hiệu, triệu chứng và làm điện tâm đồ (ECG). Nếu bệnh nhân có sốc tim (Cardiogenic Shock - CS) hoặc phù phổi cấp (Acute Pulmonary Oedema - APO), cần lập tức chuyển sang phác đồ cấp cứu khẩn cấp. Nếu không có CS hoặc APO nhưng nghi ngờ lâm sàng cao, thực hiện đo NT-proBNP/BNP. Kết quả peptide bài niệu dưới ngưỡng cắt giúp loại trừ DHF; nếu vượt ngưỡng cắt, tiến hành siêu âm tim và các thăm dò chuyên sâu (X-quang ngực, siêu âm phổi LUS) để xác định chẩn đoán và phân loại điều trị.
 
@@ -68,7 +67,7 @@ _Mức độ khuyến cáo:_ Liệu pháp lợi tiểu định hướng natri ni
 
 ##### **Trích xuất Sơ đồ liên quan:**
 
-- **Tên Sơ đồ:** _Figure 15: Management of decongestion_ thuộc tài liệu _ehag100.pdf_ trong Notebook này.
+- **Tên Sơ đồ:** _Figure 15: Management of decongestion_ thuộc tài liệu _ehag100.pdf_ trong y văn.
 	![[Pasted image 20260830193656.png]]
 - **Mô tả nội dung dưới sơ đồ:** Sơ đồ thuật toán động hướng dẫn chi tiết từng bước điều trị lợi tiểu giải áp sung huyết. Sơ đồ phân nhánh rõ ràng dựa trên mục tiêu uNa+ ≥70 mmol/L ở giờ thứ 2 hoặc lượng nước tiểu ≥100 mL/h ở giờ thứ 6. Nhánh đạt yêu cầu (Yes) hướng dẫn duy trì phác đồ cũ. Nhánh không đạt (No) hướng dẫn gấp đôi liều Furosemide IV và bổ sung Acetazolamide tĩnh mạch (500 mg/ngày) hoặc Hydrochlorothiazide uống (chỉnh liều theo eGFR từ 25 mg đến 100 mg/ngày). Sơ đồ cũng yêu cầu theo dõi sát creatinine huyết thanh và điện giải đồ tối thiểu mỗi 24 giờ.
 
@@ -116,7 +115,7 @@ Chỉ định cấy ICD dự phòng tiên phát được phân cấp rõ rệt d
 
 ##### **Trích xuất Sơ đồ liên quan:**
 
-- **Tên Sơ đồ:** _Figure 10: Indications for cardiac resynchronization therapy in heart failure_ thuộc tài liệu _ehag100.pdf_ trong Notebook này.
+- **Tên Sơ đồ:** _Figure 10: Indications for cardiac resynchronization therapy in heart failure_ thuộc tài liệu _ehag100.pdf_ trong y văn.
 	![[Pasted image 20260830193749.png]]
 - **Mô tả nội dung dưới sơ đồ:** Sơ đồ thuật toán quyết định chỉ định cấy CRT lâm sàng. Trục quyết định phân cấp dựa trên sự hiện diện của nhịp xoang hay rung nhĩ, sau đó đánh giá LVEF (ngưỡng cắt ≤35% đối với chỉ định kinh điển). Tiếp theo phân nhánh theo hình dạng QRS (LBBB vs non-LBBB) và thời gian QRS. Các chỉ định được mã hóa màu trực quan: Màu xanh lá (Class I) cho LBBB QRS ≥150 ms; Màu vàng (Class IIa) cho LBBB QRS 130-149 ms và non-LBBB QRS ≥150 ms; Màu cam (Class IIb) cho khởi trị FMT đồng thời chuẩn bị CRT; và Màu đỏ (Class III) cho QRS <130 ms [14, 15, Figure 10].
 

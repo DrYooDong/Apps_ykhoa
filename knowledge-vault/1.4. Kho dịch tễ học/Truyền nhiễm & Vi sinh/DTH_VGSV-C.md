@@ -16,7 +16,7 @@ updated: 2026-08-21
 ---
 # BÀI HỌC CHUYÊN SÂU: DỊCH TỄ HỌC LÂM SÀNG VÀ GÁNH NẶNG BỆNH TẬT CỦA VIÊM GAN SIÊU VI C (HCV)
 
-_Bài học chuyên sâu này được biên soạn dựa trên các tài liệu hướng dẫn y khoa và báo cáo nghiên cứu dịch tễ học hệ thống có trong Notebook, đặc biệt là Quyết định số 2855/QĐ-BYT năm 2024 của Bộ Y tế Việt Nam, Hướng dẫn quốc gia của các nước trong khu vực và các nghiên cứu gộp phân tích chuỗi chăm sóc (care cascades) của vi-rút viêm gan C (HCV) trên các quần thể trọng điểm toàn cầu đăng tải trên các tạp chí y khoa danh tiếng._
+_Bài học chuyên sâu này được biên soạn dựa trên các tài liệu hướng dẫn y khoa và báo cáo nghiên cứu dịch tễ học hệ thống trong y văn y học chứng cứ, đặc biệt là Quyết định số 2855/QĐ-BYT năm 2024 của Bộ Y tế Việt Nam, Hướng dẫn quốc gia của các nước trong khu vực và các nghiên cứu gộp phân tích chuỗi chăm sóc (care cascades) của vi-rút viêm gan C (HCV) trên các quần thể trọng điểm toàn cầu đăng tải trên các tạp chí y khoa danh tiếng._
 
 ---
 

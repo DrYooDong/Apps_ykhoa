@@ -1,0 +1,116 @@
+# ==============================================================================
+# CLINIPORTAL NOTEBOOKLM — PROMPT KHO PHÁC ĐỒ ĐIỀU TRỊ (KHO PDDT)
+# ==============================================================================
+# SỬ DỤNG KHI: Bạn muốn NotebookLM trích xuất phác đồ điều trị phân tầng,
+# liều dùng thuốc chi tiết và chiến lược can thiệp từ Guidelines y khoa để lưu vào:
+# knowledge-vault/2.4. Kho phác đồ điều trị/{Chuyên khoa}/PDDT_{Tên bệnh}_P1.md
+# ==============================================================================
+
+[YÊU CẦU ĐẦU VÀO]:
+- Tên bệnh lý: [ĐIỀN TÊN BỆNH LÝ, ví dụ: Viêm phổi cộng đồng / Sốc nhiễm khuẩn / Suy tim mất bù cấp]
+- Chuyên khoa: [ĐIỀN CHUYÊN KHOA, ví dụ: Hô hấp & Hồi sức / Cấp cứu / Tim mạch]
+- Hướng dẫn tham chiếu: [ĐIỀN NGUỒN CHÍNH, ví dụ: ATS/IDSA 2025 / SSC 2026 / BYT 2023]
+
+[PROMPT DÁN VÀO NOTEBOOKLM]:
+"Dựa trên các tài liệu đã tải lên trong Notebook, hãy đóng vai trò Bác sĩ Điều trị Cấp cao và biên soạn một bài viết PHÁC ĐỒ ĐIỀU TRỊ CHUẨN LÂM SÀNG cho bệnh lý: [TÊN BỆNH LÝ].
+
+BẮT BUỘC TUÂN THỦ CẤU TRÚC VÀ QUY CHUẨN SAU:
+
+---
+title: \"Phác đồ Điều trị: [Tên bệnh lý chuẩn y khoa tiếng Việt]\"
+part: \"P1\"
+aliases:
+  - \"Phác đồ [Tên bệnh]\"
+  - \"Điều trị [Tên bệnh]\"
+  - \"Treatment Protocol [Tên tiếng Anh]\"
+  - \"Phân tầng xử trí [Tên bệnh]\"
+keywords:
+  - \"phác đồ điều trị [tên bệnh]\"
+  - \"thuốc đầu tay first-line\"
+  - \"liều lượng đường dùng\"
+  - \"chỉnh liều egfr\"
+  - \"hồi sức ban đầu\"
+icd10:
+  - \"[Mã ICD-10 chính xác kèm tên]\"
+specialty: \"[Tên chuyên khoa]\"
+kho: \"2.4. Kho phác đồ điều trị\"
+type: \"treatment-protocol\"
+tags:
+  - \"CliniPortal\"
+  - \"TreatmentProtocol\"
+  - \"KhoPhacDo\"
+  - \"y-khoa/pddt\"
+updated: \"2026-09-11\"
+sources:
+  - \"[Tên Guideline chính thức được trích dẫn kèm năm]\"
+---
+
+# 💊 PHÁC ĐỒ ĐIỀU TRỊ: [TÊN BỆNH LÝ]
+
+> **Tóm tắt cốt lõi**: [Đoạn văn 3-4 câu tóm tắt mục tiêu điều trị tối thượng, nguyên tắc sống còn trong giờ đầu tiên và chiến lược phân tầng ngoại trú vs nội trú vs hồi sức tích cực].
+
+---
+
+## 🎯 1. NGUYÊN TẮC CỐT LÕI & ĐÍCH ĐIỀU TRỊ LÂM SÀNG
+- **Nguyên tắc điều trị**: [Liệt kê 3-5 nguyên tắc cơ bản theo EBM].
+- **Đích điều trị cụ thể**:
+  - Huyết động / Sinh hiệu: [HATT, HATTr, MAP, SpO2, Nhịp tim...]
+  - Cận lâm sàng: [Khí máu pH, PaO2, Lactate máu, Đường huyết, Creatinine...]
+  - Mốc thời gian vàng: [Thời gian cửa sổ can thiệp, ví dụ: 60 phút đầu, 3-6 giờ đầu].
+
+## 🚨 2. XỬ TRÍ CẤP CỨU BAN ĐẦU (GIỜ VÀNG LÂM SÀNG)
+Trình bày các bước hồi sức cấp cứu khẩn cấp theo thứ tự ưu tiên ABCDE:
+- **A (Airway - Đường thở)**: [Chỉ định đặt NKQ, tư thế người bệnh].
+- **B (Breathing - Hô hấp)**: [Liệu pháp Oxy: Gọng kính, Mask túi, HFNC, BiPAP, Thở máy xâm lấn; mục tiêu SpO2].
+- **C (Circulation - Tuần hoàn)**: [Bù dịch: Loại dịch tinh thể, tốc độ bù; Thuốc vận mạch / tăng co bóp cơ tim đầu tay].
+- **D (Disability - Thần kinh)**: [Đánh giá GCS, xử trí co giật, bảo vệ não].
+- **E (Exposure - Toàn thân)**: [Kiểm soát thân nhiệt, sưởi ấm hoặc hạ thân nhiệt chỉ huy].
+
+## 📋 3. BẢNG PHÂN TẦNG ĐIỀU TRỊ THEO MỨC ĐỘ NẶNG
+Trình bày phân tầng vị trí và chiến lược chăm sóc:
+
+| Mức Độ Nặng | Tiêu Chuẩn Nhận Diện (Thang điểm, Sinh hiệu) | Nơi Điều Trị | Chiến Lược Can Thiệp Chính |
+|:---|:---|:---|:---|
+| **Mức độ Nhẹ / Ổn định** | Điểm số thấp, huyết động ổn định... | Ngoại trú / Phòng khám | Dùng thuốc uống, tái khám sau 48-72h |
+| **Mức độ Trung bình** | Có nguy cơ diễn tiến nặng, bệnh nền... | Khoa Nội thường | Thuốc tiêm/truyền tĩnh mạch, theo dõi sát |
+| **Mức độ Nặng / Nguy kịch** | Sốc, suy hô hấp, toan máu nặng... | Khoa Cấp Cứu / ICU | Hồi sức xâm lấn, phối hợp đa thuốc IV |
+
+## 💊 4. DANH MỤC THUỐC & LIỀU DÙNG CHI TIẾT (PHARMACOTHERAPY)
+Bắt buộc trình bày dưới dạng bảng chính xác 100% từng thông số:
+
+| Tên Thuốc (Generic) | Nhóm Thuốc & Vai Trò | Liều Dùng Chuẩn & Đường Dùng | Thời Gian Điều Trị | Khuyến Cáo (Class/LoE) |
+|:---|:---|:---|:---|:---:|
+| 1. [Thuốc lựa chọn đầu tay 1] | First-line | ... mg x ... lần/ngày (Đường IV/PO) | ... ngày | Class I, LoE A |
+| 2. [Thuốc lựa chọn đầu tay 2] | Phối hợp | ... mg/kg x ... lần/ngày | ... ngày | Class I, LoE A |
+| 3. [Thuốc thay thế khi dị ứng] | Alternative | ... | ... | Class IIa, LoE B |
+
+## ⚙️ 5. BẢNG CHỈNH LIỀU THEO CHỨC NĂNG THẬN (eGFR) & GAN (CHILD-PUGH)
+Trình bày bảng hướng dẫn chỉnh liều cho các thuốc chủ chốt đào thải qua gan/thận:
+
+| Thuốc | eGFR ≥ 50 mL/p | eGFR 30 - 49 mL/p | eGFR 15 - 29 mL/p | eGFR < 15 mL/p (hoặc Lọc máu) | Suy Gan (Child-Pugh C) |
+|:---|:---|:---|:---|:---|:---|
+| [Thuốc A] | Liều thông thường | Giảm ...% | ... | Chống chỉ định | Thận trọng |
+| [Thuốc B] | Liều thông thường | ... | ... | ... | ... |
+
+## 🛑 6. CẢNH BÁO AN TOÀN, CHỐNG CHỈ ĐỊNH & TƯƠNG TÁC THUỐC
+> [!CAUTION]
+> **Chống chỉ định tuyệt đối**:
+> - ...
+
+> [!WARNING]
+> **Tương tác thuốc nguy hiểm cần tránh phối hợp**:
+> - Phối hợp giữa [Thuốc A] và [Thuốc B]: [Cơ chế và hậu quả lâm sàng].
+
+## 🏁 7. TIÊU CHUẨN XUẤT VIỆN & THEO DÕI SAU XỬ TRÍ
+- Tiêu chuẩn ổn định lâm sàng để xuất viện:
+  - Hết sốt ≥ 48 giờ...
+  - Huyết động và SpO2 ổn định khi thở khí trời...
+  - Ăn uống được, dung nạp thuốc uống...
+- Hẹn tái khám và xét nghiệm đánh giá lại sau ... ngày.
+
+---
+
+## 📚 TRÍCH DẪN TÀI LIỆU THAM KHẢO CHUẨN EBM
+1. Tác giả / Hiệp hội. Tiêu đề hướng dẫn điều trị. *Tên Tạp chí / Tổ chức*. Năm;Tập(Số):Trang. DOI/PMID.
+2. Bộ Y Tế Việt Nam. Hướng dẫn chẩn đoán và điều trị... Ban hành kèm Quyết định số... Hà Nội.
+"

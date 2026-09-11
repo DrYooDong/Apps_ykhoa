@@ -113,6 +113,43 @@ export interface AnalysisResult {
   matched: MatchedEvidence[];
   missing: MissingEvidence[];
   notes: string[];
+  epiBoost?: {
+    boosted: boolean;
+    reason: string;
+    points: number;
+  };
+}
+
+// Bối cảnh Dịch tễ học phục vụ Tam giác chẩn đoán Truyền nhiễm
+export interface EpidemiologyContext {
+  contactHistory: string;     // Tiếp xúc nguồn lây / người mắc bệnh tương tự
+  travelHistory: string;      // Tiền sử đi lại / du lịch trong 14-30 ngày (rừng núi, vùng dịch)
+  endemicArea: string;        // Vùng dịch tễ lưu hành (Tây Nguyên, ĐBSCL, vùng lũ lụt...)
+  seasonalContext: string;    // Mùa bệnh (Mùa mưa lũ, Mùa hè, Đông Xuân...)
+  outbreakAlert: string;      // Ổ dịch địa phương đang lưu hành (SXH, Sởi, Cúm...)
+  vectorExposure: string;     // Tiếp xúc vector (Muỗi Aedes, muỗi Anopheles, ấu trùng mò, ve, chuột...)
+  occupationalRisk: string;   // Nguy cơ nghề nghiệp (Nông dân, làm rẫy, thú y, cống rãnh...)
+  waterFoodRisk: string;      // Nguồn nước/thực phẩm (Lội nước lụt, nước ao tù, ăn đồ sống, sữa tươi...)
+  customNotes?: string;       // Ghi chú dịch tễ khác
+}
+
+// Mục Đặt vấn đề (Problem List) theo chuẩn PGS.TS Hoàng Văn Sĩ & BSCKI Trần Thanh Tuấn
+export interface ProblemStatementEntry {
+  id: string;
+  label: string;             // Tên vấn đề (VD: Hội chứng nhiễm trùng, Cơn đau ngực cấp, v.v.)
+  type: 'trieu-chung' | 'hoi-chung' | 'dich-te' | 'bat-thuong-cls';
+  isPrimary: boolean;        // Vấn đề CHÍNH được chọn để biện luận chẩn đoán
+  evidence: string[];        // Dữ kiện chứng minh (cơ năng, thực thể, CLS)
+  notes?: string;            // Ghi chú biện luận thêm
+}
+
+// Đánh giá hội tụ Tam giác chẩn đoán Truyền nhiễm: Dịch tễ — Lâm sàng — Cận lâm sàng
+export interface DiagnosticTriangleSummary {
+  dichTePoints: string[];
+  lamSangPoints: string[];
+  canLamSangPoints: string[];
+  convergenceLevel: 'high' | 'moderate' | 'low'; // Mức độ hội tụ 3 chiều
+  primaryOrientation: string;                     // Hướng chẩn đoán nổi trội
 }
 
 
@@ -201,6 +238,7 @@ export interface GuidelineStudy {
   year: number;
   organization: string;
   population?: string;
+  phase?: string;
   summary: string;
   detailedConclusion: string;
   sourceUrl?: string;

@@ -1,3 +1,30 @@
+---
+title: "Tư vấn Bệnh nhân: Dịch tễ học & Gánh nặng Bệnh Đái tháo đường"
+part: "P1"
+aliases:
+  - "Tư vấn ĐTĐ Dịch tễ học"
+  - "Gánh nặng bệnh đái tháo đường"
+keywords:
+  - "dịch tễ đái tháo đường"
+  - "tư vấn bệnh nhân"
+  - "idf diabetes atlas"
+  - "tầm soát đái tháo đường"
+icd10:
+  - "E11 (Đái tháo đường típ 2)"
+specialty: "Nội tiết - Chuyển hóa"
+kho: "2.6. Kho tư vấn"
+type: "patient-counseling"
+tags:
+  - "CliniPortal"
+  - "TuVanBenhNhan"
+  - "KhoTuVan"
+  - "y-khoa/tv"
+updated: "2026-09-11"
+sources:
+  - "IDF Diabetes Atlas 2024 (11th edition)"
+  - "Điều tra Quốc gia Bệnh Đái Tháo Đường - Bệnh viện Nội tiết Trung ương 2020"
+---
+
 ### Gánh nặng bệnh đái tháo đường: Bạn và gia đình có thực sự an toàn?
 
 Đái tháo đường không còn là câu chuyện của riêng ai mà đã thực sự trở thành một "đại dịch" toàn cầu. Năm **2024**, toàn cầu có khoảng **589 triệu người lớn** đang sống chung với bệnh lý này, tương đương tỷ lệ **11.1%** dân số. Con số này dự báo sẽ chưa dừng lại mà tiếp tục tăng vọt lên **853 triệu người vào năm 2050**.

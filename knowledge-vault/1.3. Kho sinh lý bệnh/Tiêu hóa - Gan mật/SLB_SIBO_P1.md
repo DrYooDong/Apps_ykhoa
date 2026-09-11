@@ -16,7 +16,6 @@ tags:
   - "y-khoa/slb"
 updated: "2026-09-06"
 ---
-
 # SINH LÝ BỆNH TĂNG SINH VI KHUẨN RUỘT NON (SIBO) - PHẦN 1
 
 ## I. Hệ Vi Sinh Vật Đường Ruột Sinh Lý và Sự Khác Biệt Giữa Các Vùng Ruột
@@ -128,7 +127,7 @@ Dưới đây là lưu đồ biểu diễn chi tiết các con đường bệnh 
 ```
 
 - **Tên hình/sơ đồ:** Figure 1. Pathophysiology of maladigestion/malabsorption in intestinal bacterial overgrowth. _(Sinh lý bệnh của kém tiêu hóa/kém hấp thu trong tăng sinh vi khuẩn đường ruột)_.
-- **Thuộc tài liệu:** **RAPDonline2024 V47 N1 02.pdf** trong Notebook này.
+- **Thuộc tài liệu:** **RAPDonline2024 V47 N1 02.pdf** trong y văn.
 - **Mô tả chi tiết dưới sơ đồ gốc:** Sơ đồ minh họa ba con đường chính mà qua đó SIBO dẫn đến hội chứng kém tiêu hóa/kém hấp thu bao gồm:
     1. _Tổn thương niêm mạc:_ Mất vi nhung mao gây kém hấp thu carbohydrate, dẫn đến lên men tạo khí (\(H_2, CH_4, H_2S\)) gây chướng bụng. Tổn thương liên bào làm tăng tính thấm ruột và giải phóng cytokine tiền viêm gây viêm niêm mạc tại chỗ, cản trở hấp thu dinh dưỡng.
     2. _Cạnh tranh dinh dưỡng:_ Vi khuẩn tiêu thụ \(B_{12}\), thiamine và nicotinamide của vật chủ gây thiếu hụt các chất này, đồng thời tổng hợp folate dẫn đến tăng folate huyết thanh.

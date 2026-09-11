@@ -15,7 +15,6 @@ tags:
   - "y-khoa/pddt"
 updated: "2026-08-21"
 ---
-
 ### 1. Nội Dung Sinh Lý Học và Khuyến Cáo Chi Tiết (Bệnh Nhân ARDS Đặt Nội Khí Quản)
 
 #### Cơ Chế Sinh Lý Học của Tư Thế Nằm Sấp (Physiologic Rationale of Prone Positioning)
@@ -24,7 +23,7 @@ updated: "2026-08-21"
 - **Hạn chế tổn thương phổi do máy thở (VILI):** Nằm sấp phân bố đồng đều áp lực căng giãn nhu mô phổi (\(stress\) và \(strain\)), làm giảm hiện tượng căng giãn quá mức ở các vùng phổi phía trước (ventral).
 - **Cải thiện huyết động:** Tư thế nằm sấp hỗ trợ dỡ tải cho thất phải (\(reduced~right~ventricle~afterload\)). Đối với những bệnh nhân phụ thuộc tiền tải, nằm sấp giúp tăng lượng máu tĩnh mạch trở về tim, từ đó tăng cung lượng tim.
 
-> **Tên Hình/Sơ Đồ:** Fig. 1 Physiology of prone positioning (Sinh lý học của tư thế nằm sấp) **Thuộc Tài Liệu:** "s00134-026-08543-x.pdf" trong Notebook này **Nội dung mô tả:** Sơ đồ so sánh hai trạng thái của phổi và tim khi nằm ngửa (SUPINE) và nằm sấp (PRONE):
+> **Tên Hình/Sơ Đồ:** Fig. 1 Physiology of prone positioning (Sinh lý học của tư thế nằm sấp) **Thuộc Tài Liệu:** "s00134-026-08543-x.pdf" trong y văn **Nội dung mô tả:** Sơ đồ so sánh hai trạng thái của phổi và tim khi nằm ngửa (SUPINE) và nằm sấp (PRONE):
 > 
 > - **Nằm ngửa (SUPINE):** Phân bố thông khí không đồng đều, gây xẹp phế nang ở vùng lưng (Alveolar collapse) và căng giãn quá mức ở vùng bụng (Hyperinflation). Tim đè lên vùng phổi phía dưới làm tăng xẹp phổi vùng lưng. Rối loạn V/Q nặng nề (Shunt/Poor V/Q matching) dẫn đến hạ oxy máu (HYPOXEMIA). Sự tăng kích thích drive hô hấp dễ dẫn đến PSILI (Tổn thương phổi do bệnh nhân tự gây ra) và VILI (Tổn thương phổi do máy thở). Đồng thời, áp lực mạch máu tăng làm tăng hậu tải thất phải (Increase RV afterload).
 > - **Nằm sấp (PRONE):** Đảo ngược lực trọng trường và ép xương ức (Gravity inversion / Sternal compression). Thông khí được tái phân bố đồng đều (Aeration and ventilation redistribution), huy động lại các phế nang bị xẹp (Alveolar recruitment) giúp thông khí và thể tích phổi đồng đều hơn (Homogenous aeration and ventilation). Khớp V/Q được cải thiện rõ rệt nhờ tưới máu vùng lưng vẫn được duy trì tốt (Unaltered perfusion). Kết quả là giảm drive hô hấp (Reduced Respiratory drive) giúp hạn chế PSILI, và giảm hậu tải thất phải (Reduce RV afterload).
@@ -36,7 +35,7 @@ updated: "2026-08-21"
 - **Sự dịch chuyển mô hình điều trị:** Tư thế nằm sấp đã tiến hóa từ một biện pháp cứu cánh (\(rescue~therapy\)) cho tình trạng giảm oxy máu kháng trị thành một can thiệp cốt lõi của chiến lược thông khí bảo vệ phổi.
 - **Vai trò của thử nghiệm PROSEVA (2013):** Ban đầu, các thử nghiệm lớn như Gattinoni 2001, Guerin 2004, Mancebo 2006, và Taccone 2009 không ghi nhận lợi ích giảm tử vong rõ rệt do áp dụng thể tích lưu thông (\(V_T\)) lớn hoặc thời gian nằm sấp ngắn (7–8 giờ/ngày). Tuy nhiên, thử nghiệm lâm sàng ngẫu nhiên có đối chứng bản lề **PROSEVA (2013)** của Guérin và cộng sự đã làm thay đổi hoàn toàn thực hành lâm sàng khi chứng minh nằm sấp sớm (< 36 giờ sau đặt nội khí quản) và kéo dài (\(\ge 16\) giờ/ngày) ở bệnh nhân ARDS mức độ trung bình-nặng giúp **giảm tỷ lệ tử vong một cách có ý nghĩa thống kê** (16.0% so với 32.8% ở ngày thứ 28, \(p < 0.001\)).
 
-> **Tên Hình/Sơ Đồ:** Fig. 2 Trials history of prone positioning (Lịch sử các thử nghiệm về tư thế nằm sấp) **Thuộc Tài Liệu:** "s00134-026-08543-x.pdf" trong Notebook này **Nội dung mô tả:** Trục thời gian (timeline) biểu diễn các mốc lịch sử phát triển y học trong ARDS từ năm 1967 đến nay:
+> **Tên Hình/Sơ Đồ:** Fig. 2 Trials history of prone positioning (Lịch sử các thử nghiệm về tư thế nằm sấp) **Thuộc Tài Liệu:** "s00134-026-08543-x.pdf" trong y văn **Nội dung mô tả:** Trục thời gian (timeline) biểu diễn các mốc lịch sử phát triển y học trong ARDS từ năm 1967 đến nay:
 > 
 > - **1967:** Ca mô tả ARDS đầu tiên của Ashbaugh.
 > - **1974 - 1988:** Các nghiên cứu thực nghiệm về tổn thương phổi do máy thở (VILI) bao gồm Chấn thương áp lực (Barotrauma), Chấn thương thể tích (Volutrauma), Chấn thương do xẹp mở phế nang (Atelectrauma) và Chấn thương sinh học (Biotrauma). Đồng thời xuất hiện các báo cáo lâm sàng đầu tiên về tư thế nằm sấp (PP).
@@ -66,7 +65,7 @@ updated: "2026-08-21"
 - **Tiêu chuẩn ngừng điều trị:** Cần đánh giá định kỳ các tiêu chuẩn ngừng nằm sấp dựa trên chỉ số khí máu đo ở tư thế nằm ngửa sau khi resupination (ví dụ: \(PaO_2/FiO_2 \ge 150\) mmHg với \(PEEP \le 10\) cmH2O và \(FiO_2 \le 0.60\) duy trì được ít nhất 4 giờ sau khi lật ngửa).
 - **Các công cụ hỗ trợ:** Có thể ứng dụng đo áp lực thực quản (\(esophageal~pressure\)) hoặc chụp cắt lớp trở kháng điện (\(electrical~impedance~tomography~-~EIT\)) để cá thể hóa thời gian và số phiên nằm sấp.
 
-> **Tên Hình/Sơ Đồ:** Fig. 3 Summary guidelines and prone positioning monitoring (Tóm tắt khuyến cáo và theo dõi tư thế nằm sấp ở bệnh nhân đặt nội khí quản) **Thuộc Tài Liệu:** "s00134-026-08543-x.pdf" trong Notebook này **Nội dung mô tả (Nhánh bệnh nhân đặt nội khí quản):** Sơ đồ minh họa chi tiết tư thế nằm sấp của bệnh nhân đặt nội khí quản trên giường bệnh chuyên dụng cùng hệ thống dây máy thở và các khuyến cáo:
+> **Tên Hình/Sơ Đồ:** Fig. 3 Summary guidelines and prone positioning monitoring (Tóm tắt khuyến cáo và theo dõi tư thế nằm sấp ở bệnh nhân đặt nội khí quản) **Thuộc Tài Liệu:** "s00134-026-08543-x.pdf" trong y văn **Nội dung mô tả (Nhánh bệnh nhân đặt nội khí quản):** Sơ đồ minh họa chi tiết tư thế nằm sấp của bệnh nhân đặt nội khí quản trên giường bệnh chuyên dụng cùng hệ thống dây máy thở và các khuyến cáo:
 > 
 > - **Chỉ định (Indications):** ARDS mức độ trung bình-nặng (\(PaO_2/FiO_2 < 150\) mmHg và \(PEEP \ge 5\) cmH2O sau khi tối ưu hóa thông số máy thở).
 > - **Thời điểm (Timing):** Khởi đầu sớm sau đặt nội khí quản và sau một giai đoạn ổn định ngắn dưới chiến lược thông khí bảo vệ phổi (Low VT, điều chỉnh PEEP) mà \(PaO_2/FiO_2\) vẫn \(< 150\) mmHg.

@@ -2,11 +2,13 @@ import {
   AnalysisResult,
   Benh,
   ClinicalFormState,
+  EpidemiologyContext,
   Gender,
   KnowledgeBase,
   LabsState,
   MatchedEvidence,
   MissingEvidence,
+  ProblemStatementEntry,
   TrieuChung,
   VitalsState,
 } from '../types.ts';
@@ -165,7 +167,9 @@ export function analyzeClinicalCase(
   form: ClinicalFormState,
   selected: Set<string>,
   derived: Set<string>,
-  negated: Set<string>
+  negated: Set<string>,
+  epiContext?: EpidemiologyContext,
+  primaryProblem?: ProblemStatementEntry
 ): AnalysisResult[] {
   const vocabMap: Record<string, TrieuChung> = Object.fromEntries(
     kb.trieuChung.map((tc) => [tc.id, tc])
@@ -180,7 +184,19 @@ export function analyzeClinicalCase(
   });
 
   const combinedNarrative = normalizeText(
-    [form.lyDo, form.text.cn, form.text.tt, form.text.tc, form.text.cls].join(' \n ')
+    [
+      form.lyDo,
+      form.text.cn,
+      form.text.tt,
+      form.text.tc,
+      form.text.cls,
+      epiContext?.contactHistory || '',
+      epiContext?.travelHistory || '',
+      epiContext?.endemicArea || '',
+      epiContext?.outbreakAlert || '',
+      epiContext?.vectorExposure || '',
+      epiContext?.waterFoodRisk || '',
+    ].join(' \n ')
   );
 
   kb.trieuChung.forEach((tc) => {
@@ -242,7 +258,7 @@ export function analyzeClinicalCase(
         factor *= 0.6;
         notes.push('Chưa rõ giới tính — thận trọng với chẩn đoán đặc hiệu giới');
       } else if (form.gioiTinh !== ds.gioiTinh) {
-        // Excluded strictly if biological sex doesn't match (e.g. ectopic pregnancy in males)
+        // Excluded strictly if biological sex doesn't match
         continue;
       }
     }
@@ -257,6 +273,96 @@ export function analyzeClinicalCase(
         notes.push(`Tuổi ${age} nằm ngoài khoảng dịch tễ điển hình`);
       } else {
         factor *= 1.05;
+      }
+    }
+
+    // ==========================================
+    // TAM GIÁC CHẨN ĐOÁN TRUYỀN NHIỄM (EPIDEMIOLOGY BOOST)
+    // ==========================================
+    let epiBoostInfo: AnalysisResult['epiBoost'] = undefined;
+    if (epiContext) {
+      const isInfDisease =
+        b.nhom.toLowerCase().includes('nhiễm') ||
+        b.nhom.toLowerCase().includes('truyền nhiễm') ||
+        b.id === 'sot_xuat_huyet' ||
+        b.id === 'lao_phoi' ||
+        b.id === 'viem_mang_nao' ||
+        b.id === 'viem_phoi';
+
+      // 1. Sốt xuất huyết Dengue: Vector muỗi Aedes, ổ dịch SXH, mùa mưa
+      if (b.id === 'sot_xuat_huyet') {
+        const epiMatch =
+          normalizeText(epiContext.vectorExposure).includes('muoi') ||
+          normalizeText(epiContext.vectorExposure).includes('aedes') ||
+          normalizeText(epiContext.outbreakAlert).includes('sot xuat huyet') ||
+          normalizeText(epiContext.outbreakAlert).includes('dengue') ||
+          normalizeText(epiContext.seasonalContext).includes('mua');
+        if (epiMatch && matched.length > 0) {
+          factor *= 1.25;
+          epiBoostInfo = {
+            boosted: true,
+            reason: 'Tam giác Dịch tễ: Phù hợp vector muỗi Aedes / Ổ dịch Dengue địa phương',
+            points: 15,
+          };
+          notes.push('Dịch tễ học ủng hộ mạnh mẽ chẩn đoán Sốt xuất huyết Dengue');
+        }
+      }
+
+      // 2. Lao phổi: Tiếp xúc người ho kéo dài / điều trị lao
+      if (b.id === 'lao_phoi') {
+        const epiMatch =
+          normalizeText(epiContext.contactHistory).includes('lao') ||
+          normalizeText(epiContext.contactHistory).includes('ho keo dai') ||
+          normalizeText(epiContext.contactHistory).includes('kho dom');
+        if (epiMatch && matched.length > 0) {
+          factor *= 1.25;
+          epiBoostInfo = {
+            boosted: true,
+            reason: 'Tam giác Dịch tễ: Tiền sử tiếp xúc người bệnh Lao phổi',
+            points: 15,
+          };
+          notes.push('Dịch tễ học: Có phơi nhiễm với nguồn lây lao');
+        }
+      }
+
+      // 3. Viêm màng não mủ
+      if (b.id === 'viem_mang_nao') {
+        const epiMatch =
+          normalizeText(epiContext.outbreakAlert).includes('nao mo cau') ||
+          normalizeText(epiContext.outbreakAlert).includes('viem mang nao');
+        if (epiMatch && matched.length > 0) {
+          factor *= 1.2;
+          epiBoostInfo = {
+            boosted: true,
+            reason: 'Tam giác Dịch tễ: Cảnh báo ổ dịch màng não / não mô cầu',
+            points: 12,
+          };
+        }
+      }
+
+      // 4. Các bệnh nhiễm trùng chung khi có ổ dịch phù hợp
+      if (isInfDisease && !epiBoostInfo && epiContext.outbreakAlert) {
+        if (normalizeText(epiContext.outbreakAlert).includes(normalizeText(b.ten))) {
+          factor *= 1.15;
+          epiBoostInfo = {
+            boosted: true,
+            reason: `Tam giác Dịch tễ: Phù hợp đợt bùng phát ${b.ten} tại địa phương`,
+            points: 10,
+          };
+        }
+      }
+    }
+
+    // ==========================================
+    // ƯU TIÊN VẤN ĐỀ CHÍNH (PRIMARY PROBLEM)
+    // ==========================================
+    if (primaryProblem && primaryProblem.label) {
+      const normProb = normalizeText(primaryProblem.label);
+      const normBenh = normalizeText(b.ten);
+      const normTomTat = normalizeText(b.tomTat);
+      if (normTomTat.includes(normProb) || normBenh.includes(normProb)) {
+        factor *= 1.1;
+        notes.push(`Phù hợp trực tiếp với Vấn đề chính: "${primaryProblem.label}"`);
       }
     }
 
@@ -277,6 +383,7 @@ export function analyzeClinicalCase(
       matched,
       missing,
       notes,
+      epiBoost: epiBoostInfo,
     });
   }
 

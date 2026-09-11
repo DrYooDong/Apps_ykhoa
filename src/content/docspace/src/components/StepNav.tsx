@@ -1,7 +1,7 @@
 import React from 'react';
 import { Check } from 'lucide-react';
 
-export type ClinicalStepId = 't1' | 't2' | 't3';
+export type ClinicalStepId = 't1' | 't2' | 't3' | 't4';
 
 interface StepNavProps {
   currentStep: ClinicalStepId;
@@ -15,9 +15,10 @@ export const StepNav: React.FC<StepNavProps> = ({
   onSelectStep,
 }) => {
   const steps: { id: ClinicalStepId; num: string; title: string; subtitle: string }[] = [
-    { id: 't1', num: '1', title: '1. Nạp dữ kiện', subtitle: 'Sinh hiệu · Cận lâm sàng · Triệu chứng' },
-    { id: 't2', num: '2', title: '2. Phân tích & Biện luận', subtitle: 'Suy luận diễn dịch · Bệnh cấp cứu · Phân biệt' },
-    { id: 't3', num: '3', title: '3. Phác đồ điều trị', subtitle: 'Phân tầng xử trí · Y lệnh thuốc · EBM Pathway' },
+    { id: 't1', num: '1', title: '1. Nạp dữ kiện', subtitle: 'Lâm sàng · Dịch tễ · Cận lâm sàng' },
+    { id: 't2', num: '2', title: '2. Tóm tắt & Đặt VĐ', subtitle: 'Tóm tắt BA · Vấn đề chính · Tam giác DTH' },
+    { id: 't3', num: '3', title: '3. Phân tích & Biện luận', subtitle: 'Suy luận diễn dịch · Truyền nhiễm & Cấp cứu' },
+    { id: 't4', num: '4', title: '4. Phác đồ điều trị', subtitle: 'Phân tầng xử trí · Y lệnh thuốc · EBM' },
   ];
 
   return (

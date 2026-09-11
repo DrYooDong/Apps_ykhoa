@@ -23,7 +23,7 @@ updated: 2026-08-21
 
 > ##### **Bảng 2.1: Phân loại chất lượng và mức độ chắc chắn của bằng chứng y khoa theo hệ thống GRADE**
 > 
-> - **Nguồn:** Trích xuất nguyên văn từ mục _2.3.2 Evidence appraisal (Table 2.1)_ thuộc tài liệu **9789240108042-eng.pdf** trong Notebook này.
+> - **Nguồn:** Trích xuất nguyên văn từ mục _2.3.2 Evidence appraisal (Table 2.1)_ thuộc tài liệu **9789240108042-eng.pdf** trong y văn.
 > 
 > | Cấp độ GRADE | Định nghĩa và Mức độ tự tin lâm sàng | | :--- | :--- | | **Cao (High)** | **Mức độ tin cậy rất cao** rằng hiệu quả thực tế của can thiệp lâm sàng nằm sát với ước tính hiệu quả đã công bố. | | **Trung bình (Moderate)** | **Mức độ tin cậy vừa phải** đối với ước tính hiệu quả: hiệu quả thực tế có khả năng cao gần với ước tính, nhưng có khả năng tồn tại sự khác biệt đáng kể. | | **Thấp (Low)** | **Sự tự tin bị giới hạn** vào ước tính hiệu quả: hiệu quả thực tế có thể khác biệt rất lớn so với ước tính hiệu quả thu được. | | **Rất thấp (Very low)** | **Rất ít sự tự tin** vào ước tính hiệu quả: hiệu quả thực tế có khả năng cao sẽ khác biệt hoàn toàn so với ước tính hiệu quả ban đầu. |
 
@@ -35,7 +35,7 @@ Bên cạnh xét nghiệm nhuộm Gram và nuôi cấy tế bào kinh điển, c
 
 > ##### **Hộp 3.1: Các xét nghiệm phát hiện kháng nguyên nhanh dịch não tủy (Antigen detection tests)**
 > 
-> - **Nguồn:** Trích xuất từ mục _A.2.2 Initial laboratory investigations (Box 3.1)_ thuộc tài liệu **9789240108042-eng.pdf** trong Notebook này.
+> - **Nguồn:** Trích xuất từ mục _A.2.2 Initial laboratory investigations (Box 3.1)_ thuộc tài liệu **9789240108042-eng.pdf** trong y văn.
 >     
 > - **Phân loại kỹ thuật:** Bao gồm **xét nghiệm ngưng kết hạt latex (latex agglutination tests)** và **xét nghiệm dòng chảy bên (lateral flow assays - LFA)**.
 >     
@@ -52,7 +52,7 @@ Tối ưu hóa phác đồ điều trị kháng sinh là nguyên tắc sinh lý 
 
 > ##### **Hộp 3.3: Nguyên tắc sử dụng kháng sinh hợp lý trong Viêm màng não (Appropriate use of antibiotics)**
 > 
-> - **Nguồn:** Trích xuất từ mục _B.2.4 Specific treatment (Box 3.3)_ thuộc tài liệu **9789240108042-eng.pdf** trong Notebook này.
+> - **Nguồn:** Trích xuất từ mục _B.2.4 Specific treatment (Box 3.3)_ thuộc tài liệu **9789240108042-eng.pdf** trong y văn.
 >     
 > - **Điều chỉnh theo Kháng sinh đồ (AST):** Ngay khi phân lập được tác nhân vi khuẩn gây bệnh và có kết quả kháng sinh đồ, phác đồ điều trị phải được **đánh giá lại và tối ưu hóa (xuống thang)** để thu hẹp phổ tác dụng.
 >     
@@ -71,7 +71,7 @@ Mất thính lực là một trong những di chứng thực thể nặng nề v
 
 > ##### **Bảng 3.4: Tổng quan về các can thiệp phục hồi chức năng cho người bệnh suy giảm thính lực sau Viêm màng não**
 > 
-> - **Nguồn:** Trích xuất từ mục _C.4 Hearing loss (Table 3.4)_ thuộc tài liệu **9789240108042-eng.pdf** trong Notebook này.
+> - **Nguồn:** Trích xuất từ mục _C.4 Hearing loss (Table 3.4)_ thuộc tài liệu **9789240108042-eng.pdf** trong y văn.
 > 
 > | Phân miền chức năng (Functioning domain) | Phân loại can thiệp (Intervention categories) | Nội dung can thiệp thính giác cụ thể | | :--- | :--- | :--- | | **Thính giác (Hearing)** | Sản phẩm hỗ trợ _(Assistive products)_ | Cung cấp và đào tạo, hướng dẫn kỹ thuật sử dụng các thiết bị hỗ trợ nghe bao gồm: **máy trợ thính (hearing aids)**, **cấy ốc tai điện tử (cochlear implants)** và các thiết bị cấy ghép tai giữa _(middle ear implants)_. | | **Lời nói, ngôn ngữ và giao tiếp (Speech, language, communication)** | Kỹ thuật, bài tập trị liệu và đào tạo _(Therapeutic techniques, exercises & training)_ | • Thực hiện các bài tập **huấn luyện thính giác (auditory training)**.• Trị liệu lời nói và ngôn ngữ _(speech and language therapy)_ để tăng cường khả năng nhận thức âm thanh, phát triển ngôn ngữ bị ảnh hưởng.• Đào tạo ngôn ngữ nói và/hoặc ngôn ngữ ký hiệu chuyên biệt.• Đào tạo kỹ năng giao tiếp và tương tác xã hội cho người bệnh. | | | Sản phẩm hỗ trợ _(Assistive products)_ | Cung cấp và đào tạo sử dụng các sản phẩm, thiết bị hỗ trợ chuyên dụng cho việc giao tiếp phi ngôn ngữ. | | **Giáo dục và định hướng nghề nghiệp (Education, vocation)** | Kỹ thuật, bài tập trị liệu và đào tạo | Thực hiện tư vấn định hướng giáo dục, hỗ trợ học đường hoặc tư vấn hướng nghiệp thích ứng với tình trạng suy giảm thính lực. | | **Đời sống cộng đồng và xã hội (Community, social life)** | Kỹ thuật, bài tập trị liệu và đào tạo | Thiết kế các can thiệp chuyên biệt tập trung vào việc tăng cường sự tham gia, hòa nhập của người bệnh vào các hoạt động cộng đồng _(participation-focused interventions)_. | | **Tự quản lý (Self-management)** | Can thiệp tự quản lý _(Self-management interventions)_ | Giáo dục, tư vấn y khoa và cung cấp các tài liệu hỗ trợ người bệnh tự quản lý, chăm sóc tình trạng sức khỏe thính giác của bản thân. | | **Hỗ trợ người chăm sóc và gia đình (Carer & family support)** | Can thiệp tự quản lý | Đào tạo kỹ năng giao tiếp đặc biệt, hướng dẫn kỹ thuật hỗ trợ và cung cấp điểm tựa tâm lý cho gia đình và người trực tiếp chăm sóc bệnh nhân. |
 
@@ -83,7 +83,7 @@ Bên cạnh mất thính lực, viêm màng não cấp tính có thể hủy ho�
 
 > ##### **Phụ lục: Danh mục chi tiết các can thiệp phục hồi chức năng toàn diện cho di chứng sau Viêm màng não**
 > 
-> - **Nguồn:** Trích xuất từ phần _Annex 3: Rehabilitation interventions for sequelae_ thuộc tài liệu **9789240108042-eng.pdf** trong Notebook này.
+> - **Nguồn:** Trích xuất từ phần _Annex 3: Rehabilitation interventions for sequelae_ thuộc tài liệu **9789240108042-eng.pdf** trong y văn.
 > 
 > **1. Suy giảm chức năng thị giác (Vision impairment):**
 > 

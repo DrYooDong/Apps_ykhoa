@@ -15,7 +15,6 @@ tags:
   - "y-khoa/pddt"
 updated: "2026-08-21"
 ---
-
 ### 1. Nội Dung Sinh Lý Học Chi Tiết: Tư Thế Nằm Sấp Thức Tỉnh (Awake Prone Positioning - APP) Ở Bệnh Nhân Chưa Đặt Nội Khí Quản
 
 #### Cơ Chế Sinh Lý Học Ở Bệnh Nhân Tự Thở (Spontaneously Breathing Patients)
@@ -80,7 +79,7 @@ updated: "2026-08-21"
 
 #### Chi Tiết Hình Họa Hướng Dẫn Thực Hành Lâm Sàng
 
-> **Tên Hình/Sơ Đồ:** Fig. 3 Summary guidelines and prone positioning monitoring in non-intubated and intubated patients (Nhánh bên trái: Prone position in non-intubated patients) **Thuộc Tài Liệu:** "s00134-026-08543-x.pdf" trong Notebook này **Nội dung mô tả trực quan:** Hình ảnh minh họa một bệnh nhân không đặt nội khí quản đang ở tư thế nằm sấp trên giường bệnh, đầu hơi nghiêng sang một bên, đang được hỗ trợ hô hấp bằng hệ thống Oxy dòng cao qua mũi (HFNC). Các hướng dẫn thực hành tóm tắt đi kèm bao gồm:
+> **Tên Hình/Sơ Đồ:** Fig. 3 Summary guidelines and prone positioning monitoring in non-intubated and intubated patients (Nhánh bên trái: Prone position in non-intubated patients) **Thuộc Tài Liệu:** "s00134-026-08543-x.pdf" trong y văn **Nội dung mô tả trực quan:** Hình ảnh minh họa một bệnh nhân không đặt nội khí quản đang ở tư thế nằm sấp trên giường bệnh, đầu hơi nghiêng sang một bên, đang được hỗ trợ hô hấp bằng hệ thống Oxy dòng cao qua mũi (HFNC). Các hướng dẫn thực hành tóm tắt đi kèm bao gồm:
 > 
 > - **Chỉ định (Indications):** Bệnh nhân suy hô hấp giảm oxy máu cấp tính liên quan đến COVID-19, chưa đặt nội khí quản (Non-intubated patients with COVID-19-related acute hypoxemic respiratory failure).
 > - **Thời điểm (Timing):** Bắt đầu sớm (Start early).

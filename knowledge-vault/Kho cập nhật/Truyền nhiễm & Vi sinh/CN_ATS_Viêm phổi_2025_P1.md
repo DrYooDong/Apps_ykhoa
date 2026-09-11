@@ -18,7 +18,6 @@ updated: "2026-09-06"
 icd10:
   - "J18"
 ---
-
 ### TÓM TẮT HƯỚNG DẪN LÂM SÀNG ATS 2025 (CẬP NHẬT CHẨN ĐOÁN VÀ ĐIỀU TRỊ VIÊM PHỔI CỘNG ĐỒNG Ở NGƯỜI LỚN) - PHẦN 1
 
 Hướng dẫn lâm sàng cập nhật năm **2025** của **Hiệp hội Lồng ngực Hoa Kỳ (ATS)** cập nhật các khuyến cáo dựa trên bằng chứng khoa học cho 4 câu hỏi then chốt trong chẩn đoán và xử trí viêm phổi mắc phải cộng đồng (CAP) ở người lớn. Dưới đây là tóm tắt chi tiết **Phần 1** của nghiên cứu và hướng dẫn này, tập trung vào mô hình sinh lý bệnh học mới, vai trò của siêu âm phổi (LUS) trong chẩn đoán và chiến lược sử dụng kháng sinh kinh nghiệm khi có xét nghiệm vi-rút dương tính.
@@ -66,7 +65,7 @@ Hướng dẫn lâm sàng cập nhật năm **2025** của **Hiệp hội Lồng
 
 **Tên Bảng:** Table 4 - Key Criteria for Establishing Expertise in Lung Ultrasound Examinations.
 
-- **Thuộc tài liệu:** _rccm.202507-1692st.pdf_ trong Notebook này.
+- **Thuộc tài liệu:** _rccm.202507-1692st.pdf_ trong y văn.
 
 |Yếu tố cần chuẩn hóa|Các yêu cầu bắt buộc trên thực hành lâm sàng|
 |:--|:--|
@@ -115,7 +114,7 @@ Hướng dẫn lâm sàng cập nhật năm **2025** của **Hiệp hội Lồng
 
 **Tên Bảng:** Table 5 - Comorbidities that May Warrant Antibiotic Therapy for Outpatients with Community-acquired Pneumonia Who Have a Positive Test Result for a Respiratory Virus.
 
-- **Thuộc tài liệu:** _rccm.202507-1692st.pdf_ trong Notebook này.
+- **Thuộc tài liệu:** _rccm.202507-1692st.pdf_ trong y văn.
 
 |Bệnh đồng mắc đi kèm|Tỷ lệ % thành viên hội đồng đồng thuận NÊN dùng kháng sinh|
 |:--|:-:|

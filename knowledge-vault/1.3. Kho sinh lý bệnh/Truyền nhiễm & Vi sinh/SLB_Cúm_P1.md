@@ -69,7 +69,7 @@ Khi virus cúm xâm nhập vào đường hô hấp, chúng nhân lên mạnh m�
 
 ## TRÍCH XUẤT CÁC LƯU ĐỒ VÀ BẢNG THÔNG TIN LÂM SÀNG
 
-Dưới đây là các bảng số liệu dịch tễ y khoa và lưu đồ quyết định lâm sàng quan trọng được trích xuất nguyên bản từ các tài liệu tham khảo chính thức của Tổ chức Y tế Thế giới (WHO) và hệ thống Cochrane có trong Notebook này để đối chiếu trực quan:
+Dưới đây là các bảng số liệu dịch tễ y khoa và lưu đồ quyết định lâm sàng quan trọng được trích xuất nguyên bản từ các tài liệu tham khảo chính thức của Tổ chức Y tế Thế giới (WHO) và hệ thống Cochrane có trong y văn để đối chiếu trực quan:
 
 ### 1. Lưu đồ Hướng dẫn Quyết định Lâm sàng về Chẩn đoán, Điều trị và Dự phòng Cúm của WHO (2024)
 

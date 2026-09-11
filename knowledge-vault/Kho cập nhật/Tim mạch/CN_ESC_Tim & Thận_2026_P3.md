@@ -16,7 +16,6 @@ tags:
   - "y-khoa/cn"
 updated: "2026-09-06"
 ---
-
 ### **BÀI HỌC LÂM SÀNG: KIỂM SOÁT HUYẾT ÁP, LIPID VÀ CÁC BIẾN CHỨNG ĐỒNG MẮC TRÊN BỆNH NHÂN TIM - THẬN THEO KHUYẾN CÁO ESC 2026 (PHẦN 3)**
 
 ---
@@ -80,7 +79,7 @@ Thiếu máu và thiếu sắt là các đồng mắc phổ biến trong suy tim
 
 ##### **Trích xuất Sơ đồ/Bảng biểu liên quan:**
 
-- **Tên Sơ đồ:** _Figure 8: Simple guide to clinical and biochemical monitoring of risk-modifying therapy used in patients with chronic kidney disease_ thuộc tài liệu **ehag098.pdf** trong Notebook này.
+- **Tên Sơ đồ:** _Figure 8: Simple guide to clinical and biochemical monitoring of risk-modifying therapy used in patients with chronic kidney disease_ thuộc tài liệu **ehag098.pdf** trong y văn.
 	![[Pasted image 20260831194716.png]]
 - **Mô tả nội dung dưới sơ đồ:** Sơ đồ Figure 8 là cẩm nang thực hành lâm sàng hướng dẫn quy trình khởi trị và theo dõi định kỳ các thuốc bảo vệ tim - thận (ACEi/ARB, SGLT2i, nsMRA):
     1. _Ngưỡng eGFR khởi trị an toàn:_ eGFR ≥ 20 mL/min/1.73 m² cho phép khởi trị SGLT2i. eGFR ≥ 25 mL/min/1.73 m² cho phép khởi trị nsMRA (Finerenone) nếu Kali máu ≤ 5.0 mmol/L.
@@ -89,7 +88,7 @@ Thiếu máu và thiếu sắt là các đồng mắc phổ biến trong suy tim
 
 ---
 
-- **Tên Sơ đồ:** _Figure 15: Prevention and management of stroke in chronic kidney disease_ thuộc tài liệu **ehag098.pdf** trong Notebook này.
+- **Tên Sơ đồ:** _Figure 15: Prevention and management of stroke in chronic kidney disease_ thuộc tài liệu **ehag098.pdf** trong y văn.
 	![[Pasted image 20260831194832.png]]
 - **Mô tả nội dung dưới sơ đồ:** Sơ đồ tóm tắt toàn diện các chiến lược đa yếu tố được chứng minh giúp dự phòng đột quỵ hiệu quả ở bệnh nhân CKD:
     1. _Kiểm soát huyết áp:_ Đạt mục tiêu huyết áp tâm thu nghiêm ngặt **120–129 mmHg** bằng cách tối ưu hóa lối sống và phối hợp thuốc hạ áp.
@@ -99,7 +98,7 @@ Thiếu máu và thiếu sắt là các đồng mắc phổ biến trong suy tim
 
 ---
 
-- **Tên Sơ đồ:** _Figure 19: Strategies used to minimize risk of cardiovascular disease and symptoms in patients on dialysis_ thuộc tài liệu **ehag098.pdf** trong Notebook này.
+- **Tên Sơ đồ:** _Figure 19: Strategies used to minimize risk of cardiovascular disease and symptoms in patients on dialysis_ thuộc tài liệu **ehag098.pdf** trong y văn.
 	![[Pasted image 20260831194855.png]]
 - **Mô tả nội dung dưới sơ đồ:** Sơ đồ Figure 19 phân cấp rõ rệt các mức độ khuyến cáo can thiệp để giảm thiểu biến cố tim mạch ở bệnh nhân đang lọc máu chu kỳ:
     - **Class I (Khuyến cáo thực hiện):** Bổ sung sắt truyền tĩnh mạch chủ động (proactive IV iron) không phụ thuộc vào nồng độ Hb ban đầu (thử nghiệm PIVOTAL); Liệu pháp kháng tiểu cầu kép/đơn để dự phòng thứ phát ở bệnh nhân đã có tiền sử đột quỵ thiếu máu hoặc hội chứng mạch vành mạn.

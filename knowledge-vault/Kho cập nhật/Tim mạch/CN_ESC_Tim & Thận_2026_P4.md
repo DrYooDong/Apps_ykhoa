@@ -16,8 +16,6 @@ tags:
   - "y-khoa/cn"
 updated: "2026-09-06"
 ---
-
-
 ### **1. Nội Dung Thực Hành Lâm Sàng Chi Tiết**
 
 #### **1.1. Bản đồ phân cấp can thiệp y tế toàn diện theo bệnh đồng mắc
@@ -26,7 +24,7 @@ Nhằm giúp bác sĩ lâm sàng có cái nhìn toàn cảnh và nhanh chóng tr
 
 ##### **Trích xuất Sơ đồ liên quan:**
 
-- **Tên Sơ đồ:** _Figure 2: Recommended medical interventions by diabetes status and different cardiovascular diseases_ thuộc tài liệu **ehag098.pdf** trong Notebook này.
+- **Tên Sơ đồ:** _Figure 2: Recommended medical interventions by diabetes status and different cardiovascular diseases_ thuộc tài liệu **ehag098.pdf** trong y văn.
 	![[Pasted image 20260831195021.png]]
 - **Mô tả nội dung chi tiết dưới sơ đồ:** Sơ đồ này là một lưới ma trận hai chiều, phân nhóm bệnh nhân theo trạng thái đái tháo đường (Không ĐTĐ vs Có ĐTĐ) và kiểu hình tim mạch đồng mắc (HFrEF, HFpEF, ASCVD, Arrhythmias). Các nhóm thuốc điều trị được mã hóa màu sắc theo mức độ khuyến cáo lâm sàng (Xanh lá: Class I; Vàng: Class IIa; Cam: Class IIb; Đỏ: Class III - Chống chỉ định) kèm theo các biến cố đích được cải thiện:
     1. **Nhóm Thuốc ức chế RAAS (ACEi/ARB/ARNI):**
@@ -62,7 +60,7 @@ Bệnh nhân suy thận khi bị hội chứng mạch vành cấp thường có 
 
 ##### **Trích xuất Sơ đồ liên quan:**
 
-- **Tên Sơ đồ:** _Figure 14: Algorithm for management of acute coronary syndrome in chronic kidney disease_ thuộc tài liệu **ehag098.pdf** trong Notebook này.
+- **Tên Sơ đồ:** _Figure 14: Algorithm for management of acute coronary syndrome in chronic kidney disease_ thuộc tài liệu **ehag098.pdf** trong y văn.
 	![[Pasted image 20260831195108.png]]
 - **Mô tả nội dung chi tiết dưới sơ đồ:** Sơ đồ này là một lưu đồ hướng dẫn thực hành lâm sàng toàn diện đối với bệnh nhân CKD nghi ngờ bị hội chứng mạch vành cấp (ACS):
     1. **Chẩn đoán:** Khuyến cáo sử dụng xét nghiệm Troponin tim siêu nhạy (hs-cTn) để chẩn đoán xác định nhồi máu cơ tim cấp (MI). Việc chẩn đoán loại trừ hoặc xác định dựa trên thuật toán động tăng/giảm nồng độ hs-cTn lúc ban đầu và sau 1-3 giờ.
@@ -83,7 +81,7 @@ Nguy cơ bị thuyên tắc huyết khối tĩnh mạch (như thuyên tắc ph�
 
 ##### **Trích xuất Sơ đồ liên quan:**
 
-- **Tên Sơ đồ:** _Figure 16: Suggested initial and longer-term treatment for venous thromboembolism_ thuộc tài liệu **ehag098.pdf** trong Notebook này.
+- **Tên Sơ đồ:** _Figure 16: Suggested initial and longer-term treatment for venous thromboembolism_ thuộc tài liệu **ehag098.pdf** trong y văn.
 	![[Pasted image 20260831195134.png]]
 - **Mô tả nội dung chi tiết dưới sơ đồ:** Sơ đồ này phân cấp các lựa chọn thuốc chống đông (Apixaban, Rivaroxaban, Edoxaban, Dabigatran, và kháng Vitamin K - VKA) theo 4 dải chức năng thận cụ thể:
     1. **Nhóm bệnh nhân Đang Lọc Máu (Dialysis):**
@@ -108,7 +106,7 @@ Nguy cơ bị thuyên tắc huyết khối tĩnh mạch (như thuyên tắc ph�
 
 ##### **Trích xuất Sơ đồ/Bảng biểu liên quan:**
 
-- **Tên Bảng:** _Table 4: Scores for estimating risk of cardiovascular disease incorporating estimated glomerular filtration rate_ thuộc tài liệu **ehag098.pdf** trong Notebook này.
+- **Tên Bảng:** _Table 4: Scores for estimating risk of cardiovascular disease incorporating estimated glomerular filtration rate_ thuộc tài liệu **ehag098.pdf** trong y văn.
     
 - **Mô tả nội dung chi tiết dưới bảng:** Bảng này tóm tắt toàn bộ các thang điểm dự báo nguy cơ tim mạch hiện đại được khuyến cáo sử dụng cho bệnh nhân CKD tùy theo đặc điểm lâm sàng:
     
@@ -126,7 +124,7 @@ Nguy cơ bị thuyên tắc huyết khối tĩnh mạch (như thuyên tắc ph�
     5. _Bệnh nhân Đã có tiền sử suy tim phân suất tống máu bảo tồn (HFpEF):_
         - **LIFE-Preserved:** Ước tính nguy cơ trọn đời (lifetime risk) bị tái nhập viện vì suy tim hoặc tử vong tim mạch.
       
-- **Tên Sơ đồ:** _Figure 6: Associations between estimated glomerular filtration rate and albuminuria categories with subsequent risk of cardiovascular disease_ thuộc tài liệu **ehag098.pdf** trong Notebook này.
+- **Tên Sơ đồ:** _Figure 6: Associations between estimated glomerular filtration rate and albuminuria categories with subsequent risk of cardiovascular disease_ thuộc tài liệu **ehag098.pdf** trong y văn.
     ![[Pasted image 20260831195348.png]]
 - **Mô tả nội dung dưới sơ đồ:** Đồ thị biểu diễn mối liên quan tuyến tính và phi tuyến tính giữa eGFR, các mức độ albumin niệu (A1, A2, A3) với tỷ lệ nguy cơ (Hazard Ratio) của 6 biến cố tim mạch chính: Suy tim (Heart failure), Rung nhĩ (Atrial fibrillation), Tử vong tim mạch, Bệnh động mạch ngoại biên (PAD), Đột quỵ (Stroke), và Nhồi máu cơ tim. Đồ thị chứng minh rõ ràng rằng nguy cơ tim mạch tăng vọt một cách nhất quán khi eGFR sụt giảm xuống dưới mốc **60 mL/min/1.73 m²** và khi mức độ albumin niệu tăng từ A1 lên A3, nhấn mạnh tầm quan trọng của việc can thiệp bảo vệ tim - thận sớm.
     
@@ -137,11 +135,11 @@ Nguy cơ bị thuyên tắc huyết khối tĩnh mạch (như thuyên tắc ph�
 
 ##### **Trích xuất Sơ đồ liên quan:**
 
-- **Tên Sơ đồ:** _Figure 13: Advanced heart failure and chronic kidney disease assessment_ thuộc tài liệu **ehag098.pdf** trong Notebook này.
+- **Tên Sơ đồ:** _Figure 13: Advanced heart failure and chronic kidney disease assessment_ thuộc tài liệu **ehag098.pdf** trong y văn.
     ![[Pasted image 20260831195219.png]]
 - **Mô tả nội dung dưới sơ đồ:** Sơ đồ này là một lưu đồ quy chuẩn hóa quy trình đánh giá đa thông số đối với bệnh nhân suy tim tiến triển (Stage D) có đồng mắc CKD để xem xét khả năng cấy thiết bị hỗ trợ tuần hoàn cơ học dài hạn (Durable MCS/LVAD) hoặc ghép tim. Quy trình yêu cầu đánh giá đồng thời: eGFR nền tảng, tình trạng kháng trị của sức cản mạch máu hệ thống (SVR), nồng độ hormone tuyến cận giáp (PTH) để tầm soát rối loạn chuyển hóa xương, trạng thái quá tải thể tích ngoại vi và khả năng hồi phục của chức năng thận sau khi giải áp sung huyết tích cực.
     
-- **Tên Sơ đồ:** _Figure 21: Person-centred care in cardiovascular disease and chronic kidney disease_ thuộc tài liệu **ehag098.pdf** trong Notebook này.
+- **Tên Sơ đồ:** _Figure 21: Person-centred care in cardiovascular disease and chronic kidney disease_ thuộc tài liệu **ehag098.pdf** trong y văn.
     
 - **Mô tả nội dung dưới sơ đồ:** Sơ đồ cấu trúc hình tròn thể hiện mô hình **Chăm sóc lấy người bệnh làm trung tâm (Person-centred care)**. Người bệnh nằm ở vị trí trung tâm, được bao quanh bởi mối liên kết giao tiếp và phối hợp chặt chẽ giữa hai chuyên gia chủ chốt: Bác sĩ Tim mạch (Cardiologist) và Bác sĩ Thận học (Nephrologist). Mô hình được vận hành thông qua ba cấu phần:
     

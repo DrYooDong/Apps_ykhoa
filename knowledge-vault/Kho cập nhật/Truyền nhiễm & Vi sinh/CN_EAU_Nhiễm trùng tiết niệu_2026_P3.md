@@ -18,7 +18,6 @@ updated: "2026-09-06"
 icd10:
   - "N39.0"
 ---
-
 # BÀI HỌC SINH LÝ HỌC, SINH LÝ BỆNH VÀ CƠ CHẾ BỆNH SINH CỦA NHIỄM TRÙNG ĐƯỜNG TIẾT NIỆU (PHẦN 3)
 
 _Tài liệu tham khảo chính: Hướng dẫn về Nhiễm trùng Hệ tiết niệu của Hiệp hội Tiết niệu Châu Âu năm 2026 (EAU Guidelines on Urological Infections 2026)_
@@ -138,7 +137,7 @@ Trong các trường hợp bất khả kháng do hạn chế về mặt trang th
 > **TRÍCH XUẤT BẢNG KHUYẾN CÁO KHÁNG SINH CHU PHẪU**
 > 
 > - **Tên bảng:** **Table 15: Suggested regimens for antimicrobial prophylaxis prior to urological procedures (Các phác đồ khuyến cáo dự phòng kháng sinh chu phẫu trước thủ thuật tiết niệu)**
-> - **Thuộc tài liệu:** _EAU Guidelines on Urological Infections 2026_ trong Notebook này.
+> - **Thuộc tài liệu:** _EAU Guidelines on Urological Infections 2026_ trong y văn.
 > 
 > | Tên thủ thuật tiết niệu | Khuyến cáo có cần dự phòng? | Các nhóm kháng sinh lựa chọn phù hợp (Nên điều chỉnh theo dịch tễ tại chỗ) | | :--- | :--- | :--- | | **Đo niệu động học (Urodynamics)** | **KHÔNG** | Không áp dụng (N/A) | | **Nội soi bàng quang (Cystoscopy)** | **KHÔNG** | Không áp dụng (N/A) | | **Tán sỏi ngoài cơ thể (ESWL)** | **KHÔNG** (Chỉ dùng nếu nước tiểu nhiễm khuẩn hoặc sỏi nhiễm trùng) | Không áp dụng (N/A) | | **Nội soi ngược dòng tán sỏi (URS)** | **CÓ** (Khuyến cáo mức độ Yếu) | • Trimethoprim • Trimethoprim-sulfamethoxazole • Cephalosporin thế hệ 2 hoặc thế hệ 3 • Aminopenicillin kết hợp chất ức chế beta-lactamase | | **Tán sỏi thận qua da (PCNL/PNL)** | **CÓ** (Yêu cầu nghiêm ngặt một **Liều duy nhất** trước mổ) | • Trimethoprim-sulfamethoxazole • Cephalosporin thế hệ 2 hoặc thế hệ 3 • Aminopenicillin kết hợp chất ức chế beta-lactamase | | **Cắt nội soi tuyến tiền liệt (TURP)** | **CÓ** (Khuyến cáo mức độ Mạnh) | • Trimethoprim-sulfamethoxazole • Cephalosporin thế hệ 2 hoặc thế hệ 3 • Aminopenicillin kết hợp chất ức chế beta-lactamase | | **Cắt u bàng quang nội soi (TURB)** | **CÓ** (Chỉ bắt buộc cho **bệnh nhân có nguy cơ cao** tiến triển sepsis) | • Cephalosporin thế hệ 2 hoặc thế hệ 3 • Aminopenicillin kết hợp chất ức chế beta-lactamase | | **Sinh thiết tuyến tiền liệt trực tràng (TR)** | **CÓ** (Bắt buộc dùng kháng sinh dự phòng) | **Áp dụng các phác đồ thay thế nghiêm ngặt:** 1. **Dự phòng đích** dựa trên kết quả cấy quẹt trực tràng/phân. 2. **Dự phòng tăng cường** kết hợp \(\ge\) 2 nhóm kháng sinh khác nhau (không chứa Fluoroquinolone). 3. **Kháng sinh thay thế phi Fluoroquinolone:** • _Fosfomycin trometamol:_ 3g uống trước sinh thiết (Lưu ý: Đã bị rút chỉ định này tại Đức do thiếu dữ liệu dược động học, cần tham khảo hướng dẫn quốc gia). • _Cephalosporin:_ Ceftriaxone 1g tiêm bắp; hoặc Cefixime 400mg uống trong 3 ngày bắt đầu trước sinh thiết 24 giờ. • _Aminoglycoside:_ Gentamicin 6-7 mg/kg truyền tĩnh mạch hàng ngày; hoặc Amikacin 25-30 mg/kg truyền tĩnh mạch hàng ngày. |
 
@@ -147,7 +146,7 @@ Trong các trường hợp bất khả kháng do hạn chế về mặt trang th
 > **TRÍCH XUẤT LƯU ĐỒ KIỂM SOÁT NHIỄM TRÙNG SINH THIẾT TUYẾN TIỀN LIỆT**
 > 
 > - **Tên hình:** **Figure 4: Prostate biopsy workflow to reduce infectious complications (Sơ đồ quy trình sinh thiết tuyến tiền liệt để giảm thiểu biến chứng nhiễm trùng)**
-> - **Thuộc tài liệu:** _EAU Guidelines on Urological Infections 2026_ trong Notebook này.
+> - **Thuộc tài liệu:** _EAU Guidelines on Urological Infections 2026_ trong y văn.
 > ![[Pasted image 20260902220527.png]]
 > **Mô tả chi tiết các bước xử trí theo lưu đồ:**
 > 

@@ -16,7 +16,6 @@ tags:
   - "y-khoa/cn"
 updated: "2026-09-06"
 ---
-
 ### **BÀI HỌC LÂM SÀNG: QUẢN LÝ BỆNH TIM MẠCH TRÊN BỆNH NHÂN THẬN MẠN THEO KHUYẾN CÁO ESC 2026 (PHẦN 1)**
 
 ---
@@ -62,7 +61,7 @@ Bệnh thận mạn được phân giai đoạn chặt chẽ dựa trên hệ th
 
 ##### **Trích xuất Sơ đồ/Bảng biểu liên quan:**
 
-- **Tên Sơ đồ:** _Figure 3: Chronic kidney disease classification and risk prediction approaches_ thuộc tài liệu **ehag098.pdf** trong Notebook này.
+- **Tên Sơ đồ:** _Figure 3: Chronic kidney disease classification and risk prediction approaches_ thuộc tài liệu **ehag098.pdf** trong y văn.
 		![[Pasted image 20260831193601.png]]
 - **Mô tả nội dung dưới sơ đồ:** Sơ đồ Figure 3 hướng dẫn chi tiết quy trình phân loại CKD và các phương pháp tiếp cận dự báo nguy cơ tim mạch - thận một cách toàn diện:
     1. **Quy trình xác định ban đầu:** Khuyến cáo đo eGFR dựa trên creatinine (Class I) phối hợp đo uACR nước tiểu (Class I) để xác định CKD. Cân nhắc đo eGFR dựa trên Cystatin C (Class IIa) ở những bệnh nhân có các yếu tố gây sai lệch creatinine huyết thanh. Đồng thời, thực hiện tầm soát nguyên nhân bằng que nhúng nước tiểu tìm hồng cầu (Class I) và siêu âm hệ tiết niệu (Class IIa).
@@ -90,7 +89,7 @@ Chiến lược này bao gồm 5 cấu phần cốt lõi sau:
 
 ##### **Trích xuất Sơ đồ/Bảng biểu liên quan:**
 
-- **Tên Sơ đồ:** _Figure 1: Central illustration. STAMP on CKD_ thuộc tài liệu **ehag098.pdf** trong Notebook này.
+- **Tên Sơ đồ:** _Figure 1: Central illustration. STAMP on CKD_ thuộc tài liệu **ehag098.pdf** trong y văn.
 	![[Pasted image 20260831193734.png]]
 - **Mô tả nội dung dưới sơ đồ:** Sơ đồ minh họa trung tâm Figure 1 tóm tắt toàn bộ các bước tiếp cận lâm sàng theo mô hình "STAMP on CKD":
     - _S - Screen:_ Chỉ định tầm soát eGFR và uACR cho mọi bệnh nhân CVD (Class I) ngay khi phát hiện bệnh lý tim mạch, và lặp lại tối thiểu hàng năm đối với bệnh nhân đái tháo đường.
@@ -120,7 +119,7 @@ Quy trình tầm soát và định hướng chẩn đoán thực hành được 
 
 ##### **Trích xuất Sơ đồ/Bảng biểu liên quan:**
 
-- **Tên Sơ đồ:** _Diagnostic algorithm for chronic kidney disease detection in patients with cardiovascular disease_ (nằm trong phần nội dung chẩn đoán của Section 3) thuộc tài liệu **ehag098.pdf** trong Notebook này.
+- **Tên Sơ đồ:** _Diagnostic algorithm for chronic kidney disease detection in patients with cardiovascular disease_ (nằm trong phần nội dung chẩn đoán của Section 3) thuộc tài liệu **ehag098.pdf** trong y văn.
 	-
 - **Mô tả nội dung dưới sơ đồ:** Lưu đồ hướng dẫn thực hành khi phát hiện bất thường thận ở bệnh nhân CVD: Bắt đầu bằng việc phát hiện bất thường (eGFR < 60 hoặc uACR ≥ 3 mg/mmol hoặc que nhúng nước tiểu ≥ 1+ protein) -> Nếu bất thường này là mới và bất ngờ -> Nhánh trái (Retest trong vài ngày/tuần) được kích hoạt nếu có nghi ngờ AKI nhằm xử trí kịp thời -> Nhánh phải (Retest sau ≥ 3 tháng) áp dụng để xác định tính mạn tính của tổn thương. Nếu kết quả lặp lại sau 3 tháng vẫn bất thường -> Chẩn đoán xác định CKD, tiến hành phân giai đoạn theo CGA và cân nhắc hội chẩn chuyên khoa Thận học.
 
@@ -131,4 +130,3 @@ Quy trình tầm soát và định hướng chẩn đoán thực hành được 
 1. Task Force for the 2026 ESC Guidelines for the management of cardiovascular disease in patients with chronic kidney disease. 2026 ESC Guidelines for the management of cardiovascular disease in patients with chronic kidney disease. _Eur Heart J_. Published online August 30, 2026. doi:10.1093/eurheartj/ehag098
 
 ---
-

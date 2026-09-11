@@ -23,7 +23,7 @@ const KHO_MAPPINGS = [
   { dir: '1.5. Kho yếu tố nguy cơ', code: 'YTNC', name: 'Yếu tố nguy cơ', group: 'Chuyên sâu', icon: 'fa-triangle-exclamation', color: '#f97316' },
   { dir: '2.1. Kho tiếp cận lâm sàng', code: 'TC', name: 'Lâm sàng', group: 'Chuyên sâu', icon: 'fa-magnifying-glass', color: '#0ea5e9' },
   { dir: '3.3. Kho cận lâm sàng & xét nghiệm', code: 'CLS', name: 'Cận lâm sàng', group: 'Chuyên sâu', icon: 'fa-flask-vial', color: '#6366f1' },
-  { dir: '2.3. Kho chẩn đoán', code: 'CD', name: 'Tiêu chuẩn chẩn đoán', group: 'Chuyên sâu', icon: 'fa-clipboard-check', color: '#ec4899' },
+  { dir: '2.3. Kho chẩn đoán', code: 'CD', name: 'Chẩn đoán', group: 'Chuyên sâu', icon: 'fa-clipboard-check', color: '#ec4899' },
   { dir: '2.4. Kho phác đồ điều trị', code: 'PDDT', name: 'Phác đồ', group: 'Chuyên sâu', icon: 'fa-pills', color: '#3b82f6' },
   { dir: 'Kho cập nhật', code: 'CN', name: 'Cập nhật Hướng dẫn', group: 'Chuyên sâu', icon: 'fa-arrows-rotate', color: '#2563eb' },
   { dir: '3.2. Kho dược thư & tương tác thuốc', code: 'DUOC', name: 'Dược', group: 'Chuyên sâu', icon: 'fa-capsules', color: '#06b6d4' },
@@ -114,10 +114,29 @@ function extractSnippet(body) {
 
 function scanVault() {
   const catalog = [];
+  const khoStats = {};
+  const warnings = [];
+  let totalDiskFiles = 0;
+  let skippedFiles = 0;
+
+  // Initialize stats for each mapped kho
+  KHO_MAPPINGS.forEach(kho => {
+    khoStats[kho.code] = {
+      name: kho.name,
+      dir: kho.dir,
+      count: 0,
+      skipped: 0
+    };
+  });
+
+  console.log('\n🔍 Bắt đầu quét Knowledge Vault...');
 
   KHO_MAPPINGS.forEach(kho => {
     const fullKhoPath = path.join(VAULT_ROOT, kho.dir);
-    if (!fs.existsSync(fullKhoPath)) return;
+    if (!fs.existsSync(fullKhoPath)) {
+      warnings.push(`[NOT FOUND] Thư mục kho không tồn tại: ${kho.dir}`);
+      return;
+    }
 
     function walkDir(dirPath, specialtyName) {
       const entries = fs.readdirSync(dirPath, { withFileTypes: true });
@@ -129,11 +148,36 @@ function scanVault() {
           // Bỏ qua thư mục _ (như _raw_transcripts) và .obsidian
           if (!entry.name.startsWith('_') && !entry.name.startsWith('.')) {
             walkDir(fullPath, entry.name);
+          } else {
+            // Count skipped files inside skipped directories
+            try {
+              const skippedEntries = fs.readdirSync(fullPath);
+              skippedFiles += skippedEntries.filter(f => f.endsWith('.md')).length;
+            } catch (e) {}
           }
-        } else if (entry.isFile() && entry.name.endsWith('.md') && !entry.name.startsWith('_')) {
-          const content = fs.readFileSync(fullPath, 'utf-8');
+        } else if (entry.isFile() && entry.name.endsWith('.md')) {
+          totalDiskFiles++;
+
+          if (entry.name.startsWith('_')) {
+            skippedFiles++;
+            khoStats[kho.code].skipped++;
+            return;
+          }
+
+          let content = '';
+          try {
+            content = fs.readFileSync(fullPath, 'utf-8');
+          } catch (err) {
+            warnings.push(`[READ ERROR] Không đọc được file: ${fullPath} (${err.message})`);
+            return;
+          }
+
           const { meta, body } = parseFrontmatter(content);
           const relPath = path.relative(VAULT_ROOT, fullPath).replace(/\\/g, '/');
+
+          if (Object.keys(meta).length === 0) {
+            warnings.push(`[NO FRONTMATTER] ${relPath} không có YAML frontmatter.`);
+          }
 
           const baseTitle = entry.name.replace(/\.md$/, '').replace(/^[A-Z0-9]+_/, '').replace(/_P\d+$/, '');
           const title = meta.title || baseTitle;
@@ -181,6 +225,7 @@ function scanVault() {
           };
 
           catalog.push(article);
+          khoStats[kho.code].count++;
         }
       }
     }
@@ -191,6 +236,7 @@ function scanVault() {
   // Also include Master MOC if exists
   const masterMocPath = path.join(VAULT_ROOT, 'MOC - Kho Kiến Thức Y Khoa.md');
   if (fs.existsSync(masterMocPath)) {
+    totalDiskFiles++;
     const content = fs.readFileSync(masterMocPath, 'utf-8');
     const { meta, body } = parseFrontmatter(content);
     catalog.unshift({
@@ -213,19 +259,48 @@ function scanVault() {
       icd10: [],
       tags: ['y-khoa/trang-chu']
     });
+    if (khoStats['CORE']) khoStats['CORE'].count++;
   }
 
   // Ensure output directory exists for Knowledge Vault Hub
   const outDir = path.dirname(OUTPUT_FILE);
   if (!fs.existsSync(outDir)) fs.mkdirSync(outDir, { recursive: true });
   fs.writeFileSync(OUTPUT_FILE, JSON.stringify(catalog, null, 2), 'utf-8');
-  console.log(`[VAULT CATALOG] Successfully indexed ${catalog.length} articles into: ${OUTPUT_FILE}`);
 
   // Ensure output directory exists for DocSpace MedLens
   const docspaceOutDir = path.dirname(DOCSPACE_OUTPUT_FILE);
   if (!fs.existsSync(docspaceOutDir)) fs.mkdirSync(docspaceOutDir, { recursive: true });
   fs.writeFileSync(DOCSPACE_OUTPUT_FILE, JSON.stringify(catalog, null, 2), 'utf-8');
-  console.log(`[VAULT CATALOG] Successfully synced to DocSpace: ${DOCSPACE_OUTPUT_FILE}`);
+
+  // Print Summary Stats Table
+  console.log('\n=============================================================');
+  console.log('📊 BÁO CÁO THỐNG KÊ DANH MỤC KNOWLEDGE VAULT');
+  console.log('=============================================================');
+  console.log('| Mã Kho | Tên Phân Hệ Kho                  | Đã nạp | Bỏ qua |');
+  console.log('|--------|----------------------------------|--------|--------|');
+  Object.keys(khoStats).forEach(code => {
+    const s = khoStats[code];
+    const namePadded = (s.name + '                                ').slice(0, 32);
+    const countPadded = (s.count + '     ').slice(0, 6);
+    const skipPadded = (s.skipped + '     ').slice(0, 6);
+    console.log(`| ${code.padEnd(6)} | ${namePadded} | ${countPadded} | ${skipPadded} |`);
+  });
+  console.log('=============================================================');
+  console.log(` Tổng số file Markdown trên disk : ${totalDiskFiles}`);
+  console.log(` Tổng số bài viết đã lập chỉ mục : ${catalog.length}`);
+  console.log(` Số file tạm / raw bỏ qua        : ${skippedFiles}`);
+  console.log(` Cảnh báo / Parse issues         : ${warnings.length}`);
+  console.log('=============================================================');
+  console.log(`✅ [1/2] Đã lưu Vault Hub: ${OUTPUT_FILE}`);
+  console.log(`✅ [2/2] Đã sync DocSpace: ${DOCSPACE_OUTPUT_FILE}\n`);
+
+  if (warnings.length > 0 && warnings.length <= 10) {
+    console.log('⚠️ Chi tiết cảnh báo:');
+    warnings.forEach(w => console.log('  ' + w));
+  } else if (warnings.length > 10) {
+    console.log(`⚠️ Có ${warnings.length} cảnh báo (10 cảnh báo đầu tiên):`);
+    warnings.slice(0, 10).forEach(w => console.log('  ' + w));
+  }
 }
 
 scanVault();

@@ -15,11 +15,6 @@ tags:
   - "y-khoa/gpsl"
 updated: "2026-08-21"
 ---
-
-
-
-Dưới đây là nội dung chi tiết về Sinh lý học [[Bạch cầu]] và Miễn dịch, được tổng hợp và biên soạn dựa trên các tài liệu y khoa bạn đã cung cấp:
-
 ### 1. NỘI DUNG SINH LÝ HỌC CHI TIẾT
 
 #### Đại Cương Về Bạch Cầu (White Blood Cells - Leukocytes)

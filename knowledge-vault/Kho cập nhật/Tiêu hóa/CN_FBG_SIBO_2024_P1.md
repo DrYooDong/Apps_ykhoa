@@ -16,7 +16,6 @@ tags:
   - "y-khoa/cn"
 updated: "2026-09-06"
 ---
-
 # TÓM TẮT NGHIÊN CỨU: ĐỒNG THUẬN CỦA LIÊN ĐOÀN TIÊU HÓA BRAZIL VỀ CHẨN ĐOÁN VÀ ĐIỀU TRỊ SIBO (PHẦN 1)
 
 Nội dung dưới đây được biên soạn chi tiết từ tài liệu đồng thuận chính thức của Liên đoàn Tiêu hóa Brazil (FBG) năm 2024, tập trung vào định nghĩa, dịch tễ học, các cơ chế sinh lý bệnh, yếu tố nguy cơ và phương pháp chẩn đoán tiêu chuẩn vàng của SIBO.
@@ -80,7 +79,7 @@ Sinh lý bệnh của SIBO là một quá trình tương tác phức tạp giữ
 |**Mối quan hệ chưa rõ ràng** _(Unclear relationship)_|- Bệnh trứng cá đỏ *(Rosacea)*- Viêm bàng quang kẽ *(Interstitial cystitis)*- Hội chứng chân không yên *(Restless legs syndrome)*- Bệnh Parkinson *(Parkinson's disease)*- Béo phì mức độ nặng *(Severe obesity)*- Hội chứng ruột kích thích _(Irritable bowel syndrome)_|
 
 - **Tên Bảng:** Table 1. SIBO risk factors. _(Bảng 1. Các yếu tố nguy cơ của SIBO)_.
-- **Thuộc tài liệu:** **tải xuống.pdf** trong Notebook này.
+- **Thuộc tài liệu:** **tải xuống.pdf** trong y văn.
 - **Mô tả dưới bảng gốc:** Bảng tổng hợp và phân loại các tình trạng bệnh lý có mối liên hệ mật thiết với sự khởi phát của SIBO dựa trên các cơ chế nền tảng như rối loạn vận động, biến đổi giải phẫu, suy giảm miễn dịch tại chỗ, các nguyên nhân đa yếu tố hoặc các hội chứng lâm sàng có mối liên quan chưa thực sự rõ ràng về mặt cơ chế.
 
 ---
@@ -121,7 +120,7 @@ Do các triệu chứng lâm sàng của SIBO thiếu tính đặc hiệu, việ
 |**5. Thực hiện hút dịch** _(Aspiration)_|- Trợ thủ phụ trách bơm tiêm thường ngồi thấp hơn để tận dụng lực hút hỗ trợ từ trọng lực, tiến hành hút dịch nhẹ nhàng, ngắt quãng bằng bơm tiêm 5 mL được kết nối với khóa 3 ngả.- Trong khoảng thời gian từ 3 đến 5 phút, thu thập khoảng **2 đến 5 mL dịch ruột non có màu ánh mật** (nếu dịch mật chậm tiết, có thể xoa bóp nhẹ vùng gan của bệnh nhân để kích thích dòng mật chảy vào lòng ruột).- Bơm tiêm chứa dịch sau đó được đậy chặt bằng nắp vô trùng, đặt ngay vào túi an toàn sinh học và chuyển tức thì đến phòng vi sinh để tiến hành nuôi cấy hiếu khí và kỵ khí.|
 
 - **Tên Bảng:** Table 2. Rao technique description to perform a small bowel culture aspiration. _(Bảng 2. Mô tả kỹ thuật Rao để thực hiện hút nuôi cấy dịch ruột non)_.
-- **Thuộc tài liệu:** **tải xuống.pdf** trong Notebook này.
+- **Thuộc tài liệu:** **tải xuống.pdf** trong y văn.
 - **Mô tả dưới bảng gốc:** Quy trình từng bước của kỹ thuật Rao nhằm tiêu chuẩn hóa thao tác hút dịch ruột non qua nội soi tiêu hóa trên, giúp kiểm soát tối đa tỷ lệ ngoại nhiễm vi khuẩn từ vùng hầu họng và dạ dày, từ đó bảo đảm tính chính xác cho kết quả nuôi cấy chẩn đoán SIBO.
 
 > **Tuyên bố khuyến nghị 3 (Statement 3):** Dịch hút ruột non vẫn là tiêu chuẩn vàng để chẩn đoán SIBO. Trong khi dịch hút hỗng tràng với ngưỡng \(\ge 10^{5}\) CFU/mL là ngưỡng truyền thống, dịch hút tá tràng với ngưỡng cập nhật \(\ge 10^{3}\) CFU/mL hiện được công nhận là tiêu chuẩn tham chiếu mới cho chẩn đoán.

@@ -15,9 +15,6 @@ tags:
   - "y-khoa/pddt"
 updated: "2026-08-21"
 ---
-
-
-
 ### 1. Nội Dung Sinh Lý Học Chi Tiết: Tóm Tắt Khuyến Cáo Surviving Sepsis Campaign 2026 (Phần 2)
 
 #### 1.1. Quản Lý Huyết Động Học Chuyên Sâu (Hemodynamic Management)
@@ -82,7 +79,7 @@ updated: "2026-08-21"
 
 ---
 
-> **Hình 3: Hướng dẫn nhanh về hồi sức và hỗ trợ huyết động ở người lớn bị [[Nhiễm trùng huyết|nhiễm khuẩn huyết]] và sốc nhiễm khuẩn** _Trích từ tài liệu: "surviving-sepsis-campaign-international-guidelines-for.pdf" trong Notebook này._
+> **Hình 3: Hướng dẫn nhanh về hồi sức và hỗ trợ huyết động ở người lớn bị [[Nhiễm trùng huyết|nhiễm khuẩn huyết]] và sốc nhiễm khuẩn** _Trích từ tài liệu: "surviving-sepsis-campaign-international-guidelines-for.pdf" trong y văn._
 > 
 > **Tóm tắt sơ đồ xử trí huyết động tại giường:**
 > 

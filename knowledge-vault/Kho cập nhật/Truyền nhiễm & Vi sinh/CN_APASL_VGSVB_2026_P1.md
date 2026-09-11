@@ -16,7 +16,6 @@ tags:
   - "y-khoa/cn"
 updated: "2026-09-06"
 ---
-
 # BÀI HỌC SINH LÝ BỆNH VÀ CÁC KHUYẾN CÁO LÂM SÀNG CỦA GUIDELINE APASL 2026 (PHẦN 1)
 
 ---
@@ -110,7 +109,7 @@ Dưới đây là các sơ đồ cơ chế và thuật toán lâm sàng quan tr�
 ### Sơ Đồ Kim Tự Tháp Mục Tiêu Điều Trị Viêm Gan B Mạn Tính
 
 - **Tên hình:** Fig. 1 - Pyramid of CHB treatment
-- **Thuộc tài liệu:** _APASL clinical practice guidelines on the management of chronic hepatitis B infection: a 2026 update_ trong Notebook này.
+- **Thuộc tài liệu:** _APASL clinical practice guidelines on the management of chronic hepatitis B infection: a 2026 update_ trong y văn.
 	![[Pasted image 20260831221509.png]]
 - **Mô tả chi tiết dưới hình:** Sơ đồ kim tự tháp thể hiện 3 cấp độ mục tiêu điều trị tăng dần từ đáy lên đỉnh:
     1. **Đáy tháp - Mục tiêu ngắn hạn (Short-term goals):** Bao gồm việc ức chế kéo dài sự nhân lên của vi-rút (duy trì nồng độ HBV DNA dưới ngưỡng phát hiện) và giảm viêm gan (bình thường hóa nồng độ ALT sớm).
@@ -120,7 +119,7 @@ Dưới đây là các sơ đồ cơ chế và thuật toán lâm sàng quan tr�
 ### Sơ Đồ Thuật Toán Lâm Sàng Điều Trị Viêm Gan B Mạn Tính (APASL 2026)
 
 - **Tên hình:** Fig. 2 - CHB treatment algorithm
-- **Thuộc tài liệu:** _APASL clinical practice guidelines on the management of chronic hepatitis B infection: a 2026 update_ trong Notebook này.
+- **Thuộc tài liệu:** _APASL clinical practice guidelines on the management of chronic hepatitis B infection: a 2026 update_ trong y văn.
 	![[Pasted image 20260831221520.png]]
 - **Mô tả chi tiết thuật toán:**
     - Thuật toán bắt đầu bằng việc đánh giá tất cả bệnh nhân có viêm gan B mạn tính (được xác định là nhiễm HBsAg dương tính ≥ 6 tháng).

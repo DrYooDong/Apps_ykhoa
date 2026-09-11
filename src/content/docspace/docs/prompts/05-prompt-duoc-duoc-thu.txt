@@ -1,0 +1,133 @@
+# ==============================================================================
+# CLINIPORTAL NOTEBOOKLM — PROMPT KHO DƯỢC THƯ & TƯƠNG TÁC THUỐC (KHO DUOC)
+# ==============================================================================
+# SỬ DỤNG KHI: Bạn muốn NotebookLM trích xuất dược thư lâm sàng, dược động học,
+# bảng chỉnh liều theo eGFR/gan, cảnh báo hộp đen và tương tác thuốc để lưu vào:
+# knowledge-vault/3.2. Kho dược thư & tương tác thuốc/DUOC_{Tên thuốc}_P1.md
+# ==============================================================================
+
+[YÊU CẦU ĐẦU VÀO]:
+- Tên thuốc / Hoạt chất: [ĐIỀN TÊN HOẠT CHẤT, ví dụ: Dapagliflozin / Enoxaparin / Bisoprolol / Meropenem / Vancomycin]
+- Tên biệt dược thông dụng: [ĐIỀN BIỆT DƯỢC, ví dụ: Forxiga / Lovenox / Concor / Meronem / Vancocin]
+- Nhóm dược lý: [ĐIỀN PHÂN NHÓM, ví dụ: Ức chế SGLT2 / Kháng đông LMWH / Chẹn beta giao cảm / Kháng sinh Carbapenem]
+- Chuyên khoa: [ĐIỀN CHUYÊN KHOA, ví dụ: Tim mạch / Hồi sức - Cấp cứu / Nhiễm trùng / Thận học / Nội tiết]
+- Nguồn tham chiếu: [ĐIỀN NGUỒN CHÍNH, ví dụ: Dược thư Quốc gia VN 2024 / UpToDate 2026 / FDA / ESC Guidelines]
+
+[PROMPT DÁN VÀO NOTEBOOKLM]:
+"Dựa trên các tài liệu đã tải lên trong Notebook, hãy đóng vai trò Bác sĩ Chuyên khoa Dược Lâm sàng & Điều trị Nội khoa Cấp cao và biên soạn một bài viết BÁCH KHOA DƯỢC THƯ TOÀN DIỆN CHO HOẠT CHẤT: [TÊN HOẠT CHẤT].
+
+BẮT BUỘC TUÂN THỦ CẤU TRÚC VÀ QUY CHUẨN SAU:
+
+---
+title: \"Bách Khoa Dược Thư: [Tên hoạt chất] ([Tên biệt dược]) — [Phân nhóm dược lý]\"
+part: \"P1\"
+aliases:
+  - \"Dược thư: [Tên hoạt chất]\"
+  - \"[Tên biệt dược]\"
+  - \"[Tên tiếng Anh quốc tế]\"
+  - \"[Mã giải phẫu điều trị hóa học ATC nếu có]\"
+keywords:
+  - \"dược thư [tên hoạt chất]\"
+  - \"chỉnh liều egfr suy thận\"
+  - \"chỉnh liều child pugh suy gan\"
+  - \"tương tác thuốc ddi\"
+  - \"cảnh báo hộp đen blackbox\"
+  - \"dược động học dược lực học\"
+icd10:
+  - \"[Các mã bệnh lý chỉ định chính kèm tên]\"
+specialty: \"[Tên chuyên khoa chính]\"
+kho: \"3.2. Kho dược thư & tương tác thuốc\"
+type: \"drug\"
+tags:
+  - \"CliniPortal\"
+  - \"Pharmacology\"
+  - \"KhoDuocThu\"
+  - \"y-khoa/duoc\"
+updated: \"2026-09-11\"
+sources:
+  - \"[Dược thư Quốc gia VN / Hướng dẫn điều trị chính thức kèm năm]\"
+---
+
+# 💊 BÁCH KHOA DƯỢC THƯ: [TÊN HOẠT CHẤT] ([TÊN BIỆT DƯỢC THÔNG DỤNG])
+
+> **Tóm tắt cốt lõi**: [Đoạn văn 3-4 câu tóm tắt phân loại dược lý, cơ chế tác dụng đột phá, các chỉ định cứu mạng hoặc giảm tử vong then chốt đã được chứng minh qua các thử nghiệm lâm sàng lớn, và nguyên tắc an toàn sống còn khi dùng thuốc].
+
+---
+
+## 🏛️ 1. DƯỢC LỰC HỌC & DƯỢC ĐỘNG HỌC (PHARMACODYNAMICS & PHARMACOKINETICS)
+- **Cơ chế tác dụng phân tử (Mechanism of Action)**:
+  - Thụ thể/men/kênh đích tác động...
+  - Tác động sinh học tại các cơ quan đích (Tim, Thận, Gan, Mạch máu...)...
+- **Các thông số dược động học cốt lõi (PK Parameters)**:
+  - *Hấp thu (Bioavailability)*: Tỷ lệ sinh khả dụng, thời gian đạt nồng độ đỉnh ($T_{max}$), ảnh hưởng của bữa ăn.
+  - *Phân bố (Distribution)*: Thể tích phân bố ($V_d$), tỷ lệ gắn kết protein huyết tương.
+  - *Chuyển hóa (Metabolism)*: Hệ thống enzym chuyển hóa chính (CYP450, UGT...), các chất chuyển hóa có/không hoạt tính.
+  - *Thải trừ (Elimination)*: Thời gian bán thải ($t_{1/2}$), tỷ lệ thải trừ qua thận vs gan/phân.
+
+---
+
+## 🏆 2. BẰNG CHỨNG THỬ NGHIỆM LÂM SÀNG MỐC SON (EBM LANDMARKS)
+Tóm tắt 2-3 nghiên cứu RCT kinh điển định hình khuyến cáo quốc tế của thuốc:
+
+| Thử Nghiệm Lâm Sàng (Tên & Năm) | Dân Số Nghiên Cứu (Tiêu chí chọn mẫu) | Kết Quả Chính (Primary Endpoints với HR, 95% CI, p) | Ý Nghĩa Thực Hành Quốc Tế & Phân Hạng Khuyến Cáo |
+|:---|:---|:---|:---|
+| **[Thử nghiệm 1]** | ... | ... | ... (Class I, Level A) |
+| **[Thử nghiệm 2]** | ... | ... | ... (Class I, Level A) |
+
+---
+
+## 📋 3. CHỈ ĐỊNH, ĐƯỜNG DÙNG & BẢNG CHỈNH LIỀU THEO eGFR VÀ SUY GAN
+
+### 3.1. Dạng bào chế & Liều chuẩn người lớn:
+- Dạng bào chế: [Viên nén, dung dịch tiêm, hàm lượng...]
+- Liều khởi đầu & Liều duy trì mục tiêu: [Liều lượng, đường dùng, thời điểm uống trong ngày...]
+
+### 3.2. Bảng chỉnh liều theo chức năng thận (eGFR theo CKD-EPI):
+| Mức Lọc Cầu Thận eGFR (mL/phút/1.73m²) | Liều Khuyến Cáo Hoặc Điều Chỉnh | Khuyến Cáo An Toàn & Giám Sát |
+|:---|:---|:---|
+| **$\ge 60$ (Bình thường / Suy nhẹ)** | Liều chuẩn bình thường | Theo dõi định kỳ hàng năm |
+| **$30 - 59$ (Suy thận trung bình)** | [Chỉnh liều hoặc giữ nguyên] | Theo dõi chức năng thận mỗi 3-6 tháng |
+| **$15 - 29$ (Suy thận nặng)** | [Giảm liều cụ thể hoặc thận trọng] | Theo dõi sát Creatinine, Kali máu |
+| **$< 15$ hoặc Chạy thận nhân tạo** | [Chống chỉ định HOẶC liều lọc máu] | [Khuyến cáo chi tiết] |
+
+### 3.3. Bảng chỉnh liều theo chức năng gan (Child-Pugh):
+- **Child-Pugh A (Nhẹ)**: [Liều dùng...]
+- **Child-Pugh B (Vừa)**: [Liều dùng...]
+- **Child-Pugh C (Nặng)**: [Khuyến cáo thận trọng hoặc chống chỉ định...]
+
+---
+
+## ⚠️ 4. CHỐNG CHỈ ĐỊNH & CẢNH BÁO HỘP ĐEN (BLACKBOX WARNINGS)
+- **Chống chỉ định tuyệt đối**: [Tiền sử dị ứng, sốc, tình trạng bệnh lý cấm dùng].
+- **Cảnh báo hộp đen (FDA / Bộ Y Tế Blackbox Warnings)**:
+  > [!CAUTION]
+  > **CẢNH BÁO NGUY HIỂM TÍNH MẠNG**:
+  > - [Cảnh báo 1: ví dụ Nhiễm toan ceton, Xuất huyết đe dọa tính mạng, Suy gan cấp...]
+  > - [Cảnh báo 2: ...]
+- **Các thông số bắt buộc phải theo dõi trước & trong khi dùng thuốc**: [Creatinine, Điện giải đồ, Men gan, ECG...].
+
+---
+
+## ⚡ 5. BẢNG TRA CỨU TƯƠNG TÁC THUỐC ĐIỂN HÌNH (DRUG-DRUG INTERACTIONS - DDI)
+
+| Hoạt Chất Tương Tác | Phân Loại Mức Độ | Hậu Quả Lâm Sàng Dự Kiến | Cơ Chế Tương Tác Dược Lý | Khuyến Cáo Xử Trí Lâm Sàng |
+|:---|:---:|:---|:---|:---|
+| **[Thuốc 1]** | 🔴 **Chống chỉ định** | [Nguy cơ tử vong, loạn nhịp...] | [Ức chế chuyển hóa qua CYP...] | **Tuyệt đối không phối hợp**; thay thế bằng... |
+| **[Thuốc 2]** | 🟠 **Nghiêm trọng** | [Tăng nồng độ thuốc, độc tính...] | [Cạnh tranh gắn protein / thải trừ...] | Giảm liều 50% hoặc cách xa... giờ |
+| **[Thuốc 3]** | 🟡 **Cần theo dõi** | [Tác dụng cộng dồn hạ áp, tụt đường...] | [Tác động dược lực học hiệp đồng...] | Theo dõi sát dấu hiệu lâm sàng |
+
+---
+
+## 💎 6. ĐIỂM NGỌC LÂM SÀNG & KINH NGHIỆM DÙNG THUỐC (CLINICAL PEARLS)
+> [!TIP]
+> **Điểm ngọc dược lâm sàng (Clinical Pearls)**:
+> - ...
+> - ...
+> - [Kinh nghiệm xử trí khi bệnh nhân gặp tác dụng phụ thường gặp]
+
+---
+
+## 📚 TRÍCH DẪN TÀI LIỆU THAM KHẢO CHUẨN EBM
+1. Tác giả / Nhóm nghiên cứu. Tên thử nghiệm RCT. *Tạp chí Y khoa (NEJM, Lancet, JAMA)*. Năm;Tập(Số):Trang. DOI/PMID.
+2. Bộ Y Tế Việt Nam. Dược thư Quốc gia Việt Nam. Tái bản lần thứ 3. Hà Nội: Nhà xuất bản Y học; 2024.
+"

@@ -70,7 +70,7 @@ Song song với phản ứng miễn dịch thích ứng tại lớp đệm, glut
 Để hỗ trợ đối chiếu trực quan sinh lý bệnh học của bệnh Celiac, dưới đây là chi tiết sơ đồ cơ chế sinh lý bệnh và các mục tiêu tác động dược lý được trích xuất từ tài liệu tham khảo:
 
 - **Tên Sơ đồ/Hình**: **Hình 2: Các mục tiêu điều trị và cơ chế bệnh sinh trong bệnh Celiac** (_FIGURE 2: Therapeutic targets and mechanisms of action in coeliac disease_)
-- **Thuộc Tài Liệu**: **"fnut-11-1501817.pdf"** trong Notebook này.
+- **Thuộc Tài Liệu**: **"fnut-11-1501817.pdf"** trong y văn.
 
 #### Mô tả chi tiết sơ đồ cơ chế:
 

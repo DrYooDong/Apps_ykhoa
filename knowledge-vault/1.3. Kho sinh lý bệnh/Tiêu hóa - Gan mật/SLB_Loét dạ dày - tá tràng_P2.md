@@ -14,7 +14,6 @@ tags:
   - "y-khoa/slb"
 updated: "2026-08-21"
 ---
-
 # BÀI HỌC: SINH LÝ BỆNH CỦA LOÉT DẠ DÀY - TÁ TRÀNG (PHẦN 2)
 
 ---
@@ -60,7 +59,7 @@ Trên lâm sàng, hệ thống phân loại Forrest cải tiến (Modified Forre
 #### Sơ đồ cơ chế 1: Thuật toán xử trí xuất huyết tiêu hóa do loét dạ dày - tá tràng
 
 - **Tên hình**: **Figure 6. Schematic algorithm for the management of bleeding peptic ulcer**
-- **Thuộc tài liệu**: **GSCARR-2025-0156.pdf** trong Notebook.
+- **Thuộc tài liệu**: **GSCARR-2025-0156.pdf** trong y văn y học chứng cứ.
 - **Mô tả dưới lưu đồ**: Sơ đồ phác thảo quy trình xử trí XHTH do loét từ lúc tiếp nhận:
     1. Đánh giá nồng độ Hemoglobin (ngưỡng cắt trì hoãn truyền máu là dưới \(8~g/dL\) hoặc \(7~g/dL\)).
     2. Tiến hành hồi sức truyền dịch vị và bắt đầu truyền tĩnh mạch PPI liều cao (Proton pump infusion).
@@ -72,19 +71,19 @@ Trên lâm sàng, hệ thống phân loại Forrest cải tiến (Modified Forre
 #### Hình ảnh lâm sàng 2: Các phân độ Forrest trên nội soi ổ loét
 
 - **Tên hình**: **Figure 4. Forrest classification of bleeding peptic ulcers**
-- **Thuộc tài liệu**: **GSCARR-2025-0156.pdf** trong Notebook.
+- **Thuộc tài liệu**: **GSCARR-2025-0156.pdf** trong y văn y học chứng cứ.
 - **Mô tả dưới hình**: Bộ hình ảnh nội soi minh họa thực tế 6 phân độ của thang Forrest giúp nhà lâm sàng nhận diện trực quan: **Ia** (máu phun thành vòi); **Ib** (máu đùn/rỉ từ kẽ đáy loét); **IIa** (mạch máu nổi gồ lên đáy loét sạch); **IIb** (cục đông máu đỏ sẫm che phủ toàn bộ đáy loét); **IIc** (các chấm sắc tố đen phẳng); **III** (đáy loét màu trắng ngà hoàn toàn sạch sẽ).
 
 #### Hình ảnh lâm sàng 3: Cầm máu ổ loét tá tràng bằng clip cơ học (OTSC)
 
 - **Tên hình**: **Figure 7. Peptic ulcer in duodenum, with bleeding controlled by placement of an over-the-scope clip**
-- **Thuộc tài liệu**: **GSCARR-2025-0156.pdf** trong Notebook.
+- **Thuộc tài liệu**: **GSCARR-2025-0156.pdf** trong y văn y học chứng cứ.
 - **Mô tả dưới hình**: Hình ảnh nội soi ghi nhận một ổ loét sâu ở hành tá tràng đang chảy máu hoạt động dữ dội, sau đó dòng máu được kiểm soát hoàn toàn và ép chặt bằng cách bắn thành công một kẹp clip cơ học qua phạm vi nội soi (Over-the-scope clip - OTSC) ôm trọn mạch máu tổn thương.
 
 #### Bảng thông tin 1: Thang điểm Glasgow-Blatchford Score (GBS) trong phân tầng nguy cơ XHTH
 
 - **Tên bảng**: **Table 2. Glasgow-Blatchford score**
-- **Thuộc tài liệu**: **acg_clinical_guideline__upper_gastrointestinal_and14.pdf** trong Notebook.
+- **Thuộc tài liệu**: **acg_clinical_guideline__upper_gastrointestinal_and14.pdf** trong y văn y học chứng cứ.
 - **Nội dung bảng**: GBS là thang điểm sinh lý lâm sàng giúp dự đoán nhu cầu can thiệp truyền máu, can thiệp nội soi cầm máu hoặc nguy cơ tử vong của bệnh nhân ngay tại khoa cấp cứu mà không cần kết quả nội soi:
 
 |Các yếu tố nguy cơ tại thời điểm nhập viện|Điểm số (Factor score)|
@@ -162,7 +161,7 @@ Thời gian trì hoãn phẫu thuật là yếu tố sinh tử quyết định s
 #### Hình ảnh lâm sàng 4: Khâu lỗ thủng tá tràng qua nội soi ổ bụng
 
 - **Tên hình**: **Figure 3. Laparoscopic repair (suturing) of perforated duodenal ulcer**
-- **Thuộc tài liệu**: **GSCARR-2025-0156.pdf** trong Notebook.
+- **Thuộc tài liệu**: **GSCARR-2025-0156.pdf** trong y văn y học chứng cứ.
 - **Mô tả dưới hình**: Hình ảnh ghi lại ca phẫu thuật can thiệp tối thiểu bằng phương pháp nội soi ổ bụng (Laparoscopic surgery) để khâu kín lỗ thủng ở mặt trước hành tá tràng bằng các mũi khâu chỉ tự tiêu, sau đó được gia cố bao phủ bên trên bằng một vạt mạc nối lớn dạ dày (omental patch / phương pháp Graham) nhằm đảm bảo độ kín cơ học và sinh lý.
 
 ---

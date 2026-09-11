@@ -15,9 +15,6 @@ tags:
   - "y-khoa/cn"
 updated: "2026-08-21"
 ---
-
-
-
 # 1. Nội Dung Sinh Lý Học Chi Tiết
 
 ## Đại Cương Và Cơ Chế Bệnh Sinh U Xơ Cơ Tử Cung
@@ -81,7 +78,7 @@ Hiện nay, hệ thống phân loại theo vị trí của **Liên đoàn Sản 
 ### Trích Xuất Sơ Đồ Phân Loại Vị Trí U Xơ Cơ Tử Cung Theo FIGO 2011
 
 - **Tên sơ đồ:** Sơ đồ vị trí các loại U xơ cơ tử cung theo phân loại FIGO 2011 (minh họa kèm theo Bảng 1).
-- **Thuộc tài liệu:** "BYT_UXTC_2026.pdf" trong Notebook này.
+- **Thuộc tài liệu:** "BYT_UXTC_2026.pdf" trong y văn.
 
 ```
                [SƠ ĐỒ THỂ HIỆN MẪU TỬ CUNG CẮT DỌC]
@@ -159,7 +156,7 @@ Hiện nay, hệ thống phân loại theo vị trí của **Liên đoàn Sản 
 ### Trích Xuất Hình Ảnh Siêu Âm Chẩn Đoán UXCTC
 
 - **Tên hình ảnh:** Hình 1. UXCTC qua siêu âm đường âm đạo.
-- **Thuộc tài liệu:** "BYT_UXTC_2026.pdf" trong Notebook này.
+- **Thuộc tài liệu:** "BYT_UXTC_2026.pdf" trong y văn.
 
 ```
                 [HÌNH 1 - SIÊU ÂM ĐƯỜNG ÂM ĐẠO]
@@ -179,7 +176,7 @@ Hiện nay, hệ thống phân loại theo vị trí của **Liên đoàn Sản 
 ---
 
 - **Tên hình ảnh:** Hình 2. Chẩn đoán phân biệt UXCTC và bệnh tuyến cơ tử cung (adenomyosis) trên siêu âm.
-- **Thuộc tài liệu:** "BYT_UXTC_2026.pdf" trong Notebook này.
+- **Thuộc tài liệu:** "BYT_UXTC_2026.pdf" trong y văn.
 
 ```
                 [HÌNH 2 - CHẨN ĐOÁN PHÂN BIỆT]
@@ -304,7 +301,7 @@ Quy trình theo dõi được phân loại cụ thể cho hai đối tượng:
 ### Trích Xuất Sơ Đồ Phác Đồ Xử Trí U Xơ Cơ Tử Cung Toàn Diện
 
 - **Tên sơ đồ:** Sơ đồ Phác đồ xử trí U xơ cơ tử cung (Trích xuất từ Phụ lục của tài liệu).
-- **Thuộc tài liệu:** "BYT_UXTC_2026.pdf" trong Notebook này.
+- **Thuộc tài liệu:** "BYT_UXTC_2026.pdf" trong y văn.
 
 ```
                              [XỬ TRÍ U XƠ CƠ TỬ CUNG]

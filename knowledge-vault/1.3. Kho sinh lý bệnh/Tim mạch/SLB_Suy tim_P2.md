@@ -86,7 +86,7 @@ Trong đợt **suy tim mất bù (DHF)**, sung huyết là biểu hiện lâm s�
 
 ##### **Bảng thông tin trích xuất:**
 
-- **Tên Bảng:** _Table 12: Signs and symptoms associated with congestion and hypoperfusion_ thuộc tài liệu **ehag100.pdf** trong Notebook này.
+- **Tên Bảng:** _Table 12: Signs and symptoms associated with congestion and hypoperfusion_ thuộc tài liệu **ehag100.pdf** trong y văn.
 - **Mô tả nội dung bảng:** Bảng phân loại chi tiết các dấu hiệu lâm sàng và cận lâm sàng giúp bác sĩ phân biệt sung huyết tim trái, sung huyết tim phải và trạng thái giảm tưới máu ngoại vi:
 
 |Sung huyết tim trái (Left-sided congestion)|Sung huyết tim phải (Right-sided congestion)|Giảm tưới máu ngoại vi (Hypoperfusion)|
@@ -97,11 +97,11 @@ Trong đợt **suy tim mất bù (DHF)**, sung huyết là biểu hiện lâm s�
 
 ##### **Sơ đồ trích xuất:**
 
-- **Tên Hình/Sơ Sơ đồ 1:** _Figure 11: Diagnosing decompensated heart failure_ thuộc tài liệu **ehag100.pdf** trong Notebook này.
+- **Tên Hình/Sơ Sơ đồ 1:** _Figure 11: Diagnosing decompensated heart failure_ thuộc tài liệu **ehag100.pdf** trong y văn.
     ![[Pasted image 20260901103352.png]]
 - **Mô tả nội dung dưới sơ đồ:** Lưu đồ chuẩn hóa quy trình tiếp cận chẩn đoán suy tim mất bù tại giường bệnh. Trục quyết định ưu tiên đánh giá sinh hiệu lâm sàng: Nếu bệnh nhân có **Sốc tim (CS)** hoặc **Phù phổi cấp (APO)** - vốn là hệ quả của suy giảm tưới máu nặng nề hoặc tái phân bố dịch tối cấp - bác sĩ bắt buộc phải kích hoạt phác đồ hồi sức khẩn cấp trước khi làm các xét nghiệm sâu hơn. Ở những bệnh nhân huyết động ổn định hơn, định lượng NT-proBNP ngoại vi với ngưỡng cắt loại trừ \(< 300\text{ pg/mL}\) phối hợp với siêu âm tim qua thành ngực là các tiêu chuẩn vàng để xác định chẩn đoán.
     
-- **Tên Hình/Sơ đồ 2:** _Figure 10: Management of decompensated heart failure in the setting of chronic kidney disease_ thuộc tài liệu **ehag098.pdf** trong Notebook này.
+- **Tên Hình/Sơ đồ 2:** _Figure 10: Management of decompensated heart failure in the setting of chronic kidney disease_ thuộc tài liệu **ehag098.pdf** trong y văn.
     ![[Pasted image 20260901103405.png]]
 - **Mô tả nội dung dưới sơ đồ:** Sơ đồ hướng dẫn quy trình kiểm soát sung huyết cá thể hóa theo mức lọc cầu thận eGFR ở bệnh nhân suy tim mất bù đồng mắc bệnh thận mạn. Sơ đồ quy định rõ liều Furosemide tĩnh mạch khởi đầu cho bệnh nhân chưa từng dùng lợi tiểu (eGFR < 30 dùng 160 mg; eGFR 30–44 dùng 120 mg; eGFR ≥ 45 dùng 80 mg). Quy trình yêu cầu đo nồng độ Natri niệu ngẫu nhiên (spot uNa) ở giờ thứ 2; nếu uNa \(< 70\text{ mmol/L}\), bắt buộc phải gấp đôi liều lợi tiểu quai tĩnh mạch và phối hợp sớm các lợi tiểu đa cơ chế (SGLT2i, Acetazolamide) để vượt qua hiện tượng đề kháng lợi tiểu do kích hoạt ngược hệ RAAS.
     
@@ -115,4 +115,3 @@ Trong đợt **suy tim mất bù (DHF)**, sung huyết là biểu hiện lâm s�
 3. Wu et al. Sodium-glucose cotransporter-2 inhibitors vs. active comparators in patients with heart failure and end-stage kidney disease. _Frontiers in Cardiovascular Medicine_. 2026;13:1652863. doi:10.3389/fcvm.2026.1652863
 4. Walsh MN, Kober L, Sliwa K, et al. AHA/ACC/ESC/WHF Expert Consensus Document: Second Universal Definition of Heart Failure (2026). _Circulation_. 2026;153:e00-e00. doi:10.1161/CIR.0000000000001455
 5. Zhang ML, Huang ZY, Wang CC, Xu YD. Short-term renal and cardiac outcomes of combined ARNI and SGLT2 therapy in AHF patients: a prospective single-arm interventional study. _Front Cardiovasc Med_. 2026;13:1815471. doi:10.3389/fcvm.2026.1815471
-

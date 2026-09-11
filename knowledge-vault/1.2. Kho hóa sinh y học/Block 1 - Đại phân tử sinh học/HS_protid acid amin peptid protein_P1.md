@@ -15,7 +15,6 @@ tags:
   - "y-khoa/hs"
 updated: "2026-08-21"
 ---
-
 # HÓA HỌC PROTID (ACID AMIN, PEPTID & PROTEIN) (PHẦN 1)
 
 ## 1. Nội Dung Hóa Sinh Học Chi Tiết
@@ -432,7 +431,7 @@ Cấu trúc không gian hoàn chỉnh của protein được phân chia một c�
 
 ## 2. Trích Dẫn Tài Liệu Tham Khảo Chuẩn AMA
 
-Toàn bộ thông tin học thuật chi tiết trong bài học này được trích xuất trực tiếp và đối chiếu chính xác tuyệt đối từ các nguồn tài liệu y văn chính thống sau đây có trong Notebook:
+Toàn bộ thông tin học thuật chi tiết trong bài học này được trích xuất trực tiếp và đối chiếu chính xác tuyệt đối từ các nguồn tài liệu y văn chính thống sau đây trong y văn y học chứng cứ:
 
 1. Baynes JW, Dominiczak MH. *Medical Biochemistry*. 5th ed. London: Elsevier; 2019:19-21, 450-451, 465-467.
 2. Horton HR, Moran LA, Scrimgeour KG, Perry MD, Rawn JD. *Principles of Biochemistry*. 5th ed. Upper Saddle River, NJ: Pearson; 2012:55-84, 268-270, 272-275, 452-470, 481-485.

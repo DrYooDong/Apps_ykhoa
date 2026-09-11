@@ -15,33 +15,6 @@ tags:
   - "y-khoa/gpsl"
 updated: "2026-08-21"
 ---
-
-
-
-Dưới đây là nội dung chi tiết về Sinh lý Vận chuyển khí trong máu và Điều hòa hô hấp, được biên soạn bám sát các tài liệu nguồn, trích xuất hình ảnh minh họa và trích dẫn theo chuẩn AMA.
-
-### 1. NỘI DUNG SINH LÝ HỌC CHI TIẾT
-
-#### I. VẬN CHUYỂN OXY ($O_2$) TRONG MÁU
-Oxy được vận chuyển trong máu dưới hai dạng chính: dạng hòa tan trong huyết tương và dạng kết hợp hóa học với Hemoglobin (Hb) bên trong [[Hồng cầu]].
-*   **Dạng hòa tan:** Đây là dạng chuyên chở thứ yếu, chỉ chiếm một tỷ lệ rất nhỏ (khoảng 3%) tổng lượng oxy vận chuyển. Tuy nhiên, dạng hòa tan lại rất quan trọng vì nó quyết định phân áp oxy trong máu ($PO_2$), và chỉ có dạng oxy hòa tan mới có thể khuếch tán vào ti thể của tế bào để sử dụng.
-*   **Dạng kết hợp với Hemoglobin ($HbO_2$):** Đây là dạng vận chuyển chủ yếu, chiếm khoảng 95-97% tổng lượng oxy được chuyên chở. Mỗi phân tử Hb chứa 4 nhân heme có ion sắt $Fe^{2+}$, do đó có khả năng gắn lỏng lẻo và thuận nghịch tối đa với 4 phân tử oxy. Khả năng gắn oxy của Hb làm tăng sức chứa oxy của máu lên khoảng 65 - 70 lần so với dạng hòa tan đơn thuần.
-
-**Đường cong phân ly Oxy-Hemoglobin (Đường cong Barcroft):**
-Sự gắn kết của oxy vào Hb tuân theo hiệu ứng hợp tác (cooperativity), tạo ra đường cong phân ly có hình chữ S (sigmoid). Ở phân áp oxy cao (như ở [[Phổi]], $PO_2 \approx 100$ mm Hg), Hb gần như bão hòa hoàn toàn (khoảng 98%). Ở phân áp thấp (như ở mô, $PO_2 \approx 40$ mm Hg), đường cong dốc đứng, giúp Hb dễ dàng nhả oxy cho mô khi chỉ cần một sự sụt giảm nhỏ của $PO_2$.
-
-**Các yếu tố ảnh hưởng đến ái lực của Hb với Oxy:**
-*   **Hiệu ứng Bohr:** Sự gia tăng $PCO_2$ và nồng độ ion $H^+$ (tức giảm pH máu) ở các mô hoạt động chuyển hóa mạnh sẽ làm giảm ái lực của Hb với oxy. Điều này làm đường cong lệch sang **phải**, giúp Hb nhả nhiều oxy hơn cho mô sử dụng. Tại [[Phổi]], hiện tượng diễn ra ngược lại: $CO_2$ thoát ra làm pH tăng, đường cong lệch trái, giúp Hb tăng gắn kết với oxy.
-*   **Nhiệt độ và 2,3-DPG:** Nhiệt độ tăng và sự gia tăng hợp chất 2,3-diphosphoglycerate (2,3-DPG - sản phẩm của chuyển hóa [[Hồng cầu]]) trong lúc vận động hoặc thiếu oxy cũng làm đường cong lệch phải, tăng nhả oxy cho mô.
-*   **Carbon Monoxide (CO):** CO có ái lực với Hb cao gấp khoảng 200 - 210 lần so với oxy. Khi gắn vào Hb tạo thành Carboxyhemoglobin, CO không chỉ chiếm chỗ của oxy mà còn làm đường cong của các vị trí gắn oxy còn lại lệch mạnh sang trái, khiến Hb không thể nhả oxy cho mô, gây ngạt.
-
-> 📌 **TRÍCH XUẤT LƯU ĐỒ / HÌNH ẢNH MINH HỌA:**
-> *   **Tên Hình/Sơ đồ:** Fig. 24.4 Oxyhemoglobin dissociation curve (Đường cong phân ly oxyhemoglobin)
-> *   **Thuộc tài liệu:** [Book] Berne and Levy Physiology 8e by Bruce M. Koeppen, Bruce A. Stanton.pdf
-> *   **Nội dung mô tả:** Hình minh họa mối tương quan giữa phân áp oxy ($PO_2$) và độ bão hòa Hb. Điểm $P_{50}$ là phân áp mà tại đó Hb bão hòa 50%. Hình cho thấy các yếu tố làm đường cong lệch phải (tăng $P_{50}$, giảm ái lực: $\uparrow$ Nhiệt độ, $\uparrow PCO_2$, $\uparrow$ 2,3-DPG, $\downarrow$ pH) giúp nhả oxy ở mô. Các yếu tố làm đường cong lệch trái (giảm $P_{50}$, tăng ái lực: $\downarrow$ Nhiệt độ, $\downarrow PCO_2$, $\downarrow$ 2,3-DPG, $\uparrow$ pH) cản trở nhả oxy.
-
-#### II. VẬN CHUYỂN CARBON DIOXIDE ($CO_2$) TRONG MÁU
-$CO_2$ là sản phẩm chuyển hóa của tế bào, khuếch tán từ mô vào máu và được vận chuyển đến phổi dưới 3 dạng chính:
 1.  **Dạng hòa tan trong huyết tương:** Chiếm khoảng 5-7% tổng lượng $CO_2$. $CO_2$ hòa tan đóng vai trò quyết định phân áp $PCO_2$ trong máu.
 2.  **Dạng kết hợp với Protein (Carbaminohemoglobin):** Chiếm khoảng 11-23%. Tại hồng cầu, $CO_2$ gắn vào các nhóm amin (-NH2) của chuỗi globin tạo thành carbaminohemoglobin.
 3.  **Dạng ion Bicarbonate ($HCO_3^-$):** Đây là dạng vận chuyển chủ yếu, chiếm khoảng 63-70%. Khi $CO_2$ vào hồng cầu, nó kết hợp với nước ($H_2O$) dưới sự xúc tác của enzyme **Carbonic Anhydrase** tạo thành $H_2CO_3$, chất này phân ly ngay thành $H^+$ và $HCO_3^-$.

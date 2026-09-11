@@ -50,6 +50,14 @@
   --callout-trial-border:     var(--dsp-indigo);
   --callout-trial-bg:         var(--dsp-indigo-light);
   --callout-trial-badge:      var(--dsp-indigo);
+
+  --callout-important-border: var(--dsp-amber);
+  --callout-important-bg:     var(--dsp-amber-light);
+  --callout-important-badge:  #d97706;
+
+  --callout-check-border:     var(--dsp-emerald);
+  --callout-check-bg:         var(--dsp-emerald-light);
+  --callout-check-badge:      var(--dsp-emerald);
 }
 
 /* ==========================================================================
@@ -554,6 +562,65 @@
   background: var(--callout-trial-badge);
 }
 
+/* 6.9 IMPORTANT (Lưu ý quan trọng & Thiết yếu) */
+.vault-callout--important {
+  border-left-color: var(--callout-important-border);
+  border-color: rgba(217, 119, 6, 0.3);
+  background: var(--callout-important-bg);
+}
+.vault-callout--important .vault-callout__badge {
+  background: var(--callout-important-badge);
+}
+
+/* 6.10 CHECK / SUCCESS (Kiểm tra & Tiêu chuẩn đạt được) */
+.vault-callout--check {
+  border-left-color: var(--callout-check-border);
+  border-color: rgba(16, 185, 129, 0.3);
+  background: var(--callout-check-bg);
+}
+.vault-callout--check .vault-callout__badge {
+  background: var(--callout-check-badge);
+}
+
+/* Callout Inner Lists & Formatted Markdown Elements */
+.vault-callout-list {
+  margin: 0.5rem 0 0 0;
+  padding-left: 1.35rem;
+}
+
+.vault-callout-list li {
+  margin-bottom: 0.35rem;
+  line-height: 1.65;
+}
+
+.vault-callout-list li:last-child {
+  margin-bottom: 0;
+}
+
+.vault-callout strong {
+  color: var(--vault-text);
+  font-weight: 700;
+}
+
+.vault-callout a {
+  color: var(--vault-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.vault-callout a:hover {
+  color: var(--vault-primary-hover, var(--dsp-primary-light));
+}
+
+.vault-callout code {
+  background: var(--vault-bg);
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  font-family: var(--reader-font-mono);
+  font-size: 0.88em;
+  border: 1px solid var(--vault-border);
+}
+
 /* ==========================================================================
    7. SƠ ĐỒ ĐỘNG HỌC & DIỄN TIẾN LÂM SÀNG (TIMELINE CARDS)
    ========================================================================== */
@@ -928,13 +995,14 @@
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  color: #ef4444;
+  color: #b91c1c;
   font-size: 0.88rem;
   line-height: 1.6;
 }
 
 [data-theme="dark"] .vault-patient-leaflet-emergency-alert {
   background: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.4);
   color: #fca5a5;
 }
 

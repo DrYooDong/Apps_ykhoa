@@ -15,7 +15,7 @@ tags:
   - y-khoa/slb
 updated: 2026-08-21
 ---
-Tiếp nối nội dung của Phần 1, dưới đây là bài học chuyên sâu về **Sinh lý bệnh của bệnh Cúm (Phần 2)** được biên soạn chi tiết và nghiêm ngặt dựa trên các tài liệu y khoa từ Tổ chức Y tế Thế giới (WHO), hệ thống Cochrane và các nghiên cứu lâm sàng mới nhất có trong Notebook của bạn.
+Tiếp nối nội dung của Phần 1, dưới đây là bài học chuyên sâu về **Sinh lý bệnh của bệnh Cúm (Phần 2)** được biên soạn chi tiết và nghiêm ngặt dựa trên các tài liệu y khoa từ Tổ chức Y tế Thế giới (WHO), hệ thống Cochrane và các nghiên cứu lâm sàng mới nhất có trong y văn.
 
 ---
 
@@ -68,7 +68,7 @@ Dưới đây là các bảng dữ liệu cơ chế sinh học, dược lý lâm
 ### 1. Bảng 2.1: Các đột biến điểm gây kháng thuốc kháng virus cúm và tần suất xuất hiện trên lâm sàng
 
 - **Tên bảng gốc**: _Table 1. Characteristics of influenza antiviral drug classes and resistance_
-- **Thuộc tài liệu**: _Antiviral resistance in influenza: clinical and public health implications (2026)_ (mã file: `IRV-20-e70269.pdf` trong Notebook).
+- **Thuộc tài liệu**: _Antiviral resistance in influenza: clinical and public health implications (2026)_ (mã file: `IRV-20-e70269.pdf` trong y văn y học chứng cứ).
 - **Bảng dữ liệu**:
 
 |Nhóm thuốc kháng virus|Đích tác động (Protein đích)|Đột biến điểm phổ biến nhất|Tần suất xuất hiện ở Người lớn / Vị thành niên|Tần suất xuất hiện ở Trẻ em / Trẻ nhỏ|Khả năng lây truyền người - người|Ý nghĩa lâm sàng & Y tế công cộng|
@@ -84,7 +84,7 @@ Dưới đây là các bảng dữ liệu cơ chế sinh học, dược lý lâm
 ### 2. Bảng 2.2: So sánh kết cục lâm sàng và sự phát sinh kháng thuốc giữa Baloxavir Marboxil và Giả dược ở bệnh nhân cúm không nặng nhóm nguy cơ cao
 
 - **Tên bảng gốc**: _Table 7.2 Summary of findings for baloxavir vs. standard care in patients with suspected or confirmed non-severe influenza virus infection and at high risk of progression to severe influenza_
-- **Thuộc tài liệu**: _Clinical practice guidelines for influenza (2024)_ (mã file: `9789240097759-eng.pdf` trong Notebook).
+- **Thuộc tài liệu**: _Clinical practice guidelines for influenza (2024)_ (mã file: `9789240097759-eng.pdf` trong y văn y học chứng cứ).
 - **Bảng dữ liệu**:
 
 |Kết cục lâm sàng|Tỷ lệ ở nhóm Giả dược / Chăm sóc chuẩn|Tỷ lệ ở nhóm Baloxavir|Khác biệt tuyệt đối (95% CI)|Độ chắc chắn bằng chứng (GRADE)|Diễn giải lâm sàng|
@@ -101,7 +101,7 @@ Dưới đây là các bảng dữ liệu cơ chế sinh học, dược lý lâm
 ### 3. Bảng 2.3: Tổng hợp phân tích gộp về tác động ức chế sinh kháng thể của Oseltamivir trong các thử nghiệm lâm sàng
 
 - **Tên bảng/Sơ đồ cơ chế**: _Hypothesis 2 & 3: Oseltamivir affects antibody production in treatment and prophylaxis trials_
-- **Thuộc tài liệu**: _Neuraminidase inhibitors for preventing and treating influenza in adults and children (Review) (2018)_ do Cochrane biên soạn (mã file: `CD008965.pdf` trong Notebook).
+- **Thuộc tài liệu**: _Neuraminidase inhibitors for preventing and treating influenza in adults and children (Review) (2018)_ do Cochrane biên soạn (mã file: `CD008965.pdf` trong y văn y học chứng cứ).
 - **Bảng dữ liệu**:
 
 |Loại nghiên cứu / Thử nghiệm lâm sàng|Tác động lên đáp ứng sinh kháng thể ở nhóm dùng Oseltamivir so với nhóm chứng (Placebo)|Chỉ số Tỷ số Nguy cơ / Tỷ số Chênh (95% CI)|Ý nghĩa sinh lý bệnh học|

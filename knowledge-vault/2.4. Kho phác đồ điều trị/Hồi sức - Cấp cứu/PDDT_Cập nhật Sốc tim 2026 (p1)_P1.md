@@ -27,9 +27,6 @@ tags:
   - "y-khoa/pddt"
 updated: "2026-08-21"
 ---
-
-
-
 ### 1. Nội Dung Sinh Lý Học Chi Tiết: Tóm Tắt Cập Nhật [[Sốc]] Tim (Phần 1)
 
 #### 1.1. Định Nghĩa, Dịch Tễ Học Và Gánh Nặng Lâm Sàng Của [[Sốc]] Tim (CS)
@@ -45,7 +42,7 @@ Về mặt định nghĩa, sốc tim được hiểu rộng rãi là tình trạ
 
 ---
 
-> **Bảng 1: Định nghĩa Sốc Tim trong các Thử nghiệm Lâm sàng và Hướng dẫn (Definition of Cardiogenic Shock in Clinical Trials and Guidelines)** _Trích từ tài liệu: "PIIS1053077026000546.pdf" trong Notebook này._
+> **Bảng 1: Định nghĩa Sốc Tim trong các Thử nghiệm Lâm sàng và Hướng dẫn (Definition of Cardiogenic Shock in Clinical Trials and Guidelines)** _Trích từ tài liệu: "PIIS1053077026000546.pdf" trong y văn._
 > 
 > | Nghiên cứu / Hướng dẫn | Tiêu chuẩn lâm sàng và huyết động | | :--- | :--- | | **SHOCK** | 1. SBP < 90 mmHg trong \(\ge 30\) phút hoặc cần hỗ trợ để duy trì SBP \(\ge 90\) mmHg; VÀ2. Giảm tưới máu cơ quan đích (nước tiểu < 30 mL/h hoặc chi lạnh và nhịp tim > 60 bpm); VÀ3. Tiêu chuẩn huyết động (không bắt buộc nếu có nhồi máu vùng trước hoặc sung huyết [[Phổi]] trên [[X-quang]]): CI \(\le 2.2\text{ L/min/m}^2\) VÀ PCWP \(\ge 15\text{ mmHg}\). | | **TRIUMPH** | 1. Thông thoáng động mạch liên quan nhồi máu (IRA) tự phát hoặc sau can thiệp mạch vành qua da (PCI); VÀ2. Sốc tim kháng trị > 1 giờ sau PCI với SBP < 100 mmHg bất chấp dùng thuốc vận mạch (dopamine \(\ge 7\ \mu\text{g/kg/min}\) hoặc norepinephrine/epinephrine \(\ge 0.15\ \mu\text{g/kg/min}\)); VÀ3. Giảm tưới máu cơ quan đích; VÀ4. Tiêu chuẩn lâm sàng/huyết động cho thấy tăng áp lực đổ đầy thất trái; VÀ5. Phân suất tống máu thất trái LVEF < 40%. | | **IABP-SHOCK II** | 1. SBP < 90 mmHg trong \(\ge 30\) phút hoặc cần catecholamine để duy trì SBP > 90 mmHg; VÀ2. Sung huyết phổi trên lâm sàng; VÀ3. Suy giảm tưới máu tạng với ít nhất 1 tiêu chuẩn: Thay đổi trạng thái tâm thần; Da/chi lạnh ẩm; Nước tiểu < 30 mL/h; Lactate > 2.0 mmol/L. | | **CULPRIT-SHOCK** | 1. Lên kế hoạch tái tưới máu sớm bằng PCI; VÀ2. Bệnh mạch vành nhiều nhánh (hẹp > 70% ở ít nhất 2 nhánh động mạch lớn \(\ge 2\text{ mm}\)) với tổn thương thủ phạm được xác định; VÀ3. SBP < 90 mmHg trong > 30 phút hoặc cần catecholamine để duy trì SBP > 90 mmHg; VÀ4. Sung huyết phổi; VÀ5. Suy giảm tưới máu tạng với ít nhất 1 tiêu chuẩn: Thay đổi trạng thái tâm thần; Da/chi lạnh ẩm; Nước tiểu < 30 mL/h; Lactate > 2.0 mmol/L. | | **ESC Heart Failure Guidelines** | SBP < 90 mmHg kèm thể tích tuần hoàn đầy đủ và các dấu hiệu lâm sàng hoặc xét nghiệm của giảm tưới máu.- _Lâm sàng:_ Chi lạnh, thiểu niệu, lú lẫn, chóng mặt, huyết áp kẹt (narrow pulse pressure).- _Xét nghiệm:_ Toan chuyển hóa, tăng lactate, tăng creatinine. |
 
@@ -67,7 +64,7 @@ At trung tâm của vòng xoắn này là tổn thương cơ tim ban đầu gây
 
 ---
 
-> **Hình 1: Sinh lý bệnh học của Sốc tim với các bất thường theo giai đoạn lâm sàng, huyết động, rối loạn vi tuần hoàn và suy tạng (Pathophysiology of cardiogenic shock with staged abnormalities of clinical examination, hemodynamics, microcirculatory dysfunction, and organ failure)** _Trích từ tài liệu: "PIIS1053077026000546.pdf" trong Notebook này._
+> **Hình 1: Sinh lý bệnh học của Sốc tim với các bất thường theo giai đoạn lâm sàng, huyết động, rối loạn vi tuần hoàn và suy tạng (Pathophysiology of cardiogenic shock with staged abnormalities of clinical examination, hemodynamics, microcirculatory dysfunction, and organ failure)** _Trích từ tài liệu: "PIIS1053077026000546.pdf" trong y văn._
 > 
 > **Mô tả chi tiết sơ đồ:** Sơ đồ này mô tả tiến trình sinh lý bệnh của sốc tim được tích hợp theo các giai đoạn phân loại SCAI (từ giai đoạn A đến E) ở các cấp độ:
 > 

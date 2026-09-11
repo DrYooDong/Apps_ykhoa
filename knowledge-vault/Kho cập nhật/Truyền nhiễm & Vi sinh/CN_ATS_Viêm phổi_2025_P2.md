@@ -16,7 +16,6 @@ updated: "2026-09-06"
 icd10:
   - "J18"
 ---
-
 ### 1. Nội Dung Sinh Lý Học và Y Học Lâm Sàng Chi Tiết
 
 Dựa trên các bằng chứng khoa học và đồng thuận chuyên gia mới nhất trong Hướng dẫn Lâm sàng của **Hiệp hội Lồng ngực Hoa Kỳ (ATS) năm 2025**, dưới đây là tóm tắt chi tiết **Phần 2** tập trung vào hai câu hỏi lâm sàng cốt lõi: thời gian điều trị kháng sinh tối ưu và liệu pháp Corticosteroid toàn thân đối với viêm phổi mắc phải cộng đồng (CAP) ở người lớn.
@@ -44,7 +43,7 @@ Việc kéo dài thời gian dùng thuốc không cần thiết mang lại nhữ
 
 **Tên Bảng:** Table 6 - Clinical Stability Definitions (Các tiêu chuẩn xác định trạng thái ổn định lâm sàng của bệnh nhân CAP).
 
-- **Thuộc tài liệu:** _rccm.202507-1692st.pdf_ trong Notebook này.
+- **Thuộc tài liệu:** _rccm.202507-1692st.pdf_ trong y văn.
 
 |Chỉ số lâm sàng|Ngưỡng xác định đạt trạng thái ổn định (Stability Criteria)|
 |:--|:--|
@@ -64,7 +63,7 @@ Việc kéo dài thời gian dùng thuốc không cần thiết mang lại nhữ
 
 **Tên Sơ đồ:** Sơ đồ quyết định lâm sàng về thời gian điều trị kháng sinh ở bệnh nhân CAP dựa trên mức độ nặng và các yếu tố cản trở.
 
-- **Thuộc tài liệu:** _rccm.202507-1692st.pdf_ trong Notebook này.
+- **Thuộc tài liệu:** _rccm.202507-1692st.pdf_ trong y văn.
 
 ```
                      [ BỆNH NHÂN CAP ĐẠT TRẠNG THÁI ỔN ĐỊNH LÂM SÀNG ]
@@ -132,7 +131,7 @@ Sử dụng **Hydrocortisone đường tĩnh mạch với liều 200 mg/ngày** 
 
 **Tên Lưu đồ:** Lưu đồ tiếp cận lâm sàng đối với việc chỉ định Corticosteroid toàn thân ở bệnh nhân CAP nhập viện.
 
-- **Thuộc tài liệu:** _rccm.202507-1692st.pdf_ trong Notebook này.
+- **Thuộc tài liệu:** _rccm.202507-1692st.pdf_ trong y văn.
 
 ```
                      [ BỆNH NHÂN NGƯỜI LỚN NHẬP VIỆN VÌ CAP ]
@@ -168,4 +167,4 @@ Sử dụng **Hydrocortisone đường tĩnh mạch với liều 200 mg/ngày** 
 
 ### 2. Trích Dẫn Tài Liệu Tham Khảo Chuẩn AMA
 
-1. Jones BE, Ramirez JA, Oren E, Soni NJ, Sullivan LR, Restrepo MI, Musher DM, Erstad BL, Pickens C, Vaughn VM, Helgeson SA, Crothers K, Metlay JP, Turpin BDB, Cao B, Chalmers JD, Dela Cruz CS, Gendlina I, Hojat LS, Maryrose Laguio-Vila, Stephen Y. Liang, Grant W. Waterer, Marilynn Paine, Conall Hawkins, Kevin Wilson. Diagnosis and Management of Community-acquired Pneumonia: An Official American Thoracic Society Clinical Practice Guideline. _Am J Respir Crit Care Med_. 2025;212(1):24-41. doi:10.1164/rccm.202507-1692ST. (Tham chiếu toàn bộ nội dung trích dẫn từ các phân đoạn đến của tài liệu gốc trong Notebook này).
+1. Jones BE, Ramirez JA, Oren E, Soni NJ, Sullivan LR, Restrepo MI, Musher DM, Erstad BL, Pickens C, Vaughn VM, Helgeson SA, Crothers K, Metlay JP, Turpin BDB, Cao B, Chalmers JD, Dela Cruz CS, Gendlina I, Hojat LS, Maryrose Laguio-Vila, Stephen Y. Liang, Grant W. Waterer, Marilynn Paine, Conall Hawkins, Kevin Wilson. Diagnosis and Management of Community-acquired Pneumonia: An Official American Thoracic Society Clinical Practice Guideline. _Am J Respir Crit Care Med_. 2025;212(1):24-41. doi:10.1164/rccm.202507-1692ST. (Tham chiếu toàn bộ nội dung trích dẫn từ các phân đoạn đến của tài liệu gốc trong y văn).

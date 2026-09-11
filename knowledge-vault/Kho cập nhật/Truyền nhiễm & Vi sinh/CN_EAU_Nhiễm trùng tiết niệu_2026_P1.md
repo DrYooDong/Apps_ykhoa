@@ -18,7 +18,6 @@ updated: "2026-09-06"
 icd10:
   - "N39.0"
 ---
-
 # BÀI HỌC SINH LÝ HỌC, SINH LÝ BỆNH VÀ CƠ CHẾ BỆNH SINH CỦA NHIỄM TRÙNG ĐƯỜNG TIẾT NIỆU (PHẦN 1)
 
 _Tài liệu tham khảo chính: Hướng dẫn về Nhiễm trùng Hệ tiết niệu của Hiệp hội Tiết niệu Châu Âu năm 2026 (EAU Guidelines on Urological Infections 2026)_
@@ -51,7 +50,7 @@ Sự phân biệt này giúp lâm sàng nhận diện ngay lập tức những t
 > **TRÍCH XUẤT LƯU ĐỒ & SƠ ĐỒ CƠ CHẾ PHÂN LOẠI**
 > 
 > - **Tên hình:** **Figure 1: Classification of UTI (Sơ đồ Phân loại Nhiễm trùng tiết niệu)**
-> - **Thuộc tài liệu:** _EAU Guidelines on Urological Infections 2026_ trong Notebook này.
+> - **Thuộc tài liệu:** _EAU Guidelines on Urological Infections 2026_ trong y văn.
 > ![[Pasted image 20260902214639.png]]
 > **Mô tả nội dung sơ đồ:**
 > 
@@ -70,7 +69,7 @@ Sự phân biệt này giúp lâm sàng nhận diện ngay lập tức những t
 > **TRÍCH XUẤT BẢNG THÔNG TIN TRIỆU CHỨNG**
 > 
 > - **Tên bảng:** **Table 1: Localised and systemic signs and symptoms of UTI (Các dấu hiệu và triệu chứng khu trú và toàn thân của UTI)**
-> - **Thuộc tài liệu:** _EAU Guidelines on Urological Infections 2026_ trong Notebook này.
+> - **Thuộc tài liệu:** _EAU Guidelines on Urological Infections 2026_ trong y văn.
 > 
 > | Triệu chứng khu trú (Localised UTI) | Triệu chứng toàn thân (Systemic UTI) | | :--- | :--- | | • Tiểu buốt/rát (Dysuria) • Tiểu gấp (Urgency) • Tiểu nhiều lần (Frequency) • Tiểu không tự chủ (Incontinence) • Có mủ niệu đạo (Urethral purulence) • Cảm giác đè nén hoặc co thắt vùng bụng dưới | • Sốt hoặc hạ thân nhiệt (Fever / Hypothermia) • Cơn rét run, run lập cập (Rigors, shaking chills) • Sảng, mê sảng (Delirium) • Hạ huyết áp (Hypotension) • Nhịp tim nhanh (Tachycardia) • Đau hoặc gõ đau vùng góc sườn lưng (Costovertebral angle pain) |
 > 
@@ -90,7 +89,7 @@ Khi xử trí UTIs, việc đánh giá các yếu tố nguy cơ là vô cùng qu
 > **TRÍCH XUẤT BẢNG THÔNG TIN YẾU TỐ NGUY CƠ**
 > 
 > - **Tên bảng:** **Table 2: UTI Risk Factors (Các yếu tố nguy cơ của UTI)**
-> - **Thuộc tài liệu:** _EAU Guidelines on Urological Infections 2026_ trong Notebook này.
+> - **Thuộc tài liệu:** _EAU Guidelines on Urological Infections 2026_ trong y văn.
 > 
 > **Nội dung chi tiết các yếu tố nguy cơ:**
 > 
@@ -170,7 +169,7 @@ Kháng sinh nên được lựa chọn dựa trên mô hình nhạy cảm vi khu
 > **TRÍCH XUẤT PHÁC ĐỒ ĐIỀU TRỊ KHÁNG SINH**
 > 
 > - **Tên bảng:** **Table 3: Suggested regimens for antimicrobial therapy in cystitis (Các phác đồ khuyến cáo điều trị kháng sinh trong viêm bàng quang)**
-> - **Thuộc tài liệu:** _EAU Guidelines on Urological Infections 2026_ trong Notebook này.
+> - **Thuộc tài liệu:** _EAU Guidelines on Urological Infections 2026_ trong y văn.
 > 
 > | Nhóm bệnh nhân & Kháng sinh | Liều dùng hàng ngày | Thời gian điều trị | Ghi chú lâm sàng | | :--- | :--- | :--- | :--- | | **Lựa chọn đầu tay ở phụ nữ (First-line women)** | | | | | • Fosfomycin trometamol | 3 g | Liều duy nhất (1 ngày) | Rất phổ biến, hiệu quả cao. | | • Nitrofurantoin macrocrystal* | 50 - 100 mg | 5 ngày (4 lần/ngày) | Cần theo dõi chức năng thận. | | • Nitrofurantoin monohydrate / macrocrystals* | 100 mg | 5 ngày (2 lần/ngày) | | | • Nitrofurantoin macrocrystal giải phóng kéo dài* | 100 mg | 5 ngày (2 lần/ngày) | | | • Pivmecillinam | 400 mg | 3 - 5 ngày (3 lần/ngày) | | | • Nitroxoline | 250 mg | 5 ngày (3 lần/ngày) | | | **Kháng sinh thay thế (Alternatives)** | | | | | • Cefadroxil | 500 mg | 3 ngày (2 lần/ngày) | | | • Cefpodoxime | 100 mg | 3 ngày (2 lần/ngày) | | | **Nếu tỷ lệ kháng E. coli tại chỗ dưới 20%** | | | | | • Trimethoprim | 200 mg | 5 ngày (2 lần/ngày) | Tránh dùng trong 3 tháng đầu thai kỳ. | | • Trimethoprim-sulfamethoxazole (Co-trimoxazole) | 160 / 800 mg | 3 ngày (2 lần/ngày) | Tránh dùng trong 3 tháng cuối thai kỳ. | | **Điều trị ở nam giới (Treatment in men)** | | | | | • Trimethoprim-sulfamethoxazole | 160 / 800 mg | 7 ngày (2 lần/ngày) | Khuyến cáo cho nam giới trẻ tuổi không có tổn thương tuyến tiền liệt. |
 > 
@@ -190,7 +189,7 @@ Kháng sinh nên được lựa chọn dựa trên mô hình nhạy cảm vi khu
 > **TRÍCH XUẤT CÁC YẾU TỐ NGUY CƠ THEO ĐỘ TUỔI**
 > 
 > - **Tên bảng:** **Table 4: Age-related associations of recurrent cystitis in women (Mối liên quan theo tuổi của viêm bàng quang tái phát ở phụ nữ)**
-> - **Thuộc tài liệu:** _EAU Guidelines on Urological Infections 2026_ trong Notebook này.
+> - **Thuộc tài liệu:** _EAU Guidelines on Urological Infections 2026_ trong y văn.
 > 
 > | Nhóm phụ nữ trẻ và tiền mãn kinh | Nhóm phụ nữ sau mãn kinh và người cao tuổi | | :--- | :--- | | • Tần suất quan hệ tình dục cao (Sexual intercourse) • Sử dụng chất diệt tinh trùng (Use of spermicide) • Có bạn tình mới (A new sexual partner) • Mẹ có tiền sử bị viêm bàng quang • Bản thân có tiền sử bị viêm bàng quang lúc nhỏ • Trạng thái không tiết kháng nguyên nhóm máu trong dịch tiết | • Tiền sử viêm bàng quang trước khi mãn kinh • Tiểu không tự chủ (Urinary incontinence) • Viêm âm đạo teo do thiếu hụt oestrogen (Atrophic vaginitis) • Sa bàng quang (Cystocele) • Thể tích nước tiểu tồn dư sau tiểu tăng • Trạng thái không tiết kháng nguyên nhóm máu • Đặt thông tiểu lưu và suy giảm chức năng vận động |
 
@@ -233,7 +232,7 @@ Kháng sinh nên được lựa chọn dựa trên mô hình nhạy cảm vi khu
 > **TRÍCH XUẤT PHÁC ĐỒ KHÁNG SINH TRUYỀN TĨNH MẠCH NỘI TRÚ**
 > 
 > - **Tên bảng:** **Table 6: Suggested regimens for empirical parenteral antimicrobial therapy in pyelonephritis (Phác đồ kháng sinh tĩnh mạch kinh nghiệm trong viêm bể thận cấp)**
-> - **Thuộc tài liệu:** _EAU Guidelines on Urological Infections 2026_ trong Notebook này.
+> - **Thuộc tài liệu:** _EAU Guidelines on Urological Infections 2026_ trong y văn.
 > 
 > | Phân loại kháng sinh | Liều dùng hàng ngày | Ghi chú và cân nhắc lâm sàng | | :--- | :--- | :--- | | **Phác đồ đầu tay (First-line treatment)** | | | | • Ciprofloxacin | 400 mg x 2 lần/ngày | Thâm nhập nhu mô rất tốt. | | • Levofloxacin | 500 mg x 1-2 lần/ngày | | | • Cefotaxime | 2 g x 3 lần/ngày | Không nghiên cứu dưới dạng đơn trị liệu. | | • Ceftriaxone | 2 g x 1-2 lần/ngày | Liều cao (2g x 2 lần) được khuyến cáo cho ca nặng. | | **Phác đồ hàng thứ hai (Second-line treatment)** | | | | • Cefepime | 1-2 g x 2-3 lần/ngày | | | • Piperacillin / Tazobactam | 4.5 g x 3-4 lần/ngày | Thường dùng cho ca nghi nhiễm trực khuẩn mủ xanh. | | • Gentamicin | 6 - 7 mg/kg x 1 lần/ngày | Không dùng đơn trị liệu trong viêm bể thận cấp. | | • Amikacin | 25 - 30 mg/kg x 1 lần/ngày | | | **Các lựa chọn hàng cuối cùng (Last-line - Nghi ngờ vi khuẩn đa kháng ESBL/CRE)** | | | | • Imipenem / Cilastatin | 0.5 - 1.0 g x 4 lần/ngày | Chỉ dùng khi có bằng chứng nhiễm khuẩn đa kháng. | | • Meropenem | 1 g x 3 lần/ngày | | | • Ceftolozane / Tazobactam | 1.5 g x 3 lần/ngày | Tỷ lệ chữa khỏi hỗn hợp cao hơn Levofloxacin đối với chủng kháng thuốc. | | • Ceftazidime / Avibactam | 2.5 g x 3 lần/ngày | Rất hiệu quả cho chủng Enterobacterales và Pseudomonas aeruginosa kháng Ceftazidime. | | • Cefiderocol | 2 g x 3-4 lần/ngày | | | • Meropenem - Vaborbactam | 2 g x 3 lần/ngày | | | • Plazomicin | 15 mg/kg x 1 lần/ngày | |
 

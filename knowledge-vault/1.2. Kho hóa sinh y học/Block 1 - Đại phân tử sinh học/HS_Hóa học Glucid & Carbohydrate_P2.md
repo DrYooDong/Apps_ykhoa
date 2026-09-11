@@ -15,7 +15,6 @@ tags:
   - "y-khoa/hs"
 updated: "2026-08-21"
 ---
-
 # BÀI GIẢNG CHI TIẾT: HÓA HỌC GLUCID (CARBOHYDRATES) (PHẦN 2)
 
 ## 1. NỘI DUNG HÓA SINH HỌC CHI TIẾT
@@ -166,7 +165,7 @@ Glycoprotein được phân chia thành 3 lớp chính dựa trên bản chất 
 
 ### III. SƠ ĐỒ CHU TRÌNH VÀ BẢN VẼ MINH HỌA HÓA SINH
 
-Để hỗ trợ việc tự học trực quan và đối chiếu chính xác các tài liệu chuẩn hóa sinh học lâm sàng, phần này hệ thống hóa các sơ đồ và cấu trúc phản ứng tiêu biểu từ các nguồn tài liệu gốc trong Notebook.
+Để hỗ trợ việc tự học trực quan và đối chiếu chính xác các tài liệu chuẩn hóa sinh học lâm sàng, phần này hệ thống hóa các sơ đồ và cấu trúc phản ứng tiêu biểu từ các nguồn tài liệu gốc trong y văn y học chứng cứ.
 
 #### 1. Sơ đồ Cấu trúc Phân nhánh của Amylopectin và Glycogen
 Mạch thẳng được cấu tạo từ các liên kết $lpha(1 ightarrow 4)$-glucosid, trong khi điểm nhánh là liên kết $lpha(1 ightarrow 6)$-glucosid tạo nên mạng lưới ba chiều khổng lồ ngập nước.

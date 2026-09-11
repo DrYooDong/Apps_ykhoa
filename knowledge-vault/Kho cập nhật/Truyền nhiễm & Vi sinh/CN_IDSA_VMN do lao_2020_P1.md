@@ -16,7 +16,6 @@ tags:
   - "y-khoa/cn"
 updated: "2026-09-06"
 ---
-
 # BÀI HỌC: PHÂN TÍCH NGHIÊN CỨU HỆ THỐNG VỀ KẾT CỤC ĐIỀU TRỊ LAO MÀNG NÃO Ở NGƯỜI LỚN (PHẦN 1)
 
 ---
@@ -127,7 +126,7 @@ Dưới đây là lưu đồ thể hiện chi tiết quy trình sàng lọc và 
 ```
 
 - **Tên Hình:** Figure 1. Flow diagram of the study selection process.
-- **Thuộc Tài Liệu:** _ofaa257.pdf_ trong Notebook này.
+- **Thuộc Tài Liệu:** _ofaa257.pdf_ trong y văn.
 - **Nội dung mô tả chi tiết dưới sơ đồ:** Lưu đồ thể hiện từng bước sàng lọc tài liệu từ 2562 bản ghi ban đầu được xác định qua tìm kiếm máy tính trên MEDLINE và EMBASE cùng 3 báo cáo từ các nguồn thủ công khác. Sau khi loại bỏ trùng lặp, 2197 bài báo được sàng lọc tiêu đề và tóm tắt, từ đó loại bỏ 1934 báo cáo không phù hợp. Tiến hành đọc toàn văn 264 bài báo và áp dụng các tiêu chuẩn loại trừ nghiêm ngặt (như cỡ mẫu nhỏ, thiếu thông tin điều trị, ngôn ngữ...) đã loại đi 225 báo cáo. Cuối cùng, có 42 nghiên cứu được tổng hợp định tính và **39 nghiên cứu nguyên bản** (với tổng số 5752 bệnh nhân) có dữ liệu định lượng tương thích hoàn toàn để đưa vào phân tích gộp (meta-analysis) kết cục tử vong và di chứng.
 
 ---

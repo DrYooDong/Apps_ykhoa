@@ -15,11 +15,6 @@ tags:
   - "y-khoa/gpsl"
 updated: "2026-08-21"
 ---
-
-
-
-Dưới đây là nội dung sinh lý học chi tiết về sự vận chuyển chất qua màng tế bào, được biên soạn bám sát các tài liệu nguồn đã cung cấp, bao gồm các hình ảnh/sơ đồ minh họa theo đúng yêu cầu của bạn:
-
 ### 1. NỘI DUNG SINH LÝ HỌC CHI TIẾT
 
 #### 1.1. Đại cương về màng tế bào và sự vận chuyển

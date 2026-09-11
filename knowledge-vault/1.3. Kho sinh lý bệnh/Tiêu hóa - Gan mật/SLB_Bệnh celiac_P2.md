@@ -95,12 +95,12 @@ Bệnh nhân mắc bệnh Celiac có **nguy cơ mắc các bệnh lý tuyến gi
 
 ### Trích xuất thông tin đối chiếu trực quan từ tài liệu nguồn
 
-Để hỗ trợ đối chiếu trực quan, dưới đây là chi tiết các bảng thông tin mô học và thuật toán lâm sàng được trích xuất trực tiếp từ các tài liệu tham khảo trong Notebook:
+Để hỗ trợ đối chiếu trực quan, dưới đây là chi tiết các bảng thông tin mô học và thuật toán lâm sàng được trích xuất trực tiếp từ các tài liệu tham khảo trong y văn y học chứng cứ:
 
 #### 1. Bảng Tiêu chuẩn Mô học Marsh cải tiến:
 
 - **Tên Bảng**: **Bảng 5: Phân loại Marsh cải tiến về tổn thương ruột non do gluten** (_Table 5: Modified Marsh classification of gluten-induced small-intestinal damage_)
-- **Thuộc Tài Liệu**: **"celiac-disease-english-2016.pdf"** trong Notebook này.
+- **Thuộc Tài Liệu**: **"celiac-disease-english-2016.pdf"** trong y văn.
 
 |Giai đoạn (Stage)|Tên mô tả tổn thương|Đặc điểm cấu trúc mô học chi tiết|
 |:--|:--|:--|
@@ -114,7 +114,7 @@ Bệnh nhân mắc bệnh Celiac có **nguy cơ mắc các bệnh lý tuyến gi
 #### 2. Sơ đồ Thuật toán Tiếp cận Chẩn đoán và Phân loại Bệnh Celiac Kháng trị (RCD):
 
 - **Tên Sơ đồ**: **Hình 1: Thuật toán chẩn đoán và quản lý bệnh Celiac kháng trị** (_Figure 1: Algorithm for diagnosis and management of refractory celiac disease_)
-- **Thuộc Tài Liệu**: **"PIIS0016508522009672.pdf"** (đồng nhất với lưu đồ trong **"UEG Journal - 2026 - Al‐Toma"**) trong Notebook này.
+- **Thuộc Tài Liệu**: **"PIIS0016508522009672.pdf"** (đồng nhất với lưu đồ trong **"UEG Journal - 2026 - Al‐Toma"**) trong y văn.
 
 ```
                 Bệnh nhân Celiac có triệu chứng kém hấp thu dai dẳng / tái phát (>12 tháng ăn GFD)

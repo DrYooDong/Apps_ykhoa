@@ -14,7 +14,6 @@ tags:
   - y-khoa/raw
 updated: 2026-08-21
 ---
-
 # BÀI HỌC CHUYÊN SÂU: SINH LÝ BỆNH VỀ TRẠNG THÁI TĂNG ÁP LỰC THẨM THẤU DO ĐÁI THÁO ĐƯỜNG (HHS)
 
 ---
@@ -46,7 +45,7 @@ Tương tự như DKA, sự khởi phát của HHS thường được kích ho�
 #### **Sơ đồ cơ chế: Con đường Sinh lý bệnh học của DKA và HHS**
 
 _Tên sơ đồ:_ **Figure 1 — Pathogenesis of DKA and HHS**  
-_Thuộc tài liệu:_ `Diabetes-Care-2024.pdf` trong Notebook này (Sơ đồ tương tự cũng có trong tài liệu `Ch11PediatricDiabetes.pdf`).
+_Thuộc tài liệu:_ `Diabetes-Care-2024.pdf` trong y văn (Sơ đồ tương tự cũng có trong tài liệu `Ch11PediatricDiabetes.pdf`).
 
 ```
                   [ BIẾN CỐ KÍCH HOẠT: Stress / Nhiễm trùng / Bệnh cấp tính ]

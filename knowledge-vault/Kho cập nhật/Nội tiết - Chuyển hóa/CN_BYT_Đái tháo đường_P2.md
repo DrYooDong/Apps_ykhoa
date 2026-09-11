@@ -26,9 +26,6 @@ tags:
   - "y-khoa/noi-tiet"
 updated: "2026-08-21"
 ---
-
-
-
 # TÓM TẮT HƯỚNG DẪN BỘ Y TẾ (PHẦN 2)
 
 _Văn bản gốc: "Hướng dẫn chẩn đoán và điều trị bệnh thần kinh đái tháo đường" (Ban hành kèm theo Quyết định số 3510/QĐ-BYT ngày 11 tháng 11 năm 2025 của Bộ trưởng Bộ Y tế)_
@@ -65,7 +62,7 @@ _Văn bản gốc: "Hướng dẫn chẩn đoán và điều trị bệnh thần
 ##### **Sơ đồ 1: Quy trình tiếp cận và chẩn đoán bệnh đa dây thần kinh ĐTĐ**
 
 _Tên hình:_ **Hình 4. Quy trình tiếp cận và chẩn đoán bệnh đa dây thần kinh ĐTĐ**  
-_Thuộc tài liệu:_ `ĐTĐ & bệnh thận _ BYT _ 2025.pdf` trong Notebook.
+_Thuộc tài liệu:_ `ĐTĐ & bệnh thận _ BYT _ 2025.pdf` trong y văn y học chứng cứ.
 
 ```
                     [ 1. BỆNH SỬ NGƯỜI BỆNH ĐTĐ ]
@@ -126,7 +123,7 @@ Quản lý bệnh đa dây thần kinh ĐTĐ bao gồm 3 nguyên tắc nền t�
 ##### **Sơ đồ 2: Khuyến cáo phân tầng điều trị bệnh đa dây thần kinh ĐTĐ**
 
 _Tên hình:_ **Hình 5. Khuyến cáo điều trị bệnh đa dây thần kinh ĐTĐ**  
-_Thuộc tài liệu:_ `ĐTĐ & bệnh thận _ BYT _ 2025.pdf` trong Notebook.
+_Thuộc tài liệu:_ `ĐTĐ & bệnh thận _ BYT _ 2025.pdf` trong y văn y học chứng cứ.
 
 ```
      [ Chẩn đoán lâm sàng; có hoặc không có triệu chứng và dấu hiệu bệnh đa dây thần kinh ]
@@ -197,7 +194,7 @@ Nhóm thuốc này tác động trực tiếp vào chuỗi chuyển hóa bệnh 
 ##### **Sơ đồ 3: Lưu đồ điều trị đau thần kinh đái tháo đường từng bước**
 
 _Tên hình:_ **Hình 6. Khuyến cáo các thuốc giảm đau thần kinh và các phương pháp không dùng thuốc trong điều trị bệnh đa dây thần kinh ĐTĐ có đau**  
-_Thuộc tài liệu:_ `ĐTĐ & bệnh thận _ BYT _ 2025.pdf` trong Notebook.
+_Thuộc tài liệu:_ `ĐTĐ & bệnh thận _ BYT _ 2025.pdf` trong y văn y học chứng cứ.
 
 ```
      [ CHẨN ĐOÁN LÂM SÀNG BỆNH ĐA DÂY THẦN KINH ĐTĐ CÓ ĐAU ]
@@ -275,7 +272,7 @@ Giáo dục chăm sóc bàn chân là nhiệm vụ bắt buộc trong mỗi lầ
 ##### **Hình họa: Vị trí và tư thế khám Monofilament 10-g**
 
 _Tên hình:_ **Hình 7. Các vị trí trên bàn chân người bệnh để kiểm tra monofilament & Hình 8. Cách đặt đầu sợi monofilament**  
-_Thuộc tài liệu:_ `ĐTĐ & bệnh thận _ BYT _ 2025.pdf` trong Notebook.
+_Thuộc tài liệu:_ `ĐTĐ & bệnh thận _ BYT _ 2025.pdf` trong y văn y học chứng cứ.
 
 ```
       [ Các vị trí kiểm tra ]               [ Nghiệm pháp uốn cong ]
@@ -304,7 +301,7 @@ _Thuộc tài liệu:_ `ĐTĐ & bệnh thận _ BYT _ 2025.pdf` trong Notebook.
 ##### **Hình họa: Vị trí kiểm tra sờ nông Ipswich**
 
 _Tên hình:_ **Hình 9. Vị trí kiểm tra cảm giác ngón chân theo phương pháp Ipswich**  
-_Thuộc tài liệu:_ `ĐTĐ & bệnh thận _ BYT _ 2025.pdf` trong Notebook.
+_Thuộc tài liệu:_ `ĐTĐ & bệnh thận _ BYT _ 2025.pdf` trong y văn y học chứng cứ.
 
 ```
             BÀN CHÂN PHẢI (R)                BÀN CHÂN TRÁI (L)
@@ -329,7 +326,7 @@ _Thuộc tài liệu:_ `ĐTĐ & bệnh thận _ BYT _ 2025.pdf` trong Notebook.
 ##### **Hình họa: Nghiệm pháp đặt âm thoa**
 
 _Tên hình:_ **Hình 10. Hướng đặt rung âm thoa 128-Hz**  
-_Thuộc tài liệu:_ `ĐTĐ & bệnh thận _ BYT _ 2025.pdf` trong Notebook.
+_Thuộc tài liệu:_ `ĐTĐ & bệnh thận _ BYT _ 2025.pdf` trong y văn y học chứng cứ.
 
 ```
                      [ Âm Thoa 128-Hz ]

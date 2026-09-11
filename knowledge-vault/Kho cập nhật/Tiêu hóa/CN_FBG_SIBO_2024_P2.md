@@ -16,7 +16,6 @@ tags:
   - "y-khoa/cn"
 updated: "2026-09-06"
 ---
-
 # TÓM TẮT NGHIÊN CỨU: ĐỒNG THUẬN CỦA LIÊN ĐOÀN TIÊU HÓA BRAZIL VỀ CHẨN ĐOÁN VÀ ĐIỀU TRỊ SIBO (PHẦN 2)
 
 Dưới đây là phần tiếp theo của bản tóm tắt chi tiết dựa trên tài liệu đồng thuận chính thức của Liên đoàn Tiêu hóa Brazil (FBG) năm 2024 (**"tải xuống.pdf"**), tập trung vào quy trình chuẩn bị và thực hiện Test thở (Breath Test), chiến lược điều trị bằng kháng sinh, vai trò của chế độ ăn ít FODMAP, probiotics, và quản lý thể tăng sinh cổ khuẩn sinh metan (IMO).
@@ -47,7 +46,7 @@ Do test thở dựa trên hoạt động lên men của vi khuẩn đối với 
 |**Súc miệng bằng dung dịch sát khuẩn** vào ngày thực hiện test|Giúp loại bỏ hoàn toàn sự ngoại nhiễm và lên men sớm của hệ vi sinh vật thường trú tại khoang miệng và hầu họng.|
 
 - **Tên Bảng:** Table 3. Instructions that must be followed by patients before performing a breath test for SIBO. _(Bảng 3. Các hướng dẫn bệnh nhân bắt buộc phải tuân thủ trước khi thực hiện test thở chẩn đoán SIBO)_.
-- **Thuộc tài liệu:** **tải xuống.pdf** trong Notebook này.
+- **Thuộc tài liệu:** **tải xuống.pdf** trong y văn.
 - **Mô tả dưới bảng gốc:** Bảng tóm tắt các yêu cầu chuẩn bị lâm sàng và lý do khoa học đi kèm nhằm tối thiểu hóa các yếu tố nhiễu từ thuốc, chế độ ăn và lối sống, bảo đảm tính chuẩn xác cao nhất cho kết quả đo khí thở ra.
 
 ---
@@ -67,7 +66,7 @@ Sau khi hoàn thành giai đoạn chuẩn bị, test thở thường được th
 |**Bước 5: Đánh giá triệu chứng** _(Symptom evaluation)_|Trong suốt quá trình thực hiện test, bệnh nhân cần tự ghi nhận và đánh giá mức độ xuất hiện của các triệu chứng tiêu hóa (đầy bụng, chướng bụng, đau bụng, trung tiện, tiêu chảy) để phối hợp biện giải kết quả cùng biểu đồ khí.|
 
 - **Tên Bảng:** Table 4. Step-by-step guide for performing BT. _(Bảng 4. Hướng dẫn từng bước thực hiện test thở)_.
-- **Thuộc tài liệu:** **tải xuống.pdf** trong Notebook này.
+- **Thuộc tài liệu:** **tải xuống.pdf** trong y văn.
 - **Mô tả dưới bảng gốc:** Hướng dẫn thực hành lâm sàng chi tiết từ bước lấy mẫu khí nền, kỹ thuật thở ra đúng cách, tần suất đo khí mỗi 15 phút cho đến 90 phút, và yêu cầu bắt buộc phải đánh giá triệu chứng đi kèm trong quá trình làm test.
 
 ---
@@ -132,7 +131,7 @@ Dưới đây là danh mục các kháng sinh được hội đồng FBG đồng
 |**Trimethoprim-sulfamethoxazole**|800/160 mg x 2 lần/ngày|
 
 - **Tên Bảng:** Table 6. Antibiotics for the treatment of Small Intestine Bacterial Overgrowth (10 to 14 days). _(Bảng 6. Các kháng sinh điều trị tăng sinh vi khuẩn ruột non trong 10 đến 14 ngày)_.
-- **Thuộc tài liệu:** **tải xuống.pdf** trong Notebook này.
+- **Thuộc tài liệu:** **tải xuống.pdf** trong y văn.
 - **Mô tả dưới bảng gốc:** Bảng liệt kê các lựa chọn kháng sinh từ dòng không hấp thu (như Rifaximin) đến các dòng kháng sinh hệ thống kèm theo liều lượng cụ thể được chuẩn hóa cho liệu trình điều trị từ 10 đến 14 ngày.
 
 ---

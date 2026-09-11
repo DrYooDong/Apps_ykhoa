@@ -86,7 +86,7 @@ Men Glucose-6-phosphate dehydrogenase (G6PD) đóng vai trò sống còn trong v
 #### Bảng 1: Tổng hợp các biến chứng và gánh nặng sức khỏe do sốt rét thai kỳ
 
 - **Tên Bảng**: Table 1. Comparative synthesis of pregnant women with malaria based on maternal health risks, fetal health risks, prevention and management strategies.
-- **Thuộc Tài Liệu**: _"document.pdf"_ trong Notebook này.
+- **Thuộc Tài Liệu**: _"document.pdf"_ trong y văn.
 
 |Phân nhóm nguy cơ|Biến chứng / Kết cục|Mức độ bằng chứng (GRADE)|Cơ chế sinh lý bệnh học liên quan|
 |:--|:--|:-:|:--|
@@ -102,7 +102,7 @@ Men Glucose-6-phosphate dehydrogenase (G6PD) đóng vai trò sống còn trong v
 #### Sơ đồ 1: Sơ đồ hướng dẫn sử dụng thuốc chống tái phát 8-aminoquinoline dựa trên xét nghiệm men G6PD
 
 - **Tên Sơ đồ**: Therapeutic pathways of Plasmodium vivax or Plasmodium ovale anti-relapse treatment options with 8-aminoquinolines in relation to G6PD testing.
-- **Thuộc Tài Liệu**: _"WHO guidelines for malaria - 13 August 2025"_ (B09514-eng.pdf) trong Notebook này.
+- **Thuộc Tài Liệu**: _"WHO guidelines for malaria - 13 August 2025"_ (B09514-eng.pdf) trong y văn.
 
 ```
                       Bệnh nhân Sốt rét P. vivax / P. ovale

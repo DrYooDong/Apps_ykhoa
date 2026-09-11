@@ -1,3 +1,36 @@
+---
+title: "Dịch tễ học Leptospira & Leptospirosis"
+part: "P1"
+aliases:
+  - "Dịch tễ học Leptospira"
+  - "Leptospirosis"
+  - "Bệnh xoắn khuẩn Leptospira"
+  - "Hội chứng Weil"
+keywords:
+  - "dịch tễ học leptospira"
+  - "leptospirosis"
+  - "hội chứng weil"
+  - "truyền nhiễm từ động vật zoonosis"
+  - "chuột nâu rattus"
+  - "dalys toàn cầu"
+icd10:
+  - "A27 (Bệnh Leptospirosis)"
+  - "A27.0 (Leptospirosis do Leptospira icterohaemorrhagiae - Hội chứng Weil)"
+specialty: "Truyền nhiễm & Vi sinh"
+kho: "1.4. Kho dịch tễ học"
+type: "epidemiology"
+tags:
+  - "CliniPortal"
+  - "DịchTễHọc"
+  - "KhoDichTe"
+  - "Truyền nhiễm & Vi sinh"
+  - "y-khoa/dth"
+updated: "2026-09-11"
+sources:
+  - "WHO Leptospirosis Guidelines"
+  - "PLoS Negl Trop Dis (Costa F et al. 2015)"
+---
+
 ### 1. Nội Dung Sinh Lý Học Chi Tiết: Dịch Tễ Học Leptospira
 
 #### 1.1. Tổng Quan Về Tác Nhân Gây Bệnh và Cấu Trúc Phân Loại
@@ -117,7 +150,3 @@
 10. Lam JY, Low GKK, Chee HY. Diagnostic accuracy of genetic markers and nucleic acid techniques for the detection of _Leptospira_ in clinical samples: A meta-analysis. _PLoS Negl Trop Dis_. 2020;14(2):e0008074.
 11. Rosa MI, Reis MFD, Simon C, et al. IgM ELISA for leptospirosis diagnosis: a systematic review and meta-analysis. _Cien Saude Colet_. 2017;22(12):4001-4012.
 12. Alikhani A, Hedayati Zadeh-Omran A, Babamahmoodi F, et al. Chemo-prophylaxis in leptospirosis among paddy field workers. _J Infect Dev Ctries_. 2018;12(11):991-995.
-
----
-
-💡 **Gợi ý tiếp theo**: Bạn có muốn tôi biên soạn tiếp phần **Cơ chế Vi sinh vật học & Bệnh sinh (Pathogenesis)** hoặc **Các phương pháp chẩn đoán phòng thí nghiệm (Laboratory Diagnosis)** của Leptospira theo cấu trúc chuẩn y khoa này không?

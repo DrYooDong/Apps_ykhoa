@@ -17,7 +17,6 @@ icd10:
   - "E11"
   - "E10"
 ---
-
 # BÀI HỌC CHUYÊN SÂU: SINH LÝ BỆNH CỦA BIẾN CHỨNG TOAN CETON DO ĐÁI THÁO ĐƯỜNG (DKA)
 
 ---
@@ -68,7 +67,7 @@ Sự thiếu hụt insulin là chìa khóa mở ra con đường chuyển hóa l
 Dưới đây là sơ đồ chi tiết tích hợp toàn bộ các con đường rối loạn chuyển hóa carbohydrate, lipid, protein và các biến đổi sinh lý bệnh thứ phát trong DKA.
 
 _Tên sơ đồ:_ **Figure 1 — Pathophysiology of diabetic ketoacidosis**  
-_Thuộc tài liệu:_ `Ch11PediatricDiabetes.pdf` (và sơ đồ tương tự **Figure 1 — Pathogenesis of DKA and HHS** thuộc tài liệu `Diabetes-Care-2024.pdf` trong Notebook này).
+_Thuộc tài liệu:_ `Ch11PediatricDiabetes.pdf` (và sơ đồ tương tự **Figure 1 — Pathogenesis of DKA and HHS** thuộc tài liệu `Diabetes-Care-2024.pdf` trong y văn).
 
 ```
                       [ THIẾU HỤT INSULIN TUYỆT ĐỐI HOẶC TƯƠNG ĐỐI ]
