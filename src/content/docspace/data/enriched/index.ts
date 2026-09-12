@@ -10,10 +10,10 @@
 
 import type { DiseaseReactionChainDefinition } from '../diagnostic-criteria-database';
 
-import sot_xuat_huyet_Dengue from './sot_xuat_huyet_Dengue.json';
+import sot_xuat_huyet_dengue from './sot_xuat_huyet_dengue.json';
 
 export const ENRICHED_DISEASES: Record<string, DiseaseReactionChainDefinition> = {
-  'sot_xuat_huyet_Dengue': sot_xuat_huyet_Dengue as unknown as DiseaseReactionChainDefinition,
+  'sot_xuat_huyet_dengue': sot_xuat_huyet_dengue as unknown as DiseaseReactionChainDefinition,
 };
 
 export const ENRICHED_DISEASE_KEYS = Object.keys(ENRICHED_DISEASES);
