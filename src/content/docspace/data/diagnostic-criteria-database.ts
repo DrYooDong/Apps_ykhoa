@@ -36,6 +36,7 @@ export interface DiseaseComplicationItem {
 export interface VaultPathwayLink {
   khoCode: 'TC' | 'CD' | 'CLS' | 'PDDT' | 'DUOC' | 'BC' | 'TV' | 'YTNC' | 'EBM';
   khoName: string;
+  articleTitle?: string;
   searchKeyword: string;
 }
 

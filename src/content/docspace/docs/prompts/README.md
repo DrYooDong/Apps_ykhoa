@@ -79,11 +79,19 @@ Các prompt này dùng khi bạn trích xuất các bài viết y học chứng 
 
 ### Bước 2: Sinh Code Nạp Vào Chu Trình Lâm Sàng
 
-- **Lựa chọn nhanh nhất**: Mở file [`00-master-prompt-nap-chu-trinh-lam-sang.txt`](00-master-prompt-nap-chu-trinh-lam-sang.txt), sao chép toàn bộ prompt và dán vào NotebookLM.
-- **Lựa chọn từng phần**:
-  - Dùng [`05-prompt-cdss-json-generator.txt`](05-prompt-cdss-json-generator.txt) để lấy file JSON CDSS có `severityGrading`.
-  - Dùng [`06-prompt-sample-case-generator.txt`](06-prompt-sample-case-generator.txt) để lấy Ca mẫu và Ma trận trọng số.
-  - Dùng [`07-prompt-soap-case-ingest.txt`](07-prompt-soap-case-ingest.txt) để lấy Ca bệnh thực chiến SOAP.
+> 💡 **Lưu ý về giới hạn độ dài của NotebookLM**: Ô chat (chat box) của NotebookLM giới hạn số ký tự mỗi tin nhắn, nên nếu dán nguyên file dài (~17-24KB) sẽ bị báo lỗi quá dài. Bạn chọn 1 trong 2 cách sau:
+
+#### 🌟 CÁCH 1 (Khuyên dùng — Nạp làm Nguồn tài liệu, không lo giới hạn độ dài):
+1. Tại giao diện NotebookLM, ở cột bên trái **Sources (Nguồn)** ➔ Bấm **"+ Add source"** (Thêm nguồn) ➔ Chọn **"Copied text"** (hoặc upload trực tiếp file `.txt`).
+2. Dán toàn bộ nội dung file [`00-master-prompt-nap-chu-trinh-lam-sang.txt`](00-master-prompt-nap-chu-trinh-lam-sang.txt) vào và đặt tên nguồn là `SCHEMA_DOCSPACE`.
+3. Tại **ô Chat**, bạn chỉ cần gửi đúng 1 câu lệnh ngắn:
+   > *"Dựa trên Hướng dẫn điều trị và tuân thủ chặt chẽ cấu trúc tại nguồn SCHEMA_DOCSPACE, hãy sinh toàn bộ dữ liệu code 4 Khối cho bệnh Sốt xuất huyết Dengue."*
+
+#### ⚡ CÁCH 2 (Dán trực tiếp vào ô chat — Dùng bộ Micro-Prompt siêu gọn < 1.500 ký tự):
+Nếu muốn sao chép dán thẳng vào ô chat của NotebookLM mà không cần tạo Source, hãy mở bộ Micro-Prompt:
+- Dùng [`05-micro-cdss-json.txt`](05-micro-cdss-json.txt) để lấy file JSON CDSS có `severityGrading`.
+- Dùng [`06-micro-sample-case.txt`](06-micro-sample-case.txt) để lấy Ca mẫu và Ma trận trọng số.
+- Dùng [`07-micro-soap-case.txt`](07-micro-soap-case.txt) để lấy Ca bệnh thực chiến SOAP.
 
 ### Bước 3: Nạp Code Vào Dự Án
 

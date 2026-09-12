@@ -1,0 +1,39 @@
+Bạn là Kỹ sư CDSS. Dựa trên Guideline đã nạp trong Notebook, hãy xuất ĐÚNG 01 JSON hợp lệ (không markdown, không lời dẫn) nạp vào DocSpace cho bệnh: Sốt xuất huyết Dengue (ICD-10: A97, Chuyên khoa: Truyền nhiễm, Mức độ: emergency, Slug: sot_xuat_huyet_dengue):
+
+{
+  "icdCode": "A97",
+  "icdPrefixes": ["A97.0", "A97.1", "A97.2", "A97.9"],
+  "diseaseName": "Sốt xuất huyết Dengue",
+  "specialty": "Truyền nhiễm",
+  "severity": "emergency",
+  "summary": "Tóm tắt cơ chế thoát dịch, giảm tiểu cầu, nguy cơ sốc trong 3 câu.",
+  "goldStandard": "Tiêu chuẩn vàng vi sinh: NS1 Ag, RT-PCR hoặc IgM/IgG MAC-ELISA.",
+  "criteriaRule": { "mandatoryIds": ["sot_cao"], "minMajorRequired": 2, "minMinorRequired": 1, "ruleDescription": "Sốt bắt buộc + 2 LS + 1 CLS" },
+  "criteria": [
+    { "id": "sot_cao", "type": "mandatory", "label": "Sốt cao đột ngột 2-7 ngày", "description": "Kèm yếu tố dịch tễ", "sourceGuideline": "BYT" },
+    { "id": "dau_hieu_canh_bao", "type": "major", "label": "Dấu hiệu cảnh báo", "description": "Đau bụng gan, nôn nhiều, xuất huyết niêm mạc", "sourceGuideline": "BYT" },
+    { "id": "hct_tang_tc_giam", "type": "lab", "label": "Cô đặc máu & hạ tiểu cầu", "description": "Thoát huyết tương", "labThreshold": "Hct tăng > 20%, Tiểu cầu < 100 G/L", "sourceGuideline": "BYT" }
+  ],
+  "severityGrading": [
+    { "grade": "Độ 1: SXHD nhẹ", "severity": "mild", "criteria": "Sốt không cảnh báo", "triage": "Ngoại trú", "primaryAction": "Oresol, Paracetamol", "targetVitals": "Mạch HA ổn định" },
+    { "grade": "Độ 2: SXHD có cảnh báo", "severity": "moderate", "criteria": "Đau bụng gan, nôn, lừ đừ, Hct tăng", "triage": "Nội trú", "primaryAction": "Truyền RL bậc thang 6-7 -> 5 -> 3 ml/kg/h", "targetVitals": "Hct giảm, nước tiểu >= 0.5 ml/kg/h" },
+    { "grade": "Độ 3: Sốc SXHD", "severity": "critical", "criteria": "Mạch nhanh nhỏ, HA kẹp/tụt, sốc", "triage": "ICU/Cấp cứu", "primaryAction": "Chống sốc RL 15-20 ml/kg/h, cao phân tử nếu tái sốc", "targetVitals": "HATT >= 90, hiệu áp >= 30" }
+  ],
+  "protocol": {
+    "title": "Phác đồ điều trị SXHD",
+    "guideline": "QĐ 2760/QĐ-BYT 2023",
+    "targetGoals": ["Phục hồi thể tích tuần hoàn", "Phát hiện sớm sốc", "Tránh quá tải dịch"],
+    "initialManagement": ["Phân tầng ngoại trú/nội trú/ICU", "Bù dịch sớm theo phác đồ", "Theo dõi Hct và sinh hiệu"],
+    "firstLineDrugs": [
+      { "drugName": "Paracetamol", "class": "Hạ sốt", "route": "PO", "dosage": "10-15 mg/kg/lần (cách 4-6h)", "frequency": "Tối đa 60 mg/kg/ngày", "instructions": "Chỉ dùng khi sốt >= 38.5°C", "isFirstLine": true, "notes": "Cấm tuyệt đối Aspirin/NSAID", "contraindications": ["Aspirin", "Ibuprofen", "NSAIDs"] },
+      { "drugName": "Ringer Lactate", "class": "Dịch tinh thể", "route": "IV", "dosage": "Theo bậc thang ml/kg/h", "frequency": "Đánh giá lại mỗi 1-2h", "instructions": "Giảm liều khi ổn định", "isFirstLine": true, "notes": "Theo dõi Hct sát", "contraindications": ["Quá tải dịch"] }
+    ],
+    "secondLineDrugs": [
+      { "drugName": "Dextran 40 / HES 6%", "class": "Dịch keo", "route": "IV", "dosage": "10-15 ml/kg/h", "frequency": "Khi sốc tái sốc hoặc không đáp ứng dịch tinh thể", "instructions": "Theo dõi chức năng thận", "isFirstLine": false, "notes": "Hồi sức sốc kháng dịch", "contraindications": ["Suy thận vô niệu"] }
+    ]
+  },
+  "redFlags": [
+    { "warning": "Đau bụng gan, nôn liên tục, lừ đừ", "significance": "Thoát huyết tương cấp", "action": "Nhập viện truyền dịch ngay", "sourceGuideline": "BYT" },
+    { "warning": "HA kẹp <= 20mmHg hoặc tụt HA", "significance": "Sốc giảm thể tích", "action": "Chống sốc khẩn cấp RL 15-20 ml/kg/h", "sourceGuideline": "BYT" }
+  ]
+}

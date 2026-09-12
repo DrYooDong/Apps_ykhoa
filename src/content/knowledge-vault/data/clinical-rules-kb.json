@@ -1,8 +1,8 @@
 {
   "meta": {
-    "ten": "Kho tri thức lâm sàng toàn diện — 32 Bệnh lý trọng tâm & 180+ Triệu chứng CDSS",
+    "ten": "Kho tri thức lâm sàng toàn diện — 33 Bệnh lý trọng tâm & 195+ Triệu chứng CDSS",
     "phienBan": 4,
-    "capNhat": "2026-09-11T01:57:51.816Z"
+    "capNhat": "2026-09-12T11:15:21.495Z"
   },
   "trieuChung": [
     {
@@ -2685,6 +2685,147 @@
         "hồi hộp",
         "đánh trống ngực",
         "palpitation"
+      ],
+      "map": null
+    },
+    {
+      "id": "tc_sot_cao_dot_ngot_duoi_7_ngay",
+      "ten": "Sốt cao đột ngột liên tục <= 7 ngày",
+      "nhom": "Toàn thân",
+      "loai": [
+        "cn",
+        "tt"
+      ],
+      "tuKhoa": [
+        "sot cao",
+        "sot dot ngot",
+        "sot dengue",
+        "sot lien tuc"
+      ],
+      "map": {
+        "fld": "vNhiet",
+        "op": ">=",
+        "val": 38.5
+      }
+    },
+    {
+      "id": "tc_xuat_huyet_da_niem_lacet_duong_tinh",
+      "ten": "Xuất huyết da niêm / Dây thắt (Lacet) (+)",
+      "nhom": "Da niêm",
+      "loai": [
+        "tt"
+      ],
+      "tuKhoa": [
+        "lacet (+)",
+        "cham xuat huyet",
+        "bam tim",
+        "chay mau cam",
+        "chay mau chan rang"
+      ],
+      "map": null
+    },
+    {
+      "id": "tc_dau_hieu_canh_bao_dau_bung_gan_non_oi",
+      "ten": "Dấu hiệu cảnh báo: Đau bụng gan, Nôn ói nhiều, Lừ đừ",
+      "nhom": "Tiêu hóa",
+      "loai": [
+        "cn",
+        "tt"
+      ],
+      "tuKhoa": [
+        "dau bung gan",
+        "non oi nhieu",
+        "lu du",
+        "li bi",
+        "gan to"
+      ],
+      "map": null
+    },
+    {
+      "id": "tc_co_dac_mau_hct_tang_tren_20_phan_tram",
+      "ten": "Cô đặc máu (Hematocrit tăng > 20%)",
+      "nhom": "Cận lâm sàng",
+      "loai": [
+        "cls"
+      ],
+      "tuKhoa": [
+        "co dac mau",
+        "hct tang",
+        "hematocrit cao",
+        "hct > 42%"
+      ],
+      "map": {
+        "fld": "lHct",
+        "op": ">=",
+        "val": 42
+      }
+    },
+    {
+      "id": "tc_giam_tieu_cau_duoi_100_g_l",
+      "ten": "Tiểu cầu giảm nhanh (< 100 G/L)",
+      "nhom": "Cận lâm sàng",
+      "loai": [
+        "cls"
+      ],
+      "tuKhoa": [
+        "tieu cau giam",
+        "giam tieu cau",
+        "plt < 100",
+        "tieu cau tụt"
+      ],
+      "map": {
+        "fld": "lTC",
+        "op": "<=",
+        "val": 100
+      }
+    },
+    {
+      "id": "tc_xet_nghiem_ns1_hoac_pcr_duong_tinh",
+      "ten": "Xét nghiệm NS1 Ag / RT-PCR Dengue (+)",
+      "nhom": "Cận lâm sàng",
+      "loai": [
+        "cls"
+      ],
+      "tuKhoa": [
+        "ns1 (+)",
+        "pcr dengue (+)",
+        "igm dengue (+)",
+        "test nhanh dengue (+)"
+      ],
+      "map": null
+    },
+    {
+      "id": "tc_soc_mach_nhanh_ha_kep_hoac_tut",
+      "ten": "Sốc: Mạch nhanh nhỏ, HA kẹp <= 20 mmHg hoặc Tụt HA",
+      "nhom": "Tim mạch",
+      "loai": [
+        "tt"
+      ],
+      "tuKhoa": [
+        "soc sxh",
+        "mach nhanh nho",
+        "ha kep",
+        "tut ha",
+        "ha = 0",
+        "chi lanh"
+      ],
+      "map": {
+        "fld": "vHATT",
+        "op": "<=",
+        "val": 90
+      }
+    },
+    {
+      "id": "tc_ho_co_dom_hoac_viem_am_i_keo_dai",
+      "ten": "Ho có đờm đục / Viêm nhiễm khuẩn hô hấp âm ỉ kéo dài",
+      "nhom": "Hô hấp",
+      "loai": [
+        "cn"
+      ],
+      "tuKhoa": [
+        "ho dom duc",
+        "viem phoi vi khuan",
+        "sot keo dai tren 10 ngay"
       ],
       "map": null
     }
@@ -5512,6 +5653,139 @@
         "nguon": [
           "Chương trình Chống Lao Quốc Gia Việt Nam",
           "WHO TB Guidelines"
+        ]
+      }
+    },
+    {
+      "id": "sot_xuat_huyet_dengue",
+      "ten": "Sốt xuất huyết Dengue",
+      "icd": "A97",
+      "nhom": "Truyền nhiễm",
+      "baoDong": true,
+      "ghiChuBaoDong": "CẢNH BÁO CỜ ĐỎ: Sốc thoát huyết tương, HA kẹp <= 20 mmHg, Cô đặc máu Hct tăng > 20%, Giảm tiểu cầu cấp, Xuất huyết tạng nặng!",
+      "tomTat": "Bệnh truyền nhiễm cấp tính do vi rút Dengue truyền qua muỗi Aedes. Diễn tiến qua 3 giai đoạn: Sốt, Nguy hiểm (thoát huyết tương, sốc, xuất huyết, suy tạng) và Hồi phục.",
+      "danSo": {
+        "gioiTinh": "any",
+        "tuoiMin": 0,
+        "tuoiMax": 120
+      },
+      "dd": [
+        [
+          "tc_sot_cao_dot_ngot_duoi_7_ngay",
+          4.5,
+          "dt"
+        ],
+        [
+          "tc_xuat_huyet_da_niem_lacet_duong_tinh",
+          4,
+          "dt"
+        ],
+        [
+          "tc_co_dac_mau_hct_tang_tren_20_phan_tram",
+          4.5,
+          "dt"
+        ],
+        [
+          "tc_xet_nghiem_ns1_hoac_pcr_duong_tinh",
+          5,
+          "dt"
+        ],
+        [
+          "tc_soc_mach_nhanh_ha_kep_hoac_tut",
+          5,
+          "dt"
+        ],
+        [
+          "tc_giam_tieu_cau_duoi_100_g_l",
+          3.5,
+          "gy"
+        ],
+        [
+          "tc_dau_hieu_canh_bao_dau_bung_gan_non_oi",
+          3.5,
+          "gy"
+        ],
+        [
+          "tc_ho_co_dom_hoac_viem_am_i_keo_dai",
+          -5,
+          "loaitru"
+        ]
+      ],
+      "phacDo": {
+        "tuyen": [
+          "Trạm Y tế / Ngoại trú: Bù dịch uống Oresol, Paracetamol 10-15 mg/kg hạ sốt, hẹn tái khám và xét nghiệm CTM hàng ngày cho đến khi hết sốt 2 ngày.",
+          "Bệnh viện Huyện / Nội trú: Nhập viện khi có Dấu hiệu cảnh báo. Truyền dịch Ringer Lactate/NaCl 0.9% bậc thang 6-7 mL/kg/h -> 5 mL/kg/h -> 3 mL/kg/h. Theo dõi Hct/2-4h.",
+          "Bệnh viện Tỉnh / ICU: Hồi sức Sốc SXH / Sốc nặng. Thở oxy, bù dịch điện giải nhanh 15-20 mL/kg/h; Chuyển Cao phân tử (Dextran/HES 200) khi thất bại điện giải; Bù hồng cầu lắng/chế phẩm máu khi xuất huyết nặng."
+        ],
+        "thuoc": [
+          [
+            "Paracetamol 500mg (Viên/Gói/Chai)",
+            "10 - 15 mg/kg/lần PO/PR",
+            "Hạ sốt khi T >= 38.5°C, cách 4-6h, tổng liều < 60 mg/kg/ngày"
+          ],
+          [
+            "Oresol (ORS 245 mOsm/L)",
+            "Pha 1 gói/1 lít nước, uống theo nhu cầu",
+            "Bù nước và điện giải đường uống sớm"
+          ],
+          [
+            "Ringer Lactate (Chai 500ml)",
+            "6-7 mL/kg/h -> 5 mL/kg/h -> 3 mL/kg/h IV",
+            "Dung dịch điện giải đầu tay bù dịch thể cảnh báo & chống sốc"
+          ],
+          [
+            "Ringer Acetate (Chai 500ml)",
+            "6-7 mL/kg/h -> 5 mL/kg/h -> 3 mL/kg/h IV",
+            "Ưu tiên dùng khi bệnh nhân có tổn thương gan/men gan AST/ALT >= 1000 U/L"
+          ],
+          [
+            "Natri Chlorua 0.9% (Chai 500ml)",
+            "15-20 mL/kg/h IV trong sốc",
+            "Dung dịch điện giải thay thế khi chống sốc"
+          ],
+          [
+            "Dextran 40 / 70 (Chai 500ml)",
+            "10-15-20 mL/kg/h IV",
+            "Cao phân tử chỉ định khi sốc không đáp ứng điện giải hoặc tái sốc"
+          ],
+          [
+            "Hydroxyethyl Starch (HES 6% 200/0.5)",
+            "10-15-20 mL/kg/h IV",
+            "Cao phân tử chống sốc; theo dõi độc tính thận khi tổng liều > 60 mL/kg"
+          ],
+          [
+            "Albumin 5% / 10% (Chai 100ml)",
+            "0.5 - 1.0 g/kg IV trong 4-6h",
+            "Chỉ định khi Albumin máu <= 2.5 g/dL kèm sốc kéo dài/tái sốc >= 2 lần"
+          ],
+          [
+            "Hồng cầu lắng (HCL)",
+            "5 - 10 mL/kg IV trong 1-2h",
+            "Chỉ định khi có xuất huyết nặng hoặc Hct tụt < 35% trong sốc"
+          ],
+          [
+            "Omeprazole 40mg (Lọ tiêm)",
+            "1 mg/kg/ngày (tối đa 80mg) IV bolus",
+            "Ức chế bơm Proton bảo vệ dạ dày khi xuất huyết tiêu hóa"
+          ],
+          [
+            "Noradrenaline 1mg/1ml",
+            "0.05 - 1.0 mcg/kg/phút IV liên tục",
+            "Vận mạch chỉ định khi sốc kém đáp ứng bù dịch và CVP > 10-15 cmH2O"
+          ]
+        ],
+        "theoDoi": [
+          "Theo dõi sinh hiệu Mạch, HA, Hiệu áp, CRT, Nước tiểu tại giường mỗi 15-30 phút trong sốc và mỗi 2-4h trong thể cảnh báo.",
+          "Kiểm tra Hematocrit (Hct) và Công thức máu mỗi 1-2h trong sốc và mỗi 4-6h trong thể cảnh báo.",
+          "Đo CVP và Huyết áp động mạch xâm lấn khi sốc kéo dài hoặc tái sốc nhiều lần."
+        ],
+        "luuY": [
+          "TUYỆT ĐỐI KHÔNG DÙNG Aspirin, Ibuprofen, Analgin hay NSAIDs vì làm tăng nguy cơ xuất huyết dạ dày và toan máu.",
+          "Không tiêm bắp, không đặt sonde mũi ở bệnh nhân giảm tiểu cầu nặng.",
+          "Bắt buộc ngưng truyền dịch tĩnh mạch sau khi ra sốc 24-48 giờ để tránh phù phổi cấp do quá tải dịch."
+        ],
+        "nguon": [
+          "Quyết định 2760/QĐ-BYT ngày 04/07/2023 của Bộ Y tế Việt Nam"
         ]
       }
     }

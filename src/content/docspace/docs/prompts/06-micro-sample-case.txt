@@ -1,0 +1,22 @@
+Bạn là Kỹ sư CDSS. Dựa trên Guideline đã nạp trong Notebook, hãy xuất ĐÚNG 02 JSON hợp lệ (không markdown thừa) cho bệnh: Sốt xuất huyết Dengue (ICD-10: A97, Thể bệnh: SXHD Cảnh Báo Ngày 4, Cơ địa: Nam 24 tuổi):
+
+KHỐI 1 - CA MẪU (Nạp vào sample-clinical-cases.json):
+{
+  "ten": "SXHD Cảnh Báo Ngày 4 (Hct 46%, TC 42 G/L)",
+  "sel": ["sot_cao", "dau_co_khop", "dau_bung_gan", "xuat_huyet_duoi_da", "hct_tang_cao", "tieu_cau_giam"],
+  "vitals": { "vNhiet": "38.5", "vMach": "104", "vHATT": "95", "vHATTr": "75", "vTho": "22", "vSpo2": "97" },
+  "labs": { "lPlt": "42", "lHct": "46", "lAst": "210", "lAlt": "165", "lWbc": "3.1" },
+  "caseSummary": "Nam 24T ngày 4 hết sốt cao nhưng lừ đừ, đau tức hạ sườn phải, ban xuất huyết cẳng chân. Hct tăng 46%, tiểu cầu tụt 42 G/L. Cần truyền dịch RL bậc thang 6 ml/kg/h.",
+  "history": "Bệnh ngày 4: Sốt cao liên tục 3 ngày đầu. Ngày 4 hạ sốt nhưng mệt nhiều, buồn nôn, đau tức hạ sườn phải.",
+  "exam": "Mệt mỏi, lừ đừ. Da xung huyết, chấm xuất huyết rải rác cẳng chân. Gan to 1.5 cm dưới sườn phải, ấn đau. Tim đều nhanh, mạch quay rõ, chi ấm."
+}
+
+KHỐI 2 - TRỌNG SỐ CDSS (Nạp vào clinical-rules-kb.json):
+{
+  "sot_xuat_huyet_dengue": {
+    "dt": ["ns1_duong_tinh", "pcr_dengue", "hct_tang_cao", "tieu_cau_giam", "dau_bung_gan"],
+    "gy": ["sot_cao", "dau_co_khop", "dau_hoc_mat", "phat_ban", "chay_mau_cam"],
+    "ht": ["gan_to", "men_gan_tang", "ha_huyet_ap", "mach_nhanh_nho"],
+    "loaitru": ["ho_dam_mu", "ran_no_tai_phoi", "cung_co_gay", "tieu_buot"]
+  }
+}
