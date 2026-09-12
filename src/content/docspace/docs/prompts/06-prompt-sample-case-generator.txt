@@ -1,0 +1,174 @@
+# ==============================================================================
+# CLINIPORTAL DOCSPACE — PROMPT 06: SAMPLE CLINICAL CASE & CDSS WEIGHTS GENERATOR
+# PROMPT CHUNG SINH CA BỆNH MẪU (BƯỚC 1) & MA TRẬN SUY LUẬN TRỌNG SỐ (BƯỚC 3)
+# ==============================================================================
+# MỤC TIÊU:
+# Dán prompt này vào NotebookLM để trích xuất từ ca lâm sàng thực tế trong Guideline:
+#
+#   1. ĐOẠN CODE 1: Ca bệnh mẫu JSON (Nạp vào `sample-clinical-cases.json`)
+#      -> Bác sĩ bấm 1-click vào thanh "Ca bệnh mẫu" ở Bước 1 Chu Trình Lâm Sàng
+#         là nạp ngay: Sinh hiệu, Xét nghiệm, Bệnh sử, Triệu chứng (+) & Phủ định (-).
+#
+#   2. ĐOẠN CODE 2: Ma trận trọng số CDSS JSON (Nạp vào `clinical-rules-kb.json`)
+#      -> Khai báo các triệu chứng mới (kèm map tự suy định lượng) và vector trọng số
+#         (dt, gy, ht, loaitru) để Động cơ suy luận tính toán % xác suất chẩn đoán ở Bước 3.
+# ==============================================================================
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📌 THÔNG SỐ ĐẦU VÀO (TÙY CHỈNH THEO MẶT BỆNH CẦN SOẠN):
+(Điền sẵn cho Sốt Xuất Huyết Dengue — Bạn có thể thay đổi bằng bất kỳ bệnh lý nào)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- [TÊN BỆNH LÝ]: Sốt xuất huyết Dengue
+- [MÃ ICD-10]: A97
+- [CHUYÊN KHOA]: Truyền nhiễm
+- [HƯỚNG DẪN THAM CHIẾU]: Quyết định 2760/QĐ-BYT 2023 của Bộ Y Tế Việt Nam & WHO Dengue Guidelines 2024–2025
+- [THỂ BỆNH MẪU CẦN TẠO]: Sốt xuất huyết Dengue có dấu hiệu cảnh báo ngày thứ 4 (hoặc: Thể sốc DSS ngày thứ 5)
+- [CƠ ĐỊA BỆNH NHÂN]: Nam 24 tuổi, sinh viên, sống tại khu trọ có ổ dịch SXHD lưu hành
+- [SLUG FILE]: sot_xuat_huyet_dengue
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📋 PROMPT CHUẨN DÁN VÀO NOTEBOOKLM:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+"Bạn là Bác sĩ Giảng viên Lâm sàng kiêm Kỹ sư Thiết kế Động cơ CDSS của CliniPortal DocSpace.
+
+Dựa trên [HƯỚNG DẪN THAM CHIẾU] đã nạp trong Notebook, hãy xây dựng BỘ DỮ LIỆU CODE LÂM SÀNG HOÀN CHỈNH cho mặt bệnh: [TÊN BỆNH LÝ] (Mã ICD-10: [MÃ ICD-10], Chuyên khoa: [CHUYÊN KHOA]) gồm đúng 2 khối code JSON chuẩn xác sau:
+
+==============================================================================
+PHẦN 1: CA LÂM SÀNG MẪU THỰC TẾ (Nạp vào: sample-clinical-cases.json)
+==============================================================================
+Tạo 01 đối tượng JSON ca bệnh hoàn chỉnh với số liệu sinh hiệu và xét nghiệm định lượng có thật của thể bệnh: [THỂ BỆNH MẪU CẦN TẠO], cơ địa: [CƠ ĐỊA BỆNH NHÂN].
+
+Định dạng JSON bắt buộc:
+```json
+{
+  \"ten\": \"[Tên ca bệnh: ví dụ SXHD Cảnh Báo Ngày 4 (Hct 46%, TC 42 G/L)]\",
+  \"sel\": [
+    \"[id_trieu_chung_1]\",
+    \"[id_trieu_chung_2]\",
+    \"[id_trieu_chung_3]\",
+    \"[id_trieu_chung_4]\",
+    \"[id_trieu_chung_5]\"
+  ],
+  \"vitals\": {
+    \"vNhiet\": \"[Nhiệt độ sốt: ví dụ 39.2]\",
+    \"vMach\": \"[Mạch nhanh: ví dụ 108]\",
+    \"vHATT\": \"[Huyết áp tâm thu: ví dụ 95]\",
+    \"vHATTr\": \"[Huyết áp tâm trương: ví dụ 75]\",
+    \"vTho\": \"[Nhịp thở: ví dụ 22]\",
+    \"vSpo2\": \"[SpO2 %: ví dụ 96]\"
+  },
+  \"labs\": {
+    \"lBC\": \"[Bạch cầu G/L: ví dụ 3.2]\",
+    \"lTC\": \"[Tiểu cầu G/L giảm sâu: ví dụ 42]\",
+    \"lHct\": \"[Hematocrit % tăng cô đặc: ví dụ 46]\",
+    \"lGlu\": \"[Đường huyết mmol/L: ví dụ 5.4]\",
+    \"lTrop\": \"[Troponin ng/L: ví dụ 8]\"
+  },
+  \"selected\": [
+    \"[id_trieu_chung_1]\",
+    \"[id_trieu_chung_2]\",
+    \"[id_trieu_chung_3]\",
+    \"[id_trieu_chung_4]\",
+    \"[id_trieu_chung_5]\"
+  ],
+  \"negated\": [
+    \"[id_trieu_chung_am_tinh_gia_tri_1]\",
+    \"[id_trieu_chung_am_tinh_gia_tri_2]\"
+  ],
+  \"form\": {
+    \"gioiTinh\": \"[nam | nu]\",
+    \"tuoi\": \"[Tuổi bệnh nhân: ví dụ 24]\",
+    \"ngheNghiep\": \"[Nghề nghiệp bệnh nhân]\",
+    \"lyDo\": \"[Lý do vào viện: ví dụ Sốt cao ngày 4 kèm đau bụng vùng gan và chảy máu chân răng]\",
+    \"text\": {
+      \"cn\": \"[Đoạn văn mô tả triệu chứng cơ năng: sốt cao liên tục đột ngột không hạ, đau đầu dữ dội vùng trán, đau nhức hốc mắt, đau cơ khớp sâu, buồn nôn, đau tức âm ỉ vùng hạ sườn phải]\",
+      \"tt\": \"[Đoạn văn mô tả khám thực thể: bệnh nhân tỉnh nhưng mệt lả, da mặt và ngực sung huyết, nhiều chấm xuất huyết rải rác cẳng tay và cẳng chân. Nghiệm pháp dây thắt (Lacet) (+). Gan to 2cm dưới bờ sườn, ấn đau tức. Tim đều, phổi trong không rale]\",
+      \"tc\": \"[Đoạn văn tiền căn: khỏe mạnh, chưa từng mắc sốt xuất huyết trước đây. Sống tại khu nhà trọ sinh viên đang có nhiều người cùng mắc sốt xuất huyết]\",
+      \"cls\": \"[Đoạn văn cận lâm sàng: Công thức máu WBC 3.2 G/L (giảm), PLT 42 G/L (giảm dốc đứng), Hct 46% (tăng > 20% so với nền). Test nhanh Kháng nguyên NS1 Ag (+). Siêu âm bụng có dày nhẹ thành túi mật 3.5mm và ít dịch góc sườn hoành phải]\"
+    }
+  }
+}
+```
+
+==============================================================================
+PHẦN 2: MA TRẬN TRỌNG SỐ SUY LUẬN CDSS (Nạp vào: clinical-rules-kb.json)
+==============================================================================
+Cung cấp đoạn code JSON nạp vào file `src/content/knowledge-vault/data/clinical-rules-kb.json`:
+
+1. Bổ sung triệu chứng vào danh mục `\"trieuChung\"` (nếu chưa có):
+```json
+[
+  {
+    \"id\": \"[id_trieu_chung_moi_1]\",
+    \"ten\": \"[Tên triệu chứng hiển thị tiếng Việt]\",
+    \"nhom\": \"[Toàn thân | Tiêu hóa | Hô hấp | Tim mạch | Da niêm | Huyết học | Cận lâm sàng]\",
+    \"loai\": [\"cn\", \"tt\"],
+    \"tuKhoa\": [\"[từ khóa 1]\", \"[từ khóa 2]\"],
+    \"map\": null
+  },
+  {
+    \"id\": \"[id_trieu_chung_cls_dinh_luong]\",
+    \"ten\": \"[Tên chỉ số xét nghiệm kèm ngưỡng: ví dụ Tiểu cầu < 100 G/L hoặc Hct tăng > 20%]\",
+    \"nhom\": \"Cận lâm sàng\",
+    \"loai\": [\"cls\"],
+    \"tuKhoa\": [\"[từ khóa xét nghiệm]\"],
+    \"map\": {
+      \"fld\": \"[vNhiet | vMach | vHATT | vHATTr | vTho | vSpo2 | lBC | lTC | lHct | lGlu | lTrop | lCRP]\",
+      \"op\": \"[>= | > | <= | <]\",
+      \"val\": [ngưỡng số định lượng]
+    }
+  }
+]
+```
+
+2. Thêm hoặc cập nhật thực thể bệnh vào mảng `\"benh\"` (Kèm ma trận trọng số triệu chứng `dd`):
+```json
+{
+  \"id\": \"[SLUG FILE]\",
+  \"ten\": \"[TÊN BỆNH LÝ]\",
+  \"icd\": \"[MÃ ICD-10]\",
+  \"nhom\": \"[CHUYÊN KHOA]\",
+  \"baoDong\": true,
+  \"ghiChuBaoDong\": \"[Cảnh báo cấp cứu khẩn cấp: ví dụ Dấu hiệu cảnh báo thoát huyết tương, Hct tăng cao, tiểu cầu tụt dốc, nguy cơ sốc trong 24h tới]\",
+  \"tomTat\": \"[Tóm tắt cơ chế bệnh học ngắn gọn 2 câu]\",
+  \"danSo\": {
+    \"gioiTinh\": \"any\",
+    \"tuoiMin\": 0,
+    \"tuoiMax\": 120
+  },
+  \"dd\": [
+    [\"[id_trieu_chung_dac_trung_1]\", 4.5, \"dt\"],
+    [\"[id_trieu_chung_dac_trung_2]\", 3.5, \"dt\"],
+    [\"[id_trieu_chung_goi_y_1]\", 2.5, \"gy\"],
+    [\"[id_trieu_chung_goi_y_2]\", 2.0, \"gy\"],
+    [\"[id_trieu_chung_ho_tro_1]\", 1.5, \"ht\"],
+    [\"[id_trieu_chung_loai_tru]\", -5.0, \"loaitru\"]
+  ],
+  \"phacDo\": {
+    \"tuyen\": [
+      \"Trạm y tế (Ngoại trú): Hạ sốt bằng Paracetamol đơn chất 10-15 mg/kg, bù nước bằng Oresol uống, theo dõi tái khám hàng ngày.\",
+      \"Bệnh viện Huyện (Nội trú): Nhập viện 100% khi có dấu hiệu cảnh báo. Bù dịch Ringer Lactate 6 mL/kg/h trong 1-2h, giảm dần theo đáp ứng Hct.\",
+      \"Bệnh viện Tỉnh / ICU (Cấp cứu): Chống sốc bằng Ringer Lactate 15-20 mL/kg/h, chuyển Cao phân tử Dextran 40 nếu không đáp ứng, thở oxy, đo CVP.\"
+    ],
+    \"thuoc\": [
+      [\"Paracetamol (Acetaminophen)\", \"10-15 mg/kg/lần (PO), cách mỗi 4-6h khi sốt ≥ 38.5°C\", \"Tối đa ≤ 60 mg/kg/24h (trẻ em) hoặc ≤ 3g/24h (người lớn). Tuyệt đối cấm Aspirin/Ibuprofen\"],
+      [\"Dung dịch Oresol (ORS chuẩn WHO)\", \"2000-3000 mL/ngày (người lớn) hoặc 50-100 mL/kg/ngày (trẻ em)\", \"Pha đúng tỷ lệ 1 gói/1000 mL nước, uống rải rác từng ngụm nhỏ liên tục trong ngày\"],
+      [\"Dung dịch Ringer Lactate / Acetate\", \"6 mL/kg/h (có dấu hiệu cảnh báo) hoặc 15-20 mL/kg/h (khi vào sốc)\", \"Rút tốc độ dịch từng nấc (6 -> 3 -> 1.5 mL/kg/h) theo Hct. Ngưng dịch trong 24-48h\"],
+      [\"Dung dịch Keo Dextran 40 / HES 6%\", \"10-15-20 mL/kg/h trong 1 giờ đầu\", \"Chỉ định khi sốc kháng dịch tinh thể hoặc Hct tăng cao ≥ 40%. Tối đa ≤ 50 mL/kg/24h\"],
+      [\"Khối hồng cầu lắng / Máu toàn phần\", \"Khối hồng cầu 5-10 mL/kg hoặc Máu toàn phần 10-20 mL/kg\", \"Chỉ định khẩn cấp khi sốc có xuất huyết nặng hoặc Hct tụt sâu đột ngột < 35%\"]
+    ],
+    \"theoDoi\": [
+      \"Mạch, huyết áp, nhịp thở, SpO2, tri giác và nước tiểu mỗi 1-2h (khi sốc) hoặc 4h (cảnh báo)\",
+      \"Kiểm tra Hematocrit (Hct) và tiểu cầu mỗi ngày hoặc ngay sau mỗi cữ dịch truyền chống sốc\"
+    ],
+    \"luuY\": [
+      \"CHỐNG CHỈ ĐỊNH TUYỆT ĐỐI Aspirin, Ibuprofen và các thuốc NSAIDs do nguy cơ xuất huyết tiêu hóa ồ ạt và toan máu.\",
+      \"Không truyền dịch kéo dài sang ngày thứ 6-7 (giai đoạn tái hấp thu) để tránh phù phổi cấp do quá tải tuần hoàn.\"
+    ],
+    \"nguon\": [
+      \"Quyết định 2760/QĐ-BYT 2023 của Bộ Y Tế & WHO Dengue Guidelines 2024-2025\"
+    ]
+  }
+}
+```
+"

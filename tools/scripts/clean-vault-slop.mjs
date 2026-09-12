@@ -25,7 +25,7 @@ const PRIORITY_VAULTS = [
   '2.3. Kho chẩn đoán',
   '2.4. Kho phác đồ điều trị',
   '1.4. Kho dịch tễ học',
-  '1.5. Kho yếu tố nguy cơ'
+  '2.5. Kho biến chứng'
 ];
 
 const args = process.argv.slice(2);
@@ -38,8 +38,8 @@ console.log('🩺  CLINIPORTAL VAULT MEDICAL HUMANIZER & CLEANUP TOOL');
 console.log('=============================================================');
 console.log(`Chế độ: ${isDryRun ? '🔍 DRY RUN (Chỉ kiểm tra, không ghi đè)' : '⚡ APPLY (Thực hiện sửa đổi file)'}`);
 if (specificVault) console.log(`Phạm vi: ${specificVault}`);
-else if (isAll) console.log('Phạm vi: Toàn bộ 21 Kho Knowledge Vault');
-else console.log('Phạm vi: 4 Kho ưu tiên (CD, PDDT, DTH, YTNC)');
+else if (isAll) console.log('Phạm vi: Toàn bộ các Kho Knowledge Vault');
+else console.log('Phạm vi: 4 Kho ưu tiên (CD, PDDT, DTH, BC)');
 console.log('=============================================================\n');
 
 let scannedFiles = 0;

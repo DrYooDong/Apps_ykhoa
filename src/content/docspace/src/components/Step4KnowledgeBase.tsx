@@ -309,7 +309,7 @@ export const Step4KnowledgeBase: React.FC<Step4Props> = ({
                     : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50'
                 }`}
               >
-                Có trọng số CDSS ({coreCardsCount})
+                Bộ luật CDSS cốt lõi ({coreCardsCount})
               </button>
               <button
                 type="button"
@@ -320,7 +320,7 @@ export const Step4KnowledgeBase: React.FC<Step4Props> = ({
                     : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50'
                 }`}
               >
-                Kho Chẩn Đoán 2.3 ({vaultCardsCount})
+                Kho Chẩn Đoán CDSS ({vaultCardsCount})
               </button>
             </div>
 
@@ -371,8 +371,8 @@ export const Step4KnowledgeBase: React.FC<Step4Props> = ({
                           Bộ luật CDSS
                         </span>
                       ) : (
-                        <span className="px-1.5 py-0.2 rounded text-[10px] font-semibold bg-pink-50 text-pink-700 border border-pink-200">
-                          Kho Chẩn Đoán 2.3
+                        <span className="px-1.5 py-0.2 rounded text-[10px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                          Bộ luật CDSS
                         </span>
                       )}
                     </div>

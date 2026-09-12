@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import {
   Activity,
   AlertCircle,
@@ -38,11 +38,17 @@ import {
   Zap,
 } from 'lucide-react';
 import {
+  Benh,
   ClinicalFormState,
   KnowledgeBase,
   LabsState,
   VitalsState,
 } from '../types.ts';
+import {
+  DIAGNOSTIC_CHAIN_DATABASE,
+  DiseaseReactionChainDefinition,
+  SeverityGradingItem,
+} from '../../data/diagnostic-criteria-database.ts';
 import { GROUP_COLORS, GROUP_NAMES } from '../data/seedData.ts';
 import {
   findVaultArticlesForDisease,
@@ -124,10 +130,95 @@ export const Step3Protocol: React.FC<Step3Props> = ({
 
   const [killipClass, setKillipClass] = useState<'I' | 'II' | 'III' | 'IV'>('I');
 
+  // Clinical Severity Grading & Complications Triage State
+  const [selectedGradeIdx, setSelectedGradeIdx] = useState<number>(0);
+  const [activeComplicationIndices, setActiveComplicationIndices] = useState<Set<number>>(new Set());
+
+  // Merge kb.benh and all diseases from DIAGNOSTIC_CHAIN_DATABASE (enriched + kho chẩn đoán)
+  const allAvailableDiseases = useMemo(() => {
+    const list: Benh[] = [...kb.benh];
+    const seenIds = new Set(list.map((b) => b.id));
+    const seenNames = new Set(list.map((b) => b.ten.toLowerCase().trim()));
+
+    for (const [key, chain] of Object.entries(DIAGNOSTIC_CHAIN_DATABASE)) {
+      const normName = chain.diseaseName.toLowerCase().trim();
+      if (seenIds.has(key) || seenNames.has(normName)) continue;
+      seenIds.add(key);
+      seenNames.add(normName);
+
+      const tuyen =
+        chain.protocol?.initialManagement && chain.protocol.initialManagement.length > 0
+          ? chain.protocol.initialManagement
+          : chain.protocol?.targetGoals && chain.protocol.targetGoals.length > 0
+          ? chain.protocol.targetGoals
+          : [chain.protocol?.title || `Quy trình xử trí chuẩn cho ${chain.diseaseName}`];
+
+      const thuoc: Array<[string, string, string]> = [];
+      if (chain.protocol?.firstLineDrugs && chain.protocol.firstLineDrugs.length > 0) {
+        chain.protocol.firstLineDrugs.forEach((d) => {
+          thuoc.push([
+            d.drugName,
+            `${d.dosage}${d.route ? ' (' + d.route + ')' : ''}`,
+            d.instructions || d.class || 'Khuyến cáo bậc 1',
+          ]);
+        });
+      }
+      if (chain.protocol?.secondLineDrugs && chain.protocol.secondLineDrugs.length > 0) {
+        chain.protocol.secondLineDrugs.slice(0, 2).forEach((d) => {
+          thuoc.push([
+            d.drugName,
+            `${d.dosage}${d.route ? ' (' + d.route + ')' : ''}`,
+            d.instructions || d.class || 'Lựa chọn bậc 2',
+          ]);
+        });
+      }
+
+      const theoDoi =
+        chain.monitoringLabs && chain.monitoringLabs.length > 0
+          ? chain.monitoringLabs
+          : ['Theo dõi sát sinh hiệu, SpO2, mạch, huyết áp mỗi 1-2 giờ', 'Đánh giá đáp ứng lâm sàng sau 24-48 giờ'];
+
+      const luuY = [
+        ...(chain.protocol?.supportiveCare || []),
+        ...(chain.complications ? chain.complications.slice(0, 2).map((c) => `Cảnh báo: ${c.name} - ${c.warningSigns}`) : []),
+      ];
+
+      list.push({
+        id: key,
+        ten: chain.diseaseName,
+        icd: chain.icdCode,
+        nhom: chain.specialty || 'Chuyên khoa',
+        baoDong: chain.severity === 'emergency',
+        ghiChuBaoDong: chain.severity === 'emergency' ? `Cảnh báo cấp cứu khẩn cấp: ${chain.diseaseName}` : '',
+        tomTat: chain.summary,
+        danSo: { gioiTinh: 'any', tuoiMin: 0, tuoiMax: 120 },
+        dd: chain.criteria
+          ? chain.criteria.map((c) => [
+              c.id,
+              c.type === 'mandatory' ? 4.5 : c.type === 'major' ? 3.5 : 2.5,
+              c.type === 'exclusion' ? 'loaitru' : 'dt',
+            ])
+          : [],
+        phacDo: {
+          tuyen,
+          thuoc:
+            thuoc.length > 0
+              ? thuoc
+              : [['Theo dõi và điều trị triệu chứng', 'Theo liều lượng chuẩn EBM', 'Khuyến cáo chuyên khoa']],
+          theoDoi,
+          luuY: luuY.length > 0 ? luuY : ['Tuân thủ nghiêm ngặt chỉ định và chống chỉ định'],
+          nguon: [chain.protocol?.guideline || 'Hướng dẫn chẩn đoán và điều trị Bộ Y tế & EBM'],
+        },
+      });
+    }
+
+    return list;
+  }, [kb.benh]);
+
   // Currently viewed disease
-  const currentDisease = useMemo(() => {
-    return kb.benh.find((b) => b.id === selectedDiseaseId) || kb.benh[0];
-  }, [kb.benh, selectedDiseaseId]);
+  const currentDisease: Benh = useMemo(() => {
+    return allAvailableDiseases.find((b) => b.id === selectedDiseaseId) || allAvailableDiseases[0];
+  }, [allAvailableDiseases, selectedDiseaseId]);
 
   // Knowledge Vault Clinical Pathway & Related Articles
   const pathway = useMemo(() => {
@@ -229,10 +320,126 @@ export const Step3Protocol: React.FC<Step3Props> = ({
     setCustomOrders((prev) => [...prev, newOrder]);
   };
 
+  // Match full chain from DIAGNOSTIC_CHAIN_DATABASE
+  const activeChain: DiseaseReactionChainDefinition | undefined = useMemo(() => {
+    if (!currentDisease) return undefined;
+    if (DIAGNOSTIC_CHAIN_DATABASE[currentDisease.id]) {
+      return DIAGNOSTIC_CHAIN_DATABASE[currentDisease.id];
+    }
+    const cleanName = currentDisease.ten.toLowerCase().trim();
+    const cleanIcd = currentDisease.icd.toUpperCase().trim();
+    for (const [, c] of Object.entries(DIAGNOSTIC_CHAIN_DATABASE)) {
+      if (
+        c.icdCode === cleanIcd ||
+        c.diseaseName.toLowerCase().trim() === cleanName ||
+        (c.icdPrefixes && c.icdPrefixes.includes(cleanIcd))
+      ) {
+        return c;
+      }
+    }
+    return undefined;
+  }, [currentDisease]);
+
+  // Available Severity Grades for current disease
+  const severityGrades: SeverityGradingItem[] = useMemo(() => {
+    if (activeChain?.severityGrading && activeChain.severityGrading.length > 0) {
+      return activeChain.severityGrading;
+    }
+    // Universal 3-tier fallback grading
+    return [
+      {
+        grade: 'Mức độ 1: Thể Nhẹ / Điều trị Ngoại trú',
+        severity: 'mild',
+        criteria: 'Triệu chứng khởi phát nhẹ đến vừa, sinh hiệu ổn định, không có dấu hiệu cảnh báo đe dọa sinh mạng.',
+        triage: 'Ngoại trú / Trạm y tế / Phòng khám',
+        primaryAction: 'Dùng thuốc đường uống, bù nước điện giải, dặn dò các dấu hiệu cảnh báo cần tái khám khẩn.',
+        targetVitals: 'Sinh hiệu trong giới hạn bình thường theo tuổi',
+      },
+      {
+        grade: 'Mức độ 2: Thể Trung bình / Theo dõi Nội trú',
+        severity: 'moderate',
+        criteria: 'Có ít nhất 1 dấu hiệu cảnh báo, triệu chứng tiến triển, hoặc có bệnh lý nền/cơ địa nguy cơ cao.',
+        triage: 'Nội trú / Khoa Chuyên môn Bệnh viện Quận - Huyện',
+        primaryAction: 'Khởi động điều trị nội trú, theo dõi sát sinh hiệu và cận lâm sàng định kỳ mỗi 4–6 giờ.',
+        targetVitals: 'Duy trì tưới máu tạng, lượng nước tiểu ≥ 0.5 mL/kg/h',
+      },
+      {
+        grade: 'Mức độ 3: Thể Nặng / Cấp cứu Hồi sức (ICU)',
+        severity: 'critical',
+        criteria: 'Rối loạn huyết động (tụt HA, sốc), suy hô hấp, xuất huyết nặng hoặc tổn thương suy đa cơ quan.',
+        triage: 'Phòng Hồi sức Cấp cứu / ICU Bệnh viện Tỉnh',
+        primaryAction: 'Hồi sức khẩn cấp theo giờ vàng, bù dịch tĩnh mạch/vận mạch, can thiệp chuyên sâu và hội chẩn.',
+        targetVitals: 'HATT ≥ 90 mmHg, MAP ≥ 65 mmHg, SpO2 ≥ 95%',
+      },
+    ];
+  }, [activeChain]);
+
+  // Auto-detect recommended grade based on vitals and labs
+  const autoSuggestedGradeIndex = useMemo(() => {
+    if (!vitals) return 0;
+    const hatt = parseFloat(vitals.vHATT || '120');
+    const hattr = parseFloat(vitals.vHATTr || '80');
+    const mach = parseFloat(vitals.vMach || '80');
+    const spo2 = parseFloat(vitals.vSpo2 || '98');
+    const tc = labs ? parseFloat(labs.lTC || '250') : 250;
+    const hct = labs ? parseFloat(labs.lHct || '40') : 40;
+
+    // Critical (Grade 3)
+    if (
+      (hatt > 0 && hatt <= 90) ||
+      (hatt > 0 && hattr > 0 && hatt - hattr <= 20) ||
+      (spo2 > 0 && spo2 < 92) ||
+      (tc > 0 && tc < 50) ||
+      (mach > 0 && hatt > 0 && mach / hatt >= 1.0)
+    ) {
+      return severityGrades.length > 2 ? severityGrades.length - 1 : 1;
+    }
+
+    // Moderate / Warning (Grade 2)
+    if (
+      (mach >= 100) ||
+      (parseFloat(vitals.vNhiet || '37') >= 39.0) ||
+      (tc > 0 && tc < 100) ||
+      (hct >= 44)
+    ) {
+      return severityGrades.length > 1 ? 1 : 0;
+    }
+
+    return 0;
+  }, [vitals, labs, severityGrades]);
+
+  useEffect(() => {
+    setSelectedGradeIdx(autoSuggestedGradeIndex);
+  }, [currentDisease?.id, autoSuggestedGradeIndex]);
+
+  const activeComplications = useMemo(() => {
+    return activeChain?.complications || [];
+  }, [activeChain]);
+
+  const handleToggleComplication = (idx: number) => {
+    setActiveComplicationIndices((prev) => {
+      const next = new Set(prev);
+      if (next.has(idx)) next.delete(idx);
+      else next.add(idx);
+      return next;
+    });
+  };
+
+  const handleAddComplicationOrder = (comp: any) => {
+    const newOrder: CustomOrder = {
+      id: `comp_${Date.now()}`,
+      drug: `[XỬ TRÍ KHẨN: ${comp.name}]`,
+      dosage: comp.preventiveAction || 'Theo phác đồ xử trí biến chứng',
+      note: comp.onCallAlertText || 'Lệnh trực báo động khẩn',
+      completed: false,
+    };
+    setCustomOrders((prev) => [newOrder, ...prev]);
+  };
+
   // Filtered diseases for selector dropdown / quick search
   const filteredDiseases = useMemo(() => {
     const q = searchDisease.toLowerCase().trim();
-    return kb.benh.filter((b) => {
+    return allAvailableDiseases.filter((b) => {
       const matchSpecialty =
         selectedSpecialty === 'all' || b.nhom === selectedSpecialty;
       const matchQuery =
@@ -242,16 +449,16 @@ export const Step3Protocol: React.FC<Step3Props> = ({
         b.nhom.toLowerCase().includes(q);
       return matchSpecialty && matchQuery;
     });
-  }, [kb, searchDisease, selectedSpecialty]);
+  }, [allAvailableDiseases, searchDisease, selectedSpecialty]);
 
   // All unique organ specialties
   const specialties = useMemo(() => {
     const set = new Set<string>();
-    kb.benh.forEach((b) => {
+    allAvailableDiseases.forEach((b) => {
       if (b.nhom) set.add(b.nhom);
     });
-    return Array.from(set);
-  }, [kb]);
+    return Array.from(set).sort();
+  }, [allAvailableDiseases]);
 
   // Toggle order checkbox
   const toggleOrder = (key: string) => {
@@ -362,7 +569,18 @@ export const Step3Protocol: React.FC<Step3Props> = ({
     }
     lines.push(`--------------------------------------------------------`);
     lines.push(`CHẨN ĐOÁN: ${currentDisease.ten} (ICD-10: ${currentDisease.icd})`);
-    lines.push(`Phân loại: ${currentDisease.baoDong ? 'CẤP CỨU / NGUY KỊCH' : 'Thường quy / Theo dõi'}`);
+    const activeGrade = severityGrades[selectedGradeIdx] || severityGrades[0];
+    lines.push(`PHÂN ĐỘ LÂM SÀNG: ${activeGrade.grade}`);
+    lines.push(`Tuyến điều trị tiếp nhận: ${activeGrade.triage}`);
+    if (activeComplicationIndices.size > 0) {
+      const compNames = Array.from(activeComplicationIndices)
+        .map((idx) => activeComplications[idx]?.name)
+        .filter(Boolean);
+      lines.push(`BIẾN CHỨNG TÍCH CỰC: ${compNames.join('; ')}`);
+    } else {
+      lines.push(`BIẾN CHỨNG TÍCH CỰC: Chưa ghi nhận biến chứng đe dọa sinh mạng`);
+    }
+    lines.push(`Phân loại cấp cứu: ${currentDisease.baoDong ? 'CẤP CỨU / NGUY KỊCH' : 'Thường quy / Theo dõi'}`);
     lines.push(`Nguồn phác đồ: ${phacDo.nguon.join('; ')}`);
     lines.push(`--------------------------------------------------------`);
 
@@ -627,6 +845,204 @@ export const Step3Protocol: React.FC<Step3Props> = ({
                 ))}
               </div>
             </div>
+          </div>
+
+          {/* ========================================================================= */}
+          {/* KHỐI TRỌNG TÂM: ĐÁNH GIÁ PHÂN ĐỘ & BIẾN CHỨNG LÂM SÀNG                     */}
+          {/* ========================================================================= */}
+          <div className="bg-gradient-to-br from-indigo-50/90 via-blue-50/40 to-slate-50 border-2 border-indigo-200/90 rounded-xl p-4 sm:p-5 shadow-xs flex flex-col gap-4">
+            {/* Header */}
+            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-indigo-100 pb-3">
+              <div className="flex items-center gap-2.5">
+                <div className="w-8 h-8 rounded-lg bg-indigo-600 text-white flex items-center justify-center shadow-xs">
+                  <Layers className="w-4 h-4" />
+                </div>
+                <div>
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <h4 className="font-display font-bold text-sm sm:text-base text-indigo-950">
+                      Đánh Giá Phân Độ Lâm Sàng & Sàng Lọc Biến Chứng
+                    </h4>
+                    <span className="px-2 py-0.5 rounded text-[10.5px] font-mono bg-indigo-100 text-indigo-700 font-semibold border border-indigo-200">
+                      Quy trình EBM
+                    </span>
+                  </div>
+                  <p className="text-[11px] text-slate-500">
+                    Tiêu chuẩn chẩn đoán xác nhận bệnh nhân mắc bệnh; Phân độ & Biến chứng quyết định chính xác phác đồ, tốc độ dịch và tuyến điều trị.
+                  </p>
+                </div>
+              </div>
+
+              {/* Auto-suggest badge */}
+              {autoSuggestedGradeIndex > 0 && (
+                <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-amber-100 text-amber-900 border border-amber-300 text-xs font-semibold animate-pulse">
+                  <Sparkles className="w-3.5 h-3.5 text-amber-700" />
+                  <span>Gợi ý tự động từ sinh hiệu/CLS: {severityGrades[autoSuggestedGradeIndex]?.grade.split(':')[0]}</span>
+                </div>
+              )}
+            </div>
+
+            {/* Phần 1: Các nút chọn Phân độ (Severity Staging Grid) */}
+            <div className="flex flex-col gap-2">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-bold text-slate-700 flex items-center gap-1.5">
+                  <Activity className="w-3.5 h-3.5 text-indigo-600" />
+                  <span>1. Chọn phân độ lâm sàng hiện tại của người bệnh:</span>
+                </span>
+                <span className="text-[11px] text-slate-400">
+                  (Nhấp vào phân độ tương ứng để xem tiêu chuẩn và phác đồ)
+                </span>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-2.5">
+                {severityGrades.map((g, idx) => {
+                  const isSelected = selectedGradeIdx === idx;
+                  const isAutoSuggested = autoSuggestedGradeIndex === idx;
+                  const badgeColor =
+                    g.severity === 'critical'
+                      ? 'border-red-400 bg-red-50/90 text-red-900'
+                      : g.severity === 'severe'
+                      ? 'border-rose-300 bg-rose-50 text-rose-900'
+                      : g.severity === 'moderate'
+                      ? 'border-amber-300 bg-amber-50 text-amber-900'
+                      : 'border-emerald-300 bg-emerald-50 text-emerald-900';
+
+                  return (
+                    <button
+                      key={idx}
+                      type="button"
+                      onClick={() => setSelectedGradeIdx(idx)}
+                      className={`p-3 rounded-lg border text-left flex flex-col justify-between gap-2 transition-all cursor-pointer ${
+                        isSelected
+                          ? `${badgeColor} ring-2 ring-indigo-500 shadow-sm scale-[1.01]`
+                          : 'bg-white hover:bg-slate-50 border-slate-200 text-slate-700'
+                      }`}
+                    >
+                      <div className="flex items-start justify-between gap-1.5">
+                        <span className="font-bold text-xs leading-snug">{g.grade}</span>
+                        {isAutoSuggested && (
+                          <span className="px-1.5 py-0.5 rounded text-[9.5px] font-bold bg-amber-500 text-white shrink-0">
+                            Gợi ý
+                          </span>
+                        )}
+                      </div>
+
+                      <div className="flex items-center justify-between text-[10.5px] pt-1 border-t border-slate-100">
+                        <span className="text-slate-500 font-medium">Tuyến: <b>{g.triage.split('/')[0]}</b></span>
+                        <span className={`px-1.5 py-0.2 rounded font-semibold text-[10px] ${
+                          g.severity === 'critical' ? 'bg-red-200 text-red-800' : g.severity === 'moderate' ? 'bg-amber-200 text-amber-800' : 'bg-emerald-200 text-emerald-800'
+                        }`}>
+                          {g.severity.toUpperCase()}
+                        </span>
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
+
+              {/* Chi tiết phân độ đang chọn */}
+              {severityGrades[selectedGradeIdx] && (
+                <div className="bg-white border border-indigo-200/80 rounded-lg p-3.5 text-xs text-slate-800 flex flex-col gap-2 shadow-2xs">
+                  <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-2">
+                    <div className="flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-indigo-600 shrink-0" />
+                      <span className="font-bold text-indigo-950">
+                        Tiêu chuẩn xác định: {severityGrades[selectedGradeIdx].grade}
+                      </span>
+                    </div>
+                    <span className="px-2 py-0.5 rounded text-[11px] bg-indigo-50 text-indigo-700 font-semibold border border-indigo-200">
+                      Nơi tiếp nhận: {severityGrades[selectedGradeIdx].triage}
+                    </span>
+                  </div>
+
+                  <p className="text-slate-700 leading-relaxed">
+                    <b>Tiêu chí lâm sàng / CLS:</b> {severityGrades[selectedGradeIdx].criteria}
+                  </p>
+
+                  <div className="bg-blue-50/70 border border-blue-200 rounded p-2 text-blue-950">
+                    <b>⚡ Hành động xử trí cốt lõi:</b> {severityGrades[selectedGradeIdx].primaryAction}
+                  </div>
+
+                  {severityGrades[selectedGradeIdx].targetVitals && (
+                    <div className="text-[11px] text-slate-500 font-mono-custom">
+                      Mục tiêu sinh hiệu: {severityGrades[selectedGradeIdx].targetVitals}
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+
+            {/* Phần 2: Sàng Lọc & Xử Trí Biến Chứng Tích Cực (Complications Sentinel) */}
+            {activeComplications.length > 0 && (
+              <div className="flex flex-col gap-2 pt-2 border-t border-indigo-100">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold text-slate-700 flex items-center gap-1.5">
+                    <ShieldAlert className="w-3.5 h-3.5 text-rose-600" />
+                    <span>2. Sàng lọc biến chứng tích cực (Đánh dấu nếu người bệnh có biểu hiện):</span>
+                  </span>
+                  <span className="text-[11px] text-slate-400">
+                    (Tích chọn để kích hoạt lệnh trực cấp cứu & y lệnh xử trí)
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+                  {activeComplications.map((comp, cIdx) => {
+                    const isChecked = activeComplicationIndices.has(cIdx);
+                    return (
+                      <div
+                        key={cIdx}
+                        className={`p-3 rounded-lg border transition-all ${
+                          isChecked
+                            ? 'bg-rose-50/80 border-rose-300 text-rose-950 shadow-xs'
+                            : 'bg-white border-slate-200 hover:border-slate-300 text-slate-800'
+                        }`}
+                      >
+                        <div className="flex items-start justify-between gap-2 mb-1.5">
+                          <label className="flex items-start gap-2 cursor-pointer select-none">
+                            <input
+                              type="checkbox"
+                              checked={isChecked}
+                              onChange={() => handleToggleComplication(cIdx)}
+                              className="mt-0.5 rounded text-rose-600 cursor-pointer"
+                            />
+                            <span className="font-bold text-xs">{comp.name}</span>
+                          </label>
+                          <span className="px-1.5 py-0.2 rounded text-[10px] font-mono bg-slate-100 text-slate-600 shrink-0">
+                            {comp.timeframe === 'acute_24h' ? 'Cấp tính 24h' : 'Bán cấp 7 ngày'}
+                          </span>
+                        </div>
+
+                        <div className="text-[11px] text-slate-600 space-y-1 pl-5">
+                          <div>
+                            <span className="text-slate-400">Dấu hiệu cảnh báo:</span> {comp.warningSigns}
+                          </div>
+                          <div>
+                            <span className="text-slate-400">Ngăn ngừa:</span> {comp.preventiveAction}
+                          </div>
+                        </div>
+
+                        {isChecked && (
+                          <div className="mt-2.5 pt-2 border-t border-rose-200/80 flex flex-col gap-2">
+                            <div className="bg-red-600 text-white rounded p-2 text-xs font-semibold flex items-center gap-1.5 shadow-2xs">
+                              <AlertOctagon className="w-4 h-4 shrink-0" />
+                              <span>LỆNH TRỰC: {comp.onCallAlertText}</span>
+                            </div>
+
+                            <button
+                              type="button"
+                              onClick={() => handleAddComplicationOrder(comp)}
+                              className="self-start px-2.5 py-1 bg-white hover:bg-rose-100 text-rose-700 border border-rose-300 rounded text-xs font-semibold transition-colors cursor-pointer flex items-center gap-1"
+                            >
+                              <Plus className="w-3 h-3" />
+                              <span>Nạp y lệnh xử trí biến chứng này vào đơn</span>
+                            </button>
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Clinical Order Execution Progress Bar & Actions */}

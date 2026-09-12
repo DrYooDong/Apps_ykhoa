@@ -1,0 +1,456 @@
+# ==============================================================================
+# CLINIPORTAL DOCSPACE — MASTER PROMPT NẠP CHU TRÌNH LÂM SÀNG
+# BỘ PROMPT CHUNG DÙNG CHO MỌI BỆNH LÝ — SẴN SÀNG CHẠY VỚI SỐT XUẤT HUYẾT DENGUE
+# ==============================================================================
+# MỤC TIÊU:
+# Dán prompt này vào Google NotebookLM (đã tải tài liệu Hướng dẫn chẩn đoán và điều trị)
+# để sinh ra TOÀN BỘ CODE CẤU TRÚC nạp vào 4 Bước của "Chu Trình Lâm Sàng" DocSpace:
+#
+#   1. CODE 1: Enriched CDSS JSON (src/content/docspace/data/enriched/<slug>.json)
+#      -> Vận hành Tiêu chuẩn chẩn đoán, Ngưỡng CLS, Phác đồ thuốc bậc 1 & 2, Biến chứng cờ đỏ (Bước 3 & 4)
+#   2. CODE 2: Động Cơ Suy Luận & Trọng Số CDSS (src/content/knowledge-vault/data/clinical-rules-kb.json)
+#      -> Vận hành Ma trận trọng số (dt/gy/ht/loaitru) để tính % xác suất chẩn đoán (Bước 3)
+#   3. CODE 3: Ca Bệnh Mẫu Thực Tế (src/content/knowledge-vault/data/sample-clinical-cases.json)
+#      -> Nạp 1-click lên thanh "Ca bệnh mẫu" ở Bước 1 (Sinh hiệu, CLS, Bệnh sử, Triệu chứng)
+#   4. CODE 4: Hồ Sơ Ca Bệnh SOAP Markdown (Nạp qua nút "Nạp ca từ NotebookLM" trên thanh công cụ)
+# ==============================================================================
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📌 THÔNG SỐ ĐẦU VÀO (TÙY CHỈNH THEO MẶT BỆNH CẦN SOẠN):
+(Hiện tại đã điền sẵn cho Sốt Xuất Huyết Dengue để bạn sao chép chạy ngay trong NotebookLM)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- [TÊN BỆNH LÝ]: Sốt xuất huyết Dengue
+- [TÊN TIẾNG ANH / VIẾT TẮT]: Dengue Hemorrhagic Fever / Dengue Shock Syndrome (DHF / DSS)
+- [MÃ ICD-10]: A97 (bao gồm các mã phụ: A97.0, A97.1, A97.2, A97.9, A90, A91)
+- [CHUYÊN KHOA]: Truyền nhiễm
+- [MỨC ĐỘ NẶNG]: emergency (chọn 1 trong 3: 'emergency' | 'severe' | 'standard')
+- [HƯỚNG DẪN THAM CHIẾU]: Quyết định 2760/QĐ-BYT ngày 04/07/2023 của Bộ Y Tế Việt Nam & WHO Dengue Clinical Guidelines 2024–2025
+- [SLUG FILE]: sot_xuat_huyet_dengue
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📋 PROMPT CHUNG DÁN VÀO NOTEBOOKLM ĐỂ SINH TOÀN BỘ CODE CHU TRÌNH LÂM SÀNG:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+"Bạn là Chuyên gia Y học Chứng cứ (EBM) kiêm Kỹ sư Dữ liệu Lâm sàng (Clinical Decision Support Engineer) của hệ sinh thái CliniPortal DocSpace.
+
+Dựa DUY NHẤT và CHẶT CHẼ trên các tài liệu chuyên môn đã tải lên trong Notebook này (đặc biệt là [HƯỚNG DẪN THAM CHIẾU]), hãy biên soạn TOÀN BỘ CODE DỮ LIỆU CẤU TRÚC ĐỒNG BỘ để nạp vào Chu Trình Lâm Sàng 4 Bước cho mặt bệnh:
+- Tên bệnh: [TÊN BỆNH LÝ] ([TÊN TIẾNG ANH / VIẾT TẮT])
+- Mã ICD-10: [MÃ ICD-10]
+- Chuyên khoa: [CHUYÊN KHOA] | Mức độ: [MỨC ĐỘ NẶNG]
+- Slug định danh: [SLUG FILE]
+
+YÊU CẦU SINH ĐÚNG 4 KHỐI CODE BÊN DƯỚI (KHÔNG VIẾT CHUNG CHUNG, KHÔNG DÙNG PLACEHOLDER, PHẢI CÓ SỐ LIỆU ĐỊNH LƯỢNG, NGƯỠNG XÉT NGHIỆM VÀ LIỀU LƯỢNG THUỐC CỤ THỂ):
+
+==============================================================================
+KHỐI 1: ENRICHED CDSS JSON (Lưu vào: src/content/docspace/data/enriched/[SLUG FILE].json)
+==============================================================================
+Xuất một khối JSON hợp lệ duy nhất có cấu trúc chính xác sau:
+
+```json
+{
+  \"icdCode\": \"[MÃ ICD-10 CHÍNH]\",
+  \"icdPrefixes\": [\"[MÃ 1]\", \"[MÃ 2]\", \"...\"],
+  \"diseaseName\": \"[Tên bệnh tiếng Việt kèm tên tiếng Anh/viết tắt]\",
+  \"specialty\": \"[CHUYÊN KHOA]\",
+  \"severity\": \"[MỨC ĐỘ NẶNG: emergency | severe | standard]\",
+  \"summary\": \"[Đoạn tóm tắt cơ chế bệnh sinh, diễn tiến giai đoạn lâm sàng và nguy cơ đe dọa tính mạng (tối đa 4-5 câu súc tích)]\",
+  \"goldStandard\": \"[Tiêu chuẩn vàng chẩn đoán xác định cụ thể: xét nghiệm vi sinh/PCR/sinh thiết/hình ảnh học/tiêu chuẩn quốc tế]\",
+  \"criteriaRule\": {
+    \"mandatoryIds\": [\"[id_tieu_chuan_bat_buoc_1]\"],
+    \"minMajorRequired\": 2,
+    \"minMinorRequired\": 1,
+    \"ruleDescription\": \"[Quy tắc logic xác chẩn: ví dụ Phải có tiêu chuẩn A VÀ ít nhất 2 tiêu chuẩn chính B, C VÀ 1 tiêu chuẩn CLS D]\"
+  },
+  \"criteria\": [
+    {
+      \"id\": \"[slug_id_1]\",
+      \"type\": \"mandatory\",
+      \"label\": \"[Tiêu chuẩn bắt buộc: Sốt/Đặc điểm lâm sàng tiên quyết kèm yếu tố dịch tễ]\",
+      \"description\": \"[Mô tả chi tiết biểu hiện lâm sàng, thời gian khởi phát]\",
+      \"sourceGuideline\": \"[Văn bản tham chiếu Bộ Y Tế / Quốc tế]\"
+    },
+    {
+      \"id\": \"[slug_id_2]\",
+      \"type\": \"major\",
+      \"label\": \"[Tiêu chuẩn chính 1: Hội chứng lâm sàng kinh điển]\",
+      \"description\": \"[Mô tả dấu hiệu]\",
+      \"sourceGuideline\": \"[Văn bản tham chiếu]\"
+    },
+    {
+      \"id\": \"[slug_id_3]\",
+      \"type\": \"major\",
+      \"label\": \"[Tiêu chuẩn chính 2: Nghiệm pháp thực thể / Dấu hiệu cảnh báo nguy hiểm]\",
+      \"description\": \"[Cách khám và tiêu chuẩn dương tính]\",
+      \"sourceGuideline\": \"[Văn bản tham chiếu]\"
+    },
+    {
+      \"id\": \"[slug_id_4]\",
+      \"type\": \"lab\",
+      \"label\": \"[Cận lâm sàng then chốt 1: Tên xét nghiệm kèm ngưỡng số học cụ thể]\",
+      \"description\": \"[Ý nghĩa sinh lý bệnh]\",
+      \"labThreshold\": \"[Ngưỡng số học cụ thể: ví dụ Hct tăng > 20%, Tiểu cầu < 100 G/L, Men gan > 1000 U/L...]\",
+      \"sourceGuideline\": \"[Văn bản tham chiếu]\"
+    },
+    {
+      \"id\": \"[slug_id_5]\",
+      \"type\": \"lab\",
+      \"label\": \"[Cận lâm sàng then chốt 2: Xét nghiệm căn nguyên vi sinh / D-dimer / Troponin...]\",
+      \"description\": \"[Thời điểm lấy mẫu và độ nhạy/đặc hiệu]\",
+      \"labThreshold\": \"[Ngưỡng xác định dương tính]\",
+      \"sourceGuideline\": \"[Văn bản tham chiếu]\"
+    },
+    {
+      \"id\": \"[slug_id_6]\",
+      \"type\": \"imaging\",
+      \"label\": \"[Chẩn đoán hình ảnh: Siêu âm / X-quang / CT đặc trưng]\",
+      \"description\": \"[Dấu hiệu trực quan]\",
+      \"labThreshold\": \"[Tiêu chí đo đạc trên hình ảnh học: ví dụ Dày thành túi mật > 3mm, dịch màng phổi...]\",
+      \"sourceGuideline\": \"[Văn bản tham chiếu]\"
+    }
+  ],
+  \"severityGrading\": [
+    {
+      \"grade\": \"[Tên phân độ 1: Thể nhẹ / Ngoại trú]\",
+      \"severity\": \"mild\",
+      \"criteria\": \"[Tiêu chuẩn lâm sàng/CLS xác nhận phân độ 1]\",
+      \"triage\": \"[Nơi tiếp nhận: Ngoại trú / Trạm y tế / Phòng khám]\",
+      \"primaryAction\": \"[Hành vi can thiệp: thuốc uống, bù dịch Oresol, hẹn khám lại]\",
+      \"targetVitals\": \"[Mục tiêu sinh hiệu]\"
+    },
+    {
+      \"grade\": \"[Tên phân độ 2: Thể cảnh báo / Nhập viện]\",
+      \"severity\": \"moderate\",
+      \"criteria\": \"[Dấu hiệu cảnh báo: đau bụng gan, nôn nhiều, Hct tăng cao, tiểu cầu tụt...]\",
+      \"triage\": \"[Nơi tiếp nhận: Nội trú 100% / Bệnh viện Huyện]\",
+      \"primaryAction\": \"[Hành vi can thiệp: bù dịch tĩnh mạch Ringer Lactate bậc thang mL/kg/h]\",
+      \"targetVitals\": \"[Mục tiêu bài niệu và sinh hiệu]\"
+    },
+    {
+      \"grade\": \"[Tên phân độ 3: Thể nặng / Sốc / Suy tạng]\",
+      \"severity\": \"critical\",
+      \"criteria\": \"[Huyết động suy sụp: HA kẹp, tụt HA, sốc, xuất huyết tạng nặng, men gan >= 1000]\",
+      \"triage\": \"[Nơi tiếp nhận: Hồi sức cấp cứu (ICU) / BV Tỉnh]\",
+      \"primaryAction\": \"[Hồi sức khẩn cấp: chống sốc 15-20 mL/kg/h, Cao phân tử, truyền máu]\",
+      \"targetVitals\": \"[Mục tiêu hồi sức MAP >= 65 mmHg, HATT >= 90, SpO2 >= 95%]\"
+    }
+  ],
+  \"protocol\": {
+    \"title\": \"[Tên phác đồ điều trị kèm tên văn bản hướng dẫn]\",
+    \"guideline\": \"[Trích dẫn số quyết định, cơ quan ban hành, năm]\",
+    \"targetGoals\": [
+      \"[Mục tiêu huyết động: Mạch, HATT, MAP, Hiệu áp cụ thể]\",
+      \"[Mục tiêu tưới máu tạng: Nước tiểu mL/kg/h, SpO2, chỉ số CLS đích]\",
+      \"[Mục tiêu an toàn: Phòng ngừa biến chứng và quá tải dịch/thuốc]\"
+    ],
+    \"initialManagement\": [
+      \"[Phân tầng tiếp nhận xử trí: Tuyến cơ sở, Nội trú, hay Hồi sức tích cực ICU]\",
+      \"[Can thiệp ban đầu: Bù dịch sớm đường uống, tư thế, oxy liệu pháp]\",
+      \"[Chỉ định hồi sức dịch tĩnh mạch khẩn cấp hoặc thuốc can thiệp tức thì]\"
+    ],
+    \"firstLineDrugs\": [
+      {
+        \"drugName\": \"[Tên hoạt chất thuốc đầu tay 1]\",
+        \"class\": \"[Nhóm dược lý]\",
+        \"route\": \"[Đường dùng: PO / IV / SC / IM]\",
+        \"dosage\": \"[Liều lượng chính xác cho trẻ em và người lớn mg/kg hoặc mg]\",
+        \"frequency\": \"[Tần suất và khoảng cách liều]\",
+        \"instructions\": \"[Hướng dẫn thực hành, cách pha, thời gian truyền, điều chỉnh liều]\",
+        \"isFirstLine\": true,
+        \"notes\": \"[Lưu ý chỉnh liều theo chức năng gan/thận hoặc điều kiện lâm sàng]\",
+        \"contraindications\": [
+          \"[Chống chỉ định tuyệt đối 1]\",
+          \"[Chống chỉ định tuyệt đối 2]\"
+        ]
+      },
+      {
+        \"drugName\": \"[Tên dung dịch / Thuốc đầu tay 2]\",
+        \"class\": \"[Nhóm dung dịch điện giải / Kháng sinh / Kháng đông...]\",
+        \"route\": \"[Đường dùng]\",
+        \"dosage\": \"[Liều lượng và tốc độ truyền mL/kg/h theo từng nấc]\",
+        \"frequency\": \"[Khoảng thời gian điều chỉnh liều]\",
+        \"instructions\": \"[Quy trình giảm liều theo bậc thang]\",
+        \"isFirstLine\": true,
+        \"notes\": \"[Lưu ý an toàn]\",
+        \"contraindications\": [
+          \"[Chống chỉ định 1]\",
+          \"[Chống chỉ định 2]\"
+        ]
+      }
+    ],
+    \"secondLineDrugs\": [
+      {
+        \"drugName\": \"[Tên thuốc bậc 2 / Cứu vãn / Kháng trị]\",
+        \"class\": \"[Nhóm dược lý]\",
+        \"route\": \"[Đường dùng]\",
+        \"dosage\": \"[Liều lượng]\",
+        \"frequency\": \"[Tần suất]\",
+        \"instructions\": \"[Thời điểm chỉ định: Khi thất bại thuốc bậc 1 hoặc sốc kéo dài]\",
+        \"isFirstLine\": false,
+        \"notes\": \"[Theo dõi độc tính và giới hạn tổng liều]\",
+        \"contraindications\": [
+          \"[Chống chỉ định 1]\"
+        ]
+      }
+    ],
+    \"supportiveCare\": [
+      \"[Chế độ nghỉ ngơi, chăm sóc điều dưỡng]\",
+      \"[Chế độ dinh dưỡng, ăn uống phù hợp bệnh cảnh]\",
+      \"[Tần suất theo dõi sinh hiệu và cận lâm sàng tại giường]\"
+    ]
+  },
+  \"complications\": [
+    {
+      \"name\": \"[Tên biến chứng cấp tính nguy hiểm nhất: ví dụ Sốc thoát huyết tương / Sốc tim]\",
+      \"timeframe\": \"acute_24h\",
+      \"warningSigns\": \"[Dấu hiệu cảnh báo nhận diện sớm tại giường bệnh]\",
+      \"preventiveAction\": \"[Hành động xử trí can thiệp ngăn chặn tử vong]\",
+      \"onCallAlertText\": \"[Y LỆNH BÁO ĐỘNG ĐỎ NGẮN GỌN CHO BÁC SĨ/ĐIỀU DƯỠNG TRỰC: ví dụ SỐC: Thở oxy, xả dịch 15-20 mL/kg/h khẩn!]\"
+    },
+    {
+      \"name\": \"[Tên biến chứng nguy hiểm 2: ví dụ Xuất huyết nặng / Phù phổi cấp do quá tải dịch]\",
+      \"timeframe\": \"subacute_7d\",
+      \"warningSigns\": \"[Dấu hiệu nhận diện]\",
+      \"preventiveAction\": \"[Hành vi can thiệp]\",
+      \"onCallAlertText\": \"[Y lệnh báo động khẩn cấp]\"
+    }
+  ],
+  \"monitoringLabs\": [
+    \"[Xét nghiệm 1 kèm tần suất kiểm tra]\",
+    \"[Xét nghiệm 2 kèm tần suất kiểm tra]\",
+    \"[Xét nghiệm 3 và hình ảnh học theo dõi]\"
+  ],
+  \"vaultPathways\": [
+    {
+      \"khoCode\": \"CD\",
+      \"khoName\": \"Kho Tiêu Chuẩn CĐ\",
+      \"articleTitle\": \"[Tiêu chuẩn chẩn đoán [Tên bệnh]]\",
+      \"searchKeyword\": \"[từ khóa tìm kiếm]\"
+    },
+    {
+      \"khoCode\": \"PDDT\",
+      \"khoName\": \"Kho Phác Đồ Điều Trị\",
+      \"articleTitle\": \"[Phác đồ điều trị, dược thư & tư vấn [Tên bệnh]]\",
+      \"searchKeyword\": \"[từ khóa tìm kiếm]\"
+    },
+    {
+      \"khoCode\": \"DTH\",
+      \"khoName\": \"Kho Dịch Tễ & Nguy Cơ\",
+      \"articleTitle\": \"[Dịch tễ học & yếu tố nguy cơ [Tên bệnh]]\",
+      \"searchKeyword\": \"[từ khóa tìm kiếm]\"
+    },
+    {
+      \"khoCode\": \"BC\",
+      \"khoName\": \"Kho Biến Chứng\",
+      \"articleTitle\": \"[Nhận diện và xử trí biến chứng [Tên bệnh]]\",
+      \"searchKeyword\": \"[từ khóa tìm kiếm]\"
+    }
+  ]
+}
+```
+
+==============================================================================
+KHỐI 2: ĐỘNG CƠ SUY LUẬN & TRỌNG SỐ CDSS (Nạp vào: clinical-rules-kb.json)
+==============================================================================
+Cung cấp 2 đoạn code JSON để nạp vào file `src/content/knowledge-vault/data/clinical-rules-kb.json`:
+
+1. Đoạn nạp vào mảng `\"trieuChung\"` (Kèm quy tắc tự suy định lượng từ `map`):
+```json
+[
+  {
+    \"id\": \"[slug_trieu_chung_1]\",
+    \"ten\": \"[Tên triệu chứng lâm sàng / CLS]\",
+    \"nhom\": \"[Toàn thân | Tiêu hóa | Hô hấp | Tim mạch | Da niêm | Huyết học | Cận lâm sàng]\",
+    \"loai\": [\"cn\", \"tt\"],
+    \"tuKhoa\": [\"[từ khóa 1]\", \"[từ khóa 2]\"],
+    \"map\": null
+  },
+  {
+    \"id\": \"[slug_trieu_chung_cls_dinh_luong]\",
+    \"ten\": \"[Tên xét nghiệm kèm ngưỡng số học]\",
+    \"nhom\": \"Cận lâm sàng\",
+    \"loai\": [\"cls\"],
+    \"tuKhoa\": [\"[tên xét nghiệm]\", \"[viết tắt]\"],
+    \"map\": {
+      \"fld\": \"[vNhiet | vMach | vHATT | vHATTr | vTho | vSpo2 | lBC | lTC | lHct | lGlu | lTrop | lCRP]\",
+      \"op\": \"[>= | > | <= | <]\",
+      \"val\": [ngưỡng số định lượng]
+    }
+  }
+]
+```
+
+2. Đoạn nạp vào mảng `\"benh\"` (Kèm ma trận trọng số triệu chứng để thuật toán tính % xác suất chẩn đoán):
+```json
+{
+  \"id\": \"[SLUG FILE]\",
+  \"ten\": \"[TÊN BỆNH LÝ]\",
+  \"icd\": \"[MÃ ICD-10 CHÍNH]\",
+  \"nhom\": \"[CHUYÊN KHOA]\",
+  \"baoDong\": true,
+  \"ghiChuBaoDong\": \"[Cảnh báo cờ đỏ sinh hiệu / dấu hiệu sốc đe dọa sinh mạng]\",
+  \"tomTat\": \"[Đoạn tóm tắt bệnh cảnh ngắn gọn 2 câu]\",
+  \"danSo\": {
+    \"gioiTinh\": \"any\",
+    \"tuoiMin\": 0,
+    \"tuoiMax\": 120
+  },
+  \"dd\": [
+    [\"[slug_trieu_chung_dac_trung_1]\", 4.5, \"dt\"],
+    [\"[slug_trieu_chung_dac_trung_2]\", 3.5, \"dt\"],
+    [\"[slug_trieu_chung_goi_y_1]\", 2.5, \"gy\"],
+    [\"[slug_trieu_chung_goi_y_2]\", 2.0, \"gy\"],
+    [\"[slug_trieu_chung_ho_tro_1]\", 1.5, \"ht\"],
+    [\"[slug_trieu_chung_loai_tru]\", -5.0, \"loaitru\"]
+  ],
+  \"phacDo\": {
+    \"tuyen\": [
+      \"Trạm y tế / Ngoại trú: [Hướng dẫn điều trị và theo dõi]\",
+      \"Bệnh viện Huyện / Nội trú: [Hướng dẫn truyền dịch / chỉ định nhập viện]\",
+      \"Bệnh viện Tỉnh / ICU: [Hồi sức sốc / can thiệp chuyên sâu]\"
+    ],
+    \"thuoc\": [
+      [\"[Tên thuốc 1]\", \"[Liều lượng / đường dùng]\", \"[Ghi chú / mục tiêu]\"],
+      [\"[Tên dung dịch / thuốc 2]\", \"[Liều lượng / tốc độ]\", \"[Ghi chú theo dõi]\"],
+      [\"[Tên thuốc 3]\", \"[Liều lượng]\", \"[Ghi chú chống chỉ định]\"],
+      [\"[Tên thuốc 4]\", \"[Liều lượng]\", \"[Ghi chú chỉnh liều]\"],
+      [\"[Tên thuốc 5]\", \"[Liều lượng]\", \"[Ghi chú cảnh báo]\"],
+      [\"[Tên thuốc 6]\", \"[Liều lượng]\", \"[Ghi chú phối hợp]\"],
+      [\"[Tên thuốc 7]\", \"[Liều lượng]\", \"[Ghi chú ngừng thuốc]\"],
+      [\"[Tên thuốc 8]\", \"[Liều lượng]\", \"[Ghi chú theo dõi độc tính]\"],
+      [\"[Tên thuốc 9]\", \"[Liều lượng]\", \"[Ghi chú đối tượng đặc biệt]\"],
+      [\"[Tên thuốc 10]\", \"[Liều lượng]\", \"[Ghi chú tương tác thuốc]\"],
+      [\"[Tên thuốc 11]\", \"[Liều lượng]\", \"[Ghi chú bảo quản/pha truyền]\"]
+    ],
+    \"theoDoi\": [
+      \"[Chỉ tiêu theo dõi lâm sàng 1]\",
+      \"[Chỉ tiêu theo dõi cận lâm sàng 2]\"
+    ],
+    \"luuY\": [
+      \"[Chống chỉ định dùng thuốc nguy hiểm: ví dụ NSAIDs]\",
+      \"[Bẫy lâm sàng thường gặp]\"
+    ],
+    \"nguon\": [
+      \"[Tên văn bản hướng dẫn điều trị chính thức]\"
+    ]
+  }
+}
+```
+
+==============================================================================
+KHỐI 3: CA LÂM SÀNG MẪU BƯỚC 1 (Nạp vào: sample-clinical-cases.json)
+==============================================================================
+Xuất một đoạn code JSON đại diện cho 01 ca bệnh thực tế điển hình (hoặc có bẫy lâm sàng) để nạp vào mảng `SAMPLE_CASES` trong `src/content/knowledge-vault/data/sample-clinical-cases.json`:
+
+```json
+{
+  \"ten\": \"[Tên ngắn gọn: ví dụ SXH Dengue Có Dấu Hiệu Cảnh Báo Ngày 4]\",
+  \"sel\": [\"[id_tc_1]\", \"[id_tc_2]\", \"[id_tc_3]\", \"[id_tc_4]\", \"[id_tc_5]\"],
+  \"vitals\": {
+    \"vNhiet\": \"[Nhiệt độ: ví dụ 39.2]\",
+    \"vMach\": \"[Mạch: ví dụ 108]\",
+    \"vHATT\": \"[HA tâm thu: ví dụ 95]\",
+    \"vHATTr\": \"[HA tâm trương: ví dụ 75]\",
+    \"vTho\": \"[Nhịp thở: ví dụ 22]\",
+    \"vSpo2\": \"[SpO2: ví dụ 96]\"
+  },
+  \"labs\": {
+    \"lBC\": \"[Bạch cầu G/L: ví dụ 3.2]\",
+    \"lTC\": \"[Tiểu cầu G/L: ví dụ 42]\",
+    \"lHct\": \"[Hematocrit %: ví dụ 46]\",
+    \"lGlu\": \"[Đường huyết mmol/L: ví dụ 5.4]\",
+    \"lTrop\": \"[Troponin ng/L: ví dụ 8]\"
+  },
+  \"selected\": [\"[id_tc_1]\", \"[id_tc_2]\", \"[id_tc_3]\", \"[id_tc_4]\", \"[id_tc_5]\"],
+  \"negated\": [\"[id_trieu_chung_am_tinh_gia_tri_1]\", \"[id_trieu_chung_am_tinh_gia_tri_2]\"],
+  \"form\": {
+    \"gioiTinh\": \"[nam | nu]\",
+    \"tuoi\": \"[Tuổi bệnh nhân: ví dụ 24]\",
+    \"ngheNghiep\": \"[Nghề nghiệp bệnh nhân]\",
+    \"lyDo\": \"[Lý do vào viện chính: ví dụ Sốt cao ngày 4 kèm đau bụng vùng gan và chảy máu chân răng]\",
+    \"text\": {
+      \"cn\": \"[Đoạn mô tả triệu chứng cơ năng đầy đủ thuộc tính PQRST, thời gian khởi phát]\",
+      \"tt\": \"[Đoạn mô tả khám thực thể toàn thân, tri giác, sinh hiệu, dấu hiệu dây thắt, bụng, tim phổi]\",
+      \"tc\": \"[Tiền căn bệnh lý mạn tính, tiền sử dịch tễ, nguồn lây, ổ dịch lưu hành]\",
+      \"cls\": \"[Kết quả công thức máu, men gan, xét nghiệm căn nguyên vi sinh, hình ảnh học ban đầu]\"
+    }
+  }
+}
+```
+
+==============================================================================
+KHỐI 4: HỒ SƠ CA BỆNH KINH NGHIỆM SOAP MARKDOWN (Nạp qua Quick Ingest Modal)
+==============================================================================
+Xuất một bài viết Markdown Frontmatter chuẩn theo định dạng sau:
+
+```markdown
+---
+title: \"[Tên ca lâm sàng: ví dụ Ca SXHD cảnh báo ở bệnh nhân nam 24 tuổi ngày thứ 4]\"
+caseId: \"soap-[SLUG FILE]-01\"
+specialty: \"[CHUYÊN KHOA]\"
+experienceLevel: \"essential\"
+difficultyRating: 3
+authorDoctor: \"Hội đồng Khoa học CliniPortal DocSpace\"
+icd10:
+  - \"[MÃ ICD-10]\"
+tags:
+  - \"[CHUYÊN KHOA]\"
+  - \"[TÊN BỆNH LÝ]\"
+  - \"SOAP\"
+demographicContext: \"Bệnh nhân [Giới] [Tuổi] tuổi, [Nghề nghiệp], [Tiền căn]\"
+historyPearls: \"⚡ BÀI HỌC KHAI THÁC BỆNH SỬ: [1 câu hỏi vàng giúp nhận diện sớm bệnh hoặc thời điểm chuyển giai đoạn]\"
+objectivePitfalls: \"⚠️ BẪY CẬN LÂM SÀNG & KHÁM: [1 cạm bẫy khám thực thể hoặc bẫy đọc xét nghiệm rất dễ bỏ sót]\"
+diagnosticPearls: \"🧠 ĐÚC KẾT BIỆN LUẬN: [Lập luận chẩn đoán phân biệt then chốt và ngưỡng kích hoạt điều trị khẩn]\"
+takeawayLessons: \"🎯 BÀI HỌC KINH NGHIỆM ĐIỀU TRỊ: [Nguyên tắc phác đồ cốt lõi, chống chỉ định và phòng ngừa biến chứng]\"
+sourceReference: \"[HƯỚNG DẪN THAM CHIẾU]\"
+clinicalContext: \"Khoa Cấp cứu / Khoa Bệnh Nhiệt đới\"
+updated: \"2026-09-12\"
+---
+
+# 🩺 Ca Lâm Sàng: [TÊN BỆNH LÝ]
+
+> **Bối cảnh**: [Tóm tắt bối cảnh bệnh nhân và lý do tiếp nhận]
+
+## 1. 📝 S — CHỦ QUAN / SUBJECTIVE
+- **Lý do nhập viện**: [Mô tả ngắn gọn]
+- **Bệnh sử chi tiết**:
+[Khai thác diễn tiến triệu chứng theo ngày, đáp ứng thuốc hạ sốt, dấu hiệu cảnh báo xuất hiện]
+- **Tiền căn**:
+[Bệnh mạn tính, tiền sử dịch tễ sống/đi qua vùng có ổ dịch, tiền sử dùng thuốc trước nhập viện]
+
+## 2. 🔬 O — KHÁCH QUAN / OBJECTIVE
+### Sinh hiệu:
+- Huyết áp: [HA mmHg]
+- Mạch: [Mạch l/p]
+- Thân nhiệt: [Nhiệt độ °C]
+- Nhịp thở: [Nhịp thở l/p]
+- SpO₂: [SpO2 %]
+- BMI: [BMI kg/m²]
+
+### Khám thực thể trọng tâm:
+[Khám tri giác, dấu hiệu thoát dịch, xuất huyết da niêm, nghiệm pháp lacet, gan to, tim phổi]
+
+### Cận lâm sàng & Hình ảnh học:
+[Kết quả CBC: WBC, Hct, Tiểu cầu; Men gan; Xét nghiệm căn nguyên; Siêu âm màng bụng/màng phổi]
+
+## 3. 🧠 A — ĐÁNH GIÁ / ASSESSMENT
+- **Chẩn đoán xác định**: [Tên chẩn đoán đầy đủ theo phân độ và ngày bệnh]
+- **Mã ICD-10**: `[MÃ ICD-10]`
+- **Chẩn đoán phân biệt cần loại trừ**:
+  - [Chẩn đoán phân biệt 1]: [Điểm giống và xét nghiệm phân định]
+  - [Chẩn đoán phân biệt 2]: [Điểm giống và xét nghiệm phân định]
+  - [Chẩn đoán phân biệt 3]: [Điểm giống và xét nghiệm phân định]
+- **Phân tầng nguy cơ & Thang điểm lượng giá**:
+[Tính toán Shock Index, qSOFA hoặc tiêu chuẩn cảnh báo theo guideline]
+
+## 4. 📋 P — KẾ HOẠCH / PLAN
+- **Xử trí cấp cứu & Ban đầu**:
+[Tư thế, đường truyền tĩnh mạch, tốc độ bù dịch giờ đầu]
+
+### Y lệnh thuốc điều trị:
+- **[Tên thuốc 1]**: [Liều lượng] ([Đường dùng]) — *[Ghi chú / Cơ chế]*
+- **[Tên dung dịch 2]**: [Tốc độ mL/kg/h] ([Đường dùng IV]) — *[Ghi chú nấc giảm liều]*
+- **[Tên thuốc 3]**: [Liều lượng] ([Đường dùng]) — *[Ghi chú chỉ định]*
+
+### Kế hoạch theo dõi & Tiêu chuẩn chuyển tuyến:
+[Tần suất đo sinh hiệu, xét nghiệm Hct theo dõi, tiêu chuẩn hội chẩn ICU hoặc xuất viện]
+```
+"

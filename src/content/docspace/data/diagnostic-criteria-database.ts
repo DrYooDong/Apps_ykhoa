@@ -36,8 +36,16 @@ export interface DiseaseComplicationItem {
 export interface VaultPathwayLink {
   khoCode: 'TC' | 'CD' | 'CLS' | 'PDDT' | 'DUOC' | 'BC' | 'TV' | 'YTNC' | 'EBM';
   khoName: string;
-  articleTitle: string;
   searchKeyword: string;
+}
+
+export interface SeverityGradingItem {
+  grade: string;
+  severity: 'mild' | 'moderate' | 'severe' | 'critical';
+  criteria: string;
+  triage: string;
+  primaryAction: string;
+  targetVitals?: string;
 }
 
 export interface DiseaseReactionChainDefinition {
@@ -58,6 +66,9 @@ export interface DiseaseReactionChainDefinition {
   };
   criteria: DiagnosticCriterionItem[];
   
+  // Phân độ lâm sàng & Đánh giá mức độ nặng
+  severityGrading?: SeverityGradingItem[];
+
   // Phác đồ điều trị phân bậc
   protocol: {
     title: string;

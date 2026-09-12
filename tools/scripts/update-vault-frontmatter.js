@@ -57,7 +57,6 @@ const KHO_CONFIG = {
   '1.4. Kho dịch tễ học': { code: 'dth', loai: 'epidemiology' },
   'Kho bệnh án': { code: 'ba', loai: 'case-presentation' },
   '1.1. Kho giải phẫu & sinh lý': { code: 'gpsl', loai: 'anatomy-physiology' },
-  '1.5. Kho yếu tố nguy cơ': { code: 'ytnc', loai: 'risk-factor' },
   '2.1. Kho tiếp cận lâm sàng': { code: 'tc', loai: 'symptom' },
   '2.2. Kho kỹ năng lâm sàng': { code: 'kn', loai: 'skill' },
   '2.3. Kho chẩn đoán': { code: 'cd', loai: 'criteria' },

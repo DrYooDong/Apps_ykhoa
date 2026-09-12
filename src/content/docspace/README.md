@@ -13,10 +13,12 @@
   - Bộ quy tắc suy luận diễn dịch (Deduction Engine) và từ vựng triệu chứng: `knowledge-vault/data/clinical-rules-kb.json`.
   - Sổ tay kinh nghiệm lâm sàng SOAP thực chiến: `knowledge-vault/ba/` và index trong `vault-catalog.json` (`khoCode: "BA"`).
 - **Phân tách giao diện rành mạch**:
-  1. **🩺 Chu Trình Lâm Sàng (3 Bước Cốt Lõi)**:
-     - **Bước 1 — Nạp dữ kiện (Data Ingestion)**: Nhập bệnh sử, sinh hiệu, cận lâm sàng, chọn triệu chứng dương tính / phủ định loại trừ.
-     - **Bước 2 — Phân tích & Biện luận (Deduction Analysis)**: Tính toán % độ phù hợp, sàng lọc bệnh cấp cứu khẩn cấp, thang điểm nguy cơ (Clinical Risk Score) và ma trận đối đầu chẩn đoán.
-     - **Bước 3 — Phác đồ điều trị (Protocol Execution)**: Hướng dẫn phân tầng xử trí theo tuyến y tế, đơn thuốc chỉ định cá thể hóa, checklist theo dõi và Chuỗi Bệnh Học Đa Chiều 5 khía cạnh (EBM Pathway).
+  1. **🩺 Chu Trình Lâm Sàng (4 Bước Cốt Lõi Chuẩn Hóa)**:
+     - **Bước 1 — Nạp dữ kiện (Data Ingestion)**: Nhập hành chính, lý do vào viện, khung Dịch tễ học (Tam giác DTH, Vector, Vùng dịch), sinh hiệu định lượng, cận lâm sàng (CBC, Hct, Men gan, Troponin...) và chọn lọc triệu chứng dương tính / phủ định loại trừ.
+     - **Bước 2 — Tóm tắt & Đặt VĐ (Problem Statement & Synthesis)**: Chuẩn hóa theo phương pháp luận PGS.TS Hoàng Văn Sĩ & BSCKI Trần Thanh Tuấn, đánh giá hội tụ Tam giác chẩn đoán truyền nhiễm, tự động sinh đoạn tóm tắt bệnh án (copy 1-click vào EMR) và xác lập 01 Vấn đề chính định hướng biện luận.
+     - **Bước 3 — Phân tích & Biện luận (Clinical Deduction & Analysis)**: Động cơ suy luận diễn dịch đa tầng, tính toán % xác suất chẩn đoán sơ bộ/phân biệt, cảnh báo cờ đỏ cấp cứu, thang điểm nguy cơ lâm sàng (qSOFA, CURB-65, Shock Index) và kết nối Guidelines EBM chính thức.
+     - **Bước 4 — Phác đồ điều trị (Clinical Protocol Execution & Orders)**: Hướng dẫn phân tầng xử trí theo 3 tuyến y tế (Cơ sở / Huyện / Tỉnh), bảng y lệnh thuốc cá thể hóa (nạp nhanh thuốc từ Guideline vào đơn), kế hoạch theo dõi và Chuỗi Bệnh Học Đa Chiều 6 khía cạnh (EBM Pathway).
+     - *Chi tiết tài liệu*: Xem [QUY_TRINH_CONG_VIEC_CHU_TRINH_LAM_SANG.md](docs/QUY_TRINH_CONG_VIEC_CHU_TRINH_LAM_SANG.md).
   2. **📖 Sổ Tay Kinh Nghiệm SOAP (Hub Riêng Biệt)**:
      - Nơi học tập, tra cứu, đối chiếu các ca bệnh kinh điển, bẫy lâm sàng thường gặp được nạp từ Knowledge Vault.
   3. **🏛️ Kho Tri Thức Vault (Explorer Riêng Biệt)**:
@@ -36,8 +38,12 @@ src/content/docspace/
 ├── vite.config.ts              # Cấu hình Vite & base path tương đối
 ├── tsconfig.json               # TypeScript config
 ├── docs/                       # Tài liệu hướng dẫn & Prompt
-│   ├── prompt-notebooklm-soap.txt      # Prompt Master soạn ca lâm sàng bằng NotebookLM
-│   └── QUY_TRINH_NAP_CA_NOTEBOOKLM.md  # Quy trình 4 bước biên soạn & nạp ca chi tiết
+│   ├── QUY_TRINH_CONG_VIEC_CHU_TRINH_LAM_SANG.md # SOP Quy trình công việc 4 bước chuẩn
+│   ├── HUONG_DAN_SOAN_CA_LAM_SANG.md             # Cẩm nang soạn & nạp ca lâm sàng
+│   ├── HUONG_DAN_CHINH_SUA_CDSS.md               # Hướng dẫn chuẩn hóa CSDL CDSS
+│   ├── QUY_TRINH_SXH_DENGUE.md                   # Quy trình nạp kiến thức SXH Dengue mẫu
+│   ├── prompt-notebooklm-soap.txt                # Prompt Master soạn ca lâm sàng bằng NotebookLM
+│   └── QUY_TRINH_NAP_CA_NOTEBOOKLM.md            # Quy trình biên soạn & nạp ca qua NotebookLM
 ├── src/
 │   ├── main.tsx                # Mount React App
 │   ├── App.tsx                 # Ứng dụng chính điều phối 3 phân hệ & Modals
@@ -106,3 +112,15 @@ npm run build
    ```
    Script sẽ tự động cập nhật `vault-catalog.json` của Knowledge Vault và đồng bộ sang DocSpace.
    Xem chi tiết tại: [`docs/QUY_TRINH_NAP_CA_NOTEBOOKLM.md`](file:///d:/Apps/Apps_ykhoa/src/content/docspace/docs/QUY_TRINH_NAP_CA_NOTEBOOKLM.md).
+
+---
+
+## 🧬 5. Chuẩn Hóa & Chỉnh Sửa Tri Thức CDSS Có Trọng Số
+
+Để chỉnh sửa hoặc nạp thêm các bệnh lý có trọng số CDSS (bao gồm tiêu chuẩn chẩn đoán, vai trò đặc trưng/gợi ý/hỗ trợ/loại trừ, ngưỡng cận lâm sàng và phác đồ thuốc điều trị):
+- Xem cẩm nang chi tiết tại: [`docs/HUONG_DAN_CHINH_SUA_CDSS.md`](file:///d:/Apps/Apps_ykhoa/src/content/docspace/docs/HUONG_DAN_CHINH_SUA_CDSS.md).
+- Thư mục dữ liệu làm giàu độc lập: `src/content/docspace/data/enriched/`.
+- Lệnh tự động đóng gói dữ liệu CDSS:
+  ```powershell
+  node tools/scripts/build-enriched-cdss.mjs
+  ```

@@ -1,0 +1,153 @@
+# ==============================================================================
+# CLINIPORTAL NOTEBOOKLM — PROMPT 04: KHO BIẾN CHỨNG BỆNH HỌC (KHO BC)
+# PROMPT CHUNG DÙNG CHO MỌI BỆNH LÝ — ĐIỀN SẴN MẪU SỐT XUẤT HUYẾT DENGUE
+# ==============================================================================
+# MỤC ĐÍCH:
+# Trích xuất bài viết BIẾN CHỨNG NẶNG NỀ ĐE DỌA TÍNH MẠNG & XỬ TRÍ CẤP CỨU
+# để lưu vào: knowledge-vault/2.5. Kho biến chứng/{Chuyên khoa}/BC_{Tên bệnh}_P1.md
+# Kết nối trực tiếp với:
+# - Bước 3: Cảnh báo Cờ đỏ (Red Flags) & Sàng lọc Cấp cứu Khẩn cấp
+# - Bước 4: Khối Đánh giá Biến chứng Tích cực & Lệnh trực cấp cứu On-Call Alert
+# - Bước 4: Chuỗi Bệnh Học Đa Chiều (Clinical Pathway - Khối BC)
+# ==============================================================================
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📌 THÔNG SỐ ĐẦU VÀO (TÙY CHỈNH THEO MẶT BỆNH CẦN SOẠN):
+(Điền sẵn cho Sốt Xuất Huyết Dengue — Bạn có thể thay đổi bằng bất kỳ bệnh lý nào)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- [TÊN BỆNH LÝ]: Sốt xuất huyết Dengue
+- [TÊN TIẾNG ANH / VIẾT TẮT]: Dengue Fever / Severe Dengue / DHF / DSS
+- [MÃ ICD-10]: A97 (A97.2: Sốt xuất huyết Dengue nặng)
+- [CHUYÊN KHOA]: Truyền nhiễm (hoặc: Hồi sức - Cấp cứu, Tim mạch, Hô hấp...)
+- [HƯỚNG DẪN THAM CHIẾU]: Quyết định 2760/QĐ-BYT ngày 04/07/2023 của Bộ Y Tế & WHO Severe Dengue Guidelines 2024–2025
+- [SLUG FILE]: sot_xuat_huyet_dengue
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📋 PROMPT CHUẨN DÁN VÀO NOTEBOOKLM:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+"Dựa trên các tài liệu chuyên môn đã tải lên trong Notebook (đặc biệt là [HƯỚNG DẪN THAM CHIẾU]), hãy đóng vai trò Chuyên gia Hồi sức Cấp cứu kiêm Bác sĩ Chuyên khoa, biên soạn bài viết BIẾN CHỨNG NẶNG NỀ ĐE DỌA TÍNH MẠNG & CHIẾN LƯỢC CAN THIỆP CẤP CỨU TOÀN DIỆN CHUẨN EBM cho bệnh lý: [TÊN BỆNH LÝ] ([TÊN TIẾNG ANH / VIẾT TẮT], Mã ICD-10: [MÃ ICD-10]).
+
+BẮT BUỘC TUÂN THỦ CẤU TRÚC VÀ ĐỊNH DẠNG MARKDOWN CHUẨN SAU ĐỂ NẠP VÀO KHO TRI THỨC VÀ CHU TRÌNH LÂM SÀNG:
+
+---
+title: \"Biến chứng: [Tên bệnh lý tiếng Việt chuẩn]\"
+aliases:
+  - \"Biến chứng [Tên bệnh]\"
+  - \"Biến chứng nặng [Tên bệnh]\"
+  - \"[Tên tiếng Anh] Complications\"
+  - \"Cảnh báo cờ đỏ và cấp cứu [Tên bệnh]\"
+keywords:
+  - \"biến chứng [tên bệnh]\"
+  - \"biến chứng cấp tính sốc suy tạng tử vong\"
+  - \"cờ đỏ sinh hiệu báo động đỏ on call\"
+  - \"xử trí cấp cứu giờ vàng biến chứng\"
+  - \"quá tải điều trị tai biến y khoa iatrogenic\"
+icd10:
+  - \"[MÃ ICD-10 CHÍNH]: [Tên mã phân loại biến chứng]\"
+specialty: \"[CHUYÊN KHOA]\"
+kho: \"2.5. Kho biến chứng\"
+type: \"complications\"
+tags:
+  - \"CliniPortal\"
+  - \"KhoBienChung\"
+  - \"CapCuuHoiSuc\"
+  - \"[TagChuyenKhoaKhongDau]\"
+  - \"[TagTenBenhKhongDau]\"
+updated: \"2026-09-12\"
+sources:
+  - \"[Tên văn bản hướng dẫn Bộ Y Tế kèm số quyết định và năm]\"
+  - \"[Tên Guideline quốc tế kèm năm]\"
+---
+
+# ⚠️ Biến Chứng Nặng Nề Đe Dọa Tính Mạng: [TÊN BỆNH LÝ]
+
+> **Tóm lược Biến chứng & Cảnh báo đỏ**: [Viết đoạn tóm tắt 3–4 câu súc tích về các biến chứng cấp cứu có tỷ lệ tử vong cao nhất, thời điểm xuất hiện nguy hiểm nhất trong quá trình diễn tiến bệnh, và nguyên tắc can thiệp cấp cứu giờ vàng].
+
+---
+
+## 1. 🚨 Bảng Phân Loại Toàn Bộ Biến Chứng Đe Dọa Sinh Mạng
+
+| Nhóm biến chứng | Tên biến chứng cụ thể | Khung thời gian xuất hiện | Cơ chế sinh lý bệnh cốt lõi | Dấu hiệu cảnh báo sớm tại giường (Cờ đỏ) |
+| :--- | :--- | :---: | :--- | :--- |
+| **Huyết động & Tuần hoàn** | Sốc sốt xuất huyết Dengue (DSS) | Cấp tính (Ngày 4–7) | Tăng tính thấm mao mạch ồ ạt gây thoát huyết tương vào khoang kẽ | Mạch nhanh nhỏ, HA kẹp $\le 20\text{ mmHg}$, tụt HA, chi lạnh ẩm, CRT $> 2\text{s}$, Hct tăng vọt |
+| **Huyết động & Tuần hoàn** | Sốc kéo dài & Tái sốc (Recurrent shock) | Bán cấp (Trong 24h sau sốc) | Thoát dịch dai dẳng kết hợp toan máu, hạ canxi máu hoặc xuất huyết ẩn | Tụt HA trở lại sau khi vừa giảm tốc độ dịch truyền, toan chuyển hóa nặng |
+| **Huyết học & Đông máu** | Xuất huyết tiêu hóa ồ ạt & Xuất huyết tạng | Cấp tính - Bán cấp | Giảm tiểu cầu dốc đứng kết hợp rối loạn đông máu tiêu thụ và loét niêm mạc | Nôn ra máu, đi cầu phân đen/máu tươi, Hct tụt đột ngột trong khi HA không nâng |
+| **Tạng đích: Gan mật** | Suy gan cấp tối cấp (AST/ALT $\ge 1000\text{ U/L}$) | Bán cấp (Ngày 5–8) | Vi rút Dengue tấn công trực tiếp tế bào gan phối hợp thiếu tưới máu gan khi sốc | Vàng da mắt tăng nhanh, rối loạn đông máu INR $> 1.5$, bệnh não gan lơ mơ |
+| **Tạng đích: Tim mạch** | Viêm cơ tim cấp & Suy tim cấp | Cấp tính (Ngày 3–6) | Viêm cơ tim do vi rút và đáp ứng miễn dịch trung gian cytokine | Đau ngực, nhịp tim nhanh không tương xứng sốt, gallop T3, Troponin tăng cao |
+| **Tạng đích: Thần kinh** | Viêm não Dengue & Bệnh não | Cấp tính - Bán cấp | Vi rút xâm nhập thần kinh trung ương hoặc phù não do hạ natri máu / suy gan | Co giật, hôn mê, lú lẫn, dấu thần kinh định vị, cứng gáy |
+| **Tạng đích: Tiết niệu** | Tổn thương thận cấp (AKI) | Cấp tính (Ngày 4–7) | Thiếu tưới máu thận kéo dài do sốc hoặc hoại tử ống thận cấp | Thiểu niệu $< 0.5\text{ mL/kg/h}$, vô niệu, Creatinine và Ure máu tăng cao |
+| **Tai biến do can thiệp** | Quá tải tuần hoàn & Phù phổi cấp (Iatrogenic) | Bán cấp (Ngày 6–8) | Truyền dịch quá mức kéo dài sang giai đoạn cơ thể tự tái hấp thu dịch | Khó thở dữ dội, SpO2 tụt, ho bọt hồng, ran ẩm nổ dâng 2 đáy phổi |
+
+---
+
+## 2. 🔍 Cơ Chế Bệnh Sinh & Nhận Diện Chi Tiết Từng Biến Chứng
+
+### 2.1. Sốc Thoát Huyết Tương & Hội Chứng Rò Rỉ Mao Mạch Hệ Thống
+- **Bản chất**: Không phải do mất máu ra ngoài mà do rò rỉ huyết tương qua khe tế bào nội mô mạch máu vào khoang màng phổi, màng bụng và mô kẽ.
+- **Diễn tiến**:
+  - Giai đoạn Sốc bù (Compensated Shock): HATT vẫn bình thường do co mạch bù trừ, nhưng HATTr tăng làm **Hiệu áp kẹp ($\le 20\text{ mmHg}$)** kèm mạch nhanh nhỏ.
+  - Giai đoạn Sốc mất bù (Decompensated Shock): Mạch quay không bắt được, HATT tụt $< 90\text{ mmHg}$ hoặc huyết áp bằng 0.
+
+### 2.2. Xuất Huyết Nặng & Xuất Huyết Ẩn
+- **Tam chứng gây chảy máu**: Giảm tiểu cầu dốc đứng $< 50\text{ G/L}$ + Rối loạn đông máu (giảm Fibrinogen, kéo dài PT/APTT) + Viêm loét niêm mạc dạ dày do thiếu máu cục bộ hoặc dùng nhầm thuốc NSAIDs.
+- **Quy tắc nhận diện xuất huyết ẩn**: Khi bệnh nhân vào sốc hoặc tái sốc, truyền dịch tinh thể tốc độ cao nhưng **huyết áp không lên mà Hematocrit lại tụt dốc bất thường** $\to$ Chắc chắn có xuất huyết nội tạng hoặc chảy máu tiêu hóa ẩn!
+
+### 2.3. Quá Tải Dịch Truyền & Phù Phổi Cấp (Biến chứng do Thầy thuốc)
+- Thường xảy ra vào **ngày thứ 6–7 của bệnh**, khi nội mô mao mạch hồi phục và dịch từ khoang màng bụng, màng phổi bắt đầu tự tái hấp thu vào lòng mạch. Nếu bác sĩ vẫn duy trì dịch truyền tĩnh mạch tốc độ cao $\to$ Thể tích lòng mạch tăng vọt gây suy tim trái cấp và phù phổi cấp huyết động.
+
+---
+
+## 3. ⏱️ Phác Đồ Xử Trí Cấp Cứu Giờ Vàng Cho Từng Biến Chứng
+
+### 3.1. Cấp Cứu Sốc Dengue Mất Bù
+```text
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ 1. Cho thở oxy 3–5 l/p qua cannula hoặc mask.                               │
+│ 2. Xả tĩnh mạch khẩn cấp Ringer Lactate 15–20 mL/kg/giờ trong 1 giờ đầu.     │
+│ 3. Đo Hct tại giường trước và sau cữ truyền.                                │
+│ 4. Nếu Hct vẫn cao và sốc không cải thiện: Chuyển ngay Cao phân tử Dextran  │
+│    40 hoặc HES 6% 10–20 mL/kg/giờ.                                          │
+│ 5. Đặt CVC đo CVP hướng dẫn bù dịch, đặt sonde tiểu theo dõi nước tiểu/giờ. │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+### 3.2. Cấp Cứu Xuất Huyết Nặng
+- Giữ đường truyền dịch tĩnh mạch bằng Cao phân tử $10\text{ mL/kg/h}$.
+- Lấy máu thử Hct khẩn và xin máu cấp cứu:
+  - Truyền **Khối hồng cầu lắng $5\text{–}10\text{ mL/kg}$** (hoặc Máu toàn phần $10\text{–}20\text{ mL/kg}$).
+  - Truyền **Huyết tương tươi đông lạnh (FFP) $10\text{–}20\text{ mL/kg}$** khi có rối loạn đông máu $\text{INR} > 1.5$.
+  - Truyền **Khối tiểu cầu đậm đặc** khi tiểu cầu $< 50\text{ G/L}$ CÓ XUẤT HUYẾT NẶNG ĐANG TIẾN TRIỂN.
+  - Sử dụng thuốc ức chế bơm proton (Esomeprazole $80\text{ mg}$ IV bolus rồi duy trì $8\text{ mg/h}$) khi có xuất huyết tiêu hóa trên.
+
+### 3.3. Cấp Cứu Quá Tải Tuần Hoàn & Phù Phổi Cấp
+- **HÀNH ĐỘNG ĐẦU TIÊN**: **NGƯNG NGAY LẬP TỨC toàn bộ dịch truyền tĩnh mạch**.
+- Cho bệnh nhân ngồi thõng chân hoặc nằm đầu cao $45\text{–}90^\circ$.
+- Thở oxy dòng cao, thở áp lực dương không xâm lấn (NCPAP hoặc CPAP với PEEP $5\text{–}10\text{ cmH}_2\text{O}$) hoặc đặt nội khí quản thở máy PEEP khi suy hô hấp nặng.
+- Tiêm tĩnh mạch chậm **Furosemide $0.5\text{–}1.0\text{ mg/kg}$** (chỉ dùng khi huyết áp tâm thu $\ge 90\text{ mmHg}$).
+
+---
+
+## 4. 📢 Bộ Lệnh Trực Khẩn Cấp Dành Cho Bác Sĩ & Điều Dưỡng (On-Call Alert Commands)
+
+| Tình huống biến chứng | Cờ đỏ sinh hiệu | Y lệnh trực cấp cứu khẩn cấp (Dán vào EMR / Báo động tua trực) |
+| :--- | :--- | :--- |
+| **Sốc Dengue mới vào** | Mạch nhanh nhỏ, HA kẹp $\le 20$, chi lạnh | `[BÁO ĐỘNG SỐC]: Thở oxy 5L, xả Ringer Lactate 20 mL/kg/h khẩn, lấy máu thử Hct tại giường, báo BS Cấp cứu!` |
+| **Tái sốc kháng tinh thể** | Sốc trở lại sau giảm dịch, Hct $\ge 42\%$ | `[TÁI SỐC DENGUE]: Chuyển ngay Cao phân tử Dextran 40 tốc độ 15 mL/kg/h, đo lại Hct sau 1h, chuẩn bị CVC!` |
+| **Xuất huyết tiêu hóa nặng** | Nôn máu, tiêu phân đen, Hct tụt $< 35\%$ | `[XUẤT HUYẾT TIÊU HÓA]: Thử Hct khẩn, xin Khối hồng cầu lắng 10 mL/kg, tiêm Esomeprazole 80mg IV, nhịn ăn!` |
+| **Quá tải dịch / Phù phổi** | Khó thở dữ dội, SpO2 $< 90\%$, ran ẩm dâng | `[PHÙ PHỔI CẤP]: KHÓA DỊCH TRUYỀN NGAY LẬP TỨC! Cho ngồi đầu cao, thở NCPAP PEEP 8, Furosemide 20mg IV chậm!` |
+| **Suy gan cấp nặng** | Men gan AST/ALT $\ge 1000$, lơ mơ | `[SUY GAN CẤP]: Ngưng paracetamol, truyền Ringer Acetate, Lactulose thụt tháo, kiểm tra NH3 và đông máu toàn bộ!` |
+
+---
+
+## 5. 💎 Bài Học Cảnh Giác & Cạm Bẫy Lâm Sàng (Pearls & Pitfalls)
+
+### 💡 Clinical Pearls (Bài học cảnh giác)
+1. **Quy tắc thời điểm vàng của biến chứng**: Biến chứng sốc thoát huyết tương và xuất huyết trong SXHD hầu như KHÔNG xảy ra trong 3 ngày đầu sốt cao, mà tập trung $90\%$ vào **ngày 4 đến ngày 7** khi nhiệt độ bắt đầu hạ. Do đó, bệnh nhân hạ sốt không được phép lơ là.
+2. **Theo dõi nhịp tim lúc ngủ**: Ở trẻ em hoặc người trẻ, mạch nhanh nhẹ xuất hiện sớm nhất ngay cả khi bệnh nhân đang ngủ hoặc nghỉ ngơi. Đếm mạch lúc nằm yên là dấu hiệu nhận diện dọa sốc nhạy nhất trước khi huyết áp tụt.
+3. **Giá trị của Siêu âm tại giường (POCUS)**: Siêu âm thấy túi mật dày thành phù nề $> 3\text{ mm}$ và ít dịch màng bụng/màng phổi xuất hiện trước khi huyết áp kẹp $6\text{–}12$ giờ.
+
+### ⚠️ Common Pitfalls (Cạm bẫy gây tử vong)
+1. **Truyền dịch quá tải trong giai đoạn hồi phục (ngày 7–8)**: Đây là nguyên nhân hàng đầu gây tử vong iatrogenic ở các ca sốt xuất huyết đã qua cơn sốc. Khi tiểu cầu bắt đầu tăng lại và da nổi ban hồi phục, bất kỳ y lệnh truyền dịch duy trì nào cũng tiềm ẩn nguy cơ phù phổi cấp.
+2. **Truyền tiểu cầu dự phòng sai chỉ định**: Tiểu cầu giảm sâu $< 20\text{ G/L}$ nhưng người bệnh không chảy máu thì TUYỆT ĐỐI KHÔNG truyền khối tiểu cầu. Truyền tiểu cầu không có tác dụng ngăn ngừa xuất huyết mà có thể làm tăng nguy cơ phản vệ và quá tải thể tích.
+3. **Bỏ sót toan chuyển hóa và hạ canxi máu trong sốc kéo dài**: Khi sốc không cải thiện dù đã bù dịch, phải thử ngay khí máu động mạch và điện giải đồ. Toan máu làm giảm co bóp cơ tim và trơ với vận mạch; hạ canxi máu làm giảm trương lực mạch máu. Bắt buộc bù canxi và hiệu chỉnh toan.
+"

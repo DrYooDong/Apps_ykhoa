@@ -1,0 +1,289 @@
+# ==============================================================================
+# CLINIPORTAL DOCSPACE — PROMPT 05: ENRICHED CDSS DATABASE ENTRY GENERATOR
+# PROMPT CHUNG DÙNG CHO MỌI BỆNH LÝ — SINH FILE JSON NẠP VÀO CHU TRÌNH LÂM SÀNG
+# ==============================================================================
+# MỤC TIÊU:
+# Trích xuất dữ liệu CDSS làm giàu từ tài liệu Guideline trong NotebookLM và xuất ra
+# ĐÚNG 01 FILE JSON HỢP LỆ DUY NHẤT để lưu vào:
+# src/content/docspace/data/enriched/<slug_benh>.json
+#
+# Sau đó chỉ cần chạy: node tools/scripts/build-enriched-cdss.mjs
+# Hệ thống sẽ tự động bundle vào Chu trình lâm sàng (Bước 3 & Bước 4)!
+# ==============================================================================
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📌 THÔNG SỐ ĐẦU VÀO (TÙY CHỈNH THEO MẶT BỆNH CẦN SOẠN):
+(Điền sẵn cho Sốt Xuất Huyết Dengue — Bạn có thể thay đổi bằng bất kỳ bệnh lý nào)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- [TÊN BỆNH LÝ]: Sốt xuất huyết Dengue
+- [TÊN TIẾNG ANH / VIẾT TẮT]: Dengue Hemorrhagic Fever / Dengue Shock Syndrome (DHF / DSS)
+- [MÃ ICD-10]: A97 (các mã phân loại: A97.0, A97.1, A97.2, A97.9, A90, A91)
+- [CHUYÊN KHOA]: Truyền nhiễm (hoặc: Hô hấp, Tim mạch, Hồi sức - Cấp cứu, Thần kinh...)
+- [MỨC ĐỘ NẶNG]: emergency (chọn 1 trong 3: 'emergency' | 'severe' | 'standard')
+- [HƯỚNG DẪN THAM CHIẾU]: Quyết định số 2760/QĐ-BYT ngày 04/07/2023 của Bộ Y Tế Việt Nam & Hướng dẫn lâm sàng WHO Dengue 2024–2025
+- [SLUG FILE]: sot_xuat_huyet_dengue
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📋 PROMPT CHUẨN DÁN VÀO NOTEBOOKLM:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+"Bạn là Chuyên gia Y học Chứng cứ (EBM) kiêm Kỹ sư Dữ liệu Lâm sàng (Clinical Ontologist) của hệ thống CliniPortal DocSpace.
+
+Dựa DUY NHẤT và CHẶT CHẼ trên các tài liệu chuyên môn đã nạp trong Notebook này (đặc biệt là [HƯỚNG DẪN THAM CHIẾU]), hãy xây dựng MỘT ĐỐI TƯỢNG JSON DUY NHẤT CHUẨN XÁC 100% đại diện cho thực thể bệnh lý:
+- Tên bệnh: [TÊN BỆNH LÝ] ([TÊN TIẾNG ANH / VIẾT TẮT])
+- Mã ICD-10: [MÃ ICD-10]
+- Chuyên khoa: [CHUYÊN KHOA]
+- Mức độ nặng: [MỨC ĐỘ NẶNG]
+
+BẮT BUỘC XUẤT DUY NHẤT ĐỐI TƯỢNG JSON HỢP LỆ (VALID JSON), KHÔNG THÊM LỜI DẪN NGOÀI KHỐI CODE:
+
+```json
+{
+  \"icdCode\": \"[MÃ ICD-10 CHÍNH]\",
+  \"icdPrefixes\": [
+    \"[MÃ 1]\",
+    \"[MÃ 2]\",
+    \"[MÃ 3]\"
+  ],
+  \"diseaseName\": \"[TÊN BỆNH LÝ] ([TÊN TIẾNG ANH / VIẾT TẮT])\",
+  \"specialty\": \"[CHUYÊN KHOA]\",
+  \"severity\": \"[MỨC ĐỘ NẶNG: emergency | severe | standard]\",
+  \"summary\": \"[Đoạn tóm tắt cơ chế bệnh sinh, diễn tiến lâm sàng theo từng giai đoạn, các dấu hiệu thoát dịch hoặc suy tạng và nguy cơ tử vong chính (3–4 câu súc tích)]\",
+  \"goldStandard\": \"[Tiêu chuẩn vàng xác chẩn căn nguyên: PCR / Kháng nguyên vi sinh / Kháng thể chuyển đổi huyết thanh / Sinh thiết / Thang điểm quốc tế xác định]\",
+  \"criteriaRule\": {
+    \"mandatoryIds\": [
+      \"[slug_tieu_chuan_bat_buoc_1]\"
+    ],
+    \"minMajorRequired\": 2,
+    \"minMinorRequired\": 1,
+    \"ruleDescription\": \"[Quy tắc logic xác định bệnh: ví dụ Có tiêu chuẩn bắt buộc VÀ ít nhất 2 tiêu chuẩn chính VÀ ít nhất 1 tiêu chuẩn cận lâm sàng]\"
+  },
+  \"criteria\": [
+    {
+      \"id\": \"[slug_tieu_chuan_bat_buoc_1]\",
+      \"type\": \"mandatory\",
+      \"label\": \"[Tiêu chuẩn bắt buộc: Sốt hoặc triệu chứng tiên quyết kèm yếu tố dịch tễ vùng lưu hành/nguồn lây]\",
+      \"description\": \"[Mô tả chi tiết biểu hiện lâm sàng, thời gian sốt, mức độ đáp ứng hạ sốt]\",
+      \"sourceGuideline\": \"[Văn bản tham chiếu Bộ Y Tế / WHO]\"
+    },
+    {
+      \"id\": \"[slug_tieu_chuan_chinh_1]\",
+      \"type\": \"major\",
+      \"label\": \"[Tiêu chuẩn chính 1: Hội chứng lâm sàng kinh điển của bệnh]\",
+      \"description\": \"[Mô tả các dấu hiệu cơ năng và thực thể điển hình]\",
+      \"sourceGuideline\": \"[Văn bản tham chiếu]\"
+    },
+    {
+      \"id\": \"[slug_tieu_chuan_chinh_2]\",
+      \"type\": \"major\",
+      \"label\": \"[Tiêu chuẩn chính 2: Nghiệm pháp lâm sàng hoặc Dấu hiệu cảnh báo nguy hiểm]\",
+      \"description\": \"[Cách thực hiện nghiệm pháp, ngưỡng dương tính hoặc biểu hiện cảnh báo]\",
+      \"sourceGuideline\": \"[Văn bản tham chiếu]\"
+    },
+    {
+      \"id\": \"[slug_cls_dinh_luong_1]\",
+      \"type\": \"lab\",
+      \"label\": \"[Cận lâm sàng then chốt 1 kèm ngưỡng định lượng: ví dụ Hematocrit tăng > 20%, Men gan AST/ALT > 1000 U/L...]\",
+      \"description\": \"[Ý nghĩa bệnh sinh và động học thay đổi]\",
+      \"labThreshold\": \"[Ngưỡng số học cụ thể bắt buộc]\",
+      \"sourceGuideline\": \"[Văn bản tham chiếu]\"
+    },
+    {
+      \"id\": \"[slug_cls_dinh_luong_2]\",
+      \"type\": \"lab\",
+      \"label\": \"[Cận lâm sàng then chốt 2 kèm ngưỡng: ví dụ Giảm tiểu cầu < 100 G/L, Bạch cầu giảm...]\",
+      \"description\": \"[Ý nghĩa tiên lượng]\",
+      \"labThreshold\": \"[Ngưỡng số học cụ thể bắt buộc]\",
+      \"sourceGuideline\": \"[Văn bản tham chiếu]\"
+    },
+    {
+      \"id\": \"[slug_cls_vi_sinh_gold]\",
+      \"type\": \"lab\",
+      \"label\": \"[Xét nghiệm căn nguyên vi sinh / Sinh học phân tử: RT-PCR, Kháng nguyên, Kháng thể...]\",
+      \"description\": \"[Thời điểm lấy mẫu tối ưu và độ tin cậy]\",
+      \"labThreshold\": \"[Kết quả dương tính cụ thể]\",
+      \"sourceGuideline\": \"[Văn bản tham chiếu]\"
+    },
+    {
+      \"id\": \"[slug_hinh_anh_hoc]\",
+      \"type\": \"imaging\",
+      \"label\": \"[Chẩn đoán hình ảnh: Dấu hiệu trên Siêu âm / X-quang / CT...]\",
+      \"description\": \"[Dấu hiệu thoát dịch kẽ, tràn dịch đa màng hoặc tổn thương nhu mô]\",
+      \"labThreshold\": \"[Tiêu chuẩn kích thước định lượng cụ thể: ví dụ Dày thành túi mật > 3mm, dịch màng bụng...]\",
+      \"sourceGuideline\": \"[Văn bản tham chiếu]\"
+    }
+  ],
+  \"severityGrading\": [
+    {
+      \"grade\": \"[Tên phân độ 1: ví dụ Độ 1 - Thể nhẹ / Không dấu hiệu cảnh báo]\",
+      \"severity\": \"mild\",
+      \"criteria\": \"[Tiêu chí lâm sàng/CLS xác nhận bệnh nhân ở phân độ 1]\",
+      \"triage\": \"[Nơi tiếp nhận: Ngoại trú / Trạm y tế / Phòng khám]\",
+      \"primaryAction\": \"[Hành vi xử trí cốt lõi: thuốc uống, bù dịch Oresol, theo dõi tại nhà]\",
+      \"targetVitals\": \"[Mục tiêu sinh hiệu an toàn]\"
+    },
+    {
+      \"grade\": \"[Tên phân độ 2: ví dụ Độ 2 - Thể cảnh báo / Nhập viện nội trú]\",
+      \"severity\": \"moderate\",
+      \"criteria\": \"[Tiêu chí lâm sàng/CLS cảnh báo nguy hiểm: đau bụng vùng gan, nôn nhiều, Hct tăng...]\",
+      \"triage\": \"[Nơi tiếp nhận: Nội trú 100% / Khoa Nội - Nhiễm BV Huyện]\",
+      \"primaryAction\": \"[Hành vi xử trí: bù dịch tĩnh mạch theo bậc thang mL/kg/h, giám sát Hct]\",
+      \"targetVitals\": \"[Mục tiêu bài niệu và huyết động]\"
+    },
+    {
+      \"grade\": \"[Tên phân độ 3: ví dụ Độ 3 - Thể nặng / Sốc / Suy đa tạng]\",
+      \"severity\": \"critical\",
+      \"criteria\": \"[Tiêu chí huyết động suy sụp: HA kẹp, tụt HA, sốc, xuất huyết tạng nặng, men gan > 1000]\",
+      \"triage\": \"[Nơi tiếp nhận: Hồi sức cấp cứu (ICU) / BV Tỉnh]\",
+      \"primaryAction\": \"[Hành vi xử trí khẩn cấp: chống sốc Ringer Lactate 15-20 mL/kg/h, Cao phân tử Dextran, truyền máu]\",
+      \"targetVitals\": \"[Mục tiêu hồi sức: HATT >= 90 mmHg, Hiệu áp >= 30 mmHg, SpO2 >= 95%]\"
+    }
+  ],
+  \"protocol\": {
+    \"title\": \"[Tên phác đồ điều trị kèm văn bản hướng dẫn]\",
+    \"guideline\": \"[Trích dẫn số quyết định, cơ quan ban hành và năm]\",
+    \"targetGoals\": [
+      \"[Mục tiêu 1: Huyết động và tưới máu mô - HA, Mạch, MAP, Hiệu áp]\",
+      \"[Mục tiêu 2: Cân bằng thể tích và bài niệu - Lượng nước tiểu mL/kg/h, Hct đích]\",
+      \"[Mục tiêu 3: Kiểm soát biến chứng và phòng ngừa quá tải điều trị]\"
+    ],
+    \"initialManagement\": [
+      \"[Phân tầng tiếp nhận: Tuyến 1 (Ngoại trú) vs Tuyến 2 (Nội trú) vs Tuyến 3 (Cấp cứu/ICU)]\",
+      \"[Xử trí giờ đầu: Bù dịch sớm đường uống hoặc truyền dịch theo bậc thang]\",
+      \"[Chỉ định hồi sức dịch khẩn cấp hoặc thuốc điều trị đặc hiệu]\"
+    ],
+    \"firstLineDrugs\": [
+      {
+        \"drugName\": \"[Tên thuốc đầu tay 1: Tên generic quốc tế]\",
+        \"class\": \"[Nhóm dược lý chuẩn]\",
+        \"route\": \"[Đường dùng: PO | IV | SC | IM]\",
+        \"dosage\": \"[Liều lượng chính xác cho trẻ em và người lớn mg/kg hoặc mg]\",
+        \"frequency\": \"[Khoảng cách liều và tần suất dùng trong 24 giờ]\",
+        \"instructions\": \"[Hướng dẫn thực hành, thời điểm bắt đầu, cách theo dõi]\",
+        \"isFirstLine\": true,
+        \"notes\": \"[Lưu ý chỉnh liều suy gan/suy thận hoặc đối tượng đặc biệt]\",
+        \"contraindications\": [
+          \"[Chống chỉ định tuyệt đối 1: ví dụ Cấm dùng NSAIDs/Aspirin trong SXHD do nguy cơ xuất huyết tiêu hóa và toan máu]\",
+          \"[Chống chỉ định tuyệt đối 2]\"
+        ]
+      },
+      {
+        \"drugName\": \"[Tên dung dịch / Thuốc đầu tay 2: ví dụ Ringer Lactate / Ringer Acetate]\",
+        \"class\": \"[Nhóm dược lý]\",
+        \"route\": \"[Đường dùng]\",
+        \"dosage\": \"[Liều lượng và tốc độ truyền chi tiết theo từng nấc mL/kg/h]\",
+        \"frequency\": \"[Tần suất đánh giá lại lâm sàng để giảm liều từng nấc]\",
+        \"instructions\": \"[Quy trình giảm liều theo bậc thang khi cải thiện]\",
+        \"isFirstLine\": true,
+        \"notes\": \"[Lưu ý chọn loại dịch khi có biến chứng suy gan]\",
+        \"contraindications\": [
+          \"[Chống chỉ định 1]\",
+          \"[Chống chỉ định 2]\"
+        ]
+      },
+      {
+        \"drugName\": \"[Tên dung dịch / Thuốc đầu tay 3: ví dụ Oresol đường uống]\",
+        \"class\": \"[Nhóm dược lý]\",
+        \"route\": \"[Đường dùng]\",
+        \"dosage\": \"[Liều lượng mL/kg/ngày hoặc mL/ngày]\",
+        \"frequency\": \"[Cách uống rải rác trong ngày]\",
+        \"instructions\": \"[Tỷ lệ pha chuẩn và lưu ý không dùng nước có màu sẫm]\",
+        \"isFirstLine\": true,
+        \"notes\": \"[Theo dõi]\",
+        \"contraindications\": [
+          \"[Chống chỉ định 1]\"
+        ]
+      }
+    ],
+    \"secondLineDrugs\": [
+      {
+        \"drugName\": \"[Tên thuốc bậc 2 / Cứu vãn: ví dụ Dung dịch cao phân tử Dextran 40 / HES 6%]\",
+        \"class\": \"[Nhóm dược lý]\",
+        \"route\": \"[Đường dùng]\",
+        \"dosage\": \"[Liều lượng chống sốc mL/kg/h]\",
+        \"frequency\": \"[Tần suất và giới hạn tổng liều 24 giờ]\",
+        \"instructions\": \"[Chỉ định khi thất bại dịch tinh thể hoặc Hct tăng cao không đáp ứng]\",
+        \"isFirstLine\": false,
+        \"notes\": \"[Theo dõi chức năng thận và đông máu]\",
+        \"contraindications\": [
+          \"[Chống chỉ định 1]\",
+          \"[Chống chỉ định 2]\"
+        ]
+      },
+      {
+        \"drugName\": \"[Tên chế phẩm / Thuốc hỗ trợ bậc 2: ví dụ Khối hồng cầu lắng / Huyết tương tươi / Vận mạch]\",
+        \"class\": \"[Nhóm dược lý]\",
+        \"route\": \"[Đường dùng]\",
+        \"dosage\": \"[Liều lượng]\",
+        \"frequency\": \"[Tần suất]\",
+        \"instructions\": \"[Chỉ định khi xuất huyết nặng hoặc Hct tụt sâu]\",
+        \"isFirstLine\": false,
+        \"notes\": \"[Lưu ý]\",
+        \"contraindications\": [
+          \"[Chống chỉ định]\"
+        ]
+      }
+    ],
+    \"supportiveCare\": [
+      \"[Chế độ nghỉ ngơi, nới lỏng trang phục, phòng thoáng khí]\",
+      \"[Chế độ dinh dưỡng dễ tiêu, thức ăn mềm, lỏng, giàu vitamin]\",
+      \"[Tần suất giám sát sinh hiệu, Hct và lượng nước tiểu tại giường]\"
+    ]
+  },
+  \"complications\": [
+    {
+      \"name\": \"[Tên biến chứng cấp cứu 1: ví dụ Sốc thoát huyết tương (DSS) / Sốc giảm thể tích]\",
+      \"timeframe\": \"acute_24h\",
+      \"warningSigns\": \"[Dấu hiệu sinh hiệu và lâm sàng báo động sốc: mạch nhanh nhẹ, HA kẹp, chi lạnh, CRT > 2s]\",
+      \"preventiveAction\": \"[Hành động can thiệp khẩn cấp: dịch truyền tốc độ cao, thở oxy, đo Hct]\",
+      \"onCallAlertText\": \"[Y LỆNH TRỰC BÁO ĐỘNG ĐỎ: SỐC: Thở oxy, xả Ringer Lactate 15-20 mL/kg/h khẩn, thử Hct ngay!]\"
+    },
+    {
+      \"name\": \"[Tên biến chứng 2: ví dụ Xuất huyết nội tạng nặng / Xuất huyết tiêu hóa ồ ạt]\",
+      \"timeframe\": \"subacute_7d\",
+      \"warningSigns\": \"[Dấu hiệu nhận diện: nôn ra máu, tiêu phân đen, Hct tụt đột ngột trong khi HA không nâng]\",
+      \"preventiveAction\": \"[Hành động can thiệp: truyền máu, nội soi cầm máu, nhịn ăn uống đường miệng]\",
+      \"onCallAlertText\": \"[Y LỆNH TRỰC: XUẤT HUYẾT TIÊU HÓA: Đo ngay Hct, xin Khối hồng cầu lắng 5-10 mL/kg khẩn!]\"
+    },
+    {
+      \"name\": \"[Tên biến chứng 3: ví dụ Quá tải tuần hoàn & Phù phổi cấp do bù dịch thừa]\",
+      \"timeframe\": \"subacute_7d\",
+      \"warningSigns\": \"[Dấu hiệu nhận diện: khó thở, thở nhanh nông, ran ẩm dâng ở 2 đáy phổi, SpO2 tụt]\",
+      \"preventiveAction\": \"[Hành động can thiệp: ngưng ngay dịch truyền tĩnh mạch, thở NCPAP/PEEP, dùng Furosemide]\",
+      \"onCallAlertText\": \"[Y LỆNH TRỰC: PHÙ PHỔI/QUÁ TẢI DỊCH: Ngưng dịch truyền ngay lập tức, thở NCPAP, Furosemide IV!]\"
+    }
+  ],
+  \"monitoringLabs\": [
+    \"[Xét nghiệm 1: ví dụ Công thức máu theo dõi Hct và Tiểu cầu mỗi 1-2h (khi sốc) hoặc 4-6h]\",
+    \"[Xét nghiệm 2: ví dụ Men gan AST/ALT, Creatinine, Điện giải đồ, Khí máu động mạch]\",
+    \"[Xét nghiệm 3: ví dụ Đông máu toàn bộ PT/INR, APTT, Fibrinogen máu]\",
+    \"[Xét nghiệm 4: ví dụ Siêu âm ổ bụng tổng quát và Siêu âm màng phổi/màng bụng]\"
+  ],
+  \"vaultPathways\": [
+    {
+      \"khoCode\": \"CD\",
+      \"khoName\": \"Kho Tiêu Chuẩn CĐ\",
+      \"articleTitle\": \"Bộ tiêu chuẩn chẩn đoán xác định [TÊN BỆNH LÝ]\",
+      \"searchKeyword\": \"[từ khóa tìm kiếm]\"
+    },
+    {
+      \"khoCode\": \"PDDT\",
+      \"khoName\": \"Kho Phác Đồ Điều Trị\",
+      \"articleTitle\": \"Phác đồ điều trị, dược thư & tư vấn người bệnh [TÊN BỆNH LÝ]\",
+      \"searchKeyword\": \"[từ khóa tìm kiếm]\"
+    },
+    {
+      \"khoCode\": \"DTH\",
+      \"khoName\": \"Kho Dịch Tễ & Nguy Cơ\",
+      \"articleTitle\": \"Dịch tễ học lâm sàng, tam giác lây truyền & yếu tố nguy cơ [TÊN BỆNH LÝ]\",
+      \"searchKeyword\": \"[từ khóa tìm kiếm]\"
+    },
+    {
+      \"khoCode\": \"BC\",
+      \"khoName\": \"Kho Biến Chứng\",
+      \"articleTitle\": \"Nhận diện và xử trí cấp cứu các biến chứng đe dọa sinh mạng [TÊN BỆNH LÝ]\",
+      \"searchKeyword\": \"[từ khóa tìm kiếm]\"
+    }
+  ]
+}
+```
+"

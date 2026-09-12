@@ -16,18 +16,16 @@ const KHO_MAPPINGS = [
   { dir: '1.1. Kho giải phẫu & sinh lý', code: 'GPSL', name: 'GP & sinh lý', group: 'Cơ sở', icon: 'fa-heart-pulse', color: '#0284c7' },
   { dir: '1.2. Kho hóa sinh y học', code: 'HS', name: 'Hóa sinh', group: 'Cơ sở', icon: 'fa-flask', color: '#8b5cf6' },
   { dir: '1.3. Kho sinh lý bệnh', code: 'SLB', name: 'Sinh lý bệnh', group: 'Cơ sở', icon: 'fa-bolt', color: '#f59e0b' },
-  { dir: '1.4. Kho dịch tễ học', code: 'DTH', name: 'Dịch tễ học', group: 'Cơ sở', icon: 'fa-virus', color: '#10b981' },
+  { dir: '1.4. Kho dịch tễ học', code: 'DTH', name: 'Dịch tễ học & Yếu tố nguy cơ', group: 'Cơ sở', icon: 'fa-virus', color: '#10b981' },
   { dir: '2.2. Kho kỹ năng lâm sàng', code: 'KN', name: 'Kỹ năng', group: 'Cơ sở', icon: 'fa-stethoscope', color: '#6366f1' },
 
   // 2. Nhóm Chuyên sâu
-  { dir: '1.5. Kho yếu tố nguy cơ', code: 'YTNC', name: 'Yếu tố nguy cơ', group: 'Chuyên sâu', icon: 'fa-triangle-exclamation', color: '#f97316' },
   { dir: '2.1. Kho tiếp cận lâm sàng', code: 'TC', name: 'Lâm sàng', group: 'Chuyên sâu', icon: 'fa-magnifying-glass', color: '#0ea5e9' },
   { dir: '3.3. Kho cận lâm sàng & xét nghiệm', code: 'CLS', name: 'Cận lâm sàng', group: 'Chuyên sâu', icon: 'fa-flask-vial', color: '#6366f1' },
   { dir: '2.3. Kho chẩn đoán', code: 'CD', name: 'Chẩn đoán', group: 'Chuyên sâu', icon: 'fa-clipboard-check', color: '#ec4899' },
-  { dir: '2.4. Kho phác đồ điều trị', code: 'PDDT', name: 'Phác đồ', group: 'Chuyên sâu', icon: 'fa-pills', color: '#3b82f6' },
+  { dir: '2.4. Kho phác đồ điều trị', code: 'PDDT', name: 'Phác đồ, Dược & Tư vấn', group: 'Chuyên sâu', icon: 'fa-pills', color: '#3b82f6' },
   { dir: 'Kho cập nhật', code: 'CN', name: 'Cập nhật Hướng dẫn', group: 'Chuyên sâu', icon: 'fa-arrows-rotate', color: '#2563eb' },
-  { dir: '3.2. Kho dược thư & tương tác thuốc', code: 'DUOC', name: 'Dược', group: 'Chuyên sâu', icon: 'fa-capsules', color: '#06b6d4' },
-  { dir: '2.6. Kho tư vấn', code: 'TV', name: 'Tư vấn', group: 'Chuyên sâu', icon: 'fa-hand-holding-medical', color: '#84cc16' },
+  { dir: '3.2. Kho dược thư & tương tác thuốc', code: 'DUOC', name: 'Dược thư hoạt chất', group: 'Chuyên sâu', icon: 'fa-capsules', color: '#06b6d4' },
   { dir: '2.5. Kho biến chứng', code: 'BC', name: 'Biến chứng', group: 'Chuyên sâu', icon: 'fa-heart-crack', color: '#ef4444' },
 
   // 3. Nhóm Thực hành & Bệnh án

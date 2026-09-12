@@ -36,27 +36,24 @@ updated: "2026-09-08"
 
 ## 🏛️ Bản Đồ 18 Phân Hệ Kho Tri Thức (4 Nhóm Lớn Chuẩn Hóa)
 
-### 🫀 1. Nhóm Cơ Sở (5 Kho)
+### 🫀 1. Nhóm Cơ Sở (4 Kho)
 | STT | Phân Hệ / Kho Chuyên Môn | Mã Kho | Thư Mục | Link MOC Phân Hệ |
 |:---:|:---|:---:|:---|:---|
 | **01** | 🫀 **GP & sinh lý** | `GPSL` | `1.1. Kho giải phẫu & sinh lý` | [[1.1. Kho giải phẫu & sinh lý/MOC - Kho Giải Phẫu & Sinh Lý\|MOC GP & sinh lý]] |
 | **02** | 🧪 **Hóa sinh** | `HS` | `1.2. Kho hóa sinh y học` | [[1.2. Kho hóa sinh y học/MOC - Kho Hóa Sinh Y Học\|MOC Hóa sinh]] |
 | **03** | ⚡ **Sinh lý bệnh** | `SLB` | `1.3. Kho sinh lý bệnh` | [[1.3. Kho sinh lý bệnh/MOC - Kho Sinh Lý Bệnh\|MOC Sinh lý bệnh]] |
-| **04** | 🌐 **Dịch tễ học** | `DTH` | `1.4. Kho dịch tễ học` | [[1.4. Kho dịch tễ học/MOC - Kho Dịch Tễ Học\|MOC Dịch tễ học]] |
+| **04** | 🌐 **Dịch tễ học & Yếu tố nguy cơ** *(Đã gộp)* | `DTH` | `1.4. Kho dịch tễ học` | [[1.4. Kho dịch tễ học/MOC - Kho Dịch Tễ Học\|MOC Dịch tễ học & Nguy cơ]] |
 | **05** | 🩺 **Kỹ năng lâm sàng** | `KN` | `2.2. Kho kỹ năng lâm sàng` | [[2.2. Kho kỹ năng lâm sàng/MOC - Kho Kỹ Năng Lâm Sàng\|MOC Kỹ năng]] |
 
-### 🩺 2. Nhóm Chuyên Sâu (8 Kho)
+### 🩺 2. Nhóm Chuyên Sâu (5 Kho Hợp Nhất)
 | STT | Phân Hệ / Kho Chuyên Môn | Mã Kho | Thư Mục | Link MOC Phân Hệ |
 |:---:|:---|:---:|:---|:---|
-| **06** | ⚠️ **Yếu tố nguy cơ** | `YTNC` | `1.5. Kho yếu tố nguy cơ` | [[1.5. Kho yếu tố nguy cơ/MOC - Kho Yếu Tố Nguy Cơ\|MOC Yếu tố nguy cơ]] |
-| **07** | 🔍 **Tiếp cận lâm sàng** | `TC` | `2.1. Kho tiếp cận lâm sàng` | [[2.1. Kho tiếp cận lâm sàng/MOC - Kho Tiếp Cận Lâm Sàng\|MOC Lâm sàng]] |
-| **08** | 🧪 **Cận lâm sàng & XN** | `CLS` | `3.3. Kho cận lâm sàng & xét nghiệm` | [[3.3. Kho cận lâm sàng & xét nghiệm/MOC - Kho Cận Lâm Sàng\|MOC Cận lâm sàng]] |
-| **09** | 📋 **Tiêu chuẩn chẩn đoán** | `CD` | `2.3. Kho chẩn đoán` | [[2.3. Kho chẩn đoán/MOC - Kho Chẩn Đoán\|MOC Tiêu chuẩn chẩn đoán]] |
-| **10** | 💊 **Phác đồ điều trị** | `PDDT` | `2.4. Kho phác đồ điều trị` | [[2.4. Kho phác đồ điều trị/MOC - Kho Phác Đồ Điều Trị\|MOC Phác đồ]] |
-| **11** | 🔄 **Cập nhật Hướng dẫn** | `CN` | `Kho cập nhật` | [[Kho cập nhật/MOC - Kho Cập Nhật\|MOC Kho Cập Nhật]] |
-| **12** | 💊 **Dược thư & Tương tác** | `DUOC` | `3.2. Kho dược thư & tương tác thuốc` | [[3.2. Kho dược thư & tương tác thuốc/MOC - Kho Dược Thư\|MOC Dược]] |
-| **13** | 🗣️ **Tư vấn người bệnh** | `TV` | `2.6. Kho tư vấn` | [[2.6. Kho tư vấn/MOC - Kho Tư Vấn\|MOC Tư vấn]] |
-| **14** | 💔 **Biến chứng & Tiên lượng** | `BC` | `2.5. Kho biến chứng` | [[2.5. Kho biến chứng/MOC - Kho Biến Chứng\|MOC Biến chứng]] |
+| **06** | 🔍 **Tiếp cận lâm sàng** | `TC` | `2.1. Kho tiếp cận lâm sàng` | [[2.1. Kho tiếp cận lâm sàng/MOC - Kho Tiếp Cận Lâm Sàng\|MOC Lâm sàng]] |
+| **07** | 🧪 **Cận lâm sàng & XN** | `CLS` | `3.3. Kho cận lâm sàng & xét nghiệm` | [[3.3. Kho cận lâm sàng & xét nghiệm/MOC - Kho Cận Lâm Sàng\|MOC Cận lâm sàng]] |
+| **08** | 📋 **Tiêu chuẩn chẩn đoán** | `CD` | `2.3. Kho chẩn đoán` | [[2.3. Kho chẩn đoán/MOC - Kho Chẩn Đoán\|MOC Tiêu chuẩn chẩn đoán]] |
+| **09** | 💊 **Phác đồ điều trị, Dược & Tư vấn** *(Đã gộp)* | `PDDT` | `2.4. Kho phác đồ điều trị` | [[2.4. Kho phác đồ điều trị/MOC - Kho Phác Đồ Điều Trị\|MOC Phác đồ, Dược & Tư vấn]] |
+| **10** | 🔄 **Cập nhật Hướng dẫn** | `CN` | `Kho cập nhật` | [[Kho cập nhật/MOC - Kho Cập Nhật\|MOC Kho Cập Nhật]] |
+| **11** | 💔 **Biến chứng & Tiên lượng** | `BC` | `2.5. Kho biến chứng` | [[2.5. Kho biến chứng/MOC - Kho Biến Chứng\|MOC Biến chứng]] |
 
 ### 📝 3. Nhóm Thực Hành & Ca Bệnh (1 Kho Mới)
 | STT | Phân Hệ / Kho Chuyên Môn | Mã Kho | Thư Mục | Link MOC Phân Hệ |

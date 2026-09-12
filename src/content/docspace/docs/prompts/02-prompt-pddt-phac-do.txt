@@ -1,157 +1,197 @@
 # ==============================================================================
-# CLINIPORTAL NOTEBOOKLM — PROMPT KHO PHÁC ĐỒ ĐIỀU TRỊ (KHO PDDT)
+# CLINIPORTAL NOTEBOOKLM — PROMPT 02: KHO PHÁC ĐỒ ĐIỀU TRỊ TOÀN DIỆN (KHO PDDT)
+# (ĐÃ HỢP NHẤT TOÀN DIỆN KHO PHÁC ĐỒ + KHO DƯỢC LÂM SÀNG + KHO TƯ VẤN NGƯỜI BỆNH)
+# PROMPT CHUNG DÙNG CHO MỌI BỆNH LÝ — ĐIỀN SẴN MẪU SỐT XUẤT HUYẾT DENGUE
 # ==============================================================================
-# SỬ DỤNG KHI: Bạn muốn NotebookLM trích xuất phác đồ điều trị phân tầng,
-# liều dùng thuốc chi tiết và chiến lược can thiệp từ Guidelines y khoa để lưu vào:
-# knowledge-vault/2.4. Kho phác đồ điều trị/{Chuyên khoa}/PDDT_{Tên bệnh}.md
+# MỤC ĐÍCH:
+# Trích xuất bài viết PHÁC ĐỒ ĐIỀU TRỊ, DƯỢC THƯ LÂM SÀNG & TƯ VẤN NGƯỜI BỆNH TOÀN DIỆN
+# để lưu vào: knowledge-vault/2.4. Kho phác đồ điều trị/{Chuyên khoa}/PDDT_{Tên bệnh}_P1.md
+# Kết nối trực tiếp với:
+# - Bước 3: Đối chiếu Khuyến cáo Guidelines & Landmark RCTs chính thức
+# - Bước 4: Hướng dẫn phân tầng 3 tuyến + Y lệnh thuốc cá thể hóa + Kế hoạch theo dõi
+# - Bước 4: Sentinel An toàn kê đơn DDI & Tư vấn người bệnh Teach-Back
+# - Bước 4: Chuỗi Bệnh Học Đa Chiều (Clinical Pathway - Khối PDDT)
 # ==============================================================================
 
-[YÊU CẦU ĐẦU VÀO]:
-- Tên bệnh lý: [ĐIỀN TÊN BỆNH LÝ, ví dụ: Viêm phổi cộng đồng / Sốc nhiễm khuẩn / Suy tim mất bù cấp]
-- Chuyên khoa: [ĐIỀN CHUYÊN KHOA, ví dụ: Hô hấp & Hồi sức / Cấp cứu / Tim mạch]
-- Hướng dẫn tham chiếu: [ĐIỀN NGUỒN CHÍNH, ví dụ: ATS/IDSA 2025 / SSC 2026 / BYT 2023]
-
-[PROMPT DÁN VÀO NOTEBOOKLM]:
-"Dựa trên các tài liệu đã tải lên trong Notebook, hãy đóng vai trò Bác sĩ Điều trị Cấp cao kiêm Chuyên gia Hồi sức Cấp cứu và Dược Lâm sàng, biên soạn một bài viết PHÁC ĐỒ ĐIỀU TRỊ CHUẨN LÂM SÀNG & EBM TOÀN DIỆN cho bệnh lý: [TÊN BỆNH LÝ].
-
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⚠️ QUY TẮC CẤM VI PHẠM (ANTI-SLOP & ANTI-TEMPLATE QUALITY GATES):
+📌 THÔNG SỐ ĐẦU VÀO (TÙY CHỈNH THEO MẶT BỆNH CẦN SOẠN):
+(Điền sẵn cho Sốt Xuất Huyết Dengue — Bạn có thể thay đổi bằng bất kỳ bệnh lý nào)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-1. TUYỆT ĐỐI KHÔNG sử dụng các cụm từ placeholder mẫu sau đây:
-   ❌ 'Dùng kháng sinh / thuốc theo kinh nghiệm hoặc kháng sinh đồ...'
-   ❌ 'Bù dịch theo phác đồ chống sốc chuẩn...'
-   ❌ 'Chỉnh liều theo mức lọc cầu thận eGFR...'
-   ❌ 'Thuốc điều trị bậc 1 / đầu tay cho [Tên bệnh]...'
-   ❌ 'Theo dõi sát sinh hiệu và diễn tiến lâm sàng...'
-   ❌ 'Điều trị hỗ trợ và nâng đỡ thể trạng...'
-2. MỌI THUỐC ĐIỀU TRỊ PHẢI CỤ THỂ 100%:
-   - Phải gọi đích danh tên hoạt chất quốc tế (Generic/INN), không viết tên nhóm chung chung.
-   - Liều dùng phải có số học rõ ràng: liều chuẩn mg hoặc mg/kg, khoảng cách liều (mỗi ... giờ), đường dùng (IV/PO/SC/khí dung) và thời gian dùng.
-   - Phân định rõ thứ tự ưu tiên: First-line (Đầu tay), Alternative (Thay thế khi dị ứng/kháng thuốc), Phối hợp.
-3. HỒI SỨC BAN ĐẦU & GIỜ VÀNG CỤ THỂ:
-   - Xử trí cấp cứu ABCDE phải có chỉ số đích sinh hiệu số học (HATT, HATTr, MAP ≥ 65 mmHg, SpO2 ≥ 92-95%, Nhịp thở, Nước tiểu ≥ 0.5 mL/kg/h).
-   - Loại dịch bù phải chỉ định rõ (Ringer Lactate, NaCl 0.9%, Albumin...), tốc độ mL/kg/giờ và tiêu chuẩn dừng bù dịch.
-4. BẢNG CHỈNH LIỀU SUY THẬN & SUY GAN:
-   - Bắt buộc điền số liệu giảm liều hoặc giãn khoảng cách liều cho từng nấc eGFR: ≥50, 30-49, 15-29, <15 mL/phút hoặc chạy thận.
-5. CẢNH BÁO AN TOÀN & TƯƠNG TÁC:
-   - Ghi rõ chống chỉ định tuyệt đối và các cặp tương tác thuốc nguy hiểm (DDI) hay gặp trên thực tế kèm cơ chế.
+- [TÊN BỆNH LÝ]: Sốt xuất huyết Dengue
+- [TÊN TIẾNG ANH / VIẾT TẮT]: Dengue Fever / DHF / DSS
+- [MÃ ICD-10]: A97 (A97.0, A97.1, A97.2, A97.9, A90, A91)
+- [CHUYÊN KHOA]: Truyền nhiễm
+- [HƯỚNG DẪN THAM CHIẾU]: Quyết định 2760/QĐ-BYT ngày 04/07/2023 của Bộ Y Tế Việt Nam & WHO Dengue Clinical Management Guidelines 2024–2025
+- [SLUG FILE]: sot_xuat_huyet_dengue
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-BẮT BUỘC TUÂN THỦ CẤU TRÚC VÀ QUY CHUẨN SAU:
+📋 PROMPT CHUẨN DÁN VÀO NOTEBOOKLM:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+"Dựa trên các tài liệu chuyên môn đã tải lên trong Notebook (đặc biệt là [HƯỚNG DẪN THAM CHIẾU]), hãy đóng vai trò Bác sĩ Trưởng khoa Hồi sức Cấp cứu kiêm Chuyên gia Dược Lâm sàng, biên soạn bài viết PHÁC ĐỒ ĐIỀU TRỊ, DƯỢC THƯ & TƯ VẤN NGƯỜI BỆNH TOÀN DIỆN CHUẨN EBM cho bệnh lý: [TÊN BỆNH LÝ] ([TÊN TIẾNG ANH / VIẾT TẮT], Mã ICD-10: [MÃ ICD-10]).
+
+BẮT BUỘC TUÂN THỦ CẤU TRÚC VÀ ĐỊNH DẠNG MARKDOWN CHUẨN SAU ĐỂ NẠP VÀO KHO TRI THỨC VÀ CHU TRÌNH LÂM SÀNG:
 
 ---
-title: \"Phác đồ Điều trị: [Tên bệnh lý chuẩn y khoa tiếng Việt]\"
+title: \"Phác đồ điều trị, Dược thư & Tư vấn: [Tên bệnh lý tiếng Việt chuẩn]\"
 aliases:
-  - \"Phác đồ [Tên bệnh]\"
-  - \"Điều trị [Tên bệnh]\"
-  - \"Treatment Protocol [Tên tiếng Anh]\"
-  - \"Phân tầng xử trí [Tên bệnh]\"
+  - \"Phác đồ điều trị [Tên bệnh]\"
+  - \"Dược thư và Sử dụng thuốc [Tên bệnh]\"
+  - \"Tư vấn và Chăm sóc người bệnh [Tên bệnh]\"
+  - \"[Tên tiếng Anh] Treatment Protocol and Patient Counseling\"
 keywords:
   - \"phác đồ điều trị [tên bệnh]\"
-  - \"thuốc đầu tay first-line\"
-  - \"liều lượng đường dùng\"
-  - \"chỉnh liều egfr\"
-  - \"hồi sức ban đầu\"
+  - \"hồi sức bù dịch bậc thang mL kg h\"
+  - \"dược thư lâm sàng paracetamol dịch tinh thể cao phân tử\"
+  - \"chống chỉ định nsaids aspirin tương tác thuốc ddi\"
+  - \"tư vấn người bệnh xuất viện teach back\"
+  - \"dấu hiệu cảnh báo đỏ nguy hiểm cạo gió truyền dịch\"
 icd10:
-  - \"[Mã ICD-10 chính xác kèm tên]\"
-specialty: \"[Tên chuyên khoa]\"
+  - \"[MÃ ICD-10 CHÍNH]: [Tên mã]\"
+specialty: \"[CHUYÊN KHOA]\"
 kho: \"2.4. Kho phác đồ điều trị\"
-type: \"treatment-protocol\"
+type: \"treatment_protocol_and_counseling\"
 tags:
   - \"CliniPortal\"
-  - \"TreatmentProtocol\"
-  - \"KhoPhacDo\"
-  - \"y-khoa/pddt\"
-updated: \"2026-09-11\"
+  - \"KhoPhacDoDieuTri\"
+  - \"DuocLamSang\"
+  - \"TuVanNguoiBenh\"
+  - \"[TagChuyenKhoaKhongDau]\"
+  - \"[TagTenBenhKhongDau]\"
+updated: \"2026-09-12\"
 sources:
-  - \"[Tên Guideline chính thức được trích dẫn kèm năm]\"
+  - \"[Tên văn bản hướng dẫn Bộ Y Tế kèm số quyết định và năm]\"
+  - \"[Tên Guideline quốc tế kèm năm]\"
 ---
 
-# 💊 PHÁC ĐỒ ĐIỀU TRỊ: [TÊN BỆNH LÝ]
+# 💉 Phác Đồ Điều Trị, Dược Thư & Tư Vấn: [TÊN BỆNH LÝ]
 
-> **Tóm tắt cốt lõi**: [Đoạn văn 3-4 câu tóm tắt mục tiêu điều trị tối thượng, nguyên tắc sống còn trong giờ đầu tiên và chiến lược phân tầng ngoại trú vs nội trú vs hồi sức tích cực].
-
----
-
-## 🎯 1. NGUYÊN TẮC CỐT LÕI & ĐÍCH ĐIỀU TRỊ LÂM SÀNG
-- **Nguyên tắc điều trị**: [Liệt kê 3-5 nguyên tắc cơ bản theo EBM].
-- **Đích điều trị cụ thể**:
-  - Huyết động / Sinh hiệu: [HATT, HATTr, MAP, SpO2, Nhịp tim...]
-  - Cận lâm sàng: [Khí máu pH, PaO2, Lactate máu, Đường huyết, Creatinine...]
-  - Mốc thời gian vàng: [Thời gian cửa sổ can thiệp, ví dụ: 60 phút đầu, 3-6 giờ đầu].
-
-## 🚨 2. XỬ TRÍ CẤP CỨU BAN ĐẦU (GIỜ VÀNG LÂM SÀNG)
-Trình bày các bước hồi sức cấp cứu khẩn cấp theo thứ tự ưu tiên ABCDE:
-- **A (Airway - Đường thở)**: [Chỉ định đặt NKQ, tư thế người bệnh].
-- **B (Breathing - Hô hấp)**: [Liệu pháp Oxy: Gọng kính, Mask túi, HFNC, BiPAP, Thở máy xâm lấn; mục tiêu SpO2].
-- **C (Circulation - Tuần hoàn)**: [Bù dịch: Loại dịch tinh thể, tốc độ bù; Thuốc vận mạch / tăng co bóp cơ tim đầu tay].
-- **D (Disability - Thần kinh)**: [Đánh giá GCS, xử trí co giật, bảo vệ não].
-- **E (Exposure - Toàn thân)**: [Kiểm soát thân nhiệt, sưởi ấm hoặc hạ thân nhiệt chỉ huy].
-
-## 📋 3. BẢNG PHÂN TẦNG ĐIỀU TRỊ THEO MỨC ĐỘ NẶNG
-Trình bày phân tầng vị trí và chiến lược chăm sóc:
-
-| Mức Độ Nặng | Tiêu Chuẩn Nhận Diện (Thang điểm, Sinh hiệu) | Nơi Điều Trị | Chiến Lược Can Thiệp Chính |
-|:---|:---|:---|:---|
-| **Mức độ Nhẹ / Ổn định** | Điểm số thấp, huyết động ổn định... | Ngoại trú / Phòng khám | Dùng thuốc uống, tái khám sau 48-72h |
-| **Mức độ Trung bình** | Có nguy cơ diễn tiến nặng, bệnh nền... | Khoa Nội thường | Thuốc tiêm/truyền tĩnh mạch, theo dõi sát |
-| **Mức độ Nặng / Nguy kịch** | Sốc, suy hô hấp, toan máu nặng... | Khoa Cấp Cứu / ICU | Hồi sức xâm lấn, phối hợp đa thuốc IV |
-
-## 💊 4. DANH MỤC THUỐC & LIỀU DÙNG CHI TIẾT (PHARMACOTHERAPY)
-Bắt buộc trình bày dưới dạng bảng chính xác 100% từng thông số:
-
-| Tên Thuốc (Generic) | Nhóm Thuốc & Vai Trò | Liều Dùng Chuẩn & Đường Dùng | Thời Gian Điều Trị | Khuyến Cáo (Class/LoE) |
-|:---|:---|:---|:---|:---:|
-| 1. [Thuốc lựa chọn đầu tay 1] | First-line | ... mg x ... lần/ngày (Đường IV/PO) | ... ngày | Class I, LoE A |
-| 2. [Thuốc lựa chọn đầu tay 2] | Phối hợp | ... mg/kg x ... lần/ngày | ... ngày | Class I, LoE A |
-| 3. [Thuốc thay thế khi dị ứng] | Alternative | ... | ... | Class IIa, LoE B |
-
-## ⚙️ 5. BẢNG CHỈNH LIỀU THEO CHỨC NĂNG THẬN (eGFR) & GAN (CHILD-PUGH)
-Trình bày bảng hướng dẫn chỉnh liều cho các thuốc chủ chốt đào thải qua gan/thận:
-
-| Thuốc | eGFR ≥ 50 mL/p | eGFR 30 - 49 mL/p | eGFR 15 - 29 mL/p | eGFR < 15 mL/p (hoặc Lọc máu) | Suy Gan (Child-Pugh C) |
-|:---|:---|:---|:---|:---|:---|
-| [Thuốc A] | Liều thông thường | Giảm ...% | ... | Chống chỉ định | Thận trọng |
-| [Thuốc B] | Liều thông thường | ... | ... | ... | ... |
-
-## 🛑 6. CẢNH BÁO AN TOÀN, CHỐNG CHỈ ĐỊNH & TƯƠNG TÁC THUỐC
-> [!CAUTION]
-> **Chống chỉ định tuyệt đối**:
-> - ...
-
-> [!WARNING]
-> **Tương tác thuốc nguy hiểm cần tránh phối hợp**:
-> - Phối hợp giữa [Thuốc A] và [Thuốc B]: [Cơ chế và hậu quả lâm sàng].
-
-## 🏁 7. TIÊU CHUẨN XUẤT VIỆN & THEO DÕI SAU XỬ TRÍ
-- Tiêu chuẩn ổn định lâm sàng để xuất viện:
-  - Hết sốt ≥ 48 giờ...
-  - Huyết động và SpO2 ổn định khi thở khí trời...
-  - Ăn uống được, dung nạp thuốc uống...
-- Hẹn tái khám và xét nghiệm đánh giá lại sau ... ngày.
+> **Tóm lược Phác đồ & An toàn điều trị**: [Viết đoạn tóm tắt 3–4 câu súc tích về nguyên tắc điều trị cốt lõi, mục tiêu huyết động, phân tầng xử trí 3 tuyến, cảnh báo nguy cơ quá tải dịch và bài học an toàn dùng thuốc].
 
 ---
 
-## 📚 TRÍCH DẪN TÀI LIỆU THAM KHẢO CHUẨN EBM
-1. Tổ chức / Hiệp hội chuyên khoa. Tên Hướng dẫn điều trị lâm sàng. *Tên Tạp chí Y khoa*. Năm;Tập(Số):Trang. DOI/PMID.
-2. Bộ Y Tế Việt Nam. Quyết định ban hành Hướng dẫn chẩn đoán và điều trị [Tên bệnh]. Hà Nội, Năm.
+## 1. 🎯 Mục Tiêu Điều Trị & Nguyên Tắc Vàng (Core Principles)
+
+### 1.1. Mục tiêu Huyết động & Tưới máu Mô tạng (Targets)
+- **Huyết áp**: Duy trì HATT $\ge 90\text{ mmHg}$ (người lớn) hoặc $\ge 70 + 2 \times \text{Tuổi}$ (trẻ em); Hiệu áp $> 20\text{ mmHg}$ (mục tiêu an toàn $\ge 30\text{ mmHg}$); $\text{MAP} \ge 65\text{ mmHg}$.
+- **Tưới máu tạng & Bài niệu**: Lượng nước tiểu duy trì $\ge 0.5\text{–}1.0\text{ mL/kg/giờ}$.
+- **Động học Hematocrit (Hct)**: Duy trì Hct ở mức an toàn theo tuổi/giới, giảm cô đặc máu nhưng tránh pha loãng máu quá mức.
+- **Tri giác & Ngoại vi**: Người bệnh tỉnh táo, chi ấm, mạch quay rõ, thời gian đổ đầy mao mạch (CRT) $< 2\text{ giây}$.
+
+### 1.2. 5 Nguyên Tắc Vàng Trong Điều Trị
+1. **Bù dịch sớm và đúng đường**: Ưu tiên đường uống bằng Oresol pha chuẩn ở giai đoạn sớm; chỉ truyền tĩnh mạch khi có chỉ định rõ ràng.
+2. **Tuân thủ bậc thang rút dịch**: Khi truyền dịch tĩnh mạch chống sốc, BẮT BUỘC giảm tốc độ từng nấc khi lâm sàng cải thiện; không truyền một tốc độ cố định kéo dài.
+3. **Theo dõi 'La bàn' Hematocrit**: Luôn đo Hct trước và sau mỗi cữ dịch truyền chống sốc để điều chỉnh tốc độ hoặc chuyển đổi loại dịch.
+4. **Ngưng dịch truyền đúng thời điểm**: Tuyệt đối ngừng dịch truyền tĩnh mạch trong vòng 24–48 giờ sau khi cắt cơn sốc hoặc khi bước sang ngày thứ 6–7 (giai đoạn tái hấp thu) để phòng phù phổi cấp.
+5. **Kê đơn an toàn tuyệt đối**: CẤM dùng Aspirin, Ibuprofen và các thuốc NSAIDs khác; thận trọng tối đa khi sử dụng kháng sinh hoặc các thuốc chuyển hóa qua gan.
+
+---
+
+## 2. 🏥 Phân Tầng Xử Trí Theo 3 Tuyến Y Tế (3-Tier Triage)
+
+| Tuyến y tế | Đối tượng bệnh nhân | Phạm vi can thiệp & Phác đồ xử trí | Tiêu chuẩn chuyển tuyến |
+| :--- | :--- | :--- | :--- |
+| **Tuyến 1: Ngoại trú**<br>*(Trạm Y tế / Phòng khám)* | • SXHD không có dấu hiệu cảnh báo<br>• Uống được, tự chăm sóc được<br>• Không có cơ địa nguy cơ cao | • Hạ sốt bằng Paracetamol đơn chất 10–15 mg/kg<br>• Bù nước Oresol uống 2000–3000 mL/ngày<br>• Dặn dò 7 dấu hiệu cảnh báo<br>• Hẹn tái khám mỗi ngày đến hết ngày 7 | Chuyển viện nội trú NGAY khi có bất kỳ dấu hiệu cảnh báo nào hoặc Hct tăng |
+| **Tuyến 2: Nội trú**<br>*(Khoa Nội/Nhi BV Quận - Huyện)* | • SXHD CÓ DẤU HIỆU CẢNH BÁO<br>• Hoặc có cơ địa nguy cơ (nhũ nhi, béo phì, thai phụ, người già, bệnh mạn tính) | • Nhập viện theo dõi 100%<br>• Khởi động dịch truyền Ringer Lactate 6 mL/kg/h<br>• Giảm dần liều: 6 $\to$ 5 $\to$ 3 $\to$ 1.5 mL/kg/h<br>• Theo dõi mạch, HA, Hct mỗi 2–4 giờ | Chuyển khoa Cấp cứu / Hồi sức ICU khi tụt HA, sốc, xuất huyết nặng hoặc Hct tăng vọt |
+| **Tuyến 3: Cấp cứu / ICU**<br>*(BV Tỉnh / Trung tâm Hồi sức)* | • Sốt xuất huyết Dengue nặng (Sốc Dengue, Sốc mất bù)<br>• Xuất huyết nặng / Suy đa tạng | • Hồi sức sốc khẩn cấp bằng Ringer Lactate 15–20 mL/kg/h<br>• Chuyển Cao phân tử (Dextran 40 / HES 6%) khi thất bại tinh thể<br>• Truyền máu/FFP/Tiểu cầu khi có chỉ định<br>• Thở oxy, NCPAP, đặt CVC đo CVP | Hội chẩn liên viện tuyến trung ương nếu sốc kéo dài hoặc suy gan/thận tối cấp |
+
+---
+
+## 3. 🌊 Phác Đồ Bù Dịch Bậc Thang & Hồi Sức Giờ Vàng (Fluid Resuscitation Protocol)
+
+### 3.1. Phác đồ Bù dịch Trong SXHD Có Dấu Hiệu Cảnh Báo
+- **Chỉ định truyền dịch tĩnh mạch**: Người bệnh không uống được, nôn nhiều, có biểu hiện mất nước, lừ đừ, hoặc Hct tăng cao $\ge 42\%$ (nữ) / $\ge 44\%$ (nam).
+- **Loại dịch ưu tiên**: Dung dịch tinh thể đẳng trương điện giải cân bằng: **Ringer Lactate (RL)** hoặc **Ringer Acetate (RA)** hoặc **$\text{NaCl } 0.9\%$**.
+- **Bậc thang giảm liều chuẩn (Người lớn & Trẻ em)**:
+  $$\text{Tốc độ: } 6\text{–}7\text{ mL/kg/h (1–2h)} \longrightarrow 5\text{ mL/kg/h (2–4h)} \longrightarrow 3\text{ mL/kg/h (4–6h)} \longrightarrow 1.5\text{ mL/kg/h (6–12h)}$$
+- **Quy tắc điều chỉnh**: Đánh giá lại sinh hiệu, SpO2, nước tiểu và Hct sau mỗi 2–4 giờ để quyết định hạ nấc dịch hay ngưng truyền.
+
+### 3.2. Phác đồ Hồi Sức Cấp Cứu Sốc Dengue (Dengue Shock Syndrome - DSS)
+- **Nhận diện sốc**: Mạch nhanh nhỏ khó bắt, HATT tụt $< 90\text{ mmHg}$, Hiệu áp kẹp $\le 20\text{ mmHg}$, chi lạnh ẩm, CRT $> 2\text{s}$, Hct tăng cao.
+- **Giờ vàng thứ 1 (Cắt cơn sốc khẩn)**:
+  - Cho thở oxy qua cannula 3–5 l/p hoặc mask.
+  - Bơm xả tĩnh mạch Ringer Lactate hoặc $\text{NaCl } 0.9\%$ tốc độ **$15\text{–}20\text{ mL/kg/h}$ trong 1 giờ đầu**.
+  - Thử ngay Hematocrit tại giường trước và sau cữ truyền.
+- **Giờ thứ 2 trở đi**:
+  - *Nếu Hct giảm và sinh hiệu cải thiện*: Giảm tốc độ tinh thể xuống $10\text{ mL/kg/h (1–2h)} \to 7.5 \to 5 \to 3\text{ mL/kg/h}$.
+  - *Nếu Hct vẫn cao $\ge 40\%$ và sốc không cải thiện*: Chuyển ngay sang **Dung dịch Keo Cao phân tử (Dextran 40 hoặc 6% HES 200/0.5)** tốc độ **$10\text{–}15\text{–}20\text{ mL/kg/h}$ trong 1 giờ**.
+  - *Nếu Hct tụt sâu đột ngột ($< 35\%$ hoặc giảm $> 20\%$ so với lúc vào sốc) nhưng huyết áp vẫn tụt*: Nghi ngờ ngay **XUẤT HUYẾT TIÊU HÓA ẨN** $\to$ Truyền khẩn **Khối hồng cầu lắng $5\text{–}10\text{ mL/kg}$** (hoặc Máu toàn phần $10\text{–}20\text{ mL/kg}$), duy trì Cao phân tử $10\text{ mL/kg/h}$ trong khi chờ máu.
+
+### 3.3. Tiêu Chuẩn Ngừng Dịch Truyền Tĩnh Mạch (Discontinue Criteria)
+BẮT BUỘC ngừng truyền dịch khi có đủ các điều kiện sau:
+- Huyết áp và mạch ổn định trong vòng 24 giờ liên tục không cần dịch duy trì.
+- Hết sốt $\ge 48$ giờ mà không dùng thuốc hạ nhiệt.
+- Hematocrit ổn định ở mức bình thường.
+- Lượng nước tiểu tự nhiên dồi dào $\ge 1\text{ mL/kg/h}$.
+- Bệnh nhân thèm ăn, tỉnh táo, tự uống nước tốt.
+- Bắt đầu bước sang ngày thứ 6–7 của bệnh (xuất hiện ban hồi phục dạng đảo trắng giữa biển đỏ).
+
+---
+
+## 4. 💊 Dược Thư Lâm Sàng & Quản Lý Thuốc (Clinical Pharmacology & DDI)
+
+### 4.1. Bảng Kê Thuốc Thiết Yếu & Hướng Dẫn Sử Dụng Chi Tiết
+
+| Tên hoạt chất (Generic) | Nhóm dược lý | Đường dùng | Liều chuẩn khuyến cáo | Tần suất & Khoảng cách liều | Giới hạn tối đa 24 giờ | Lưu ý lâm sàng then chốt |
+| :--- | :--- | :---: | :--- | :---: | :---: | :--- |
+| **Paracetamol (Acetaminophen)** | Hạ sốt, giảm đau đơn chất | Uống (PO) / Đặt hậu môn (PR) | Trẻ em: $10\text{–}15\text{ mg/kg/lần}$<br>Người lớn: $500\text{–}650\text{ mg/lần}$ | Mỗi $4\text{–}6$ giờ khi sốt $\ge 38.5^\circ\text{C}$ | Trẻ em: $\le 60\text{ mg/kg}$<br>Người lớn: $\le 3\text{ g}$ | Giảm liều $\le 2\text{ g/24h}$ khi suy gan hoặc AST/ALT $\ge 400\text{ U/L}$. Không lặp lại dưới 4h |
+| **Oresol (ORS chuẩn WHO)** | Bù nước và điện giải đường uống | Uống (PO) | Người lớn: $2000\text{–}3000\text{ mL/ngày}$<br>Trẻ em: $50\text{–}100\text{ mL/kg/ngày}$ | Uống rải rác từng ngụm nhỏ liên tục trong ngày | Theo nhu cầu khát và bài niệu | Pha đúng 1 gói vào đúng $1000\text{ mL}$ nước đun sôi để nguội. Tránh nước có màu đỏ/đen |
+| **Ringer Lactate / Acetate** | Dung dịch điện giải cân bằng | Truyền tĩnh mạch (IV) | Bù dịch cảnh báo: $6\text{ mL/kg/h}$<br>Chống sốc: $15\text{–}20\text{ mL/kg/h}$ | Truyền liên tục, giảm liều từng nấc mỗi $1\text{–}2\text{h}$ | Theo đáp ứng Hct và huyết động | Ưu tiên Ringer Acetate khi men gan tăng cao do Acetate chuyển hóa tại cơ ngoại vi |
+| **Dextran 40 trong NaCl 0.9%** | Dung dịch keo cao phân tử | Truyền tĩnh mạch (IV) | $10\text{–}15\text{–}20\text{ mL/kg/h}$ trong 1h đầu khi sốc kháng dịch tinh thể | Giảm dần xuống $7.5 \to 5\text{ mL/kg/h}$ | $\le 50\text{ mL/kg/24h}$ | Theo dõi Creatinine và đông máu; chống chỉ định khi suy thận cấp vô niệu nặng |
+| **6% HES 130/0.4 (Voluven)** | Keo Hydroxyethyl Starch | Truyền tĩnh mạch (IV) | $10\text{–}20\text{ mL/kg/h}$ thay thế khi thiếu Dextran 40 | Theo dõi sát huyết động | $\le 30\text{–}50\text{ mL/kg/24h}$ | Không dùng kéo dài quá 24h; theo dõi chức năng thận |
+| **Khối hồng cầu lắng (PRBC)** | Chế phẩm máu | Truyền tĩnh mạch (IV) | $5\text{–}10\text{ mL/kg}$ truyền trong $1\text{–}2\text{ giờ}$ | Khi có chỉ định xuất huyết nặng / Hct tụt | Tùy lượng máu mất | Chỉ định khi sốc kèm xuất huyết nặng hoặc Hct tụt vọt dù đang truyền dịch |
+| **Khối tiểu cầu (Platelets)** | Chế phẩm máu | Truyền tĩnh mạch (IV) | $1\text{ đơn vị đậm đặc / } 10\text{ kg}$ cân nặng | Truyền nhanh trong $20\text{–}30\text{ phút}$ | Khi có chỉ định | **KHÔNG truyền tiểu cầu dự phòng** khi tiểu cầu $< 50\text{ G/L}$ nếu không có xuất huyết nặng |
+| **Noradrenaline (Norepinephrine)** | Vận mạch co mạch | TTM qua bơm tiêm điện | Khởi đầu $0.05\text{–}0.1\text{ mcg/kg/phút}$ | Chỉnh liều duy trì $\text{MAP} \ge 65\text{ mmHg}$ | Theo đáp ứng HA | CHỈ DÙNG khi đã bù đủ dịch lòng mạch (CVP $\ge 10\text{–}12\text{ cmH}_2\text{O}$) mà HA vẫn tụt |
+
+### 4.2. Bảng Hiệu Chỉnh Liều Cho Bệnh Nhân Suy Gan & Suy Thận
+
+| Thuốc | Chức năng Thận (eGFR mL/phút) | Chức năng Gan (Child-Pugh / AST, ALT) | Lưu ý an toàn đặc biệt |
+| :--- | :--- | :--- | :--- |
+| **Paracetamol** | • eGFR $\ge 50$: Không đổi liều<br>• eGFR $10\text{–}50$: Giãn khoảng cách mỗi 6h<br>• eGFR $< 10$: Giãn khoảng cách mỗi 8h | • Men gan tăng $< 3 \times \text{ULN}$: Dùng bình thường<br>• Men gan $\ge 400\text{ U/L}$ hoặc Child-Pugh B-C: Giảm liều tối đa $\le 2\text{ g/24h}$ | Không kết hợp nhiều thuốc chứa paracetamol; tránh ngộ độc gan cấp |
+| **Ringer Lactate** | An toàn, theo dõi lượng dịch và kali máu | Chuyển hóa Lactate tại gan bị chậm khi suy gan nặng $\to$ Ưu tiên chọn **Ringer Acetate** | Không pha chung đường truyền với Ceftriaxone |
+| **Dextran 40 / HES**| Thận trọng khi eGFR $< 30$; chống chỉ định khi suy thận cấp vô niệu | Không cần chỉnh liều | Tránh dùng quá liều khuyến cáo gây suy thận thẩm thấu |
+
+### 4.3. Cảnh Báo Chống Chỉ Định Tuyệt Đối & Tương Tác Thuốc Nguy Hiểm (DDI)
+- ⛔ **CHỐNG CHỈ ĐỊNH TUYỆT ĐỐI**:
+  - **Aspirin, Ibuprofen, Diclofenac, Naproxen và tất cả thuốc NSAIDs khác**: Gây ức chế kết tập tiểu cầu không hồi phục, viêm loét hoại tử niêm mạc dạ dày dẫn đến xuất huyết tiêu hóa ồ ạt không cầm được và toan chuyển hóa nặng!
+  - **Corticosteroid toàn thân thường quy (Dexamethasone, Methylprednisolone)**: Các nghiên cứu RCT chứng minh không có lợi ích giảm sốc mà làm tăng nguy cơ nhiễm trùng thứ phát và xuất huyết tiêu hóa.
+  - **Tiêm bắp (IM)**: Tuyệt đối không tiêm bắp bất kỳ loại thuốc nào do nguy cơ gây khối máu tụ lớn trong cơ (Hematoma) do giảm tiểu cầu.
+
+---
+
+## 5. 🗣️ Tư Vấn Người Bệnh & Kế Hoạch Chăm Sóc Toàn Diện (Patient Counseling)
+
+### 5.1. Mô Hình 3 Góc Nhìn Teach-Back
+- **Bác sĩ giải thích**: Truyền đạt rõ ràng: "Sốt xuất huyết diễn tiến nguy hiểm nhất vào lúc HẾT SỐT (ngày thứ 4 đến ngày thứ 7). Lúc này virus giảm nhưng mạch máu bị thoát nước, dễ dẫn đến sốc và chảy máu trong."
+- **Người bệnh nhắc lại**: Người bệnh hoặc thân nhân nhắc lại được:
+  - Cách dùng duy nhất thuốc Paracetamol khi sốt $\ge 38.5^\circ\text{C}$, không tự ý uống thêm thuốc khác.
+  - Cách pha đúng 1 gói Oresol với 1 lít nước đun sôi để nguội.
+  - Nhận biết các dấu hiệu nguy hiểm cần vào viện cấp cứu ngay.
+- **Kế hoạch gia đình**: Bố trí người nhà theo dõi sát người bệnh 24/24 trong giai đoạn nguy hiểm (ngày 4–7); không để người bệnh một mình.
+
+### 5.2. 🚨 7 Dấu Hiệu Báo Động Đỏ Khẩn Cấp (Cần Nhập Viện Ngay Lập Tức)
+Dặn dò người bệnh và thân nhân phải đến ngay cơ sở y tế gần nhất BẤT KỂ NGÀY ĐÊM nếu xuất hiện bất kỳ dấu hiệu nào sau đây:
+1. **Đau bụng dữ dội hoặc tăng cảm giác đau vùng hạ sườn phải (vùng gan)**.
+2. **Nôn ói liên tục** ($\ge 3$ lần trong 1 giờ hoặc $\ge 4$ lần trong 6 giờ), không uống được gì.
+3. **Chảy máu bất thường**: Chảy máu chân răng nhiều, chảy máu mũi liên tục, nôn ra máu, đi cầu phân đen hoặc máu tươi, phụ nữ ra máu kinh nguyệt bất thường kéo dài.
+4. **Vật vã, bứt rứt, li bì, mệt lả, lơ mơ hoặc mê sảng**.
+5. **Tay chân lạnh ẩm, tím tái ở đầu ngón, vã mồ hôi hột**.
+6. **Tiểu ít hẳn** hoặc không đi tiểu trong vòng 6–8 giờ liên tục.
+7. **Khó thở, thở nhanh, thở gấp, đau tức ngực**.
+
+### 5.3. 🚫 5 Sai Lầm Nguy Hiểm Tại Cộng Đồng Cần Bài Trừ
+1. ❌ **Cạo gió, cắt lể, giác hơi**: Gây xuất huyết dưới da ồ ạt, bầm dập cơ và là ngõ vào trực tiếp của vi khuẩn gây nhiễm trùng huyết tụ cầu/liên cầu hoại tử.
+2. ❌ **Tự ý gọi người đến nhà truyền dịch bừa bãi**: Truyền dịch sai thời điểm (đặc biệt vào ngày 6–7) gây quá tải thể tích tuần hoàn cấp, tràn dịch màng phổi, phù phổi cấp huyết động và tử vong nhanh chóng!
+3. ❌ **Tự mua thuốc hạ sốt Ibuprofen / Aspirin**: Dẫn đến xuất huyết dạ dày ồ ạt, nôn ra máu không cầm được.
+4. ❌ **Chủ quan khi vừa hết sốt**: Nhầm tưởng hết sốt là khỏi bệnh và đi làm lại ngay, trong khi đây chính là ngày vào sốc và thoát huyết tương nặng nhất!
+5. ❌ **Uống nước có màu sẫm (Coca, xá xị, nước củ dền)**: Khiến bác sĩ không phân biệt được chất nôn là màu nước uống hay là xuất huyết dạ dày (máu đen).
+
+### 5.4. Hướng Dẫn Chế Độ Dinh Dưỡng & Phục Hồi
+- **Bù nước đường uống đúng cách**:
+  - Uống dung dịch Oresol pha chuẩn, uống rải rác từng ngụm nhỏ liên tục trong ngày.
+  - Bổ sung nước dừa tươi (giàu kali và khoáng chất), nước cam, nước chanh, nước cháo loãng pha muối.
+- **Chế độ ăn uống**:
+  - Ăn thức ăn lỏng, mềm, dễ tiêu (cháo thịt nạc băm, súp gà, sữa tươi, sữa chua).
+  - Chia nhỏ thành 5–6 bữa ăn trong ngày, không ép ăn nhiều một lúc tránh nôn ói.
+  - Kiêng thức ăn nhiều dầu mỡ, cay nóng, thực phẩm có màu đen hoặc đỏ thẫm.
+- **Nghỉ ngơi**: Nằm nghỉ ngơi tuyệt đối tại giường phòng thoáng mát; tránh vận động mạnh làm tăng nguy cơ xuất huyết.
 "
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📋 BẢNG KIỂM CHẤT LƯỢNG ĐẦU RA (QUALITY CHECKLIST - MINIMUM 5 ĐIỂM):
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Trước khi lưu bài viết vào knowledge-vault/2.4. Kho phác đồ điều trị/, hãy kiểm tra:
-[ ] 1. 100% thuốc có tên Generic/INN chuẩn, liều lượng số học (mg hoặc mg/kg), đường dùng và thời gian.
-[ ] 2. Xử trí cấp cứu ban đầu (ABCDE) có đầy đủ chỉ số đích sinh hiệu (MAP, SpO2, nhịp thở, nước tiểu).
-[ ] 3. Bảng chỉnh liều eGFR có đầy đủ 4 nấc phân tầng chức năng thận kèm số liệu cụ thể, không để trống.
-[ ] 4. Có ít nhất 1 cảnh báo chống chỉ định tuyệt đối và 1 cặp tương tác thuốc nguy hiểm (DDI) có cơ chế rõ ràng.
-[ ] 5. TUYỆT ĐỐI không còn bất kỳ câu chữ placeholder hoặc khái niệm chung chung nào chưa được cụ thể hóa.
-
----
-
-## 🔗 HƯỚNG DẪN KẾT NỐI CƠ SỞ DỮ LIỆU CDSS (DOCSPACE):
-> [!NOTE]
-> Sau khi biên soạn xong bài viết Markdown cho Kho Phác Đồ Điều Trị (2.4), nếu bạn muốn đưa phác đồ thuốc này vào
-> **Hệ thống Ra quyết định Lâm sàng & Chuỗi Phản ứng CDSS (DocSpace MedLens)**:
-> - Sử dụng **Prompt 08** (`08-prompt-db-entry-generator.txt`): Để trích xuất các trường `firstLineDrugs`, `secondLineDrugs`, `criteriaRule` và `complications` chuẩn định dạng JSON.
-> - Sử dụng **Prompt 09** (`09-prompt-db-batch-enricher.txt`): Nếu cần làm giàu liều dùng thuốc và cảnh báo trực cho bệnh lý đã có trong `kho-chan-doan-db.ts`.

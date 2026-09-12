@@ -1,0 +1,130 @@
+# ==============================================================================
+# CLINIPORTAL DOCSPACE — PROMPT 07: SOAP CLINICAL CASE INGESTION GENERATOR
+# PROMPT CHUNG SINH CA BỆNH THỰC CHIẾN SOAP NẠP TRỰC TIẾP VÀO DOCSPACE
+# ==============================================================================
+# MỤC TIÊU:
+# Dán prompt này vào NotebookLM để sinh ra một bài viết CA LÂM SÀNG THỰC TẾ
+# theo đúng cấu trúc Markdown Frontmatter S-O-A-P chuẩn quốc tế.
+#
+# CÁCH NẠP VÀO DOCSPACE:
+#   1. Cách nhanh nhất (Client-Side Ingest):
+#      - Mở DocSpace MedLens Pro trên trình duyệt
+#      - Nhấn nút "Nạp ca từ NotebookLM" trên thanh Header (hoặc phím tắt)
+#      - Dán toàn bộ đoạn Markdown do NotebookLM sinh ra vào khung nạp
+#      - Hệ thống tự động phân tích S-O-A-P và nạp ngay vào Sổ tay kinh nghiệm!
+#
+#   2. Cách đồng bộ vào Kho (Knowledge Vault):
+#      - Lưu nội dung thành file: `src/content/knowledge-vault/ba/soap-<slug>-01.md`
+#      - Chạy lệnh: `node tools/scripts/ingest-notebooklm-case.mjs src/content/knowledge-vault/ba/`
+# ==============================================================================
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📌 THÔNG SỐ ĐẦU VÀO (TÙY CHỈNH THEO MẶT BỆNH CẦN SOẠN):
+(Điền sẵn cho Sốt Xuất Huyết Dengue — Bạn có thể thay đổi bằng bất kỳ bệnh lý nào)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- [TÊN BỆNH LÝ]: Sốt xuất huyết Dengue
+- [CHUYÊN KHOA]: Truyền nhiễm
+- [MÃ ICD-10]: A97
+- [PHÂN LOẠI CA]: essential (chọn: 'essential' [kinh điển] | 'pitfall' [bẫy lâm sàng] | 'rare' [thể hiếm] | 'advanced' [chuyên sâu])
+- [ĐỘ KHÓ]: 3 (từ 1 đến 5 sao)
+- [BỐI CẢNH BỆNH NHÂN]: Nam 24 tuổi, sinh viên, sống tại khu trọ có dịch lưu hành
+- [KHOA PHÒNG]: Khoa Cấp cứu / Khoa Bệnh Nhiệt đới
+- [TRỌNG TÂM BIỆN LUẬN]: Nhận diện dấu hiệu cảnh báo vào ngày thứ 4 (hạ sốt nhưng mệt lả, Hct tăng cao, tiểu cầu tụt) và phác đồ truyền dịch Ringer Lactate bậc thang.
+- [HƯỚNG DẪN THAM CHIẾU]: Quyết định 2760/QĐ-BYT 2023 của Bộ Y Tế Việt Nam & WHO Dengue Guidelines 2024–2025
+- [SLUG FILE]: sot_xuat_huyet_dengue
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📋 PROMPT CHUẨN DÁN VÀO NOTEBOOKLM:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+"Bạn là một Bác sĩ Giảng viên Lâm sàng kỳ cựu và Chuyên gia Y học Chứng cứ (EBM).
+
+Dựa DUY NHẤT và CHẶT CHẼ trên các tài liệu đã tải lên trong Notebook này (đặc biệt là [HƯỚNG DẪN THAM CHIẾU]), hãy xây dựng 01 Ca Bệnh Án Lâm Sàng Điển Hình theo đúng cấu trúc SOAP chuẩn quốc tế và định dạng Markdown bên dưới.
+
+Yêu cầu lâm sàng:
+- Mặt bệnh cần xây dựng: [TÊN BỆNH LÝ]
+- Chuyên khoa: [CHUYÊN KHOA]
+- Phân loại ca: [PHÂN LOẠI CA]
+- Độ khó ca bệnh: [ĐỘ KHÓ] / 5
+- Bối cảnh bệnh nhân: [BỐI CẢNH BỆNH NHÂN]
+- Khoa phòng tiếp nhận: [KHOA PHÒNG]
+- Trọng tâm biện luận: [TRỌNG TÂM BIỆN LUẬN]
+- Tài liệu nguồn ưu tiên trích dẫn: [HƯỚNG DẪN THAM CHIẾU]
+
+Định dạng xuất bản (BẮT BUỘC tuân thủ chính xác 100% cú pháp Markdown Frontmatter dưới đây để hệ thống DocSpace tự động nhận diện và phân tích):
+
+---
+title: \"Ca lâm sàng [TÊN BỆNH LÝ] ở bệnh nhân [BỐI CẢNH BỆNH NHÂN]\"
+caseId: \"soap-[SLUG FILE]-01\"
+specialty: \"[CHUYÊN KHOA]\"
+experienceLevel: \"[PHÂN LOẠI CA]\"
+difficultyRating: [ĐỘ KHÓ]
+authorDoctor: \"Hội đồng Khoa học CliniPortal DocSpace\"
+icd10:
+  - \"[MÃ ICD-10]\"
+tags:
+  - \"[CHUYÊN KHOA]\"
+  - \"[TÊN BỆNH LÝ]\"
+  - \"SOAP\"
+demographicContext: \"[BỐI CẢNH BỆNH NHÂN]\"
+historyPearls: \"⚡ BÀI HỌC KHAI THÁC BỆNH SỬ: [1 câu hỏi vàng hoặc kỹ năng hỏi bệnh giúp nhận diện sớm thời điểm nguy kịch của bệnh]\"
+objectivePitfalls: \"⚠️ BẪY CẬN LÂM SÀNG & KHÁM: [Dấu hiệu cơ thể hoặc cạm bẫy đọc cận lâm sàng rất dễ bị bỏ sót: ví dụ Lacet âm tính giả khi sốc, hoặc Hct tụt do xuất huyết nội ẩn]\"
+diagnosticPearls: \"🧠 ĐÚC KẾT BIỆN LUẬN: [Lập luận chẩn đoán phân biệt cốt lõi, cơ chế phân định giữa bệnh này với các chẩn đoán cạnh tranh]\"
+takeawayLessons: \"🎯 BÀI HỌC KINH NGHIỆM ĐIỀU TRỊ: [Khuyến cáo điều trị, phác đồ dịch truyền theo bậc thang, tuyệt đối chống chỉ định thuốc nguy hiểm]\"
+sourceReference: \"[HƯỚNG DẪN THAM CHIẾU]\"
+clinicalContext: \"[KHOA PHÒNG]\"
+updated: \"2026-09-12\"
+---
+
+# 🩺 Ca Lâm Sàng: [TÊN BỆNH LÝ]
+
+> **Bối cảnh**: [BỐI CẢNH BỆNH NHÂN] nhập viện [KHOA PHÒNG] vì [Lý do vào viện chính].
+
+## 1. 📝 S — CHỦ QUAN / SUBJECTIVE
+- **Lý do nhập viện / Than phiền chính**: [Mô tả triệu chứng chính khiến người bệnh vào viện]
+- **Bệnh sử chi tiết**:
+[Khai thác đầy đủ thuộc tính PQRST, tiến triển triệu chứng theo ngày, các thuốc hạ sốt đã dùng ở nhà, thời điểm bắt đầu xuất hiện dấu hiệu cảnh báo]
+- **Tiền căn**:
+[Bệnh mạn tính, tiền sử dịch tễ tiếp xúc người mắc bệnh tương tự hoặc sinh sống trong vùng ổ dịch, dị ứng thuốc]
+
+## 2. 🔬 O — KHÁCH QUAN / OBJECTIVE
+### Sinh hiệu:
+- Huyết áp: [VD: 95/75 mmHg - lưu ý hiệu áp kẹt nếu là sốc]
+- Mạch: [VD: 108 l/p]
+- Thân nhiệt: [VD: 39.2 °C hoặc hạ nhiệt độ đột ngột]
+- Nhịp thở: [VD: 22 l/p]
+- SpO₂: [VD: 96%]
+- BMI: [VD: 21.5]
+
+### Khám thực thể trọng tâm:
+[Khám toàn thân, tri giác, tình trạng tưới máu ngoại vi (CRT), dấu hiệu xuất huyết da niêm, nghiệm pháp dây thắt, ấn đau vùng hạ sườn phải, gan to, khám tim phổi và ổ bụng]
+
+### Cận lâm sàng & Hình ảnh học:
+[Xét nghiệm máu định lượng kèm khoảng tham chiếu: Công thức máu WBC, RBC, Hct, PLT; Men gan AST/ALT; Xét nghiệm căn nguyên vi sinh RT-PCR/Kháng nguyên; Siêu âm màng bụng, màng phổi và độ dày thành túi mật]
+
+## 3. 🧠 A — ĐÁNH GIÁ / ASSESSMENT
+- **Chẩn đoán xác định**: [Tên chẩn đoán đầy đủ theo phân loại hướng dẫn Bộ Y Tế kèm ngày bệnh]
+- **Mã ICD-10**: `[MÃ ICD-10]`
+- **Chẩn đoán phân biệt cần loại trừ**:
+  - [Chẩn đoán phân biệt 1: ví dụ Sốt rét / Nhiễm khuẩn huyết]: [Điểm phân biệt và xét nghiệm loại trừ]
+  - [Chẩn đoán phân biệt 2: ví dụ Sốt phát ban / Nhiễm Leptospira]: [Điểm phân biệt và xét nghiệm loại trừ]
+  - [Chẩn đoán phân biệt 3: ví dụ Cơn đau bụng cấp ngoại khoa]: [Điểm phân biệt và xét nghiệm loại trừ]
+- **Phân tầng nguy cơ & Thang điểm lượng giá**:
+[Tính toán cụ thể chỉ số Shock Index = Mạch / HATT, qSOFA và tiêu chuẩn phân độ theo Quyết định 2760/QĐ-BYT]
+- **Biện luận lâm sàng**:
+[Đoạn văn lập luận logic liên kết giữa Dịch tễ - Lâm sàng - Cận lâm sàng theo mô hình Tam giác chẩn đoán]
+
+## 4. 📋 P — KẾ HOẠCH / PLAN
+- **Xử trí cấp cứu & Ban đầu**:
+[Tư thế người bệnh, chỉ định oxy, thiết lập 1-2 đường truyền tĩnh mạch cỡ lớn]
+
+### Y lệnh thuốc điều trị:
+- **[Tên thuốc 1: Paracetamol]**: [Liều lượng mg/kg] ([Đường dùng PO/PR]) — *[Ghi chú / Khoảng cách liều]*
+- **[Tên dung dịch 2: Ringer Lactate / Acetate]**: [Tốc độ truyền mL/kg/h] ([Đường dùng IV]) — *[Ghi chú nấc giảm liều]*
+- **[Tên dung dịch 3: Oresol]**: [Liều lượng mL/ngày] ([Đường dùng PO]) — *[Ghi chú tỷ lệ pha]*
+
+### Chỉ tiêu theo dõi & Mục tiêu lâm sàng:
+[Tần suất đo sinh hiệu, xét nghiệm Hematocrit lặp lại, mục tiêu duy trì nước tiểu ≥ 0.5-1.0 mL/kg/h và hiệu áp ≥ 30 mmHg]
+
+### Tiêu chuẩn hội chẩn, chuyển khoa hoặc xuất viện:
+[Tiêu chuẩn chuyển khoa Hồi sức tích cực (ICU), tiêu chuẩn ngừng truyền dịch và tiêu chuẩn cho ra viện an toàn]
+"

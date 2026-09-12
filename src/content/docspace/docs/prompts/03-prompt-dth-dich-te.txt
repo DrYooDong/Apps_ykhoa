@@ -1,158 +1,186 @@
 # ==============================================================================
-# CLINIPORTAL NOTEBOOKLM — PROMPT KHO DỊCH TỄ HỌC (KHO DTH)
+# CLINIPORTAL NOTEBOOKLM — PROMPT 03: KHO DỊCH TỄ HỌC & YẾU TỐ NGUY CƠ (KHO DTH)
+# (ĐÃ HỢP NHẤT TOÀN DIỆN KHO DỊCH TỄ HỌC + KHO YẾU TỐ NGUY CƠ)
+# PROMPT CHUNG DÙNG CHO MỌI BỆNH LÝ — ĐIỀN SẴN MẪU SỐT XUẤT HUYẾT DENGUE
 # ==============================================================================
-# SỬ DỤNG KHI: Bạn muốn NotebookLM trích xuất số liệu dịch tễ học lâm sàng,
-# gánh nặng bệnh tật (DALYs, CFR), vector và địa bàn lưu hành tại Việt Nam để lưu vào:
-# knowledge-vault/1.4. Kho dịch tễ học/{Chuyên khoa}/DTH_{Tên bệnh}.md
+# MỤC ĐÍCH:
+# Trích xuất bài viết DỊCH TỄ HỌC LÂM SÀNG, TAM GIÁC DỊCH TỄ & MA TRẬN YẾU TỐ NGUY CƠ
+# để lưu vào: knowledge-vault/1.4. Kho dịch tễ học/{Chuyên khoa}/DTH_{Tên bệnh}_P1.md
+# Kết nối trực tiếp với:
+# - Bước 1: Khung Dịch tễ học (Nguồn lây, Véc-tơ, Ổ dịch, Vùng lưu hành, Mùa vụ)
+# - Bước 2: Đánh giá hội tụ Tam giác Chẩn đoán Dịch tễ học & Kích hoạt Epidemiology Boost
+# - Bước 3: Sàng lọc Cơ địa nguy cơ cao (Nhũ nhi, Người già, Béo phì IBW, Bệnh nền)
+# - Bước 4: Chuỗi Bệnh Học Đa Chiều (Clinical Pathway - Khối DTH)
 # ==============================================================================
 
-[YÊU CẦU ĐẦU VÀO]:
-- Tên bệnh lý / Tác nhân: [ĐIỀN TÊN BỆNH LÝ, ví dụ: Sốt xuất huyết Dengue / Bệnh Lao / Sốt rét / Leptospira]
-- Chuyên khoa: [ĐIỀN CHUYÊN KHOA, ví dụ: Truyền nhiễm & Vi sinh / Y tế công cộng / Hô hấp]
-- Nguồn số liệu: [ĐIỀN NGUỒN CHÍNH, ví dụ: WHO 2024 / GBD 2023 / Viện Pasteur / Cục Y tế Dự phòng BYT]
-
-[PROMPT DÁN VÀO NOTEBOOKLM]:
-"Dựa trên các tài liệu đã tải lên trong Notebook, hãy đóng vai trò Chuyên gia Dịch tễ học Lâm sàng & Y tế Công cộng Cấp cao, biên soạn một bài viết DỊCH TỄ HỌC CHUYÊN SÂU & GÁNH NẶNG BỆNH TẬT TOÀN DIỆN cho bệnh lý: [TÊN BỆNH LÝ].
-
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⚠️ QUY TẮC CẤM VI PHẠM (ANTI-SLOP & ANTI-TEMPLATE QUALITY GATES):
+📌 THÔNG SỐ ĐẦU VÀO (TÙY CHỈNH THEO MẶT BỆNH CẦN SOẠN):
+(Điền sẵn cho Sốt Xuất Huyết Dengue — Bạn có thể thay đổi bằng bất kỳ bệnh lý nào)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-1. TUYỆT ĐỐI KHÔNG sử dụng các cụm từ placeholder mẫu sau đây:
-   ❌ 'Bệnh lưu hành phổ biến tại nhiều tỉnh thành ở Việt Nam...'
-   ❌ 'Tỷ lệ tử vong thay đổi tùy thuộc vào mức độ tiếp cận điều trị...'
-   ❌ 'Vector truyền bệnh là muỗi hoặc các loại côn trùng tiết túc...'
-   ❌ 'Hệ số lây nhiễm tùy thuộc vào miễn dịch của cộng đồng...'
-   ❌ 'Mùa dịch thường xuất hiện vào mùa mưa hoặc đông xuân...'
-   ❌ 'Số liệu dịch tễ học tại Việt Nam chưa được ghi nhận đầy đủ...'
-2. SỐ LIỆU DỊCH TỄ PHẢI ĐỊNH LƯỢNG KÈM ĐƠN VỊ CHUẨN:
-   - Tỷ lệ mắc phải có đơn vị: ca/100.000 dân/năm (hoặc triệu ca/năm toàn cầu), kèm 95% CI nếu có.
-   - Tỷ lệ tử vong và Tỷ số chết trên mắc (Case Fatality Ratio - CFR) phải là % số học cụ thể (ví dụ: CFR chung < 1%, nhưng thể sốc/nặng có thể lên đến 2-5%).
-   - Gánh nặng bệnh tật GBD phải nêu số triệu DALYs (Disability-Adjusted Life Years) hoặc xếp hạng trong nhóm nguyên nhân hàng đầu.
-3. ĐẶC ĐIỂM TẠI VIỆT NAM PHẢI RÕ ĐỊA DỊCH TỄ & CHỦNG LƯU HÀNH:
-   - Phân tích theo 3-4 vùng: Miền Nam & ĐBSCL, Miền Trung - Tây Nguyên, Miền Bắc.
-   - Phải nêu rõ chủng/kiểu gen (Serotypes / Genotypes) lưu hành chủ yếu tại Việt Nam (ví dụ: Dengue DENV-1, DENV-2; HBV genotype B; Lao chủng Bắc Kinh...).
-4. DANH PHÁP VÉC-TƠ & ĐỘNG THÁI LÂY TRUYỀN CHUẨN SINH HỌC:
-   - Tên véc-tơ phải viết đúng danh pháp khoa học quốc tế (in nghiêng: *Aedes aegypti*, *Aedes albopictus*, *Anopheles dirus*...).
-   - Hệ số lây nhiễm cơ bản ($R_0$) phải có khoảng giá trị số học (ví dụ: $R_0 = 1.5 - 2.5$).
-   - Thời gian ủ bệnh phải có mốc ngày/tuần cụ thể (ví dụ: 4-10 ngày, trung bình 5-7 ngày).
+- [TÊN BỆNH LÝ]: Sốt xuất huyết Dengue
+- [TÊN TIẾNG ANH / VIẾT TẮT]: Dengue Fever / DHF / DSS
+- [MÃ ICD-10]: A97 (A97.0, A97.1, A97.2, A97.9, A90, A91)
+- [CHUYÊN KHOA]: Truyền nhiễm
+- [HƯỚNG DẪN THAM CHIẾU]: Quyết định 2760/QĐ-BYT ngày 04/07/2023 của Bộ Y Tế & WHO Dengue Guidelines 2024–2025
+- [SLUG FILE]: sot_xuat_huyet_dengue
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-BẮT BUỘC TUÂN THỦ CẤU TRÚC VÀ QUY CHUẨN SAU:
+📋 PROMPT CHUẨN DÁN VÀO NOTEBOOKLM:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+"Dựa trên các tài liệu chuyên môn đã tải lên trong Notebook (đặc biệt là [HƯỚNG DẪN THAM CHIẾU]), hãy đóng vai trò Chuyên gia Dịch tễ học Lâm sàng kiêm Bác sĩ Bệnh Truyền nhiễm, biên soạn bài viết DỊCH TỄ HỌC LÂM SÀNG & MA TRẬN YẾU TỐ NGUY CƠ TOÀN DIỆN CHUẨN EBM cho bệnh lý: [TÊN BỆNH LÝ] ([TÊN TIẾNG ANH / VIẾT TẮT], Mã ICD-10: [MÃ ICD-10]).
+
+BẮT BUỘC TUÂN THỦ CẤU TRÚC VÀ ĐỊNH DẠNG MARKDOWN CHUẨN SAU ĐỂ NẠP VÀO KHO TRI THỨC VÀ CHU TRÌNH LÂM SÀNG:
 
 ---
-title: \"Dịch tễ học: [Tên bệnh lý / Tác nhân chuẩn y khoa]\"
+title: \"Dịch tễ học & Yếu tố nguy cơ: [Tên bệnh lý tiếng Việt chuẩn]\"
 aliases:
-  - \"Dịch tễ [Tên bệnh]\"
-  - \"Dịch tễ học lâm sàng [Tên bệnh]\"
-  - \"Epidemiology of [Tên tiếng Anh]\"
-  - \"Gánh nặng bệnh tật [Tên bệnh]\"
+  - \"Dịch tễ học [Tên bệnh]\"
+  - \"Yếu tố nguy cơ [Tên bệnh]\"
+  - \"Tam giác dịch tễ [Tên bệnh]\"
+  - \"[Tên tiếng Anh] Epidemiology and Risk Factors\"
 keywords:
   - \"dịch tễ học [tên bệnh]\"
-  - \"tỷ lệ mắc morbidity\"
-  - \"tỷ lệ tử vong mortality cfr\"
-  - \"dalys gbd\"
-  - \"vùng lưu hành việt nam\"
-  - \"vector truyền bệnh\"
+  - \"yếu tố nguy cơ tỷ suất chênh OR RR\"
+  - \"tam giác dịch tễ nguồn lây véc tơ ổ dịch\"
+  - \"cơ địa nhũ nhi thai phụ béo phì người cao tuổi\"
+  - \"gánh nặng bệnh tật DALYs CFR tỷ lệ tử vong\"
+  - \"dự phòng kiểm soát véc tơ vắc xin\"
 icd10:
-  - \"[Mã ICD-10 chính xác kèm tên]\"
-specialty: \"[Tên chuyên khoa]\"
+  - \"[MÃ ICD-10 CHÍNH]: [Tên mã]\"
+specialty: \"[CHUYÊN KHOA]\"
 kho: \"1.4. Kho dịch tễ học\"
-type: \"epidemiology\"
+type: \"epidemiology_and_risk_factors\"
 tags:
   - \"CliniPortal\"
-  - \"Epidemiology\"
-  - \"KhoDichTe\"
-  - \"y-khoa/dth\"
-updated: \"2026-09-11\"
+  - \"KhoDichTeHoc\"
+  - \"YeuToNguyCo\"
+  - \"[TagChuyenKhoaKhongDau]\"
+  - \"[TagTenBenhKhongDau]\"
+updated: \"2026-09-12\"
 sources:
-  - \"[Báo cáo dịch tễ chính thức WHO/GBD/BYT kèm năm]\"
+  - \"[Tên văn bản hướng dẫn Bộ Y Tế kèm số quyết định và năm]\"
+  - \"[Tên báo cáo dịch tễ học WHO / CDC / GBD kèm năm]\"
 ---
 
-# 🌐 DỊCH TỄ HỌC LÂM SÀNG & GÁNH NẶNG BỆNH TẬT: [TÊN BỆNH LÝ]
+# 🌍 Dịch Tễ Học & Yếu Tố Nguy Cơ: [TÊN BỆNH LÝ]
 
-> **Tóm tắt cốt lõi**: [Đoạn văn 3-4 câu tóm tắt số liệu mắc và tử vong toàn cầu hàng năm, số năm sống hiệu chỉnh theo tàn tật DALYs, và bối cảnh dịch tễ học then chốt tại Việt Nam].
-
----
-
-## 🌍 1. GÁNH NẶNG BỆNH TẬT TOÀN CẦU (GLOBAL BURDEN OF DISEASE)
-- **Tỷ lệ mắc hàng năm (Annual Morbidity)**: [Số ca mắc mới/năm, tỷ lệ trên 100.000 dân (95% CI)].
-- **Tỷ lệ tử vong & Tỷ số chết trên mắc (Mortality & Case Fatality Ratio - CFR)**:
-  - Số ca tử vong hàng năm toàn cầu...
-  - Tỷ lệ tử vong thể nhẹ vs thể biến chứng nặng...
-- **Số năm sống hiệu chỉnh mức độ tàn tật (DALYs)**: [Số triệu DALYs/năm, phân bố theo vùng thu nhập].
-- **Bảng phân bố gánh nặng bệnh tật theo khu vực địa lý toàn cầu (GBD Regions)**:
-
-| Vùng Địa Dịch Tễ (WHO / GBD) | Tỷ Lệ Mắc (ca/100.000 dân) | Tỷ Lệ Tử Vong (ca/100.000 dân) | Tỷ Trọng Gánh Nặng Toàn Cầu (%) |
-|:---|:---:|:---:|:---:|
-| Đông Nam Á (South-East Asia) | ... | ... | ...% |
-| Tây Thái Bình Dương (Western Pacific) | ... | ... | ...% |
-| Châu Phi cận Sahara | ... | ... | ...% |
-| Châu Mỹ & Vùng Caribe | ... | ... | ...% |
-| Châu Âu & Bắc Mỹ | ... | ... | ...% |
-
-## 🇻🇳 2. ĐẶC ĐIỂM DỊCH TỄ HỌC TẠI VIỆT NAM
-- **Thực trạng lưu hành quốc gia**:
-  - Số ca mắc và số ca tử vong ghi nhận hàng năm tại Việt Nam...
-  - Xếp hạng gánh nặng bệnh tật của Việt Nam trong khu vực Tây Thái Bình Dương...
-- **Bản đồ các vùng trọng điểm / Điểm nóng dịch tễ**:
-  - Miền Nam & Đồng bằng sông Cửu Long: [Đặc điểm lưu hành]
-  - Miền Trung & Tây Nguyên: [Đặc điểm lưu hành]
-  - Miền Bắc: [Đặc điểm lưu hành theo mùa]
-- **Phân bố chủng / Kiểu gen (Genotypes / Serotypes) lưu hành chủ yếu tại Việt Nam**: [Liệt kê các chủng phổ biến nhất và ý nghĩa kháng thuốc/độc lực].
-
-## 🔺 3. TAM GIÁC DỊCH TỄ HỌC LÂM SÀNG (EPIDEMIOLOGICAL TRIAD)
-Phân tích 3 đỉnh của tam giác dịch tễ học:
-- **1. Tác nhân gây bệnh (Agent)**: [Đặc điểm sinh học, chủng độc lực, khả năng đề kháng môi trường].
-- **2. Ký chủ / Vật chủ (Host)**: [Tình trạng miễn dịch, tính cảm nhiễm, bệnh nền, hành vi phơi nhiễm].
-- **3. Môi trường (Environment)**: [Độ ẩm, nhiệt độ, nguồn nước, vệ sinh đô thị/nông thôn].
-
-## 🦟 4. ĐỘNG THÁI TRUYỀN BỆNH & VÉC-TƠ LÂY NHIỄM
-- **Đường lây truyền chính**: [Giọt bắn hô hấp / Đường máu / Vector côn trùng đốt / Tiêu hóa / Tiếp xúc da niêm].
-- **Véc-tơ truyền bệnh hoặc Ổ chứa tự nhiên (Reservoirs & Vectors)**:
-  - Tên khoa học của véc-tơ (ví dụ: Muỗi Aedes aegypti, Muỗi Anopheles, Chuột Rattus...):
-  - Tập tính sinh học, bán kính bay, thời điểm hoạt động kiếm mồi.
-- **Thời gian ủ bệnh (Incubation Period)**: [Thời gian tối thiểu, tối đa và trung bình].
-- **Hệ số lây nhiễm cơ bản ($R_0$)**: [Giá trị R0 và ý nghĩa bùng phát dịch].
-
-## 🌦️ 5. TÍNH CHẤT MÙA VỤ & ĐỘNG THÁI THIÊN TAI / KHÍ HẬU
-- **Mùa dịch cao điểm**: [Tháng mấy trong năm, mối liên quan với mùa mưa/mùa đông xuân].
-- **Tác động của hiện tượng thời tiết cực đoan**: [Lũ lụt, triều cường, El Niño/La Niña thúc đẩy ổ dịch như thế nào].
-
-## 👥 6. PHÂN TẦNG QUẦN THỂ NGUY CƠ CAO (HIGH-RISK POPULATIONS)
-- **Đặc điểm theo Độ tuổi & Giới tính**: [Tỷ số nam:nữ, nhóm tuổi gánh chịu tỷ lệ mắc/tử vong cao nhất].
-- **Nhóm nguy cơ nghề nghiệp**: [Nông dân, công nhân vệ sinh, nhân viên y tế, người chăn nuôi...].
-- **Nhóm có nguy cơ tiến triển nặng / Tử vong cao**:
-  - Trẻ sơ sinh & Trẻ nhỏ...
-  - Phụ nữ mang thai...
-  - Người cao tuổi & Người có bệnh nền mạn tính...
-
-## 🛡️ 7. CHIẾN LƯỢC GIÁM SÁT DỊCH & CAN THIỆP Y TẾ CÔNG CỘNG
-- Định nghĩa ca bệnh giám sát (Ca nghi ngờ, Ca có thể, Ca xác định).
-- Biện pháp can thiệp cộng đồng: Diệt véc-tơ, xử lý nguồn nước, tiêm chủng vắc-xin, điều trị dự phòng hóa dược.
+> **Tóm lược Dịch tễ & Nguy cơ**: [Viết đoạn tóm tắt 3–4 câu súc tích về tình hình dịch tễ, gánh nặng bệnh tật tại Việt Nam và toàn cầu, véc-tơ/nguồn lây truyền chính, và các nhóm dân số có nguy cơ diễn tiến nặng/tử vong cao nhất].
 
 ---
 
-## 📚 TRÍCH DẪN TÀI LIỆU THAM KHẢO CHUẨN EBM
-1. GBD Collaborators. Global incidence, prevalence, and years lived with disability for [Disease]. *The Lancet*. Năm;Tập(Số):Trang. DOI/PMID.
-2. World Health Organization (WHO). Epidemiological update on [Disease]. Geneva: WHO, Năm.
-3. Cục Y tế Dự phòng - Bộ Y Tế Việt Nam. Báo cáo tình hình dịch bệnh truyền nhiễm quốc gia. Hà Nội, Năm.
+## 1. 📊 Gánh Nặng Bệnh Tật & Dịch Tễ Học Toàn Cầu / Việt Nam
+
+### 1.1. Số liệu Dịch tễ Toàn cầu & Khu vực (GBD / WHO)
+- **Tỷ lệ mắc mới (Incidence)**: [Số ca mắc mới hàng năm trên toàn cầu và khu vực lưu hành].
+- **Tỷ lệ tử vong thô & Tỷ lệ tử vong/mắc (Case Fatality Rate - CFR)**: [CFR trung bình và CFR khi vào sốc/nặng].
+- **Chỉ số DALYs (Disability-Adjusted Life Years)**: [Số năm sống hiệu chỉnh theo mức độ tàn tật].
+- **Vùng địa lý lưu hành trọng điểm**: [Các châu lục, khu vực nhiệt đới / cận nhiệt đới bị ảnh hưởng nặng nhất].
+
+### 1.2. Bức tranh Dịch tễ Học Tại Việt Nam
+- **Đặc điểm lưu hành theo vùng miền**:
+  - Miền Nam & Đồng bằng Sông Cửu Long: [Đặc điểm lưu hành quanh năm, đỉnh dịch].
+  - Miền Trung & Tây Nguyên: [Tần suất các đợt bùng phát].
+  - Miền Bắc: [Tính chất mùa vụ theo nhiệt độ, mùa hè thu].
+- **Quy luật mùa vụ & Yếu tố khí hậu**: [Mối liên quan với lượng mưa, nhiệt độ $28\text{–}32^\circ\text{C}$, độ ẩm cao, triều cường ngập úng].
+- **Tỷ lệ mắc và tử vong tại các vụ dịch lớn gần đây**: [Số liệu các năm cao điểm dịch tại Việt Nam].
+
+---
+
+## 2. 🔺 Tam Giác Dịch Tễ Học Truyền Nhiễm (Epidemiological Triad)
+
+| Thành phần | Đặc điểm chi tiết | Ý nghĩa lâm sàng & Chẩn đoán tại giường |
+| :--- | :--- | :--- |
+| **1. Tác nhân gây bệnh (Agent)** | [Tên tác nhân, họ vi rút/vi khuẩn, các type huyết thanh, đặc tính kháng nguyên] | [Khả năng gây bệnh, miễn dịch chéo, độc lực theo type] |
+| **2. Ký chủ cảm thụ (Host)** | [Tuổi mắc bệnh, giới tính, tình trạng miễn dịch, tiền căn nhiễm trước đó] | [Đáp ứng miễn dịch, nguy cơ diễn tiến nặng khi tái nhiễm] |
+| **3. Môi trường & Vector (Environment)** | [Véc-tơ truyền bệnh, vật chủ trung gian, môi trường sống, nguồn nước, đô thị hóa] | [Nhận diện ổ dịch địa phương, điều tra tiền sử phơi nhiễm] |
+
+### 2.1. Tác nhân & Các Type Huyết Thanh
+- [Mô tả chi tiết 4 serotypes DENV-1, DENV-2, DENV-3, DENV-4; sự thay thế type huyết thanh ưu thế qua các chu kỳ dịch 3–5 năm tại Việt Nam].
+
+### 2.2. Véc-tơ Truyền Bệnh & Chu Kỳ Sinh Học
+- **Loài muỗi truyền bệnh chính**: *Aedes aegypti* (muỗi vằn đô thị) và *Aedes albopictus* (muỗi vằn nông thôn/vườn).
+- **Tập tính hút máu**: [Hút máu ban ngày, đỉnh điểm sáng sớm và chiều tối; hút nhiều người trong một bữa ăn máu].
+- **Nơi sinh sản & phát triển**: [Dụng cụ chứa nước sạch nhân tạo quanh nhà: lọ hoa, lu chứa nước, lốp xe cũ, rác thải đọng nước mưa].
+- **Thời gian ủ bệnh ngoại sinh (Extrinsic Incubation Period)**: [8–12 ngày trong cơ thể muỗi trước khi có khả năng truyền vi rút].
+- **Thời gian ủ bệnh nội sinh (Intrinsic Incubation Period)**: [4–10 ngày (trung bình 4–7 ngày) từ khi muỗi đốt đến khi khởi sốt].
+
+---
+
+## 3. 🔬 Cơ Chế Bệnh Sinh Dịch Tễ & Hiện Tượng Tăng Cường Miễn Dịch (ADE)
+
+- **Cơ chế bão Cytokine & Thoát huyết tương**: [Mô tả vai trò của NS1 vi rút Dengue gây tổn thương trực tiếp lớp glycocalyx nội mô mao mạch].
+- **Hiện tượng Tăng cường Nhiễm trùng Phụ thuộc Kháng thể (Antibody-Dependent Enhancement - ADE)**:
+  - Nhiễm lần đầu (Primary Infection): [Tạo kháng thể trung hòa suốt đời với serotype đó, nhưng chỉ bảo vệ chéo tạm thời 2–3 tháng với serotypes khác].
+  - Tái nhiễm lần 2 với serotype khác (Secondary Infection): [Kháng thể cũ không trung hòa được serotype mới mà lại gắn kết tạo phức hợp miễn dịch qua thụ thể FcγR trên bạch cầu đơn nhân/đại thực bào, làm tăng nhân bản vi rút gấp 100–1000 lần, giải phóng ồ ạt TNF-α, IL-6, IL-8, IFN-γ, kích hoạt thoát huyết tương ồ ạt và sốc DSS].
+
+---
+
+## 4. ⚠️ Ma Trận Yếu Tố Nguy Cơ (Risk Factors Matrix) & Bằng Chứng EBM
+
+### 4.1. Bảng Bằng Chứng Dịch Tễ Học Về Yếu Tố Nguy Cơ (OR / RR / 95% CI)
+
+| Nhóm yếu tố | Yếu tố nguy cơ cụ thể | Tỷ suất chênh (OR / RR) [95% CI] | Trọng số lâm sàng | Ý nghĩa tiên lượng & Hành động |
+| :--- | :--- | :---: | :---: | :--- |
+| **Tiền sử nhiễm** | Tái nhiễm Dengue lần 2 (Secondary infection) | OR $\approx$ 4.5 – 7.2 | **Rất cao** | Cảnh giác sốc thoát huyết tương vào ngày 3–7 |
+| **Tuổi tác** | Trẻ nhũ nhi (< 1 tuổi) | RR $\approx$ 3.8 [2.5 – 5.8] | **Rất cao** | Dễ sốc sớm, xuất huyết não, co giật, khó truyền dịch |
+| **Tuổi tác** | Người cao tuổi (≥ 65 tuổi) | OR $\approx$ 3.2 [2.1 – 4.9] | **Cao** | Nguy cơ quá tải dịch, suy tim, xuất huyết tiêu hóa |
+| **Thể trạng** | Thừa cân / Béo phì (BMI $\ge$ 25 ở người lớn) | OR $\approx$ 2.8 [1.9 – 4.1] | **Cao** | Khó theo dõi mạch HA, nguy cơ quá tải dịch nếu tính theo TBW |
+| **Sinh lý** | Phụ nữ mang thai (nhất là 3 tháng cuối) | OR $\approx$ 3.5 [2.2 – 5.6] | **Rất cao** | Nguy cơ băng huyết sau sinh, sinh non, nhầm lẫn tiền sản giật |
+| **Bệnh nền** | Đái tháo đường / Tăng huyết áp | OR $\approx$ 2.4 [1.6 – 3.6] | **Trung bình - Cao**| Rối loạn chức năng nội mô nền, dễ tổn thương thận cấp |
+| **Bệnh nền** | Bệnh gan mạn / Xơ gan / Viêm gan B-C | OR $\approx$ 4.0 [2.7 – 6.0] | **Rất cao** | Nguy cơ suy gan bùng phát, xuất huyết nặng do giảm đông |
+| **Bệnh nền** | Bệnh thận mạn tính / Thận nhân tạo | OR $\approx$ 3.0 [1.8 – 5.1] | **Cao** | Hạn chế dung nạp dịch truyền, dễ toan chuyển hóa |
+| **Huyết học** | Bệnh huyết sắc tố (Thalassemia, HbS) | OR $\approx$ 2.6 [1.5 – 4.5] | **Cao** | Thiếu máu nền làm lu mờ chỉ số Hct, dễ tan máu cấp |
+| **Dùng thuốc** | Đang dùng kháng đông / Kháng kết tập tiểu cầu | OR $\approx$ 3.9 [2.4 – 6.3] | **Rất cao** | Nguy cơ xuất huyết nội tạng trầm trọng không kiểm soát |
+
+### 4.2. Phân Tầng Xử Trí Trên Các Nhóm Cơ Địa Nguy Cơ Đặc Biệt
+
+#### A. Trẻ nhũ nhi (< 1 tuổi):
+- **Cạm bẫy**: Triệu chứng không điển hình (sốt nhẹ, ho, tiêu chảy dễ nhầm nhiễm trùng hô hấp/tiêu hóa); gan to tự nhiên ở trẻ nhỏ làm khó đánh giá; ven khó lấy.
+- **Chiến lược**: Nhập viện theo dõi 100%; theo dõi sát lượng tã ướt, dấu hiệu li bì, thóp phồng; bồi hoàn dịch thận trọng.
+
+#### B. Người bệnh Thừa cân / Béo phì:
+- **Cạm bẫy chết người**: Tính thể tích dịch truyền chống sốc theo Cân nặng thực tế (Actual Body Weight - ABW) dẫn đến **quá tải tuần hoàn cấp và phù phổi cấp tử vong**!
+- **Chiến lược bắt buộc**: BẮT BUỘC tính thể tích dịch truyền theo **Cân nặng lý tưởng (Ideal Body Weight - IBW)** hoặc Cân nặng hiệu chỉnh (Adjusted Body Weight):
+  $$\text{IBW (Nam)} = 50 + 0.91 \times (\text{Chiều cao cm} - 152.4)$$
+  $$\text{IBW (Nữ)} = 45.5 + 0.91 \times (\text{Chiều cao cm} - 152.4)$$
+
+#### C. Phụ nữ mang thai:
+- **Cạm bẫy**: Sinh lý thai kỳ có tăng thể tích huyết tương (Hct nền thấp $\approx 30\text{–}33\%$), do đó Hct $38\%$ đã là cô đặc máu nặng; tiểu cầu giảm sinh lý thai kỳ; đau bụng vùng gan dễ nhầm hội chứng HELLP.
+- **Chiến lược**: Phối hợp Sản khoa và Truyền nhiễm; chuẩn bị sẵn máu và chế phẩm máu trước chuyển dạ; trì hoãn mổ lấy thai tối đa nếu tiểu cầu $< 50\text{ G/L}$ trừ cấp cứu sinh mạng mẹ.
+
+#### D. Người cao tuổi có nhiều bệnh mạn tính:
+- **Cạm bẫy**: Huyết áp nền cao che giấu tình trạng tụt huyết áp (bệnh nhân THA nền $160/90\text{ mmHg}$ tụt xuống $100/70\text{ mmHg}$ đã là dọa sốc nặng); tim phổi kém dung nạp dịch truyền.
+- **Chiến lược**: Đo CVP hoặc siêu âm tĩnh mạch chủ dưới (IVC) hướng dẫn truyền dịch; ưu tiên dùng dung dịch điện giải cân bằng (Ringer Acetate) nếu có suy gan/suy thận.
+
+---
+
+## 5. 🛡️ Mô Hình Dự Phòng, Kiểm Soát Véc-Tơ & Vắc-Xin
+
+### 5.1. Kiểm soát Véc-tơ Truyền Bệnh (Vector Control)
+- **Biện pháp cơ học (Hiệu quả & Bền vững nhất)**: Diệt lăng quăng/bọ gậy hàng tuần; đậy kín dụng cụ chứa nước; thả cá bảy màu; thu gom vỏ dừa, lốp xe cũ; lật úp vật dụng đọng nước.
+- **Biện pháp sinh học & Hóa học**: Sử dụng vi khuẩn *Bacillus thuringiensis israelensis* (BTI); phun hóa chất diệt muỗi trưởng thành (Malathion, Deltamethrin) dập ổ dịch; ứng dụng muỗi nhiễm vi khuẩn *Wolbachia* triệt tiêu khả năng truyền bệnh.
+- **Biện pháp cá nhân**: Ngủ mùng kể cả ban ngày; mặc quần áo dài tay; thoa kem xua muỗi chứa DEET hoặc Picaridin.
+
+### 5.2. Vắc-Xin Phòng Bệnh Dengue (Cập Nhật 2024–2026)
+- **Vắc-xin Qdenga (TAK-030 - Takeda)**:
+  - Công nghệ: Vắc-xin sống giảm độc lực tứ giá tái tổ hợp trên khung DENV-2.
+  - Chỉ định: Người từ 4 tuổi trở lên, **tiêm được cho cả người chưa từng mắc (seronegative) lẫn người đã từng mắc (seropositive)** mà không cần xét nghiệm huyết thanh sàng lọc trước tiêm.
+  - Phác đồ: 2 liều tiêm dưới da, cách nhau 3 tháng (tháng 0 và tháng 3).
+  - Hiệu lực bảo vệ: Giảm $\approx 80\%$ nguy cơ mắc bệnh và giảm $\approx 90\%$ nguy cơ nhập viện do sốt xuất huyết nặng.
+- **Vắc-xin Dengvaxia (CYD-TDV - Sanofi Pasteur)**:
+  - Chỉ định: Chỉ tiêm cho người từ 9–45 tuổi **ĐÃ CÓ BẰNG CHỨNG TỪNG MẮC DENGUE TRƯỚC ĐÓ** (Seropositive). Chống chỉ định tuyệt đối cho người chưa từng mắc vì làm tăng nguy cơ mắc SXHD nặng khi nhiễm tự nhiên sau đó.
+
+---
+
+## 6. 💎 Ngọc Lâm Sàng & Cạm Bẫy Dịch Tễ (Pearls & Pitfalls)
+
+### 💡 Clinical Pearls (Bài học cốt lõi)
+1. **Quy luật 14 ngày vàng**: Bệnh nhân sốt cấp tính sống trong hoặc có đi du lịch qua vùng có dịch sốt xuất huyết trong vòng 14 ngày BẮT BUỘC phải nghĩ đến Dengue đầu tiên cho đến khi có bằng chứng ngược lại.
+2. **Hiện tượng "Bệnh gia đình / Bệnh khu trọ"**: Do muỗi *Aedes* có tập tính hút máu nhiều người cùng lúc trong nhà, khi trong một gia đình hoặc một dãy trọ có 1 người sốt xuất huyết, các ca sốt tiếp theo trong 1–2 tuần tới có xác suất $\ge 85\%$ là Dengue.
+3. **Cảnh giác kép ở người tái nhiễm**: Bệnh nhân khẳng định "đã từng bị sốt xuất huyết 2 năm trước" không có nghĩa là miễn dịch, mà ngược lại đang nằm trong nhóm nguy cơ tử vong cao nhất do hiện tượng ADE.
+
+### ⚠️ Common Pitfalls (Cạm bẫy chết người cần tránh)
+1. **Bỏ quên khai thác tiền sử đi lại (Travel History)**: Bệnh nhân ở vùng không có dịch nhưng vừa đi du lịch miền Trung/miền Nam về bị sốt, bác sĩ phòng khám dễ chẩn đoán nhầm thành viêm họng/cúm mùa, bỏ sót giai đoạn vàng của bệnh.
+2. **Tính thể tích dịch truyền theo cân nặng thực tế ở người béo phì**: Dẫn đến xả dịch quá mức gây phù phổi cấp và tràn dịch đa màng chèn ép tim/phổi.
+3. **Chủ quan khi số ca mắc trong cộng đồng giảm**: Dịch Dengue tại Việt Nam thường chuyển dịch serotype ưu thế sau mỗi chu kỳ 3–5 năm, đi kèm với đợt dịch nặng hơn do miễn dịch cộng đồng với serotype mới chưa có.
 "
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📋 BẢNG KIỂM CHẤT LƯỢNG ĐẦU RA (QUALITY CHECKLIST - MINIMUM 5 ĐIỂM):
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Trước khi lưu bài viết vào knowledge-vault/1.4. Kho dịch tễ học/, hãy kiểm tra:
-[ ] 1. Toàn bộ số liệu mắc, tử vong, CFR có đơn vị số học rõ ràng (ca/100.000 dân, %, DALYs), không dùng từ ngữ ước lệ.
-[ ] 2. Có phân tích chi tiết thực trạng tại Việt Nam theo vùng miền và serotypes/genotypes chủ đạo.
-[ ] 3. Tên tác nhân và vector truyền bệnh viết đúng chuẩn danh pháp in nghiêng quốc tế.
-[ ] 4. Có khoảng giá trị hệ số lây nhiễm cơ bản R0 và mốc thời gian ủ bệnh bằng ngày/tuần cụ thể.
-[ ] 5. Không còn bất kỳ câu placeholder chung chung hoặc phỏng đoán thiếu căn cứ số liệu.
-
----
-
-## 🔗 HƯỚNG DẪN KẾT NỐI CƠ SỞ DỮ LIỆU CDSS (DOCSPACE):
-> [!NOTE]
-> Dữ liệu dịch tễ học (vùng lưu hành, mùa vụ, véc-tơ, serotypes) là căn cứ quan trọng để xây dựng
-> **Bộ lọc Tiền đề & Yếu tố Nguy cơ Dịch tễ (Epidemiological Risk Priors)** trong DocSpace CDSS:
-> - Sử dụng **Prompt 08** (`08-prompt-db-entry-generator.txt`): Để đưa yếu tố dịch tễ vào `criteria[]` nhóm `mandatory` hoặc `major` (ví dụ: 'Yếu tố dịch tễ sống/đi đến vùng lưu hành trong 14 ngày').
-> - Sử dụng **Prompt 09** (`09-prompt-db-batch-enricher.txt`): Để bổ sung tiêu chí tiền sử dịch tễ vào các bệnh lý truyền nhiễm trong `kho-chan-doan-db.ts`.
