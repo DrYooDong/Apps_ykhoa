@@ -81,6 +81,8 @@ interface CustomOrder {
 interface Step3Props {
   kb: KnowledgeBase;
   selectedDiseaseId: string | null;
+  initialGradeIdx?: number | null;
+  initialComplicationId?: string | null;
   onSelectDisease: (id: string) => void;
   onBackToAnalysis: () => void;
   onSaveToPostgres: () => void;
@@ -96,6 +98,8 @@ interface Step3Props {
 export const Step3Protocol: React.FC<Step3Props> = ({
   kb,
   selectedDiseaseId,
+  initialGradeIdx,
+  initialComplicationId,
   onSelectDisease,
   onBackToAnalysis,
   onSaveToPostgres,
@@ -272,43 +276,6 @@ export const Step3Protocol: React.FC<Step3Props> = ({
     setCustomOrders((prev) => [...prev, ...newItems]);
   };
 
-  // Robust protocol data from disease or standard fallback
-  const phacDo = useMemo(() => {
-    return (
-      currentDisease?.phacDo || {
-        tuyen: [
-          'Đánh giá ABC: Đảm bảo đường thở thông thoáng, kiểm soát hô hấp và tuần hoàn',
-          'Thiết lập đường truyền tĩnh mạch lớn (G18-G20), theo dõi sát mạch và huyết áp',
-          'Lấy máu xét nghiệm cấp cứu: Công thức máu, điện giải đồ, chức năng gan thận',
-          'Theo dõi monitor sinh hiệu liên tục, chuẩn bị phương tiện cấp cứu',
-        ],
-        thuoc: [
-          ['Natri Clorid 0,9%', '500 ml TTM 30 giọt/phút', 'duy trì đường truyền'],
-          ['Paracetamol', '1 g TTM khi sốt >= 38.5°C hoặc đau nhiều', 'cách mỗi 6h'],
-        ],
-        theoDoi: [
-          'Theo dõi tri giác, dấu hiệu sinh tồn (Mạch, HA, SpO2, Nhịp thở) mỗi 15-30 phút',
-          'Lượng nước tiểu 24 giờ, mục tiêu >= 0.5 ml/kg/h',
-        ],
-        luuY: [
-          'Thận trọng với bệnh nhân suy tim, suy thận mạn tính hoặc tiền căn dị ứng thuốc',
-          'Hội chẩn chuyên khoa nếu diễn tiến lâm sàng không đáp ứng sau 2 giờ đầu',
-        ],
-        nguon: ['Hướng dẫn chẩn đoán và điều trị Bộ Y tế Việt Nam'],
-      }
-    );
-  }, [currentDisease]);
-
-  // Combined drug names for DDI & Counseling
-  const allPrescribedDrugNames = useMemo(() => {
-    const list: string[] = [];
-    if (phacDo?.thuoc) {
-      phacDo.thuoc.forEach(([d]) => list.push(d));
-    }
-    customOrders.forEach((co) => list.push(co.drug));
-    return list;
-  }, [phacDo, customOrders]);
-
   const handleAddPreventionOrder = (drugName: string, dosage: string, note: string) => {
     const newOrder: CustomOrder = {
       id: `prevention_${Date.now()}`,
@@ -339,6 +306,38 @@ export const Step3Protocol: React.FC<Step3Props> = ({
     }
     return undefined;
   }, [currentDisease]);
+
+  // Sync initialGradeIdx if changed from parent
+  useEffect(() => {
+    if (initialGradeIdx !== undefined && initialGradeIdx !== null) {
+      setSelectedGradeIdx(initialGradeIdx);
+    }
+  }, [initialGradeIdx]);
+
+  // Sync initialComplicationId: auto-activate and add its orderSet to custom orders
+  useEffect(() => {
+    if (initialComplicationId && activeChain?.complications) {
+      const idx = activeChain.complications.findIndex((c) => c.id === initialComplicationId);
+      if (idx >= 0) {
+        setActiveComplicationIndices((prev) => new Set(prev).add(idx));
+        const comp = activeChain.complications[idx];
+        if (comp.orderSet && comp.orderSet.length > 0) {
+          const newOrders: CustomOrder[] = comp.orderSet.map((item, oIdx) => ({
+            id: `comp_init_${comp.id}_${Date.now()}_${oIdx}`,
+            drug: `${item.drugName} ${item.dosage}${item.route ? ' (' + item.route + ')' : ''}`,
+            dosage: item.rate || item.timing || 'Cấp cứu',
+            note: item.warning ? `⚠️ ${item.warning}` : `Chỉ định cấp cứu cho ${comp.name}`,
+            completed: false,
+          }));
+          setCustomOrders((prev) => {
+            const existingDrugs = new Set(prev.map((p) => p.drug));
+            const toAdd = newOrders.filter((n) => !existingDrugs.has(n.drug));
+            return toAdd.length > 0 ? [...prev, ...toAdd] : prev;
+          });
+        }
+      }
+    }
+  }, [initialComplicationId, activeChain]);
 
   // Available Severity Grades for current disease
   const severityGrades: SeverityGradingItem[] = useMemo(() => {
@@ -412,6 +411,68 @@ export const Step3Protocol: React.FC<Step3Props> = ({
     setSelectedGradeIdx(autoSuggestedGradeIndex);
   }, [currentDisease?.id, autoSuggestedGradeIndex]);
 
+  // Selected severity grade object
+  const activeSeverityGrade = useMemo(() => {
+    return severityGrades[selectedGradeIdx] || severityGrades[0];
+  }, [severityGrades, selectedGradeIdx]);
+
+  // Robust protocol data: Prioritizes active severity grade's specialized protocol if available
+  const phacDo = useMemo(() => {
+    if (activeSeverityGrade?.protocol) {
+      const sp = activeSeverityGrade.protocol;
+      const tuyen = sp.tuyen || sp.initialManagement || currentDisease?.phacDo?.tuyen || [];
+      const thuoc: Array<[string, string, string]> = sp.drugs
+        ? sp.drugs
+        : sp.firstLineDrugs
+        ? sp.firstLineDrugs.map((d) => [
+            d.drugName,
+            `${d.dosage}${d.route ? ' (' + d.route + ')' : ''}`,
+            d.instructions || d.class || 'Khuyến cáo phân độ',
+          ])
+        : currentDisease?.phacDo?.thuoc || [];
+      const theoDoi = sp.monitoring || currentDisease?.phacDo?.theoDoi || [];
+      const luuY = sp.cautions || currentDisease?.phacDo?.luuY || [];
+      const nguon = [
+        sp.title || activeChain?.protocol?.guideline || currentDisease?.phacDo?.nguon?.[0] || 'Hướng dẫn chẩn đoán và điều trị Bộ Y tế',
+      ];
+      return { tuyen, thuoc, theoDoi, luuY, nguon };
+    }
+
+    return (
+      currentDisease?.phacDo || {
+        tuyen: [
+          'Đánh giá ABC: Đảm bảo đường thở thông thoáng, kiểm soát hô hấp và tuần hoàn',
+          'Thiết lập đường truyền tĩnh mạch lớn (G18-G20), theo dõi sát mạch và huyết áp',
+          'Lấy máu xét nghiệm cấp cứu: Công thức máu, điện giải đồ, chức năng gan thận',
+          'Theo dõi monitor sinh hiệu liên tục, chuẩn bị phương tiện cấp cứu',
+        ],
+        thuoc: [
+          ['Natri Clorid 0,9%', '500 ml TTM 30 giọt/phút', 'duy trì đường truyền'],
+          ['Paracetamol', '1 g TTM khi sốt >= 38.5°C hoặc đau nhiều', 'cách mỗi 6h'],
+        ],
+        theoDoi: [
+          'Theo dõi tri giác, dấu hiệu sinh tồn (Mạch, HA, SpO2, Nhịp thở) mỗi 15-30 phút',
+          'Lượng nước tiểu 24 giờ, mục tiêu >= 0.5 ml/kg/h',
+        ],
+        luuY: [
+          'Thận trọng với bệnh nhân suy tim, suy thận mạn tính hoặc tiền căn dị ứng thuốc',
+          'Hội chẩn chuyên khoa nếu diễn tiến lâm sàng không đáp ứng sau 2 giờ đầu',
+        ],
+        nguon: ['Hướng dẫn chẩn đoán và điều trị Bộ Y tế Việt Nam'],
+      }
+    );
+  }, [activeSeverityGrade, activeChain, currentDisease]);
+
+  // Combined drug names for DDI & Counseling
+  const allPrescribedDrugNames = useMemo(() => {
+    const list: string[] = [];
+    if (phacDo?.thuoc) {
+      phacDo.thuoc.forEach(([d]) => list.push(d));
+    }
+    customOrders.forEach((co) => list.push(co.drug));
+    return list;
+  }, [phacDo, customOrders]);
+
   const activeComplications = useMemo(() => {
     return activeChain?.complications || [];
   }, [activeChain]);
@@ -426,14 +487,25 @@ export const Step3Protocol: React.FC<Step3Props> = ({
   };
 
   const handleAddComplicationOrder = (comp: any) => {
-    const newOrder: CustomOrder = {
-      id: `comp_${Date.now()}`,
-      drug: `[XỬ TRÍ KHẨN: ${comp.name}]`,
-      dosage: comp.preventiveAction || 'Theo phác đồ xử trí biến chứng',
-      note: comp.onCallAlertText || 'Lệnh trực báo động khẩn',
-      completed: false,
-    };
-    setCustomOrders((prev) => [newOrder, ...prev]);
+    if (comp.orderSet && Array.isArray(comp.orderSet) && comp.orderSet.length > 0) {
+      const newOrders: CustomOrder[] = comp.orderSet.map((item: any, i: number) => ({
+        id: `comp_${Date.now()}_${i}`,
+        drug: `[XỬ TRÍ: ${comp.name}] ${item.drug}`,
+        dosage: item.dosage,
+        note: item.note,
+        completed: false,
+      }));
+      setCustomOrders((prev) => [...newOrders, ...prev]);
+    } else {
+      const newOrder: CustomOrder = {
+        id: `comp_${Date.now()}`,
+        drug: `[XỬ TRÍ KHẨN: ${comp.name}]`,
+        dosage: comp.preventiveAction || 'Theo phác đồ xử trí biến chứng',
+        note: comp.onCallAlertText || 'Lệnh trực báo động khẩn',
+        completed: false,
+      };
+      setCustomOrders((prev) => [newOrder, ...prev]);
+    }
   };
 
   // Filtered diseases for selector dropdown / quick search
@@ -474,9 +546,9 @@ export const Step3Protocol: React.FC<Step3Props> = ({
   const handleCompleteAll = () => {
     if (!currentDisease) return;
     const next = new Set(checkedOrders);
-    phacDo.tuyen.forEach((_, idx) => next.add(`tuyen-${currentDisease.id}-${idx}`));
-    phacDo.thuoc.forEach((_, idx) => next.add(`thuoc-${currentDisease.id}-${idx}`));
-    phacDo.theoDoi.forEach((_, idx) => next.add(`theodoi-${currentDisease.id}-${idx}`));
+    phacDo.tuyen.forEach((_, idx) => next.add(`tuyen-${currentDisease.id}-g${selectedGradeIdx}-${idx}`));
+    phacDo.thuoc.forEach((_, idx) => next.add(`thuoc-${currentDisease.id}-g${selectedGradeIdx}-${idx}`));
+    phacDo.theoDoi.forEach((_, idx) => next.add(`theodoi-${currentDisease.id}-g${selectedGradeIdx}-${idx}`));
     setCheckedOrders(next);
   };
 
@@ -485,9 +557,9 @@ export const Step3Protocol: React.FC<Step3Props> = ({
     if (!currentDisease) return;
     setCheckedOrders((prev) => {
       const next = new Set(prev);
-      phacDo.tuyen.forEach((_, idx) => next.delete(`tuyen-${currentDisease.id}-${idx}`));
-      phacDo.thuoc.forEach((_, idx) => next.delete(`thuoc-${currentDisease.id}-${idx}`));
-      phacDo.theoDoi.forEach((_, idx) => next.delete(`theodoi-${currentDisease.id}-${idx}`));
+      phacDo.tuyen.forEach((_, idx) => next.delete(`tuyen-${currentDisease.id}-g${selectedGradeIdx}-${idx}`));
+      phacDo.thuoc.forEach((_, idx) => next.delete(`thuoc-${currentDisease.id}-g${selectedGradeIdx}-${idx}`));
+      phacDo.theoDoi.forEach((_, idx) => next.delete(`theodoi-${currentDisease.id}-g${selectedGradeIdx}-${idx}`));
       return next;
     });
   };
@@ -527,17 +599,17 @@ export const Step3Protocol: React.FC<Step3Props> = ({
     if (!currentDisease) return 0;
     let count = 0;
     phacDo.tuyen.forEach((_, idx) => {
-      if (checkedOrders.has(`tuyen-${currentDisease.id}-${idx}`)) count++;
+      if (checkedOrders.has(`tuyen-${currentDisease.id}-g${selectedGradeIdx}-${idx}`)) count++;
     });
     phacDo.thuoc.forEach((_, idx) => {
-      if (checkedOrders.has(`thuoc-${currentDisease.id}-${idx}`)) count++;
+      if (checkedOrders.has(`thuoc-${currentDisease.id}-g${selectedGradeIdx}-${idx}`)) count++;
     });
     phacDo.theoDoi.forEach((_, idx) => {
-      if (checkedOrders.has(`theodoi-${currentDisease.id}-${idx}`)) count++;
+      if (checkedOrders.has(`theodoi-${currentDisease.id}-g${selectedGradeIdx}-${idx}`)) count++;
     });
     const completedCustom = customOrders.filter((c) => c.completed).length;
     return count + completedCustom;
-  }, [currentDisease, phacDo, checkedOrders, customOrders]);
+  }, [currentDisease, phacDo, checkedOrders, customOrders, selectedGradeIdx]);
 
   const totalAllOrders = totalStandardOrders + customOrders.length;
   const progressPercent = totalAllOrders > 0 ? Math.round((currentCheckedCount / totalAllOrders) * 100) : 0;
@@ -572,6 +644,10 @@ export const Step3Protocol: React.FC<Step3Props> = ({
     const activeGrade = severityGrades[selectedGradeIdx] || severityGrades[0];
     lines.push(`PHÂN ĐỘ LÂM SÀNG: ${activeGrade.grade}`);
     lines.push(`Tuyến điều trị tiếp nhận: ${activeGrade.triage}`);
+    lines.push(`Hành động xử trí cốt lõi: ${activeGrade.primaryAction}`);
+    if (activeGrade.targetVitals) {
+      lines.push(`Mục tiêu sinh hiệu: ${activeGrade.targetVitals}`);
+    }
     if (activeComplicationIndices.size > 0) {
       const compNames = Array.from(activeComplicationIndices)
         .map((idx) => activeComplications[idx]?.name)
@@ -586,13 +662,13 @@ export const Step3Protocol: React.FC<Step3Props> = ({
 
     lines.push(`I. QUY TRÌNH XỬ TRÍ CẤP CỨU & CAN THIỆP:`);
     phacDo.tuyen.forEach((step, idx) => {
-      const isDone = checkedOrders.has(`tuyen-${currentDisease.id}-${idx}`);
+      const isDone = checkedOrders.has(`tuyen-${currentDisease.id}-g${selectedGradeIdx}-${idx}`);
       lines.push(`  ${idx + 1}. [${isDone ? 'X' : ' '}] ${step}`);
     });
 
     lines.push(`\nII. Y LỆNH THUỐC & DƯỢC LÂM SÀNG:`);
     phacDo.thuoc.forEach(([drug, dose, note], idx) => {
-      const isDone = checkedOrders.has(`thuoc-${currentDisease.id}-${idx}`);
+      const isDone = checkedOrders.has(`thuoc-${currentDisease.id}-g${selectedGradeIdx}-${idx}`);
       lines.push(`  ${idx + 1}. [${isDone ? 'X' : ' '}] ${drug} - Liều: ${dose} ${note ? `(${note})` : ''}`);
     });
 
@@ -605,7 +681,7 @@ export const Step3Protocol: React.FC<Step3Props> = ({
 
     lines.push(`\nIV. THEO DÕI & MỤC TIÊU LÂM SÀNG:`);
     phacDo.theoDoi.forEach((m, idx) => {
-      const isDone = checkedOrders.has(`theodoi-${currentDisease.id}-${idx}`);
+      const isDone = checkedOrders.has(`theodoi-${currentDisease.id}-g${selectedGradeIdx}-${idx}`);
       lines.push(`  - [${isDone ? 'X' : ' '}] ${m}`);
     });
 
@@ -1030,10 +1106,14 @@ export const Step3Protocol: React.FC<Step3Props> = ({
                             <button
                               type="button"
                               onClick={() => handleAddComplicationOrder(comp)}
-                              className="self-start px-2.5 py-1 bg-white hover:bg-rose-100 text-rose-700 border border-rose-300 rounded text-xs font-semibold transition-colors cursor-pointer flex items-center gap-1"
+                              className="self-start px-2.5 py-1 bg-white hover:bg-rose-100 text-rose-700 border border-rose-300 rounded text-xs font-semibold transition-colors cursor-pointer flex items-center gap-1 shadow-2xs"
                             >
                               <Plus className="w-3 h-3" />
-                              <span>Nạp y lệnh xử trí biến chứng này vào đơn</span>
+                              <span>
+                                {comp.orderSet && comp.orderSet.length > 0
+                                  ? `⚡ Nạp trọn bộ Y Lệnh Cấp Cứu (${comp.orderSet.length} y lệnh)`
+                                  : 'Nạp y lệnh xử trí biến chứng này vào đơn'}
+                              </span>
                             </button>
                           </div>
                         )}
@@ -1132,7 +1212,7 @@ export const Step3Protocol: React.FC<Step3Props> = ({
 
             <div className="flex flex-col gap-2">
               {phacDo.tuyen.map((item, idx) => {
-                const key = `tuyen-${currentDisease.id}-${idx}`;
+                const key = `tuyen-${currentDisease.id}-g${selectedGradeIdx}-${idx}`;
                 const isChecked = checkedOrders.has(key);
                 return (
                   <div
@@ -1274,7 +1354,7 @@ export const Step3Protocol: React.FC<Step3Props> = ({
                 <tbody className="divide-y divide-slate-100">
                   {/* Standard Protocol Drugs */}
                   {phacDo.thuoc.map(([drug, dosage, note], idx) => {
-                    const key = `thuoc-${currentDisease.id}-${idx}`;
+                    const key = `thuoc-${currentDisease.id}-g${selectedGradeIdx}-${idx}`;
                     const isChecked = checkedOrders.has(key);
                     const isInjectable =
                       dosage.toLowerCase().includes('tm') ||
@@ -1666,7 +1746,7 @@ export const Step3Protocol: React.FC<Step3Props> = ({
               </h4>
               <div className="flex flex-col gap-1.5 text-xs text-slate-800">
                 {phacDo.theoDoi.map((item, idx) => {
-                  const key = `theodoi-${currentDisease.id}-${idx}`;
+                  const key = `theodoi-${currentDisease.id}-g${selectedGradeIdx}-${idx}`;
                   const isChecked = checkedOrders.has(key);
                   return (
                     <div

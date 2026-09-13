@@ -1,4 +1,8 @@
-Bạn là Kỹ sư CDSS. Dựa trên Guideline đã nạp trong Notebook, hãy xuất ĐÚNG 01 JSON hợp lệ (không markdown, không lời dẫn) nạp vào DocSpace cho bệnh: Sốt xuất huyết Dengue (ICD-10: A97, Chuyên khoa: Truyền nhiễm, Mức độ: emergency, Slug: sot_xuat_huyet_dengue):
+Bạn là Kỹ sư CDSS. Dựa trên Guideline đã nạp trong Notebook, hãy xuất ĐÚNG 01 JSON hợp lệ (không markdown, không lời dẫn) nạp vào DocSpace cho bệnh: Sốt xuất huyết Dengue (ICD-10: A97, Chuyên khoa: Truyền nhiễm, Mức độ: emergency, Slug: sot_xuat_huyet_dengue).
+
+QUY TẮC CỐT LÕI:
+1. Mỗi phân độ trong "severityGrading" PHẢI CÓ "protocol" riêng tương ứng (Độ 1: Ngoại trú / Oresol; Độ 2: Nội trú / Bù dịch bậc thang 6->5->3->1.5; Độ 3: ICU / Chống sốc 15-20 ml/kg/h).
+2. Danh sách "complications" PHẢI CÓ mảng "orderSet" cụ thể từng y lệnh cấp cứu (drugName, dosage, route, rate, timing, warning).
 
 {
   "icdCode": "A97",
@@ -15,23 +19,78 @@ Bạn là Kỹ sư CDSS. Dựa trên Guideline đã nạp trong Notebook, hãy x
     { "id": "hct_tang_tc_giam", "type": "lab", "label": "Cô đặc máu & hạ tiểu cầu", "description": "Thoát huyết tương", "labThreshold": "Hct tăng > 20%, Tiểu cầu < 100 G/L", "sourceGuideline": "BYT" }
   ],
   "severityGrading": [
-    { "grade": "Độ 1: SXHD nhẹ", "severity": "mild", "criteria": "Sốt không cảnh báo", "triage": "Ngoại trú", "primaryAction": "Oresol, Paracetamol", "targetVitals": "Mạch HA ổn định" },
-    { "grade": "Độ 2: SXHD có cảnh báo", "severity": "moderate", "criteria": "Đau bụng gan, nôn, lừ đừ, Hct tăng", "triage": "Nội trú", "primaryAction": "Truyền RL bậc thang 6-7 -> 5 -> 3 ml/kg/h", "targetVitals": "Hct giảm, nước tiểu >= 0.5 ml/kg/h" },
-    { "grade": "Độ 3: Sốc SXHD", "severity": "critical", "criteria": "Mạch nhanh nhỏ, HA kẹp/tụt, sốc", "triage": "ICU/Cấp cứu", "primaryAction": "Chống sốc RL 15-20 ml/kg/h, cao phân tử nếu tái sốc", "targetVitals": "HATT >= 90, hiệu áp >= 30" }
+    {
+      "grade": "Độ 1: SXHD nhẹ (Không DHCB)",
+      "severity": "mild",
+      "criteria": "Sốt cấp, không dấu hiệu cảnh báo, tự uống được",
+      "triage": "Ngoại trú",
+      "primaryAction": "Oresol uống, Paracetamol khi sốt cao",
+      "targetVitals": "Mạch HA ổn định, tự uống tốt",
+      "protocol": {
+        "title": "Phác đồ Điều trị Ngoại trú SXHD Độ 1",
+        "guideline": "QĐ 2760/QĐ-BYT",
+        "targetGoals": ["Hạ sốt an toàn", "Bù nước điện giải đường uống đủ"],
+        "initialManagement": ["Dặn dò 7 dấu hiệu cảnh báo đỏ", "Tái khám mỗi ngày"],
+        "firstLineDrugs": [
+          { "drugName": "Paracetamol", "class": "Hạ sốt", "route": "PO", "dosage": "10-15 mg/kg/lần", "frequency": "Cách 4-6h", "instructions": "Chỉ dùng khi sốt >= 38.5°C, max 60mg/kg/d", "isFirstLine": true, "notes": "Cấm Aspirin/NSAID", "contraindications": ["Aspirin", "Ibuprofen"] },
+          { "drugName": "Oresol (ORS 245)", "class": "Bù nước điện giải", "route": "PO", "dosage": "2000-3000 mL/ngày", "frequency": "Uống rải rác cả ngày", "instructions": "Pha đúng 1 gói/1L nước đun sôi để nguội", "isFirstLine": true, "notes": "Ưu tiên hàng đầu", "contraindications": [] }
+        ],
+        "secondLineDrugs": []
+      }
+    },
+    {
+      "grade": "Độ 2: SXHD có Dấu hiệu Cảnh báo",
+      "severity": "moderate",
+      "criteria": "Đau bụng gan, nôn nhiều, lừ đừ, Hct tăng cao",
+      "triage": "Nội trú",
+      "primaryAction": "Truyền tĩnh mạch Ringer Lactate/Acetate bậc thang 6-7 -> 5 -> 3 -> 1.5 ml/kg/h",
+      "targetVitals": "Hct giảm ổn định, nước tiểu >= 0.5-1.0 ml/kg/h",
+      "protocol": {
+        "title": "Phác đồ Bù Dịch Bậc Thang SXHD Độ 2",
+        "guideline": "QĐ 2760/QĐ-BYT",
+        "targetGoals": ["Chống cô đặc máu", "Giảm liều dịch từng nấc"],
+        "initialManagement": ["Theo dõi Mạch, HA, Hct mỗi 2-4h", "Đo nước tiểu"],
+        "firstLineDrugs": [
+          { "drugName": "Ringer Lactate / Acetate", "class": "Tinh thể đẳng trương", "route": "IV", "dosage": "6-7 ml/kg/h (1-2h) -> 5 ml/kg/h -> 3 ml/kg/h", "frequency": "Giảm liều theo bậc thang", "instructions": "Ưu tiên Ringer Acetate khi men gan tăng", "isFirstLine": true, "notes": "Theo dõi sát Hct", "contraindications": ["Quá tải tuần hoàn"] }
+        ],
+        "secondLineDrugs": []
+      }
+    },
+    {
+      "grade": "Độ 3: SXHD Nặng & Sốc Dengue (DSS)",
+      "severity": "critical",
+      "criteria": "Mạch nhanh nhỏ khó bắt, HA kẹp <= 20, tụt HA, sốc thoát huyết tương nặng",
+      "triage": "Cấp cứu / ICU",
+      "primaryAction": "Hồi sức sốc khẩn cấp RL 15-20 ml/kg/h, chuyển Cao phân tử nếu kháng dịch tinh thể",
+      "targetVitals": "HATT >= 90, hiệu áp >= 30, chi ấm, nước tiểu >= 1 ml/kg/h",
+      "protocol": {
+        "title": "Phác đồ Hồi sức Cấp cứu Sốc Dengue Độ 3",
+        "guideline": "QĐ 2760/QĐ-BYT & WHO",
+        "targetGoals": ["Cắt cơn sốc trong 1h đầu", "Duy trì tưới máu tạng"],
+        "initialManagement": ["Thở oxy qua mask", "Thiết lập 2 đường truyền lớn/CVC", "Hct tại giường"],
+        "firstLineDrugs": [
+          { "drugName": "Ringer Lactate / NaCl 0.9%", "class": "Tinh thể", "route": "IV", "dosage": "15-20 ml/kg/h trong 1h đầu (hoặc 20 ml/kg/15m nếu HA=0)", "frequency": "Xả nhanh", "instructions": "Đo lại Hct sau 1h", "isFirstLine": true, "notes": "Hồi sức giờ vàng", "contraindications": [] }
+        ],
+        "secondLineDrugs": [
+          { "drugName": "Dextran 40 trong NaCl 0.9%", "class": "Cao phân tử", "route": "IV", "dosage": "10-15-20 ml/kg/h trong 1h", "frequency": "Khi kháng tinh thể hoặc tái sốc", "instructions": "Tối đa 50 ml/kg/24h", "isFirstLine": false, "notes": "Dịch keo chống sốc", "contraindications": ["Suy thận vô niệu"] }
+        ]
+      }
+    }
   ],
-  "protocol": {
-    "title": "Phác đồ điều trị SXHD",
-    "guideline": "QĐ 2760/QĐ-BYT 2023",
-    "targetGoals": ["Phục hồi thể tích tuần hoàn", "Phát hiện sớm sốc", "Tránh quá tải dịch"],
-    "initialManagement": ["Phân tầng ngoại trú/nội trú/ICU", "Bù dịch sớm theo phác đồ", "Theo dõi Hct và sinh hiệu"],
-    "firstLineDrugs": [
-      { "drugName": "Paracetamol", "class": "Hạ sốt", "route": "PO", "dosage": "10-15 mg/kg/lần (cách 4-6h)", "frequency": "Tối đa 60 mg/kg/ngày", "instructions": "Chỉ dùng khi sốt >= 38.5°C", "isFirstLine": true, "notes": "Cấm tuyệt đối Aspirin/NSAID", "contraindications": ["Aspirin", "Ibuprofen", "NSAIDs"] },
-      { "drugName": "Ringer Lactate", "class": "Dịch tinh thể", "route": "IV", "dosage": "Theo bậc thang ml/kg/h", "frequency": "Đánh giá lại mỗi 1-2h", "instructions": "Giảm liều khi ổn định", "isFirstLine": true, "notes": "Theo dõi Hct sát", "contraindications": ["Quá tải dịch"] }
-    ],
-    "secondLineDrugs": [
-      { "drugName": "Dextran 40 / HES 6%", "class": "Dịch keo", "route": "IV", "dosage": "10-15 ml/kg/h", "frequency": "Khi sốc tái sốc hoặc không đáp ứng dịch tinh thể", "instructions": "Theo dõi chức năng thận", "isFirstLine": false, "notes": "Hồi sức sốc kháng dịch", "contraindications": ["Suy thận vô niệu"] }
-    ]
-  },
+  "complications": [
+    {
+      "id": "comp_shock_decomp",
+      "name": "Sốc Dengue Mất Bù (HA=0, M=0)",
+      "severity": "critical",
+      "triggerCriteria": "Mạch quay = 0, Huyết áp không đo được",
+      "actionSummary": "Bơm xả Ringer Lactate 20 ml/kg trong 15 phút, chuyển Dextran 40 nếu chưa có HA",
+      "sourceGuideline": "QĐ 2760/QĐ-BYT",
+      "orderSet": [
+        { "drugName": "Ringer Lactate", "dosage": "20 mL/kg", "route": "IV", "rate": "Bơm xả tĩnh mạch trong 15 phút", "timing": "Khẩn cấp ngay lập tức", "warning": "Nếu sau 15p HA vẫn = 0 -> Chuyển ngay Cao phân tử" },
+        { "drugName": "Dextran 40", "dosage": "20 mL/kg", "route": "IV", "rate": "Truyền nhanh trong 15-30 phút", "timing": "Khi Ringer Lactate không nâng được HA", "warning": "Chuẩn bị CVC và Noradrenaline" }
+      ]
+    }
+  ],
   "redFlags": [
     { "warning": "Đau bụng gan, nôn liên tục, lừ đừ", "significance": "Thoát huyết tương cấp", "action": "Nhập viện truyền dịch ngay", "sourceGuideline": "BYT" },
     { "warning": "HA kẹp <= 20mmHg hoặc tụt HA", "significance": "Sốc giảm thể tích", "action": "Chống sốc khẩn cấp RL 15-20 ml/kg/h", "sourceGuideline": "BYT" }

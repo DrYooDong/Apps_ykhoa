@@ -40,6 +40,12 @@ import {
   getToolsForDisease,
   VaultArticle,
 } from '../lib/vaultBridge.ts';
+import {
+  DIAGNOSTIC_CHAIN_DATABASE,
+  DiseaseReactionChainDefinition,
+  SeverityGradingItem,
+  DiseaseComplicationItem,
+} from '../../data/diagnostic-criteria-database.ts';
 
 interface Step2Props {
   kb: KnowledgeBase;
@@ -47,7 +53,7 @@ interface Step2Props {
   selectedCount: number;
   derivedCount: number;
   negatedCount: number;
-  onGoToProtocol: (diseaseId: string) => void;
+  onGoToProtocol: (diseaseId: string, options?: { gradeIdx?: number; complicationId?: string }) => void;
   onSaveToPostgres: () => void;
   onPrintReport: () => void;
   onOpenVaultDrawer?: (diseaseName?: string, query?: string, khoCode?: string) => void;
@@ -88,6 +94,26 @@ export const Step2Analysis: React.FC<Step2Props> = ({
   };
 
   const top = results && results.length > 0 ? results[0] : null;
+
+  // Match full chain from DIAGNOSTIC_CHAIN_DATABASE (Enriched CDSS + Kho Chẩn Đoán)
+  const activeChain: DiseaseReactionChainDefinition | undefined = useMemo(() => {
+    if (!top) return undefined;
+    if (DIAGNOSTIC_CHAIN_DATABASE[top.b.id]) {
+      return DIAGNOSTIC_CHAIN_DATABASE[top.b.id];
+    }
+    const cleanName = top.b.ten.toLowerCase().trim();
+    const cleanIcd = top.b.icd.toUpperCase().trim();
+    for (const [, c] of Object.entries(DIAGNOSTIC_CHAIN_DATABASE)) {
+      if (
+        c.icdCode === cleanIcd ||
+        c.diseaseName.toLowerCase().trim() === cleanName ||
+        (c.icdPrefixes && c.icdPrefixes.includes(cleanIcd))
+      ) {
+        return c;
+      }
+    }
+    return undefined;
+  }, [top]);
 
   // Calculate Clinical Risk Score
   const riskScore: ClinicalRiskScore = useMemo(() => {
@@ -536,7 +562,7 @@ export const Step2Analysis: React.FC<Step2Props> = ({
           </div>
 
           {/* Details */}
-          <div className="md:col-span-8 flex flex-col gap-2">
+          <div className="md:col-span-8 flex flex-col gap-2.5">
             <div className="flex flex-wrap items-center gap-2">
               <span className="px-2 py-0.5 rounded text-[10px] font-bold tracking-wide uppercase bg-blue-50 text-blue-700 border border-blue-200">
                 NGHĨ NHIỀU NHẤT
@@ -558,6 +584,7 @@ export const Step2Analysis: React.FC<Step2Props> = ({
               )}
             </div>
 
+            {/* Title - Clean Disease Name Only */}
             <h3 className="font-display text-xl sm:text-2xl font-bold text-slate-800 tracking-tight">
               {top.b.ten}
             </h3>
@@ -578,201 +605,478 @@ export const Step2Analysis: React.FC<Step2Props> = ({
               </div>
             )}
 
-            {/* Matched Evidence Breakdown */}
-            <div className="mt-2">
-              <span className="text-xs font-bold text-slate-800 uppercase tracking-wider block mb-1.5">
-                Bằng chứng khớp ({top.matched.length} dữ kiện):
-              </span>
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
-                {top.matched.map((m, idx) => {
-                  const roleConfig = ROLE_LABELS[m.role];
-                  return (
-                    <li
-                      key={idx}
-                      className="p-2 bg-slate-50 border border-slate-200 rounded-md text-xs flex items-center justify-between gap-2"
-                    >
-                      <div className="flex items-center gap-1.5 truncate">
-                        <span className="font-medium text-slate-800 truncate">{m.tc.ten}</span>
-                        <span className={`text-[10px] px-1.5 py-0.2 rounded font-medium ${roleConfig.badgeClass}`}>
-                          {roleConfig.label}
-                        </span>
-                        <span className="text-[10px] text-slate-400 italic">· {m.via}</span>
-                      </div>
-                      <b className="font-mono-custom text-blue-600 shrink-0">+{m.w}</b>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-
-            {/* Missing criteria to confirm */}
-            {top.missing.length > 0 && (
-              <div className="mt-2 p-2.5 bg-amber-50 border border-amber-200 rounded-md text-xs text-slate-800">
-                <b className="text-amber-800">Để củng cố chẩn đoán, ưu tiên tìm thêm: </b>
-                <span className="text-slate-700">
-                  {top.missing
-                    .sort((a, b) => b.w - a.w)
-                    .slice(0, 4)
-                    .map((m, idx) => (
-                      <span key={idx} className="inline-block mr-2">
-                        {m.tc.ten}{' '}
-                        <span className="font-mono-custom text-slate-500">(+{m.w})</span>
-                        {m.tc.loai.includes('cls') && (
-                          <span className="ml-0.5 text-[9px] px-1 bg-slate-200 text-slate-700 rounded font-mono-custom">
-                            CLS
-                          </span>
-                        )}
-                        {idx < 3 ? ' · ' : ''}
-                      </span>
-                    ))}
+            {/* KHỐI 1: 🔬 TIÊU CHUẨN CHẨN ĐOÁN XÁC ĐỊNH (DIAGNOSTIC CRITERIA) */}
+            <div className="mt-2 p-3.5 rounded-lg bg-slate-50/80 border border-slate-200 flex flex-col gap-2.5">
+              <div className="flex items-center justify-between gap-2 pb-2 border-b border-slate-200">
+                <span className="font-bold text-xs uppercase tracking-wider text-slate-800 flex items-center gap-1.5">
+                  <FileCheck className="w-4 h-4 text-blue-600" />
+                  <span>1. Tiêu Chuẩn Chẩn Đoán Xác Định (Diagnostic Criteria)</span>
                 </span>
-              </div>
-            )}
-
-            {/* 3-Vault Companion Widget: Kho Công cụ (CC), Kho ICD-10 & Kho CDSS */}
-            <div className="mt-3 p-3 bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50/20 border border-slate-200 rounded-lg flex flex-col gap-2.5 text-xs shadow-2xs">
-              <div className="flex items-center justify-between border-b border-slate-200/80 pb-1.5">
-                <span className="font-bold text-slate-800 flex items-center gap-1.5 text-[11.5px]">
-                  <Sparkles className="w-3.5 h-3.5 text-blue-600" />
-                  <span>Trợ thủ Lâm sàng & Pháp lý BHYT Đồng hành</span>
-                </span>
-                <span className="text-[10.5px] font-mono-custom text-slate-500">
-                  Chuẩn hóa theo mã {top.b.icd}
-                </span>
-              </div>
-
-              {/* Row 1: Matched Clinical Tools (Kho CC) */}
-              <div className="flex flex-col sm:flex-row sm:items-center gap-1.5">
-                <span className="text-[11px] font-bold text-amber-800 shrink-0 flex items-center gap-1 min-w-[155px]">
-                  <span>🧮 Thang điểm lượng giá:</span>
-                </span>
-                <div className="flex items-center gap-1.5 flex-wrap">
-                  {matchedTools.length > 0 ? (
-                    matchedTools.map((t) => (
-                      <button
-                        key={t.id}
-                        type="button"
-                        onClick={() => onOpenVaultDrawer?.(undefined, t.title, 'CC')}
-                        className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white hover:bg-amber-50 text-amber-900 border border-amber-300/80 text-[11px] font-semibold transition-colors cursor-pointer shadow-2xs"
-                        title={t.snippet}
-                      >
-                        <span className="text-amber-600">◈</span>
-                        <span className="truncate max-w-[220px]">{t.title}</span>
-                      </button>
-                    ))
-                  ) : (
-                    <button
-                      type="button"
-                      onClick={() => onOpenVaultDrawer?.(undefined, undefined, 'CC')}
-                      className="text-[11px] text-slate-500 hover:text-blue-600 italic cursor-pointer"
-                    >
-                      Duyệt tất cả 19 công cụ lâm sàng →
-                    </button>
-                  )}
-                </div>
-              </div>
-
-              {/* Row 2: ICD-10 & BHYT Auditing (Kho ICD-10) */}
-              <div className="flex flex-col sm:flex-row sm:items-center gap-1.5">
-                <span className="text-[11px] font-bold text-sky-800 shrink-0 flex items-center gap-1 min-w-[155px]">
-                  <span>🏷️ Mã hóa & Hồ sơ BHYT:</span>
-                </span>
-                <div className="flex items-center gap-1.5 flex-wrap">
-                  {icd10Guides.slice(0, 3).map((g) => (
-                    <button
-                      key={g.id}
-                      type="button"
-                      onClick={() => onOpenVaultDrawer?.(undefined, g.title, 'ICD10')}
-                      className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white hover:bg-sky-50 text-sky-900 border border-sky-300/80 text-[11px] font-semibold transition-colors cursor-pointer shadow-2xs"
-                      title={g.snippet}
-                    >
-                      <span className="text-sky-600">✓</span>
-                      <span className="truncate max-w-[220px]">{g.title}</span>
-                    </button>
-                  ))}
-                  <button
-                    type="button"
-                    onClick={() => onOpenVaultDrawer?.(undefined, '50 bẫy lỗi', 'ICD10')}
-                    className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-rose-50 hover:bg-rose-100 text-rose-800 border border-rose-200 text-[10.5px] font-bold transition-colors cursor-pointer"
-                    title="Mở Sổ tay 50+ bẫy lỗi xuất toán BHYT thường gặp"
-                  >
-                    <span>🛡️ 50+ Bẫy lỗi BHYT</span>
-                  </button>
-                </div>
-              </div>
-
-              {/* Row 3: CDSS Clinical Decision Support (Kho CDSS) */}
-              {cdssAlerts.length > 0 && (
-                <div className="flex flex-col sm:flex-row sm:items-center gap-1.5">
-                  <span className="text-[11px] font-bold text-purple-800 shrink-0 flex items-center gap-1 min-w-[155px]">
-                    <span>⚡ Hỗ trợ ra quyết định (CDSS):</span>
+                {activeChain?.criteriaRule?.ruleDescription && (
+                  <span className="text-[11px] font-medium text-slate-500 hidden sm:inline truncate max-w-[320px]">
+                    {activeChain.criteriaRule.ruleDescription}
                   </span>
-                  <div className="flex items-center gap-1.5 flex-wrap">
-                    {cdssAlerts.map((c) => (
-                      <button
-                        key={c.id}
-                        type="button"
-                        onClick={() => onOpenVaultDrawer?.(undefined, c.title, 'CDSS')}
-                        className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white hover:bg-purple-50 text-purple-900 border border-purple-300/80 text-[11px] font-semibold transition-colors cursor-pointer shadow-2xs"
-                        title={c.snippet}
-                      >
-                        <span className="text-purple-600">⚡</span>
-                        <span className="truncate max-w-[240px]">{c.title}</span>
-                      </button>
-                    ))}
-                  </div>
+                )}
+              </div>
+
+              {/* Gold Standard Alert if available */}
+              {activeChain?.goldStandard && (
+                <div className="p-2.5 rounded bg-blue-50/70 border border-blue-200 text-xs text-blue-950 flex items-start gap-2">
+                  <span className="font-bold text-[11px] uppercase text-blue-800 shrink-0 mt-0.5">
+                    ★ Tiêu chuẩn vàng:
+                  </span>
+                  <span className="leading-relaxed">{activeChain.goldStandard}</span>
                 </div>
               )}
-            </div>
 
-            {/* Action Bar */}
-            <div className="flex flex-wrap items-center gap-2 mt-3 pt-3 border-t border-slate-200">
-              <button
-                id="btn-goto-protocol-top"
-                onClick={() => onGoToProtocol(top.b.id)}
-                className="flex items-center gap-1.5 px-3.5 py-1.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs rounded-md shadow-xs cursor-pointer transition-colors"
-              >
-                <span>Xem phác đồ điều trị</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </button>
+              {/* Criteria comparison items */}
+              {activeChain?.criteria && activeChain.criteria.length > 0 ? (
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  {activeChain.criteria.map((crit) => {
+                    const isMatched =
+                      top.matched.some(
+                        (m) =>
+                          m.tc.id === crit.id ||
+                          crit.label.toLowerCase().includes(m.tc.ten.toLowerCase()) ||
+                          m.tc.ten.toLowerCase().includes(crit.label.toLowerCase())
+                      ) ||
+                      (crit.type === 'mandatory' && top.pct >= 50);
 
-              <button
-                type="button"
-                onClick={() => onOpenVaultDrawer?.(top.b.ten, top.b.icd)}
-                className="flex items-center gap-1.5 px-3 py-1.5 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200 font-semibold text-xs rounded-md cursor-pointer transition-colors shadow-2xs"
-                title="Tra cứu bài viết & phác đồ tương ứng từ Kho tri thức 2.400+ bài viết"
-              >
-                <BookOpen className="w-3.5 h-3.5 text-indigo-600" />
-                <span>Tra cứu Vault EBM</span>
-              </button>
-
-
-
-              <button
-                id="btn-print-report"
-                onClick={onPrintReport}
-                className="flex items-center gap-1.5 px-3 py-1.5 bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 font-medium text-xs rounded-md cursor-pointer transition-colors"
-              >
-                <Printer className="w-3.5 h-3.5" />
-                <span>In báo cáo / Tải PDF</span>
-              </button>
-
-              {results.length > 1 && (
-                <button
-                  type="button"
-                  onClick={() => setShowMatrix(!showMatrix)}
-                  className="flex items-center gap-1 px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium text-xs rounded-md cursor-pointer transition-colors"
-                >
-                  <Columns3 className="w-3.5 h-3.5 text-slate-500" />
-                  <span>{showMatrix ? 'Ẩn ma trận so sánh' : 'So sánh đối đầu'}</span>
-                </button>
+                    return (
+                      <div
+                        key={crit.id}
+                        className={`p-2.5 rounded-md border text-xs flex flex-col gap-1 transition-all ${
+                          isMatched
+                            ? 'bg-emerald-50/60 border-emerald-300 text-slate-800 shadow-2xs'
+                            : 'bg-white border-slate-200 text-slate-700'
+                        }`}
+                      >
+                        <div className="flex items-center justify-between gap-1.5">
+                          <div className="flex items-center gap-1.5 truncate">
+                            <span
+                              className={`px-1.5 py-0.2 rounded text-[10px] font-bold uppercase shrink-0 ${
+                                crit.type === 'mandatory'
+                                  ? 'bg-rose-100 text-rose-800 border border-rose-200'
+                                  : crit.type === 'major'
+                                  ? 'bg-blue-100 text-blue-800 border border-blue-200'
+                                  : crit.type === 'lab'
+                                  ? 'bg-purple-100 text-purple-800 border border-purple-200'
+                                  : 'bg-slate-100 text-slate-700'
+                              }`}
+                            >
+                              {crit.type === 'mandatory'
+                                ? 'Bắt buộc'
+                                : crit.type === 'major'
+                                ? 'Chính'
+                                : crit.type === 'lab'
+                                ? 'CLS'
+                                : 'Phụ'}
+                            </span>
+                            <span className="font-semibold text-slate-900 truncate" title={crit.label}>
+                              {crit.label}
+                            </span>
+                          </div>
+                          {isMatched ? (
+                            <span className="px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold text-[10px] shrink-0 flex items-center gap-0.5">
+                              <Check className="w-3 h-3 stroke-[2.5]" />
+                              <span>Đã khớp</span>
+                            </span>
+                          ) : (
+                            <span className="px-1.5 py-0.5 rounded bg-slate-100 text-slate-500 text-[10px] shrink-0">
+                              Cần tìm thêm
+                            </span>
+                          )}
+                        </div>
+                        {crit.description && (
+                          <div className="text-[11px] text-slate-600 leading-normal pl-0.5">
+                            {crit.description}
+                          </div>
+                        )}
+                        {crit.labThreshold && (
+                          <div className="text-[10.5px] font-mono-custom text-purple-700 font-medium">
+                            Ngưỡng: {crit.labThreshold}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              ) : (
+                /* Fallback to simple matched list if no activeChain criteria */
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
+                  {top.matched.map((m, idx) => {
+                    const roleConfig = ROLE_LABELS[m.role];
+                    return (
+                      <li
+                        key={idx}
+                        className="p-2 bg-white border border-slate-200 rounded-md text-xs flex items-center justify-between gap-2 shadow-2xs"
+                      >
+                        <div className="flex items-center gap-1.5 truncate">
+                          <span className="font-medium text-slate-800 truncate">{m.tc.ten}</span>
+                          <span className={`text-[10px] px-1.5 py-0.2 rounded font-medium ${roleConfig.badgeClass}`}>
+                            {roleConfig.label}
+                          </span>
+                          <span className="text-[10px] text-slate-400 italic">· {m.via}</span>
+                        </div>
+                        <b className="font-mono-custom text-blue-600 shrink-0">+{m.w}</b>
+                      </li>
+                    );
+                  })}
+                </ul>
               )}
 
-              <span className="font-mono-custom text-[11px] text-slate-400 ml-auto">
-                Khớp {top.matched.length}/{top.b.dd.length} tiêu chuẩn trong kho
-              </span>
+              {/* Missing criteria to confirm */}
+              {top.missing.length > 0 && (
+                <div className="p-2.5 bg-amber-50 border border-amber-200 rounded-md text-xs text-slate-800">
+                  <b className="text-amber-800">Để củng cố chẩn đoán, ưu tiên tìm thêm: </b>
+                  <span className="text-slate-700">
+                    {top.missing
+                      .sort((a, b) => b.w - a.w)
+                      .slice(0, 4)
+                      .map((m, idx) => (
+                        <span key={idx} className="inline-block mr-2">
+                          {m.tc.ten}{' '}
+                          <span className="font-mono-custom text-slate-500">(+{m.w})</span>
+                          {m.tc.loai.includes('cls') && (
+                            <span className="ml-0.5 text-[9px] px-1 bg-slate-200 text-slate-700 rounded font-mono-custom">
+                              CLS
+                            </span>
+                          )}
+                          {idx < 3 ? ' · ' : ''}
+                        </span>
+                      ))}
+                  </span>
+                </div>
+              )}
             </div>
           </div>
+        </div>
+
+        {/* KHỐI 2: 📊 TIÊU CHUẨN PHÂN ĐỘ LÂM SÀNG & PHÁC ĐỒ TƯƠNG ỨNG (SEVERITY GRADING) */}
+        <div className="mt-5 p-4 rounded-lg bg-slate-50/90 border border-slate-200">
+          <div className="flex items-center justify-between gap-2 mb-3 pb-2 border-b border-slate-200">
+            <span className="font-bold text-xs uppercase tracking-wider text-slate-800 flex items-center gap-1.5">
+              <Layers className="w-4 h-4 text-blue-600" />
+              <span>2. Tiêu Chuẩn Phân Độ Lâm Sàng & Phác Đồ Tương Ứng (Severity Grading)</span>
+            </span>
+            <span className="text-[11px] text-slate-500 hidden sm:inline">
+              Bấm chọn phác đồ để nạp trực tiếp vào Bước 4
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+            {(activeChain?.severityGrading && activeChain.severityGrading.length > 0
+              ? activeChain.severityGrading
+              : [
+                  {
+                    grade: 'Mức độ 1: Thể Nhẹ / Ngoại trú',
+                    severity: 'mild' as const,
+                    criteria: 'Triệu chứng khởi phát nhẹ đến vừa, sinh hiệu ổn định.',
+                    triage: 'Tuyến 1: Ngoại trú / Trạm Y tế',
+                    primaryAction: 'Dùng thuốc đường uống, bù nước điện giải Oresol, theo dõi sát.',
+                    targetVitals: 'Sinh hiệu trong giới hạn bình thường',
+                  },
+                  {
+                    grade: 'Mức độ 2: Thể Trung bình / Nội trú',
+                    severity: 'moderate' as const,
+                    criteria: 'Có dấu hiệu cảnh báo hoặc cơ địa nguy cơ cao.',
+                    triage: 'Tuyến 2: Nội trú / Bệnh viện Huyện',
+                    primaryAction: 'Nhập viện theo dõi, bù dịch tĩnh mạch và xét nghiệm định kỳ.',
+                    targetVitals: 'Duy trì tưới máu tạng an toàn',
+                  },
+                  {
+                    grade: 'Mức độ 3: Thể Nặng / Cấp cứu ICU',
+                    severity: 'critical' as const,
+                    criteria: 'Sốc, suy hô hấp, xuất huyết nặng hoặc suy tạng.',
+                    triage: 'Tuyến 3: Khoa Hồi sức tích cực (ICU)',
+                    primaryAction: 'Hồi sức sốc khẩn cấp, thở oxy, bù dịch nhanh và vận mạch.',
+                    targetVitals: 'HATT ≥ 90 mmHg, MAP ≥ 65 mmHg',
+                  },
+                ]
+            ).map((gradeItem, gIdx) => {
+              const isCritical = gradeItem.severity === 'critical' || gradeItem.severity === 'severe';
+              const isModerate = gradeItem.severity === 'moderate';
+
+              return (
+                <div
+                  key={gIdx}
+                  className={`p-3.5 rounded-lg border flex flex-col justify-between transition-all ${
+                    isCritical
+                      ? 'bg-rose-50/40 border-rose-200 hover:border-rose-400'
+                      : isModerate
+                      ? 'bg-amber-50/40 border-amber-200 hover:border-amber-400'
+                      : 'bg-white border-slate-200 hover:border-blue-300'
+                  } shadow-2xs`}
+                >
+                  <div>
+                    <div className="flex items-center justify-between gap-1 mb-2">
+                      <span
+                        className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider ${
+                          isCritical
+                            ? 'bg-rose-100 text-rose-800 border border-rose-200'
+                            : isModerate
+                            ? 'bg-amber-100 text-amber-800 border border-amber-200'
+                            : 'bg-blue-100 text-blue-800 border border-blue-200'
+                        }`}
+                      >
+                        {gradeItem.severity}
+                      </span>
+                      <span className="text-[10.5px] font-semibold text-slate-500 truncate max-w-[140px]">
+                        {gradeItem.triage.split(':')[0]}
+                      </span>
+                    </div>
+
+                    <h4 className="font-bold text-slate-900 text-xs sm:text-sm mb-1.5 leading-snug">
+                      {gradeItem.grade}
+                    </h4>
+
+                    <div className="space-y-1.5 text-xs text-slate-600 mb-3">
+                      <div>
+                        <b className="text-slate-800 text-[11px]">Tiêu chuẩn xếp độ: </b>
+                        <span className="text-[11.5px]">{gradeItem.criteria}</span>
+                      </div>
+                      <div>
+                        <b className="text-slate-800 text-[11px]">Xử trí đầu tay: </b>
+                        <span className="text-[11.5px] text-slate-700">{gradeItem.primaryAction}</span>
+                      </div>
+                      {gradeItem.targetVitals && (
+                        <div className="text-[11px] font-mono-custom text-slate-500">
+                          🎯 Mục tiêu: {gradeItem.targetVitals}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={() => onGoToProtocol(top.b.id, { gradeIdx: gIdx })}
+                    className={`w-full py-2 px-3 rounded-md text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer shadow-xs ${
+                      isCritical
+                        ? 'bg-rose-600 hover:bg-rose-700 text-white'
+                        : isModerate
+                        ? 'bg-amber-600 hover:bg-amber-700 text-white'
+                        : 'bg-blue-600 hover:bg-blue-700 text-white'
+                    }`}
+                  >
+                    <span>Xem Phác Đồ {gradeItem.grade.split(':')[0]}</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* KHỐI 3: ⚠️ TIÊU CHUẨN BIẾN CHỨNG ĐE DỌA SINH MẠNG & Y LỆNH CẤP CỨU */}
+        {activeChain?.complications && activeChain.complications.length > 0 && (
+          <div className="mt-5 p-4 rounded-lg bg-rose-50/40 border border-rose-200">
+            <div className="flex items-center justify-between gap-2 mb-3 pb-2 border-b border-rose-200/80">
+              <div className="flex items-center gap-2">
+                <ShieldAlert className="w-4 h-4 text-rose-600 animate-pulse" />
+                <span className="font-bold text-xs uppercase tracking-wider text-rose-900">
+                  3. Tiêu Chuẩn Biến Chứng Đe Dọa Sinh Mạng & Y Lệnh Cấp Cứu ({activeChain.complications.length} Biến chứng)
+                </span>
+              </div>
+              <span className="text-[11px] font-semibold text-rose-700 hidden sm:inline">
+                Bấm để nạp trọn bộ Y Lệnh Cấp Cứu vào Bước 4
+              </span>
+            </div>
+
+            <div className="space-y-2.5">
+              {activeChain.complications.map((comp) => (
+                <div
+                  key={comp.id}
+                  className="p-3 bg-white rounded-lg border border-rose-200 hover:border-rose-400 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-2xs transition-all"
+                >
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 flex-wrap mb-1">
+                      <span className="font-bold text-xs sm:text-sm text-slate-900">
+                        {comp.name}
+                      </span>
+                      <span
+                        className={`px-1.5 py-0.2 rounded text-[10px] font-bold uppercase ${
+                          comp.severity === 'critical'
+                            ? 'bg-rose-100 text-rose-800 border border-rose-200'
+                            : 'bg-orange-100 text-orange-800 border border-orange-200'
+                        }`}
+                      >
+                        {comp.severity === 'critical' ? 'Nguy kịch' : 'Cấp cứu'}
+                      </span>
+                      {comp.orderSet && comp.orderSet.length > 0 && (
+                        <span className="px-1.5 py-0.2 rounded bg-purple-50 text-purple-700 border border-purple-200 text-[10px] font-semibold">
+                          ⚡ {comp.orderSet.length} Y lệnh khẩn
+                        </span>
+                      )}
+                    </div>
+
+                    <div className="text-xs text-slate-600 space-y-0.5">
+                      <div>
+                        <b className="text-rose-800 text-[11px]">Dấu hiệu kích hoạt: </b>
+                        <span className="text-[11.5px]">{comp.triggerCriteria}</span>
+                      </div>
+                      <div>
+                        <b className="text-slate-800 text-[11px]">Xử trí giờ vàng: </b>
+                        <span className="text-[11.5px] text-slate-700">{comp.actionSummary}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={() =>
+                      onGoToProtocol(top.b.id, {
+                        gradeIdx: activeChain.severityGrading?.length ? activeChain.severityGrading.length - 1 : 0,
+                        complicationId: comp.id,
+                      })
+                    }
+                    className="px-3 py-1.5 rounded-md text-xs font-bold bg-rose-600 hover:bg-rose-700 text-white flex items-center justify-center gap-1.5 cursor-pointer shadow-xs transition-all shrink-0 self-stretch sm:self-center"
+                  >
+                    <Flame className="w-3.5 h-3.5" />
+                    <span>Xem Phác Đồ Cấp Cứu ⚡</span>
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* 3-Vault Companion Widget: Kho Công cụ (CC), Kho ICD-10 & Kho CDSS */}
+        <div className="mt-5 p-3.5 bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50/20 border border-slate-200 rounded-lg flex flex-col gap-2.5 text-xs shadow-2xs">
+          <div className="flex items-center justify-between border-b border-slate-200/80 pb-1.5">
+            <span className="font-bold text-slate-800 flex items-center gap-1.5 text-[11.5px]">
+              <Sparkles className="w-3.5 h-3.5 text-blue-600" />
+              <span>Trợ thủ Lâm sàng & Pháp lý BHYT Đồng hành</span>
+            </span>
+            <span className="text-[10.5px] font-mono-custom text-slate-500">
+              Chuẩn hóa theo mã {top.b.icd}
+            </span>
+          </div>
+
+          {/* Row 1: Matched Clinical Tools (Kho CC) */}
+          <div className="flex flex-col sm:flex-row sm:items-center gap-1.5">
+            <span className="text-[11px] font-bold text-amber-800 shrink-0 flex items-center gap-1 min-w-[155px]">
+              <span>🧮 Thang điểm lượng giá:</span>
+            </span>
+            <div className="flex items-center gap-1.5 flex-wrap">
+              {matchedTools.length > 0 ? (
+                matchedTools.map((t) => (
+                  <button
+                    key={t.id}
+                    type="button"
+                    onClick={() => onOpenVaultDrawer?.(undefined, t.title, 'CC')}
+                    className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white hover:bg-amber-50 text-amber-900 border border-amber-300/80 text-[11px] font-semibold transition-colors cursor-pointer shadow-2xs"
+                    title={t.snippet}
+                  >
+                    <span className="text-amber-600">◈</span>
+                    <span className="truncate max-w-[220px]">{t.title}</span>
+                  </button>
+                ))
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => onOpenVaultDrawer?.(undefined, undefined, 'CC')}
+                  className="text-[11px] text-slate-500 hover:text-blue-600 italic cursor-pointer"
+                >
+                  Duyệt tất cả 19 công cụ lâm sàng →
+                </button>
+              )}
+            </div>
+          </div>
+
+          {/* Row 2: ICD-10 & BHYT Auditing (Kho ICD-10) */}
+          <div className="flex flex-col sm:flex-row sm:items-center gap-1.5">
+            <span className="text-[11px] font-bold text-sky-800 shrink-0 flex items-center gap-1 min-w-[155px]">
+              <span>🏷️ Mã hóa & Hồ sơ BHYT:</span>
+            </span>
+            <div className="flex items-center gap-1.5 flex-wrap">
+              {icd10Guides.slice(0, 3).map((g) => (
+                <button
+                  key={g.id}
+                  type="button"
+                  onClick={() => onOpenVaultDrawer?.(undefined, g.title, 'ICD10')}
+                  className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white hover:bg-sky-50 text-sky-900 border border-sky-300/80 text-[11px] font-semibold transition-colors cursor-pointer shadow-2xs"
+                  title={g.snippet}
+                >
+                  <span className="text-sky-600">✓</span>
+                  <span className="truncate max-w-[220px]">{g.title}</span>
+                </button>
+              ))}
+              <button
+                type="button"
+                onClick={() => onOpenVaultDrawer?.(undefined, '50 bẫy lỗi', 'ICD10')}
+                className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-rose-50 hover:bg-rose-100 text-rose-800 border border-rose-200 text-[10.5px] font-bold transition-colors cursor-pointer"
+                title="Mở Sổ tay 50+ bẫy lỗi xuất toán BHYT thường gặp"
+              >
+                <span>🛡️ 50+ Bẫy lỗi BHYT</span>
+              </button>
+            </div>
+          </div>
+
+          {/* Row 3: CDSS Clinical Decision Support (Kho CDSS) */}
+          {cdssAlerts.length > 0 && (
+            <div className="flex flex-col sm:flex-row sm:items-center gap-1.5">
+              <span className="text-[11px] font-bold text-purple-800 shrink-0 flex items-center gap-1 min-w-[155px]">
+                <span>⚡ Hỗ trợ ra quyết định (CDSS):</span>
+              </span>
+              <div className="flex items-center gap-1.5 flex-wrap">
+                {cdssAlerts.map((c) => (
+                  <button
+                    key={c.id}
+                    type="button"
+                    onClick={() => onOpenVaultDrawer?.(undefined, c.title, 'CDSS')}
+                    className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white hover:bg-purple-50 text-purple-900 border border-purple-300/80 text-[11px] font-semibold transition-colors cursor-pointer shadow-2xs"
+                    title={c.snippet}
+                  >
+                    <span className="text-purple-600">⚡</span>
+                    <span className="truncate max-w-[240px]">{c.title}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* Action Bar */}
+        <div className="flex flex-wrap items-center gap-2 mt-4 pt-3.5 border-t border-slate-200">
+          <button
+            id="btn-goto-protocol-top"
+            onClick={() => onGoToProtocol(top.b.id)}
+            className="flex items-center gap-1.5 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs rounded-md shadow-xs cursor-pointer transition-colors"
+          >
+            <span>Xem toàn bộ phác đồ điều trị</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </button>
+
+          <button
+            type="button"
+            onClick={() => onOpenVaultDrawer?.(top.b.ten, top.b.icd)}
+            className="flex items-center gap-1.5 px-3.5 py-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200 font-semibold text-xs rounded-md cursor-pointer transition-colors shadow-2xs"
+            title="Tra cứu bài viết & phác đồ tương ứng từ Kho tri thức 2.400+ bài viết"
+          >
+            <BookOpen className="w-3.5 h-3.5 text-indigo-600" />
+            <span>Tra cứu Vault EBM</span>
+          </button>
+
+          <button
+            id="btn-print-report"
+            onClick={onPrintReport}
+            className="flex items-center gap-1.5 px-3.5 py-2 bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 font-medium text-xs rounded-md cursor-pointer transition-colors"
+          >
+            <Printer className="w-3.5 h-3.5" />
+            <span>In báo cáo / Tải PDF</span>
+          </button>
+
+          {results.length > 1 && (
+            <button
+              type="button"
+              onClick={() => setShowMatrix(!showMatrix)}
+              className="flex items-center gap-1 px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium text-xs rounded-md cursor-pointer transition-colors"
+            >
+              <Columns3 className="w-3.5 h-3.5 text-slate-500" />
+              <span>{showMatrix ? 'Ẩn ma trận so sánh' : 'So sánh đối đầu'}</span>
+            </button>
+          )}
+
         </div>
       </div>
 

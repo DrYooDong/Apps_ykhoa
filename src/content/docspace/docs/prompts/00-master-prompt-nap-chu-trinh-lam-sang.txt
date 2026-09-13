@@ -113,24 +113,57 @@ Xuất một khối JSON hợp lệ duy nhất có cấu trúc chính xác sau:
       \"severity\": \"mild\",
       \"criteria\": \"[Tiêu chuẩn lâm sàng/CLS xác nhận phân độ 1]\",
       \"triage\": \"[Nơi tiếp nhận: Ngoại trú / Trạm y tế / Phòng khám]\",
-      \"primaryAction\": \"[Hành vi can thiệp: thuốc uống, bù dịch Oresol, hẹn khám lại]\",
-      \"targetVitals\": \"[Mục tiêu sinh hiệu]\"
+      \"primaryAction\": \"[Hành vi can thiệp: thuốc uống, bù dịch Oresol, dặn dò cờ đỏ, hẹn khám lại]\",
+      \"targetVitals\": \"[Mục tiêu sinh hiệu]\",
+      \"protocol\": {
+        \"title\": \"[Tên phác đồ phân độ 1]\",
+        \"tuyen\": [\"[Bước 1 quy trình xử trí ngoại trú]\", \"[Bước 2 hướng dẫn bù dịch uống và hạ sốt]\"],
+        \"drugs\": [
+          [\"[Tên thuốc ngoại trú 1]\", \"[Liều lượng chính xác PO]\", \"[Ghi chú / điều kiện sử dụng]\"],
+          [\"[Tên thuốc / Oresol 2]\", \"[Liều lượng và cách pha]\", \"[Ghi chú sử dụng]\"]
+        ],
+        \"monitoring\": [\"[Xét nghiệm CTM và chỉ tiêu theo dõi ngoại trú hàng ngày]\"],
+        \"cautions\": [\"[Chống chỉ định tuyệt đối NSAIDs/Aspirin và cờ đỏ cần tái khám khẩn]\"]
+      }
     },
     {
-      \"grade\": \"[Tên phân độ 2: Thể cảnh báo / Nhập viện]\",
+      \"grade\": \"[Tên phân độ 2: Thể cảnh báo / Nội trú]\",
       \"severity\": \"moderate\",
       \"criteria\": \"[Dấu hiệu cảnh báo: đau bụng gan, nôn nhiều, Hct tăng cao, tiểu cầu tụt...]\",
-      \"triage\": \"[Nơi tiếp nhận: Nội trú 100% / Bệnh viện Huyện]\",
+      \"triage\": \"[Nơi tiếp nhận: Nội trú 100% / Khoa Truyền nhiễm BV Huyện]\",
       \"primaryAction\": \"[Hành vi can thiệp: bù dịch tĩnh mạch Ringer Lactate bậc thang mL/kg/h]\",
-      \"targetVitals\": \"[Mục tiêu bài niệu và sinh hiệu]\"
+      \"targetVitals\": \"[Mục tiêu bài niệu và sinh hiệu]\",
+      \"protocol\": {
+        \"title\": \"[Tên phác đồ phân độ 2]\",
+        \"tuyen\": [\"[Bước 1 nhập viện & đặt đường truyền lớn]\", \"[Bước 2 bù dịch bậc thang và đánh giá đáp ứng]\"],
+        \"drugs\": [
+          [\"[Dịch truyền tinh thể đẳng trương]\", \"[Tốc độ bậc thang 6-7 -> 5 -> 3 -> 1.5 mL/kg/h]\", \"[Điều kiện giảm bậc]\"],
+          [\"[Thuốc phối hợp / bảo vệ dạ dày]\", \"[Liều tiêm / uống]\", \"[Ghi chú]\"]
+        ],
+        \"monitoring\": [\"[Theo dõi Mạch, HA, Hiệu áp, Hct mỗi 2-4 giờ và lượng nước tiểu]\"],
+        \"cautions\": [\"[Nhận diện sớm hiệu áp kẹp <= 20 mmHg là dọa sốc; không truyền dịch quá 48h]\"]
+      }
     },
     {
-      \"grade\": \"[Tên phân độ 3: Thể nặng / Sốc / Suy tạng]\",
+      \"grade\": \"[Tên phân độ 3: Thể nặng / Sốc / Suy tạng - ICU]\",
       \"severity\": \"critical\",
       \"criteria\": \"[Huyết động suy sụp: HA kẹp, tụt HA, sốc, xuất huyết tạng nặng, men gan >= 1000]\",
       \"triage\": \"[Nơi tiếp nhận: Hồi sức cấp cứu (ICU) / BV Tỉnh]\",
-      \"primaryAction\": \"[Hồi sức khẩn cấp: chống sốc 15-20 mL/kg/h, Cao phân tử, truyền máu]\",
-      \"targetVitals\": \"[Mục tiêu hồi sức MAP >= 65 mmHg, HATT >= 90, SpO2 >= 95%]\"
+      \"primaryAction\": \"[Hồi sức khẩn cấp: chống sốc 15-20 mL/kg/h, Cao phân tử, truyền máu, đo CVP]\",
+      \"targetVitals\": \"[Mục tiêu hồi sức MAP >= 65 mmHg, HATT >= 90, SpO2 >= 95%]\",
+      \"protocol\": {
+        \"title\": \"[Tên phác đồ hồi sức cấp cứu sốc / ICU]\",
+        \"tuyen\": [\"[Bước 1 đảm bảo hô hấp thở oxy / đặt NKQ]\", \"[Bước 2 xả dịch chống sốc giờ đầu & chuyển cao phân tử]\"],
+        \"drugs\": [
+          [\"[Dịch tinh thể chống sốc]\", \"[15-20 mL/kg/h IV trong 1h đầu (hoặc 20 mL/kg/15p nếu HA=0)]\", \"[Đầu tay giờ vàng]\"],
+          [\"[Dung dịch Cao phân tử]\", \"[10-15-20 mL/kg/h IV]\", \"[Chỉ định khi kháng tinh thể hoặc Hct >= 40%]\"],
+          [\"[Khối hồng cầu lắng]\", \"[5-10 mL/kg IV]\", \"[Chỉ định khi có xuất huyết nặng hoặc Hct tụt]\"],
+          [\"[Thuốc vận mạch]\", \"[Liều truyền tĩnh mạch liên tục qua bơm tiêm điện]\", \"[Chỉ định khi đủ dịch lòng mạch]\"],
+          [\"[Thuốc hỗ trợ khác]\", \"[Liều lượng]\", \"[Ghi chú]\"]
+        ],
+        \"monitoring\": [\"[Sinh hiệu mỗi 15-30p, Hct mỗi 1-2h, CVP, Khí máu động mạch, Lactate, nước tiểu/h]\"],
+        \"cautions\": [\"[4 Tiêu chuẩn ngừng dịch truyền sau ra sốc 24-48h; Phòng phù phổi cấp ngày 6-7]\"]
+      }
     }
   ],
   \"protocol\": {
@@ -199,18 +232,26 @@ Xuất một khối JSON hợp lệ duy nhất có cấu trúc chính xác sau:
   },
   \"complications\": [
     {
-      \"name\": \"[Tên biến chứng cấp tính nguy hiểm nhất: ví dụ Sốc thoát huyết tương / Sốc tim]\",
+      \"name\": \"[Tên biến chứng cấp tính nguy hiểm nhất: ví dụ Sốc mất bù HA=0 / Sốc tim]\",
       \"timeframe\": \"acute_24h\",
       \"warningSigns\": \"[Dấu hiệu cảnh báo nhận diện sớm tại giường bệnh]\",
       \"preventiveAction\": \"[Hành động xử trí can thiệp ngăn chặn tử vong]\",
-      \"onCallAlertText\": \"[Y LỆNH BÁO ĐỘNG ĐỎ NGẮN GỌN CHO BÁC SĨ/ĐIỀU DƯỠNG TRỰC: ví dụ SỐC: Thở oxy, xả dịch 15-20 mL/kg/h khẩn!]\"
+      \"onCallAlertText\": \"[Y LỆNH BÁO ĐỘNG ĐỎ NGẮN GỌN CHO BÁC SĨ/ĐIỀU DƯỠNG TRỰC: ví dụ SỐC: Thở oxy, xả dịch 15-20 mL/kg/h khẩn!]\",
+      \"orderSet\": [
+        { \"drug\": \"[Tên can thiệp / thuốc 1]\", \"dosage\": \"[Liều lượng cụ thể]\", \"note\": \"[Ghi chú lâm sàng]\" },
+        { \"drug\": \"[Tên thuốc 2]\", \"dosage\": \"[Liều lượng cụ thể]\", \"note\": \"[Ghi chú lâm sàng]\" }
+      ]
     },
     {
       \"name\": \"[Tên biến chứng nguy hiểm 2: ví dụ Xuất huyết nặng / Phù phổi cấp do quá tải dịch]\",
       \"timeframe\": \"subacute_7d\",
       \"warningSigns\": \"[Dấu hiệu nhận diện]\",
       \"preventiveAction\": \"[Hành vi can thiệp]\",
-      \"onCallAlertText\": \"[Y lệnh báo động khẩn cấp]\"
+      \"onCallAlertText\": \"[Y lệnh báo động khẩn cấp]\",
+      \"orderSet\": [
+        { \"drug\": \"[Tên can thiệp / thuốc 1]\", \"dosage\": \"[Liều lượng cụ thể]\", \"note\": \"[Ghi chú lâm sàng]\" },
+        { \"drug\": \"[Tên thuốc 2]\", \"dosage\": \"[Liều lượng cụ thể]\", \"note\": \"[Ghi chú lâm sàng]\" }
+      ]
     }
   ],
   \"monitoringLabs\": [

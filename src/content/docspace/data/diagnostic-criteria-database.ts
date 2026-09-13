@@ -25,12 +25,19 @@ export interface DrugChainOption {
   contraindications?: string[];
 }
 
+export interface ComplicationOrderItem {
+  drug: string;
+  dosage: string;
+  note: string;
+}
+
 export interface DiseaseComplicationItem {
   name: string;
   timeframe: 'acute_24h' | 'subacute_7d' | 'chronic';
   warningSigns: string;
   preventiveAction: string;
   onCallAlertText: string;
+  orderSet?: ComplicationOrderItem[];
 }
 
 export interface VaultPathwayLink {
@@ -40,6 +47,17 @@ export interface VaultPathwayLink {
   searchKeyword: string;
 }
 
+export interface GradedProtocol {
+  title?: string;
+  tuyen?: string[];
+  initialManagement?: string[];
+  drugs?: Array<[string, string, string]>; // [Tên thuốc / Dịch truyền, Liều & Đường dùng, Ghi chú / Điều kiện]
+  firstLineDrugs?: DrugChainOption[];
+  secondLineDrugs?: DrugChainOption[];
+  monitoring?: string[];
+  cautions?: string[];
+}
+
 export interface SeverityGradingItem {
   grade: string;
   severity: 'mild' | 'moderate' | 'severe' | 'critical';
@@ -47,6 +65,7 @@ export interface SeverityGradingItem {
   triage: string;
   primaryAction: string;
   targetVitals?: string;
+  protocol?: GradedProtocol;
 }
 
 export interface DiseaseReactionChainDefinition {
@@ -573,64 +592,7 @@ export const DIAGNOSTIC_CHAIN_DATABASE: Record<string, DiseaseReactionChainDefin
     ]
   },
 
-  // ─────────────────────────────────────────────────────────────────────────────
-  // 9. SỐT XUẤT HUYẾT DENGUE - A90-A91
-  // ─────────────────────────────────────────────────────────────────────────────
-  'sot_xuat_huyet': {
-    icdCode: 'A91',
-    icdPrefixes: ['A90', 'A91'],
-    diseaseName: 'Sốt Xuất Huyết Dengue & Cảnh Báo / Nặng',
-    specialty: 'Truyền Nhiễm - Cấp Cứu',
-    severity: 'urgent',
-    summary: 'Bệnh truyền nhiễm cấp tính do virus Dengue lây truyền qua muỗi Aedes. Phân độ theo WHO/Bộ Y Tế: (1) SXH Dengue; (2) SXH Dengue có dấu hiệu cảnh báo; (3) SXH Dengue nặng (Sốc, Xuất huyết nặng, Suy tạng).',
-    goldStandard: 'Xét nghiệm NS1 Ag dương tính (ngày 1-5) hoặc IgM/IgG Dengue dương tính (từ ngày 5 trở đi) + Dấu hiệu lâm sàng',
-    criteriaRule: {
-      mandatoryIds: ['den_fever_and_serology'],
-      minMajorRequired: 1,
-      ruleDescription: 'Sốt cao đột ngột liên tục 2-7 ngày + NS1 Ag (+) hoặc IgM (+) HOẶC giảm tiểu cầu kèm cô đặc máu (Hct tăng)'
-    },
-    criteria: [
-      { id: 'den_fever_and_serology', type: 'mandatory', label: 'Sốt cao đột ngột liên tục 2-7 ngày + Test nhanh Dengue NS1 Ag (+) (ngày 1-5) hoặc IgM Dengue (+) (ngày 5 trở đi)', sourceGuideline: 'Bộ Y Tế 2023' },
-      { id: 'den_warning_abd', type: 'major', label: 'Dấu hiệu cảnh báo: Đau bụng nhiều và liên tục hoặc tăng cảm giác đau vùng gan', sourceGuideline: 'WHO / Bộ Y Tế' },
-      { id: 'den_warning_vomit', type: 'major', label: 'Dấu hiệu cảnh báo: Nôn ói nhiều (≥ 3 lần/12h hoặc ≥ 4 lần/24h)', sourceGuideline: 'Bộ Y Tế' },
-      { id: 'den_warning_plasma_leak', type: 'major', label: 'Dấu hiệu cảnh báo: Tràn dịch màng phổi, màng bụng phát hiện qua siêu âm hoặc phù nề thành túi mật', sourceGuideline: 'Bộ Y Tế' },
-      { id: 'den_warning_mucosal_bleed', type: 'major', label: 'Dấu hiệu cảnh báo: Xuất huyết niêm mạc (chảy máu cam, chảy máu chân răng, rong kinh, tiểu máu)', sourceGuideline: 'Bộ Y Tế' },
-      { id: 'den_warning_lethargy', type: 'major', label: 'Dấu hiệu cảnh báo: Vật vã, lừ đừ, li bì', sourceGuideline: 'Bộ Y Tế' },
-      { id: 'den_warning_hct_plt', type: 'lab', label: 'Dấu hiệu cảnh báo CLS: Hct tăng cao đồng thời Tiểu cầu giảm nhanh liên tiếp (< 100.000/μL)', labThreshold: 'PLT < 100 G/L & Hct tăng' }
-    ],
-    protocol: {
-      title: 'Phác đồ Chẩn đoán và Điều trị Sốt Xuất Huyết Dengue (Bộ Y Tế 2023 / WHO)',
-      guideline: 'Hướng dẫn chẩn đoán, điều trị Sốt xuất huyết Dengue - Quyết định Bộ Y Tế',
-      targetGoals: ['Phát hiện sớm giai đoạn nguy hiểm (ngày 3-7 của bệnh)', 'Phòng ngừa và xử trí kịp thời Sốc SXH Dengue (DSS)', 'Tránh quá tải dịch truyền trong giai đoạn tái hấp thu'],
-      initialManagement: [
-        'Xác định ngày của bệnh: Giai đoạn sốt (N1-3), Giai đoạn nguy hiểm (N4-7), Giai đoạn hồi phục (N7-10)',
-        'Đo Hct và Tiểu cầu mỗi 12-24h (mỗi 4-6h nếu có dấu hiệu cảnh báo)',
-        'Nếu có dấu hiệu cảnh báo: Bắt đầu truyền dịch tinh thể (Ringer Lactate hoặc NaCl 0.9%) 6-7 mL/kg/h trong 1-2h đầu'
-      ],
-      firstLineDrugs: [
-        { drugName: 'Paracetamol', class: 'Hạ sốt giảm đau', route: 'Uống', dosage: '10 - 15 mg/kg/lần (tối đa 1g/lần, cách nhau 4-6h, không quá 3-4g/ngày)', frequency: 'Khi sốt ≥ 38.5°C', instructions: 'TUYỆT ĐỐI KHÔNG DÙNG Aspirin, Ibuprofen hoặc các NSAID khác vì gây xuất huyết tiêu hóa nặng', isFirstLine: true },
-        { drugName: 'Oresol (Dung dịch bù nước đường uống)', class: 'Bù nước điện giải', route: 'Uống', dosage: 'Uống theo nhu cầu (1500 - 2500 mL/ngày)', frequency: 'Uống rải rác trong ngày', instructions: 'Pha đúng tỷ lệ hướng dẫn của gói Oresol', isFirstLine: true },
-        { drugName: 'Ringer Lactate / NaCl 0.9%', class: 'Dịch truyền tinh thể', route: 'Truyền tĩnh mạch', dosage: 'Truyền theo phác đồ bậc thang (6-7 mL/kg/h ➔ 5 mL/kg/h ➔ 3 mL/kg/h)', frequency: 'Điều chỉnh theo Hct và sinh hiệu', instructions: 'Chỉ định khi có Dấu hiệu cảnh báo không uống được hoặc Sốc SXH Dengue', isFirstLine: true }
-      ],
-      secondLineDrugs: [
-        { drugName: 'Dextran 40 / HES 200 6% (Dung dịch cao phân tử)', class: 'Dịch keo cao phân tử', route: 'Truyền tĩnh mạch', dosage: '10 - 15 mL/kg/h trong 1h', frequency: 'Khi sốc kéo dài / sốc tái phát', instructions: 'Chỉ định khi Sốc SXH Dengue không đáp ứng với dịch tinh thể', isFirstLine: false }
-      ],
-      supportiveCare: ['Nằm màn tránh muỗi đốt lây truyền', 'Ăn thức ăn lỏng, dễ tiêu, uống nhiều nước trái cây giàu vitamin C (nước cam, dừa)']
-    },
-    complications: [
-      { name: 'Sốc Sốt Xuất Huyết Dengue (DSS)', timeframe: 'acute_24h', warningSigns: 'Mạch nhanh nhỏ, huyết áp kẹp (hiệu số HA ≤ 20 mmHg) hoặc tụt HA, chi lạnh ẩm, tiểu ít', preventiveAction: 'Kích hoạt ngay Phác đồ chống sốc dịch truyền tinh thể 15 mL/kg/h trong 1 giờ đầu', onCallAlertText: 'BÁO ĐỘNG SỐC DENGUE (N4-N6): Mạch nhanh, HA kẹp ➔ Chống sốc dịch truyền khẩn' },
-      { name: 'Quá tải dịch truyền / Phù phổi cấp trong giai đoạn hồi phục', timeframe: 'subacute_7d', warningSigns: 'Thở nhanh, SpO2 giảm, tim nhanh, phù mi mắt, Hct giảm mạnh nhưng tiểu cầu đang tăng', preventiveAction: 'Ngừng ngay dịch truyền tĩnh mạch + Cho thở Oxy + Cân nhắc Furosemide nếu quá tải rõ', onCallAlertText: 'Dengue ngày 7 hết sốt + Khó thở: Ngừng dịch truyền ngay kiểm tra quá tải dịch' }
-    ],
-    monitoringLabs: ['Tổng phân tích tế bào máu (Hct, Tiểu cầu, Bạch cầu) mỗi sáng (mỗi 4-6h nếu nằm viện theo dõi sốc)', 'Men gan (AST, ALT) để đánh giá tổn thương gan', 'Siêu âm màng phổi và ổ bụng vào ngày thứ 5-6 phát hiện thoát huyết tương'],
-    vaultPathways: [
-      { khoCode: 'TC', khoName: 'Kho Lâm Sàng', articleTitle: 'Tiếp cận Hội chứng Sốt cấp tính & Xuất huyết dưới da', searchKeyword: 'sốt xuất huyết dengue' },
-      { khoCode: 'CD', khoName: 'Kho Tiêu Chuẩn CĐ', articleTitle: 'Phân độ Sốt Xuất Huyết Dengue theo Bộ Y Tế 2023', searchKeyword: 'phân độ dengue bộ y tế' },
-      { khoCode: 'CLS', khoName: 'Kho Cận Lâm Sàng', articleTitle: 'Theo dõi Hct, Tiểu cầu và Test nhanh NS1 Dengue', searchKeyword: 'ns1 dengue hct tiểu cầu' },
-      { khoCode: 'PDDT', khoName: 'Kho Phác Đồ', articleTitle: 'Lưu đồ Bù dịch Sốt Xuất Huyết Dengue Bộ Y Tế', searchKeyword: 'lưu đồ bù dịch dengue' },
-      { khoCode: 'DUOC', khoName: 'Kho Dược', articleTitle: 'Chống chỉ định NSAID & Nguyên tắc dùng dịch truyền trong SXH', searchKeyword: 'paracetamol ringer lactate' },
-      { khoCode: 'BC', khoName: 'Kho Biến Chứng', articleTitle: 'Xử trí Sốc SXH Dengue và Chống quá tải dịch', searchKeyword: 'sốc dengue quá tải dịch' }
-    ]
-  },
+
 
   // ─────────────────────────────────────────────────────────────────────────────
   // 10. ĐỘT QUỴ NÃO CẤP (STROKE - NHỒI MÁU / XUẤT HUYẾT) - I61-I64

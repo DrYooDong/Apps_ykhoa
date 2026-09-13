@@ -93,6 +93,8 @@ export function MainApp() {
 
   // Protocol tab selection
   const [selectedDiseaseId, setSelectedDiseaseId] = useState<string | null>(null);
+  const [targetProtocolGradeIdx, setTargetProtocolGradeIdx] = useState<number | null>(null);
+  const [targetProtocolComplicationId, setTargetProtocolComplicationId] = useState<string | null>(null);
 
   // Modals state
   const [isAboutOpen, setIsAboutOpen] = useState(false);
@@ -408,8 +410,13 @@ export function MainApp() {
     reader.readAsText(file);
   };
 
-  const handleGoToProtocol = (diseaseId: string) => {
+  const handleGoToProtocol = (
+    diseaseId: string,
+    options?: { gradeIdx?: number; complicationId?: string }
+  ) => {
     setSelectedDiseaseId(diseaseId);
+    setTargetProtocolGradeIdx(options?.gradeIdx ?? null);
+    setTargetProtocolComplicationId(options?.complicationId ?? null);
     setCompletedSteps((prev) => new Set(prev).add('t3').add('t4'));
     setClinicalStep('t4');
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -564,6 +571,8 @@ export function MainApp() {
                 kb={kb}
                 selectedDiseaseId={selectedDiseaseId}
                 onSelectDisease={setSelectedDiseaseId}
+                initialGradeIdx={targetProtocolGradeIdx}
+                initialComplicationId={targetProtocolComplicationId}
                 onBackToAnalysis={() => {
                   setClinicalStep('t3');
                   window.scrollTo({ top: 0, behavior: 'smooth' });
