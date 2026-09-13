@@ -347,3 +347,45 @@ Khi biên soạn dữ liệu CDSS cho bệnh truyền nhiễm, AI và Bác sĩ b
 >
 > - Phân loại biện pháp phòng ngừa lây nhiễm: **Phòng ngừa chuẩn (Standard)**, **Đường tiếp xúc (Contact)**, **Giọt bắn (Droplet)**, hoặc **Đường không khí (Airborne)**.
 > - Nhắc nhở khai báo bệnh truyền nhiễm thuộc nhóm A, B, C theo quy định tại **Thông tư 54/2015/TT-BYT** của Bộ Y Tế.
+
+---
+
+## 🤖 7. HỆ THỐNG SKILLS & AI AGENT CHUYÊN TRÁCH DOCSPACE
+
+Nhằm tự động hóa hoàn toàn quy trình xử lý, kiểm định chất lượng và tích hợp tri thức y khoa từ các prompt trên vào CliniPortal DocSpace mà không gây xung đột kiến trúc hay vỡ mã nguồn, hệ thống cung cấp **3 AI Skills chuyên trách** trong `.agents/skills/`:
+
+### 1. Phân định vai trò 3 AI Skills & Agents
+
+| Skill / AI Agent | Đường dẫn & Kích hoạt | Nhiệm vụ chuyên môn cốt lõi | Prompt phụ trách |
+| :--- | :--- | :--- | :--- |
+| **DocSpace Clinical Pipeline Orchestrator** | `.agents/skills/docspace-clinical-pipeline/` | • Điều phối tổng thể 4 Bước Chu trình Lâm sàng<br>• Chuẩn hóa danh xưng Chuyên khoa chuẩn (Canonical Specialty)<br>• Cấu hình bộ định danh ID Aliasing & Dịch tễ Boost trong `clinicalEngine.ts`<br>• Khởi chạy bộ kiểm tra chất lượng 10 tiêu chí toàn diện | **Prompt 00**<br>(Master Prompt) |
+| **DocSpace CDSS Builder** | `.agents/skills/docspace-cdss-builder/` | • Sinh và nạp Enriched CDSS JSON chuẩn TypeScript interface<br>• Bóc tách bộ 4 tiền tố `severityGrading` ([Lâm sàng], [Cận lâm sàng], [Tiêu chuẩn an toàn], [Dấu hiệu cảnh báo])<br>• Dựng Bảng Chiến Lược 3 Cột & 9 phân mục điều trị chuyên sâu<br>• Đồng bộ ma trận trọng số triệu chứng (`dt`, `gy`, `ht`, `loaitru`) | **Prompt 05**, **06**, **08** |
+| **DocSpace SOAP Ingester** | `.agents/skills/docspace-soap-ingester/` | • Xử lý và chuẩn hóa hồ sơ bệnh án SOAP Markdown từ NotebookLM<br>• Bóc tách chuẩn 4 khối S-O-A-P và cấu trúc Frontmatter YAML<br>• Đồng bộ danh mục ca bệnh (`vault-catalog.json`, `vault-catalog-thuc-hanh.json`)<br>• Tích hợp Prompt AI Hội chẩn tại giường ở Mục 9 Bước 4 | **Prompt 07** |
+
+### 2. Công cụ tự động Audit bệnh lý (Automated Disease Audit CLI)
+
+Bất kỳ khi nào nạp một bệnh lý mới hoặc chỉnh sửa dữ liệu, hãy chạy công cụ kiểm định tự động 10 tiêu chí:
+
+```bash
+# Kiểm định một bệnh lý cụ thể (ví dụ: viem_mang_nao)
+node tools/scripts/docspace-disease-audit.mjs viem_mang_nao
+
+# Kiểm định bệnh sốt xuất huyết Dengue
+node tools/scripts/docspace-disease-audit.mjs sot_xuat_huyet_dengue
+
+# Quét kiểm định toàn bộ bệnh lý đã làm giàu trong CSDL DocSpace
+node tools/scripts/docspace-disease-audit.mjs all
+```
+
+**10 Tiêu chí kiểm định bắt buộc:**
+
+1. File Enriched JSON tồn tại tại `src/content/docspace/data/enriched/<slug>.json`
+2. Đã được đăng ký trong index `src/content/docspace/data/enriched/index.ts`
+3. `DIAGNOSTIC_CHAIN_DATABASE` có `severityGrading` với đủ 4 tiền tố chuẩn
+4. Khóa bệnh trong CSDL có ID aliasing hoàn chỉnh chống phân mảnh định danh
+5. Chuyên khoa thuộc danh mục đơn nhất chuẩn mực (Canonical Specialty: `"Truyền nhiễm"`, `"Tim mạch"...`)
+6. `clinical-rules-kb.json` đã khai báo entity bệnh với tên và chuyên khoa chuẩn
+7. Toàn bộ mã triệu chứng trong `dd` đều được định nghĩa trong từ vựng triệu chứng (Zero Orphan Symptoms)
+8. Có ít nhất 1 ca bệnh mẫu được định nghĩa trong `sample-clinical-cases.json`
+9. Phác đồ Bước 4 Mục 9 đã tích hợp hồ sơ SOAP thực chiến
+10. Dịch tễ học đã được nạp vào `epidemiology-context-database.ts` và kết nối với `clinicalEngine.ts`

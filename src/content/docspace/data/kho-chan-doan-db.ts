@@ -22282,7 +22282,7 @@ export const KHO_CHAN_DOAN_DATABASE: Record<string, DiseaseReactionChainDefiniti
       "G00"
     ],
     "diseaseName": "Viêm màng não",
-    "specialty": "Thần kinh",
+    "specialty": "Truyền nhiễm",
     "severity": "urgent",
     "summary": "Viêm màng não (Meningitis) là tình trạng viêm cấp hoặc mạn tính của màng nhện, màng mềm và khoang dưới nhện bao quanh não bộ và tủy sống. Tổ hợp dấu hiệu cờ đỏ (Red flag combination) bao gồm sốt, đau đầu, cứng gáy và thay đổi tri giác/nhận thức là manh mối lâm sàng then chốt gợi ý bệnh. Chọc dò tủy sống (LP) kết hợp xét nghiệm dịch não tủy (DNT) là phương tiện cốt lõi để xác định hội chứng viêm màng não, trong đó nuôi cấy DNT và kháng sinh đồ duy trì vai trò tiêu chuẩn vàng để định danh vi khuẩn. Việc chẩn đoán sớm và điều trị cấp cứu trong vòng 1 giờ đầu có ý nghĩa sống còn nhằm giảm tỷ lệ tử vong và biến chứng thần kinh vĩnh viễn.",
     "goldStandard": "để định danh vi khuẩn. Việc chẩn đoán sớm và điều trị cấp cứu trong vòng 1 giờ đầu có ý nghĩa sống còn nhằm giảm tỷ lệ tử vong và biến chứng thần kinh vĩnh viễn.",

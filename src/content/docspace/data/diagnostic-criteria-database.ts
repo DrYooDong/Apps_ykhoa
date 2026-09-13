@@ -1293,63 +1293,9 @@ export const DIAGNOSTIC_CHAIN_DATABASE: Record<string, DiseaseReactionChainDefin
   },
 
   // ──────────────────────────────────────────────────────────────────────────
-  // 22. VIÊM MÀNG NÃO MỦ & VIÊM NÃO CẤP (MENINGITIS)
+  // 22. VIÊM MÀNG NÃO (MENINGITIS) — Canonical: viem_mang_nao (from ENRICHED_DISEASES)
   // ──────────────────────────────────────────────────────────────────────────
-  'viem_mang_nao_mu': {
-    icdCode: 'G00.9',
-    icdPrefixes: ['G00', 'G03', 'G04'],
-    diseaseName: 'Viêm màng não mủ & Viêm não cấp (Bacterial Meningitis)',
-    specialty: 'Truyền nhiễm & Thần kinh',
-    severity: 'emergency',
-    summary: 'Tình trạng nhiễm trùng mủ cấp tính của màng não và khoang dưới nhện, là cấp cứu thần kinh tối khẩn có tỷ lệ tử vong và di chứng tàn tật cao.',
-    goldStandard: 'Chọc dò dịch não tủy (CSF Analysis): Dịch đục/mủ, Áp lực mở tăng > 200 mmH2O, Bạch cầu đa nhân thoái hóa tăng cao (> 1000/uL), Protein tăng (> 1 g/L), Glucose DNT / Glucose máu < 0.4, Soi/Cấy DNT phân lập vi khuẩn.',
-    criteriaRule: {
-      mandatoryIds: ['mening_crit_1'],
-      minMajorRequired: 1,
-      ruleDescription: 'Bắt buộc có Hội chứng màng não (Cổ cứng, Kernig +, Brudzinski +) + Sốt cao cấp tính + Biến đổi dịch não tủy điển hình của viêm màng não mủ.'
-    },
-    criteria: [
-      { id: 'mening_crit_1', type: 'mandatory', label: 'Hội chứng màng não lâm sàng: Dấu hiệu Cổ cứng (+), Dấu Kernig (+), Dấu Brudzinski (+)', description: 'Dấu hiệu kích thích màng não trực tiếp.', labThreshold: 'Cổ cứng (+), Kernig (+)' },
-      { id: 'mening_crit_2', type: 'major', label: 'Sốt cao cấp tính kèm đau đầu dữ dội nôn vọt', description: 'Tam chứng kinh điển: Sốt + Đau đầu dữ dội + Cổ cứng.' },
-      { id: 'mening_crit_3', type: 'major', label: 'Biến đổi dịch não tủy (CSF) điển hình của viêm màng não mủ', description: 'Bạch cầu DNT tăng cao > 1000/uL (chủ yếu Neutrophil), Protein DNT tăng > 1.0-5.0 g/L, Tỷ lệ Glucose DNT/Máu < 0.4.', labThreshold: 'CSF WBC > 1000/uL, Protein > 1g/L, CSF/Blood Glucose < 0.4' },
-      { id: 'mening_crit_4', type: 'lab', label: 'Soi nhuộm Gram hoặc Cấy / PCR dịch não tủy tìm thấy vi khuẩn gây bệnh', description: 'Phế cầu (S. pneumoniae), Não mô cầu (N. meningitidis), H. influenzae, Listeria monocytogenes.', labThreshold: 'Soi/Cấy DNT (+)' },
-      { id: 'mening_crit_5', type: 'minor', label: 'Tử ban xuất huyết hoại tử hình sao (gợi ý nhiễm Não mô cầu)', description: 'Tổn thương da đặc trưng của nhiễm khuẩn huyết do Não mô cầu.' }
-    ],
-    protocol: {
-      title: 'Phác đồ Cấp Cứu Viêm Màng Não Mủ & Dexamethasone (IDSA / ESCMID Guidelines)',
-      guideline: 'IDSA Practice Guidelines for Healthcare-Associated and Community Bacterial Meningitis & Phác đồ Bộ Y tế',
-      targetGoals: ['Bắt đầu kháng sinh diệt khuẩn liều cao ngấm tốt qua màng não trong vòng 30-60 phút đầu', 'Dùng Dexamethasone TRƯỚC hoặc ĐỒNG THỜI với liều kháng sinh đầu tiên để giảm di chứng điếc và tử vong', 'Kiểm soát phù não và biến chứng tăng áp lực nội sọ'],
-      initialManagement: [
-        'Đánh giá chỉ định chụp CT sọ não TRƯỚC KHI chọc dò DNT nếu có: Dấu thần kinh khu trú, phù gai thị, lơ mơ sâu (GCS < 10), co giật mới',
-        'Nếu cần chụp CT sọ não: Cấy máu ngay và TIÊM KHÁNG SINH + DEXAMETHASONE NGAY LẬP TỨC (không trì hoãn kháng sinh chờ chụp CT/chọc dò)',
-        'Dexamethasone 10mg tiêm TM 15-20 phút trước hoặc cùng lúc với liều kháng sinh đầu tiên (tiếp tục 10mg mỗi 6h trong 4 ngày nếu là Phế cầu)',
-        'Kháng sinh kinh nghiệm liều cao: Ceftriaxone 2g mỗi 12h + Vancomycin 15-20mg/kg mỗi 8-12h (thêm Ampicillin 2g mỗi 4h nếu tuổi > 50 hoặc suy giảm miễn dịch để diệt Listeria)'
-      ],
-      firstLineDrugs: [
-        { drugName: 'Ceftriaxone', class: 'Cephalosporin thế hệ 3 liều cao ngấm màng não', route: 'Tiêm TM', dosage: '2g tiêm TM mỗi 12 giờ (tổng liều 4g/ngày)', frequency: 'Mỗi 12 giờ', instructions: 'Liều điều trị viêm màng não cao gấp đôi liều thường', isFirstLine: true },
-        { drugName: 'Vancomycin', class: 'Kháng sinh Glycopeptide diệt Phế cầu kháng thuốc', route: 'Truyền tĩnh mạch', dosage: '15 - 20 mg/kg mỗi 8-12 giờ (duy trì nồng độ đáy Trough 15-20 mcg/mL)', frequency: 'Mỗi 8-12 giờ', instructions: 'Phối hợp bắt buộc trong điều trị kinh nghiệm viêm màng não mủ', isFirstLine: true },
-        { drugName: 'Dexamethasone', class: 'Glucocorticoid chống viêm giảm phù màng não', route: 'Tiêm TM', dosage: '10 mg tiêm TM mỗi 6 giờ trong 4 ngày', frequency: 'Mỗi 6 giờ', instructions: 'Tiêm trước hoặc đồng thời với liều kháng sinh đầu tiên', isFirstLine: true },
-        { drugName: 'Ampicillin', class: 'Aminopenicillin diệt Listeria monocytogenes', route: 'Tiêm TM', dosage: '2g tiêm TM mỗi 4 giờ', frequency: 'Mỗi 4 giờ', instructions: 'Bổ sung ở bệnh nhân > 50 tuổi, phụ nữ có thai hoặc suy giảm miễn dịch', isFirstLine: true }
-      ],
-      secondLineDrugs: [
-        { drugName: 'Meropenem', class: 'Carbapenem liều cao ngấm màng não', route: 'Truyền tĩnh mạch', dosage: '2g truyền TM mỗi 8 giờ (truyền kéo dài 3h)', frequency: 'Mỗi 8 giờ', instructions: 'Lựa chọn thay thế khi nghi ngờ vi khuẩn đa kháng hoặc dị ứng Cephalosporin', isFirstLine: false }
-      ],
-      supportiveCare: ['Nằm phòng yên tĩnh, nâng đầu giường 30 độ để giảm áp lực nội sọ', 'Cách ly hô hấp trong 24h đầu nếu nghi ngờ Não mô cầu', 'Uống thuốc điều trị dự phòng cho người tiếp xúc gần (Rifampicin hoặc Ciprofloxacin liều duy nhất)']
-    },
-    complications: [
-      { name: 'Phù não cấp tính & Tụt kẹt não đe dọa tử vong', timeframe: 'acute_24h', warningSigns: 'Tri giác tụt nhanh, đồng tử giãn một bên mất phản xạ ánh sáng, tam chứng Cushing (HA tăng, mạch chậm, thở ngắt quãng)', preventiveAction: 'Nâng đầu 30 độ, tăng thông khí nhẹ, truyền Mannitol 20% 0.5-1g/kg hoặc NaCl 3%', onCallAlertText: 'BÁO ĐỘNG TỤT NÃO: Giãn đồng tử, hôn mê ➔ Truyền Mannitol 20% cấp cứu và gọi Bác sĩ Hồi sức' },
-      { name: 'Di chứng điếc thần kinh giác quan & Dày dính màng não gây não úng thủy', timeframe: 'chronic', warningSigns: 'Giảm thính lực sau điều trị, đau đầu dai dẳng, giãn não thất trên phim MRI', preventiveAction: 'Dùng Dexamethasone sớm đủ 4 ngày + Tái khám thính lực đồ sau khi xuất viện', onCallAlertText: 'Theo dõi thính lực và tri giác của bệnh nhân trước khi xuất viện' }
-    ],
-    monitoringLabs: ['Xét nghiệm Dịch não tủy lại sau 48h nếu lâm sàng không cải thiện', 'Công thức máu, CRP, Procalcitonin, Điện giải đồ (Natri máu để phát hiện SIADH/CSW)', 'Chụp CT hoặc MRI sọ não kiểm tra biến chứng tụ mủ dưới màng cứng hoặc huyết khối xoang tĩnh mạch não'],
-    vaultPathways: [
-      { khoCode: 'TC', khoName: 'Kho Lâm Sàng', articleTitle: 'Tiếp cận Bệnh Nhân Sốt, Đau Đầu & Hội Chứng Màng Não', searchKeyword: 'tiếp cận hội chứng màng não' },
-      { khoCode: 'CD', khoName: 'Kho Tiêu Chuẩn CĐ', articleTitle: 'Tiêu chuẩn Phân Biệt Dịch Não Tủy Viêm Màng Não Mủ, Lao, Virus', searchKeyword: 'phân tích dịch não tủy csf' },
-      { khoCode: 'CLS', khoName: 'Kho Cận Lâm Sàng', articleTitle: 'Kỹ Thuật Chọc Dò Dịch Não Tủy & Chỉ Định Chụp CT Sọ Não Trước Chọc', searchKeyword: 'kỹ thuật chọc dò tủy sống ct sọ não' },
-      { khoCode: 'PDDT', khoName: 'Kho Phác Đồ', articleTitle: 'Phác đồ Kháng Sinh Liều Cao & Dexamethasone IDSA 2024', searchKeyword: 'phác đồ viêm màng não mủ idsa' },
-      { khoCode: 'DUOC', khoName: 'Kho Dược', articleTitle: 'Dược động học Kháng sinh qua Hàng rào Máu Não (Ceftriaxone, Vancomycin)', searchKeyword: 'kháng sinh hàng rào máu não' },
-      { khoCode: 'BC', khoName: 'Kho Biến Chứng', articleTitle: 'Xử trí Tụt Não & Di Chứng Mất Thính Lực sau Viêm Màng Não', searchKeyword: 'tụt não di chứng điếc viêm màng não' }
-    ]
-  },
+  'viem-mang-nao-vi-khuan-cap': ENRICHED_DISEASES['viem_mang_nao'],
 
   // ──────────────────────────────────────────────────────────────────────────
   // 23. RUNG NHĨ & LOẠN NHỊP NHANH (ATRIAL FIBRILLATION)

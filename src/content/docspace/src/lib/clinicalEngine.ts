@@ -285,12 +285,14 @@ export function analyzeClinicalCase(
         b.nhom.toLowerCase().includes('nhiễm') ||
         b.nhom.toLowerCase().includes('truyền nhiễm') ||
         b.id === 'sot_xuat_huyet' ||
+        b.id === 'sot_xuat_huyet_dengue' ||
         b.id === 'lao_phoi' ||
         b.id === 'viem_mang_nao' ||
+        b.id === 'viem-mang-nao-vi-khuan-cap' ||
         b.id === 'viem_phoi';
 
       // 1. Sốt xuất huyết Dengue: Vector muỗi Aedes, ổ dịch SXH, mùa mưa
-      if (b.id === 'sot_xuat_huyet') {
+      if (b.id === 'sot_xuat_huyet' || b.id === 'sot_xuat_huyet_dengue') {
         const epiMatch =
           normalizeText(epiContext.vectorExposure).includes('muoi') ||
           normalizeText(epiContext.vectorExposure).includes('aedes') ||
@@ -325,11 +327,13 @@ export function analyzeClinicalCase(
         }
       }
 
-      // 3. Viêm màng não mủ
-      if (b.id === 'viem_mang_nao' || b.id === 'viem_mang_nao_mu') {
+      // 3. Viêm màng não
+      if (b.id === 'viem_mang_nao' || b.id === 'viem-mang-nao-vi-khuan-cap') {
         const epiMatch =
           normalizeText(epiContext.outbreakAlert).includes('nao mo cau') ||
-          normalizeText(epiContext.outbreakAlert).includes('viem mang nao');
+          normalizeText(epiContext.outbreakAlert).includes('viem mang nao') ||
+          normalizeText(epiContext.contactHistory).includes('nao mo cau') ||
+          normalizeText(epiContext.endemicArea).includes('nao mo cau');
         if (epiMatch && matched.length > 0) {
           factor *= 1.2;
           epiBoostInfo = {

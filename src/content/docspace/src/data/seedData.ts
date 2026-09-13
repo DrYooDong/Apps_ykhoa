@@ -23,6 +23,7 @@ export const GROUP_COLORS: Record<string, string> = {
   'Huyết học': '#a3364c',
   'Tiền căn': '#64748b',
   'Cận lâm sàng': '#2f6f4f',
+  'Truyền nhiễm': '#0284c7',
   'Khác': '#5b6b74',
 };
 

@@ -40,6 +40,22 @@ export const EPIDEMIOLOGY_DATABASE: Record<string, DiseaseEpidemiologyProfile> =
     outbreakPotential: 'high',
     clinicalPearls: 'Tại vùng dịch lưu hành, bất kỳ bệnh nhân nào sốt cao đột ngột 2-7 ngày đều phải cảnh giác Dengue trước tiên.'
   },
+  sot_xuat_huyet_dengue: {
+    diseaseId: 'sot_xuat_huyet_dengue',
+    diseaseName: 'Sốt xuất huyết Dengue',
+    icdCode: 'A97',
+    specialty: 'Truyền Nhiễm',
+    endemicAreas: ['Đồng bằng sông Cửu Long', 'TP. Hồ Chí Minh', 'Miền Trung - Tây Nguyên', 'Đô thị đông dân cư nước đọng'],
+    peakSeasons: ['Mùa mưa (Tháng 5 – 11 ở miền Nam)', 'Mùa hè - thu (Miền Bắc)'],
+    vectors: ['Muỗi Aedes aegypti (muỗi vằn)', 'Muỗi Aedes albopictus'],
+    occupationalRisks: ['Người làm việc ngoài trời', 'Học sinh, sinh viên sống tại ký túc xá / khu trọ ẩm thấp'],
+    foodWaterRisks: ['Chum vại lu nước đọng quanh nhà không đậy nắp'],
+    transmissionRoutes: ['Muỗi vằn đốt truyền virus từ người sang người'],
+    incubationPeriod: '4 – 10 ngày (trung bình 5 – 7 ngày)',
+    highRiskPopulations: ['Trẻ em', 'Phụ nữ mang thai', 'Người béo phì (BMI > 25)', 'Người có bệnh nền tim mạch, ĐTĐ, suy thận'],
+    outbreakPotential: 'high',
+    clinicalPearls: 'Tại vùng dịch lưu hành, bất kỳ bệnh nhân nào sốt cao đột ngột 2-7 ngày đều phải cảnh giác Dengue trước tiên.'
+  },
   viem_phoi: {
     diseaseId: 'viem_phoi',
     diseaseName: 'Viêm phổi mắc phải cộng đồng (CAP)',
@@ -104,11 +120,11 @@ export const EPIDEMIOLOGY_DATABASE: Record<string, DiseaseEpidemiologyProfile> =
     outbreakPotential: 'moderate',
     clinicalPearls: 'Ho khạc kéo dài trên 2 tuần kèm sốt nhẹ về chiều tại Việt Nam phải luôn xét nghiệm đờm tìm AFB/GeneXpert.'
   },
-  viem_mang_nao_mu: {
-    diseaseId: 'viem_mang_nao_mu',
-    diseaseName: 'Viêm màng não mủ cấp',
+  viem_mang_nao: {
+    diseaseId: 'viem_mang_nao',
+    diseaseName: 'Viêm màng não',
     icdCode: 'G00.9',
-    specialty: 'Thần Kinh / Truyền Nhiễm',
+    specialty: 'Truyền Nhiễm',
     endemicAreas: ['Toàn quốc, ổ dịch não mô cầu xuất hiện rải rác ở tập thể đóng kín'],
     peakSeasons: ['Đông - Xuân (Não mô cầu), Mùa hè (Phế cầu, Viêm não Nhật Bản)'],
     vectors: ['Muỗi Culex (trong Viêm não Nhật Bản phối hợp)'],

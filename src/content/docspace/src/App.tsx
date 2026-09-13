@@ -11,6 +11,7 @@ import { AboutModal } from './components/AboutModal.tsx';
 import { PrintReportModal } from './components/PrintReportModal.tsx';
 import { VaultDrawer } from './components/VaultDrawer.tsx';
 import { CdssModal, CdssToolSlug } from './components/CdssModal.tsx';
+import { ErrorBoundary } from './components/common/ErrorBoundary.tsx';
 import { DEFAULT_KNOWLEDGE_BASE, SampleCase } from './data/seedData.ts';
 import {
   ClinicalFormState,
@@ -335,6 +336,7 @@ export function MainApp() {
     }
     setSelected(new Set(sample.sel));
     setNegated(new Set(sample.negated || []));
+    setProblems([]);
     setCompletedSteps(new Set(['t1', 't2']));
     setClinicalStep('t2');
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -493,6 +495,7 @@ export function MainApp() {
 
       {/* Main View Area */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-5">
+        <ErrorBoundary onReset={() => setClinicalStep('t1')}>
         {/* PHÂN HỆ 1: CHU TRÌNH LÂM SÀNG 3 BƯỚC */}
         {activeMode === 'clinical' && (
           <>
@@ -629,6 +632,7 @@ export function MainApp() {
             onOpenVaultDrawer={handleOpenVaultDrawer}
           />
         )}
+        </ErrorBoundary>
       </main>
 
       {/* Footer */}

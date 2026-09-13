@@ -28,6 +28,7 @@ import {
   ChevronDown,
   ChevronUp,
   Zap,
+  Flame,
 } from 'lucide-react';
 import {
   ClinicalFormState,
@@ -134,13 +135,13 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
 
     // 3. Yếu tố Dịch tễ học (Góc nhìn truyền nhiễm)
     const epiList: string[] = [];
-    if (epiContext.endemicArea.trim()) epiList.push(`Vùng dịch tễ lưu hành: ${epiContext.endemicArea.trim()}`);
-    if (epiContext.outbreakAlert.trim()) epiList.push(`Ổ dịch địa phương: ${epiContext.outbreakAlert.trim()}`);
-    if (epiContext.vectorExposure.trim()) epiList.push(`Tiếp xúc vector: ${epiContext.vectorExposure.trim()}`);
-    if (epiContext.contactHistory.trim()) epiList.push(`Tiếp xúc nguồn lây: ${epiContext.contactHistory.trim()}`);
-    if (epiContext.travelHistory.trim()) epiList.push(`Tiền sử đi lại: ${epiContext.travelHistory.trim()}`);
-    if (epiContext.seasonalContext.trim()) epiList.push(`Bối cảnh mùa dịch: ${epiContext.seasonalContext.trim()}`);
-    if (epiContext.waterFoodRisk.trim()) epiList.push(`Nguồn nước/thực phẩm: ${epiContext.waterFoodRisk.trim()}`);
+    if (epiContext?.endemicArea?.trim()) epiList.push(`Vùng dịch tễ lưu hành: ${epiContext.endemicArea.trim()}`);
+    if (epiContext?.outbreakAlert?.trim()) epiList.push(`Ổ dịch địa phương: ${epiContext.outbreakAlert.trim()}`);
+    if (epiContext?.vectorExposure?.trim()) epiList.push(`Tiếp xúc vector: ${epiContext.vectorExposure.trim()}`);
+    if (epiContext?.contactHistory?.trim()) epiList.push(`Tiếp xúc nguồn lây: ${epiContext.contactHistory.trim()}`);
+    if (epiContext?.travelHistory?.trim()) epiList.push(`Tiền sử đi lại: ${epiContext.travelHistory.trim()}`);
+    if (epiContext?.seasonalContext?.trim()) epiList.push(`Bối cảnh mùa dịch: ${epiContext.seasonalContext.trim()}`);
+    if (epiContext?.waterFoodRisk?.trim()) epiList.push(`Nguồn nước/thực phẩm: ${epiContext.waterFoodRisk.trim()}`);
 
     // 4. Cận lâm sàng ban đầu
     const labItems: string[] = [];
