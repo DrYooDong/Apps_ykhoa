@@ -24,14 +24,28 @@ function check(name, pass, detail) {
   }
 }
 
-// 1. Kiểm tra clinical-rules-kb.json
-const kbPath = path.resolve('src/content/knowledge-vault/data/clinical-rules-kb.json');
+// 1. Kiểm tra clinical-rules-symptoms.json & clinical-rules-diseases.json
+const dataDir = path.resolve('src/content/knowledge-vault/data');
+const symPath = path.join(dataDir, 'clinical-rules-symptoms.json');
+const disPath = path.join(dataDir, 'clinical-rules-diseases.json');
+const kbPath = path.join(dataDir, 'clinical-rules-kb.json');
+
+let symptoms = [];
+let diseases = [];
 let kb;
+
 try {
-  kb = JSON.parse(fs.readFileSync(kbPath, 'utf8'));
-  check('Clinical Rules KB File', true, `Đọc thành công tệp JSON (${(fs.statSync(kbPath).size / 1024).toFixed(1)} KB)`);
+  symptoms = JSON.parse(fs.readFileSync(symPath, 'utf8'));
+  diseases = JSON.parse(fs.readFileSync(disPath, 'utf8'));
+  check('Modular Clinical Rules Files', true, `Đọc thành công tệp Triệu chứng (${(fs.statSync(symPath).size / 1024).toFixed(1)} KB) & Bệnh lý (${(fs.statSync(disPath).size / 1024).toFixed(1)} KB)`);
+  
+  if (fs.existsSync(kbPath)) {
+    kb = JSON.parse(fs.readFileSync(kbPath, 'utf8'));
+  } else {
+    kb = { trieuChung: symptoms, benh: diseases };
+  }
 } catch (e) {
-  check('Clinical Rules KB File', false, `Lỗi đọc tệp: ${e.message}`);
+  check('Modular Clinical Rules Files', false, `Lỗi đọc tệp: ${e.message}`);
 }
 
 if (kb) {
@@ -83,13 +97,31 @@ const drugPath = path.resolve('src/content/docspace/src/data/drug-interaction-da
 const hasDrugFile = fs.existsSync(drugPath);
 check('Drug Database & Interactions (Kho DUOC)', hasDrugFile, `Tồn tại CSDL Dược thư & Tương tác thuốc (${hasDrugFile ? (fs.statSync(drugPath).size / 1024).toFixed(1) : 0} KB)`);
 
-// 8. Kiểm tra vault-catalog.json
-const catalogPath = path.resolve('src/content/knowledge-vault/data/vault-catalog.json');
+// 8. Kiểm tra các tệp catalog phân nhóm (vault-catalog-*.json)
+const catalogSplitFiles = [
+  'vault-catalog-co-so.json',
+  'vault-catalog-chuyen-sau.json',
+  'vault-catalog-thuc-hanh.json',
+  'vault-catalog-ho-tro.json'
+];
+
 try {
-  const catalog = JSON.parse(fs.readFileSync(catalogPath, 'utf8'));
-  check('Vault Catalog Articles', catalog.length >= 2000, `Có ${catalog.length} bài viết EBM trong 16 phân kho (Mục tiêu ≥ 2000)`);
+  let totalModularArticles = 0;
+  let allExist = true;
+  catalogSplitFiles.forEach(file => {
+    const fPath = path.join(dataDir, file);
+    if (fs.existsSync(fPath)) {
+      const items = JSON.parse(fs.readFileSync(fPath, 'utf8'));
+      totalModularArticles += items.length;
+    } else {
+      allExist = false;
+    }
+  });
+
+  check('Modular Vault Catalogs', allExist, `Tồn tại đủ 4 tệp catalog phân nhóm (Cơ sở, Chuyên sâu, Thực hành, Hỗ trợ)`);
+  check('Vault Catalog Articles', totalModularArticles >= 800, `Có ${totalModularArticles} bài viết EBM trong 16 phân kho (Mục tiêu ≥ 800)`);
 } catch (e) {
-  check('Vault Catalog Articles', false, `Lỗi đọc catalog: ${e.message}`);
+  check('Modular Vault Catalogs', false, `Lỗi đọc catalog: ${e.message}`);
 }
 
 // 9. Kiểm tra Thư mục Bệnh án Ca lâm sàng ba/

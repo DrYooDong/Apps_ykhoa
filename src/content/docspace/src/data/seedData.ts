@@ -1,5 +1,6 @@
 import { Benh, CategoryType, EpidemiologyContext, KnowledgeBase, RoleType, ThresholdMap, TrieuChung } from '../types.ts';
-import kbRaw from '@vault/data/clinical-rules-kb.json';
+import symptomsRaw from '@vault/data/clinical-rules-symptoms.json';
+import diseasesRaw from '@vault/data/clinical-rules-diseases.json';
 import casesRaw from '@vault/data/sample-clinical-cases.json';
 
 export const ROLE_LABELS: Record<RoleType, { label: string; badgeClass: string }> = {
@@ -41,7 +42,15 @@ export const CLINICAL_FIELDS: [string, string][] = [
   ['lTrop', 'Troponin (ng/L)'],
 ];
 
-export const DEFAULT_KNOWLEDGE_BASE: KnowledgeBase = kbRaw as unknown as KnowledgeBase;
+export const DEFAULT_KNOWLEDGE_BASE: KnowledgeBase = {
+  meta: {
+    ten: 'Kho tri thức lâm sàng toàn diện — 33 Bệnh lý trọng tâm & 195+ Triệu chứng CDSS',
+    phienBan: 4,
+    capNhat: '2026-09-12T11:15:21.495Z',
+  },
+  trieuChung: symptomsRaw as unknown as TrieuChung[],
+  benh: diseasesRaw as unknown as Benh[],
+};
 
 export interface SampleCase {
   ten: string;

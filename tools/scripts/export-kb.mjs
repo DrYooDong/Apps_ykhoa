@@ -16,9 +16,17 @@ async function exportKb() {
     fs.mkdirSync(targetDir, { recursive: true });
   }
 
+  const outSymptomsPath = path.join(targetDir, 'clinical-rules-symptoms.json');
+  fs.writeFileSync(outSymptomsPath, JSON.stringify(DEFAULT_KNOWLEDGE_BASE.trieuChung, null, 2), 'utf-8');
+  console.log(`Exported symptoms to: ${outSymptomsPath} (${DEFAULT_KNOWLEDGE_BASE.trieuChung.length} triệu chứng)`);
+
+  const outDiseasesPath = path.join(targetDir, 'clinical-rules-diseases.json');
+  fs.writeFileSync(outDiseasesPath, JSON.stringify(DEFAULT_KNOWLEDGE_BASE.benh, null, 2), 'utf-8');
+  console.log(`Exported diseases to: ${outDiseasesPath} (${DEFAULT_KNOWLEDGE_BASE.benh.length} bệnh lý)`);
+
   const outKbPath = path.join(targetDir, 'clinical-rules-kb.json');
   fs.writeFileSync(outKbPath, JSON.stringify(DEFAULT_KNOWLEDGE_BASE, null, 2), 'utf-8');
-  console.log(`Successfully exported clinical rules to: ${outKbPath} (${DEFAULT_KNOWLEDGE_BASE.benh.length} bệnh, ${DEFAULT_KNOWLEDGE_BASE.trieuChung.length} triệu chứng)`);
+  console.log(`Successfully exported master clinical rules to: ${outKbPath}`);
 
   const outCasesPath = path.join(targetDir, 'sample-clinical-cases.json');
   fs.writeFileSync(outCasesPath, JSON.stringify(SAMPLE_CASES, null, 2), 'utf-8');

@@ -68,6 +68,15 @@ updated: "2026-09-08"
 
 ## 3. 🧠 A — Assessment (Chẩn đoán & Biện luận)
 
+### 0. Đặt Vấn Đề (Problem List · 3 Tầng Ưu Tiên)
+> *Theo phương pháp luận PGS.TS Hoàng Văn Sĩ (ĐHYD TPHCM): Đặt vấn đề là bản nâng cấp của tóm tắt bệnh án, phân tầng ưu tiên để ra quyết định lâm sàng và y lệnh cấp cứu song hành.*
+
+| Tầng Ưu Tiên | Vấn Đề Lâm Sàng | Hướng Chẩn Đoán / CLS Đề Nghị | Hướng Xử Trí Tức Thời |
+|---|---|---|---|
+| **Tầng 1** *(Đe dọa biến chứng)* | **Tăng Kali máu (5.3 mmol/L) + Thiểu niệu cấp (nguy cơ loạn nhịp và toan chuyển hóa cấp)** | Điện tâm đồ khẩn tìm sóng T nhọn đối xứng, Khí máu động mạch (pH, HCO₃⁻), Ion đồ lặp lại mỗi 6h | Theo dõi monitor nhịp; chuẩn bị Calcium Gluconate nếu có biến đổi ECG; hạn chế Kali nhập, ngưng ngay thuốc giữ Kali |
+| **Tầng 2** *(Cấp tính)* | **Tổn thương thận cấp (AKI) giai đoạn 2 do Meloxicam (Creatinine tăng gấp 2.2 lần từ 145 ➔ 320 µmol/L)** | Ure, Creatinine máu hàng ngày, Tỷ trọng & Cặn lắng nước tiểu, Siêu âm Doppler mạch thận | **NGƯNG NGAY MELOXICAM**; tạm ngưng Losartan; bù dịch nhẹ nếu có thiếu dịch thể tích lòng mạch; theo dõi sát lượng nước tiểu |
+| **Tầng 3** *(Mạn tính)* | **Bệnh thận mạn giai đoạn 3b + Đái tháo đường type 2 + Tăng huyết áp** | Đạm niệu 24h khi qua đợt cấp, HbA1c, eGFR khi Creatinine ổn định | Tránh tuyệt đối mọi thuốc độc thận (NSAID, cản quang tĩnh mạch, Aminoglycosid); chuyển dùng Insulin kiểm soát đường huyết; duy trì HA an toàn |
+
 - **Chẩn đoán xác định**: Tổn thương thận cấp giai đoạn 2 theo KDIGO thể thiểu niệu, nguyên nhân trước thận / tại thận do thuốc NSAIDs / Đợt cấp trên nền Bệnh thận mạn giai đoạn 3b do ĐTĐ và THA.
 - **Mã ICD-10**:
   - `N17.9` (Tổn thương thận cấp, không đặc hiệu)

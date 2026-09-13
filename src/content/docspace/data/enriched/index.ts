@@ -11,9 +11,11 @@
 import type { DiseaseReactionChainDefinition } from '../diagnostic-criteria-database';
 
 import sot_xuat_huyet_dengue from './sot_xuat_huyet_dengue.json';
+import viem_mang_nao from './viem_mang_nao.json';
 
 export const ENRICHED_DISEASES: Record<string, DiseaseReactionChainDefinition> = {
   'sot_xuat_huyet_dengue': sot_xuat_huyet_dengue as unknown as DiseaseReactionChainDefinition,
+  'viem_mang_nao': viem_mang_nao as unknown as DiseaseReactionChainDefinition,
 };
 
 export const ENRICHED_DISEASE_KEYS = Object.keys(ENRICHED_DISEASES);

@@ -54,6 +54,15 @@ updated: "2026-09-08"
 
 ## 3. 🧠 A — Assessment (Chẩn đoán & Biện luận)
 
+### 0. Đặt Vấn Đề (Problem List · 3 Tầng Ưu Tiên)
+> *Theo phương pháp luận PGS.TS Hoàng Văn Sĩ (ĐHYD TPHCM): Đặt vấn đề là bản nâng cấp của tóm tắt bệnh án, phân tầng ưu tiên để ra quyết định lâm sàng và y lệnh cấp cứu song hành.*
+
+| Tầng Ưu Tiên | Vấn Đề Lâm Sàng | Hướng Chẩn Đoán / CLS Đề Nghị | Hướng Xử Trí Tức Thời |
+|---|---|---|---|
+| **Tầng 1** *(Đe dọa biến chứng)* | **Hội chứng đáp ứng viêm toàn thân SIRS (Mạch 108, Thở 22, BISAP 2 điểm) + Nguy cơ sốc giảm thể tích do thoát dịch khoang thứ 3** | Ure, Creatinine máu mỗi 12h, Đo thể tích nước tiểu qua sonde bàng quang, Khí máu động mạch | Hồi sức dịch Ringer Lactate tích cực 200-250 mL/h trong 24h đầu; mục tiêu nước tiểu &ge; 0.5 mL/kg/h, Hct &lt; 44% |
+| **Tầng 2** *(Cấp tính)* | **Viêm tụy cấp mức độ trung bình-nặng do Tăng Triglyceride cực cao (Triglyceride 28.4 mmol/L, Lipase 1.450 U/L, Balthazar C)** | Bilan lipid máu lặp lại mỗi 12-24h, Điện giải đồ (đặc biệt Kali máu khi truyền Insulin) | Nhịn ăn uống đường miệng; truyền Insulin tĩnh mạch liên tục 0.1 UI/kg/h + bù Glucose 5-10% để hạ Triglyceride; Giảm đau đa mô thức |
+| **Tầng 3** *(Mạn tính)* | **Rối loạn chuyển hóa lipid tiên phát + Béo phì độ I + Tiền căn sử dụng rượu bia nhiều** | Bilan lipid toàn phần khi ổn định, Đường huyết đói, Siêu âm đánh giá gan nhiễm mỡ | Cai rượu bia tuyệt đối; khởi động Fenofibrate phối hợp Statin khi Triglyceride &lt; 5.6 mmol/L; chế độ ăn kiêng lipid nghiêm ngặt |
+
 - **Chẩn đoán xác định**: Viêm tụy cấp mức độ trung bình-nặng theo Atlanta 2012, căn nguyên do tăng Triglyceride máu nặng (Triglyceride > 28 mmol/L) / Rối loạn lipid máu tiên phát, Béo phì độ I.
 - **Mã ICD-10**:
   - `K85.2` (Viêm tụy cấp do rượu và các nguyên nhân chuyển hóa khác)

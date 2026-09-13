@@ -58,6 +58,15 @@ updated: "2026-09-08"
 
 ## 3. 🧠 A — Assessment (Chẩn đoán & Biện luận)
 
+### 0. Đặt Vấn Đề (Problem List · 3 Tầng Ưu Tiên)
+> *Theo phương pháp luận PGS.TS Hoàng Văn Sĩ (ĐHYD TPHCM): Đặt vấn đề là bản nâng cấp của tóm tắt bệnh án, phân tầng ưu tiên để ra quyết định lâm sàng và y lệnh cấp cứu song hành.*
+
+| Tầng Ưu Tiên | Vấn Đề Lâm Sàng | Hướng Chẩn Đoán / CLS Đề Nghị | Hướng Xử Trí Tức Thời |
+|---|---|---|---|
+| **Tầng 1** *(Đe dọa biến chứng)* | **Hội chứng vành cấp không ST chênh lên nguy cơ cao (GRACE = 142 điểm, Động học Troponin T-hs 48 ➔ 185 ng/L, ST chênh xuống V4-V6)** | Điện tâm đồ 12 chuyển đạo lặp lại mỗi 1-2h, Siêu âm tim tại giường đánh giá rối loạn vận động vùng | Monitor theo dõi nhịp liên tục; Chống ngưng tập tiểu cầu kép nạp ngay (Aspirin 300mg + Ticagrelor 180mg) + Enoxaparin 1mg/kg TDD; Chuẩn bị chụp mạch vành xâm lấn trong 24h |
+| **Tầng 2** *(Cấp tính)* | **Cơn tương đương đau thắt ngực (Khó thở gắng sức nhẹ, vã mồ hôi lạnh, mệt lả đột ngột ở bệnh nhân ĐTĐ)** | Siêu âm tim đo phân suất tống máu LVEF, Men tim hs-Troponin nối tiếp | Nghỉ ngơi tuyệt đối tại giường, thở oxy nếu SpO₂ &lt; 90%, Nitroglycerin xịt dưới lưỡi nếu nặng ngực |
+| **Tầng 3** *(Mạn tính)* | **Đái tháo đường type 2 (12 năm, tổn thương thần kinh tự chủ) + Tăng huyết áp (8 năm)** | Đường huyết mao mạch trước ăn và đi ngủ, HbA1c, Creatinine máu tính eGFR | Tạm ngưng Metformin trước khi chụp mạch vành có cản quang; chuyển Insulin dưới da kiểm soát đường huyết; duy trì Statin cường độ cao (Atorvastatin 40mg) |
+
 - **Chẩn đoán xác định**: Nhồi máu cơ tim cấp không ST chênh lên (NSTEMI) nguy cơ cao / Đái tháo đường type 2, Tăng huyết áp.
 - **Mã ICD-10**:
   - `I21.4` (NMCT dưới nội tâm mạc cấp)

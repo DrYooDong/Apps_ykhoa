@@ -3,9 +3,22 @@
  */
 
 import type { VaultArticle, VaultKhoSummary, VaultFilterState, ClinicalPathwayLinks } from './types';
-import catalogData from './data/vault-catalog.json';
+import catCoSo from './data/vault-catalog-co-so.json';
+import catChuyenSau from './data/vault-catalog-chuyen-sau.json';
+import catThucHanh from './data/vault-catalog-thuc-hanh.json';
+import catHoTro from './data/vault-catalog-ho-tro.json';
 
-export const VAULT_CATALOG: VaultArticle[] = catalogData as VaultArticle[];
+export const VAULT_CATALOG_CO_SO: VaultArticle[] = catCoSo as VaultArticle[];
+export const VAULT_CATALOG_CHUYEN_SAU: VaultArticle[] = catChuyenSau as VaultArticle[];
+export const VAULT_CATALOG_THUC_HANH: VaultArticle[] = catThucHanh as VaultArticle[];
+export const VAULT_CATALOG_HO_TRO: VaultArticle[] = catHoTro as VaultArticle[];
+
+export const VAULT_CATALOG: VaultArticle[] = [
+  ...VAULT_CATALOG_CO_SO,
+  ...VAULT_CATALOG_CHUYEN_SAU,
+  ...VAULT_CATALOG_THUC_HANH,
+  ...VAULT_CATALOG_HO_TRO
+];
 
 export const KHO_DEFINITIONS: Record<string, { name: string; group: string; icon: string; color: string }> = {
   // 1. Nhóm Cơ sở

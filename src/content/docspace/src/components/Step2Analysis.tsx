@@ -16,15 +16,20 @@ import {
   FileCheck,
   Filter,
   Flame,
+  FlaskConical,
   HeartPulse,
   Layers,
+  ListTree,
   MapPin,
+  Pill,
   Printer,
   Search,
   ShieldAlert,
+  ShieldCheck,
   Sparkles,
   Stethoscope,
   Users,
+  Zap,
 } from 'lucide-react';
 import {
   AnalysisResult,
@@ -192,6 +197,29 @@ export const Step2Analysis: React.FC<Step2Props> = ({
   const [showMatrix, setShowMatrix] = useState(false);
   const [showScoreBreakdown, setShowScoreBreakdown] = useState(false);
   const [copiedReasoning, setCopiedReasoning] = useState(false);
+  const [isProblemsBoardExpanded, setIsProblemsBoardExpanded] = useState(true);
+
+  // Phân tầng 3 mức độ ưu tiên theo chuẩn phương pháp luận PGS.TS Hoàng Văn Sĩ
+  const tier1Problems = useMemo(
+    () => problems.filter((p) => p.priorityLevel === 'life-threatening'),
+    [problems]
+  );
+  const tier2Problems = useMemo(
+    () =>
+      problems.filter(
+        (p) => p.priorityLevel === 'acute' || (!p.priorityLevel && p.isPrimary)
+      ),
+    [problems]
+  );
+  const tier3Problems = useMemo(
+    () => problems.filter((p) => p.priorityLevel === 'chronic'),
+    [problems]
+  );
+  const conflictList = useMemo(
+    () =>
+      problems.filter((p) => p.conflictNotes && p.conflictNotes.trim().length > 0),
+    [problems]
+  );
 
   const toggleExpand = (id: string) => {
     setExpandedDiffs((prev) => ({ ...prev, [id]: !prev[id] }));
@@ -464,6 +492,276 @@ export const Step2Analysis: React.FC<Step2Props> = ({
                 {epiContext.outbreakAlert && <div>• Ổ dịch: {epiContext.outbreakAlert}</div>}
                 {epiContext.vectorExposure && <div>• Vector: {epiContext.vectorExposure}</div>}
                 {epiContext.endemicArea && <div>• Vùng: {epiContext.endemicArea}</div>}
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* MA TRẬN QUYẾT ĐỊNH LÂM SÀNG 3 TẦNG (PARALLEL CLINICAL ACTION BOARD) */}
+      {problems && problems.length > 0 && (
+        <div className="bg-slate-900 border border-slate-700/80 rounded-xl p-4 sm:p-5 text-white shadow-md transition-all">
+          {/* Top Bar: Title, Badges & Toggle */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-800">
+            <div className="flex items-center gap-2.5 flex-wrap">
+              <div className="p-1.5 bg-blue-500/20 text-blue-400 rounded-lg border border-blue-500/40">
+                <ListTree className="w-4 h-4" />
+              </div>
+              <div>
+                <div className="flex items-center gap-2">
+                  <h3 className="font-bold text-sm sm:text-base text-slate-100 flex items-center gap-2">
+                    <span>Ma Trận Quyết Định Lâm Sàng 3 Tầng</span>
+                    <span className="text-[11px] font-mono font-normal text-slate-400">
+                      (Bản nâng cấp tóm tắt bệnh án)
+                    </span>
+                  </h3>
+                </div>
+                <p className="text-[11px] text-slate-400">
+                  Phối hợp song hành: Chiến lược chẩn đoán (CLS đề nghị) &amp; Chiến lược điều trị (Y lệnh tức thời)
+                </p>
+              </div>
+            </div>
+
+            {/* Quick Badges & Expand Toggle */}
+            <div className="flex items-center gap-2 flex-wrap self-end sm:self-center">
+              {tier1Problems.length > 0 && (
+                <span className="px-2 py-0.5 rounded-md text-[11px] font-bold bg-rose-500/20 text-rose-300 border border-rose-500/50 flex items-center gap-1 animate-pulse">
+                  <AlertOctagon className="w-3 h-3 text-rose-400" />
+                  <span>{tier1Problems.length} Cấp cứu Tầng 1</span>
+                </span>
+              )}
+              <span className="px-2 py-0.5 rounded-md text-[11px] font-semibold bg-blue-500/20 text-blue-300 border border-blue-500/40">
+                {tier2Problems.length} Cấp tính Tầng 2
+              </span>
+              {tier3Problems.length > 0 && (
+                <span className="px-2 py-0.5 rounded-md text-[11px] font-semibold bg-purple-500/20 text-purple-300 border border-purple-500/40">
+                  {tier3Problems.length} Mạn tính Tầng 3
+                </span>
+              )}
+
+              <button
+                type="button"
+                onClick={() => setIsProblemsBoardExpanded(!isProblemsBoardExpanded)}
+                className="ml-1 p-1 text-slate-400 hover:text-white bg-slate-800 hover:bg-slate-700 rounded-md border border-slate-700 transition-colors flex items-center gap-1 text-xs px-2 cursor-pointer"
+                title="Đóng / Mở ma trận 3 tầng"
+              >
+                {isProblemsBoardExpanded ? (
+                  <>
+                    <ChevronUp className="w-3.5 h-3.5" />
+                    <span className="hidden sm:inline">Thu gọn</span>
+                  </>
+                ) : (
+                  <>
+                    <ChevronDown className="w-3.5 h-3.5" />
+                    <span className="hidden sm:inline">Xem chi tiết ({problems.length} vấn đề)</span>
+                  </>
+                )}
+              </button>
+            </div>
+          </div>
+
+          {/* CẢNH BÁO XUNG ĐỘT ĐIỀU TRỊ (NẾU CÓ) */}
+          {conflictList.length > 0 && (
+            <div className="mt-3 p-3 bg-amber-950/80 border-2 border-amber-500/60 rounded-lg text-amber-200 text-xs space-y-1.5 shadow-sm">
+              <div className="flex items-center gap-2 font-bold text-amber-300">
+                <AlertTriangle className="w-4 h-4 text-amber-400 shrink-0" />
+                <span>CẢNH BÁO MÂU THUẪN / XUNG ĐỘT XỬ TRÍ GIỮA CÁC VẤN ĐỀ:</span>
+              </div>
+              <div className="space-y-1 pl-6 text-[11px] text-amber-100">
+                {conflictList.map((c, idx) => (
+                  <div key={idx} className="leading-relaxed">
+                    • <strong>{c.label}:</strong> {c.conflictNotes}
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* NỘI DUNG 3 CỘT MA TRẬN KHI MỞ RỘNG */}
+          {isProblemsBoardExpanded && (
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-3.5 mt-3.5 pt-1">
+              {/* CỘT TẦNG 1: ĐE DỌA SINH HIỆU */}
+              <div className="bg-rose-950/20 border border-rose-800/60 rounded-xl p-3 flex flex-col gap-2.5">
+                <div className="flex items-center justify-between pb-2 border-b border-rose-800/40">
+                  <div className="flex items-center gap-1.5 text-xs font-bold text-rose-300 uppercase tracking-wide">
+                    <AlertOctagon className="w-3.5 h-3.5 text-rose-400" />
+                    <span>Tầng 1: Đe Dọa Sinh Hiệu</span>
+                  </div>
+                  <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded bg-rose-500/20 text-rose-300 border border-rose-500/40">
+                    Hồi sức ngay
+                  </span>
+                </div>
+
+                {tier1Problems.length === 0 ? (
+                  <div className="p-3 text-center text-xs text-slate-400 italic bg-slate-800/30 rounded-lg border border-dashed border-slate-700">
+                    <ShieldCheck className="w-4 h-4 text-emerald-400 mx-auto mb-1 opacity-80" />
+                    Không phát hiện đe dọa sinh hiệu cấp bách
+                  </div>
+                ) : (
+                  <div className="space-y-2.5">
+                    {tier1Problems.map((prob) => (
+                      <div
+                        key={prob.id}
+                        className="p-2.5 bg-rose-900/40 border border-rose-700/60 rounded-lg space-y-2 text-xs"
+                      >
+                        <div className="font-bold text-rose-100 flex items-center justify-between">
+                          <span>{prob.label}</span>
+                          {prob.isPrimary && (
+                            <span className="text-[9px] px-1.5 py-0.5 rounded bg-amber-400 text-amber-950 font-extrabold uppercase">
+                              Trọng tâm
+                            </span>
+                          )}
+                        </div>
+
+                        {/* CLS Đề nghị */}
+                        {prob.diagnosticPlan && (
+                          <div className="bg-slate-900/80 rounded p-1.5 text-[11px] border border-slate-700/60">
+                            <span className="font-semibold text-rose-300 flex items-center gap-1">
+                              <FlaskConical className="w-3 h-3 text-rose-400" />
+                              CLS khẩn:
+                            </span>
+                            <div className="text-slate-200 mt-0.5 leading-relaxed">{prob.diagnosticPlan}</div>
+                          </div>
+                        )}
+
+                        {/* Y lệnh tức thời */}
+                        {prob.therapeuticPlan && (
+                          <div className="bg-rose-950/80 rounded p-1.5 text-[11px] border border-rose-700/50">
+                            <span className="font-semibold text-amber-300 flex items-center gap-1">
+                              <Zap className="w-3 h-3 text-amber-400" />
+                              Y lệnh hồi sức tức thì:
+                            </span>
+                            <div className="text-rose-100 font-medium mt-0.5 leading-relaxed">
+                              {prob.therapeuticPlan}
+                            </div>
+                          </div>
+                        )}
+
+                        {prob.conflictNotes && (
+                          <div className="text-[10px] text-amber-300 bg-amber-950/60 border border-amber-500/40 rounded p-1">
+                            ⚠️ {prob.conflictNotes}
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* CỘT TẦNG 2: CẤP TÍNH & HỘI CHỨNG */}
+              <div className="bg-blue-950/20 border border-blue-800/60 rounded-xl p-3 flex flex-col gap-2.5">
+                <div className="flex items-center justify-between pb-2 border-b border-blue-800/40">
+                  <div className="flex items-center gap-1.5 text-xs font-bold text-blue-300 uppercase tracking-wide">
+                    <Stethoscope className="w-3.5 h-3.5 text-blue-400" />
+                    <span>Tầng 2: Cấp Tính &amp; Hội Chứng</span>
+                  </div>
+                  <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded bg-blue-500/20 text-blue-300 border border-blue-500/40">
+                    Tìm nguyên nhân
+                  </span>
+                </div>
+
+                {tier2Problems.length === 0 ? (
+                  <div className="p-3 text-center text-xs text-slate-400 italic bg-slate-800/30 rounded-lg border border-dashed border-slate-700">
+                    Chưa phân loại vấn đề cấp tính
+                  </div>
+                ) : (
+                  <div className="space-y-2.5">
+                    {tier2Problems.map((prob) => (
+                      <div
+                        key={prob.id}
+                        className={`p-2.5 rounded-lg space-y-2 text-xs border ${
+                          prob.isPrimary
+                            ? 'bg-blue-900/50 border-blue-500 ring-1 ring-blue-400/40'
+                            : 'bg-slate-800/60 border-slate-700/80'
+                        }`}
+                      >
+                        <div className="font-bold text-slate-100 flex items-center justify-between">
+                          <span>{prob.label}</span>
+                          {prob.isPrimary && (
+                            <span className="text-[9px] px-1.5 py-0.5 rounded bg-amber-400 text-amber-950 font-extrabold uppercase">
+                              Trọng tâm biện luận
+                            </span>
+                          )}
+                        </div>
+
+                        {/* CLS Đề nghị */}
+                        {prob.diagnosticPlan && (
+                          <div className="bg-slate-900/80 rounded p-1.5 text-[11px] border border-slate-700/60">
+                            <span className="font-semibold text-cyan-300 flex items-center gap-1">
+                              <FlaskConical className="w-3 h-3 text-cyan-400" />
+                              CLS xác định nguyên nhân:
+                            </span>
+                            <div className="text-slate-200 mt-0.5 leading-relaxed">{prob.diagnosticPlan}</div>
+                          </div>
+                        )}
+
+                        {/* Hướng điều trị */}
+                        {prob.therapeuticPlan && (
+                          <div className="bg-slate-900/80 rounded p-1.5 text-[11px] border border-slate-700/60">
+                            <span className="font-semibold text-emerald-300 flex items-center gap-1">
+                              <Pill className="w-3 h-3 text-emerald-400" />
+                              Kế hoạch điều trị &amp; theo dõi:
+                            </span>
+                            <div className="text-slate-200 mt-0.5 leading-relaxed">{prob.therapeuticPlan}</div>
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* CỘT TẦNG 3: MẠN TÍNH & BỆNH NỀN ĐỒNG MẮC */}
+              <div className="bg-purple-950/20 border border-purple-800/60 rounded-xl p-3 flex flex-col gap-2.5">
+                <div className="flex items-center justify-between pb-2 border-b border-purple-800/40">
+                  <div className="flex items-center gap-1.5 text-xs font-bold text-purple-300 uppercase tracking-wide">
+                    <Activity className="w-3.5 h-3.5 text-purple-400" />
+                    <span>Tầng 3: Bệnh Nền Đồng Mắc</span>
+                  </div>
+                  <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded bg-purple-500/20 text-purple-300 border border-purple-500/40">
+                    Kiểm soát &amp; Tương tác
+                  </span>
+                </div>
+
+                {tier3Problems.length === 0 ? (
+                  <div className="p-3 text-center text-xs text-slate-400 italic bg-slate-800/30 rounded-lg border border-dashed border-slate-700">
+                    Không ghi nhận tiền căn mạn tính
+                  </div>
+                ) : (
+                  <div className="space-y-2.5">
+                    {tier3Problems.map((prob) => (
+                      <div
+                        key={prob.id}
+                        className="p-2.5 bg-purple-900/30 border border-purple-700/50 rounded-lg space-y-2 text-xs"
+                      >
+                        <div className="font-bold text-purple-100 flex items-center justify-between">
+                          <span>{prob.label}</span>
+                        </div>
+
+                        {/* Kế hoạch duy trì / Tương tác */}
+                        {prob.therapeuticPlan && (
+                          <div className="bg-slate-900/80 rounded p-1.5 text-[11px] border border-slate-700/60">
+                            <span className="font-semibold text-purple-300 flex items-center gap-1">
+                              <Pill className="w-3 h-3 text-purple-400" />
+                              Duy trì thuốc &amp; Cân nhắc liều:
+                            </span>
+                            <div className="text-slate-200 mt-0.5 leading-relaxed">{prob.therapeuticPlan}</div>
+                          </div>
+                        )}
+
+                        {prob.diagnosticPlan && (
+                          <div className="bg-slate-900/80 rounded p-1.5 text-[11px] border border-slate-700/60">
+                            <span className="font-semibold text-slate-300 flex items-center gap-1">
+                              <FlaskConical className="w-3 h-3 text-slate-400" />
+                              Tầm soát tổn thương cơ quan đích:
+                            </span>
+                            <div className="text-slate-300 mt-0.5 leading-relaxed">{prob.diagnosticPlan}</div>
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
           )}

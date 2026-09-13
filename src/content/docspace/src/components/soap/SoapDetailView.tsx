@@ -5,11 +5,15 @@ import {
   Award,
   BookOpen,
   ChevronRight,
+  Compass,
   Edit3,
   FileCheck,
+  Flame,
+  HeartPulse,
   Layers,
   Lightbulb,
   Pill,
+  ShieldCheck,
   Sparkles,
   Star,
   Stethoscope,
@@ -455,6 +459,99 @@ export const SoapDetailView: React.FC<SoapDetailViewProps> = ({
             </div>
 
             <div className="p-4 flex-1 flex flex-col gap-3.5 text-xs text-slate-800 bg-white">
+              {/* 0. BẢNG ĐẶT VẤN ĐỀ (PROBLEM LIST · 3 TẦNG ƯU TIÊN) */}
+              <div>
+                <span className="font-bold text-slate-800 uppercase tracking-wider text-[11px] block mb-1.5 flex items-center justify-between">
+                  <span className="flex items-center gap-1.5 text-amber-950">
+                    <Compass className="w-3.5 h-3.5 text-amber-600" />
+                    <span>0. Đặt Vấn Đề (Problem List · 3 Tầng):</span>
+                  </span>
+                  <span className="text-[10px] text-slate-500 font-normal">
+                    Bản nâng cấp từ Tóm tắt bệnh án
+                  </span>
+                </span>
+
+                {currentCase.a.problemList && currentCase.a.problemList.length > 0 ? (
+                  <div className="space-y-2">
+                    {currentCase.a.problemList.map((item, idx) => (
+                      <div
+                        key={idx}
+                        className={`p-2.5 rounded-xl border text-xs leading-relaxed transition-all ${
+                          item.priority === 'life-threatening'
+                            ? 'bg-rose-50/70 border-rose-200 border-l-4 border-l-rose-600 text-rose-950'
+                            : item.priority === 'chronic'
+                            ? 'bg-blue-50/70 border-blue-200 border-l-4 border-l-blue-600 text-blue-950'
+                            : 'bg-amber-50/70 border-amber-200 border-l-4 border-l-amber-500 text-amber-950'
+                        }`}
+                      >
+                        <div className="flex items-center justify-between gap-2 mb-1 flex-wrap">
+                          <div className="flex items-center gap-1.5">
+                            <span
+                              className={`px-1.5 py-0.2 rounded text-[9.5px] font-extrabold uppercase tracking-wide ${
+                                item.priority === 'life-threatening'
+                                  ? 'bg-rose-600 text-white'
+                                  : item.priority === 'chronic'
+                                  ? 'bg-blue-600 text-white'
+                                  : 'bg-amber-500 text-white'
+                              }`}
+                            >
+                              {item.priority === 'life-threatening'
+                                ? 'Tầng 1 · Đe dọa'
+                                : item.priority === 'chronic'
+                                ? 'Tầng 3 · Mạn tính'
+                                : 'Tầng 2 · Cấp tính'}
+                            </span>
+                            <span className="font-bold text-slate-900">{item.problemName}</span>
+                          </div>
+                        </div>
+
+                        {item.evidenceSummary && (
+                          <div className="text-[11px] text-slate-600 mb-1.5">
+                            <span className="font-semibold text-slate-700">Dữ kiện:</span> {item.evidenceSummary}
+                          </div>
+                        )}
+
+                        {(item.diagnosticOrientation || item.immediateManagement) && (
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-[10.5px] pt-1 border-t border-slate-200/60 mt-1">
+                            {item.diagnosticOrientation && (
+                              <div className="bg-white/80 p-1.5 rounded border border-slate-200/80">
+                                <b className="text-sky-800">🔬 CLS đề nghị:</b> {item.diagnosticOrientation}
+                              </div>
+                            )}
+                            {item.immediateManagement && (
+                              <div className="bg-white/80 p-1.5 rounded border border-slate-200/80">
+                                <b className="text-emerald-800">💊 Xử trí tức thì:</b> {item.immediateManagement}
+                              </div>
+                            )}
+                          </div>
+                        )}
+
+                        {item.conflictWarning && (
+                          <div className="mt-1.5 text-[10.5px] text-rose-800 font-semibold bg-white p-1 rounded border border-rose-200">
+                            {item.conflictWarning}
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="p-3 bg-slate-50 border border-slate-200/90 rounded-xl text-[11.5px] text-slate-700 space-y-1.5">
+                    <div className="flex items-center gap-1.5 text-slate-800 font-semibold text-xs">
+                      <span className="w-2 h-2 rounded-full bg-amber-500" />
+                      <span>Vấn đề lâm sàng chủ đạo của ca bệnh:</span>
+                    </div>
+                    <div className="font-medium text-slate-900 pl-3 border-l-2 border-amber-400">
+                      • {currentCase.s.chiefComplaint || currentCase.title}
+                    </div>
+                    {currentCase.s.pastMedicalHistory && (
+                      <div className="text-slate-600 pl-3 border-l-2 border-blue-300 text-[11px]">
+                        • Bệnh nền / Tiền căn đồng mắc: {currentCase.s.pastMedicalHistory}
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+
               {/* 1. Chẩn đoán xác định */}
               <div>
                 <span className="font-bold text-slate-800 uppercase tracking-wider text-[11px] block mb-1.5 flex items-center gap-1.5">

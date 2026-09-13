@@ -7,6 +7,7 @@ Dưới đây là **TOÀN BỘ CODE DỮ LIỆU CẤU TRÚC 4 KHỐI** chuẩn m
 ### KHỐI 1: ENRICHED CDSS JSON
 
 **Lưu vào:** src/content/docspace/data/enriched/sot_xuat_huyet_dengue.json\n
+
 ### ==============================================================================
 
 \json

@@ -59,6 +59,15 @@ updated: "2026-09-08"
 
 ## 3. 🧠 A — Assessment (Chẩn đoán & Biện luận)
 
+### 0. Đặt Vấn Đề (Problem List · 3 Tầng Ưu Tiên)
+> *Theo phương pháp luận PGS.TS Hoàng Văn Sĩ (ĐHYD TPHCM): Đặt vấn đề là bản nâng cấp của tóm tắt bệnh án, phân tầng ưu tiên để ra quyết định lâm sàng và y lệnh cấp cứu song hành.*
+
+| Tầng Ưu Tiên | Vấn Đề Lâm Sàng | Hướng Chẩn Đoán / CLS Đề Nghị | Hướng Xử Trí Tức Thời |
+|---|---|---|---|
+| **Tầng 1** *(Đe dọa sinh hiệu)* | **Tiền sốc sốt xuất huyết do thoát huyết tương (HA kẹp 100/75 mmHg, Mạch 102 ck/p, Hct 46% tăng > 20%, Siêu âm tràn dịch màng phổi/ổ bụng)** | Xét nghiệm Hct mỗi 2-4h để theo dõi động học cô đặc máu, Siêu âm đánh giá dịch màng phổi/bụng | Chỉ định bù dịch tinh thể đường TM ngay: Ringer Lactate 6 mL/kg/giờ trong 2h đầu, theo dõi sát mạch, HA mỗi giờ |
+| **Tầng 2** *(Cấp tính)* | **Sốt xuất huyết Dengue có dấu hiệu cảnh báo ngày thứ 4 (NS1Ag (+), Đau bụng hạ sườn phải, nôn ói nhiều, Tiểu cầu 45 G/L)** | Công thức máu (Hct, Tiểu cầu, Bạch cầu), Men gan (AST/ALT), Đông máu toàn bộ | Nhập viện điều trị nội trú; tuyệt đối KHÔNG dùng NSAID/Aspirin/Corticoid; KHÔNG truyền tiểu cầu dự phòng khi chưa xuất huyết nặng |
+| **Tầng 3** *(Mạn tính & Nguy cơ)* | **Nguy cơ quá tải dịch trong pha tái hấp thu (ngày 6-7)** | Theo dõi cân nặng hàng ngày, nghe phổi phát hiện ran ẩm, đo lượng nước tiểu 24h | Giảm dần tốc độ dịch truyền theo đáp ứng lâm sàng; ngưng truyền dịch dứt khoát khi qua giai đoạn nguy hiểm |
+
 - **Chẩn đoán xác định**: Sốt xuất huyết Dengue có dấu hiệu cảnh báo ngày thứ 4 (Đau bụng hạ sườn phải, nôn ói nhiều, cô đặc máu Hct 46% kèm tiểu cầu tụt dốc, huyết áp kẹp nhẹ 100/75).
 - **Mã ICD-10**:
   - `A97.1` (Sốt xuất huyết Dengue có dấu hiệu cảnh báo)

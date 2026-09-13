@@ -326,7 +326,7 @@ export function analyzeClinicalCase(
       }
 
       // 3. Viêm màng não mủ
-      if (b.id === 'viem_mang_nao') {
+      if (b.id === 'viem_mang_nao' || b.id === 'viem_mang_nao_mu') {
         const epiMatch =
           normalizeText(epiContext.outbreakAlert).includes('nao mo cau') ||
           normalizeText(epiContext.outbreakAlert).includes('viem mang nao');

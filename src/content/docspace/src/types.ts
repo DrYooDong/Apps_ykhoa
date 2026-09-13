@@ -133,13 +133,17 @@ export interface EpidemiologyContext {
   customNotes?: string;       // Ghi chú dịch tễ khác
 }
 
-// Mục Đặt vấn đề (Problem List) theo chuẩn PGS.TS Hoàng Văn Sĩ & BSCKI Trần Thanh Tuấn
+// Mục Đặt vấn đề (Problem List) theo chuẩn Kỹ năng LS Nội khoa & PGS.TS Hoàng Văn Sĩ
 export interface ProblemStatementEntry {
   id: string;
-  label: string;             // Tên vấn đề (VD: Hội chứng nhiễm trùng, Cơn đau ngực cấp, v.v.)
-  type: 'trieu-chung' | 'hoi-chung' | 'dich-te' | 'bat-thuong-cls';
-  isPrimary: boolean;        // Vấn đề CHÍNH được chọn để biện luận chẩn đoán
+  label: string;             // Tên vấn đề (VD: Hội chứng nhiễm trùng, Suy hô hấp cấp, Cơn đau ngực cấp, v.v.)
+  type: 'trieu-chung' | 'hoi-chung' | 'dich-te' | 'bat-thuong-cls' | 'benh-man-tinh';
+  priorityLevel?: 'life-threatening' | 'acute' | 'chronic'; // 3 tầng ưu tiên chuẩn y khoa
+  isPrimary: boolean;        // Vấn đề CHÍNH được chọn để làm trục biện luận chẩn đoán
   evidence: string[];        // Dữ kiện chứng minh (cơ năng, thực thể, CLS)
+  diagnosticPlan?: string;   // Chiến lược chẩn đoán: Đề nghị CLS nào cho vấn đề này?
+  therapeuticPlan?: string;  // Chiến lược điều trị: Can thiệp cấp cứu / Y lệnh ban đầu?
+  conflictNotes?: string;    // Ghi chú xung đột điều trị với các vấn đề khác
   notes?: string;            // Ghi chú biện luận thêm
 }
 
@@ -152,7 +156,16 @@ export interface DiagnosticTriangleSummary {
   primaryOrientation: string;                     // Hướng chẩn đoán nổi trội
 }
 
-
+// Cấu trúc Vấn đề trong Bệnh án SOAP chuẩn y khoa
+export interface SoapProblemItem {
+  order?: number;
+  priority: 'life-threatening' | 'acute' | 'chronic'; // 🔴 Đe dọa tính mạng | 🟡 Cấp tính | 🔵 Mạn tính
+  problemName: string;
+  evidenceSummary?: string;
+  diagnosticOrientation?: string;
+  immediateManagement?: string;
+  conflictWarning?: string;
+}
 
 // SOAP Clinical Experience Interfaces (Kinh nghiệm lâm sàng - Không chứa danh tính bệnh nhân)
 export interface SoapSubjective {
@@ -178,6 +191,7 @@ export interface SoapObjective {
 }
 
 export interface SoapAssessment {
+  problemList?: SoapProblemItem[]; // Bảng Đặt vấn đề chuẩn 3 tầng ưu tiên (bản lề giữa O và A)
   primaryDiagnosis: string; // Chẩn đoán xác định / Chẩn đoán sơ bộ
   icd10: string; // Mã ICD-10 chuẩn hóa
   differentials: string[]; // Chẩn đoán phân biệt cần loại trừ

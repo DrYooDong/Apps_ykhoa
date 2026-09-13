@@ -6,10 +6,39 @@
 const fs = require('fs');
 const path = require('path');
 
-const CATALOG_PATH = path.resolve(__dirname, '../../src/content/knowledge-vault/data/vault-catalog.json');
-const catalog = JSON.parse(fs.readFileSync(CATALOG_PATH, 'utf-8'));
+const DATA_DIR = path.resolve(__dirname, '../../src/content/knowledge-vault/data');
+const SPLIT_FILES = [
+  'vault-catalog-co-so.json',
+  'vault-catalog-chuyen-sau.json',
+  'vault-catalog-thuc-hanh.json',
+  'vault-catalog-ho-tro.json'
+];
 
-console.log(`[LINT] Total indexed articles: ${catalog.length}`);
+let totalSplitArticles = 0;
+const splitCatalogs = SPLIT_FILES.map(file => {
+  const filePath = path.join(DATA_DIR, file);
+  if (!fs.existsSync(filePath)) {
+    throw new Error(`Missing split catalog file: ${file}`);
+  }
+  const items = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+  console.log(`[LINT-SPLIT] File ${file.padEnd(30)}: ${items.length} articles`);
+  totalSplitArticles += items.length;
+  return items;
+});
+
+const catalog = splitCatalogs.flat();
+console.log(`[LINT] Total indexed articles across 4 modular files: ${catalog.length}`);
+
+// Verify master file sync
+const MASTER_PATH = path.join(DATA_DIR, 'vault-catalog.json');
+if (fs.existsSync(MASTER_PATH)) {
+  const masterCatalog = JSON.parse(fs.readFileSync(MASTER_PATH, 'utf-8'));
+  if (masterCatalog.length !== catalog.length) {
+    console.warn(`[LINT WARNING] Master catalog length (${masterCatalog.length}) != split total (${catalog.length})`);
+  } else {
+    console.log(`[LINT] Master catalog sync verified: 100% matched (${masterCatalog.length} articles)`);
+  }
+}
 
 // 1. Check articles per khoCode
 const khoCounts = {};

@@ -150,8 +150,16 @@ src/content/knowledge-vault/
 │   ├── vault-hub.css                   # Bento Grid, Filters, Cards, Ribbon & Themes
 │   └── vault-crce.css                  # UI Chuỗi phản ứng lâm sàng 5 bước CRCE v3.0
 │
-├── data/                               # Cơ sở dữ liệu danh mục hạt nhân
-│   └── vault-catalog.json              # File JSON 2.2MB chứa 2.400+ bài viết đã chỉ mục hóa
+├── data/                               # Cơ sở dữ liệu danh mục hạt nhân (Mô-đun hóa)
+│   ├── vault-catalog-co-so.json        # Nhóm Cơ sở: GPSL, HS, SLB, DTH, KN (~425 KB)
+│   ├── vault-catalog-chuyen-sau.json   # Nhóm Chuyên sâu: TC, CLS, CD, PDDT, CN, DUOC, TV, BC (~424 KB)
+│   ├── vault-catalog-thuc-hanh.json    # Nhóm Thực hành: Bệnh án SOAP (BA) (~22 KB)
+│   ├── vault-catalog-ho-tro.json       # Nhóm Hỗ trợ: DD, CC, EBM, CDSS, ICD10, CORE (~172 KB)
+│   ├── clinical-rules-symptoms.json    # Danh mục từ vựng 195+ triệu chứng CDSS (~51 KB)
+│   ├── clinical-rules-diseases.json    # Ma trận suy luận & phác đồ 32 bệnh cốt lõi (~98 KB)
+│   ├── sample-clinical-cases.json      # Ca bệnh lâm sàng mẫu (~6 KB)
+│   ├── vault-catalog.json              # Master Catalog Sync (Tương thích ngược)
+│   └── clinical-rules-kb.json          # Master Clinical Rules KB Sync (Tương thích ngược)
 │
 ├── protocols/                          # Phân hệ Phác đồ điều trị động (Living Protocols)
 │   ├── registry/                       # Kho dữ liệu phác đồ chuyên khoa có Type Safety

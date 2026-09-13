@@ -60,6 +60,16 @@ updated: "2026-09-08"
 
 ## 3. 🧠 A — Assessment (Chẩn đoán & Biện luận)
 
+### 0. Đặt Vấn Đề (Problem List · 3 Tầng Ưu Tiên)
+> *Theo phương pháp luận PGS.TS Hoàng Văn Sĩ (ĐHYD TPHCM): Đặt vấn đề là bản nâng cấp của tóm tắt bệnh án, phân tầng ưu tiên để ra quyết định lâm sàng và y lệnh cấp cứu song hành.*
+
+| Tầng Ưu Tiên | Vấn Đề Lâm Sàng | Hướng Chẩn Đoán / CLS Đề Nghị | Hướng Xử Trí Tức Thời |
+|---|---|---|---|
+| **Tầng 1** *(Đe dọa sinh hiệu)* | **Hạ thân nhiệt (35.6°C) + Tụt HA (85/50 mmHg) + Tăng Lactate (3.8 mmol/L) ➔ Sốc nhiễm trùng nghi do Sepsis-3** | Khí máu động mạch, Lactate máu nối tiếp mỗi 2-4h, Cấy máu 2 bộ, Procalcitonin | Hồi sức dịch tinh thể Ringer Lactate 30 mL/kg trong 3h đầu; khởi động Noradrenaline nếu MAP &lt; 65 mmHg; ủ ấm chủ động |
+| **Tầng 1** *(Đe dọa sinh hiệu)* | **Suy hô hấp cấp giảm oxy máu (SpO₂ 88%, Thở nhanh 32 l/p, PaO₂ 58 mmHg)** | X-quang phổi tại giường, theo dõi PaCO₂ và pH máu | Thở oxy qua mask túi 10-15 L/phút; sẵn sàng đặt nội khí quản thở máy xâm lấn nếu suy tri giác hoặc toan máu tăng |
+| **Tầng 2** *(Cấp tính)* | **Hội chứng đông đặc thùy dưới phổi phải ➔ Viêm phổi cộng đồng nặng (CURB-65 = 4 điểm)** | X-quang ngực thẳng, Cấy đàm định lượng vi khuẩn và làm kháng sinh đồ | Kháng sinh phổ rộng tĩnh mạch trong 1 giờ đầu (Golden Hour): Ceftriaxone 2g TM + Levofloxacin 750mg TM |
+| **Tầng 3** *(Mạn tính)* | **Tiền căn Bệnh phổi tắc nghẽn mạn tính (COPD độ II) &amp; Tăng huyết áp 15 năm** | Khí dung giãn phế quản; theo dõi bẫy khí và ứ trệ CO₂ | Khí dung Berodual; mục tiêu SpO₂ duy trì 88-92% khi qua cơn nguy kịch để tránh ức chế hô hấp; tạm hoãn thuốc hạ áp |
+
 - **Chẩn đoán xác định**: Viêm phổi cộng đồng nặng (CURB-65 = 4 điểm, PSI nhóm V) biến chứng Nhiễm khuẩn huyết (Sepsis-3) có tụt huyết áp / COPD đợt cấp, Tăng huyết áp.
 - **Mã ICD-10**:
   - `J18.9` (Viêm phổi không đặc hiệu)

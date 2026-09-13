@@ -57,8 +57,8 @@ src/content/docspace/
 │   │   └── vaultBridge.ts      # 🌉 Cầu nối 2.400+ bài viết EBM Knowledge Vault
 │   ├── data/
 │   │   ├── seedData.ts         # Wrapper nạp quy tắc từ Knowledge Vault
-│   │   ├── clinical-rules-kb.json # Quy tắc suy luận bệnh & triệu chứng
-│   │   └── vault-catalog.json  # Catalog 2.400+ bài viết Knowledge Vault & ca SOAP (BA)
+│   │   ├── vault-catalog-*.json # 4 phân nhóm danh mục Vault (Cơ sở, Chuyên sâu, Thực hành, Hỗ trợ)
+│   │   └── vault-catalog.json  # Master Catalog 868+ bài viết Knowledge Vault & ca SOAP (BA)
 │   └── components/
 │       ├── Header.tsx          # Topbar điều hướng chuyển đổi 3 phân hệ
 │       ├── StepNav.tsx         # Thanh điều hướng Chu trình lâm sàng 3 bước

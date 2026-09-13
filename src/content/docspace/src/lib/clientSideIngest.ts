@@ -4,7 +4,7 @@
  * Hỗ trợ Cascade Matching 6 cấp độ cho các tiêu đề và định dạng khác nhau.
  */
 
-import { SoapClinicalExperience, SoapPlanMedication } from '../types.ts';
+import { SoapClinicalExperience, SoapPlanMedication, SoapProblemItem } from '../types.ts';
 
 export interface IngestValidation {
   score: number; // 0 - 100
@@ -380,6 +380,66 @@ export function parseNotebookLmSoapMarkdown(rawText: string): IngestResult {
   }
 
   // 3. Phân tích A (Assessment)
+  // Trích xuất Bảng Đặt Vấn Đề (Problem List · 3 Tầng Ưu Tiên) nếu có
+  const problemList: SoapProblemItem[] = [];
+  const problemSectionText =
+    extractBlockFuzzy(sections.a, [
+      'Bảng Đặt Vấn Đề',
+      'Đặt Vấn Đề',
+      'Problem List',
+      'Danh sách vấn đề',
+    ]) || '';
+
+  if (problemSectionText) {
+    const lines = problemSectionText.split(/\r?\n/);
+    for (const line of lines) {
+      const trimmed = line.trim();
+      // Parse markdown table row: | Tầng 1 | Tên vấn đề | CLS | Xử trí |
+      if (trimmed.startsWith('|') && !trimmed.includes('---') && !trimmed.toLowerCase().includes('ưu tiên')) {
+        const cols = trimmed
+          .split('|')
+          .map((c) => c.trim())
+          .filter((_, idx, arr) => idx > 0 && idx < arr.length - 1);
+        if (cols.length >= 2) {
+          const priorityRaw = cols[0].toLowerCase();
+          const priority: 'life-threatening' | 'acute' | 'chronic' =
+            priorityRaw.includes('1') ||
+            priorityRaw.includes('đe dọa') ||
+            priorityRaw.includes('threat') ||
+            priorityRaw.includes('khẩn')
+              ? 'life-threatening'
+              : priorityRaw.includes('3') ||
+                priorityRaw.includes('mạn') ||
+                priorityRaw.includes('chronic') ||
+                priorityRaw.includes('tiền căn')
+              ? 'chronic'
+              : 'acute';
+          problemList.push({
+            order: problemList.length + 1,
+            priority,
+            problemName: cols[1].replace(/[*_`]/g, '').trim(),
+            diagnosticOrientation: cols[2] ? cols[2].replace(/[*_`]/g, '').trim() : undefined,
+            immediateManagement: cols[3] ? cols[3].replace(/[*_`]/g, '').trim() : undefined,
+          });
+        }
+      } else if (trimmed.startsWith('- ') || trimmed.startsWith('* ') || /^\d+\./.test(trimmed)) {
+        const cleanLine = trimmed.replace(/^[-*\d.]+\s*/, '').trim();
+        const lower = cleanLine.toLowerCase();
+        const priority: 'life-threatening' | 'acute' | 'chronic' =
+          lower.includes('tầng 1') || lower.includes('đe dọa') || lower.includes('nguy kịch')
+            ? 'life-threatening'
+            : lower.includes('tầng 3') || lower.includes('mạn tính') || lower.includes('tiền căn')
+            ? 'chronic'
+            : 'acute';
+        problemList.push({
+          order: problemList.length + 1,
+          priority,
+          problemName: cleanLine.replace(/\[.*?\]/, '').trim(),
+        });
+      }
+    }
+  }
+
   const primaryDiagnosis =
     extractFieldFuzzy(sections.a, ['Chẩn đoán xác định', 'Chẩn đoán sơ bộ', 'Chẩn đoán chính', 'Primary Diagnosis']) ||
     frontmatter.title ||
@@ -531,6 +591,7 @@ export function parseNotebookLmSoapMarkdown(rawText: string): IngestResult {
       objectivePitfalls,
     },
     a: {
+      problemList: problemList.length > 0 ? problemList : undefined,
       primaryDiagnosis: primaryDiagnosis || 'Đang cập nhật',
       icd10,
       differentials,

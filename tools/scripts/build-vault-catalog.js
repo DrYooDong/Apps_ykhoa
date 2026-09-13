@@ -8,8 +8,18 @@ const fs = require('fs');
 const path = require('path');
 
 const VAULT_ROOT = path.resolve(__dirname, '../../knowledge-vault');
-const OUTPUT_FILE = path.resolve(__dirname, '../../src/content/knowledge-vault/data/vault-catalog.json');
-const DOCSPACE_OUTPUT_FILE = path.resolve(__dirname, '../../src/content/docspace/src/data/vault-catalog.json');
+const VAULT_DATA_DIR = path.resolve(__dirname, '../../src/content/knowledge-vault/data');
+const DOCSPACE_DATA_DIR = path.resolve(__dirname, '../../src/content/docspace/src/data');
+
+const OUTPUT_FILE = path.join(VAULT_DATA_DIR, 'vault-catalog.json');
+const DOCSPACE_OUTPUT_FILE = path.join(DOCSPACE_DATA_DIR, 'vault-catalog.json');
+
+const CATALOG_SPLIT_NAMES = {
+  coSo: 'vault-catalog-co-so.json',
+  chuyenSau: 'vault-catalog-chuyen-sau.json',
+  thucHanh: 'vault-catalog-thuc-hanh.json',
+  hoTro: 'vault-catalog-ho-tro.json'
+};
 
 const KHO_MAPPINGS = [
   // 1. Nhóm Cơ sở
@@ -260,14 +270,33 @@ function scanVault() {
     if (khoStats['CORE']) khoStats['CORE'].count++;
   }
 
-  // Ensure output directory exists for Knowledge Vault Hub
-  const outDir = path.dirname(OUTPUT_FILE);
-  if (!fs.existsSync(outDir)) fs.mkdirSync(outDir, { recursive: true });
-  fs.writeFileSync(OUTPUT_FILE, JSON.stringify(catalog, null, 2), 'utf-8');
+  // Split catalog into 4 architectural groups
+  const coSoCodes = new Set(['GPSL', 'HS', 'SLB', 'DTH', 'KN']);
+  const chuyenSauCodes = new Set(['TC', 'CLS', 'CD', 'PDDT', 'CN', 'DUOC', 'TV', 'BC']);
+  const thucHanhCodes = new Set(['BA']);
+  const hoTroCodes = new Set(['DD', 'CC', 'EBM', 'CDSS', 'ICD10', 'CORE']);
 
-  // Ensure output directory exists for DocSpace MedLens
-  const docspaceOutDir = path.dirname(DOCSPACE_OUTPUT_FILE);
-  if (!fs.existsSync(docspaceOutDir)) fs.mkdirSync(docspaceOutDir, { recursive: true });
+  const groups = {
+    coSo: catalog.filter(art => coSoCodes.has(art.khoCode) || art.khoGroup === 'Cơ sở'),
+    chuyenSau: catalog.filter(art => chuyenSauCodes.has(art.khoCode) || art.khoGroup === 'Chuyên sâu'),
+    thucHanh: catalog.filter(art => thucHanhCodes.has(art.khoCode) || art.khoGroup === 'Thực hành'),
+    hoTro: catalog.filter(art => hoTroCodes.has(art.khoCode) || art.khoGroup === 'Hỗ trợ')
+  };
+
+  // Ensure output directories exist
+  if (!fs.existsSync(VAULT_DATA_DIR)) fs.mkdirSync(VAULT_DATA_DIR, { recursive: true });
+  if (!fs.existsSync(DOCSPACE_DATA_DIR)) fs.mkdirSync(DOCSPACE_DATA_DIR, { recursive: true });
+
+  // Write split files to both Vault Hub and DocSpace
+  Object.entries(CATALOG_SPLIT_NAMES).forEach(([key, filename]) => {
+    const groupData = groups[key] || [];
+    const jsonStr = JSON.stringify(groupData, null, 2);
+    fs.writeFileSync(path.join(VAULT_DATA_DIR, filename), jsonStr, 'utf-8');
+    fs.writeFileSync(path.join(DOCSPACE_DATA_DIR, filename), jsonStr, 'utf-8');
+  });
+
+  // Write master synchronized catalog for backward compatibility
+  fs.writeFileSync(OUTPUT_FILE, JSON.stringify(catalog, null, 2), 'utf-8');
   fs.writeFileSync(DOCSPACE_OUTPUT_FILE, JSON.stringify(catalog, null, 2), 'utf-8');
 
   // Print Summary Stats Table
@@ -286,11 +315,15 @@ function scanVault() {
   console.log('=============================================================');
   console.log(` Tổng số file Markdown trên disk : ${totalDiskFiles}`);
   console.log(` Tổng số bài viết đã lập chỉ mục : ${catalog.length}`);
+  console.log(` - Cơ sở       (co-so)            : ${groups.coSo.length} bài viết`);
+  console.log(` - Chuyên sâu  (chuyen-sau)       : ${groups.chuyenSau.length} bài viết`);
+  console.log(` - Thực hành   (thuc-hanh)        : ${groups.thucHanh.length} bài viết`);
+  console.log(` - Hỗ trợ      (ho-tro)           : ${groups.hoTro.length} bài viết`);
   console.log(` Số file tạm / raw bỏ qua        : ${skippedFiles}`);
   console.log(` Cảnh báo / Parse issues         : ${warnings.length}`);
   console.log('=============================================================');
-  console.log(`✅ [1/2] Đã lưu Vault Hub: ${OUTPUT_FILE}`);
-  console.log(`✅ [2/2] Đã sync DocSpace: ${DOCSPACE_OUTPUT_FILE}\n`);
+  console.log(`✅ [1/2] Đã lưu 4 phân nhóm + Master Vault Hub: ${VAULT_DATA_DIR}`);
+  console.log(`✅ [2/2] Đã sync 4 phân nhóm + Master DocSpace: ${DOCSPACE_DATA_DIR}\n`);
 
   if (warnings.length > 0 && warnings.length <= 10) {
     console.log('⚠️ Chi tiết cảnh báo:');

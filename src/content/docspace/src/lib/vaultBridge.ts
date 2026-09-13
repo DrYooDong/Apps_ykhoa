@@ -3,7 +3,10 @@
  * Kết nối ứng dụng MedLens với 2.400+ bài viết Y học chứng cứ (EBM) từ Knowledge Vault
  */
 
-import rawCatalog from '@vault/data/vault-catalog.json';
+import catCoSo from '@vault/data/vault-catalog-co-so.json';
+import catChuyenSau from '@vault/data/vault-catalog-chuyen-sau.json';
+import catThucHanh from '@vault/data/vault-catalog-thuc-hanh.json';
+import catHoTro from '@vault/data/vault-catalog-ho-tro.json';
 import {
   VaultArticle,
   VaultKhoSummary,
@@ -15,7 +18,12 @@ export type { VaultArticle, VaultKhoSummary, ClinicalPathwayLinks };
 export { KHO_DEFINITIONS };
 
 // Singleton catalog
-export const VAULT_CATALOG: VaultArticle[] = rawCatalog as VaultArticle[];
+export const VAULT_CATALOG: VaultArticle[] = [
+  ...(catCoSo as VaultArticle[]),
+  ...(catChuyenSau as VaultArticle[]),
+  ...(catThucHanh as VaultArticle[]),
+  ...(catHoTro as VaultArticle[]),
+];
 
 /**
  * Lấy danh sách thống kê các Kho tri thức

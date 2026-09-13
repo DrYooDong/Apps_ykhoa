@@ -16,9 +16,14 @@ import fs from 'fs';
 import path from 'path';
 
 const VAULT_ROOT = 'd:/Apps/Apps_ykhoa/src/content/knowledge-vault';
-const VAULT_CATALOG_PATH = path.join(VAULT_ROOT, 'data/vault-catalog.json');
+const VAULT_DATA_DIR = path.join(VAULT_ROOT, 'data');
+const VAULT_CATALOG_PATH = path.join(VAULT_DATA_DIR, 'vault-catalog.json');
+const VAULT_THUCHANH_PATH = path.join(VAULT_DATA_DIR, 'vault-catalog-thuc-hanh.json');
 const VAULT_BA_DIR = path.join(VAULT_ROOT, 'ba');
-const DOCSPACE_CATALOG_PATH = 'd:/Apps/Apps_ykhoa/src/content/docspace/src/data/vault-catalog.json';
+
+const DOCSPACE_DATA_DIR = 'd:/Apps/Apps_ykhoa/src/content/docspace/src/data';
+const DOCSPACE_CATALOG_PATH = path.join(DOCSPACE_DATA_DIR, 'vault-catalog.json');
+const DOCSPACE_THUCHANH_PATH = path.join(DOCSPACE_DATA_DIR, 'vault-catalog-thuc-hanh.json');
 
 /**
  * Hàm phân tích YAML Frontmatter đơn giản không cần external dependencies
@@ -86,6 +91,12 @@ function parseFrontmatter(rawText) {
  */
 function extractSoapBody(bodyText) {
   const patterns = [
+    {
+      s: /(?:^|\n)#{2,4}\s*(?:1[.)]\s*)?(?:📝\s*)?(?:S\b|Chủ quan|Subjective)[^\n]*\n([\s\S]*?)(?=(?:^|\n)#{2,4}\s*(?:2[.)]\s*)?(?:🔬\s*)?(?:O\b|Khách quan|Objective)|$)/i,
+      o: /(?:^|\n)#{2,4}\s*(?:2[.)]\s*)?(?:🔬\s*)?(?:O\b|Khách quan|Objective)[^\n]*\n([\s\S]*?)(?=(?:^|\n)#{2,4}\s*(?:3[.)]\s*)?(?:🧠\s*)?(?:A\b|Đánh giá|Biện luận|Assessment)|$)/i,
+      a: /(?:^|\n)#{2,4}\s*(?:3[.)]\s*)?(?:🧠\s*)?(?:A\b|Đánh giá|Biện luận|Assessment)[^\n]*\n([\s\S]*?)(?=(?:^|\n)#{2,4}\s*(?:4[.)]\s*)?(?:📋\s*)?(?:P\b|Kế hoạch|Xử trí|Plan)|$)/i,
+      p: /(?:^|\n)#{2,4}\s*(?:4[.)]\s*)?(?:📋\s*)?(?:P\b|Kế hoạch|Xử trí|Plan)[^\n]*\n([\s\S]*?)$/i,
+    },
     {
       s: /(?:^|\n)##\s*1\.\s*📝?\s*S[^\n]*\n([\s\S]*?)(?=(?:^|\n)##\s*2\.|$)/i,
       o: /(?:^|\n)##\s*2\.\s*🔬?\s*O[^\n]*\n([\s\S]*?)(?=(?:^|\n)##\s*3\.|$)/i,
@@ -197,34 +208,40 @@ function extractSoapBody(bodyText) {
 }
 
 function extractField(sectionText, fieldLabel) {
-  const regex = new RegExp(`-\\s*\\*\\*${fieldLabel}\\*\\*\\s*:\\s*([^\n]+)`, 'i');
+  const escaped = fieldLabel.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const regex = new RegExp(`(?:^|\\n)\\s*(?:[-*]|\\d+\\.)\\s*\\*\\*${escaped}\\*\\*\\s*:\\s*([^\\n]+)`, 'i');
   const m = sectionText.match(regex);
   return m ? m[1].trim() : null;
 }
 
 function extractVitalsField(text, name) {
-  const regex = new RegExp(`-\\s*${name}\\s*:\\s*([^\\n,]+)`, 'i');
+  const escaped = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const regex = new RegExp(`(?:^|\\n)\\s*(?:[-*]|\\d+\\.)\\s*\\*\\*?${escaped}\\*\\*?\\s*:\\s*\\*?\\*?\\s*([0-9]+(?:\\.[0-9]+)?(?:\\/[0-9]+)?)`, 'i');
   const m = text.match(regex);
-  return m ? m[1].trim().replace(/[^\d./]/g, '') : undefined;
+  if (m) return m[1].trim();
+  const fallbackRegex = new RegExp(`(?:^|\\n)\\s*(?:[-*]|\\d+\\.)\\s*\\*\\*?${escaped}\\*\\*?\\s*:\\s*([^\\n,]+)`, 'i');
+  const fm = text.match(fallbackRegex);
+  return fm ? fm[1].trim().replace(/[^\d./]/g, '').replace(/\/+$/, '') : undefined;
 }
 
 function extractListItems(sectionText, headerLabel) {
-  const regex = new RegExp(`-\\s*\\*\\*${headerLabel}\\*\\*\\s*:?\\s*\\n([\\s\\S]*?)(?=\\n-\\s*\\*\\*|$)`, 'i');
+  const escaped = headerLabel.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const regex = new RegExp(`(?:^|\\n)\\s*(?:[-*]|\\d+\\.)\\s*\\*\\*${escaped}\\*\\*\\s*:?\\s*\\n([\\s\\S]*?)(?=\\n\\s*(?:[-*]|\\d+\\.)\\s*\\*\\*|$)`, 'i');
   const m = sectionText.match(regex);
   if (!m) return [];
   return m[1]
     .split(/\r?\n/)
-    .map((l) => l.trim().replace(/^-\s*/, ''))
+    .map((l) => l.trim().replace(/^(?:[-*]|\d+\.)\s*/, ''))
     .filter(Boolean);
 }
 
 function extractMedications(pText) {
   const meds = [];
-  const regex = /-\s*\*\*([^*\n]+)\*\*\s*:\s*([^(\n]+)\(([^)\n]+)\)(?:\s*[—–-]\s*\*([^*\n]+)\*)?/g;
+  const regex1 = /(?:[-*]|\d+\.)\s*\*\*([^*\n]+)\*\*\s*:\s*([^(\n]+)\(([^)\n]+)\)(?:\s*[—–-]\s*\*([^*\n]+)\*)?/g;
   let m;
-  while ((m = regex.exec(pText)) !== null) {
+  while ((m = regex1.exec(pText)) !== null) {
     const drugName = m[1].trim();
-    if (/^(Xử trí|Theo dõi|Tiêu chuẩn|Hội chẩn|Lưu ý|Chỉ tiêu)/i.test(drugName)) continue;
+    if (/^(Xử trí|Theo dõi|Tiêu chuẩn|Hội chẩn|Lưu ý|Chỉ tiêu|Y lệnh|Quản lý|Dự phòng|Mục tiêu)/i.test(drugName)) continue;
     meds.push({
       drug: drugName,
       dose: m[2].trim(),
@@ -232,6 +249,27 @@ function extractMedications(pText) {
       note: m[4] ? m[4].trim() : '',
     });
   }
+
+  if (meds.length === 0) {
+    // Thử trích xuất định dạng danh sách lồng: 1. **Dexamethasone 10 mg**:\n * *Liều dùng*: ...
+    const blocks = pText.split(/(?:^|\n)\s*(?:\d+\.|\*|-)\s*\*\*/);
+    for (const block of blocks.slice(1)) {
+      const endNameIdx = block.indexOf('**');
+      if (endNameIdx <= 0) continue;
+      const drugName = block.slice(0, endNameIdx).trim();
+      if (/^(Xử trí|Theo dõi|Tiêu chuẩn|Hội chẩn|Lưu ý|Chỉ tiêu|Y lệnh|Quản lý|Dự phòng|Mục tiêu)/i.test(drugName)) continue;
+      const doseMatch = block.match(/\*(?:Liều dùng|Tốc độ|Chỉ định)\*:\s*([^\n]+)/i);
+      const routeMatch = block.match(/\*Cách dùng\*:\s*([^\n]+)/i);
+      const purposeMatch = block.match(/\*Mục đích\*:\s*([^\n]+)/i);
+      meds.push({
+        drug: drugName,
+        dose: doseMatch ? doseMatch[1].trim() : '',
+        route: routeMatch ? routeMatch[1].trim() : '',
+        note: purposeMatch ? purposeMatch[1].trim() : '',
+      });
+    }
+  }
+
   return meds;
 }
 
@@ -390,14 +428,20 @@ Ví dụ:
     }
   }
 
-  // Ghi lại catalog Knowledge Vault
+  // Lọc riêng các bài viết Thực hành (BA)
+  const thucHanhArticles = catalog.filter((a) => a.khoCode === 'BA' || a.khoGroup === 'Thực hành');
+
+  // Ghi lại catalog Knowledge Vault (cả phân nhóm Thực hành và Master)
+  fs.writeFileSync(VAULT_THUCHANH_PATH, JSON.stringify(thucHanhArticles, null, 2), 'utf-8');
   fs.writeFileSync(VAULT_CATALOG_PATH, JSON.stringify(catalog, null, 2), 'utf-8');
-  console.log(`\n💾 Đã lưu catalog Knowledge Vault: ${VAULT_CATALOG_PATH}`);
+  console.log(`\n💾 Đã lưu catalog Knowledge Vault (${thucHanhArticles.length} ca BA): ${VAULT_THUCHANH_PATH}`);
+  console.log(`💾 Đã cập nhật master catalog Knowledge Vault: ${VAULT_CATALOG_PATH}`);
 
   // Đồng bộ sang DocSpace catalog nếu có
-  if (fs.existsSync(DOCSPACE_CATALOG_PATH)) {
+  if (fs.existsSync(DOCSPACE_DATA_DIR)) {
+    fs.writeFileSync(DOCSPACE_THUCHANH_PATH, JSON.stringify(thucHanhArticles, null, 2), 'utf-8');
     fs.writeFileSync(DOCSPACE_CATALOG_PATH, JSON.stringify(catalog, null, 2), 'utf-8');
-    console.log(`🔄 Đã đồng bộ sang DocSpace: ${DOCSPACE_CATALOG_PATH}`);
+    console.log(`🔄 Đã đồng bộ sang DocSpace: ${DOCSPACE_THUCHANH_PATH}`);
   }
 
   console.log(`
