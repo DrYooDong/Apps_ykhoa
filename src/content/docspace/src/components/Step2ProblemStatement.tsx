@@ -76,25 +76,23 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
     return kb.trieuChung.filter((tc) => negatedIds.has(tc.id));
   }, [kb.trieuChung, negatedIds]);
 
-  // Sinh văn bản Tóm tắt bệnh án tự động theo chuẩn BSCKI Trần Thanh Tuấn
-  const generatedSummary = useMemo(() => {
-    const genderStr = form.gioiTinh === 'nam' ? 'nam' : form.gioiTinh === 'nu' ? 'nữ' : 'người bệnh';
+  // Dữ liệu phân đoạn chuẩn hóa của Tóm tắt bệnh án
+  const summaryStructure = useMemo(() => {
+    const genderStr = form.gioiTinh === 'nam' ? 'Nam' : form.gioiTinh === 'nu' ? 'Nữ' : 'Người bệnh';
     const ageStr = form.tuoi ? `${form.tuoi} tuổi` : 'chưa rõ tuổi';
     const reasonStr = form.lyDo || 'chưa ghi nhận';
-    
-    // Gom triệu chứng cơ năng
+
+    // 1. Triệu chứng cơ năng
     const cnList: string[] = [];
     if (form.text.cn.trim()) cnList.push(form.text.cn.trim());
     const cnSymptoms = selectedSymptoms
       .filter((s) => s.loai.includes('cn'))
       .map((s) => s.ten);
     if (cnSymptoms.length > 0) {
-      cnList.push(cnSymptoms.join(', '));
+      cnList.push(`Dấu hiệu ghi nhận: ${cnSymptoms.join(', ')}`);
     }
 
-    // Gom triệu chứng thực thể
-    const ttList: string[] = [];
-    // Sinh hiệu bất thường
+    // 2. Triệu chứng thực thể
     const vitalAnomalies: string[] = [];
     const tempNum = parseFloat(vitals.vNhiet);
     if (!isNaN(tempNum) && tempNum >= 38) vitalAnomalies.push(`Sốt ${vitals.vNhiet}°C`);
@@ -102,74 +100,122 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
     if (!isNaN(pulseNum) && (pulseNum > 100 || pulseNum < 60)) vitalAnomalies.push(`Mạch ${vitals.vMach} l/p`);
     const sbp = parseFloat(vitals.vHATT);
     const dbp = parseFloat(vitals.vHATTr);
-    if (!isNaN(sbp) && !isNaN(dbp) && (sbp >= 140 || sbp <= 90)) vitalAnomalies.push(`Huyết áp ${vitals.vHATT}/${vitals.vHATTr} mmHg`);
+    if (!isNaN(sbp) && !isNaN(dbp)) {
+      const isNarrow = sbp - dbp <= 20;
+      if (sbp >= 140 || sbp <= 90 || isNarrow) {
+        vitalAnomalies.push(`Huyết áp ${vitals.vHATT}/${vitals.vHATTr} mmHg${isNarrow ? ' (Hiệu áp kẹp ≤ 20 mmHg)' : ''}`);
+      }
+    }
     const respNum = parseFloat(vitals.vTho);
     if (!isNaN(respNum) && respNum > 22) vitalAnomalies.push(`Thở ${vitals.vTho} l/p`);
     const spo2Num = parseFloat(vitals.vSpo2);
     if (!isNaN(spo2Num) && spo2Num < 95) vitalAnomalies.push(`SpO₂ ${vitals.vSpo2}%`);
 
-    if (vitalAnomalies.length > 0) ttList.push(vitalAnomalies.join(', '));
-    if (form.text.tt.trim()) ttList.push(form.text.tt.trim());
+    const examList: string[] = [];
+    if (form.text.tt.trim()) examList.push(form.text.tt.trim());
     const ttSymptoms = selectedSymptoms
       .filter((s) => s.loai.includes('tt'))
       .map((s) => s.ten);
-    if (ttSymptoms.length > 0) ttList.push(ttSymptoms.join(', '));
+    if (ttSymptoms.length > 0) examList.push(`Dấu hiệu thực thể: ${ttSymptoms.join(', ')}`);
 
-    // Gom yếu tố Dịch tễ học (Tam giác chẩn đoán)
+    // 3. Yếu tố Dịch tễ học (Góc nhìn truyền nhiễm)
     const epiList: string[] = [];
-    if (epiContext.contactHistory.trim()) epiList.push(`Tiếp xúc: ${epiContext.contactHistory.trim()}`);
-    if (epiContext.travelHistory.trim()) epiList.push(`Du lịch/Đi lại: ${epiContext.travelHistory.trim()}`);
-    if (epiContext.endemicArea.trim()) epiList.push(`Vùng lưu hành: ${epiContext.endemicArea.trim()}`);
-    if (epiContext.seasonalContext.trim()) epiList.push(`Mùa dịch: ${epiContext.seasonalContext.trim()}`);
-    if (epiContext.outbreakAlert.trim()) epiList.push(`Ổ dịch lưu hành: ${epiContext.outbreakAlert.trim()}`);
-    if (epiContext.vectorExposure.trim()) epiList.push(`Tiếp xúc vector/động vật: ${epiContext.vectorExposure.trim()}`);
+    if (epiContext.endemicArea.trim()) epiList.push(`Vùng dịch tễ lưu hành: ${epiContext.endemicArea.trim()}`);
+    if (epiContext.outbreakAlert.trim()) epiList.push(`Ổ dịch địa phương: ${epiContext.outbreakAlert.trim()}`);
+    if (epiContext.vectorExposure.trim()) epiList.push(`Tiếp xúc vector: ${epiContext.vectorExposure.trim()}`);
+    if (epiContext.contactHistory.trim()) epiList.push(`Tiếp xúc nguồn lây: ${epiContext.contactHistory.trim()}`);
+    if (epiContext.travelHistory.trim()) epiList.push(`Tiền sử đi lại: ${epiContext.travelHistory.trim()}`);
+    if (epiContext.seasonalContext.trim()) epiList.push(`Bối cảnh mùa dịch: ${epiContext.seasonalContext.trim()}`);
     if (epiContext.waterFoodRisk.trim()) epiList.push(`Nguồn nước/thực phẩm: ${epiContext.waterFoodRisk.trim()}`);
 
-    // Gom Cận lâm sàng ban đầu
-    const clsList: string[] = [];
+    // 4. Cận lâm sàng ban đầu
     const labItems: string[] = [];
     if (labs.lBC) labItems.push(`Bạch cầu ${labs.lBC} G/L`);
     if (labs.lTC) labItems.push(`Tiểu cầu ${labs.lTC} G/L`);
     if (labs.lHct) labItems.push(`Hct ${labs.lHct}%`);
     if (labs.lGlu) labItems.push(`Glucose ${labs.lGlu} mmol/L`);
     if (labs.lTrop) labItems.push(`Troponin ${labs.lTrop} ng/L`);
-    if (labItems.length > 0) clsList.push(labItems.join(', '));
-    if (form.text.cls.trim()) clsList.push(form.text.cls.trim());
+    const clsNarrative: string[] = [];
+    if (form.text.cls.trim()) clsNarrative.push(form.text.cls.trim());
 
-    // Tiền căn
+    // 5. Tiền căn
     const tcList: string[] = [];
     if (form.text.tc.trim()) tcList.push(form.text.tc.trim());
     const tcSymptoms = selectedSymptoms.filter((s) => s.loai.includes('tc')).map((s) => s.ten);
-    if (tcSymptoms.length > 0) tcList.push(tcSymptoms.join(', '));
+    if (tcSymptoms.length > 0) tcList.push(`Tiền sử: ${tcSymptoms.join(', ')}`);
 
-    // Dấu hiệu âm tính có giá trị
+    // 6. Dấu hiệu âm tính có giá trị loại trừ
     const negList = negatedSymptoms.map((s) => `Không ${s.ten.toLowerCase()}`);
 
-    let text = `Bệnh nhân ${genderStr}, ${ageStr}, vào viện vì lý do ${reasonStr}.\n`;
-    text += `Qua hỏi bệnh và thăm khám lâm sàng, ghi nhận các vấn đề sau:\n`;
-    text += `1. Triệu chứng cơ năng: ${cnList.length > 0 ? cnList.join('; ') : 'Chưa ghi nhận bất thường đặc hiệu.'}\n`;
-    text += `2. Triệu chứng thực thể: ${ttList.length > 0 ? ttList.join('; ') : 'Tổng trạng ổn định, chưa ghi nhận dấu hiệu nặng.'}\n`;
-    if (epiList.length > 0) {
-      text += `3. Yếu tố dịch tễ (Góc nhìn truyền nhiễm): ${epiList.join('; ')}\n`;
-    }
-    if (clsList.length > 0) {
-      text += `4. Cận lâm sàng ban đầu: ${clsList.join('; ')}\n`;
-    }
-    if (tcList.length > 0) {
-      text += `5. Tiền căn: ${tcList.join('; ')}\n`;
-    }
-    if (negList.length > 0) {
-      text += `6. Dấu hiệu âm tính có giá trị: ${negList.join(', ')}\n`;
-    }
-
-    return text;
+    return {
+      demographics: `Bệnh nhân ${genderStr.toLowerCase()}, ${ageStr}.`,
+      reason: `Vào viện vì lý do: ${reasonStr}.`,
+      cnList,
+      vitalAnomalies,
+      examList,
+      epiList,
+      labItems,
+      clsNarrative,
+      tcList,
+      negList,
+    };
   }, [form, vitals, labs, selectedSymptoms, negatedSymptoms, epiContext]);
 
-  // Đồng bộ customSummaryText khi generatedSummary thay đổi lần đầu
-  useEffect(() => {
-    if (!customSummaryText) {
-      setCustomSummaryText(generatedSummary);
+  // Sinh văn bản Tóm tắt bệnh án tự động chuẩn mực y khoa (xuống hàng thoáng mắt theo từng phần)
+  const generatedSummary = useMemo(() => {
+    const s = summaryStructure;
+    const parts: string[] = [];
+
+    parts.push(`${s.demographics}\n${s.reason}\nQua hỏi bệnh và thăm khám lâm sàng, ghi nhận các vấn đề chính sau:`);
+
+    if (s.cnList.length > 0) {
+      parts.push(`1. Triệu chứng cơ năng:\n${s.cnList.map((item) => `- ${item}`).join('\n')}`);
+    } else {
+      parts.push(`1. Triệu chứng cơ năng:\n- Chưa ghi nhận bất thường đặc hiệu.`);
     }
+
+    const ttParts: string[] = [];
+    if (s.vitalAnomalies.length > 0) {
+      ttParts.push(`- Sinh hiệu bất thường: ${s.vitalAnomalies.join(' · ')}`);
+    }
+    if (s.examList.length > 0) {
+      s.examList.forEach((e) => ttParts.push(`- ${e}`));
+    }
+    if (ttParts.length > 0) {
+      parts.push(`2. Triệu chứng thực thể:\n${ttParts.join('\n')}`);
+    } else {
+      parts.push(`2. Triệu chứng thực thể:\n- Tổng trạng ổn định, chưa ghi nhận dấu hiệu nặng.`);
+    }
+
+    if (s.epiList.length > 0) {
+      parts.push(`3. Yếu tố dịch tễ (Góc nhìn truyền nhiễm):\n${s.epiList.map((e) => `- ${e}`).join('\n')}`);
+    }
+
+    const clsParts: string[] = [];
+    if (s.labItems.length > 0) {
+      clsParts.push(`- Chỉ số xét nghiệm: ${s.labItems.join(' · ')}`);
+    }
+    if (s.clsNarrative.length > 0) {
+      s.clsNarrative.forEach((c) => clsParts.push(`- ${c}`));
+    }
+    if (clsParts.length > 0) {
+      parts.push(`4. Cận lâm sàng ban đầu:\n${clsParts.join('\n')}`);
+    }
+
+    if (s.tcList.length > 0) {
+      parts.push(`5. Tiền căn:\n${s.tcList.map((t) => `- ${t}`).join('\n')}`);
+    }
+
+    if (s.negList.length > 0) {
+      parts.push(`6. Dấu hiệu âm tính có giá trị loại trừ:\n- ${s.negList.join('; ')}`);
+    }
+
+    return parts.join('\n\n');
+  }, [summaryStructure]);
+
+  // Đồng bộ customSummaryText khi generatedSummary thay đổi
+  useEffect(() => {
+    setCustomSummaryText(generatedSummary);
   }, [generatedSummary]);
 
   // Tự động suy luận danh sách vấn đề ban đầu nếu chưa có vấn đề nào
@@ -399,6 +445,420 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
     };
   }, [epiContext, vitals, labs, selectedIds]);
 
+  // Tự động nhận diện bệnh lý truyền nhiễm từ dữ kiện ca bệnh
+  const autoDetectInfectious = useMemo(() => {
+    const tempNum = parseFloat(vitals.vNhiet);
+    const hasFever = (!isNaN(tempNum) && tempNum >= 38) || selectedIds.has('sot') || selectedIds.has('sot_cao_27');
+    const hasEpi = Boolean(
+      epiContext.outbreakAlert ||
+      epiContext.endemicArea ||
+      epiContext.vectorExposure ||
+      epiContext.travelHistory ||
+      epiContext.contactHistory ||
+      epiContext.waterFoodRisk
+    );
+    const hasInfectiousLabs =
+      selectedIds.has('ns1_dengue') ||
+      selectedIds.has('ky_sinh_trung_sot_ret') ||
+      (parseFloat(labs.lTC) < 100 && hasFever);
+    const hasInfectiousProblem = problems.some(
+      (p) =>
+        p.type === 'dich-te' ||
+        p.label.toLowerCase().includes('nhiễm') ||
+        p.label.toLowerCase().includes('sốt') ||
+        p.label.toLowerCase().includes('dengue') ||
+        p.label.toLowerCase().includes('vi khuẩn') ||
+        p.label.toLowerCase().includes('virus')
+    );
+    return hasFever || hasEpi || hasInfectiousLabs || hasInfectiousProblem;
+  }, [vitals.vNhiet, selectedIds, epiContext, labs.lTC, problems]);
+
+  // Công tắc bật/tắt Tam giác Chẩn đoán Truyền nhiễm
+  const [infectiousMode, setInfectiousMode] = useState<boolean>(autoDetectInfectious);
+
+  useEffect(() => {
+    setInfectiousMode(autoDetectInfectious);
+  }, [autoDetectInfectious]);
+
+  // Giao diện Khung Danh Sách Vấn Đề (Problem List)
+  const problemListContent = (
+    <div className="space-y-4">
+      {/* Lời khuyên lâm sàng từ BSCKI Trần Thanh Tuấn */}
+      <div className="flex items-start gap-2.5 bg-blue-50/70 border border-blue-200/80 p-3 rounded-lg text-xs text-blue-900 leading-relaxed">
+        <Info className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
+        <div>
+          <strong>Nguyên tắc chọn Vấn đề chính (Thầy Tuấn & Thầy Sĩ):</strong> Vấn đề là những bất thường cần được giải quyết. Ở bệnh nhân có nhiều vấn đề, <strong>chọn 1 vấn đề nổi bật nhất (thường là lý do nhập viện hoặc tình trạng đe dọa sinh hiệu)</strong> để làm trục biện luận chính. Các vấn đề còn lại sẽ hỗ trợ hoặc đánh giá bệnh đi kèm.
+        </div>
+      </div>
+
+      {/* Danh sách các vấn đề */}
+      <div className="space-y-2.5">
+        {problems.length === 0 ? (
+          <div className="text-center py-6 border-2 border-dashed border-slate-200 rounded-lg">
+            <p className="text-xs text-slate-500">Chưa có vấn đề nào được xác lập.</p>
+            <p className="text-[11px] text-slate-400">Hãy thêm vấn đề bên dưới hoặc nạp thêm dữ kiện ở Bước 1.</p>
+          </div>
+        ) : (
+          problems.map((prob, idx) => {
+            const isPrimary = prob.isPrimary;
+            return (
+              <div
+                key={prob.id}
+                className={`p-3 rounded-lg border transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-3 ${
+                  isPrimary
+                    ? 'bg-blue-50/80 border-blue-300 ring-1 ring-blue-400/30 shadow-2xs'
+                    : 'bg-white hover:bg-slate-50/80 border-slate-200'
+                }`}
+              >
+                <div className="flex items-start gap-3 min-w-0 flex-1">
+                  <div
+                    className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5 ${
+                      isPrimary
+                        ? 'bg-blue-600 text-white'
+                        : 'bg-slate-200 text-slate-600'
+                    }`}
+                  >
+                    {idx + 1}
+                  </div>
+
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <span className="text-xs sm:text-sm font-bold text-slate-900">
+                        {prob.label}
+                      </span>
+                      {isPrimary && (
+                        <span className="inline-flex items-center gap-1 px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wide bg-amber-100 text-amber-900 border border-amber-300 rounded-full">
+                          <Star className="w-2.5 h-2.5 fill-amber-500 text-amber-500" />
+                          Vấn đề chính biện luận
+                        </span>
+                      )}
+                      <span
+                        className={`text-[10px] px-1.5 py-0.2 rounded font-medium ${
+                          prob.type === 'hoi-chung'
+                            ? 'bg-purple-100 text-purple-800'
+                            : prob.type === 'dich-te'
+                            ? 'bg-emerald-100 text-emerald-800'
+                            : prob.type === 'bat-thuong-cls'
+                            ? 'bg-amber-100 text-amber-800'
+                            : 'bg-slate-100 text-slate-700'
+                        }`}
+                      >
+                        {prob.type === 'hoi-chung'
+                          ? 'Hội chứng'
+                          : prob.type === 'dich-te'
+                          ? 'Dịch tễ'
+                          : prob.type === 'bat-thuong-cls'
+                          ? 'Cận lâm sàng'
+                          : 'Triệu chứng'}
+                      </span>
+                    </div>
+
+                    {prob.evidence.length > 0 && (
+                      <div className="text-[11px] text-slate-500 mt-1 flex items-center gap-1.5 flex-wrap">
+                        <span className="font-semibold text-slate-600">Dữ kiện:</span>
+                        <span>{prob.evidence.join(' · ')}</span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* Action buttons */}
+                <div className="flex items-center gap-1.5 shrink-0 self-end sm:self-center">
+                  {!isPrimary && (
+                    <button
+                      type="button"
+                      onClick={() => handleSetPrimaryProblem(prob.id)}
+                      title="Chọn làm vấn đề chính để làm trục biện luận"
+                      className="px-2.5 py-1 text-xs text-blue-700 hover:text-blue-800 bg-white hover:bg-blue-50 border border-blue-200 rounded-md transition-colors flex items-center gap-1 cursor-pointer"
+                    >
+                      <Star className="w-3 h-3 text-amber-500" />
+                      <span>Chọn làm VĐ chính</span>
+                    </button>
+                  )}
+                  <button
+                    type="button"
+                    onClick={() => handleDeleteProblem(prob.id)}
+                    title="Xóa vấn đề này"
+                    className="p-1 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-md transition-colors cursor-pointer"
+                  >
+                    <Trash2 className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+              </div>
+            );
+          })
+        )}
+      </div>
+
+      {/* Form thêm vấn đề tùy chỉnh */}
+      <div className="pt-2 border-t border-slate-100 flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
+        <input
+          type="text"
+          placeholder="Nhập vấn đề mới (VD: Cơn tăng huyết áp, Vết loét hoại tử...)"
+          value={newProblemLabel}
+          onChange={(e) => setNewProblemLabel(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              e.preventDefault();
+              handleAddProblem();
+            }
+          }}
+          className="flex-1 text-xs border border-slate-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
+        />
+        <select
+          value={newProblemType}
+          onChange={(e) => setNewProblemType(e.target.value as any)}
+          className="text-xs border border-slate-300 rounded-lg px-2.5 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+        >
+          <option value="hoi-chung">Hội chứng</option>
+          <option value="trieu-chung">Triệu chứng</option>
+          <option value="dich-te">Yếu tố dịch tễ</option>
+          <option value="bat-thuong-cls">Bất thường CLS</option>
+        </select>
+        <button
+          type="button"
+          onClick={handleAddProblem}
+          disabled={!newProblemLabel.trim()}
+          className="px-3 py-2 text-xs font-semibold bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 text-white rounded-lg transition-colors flex items-center justify-center gap-1.5 shrink-0 cursor-pointer disabled:cursor-not-allowed"
+        >
+          <Plus className="w-3.5 h-3.5" />
+          Thêm vấn đề
+        </button>
+      </div>
+    </div>
+  );
+
+  // Giao diện Khung Tam Giác Chẩn Đoán Truyền Nhiễm & Panel Dịch Tễ
+  const infectiousTriangleContent = (
+    <div className="space-y-4">
+      {/* Card Tam giác chẩn đoán: Dịch tễ — Lâm sàng — Cận lâm sàng */}
+      <div className="bg-white rounded-xl border border-slate-200 shadow-2xs overflow-hidden">
+        <div className="bg-gradient-to-r from-emerald-900 to-teal-900 text-white px-4 py-3 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <Triangle className="w-4 h-4 text-emerald-300 fill-emerald-300/20" />
+            <h3 className="text-sm font-bold tracking-tight">
+              Tam Giác Chẩn Đoán Truyền Nhiễm
+            </h3>
+          </div>
+          <span
+            className={`text-[11px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider ${
+              triangleData.level === 'high'
+                ? 'bg-emerald-400 text-emerald-950'
+                : triangleData.level === 'moderate'
+                ? 'bg-amber-400 text-amber-950'
+                : 'bg-slate-700 text-slate-200'
+            }`}
+          >
+            Hội tụ: {triangleData.level === 'high' ? 'Cao' : triangleData.level === 'moderate' ? 'Vừa' : 'Thấp'}
+          </span>
+        </div>
+
+        <div className="p-4 space-y-4">
+          {/* Minh họa trực quan Tam giác chẩn đoán SVG */}
+          <div className="relative bg-slate-900 text-white rounded-xl p-4 overflow-hidden border border-slate-800">
+            <div className="flex justify-center mb-3">
+              <svg width="220" height="130" viewBox="0 0 220 130" className="drop-shadow-md">
+                <polygon
+                  points="110,15 20,115 200,115"
+                  fill="rgba(16, 185, 129, 0.12)"
+                  stroke={triangleData.level === 'high' ? '#10b981' : '#38bdf8'}
+                  strokeWidth="2.5"
+                  strokeDasharray={triangleData.level === 'low' ? '4 4' : 'none'}
+                />
+                {/* Node 1: Dịch tễ (Đỉnh trên) */}
+                <circle cx="110" cy="15" r="7" fill="#10b981" />
+                <text x="110" y="32" fill="#a7f3d0" fontSize="10" fontWeight="bold" textAnchor="middle">
+                  DỊCH TỄ HỌC
+                </text>
+
+                {/* Node 2: Lâm sàng (Đỉnh dưới trái) */}
+                <circle cx="20" cy="115" r="7" fill="#38bdf8" />
+                <text x="35" y="112" fill="#bae6fd" fontSize="10" fontWeight="bold" textAnchor="start">
+                  LÂM SÀNG
+                </text>
+
+                {/* Node 3: Cận lâm sàng (Đỉnh dưới phải) */}
+                <circle cx="200" cy="115" r="7" fill="#f59e0b" />
+                <text x="185" y="112" fill="#fde68a" fontSize="10" fontWeight="bold" textAnchor="end">
+                  CẬN LÂM SÀNG
+                </text>
+              </svg>
+            </div>
+
+            {/* Kết luận định hướng từ tam giác */}
+            <div className="bg-slate-800/80 rounded-lg p-2.5 border border-slate-700/80 text-xs">
+              <div className="flex items-center gap-1.5 text-emerald-400 font-bold mb-1">
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>Định hướng từ Tam giác Lâm sàng:</span>
+              </div>
+              <div className="text-slate-200 font-medium leading-snug">
+                {triangleData.suspectedOrientation}
+              </div>
+            </div>
+          </div>
+
+          {/* Chi tiết 3 đỉnh của Tam giác */}
+          <div className="space-y-3 text-xs">
+            {/* Đỉnh 1: Dịch tễ */}
+            <div className="p-3 bg-emerald-50/70 border border-emerald-200 rounded-lg space-y-1.5">
+              <div className="flex items-center justify-between">
+                <span className="font-bold text-emerald-900 flex items-center gap-1.5">
+                  <MapPin className="w-3.5 h-3.5 text-emerald-600" />
+                  1. Yếu tố Dịch tễ học (Epidemiology)
+                </span>
+                <span className="text-[10px] text-emerald-700 font-mono">
+                  {triangleData.epiPoints.length} dữ kiện
+                </span>
+              </div>
+              {triangleData.epiPoints.length > 0 ? (
+                <ul className="space-y-1 text-emerald-900 pl-4 list-disc">
+                  {triangleData.epiPoints.map((pt, i) => (
+                    <li key={i}>{pt}</li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="text-[11px] text-slate-500 italic">
+                  Chưa ghi nhận yếu tố dịch tễ (bạn có thể bổ sung trong panel bên dưới).
+                </p>
+              )}
+            </div>
+
+            {/* Đỉnh 2: Lâm sàng */}
+            <div className="p-3 bg-sky-50/70 border border-sky-200 rounded-lg space-y-1.5">
+              <div className="flex items-center justify-between">
+                <span className="font-bold text-sky-900 flex items-center gap-1.5">
+                  <Stethoscope className="w-3.5 h-3.5 text-sky-600" />
+                  2. Biểu hiện Lâm sàng (Clinical)
+                </span>
+                <span className="text-[10px] text-sky-700 font-mono">
+                  {triangleData.clinicalPoints.length} dữ kiện
+                </span>
+              </div>
+              {triangleData.clinicalPoints.length > 0 ? (
+                <ul className="space-y-1 text-sky-900 pl-4 list-disc">
+                  {triangleData.clinicalPoints.map((pt, i) => (
+                    <li key={i}>{pt}</li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="text-[11px] text-slate-500 italic">
+                  Chưa ghi nhận triệu chứng nhiễm trùng đặc trưng.
+                </p>
+              )}
+            </div>
+
+            {/* Đỉnh 3: Cận lâm sàng */}
+            <div className="p-3 bg-amber-50/70 border border-amber-200 rounded-lg space-y-1.5">
+              <div className="flex items-center justify-between">
+                <span className="font-bold text-amber-900 flex items-center gap-1.5">
+                  <Microscope className="w-3.5 h-3.5 text-amber-600" />
+                  3. Cận lâm sàng & Vi sinh (Paraclinical)
+                </span>
+                <span className="text-[10px] text-amber-700 font-mono">
+                  {triangleData.paraPoints.length} dữ kiện
+                </span>
+              </div>
+              {triangleData.paraPoints.length > 0 ? (
+                <ul className="space-y-1 text-amber-900 pl-4 list-disc">
+                  {triangleData.paraPoints.map((pt, i) => (
+                    <li key={i}>{pt}</li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="text-[11px] text-slate-500 italic">
+                  Chưa nạp cận lâm sàng định hướng (NS1, CTM, men gan...).
+                </p>
+              )}
+            </div>
+          </div>
+
+          {/* Nút tra cứu nhanh Kho Dịch tễ học */}
+          {onOpenVaultDrawer && (
+            <button
+              type="button"
+              onClick={() => onOpenVaultDrawer('Dịch tễ học', 'Truyền nhiễm', 'DTH')}
+              className="w-full py-2 px-3 text-xs font-semibold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 rounded-lg transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+            >
+              <BookOpen className="w-3.5 h-3.5" />
+              Tra cứu Kho Dịch Tễ Học (142+ bài viết EBM)
+            </button>
+          )}
+        </div>
+      </div>
+
+      {/* Quick Input Panel: Bổ sung nhanh yếu tố dịch tễ */}
+      <div className="bg-white rounded-xl border border-slate-200 shadow-2xs p-4 space-y-3">
+        <div className="flex items-center gap-2 text-xs font-bold text-slate-800">
+          <Bug className="w-4 h-4 text-emerald-600" />
+          <span>Bổ sung nhanh Yếu tố Dịch tễ (Tam giác chẩn đoán)</span>
+        </div>
+
+        <div className="space-y-2 text-xs">
+          <div>
+            <label className="text-[11px] font-medium text-slate-600 block mb-1">
+              Ổ dịch / Bệnh đang lưu hành tại địa phương:
+            </label>
+            <input
+              type="text"
+              placeholder="VD: Sốt xuất huyết Dengue, Sởi, Cúm mùa..."
+              value={epiContext.outbreakAlert}
+              onChange={(e) =>
+                onUpdateEpiContext({ ...epiContext, outbreakAlert: e.target.value })
+              }
+              className="w-full border border-slate-300 rounded-md px-2.5 py-1.5 focus:outline-none focus:ring-1 focus:ring-emerald-500 text-xs"
+            />
+          </div>
+
+          <div className="grid grid-cols-2 gap-2">
+            <div>
+              <label className="text-[11px] font-medium text-slate-600 block mb-1">
+                Vùng dịch tễ / Nơi ở:
+              </label>
+              <input
+                type="text"
+                placeholder="VD: Tây Nguyên, ĐBSCL..."
+                value={epiContext.endemicArea}
+                onChange={(e) =>
+                  onUpdateEpiContext({ ...epiContext, endemicArea: e.target.value })
+                }
+                className="w-full border border-slate-300 rounded-md px-2.5 py-1.5 focus:outline-none focus:ring-1 focus:ring-emerald-500 text-xs"
+              />
+            </div>
+            <div>
+              <label className="text-[11px] font-medium text-slate-600 block mb-1">
+                Vector / Động vật:
+              </label>
+              <input
+                type="text"
+                placeholder="VD: Muỗi vằn, ve mò, chuột..."
+                value={epiContext.vectorExposure}
+                onChange={(e) =>
+                  onUpdateEpiContext({ ...epiContext, vectorExposure: e.target.value })
+                }
+                className="w-full border border-slate-300 rounded-md px-2.5 py-1.5 focus:outline-none focus:ring-1 focus:ring-emerald-500 text-xs"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label className="text-[11px] font-medium text-slate-600 block mb-1">
+              Nguồn nước / Tiếp xúc đặc biệt:
+            </label>
+            <input
+              type="text"
+              placeholder="VD: Lội nước ngập lụt, đi rừng suối 10 ngày trước..."
+              value={epiContext.waterFoodRisk}
+              onChange={(e) =>
+                onUpdateEpiContext({ ...epiContext, waterFoodRisk: e.target.value })
+              }
+              className="w-full border border-slate-300 rounded-md px-2.5 py-1.5 focus:outline-none focus:ring-1 focus:ring-emerald-500 text-xs"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 py-6 space-y-6">
       {/* Header hướng dẫn */}
@@ -417,7 +877,7 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
               Tóm Tắt Bệnh Án & Đặt Vấn Đề
             </h1>
             <p className="text-xs sm:text-sm text-blue-100/80 max-w-3xl leading-relaxed">
-              Tổng hợp có cấu trúc các dữ kiện từ Bước 1, xác lập danh sách vấn đề và chọn <strong>Vấn đề chính</strong> làm trục biện luận. Tích hợp <strong>Tam giác chẩn đoán Truyền nhiễm (Dịch tễ — Lâm sàng — Cận lâm sàng)</strong>.
+              Quy trình chuẩn: <strong>I. Tóm tắt bệnh án chuẩn hóa</strong> (trực quan hóa các dữ kiện) $\rightarrow$ <strong>II. Đặt vấn đề & Tam giác chẩn đoán truyền nhiễm</strong> (gộp chung để chọn vấn đề chính và đối chiếu định hướng dịch tễ học).
             </p>
           </div>
 
@@ -442,466 +902,318 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        {/* Cột trái: Tóm tắt bệnh án & Đặt vấn đề (7 cột) */}
-        <div className="lg:col-span-7 space-y-6">
-          {/* Section 1: Tóm tắt bệnh án chuẩn hóa */}
-          <div className="bg-white rounded-xl border border-slate-200 shadow-2xs overflow-hidden">
-            <div className="bg-slate-50/90 px-4 py-3 border-b border-slate-200 flex items-center justify-between gap-2">
-              <div className="flex items-center gap-2">
-                <FileText className="w-4 h-4 text-blue-600" />
-                <h2 className="text-sm font-bold text-slate-800">
-                  I. Tóm Tắt Bệnh Án Chuẩn Hóa
-                </h2>
-              </div>
-              <div className="flex items-center gap-2">
-                <button
-                  type="button"
-                  onClick={() => setEditingSummary(!editingSummary)}
-                  className="px-2.5 py-1 text-xs text-slate-600 hover:text-blue-700 hover:bg-blue-50 border border-slate-200 rounded-md transition-colors cursor-pointer"
-                >
-                  {editingSummary ? 'Xem bản sinh tự động' : 'Tự chỉnh sửa'}
-                </button>
-                <button
-                  type="button"
-                  onClick={handleCopySummary}
-                  className={`px-2.5 py-1 text-xs font-medium rounded-md transition-all flex items-center gap-1.5 cursor-pointer ${
-                    copiedSummary
-                      ? 'bg-emerald-600 text-white shadow-xs'
-                      : 'bg-white hover:bg-slate-100 text-slate-700 border border-slate-200'
-                  }`}
-                >
-                  {copiedSummary ? (
-                    <>
-                      <Check className="w-3.5 h-3.5" />
-                      Đã chép
-                    </>
-                  ) : (
-                    <>
-                      <Copy className="w-3.5 h-3.5" />
-                      Sao chép
-                    </>
-                  )}
-                </button>
-              </div>
-            </div>
-
-            <div className="p-4">
-              {editingSummary ? (
-                <div className="space-y-2">
-                  <div className="text-[11px] text-amber-700 bg-amber-50 border border-amber-200 p-2 rounded-md">
-                    Chế độ soạn thảo tự do: Bạn có thể tinh chỉnh văn phong tóm tắt trước khi lưu hoặc sao chép vào hồ sơ bệnh án.
-                  </div>
-                  <textarea
-                    rows={10}
-                    value={customSummaryText}
-                    onChange={(e) => setCustomSummaryText(e.target.value)}
-                    className="w-full text-xs sm:text-sm font-mono text-slate-800 bg-slate-50/50 border border-slate-300 rounded-lg p-3 leading-relaxed focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
-                  />
-                </div>
-              ) : (
-                <div className="bg-slate-50 rounded-lg p-3.5 border border-slate-200/80 text-xs sm:text-sm text-slate-800 font-sans leading-relaxed whitespace-pre-line">
-                  {customSummaryText || generatedSummary}
-                </div>
-              )}
-
-              <div className="mt-3 flex items-center justify-between text-[11px] text-slate-500">
-                <span className="italic">
-                  * Tóm tắt chỉ nêu các triệu chứng/hội chứng dương tính và các triệu chứng âm tính có giá trị loại trừ.
-                </span>
-              </div>
-            </div>
+      {/* SECTION I: TÓM TẮT BỆNH ÁN CHUẨN HÓA (Full-width, rõ ràng, chi tiết) */}
+      <div className="bg-white rounded-xl border border-slate-200 shadow-2xs overflow-hidden">
+        <div className="bg-slate-50/90 px-4 py-3 border-b border-slate-200 flex items-center justify-between gap-2">
+          <div className="flex items-center gap-2">
+            <FileText className="w-4 h-4 text-blue-600" />
+            <h2 className="text-sm font-bold text-slate-800">
+              I. Tóm Tắt Bệnh Án Chuẩn Hóa
+            </h2>
           </div>
-
-          {/* Section 2: Đặt vấn đề (Problem List) */}
-          <div className="bg-white rounded-xl border border-slate-200 shadow-2xs overflow-hidden">
-            <div className="bg-slate-50/90 px-4 py-3 border-b border-slate-200 flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <Compass className="w-4 h-4 text-indigo-600" />
-                <h2 className="text-sm font-bold text-slate-800">
-                  II. Đặt Vấn Đề (Problem List)
-                </h2>
-              </div>
-              <span className="text-xs text-slate-500">
-                {problems.length} vấn đề được ghi nhận
-              </span>
-            </div>
-
-            <div className="p-4 space-y-4">
-              {/* Lời khuyên lâm sàng từ BSCKI Trần Thanh Tuấn */}
-              <div className="flex items-start gap-2.5 bg-blue-50/70 border border-blue-200/80 p-3 rounded-lg text-xs text-blue-900 leading-relaxed">
-                <Info className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
-                <div>
-                  <strong>Nguyên tắc chọn Vấn đề chính (Thầy Tuấn & Thầy Sĩ):</strong> Vấn đề là những bất thường cần được giải quyết. Ở bệnh nhân có nhiều vấn đề, <strong>chọn 1 vấn đề nổi bật nhất (thường là lý do nhập viện hoặc tình trạng đe dọa sinh hiệu)</strong> để làm trục biện luận chính. Các vấn đề còn lại sẽ hỗ trợ hoặc đánh giá bệnh đi kèm.
-                </div>
-              </div>
-
-              {/* Danh sách các vấn đề */}
-              <div className="space-y-2.5">
-                {problems.length === 0 ? (
-                  <div className="text-center py-6 border-2 border-dashed border-slate-200 rounded-lg">
-                    <p className="text-xs text-slate-500">Chưa có vấn đề nào được xác lập.</p>
-                    <p className="text-[11px] text-slate-400">Hãy thêm vấn đề bên dưới hoặc nạp thêm dữ kiện ở Bước 1.</p>
-                  </div>
-                ) : (
-                  problems.map((prob, idx) => {
-                    const isPrimary = prob.isPrimary;
-                    return (
-                      <div
-                        key={prob.id}
-                        className={`p-3 rounded-lg border transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-3 ${
-                          isPrimary
-                            ? 'bg-blue-50/80 border-blue-300 ring-1 ring-blue-400/30 shadow-2xs'
-                            : 'bg-white hover:bg-slate-50/80 border-slate-200'
-                        }`}
-                      >
-                        <div className="flex items-start gap-3 min-w-0 flex-1">
-                          <div
-                            className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5 ${
-                              isPrimary
-                                ? 'bg-blue-600 text-white'
-                                : 'bg-slate-200 text-slate-600'
-                            }`}
-                          >
-                            {idx + 1}
-                          </div>
-
-                          <div className="min-w-0 flex-1">
-                            <div className="flex items-center gap-2 flex-wrap">
-                              <span className="text-xs sm:text-sm font-bold text-slate-900">
-                                {prob.label}
-                              </span>
-                              {isPrimary && (
-                                <span className="inline-flex items-center gap-1 px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wide bg-amber-100 text-amber-900 border border-amber-300 rounded-full">
-                                  <Star className="w-2.5 h-2.5 fill-amber-500 text-amber-500" />
-                                  Vấn đề chính biện luận
-                                </span>
-                              )}
-                              <span
-                                className={`text-[10px] px-1.5 py-0.2 rounded font-medium ${
-                                  prob.type === 'hoi-chung'
-                                    ? 'bg-purple-100 text-purple-800'
-                                    : prob.type === 'dich-te'
-                                    ? 'bg-emerald-100 text-emerald-800'
-                                    : prob.type === 'bat-thuong-cls'
-                                    ? 'bg-amber-100 text-amber-800'
-                                    : 'bg-slate-100 text-slate-700'
-                                }`}
-                              >
-                                {prob.type === 'hoi-chung'
-                                  ? 'Hội chứng'
-                                  : prob.type === 'dich-te'
-                                  ? 'Dịch tễ'
-                                  : prob.type === 'bat-thuong-cls'
-                                  ? 'Cận lâm sàng'
-                                  : 'Triệu chứng'}
-                              </span>
-                            </div>
-
-                            {prob.evidence.length > 0 && (
-                              <div className="text-[11px] text-slate-500 mt-1 flex items-center gap-1.5 flex-wrap">
-                                <span className="font-semibold text-slate-600">Dữ kiện:</span>
-                                <span>{prob.evidence.join(' · ')}</span>
-                              </div>
-                            )}
-                          </div>
-                        </div>
-
-                        {/* Action buttons */}
-                        <div className="flex items-center gap-1.5 shrink-0 self-end sm:self-center">
-                          {!isPrimary && (
-                            <button
-                              type="button"
-                              onClick={() => handleSetPrimaryProblem(prob.id)}
-                              title="Chọn làm vấn đề chính để làm trục biện luận"
-                              className="px-2.5 py-1 text-xs text-blue-700 hover:text-blue-800 bg-white hover:bg-blue-50 border border-blue-200 rounded-md transition-colors flex items-center gap-1 cursor-pointer"
-                            >
-                              <Star className="w-3 h-3 text-amber-500" />
-                              <span>Chọn làm VĐ chính</span>
-                            </button>
-                          )}
-                          <button
-                            type="button"
-                            onClick={() => handleDeleteProblem(prob.id)}
-                            title="Xóa vấn đề này"
-                            className="p-1 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-md transition-colors cursor-pointer"
-                          >
-                            <Trash2 className="w-3.5 h-3.5" />
-                          </button>
-                        </div>
-                      </div>
-                    );
-                  })
-                )}
-              </div>
-
-              {/* Form thêm vấn đề tùy chỉnh */}
-              <div className="pt-2 border-t border-slate-100 flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
-                <input
-                  type="text"
-                  placeholder="Nhập vấn đề mới (VD: Cơn tăng huyết áp, Vết loét hoại tử...)"
-                  value={newProblemLabel}
-                  onChange={(e) => setNewProblemLabel(e.target.value)}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter') {
-                      e.preventDefault();
-                      handleAddProblem();
-                    }
-                  }}
-                  className="flex-1 text-xs border border-slate-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
-                />
-                <select
-                  value={newProblemType}
-                  onChange={(e) => setNewProblemType(e.target.value as any)}
-                  className="text-xs border border-slate-300 rounded-lg px-2.5 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20"
-                >
-                  <option value="hoi-chung">Hội chứng</option>
-                  <option value="trieu-chung">Triệu chứng</option>
-                  <option value="dich-te">Yếu tố dịch tễ</option>
-                  <option value="bat-thuong-cls">Bất thường CLS</option>
-                </select>
-                <button
-                  type="button"
-                  onClick={handleAddProblem}
-                  disabled={!newProblemLabel.trim()}
-                  className="px-3 py-2 text-xs font-semibold bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 text-white rounded-lg transition-colors flex items-center justify-center gap-1.5 shrink-0 cursor-pointer disabled:cursor-not-allowed"
-                >
-                  <Plus className="w-3.5 h-3.5" />
-                  Thêm vấn đề
-                </button>
-              </div>
-            </div>
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={() => setEditingSummary(!editingSummary)}
+              className="px-2.5 py-1 text-xs text-slate-600 hover:text-blue-700 hover:bg-blue-50 border border-slate-200 rounded-md transition-colors cursor-pointer"
+            >
+              {editingSummary ? 'Xem bản sinh tự động' : 'Tự chỉnh sửa'}
+            </button>
+            <button
+              type="button"
+              onClick={handleCopySummary}
+              className={`px-2.5 py-1 text-xs font-medium rounded-md transition-all flex items-center gap-1.5 cursor-pointer ${
+                copiedSummary
+                  ? 'bg-emerald-600 text-white shadow-xs'
+                  : 'bg-white hover:bg-slate-100 text-slate-700 border border-slate-200'
+              }`}
+            >
+              {copiedSummary ? (
+                <>
+                  <Check className="w-3.5 h-3.5" />
+                  Đã chép
+                </>
+              ) : (
+                <>
+                  <Copy className="w-3.5 h-3.5" />
+                  Sao chép
+                </>
+              )}
+            </button>
           </div>
         </div>
 
-        {/* Cột phải: Tam giác chẩn đoán Truyền nhiễm (5 cột) */}
-        <div className="lg:col-span-5 space-y-6">
-          {/* Card Tam giác chẩn đoán: Dịch tễ — Lâm sàng — Cận lâm sàng */}
-          <div className="bg-white rounded-xl border border-slate-200 shadow-2xs overflow-hidden">
-            <div className="bg-gradient-to-r from-emerald-900 to-teal-900 text-white px-4 py-3 flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <Triangle className="w-4 h-4 text-emerald-300 fill-emerald-300/20" />
-                <h2 className="text-sm font-bold tracking-tight">
-                  III. Tam Giác Chẩn Đoán Truyền Nhiễm
-                </h2>
+        <div className="p-4 sm:p-5">
+          {editingSummary ? (
+            <div className="space-y-2">
+              <div className="text-[11px] text-amber-700 bg-amber-50 border border-amber-200 p-2 rounded-md">
+                Chế độ soạn thảo tự do: Bạn có thể tinh chỉnh văn phong tóm tắt trước khi lưu hoặc sao chép vào hồ sơ bệnh án.
               </div>
-              <span
-                className={`text-[11px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider ${
-                  triangleData.level === 'high'
-                    ? 'bg-emerald-400 text-emerald-950'
-                    : triangleData.level === 'moderate'
-                    ? 'bg-amber-400 text-amber-950'
-                    : 'bg-slate-700 text-slate-200'
-                }`}
-              >
-                Hội tụ: {triangleData.level === 'high' ? 'Cao' : triangleData.level === 'moderate' ? 'Vừa' : 'Thấp'}
-              </span>
+              <textarea
+                rows={12}
+                value={customSummaryText}
+                onChange={(e) => setCustomSummaryText(e.target.value)}
+                className="w-full text-xs sm:text-sm font-mono text-slate-800 bg-slate-50/50 border border-slate-300 rounded-lg p-3 leading-relaxed focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
+              />
             </div>
-
-            <div className="p-4 space-y-4">
-              {/* Minh họa trực quan Tam giác chẩn đoán */}
-              <div className="relative bg-slate-900 text-white rounded-xl p-4 overflow-hidden border border-slate-800">
-                {/* Visual SVG Triangle */}
-                <div className="flex justify-center mb-3">
-                  <svg width="220" height="130" viewBox="0 0 220 130" className="drop-shadow-md">
-                    <polygon
-                      points="110,15 20,115 200,115"
-                      fill="rgba(16, 185, 129, 0.12)"
-                      stroke={triangleData.level === 'high' ? '#10b981' : '#38bdf8'}
-                      strokeWidth="2.5"
-                      strokeDasharray={triangleData.level === 'low' ? '4 4' : 'none'}
-                    />
-                    {/* Node 1: Dịch tễ (Đỉnh trên) */}
-                    <circle cx="110" cy="15" r="7" fill="#10b981" />
-                    <text x="110" y="32" fill="#a7f3d0" fontSize="10" fontWeight="bold" textAnchor="middle">
-                      DỊCH TỄ HỌC
-                    </text>
-
-                    {/* Node 2: Lâm sàng (Đỉnh dưới trái) */}
-                    <circle cx="20" cy="115" r="7" fill="#38bdf8" />
-                    <text x="35" y="112" fill="#bae6fd" fontSize="10" fontWeight="bold" textAnchor="start">
-                      LÂM SÀNG
-                    </text>
-
-                    {/* Node 3: Cận lâm sàng (Đỉnh dưới phải) */}
-                    <circle cx="200" cy="115" r="7" fill="#f59e0b" />
-                    <text x="185" y="112" fill="#fde68a" fontSize="10" fontWeight="bold" textAnchor="end">
-                      CẬN LÂM SÀNG
-                    </text>
-                  </svg>
+          ) : (
+            <div className="space-y-3.5">
+              {/* Khối Hành chính & Lý do vào viện */}
+              <div className="bg-gradient-to-r from-blue-50/80 to-indigo-50/50 border border-blue-200/80 rounded-lg p-3.5 text-xs sm:text-sm text-slate-800 space-y-1">
+                <div className="font-semibold text-blue-950 flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-blue-600" />
+                  <span>{summaryStructure.demographics}</span>
                 </div>
-
-                {/* Kết luận định hướng từ tam giác */}
-                <div className="bg-slate-800/80 rounded-lg p-2.5 border border-slate-700/80 text-xs">
-                  <div className="flex items-center gap-1.5 text-emerald-400 font-bold mb-1">
-                    <Sparkles className="w-3.5 h-3.5" />
-                    <span>Định hướng từ Tam giác Lâm sàng:</span>
-                  </div>
-                  <div className="text-slate-200 font-medium leading-snug">
-                    {triangleData.suspectedOrientation}
-                  </div>
+                <div className="text-slate-700 pl-4">
+                  <b>Lý do vào viện:</b> <span className="text-slate-900 font-medium">{summaryStructure.reason.replace('Vào viện vì lý do: ', '')}</span>
+                </div>
+                <div className="text-[11px] text-slate-500 italic pl-4">
+                  Qua hỏi bệnh và thăm khám lâm sàng, ghi nhận các vấn đề chính sau:
                 </div>
               </div>
 
-              {/* Chi tiết 3 đỉnh của Tam giác */}
-              <div className="space-y-3 text-xs">
-                {/* Đỉnh 1: Dịch tễ */}
-                <div className="p-3 bg-emerald-50/70 border border-emerald-200 rounded-lg space-y-1.5">
-                  <div className="flex items-center justify-between">
-                    <span className="font-bold text-emerald-900 flex items-center gap-1.5">
+              {/* Lưới các phân đoạn tóm tắt */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+                {/* 1. Triệu chứng cơ năng */}
+                <div className="bg-white border border-slate-200/90 rounded-lg p-3 text-xs sm:text-sm text-slate-800 shadow-2xs">
+                  <div className="font-bold text-xs uppercase tracking-wider text-blue-800 mb-1.5 flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
+                    <span>1. Triệu chứng cơ năng</span>
+                  </div>
+                  <div className="space-y-1 pl-3 border-l-2 border-blue-200 text-slate-700">
+                    {summaryStructure.cnList.length > 0 ? (
+                      summaryStructure.cnList.map((item, idx) => (
+                        <div key={idx} className="leading-relaxed">
+                          • {item}
+                        </div>
+                      ))
+                    ) : (
+                      <div className="text-slate-400 italic">• Chưa ghi nhận bất thường đặc hiệu.</div>
+                    )}
+                  </div>
+                </div>
+
+                {/* 2. Triệu chứng thực thể */}
+                <div className="bg-white border border-slate-200/90 rounded-lg p-3 text-xs sm:text-sm text-slate-800 shadow-2xs">
+                  <div className="font-bold text-xs uppercase tracking-wider text-purple-800 mb-1.5 flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-purple-600" />
+                    <span>2. Triệu chứng thực thể</span>
+                  </div>
+                  <div className="space-y-1.5 pl-3 border-l-2 border-purple-200 text-slate-700">
+                    {summaryStructure.vitalAnomalies.length > 0 && (
+                      <div className="flex flex-wrap items-center gap-1.5 py-0.5">
+                        <span className="text-xs font-semibold text-rose-800 shrink-0">Sinh hiệu bất thường:</span>
+                        {summaryStructure.vitalAnomalies.map((v, idx) => (
+                          <span
+                            key={idx}
+                            className="px-2 py-0.5 rounded bg-rose-50 text-rose-800 border border-rose-200 text-[11px] font-medium font-mono-custom"
+                          >
+                            {v}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                    {summaryStructure.examList.length > 0 ? (
+                      summaryStructure.examList.map((item, idx) => (
+                        <div key={idx} className="leading-relaxed">
+                          • {item}
+                        </div>
+                      ))
+                    ) : (
+                      <div className="text-slate-400 italic">• Tổng trạng ổn định, chưa ghi nhận dấu hiệu nặng.</div>
+                    )}
+                  </div>
+                </div>
+
+                {/* 3. Yếu tố Dịch tễ học */}
+                {summaryStructure.epiList.length > 0 && (
+                  <div className="bg-emerald-50/40 border border-emerald-200/90 rounded-lg p-3 text-xs sm:text-sm text-slate-800 shadow-2xs">
+                    <div className="font-bold text-xs uppercase tracking-wider text-emerald-800 mb-1.5 flex items-center gap-1.5">
                       <MapPin className="w-3.5 h-3.5 text-emerald-600" />
-                      1. Yếu tố Dịch tễ học (Epidemiology)
-                    </span>
-                    <span className="text-[10px] text-emerald-700 font-mono">
-                      {triangleData.epiPoints.length} dữ kiện
-                    </span>
-                  </div>
-                  {triangleData.epiPoints.length > 0 ? (
-                    <ul className="space-y-1 text-emerald-900 pl-4 list-disc">
-                      {triangleData.epiPoints.map((pt, i) => (
-                        <li key={i}>{pt}</li>
+                      <span>3. Yếu tố Dịch tễ học (Góc nhìn truyền nhiễm)</span>
+                    </div>
+                    <div className="space-y-1 pl-3 border-l-2 border-emerald-300 text-slate-700">
+                      {summaryStructure.epiList.map((item, idx) => (
+                        <div key={idx} className="leading-relaxed font-medium text-emerald-950">
+                          • {item}
+                        </div>
                       ))}
-                    </ul>
-                  ) : (
-                    <p className="text-[11px] text-slate-500 italic">
-                      Chưa ghi nhận yếu tố dịch tễ (bạn có thể bổ sung trong panel bên dưới).
-                    </p>
-                  )}
-                </div>
-
-                {/* Đỉnh 2: Lâm sàng */}
-                <div className="p-3 bg-sky-50/70 border border-sky-200 rounded-lg space-y-1.5">
-                  <div className="flex items-center justify-between">
-                    <span className="font-bold text-sky-900 flex items-center gap-1.5">
-                      <Stethoscope className="w-3.5 h-3.5 text-sky-600" />
-                      2. Biểu hiện Lâm sàng (Clinical)
-                    </span>
-                    <span className="text-[10px] text-sky-700 font-mono">
-                      {triangleData.clinicalPoints.length} dữ kiện
-                    </span>
+                    </div>
                   </div>
-                  {triangleData.clinicalPoints.length > 0 ? (
-                    <ul className="space-y-1 text-sky-900 pl-4 list-disc">
-                      {triangleData.clinicalPoints.map((pt, i) => (
-                        <li key={i}>{pt}</li>
-                      ))}
-                    </ul>
-                  ) : (
-                    <p className="text-[11px] text-slate-500 italic">
-                      Chưa ghi nhận triệu chứng nhiễm trùng đặc trưng.
-                    </p>
-                  )}
-                </div>
+                )}
 
-                {/* Đỉnh 3: Cận lâm sàng */}
-                <div className="p-3 bg-amber-50/70 border border-amber-200 rounded-lg space-y-1.5">
-                  <div className="flex items-center justify-between">
-                    <span className="font-bold text-amber-900 flex items-center gap-1.5">
+                {/* 4. Cận lâm sàng ban đầu */}
+                {(summaryStructure.labItems.length > 0 || summaryStructure.clsNarrative.length > 0) && (
+                  <div className="bg-white border border-slate-200/90 rounded-lg p-3 text-xs sm:text-sm text-slate-800 shadow-2xs">
+                    <div className="font-bold text-xs uppercase tracking-wider text-amber-800 mb-1.5 flex items-center gap-1.5">
                       <Microscope className="w-3.5 h-3.5 text-amber-600" />
-                      3. Cận lâm sàng & Vi sinh (Paraclinical)
-                    </span>
-                    <span className="text-[10px] text-amber-700 font-mono">
-                      {triangleData.paraPoints.length} dữ kiện
-                    </span>
-                  </div>
-                  {triangleData.paraPoints.length > 0 ? (
-                    <ul className="space-y-1 text-amber-900 pl-4 list-disc">
-                      {triangleData.paraPoints.map((pt, i) => (
-                        <li key={i}>{pt}</li>
+                      <span>4. Cận lâm sàng ban đầu</span>
+                    </div>
+                    <div className="space-y-1.5 pl-3 border-l-2 border-amber-200 text-slate-700">
+                      {summaryStructure.labItems.length > 0 && (
+                        <div className="flex flex-wrap items-center gap-1.5 py-0.5">
+                          <span className="text-xs font-semibold text-slate-700 shrink-0">Chỉ số xét nghiệm:</span>
+                          {summaryStructure.labItems.map((l, idx) => (
+                            <span
+                              key={idx}
+                              className="px-2 py-0.5 rounded bg-amber-50 text-amber-900 border border-amber-200 text-[11px] font-semibold font-mono-custom"
+                            >
+                              {l}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                      {summaryStructure.clsNarrative.map((item, idx) => (
+                        <div key={idx} className="leading-relaxed">
+                          • {item}
+                        </div>
                       ))}
-                    </ul>
-                  ) : (
-                    <p className="text-[11px] text-slate-500 italic">
-                      Chưa nạp cận lâm sàng định hướng (NS1, CTM, men gan...).
-                    </p>
-                  )}
-                </div>
-              </div>
+                    </div>
+                  </div>
+                )}
 
-              {/* Nút tra cứu nhanh Kho Dịch tễ học */}
-              {onOpenVaultDrawer && (
+                {/* 5. Tiền căn */}
+                {summaryStructure.tcList.length > 0 && (
+                  <div className="bg-white border border-slate-200/90 rounded-lg p-3 text-xs sm:text-sm text-slate-800 shadow-2xs">
+                    <div className="font-bold text-xs uppercase tracking-wider text-slate-700 mb-1.5 flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-slate-500" />
+                      <span>5. Tiền căn</span>
+                    </div>
+                    <div className="space-y-1 pl-3 border-l-2 border-slate-300 text-slate-700">
+                      {summaryStructure.tcList.map((item, idx) => (
+                        <div key={idx} className="leading-relaxed">
+                          • {item}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* 6. Dấu hiệu âm tính có giá trị loại trừ */}
+                {summaryStructure.negList.length > 0 && (
+                  <div className="bg-slate-50 border border-slate-200/90 rounded-lg p-3 text-xs text-slate-700 shadow-2xs">
+                    <div className="font-bold text-xs uppercase tracking-wider text-slate-600 mb-1.5 flex items-center gap-1.5">
+                      <ShieldCheck className="w-3.5 h-3.5 text-slate-500" />
+                      <span>6. Dấu hiệu âm tính có giá trị loại trừ</span>
+                    </div>
+                    <div className="flex flex-wrap gap-1.5 pl-3 border-l-2 border-slate-300">
+                      {summaryStructure.negList.map((item, idx) => (
+                        <span
+                          key={idx}
+                          className="px-2 py-0.5 rounded bg-white text-slate-700 border border-slate-200 text-[11px]"
+                        >
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+
+          <div className="mt-3 flex items-center justify-between text-[11px] text-slate-500">
+            <span className="italic">
+              * Tóm tắt chỉ nêu các triệu chứng/hội chứng dương tính và các triệu chứng âm tính có giá trị loại trừ.
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* SECTION II: ĐẶT VẤN ĐỀ & TAM GIÁC CHẨN ĐOÁN (GỘP CHUNG) */}
+      <div className="bg-white rounded-xl border border-slate-200 shadow-2xs overflow-hidden">
+        <div className="bg-slate-50/90 px-4 py-3 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div className="flex items-center gap-2">
+            <Compass className="w-4 h-4 text-indigo-600" />
+            <h2 className="text-sm font-bold text-slate-800">
+              II. Đặt Vấn Đề (Problem List) & Tam Giác Chẩn Đoán
+            </h2>
+            <span className="text-xs text-slate-500 font-medium">
+              ({problems.length} vấn đề)
+            </span>
+          </div>
+
+          {/* Công tắc chuyển đổi Chế độ Truyền nhiễm & Tam giác DTH */}
+          <div className="flex items-center gap-2 shrink-0">
+            <button
+              type="button"
+              onClick={() => setInfectiousMode(!infectiousMode)}
+              className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5 cursor-pointer border ${
+                infectiousMode
+                  ? 'bg-emerald-50 text-emerald-800 border-emerald-300 hover:bg-emerald-100 shadow-2xs'
+                  : 'bg-slate-100 text-slate-600 border-slate-300 hover:bg-slate-200'
+              }`}
+              title="Nhấp để bật hoặc tắt Tam giác Chẩn đoán Truyền nhiễm"
+            >
+              {infectiousMode ? (
+                <>
+                  <Bug className="w-3.5 h-3.5 text-emerald-600" />
+                  <span>Chế độ Truyền nhiễm: <b>BẬT Tam giác DTH</b></span>
+                </>
+              ) : (
+                <>
+                  <Stethoscope className="w-3.5 h-3.5 text-slate-500" />
+                  <span>Bệnh lý Nội/Ngoại khoa: <b>TẮT Tam giác DTH</b></span>
+                </>
+              )}
+            </button>
+          </div>
+        </div>
+
+        <div className="p-4 sm:p-5">
+          {infectiousMode ? (
+            <div className="space-y-4">
+              {/* Banner chế độ truyền nhiễm */}
+              <div className="flex items-center justify-between gap-2 p-2.5 bg-emerald-50/80 border border-emerald-200 rounded-lg text-xs text-emerald-900">
+                <div className="flex items-center gap-2">
+                  <Bug className="w-4 h-4 text-emerald-600 shrink-0" />
+                  <span>
+                    <strong>Phân tích Bệnh lý Truyền nhiễm:</strong> Tam giác chẩn đoán (Dịch tễ — Lâm sàng — Cận lâm sàng) được kết hợp trực tiếp cùng Đặt vấn đề để biện luận nguyên nhân nhiễm trùng.
+                  </span>
+                </div>
                 <button
                   type="button"
-                  onClick={() => onOpenVaultDrawer('Dịch tễ học', 'Truyền nhiễm', 'DTH')}
-                  className="w-full py-2 px-3 text-xs font-semibold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 rounded-lg transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+                  onClick={() => setInfectiousMode(false)}
+                  className="text-[11px] text-emerald-700 hover:underline shrink-0 cursor-pointer"
                 >
-                  <BookOpen className="w-3.5 h-3.5" />
-                  Tra cứu Kho Dịch Tễ Học (142+ bài viết EBM)
+                  Ẩn tam giác
                 </button>
-              )}
-            </div>
-          </div>
-
-          {/* Quick Input Panel: Bổ sung nhanh yếu tố dịch tễ */}
-          <div className="bg-white rounded-xl border border-slate-200 shadow-2xs p-4 space-y-3">
-            <div className="flex items-center gap-2 text-xs font-bold text-slate-800">
-              <Bug className="w-4 h-4 text-emerald-600" />
-              <span>Bổ sung nhanh Yếu tố Dịch tễ (Tam giác chẩn đoán)</span>
-            </div>
-
-            <div className="space-y-2 text-xs">
-              <div>
-                <label className="text-[11px] font-medium text-slate-600 block mb-1">
-                  Ổ dịch / Bệnh đang lưu hành tại địa phương:
-                </label>
-                <input
-                  type="text"
-                  placeholder="VD: Sốt xuất huyết Dengue, Sởi, Cúm mùa..."
-                  value={epiContext.outbreakAlert}
-                  onChange={(e) =>
-                    onUpdateEpiContext({ ...epiContext, outbreakAlert: e.target.value })
-                  }
-                  className="w-full border border-slate-300 rounded-md px-2.5 py-1.5 focus:outline-none focus:ring-1 focus:ring-emerald-500 text-xs"
-                />
               </div>
 
-              <div className="grid grid-cols-2 gap-2">
-                <div>
-                  <label className="text-[11px] font-medium text-slate-600 block mb-1">
-                    Vùng dịch tễ / Nơi ở:
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="VD: Tây Nguyên, ĐBSCL..."
-                    value={epiContext.endemicArea}
-                    onChange={(e) =>
-                      onUpdateEpiContext({ ...epiContext, endemicArea: e.target.value })
-                    }
-                    className="w-full border border-slate-300 rounded-md px-2.5 py-1.5 focus:outline-none focus:ring-1 focus:ring-emerald-500 text-xs"
-                  />
+              {/* Lưới gộp chung 2 cột: Đặt vấn đề (7 cột) & Tam giác chẩn đoán (5 cột) */}
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                <div className="lg:col-span-7">
+                  {problemListContent}
                 </div>
-                <div>
-                  <label className="text-[11px] font-medium text-slate-600 block mb-1">
-                    Vector / Động vật:
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="VD: Muỗi vằn, ve mò, chuột..."
-                    value={epiContext.vectorExposure}
-                    onChange={(e) =>
-                      onUpdateEpiContext({ ...epiContext, vectorExposure: e.target.value })
-                    }
-                    className="w-full border border-slate-300 rounded-md px-2.5 py-1.5 focus:outline-none focus:ring-1 focus:ring-emerald-500 text-xs"
-                  />
+                <div className="lg:col-span-5">
+                  {infectiousTriangleContent}
                 </div>
               </div>
-
-              <div>
-                <label className="text-[11px] font-medium text-slate-600 block mb-1">
-                  Nguồn nước / Tiếp xúc đặc biệt:
-                </label>
-                <input
-                  type="text"
-                  placeholder="VD: Lội nước ngập lụt, đi rừng suối 10 ngày trước..."
-                  value={epiContext.waterFoodRisk}
-                  onChange={(e) =>
-                    onUpdateEpiContext({ ...epiContext, waterFoodRisk: e.target.value })
-                  }
-                  className="w-full border border-slate-300 rounded-md px-2.5 py-1.5 focus:outline-none focus:ring-1 focus:ring-emerald-500 text-xs"
-                />
-              </div>
             </div>
-          </div>
+          ) : (
+            <div className="space-y-4">
+              {/* Banner chế độ nội/ngoại khoa thông thường */}
+              <div className="flex items-center justify-between gap-2 p-2.5 bg-slate-50 border border-slate-200 rounded-lg text-xs text-slate-700">
+                <div className="flex items-center gap-2">
+                  <Stethoscope className="w-4 h-4 text-blue-600 shrink-0" />
+                  <span>
+                    <strong>Chế độ Bệnh lý Nội/Ngoại khoa:</strong> Tập trung vào hội chứng lâm sàng và cơ chế bệnh sinh. Không áp dụng Tam giác Dịch tễ học.
+                  </span>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setInfectiousMode(true)}
+                  className="px-2.5 py-1 text-xs font-semibold text-emerald-700 bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 rounded-md transition-colors flex items-center gap-1 cursor-pointer shrink-0"
+                >
+                  <Bug className="w-3 h-3 text-emerald-600" />
+                  <span>Bật Tam giác Truyền nhiễm</span>
+                </button>
+              </div>
+
+              {/* Danh sách vấn đề full-width */}
+              {problemListContent}
+            </div>
+          )}
         </div>
       </div>
 

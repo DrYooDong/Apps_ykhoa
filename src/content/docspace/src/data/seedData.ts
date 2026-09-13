@@ -1,4 +1,4 @@
-import { Benh, CategoryType, KnowledgeBase, RoleType, ThresholdMap, TrieuChung } from '../types.ts';
+import { Benh, CategoryType, EpidemiologyContext, KnowledgeBase, RoleType, ThresholdMap, TrieuChung } from '../types.ts';
 import kbRaw from '@vault/data/clinical-rules-kb.json';
 import casesRaw from '@vault/data/sample-clinical-cases.json';
 
@@ -50,6 +50,7 @@ export interface SampleCase {
   labs?: Record<string, string>;
   selected?: string[];
   negated?: string[];
+  epiContext?: Partial<EpidemiologyContext>;
   form: {
     gioiTinh: 'nam' | 'nu' | 'khac';
     tuoi: string;

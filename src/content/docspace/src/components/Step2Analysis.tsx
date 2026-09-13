@@ -4,6 +4,7 @@ import {
   AlertOctagon,
   AlertTriangle,
   ArrowRight,
+  Baby,
   BookOpen,
   Check,
   ChevronDown,
@@ -16,11 +17,13 @@ import {
   Flame,
   HeartPulse,
   Layers,
+  MapPin,
   Printer,
   Search,
   ShieldAlert,
   Sparkles,
   Stethoscope,
+  Users,
 } from 'lucide-react';
 import {
   AnalysisResult,
@@ -32,7 +35,14 @@ import {
   VitalsState,
 } from '../types.ts';
 import { ROLE_LABELS } from '../data/seedData.ts';
-import { calculateClinicalRiskScore, ClinicalRiskScore } from '../lib/riskScore.ts';
+import {
+  calculateClinicalRiskScore,
+  ClinicalRiskScore,
+  calculatePewsScore,
+  PewsScoreResult,
+  calculateEsiTriage,
+  EsiScoreResult,
+} from '../lib/riskScore.ts';
 import {
   getCdssForCondition,
   getIcd10Guidance,
@@ -115,10 +125,42 @@ export const Step2Analysis: React.FC<Step2Props> = ({
     return undefined;
   }, [top]);
 
-  // Calculate Clinical Risk Score
+  // Độ tuổi và phân loại bệnh nhi
+  const ageYears = form?.tuoi ? parseInt(form.tuoi, 10) : NaN;
+  const isPediatric = !isNaN(ageYears) && ageYears < 16 && ageYears >= 0;
+
+  // Hệ thống thang điểm được chọn: NEWS2 (Người lớn) | ESI (Cấp cứu 5 cấp độ) | PEWS (Nhi khoa)
+  const [activeScoreSystem, setActiveScoreSystem] = useState<'news2' | 'esi' | 'pews'>(
+    isPediatric ? 'pews' : 'news2'
+  );
+
+  // Tự động chuyển sang PEWS nếu bệnh nhân là trẻ em
+  React.useEffect(() => {
+    if (isPediatric) {
+      setActiveScoreSystem('pews');
+    }
+  }, [isPediatric]);
+
+  // Set các triệu chứng đã khớp để tính điểm
+  const matchedSymptomIds = useMemo(() => {
+    if (!top || !top.matched) return new Set<string>();
+    return new Set<string>(top.matched.map((m) => m.tc.id));
+  }, [top]);
+
+  // 1. Thang điểm NEWS2 (Cảnh báo sớm Quốc gia)
   const riskScore: ClinicalRiskScore = useMemo(() => {
     return calculateClinicalRiskScore(vitals, labs, results, form);
   }, [vitals, labs, results, form]);
+
+  // 2. Thang điểm PEWS (Cảnh báo sớm Nhi khoa)
+  const pewsScore: PewsScoreResult = useMemo(() => {
+    return calculatePewsScore(vitals, labs, form, matchedSymptomIds);
+  }, [vitals, labs, form, matchedSymptomIds]);
+
+  // 3. Thang điểm ESI (Phân tầng Cấp cứu 5 cấp độ)
+  const esiScore: EsiScoreResult = useMemo(() => {
+    return calculateEsiTriage(vitals, labs, results, form, matchedSymptomIds);
+  }, [vitals, labs, results, form, matchedSymptomIds]);
 
   // Integrated clinical resources from Kho CC, Kho ICD-10, Kho CDSS
   const matchedTools: VaultArticle[] = useMemo(() => {
@@ -168,8 +210,20 @@ export const Step2Analysis: React.FC<Step2Props> = ({
     lines.push(`TÓM TẮT BIỆN LUẬN LÂM SÀNG (CLINICAL REASONING SUMMARY)`);
     lines.push(`Thời gian: ${new Date().toLocaleString('vi-VN')}`);
     lines.push(`Dữ kiện đối chiếu: ${selectedCount} chọn + ${derivedCount} tự suy (⚙) + ${negatedCount} phủ định.`);
-    lines.push(`Phân tầng nguy cơ: ${riskScore.levelName} (${riskScore.totalScore} điểm) - ${riskScore.urgencyText}`);
-    lines.push(`Khuyến nghị theo dõi: ${riskScore.monitoringFrequency}`);
+
+    if (activeScoreSystem === 'esi') {
+      lines.push(`Phân tầng cấp cứu ESI: ${esiScore.levelName} (${esiScore.triageCategory})`);
+      lines.push(`Thời gian tiếp cận mục tiêu: ${esiScore.timeToPhysician} | Khu vực: ${esiScore.targetArea}`);
+      lines.push(`Tài nguyên dự kiến: ${esiScore.predictedResources.count} nhóm (${esiScore.predictedResources.resourceList.join(', ')})`);
+    } else if (activeScoreSystem === 'pews') {
+      lines.push(`Thang điểm cảnh báo sớm Nhi khoa PEWS: ${pewsScore.totalScore} điểm (${pewsScore.levelName})`);
+      lines.push(`Mức độ: ${pewsScore.urgencyText} | Theo dõi: ${pewsScore.monitoringFrequency}`);
+      lines.push(`Leo thang: ${pewsScore.escalationProtocol}`);
+    } else {
+      lines.push(`Phân tầng nguy cơ NEWS2: ${riskScore.levelName} (${riskScore.totalScore} điểm) - ${riskScore.urgencyText}`);
+      lines.push(`Khuyến nghị theo dõi: ${riskScore.monitoringFrequency}`);
+    }
+
     lines.push(``);
     lines.push(`1. CHẨN ĐOÁN SƠ BỘ (Nghĩ nhiều nhất):`);
     lines.push(`- Bệnh lý: ${top.b.ten} (ICD-10: ${top.b.icd}) - Độ phù hợp: ${top.pct}%.`);
@@ -207,7 +261,13 @@ export const Step2Analysis: React.FC<Step2Props> = ({
 
     lines.push(``);
     lines.push(`3. HƯỚNG XỬ TRÍ TIẾP THEO:`);
-    lines.push(`- ${riskScore.clinicalAction}`);
+    if (activeScoreSystem === 'esi') {
+      lines.push(`- ${esiScore.clinicalAction}`);
+    } else if (activeScoreSystem === 'pews') {
+      lines.push(`- ${pewsScore.clinicalAction}`);
+    } else {
+      lines.push(`- ${riskScore.clinicalAction}`);
+    }
     lines.push(`- Khởi động phác đồ điều trị chuẩn và làm xét nghiệm xác chẩn.`);
 
     try {
@@ -316,198 +376,597 @@ export const Step2Analysis: React.FC<Step2Props> = ({
         </div>
       )}
 
-      {/* NEW FEATURE: Clinical Risk Score & Triage Urgency Level Card */}
-      <div
-        id="clinical-risk-score-card"
-        className={`bg-white border ${riskScore.color.border} rounded-lg p-4 sm:p-5 shadow-xs transition-all`}
-        style={{
-          borderLeftWidth: '5px',
-          borderLeftColor: riskScore.color.hex,
-        }}
-      >
-        <div className="flex flex-wrap items-start justify-between gap-4">
-          {/* Left Title & Urgency Description */}
-          <div className="flex-1 min-w-[260px]">
-            <div className="flex items-center gap-2 flex-wrap mb-1">
-              <span
-                className={`px-2.5 py-0.5 rounded text-[11px] font-bold tracking-wide uppercase ${riskScore.color.badgeBg} ${riskScore.color.badgeText} shadow-2xs flex items-center gap-1`}
-              >
-                {riskScore.level === 4 ? (
-                  <ShieldAlert className="w-3.5 h-3.5 animate-pulse" />
-                ) : riskScore.level === 3 ? (
-                  <AlertTriangle className="w-3.5 h-3.5" />
-                ) : (
-                  <Activity className="w-3.5 h-3.5" />
-                )}
-                <span>{riskScore.badgeLabel}</span>
-              </span>
+      {/* MULTI-SYSTEM CLINICAL TRIAGE & RISK SCORE CARD: NEWS2, ESI & PEWS */}
+      {(() => {
+        const currentScoreColor =
+          activeScoreSystem === 'esi'
+            ? esiScore.color
+            : activeScoreSystem === 'pews'
+            ? pewsScore.color
+            : riskScore.color;
 
-              <span className="text-xs font-mono-custom text-slate-500">
-                Thang điểm cảnh báo sớm NEWS2 / Cấp cứu
-              </span>
-            </div>
-
-            <h3 className="font-display text-lg sm:text-xl font-bold text-slate-900 tracking-tight mt-1 flex items-center gap-2">
-              <span>{riskScore.levelName}</span>
-              <span className="text-sm font-normal text-slate-500 font-mono-custom">
-                — {riskScore.urgencyText}
-              </span>
-            </h3>
-
-            {/* Monitoring & Clinical Action Protocols */}
-            <div className="mt-2.5 grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
-              <div className="p-2 bg-slate-50 rounded border border-slate-200 flex items-start gap-2">
-                <Clock className="w-3.5 h-3.5 text-blue-600 mt-0.5 shrink-0" />
-                <div>
-                  <span className="font-bold text-slate-700 block text-[11px] uppercase">
-                    Tần suất theo dõi:
-                  </span>
-                  <span className="text-slate-800 font-medium">{riskScore.monitoringFrequency}</span>
-                </div>
-              </div>
-
-              <div className="p-2 bg-slate-50 rounded border border-slate-200 flex items-start gap-2">
-                <Stethoscope className="w-3.5 h-3.5 text-emerald-600 mt-0.5 shrink-0" />
-                <div>
-                  <span className="font-bold text-slate-700 block text-[11px] uppercase">
-                    Khuyến nghị xử trí:
-                  </span>
-                  <span className="text-slate-800 font-medium">{riskScore.clinicalAction}</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Right: Big Numeric Score & Gauge Bar */}
-          <div className="flex flex-col items-center sm:items-end justify-center shrink-0">
-            <div className="flex items-baseline gap-1.5">
-              <span
-                className="font-display font-black text-4xl sm:text-5xl tracking-tight"
-                style={{ color: riskScore.color.hex }}
-              >
-                {riskScore.totalScore}
-              </span>
-              <span className="font-mono-custom text-xs text-slate-400 font-semibold uppercase">
-                điểm nguy cơ
-              </span>
-            </div>
-
-            {/* Visual Color-Coded Urgency Meter (4 Spectrum Bars) */}
-            <div className="mt-2 w-48 sm:w-56 flex flex-col gap-1">
-              <div className="flex h-2 w-full rounded-full overflow-hidden gap-1 bg-slate-100 p-0.5 border border-slate-200">
-                {/* Level 1: Low (Green) */}
-                <div
-                  className={`flex-1 rounded-full transition-all ${
-                    riskScore.level >= 1 ? 'bg-emerald-500' : 'bg-slate-200'
-                  }`}
-                  title="Mức 1: Thấp (0-2 điểm)"
-                />
-                {/* Level 2: Medium (Yellow) */}
-                <div
-                  className={`flex-1 rounded-full transition-all ${
-                    riskScore.level >= 2 ? 'bg-amber-500' : 'bg-slate-200'
-                  }`}
-                  title="Mức 2: Trung bình (3-4 điểm)"
-                />
-                {/* Level 3: High (Orange) */}
-                <div
-                  className={`flex-1 rounded-full transition-all ${
-                    riskScore.level >= 3 ? 'bg-orange-500' : 'bg-slate-200'
-                  }`}
-                  title="Mức 3: Cao (5-6 điểm)"
-                />
-                {/* Level 4: Critical (Red) */}
-                <div
-                  className={`flex-1 rounded-full transition-all ${
-                    riskScore.level >= 4 ? 'bg-rose-600 animate-pulse' : 'bg-slate-200'
-                  }`}
-                  title="Mức 4: Nguy kịch (≥7 điểm)"
-                />
-              </div>
-
-              {/* Urgency scale ticks */}
-              <div className="flex justify-between text-[10px] font-mono-custom text-slate-500 px-0.5">
-                <span className={riskScore.level === 1 ? 'font-bold text-emerald-700' : ''}>
-                  Thấp (0-2)
-                </span>
-                <span className={riskScore.level === 2 ? 'font-bold text-amber-700' : ''}>
-                  Vừa (3-4)
-                </span>
-                <span className={riskScore.level === 3 ? 'font-bold text-orange-700' : ''}>
-                  Cao (5-6)
-                </span>
-                <span className={riskScore.level === 4 ? 'font-bold text-rose-700' : ''}>
-                  Nguy kịch (≥7)
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Breakdown Toggle & Detail Table */}
-        <div className="mt-3 pt-2.5 border-t border-slate-100 flex flex-col gap-2">
-          <button
-            type="button"
-            onClick={() => setShowScoreBreakdown(!showScoreBreakdown)}
-            className="flex items-center gap-1.5 text-xs font-semibold text-blue-600 hover:underline cursor-pointer self-start"
+        return (
+          <div
+            id="clinical-risk-score-card"
+            className={`bg-white border ${currentScoreColor.border} rounded-xl p-4 sm:p-5 shadow-xs transition-all`}
+            style={{
+              borderLeftWidth: '6px',
+              borderLeftColor: currentScoreColor.hex,
+            }}
           >
-            <span>
-              {showScoreBreakdown
-                ? 'Thu gọn bảng phân tích điểm'
-                : `Xem chi tiết đóng góp điểm (${riskScore.breakdown.length} tiêu chuẩn)`}
-            </span>
-            {showScoreBreakdown ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
-          </button>
+            {/* Top Bar: Segmented System Switcher & Patient Population Tag */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 mb-4 border-b border-slate-100">
+              {/* Segmented Switcher Tabs */}
+              <div className="flex items-center gap-1.5 p-1 bg-slate-100/90 rounded-lg border border-slate-200/80">
+                <button
+                  type="button"
+                  onClick={() => setActiveScoreSystem('news2')}
+                  className={`px-3 py-1.5 rounded-md text-xs font-semibold transition-all flex items-center gap-1.5 cursor-pointer ${
+                    activeScoreSystem === 'news2'
+                      ? 'bg-white text-blue-900 shadow-2xs font-bold'
+                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/50'
+                  }`}
+                >
+                  <Activity className="w-3.5 h-3.5 text-blue-600" />
+                  <span>NEWS2 (Người lớn)</span>
+                </button>
 
-          {showScoreBreakdown && (
-            <div className="bg-slate-50 border border-slate-200 rounded-lg p-3 text-xs animate-fadeIn">
-              {riskScore.breakdown.length === 0 ? (
-                <div className="text-slate-500 italic py-1">
-                  Chưa có thông số sinh hiệu hoặc cận lâm sàng nào vượt ngưỡng báo động (Tất cả trong giới hạn bình thường).
-                </div>
-              ) : (
-                <div className="space-y-1.5">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
-                    {riskScore.breakdown.map((item, idx) => (
-                      <div
-                        key={idx}
-                        className="p-2 bg-white border border-slate-200 rounded flex items-start justify-between gap-2 shadow-2xs"
-                      >
-                        <div>
-                          <div className="flex items-center gap-1.5">
-                            <span className="font-bold text-slate-800">{item.parameter}</span>
-                            <span className="font-mono-custom text-[11px] text-slate-500">
-                              ({item.value})
-                            </span>
-                          </div>
-                          <div className="text-[11px] text-slate-600 mt-0.5">{item.reason}</div>
-                        </div>
+                <button
+                  type="button"
+                  onClick={() => setActiveScoreSystem('esi')}
+                  className={`px-3 py-1.5 rounded-md text-xs font-semibold transition-all flex items-center gap-1.5 cursor-pointer ${
+                    activeScoreSystem === 'esi'
+                      ? 'bg-white text-orange-950 shadow-2xs font-bold'
+                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/50'
+                  }`}
+                >
+                  <Flame className="w-3.5 h-3.5 text-orange-600" />
+                  <span>ESI (Cấp cứu 5 mức độ)</span>
+                </button>
 
-                        <span
-                          className={`font-mono-custom font-bold px-1.5 py-0.5 rounded text-[11px] shrink-0 ${
-                            item.points >= 3
-                              ? 'bg-rose-100 text-rose-800 border border-rose-200'
-                              : item.points === 2
-                              ? 'bg-orange-100 text-orange-800 border border-orange-200'
-                              : 'bg-amber-100 text-amber-800 border border-amber-200'
-                          }`}
-                        >
-                          +{item.points}đ
-                        </span>
-                      </div>
-                    ))}
-                  </div>
+                <button
+                  type="button"
+                  onClick={() => setActiveScoreSystem('pews')}
+                  className={`px-3 py-1.5 rounded-md text-xs font-semibold transition-all flex items-center gap-1.5 cursor-pointer ${
+                    activeScoreSystem === 'pews'
+                      ? 'bg-white text-rose-950 shadow-2xs font-bold'
+                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/50'
+                  }`}
+                >
+                  <Baby className="w-3.5 h-3.5 text-rose-600" />
+                  <span>PEWS (Nhi khoa)</span>
+                </button>
+              </div>
 
-                  <div className="mt-2 pt-2 border-t border-slate-200 flex justify-between items-center text-[11px] text-slate-500 font-mono-custom">
-                    <span>Điểm sinh hiệu: {riskScore.vitalScore}đ · Điểm cận lâm sàng & cảnh báo: {riskScore.clinicalScore}đ</span>
-                    <span className="font-bold text-slate-800">Tổng cộng: {riskScore.totalScore}đ</span>
-                  </div>
-                </div>
-              )}
+              {/* Population Indicator Badge */}
+              <div className="flex items-center gap-2">
+                {isPediatric ? (
+                  <span className="px-2.5 py-1 rounded-full text-[11px] font-bold bg-pink-50 text-pink-800 border border-pink-200 flex items-center gap-1">
+                    <Baby className="w-3.5 h-3.5 text-pink-600" />
+                    <span>Bệnh nhi ({form?.tuoi} tuổi) · Khuyến nghị dùng PEWS</span>
+                  </span>
+                ) : (
+                  <span className="px-2.5 py-1 rounded-full text-[11px] font-bold bg-blue-50 text-blue-800 border border-blue-200 flex items-center gap-1">
+                    <Users className="w-3.5 h-3.5 text-blue-600" />
+                    <span>Người lớn ({form?.tuoi || 'Trưởng thành'} tuổi) · Chuẩn ESI & NEWS2</span>
+                  </span>
+                )}
+              </div>
             </div>
-          )}
-        </div>
-      </div>
+
+            {/* TAB CONTENT: 1. ESI (EMERGENCY SEVERITY INDEX) */}
+            {activeScoreSystem === 'esi' && (
+              <div className="space-y-4">
+                <div className="flex flex-wrap items-start justify-between gap-4">
+                  <div className="flex-1 min-w-[260px]">
+                    <div className="flex items-center gap-2 flex-wrap mb-1">
+                      <span
+                        className={`px-2.5 py-0.5 rounded text-[11px] font-bold tracking-wide uppercase ${esiScore.color.badgeBg} ${esiScore.color.badgeText} shadow-2xs flex items-center gap-1`}
+                      >
+                        <Flame className="w-3.5 h-3.5" />
+                        <span>{esiScore.badgeLabel}</span>
+                      </span>
+
+                      <span className="text-xs font-mono-custom text-slate-500">
+                        Thang phân loại cấp cứu Emergency Severity Index (ESI v4)
+                      </span>
+                    </div>
+
+                    <h3 className="font-display text-lg sm:text-xl font-bold text-slate-900 tracking-tight mt-1 flex items-center gap-2">
+                      <span>{esiScore.levelName}</span>
+                      <span className="text-xs sm:text-sm font-normal text-slate-500 font-mono-custom">
+                        — {esiScore.triageCategory}
+                      </span>
+                    </h3>
+
+                    {/* Quick Stat Blocks: Time to MD, Target Area, Resource estimation */}
+                    <div className="mt-3 grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
+                      <div className="p-2.5 bg-slate-50 rounded-lg border border-slate-200 flex items-start gap-2">
+                        <Clock className="w-4 h-4 text-orange-600 mt-0.5 shrink-0" />
+                        <div>
+                          <span className="font-bold text-slate-700 block text-[10px] uppercase">
+                            Thời gian BS tiếp cận:
+                          </span>
+                          <span className="text-slate-900 font-bold">{esiScore.timeToPhysician}</span>
+                        </div>
+                      </div>
+
+                      <div className="p-2.5 bg-slate-50 rounded-lg border border-slate-200 flex items-start gap-2">
+                        <MapPin className="w-4 h-4 text-blue-600 mt-0.5 shrink-0" />
+                        <div>
+                          <span className="font-bold text-slate-700 block text-[10px] uppercase">
+                            Khu vực phân buồng:
+                          </span>
+                          <span className="text-slate-900 font-semibold">{esiScore.targetArea}</span>
+                        </div>
+                      </div>
+
+                      <div className="p-2.5 bg-slate-50 rounded-lg border border-slate-200 flex items-start gap-2">
+                        <Layers className="w-4 h-4 text-emerald-600 mt-0.5 shrink-0" />
+                        <div>
+                          <span className="font-bold text-slate-700 block text-[10px] uppercase">
+                            Dự kiến tài nguyên:
+                          </span>
+                          <span className="text-slate-900 font-semibold">{esiScore.predictedResources.count} nhóm can thiệp</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Clinical Action Recommendation */}
+                    <div className="mt-2.5 p-2.5 bg-slate-50/80 rounded-lg border border-slate-200 text-xs">
+                      <span className="font-bold text-slate-800 block text-[11px] uppercase mb-0.5">
+                        Khuyến nghị xử trí cấp cứu:
+                      </span>
+                      <p className="text-slate-700 leading-relaxed">{esiScore.clinicalAction}</p>
+                    </div>
+                  </div>
+
+                  {/* Right: Big ESI Level Display & 5-tier Gauge */}
+                  <div className="flex flex-col items-center sm:items-end justify-center shrink-0">
+                    <div className="flex items-baseline gap-1.5">
+                      <span
+                        className="font-display font-black text-4xl sm:text-5xl tracking-tight"
+                        style={{ color: esiScore.color.hex }}
+                      >
+                        MỨC {esiScore.level}
+                      </span>
+                    </div>
+                    <span className="font-mono-custom text-[11px] text-slate-500 font-bold uppercase mt-0.5">
+                      Cấp độ phân loại ED
+                    </span>
+
+                    {/* 5-tier ESI Spectrum Gauge */}
+                    <div className="mt-2.5 w-48 sm:w-60 flex flex-col gap-1">
+                      <div className="flex h-2.5 w-full rounded-full overflow-hidden gap-1 bg-slate-100 p-0.5 border border-slate-200">
+                        <div
+                          className={`flex-1 rounded-full transition-all ${
+                            esiScore.level === 1 ? 'bg-rose-600 ring-2 ring-rose-400' : 'bg-slate-200'
+                          }`}
+                          title="ESI 1: Hồi sức (Ngay lập tức)"
+                        />
+                        <div
+                          className={`flex-1 rounded-full transition-all ${
+                            esiScore.level === 2 ? 'bg-orange-500 ring-2 ring-orange-400' : 'bg-slate-200'
+                          }`}
+                          title="ESI 2: Cấp cứu khẩn (10-15 phút)"
+                        />
+                        <div
+                          className={`flex-1 rounded-full transition-all ${
+                            esiScore.level === 3 ? 'bg-amber-500 ring-2 ring-amber-400' : 'bg-slate-200'
+                          }`}
+                          title="ESI 3: Khẩn cấp (30-60 phút)"
+                        />
+                        <div
+                          className={`flex-1 rounded-full transition-all ${
+                            esiScore.level === 4 ? 'bg-blue-500 ring-2 ring-blue-400' : 'bg-slate-200'
+                          }`}
+                          title="ESI 4: Bán khẩn (60-120 phút)"
+                        />
+                        <div
+                          className={`flex-1 rounded-full transition-all ${
+                            esiScore.level === 5 ? 'bg-slate-500 ring-2 ring-slate-400' : 'bg-slate-200'
+                          }`}
+                          title="ESI 5: Không khẩn (120-240 phút)"
+                        />
+                      </div>
+
+                      <div className="flex justify-between text-[9px] font-mono-custom text-slate-500 px-0.5">
+                        <span className={esiScore.level === 1 ? 'font-bold text-rose-700' : ''}>1: Hồi sức</span>
+                        <span className={esiScore.level === 2 ? 'font-bold text-orange-700' : ''}>2: Cấp cứu</span>
+                        <span className={esiScore.level === 3 ? 'font-bold text-amber-700' : ''}>3: Khẩn</span>
+                        <span className={esiScore.level === 4 ? 'font-bold text-blue-700' : ''}>4: Bán khẩn</span>
+                        <span className={esiScore.level === 5 ? 'font-bold text-slate-700' : ''}>5: Thường</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* ESI Details Table Toggle */}
+                <div className="pt-2 border-t border-slate-100 space-y-2">
+                  <button
+                    type="button"
+                    onClick={() => setShowScoreBreakdown(!showScoreBreakdown)}
+                    className="flex items-center gap-1.5 text-xs font-semibold text-blue-600 hover:underline cursor-pointer"
+                  >
+                    <span>
+                      {showScoreBreakdown
+                        ? 'Thu gọn phân tích tiêu chuẩn ESI'
+                        : `Xem chi tiết tiêu chuẩn ESI (${esiScore.criteriaMet.length} tiêu chuẩn · ${esiScore.predictedResources.resourceList.length} tài nguyên)`}
+                    </span>
+                    {showScoreBreakdown ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
+                  </button>
+
+                  {showScoreBreakdown && (
+                    <div className="bg-slate-50 border border-slate-200 rounded-lg p-3 text-xs space-y-3 animate-fadeIn">
+                      <div>
+                        <span className="font-bold text-slate-800 block mb-1">Tiêu chí phân loại ESI thỏa mãn:</span>
+                        {esiScore.criteriaMet.length > 0 ? (
+                          <ul className="list-disc pl-4 space-y-1 text-slate-700">
+                            {esiScore.criteriaMet.map((c, i) => (
+                              <li key={i}>{c}</li>
+                            ))}
+                          </ul>
+                        ) : (
+                          <span className="text-slate-500 italic">Không có dấu hiệu nguy kịch hay nguy cơ cao đơn độc.</span>
+                        )}
+                      </div>
+
+                      {esiScore.dangerVitals.length > 0 && (
+                        <div>
+                          <span className="font-bold text-rose-800 block mb-1">Sinh hiệu rơi vào ngưỡng nguy hiểm:</span>
+                          <div className="flex flex-wrap gap-1.5">
+                            {esiScore.dangerVitals.map((v, i) => (
+                              <span key={i} className="px-2 py-0.5 rounded bg-rose-50 text-rose-800 border border-rose-200 font-mono-custom text-[11px]">
+                                {v}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                      <div>
+                        <span className="font-bold text-slate-800 block mb-1">
+                          Tài nguyên y tế dự kiến sử dụng ({esiScore.predictedResources.count} nhóm):
+                        </span>
+                        <div className="flex flex-wrap gap-1.5">
+                          {esiScore.predictedResources.resourceList.map((res, i) => (
+                            <span key={i} className="px-2 py-0.5 rounded bg-white text-slate-800 border border-slate-300 font-medium text-[11px]">
+                              ✓ {res}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+
+            {/* TAB CONTENT: 2. PEWS (PEDIATRIC EARLY WARNING SCORE) */}
+            {activeScoreSystem === 'pews' && (
+              <div className="space-y-4">
+                <div className="flex flex-wrap items-start justify-between gap-4">
+                  <div className="flex-1 min-w-[260px]">
+                    <div className="flex items-center gap-2 flex-wrap mb-1">
+                      <span
+                        className={`px-2.5 py-0.5 rounded text-[11px] font-bold tracking-wide uppercase ${pewsScore.color.badgeBg} ${pewsScore.color.badgeText} shadow-2xs flex items-center gap-1`}
+                      >
+                        <Baby className="w-3.5 h-3.5" />
+                        <span>{pewsScore.badgeLabel}</span>
+                      </span>
+
+                      <span className="text-xs font-mono-custom text-slate-500">
+                        Thang điểm Cảnh Báo Sớm Nhi Khoa (Pediatric Early Warning Score - PEWS)
+                      </span>
+                    </div>
+
+                    <h3 className="font-display text-lg sm:text-xl font-bold text-slate-900 tracking-tight mt-1 flex items-center gap-2">
+                      <span>{pewsScore.levelName}</span>
+                      <span className="text-xs sm:text-sm font-normal text-slate-500 font-mono-custom">
+                        — {pewsScore.urgencyText}
+                      </span>
+                    </h3>
+
+                    {/* Quick Monitoring & Escalation Protocols */}
+                    <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                      <div className="p-2.5 bg-slate-50 rounded-lg border border-slate-200 flex items-start gap-2">
+                        <Clock className="w-4 h-4 text-blue-600 mt-0.5 shrink-0" />
+                        <div>
+                          <span className="font-bold text-slate-700 block text-[10px] uppercase">
+                            Tần suất theo dõi sinh hiệu:
+                          </span>
+                          <span className="text-slate-900 font-semibold">{pewsScore.monitoringFrequency}</span>
+                        </div>
+                      </div>
+
+                      <div className="p-2.5 bg-slate-50 rounded-lg border border-slate-200 flex items-start gap-2">
+                        <ShieldAlert className="w-4 h-4 text-rose-600 mt-0.5 shrink-0" />
+                        <div>
+                          <span className="font-bold text-slate-700 block text-[10px] uppercase">
+                            Phác đồ leo thang cấp cứu Nhi:
+                          </span>
+                          <span className="text-slate-900 font-medium">{pewsScore.escalationProtocol}</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Clinical Action Recommendation */}
+                    <div className="mt-2.5 p-2.5 bg-slate-50/80 rounded-lg border border-slate-200 text-xs">
+                      <span className="font-bold text-slate-800 block text-[11px] uppercase mb-0.5">
+                        Khuyến nghị xử trí:
+                      </span>
+                      <p className="text-slate-700 leading-relaxed">{pewsScore.clinicalAction}</p>
+                    </div>
+                  </div>
+
+                  {/* Right: Big Numeric Score & PEWS Meter */}
+                  <div className="flex flex-col items-center sm:items-end justify-center shrink-0">
+                    <div className="flex items-baseline gap-1.5">
+                      <span
+                        className="font-display font-black text-4xl sm:text-5xl tracking-tight"
+                        style={{ color: pewsScore.color.hex }}
+                      >
+                        {pewsScore.totalScore}
+                      </span>
+                      <span className="font-mono-custom text-xs text-slate-400 font-semibold uppercase">
+                        điểm PEWS
+                      </span>
+                    </div>
+
+                    {/* 4-tier PEWS Urgency Meter */}
+                    <div className="mt-2.5 w-48 sm:w-56 flex flex-col gap-1">
+                      <div className="flex h-2 w-full rounded-full overflow-hidden gap-1 bg-slate-100 p-0.5 border border-slate-200">
+                        <div
+                          className={`flex-1 rounded-full transition-all ${
+                            pewsScore.level >= 1 ? 'bg-emerald-500' : 'bg-slate-200'
+                          }`}
+                          title="Mức 1: Thấp (0-2 điểm)"
+                        />
+                        <div
+                          className={`flex-1 rounded-full transition-all ${
+                            pewsScore.level >= 2 ? 'bg-amber-500' : 'bg-slate-200'
+                          }`}
+                          title="Mức 2: Vừa (3-4 điểm)"
+                        />
+                        <div
+                          className={`flex-1 rounded-full transition-all ${
+                            pewsScore.level >= 3 ? 'bg-orange-500' : 'bg-slate-200'
+                          }`}
+                          title="Mức 3: Cao (5-6 điểm)"
+                        />
+                        <div
+                          className={`flex-1 rounded-full transition-all ${
+                            pewsScore.level >= 4 ? 'bg-rose-600 animate-pulse' : 'bg-slate-200'
+                          }`}
+                          title="Mức 4: Nguy kịch (≥7 điểm)"
+                        />
+                      </div>
+
+                      <div className="flex justify-between text-[10px] font-mono-custom text-slate-500 px-0.5">
+                        <span className={pewsScore.level === 1 ? 'font-bold text-emerald-700' : ''}>Thấp (0-2)</span>
+                        <span className={pewsScore.level === 2 ? 'font-bold text-amber-700' : ''}>Vừa (3-4)</span>
+                        <span className={pewsScore.level === 3 ? 'font-bold text-orange-700' : ''}>Cao (5-6)</span>
+                        <span className={pewsScore.level === 4 ? 'font-bold text-rose-700' : ''}>Nguy kịch (≥7)</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 3 PEWS Physiological Domains */}
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-2 border-t border-slate-100 text-xs">
+                  {pewsScore.domains.map((dom, i) => (
+                    <div
+                      key={i}
+                      className={`p-2.5 rounded-lg border flex flex-col justify-between ${
+                        dom.points >= 2
+                          ? 'bg-rose-50/70 border-rose-200'
+                          : dom.points === 1
+                          ? 'bg-amber-50/70 border-amber-200'
+                          : 'bg-slate-50 border-slate-200'
+                      }`}
+                    >
+                      <div>
+                        <div className="flex items-center justify-between mb-1">
+                          <span className="font-bold text-slate-800">{dom.title}</span>
+                          <span
+                            className={`px-1.5 py-0.5 rounded font-mono-custom font-bold text-[10px] ${
+                              dom.points >= 2
+                                ? 'bg-rose-200 text-rose-900'
+                                : dom.points === 1
+                                ? 'bg-amber-200 text-amber-900'
+                                : 'bg-slate-200 text-slate-700'
+                            }`}
+                          >
+                            {dom.points} điểm
+                          </span>
+                        </div>
+                        <p className="text-[11px] text-slate-700 leading-snug">{dom.finding}</p>
+                      </div>
+                      <div className="text-[10px] text-slate-500 font-mono-custom mt-1.5 italic">
+                        {dom.reason}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* TAB CONTENT: 3. NEWS2 (NATIONAL EARLY WARNING SCORE) */}
+            {activeScoreSystem === 'news2' && (
+              <div className="space-y-4">
+                <div className="flex flex-wrap items-start justify-between gap-4">
+                  <div className="flex-1 min-w-[260px]">
+                    <div className="flex items-center gap-2 flex-wrap mb-1">
+                      <span
+                        className={`px-2.5 py-0.5 rounded text-[11px] font-bold tracking-wide uppercase ${riskScore.color.badgeBg} ${riskScore.color.badgeText} shadow-2xs flex items-center gap-1`}
+                      >
+                        {riskScore.level === 4 ? (
+                          <ShieldAlert className="w-3.5 h-3.5 animate-pulse" />
+                        ) : riskScore.level === 3 ? (
+                          <AlertTriangle className="w-3.5 h-3.5" />
+                        ) : (
+                          <Activity className="w-3.5 h-3.5" />
+                        )}
+                        <span>{riskScore.badgeLabel}</span>
+                      </span>
+
+                      <span className="text-xs font-mono-custom text-slate-500">
+                        Thang điểm cảnh báo sớm Quốc gia NEWS2 (Người lớn)
+                      </span>
+                    </div>
+
+                    <h3 className="font-display text-lg sm:text-xl font-bold text-slate-900 tracking-tight mt-1 flex items-center gap-2">
+                      <span>{riskScore.levelName}</span>
+                      <span className="text-sm font-normal text-slate-500 font-mono-custom">
+                        — {riskScore.urgencyText}
+                      </span>
+                    </h3>
+
+                    {/* Monitoring & Clinical Action Protocols */}
+                    <div className="mt-2.5 grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                      <div className="p-2 bg-slate-50 rounded border border-slate-200 flex items-start gap-2">
+                        <Clock className="w-3.5 h-3.5 text-blue-600 mt-0.5 shrink-0" />
+                        <div>
+                          <span className="font-bold text-slate-700 block text-[11px] uppercase">
+                            Tần suất theo dõi:
+                          </span>
+                          <span className="text-slate-800 font-medium">{riskScore.monitoringFrequency}</span>
+                        </div>
+                      </div>
+
+                      <div className="p-2 bg-slate-50 rounded border border-slate-200 flex items-start gap-2">
+                        <Stethoscope className="w-3.5 h-3.5 text-emerald-600 mt-0.5 shrink-0" />
+                        <div>
+                          <span className="font-bold text-slate-700 block text-[11px] uppercase">
+                            Khuyến nghị xử trí:
+                          </span>
+                          <span className="text-slate-800 font-medium">{riskScore.clinicalAction}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Right: Big Numeric Score & Gauge Bar */}
+                  <div className="flex flex-col items-center sm:items-end justify-center shrink-0">
+                    <div className="flex items-baseline gap-1.5">
+                      <span
+                        className="font-display font-black text-4xl sm:text-5xl tracking-tight"
+                        style={{ color: riskScore.color.hex }}
+                      >
+                        {riskScore.totalScore}
+                      </span>
+                      <span className="font-mono-custom text-xs text-slate-400 font-semibold uppercase">
+                        điểm nguy cơ
+                      </span>
+                    </div>
+
+                    {/* Visual Color-Coded Urgency Meter (4 Spectrum Bars) */}
+                    <div className="mt-2 w-48 sm:w-56 flex flex-col gap-1">
+                      <div className="flex h-2 w-full rounded-full overflow-hidden gap-1 bg-slate-100 p-0.5 border border-slate-200">
+                        <div
+                          className={`flex-1 rounded-full transition-all ${
+                            riskScore.level >= 1 ? 'bg-emerald-500' : 'bg-slate-200'
+                          }`}
+                          title="Mức 1: Thấp (0-2 điểm)"
+                        />
+                        <div
+                          className={`flex-1 rounded-full transition-all ${
+                            riskScore.level >= 2 ? 'bg-amber-500' : 'bg-slate-200'
+                          }`}
+                          title="Mức 2: Trung bình (3-4 điểm)"
+                        />
+                        <div
+                          className={`flex-1 rounded-full transition-all ${
+                            riskScore.level >= 3 ? 'bg-orange-500' : 'bg-slate-200'
+                          }`}
+                          title="Mức 3: Cao (5-6 điểm)"
+                        />
+                        <div
+                          className={`flex-1 rounded-full transition-all ${
+                            riskScore.level >= 4 ? 'bg-rose-600 animate-pulse' : 'bg-slate-200'
+                          }`}
+                          title="Mức 4: Nguy kịch (≥7 điểm)"
+                        />
+                      </div>
+
+                      <div className="flex justify-between text-[10px] font-mono-custom text-slate-500 px-0.5">
+                        <span className={riskScore.level === 1 ? 'font-bold text-emerald-700' : ''}>Thấp (0-2)</span>
+                        <span className={riskScore.level === 2 ? 'font-bold text-amber-700' : ''}>Vừa (3-4)</span>
+                        <span className={riskScore.level === 3 ? 'font-bold text-orange-700' : ''}>Cao (5-6)</span>
+                        <span className={riskScore.level === 4 ? 'font-bold text-rose-700' : ''}>Nguy kịch (≥7)</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Breakdown Toggle & Detail Table */}
+                <div className="pt-2 border-t border-slate-100 flex flex-col gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setShowScoreBreakdown(!showScoreBreakdown)}
+                    className="flex items-center gap-1.5 text-xs font-semibold text-blue-600 hover:underline cursor-pointer self-start"
+                  >
+                    <span>
+                      {showScoreBreakdown
+                        ? 'Thu gọn bảng phân tích điểm NEWS2'
+                        : `Xem chi tiết đóng góp điểm NEWS2 (${riskScore.breakdown.length} tiêu chuẩn)`}
+                    </span>
+                    {showScoreBreakdown ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
+                  </button>
+
+                  {showScoreBreakdown && (
+                    <div className="bg-slate-50 border border-slate-200 rounded-lg p-3 text-xs animate-fadeIn">
+                      {riskScore.breakdown.length === 0 ? (
+                        <div className="text-slate-500 italic py-1">
+                          Chưa có thông số sinh hiệu hoặc cận lâm sàng nào vượt ngưỡng báo động (Tất cả trong giới hạn bình thường).
+                        </div>
+                      ) : (
+                        <div className="space-y-1.5">
+                          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
+                            {riskScore.breakdown.map((item, idx) => (
+                              <div
+                                key={idx}
+                                className="p-2 bg-white border border-slate-200 rounded flex items-start justify-between gap-2 shadow-2xs"
+                              >
+                                <div>
+                                  <div className="flex items-center gap-1.5">
+                                    <span className="font-bold text-slate-800">{item.parameter}</span>
+                                    <span className="font-mono-custom text-[11px] text-slate-500">
+                                      ({item.value})
+                                    </span>
+                                  </div>
+                                  <div className="text-[11px] text-slate-600 mt-0.5">{item.reason}</div>
+                                </div>
+
+                                <span
+                                  className={`font-mono-custom font-bold px-1.5 py-0.5 rounded text-[11px] shrink-0 ${
+                                    item.points >= 3
+                                      ? 'bg-rose-100 text-rose-800 border border-rose-200'
+                                      : item.points === 2
+                                      ? 'bg-orange-100 text-orange-800 border border-orange-200'
+                                      : 'bg-amber-100 text-amber-800 border border-amber-200'
+                                  }`}
+                                >
+                                  +{item.points}đ
+                                </span>
+                              </div>
+                            ))}
+                          </div>
+
+                          <div className="mt-2 pt-2 border-t border-slate-200 flex justify-between items-center text-[11px] text-slate-500 font-mono-custom">
+                            <span>Điểm sinh hiệu: {riskScore.vitalScore}đ · Điểm cận lâm sàng & cảnh báo: {riskScore.clinicalScore}đ</span>
+                            <span className="font-bold text-slate-800">Tổng cộng: {riskScore.totalScore}đ</span>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+          </div>
+        );
+      })()}
 
       {/* Low confidence warning if below 25% */}
       {top.pct < 25 && (
@@ -752,15 +1211,20 @@ export const Step2Analysis: React.FC<Step2Props> = ({
           </div>
         </div>
 
-        {/* KHỐI 2: 📊 TIÊU CHUẨN PHÂN ĐỘ LÂM SÀNG & PHÁC ĐỒ TƯƠNG ỨNG (SEVERITY GRADING) */}
+        {/* KHỐI 2: 📊 TIÊU CHUẨN PHÂN ĐỘ LÂM SÀNG & ĐỊNH HƯỚNG TUYẾN TIẾP NHẬN (SEVERITY STAGING) */}
         <div className="mt-5 p-4 rounded-lg bg-slate-50/90 border border-slate-200">
           <div className="flex items-center justify-between gap-2 mb-3 pb-2 border-b border-slate-200">
-            <span className="font-bold text-xs uppercase tracking-wider text-slate-800 flex items-center gap-1.5">
-              <Layers className="w-4 h-4 text-blue-600" />
-              <span>2. Tiêu Chuẩn Phân Độ Lâm Sàng & Phác Đồ Tương Ứng (Severity Grading)</span>
-            </span>
-            <span className="text-[11px] text-slate-500 hidden sm:inline">
-              Bấm chọn phác đồ để nạp trực tiếp vào Bước 4
+            <div>
+              <span className="font-bold text-xs uppercase tracking-wider text-slate-800 flex items-center gap-1.5">
+                <Layers className="w-4 h-4 text-blue-600" />
+                <span>2. Tiêu Chuẩn Phân Độ Lâm Sàng & Định Hướng Tuyến Tiếp Nhận</span>
+              </span>
+              <p className="text-[11px] text-slate-500 mt-0.5">
+                Đối chiếu triệu chứng lâm sàng và cận lâm sàng để xác định mức độ nặng của người bệnh theo chuẩn Bộ Y tế.
+              </p>
+            </div>
+            <span className="text-[11px] text-indigo-700 font-semibold bg-indigo-50 px-2 py-1 rounded border border-indigo-200 hidden sm:inline">
+              Nhấp để mở Phác đồ điều trị chi tiết ở Bước 4
             </span>
           </div>
 
@@ -771,7 +1235,7 @@ export const Step2Analysis: React.FC<Step2Props> = ({
                   {
                     grade: 'Mức độ 1: Thể Nhẹ / Ngoại trú',
                     severity: 'mild' as const,
-                    criteria: 'Triệu chứng khởi phát nhẹ đến vừa, sinh hiệu ổn định.',
+                    criteria: 'Triệu chứng khởi phát nhẹ đến vừa, sinh hiệu ổn định, không có dấu hiệu cảnh báo đe dọa sinh mạng.',
                     triage: 'Tuyến 1: Ngoại trú / Trạm Y tế',
                     primaryAction: 'Dùng thuốc đường uống, bù nước điện giải Oresol, theo dõi sát.',
                     targetVitals: 'Sinh hiệu trong giới hạn bình thường',
@@ -779,15 +1243,15 @@ export const Step2Analysis: React.FC<Step2Props> = ({
                   {
                     grade: 'Mức độ 2: Thể Trung bình / Nội trú',
                     severity: 'moderate' as const,
-                    criteria: 'Có dấu hiệu cảnh báo hoặc cơ địa nguy cơ cao.',
-                    triage: 'Tuyến 2: Nội trú / Bệnh viện Huyện',
+                    criteria: 'Có ít nhất 1 dấu hiệu cảnh báo hoặc có cơ địa nguy cơ cao, triệu chứng tiến triển nhanh.',
+                    triage: 'Tuyến 2: Nội trú / Bệnh viện Quận-Huyện',
                     primaryAction: 'Nhập viện theo dõi, bù dịch tĩnh mạch và xét nghiệm định kỳ.',
                     targetVitals: 'Duy trì tưới máu tạng an toàn',
                   },
                   {
                     grade: 'Mức độ 3: Thể Nặng / Cấp cứu ICU',
                     severity: 'critical' as const,
-                    criteria: 'Sốc, suy hô hấp, xuất huyết nặng hoặc suy tạng.',
+                    criteria: 'Sốc giảm thể tích (tụt HA, HA kẹp), suy hô hấp, xuất huyết nặng hoặc tổn thương suy đa tạng.',
                     triage: 'Tuyến 3: Khoa Hồi sức tích cực (ICU)',
                     primaryAction: 'Hồi sức sốc khẩn cấp, thở oxy, bù dịch nhanh và vận mạch.',
                     targetVitals: 'HATT ≥ 90 mmHg, MAP ≥ 65 mmHg',
@@ -797,10 +1261,23 @@ export const Step2Analysis: React.FC<Step2Props> = ({
               const isCritical = gradeItem.severity === 'critical' || gradeItem.severity === 'severe';
               const isModerate = gradeItem.severity === 'moderate';
 
+              // Kiểm tra xem dữ kiện bệnh nhân hiện tại có phù hợp với phân độ này
+              const sbp = parseFloat(vitals?.vHATT || '120');
+              const dbp = parseFloat(vitals?.vHATTr || '80');
+              const plt = parseFloat(labs?.lTC || '250');
+              const hct = parseFloat(labs?.lHct || '40');
+
+              const isMatchedCurrent =
+                isCritical
+                  ? (sbp <= 90 || (sbp > 0 && dbp > 0 && sbp - dbp <= 20) || plt < 50)
+                  : isModerate
+                  ? (!((sbp <= 90 || (sbp > 0 && dbp > 0 && sbp - dbp <= 20) || plt < 50)) && (plt < 100 || hct >= 44 || activeChain?.diseaseName?.toLowerCase().includes('dengue')))
+                  : false;
+
               return (
                 <div
                   key={gIdx}
-                  className={`p-3.5 rounded-lg border flex flex-col justify-between transition-all ${
+                  className={`p-4 rounded-lg border flex flex-col justify-between transition-all ${
                     isCritical
                       ? 'bg-rose-50/40 border-rose-200 hover:border-rose-400'
                       : isModerate
@@ -808,8 +1285,8 @@ export const Step2Analysis: React.FC<Step2Props> = ({
                       : 'bg-white border-slate-200 hover:border-blue-300'
                   } shadow-2xs`}
                 >
-                  <div>
-                    <div className="flex items-center justify-between gap-1 mb-2">
+                  <div className="space-y-2.5">
+                    <div className="flex items-center justify-between gap-1">
                       <span
                         className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider ${
                           isCritical
@@ -821,46 +1298,68 @@ export const Step2Analysis: React.FC<Step2Props> = ({
                       >
                         {gradeItem.severity}
                       </span>
-                      <span className="text-[10.5px] font-semibold text-slate-500 truncate max-w-[140px]">
-                        {gradeItem.triage.split(':')[0]}
-                      </span>
+                      {isMatchedCurrent && (
+                        <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-500 text-white shadow-2xs animate-pulse">
+                          ★ Phù hợp ca bệnh
+                        </span>
+                      )}
                     </div>
 
-                    <h4 className="font-bold text-slate-900 text-xs sm:text-sm mb-1.5 leading-snug">
+                    <h4 className="font-bold text-slate-900 text-xs sm:text-sm leading-snug">
                       {gradeItem.grade}
                     </h4>
 
-                    <div className="space-y-1.5 text-xs text-slate-600 mb-3">
-                      <div>
-                        <b className="text-slate-800 text-[11px]">Tiêu chuẩn xếp độ: </b>
-                        <span className="text-[11.5px]">{gradeItem.criteria}</span>
+                    {/* Tiêu chuẩn xác định phân độ */}
+                    <div className="bg-white/90 border border-slate-200/90 rounded-md p-2.5 text-xs space-y-1">
+                      <div className="font-bold text-[11px] text-slate-800 flex items-center gap-1.5 uppercase tracking-wide">
+                        <FileCheck className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+                        <span>Tiêu chuẩn xác định phân độ:</span>
                       </div>
-                      <div>
-                        <b className="text-slate-800 text-[11px]">Xử trí đầu tay: </b>
-                        <span className="text-[11.5px] text-slate-700">{gradeItem.primaryAction}</span>
+                      <p className="text-[11.5px] text-slate-700 leading-relaxed pl-5 border-l-2 border-blue-300">
+                        {gradeItem.criteria}
+                      </p>
+                    </div>
+
+                    {/* Tuyến tiếp nhận & Định hướng chiến lược */}
+                    <div className="space-y-1 text-xs text-slate-600 pt-0.5">
+                      <div className="flex items-start gap-1">
+                        <b className="text-slate-800 text-[11px] shrink-0">Tuyến tiếp nhận:</b>
+                        <span className="text-[11.5px] text-slate-700 font-medium">{gradeItem.triage}</span>
+                      </div>
+                      <div className="flex items-start gap-1">
+                        <b className="text-slate-800 text-[11px] shrink-0">Định hướng:</b>
+                        <span className="text-[11.5px] text-slate-700">
+                          {isCritical
+                            ? 'Hồi sức sốc khẩn cấp theo giờ vàng tại Khoa Hồi sức tích cực (ICU), bảo vệ tưới máu tạng.'
+                            : isModerate
+                            ? 'Chỉ định nhập viện nội trú 100%, bù dịch tĩnh mạch bậc thang, theo dõi sát Hct mỗi 2-4h.'
+                            : 'Bù dịch sớm đường uống Oresol, hạ sốt an toàn, dặn dò 7 dấu hiệu cảnh báo tái khám mỗi ngày.'}
+                        </span>
                       </div>
                       {gradeItem.targetVitals && (
-                        <div className="text-[11px] font-mono-custom text-slate-500">
+                        <div className="text-[11px] font-mono-custom text-slate-500 pt-0.5">
                           🎯 Mục tiêu: {gradeItem.targetVitals}
                         </div>
                       )}
                     </div>
                   </div>
 
-                  <button
-                    type="button"
-                    onClick={() => onGoToProtocol(top.b.id, { gradeIdx: gIdx })}
-                    className={`w-full py-2 px-3 rounded-md text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer shadow-xs ${
-                      isCritical
-                        ? 'bg-rose-600 hover:bg-rose-700 text-white'
-                        : isModerate
-                        ? 'bg-amber-600 hover:bg-amber-700 text-white'
-                        : 'bg-blue-600 hover:bg-blue-700 text-white'
-                    }`}
-                  >
-                    <span>Xem Phác Đồ {gradeItem.grade.split(':')[0]}</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
+                  <div className="mt-4 pt-3 border-t border-slate-200/80">
+                    <button
+                      type="button"
+                      onClick={() => onGoToProtocol(top.b.id, { gradeIdx: gIdx })}
+                      className={`w-full py-2 px-3 rounded-md text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer shadow-xs ${
+                        isCritical
+                          ? 'bg-rose-600 hover:bg-rose-700 text-white'
+                          : isModerate
+                          ? 'bg-amber-600 hover:bg-amber-700 text-white'
+                          : 'bg-blue-600 hover:bg-blue-700 text-white'
+                      }`}
+                    >
+                      <span>Xem Phác Đồ {gradeItem.grade.split(':')[0]}</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
                 </div>
               );
             })}

@@ -328,8 +328,13 @@ export function MainApp() {
     if (sample.labs) {
       setLabs((prev) => ({ ...prev, ...sample.labs }));
     }
+    if (sample.epiContext) {
+      setEpiContext({ ...initialEpiContext, ...sample.epiContext });
+    } else {
+      setEpiContext(initialEpiContext);
+    }
     setSelected(new Set(sample.sel));
-    setNegated(new Set());
+    setNegated(new Set(sample.negated || []));
     setCompletedSteps(new Set(['t1', 't2']));
     setClinicalStep('t2');
     window.scrollTo({ top: 0, behavior: 'smooth' });

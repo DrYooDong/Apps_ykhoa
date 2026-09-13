@@ -3,7 +3,14 @@ import { Download, Loader2, Printer, ShieldAlert, X } from 'lucide-react';
 import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
 import { AnalysisResult, ClinicalFormState, KnowledgeBase, LabsState, VitalsState } from '../types.ts';
-import { calculateClinicalRiskScore, ClinicalRiskScore } from '../lib/riskScore.ts';
+import {
+  calculateClinicalRiskScore,
+  ClinicalRiskScore,
+  calculatePewsScore,
+  PewsScoreResult,
+  calculateEsiTriage,
+  EsiScoreResult,
+} from '../lib/riskScore.ts';
 
 interface PrintReportModalProps {
   isOpen: boolean;
@@ -28,10 +35,23 @@ export const PrintReportModal: React.FC<PrintReportModalProps> = ({
 }) => {
   const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
 
-  // Compute Clinical Risk Score for the official report
+  const isPediatric = form.tuoi ? parseInt(form.tuoi, 10) < 16 : false;
+  const topMatchedIds = useMemo(() => {
+    return results && results[0]?.matched ? new Set(results[0].matched.map((m) => m.tc.id)) : undefined;
+  }, [results]);
+
+  // Compute Clinical Risk Scores for the official report
   const riskScore: ClinicalRiskScore = useMemo(() => {
     return calculateClinicalRiskScore(vitals, labs, results, form);
   }, [vitals, labs, results, form]);
+
+  const pewsScore: PewsScoreResult = useMemo(() => {
+    return calculatePewsScore(vitals, labs, form, topMatchedIds);
+  }, [vitals, labs, form, topMatchedIds]);
+
+  const esiScore: EsiScoreResult = useMemo(() => {
+    return calculateEsiTriage(vitals, labs, results, form, topMatchedIds);
+  }, [vitals, labs, results, form, topMatchedIds]);
 
   if (!isOpen) return null;
 
@@ -221,46 +241,124 @@ export const PrintReportModal: React.FC<PrintReportModalProps> = ({
             </div>
           </div>
 
-          {/* CLINICAL RISK SCORE (NEWS2 & Urgency Indicator) */}
-          <div
-            className="border-2 rounded-lg p-3.5 mb-5 flex flex-wrap items-center justify-between gap-3"
-            style={{
-              borderColor: riskScore.color.hex,
-              backgroundColor: riskScore.level === 4 ? '#fff1f2' : riskScore.level === 3 ? '#fff7ed' : '#f0fdf4',
-            }}
-          >
-            <div>
-              <div className="flex items-center gap-2 mb-1">
-                <span
-                  className="px-2 py-0.5 rounded text-[10px] font-bold tracking-wide uppercase text-white font-mono-custom"
-                  style={{ backgroundColor: riskScore.color.hex }}
-                >
-                  {riskScore.badgeLabel}
-                </span>
-                <span className="font-bold text-xs text-neutral-900 uppercase">
-                  {riskScore.levelName}
-                </span>
+          {/* CLINICAL TRIAGE & RISK SCORE (NEWS2, ESI & PEWS) */}
+          {isPediatric ? (
+            <div
+              className="border-2 rounded-lg p-3.5 mb-5 flex flex-wrap items-center justify-between gap-3"
+              style={{
+                borderColor: pewsScore.color.hex,
+                backgroundColor: pewsScore.level === 4 ? '#fff1f2' : pewsScore.level === 3 ? '#fff7ed' : '#f0fdf4',
+              }}
+            >
+              <div>
+                <div className="flex items-center gap-2 mb-1">
+                  <span
+                    className="px-2 py-0.5 rounded text-[10px] font-bold tracking-wide uppercase text-white font-mono-custom"
+                    style={{ backgroundColor: pewsScore.color.hex }}
+                  >
+                    {pewsScore.badgeLabel}
+                  </span>
+                  <span className="font-bold text-xs text-neutral-900 uppercase">
+                    {pewsScore.levelName}
+                  </span>
+                </div>
+                <div className="text-xs text-neutral-700">
+                  <b>Khuyến nghị Nhi khoa: </b> {pewsScore.clinicalAction}
+                </div>
+                <div className="text-[11px] text-neutral-500 font-mono-custom mt-0.5">
+                  Tần suất theo dõi: {pewsScore.monitoringFrequency} · Leo thang: {pewsScore.escalationProtocol}
+                </div>
               </div>
-              <div className="text-xs text-neutral-700">
-                <b>Khuyến nghị: </b> {riskScore.clinicalAction}
-              </div>
-              <div className="text-[11px] text-neutral-500 font-mono-custom mt-0.5">
-                Tần suất theo dõi sinh hiệu: {riskScore.monitoringFrequency}
-              </div>
-            </div>
 
-            <div className="text-right shrink-0">
-              <div
-                className="font-display font-black text-2xl"
-                style={{ color: riskScore.color.hex }}
-              >
-                {riskScore.totalScore} điểm
-              </div>
-              <div className="text-[10px] text-neutral-500 font-mono-custom uppercase">
-                Điểm cảnh báo sớm
+              <div className="text-right shrink-0">
+                <div
+                  className="font-display font-black text-2xl"
+                  style={{ color: pewsScore.color.hex }}
+                >
+                  {pewsScore.totalScore} điểm
+                </div>
+                <div className="text-[10px] text-neutral-500 font-mono-custom uppercase">
+                  Thang điểm PEWS Nhi
+                </div>
               </div>
             </div>
-          </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-5">
+              {/* NEWS2 Card */}
+              <div
+                className="border-2 rounded-lg p-3 flex items-center justify-between gap-3"
+                style={{
+                  borderColor: riskScore.color.hex,
+                  backgroundColor: riskScore.level === 4 ? '#fff1f2' : riskScore.level === 3 ? '#fff7ed' : '#f0fdf4',
+                }}
+              >
+                <div>
+                  <div className="flex items-center gap-1.5 mb-1">
+                    <span
+                      className="px-1.5 py-0.5 rounded text-[9px] font-bold tracking-wide uppercase text-white font-mono-custom"
+                      style={{ backgroundColor: riskScore.color.hex }}
+                    >
+                      NEWS2
+                    </span>
+                    <span className="font-bold text-xs text-neutral-900">
+                      {riskScore.levelName}
+                    </span>
+                  </div>
+                  <div className="text-[11px] text-neutral-700 leading-tight">
+                    {riskScore.clinicalAction}
+                  </div>
+                </div>
+                <div className="text-right shrink-0">
+                  <div
+                    className="font-display font-black text-xl"
+                    style={{ color: riskScore.color.hex }}
+                  >
+                    {riskScore.totalScore}đ
+                  </div>
+                  <div className="text-[9px] text-neutral-500 font-mono-custom uppercase">
+                    Cảnh báo sớm
+                  </div>
+                </div>
+              </div>
+
+              {/* ESI Triage Card */}
+              <div
+                className="border-2 rounded-lg p-3 flex items-center justify-between gap-3"
+                style={{
+                  borderColor: esiScore.color.hex,
+                  backgroundColor: esiScore.level === 1 ? '#fff1f2' : esiScore.level === 2 ? '#fff7ed' : '#f8fafc',
+                }}
+              >
+                <div>
+                  <div className="flex items-center gap-1.5 mb-1">
+                    <span
+                      className="px-1.5 py-0.5 rounded text-[9px] font-bold tracking-wide uppercase text-white font-mono-custom"
+                      style={{ backgroundColor: esiScore.color.hex }}
+                    >
+                      {esiScore.badgeLabel}
+                    </span>
+                    <span className="font-bold text-xs text-neutral-900">
+                      {esiScore.levelName}
+                    </span>
+                  </div>
+                  <div className="text-[11px] text-neutral-700 leading-tight">
+                    Khám: <b>{esiScore.timeToPhysician}</b> · Buồng: <b>{esiScore.targetArea}</b>
+                  </div>
+                </div>
+                <div className="text-right shrink-0">
+                  <div
+                    className="font-display font-black text-xl"
+                    style={{ color: esiScore.color.hex }}
+                  >
+                    MỨC {esiScore.level}
+                  </div>
+                  <div className="text-[9px] text-neutral-500 font-mono-custom uppercase">
+                    Phân loại ESI
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
 
           {/* Vital Signs & Labs */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
