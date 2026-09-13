@@ -7,12 +7,12 @@
 # để sinh ra TOÀN BỘ CODE CẤU TRÚC nạp vào 4 Bước của "Chu Trình Lâm Sàng" DocSpace:
 #
 #   1. CODE 1: Enriched CDSS JSON (src/content/docspace/data/enriched/<slug>.json)
-#      -> Vận hành Tiêu chuẩn chẩn đoán, Ngưỡng CLS, Phác đồ thuốc bậc 1 & 2, Biến chứng cờ đỏ (Bước 3 & 4)
+#      -> Vận hành Tiêu chuẩn chẩn đoán & Phân độ lâm sàng (Bước 3), Bảng Chiến Lược 3 Cột, Y lệnh 3 tuyến, Thuốc bậc 1 & 2, Biến chứng khẩn (Bước 4)
 #   2. CODE 2: Động Cơ Suy Luận & Trọng Số CDSS (src/content/knowledge-vault/data/clinical-rules-kb.json)
 #      -> Vận hành Ma trận trọng số (dt/gy/ht/loaitru) để tính % xác suất chẩn đoán (Bước 3)
 #   3. CODE 3: Ca Bệnh Mẫu Thực Tế (src/content/knowledge-vault/data/sample-clinical-cases.json)
-#      -> Nạp 1-click lên thanh "Ca bệnh mẫu" ở Bước 1 (Sinh hiệu, CLS, Bệnh sử, Triệu chứng)
-#   4. CODE 4: Hồ Sơ Ca Bệnh SOAP Markdown (Nạp qua nút "Nạp ca từ NotebookLM" trên thanh công cụ)
+#      -> Nạp 1-click lên thanh "Ca bệnh mẫu" ở Bước 1 (Sinh hiệu, CLS, Bệnh sử, Vùng dịch tễ lưu hành, Triệu chứng)
+#   4. CODE 4: Hồ Sơ Ca Bệnh SOAP Markdown (Nạp vào Mục 9 Bước 4 hoặc qua nút "Nạp ca từ NotebookLM")
 # ==============================================================================
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -108,13 +108,19 @@ Xuất một khối JSON hợp lệ duy nhất có cấu trúc chính xác sau:
     }
   ],
   \"severityGrading\": [
+    // LƯU Ý QUY TẮC ÁNH XẠ GIAO DIỆN (UI MAPPING):
+    // - \"criteria\": Hiển thị CHUYÊN BIỆT tại Bước 3 (Tiêu chuẩn phân độ lâm sàng, bóc tách lâm sàng, CLS, tiêu chuẩn an toàn).
+    // - \"triage\": Hiển thị vào Cột 1 (Tuyến Tiếp Nhận & Phân Luồng) trên Bảng Chiến Lược 3 Cột ở Bước 4.
+    // - \"primaryAction\": Hiển thị vào Cột 2 (Định Hướng Chiến Lược Xử Trí) trên Bảng Chiến Lược 3 Cột ở Bước 4.
+    // - \"targetVitals\": Hiển thị vào Cột 3 (Mục Tiêu Điều Trị & Sinh Hiệu) trên Bảng Chiến Lược 3 Cột ở Bước 4.
+    // - \"protocol\": Tự động nạp vào các phân mục tương ứng ở Bước 4 (Quy trình xử trí, Bảng y lệnh thuốc, Theo dõi & Cảnh báo).
     {
       \"grade\": \"[Tên phân độ 1: Thể nhẹ / Ngoại trú]\",
       \"severity\": \"mild\",
-      \"criteria\": \"[Tiêu chuẩn lâm sàng/CLS xác nhận phân độ 1]\",
-      \"triage\": \"[Nơi tiếp nhận: Ngoại trú / Trạm y tế / Phòng khám]\",
-      \"primaryAction\": \"[Hành vi can thiệp: thuốc uống, bù dịch Oresol, dặn dò cờ đỏ, hẹn khám lại]\",
-      \"targetVitals\": \"[Mục tiêu sinh hiệu]\",
+      \"criteria\": \"[Lâm sàng: sốt nhẹ/vừa, không dấu hiệu cảnh báo; Cận lâm sàng: Hct bình thường, tiểu cầu >= 100 G/L; Tiêu chuẩn an toàn: tự uống được, sinh hiệu ổn định]\",
+      \"triage\": \"[Tuyến tiếp nhận: Ngoại trú / Trạm y tế / Phòng khám theo dõi tại nhà]\",
+      \"primaryAction\": \"[Định hướng can thiệp: Bù dịch Oresol đường uống, hạ sốt Paracetamol đơn chất, dặn dò cờ đỏ]\",
+      \"targetVitals\": \"[Mục tiêu sinh hiệu: Mạch, HA ổn định, SpO2 >= 96%, tự uống tốt, không dấu hiệu mất nước]\",
       \"protocol\": {
         \"title\": \"[Tên phác đồ phân độ 1]\",
         \"tuyen\": [\"[Bước 1 quy trình xử trí ngoại trú]\", \"[Bước 2 hướng dẫn bù dịch uống và hạ sốt]\"],
@@ -410,7 +416,7 @@ Xuất một đoạn code JSON đại diện cho 01 ca bệnh thực tế điể
     \"text\": {
       \"cn\": \"[Đoạn mô tả triệu chứng cơ năng đầy đủ thuộc tính PQRST, thời gian khởi phát]\",
       \"tt\": \"[Đoạn mô tả khám thực thể toàn thân, tri giác, sinh hiệu, dấu hiệu dây thắt, bụng, tim phổi]\",
-      \"tc\": \"[Tiền căn bệnh lý mạn tính, tiền sử dịch tễ, nguồn lây, ổ dịch lưu hành]\",
+      \"tc\": \"[Tiền căn bệnh lý mạn tính, tiền sử dịch tễ, nguồn lây, ổ dịch lưu hành. ĐỐI VỚI BỆNH TRUYỀN NHIỄM (như SXH Dengue): BẮT BUỘC ghi rõ 'Việt Nam là vùng dịch tễ lưu hành của SXH Dengue', nơi ở/làm việc có ca mắc hoặc có muỗi truyền bệnh]\",
       \"cls\": \"[Kết quả công thức máu, men gan, xét nghiệm căn nguyên vi sinh, hình ảnh học ban đầu]\"
     }
   }

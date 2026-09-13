@@ -2,18 +2,14 @@
 >
 > **Hệ thống**: CliniPortal DocSpace MedLens Pro  
 > **Kiến trúc**: Dữ liệu cấu trúc tĩnh (Client-Side & Zero-Latency)  
-> **Mô hình tri thức**: Hợp nhất tinh gọn — **4 Kho EBM Cốt Lõi** & **4 Khối Code Chu Trình Lâm Sàng**  
+> **Mô hình tri thức**: Hợp nhất tinh gọn — **4 Kho EBM Cốt Lõi** & **4 Bước Chu Trình Lâm Sàng Chuẩn Hóa**  
 > **Chuyên đề cấu hình sẵn**: **Sốt Xuất Huyết Dengue** (Quyết định 2760/QĐ-BYT 2023 & WHO Dengue Guidelines 2024–2025).
 
 ---
 
-## 🌟 1. TỔNG QUAN KIẾN TRÚC HỢP NHẤT TRI THỨC Y KHOA
+## 🌟 1. TỔNG QUAN KIẾN TRÚC HỢP NHẤT & CHU TRÌNH LÂM SÀNG 4 BƯỚC
 
-Hệ sinh thái tri thức CliniPortal được hợp nhất thành mô hình 4 Kho EBM chuyên sâu, loại bỏ phân mảnh:
-
-- **Kho Yếu tố nguy cơ** $\longrightarrow$ **Gộp toàn diện vào Kho Dịch tễ học (DTH)**
-- **Kho Dược lâm sàng & Kho Tư vấn** $\longrightarrow$ **Gộp toàn diện vào Kho Phác đồ điều trị (PDDT)**
-- **Kho Chẩn đoán (CD)** & **Kho Biến chứng (BC)** $\longrightarrow$ Tiếp tục là các trụ cột phân tích tiêu chuẩn và xử trí cấp cứu giờ vàng.
+Hệ sinh thái tri thức CliniPortal DocSpace được thiết kế đồng bộ từ **Tài liệu nguồn trong NotebookLM** $\to$ **Dữ liệu CDSS / EBM** $\to$ **4 Bước Chu Trình Lâm Sàng Tương Tác**:
 
 ```text
 ┌─────────────────────────────────────────────────────────────────────────────────┐
@@ -38,6 +34,37 @@ Hệ sinh thái tri thức CliniPortal được hợp nhất thành mô hình 4 
 │    để vận hành 4 Bước Lâm Sàng!       │   │ -> Sinh bài Markdown chuyên sâu       │
 │                                       │   │    liên kết Pathway ở Bước 4          │
 └───────────────────────────────────────┘   └───────────────────────────────────────┘
+                                         │
+                                         ▼
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                  CHU TRÌNH LÂM SÀNG 4 BƯỚC THỰC CHIẾN (DOCSPACE)                │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│ • BƯỚC 1: TIẾP NHẬN DỮ LIỆU & CA MẪU                                            │
+│   - Nạp triệu chứng (+) & (-) kèm Sinh hiệu, Xét nghiệm, Tiền căn, Dịch tễ.    │
+│   - Ca mẫu SXHD: Thể hiện rõ "Việt Nam là vùng dịch tễ lưu hành của SXHD".      │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│ • BƯỚC 2: TÓM TẮT BỆNH ÁN & ĐẶT VẤN ĐỀ                                          │
+│   - Tóm tắt bệnh án chuẩn hóa: Trình bày ngắt dòng trực quan, dễ scan.         │
+│   - Gộp chung Tam giác chẩn đoán & Đặt vấn đề: Tự động kích hoạt khi có bệnh   │
+│     truyền nhiễm / yếu tố dịch tễ, tự động bật Epidemiology Boost.              │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│ • BƯỚC 3: PHÂN TÍCH & BIỆN LUẬN LÂM SÀNG                                        │
+│   - Bộ 3 thang điểm cấp cứu: NEWS2 (Người lớn), PEWS (Nhi khoa), ESI (Cấp cứu). │
+│   - Tập trung DUY NHẤT vào Tiêu chuẩn phân độ lâm sàng (Severity Staging):      │
+│     Bóc tách rõ [Lâm sàng], [Cận lâm sàng], [Tiêu chuẩn an toàn], [Cảnh báo].   │
+│   - Không để lẫn phần xử trí hay mục tiêu sinh hiệu tại Bước 3.                 │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│ • BƯỚC 4: PHÁC ĐỒ ĐIỀU TRỊ TOÀN DIỆN (9 PHÂN MỤC COLLAPSIBLE)                  │
+│   - Bảng Chiến Lược 3 Cột: Tuyến tiếp nhận | Định hướng xử trí | Mục tiêu SH.  │
+│   - Cơ chế Ẩn/Hiện: Mục 1 (Chọn phân độ) luôn mở; Mục 2-9 mặc định ẩn          │
+│     với nút Bung/Thu gọn độc lập & Toolbar Master Toggles.                      │
+│   - 9 Phân mục chuẩn hóa tuần tự, loại bỏ 100% trùng lặp:                      │
+│     Mục 1 (Chọn phân độ & Bảng 3 Cột) -> Mục 2 (Sàng lọc & Xử trí Biến chứng)  │
+│     -> Mục 3 (Xử trí cấp cứu & Tuyến điều trị) -> Mục 4 (Y lệnh thuốc & Dược)   │
+│     -> Mục 5 (Thang điểm nguy cơ & CDSS) -> Mục 6 (Theo dõi & Cảnh báo an toàn) │
+│     -> Mục 7 (Tư vấn xuất viện & Dặn dò) -> Mục 8 (Khuyến cáo EBM & Pathway)   │
+│     -> Mục 9 (Ca lâm sàng thực chiến SOAP & Prompt AI).                         │
+└─────────────────────────────────────────────────────────────────────────────────┘
 ```
 
 ---
@@ -46,13 +73,13 @@ Hệ sinh thái tri thức CliniPortal được hợp nhất thành mô hình 4 
 
 Đây là nhóm prompt sinh ra **MÃ NGUỒN / DỮ LIỆU CẤU TRÚC (JSON / MARKDOWN)** để nạp thẳng vào ứng dụng:
 
-| STT | File Prompt | Loại Code Sinh Ra | Nơi Nạp / Lưu File Trong Dự Án | Tác Dụng Trong Chu Trình Lâm Sàng |
+| STT | File Prompt | Loại Code Sinh Ra | Nơi Nạp / Lưu File Trong Dự Án | Tác Dụng Trong Chu Trình Lâm Sàng Mới |
 | :---: | :--- | :--- | :--- | :--- |
-| **00** | [`00-master-prompt-nap-chu-trinh-lam-sang.txt`](00-master-prompt-nap-chu-trinh-lam-sang.txt) | **Tổng hợp 4 Khối Code**: CDSS JSON, Trọng số KB, Ca mẫu, SOAP MD | Theo hướng dẫn từng khối | **Chạy 1 lần duy nhất sinh toàn bộ gói dữ liệu lâm sàng** |
-| **05** | [`05-prompt-cdss-json-generator.txt`](05-prompt-cdss-json-generator.txt) | **Enriched CDSS JSON**<br>(Tiêu chuẩn, Ngưỡng CLS, `severityGrading` 3 phân độ, Phác đồ 3 tuyến, Thuốc bậc 1/2, Cờ đỏ) | `src/content/docspace/data/enriched/<slug>.json`<br>*(Chạy `node tools/scripts/build-enriched-cdss.mjs`)* | **Bước 3 & Bước 4**<br>Vận hành động cơ phân tích tiêu chuẩn, phân độ lâm sàng, phác đồ điều trị và cảnh báo cờ đỏ |
-| **06** | [`06-prompt-sample-case-generator.txt`](06-prompt-sample-case-generator.txt) | **1. Ca bệnh mẫu JSON**<br>**2. Ma trận trọng số CDSS JSON** | 1. `src/content/knowledge-vault/data/sample-clinical-cases.json`<br>2. `src/content/knowledge-vault/data/clinical-rules-kb.json` | **Bước 1 & Bước 3**<br>Hiển thị nút ca mẫu trên thanh công cụ Bước 1 & tính % xác suất chẩn đoán ở Bước 3 |
-| **07** | [`07-prompt-soap-case-ingest.txt`](07-prompt-soap-case-ingest.txt) | **Hồ sơ ca bệnh SOAP Markdown** | Nạp qua nút **"Nạp ca từ NotebookLM"** trên thanh Header (hoặc lưu `knowledge-vault/ba/`) | **Sổ tay kinh nghiệm SOAP**<br>Nạp 1-click vào sổ tay ca bệnh lâm sàng thực tế |
-| **08** | [`08-prompt-db-batch-enricher.txt`](08-prompt-db-batch-enricher.txt) | **Làm giàu hàng loạt entry CSDL** | `src/content/docspace/data/kho-chan-doan-db.ts` | **Nâng cấp CSDL**<br>Thay thế các entry placeholder mẫu thành dữ liệu lâm sàng định lượng |
+| **00** | [`00-master-prompt-nap-chu-trinh-lam-sang.txt`](00-master-prompt-nap-chu-trinh-lam-sang.txt) | **Tổng hợp 4 Khối Code**: CDSS JSON, Trọng số KB, Ca mẫu, SOAP MD | Theo hướng dẫn từng khối | **Chạy 1 lần duy nhất sinh toàn bộ gói dữ liệu lâm sàng 4 bước** |
+| **05** | [`05-prompt-cdss-json-generator.txt`](05-prompt-cdss-json-generator.txt) | **Enriched CDSS JSON**<br>(Tiêu chuẩn, Ngưỡng CLS, `severityGrading` 3 phân độ, Phác đồ, Thuốc, Cờ đỏ) | `src/content/docspace/data/enriched/<slug>.json`<br>*(Chạy `node tools/scripts/build-enriched-cdss.mjs`)* | **Bước 3 & Bước 4**<br>• `criteria` $\to$ Tiêu chuẩn phân độ Bước 3<br>• `triage`, `primaryAction`, `targetVitals` $\to$ Bảng Chiến Lược 3 Cột Bước 4<br>• `protocol` $\to$ Phác đồ 9 phân mục Bước 4 |
+| **06** | [`06-prompt-sample-case-generator.txt`](06-prompt-sample-case-generator.txt) | **1. Ca bệnh mẫu JSON**<br>**2. Ma trận trọng số CDSS JSON** | 1. `src/content/knowledge-vault/data/sample-clinical-cases.json`<br>2. `src/content/knowledge-vault/data/clinical-rules-kb.json` | **Bước 1, 2 & 3**<br>• Bước 1: Nạp ca mẫu (kèm dịch tễ SXHD Việt Nam)<br>• Bước 2: Kích hoạt Tam giác chẩn đoán DTH gộp Đặt vấn đề<br>• Bước 3: Tính % xác suất chẩn đoán & thang điểm NEWS2/PEWS/ESI |
+| **07** | [`07-prompt-soap-case-ingest.txt`](07-prompt-soap-case-ingest.txt) | **Hồ sơ ca bệnh SOAP Markdown** | Nạp qua nút **"Nạp ca từ NotebookLM"** trên thanh Header (hoặc lưu `knowledge-vault/ba/`) | **Bước 4 (Mục 9)** & Sổ tay kinh nghiệm SOAP<br>Hiển thị ca thực chiến đối sánh đa chiều và cung cấp Prompt AI hội chẩn tại giường |
+| **08** | [`08-prompt-db-batch-enricher.txt`](08-prompt-db-batch-enricher.txt) | **Làm giàu hàng loạt entry CSDL** | `src/content/docspace/data/kho-chan-doan-db.ts` | **Nâng cấp CSDL**<br>Thay thế các entry placeholder mẫu thành dữ liệu lâm sàng định lượng có `severityGrading` chuẩn |
 
 ---
 
@@ -60,12 +87,12 @@ Hệ sinh thái tri thức CliniPortal được hợp nhất thành mô hình 4 
 
 Các prompt này dùng khi bạn trích xuất các bài viết y học chứng cứ chuyên sâu lưu vào **Knowledge Vault** để liên kết trong Chuỗi Bệnh Học Đa Chiều (Pathway) ở Bước 4:
 
-| Mã Kho | File Prompt | Chuyên Đề & Nội Dung Hợp Nhất | File Đích Trong Knowledge Vault |
-| :---: | :--- | :--- | :--- |
-| **CD** | [`01-prompt-cd-chan-doan.txt`](01-prompt-cd-chan-doan.txt) | **Kho Tiêu Chuẩn Chẩn Đoán**<br>• 3 giai đoạn diễn tiến lâm sàng, 7 dấu hiệu cảnh báo<br>• Nghiệm pháp Lacet, NS1/PCR/ELISA, ngưỡng CBC<br>• Bảng chẩn đoán phân biệt toàn diện | `knowledge-vault/2.3. Kho chẩn đoán/{Chuyên khoa}/CD_{Tên bệnh}_P1.md` |
-| **PDDT** | [`02-prompt-pddt-phac-do.txt`](02-prompt-pddt-phac-do.txt) | **Kho Phác Đồ Điều Trị Toàn Diện** *(Hợp nhất Phác đồ + Dược + Tư vấn)*<br>• Phân tầng 3 tuyến y tế & phác đồ bù dịch RL bậc thang mL/kg/h<br>• Cấp cứu sốc DSS từng giờ, dung dịch keo cao phân tử, chế phẩm máu<br>• **Dược thư lâm sàng**: Paracetamol, chống chỉ định tuyệt đối NSAIDs/Aspirin, chỉnh liều suy gan/suy thận<br>• **Tư vấn xuất viện Teach-Back**: 7 dấu hiệu cấp cứu, 5 sai lầm cạo gió/truyền dịch bừa | `knowledge-vault/2.4. Kho phác đồ điều trị/{Chuyên khoa}/PDDT_{Tên bệnh}_P1.md` |
-| **DTH** | [`03-prompt-dth-dich-te.txt`](03-prompt-dth-dich-te.txt) | **Kho Dịch Tễ Học & Yếu Tố Nguy Cơ** *(Hợp nhất Dịch tễ + Nguy cơ)*<br>• 4 serotype DENV, véc-tơ *Aedes aegypti*, chu kỳ lây truyền, cơ chế ADE<br>• Tỷ lệ mắc/tử vong CFR, DALYs, dịch tễ Việt Nam<br>• **Ma trận yếu tố nguy cơ EBM**: Cơ địa nhũ nhi, béo phì (tính IBW), thai phụ, người già, xơ gan (OR/RR)<br>• Kiểm soát véc-tơ & cập nhật vắc-xin Qdenga / Dengvaxia | `knowledge-vault/1.4. Kho dịch tễ học/{Chuyên khoa}/DTH_{Tên bệnh}_P1.md` |
-| **BC** | [`04-prompt-bc-bien-chung.txt`](04-prompt-bc-bien-chung.txt) | **Kho Biến Chứng & Cấp Cứu**<br>• Sốc Dengue mất bù, tái sốc, xuất huyết tiêu hóa ồ ạt<br>• Suy gan cấp (AST/ALT $\ge 1000\text{ U/L}$), viêm não, phù phổi cấp quá tải dịch<br>• Xử trí cấp cứu giờ vàng & y lệnh trực on-call alert | `knowledge-vault/2.5. Kho biến chứng/{Chuyên khoa}/BC_{Tên bệnh}_P1.md` |
+| Mã Kho | File Prompt | Chuyên Đề & Nội Dung Hợp Nhất | Kết Nối Chu Trình Lâm Sàng | File Đích Trong Knowledge Vault |
+| :---: | :--- | :--- | :--- | :--- |
+| **CD** | [`01-prompt-cd-chan-doan.txt`](01-prompt-cd-chan-doan.txt) | **Kho Tiêu Chuẩn Chẩn Đoán**<br>• 3 giai đoạn diễn tiến lâm sàng, 7 dấu hiệu cảnh báo<br>• Nghiệm pháp Lacet, NS1/PCR/ELISA, ngưỡng CBC<br>• Bảng chẩn đoán phân biệt toàn diện | **Bước 3**: Cung cấp tiêu chuẩn phân độ chẩn đoán (không lẫn điều trị) | `knowledge-vault/2.3. Kho chẩn đoán/{Chuyên khoa}/CD_{Tên bệnh}_P1.md` |
+| **PDDT** | [`02-prompt-pddt-phac-do.txt`](02-prompt-pddt-phac-do.txt) | **Kho Phác Đồ Điều Trị Toàn Diện** *(Hợp nhất Phác đồ + Dược + Tư vấn)*<br>• Phân tầng 3 tuyến y tế & phác đồ bù dịch RL bậc thang mL/kg/h<br>• Cấp cứu sốc DSS từng giờ, dung dịch keo cao phân tử, chế phẩm máu<br>• **Dược thư lâm sàng**: Paracetamol, chống chỉ định NSAIDs/Aspirin, chỉnh liều suy gan/thận<br>• **Tư vấn xuất viện Teach-Back**: 7 dấu hiệu cấp cứu, 5 sai lầm cạo gió/truyền dịch bừa | **Bước 4**: Vận hành Bảng Chiến Lược 3 Cột, Y lệnh thuốc & Tư vấn Teach-Back | `knowledge-vault/2.4. Kho phác đồ điều trị/{Chuyên khoa}/PDDT_{Tên bệnh}_P1.md` |
+| **DTH** | [`03-prompt-dth-dich-te.txt`](03-prompt-dth-dich-te.txt) | **Kho Dịch Tễ Học & Yếu Tố Nguy Cơ** *(Hợp nhất Dịch tễ + Nguy cơ)*<br>• 4 serotype DENV, véc-tơ *Aedes aegypti*, chu kỳ lây truyền, cơ chế ADE<br>• Tỷ lệ mắc/tử vong CFR, DALYs, dịch tễ Việt Nam<br>• **Ma trận yếu tố nguy cơ EBM**: Cơ địa nhũ nhi, béo phì (tính IBW), thai phụ, người già, xơ gan (OR/RR)<br>• Kiểm soát véc-tơ & cập nhật vắc-xin Qdenga / Dengvaxia | **Bước 1 & Bước 2**: Bổ sung bối cảnh dịch tễ học và vận hành Tam giác chẩn đoán gộp Đặt vấn đề | `knowledge-vault/1.4. Kho dịch tễ học/{Chuyên khoa}/DTH_{Tên bệnh}_P1.md` |
+| **BC** | [`04-prompt-bc-bien-chung.txt`](04-prompt-bc-bien-chung.txt) | **Kho Biến Chứng & Cấp Cứu**<br>• Sốc Dengue mất bù, tái sốc, xuất huyết tiêu hóa ồ ạt<br>• Suy gan cấp (AST/ALT $\ge 1000\text{ U/L}$), viêm não, phù phổi cấp quá tải dịch<br>• Xử trí cấp cứu giờ vàng & y lệnh trực on-call alert | **Bước 3 & Bước 4**: Cảnh báo cờ đỏ & vận hành Mục 2 (Sàng lọc Biến chứng) | `knowledge-vault/2.5. Kho biến chứng/{Chuyên khoa}/BC_{Tên bệnh}_P1.md` |
 
 ---
 
@@ -92,9 +119,9 @@ Các prompt này dùng khi bạn trích xuất các bài viết y học chứng 
 
 Nếu muốn sao chép dán thẳng vào ô chat của NotebookLM mà không cần tạo Source, hãy mở bộ Micro-Prompt:
 
-- Dùng [`05-micro-cdss-json.txt`](05-micro-cdss-json.txt) để lấy file JSON CDSS có `severityGrading`.
-- Dùng [`06-micro-sample-case.txt`](06-micro-sample-case.txt) để lấy Ca mẫu và Ma trận trọng số.
-- Dùng [`07-micro-soap-case.txt`](07-micro-soap-case.txt) để lấy Ca bệnh thực chiến SOAP.
+- Dùng [`05-micro-cdss-json.txt`](05-micro-cdss-json.txt) để lấy file JSON CDSS có `severityGrading` chuẩn ánh xạ Bước 3 & Bước 4.
+- Dùng [`06-micro-sample-case.txt`](06-micro-sample-case.txt) để lấy Ca mẫu (có dịch tễ Việt Nam) và Ma trận trọng số CDSS.
+- Dùng [`07-micro-soap-case.txt`](07-micro-soap-case.txt) để lấy Ca bệnh thực chiến SOAP nạp vào Mục 9 Bước 4.
 
 ### Bước 3: Nạp Code Vào Dự Án
 

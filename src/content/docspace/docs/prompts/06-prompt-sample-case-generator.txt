@@ -7,7 +7,12 @@
 #
 #   1. ĐOẠN CODE 1: Ca bệnh mẫu JSON (Nạp vào `sample-clinical-cases.json`)
 #      -> Bác sĩ bấm 1-click vào thanh "Ca bệnh mẫu" ở Bước 1 Chu Trình Lâm Sàng
-#         là nạp ngay: Sinh hiệu, Xét nghiệm, Bệnh sử, Triệu chứng (+) & Phủ định (-).
+#         là nạp ngay: Sinh hiệu, Xét nghiệm, Bệnh sử, Triệu chứng (+) & (-),
+#         và bối cảnh dịch tễ (Việt Nam là vùng dịch tễ lưu hành của SXHD).
+#      -> Dữ liệu ca mẫu sẽ tự động truyền tiếp sang:
+#         • Bước 2: Tóm tắt bệnh án & Kích hoạt Tam giác chẩn đoán DTH gộp Đặt vấn đề.
+#         • Bước 3: Tính toán xác suất CDSS, đối chiếu NEWS2/PEWS/ESI & Tiêu chuẩn phân độ.
+#         • Bước 4: Vận hành Bảng Chiến Lược 3 Cột và 9 phân mục phác đồ điều trị.
 #
 #   2. ĐOẠN CODE 2: Ma trận trọng số CDSS JSON (Nạp vào `clinical-rules-kb.json`)
 #      -> Khai báo các triệu chứng mới (kèm map tự suy định lượng) và vector trọng số
@@ -75,6 +80,12 @@ Tạo 01 đối tượng JSON ca bệnh hoàn chỉnh với số liệu sinh hi�
     \"[id_trieu_chung_am_tinh_gia_tri_1]\",
     \"[id_trieu_chung_am_tinh_gia_tri_2]\"
   ],
+  \"epiContext\": {
+    \"endemicArea\": \"Việt Nam là vùng lưu hành dịch tễ của SXH Dengue\",
+    \"outbreakAlert\": \"Đang có ổ dịch Sốt xuất huyết Dengue bùng phát tại địa phương\",
+    \"vectorExposure\": \"Khu vực nhiều muỗi vằn Aedes aegypti, xung quanh có nhiều người mắc sốt xuất huyết\",
+    \"seasonalContext\": \"Mùa mưa (tháng 5-11), cao điểm dịch Sốt xuất huyết lưu hành quanh năm\"
+  },
   \"form\": {
     \"gioiTinh\": \"[nam | nu]\",
     \"tuoi\": \"[Tuổi bệnh nhân: ví dụ 24]\",
@@ -83,7 +94,7 @@ Tạo 01 đối tượng JSON ca bệnh hoàn chỉnh với số liệu sinh hi�
     \"text\": {
       \"cn\": \"[Đoạn văn mô tả triệu chứng cơ năng: sốt cao liên tục đột ngột không hạ, đau đầu dữ dội vùng trán, đau nhức hốc mắt, đau cơ khớp sâu, buồn nôn, đau tức âm ỉ vùng hạ sườn phải]\",
       \"tt\": \"[Đoạn văn mô tả khám thực thể: bệnh nhân tỉnh nhưng mệt lả, da mặt và ngực sung huyết, nhiều chấm xuất huyết rải rác cẳng tay và cẳng chân. Nghiệm pháp dây thắt (Lacet) (+). Gan to 2cm dưới bờ sườn, ấn đau tức. Tim đều, phổi trong không rale]\",
-      \"tc\": \"[Đoạn văn tiền căn: khỏe mạnh, chưa từng mắc sốt xuất huyết trước đây. Sống tại khu nhà trọ sinh viên đang có nhiều người cùng mắc sốt xuất huyết]\",
+      \"tc\": \"[Đoạn văn tiền căn: khỏe mạnh, chưa từng mắc sốt xuất huyết trước đây. Sống tại khu nhà trọ sinh viên đang có nhiều người cùng mắc sốt xuất huyết. Việt Nam là vùng dịch tễ lưu hành của SXH Dengue, hiện khu vực đang vào mùa cao điểm dịch]\",
       \"cls\": \"[Đoạn văn cận lâm sàng: Công thức máu WBC 3.2 G/L (giảm), PLT 42 G/L (giảm dốc đứng), Hct 46% (tăng > 20% so với nền). Test nhanh Kháng nguyên NS1 Ag (+). Siêu âm bụng có dày nhẹ thành túi mật 3.5mm và ít dịch góc sườn hoành phải]\"
     }
   }

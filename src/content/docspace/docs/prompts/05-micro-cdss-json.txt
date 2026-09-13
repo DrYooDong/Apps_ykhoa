@@ -1,7 +1,10 @@
 Bạn là Kỹ sư CDSS. Dựa trên Guideline đã nạp trong Notebook, hãy xuất ĐÚNG 01 JSON hợp lệ (không markdown, không lời dẫn) nạp vào DocSpace cho bệnh: Sốt xuất huyết Dengue (ICD-10: A97, Chuyên khoa: Truyền nhiễm, Mức độ: emergency, Slug: sot_xuat_huyet_dengue).
 
 QUY TẮC CỐT LÕI:
-1. Mỗi phân độ trong "severityGrading" PHẢI CÓ "protocol" riêng tương ứng (Độ 1: Ngoại trú / Oresol; Độ 2: Nội trú / Bù dịch bậc thang 6->5->3->1.5; Độ 3: ICU / Chống sốc 15-20 ml/kg/h).
+1. "severityGrading":
+   - "criteria" (Bước 3 - Tiêu chuẩn phân độ): Phải bóc tách [Lâm sàng], [Cận lâm sàng], [Tiêu chuẩn an toàn], [Dấu hiệu cảnh báo]. Không để lẫn xử trí hay mục tiêu sinh hiệu.
+   - "triage" -> Cột 1 (Tuyến tiếp nhận); "primaryAction" -> Cột 2 (Định hướng xử trí); "targetVitals" -> Cột 3 (Mục tiêu sinh hiệu) của Bảng Chiến Lược 3 Cột (Bước 4).
+   - "protocol" -> 9 Phân mục chi tiết Bước 4 (mặc định ẩn, có nút bung/thu gọn).
 2. Danh sách "complications" PHẢI CÓ mảng "orderSet" cụ thể từng y lệnh cấp cứu (drugName, dosage, route, rate, timing, warning).
 
 {
@@ -22,7 +25,7 @@ QUY TẮC CỐT LÕI:
     {
       "grade": "Độ 1: SXHD nhẹ (Không DHCB)",
       "severity": "mild",
-      "criteria": "Sốt cấp, không dấu hiệu cảnh báo, tự uống được",
+      "criteria": "[Lâm sàng]: Sốt cấp tính < 7 ngày, không dấu hiệu cảnh báo, tự uống tốt. [Cận lâm sàng]: Hct bình thường hoặc tăng nhẹ, tiểu cầu > 100 G/L. [Tiêu chuẩn an toàn]: Huyết động ổn định, đủ điều kiện ngoại trú.",
       "triage": "Ngoại trú",
       "primaryAction": "Oresol uống, Paracetamol khi sốt cao",
       "targetVitals": "Mạch HA ổn định, tự uống tốt",
@@ -41,7 +44,7 @@ QUY TẮC CỐT LÕI:
     {
       "grade": "Độ 2: SXHD có Dấu hiệu Cảnh báo",
       "severity": "moderate",
-      "criteria": "Đau bụng gan, nôn nhiều, lừ đừ, Hct tăng cao",
+      "criteria": "[Dấu hiệu cảnh báo 1-7]: Đau bụng gan, nôn ói liên tục >= 3 lần/1h, xuất huyết niêm mạc, lừ đừ. [Cận lâm sàng]: Hct tăng > 20% kèm tiểu cầu giảm nhanh < 100 G/L.",
       "triage": "Nội trú",
       "primaryAction": "Truyền tĩnh mạch Ringer Lactate/Acetate bậc thang 6-7 -> 5 -> 3 -> 1.5 ml/kg/h",
       "targetVitals": "Hct giảm ổn định, nước tiểu >= 0.5-1.0 ml/kg/h",
@@ -59,7 +62,7 @@ QUY TẮC CỐT LÕI:
     {
       "grade": "Độ 3: SXHD Nặng & Sốc Dengue (DSS)",
       "severity": "critical",
-      "criteria": "Mạch nhanh nhỏ khó bắt, HA kẹp <= 20, tụt HA, sốc thoát huyết tương nặng",
+      "criteria": "[Lâm sàng]: Sốc giảm thể tích do thoát huyết tương nặng, HA kẹp <= 20 mmHg, tụt HA, mạch nhanh nhỏ. [Cận lâm sàng]: Hct tăng cô đặc dốc đứng hoặc tụt sâu đột ngột khi xuất huyết nội tạng, men gan AST/ALT >= 1000 U/L.",
       "triage": "Cấp cứu / ICU",
       "primaryAction": "Hồi sức sốc khẩn cấp RL 15-20 ml/kg/h, chuyển Cao phân tử nếu kháng dịch tinh thể",
       "targetVitals": "HATT >= 90, hiệu áp >= 30, chi ấm, nước tiểu >= 1 ml/kg/h",

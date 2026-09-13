@@ -9,6 +9,15 @@
 #
 # Sau đó chỉ cần chạy: node tools/scripts/build-enriched-cdss.mjs
 # Hệ thống sẽ tự động bundle vào Chu trình lâm sàng (Bước 3 & Bước 4)!
+#
+# 🌟 QUY TẮC ÁNH XẠ GIAO DIỆN (UI MAPPING) CHO "severityGrading":
+#   • "criteria": Ánh xạ vào BƯỚC 3: Tiêu chuẩn phân độ lâm sàng (Severity Staging Criteria).
+#     BẮT BUỘC chứa các tiền tố bóc tách: [Lâm sàng], [Cận lâm sàng], [Tiêu chuẩn an toàn],
+#     [Dấu hiệu cảnh báo]. TUYỆT ĐỐI KHÔNG chứa tuyến tiếp nhận, xử trí hay mục tiêu sinh hiệu tại đây!
+#   • "triage": Ánh xạ vào CỘT 1 (Tuyến Tiếp Nhận & Phân Luồng) của Bảng Chiến Lược 3 Cột (Bước 4).
+#   • "primaryAction": Ánh xạ vào CỘT 2 (Định Hướng Chiến Lược Xử Trí) của Bảng Chiến Lược 3 Cột (Bước 4).
+#   • "targetVitals": Ánh xạ vào CỘT 3 (Mục Tiêu Điều Trị & Sinh Hiệu) của Bảng Chiến Lược 3 Cột (Bước 4).
+#   • "protocol": Ánh xạ vào 9 Phân mục chi tiết của Bước 4 (mặc định ở chế độ ẩn, có nút bung/thu gọn).
 # ==============================================================================
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -116,10 +125,10 @@ BẮT BUỘC XUẤT DUY NHẤT ĐỐI TƯỢNG JSON HỢP LỆ (VALID JSON), KH�
     {
       \"grade\": \"[Tên phân độ 1: ví dụ Độ 1 - Thể nhẹ / Không dấu hiệu cảnh báo]\",
       \"severity\": \"mild\",
-      \"criteria\": \"[Tiêu chí lâm sàng/CLS xác nhận bệnh nhân ở phân độ 1]\",
+      \"criteria\": \"[Lâm sàng]: Sốt cấp tính < 7 ngày, không dấu hiệu cảnh báo, tự uống nước tốt. [Cận lâm sàng]: Hematocrit bình thường hoặc tăng nhẹ < 10%, tiểu cầu bình thường hoặc hạ nhẹ > 100 G/L. [Tiêu chuẩn an toàn]: Không có bệnh nền đe dọa, huyết động ổn định, đủ điều kiện theo dõi ngoại trú.\",
       \"triage\": \"[Nơi tiếp nhận: Ngoại trú / Trạm y tế / Phòng khám]\",
       \"primaryAction\": \"[Hành vi xử trí cốt lõi: thuốc uống, bù dịch Oresol, dặn dò cờ đỏ, theo dõi tại nhà]\",
-      \"targetVitals\": \"[Mục tiêu sinh hiệu an toàn]\",
+      \"targetVitals\": \"[Mục tiêu sinh hiệu an toàn: Mạch, HA ổn định, SpO2 >= 96%, tự uống tốt]\",
       \"protocol\": {
         \"title\": \"[Tên phác đồ phân độ 1]\",
         \"tuyen\": [\"[Quy trình xử trí ngoại trú bước 1]\", \"[Bước 2 hướng dẫn bù dịch và hạ sốt]\"],
@@ -134,10 +143,10 @@ BẮT BUỘC XUẤT DUY NHẤT ĐỐI TƯỢNG JSON HỢP LỆ (VALID JSON), KH�
     {
       \"grade\": \"[Tên phân độ 2: ví dụ Độ 2 - Thể cảnh báo / Nhập viện nội trú]\",
       \"severity\": \"moderate\",
-      \"criteria\": \"[Tiêu chí lâm sàng/CLS cảnh báo nguy hiểm: đau bụng vùng gan, nôn nhiều, Hct tăng...]\",
+      \"criteria\": \"[Dấu hiệu cảnh báo 1-7]: Đau bụng nhiều vùng gan, nôn ói liên tục >= 3 lần/1h hoặc >= 4 lần/6h, xuất huyết niêm mạc, ứ dịch màng bụng/màng phổi, lừ đừ/bứt rứt, gan to > 2cm. [Cận lâm sàng]: Hematocrit tăng cao > 20% kèm tiểu cầu giảm nhanh < 100 G/L. [Lâm sàng]: Dọa sốc hoặc nguy cơ thoát huyết tương nặng.\",
       \"triage\": \"[Nơi tiếp nhận: Nội trú 100% / Khoa Nội - Nhiễm BV Huyện]\",
       \"primaryAction\": \"[Hành vi xử trí: bù dịch tĩnh mạch theo bậc thang mL/kg/h, giám sát Hct]\",
-      \"targetVitals\": \"[Mục tiêu bài niệu và huyết động]\",
+      \"targetVitals\": \"[Mục tiêu bài niệu và huyết động: Nước tiểu >= 0.5-1.0 mL/kg/h, Hct giảm ổn định]\",
       \"protocol\": {
         \"title\": \"[Tên phác đồ phân độ 2]\",
         \"tuyen\": [\"[Quy trình nhập viện nội trú & đặt đường truyền lớn]\", \"[Bù dịch bậc thang và đánh giá đáp ứng]\"],
@@ -152,7 +161,7 @@ BẮT BUỘC XUẤT DUY NHẤT ĐỐI TƯỢNG JSON HỢP LỆ (VALID JSON), KH�
     {
       \"grade\": \"[Tên phân độ 3: ví dụ Độ 3 - Thể nặng / Sốc / Suy đa tạng]\",
       \"severity\": \"critical\",
-      \"criteria\": \"[Tiêu chí huyết động suy sụp: HA kẹp, tụt HA, sốc, xuất huyết tạng nặng, men gan > 1000]\",
+      \"criteria\": \"[Lâm sàng]: Sốc giảm thể tích do thoát huyết tương nặng, tụt huyết áp hoặc hiệu áp kẹp <= 20 mmHg, mạch nhanh nhỏ khó bắt hoặc huyết áp = 0. [Cận lâm sàng]: Hct tăng cô đặc dốc đứng hoặc tụt sâu đột ngột khi có xuất huyết nội tạng, men gan AST/ALT >= 1000 U/L hoặc suy đa tạng. [Dấu hiệu cảnh báo]: Xuất huyết nặng ồ ạt hoặc suy hô hấp do tràn dịch đa màng.\",
       \"triage\": \"[Nơi tiếp nhận: Hồi sức cấp cứu (ICU) / BV Tỉnh]\",
       \"primaryAction\": \"[Hành vi xử trí khẩn cấp: chống sốc Ringer Lactate 15-20 mL/kg/h, Cao phân tử Dextran, truyền máu]\",
       \"targetVitals\": \"[Mục tiêu hồi sức: HATT >= 90 mmHg, Hiệu áp >= 30 mmHg, SpO2 >= 95%]\",
