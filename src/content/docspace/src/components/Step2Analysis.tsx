@@ -7,6 +7,7 @@ import {
   Baby,
   BookOpen,
   Check,
+  CheckCircle2,
   ChevronDown,
   ChevronUp,
   ClipboardCopy,
@@ -73,6 +74,99 @@ interface Step2Props {
   primaryProblem?: ProblemStatementEntry;
   problems?: ProblemStatementEntry[];
   epiContext?: EpidemiologyContext;
+}
+
+interface ParsedCriterionItem {
+  num?: string;
+  label?: string;
+  text: string;
+  type?: 'clinical' | 'lab' | 'safety' | 'care' | 'general';
+}
+
+interface ParsedCriteriaResult {
+  intro: string;
+  items: ParsedCriterionItem[];
+  note: string;
+}
+
+function parseSeverityCriteria(criteriaText: string): ParsedCriteriaResult {
+  if (!criteriaText) return { intro: '', items: [], note: '' };
+
+  // 1. Kiểm tra mẫu có đánh số (1), (2), (3)... (như Dấu hiệu cảnh báo hoặc Biểu hiện nặng)
+  if (criteriaText.includes('(1)')) {
+    const introMatch = criteriaText.match(/^(.*?):\s*(?=\(1\))/);
+    const intro = introMatch ? introMatch[1].trim() : 'Tiêu chuẩn phân độ lâm sàng:';
+    const body = introMatch ? criteriaText.slice(introMatch[0].length) : criteriaText;
+
+    const parts = body.split(/(?=\(\d+\))/).map((s) => s.trim()).filter(Boolean);
+    let note = '';
+    const cleanItems: ParsedCriterionItem[] = [];
+
+    parts.forEach((part) => {
+      const numMatch = part.match(/^\((\d+)\)\s*(.*)$/s);
+      if (numMatch) {
+        const num = numMatch[1];
+        let content = numMatch[2].trim().replace(/;$/, '');
+        if (content.includes('; hoặc ') || content.includes('hoặc có cơ địa')) {
+          const splitNote = content.split(/;\s*(?=hoặc\b)|(?=hoặc có cơ địa)/i);
+          cleanItems.push({ num, text: splitNote[0].trim(), type: 'general' });
+          if (splitNote[1]) note = splitNote[1].trim().replace(/;$/, '');
+        } else {
+          cleanItems.push({ num, text: content, type: 'general' });
+        }
+      } else if (part.startsWith('hoặc') || part.startsWith('; hoặc')) {
+        note = part.replace(/^;\s*/, '').trim();
+      }
+    });
+
+    return { intro, items: cleanItems, note };
+  }
+
+  // 2. Kiểm tra mẫu thể nhẹ SXHD hoặc các thể nhẹ không cảnh báo
+  if (criteriaText.toLowerCase().includes('không có dấu hiệu cảnh báo')) {
+    return {
+      intro: 'Thỏa mãn đồng thời các tiêu chí lâm sàng, cận lâm sàng & loại trừ cảnh báo:',
+      items: [
+        {
+          label: 'Lâm sàng',
+          text: 'Sốt cao đột ngột ≤ 7 ngày kèm ít nhất 2 triệu chứng nhẹ (nhức đầu, đau hố mắt, đau cơ khớp, phát ban, Lacet (+))',
+          type: 'clinical',
+        },
+        {
+          label: 'Cận lâm sàng',
+          text: 'Hematocrit (Hct) bình thường hoặc tăng nhẹ; Tiểu cầu ≥ 100 G/L',
+          type: 'lab',
+        },
+        {
+          label: 'Tiêu chuẩn an toàn',
+          text: 'KHÔNG có dấu hiệu cảnh báo; KHÔNG có tụt HA, sốc hay thoát dịch',
+          type: 'safety',
+        },
+        {
+          label: 'Điều kiện ngoại trú',
+          text: 'Người bệnh uống được nhiều nước, tự chăm sóc được tại nhà',
+          type: 'care',
+        },
+      ],
+      note: '',
+    };
+  }
+
+  // 3. Fallback cho các phân độ khác: tách theo dấu chấm phẩy hoặc dấu chấm câu
+  const rawParts = criteriaText
+    .split(/;\s*|\.\s+(?=[A-ZÀ-Ỹ0-9])/)
+    .map((s) => s.trim())
+    .filter(Boolean);
+
+  return {
+    intro: 'Tiêu chuẩn đối chiếu lâm sàng & cận lâm sàng:',
+    items: rawParts.map((t, i) => ({
+      num: String(i + 1),
+      text: t,
+      type: 'general',
+    })),
+    note: '',
+  };
 }
 
 export const Step2Analysis: React.FC<Step2Props> = ({
@@ -1211,20 +1305,20 @@ export const Step2Analysis: React.FC<Step2Props> = ({
           </div>
         </div>
 
-        {/* KHỐI 2: 📊 TIÊU CHUẨN PHÂN ĐỘ LÂM SÀNG & ĐỊNH HƯỚNG TUYẾN TIẾP NHẬN (SEVERITY STAGING) */}
+        {/* KHỐI 2: 📊 TIÊU CHUẨN PHÂN ĐỘ LÂM SÀNG (SEVERITY STAGING CRITERIA) */}
         <div className="mt-5 p-4 rounded-lg bg-slate-50/90 border border-slate-200">
           <div className="flex items-center justify-between gap-2 mb-3 pb-2 border-b border-slate-200">
             <div>
               <span className="font-bold text-xs uppercase tracking-wider text-slate-800 flex items-center gap-1.5">
                 <Layers className="w-4 h-4 text-blue-600" />
-                <span>2. Tiêu Chuẩn Phân Độ Lâm Sàng & Định Hướng Tuyến Tiếp Nhận</span>
+                <span>2. Tiêu Chuẩn Phân Độ Lâm Sàng (Severity Staging Criteria)</span>
               </span>
               <p className="text-[11px] text-slate-500 mt-0.5">
-                Đối chiếu triệu chứng lâm sàng và cận lâm sàng để xác định mức độ nặng của người bệnh theo chuẩn Bộ Y tế.
+                Đối chiếu triệu chứng lâm sàng và cận lâm sàng để xác định mức độ nặng của người bệnh theo chuẩn Bộ Y tế / WHO. (Tuyến tiếp nhận, định hướng xử trí & mục tiêu điều trị được quy hoạch chi tiết ở Bước 4).
               </p>
             </div>
-            <span className="text-[11px] text-indigo-700 font-semibold bg-indigo-50 px-2 py-1 rounded border border-indigo-200 hidden sm:inline">
-              Nhấp để mở Phác đồ điều trị chi tiết ở Bước 4
+            <span className="text-[11px] text-indigo-700 font-semibold bg-indigo-50 px-2.5 py-1 rounded border border-indigo-200 hidden sm:inline">
+              Nhấp xem Phác đồ điều trị & Mục tiêu xử trí ở Bước 4 →
             </span>
           </div>
 
@@ -1274,6 +1368,8 @@ export const Step2Analysis: React.FC<Step2Props> = ({
                   ? (!((sbp <= 90 || (sbp > 0 && dbp > 0 && sbp - dbp <= 20) || plt < 50)) && (plt < 100 || hct >= 44 || activeChain?.diseaseName?.toLowerCase().includes('dengue')))
                   : false;
 
+              const parsed = parseSeverityCriteria(gradeItem.criteria);
+
               return (
                 <div
                   key={gIdx}
@@ -1285,7 +1381,7 @@ export const Step2Analysis: React.FC<Step2Props> = ({
                       : 'bg-white border-slate-200 hover:border-blue-300'
                   } shadow-2xs`}
                 >
-                  <div className="space-y-2.5">
+                  <div className="space-y-3">
                     <div className="flex items-center justify-between gap-1">
                       <span
                         className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider ${
@@ -1309,36 +1405,78 @@ export const Step2Analysis: React.FC<Step2Props> = ({
                       {gradeItem.grade}
                     </h4>
 
-                    {/* Tiêu chuẩn xác định phân độ */}
-                    <div className="bg-white/90 border border-slate-200/90 rounded-md p-2.5 text-xs space-y-1">
-                      <div className="font-bold text-[11px] text-slate-800 flex items-center gap-1.5 uppercase tracking-wide">
+                    {/* Tiêu chuẩn xác định phân độ - Thiết kế cấu trúc phân tầng rõ ràng */}
+                    <div className="bg-white/95 border border-slate-200/90 rounded-lg p-3 text-xs flex flex-col gap-2.5 shadow-2xs">
+                      <div className="flex items-center gap-1.5 font-bold text-[11px] uppercase tracking-wider pb-1.5 border-b border-slate-100 text-slate-700">
                         <FileCheck className="w-3.5 h-3.5 text-blue-600 shrink-0" />
                         <span>Tiêu chuẩn xác định phân độ:</span>
                       </div>
-                      <p className="text-[11.5px] text-slate-700 leading-relaxed pl-5 border-l-2 border-blue-300">
-                        {gradeItem.criteria}
-                      </p>
-                    </div>
 
-                    {/* Tuyến tiếp nhận & Định hướng chiến lược */}
-                    <div className="space-y-1 text-xs text-slate-600 pt-0.5">
-                      <div className="flex items-start gap-1">
-                        <b className="text-slate-800 text-[11px] shrink-0">Tuyến tiếp nhận:</b>
-                        <span className="text-[11.5px] text-slate-700 font-medium">{gradeItem.triage}</span>
+                      {parsed.intro && (
+                        <div
+                          className={`p-2 rounded text-[11px] font-medium leading-snug flex items-start gap-1.5 ${
+                            isCritical
+                              ? 'bg-rose-50 text-rose-900 border border-rose-200'
+                              : isModerate
+                              ? 'bg-amber-50 text-amber-900 border border-amber-200'
+                              : 'bg-blue-50 text-blue-900 border border-blue-200'
+                          }`}
+                        >
+                          {isCritical ? (
+                            <AlertOctagon className="w-3.5 h-3.5 text-rose-600 shrink-0 mt-0.5" />
+                          ) : isModerate ? (
+                            <AlertTriangle className="w-3.5 h-3.5 text-amber-600 shrink-0 mt-0.5" />
+                          ) : (
+                            <CheckCircle2 className="w-3.5 h-3.5 text-blue-600 shrink-0 mt-0.5" />
+                          )}
+                          <span>{parsed.intro}</span>
+                        </div>
+                      )}
+
+                      <div className="space-y-1.5">
+                        {parsed.items.map((item, iIdx) => (
+                          <div
+                            key={iIdx}
+                            className="p-2 rounded-md bg-slate-50/90 hover:bg-slate-100/90 border border-slate-200/70 text-[11.5px] text-slate-800 leading-relaxed flex items-start gap-2 transition-colors"
+                          >
+                            {item.label ? (
+                              <span
+                                className={`px-1.5 py-0.5 rounded text-[9.5px] font-bold uppercase shrink-0 ${
+                                  item.type === 'safety'
+                                    ? 'bg-emerald-100 text-emerald-800 border border-emerald-300'
+                                    : item.type === 'lab'
+                                    ? 'bg-purple-100 text-purple-800 border border-purple-300'
+                                    : item.type === 'clinical'
+                                    ? 'bg-blue-100 text-blue-800 border border-blue-300'
+                                    : 'bg-slate-200 text-slate-700'
+                                }`}
+                              >
+                                {item.label}
+                              </span>
+                            ) : (
+                              <span
+                                className={`w-4 h-4 rounded-full flex items-center justify-center text-[10px] font-bold shrink-0 mt-0.5 ${
+                                  isCritical
+                                    ? 'bg-rose-600 text-white'
+                                    : isModerate
+                                    ? 'bg-amber-500 text-white'
+                                    : 'bg-blue-600 text-white'
+                                }`}
+                              >
+                                {item.num || iIdx + 1}
+                              </span>
+                            )}
+                            <span className="flex-1 font-normal">{item.text}</span>
+                          </div>
+                        ))}
                       </div>
-                      <div className="flex items-start gap-1">
-                        <b className="text-slate-800 text-[11px] shrink-0">Định hướng:</b>
-                        <span className="text-[11.5px] text-slate-700">
-                          {isCritical
-                            ? 'Hồi sức sốc khẩn cấp theo giờ vàng tại Khoa Hồi sức tích cực (ICU), bảo vệ tưới máu tạng.'
-                            : isModerate
-                            ? 'Chỉ định nhập viện nội trú 100%, bù dịch tĩnh mạch bậc thang, theo dõi sát Hct mỗi 2-4h.'
-                            : 'Bù dịch sớm đường uống Oresol, hạ sốt an toàn, dặn dò 7 dấu hiệu cảnh báo tái khám mỗi ngày.'}
-                        </span>
-                      </div>
-                      {gradeItem.targetVitals && (
-                        <div className="text-[11px] font-mono-custom text-slate-500 pt-0.5">
-                          🎯 Mục tiêu: {gradeItem.targetVitals}
+
+                      {parsed.note && (
+                        <div className="mt-1 p-2 rounded bg-amber-50/90 border border-amber-200 text-amber-900 text-[11px] font-medium leading-relaxed flex items-start gap-1.5">
+                          <AlertTriangle className="w-3.5 h-3.5 text-amber-600 shrink-0 mt-0.5" />
+                          <span>
+                            <b>Lưu ý nguy cơ:</b> {parsed.note}
+                          </span>
                         </div>
                       )}
                     </div>
@@ -1348,7 +1486,7 @@ export const Step2Analysis: React.FC<Step2Props> = ({
                     <button
                       type="button"
                       onClick={() => onGoToProtocol(top.b.id, { gradeIdx: gIdx })}
-                      className={`w-full py-2 px-3 rounded-md text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer shadow-xs ${
+                      className={`w-full py-2.5 px-3 rounded-md text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer shadow-xs ${
                         isCritical
                           ? 'bg-rose-600 hover:bg-rose-700 text-white'
                           : isModerate
@@ -1356,7 +1494,7 @@ export const Step2Analysis: React.FC<Step2Props> = ({
                           : 'bg-blue-600 hover:bg-blue-700 text-white'
                       }`}
                     >
-                      <span>Xem Phác Đồ {gradeItem.grade.split(':')[0]}</span>
+                      <span>Xem Phác Đồ & Mục Tiêu Ở Bước 4</span>
                       <ArrowRight className="w-3.5 h-3.5" />
                     </button>
                   </div>
