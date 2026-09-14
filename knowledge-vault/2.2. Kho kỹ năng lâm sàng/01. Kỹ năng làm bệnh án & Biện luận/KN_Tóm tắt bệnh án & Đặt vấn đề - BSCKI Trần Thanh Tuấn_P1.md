@@ -88,7 +88,7 @@ Ngoài các dấu hiệu trên thì không ghi nhận những bất thường kh
     - [[Tăng huyết áp]] 10 năm, 2 ngày nay ngưng điều trị.
     - Ngoài các triệu chứng trên bệnh nhân có bất thường gì khác
     
-    **Vấn đề**:
+    **Đặt vấn đề**:
     
     - Đau đầu cấp
     - Cơn [[Tăng huyết áp]]

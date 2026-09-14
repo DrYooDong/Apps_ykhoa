@@ -4,12 +4,15 @@ import {
   AlertOctagon,
   AlertTriangle,
   ArrowRight,
+  Award,
   Baby,
   BookOpen,
+  Building2,
   Check,
   CheckCircle2,
   ChevronDown,
   ChevronUp,
+  ClipboardCheck,
   ClipboardCopy,
   Clock,
   Columns3,
@@ -61,6 +64,7 @@ import {
   DiseaseReactionChainDefinition,
   SeverityGradingItem,
   DiseaseComplicationItem,
+  DiagnosticCriterionItem,
 } from '../../data/diagnostic-criteria-database.ts';
 
 interface Step2Props {
@@ -84,8 +88,10 @@ interface Step2Props {
 interface ParsedCriterionItem {
   num?: string;
   label?: string;
+  title?: string;
   text: string;
-  type?: 'clinical' | 'lab' | 'safety' | 'care' | 'general';
+  subItems?: string[];
+  type?: 'clinical' | 'lab' | 'safety' | 'care' | 'warning' | 'risk' | 'danger' | 'general';
 }
 
 interface ParsedCriteriaResult {
@@ -94,10 +100,120 @@ interface ParsedCriteriaResult {
   note: string;
 }
 
-function parseSeverityCriteria(criteriaText: string): ParsedCriteriaResult {
+function splitRespectingParens(str: string, delimiter: string): string[] {
+  const result: string[] = [];
+  let current = '';
+  let depth = 0;
+  for (let i = 0; i < str.length; i++) {
+    const char = str[i];
+    if (char === '(' || char === '[' || char === '{') depth++;
+    else if (char === ')' || char === ']' || char === '}') depth--;
+    if (char === delimiter && depth === 0) {
+      if (current.trim()) result.push(current.trim());
+      current = '';
+    } else {
+      current += char;
+    }
+  }
+  if (current.trim()) result.push(current.trim());
+  return result;
+}
+
+function parseSeverityCriteria(criteriaText: string, severity: string = 'mild'): ParsedCriteriaResult {
   if (!criteriaText) return { intro: '', items: [], note: '' };
 
-  // 1. Kiểm tra mẫu có đánh số (1), (2), (3)... (như Dấu hiệu cảnh báo hoặc Biểu hiện nặng)
+  // 1. Phân tích cú pháp dạng các khối ngoặc vuông [Phân mục]: Nội dung (chuẩn Enriched CDSS Vault)
+  if (criteriaText.includes('[') && criteriaText.includes(']:')) {
+    const firstBracketIdx = criteriaText.indexOf('[');
+    let intro = firstBracketIdx > 0 ? criteriaText.slice(0, firstBracketIdx).trim() : '';
+    if (!intro) {
+      if (severity === 'critical' || severity === 'severe') {
+        intro = 'Bệnh nhân có ít nhất 1 biểu hiện tổn thương đa tạng hoặc đe dọa sinh mạng:';
+      } else if (severity === 'moderate') {
+        intro = 'Bệnh nhân xuất hiện ít nhất 1 biểu hiện lâm sàng, cận lâm sàng hoặc dấu hiệu cảnh báo:';
+      } else {
+        intro = 'Thỏa mãn đồng thời các tiêu chí lâm sàng, cận lâm sàng & loại trừ nguy cơ:';
+      }
+    }
+
+    const bracketRegex = /\[([^\]]+)\]:\s*([\s\S]*?)(?=\s*\[[^\]]+\]:|$)/g;
+    const items: ParsedCriterionItem[] = [];
+    let note = '';
+    let match: RegExpExecArray | null;
+
+    while ((match = bracketRegex.exec(criteriaText)) !== null) {
+      const tag = match[1].trim();
+      const content = match[2].trim().replace(/;$/, '');
+      const lowerTag = tag.toLowerCase();
+
+      let type: ParsedCriterionItem['type'] = 'general';
+      if (
+        lowerTag.includes('đe dọa') ||
+        lowerTag.includes('tối cấp') ||
+        lowerTag.includes('tử vong') ||
+        lowerTag.includes('nguy kịch')
+      ) {
+        type = 'danger';
+      } else if (
+        lowerTag.includes('cảnh báo') ||
+        lowerTag.includes('nguy cơ') ||
+        lowerTag.includes('tiên lượng')
+      ) {
+        type = 'warning';
+      } else if (
+        lowerTag.includes('an toàn') ||
+        lowerTag.includes('loại trừ') ||
+        lowerTag.includes('ngoại trú an toàn')
+      ) {
+        type = 'safety';
+      } else if (
+        lowerTag.includes('ngoại trú') ||
+        lowerTag.includes('chăm sóc') ||
+        lowerTag.includes('điều kiện')
+      ) {
+        type = 'care';
+      } else if (
+        lowerTag.includes('cận lâm sàng') ||
+        lowerTag.includes('xét nghiệm') ||
+        lowerTag.includes('dnt') ||
+        lowerTag.includes('sinh hóa') ||
+        lowerTag.includes('hình ảnh')
+      ) {
+        type = 'lab';
+      } else if (lowerTag.includes('lâm sàng') || lowerTag.includes('triệu chứng')) {
+        type = severity === 'critical' || severity === 'severe' ? 'danger' : 'clinical';
+      }
+
+      // Kiểm tra xem trong nội dung có chia nhỏ các vấn đề (tiêu chí con) không
+      let title = '';
+      let subItems: string[] | undefined = undefined;
+      const colonMatch = content.match(/^([^:()]{4,40}):\s*(.+)$/);
+      if (colonMatch && (colonMatch[2].includes(',') || colonMatch[2].includes(';'))) {
+        const potentialSub = splitRespectingParens(colonMatch[2], colonMatch[2].includes(';') ? ';' : ',');
+        if (potentialSub.length >= 2) {
+          title = colonMatch[1].trim();
+          subItems = potentialSub.map((s) => s.trim().replace(/^;\s*/, ''));
+        }
+      } else if (content.includes('; HOẶC ') || content.includes('; hoặc ')) {
+        const potentialSub = splitRespectingParens(content, ';');
+        if (potentialSub.length >= 2) {
+          subItems = potentialSub.map((s) => s.trim());
+        }
+      }
+
+      items.push({
+        label: tag,
+        title,
+        text: subItems ? '' : content,
+        subItems,
+        type,
+      });
+    }
+
+    return { intro, items, note };
+  }
+
+  // 2. Kiểm tra mẫu có đánh số (1), (2), (3)... (như Dấu hiệu cảnh báo hoặc Biểu hiện nặng SXHD)
   if (criteriaText.includes('(1)')) {
     const introMatch = criteriaText.match(/^(.*?):\s*(?=\(1\))/);
     const intro = introMatch ? introMatch[1].trim() : 'Tiêu chuẩn phân độ lâm sàng:';
@@ -111,7 +227,7 @@ function parseSeverityCriteria(criteriaText: string): ParsedCriteriaResult {
       const numMatch = part.match(/^\((\d+)\)\s*(.*)$/s);
       if (numMatch) {
         const num = numMatch[1];
-        let content = numMatch[2].trim().replace(/;$/, '');
+        const content = numMatch[2].trim().replace(/;$/, '');
         if (content.includes('; hoặc ') || content.includes('hoặc có cơ địa')) {
           const splitNote = content.split(/;\s*(?=hoặc\b)|(?=hoặc có cơ địa)/i);
           cleanItems.push({ num, text: splitNote[0].trim(), type: 'general' });
@@ -127,7 +243,7 @@ function parseSeverityCriteria(criteriaText: string): ParsedCriteriaResult {
     return { intro, items: cleanItems, note };
   }
 
-  // 2. Kiểm tra mẫu thể nhẹ SXHD hoặc các thể nhẹ không cảnh báo
+  // 3. Kiểm tra mẫu thể nhẹ SXHD hoặc các thể nhẹ không cảnh báo
   if (criteriaText.toLowerCase().includes('không có dấu hiệu cảnh báo')) {
     return {
       intro: 'Thỏa mãn đồng thời các tiêu chí lâm sàng, cận lâm sàng & loại trừ cảnh báo:',
@@ -157,7 +273,7 @@ function parseSeverityCriteria(criteriaText: string): ParsedCriteriaResult {
     };
   }
 
-  // 3. Fallback cho các phân độ khác: tách theo dấu chấm phẩy hoặc dấu chấm câu
+  // 4. Fallback cho các phân độ khác: tách theo dấu chấm phẩy hoặc dấu chấm câu
   const rawParts = criteriaText
     .split(/;\s*|\.\s+(?=[A-ZÀ-Ỹ0-9])/)
     .map((s) => s.trim())
@@ -172,6 +288,99 @@ function parseSeverityCriteria(criteriaText: string): ParsedCriteriaResult {
     })),
     note: '',
   };
+}
+
+interface CleanAuthorityBadge {
+  name: string;
+  badge: string;
+  org: string;
+  year?: string;
+}
+
+function extractCleanAuthorities(criteria: DiagnosticCriterionItem[] = []): CleanAuthorityBadge[] {
+  const result: CleanAuthorityBadge[] = [];
+  const seen = new Set<string>();
+
+  criteria.forEach((c) => {
+    if (!c.sourceGuideline) return;
+    const parts = c.sourceGuideline.split(/[\/&;]\s*/);
+    parts.forEach((part) => {
+      const p = part.trim();
+      if (!p || /pdf|fmicb|pntd|GRADE|Strong|Review|Journal|Hướng dẫn chẩn đoán$/i.test(p)) return;
+
+      const yearMatch = p.match(/\b(20\d\d|19\d\d)\b/);
+      const year = yearMatch ? yearMatch[1] : '';
+
+      let org = '';
+      let badge = '';
+
+      if (/WHO|World Health/i.test(p)) {
+        org = 'WHO';
+        badge = `WHO (${year || 'Toàn cầu'})`;
+      } else if (/Bộ Y Tế|QĐ-BYT|Quyết định/i.test(p)) {
+        org = 'Bộ Y Tế';
+        badge = `Bộ Y Tế Việt Nam (${year || 'CPG'})`;
+      } else if (/CDC|ACIP/i.test(p)) {
+        org = 'CDC';
+        badge = `CDC Hoa Kỳ (${year || 'CPG'})`;
+      } else if (/EASL/i.test(p)) {
+        org = 'EASL';
+        badge = `EASL Châu Âu (${year || '2025'})`;
+      } else if (/AASLD/i.test(p)) {
+        org = 'AASLD';
+        badge = `AASLD Hoa Kỳ (${year || '2025'})`;
+      } else if (/APASL/i.test(p)) {
+        org = 'APASL';
+        badge = `APASL Châu Á (${year || '2026'})`;
+      } else if (/NICE/i.test(p)) {
+        org = 'NICE';
+        badge = `NICE Anh Quốc (${year || '2024'})`;
+      } else if (/IDSA/i.test(p)) {
+        org = 'IDSA';
+        badge = `IDSA Hoa Kỳ (${year || 'CPG'})`;
+      } else if (/UKHSA/i.test(p)) {
+        org = 'UKHSA';
+        badge = `UKHSA Anh Quốc (${year || '2024'})`;
+      } else if (/NCDC/i.test(p)) {
+        org = 'NCDC';
+        badge = `NCDC (${year || '2015'})`;
+      } else if (/PIDSP|PPS/i.test(p)) {
+        org = 'PPS-PIDSP';
+        badge = `PPS-PIDSP (${year || '2019'})`;
+      } else if (/ESCMID/i.test(p)) {
+        org = 'ESCMID';
+        badge = `ESCMID Châu Âu (${year || '2016'})`;
+      } else if (year) {
+        org = p.replace(/\s*\(?\b(20\d\d|19\d\d)\b\)?/, '').trim();
+        badge = p;
+      }
+
+      if (badge && !seen.has(badge)) {
+        seen.add(badge);
+        result.push({
+          name: org || badge,
+          badge,
+          org: org || badge,
+          year,
+        });
+      }
+    });
+  });
+
+  const hasSpecificYear = new Set(result.filter((r) => r.year).map((r) => r.org));
+  return result.filter((r) => !(r.badge.includes('(CPG)') && hasSpecificYear.has(r.org)));
+}
+
+function formatGuidelineCitation(source?: string): string {
+  if (!source) return '';
+  let clean = source
+    .replace(/tải xuống\.pdf Systematic Review\s*&?/i, '')
+    .replace(/fmicb-[^\s&/]+/i, '')
+    .replace(/pntd\.[^\s&/]+/i, '')
+    .replace(/\(GRADE Very Low\/Strong\)/i, '')
+    .trim();
+  clean = clean.replace(/^[&/]\s*|\s*[&/]$/, '').trim();
+  return clean;
 }
 
 export const Step2Analysis: React.FC<Step2Props> = ({
@@ -246,6 +455,64 @@ export const Step2Analysis: React.FC<Step2Props> = ({
     }
     return undefined;
   }, [top]);
+
+  // Danh sách các tổ chức & năm ban hành tiêu chuẩn chuẩn hóa (WHO, Bộ Y Tế, CDC, EASL...)
+  const authorities = useMemo(() => {
+    return extractCleanAuthorities(activeChain?.criteria || []);
+  }, [activeChain]);
+
+  // Đánh giá mức độ thỏa mãn bộ tiêu chuẩn chẩn đoán theo thời gian thực
+  const criteriaFulfillment = useMemo(() => {
+    if (!activeChain?.criteria || !top) return null;
+
+    const mandatoryCriteria = activeChain.criteria.filter((c) => c.type === 'mandatory');
+    const majorCriteria = activeChain.criteria.filter((c) => c.type === 'major');
+    const labCriteria = activeChain.criteria.filter((c) => c.type === 'lab' || c.type === 'imaging');
+
+    const isItemMatched = (crit: DiagnosticCriterionItem) => {
+      return (
+        top.matched.some(
+          (m) =>
+            m.tc.id === crit.id ||
+            crit.label.toLowerCase().includes(m.tc.ten.toLowerCase()) ||
+            m.tc.ten.toLowerCase().includes(crit.label.toLowerCase())
+        ) || (crit.type === 'mandatory' && top.pct >= 50)
+      );
+    };
+
+    const matchedMandatoryCount = mandatoryCriteria.filter(isItemMatched).length;
+    const matchedMajorCount = majorCriteria.filter(isItemMatched).length;
+    const matchedLabCount = labCriteria.filter(isItemMatched).length;
+
+    const requiredMajorCount = activeChain.criteriaRule?.minMajorRequired || 1;
+    const requiredLabCount = activeChain.criteriaRule?.minMinorRequired || 1;
+
+    const mandatoryFulfilled =
+      mandatoryCriteria.length === 0 || matchedMandatoryCount >= mandatoryCriteria.length;
+    const majorFulfilled = matchedMajorCount >= requiredMajorCount;
+    const labFulfilled = matchedLabCount >= requiredLabCount;
+
+    const isConfirmed = mandatoryFulfilled && majorFulfilled && labFulfilled;
+    const isSuspected = mandatoryFulfilled && (matchedMajorCount >= 1 || matchedLabCount >= 1);
+
+    return {
+      mandatoryCriteria,
+      majorCriteria,
+      labCriteria,
+      matchedMandatoryCount,
+      totalMandatoryCount: mandatoryCriteria.length,
+      matchedMajorCount,
+      requiredMajorCount,
+      matchedLabCount,
+      requiredLabCount,
+      mandatoryFulfilled,
+      majorFulfilled,
+      labFulfilled,
+      isConfirmed,
+      isSuspected,
+      isItemMatched,
+    };
+  }, [activeChain, top]);
 
   // Độ tuổi và phân loại bệnh nhi
   const ageYears = form?.tuoi ? parseInt(form.tuoi, 10) : NaN;
@@ -1440,7 +1707,18 @@ export const Step2Analysis: React.FC<Step2Props> = ({
               {top.b.ten}
             </h3>
 
-            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">{top.b.tomTat}</p>
+            {/* Compact Clinical Overview Card - Không chiếm dụng diện tích */}
+            <div className="p-3 rounded-lg bg-slate-50 border border-slate-200/80 text-xs text-slate-700 leading-relaxed flex items-start gap-2.5">
+              <div className="p-1 rounded bg-blue-100 text-blue-700 shrink-0 mt-0.5">
+                <Stethoscope className="w-3.5 h-3.5" />
+              </div>
+              <div className="flex-1">
+                <span className="font-bold text-slate-900 block text-[11px] uppercase tracking-wide mb-0.5">
+                  Tổng quan lâm sàng & Căn nguyên:
+                </span>
+                <span>{top.b.tomTat}</span>
+              </div>
+            </div>
 
             {/* Notes / Demographic adjustments */}
             {top.notes.length > 0 && (
@@ -1457,95 +1735,255 @@ export const Step2Analysis: React.FC<Step2Props> = ({
             )}
 
             {/* KHỐI 1: 🔬 TIÊU CHUẨN CHẨN ĐOÁN XÁC ĐỊNH (DIAGNOSTIC CRITERIA) */}
-            <div className="mt-2 p-3.5 rounded-lg bg-slate-50/80 border border-slate-200 flex flex-col gap-2.5">
-              <div className="flex items-center justify-between gap-2 pb-2 border-b border-slate-200">
-                <span className="font-bold text-xs uppercase tracking-wider text-slate-800 flex items-center gap-1.5">
-                  <FileCheck className="w-4 h-4 text-blue-600" />
-                  <span>1. Tiêu Chuẩn Chẩn Đoán Xác Định (Diagnostic Criteria)</span>
-                </span>
-                {activeChain?.criteriaRule?.ruleDescription && (
-                  <span className="text-[11px] font-medium text-slate-500 hidden sm:inline truncate max-w-[320px]">
-                    {activeChain.criteriaRule.ruleDescription}
-                  </span>
+            <div className="mt-2 p-4 rounded-xl bg-white border border-slate-200/90 flex flex-col gap-3.5 shadow-2xs">
+              {/* Header Khối 1: Tên khối & Huy hiệu Tổ chức ban hành kèm Năm */}
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-2.5 pb-3 border-b border-slate-200">
+                <div className="flex items-center gap-2">
+                  <div className="p-1.5 rounded-lg bg-blue-600 text-white shadow-2xs">
+                    <FileCheck className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <span className="font-bold text-xs sm:text-sm uppercase tracking-wider text-slate-900 block">
+                      1. Tiêu Chuẩn Chẩn Đoán Xác Định (Diagnostic Criteria)
+                    </span>
+                    <span className="text-[11px] text-slate-500 font-medium">
+                      Khung tiêu chuẩn y học chứng cứ đối chiếu trực tiếp trên ca bệnh
+                    </span>
+                  </div>
+                </div>
+
+                {/* Tổ chức & Năm ban hành tiêu chuẩn (WHO, Bộ Y Tế, CDC...) */}
+                {authorities.length > 0 && (
+                  <div className="flex flex-wrap items-center gap-1.5 self-start md:self-auto">
+                    <span className="text-[11px] font-semibold text-slate-500 flex items-center gap-1">
+                      <Building2 className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+                      <span>Tổ chức & Năm ban hành:</span>
+                    </span>
+                    <div className="flex flex-wrap items-center gap-1">
+                      {authorities.map((auth, aIdx) => (
+                        <span
+                          key={aIdx}
+                          className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-[10.5px] font-bold bg-blue-50 text-blue-900 border border-blue-200 shadow-2xs"
+                        >
+                          <Award className="w-3 h-3 text-blue-600 shrink-0" />
+                          <span>{auth.badge}</span>
+                        </span>
+                      ))}
+                    </div>
+                  </div>
                 )}
               </div>
 
-              {/* Gold Standard Alert if available */}
-              {activeChain?.goldStandard && (
-                <div className="p-2.5 rounded bg-blue-50/70 border border-blue-200 text-xs text-blue-950 flex items-start gap-2">
-                  <span className="font-bold text-[11px] uppercase text-blue-800 shrink-0 mt-0.5">
-                    ★ Tiêu chuẩn vàng:
-                  </span>
-                  <span className="leading-relaxed">{activeChain.goldStandard}</span>
+              {/* KHUNG QUY TẮC & CÔNG THỨC CHẨN ĐOÁN CỐT LÕI (DIAGNOSTIC ALGORITHM & FORMULA) */}
+              {activeChain?.criteriaRule && (
+                <div className="p-3.5 rounded-lg bg-gradient-to-r from-blue-50/90 via-indigo-50/60 to-slate-50 border border-blue-200 flex flex-col gap-2.5 shadow-2xs">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <div className="flex items-center gap-2">
+                      <span className="p-1 rounded bg-blue-600 text-white shadow-2xs">
+                        <ClipboardCheck className="w-3.5 h-3.5" />
+                      </span>
+                      <span className="font-bold text-xs uppercase tracking-wider text-blue-900">
+                        Quy tắc chẩn đoán (Diagnostic Algorithm)
+                      </span>
+                    </div>
+
+                    {/* Formula Pills */}
+                    <div className="flex flex-wrap items-center gap-1.5 text-[11px] font-semibold">
+                      <span className="px-2 py-0.5 rounded bg-rose-100 text-rose-800 border border-rose-300">
+                        Tiêu chuẩn Bắt buộc
+                      </span>
+                      <span className="text-slate-400 font-bold">+</span>
+                      <span className="px-2 py-0.5 rounded bg-blue-100 text-blue-800 border border-blue-300">
+                        ≥ {activeChain.criteriaRule.minMajorRequired || 1} Lâm sàng chính
+                      </span>
+                      <span className="text-slate-400 font-bold">+</span>
+                      <span className="px-2 py-0.5 rounded bg-purple-100 text-purple-800 border border-purple-300">
+                        ≥ {activeChain.criteriaRule.minMinorRequired || 1} Cận lâm sàng
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Toàn văn quy tắc - Hiển thị đầy đủ không bị cắt ngắn */}
+                  <p className="text-xs text-slate-800 font-medium leading-relaxed bg-white/95 p-2.5 rounded border border-blue-100">
+                    <b className="text-blue-900 font-bold">Khuyến cáo chẩn đoán:</b> {activeChain.criteriaRule.ruleDescription}
+                  </p>
+
+                  {/* Thanh đo mức độ thỏa mãn tiêu chuẩn theo thời gian thực */}
+                  {criteriaFulfillment && (
+                    <div className="space-y-2 pt-1">
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                        <div
+                          className={`p-2 rounded border text-xs flex items-center justify-between ${
+                            criteriaFulfillment.mandatoryFulfilled
+                              ? 'bg-emerald-50/90 border-emerald-300 text-emerald-950 font-semibold'
+                              : 'bg-rose-50/90 border-rose-200 text-rose-950'
+                          }`}
+                        >
+                          <span className="font-medium text-slate-700">1. Tiêu chuẩn Bắt buộc:</span>
+                          <span className="font-bold flex items-center gap-1">
+                            {criteriaFulfillment.mandatoryFulfilled ? (
+                              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                            ) : (
+                              <AlertTriangle className="w-3.5 h-3.5 text-rose-600" />
+                            )}
+                            {criteriaFulfillment.matchedMandatoryCount}/{criteriaFulfillment.totalMandatoryCount} Đạt
+                          </span>
+                        </div>
+
+                        <div
+                          className={`p-2 rounded border text-xs flex items-center justify-between ${
+                            criteriaFulfillment.majorFulfilled
+                              ? 'bg-emerald-50/90 border-emerald-300 text-emerald-950 font-semibold'
+                              : 'bg-amber-50/90 border-amber-200 text-amber-950'
+                          }`}
+                        >
+                          <span className="font-medium text-slate-700">2. Lâm sàng Chính:</span>
+                          <span className="font-bold flex items-center gap-1">
+                            {criteriaFulfillment.majorFulfilled ? (
+                              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                            ) : (
+                              <AlertTriangle className="w-3.5 h-3.5 text-amber-600" />
+                            )}
+                            {criteriaFulfillment.matchedMajorCount}/{criteriaFulfillment.requiredMajorCount} Đạt
+                          </span>
+                        </div>
+
+                        <div
+                          className={`p-2 rounded border text-xs flex items-center justify-between ${
+                            criteriaFulfillment.labFulfilled
+                              ? 'bg-emerald-50/90 border-emerald-300 text-emerald-950 font-semibold'
+                              : 'bg-purple-50/90 border-purple-200 text-purple-950'
+                          }`}
+                        >
+                          <span className="font-medium text-slate-700">3. Cận lâm sàng:</span>
+                          <span className="font-bold flex items-center gap-1">
+                            {criteriaFulfillment.labFulfilled ? (
+                              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                            ) : (
+                              <AlertTriangle className="w-3.5 h-3.5 text-purple-600" />
+                            )}
+                            {criteriaFulfillment.matchedLabCount}/{criteriaFulfillment.requiredLabCount} Đạt
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Đánh giá kết luận đối chiếu */}
+                      <div
+                        className={`p-2.5 rounded-md border text-xs flex items-center gap-2 font-medium ${
+                          criteriaFulfillment.isConfirmed
+                            ? 'bg-emerald-100 text-emerald-900 border-emerald-300'
+                            : criteriaFulfillment.isSuspected
+                            ? 'bg-amber-100 text-amber-900 border-amber-300'
+                            : 'bg-blue-100 text-blue-900 border-blue-300'
+                        }`}
+                      >
+                        {criteriaFulfillment.isConfirmed ? (
+                          <CheckCircle2 className="w-4 h-4 text-emerald-700 shrink-0" />
+                        ) : (
+                          <AlertTriangle className="w-4 h-4 text-amber-700 shrink-0" />
+                        )}
+                        <span>
+                          <b>Đánh giá trên ca bệnh hiện tại:</b>{' '}
+                          {criteriaFulfillment.isConfirmed
+                            ? `Đủ điều kiện chẩn đoán xác định theo bộ tiêu chuẩn của ${authorities.map((a) => a.badge).slice(0, 2).join(' & ')}.`
+                            : criteriaFulfillment.isSuspected
+                            ? `Ca bệnh nghi ngờ cao trên lâm sàng — Cần bổ sung xét nghiệm cận lâm sàng chuyên biệt để khẳng định theo hướng dẫn.`
+                            : `Chưa thỏa mãn đủ tiêu chuẩn lâm sàng/dịch tễ — Cần tiếp tục theo dõi sát diễn biến hoặc rà soát chẩn đoán phân biệt.`}
+                        </span>
+                      </div>
+                    </div>
+                  )}
                 </div>
               )}
 
-              {/* Criteria comparison items */}
+              {/* Tiêu chuẩn vàng (Gold Standard) */}
+              {activeChain?.goldStandard && (
+                <div className="p-3 rounded-lg bg-blue-50/80 border border-blue-200 text-xs text-blue-950 flex items-start gap-2.5">
+                  <span className="font-bold text-[11px] uppercase tracking-wide text-blue-800 shrink-0 mt-0.5 px-2 py-0.5 bg-blue-100 border border-blue-300 rounded">
+                    ★ Tiêu chuẩn vàng:
+                  </span>
+                  <span className="leading-relaxed font-normal">{activeChain.goldStandard}</span>
+                </div>
+              )}
+
+              {/* Lưới thẻ tiêu chuẩn chi tiết - Trọng tâm, có ngưỡng định lượng và nguồn Guideline */}
               {activeChain?.criteria && activeChain.criteria.length > 0 ? (
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                   {activeChain.criteria.map((crit) => {
-                    const isMatched =
-                      top.matched.some(
-                        (m) =>
-                          m.tc.id === crit.id ||
-                          crit.label.toLowerCase().includes(m.tc.ten.toLowerCase()) ||
-                          m.tc.ten.toLowerCase().includes(crit.label.toLowerCase())
-                      ) ||
-                      (crit.type === 'mandatory' && top.pct >= 50);
+                    const isMatched = criteriaFulfillment
+                      ? criteriaFulfillment.isItemMatched(crit)
+                      : crit.type === 'mandatory' && top.pct >= 50;
 
                     return (
                       <div
                         key={crit.id}
-                        className={`p-2.5 rounded-md border text-xs flex flex-col gap-1 transition-all ${
+                        className={`p-3 rounded-lg border text-xs flex flex-col justify-between gap-2 transition-all ${
                           isMatched
-                            ? 'bg-emerald-50/60 border-emerald-300 text-slate-800 shadow-2xs'
-                            : 'bg-white border-slate-200 text-slate-700'
+                            ? 'bg-emerald-50/50 border-emerald-300/80 text-slate-800 shadow-2xs'
+                            : 'bg-white border-slate-200/90 text-slate-700'
                         }`}
                       >
-                        <div className="flex items-center justify-between gap-1.5">
-                          <div className="flex items-center gap-1.5 truncate">
+                        <div className="flex flex-col gap-1.5">
+                          <div className="flex items-center justify-between gap-2">
                             <span
-                              className={`px-1.5 py-0.2 rounded text-[10px] font-bold uppercase shrink-0 ${
+                              className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wide shrink-0 ${
                                 crit.type === 'mandatory'
-                                  ? 'bg-rose-100 text-rose-800 border border-rose-200'
+                                  ? 'bg-rose-100 text-rose-800 border border-rose-300'
                                   : crit.type === 'major'
-                                  ? 'bg-blue-100 text-blue-800 border border-blue-200'
+                                  ? 'bg-blue-100 text-blue-800 border border-blue-300'
                                   : crit.type === 'lab'
-                                  ? 'bg-purple-100 text-purple-800 border border-purple-200'
-                                  : 'bg-slate-100 text-slate-700'
+                                  ? 'bg-purple-100 text-purple-800 border border-purple-300'
+                                  : 'bg-slate-100 text-slate-700 border border-slate-300'
                               }`}
                             >
                               {crit.type === 'mandatory'
                                 ? 'Bắt buộc'
                                 : crit.type === 'major'
-                                ? 'Chính'
+                                ? 'Lâm sàng chính'
                                 : crit.type === 'lab'
-                                ? 'CLS'
-                                : 'Phụ'}
+                                ? 'Cận lâm sàng'
+                                : 'Tiêu chuẩn phụ'}
                             </span>
-                            <span className="font-semibold text-slate-900 truncate" title={crit.label}>
-                              {crit.label}
-                            </span>
+
+                            {isMatched ? (
+                              <span className="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold text-[10.5px] shrink-0 flex items-center gap-1 border border-emerald-300">
+                                <Check className="w-3.5 h-3.5 stroke-[2.5]" />
+                                <span>Đã khớp</span>
+                              </span>
+                            ) : (
+                              <span className="px-2 py-0.5 rounded bg-slate-100 text-slate-500 font-medium text-[10.5px] shrink-0 border border-slate-200">
+                                Cần tìm thêm
+                              </span>
+                            )}
                           </div>
-                          {isMatched ? (
-                            <span className="px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold text-[10px] shrink-0 flex items-center gap-0.5">
-                              <Check className="w-3 h-3 stroke-[2.5]" />
-                              <span>Đã khớp</span>
-                            </span>
-                          ) : (
-                            <span className="px-1.5 py-0.5 rounded bg-slate-100 text-slate-500 text-[10px] shrink-0">
-                              Cần tìm thêm
-                            </span>
+
+                          <h5 className="font-bold text-slate-900 text-xs sm:text-[13px] leading-snug">
+                            {crit.label}
+                          </h5>
+
+                          {/* Ngưỡng định lượng cận lâm sàng nổi bật */}
+                          {crit.labThreshold && (
+                            <div className="p-1.5 rounded bg-purple-50 border border-purple-200 text-[11px] font-mono-custom text-purple-900 font-semibold flex items-center gap-1.5">
+                              <FlaskConical className="w-3.5 h-3.5 text-purple-600 shrink-0" />
+                              <span>Ngưỡng xác định: {crit.labThreshold}</span>
+                            </div>
+                          )}
+
+                          {/* Mô tả triệu chứng lâm sàng cốt lõi */}
+                          {crit.description && (
+                            <div className="text-[11.5px] text-slate-600 leading-relaxed font-normal">
+                              {crit.description}
+                            </div>
                           )}
                         </div>
-                        {crit.description && (
-                          <div className="text-[11px] text-slate-600 leading-normal pl-0.5">
-                            {crit.description}
-                          </div>
-                        )}
-                        {crit.labThreshold && (
-                          <div className="text-[10.5px] font-mono-custom text-purple-700 font-medium">
-                            Ngưỡng: {crit.labThreshold}
+
+                        {/* Nguồn Tổ chức ban hành & Năm công bố trên từng thẻ */}
+                        {crit.sourceGuideline && (
+                          <div className="pt-2 border-t border-slate-100 flex items-center gap-1.5 text-[10.5px] text-slate-500 font-medium">
+                            <BookOpen className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+                            <span className="truncate">
+                              Nguồn: <b className="text-slate-700 font-semibold">{formatGuidelineCitation(crit.sourceGuideline)}</b>
+                            </span>
                           </div>
                         )}
                       </div>
@@ -1562,14 +2000,12 @@ export const Step2Analysis: React.FC<Step2Props> = ({
                         key={idx}
                         className="p-2 bg-white border border-slate-200 rounded-md text-xs flex items-center justify-between gap-2 shadow-2xs"
                       >
-                        <div className="flex items-center gap-1.5 truncate">
-                          <span className="font-medium text-slate-800 truncate">{m.tc.ten}</span>
-                          <span className={`text-[10px] px-1.5 py-0.2 rounded font-medium ${roleConfig.badgeClass}`}>
-                            {roleConfig.label}
-                          </span>
-                          <span className="text-[10px] text-slate-400 italic">· {m.via}</span>
-                        </div>
-                        <b className="font-mono-custom text-blue-600 shrink-0">+{m.w}</b>
+                        <span className="font-medium text-slate-800">{m.tc.ten}</span>
+                        <span
+                          className={`px-1.5 py-0.5 rounded text-[10px] font-bold ${roleConfig.color}`}
+                        >
+                          {roleConfig.label}
+                        </span>
                       </li>
                     );
                   })}
@@ -1666,7 +2102,7 @@ export const Step2Analysis: React.FC<Step2Props> = ({
                   ? (!((sbp <= 90 || (sbp > 0 && dbp > 0 && sbp - dbp <= 20) || plt < 50)) && (plt < 100 || hct >= 44 || activeChain?.diseaseName?.toLowerCase().includes('dengue')))
                   : false;
 
-              const parsed = parseSeverityCriteria(gradeItem.criteria);
+              const parsed = parseSeverityCriteria(gradeItem.criteria, gradeItem.severity);
 
               return (
                 <div
@@ -1731,42 +2167,93 @@ export const Step2Analysis: React.FC<Step2Props> = ({
                         </div>
                       )}
 
-                      <div className="space-y-1.5">
-                        {parsed.items.map((item, iIdx) => (
-                          <div
-                            key={iIdx}
-                            className="p-2 rounded-md bg-slate-50/90 hover:bg-slate-100/90 border border-slate-200/70 text-[11.5px] text-slate-800 leading-relaxed flex items-start gap-2 transition-colors"
-                          >
-                            {item.label ? (
-                              <span
-                                className={`px-1.5 py-0.5 rounded text-[9.5px] font-bold uppercase shrink-0 ${
-                                  item.type === 'safety'
-                                    ? 'bg-emerald-100 text-emerald-800 border border-emerald-300'
-                                    : item.type === 'lab'
-                                    ? 'bg-purple-100 text-purple-800 border border-purple-300'
-                                    : item.type === 'clinical'
-                                    ? 'bg-blue-100 text-blue-800 border border-blue-300'
-                                    : 'bg-slate-200 text-slate-700'
-                                }`}
-                              >
-                                {item.label}
-                              </span>
-                            ) : (
-                              <span
-                                className={`w-4 h-4 rounded-full flex items-center justify-center text-[10px] font-bold shrink-0 mt-0.5 ${
-                                  isCritical
-                                    ? 'bg-rose-600 text-white'
-                                    : isModerate
-                                    ? 'bg-amber-500 text-white'
-                                    : 'bg-blue-600 text-white'
-                                }`}
-                              >
-                                {item.num || iIdx + 1}
-                              </span>
-                            )}
-                            <span className="flex-1 font-normal">{item.text}</span>
-                          </div>
-                        ))}
+                      <div className="space-y-2">
+                        {parsed.items.map((item, iIdx) => {
+                          const isDanger = item.type === 'danger';
+                          const isWarning = item.type === 'warning' || item.type === 'risk';
+                          const isSafety = item.type === 'safety';
+                          const isLab = item.type === 'lab';
+                          const isClinical = item.type === 'clinical';
+                          const isCare = item.type === 'care';
+
+                          return (
+                            <div
+                              key={iIdx}
+                              className={`p-2.5 rounded-md border text-[11.5px] leading-relaxed transition-colors ${
+                                isDanger
+                                  ? 'bg-rose-50/70 border-rose-200/80 text-rose-950'
+                                  : isWarning
+                                  ? 'bg-amber-50/70 border-amber-200/80 text-amber-950'
+                                  : isSafety
+                                  ? 'bg-emerald-50/50 border-emerald-200/70 text-emerald-950'
+                                  : isLab
+                                  ? 'bg-purple-50/40 border-purple-200/70 text-purple-950'
+                                  : isClinical
+                                  ? 'bg-blue-50/40 border-blue-200/70 text-slate-900'
+                                  : 'bg-slate-50/90 border-slate-200/70 text-slate-800'
+                              }`}
+                            >
+                              <div className="flex items-start gap-2">
+                                {item.label ? (
+                                  <span
+                                    className={`px-1.5 py-0.5 rounded text-[9.5px] font-bold uppercase tracking-wide shrink-0 ${
+                                      isDanger
+                                        ? 'bg-rose-100 text-rose-800 border border-rose-300'
+                                        : isWarning
+                                        ? 'bg-amber-100 text-amber-800 border border-amber-300'
+                                        : isSafety
+                                        ? 'bg-emerald-100 text-emerald-800 border border-emerald-300'
+                                        : isLab
+                                        ? 'bg-purple-100 text-purple-800 border border-purple-300'
+                                        : isClinical
+                                        ? 'bg-blue-100 text-blue-800 border border-blue-300'
+                                        : isCare
+                                        ? 'bg-slate-200 text-slate-800 border border-slate-300'
+                                        : 'bg-slate-200 text-slate-700'
+                                    }`}
+                                  >
+                                    {item.label}
+                                  </span>
+                                ) : (
+                                  <span
+                                    className={`w-4 h-4 rounded-full flex items-center justify-center text-[10px] font-bold shrink-0 mt-0.5 ${
+                                      isCritical
+                                        ? 'bg-rose-600 text-white'
+                                        : isModerate
+                                        ? 'bg-amber-500 text-white'
+                                        : 'bg-blue-600 text-white'
+                                    }`}
+                                  >
+                                    {item.num || iIdx + 1}
+                                  </span>
+                                )}
+
+                                <div className="flex-1 space-y-1">
+                                  {item.title && (
+                                    <div className="font-bold text-slate-900">
+                                      {item.title}:
+                                    </div>
+                                  )}
+
+                                  {item.text && (
+                                    <div className="font-normal">{item.text}</div>
+                                  )}
+
+                                  {item.subItems && item.subItems.length > 0 && (
+                                    <ul className="space-y-1 mt-1 pl-0.5">
+                                      {item.subItems.map((sub, sIdx) => (
+                                        <li key={sIdx} className="flex items-start gap-1.5 text-slate-800">
+                                          <span className="w-1.5 h-1.5 rounded-full bg-slate-400 mt-1.5 shrink-0" />
+                                          <span className="font-normal">{sub}</span>
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  )}
+                                </div>
+                              </div>
+                            </div>
+                          );
+                        })}
                       </div>
 
                       {parsed.note && (

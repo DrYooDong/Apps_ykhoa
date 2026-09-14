@@ -54,7 +54,13 @@ export const DEFAULT_KNOWLEDGE_BASE: KnowledgeBase = {
 };
 
 export interface SampleCase {
+  id?: string;
   ten: string;
+  chuyenKhoa?: string;
+  mucDo?: 'nhe' | 'trung_binh' | 'canh_bao' | 'nguy_kich' | 'man_tinh' | string;
+  nhomBenh?: string;
+  benhId?: string;
+  tags?: string[];
   sel: string[];
   vitals?: Record<string, string>;
   labs?: Record<string, string>;

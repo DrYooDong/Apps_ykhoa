@@ -539,6 +539,7 @@ export function MainApp() {
                 selectedIds={selected}
                 negatedIds={negated}
                 kb={kb}
+                liveResults={results}
                 epiContext={epiContext}
                 onUpdateEpiContext={setEpiContext}
                 problems={problems}
