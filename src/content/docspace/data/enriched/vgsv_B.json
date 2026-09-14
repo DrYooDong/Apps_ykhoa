@@ -1,0 +1,360 @@
+{
+    "icdCode": "B18.1",
+    "icdPrefixes": [
+        "B16",
+        "B16.0",
+        "B16.1",
+        "B16.2",
+        "B16.9",
+        "B18.0",
+        "B18.1"
+    ],
+    "diseaseName": "Viêm gan vi rút B (Chronic Hepatitis B - CHB)",
+    "specialty": "Truyền nhiễm",
+    "severity": "severe",
+    "summary": "Viêm gan vi rút B là bệnh truyền nhiễm phổ biến do Hepatitis B Virus (HBV) thuộc họ Hepadnaviridae lây truyền qua đường máu, quan hệ tình dục và từ mẹ sang con. Bệnh biểu hiện từ nhiễm HBV cấp tính, viêm gan B thể tối cấp suy gan tử vong > 70% đến viêm gan B mạn tính kéo dài ≥ 6 tháng, dễ tiến triển thành xơ gan (mất bù) và ung thư biểu mô tế bào gan (HCC). Mục tiêu điều trị cốt lõi là ức chế lâu dài sự sao chép của vi rút bằng thuốc NAs (TDF, TAF, ETV), ngăn ngừa biến chứng xơ gan/HCC và dự phòng lây truyền trong cộng đồng.",
+    "goldStandard": "Xét nghiệm HBsAg dương tính tồn tại kéo dài ≥ 6 tháng xác định nhiễm HBV mạn; kết hợp định lượng HBV DNA bằng RT-PCR (hoặc Reflex HBV DNA testing), HBeAg/anti-HBe, HBcrAg và đánh giá độ xơ hóa gan bằng FibroScan/APRI/sinh thiết gan.",
+    "criteriaRule": {
+        "mandatoryIds": [
+            "hbv_mandatory_hbsag_6m",
+            "hbv_mandatory_epidemiology"
+        ],
+        "minMajorRequired": 1,
+        "minMinorRequired": 1,
+        "ruleDescription": "Chẩn đoán nhiễm HBV mạn khi có HBsAg dương tính ≥ 6 tháng VÀ/HOẶC có bằng chứng HBV DNA trên ngưỡng phát hiện; Chẩn đoán Viêm gan B mạn khi kèm theo ALT/AST tăng > ULN hoặc có xơ hóa gan ≥ F2 (APRI > 0.5, FibroScan > 7 kPa)."
+    },
+    "criteria": [
+        {
+            "id": "hbv_mandatory_hbsag_6m",
+            "type": "mandatory",
+            "label": "Xét nghiệm HBsAg dương tính kéo dài ≥ 6 tháng",
+            "description": "HBsAg dương tính là tiêu chuẩn tiên quyết xác định nhiễm HBV. Ở người lớn, xét nghiệm HBsAg dương tính tồn tại ≥ 6 tháng khẳng định nhiễm HBV mạn tính.",
+            "sourceGuideline": "Quyết định 1740/QĐ-BYT (2026) & EASL CPG (2025)"
+        },
+        {
+            "id": "hbv_mandatory_epidemiology",
+            "type": "mandatory",
+            "label": "Yếu tố nguy cơ phơi nhiễm dịch tễ",
+            "description": "Tiền sử tiêm chích ma túy, truyền máu/chế phẩm máu trước năm screening, quan hệ tình dục không an toàn, mẹ nhiễm HBV, phẫu thuật/xăm trổ, hoặc sinh trước năm 2003 tại Việt Nam.",
+            "sourceGuideline": "Quyết định 1740/QĐ-BYT (2026)"
+        },
+        {
+            "id": "hbv_major_serology_profile",
+            "type": "major",
+            "label": "Bảng dấu ấn huyết thanh HBV (HBeAg, anti-HBe, anti-HBc)",
+            "description": "Phân loại 5 giai đoạn: Nhiễm HBV HBeAg dương (Dung nạp miễn dịch: HBeAg+, HBV DNA > 10^7 IU/mL, ALT bình thường); Viêm gan B HBeAg dương (HBeAg+, HBV DNA > 10^5 IU/mL, ALT tăng); Nhiễm HBV HBeAg âm (Không hoạt động: HBeAg-, anti-HBe+, HBV DNA < 2000 IU/mL, ALT bình thường); Viêm gan B HBeAg âm (Tái hoạt động: HBeAg-, anti-HBe+, HBV DNA 2000-20000 IU/mL, ALT dao động/tăng); Viêm gan B thể ẩn (HBsAg-, anti-HBc+, HBV DNA < 200 IU/mL).",
+            "sourceGuideline": "Quyết định 1740/QĐ-BYT (2026) - Phụ lục 1"
+        },
+        {
+            "id": "hbv_major_liver_injury_signs",
+            "type": "major",
+            "label": "Hội chứng tổn thương nhu mô gan và xơ hóa",
+            "description": "Biểu hiện mệt mỏi, đau tức hạ sườn phải, chán ăn, vàng da/mắt, sao mạch, ban đỏ lòng bàn tay, gan to, lách to, hoặc các dấu hiệu tăng áp lực tĩnh mạch cửa/xơ gan mất bù (cổ trướng, phù chân, xuất huyết tiêu hóa).",
+            "sourceGuideline": "Quyết định 1740/QĐ-BYT (2026)"
+        },
+        {
+            "id": "hbv_lab_transaminase_alt",
+            "type": "lab",
+            "label": "Men gan ALT/AST tăng cao",
+            "description": "Giới hạn trên của mức bình thường (ULN) ALT chuẩn y khoa: 30 U/L đối với nam, 19 U/L đối với nữ. ALT tăng > ULN kéo dài hoặc tăng > 5 x ULN trong đợt cấp/bùng phát.",
+            "labThreshold": "ALT > 30 U/L (nam) hoặc > 19 U/L (nữ); VG B cấp/bùng phát ALT > 5 x ULN",
+            "sourceGuideline": "Quyết định 1740/QĐ-BYT (2026)"
+        },
+        {
+            "id": "hbv_lab_pcr_hbv_dna",
+            "type": "lab",
+            "label": "Tải lượng HBV DNA định lượng (RT-PCR / Reflex testing)",
+            "description": "Đo bằng hệ thống phòng xét nghiệm hoặc Point-of-Care. Mốc chỉ định điều trị kinh điển là HBV DNA > 2000 IU/mL (hoặc bất kỳ mức phát hiện được nếu có xơ hóa/yếu tố nguy cơ).",
+            "labThreshold": "HBV DNA > 2000 IU/mL (hoặc > 10^4 copies/mL)",
+            "sourceGuideline": "Quyết định 1740/QĐ-BYT (2026) & APASL (2026)"
+        },
+        {
+            "id": "hbv_lab_novel_biomarkers",
+            "type": "lab",
+            "label": "Dấu ấn sinh học mới (qHBsAg, HBcrAg, M2BPGi)",
+            "description": "HBcrAg và qHBsAg hỗ trợ tiên lượng, phân loại vùng xám và quyết định ngưng thuốc NAs an toàn khi HBcrAg < 2 log U/mL. M2BPGi đánh giá độ xơ hóa gan.",
+            "labThreshold": "HBcrAg < 2 log U/mL (tiêu chuẩn ngưng NAs); qHBsAg < 100 IU/mL",
+            "sourceGuideline": "Quyết định 1740/QĐ-BYT (2026) & EASL 2025"
+        },
+        {
+            "id": "hbv_imaging_fibroscan_apri",
+            "type": "imaging",
+            "label": "Đánh giá xơ hóa gan bằng FibroScan, APRI, FIB-4",
+            "description": "Đo độ đàn hồi thoáng qua (FibroScan): F0-F1 ≤ 7.0 kPa, F2 > 7.0-9.5 kPa (xơ hóa đáng kể), F3 > 9.5-12.5 kPa, F4 > 12.5 kPa (xơ gan). Chỉ số APRI: F2-F3 > 0.5, F4 > 1.0. FIB-4 > 1.45 dọa xơ hóa tiến triển, > 3.25 xơ gan.",
+            "labThreshold": "FibroScan ≥ 7.0 kPa (F2) hoặc > 12.5 kPa (F4); APRI > 0.5 (F2) hoặc > 1.0 (F4)",
+            "sourceGuideline": "Quyết định 1740/QĐ-BYT (2026) & AASLD 2025"
+        }
+    ],
+    "severityGrading": [
+        {
+            "grade": "Độ 1 - Thể nhẹ / Nhiễm HBV mạn chưa có chỉ định điều trị",
+            "severity": "mild",
+            "criteria": "[Lâm sàng]: Không có triệu chứng lâm sàng rõ rệt, sinh hiệu ổn định, không có dấu hiệu suy gan hay xơ gan. [Cận lâm sàng]: HBsAg dương tính, HBV DNA < 2000 IU/mL, ALT luôn trong giới hạn bình thường (< 30 U/L nam, < 19 U/L nữ), độ xơ hóa gan F0-F1 (APRI ≤ 0.5, FibroScan ≤ 7.0 kPa). [Tiêu chuẩn an toàn]: Không có tiền sử gia đình bị xơ gan/HCC, không đồng nhiễm HIV/HCV/HDV, không suy giảm miễn dịch, không có biểu hiện ngoài gan.",
+            "triage": "Ngoại trú / Trạm Y tế / Phòng khám Chuyên khoa Ban đầu",
+            "primaryAction": "Chưa có chỉ định điều trị thuốc kháng vi rút NAs; theo dõi định kỳ lâm sàng, ALT, HBV DNA, APRI/FibroScan và tầm soát HCC mỗi 3-6 tháng.",
+            "targetVitals": "Sinh hiệu an toàn: Mạch 60-90 lần/phút, HA ổn định, SpO2 ≥ 96%, ALT duy trì trong giới hạn bình thường.",
+            "protocol": {
+                "title": "Quy trình theo dõi người nhiễm HBV mạn chưa có chỉ định điều trị",
+                "tuyen": [
+                    "Tư vấn người bệnh về tình trạng nhiễm HBV và diễn tiến tự nhiên của bệnh.",
+                    "Lập lịch tái khám và làm xét nghiệm định kỳ mỗi 3-6 tháng.",
+                    "Tư vấn lối sống: kiêng tuyệt đối rượu bia, tránh thuốc độc cho gan, tiêm vắc xin HBV cho người thân nếu HBsAg âm tính."
+                ],
+                "drugs": [
+                    [
+                        "Theo dõi không dùng thuốc NAs",
+                        "Chưa chỉ định NAs",
+                        "Chỉ bắt đầu điều trị khi có tiêu chuẩn bùng phát hoặc xơ hóa ≥ F2."
+                    ]
+                ],
+                "monitoring": [
+                    "Khám lâm sàng, ALT/AST, CTM, Nước tiểu mỗi 3-6 tháng.",
+                    "Đo tải lượng HBV DNA, HBeAg/anti-HBe, APRI/FibroScan mỗi 6-12 tháng (24-48 tuần).",
+                    "Siêu âm bụng + AFP / PIVKA-II tầm soát HCC mỗi 6 tháng."
+                ],
+                "cautions": [
+                    "Cảnh báo người bệnh báo ngay bác sĩ nếu phải điều trị corticoid, hóa trị liệu hoặc thuốc ức chế miễn dịch để dự phòng tái hoạt."
+                ]
+            }
+        },
+        {
+            "grade": "Độ 2 - Thể hoạt động / Viêm gan B mạn có chỉ định điều trị",
+            "severity": "moderate",
+            "criteria": "[Lâm sàng]: Mệt mỏi, chán ăn, đau tức hạ sườn phải, ban đỏ lòng bàn tay, sao mạch, chưa có cổ trướng hay biến chứng mất bù. [Cận lâm sàng]: HBsAg dương tính ≥ 6 tháng, HBV DNA > 2000 IU/mL VÀ ALT > ULN (> 30 U/L nam, > 19 U/L nữ); HOẶC có xơ hóa gan đáng kể ≥ F2 (APRI > 0.5, FibroScan > 7.0 kPa) bất kể mức ALT/HBV DNA; HOẶC ALT tăng kéo dài. [Dấu hiệu cảnh báo / Yếu tố nguy cơ]: Có bất kỳ yếu tố nguy cơ kèm HBV DNA phát hiện được: đồng nhiễm HIV/HCV/HDV, đái tháo đường, MASLD, suy giảm miễn dịch, biểu hiện ngoài gan (viêm cầu thận, viêm mạch), hoặc tiền sử gia đình xơ gan/HCC.",
+            "triage": "Nội trú / Ngoại trú quản lý Chuyên khoa Mật - Gan / BV Huyện - Tỉnh (Cấp Cơ bản)",
+            "primaryAction": "Khởi động ngay thuốc kháng vi rút NAs đường uống đơn trị liệu (Tenofovir TDF 300mg/ngày, Tenofovir TAF 25mg/ngày, hoặc Entecavir ETV 0.5mg/ngày) dài hạn.",
+            "targetVitals": "Mục tiêu: ALT trở về bình thường, ức chế vi rút HBV DNA < ngưỡng phát hiện (< 20 IU/mL) sau 24-48 tuần.",
+            "protocol": {
+                "title": "Phác đồ điều trị Viêm gan B mạn tính bằng thuốc NAs theo Quyết định 1740/QĐ-BYT 2026",
+                "tuyen": [
+                    "Đánh giá chức năng thận (eGFR/CrCl), mật độ xương và tiền sử dùng thuốc.",
+                    "Lựa chọn phác đồ NAs ưu tiên (TDF, TAF, hoặc ETV) dựa trên tuổi và bệnh đồng mắc.",
+                    "Tư vấn tuân thủ uống thuốc đều đặn hàng ngày, đúng giờ, không tự ý ngưng thuốc."
+                ],
+                "drugs": [
+                    [
+                        "Tenofovir disoproxil fumarate (TDF)",
+                        "300 mg x 1 viên/ngày (PO)",
+                        "Ưu tiên đầu tay cho người lớn và trẻ ≥ 12 tuổi; thận trọng nếu suy thận/loãng xương."
+                    ],
+                    [
+                        "Tenofovir alafenamide (TAF)",
+                        "25 mg x 1 viên/ngày (PO)",
+                        "Ưu tiên cho người ≥ 12 tuổi có bệnh thận mạn, loãng xương, hoặc tuổi cao."
+                    ],
+                    [
+                        "Entecavir (ETV)",
+                        "0.5 mg x 1 viên/ngày (PO) (1mg nếu xơ gan mất bù/kháng LAM)",
+                        "Ưu tiên cho người có bệnh thận/xơ gan; uống khi bụng đói (xa bữa ăn 2h)."
+                    ]
+                ],
+                "monitoring": [
+                    "Theo dõi ALT, CTM, Creatinine/eGFR mỗi 12-24 tuần.",
+                    "Đo tải lượng HBV DNA ở tuần 12, 24, 48 và sau đó mỗi 24-48 tuần.",
+                    "Tầm soát HCC bằng Siêu âm ổ bụng + AFP / PIVKA II mỗi 6 tháng."
+                ],
+                "cautions": [
+                    "Không ngưng thuốc NAs đột ngột vì nguy cơ bùng phát viêm gan B nặng dẫn đến suy gan tử vong."
+                ]
+            }
+        },
+        {
+            "grade": "Độ 3 - Thể nặng / Bùng phát cấp / Viêm gan B thể tối cấp / Xơ gan mất bù / HCC",
+            "severity": "critical",
+            "criteria": "[Lâm sàng]: Vàng da/mắt đậm, hội chứng脑 gan (lừ đừ, hôn mê), xuất huyết niêm mạc/tiêu hóa, cổ trướng nhiều, phù toàn thân, suy đa tạng. [Cận lâm sàng]: Bilirubin toàn phần > 3 mg/dL (> 51 µmol/L), INR > 1.5, ALT/AST tăng đột ngột > 5 x ULN hoặc > 1000 U/L (đợt bùng phát) hoặc giảm dốc tụt suy gan; FibroScan > 12.5 kPa (F4), Child-Pugh B/C (≥ 7 điểm). [Dấu hiệu cảnh báo đe dọa sinh mạng]: Suy gan cấp thể tối cấp tỷ lệ tử vong > 70%, vỡ giãn tĩnh mạch thực quản, nhiễm trùng huyết/viêm phúc mạc vi khuẩn tự phát (SBP).",
+            "triage": "Hồi sức Cấp cứu (ICU) / Khoa Truyền nhiễm - Mật Gan BV Chuyên khoa Cấp Chuyên sâu",
+            "primaryAction": "Hồi sức cấp cứu chống suy gan/sốc, dùng NAs ngay lập tức (ETV 1mg/ngày hoặc TAF/TDF), điều trị biến chứng xơ gan mất bù, hội chẩn xét ghép gan khẩn.",
+            "targetVitals": "Mục tiêu hồi sức: Duy trì huyết động HATT ≥ 90 mmHg, INR < 1.5, Bilirubin xu hướng giảm, cải thiện tri giác, duy trì nước tiểu ≥ 0.5 mL/kg/h.",
+            "protocol": {
+                "title": "Phác đồ hồi sức cấp cứu Viêm gan B thể tối cấp, Đợt bùng phát nặng và Xơ gan mất bù",
+                "tuyen": [
+                    "Đảm bảo thông khí (thở oxy/đặt NKQ nếu bệnh脑 gan độ III-IV).",
+                    "Khởi động ngay thuốc kháng vi rút NAs liều cao (ETV 1 mg/ngày hoặc TDF/TAF).",
+                    "Hồi sức chống suy gan, điều trị hạ amoniac máu (L-ornithine L-aspartate, Duphalac), bù huyết tương tươi / khối hồng cầu nếu rối loạn đông máu / xuất huyết.",
+                    "Hội chẩn Trung tâm Ghép gan quốc gia xét chỉ định ghép gan cấp cứu."
+                ],
+                "drugs": [
+                    [
+                        "Entecavir (ETV)",
+                        "1.0 mg x 1 viên/ngày (PO/qua sonde)",
+                        "Thuốc NAs ưu tiên hàng đầu trong xơ gan mất bù và suy gan cấp."
+                    ],
+                    [
+                        "Tenofovir alafenamide (TAF) / TDF",
+                        "25 mg (TAF) hoặc 300 mg (TDF) x 1 viên/ngày",
+                        "NAs thay thế hiệu lực mạnh, hàng rào kháng cao."
+                    ],
+                    [
+                        "L-ornithine L-aspartate (LOLA)",
+                        "10-20 g/ngày truyền IV chậm",
+                        "Hạ amoniac máu trong bệnh脑 gan."
+                    ],
+                    [
+                        "Huyết tương tươi đông lạnh (FFP)",
+                        "10-15 mL/kg IV",
+                        "Truyền khi INR > 1.5 kèm xuất huyết cấp."
+                    ]
+                ],
+                "monitoring": [
+                    "Sinh hiệu, tri giác (thang điểm Glasgow/bệnh脑 gan), nước tiểu mỗi 1-2h.",
+                    "XN CTM, INR/PT, Bilirubin, AST/ALT, Điện giải, Khí máu mỗi 12-24h.",
+                    "Đo amoniac máu, Creatinine, Lactate máu hằng ngày."
+                ],
+                "cautions": [
+                    "Cấm dùng thuốc an thần/chuyển hóa qua gan; cảnh báo nguy cơ phù não và hội chứng gan thận (HRS)."
+                ]
+            }
+        }
+    ],
+    "protocol": {
+        "title": "Hướng dẫn Chẩn đoán và Điều trị Viêm gan vi rút B (Quyết định số 1740/QĐ-BYT năm 2026)",
+        "guideline": "Quyết định 1740/QĐ-BYT ngày 16/06/2026 của Bộ trưởng Bộ Y tế thay thế Quyết định 3310/QĐ-BYT (2019)",
+        "targetGoals": [
+            "Ức chế lâu dài sự sao chép của vi rút HBV (HBV DNA dưới ngưỡng phát hiện < 20 IU/mL).",
+            "Cải thiện chất lượng sống, ngăn ngừa tiến triển đến xơ gan, suy gan và ung thư biểu mô tế bào gan (HCC).",
+            "Dự phòng lây truyền HBV trong cộng đồng và lây truyền từ mẹ sang con.",
+            "Dự phòng đợt bùng phát viêm gan B và viêm gan B tái hoạt khi dùng thuốc ức chế miễn dịch/hóa trị."
+        ],
+        "initialManagement": [
+            "Sàng lọc HBsAg và anti-HBc toàn phần cho các nhóm đối tượng nguy cơ và cộng đồng.",
+            "Lấy mẫu xét nghiệm HBV DNA ngay khi HBsAg dương tính (Reflex HBV DNA testing).",
+            "Đánh giá mức độ xơ hóa gan bằng phương pháp không xâm lấn (APRI, FibroScan) hoặc chỉ số M2BPGi.",
+            "Phân tầng tiếp nhận: Cấp ban đầu/cơ bản quản lý bệnh nhân ổn định; Cấp chuyên sâu tiếp nhận xơ gan mất bù, thất bại điều trị hoặc bùng phát cấp."
+        ],
+        "firstLineDrugs": [
+            {
+                "drugName": "Tenofovir disoproxil fumarate (TDF)",
+                "class": "Nucleot(s)ide Analogue (NAs) - NRTIs",
+                "route": "Uống (PO)",
+                "dosage": "Người lớn và trẻ ≥ 12 tuổi: 300 mg x 1 lần/ngày; Trẻ 2-11 tuổi: TDF gói 8 mg/kg/ngày (tối đa 300 mg/ngày)",
+                "frequency": "1 lần/ngày",
+                "instructions": "Uống hàng ngày cố định giờ. Điều chỉnh liều theo CrCl nếu < 50 mL/phút hoặc chuyển TAF/ETV",
+                "isFirstLine": true,
+                "notes": "Hàng rào kháng thuốc rất cao, chưa ghi nhận kháng thuốc. Theo dõi chức năng thận và mật độ xương.",
+                "contraindications": [
+                    "Người có mức lọc cầu thận CrCl < 50 mL/phút (ưu tiên TAF/ETV)",
+                    "Người bệnh có bệnh lý xương, loãng xương đã xác định"
+                ]
+            },
+            {
+                "drugName": "Tenofovir alafenamide (TAF)",
+                "class": "Nucleot(s)ide Analogue (NAs) thế hệ mới",
+                "route": "Uống (PO)",
+                "dosage": "Người lớn và trẻ ≥ 12 tuổi (cân nặng ≥ 25 kg): 25 mg x 1 lần/ngày",
+                "frequency": "1 lần/ngày",
+                "instructions": "Uống cùng thức ăn. Không cần chỉnh liều ở bệnh nhân suy thận nhẹ, vừa, nặng hoặc chạy thận nhân tạo",
+                "isFirstLine": true,
+                "notes": "An toàn trên thận và xương hơn TDF; là phác đồ ưu tiên cho người lớn tuổi, suy thận, loãng xương",
+                "contraindications": [
+                    "Trẻ em dưới 6 tuổi hoặc cân nặng < 25 kg",
+                    "Mức lọc cầu thận CrCl < 15 mL/phút chưa chạy thận nhân tạo"
+                ]
+            },
+            {
+                "drugName": "Entecavir (ETV)",
+                "class": "Nucleot(s)ide Analogue (NAs) - Cyclopentyl guanosine",
+                "route": "Uống (PO)",
+                "dosage": "Người lớn: 0.5 mg/ngày; Người xơ gan mất bù hoặc tiền sử dùng Lamivudine: 1.0 mg/ngày",
+                "frequency": "1 lần/ngày",
+                "instructions": "Uống khi bụng đói (ít nhất 2 giờ sau ăn hoặc 2 giờ trước bữa ăn kế tiếp)",
+                "isFirstLine": true,
+                "notes": "Ưu tiên cho bệnh nhân có bệnh lý thận/loãng xương. Chỉnh liều khi CrCl < 50 mL/phút",
+                "contraindications": [
+                    "Tiền sử kháng Lamivudine (nguy cơ kháng chéo cao, cần dùng liều 1.0mg hoặc chuyển TDF/TAF)",
+                    "Phụ nữ mang thai (không dùng ETV, ưu tiên TDF)"
+                ]
+            }
+        ],
+        "secondLineDrugs": [
+            {
+                "drugName": "Peginterferon alfa-2a (Peg-IFN-α-2a)",
+                "class": "Immunomodulator - Interferon pegylat hóa",
+                "route": "Tiêm dưới da (SC)",
+                "dosage": "180 mcg/tuần trong 48 tuần",
+                "frequency": "1 lần/tuần",
+                "instructions": "Liệu trình giới hạn 48 tuần. Chỉ định cho người trẻ, muốn điều trị ngắn hạn, HBeAg+, ALT tăng cao, HBV DNA thấp hoặc đồng nhiễm HDV",
+                "isFirstLine": false,
+                "notes": "Nhiều tác dụng phụ (giả cúm, giảm bạch cầu, trầm cảm, rối loạn tuyến giáp). Theo dõi CTM, TSH mỗi 4-12 tuần",
+                "contraindications": [
+                    "Xơ gan mất bù (Child-Pugh B/C)",
+                    "Bệnh lý tâm thần chưa kiểm soát, bệnh tự miễn, động kinh, bệnh tim nặng"
+                ]
+            },
+            {
+                "drugName": "Phác đồ phối hợp / Đổi thuốc khi thất bại điều trị (Kháng thuốc / Vi rút bùng phát)",
+                "class": "Thuốc kháng vi rút phối hợp NAs",
+                "route": "Uống (PO)",
+                "dosage": "Nếu thất bại ETV -> Đổi TDF/TAF hoặc phối hợp ETV + TDF; Nếu thất bại TDF -> Đổi ETV/TAF hoặc phối hợp TDF + ETV",
+                "frequency": "1-2 viên/ngày",
+                "instructions": "Áp dụng khi có thất bại điều trị ban đầu (HBV DNA giảm < 1 log10 sau 3 tháng) hoặc thất bại thứ cấp (HBV DNA tăng > 1 log10)",
+                "isFirstLine": false,
+                "notes": "Xác định tuân thủ điều trị trước khi kết luận thất bại; tư vấn xét nghiệm giải trình tự gen tìm đột biến kháng thuốc",
+                "contraindications": [
+                    "Không tự ý phối hợp NAs khi chưa xác định thất bại điều trị hoặc kháng thuốc phức tạp"
+                ]
+            }
+        ],
+        "supportiveCare": [
+            "Tư vấn tuân thủ điều trị tuyệt đối: uống thuốc đúng liều, đúng giờ hàng ngày, không ngưng thuốc ngắt quãng.",
+            "Chế độ dinh dưỡng lành mạnh: hạn chế chất béo, tăng cường rau xanh, kiêng tuyệt đối rượu bia và thuốc lá.",
+            "Sàng lọc và tiêm vắc xin viêm gan B cho người thân trong gia đình (vợ/chồng, con cái) nếu HBsAg âm tính.",
+            "Giám sát biến chứng ung thư gan (HCC) bằng Siêu âm ổ bụng + AFP / PIVKA II định kỳ mỗi 6 tháng cho mọi trường hợp."
+        ]
+    },
+    "complications": [
+        {
+            "name": "Đợt bùng phát viêm gan B mạn tính / Viêm gan B thể tối cấp (Suy gan cấp)",
+            "timeframe": "acute_24h",
+            "warningSigns": "ALT tăng đột ngột > 5 x ULN, vàng da đậm, Bilirubin toàn phần > 3 mg/dL (> 51 µmol/L), INR > 1.5, lừ đừ, rối loạn tri giác (bệnh脑 gan).",
+            "preventiveAction": "Khởi động ngay thuốc NAs (ETV 1mg hoặc TDF/TAF), hồi sức chống suy gan, truyền huyết tương tươi nếu INR > 1.5, hội chẩn ghép gan.",
+            "onCallAlertText": "Y LỆNH TRỰC BÁO ĐỘNG ĐỎ: BÙNG PHÁT VIÊM GAN B/SUY GAN CẤP: Cho ngay Entecavir 1mg (uống/sonde), xét nghiệm cấp INR, Bilirubin, Amoniac máu, hội chẩn Hồi sức ICU khẩn!"
+        },
+        {
+            "name": "Xơ gan mất bù & Xuất huyết tiêu hóa do vỡ giãn tĩnh mạch thực quản",
+            "timeframe": "subacute_7d",
+            "warningSigns": "Nôn ra máu tươi/máu cục, đi ngoài phân đen, cổ trướng dâng nhanh, tụt huyết áp, mạch nhanh nhỏ, da niêm nhợt.",
+            "preventiveAction": "Nội soi can thiệp thắt tĩnh mạch thực quản qua vòng cao su, dùng thuốc giảm áp lực tĩnh mạch cửa (Terlipressin/Octreotide), truyền hồng cầu lắng, duy trì NAs.",
+            "onCallAlertText": "Y LỆNH TRỰC: XUẤT HUYẾT TIÊU HÓA VỠ GIÃN TMTQ: Đặt 2 đường truyền lớn, cho Octreotide/Terlipressin IV, hội chẩn Nội soi cầm máu & Truyền máu khẩn!"
+        },
+        {
+            "name": "Ung thư biểu mô tế bào gan (Hepatocellular Carcinoma - HCC)",
+            "timeframe": "chronic_longterm",
+            "warningSigns": "Đau sụt cân không rõ nguyên nhân, đau tức dữ dội hạ sườn phải, sờ thấy khối u cứng ở gan, chỉ dấu AFP > 400 ng/mL hoặc PIVKA II tăng cao, tổn thương u gan trên siêu âm/CT/MRI.",
+            "preventiveAction": "Duy trì điều trị NAs lâu dài để giảm nguy cơ HCC; tầm soát Siêu âm + AFP/PIVKA II định kỳ mỗi 6 tháng; khi phát hiện u gan hội chẩn đa khoa chỉ định TACE, RFA, phẫu thuật cắt u hoặc ghép gan.",
+            "onCallAlertText": "Y LỆNH TRỰC: NGHI NGỜ UNG THƯ GAN (HCC): Cho chụp CT-Scanner ổ bụng có thuốc cản quang 4 thì, định lượng AFP, PIVKA II và chuyển Chuyên khoa Ung bướu/Mật Gan!"
+        }
+    ],
+    "monitoringLabs": [
+        "Xét nghiệm AST, ALT, Công thức máu (Tiểu cầu), Creatinine/eGFR định kỳ mỗi 12-24 tuần.",
+        "Định lượng tải lượng HBV DNA bằng RT-PCR ở tuần thứ 12, 24, 48 sau điều trị NAs, sau đó định kỳ mỗi 24-48 tuần.",
+        "Xét nghiệm HBeAg và anti-HBe mỗi 48 tuần; định lượng qHBsAg và HBcrAg hàng năm nếu có điều kiện.",
+        "Siêu âm ổ bụng tổng quát kết hợp chỉ dấu ung thư gan (AFP, PIVKA II, AFP-L3) định kỳ 12-24 tuần/lần để phát hiện sớm HCC.",
+        "Đánh giá mức độ xơ hóa gan bằng APRI, FIB-4 hoặc FibroScan định kỳ mỗi 24-48 tuần."
+    ],
+    "vaultPathways": [
+        {
+            "khoCode": "CD",
+            "khoName": "Kho Tiêu Chuẩn CĐ",
+            "articleTitle": "Bộ tiêu chuẩn chẩn đoán xác định Viêm gan vi rút B",
+            "searchKeyword": "chẩn đoán viêm gan vi rút B cấp mạn BYT 2026"
+        },
+        {
+            "khoCode": "PDDT",
+            "khoName": "Kho Phác Đồ Điều Trị",
+            "articleTitle": "Phác đồ điều trị, dược thư & tư vấn người bệnh Viêm gan vi rút B",
+            "searchKeyword": "phác đồ điều trị viêm gan B TDF TAF ETV BYT 2026"
+        },
+        {
+            "khoCode": "DTH",
+            "khoName": "Kho Dịch Tễ & Nguy Cơ",
+            "articleTitle": "Dịch tễ học lâm sàng, tam giác lây truyền & yếu tố nguy cơ Viêm gan vi rút B",
+            "searchKeyword": "dịch tễ lây truyền mẹ sang con viêm gan B"
+        },
+        {
+            "khoCode": "BC",
+            "khoName": "Kho Biến Chứng",
+            "articleTitle": "Nhận diện và xử trí cấp cứu các biến chứng đe dọa sinh mạng Viêm gan vi rút B",
+            "searchKeyword": "biến chứng xơ gan ung thư gan HCC bùng phát viêm gan B"
+        }
+    ]
+}

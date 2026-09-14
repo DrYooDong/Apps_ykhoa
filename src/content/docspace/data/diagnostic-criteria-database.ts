@@ -118,6 +118,11 @@ export const DIAGNOSTIC_CHAIN_DATABASE: Record<string, DiseaseReactionChainDefin
   // ── Toàn bộ các bệnh lý đã làm giàu chuyên sâu từ Prompt 08/09 (thư mục enriched/) ──
   ...ENRICHED_DISEASES,
   'thuy-dau-varicella': ENRICHED_DISEASES['thuy_dau'],
+  'vgsv_b': ENRICHED_DISEASES['vgsv_B'],
+  'viem-gan-vi-rut-b': ENRICHED_DISEASES['vgsv_B'],
+  'viem_gan_b': ENRICHED_DISEASES['vgsv_B'],
+  'sot-xoan-khuan-leptospira': ENRICHED_DISEASES['leptospira'],
+  'sot_xoan_khuan_leptospira': ENRICHED_DISEASES['leptospira'],
 
   // ── 30 Bệnh lý Trọng tâm được biên soạn thủ công & chi tiết chuyên sâu ──────
   // (Ghi đè để bảo toàn bộ tiêu chuẩn & phác đồ thuốc phân tầng chi tiết nhất)

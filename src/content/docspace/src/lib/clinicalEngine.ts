@@ -291,6 +291,13 @@ export function analyzeClinicalCase(
         b.id === 'viem-mang-nao-vi-khuan-cap' ||
         b.id === 'thuy_dau' ||
         b.id === 'thuy-dau-varicella' ||
+        b.id === 'vgsv_B' ||
+        b.id === 'vgsv_b' ||
+        b.id === 'viem-gan-vi-rut-b' ||
+        b.id === 'viem_gan_b' ||
+        b.id === 'leptospira' ||
+        b.id === 'sot-xoan-khuan-leptospira' ||
+        b.id === 'sot_xoan_khuan_leptospira' ||
         b.id === 'viem_phoi';
 
       // 1. Sốt xuất huyết Dengue: Vector muỗi Aedes, ổ dịch SXH, mùa mưa
@@ -305,7 +312,7 @@ export function analyzeClinicalCase(
           factor *= 1.25;
           epiBoostInfo = {
             boosted: true,
-            reason: 'Tam giác Dịch tễ: Phù hợp vector muỗi Aedes / Ổ dịch Dengue địa phương',
+            reason: 'Tam giác Dịch tễ: Ổ dịch Dengue / Mùa mưa / Vector Aedes',
             points: 15,
           };
           notes.push('Dịch tễ học ủng hộ mạnh mẽ chẩn đoán Sốt xuất huyết Dengue');
@@ -329,7 +336,24 @@ export function analyzeClinicalCase(
         }
       }
 
-      // 3. Viêm màng não
+      // 3. Viêm phổi (CAP): Mùa lạnh, yếu tố nghề nghiệp khói bụi
+      if (b.id === 'viem_phoi') {
+        const epiMatch =
+          normalizeText(epiContext.seasonalContext).includes('lanh') ||
+          normalizeText(epiContext.seasonalContext).includes('dong') ||
+          normalizeText(epiContext.occupationalRisk).includes('bui') ||
+          normalizeText(epiContext.occupationalRisk).includes('xay dung');
+        if (epiMatch && matched.length > 0) {
+          factor *= 1.15;
+          epiBoostInfo = {
+            boosted: true,
+            reason: 'Tam giác Dịch tễ: Mùa lạnh / Nguy cơ phơi nhiễm hô hấp',
+            points: 10,
+          };
+        }
+      }
+
+      // 4. Viêm màng não
       if (b.id === 'viem_mang_nao' || b.id === 'viem-mang-nao-vi-khuan-cap') {
         const epiMatch =
           normalizeText(epiContext.outbreakAlert).includes('nao mo cau') ||
@@ -346,7 +370,7 @@ export function analyzeClinicalCase(
         }
       }
 
-      // 4. Thủy đậu (Varicella)
+      // 5. Thủy đậu (Varicella)
       if (b.id === 'thuy_dau' || b.id === 'thuy-dau-varicella') {
         const epiMatch =
           normalizeText(epiContext.vectorExposure).includes('thuy dau') ||
@@ -366,7 +390,58 @@ export function analyzeClinicalCase(
         }
       }
 
-      // 5. Các bệnh nhiễm trùng chung khi có ổ dịch phù hợp
+      // 6. Viêm gan vi rút B (HBV)
+      if (b.id === 'vgsv_B' || b.id === 'vgsv_b' || b.id === 'viem-gan-vi-rut-b' || b.id === 'viem_gan_b') {
+        const epiMatch =
+          normalizeText(epiContext.vectorExposure).includes('hbv') ||
+          normalizeText(epiContext.vectorExposure).includes('tiem vac xin') ||
+          normalizeText(epiContext.vectorExposure).includes('chu sinh') ||
+          normalizeText(epiContext.vectorExposure).includes('tu me sang con') ||
+          normalizeText(epiContext.outbreakAlert).includes('ung thu gan') ||
+          normalizeText(epiContext.outbreakAlert).includes('xo gan') ||
+          normalizeText(epiContext.outbreakAlert).includes('hcc') ||
+          normalizeText(epiContext.endemicArea).includes('viem gan') ||
+          normalizeText(epiContext.endemicArea).includes('hbv');
+        if (epiMatch && matched.length > 0) {
+          factor *= 1.25;
+          epiBoostInfo = {
+            boosted: true,
+            reason: 'Tam giác Dịch tễ: Vùng lưu hành cao HBV / Tiền sử gia đình xơ gan, ung thư gan',
+            points: 15,
+          };
+          notes.push('Dịch tễ học ủng hộ mạnh mẽ chẩn đoán Viêm gan vi rút B (HBV)');
+        }
+      }
+
+      // 7. Sốt xoắn khuẩn Leptospira (Leptospirosis / Bệnh Weil)
+      if (b.id === 'leptospira' || b.id === 'sot-xoan-khuan-leptospira' || b.id === 'sot_xoan_khuan_leptospira') {
+        const epiMatch =
+          normalizeText(epiContext.waterFoodRisk).includes('ngap') ||
+          normalizeText(epiContext.waterFoodRisk).includes('lut') ||
+          normalizeText(epiContext.waterFoodRisk).includes('nuoc thai') ||
+          normalizeText(epiContext.waterFoodRisk).includes('cong ranh') ||
+          normalizeText(epiContext.waterFoodRisk).includes('bun') ||
+          normalizeText(epiContext.vectorExposure).includes('chuot') ||
+          normalizeText(epiContext.vectorExposure).includes('gam nham') ||
+          normalizeText(epiContext.vectorExposure).includes('ngap lut') ||
+          normalizeText(epiContext.occupationalRisk).includes('loi nuoc') ||
+          normalizeText(epiContext.occupationalRisk).includes('ruong') ||
+          normalizeText(epiContext.occupationalRisk).includes('cong nhan') ||
+          normalizeText(epiContext.occupationalRisk).includes('ve sinh') ||
+          normalizeText(epiContext.outbreakAlert).includes('leptospira') ||
+          normalizeText(epiContext.outbreakAlert).includes('ngap lut');
+        if (epiMatch && matched.length > 0) {
+          factor *= 1.25;
+          epiBoostInfo = {
+            boosted: true,
+            reason: 'Tam giác Dịch tễ: Phơi nhiễm nước ngập lụt / Ổ chứa chuột / Tiếp xúc bùn bẩn',
+            points: 15,
+          };
+          notes.push('Dịch tễ học ủng hộ mạnh mẽ chẩn đoán Sốt xoắn khuẩn Leptospira');
+        }
+      }
+
+      // 8. Các bệnh nhiễm trùng chung khi có ổ dịch phù hợp
       if (isInfDisease && !epiBoostInfo && epiContext.outbreakAlert) {
         if (normalizeText(epiContext.outbreakAlert).includes(normalizeText(b.ten))) {
           factor *= 1.15;

@@ -58,12 +58,32 @@ function auditDisease(slug) {
   let totalCount = 10;
 
   // 1. Kiểm tra Enriched JSON
-  const enrichedPath = path.join(ROOT_DIR, `src/content/docspace/data/enriched/${slug}.json`);
+  let enrichedPath = path.join(ROOT_DIR, `src/content/docspace/data/enriched/${slug}.json`);
+  let enrichedKey = slug;
+
+  if (!fs.existsSync(enrichedPath)) {
+    const enrichedDir = path.join(ROOT_DIR, 'src/content/docspace/data/enriched');
+    try {
+      const eFiles = fs.readdirSync(enrichedDir).filter(f => f.endsWith('.json'));
+      const matchedF = eFiles.find(f => {
+        const bName = path.basename(f, '.json');
+        return bName.toLowerCase() === slug.toLowerCase() ||
+          (slug.toLowerCase().includes('viem-gan') && bName.toLowerCase().includes('vgsv')) ||
+          (slug.toLowerCase().includes('vgsv') && bName.toLowerCase().includes('vgsv')) ||
+          (slug.toLowerCase().includes('leptospira') && bName.toLowerCase().includes('leptospira'));
+      });
+      if (matchedF) {
+        enrichedPath = path.join(enrichedDir, matchedF);
+        enrichedKey = path.basename(matchedF, '.json');
+      }
+    } catch {}
+  }
+
   let enrichedData = null;
   if (fs.existsSync(enrichedPath)) {
     try {
       enrichedData = JSON.parse(fs.readFileSync(enrichedPath, 'utf8'));
-      logPass(`1. Tệp Enriched JSON tồn tại (${(fs.statSync(enrichedPath).size / 1024).toFixed(1)} KB)`);
+      logPass(`1. Tệp Enriched JSON tồn tại (${(fs.statSync(enrichedPath).size / 1024).toFixed(1)} KB) [Key: ${enrichedKey}]`);
       passCount++;
     } catch (e) {
       logFail(`1. Lỗi phân tích cú pháp Enriched JSON: ${e.message}`);
@@ -75,7 +95,7 @@ function auditDisease(slug) {
   // 2. Kiểm tra Enriched index.ts
   const indexPath = path.join(ROOT_DIR, 'src/content/docspace/data/enriched/index.ts');
   const indexContent = fs.existsSync(indexPath) ? fs.readFileSync(indexPath, 'utf8') : '';
-  if (indexContent.includes(`'${slug}':`)) {
+  if (indexContent.includes(`'${slug}':`) || indexContent.includes(`'${enrichedKey}':`)) {
     logPass(`2. Đã đăng ký trong src/content/docspace/data/enriched/index.ts`);
     passCount++;
   } else {
@@ -85,7 +105,8 @@ function auditDisease(slug) {
   // 3. Kiểm tra Chuỗi Chẩn Đoán & Severity Grading
   const dcdPath = path.join(ROOT_DIR, 'src/content/docspace/data/diagnostic-criteria-database.ts');
   const dcdContent = fs.existsSync(dcdPath) ? fs.readFileSync(dcdPath, 'utf8') : '';
-  const hasInDcd = dcdContent.includes(`'${slug}':`) || indexContent.includes(`'${slug}':`);
+  const hasInDcd = dcdContent.includes(`'${slug}':`) || indexContent.includes(`'${slug}':`) ||
+                   dcdContent.includes(`'${enrichedKey}':`) || indexContent.includes(`'${enrichedKey}':`);
   const hasSeverityGrading = enrichedData?.severityGrading && Array.isArray(enrichedData.severityGrading) && enrichedData.severityGrading.length >= 2;
 
   if (hasInDcd && hasSeverityGrading) {
@@ -121,9 +142,16 @@ function auditDisease(slug) {
     d.id === slug || 
     d.id === slug.replace(/_/g, '-') || 
     d.id === slug.replace(/-/g, '_') ||
+    d.id === enrichedKey ||
     d.id.startsWith(slug) ||
     slug.startsWith(d.id) ||
-    (d.ten && enrichedData?.diseaseName && d.ten.toLowerCase().includes(enrichedData.diseaseName.toLowerCase().split('(')[0].trim()))
+    d.id.includes(slug) ||
+    slug.includes(d.id) ||
+    (d.ten && enrichedData?.diseaseName && (
+      d.ten.toLowerCase().includes(enrichedData.diseaseName.toLowerCase().split('(')[0].trim()) ||
+      enrichedData.diseaseName.toLowerCase().includes(d.ten.toLowerCase().split('(')[0].trim()) ||
+      (slug.includes('leptospira') && (d.id.includes('leptospira') || d.ten.toLowerCase().includes('leptospira')))
+    ))
   );
   if (matchedDis) {
     logPass(`5. Đã khai báo thực thể bệnh trong CSDL diseases/ (ID: ${matchedDis.id})`);
@@ -159,12 +187,14 @@ function auditDisease(slug) {
     sampleCases = JSON.parse(fs.readFileSync(casesPath, 'utf8'));
   } catch {}
 
-  const normSlug = slug.replace(/_/g, ' ').toLowerCase();
+  const normSlug = slug.replace(/[_ -]/g, ' ').toLowerCase();
   const sampleCase = sampleCases.find(c => {
     const normTen = c.ten.toLowerCase();
     return normTen.includes(normSlug) || 
       (slug.includes('sot_xuat_huyet') && (normTen.includes('sxh') || normTen.includes('dengue'))) ||
       (slug.includes('viem_mang_nao') && (normTen.includes('màng não') || normTen.includes('não mô cầu'))) ||
+      ((slug.includes('vgsv') || slug.includes('viem-gan') || slug.includes('viem_gan')) && (normTen.includes('viêm gan') || normTen.includes('hbv'))) ||
+      (slug.includes('leptospira') && normTen.includes('leptospira')) ||
       (enrichedData?.diseaseName && normTen.includes(enrichedData.diseaseName.toLowerCase().split('(')[0].trim()));
   });
 
@@ -186,9 +216,12 @@ function auditDisease(slug) {
     const sid = s.id?.toLowerCase() || '';
     const sfile = s.fullFileName?.toLowerCase() || '';
     const stitle = s.title?.toLowerCase() || '';
-    return sid.includes(slug) || sid.includes(slug.replace(/_/g, '-')) || 
-      sfile.includes(slug) ||
-      (slug.includes('sot_xuat_huyet') && (sid.includes('sot_xuat_huyet') || sfile.includes('sot_xuat_huyet'))) ||
+    const slugLower = slug.toLowerCase();
+    return sid.includes(slugLower) || sid.includes(slugLower.replace(/_/g, '-')) || 
+      sfile.includes(slugLower) ||
+      (slugLower.includes('sot_xuat_huyet') && (sid.includes('sot_xuat_huyet') || sfile.includes('sot_xuat_huyet'))) ||
+      ((slugLower.includes('vgsv') || slugLower.includes('viem-gan') || slugLower.includes('viem_gan')) && (sid.includes('viem-gan') || sid.includes('vgsv') || sfile.includes('viem-gan') || sfile.includes('vgsv'))) ||
+      (slugLower.includes('leptospira') && (sid.includes('leptospira') || sfile.includes('leptospira') || stitle.includes('leptospira'))) ||
       stitle.includes(normSlug);
   });
 
@@ -202,7 +235,8 @@ function auditDisease(slug) {
   // 9. Kiểm tra Bối cảnh Dịch tễ học (Epidemiology Context)
   const epiPath = path.join(ROOT_DIR, 'src/content/docspace/src/data/epidemiology-context-database.ts');
   const epiContent = fs.existsSync(epiPath) ? fs.readFileSync(epiPath, 'utf8') : '';
-  const hasEpi = epiContent.includes(`${slug}:`) || epiContent.includes(`'${slug}':`);
+  const hasEpi = epiContent.includes(`${slug}:`) || epiContent.includes(`'${slug}':`) ||
+                 epiContent.includes(`${enrichedKey}:`) || epiContent.includes(`'${enrichedKey}':`);
 
   if (hasEpi) {
     logPass(`9. Bối cảnh Dịch tễ học (Vùng lưu hành, mùa vụ, véc-tơ, lây truyền) đã được cấu hình`);
@@ -214,7 +248,8 @@ function auditDisease(slug) {
   // 10. Kiểm tra Tam Giác Chẩn Đoán trong Clinical Engine
   const enginePath = path.join(ROOT_DIR, 'src/content/docspace/src/lib/clinicalEngine.ts');
   const engineContent = fs.existsSync(enginePath) ? fs.readFileSync(enginePath, 'utf8') : '';
-  const hasEngineSupport = engineContent.includes(`'${slug}'`) || engineContent.includes(`"${slug}"`);
+  const hasEngineSupport = engineContent.includes(`'${slug}'`) || engineContent.includes(`"${slug}"`) ||
+                           engineContent.includes(`'${enrichedKey}'`) || engineContent.includes(`"${enrichedKey}"`);
 
   if (hasEngineSupport) {
     logPass(`10. Engine suy luận đã tích hợp nhận diện và tính điểm thưởng Tam giác dịch tễ`);

@@ -124,18 +124,20 @@ Khi nhận dữ liệu sinh ra từ NotebookLM/LLM cho một mặt bệnh mới 
    node tools/scripts/build-enriched-cdss.mjs
    ```
 
-### Bước 2: Nạp Ca Mẫu & Ma Trận Trọng Số CDSS (Khối 2 & 3 - Prompt 06)
-1. Mở `src/content/knowledge-vault/data/sample-clinical-cases.json`: Thêm đối tượng ca bệnh mẫu vào mảng.
-2. Mở `src/content/knowledge-vault/data/clinical-rules-symptoms.json`: Khai báo các triệu chứng mới.
-3. Mở `src/content/knowledge-vault/data/clinical-rules-diseases.json`: Khai báo thực thể bệnh và ma trận `dd`.
-4. Đồng bộ file Master: Cập nhật `src/content/knowledge-vault/data/clinical-rules-kb.json`.
+### Bước 2 & 3: Nạp Nhanh Ca Mẫu, CDSS & SOAP (Prompt 06 & 07)
+> 💡 **Khuyên Dùng**: Sử dụng Skill `docspace-prompt-06-07-ingester` và công cụ 1-Click tự động:
+> ```powershell
+> node tools/scripts/ingest-prompt-06-07.mjs <duong-dan-file.md>
+> ```
+> Hoặc thực hiện tuần tự thủ công theo các bước dưới đây:
 
-### Bước 3: Nạp Hồ Sơ Ca Thực Chiến SOAP (Khối 4 - Prompt 07)
-1. Lưu file Markdown vào `src/content/knowledge-vault/ba/soap-<slug>-01.md`.
-2. Chạy script phân tích và đồng bộ catalog:
-   ```powershell
-   node tools/scripts/ingest-notebooklm-case.mjs src/content/knowledge-vault/ba/soap-<slug>-01.md
-   ```
+#### Cách làm thủ công:
+1. **Ca mẫu**: Mở `src/content/knowledge-vault/data/sample-clinical-cases.json`: Thêm đối tượng ca bệnh mẫu vào mảng.
+2. **Triệu chứng**: Mở `src/content/knowledge-vault/data/clinical-rules-symptoms.json`: Khai báo các triệu chứng mới (bao gồm cả triệu chứng trong `negated`).
+3. **Thực thể bệnh**: Mở `src/content/knowledge-vault/data/diseases/<chuyen-khoa>.json`: Khai báo thực thể bệnh và ma trận `dd`.
+4. **Đồng bộ Master KB**: Chạy `node tools/scripts/bundle-clinical-rules.mjs`.
+5. **Hồ sơ SOAP**: Lưu file Markdown vào `src/content/knowledge-vault/ba/soap-<slug>-01.md`.
+6. **Đồng bộ Catalog**: Chạy `node tools/scripts/ingest-notebooklm-case.mjs src/content/knowledge-vault/ba/soap-<slug>-01.md`.
 
 ### Bước 4: Khai Báo Aliasing & Dịch Tễ Học
 1. Khai báo ánh xạ trong `src/content/docspace/data/diagnostic-criteria-database.ts`.
