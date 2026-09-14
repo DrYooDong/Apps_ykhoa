@@ -295,9 +295,16 @@ export function analyzeClinicalCase(
         b.id === 'vgsv_b' ||
         b.id === 'viem-gan-vi-rut-b' ||
         b.id === 'viem_gan_b' ||
+        b.id === 'vgsv_C' ||
+        b.id === 'vgsv_c' ||
+        b.id === 'viem-gan-vi-rut-c-man' ||
+        b.id === 'viem-gan-vi-rut-c' ||
+        b.id === 'viem_gan_c' ||
         b.id === 'leptospira' ||
         b.id === 'sot-xoan-khuan-leptospira' ||
         b.id === 'sot_xoan_khuan_leptospira' ||
+        b.id === 'sot_ret' ||
+        b.id === 'sot_ret' ||
         b.id === 'viem_phoi';
 
       // 1. Sốt xuất huyết Dengue: Vector muỗi Aedes, ổ dịch SXH, mùa mưa
@@ -413,7 +420,30 @@ export function analyzeClinicalCase(
         }
       }
 
-      // 7. Sốt xoắn khuẩn Leptospira (Leptospirosis / Bệnh Weil)
+      // 7. Viêm gan vi rút C (HCV)
+      if (b.id === 'vgsv_C' || b.id === 'vgsv_c' || b.id === 'viem-gan-vi-rut-c-man' || b.id === 'viem-gan-vi-rut-c' || b.id === 'viem_gan_c') {
+        const epiMatch =
+          normalizeText(epiContext.vectorExposure).includes('hcv') ||
+          normalizeText(epiContext.vectorExposure).includes('xam') ||
+          normalizeText(epiContext.vectorExposure).includes('tiem chich') ||
+          normalizeText(epiContext.vectorExposure).includes('truyen mau') ||
+          normalizeText(epiContext.vectorExposure).includes('phau thuat') ||
+          normalizeText(epiContext.outbreakAlert).includes('hcv') ||
+          normalizeText(epiContext.outbreakAlert).includes('viem gan c') ||
+          normalizeText(epiContext.endemicArea).includes('viem gan') ||
+          normalizeText(epiContext.endemicArea).includes('hcv');
+        if (epiMatch && matched.length > 0) {
+          factor *= 1.25;
+          epiBoostInfo = {
+            boosted: true,
+            reason: 'Tam giác Dịch tễ: Tiền sử tiêm chích, xăm hình, truyền máu / Vùng lưu hành HCV',
+            points: 15,
+          };
+          notes.push('Dịch tễ học ủng hộ mạnh mẽ chẩn đoán Viêm gan vi rút C (HCV)');
+        }
+      }
+
+      // 8. Sốt xoắn khuẩn Leptospira (Leptospirosis / Bệnh Weil)
       if (b.id === 'leptospira' || b.id === 'sot-xoan-khuan-leptospira' || b.id === 'sot_xoan_khuan_leptospira') {
         const epiMatch =
           normalizeText(epiContext.waterFoodRisk).includes('ngap') ||

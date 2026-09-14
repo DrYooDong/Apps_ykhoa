@@ -88,6 +88,54 @@ export const EPIDEMIOLOGY_DATABASE: Record<string, DiseaseEpidemiologyProfile> =
     outbreakPotential: 'sporadic',
     clinicalPearls: 'Việt Nam là vùng dịch tễ lưu hành cao HBV. Người nhiễm mạn có tiền sử gia đình xơ gan/HCC là đối tượng nguy cơ rất cao cần khởi trị NAs sớm để ngăn ngừa tử vong.'
   },
+  vgsv_C: {
+    diseaseId: 'vgsv_C',
+    diseaseName: 'Viêm gan vi rút C mạn tính (HCV)',
+    icdCode: 'B18.2',
+    specialty: 'Truyền nhiễm',
+    endemicAreas: ['Việt Nam là vùng lưu hành dịch tễ của HCV (tỷ lệ 1-2% dân số chung)', 'Toàn quốc'],
+    peakSeasons: ['Quanh năm (Bệnh nhiễm vi rút mạn tính tiến triển âm thầm quanh năm)'],
+    vectors: ['Không qua vector côn trùng; lây truyền qua đường máu và dịch tiết cơ thể'],
+    occupationalRisks: ['Nhân viên y tế (phơi nhiễm kim tiêm/vết thương dính máu)', 'Thợ xăm hình nghệ thuật, thợ bấm lỗ tai, làm móng thẩm mỹ', 'Công nhân'],
+    foodWaterRisks: ['Không lây truyền qua thức ăn hay nguồn nước uống thông thường'],
+    transmissionRoutes: ['Lây qua đường máu (tiêm chích ma túy, truyền máu trước 1994, phẫu thuật/thủ thuật xâm lấn không an toàn, xăm mình)', 'Quan hệ tình dục không an toàn (đặc biệt MSM hoặc đồng nhiễm HIV)', 'Lây truyền từ mẹ sang con (tỷ lệ khoảng 5%)'],
+    incubationPeriod: '2 tuần đến 6 tháng trước khi chuyển sang giai đoạn mạn tính (> 6 tháng)',
+    highRiskPopulations: ['Người có tiền sử tiêm chích ma túy', 'Người từng truyền máu hoặc các chế phẩm máu trước năm 1994', 'Người xăm hình, xỏ khuyên tại cơ sở không vô trùng', 'Bệnh nhân lọc máu chu kỳ', 'Người nhiễm HIV', 'Trẻ sinh ra từ mẹ nhiễm HCV'],
+    outbreakPotential: 'sporadic',
+    clinicalPearls: 'Anti-HCV dương tính chỉ phản ánh đã từng phơi nhiễm với HCV. Bắt buộc phải thực hiện định lượng HCV RNA hoặc HCVcAg để khẳng định vi rút đang nhân lên trước khi chỉ định phác đồ DAA. Tầm soát HCC mỗi 6 tháng ở xơ hóa F3-F4.'
+  },
+  vgsv_c: {
+    diseaseId: 'vgsv_c',
+    diseaseName: 'Viêm gan vi rút C mạn tính (HCV)',
+    icdCode: 'B18.2',
+    specialty: 'Truyền nhiễm',
+    endemicAreas: ['Việt Nam là vùng lưu hành dịch tễ của HCV (tỷ lệ 1-2% dân số chung)', 'Toàn quốc'],
+    peakSeasons: ['Quanh năm (Bệnh nhiễm vi rút mạn tính tiến triển âm thầm quanh năm)'],
+    vectors: ['Không qua vector côn trùng; lây truyền qua đường máu và dịch tiết cơ thể'],
+    occupationalRisks: ['Nhân viên y tế (phơi nhiễm kim tiêm/vết thương dính máu)', 'Thợ xăm hình nghệ thuật, thợ bấm lỗ tai, làm móng thẩm mỹ', 'Công nhân'],
+    foodWaterRisks: ['Không lây truyền qua thức ăn hay nguồn nước uống thông thường'],
+    transmissionRoutes: ['Lây qua đường máu (tiêm chích ma túy, truyền máu trước 1994, phẫu thuật/thủ thuật xâm lấn không an toàn, xăm mình)', 'Quan hệ tình dục không an toàn (đặc biệt MSM hoặc đồng nhiễm HIV)', 'Lây truyền từ mẹ sang con (tỷ lệ khoảng 5%)'],
+    incubationPeriod: '2 tuần đến 6 tháng trước khi chuyển sang giai đoạn mạn tính (> 6 tháng)',
+    highRiskPopulations: ['Người có tiền sử tiêm chích ma túy', 'Người từng truyền máu hoặc các chế phẩm máu trước năm 1994', 'Người xăm hình, xỏ khuyên tại cơ sở không vô trùng', 'Bệnh nhân lọc máu chu kỳ', 'Người nhiễm HIV', 'Trẻ sinh ra từ mẹ nhiễm HCV'],
+    outbreakPotential: 'sporadic',
+    clinicalPearls: 'Anti-HCV dương tính chỉ phản ánh đã từng phơi nhiễm với HCV. Bắt buộc phải thực hiện định lượng HCV RNA hoặc HCVcAg để khẳng định vi rút đang nhân lên trước khi chỉ định phác đồ DAA. Tầm soát HCC mỗi 6 tháng ở xơ hóa F3-F4.'
+  },
+  'viem-gan-vi-rut-c-man': {
+    diseaseId: 'viem-gan-vi-rut-c-man',
+    diseaseName: 'Viêm gan vi rút C mạn tính (HCV)',
+    icdCode: 'B18.2',
+    specialty: 'Truyền nhiễm',
+    endemicAreas: ['Việt Nam là vùng lưu hành dịch tễ của HCV (tỷ lệ 1-2% dân số chung)', 'Toàn quốc'],
+    peakSeasons: ['Quanh năm (Bệnh nhiễm vi rút mạn tính tiến triển âm thầm quanh năm)'],
+    vectors: ['Không qua vector côn trùng; lây truyền qua đường máu và dịch tiết cơ thể'],
+    occupationalRisks: ['Nhân viên y tế (phơi nhiễm kim tiêm/vết thương dính máu)', 'Thợ xăm hình nghệ thuật, thợ bấm lỗ tai, làm móng thẩm mỹ', 'Công nhân'],
+    foodWaterRisks: ['Không lây truyền qua thức ăn hay nguồn nước uống thông thường'],
+    transmissionRoutes: ['Lây qua đường máu (tiêm chích ma túy, truyền máu trước 1994, phẫu thuật/thủ thuật xâm lấn không an toàn, xăm mình)', 'Quan hệ tình dục không an toàn (đặc biệt MSM hoặc đồng nhiễm HIV)', 'Lây truyền từ mẹ sang con (tỷ lệ khoảng 5%)'],
+    incubationPeriod: '2 tuần đến 6 tháng trước khi chuyển sang giai đoạn mạn tính (> 6 tháng)',
+    highRiskPopulations: ['Người có tiền sử tiêm chích ma túy', 'Người từng truyền máu hoặc các chế phẩm máu trước năm 1994', 'Người xăm hình, xỏ khuyên tại cơ sở không vô trùng', 'Bệnh nhân lọc máu chu kỳ', 'Người nhiễm HIV', 'Trẻ sinh ra từ mẹ nhiễm HCV'],
+    outbreakPotential: 'sporadic',
+    clinicalPearls: 'Anti-HCV dương tính chỉ phản ánh đã từng phơi nhiễm với HCV. Bắt buộc phải thực hiện định lượng HCV RNA hoặc HCVcAg để khẳng định vi rút đang nhân lên trước khi chỉ định phác đồ DAA. Tầm soát HCC mỗi 6 tháng ở xơ hóa F3-F4.'
+  },
   leptospira: {
     diseaseId: 'leptospira',
     diseaseName: 'Bệnh do Leptospira (Leptospirosis / Bệnh Weil)',
@@ -366,5 +414,21 @@ export function matchEpidemiologyBoost(
   return {
     score: Math.min(score, 15), // Chặn trên tối đa 15 điểm boost
     reasons
-  };
+    sot_ret: {
+    diseaseId: 'sot_ret',
+    diseaseName: 'Sốt Rét (Malaria / P. falciparum, P. vivax, P. knowlesi, P. malariae)',
+    icdCode: 'B50',
+    specialty: 'Truyền nhiễm',
+    endemicAreas: ["Bệnh nhân vừa trở về từ vùng sốt rét lưu hành (huyện Bù Gia Mập, tỉnh Bình Phước) trong vòng 10 ngày qua", 'Toàn quốc'],
+    peakSeasons: ["Mùa mưa, thời tiết ẩm ướt vùng rừng núi thuận lợi cho muỗi Anopheles sinh sản và truyền bệnh sốt rét"],
+    vectors: ["Tiền sử ngủ rẫy trong rừng không mắc màn tẩm hóa chất, bị muỗi rừng Anopheles dirus / Anopheles minimus đốt nhiều lần vào ban đêm"],
+    occupationalRisks: ['Nhân viên y tế phơi nhiễm nghề nghiệp', 'Người lao động có nguy cơ tiếp xúc'],
+    foodWaterRisks: ['Tuân thủ vệ sinh an toàn thực phẩm và nguồn nước sinh hoạt'],
+    transmissionRoutes: ["Khu vực rừng rẫy biên giới có muỗi Anopheles hoạt động mạnh, có các ca bệnh sốt rét rải rác lưu hành trong cộng đồng dân cư đi rừng"],
+    incubationPeriod: 'Thời gian ủ bệnh thay đổi tùy thuộc độc lực tác nhân và cơ địa người bệnh',
+    highRiskPopulations: ['Người có bệnh nền mạn tính', 'Người cao tuổi hoặc trẻ nhỏ', 'Người suy giảm miễn dịch'],
+    outbreakPotential: 'sporadic',
+    clinicalPearls: 'Khai thác kỹ tiền sử tiếp xúc, yếu tố phơi nhiễm dịch tễ và các triệu chứng cảnh báo sớm tại vùng lưu hành để chẩn đoán kịp thời.'
+  },
+};
 }

@@ -67,10 +67,15 @@ function auditDisease(slug) {
       const eFiles = fs.readdirSync(enrichedDir).filter(f => f.endsWith('.json'));
       const matchedF = eFiles.find(f => {
         const bName = path.basename(f, '.json');
-        return bName.toLowerCase() === slug.toLowerCase() ||
-          (slug.toLowerCase().includes('viem-gan') && bName.toLowerCase().includes('vgsv')) ||
-          (slug.toLowerCase().includes('vgsv') && bName.toLowerCase().includes('vgsv')) ||
-          (slug.toLowerCase().includes('leptospira') && bName.toLowerCase().includes('leptospira'));
+        const bLower = bName.toLowerCase();
+        const sLower = slug.toLowerCase();
+        if (bLower === sLower) return true;
+        if (sLower.includes('leptospira') && bLower.includes('leptospira')) return true;
+        if (sLower.includes('viem-gan') || sLower.includes('viem_gan') || sLower.includes('vgsv')) {
+          if ((sLower.includes('c') || sLower.includes('hcv')) && (bLower.includes('c') || bLower.includes('hcv'))) return true;
+          if ((sLower.includes('b') || sLower.includes('hbv')) && (bLower.includes('b') || bLower.includes('hbv'))) return true;
+        }
+        return false;
       });
       if (matchedF) {
         enrichedPath = path.join(enrichedDir, matchedF);
@@ -138,21 +143,22 @@ function auditDisease(slug) {
     }
   } catch {}
 
-  const matchedDis = disList.find(d => 
-    d.id === slug || 
-    d.id === slug.replace(/_/g, '-') || 
-    d.id === slug.replace(/-/g, '_') ||
-    d.id === enrichedKey ||
-    d.id.startsWith(slug) ||
-    slug.startsWith(d.id) ||
-    d.id.includes(slug) ||
-    slug.includes(d.id) ||
-    (d.ten && enrichedData?.diseaseName && (
-      d.ten.toLowerCase().includes(enrichedData.diseaseName.toLowerCase().split('(')[0].trim()) ||
-      enrichedData.diseaseName.toLowerCase().includes(d.ten.toLowerCase().split('(')[0].trim()) ||
-      (slug.includes('leptospira') && (d.id.includes('leptospira') || d.ten.toLowerCase().includes('leptospira')))
-    ))
-  );
+  const matchedDis = disList.find(d => {
+    if (d.id === slug || d.id === slug.replace(/_/g, '-') || d.id === slug.replace(/-/g, '_') || d.id === enrichedKey) return true;
+    if (enrichedKey === 'vgsv_C' && (d.id === 'viem-gan-vi-rut-c-man' || d.id === 'viem-gan-vi-rut-c' || d.id === 'viem_gan_c')) return true;
+    if (enrichedKey === 'vgsv_B' && (d.id === 'viem-gan-vi-rut-b' || d.id === 'viem_gan_b')) return true;
+    const sLower = slug.toLowerCase();
+    const dLower = d.id.toLowerCase();
+    if ((sLower.includes('c') || sLower.includes('hcv')) && (dLower.includes('b') || dLower.includes('hbv'))) return false;
+    if ((sLower.includes('b') || sLower.includes('hbv')) && (dLower.includes('c') || dLower.includes('hcv'))) return false;
+    if (d.id.startsWith(slug) || slug.startsWith(d.id) || d.id.includes(slug) || slug.includes(d.id)) return true;
+    if (d.ten && enrichedData?.diseaseName) {
+      const dNameClean = d.ten.toLowerCase().split('(')[0].trim();
+      const eNameClean = enrichedData.diseaseName.toLowerCase().split('(')[0].trim();
+      if (dNameClean === eNameClean) return true;
+    }
+    return false;
+  });
   if (matchedDis) {
     logPass(`5. Đã khai báo thực thể bệnh trong CSDL diseases/ (ID: ${matchedDis.id})`);
     passCount++;
@@ -190,12 +196,17 @@ function auditDisease(slug) {
   const normSlug = slug.replace(/[_ -]/g, ' ').toLowerCase();
   const sampleCase = sampleCases.find(c => {
     const normTen = c.ten.toLowerCase();
-    return normTen.includes(normSlug) || 
-      (slug.includes('sot_xuat_huyet') && (normTen.includes('sxh') || normTen.includes('dengue'))) ||
-      (slug.includes('viem_mang_nao') && (normTen.includes('màng não') || normTen.includes('não mô cầu'))) ||
-      ((slug.includes('vgsv') || slug.includes('viem-gan') || slug.includes('viem_gan')) && (normTen.includes('viêm gan') || normTen.includes('hbv'))) ||
-      (slug.includes('leptospira') && normTen.includes('leptospira')) ||
-      (enrichedData?.diseaseName && normTen.includes(enrichedData.diseaseName.toLowerCase().split('(')[0].trim()));
+    const slugLower = slug.toLowerCase();
+    if (slugLower.includes('c') || slugLower.includes('hcv')) {
+      return normTen.includes('viêm gan vi rút c') || normTen.includes('viêm gan c') || normTen.includes('hcv');
+    }
+    if (slugLower.includes('b') || slugLower.includes('hbv')) {
+      return normTen.includes('viêm gan vi rút b') || normTen.includes('viêm gan b') || normTen.includes('hbv');
+    }
+    if (slugLower.includes('sot_xuat_huyet')) return normTen.includes('sxh') || normTen.includes('dengue');
+    if (slugLower.includes('viem_mang_nao')) return normTen.includes('màng não') || normTen.includes('não mô cầu');
+    if (slugLower.includes('leptospira')) return normTen.includes('leptospira');
+    return normTen.includes(normSlug) || (enrichedData?.diseaseName && normTen.includes(enrichedData.diseaseName.toLowerCase().split('(')[0].trim()));
   });
 
   if (sampleCase) {
@@ -217,12 +228,15 @@ function auditDisease(slug) {
     const sfile = s.fullFileName?.toLowerCase() || '';
     const stitle = s.title?.toLowerCase() || '';
     const slugLower = slug.toLowerCase();
-    return sid.includes(slugLower) || sid.includes(slugLower.replace(/_/g, '-')) || 
-      sfile.includes(slugLower) ||
-      (slugLower.includes('sot_xuat_huyet') && (sid.includes('sot_xuat_huyet') || sfile.includes('sot_xuat_huyet'))) ||
-      ((slugLower.includes('vgsv') || slugLower.includes('viem-gan') || slugLower.includes('viem_gan')) && (sid.includes('viem-gan') || sid.includes('vgsv') || sfile.includes('viem-gan') || sfile.includes('vgsv'))) ||
-      (slugLower.includes('leptospira') && (sid.includes('leptospira') || sfile.includes('leptospira') || stitle.includes('leptospira'))) ||
-      stitle.includes(normSlug);
+    if (slugLower.includes('c') || slugLower.includes('hcv')) {
+      return sid.includes('viem_gan_c') || sid.includes('viem-gan-c') || sfile.includes('viem_gan_c') || stitle.includes('viêm gan vi rút c') || stitle.includes('viêm gan c');
+    }
+    if (slugLower.includes('b') || slugLower.includes('hbv')) {
+      return sid.includes('viem-gan-vi-rut-b') || sid.includes('vgsv_b') || sfile.includes('viem-gan-vi-rut-b') || stitle.includes('viêm gan vi rút b');
+    }
+    if (slugLower.includes('sot_xuat_huyet')) return sid.includes('sot_xuat_huyet') || sfile.includes('sot_xuat_huyet');
+    if (slugLower.includes('leptospira')) return sid.includes('leptospira') || sfile.includes('leptospira') || stitle.includes('leptospira');
+    return sid.includes(slugLower) || sid.includes(slugLower.replace(/_/g, '-')) || sfile.includes(slugLower) || stitle.includes(normSlug);
   });
 
   if (soapCase) {

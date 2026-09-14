@@ -117,10 +117,18 @@ export const DIAGNOSTIC_CHAIN_DATABASE: Record<string, DiseaseReactionChainDefin
 
   // ── Toàn bộ các bệnh lý đã làm giàu chuyên sâu từ Prompt 08/09 (thư mục enriched/) ──
   ...ENRICHED_DISEASES,
+  'sot_ret': ENRICHED_DISEASES['sot_ret'],
+  'sot-ret': ENRICHED_DISEASES['sot_ret'],
+  'viem_gan_vi_rut_c_man': ENRICHED_DISEASES['vgsv_C'],
+  'vgsv_C': ENRICHED_DISEASES['vgsv_C'],
   'thuy-dau-varicella': ENRICHED_DISEASES['thuy_dau'],
   'vgsv_b': ENRICHED_DISEASES['vgsv_B'],
   'viem-gan-vi-rut-b': ENRICHED_DISEASES['vgsv_B'],
   'viem_gan_b': ENRICHED_DISEASES['vgsv_B'],
+  'vgsv_c': ENRICHED_DISEASES['vgsv_C'],
+  'viem-gan-vi-rut-c-man': ENRICHED_DISEASES['vgsv_C'],
+  'viem-gan-vi-rut-c': ENRICHED_DISEASES['vgsv_C'],
+  'viem_gan_c': ENRICHED_DISEASES['vgsv_C'],
   'sot-xoan-khuan-leptospira': ENRICHED_DISEASES['leptospira'],
   'sot_xoan_khuan_leptospira': ENRICHED_DISEASES['leptospira'],
 

@@ -7,9 +7,9 @@ description: >
   ca SOAP và kiểm định tự động 10/10 tiêu chí.
 ---
 
-# DocSpace Prompt 06 & 07 Ingestion Pipeline Skill
+# DocSpace Prompt 06 & 07 Ingestion Pipeline Skill (Fast-Track & Fully Autonomous)
 
-Tài liệu này định nghĩa quy trình chuẩn hóa, bộ công cụ tự động và các bước thao tác chuẩn mực giúp AI Agent và Bác sĩ/Kỹ sư nạp thần tốc toàn bộ dữ liệu từ **Prompt 06** (Ca mẫu & Ma trận trọng số CDSS) và **Prompt 07** (Hồ sơ ca thực chiến SOAP) vào hệ sinh thái **CliniPortal DocSpace**.
+Tài liệu này định nghĩa quy trình chuẩn hóa, bộ công cụ tự động hóa toàn diện 1-Click và các bài học kỹ thuật thực chiến giúp AI Agent và Bác sĩ/Kỹ sư nạp thần tốc toàn bộ dữ liệu từ **Prompt 06** (Ca mẫu & Ma trận trọng số CDSS) và **Prompt 07** (Hồ sơ ca thực chiến SOAP) vào hệ sinh thái **CliniPortal DocSpace**, đạt chuẩn 10/10 tiêu chí kiểm định tự động ngay trong 01 lượt chạy.
 
 ---
 
@@ -23,6 +23,7 @@ Mỗi lượt tạo dữ liệu từ NotebookLM cho một mặt bệnh thường
 │ ├── PHẦN 1: CA LÂM SÀNG MẪU THỰC TẾ (JSON)                                             │
 │ │   ➔ Nạp vào: src/content/knowledge-vault/data/sample-clinical-cases.json             │
 │ │   ➔ Phục vụ: Nút tải ca mẫu tại Bước 1 (Data Ingestion) của DocSpace                 │
+│ │   ➔ Cung cấp: epiContext (Bối cảnh dịch tễ), vitals (Sinh hiệu), form (Bệnh sử)     │
 │ │                                                                                      │
 │ └── PHẦN 2: MA TRẬN TRỌNG SỐ SUY LUẬN CDSS                                             │
 │     ├── 1. Bổ sung triệu chứng vào từ điển (JSON Array)                                │
@@ -36,122 +37,106 @@ Mỗi lượt tạo dữ liệu từ NotebookLM cho một mặt bệnh thường
 │     ➔ Lưu tệp: src/content/knowledge-vault/ba/<caseId>.md                              │
 │     ➔ Đồng bộ Catalog: node tools/scripts/ingest-notebooklm-case.mjs <file.md>         │
 │     ➔ Phục vụ: Mục 9 Bước 4 Chu trình lâm sàng & Sổ tay Thực hành SOAP                 │
+├────────────────────────────────────────────────────────────────────────────────────────┤
+│ TỰ ĐỘNG TÍCH HỢP HỆ THỐNG DOCSPACE (AUTOMATIC DEEP INTEGRATION)                        │
+│ ├── 1. Biên dịch CSDL Enriched CDSS: node tools/scripts/build-enriched-cdss.mjs        │
+│ ├── 2. Đăng ký Multi-Key Aliases: src/content/docspace/data/diagnostic-criteria-database│
+│ ├── 3. Cấu hình Hồ sơ Dịch tễ: src/content/docspace/src/data/epidemiology-context-db  │
+│ └── 4. Kích hoạt Tam giác DTH: src/content/docspace/src/lib/clinicalEngine.ts          │
 └────────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## ⚡ 2. Quy Trình Nạp Tự Động (1-Click Automation CLI)
+## ⚡ 2. Quy Trình Nạp Thần Tốc 1-Click (Fast-Track SOP Cho AI Agent)
 
-Dự án đã tích hợp sẵn công cụ tự động hóa toàn bộ việc bóc tách và phân phối dữ liệu:
+Khi Người dùng yêu cầu nạp tiếp mặt bệnh từ Prompt 06 & 07 (ví dụ: `ND_Prompt 06,07.md`), AI Agent chỉ cần thực hiện **3 bước tinh gọn**:
 
-```powershell
-node tools/scripts/ingest-prompt-06-07.mjs <duong-dan-file.md>
-```
+### Bước 1: Tiếp nhận và lưu tệp nguồn
+- Nếu người dùng cung cấp nội dung text trực tiếp: lưu vào `src/content/docspace/docs/ND_Prompt 06,07.md`.
+- Nếu đã có sẵn đường dẫn tệp: sử dụng trực tiếp đường dẫn đó.
 
-### Ví dụ Thực tế:
+### Bước 2: Chạy lệnh tự động hóa toàn diện 1-Click
 ```powershell
 node tools/scripts/ingest-prompt-06-07.mjs "src/content/docspace/docs/ND_Prompt 06,07.md"
 ```
 
-### Các tác vụ công cụ tự động thực hiện:
-1. **Tự động bóc tách 4 khối**: Ca mẫu JSON, Từ điển triệu chứng JSON, Thực thể bệnh JSON, và YAML + SOAP Markdown.
-2. **Chống triệu chứng mồ côi (Zero-Orphan Guardian)**: Tự động rà soát cả các triệu chứng trong mảng `negated` và `selected` của ca mẫu, nếu chưa có trong từ điển sẽ tự động khai báo ngay.
-3. **Phân phối đúng chuyên khoa**: Tự động nhận diện trường `"nhom"` để ghi vào đúng tệp chuyên khoa (`truyen-nhiem.json`, `ho-hap.json`, `tim-mach.json`, `tieu-hoa.json`...).
-4. **Tự động đồng bộ Master KB**: Chạy script `bundle-clinical-rules.mjs` để cập nhật `clinical-rules-kb.json`.
-5. **Đóng gói SOAP Markdown**: Lưu tệp `src/content/knowledge-vault/ba/<caseId>.md` với Frontmatter YAML chuẩn hóa.
-6. **Đồng bộ Catalog Thực hành**: Chạy `ingest-notebooklm-case.mjs` để cập nhật `vault-catalog-thuc-hanh.json` và `vault-catalog.json`.
-7. **Tự động kích hoạt Audit**: Chạy `docspace-disease-audit.mjs` để kiểm định tính sẵn sàng.
+### Bước 3: Đọc kết quả Audit & Nghiệm thu
+Script sẽ tự động hoàn tất 7 bước và in báo cáo kép:
+1. `docspace-disease-audit.mjs <slug>`: Phải đạt **10/10 Tiêu chí (100% PASS)**.
+2. `vault-readiness-check.mjs`: Phải đạt **15/15 Tiêu chí (100% PASS)**.
 
 ---
 
-## 🛠️ 3. Quy Trình Thao Tác Bằng Tay (Manual Fallback Protocol)
+## 🤖 3. Các Tác Vụ Công Cụ Tự Động Thực Hiện (Autonomous Pipeline Details)
 
-Nếu tệp nguồn có cấu trúc đặc biệt không thể parse tự động bằng script, AI Agent thực hiện tuần tự theo 5 bước sau:
+Công cụ `tools/scripts/ingest-prompt-06-07.mjs` đã được trang bị cơ chế tự phục hồi và tự tích hợp sâu:
 
-### Bước 1: Nạp Triệu chứng vào `clinical-rules-symptoms.json`
-1. Mở `src/content/knowledge-vault/data/clinical-rules-symptoms.json`.
-2. Kiểm tra và bổ sung các đối tượng triệu chứng từ **Phần 2.1** vào cuối mảng.
-3. ⚠️ **BẮT BUỘC**: Kiểm tra cả các triệu chứng xuất hiện trong `negated` của Ca mẫu (Phần 1), nếu chưa có phải thêm vào từ điển để tránh triệu chứng mồ côi.
-
-### Bước 2: Nạp Thực thể Bệnh vào `diseases/<chuyen-khoa>.json`
-1. Xác định chuyên khoa của bệnh từ trường `"nhom"`:
-   - `Truyền nhiễm` $\rightarrow$ `src/content/knowledge-vault/data/diseases/truyen-nhiem.json`
-   - `Hô hấp` $\rightarrow$ `src/content/knowledge-vault/data/diseases/ho-hap.json`
-   - `Tim mạch` $\rightarrow$ `src/content/knowledge-vault/data/diseases/tim-mach.json`
-   - `Tiêu hóa` $\rightarrow$ `src/content/knowledge-vault/data/diseases/tieu-hoa.json`
-   - `Tiết niệu` $\rightarrow$ `src/content/knowledge-vault/data/diseases/tiet-nieu.json`
-   - `Nội tiết` $\rightarrow$ `src/content/knowledge-vault/data/diseases/noi-tiet.json`
-   - `Thần kinh` $\rightarrow$ `src/content/knowledge-vault/data/diseases/than-kinh.json`
-2. Thêm đối tượng bệnh học từ **Phần 2.2** vào mảng JSON của tệp chuyên khoa tương ứng.
-3. Chạy lệnh đồng bộ Master KB:
-   ```powershell
-   node tools/scripts/bundle-clinical-rules.mjs
-   ```
-
-### Bước 3: Nạp Ca Mẫu vào `sample-clinical-cases.json`
-1. Mở `src/content/knowledge-vault/data/sample-clinical-cases.json`.
-2. Thêm đối tượng ca bệnh mẫu từ **Phần 1** vào cuối mảng JSON.
-
-### Bước 4: Lưu Hồ sơ SOAP Markdown & Đồng bộ Catalog
-1. Lấy thông tin `caseId` từ YAML frontmatter của Prompt 07 (ví dụ: `soap-viem-gan-vi-rut-b-01`).
-2. Tạo tệp mới tại `src/content/knowledge-vault/ba/<caseId>.md`.
-3. Định dạng tệp gồm:
-   ```markdown
-   ---
-   <toàn bộ nội dung frontmatter>
-   ---
-
-   <toàn bộ nội dung thân bài markdown S - O - A - P>
-   ```
-4. Chạy script đồng bộ catalog:
-   ```powershell
-   node tools/scripts/ingest-notebooklm-case.mjs src/content/knowledge-vault/ba/<caseId>.md
-   ```
-
-### Bước 5: Khai Báo Aliasing & Dịch Tễ Học (DocSpace Integration)
-1. **Ánh xạ Đa Key trong `src/content/docspace/data/diagnostic-criteria-database.ts`**:
-   Thêm alias cho mã bệnh về khối Enriched tương ứng:
-   ```typescript
-   'vgsv_b': ENRICHED_DISEASES['vgsv_B'],
-   'viem-gan-vi-rut-b': ENRICHED_DISEASES['vgsv_B'],
-   'viem_gan_b': ENRICHED_DISEASES['vgsv_B'],
-   ```
-2. **Khai báo Hồ sơ Dịch tễ trong `src/content/docspace/src/data/epidemiology-context-database.ts`**:
-   Bổ sung object bối cảnh dịch tễ (vùng lưu hành, mùa vụ, vector, quần thể nguy cơ...).
-3. **Kích hoạt Tam giác Dịch tễ trong `src/content/docspace/src/lib/clinicalEngine.ts`**:
-   Thêm ID của bệnh vào `isInfDisease` và thiết lập điểm thưởng Tam giác DTH ($1.2\times - 1.25\times$).
+1. **Bóc tách đa tầng linh hoạt (Robust Multi-Block Extraction)**:
+   - Nhận diện cả block chuẩn lẫn block thiếu dấu đóng ```` ``` ```` code block từ LLM.
+   - Nhận diện YAML frontmatter thông minh qua việc neo vị trí `caseId:` ngược xuôi giữa các cặp dấu `---`, không bị nhầm với dấu gạch ngang kẻ dòng trong bài viết.
+2. **Bảo vệ chống triệu chứng mồ côi (Zero-Orphan Guardian)**:
+   - Tự động rà soát cả các triệu chứng trong mảng `negated` và `selected` của ca mẫu, cũng như mảng `dd` của thực thể bệnh.
+   - Tự động tra cứu từ điển thuật ngữ y khoa (`COMMON_SYMPTOM_NAMES`) để gắn nhãn tiếng Việt chuẩn (ví dụ: `alt_ast_tang_nhe` $\rightarrow$ *"Men gan AST/ALT tăng nhẹ"*, `co_truong` $\rightarrow$ *"Cổ trướng (Báng bụng)"*) thay vì chuỗi gạch dưới thô.
+3. **Phân phối chuyên khoa & Đồng bộ Master KB**:
+   - Phân tích trường `"nhom"` để ghi đúng tệp `diseases/<chuyen-khoa>.json`.
+   - Tự động chạy `bundle-clinical-rules.mjs` để cập nhật `clinical-rules-kb.json`.
+4. **Lưu trữ SOAP Markdown & Đồng bộ Catalog Kép**:
+   - Lưu trữ tại `src/content/knowledge-vault/ba/<caseId>.md`.
+   - Tự động chạy `ingest-notebooklm-case.mjs` để cập nhật cả 2 catalog (`vault-catalog-thuc-hanh.json` và `vault-catalog.json`).
+5. **Tự động biên dịch Enriched CDSS**:
+   - Tự động chạy `build-enriched-cdss.mjs` để đăng ký các bệnh lý enriched mới vào `src/content/docspace/data/enriched/index.ts`.
+6. **Tự động Ánh xạ Đa Key (Multi-Key Aliasing)**:
+   - Tự động tìm key Enriched tương ứng và ghi các biến thể (`slug`, `kebab-case`, `snake_case`) vào `DIAGNOSTIC_CHAIN_DATABASE` trong `diagnostic-criteria-database.ts`.
+7. **Tự động Cấu hình Hồ sơ Dịch tễ (Epidemiology Profile)**:
+   - Khai thác khối `epiContext` từ ca lâm sàng mẫu để tổng hợp profile hoàn chỉnh vào `epidemiology-context-database.ts`.
+8. **Tự động Kích hoạt Clinical Engine**:
+   - Thêm ID bệnh lý vào danh sách `isInfDisease` trong `clinicalEngine.ts` để kích hoạt điểm thưởng Tam giác DTH.
+9. **Kích hoạt Bộ đôi Quality Gates**:
+   - Chạy `docspace-disease-audit.mjs` cho bệnh lý vừa nạp và `vault-readiness-check.mjs` cho toàn bộ Knowledge Vault.
 
 ---
 
-## 🧪 4. Bảng Kiểm Kiểm Định Sau Khi Nạp (Quality Gate)
+## 🛠️ 4. Quy Trình Thao Tác Bằng Tay (Manual Fallback Checklist)
 
-Sau khi hoàn tất việc nạp, AI Agent **BẮT BUỘC CHẠY 2 LỆNH KIỂM ĐỊNH**:
+Nếu gặp trường hợp đặc biệt cần can thiệp thủ công từng bước:
 
-```powershell
-# 1. Kiểm tra 10 tiêu chí tích hợp toàn vẹn cho bệnh lý vừa nạp
-node tools/scripts/docspace-disease-audit.mjs <slug_benh>
+| Bước | Hành động | Tệp đích | Lệnh đồng bộ |
+| :---: | :--- | :--- | :--- |
+| **1** | Bổ sung Triệu chứng | `src/content/knowledge-vault/data/clinical-rules-symptoms.json` | Tự động cập nhật |
+| **2** | Bổ sung Thực thể bệnh | `src/content/knowledge-vault/data/diseases/<chuyen-khoa>.json` | `node tools/scripts/bundle-clinical-rules.mjs` |
+| **3** | Bổ sung Ca mẫu | `src/content/knowledge-vault/data/sample-clinical-cases.json` | Tự động cập nhật |
+| **4** | Lưu SOAP Markdown | `src/content/knowledge-vault/ba/<caseId>.md` | `node tools/scripts/ingest-notebooklm-case.mjs <file.md>` |
+| **5** | Biên dịch Enriched | `src/content/docspace/data/enriched/index.ts` | `node tools/scripts/build-enriched-cdss.mjs` |
+| **6** | Ánh xạ Alias | `src/content/docspace/data/diagnostic-criteria-database.ts` | Thêm `'<alias>': ENRICHED_DISEASES['<key>']` |
+| **7** | Hồ sơ Dịch tễ | `src/content/docspace/src/data/epidemiology-context-database.ts` | Khai báo object bối cảnh |
+| **8** | Clinical Engine | `src/content/docspace/src/lib/clinicalEngine.ts` | Thêm ID vào `isInfDisease` |
 
-# 2. Kiểm tra 15 tiêu chí sẵn sàng của toàn bộ Knowledge Vault
-node tools/scripts/vault-readiness-check.mjs
-```
+---
 
-### Tiêu chuẩn Nghiệm thu (Acceptance Criteria):
+## 🧪 5. Bảng Kiểm Nghiệm Thu (Quality Gates)
+
+Sau khi chạy xong, kết quả **BẮT BUỘC ĐẠT 100%**:
+
 - [ ] `docspace-disease-audit.mjs <slug>`: **ĐẠT 10/10 Tiêu chí (PASS 100%)**
 - [ ] `vault-readiness-check.mjs`: **ĐẠT 15/15 Tiêu chí (PASS 100%)**
-- [ ] Không có cảnh báo triệu chứng mồ côi (Zero Orphan Symptoms = 0).
-- [ ] Hồ sơ SOAP được hiển thị đầy đủ trong catalog thực hành (`vault-catalog-thuc-hanh.json`).
+- [ ] Không có triệu chứng mồ côi (Zero Orphan Symptoms = 0).
+- [ ] Hồ sơ SOAP được hiển thị trong catalog thực hành (`vault-catalog-thuc-hanh.json`).
 
 ---
 
-## ⚠️ 5. Các Bẫy Kỹ Thuật Thường Gặp & Cách Khắc Phục
+## ⚠️ 6. Các Bẫy Kỹ Thuật Thường Gặp & Bài Học Thực Chiến
 
-1. **Triệu chứng mồ côi từ trường `negated`**:
-   - *Hiện tượng*: Ca mẫu có dấu hiệu loại trừ (ví dụ: `hbv_decompensated_cirrhosis_signs`) nhưng trong Phần 2.1 Prompt chỉ tạo 8 triệu chứng của ma trận `dd`.
-   - *Xử lý*: Script `ingest-prompt-06-07.mjs` sẽ tự động quét cả `negated` và `selected` để tự động tạo triệu chứng phòng ngừa.
-2. **Lỗi định dạng YAML Frontmatter**:
-   - *Hiện tượng*: NotebookLM thường bao bọc YAML trong block ````yaml ... ```` thay vì `--- ... ---`.
-   - *Xử lý*: Script tự động trích xuất nội dung bên trong block YAML và ghi lại với cặp dấu `---` hợp lệ theo chuẩn Markdown Parser.
-3. **Lệch Key ID giữa Enriched JSON và Clinical Rules**:
-   - *Hiện tượng*: Tệp Enriched đặt tên `vgsv_B.json`, nhưng mã bệnh trong Clinical Rules là `viem-gan-vi-rut-b`.
-   - *Xử lý*: Công cụ kiểm định `docspace-disease-audit.mjs` đã được tích hợp bộ suy luận ánh xạ thông minh qua ICD-10 và từ khóa alias, đồng thời hỗ trợ khai báo đa key trong `diagnostic-criteria-database.ts`.
+1. **Thiếu dấu đóng code block ```` ``` ```` từ LLM**:
+   - *Hiện tượng*: LLM sinh xong JSON của Phần 2.2 nhưng xuống dòng ghi ngay `Prompt 07` mà quên đóng ```, làm hỏng các bộ phân tích cú pháp regex thông thường.
+   - *Khắc phục*: Script đã tích hợp hàm `extractJsonBlocks` với fallback thông minh tự bóc tách đối tượng JSON theo cấu trúc trường nhận diện (`"ten":`, `"id":`, v.v.).
+2. **Xung đột dấu kẻ ngang `---` Markdown và YAML Frontmatter**:
+   - *Hiện tượng*: Bài viết dùng dấu `---` để phân cách các phần, khiến bộ phân tích ghép nhầm từ dấu kẻ ngang đầu tiên đến dấu mở đầu frontmatter.
+   - *Khắc phục*: Script neo trực tiếp vị trí `caseId:` rồi quét ngược lên `\n---` gần nhất và xuôi xuống `\n---` tiếp theo để cô lập chính xác khối YAML.
+3. **Phân biệt rạch ròi các mặt bệnh cùng họ (Hepatitis B vs Hepatitis C)**:
+   - *Hiện tượng*: Các từ khóa chung như `viem-gan`, `vgsv` dễ gây nhầm lẫn giữa Viêm gan B và Viêm gan C nếu không kiểm tra chặt chẽ ký tự định danh chủng (`b/hbv` vs `c/hcv`).
+   - *Khắc phục*: Công cụ audit và mapping đã thiết lập ràng buộc loại trừ chéo nghiêm ngặt, đảm bảo không bao giờ nhận diện nhầm ca mẫu hay hồ sơ SOAP giữa HBV và HCV.
+4. **Triệu chứng trong mảng `negated` của Ca Mẫu**:
+   - *Hiện tượng*: Ca mẫu khai báo các dấu hiệu loại trừ (như `co_truong`, `vang_da_mat`, `nao_gan`, `hbsag_pos`) mà Phần 2.1 không liệt kê.
+   - *Khắc phục*: Cơ chế Zero-Orphan Guardian tự động quét toàn bộ `sel`, `selected`, `negated`, `dd` và gán nhãn chuyên môn tiếng Việt chuẩn.
+

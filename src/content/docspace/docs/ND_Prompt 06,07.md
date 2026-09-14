@@ -1,419 +1,447 @@
 Prompt 06
 
-```markdown
-### ==============================================================================
-### CLINIPORTAL DOCSPACE — PROMPT 06: BỘ DỮ LIỆU LÂM SÀNG & TRỌNG SỐ SUY LUẬN CDSS
-### MẶT BỆNH: SỐT XOẮN KHUẨN LEPTOSPIRA (LEPTOSPIROSIS / BỆNH WEIL)
 ### ==============================================================================
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 THÔNG SỐ ĐẦU VÀO ĐÃ CẤU HÌNH CHO BỆNH LEPTOSPIRA:
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-*  [TÊN BỆNH LÝ]: Sốt xoắn khuẩn Leptospira (Leptospirosis / Bệnh Weil)
-*  [MÃ ICD-10]: A27 (A27.0 - Icterohemorrhagic leptospirosis / Weil's disease, A27.8, A27.9)
-*  [CHUYÊN KHOA]: Truyền nhiễm / Cấp cứu - Hồi sức tích cực
-*  [HƯỚNG DẪN THAM CHIẾU]:
-   1. National Guidelines for Diagnosis, Case Management, Prevention and Control of Leptospirosis - NCDC India (2015)
-   2. Clinical Practice Guidelines on Leptospirosis in Children - PPS & PIDSP (2019)
-   3. WHO Background Document for Drinking-water Quality: Leptospira (2025)
-*  [THỂ BỆNH MẪU CẦN TẠO]: Leptospirosis thể nặng / Bệnh Weil (Icteric Leptospirosis) có suy đa cơ quan: Suy thận cấp thiểu niệu, vàng da đậm, ho ra máu/thâm nhiễm phổi, giảm tiểu cầu.
-*  [CƠ ĐỊA BỆNH NHÂN]: Nam 38 tuổi, nông dân, có tiền sử lội ngập lụt làm ruộng, chân có vết xước trầy da tiếp xúc nước bẩn nhiễm nước tiểu gặm nhấm.
+### PHẦN 1: CA LÂM SÀNG MẪU THỰC TẾ (Nạp vào: `sample-clinical-cases.json`)
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📋 PROMPT CHUẨN ĐÃ ĐIỀN THÔNG SỐ (DÁN TRỰC TIẾP VÀO NOTEBOOKLM):
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-"Bạn là Bác sĩ Giảng viên Lâm sàng kiêm Kỹ sư Thiết kế Động cơ CDSS của CliniPortal DocSpace.
-Dựa trên các Hướng dẫn Chẩn đoán & Điều trị Leptospirosis (NCDC 2015, PPS-PIDSP 2019, WHO 2025) đã nạp trong Notebook, hãy xây dựng BỘ DỮ LIỆU CODE LÂM SÀNG HOÀN CHỈNH cho mặt bệnh: Sốt xoắn khuẩn Leptospira (Mã ICD-10: A27, Chuyên khoa: Truyền nhiễm) gồm đúng 2 khối code JSON chuẩn xác sau:
-
-PHẦN 1: Ca bệnh mẫu JSON (Nạp vào sample-clinical-cases.json) cho thể bệnh Weil nặng.
-PHẦN 2: Ma trận trọng số suy luận CDSS JSON (Nạp vào clinical-rules-symptoms.json & diseases/truyen-nhiem.json)."
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⚙️ KẾT QUẢ XUẤT CODE JSON HOÀN CHỈNH TỪ THAM CHIẾU Y HỌC EBM:
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-### ==============================================================================
-### PHẦN 1: CA LÂM SÀNG MẪU THỰC TẾ (Nạp vào: sample-clinical-cases.json)
 ### ==============================================================================
 
 ```json
 {
-  "ten": "Sốt xoắn khuẩn Leptospira thể nặng / Bệnh Weil (Sốt, Vàng da, Suy thận Cr 285 µmol/L, PLT 45 G/L)",
+  "ten": "Sốt rét thể thông thường do P. falciparum chưa biến chứng (KSTSR P.f +++, Sốt cơn chu kỳ ngày 3, trở về từ vùng lưu hành)",
   "sel": [
-    "tiep_xuc_nuoc_ban_ngap_lut",
-    "sot_cao_co_giat_ret_run",
-    "dau_bap_chan_du_doi",
-    "sung_huyet_ket_mac_2_ben",
-    "vang_da_niem_mac_tang_bilirubin",
-    "thieu_nieu_co_la_colored_urine",
-    "ho_ra_mau_xuat_huyet_phoi",
-    "cls_plt_giam_sau",
-    "cls_creatinine_tang_cao",
-    "cls_cpk_tang_cao",
-    "cls_mat_duong_tinh"
+    "sot_con_ret_run_va_mo_hoi",
+    "yeu_to_dich_te_sot_ret",
+    "kstsr_lam_giemsa_pos",
+    "rdt_malaria_pos",
+    "lach_to_lam_sang",
+    "thieu_mau_da_xanh_niem_nhot",
+    "giam_tieu_cau_sot_ret",
+    "dau_dau_dau_moi_co"
   ],
   "vitals": {
-    "vNhiet": "39.4",
-    "vMach": "116",
-    "vHATT": "90",
-    "vHATTr": "60",
-    "vTho": "26",
-    "vSpo2": "93"
+    "vNhiet": "39.2",
+    "vMach": "104",
+    "vHATT": "110",
+    "vHATTr": "70",
+    "vTho": "20",
+    "vSpo2": "98"
   },
   "labs": {
-    "lBC": "14.8",
-    "lTC": "45",
+    "lBC": "5.8",
+    "lTC": "96",
     "lHct": "34",
-    "lGlu": "6.2",
-    "lTrop": "18"
+    "lGlu": "5.4",
+    "lTrop": "4"
   },
   "selected": [
-    "tiep_xuc_nuoc_ban_ngap_lut",
-    "sot_cao_co_giat_ret_run",
-    "dau_bap_chan_du_doi",
-    "sung_huyet_ket_mac_2_ben",
-    "vang_da_niem_mac_tang_bilirubin",
-    "thieu_nieu_co_la_colored_urine",
-    "ho_ra_mau_xuat_huyet_phoi",
-    "cls_plt_giam_sau",
-    "cls_creatinine_tang_cao",
-    "cls_cpk_tang_cao",
-    "cls_mat_duong_tinh"
+    "sot_con_ret_run_va_mo_hoi",
+    "yeu_to_dich_te_sot_ret",
+    "kstsr_lam_giemsa_pos",
+    "rdt_malaria_pos",
+    "lach_to_lam_sang",
+    "thieu_mau_da_xanh_niem_nhot",
+    "giam_tieu_cau_sot_ret",
+    "dau_dau_dau_moi_co"
   ],
   "negated": [
-    "sot_dengue_ns1_ag_duong_tinh",
-    "ky_sinh_truung_sot_ret_duong_tinh"
+    "hon_me_roi_loan_tri_giac",
+    "suy_ho_hap_spo2_giam",
+    "tieu_nuoc_tieu_den_huyet_cau_to",
+    "suy_than_vo_nieu",
+    "ha_duong_huyet"
   ],
   "epiContext": {
-    "endemicArea": "Việt Nam và các nước nhiệt đới là vùng dịch tễ lưu hành cao của Leptospira",
-    "outbreakAlert": "Đang có đợt ngập lụt bùng phát dịch bệnh truyền nhiễm sau mưa bão tại địa phương",
-    "vectorExposure": "Tiếp xúc trực tiếp với nước ngập lụt, bùn đất bẩn bị nhiễm nước tiểu của chuột và gia súc",
-    "seasonalContext": "Mùa mưa lũ (tháng 6–11), xuất hiện nhiều ca bệnh sốt sau ngập úng đô thị và nông thôn"
+    "endemicArea": "Bệnh nhân vừa trở về từ vùng sốt rét lưu hành (huyện Bù Gia Mập, tỉnh Bình Phước) trong vòng 10 ngày qua",
+    "outbreakAlert": "Khu vực rừng rẫy biên giới có muỗi Anopheles hoạt động mạnh, có các ca bệnh sốt rét rải rác lưu hành trong cộng đồng dân cư đi rừng",
+    "vectorExposure": "Tiền sử ngủ rẫy trong rừng không mắc màn tẩm hóa chất, bị muỗi rừng Anopheles dirus / Anopheles minimus đốt nhiều lần vào ban đêm",
+    "seasonalContext": "Mùa mưa, thời tiết ẩm ướt vùng rừng núi thuận lợi cho muỗi Anopheles sinh sản và truyền bệnh sốt rét"
   },
   "form": {
     "gioiTinh": "nam",
-    "tuoi": "38",
-    "ngheNghiep": "Nông dân",
-    "lyDo": "Sốt cao ngày thứ 5 kèm đau bắp chân dữ dội, vàng da mắt, ho hắt ra đờm lẫn máu và tiểu ít nước tiểu màu trà đậm",
+    "tuoi": "32",
+    "ngheNghiep": "Công nhân cạo mủ cao su / Đi rừng rẫy",
+    "lyDo": "Sốt cao từng cơn kèm rét run lập cập và vã mồ hôi 3 ngày nay sau khi đi rừng về",
     "text": {
-      "cn": "Bệnh nhân nam 38 tuổi, khởi phát sốt cao đột ngột 39.5°C kèm rét run, đau đầu dữ dội vùng trán và đặc biệt đau nhức cơ bắp chân, cơ thắt lưng dữ dội khiến bệnh nhân không thể tự đi lại được. Đến ngày thứ 4, bệnh nhân xuất hiện vàng mắt, vàng da tiến triển nhanh, mệt lả, nôn ói, ho hắt đờm vướng vệt máu tươi và lượng nước tiểu giảm dốc đứng (< 300 mL/24h), nước tiểu màu sẫm như nước chè đặc.",
-      "tt": "Bệnh nhân tỉnh, tiếp xúc chậm, tri giác lơ mơ nhẹ (E3V4M6). Da niêm mạc vàng đậm, sung huyết kết mạc mắt 2 bên rất rõ (đỏ mắt không có tiết dịch mủ). Xuất huyết dạng chấm rải rác ở cẳng tay, cẳng chân. Khám cơ: ấn chẩn bắp chân 2 bên bệnh nhân đau chói. Tim đều nhịp nhanh 116 lần/phút, T1 T2 rõ. Phổi thông khí 2 bên giảm nhẹ, nghe rải rác rale ẩm ở 2 đáy phổi. Gan to 2.5 cm dưới bờ sườn, ấn tức nhẹ. Ấn điểm niệu quản không đau, cầu bàng quang (-).",
-      "tc": "Khỏe mạnh, làm nghề nông. Cách vào viện 10 ngày có đi lội ngập lụt dọn ruộng sau mưa bão, chân có vết xước trầy da. Không có tiền sử bệnh lý gan thận mạn tính trước đây.",
-      "cls": "Công thức máu: WBC 14.8 G/L (Neutrophil 86%), RBC 3.8 T/L, Hb 11.2 g/dL, Hct 34%, PLT giảm sâu 45 G/L. Sinh hóa máu: Creatinine 285 µmol/L (tăng cao cấp tính), Urea 21.4 mmol/L, Bilirubin toàn phần 88.5 µmol/L (Bilirubin trực tiếp 62.1 µmol/L), AST 142 U/L, ALT 58 U/L (Tỷ lệ AST/ALT > 2), CPK tăng rất cao 1,250 U/L. Đông máu: PT 16.8 giây (INR 1.42). Tổng phân tích nước tiểu: Protein 2+, RBC 3+, WBC 1+. Test nhanh IgM ICT Leptospira (Leptocheck-WB) (+), Xét nghiệm khẳng định MAT (Microscopic Agglutination Test) danh giá kháng thể Titer 1:400 (+). Test nhanh NS1 Dengue (-), KST Sốt rét (-)."
+      "cn": "Bệnh nhân nam 32 tuổi, khởi phát bệnh 3 ngày trước với các cơn sốt diễn tiến theo chu kỳ 3 giai đoạn điển hình: Bắt đầu bằng cảm giác gai rét rồi rét run toàn thân dữ dội kéo dài khoảng 45 phút, phải đắp 3 chăn bông; sau đó sốt cao nóng bừng 39.5°C, nhức đầu dữ dội, khát nước, buồn nôn; tiếp theo vã mồ hôi đầm đìa rồi hạ sốt, người mệt lả. Cơn sốt xuất hiện cách nhật. Không ho, không khó thở, nước tiểu vàng sẫm.",
+      "tt": "Bệnh nhân tỉnh táo hoàn toàn, Glasgow 15 điểm, da niêm mạc hơi nhợt nhẹ, không vàng mắt da, không nốt xuất huyết. Tim đều tần số 104 lần/phút, phổi trong không rale. Bụng mềm, gan mấp mé bờ sườn, lách to độ I (chạm dưới bờ sườn trái 1.5 cm khi hít sâu, mật độ mềm, tức nhẹ). Không có dấu hiệu thần kinh khu trú, gáy mềm.",
+      "tc": "Tiền sử đi làm rẫy ở khu vực rừng núi biên giới Bù Gia Mập (Bình Phước) cách đây 2 tuần, ngủ lán trại không mắc màn tẩm hóa chất. Chưa từng mắc sốt rét trước đây. Không có bệnh nền mạn tính.",
+      "cls": "Soi lam máu nhuộm Giemsa: Phát hiện thể tư dưỡng (trophozoite dạng nhẫn) của Plasmodium falciparum mật độ +++ (khoảng 42.000 KST/µL máu), không thấy giao bào. Test nhanh RDTs (Pf/Pan): Kháng nguyên HRP-2 dương tính (+). Hoạt độ men G6PD: 9.8 U/g Hb (bình thường > 70%). Công thức máu: WBC 5.8 G/L, Hb 11.2 g/dL, PLT 96 G/L (giảm nhẹ). Men gan AST 42 U/L, ALT 38 U/L, Creatinine 82 µmol/L, Glucose máu 5.4 mmol/L, Bilirubin toàn phần 18.4 µmol/L. Tổng phân tích nước tiểu: Bình thường, không có huyết cầu tố niệu."
     }
   }
 }
 ```
 
-### ==============================================================================
-
-### PHẦN 2: MA TRẬN TRỌNG SỐ SUY LUẬN CDSS (Nạp vào CSDL Tri thức)
+***
 
 ### ==============================================================================
 
-#### 1. Bổ sung triệu chứng vào tệp `src/content/knowledge-vault/data/clinical-rules-symptoms.json`
+### PHẦN 2: MA TRẬN TRỌNG SỐ SUY LUẬN CDSS
+
+### ==============================================================================
+
+#### 1. Bổ sung triệu chứng vào file `clinical-rules-symptoms.json`
 
 ```json
 [
   {
-    "id": "tiep_xuc_nuoc_ban_ngap_lut",
-    "ten": "Tiền sử lội nước bẩn, bùn lầy, ngập lụt hoặc tiếp xúc động vật gặm nhấm (chuột/chuồng trại)",
-    "nhom": "Dịch tễ",
-    "loai": ["cn", "tc"],
-    "tuKhoa": ["lội nước", "ngập lụt", "nước bẩn", "chuột", "nước tiểu chuột", "nông dân", "vệ sinh cống rãnh"],
-    "map": null
-  },
-  {
-    "id": "dau_bap_chan_du_doi",
-    "ten": "Đau nhức cơ bắp chân và cơ thắt lưng dữ dội (ấn đau chói, hạn chế vận động)",
+    "id": "sot_con_ret_run_va_mo_hoi",
+    "ten": "Cơn sốt rét điển hình 3 giai đoạn (Rét run -> Sốt cao -> Vã mồ hôi)",
     "nhom": "Toàn thân",
-    "loai": ["cn", "tt"],
-    "tuKhoa": ["đau bắp chân", "đau cơ", "ấn bắp chân đau", "đau cơ thắt lưng", "calf myalgia"],
+    "loai": ["cn"],
+    "tuKhoa": ["sot ret", "ret run", "va mo hoi", "sot con chu ky", "con sot ret"],
     "map": null
   },
   {
-    "id": "sung_huyet_ket_mac_2_ben",
-    "ten": "Sung huyết kết mạc mắt 2 bên (đỏ mắt không có tiết dịch mủ / Conjunctival suffusion)",
-    "nhom": "Mắt",
+    "id": "yeu_to_dich_te_sot_ret",
+    "ten": "Yếu tố dịch tễ sốt rét (Sống, đến hoặc trở về từ vùng sốt rét lưu hành trong 14 ngày)",
+    "nhom": "Dịch tễ",
+    "loai": ["cn"],
+    "tuKhoa": ["dich te sot ret", "vung sot ret", "di rung", "ngu ray", "anopheles"],
+    "map": null
+  },
+  {
+    "id": "kstsr_lam_giemsa_pos",
+    "ten": "Ký sinh trùng sốt rét (Plasmodium) dương tính trên lam máu nhuộm Giemsa",
+    "nhom": "Cận lâm sàng",
+    "loai": ["cls"],
+    "tuKhoa": ["lam mau giemsa", "ky sinh trung sot ret", "plasmodium", "the nhan", "kstsr duong tinh"],
+    "map": null
+  },
+  {
+    "id": "rdt_malaria_pos",
+    "ten": "Test chẩn đoán nhanh kháng nguyên sốt rét (RDTs / HRP-2 hoặc pLDH) dương tính",
+    "nhom": "Cận lâm sàng",
+    "loai": ["cls"],
+    "tuKhoa": ["test nhanh sot ret", "rdt sot ret", "hrp2", "pldh", "rdt malaria"],
+    "map": null
+  },
+  {
+    "id": "lach_to_lam_sang",
+    "ten": "Khám thực thể lách to dưới bờ sườn (Độ I - IV)",
+    "nhom": "Tiêu hóa",
     "loai": ["tt"],
-    "tuKhoa": ["sung huyết kết mạc", "đỏ mắt", "đỏ mắt không mủ", "conjunctival suffusion"],
+    "tuKhoa": ["lach to", "so thay lach", "lach to do 1", "splenomegaly"],
     "map": null
   },
   {
-    "id": "thieu_nieu_co_la_colored_urine",
-    "ten": "Thiểu niệu/vô niệu (< 400 mL/24h) kèm nước tiểu sẫm màu như nước chè/màu xá xíu",
-    "nhom": "Thận - Tiết niệu",
-    "loai": ["cn", "tt"],
-    "tuKhoa": ["thiểu niệu", "vô niệu", "tiểu ít", "nước tiểu màu trà", "nước tiểu màu xá xíu", "cola colored urine"],
+    "id": "thieu_mau_da_xanh_niem_nhot",
+    "ten": "Thiếu máu tán huyết (da xanh xao, niêm mạc nhợt)",
+    "nhom": "Huyết học",
+    "loai": ["tt"],
+    "tuKhoa": ["thieu mau", "da xanh niem nhot", "tan huyet", "hb giam"],
     "map": null
   },
   {
-    "id": "ho_ra_mau_xuat_huyet_phoi",
-    "ten": "Ho ra máu, thở nhanh nông, nghe rale ẩm phổi (Hội chứng xuất huyết phổi / ARDS)",
+    "id": "giam_tieu_cau_sot_ret",
+    "ten": "Giảm tiểu cầu máu ngoại vi (PLT < 150 G/L)",
+    "nhom": "Cận lâm sàng",
+    "loai": ["cls"],
+    "tuKhoa": ["giam tieu cau", "plt giam", "tieu cau ha"],
+    "map": null
+  },
+  {
+    "id": "dau_dau_dau_moi_co",
+    "ten": "Đau nhức đầu dữ dội, đau mỏi cơ khớp toàn thân",
+    "nhom": "Toàn thân",
+    "loai": ["cn"],
+    "tuKhoa": ["dau dau", "dau moi co", "nhuc dau", "moi co"],
+    "map": null
+  },
+  {
+    "id": "dau_hieu_canh_bao_ac_tinh_sot_ret",
+    "ten": "Dấu hiệu cảnh báo sốt rét ác tính (Li bì, nôn liên tục, KSTSR mật độ cao)",
+    "nhom": "Cảnh báo nguy hiểm",
+    "loai": ["tt"],
+    "tuKhoa": ["canh bao ac tinh", "sot ret ac tinh", "li bi", "non nhieu", "kst cao"],
+    "map": null
+  },
+  {
+    "id": "hon_me_roi_loan_tri_giac",
+    "ten": "Hôn mê, rối loạn tri giác (Sốt rét ác tính thể não / Glasgow < 11)",
+    "nhom": "Thần kinh",
+    "loai": ["tt"],
+    "tuKhoa": ["hon me", "roi loan tri giac", "sot ret the nao", "glasgow giam"],
+    "map": null
+  },
+  {
+    "id": "tieu_nuoc_tieu_den_huyet_cau_to",
+    "ten": "Đái huyết cầu tố (Nước tiểu màu đen hoặc màu nước vối sẫm)",
+    "nhom": "Tiết niệu",
+    "loai": ["tt"],
+    "tuKhoa": ["nuoc tieu den", "dai huyet cau to", "nuoc voi", "tan mau o at"],
+    "map": null
+  },
+  {
+    "id": "suy_ho_hap_spo2_giam",
+    "ten": "Suy hô hấp cấp (SpO2 < 92%, thở nhanh > 30 l/p, phù phổi cấp / ARDS)",
     "nhom": "Hô hấp",
-    "loai": ["cn", "tt"],
-    "tuKhoa": ["ho ra máu", "haemoptysis", "thâm nhiễm phổi", "xuất huyết phổi", "ARDS"],
+    "loai": ["tt"],
+    "tuKhoa": ["suy ho hap", "spo2 giam", "tho nhanh", "phu phoi cap", "ards"],
     "map": null
   },
   {
-    "id": "cls_cpk_tang_cao",
-    "ten": "Cận lâm sàng: Creatine Phosphokinase (CPK) tăng cao (> 443 U/L) do tiêu cơ vân/viêm cơ",
-    "nhom": "Cận lâm sàng",
-    "loai": ["cls"],
-    "tuKhoa": ["CPK tăng", "creatine phosphokinase", "tăng cpk"],
+    "id": "suy_than_vo_nieu",
+    "ten": "Suy thận cấp (Creatinine > 265 µmol/L, thiểu niệu hoặc vô niệu)",
+    "nhom": "Tiết niệu",
+    "loai": ["cls", "tt"],
+    "tuKhoa": ["suy than cap", "creatinine tang", "thieu nieu", "vo nieu"],
     "map": null
   },
   {
-    "id": "cls_mat_duong_tinh",
-    "ten": "Cận lâm sàng: Xét nghiệm Microscopic Agglutination Test (MAT) dương tính (Titer ≥ 1:100 hoặc tăng 4 lần)",
+    "id": "ha_duong_huyet",
+    "ten": "Hạ đường huyết (Glucose máu < 2.2 mmol/L)",
     "nhom": "Cận lâm sàng",
     "loai": ["cls"],
-    "tuKhoa": ["MAT dương tính", "microscopic agglutination test", "xét nghiệm MAT"],
-    "map": null
-  },
-  {
-    "id": "cls_plt_giam_sau",
-    "ten": "Cận lâm sàng: Tiểu cầu giảm sâu (< 100 G/L)",
-    "nhom": "Cận lâm sàng",
-    "loai": ["cls"],
-    "tuKhoa": ["tiểu cầu giảm", "thrombocytopenia", "plt giảm"],
-    "map": {
-      "fld": "lTC",
-      "op": "<=",
-      "val": 100
-    }
-  },
-  {
-    "id": "cls_creatinine_tang_cao",
-    "ten": "Cận lâm sàng: Creatinine máu tăng cao (> 154 µmol/L hoặc > 1.75 mg/dL)",
-    "nhom": "Cận lâm sàng",
-    "loai": ["cls"],
-    "tuKhoa": ["creatinine tăng", "suy thận cấp", "tăng suy thận"],
+    "tuKhoa": ["ha duong huyet", "glucose giam", "hypoglycemia"],
     "map": null
   }
 ]
 ```
 
-#### 2. Thêm thực thể bệnh vào tệp `src/content/knowledge-vault/data/diseases/truyen-nhiem.json`
+#### 2. Thêm thực thể bệnh vào tệp chuyên khoa `src/content/knowledge-vault/data/diseases/truyen-nhiem.json`
 
 ```json
 {
-  "id": "sot-xoan-khuan-leptospira",
-  "ten": "Sốt xoắn khuẩn Leptospira (Leptospirosis / Bệnh Weil)",
-  "icd": "A27",
+  "id": "sot_ret",
+  "ten": "Sốt Rét (Malaria / P. falciparum, P. vivax, P. knowlesi, P. malariae)",
+  "icd": "B50",
   "nhom": "Truyền nhiễm",
   "baoDong": true,
-  "ghiChuBaoDong": "CẢNH BÁO BỆNH WEIL / NGUY CƠ TỬ VONG CAO: Bệnh nhân có nguy cơ suy đa cơ quan khẩn cấp (Suy thận cấp thiểu niệu, vàng da tiến triển, ho ra máu/xuất huyết phổi và phản ứng Jarisch-Herxheimer). Cần chuyển ICU và dùng kháng sinh diệt xoắn khuẩn đường tĩnh mạch ngay lập tức!",
-  "tomTat": "Bệnh truyền nhiễm cấp tính do xoắn khuẩn Leptospira interrogans lây truyền từ động vật (đặc biệt là chuột, chó, gia súc) sang người qua da/niêm mạc tiếp xúc với nước hoặc đất bẩn nhiễm nước tiểu. Lâm sàng đa dạng từ thể sốt nhẹ anicteric đến thể Weil nặng tử vong cao với tam chứng suy thận, vàng da và xuất huyết.",
+  "ghiChuBaoDong": "Sốt rét do P. falciparum có thể diễn tiến tối cấp thành Sốt rét ác tính gây tổn thương não, phù phổi cấp ARDS, sốc, suy thận cấp và tử vong nhanh chóng nếu không tiêm Artesunat tĩnh mạch khẩn cấp.",
+  "tomTat": "Bệnh truyền nhiễm do ký sinh trùng Plasmodium lây qua muỗi Anopheles. Đặc trưng bởi cơn sốt chu kỳ 3 giai đoạn (rét run - sốt cao - vã mồ hôi), lách to và thiếu máu. Điều trị ưu tiên bằng thuốc ACT (Pyramax 3 ngày) phối hợp Primaquin diệt thể ẩn và giao bào theo QĐ 3377/QĐ-BYT.",
   "danSo": {
     "gioiTinh": "any",
     "tuoiMin": 0,
     "tuoiMax": 120
   },
   "dd": [
-    ["tiep_xuc_nuoc_ban_ngap_lut", 4.5, "dt"],
-    ["cls_mat_duong_tinh", 4.5, "dt"],
-    ["dau_bap_chan_du_doi", 4.0, "dt"],
-    ["sung_huyet_ket_mac_2_ben", 3.5, "dt"],
-    ["thieu_nieu_co_la_colored_urine", 3.5, "gy"],
-    ["vang_da_niem_mac_tang_bilirubin", 3.0, "gy"],
-    ["ho_ra_mau_xuat_huyet_phoi", 3.0, "gy"],
-    ["cls_cpk_tang_cao", 2.5, "ht"],
-    ["cls_creatinine_tang_cao", 2.5, "gy"],
-    ["cls_plt_giam_sau", 2.0, "ht"],
-    ["sot_kem_sot_xuat_huyet_dengue_ns1_duong", -5.0, "loaitru"]
+    ["kstsr_lam_giemsa_pos", 5.0, "dt"],
+    ["rdt_malaria_pos", 4.5, "dt"],
+    ["sot_con_ret_run_va_mo_hoi", 4.0, "gy"],
+    ["yeu_to_dich_te_sot_ret", 3.5, "gy"],
+    ["lach_to_lam_sang", 2.0, "ht"],
+    ["thieu_mau_da_xanh_niem_nhot", 1.5, "ht"],
+    ["giam_tieu_cau_sot_ret", 1.0, "ht"],
+    ["dau_dau_dau_moi_co", 1.0, "ht"],
+    ["ns1_dengue_pos", -2.0, "loaitru"]
   ],
   "phacDo": {
     "tuyen": [
-      "Trạm Y tế / Ngoại trú (Thể nhẹ anicteric không biến chứng): Kháng sinh đường uống Doxycycline 100mg x 2 lần/ngày trong 7 ngày (hoặc Amoxicillin/Ampicillin cho trẻ em < 8 tuổi và phụ nữ mang thai). Bù nước Oresol, Paracetamol hạ sốt.",
-      "Bệnh viện Huyện / Nội trú (Thể vừa hoặc có tổn thương tạng): Nhập viện điều trị, chuyển dùng kháng sinh tĩnh mạch Penicillin G hoặc Ceftriaxone. Theo dõi sát lượng nước tiểu, Creatinine, Bilirubin, CPK và X-quang phổi.",
-      "Bệnh viện Tỉnh / ICU / Hồi sức cấp cứu (Thể nặng / Bệnh Weil / ARDS): Tiêm tĩnh mạch Benzylpenicillin G 1.5 - 2 triệu IU q6h hoặc Ceftriaxone 1-2g/ngày. Chỉ định lọc máu cấp cứu (Thận nhân tạo/CVVH) khi suy thận vô niệu/u máu cao. Thở máy bảo vệ phổi nếu xuất huyết phổi/ARDS. Cân nhắc Pulse Methylprednisolone."
+      "Trạm Y tế xã / Y tế thôn bản: Làm test nhanh RDTs hoặc lấy lam máu gửi soi kính hiển vi. Nếu sốt rét thể thông thường: cấp phát thuốc ACT phối hợp đường uống (Pyramax 3 ngày) KÈM Primaquin ngày 1. Nếu có bất kỳ dấu hiệu cảnh báo ác tính hoặc nôn không uống được: tiêm ngay 1 liều Artesunat 2.4 mg/kg IV hoặc IM rồi chuyển viện khẩn cấp.",
+      "Bệnh viện Huyện / Trung tâm Y tế: Soi lam Giemsa xác định loài KSTSR và đếm mật độ KST/µL máu. Định lượng men G6PD trước khi dùng Primaquin dài ngày (cho P. vivax). Điều trị nội trú sốt rét có dấu hiệu cảnh báo bằng Artesunat tiêm tĩnh mạch (H0, H12, H24) cho đến khi tỉnh và chuyển sang đường uống.",
+      "Bệnh viện Tỉnh / Trung ương: Hồi sức tích cực sốt rét ác tính tại ICU: Đặt nội khí quản thở máy PEEP nếu có ARDS hoặc phù phổi cấp; Lọc máu liên tục (CRRT) nếu suy thận cấp/toan chuyển hóa nặng; Điều trị hạ đường huyết khẩn cấp bằng Glucose 30%; Truyền khối hồng cầu nếu thiếu máu nặng kèm mật độ KSTSR cao."
     ],
     "thuoc": [
-      ["Doxycycline", "100 mg x 2 lần/ngày (PO) trong 7 ngày", "Chỉ định cho thể nhẹ/điều trị ngoại trú. Chống chỉ định cho trẻ < 8 tuổi, phụ nữ có thai và cho con bú."],
-      ["Ampicillin / Amoxicillin", "Ampicillin/Amoxicillin 500 mg x 4 lần/ngày (PO) x 7 ngày cho phụ nữ có thai/cho con bú; Trẻ em < 8 tuổi: 30–50 mg/kg/ngày chia 3–4 lần (PO) x 7 ngày", "Thành phần thay thế an toàn hàng đầu cho trẻ nhỏ và phụ nữ mang thai."],
-      ["Azithromycin", "500 mg/ngày (PO) x 3–5 ngày (người lớn) hoặc 10 mg/kg/ngày (trẻ em)", "Kháng sinh đường uống thay thế hiệu quả cho bệnh nhân dị ứng Penicillin hoặc Tetracycline."],
-      ["Benzylpenicillin (Crystalline Penicillin G)", "1.5 – 2.0 triệu IU tiêm tĩnh mạch (IV) mỗi 6 giờ (6 – 8 triệu IU/ngày) x 7 ngày", "Thuốc lựa chọn hàng đầu cho thể nặng/bệnh Weil tại các khoa Hồi sức. Bắt buộc thử phản ứng dị ứng Penicillin trước khi tiêm."],
-      ["Ceftriaxone", "1 g – 2 g tiêm tĩnh mạch (IV) x 1 lần/ngày (hoặc 1g IV q6h) x 7 ngày", "Hiệu quả tương đương Penicillin G trong thể nặng, phổ rộng và tiện dụng hơn tại hồi sức."],
-      ["Cefotaxime", "1 g tiêm tĩnh mạch (IV) mỗi 6 giờ (hoặc 50–100 mg/kg/ngày ở trẻ em) x 7 ngày", "Giải pháp thay thế nhóm Cephalosporin thế hệ 3 tiêm truyền tĩnh mạch."],
-      ["Methylprednisolone (Corticosteroid)", "Liều xung 1000 mg/ngày (IV) trong 3 ngày (hoặc 1-2 mg/kg/ngày)", "Cân nhắc hỗ trợ nhằm giảm tỷ lệ tử vong và ngưng máy thở trong hội chứng xuất huyết phổi nặng (SPHS) / ARDS do Leptospira."]
+      ["Pyronaridin tetraphosphat - artesunat (Pyramax 180mg/60mg)", "Uống 1 lần/ngày x 3 ngày liên tục (20-<24kg: 1 gói; 24-<45kg: 2 viên; 45-<65kg: 3 viên; >=65kg: 4 viên)", "Thuốc ACT ưu tiên hàng đầu cho P. falciparum, P. vivax, P. malariae, P. knowlesi thể thông thường theo hướng dẫn Bộ Y tế 2023"],
+      ["Artesunat lọ 60mg (Tiêm tĩnh mạch / Tiêm bắp)", "2,4 mg/kg IV tại H0, H12, sau đó 2,4 mg/kg/ngày (Trẻ < 20kg: liều 3,0 mg/kg/lần IV)", "Thuốc cấp cứu đầu tay tuyệt đối cho Sốt rét ác tính và Sốt rét có dấu hiệu cảnh báo nguy hiểm"],
+      ["Primaquin 7,5mg base (Đường uống sau ăn)", "P. falciparum: 0,25 mg base/kg 1 liều duy nhất ngày 1 để diệt giao bào chống lây lan. P. vivax: 0,25 mg/kg/ngày x 14 ngày (khi G6PD bình thường)", "Chống chỉ định cho trẻ < 6 tháng tuổi, phụ nữ có thai. Phải kiểm tra men G6PD trước khi dùng"],
+      ["Quinin dihydrochlorid 500mg/ống", "Truyền tĩnh mạch 20 mg/kg trong 8 giờ đầu, sau đó 10 mg/kg mỗi 8 giờ (pha Glucose 5%)", "Chỉ định cấp cứu cho phụ nữ mang thai 3 tháng đầu bị sốt rét ác tính"],
+      ["Glucose 30% & Glucose 10%", "Tiêm tĩnh mạch chậm 20-50 mL Glucose 30% cấp cứu hạ đường huyết (< 2.2 mmol/L), duy trì Glucose 10%", "Bắt buộc theo dõi đường huyết mao mạch thường xuyên ở bệnh nhân sốt rét nặng"]
     ],
     "theoDoi": [
-      "Theo dõi mạch, huyết áp, nhịp thở, SpO2 và lượng nước tiểu chính xác mỗi 1–2 giờ (ICU) hoặc mỗi 4 giờ.",
-      "Kiểm tra định kỳ hàng ngày: Creatinine, Urea, Điện giải đồ (đặc biệt K+, Mg2+), Bilirubin, AST, ALT, CPK, Công thức máu (Hct, PLT) và X-quang phổi thẳng.",
-      "Theo dõi sát dấu hiệu ho ra máu, nhịp thở nông nhanh và tình trạng vàng da niêm mạc."
+      "Soi lam máu nhuộm Giemsa kiểm tra KSTSR hàng ngày đến khi âm tính 2 ngày liên tiếp.",
+      "Theo dõi sát tri giác (Glasgow/Blantyre), SpO2, lượng nước tiểu mỗi 2-4 giờ.",
+      "Kiểm tra đường huyết mao mạch mỗi 2-4 giờ (hoặc mỗi 1 giờ nếu dùng Quinin tiêm).",
+      "Tái khám và xét nghiệm máu vào các ngày D14, D28 và D42 để đánh giá tái phát."
     ],
     "luuY": [
-      "Cảnh giác phản ứng Jarisch-Herxheimer (rét run dữ dội, sốt tăng đột ngột, tụt huyết áp) xuất hiện trong 24 giờ đầu sau khi khởi đầu kháng sinh diệt xoắn khuẩn.",
-      "Tránh quá tải dịch truyền ở bệnh nhân suy thận cấp thiểu niệu; tiến hành chạy thận nhân tạo (Hemodialysis) hoặc lọc máu liên tục sớm khi có chỉ định uremia/tăng kali máu.",
-      "Dự phòng hóa dược (Chemoprophylaxis): Doxycycline 200 mg/lần/tuần uống trong thời gian ngập lụt cho người làm việc trong môi trường nguy cơ cao."
+      "KHÔNG ĐƯỢC CHUYỂN VIỆN bệnh nhân đang sốc, phù phổi cấp hoặc co giật chưa kiểm soát được mà phải hồi sức ổn định tại chỗ.",
+      "Tuyệt đối không dùng Primaquin cho phụ nữ mang thai, trẻ em dưới 6 tháng tuổi và người thiếu men G6PD nặng (< 30%).",
+      "Nếu người bệnh nôn trong vòng 30 phút sau khi uống thuốc sốt rét, bắt buộc phải uống bù lại 1 liều đầy đủ."
     ],
     "nguon": [
-      "National Guidelines for Prevention and Control of Leptospirosis - NCDC India (2015)",
-      "Clinical Practice Guidelines on Leptospirosis in Children - PPS & PIDSP (2019)",
-      "WHO Background Document for Drinking-water Quality: Leptospira (2025)",
-      "Role of Corticosteroids in Severe Leptospirosis Meta-analysis - J. Clin. Med. (2024)"
+      "Quyết định số 3377/QĐ-BYT ngày 06 tháng 9 năm 2023 của Bộ trưởng Bộ Y tế Việt Nam"
     ]
   }
 }
 ```
 
+Prompt 07
+---
+
+title: "Ca lâm sàng Sốt rét thể thông thường do Plasmodium falciparum ở bệnh nhân nam 32 tuổi đi rừng rẫy về"
+caseId: "soap-sot_ret-01"
+specialty: "Truyền nhiễm"
+experienceLevel: "essential"
+difficultyRating: 3
+authorDoctor: "Hội đồng Khoa học CliniPortal DocSpace"
+icd10:
+
+- "B50"
+- "B50.9"
+tags:
+- "Truyền nhiễm"
+- "Sốt rét"
+- "SOAP"
+- "Plasmodium falciparum"
+- "Pyramax"
+- "Primaquin"
+- "G6PD"
+- "Anopheles"
+demographicContext: "Nam 32 tuổi, công nhân cạo mủ cao su, có tiền sử ngủ rừng rẫy ở vùng lưu hành Tây Nguyên - Bình Phước"
+historyPearls: "⚡ BÀI HỌC KHAI THÁC BỆNH SỬ: Bất kỳ bệnh nhân nào sốt cấp tính có tiền sử đi vào rừng, ngủ rẫy hoặc trở về từ vùng sốt rét lưu hành trong vòng 14 ngày qua đều phải nghĩ đến Sốt rét trước tiên và chỉ định xét nghiệm lam máu/RDTs ngay."
+objectivePitfalls: "⚠️ BẪY CẬN LÂM SÀNG & KHÁM: Không được dựa vào sốt rét chỉ giảm tiểu cầu mà chẩn đoán nhầm thành Sốt xuất huyết Dengue. Bắt buộc phải soi lam máu nhuộm Giemsa (tiêu chuẩn vàng) và định lượng G6PD trước khi kê đơn Primaquin để tránh cơn tan máu ồ ạt."
+diagnosticPearls: "🧠 ĐÚC KẾT BIỆN LUẬN: Cơn sốt rét điển hình diễn tiến 3 giai đoạn (Rét run -> Sốt cao nóng bừng -> Vã mồ hôi hạ nhiệt) có tính chu kỳ kết hợp lách to là triệu chứng kinh điển. Phải rà soát toàn diện 6 cờ đỏ ác tính để kịp thời chuyển tuyến điều trị Artesunat tiêm tĩnh mạch."
+takeawayLessons: "🎯 BÀI HỌC KINH NGHIỆM ĐIỀU TRỊ: Điều trị ACT đường uống (Pyramax 3 ngày) sớm giúp cắt sốt và sạch ký sinh trùng nhanh chóng; bắt buộc phối hợp Primaquin ngày đầu để diệt giao bào P. falciparum cắt đứt nguồn lây cho muỗi Anopheles trong cộng đồng."
+sourceReference: "Quyết định số 3377/QĐ-BYT ngày 06/09/2023 của Bộ trưởng Bộ Y tế Việt Nam"
+clinicalContext: "Phòng khám Đa khoa Khu vực / Bệnh viện Đa khoa Huyện vùng biên giới"
+updated: "2026-09-14"
+
+---
+
+### 🩺 Ca Lâm Sàng: Sốt Rét Thể Thông Thường Do Plasmodium falciparum
+
+**Bối cảnh**: Bệnh nhân nam 32 tuổi, công nhân cạo mủ cao su, đến khám tại Phòng khám Đa khoa Khu vực vì sốt cao từng cơn kèm rét run dữ dội và vã mồ hôi 3 ngày nay sau khi đi làm rẫy ở rừng về.
+
+---
+
+#### 1. 📝 S — CHỦ QUAN / SUBJECTIVE
+
+* **Lý do đến khám**: Sốt cao từng cơn kèm rét run lập cập và vã mồ hôi đầm đìa 3 ngày nay.
+- **Bệnh sử chi tiết**:
+  - Cách nhập viện 3 ngày, bệnh nhân đột ngột cảm thấy gai rét dọc sống lưng, sau đó rét run toàn thân dữ dội, hai hàm răng đánh lập cập, phải trùm 3 lớp chăn bông dày dù thời tiết bên ngoài oi bức. Giai đoạn rét run kéo dài khoảng 45 phút.
+  - Tiếp theo, bệnh nhân chuyển sang giai đoạn sốt cao nóng bừng, tung chăn, mặt đỏ bừng, nhiệt độ cặp nách lên đến 39.5°C, nhức đầu hai bên thái dương dữ dội như búa bổ, khát nước nhiều, buồn nôn, đau nhức mỏi các khớp xương và cơ bắp toàn thân. Giai đoạn này kéo dài khoảng 3 giờ.
+  - Sau đó, mồ hôi toát ra đầm đìa ướt sũng áo quần, nhiệt độ hạ nhanh về mức 37.0°C, bệnh nhân cảm thấy nhẹ nhõm, bớt nhức đầu nhưng người mệt lả và thiếp đi ngủ.
+  - Cơn sốt xuất hiện cách nhật (khoảng 48 giờ lặp lại một cơn). Bệnh nhân có tự uống Paracetamol tại nhà nhưng cơn sốt vẫn tái diễn đúng chu kỳ. Không ho, không khó thở, không đau bụng khu trú, nước tiểu vàng sẫm đóng khuôn bình thường.
+- **Tiền căn**:
+  - *Yếu tố dịch tễ*: Bệnh nhân là công nhân làm rẫy cao su. Cách đây 2 tuần có đi làm rẫy và ngủ lại trong rừng tại khu vực biên giới huyện Bù Gia Mập (tỉnh Bình Phước) trong 10 ngày, ngủ lán trại không mắc màn tẩm hóa chất, bị muỗi rừng đốt rất nhiều lần vào ban đêm.
+  - *Bệnh tật*: Chưa từng mắc sốt rét trước đây. Không có bệnh nền tim mạch, gan, thận hay đái tháo đường.
+  - *Gia đình*: Không ai trong gia đình có tiền sử thiếu máu tán huyết bẩm sinh hay thiếu hụt men G6PD.
+  - *Dị ứng*: Không có tiền sử dị ứng thuốc hay thức ăn.
+
+---
+
+#### 2. 🔬 O — KHÁCH QUAN / OBJECTIVE
+
+* **Khám Sinh hiệu (Vitals)**:
+  - Nhiệt độ: **39.2 °C** (đang ở giai đoạn sốt nóng)
+  - Mạch: **104 lần/phút** (đều, rõ, phù hợp với thân nhiệt)
+  - Huyết áp: **110/70 mmHg** (MAP = 83 mmHg, tư thế nằm)
+  - Nhịp thở: **20 lần/phút** (đều, không co kéo)
+  - SpO2: **98%** (thở khí trời)
+  - Thể trạng: Chiều cao 168 cm, Cân nặng 58 kg ➔ **BMI = 20.5 kg/m²**
+- **Khám Thực thể**:
+  - *Toàn thân*: Bệnh nhân tỉnh táo hoàn toàn, tiếp xúc tốt, định hướng không gian thời gian chính xác, **Glasgow 15 điểm**. Da niêm mạc hơi nhợt nhẹ, củng mạc mắt không vàng, không xuất huyết dưới da hay niêm mạc. Không có vết loét hoại tử do mò đốt (eschar (-)). Không phù chân. Tuyến giáp không to, hạch ngoại vi không sờ chạm.
+  - *Khám Bụng*: Bụng thon đều, di động theo nhịp thở, không chướng. Gan mấp mé bờ sườn phải (chiều cao gan đường trung đòn phải 10 cm, bờ mềm, ấn không đau). **Lách to độ I** (cực dưới lách sờ chạm dưới bờ sườn trái khoảng 1.5 cm khi hít sâu, mật độ mềm, ấn tức nhẹ). Dấu hiệu sóng vỗ (-), gõ đục vùng thấp (-).
+  - *Tim mạch & Hô hấp*: Tim đều, T1 T2 rõ, tần số 104 l/p, không tiếng thổi bệnh lý. Phổi thông khí tốt 2 bên, rì rào phế nang êm dịu, không rale.
+  - *Thần kinh & Cơ xương khớp*: Cổ mềm, dấu Kernig (-), dấu Brudzinski (-), không có dấu hiệu thần kinh khu trú. Đồng tử 2 bên 2.5 mm, phản xạ ánh sáng nhạy. Các khớp không sưng nóng đỏ.
+- **Cận lâm sàng Định lượng (Labs & Imaging)**:
+  - *Ký sinh trùng học (Tiêu chuẩn vàng)*:
+    - **Soi lam máu nhuộm Giemsa**:
+      - Giọt dày: Phát hiện ký sinh trùng sốt rét thể vô tính (trophozoite dạng nhẫn).
+      - Giọt mỏng: Xác định loài **Plasmodium falciparum** (thể nhẫn nhỏ thanh mảnh chiếm 1/5-1/6 đường kính hồng cầu, nhiều hồng cầu có nhiễm kép 2 thể nhẫn, có hình thể dính rìa tế bào Maurer; chưa thấy thể giao bào hình liềm/chuối).
+      - Mật độ KSTSR: **+++ (khoảng 42.000 KST/µL máu)** ➔ *Chưa đạt ngưỡng cảnh báo ác tính (>= 100.000 KST/µL)*.
+    - **Test chẩn đoán nhanh RDTs (Pf/Pan)**: Vạch kháng nguyên **HRP-2 (P.f) Dương tính (+)**; Vạch Pan-pLDH Dương tính (+).
+  - *Huyết học & Men G6PD*:
+    - **Định lượng hoạt độ men G6PD**: **9.8 U/g Hb** (Trị số bình thường: 7.0 - 14.0 U/g Hb) ➔ *Hoạt độ G6PD bình thường (> 70%), an toàn tuyệt đối khi sử dụng Primaquin*.
+    - Bạch cầu (WBC): 5.8 G/L (Neutrophil 64%, Lymphocyte 26%, Monocyte 8%)
+    - Hồng cầu (RBC): 3.82 T/L
+    - Huyết sắc tố (Hb): **11.2 g/dL** (Thiếu máu nhẹ do tán huyết)
+    - Hematocrit (Hct): **34%**
+    - Tiểu cầu (PLT): **96 G/L** (Giảm nhẹ tiểu cầu do bắt giữ tại lách và tiêu thụ miễn dịch)
+  - *Sinh hóa chức năng gan, thận, chuyển hóa*:
+    - AST (GOT): **42 U/L** (Tăng nhẹ)
+    - ALT (GPT): **38 U/L** (Trong giới hạn bình thường)
+    - Bilirubin toàn phần: 18.4 µmol/L; Bilirubin trực tiếp: 5.2 µmol/L (Chưa vàng da)
+    - Creatinine máu: **82 µmol/L** ➔ **eGFR = 102 mL/phút/1.73m²** (Chức năng thận bảo tồn tốt)
+    - Ure máu: 5.4 mmol/L
+    - **Đường huyết mao mạch tại giường**: **5.4 mmol/L** (Không hạ đường huyết)
+    - Điện giải đồ: Na+ 137 mmol/L, K+ 3.9 mmol/L, Cl- 101 mmol/L
+    - Lactate máu: **1.6 mmol/L** (Không có toan chuyển hóa)
+  - *Tổng phân tích nước tiểu*:
+    - Tỷ trọng 1.020, pH 6.0, Protein (-), Hồng cầu (-), Hemoglobin niệu (-), Urobilinogen bình thường. Nước tiểu vàng trong, thể tích 1.500 mL/24h.
+  - *Chẩn đoán hình ảnh*:
+    - **Siêu âm bụng tổng quát**: Lách to nhẹ (chiều dài lách 125 mm, bề dày 45 mm, nhu mô đồng nhất). Gan kích thước bình thường. Không có dịch tự do trong ổ bụng.
+    - **X-quang ngực thẳng**: Nhu mô phổi sáng đều hai bên, không thâm nhiễm, không có hình ảnh phù phổi cấp hay tổn thương dạng ARDS. Chỉ số tim ngực trong giới hạn bình thường.
+
+---
+
+#### 3. 🧠 A — ĐÁNH GIÁ / ASSESSMENT
+
+##### Bảng Đặt Vấn Đề (Problem List · 3 Tầng Ưu Tiên Chuẩn Y Khoa)
+
+| Mức độ ưu tiên | Vấn đề lâm sàng (Tổ hợp triệu chứng) | Chiến lược chẩn đoán (CLS đề nghị) | Hướng xử trí ban đầu & Cấp cứu |
+| :--- | :--- | :--- | :--- |
+| 🔴 **Tầng 1: Đe dọa tính mạng** | *Chưa ghi nhận cờ đỏ ác tính* (Glasgow 15 điểm, không co giật, không khó thở SpO2 98%, không sốc, không đái huyết cầu tố) | - Theo dõi sát tri giác & sinh hiệu mỗi 4h <br>- Đo đường huyết mao mạch <br>- Soi lam Giemsa đếm KST/ngày | - Chuẩn bị sẵn Artesunat tiêm 60mg cấp cứu nếu chuyển ác tính <br>- Theo dõi sát nước tiểu |
+| 🟡 **Tầng 2: Cấp tính** | **Hội chứng Nhiễm ký sinh trùng Sốt rét do P. falciparum**: <br>- Cơn sốt rét chu kỳ 3 giai đoạn ngày 3 <br>- Giemsa: P. falciparum +++ (42.000 KST/µL) <br>- RDTs HRP-2 (+) <br>- Lách to độ I, PLT giảm 96 G/L | - Soi lam máu nhuộm Giemsa đếm KSTSR <br>- Test nhanh RDTs (Pf/Pan) <br>- Định lượng hoạt độ men G6PD <br>- Công thức máu, Men gan, Creatinine | **Chỉ định phác đồ ACT đường uống**: <br>- Pyramax (Pyronaridin/Artesunat) x 3 ngày <br>- Primaquin ngày 1 diệt giao bào (sau khi G6PD bình thường) <br>- Hạ sốt Paracetamol |
+| 🔵 **Tầng 3: Mạn tính / Dịch tễ** | **Yếu tố dịch tễ vùng rừng rẫy lưu hành** (Bình Phước) & Thiếu máu tán huyết nhẹ (Hb 11.2 g/dL) | - Khai thác tiền sử ngủ rừng, muỗi đốt <br>- Siêu âm ổ bụng đánh giá lách to <br>- Phân tích nước tiểu loại trừ đái huyết cầu tố | - Tư vấn phòng chống muỗi Anopheles <br>- Hướng dẫn theo dõi tái phát D14, D28, D42 <br>- Dinh dưỡng nâng đỡ thể trạng |
+
+- **Chẩn đoán xác định**: Sốt rét thể thông thường do Plasmodium falciparum, chưa có biến chứng ác tính, ngày thứ 3.
+- **Mã ICD-10**: **B50.9** (Sốt rét do Plasmodium falciparum không biến chứng).
+- **Chẩn đoán phân biệt cần loại trừ**:
+    1. *Sốt xuất huyết Dengue (ngày 3)*: Cũng biểu hiện sốt cao cấp tính kèm giảm tiểu cầu (PLT 96 G/L), nhưng Dengue thường sốt cao liên tục không thành cơn 3 giai đoạn có rét run lập cập và vã mồ hôi chu kỳ; xét nghiệm NS1Ag âm tính (-), Giemsa phát hiện KSTSR ➔ Loại trừ hoàn toàn.
+    2. *Sốt mò (Scrub Typhus)*: Bệnh nhân có tiền sử đi rừng rẫy nhưng không tìm thấy vết loét hoại tử do mò đốt (eschar (-)), không có viêm hạch khu trú hay phát ban dát sẩn ➔ Loại trừ.
+    3. *Nhiễm xoắn khuẩn Leptospira (Hội chứng Weil)*: Không có triệu chứng đau cơ bắp chân dữ dội, không sung huyết kết mạc mắt, không có tiền sử lội nước ngập bùn, bilirubin và chức năng thận bình thường ➔ Loại trừ.
+    4. *Sốt rét do Plasmodium vivax*: P. vivax gây cơn sốt cách nhật lành tính, nhưng xét nghiệm giọt mỏng xác định rõ đặc điểm hình thái thể nhẫn nhỏ thanh mảnh của P. falciparum kèm test HRP-2 (+) đặc hiệu ➔ Loại trừ đơn nhiễm P. vivax.
+- **Phân tầng nguy cơ & Thang điểm lượng giá**:
+  - *Thang điểm NEWS2*: **3 điểm** (Nhiệt độ 39.2°C = 2 điểm, Mạch 104 l/p = 1 điểm). Nguy cơ lâm sàng thấp-trung bình, chỉ định nhập viện theo dõi nội trú tại Khoa Truyền nhiễm trong 72 giờ đầu.
+  - *Phân độ theo Hướng dẫn Bộ Y tế 2023*: **Độ 1 - Sốt rét thể thông thường (Chưa biến chứng)**. Không có bất kỳ dấu hiệu nào trong 6 cờ đỏ cảnh báo ác tính (tri giác tỉnh táo, tự uống thuốc được, không nôn liên tục, không đau đầu dữ dội, mật độ KST < 100.000/µL, Hb > 7 g/dL).
+- **Biện luận lâm sàng chi tiết**:
+  - Bệnh nhân hội đủ 3 trụ cột chẩn đoán Sốt rét theo Quyết định 3377/QĐ-BYT năm 2023: (1) Yếu tố dịch tễ đi rừng rẫy tại vùng lưu hành sốt rét (Bình Phước) trong vòng 14 ngày qua; (2) Lâm sàng cơn sốt rét 3 giai đoạn điển hình (rét run -> sốt cao -> vã mồ hôi) lặp lại chu kỳ cách nhật kèm lách to độ I; (3) Tiêu chuẩn vàng soi lam máu Giemsa thấy thể tư dưỡng P. falciparum (+++, 42.000 KST/µL) và test RDTs HRP-2 (+).
+  - Khảo sát toàn diện các cơ quan chưa ghi nhận tổn thương đích: Bệnh nhân tỉnh táo hoàn toàn (Glasgow 15), SpO2 98%, huyết áp ổn định 110/70 mmHg, Creatinine 82 µmol/L, Glucose máu 5.4 mmol/L, Lactate 1.6 mmol/L, không có đái huyết cầu tố ➔ Đủ điều kiện điều trị bằng phác đồ thuốc ACT đường uống (Pyramax 3 ngày).
+  - Kết quả định lượng men G6PD đạt 9.8 U/g Hb (> 70% mức bình thường) ➔ Cho phép chỉ định an toàn thuốc Primaquin liều duy nhất vào Ngày thứ 1 để diệt giao bào P. falciparum, triệt tiêu nguy cơ lây truyền mầm bệnh cho muỗi Anopheles tại cộng đồng.
+
+---
+
+#### 4. 📋 P — KẾ HOẠCH / PLAN
+
+- **Định hướng quản lý**: Điều trị nội trú tại Khoa Truyền nhiễm - Bệnh viện Đa khoa Huyện trong 3-4 ngày đầu để giám sát chặt chẽ sự dung nạp thuốc, theo dõi tốc độ sạch KSTSR và phòng ngừa tiến triển thành sốt rét ác tính.
+- **Mục tiêu điều trị**:
+    1. Cắt cơn sốt nhanh chóng trong vòng 24 - 48 giờ sau khi khởi động thuốc ACT.
+    2. Làm sạch hoàn toàn ký sinh trùng sốt rét thể vô tính trong máu (Clearance of parasitemia) sau 48 - 72 giờ, xét nghiệm lam máu âm tính vào ngày D3.
+    3. Tiêu diệt giao bào P. falciparum bằng Primaquin để ngăn ngừa lây truyền bệnh cho véc-tơ muỗi Anopheles trong cộng đồng.
+    4. Giám sát chặt chẽ, ngăn ngừa biến chứng sốt rét ác tính thể não, suy hô hấp ARDS và suy thận cấp.
+
+##### Y lệnh thuốc điều trị (Chuẩn Quyết định 3377/QĐ-BYT ngày 06/09/2023)
+
+1. **Pyronaridin tetraphosphat 180mg / Artesunat 60mg (Pyramax viên nén)**:
+    - *Liều dùng*: Uống **3 viên duy nhất một lần trong ngày** (cho người bệnh 58 kg - nhóm cân nặng 45 đến < 65 kg).
+    - *Thời gian điều trị*: **3 ngày liên tục** (Ngày 1, Ngày 2, Ngày 3). Tổng cộng 9 viên.
+    - *Cách dùng*: Uống vào một thời điểm cố định trong ngày, uống sau bữa ăn cùng một ly nước đầy.
+    - *Ghi chú dược lâm sàng*: Thuốc ACT toàn diện thế hệ mới ưu tiên hàng đầu của Bộ Y tế. Nếu bệnh nhân nôn trong vòng 30 phút sau uống, phải uống lại 1 liều khác thay thế; nếu nôn sau 30-60 phút, uống lại nửa liều.
+
+2. **Primaquin phosphat 13.2mg (tương đương 7.5mg Primaquin base)**:
+    - *Liều dùng*: Uống **2 viên** (tương đương 15mg base, liều 0.25 mg base/kg) **một liều duy nhất vào Ngày thứ 1**.
+    - *Cách dùng*: Uống sau khi ăn no.
+    - *Mục đích*: Diệt giao bào P. falciparum ngăn chặn chu kỳ lây truyền bệnh cho muỗi Anopheles.
+    - *Căn cứ an toàn*: Hoạt độ men G6PD bệnh nhân đạt 9.8 U/g Hb (> 70% bình thường), an toàn tuyệt đối.
+
+3. **Paracetamol 500mg**:
+    - *Liều dùng*: 1 viên uống khi sốt cao >= 38.5°C, cách nhau tối thiểu 4-6 giờ (không quá 4 viên/24 giờ).
+    - *Chống chỉ định*: Không dùng Aspirin hoặc Ibuprofen/NSAIDs do bệnh nhân đang có giảm tiểu cầu cấp (PLT 96 G/L).
+
+4. **Dung dịch Oresol (ORS 245 mOsm/L)**:
+    - *Liều dùng*: Pha 1 gói trong đúng 1.000 mL nước đun sôi để nguội, uống rải rác 1.500 - 2.000 mL/ngày để bù nước và điện giải mất qua mồ hôi.
+
+##### Chỉ tiêu theo dõi & Kế hoạch cận lâm sàng
+
+* **Theo dõi tại giường**:
+  - Đo sinh hiệu (Mạch, Huyết áp, Nhiệt độ, Nhịp thở, SpO2) mỗi 4 giờ trong 48 giờ đầu.
+  - Đánh giá tri giác (thang điểm Glasgow) và lượng nước tiểu 24 giờ mỗi ca trực.
+  - Báo cáo bác sĩ ngay lập tức nếu xuất hiện bất kỳ dấu hiệu cảnh báo ác tính nào: Lơ mơ, li bì, nôn liên tục không uống được, khó thở, SpO2 < 95%, hoặc nước tiểu chuyển sang màu nước vối/đen.
+  - Kiểm tra đường huyết mao mạch tại giường vào mỗi buổi sáng hoặc khi người bệnh có triệu chứng vã mồ hôi run rẩy bất thường.
+- **Xét nghiệm ký sinh trùng học**:
+  - **Soi lam máu nhuộm Giemsa kiểm tra KSTSR mỗi 24 giờ** vào các ngày **D1, D2, D3** cho đến khi xét nghiệm âm tính 2 ngày liên tiếp.
+  - Kiểm tra lại Công thức máu (CTM), Tiểu cầu và Men gan vào ngày D3 trước khi cho xuất viện.
+- **Lịch hẹn tái khám và theo dõi sau xuất viện**:
+  - Tái khám và lấy lam máu kiểm tra KSTSR vào các ngày **D14, D28 và D42** (tiêu chuẩn đánh giá hiệu lực điều trị và phát hiện tái phát của WHO/BYT).
+
+##### Tư vấn & Giáo dục sức khỏe người bệnh (Teach-Back)
+
+1. *Tuân thủ uống thuốc*: Giải thích cho người bệnh tầm quan trọng của việc uống đủ 3 ngày thuốc Pyramax, tuyệt đối không được bỏ thuốc khi thấy hết sốt ở ngày thứ 2.
+2. *Nhận biết dấu hiệu nguy hiểm*: Hướng dẫn người bệnh và người nhà theo dõi màu sắc nước tiểu; nếu thấy nước tiểu chuyển màu đỏ sẫm hoặc đen như nước vối, hoặc người mệt lả, vàng mắt, phải báo ngay cho nhân viên y tế (nguy cơ cơn tan máu cấp hoặc đái huyết cầu tố).
+3. *Biện pháp phòng ngừa sốt rét cá nhân*:
+    - Luôn ngủ trong màn (mùng) tẩm hóa chất xua diệt muỗi tồn lưu dài hạn, kể cả khi ngủ ở nhà hay ngủ lại trong lán rẫy.
+    - Mặc quần áo dài tay và thoa kem xua muỗi khi phải đi rừng rẫy vào chiều tối và sáng sớm (thời điểm muỗi Anopheles hoạt động mạnh nhất).
+    - Phát quang bụi rậm, khơi thông cống rãnh, lật úp các dụng cụ chứa nước quanh nơi ở để triệt phá nơi muỗi sinh sản.
+    - Khi có sốt trở lại sau khi đi rừng, phải đến ngay cơ sở y tế gần nhất để xét nghiệm máu tìm KSTSR, không được tự ý mua thuốc hạ sốt điều trị tại nhà.
+
 ---
 
 ## 📚 TRÍCH DẪN TÀI LIỆU THAM KHẢO CHUẨN EBM
 
-1. National Centre for Disease Control (NCDC). *National Guidelines for Diagnosis, Case Management, Prevention and Control of Leptospirosis*. Directorate General of Health Services, Ministry of Health & Family Welfare, Government of India; 2015.
-2. Philippine Pediatric Society (PPS), Pediatric Infectious Disease Society of the Philippines (PIDSP). *Clinical Practice Guidelines on Leptospirosis in Children*. PPS-PIDSP Joint Guideline Writing Panel; 2019.
-3. World Health Organization (WHO). *Leptospira: Background document for the WHO Guidelines for drinking-water quality*. Geneva: World Health Organization; 2025.
-4. Costa F, Hagan JE, Calcagno J, et al. Global Morbidity and Mortality of Leptospirosis: A Systematic Review. *PLoS Negl Trop Dis*. 2015;9(9):e0003898.
-5. Petakh P, Becaye M, Oksenych V, Kamyshnyi O. Treatment options for leptospirosis: current status and future perspectives. *Front Microbiol*. 2024;15:1403765.
-6. Petakh P, Isevych V, Oksenych V, Kamyshnyi O. Role of Corticosteroids in Severe Leptospirosis: A Systematic Review and Meta-Analysis. *J Clin Med*. 2024;13(15):4310.
-7. Faucher JF, Hoen B, Estavoyer JM. The management of leptospirosis. *Expert Opin Pharmacother*. 2004;5(4):819-827.
-8. Tabei K, Win TZ, Kitashoji E, et al. Antibiotic prophylaxis for leptospirosis. *Cochrane Database Syst Rev*. 2024;(2):CD014959.
-
-```
-
----
-
-Prompt 07
-### ==============================================================================
-### CLINIPORTAL DOCSPACE — PROMPT 07: SOAP CLINICAL CASE INGESTION GENERATOR
-### CHUYÊN BIỆT CHO BỆNH NHIỄM LEPTOSPIRA (HỘI CHỨNG WEIL / LEPTOSPIROSIS)
-### ==============================================================================
-
-Dưới đây là cấu trúc **Prompt 07** hoàn chỉnh được thiết kế riêng cho mặt bệnh **Nhiễm Leptospira (Leptospirosis / Hội chứng Weil)**. Prompt này được tối ưu hóa để dán trực tiếp vào Gemini Notebook nhằm sinh ra bài viết ca lâm sàng thực chiến theo chuẩn Markdown Frontmatter S-O-A-P, tích hợp vào Bước 4 (Sổ tay kinh nghiệm & Hội chẩn AI) của hệ sinh thái CliniPortal DocSpace.
-
----
-
-### 📌 PHẦN 1: THÔNG SỐ ĐẦU VÀO TÙY CHỈNH (LEPTOSPIRA)
-
-* **[TÊN BỆNH LÝ]**: Nhiễm Leptospira thể nặng có tổn thương đa cơ quan (Hội chứng Weil / Severe Leptospirosis).
-* **[CHUYÊN KHOA]**: Truyền nhiễm / Bệnh Nhiệt đới / Hồi sức Cấp cứu (ICU).
-* **[PHÂN LOẠI CA]**: essential
-* **[ĐỘ KHÓ]**: 4 / 5
-* **[BỐI CẢNH BỆNH NHÂN]**: Nam 38 tuổi, nông dân làm ruộng lúa tại vùng ngập lụt sau mưa bão, tiền sử lội nước bẩn/bùn bẩn chân trần có vết xước da.
-* **[KHOA PHÒNG]**: Khoa Bệnh Nhiệt đới / Khoa Hồi sức Cấp cứu (ICU).
-* **[TRỌNG TÂM BIỆN LUẬN]**: 
-  1. Nhận diện Tam giác chẩn đoán dịch tễ - lâm sàng: Yếu tố tiếp xúc nguồn nước nhiễm nước tiểu động vật/chuột + Sốt cao đột ngột + Sung huyết kết mạc mắt không tiết dịch (Conjunctival suffusion) + Đau cơ bắp chân dữ dội (Calf muscle tenderness).
-  2. Phát hiện sớm các cờ đỏ suy đa cơ quan (Hội chứng Weil): Suy thận cấp (thiểu niệu/vô niệu, Creatinine > 154 µmol/L, BUN > 9.3 mmol/L), Vàng da đậm (Bilirubin > 51.3 µmol/L, tỷ lệ AST/ALT > 3), Xuất huyết phổi (ho ra máu, thâm nhiễm X-quang phổi), Giảm tiểu cầu (< 92 G/L) và Tăng CPK.
-  3. Biện luận chẩn đoán phân biệt sắc bén với Sốt xuất huyết Dengue (nghi ngờ giai đoạn thoát huyết tương ngày 4–5), Sốt rét nặng, Nhiễm khuẩn huyết và Viêm gan vi-rút cấp.
-  4. Phác đồ điều trị kháng sinh tĩnh mạch liều cao (Penicillin G IV hoặc Ceftriaxone IV) kết hợp hồi sức chức năng sống (thông khí bảo vệ phổi, bù dịch và lọc máu ngoài thận).
-* **[HƯỚNG DẪN THAM CHIẾU]**: Hướng dẫn Quốc gia về Chẩn đoán, Xử trí & Phòng chống Bệnh Leptospira - NCDC Ấn Độ 2015, CPG Leptospirosis Philippines (PPS-PIDSP 2019) & WHO Guidelines for Drinking-Water Quality: Leptospira (2025).
-
----
-
-### 📋 PHẦN 2: PROMPT CHUẨN DÁN VÀO NOTEBOOKLM / GEMINI NOTEBOOK
-
-```markdown
-"Bạn là một Bác sĩ Giảng viên Lâm sàng kỳ cựu và Chuyên gia Y học Chứng cứ (EBM).
-Dựa DUY NHẤT và CHẶT CHẼ trên các tài liệu đã tải lên trong Notebook này (đặc biệt là National Guidelines for Leptospirosis - NCDC 2015, PPS-PIDSP CPG 2019 và các tổng quan hệ thống EBM), hãy xây dựng 01 Ca Bệnh Án Lâm Sàng Điển Hình theo đúng cấu trúc SOAP chuẩn quốc tế và định dạng Markdown bên dưới.
-
-Yêu cầu lâm sàng:
-* Mặt bệnh cần xây dựng: Nhiễm Leptospira thể nặng kèm tổn thương đa cơ quan (Hội chứng Weil)
-* Chuyên khoa: Truyền nhiễm / Bệnh Nhiệt đới
-* Phân loại ca: essential
-* Độ khó ca bệnh: 4 / 5
-* Bối cảnh bệnh nhân: Nam 38 tuổi, nông dân làm ruộng lúa, nhập viện vì sốt cao, vàng da, thiểu niệu và ho ra máu sau 5 ngày lội nước lũ bẩn.
-* Khoa phòng tiếp nhận: Khoa Cấp cứu / Khoa Bệnh Nhiệt đới / Khoa Hồi sức Cấp cứu (ICU)
-* Trọng tâm biện luận: Nhận diện sớm cờ đỏ đe dọa tính mạng (Suy thận cấp, Xuất huyết phổi, Suy gan), phân biệt với Sốt xuất huyết Dengue / Sốt rét, và lập phác đồ điều trị kháng sinh IV (Penicillin G / Ceftriaxone) kết hợp hồi sức tích cực.
-* Tài liệu nguồn ưu tiên trích dẫn: NCDC India National Guidelines 2015, PPS-PIDSP Clinical Practice Guidelines 2019, Cochrane Database Systematic Review 2024.
-
-Định dạng xuất bản (BẮT BUỘC tuân thủ chính xác 100% cú pháp Markdown Frontmatter dưới đây để hệ thống DocSpace tự động nhận diện và phân tích):
-
----
-title: "Ca lâm sàng Nhiễm Leptospira thể nặng (Hội chứng Weil) ở bệnh nhân nam nông dân sau ngập lụt"
-caseId: "soap-leptospirosis_weil_syndrome-01"
-specialty: "Truyền nhiễm"
-experienceLevel: "essential"
-difficultyRating: 4
-authorDoctor: "Hội đồng Khoa học CliniPortal DocSpace"
-icd10:
-  - "A27.0"
-  - "A27.8"
-tags:
-  - "Truyền nhiễm"
-  - "Leptospira"
-  - "Hội chứng Weil"
-  - "SOAP"
-demographicContext: "Nam 38 tuổi, nông dân làm ruộng lúa tại vùng ngập lụt dịch lưu hành"
-historyPearls: "⚡ BÀI HỌC KHAI THÁC BỆNH SỬ: Khai thác kĩ yếu tố dịch tễ lội nước bẩn/bùn lụt chân trần có vết xước da và dấu hiệu đặc trưng đau cơ bắp chân dữ dội (calf muscle tenderness) kèm sốt cao đột ngột."
-objectivePitfalls: "⚠️ BẪY CẬN LÂM SÀNG & KHÁM: Sung huyết kết mạc (conjunctival suffusion) rất dễ bị nhầm với viêm kết mạc nhiễm khuẩn nhưng điểm mấu chốt là KHÔNG CÓ tiết dịch mủ; ngoài ra coi chừng bỏ sót ho ra máu vi thể do hội chứng xuất huyết phổi cấp."
-diagnosticPearls: "🧠 ĐÚC KẾT BIỆN LUẬN: Hội chứng Weil định danh bởi bộ ba lâm sàng: Vàng da + Suy thận cấp + Biểu hiện xuất huyết. Phân biệt với SXH Dengue dựa vào số lượng bạch cầu tăng kèm chuyển trái (Dengue bạch cầu tụt) và tăng CPK máu rất cao do hủy cơ."
-takeawayLessons: "🎯 BÀI HỌC KINH NGHIỆM ĐIỀU TRỊ: Khởi dùng kháng sinh tĩnh mạch sớm (Penicillin G IV 2-4 triệu UI q6h hoặc Ceftriaxone IV 1-2g/ngày) ngay khi nghi ngờ lâm sàng; lọc máu cấp cứu sớm khi có anuria/creatinine tăng cao; kiểm soát thông khí bảo vệ phổi khi có xuất huyết phổi."
-sourceReference: "National Guidelines for Leptospirosis - NCDC India 2015 & PPS-PIDSP CPG 2019"
-clinicalContext: "Khoa Bệnh Nhiệt đới / Khoa Hồi sức Cấp cứu (ICU)"
-updated: "2026-09-14"
----
-
-### 🩺 Ca Lâm Sàng: Nhiễm Leptospira Thể Nặng (Hội Chứng Weil)
-**Bối cảnh**: Bệnh nhân nam 38 tuổi, nông dân, sống tại vùng ngập lụt dịch tễ lưu hành, nhập viện Khoa Cấp cứu / Bệnh Nhiệt đới vì sốt cao, vàng da mắt, đau cơ bắp chân dữ dội, thiểu niệu và ho hắng ra máu tươi vào ngày thứ 5 của bệnh.
-
-#### 1. 📝 S — CHỦ QUAN / SUBJECTIVE
-* **Lý do nhập viện / Than phiền chính**: Sốt cao liên tục, vàng mắt vàng da rõ, đau nhức cơ bắp chân không đi lại được, tiểu ít (< 300 ml/24h) và ho khạc đờm lẫn máu tươi.
-* **Bệnh sử chi tiết**: 
-  - Ngày 1–3: Bệnh nhân khởi phát sốt cao đột ngột 39.5 °C, rét rung, đau đầu dữ dội vùng trán và sau hốc mắt, đau nhức toàn thân đặc biệt là vùng cơ bắp chân và cơ đùi. Tự uống Paracetamol 500mg nhưng hạ sốt kém.
-  - Ngày 4–5: Bệnh nhân xuất hiện mắt đỏ rực hai bên, vàng mắt và vàng da tiến triển nhanh, buồn nôn, nôn ói dịch mật, đau tức nhẹ vùng hạ sườn phải. Lượng nước tiểu giảm dần còn khoảng 1 xị/ngày. Sáng ngày nhập viện, bệnh nhân xuất hiện ho hắng khạc đờm vướng máu tươi, mệt lả, vã mồ hôi nên được gia đình đưa đi cấp cứu.
-* **Tiền căn**: Nông dân trực tiếp làm ruộng lúa ngập nước, 10 ngày trước có lội nước lũ bẩn chân trần bị gai đâm xước bàn chân phải. Không có tiền sử bệnh gan mạn, không dị ứng thuốc.
-
-#### 2. 🔬 O — KHÁCH QUAN / OBJECTIVE
-##### Sinh hiệu:
-* Huyết áp: 90/60 mmHg (MAP = 70 mmHg, dấu hiệu doạ sốc)
-* Mạch: 112 nhịp/phút, nảy nông
-* Thân nhiệt: 38.8 °C
-* Nhịp thở: 26 lần/phút, thở nông nhanh
-* SpO₂: 92% (thở khí trời)
-* BMI: 22.1 kg/m²
-##### Khám thực thể trọng tâm:
-* **Mắt & Da niêm**: Sung huyết kết mạc 2 bên rất rõ, lan tỏa nhưng không có tiết dịch nhầy mủ (Conjunctival suffusion). Vàng da, vàng kết mạc mắt đậm. Rải rác chấm xuất huyết dưới da vùng cẳng tay và ngực.
-* **Cơ xương khớp**: Đau chói khi ấn vào vùng cơ bắp chân 2 bên (Calf muscle tenderness (+)), bệnh nhân nhăn mặt né tránh.
-* **Hô hấp**: Phổi nghe rải rác rประ rế, rale ẩm/nổ rải rác 2 đáy phổi, ho khạc đờm vệt máu tươi.
-* **Tiêu hóa & Ổ bụng**: Bụng mềm, ấn đau nhẹ vùng hạ sườn phải, gan to 2 cm dưới bờ sườn, ấn tức, lách không chạm.
-* **Thận - Tiêu hóa**: Ấn điểm niệu quản không đau, hố thận tức nhẹ. Nước tiểu sẫm màu như nước vối, thể tích bàng quang qua siêu âm ít.
-##### Cận lâm sàng & Hình ảnh học:
-* **Công thức máu (CTM)**: WBC 16.8 G/L (Neutrophil 88% - lệch trái rõ), RBC 3.8 T/L, Hb 10.5 g/dL, Hct 32%, PLT 48 G/L (Giảm tiểu cầu nặng).
-* **Sinh hóa máu**: 
-  - Ure: 22.4 mmol/L, Creatinine: 285 µmol/L (Suy thận cấp tiến triển).
-  - Bilirubin toàn phần: 112.5 µmol/L (6.58 mg/dL), Bilirubin trực tiếp: 78.2 µmol/L.
-  - AST: 185 U/L, ALT: 52 U/L (Tỷ lệ AST/ALT = 3.55 - gợi ý tổn thương nặng/tiên lượng xấu).
-  - Creatine Phosphokinase (CPK): 2.450 U/L (Tăng rất cao do hủy hoại cơ cắn/cơ bắp chân).
-  - Điện giải đồ: Na⁺ 130 mmol/L, K⁺ 3.2 mmol/L (Hạ kali máu do mất qua ống thận).
-* **Đông máu**: PT 16.5 giây (Hoạt tỷ 62%), INR 1.42.
-* **Căn nguyên vi sinh**: Rapid IgM ELISA (Gián tiếp) (+); PCR (gen secY / lipL32) máu gửi mẫu chờ kết quả.
-* **Chẩn đoán hình ảnh**: 
-  - X-quang ngực thẳng: Rải rác mờ phế nang dạng đám nốt 2 bên đáy phổi (hình ảnh thâm nhiễm xuất huyết phế nang).
-  - Siêu âm bụng: Gan to nhẹ, cấu trúc thô, túi mật thành không dày, hai thận kích thước lớn nhẹ, tăng âm tủy thận.
-
-#### 3. 🧠 A — ĐÁNH GIÁ / ASSESSMENT
-##### Bảng Đặt Vấn Đề (Problem List · 3 Tầng Ưu Tiên Chuẩn Y Khoa):
-| Mức độ ưu tiên | Vấn đề lâm sàng (Tổ hợp triệu chứng) | Chiến lược chẩn đoán (CLS đề nghị) | Hướng xử trí ban đầu & Cấp cứu |
-| ------ | ------ | ------ | ------ |
-| 🔴 **Tầng 1: Đe dọa tính mạng** | 1. Suy thận cấp thiểu niệu (Creatinine 285 µmol/L, Ure 22.4)<br>2. Hội chứng xuất huyết phổi (Ho ra máu, SpO2 92%, X-quang thâm nhiễm phế nang)<br>3. Doạ sốc nhiễm khuẩn / Giảm thể tích (HA 90/60) | Khí máu động mạch, Lactate máu, Điện giải đồ q6h, Theo dõi nước tiểu giờ qua xông Foley | Thiết lập 2 đường truyền lớn, thở Oxy kính 4L/p, bù dịch Ringer Lactate 10-15 mL/kg/h kiểm soát sát, chuẩn bị lọc máu cấp cứu (HD/CRRT) |
-| 🟡 **Tầng 2: Cấp tính** | 1. Hội chứng Hoàng đảm - Suy gan cấp (Bilirubin 112.5 µmol/L, AST/ALT > 3)<br>2. Hội chứng Giảm tiểu cầu & Rối loạn đông máu (PLT 48 G/L, PT 16.5s)<br>3. Hội chứng Tiêu cơ vân / Viêm cơ (CPK 2.450 U/L, Đau bắp chân dữ dội) | Đông máu toàn bộ (Fibrinogen, D-Dimer), Kháng nguyên/PCR Leptospira, Siêu âm Doppler ổ bụng | Kháng sinh tĩnh mạch ngay: Penicillin G IV 2-4 triệu UI q6h (hoặc Ceftriaxone 2g IV/ngày), truyền Tiểu cầu / Huyết tương tươi nếu xuất huyết đe dọa |
-| 🔵 **Tầng 3: Mạn tính / Tiền căn** | Tiền sử tổn thương da bàn chân do gai đâm khi lội nước lũ bẩn | Chăm sóc vết thương tại chỗ, soi cấy dịch | Vệ sinh sát trùng vết thương sát khuẩn bề mặt |
-
-* **Chẩn đoán xác định**: Nhiễm Leptospira thể nặng biến chứng Hội chứng Weil (Suy thận cấp thiểu niệu, Suy gan cấp, Xuất huyết phổi, Giảm tiểu cầu nặng) - Bệnh ngày thứ 5 / Yếu tố dịch tễ ngập lụt.
-* **Mã ICD-10**: A27.0 (Leptospirosis icterohaemorrhagica) / A27.8.
-* **Chẩn đoán phân biệt cần loại trừ**:
-  * *Sốt xuất huyết Dengue thể nặng (Dengue có dấu hiệu cảnh báo/Sốc Dengue)*: Loại trừ dựa trên CTM có Bạch cầu tăng cao 16.8 G/L kèm Neutrophil 88% (Dengue bạch cầu tụt nặng), CPK tăng rất cao 2.450 U/L và sung huyết kết mạc không tiết dịch.
-  * *Sốt rét ác tính (Plasmodium falciparum)*: Kiểm tra Ký sinh trùng sốt rét (Soi giọt đốm/Tép nhanh) âm tính.
-  * *Nhiễm khuẩn huyết Gram âm do Aeromonas / Pseudomonas sau lội nước*: Cấy máu bối cảnh nhiễm trùng độc huyết nặng, phản ứng PCR Leptospira dương tính giúp khẳng định.
-* **Phân tầng nguy cơ & Thang điểm lượng giá**: 
-  - Thang điểm NEWS2 = 8 điểm (Nguy cơ cấp cứu cao - Cần chuyển ICU).
-  - Dấu hiệu cờ đỏ tiên lượng tử vong theo CPG NCDC/PIDSP: Có mặt đồng thời Vàng da + Thiểu niệu + Ho ra máu + Thâm nhiễm phổi + AST/ALT > 3.
-
-#### 4. 📋 P — KẾ HOẠCH / PLAN
-* **Xử trí cấp cứu & Ban đầu**:
-  - Đặt bệnh nhân tư thế đầu cao 30°, thở Oxy qua Cannula 4–5 L/phút duy trì SpO₂ ≥ 95%.
-  - Đặt catheter tĩnh mạch trung tâm (CVP) và xông bàng quang theo dõi nước tiểu nghiêm ngặt từng giờ.
-  - Bù dịch Ringer Lactate tĩnh mạch tốc độ 10–15 mL/kg/giờ trong 2 giờ đầu, đánh giá đáp ứng CVP và áp lực hạ áp để tránh quá tải dịch gây cấp tính xuất huyết phổi.
-##### Y lệnh thuốc điều trị (Định lượng EBM chính xác):
-* **Benzylpenicillin (Crystalline Penicillin G)**: 2.000.000 UI – 4.000.000 UI tiêm tĩnh mạch chậm (IV) mỗi 6 giờ (q6h) x 7 ngày. *(Hoặc Ceftriaxone 2.0 g tiêm truyền tĩnh mạch 1 lần/ngày x 7 ngày nếu dị ứng Penicillin)*.
-* **Paracetamol (Acetaminophen)**: 500 mg truyền tĩnh mạch (IV) khi sốt ≥ 38.5 °C (tối đa 3g/24h, theo dõi sát chức năng gan).
-* **Furosemide**: 40 mg IV (Thử nghiệm đáp ứng lợi tiểu sau khi đã bù đủ dịch CVP 8-12 cmH2O; nếu vô niệu/không đáp ứng -> Chuẩn bị lọc máu ngoài thận).
-##### Chỉ tiêu theo dõi & Mục tiêu lâm sàng:
-* Theo dõi sinh hiệu (Mạch, HA, Nhịp thở, SpO2) mỗi 1–2 giờ; lượng nước tiểu q1h (Mục tiêu duy trì ≥ 0.5–1.0 mL/kg/h).
-* Kiểm tra Công thức máu, Creatinine, Ure, Điện giải đồ và Khí máu động mạch mỗi 12 giờ.
-* Chỉ định Lọc máu liên tục (CRRT) hoặc Thẩm phân máu cấp cứu (HD) ngay khi có một trong các tiêu chuẩn: Vô niệu > 12h, Creatinine máu tăng nhanh, K⁺ > 5.5 mmol/L, Toan chuyển hóa nặng (pH < 7.2) hoặc quá tải thể tích gây phù phổi cấp.
-```
-
---
+1. **Bộ Y tế Việt Nam**. *Quyết định số 3377/QĐ-BYT ngày 06/09/2023 về việc ban hành Hướng dẫn Chẩn đoán và Điều trị bệnh Sốt rét*. Hà Nội, 2023.
+2. **Bộ Y tế Việt Nam**. *Quyết định số 4922/QĐ-BYT ngày 25/10/2021 về việc sửa đổi, bổ sung Hướng dẫn Chẩn đoán và Điều trị bệnh Sốt rét*. Hà Nội, 2021.
+3. **World Health Organization (WHO)**. *WHO Guidelines for malaria - 16 October 2024*. Geneva: World Health Organization, 2024. Available from: <https://www.who.int/publications/i/item/guidelines-for-malaria>.
+4. **Centers for Disease Control and Prevention (CDC)**. *Treatment of Malaria: Guidelines for Clinicians (United States)*. Updated 2024. Available from: <https://www.cdc.gov/malaria/diagnosis_treatment/treatment.html>.
