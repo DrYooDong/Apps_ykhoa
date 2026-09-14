@@ -199,6 +199,22 @@ export const EPIDEMIOLOGY_DATABASE: Record<string, DiseaseEpidemiologyProfile> =
     highRiskPopulations: ['Người có người thân cùng nhà nhiễm HP', 'Người lạm dụng rượu, thuốc lá, thuốc giảm đau NSAIDs'],
     outbreakPotential: 'sporadic',
     clinicalPearls: 'Tập quán ăn uống chung bát chấm tại Việt Nam là nguyên nhân chính gây lây nhiễm chéo H. pylori trong gia đình.'
+  },
+  thuy_dau: {
+    diseaseId: 'thuy_dau',
+    diseaseName: 'Thủy đậu (Varicella / Chickenpox)',
+    icdCode: 'B01',
+    specialty: 'Truyền Nhiễm',
+    endemicAreas: ['Toàn quốc', 'Khu vực mật độ dân số cao', 'Nhà trẻ, trường mầm non, trường tiểu học', 'Khu dân cư tập trung'],
+    peakSeasons: ['Giao mùa Đông - Xuân đến đầu Hè (Tháng 2 đến tháng 5)', 'Thời điểm độ ẩm không khí cao'],
+    vectors: ['Không qua vector côn trùng', 'Nguồn lây người sang người qua giọt bắn hô hấp', 'Tiếp xúc dịch mụn nước thủy đậu hoặc zona'],
+    occupationalRisks: ['Giáo viên mầm non', 'Học sinh tiểu học', 'Nhân viên y tế khoa Nhi / Truyền nhiễm', 'Phụ huynh chăm sóc trẻ ốm'],
+    foodWaterRisks: ['Không lây truyền qua nguồn nước hay thực phẩm'],
+    transmissionRoutes: ['Giọt bắn đường hô hấp (Airborne / Droplet)', 'Tiếp xúc trực tiếp chất dịch từ mụn nước vỡ'],
+    incubationPeriod: '10 – 21 ngày (thường gặp 14 – 16 ngày)',
+    highRiskPopulations: ['Trẻ sơ sinh và nhũ nhi < 1 tuổi', 'Phụ nữ mang thai', 'Người trưởng thành chưa có miễn dịch', 'Bệnh nhân suy giảm miễn dịch, dùng Corticoid dài ngày'],
+    outbreakPotential: 'high',
+    clinicalPearls: 'Chỉ số lây nhiễm cơ bản cao (R0 = 10-12). Bệnh nhân lây truyền mạnh từ 24-48 giờ trước khi phát ban cho đến khi toàn bộ nốt mụn nước đã khô vảy hoàn toàn.'
   }
 };
 

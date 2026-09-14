@@ -289,6 +289,8 @@ export function analyzeClinicalCase(
         b.id === 'lao_phoi' ||
         b.id === 'viem_mang_nao' ||
         b.id === 'viem-mang-nao-vi-khuan-cap' ||
+        b.id === 'thuy_dau' ||
+        b.id === 'thuy-dau-varicella' ||
         b.id === 'viem_phoi';
 
       // 1. Sốt xuất huyết Dengue: Vector muỗi Aedes, ổ dịch SXH, mùa mưa
@@ -344,7 +346,27 @@ export function analyzeClinicalCase(
         }
       }
 
-      // 4. Các bệnh nhiễm trùng chung khi có ổ dịch phù hợp
+      // 4. Thủy đậu (Varicella)
+      if (b.id === 'thuy_dau' || b.id === 'thuy-dau-varicella') {
+        const epiMatch =
+          normalizeText(epiContext.vectorExposure).includes('thuy dau') ||
+          normalizeText(epiContext.vectorExposure).includes('vzv') ||
+          normalizeText(epiContext.outbreakAlert).includes('thuy dau') ||
+          normalizeText(epiContext.seasonalContext).includes('xuan') ||
+          normalizeText(epiContext.endemicArea).includes('thuy dau') ||
+          normalizeText(epiContext.endemicArea).includes('vzv');
+        if (epiMatch && matched.length > 0) {
+          factor *= 1.25;
+          epiBoostInfo = {
+            boosted: true,
+            reason: 'Tam giác Dịch tễ: Tiếp xúc nguồn lây Thủy đậu / Ổ dịch học đường VZV',
+            points: 15,
+          };
+          notes.push('Dịch tễ học ủng hộ mạnh mẽ chẩn đoán Thủy đậu (VZV)');
+        }
+      }
+
+      // 5. Các bệnh nhiễm trùng chung khi có ổ dịch phù hợp
       if (isInfDisease && !epiBoostInfo && epiContext.outbreakAlert) {
         if (normalizeText(epiContext.outbreakAlert).includes(normalizeText(b.ten))) {
           factor *= 1.15;

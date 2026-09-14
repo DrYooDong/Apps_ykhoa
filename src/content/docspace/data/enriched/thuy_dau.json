@@ -1,0 +1,364 @@
+{
+    "icdCode": "B01",
+    "icdPrefixes": [
+        "B01.0",
+        "B01.1",
+        "B01.2",
+        "B01.8",
+        "B01.9"
+    ],
+    "diseaseName": "Thủy đậu (Varicella / Chickenpox)",
+    "specialty": "Truyền nhiễm",
+    "severity": "standard",
+    "summary": "Thủy đậu (Varicella) là bệnh truyền nhiễm cấp tính do Varicella-Zoster Virus (VZV - Human Herpesvirus 3) gây ra, lây truyền qua đường hô hấp hoặc tiếp xúc trực tiếp với dịch nốt phỏng. Bệnh đặc trưng bởi sốt nhẹ, mệt mỏi và phát ban mụn nước màng mỏng nổi thành từng đợt nhiều lứa tuổi tập trung chủ yếu ở thân mình, mặt và da đầu. Mặc dù là bệnh lành tính tự giới hạn ở trẻ em khỏe mạnh, Thủy đậu có thể gây ra các biến chứng đe dọa tính mạng như bội nhiễm vi khuẩn xâm lấn (GAS, S. aureus), viêm phổi vi rút, viêm não hoặc thủy đậu sơ sinh/bẩm sinh ở trẻ sơ sinh, người lớn, thai phụ và bệnh nhân suy giảm miễn dịch.",
+    "goldStandard": "Kỹ thuật Sinh học phân tử Real-time PCR phát hiện VZV DNA từ dịch nốt mụn nước chưa vỡ hoặc vảy tiết (Độ nhạy và độ đặc hiệu > 95%).",
+    "criteriaRule": {
+        "mandatoryIds": [
+            "tieu_chuan_phat_ban_mun_nuoc",
+            "yeu_to_dich_te_vzv"
+        ],
+        "minMajorRequired": 1,
+        "minMinorRequired": 1,
+        "ruleDescription": "Chẩn đoán xác định khi có cả 2 Tiêu chuẩn Bắt buộc (Phát ban mụn nước nhiều lứa tuổi VÀ Yếu tố dịch tễ tiếp xúc) VÀ ít nhất 1 Tiêu chuẩn Cận lâm sàng (hoặc kết quả PCR VZV DNA dương tính từ dịch tổn thương da)."
+    },
+    "criteria": [
+        {
+            "id": "tieu_chuan_phat_ban_mun_nuoc",
+            "type": "mandatory",
+            "label": "[Lâm sàng] Phát ban mụn nước bóng đặc trưng nhiều lứa tuổi",
+            "description": "Ban xuất hiện thành từng đợt rải rác toàn thân (thân mình, mặt, da đầu, niêm mạc). Tổn thương tiến triển nhanh từ ban sẩn đỏ -> mụn nước màng mỏng bóng hình giọt sương trên nền da đỏ -> mụn mủ -> đóng vảy tiết. Đặc điểm then chốt: Trên cùng một vùng da có sự hiện diện đồng thời của nhiều lứa tuổi tổn thương (sẩn, mụn nước, vảy tiết).",
+            "sourceGuideline": "Quyết định Bộ Y Tế Việt Nam & CDC ACIP Varicella Guidelines 2021"
+        },
+        {
+            "id": "yeu_to_dich_te_vzv",
+            "type": "mandatory",
+            "label": "[Dịch tễ] Yếu tố tiếp xúc nguồn lây trong thời kỳ ủ bệnh",
+            "description": "Tiền sử tiếp xúc trực tiếp hoặc chung không khí trong không gian kín với người mắc Thủy đậu hoặc Zona (Herpes Zoster) trong khoảng thời gian từ 10 đến 21 ngày trước khi khởi phát triệu chứng.",
+            "sourceGuideline": "WHO Varicella Position Paper & UKHSA Guidelines 2024"
+        },
+        {
+            "id": "hoi_chung_tien_trieu",
+            "type": "major",
+            "label": "[Lâm sàng] Hội chứng tiền triệu toàn thân",
+            "description": "Sốt nhẹ đến vừa (37.8°C - 38.5°C), mệt mỏi, chán ăn, đau đầu, đau cơ xuất hiện 24-48 giờ trước khi mụn nước đầu tiên xuất hiện (thường biểu hiện rõ ở người lớn và trẻ lớn).",
+            "sourceGuideline": "StatPearls VZV Review 2025"
+        },
+        {
+            "id": "ton_thuong_niem_mac",
+            "type": "major",
+            "label": "[Lâm sàng] Tổn thương niêm mạc (Enanthem)",
+            "description": "Xuất hiện các nốt phỏng mỏng dễ vỡ thành vết loét nông gây đau ngứa ở niêm mạc vòm họng, miệng, kết mạc mắt, niêm mạc âm đạo hoặc niệu đạo.",
+            "sourceGuideline": "StatPearls VZV Review 2025"
+        },
+        {
+            "id": "pcr_vzv_dna_gold",
+            "type": "lab",
+            "label": "[Cận lâm sàng] PCR VZV DNA từ dịch nốt mụn nước",
+            "description": "Xét nghiệm Real-time PCR từ phết dịch nốt mụn nước chưa vỡ hoặc vảy tiết cho kết quả dương tính xác định sự có mặt của bản sao DNA Varicella-Zoster Virus.",
+            "labThreshold": "VZV DNA PCR (+)",
+            "sourceGuideline": "CDC ACIP & NICVB Vietnam Journal 2022"
+        },
+        {
+            "id": "ctm_bien_doi",
+            "type": "lab",
+            "label": "[Cận lâm sàng] Công thức máu (CTM)",
+            "description": "Số lượng bạch cầu bình thường hoặc giảm nhẹ trong giai đoạn đầu vi rút huyết; bạch cầu tăng cao chuyển trái khi có bội nhiễm vi khuẩn da/mô mềm; giảm tiểu cầu trong thể xuất huyết.",
+            "labThreshold": "Bạch cầu < 4.0 G/L hoặc Tiểu cầu < 100 G/L",
+            "sourceGuideline": "Hướng dẫn chẩn đoán & điều trị Thủy đậu - Bộ Y Tế"
+        },
+        {
+            "id": "xquang_phoi_kieu_viem_phoi_virut",
+            "type": "imaging",
+            "label": "[Chẩn đoán hình ảnh] X-quang ngực thẳng nghi ngờ Viêm phổi do VZV",
+            "description": "Hình ảnh mờ rải rác hai bên phổi, tổn thương nốt mờ mô kẽ hoặc đám mờ đông đặc khi có bội nhiễm vi khuẩn ở bệnh nhân có triệu chứng ho, khó thở, SpO2 giảm.",
+            "labThreshold": "Tổn thương mô kẽ / nốt mờ rải rác 2 phế trường",
+            "sourceGuideline": "RCOG Green-top Guideline No. 13 & StatPearls 2025"
+        }
+    ],
+    "severityGrading": [
+        {
+            "grade": "Độ 1 - Thể nhẹ / Thông thường (Theo dõi Ngoại trú)",
+            "severity": "mild",
+            "criteria": "[Lâm sàng]: Sốt nhẹ hoặc không sốt, mụn nước rải rác số lượng ít (< 200 nốt), không có biến chứng tạng hoặc bội nhiễm da, trẻ tỉnh táo, tự uống nước/ăn uống tốt. [Cận lâm sàng]: Công thức máu bình thường. [Tiêu chuẩn an toàn]: Huyết động ổn định, thuộc nhóm trẻ khỏe mạnh (> 1 tháng đến 12 tuổi), gia đình có khả năng chăm sóc và theo dõi cách ly tại nhà.",
+            "triage": "Ngoại trú / Phòng khám Truyền nhiễm - Nhi / Trạm Y tế",
+            "primaryAction": "Cách ly tại nhà, hạ sốt bằng Paracetamol (TUYỆT ĐỐI KHÔNG dùng Aspirin/Ibuprofen), bôi xanh Methylene sát khuẩn nốt mụn vỡ, dùng Antihistamine chống ngứa.",
+            "targetVitals": "Nhiệt độ < 38.5°C, Mạch HA ổn định, ngứa giảm, nốt phỏng khô đóng vảy sau 5-7 ngày không bội nhiễm.",
+            "protocol": {
+                "title": "Phác đồ điều trị Thủy đậu thể nhẹ theo dõi ngoại trú",
+                "tuyen": [
+                    "Cách ly bệnh nhân tại phòng thoáng khí đến khi toàn bộ nốt mụn nước đóng vảy khô hoàn toàn (thường 7-10 ngày).",
+                    "Vệ sinh thân thể hàng ngày bằng nước ấm sạch, lau nhẹ nhàng, tuyệt đối không chà xát làm vỡ nốt mụn nước."
+                ],
+                "drugs": [
+                    [
+                        "Paracetamol",
+                        "10-15 mg/kg/lần PO mỗi 4-6 giờ (tối đa 60 mg/kg/ngày)",
+                        "Chỉ dùng khi sốt > 38.5°C hoặc đau nhiều. CHỐNG CHỈ ĐỊNH Aspirin (nguy cơ Hội chứng Reye) và NSAIDs/Ibuprofen (nguy cơ vi khuẩn Streptococcus nhóm A bội nhiễm hoại tử)."
+                    ],
+                    [
+                        "Chlorpheniramine / Loratadine",
+                        "Liều theo tuổi PO x 1-2 lần/ngày",
+                        "Giảm ngứa da, giúp bệnh nhân đỡ khó chịu và hạn chế gãi làm vỡ mụn nước."
+                    ],
+                    [
+                        "Dung dịch Xanh Methylene 1% / Chlorhexidine",
+                        "Chấm tại chỗ 2-3 lần/ngày",
+                        "Bôi trực tiếp lên các nốt mụn nước đã vỡ hoặc vỡ mủ để sát khuẩn phòng bội nhiễm."
+                    ]
+                ],
+                "monitoring": [
+                    "Theo dõi nhiệt độ, số lượng nốt mụn nước mới và dấu hiệu bội nhiễm da hàng ngày.",
+                    "Tái khám ngay nếu có dấu hiệu cờ đỏ: sốt cao liên tục không hạ, nốt mụn hóa mủ sưng đỏ đau, ho, khó thở, lừ đừ, co giật."
+                ],
+                "cautions": [
+                    "CHỐNG CHỈ ĐỊNH TUYỆT ĐỐI Aspirin (Hội chứng Reye gây suy gan não tử vong) và Ibuprofen/NSAIDs (nguy cơ viêm gân hoại tử do Streptococcus nhóm A)."
+                ]
+            }
+        },
+        {
+            "grade": "Độ 2 - Thể trung bình / Nhóm nguy cơ cao (Nội trú / Theo dõi sát)",
+            "severity": "moderate",
+            "criteria": "[Lâm sàng]: Mụn nước mọc nhiều (200 - 500 nốt), sốt vừa đến cao, HOẶC bệnh nhân thuộc nhóm nguy cơ cao biến chứng (người lớn > 12 tuổi, phụ nữ mang thai, bệnh nhân bệnh da mãn tính như chàm/atopic eczema, bệnh phổi mãn tính, dùng Corticoid kéo dài). [Cận lâm sàng]: Công thức máu bạch cầu bình thường hoặc tăng nhẹ. [Tiêu chuẩn an toàn]: Chưa có suy tạng, chưa có tổn thương thần kinh hay suy hô hấp.",
+            "triage": "Khám chuyên khoa / Nhập viện Nội trú Khoa Truyền nhiễm - Nhi",
+            "primaryAction": "Khởi đầu sớm Thuốc kháng vi rút Acyclovir PO hoặc Valacyclovir PO trong vòng 24 - 72 giờ đầu phát ban để rút ngắn thời gian sốt và giảm số lượng tổn thương.",
+            "targetVitals": "Hạ sốt < 38°C trong 48h, ngưng xuất hiện mụn nước mới sau 48-72h dùng thuốc, huyết động và nhịp thở ổn định.",
+            "protocol": {
+                "title": "Phác đồ điều trị Thủy đậu thể trung bình & Nhóm nguy cơ cao",
+                "tuyen": [
+                    "Nhập viện nội trú hoặc quản lý chặt chẽ ngoại trú có hẹn tái khám hàng ngày.",
+                    "Chỉ định thuốc kháng vi rút đường uống càng sớm càng tốt (tốt nhất trong 24 giờ đầu kể từ khi xuất hiện nốt ban)."
+                ],
+                "drugs": [
+                    [
+                        "Acyclovir (đường uống PO)",
+                        "Trẻ 2-12 tuổi: 20 mg/kg/lần (tối đa 800 mg/lần) PO x 4 lần/ngày x 5 ngày. Người lớn & Trẻ > 40kg: 800 mg PO x 5 lần/ngày x 7 ngày.",
+                        "Uống ngay trong 24-72h đầu phát ban. Giúp rút ngắn thời gian bệnh và hạn chế biến chứng."
+                    ],
+                    [
+                        "Valacyclovir (đường uống PO)",
+                        "Người lớn & Trẻ > 12 tuổi: 1000 mg PO x 3 lần/ngày x 7 ngày.",
+                        "Thay thế Acyclovir PO cho người lớn/trẻ lớn do sinh khả dụng cao và số lần uống ít hơn."
+                    ],
+                    [
+                        "Cefalexin / Amoxicillin-Clavulanate",
+                        "Liều chuẩn PO x 7 ngày",
+                        "Chỉ định khi có biểu hiện bội nhiễm vi khuẩn da nông (nốt phỏng hóa mủ, vảy mủ vàng, quầng đỏ xung quanh chân nốt)."
+                    ]
+                ],
+                "monitoring": [
+                    "Đánh giá tổn thương da, sinh hiệu 2 lần/ngày, kiểm tra chức năng thận nếu dùng Acyclovir kéo dài.",
+                    "Theo dõi phát hiện sớm triệu chứng hô hấp (ho, đau ngực) hoặc thần kinh (đau đầu nhiều, nôn trớ)."
+                ],
+                "cautions": [
+                    "Bệnh nhân suy thận cần điều chỉnh khoảng cách liều Acyclovir dựa trên độ thanh lọc Creatinine."
+                ]
+            }
+        },
+        {
+            "grade": "Độ 3 - Thể nặng / Biến chứng cấp cứu (Hồi sức Cấp cứu - ICU)",
+            "severity": "critical",
+            "criteria": "[Lâm sàng]: Thủy đậu có biến chứng nặng đe dọa tính mạng: Viêm phổi do VZV (ho, khó thở, thở nhanh, SpO2 < 92%), Viêm não / Thất điều tiểu não (co giật, lơ mơ, hôn mê, cổ cứng), Bội nhiễm vi khuẩn xâm lấn (viêm mô tế bào sâu, viêm gân hoại tử, sốc nhiễm trùng do S. aureus / GAS), Thủy đậu phỏng xuất huyết, Thủy đậu sơ sinh nặng (mẹ mắc bệnh 5 ngày trước đến 2 ngày sau sinh), bệnh nhân suy giảm miễn dịch nặng (HIV CD4 < 15%, ung thư máu, ghép tạng). [Cận lâm sàng]: X-quang phổi có tổn thương mô kẽ nốt mờ rải rác 2 bên, DNT biến đổi nhẹ, rối loạn đông máu, men gan/Creatinine tăng. [Dấu hiệu cảnh báo]: Suy hô hấp, tụt huyết áp, rối loạn tri giác, co giật.",
+            "triage": "Nhập viện Hồi sức Cấp cứu (ICU) / Khoa Cấp cứu Truyền nhiễm BV Tỉnh / Trung ương",
+            "primaryAction": "Acyclovir Tĩnh mạch (IV) liều cao lập tức + Hồi sức hô hấp tuần hoàn + Kháng sinh tĩnh mạch phổ rộng bội nhiễm + Cân nhắc VariZIG dự phòng/hỗ trợ.",
+            "targetVitals": "SpO2 >= 95%, PaO2/FiO2 > 300, Mạch HA ổn định, cắt co giật, tri giác cải thiện, bài niệu > 1 mL/kg/giờ.",
+            "protocol": {
+                "title": "Phác đồ Hồi sức Cấp cứu Thủy đậu thể nặng & Biến chứng tạng",
+                "tuyen": [
+                    "Chuyển phòng Hồi sức Tích cực (ICU), cách ly đường không khí và tiếp xúc tuyệt đối.",
+                    "Đảm bảo đường thở, hỗ trợ hô hấp (Thở Oxy kính/mask, thở NCPAP hoặc Đặt nội khí quản thông khí cơ học nếu suy hô hấp nặng).",
+                    "Thiết lập 2 đường truyền tĩnh mạch ngoại vi lớn, lập kế hoạch bù dịch duy trì bài niệu."
+                ],
+                "drugs": [
+                    [
+                        "Acyclovir Tĩnh mạch (IV)",
+                        "Trẻ < 12 tuổi: 10-15 mg/kg IV mỗi 8 giờ (hoặc 500 mg/m2 IV q8h). Người lớn & Trẻ >= 12 tuổi: 10 mg/kg IV mỗi 8 giờ. Dùng trong 7-10 ngày (hoặc đến khi lâm sàng cải thiện hoàn toàn).",
+                        "Pha truyền IV chậm trong 1 giờ. Bắt buộc cho mọi trường hợp biến chứng tạng hoặc suy giảm miễn dịch."
+                    ],
+                    [
+                        "Vancomycin + Ceftriaxone / Meropenem IV",
+                        "Liều hồi sức IV theo mg/kg/ngày",
+                        "Phối hợp ngay khi nghi ngờ bội nhiễm vi khuẩn tụ cầu vàng kháng Methicillin (MRSA) hoặc Liên cầu nhóm A xâm lấn / Sốc nhiễm khuẩn."
+                    ],
+                    [
+                        "VariZIG / VZIG (Huyết thanh miễn dịch VZV)",
+                        "125 Unit / 10 kg IM (tối đa 625 Unit) trong vòng 10 ngày sau tiếp xúc",
+                        "Chỉ định dự phòng sau tiếp xúc cho trẻ sơ sinh có mẹ mắc Thủy đậu (5 ngày trước đến 2 ngày sau sinh), thai phụ không có miễn dịch, trẻ sinh thiếu tháng <28 tuần."
+                    ]
+                ],
+                "monitoring": [
+                    "Theo dõi liên tục Sinh hiệu (Mạch, HA, SpO2, Nhịp thở), Đột ngột tri giác, Khí máu động mạch.",
+                    "Kiểm tra CTM, Creatinine, Urea, SGOT, SGPT, Đông máu toàn bộ mỗi 12-24 giờ."
+                ],
+                "cautions": [
+                    "Phải truyền Acyclovir IV chậm tối thiểu 1 giờ và bù đủ dịch để tránh kết tủa tinh thể Acyclovir tại ống thận gây suy thận cấp sau thận."
+                ]
+            }
+        }
+    ],
+    "protocol": {
+        "title": "Phác đồ Chẩn đoán, Điều trị và Quản lý Bệnh Thủy đậu (Varicella)",
+        "guideline": "Quyết định Bộ Y Tế Việt Nam, Hướng dẫn WHO 2014/2025, CDC ACIP 2021-2024 & RCOG Green-top Guideline 2024",
+        "targetGoals": [
+            "Mục tiêu 1: Rút ngắn thời gian diễn tiến bệnh, giảm mật độ mụn nước và ngăn chặn biến chứng bội nhiễm da cũng như tổn thương cơ quan đích (phổi, não, gan).",
+            "Mục tiêu 2: Kiểm soát triệu chứng sốt và ngứa an toàn, tuyệt đối không dùng Aspirin và Ibuprofen/NSAIDs.",
+            "Mục tiêu 3: Thực hiện cách ly nghiêm ngặt tránh lây nhiễm chéo trong gia đình/bệnh viện và dự phòng sau tiếp xúc (PEP) cho đối tượng nguy cơ cao."
+        ],
+        "initialManagement": [
+            "Phân tầng tiếp nhận bệnh nhân: Thể nhẹ theo dõi cách ly tại nhà; Thể trung bình/nguy cơ cao xét dùng Acyclovir/Valacyclovir uống; Thể nặng/biến chứng nhập ICU dùng Acyclovir IV.",
+            "Thực hiện biện pháp cách ly phòng lây truyền qua đường không khí (Airborne) và tiếp xúc (Contact) cho đến khi tất cả tổn thương da khô đóng vảy hoàn toàn.",
+            "Chăm sóc da tại chỗ: Tắm rửa nhẹ nhàng nước ấm, cắt ngắn móng tay, tránh chà xát gãi vỡ nốt mụn nước.",
+            "Hạ sốt an toàn bằng Paracetamol khi nhiệt độ > 38.5°C. Tuyệt đối không dùng Aspirin hoặc Ibuprofen."
+        ],
+        "firstLineDrugs": [
+            {
+                "drugName": "Acyclovir (Đường uống PO)",
+                "class": "Thuốc kháng vi rút nhóm Nucleoside Analog",
+                "route": "Uống (PO)",
+                "dosage": "Trẻ 2-12 tuổi: 20 mg/kg/lần (tối đa 800 mg/lần) x 4 lần/ngày. Người lớn & Trẻ > 40kg: 800 mg/lần x 5 lần/ngày.",
+                "frequency": "4 - 5 lần/ngày x 5 - 7 ngày",
+                "instructions": "Bắt đầu càng sớm càng tốt trong vòng 24 - 72h đầu sau khi xuất hiện mụn nước.",
+                "isFirstLine": true,
+                "notes": "Chỉ định cho bệnh nhân > 12 tuổi, trẻ em có bệnh da/phổi mãn tính, dùng Corticoid hoặc bệnh trung bình.",
+                "contraindications": [
+                    "Tiền sử dị ứng nặng hoặc quá mẫn với Acyclovir hoặc Valacyclovir."
+                ]
+            },
+            {
+                "drugName": "Acyclovir (Đường Tĩnh mạch IV)",
+                "class": "Thuốc kháng vi rút nhóm Nucleoside Analog",
+                "route": "Truyền tĩnh mạch (IV)",
+                "dosage": "Trẻ < 12 tuổi: 10-15 mg/kg IV q8h (hoặc 500 mg/m2 IV q8h). Người lớn & Trẻ >= 12 tuổi: 10 mg/kg IV q8h.",
+                "frequency": "Mỗi 8 giờ x 7 - 10 ngày",
+                "instructions": "Pha trong dung dịch NaCl 0.9% hoặc Glucose 5%, truyền tĩnh mạch chậm kéo dài trong ít nhất 60 phút.",
+                "isFirstLine": true,
+                "notes": "Chỉ định bắt buộc cho Thủy đậu thể nặng, có biến chứng tạng (viêm phổi, viêm não), Thủy đậu sơ sinh hoặc bệnh nhân suy giảm miễn dịch.",
+                "contraindications": [
+                    "Quá mẫn với Acyclovir."
+                ]
+            },
+            {
+                "drugName": "Paracetamol (Acetaminophen)",
+                "class": "Thuốc hạ sốt, giảm đau",
+                "route": "Uống (PO) / Đặt hậu môn (PR)",
+                "dosage": "10 - 15 mg/kg/lần (tối đa 60 mg/kg/ngày). Người lớn: 500 - 1000 mg/lần.",
+                "frequency": "Mỗi 4 - 6 giờ khi sốt > 38.5°C",
+                "instructions": "Dùng khi sốt cao hoặc đau ngứa nhiều.",
+                "isFirstLine": true,
+                "notes": "Thuốc hạ sốt đầu tay an toàn duy nhất được khuyến cáo cho bệnh nhân Thủy đậu.",
+                "contraindications": [
+                    "Suy gan nặng, quá mẫn với Paracetamol."
+                ]
+            }
+        ],
+        "secondLineDrugs": [
+            {
+                "drugName": "Valacyclovir",
+                "class": "Thuốc kháng vi rút (Tiền chất của Acyclovir)",
+                "route": "Uống (PO)",
+                "dosage": "Người lớn & Trẻ > 12 tuổi: 1000 mg/lần x 3 lần/ngày x 7 ngày.",
+                "frequency": "3 lần/ngày x 7 ngày",
+                "instructions": "Uống cùng hoặc xa bữa ăn.",
+                "isFirstLine": false,
+                "notes": "Thay thế Acyclovir PO cho người lớn và trẻ lớn nhờ sinh khả dụng đường uống cao hơn và lịch dùng thuốc thuận tiện.",
+                "contraindications": [
+                    "Quá mẫn với Valacyclovir hoặc Acyclovir."
+                ]
+            },
+            {
+                "drugName": "VariZIG / VZIG (Varicella-Zoster Immune Globulin)",
+                "class": "Huyết thanh miễn dịch đặc hiệu kháng VZV",
+                "route": "Tiêm bắp (IM)",
+                "dosage": "125 Unit / 10 kg cân nặng (tối thiểu 62.5 U cho trẻ <= 2kg; tối đa 625 Unit = 5 lọ).",
+                "frequency": "Tiêm bắp 1 liều duy nhất",
+                "instructions": "Dùng càng sớm càng tốt trong vòng 96 giờ và tối đa trong 10 ngày sau tiếp xúc.",
+                "isFirstLine": false,
+                "notes": "Dự phòng sau tiếp xúc (PEP) cho đối tượng nguy cơ cao: Trẻ sơ sinh có mẹ mắc bệnh 5 ngày trước - 2 ngày sau sinh; Thai phụ không có miễn dịch; Trẻ sinh thiếu tháng < 28 tuần; Người suy giảm miễn dịch.",
+                "contraindications": [
+                    "Bệnh nhân thiếu hụt IgA có kháng thể chống IgA, tiền sử quá mẫn với chế phẩm máu."
+                ]
+            },
+            {
+                "drugName": "Vancomycin / Ceftriaxone",
+                "class": "Kháng sinh phổ rộng chống vi khuẩn bội nhiễm",
+                "route": "Truyền tĩnh mạch (IV)",
+                "dosage": "Vancomycin 15 mg/kg IV q6h; Ceftriaxone 50-100 mg/kg IV q24h.",
+                "frequency": "Theo lịch kháng sinh nội trú",
+                "instructions": "Dùng khi có bội nhiễm vi khuẩn xâm lấn da, mô mềm hoặc nhiễm trùng huyết.",
+                "isFirstLine": false,
+                "notes": "Điều trị bội nhiễm vi khuẩn Tụ cầu vàng (S. aureus) hoặc Liên cầu nhóm A (GAS).",
+                "contraindications": [
+                    "Quá mẫn với Cephalosporin / Glycopeptide."
+                ]
+            }
+        ],
+        "supportiveCare": [
+            "Chế độ dinh dưỡng: Ăn thức ăn lỏng, mềm, dễ nuốt, không cay chua (nếu có tổn thương niêm mạc miệng). Uống nhiều nước, bù Oresol.",
+            "Chống ngứa: Dùng kháng Histamine đường uống (Chlorpheniramine, Loratadine, Cetirizine) và thoa dung dịch Calamine ngoài da.",
+            "Sát khuẩn da: Chấm dung dịch Xanh Methylene 1% hoặc Chlorhexidine lên các nốt mụn nước đã vỡ để ngăn ngừa bội nhiễm vi khuẩn.",
+            "Theo dõi cờ đỏ: Hướng dẫn người nhà phát hiện ngay các dấu hiệu nguy hiểm (sốt cao liên tục, khó thở, lừ đừ, co giật, mụn nước hóa mủ đỏ) để đưa đến viện cấp cứu."
+        ]
+    },
+    "complications": [
+        {
+            "name": "Bội nhiễm vi khuẩn da và mô mềm (S. aureus & Group A Streptococcus)",
+            "timeframe": "acute_24h",
+            "warningSigns": "Mụn nước đục hóa mủ, sưng đỏ tấy đau lan rộng xung quanh, sốt cao trở lại, có thể tiến triển thành Viêm mô tế bào, Viêm gân hoại tử (Necrotizing fasciitis) hoặc Sốc nhiễm độc Toxin (STSS).",
+            "preventiveAction": "Giữ da sạch sẽ, cắt ngắn móng tay, không gãi chà xát. Dùng kháng sinh đường uống/tĩnh mạch sớm khi có dấu hiệu bội nhiễm.",
+            "onCallAlertText": "Y LỆNH TRỰC BÁO ĐỘNG: BỘI NHIỄM DA NẶNG / NÓNG ĐỎ ĐAU: Cho ngay Kháng sinh Cefalexin PO (nông) hoặc Oxacillin/Vancomycin IV (sâu), mời khám Ngoại nếu nghi hoại tử!"
+        },
+        {
+            "name": "Viêm phổi do Varicella (Varicella Pneumonitis)",
+            "timeframe": "subacute_7d",
+            "warningSigns": "Khởi phát 1-6 ngày sau mọc ban với biểu hiện ho khan, thở nhanh, khó thở, đau ngực, ho ra máu, SpO2 tụt < 92% (hay gặp nhất ở người lớn, thai phụ, người suy giảm miễn dịch).",
+            "preventiveAction": "Khởi đầu sớm Acyclovir PO/IV cho nhóm nguy cơ cao. Thở oxy, chụp X-quang phổi ngay khi có ho khó thở.",
+            "onCallAlertText": "Y LỆNH TRỰC BÁO ĐỘNG ĐỎ: VIÊM PHỔI THỦY ĐẬU: Cho thở Oxy kính/mask duy trì SpO2 >= 95%, Acyclovir 10 mg/kg IV q8h khẩn, chụp X-quang ngực tại giường!"
+        },
+        {
+            "name": "Biến chứng Thần kinh (Viêm não / Thất điều tiểu não / Viêm màng não)",
+            "timeframe": "subacute_7d",
+            "warningSigns": "Trẻ đi đứng loạng choạng, mất thăng bằng (thất điều tiểu não biểu hiện 1 tuần sau ban); hoặc đau đầu dữ dội, nôn ói, co giật, lơ mơ, cổ cứng (viêm não).",
+            "preventiveAction": "Theo dõi sát tri giác và vận động. Dùng Acyclovir IV liều cao 10-15 mg/kg q8h khi có nghi ngờ biến chứng thần kinh.",
+            "onCallAlertText": "Y LỆNH TRỰC BÁO ĐỘNG ĐỎ: THẦN KINH / CO GIẬT / LƠ MƠ: Bơm Acyclovir 10-15 mg/kg IV q8h khẩn, chọc dò DNT kiểm tra VZV PCR, chống co giật bằng Diazepam nếu cần!"
+        },
+        {
+            "name": "Hội chứng Reye (Reye Syndrome)",
+            "timeframe": "subacute_7d",
+            "warningSigns": "Nôn mửa liên tục, lừ đừ, co giật, mê sảng, gan to, men gan AST/ALT tăng dốc đứng, hạ đường huyết (xảy ra khi dùng Aspirin ở trẻ mắc Thủy đậu).",
+            "preventiveAction": "TUYỆT ĐỐI KHÔNG dùng Aspirin hoặc chế phẩm chứa Salicylate cho trẻ em mắc Thủy đậu.",
+            "onCallAlertText": "Y LỆNH TRỰC BÁO ĐỘNG ĐỎ: HỘI CHỨNG REYE: Chống phù brains, truyền Glucose ưu trương điều chỉnh hạ đường huyết, chống co giật, chuyển ICU!"
+        }
+    ],
+    "monitoringLabs": [
+        "Công thức máu (CTM) theo dõi số lượng bạch cầu, tiểu cầu và bạch cầu đa nhân trung tính.",
+        "Xét nghiệm RT-PCR VZV DNA từ phết dịch nốt phỏng mụn nước hoặc vảy tiết (xác chẩn nguyên nhân).",
+        "Chức năng gan (AST, ALT) và Chức năng thận (Creatinine, Urea máu) theo dõi độc tính thuốc và biến chứng tạng.",
+        "X-quang ngực thẳng kiểm tra tổn thương kẽ/đông đặc phổi khi có triệu chứng hô hấp.",
+        "Xét nghiệm Dịch não tủy (CSF VZV PCR, Tế bào, Đạm, Đường) khi có biểu hiện thần kinh trung ương."
+    ],
+    "vaultPathways": [
+        {
+            "khoCode": "CD",
+            "khoName": "Kho Tiêu Chuẩn CĐ",
+            "articleTitle": "Bộ tiêu chuẩn chẩn đoán xác định bệnh Thủy đậu (Varicella)",
+            "searchKeyword": "chẩn đoán thủy đậu varicella chickenpox"
+        },
+        {
+            "khoCode": "PDDT",
+            "khoName": "Kho Phác Đồ Điều Trị",
+            "articleTitle": "Phác đồ điều trị, dược thư & tư vấn người bệnh Thủy đậu",
+            "searchKeyword": "phác đồ điều trị thủy đậu acyclovir"
+        },
+        {
+            "khoCode": "DTH",
+            "khoName": "Kho Dịch Tễ & Nguy Cơ",
+            "articleTitle": "Dịch tễ học lâm sàng, lây truyền & vắc xin phòng Thủy đậu",
+            "searchKeyword": "dịch tễ vắc xin thủy đậu varicella"
+        },
+        {
+            "khoCode": "BC",
+            "khoName": "Kho Biến Chứng",
+            "articleTitle": "Nhận diện và xử trí cấp cứu các biến chứng Thủy đậu",
+            "searchKeyword": "biến chứng thủy đậu viêm phổi viêm não"
+        }
+    ]
+}

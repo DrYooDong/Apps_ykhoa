@@ -24,10 +24,10 @@ function check(name, pass, detail) {
   }
 }
 
-// 1. Kiểm tra clinical-rules-symptoms.json & clinical-rules-diseases.json
+// 1. Kiểm tra clinical-rules-symptoms.json & thư mục diseases/
 const dataDir = path.resolve('src/content/knowledge-vault/data');
 const symPath = path.join(dataDir, 'clinical-rules-symptoms.json');
-const disPath = path.join(dataDir, 'clinical-rules-diseases.json');
+const disDir = path.join(dataDir, 'diseases');
 const kbPath = path.join(dataDir, 'clinical-rules-kb.json');
 
 let symptoms = [];
@@ -36,8 +36,12 @@ let kb;
 
 try {
   symptoms = JSON.parse(fs.readFileSync(symPath, 'utf8'));
-  diseases = JSON.parse(fs.readFileSync(disPath, 'utf8'));
-  check('Modular Clinical Rules Files', true, `Đọc thành công tệp Triệu chứng (${(fs.statSync(symPath).size / 1024).toFixed(1)} KB) & Bệnh lý (${(fs.statSync(disPath).size / 1024).toFixed(1)} KB)`);
+  const specialtyFiles = fs.readdirSync(disDir).filter(f => f.endsWith('.json'));
+  for (const f of specialtyFiles) {
+    const list = JSON.parse(fs.readFileSync(path.join(disDir, f), 'utf8'));
+    if (Array.isArray(list)) diseases.push(...list);
+  }
+  check('Modular Clinical Rules Files', true, `Đọc thành công Triệu chứng (${(fs.statSync(symPath).size / 1024).toFixed(1)} KB) & ${specialtyFiles.length} tệp Bệnh lý chuyên khoa (${diseases.length} bệnh)`);
   
   if (fs.existsSync(kbPath)) {
     kb = JSON.parse(fs.readFileSync(kbPath, 'utf8'));
@@ -65,6 +69,15 @@ if (kb) {
   // Kiểm tra phác đồ điều trị của các bệnh
   const hasProtocols = kb.benh.every(b => b.phacDo && b.phacDo.thuoc && b.phacDo.thuoc.length > 0);
   check('Protocol Definitions', hasProtocols, `100% bệnh lý có phác đồ điều trị, danh mục thuốc và liều lượng`);
+
+  // Kiểm tra thư mục diseases/ phân tách chuyên khoa
+  const disDir = path.join(dataDir, 'diseases');
+  const hasDisDir = fs.existsSync(disDir);
+  let specialtyFilesCount = 0;
+  if (hasDisDir) {
+    specialtyFilesCount = fs.readdirSync(disDir).filter(f => f.endsWith('.json')).length;
+  }
+  check('Specialty Disease Files (Kho CDSS)', hasDisDir && specialtyFilesCount >= 9, `Tồn tại ${specialtyFilesCount} tệp bệnh lý phân tách theo chuyên khoa`);
 }
 
 // 2. Kiểm tra diagnostic-criteria-database.ts

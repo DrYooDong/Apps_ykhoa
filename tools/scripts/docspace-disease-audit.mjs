@@ -106,11 +106,15 @@ function auditDisease(slug) {
     logFail(`4. Chuyên khoa "${specialty || 'rỗng'}" không chuẩn y tế (Tránh nối chuỗi như "Thần kinh - Truyền nhiễm - Hồi sức")`);
   }
 
-  // 5. Kiểm tra Tồn tại trong Clinical Rules Diseases
-  const disPath = path.join(ROOT_DIR, 'src/content/knowledge-vault/data/clinical-rules-diseases.json');
+  // 5. Kiểm tra Tồn tại trong Clinical Rules Diseases (Kho Chuyên Khoa)
+  const disDir = path.join(ROOT_DIR, 'src/content/knowledge-vault/data/diseases');
   let disList = [];
   try {
-    disList = JSON.parse(fs.readFileSync(disPath, 'utf8'));
+    const files = fs.readdirSync(disDir).filter(f => f.endsWith('.json'));
+    for (const f of files) {
+      const items = JSON.parse(fs.readFileSync(path.join(disDir, f), 'utf8'));
+      if (Array.isArray(items)) disList.push(...items);
+    }
   } catch {}
 
   const matchedDis = disList.find(d => 
@@ -122,10 +126,10 @@ function auditDisease(slug) {
     (d.ten && enrichedData?.diseaseName && d.ten.toLowerCase().includes(enrichedData.diseaseName.toLowerCase().split('(')[0].trim()))
   );
   if (matchedDis) {
-    logPass(`5. Đã khai báo thực thể bệnh trong clinical-rules-diseases.json (ID: ${matchedDis.id})`);
+    logPass(`5. Đã khai báo thực thể bệnh trong CSDL diseases/ (ID: ${matchedDis.id})`);
     passCount++;
   } else {
-    logFail(`5. Chưa khai báo thực thể bệnh trong clinical-rules-diseases.json`);
+    logFail(`5. Chưa khai báo thực thể bệnh trong CSDL diseases/`);
   }
 
   // 6. Kiểm tra Toàn vẹn Triệu chứng (Zero Orphan Symptoms)

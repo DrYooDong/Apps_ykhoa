@@ -151,12 +151,22 @@ src/content/knowledge-vault/
 │   └── vault-crce.css                  # UI Chuỗi phản ứng lâm sàng 5 bước CRCE v3.0
 │
 ├── data/                               # Cơ sở dữ liệu danh mục hạt nhân (Mô-đun hóa)
+│   ├── diseases/                       # 📁 Bệnh lý CDSS phân tách theo 9 chuyên khoa
+│   │   ├── ho-hap.json                 # Hô hấp (5 bệnh)
+│   │   ├── tim-mach.json               # Tim mạch (5 bệnh)
+│   │   ├── tieu-hoa.json               # Tiêu hóa (6 bệnh)
+│   │   ├── tiet-nieu.json              # Tiết niệu (5 bệnh)
+│   │   ├── noi-tiet.json               # Nội tiết (5 bệnh)
+│   │   ├── than-kinh.json              # Thần kinh (1 bệnh)
+│   │   ├── toan-than.json              # Toàn thân / Cấp cứu (2 bệnh)
+│   │   ├── san-phu-khoa.json           # Sản phụ khoa (1 bệnh)
+│   │   ├── truyen-nhiem.json           # Truyền nhiễm (2 bệnh)
+│   │   └── index.ts                    # Module registry & export loader
 │   ├── vault-catalog-co-so.json        # Nhóm Cơ sở: GPSL, HS, SLB, DTH, KN (~425 KB)
 │   ├── vault-catalog-chuyen-sau.json   # Nhóm Chuyên sâu: TC, CLS, CD, PDDT, CN, DUOC, TV, BC (~424 KB)
 │   ├── vault-catalog-thuc-hanh.json    # Nhóm Thực hành: Bệnh án SOAP (BA) (~22 KB)
 │   ├── vault-catalog-ho-tro.json       # Nhóm Hỗ trợ: DD, CC, EBM, CDSS, ICD10, CORE (~172 KB)
 │   ├── clinical-rules-symptoms.json    # Danh mục từ vựng 195+ triệu chứng CDSS (~51 KB)
-│   ├── clinical-rules-diseases.json    # Ma trận suy luận & phác đồ 32 bệnh cốt lõi (~98 KB)
 │   ├── sample-clinical-cases.json      # Ca bệnh lâm sàng mẫu (~6 KB)
 │   ├── vault-catalog.json              # Master Catalog Sync (Tương thích ngược)
 │   └── clinical-rules-kb.json          # Master Clinical Rules KB Sync (Tương thích ngược)

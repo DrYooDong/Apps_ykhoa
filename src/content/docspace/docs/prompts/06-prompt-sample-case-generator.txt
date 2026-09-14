@@ -13,9 +13,9 @@
 #         • Bước 3: Tính toán xác suất CDSS, đối chiếu NEWS2/PEWS/ESI & Tiêu chuẩn phân độ.
 #         • Bước 4: Vận hành Bảng Chiến Lược 3 Cột và 9 phân mục phác đồ điều trị.
 #
-#   2. ĐOẠN CODE 2: Ma trận trọng số CDSS JSON (Nạp vào `clinical-rules-kb.json`)
-#      -> Khai báo các triệu chứng mới (kèm map tự suy định lượng) và vector trọng số
-#         (dt, gy, ht, loaitru) để Động cơ suy luận tính toán % xác suất chẩn đoán ở Bước 3.
+#   2. ĐOẠN CODE 2: Ma trận trọng số CDSS JSON (Nạp vào `clinical-rules-symptoms.json` & `diseases/<chuyen-khoa>.json`)
+#      -> Khai báo các triệu chứng mới (kèm map tự suy định lượng) và thực thể bệnh chuyên khoa;
+#         chạy 'node tools/scripts/bundle-clinical-rules.mjs' để tự động đồng bộ vào Master KB.
 # ==============================================================================
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -101,11 +101,14 @@ Tạo 01 đối tượng JSON ca bệnh hoàn chỉnh với số liệu sinh hi�
 ```
 
 ==============================================================================
-PHẦN 2: MA TRẬN TRỌNG SỐ SUY LUẬN CDSS (Nạp vào: clinical-rules-kb.json)
+PHẦN 2: MA TRẬN TRỌNG SỐ SUY LUẬN CDSS (Nạp vào symptoms.json & diseases/<chuyen-khoa>.json)
 ==============================================================================
-Cung cấp đoạn code JSON nạp vào file `src/content/knowledge-vault/data/clinical-rules-kb.json`:
+Cung cấp 2 đoạn code JSON nạp vào CSDL Tri thức Suy luận CDSS:
+• Đoạn 1: Bổ sung triệu chứng vào `src/content/knowledge-vault/data/clinical-rules-symptoms.json` (nếu chưa có).
+• Đoạn 2: Bổ sung thực thể bệnh lý vào tệp chuyên khoa tương ứng `src/content/knowledge-vault/data/diseases/<chuyen-khoa>.json` (ví dụ `truyen-nhiem.json`, `ho-hap.json`, `tim-mach.json`...).
+• Sau đó chạy lệnh tự động: `node tools/scripts/bundle-clinical-rules.mjs` để đồng bộ Master KB `clinical-rules-kb.json`.
 
-1. Bổ sung triệu chứng vào danh mục `\"trieuChung\"` (nếu chưa có):
+1. Bổ sung triệu chứng vào file `clinical-rules-symptoms.json` (nếu chưa có):
 ```json
 [
   {
@@ -131,7 +134,7 @@ Cung cấp đoạn code JSON nạp vào file `src/content/knowledge-vault/data/c
 ]
 ```
 
-2. Thêm hoặc cập nhật thực thể bệnh vào mảng `\"benh\"` (Kèm ma trận trọng số triệu chứng `dd`):
+2. Thêm thực thể bệnh vào tệp chuyên khoa tương ứng `src/content/knowledge-vault/data/diseases/<chuyen-khoa>.json` (Kèm ma trận trọng số triệu chứng `dd`):
 ```json
 {
   \"id\": \"[SLUG FILE]\",

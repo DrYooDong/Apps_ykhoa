@@ -20,9 +20,36 @@ async function exportKb() {
   fs.writeFileSync(outSymptomsPath, JSON.stringify(DEFAULT_KNOWLEDGE_BASE.trieuChung, null, 2), 'utf-8');
   console.log(`Exported symptoms to: ${outSymptomsPath} (${DEFAULT_KNOWLEDGE_BASE.trieuChung.length} triệu chứng)`);
 
-  const outDiseasesPath = path.join(targetDir, 'clinical-rules-diseases.json');
-  fs.writeFileSync(outDiseasesPath, JSON.stringify(DEFAULT_KNOWLEDGE_BASE.benh, null, 2), 'utf-8');
-  console.log(`Exported diseases to: ${outDiseasesPath} (${DEFAULT_KNOWLEDGE_BASE.benh.length} bệnh lý)`);
+
+  // Đồng bộ sang thư mục diseases/ phân tách theo chuyên khoa
+  const diseasesDir = path.join(targetDir, 'diseases');
+  if (!fs.existsSync(diseasesDir)) {
+    fs.mkdirSync(diseasesDir, { recursive: true });
+  }
+  const specialtyMap = {
+    'Hô hấp': 'ho-hap.json',
+    'Tim mạch': 'tim-mach.json',
+    'Tiêu hóa': 'tieu-hoa.json',
+    'Tiết niệu': 'tiet-nieu.json',
+    'Nội tiết': 'noi-tiet.json',
+    'Thần kinh': 'than-kinh.json',
+    'Toàn thân': 'toan-than.json',
+    'Sản phụ khoa': 'san-phu-khoa.json',
+    'Truyền nhiễm': 'truyen-nhiem.json'
+  };
+  const categorized = {};
+  Object.values(specialtyMap).forEach(file => categorized[file] = []);
+  DEFAULT_KNOWLEDGE_BASE.benh.forEach(d => {
+    const file = specialtyMap[d.nhom] || 'khac.json';
+    if (!categorized[file]) categorized[file] = [];
+    categorized[file].push(d);
+  });
+  for (const [file, list] of Object.entries(categorized)) {
+    if (list.length > 0) {
+      fs.writeFileSync(path.join(diseasesDir, file), JSON.stringify(list, null, 2) + '\n', 'utf-8');
+    }
+  }
+  console.log(`Exported specialty diseases to: ${diseasesDir} (${Object.keys(categorized).length} chuyên khoa)`);
 
   const outKbPath = path.join(targetDir, 'clinical-rules-kb.json');
   fs.writeFileSync(outKbPath, JSON.stringify(DEFAULT_KNOWLEDGE_BASE, null, 2), 'utf-8');

@@ -14,7 +14,7 @@ Hệ thống CDSS trong CliniPortal DocSpace được thiết kế theo mô hìn
 ┌────────────────────────────────────────────────────────────────────────┐
 │ TẦNG 1: Core Engine (32 Bệnh lý Cốt lõi & 195+ Triệu chứng)            │
 │ Files: src/content/knowledge-vault/data/clinical-rules-symptoms.json   │
-│        src/content/knowledge-vault/data/clinical-rules-diseases.json   │
+│        src/content/knowledge-vault/data/diseases/*.json (9 Chuyên khoa)│
 │ Nhiệm vụ: Chạy động cơ suy luận thời gian thực (Step 1 & Step 2)       │
 └──────────────────────────────────┬─────────────────────────────────────┘
                                    │
@@ -49,14 +49,16 @@ Mỗi tiêu chuẩn trong CDSS được gán một **Trọng số định lượ
 
 ---
 
-## 3. 🛠️ Cách 1: Chỉnh Sửa Trong File Cốt Lõi (`clinical-rules-symptoms.json` & `clinical-rules-diseases.json`)
+## 3. 🛠️ Cách 1: Chỉnh Sửa Trong File Cốt Lõi (Mô-đun hóa Chuyên khoa trong `diseases/`)
 
 Dành cho 32 bệnh lý cốt lõi tham gia trực tiếp vào thuật toán suy luận chẩn đoán thời gian thực.
 
 📁 **Đường dẫn tệp:**
 - **Triệu chứng:** `src/content/knowledge-vault/data/clinical-rules-symptoms.json`
-- **Bệnh lý & Trọng số:** `src/content/knowledge-vault/data/clinical-rules-diseases.json`
-*(Lưu ý: File tổng hợp `clinical-rules-kb.json` được tự động đồng bộ khi chạy `node tools/scripts/export-kb.mjs`)*.
+- **Bệnh lý theo chuyên khoa:** `src/content/knowledge-vault/data/diseases/<chuyen-khoa>.json`
+  *(Ví dụ: `ho-hap.json`, `tim-mach.json`, `tieu-hoa.json`, `tiet-nieu.json`, `noi-tiet.json`, `than-kinh.json`, `toan-than.json`, `san-phu-khoa.json`, `truyen-nhiem.json`)*
+- **Lệnh tự động đồng bộ Master KB:** Chạy `node tools/scripts/bundle-clinical-rules.mjs` để tự động cập nhật `clinical-rules-kb.json`.
+*(Lưu ý: File Master `clinical-rules-kb.json` được tự động đồng bộ khi chạy `node tools/scripts/bundle-clinical-rules.mjs` hoặc `node tools/scripts/export-kb.mjs`)*.
 
 ### Bước 1: Khai báo triệu chứng vào `clinical-rules-symptoms.json` (Nếu là triệu chứng mới)
 

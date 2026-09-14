@@ -84,7 +84,7 @@ Nhóm prompt này dùng để trích xuất **MÃ NGUỒN & DỮ LIỆU CẤU TR
 | :---: | :--- | :--- | :--- | :--- |
 | **00** | [`00-master-prompt-nap-chu-trinh-lam-sang.txt`](00-master-prompt-nap-chu-trinh-lam-sang.txt) | **Tổng hợp 4 Khối Code**: CDSS JSON, Trọng số KB, Ca mẫu, SOAP MD | Theo hướng dẫn từng khối | **Chạy 1 lần duy nhất sinh toàn bộ gói dữ liệu lâm sàng 4 bước** cho bất kỳ bệnh truyền nhiễm nào |
 | **05** | [`05-prompt-cdss-json-generator.txt`](05-prompt-cdss-json-generator.txt) | **Enriched CDSS JSON**<br>(Tiêu chuẩn chẩn đoán, Ngưỡng xét nghiệm vi sinh/huyết học, `severityGrading` đa phân độ, Phác đồ, Thuốc đặc hiệu/kháng sinh, Cờ đỏ) | `src/content/docspace/data/enriched/<slug>.json`<br>*(Chạy `node tools/scripts/build-enriched-cdss.mjs`)* | **Bước 3 & Bước 4**<br>• `criteria` $\to$ Tiêu chuẩn phân độ Bước 3<br>• `triage`, `primaryAction`, `targetVitals` $\to$ Bảng Chiến Lược 3 Cột Bước 4<br>• `protocol` $\to$ Phác đồ 9 phân mục Bước 4 |
-| **06** | [`06-prompt-sample-case-generator.txt`](06-prompt-sample-case-generator.txt) | **1. Ca bệnh mẫu JSON**<br>**2. Ma trận trọng số CDSS JSON** | 1. `src/content/knowledge-vault/data/sample-clinical-cases.json`<br>2. `src/content/knowledge-vault/data/clinical-rules-kb.json` | **Bước 1, 2 & 3**<br>• Bước 1: Nạp ca mẫu (kèm dịch tễ vùng lưu hành, véc-tơ, tiền sử tiêm chủng)<br>• Bước 2: Kích hoạt Tam giác chẩn đoán DTH gộp Đặt vấn đề<br>• Bước 3: Tính % xác suất chẩn đoán & thang điểm NEWS2/PEWS/ESI/qSOFA |
+| **06** | [`06-prompt-sample-case-generator.txt`](06-prompt-sample-case-generator.txt) | **1. Ca bệnh mẫu JSON**<br>**2. Ma trận trọng số CDSS JSON** | 1. `src/content/knowledge-vault/data/sample-clinical-cases.json`<br>2. `src/content/knowledge-vault/data/clinical-rules-symptoms.json` & `data/diseases/<chuyen-khoa>.json`<br>*(Chạy `node tools/scripts/bundle-clinical-rules.mjs`)* | **Bước 1, 2 & 3**<br>• Bước 1: Nạp ca mẫu (kèm dịch tễ vùng lưu hành, véc-tơ, tiền sử tiêm chủng)<br>• Bước 2: Kích hoạt Tam giác chẩn đoán DTH gộp Đặt vấn đề<br>• Bước 3: Tính % xác suất chẩn đoán & thang điểm NEWS2/PEWS/ESI/qSOFA |
 | **07** | [`07-prompt-soap-case-ingest.txt`](07-prompt-soap-case-ingest.txt) | **Hồ sơ ca bệnh SOAP Markdown** | Nạp qua nút **"Nạp ca từ NotebookLM"** trên thanh Header (hoặc lưu `knowledge-vault/ba/`) | **Bước 4 (Mục 9)** & Sổ tay kinh nghiệm SOAP<br>Hiển thị ca thực chiến đối sánh đa chiều và cung cấp Prompt AI hội chẩn tại giường |
 | **08** | [`08-prompt-db-batch-enricher.txt`](08-prompt-db-batch-enricher.txt) | **Làm giàu hàng loạt entry CSDL** | `src/content/docspace/data/kho-chan-doan-db.ts` | **Nâng cấp CSDL**<br>Thay thế các entry placeholder mẫu thành dữ liệu lâm sàng định lượng có `severityGrading` chuẩn cho bệnh truyền nhiễm |
 
@@ -126,7 +126,7 @@ Dưới đây là bộ thông số đầu vào chuẩn hóa sẵn (Presets) đư
 - [TÊN BỆNH LÝ]: Cúm mùa và Cúm ác tính (Cúm A/H1N1, A/H5N1, Cúm B)
 - [TÊN TIẾNG ANH / VIẾT TẮT]: Seasonal & Avian Influenza (Flu A/H1N1, A/H5N1, Flu B)
 - [MÃ ICD-10]: J09 (Cúm gia cầm / Cúm chủng mới), J10 (Cúm mùa xác định), J11 (Cúm nghi ngờ)
-- [CHUYÊN KHOA]: Truyền nhiễm & Hô hấp
+- [CHUYÊN KHOA]: Truyền nhiễm
 - [MỨC ĐỘ NẶNG]: severe
 - [HƯỚNG DẪN THAM CHIẾU]: Quyết định 2078/QĐ-BYT của Bộ Y Tế về Hướng dẫn chẩn đoán, điều trị cúm mùa và Hướng dẫn xử trí cúm gia cầm lây sang người / WHO Guidelines for Pharmacological Management of Pandemic Influenza
 - [SLUG FILE]: cum_mua_cum_a
@@ -139,7 +139,7 @@ Dưới đây là bộ thông số đầu vào chuẩn hóa sẵn (Presets) đư
 - [TÊN BỆNH LÝ]: Sởi và các biến chứng sởi
 - [TÊN TIẾNG ANH / VIẾT TẮT]: Measles (Rubeola)
 - [MÃ ICD-10]: B05 (B05.0 Viêm não do sởi, B05.1 Viêm màng não, B05.2 Viêm phổi, B05.8 Biến chứng khác)
-- [CHUYÊN KHOA]: Truyền nhiễm Nhi
+- [CHUYÊN KHOA]: Truyền nhiễm
 - [MỨC ĐỘ NẶNG]: severe
 - [HƯỚNG DẪN THAM CHIẾU]: Quyết định 1327/QĐ-BYT của Bộ Y Tế về Hướng dẫn chẩn đoán và điều trị bệnh Sởi & WHO Measles Outbreak Management Guidelines
 - [SLUG FILE]: soi_va_bien_chung
@@ -152,7 +152,7 @@ Dưới đây là bộ thông số đầu vào chuẩn hóa sẵn (Presets) đư
 - [TÊN BỆNH LÝ]: Sốt rét và Sốt rét ác tính
 - [TÊN TIẾNG ANH / VIẾT TẮT]: Malaria (Plasmodium falciparum, P. vivax, Severe Malaria)
 - [MÃ ICD-10]: B50 (Sốt rét do P. falciparum), B51 (P. vivax), B52 (P. malariae), B54 (Sốt rét không đặc hiệu)
-- [CHUYÊN KHOA]: Truyền nhiễm & Ký sinh trùng
+- [CHUYÊN KHOA]: Truyền nhiễm
 - [MỨC ĐỘ NẶNG]: emergency
 - [HƯỚNG DẪN THAM CHIẾU]: Quyết định 2699/QĐ-BYT của Bộ Y Tế về Hướng dẫn chẩn đoán và điều trị bệnh Sốt rét & WHO Guidelines for Malaria 2023–2024
 - [SLUG FILE]: sot_ret
@@ -165,7 +165,7 @@ Dưới đây là bộ thông số đầu vào chuẩn hóa sẵn (Presets) đư
 - [TÊN BỆNH LÝ]: Uốn ván (Uốn ván người lớn và Uốn ván rốn sơ sinh)
 - [TÊN TIẾNG ANH / VIẾT TẮT]: Tetanus (Clostridium tetani / Tetanus neonatorum)
 - [MÃ ICD-10]: A35 (Uốn ván khác), A33 (Uốn ván sơ sinh)
-- [CHUYÊN KHOA]: Truyền nhiễm & Hồi sức cấp cứu
+- [CHUYÊN KHOA]: Truyền nhiễm
 - [MỨC ĐỘ NẶNG]: emergency
 - [HƯỚNG DẪN THAM CHIẾU]: Hướng dẫn chẩn đoán và điều trị bệnh Uốn ván của Bộ Y Tế / CDC Tetanus Clinical Management Protocols
 - [SLUG FILE]: uon_van
@@ -178,7 +178,7 @@ Dưới đây là bộ thông số đầu vào chuẩn hóa sẵn (Presets) đư
 - [TÊN BỆNH LÝ]: Nhiễm khuẩn huyết và Sốc nhiễm khuẩn
 - [TÊN TIẾNG ANH / VIẾT TẮT]: Sepsis and Septic Shock (Sepsis-3)
 - [MÃ ICD-10]: A41.9 (Nhiễm khuẩn huyết không xác định), R65.2 (Hội chứng đáp ứng viêm hệ thống nặng / Sốc nhiễm khuẩn)
-- [CHUYÊN KHOA]: Truyền nhiễm & Hồi sức tích cực (ICU)
+- [CHUYÊN KHOA]: Hồi sức - Cấp cứu
 - [MỨC ĐỘ NẶNG]: emergency
 - [HƯỚNG DẪN THAM CHIẾU]: Quyết định 5642/QĐ-BYT của Bộ Y Tế về Hướng dẫn chẩn đoán và điều trị nhiễm khuẩn huyết & Surviving Sepsis Campaign (SSC Guidelines 2021)
 - [SLUG FILE]: nhiem_khuan_huyet_soc_nhiem_khuan
@@ -191,7 +191,7 @@ Dưới đây là bộ thông số đầu vào chuẩn hóa sẵn (Presets) đư
 - [TÊN BỆNH LÝ]: Thủy đậu và biến chứng thủy đậu
 - [TÊN TIẾNG ANH / VIẾT TẮT]: Varicella (Chickenpox - Varicella-Zoster Virus / VZV)
 - [MÃ ICD-10]: B01 (B01.0 Viêm màng não, B01.1 Viêm não, B01.2 Viêm phổi do thủy đậu, B01.8 Biến chứng khác)
-- [CHUYÊN KHOA]: Truyền nhiễm & Da liễu
+- [CHUYÊN KHOA]: Truyền nhiễm
 - [MỨC ĐỘ NẶNG]: standard
 - [HƯỚNG DẪN THAM CHIẾU]: Hướng dẫn chẩn đoán và điều trị bệnh Thủy đậu của Bộ Y Tế & CDC Chickenpox Clinical Guidance
 - [SLUG FILE]: thuy_dau
@@ -204,7 +204,7 @@ Dưới đây là bộ thông số đầu vào chuẩn hóa sẵn (Presets) đư
 - [TÊN BỆNH LÝ]: Viêm não Nhật Bản và Viêm màng não mủ cấp tính
 - [TÊN TIẾNG ANH / VIẾT TẮT]: Japanese Encephalitis (JE) & Acute Bacterial Meningitis (ABM)
 - [MÃ ICD-10]: A83.0 (Viêm não Nhật Bản), G00 (Viêm màng não do vi khuẩn: G00.1 Phế cầu, G00.2 Não mô cầu, G00.0 Hib)
-- [CHUYÊN KHOA]: Truyền nhiễm Thần kinh & Hồi sức cấp cứu
+- [CHUYÊN KHOA]: Truyền nhiễm
 - [MỨC ĐỘ NẶNG]: emergency
 - [HƯỚNG DẪN THAM CHIẾU]: Hướng dẫn chẩn đoán và điều trị Viêm não Nhật Bản & Viêm màng não của Bộ Y Tế / IDSA Clinical Practice Guidelines for Healthcare-Associated and Bacterial Meningitis
 - [SLUG FILE]: viem_nao_mang_nao
@@ -263,7 +263,7 @@ Chọn một trong hai phương thức thực hiện tùy theo nhu cầu và đ�
 Nếu muốn sinh kiểm soát từng phần độc lập:
 
 - **Khối 1 (CDSS JSON)**: Mở [`05-prompt-cdss-json-generator.txt`](05-prompt-cdss-json-generator.txt) ➔ Điền thông số mặt bệnh ➔ Nhận file JSON CDSS chuẩn cấu trúc đầy đủ nạp vào `src/content/docspace/data/enriched/<slug>.json`.
-- **Khối 2 & 3 (Ca Mẫu & Trọng Số CDSS)**: Mở [`06-prompt-sample-case-generator.txt`](06-prompt-sample-case-generator.txt) ➔ Điền thông số ➔ Nhận 2 khối code cho `sample-clinical-cases.json` & `clinical-rules-kb.json`.
+- **Khối 2 & 3 (Ca Mẫu & Trọng Số CDSS)**: Mở [`06-prompt-sample-case-generator.txt`](06-prompt-sample-case-generator.txt) ➔ Điền thông số ➔ Nhận 2 khối code cho `sample-clinical-cases.json` & `diseases/<chuyen-khoa>.json` (kèm `clinical-rules-symptoms.json`).
 - **Khối 4 (Hồ Sơ Ca Bệnh SOAP)**: Mở [`07-prompt-soap-case-ingest.txt`](07-prompt-soap-case-ingest.txt) ➔ Nhận Hồ sơ ca bệnh thực chiến SOAP Markdown chuẩn Frontmatter nạp trực tiếp qua nút Header.
 
 ### Bước 3: Nạp Code & Dữ Liệu Vào Hệ Thống CliniPortal
@@ -282,13 +282,24 @@ Sau khi NotebookLM sinh xong dữ liệu cấu trúc, bạn nạp vào codebase 
      > *Script sẽ tự động kiểm tra cú pháp JSON, xác thực các trường bắt buộc (`icdCode`, `diseaseName`, `criteria`, `protocol`, `severityGrading`) và tái tạo file chỉ mục `src/content/docspace/data/enriched/index.ts`.*
 
 2. **Nạp Ca Bệnh Mẫu & Trọng Số CDSS (Bước 1, 2 & 3)**:
-   - Mở file `src/content/knowledge-vault/data/sample-clinical-cases.json`: Bổ sung đối tượng ca mẫu mới vào mảng `[]`. Đảm bảo có đầy đủ các trường dịch tễ: `epidemiologyNote`, `exposureHistory`, `symptoms`, `vitals`, `labs`.
-   - Mở file `src/content/knowledge-vault/data/clinical-rules-kb.json`: Bổ sung các triệu chứng mới và gán ma trận trọng số suy luận (`dt`: đặc trưng, `gy`: gợi ý, `ht`: hỗ trợ, `loaitru`: loại trừ).
+   - Mở file `src/content/knowledge-vault/data/sample-clinical-cases.json`: Bổ sung đối tượng ca mẫu mới vào mảng `[]`. Đảm bảo có đầy đủ các trường: `ten`, `sel`, `vitals`, `labs`, `selected`, `negated`, `epiContext`, `form`.
+   - Bổ sung triệu chứng mới vào: `src/content/knowledge-vault/data/clinical-rules-symptoms.json` (nếu có triệu chứng mới).
+   - Bổ sung thực thể bệnh lý vào tệp chuyên khoa tương ứng: `src/content/knowledge-vault/data/diseases/<chuyen-khoa>.json` (ví dụ: `truyen-nhiem.json`, `ho-hap.json`, `tim-mach.json`...).
+   - Chạy lệnh tự động đồng bộ vào Master KB:
+     ```powershell
+     node tools/scripts/bundle-clinical-rules.mjs
+     ```
 
 3. **Nạp Ca Bệnh Thực Chiến SOAP (Mục 9 Bước 4)**:
    - Bạn có thể lưu file markdown vào `src/content/knowledge-vault/ba/` hoặc mở giao diện DocSpace MedLens Pro trên trình duyệt (`http://localhost:5173/src/content/docspace/`), bấm nút **"Nạp ca từ NotebookLM"** trên Header, dán nội dung Markdown vào và bấm **"Phân tích & Nạp vào sổ tay"**.
 
-### Bước 4: Soạn 4 Bài Viết Chuyên Sâu Cho Knowledge Vault (Tùy Chọn)
+4. **Kiểm Định Chất Lượng Tự Động (Quality Gate Bắt Buộc)**:
+   - Sau khi nạp xong dữ liệu, chạy script kiểm định 10 tiêu chí toàn diện để đảm bảo không có triệu chứng mồ côi, sai lệch schema hoặc phân mảnh định danh:
+     ```powershell
+     node tools/scripts/docspace-disease-audit.mjs <slug_benh>
+     ```
+
+### Bước 5: Soạn 4 Bài Viết Chuyên Sâu Cho Knowledge Vault (Tùy Chọn)
 
 Khi cần xây dựng thư viện Y học chứng cứ đối chiếu và liên kết Pathway ở Bước 4, hãy dùng Nhóm 2 (Prompt 01, 02, 03, 04):
 

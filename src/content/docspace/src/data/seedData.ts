@@ -1,6 +1,6 @@
 import { Benh, CategoryType, EpidemiologyContext, KnowledgeBase, RoleType, ThresholdMap, TrieuChung } from '../types.ts';
 import symptomsRaw from '@vault/data/clinical-rules-symptoms.json';
-import diseasesRaw from '@vault/data/clinical-rules-diseases.json';
+import diseasesRaw from '@vault/data/diseases/index.ts';
 import casesRaw from '@vault/data/sample-clinical-cases.json';
 
 export const ROLE_LABELS: Record<RoleType, { label: string; badgeClass: string }> = {
