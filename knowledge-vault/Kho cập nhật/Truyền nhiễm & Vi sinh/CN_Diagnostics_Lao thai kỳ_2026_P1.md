@@ -71,16 +71,20 @@ Các công cụ chẩn đoán chuyên sâu được đánh giá trong bài bao g
 > _Thuộc Tài liệu:_ _"Tuberculosis in Pregnancy- An Updated Narrative Review.pdf"_
 > 
 > - **Figure 2:** Phim X-quang ngực thẳng và nghiêng của thai phụ mắc lao phổi tạo hang tiến triển bilateral: Thấy giảm thể tích phổi phải, lệch trung thất cùng bên, nhiều tổn thương tạo hang thành mỏng ở thùy dưới phổi phải và thùy trên phổi trái.
+> 	![[Pasted image 20260916185640.png]]
 > - **Figure 3:** Phim X-quang ngực thẳng: Thấy xơ xẹp phổi thùy trên phải kèm 2 tổn thương hang ở vùng giữa-trên phổi phải, tổn thương mờ không đồng nhất ở vùng quanh tim trái gợi ý tổn thương nhu mô đối bên.
+> 	![[Pasted image 20260916185652.png]]
 > - **Figure 4:** Hình ảnh Lao kê trong thai kỳ: **(A)** X-quang ngực cho thấy vô số nốt mờ nhỏ (micronodular opacities) phân bố lan tỏa khắp 2 phổi. **(B)** Phim CT ngực (lát cắt Coronal & Axial) xác nhận vô số nốt kê kích thước 1-6 mm phân bố ngẫu nhiên khắp 2 phế trường.
+> 	![[Pasted image 20260916185709.png]]
 > - **Figure 5:** Phim CT ngực thai phụ lao phổi hai bên trước và sau điều trị: **(A)** Tổn thương hang thành dày thùy trên trái, hình ảnh "nụ trên cành" (tree-in-bud), đông đặc phổi phải. **(B)** Phim kiểm tra sau hoàn thành phác đồ chuẩn hàng 1: Tổn thương đông đặc giảm rõ rệt, hang thùy trên trái đã khép lại thành dải xơ, tổn thương "nụ trên cành" giảm đáng kể, thể hiện đáp ứng điều trị tốt.
+> 	![[Pasted image 20260916185717.png]]
 
 ---
 
 > **📌 TRÍCH XUẤT LƯU ĐỒ THUẬT TOÁN CHẨN ĐOÁN TÍCH HỢP (FIGURE 6)**
 > 
 > _Tên Sơ đồ:_ **Figure 6. Integrated diagnostic approach for suspected tuberculosis during pregnancy: a practical algorithm incorporating clinical evaluation, microbiological testing, imaging assessment, and specialist referral.** _Thuộc Tài liệu:_ _"Tuberculosis in Pregnancy- An Updated Narrative Review.pdf"_
-> 
+> ![[Pasted image 20260916185838.png]]
 > **Mô tả cấu trúc thuật toán chẩn đoán lâm sàng tích hợp:**
 > 
 > 1. **Đánh giá lâm sàng ban đầu (Initial Clinical Assessment):** Thai phụ có bất kỳ dấu hiệu: Ho kéo dài (\(\ge 2\) tuần), Sốt, Sụt cân, Ra mồ hôi đêm, Tiền sử tiếp xúc lao, Nhiễm HIV/suy giảm miễn dịch.

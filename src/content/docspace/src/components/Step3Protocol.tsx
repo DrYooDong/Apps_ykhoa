@@ -1683,106 +1683,157 @@ export const Step3Protocol: React.FC<Step3Props> = ({
             badgeColor="bg-blue-100 text-blue-800 border-blue-200"
             containerClassName="bg-white border border-slate-200 rounded-xl p-4 shadow-2xs"
           >
-            <div className="overflow-x-auto border border-slate-200 rounded-lg">
+            <div className="overflow-x-auto border border-slate-200 rounded-lg shadow-2xs">
               <table className="w-full text-left border-collapse text-xs">
                 <thead>
                   <tr className="bg-slate-50 text-slate-700 border-b border-slate-200 font-bold uppercase tracking-wider text-[11px]">
-                    <th className="p-3 w-56 border-r border-slate-200">Giai đoạn & Mục tiêu</th>
-                    <th className="p-3 border-r border-slate-200 min-w-[280px]">Y lệnh thuốc & Dịch truyền</th>
-                    <th className="p-3 w-72 border-r border-slate-200">Cận lâm sàng & Giám sát</th>
-                    <th className="p-3 w-72">Lưu ý & Tiêu chuẩn chuyển tầng / Ra viện</th>
+                    <th className="p-3 w-[24%] min-w-[200px] border-r border-slate-200">
+                      Giai đoạn &amp; Mục tiêu
+                    </th>
+                    <th className="p-3 w-[40%] min-w-[280px] border-r border-slate-200">
+                      Y lệnh (Thuốc, Dịch truyền &amp; Xử trí)
+                    </th>
+                    <th className="p-3 w-[36%] min-w-[280px]">
+                      Theo dõi: Lâm sàng (LS) &amp; Cận lâm sàng (CLS)
+                    </th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-200">
-                  {timelinePhases.map((phase, pIdx) => (
-                    <tr key={phase.id || pIdx} className="hover:bg-slate-50/50 transition-colors align-top">
-                      {/* Cột 1: Giai đoạn & Mục tiêu */}
-                      <td className="p-3 border-r border-slate-200 bg-slate-50/30">
-                        <div className="flex flex-col gap-1.5">
-                          <div className="flex items-center gap-1.5 flex-wrap">
-                            <span className="px-2 py-0.5 rounded text-[11px] font-bold font-mono-custom bg-blue-100 text-blue-800 border border-blue-200">
-                              {phase.dayRange}
-                            </span>
-                          </div>
-                          <h5 className="font-bold text-xs text-slate-900 leading-snug">
-                            {phase.phaseName}
-                          </h5>
-                          <div className="mt-1 p-2 bg-white rounded border border-slate-200 text-[11px] text-slate-600 leading-relaxed">
-                            <span className="font-semibold text-slate-700">Đích lâm sàng: </span>
-                            {phase.clinicalGoal}
-                          </div>
-                        </div>
-                      </td>
+                  {timelinePhases.map((phase, pIdx) => {
+                    const lsItems = phase.monitoring.filter(
+                      (m) =>
+                        m.type === 'LS' ||
+                        (!m.type &&
+                          /sinh hiệu|mạch|huyết áp|thân nhiệt|tri giác|nước tiểu|thở|curb|khám|ban/i.test(
+                            m.metric
+                          ))
+                    );
+                    const clsItems = phase.monitoring.filter(
+                      (m) =>
+                        m.type === 'CLS' ||
+                        (!m.type &&
+                          !/sinh hiệu|mạch|huyết áp|thân nhiệt|tri giác|nước tiểu|thở|curb|khám|ban/i.test(
+                            m.metric
+                          ))
+                    );
 
-                      {/* Cột 2: Y lệnh thuốc & Dịch truyền */}
-                      <td className="p-3 border-r border-slate-200">
-                        <div className="flex flex-col gap-2">
-                          {phase.treatments.map((tr, tIdx) => (
-                            <div
-                              key={tIdx}
-                              className={`p-2 rounded-md border text-xs leading-relaxed ${
-                                tr.isHighlighted
-                                  ? 'bg-amber-50/70 border-amber-300 text-amber-950 font-medium'
-                                  : 'bg-white border-slate-200 text-slate-800'
-                              }`}
-                            >
-                              <div className="flex items-center gap-1.5 mb-1">
-                                <span className="px-1.5 py-0.2 rounded text-[10px] font-bold bg-slate-100 text-slate-700 uppercase tracking-wide">
-                                  {tr.category}
-                                </span>
-                              </div>
-                              <div className="text-slate-800">{tr.content}</div>
+                    return (
+                      <tr
+                        key={phase.id || pIdx}
+                        className="hover:bg-slate-50/50 transition-colors align-top"
+                      >
+                        {/* Cột 1: Giai đoạn & Mục tiêu */}
+                        <td className="p-3 border-r border-slate-200 bg-slate-50/40">
+                          <div className="flex flex-col gap-2">
+                            <div className="flex items-center gap-1.5 flex-wrap">
+                              <span className="px-2 py-0.5 rounded text-[11px] font-bold font-mono-custom bg-blue-100 text-blue-900 border border-blue-200">
+                                {phase.dayRange}
+                              </span>
                             </div>
-                          ))}
-                        </div>
-                      </td>
+                            <h5 className="font-bold text-xs text-slate-900 leading-snug">
+                              {phase.phaseName}
+                            </h5>
+                            <div className="p-2 bg-white rounded border border-slate-200 text-[11px] text-slate-700 leading-relaxed shadow-2xs">
+                              <span className="font-bold text-blue-900 block mb-0.5">
+                                🎯 Mục tiêu lâm sàng:
+                              </span>
+                              <span>{phase.clinicalGoal}</span>
+                            </div>
+                          </div>
+                        </td>
 
-                      {/* Cột 3: Cận lâm sàng & Giám sát */}
-                      <td className="p-3 border-r border-slate-200">
-                        <div className="flex flex-col gap-1.5">
-                          {phase.monitoring.map((m, mIdx) => (
-                            <div key={mIdx} className="p-2 rounded border border-slate-200 bg-white text-xs">
-                              <div className="font-semibold text-slate-800 flex items-center justify-between gap-1">
-                                <span>{m.metric}</span>
-                                <span className="text-[10px] font-mono-custom px-1.5 py-0.2 rounded bg-blue-50 text-blue-700 border border-blue-200">
-                                  {m.frequency}
-                                </span>
-                              </div>
-                              {m.target && (
-                                <div className="text-[11px] text-emerald-700 mt-1 flex items-center gap-1">
-                                  <span className="font-medium">🎯 Đích:</span>
-                                  <span>{m.target}</span>
+                        {/* Cột 2: Y lệnh (Thuốc, Dịch truyền & Xử trí) */}
+                        <td className="p-3 border-r border-slate-200">
+                          <div className="flex flex-col gap-2">
+                            {phase.treatments.map((tr, tIdx) => (
+                              <div
+                                key={tIdx}
+                                className={`p-2.5 rounded-md border text-xs leading-relaxed ${
+                                  tr.isHighlighted
+                                    ? 'bg-amber-50/70 border-amber-300 text-amber-950 font-medium'
+                                    : 'bg-white border-slate-200 text-slate-800'
+                                }`}
+                              >
+                                <div className="flex items-center gap-1.5 mb-1">
+                                  <span className="px-1.5 py-0.2 rounded text-[10px] font-bold bg-slate-100 text-slate-700 uppercase tracking-wide">
+                                    {tr.category}
+                                  </span>
                                 </div>
-                              )}
-                            </div>
-                          ))}
-                        </div>
-                      </td>
-
-                      {/* Cột 4: Lưu ý & Tiêu chuẩn chuyển tầng / Ra viện */}
-                      <td className="p-3">
-                        <div className="flex flex-col gap-2">
-                          {phase.cautionsAndDischarge.cautions.map((c, cIdx) => (
-                            <div
-                              key={cIdx}
-                              className="p-2 rounded bg-rose-50/70 border border-rose-200 text-rose-900 text-[11px] leading-relaxed flex items-start gap-1.5"
-                            >
-                              <span className="font-bold text-rose-600 shrink-0">⚠</span>
-                              <span>{c}</span>
-                            </div>
-                          ))}
-                          {phase.cautionsAndDischarge.triageOrDischargeCriteria && (
-                            <div className="p-2 rounded bg-emerald-50/80 border border-emerald-200 text-emerald-950 text-[11px] leading-relaxed">
-                              <div className="font-bold text-emerald-800 uppercase text-[10px] mb-0.5">
-                                Tiêu chuẩn ra viện / Chuyển tầng:
+                                <div className="text-slate-900 font-medium">{tr.content}</div>
                               </div>
-                              <div>{phase.cautionsAndDischarge.triageOrDischargeCriteria}</div>
-                            </div>
-                          )}
-                        </div>
-                      </td>
-                    </tr>
-                  ))}
+                            ))}
+                          </div>
+                        </td>
+
+                        {/* Cột 3: Theo dõi: Lâm sàng (LS) & Cận lâm sàng (CLS) */}
+                        <td className="p-3 bg-slate-50/20">
+                          <div className="flex flex-col gap-2.5">
+                            {/* Khối 1: Lâm sàng (LS) */}
+                            {lsItems.length > 0 && (
+                              <div className="space-y-1.5">
+                                <div className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-blue-900 pb-0.5 border-b border-blue-100">
+                                  <span className="w-2 h-2 rounded-full bg-blue-600"></span>
+                                  <span>🩺 Theo dõi Lâm sàng (LS)</span>
+                                </div>
+                                <div className="space-y-1">
+                                  {lsItems.map((m, mIdx) => (
+                                    <div
+                                      key={mIdx}
+                                      className="p-1.5 rounded border border-slate-200 bg-white text-xs flex flex-col gap-0.5"
+                                    >
+                                      <div className="font-semibold text-slate-800 flex items-center justify-between gap-1">
+                                        <span>{m.metric}</span>
+                                        <span className="text-[10px] font-mono-custom px-1.5 py-0.2 rounded bg-blue-50 text-blue-700 border border-blue-200 shrink-0">
+                                          {m.frequency}
+                                        </span>
+                                      </div>
+                                      {m.target && (
+                                        <div className="text-[10.5px] text-emerald-700 flex items-center gap-1">
+                                          <span className="font-medium">Đích:</span>
+                                          <span>{m.target}</span>
+                                        </div>
+                                      )}
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                            )}
+
+                            {/* Khối 2: Cận lâm sàng (CLS) */}
+                            {clsItems.length > 0 && (
+                              <div className="space-y-1.5">
+                                <div className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-purple-900 pb-0.5 border-b border-purple-100">
+                                  <span className="w-2 h-2 rounded-full bg-purple-600"></span>
+                                  <span>🔬 Cận lâm sàng (CLS) &amp; Giám sát</span>
+                                </div>
+                                <div className="space-y-1">
+                                  {clsItems.map((m, mIdx) => (
+                                    <div
+                                      key={mIdx}
+                                      className="p-1.5 rounded border border-purple-100 bg-purple-50/30 text-xs flex flex-col gap-0.5"
+                                    >
+                                      <div className="font-semibold text-slate-800 flex items-center justify-between gap-1">
+                                        <span>{m.metric}</span>
+                                        <span className="text-[10px] font-mono-custom px-1.5 py-0.2 rounded bg-purple-100 text-purple-800 border border-purple-200 shrink-0">
+                                          {m.frequency}
+                                        </span>
+                                      </div>
+                                      {m.target && (
+                                        <div className="text-[10.5px] text-purple-800 flex items-center gap-1">
+                                          <span className="font-medium">Đích:</span>
+                                          <span>{m.target}</span>
+                                        </div>
+                                      )}
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                            )}
+                          </div>
+                        </td>
+                      </tr>
+                    );
+                  })}
                 </tbody>
               </table>
             </div>
@@ -2132,61 +2183,142 @@ export const Step3Protocol: React.FC<Step3Props> = ({
               </div>
             }
             title="6. Chỉ tiêu theo dõi, mục tiêu lâm sàng & Cảnh báo an toàn"
-            subtitle="Các mốc sinh hiệu cần giám sát, tiêu chuẩn cải thiện và cảnh báo chống chỉ định quan trọng"
-            badgeText={`${phacDo.theoDoi.length} chỉ tiêu · ${phacDo.luuY.length} lưu ý`}
+            subtitle="Các mốc sinh hiệu cần giám sát, tiêu chuẩn cải thiện, chống chỉ định và tiêu chuẩn ra viện / chuyển tầng"
+            badgeText={`${phacDo.theoDoi.length} chỉ tiêu · ${phacDo.luuY.length + timelinePhases.reduce((acc, p) => acc + (p.cautionsAndDischarge?.cautions?.length || 0), 0)} lưu ý & CCĐ`}
             badgeColor="bg-amber-100 text-amber-800 border-amber-200"
             containerClassName="bg-amber-50/30 border border-amber-200/80 rounded-xl p-4 shadow-2xs"
           >
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {/* Theo dõi */}
-              <div className="bg-blue-50/50 border border-blue-200 rounded-lg p-3.5">
-                <h4 className="font-display font-bold text-xs sm:text-sm text-blue-900 flex items-center gap-2 mb-2.5">
-                  <Activity className="w-4 h-4 text-blue-600" />
-                  <span>Chỉ tiêu theo dõi & Mục tiêu lâm sàng</span>
+            <div className="space-y-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {/* Cột 1: Chỉ tiêu theo dõi & Mục tiêu lâm sàng */}
+                <div className="bg-blue-50/50 border border-blue-200 rounded-lg p-3.5">
+                  <h4 className="font-display font-bold text-xs sm:text-sm text-blue-900 flex items-center gap-2 mb-2.5">
+                    <Activity className="w-4 h-4 text-blue-600" />
+                    <span>Chỉ tiêu theo dõi &amp; Mục tiêu lâm sàng</span>
+                  </h4>
+                  <div className="flex flex-col gap-1.5 text-xs text-slate-800">
+                    {phacDo.theoDoi.map((item, idx) => {
+                      const key = `theodoi-${currentDisease.id}-g${selectedGradeIdx}-${idx}`;
+                      const isChecked = checkedOrders.has(key);
+                      return (
+                        <div
+                          key={idx}
+                          onClick={() => toggleOrder(key)}
+                          className={`p-2 rounded-md border flex items-start gap-2.5 cursor-pointer transition-colors ${
+                            isChecked
+                              ? 'bg-emerald-50 border-emerald-300 text-emerald-950 font-medium'
+                              : 'bg-white border-blue-100 text-slate-700 hover:bg-slate-50'
+                          }`}
+                        >
+                          <input
+                            type="checkbox"
+                            checked={isChecked}
+                            onChange={() => {}}
+                            className="mt-0.5 rounded text-blue-600 cursor-pointer"
+                          />
+                          <span className={isChecked ? 'line-through text-slate-400' : ''}>
+                            {item}
+                          </span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Cột 2: Cảnh báo an toàn, chống chỉ định (CCĐ) & Lưu ý đặc biệt */}
+                <div className="bg-amber-50/60 border border-amber-200 rounded-lg p-3.5">
+                  <h4 className="font-display font-bold text-xs sm:text-sm text-amber-900 flex items-center gap-2 mb-2.5">
+                    <AlertTriangle className="w-4 h-4 text-amber-700" />
+                    <span>Cảnh báo an toàn, chống chỉ định (CCĐ) &amp; Lưu ý đặc biệt</span>
+                  </h4>
+                  <div className="space-y-2.5 text-xs text-slate-800">
+                    {/* Cảnh báo chung từ phác đồ */}
+                    <ul className="space-y-1.5">
+                      {phacDo.luuY.map((item, idx) => (
+                        <li key={idx} className="flex items-start gap-2 bg-white/85 p-2 rounded border border-amber-200 shadow-2xs">
+                          <span className="text-amber-600 font-bold shrink-0 mt-0.5">⚠</span>
+                          <span className="leading-relaxed text-slate-900 font-medium">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    {/* Lưu ý & CCĐ then chốt từ các giai đoạn ngày */}
+                    {timelinePhases.some((p) => p.cautionsAndDischarge?.cautions?.length > 0) && (
+                      <div className="pt-2 border-t border-amber-200/80">
+                        <span className="font-bold text-[11px] uppercase tracking-wider text-rose-900 block mb-1.5 flex items-center gap-1">
+                          <ShieldAlert className="w-3.5 h-3.5 text-rose-600" />
+                          <span>Lưu ý &amp; CCĐ then chốt theo từng giai đoạn can thiệp:</span>
+                        </span>
+                        <div className="space-y-1.5">
+                          {timelinePhases.map((phase, pIdx) => {
+                            if (!phase.cautionsAndDischarge?.cautions?.length) return null;
+                            return (
+                              <div key={pIdx} className="p-2 rounded bg-rose-50/80 border border-rose-200 text-rose-950 text-[11px] leading-relaxed">
+                                <div className="font-bold text-rose-900 flex items-center gap-1.5 mb-1">
+                                  <span className="px-1.5 py-0.2 rounded text-[10px] font-mono bg-rose-100 border border-rose-300">
+                                    {phase.dayRange}
+                                  </span>
+                                  <span>{phase.phaseName}:</span>
+                                </div>
+                                <ul className="list-disc pl-4 space-y-0.5">
+                                  {phase.cautionsAndDischarge.cautions.map((c, cIdx) => (
+                                    <li key={cIdx}>{c}</li>
+                                  ))}
+                                </ul>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              {/* Khối 3: Tiêu chuẩn Ra viện & Phân tầng Chuyển viện / Chuyển tầng điều trị */}
+              <div className="bg-emerald-50/70 border border-emerald-200 rounded-lg p-3.5 sm:p-4">
+                <h4 className="font-display font-bold text-xs sm:text-sm text-emerald-950 flex items-center justify-between gap-2 mb-2.5 pb-2 border-b border-emerald-200">
+                  <div className="flex items-center gap-2">
+                    <div className="p-1 rounded bg-emerald-600 text-white">
+                      <Building2 className="w-3.5 h-3.5" />
+                    </div>
+                    <span>Tiêu chuẩn Ra viện &amp; Phân tầng Chuyển viện / Chuyển tầng điều trị</span>
+                  </div>
+                  <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-emerald-100 text-emerald-800 border border-emerald-300">
+                    Quy chuẩn BYT &amp; EBM
+                  </span>
                 </h4>
-                <div className="flex flex-col gap-1.5 text-xs text-slate-800">
-                  {phacDo.theoDoi.map((item, idx) => {
-                    const key = `theodoi-${currentDisease.id}-g${selectedGradeIdx}-${idx}`;
-                    const isChecked = checkedOrders.has(key);
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+                  {timelinePhases.map((phase, pIdx) => {
+                    const criteria = phase.cautionsAndDischarge?.triageOrDischargeCriteria;
+                    if (!criteria) return null;
                     return (
                       <div
-                        key={idx}
-                        onClick={() => toggleOrder(key)}
-                        className={`p-2 rounded-md border flex items-start gap-2.5 cursor-pointer transition-colors ${
-                          isChecked
-                            ? 'bg-emerald-50 border-emerald-300 text-emerald-950 font-medium'
-                            : 'bg-white border-blue-100 text-slate-700 hover:bg-slate-50'
-                        }`}
+                        key={pIdx}
+                        className="p-3 bg-white rounded-lg border border-emerald-200 shadow-2xs flex flex-col justify-between gap-2"
                       >
-                        <input
-                          type="checkbox"
-                          checked={isChecked}
-                          onChange={() => {}}
-                          className="mt-0.5 rounded text-blue-600 cursor-pointer"
-                        />
-                        <span className={isChecked ? 'line-through text-slate-400' : ''}>
-                          {item}
-                        </span>
+                        <div>
+                          <div className="flex items-center justify-between gap-1.5 mb-1.5">
+                            <span className="px-2 py-0.5 rounded text-[10.5px] font-bold font-mono-custom bg-emerald-100 text-emerald-900 border border-emerald-300">
+                              {phase.dayRange}
+                            </span>
+                            <span className="text-[10.5px] font-semibold text-slate-500 truncate">
+                              {phase.phaseName.replace(/Giai đoạn\s*/i, '')}
+                            </span>
+                          </div>
+                          <div className="text-[11.5px] text-slate-800 leading-relaxed font-medium">
+                            {criteria}
+                          </div>
+                        </div>
+                        <div className="pt-1.5 border-t border-slate-100 flex items-center gap-1 text-[10.5px] text-emerald-700 font-semibold">
+                          <span>✓</span>
+                          <span>Đích phân tầng an toàn</span>
+                        </div>
                       </div>
                     );
                   })}
                 </div>
-              </div>
-
-              {/* Lưu ý & Cảnh báo */}
-              <div className="bg-amber-50/60 border border-amber-200 rounded-lg p-3.5">
-                <h4 className="font-display font-bold text-xs sm:text-sm text-amber-900 flex items-center gap-2 mb-2.5">
-                  <AlertTriangle className="w-4 h-4 text-amber-700" />
-                  <span>Cảnh báo an toàn, chống chỉ định & Lưu ý đặc biệt</span>
-                </h4>
-                <ul className="space-y-1.5 text-xs text-slate-800">
-                  {phacDo.luuY.map((item, idx) => (
-                    <li key={idx} className="flex items-start gap-2 bg-white/70 p-2 rounded border border-amber-100">
-                      <span className="text-amber-600 font-bold shrink-0 mt-0.5">⚠</span>
-                      <span className="leading-relaxed">{item}</span>
-                    </li>
-                  ))}
-                </ul>
               </div>
             </div>
           </CollapsibleProtocolSection>

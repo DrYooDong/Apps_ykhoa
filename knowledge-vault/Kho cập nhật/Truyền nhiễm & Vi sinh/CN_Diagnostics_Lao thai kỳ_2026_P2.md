@@ -1,6 +1,3 @@
-Dưới đây là tóm tắt chi tiết **Phần 2** của bài tổng quan hệ thống y khoa: **"Tuberculosis in Pregnancy: An Updated Narrative Review"** (Longo và cộng sự, công bố năm 2026 trên tạp chí _Diagnostics_), tập trung vào Ảnh hưởng/Biến chứng thai kỳ, Đồng nhiễm HIV, Phác đồ điều trị Lao nhạy cảm và Đa kháng thuốc, Quản lý trẻ sơ sinh, Lao ngoài phổi, Thời kỳ sau sinh, Cho con bú, Ngừa thụ thai và Định hướng y tế công cộng.
-
----
 
 ### 1. Nội Dung Sinh Lý Học Chi Tiết: Lao Trong Thai Kỳ (Phần 2)
 

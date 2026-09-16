@@ -1782,48 +1782,16 @@ export const Step2Analysis: React.FC<Step2Props> = ({
       )}
 
       {/* Lead Diagnosis (Chẩn đoán sơ bộ) Card */}
-      <div className="relative bg-white border border-slate-200 rounded-lg p-5 sm:p-6 shadow-xs overflow-hidden">
+      <div className="relative bg-white border border-slate-200 rounded-xl p-5 sm:p-6 shadow-xs overflow-hidden">
         {/* Watermark stamp */}
-        <div className="absolute top-3 right-4 pointer-events-none select-none border-2 border-blue-600/20 text-blue-600/25 font-display font-black text-xs px-3 py-1 rounded rotate-6 tracking-widest uppercase">
+        <div className="absolute top-3 right-4 pointer-events-none select-none border-2 border-blue-600/20 text-blue-600/25 font-display font-black text-[11px] px-2.5 py-0.5 rounded rotate-3 tracking-widest uppercase hidden sm:block">
           CHẨN ĐOÁN SƠ BỘ
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
-          {/* Gauge Chart */}
-          <div className="md:col-span-4 flex flex-col items-center justify-center">
-            <div className="relative w-36 h-36 flex items-center justify-center">
-              <svg className="w-36 h-36 -rotate-90" viewBox="0 0 140 140">
-                <circle
-                  cx="70"
-                  cy="70"
-                  r="52"
-                  className="fill-none stroke-slate-200"
-                  strokeWidth="10"
-                />
-                <circle
-                  cx="70"
-                  cy="70"
-                  r="52"
-                  className="fill-none stroke-blue-600 transition-all duration-1000 ease-out"
-                  strokeWidth="10"
-                  strokeDasharray={CIRCUMFERENCE}
-                  strokeDashoffset={strokeOffset}
-                  strokeLinecap="round"
-                />
-              </svg>
-              <div className="absolute inset-0 flex flex-col items-center justify-center text-center pointer-events-none">
-                <span className="font-display font-bold text-3xl sm:text-4xl text-blue-600">
-                  {top.pct}%
-                </span>
-                <span className="font-mono-custom text-[11px] text-slate-500 uppercase tracking-wider">
-                  phù hợp
-                </span>
-              </div>
-            </div>
-          </div>
-
-          {/* Details */}
-          <div className="md:col-span-8 flex flex-col gap-2.5">
+        {/* Hero Header: Disease Title, Tags & High-Density Match KPI Widget */}
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-200">
+          {/* Left: Tên bệnh & Huy hiệu phân tầng */}
+          <div className="flex-1 min-w-0 space-y-2">
             <div className="flex flex-wrap items-center gap-2">
               <span className="px-2 py-0.5 rounded text-[10px] font-bold tracking-wide uppercase bg-blue-50 text-blue-700 border border-blue-200">
                 NGHĨ NHIỀU NHẤT
@@ -1845,40 +1813,87 @@ export const Step2Analysis: React.FC<Step2Props> = ({
               )}
             </div>
 
-            {/* Title - Clean Disease Name Only */}
-            <h3 className="font-display text-xl sm:text-2xl font-bold text-slate-800 tracking-tight">
+            <h3 className="font-display text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
               {top.b.ten}
             </h3>
+          </div>
 
-            {/* Compact Clinical Overview Card - Không chiếm dụng diện tích */}
-            <div className="p-3 rounded-lg bg-slate-50 border border-slate-200/80 text-xs text-slate-700 leading-relaxed flex items-start gap-2.5">
-              <div className="p-1 rounded bg-blue-100 text-blue-700 shrink-0 mt-0.5">
-                <Stethoscope className="w-3.5 h-3.5" />
-              </div>
-              <div className="flex-1">
-                <span className="font-bold text-slate-900 block text-[11px] uppercase tracking-wide mb-0.5">
-                  Tổng quan lâm sàng & Căn nguyên:
+          {/* Right: Compact Match KPI Widget (Không chiếm dụng diện tích, luồng thông tin chuyên nghiệp) */}
+          <div className="flex items-center gap-3.5 bg-gradient-to-br from-blue-50/90 via-indigo-50/50 to-slate-50 p-3 sm:px-4 sm:py-3 rounded-xl border border-blue-200 shadow-2xs self-start md:self-auto shrink-0">
+            {/* Circular Mini Gauge (Size 54px) */}
+            <div className="relative w-13 h-13 flex items-center justify-center shrink-0">
+              <svg className="w-13 h-13 -rotate-90" viewBox="0 0 56 56">
+                <circle
+                  cx="28"
+                  cy="28"
+                  r="23"
+                  className="fill-none stroke-slate-200/80"
+                  strokeWidth="5"
+                />
+                <circle
+                  cx="28"
+                  cy="28"
+                  r="23"
+                  className="fill-none stroke-blue-600 transition-all duration-1000 ease-out"
+                  strokeWidth="5"
+                  strokeDasharray={2 * Math.PI * 23}
+                  strokeDashoffset={2 * Math.PI * 23 * (1 - top.pct / 100)}
+                  strokeLinecap="round"
+                />
+              </svg>
+              <div className="absolute inset-0 flex items-center justify-center">
+                <span className="font-bold text-xs sm:text-sm text-blue-700 font-mono-custom">
+                  {top.pct}%
                 </span>
-                <span>{top.b.tomTat}</span>
               </div>
             </div>
 
-            {/* Notes / Demographic adjustments */}
-            {top.notes.length > 0 && (
-              <div className="flex flex-wrap gap-1.5 mt-0.5">
-                {top.notes.map((note, idx) => (
-                  <span
-                    key={idx}
-                    className="px-2 py-0.5 text-[11px] rounded bg-amber-50 text-amber-700 border border-amber-200 flex items-center gap-1"
-                  >
-                    <span>◈</span> {note}
-                  </span>
-                ))}
-              </div>
-            )}
+            {/* Score Meta Details */}
+            <div className="flex flex-col leading-tight pr-1">
+              <span className="text-[10px] uppercase font-bold tracking-wider text-slate-500">
+                Độ phù hợp CDSS
+              </span>
+              <span className="font-bold text-xs sm:text-sm text-slate-900">
+                {top.pct >= 80 ? 'Mức độ phù hợp rất cao' : top.pct >= 50 ? 'Mức độ phù hợp cao' : 'Nghi ngờ trên lâm sàng'}
+              </span>
+              <span className="text-[11px] text-blue-700 font-medium font-mono-custom mt-0.5">
+                {criteriaFulfillment ? `${criteriaFulfillment.matchedMandatoryCount + criteriaFulfillment.matchedMajorCount + criteriaFulfillment.matchedLabCount} tiêu chí thỏa mãn` : `${top.matched.length} bằng chứng khớp`}
+              </span>
+            </div>
+          </div>
+        </div>
 
-            {/* KHỐI 1: 🔬 TIÊU CHUẨN CHẨN ĐOÁN XÁC ĐỊNH (DIAGNOSTIC CRITERIA) */}
-            <div className="mt-2 p-4 rounded-xl bg-white border border-slate-200/90 flex flex-col gap-3.5 shadow-2xs">
+        {/* Compact Clinical Overview & Notes (Full Width) */}
+        <div className="mt-3.5 space-y-2">
+          <div className="p-3 rounded-lg bg-slate-50 border border-slate-200/80 text-xs text-slate-700 leading-relaxed flex items-start gap-2.5">
+            <div className="p-1 rounded bg-blue-100 text-blue-700 shrink-0 mt-0.5">
+              <Stethoscope className="w-3.5 h-3.5" />
+            </div>
+            <div className="flex-1">
+              <span className="font-bold text-slate-900 block text-[11px] uppercase tracking-wide mb-0.5">
+                Tổng quan lâm sàng &amp; Căn nguyên:
+              </span>
+              <span>{top.b.tomTat}</span>
+            </div>
+          </div>
+
+          {/* Notes / Demographic adjustments */}
+          {top.notes.length > 0 && (
+            <div className="flex flex-wrap gap-1.5 mt-0.5">
+              {top.notes.map((note, idx) => (
+                <span
+                  key={idx}
+                  className="px-2 py-0.5 text-[11px] rounded bg-amber-50 text-amber-700 border border-amber-200 flex items-center gap-1"
+                >
+                  <span>◈</span> {note}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* KHỐI 1: 🔬 TIÊU CHUẨN CHẨN ĐOÁN XÁC ĐỊNH (DIAGNOSTIC CRITERIA) - FULL WIDTH */}
+        <div className="mt-4 p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 flex flex-col gap-3.5 shadow-2xs">
               {/* Header Khối 1: Tên khối & Huy hiệu Tổ chức ban hành kèm Năm */}
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-2.5 pb-3 border-b border-slate-200">
                 <div className="flex items-center gap-2">
@@ -2549,8 +2564,6 @@ export const Step2Analysis: React.FC<Step2Props> = ({
                 </div>
               )}
             </div>
-          </div>
-        </div>
 
         {/* KHỐI 2: 📊 TIÊU CHUẨN PHÂN ĐỘ LÂM SÀNG (SEVERITY STAGING CRITERIA) */}
         <div className="mt-5 p-4 rounded-lg bg-slate-50/90 border border-slate-200">
