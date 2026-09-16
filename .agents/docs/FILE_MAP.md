@@ -854,5 +854,22 @@
 
 ---
 
+## 📚 src/content/ebm/guidelines/ (EBM Guidelines & Landmark Clinical Studies Hub)
+
+| File | Vai trò | Phân hệ |
+|------|---------|---------|
+| `guidelines.html` | Cổng thông tin Web Hub EBM Guidelines & Thử nghiệm lâm sàng bước ngoặt (100% Offline-First) | EBM Guidelines Hub |
+| `HUONG_DAN_NAP_GUIDELINE.md` | Cẩm nang hướng dẫn chi tiết quy trình 5 bước nạp tài liệu Guideline/RCT mới vào kho lưu trữ nội bộ | Hướng dẫn & Quy chuẩn |
+| `js/kho-guidelines-registry.ts` | Kho lưu trữ tĩnh tập trung (`KHO_GUIDELINES_STATIC`) chứa metadata 105+ Guidelines & RCTs | EBM Storage Registry |
+| `js/guidelinesdata.ts` | Module kết nối và nạp metadata từ Registry tĩnh vào `SAMPLE_STUDIES` và `window.SAMPLE_STUDIES` | EBM Data Layer |
+| `js/guideline-sync.ts` | Bộ xử lý dữ liệu lâm sàng: Deduplication, LocalStorage persistence, Search & Filter indexing | EBM Sync & Storage Engine |
+| `js/guidelines-types.ts` | Hệ thống Type definitions chuẩn cho Study, Medical Filter, Impact Metrics | EBM Types |
+| `js/guidelines-view.ts` | Renderer giao diện Hub, Bento Grid card, Study Detail modal, Sticky Header | EBM View Controller |
+| `js/guidelines.ts` | Entry controller khởi chạy ứng dụng, bind sự kiện bàn phím & bộ lọc tương tác | EBM App Controller |
+| `js/guidelines-db.json` | CSDL snapshot JSON dự phòng chứa toàn bộ danh mục nghiên cứu EBM | EBM Database Backup |
+
+---
+
 *Cập nhật file này mỗi khi thêm trang/skill mới vào hệ thống.*
+
 

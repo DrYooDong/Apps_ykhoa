@@ -10,12 +10,14 @@ import {
   Building2,
   Check,
   CheckCircle2,
+  CheckSquare2,
   ChevronDown,
   ChevronUp,
   ClipboardCheck,
   ClipboardCopy,
   Clock,
   Columns3,
+  Copy,
   FileCheck,
   Filter,
   Flame,
@@ -24,16 +26,24 @@ import {
   Layers,
   ListTree,
   MapPin,
+  Microscope,
   Pill,
   Printer,
+  RotateCcw,
   Search,
   ShieldAlert,
   ShieldCheck,
   Sparkles,
+  Square,
   Stethoscope,
   Users,
   Zap,
 } from 'lucide-react';
+import {
+  shortenClinicalText,
+  formatCriterionLabel,
+  formatLabThreshold,
+} from '../lib/clinicalTextFormatter.ts';
 import {
   AnalysisResult,
   ClinicalFormState,
@@ -52,13 +62,6 @@ import {
   calculateEsiTriage,
   EsiScoreResult,
 } from '../lib/riskScore.ts';
-import {
-  getCdssForCondition,
-  getIcd10Guidance,
-  getKnowledgeVaultWebUrl,
-  getToolsForDisease,
-  VaultArticle,
-} from '../lib/vaultBridge.ts';
 import {
   DIAGNOSTIC_CHAIN_DATABASE,
   DiseaseReactionChainDefinition,
@@ -461,15 +464,53 @@ export const Step2Analysis: React.FC<Step2Props> = ({
     return extractCleanAuthorities(activeChain?.criteria || []);
   }, [activeChain]);
 
-  // Đánh giá mức độ thỏa mãn bộ tiêu chuẩn chẩn đoán theo thời gian thực
+  // Trạng thái can thiệp tick chọn / bỏ chọn tiêu chuẩn chẩn đoán thủ công của bác sĩ
+  const [criteriaOverrides, setCriteriaOverrides] = useState<Record<string, boolean>>({});
+
+  // Trạng thái thu gọn / mở rộng mô tả chi tiết của từng tiêu chuẩn
+  const [expandedCriteria, setExpandedCriteria] = useState<Record<string, boolean>>({});
+
+  // Trạng thái thu gọn / mở rộng khối 3 biến chứng (Mặc định FALSE = Auto thu gọn)
+  const [isComplicationsOpen, setIsComplicationsOpen] = useState<boolean>(false);
+
+  // Trạng thái sao chép phiếu Đề nghị CLS
+  const [copiedLabWorkup, setCopiedLabWorkup] = useState<boolean>(false);
+
+  // Handler toggle từng tiêu chuẩn chẩn đoán
+  const handleToggleCriterion = (critId: string, currentStatus: boolean) => {
+    setCriteriaOverrides((prev) => ({
+      ...prev,
+      [critId]: !currentStatus,
+    }));
+  };
+
+  // Handler khôi phục đối chiếu tự động
+  const handleResetCriteriaOverrides = () => {
+    setCriteriaOverrides({});
+  };
+
+  // Handler toggle chi tiết mô tả tiêu chuẩn
+  const handleToggleCriterionDetail = (critId: string) => {
+    setExpandedCriteria((prev) => ({
+      ...prev,
+      [critId]: !prev[critId],
+    }));
+  };
+
+  // Đánh giá mức độ thỏa mãn bộ tiêu chuẩn chẩn đoán theo thời gian thực (hỗ trợ can thiệp tương tác)
   const criteriaFulfillment = useMemo(() => {
     if (!activeChain?.criteria || !top) return null;
 
     const mandatoryCriteria = activeChain.criteria.filter((c) => c.type === 'mandatory');
     const majorCriteria = activeChain.criteria.filter((c) => c.type === 'major');
     const labCriteria = activeChain.criteria.filter((c) => c.type === 'lab' || c.type === 'imaging');
+    const minorCriteria = activeChain.criteria.filter((c) => c.type === 'minor' || c.type === 'exclusion');
 
     const isItemMatched = (crit: DiagnosticCriterionItem) => {
+      // Ưu tiên can thiệp thủ công từ bác sĩ nếu có
+      if (criteriaOverrides[crit.id] !== undefined) {
+        return criteriaOverrides[crit.id];
+      }
       return (
         top.matched.some(
           (m) =>
@@ -480,9 +521,14 @@ export const Step2Analysis: React.FC<Step2Props> = ({
       );
     };
 
+    const isItemOverridden = (critId: string) => {
+      return criteriaOverrides[critId] !== undefined;
+    };
+
     const matchedMandatoryCount = mandatoryCriteria.filter(isItemMatched).length;
     const matchedMajorCount = majorCriteria.filter(isItemMatched).length;
     const matchedLabCount = labCriteria.filter(isItemMatched).length;
+    const matchedMinorCount = minorCriteria.filter(isItemMatched).length;
 
     const requiredMajorCount = activeChain.criteriaRule?.minMajorRequired || 1;
     const requiredLabCount = activeChain.criteriaRule?.minMinorRequired || 1;
@@ -499,20 +545,161 @@ export const Step2Analysis: React.FC<Step2Props> = ({
       mandatoryCriteria,
       majorCriteria,
       labCriteria,
+      minorCriteria,
       matchedMandatoryCount,
       totalMandatoryCount: mandatoryCriteria.length,
       matchedMajorCount,
       requiredMajorCount,
       matchedLabCount,
       requiredLabCount,
+      matchedMinorCount,
       mandatoryFulfilled,
       majorFulfilled,
       labFulfilled,
       isConfirmed,
       isSuspected,
       isItemMatched,
+      isItemOverridden,
     };
-  }, [activeChain, top]);
+  }, [activeChain, top, criteriaOverrides]);
+
+  // Khối Đề nghị Cận lâm sàng chiến lược (Targeted Diagnostic Workup)
+  const targetedLabWorkup = useMemo(() => {
+    if (!top) return { primaryLabs: [], differentialLabs: [] };
+
+    // 1. Xét nghiệm cho Chẩn đoán sơ bộ (top)
+    const primaryLabs: Array<{
+      id: string;
+      name: string;
+      purpose: string;
+      threshold?: string;
+      priority: 'stat' | 'urgent' | 'routine';
+      category: string;
+    }> = [];
+
+    // Lấy các tiêu chuẩn CLS/CĐHA chưa đạt
+    if (activeChain?.criteria) {
+      activeChain.criteria
+        .filter((c) => (c.type === 'lab' || c.type === 'imaging') && !criteriaFulfillment?.isItemMatched(c))
+        .forEach((crit) => {
+          primaryLabs.push({
+            id: `crit_${crit.id}`,
+            name: shortenClinicalText(crit.label),
+            purpose: crit.type === 'lab' ? 'Khẳng định tiêu chuẩn cận lâm sàng' : 'CĐHA đánh giá tổn thương tạng',
+            threshold: formatLabThreshold(crit.labThreshold),
+            priority: activeChain.severity === 'emergency' ? 'stat' : 'urgent',
+            category: crit.type === 'imaging' ? 'CĐHA' : 'Sinh hóa / Vi sinh',
+          });
+        });
+    }
+
+    // Lấy các missing CLS từ top.missing
+    top.missing
+      .filter((m) => m.tc.nhom === 'Cận lâm sàng')
+      .forEach((m) => {
+        const shortenedName = shortenClinicalText(m.tc.ten);
+        const exists = primaryLabs.some(
+          (l) => l.name.toLowerCase().includes(shortenedName.toLowerCase()) || shortenedName.toLowerCase().includes(l.name.toLowerCase())
+        );
+        if (!exists) {
+          primaryLabs.push({
+            id: `tc_${m.tc.id}`,
+            name: shortenedName,
+            purpose: `Bổ sung dữ kiện (+${m.w} điểm CDSS)`,
+            priority: m.w >= 3 ? 'stat' : 'routine',
+            category: 'Xét nghiệm bổ trợ',
+          });
+        }
+      });
+
+    // Lấy các monitoringLabs quan trọng
+    if (activeChain?.monitoringLabs) {
+      activeChain.monitoringLabs.slice(0, 3).forEach((lab, idx) => {
+        const shortened = shortenClinicalText(lab);
+        const exists = primaryLabs.some((l) => l.name.toLowerCase().includes(shortened.toLowerCase()));
+        if (!exists) {
+          primaryLabs.push({
+            id: `mon_${idx}`,
+            name: shortened,
+            purpose: 'Theo dõi động học & giám sát biến chứng',
+            priority: 'routine',
+            category: 'Theo dõi động học',
+          });
+        }
+      });
+    }
+
+    // 2. Xét nghiệm cho Chẩn đoán phân biệt (results[1..3])
+    const differentialLabs: Array<{
+      diseaseId: string;
+      diseaseName: string;
+      pct: number;
+      testName: string;
+      rationale: string;
+    }> = [];
+
+    results.slice(1, 4).forEach((diff) => {
+      const diffChain = DIAGNOSTIC_CHAIN_DATABASE[diff.b.id];
+      let testName = '';
+      let rationale = '';
+
+      if (diffChain?.goldStandard) {
+        testName = shortenClinicalText(diffChain.goldStandard);
+        rationale = `Tiêu chuẩn vàng xác định / loại trừ ${diff.b.ten}`;
+      } else {
+        const diffLabMissing = diff.missing.find((m) => m.tc.nhom === 'Cận lâm sàng' && m.w >= 2);
+        if (diffLabMissing) {
+          testName = shortenClinicalText(diffLabMissing.tc.ten);
+          rationale = `Bằng chứng CLS then chốt của ${diff.b.ten}`;
+        } else if (diffChain?.criteria) {
+          const labCrit = diffChain.criteria.find((c) => c.type === 'lab' || c.type === 'imaging');
+          if (labCrit) {
+            testName = shortenClinicalText(labCrit.label);
+            rationale = `Tiêu chuẩn CLS của ${diff.b.ten}`;
+          }
+        }
+      }
+
+      if (!testName) {
+        testName = `Xét nghiệm căn nguyên chuyên biệt cho ${diff.b.ten}`;
+        rationale = `Tìm bằng chứng phân biệt với ${top.b.ten}`;
+      }
+
+      differentialLabs.push({
+        diseaseId: diff.b.id,
+        diseaseName: diff.b.ten,
+        pct: diff.pct,
+        testName,
+        rationale,
+      });
+    });
+
+    return { primaryLabs, differentialLabs };
+  }, [top, activeChain, criteriaFulfillment, results]);
+
+  // Handler sao chép phiếu Đề nghị Cận lâm sàng
+  const handleCopyLabWorkup = () => {
+    if (!top) return;
+    const lines: string[] = [];
+    lines.push(`PHIẾU CHỈ ĐỊNH ĐỀ NGHỊ CẬN LÂM SÀNG CHIẾN LƯỢC`);
+    lines.push(`Chẩn đoán sơ bộ: ${top.b.ten} (ICD: ${top.b.icd}) - Độ phù hợp: ${top.pct}%`);
+    lines.push(`Thời gian: ${new Date().toLocaleString('vi-VN')}`);
+    lines.push(``);
+    lines.push(`I. XÉT NGHIỆM KHẲNG ĐỊNH CHẨN ĐOÁN SƠ BỘ & ĐÁNH GIÁ ĐỘ NẶNG:`);
+    targetedLabWorkup.primaryLabs.forEach((lab, idx) => {
+      lines.push(`  ${idx + 1}. [${lab.priority.toUpperCase()}] ${lab.name}${lab.threshold ? ` (Ngưỡng: ${lab.threshold})` : ''} - Mục đích: ${lab.purpose}`);
+    });
+    if (targetedLabWorkup.differentialLabs.length > 0) {
+      lines.push(``);
+      lines.push(`II. XÉT NGHIỆM LOẠI TRỪ & PHÂN BIỆT CÁC BỆNH CẠNH TRANH:`);
+      targetedLabWorkup.differentialLabs.forEach((diff, idx) => {
+        lines.push(`  ${idx + 1}. Phân biệt ${diff.diseaseName} (${diff.pct}%): Chỉ định ${diff.testName} (${diff.rationale})`);
+      });
+    }
+    navigator.clipboard.writeText(lines.join('\n'));
+    setCopiedLabWorkup(true);
+    setTimeout(() => setCopiedLabWorkup(false), 2000);
+  };
 
   // Độ tuổi và phân loại bệnh nhi
   const ageYears = form?.tuoi ? parseInt(form.tuoi, 10) : NaN;
@@ -550,22 +737,6 @@ export const Step2Analysis: React.FC<Step2Props> = ({
   const esiScore: EsiScoreResult = useMemo(() => {
     return calculateEsiTriage(vitals, labs, results, form, matchedSymptomIds);
   }, [vitals, labs, results, form, matchedSymptomIds]);
-
-  // Integrated clinical resources from Kho CC, Kho ICD-10, Kho CDSS
-  const matchedTools: VaultArticle[] = useMemo(() => {
-    if (!top) return [];
-    return getToolsForDisease(top.b.ten, top.b.icd);
-  }, [top]);
-
-  const icd10Guides: VaultArticle[] = useMemo(() => {
-    if (!top) return [];
-    return getIcd10Guidance(top.b.icd, top.b.ten);
-  }, [top]);
-
-  const cdssAlerts: VaultArticle[] = useMemo(() => {
-    if (!top) return [];
-    return getCdssForCondition(top.b.ten);
-  }, [top]);
 
   // Filtered differentials
   const differentials = useMemo(() => {
@@ -880,26 +1051,15 @@ export const Step2Analysis: React.FC<Step2Props> = ({
                           )}
                         </div>
 
-                        {/* CLS Đề nghị */}
-                        {prob.diagnosticPlan && (
+                        {/* Dữ kiện giải thích */}
+                        {prob.evidence && prob.evidence.length > 0 && (
                           <div className="bg-slate-900/80 rounded p-1.5 text-[11px] border border-slate-700/60">
                             <span className="font-semibold text-rose-300 flex items-center gap-1">
-                              <FlaskConical className="w-3 h-3 text-rose-400" />
-                              CLS khẩn:
+                              <CheckCircle2 className="w-3 h-3 text-rose-400" />
+                              Dữ kiện giải thích:
                             </span>
-                            <div className="text-slate-200 mt-0.5 leading-relaxed">{prob.diagnosticPlan}</div>
-                          </div>
-                        )}
-
-                        {/* Y lệnh tức thời */}
-                        {prob.therapeuticPlan && (
-                          <div className="bg-rose-950/80 rounded p-1.5 text-[11px] border border-rose-700/50">
-                            <span className="font-semibold text-amber-300 flex items-center gap-1">
-                              <Zap className="w-3 h-3 text-amber-400" />
-                              Y lệnh hồi sức tức thì:
-                            </span>
-                            <div className="text-rose-100 font-medium mt-0.5 leading-relaxed">
-                              {prob.therapeuticPlan}
+                            <div className="text-slate-200 mt-0.5 leading-relaxed font-medium">
+                              {prob.evidence.join(' · ')}
                             </div>
                           </div>
                         )}
@@ -951,25 +1111,16 @@ export const Step2Analysis: React.FC<Step2Props> = ({
                           )}
                         </div>
 
-                        {/* CLS Đề nghị */}
-                        {prob.diagnosticPlan && (
+                        {/* Dữ kiện giải thích */}
+                        {prob.evidence && prob.evidence.length > 0 && (
                           <div className="bg-slate-900/80 rounded p-1.5 text-[11px] border border-slate-700/60">
                             <span className="font-semibold text-cyan-300 flex items-center gap-1">
-                              <FlaskConical className="w-3 h-3 text-cyan-400" />
-                              CLS xác định nguyên nhân:
+                              <CheckCircle2 className="w-3 h-3 text-cyan-400" />
+                              Dữ kiện giải thích:
                             </span>
-                            <div className="text-slate-200 mt-0.5 leading-relaxed">{prob.diagnosticPlan}</div>
-                          </div>
-                        )}
-
-                        {/* Hướng điều trị */}
-                        {prob.therapeuticPlan && (
-                          <div className="bg-slate-900/80 rounded p-1.5 text-[11px] border border-slate-700/60">
-                            <span className="font-semibold text-emerald-300 flex items-center gap-1">
-                              <Pill className="w-3 h-3 text-emerald-400" />
-                              Kế hoạch điều trị &amp; theo dõi:
-                            </span>
-                            <div className="text-slate-200 mt-0.5 leading-relaxed">{prob.therapeuticPlan}</div>
+                            <div className="text-slate-200 mt-0.5 leading-relaxed font-medium">
+                              {prob.evidence.join(' · ')}
+                            </div>
                           </div>
                         )}
                       </div>
@@ -1005,24 +1156,16 @@ export const Step2Analysis: React.FC<Step2Props> = ({
                           <span>{prob.label}</span>
                         </div>
 
-                        {/* Kế hoạch duy trì / Tương tác */}
-                        {prob.therapeuticPlan && (
+                        {/* Dữ kiện giải thích */}
+                        {prob.evidence && prob.evidence.length > 0 && (
                           <div className="bg-slate-900/80 rounded p-1.5 text-[11px] border border-slate-700/60">
                             <span className="font-semibold text-purple-300 flex items-center gap-1">
-                              <Pill className="w-3 h-3 text-purple-400" />
-                              Duy trì thuốc &amp; Cân nhắc liều:
+                              <CheckCircle2 className="w-3 h-3 text-purple-400" />
+                              Dữ kiện giải thích:
                             </span>
-                            <div className="text-slate-200 mt-0.5 leading-relaxed">{prob.therapeuticPlan}</div>
-                          </div>
-                        )}
-
-                        {prob.diagnosticPlan && (
-                          <div className="bg-slate-900/80 rounded p-1.5 text-[11px] border border-slate-700/60">
-                            <span className="font-semibold text-slate-300 flex items-center gap-1">
-                              <FlaskConical className="w-3 h-3 text-slate-400" />
-                              Tầm soát tổn thương cơ quan đích:
-                            </span>
-                            <div className="text-slate-300 mt-0.5 leading-relaxed">{prob.diagnosticPlan}</div>
+                            <div className="text-slate-200 mt-0.5 leading-relaxed font-medium">
+                              {prob.evidence.join(' · ')}
+                            </div>
                           </div>
                         )}
                       </div>
@@ -1790,7 +1933,7 @@ export const Step2Analysis: React.FC<Step2Props> = ({
                     {/* Formula Pills */}
                     <div className="flex flex-wrap items-center gap-1.5 text-[11px] font-semibold">
                       <span className="px-2 py-0.5 rounded bg-rose-100 text-rose-800 border border-rose-300">
-                        Tiêu chuẩn Bắt buộc
+                        Bắt buộc
                       </span>
                       <span className="text-slate-400 font-bold">+</span>
                       <span className="px-2 py-0.5 rounded bg-blue-100 text-blue-800 border border-blue-300">
@@ -1798,14 +1941,14 @@ export const Step2Analysis: React.FC<Step2Props> = ({
                       </span>
                       <span className="text-slate-400 font-bold">+</span>
                       <span className="px-2 py-0.5 rounded bg-purple-100 text-purple-800 border border-purple-300">
-                        ≥ {activeChain.criteriaRule.minMinorRequired || 1} Cận lâm sàng
+                        ≥ {activeChain.criteriaRule.minMinorRequired || 1} CLS
                       </span>
                     </div>
                   </div>
 
-                  {/* Toàn văn quy tắc - Hiển thị đầy đủ không bị cắt ngắn */}
+                  {/* Toàn văn quy tắc - Rút gọn câu từ & ký hiệu toán học */}
                   <p className="text-xs text-slate-800 font-medium leading-relaxed bg-white/95 p-2.5 rounded border border-blue-100">
-                    <b className="text-blue-900 font-bold">Khuyến cáo chẩn đoán:</b> {activeChain.criteriaRule.ruleDescription}
+                    <b className="text-blue-900 font-bold">Khuyến cáo:</b> {shortenClinicalText(activeChain.criteriaRule.ruleDescription)}
                   </p>
 
                   {/* Thanh đo mức độ thỏa mãn tiêu chuẩn theo thời gian thực */}
@@ -1819,7 +1962,7 @@ export const Step2Analysis: React.FC<Step2Props> = ({
                               : 'bg-rose-50/90 border-rose-200 text-rose-950'
                           }`}
                         >
-                          <span className="font-medium text-slate-700">1. Tiêu chuẩn Bắt buộc:</span>
+                          <span className="font-medium text-slate-700">1. Bắt buộc:</span>
                           <span className="font-bold flex items-center gap-1">
                             {criteriaFulfillment.mandatoryFulfilled ? (
                               <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
@@ -1837,7 +1980,7 @@ export const Step2Analysis: React.FC<Step2Props> = ({
                               : 'bg-amber-50/90 border-amber-200 text-amber-950'
                           }`}
                         >
-                          <span className="font-medium text-slate-700">2. Lâm sàng Chính:</span>
+                          <span className="font-medium text-slate-700">2. Lâm sàng chính:</span>
                           <span className="font-bold flex items-center gap-1">
                             {criteriaFulfillment.majorFulfilled ? (
                               <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
@@ -1869,7 +2012,7 @@ export const Step2Analysis: React.FC<Step2Props> = ({
 
                       {/* Đánh giá kết luận đối chiếu */}
                       <div
-                        className={`p-2.5 rounded-md border text-xs flex items-center gap-2 font-medium ${
+                        className={`p-2.5 rounded-md border text-xs flex items-center justify-between gap-2 font-medium ${
                           criteriaFulfillment.isConfirmed
                             ? 'bg-emerald-100 text-emerald-900 border-emerald-300'
                             : criteriaFulfillment.isSuspected
@@ -1877,19 +2020,33 @@ export const Step2Analysis: React.FC<Step2Props> = ({
                             : 'bg-blue-100 text-blue-900 border-blue-300'
                         }`}
                       >
-                        {criteriaFulfillment.isConfirmed ? (
-                          <CheckCircle2 className="w-4 h-4 text-emerald-700 shrink-0" />
-                        ) : (
-                          <AlertTriangle className="w-4 h-4 text-amber-700 shrink-0" />
+                        <div className="flex items-center gap-2">
+                          {criteriaFulfillment.isConfirmed ? (
+                            <CheckCircle2 className="w-4 h-4 text-emerald-700 shrink-0" />
+                          ) : (
+                            <AlertTriangle className="w-4 h-4 text-amber-700 shrink-0" />
+                          )}
+                          <span>
+                            <b>Kết luận ca bệnh:</b>{' '}
+                            {criteriaFulfillment.isConfirmed
+                              ? `Đủ điều kiện chẩn đoán xác định theo bộ tiêu chuẩn của ${authorities.map((a) => a.badge).slice(0, 2).join(' & ')}.`
+                              : criteriaFulfillment.isSuspected
+                              ? `Ca bệnh nghi ngờ cao trên lâm sàng — Cần bổ sung xét nghiệm CLS chuyên biệt ở bảng bên dưới để khẳng định.`
+                              : `Chưa thỏa mãn đủ tiêu chuẩn lâm sàng/dịch tễ — Cần tiếp tục theo dõi sát hoặc rà soát chẩn đoán phân biệt.`}
+                          </span>
+                        </div>
+
+                        {Object.keys(criteriaOverrides).length > 0 && (
+                          <button
+                            type="button"
+                            onClick={handleResetCriteriaOverrides}
+                            className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white/90 hover:bg-white text-slate-700 border border-slate-300 text-[10.5px] font-bold shrink-0 cursor-pointer shadow-2xs"
+                            title="Khôi phục trạng thái đối chiếu tự động từ dữ kiện bệnh án"
+                          >
+                            <RotateCcw className="w-3 h-3 text-blue-600" />
+                            <span>Khôi phục tự động</span>
+                          </button>
                         )}
-                        <span>
-                          <b>Đánh giá trên ca bệnh hiện tại:</b>{' '}
-                          {criteriaFulfillment.isConfirmed
-                            ? `Đủ điều kiện chẩn đoán xác định theo bộ tiêu chuẩn của ${authorities.map((a) => a.badge).slice(0, 2).join(' & ')}.`
-                            : criteriaFulfillment.isSuspected
-                            ? `Ca bệnh nghi ngờ cao trên lâm sàng — Cần bổ sung xét nghiệm cận lâm sàng chuyên biệt để khẳng định theo hướng dẫn.`
-                            : `Chưa thỏa mãn đủ tiêu chuẩn lâm sàng/dịch tễ — Cần tiếp tục theo dõi sát diễn biến hoặc rà soát chẩn đoán phân biệt.`}
-                        </span>
                       </div>
                     </div>
                   )}
@@ -1898,97 +2055,453 @@ export const Step2Analysis: React.FC<Step2Props> = ({
 
               {/* Tiêu chuẩn vàng (Gold Standard) */}
               {activeChain?.goldStandard && (
-                <div className="p-3 rounded-lg bg-blue-50/80 border border-blue-200 text-xs text-blue-950 flex items-start gap-2.5">
-                  <span className="font-bold text-[11px] uppercase tracking-wide text-blue-800 shrink-0 mt-0.5 px-2 py-0.5 bg-blue-100 border border-blue-300 rounded">
+                <div className="p-2.5 rounded-lg bg-blue-50/80 border border-blue-200 text-xs text-blue-950 flex items-start gap-2">
+                  <span className="font-bold text-[10.5px] uppercase tracking-wide text-blue-800 shrink-0 mt-0.5 px-2 py-0.5 bg-blue-100 border border-blue-300 rounded">
                     ★ Tiêu chuẩn vàng:
                   </span>
-                  <span className="leading-relaxed font-normal">{activeChain.goldStandard}</span>
+                  <span className="leading-relaxed font-normal">{shortenClinicalText(activeChain.goldStandard)}</span>
                 </div>
               )}
 
-              {/* Lưới thẻ tiêu chuẩn chi tiết - Trọng tâm, có ngưỡng định lượng và nguồn Guideline */}
-              {activeChain?.criteria && activeChain.criteria.length > 0 ? (
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                  {activeChain.criteria.map((crit) => {
-                    const isMatched = criteriaFulfillment
-                      ? criteriaFulfillment.isItemMatched(crit)
-                      : crit.type === 'mandatory' && top.pct >= 50;
+              {/* Hướng dẫn tương tác */}
+              <div className="flex items-center justify-between text-[11px] text-slate-500 bg-slate-50 px-2.5 py-1.5 rounded-md border border-slate-200/80">
+                <span className="flex items-center gap-1.5">
+                  <Sparkles className="w-3.5 h-3.5 text-blue-600" />
+                  <span>Bác sĩ có thể click trực tiếp vào từng thẻ tiêu chuẩn để tích chọn [✓] hoặc bỏ chọn [ ] theo khám thực tế.</span>
+                </span>
+                {Object.keys(criteriaOverrides).length > 0 && (
+                  <span className="font-semibold text-amber-700">
+                    Đã can thiệp thủ công {Object.keys(criteriaOverrides).length} mục
+                  </span>
+                )}
+              </div>
 
-                    return (
-                      <div
-                        key={crit.id}
-                        className={`p-3 rounded-lg border text-xs flex flex-col justify-between gap-2 transition-all ${
-                          isMatched
-                            ? 'bg-emerald-50/50 border-emerald-300/80 text-slate-800 shadow-2xs'
-                            : 'bg-white border-slate-200/90 text-slate-700'
-                        }`}
-                      >
-                        <div className="flex flex-col gap-1.5">
-                          <div className="flex items-center justify-between gap-2">
-                            <span
-                              className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wide shrink-0 ${
-                                crit.type === 'mandatory'
-                                  ? 'bg-rose-100 text-rose-800 border border-rose-300'
-                                  : crit.type === 'major'
-                                  ? 'bg-blue-100 text-blue-800 border border-blue-300'
-                                  : crit.type === 'lab'
-                                  ? 'bg-purple-100 text-purple-800 border border-purple-300'
-                                  : 'bg-slate-100 text-slate-700 border border-slate-300'
+              {/* DANH SÁCH TIÊU CHUẨN TƯƠNG TÁC PHÂN THEO 3 NHÓM CHUYÊN KHOA */}
+              {activeChain?.criteria && activeChain.criteria.length > 0 ? (
+                <div className="space-y-3.5">
+                  {/* Nhóm 1: Tiêu chuẩn Bắt buộc */}
+                  {criteriaFulfillment?.mandatoryCriteria && criteriaFulfillment.mandatoryCriteria.length > 0 && (
+                    <div className="space-y-1.5">
+                      <div className="flex items-center justify-between text-xs font-bold text-rose-900 border-b border-rose-100 pb-1">
+                        <span className="flex items-center gap-1.5">
+                          <ShieldAlert className="w-3.5 h-3.5 text-rose-600" />
+                          <span>1. Tiêu chuẩn Bắt buộc (Mandatory):</span>
+                        </span>
+                        <span className="text-[11px] font-semibold text-rose-700">
+                          {criteriaFulfillment.matchedMandatoryCount}/{criteriaFulfillment.totalMandatoryCount} Đạt
+                        </span>
+                      </div>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        {criteriaFulfillment.mandatoryCriteria.map((crit) => {
+                          const isMatched = criteriaFulfillment.isItemMatched(crit);
+                          const isOverridden = criteriaFulfillment.isItemOverridden(crit.id);
+                          const isExpanded = expandedCriteria[crit.id];
+
+                          return (
+                            <div
+                              key={crit.id}
+                              onClick={() => handleToggleCriterion(crit.id, isMatched)}
+                              className={`p-2.5 rounded-lg border text-xs flex flex-col justify-between gap-1.5 transition-all cursor-pointer select-none ${
+                                isMatched
+                                  ? 'bg-rose-50/50 border-rose-300 text-slate-900 shadow-2xs'
+                                  : 'bg-white hover:bg-slate-50 border-slate-200 text-slate-700'
                               }`}
                             >
-                              {crit.type === 'mandatory'
-                                ? 'Bắt buộc'
-                                : crit.type === 'major'
-                                ? 'Lâm sàng chính'
-                                : crit.type === 'lab'
-                                ? 'Cận lâm sàng'
-                                : 'Tiêu chuẩn phụ'}
-                            </span>
-
-                            {isMatched ? (
-                              <span className="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold text-[10.5px] shrink-0 flex items-center gap-1 border border-emerald-300">
-                                <Check className="w-3.5 h-3.5 stroke-[2.5]" />
-                                <span>Đã khớp</span>
-                              </span>
-                            ) : (
-                              <span className="px-2 py-0.5 rounded bg-slate-100 text-slate-500 font-medium text-[10.5px] shrink-0 border border-slate-200">
-                                Cần tìm thêm
-                              </span>
-                            )}
-                          </div>
-
-                          <h5 className="font-bold text-slate-900 text-xs sm:text-[13px] leading-snug">
-                            {crit.label}
-                          </h5>
-
-                          {/* Ngưỡng định lượng cận lâm sàng nổi bật */}
-                          {crit.labThreshold && (
-                            <div className="p-1.5 rounded bg-purple-50 border border-purple-200 text-[11px] font-mono-custom text-purple-900 font-semibold flex items-center gap-1.5">
-                              <FlaskConical className="w-3.5 h-3.5 text-purple-600 shrink-0" />
-                              <span>Ngưỡng xác định: {crit.labThreshold}</span>
+                              <div className="flex items-start justify-between gap-2">
+                                <div className="flex items-start gap-2 flex-1 min-w-0">
+                                  <button
+                                    type="button"
+                                    className="mt-0.5 shrink-0 cursor-pointer focus:outline-none"
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      handleToggleCriterion(crit.id, isMatched);
+                                    }}
+                                  >
+                                    {isMatched ? (
+                                      <CheckSquare2 className="w-4 h-4 text-rose-600" />
+                                    ) : (
+                                      <Square className="w-4 h-4 text-slate-400" />
+                                    )}
+                                  </button>
+                                  <div className="flex-1 min-w-0">
+                                    <div className="flex items-center gap-1.5 flex-wrap">
+                                      <span className={`font-bold text-xs sm:text-[12.5px] leading-snug ${isMatched ? 'text-rose-950 font-bold' : 'text-slate-800'}`}>
+                                        {formatCriterionLabel(crit.label)}
+                                      </span>
+                                      {isOverridden && (
+                                        <span className="px-1.5 py-0.2 rounded bg-amber-100 text-amber-800 border border-amber-300 text-[9.5px] font-bold">
+                                          BS chỉnh
+                                        </span>
+                                      )}
+                                    </div>
+                                    {crit.labThreshold && (
+                                      <div className="mt-1 inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-purple-50 border border-purple-200 text-[10.5px] font-mono-custom text-purple-900 font-semibold">
+                                        <FlaskConical className="w-3 h-3 text-purple-600 shrink-0" />
+                                        <span>Ngưỡng: {formatLabThreshold(crit.labThreshold)}</span>
+                                      </div>
+                                    )}
+                                  </div>
+                                </div>
+                                <div className="flex items-center gap-1 shrink-0">
+                                  <span
+                                    className={`px-2 py-0.5 rounded text-[10px] font-bold flex items-center gap-1 ${
+                                      isMatched
+                                        ? 'bg-rose-100 text-rose-800 border border-rose-300'
+                                        : 'bg-slate-100 text-slate-500 border border-slate-200'
+                                    }`}
+                                  >
+                                    {isMatched ? <Check className="w-3 h-3 stroke-[2.5]" /> : null}
+                                    <span>{isMatched ? 'Đạt' : 'Chưa'}</span>
+                                  </span>
+                                  {crit.description && (
+                                    <button
+                                      type="button"
+                                      onClick={(e) => {
+                                        e.stopPropagation();
+                                        handleToggleCriterionDetail(crit.id);
+                                      }}
+                                      className="p-1 text-slate-400 hover:text-slate-600 rounded"
+                                    >
+                                      {isExpanded ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
+                                    </button>
+                                  )}
+                                </div>
+                              </div>
+                              {isExpanded && crit.description && (
+                                <div className="mt-1 pt-1.5 border-t border-slate-100 text-[11px] text-slate-600 bg-slate-50/80 p-2 rounded">
+                                  <div>{shortenClinicalText(crit.description)}</div>
+                                  {crit.sourceGuideline && (
+                                    <div className="mt-1 text-[10px] text-slate-500 flex items-center gap-1">
+                                      <BookOpen className="w-3 h-3 text-blue-600" />
+                                      <span>Nguồn: <b>{formatGuidelineCitation(crit.sourceGuideline)}</b></span>
+                                    </div>
+                                  )}
+                                </div>
+                              )}
                             </div>
-                          )}
-
-                          {/* Mô tả triệu chứng lâm sàng cốt lõi */}
-                          {crit.description && (
-                            <div className="text-[11.5px] text-slate-600 leading-relaxed font-normal">
-                              {crit.description}
-                            </div>
-                          )}
-                        </div>
-
-                        {/* Nguồn Tổ chức ban hành & Năm công bố trên từng thẻ */}
-                        {crit.sourceGuideline && (
-                          <div className="pt-2 border-t border-slate-100 flex items-center gap-1.5 text-[10.5px] text-slate-500 font-medium">
-                            <BookOpen className="w-3.5 h-3.5 text-blue-600 shrink-0" />
-                            <span className="truncate">
-                              Nguồn: <b className="text-slate-700 font-semibold">{formatGuidelineCitation(crit.sourceGuideline)}</b>
-                            </span>
-                          </div>
-                        )}
+                          );
+                        })}
                       </div>
-                    );
-                  })}
+                    </div>
+                  )}
+
+                  {/* Nhóm 2: Lâm sàng chính */}
+                  {criteriaFulfillment?.majorCriteria && criteriaFulfillment.majorCriteria.length > 0 && (
+                    <div className="space-y-1.5">
+                      <div className="flex items-center justify-between text-xs font-bold text-blue-900 border-b border-blue-100 pb-1">
+                        <span className="flex items-center gap-1.5">
+                          <Stethoscope className="w-3.5 h-3.5 text-blue-600" />
+                          <span>2. Tiêu chuẩn Lâm sàng Chính (Major Signs):</span>
+                        </span>
+                        <span className="text-[11px] font-semibold text-blue-700">
+                          {criteriaFulfillment.matchedMajorCount}/{criteriaFulfillment.majorCriteria.length} Đạt (Yêu cầu ≥ {criteriaFulfillment.requiredMajorCount})
+                        </span>
+                      </div>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        {criteriaFulfillment.majorCriteria.map((crit) => {
+                          const isMatched = criteriaFulfillment.isItemMatched(crit);
+                          const isOverridden = criteriaFulfillment.isItemOverridden(crit.id);
+                          const isExpanded = expandedCriteria[crit.id];
+
+                          return (
+                            <div
+                              key={crit.id}
+                              onClick={() => handleToggleCriterion(crit.id, isMatched)}
+                              className={`p-2.5 rounded-lg border text-xs flex flex-col justify-between gap-1.5 transition-all cursor-pointer select-none ${
+                                isMatched
+                                  ? 'bg-blue-50/50 border-blue-300 text-slate-900 shadow-2xs'
+                                  : 'bg-white hover:bg-slate-50 border-slate-200 text-slate-700'
+                              }`}
+                            >
+                              <div className="flex items-start justify-between gap-2">
+                                <div className="flex items-start gap-2 flex-1 min-w-0">
+                                  <button
+                                    type="button"
+                                    className="mt-0.5 shrink-0 cursor-pointer focus:outline-none"
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      handleToggleCriterion(crit.id, isMatched);
+                                    }}
+                                  >
+                                    {isMatched ? (
+                                      <CheckSquare2 className="w-4 h-4 text-blue-600" />
+                                    ) : (
+                                      <Square className="w-4 h-4 text-slate-400" />
+                                    )}
+                                  </button>
+                                  <div className="flex-1 min-w-0">
+                                    <div className="flex items-center gap-1.5 flex-wrap">
+                                      <span className={`font-bold text-xs sm:text-[12.5px] leading-snug ${isMatched ? 'text-blue-950 font-bold' : 'text-slate-800'}`}>
+                                        {formatCriterionLabel(crit.label)}
+                                      </span>
+                                      {isOverridden && (
+                                        <span className="px-1.5 py-0.2 rounded bg-amber-100 text-amber-800 border border-amber-300 text-[9.5px] font-bold">
+                                          BS chỉnh
+                                        </span>
+                                      )}
+                                    </div>
+                                    {crit.labThreshold && (
+                                      <div className="mt-1 inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-purple-50 border border-purple-200 text-[10.5px] font-mono-custom text-purple-900 font-semibold">
+                                        <FlaskConical className="w-3 h-3 text-purple-600 shrink-0" />
+                                        <span>Ngưỡng: {formatLabThreshold(crit.labThreshold)}</span>
+                                      </div>
+                                    )}
+                                  </div>
+                                </div>
+                                <div className="flex items-center gap-1 shrink-0">
+                                  <span
+                                    className={`px-2 py-0.5 rounded text-[10px] font-bold flex items-center gap-1 ${
+                                      isMatched
+                                        ? 'bg-blue-100 text-blue-800 border border-blue-300'
+                                        : 'bg-slate-100 text-slate-500 border border-slate-200'
+                                    }`}
+                                  >
+                                    {isMatched ? <Check className="w-3 h-3 stroke-[2.5]" /> : null}
+                                    <span>{isMatched ? 'Đạt' : 'Chưa'}</span>
+                                  </span>
+                                  {crit.description && (
+                                    <button
+                                      type="button"
+                                      onClick={(e) => {
+                                        e.stopPropagation();
+                                        handleToggleCriterionDetail(crit.id);
+                                      }}
+                                      className="p-1 text-slate-400 hover:text-slate-600 rounded"
+                                    >
+                                      {isExpanded ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
+                                    </button>
+                                  )}
+                                </div>
+                              </div>
+                              {isExpanded && crit.description && (
+                                <div className="mt-1 pt-1.5 border-t border-slate-100 text-[11px] text-slate-600 bg-slate-50/80 p-2 rounded">
+                                  <div>{shortenClinicalText(crit.description)}</div>
+                                  {crit.sourceGuideline && (
+                                    <div className="mt-1 text-[10px] text-slate-500 flex items-center gap-1">
+                                      <BookOpen className="w-3 h-3 text-blue-600" />
+                                      <span>Nguồn: <b>{formatGuidelineCitation(crit.sourceGuideline)}</b></span>
+                                    </div>
+                                  )}
+                                </div>
+                              )}
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Nhóm 3: Cận lâm sàng & Hình ảnh */}
+                  {criteriaFulfillment?.labCriteria && criteriaFulfillment.labCriteria.length > 0 && (
+                    <div className="space-y-1.5">
+                      <div className="flex items-center justify-between text-xs font-bold text-purple-900 border-b border-purple-100 pb-1">
+                        <span className="flex items-center gap-1.5">
+                          <FlaskConical className="w-3.5 h-3.5 text-purple-600" />
+                          <span>3. Tiêu chuẩn Cận lâm sàng &amp; Hình ảnh (Lab &amp; Imaging):</span>
+                        </span>
+                        <span className="text-[11px] font-semibold text-purple-700">
+                          {criteriaFulfillment.matchedLabCount}/{criteriaFulfillment.labCriteria.length} Đạt (Yêu cầu ≥ {criteriaFulfillment.requiredLabCount})
+                        </span>
+                      </div>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        {criteriaFulfillment.labCriteria.map((crit) => {
+                          const isMatched = criteriaFulfillment.isItemMatched(crit);
+                          const isOverridden = criteriaFulfillment.isItemOverridden(crit.id);
+                          const isExpanded = expandedCriteria[crit.id];
+
+                          return (
+                            <div
+                              key={crit.id}
+                              onClick={() => handleToggleCriterion(crit.id, isMatched)}
+                              className={`p-2.5 rounded-lg border text-xs flex flex-col justify-between gap-1.5 transition-all cursor-pointer select-none ${
+                                isMatched
+                                  ? 'bg-purple-50/50 border-purple-300 text-slate-900 shadow-2xs'
+                                  : 'bg-white hover:bg-slate-50 border-slate-200 text-slate-700'
+                              }`}
+                            >
+                              <div className="flex items-start justify-between gap-2">
+                                <div className="flex items-start gap-2 flex-1 min-w-0">
+                                  <button
+                                    type="button"
+                                    className="mt-0.5 shrink-0 cursor-pointer focus:outline-none"
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      handleToggleCriterion(crit.id, isMatched);
+                                    }}
+                                  >
+                                    {isMatched ? (
+                                      <CheckSquare2 className="w-4 h-4 text-purple-600" />
+                                    ) : (
+                                      <Square className="w-4 h-4 text-slate-400" />
+                                    )}
+                                  </button>
+                                  <div className="flex-1 min-w-0">
+                                    <div className="flex items-center gap-1.5 flex-wrap">
+                                      <span className={`font-bold text-xs sm:text-[12.5px] leading-snug ${isMatched ? 'text-purple-950 font-bold' : 'text-slate-800'}`}>
+                                        {formatCriterionLabel(crit.label)}
+                                      </span>
+                                      {isOverridden && (
+                                        <span className="px-1.5 py-0.2 rounded bg-amber-100 text-amber-800 border border-amber-300 text-[9.5px] font-bold">
+                                          BS chỉnh
+                                        </span>
+                                      )}
+                                    </div>
+                                    {crit.labThreshold && (
+                                      <div className="mt-1 inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-purple-100 text-purple-900 border border-purple-200 text-[10.5px] font-mono-custom font-semibold">
+                                        <FlaskConical className="w-3 h-3 text-purple-600 shrink-0" />
+                                        <span>Ngưỡng: {formatLabThreshold(crit.labThreshold)}</span>
+                                      </div>
+                                    )}
+                                  </div>
+                                </div>
+                                <div className="flex items-center gap-1 shrink-0">
+                                  <span
+                                    className={`px-2 py-0.5 rounded text-[10px] font-bold flex items-center gap-1 ${
+                                      isMatched
+                                        ? 'bg-purple-100 text-purple-800 border border-purple-300'
+                                        : 'bg-slate-100 text-slate-500 border border-slate-200'
+                                    }`}
+                                  >
+                                    {isMatched ? <Check className="w-3 h-3 stroke-[2.5]" /> : null}
+                                    <span>{isMatched ? 'Đạt' : 'Chưa'}</span>
+                                  </span>
+                                  {crit.description && (
+                                    <button
+                                      type="button"
+                                      onClick={(e) => {
+                                        e.stopPropagation();
+                                        handleToggleCriterionDetail(crit.id);
+                                      }}
+                                      className="p-1 text-slate-400 hover:text-slate-600 rounded"
+                                    >
+                                      {isExpanded ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
+                                    </button>
+                                  )}
+                                </div>
+                              </div>
+                              {isExpanded && crit.description && (
+                                <div className="mt-1 pt-1.5 border-t border-slate-100 text-[11px] text-slate-600 bg-slate-50/80 p-2 rounded">
+                                  <div>{shortenClinicalText(crit.description)}</div>
+                                  {crit.sourceGuideline && (
+                                    <div className="mt-1 text-[10px] text-slate-500 flex items-center gap-1">
+                                      <BookOpen className="w-3 h-3 text-blue-600" />
+                                      <span>Nguồn: <b>{formatGuidelineCitation(crit.sourceGuideline)}</b></span>
+                                    </div>
+                                  )}
+                                </div>
+                              )}
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Nhóm 4: Tiêu chuẩn Phụ / Hỗ trợ */}
+                  {criteriaFulfillment?.minorCriteria && criteriaFulfillment.minorCriteria.length > 0 && (
+                    <div className="space-y-1.5">
+                      <div className="flex items-center justify-between text-xs font-bold text-slate-800 border-b border-slate-200 pb-1">
+                        <span className="flex items-center gap-1.5">
+                          <ListTree className="w-3.5 h-3.5 text-slate-500" />
+                          <span>4. Tiêu chuẩn Phụ &amp; Yếu tố hỗ trợ:</span>
+                        </span>
+                        <span className="text-[11px] font-semibold text-slate-600">
+                          {criteriaFulfillment.matchedMinorCount}/{criteriaFulfillment.minorCriteria.length} Đạt
+                        </span>
+                      </div>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        {criteriaFulfillment.minorCriteria.map((crit) => {
+                          const isMatched = criteriaFulfillment.isItemMatched(crit);
+                          const isOverridden = criteriaFulfillment.isItemOverridden(crit.id);
+                          const isExpanded = expandedCriteria[crit.id];
+
+                          return (
+                            <div
+                              key={crit.id}
+                              onClick={() => handleToggleCriterion(crit.id, isMatched)}
+                              className={`p-2.5 rounded-lg border text-xs flex flex-col justify-between gap-1.5 transition-all cursor-pointer select-none ${
+                                isMatched
+                                  ? 'bg-slate-100 border-slate-300 text-slate-900 shadow-2xs'
+                                  : 'bg-white hover:bg-slate-50 border-slate-200 text-slate-700'
+                              }`}
+                            >
+                              <div className="flex items-start justify-between gap-2">
+                                <div className="flex items-start gap-2 flex-1 min-w-0">
+                                  <button
+                                    type="button"
+                                    className="mt-0.5 shrink-0 cursor-pointer focus:outline-none"
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      handleToggleCriterion(crit.id, isMatched);
+                                    }}
+                                  >
+                                    {isMatched ? (
+                                      <CheckSquare2 className="w-4 h-4 text-slate-700" />
+                                    ) : (
+                                      <Square className="w-4 h-4 text-slate-400" />
+                                    )}
+                                  </button>
+                                  <div className="flex-1 min-w-0">
+                                    <div className="flex items-center gap-1.5 flex-wrap">
+                                      <span className={`font-bold text-xs sm:text-[12.5px] leading-snug ${isMatched ? 'text-slate-900 font-bold' : 'text-slate-700'}`}>
+                                        {formatCriterionLabel(crit.label)}
+                                      </span>
+                                      {isOverridden && (
+                                        <span className="px-1.5 py-0.2 rounded bg-amber-100 text-amber-800 border border-amber-300 text-[9.5px] font-bold">
+                                          BS chỉnh
+                                        </span>
+                                      )}
+                                    </div>
+                                    {crit.labThreshold && (
+                                      <div className="mt-1 inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-purple-50 border border-purple-200 text-[10.5px] font-mono-custom text-purple-900 font-semibold">
+                                        <FlaskConical className="w-3 h-3 text-purple-600 shrink-0" />
+                                        <span>Ngưỡng: {formatLabThreshold(crit.labThreshold)}</span>
+                                      </div>
+                                    )}
+                                  </div>
+                                </div>
+                                <div className="flex items-center gap-1 shrink-0">
+                                  <span
+                                    className={`px-2 py-0.5 rounded text-[10px] font-bold flex items-center gap-1 ${
+                                      isMatched
+                                        ? 'bg-slate-200 text-slate-800 border border-slate-300'
+                                        : 'bg-slate-100 text-slate-500 border border-slate-200'
+                                    }`}
+                                  >
+                                    {isMatched ? <Check className="w-3 h-3 stroke-[2.5]" /> : null}
+                                    <span>{isMatched ? 'Đạt' : 'Chưa'}</span>
+                                  </span>
+                                  {crit.description && (
+                                    <button
+                                      type="button"
+                                      onClick={(e) => {
+                                        e.stopPropagation();
+                                        handleToggleCriterionDetail(crit.id);
+                                      }}
+                                      className="p-1 text-slate-400 hover:text-slate-600 rounded"
+                                    >
+                                      {isExpanded ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
+                                    </button>
+                                  )}
+                                </div>
+                              </div>
+                              {isExpanded && crit.description && (
+                                <div className="mt-1 pt-1.5 border-t border-slate-100 text-[11px] text-slate-600 bg-slate-50/80 p-2 rounded">
+                                  <div>{shortenClinicalText(crit.description)}</div>
+                                  {crit.sourceGuideline && (
+                                    <div className="mt-1 text-[10px] text-slate-500 flex items-center gap-1">
+                                      <BookOpen className="w-3 h-3 text-blue-600" />
+                                      <span>Nguồn: <b>{formatGuidelineCitation(crit.sourceGuideline)}</b></span>
+                                    </div>
+                                  )}
+                                </div>
+                              )}
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  )}
                 </div>
               ) : (
                 /* Fallback to simple matched list if no activeChain criteria */
@@ -2002,9 +2515,9 @@ export const Step2Analysis: React.FC<Step2Props> = ({
                       >
                         <span className="font-medium text-slate-800">{m.tc.ten}</span>
                         <span
-                          className={`px-1.5 py-0.5 rounded text-[10px] font-bold ${roleConfig.color}`}
+                          className={`px-1.5 py-0.5 rounded text-[10px] font-bold ${roleConfig?.badgeClass || 'text-slate-700 bg-slate-100'}`}
                         >
-                          {roleConfig.label}
+                          {roleConfig?.label || m.role}
                         </span>
                       </li>
                     );
@@ -2289,174 +2802,249 @@ export const Step2Analysis: React.FC<Step2Props> = ({
           </div>
         </div>
 
-        {/* KHỐI 3: ⚠️ TIÊU CHUẨN BIẾN CHỨNG ĐE DỌA SINH MẠNG & Y LỆNH CẤP CỨU */}
-        {activeChain?.complications && activeChain.complications.length > 0 && (
-          <div className="mt-5 p-4 rounded-lg bg-rose-50/40 border border-rose-200">
-            <div className="flex items-center justify-between gap-2 mb-3 pb-2 border-b border-rose-200/80">
-              <div className="flex items-center gap-2">
-                <ShieldAlert className="w-4 h-4 text-rose-600 animate-pulse" />
-                <span className="font-bold text-xs uppercase tracking-wider text-rose-900">
-                  3. Tiêu Chuẩn Biến Chứng Đe Dọa Sinh Mạng & Y Lệnh Cấp Cứu ({activeChain.complications.length} Biến chứng)
-                </span>
-              </div>
-              <span className="text-[11px] font-semibold text-rose-700 hidden sm:inline">
-                Bấm để nạp trọn bộ Y Lệnh Cấp Cứu vào Bước 4
+        {/* KHỐI 2.5: 🔬 ĐỀ NGHỊ CẬN LÂM SÀNG CHIẾN LƯỢC (TARGETED DIAGNOSTIC WORKUP) */}
+        <div className="mt-5 p-4 rounded-xl bg-white border border-slate-200/90 shadow-2xs">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 pb-3 border-b border-slate-200">
+            <div>
+              <span className="font-bold text-xs sm:text-sm uppercase tracking-wider text-slate-900 flex items-center gap-1.5">
+                <Microscope className="w-4 h-4 text-blue-600" />
+                <span>Chiến Lược Đề Nghị Cận Lâm Sàng (Targeted Diagnostic Workup)</span>
               </span>
+              <p className="text-[11px] text-slate-500 mt-0.5">
+                Gợi ý chỉ định dựa trên các dữ kiện còn thiếu giúp hoàn thiện tiêu chuẩn chẩn đoán sơ bộ và tìm bằng chứng phân biệt/loại trừ các bệnh cạnh tranh.
+              </p>
             </div>
 
-            <div className="space-y-2.5">
-              {activeChain.complications.map((comp) => (
-                <div
-                  key={comp.id}
-                  className="p-3 bg-white rounded-lg border border-rose-200 hover:border-rose-400 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-2xs transition-all"
-                >
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2 flex-wrap mb-1">
-                      <span className="font-bold text-xs sm:text-sm text-slate-900">
-                        {comp.name}
-                      </span>
-                      <span
-                        className={`px-1.5 py-0.2 rounded text-[10px] font-bold uppercase ${
-                          comp.severity === 'critical'
-                            ? 'bg-rose-100 text-rose-800 border border-rose-200'
-                            : 'bg-orange-100 text-orange-800 border border-orange-200'
-                        }`}
-                      >
-                        {comp.severity === 'critical' ? 'Nguy kịch' : 'Cấp cứu'}
-                      </span>
-                      {comp.orderSet && comp.orderSet.length > 0 && (
-                        <span className="px-1.5 py-0.2 rounded bg-purple-50 text-purple-700 border border-purple-200 text-[10px] font-semibold">
-                          ⚡ {comp.orderSet.length} Y lệnh khẩn
-                        </span>
-                      )}
-                    </div>
-
-                    <div className="text-xs text-slate-600 space-y-0.5">
-                      <div>
-                        <b className="text-rose-800 text-[11px]">Dấu hiệu kích hoạt: </b>
-                        <span className="text-[11.5px]">{comp.triggerCriteria}</span>
-                      </div>
-                      <div>
-                        <b className="text-slate-800 text-[11px]">Xử trí giờ vàng: </b>
-                        <span className="text-[11.5px] text-slate-700">{comp.actionSummary}</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <button
-                    type="button"
-                    onClick={() =>
-                      onGoToProtocol(top.b.id, {
-                        gradeIdx: activeChain.severityGrading?.length ? activeChain.severityGrading.length - 1 : 0,
-                        complicationId: comp.id,
-                      })
-                    }
-                    className="px-3 py-1.5 rounded-md text-xs font-bold bg-rose-600 hover:bg-rose-700 text-white flex items-center justify-center gap-1.5 cursor-pointer shadow-xs transition-all shrink-0 self-stretch sm:self-center"
-                  >
-                    <Flame className="w-3.5 h-3.5" />
-                    <span>Xem Phác Đồ Cấp Cứu ⚡</span>
-                  </button>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* 3-Vault Companion Widget: Kho Công cụ (CC), Kho ICD-10 & Kho CDSS */}
-        <div className="mt-5 p-3.5 bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50/20 border border-slate-200 rounded-lg flex flex-col gap-2.5 text-xs shadow-2xs">
-          <div className="flex items-center justify-between border-b border-slate-200/80 pb-1.5">
-            <span className="font-bold text-slate-800 flex items-center gap-1.5 text-[11.5px]">
-              <Sparkles className="w-3.5 h-3.5 text-blue-600" />
-              <span>Trợ thủ Lâm sàng & Pháp lý BHYT Đồng hành</span>
-            </span>
-            <span className="text-[10.5px] font-mono-custom text-slate-500">
-              Chuẩn hóa theo mã {top.b.icd}
-            </span>
-          </div>
-
-          {/* Row 1: Matched Clinical Tools (Kho CC) */}
-          <div className="flex flex-col sm:flex-row sm:items-center gap-1.5">
-            <span className="text-[11px] font-bold text-amber-800 shrink-0 flex items-center gap-1 min-w-[155px]">
-              <span>🧮 Thang điểm lượng giá:</span>
-            </span>
-            <div className="flex items-center gap-1.5 flex-wrap">
-              {matchedTools.length > 0 ? (
-                matchedTools.map((t) => (
-                  <button
-                    key={t.id}
-                    type="button"
-                    onClick={() => onOpenVaultDrawer?.(undefined, t.title, 'CC')}
-                    className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white hover:bg-amber-50 text-amber-900 border border-amber-300/80 text-[11px] font-semibold transition-colors cursor-pointer shadow-2xs"
-                    title={t.snippet}
-                  >
-                    <span className="text-amber-600">◈</span>
-                    <span className="truncate max-w-[220px]">{t.title}</span>
-                  </button>
-                ))
-              ) : (
-                <button
-                  type="button"
-                  onClick={() => onOpenVaultDrawer?.(undefined, undefined, 'CC')}
-                  className="text-[11px] text-slate-500 hover:text-blue-600 italic cursor-pointer"
-                >
-                  Duyệt tất cả 19 công cụ lâm sàng →
-                </button>
-              )}
-            </div>
-          </div>
-
-          {/* Row 2: ICD-10 & BHYT Auditing (Kho ICD-10) */}
-          <div className="flex flex-col sm:flex-row sm:items-center gap-1.5">
-            <span className="text-[11px] font-bold text-sky-800 shrink-0 flex items-center gap-1 min-w-[155px]">
-              <span>🏷️ Mã hóa & Hồ sơ BHYT:</span>
-            </span>
-            <div className="flex items-center gap-1.5 flex-wrap">
-              {icd10Guides.slice(0, 3).map((g) => (
-                <button
-                  key={g.id}
-                  type="button"
-                  onClick={() => onOpenVaultDrawer?.(undefined, g.title, 'ICD10')}
-                  className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white hover:bg-sky-50 text-sky-900 border border-sky-300/80 text-[11px] font-semibold transition-colors cursor-pointer shadow-2xs"
-                  title={g.snippet}
-                >
-                  <span className="text-sky-600">✓</span>
-                  <span className="truncate max-w-[220px]">{g.title}</span>
-                </button>
-              ))}
+            <div className="flex items-center gap-2 self-start sm:self-auto shrink-0">
               <button
                 type="button"
-                onClick={() => onOpenVaultDrawer?.(undefined, '50 bẫy lỗi', 'ICD10')}
-                className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-rose-50 hover:bg-rose-100 text-rose-800 border border-rose-200 text-[10.5px] font-bold transition-colors cursor-pointer"
-                title="Mở Sổ tay 50+ bẫy lỗi xuất toán BHYT thường gặp"
+                onClick={handleCopyLabWorkup}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-blue-50 hover:bg-blue-100 text-blue-800 border border-blue-200 text-xs font-bold transition-all cursor-pointer shadow-2xs"
+                title="Sao chép toàn bộ danh mục xét nghiệm đề nghị vào bộ nhớ tạm"
               >
-                <span>🛡️ 50+ Bẫy lỗi BHYT</span>
+                {copiedLabWorkup ? (
+                  <>
+                    <Check className="w-3.5 h-3.5 text-emerald-600" />
+                    <span className="text-emerald-700">Đã sao chép Y lệnh!</span>
+                  </>
+                ) : (
+                  <>
+                    <Copy className="w-3.5 h-3.5 text-blue-600" />
+                    <span>Sao chép Y lệnh CLS</span>
+                  </>
+                )}
               </button>
             </div>
           </div>
 
-          {/* Row 3: CDSS Clinical Decision Support (Kho CDSS) */}
-          {cdssAlerts.length > 0 && (
-            <div className="flex flex-col sm:flex-row sm:items-center gap-1.5">
-              <span className="text-[11px] font-bold text-purple-800 shrink-0 flex items-center gap-1 min-w-[155px]">
-                <span>⚡ Hỗ trợ ra quyết định (CDSS):</span>
-              </span>
-              <div className="flex items-center gap-1.5 flex-wrap">
-                {cdssAlerts.map((c) => (
-                  <button
-                    key={c.id}
-                    type="button"
-                    onClick={() => onOpenVaultDrawer?.(undefined, c.title, 'CDSS')}
-                    className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white hover:bg-purple-50 text-purple-900 border border-purple-300/80 text-[11px] font-semibold transition-colors cursor-pointer shadow-2xs"
-                    title={c.snippet}
-                  >
-                    <span className="text-purple-600">⚡</span>
-                    <span className="truncate max-w-[240px]">{c.title}</span>
-                  </button>
-                ))}
+          <div className="mt-3.5 grid grid-cols-1 lg:grid-cols-2 gap-3.5">
+            {/* Cột 1: Xét nghiệm hoàn thiện & Khẳng định Chẩn đoán sơ bộ */}
+            <div className="p-3 rounded-lg bg-blue-50/40 border border-blue-200/80 flex flex-col justify-between gap-2.5">
+              <div>
+                <div className="flex items-center justify-between gap-1.5 mb-2 pb-1.5 border-b border-blue-200/60">
+                  <span className="font-bold text-xs text-blue-950 flex items-center gap-1.5">
+                    <FlaskConical className="w-3.5 h-3.5 text-blue-600" />
+                    <span>1. Khẳng định Chẩn đoán sơ bộ: «{top.b.ten}»</span>
+                  </span>
+                  <span className="px-1.5 py-0.2 rounded bg-blue-100 text-blue-800 text-[10px] font-bold">
+                    {targetedLabWorkup.primaryLabs.length} Chỉ định
+                  </span>
+                </div>
+
+                {targetedLabWorkup.primaryLabs.length > 0 ? (
+                  <div className="space-y-1.5">
+                    {targetedLabWorkup.primaryLabs.map((lab) => (
+                      <div
+                        key={lab.id}
+                        className="p-2 bg-white rounded-md border border-blue-100/90 text-xs flex flex-col gap-1 shadow-2xs"
+                      >
+                        <div className="flex items-start justify-between gap-2">
+                          <div className="flex items-center gap-1.5 flex-wrap">
+                            <span
+                              className={`px-1.5 py-0.2 rounded text-[9.5px] font-bold uppercase tracking-wide ${
+                                lab.priority === 'stat'
+                                  ? 'bg-rose-100 text-rose-800 border border-rose-200'
+                                  : 'bg-slate-100 text-slate-700 border border-slate-200'
+                              }`}
+                            >
+                              {lab.priority === 'stat' ? '⚡ Khẩn cấp' : 'Thường quy'}
+                            </span>
+                            <span className="font-bold text-slate-900 text-xs sm:text-[12.5px]">
+                              {lab.name}
+                            </span>
+                          </div>
+                          {lab.threshold && (
+                            <span className="px-1.5 py-0.2 rounded bg-purple-50 text-purple-800 border border-purple-200 text-[10px] font-mono-custom font-semibold shrink-0">
+                              {lab.threshold}
+                            </span>
+                          )}
+                        </div>
+                        <div className="text-[11px] text-slate-600 flex items-center gap-1">
+                          <span className="text-blue-600">◈</span>
+                          <span><b>Mục đích:</b> {lab.purpose}</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="p-3 text-center text-xs text-emerald-800 bg-emerald-50 rounded border border-emerald-200">
+                    ✓ Đã đủ dữ kiện cận lâm sàng cần thiết cho chẩn đoán sơ bộ hiện tại.
+                  </div>
+                )}
+              </div>
+
+              <div className="text-[10.5px] text-slate-500 italic pt-1 border-t border-blue-100/80">
+                Ghi chú: Ưu tiên thực hiện ngay các xét nghiệm có gắn nhãn <b>⚡ Khẩn cấp</b> trước khi bắt đầu phác đồ.
               </div>
             </div>
-          )}
+
+            {/* Cột 2: Xét nghiệm Phân biệt & Loại trừ các bệnh cạnh tranh */}
+            <div className="p-3 rounded-lg bg-amber-50/40 border border-amber-200/80 flex flex-col justify-between gap-2.5">
+              <div>
+                <div className="flex items-center justify-between gap-1.5 mb-2 pb-1.5 border-b border-amber-200/60">
+                  <span className="font-bold text-xs text-amber-950 flex items-center gap-1.5">
+                    <Filter className="w-3.5 h-3.5 text-amber-600" />
+                    <span>2. Phân biệt &amp; Loại trừ {targetedLabWorkup.differentialLabs.length} Bệnh Cạnh Tranh</span>
+                  </span>
+                  <span className="px-1.5 py-0.2 rounded bg-amber-100 text-amber-800 text-[10px] font-bold">
+                    Đối soát EBM
+                  </span>
+                </div>
+
+                {targetedLabWorkup.differentialLabs.length > 0 ? (
+                  <div className="space-y-1.5">
+                    {targetedLabWorkup.differentialLabs.map((diff) => (
+                      <div
+                        key={diff.diseaseId}
+                        className="p-2 bg-white rounded-md border border-amber-100/90 text-xs flex flex-col gap-1 shadow-2xs"
+                      >
+                        <div className="flex items-center justify-between gap-2">
+                          <div className="flex items-center gap-1.5">
+                            <span className="px-1.5 py-0.2 rounded bg-amber-100 text-amber-900 font-bold text-[10px]">
+                              {diff.pct}% phù hợp
+                            </span>
+                            <span className="font-bold text-slate-800 text-xs sm:text-[12px]">
+                              Phân biệt «{diff.diseaseName}»
+                            </span>
+                          </div>
+                        </div>
+
+                        <div className="text-[11.5px] text-slate-700 font-medium pl-1 border-l-2 border-amber-400">
+                          <span className="text-amber-900 font-bold">Chỉ định đề nghị: </span>
+                          <span className="text-blue-900 font-semibold">{diff.testName}</span>
+                        </div>
+
+                        <div className="text-[11px] text-slate-500">
+                          <b>Lý do:</b> {diff.rationale}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="p-3 text-center text-xs text-slate-500 bg-slate-50 rounded border border-slate-200">
+                    Chưa ghi nhận bệnh cảnh phân biệt nổi bật cần chỉ định xét nghiệm loại trừ thêm.
+                  </div>
+                )}
+              </div>
+
+              <div className="text-[10.5px] text-slate-500 italic pt-1 border-t border-amber-100/80">
+                Các chỉ định giúp bác sĩ bảo đảm tính pháp lý và không bỏ sót các bệnh truyền nhiễm / cấp cứu tương tự.
+              </div>
+            </div>
+          </div>
         </div>
+
+        {/* KHỐI 3: ⚠️ TIÊU CHUẨN BIẾN CHỨNG ĐE DỌA SINH MẠNG & Y LỆNH CẤP CỨU */}
+        {activeChain?.complications && activeChain.complications.length > 0 && (
+          <div className="mt-5 p-4 rounded-lg bg-rose-50/40 border border-rose-200">
+            <div className="flex items-center justify-between gap-2 pb-2 border-b border-rose-200/80">
+              <div className="flex items-center gap-2 flex-wrap">
+                <ShieldAlert className="w-4 h-4 text-rose-600 animate-pulse shrink-0" />
+                <span className="font-bold text-xs uppercase tracking-wider text-rose-900">
+                  3. Tiêu Chuẩn Biến Chứng Đe Dọa Sinh Mạng & Y Lệnh Cấp Cứu ({activeChain.complications.length} Biến chứng)
+                </span>
+                {activeChain.complications.some((c) => c.severity === 'critical') && (
+                  <span className="px-1.5 py-0.2 rounded bg-rose-200 text-rose-900 text-[10px] font-bold">
+                    ⚡ Có nguy cơ tử vong
+                  </span>
+                )}
+              </div>
+
+              <button
+                type="button"
+                onClick={() => setIsComplicationsOpen(!isComplicationsOpen)}
+                className="px-2.5 py-1 rounded text-xs font-bold bg-white hover:bg-rose-50 text-rose-700 border border-rose-300 flex items-center gap-1 cursor-pointer transition-colors shadow-2xs shrink-0"
+              >
+                <span>{isComplicationsOpen ? 'Thu gọn' : `Mở rộng (${activeChain.complications.length})`}</span>
+                {isComplicationsOpen ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
+              </button>
+            </div>
+
+            {!isComplicationsOpen ? (
+              <div className="mt-2 text-[11.5px] text-slate-600 flex items-center justify-between">
+                <span>
+                  Đã ghi nhận <b>{activeChain.complications.length} biến chứng đe dọa sinh mạng</b> (đang ở chế độ Thu gọn). Bấm <b>"Mở rộng"</b> để xem chi tiết dấu hiệu kích hoạt &amp; y lệnh xử trí giờ vàng.
+                </span>
+              </div>
+            ) : (
+              <div className="mt-3 space-y-2.5">
+                {activeChain.complications.map((comp) => (
+                  <div
+                    key={comp.id}
+                    className="p-3 bg-white rounded-lg border border-rose-200 hover:border-rose-400 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-2xs transition-all"
+                  >
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2 flex-wrap mb-1">
+                        <span className="font-bold text-xs sm:text-sm text-slate-900">
+                          {shortenClinicalText(comp.name)}
+                        </span>
+                        <span
+                          className={`px-1.5 py-0.2 rounded text-[10px] font-bold uppercase ${
+                            comp.severity === 'critical'
+                              ? 'bg-rose-100 text-rose-800 border border-rose-200'
+                              : 'bg-orange-100 text-orange-800 border border-orange-200'
+                          }`}
+                        >
+                          {comp.severity === 'critical' ? 'Nguy kịch' : 'Cấp cứu'}
+                        </span>
+                        {comp.orderSet && comp.orderSet.length > 0 && (
+                          <span className="px-1.5 py-0.2 rounded bg-purple-50 text-purple-700 border border-purple-200 text-[10px] font-semibold">
+                            ⚡ {comp.orderSet.length} Y lệnh khẩn
+                          </span>
+                        )}
+                      </div>
+
+                      <div className="text-xs text-slate-600 space-y-0.5">
+                        <div>
+                          <b className="text-rose-800 text-[11px]">Dấu hiệu kích hoạt: </b>
+                          <span className="text-[11.5px]">{shortenClinicalText(comp.triggerCriteria)}</span>
+                        </div>
+                        <div>
+                          <b className="text-slate-800 text-[11px]">Xử trí giờ vàng: </b>
+                          <span className="text-[11.5px] text-slate-700">{shortenClinicalText(comp.actionSummary)}</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <button
+                      type="button"
+                      onClick={() =>
+                        onGoToProtocol(top.b.id, {
+                          gradeIdx: activeChain.severityGrading?.length ? activeChain.severityGrading.length - 1 : 0,
+                          complicationId: comp.id,
+                        })
+                      }
+                      className="px-3 py-1.5 rounded-md text-xs font-bold bg-rose-600 hover:bg-rose-700 text-white flex items-center justify-center gap-1.5 cursor-pointer shadow-xs transition-all shrink-0 self-stretch sm:self-center"
+                    >
+                      <Flame className="w-3.5 h-3.5" />
+                      <span>Xem Phác Đồ Cấp Cứu ⚡</span>
+                    </button>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
 
         {/* Action Bar */}
         <div className="flex flex-wrap items-center gap-2 mt-4 pt-3.5 border-t border-slate-200">

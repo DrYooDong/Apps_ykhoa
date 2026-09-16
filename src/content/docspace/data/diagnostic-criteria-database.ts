@@ -29,13 +29,22 @@ export interface ComplicationOrderItem {
   drug: string;
   dosage: string;
   note: string;
+  drugName?: string;
+  route?: string;
+  rate?: string;
+  timing?: string;
+  warning?: string;
 }
 
 export interface DiseaseComplicationItem {
+  id?: string;
   name: string;
+  severity?: 'critical' | 'warning' | 'info' | string;
   timeframe: 'acute_24h' | 'subacute_7d' | 'chronic';
   warningSigns: string;
+  triggerCriteria?: string;
   preventiveAction: string;
+  actionSummary?: string;
   onCallAlertText: string;
   orderSet?: ComplicationOrderItem[];
 }

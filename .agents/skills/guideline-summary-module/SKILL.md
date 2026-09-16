@@ -60,7 +60,7 @@ Tài liệu này định nghĩa tiêu chuẩn thiết kế, cấu trúc mã ngu�
    - Đối với các file MDX lớn (30KB – 60KB+), **tránh truyền chuỗi multiline quá dài qua PowerShell command-line** vì sẽ bị lỗi hệ điều hành Windows *"The filename or extension is too long"*.
    - Sử dụng Node.js script / Python helper script hoặc công cụ ghi file trực tiếp để ghi file UTF-8 an toàn.
 9. **Kiểm Tra HTML & Tag Integrity**: Chạy `node tools/scratch/check_tags.js <file>.mdx` sau khi tạo/sửa để đảm bảo không có thẻ mở/đóng sai lệch hoặc lỗi cú pháp JSX.
-10. **Bắt Buộc Đăng Ký Registry `guidelinesdata.js`**: Mọi guideline mới tạo phải bổ sung 1 bản ghi vào array `SAMPLE_STUDIES` trong `src/content/ebm/guidelines/guidelinesdata.js`.
+10. **Bắt Buộc Đăng Ký Kho Lưu Trữ Tĩnh (`kho-guidelines-registry.ts`)**: Mọi guideline mới tạo phải bổ sung 1 bản ghi vào array `KHO_GUIDELINES_STATIC` trong `src/content/ebm/guidelines/js/kho-guidelines-registry.ts` (tự động nạp vào `SAMPLE_STUDIES` và `window.studies`).
 
 ---
 
@@ -70,8 +70,11 @@ Tài liệu này định nghĩa tiêu chuẩn thiết kế, cấu trúc mã ngu�
 src/content/ebm/guidelines/
 ├── guidelines.html                       # Trang tra cứu Guidelines (Cấp 3)
 ├── guidelines.css                        # CSS cho trang tra cứu
-├── guidelines.js                         # JS xử lý filter/search/navigation
-├── guidelinesdata.js                     # Database danh sách guidelines (SAMPLE_STUDIES)
+├── js/
+│   ├── kho-guidelines-registry.ts        # Kho Metadata tĩnh tập trung (KHO_GUIDELINES_STATIC 105+ bài)
+│   ├── guidelinesdata.ts                 # Danh mục & nạp KHO_GUIDELINES_STATIC -> SAMPLE_STUDIES
+│   ├── guideline-sync.ts                 # Bộ điều phối Lưu trữ Cục bộ & Khử trùng lặp
+│   └── guidelines.ts                     # Controller chính
 └── kho-guidelines/                       # Thư mục chứa các file .mdx chi tiết
     ├── images/                           # Thư mục chứa ảnh minh họa figure trích xuất
     │   ├── 2026-apasl-vgsv-fig1.png
@@ -287,6 +290,7 @@ sections:
      ```bash
      node tools/scratch/check_tags.js src/content/ebm/guidelines/kho-guidelines/<slug>.mdx
      ```
-5. **Đăng Ký Registry `guidelinesdata.js`**:
-   - Đảm bảo bản ghi của guideline có mặt trong `SAMPLE_STUDIES` để hiển thị trên bộ lọc và trang tìm kiếm EBM.
+5. **Đăng Ký Kho Lưu Trữ Tĩnh (`kho-guidelines-registry.ts`)**:
+   - Thêm 1 đối tượng `Study` mới vào mảng `KHO_GUIDELINES_STATIC` trong `src/content/ebm/guidelines/js/kho-guidelines-registry.ts` với đầy đủ các trường: `id`, `title`, `titleEn`, `sourceType`, `specialty`, `design`, `impact`, `year`, `organization`, `file: '<slug>.mdx'`, `conditionKey`, `icd10`.
+   - Dữ liệu này tự động được nạp vào `SAMPLE_STUDIES` và hiển thị trên toàn bộ bảng tra cứu, bộ lọc chuyên khoa, CDSS và trang Hub EBM mà không phụ thuộc vào Supabase.
 

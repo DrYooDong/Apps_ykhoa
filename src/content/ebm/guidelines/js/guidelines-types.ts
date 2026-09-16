@@ -83,13 +83,6 @@ export interface BatchDuplicateItem {
   raw?: any;
 }
 
-export interface SupabaseConfig {
-  url: string;
-  key: string;
-}
-
-export type DbStatus = 'connected' | 'disconnected' | 'error' | 'syncing';
-
 export interface ColumnVisibilityState {
   sourceType: boolean;
   specialty: boolean;
@@ -203,11 +196,6 @@ declare global {
     GuidelineTools?: any;
     CliniPortalDrugLinker?: any;
     GuidelineVisualizations?: any;
-    supabase?: any;
-    supabaseClient?: any;
-    _warmSupabaseClient?: any;
-    supabaseConfig?: SupabaseConfig;
-    dbStatus?: DbStatus;
     ICD10_MAP?: Map<string, string>;
     ICD10_DATA?: Array<{ code: string; name: string }>;
     CliniPortalSync?: { notifyUpdate?: () => void };
@@ -343,29 +331,9 @@ declare global {
     resolveStudyFile?: (file?: string) => string;
     getIcd10Name?: (code?: string) => string;
 
-    initSupabase?: () => boolean;
-    getSupabaseConfig?: () => SupabaseConfig | null;
-    setSupabaseConfig?: (url: string, key: string) => void;
-    clearSupabaseConfig?: () => void;
-    openSupabaseModal?: () => void;
-    closeSupabaseModal?: () => void;
-    saveSupabaseConfig?: (event?: Event) => void;
-    handleSaveSupabaseConfig?: (event?: Event) => void;
-    handleDisconnectSupabase?: () => void;
-    testSupabaseConnection?: () => Promise<void>;
-    updateSupabaseStatus?: (status: DbStatus | 'syncing', text: string) => void;
     showMedicalToast?: (options: any) => void;
-    renderSupabaseSyncBanner?: () => void;
-    dismissSyncBanner?: () => void;
-    pullCloudToLocal?: () => Promise<void>;
-    copySupabaseSql?: () => void;
-    setupSupabaseRealtime?: () => void;
-    _sbCloudCount?: number;
-    dbFetchStudies?: () => Promise<Study[] | null>;
-    dbSaveStudy?: (study: Study, silent?: boolean) => Promise<void | boolean>;
-    dbDeleteStudy?: (id: string) => Promise<void | boolean>;
-    syncStudiesWithSupabase?: (mode?: 'bi-directional' | 'pull' | 'push') => Promise<void>;
-    syncAllLocalToSupabase?: () => Promise<void>;
+    dbSaveStudy?: (study: Study, silent?: boolean) => void | Promise<void | boolean>;
+    dbDeleteStudy?: (id: string) => void | Promise<void | boolean>;
     loadStudies?: () => void;
     saveStudies?: () => void;
     detectStudyDuplicate?: (study: any, list: any[]) => DuplicateCheckResult;

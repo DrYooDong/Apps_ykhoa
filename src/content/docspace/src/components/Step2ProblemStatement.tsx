@@ -3,6 +3,7 @@ import {
   FileText,
   Copy,
   Check,
+  CheckCircle2,
   Plus,
   Trash2,
   Star,
@@ -80,12 +81,9 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
   const [newProblemLabel, setNewProblemLabel] = useState('');
   const [newProblemType, setNewProblemType] = useState<ProblemStatementEntry['type']>('hoi-chung');
   const [newProblemPriority, setNewProblemPriority] = useState<NonNullable<ProblemStatementEntry['priorityLevel']>>('acute');
-  const [newProblemDiag, setNewProblemDiag] = useState('');
-  const [newProblemRx, setNewProblemRx] = useState('');
-  const [expandedProblemIds, setExpandedProblemIds] = useState<Set<string>>(new Set());
+  const [newProblemEvidence, setNewProblemEvidence] = useState('');
   const [editingProblemId, setEditingProblemId] = useState<string | null>(null);
-  const [editingDiagPlan, setEditingDiagPlan] = useState('');
-  const [editingRxPlan, setEditingRxPlan] = useState('');
+  const [editingEvidence, setEditingEvidence] = useState('');
   const [editingSummary, setEditingSummary] = useState(false);
   const [customSummaryText, setCustomSummaryText] = useState('');
 
@@ -362,10 +360,6 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
             !isNaN(pulse) ? `Mạch ${vitals.vMach} l/p` : '',
             'Dấu hiệu giảm tưới máu ngoại vi / CRT kéo dài',
           ].filter(Boolean),
-          diagnosticPlan:
-            'Khí máu động mạch (ABG), Lactate máu STAT, Cấy máu 2 vị trí trước khi dùng kháng sinh, Công thức máu, Chức năng thận (Ure/Cre).',
-          therapeuticPlan:
-            'Thiết lập 2 đường truyền tĩnh mạch lớn (16-18G) hoặc CVC, hồi sức dịch tinh thể đẳng trương (NaCl 0.9% / Ringer Lactate) 20-30 mL/kg, sẵn sàng thuốc vận mạch Noradrenaline duy trì MAP ≥ 65 mmHg.',
         });
       }
 
@@ -380,10 +374,6 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
             !isNaN(spo2) ? `SpO₂ tụt: ${vitals.vSpo2}%` : 'Giảm oxy máu',
             !isNaN(resp) ? `Nhịp thở nhanh: ${vitals.vTho} l/p` : 'Thở nhanh co kéo',
           ].filter(Boolean),
-          diagnosticPlan:
-            'Khí máu động mạch (ABG), X-quang phổi thẳng tại giường, Siêu âm phổi (BLUE protocol), Điện tâm đồ 12 chuyển đạo.',
-          therapeuticPlan:
-            'Liệu pháp oxy qua gọng kính hoặc Mask túi dự trữ 10-15 L/p mục tiêu SpO₂ ≥ 95%, nâng đầu cao 30-45 độ, chuẩn bị đặt nội khí quản thở máy nếu kiệt sức hô hấp.',
         });
       }
 
@@ -395,10 +385,6 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
           priorityLevel: 'life-threatening',
           isPrimary: suggested.length === 0,
           evidence: ['Rối loạn tri giác / Co giật kéo dài / Dấu thần kinh khu trú'],
-          diagnosticPlan:
-            'Tạm hoãn chọc dò dịch não tủy (LP), chụp CT sọ não cấp cứu loại trừ khối choáng chỗ và phù não, xét nghiệm đường huyết mao mạch STAT.',
-          therapeuticPlan:
-            'Bảo vệ đường thở (đặt NKQ nếu GCS ≤ 8), Mannitol 20% 0.5-1 g/kg hoặc NaCl 3% IV nhanh trong 15-20 phút, tiêm tĩnh mạch Dexamethasone 10mg STAT.',
         });
       }
 
@@ -416,10 +402,6 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
           priorityLevel: 'acute',
           isPrimary: suggested.length === 0,
           evidence: ['Cứng gáy, đau đầu dữ dội, nôn vọt, sợ ánh sáng'],
-          diagnosticPlan:
-            'Chọc dò tủy sống (LP) làm sinh hóa, tế bào, nhuộm Gram, cấy DNT và PCR Multiplex ME panel (khi đã loại trừ cờ đỏ dọa tụt kẹt).',
-          therapeuticPlan:
-            'Kháng sinh diệt khuẩn liều cao qua hàng rào máu não (Ceftriaxone 2g q12h + Vancomycin 15-20mg/kg q8-12h), kết hợp Dexamethasone 10mg IV q6h trong 4 ngày.',
         });
       }
 
@@ -434,10 +416,6 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
           evidence: ['Sốt ≥ 38°C hoặc sốt liên tục', vitals.vNhiet ? `Nhiệt độ: ${vitals.vNhiet}°C` : ''].filter(
             Boolean
           ),
-          diagnosticPlan:
-            'Công thức máu (WBC, Neu%), CRP, Procalcitonin, cấy máu x 2 bộ, tổng phân tích nước tiểu, X-quang phổi.',
-          therapeuticPlan:
-            'Hạ sốt Paracetamol 10-15 mg/kg q4-6h khi sốt ≥ 38.5°C, bù đủ dịch điện giải (Oresol), dùng kháng sinh kinh nghiệm theo tiêu điểm nghi ngờ.',
         });
       }
 
@@ -455,10 +433,6 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
             hasBleeding ? 'Biểu hiện xuất huyết da niêm' : '',
             labs.lTC ? `Tiểu cầu giảm: ${labs.lTC} G/L` : '',
           ].filter(Boolean),
-          diagnosticPlan:
-            'Đông máu toàn bộ (PT, INR, aPTT, Fibrinogen), test nhanh Dengue NS1 Ag / IgM-IgG, theo dõi Hct và PLT mỗi 12-24 giờ.',
-          therapeuticPlan:
-            'Tuyệt đối tránh tiêm bắp, chống chỉ định NSAID/Aspirin, theo dõi sát dấu hiệu cảnh báo thoát huyết tương hoặc xuất huyết nội tạng.',
         });
       }
 
@@ -471,10 +445,6 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
           priorityLevel: 'acute',
           isPrimary: suggested.length === 0,
           evidence: ['Đau ngực sau xương ức', labs.lTrop ? `Troponin: ${labs.lTrop}` : ''].filter(Boolean),
-          diagnosticPlan:
-            'Điện tâm đồ 12 chuyển đạo trong 10 phút đầu, định lượng Troponin I/T siêu nhạy (hs-cTn) giờ 0 và giờ 1-3, Siêu âm tim tại giường.',
-          therapeuticPlan:
-            'Nghỉ ngơi tuyệt đối, Aspirin 300mg nhai ngậm, Clopidogrel 300-600mg, Nitroglycerin ngậm dưới lưỡi (nếu HATT > 90), sẵn sàng chuyển Can thiệp mạch vành (PCI).',
         });
       }
 
@@ -488,10 +458,6 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
           priorityLevel: 'acute',
           isPrimary: suggested.length === 0,
           evidence: ['Đau bụng khởi phát cấp tính'].filter(Boolean),
-          diagnosticPlan:
-            'Siêu âm bụng tổng quát, Amylase/Lipase máu, X-quang bụng đứng không sửa soạn, Công thức máu, Men gan.',
-          therapeuticPlan:
-            'Tạm nhịn ăn uống, bù dịch tinh thể duy trì, theo dõi sát đề kháng thành bụng/cảm ứng phúc mạc, hội chẩn ngoại khoa khẩn nếu nghi viêm phúc mạc.',
         });
       }
 
@@ -512,10 +478,6 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
             epiContext.endemicArea ? `Vùng: ${epiContext.endemicArea}` : '',
             epiContext.vectorExposure ? `Vector: ${epiContext.vectorExposure}` : '',
           ].filter(Boolean),
-          diagnosticPlan:
-            'Xét nghiệm căn nguyên vi sinh đặc hiệu theo dịch tễ (Test nhanh NS1/PCR Dengue, Giọt dày ký sinh trùng sốt rét, PCR Mô cầu/Lao).',
-          therapeuticPlan:
-            'Báo cáo ca bệnh dịch tễ theo quy định, cách ly nguồn lây nếu có chỉ định, điều trị đặc hiệu theo căn nguyên vùng dịch.',
         });
       }
 
@@ -523,30 +485,26 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
       // TẦNG 3: BỆNH LÝ MẠN TÍNH ĐỒNG MẮC & TIỀN CĂN (CHRONIC)
       // ==========================================
       const tcText = (form.text.tc || '').toLowerCase();
-      const chronicMatches: { match: string; label: string; diag: string; rx: string }[] = [
+      const chronicMatches: { match: string; label: string; evidenceText: string }[] = [
         {
           match: 'tăng huyết áp',
           label: 'Tiền căn Tăng huyết áp',
-          diag: 'Đo huyết áp liên tục, ECG, Siêu âm tim kiểm tra phì đại thất trái, Creatinine/eGFR.',
-          rx: 'Duy trì thuốc hạ áp phù hợp sinh hiệu (tạm hoãn hạ áp tích cực nếu đang trong bối cảnh sốc/nhiễm trùng).',
+          evidenceText: 'Ghi nhận bệnh sử/tiền căn tăng huyết áp đang điều trị thuốc hạ áp',
         },
         {
           match: 'đái tháo đường',
           label: 'Tiền căn Đái tháo đường',
-          diag: 'Theo dõi Glucose mao mạch q4-6h, HbA1c, Khí máu và Ceton máu/nước tiểu nếu đường huyết cao.',
-          rx: 'Tạm ngừng Metformin/SGLT2i khi bệnh nhân nặng (nguy cơ suy thận/toan lactic), chuyển phác đồ Insulin tiêm dưới da.',
+          evidenceText: 'Tiền căn đái tháo đường (tuýp 1 / tuýp 2), có nguy cơ tổn thương mạch máu & toan kiềm',
         },
         {
           match: 'copd',
           label: 'Tiền căn Bệnh phổi tắc nghẽn mạn tính (COPD)',
-          diag: 'X-quang ngực, Khí máu động mạch đánh giá ứ CO₂, Procalcitonin.',
-          rx: 'Thở oxy liều thấp có kiểm soát (SpO₂ mục tiêu 88-92%), khí dung giãn phế quản SABA + SAMA, Corticosteroid toàn thân liều ngắn.',
+          evidenceText: 'Tiền căn COPD / hen phế quản, nguy cơ đợt cấp suy hô hấp và ứ CO₂',
         },
         {
           match: 'suy thận',
           label: 'Tiền căn Bệnh thận mạn tính (CKD)',
-          diag: 'Ure, Creatinine, eGFR, Điện giải đồ (đặc biệt K⁺), Tổng phân tích nước tiểu.',
-          rx: 'Hiệu chỉnh liều kháng sinh và các thuốc thải qua thận theo eGFR, tránh thuốc độc thận (NSAID, Aminoglycosid, thuốc cản quang).',
+          evidenceText: 'Tiền căn suy thận mạn tính / CKD, giảm mức lọc cầu thận cần hiệu chỉnh liều thuốc',
         },
       ];
 
@@ -558,9 +516,7 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
             type: 'benh-man-tinh',
             priorityLevel: 'chronic',
             isPrimary: false,
-            evidence: [`Ghi nhận từ tiền căn: ${c.label}`],
-            diagnosticPlan: c.diag,
-            therapeuticPlan: c.rx,
+            evidence: [c.evidenceText],
           });
         }
       });
@@ -574,8 +530,6 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
           priorityLevel: 'acute',
           isPrimary: true,
           evidence: ['Lý do chính khiến người bệnh nhập viện'],
-          diagnosticPlan: 'Đề nghị các xét nghiệm tầm soát nguyên nhân theo cơ quan tổn thương.',
-          therapeuticPlan: 'Xử trí triệu chứng ban đầu và theo dõi sát diễn tiến lâm sàng.',
         });
       }
 
@@ -624,31 +578,24 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
     onUpdateProblems(updated);
   };
 
-  // Đóng mở chi tiết kế hoạch xử trí
-  const handleToggleExpandProblem = (id: string) => {
-    setExpandedProblemIds((prev) => {
-      const next = new Set(prev);
-      if (next.has(id)) next.delete(id);
-      else next.add(id);
-      return next;
-    });
-  };
-
-  // Bắt đầu chỉnh sửa kế hoạch chẩn đoán & điều trị của vấn đề
-  const handleStartEditPlans = (p: ProblemStatementEntry) => {
+  // Bắt đầu chỉnh sửa dữ kiện giải thích của vấn đề
+  const handleStartEditProblem = (p: ProblemStatementEntry) => {
     setEditingProblemId(p.id);
-    setEditingDiagPlan(p.diagnosticPlan || '');
-    setEditingRxPlan(p.therapeuticPlan || '');
+    setEditingEvidence((p.evidence || []).join(' · '));
   };
 
-  // Lưu chỉnh sửa kế hoạch chẩn đoán & điều trị
-  const handleSaveEditPlans = (id: string) => {
+  // Lưu chỉnh sửa dữ kiện giải thích của vấn đề
+  const handleSaveEditProblem = (id: string) => {
     const updated = problems.map((p) => {
       if (p.id === id) {
         return {
           ...p,
-          diagnosticPlan: editingDiagPlan.trim() || undefined,
-          therapeuticPlan: editingRxPlan.trim() || undefined,
+          evidence: editingEvidence.trim()
+            ? editingEvidence
+                .split('·')
+                .map((s) => s.trim())
+                .filter(Boolean)
+            : [],
         };
       }
       return p;
@@ -666,16 +613,13 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
       type: newProblemType,
       priorityLevel: newProblemPriority,
       isPrimary: problems.length === 0,
-      evidence: [],
-      diagnosticPlan: newProblemDiag.trim() || undefined,
-      therapeuticPlan: newProblemRx.trim() || undefined,
+      evidence: newProblemEvidence.trim() ? [newProblemEvidence.trim()] : [],
     };
     const updated = [...problems, newEntry];
     detectConflicts(updated);
     onUpdateProblems(updated);
     setNewProblemLabel('');
-    setNewProblemDiag('');
-    setNewProblemRx('');
+    setNewProblemEvidence('');
   };
 
   // Xóa vấn đề
@@ -906,7 +850,6 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
                 <div className="space-y-2.5">
                   {tierProblems.map((prob) => {
                     const isPrimary = prob.isPrimary;
-                    const isExpanded = expandedProblemIds.has(prob.id) || !!prob.diagnosticPlan || !!prob.therapeuticPlan;
                     const isEditing = editingProblemId === prob.id;
 
                     return (
@@ -1001,9 +944,9 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
                               type="button"
                               onClick={() => {
                                 if (isEditing) setEditingProblemId(null);
-                                else handleStartEditPlans(prob);
+                                else handleStartEditProblem(prob);
                               }}
-                              title="Chỉnh sửa Hướng chẩn đoán & Hướng điều trị"
+                              title="Chỉnh sửa dữ kiện giải thích cho vấn đề này"
                               className={`p-1.5 text-xs rounded-md border transition-colors cursor-pointer flex items-center gap-1 ${
                                 isEditing
                                   ? 'bg-blue-600 text-white border-blue-600'
@@ -1011,7 +954,9 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
                               }`}
                             >
                               <Edit3 className="w-3 h-3" />
-                              <span className="text-[10px] hidden sm:inline">Sửa hướng xử trí</span>
+                              <span className="text-[10px] hidden sm:inline">
+                                {isEditing ? 'Đang sửa' : 'Sửa dữ kiện'}
+                              </span>
                             </button>
 
                             <button
@@ -1025,48 +970,31 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
                           </div>
                         </div>
 
-                        {/* Cảnh báo Xung Đột Xử Trí Điều Trị (Treatment Conflict Detector) */}
+                        {/* Cảnh báo Xung Đột (nếu có) */}
                         {prob.conflictNotes && (
                           <div className="mt-2.5 p-2.5 bg-rose-50 border border-rose-200 rounded-lg text-xs text-rose-950 flex items-start gap-2 shadow-2xs">
                             <AlertTriangle className="w-4 h-4 text-rose-600 shrink-0 mt-0.5" />
                             <div className="leading-relaxed">
-                              <strong>Cảnh báo Xung Đột Xử Trí:</strong> {prob.conflictNotes}
+                              <strong>Cảnh báo:</strong> {prob.conflictNotes}
                             </div>
                           </div>
                         )}
 
-                        {/* 2 CHIẾN LƯỢC HÀNH ĐỘNG SONG HÀNH CHO TỪNG VẤN ĐỀ */}
+                        {/* DỮ KIỆN GIẢI THÍCH CHO VẤN ĐỀ ĐẶT RA */}
                         {isEditing ? (
-                          <div className="mt-3 p-3 bg-white rounded-lg border border-blue-300 space-y-2.5 text-xs">
+                          <div className="mt-2.5 p-3 bg-white rounded-lg border border-blue-300 space-y-2 text-xs">
                             <div className="font-bold text-blue-950 flex items-center gap-1.5">
-                              <Zap className="w-3.5 h-3.5 text-blue-600" />
-                              <span>Chỉnh sửa Hướng Xử Trí (Chiến lược Chẩn đoán &amp; Điều trị):</span>
+                              <Edit3 className="w-3.5 h-3.5 text-blue-600" />
+                              <span>Chỉnh sửa dữ kiện giải thích cho «{prob.label}»:</span>
                             </div>
-                            <div>
-                              <label className="font-semibold text-slate-700 block mb-1">
-                                🔬 1. Chiến lược chẩn đoán (Cận lâm sàng đề nghị tiếp theo):
-                              </label>
-                              <input
-                                type="text"
-                                value={editingDiagPlan}
-                                onChange={(e) => setEditingDiagPlan(e.target.value)}
-                                placeholder="VD: Khí máu động mạch, cấy máu 2 vị trí, chụp CT sọ não..."
-                                className="w-full border border-slate-300 rounded p-2 text-xs focus:ring-1 focus:ring-blue-500"
-                              />
-                            </div>
-                            <div>
-                              <label className="font-semibold text-slate-700 block mb-1">
-                                💊 2. Hướng xử trí ban đầu &amp; Y lệnh tức thì:
-                              </label>
-                              <input
-                                type="text"
-                                value={editingRxPlan}
-                                onChange={(e) => setEditingRxPlan(e.target.value)}
-                                placeholder="VD: Thở oxy mask có túi 10L/p, Ringer Lactate 20ml/kg, Ceftriaxone 2g TM..."
-                                className="w-full border border-slate-300 rounded p-2 text-xs focus:ring-1 focus:ring-blue-500"
-                              />
-                            </div>
-                            <div className="flex justify-end gap-2 pt-1">
+                            <textarea
+                              value={editingEvidence}
+                              onChange={(e) => setEditingEvidence(e.target.value)}
+                              placeholder="Nhập các dữ kiện giải thích ngắn gọn (phân tách các ý bằng dấu ·)..."
+                              rows={2}
+                              className="w-full border border-slate-300 rounded-md p-2 text-xs focus:ring-1 focus:ring-blue-500 focus:outline-none"
+                            />
+                            <div className="flex justify-end gap-2 pt-0.5">
                               <button
                                 type="button"
                                 onClick={() => setEditingProblemId(null)}
@@ -1076,43 +1004,29 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
                               </button>
                               <button
                                 type="button"
-                                onClick={() => handleSaveEditPlans(prob.id)}
+                                onClick={() => handleSaveEditProblem(prob.id)}
                                 className="px-3 py-1 text-xs font-bold text-white bg-blue-600 rounded hover:bg-blue-700 cursor-pointer"
                               >
-                                Lưu kế hoạch
+                                Lưu dữ kiện
                               </button>
                             </div>
                           </div>
                         ) : (
-                          (prob.diagnosticPlan || prob.therapeuticPlan) && (
-                            <div className="mt-2.5 grid grid-cols-1 md:grid-cols-2 gap-2 text-xs">
-                              {/* 1. Chiến lược chẩn đoán */}
-                              {prob.diagnosticPlan && (
-                                <div className="p-2.5 bg-sky-50/80 border border-sky-200/80 rounded-lg text-sky-950">
-                                  <div className="font-bold text-[11px] text-sky-900 flex items-center gap-1 mb-1">
-                                    <Microscope className="w-3.5 h-3.5 text-sky-600" />
-                                    <span>Chiến lược chẩn đoán (Đề nghị CLS):</span>
-                                  </div>
-                                  <div className="text-[11.5px] leading-relaxed text-slate-700">
-                                    {prob.diagnosticPlan}
-                                  </div>
-                                </div>
-                              )}
-
-                              {/* 2. Hướng xử trí điều trị */}
-                              {prob.therapeuticPlan && (
-                                <div className="p-2.5 bg-emerald-50/80 border border-emerald-200/80 rounded-lg text-emerald-950">
-                                  <div className="font-bold text-[11px] text-emerald-900 flex items-center gap-1 mb-1">
-                                    <Stethoscope className="w-3.5 h-3.5 text-emerald-600" />
-                                    <span>Hướng xử trí ban đầu &amp; Y lệnh:</span>
-                                  </div>
-                                  <div className="text-[11.5px] leading-relaxed text-slate-700">
-                                    {prob.therapeuticPlan}
-                                  </div>
-                                </div>
-                              )}
+                          <div className="mt-2.5 p-2.5 bg-white/80 border border-slate-200/90 rounded-lg text-xs">
+                            <div className="font-semibold text-[11px] text-slate-700 flex items-center gap-1.5 mb-1">
+                              <CheckCircle2 className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+                              <span>Dữ kiện giải thích cho vấn đề đặt ra:</span>
                             </div>
-                          )
+                            {prob.evidence && prob.evidence.length > 0 ? (
+                              <div className="text-[11.5px] leading-relaxed text-slate-700 font-medium pl-5">
+                                {prob.evidence.join(' · ')}
+                              </div>
+                            ) : (
+                              <div className="text-[11px] text-slate-400 italic pl-5">
+                                Chưa ghi nhận dữ kiện giải thích cụ thể cho vấn đề này.
+                              </div>
+                            )}
+                          </div>
                         )}
                       </div>
                     );
@@ -1124,11 +1038,11 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
         </div>
       )}
 
-      {/* Form thêm vấn đề tùy chỉnh (Chuẩn 3 Tầng & Song Hành Chẩn Đoán - Điều Trị) */}
+      {/* Form thêm vấn đề tùy chỉnh (Chỉ cần Tên, Phân tầng và Dữ kiện giải thích) */}
       <div className="pt-3 border-t border-slate-200 bg-slate-50/70 p-3.5 rounded-xl border space-y-2.5 text-xs">
         <div className="font-bold text-slate-800 flex items-center gap-1.5">
           <Plus className="w-3.5 h-3.5 text-blue-600" />
-          <span>Thêm vấn đề mới (Kèm phân tầng ưu tiên và hướng xử trí):</span>
+          <span>Thêm vấn đề mới (Kèm phân tầng ưu tiên và dữ kiện giải thích):</span>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-12 gap-2">
@@ -1163,20 +1077,13 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
           </select>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+        <div>
           <input
             type="text"
-            placeholder="Chiến lược chẩn đoán (CLS đề nghị cho VĐ này)..."
-            value={newProblemDiag}
-            onChange={(e) => setNewProblemDiag(e.target.value)}
-            className="text-xs border border-slate-300 rounded-lg px-3 py-1.5 bg-white focus:outline-none"
-          />
-          <input
-            type="text"
-            placeholder="Hướng xử trí ban đầu (Y lệnh tức thì)..."
-            value={newProblemRx}
-            onChange={(e) => setNewProblemRx(e.target.value)}
-            className="text-xs border border-slate-300 rounded-lg px-3 py-1.5 bg-white focus:outline-none"
+            placeholder="Dữ kiện giải thích ngắn gọn cho vấn đề đặt ra (VD: Sốt cao N3, ban xuất huyết da niêm, tiểu cầu giảm 68 G/L)..."
+            value={newProblemEvidence}
+            onChange={(e) => setNewProblemEvidence(e.target.value)}
+            className="w-full text-xs border border-slate-300 rounded-lg px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
           />
         </div>
 

@@ -14,7 +14,7 @@
    - Nếu đã tồn tại file guideline hoặc bản ghi tương tự: **KHÔNG ĐƯỢC TẠO FILE MỚI KHÁC SLUG** gây rác hệ thống. Hãy thực thi cơ chế **Ghi đè/Cập nhật** (Overwrite) hoặc hỏi ý kiến Người dùng.
 
 3. **BẢO VỆ REGISTRY & TỰ ĐỘNG DỌN DẸP**:
-   - Khi tạo file theo yêu cầu, phải kiểm tra danh sách `SAMPLE_STUDIES` để tránh ghi trùng lặp các key ID / slug.
+   - Khi tạo file theo yêu cầu, phải kiểm tra danh sách `KHO_GUIDELINES_STATIC` trong `src/content/ebm/guidelines/js/kho-guidelines-registry.ts` để tránh ghi trùng lặp các key ID / slug.
 
 4. **BẮT BUỘC CHUẨN HÓA PHÂN CẤP BẰNG CHỨNG (EBM EVIDENCE HIERARCHY)**:
    - Mọi trang Guideline được khởi tạo hoặc cập nhật từ nay về sau **BẮT BUỘC** phải tích hợp bộ linh kiện Phân cấp Bằng chứng EBM trực quan: Thẻ khuyến cáo `.ebm-rec-card`, nhãn Khuyến cáo `.cor-badge` (Class I, IIa, IIb, III) và nhãn Bằng chứng `.loe-badge` (Level/Grade A, B, C, E) theo đúng chuẩn thiết kế trong Skill `guideline-summary-module`.

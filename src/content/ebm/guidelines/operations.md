@@ -23,7 +23,9 @@ src/content/ebm/guidelines/
 │   └── guidelines-modals.css                # Modal Thêm/Sửa, Case CDSS, Multi-Compare Matrix
 │
 ├── js/                                      # Các mô-đun TypeScript nghiệp vụ
-│   ├── guideline-sync.ts                    # LocalStorage & Supabase Realtime Sync Engine (2 chiều)
+│   ├── kho-guidelines-registry.ts           # Kho Metadata tĩnh tập trung (KHO_GUIDELINES_STATIC 105+ bài)
+│   ├── guidelinesdata.ts                    # Phân loại Chuyên khoa, Thiết kế, Tạp chí & Nạp Registry
+│   ├── guideline-sync.ts                    # Bộ điều phối Lưu trữ Cục bộ & Khử trùng lặp (Dedup Engine)
 │   ├── guideline-table.ts                   # Lọc và Render Bảng bài báo, Thẻ Compact, Tabs Switcher
 │   ├── guideline-modals.ts                  # Xử lý Modal Thêm/Sửa, Nhập JSON & Cấu hình ICD-10 Registry
 │   ├── guideline-visualizations.ts          # Bento Grid, Đồng hồ Gauge SVG & Bubble Evidence Map
@@ -42,7 +44,7 @@ src/content/ebm/guidelines/
 ├── data/
 │   └── predatory-blacklist.ts               # Beall's list & cơ sở dữ liệu kiểm toán rủi ro tạp chí
 │
-└── kho-guidelines/                          # Thư mục lưu 50+ bài viết tóm tắt HTML chi tiết
+└── kho-guidelines/                          # Thư mục lưu 105+ bài viết tóm tắt MDX chi tiết
 ```
 
 ---
@@ -51,18 +53,19 @@ src/content/ebm/guidelines/
 
 ```mermaid
 graph TD
-    A["guidelinesdata.ts (SAMPLE_STUDIES)"] --> B["guideline-sync.ts (Sync Engine)"]
-    C["Supabase Cloud / LocalStorage"] --> B
-    B --> D["window.studies (Store Trung Tâm)"]
-    D --> E["guideline-table.ts (Render Bảng & Filter)"]
-    D --> F["guideline-visualizations.ts (Bento Grid & SVG Charts)"]
-    D --> G["guideline-cdss.ts (CDSS Matcher)"]
-    D --> H["guideline-compare-matrix.ts (Multi-Compare)"]
-    D --> I["openalex-service.ts + journal-trust-scorer.ts"]
+    A["kho-guidelines-registry.ts (KHO_GUIDELINES_STATIC)"] --> B["guidelinesdata.ts (SAMPLE_STUDIES)"]
+    B --> C["guideline-sync.ts (Store & Dedup Engine)"]
+    D["LocalStorage (cliniportal_custom_studies)"] --> C
+    C --> E["window.studies (Store Trung Tâm)"]
+    E --> F["guideline-table.ts (Render Bảng & Filter)"]
+    E --> G["guideline-visualizations.ts (Bento Grid & SVG Charts)"]
+    E --> H["guideline-cdss.ts (CDSS Matcher)"]
+    E --> I["guideline-compare-matrix.ts (Multi-Compare)"]
+    E --> K["openalex-service.ts + journal-trust-scorer.ts"]
     
-    E --> J["DOM Viewport (guidelines.html)"]
-    F --> J
+    F --> J["DOM Viewport (guidelines.html)"]
     G --> J
+    H --> J
     H --> J
     I --> J
 ```

@@ -255,14 +255,7 @@ if (typeof window !== 'undefined') {
   const initApp = async () => {
     initSidebarState();
 
-    if (window.initSupabase) {
-      const isConnected = window.initSupabase();
-      if (isConnected && window.syncStudiesWithSupabase) {
-        await window.syncStudiesWithSupabase();
-      } else if (window.loadStudies) {
-        window.loadStudies();
-      }
-    } else if (window.loadStudies) {
+    if (window.loadStudies) {
       window.loadStudies();
     }
     parseUrlState();
@@ -310,7 +303,6 @@ if (typeof window !== 'undefined') {
       if (e.key === 'Escape') {
         if (window.closeAddModal) window.closeAddModal();
         if (window.closeImportModal) window.closeImportModal();
-        if (window.closeSupabaseModal) window.closeSupabaseModal();
         if (window.closeSubgroupModal) window.closeSubgroupModal();
         const icdModal = document.getElementById('icd10-modal');
         if (icdModal) icdModal.classList.remove('active');

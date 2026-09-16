@@ -53,6 +53,7 @@ export interface VaultArticle {
   sourceReference?: string;
   clinicalContext?: string;
   outcomeNotes?: string;
+  problemList?: any;
 }
 
 export interface VaultKhoSummary {

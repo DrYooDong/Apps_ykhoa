@@ -207,15 +207,16 @@ export function getJournalMetrics(journalName?: string, studyObj?: any): any {
 }
 
 import { Study } from './guidelines-types';
+import { KHO_GUIDELINES_STATIC } from './kho-guidelines-registry';
 
-export const SAMPLE_STUDIES: Study[] = [];
+export const SAMPLE_STUDIES: Study[] = KHO_GUIDELINES_STATIC;
 
 if (typeof window !== 'undefined') {
   window.JOURNAL_METRICS_DATABASE = JOURNAL_METRICS_DATABASE;
   window.getJournalMetrics = getJournalMetrics;
   window.CLINICAL_CONDITIONS = CLINICAL_CONDITIONS;
   window.DEFAULT_CLINICAL_CONDITIONS = CLINICAL_CONDITIONS;
-  window.SAMPLE_STUDIES = [];
+  window.SAMPLE_STUDIES = SAMPLE_STUDIES;
 
   window.SPECIALTIES = SPECIALTIES;
   window.SOURCE_TYPES = SOURCE_TYPES;

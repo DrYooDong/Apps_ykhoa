@@ -67,7 +67,8 @@ Mỗi bản ghi trong `SAMPLE_STUDIES` (`guidelinesdata.ts`) có cấu trúc chu
 
 ---
 
-## ☁️ 4. Đồng Bộ Dữ Liệu Hai Chiều (LocalStorage & Supabase Cloud)
+## 💾 4. Kiến Trúc Kho Lưu Trữ Cục Bộ (Static Registry & LocalStorage)
 
-- **Mặc định**: Hệ thống lưu toàn bộ thay đổi, bookmark và ghi chú tại `localStorage` nội bộ.
-- **Đồng bộ Đám mây (Supabase)**: Người dùng có thể cấu hình API URL và Anon Key trong phần Cài đặt để đồng bộ hai chiều dữ liệu giữa máy tính bệnh viện, điện thoại và máy tính cá nhân.
+- **Kho Lưu Trữ Tĩnh Cố Định (Project Registry)**: Dữ liệu chuẩn toàn bộ Guidelines và Nghiên cứu EBM được quản lý tập trung tại `src/content/ebm/guidelines/js/kho-guidelines-registry.ts` (`KHO_GUIDELINES_STATIC`). Hệ thống tự động nạp vào `SAMPLE_STUDIES` khi khởi chạy, không phụ thuộc vào bất kỳ dịch vụ Cloud DB bên ngoài nào.
+- **Tùy biến Cục bộ (LocalStorage)**: Người dùng có thể bookmark, thêm bài mới hoặc nhập khẩu file JSON. Các dữ liệu tùy biến được lưu an toàn tại `localStorage` nội bộ của trình duyệt (`cliniportal_custom_studies`), đồng thời có cơ chế chống trùng lặp và loại trừ bài đã xóa (`cliniportal_deleted_study_ids`).
+- **Hoạt động Ngoại tuyến 100% (Offline-First)**: Đảm bảo khả năng chạy độc lập hoàn toàn trên máy tính bệnh viện, mạng nội bộ hoặc giao thức `file:///` mà không lo mất kết nối mạng.

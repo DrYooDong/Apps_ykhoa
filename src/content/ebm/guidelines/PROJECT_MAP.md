@@ -28,7 +28,7 @@ src/content/ebm/guidelines/
 │   ├── guideline-controller.ts              # Modal & Detail Controller
 │   ├── guidelines.ts                        # Legacy Global Bindings & DOM Bootstrapper
 │   ├── study-analyzer-suite.ts              # RoB 2, GRADE, EbmStatisticsEngine
-│   ├── guideline-sync.ts                    # LocalStorage & Supabase Realtime Sync Engine (2 chiều)
+│   ├── guideline-sync.ts                    # Local Data Store & Persistence Engine (LocalStorage & Deduplication)
 │   ├── guideline-table.ts                   # Render Bảng, Thẻ Compact & Filter Pills Engine
 │   ├── guideline-modals.ts                  # Modals Thêm/Sửa & ICD-10 Registry Management
 │   ├── guideline-visualizations.ts          # Bento Grid, Evidence Map SVG & Treemap Renderer
@@ -72,10 +72,11 @@ src/content/ebm/guidelines/
 | `guidelines.html` | HTML | Khung giao diện chính (App Shell, Bento Grid, Tables, Modals) | HTML Elements IDs |
 | `guidelines.css` | CSS | Master Style Entry Point nạp các mô-đun CSS | Style rules |
 | `guidelines.ts` | TS | Entry Controller điều phối `DOMContentLoaded` & Resize listener | `window.toggleSidebar`, `window.calculateNNT` |
-| `guidelinesdata.ts` | TS | Kho dữ liệu chuẩn quốc tế & Bộ Y Tế Việt Nam | `window.studies`, `window.CLINICAL_CONDITIONS` |
-| `guidelines-types.ts` | TS | Hệ thống Interface & Type Definitions trung tâm | `Study`, `FilterState`, `SupabaseConfig` |
+| `guidelinesdata.ts` | TS | Kho danh mục Chuyên khoa, Thiết kế, Tạp chí & Nạp Registry | `window.SAMPLE_STUDIES`, `window.CLINICAL_CONDITIONS` |
+| `kho-guidelines-registry.ts` | TS | Kho Metadata tĩnh tập trung 105+ tài liệu EBM | `KHO_GUIDELINES_STATIC`, `window.KHO_GUIDELINES_STATIC` |
+| `guidelines-types.ts` | TS | Hệ thống Interface & Type Definitions trung tâm | `Study`, `FilterState`, `DuplicateCheckResult` |
 | `guidelines-view.ts` | TS | SPA View Component tích hợp vào Router của CliniPortal | `GuidelinesView` |
-| `js/guideline-sync.ts` | TS | Đồng bộ dữ liệu 2 chiều với LocalStorage & Supabase DB | `window.initSupabase`, `window.dbSaveStudy`, `window.loadStudies` |
+| `js/guideline-sync.ts` | TS | Quản lý lưu trữ cục bộ, khử trùng lặp & đồng bộ LocalStorage | `window.loadStudies`, `window.saveStudies`, `window.detectStudyDuplicate` |
 | `js/guideline-table.ts` | TS | Lọc và Render Bảng bài báo, Thẻ Compact, Tabs Switcher | `window.renderTable`, `window.setFilter`, `window.switchTab` |
 | `js/guideline-modals.ts` | TS | Xử lý Modal Thêm/Sửa, Nhập JSON & Cấu hình ICD-10 Registry | `window.openAddModal`, `window.openConditionSettingsModal` |
 | `js/guideline-visualizations.ts` | TS | Vẽ Bento Grid, Đồng hồ Gauge SVG & Bubble Evidence Map | `window.renderVisualizations` |
@@ -95,18 +96,20 @@ src/content/ebm/guidelines/
 
 ```mermaid
 graph TD
-    A["guidelinesdata.ts (Static Data)"] --> B["guideline-sync.ts (Sync Engine)"]
-    C["Supabase Cloud DB / LocalStorage"] --> B
-    B --> D["window.studies Data Store"]
-    D --> E["guideline-table.ts (Filter & Table Engine)"]
-    D --> F["guideline-cdss.ts (CDSS Matcher)"]
-    D --> G["guideline-compare-matrix.ts (3D Matrix)"]
-    D --> H["guideline-visualizations.ts (Bento Grid & SVG Charts)"]
-    D --> K["openalex-service.ts + journal-trust-scorer.ts"]
-    E --> I["guidelines.html DOM Viewport"]
-    F --> I
-    G --> I
-    H --> I
+    A["kho-guidelines-registry.ts (KHO_GUIDELINES_STATIC)"] --> B["guidelinesdata.ts (SAMPLE_STUDIES)"]
+    B --> C["guideline-sync.ts (Store & Dedup Engine)"]
+    D["LocalStorage (cliniportal_custom_studies)"] --> C
+    C --> E["window.studies Data Store"]
+    E --> F["guideline-table.ts (Filter & Table Engine)"]
+    E --> G["guideline-cdss.ts (CDSS Matcher)"]
+    E --> H["guideline-compare-matrix.ts (3D Matrix)"]
+    E --> I["guideline-visualizations.ts (Bento Grid & SVG Charts)"]
+    E --> K["openalex-service.ts + journal-trust-scorer.ts"]
+    F --> J["guidelines.html DOM Viewport"]
+    G --> J
+    H --> J
+    I --> J
+    K --> J
     K --> I
 ```
 

@@ -327,6 +327,22 @@ export const EPIDEMIOLOGY_DATABASE: Record<string, DiseaseEpidemiologyProfile> =
     highRiskPopulations: ['Trẻ sơ sinh và nhũ nhi < 1 tuổi', 'Phụ nữ mang thai', 'Người trưởng thành chưa có miễn dịch', 'Bệnh nhân suy giảm miễn dịch, dùng Corticoid dài ngày'],
     outbreakPotential: 'high',
     clinicalPearls: 'Chỉ số lây nhiễm cơ bản cao (R0 = 10-12). Bệnh nhân lây truyền mạnh từ 24-48 giờ trước khi phát ban cho đến khi toàn bộ nốt mụn nước đã khô vảy hoàn toàn.'
+  },
+  sot_ret: {
+    diseaseId: 'sot_ret',
+    diseaseName: 'Sốt Rét (Malaria / P. falciparum, P. vivax, P. knowlesi, P. malariae)',
+    icdCode: 'B50',
+    specialty: 'Truyền nhiễm',
+    endemicAreas: ["Bệnh nhân vừa trở về từ vùng sốt rét lưu hành (huyện Bù Gia Mập, tỉnh Bình Phước) trong vòng 10 ngày qua", 'Toàn quốc'],
+    peakSeasons: ["Mùa mưa, thời tiết ẩm ướt vùng rừng núi thuận lợi cho muỗi Anopheles sinh sản và truyền bệnh sốt rét"],
+    vectors: ["Tiền sử ngủ rẫy trong rừng không mắc màn tẩm hóa chất, bị muỗi rừng Anopheles dirus / Anopheles minimus đốt nhiều lần vào ban đêm"],
+    occupationalRisks: ['Nhân viên y tế phơi nhiễm nghề nghiệp', 'Người lao động có nguy cơ tiếp xúc'],
+    foodWaterRisks: ['Tuân thủ vệ sinh an toàn thực phẩm và nguồn nước sinh hoạt'],
+    transmissionRoutes: ["Khu vực rừng rẫy biên giới có muỗi Anopheles hoạt động mạnh, có các ca bệnh sốt rét rải rác lưu hành trong cộng đồng dân cư đi rừng"],
+    incubationPeriod: 'Thời gian ủ bệnh thay đổi tùy thuộc độc lực tác nhân và cơ địa người bệnh',
+    highRiskPopulations: ['Người có bệnh nền mạn tính', 'Người cao tuổi hoặc trẻ nhỏ', 'Người suy giảm miễn dịch'],
+    outbreakPotential: 'sporadic',
+    clinicalPearls: 'Khai thác kỹ tiền sử tiếp xúc, yếu tố phơi nhiễm dịch tễ và các triệu chứng cảnh báo sớm tại vùng lưu hành để chẩn đoán kịp thời.'
   }
 };
 
@@ -413,22 +429,6 @@ export function matchEpidemiologyBoost(
 
   return {
     score: Math.min(score, 15), // Chặn trên tối đa 15 điểm boost
-    reasons
-    sot_ret: {
-    diseaseId: 'sot_ret',
-    diseaseName: 'Sốt Rét (Malaria / P. falciparum, P. vivax, P. knowlesi, P. malariae)',
-    icdCode: 'B50',
-    specialty: 'Truyền nhiễm',
-    endemicAreas: ["Bệnh nhân vừa trở về từ vùng sốt rét lưu hành (huyện Bù Gia Mập, tỉnh Bình Phước) trong vòng 10 ngày qua", 'Toàn quốc'],
-    peakSeasons: ["Mùa mưa, thời tiết ẩm ướt vùng rừng núi thuận lợi cho muỗi Anopheles sinh sản và truyền bệnh sốt rét"],
-    vectors: ["Tiền sử ngủ rẫy trong rừng không mắc màn tẩm hóa chất, bị muỗi rừng Anopheles dirus / Anopheles minimus đốt nhiều lần vào ban đêm"],
-    occupationalRisks: ['Nhân viên y tế phơi nhiễm nghề nghiệp', 'Người lao động có nguy cơ tiếp xúc'],
-    foodWaterRisks: ['Tuân thủ vệ sinh an toàn thực phẩm và nguồn nước sinh hoạt'],
-    transmissionRoutes: ["Khu vực rừng rẫy biên giới có muỗi Anopheles hoạt động mạnh, có các ca bệnh sốt rét rải rác lưu hành trong cộng đồng dân cư đi rừng"],
-    incubationPeriod: 'Thời gian ủ bệnh thay đổi tùy thuộc độc lực tác nhân và cơ địa người bệnh',
-    highRiskPopulations: ['Người có bệnh nền mạn tính', 'Người cao tuổi hoặc trẻ nhỏ', 'Người suy giảm miễn dịch'],
-    outbreakPotential: 'sporadic',
-    clinicalPearls: 'Khai thác kỹ tiền sử tiếp xúc, yếu tố phơi nhiễm dịch tễ và các triệu chứng cảnh báo sớm tại vùng lưu hành để chẩn đoán kịp thời.'
-  },
-};
+    reasons,
+  };
 }
