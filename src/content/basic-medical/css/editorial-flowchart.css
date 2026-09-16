@@ -1,0 +1,236 @@
+/* ============================================================
+   CLINIPORTAL — EDITORIAL MEDICAL FLOWCHART SYSTEM
+   File: src/content/basic-medical/css/editorial-flowchart.css
+   Specification: Pure Vector SVG, 100% Tokenized, Dark/Light Mode,
+   Orthogonal Connectors, Decision Diamonds & 3-Tier Outcome Cards
+   ============================================================ */
+
+/* ────────────────────────────────────────────────────────────
+   1. FLOWCHART CARD CONTAINER
+   ──────────────────────────────────────────────────────────── */
+
+.flowchart-editorial-card {
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: 16px;
+  margin: 2rem 0;
+  overflow: hidden;
+  box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.05);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+[data-theme="dark"] .flowchart-editorial-card {
+  background: var(--dsp-surface, #0f172a);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 30px -4px rgba(0, 0, 0, 0.4);
+}
+
+.flowchart-editorial-card:hover {
+  border-color: var(--color-primary-border, rgba(2, 132, 199, 0.4));
+  box-shadow: 0 8px 28px -4px rgba(2, 132, 199, 0.12);
+}
+
+/* Card Header */
+.flowchart-editorial-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.35rem;
+  background: linear-gradient(90deg, rgba(2, 132, 199, 0.06) 0%, rgba(13, 148, 136, 0.04) 50%, transparent 100%);
+  border-bottom: 1px solid var(--color-border, #e2e8f0);
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+[data-theme="dark"] .flowchart-editorial-header {
+  background: linear-gradient(90deg, rgba(2, 132, 199, 0.12) 0%, rgba(13, 148, 136, 0.08) 50%, transparent 100%);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+.flowchart-editorial-title {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--color-text, #0f172a);
+}
+
+.flowchart-editorial-title i {
+  color: var(--color-primary, #0284c7);
+  font-size: 1.1em;
+}
+
+.flowchart-editorial-badges {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.flowchart-editorial-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  background: rgba(2, 132, 199, 0.1);
+  color: var(--color-primary, #0284c7);
+  border: 1px solid rgba(2, 132, 199, 0.25);
+}
+
+[data-theme="dark"] .flowchart-editorial-badge {
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+  border-color: rgba(56, 189, 248, 0.3);
+}
+
+/* ────────────────────────────────────────────────────────────
+   2. RESPONSIVE SVG VIEWPORT
+   ──────────────────────────────────────────────────────────── */
+
+.flowchart-editorial-viewport {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 1.5rem 1rem;
+  background: var(--color-surface, #ffffff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-overflow-scrolling: touch;
+}
+
+[data-theme="dark"] .flowchart-editorial-viewport {
+  background: var(--dsp-bg-base, #090d16);
+}
+
+.flowchart-editorial-svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+/* ────────────────────────────────────────────────────────────
+   3. BOTTOM LEGEND STRIP
+   ──────────────────────────────────────────────────────────── */
+
+.flowchart-editorial-legend {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0.75rem 1.25rem;
+  background: rgba(241, 245, 249, 0.6);
+  border-top: 1px solid var(--color-border, #e2e8f0);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-muted, #64748b);
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+[data-theme="dark"] .flowchart-editorial-legend {
+  background: rgba(15, 23, 42, 0.6);
+  border-top-color: rgba(255, 255, 255, 0.08);
+  color: #94a3b8;
+}
+
+.flowchart-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.legend-dot.green { background: #059669; }
+.legend-dot.amber { background: #d97706; }
+.legend-dot.red   { background: #dc2626; }
+.legend-dot.blue  { background: #0284c7; }
+
+[data-theme="dark"] .legend-dot.green { background: #34d399; }
+[data-theme="dark"] .legend-dot.amber { background: #fbbf24; }
+[data-theme="dark"] .legend-dot.red   { background: #fb7185; }
+[data-theme="dark"] .legend-dot.blue  { background: #38bdf8; }
+
+/* ────────────────────────────────────────────────────────────
+   4. SVG SEMANTIC STYLING CLASSES (For Inline SVGs)
+   ──────────────────────────────────────────────────────────── */
+
+.svg-node-primary {
+  fill: rgba(2, 132, 199, 0.08);
+  stroke: var(--dsp-sky, #0284c7);
+  stroke-width: 2;
+}
+[data-theme="dark"] .svg-node-primary {
+  fill: rgba(2, 132, 199, 0.16);
+  stroke: #38bdf8;
+}
+
+.svg-node-decision {
+  fill: rgba(245, 158, 11, 0.09);
+  stroke: var(--dsp-amber, #d97706);
+  stroke-width: 2;
+}
+[data-theme="dark"] .svg-node-decision {
+  fill: rgba(245, 158, 11, 0.18);
+  stroke: #fbbf24;
+}
+
+.svg-node-success {
+  fill: rgba(16, 185, 129, 0.08);
+  stroke: var(--dsp-emerald, #059669);
+  stroke-width: 2;
+}
+[data-theme="dark"] .svg-node-success {
+  fill: rgba(16, 185, 129, 0.16);
+  stroke: #34d399;
+}
+
+.svg-node-warning {
+  fill: rgba(245, 158, 11, 0.08);
+  stroke: var(--dsp-amber, #d97706);
+  stroke-width: 2;
+}
+[data-theme="dark"] .svg-node-warning {
+  fill: rgba(245, 158, 11, 0.16);
+  stroke: #fbbf24;
+}
+
+.svg-node-danger {
+  fill: rgba(239, 68, 68, 0.08);
+  stroke: var(--dsp-rose, #dc2626);
+  stroke-width: 2;
+}
+[data-theme="dark"] .svg-node-danger {
+  fill: rgba(239, 68, 68, 0.16);
+  stroke: #fb7185;
+}
+
+.svg-connector {
+  stroke-width: 2;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.svg-label-bg {
+  fill: var(--color-surface, #ffffff);
+  stroke: var(--color-border, #cbd5e1);
+  stroke-width: 1;
+  rx: 4px;
+}
+[data-theme="dark"] .svg-label-bg {
+  fill: #1e293b;
+  stroke: rgba(255, 255, 255, 0.15);
+}

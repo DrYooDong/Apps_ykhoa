@@ -49,26 +49,31 @@ sections:
 
 # 🧬 SINH LÝ THẬN TRONG ĐIỀU HÒA THĂNG BẰNG TOAN - KIỀM
 
-<PhysioQuickNav />
+<div class="module-badge-group">
+  <span class="badge badge-system"><i class="fa-solid fa-droplet"></i> Sinh Lý Thận & Thể Dịch</span>
+  <span class="badge badge-source"><i class="fa-solid fa-book-bookmark"></i> Guyton 14th Ch. 31 • Ganong 26th Ch. 39</span>
+  <span class="badge badge-level"><i class="fa-solid fa-layer-group"></i> Y Khoa Cơ Sở • Module Thận</span>
+  <span class="badge badge-evidence"><i class="fa-solid fa-certificate"></i> EBM 2026 • Thăng Bằng Toan Kiềm</span>
+</div>
 
 {/* DẢI CHỈ SỐ NHANH (QUICK STATS STRIP) */}
-<section class="stats-strip">
+<section class="stats-strip theme-physio">
   <div class="stats-grid">
     <div class="stat-card">
-      <div class="stat-val blue">PHYS-REN-04</div>
-      <div class="stat-lbl">Mã chuyên đề • Sinh Lý Thận & Thể Dịch</div>
+      <div class="stat-val blue">7.35 - 7.45</div>
+      <div class="stat-lbl">pH Máu Động Mạch • [H+] ≈ 40 nmol/L</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val green">Nội Môi Ổn Định</div>
-      <div class="stat-lbl">Cân bằng gradient điện hóa & Áp suất thẩm thấu</div>
+      <div class="stat-val green">22 - 26 <span class="stat-unit">mEq/L</span></div>
+      <div class="stat-lbl">Dự Trữ Kiềm [HCO3-] • 4.320 mEq/ngày lọc</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val amber">Feedback Loop</div>
-      <div class="stat-lbl">Vòng điều hòa phản hồi thần kinh - thể dịch</div>
+      <div class="stat-val amber">35 - 45 <span class="stat-unit">mmHg</span></div>
+      <div class="stat-lbl">Áp Lực Riêng Phần PaCO2 • Hô hấp bù trừ nhanh</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val purple">Dược Lý EBM</div>
-      <div class="stat-lbl">Ứng dụng lâm sàng chuẩn Guyton 14th & Ganong 26th</div>
+      <div class="stat-val purple">8 - 12 <span class="stat-unit">mmol/L</span></div>
+      <div class="stat-lbl">Khoảng Trống Anion Gap • [Na+] - ([Cl-] + [HCO3-])</div>
     </div>
   </div>
 </section>
@@ -80,158 +85,222 @@ pH máu động mạch ở người bình thường được kiểm soát cực 
 
 $$pH = 6.1 + \log_{10} \left( \frac{[HCO_3^-]}{0.03 \times PaCO_2} \right) \quad \text{(Phương Trình Henderson - Hasselbalch)}$$
 
-
 <div class="flowchart-card">
   <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: TUYẾN PHÒNG THỦ DUY TRÌ pH MÁU</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+    <div class="flowchart-title"><i class="fa-solid fa-scale-balanced" style="color: var(--color-primary, #0284c7);"></i> 3 TUYẾN PHÒNG THỦ DUY TRÌ THĂNG BẰNG TOAN KIỀM CỦA CƠ THỂ</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG • Guyton & Hall</span>
   </div>
   <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 226" width="880" height="226" xmlns="http://www.w3.org/2000/svg">
+    <svg class="flowchart-svg" viewBox="0 0 920 270" width="920" height="270" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="phBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
         </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
-        </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="phAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
         </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        <marker id="phGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
         </marker>
       </defs>
 
-      {/* Single Node: 3 TUYẾN PHÒNG THỦ DUY TRÌ pH M */}
-      <rect x="160.75" y="20" width="558.5" height="168" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">3 TUYẾN PHÒNG THỦ DUY TRÌ pH MÁU</text>
-      <text x="184.75" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ├──► TUYẾN 1: CÁC HỆ ĐỆM HÓA HỌC (Đáp ứng tức thì trong vài</text>
-      <text x="184.75" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  giây)</text>
-      <text x="184.75" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ├──► TUYẾN 2: HỆ HÔ HẤP (Đáp ứng nhanh trong vài phút đến</text>
-      <text x="184.75" y="118" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  vài giờ)</text>
-      <text x="184.75" y="136" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Tái hấp thu 100% lượng HCO3- lọc qua cầu thận</text>
-      <text x="184.75" y="154" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Đào thải lượng acid cố định (Non-volatile acids 50 – 100</text>
-      <text x="184.75" y="172" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  mEq/ngày) và sinh mới HCO3-</text>
+      {/* 3 Pillars */}
+      {/* Pillar 1 */}
+      <g transform="translate(30, 20)">
+        <rect x="0" y="0" width="270" height="180" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="#0284c7" stroke-width="1.8"/>
+        <rect x="0" y="0" width="270" height="34" rx="10" fill="#0284c7" opacity="0.15"/>
+        <text x="135" y="22" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="#0284c7">TUYẾN 1: HỆ ĐỆM HÓA HỌC</text>
+
+        <text x="15" y="58" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">• Tốc độ: TỨC THÌ (VÀI GIÂY)</text>
+        <text x="15" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#0284c7">• Hệ đệm Bicarbonate (HCO3-/H2CO3):</text>
+        <text x="25" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">Quan trọng nhất dịch ngoại bào ECF</text>
+        <text x="15" y="124" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">• Các hệ đệm khác:</text>
+        <text x="25" y="142" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">Hemoglobin hồng cầu, Protein nội bào,</text>
+        <text x="25" y="160" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">Phosphate vô cơ (HPO4 2- / H2PO4 -)</text>
+      </g>
+
+      {/* Pillar 2 */}
+      <g transform="translate(325, 20)">
+        <rect x="0" y="0" width="270" height="180" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="#d97706" stroke-width="1.8"/>
+        <rect x="0" y="0" width="270" height="34" rx="10" fill="#d97706" opacity="0.15"/>
+        <text x="135" y="22" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="#d97706">TUYẾN 2: HỆ HÔ HẤP</text>
+
+        <text x="15" y="58" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">• Tốc độ: VÀI PHÚT ĐẾN VÀI GIỜ</text>
+        <text x="15" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#d97706">• Điều hòa PaCO2 phế nang:</text>
+        <text x="25" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">Chemoreceptors hành não & xoang cảnh</text>
+        <text x="15" y="124" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">• Toan máu → Thở Kussmaul:</text>
+        <text x="25" y="142" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">Tăng thông khí, đào thải CO2 nhanh</text>
+        <text x="15" y="166" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="#d97706">► Hiệu quả bù trừ 50 - 75% rối loạn</text>
+      </g>
+
+      {/* Pillar 3 */}
+      <g transform="translate(620, 20)">
+        <rect x="0" y="0" width="270" height="180" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="#059669" stroke-width="1.8"/>
+        <rect x="0" y="0" width="270" height="34" rx="10" fill="#059669" opacity="0.15"/>
+        <text x="135" y="22" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="#059669">TUYẾN 3: THẬN (TỐI HẬU)</text>
+
+        <text x="15" y="58" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">• Tốc độ: VÀI GIỜ ĐẾN VÀI NGÀY</text>
+        <text x="15" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#059669">• Tái hấp thu 100% HCO3- lọc:</text>
+        <text x="25" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">4.320 mEq/ngày được giữ lại tuần hoàn</text>
+        <text x="15" y="124" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">• Đào thải acid cố định:</text>
+        <text x="25" y="142" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">50 - 100 mEq H+/ngày qua NH4+ & H2PO4-</text>
+        <text x="15" y="166" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10.5" fill="#059669">► Phục hồi hoàn toàn pH về 7.40</text>
+      </g>
+
+      {/* Bottom Result Bar */}
+      <rect x="30" y="215" width="860" height="40" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="#0284c7" stroke-width="1.5"/>
+      <text x="460" y="235" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="#0284c7">CƠ THỂ LUÔN ƯU TIÊN DUY TRÌ TỶ LỆ [HCO3-] / (0.03 × PaCO2) = 24 / 1.2 = 20 : 1 ĐỂ GIỮ pH = 7.40</text>
     </svg>
   </div>
+  <div class="flowchart-editorial-legend">
+    <div class="legend-item"><span class="legend-dot" style="background:#0284c7;"></span><span>Tuyến 1: Đệm hóa học (Vài giây • Ngăn dao động lớn)</span></div>
+    <div class="legend-item"><span class="legend-dot" style="background:#d97706;"></span><span>Tuyến 2: Hô hấp (Vài phút • Điều chỉnh PaCO2)</span></div>
+    <div class="legend-item"><span class="legend-dot" style="background:#059669;"></span><span>Tuyến 3: Thận (Vài ngày • Đào thải H+ & Sinh mới HCO3-)</span></div>
+  </div>
 </div>
-
 
 ---
 
 ## 2. Cơ Chế Tế Bào Thận: Tái Hấp Thu HCO3-
 Mỗi ngày có khoảng **$4.320\text{ mEq } HCO_3^-$** được lọc qua cầu thận. **85%** lượng $HCO_3^-$ này được tái hấp thu tại Ống lượn gần (PCT) thông qua chu trình enzym Carbonic Anhydrase (CA):
 
-
 <div class="flowchart-card">
   <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: LÒNG ỐNG LƯỢN GẦN</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+    <div class="flowchart-title"><i class="fa-solid fa-cubes" style="color: var(--color-primary, #0284c7);"></i> CƠ CHẾ TẾ BÀO TÁI HẤP THU HCO3- TẠI ỐNG LƯỢN GẦN QUA MEN CA-IV & CA-II</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG • Carbonic Anhydrase Cycle</span>
   </div>
   <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 210" width="880" height="210" xmlns="http://www.w3.org/2000/svg">
+    <svg class="flowchart-svg" viewBox="0 0 920 280" width="920" height="280" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="caBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
         </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="caGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
-        </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
         </marker>
       </defs>
 
-      <rect x="30" y="20" width="250" height="152" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="155" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text, #0f172a)">LÒNG ỐNG LƯỢN GẦN</text>
-      <line x1="45" y1="50" x2="265" y2="50" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="42" y="66" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Lọc HCO3</text>
-      <text x="42" y="84" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• (En</text>
-      <text x="42" y="102" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• CO2 + H2O ────</text>
-      <rect x="315" y="20" width="250" height="152" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text, #0f172a)">TẾ BÀO BIỂU MÔ PCT</text>
-      <line x1="330" y1="50" x2="550" y2="50" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="327" y="66" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• + H+ (bơ</text>
-      <text x="327" y="84" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• H</text>
-      <text x="327" y="102" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• zym CA-IV tr</text>
-      <text x="327" y="120" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• ─────────────────</text>
-      <text x="327" y="138" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• (En</text>
-      <text x="327" y="156" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• H2CO3 ─</text>
-      <text x="327" y="174" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• HCO3- ──(Kênh NBCe1</text>
-      <rect x="600" y="20" width="250" height="152" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="725" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text, #0f172a)">MÁU MAO MẠCH QUANH ỐNG</text>
-      <line x1="615" y1="50" x2="835" y2="50" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="612" y="66" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• m NHE3 tiết)</text>
-      <text x="612" y="84" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• 2CO3</text>
-      <text x="612" y="102" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• ên màng đỉnh)</text>
-      <text x="612" y="120" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• ────────► CO2 + H2O</text>
-      <text x="612" y="138" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• zym CA-II trong bào tương)</text>
-      <text x="612" y="156" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• ─► H+ (Tái sử dụng cho NHE3)</text>
-      <text x="612" y="174" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• đồng vận 3 Na+)──► HCO3- (Về máu)</text>
+      {/* Step 1: Lòng ống */}
+      <g transform="translate(30, 20)">
+        <rect x="0" y="0" width="260" height="190" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="#0284c7" stroke-width="1.8"/>
+        <rect x="0" y="0" width="260" height="34" rx="10" fill="#0284c7" opacity="0.15"/>
+        <text x="130" y="22" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="#0284c7">1. LÒNG ỐNG LƯỢN GẦN</text>
+
+        <text x="15" y="58" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">• HCO3- lọc qua cầu thận</text>
+        <text x="15" y="80" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">kết hợp H+ (do bơm NHE3 tiết):</text>
+        <text x="25" y="104" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="#0284c7">H+ + HCO3- ──► H2CO3</text>
+        
+        <text x="15" y="132" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#dc2626">• Men CA-IV màng đỉnh:</text>
+        <text x="25" y="152" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">H2CO3 ──► CO2 + H2O</text>
+        <text x="15" y="174" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="#dc2626">► Đích: Acetazolamide ức chế CA-IV</text>
+      </g>
+
+      <line x1="290" y1="115" x2="330" y2="115" stroke="#0284c7" stroke-width="2" marker-end="url(#caBlue)"/>
+
+      {/* Step 2: Bào tương tế bào PCT */}
+      <g transform="translate(330, 20)">
+        <rect x="0" y="0" width="260" height="190" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="#059669" stroke-width="2"/>
+        <rect x="0" y="0" width="260" height="34" rx="10" fill="#059669" opacity="0.15"/>
+        <text x="130" y="22" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="#059669">2. TẾ BÀO BIỂU MÔ PCT</text>
+
+        <text x="15" y="58" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">• CO2 & H2O khuếch tán vào</text>
+        <text x="15" y="80" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">qua màng tế bào tự do</text>
+
+        <text x="15" y="106" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#059669">• Men CA-II nội bào tái tạo:</text>
+        <text x="25" y="128" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="#059669">CO2 + H2O ──► H+ + HCO3-</text>
+
+        <text x="15" y="156" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Ion H+ quay lại bơm NHE3</text>
+        <text x="15" y="174" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">để tái luân chuyển chu trình</text>
+      </g>
+
+      <line x1="590" y1="115" x2="630" y2="115" stroke="#059669" stroke-width="2" marker-end="url(#caGreen)"/>
+
+      {/* Step 3: Máu mao mạch */}
+      <g transform="translate(630, 20)">
+        <rect x="0" y="0" width="260" height="190" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="#d97706" stroke-width="1.8"/>
+        <rect x="0" y="0" width="260" height="34" rx="10" fill="#d97706" opacity="0.15"/>
+        <text x="130" y="22" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="#d97706">3. MAO MẠCH QUANH ỐNG</text>
+
+        <text x="15" y="58" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">• Màng đáy bên (Basolateral):</text>
+        <text x="25" y="80" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">Kênh đồng vận chuyển NBCe1</text>
+        <text x="25" y="104" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="#d97706">1 Na+ + 3 HCO3- ──► MÁU</text>
+
+        <text x="15" y="136" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#059669">✓ TÁI HẤP THU 85% HCO3-</text>
+        <text x="25" y="156" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">Không làm mất kiềm dự trữ</text>
+        <text x="15" y="174" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="#dc2626">Toan ống thận Type 2: Đột biến kênh này</text>
+      </g>
+
+      {/* Bottom Legend Strip */}
+      <rect x="30" y="225" width="860" height="38" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="#0284c7" stroke-width="1.5"/>
+      <text x="460" y="244" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#0284c7">CƠ CHẾ TÁI HẤP THU HCO3- KHÔNG THẢI H+ RA NƯỚC TIỂU MÀ CHỈ BẢO TỒN NGUYÊN VẸN NGUỒN KIỀM CỦA CƠ THỂ</text>
     </svg>
   </div>
+  <div class="flowchart-editorial-legend">
+    <div class="legend-item"><span class="legend-dot" style="background:#0284c7;"></span><span>Lòng ống: Phân hủy H2CO3 thành CO2 + H2O qua CA-IV</span></div>
+    <div class="legend-item"><span class="legend-dot" style="background:#059669;"></span><span>Bào tương: Tái tạo HCO3- qua CA-II nội bào</span></div>
+    <div class="legend-item"><span class="legend-dot" style="background:#d97706;"></span><span>Màng đáy bên: Đưa HCO3- về máu qua kênh NBCe1</span></div>
+  </div>
 </div>
-
 
 ---
 
 ## 3. Bài Xuất H+ & Đệm NH4+ / Phosphate
 Để trung hòa $50 – 100\text{ mEq}$ acid chuyển hóa cố định sinh ra mỗi ngày (Acid sulfuric, Acid phosphoric), tế bào ống thận đào thải $H^+$ vào nước tiểu dưới 2 dạng đệm:
 
-
 <div class="flowchart-card">
   <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: ĐÀO THẢI ACID CỐ ĐỊNH CỦA THẬN</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+    <div class="flowchart-title"><i class="fa-solid fa-flask-vial" style="color: var(--color-primary, #0284c7);"></i> 2 HỆ THỐNG ĐÀO THẢI ACID CỐ ĐỊNH & TẠO MỚI HCO3- TẠI ỐNG THẬN</div>
+    <span class="badge badge-amber">Pure Orthogonal SVG • Acid Secretion</span>
   </div>
   <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 302" width="880" height="302" xmlns="http://www.w3.org/2000/svg">
+    <svg class="flowchart-svg" viewBox="0 0 920 280" width="920" height="280" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="acidBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
-        </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
-        </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
         </marker>
       </defs>
 
-      {/* Single Node: ĐÀO THẢI ACID CỐ ĐỊNH CỦA THẬN */}
-      <rect x="250" y="20" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">ĐÀO THẢI ACID CỐ ĐỊNH CỦA THẬN</text>
-      {/* Bifurcation Path */}
-      <path d="M 440 66 L 440 80 L 235 80 L 235 94" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      <path d="M 440 80 L 645 80 L 645 94" fill="none" stroke="var(--amber, #f59e0b)" stroke-width="1.8" marker-end="url(#arrAmber)"/>
-      {/* Left Column: 1. HỆ ĐỆM PHOSPHATE (Acid Chuẩ */}
-      <rect x="40" y="94" width="390" height="170" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="235" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">1. HỆ ĐỆM PHOSPHATE (Acid Chuẩn Độ</text>
-      <text x="235" y="134" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">- Titratable Acid)</text>
-      <line x1="60" y1="148" x2="410" y2="148" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="60" y="164" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• H+ tiết ra gắn với HPO4 2- tạo thành</text>
-      <text x="60" y="182" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  H2PO4 -</text>
-      <text x="60" y="200" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Đào thải khoảng 20 - 30 mEq H+/ngày</text>
-      <text x="60" y="218" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• TẠO RA 1 PHÂN TỬ HCO3- MỚI VÀO MÁU</text>
-      {/* Right Column: 2. HỆ ĐỆM AMONIAC (NH4+ / Ammo */}
-      <rect x="450" y="94" width="390" height="170" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
-      <text x="645" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">2. HỆ ĐỆM AMONIAC (NH4+ /</text>
-      <text x="645" y="134" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">Ammoniagenesis)</text>
-      <line x1="470" y1="148" x2="820" y2="148" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="470" y="164" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Tế bào PCT chuyển hóa Glutamine ──► 2</text>
-      <text x="470" y="182" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  NH4+ + 2 HCO3- MỚI</text>
-      <text x="470" y="200" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• NH4+ được bài tiết vào nước tiểu;</text>
-      <text x="470" y="218" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  HCO3- mới vào máu</text>
-      <text x="470" y="236" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Đóng góp 30 - 50 mEq H+/ngày (CÓ THỂ</text>
-      <text x="470" y="254" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  TĂNG GẤP 10 LẦN KHI TOAN MÁU)</text>
+      {/* Column 1: Đệm Phosphate */}
+      <g transform="translate(40, 20)">
+        <rect x="0" y="0" width="400" height="195" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="#0284c7" stroke-width="1.8"/>
+        <rect x="0" y="0" width="400" height="36" rx="10" fill="#0284c7" opacity="0.15"/>
+        <text x="200" y="24" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#0284c7">1. HỆ ĐỆM PHOSPHATE (ACID CHUẨN ĐỘ)</text>
+
+        <text x="20" y="62" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text, #0f172a)">• Cơ chế phản ứng trong lòng ống:</text>
+        <text x="35" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#0284c7">H+ (bài tiết) + HPO4 2- (lọc) ──► H2PO4 -</text>
+        <text x="35" y="102" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">Muối H2PO4 - bị đào thải ra ngoài nước tiểu</text>
+
+        <text x="20" y="132" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text, #0f172a)">• Công suất đào thải:</text>
+        <text x="35" y="152" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">Khoảng 20 – 30 mEq H+/ngày (Cố định, không thể tăng thêm)</text>
+
+        <text x="20" y="180" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#059669">► TẠO RA 1 PHÂN TỬ HCO3- MỚI ĐƯA VÀO MÁU</text>
+      </g>
+
+      {/* Column 2: Đệm Amoniac */}
+      <g transform="translate(480, 20)">
+        <rect x="0" y="0" width="400" height="195" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="#d97706" stroke-width="1.8"/>
+        <rect x="0" y="0" width="400" height="36" rx="10" fill="#d97706" opacity="0.15"/>
+        <text x="200" y="24" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#d97706">2. HỆ ĐỆM AMONIAC (AMMONIAGENESIS)</text>
+
+        <text x="20" y="62" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text, #0f172a)">• Khử amin Glutamine tại tế bào PCT:</text>
+        <text x="35" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#d97706">Glutamine ──► 2 NH4+ (thải) + 2 HCO3- (mới)</text>
+        <text x="35" y="102" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">NH4+ thay thế H+ trên bơm NHE3 để ra lòng ống</text>
+
+        <text x="20" y="132" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text, #0f172a)">• Khả năng thích ứng phi thường:</text>
+        <text x="35" y="152" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">Bình thường: 30 - 50 mEq/ngày • KHI TOAN MÁU: TĂNG GẤP 10 LẦN!</text>
+
+        <text x="20" y="180" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#059669">► ĐÓNG GÓP CHÍNH GIÚP CƠ THỂ SỐNG SÓT QUA ĐỢT TOAN NẶNG</text>
+      </g>
+
+      {/* Bottom Note */}
+      <rect x="40" y="230" width="840" height="38" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="#0284c7" stroke-width="1.5"/>
+      <text x="460" y="249" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#0284c7">GIỚI HẠN pH NƯỚC TIỂU TỐI THIỂU = 4.5 • BƠM H+-ATPase KHÔNG THỂ BƠM H+ NẾU NƯỚC TIỂU QUÁ ACID</text>
+      <text x="460" y="262" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Hệ đệm NH4+ và Phosphate giữ vai trò sống còn nhận proton tự do để duy trì hoạt động bài tiết liên tục</text>
     </svg>
+  </div>
+  <div class="flowchart-editorial-legend">
+    <div class="legend-item"><span class="legend-dot" style="background:#0284c7;"></span><span>Hệ đệm Phosphate: Cố định 20-30 mEq/ngày</span></div>
+    <div class="legend-item"><span class="legend-dot" style="background:#d97706;"></span><span>Hệ đệm Amoniac: Linh động thích ứng tăng gấp 10x khi toan máu</span></div>
   </div>
 </div>
 
@@ -257,72 +326,69 @@ $$\text{Anion Gap (AG)} = [Na^+] - \left( [Cl^-] + [HCO_3^-] \right) \quad \text
 
 <div class="flowchart-card">
   <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: TOAN CHUYỂN HÓA (HCO3- &lt; 22 mmol/L)</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+    <div class="flowchart-title"><i class="fa-solid fa-triangle-exclamation" style="color: var(--color-primary, #0284c7);"></i> LƯU ĐỒ PHÂN BIỆT TOAN CHUYỂN HÓA TĂNG ANION GAP (MUDPILES) VS ANION GAP BÌNH THƯỜNG (HARDASS)</div>
+    <span class="badge badge-red">Pure Orthogonal SVG • Clinical Decision Matrix</span>
   </div>
   <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 464" width="880" height="464" xmlns="http://www.w3.org/2000/svg">
+    <svg class="flowchart-svg" viewBox="0 0 920 370" width="920" height="370" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
-        </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
-        </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="agRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+        <marker id="agGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
         </marker>
       </defs>
 
-      {/* Single Node: TOAN CHUYỂN HÓA (HCO3- &lt; 22 mm */}
-      <rect x="245" y="20" width="390" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">TOAN CHUYỂN HÓA (HCO3- &lt; 22 mmol/L)</text>
-      {/* Bifurcation Path */}
-      <path d="M 440 66 L 440 80 L 235 80 L 235 94" fill="none" stroke="var(--red, #ef4444)" stroke-width="1.8" marker-end="url(#arrRed)"/>
-      <path d="M 440 80 L 645 80 L 645 94" fill="none" stroke="var(--color-success, #10b981)" stroke-width="1.8" marker-end="url(#arrGreen)"/>
-      {/* Left Column: TĂNG KHOẢNG TRỐNG ANION (AG &gt;  */}
-      <rect x="40" y="94" width="390" height="332" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.5"/>
-      <text x="235" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">TĂNG KHOẢNG TRỐNG ANION (AG &gt; 12</text>
-      <text x="235" y="134" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">mmol/L)</text>
-      <line x1="60" y1="148" x2="410" y2="148" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="60" y="164" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• (Có sự xuất hiện của Acid cố định</text>
-      <text x="60" y="182" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  không đo được):</text>
-      <text x="60" y="200" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• M - Methanol</text>
-      <text x="60" y="218" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• U - Uremia (Suy thận cấp/mạn tích tụ</text>
-      <text x="60" y="236" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  phosphat/sulfa</text>
-      <text x="60" y="254" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• D - DKA (Toan Ceton Đái tháo đường,</text>
-      <text x="60" y="272" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  Nhịn đói, Nghiện rượu)</text>
-      <text x="60" y="290" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• P - Propylene Glycol</text>
-      <text x="60" y="308" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• I - Isoniazid / Iron</text>
-      <text x="60" y="326" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• L - Lactic Acidosis (Sốc nhiễm khuẩn,</text>
-      <text x="60" y="344" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  Thiếu oxy mô, Ngừn</text>
-      <text x="60" y="362" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• E - Ethylene Glycol (Ngộ độc dung dịch</text>
-      <text x="60" y="380" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  ch</text>
-      <text x="60" y="398" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• S - Salicylates (Ngộ đ</text>
-      {/* Right Column: ANION GAP BÌNH THƯỜNG (AG = 8- */}
-      <rect x="450" y="94" width="390" height="332" rx="10" fill="rgba(16, 185, 129, 0.08)" stroke="var(--color-success, #10b981)" stroke-width="1.5"/>
-      <text x="645" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-success, #10b981)">ANION GAP BÌNH THƯỜNG (AG = 8-12 /</text>
-      <text x="645" y="134" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-success, #10b981)">TĂNG Cl- MÁU)</text>
-      <line x1="470" y1="148" x2="820" y2="148" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="470" y="164" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• (Mất HCO3- được bù trừ hoàn toàn bằng</text>
-      <text x="470" y="182" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  ion Cl-):</text>
-      <text x="470" y="200" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• H - Hyperalimentation (Nuôi dưỡng tĩnh</text>
-      <text x="470" y="218" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  mạch)</text>
-      <text x="470" y="236" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• t) • A - Acetazolamide (Thuốc ức chế</text>
-      <text x="470" y="254" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  men CA)</text>
-      <text x="470" y="272" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• R - Renal Tubular Acidosis (Toan ống</text>
-      <text x="470" y="290" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  thận RTA Type 1, 2, 4)</text>
-      <text x="470" y="308" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• D - Diarrhea (TIÊU CHẢY MẤT NHIỀU</text>
-      <text x="470" y="326" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  HCO3- QUA PHÂN)</text>
-      <text x="470" y="344" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• A - Addison disease (Suy thượng thận)</text>
-      <text x="470" y="362" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• g tim) • S - Saline Infusion (TRUYỀN</text>
-      <text x="470" y="380" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  QUÁ NHIỀU NaCl 0.9%)</text>
-      <text x="470" y="398" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ống đông) • S - Spironolactone</text>
-      <text x="470" y="416" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ộc Aspirin giai đoạn muộn)</text>
+      {/* Top Banner: Toan chuyển hóa */}
+      <rect x="235" y="16" width="450" height="42" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="#0284c7" stroke-width="1.8"/>
+      <text x="460" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12.5" fill="#0284c7">TOAN CHUYỂN HÓA (METABOLIC ACIDOSIS): [HCO3-] &lt; 22 mmol/L</text>
+
+      {/* Bifurcation */}
+      <path d="M 460 58 L 460 76 L 245 76 L 245 94" fill="none" stroke="#dc2626" stroke-width="2" marker-end="url(#agRed)"/>
+      <path d="M 460 76 L 675 76 L 675 94" fill="none" stroke="#059669" stroke-width="2" marker-end="url(#agGreen)"/>
+
+      {/* Left Column: High AG (MUDPILES) */}
+      <g transform="translate(40, 94)">
+        <rect x="0" y="0" width="410" height="250" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="#dc2626" stroke-width="1.8"/>
+        <rect x="0" y="0" width="410" height="34" rx="10" fill="#dc2626" opacity="0.15"/>
+        <text x="205" y="22" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#dc2626">TĂNG ANION GAP (AG &gt; 12 mmol/L) • MUDPILES</text>
+
+        <text x="20" y="58" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• <tspan font-weight="700" fill="#dc2626">M</tspan> - Methanol (Ngộ độc rượu cồn công nghiệp)</text>
+        <text x="20" y="78" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• <tspan font-weight="700" fill="#dc2626">U</tspan> - Uremia (Hội chứng urê huyết cao / Suy thận)</text>
+        <text x="20" y="98" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• <tspan font-weight="700" fill="#dc2626">D</tspan> - DKA (Toan Ceton Đái tháo đường, Đói, Nghiện rượu)</text>
+        <text x="20" y="118" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• <tspan font-weight="700" fill="#dc2626">P</tspan> - Propylene Glycol (Dung môi tiêm tĩnh mạch)</text>
+        <text x="20" y="138" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• <tspan font-weight="700" fill="#dc2626">I</tspan> - Isoniazid (Thuốc lao) / Sắt (Iron toxicity)</text>
+        <text x="20" y="158" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• <tspan font-weight="700" fill="#dc2626">L</tspan> - Lactic Acidosis (Sốc nhiễm khuẩn, Thiếu oxy mô, Ngừng tim)</text>
+        <text x="20" y="178" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• <tspan font-weight="700" fill="#dc2626">E</tspan> - Ethylene Glycol (Chất chống đông làm mát)</text>
+        <text x="20" y="198" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• <tspan font-weight="700" fill="#dc2626">S</tspan> - Salicylates (Ngộ độc Aspirin liều cao)</text>
+
+        <rect x="15" y="212" width="380" height="26" rx="6" fill="#dc2626" opacity="0.1"/>
+        <text x="205" y="229" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10.5" fill="#dc2626">Cơ chế: Tích tụ các gốc Anion acid không đo được</text>
+      </g>
+
+      {/* Right Column: Normal AG (HARDASS) */}
+      <g transform="translate(470, 94)">
+        <rect x="0" y="0" width="410" height="250" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="#059669" stroke-width="1.8"/>
+        <rect x="0" y="0" width="410" height="34" rx="10" fill="#059669" opacity="0.15"/>
+        <text x="205" y="22" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#059669">ANION GAP BÌNH THƯỜNG (8 - 12 mmol/L) • HARDASS</text>
+
+        <text x="20" y="58" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• <tspan font-weight="700" fill="#059669">H</tspan> - Hyperalimentation (Nuôi dưỡng tĩnh mạch giàu Clo)</text>
+        <text x="20" y="78" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• <tspan font-weight="700" fill="#059669">A</tspan> - Acetazolamide (Ức chế men CA gây mất HCO3- qua tiểu)</text>
+        <text x="20" y="98" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• <tspan font-weight="700" fill="#059669">R</tspan> - Renal Tubular Acidosis (Toan ống thận RTA Type 1, 2, 4)</text>
+        <text x="20" y="118" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• <tspan font-weight="700" fill="#059669">D</tspan> - Diarrhea (TIÊU CHẢY MẤT NHIỀU HCO3- QUA PHÂN)</text>
+        <text x="20" y="138" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• <tspan font-weight="700" fill="#059669">A</tspan> - Addison disease (Suy thượng thận thiếu Aldosterone)</text>
+        <text x="20" y="158" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• <tspan font-weight="700" fill="#059669">S</tspan> - Saline Infusion (TRUYỀN QUÁ NHIỀU NaCl 0.9%)</text>
+        <text x="20" y="178" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• <tspan font-weight="700" fill="#059669">S</tspan> - Spironolactone (Thuốc lợi tiểu kháng Aldosterone)</text>
+
+        <rect x="15" y="212" width="380" height="26" rx="6" fill="#059669" opacity="0.1"/>
+        <text x="205" y="229" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10.5" fill="#059669">Cơ chế: Mất HCO3- được bù trừ hoàn toàn bằng tăng Clo máu</text>
+      </g>
     </svg>
+  </div>
+  <div class="flowchart-editorial-legend">
+    <div class="legend-item"><span class="legend-dot" style="background:#dc2626;"></span><span>Tăng Anion Gap: MUDPILES (Có acid nội/ngoại sinh lạ)</span></div>
+    <div class="legend-item"><span class="legend-dot" style="background:#059669;"></span><span>Anion Gap bình thường: HARDASS (Tăng Clo máu bù trừ mất HCO3-)</span></div>
   </div>
 </div>
 

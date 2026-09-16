@@ -51,24 +51,29 @@ sections:
 
 <PhysioQuickNav />
 
+<div style="display: flex; gap: 0.5rem; margin-bottom: 1rem; align-items: center; flex-wrap: wrap;">
+  <span class="module-badge badge-physio"><i class="fa-solid fa-bolt"></i> Sinh Lý Học • Part 2</span>
+  <span class="module-badge" style="border-color: rgba(14, 165, 233, 0.3); background: rgba(14, 165, 233, 0.1); color: var(--dsp-sky, #0284c7);"><i class="fa-solid fa-eye"></i> Sinh Lý Các Giác Quan</span>
+</div>
+
 {/* DẢI CHỈ SỐ NHANH (QUICK STATS STRIP) */}
-<section class="stats-strip">
+<section class="stats-strip theme-physio">
   <div class="stats-grid">
     <div class="stat-card">
-      <div class="stat-val blue">PHYS-NERV-08</div>
-      <div class="stat-lbl">Mã chuyên đề • Sinh Lý Hệ Thần Kinh & Cơ</div>
+      <div class="stat-val blue">120M Que vs 6M Nón</div>
+      <div class="stat-lbl">Nhìn tối (Rhodopsin) vs Thị lực sắc nét ban ngày &amp; Màu sắc tại Hoàng điểm</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val green">Nội Môi Ổn Định</div>
-      <div class="stat-lbl">Cân bằng gradient điện hóa & Áp suất thẩm thấu</div>
+      <div class="stat-val amber">Bán Manh 2 Thái Dương</div>
+      <div class="stat-lbl">U tuyến yên chèn ép Giao thoa thị giác (Optic chiasm) cắt đứt sợi võng mạc mũi</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val amber">Feedback Loop</div>
-      <div class="stat-lbl">Vòng điều hòa phản hồi thần kinh - thể dịch</div>
+      <div class="stat-val green">Rinne &amp; Weber (512 Hz)</div>
+      <div class="stat-lbl">Điếc dẫn truyền (BC ≥ AC, lệch tai bệnh) vs Điếc thần kinh (AC &gt; BC, lệch tai lành)</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val purple">Dược Lý EBM</div>
-      <div class="stat-lbl">Ứng dụng lâm sàng chuẩn Guyton 14th & Ganong 26th</div>
+      <div class="stat-val purple">BPPV &amp; Nghiệm pháp Epley</div>
+      <div class="stat-lbl">Sỏi tai rơi ống bán khuyên sau • Chóng mặt &lt; 1 phút, Dix-Hallpike (+), Epley trị khỏi</div>
     </div>
   </div>
 </section>
@@ -82,40 +87,88 @@ Võng mạc (*Retina*) chứa hai loại tế bào cảm thụ ánh sáng (Photo
 - **Tế bào Nón (Cones - ~6 triệu tế bào)**: Tập trung mật độ tối đa tại **Hoàng điểm (Hố trung tâm Fovea Centralis)**; chịu trách nhiệm cho **thị lực sắc nét ban ngày (Photopic Vision)** và **nhận biết màu sắc** qua 3 loại sắc tố Photopsin: Đỏ (L-cones 560nm), Xanh lá (M-cones 530nm), Xanh dương (S-cones 420nm).
 
 
-<div class="flowchart-card">
-  <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: 1. Sinh Lý Thị Giác &amp; Quang Hóa Học</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+<div class="flowchart-editorial-card">
+  <div class="flowchart-editorial-header">
+    <div class="flowchart-editorial-title">
+      <i class="fa-solid fa-eye"></i>
+      <span>CHU TRÌNH CHUYỂN ĐỔI QUANG HÓA HỌC THỊ GIÁC: TRONG TỐI VS KHI CÓ ÁNH SÁNG</span>
+    </div>
+    <span class="module-badge badge-physio">Phototransduction</span>
   </div>
-  <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 244" width="880" height="244" xmlns="http://www.w3.org/2000/svg">
+  <div class="flowchart-editorial-viewport">
+    <svg viewBox="0 0 920 420" width="100%" height="auto" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        <marker id="arrDark" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)"/>
         </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
-        </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        <marker id="arrLight" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--amber, #d97706)"/>
         </marker>
       </defs>
 
-      {/* Single Node: ÁNH SÁNG CHIẾU VÀO VÕNG MẠC: */}
-      <rect x="160.75" y="20" width="558.5" height="186" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">ÁNH SÁNG CHIẾU VÀO VÕNG MẠC:</text>
-      <text x="184.75" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• 11-cis-retinal ──► All-trans-retinal (Tách khỏi Opsin)</text>
-      <text x="184.75" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Kích hoạt Protein G (Transducin) ──► Kích hoạt</text>
-      <text x="184.75" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  Phosphodiesterase (PDE)</text>
-      <text x="184.75" y="118" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Phân hủy cGMP thành 5&apos;-GMP ──► KÊNH NATRI ĐÓNG LẠI</text>
-      <text x="184.75" y="136" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Tế bào que bị ƯU PHÂN CỰC (Hyperpolarization) ──► GIẢM giải</text>
-      <text x="184.75" y="154" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  phóng Glutamate</text>
-      <text x="184.75" y="172" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Khử ức chế Tế bào lưỡng cực (Bipolar Cells) ──► Phát xung</text>
-      <text x="184.75" y="190" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  điện thế qua Tế bào hạch đến Não</text>
+      {/* LEFT COLUMN: IN THE DARK (TRONG TỐI) */}
+      <rect x="30" y="16" width="415" height="385" rx="12" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+      <rect x="30" y="16" width="415" height="34" rx="12" fill="rgba(2, 132, 199, 0.12)"/>
+      <text x="237" y="38" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" fill="var(--color-primary, #0284c7)">TRẠNG THÁI TỐI (DARK CURRENT — V_m ≈ -40 mV)</text>
+
+      <rect x="50" y="62" width="375" height="52" rx="8" fill="rgba(2, 132, 199, 0.06)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.2"/>
+      <text x="65" y="80" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="var(--color-text, #0f172a)">• Rhodopsin ở trạng thái bất hoạt (11-cis-retinal + Opsin)</text>
+      <text x="65" y="98" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="600" fill="var(--color-text-muted, #64748b)">Nồng độ cGMP nội bào duy trì ở mức rất cao</text>
+
+      <line x1="237" y1="114" x2="237" y2="134" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arrDark)"/>
+
+      <rect x="50" y="136" width="375" height="60" rx="8" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="1.5"/>
+      <text x="237" y="156" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="var(--color-primary, #0284c7)">KÊNH NATRI MỞ TOANG (DÒNG ĐIỆN TỐI)</text>
+      <text x="237" y="174" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text, #0f172a)">cGMP gắn mở kênh Na⁺/Ca²⁺ ➔ Dòng ion dương liên tục vào màng</text>
+      <text x="237" y="188" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="700" fill="var(--color-primary, #0284c7)">Tế bào que bị KHỬ CỰC một phần (V_m ≈ -40 mV)</text>
+
+      <line x1="237" y1="196" x2="237" y2="216" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arrDark)"/>
+
+      <rect x="50" y="218" width="375" height="60" rx="8" fill="rgba(2, 132, 199, 0.06)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.2"/>
+      <text x="65" y="238" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="var(--color-text, #0f172a)">• Giải phóng liên tục chất ức chế GLUTAMATE</text>
+      <text x="65" y="256" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text-muted, #64748b)">Glutamate khuếch tán vào khe synapse với tế bào lưỡng cực</text>
+
+      <line x1="237" y1="278" x2="237" y2="298" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arrDark)"/>
+
+      <rect x="50" y="300" width="375" height="85" rx="8" fill="rgba(239, 68, 68, 0.10)" stroke="var(--color-danger, #ef4444)" stroke-width="1.2"/>
+      <text x="237" y="320" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="var(--color-danger, #ef4444)">ỨC CHẾ TẾ BÀO LƯỠNG CỰC (BIPOLAR CELLS)</text>
+      <text x="65" y="342" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="var(--color-text, #0f172a)">• Tế bào lưỡng cực ON bị ức chế, không phát xung</text>
+      <text x="65" y="360" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text-muted, #64748b)">• Tế bào hạch im lặng ➔ NÃO BỘ NHẬN BIẾT BÓNG TỐI</text>
+
+
+      {/* RIGHT COLUMN: IN THE LIGHT (KHI CÓ ÁNH SÁNG) */}
+      <rect x="475" y="16" width="415" height="385" rx="12" fill="var(--color-surface, #ffffff)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
+      <rect x="475" y="16" width="415" height="34" rx="12" fill="rgba(245, 158, 11, 0.12)"/>
+      <text x="682" y="38" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" fill="var(--amber, #d97706)">KHI CÓ ÁNH SÁNG (PHOTOTRANSDUCTION — V_m ≈ -70 mV)</text>
+
+      <rect x="495" y="62" width="375" height="52" rx="8" fill="rgba(245, 158, 11, 0.06)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.2"/>
+      <text x="510" y="80" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="var(--color-text, #0f172a)">• Photon chiếu vào Rhodopsin: 11-cis ➔ All-trans-retinal</text>
+      <text x="510" y="98" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="700" fill="var(--amber, #d97706)">Opsin hoạt hóa Protein G Transducin (G_t)</text>
+
+      <line x1="682" y1="114" x2="682" y2="134" stroke="var(--amber, #d97706)" stroke-width="2" marker-end="url(#arrLight)"/>
+
+      <rect x="495" y="136" width="375" height="60" rx="8" fill="var(--color-surface, #ffffff)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
+      <text x="682" y="156" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="var(--amber, #d97706)">HOẠT HÓA PHOSPHODIESTERASE (PDE) ➔ KÊNH Na⁺ ĐÓNG</text>
+      <text x="682" y="174" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text, #0f172a)">PDE phân hủy cGMP thành 5'-GMP ➔ Nồng độ cGMP sụt giảm</text>
+      <text x="682" y="188" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="700" fill="var(--color-danger, #ef4444)">TẾ BÀO QUE BỊ ƯU PHÂN CỰC (V_m hạ xuống -70 mV)</text>
+
+      <line x1="682" y1="196" x2="682" y2="216" stroke="var(--amber, #d97706)" stroke-width="2" marker-end="url(#arrLight)"/>
+
+      <rect x="495" y="218" width="375" height="60" rx="8" fill="rgba(245, 158, 11, 0.06)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.2"/>
+      <text x="510" y="238" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="var(--color-success, #10b981)">• GIẢM / NGỪNG TIẾT GLUTAMATE</text>
+      <text x="510" y="256" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text, #0f172a)">Không còn tín hiệu ức chế liên tục lên tế bào lưỡng cực</text>
+
+      <line x1="682" y1="278" x2="682" y2="298" stroke="var(--amber, #d97706)" stroke-width="2" marker-end="url(#arrLight)"/>
+
+      <rect x="495" y="300" width="375" height="85" rx="8" fill="rgba(16, 185, 129, 0.12)" stroke="var(--color-success, #10b981)" stroke-width="1.2"/>
+      <text x="682" y="320" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="var(--color-success, #10b981)">KHỬ ỨC CHẾ TẾ BÀO LƯỠNG CỰC ➔ PHÁT XUNG LÊN NÃO</text>
+      <text x="510" y="342" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="var(--color-text, #0f172a)">• Tế bào lưỡng cực ON được giải phóng, khử cực phát xung</text>
+      <text x="510" y="360" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text-muted, #64748b)">• Tế bào hạch truyền điện thế qua Dây II về Vỏ não Thùy chẩm V1</text>
     </svg>
+  </div>
+  <div class="flowchart-editorial-legend">
+    <div class="legend-chip"><span class="legend-dot" style="background: var(--color-primary, #0284c7);"></span> Trạng thái Tối (Khử cực -40 mV, giải phóng liên tục Glutamate ức chế)</div>
+    <div class="legend-chip"><span class="legend-dot" style="background: var(--amber, #d97706);"></span> Khi có Ánh Sáng (Ưu phân cực -70 mV, ngừng tiết Glutamate ➔ Kích thích lên não)</div>
   </div>
 </div>
 

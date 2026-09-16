@@ -51,24 +51,29 @@ sections:
 
 <PhysioQuickNav />
 
+<div style="display: flex; gap: 0.5rem; margin-bottom: 1rem; align-items: center; flex-wrap: wrap;">
+  <span class="module-badge badge-physio"><i class="fa-solid fa-bolt"></i> Sinh Lý Học • Part 2</span>
+  <span class="module-badge" style="border-color: rgba(99, 102, 241, 0.3); background: rgba(99, 102, 241, 0.1); color: var(--dsp-indigo, #6366f1);"><i class="fa-solid fa-diagram-project"></i> Tủy Gai &amp; Phản Xạ Tủy</span>
+</div>
+
 {/* DẢI CHỈ SỐ NHANH (QUICK STATS STRIP) */}
-<section class="stats-strip">
+<section class="stats-strip theme-physio">
   <div class="stats-grid">
     <div class="stat-card">
-      <div class="stat-val blue">PHYS-NERV-04</div>
-      <div class="stat-lbl">Mã chuyên đề • Sinh Lý Hệ Thần Kinh & Cơ</div>
+      <div class="stat-val blue">DCML vs Spinothalamic</div>
+      <div class="stat-lbl">Bắt chéo tại Hành não (Bản thể/Rung) vs Bắt chéo tại Tủy (Đau/Nhiệt)</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val green">Nội Môi Ổn Định</div>
-      <div class="stat-lbl">Cân bằng gradient điện hóa & Áp suất thẩm thấu</div>
+      <div class="stat-val amber">Thoi cơ vs Gân Golgi</div>
+      <div class="stat-lbl">Đo độ dài cơ (Sợi Ia, đơn synapse) vs Đo sức căng gân (Sợi Ib, đa synapse)</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val amber">Feedback Loop</div>
-      <div class="stat-lbl">Vòng điều hòa phản hồi thần kinh - thể dịch</div>
+      <div class="stat-val red">UMN vs LMN</div>
+      <div class="stat-lbl">Liệt cứng, Babinski (+) vs Liệt mềm, teo cơ rung giật bó cơ, Babinski (-)</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val purple">Dược Lý EBM</div>
-      <div class="stat-lbl">Ứng dụng lâm sàng chuẩn Guyton 14th & Ganong 26th</div>
+      <div class="stat-val green">Hội chứng Brown-Séquard</div>
+      <div class="stat-lbl">Cùng bên liệt UMN + mất bản thể; Đối bên mất cảm giác đau &amp; nhiệt độ</div>
     </div>
   </div>
 </section>
@@ -98,38 +103,90 @@ Chia thành 3 cột (thừng): **Cột sau (Dorsal column)**, **Cột bên (Late
 | **Bó Gai - Tiểu Não (Spinocerebellar Tracts)** | Không bắt chéo hoặc bắt chéo 2 lần | • Cảm giác bản thể sâu vô thức phục vụ điều hòa thăng bằng của tiểu não |
 
 
-<div class="flowchart-card">
-  <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: Thụ thể ngoại vi</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+<div class="flowchart-editorial-card">
+  <div class="flowchart-editorial-header">
+    <div class="flowchart-editorial-title">
+      <i class="fa-solid fa-arrow-up"></i>
+      <span>ĐỐI CHIẾU ĐƯỜNG CẢM GIÁC LÊN: CỘT SAU (DCML) VS GAI - ĐỒI THỊ (SPINOTHALAMIC)</span>
+    </div>
+    <span class="module-badge badge-physio">Sensory Pathways</span>
   </div>
-  <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 208" width="880" height="208" xmlns="http://www.w3.org/2000/svg">
+  <div class="flowchart-editorial-viewport">
+    <svg viewBox="0 0 920 370" width="100%" height="auto" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        <marker id="arrDcml" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)"/>
         </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
-        </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        <marker id="arrAls" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-danger, #ef4444)"/>
         </marker>
       </defs>
 
-      {/* Single Node: CẢM GIÁC BẢN THỂ / RUNG / TINH */}
-      <rect x="156.5" y="20" width="567" height="150" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">CẢM GIÁC BẢN THỂ / RUNG / TINH VI (DCML):</text>
-      <text x="180.5" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• [Thụ thể ngoại vi] ──► [Hạch rễ sau] ──► [Cột Sau Tủy Sống</text>
-      <text x="180.5" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  (Cùng bên)] ──► [Hành Não: BẮT CHÉO] ──► [Đồi thị] ──► [Vỏ</text>
-      <text x="180.5" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  não S1]</text>
-      <text x="180.5" y="118" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• CẢM GIÁC ĐAU &amp; NHIỆT ĐỘ (SPINOTHALAMIC):</text>
-      <text x="180.5" y="136" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• [Thụ thể Nociceptor] ──► [Sừng sau tủy] ──► [BẮT CHÉO NGAY</text>
-      <text x="180.5" y="154" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  TẠI TỦY] ──► [Cột Bên Đối Bên] ──► [Đồi thị] ──► [Vỏ não S1]</text>
+      {/* LEFT COLUMN: DCML PATHWAY */}
+      <rect x="30" y="16" width="415" height="330" rx="12" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+      <rect x="30" y="16" width="415" height="34" rx="12" fill="rgba(2, 132, 199, 0.12)"/>
+      <text x="237" y="38" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" fill="var(--color-primary, #0284c7)">HỆ CỘT SAU - LIỀM TRONG (DCML)</text>
+
+      {/* Level 1: Receptors & Cord */}
+      <rect x="50" y="60" width="375" height="48" rx="8" fill="rgba(2, 132, 199, 0.06)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.2"/>
+      <text x="65" y="78" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="var(--color-text, #0f172a)">• Bản thể sâu, rung âm thoa, phân biệt 2 điểm tinh vi</text>
+      <text x="65" y="94" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="600" fill="var(--color-text-muted, #64748b)">Sợi Aβ, Ia, Ib chạy thẳng lên CỘT SAU CÙNG BÊN (Thon/Chêm)</text>
+
+      <line x1="237" y1="108" x2="237" y2="128" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arrDcml)"/>
+
+      {/* Level 2: Decussation at Medulla */}
+      <rect x="50" y="130" width="375" height="52" rx="8" fill="var(--color-surface, #ffffff)" stroke="var(--amber, #f59e0b)" stroke-width="1.6"/>
+      <text x="237" y="148" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="var(--amber, #d97706)">BẮT CHÉO TẠI HÀNH NÃO (Liềm Trong)</text>
+      <text x="237" y="166" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text, #0f172a)">Tiếp hợp Nhân Thon / Nhân Chêm ➔ Bắt chéo sang đối bên</text>
+
+      <line x1="237" y1="182" x2="237" y2="202" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arrDcml)"/>
+
+      {/* Level 3: Thalamus & Cortex */}
+      <rect x="50" y="204" width="375" height="52" rx="8" fill="rgba(2, 132, 199, 0.06)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.2"/>
+      <text x="65" y="222" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="var(--color-text, #0f172a)">• Đồi thị (Nhân VPL) ➔ Vỏ não cảm giác đỉnh S1</text>
+      <text x="65" y="240" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text-muted, #64748b)">Định khu chính xác bản đồ cảm giác Homunculus</text>
+
+      {/* Clinical Box */}
+      <rect x="50" y="268" width="375" height="66" rx="8" fill="rgba(2, 132, 199, 0.10)" stroke="var(--color-primary, #0284c7)" stroke-width="1.2"/>
+      <text x="237" y="286" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="800" fill="var(--color-primary, #0284c7)">Ý NGHĨA LÂM SÀNG BỆNH TỦY</text>
+      <text x="65" y="306" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="var(--color-text, #0f172a)">Tổn thương tủy 1 bên ➔ MẤT CẢM GIÁC CÙNG BÊN</text>
+      <text x="65" y="322" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="600" fill="var(--color-text-muted, #64748b)">(Mất cảm giác vị trí khớp, bước đi mất thăng bằng Romberg +)</text>
+
+
+      {/* RIGHT COLUMN: SPINOTHALAMIC PATHWAY */}
+      <rect x="475" y="16" width="415" height="330" rx="12" fill="var(--color-surface, #ffffff)" stroke="var(--color-danger, #ef4444)" stroke-width="1.8"/>
+      <rect x="475" y="16" width="415" height="34" rx="12" fill="rgba(239, 68, 68, 0.12)"/>
+      <text x="682" y="38" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" fill="var(--color-danger, #ef4444)">BÓ GAI - ĐỒI THỊ (SPINOTHALAMIC / ALS)</text>
+
+      {/* Level 1: Receptors & Cord */}
+      <rect x="495" y="60" width="375" height="48" rx="8" fill="rgba(239, 68, 68, 0.06)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.2"/>
+      <text x="510" y="78" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="var(--color-text, #0f172a)">• Cảm giác Đau (Pain) &amp; Nhiệt độ (Nóng / Lạnh)</text>
+      <text x="510" y="94" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="600" fill="var(--color-text-muted, #64748b)">Sợi Aδ và C vào sừng sau tủy sống (Tấm Rexed I, II)</text>
+
+      <line x1="682" y1="108" x2="682" y2="128" stroke="var(--color-danger, #ef4444)" stroke-width="2" marker-end="url(#arrAls)"/>
+
+      {/* Level 2: Decussation at Cord Level */}
+      <rect x="495" y="130" width="375" height="52" rx="8" fill="var(--color-surface, #ffffff)" stroke="var(--amber, #f59e0b)" stroke-width="1.6"/>
+      <text x="682" y="148" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="var(--amber, #d97706)">BẮT CHÉO NGAY TẠI TỦY SỐNG (Mép trắng trước)</text>
+      <text x="682" y="166" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text, #0f172a)">Bắt chéo cách 1-2 khoanh tủy ➔ Chạy lên CỘT BÊN ĐỐI BÊN</text>
+
+      <line x1="682" y1="182" x2="682" y2="202" stroke="var(--color-danger, #ef4444)" stroke-width="2" marker-end="url(#arrAls)"/>
+
+      {/* Level 3: Thalamus & Cortex */}
+      <rect x="495" y="204" width="375" height="52" rx="8" fill="rgba(239, 68, 68, 0.06)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.2"/>
+      <text x="510" y="222" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="var(--color-text, #0f172a)">• Đồi thị (Nhân VPL) ➔ Vỏ não cảm giác đỉnh S1</text>
+      <text x="510" y="240" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text-muted, #64748b)">Nhận diện vị trí đau và cường độ cảm giác nhiệt độ</text>
+
+      {/* Clinical Box */}
+      <rect x="495" y="268" width="375" height="66" rx="8" fill="rgba(239, 68, 68, 0.10)" stroke="var(--color-danger, #ef4444)" stroke-width="1.2"/>
+      <text x="682" y="286" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="800" fill="var(--color-danger, #ef4444)">Ý NGHĨA LÂM SÀNG BỆNH TỦY</text>
+      <text x="510" y="306" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="var(--color-text, #0f172a)">Tổn thương tủy 1 bên ➔ MẤT CẢM GIÁC ĐỐI BÊN</text>
+      <text x="510" y="322" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="600" fill="var(--color-text-muted, #64748b)">(Mất cảm giác đau nhiệt dưới mức tổn thương 1-2 khoanh tủy)</text>
     </svg>
+  </div>
+  <div class="flowchart-editorial-legend">
+    <div class="legend-chip"><span class="legend-dot" style="background: var(--color-primary, #0284c7);"></span> Cột Sau DCML (Bắt chéo tại Hành não ➔ Tổn thương mất cảm giác cùng bên)</div>
+    <div class="legend-chip"><span class="legend-dot" style="background: var(--color-danger, #ef4444);"></span> Bó Gai - Đồi Thị (Bắt chéo tại Tủy sống ➔ Tổn thương mất cảm giác đối bên)</div>
   </div>
 </div>
 

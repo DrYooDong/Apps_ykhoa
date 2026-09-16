@@ -55,24 +55,29 @@ sections:
 
 <PhysioQuickNav />
 
+<div style="display: flex; gap: 0.5rem; margin-bottom: 1rem; align-items: center; flex-wrap: wrap;">
+  <span class="module-badge badge-physio"><i class="fa-solid fa-heart-pulse"></i> Sinh Lý Học • Part 2</span>
+  <span class="module-badge" style="border-color: rgba(2, 132, 199, 0.3); background: rgba(2, 132, 199, 0.1); color: var(--color-primary, #0284c7);"><i class="fa-solid fa-dumbbell"></i> Sinh Lý Cơ Xương</span>
+</div>
+
 {/* DẢI CHỈ SỐ NHANH (QUICK STATS STRIP) */}
-<section class="stats-strip">
+<section class="stats-strip theme-physio">
   <div class="stats-grid">
     <div class="stat-card">
-      <div class="stat-val blue">PHYS-NERV-02</div>
-      <div class="stat-lbl">Mã chuyên đề • Sinh Lý Hệ Thần Kinh & Cơ</div>
+      <div class="stat-val blue">2.0 – 2.2 µm</div>
+      <div class="stat-lbl">Chiều dài nghỉ tối ưu Sarcomere (Phát sinh lực co cơ cực đại)</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val green">Nội Môi Ổn Định</div>
-      <div class="stat-lbl">Cân bằng gradient điện hóa & Áp suất thẩm thấu</div>
+      <div class="stat-val green">10⁻⁷ ➔ 10⁻⁵ M</div>
+      <div class="stat-lbl">Nồng độ [Ca²⁺] nội bào tăng vọt từ lưới SR kích hoạt Troponin C</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val amber">Feedback Loop</div>
-      <div class="stat-lbl">Vòng điều hòa phản hồi thần kinh - thể dịch</div>
+      <div class="stat-val amber">1 ATP / Cầu Nối</div>
+      <div class="stat-lbl">Tiêu hao cho mỗi nhát đập sinh lực Power Stroke kéo trượt 10 nm</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val purple">Dược Lý EBM</div>
-      <div class="stat-lbl">Ứng dụng lâm sàng chuẩn Guyton 14th & Ganong 26th</div>
+      <div class="stat-val rose">Type I vs IIa/IIx</div>
+      <div class="stat-lbl">Sợi đỏ bền bỉ (Oxy hóa) vs Sợi trắng phát lực bùng nổ (Đường phân)</div>
     </div>
   </div>
 </section>
@@ -83,51 +88,99 @@ sections:
 **Sarcomere (Đoạn cơ)** là đơn vị co cơ chức năng cơ bản của tế bào cơ xương, nằm giới hạn giữa hai **Đĩa Z (Z-discs)** liên tiếp (chiều dài khi nghỉ $\approx 2.0 – 2.2\text{ }\mu\text{m}$):
 
 
-<div class="flowchart-card">
-  <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: Đĩa Z</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+<div class="flowchart-editorial-card">
+  <div class="flowchart-editorial-header">
+    <div class="flowchart-editorial-title">
+      <i class="fa-solid fa-dna"></i>
+      <span>SƠ ĐỒ CẤU TRÚC SIÊU VI SARCOMERE &amp; CÁC BĂNG ĐĨA CO CƠ</span>
+    </div>
+    <div class="flowchart-editorial-badges">
+      <span class="flowchart-editorial-badge">Guyton 14th • Pure Vector</span>
+    </div>
   </div>
-  <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 174" width="880" height="174" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
-        </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
-        </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
-        </marker>
-      </defs>
+  <div class="flowchart-editorial-viewport">
+    <svg class="flowchart-editorial-svg" viewBox="0 0 920 280" width="920" height="280" xmlns="http://www.w3.org/2000/svg" font-family="'Plus Jakarta Sans', 'Inter', sans-serif">
+      {/* 1. Sarcomere Overall Bracket */}
+      <line x1="70" y1="25" x2="850" y2="25" stroke="#0284c7" stroke-width="1.8"/>
+      <line x1="70" y1="18" x2="70" y2="32" stroke="#0284c7" stroke-width="1.8"/>
+      <line x1="850" y1="18" x2="850" y2="32" stroke="#0284c7" stroke-width="1.8"/>
+      <rect x="360" y="14" width="200" height="22" rx="4" fill="#ffffff" stroke="#0284c7" stroke-width="1"/>
+      <text x="460" y="29" text-anchor="middle" font-size="11" font-weight="800" fill="#0284c7">SARCOMERE NGHỈ: 2.0 – 2.2 µm</text>
 
-      <rect x="30" y="20" width="250" height="116" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="155" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text, #0f172a)">Đĩa Z</text>
-      <line x1="45" y1="50" x2="265" y2="50" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="42" y="66" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• ─── Sợi Actin</text>
-      <text x="42" y="84" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• ══════════════</text>
-      <text x="42" y="102" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• ══════</text>
-      <text x="42" y="120" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• ◄── Băng I ──► ◄</text>
-      <rect x="315" y="20" width="250" height="116" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text, #0f172a)">Đường M</text>
-      <line x1="330" y1="50" x2="550" y2="50" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="327" y="66" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• ───►        │</text>
-      <text x="327" y="84" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• ════════════════════</text>
-      <text x="327" y="102" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• ════ Sợi Dày Myosin</text>
-      <text x="327" y="120" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• ────────── Băng A ────</text>
-      <text x="327" y="138" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• ◄── Vùng H ──►</text>
-      <rect x="600" y="20" width="250" height="116" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="725" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text, #0f172a)">Đĩa Z</text>
-      <line x1="615" y1="50" x2="835" y2="50" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="612" y="66" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• ◄─── Sợi Actin ─── │</text>
-      <text x="612" y="84" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• ═══════════════════ │</text>
-      <text x="612" y="102" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• ══════════          │</text>
-      <text x="612" y="120" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• ──────► ◄── Băng I ──► │</text>
+      {/* 2. Z-Discs (Left & Right) */}
+      <rect x="62" y="45" width="16" height="150" rx="4" fill="rgba(16, 185, 129, 0.15)" stroke="#059669" stroke-width="2"/>
+      <text x="70" y="212" text-anchor="middle" font-size="12" font-weight="800" fill="#059669">ĐĨA Z</text>
+      <text x="70" y="226" text-anchor="middle" font-size="9" font-weight="500" fill="#64748b">Actinin</text>
+
+      <rect x="842" y="45" width="16" height="150" rx="4" fill="rgba(16, 185, 129, 0.15)" stroke="#059669" stroke-width="2"/>
+      <text x="850" y="212" text-anchor="middle" font-size="12" font-weight="800" fill="#059669">ĐĨA Z</text>
+      <text x="850" y="226" text-anchor="middle" font-size="9" font-weight="500" fill="#64748b">Actinin</text>
+
+      {/* 3. M-Line (Center) */}
+      <line x1="460" y1="55" x2="460" y2="185" stroke="#ef4444" stroke-width="2" stroke-dasharray="4,4"/>
+      <text x="460" y="212" text-anchor="middle" font-size="12" font-weight="800" fill="#dc2626">ĐƯỜNG M</text>
+      <text x="460" y="226" text-anchor="middle" font-size="9" font-weight="500" fill="#64748b">Myomesin</text>
+
+      {/* 4. Thick Myosin Filaments (Center Stack) */}
+      <g fill="#d97706" stroke="#b45309" stroke-width="1.5">
+        <rect x="260" y="70" width="400" height="14" rx="4" fill="rgba(245, 158, 11, 0.2)"/>
+        <rect x="260" y="112" width="400" height="14" rx="4" fill="rgba(245, 158, 11, 0.2)"/>
+        <rect x="260" y="154" width="400" height="14" rx="4" fill="rgba(245, 158, 11, 0.2)"/>
+      </g>
+
+      {/* Cross-bridge heads protruding */}
+      <g fill="#d97706">
+        <circle cx="300" cy="65" r="4"/><circle cx="340" cy="65" r="4"/><circle cx="380" cy="65" r="4"/>
+        <circle cx="540" cy="65" r="4"/><circle cx="580" cy="65" r="4"/><circle cx="620" cy="65" r="4"/>
+        <circle cx="300" cy="175" r="4"/><circle cx="340" cy="175" r="4"/><circle cx="380" cy="175" r="4"/>
+        <circle cx="540" cy="175" r="4"/><circle cx="580" cy="175" r="4"/><circle cx="620" cy="175" r="4"/>
+      </g>
+
+      {/* 5. Thin Actin Filaments */}
+      {/* Left side extending from Z-disc */}
+      <g stroke="#059669" stroke-width="4" stroke-linecap="round">
+        <line x1="78" y1="60" x2="390" y2="60"/>
+        <line x1="78" y1="95" x2="390" y2="95"/>
+        <line x1="78" y1="140" x2="390" y2="140"/>
+        <line x1="78" y1="180" x2="390" y2="180"/>
+      </g>
+      {/* Right side extending from Z-disc */}
+      <g stroke="#059669" stroke-width="4" stroke-linecap="round">
+        <line x1="842" y1="60" x2="530" y2="60"/>
+        <line x1="842" y1="95" x2="530" y2="95"/>
+        <line x1="842" y1="140" x2="530" y2="140"/>
+        <line x1="842" y1="180" x2="530" y2="180"/>
+      </g>
+
+      {/* 6. Band Annotations under the structure */}
+      {/* A-Band (Full Myosin width) */}
+      <line x1="260" y1="245" x2="660" y2="245" stroke="#d97706" stroke-width="2"/>
+      <line x1="260" y1="240" x2="260" y2="250" stroke="#d97706" stroke-width="2"/>
+      <line x1="660" y1="240" x2="660" y2="250" stroke="#d97706" stroke-width="2"/>
+      <text x="460" y="260" text-anchor="middle" font-size="11" font-weight="800" fill="#d97706">BĂNG A (1.6 µm • Chiều Dài Bất Biến)</text>
+
+      {/* H-Zone (Only Myosin, no Actin overlap) */}
+      <line x1="390" y1="235" x2="530" y2="235" stroke="#ef4444" stroke-width="1.5"/>
+      <text x="460" y="247" text-anchor="middle" font-size="9" font-weight="700" fill="#dc2626">VÙNG H</text>
+
+      {/* I-Band Left (Actin only) */}
+      <line x1="70" y1="245" x2="260" y2="245" stroke="#059669" stroke-width="2"/>
+      <line x1="70" y1="240" x2="70" y2="250" stroke="#059669" stroke-width="2"/>
+      <line x1="260" y1="240" x2="260" y2="250" stroke="#059669" stroke-width="2"/>
+      <text x="165" y="260" text-anchor="middle" font-size="10" font-weight="800" fill="#059669">BĂNG I (Co ngắn lại)</text>
+
+      {/* I-Band Right (Actin only) */}
+      <line x1="660" y1="245" x2="850" y2="245" stroke="#059669" stroke-width="2"/>
+      <line x1="660" y1="240" x2="660" y2="250" stroke="#059669" stroke-width="2"/>
+      <line x1="850" y1="240" x2="850" y2="250" stroke="#059669" stroke-width="2"/>
+      <text x="755" y="260" text-anchor="middle" font-size="10" font-weight="800" fill="#059669">BĂNG I (Co ngắn lại)</text>
     </svg>
+  </div>
+  <div class="flowchart-editorial-legend">
+    <span class="flowchart-legend-item"><span class="legend-dot green"></span> Đĩa Z &amp; Sợi mỏng Actin (F-actin, Tropomyosin, Troponin)</span>
+    <span class="flowchart-legend-item"><span class="legend-dot amber"></span> Sợi dày Myosin &amp; Đầu cầu ngang (Cross-bridges)</span>
+    <span class="flowchart-legend-item"><span class="legend-dot blue"></span> Băng A: Chiều dài không đổi khi co cơ (1.6 µm)</span>
+    <span class="flowchart-legend-item"><span class="legend-dot red"></span> Vùng H &amp; Băng I: Rút ngắn hoặc biến mất khi co tối đa</span>
   </div>
 </div>
 
@@ -208,52 +261,80 @@ Co cơ xảy ra khi **các sợi mỏng Actin trượt sâu vào trung tâm băn
 - Băng I và Vùng H **ngắn lại hoặc biến mất hoàn toàn khi co tối đa**.
 
 
-<div class="flowchart-card">
-  <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: Trạng Thái Nghỉ / Nạp Năng Lượng</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+<div class="flowchart-editorial-card">
+  <div class="flowchart-editorial-header">
+    <div class="flowchart-editorial-title">
+      <i class="fa-solid fa-arrows-rotate"></i>
+      <span>CHU TRÌNH 5 GIAI ĐOẠN CỦA CẦU NỐI SỢI TRƯỢT (Cross-Bridge Cycling)</span>
+    </div>
+    <div class="flowchart-editorial-badges">
+      <span class="flowchart-editorial-badge">Guyton 14th • Editorial Vector</span>
+    </div>
   </div>
-  <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 456" width="880" height="456" xmlns="http://www.w3.org/2000/svg">
+  <div class="flowchart-editorial-viewport">
+    <svg class="flowchart-editorial-svg" viewBox="0 0 920 460" width="920" height="460" xmlns="http://www.w3.org/2000/svg" font-family="'Plus Jakarta Sans', 'Inter', sans-serif">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        <marker id="cb-arr-blue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7" />
         </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        <marker id="cb-arr-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669" />
         </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        <marker id="cb-arr-amber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706" />
         </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        <marker id="cb-arr-red" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626" />
         </marker>
       </defs>
 
-      {/* Single Node: 1. Trạng Thái Nghỉ / Nạp Năng  */}
-      <rect x="199.00000000000003" y="20" width="481.99999999999994" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">1. Trạng Thái Nghỉ / Nạp Năng Lượng</text>
-      <text x="223.00000000000003" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ▼ (Ca2+ gắn Troponin C ──► Lộ điểm gắn trên Actin)</text>
-      <line x1="440" y1="80" x2="440" y2="108" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: 2. Bắt Cầu Nối (Cross-Bridge F */}
-      <rect x="225" y="108" width="430" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="130" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">2. Bắt Cầu Nối (Cross-Bridge Formation)</text>
-      <text x="249" y="152" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ▼ (Giải phóng Pi rồi giải phóng ADP)</text>
-      <line x1="440" y1="168" x2="440" y2="196" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: 3. Nhát Đập Sinh Lực (Power St */}
-      <rect x="245" y="196" width="390" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="218" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">3. Nhát Đập Sinh Lực (Power Stroke)</text>
-      <text x="269" y="240" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ▼ (Phân tử ATP MỚI gắn vào đầu Myosin)</text>
-      <line x1="440" y1="256" x2="440" y2="284" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: 4. Tách Rời Cầu Nối (Detachmen */}
-      <rect x="194.75" y="284" width="490.5" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="306" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">4. Tách Rời Cầu Nối (Detachment)</text>
-      <text x="218.75" y="328" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ▼ (Enzyme Myosin ATPase thủy phân ATP ──► ADP + Pi)</text>
-      <line x1="440" y1="344" x2="440" y2="372" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: 5. Tái Nạp Góc 90° */}
-      <rect x="250" y="372" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="394" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">5. Tái Nạp Góc 90°</text>
+      {/* Step 1: Nghỉ / Nạp năng lượng */}
+      <rect x="230" y="15" width="460" height="66" rx="12" fill="rgba(2, 132, 199, 0.08)" stroke="#0284c7" stroke-width="2"/>
+      <text x="460" y="38" text-anchor="middle" font-size="13" font-weight="800" fill="#0284c7">GIAI ĐOẠN 1: TRẠNG THÁI NGHỈ NẠP THẾ NĂNG (GÓC 90°)</text>
+      <text x="460" y="56" text-anchor="middle" font-size="11" font-weight="500" fill="#475569">Đầu Myosin đã thủy phân ATP sẵn, nạp phức hợp ADP + Pi ở trạng thái căng nén thế năng</text>
+
+      <path d="M 460 81 L 460 105" fill="none" stroke="#059669" stroke-width="2" marker-end="url(#cb-arr-green)"/>
+      <rect x="360" y="86" width="200" height="20" rx="4" fill="#ffffff" stroke="#059669" stroke-width="0.8"/>
+      <text x="460" y="100" text-anchor="middle" font-size="9" font-weight="700" fill="#059669">Ca²⁺ gắn Troponin C ➔ Lộ điểm gắn</text>
+
+      {/* Step 2: Bắt cầu nối */}
+      <rect x="230" y="108" width="460" height="66" rx="12" fill="rgba(16, 185, 129, 0.08)" stroke="#059669" stroke-width="2"/>
+      <text x="460" y="131" text-anchor="middle" font-size="13" font-weight="800" fill="#059669">GIAI ĐOẠN 2: BẮT CẦU NỐI (CROSS-BRIDGE FORMATION)</text>
+      <text x="460" y="149" text-anchor="middle" font-size="11" font-weight="500" fill="#475569">Đầu Myosin liên kết ái lực cao với vị trí hoạt động bộc lộ trên chuỗi xoắn kép Actin F</text>
+
+      <path d="M 460 174 L 460 198" fill="none" stroke="#d97706" stroke-width="2" marker-end="url(#cb-arr-amber)"/>
+      <rect x="375" y="179" width="170" height="20" rx="4" fill="#ffffff" stroke="#d97706" stroke-width="0.8"/>
+      <text x="460" y="193" text-anchor="middle" font-size="9" font-weight="700" fill="#d97706">Giải phóng Pi ➔ Phát lực kéo</text>
+
+      {/* Step 3: Nhát đập sinh lực (Power Stroke) */}
+      <rect x="200" y="200" width="520" height="72" rx="12" fill="rgba(245, 158, 11, 0.09)" stroke="#d97706" stroke-width="2"/>
+      <text x="460" y="224" text-anchor="middle" font-size="13" font-weight="800" fill="#d97706">GIAI ĐOẠN 3: NHÁT ĐẬP SINH LỰC (POWER STROKE • BẺ GÓC 45°)</text>
+      <text x="460" y="242" text-anchor="middle" font-size="11" font-weight="600" fill="#334155">Đầu Myosin bẻ góc từ 90° sang 45°, kéo sợi Actin trượt 10 nm vào trung tâm Sarcomere</text>
+      <text x="460" y="258" text-anchor="middle" font-size="10" font-weight="700" fill="#dc2626">Giải phóng phân tử ADP khỏi đầu Myosin • Sarcomere co ngắn lại</text>
+
+      <path d="M 460 272 L 460 296" fill="none" stroke="#dc2626" stroke-width="2" marker-end="url(#cb-arr-red)"/>
+      <rect x="350" y="277" width="220" height="20" rx="4" fill="#ffffff" stroke="#dc2626" stroke-width="0.8"/>
+      <text x="460" y="291" text-anchor="middle" font-size="9" font-weight="700" fill="#dc2626">Phân tử ATP MỚI gắn vào đầu Myosin</text>
+
+      {/* Step 4: Tách rời cầu nối */}
+      <rect x="230" y="298" width="460" height="66" rx="12" fill="rgba(239, 68, 68, 0.08)" stroke="#dc2626" stroke-width="2"/>
+      <text x="460" y="321" text-anchor="middle" font-size="13" font-weight="800" fill="#dc2626">GIAI ĐOẠN 4: TÁCH RỜI CẦU NỐI (DETACHMENT)</text>
+      <text x="460" y="339" text-anchor="middle" font-size="11" font-weight="500" fill="#475569">ATP mới làm biến đổi không gian, giảm ái lực ➔ Đầu Myosin rời khỏi sợi Actin</text>
+      <text x="460" y="353" text-anchor="middle" font-size="10" font-weight="600" fill="#dc2626">Lưu ý lâm sàng: Thiếu ATP sẽ khóa cứng ở bước này gây Co Cứng Tử Thi (Rigor Mortis)</text>
+
+      <path d="M 460 364 L 460 388" fill="none" stroke="#0284c7" stroke-width="2" marker-end="url(#cb-arr-blue)"/>
+
+      {/* Step 5: Tái nạp năng lượng & Phục hồi góc 90 */}
+      <rect x="230" y="390" width="460" height="54" rx="12" fill="rgba(2, 132, 199, 0.08)" stroke="#0284c7" stroke-width="2"/>
+      <text x="460" y="413" text-anchor="middle" font-size="13" font-weight="800" fill="#0284c7">GIAI ĐOẠN 5: THỦY PHÂN ATP &amp; PHỤC HỒI GÓC 90°</text>
+      <text x="460" y="431" text-anchor="middle" font-size="11" font-weight="500" fill="#475569">Enzyme Myosin ATPase thủy phân ATP ➔ ADP + Pi, nạp lại thế năng tiếp tục chu kỳ mới</text>
     </svg>
+  </div>
+  <div class="flowchart-editorial-legend">
+    <span class="flowchart-legend-item"><span class="legend-dot blue"></span> 1. Nạp thế năng: Myosin-ADP-Pi góc 90°</span>
+    <span class="flowchart-legend-item"><span class="legend-dot green"></span> 2. Bắt cầu: Ca²⁺ bộc lộ điểm gắn</span>
+    <span class="flowchart-legend-item"><span class="legend-dot amber"></span> 3. Đập sinh lực: Trượt 10 nm, bẻ góc 45°</span>
+    <span class="flowchart-legend-item"><span class="legend-dot red"></span> 4. Tách rời: Cần ATP mới (chống Rigor Mortis)</span>
   </div>
 </div>
 

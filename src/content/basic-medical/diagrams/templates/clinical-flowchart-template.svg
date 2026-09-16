@@ -1,0 +1,182 @@
+<svg class="flowchart-editorial-svg" viewBox="0 0 960 620" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" font-family="'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif">
+  <defs>
+    <!-- Arrow Markers -->
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7" />
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669" />
+    </marker>
+    <marker id="arrow-amber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706" />
+    </marker>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626" />
+    </marker>
+    <marker id="arrow-muted" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#64748b" />
+    </marker>
+  </defs>
+
+  <!-- 1. ROOT NODE (Top Starting Condition) -->
+  <g class="flowchart-node-root">
+    <rect x="230" y="20" width="500" height="62" rx="14" fill="rgba(2, 132, 199, 0.08)" stroke="#0284c7" stroke-width="2" />
+    <text x="480" y="44" text-anchor="middle" font-size="14" font-weight="700" fill="#0284c7" letter-spacing="0.02em">
+      BỆNH NHÂN / TÌNH HUỐNG LÂM SÀNG BAN ĐẦU
+    </text>
+    <text x="480" y="64" text-anchor="middle" font-size="12" font-weight="500" fill="#64748b">
+      Sàng lọc bắt buộc &amp; Đánh giá phân tầng nguy cơ theo phác đồ EBM
+    </text>
+  </g>
+
+  <!-- Connector: Root -> Diamond -->
+  <path d="M 480 82 L 480 120" fill="none" stroke="#0284c7" stroke-width="2" marker-end="url(#arrow-blue)" />
+
+  <!-- 2. DECISION DIAMOND (Phân tầng câu hỏi) -->
+  <g class="flowchart-node-decision">
+    <!-- Diamond polygon centered at x:480, y:155 -->
+    <polygon points="480,120 680,155 480,190 280,155" fill="rgba(245, 158, 11, 0.1)" stroke="#d97706" stroke-width="2" />
+    <text x="480" y="150" text-anchor="middle" font-size="13" font-weight="700" fill="#d97706">
+      Phân Tầng Thang Điểm / Tiêu Chí Lâm Sàng?
+    </text>
+    <text x="480" y="168" text-anchor="middle" font-size="11" font-weight="500" fill="#64748b">
+      Đánh giá lâm sàng • Cận lâm sàng • Thang điểm định lượng
+    </text>
+  </g>
+
+  <!-- 3. ORTHOGONAL BRANCH CONNECTORS -->
+  <!-- Left Branch (Green - Low Risk) -->
+  <path d="M 280 155 L 160 155 L 160 238" fill="none" stroke="#059669" stroke-width="2" marker-end="url(#arrow-green)" />
+  <!-- Center Branch (Amber - Moderate Risk) -->
+  <path d="M 480 190 L 480 238" fill="none" stroke="#d97706" stroke-width="2" marker-end="url(#arrow-amber)" />
+  <!-- Right Branch (Red - High Risk) -->
+  <path d="M 680 155 L 800 155 L 800 238" fill="none" stroke="#dc2626" stroke-width="2" marker-end="url(#arrow-red)" />
+
+  <!-- 4. THREE-TIER OUTCOME CARDS -->
+  <!-- Tier 1: Low Risk / Robust (Green) -->
+  <g class="flowchart-node-tier1">
+    <rect x="40" y="240" width="240" height="74" rx="12" fill="rgba(16, 185, 129, 0.08)" stroke="#059669" stroke-width="2" />
+    <text x="160" y="266" text-anchor="middle" font-size="13" font-weight="700" fill="#059669">
+      MỨC ĐỘ 1: THỂ TRẠNG ỔN ĐỊNH
+    </text>
+    <text x="160" y="286" text-anchor="middle" font-size="11" font-weight="500" fill="#475569">
+      Tiên lượng thuận lợi, chưa có biến chứng
+    </text>
+    <text x="160" y="302" text-anchor="middle" font-size="10" font-weight="600" fill="#059669">
+      Theo dõi ngoại trú định kỳ mỗi 6–12 tháng
+    </text>
+  </g>
+
+  <!-- Tier 2: Moderate Risk / Warning (Amber) -->
+  <g class="flowchart-node-tier2">
+    <rect x="360" y="240" width="240" height="74" rx="12" fill="rgba(245, 158, 11, 0.08)" stroke="#d97706" stroke-width="2" />
+    <text x="480" y="266" text-anchor="middle" font-size="13" font-weight="700" fill="#d97706">
+      MỨC ĐỘ 2: NGUY CƠ TRUNG BÌNH
+    </text>
+    <text x="480" y="286" text-anchor="middle" font-size="11" font-weight="500" fill="#475569">
+      Cảnh báo tiến triển mất bù / Giảm dự trữ
+    </text>
+    <text x="480" y="302" text-anchor="middle" font-size="10" font-weight="600" fill="#d97706">
+      Tái khám &amp; Can thiệp mỗi 3–6 tháng
+    </text>
+  </g>
+
+  <!-- Tier 3: Severe Risk / Critical (Red) -->
+  <g class="flowchart-node-tier3">
+    <rect x="680" y="240" width="240" height="74" rx="12" fill="rgba(239, 68, 68, 0.08)" stroke="#dc2626" stroke-width="2" />
+    <text x="800" y="266" text-anchor="middle" font-size="13" font-weight="700" fill="#dc2626">
+      MỨC ĐỘ 3: SUY YẾU / NGUY KỊCH
+    </text>
+    <text x="800" y="286" text-anchor="middle" font-size="11" font-weight="500" fill="#475569">
+      Nguy cơ tử vong cao / Đợt cấp đe dọa tính mạng
+    </text>
+    <text x="800" y="302" text-anchor="middle" font-size="10" font-weight="600" fill="#dc2626">
+      Nhập viện khẩn hoặc theo dõi sát 8–12 tuần
+    </text>
+  </g>
+
+  <!-- Connectors: Tier 2 and Tier 3 converge down to Confirmatory Step -->
+  <path d="M 480 314 L 480 354" fill="none" stroke="#d97706" stroke-width="1.5" />
+  <path d="M 800 314 L 800 334 L 540 334 L 540 354" fill="none" stroke="#dc2626" stroke-width="1.5" />
+  <!-- Converged arrow to next step -->
+  <path d="M 480 354 L 480 366" fill="none" stroke="#0284c7" stroke-width="2" marker-end="url(#arrow-blue)" />
+
+  <!-- 5. INTERMEDIATE STEP / INVESTIGATION NODE -->
+  <g class="flowchart-node-step">
+    <rect x="240" y="368" width="480" height="54" rx="12" fill="rgba(2, 132, 199, 0.06)" stroke="#0284c7" stroke-width="2" />
+    <text x="480" y="391" text-anchor="middle" font-size="13" font-weight="700" fill="#0284c7">
+      Xác Chẩn &amp; Đánh Giá Bằng Cận Lâm Sàng Chuyên Sâu
+    </text>
+    <text x="480" y="409" text-anchor="middle" font-size="11" font-weight="500" fill="#64748b">
+      Chẩn đoán hình ảnh • Khí máu động mạch • Sinh hóa chuyên biệt
+    </text>
+  </g>
+
+  <!-- Downward distribution lines to 3 Action Pillars -->
+  <path d="M 480 422 L 480 442" fill="none" stroke="#0284c7" stroke-width="2" />
+  <path d="M 170 442 L 790 442" fill="none" stroke="#94a3b8" stroke-width="1.5" />
+  <path d="M 170 442 L 170 456" fill="none" stroke="#059669" stroke-width="1.5" marker-end="url(#arrow-green)" />
+  <path d="M 480 442 L 480 456" fill="none" stroke="#0284c7" stroke-width="1.5" marker-end="url(#arrow-blue)" />
+  <path d="M 790 442 L 790 456" fill="none" stroke="#d97706" stroke-width="1.5" marker-end="url(#arrow-amber)" />
+
+  <!-- 6. THREE ACTION PILLARS (Bottom Strategy Cards) -->
+  <!-- Pillar 1: Dinh Dưỡng / Nền Tảng (Green) -->
+  <g class="flowchart-pillar-1">
+    <rect x="40" y="458" width="260" height="130" rx="12" fill="rgba(16, 185, 129, 0.06)" stroke="#059669" stroke-width="2" />
+    <text x="170" y="482" text-anchor="middle" font-size="13" font-weight="700" fill="#059669">
+      Trục 1: Dinh Dưỡng &amp; Nền Tảng
+    </text>
+    <text x="60" y="506" font-size="11" font-weight="500" fill="#334155">
+      • Năng lượng: 30–35 kcal/kg/ngày
+    </text>
+    <text x="60" y="526" font-size="11" font-weight="700" fill="#dc2626">
+      • Protein: 1.2–1.5 g/kg (KHÔNG kiêng đạm)
+    </text>
+    <text x="60" y="546" font-size="11" font-weight="500" fill="#334155">
+      • Bữa phụ đêm (Late Evening Snack - LES)
+    </text>
+    <text x="60" y="566" font-size="11" font-weight="500" fill="#64748b">
+      • Hạn chế muối &lt; 2g Na/ngày nếu có phù
+    </text>
+  </g>
+
+  <!-- Pillar 2: Phác Đồ Can Thiệp / Vận Động (Blue) -->
+  <g class="flowchart-pillar-2">
+    <rect x="350" y="458" width="260" height="130" rx="12" fill="rgba(2, 132, 199, 0.06)" stroke="#0284c7" stroke-width="2" />
+    <text x="480" y="482" text-anchor="middle" font-size="13" font-weight="700" fill="#0284c7">
+      Trục 2: Tập Luyện &amp; Phục Hồi
+    </text>
+    <text x="370" y="506" font-size="11" font-weight="500" fill="#334155">
+      • Aerobic 150–300 phút/tuần mức vừa
+    </text>
+    <text x="370" y="526" font-size="11" font-weight="500" fill="#334155">
+      • Kháng lực 2–3 buổi/tuần (tạ nhẹ, dây chun)
+    </text>
+    <text x="370" y="546" font-size="11" font-weight="600" fill="#0284c7">
+      • Tập luyện an toàn khi hết cổ trướng nặng
+    </text>
+    <text x="370" y="566" font-size="11" font-weight="500" fill="#64748b">
+      • Đánh giá lại dung nạp gắng sức mỗi 4 tuần
+    </text>
+  </g>
+
+  <!-- Pillar 3: Vi Chất & Điều Trị Nội Khoa (Amber) -->
+  <g class="flowchart-pillar-3">
+    <rect x="660" y="458" width="260" height="130" rx="12" fill="rgba(245, 158, 11, 0.06)" stroke="#d97706" stroke-width="2" />
+    <text x="790" y="482" text-anchor="middle" font-size="13" font-weight="700" fill="#d97706">
+      Trục 3: Bù Vi Chất &amp; Nội Khoa
+    </text>
+    <text x="680" y="506" font-size="11" font-weight="500" fill="#334155">
+      • Kẽm nguyên tố 50 mg/ngày (chống teo cơ)
+    </text>
+    <text x="680" y="526" font-size="11" font-weight="500" fill="#334155">
+      • Vitamin D duy trì &gt; 30 ng/mL, B1 bổ sung
+    </text>
+    <text x="680" y="546" font-size="11" font-weight="500" fill="#334155">
+      • Xem xét BCAA phân nhánh nếu kém dung nạp
+    </text>
+    <text x="680" y="566" font-size="11" font-weight="500" fill="#64748b">
+      • Tối ưu điều trị nguyên nhân nền
+    </text>
+  </g>
+</svg>

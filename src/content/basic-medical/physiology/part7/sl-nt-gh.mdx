@@ -45,26 +45,33 @@ sections:
 
 # 🧬 SINH LÝ TUYẾN YÊN & HORMONE TĂNG TRƯỞNG (GH / SOMATOTROPIN)
 
+<div class="module-badge-group">
+  <span class="badge badge-system"><i class="fa-solid fa-dna"></i> Sinh Lý Hệ Nội Tiết & Sinh Sản</span>
+  <span class="badge badge-source"><i class="fa-solid fa-book-medical"></i> Guyton 14th Ch. 76 • Ganong 26th Ch. 18</span>
+  <span class="badge badge-module"><i class="fa-solid fa-brain"></i> Tuyến Yên &amp; Hormone Tăng Trưởng</span>
+  <span class="badge badge-ebm"><i class="fa-solid fa-shield-halved"></i> EBM 2026</span>
+</div>
+
 <PhysioQuickNav />
 
 {/* DẢI CHỈ SỐ NHANH (QUICK STATS STRIP) */}
-<section class="stats-strip">
+<section class="stats-strip theme-physio">
   <div class="stats-grid">
     <div class="stat-card">
-      <div class="stat-val blue">PHYS-ENDO-02</div>
-      <div class="stat-lbl">Mã chuyên đề • Sinh Lý Hệ Nội Tiết & Sinh Sản</div>
+      <div class="stat-val blue">Nhịp Xung Đêm</div>
+      <div class="stat-lbl">Tiết ngắt quãng • Đạt đỉnh cao nhất lúc ngủ sâu (N3 NREM)</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val green">Nội Môi Ổn Định</div>
-      <div class="stat-lbl">Cân bằng gradient điện hóa & Áp suất thẩm thấu</div>
+      <div class="stat-val green">IGF-1 (Somatomedin)</div>
+      <div class="stat-lbl">Gan tổng hợp • T1/2 ~ 20 giờ • Trung gian cốt hóa sụn</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val amber">Feedback Loop</div>
-      <div class="stat-lbl">Vòng điều hòa phản hồi thần kinh - thể dịch</div>
+      <div class="stat-val amber">Hiệu Ứng Diabetogenic</div>
+      <div class="stat-lbl">Tăng đường huyết • Kháng Insulin • Tăng ly giải mô mỡ</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val purple">Dược Lý EBM</div>
-      <div class="stat-lbl">Ứng dụng lâm sàng chuẩn Guyton 14th & Ganong 26th</div>
+      <div class="stat-val purple">Sụn Tăng Trưởng</div>
+      <div class="stat-lbl">Chưa đóng: Bệnh Khổng lồ • Đã đóng kín: Bệnh To đầu chi</div>
     </div>
   </div>
 </section>
@@ -76,68 +83,100 @@ Tuyến yên (*Pituitary Gland / Hypophysis*) nằm trong hố yên của xươn
 - **Tuyến Yên Trước (Adenohypophysis - 75% khối lượng)**: Nguồn gốc biểu mô từ túi Rathke vòm họng. Nhận tín hiệu điều khiển từ Hạ đồi qua **Hệ Mạch Cửa Tuyến Yên (Hypophyseal Portal System)**. Chứa 5 dòng tế bào tiết: Tế bào Somatotrope tiết **GH (50%)**, Corticotrope tiết **ACTH (20%)**, Thyrotrope tiết **TSH (5%)**, Gonadotrope tiết **FSH & LH (10%)**, Lactotrope tiết **Prolactin (15%)**.
 - **Tuyến Yên Sau (Neurohypophysis - Thùy thần kinh)**: Nguồn gốc từ mầm thần kinh não thất III. Là cúc tận cùng sợi trục của các neuron hạ đồi (Nhân trên thị & Nhân cạnh não thất), bài tiết **Oxytocin** và **ADH (Vasopressin)**.
 
-
 ---
 
 ## 2. Điều Hòa Tiết GH & Trục IGF-1
-Hormone tăng trưởng GH (*Growth Hormone / Somatotropin*) được bài tiết ngắt quãng thành từng **nhịp xung (Pulsatile)**, đạt đỉnh cao nhất trong giai đoạn **Ngủ sâu sóng chậm (N3 NREM)**:
-
+Hormone tăng trưởng GH (*Growth Hormone / Somatotropin*) được bài tiết ngắt quãng thành từng **nhịp xung (Pulsatile)**, chịu sự kiểm soát đối kháng giữa **GHRH** (kích thích) và **Somatostatin** (ức chế) từ vùng hạ đồi:
 
 <div class="flowchart-card">
   <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: VÙNG HẠ ĐỒI</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+    <div class="flowchart-title"><i class="fa-solid fa-arrows-split-up-and-left" style="color: var(--color-primary, #0284c7);"></i> TRỤC ĐIỀU HÒA GHRH - SOMATOSTATIN - GH - IGF-1</div>
+    <span class="badge badge-blue">Guyton 14th Ch.76 • Pure Orthogonal SVG</span>
   </div>
   <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 410" width="880" height="410" xmlns="http://www.w3.org/2000/svg">
+    <svg class="flowchart-svg" viewBox="0 0 960 480" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrGhBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
         </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrGhRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+        <marker id="arrGhGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
         </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrGhAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
         </marker>
       </defs>
 
-      {/* Single Node: VÙNG HẠ ĐỒI */}
-      <rect x="165" y="20" width="550" height="78" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">VÙNG HẠ ĐỒI</text>
-      <text x="189" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ├──► GHRH (Growth Hormone-Releasing Hormone) ──(+)──► Kích</text>
-      <text x="189" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  thích Tuyến Yên Trước TIẾT GH</text>
-      <line x1="440" y1="98" x2="440" y2="126" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: HORMONE TĂNG TRƯỞNG (GH) */}
-      <rect x="250" y="126" width="380" height="46" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
-      <text x="440" y="148" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">HORMONE TĂNG TRƯỞNG (GH)</text>
-      {/* Bifurcation Path */}
-      <path d="M 440 172 L 440 186 L 235 186 L 235 200" fill="none" stroke="var(--red, #ef4444)" stroke-width="1.8" marker-end="url(#arrRed)"/>
-      <path d="M 440 186 L 645 186 L 645 200" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Left Column: TÁC ĐỘNG TRỰC TIẾP */}
-      <rect x="40" y="200" width="390" height="98" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.5"/>
-      <text x="235" y="222" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">TÁC ĐỘNG TRỰC TIẾP</text>
-      <line x1="60" y1="236" x2="410" y2="236" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="60" y="252" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Tăng ly giải mỡ (Lipo</text>
-      <text x="60" y="270" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Kháng Insulin (Tăng đườ</text>
-      {/* Right Column: TÁC ĐỘNG GIÁN TIẾP QUA GAN */}
-      <rect x="450" y="200" width="390" height="98" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="645" y="222" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">TÁC ĐỘNG GIÁN TIẾP QUA GAN</text>
-      <line x1="470" y1="236" x2="820" y2="236" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="470" y="252" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• lysis) • Kích thích Gan tổng hợp IGF-1</text>
-      <text x="470" y="270" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ng huyết) (Somatomedin C: T1/2 dài 20</text>
-      <text x="470" y="288" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  giờ)</text>
-      <line x1="440" y1="298" x2="440" y2="326" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: TĂNG TRƯỞNG XƯƠNG, SỤN &amp; MÔ MỀ */}
-      <rect x="250" y="326" width="380" height="46" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
-      <text x="440" y="348" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">TĂNG TRƯỞNG XƯƠNG, SỤN &amp; MÔ MỀM</text>
+      {/* TẦNG 1: VÙNG HẠ ĐỒI */}
+      <rect x="230" y="20" width="500" height="70" rx="12" fill="var(--color-surface, #ffffff)" stroke="#0284c7" stroke-width="2"/>
+      <rect x="230" y="20" width="500" height="28" rx="12" fill="#0284c7"/>
+      <text x="480" y="39" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12.5" fill="#ffffff">VÙNG HẠ ĐỒI (HYPOTHALAMUS)</text>
+      
+      {/* 2 bên tín hiệu */}
+      <text x="340" y="68" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#059669">(+) GHRH (Kích thích)</text>
+      <text x="620" y="68" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#dc2626">(-) Somatostatin (GHIH - Ức chế)</text>
+
+      {/* ĐƯỜNG NỐI XUỐNG TUYẾN YÊN */}
+      <line x1="340" y1="90" x2="430" y2="135" stroke="#059669" stroke-width="2" marker-end="url(#arrGhGreen)"/>
+      <line x1="620" y1="90" x2="530" y2="135" stroke="#dc2626" stroke-width="2" marker-end="url(#arrGhRed)"/>
+
+      {/* TẦNG 2: THÙY TRƯỚC TUYẾN YÊN */}
+      <rect x="300" y="140" width="360" height="70" rx="12" fill="var(--color-surface, #ffffff)" stroke="#0284c7" stroke-width="2"/>
+      <rect x="300" y="140" width="360" height="28" rx="12" fill="var(--color-surface-2, #f8fafc)"/>
+      <text x="480" y="160" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#0284c7">TẾ BÀO SOMATOTROPE (50% DÂN SỐ YÊN TRƯỚC)</text>
+      <text x="480" y="192" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="12" fill="var(--color-text, #0f172a)">Bài tiết Hormone Tăng Trưởng (GH) ngắt nhịp</text>
+
+      {/* RẼ NHÁNH: TÁC ĐỘNG TRỰC TIẾP VS GIÁN TIẾP */}
+      <path d="M 400 210 L 400 260 L 250 260 L 250 280" fill="none" stroke="#d97706" stroke-width="2" marker-end="url(#arrGhAmber)"/>
+      <path d="M 560 210 L 560 260 L 710 260 L 710 280" fill="none" stroke="#0284c7" stroke-width="2" marker-end="url(#arrGhBlue)"/>
+      <text x="250" y="250" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="10.5" fill="#d97706">TÁC ĐỘNG TRỰC TIẾP (DIRECT)</text>
+      <text x="710" y="250" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="10.5" fill="#0284c7">TÁC ĐỘNG GIÁN TIẾP (INDIRECT QUA GAN)</text>
+
+      {/* TẦNG 3 TRÁI: TÁC ĐỘNG CHUYỂN HÓA TRỰC TIẾP */}
+      <rect x="50" y="285" width="400" height="150" rx="12" fill="var(--color-surface, #ffffff)" stroke="#d97706" stroke-width="1.8"/>
+      <rect x="50" y="285" width="400" height="28" rx="12" fill="#d97706"/>
+      <text x="250" y="304" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="#ffffff">HIỆU ỨNG CHUYỂN HÓA TRỰC TIẾP CỦA GH</text>
+      
+      <text x="70" y="330" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">• Mô mỡ:</text>
+      <text x="140" y="330" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">Tăng ly giải mỡ (Lipolysis), giải phóng FFA tự do vào máu</text>
+
+      <text x="70" y="360" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">• Cơ &amp; Gan:</text>
+      <text x="140" y="360" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">Kháng Insulin, giảm bắt giữ glucose, tăng tân tạo glucose</text>
+
+      <text x="70" y="390" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">• Cơ bắp:</text>
+      <text x="140" y="390" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">Tăng vận chuyển acid amin, kích thích tổng hợp protein</text>
+
+      <rect x="65" y="405" width="370" height="22" rx="4" fill="#fffbeb"/>
+      <text x="250" y="420" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="10" fill="#d97706">HIỆU ỨNG DIABETOGENIC: TĂNG ĐƯỜNG HUYẾT MÁU</text>
+
+      {/* TẦNG 3 PHẢI: TRỤC TRUNG GIAN IGF-1 QUA GAN */}
+      <rect x="510" y="285" width="400" height="150" rx="12" fill="var(--color-surface, #ffffff)" stroke="#0284c7" stroke-width="1.8"/>
+      <rect x="510" y="285" width="400" height="28" rx="12" fill="#0284c7"/>
+      <text x="710" y="304" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="#ffffff">TRUNG GIAN IGF-1 (SOMATOMEDIN C) TỪ GAN</text>
+
+      <text x="530" y="330" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">• Đĩa sụn xương:</text>
+      <text x="635" y="330" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">Tăng sinh tế bào sụn (Chondrocyte), cốt hóa thành xương</text>
+
+      <text x="530" y="360" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">• Chiều dài xương:</text>
+      <text x="635" y="360" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">Kéo dài xương trước tuổi dậy thì (chưa hàn kín đĩa sụn)</text>
+
+      <text x="530" y="390" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">• Tăng sinh mô mềm:</text>
+      <text x="635" y="390" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">Tăng phân chia tế bào, phì đại cơ quan nội tạng</text>
+
+      <rect x="525" y="405" width="370" height="22" rx="4" fill="#f0f9ff"/>
+      <text x="710" y="420" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="10" fill="#0284c7">FEEDBACK ÂM TÍNH: IGF-1 VÀ GH ỨC CHẾ GHRH &amp; KÍCH THÍCH SOMATOSTATIN</text>
     </svg>
   </div>
+  <div class="flowchart-editorial-legend">
+    <div class="legend-item"><span class="legend-dot" style="background: #059669;"></span> Tín hiệu kích thích GHRH (+)</div>
+    <div class="legend-item"><span class="legend-dot" style="background: #dc2626;"></span> Tín hiệu ức chế Somatostatin (-)</div>
+    <div class="legend-item"><span class="legend-dot" style="background: #d97706;"></span> Tác động chuyển hóa trực tiếp của GH</div>
+    <div class="legend-item"><span class="legend-dot" style="background: #0284c7;"></span> Tác động tăng trưởng gián tiếp qua IGF-1</div>
+  </div>
 </div>
-
 
 ---
 
@@ -149,20 +188,77 @@ Hormone tăng trưởng GH (*Growth Hormone / Somatotropin*) được bài tiế
 | **Chuyển Hóa Glucid** | **Kháng Insulin & Giảm sử dụng Glucose**: Giảm thu nhận glucose tại cơ/mỡ, tăng tân tạo glucose tại gan. | **Làm tăng đường huyết (Hiệu ứng Diabetogenic)**. |
 | **Tăng Trưởng Xương** | Kích thích tế bào sụn phân chia mạnh mẽ và cốt hóa sụn thành xương tại **Đĩa sụn tăng trưởng (Epiphyseal Plates)**. | Tăng chiều dài xương dài và tăng bề dầy vỏ xương. |
 
-
 ---
 
 ## 4. Bệnh Lý Lâm Sàng: Gigantism & Acromegaly
-1. **Bệnh Khổng Lồ (Gigantism)**:
-     - U tuyến yên tăng tiết GH xuất hiện ở **trẻ em TRƯỚC KHI ĐÓNG SỤN TĂNG TRƯỞNG**.
-     - Xương dài phát triển vượt bậc làm trẻ cao lớn bất thường (**Chiều cao $> 2.1 – 2.5\text{ mét}$**), các cơ quan nội tạng phì đại khổng lồ (*Organomegaly*).
-  2. **Bệnh To Đầu Chi (Acromegaly)**:
-     - U tuyến yên tăng tiết GH xuất hiện ở **người trưởng thành SAU KHI SỤN ĐÃ HÀN GẮN KÍN**.
-     - Xương không thể dài thêm mà **phát triển dầy bè theo chiều ngang**:
-       - *Khuôn mặt biến dạng*: Cung mày gồ cao, xương hàm dưới đưa ra trước (*Prognathism*), răng thưa, mũi to, môi dày, lưỡi to dày (*Macroglossia* gây ngưng thở khi ngủ OSA).
-       - *Chi thể thô to*: Bàn tay bàn chân to dày, phải đổi cỡ giày và nhẫn liên tục.
-       - *Biến chứng nguy cơ tử vong*: Tăng huyết áp, Đái tháo đường, Bệnh cơ tim phì đại suy tim, Polyp và Ung thư đại tràng.
-  - **Điều trị chuẩn EBM**: Phẫu thuật nội soi cắt u tuyến yên qua xoang bướm (Transsphenoidal surgery); dùng thuốc đồng vận Somatostatin tác dụng kéo dài (**Octreotide, Lanreotide**) hoặc thuốc chẹn thụ thể GH (**Pegvisomant**).
+Tăng tiết GH mạn tính do u tuyến yên Somatotrope adenoma biểu hiện hai hội chứng lâm sàng khác biệt phụ thuộc vào tình trạng cốt hóa của sụn tiếp hợp:
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-person-arrow-up-from-floor" style="color: var(--color-primary, #0284c7);"></i> MA TRẬN ĐỐI SÁNH &amp; CHẨN ĐOÁN LÂM SÀNG: BỆNH KHỔNG LỒ VS BỆNH TO ĐẦU CHI</div>
+    <span class="badge badge-blue">Endocrine Society Guideline • Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 960 440" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrDiag" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+      </defs>
+
+      {/* CỘT TRÁI: BỆNH KHỔNG LỒ (GIGANTISM) */}
+      <rect x="30" y="20" width="430" height="250" rx="12" fill="var(--color-surface, #ffffff)" stroke="#0284c7" stroke-width="2"/>
+      <rect x="30" y="20" width="430" height="32" rx="12" fill="#0284c7"/>
+      <text x="245" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="13" fill="#ffffff">BỆNH KHỔNG LỒ (GIGANTISM) - TRẺ EM</text>
+      
+      <rect x="45" y="65" width="400" height="26" rx="6" fill="#f0f9ff"/>
+      <text x="245" y="82" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#0284c7">Khởi phát TRƯỚC KHI ĐÓNG ĐĨA SỤN TĂNG TRƯỞNG</text>
+
+      <text x="50" y="115" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• <strong>Tăng chiều cao vượt bậc:</strong> Thân hình cao bất thường (&gt; 2.1 – 2.5m)</text>
+      <text x="50" y="140" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• <strong>Xương dài:</strong> Các xương chi dài ra quá mức tương xứng với cơ thể</text>
+      <text x="50" y="165" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• <strong>Tạng to toàn thể (Organomegaly):</strong> Tim, gan, lách phì đại khổng lồ</text>
+      <text x="50" y="190" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• <strong>Chuyển hóa:</strong> Đái tháo đường thứ phát, rối loạn dung nạp glucose</text>
+      <text x="50" y="215" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• <strong>Thần kinh &amp; Thị giác:</strong> Đau đầu, bán manh hai thái dương do u chèn ép giao thoa thị</text>
+      <text x="50" y="240" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="#dc2626">• Nguy cơ: Suy tim ứ huyết sung huyết sớm ở tuổi trẻ</text>
+
+      {/* CỘT PHẢI: BỆNH TO ĐẦU CHI (ACROMEGALY) */}
+      <rect x="500" y="20" width="430" height="250" rx="12" fill="var(--color-surface, #ffffff)" stroke="#d97706" stroke-width="2"/>
+      <rect x="500" y="20" width="430" height="32" rx="12" fill="#d97706"/>
+      <text x="715" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="13" fill="#ffffff">BỆNH TO ĐẦU CHI (ACROMEGALY) - NGƯỜI LỚN</text>
+
+      <rect x="515" y="65" width="400" height="26" rx="6" fill="#fffbeb"/>
+      <text x="715" y="82" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#d97706">Khởi phát SAU KHI SỤN TIẾP HỢP ĐÃ HÀN GẮN KÍN</text>
+
+      <text x="520" y="115" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• <strong>Không thể cao thêm:</strong> Xương chỉ dày bè ra theo chiều ngang</text>
+      <text x="520" y="140" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• <strong>Biến dạng mặt:</strong> Cung mày gồ cao, xương hàm dưới nhô (Prognathism), răng thưa</text>
+      <text x="520" y="165" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• <strong>To đầu chi:</strong> Bàn tay thô dạng "xẻng", bàn chân tăng cỡ giày, da dày nhờn</text>
+      <text x="520" y="190" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• <strong>Lưỡi to dày (Macroglossia):</strong> Gây hội chứng ngưng thở khi ngủ tắc nghẽn (OSA)</text>
+      <text x="520" y="215" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• <strong>Tim mạch:</strong> Phì đại đồng tâm thất trái, tăng huyết áp ác tính</text>
+      <text x="520" y="240" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="#dc2626">• Nguy cơ: Tăng sinh Polyp và Ung thư biểu mô đại trực tràng</text>
+
+      {/* THANH NGANG DƯỚI: TIÊU CHUẨN VÀNG CHẨN ĐOÁN &amp; ĐIỀU TRỊ EBM */}
+      <rect x="30" y="295" width="900" height="120" rx="12" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <rect x="30" y="295" width="900" height="30" rx="12" fill="#059669"/>
+      <text x="480" y="315" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#ffffff">QUY TRÌNH TIẾP CẬN CHẨN ĐOÁN XÁC ĐỊNH &amp; ĐIỀU TRỊ CHUẨN EBM</text>
+
+      <text x="50" y="350" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#0284c7">Bước 1 (Sàng lọc ban đầu):</text>
+      <text x="210" y="350" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">Định lượng <strong>IGF-1 huyết thanh</strong> (ổn định, không dao động theo xung nhịp như GH). Nếu IGF-1 tăng cao theo lứa tuổi → Chuyển bước 2.</text>
+
+      <text x="50" y="375" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#d97706">Bước 2 (Tiêu chuẩn vàng):</text>
+      <text x="210" y="375" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)"><strong>Nghiệm pháp dung nạp Glucose đường uống (75g OGTT):</strong> Ở người bình thường, đường huyết tăng sẽ ức chế GH &lt; 1 ng/mL (hoặc &lt; 0.4 ng/mL). Ở bệnh nhân Acromegaly: GH <strong>không bị ức chế</strong>.</text>
+
+      <text x="50" y="400" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#059669">Bước 3 (Xử trí can thiệp):</text>
+      <text x="210" y="400" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)"><strong>Phẫu thuật nội soi qua xoang bướm</strong> (Lựa chọn đầu tay) • Thuốc đồng vận Somatostatin (<strong>Octreotide, Lanreotide</strong>) • Thuốc đối kháng thụ thể GH (<strong>Pegvisomant</strong>).</text>
+    </svg>
+  </div>
+  <div class="flowchart-editorial-legend">
+    <div class="legend-item"><span class="legend-dot" style="background: #0284c7;"></span> Bệnh Khổng lồ (Trước dậy thì)</div>
+    <div class="legend-item"><span class="legend-dot" style="background: #d97706;"></span> Bệnh To đầu chi (Sau dậy thì)</div>
+    <div class="legend-item"><span class="legend-dot" style="background: #059669;"></span> Phác đồ chẩn đoán IGF-1 + OGTT &amp; Xử trí</div>
+  </div>
+</div>
+
+---
 
 ## 5. Tài Liệu Tham Khảo EBM
 <div class="citation-box">
@@ -174,7 +270,6 @@ Hormone tăng trưởng GH (*Growth Hormone / Somatotropin*) được bài tiế
   </ol>
 </div>
 
-
 {/* HÀNG NÚT ĐIỀU HƯỚNG SPA */}
 <div class="btn-row">
   <a href="#/basic-medical/giai-phau-sinh-ly" class="btn btn-primary">
@@ -184,3 +279,4 @@ Hormone tăng trưởng GH (*Growth Hormone / Somatotropin*) được bài tiế
     <i class="fa-solid fa-arrow-up"></i> Lên đầu trang
   </a>
 </div>
+

@@ -44,26 +44,33 @@ sections:
 
 # 🧬 SINH LÝ HỆ NỘI TIẾT TỔNG QUÁT & CƠ CHẾ TÁC DỤNG CỦA HORMONE
 
+<div class="module-badge-group">
+  <span class="badge badge-system"><i class="fa-solid fa-dna"></i> Sinh Lý Hệ Nội Tiết & Sinh Sản</span>
+  <span class="badge badge-source"><i class="fa-solid fa-book-medical"></i> Guyton 14th Ch. 75-76 • Ganong 26th Ch. 16 & 18</span>
+  <span class="badge badge-module"><i class="fa-solid fa-flask-vial"></i> Module Nội Tiết Tổng Quát</span>
+  <span class="badge badge-ebm"><i class="fa-solid fa-shield-halved"></i> EBM 2026</span>
+</div>
+
 <PhysioQuickNav />
 
 {/* DẢI CHỈ SỐ NHANH (QUICK STATS STRIP) */}
-<section class="stats-strip">
+<section class="stats-strip theme-physio">
   <div class="stats-grid">
     <div class="stat-card">
-      <div class="stat-val blue">PHYS-ENDO-01</div>
-      <div class="stat-lbl">Mã chuyên đề • Sinh Lý Hệ Nội Tiết & Sinh Sản</div>
+      <div class="stat-val blue">4 Cơ Chế</div>
+      <div class="stat-lbl">cAMP • IP3/DAG • RTK/JAK-STAT • Thụ Thể Nhân</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val green">Nội Môi Ổn Định</div>
-      <div class="stat-lbl">Cân bằng gradient điện hóa & Áp suất thẩm thấu</div>
+      <div class="stat-val green">Peptide / Protein</div>
+      <div class="stat-lbl">Tan trong nước • Gắn màng • Tác dụng nhanh (giây - phút)</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val amber">Feedback Loop</div>
-      <div class="stat-lbl">Vòng điều hòa phản hồi thần kinh - thể dịch</div>
+      <div class="stat-val amber">Steroid &amp; Giáp</div>
+      <div class="stat-lbl">Tan trong lipid • Thụ thể nhân • Tác dụng chậm (giờ - ngày)</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val purple">Dược Lý EBM</div>
-      <div class="stat-lbl">Ứng dụng lâm sàng chuẩn Guyton 14th & Ganong 26th</div>
+      <div class="stat-val purple">Feedback Loop</div>
+      <div class="stat-lbl">Âm tính &gt; 95% (Nội môi) • Dương tính (Đỉnh LH, Oxytocin)</div>
     </div>
   </div>
 </section>
@@ -79,17 +86,16 @@ Hormone là các chất truyền tin hóa học được bài tiết trực ti�
 | **Hormone Steroid** | **Cortisol, Aldosterone, Estrogen, Progesterone, Testosterone** | **Tan trong lipid (Kỵ nước)**, gắn với Albumin/Globulin đặc hiệu | **Trong Bào Tương hoặc Trong Nhân Tế Bào** | **Chậm** (Vài giờ đến vài ngày / Tổng hợp protein mới) |
 | **Hormone Dẫn Xuất Acid Amin (Tyrosine)** | • **Catecholamine** (Epinephrine, Norepinephrine)<br />• **Hormone Giáp** ($T_3, T_4$) | • Catecholamine: Tan trong nước (gắn màng tế bào)<br />• $T_3, T_4$: Tan trong lipid (gắn thụ thể trong nhân) | • Catecholamine: Trên màng<br />• $T_3, T_4$: **Trong Nhân Tế Bào** | • Catecholamine: Siêu nhanh<br />• $T_3, T_4$: Kéo dài nhiều ngày |
 
-
 ---
 
 ## 2. Các Cơ Chế Truyền Tin Tế Bào
 <div class="flowchart-card">
   <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: CON ĐƯỜNG cAMP</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+    <div class="flowchart-title"><i class="fa-solid fa-network-wired" style="color: var(--color-primary, #0284c7);"></i> 4 CON ĐƯỜNG TRUYỀN TIN TẾ BÀO KINH ĐIỂN CỦA HORMONE</div>
+    <span class="badge badge-blue">Guyton 14th Ch.75 • Editorial SVG</span>
   </div>
   <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 422" width="880" height="422" xmlns="http://www.w3.org/2000/svg">
+    <svg class="flowchart-svg" viewBox="0 0 960 480" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
@@ -100,93 +106,326 @@ Hormone là các chất truyền tin hóa học được bài tiết trực ti�
         <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
         </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        <marker id="arrPurple" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#7c3aed"/>
         </marker>
       </defs>
 
-      {/* Single Node: 1. CON ĐƯỜNG cAMP */}
-      <rect x="194.75" y="20" width="490.5" height="78" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">1. CON ĐƯỜNG cAMP</text>
-      <text x="218.75" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Gặp ở: ACTH, TSH, FSH, LH, ADH (V2), PTH, Glucagon,</text>
-      <text x="218.75" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  Beta-adrenergic</text>
-      <line x1="440" y1="98" x2="440" y2="126" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: 2. CON ĐƯỜNG IP3 / DAG / Ca2+ */}
-      <rect x="160.75" y="126" width="558.5" height="78" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="148" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">2. CON ĐƯỜNG IP3 / DAG / Ca2+</text>
-      <text x="184.75" y="170" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Gặp ở: GnRH, TRH, GHRH, Oxytocin, ADH (V1), Angiotensin II,</text>
-      <text x="184.75" y="188" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  Alpha-1-adrenergic</text>
-      <line x1="440" y1="204" x2="440" y2="232" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: 3. CON ĐƯỜNG RECEPTOR TYROSINE */}
-      <rect x="156.5" y="232" width="567" height="78" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
-      <text x="440" y="254" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">3. CON ĐƯỜNG RECEPTOR TYROSINE KINASE (RTK)</text>
-      <text x="180.5" y="276" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Gặp ở: INSULIN, IGF-1, GH, Prolactin, Các yếu tố tăng trưởng</text>
-      <text x="180.5" y="294" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  (EGF, PDGF, VEGF)</text>
-      <line x1="440" y1="310" x2="440" y2="338" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: 4. CON ĐƯỜNG THỤ THỂ TRONG NHÂ */}
-      <rect x="250" y="338" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="360" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">4. CON ĐƯỜNG THỤ THỂ TRONG NHÂN</text>
+      {/* CỘT 1: CON ĐƯỜNG cAMP - PKA */}
+      <rect x="20" y="20" width="215" height="420" rx="14" fill="var(--color-surface, #ffffff)" stroke="#0284c7" stroke-width="2"/>
+      <rect x="20" y="20" width="215" height="48" rx="14" fill="#0284c7"/>
+      <text x="127" y="50" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="13" fill="#ffffff">1. CON ĐƯỜNG cAMP - PKA</text>
+      
+      <rect x="35" y="85" width="185" height="52" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.2"/>
+      <text x="127" y="105" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">Hormone gắn Thụ thể GPCR</text>
+      <text x="127" y="123" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="#0284c7">Hoạt hóa Gαs (hoặc ức chế qua Gαi)</text>
+
+      <line x1="127" y1="137" x2="127" y2="162" stroke="#0284c7" stroke-width="2" marker-end="url(#arrBlue)"/>
+
+      <rect x="35" y="165" width="185" height="52" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.2"/>
+      <text x="127" y="185" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">Adenylyl Cyclase (AC)</text>
+      <text x="127" y="203" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Biến đổi ATP → cAMP</text>
+
+      <line x1="127" y1="217" x2="127" y2="242" stroke="#0284c7" stroke-width="2" marker-end="url(#arrBlue)"/>
+
+      <rect x="35" y="245" width="185" height="52" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.2"/>
+      <text x="127" y="265" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">Hoạt hóa Protein Kinase A</text>
+      <text x="127" y="283" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Phosphoryl hóa enzyme &amp; CREB</text>
+
+      <rect x="35" y="318" width="185" height="105" rx="8" fill="var(--color-surface-2, #f1f5f9)" stroke="#0284c7" stroke-width="1.2" stroke-dasharray="3 3"/>
+      <text x="127" y="338" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="#0284c7">ĐẠI DIỆN ĐIỂN HÌNH (FLAT ChAMP):</text>
+      <text x="45" y="358" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text, #0f172a)">• FSH, LH, ACTH, TSH</text>
+      <text x="45" y="375" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text, #0f172a)">• CRH, hCG, ADH (V2), MSH</text>
+      <text x="45" y="392" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text, #0f172a)">• PTH, Calcitonin, Glucagon</text>
+      <text x="45" y="409" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text, #0f172a)">• Thụ thể β1, β2-adrenergic</text>
+
+      {/* CỘT 2: CON ĐƯỜNG IP3 / DAG / Ca2+ */}
+      <rect x="255" y="20" width="215" height="420" rx="14" fill="var(--color-surface, #ffffff)" stroke="#059669" stroke-width="2"/>
+      <rect x="255" y="20" width="215" height="48" rx="14" fill="#059669"/>
+      <text x="362" y="50" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="13" fill="#ffffff">2. IP3 / DAG / Ca2+ (Gq)</text>
+      
+      <rect x="270" y="85" width="185" height="52" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.2"/>
+      <text x="362" y="105" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">Hormone gắn GPCR Gq</text>
+      <text x="362" y="123" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="#059669">Kích hoạt Phospholipase C (PLC)</text>
+
+      <line x1="362" y1="137" x2="362" y2="162" stroke="#059669" stroke-width="2" marker-end="url(#arrGreen)"/>
+
+      <rect x="270" y="165" width="185" height="52" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.2"/>
+      <text x="362" y="185" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">Thủy phân PIP2 màng</text>
+      <text x="362" y="203" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Tạo ra IP3 + Diacylglycerol (DAG)</text>
+
+      <line x1="362" y1="217" x2="362" y2="242" stroke="#059669" stroke-width="2" marker-end="url(#arrGreen)"/>
+
+      <rect x="270" y="245" width="185" height="52" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.2"/>
+      <text x="362" y="265" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">IP3 mở kênh Ca2+ từ ER</text>
+      <text x="362" y="283" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">DAG + Ca2+ hoạt hóa Protein Kinase C</text>
+
+      <rect x="270" y="318" width="185" height="105" rx="8" fill="var(--color-surface-2, #f1f5f9)" stroke="#059669" stroke-width="1.2" stroke-dasharray="3 3"/>
+      <text x="362" y="338" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="#059669">ĐẠI DIỆN ĐIỂN HÌNH (GOAT HAG):</text>
+      <text x="280" y="358" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text, #0f172a)">• GnRH, Oxytocin</text>
+      <text x="280" y="375" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text, #0f172a)">• TRH, GHRH</text>
+      <text x="280" y="392" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text, #0f172a)">• Angiotensin II, ADH (V1)</text>
+      <text x="280" y="409" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text, #0f172a)">• Thụ thể α1-adrenergic</text>
+
+      {/* CỘT 3: CON ĐƯỜNG TYROSINE KINASE (RTK / JAK-STAT) */}
+      <rect x="490" y="20" width="215" height="420" rx="14" fill="var(--color-surface, #ffffff)" stroke="#d97706" stroke-width="2"/>
+      <rect x="490" y="20" width="215" height="48" rx="14" fill="#d97706"/>
+      <text x="597" y="50" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="13" fill="#ffffff">3. RTK &amp; JAK / STAT</text>
+      
+      <rect x="505" y="85" width="185" height="52" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.2"/>
+      <text x="597" y="105" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">Gắn Phối Tử (Ligand Binding)</text>
+      <text x="597" y="123" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="#d97706">Dimer hóa thụ thể trên màng</text>
+
+      <line x1="597" y1="137" x2="597" y2="162" stroke="#d97706" stroke-width="2" marker-end="url(#arrAmber)"/>
+
+      <rect x="505" y="165" width="185" height="52" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.2"/>
+      <text x="597" y="185" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">Tự Phosphoryl hóa Tyrosine</text>
+      <text x="597" y="203" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Tuyển mộ IRS-1 hoặc JAK2 kinase</text>
+
+      <line x1="597" y1="217" x2="597" y2="242" stroke="#d97706" stroke-width="2" marker-end="url(#arrAmber)"/>
+
+      <rect x="505" y="245" width="185" height="52" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.2"/>
+      <text x="597" y="265" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">Dòng Thác PI3K/Akt &amp; MAPK</text>
+      <text x="597" y="283" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Chuyển dịch GLUT4, phân chia tế bào</text>
+
+      <rect x="505" y="318" width="185" height="105" rx="8" fill="var(--color-surface-2, #f1f5f9)" stroke="#d97706" stroke-width="1.2" stroke-dasharray="3 3"/>
+      <text x="597" y="338" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="#d97706">ĐẠI DIỆN ĐIỂN HÌNH (GROWTH):</text>
+      <text x="515" y="358" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text, #0f172a)">• Insulin (RTK nội tại)</text>
+      <text x="515" y="375" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text, #0f172a)">• IGF-1, FGF, PDGF, VEGF</text>
+      <text x="515" y="392" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text, #0f172a)">• GH (JAK/STAT pathway)</text>
+      <text x="515" y="409" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text, #0f172a)">• Prolactin, EPO, Thrombopoietin</text>
+
+      {/* CỘT 4: THỤ THỂ TRONG BÀO TƯƠNG / TRONG NHÂN */}
+      <rect x="725" y="20" width="215" height="420" rx="14" fill="var(--color-surface, #ffffff)" stroke="#7c3aed" stroke-width="2"/>
+      <rect x="725" y="20" width="215" height="48" rx="14" fill="#7c3aed"/>
+      <text x="832" y="50" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="13" fill="#ffffff">4. THỤ THỂ TRONG NHÂN</text>
+      
+      <rect x="740" y="85" width="185" height="52" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.2"/>
+      <text x="832" y="105" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">Khuếch Tán Qua Màng Kép</text>
+      <text x="832" y="123" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="#7c3aed">Hormone kỵ nước gắn thụ thể nội bào</text>
+
+      <line x1="832" y1="137" x2="832" y2="162" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrPurple)"/>
+
+      <rect x="740" y="165" width="185" height="52" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.2"/>
+      <text x="832" y="185" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">Phức Hợp Hormone - Receptor</text>
+      <text x="832" y="203" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Chuyển vị vào nhân tế bào</text>
+
+      <line x1="832" y1="217" x2="832" y2="242" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrPurple)"/>
+
+      <rect x="740" y="245" width="185" height="52" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.2"/>
+      <text x="832" y="265" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">Gắn Đoạn DNA (HREs)</text>
+      <text x="832" y="283" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Điều hòa phiên mã mRNA &amp; dịch mã</text>
+
+      <rect x="740" y="318" width="185" height="105" rx="8" fill="var(--color-surface-2, #f1f5f9)" stroke="#7c3aed" stroke-width="1.2" stroke-dasharray="3 3"/>
+      <text x="832" y="338" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="#7c3aed">ĐẠI DIỆN ĐIỂN HÌNH (VETTT CAP):</text>
+      <text x="750" y="358" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text, #0f172a)">• Glucocorticoids (Cortisol)</text>
+      <text x="750" y="375" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text, #0f172a)">• Mineralocorticoids (Aldosterone)</text>
+      <text x="750" y="392" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text, #0f172a)">• Estrogen, Progesterone, Androgen</text>
+      <text x="750" y="409" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text, #0f172a)">• Hormone Giáp (T3, T4), Vitamin D</text>
     </svg>
+  </div>
+  <div class="flowchart-editorial-legend">
+    <div class="legend-item"><span class="legend-dot" style="background: #0284c7;"></span> cAMP / PKA (Gαs)</div>
+    <div class="legend-item"><span class="legend-dot" style="background: #059669;"></span> IP3 / DAG / Ca2+ (Gq)</div>
+    <div class="legend-item"><span class="legend-dot" style="background: #d97706;"></span> RTK / JAK-STAT Kinase</div>
+    <div class="legend-item"><span class="legend-dot" style="background: #7c3aed;"></span> Nuclear / Intracellular Receptors</div>
   </div>
 </div>
 
-
 ---
 
-## 3. Trục Hạ Đồi - Tuyến Yên
+## 3. Trục Hạ Đồi - Tuyến Yên (Hypothalamic - Pituitary Axis)
+Vùng Hạ Đồi là trung tâm tích hợp thần kinh - thể dịch tối cao, điều khiển Tuyến Yên qua 2 con đường riêng biệt:
+- **Thùy trước tuyến yên (Adenohypophysis)**: Kết nối qua **Hệ Mạch Cửa Tuyến Yên (Hypophyseal Portal System)**. Các hormone kích thích (RH) hoặc ức chế (IH) từ hạ đồi được dẫn trực tiếp đến điều hòa các tế bào tiết tuyến yên.
+- **Thùy sau tuyến yên (Neurohypophysis)**: Là phần kéo dài của mô thần kinh từ nhân trên thị (Supraoptic) và cạnh thất (Paraventricular). Thân tế bào thần kinh tổng hợp **ADH** và **Oxytocin**, vận chuyển dọc sợi trục và dự trữ tại thùy sau để giải phóng vào máu.
+
 <div class="flowchart-card">
   <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: VÙNG HẠ ĐỒI (HYPOTHALAMUS)</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+    <div class="flowchart-title"><i class="fa-solid fa-sitemap" style="color: var(--color-primary, #0284c7);"></i> TRỤC ĐIỀU HÒA HẠ ĐỒI - TUYẾN YÊN - TUYẾN ĐÍCH NGOẠI VI</div>
+    <span class="badge badge-blue">Guyton 14th Ch.76 • Pure Orthogonal SVG</span>
   </div>
   <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 432" width="880" height="432" xmlns="http://www.w3.org/2000/svg">
+    <svg class="flowchart-svg" viewBox="0 0 960 480" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrMain" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
-        </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
-        </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
         </marker>
       </defs>
 
-      {/* Single Node: VÙNG HẠ ĐỒI (HYPOTHALAMUS) */}
-      <rect x="250" y="20" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">VÙNG HẠ ĐỒI (HYPOTHALAMUS)</text>
-      <line x1="440" y1="66" x2="440" y2="94" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: TUYẾN YÊN TRƯỚC (ADENOHYPOPHYS */}
-      <rect x="250" y="94" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">TUYẾN YÊN TRƯỚC (ADENOHYPOPHYSIS)</text>
-      <line x1="440" y1="140" x2="440" y2="168" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: TUYẾN GIÁP */}
-      <rect x="250" y="168" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="190" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">TUYẾN GIÁP</text>
-      <line x1="440" y1="214" x2="440" y2="242" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: VỎ THƯỢNG THẬN */}
-      <rect x="250" y="242" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="264" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">VỎ THƯỢNG THẬN</text>
-      <line x1="440" y1="288" x2="440" y2="316" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: TUYẾN SINH DỤC */}
-      <rect x="165" y="316" width="550" height="78" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
-      <text x="440" y="338" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">TUYẾN SINH DỤC</text>
-      <text x="189" y="360" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ├──► GH (Growth Hormone) ───────────► Gan tiết IGF-1 (Tăng</text>
-      <text x="189" y="378" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  trưởng xương &amp; cơ)</text>
+      {/* TẦNG 1: VÙNG HẠ ĐỒI */}
+      <rect x="230" y="20" width="500" height="70" rx="12" fill="var(--color-surface, #ffffff)" stroke="#0284c7" stroke-width="2"/>
+      <rect x="230" y="20" width="500" height="30" rx="12" fill="#0284c7"/>
+      <text x="480" y="40" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="13" fill="#ffffff">TẦNG 1: VÙNG HẠ ĐỒI (HYPOTHALAMUS)</text>
+      <text x="480" y="70" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">Tiết các Hormone giải phóng &amp; ức chế: TRH • CRH • GnRH • GHRH / Somatostatin • Dopamine</text>
+
+      {/* ĐƯỜNG NỐI XUỐNG TUYẾN YÊN */}
+      <line x1="330" y1="90" x2="330" y2="135" stroke="#0284c7" stroke-width="2" marker-end="url(#arrMain)"/>
+      <line x1="630" y1="90" x2="630" y2="135" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrMain)"/>
+      <text x="245" y="118" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="#0284c7">Hệ Mạch Cửa Tuyến Yên</text>
+      <text x="645" y="118" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="#7c3aed">Bó Sợi Trục Thần Kinh</text>
+
+      {/* TẦNG 2: TUYẾN YÊN */}
+      {/* 2A: Thùy trước */}
+      <rect x="60" y="140" width="540" height="90" rx="12" fill="var(--color-surface, #ffffff)" stroke="#0284c7" stroke-width="1.8"/>
+      <rect x="60" y="140" width="540" height="28" rx="12" fill="var(--color-surface-2, #f8fafc)"/>
+      <text x="330" y="160" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#0284c7">THÙY TRƯỚC TUYẾN YÊN (ADENOHYPOPHYSIS)</text>
+      <text x="330" y="188" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">TSH • ACTH • LH &amp; FSH • GH • Prolactin</text>
+      <text x="330" y="210" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Điều hòa qua cơ chế feedback nội tiết vòng ngắn &amp; vòng dài</text>
+
+      {/* 2B: Thùy sau */}
+      <rect x="630" y="140" width="270" height="90" rx="12" fill="var(--color-surface, #ffffff)" stroke="#7c3aed" stroke-width="1.8"/>
+      <rect x="630" y="140" width="270" height="28" rx="12" fill="var(--color-surface-2, #f8fafc)"/>
+      <text x="765" y="160" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#7c3aed">THÙY SAU (NEUROHYPOPHYSIS)</text>
+      <text x="765" y="188" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">ADH (Vasopressin) • Oxytocin</text>
+      <text x="765" y="210" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Dự trữ &amp; giải phóng trực tiếp</text>
+
+      {/* ĐƯỜNG NỐI XUỐNG TẦNG 3 */}
+      <path d="M 120 230 L 120 290" fill="none" stroke="#059669" stroke-width="1.8" marker-end="url(#arrMain)"/>
+      <path d="M 230 230 L 230 290" fill="none" stroke="#d97706" stroke-width="1.8" marker-end="url(#arrMain)"/>
+      <path d="M 340 230 L 340 290" fill="none" stroke="#ec4899" stroke-width="1.8" marker-end="url(#arrMain)"/>
+      <path d="M 450 230 L 450 290" fill="none" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrMain)"/>
+      <path d="M 765 230 L 765 290" fill="none" stroke="#7c3aed" stroke-width="1.8" marker-end="url(#arrMain)"/>
+
+      {/* TẦNG 3: CÁC CƠ QUAN ĐÍCH NGOẠI VI (5 CỘT) */}
+      {/* Tuyến giáp */}
+      <rect x="50" y="295" width="140" height="155" rx="10" fill="var(--color-surface, #ffffff)" stroke="#059669" stroke-width="1.5"/>
+      <rect x="50" y="295" width="140" height="28" rx="10" fill="#059669"/>
+      <text x="120" y="314" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#ffffff">TUYẾN GIÁP</text>
+      <text x="120" y="340" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10.5" fill="#059669">TSH kích thích</text>
+      <text x="120" y="365" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text, #0f172a)">• Tiết T3, T4</text>
+      <text x="120" y="385" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text-muted, #475569)">Tăng BMR, sinh nhiệt,</text>
+      <text x="120" y="405" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text-muted, #475569)">biệt hóa thần kinh</text>
+
+      {/* Vỏ thượng thận */}
+      <rect x="200" y="295" width="140" height="155" rx="10" fill="var(--color-surface, #ffffff)" stroke="#d97706" stroke-width="1.5"/>
+      <rect x="200" y="295" width="140" height="28" rx="10" fill="#d97706"/>
+      <text x="270" y="314" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#ffffff">VỎ THƯỢNG THẬN</text>
+      <text x="270" y="340" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10.5" fill="#d97706">ACTH kích thích</text>
+      <text x="270" y="365" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text, #0f172a)">• Tiết Cortisol &amp; DHEA</text>
+      <text x="270" y="385" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text-muted, #475569)">Chống stress, dị hóa,</text>
+      <text x="270" y="405" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text-muted, #475569)">ức chế miễn dịch</text>
+
+      {/* Tuyến sinh dục */}
+      <rect x="350" y="295" width="140" height="155" rx="10" fill="var(--color-surface, #ffffff)" stroke="#ec4899" stroke-width="1.5"/>
+      <rect x="350" y="295" width="140" height="28" rx="10" fill="#ec4899"/>
+      <text x="420" y="314" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#ffffff">TUYẾN SINH DỤC</text>
+      <text x="420" y="340" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10.5" fill="#ec4899">LH &amp; FSH kích thích</text>
+      <text x="420" y="365" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text, #0f172a)">• Testosterone, Estrogen</text>
+      <text x="420" y="385" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text-muted, #475569)">Sinh tinh, phát triển nang</text>
+      <text x="420" y="405" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text-muted, #475569)">trứng &amp; hoàng thể</text>
+
+      {/* Gan & Cơ quan đích toàn thân */}
+      <rect x="500" y="295" width="180" height="155" rx="10" fill="var(--color-surface, #ffffff)" stroke="#0284c7" stroke-width="1.5"/>
+      <rect x="500" y="295" width="180" height="28" rx="10" fill="#0284c7"/>
+      <text x="590" y="314" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#ffffff">GAN &amp; MÔ ĐÍCH TOÀN THÂN</text>
+      <text x="590" y="340" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10.5" fill="#0284c7">GH &amp; Prolactin tác động</text>
+      <text x="590" y="365" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text, #0f172a)">• Gan tiết IGF-1 (Somatomedin C)</text>
+      <text x="590" y="385" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text-muted, #475569)">Tăng trưởng xương &amp; mô mềm</text>
+      <text x="590" y="405" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text-muted, #475569)">Tạo sữa mẹ (Prolactin)</text>
+
+      {/* Thận & Tử cung / Tuyến vú (Thùy sau) */}
+      <rect x="690" y="295" width="220" height="155" rx="10" fill="var(--color-surface, #ffffff)" stroke="#7c3aed" stroke-width="1.5"/>
+      <rect x="690" y="295" width="220" height="28" rx="10" fill="#7c3aed"/>
+      <text x="800" y="314" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#ffffff">THẬN • TỬ CUNG • TUYẾN VÚ</text>
+      <text x="800" y="340" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10.5" fill="#7c3aed">ADH &amp; Oxytocin tác động</text>
+      <text x="800" y="365" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text, #0f172a)">• ADH gắn V2 ống góp: Tái hấp thu nước</text>
+      <text x="800" y="385" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text-muted, #475569)">• Oxytocin co cơ trơn tử cung (chuyển dạ)</text>
+      <text x="800" y="405" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text-muted, #475569)">• Oxytocin co tế bào cơ biểu mô (phun sữa)</text>
     </svg>
+  </div>
+  <div class="flowchart-editorial-legend">
+    <div class="legend-item"><span class="legend-dot" style="background: #0284c7;"></span> Hạ đồi &amp; Thùy trước tuyến yên</div>
+    <div class="legend-item"><span class="legend-dot" style="background: #7c3aed;"></span> Thùy sau &amp; Bó sợi trục thần kinh</div>
+    <div class="legend-item"><span class="legend-dot" style="background: #059669;"></span> Trục Tuyến Giáp (HPT)</div>
+    <div class="legend-item"><span class="legend-dot" style="background: #d97706;"></span> Trục Thượng Thận (HPA)</div>
+    <div class="legend-item"><span class="legend-dot" style="background: #ec4899;"></span> Trục Tuyến Sinh Dục (HPG)</div>
   </div>
 </div>
 
-
 ---
 
-## 4. Vòng Phản Hồi Âm Tính & Dương Tính
-1. **Đỉnh LH gây rụng trứng giữa chu kỳ kinh nguyệt**: Nồng độ Estrogen tăng vọt kéo dài $>36\text{ giờ}$ ở cuối pha nang trứng sẽ kích hoạt ngược lại tuyến yên giải phóng ồ ạt **Đỉnh LH (LH Surge)** kích thích phóng noãn.
-  2. **Phản xạ tăng tiết Oxytocin khi chuyển dạ (Phản xạ Ferguson)**: Đầu thai nhi thúc vào cổ tử cung gây căng giãn $\rightarrow$ Tín hiệu thần kinh lên hạ đồi kích thích thùy sau tuyến yên tiết thêm **Oxytocin** $\rightarrow$ Tử cung co bóp mạnh hơn $\rightarrow$ Thúc đầu thai nhi mạnh hơn nữa cho đến khi em bé chào đời hoàn tất.
+## 4. Vòng Phản Hồi Âm Tính & Dương Tính (Feedback Loops)
+Hệ thống điều hòa phản hồi (Feedback) là nền tảng sống còn bảo đảm tính ổn định của nội môi và chức năng nội tiết:
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-arrows-spin" style="color: var(--color-primary, #0284c7);"></i> CƠ CHẾ ĐIỀU HÒA PHẢN HỒI VÒNG DÀI, VÒNG NGẮN &amp; PHẢN HỒI DƯƠNG TÍNH</div>
+    <span class="badge badge-blue">Ganong 26th Ch.18 • Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 960 420" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrFbBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrFbRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+        <marker id="arrFbGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+      </defs>
+
+      {/* KHỐI 1: VÙNG HẠ ĐỒI */}
+      <rect x="260" y="30" width="340" height="60" rx="10" fill="var(--color-surface, #ffffff)" stroke="#0284c7" stroke-width="2"/>
+      <text x="430" y="55" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="13" fill="#0284c7">1. VÙNG HẠ ĐỒI (HYPOTHALAMUS)</text>
+      <text x="430" y="75" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">Tiết Releasing Hormones (CRH, TRH, GnRH)</text>
+
+      {/* MŨI TÊN KÍCH THÍCH XUỐNG YÊN */}
+      <line x1="430" y1="90" x2="430" y2="140" stroke="#0284c7" stroke-width="2.5" marker-end="url(#arrFbBlue)"/>
+      <text x="445" y="120" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="#0284c7">(+) Kích thích</text>
+
+      {/* KHỐI 2: TUYẾN YÊN TRƯỚC */}
+      <rect x="260" y="145" width="340" height="60" rx="10" fill="var(--color-surface, #ffffff)" stroke="#0284c7" stroke-width="2"/>
+      <text x="430" y="170" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="13" fill="#0284c7">2. TUYẾN YÊN TRƯỚC (PITUITARY)</text>
+      <text x="430" y="190" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">Tiết Trophic Hormones (ACTH, TSH, LH/FSH)</text>
+
+      {/* MŨI TÊN KÍCH THÍCH XUỐNG TUYẾN ĐÍCH */}
+      <line x1="430" y1="205" x2="430" y2="255" stroke="#0284c7" stroke-width="2.5" marker-end="url(#arrFbBlue)"/>
+      <text x="445" y="235" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="#0284c7">(+) Kích thích</text>
+
+      {/* KHỐI 3: TUYẾN ĐÍCH NGOẠI VI */}
+      <rect x="260" y="260" width="340" height="60" rx="10" fill="var(--color-surface, #ffffff)" stroke="#059669" stroke-width="2"/>
+      <text x="430" y="285" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="13" fill="#059669">3. TUYẾN ĐÍCH NGOẠI VI (TARGET GLAND)</text>
+      <text x="430" y="305" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">Tiết Hormone đích (Cortisol, T3/T4, Estrogen)</text>
+
+      {/* VÒNG PHẢN HỒI NGẮN (SHORT LOOP): TỪ TUYẾN YÊN LÊN HẠ ĐỒI */}
+      <path d="M 260 175 L 170 175 L 170 60 L 255 60" fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#arrFbRed)"/>
+      <rect x="100" y="105" width="135" height="28" rx="6" fill="#fef2f2" stroke="#dc2626" stroke-width="1"/>
+      <text x="167" y="123" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="10" fill="#dc2626">(-) Short Loop Feedback</text>
+
+      {/* VÒNG PHẢN HỒI DÀI (LONG LOOP): TỪ TUYẾN ĐÍCH LÊN YÊN VÀ HẠ ĐỒI */}
+      <path d="M 600 290 L 730 290 L 730 175 L 605 175" fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#arrFbRed)"/>
+      <path d="M 730 175 L 730 60 L 605 60" fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#arrFbRed)"/>
+      <rect x="740" y="160" width="180" height="42" rx="6" fill="#fef2f2" stroke="#dc2626" stroke-width="1"/>
+      <text x="830" y="178" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="10.5" fill="#dc2626">(-) Long Loop Feedback</text>
+      <text x="830" y="194" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" fill="var(--color-text-muted, #475569)">Nồng độ cao ức chế tiết TRH/CRH &amp; TSH/ACTH</text>
+
+      {/* KHỐI SO SÁNH PHẢN HỒI DƯƠNG TÍNH */}
+      <rect x="120" y="345" width="720" height="55" rx="10" fill="#f0fdf4" stroke="#059669" stroke-width="1.5"/>
+      <text x="140" y="368" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#059669">NGOẠI LỆ PHẢN HỒI DƯƠNG TÍNH (POSITIVE FEEDBACK - BÙNG PHÁT CỰC ĐỘ):</text>
+      <text x="140" y="388" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• <strong>Đỉnh LH gây rụng trứng:</strong> Estrogen đạt đỉnh &gt;36h kích thích tuyến yên bùng nổ đỉnh LH phóng noãn.</text>
+      <text x="560" y="388" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• <strong>Phản xạ Ferguson:</strong> Cổ tử cung căng giãn kích thích giải phóng Oxytocin liên tục khi chuyển dạ.</text>
+    </svg>
+  </div>
+  <div class="flowchart-editorial-legend">
+    <div class="legend-item"><span class="legend-dot" style="background: #0284c7;"></span> Tín hiệu kích thích thuận chiều (+)</div>
+    <div class="legend-item"><span class="legend-dot" style="background: #dc2626;"></span> Phản hồi ức chế ngược dòng (-) (Long Loop / Short Loop)</div>
+    <div class="legend-item"><span class="legend-dot" style="background: #059669;"></span> Phản hồi dương tính sinh lý đặc thù (+)</div>
+  </div>
+</div>
+
+### Quy Tắc Vàng Định Vị Tổn Thương Lâm Sàng (Localization Rules)
+1. **Tổn thương Nguyên phát (Primary Disorder - Tại Tuyến Ngoại Vi)**:
+   - Hormone tuyến đích và hormone tuyến yên **biến đổi trái chiều**.
+   - *Ví dụ:* Suy thượng thận nguyên phát (Addison): Cortisol giảm mạnh $\rightarrow$ Mất ức chế ngược $\rightarrow$ ACTH máu tăng vọt (gây sạm da). Suy giáp nguyên phát (Hashimoto): T3/T4 giảm $\rightarrow$ TSH tăng vọt.
+2. **Tổn thương Thứ phát (Secondary Disorder - Tại Tuyến Yên)**:
+   - Hormone tuyến đích và hormone tuyến yên **biến đổi cùng chiều**.
+   - *Ví dụ:* Suy tuyến yên: ACTH giảm $\rightarrow$ Cortisol giảm; TSH giảm $\rightarrow$ T3/T4 giảm. U tuyến yên tiết ACTH (Cushing disease): ACTH tăng $\rightarrow$ Cortisol tăng cao.
+3. **Tổn thương Đệ tam (Tertiary Disorder - Tại Vùng Hạ Đồi)**:
+   - Suy giảm toàn bộ các tầng hormone trục giải phóng (CRH/TRH giảm $\rightarrow$ ACTH/TSH giảm $\rightarrow$ Cortisol/T3-T4 giảm).
+
+---
 
 ## 5. Tài Liệu Tham Khảo EBM
 <div class="citation-box">
@@ -197,7 +436,6 @@ Hormone là các chất truyền tin hóa học được bài tiết trực ti�
   </ol>
 </div>
 
-
 {/* HÀNG NÚT ĐIỀU HƯỚNG SPA */}
 <div class="btn-row">
   <a href="#/basic-medical/giai-phau-sinh-ly" class="btn btn-primary">
@@ -207,3 +445,4 @@ Hormone là các chất truyền tin hóa học được bài tiết trực ti�
     <i class="fa-solid fa-arrow-up"></i> Lên đầu trang
   </a>
 </div>
+

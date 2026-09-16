@@ -51,24 +51,29 @@ sections:
 
 <PhysioQuickNav />
 
+<div style="display: flex; gap: 0.5rem; margin-bottom: 1rem; align-items: center; flex-wrap: wrap;">
+  <span class="module-badge badge-physio"><i class="fa-solid fa-bolt"></i> Sinh Lý Học • Part 2</span>
+  <span class="module-badge" style="border-color: rgba(16, 185, 129, 0.3); background: rgba(16, 185, 129, 0.1); color: var(--color-success, #10b981);"><i class="fa-solid fa-scale-balanced"></i> Thần Kinh Tự Chủ (ANS)</span>
+</div>
+
 {/* DẢI CHỈ SỐ NHANH (QUICK STATS STRIP) */}
-<section class="stats-strip">
+<section class="stats-strip theme-physio">
   <div class="stats-grid">
     <div class="stat-card">
-      <div class="stat-val blue">PHYS-NERV-07</div>
-      <div class="stat-lbl">Mã chuyên đề • Sinh Lý Hệ Thần Kinh & Cơ</div>
+      <div class="stat-val blue">T1–L2 vs III,VII,IX,X,S2–S4</div>
+      <div class="stat-lbl">Giao cảm (Thoracolumbar) vs Đối giao cảm (Craniosacral)</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val green">Nội Môi Ổn Định</div>
-      <div class="stat-lbl">Cân bằng gradient điện hóa & Áp suất thẩm thấu</div>
+      <div class="stat-val amber">Gq • Gs • Gi</div>
+      <div class="stat-lbl">α1, M1, M3 (Gq/PLC/IP3) • β1, β2 (Gs/cAMP) • α2, M2 (Gi)</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val amber">Feedback Loop</div>
-      <div class="stat-lbl">Vòng điều hòa phản hồi thần kinh - thể dịch</div>
+      <div class="stat-val red">Hội chứng DUMBELS</div>
+      <div class="stat-lbl">Ngộ độc phospho hữu cơ kháng AChE • Giải độc Atropine + 2-PAM</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val purple">Dược Lý EBM</div>
-      <div class="stat-lbl">Ứng dụng lâm sàng chuẩn Guyton 14th & Ganong 26th</div>
+      <div class="stat-val purple">α-Blocker TRƯỚC β-Blocker</div>
+      <div class="stat-lbl">Quy tắc sinh tử trong U tủy thượng thận (Pheochromocytoma)</div>
     </div>
   </div>
 </section>
@@ -79,45 +84,95 @@ sections:
 Hệ thần kinh tự chủ (ANS) điều hòa mọi hoạt động nội tạng không theo ý muốn, bao gồm hai nhánh đối lập nhau:
 
 
-<div class="flowchart-card">
-  <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: HỆ THẦN KINH GIAO CẢM (Thoracolumbar T1-L2)</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+<div class="flowchart-editorial-card">
+  <div class="flowchart-editorial-header">
+    <div class="flowchart-editorial-title">
+      <i class="fa-solid fa-scale-balanced"></i>
+      <span>SƠ ĐỒ CẤU TRÚC DẪN TRUYỀN ANS: HỆ GIAO CẢM (SNS) VS ĐỐI GIAO CẢM (PNS)</span>
+    </div>
+    <span class="module-badge badge-physio">Autonomic Circuitry</span>
   </div>
-  <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 332" width="880" height="332" xmlns="http://www.w3.org/2000/svg">
+  <div class="flowchart-editorial-viewport">
+    <svg viewBox="0 0 920 360" width="100%" height="auto" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        <marker id="arrSns" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--amber, #d97706)"/>
         </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
-        </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        <marker id="arrPns" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-success, #10b981)"/>
         </marker>
       </defs>
 
-      {/* Single Node: HỆ THẦN KINH GIAO CẢM (Thoraco */}
-      <rect x="156.5" y="20" width="567" height="114" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">HỆ THẦN KINH GIAO CẢM (Thoracolumbar T1-L2)</text>
-      <text x="180.5" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Sợi tiền hạch NGẮN (tiết ACh) ──► Chuỗi Hạch Cạnh Sống (Thụ</text>
-      <text x="180.5" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  thể N_N) ──► Sợi hậu hạch DÀI (tiết Norepinephrine)</text>
-      <text x="180.5" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Đáp ứng &quot;Chiến đấu hay Bỏ chạy&quot; (Fight-or-Flight): Tăng nhịp</text>
-      <text x="180.5" y="118" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  tim, giãn phế quản, giãn đồng tử, co mạch tạng</text>
-      <line x1="440" y1="134" x2="440" y2="162" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: HỆ THẦN KINH ĐỐI GIAO CẢM (Cra */}
-      <rect x="150" y="162" width="580" height="132" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
-      <text x="440" y="184" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">HỆ THẦN KINH ĐỐI GIAO CẢM (Craniosacral: Dây III, VII,</text>
-      <text x="440" y="202" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--amber, #d97706)">IX, X và S2-S4)</text>
-      <text x="174" y="224" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Sợi tiền hạch DÀI (tiết ACh) ──► Hạch Tận Cùng sát cơ quan</text>
-      <text x="174" y="242" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  (Thụ thể N_N) ──► Sợi hậu hạch NGẮN (tiết ACh)</text>
-      <text x="174" y="260" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Đáp ứng &quot;Nghỉ ngơi và Tiêu hóa&quot; (Rest-and-Digest): Chậm nhịp</text>
-      <text x="174" y="278" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  tim, tăng tiết dịch vị, co thắt bàng quang</text>
+      {/* LEFT COLUMN: GIAO CẢM (SNS) */}
+      <rect x="30" y="16" width="415" height="320" rx="12" fill="var(--color-surface, #ffffff)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
+      <rect x="30" y="16" width="415" height="34" rx="12" fill="rgba(245, 158, 11, 0.12)"/>
+      <text x="237" y="38" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" fill="var(--amber, #d97706)">HỆ GIAO CẢM (THORACOLUMBAR T1 – L2)</text>
+
+      {/* Level 1: Pre-ganglionic */}
+      <rect x="50" y="62" width="375" height="52" rx="8" fill="rgba(245, 158, 11, 0.06)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.2"/>
+      <text x="65" y="80" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="var(--color-text, #0f172a)">• Sợi tiền hạch NGẮN (từ sừng bên T1-L2)</text>
+      <text x="65" y="98" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="700" fill="var(--color-primary, #0284c7)">➔ Tiết Acetylcholine (ACh) gắn thụ thể N_N tại hạch</text>
+
+      {/* Arrow down */}
+      <line x1="237" y1="114" x2="237" y2="134" stroke="var(--amber, #d97706)" stroke-width="2" marker-end="url(#arrSns)"/>
+
+      {/* Level 2: Ganglion */}
+      <rect x="70" y="136" width="335" height="42" rx="8" fill="var(--color-surface, #ffffff)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
+      <text x="237" y="154" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="var(--amber, #d97706)">CHUỖI HẠCH CẠNH SỐNG &amp; TRƯỚC SỐNG</text>
+      <text x="237" y="169" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="600" fill="var(--color-text-muted, #64748b)">(Đặc biệt: Tủy thượng thận đóng vai trò như một hạch giao cảm)</text>
+
+      {/* Arrow down */}
+      <line x1="237" y1="178" x2="237" y2="198" stroke="var(--amber, #d97706)" stroke-width="2" marker-end="url(#arrSns)"/>
+
+      {/* Level 3: Post-ganglionic & Effectors */}
+      <rect x="50" y="200" width="375" height="66" rx="8" fill="rgba(245, 158, 11, 0.06)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.2"/>
+      <text x="65" y="218" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="var(--color-text, #0f172a)">• Sợi hậu hạch DÀI tiết Norepinephrine (NE)</text>
+      <text x="65" y="235" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text-muted, #64748b)">Gắn thụ thể Adrenergic: α1 (co mạch), β1 (tim), β2 (phổi)</text>
+      <text x="65" y="252" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="700" fill="var(--amber, #d97706)">* Ngoại lệ: Tuyến mồ hôi hậu hạch tiết ACh (thụ thể M3)</text>
+
+      {/* Response Box */}
+      <rect x="50" y="276" width="375" height="46" rx="6" fill="rgba(239, 68, 68, 0.10)" stroke="var(--color-danger, #ef4444)" stroke-width="1.2"/>
+      <text x="237" y="294" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="var(--color-danger, #ef4444)">CHIẾN ĐẤU HAY BỎ CHẠY (FIGHT-OR-FLIGHT)</text>
+      <text x="237" y="310" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text, #0f172a)">Tăng nhịp tim, giãn phế quản, giãn đồng tử, co mạch tạng</text>
+
+
+      {/* RIGHT COLUMN: ĐỐI GIAO CẢM (PNS) */}
+      <rect x="475" y="16" width="415" height="320" rx="12" fill="var(--color-surface, #ffffff)" stroke="var(--color-success, #10b981)" stroke-width="1.8"/>
+      <rect x="475" y="16" width="415" height="34" rx="12" fill="rgba(16, 185, 129, 0.12)"/>
+      <text x="682" y="38" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" fill="var(--color-success, #10b981)">HỆ ĐỐI GIAO CẢM (CRANIOSACRAL: III, VII, IX, X &amp; S2–S4)</text>
+
+      {/* Level 1: Pre-ganglionic */}
+      <rect x="495" y="62" width="375" height="52" rx="8" fill="rgba(16, 185, 129, 0.06)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.2"/>
+      <text x="510" y="80" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="var(--color-text, #0f172a)">• Sợi tiền hạch RẤT DÀI (dây X chi phối 75% tạng ngực bụng)</text>
+      <text x="510" y="98" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="700" fill="var(--color-primary, #0284c7)">➔ Tiết Acetylcholine (ACh) gắn thụ thể N_N tại hạch đích</text>
+
+      {/* Arrow down */}
+      <line x1="682" y1="114" x2="682" y2="134" stroke="var(--color-success, #10b981)" stroke-width="2" marker-end="url(#arrPns)"/>
+
+      {/* Level 2: Ganglion */}
+      <rect x="515" y="136" width="335" height="42" rx="8" fill="var(--color-surface, #ffffff)" stroke="var(--color-success, #10b981)" stroke-width="1.5"/>
+      <text x="682" y="154" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="var(--color-success, #10b981)">HẠCH TẬN CÙNG SÁT HOẶC TRONG THÀNH CƠ QUAN</text>
+      <text x="682" y="169" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="600" fill="var(--color-text-muted, #64748b)">(Đảm bảo đáp ứng cục bộ, chuyên biệt, không lan tỏa)</text>
+
+      {/* Arrow down */}
+      <line x1="682" y1="178" x2="682" y2="198" stroke="var(--color-success, #10b981)" stroke-width="2" marker-end="url(#arrPns)"/>
+
+      {/* Level 3: Post-ganglionic & Effectors */}
+      <rect x="495" y="200" width="375" height="66" rx="8" fill="rgba(16, 185, 129, 0.06)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.2"/>
+      <text x="510" y="218" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="var(--color-text, #0f172a)">• Sợi hậu hạch CỰC NGẮN tiết Acetylcholine (ACh)</text>
+      <text x="510" y="235" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text-muted, #64748b)">Gắn thụ thể Muscarinic: M1 (dạ dày), M2 (tim), M3 (tạng rỗng)</text>
+      <text x="510" y="252" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="700" fill="var(--color-success, #10b981)">Toàn bộ khớp synapse của PNS đều dùng Acetylcholine</text>
+
+      {/* Response Box */}
+      <rect x="495" y="276" width="375" height="46" rx="6" fill="rgba(16, 185, 129, 0.10)" stroke="var(--color-success, #10b981)" stroke-width="1.2"/>
+      <text x="682" y="294" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="var(--color-success, #10b981)">NGHỈ NGƠI VÀ TIÊU HÓA (REST-AND-DIGEST)</text>
+      <text x="682" y="310" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text, #0f172a)">Chậm nhịp tim, co đồng tử, tăng tiết dịch vị, co cơ bàng quang</text>
     </svg>
+  </div>
+  <div class="flowchart-editorial-legend">
+    <div class="legend-chip"><span class="legend-dot" style="background: var(--amber, #f59e0b);"></span> Hệ Giao Cảm (Sợi tiền hạch ngắn, hậu hạch dài, tiết NE)</div>
+    <div class="legend-chip"><span class="legend-dot" style="background: var(--color-success, #10b981);"></span> Hệ Đối Giao Cảm (Sợi tiền hạch dài, hậu hạch ngắn, tiết ACh)</div>
+    <div class="legend-chip"><span class="legend-dot" style="background: var(--color-primary, #0284c7);"></span> Tiền hạch cả 2 hệ đều dùng Acetylcholine &amp; thụ thể N_N</div>
   </div>
 </div>
 
@@ -137,40 +192,113 @@ Hệ thần kinh tự chủ (ANS) điều hòa mọi hoạt động nội tạng
 Tất cả các thụ thể Adrenergic và Muscarinic (trừ Nicotinic là kênh ion) đều là **Thụ thể bắt cặp Protein G (GPCRs)**:
 
 
-<div class="flowchart-card">
-  <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: Thụ thể Gq: α1, M1, M3</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+<div class="flowchart-editorial-card">
+  <div class="flowchart-editorial-header">
+    <div class="flowchart-editorial-title">
+      <i class="fa-solid fa-dna"></i>
+      <span>CƠ CHẾ TRUYỀN TIN TẾ BÀO QUA PROTEIN G: Gq, Gs &amp; Gi TRONG HỆ ANS</span>
+    </div>
+    <span class="module-badge badge-physio">GPCR Signaling</span>
   </div>
-  <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 252" width="880" height="252" xmlns="http://www.w3.org/2000/svg">
+  <div class="flowchart-editorial-viewport">
+    <svg viewBox="0 0 920 370" width="100%" height="auto" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        <marker id="arrGq" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--amber, #d97706)"/>
         </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        <marker id="arrGs" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)"/>
         </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        <marker id="arrGi" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-danger, #ef4444)"/>
         </marker>
       </defs>
 
-      {/* Single Node: Thụ thể Gq: α1, M1, M3 */}
-      <rect x="250" y="20" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Thụ thể Gq: α1, M1, M3</text>
-      <line x1="440" y1="66" x2="440" y2="94" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: Thụ thể Gs: β1, β2, β3 */}
-      <rect x="250" y="94" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Thụ thể Gs: β1, β2, β3</text>
-      <line x1="440" y1="140" x2="440" y2="168" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: Thụ thể Gi: α2, M2 */}
-      <rect x="250" y="168" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="190" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Thụ thể Gi: α2, M2</text>
+      {/* COLUMN 1: Gq PATHWAY */}
+      <rect x="25" y="16" width="275" height="330" rx="12" fill="var(--color-surface, #ffffff)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
+      <rect x="25" y="16" width="275" height="34" rx="12" fill="rgba(245, 158, 11, 0.12)"/>
+      <text x="162" y="38" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" fill="var(--amber, #d97706)">PROTEIN G_q (PLC / IP3 / Ca²⁺)</text>
+
+      <rect x="40" y="60" width="245" height="42" rx="6" fill="rgba(245, 158, 11, 0.06)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="162" y="78" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="var(--color-text, #0f172a)">Thụ Thể: α1, M1, M3</text>
+      <text x="162" y="93" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="600" fill="var(--amber, #d97706)">(Quy tắc: HAVe 1 M&amp;M)</text>
+
+      <line x1="162" y1="102" x2="162" y2="124" stroke="var(--amber, #d97706)" stroke-width="2" marker-end="url(#arrGq)"/>
+
+      <rect x="40" y="126" width="245" height="52" rx="6" fill="var(--color-surface, #ffffff)" stroke="var(--amber, #f59e0b)" stroke-width="1.2"/>
+      <text x="162" y="144" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="800" fill="var(--amber, #d97706)">Kích hoạt Phospholipase C</text>
+      <text x="162" y="162" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text-muted, #64748b)">Thủy phân PIP2 ➔ IP3 + DAG</text>
+
+      <line x1="162" y1="178" x2="162" y2="200" stroke="var(--amber, #d97706)" stroke-width="2" marker-end="url(#arrGq)"/>
+
+      <rect x="40" y="202" width="245" height="52" rx="6" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.2"/>
+      <text x="162" y="220" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="700" fill="var(--color-text, #0f172a)">IP3 phóng thích Ca²⁺ từ SR</text>
+      <text x="162" y="238" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text-muted, #64748b)">DAG kích hoạt Protein Kinase C</text>
+
+      <rect x="40" y="266" width="245" height="66" rx="8" fill="rgba(245, 158, 11, 0.10)" stroke="var(--amber, #f59e0b)" stroke-width="1.2"/>
+      <text x="162" y="284" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="800" fill="var(--amber, #d97706)">ĐÁP ỨNG SINH HỌC</text>
+      <text x="50" y="303" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="700" fill="var(--color-text, #0f172a)">• Co cơ trơn mạch máu (α1: Tăng HA)</text>
+      <text x="50" y="320" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="700" fill="var(--color-text, #0f172a)">• Co thắt phế quản &amp; tiết dịch (M3)</text>
+
+
+      {/* COLUMN 2: Gs PATHWAY */}
+      <rect x="322" y="16" width="275" height="330" rx="12" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+      <rect x="322" y="16" width="275" height="34" rx="12" fill="rgba(2, 132, 199, 0.12)"/>
+      <text x="459" y="38" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" fill="var(--color-primary, #0284c7)">PROTEIN G_s (cAMP / PKA ⬆)</text>
+
+      <rect x="337" y="60" width="245" height="42" rx="6" fill="rgba(2, 132, 199, 0.06)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="459" y="78" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="var(--color-text, #0f172a)">Thụ Thể: β1, β2, β3</text>
+      <text x="459" y="93" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="600" fill="var(--color-primary, #0284c7)">(1 Tim, 2 Phổi, 3 Mỡ)</text>
+
+      <line x1="459" y1="102" x2="459" y2="124" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arrGs)"/>
+
+      <rect x="337" y="126" width="245" height="52" rx="6" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="1.2"/>
+      <text x="459" y="144" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="800" fill="var(--color-primary, #0284c7)">Kích hoạt Adenylyl Cyclase</text>
+      <text x="459" y="162" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text-muted, #64748b)">Chuyển ATP ➔ cAMP tăng vọt</text>
+
+      <line x1="459" y1="178" x2="459" y2="200" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arrGs)"/>
+
+      <rect x="337" y="202" width="245" height="52" rx="6" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.2"/>
+      <text x="459" y="220" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="700" fill="var(--color-text, #0f172a)">Hoạt hóa Protein Kinase A</text>
+      <text x="459" y="238" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text-muted, #64748b)">Phosphoryl hóa các protein đích (PKA)</text>
+
+      <rect x="337" y="266" width="245" height="66" rx="8" fill="rgba(2, 132, 199, 0.10)" stroke="var(--color-primary, #0284c7)" stroke-width="1.2"/>
+      <text x="459" y="284" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="800" fill="var(--color-primary, #0284c7)">ĐÁP ỨNG SINH HỌC</text>
+      <text x="347" y="303" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="700" fill="var(--color-text, #0f172a)">• Tăng nhịp tim &amp; sức co bóp (β1)</text>
+      <text x="347" y="320" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="700" fill="var(--color-text, #0f172a)">• Giãn cơ trơn phế quản &amp; mạch máu (β2)</text>
+
+
+      {/* COLUMN 3: Gi PATHWAY */}
+      <rect x="620" y="16" width="275" height="330" rx="12" fill="var(--color-surface, #ffffff)" stroke="var(--color-danger, #ef4444)" stroke-width="1.8"/>
+      <rect x="620" y="16" width="275" height="34" rx="12" fill="rgba(239, 68, 68, 0.12)"/>
+      <text x="757" y="38" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" fill="var(--color-danger, #ef4444)">PROTEIN G_i (cAMP / PKA ⬇)</text>
+
+      <rect x="635" y="60" width="245" height="42" rx="6" fill="rgba(239, 68, 68, 0.06)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="757" y="78" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="var(--color-text, #0f172a)">Thụ Thể: α2, M2</text>
+      <text x="757" y="93" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="600" fill="var(--color-danger, #ef4444)">(Quy tắc: MAD 2s)</text>
+
+      <line x1="757" y1="102" x2="757" y2="124" stroke="var(--color-danger, #ef4444)" stroke-width="2" marker-end="url(#arrGi)"/>
+
+      <rect x="635" y="126" width="245" height="52" rx="6" fill="var(--color-surface, #ffffff)" stroke="var(--color-danger, #ef4444)" stroke-width="1.2"/>
+      <text x="757" y="144" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="800" fill="var(--color-danger, #ef4444)">Ức chế Adenylyl Cyclase</text>
+      <text x="757" y="162" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text-muted, #64748b)">Làm sụt giảm nồng độ cAMP</text>
+
+      <line x1="757" y1="178" x2="757" y2="200" stroke="var(--color-danger, #ef4444)" stroke-width="2" marker-end="url(#arrGi)"/>
+
+      <rect x="635" y="202" width="245" height="52" rx="6" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.2"/>
+      <text x="757" y="220" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="700" fill="var(--color-text, #0f172a)">Giảm hoạt tính PKA</text>
+      <text x="757" y="238" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text-muted, #64748b)">Mở kênh K⁺ ➔ Ưu phân cực tế bào</text>
+
+      <rect x="635" y="266" width="245" height="66" rx="8" fill="rgba(239, 68, 68, 0.10)" stroke="var(--color-danger, #ef4444)" stroke-width="1.2"/>
+      <text x="757" y="284" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="800" fill="var(--color-danger, #ef4444)">ĐÁP ỨNG SINH HỌC</text>
+      <text x="645" y="303" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="700" fill="var(--color-text, #0f172a)">• Chậm nhịp tim &amp; chậm dẫn truyền AV (M2)</text>
+      <text x="645" y="320" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="700" fill="var(--color-text, #0f172a)">• Ức chế ngược phóng thích NE (α2 tiền hạch)</text>
     </svg>
+  </div>
+  <div class="flowchart-editorial-legend">
+    <div class="legend-chip"><span class="legend-dot" style="background: var(--amber, #f59e0b);"></span> Gq Pathway (Co mạch &amp; Xuất tiết)</div>
+    <div class="legend-chip"><span class="legend-dot" style="background: var(--color-primary, #0284c7);"></span> Gs Pathway (Tăng nhịp tim &amp; Giãn phế quản)</div>
+    <div class="legend-chip"><span class="legend-dot" style="background: var(--color-danger, #ef4444);"></span> Gi Pathway (Chậm nhịp tim &amp; Ức chế ngược NE)</div>
   </div>
 </div>
 

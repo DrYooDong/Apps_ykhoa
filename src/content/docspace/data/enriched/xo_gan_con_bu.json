@@ -1,0 +1,339 @@
+{
+    "icdCode": "K74.6",
+    "icdPrefixes": [
+        "K74.6",
+        "K70.3",
+        "B18.1",
+        "B18.2",
+        "K75.8"
+    ],
+    "diseaseName": "Xơ gan còn bù (Compensated Cirrhosis / cACLD)",
+    "specialty": "Gan mật - Tiêu hóa",
+    "severity": "standard",
+    "summary": "Xơ gan còn bù (hoặc Bệnh gan mạn tiến triển tiến triển còn bù - cACLD) là giai đoạn cấu trúc gan bị đảo lộn do mô xơ hóa lan rộng (Metavir F4) nhưng chức năng tổng hợp và chuyển hóa của gan vẫn duy trì bù trừ tốt (Child-Pugh A: 5–6 điểm). Bệnh nhân chưa xuất hiện các biến cố mất bù đe dọa tính mạng như cổ trướng, bệnh não gan hay xuất huyết tiêu hóa do vỡ giãn tĩnh mạch thực quản. Mục tiêu điều trị cốt lõi là kiểm soát căn nguyên (diệt HCV, ức chế HBV, cai rượu), ngăn ngừa tăng áp lực tĩnh mạch cửa có ý nghĩa lâm sàng (CSPH) và tầm soát định kỳ ung thư biểu mô tế bào gan (HCC).",
+    "goldStandard": "Chẩn đoán xác định dựa trên Đo độ đàn hồi gan (FibroScan / VCTE ≥ 12.5 kPa hoặc LSM ≥ 15 kPa theo Baveno VII), các chỉ số xơ hóa không xâm lấn (APRI &gt; 1.0, FIB-4 &gt; 3.25, M2BPGi ≥ 1.3 C.O.I), hoặc Sinh thiết gan (Metavir F4/Ishak 5-6) KÈM THEO điểm Child-Pugh A (5-6 điểm) và KHÔNG CÓ biến cố mất bù.",
+    "criteriaRule": {
+        "mandatoryIds": [
+            "xo_gan_f4_non_invasive",
+            "child_pugh_a_compensated"
+        ],
+        "minMajorRequired": 2,
+        "minMinorRequired": 1,
+        "ruleDescription": "Bắt buộc có bằng chứng xơ hóa gan giai đoạn F4 (FibroScan/APRI/FIB-4/Hình ảnh) VÀ điểm Child-Pugh A (5-6 điểm); KÈM THEO không có triệu chứng lâm sàng của mất bù VÀ có ít nhất 1 dấu hiệu cận lâm sàng của tăng áp cửa hoặc giảm chức năng tổng hợp nhẹ."
+    },
+    "criteria": [
+        {
+            "id": "xo_gan_f4_non_invasive",
+            "type": "mandatory",
+            "label": "Bằng chứng xơ hóa gan giai đoạn F4 (cACLD)",
+            "description": "FibroScan (VCTE) ≥ 12.5 kPa (hoặc LSM ≥ 15 kPa xác chẩn cACLD theo Baveno VII), APRI &gt; 1.0, FIB-4 &gt; 3.25, M2BPGi ≥ 1.3 C.O.I hoặc sinh thiết gan khẳng định Metavir F4.",
+            "sourceGuideline": "Quyết định 2855/QĐ-BYT 2024, Quyết định BYT 2026 &amp; Baveno VII"
+        },
+        {
+            "id": "child_pugh_a_compensated",
+            "type": "mandatory",
+            "label": "Thang điểm Child-Turcotte-Pugh Class A (5–6 điểm)",
+            "description": "Chức năng gan còn bù tốt: Bilirubin &lt; 35 µmol/L (&lt; 2 mg/dL), Albumin &gt; 35 g/L (&gt; 3.5 g/dL), INR &lt; 1.7 (PT &gt; 64%), KHÔNG có cổ trướng và KHÔNG có bệnh não gan.",
+            "sourceGuideline": "Quyết định 2855/QĐ-BYT Phụ lục 1 &amp; Quyết định BYT 2026"
+        },
+        {
+            "id": "loai_tru_bien_co_mat_bu",
+            "type": "major",
+            "label": "Không có tiền sử hoặc biểu hiện biến cố mất bù",
+            "description": "Lâm sàng hoàn toàn KHÔNG có cổ trướng (kể cả trên siêu âm mức độ vừa-nhiều), KHÔNG có xuất huyết tiêu hóa do vỡ giãn tĩnh mạch thực quản-dạ dày, KHÔNG có bệnh não gan (West-Haven Grade 1-4) và KHÔNG vàng da sậm tiến triển.",
+            "sourceGuideline": "Baveno VII Consensus &amp; AASLD Guidance 2023"
+        },
+        {
+            "id": "dieu_kien_tiem_tang_csph",
+            "type": "major",
+            "label": "Tăng áp lực tĩnh mạch cửa tiềm tàng / Có ý nghĩa lâm sàng (CSPH)",
+            "description": "FibroScan LSM ≥ 20 kPa hoặc Số lượng Tiểu cầu &lt; 150 G/L; Siêu âm ghi nhận tĩnh mạch cửa giãn (&gt; 13mm), lách to (đường kính dọc &gt; 12cm) hoặc lách xơ cứng; Nội soi phát hiện giãn tĩnh mạch thực quản độ I-III.",
+            "sourceGuideline": "AASLD Portal Hypertension Guidance 2023 &amp; Baveno VII"
+        },
+        {
+            "id": "lab_tieu_cau_giam",
+            "type": "lab",
+            "label": "Giảm tiểu cầu máu ngoại vi (Thrombocytopenia)",
+            "description": "Số lượng tiểu cầu &lt; 150 G/L (hoặc &lt; 100 G/L chỉ điểm tăng áp cửa nặng/cường lách) do cường lách và giảm sản xuất Thrombopoietin tại gan.",
+            "labThreshold": "PLT &lt; 150 G/L",
+            "sourceGuideline": "Quyết định BYT 2026 &amp; AASLD Guidance"
+        },
+        {
+            "id": "lab_chuc_nang_gan_dinh_luong",
+            "type": "lab",
+            "label": "Biến đổi nhẹ các chỉ số sinh hóa chức năng gan",
+            "description": "Albumin máu biến động nhẹ 30–35 g/L, Tỷ lệ Prothrombin % giảm nhẹ (60–80%) hoặc INR 1.2–1.6, Men gan AST/ALT có thể tăng nhẹ hoặc bình thường.",
+            "labThreshold": "Albumin 30-35 g/L, INR 1.2-1.6",
+            "sourceGuideline": "Quyết định 2855/QĐ-BYT 2024"
+        },
+        {
+            "id": "imaging_nhu_mo_gan_co_not",
+            "type": "imaging",
+            "label": "Hình ảnh xơ gan còn bù trên Siêu âm / CT / MRI ổ bụng",
+            "description": "Nhu mô gan thô, không đều, bờ gan gồ ghề/mất liên tục, phân thùy đuôi phì đại, hạ phân thùy IV teo; lách to; tĩnh mạch cửa giãn không kèm dịch tự do ổ bụng.",
+            "labThreshold": "Bờ gan không đều, Tĩnh mạch cửa &gt; 13mm, Lách &gt; 12cm",
+            "sourceGuideline": "AASLD Practice Guideline 2024"
+        }
+    ],
+    "severityGrading": [
+        {
+            "grade": "Xơ gan còn bù nguy cơ thấp (cACLD / CSPH nguy cơ thấp)",
+            "severity": "mild",
+            "criteria": "[Lâm sàng]: Hoàn toàn không triệu chứng cơ năng, thể trạng tốt. [Cận lâm sàng]: FibroScan LSM &lt; 15 kPa VÀ Tiểu cầu &gt; 150 G/L; APRI 1.0–1.5; Child-Pugh 5 điểm. [Tiêu chuẩn an toàn]: Nguy cơ có giãn TMTQ nguy cơ cao &lt; 5%, chưa cần chỉ định nội soi dạ dày đại trà theo tiêu chí Baveno VII.",
+            "triage": "Phòng khám Ngoại trú Gan mật / Y tế cơ sở / Tuyến huyện",
+            "primaryAction": "Điều trị triệt để căn nguyên (Kháng virus HBV/HCV, cai rượu tuyệt đối, giảm cân); Giám sát HCC mỗi 6 tháng.",
+            "targetVitals": "Sinh hiệu ổn định, Child-Pugh A 5 điểm, ALT/AST duy trì bình thường, HBV DNA dưới ngưỡng.",
+            "protocol": {
+                "title": "Phác đồ quản lý ngoại trú Xơ gan còn bù nguy cơ thấp",
+                "tuyen": [
+                    "Khám định kỳ mỗi 3–6 tháng tại phòng khám chuyên khoa Gan mật ngoại trú.",
+                    "Thực hiện siêu âm bụng + xét nghiệm AFP / PIVKA-II mỗi 6 tháng để tầm soát sớm ung thư gan (HCC)."
+                ],
+                "drugs": [
+                    [
+                        "Tenofovir alafenamide (TAF) / TDF / Entecavir",
+                        "TAF 25mg PO q24h / TDF 300mg PO q24h / ETV 0.5mg PO q24h",
+                        "Chỉ định bắt buộc 100% người bệnh xơ gan còn bù do HBV không phụ thuộc ALT hay HBV DNA"
+                    ],
+                    [
+                        "Sofosbuvir/Velpatasvir (SOF/VEL) hoặc SOF/DAC",
+                        "SOF/VEL 400/100mg 1 viên/ngày x 12 tuần",
+                        "Chỉ định cho xơ gan còn bù do HCV (mọi kiểu gen) theo Quyết định 2855/QĐ-BYT"
+                    ]
+                ],
+                "monitoring": [
+                    "Công thức máu (Tiểu cầu), AST, ALT, Bilirubin, Albumin, PT/INR mỗi 3-6 tháng.",
+                    "Tải lượng HBV DNA / HCV RNA định kỳ mỗi 6-12 tháng."
+                ],
+                "cautions": [
+                    "Cấm tuyệt đối đồ uống có cồn (rượu, bia) và các thuốc độc cho gan (tránh Paracetamol &gt; 2g/ngày).",
+                    "Tránh tự ý dùng thuốc đông y, thảo dược không rõ nguồn gốc gây đợt bùng phát suy gan."
+                ]
+            }
+        },
+        {
+            "grade": "Xơ gan còn bù nguy cơ cao / Có Tăng áp cửa có ý nghĩa lâm sàng (CSPH / Giãn TMTQ)",
+            "severity": "moderate",
+            "criteria": "[Lâm sàng]: Mệt mỏi nhẹ, sao mạch, ban đỏ lòng bàn tay, lách to ấn tức nhẹ. [Cận lâm sàng]: FibroScan LSM ≥ 20 kPa HOẶC Tiểu cầu &lt; 150 G/L; Nội soi thấy giãn tĩnh mạch thực quản độ II-III hoặc độ I có điểm đỏ; Child-Pugh 5–6 điểm. [Dấu hiệu cảnh báo]: Nguy cơ xuất huyết tiêu hóa do vỡ giãn TMTQ lần đầu trong 12 tháng tới.",
+            "triage": "Khoa Nội Tiêu hóa - Gan mật / Bệnh viện Tuyến Tỉnh / Trung ương",
+            "primaryAction": "Khởi đầu ngay Thuốc chẹn beta không chọn lọc (NSBB - Carvedilol) dự phòng nguyên phát vỡ giãn TMTQ; Điều trị căn nguyên; Tầm soát HCC.",
+            "targetVitals": "Tần số tim nghỉ 55–60 lần/phút, HATT ≥ 90 mmHg, Không có biến cố xuất huyết tiêu hóa.",
+            "protocol": {
+                "title": "Phác đồ dự phòng tăng áp cửa &amp; vỡ giãn TMTQ ở Xơ gan còn bù",
+                "tuyen": [
+                    "Quản lý nội trú ban đầu để dò liều Carvedilol hoặc theo dõi ngoại trú sát mỗi 2–4 tuần.",
+                    "Chỉ định Thắt tĩnh mạch thực quản bằng vòng cao su (EVL) nếu có chống chỉ định hoặc không dung nạp NSBB."
+                ],
+                "drugs": [
+                    [
+                        "Carvedilol (Thuốc chẹn beta không chọn lọc ưu tiên)",
+                        "Khởi đầu 6.25 mg PO 1 lần/ngày, tăng lên 6.25 mg x 2 lần/ngày sau 3-7 ngày nếu HA cho phép",
+                        "Mục tiêu: Tần số tim 55-60 lần/phút, HATT ≥ 90 mmHg. Không cần đo lại HVPG"
+                    ],
+                    [
+                        "Propranolol (Thay thế khi không có Carvedilol)",
+                        "Khởi đầu 20-40 mg PO x 2 lần/ngày, tăng dần liều mỗi 3-5 ngày",
+                        "Liều tối đa 160mg/ngày (nếu không có cổ trướng). Giảm liều nếu HATT &lt; 90 mmHg"
+                    ],
+                    [
+                        "Thuốc kháng virus NAs (TAF / ETV / TDF)",
+                        "Liều chuẩn hàng ngày dài hạn",
+                        "Bắt buộc phối hợp để giảm áp lực tĩnh mạch cửa do thoái triển xơ hóa nhu mô"
+                    ]
+                ],
+                "monitoring": [
+                    "Đo Mạch, Huyết áp mỗi ngày trong giai đoạn dò liều Carvedilol.",
+                    "Siêu âm ổ bụng + AFP / PIVKA-II định kỳ nghiêm ngặt mỗi 6 tháng."
+                ],
+                "cautions": [
+                    "Chống chỉ định Carvedilol khi HATT &lt; 90 mmHg, Nhịp chậm &lt; 50 lần/phút, Block AV độ II-III, Hen phế quản cấp.",
+                    "Tuyệt đối không ngừng ngột ngào NSBB để tránh hiện tượng dội ngược gây vỡ giãn TMTQ ồ ạt."
+                ]
+            }
+        },
+        {
+            "grade": "Xơ gan còn bù Dọa mất bù / Nguy cơ diễn tiến Đợt cấp (Impending Decompensation)",
+            "severity": "critical",
+            "criteria": "[Lâm sàng]: Mệt mỏi nhiều, chán ăn, phù nhẹ 2 mắt cá chân buổi chiều, vàng da nhẹ thoáng qua. [Cận lâm sàng]: Child-Pugh 6 điểm (Albumin tụt sát 30 g/L, Bilirubin nhích nhẹ 25-35 µmol/L, INR 1.5-1.6); Men gan AST/ALT tăng &gt; 3-5 lần ULN do đợt Bùng phát HBV hoặc uống rượu; FibroScan &gt; 25-30 kPa. [Dấu hiệu cảnh báo]: Nguy cơ chuyển dạng sang Xơ gan Mất bù (Child-Pugh B/C) hoặc ACLF trong vòng vài tuần.",
+            "triage": "Nhập viện Nội trú Khoa Gan mật / Bệnh viện Nhiệt đới / Tuyến Chuyên sâu",
+            "primaryAction": "Hội chẩn chuyên khoa, điều trị cấp bách đợt bùng phát nguyên nguyên (Viêm gan B bùng phát), bảo vệ tế bào gan, dự phòng hội chứng gan thận &amp; nhiễm trùng.",
+            "targetVitals": "Duy trì Child-Pugh ≤ 6 điểm, Phục hồi Albumin &gt; 35 g/L, Khống chế men gan và tải lượng virus.",
+            "protocol": {
+                "title": "Phác đồ can thiệp tích cực ngăn ngừa Mất bù xơ gan",
+                "tuyen": [
+                    "Nhập viện theo dõi nội trú sát chức năng gan và sinh hiệu.",
+                    "Đánh giá các yếu tố thúc đẩy: Nhiễm trùng ẩn, dùng thuốc NSAIDs, uống rượu, bùng phát virus."
+                ],
+                "drugs": [
+                    [
+                        "Tenofovir Alafenamide (TAF) / Entecavir (ETV)",
+                        "TAF 25mg / ETV 0.5mg PO hàng ngày",
+                        "Khởi động ngay lập tức trong đợt bùng phát HBV mạn để ngăn suy gan cấp"
+                    ],
+                    [
+                        "Dung dịch Human Albumin 20%",
+                        "100 mL (20g) IV truyền chậm trong 2-4 giờ",
+                        "Chỉ định khi Albumin &lt; 30 g/L kèm phù chân hoặc sau thủ thuật xâm lấn"
+                    ],
+                    [
+                        "L-Ornithine L-Aspartate (LOLA)",
+                        "5g-10g IV truyền tĩnh mạch hoặc 3g PO x 3 lần/ngày",
+                        "Hỗ trợ giải độc NH3, bảo vệ nhu mô gan trong đợt viêm hoại tử cấp"
+                    ]
+                ],
+                "monitoring": [
+                    "Kiểm tra CTM, AST, ALT, Bilirubin, Albumin, PT/INR, Creatinine, Điện giải đồ mỗi 48-72 giờ.",
+                    "Theo dõi sát vòng bụng, cân nặng hàng ngày và dấu hiệu thần kinh sớm (tiền bệnh não gan)."
+                ],
+                "cautions": [
+                    "Tuyệt đối cấm dùng thuốc an thần, thuốc ngủ (Benzodiazepine) và thuốc giảm đau NSAIDs.",
+                    "Tầm soát và điều trị sớm các ổ nhiễm trùng (Nhiễm trùng tiểu, hô hấp) tránh kích hoạt ACLF."
+                ]
+            }
+        }
+    ],
+    "protocol": {
+        "title": "Phác đồ toàn diện Chẩn đoán, Điều trị &amp; Quản lý Xơ gan còn bù",
+        "guideline": "Hướng dẫn Chẩn đoán Điều trị Viêm gan B (BYT 2026), Quyết định 2855/QĐ-BYT (2024), Baveno VII &amp; AASLD Guidance 2023",
+        "targetGoals": [
+            "Mục tiêu 1: Loại bỏ hoặc kiểm soát tối đa căn nguyên gây tổn thương gan (Đạt SVR12 cho HCV, ức chế HBV DNA dưới ngưỡng phát hiện, cai rượu 100%).",
+            "Mục tiêu 2: Đảo ngược/Thoái triển xơ hóa gan và duy trì trạng thái bù trừ ổn định lâu dài (Child-Pugh A 5 điểm).",
+            "Mục tiêu 3: Dự phòng hiệu quả biến chứng Tăng áp cửa (vỡ giãn TMTQ) và Phát hiện sớm ung thư biểu mô tế bào gan (HCC) ở giai đoạn có thể phẫu thuật/can thiệp triệt căn."
+        ],
+        "initialManagement": [
+            "Đánh giá và phân tầng mức độ xơ hóa gan (FibroScan, APRI, FIB-4, Child-Pugh).",
+            "Đánh giá nguy cơ tăng áp lực tĩnh mạch cửa: Kiểm tra Tiểu cầu và FibroScan LSM. Nếu LSM ≥ 20 kPa hoặc Tiểu cầu &lt; 150 G/L -&gt; Chỉ định Nội soi dạ dày tầm soát giãn TMTQ.",
+            "Khởi động ngay điều trị đặc hiệu theo căn nguyên bệnh gan gốc."
+        ],
+        "firstLineDrugs": [
+            {
+                "drugName": "Tenofovir alafenamide (TAF) 25mg",
+                "class": "Thuốc kháng virus nhóm NAs (Nucleot(s)ide Analogues)",
+                "route": "Đường uống (PO)",
+                "dosage": "25 mg x 1 lần/ngày uống sau ăn",
+                "frequency": "1 lần/ngày dài hạn (suốt đời)",
+                "instructions": "Ưu tiên hàng đầu cho bệnh nhân xơ gan còn bù có HBV, đặc biệt người &gt; 60 tuổi, có bệnh lý thận mạn hoặc loãng xương.",
+                "isFirstLine": true,
+                "notes": "An toàn cao cho thận và xương hơn TDF.",
+                "contraindications": [
+                    "Quá mẫn với TAF",
+                    "Suy thận giai đoạn cuối eGFR &lt; 15 mL/phút chưa lọc máu"
+                ]
+            },
+            {
+                "drugName": "Entecavir (ETV) 0.5mg",
+                "class": "Thuốc kháng virus nhóm NAs",
+                "route": "Đường uống (PO)",
+                "dosage": "0.5 mg x 1 lần/ngày (uống khi bụng đói, xa bữa ăn 2 giờ)",
+                "frequency": "1 lần/ngày dài hạn",
+                "instructions": "Thuốc đầu tay thay thế TAF cho xơ gan còn bù HBV chưa từng dùng Lamivudine.",
+                "isFirstLine": true,
+                "notes": "Cần điều chỉnh liều theo độ thanh thải Creatinine (eGFR &lt; 50 mL/phút).",
+                "contraindications": [
+                    "Tiền sử kháng Lamivudine (cần tăng liều 1mg hoặc chuyển TAF/TDF)"
+                ]
+            },
+            {
+                "drugName": "Sofosbuvir/Velpatasvir (SOF/VEL) 400mg/100mg",
+                "class": "Thuốc kháng virus trực tiếp (DAA) tác dụng đa kiểu gen",
+                "route": "Đường uống (PO)",
+                "dosage": "1 viên phối hợp (400/100mg) x 1 lần/ngày",
+                "frequency": "1 lần/ngày trong 12 tuần liên tục",
+                "instructions": "Phác đồ đầu tay điều trị Viêm gan C mạn có xơ gan còn bù cho tất cả các kiểu gen (Genotype 1–6).",
+                "isFirstLine": true,
+                "notes": "Đạt tỷ lệ khỏi bệnh (SVR12) &gt; 97-99%.",
+                "contraindications": [
+                    "Dùng đồng thời với Rifampicin, Carbamazepine, St. John's wort (suy giảm nồng độ DAA)",
+                    "Không dùng cùng Amiodarone (nguy cơ nhịp chậm nguy hiểm)"
+                ]
+            },
+            {
+                "drugName": "Carvedilol 6.25mg",
+                "class": "Thuốc chẹn beta không chọn lọc kèm chẹn alpha-1 ngoại vi (NSBB)",
+                "route": "Đường uống (PO)",
+                "dosage": "Khởi đầu 6.25mg x 1 lần/ngày; tăng lên 6.25mg x 2 lần/ngày sau 3-7 ngày",
+                "frequency": "2 lần/ngày liên tục dài hạn",
+                "instructions": "Dự phòng nguyên phát vỡ giãn TMTQ ở bệnh nhân có giãn TMTQ độ II-III hoặc độ I có điểm đỏ.",
+                "isFirstLine": true,
+                "notes": "Hiệu quả hạ áp cửa mạnh hơn Propranolol và không cần đo HVPG.",
+                "contraindications": [
+                    "Huyết áp tâm thu &lt; 90 mmHg",
+                    "Nhịp tim chậm &lt; 50 lần/phút",
+                    "Hen phế quản nặng, Block AV độ II-III"
+                ]
+            }
+        ],
+        "secondLineDrugs": [
+            {
+                "drugName": "Propranolol 40mg",
+                "class": "Thuốc chẹn beta không chọn lọc (NSBB)",
+                "route": "Đường uống (PO)",
+                "dosage": "20mg - 40mg x 2 lần/ngày, tăng dần liều mỗi 3-5 ngày",
+                "frequency": "2 lần/ngày",
+                "instructions": "Dùng thay thế Carvedilol khi không có sẵn thuốc hoặc bệnh nhân không dung nạp Carvedilol.",
+                "isFirstLine": false,
+                "notes": "Mục tiêu giảm nhịp tim nghỉ xuống 55-60 lần/phút.",
+                "contraindications": [
+                    "Hạ huyết áp, Nhịp chậm, Bệnh phổi tắc nghẽn mạn tính (COPD) nặng"
+                ]
+            }
+        ],
+        "supportiveCare": [
+            "Dinh dưỡng: Chế độ ăn giàu năng lượng (30-35 kcal/kg/ngày), đủ Protein (1.2-1.5 g/kg/ngày), không kiêng khem đạm quá mức trừ khi có bệnh toàn thân khác.",
+            "Bổ sung bữa ăn phụ giàu Protein/Carbohydrate muộn vào ban đêm (Late-evening snack - LES) giúp giảm dị hóa đạm và duy trì khối cơ.",
+            "Vận động thể lực: Tập thể dục aerobic và kháng lực nhẹ-vừa (30 phút/ngày, 5 ngày/tuần) để phòng ngừa teo cơ (Sarcopenia).",
+            "Tiêm phòng vắc xin: Tiêm vắc xin Viêm gan A, Viêm gan B (nếu chưa nhiễm), Cúm hàng năm và Phế cầu khuẩn."
+        ]
+    },
+    "complications": [
+        {
+            "name": "Chuyển dạng sang Xơ gan mất bù (Decompensation: Cổ trướng, Vỡ giãn TMTQ, Bệnh脑 gan)",
+            "timeframe": "subacute_7d",
+            "warningSigns": "Bụng to nhanh, phù 2 chân, nôn ra máu tươi/máu cục, đi ngoài phân đen như bã cà phê, lơ mơ, ngủ gà, rối loạn chu kỳ giấc ngủ.",
+            "preventiveAction": "Tuân thủ nghiêm ngặt thuốc kháng virus/cai rượu; Duy trì Carvedilol dự phòng vỡ giãn TMTQ; Tái khám ngay khi có dấu hiệu bất thường.",
+            "onCallAlertText": "CẢNH BÁO MẤT BÙ XƠ GAN: Nhập viện khẩn cấp! Đánh giá ngay sinh hiệu, làm CTM, Hct, PT/INR, Siêu âm bụng tìm dịch cổ trướng và Nội soi dạ dày cầm máu khẩn nếu có xuất huyết!"
+        },
+        {
+            "name": "Ung thư biểu mô tế bào gan (Hepatocellular Carcinoma - HCC)",
+            "timeframe": "subacute_7d",
+            "warningSigns": "Đau hạ sườn phải âm ỉ kéo dài, sụt cân không rõ nguyên nhân, chán ăn, mệt mỏi dồn dập, gõ thấy gan to cứng hoặc sờ thấy nốt gồ ghề.",
+            "preventiveAction": "Tầm soát định kỳ bắt buộc mỗi 6 tháng bằng Siêu âm ổ bụng KÈM THEO xét nghiệm các chỉ dấu ung thư gan (AFP, AFP-L3, PIVKA-II).",
+            "onCallAlertText": "NGUY CƠ UNG THƯ GAN (HCC): Đã phát hiện khối mờ/nốt tân sinh trên siêu âm hoặc PIVKA-II/AFP tăng cao! Chỉ định ngay CT-Scanner bụng 4 thì có tiêm thuốc cản quang hoặc MRI gan với chất tương phản từ để chẩn đoán xác định!"
+        }
+    ],
+    "monitoringLabs": [
+        "Công thức máu toàn bộ (Công thức bạch cầu, Huyết sắc tố, đặc biệt theo dõi sát Số lượng Tiểu cầu) mỗi 3–6 tháng.",
+        "Sinh hóa chức năng gan (AST, ALT, Bilirubin toàn phần/trực tiếp, Albumin, GGT) mỗi 3–6 tháng.",
+        "Đông máu toàn bộ (Tỷ lệ Prothrombin %, INR) mỗi 3–6 tháng.",
+        "Tải lượng virus định lượng (HBV DNA / HCV RNA) mỗi 6–12 tháng.",
+        "Siêu âm ổ bụng tổng quát KÈM Xét nghiệm AFP / PIVKA-II tầm soát HCC định kỳ nghiêm ngặt mỗi 6 tháng.",
+        "Đo độ đàn hồi gan (FibroScan) đánh giá tiến triển xơ hóa mỗi 12–24 tháng.",
+        "Nội soi thực quản - dạ dày - tá tràng tầm soát/theo dõi giãn TMTQ mỗi 1–2 năm (nếu có CSPH)."
+    ],
+    "vaultPathways": [
+        {
+            "khoCode": "CD",
+            "khoName": "Kho Tiêu Chuẩn CĐ",
+            "articleTitle": "Bộ tiêu chuẩn chẩn đoán xác định Xơ gan còn bù &amp; Tiêu chí phân tầng nguy cơ Baveno VII",
+            "searchKeyword": "chẩn đoán xơ gan còn bù cACLD Baveno VII FibroScan APRI"
+        },
+        {
+            "khoCode": "PDDT",
+            "khoName": "Kho Phác Đồ Điều Trị",
+            "articleTitle": "Phác đồ điều trị căn nguyên, dược thư NAs/DAA &amp; Dự phòng tăng áp cửa trong xơ gan còn bù",
+            "searchKeyword": "phác đồ xơ gan còn bù Tenofovir Carvedilol Sofosbuvir"
+        },
+        {
+            "khoCode": "DTH",
+            "khoName": "Kho Dịch Tễ &amp; Nguy Cơ",
+            "articleTitle": "Dịch tễ học xơ gan, diễn tiến tự nhiên &amp; Tiên lượng chuyển dạng mất bù / HCC",
+            "searchKeyword": "dịch tễ xơ gan tiên lượng nguy cơ ung thư gan HCC"
+        },
+        {
+            "khoCode": "BC",
+            "khoName": "Kho Biến Chứng",
+            "articleTitle": "Nhận diện sớm các dấu hiệu cờ đỏ chuyển giai đoạn mất bù &amp; Chiến lược tầm soát ung thư gan",
+            "searchKeyword": "biến chứng xơ gan tầm soát HCC vỡ giãn tĩnh mạch thực quản"
+        }
+    ]
+}

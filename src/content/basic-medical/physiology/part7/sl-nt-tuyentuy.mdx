@@ -49,26 +49,33 @@ sections:
 
 # 🧬 SINH LÝ TUYẾN TỤY NỘI TIẾT: INSULIN & GLUCAGON
 
+<div class="module-badge-group">
+  <span class="badge badge-system"><i class="fa-solid fa-dna"></i> Sinh Lý Hệ Nội Tiết & Sinh Sản</span>
+  <span class="badge badge-source"><i class="fa-solid fa-book-medical"></i> Guyton 14th Ch. 79 • Ganong 26th Ch. 24</span>
+  <span class="badge badge-module"><i class="fa-solid fa-cubes"></i> Tuyến Tụy Nội Tiết &amp; Chuyển Hóa Đường</span>
+  <span class="badge badge-ebm"><i class="fa-solid fa-shield-halved"></i> EBM 2026</span>
+</div>
+
 <PhysioQuickNav />
 
 {/* DẢI CHỈ SỐ NHANH (QUICK STATS STRIP) */}
-<section class="stats-strip">
+<section class="stats-strip theme-physio">
   <div class="stats-grid">
     <div class="stat-card">
-      <div class="stat-val blue">PHYS-ENDO-04</div>
-      <div class="stat-lbl">Mã chuyên đề • Sinh Lý Hệ Nội Tiết & Sinh Sản</div>
+      <div class="stat-val blue">Tế Bào Beta (65-70%)</div>
+      <div class="stat-lbl">Tiết Insulin &amp; Amylin • C-peptide bài xuất tỷ lệ đồng phân tử 1:1</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val green">Nội Môi Ổn Định</div>
-      <div class="stat-lbl">Cân bằng gradient điện hóa & Áp suất thẩm thấu</div>
+      <div class="stat-val green">Kênh K_ATP Tế Bào</div>
+      <div class="stat-lbl">ATP/ADP tăng → Đóng kênh K_ATP → Khử cực màng → Mở kênh Ca2+</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val amber">Feedback Loop</div>
-      <div class="stat-lbl">Vòng điều hòa phản hồi thần kinh - thể dịch</div>
+      <div class="stat-val amber">Kênh GLUT4 Cơ &amp; Mỡ</div>
+      <div class="stat-lbl">Kênh duy nhất phụ thuộc Insulin • Tín hiệu IRS-1/PI3K/Akt đưa GLUT4 ra màng</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val purple">Dược Lý EBM</div>
-      <div class="stat-lbl">Ứng dụng lâm sàng chuẩn Guyton 14th & Ganong 26th</div>
+      <div class="stat-val purple">Hôn Mê Cấp ĐTĐ</div>
+      <div class="stat-lbl">Type 1: Toan Ceton (DKA do mất hoàn toàn) • Type 2: Tăng áp lực thẩm thấu (HHS)</div>
     </div>
   </div>
 </section>
@@ -76,157 +83,261 @@ sections:
 ---
 
 ## 1. Cấu Trúc Tiểu Đảo Langerhans
-Tụy nội tiết chiếm khoảng 1–2% khối lượng tuyến tụy, gồm khoảng 1–2 triệu **Tiểu đảo Langerhans**:
-
+Tụy nội tiết chiếm khoảng 1–2% khối lượng tuyến tụy, gồm khoảng 1–2 triệu **Tiểu đảo Langerhans** với mạng lưới tế bào chuyên biệt:
 
 <div class="flowchart-card">
   <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: TIỂU ĐẢO LANGERHANS</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+    <div class="flowchart-title"><i class="fa-solid fa-cubes" style="color: var(--color-primary, #0284c7);"></i> CẤU TRÚC 3 DÒNG TẾ BÀO TIỂU ĐẢO LANGERHANS &amp; TƯƠNG TÁC CẬN TIẾT</div>
+    <span class="badge badge-blue">Guyton 14th Ch.79 • Pure Orthogonal SVG</span>
   </div>
   <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 208" width="880" height="208" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
-        </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
-        </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
-        </marker>
-      </defs>
+    <svg class="flowchart-svg" viewBox="0 0 960 380" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+      {/* CỘT 1: TẾ BÀO BETA */}
+      <rect x="20" y="20" width="285" height="330" rx="14" fill="var(--color-surface, #ffffff)" stroke="#0284c7" stroke-width="2"/>
+      <rect x="20" y="20" width="285" height="46" rx="14" fill="#0284c7"/>
+      <text x="162" y="48" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="13" fill="#ffffff">TẾ BÀO BETA (β - 65% – 70%)</text>
 
-      {/* Single Node: TIỂU ĐẢO LANGERHANS */}
-      <rect x="156.5" y="20" width="567" height="150" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">TIỂU ĐẢO LANGERHANS</text>
-      <text x="180.5" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ├──► TẾ BÀO BETA (β - Chiếm 65% – 70%): Nằm ở trung tâm tiểu</text>
-      <text x="180.5" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  đảo ──► Tiết INSULIN &amp; AMYLIN</text>
-      <text x="180.5" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ├──► TẾ BÀO ALPHA (α - Chiếm 20%): Nằm ở ngoại vi tiểu đảo</text>
-      <text x="180.5" y="118" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  ──► Tiết GLUCAGON</text>
-      <text x="180.5" y="136" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ├──► TẾ BÀO DELTA (δ - Chiếm 5% – 10%): ──► Tiết</text>
-      <text x="180.5" y="154" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  SOMATOSTATIN (Ức chế cận tiết cả α và β)</text>
+      <rect x="35" y="78" width="255" height="48" rx="8" fill="#f0f9ff" stroke="#0284c7" stroke-width="1.2"/>
+      <text x="162" y="98" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#0284c7">TRUNG TÂM TIỂU ĐẢO</text>
+      <text x="162" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">Máu tưới từ tâm ra rìa ngoại vi</text>
+
+      <text x="45" y="150" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#0284c7">• Sản Phẩm Bài Tiết:</text>
+      <text x="45" y="170" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• <strong>INSULIN</strong> (Hormone đồng hóa duy nhất)</text>
+      <text x="45" y="190" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• <strong>C-peptide</strong> (Tỷ lệ phân tử 1:1, đánh giá chức năng β)</text>
+      <text x="45" y="210" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• <strong>Amylin</strong> (Làm chậm rỗng dạ dày, giảm cảm giác thèm ăn)</text>
+
+      <text x="45" y="240" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#0284c7">• Tác Động Cận Tiết (Paracrine):</text>
+      <text x="45" y="260" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">Nồng độ Insulin cao tại tâm ức chế trực tiếp</text>
+      <text x="45" y="278" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">tế bào Alpha lân cận tiết Glucagon.</text>
+
+      <rect x="35" y="295" width="255" height="40" rx="6" fill="#f0f9ff"/>
+      <text x="162" y="320" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="10.5" fill="#0284c7">HẠ ĐƯỜNG HUYẾT SAU ĂN</text>
+
+      {/* CỘT 2: TẾ BÀO ALPHA */}
+      <rect x="335" y="20" width="290" height="330" rx="14" fill="var(--color-surface, #ffffff)" stroke="#dc2626" stroke-width="2"/>
+      <rect x="335" y="20" width="290" height="46" rx="14" fill="#dc2626"/>
+      <text x="480" y="48" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="13" fill="#ffffff">TẾ BÀO ALPHA (α - 20%)</text>
+
+      <rect x="350" y="78" width="260" height="48" rx="8" fill="#fef2f2" stroke="#dc2626" stroke-width="1.2"/>
+      <text x="480" y="98" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#dc2626">NGOẠI VI TIỂU ĐẢO</text>
+      <text x="480" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">Nhận dòng máu giàu Insulin từ tâm chảy ra</text>
+
+      <text x="360" y="150" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#dc2626">• Sản Phẩm Bài Tiết:</text>
+      <text x="360" y="170" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• <strong>GLUCAGON</strong> (Hormone dị hóa cứu đói)</text>
+      <text x="360" y="190" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">Gắn GPCR-Gs tăng tạo cAMP tại tế bào Gan</text>
+
+      <text x="360" y="225" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#dc2626">• Kích Thích Bài Tiết:</text>
+      <text x="360" y="245" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">Hạ đường huyết (&lt; 3.9 mmol/L), nhịn đói,</text>
+      <text x="360" y="263" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">giao cảm kích thích (Stress, vận động nặng).</text>
+
+      <rect x="350" y="295" width="260" height="40" rx="6" fill="#fef2f2"/>
+      <text x="480" y="320" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="10.5" fill="#dc2626">TĂNG ĐƯỜNG HUYẾT KHI ĐÓI</text>
+
+      {/* CỘT 3: TẾ BÀO DELTA */}
+      <rect x="655" y="20" width="285" height="330" rx="14" fill="var(--color-surface, #ffffff)" stroke="#7c3aed" stroke-width="2"/>
+      <rect x="655" y="20" width="285" height="46" rx="14" fill="#7c3aed"/>
+      <text x="797" y="48" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="13" fill="#ffffff">TẾ BÀO DELTA (δ - 5% – 10%)</text>
+
+      <rect x="670" y="78" width="255" height="48" rx="8" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.2"/>
+      <text x="797" y="98" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#7c3aed">RẢI RÁC TOÀN TIỂU ĐẢO</text>
+      <text x="797" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">Kiểm soát hãm phanh nội tại</text>
+
+      <text x="680" y="150" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#7c3aed">• Sản Phẩm Bài Tiết:</text>
+      <text x="680" y="170" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• <strong>SOMATOSTATIN (GHIH)</strong></text>
+      <text x="680" y="190" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">Ức chế cận tiết cả tế bào Alpha và Beta</text>
+
+      <text x="680" y="225" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#7c3aed">• Vai Trò Sinh Lý:</text>
+      <text x="680" y="245" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">Điều hòa nhu động đường tiêu hóa,</text>
+      <text x="680" y="263" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">giảm tốc độ hấp thu chất dinh dưỡng ruột.</text>
+
+      <rect x="670" y="295" width="255" height="40" rx="6" fill="#f5f3ff"/>
+      <text x="797" y="320" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="10.5" fill="#7c3aed">ĐIỀU HÒA HẤP THU &amp; PHANH HÃM</text>
     </svg>
   </div>
+  <div class="flowchart-editorial-legend">
+    <div class="legend-item"><span class="legend-dot" style="background: #0284c7;"></span> Tế bào Beta (Insulin / C-peptide)</div>
+    <div class="legend-item"><span class="legend-dot" style="background: #dc2626;"></span> Tế bào Alpha (Glucagon)</div>
+    <div class="legend-item"><span class="legend-dot" style="background: #7c3aed;"></span> Tế bào Delta (Somatostatin)</div>
+  </div>
 </div>
-
-- **Máu chảy từ tâm ra rìa (Center-to-periphery)**: Giúp nồng độ Insulin cực cao từ tế bào $\beta$ ức chế trực tiếp tế bào $\alpha$ tiết Glucagon.
-
 
 ---
 
-## 2. Cơ Chế Phân Tử Tiết Insulin
+## 2. Cơ Chế Phân Tử Tiết Insulin Tại Tế Bào Beta
+Sự bài tiết Insulin của tế bào Beta được ghép nối mật thiết với nồng độ Glucose máu qua chuỗi sự kiện ion và điện thế màng:
+
 <div class="flowchart-card">
   <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: NỒNG ĐỘ GLUCOSE MÁU TĂNG SAU ĂN (&gt; 5.5 mmol/L)</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+    <div class="flowchart-title"><i class="fa-solid fa-bolt" style="color: var(--color-primary, #0284c7);"></i> 6 BƯỚC PHÂN TỬ CẢM BIẾN GLUCOSE &amp; XUẤT BÀO INSULIN TẠI TẾ BÀO BETA</div>
+    <span class="badge badge-blue">Ganong 26th Ch.24 • Pure Orthogonal SVG</span>
   </div>
   <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 732" width="880" height="732" xmlns="http://www.w3.org/2000/svg">
+    <svg class="flowchart-svg" viewBox="0 0 960 440" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrInsBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
         </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
-        </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrInsAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
         </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        <marker id="arrInsGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
         </marker>
       </defs>
 
-      {/* Single Node: NỒNG ĐỘ GLUCOSE MÁU TĂNG SAU Ă */}
-      <rect x="190" y="20" width="500" height="46" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">NỒNG ĐỘ GLUCOSE MÁU TĂNG SAU ĂN (&gt; 5.5 mmol/L)</text>
-      <line x1="440" y1="66" x2="440" y2="94" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: Glucose đi vào tế bào Beta qua */}
-      <rect x="150" y="94" width="580" height="96" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Glucose đi vào tế bào Beta qua KÊNH GLUT2 (Độc Lập với</text>
-      <text x="440" y="134" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--color-text, #0f172a)">Insulin)</text>
-      <text x="174" y="156" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ▼ (Enzyme Glucokinase phosphoryl hóa Glucose ──►</text>
-      <text x="174" y="174" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  Glucose-6-P)</text>
-      <line x1="440" y1="190" x2="440" y2="218" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: Chu trình Đường phân &amp; Hô hấp  */}
-      <rect x="185" y="218" width="510" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="240" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Chu trình Đường phân &amp; Hô hấp tế bào tại Ty thể</text>
-      <line x1="440" y1="264" x2="440" y2="292" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: TỶ LỆ ATP / ADP NỘI BÀO TĂNG V */}
-      <rect x="250" y="292" width="380" height="46" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
-      <text x="440" y="314" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">TỶ LỆ ATP / ADP NỘI BÀO TĂNG VỌT</text>
-      <line x1="440" y1="338" x2="440" y2="366" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: ĐÓNG KÊNH KALI NHẠY CẢM ATP (K */}
-      <rect x="156.5" y="366" width="567" height="78" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="388" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">ĐÓNG KÊNH KALI NHẠY CẢM ATP (K_ATP CHANNELS)</text>
-      <text x="180.5" y="410" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Ion K+ không thoát ra được ──► KHỬ CỰC MÀNG TẾ BÀO BETA (-70</text>
-      <text x="180.5" y="428" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  mV ──► -30 mV)</text>
-      <line x1="440" y1="444" x2="440" y2="472" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: MỞ KÊNH CANXI PHỤ THUỘC ĐIỆN T */}
-      <rect x="160" y="472" width="560" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="494" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">MỞ KÊNH CANXI PHỤ THUỘC ĐIỆN THẾ (Voltage-Gated Ca2+</text>
-      <text x="440" y="512" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--color-text, #0f172a)">Channels)</text>
-      <line x1="440" y1="532" x2="440" y2="560" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: DÒNG CANXI (Ca2+) ÙA VÀO BÀO T */}
-      <rect x="250" y="560" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="582" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">DÒNG CANXI (Ca2+) ÙA VÀO BÀO TƯƠNG</text>
-      <line x1="440" y1="606" x2="440" y2="634" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: PHÓNG THÍCH INSULIN &amp; C-PEPTID */}
-      <rect x="160" y="634" width="560" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="656" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">PHÓNG THÍCH INSULIN &amp; C-PEPTIDE VÀO TĨNH MẠCH CỬA VỀ</text>
-      <text x="440" y="674" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--color-text, #0f172a)">GAN</text>
+      {/* HÀNG TRÊN: BƯỚC 1 -> 2 -> 3 */}
+      {/* Bước 1 */}
+      <rect x="30" y="30" width="270" height="150" rx="12" fill="var(--color-surface, #ffffff)" stroke="#0284c7" stroke-width="2"/>
+      <rect x="30" y="30" width="270" height="30" rx="12" fill="#0284c7"/>
+      <text x="165" y="50" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="#ffffff">BƯỚC 1: KHUẾCH TÁN GLUT2</text>
+      <text x="45" y="80" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10.5" fill="var(--color-text, #0f172a)">• Glucose máu tăng sau ăn (&gt; 5.5 mmol/L)</text>
+      <text x="45" y="100" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Đi vào tế bào Beta qua kênh <strong>GLUT2</strong></text>
+      <text x="45" y="118" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">(Khuếch tán thuận hóa, độc lập Insulin)</text>
+      <text x="45" y="145" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="#0284c7">Km cao ~ 15-20 mM (cảm biến tỷ lệ thuận)</text>
+
+      {/* Mũi tên 1 -> 2 */}
+      <line x1="300" y1="105" x2="340" y2="105" stroke="#0284c7" stroke-width="2" marker-end="url(#arrInsBlue)"/>
+
+      {/* Bước 2 */}
+      <rect x="345" y="30" width="270" height="150" rx="12" fill="var(--color-surface, #ffffff)" stroke="#0284c7" stroke-width="2"/>
+      <rect x="345" y="30" width="270" height="30" rx="12" fill="#0284c7"/>
+      <text x="480" y="50" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="#ffffff">BƯỚC 2: CẢM BIẾN GLUCOKINASE</text>
+      <text x="360" y="80" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10.5" fill="var(--color-text, #0f172a)">• Phosphoryl hóa Glucose</text>
+      <text x="360" y="100" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Enzyme <strong>Glucokinase (Hexokinase IV)</strong></text>
+      <text x="360" y="118" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">chuyển Glucose → G-6-P</text>
+      <text x="360" y="145" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="#0284c7">Đóng vai trò "Glucose Sensor" tối cao</text>
+
+      {/* Mũi tên 2 -> 3 */}
+      <line x1="615" y1="105" x2="655" y2="105" stroke="#0284c7" stroke-width="2" marker-end="url(#arrInsBlue)"/>
+
+      {/* Bước 3 */}
+      <rect x="660" y="30" width="270" height="150" rx="12" fill="var(--color-surface, #ffffff)" stroke="#d97706" stroke-width="2"/>
+      <rect x="660" y="30" width="270" height="30" rx="12" fill="#d97706"/>
+      <text x="795" y="50" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="#ffffff">BƯỚC 3: ĐÓNG KÊNH K_ATP</text>
+      <text x="675" y="80" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10.5" fill="var(--color-text, #0f172a)">• Tỷ lệ ATP/ADP nội bào tăng vọt</text>
+      <text x="675" y="100" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Đóng kênh <strong>K_ATP nhạy cảm năng lượng</strong></text>
+      <text x="675" y="118" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Ion K+ không thể thoát ra ngoài</text>
+      <text x="675" y="145" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="#d97706">Thuốc: <strong>Sulfonylureas</strong> đóng trực tiếp K_ATP</text>
+
+      {/* Mũi tên vòng xuống 3 -> 4 */}
+      <path d="M 795 180 L 795 230 L 795 240" fill="none" stroke="#d97706" stroke-width="2" marker-end="url(#arrInsAmber)"/>
+
+      {/* HÀNG DƯỚI: BƯỚC 4 <- 5 <- 6 */}
+      {/* Bước 4 */}
+      <rect x="660" y="245" width="270" height="150" rx="12" fill="var(--color-surface, #ffffff)" stroke="#d97706" stroke-width="2"/>
+      <rect x="660" y="245" width="270" height="30" rx="12" fill="#d97706"/>
+      <text x="795" y="265" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="#ffffff">BƯỚC 4: KHỬ CỰC MÀNG BETA</text>
+      <text x="675" y="295" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10.5" fill="var(--color-text, #0f172a)">• Điện thế màng dịch chuyển</text>
+      <text x="675" y="315" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Điện thế nghỉ từ <strong>-70 mV khử cực lên -30 mV</strong></text>
+      <text x="675" y="333" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Kích hoạt mở các kênh nhạy cảm điện thế</text>
+      <text x="675" y="360" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="#d97706">Khử cực kích phát chuỗi xung canxi</text>
+
+      {/* Mũi tên 4 -> 5 */}
+      <line x1="660" y1="320" x2="620" y2="320" stroke="#059669" stroke-width="2" marker-end="url(#arrInsGreen)"/>
+
+      {/* Bước 5 */}
+      <rect x="345" y="245" width="270" height="150" rx="12" fill="var(--color-surface, #ffffff)" stroke="#059669" stroke-width="2"/>
+      <rect x="345" y="245" width="270" height="30" rx="12" fill="#059669"/>
+      <text x="480" y="265" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="#ffffff">BƯỚC 5: DÒNG CANXI ÙA VÀO</text>
+      <text x="360" y="295" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10.5" fill="var(--color-text, #0f172a)">• Mở kênh Ca2+ phụ thuộc điện thế</text>
+      <text x="360" y="315" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Dòng <strong>Ca2+ ùa vào bào tương tế bào Beta</strong></text>
+      <text x="360" y="333" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Kích thích protein SNARE vận chuyển hạt</text>
+      <text x="360" y="360" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="#059669">Nồng độ Ca2+ nội bào quyết định biên độ bài tiết</text>
+
+      {/* Mũi tên 5 -> 6 */}
+      <line x1="345" y1="320" x2="305" y2="320" stroke="#059669" stroke-width="2" marker-end="url(#arrInsGreen)"/>
+
+      {/* Bước 6 */}
+      <rect x="30" y="245" width="270" height="150" rx="12" fill="var(--color-surface, #ffffff)" stroke="#059669" stroke-width="2"/>
+      <rect x="30" y="245" width="270" height="30" rx="12" fill="#059669"/>
+      <text x="165" y="265" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="#ffffff">BƯỚC 6: XUẤT BÀO INSULIN</text>
+      <text x="45" y="295" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10.5" fill="var(--color-text, #0f172a)">• Hòa màng hạt dự trữ bài xuất</text>
+      <text x="45" y="315" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Phóng thích <strong>Insulin &amp; C-peptide</strong></text>
+      <text x="45" y="333" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">theo tỷ lệ phân tử 1:1 vào tĩnh mạch cửa</text>
+      <text x="45" y="360" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="#059669">Pha 1 (sẵn có 5-10p) &amp; Pha 2 (tổng hợp mới)</text>
     </svg>
   </div>
+  <div class="flowchart-editorial-legend">
+    <div class="legend-item"><span class="legend-dot" style="background: #0284c7;"></span> Cảm biến Glucose (GLUT2 &amp; Glucokinase)</div>
+    <div class="legend-item"><span class="legend-dot" style="background: #d97706;"></span> Đóng K_ATP &amp; Khử cực màng tế bào</div>
+    <div class="legend-item"><span class="legend-dot" style="background: #059669;"></span> Dòng Canxi ùa vào &amp; Xuất bào Insulin/C-peptide</div>
+  </div>
 </div>
-
 
 ---
 
 ## 3. Thụ Thể Tyrosine Kinase & Kênh GLUT4
-Insulin gắn vào **Thụ thể bề mặt (Receptor Tyrosine Kinase - gồm 2 tiểu đơn vị $\alpha$ ngoại bào và 2 tiểu đơn vị $\beta$ xuyên màng)**:
-
+Insulin gắn vào **Thụ thể bề mặt (Receptor Tyrosine Kinase - gồm 2 tiểu đơn vị $\alpha$ ngoại bào và 2 tiểu đơn vị $\beta$ xuyên màng)** kích hoạt 2 dòng thác tín hiệu nội bào quan trọng:
 
 <div class="flowchart-card">
   <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: INSULIN GẮN VÀO TIỂU ĐƠN VỊ ALPHA</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+    <div class="flowchart-title"><i class="fa-solid fa-arrows-down-to-line" style="color: var(--color-primary, #0284c7);"></i> DÒNG THÁC TÍN HIỆU INSULIN: NHÁNH PI3K-AKT (GLUT4) VS NHÁNH MAPK (TĂNG TRƯỞNG)</div>
+    <span class="badge badge-blue">Guyton 14th Ch.79 • Pure Orthogonal SVG</span>
   </div>
   <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 224" width="880" height="224" xmlns="http://www.w3.org/2000/svg">
+    <svg class="flowchart-svg" viewBox="0 0 960 450" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrSigBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
         </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrSigGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
         </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrSigAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
         </marker>
       </defs>
 
-      {/* Single Node: INSULIN GẮN VÀO TIỂU ĐƠN VỊ AL */}
-      <rect x="156.5" y="20" width="567" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">INSULIN GẮN VÀO TIỂU ĐƠN VỊ ALPHA</text>
-      <text x="180.5" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Tự phosphoryl hóa gốc Tyrosine trên tiểu đơn vị Beta nội bào</text>
-      <line x1="440" y1="80" x2="440" y2="108" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: Hoạt hóa Cơ chất Thụ thể Insul */}
-      <rect x="156.5" y="108" width="567" height="78" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
-      <text x="440" y="130" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">Hoạt hóa Cơ chất Thụ thể Insulin (IRS-1 / IRS-2)</text>
-      <text x="180.5" y="152" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ├──► 1. Nhánh PI3K ──► Protein Kinase B (Akt):</text>
-      <text x="180.5" y="170" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Kích thích phân chia tế bào, tăng trưởng và đồng hóa protein</text>
+      {/* TẦNG 1: THỤ THỂ INSULIN MÀNG TẾ BÀO */}
+      <rect x="250" y="20" width="460" height="70" rx="12" fill="var(--color-surface, #ffffff)" stroke="#0284c7" stroke-width="2"/>
+      <rect x="250" y="20" width="460" height="28" rx="12" fill="#0284c7"/>
+      <text x="480" y="39" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12.5" fill="#ffffff">THỤ THỂ INSULIN TYROSINE KINASE (2α - 2β HETEROTETRAMER)</text>
+      <text x="480" y="68" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">Insulin gắn tiểu đơn vị α → Tự phosphoryl hóa gốc Tyrosine tiểu đơn vị β nội bào</text>
+
+      <line x1="480" y1="90" x2="480" y2="130" stroke="#0284c7" stroke-width="2" marker-end="url(#arrSigBlue)"/>
+
+      {/* TẦNG 2: TUYỂN MỘ IRS-1 / IRS-2 */}
+      <rect x="310" y="135" width="340" height="50" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="480" y="157" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#0284c7">CƠ CHẤT THỤ THỂ INSULIN (IRS-1 &amp; IRS-2)</text>
+      <text x="480" y="174" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">Nút giao chia tách 2 con đường tín hiệu chuyển hóa &amp; tăng trưởng</text>
+
+      {/* RẼ 2 NHÁNH SONG SONG */}
+      <path d="M 400 185 L 400 230 L 260 230 L 260 250" fill="none" stroke="#059669" stroke-width="2" marker-end="url(#arrSigGreen)"/>
+      <path d="M 560 185 L 560 230 L 700 230 L 700 250" fill="none" stroke="#d97706" stroke-width="2" marker-end="url(#arrSigAmber)"/>
+
+      {/* NHÁNH TRÁI: PI3K - AKT - GLUT4 (HIỆU ỨNG CHUYỂN HÓA ĐƯỜNG/MỠ) */}
+      <rect x="60" y="255" width="400" height="165" rx="12" fill="var(--color-surface, #ffffff)" stroke="#059669" stroke-width="2"/>
+      <rect x="60" y="255" width="400" height="28" rx="12" fill="#059669"/>
+      <text x="260" y="274" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#ffffff">NHÁNH CHUYỂN HÓA: PI3K ──► AKT (PKB)</text>
+
+      <text x="75" y="305" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#059669">1. Chuyển dịch kênh GLUT4 (Translocation):</text>
+      <text x="75" y="325" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">Túi nội bào chứa GLUT4 hòa màng cơ vân &amp; mô mỡ</text>
+      <text x="75" y="343" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Bắt giữ Glucose từ máu vào nội bào nhanh gấp 10-20 lần</text>
+
+      <text x="75" y="370" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#059669">2. Tổng hợp Glycogen &amp; Dừng ly giải mỡ:</text>
+      <text x="75" y="390" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">Akt ức chế GSK3 → Hoạt hóa Glycogen Synthase</text>
+      <text x="75" y="408" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Ức chế men HSL mô mỡ (khóa chặn sinh thể ceton)</text>
+
+      {/* NHÁNH PHẢI: MAPK - TĂNG TRƯỞNG & TỔNG HỢP PROTEIN */}
+      <rect x="500" y="255" width="400" height="165" rx="12" fill="var(--color-surface, #ffffff)" stroke="#d97706" stroke-width="2"/>
+      <rect x="500" y="255" width="400" height="28" rx="12" fill="#d97706"/>
+      <text x="700" y="274" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#ffffff">NHÁNH TĂNG TRƯỞNG: RAS ──► RAF ──► MAPK</text>
+
+      <text x="515" y="305" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#d97706">1. Phân chia &amp; Biệt hóa tế bào:</text>
+      <text x="515" y="325" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">Hoạt hóa yếu tố phiên mã nhân, kích thích phân bào</text>
+      <text x="515" y="343" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Giải thích hiện tượng tăng sinh u trong tăng insulin máu mạn</text>
+
+      <text x="515" y="370" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#d97706">2. Đồng hóa Protein:</text>
+      <text x="515" y="390" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">Tăng hấp thu acid amin, hoạt hóa dịch mã ribosome</text>
+      <text x="515" y="408" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Chống teo cơ, thúc đẩy tăng trưởng cơ thể hiệp đồng với GH</text>
     </svg>
   </div>
+  <div class="flowchart-editorial-legend">
+    <div class="legend-item"><span class="legend-dot" style="background: #0284c7;"></span> Thụ thể Tyrosine Kinase &amp; Phức hợp IRS</div>
+    <div class="legend-item"><span class="legend-dot" style="background: #059669;"></span> Nhánh PI3K / Akt (Chuyển dịch GLUT4 &amp; Đồng hóa)</div>
+    <div class="legend-item"><span class="legend-dot" style="background: #d97706;"></span> Nhánh Ras / MAPK (Phân bào &amp; Biểu hiện gen)</div>
+  </div>
 </div>
-
 
 ---
 
@@ -237,16 +348,17 @@ Insulin gắn vào **Thụ thể bề mặt (Receptor Tyrosine Kinase - gồm 2 
 | **Chuyển hóa Lipid** | • Tăng tổng hợp Triglyceride tại mô mỡ<br />• Hoạt hóa Lipoprotein Lipase (LPL)<br />• **Ức chế mạnh mẽ men Lipase nhạy cảm hormone (HSL)** ──► Ngăn chặn tạo thể Ceton | • Hoạt hóa men HSL tăng ly giải mỡ tạo $FFA$<br />• Kích hoạt tạo thể Ceton (Ketogenesis) tại gan |
 | **Chuyển hóa Protein** | • Tăng vận chuyển acid amin vào cơ<br />• Tăng tổng hợp protein, chống teo cơ | • Tăng dị hóa protein cơ giải phóng acid amin làm cơ chất cho tân tạo đường tại gan |
 
-
 ---
 
 ## 5. Bệnh Lý: ĐTĐ Type 1, Type 2 & Hạ Đường Huyết
 1. **Đái Tháo Đường Type 1 (Thiếu Insulin Tuyệt Đối)**:
-     - *Cơ chế*: Tự miễn phá hủy $>90\%$ tế bào $\beta$ của tụy (Kháng thể Anti-GAD, IA-2, ZnT8) ở người trẻ.
-     - *Hậu quả cấp cứu*: Mất hoàn toàn Insulin làm tăng ly giải mỡ ồ ạt $\rightarrow$ Tích tụ các thể Ceton (Acetoacetate, $\beta$-hydroxybutyrate) gây **TOAN CETON ĐÁI THÁO ĐƯỜNG (DKA: Thở nhanh sâu Kussmaul, hơi thở mùi táo thối, Toan chuyển hóa tăng Anion Gap)**. Bắt buộc điều trị bằng Insulin suốt đời.
-  2. **Đái Tháo Đường Type 2 (Đề Kháng Insulin & Suy Giảm Tiết Tương Đối)**:
-     - *Cơ chế*: Liên quan béo phì, lối sống $\rightarrow$ Đề kháng Insulin tại mô cơ/mỡ kết hợp suy kiệt tế bào $\beta$ tiến triển.
-     - *Biến chứng cấp tính*: **Hội chứng Tăng Áp Suất Thẩm Thấu Máu Tăng Đường Huyết (HHS)** (Đường huyết $> 33\text{ mmol/L}$, không có toan ceton vì vẫn còn một lượng nhỏ Insulin ức chế ly giải mỡ).
+   - *Cơ chế*: Tự miễn phá hủy $>90\%$ tế bào $\beta$ của tụy (Kháng thể Anti-GAD, IA-2, ZnT8) ở người trẻ.
+   - *Hậu quả cấp cứu*: Mất hoàn toàn Insulin làm tăng ly giải mỡ ồ ạt $\rightarrow$ Tích tụ các thể Ceton (Acetoacetate, $\beta$-hydroxybutyrate) gây **TOAN CETON ĐÁI THÁO ĐƯỜNG (DKA: Thở nhanh sâu Kussmaul, hơi thở mùi táo thối, Toan chuyển hóa tăng Anion Gap)**. Bắt buộc điều trị bằng Insulin suốt đời.
+2. **Đái Tháo Đường Type 2 (Đề Kháng Insulin & Suy Giảm Tiết Tương Đối)**:
+   - *Cơ chế*: Liên quan béo phì, lối sống $\rightarrow$ Đề kháng Insulin tại mô cơ/mỡ kết hợp suy kiệt tế bào $\beta$ tiến triển.
+   - *Biến chứng cấp tính*: **Hội chứng Tăng Áp Suất Thẩm Thấu Máu Tăng Đường Huyết (HHS)** (Đường huyết $> 33\text{ mmol/L}$, không có toan ceton vì vẫn còn một lượng nhỏ Insulin ức chế ly giải mỡ).
+
+---
 
 ## 6. Tài Liệu Tham Khảo EBM
 <div class="citation-box">
@@ -258,7 +370,6 @@ Insulin gắn vào **Thụ thể bề mặt (Receptor Tyrosine Kinase - gồm 2 
   </ol>
 </div>
 
-
 {/* HÀNG NÚT ĐIỀU HƯỚNG SPA */}
 <div class="btn-row">
   <a href="#/basic-medical/giai-phau-sinh-ly" class="btn btn-primary">
@@ -268,3 +379,4 @@ Insulin gắn vào **Thụ thể bề mặt (Receptor Tyrosine Kinase - gồm 2 
     <i class="fa-solid fa-arrow-up"></i> Lên đầu trang
   </a>
 </div>
+

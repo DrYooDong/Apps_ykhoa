@@ -17,6 +17,7 @@
 9. [Thành Phần 8: Công Cụ CDSS Tính Toán Tương Tác Trực Tiếp Trong Bài](#thành-phần-8-công-cụ-cdss-tính-toán-tương-tác-trực-tiếp-trong-bài)
 10. [Thành Phần 9: Trích Dẫn Y Văn Chuẩn AMA & Liên Kết Chéo Hệ Sinh Thái](#thành-phần-9-trích-dẫn-y-văn-chuẩn-ama--liên-kết-chéo-hệ-sinh-thái)
 11. [Golden Template: File MDX Guideline Mẫu Chuẩn Toàn Diện](#11-golden-template-file-mdx-guideline-mẫu-chuẩn-toàn-diện)
+12. [Thành Phần Mở Rộng: Thiết Kế Tóm Tắt Nghiên Cứu & Landmark Trial (EBM Study Suite)](#12-thành-phần-mở-rộng-thiết-kế-tóm-tắt-nghiên-cứu--landmark-trial-ebm-study-suite)
 
 ---
 
@@ -660,5 +661,206 @@ sections:
     </div>
   </div>
 
+</div>
+```
+
+---
+
+## 12. THÀNH PHẦN MỞ RỘNG: THIẾT KẾ TÓM TẮT NGHIÊN CỨU & LANDMARK TRIAL (EBM STUDY SUITE)
+
+> **Mục đích**: Các bài báo khoa học gốc, thử nghiệm lâm sàng ngẫu nhiên có nhóm chứng (**Landmark RCTs**), tổng quan hệ thống (**Systematic Reviews**) và phân tích gộp (**Meta-Analyses**) có đặc thù dữ liệu hoàn toàn khác với các Hướng dẫn Thực hành Lâm sàng (CPGs).  
+> Bộ style suite `src/styles/components/research-study-article.css` được nạp tự động qua `src/styles/global.css`, mang đến giao diện trực quan, đậm chất học thuật xuất bản quốc tế (NEJM / Lancet / JAMA standard) mà vẫn bảo đảm 100% Dark Mode và responsive mobile-first.
+
+---
+
+### 12.1. So Sánh Kiến Trúc CPG vs Research Study
+
+| Đặc tính | Hướng Dẫn Thực Hành (CPG) | Thử Nghiệm Lâm Sàng / Nghiên Cứu (Study) |
+|---|---|---|
+| **Mục tiêu chính** | Khuyến cáo hành động điều trị | Kiểm định giả thuyết khoa học & bằng chứng số học |
+| **Phân tầng cốt lõi** | `COR` (I, IIa, IIb, III) & `LOE` (A, B, C) | `PICO`, Điểm kết thúc chính/phụ (Endpoints) |
+| **Độ tin cậy** | Đồng thuận chuyên gia & Hội đồng Guideline | Đánh giá nguy cơ sai lệch (**Cochrane RoB 2.0 / ROBINS-I**) |
+| **Dữ liệu định lượng** | Bảng liều thuốc, sơ đồ lưu đồ | **HR, RR, OR, ARR, RRR, NNT, 95% CI, p-value** |
+| **Kết luận thực hành** | Bậc thang chỉ định | **Verdict Box (Practice-Changing vs Confirmatory)** |
+
+---
+
+### 12.2. Nhóm Badge Nghiên Cứu Chuyên Biệt (`.study-badges`)
+
+Được đặt ngay dưới tiêu đề bài viết trong `.article-hero`:
+
+```html
+<div class="module-badge-group study-badges">
+  <span class="badge badge-study-type"><i class="fa-solid fa-microscope"></i> Landmark RCT Phase III</span>
+  <span class="badge badge-phase"><i class="fa-solid fa-flask-vial"></i> Đa Trung Tâm Quốc Tế</span>
+  <span class="badge badge-rob"><i class="fa-solid fa-shield-check"></i> Cochrane RoB: Nguy cơ Thấp</span>
+  <span class="badge badge-journal"><i class="fa-solid fa-newspaper"></i> N Engl J Med 2015</span>
+  <span class="badge badge-sample-size"><i class="fa-solid fa-users"></i> N = 7,020 BN</span>
+</div>
+```
+
+---
+
+### 12.3. Dải Chỉ Số Thử Nghiệm (`.stats-strip.theme-trial`)
+
+Sử dụng dải chỉ số mang sắc thái Indigo/Cyan (`theme-trial`) để làm nổi bật các biến số định lượng then chốt của thử nghiệm lâm sàng:
+
+```html
+<section class="stats-strip theme-trial">
+  <div class="stat-card">
+    <div class="stat-num highlight-trial">7,020</div>
+    <div class="stat-lbl">Bệnh nhân (42 quốc gia)</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-num highlight-trial">0.86</div>
+    <div class="stat-lbl">HR 3-Point MACE (p = 0.04)</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-num highlight-trial">0.62</div>
+    <div class="stat-lbl">HR Tử vong Tim mạch (Giảm 38%)</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-num highlight-trial">0.65</div>
+    <div class="stat-lbl">HR Tử vong do mọi nguyên nhân</div>
+  </div>
+</section>
+```
+
+---
+
+### 12.4. Khung Cấu Trúc PICO Bento Grid (`.pico-bento-grid`)
+
+Trực quan hóa thiết kế nghiên cứu theo chuẩn PICO quốc tế:
+
+```html
+<div class="pico-bento-grid">
+  <div class="pico-item pico-p">
+    <span class="pico-tag"><i class="fa-solid fa-user-group"></i> Population (Dân số)</span>
+    <div class="pico-text">Người trưởng thành mắc ĐTĐ típ 2 kèm bệnh tim mạch do xơ vữa (ASCVD) đã xác lập, eGFR ≥ 30 mL/min/1.73m².</div>
+  </div>
+  <div class="pico-item pico-i">
+    <span class="pico-tag"><i class="fa-solid fa-syringe"></i> Intervention (Can thiệp)</span>
+    <div class="pico-text">Empagliflozin 10 mg hoặc 25 mg uống 1 lần mỗi ngày kết hợp với phác đồ chuẩn.</div>
+  </div>
+  <div class="pico-item pico-c">
+    <span class="pico-tag"><i class="fa-solid fa-vial"></i> Comparison (Đối chứng)</span>
+    <div class="pico-text">Giả dược (Placebo) tương ứng 1 lần mỗi ngày kết hợp với phác đồ chuẩn.</div>
+  </div>
+  <div class="pico-item pico-o">
+    <span class="pico-tag"><i class="fa-solid fa-trophy"></i> Outcome (Kết cục chính)</span>
+    <div class="pico-text">3-Point MACE: Tử vong tim mạch, Nhồi máu cơ tim không tử vong, hoặc Đột quỵ không tử vong.</div>
+  </div>
+</div>
+```
+
+---
+
+### 12.5. Bảng Điểm Kết Thúc Thử Nghiệm (`.trial-endpoints-table`)
+
+Bảng dữ liệu thống kê chuyên sâu hiển thị tỷ lệ biến cố, Hazard Ratio / Relative Risk, khoảng tin cậy 95%, p-value và kết luận ưu thế can thiệp:
+
+```html
+<div class="table-wrap">
+  <table class="data-table trial-endpoints-table">
+    <thead>
+      <tr>
+        <th>Biến Cố / Điểm Kết Thúc</th>
+        <th>Nhóm Can Thiệp (Empa)</th>
+        <th>Nhóm Giả Dược (Placebo)</th>
+        <th>Thống Kê (HR / ARR)</th>
+        <th>Giá Trị p</th>
+        <th>Ưu Thế</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="endpoint-primary">
+        <td><strong>3-Point MACE</strong></td>
+        <td>490/4687 (10.5%)</td>
+        <td>282/2333 (12.1%)</td>
+        <td>HR 0.86 (95% CI 0.74–0.99)</td>
+        <td><span class="p-val sig">p = 0.04</span></td>
+        <td><span class="favors-exp">Nghiêng về Can thiệp</span></td>
+      </tr>
+      <tr class="endpoint-secondary">
+        <td><strong>Tử vong do Tim mạch</strong></td>
+        <td>172/4687 (3.7%)</td>
+        <td>137/2333 (5.9%)</td>
+        <td>HR 0.62 (95% CI 0.49–0.77)</td>
+        <td><span class="p-val sig">p &lt; 0.001</span></td>
+        <td><span class="favors-exp">Nghiêng về Can thiệp</span></td>
+      </tr>
+      <tr>
+        <td><strong>Đột quỵ không tử vong</strong></td>
+        <td>164/4687 (3.5%)</td>
+        <td>69/2333 (3.0%)</td>
+        <td>HR 1.18 (95% CI 0.89–1.56)</td>
+        <td><span class="p-val ns">p = 0.26</span></td>
+        <td><span class="favors-ctrl">Không khác biệt</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+```
+
+---
+
+### 12.6. Thẻ Đánh Giá Nguy Cơ Sai Lệch Cochrane RoB 2.0 (`.rob-card`)
+
+Ma trận hiển thị mức độ rủi ro sai lệch phương pháp luận theo 5 lĩnh vực Cochrane:
+
+```html
+<div class="rob-card">
+  <div class="rob-header">
+    <div class="rob-title"><i class="fa-solid fa-shield-halved"></i> Đánh Giá Nguy Cơ Sai Lệch (Cochrane RoB 2.0)</div>
+    <span class="badge badge-rob"><i class="fa-solid fa-circle-check"></i> Rủi ro Sai lệch Tổng thể: THẤP</span>
+  </div>
+  <div class="rob-grid">
+    <div class="rob-domain-card low-risk">
+      <div class="rob-domain-title">D1: Ngẫu Nhiên Hóa</div>
+      <div class="rob-status">Nguy cơ thấp</div>
+      <div class="rob-desc">Sinh chuỗi ngẫu nhiên bằng máy tính trung tâm, giấu mã phân bổ qua hệ thống tương tác web.</div>
+    </div>
+    <div class="rob-domain-card low-risk">
+      <div class="rob-domain-title">D2: Sai Lệch Can Thiệp</div>
+      <div class="rob-status">Nguy cơ thấp</div>
+      <div class="rob-desc">Làm mù đôi hoàn toàn đối với bệnh nhân, nhân viên y tế và điều phối viên nghiên cứu.</div>
+    </div>
+    <div class="rob-domain-card low-risk">
+      <div class="rob-domain-title">D3: Dữ Liệu Thiếu Hụt</div>
+      <div class="rob-status">Nguy cơ thấp</div>
+      <div class="rob-desc">Tỷ lệ mất dấu theo dõi cực thấp (&lt; 1%), phân tích theo nguyên tắc ý định điều trị (ITT).</div>
+    </div>
+    <div class="rob-domain-card low-risk">
+      <div class="rob-domain-title">D4: Đo Lường Kết Cục</div>
+      <div class="rob-status">Nguy cơ thấp</div>
+      <div class="rob-desc">Hội đồng đánh giá biến cố độc lập (CEC) làm mù với phân nhóm điều trị khi phân loại.</div>
+    </div>
+    <div class="rob-domain-card low-risk">
+      <div class="rob-domain-title">D5: Báo Cáo Chọn Lọc</div>
+      <div class="rob-status">Nguy cơ thấp</div>
+      <div class="rob-desc">Toàn bộ các kết cục đã đăng ký trước trên ClinicalTrials.gov đều được công bố chi tiết.</div>
+    </div>
+  </div>
+</div>
+```
+
+---
+
+### 12.7. Hộp Phán Quyết Ứng Dụng Thực Hành Lâm Sàng (`.verdict-box`)
+
+Tổng kết giá trị ứng dụng lâm sàng của nghiên cứu (Practice-Changing vs Confirmatory):
+
+```html
+<div class="verdict-box practice-changing">
+  <div class="verdict-badge"><i class="fa-solid fa-gavel"></i> PHÁN QUYẾT LÂM SÀNG: PRACTICE-CHANGING</div>
+  <h4>Nghiên cứu mang tính bước ngoặt thay đổi toàn diện hướng dẫn điều trị toàn cầu</h4>
+  <p>EMPA-REG OUTCOME là thử nghiệm đầu tiên chứng minh thuốc ức chế SGLT2 không chỉ hạ đường huyết mà còn làm giảm ngoạn mục 38% tử vong tim mạch và 35% nhập viện do suy tim, mở đường cho kỷ nguyên mới trong điều trị tim mạch - thận - chuyển hóa.</p>
+  <div class="verdict-grid">
+    <div><strong>Khuyến cáo Guideline:</strong> Đưa SGLT2i lên vị trí ưu tiên hàng đầu trong các Hướng dẫn ADA, ESC, AHA và Bộ Y tế cho BN ĐTĐ có bệnh tim mạch.</div>
+    <div><strong>Tác động chi phí/lợi ích:</strong> NNT = 39 để ngăn ngừa 1 ca tử vong tim mạch trong 3 năm, khẳng định tính khả thi cao trong thực hành.</div>
+  </div>
+  <div class="takeaway-pearl">
+    <i class="fa-solid fa-lightbulb"></i> <strong>Lưu ý thực chiến:</strong> Luôn kiểm tra eGFR trước khi khởi trị (chỉ định khi eGFR ≥ 20–30 mL/min/1.73m² theo các cập nhật mới) và dặn dò bệnh nhân uống đủ nước, vệ sinh cơ quan sinh dục để phòng ngừa nhiễm trùng niệu - sinh dục.
+  </div>
 </div>
 ```

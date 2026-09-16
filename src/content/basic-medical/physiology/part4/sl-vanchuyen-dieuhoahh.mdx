@@ -49,26 +49,33 @@ sections:
 
 # 🧬 SINH LÝ VẬN CHUYỂN KHÍ TRONG MÁU & ĐIỀU HÒA HÔ HẤP
 
-<PhysioQuickNav />
+<div class="module-badge-group">
+  <span class="badge badge-physio"><i class="fa-solid fa-lungs"></i> GIẢI PHẪU - SINH LÝ HỌC</span>
+  <span class="badge badge-outline">Vận Chuyển Khí & Điều Hòa • Guyton 14th Ch.41-42 • Ganong 26th Ch.34-35</span>
+</div>
 
 {/* DẢI CHỈ SỐ NHANH (QUICK STATS STRIP) */}
-<section class="stats-strip">
+<section class="stats-strip theme-physio">
   <div class="stats-grid">
     <div class="stat-card">
-      <div class="stat-val blue">PHYS-RESP-03</div>
-      <div class="stat-lbl">Mã chuyên đề • Sinh Lý Tim Mạch & Hô Hấp</div>
+      <div class="stat-val blue">20.0 mL/dL</div>
+      <div class="stat-lbl">CaO2 • Tổng hàm lượng oxy động mạch toàn phần</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val green">Nội Môi Ổn Định</div>
-      <div class="stat-lbl">Cân bằng gradient điện hóa & Áp suất thẩm thấu</div>
+      <div class="stat-val amber">26.8 mmHg</div>
+      <div class="stat-lbl">P50 • Phân áp PaO2 để 50% Hemoglobin bão hòa oxy</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val amber">Feedback Loop</div>
-      <div class="stat-lbl">Vòng điều hòa phản hồi thần kinh - thể dịch</div>
+      <div class="stat-val green">70%</div>
+      <div class="stat-lbl">HCO3- • Dạng vận chuyển CO2 chủ yếu (Chloride Shift)</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val purple">Dược Lý EBM</div>
-      <div class="stat-lbl">Ứng dụng lâm sàng chuẩn Guyton 14th & Ganong 26th</div>
+      <div class="stat-val purple">2 giây</div>
+      <div class="stat-lbl">Xung Ramp • DRG phát nhịp hít vào dây thần kinh hoành</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val blue">40 mmHg</div>
+      <div class="stat-lbl">PaCO2 • Động lực thông khí trung ương số 1 ở người bình thường</div>
     </div>
   </div>
 </section>
@@ -87,92 +94,143 @@ $$CaO_2 = \left( 1.34 \times [Hb] \times \frac{SaO_2}{100} \right) + (0.003 \tim
 - *Ví dụ ở người khỏe mạnh ($[Hb] = 15\text{ g/dL}, SaO_2 = 98\%, PaO_2 = 100\text{ mmHg}$)*:
   $$CaO_2 = (1.34 \times 15 \times 0.98) + (0.003 \times 100) = 19.7 + 0.3 = \mathbf{20.0\text{ mL } O_2\text{/dL máu (200 mL/L)}}$$
 
-
 ---
 
 ## 2. Đường Cong HbO2 & Hiệu Ứng Bohr
 Mối quan hệ giữa phân áp oxy $PaO_2$ và độ bão hòa $SaO_2$ của Hemoglobin có dạng **Hình chữ S (Sigmoidal Curve)** nhờ hiện tượng hợp tác dị lập thể:
 - **$P_{50}$ (Phân áp $PaO_2$ để 50% Hb bão hòa oxy)**: Bình thường ở người là **$26.8\text{ mmHg}$**.
 
-
 <div class="flowchart-card">
   <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: 2. Đường Cong HbO2 &amp; Hiệu Ứng Bohr</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+    <div class="flowchart-title"><i class="fa-solid fa-chart-line" style="color: var(--color-primary, #0284c7);"></i> ĐỒ THỊ PHÂN LY OXYHEMOGLOBIN (HbO2) & CƠ CHẾ DỊCH CHUYỂN BOHR</div>
+    <span class="badge badge-amber">Sigmoidal Kinetics</span>
   </div>
   <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 208" width="880" height="208" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
-        </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
-        </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
-        </marker>
-      </defs>
+    <svg class="flowchart-svg" viewBox="0 0 900 380" width="100%" height="380" xmlns="http://www.w3.org/2000/svg">
+      {/* Khung đồ thị */}
+      <rect x="30" y="20" width="540" height="290" rx="12" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
 
-      {/* Single Node: Độ bão hòa SaO2 (%) */}
-      <rect x="165" y="20" width="550" height="150" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">Độ bão hòa SaO2 (%)</text>
-      <text x="189" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• 100 ┌──────────────────────/─────────── DỊCH TRÁI (Tăng ái</text>
-      <text x="189" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  lực - Giữ chặt O2):</text>
-      <text x="189" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• 50 ┼──────────────────/</text>
-      <text x="189" y="118" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• 0 └───┴───────────┴──────────┴────── • Tăng 2,3-DPG, Tăng</text>
-      <text x="189" y="136" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  Thân nhiệt (Sốt/Vận động)</text>
-      <text x="189" y="154" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• P50(Trái) 26.8 P50(Phải) Phân áp Oxy PaO2 (mmHg)</text>
+      {/* Trục Tung SaO2 (%) */}
+      <line x1="85" y1="40" x2="85" y2="280" stroke="var(--color-text, #0f172a)" stroke-width="1.5"/>
+      <text x="75" y="45" text-anchor="end" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="#0284c7">100%</text>
+      <line x1="80" y1="45" x2="550" y2="45" stroke="#e2e8f0" stroke-dasharray="3,3" stroke-width="1"/>
+
+      <text x="75" y="105" text-anchor="end" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600" fill="var(--color-text-muted, #64748b)">75%</text>
+      <line x1="80" y1="105" x2="550" y2="105" stroke="#e2e8f0" stroke-dasharray="3,3" stroke-width="1"/>
+
+      <text x="75" y="165" text-anchor="end" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="#d97706">50% (P50)</text>
+      <line x1="80" y1="165" x2="550" y2="165" stroke="#d97706" stroke-dasharray="4,4" stroke-width="1.2"/>
+
+      <text x="75" y="280" text-anchor="end" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="var(--color-text, #0f172a)">0%</text>
+
+      {/* Trục Hoành PaO2 (mmHg) */}
+      <line x1="85" y1="280" x2="550" y2="280" stroke="var(--color-text, #0f172a)" stroke-width="1.5"/>
+      <text x="85" y="298" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #64748b)">0</text>
+
+      {/* P50 chuẩn: 26.8 mmHg */}
+      <line x1="205" y1="45" x2="205" y2="280" stroke="#0284c7" stroke-dasharray="4,4" stroke-width="1.2"/>
+      <text x="205" y="298" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="700" fill="#0284c7">26.8</text>
+
+      {/* 40 mmHg (Máu tĩnh mạch) */}
+      <line x1="270" y1="45" x2="270" y2="280" stroke="#dc2626" stroke-dasharray="3,3" stroke-width="1"/>
+      <text x="270" y="298" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="600" fill="#dc2626">40 (Pv)</text>
+
+      {/* 100 mmHg (Máu động mạch) */}
+      <line x1="510" y1="45" x2="510" y2="280" stroke="#059669" stroke-dasharray="3,3" stroke-width="1"/>
+      <text x="510" y="298" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="700" fill="#059669">100 (Pa)</text>
+
+      {/* 3 ĐƯỜNG CONG S: TRÁI - CHUẨN - PHẢI */}
+      {/* 1. LỆCH TRÁI (Green) */}
+      <path d="M 85 280 Q 140 220 160 165 Q 185 90 300 55 L 530 45" fill="none" stroke="#059669" stroke-width="2" stroke-dasharray="4,4"/>
+
+      {/* 2. CHUẨN (Blue) */}
+      <path d="M 85 280 Q 170 230 205 165 Q 245 95 360 58 L 530 46" fill="none" stroke="#0284c7" stroke-width="3.5" stroke-linecap="round"/>
+
+      {/* 3. LỆCH PHẢI - BOHR (Amber) */}
+      <path d="M 85 280 Q 210 250 255 165 Q 310 110 420 65 L 530 50" fill="none" stroke="#d97706" stroke-width="2" stroke-dasharray="4,4"/>
+
+      <circle cx="205" cy="165" r="5" fill="#0284c7"/>
+      <text x="220" y="160" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#0284c7">P50 = 26.8</text>
+
+      {/* CỘT BẢNG QUY TẮC CADET BÊN PHẢI */}
+      <rect x="590" y="20" width="280" height="290" rx="12" fill="var(--color-surface, #ffffff)" stroke="#d97706" stroke-width="1.8"/>
+      <rect x="590" y="20" width="280" height="36" rx="12" fill="#d97706" fill-opacity="0.12"/>
+      <text x="730" y="44" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12.5" fill="#d97706">HIỆU ỨNG BOHR: "CADET FACE RIGHT"</text>
+
+      <rect x="605" y="66" width="250" height="135" rx="8" fill="var(--amber-bg, #fffbeb)" stroke="#fcd34d" stroke-width="1.2"/>
+      <text x="618" y="87" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="#b45309">DỊCH PHẢI (Giảm ái lực ──► Nhả O2):</text>
+      <text x="618" y="108" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• <strong>C</strong> - Tăng CO2 (Tăng chuyển hóa mô)</text>
+      <text x="618" y="126" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• <strong>A</strong> - Tăng Acid (H+ tăng / pH giảm)</text>
+      <text x="618" y="144" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• <strong>D</strong> - Tăng 2,3-DPG (Thiếu oxy mạn)</text>
+      <text x="618" y="162" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• <strong>E</strong> - Tăng Exercise (Vận động cơ bắp)</text>
+      <text x="618" y="180" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• <strong>T</strong> - Tăng Temperature (Sốt / sinh nhiệt)</text>
+
+      <rect x="605" y="210" width="250" height="85" rx="8" fill="var(--green-bg, #f0fdf4)" stroke="#86efac" stroke-width="1.2"/>
+      <text x="618" y="230" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="#15803d">DỊCH TRÁI (Tăng ái lực ──► Giữ O2):</text>
+      <text x="618" y="249" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Giảm CO2, Giảm H+ (Kiềm máu), Hạ thân nhiệt</text>
+      <text x="618" y="267" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Hemoglobin thai nhi (HbF), Ngộ độc khí CO</text>
+
+      {/* DẢI CHÚ THÍCH DƯỚI */}
+      <rect x="30" y="325" width="840" height="42" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="50" y="350" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)"><strong style="color: #b91c1c;">⚠ Ngộ độc CO:</strong> CO có ái lực cao gấp 240 lần O2, đẩy đường cong lệch cực mạnh sang TRÁI và khóa dạng R-state, ngăn mô nhận oxy dù SpO2 ngón tay đo giả tạo 99-100%.</text>
     </svg>
   </div>
 </div>
 
-
-  Khi các mô cơ bắp vận động mạnh hoặc viêm nhiễm sinh nhiệt:
-  - **C** - $\uparrow CO_2$
-  - **A** - $\uparrow Acid$ ($H^+ \rightarrow \downarrow pH$ do toan lactic)
-  - **D** - $\uparrow 2,3-DPG$
-  - **E** - $\uparrow Exercise$ (Vận động thể lực)
-  - **T** - $\uparrow Temperature$ (Tăng thân nhiệt tại chỗ)
-  - **KẾT QUẢ**: Đẩy đường cong $HbO_2$ lệch mạnh sang PHẢI (**Hiệu ứng Bohr**), làm Hemoglobin dễ dàng nhả oxy tối đa đúng tại nơi các mô đang thiếu oxy nhất.
-
-
 ---
 
 ## 3. Vận Chuyển CO2 & Hiệu Ứng Haldane
-Khí $CO_2$ do các mô chuyển hóa sinh ra được máu chuyên chở về phổi dưới 3 dạng:
-
+Khí $CO_2$ do các mô chuyển hóa sinh ra được máu chuyên chở về phổi dưới 3 dạng sinh hóa:
 
 <div class="flowchart-card">
   <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: KHÍ CO2 TỪ MÔ ĐI VÀO MÁU TOÀN PHẦN</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+    <div class="flowchart-title"><i class="fa-solid fa-recycle" style="color: var(--color-primary, #0284c7);"></i> 3 DẠNG VẬN CHUYỂN CO2 & HIỆN TƯỢNG CHLORIDE SHIFT (HAMBURGER)</div>
+    <span class="badge badge-green">Biochemical Transport</span>
   </div>
   <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 136" width="880" height="136" xmlns="http://www.w3.org/2000/svg">
+    <svg class="flowchart-svg" viewBox="0 0 900 340" width="100%" height="340" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrShiftBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
         </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrShiftGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
-        </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
         </marker>
       </defs>
 
-      {/* Single Node: KHÍ CO2 TỪ MÔ ĐI VÀO MÁU TOÀN  */}
-      <rect x="199.00000000000003" y="20" width="481.99999999999994" height="78" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">KHÍ CO2 TỪ MÔ ĐI VÀO MÁU TOÀN PHẦN</text>
-      <text x="223.00000000000003" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ├──► 1. DẠNG ION BICARBONATE (HCO3-): CHIẾM 70%</text>
-      <text x="223.00000000000003" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ├──► 2. DẠNG HỢP CHẤT CARBAMINO (HbCO2): CHIẾM 23%</text>
+      {/* CỘT 1: BICARBONATE (70%) */}
+      <rect x="30" y="25" width="370" height="235" rx="12" fill="var(--color-surface, #ffffff)" stroke="#059669" stroke-width="2"/>
+      <rect x="30" y="25" width="370" height="38" rx="12" fill="#059669" fill-opacity="0.12"/>
+      <text x="215" y="49" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="13" fill="#059669">1. DẠNG ION BICARBONATE (HCO3-) • 70%</text>
+
+      <rect x="48" y="75" width="334" height="60" rx="8" fill="var(--green-bg, #f0fdf4)" stroke="#86efac" stroke-width="1.2"/>
+      <text x="60" y="96" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#15803d">CO2 + H2O ──► H2CO3 ──► H+ + HCO3-</text>
+      <text x="60" y="118" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #64748b)">Xúc tác cực nhanh bởi enzym Carbonic Anhydrase (CA) trong hồng cầu</text>
+
+      <rect x="48" y="145" width="334" height="100" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.2"/>
+      <text x="60" y="166" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="#0284c7">• HIỆN TƯỢNG CHLORIDE SHIFT (HAMBURGER):</text>
+      <text x="60" y="186" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">Ion HCO3- khuếch tán ra huyết tương trao đổi kéo ion Cl- từ huyết tương đi vào trong hồng cầu qua kênh đối vận AE1 (Band 3).</text>
+      <text x="60" y="232" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="#15803d" font-weight="600">✓ Máu tĩnh mạch có nồng độ Cl- nội bào cao hơn máu động mạch</text>
+
+      {/* CỘT 2: CARBAMINO & HÒA TAN */}
+      <rect x="425" y="25" width="445" height="235" rx="12" fill="var(--color-surface, #ffffff)" stroke="#0284c7" stroke-width="2"/>
+      <rect x="425" y="25" width="445" height="38" rx="12" fill="#0284c7" fill-opacity="0.12"/>
+      <text x="647" y="49" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="13" fill="#0284c7">2. CARBAMINO (23%) &amp; HÒA TAN TỰ DO (7%)</text>
+
+      <rect x="445" y="75" width="405" height="75" rx="8" fill="var(--blue-bg, #eff6ff)" stroke="#93c5fd" stroke-width="1.2"/>
+      <text x="460" y="96" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#1d4ed8">Hợp chất Carbaminohemoglobin (HbCO2) • 23%</text>
+      <text x="460" y="116" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• CO2 gắn trực tiếp vào nhóm amin tự do (-NH2) của Globin</text>
+      <text x="460" y="134" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="#1d4ed8" font-weight="600">✓ Không cạnh tranh vị trí gắn với Heme (khác với CO độc chất)</text>
+
+      <rect x="445" y="160" width="405" height="85" rx="8" fill="var(--amber-bg, #fffbeb)" stroke="#fcd34d" stroke-width="1.2"/>
+      <text x="460" y="181" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#b45309">Khí hòa tan tự do trong huyết tương • 7%</text>
+      <text x="460" y="201" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Tạo nên phân áp PaCO2 = 40 mmHg trong máu động mạch</text>
+      <text x="460" y="221" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="#b45309" font-weight="600">✓ Phân tử tín hiệu hóa học quyết định nhịp hô hấp trung ương</text>
+
+      {/* DẢI HIỆU ỨNG HALDANE DƯỚI */}
+      <rect x="30" y="275" width="840" height="50" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.2"/>
+      <text x="50" y="296" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="#0284c7"><i class="fa-solid fa-wind"></i> HIỆU ỨNG HALDANE TẠI MAO MẠCH PHỔI:</text>
+      <text x="50" y="313" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">O2 gắn vào Hemoglobin làm giảm tính base của Hb $\rightarrow$ Đẩy bật CO2 văng khỏi gốc Carbamino và phóng thích H+ để trung hòa HCO3- thành CO2 thở ra ngoài.</text>
     </svg>
   </div>
 </div>
@@ -206,10 +264,62 @@ Nhịp thở được điều khiển tự động bởi mạng lưới neuron t
 | **Kích thích chính** | **Nồng độ $H^+$ trong Dịch Não Tủy (CSF)** do $PaCO_2$ máu khuếch tán qua hàng rào máu não sinh ra. | **Hạ Oxy máu động mạch nghiêm trọng ($PaO_2 < 60\text{ mmHg}$)**; nồng độ $H^+$ và $PaCO_2$ trong máu. |
 | **Độ nhạy & Vai trò** | **ĐỘNG LỰC HÔ HẤP CHÍNH Ở NGƯỜI BÌNH THƯỜNG** (Chỉ cần $PaCO_2$ tăng $2\text{ mmHg}$ đã kích hoạt tăng gấp đôi thông khí). | Đóng vai trò "Hệ thống báo động cấp cứu khẩn cấp" khi thiếu oxy máu nặng. |
 
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-gauge-high" style="color: var(--color-primary, #0284c7);"></i> ĐIỀU HÒA HÓA HỌC THÔNG KHÍ: TRUNG ƯƠNG (CSF H+) VS NGOẠI VI (PaO2)</div>
+    <span class="badge badge-blue">Chemoreceptor Control</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 900 370" width="100%" height="370" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrChemBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrChemAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+      </defs>
 
-  Ở bệnh nhân **COPD giai đoạn nặng bị ứ đọng $CO_2$ mạn tính**: Thận bù trừ bằng cách giữ $HCO_3^-$ làm pH dịch não tủy trở về gần bình thường $\rightarrow$ Các thụ thể hóa học trung ương bị "trơ", trung tâm hô hấp **sống hoàn toàn dựa vào 'Động lực thiếu oxy ngoại vi' (Hypoxic Drive do $PaO_2$ thấp kích thích xoang cảnh)**.
-  
-  *Nguy cơ tử vong*: Nếu cho bệnh nhân thở Oxy nồng độ cao ($FiO_2 100\%$) làm $PaO_2$ tăng vọt $\rightarrow$ Triệt tiêu động lực kích thích xoang cảnh $\rightarrow$ Bệnh nhân **ngừng thở đột ngột, hôn mê toan hô hấp tăng $CO_2$ và tử vong**. Luôn duy trì mục tiêu $SpO_2$ ở mức 88% – 92% đối với nhóm bệnh nhân này.
+      {/* CỘT TRÁI: THỤ THỂ TRUNG ƯƠNG */}
+      <rect x="30" y="20" width="410" height="240" rx="14" fill="var(--color-surface, #ffffff)" stroke="#0284c7" stroke-width="2"/>
+      <rect x="30" y="20" width="410" height="40" rx="14" fill="#0284c7" fill-opacity="0.12"/>
+      <text x="235" y="46" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="13" fill="#0284c7">THỤ THỂ TRUNG ƯƠNG (HÀNH NÃO)</text>
+
+      <rect x="48" y="72" width="374" height="60" rx="8" fill="var(--blue-bg, #eff6ff)" stroke="#93c5fd" stroke-width="1.2"/>
+      <text x="60" y="92" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="#1d4ed8">Kích thích bởi H+ trong Dịch Não Tủy (CSF)</text>
+      <text x="60" y="112" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• CO2 máu khuếch tán qua BBB ──► H2CO3 ──► H+ + HCO3-</text>
+      <text x="60" y="126" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="#b91c1c" font-weight="600">⚠ H+ và HCO3- từ máu không qua được hàng rào máu não</text>
+
+      <rect x="48" y="142" width="374" height="105" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.2"/>
+      <text x="60" y="163" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="#0284c7">• ĐỘNG LỰC HÔ HẤP SỐ 1 Ở NGƯỜI KHỎE MẠNH</text>
+      <text x="60" y="183" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Chiếm 75% — 80% đáp ứng điều hòa nhịp thở khi PaCO2 tăng.</text>
+      <text x="60" y="203" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Chỉ cần PaCO2 tăng nhẹ 2 mmHg đã kích thích tăng gấp đôi VE.</text>
+      <text x="60" y="228" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="#b45309" font-weight="600">⚠ Bị "trơ" ở bệnh nhân COPD ứ CO2 mạn tính do thận bù kiềm</text>
+
+      {/* CỘT PHẢI: THỤ THỂ NGOẠI VI */}
+      <rect x="460" y="20" width="410" height="240" rx="14" fill="var(--color-surface, #ffffff)" stroke="#d97706" stroke-width="2"/>
+      <rect x="460" y="20" width="410" height="40" rx="14" fill="#d97706" fill-opacity="0.12"/>
+      <text x="665" y="46" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="13" fill="#d97706">THỤ THỂ NGOẠI VI (XOANG CẢNH &amp; QUAI ĐMC)</text>
+
+      <rect x="478" y="72" width="374" height="60" rx="8" fill="var(--amber-bg, #fffbeb)" stroke="#fcd34d" stroke-width="1.2"/>
+      <text x="490" y="92" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="#b45309">Kích thích bởi Hạ Oxy Máu (PaO2 &lt; 60 mmHg)</text>
+      <text x="490" y="112" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Xoang cảnh (Dây IX - Hering) &amp; Quai động mạch chủ (Dây X)</text>
+      <text x="490" y="126" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="#15803d" font-weight="600">✓ Cảm nhận trực tiếp nồng độ H+ máu (Toan toan chuyển hóa)</text>
+
+      <rect x="478" y="142" width="374" height="105" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.2"/>
+      <text x="490" y="163" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="#d97706">• HỆ THỐNG CẢNH BÁO KHẨN CẤP &amp; HYPOXIC DRIVE</text>
+      <text x="490" y="183" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Khi PaO2 bình thường (&gt; 80 mmHg): Thụ thể hầu như yên lặng.</text>
+      <text x="490" y="203" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Khi PaO2 tụt &lt; 60 mmHg: Tần số xung vọt dốc đứng kích thích thở.</text>
+      <text x="490" y="228" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="#b91c1c" font-weight="700">★ LÀ ĐỘNG LỰC DUY NHẤT GIỮ NHỊP THỞ Ở BỆNH NHÂN COPD MẠN</text>
+
+      {/* THANH CẢNH BÁO NGUY HIỂM COPD DƯỚI */}
+      <rect x="30" y="275" width="840" height="75" rx="12" fill="var(--red-bg, #fef2f2)" stroke="#ef4444" stroke-width="1.6"/>
+      <text x="50" y="298" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#b91c1c"><i class="fa-solid fa-triangle-exclamation"></i> TAI BIẾN THỞ OXY LIỀU CAO Ở BỆNH NHÂN COPD (HYPOXIC DRIVE SHUTDOWN):</text>
+      <text x="50" y="318" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">Cho thở Oxy nồng độ cao (FiO2 100%) làm PaO2 tăng vọt ──► Triệt tiêu động lực kích thích xoang cảnh ──► Bệnh nhân ngừng thở đột ngột, hôn mê toan hô hấp tăng CO2 máu và tử vong.</text>
+      <text x="50" y="337" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="#b91c1c" font-weight="700">• Mục tiêu oxy liệu pháp EBM ở bệnh nhân COPD: Luôn kiểm soát SpO2 mục tiêu từ 88% đến 92% (dùng Venturi mask).</text>
+    </svg>
+  </div>
+</div>
 
 ## 6. Tài Liệu Tham Khảo EBM
 <div class="citation-box">

@@ -47,28 +47,33 @@ sections:
 
 ---
 
+<div class="module-badge-group" style="display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap;">
+  <span class="module-badge badge-physio"><i class="fa-solid fa-heart-pulse"></i> Sinh Lý Học Guyton</span>
+  <span class="module-badge" style="background: rgba(239, 68, 68, 0.12); color: var(--color-danger, #ef4444); border: 1px solid rgba(239, 68, 68, 0.25);"><i class="fa-solid fa-droplet"></i> Huyết Học &amp; Hồng Cầu</span>
+</div>
+
 # 🧬 SINH LÝ HỒNG CẦU & HUYẾT SẮC TỐ (HEMOGLOBIN)
 
 <PhysioQuickNav />
 
-{/* DẢI CHỈ SỐ NHANH (QUICK STATS STRIP) */}
-<section class="stats-strip">
+{/* DẢI CHỈ SỐ HUYẾT HỌC THỰC CHIẾN (EBM CLINICAL STATS) */}
+<section class="stats-strip theme-physio">
   <div class="stats-grid">
     <div class="stat-card">
-      <div class="stat-val blue">PHYS-BLD-02</div>
-      <div class="stat-lbl">Mã chuyên đề • Sinh Lý Máu & Hệ Miễn Dịch</div>
+      <div class="stat-val red">4.2 – 6.1 M/µL</div>
+      <div class="stat-lbl">Số lượng HC • Nam: 4.7-6.1 | Nữ: 4.2-5.4 • Sống 120 ngày</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val green">Nội Môi Ổn Định</div>
-      <div class="stat-lbl">Cân bằng gradient điện hóa & Áp suất thẩm thấu</div>
+      <div class="stat-val blue">80 – 100 fL</div>
+      <div class="stat-lbl">MCV • MCH: 27–33 pg | MCHC: 32–36 g/dL</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val amber">Feedback Loop</div>
-      <div class="stat-lbl">Vòng điều hòa phản hồi thần kinh - thể dịch</div>
+      <div class="stat-val amber">12 – 17.5 g/dL</div>
+      <div class="stat-lbl">Hemoglobin (Hb) • Nam: 13.5-17.5 | Nữ: 12-15.5</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val purple">Dược Lý EBM</div>
-      <div class="stat-lbl">Ứng dụng lâm sàng chuẩn Guyton 14th & Ganong 26th</div>
+      <div class="stat-val green">0.5% – 2.0%</div>
+      <div class="stat-lbl">Hồng cầu lưới (Reticulocytes) • Đáp ứng tủy xương</div>
     </div>
   </div>
 </section>
@@ -85,49 +90,81 @@ Hồng cầu (*Erythrocytes / RBCs*) là tế bào máu đông đảo nhất tro
 - **Không có nhân, không có ty thể**: Năng lượng $ATP$ được tạo ra 100% nhờ **con đường đường phân kỵ khí (Glycolysis / Embden-Meyerhof)** và chu trình Hexose Monophosphate (HMP Shunt qua enzyme G6PD tạo NADPH bảo vệ chống oxy hóa).
 
 
-<div class="flowchart-card">
-  <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: Màng Lipid Kép</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+<div class="flowchart-editorial-card">
+  <div class="flowchart-editorial-header">
+    <div class="flowchart-editorial-title">
+      <i class="fa-solid fa-circle-nodes"></i>
+      KIẾN TRÚC KHUNG XƯƠNG MÀNG HỒNG CẦU &amp; TÍNH MỀM DẺO BIẾN DẠNG
+    </div>
+    <span class="flowchart-editorial-tag">Cytoskeleton Architecture</span>
   </div>
-  <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 310" width="880" height="310" xmlns="http://www.w3.org/2000/svg">
+
+  <div class="flowchart-editorial-viewport">
+    <svg viewBox="0 0 880 260" width="100%" height="260" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        <marker id="rbcArrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)"/>
         </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
-        </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        <marker id="rbcArrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-danger, #ef4444)"/>
         </marker>
       </defs>
 
-      {/* Single Node: Khung Xương Màng Hồng Cầu: */}
-      <rect x="250" y="20" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Khung Xương Màng Hồng Cầu:</text>
-      <path d="M 440 66 L 440 80 L 155 80 L 155 94" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      <path d="M 440 80 L 440 80 L 440 94" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      <path d="M 440 80 L 725 80 L 725 94" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      <rect x="30" y="94" width="250" height="90" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="155" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text, #0f172a)">Màng Lipid Kép</text>
-      <line x1="45" y1="124" x2="265" y2="124" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <rect x="315" y="94" width="250" height="90" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="440" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text, #0f172a)">Ankyrin</text>
-      <line x1="330" y1="124" x2="550" y2="124" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <rect x="600" y="94" width="250" height="90" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="725" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text, #0f172a)">Band 3</text>
-      <line x1="615" y1="124" x2="835" y2="124" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <line x1="440" y1="184" x2="440" y2="212" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: Mạng Lưới Sợi Spectrin (Alpha  */}
-      <rect x="145" y="212" width="590" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="234" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Mạng Lưới Sợi Spectrin (Alpha &amp; Beta) + Actin + Protein</text>
-      <text x="440" y="252" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--color-text, #0f172a)">4.1</text>
+      {/* Top Header Node */}
+      <rect x="250" y="16" width="380" height="46" rx="12" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+      <text x="440" y="36" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12.5" fill="var(--color-primary, #0284c7)">CẤU TRÚC MÀNG HỒNG CẦU BIẾN DẠNG LINH HOẠT</text>
+      <text x="440" y="52" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #64748b)">Cho phép lách qua mao mạch và khe xoang lách hẹp 3–5 µm</text>
+
+      {/* Connectors */}
+      <path d="M 440 62 L 440 82 Q 440 88 432 88 L 160 88 Q 152 88 152 94 L 152 106" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="1.8" marker-end="url(#rbcArrBlue)"/>
+      <path d="M 440 62 L 440 106" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="1.8" marker-end="url(#rbcArrBlue)"/>
+      <path d="M 440 62 L 440 88 Q 440 88 448 88 L 720 88 Q 728 88 728 94 L 728 106" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="1.8" marker-end="url(#rbcArrBlue)"/>
+
+      {/* Pillar 1: Màng Lipid Kép Không Đối Xứng */}
+      <rect x="25" y="106" width="255" height="136" rx="12" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+      <rect x="25" y="106" width="255" height="30" rx="12" fill="rgba(2, 132, 199, 0.12)"/>
+      <text x="152" y="126" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="var(--color-primary, #0284c7)">MÀNG LIPID KÉP (BILAYER)</text>
+      <text x="38" y="152" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10.5" fill="var(--color-text, #0f172a)">• Phospholipids &amp; Cholesterol:</text>
+      <text x="38" y="168" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">Tỷ lệ 1:1 tạo độ lỏng linh hoạt</text>
+      <text x="38" y="190" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10.5" fill="var(--color-text, #0f172a)">• Tính không đối xứng:</text>
+      <text x="38" y="206" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">Phosphatidylserine nằm mặt trong;</text>
+      <text x="38" y="222" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-danger, #ef4444)">Lộn ra ngoài ──► Tín hiệu thực bào lách</text>
+
+      {/* Pillar 2: Protein Xuyên Màng & Cố Định */}
+      <rect x="310" y="106" width="260" height="136" rx="12" fill="var(--color-surface, #ffffff)" stroke="var(--color-warning, #f59e0b)" stroke-width="1.8"/>
+      <rect x="310" y="106" width="260" height="30" rx="12" fill="rgba(245, 158, 11, 0.12)"/>
+      <text x="440" y="126" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="var(--color-warning, #d97706)">PROTEIN XUYÊN MÀNG NEO ĐẬU</text>
+      <text x="322" y="152" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10.5" fill="var(--color-text, #0f172a)">• Band 3 (Anion Exchanger 1):</text>
+      <text x="322" y="168" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">Trao đổi Cl- / HCO3- (Hiện tượng Hamburger)</text>
+      <text x="322" y="190" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10.5" fill="var(--color-text, #0f172a)">• Glycophorin C &amp; Ankyrin:</text>
+      <text x="322" y="206" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">Cầu nối neo màng lipid vào khung</text>
+      <text x="322" y="222" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">xương lưới dưới màng</text>
+
+      {/* Pillar 3: Khung Xương Spectrin Dưới Màng */}
+      <rect x="595" y="106" width="260" height="136" rx="12" fill="var(--color-surface, #ffffff)" stroke="var(--color-danger, #ef4444)" stroke-width="1.8"/>
+      <rect x="595" y="106" width="260" height="30" rx="12" fill="rgba(239, 68, 68, 0.12)"/>
+      <text x="725" y="126" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="var(--color-danger, #ef4444)">LƯỚI KHUNG XƯƠNG SPECTRIN</text>
+      <text x="608" y="152" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10.5" fill="var(--color-text, #0f172a)">• Tetramer Spectrin (α &amp; β):</text>
+      <text x="608" y="168" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">Đan xen mạng lục giác đàn hồi co giãn</text>
+      <text x="608" y="190" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10.5" fill="var(--color-danger, #ef4444)">• Lâm sàng: Hồng Cầu Hình Cầu:</text>
+      <text x="608" y="206" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-danger, #ef4444)">Đột biến Spectrin/Ankyrin ──► HC mất mẩu</text>
+      <text x="608" y="222" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="var(--color-danger, #ef4444)">lipid, vỡ hàng loạt tại xoang lách</text>
     </svg>
+  </div>
+
+  <div class="flowchart-editorial-legend">
+    <div class="flowchart-legend-item">
+      <span class="flowchart-legend-dot" style="background: var(--color-primary, #0284c7);"></span>
+      <span>Bilayer Lipid: Phosphatidylserine lộn mặt ngoài báo hiệu thực bào</span>
+    </div>
+    <div class="flowchart-legend-item">
+      <span class="flowchart-legend-dot" style="background: var(--color-warning, #f59e0b);"></span>
+      <span>Band 3: Trao đổi anion Cl-/HCO3- vận chuyển CO2</span>
+    </div>
+    <div class="flowchart-legend-item">
+      <span class="flowchart-legend-dot" style="background: var(--color-danger, #ef4444);"></span>
+      <span>Spectrin: Duy trì hình đĩa lõm 2 mặt &amp; tính mềm dẻo</span>
+    </div>
   </div>
 </div>
 
@@ -143,101 +180,148 @@ Một phân tử **Hemoglobin (Hb)** hoàn chỉnh là một tetramer gồm **4 
 $$\text{1 phân tử Hemoglobin gắn tối đa } 4\text{ phân tử } O_2 \quad \Longleftrightarrow \quad 1\text{ gam Hb bão hòa gắn được } 1.34\text{ mL } O_2$$
 
 
-<div class="flowchart-card">
-  <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: PHÂN TỬ HEMOGLOBIN (Hb)</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+<div class="flowchart-editorial-card">
+  <div class="flowchart-editorial-header">
+    <div class="flowchart-editorial-title">
+      <i class="fa-solid fa-dna"></i>
+      CẤU TRÚC PHÂN TỬ HEMOGLOBIN (HbA: α2β2) &amp; ÁI LỰC O2 DẠNG T/R
+    </div>
+    <span class="flowchart-editorial-tag">Tetramer Architecture</span>
   </div>
-  <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 230" width="880" height="230" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
-        </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
-        </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
-        </marker>
-      </defs>
 
-      {/* Single Node: 1 PHÂN TỬ HEMOGLOBIN (Hb) */}
-      <rect x="250" y="20" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">1 PHÂN TỬ HEMOGLOBIN (Hb)</text>
-      {/* Bifurcation Path */}
-      <path d="M 440 66 L 440 80 L 235 80 L 235 94" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      <path d="M 440 80 L 645 80 L 645 94" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Left Column: 4 CHUỖI GLOBIN */}
-      <rect x="40" y="94" width="390" height="98" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="235" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">4 CHUỖI GLOBIN</text>
-      <line x1="60" y1="130" x2="410" y2="130" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="60" y="146" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• HbA người lớn: α2 β2 (&gt;95%)</text>
-      <text x="60" y="164" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• HbA2 người lớn: α2 δ2 (2% - 3%)</text>
-      <text x="60" y="182" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• HbF bào thai: α2 γ2 (Ái lực O2 cao)</text>
-      {/* Right Column: 4 NHÓM HEME */}
-      <rect x="450" y="94" width="390" height="98" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="645" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">4 NHÓM HEME</text>
-      <line x1="470" y1="130" x2="820" y2="130" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="470" y="146" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Vòng Porphyrin (Protoporphyrin IX)</text>
-      <text x="470" y="164" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• 1 Nguyên tử Sắt Fe2+ ở trung tâm</text>
-      <text x="470" y="182" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Vị trí gắn thuận nghịch với O2</text>
+  <div class="flowchart-editorial-viewport">
+    <svg viewBox="0 0 880 230" width="100%" height="230" xmlns="http://www.w3.org/2000/svg">
+      {/* Root / Title Node */}
+      <rect x="270" y="16" width="340" height="46" rx="12" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+      <text x="440" y="36" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12.5" fill="var(--color-primary, #0284c7)">1 PHÂN TỬ TETRAMER HEMOGLOBIN (Hb)</text>
+      <text x="440" y="52" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #64748b)">Trọng lượng phân tử ~64.500 Da | Gắn tối đa 4 phân tử O2</text>
+
+      {/* Connectors */}
+      <path d="M 440 62 L 440 82 Q 440 88 432 88 L 225 88 Q 217 88 217 94 L 217 106" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="1.8" marker-end="url(#rbcArrBlue)"/>
+      <path d="M 440 62 L 440 88 Q 440 88 448 88 L 655 88 Q 663 88 663 94 L 663 106" fill="none" stroke="var(--color-danger, #ef4444)" stroke-width="1.8" marker-end="url(#rbcArrRed)"/>
+
+      {/* Left Column: 4 Chuỗi Polypeptide Globin */}
+      <rect x="35" y="106" width="365" height="110" rx="12" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+      <rect x="35" y="106" width="365" height="30" rx="12" fill="rgba(2, 132, 199, 0.12)"/>
+      <text x="217" y="126" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="var(--color-primary, #0284c7)">4 CHUỖI POLYPEPTIDE GLOBIN</text>
+      <text x="50" y="152" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10.5" fill="var(--color-text, #0f172a)">• HbA (Người lớn bình thường &gt; 95%):</text>
+      <text x="265" y="152" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #64748b)">2 chuỗi α + 2 chuỗi β</text>
+      <text x="50" y="172" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10.5" fill="var(--color-text, #0f172a)">• HbA2 (Người lớn 2% - 3%):</text>
+      <text x="265" y="172" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #64748b)">2 chuỗi α + 2 chuỗi δ</text>
+      <text x="50" y="192" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10.5" fill="var(--color-text, #0f172a)">• HbF (Bào thai &amp; Sơ sinh):</text>
+      <text x="265" y="192" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #64748b)">2 chuỗi α + 2 chuỗi γ (Ái lực O2 cao)</text>
+
+      {/* Right Column: 4 Nhóm Heme */}
+      <rect x="480" y="106" width="365" height="110" rx="12" fill="var(--color-surface, #ffffff)" stroke="var(--color-danger, #ef4444)" stroke-width="1.8"/>
+      <rect x="480" y="106" width="365" height="30" rx="12" fill="rgba(239, 68, 68, 0.12)"/>
+      <text x="662" y="126" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="var(--color-danger, #ef4444)">4 NHÓM HEME (MANG NGUYÊN TỬ SẮT Fe2+)</text>
+      <text x="495" y="152" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10.5" fill="var(--color-text, #0f172a)">• Vòng Protoporphyrin IX:</text>
+      <text x="660" y="152" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #64748b)">Trung tâm giữ chặt ion Sắt Fe2+</text>
+      <text x="495" y="172" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10.5" fill="var(--color-text, #0f172a)">• Gắn thuận nghịch O2:</text>
+      <text x="660" y="172" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #64748b)">Oxy gắn mà KHÔNG làm oxy hóa Fe2+</text>
+      <text x="495" y="192" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10.5" fill="var(--color-danger, #ef4444)">• Methemoglobin (Fe3+):</text>
+      <text x="660" y="192" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-danger, #ef4444)">Mất khả năng nhả O2 (Gây tím tái)</text>
     </svg>
+  </div>
+
+  <div class="flowchart-editorial-legend">
+    <div class="flowchart-legend-item">
+      <span class="flowchart-legend-dot" style="background: var(--color-primary, #0284c7);"></span>
+      <span>Globin: Đột biến gen α/β gây Bệnh Thalassemia hoặc Hồng cầu hình liềm (HbS)</span>
+    </div>
+    <div class="flowchart-legend-item">
+      <span class="flowchart-legend-dot" style="background: var(--color-danger, #ef4444);"></span>
+      <span>Heme: Thiếu sắt làm giảm tổng hợp Heme ──► Thiếu máu nhược sắc hồng cầu nhỏ</span>
+    </div>
   </div>
 </div>
 
-
   Khi phân tử $O_2$ đầu tiên gắn vào một nhóm Heme, nó làm biến đổi cấu hình không gian của toàn bộ tetramer từ **Dạng Căng (T-state: Ái lực thấp)** sang **Dạng Thư Giãn (R-state: Ái lực cao)**. Sự chuyển dịch này làm tăng ái lực gắn $O_2$ của 3 nhóm Heme còn lại lên hàng trăm lần, tạo nên **Đường cong phân ly Oxyhemoglobin hình chữ S (Sigmoidal Curve)** giúp Hb nạp tối đa $O_2$ tại phổi và nhả nhanh $O_2$ tại các mô tiêu thụ.
-
 
 ---
 
 ## 3. Sinh Hồng Cầu & Điều Hòa Bằng EPO
 Hồng cầu được sinh ra liên tục tại **Tủy xương đỏ** (khoảng $2\text{ triệu hồng cầu mới/giây}$) từ tế bào gốc tạo máu vạn năng (HSC):
 
-
-<div class="flowchart-card">
-  <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: HSC</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+<div class="flowchart-editorial-card">
+  <div class="flowchart-editorial-header">
+    <div class="flowchart-editorial-title">
+      <i class="fa-solid fa-arrows-spin"></i>
+      CHU TRÌNH BIỆT HÓA HỒNG CẦU &amp; CƠ CHẾ ĐIỀU HÒA PHẢN HỒI THIẾU OXY (EPO FEEDBACK)
+    </div>
+    <span class="flowchart-editorial-tag">Negative Feedback Loop</span>
   </div>
-  <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 236" width="880" height="236" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
-        </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
-        </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
-        </marker>
-      </defs>
 
-      {/* Single Node: [HSC] ──► [Tiền nguyên hồng cầ */}
-      <rect x="155" y="20" width="570" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">[HSC] ──► [Tiền nguyên hồng cầu] ──► [Nguyên hồng cầu</text>
-      <text x="440" y="60" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--color-text, #0f172a)">ưa base] ──► [Ưa acid (Đẩy nhân ra)]</text>
-      {/* Bifurcation Path */}
-      <path d="M 440 80 L 440 94 L 235 94 L 235 108" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      <path d="M 440 94 L 645 94 L 645 108" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Left Column: Hồng Cầu Trưởng Thành (Sống 12 */}
-      <rect x="40" y="108" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="235" y="130" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Hồng Cầu Trưởng Thành (Sống 120</text>
-      <text x="235" y="148" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">ngày)</text>
-      <line x1="60" y1="162" x2="410" y2="162" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      {/* Right Column: Hồng Cầu Lưới (Reticulocyte 1- */}
-      <rect x="450" y="108" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="645" y="130" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Hồng Cầu Lưới (Reticulocyte 1-2%)</text>
-      <line x1="470" y1="144" x2="820" y2="144" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+  <div class="flowchart-editorial-viewport">
+    <svg viewBox="0 0 880 290" width="100%" height="290" xmlns="http://www.w3.org/2000/svg">
+      {/* Step 1: Hypoxia trigger */}
+      <rect x="20" y="20" width="180" height="85" rx="12" fill="var(--color-surface, #ffffff)" stroke="var(--color-danger, #ef4444)" stroke-width="1.8"/>
+      <rect x="20" y="20" width="180" height="26" rx="12" fill="rgba(239, 68, 68, 0.12)"/>
+      <text x="110" y="38" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="var(--color-danger, #ef4444)">1. THIẾU OXY MÔ (HYPOXIA)</text>
+      <text x="30" y="62" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">• Thiếu máu, lên cao (↓PO2)</text>
+      <text x="30" y="78" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">• Suy tim, bệnh phổi mạn</text>
+      <text x="30" y="94" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="var(--color-danger, #ef4444)">──► Kích hoạt HIF-1α</text>
+
+      {/* Arrow to Step 2 */}
+      <line x1="200" y1="62" x2="235" y2="62" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#rbcArrBlue)"/>
+
+      {/* Step 2: Renal EPO Secretion */}
+      <rect x="235" y="20" width="190" height="85" rx="12" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+      <rect x="235" y="20" width="190" height="26" rx="12" fill="rgba(2, 132, 199, 0.12)"/>
+      <text x="330" y="38" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="var(--color-primary, #0284c7)">2. THẬN TIẾT EPO (90%)</text>
+      <text x="245" y="62" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">• Tế bào kẽ quanh ống thận</text>
+      <text x="245" y="78" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">• Tiết Erythropoietin (EPO)</text>
+      <text x="245" y="94" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">• Gan tiết 10% còn lại</text>
+
+      {/* Arrow to Step 3 */}
+      <line x1="425" y1="62" x2="460" y2="62" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#rbcArrBlue)"/>
+
+      {/* Step 3: Bone Marrow Stimulation */}
+      <rect x="460" y="20" width="190" height="85" rx="12" fill="var(--color-surface, #ffffff)" stroke="var(--color-warning, #f59e0b)" stroke-width="1.8"/>
+      <rect x="460" y="20" width="190" height="26" rx="12" fill="rgba(245, 158, 11, 0.12)"/>
+      <text x="555" y="38" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="var(--color-warning, #d97706)">3. TỦY XƯƠNG TẠO MÁU</text>
+      <text x="470" y="62" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">• HSC ──► CFU-E</text>
+      <text x="470" y="78" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">• Kích thích phân chia</text>
+      <text x="470" y="94" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">• Cần: Sắt, B12, Acid Folic</text>
+
+      {/* Arrow to Step 4 */}
+      <line x1="650" y1="62" x2="685" y2="62" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#rbcArrBlue)"/>
+
+      {/* Step 4: Increased RBCs & O2 delivery */}
+      <rect x="685" y="20" width="175" height="85" rx="12" fill="var(--color-surface, #ffffff)" stroke="var(--color-success, #10b981)" stroke-width="1.8"/>
+      <rect x="685" y="20" width="175" height="26" rx="12" fill="rgba(16, 185, 129, 0.12)"/>
+      <text x="772" y="38" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="var(--color-success, #059669)">4. TĂNG VẬN CHUYỂN O2</text>
+      <text x="695" y="62" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">• Tăng hồng cầu lưới</text>
+      <text x="695" y="78" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">• Tăng nồng độ Hb máu</text>
+      <text x="695" y="94" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="var(--color-success, #059669)">• Cung cấp đủ O2 cho mô</text>
+
+      {/* Negative Feedback Orthogonal Return Loop */}
+      <path d="M 772 105 L 772 135 Q 772 142 764 142 L 118 142 Q 110 142 110 134 L 110 115" fill="none" stroke="var(--color-success, #10b981)" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#rbcArrBlue)"/>
+      <rect x="360" y="130" width="160" height="24" rx="6" fill="var(--color-surface, #ffffff)" stroke="var(--color-success, #10b981)" stroke-width="1.2"/>
+      <text x="440" y="146" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="var(--color-success, #059669)">Negative Feedback (Ức chế EPO)</text>
+
+      {/* Bottom Differentiation Ladder Strip */}
+      <rect x="20" y="172" width="840" height="100" rx="12" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="40" y="196" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="var(--color-primary, #0284c7)">CÁC GIAI ĐOẠN BIỆT HÓA DÒNG HỒNG CẦU TRONG TỦY XƯƠNG:</text>
+      <text x="40" y="222" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">HSC ──► Tiền nguyên HC ──► Nguyên HC ưa kiềm ──► Nguyên HC đa sắc ──► Nguyên HC ưa acid (Đẩy nhân) ──►</text>
+      <text x="40" y="246" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-warning, #d97706)">──► Hồng Cầu Lưới (Reticulocyte 1-2%): Còn mạng RNA ribosome, lưu thông 1-2 ngày thì trưởng thành</text>
+      <text x="40" y="264" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-success, #059669)">──► Hồng Cầu Trưởng Thành: Đĩa lõm 2 mặt không nhân, thực hiện nhiệm vụ vận chuyển khí suốt 120 ngày</text>
     </svg>
+  </div>
+
+  <div class="flowchart-editorial-legend">
+    <div class="flowchart-legend-item">
+      <span class="flowchart-legend-dot" style="background: var(--color-danger, #ef4444);"></span>
+      <span>Kích thích: Thiếu oxy mô (HIF-1α) kích hoạt tế bào kẽ quanh ống thận</span>
+    </div>
+    <div class="flowchart-legend-item">
+      <span class="flowchart-legend-dot" style="background: var(--color-primary, #0284c7);"></span>
+      <span>EPO (Erythropoietin): Hormone tăng sinh và chống chết theo chương trình (apoptosis) của CFU-E</span>
+    </div>
+    <div class="flowchart-legend-item">
+      <span class="flowchart-legend-dot" style="background: var(--color-success, #10b981);"></span>
+      <span>Ức chế ngược: Cung cấp đủ O2 cho mô lập tức tắt tín hiệu tăng tiết EPO</span>
+    </div>
   </div>
 </div>
 
@@ -253,77 +337,84 @@ Hồng cầu được sinh ra liên tục tại **Tủy xương đỏ** (khoản
 Sau 120 ngày lưu thông, hồng cầu già cỗi mất tính mềm dẻo bị đại thực bào lách phá hủy:
 
 
-<div class="flowchart-card">
-  <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: HỒNG CẦU GIÀ (120 NGÀY)</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+<div class="flowchart-editorial-card">
+  <div class="flowchart-editorial-header">
+    <div class="flowchart-editorial-title">
+      <i class="fa-solid fa-recycle"></i>
+      CHU TRÌNH THOÁI BIẾN HEMOGLOBIN &amp; CHUYỂN HÓA BILIRUBIN (VÒNG ĐỜI 120 NGÀY)
+    </div>
+    <span class="flowchart-editorial-tag">Catabolic Cascade</span>
   </div>
-  <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 664" width="880" height="664" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
-        </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
-        </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
-        </marker>
-      </defs>
 
-      {/* Left Column: HỒNG CẦU GIÀ (120 NGÀY) */}
-      <rect x="40" y="20" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="235" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">HỒNG CẦU GIÀ (120 NGÀY)</text>
-      <line x1="60" y1="56" x2="410" y2="56" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="60" y="72" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ┌──────────────</text>
-      {/* Right Column: Đại Thực Bào Hệ Võng Nội Mô (L */}
-      <rect x="450" y="20" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="645" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Đại Thực Bào Hệ Võng Nội Mô (Lách</text>
-      <text x="645" y="60" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">&amp; Gan)</text>
-      <line x1="470" y1="74" x2="820" y2="74" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="470" y="90" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ────────┼──────────────────────┐</text>
-      <path d="M 440 110 L 440 124 L 155 124 L 155 138" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      <path d="M 440 124 L 440 124 L 440 138" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      <path d="M 440 124 L 725 124 L 725 138" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      <rect x="30" y="138" width="250" height="90" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="155" y="160" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text, #0f172a)">Chuỗi Globin</text>
-      <line x1="45" y1="168" x2="265" y2="168" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <rect x="315" y="138" width="250" height="90" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="440" y="160" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text, #0f172a)">Sắt Fe2+</text>
-      <line x1="330" y1="168" x2="550" y2="168" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <rect x="600" y="138" width="250" height="90" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="725" y="160" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text, #0f172a)">Vòng Porphyrin</text>
-      <line x1="615" y1="168" x2="835" y2="168" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <line x1="440" y1="228" x2="440" y2="256" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: Biliverdin */}
-      <rect x="250" y="256" width="380" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="278" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Biliverdin</text>
-      <text x="274" y="300" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• về Tủy xương │</text>
-      <line x1="440" y1="316" x2="440" y2="344" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: BILIRUBIN GIÁN TIẾP (Tự do / K */}
-      <rect x="170" y="344" width="540" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="366" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">BILIRUBIN GIÁN TIẾP (Tự do / Không tan trong nước)</text>
-      <line x1="440" y1="390" x2="440" y2="418" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: Gan: Enzyme UGT liên hợp với A */}
-      <rect x="200" y="418" width="480" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="440" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Gan: Enzyme UGT liên hợp với Acid Glucuronic</text>
-      <line x1="440" y1="464" x2="440" y2="492" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: BILIRUBIN TRỰC TIẾP (Liên hợp  */}
-      <rect x="185" y="492" width="510" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="514" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">BILIRUBIN TRỰC TIẾP (Liên hợp / Tan trong nước)</text>
-      <line x1="440" y1="538" x2="440" y2="566" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: Urobilinogen &amp; Stercobilin (Tạ */}
-      <rect x="160" y="566" width="560" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="588" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Urobilinogen &amp; Stercobilin (Tạo màu vàng phân &amp; nước</text>
-      <text x="440" y="606" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--color-text, #0f172a)">tiểu)</text>
+  <div class="flowchart-editorial-viewport">
+    <svg viewBox="0 0 880 370" width="100%" height="370" xmlns="http://www.w3.org/2000/svg">
+      {/* Step 1: Lách - Thực bào hồng cầu già */}
+      <rect x="20" y="20" width="250" height="150" rx="12" fill="var(--color-surface, #ffffff)" stroke="var(--color-danger, #ef4444)" stroke-width="1.8"/>
+      <rect x="20" y="20" width="250" height="30" rx="12" fill="rgba(239, 68, 68, 0.12)"/>
+      <text x="145" y="40" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="var(--color-danger, #ef4444)">1. ĐẠI THỰC BÀO LÁCH &amp; GAN</text>
+      
+      <text x="32" y="68" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Phá hủy hồng cầu già cỗi (&gt;120 ngày)</text>
+      <text x="32" y="88" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10.5" fill="var(--color-text, #0f172a)">• Tách Hemoglobin thành 3 phần:</text>
+      <text x="45" y="106" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">- Globin: Thủy phân thành acid amin tái sử dụng</text>
+      <text x="45" y="122" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">- Sắt Fe2+: Gắn Transferrin về tủy xương</text>
+      <text x="45" y="138" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">- Vòng Heme: Heme oxygenase ──► Biliverdin</text>
+      <text x="45" y="156" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="var(--color-danger, #ef4444)">──► BILIRUBIN GIÁN TIẾP (TỰ DO / KHÔNG TAN)</text>
+
+      {/* Arrow 1 to 2 */}
+      <path d="M 270 95 L 315 95" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#rbcArrBlue)"/>
+
+      {/* Step 2: Tuần hoàn máu - Gắn Albumin */}
+      <rect x="315" y="45" width="240" height="100" rx="12" fill="var(--color-surface, #ffffff)" stroke="var(--color-warning, #f59e0b)" stroke-width="1.8"/>
+      <rect x="315" y="45" width="240" height="28" rx="12" fill="rgba(245, 158, 11, 0.12)"/>
+      <text x="435" y="64" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="var(--color-warning, #d97706)">2. GẮN ALBUMIN VẬN CHUYỂN</text>
+      
+      <text x="328" y="92" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Bilirubin gián tiếp kỵ nước (tan trong lipid)</text>
+      <text x="328" y="110" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Bắt buộc gắn với Albumin huyết tương</text>
+      <text x="328" y="130" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="var(--color-danger, #ef4444)">• Không qua được lọc cầu thận (Không có trong NT)</text>
+
+      {/* Arrow 2 to 3 */}
+      <path d="M 555 95 L 600 95" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#rbcArrBlue)"/>
+
+      {/* Step 3: Gan - Liên hợp Glucuronic */}
+      <rect x="600" y="20" width="260" height="150" rx="12" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+      <rect x="600" y="20" width="260" height="30" rx="12" fill="rgba(2, 132, 199, 0.12)"/>
+      <text x="730" y="40" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="var(--color-primary, #0284c7)">3. TẾ BÀO GAN LIÊN HỢP (UGT)</text>
+      
+      <text x="612" y="68" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Tế bào gan bắt giữ qua thụ thể màng</text>
+      <text x="612" y="88" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10.5" fill="var(--color-primary, #0284c7)">• Enzyme UDP-Glucuronosyltransferase (UGT):</text>
+      <text x="625" y="106" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">Gắn 2 gốc Acid Glucuronic tạo Bilirubin Diglucuronide</text>
+      <text x="612" y="126" font-family="'Plus Jakarta Sans', font-weight="700" font-size="10.5" fill="var(--color-primary, #0284c7)">──► BILIRUBIN TRỰC TIẾP (LIÊN HỢP / TAN)</text>
+      <text x="612" y="146" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">• Xuất bào chủ động vào tiểu quản mật (MRP2)</text>
+
+      {/* Arrow 3 down to Step 4 */}
+      <path d="M 730 170 L 730 200 Q 730 208 722 208 L 440 208 Q 432 208 432 216 L 432 225" fill="none" stroke="var(--color-success, #10b981)" stroke-width="2" marker-end="url(#bldArrGreen)"/>
+
+      {/* Step 4: Ruột & Bài tiết */}
+      <rect x="40" y="225" width="800" height="110" rx="12" fill="var(--color-surface, #ffffff)" stroke="var(--color-success, #10b981)" stroke-width="1.8"/>
+      <rect x="40" y="225" width="800" height="30" rx="12" fill="rgba(16, 185, 129, 0.12)"/>
+      <text x="440" y="245" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-success, #059669)">4. CHUYỂN HÓA TẠI RUỘT &amp; THẢI TRỪ QUA PHÂN VÀ NƯỚC TIỂU</text>
+      
+      <text x="55" y="275" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• <strong>Vi khuẩn chí đường ruột:</strong> Khử liên hợp Bilirubin trực tiếp thành <strong>Urobilinogen</strong> không màu.</text>
+      <text x="55" y="295" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• <strong>Bài tiết qua phân (~80%):</strong> Oxy hóa tạo <strong>Stercobilin</strong> màu nâu sẫm đặc trưng của phân (Tắc mật cơ học làm phân bạc màu như phân cò).</text>
+      <text x="55" y="315" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• <strong>Chu trình gan ruột (~20%):</strong> Tái hấp thu về gan; một lượng nhỏ (~1%) lọc qua thận bài tiết dưới dạng <strong>Urobilin</strong> tạo màu vàng rơm nước tiểu.</text>
     </svg>
   </div>
-</div>
 
+  <div class="flowchart-editorial-legend">
+    <div class="flowchart-legend-item">
+      <span class="flowchart-legend-dot" style="background: var(--color-danger, #ef4444);"></span>
+      <span>Vàng da trước gan (Tán huyết): Tăng Bilirubin gián tiếp, Bilirubin NT âm tính, Phân sẫm màu</span>
+    </div>
+    <div class="flowchart-legend-item">
+      <span class="flowchart-legend-dot" style="background: var(--color-warning, #f59e0b);"></span>
+      <span>Vàng da tại gan (Viêm gan/Xơ gan): Tăng hỗn hợp cả trực tiếp và gián tiếp, Men gan AST/ALT tăng cao</span>
+    </div>
+    <div class="flowchart-legend-item">
+      <span class="flowchart-legend-dot" style="background: var(--color-primary, #0284c7);"></span>
+      <span>Vàng da sau gan (Tắc mật): Tăng Bilirubin trực tiếp, Bilirubin NT dương tính (nước tiểu sẫm), Phân bạc màu</span>
+    </div>
+  </div>
+</div>
 
 ---
 
@@ -336,57 +427,102 @@ Sau 120 ngày lưu thông, hồng cầu già cỗi mất tính mềm dẻo bị 
 | **RDW** *(Độ phân bố kích thước HC)* | **11.5% – 14.5%** | Đánh giá độ đồng đều; RDW tăng cao phản ánh hồng cầu to nhỏ không đều (*Anisocytosis*). |
 | **Reticulocyte Count** *(Hồng cầu lưới)* | **0.5% – 2.0%** | Đánh giá đáp ứng sinh máu của tủy xương (Tăng: Tán huyết/Mất máu; Giảm: Suy tủy). |
 
-
-<div class="flowchart-card">
-  <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: TIẾP CẬN THIẾU MÁU THEO MCV</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+<div class="flowchart-editorial-card">
+  <div class="flowchart-editorial-header">
+    <div class="flowchart-editorial-title">
+      <i class="fa-solid fa-code-fork"></i>
+      LƯU ĐỒ LÂM SÀNG: TIẾP CẬN THIẾU MÁU DỰA TRÊN THỂ TÍCH TRUNG BÌNH HỒNG CẦU (MCV)
+    </div>
+    <span class="flowchart-editorial-tag">Clinical Decision Tree</span>
   </div>
-  <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 230" width="880" height="230" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
-        </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
-        </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
-        </marker>
-      </defs>
 
-      {/* Single Node: TIẾP CẬN THIẾU MÁU THEO MCV */}
-      <rect x="250" y="20" width="380" height="46" rx="10" fill="var(--blue-bg, #eff6ff)" stroke="var(--blue, #0284c7)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-primary, #0284c7)">TIẾP CẬN THIẾU MÁU THEO MCV</text>
-      <path d="M 440 66 L 440 80 L 155 80 L 155 94" fill="none" stroke="var(--red, #ef4444)" stroke-width="1.8" marker-end="url(#arrRed)"/>
-      <path d="M 440 80 L 440 80 L 440 94" fill="none" stroke="var(--amber, #f59e0b)" stroke-width="1.8" marker-end="url(#arrAmber)"/>
-      <path d="M 440 80 L 725 80 L 725 94" fill="none" stroke="var(--amber, #f59e0b)" stroke-width="1.8" marker-end="url(#arrAmber)"/>
-      <rect x="30" y="94" width="250" height="98" rx="8" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.5"/>
-      <text x="155" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--red, #dc2626)">THIẾU MÁU HỒNG CẦU NHỎ (MCV &lt; 80)</text>
-      <line x1="45" y1="124" x2="265" y2="124" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="42" y="140" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Thiếu máu thiếu sắt (Ferritin giảm</text>
-      <text x="42" y="158" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Bệnh Thalassemia (Hb điện di bất t</text>
-      <text x="42" y="176" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Thiếu máu bệnh mạn tính (ACD)</text>
-      <text x="42" y="194" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Ngộ độc Chì / Thiếu m</text>
-      <rect x="315" y="94" width="250" height="98" rx="8" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
-      <text x="440" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--amber, #d97706)">THIẾU MÁU ĐẲNG BÀO (MCV 80-100)</text>
-      <line x1="330" y1="124" x2="550" y2="124" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="327" y="140" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• )    • Tán huyết (Tăng hồng cầu lưới)</text>
-      <text x="327" y="158" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• hường) • Mất máu cấp tính</text>
-      <text x="327" y="176" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Bệnh thận mạn (Suy giảm E</text>
-      <text x="327" y="194" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• áu nguyên bào sắt  • Suy</text>
-      <rect x="600" y="94" width="250" height="98" rx="8" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
-      <text x="725" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--amber, #d97706)">THIẾU MÁU HỒNG CẦU TO (MCV &gt; 100)</text>
-      <line x1="615" y1="124" x2="835" y2="124" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="612" y="140" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Thiếu Vitamin B12 / Acid Folic</text>
-      <text x="612" y="158" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Bệnh lý gan, Nghiện rượu mạn</text>
-      <text x="612" y="176" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• PO)         • Rối loạn sinh tủy (MDS)</text>
-      <text x="612" y="194" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• tủy xương (Aplastic Anemia)</text>
+  <div class="flowchart-editorial-viewport">
+    <svg viewBox="0 0 880 430" width="100%" height="430" xmlns="http://www.w3.org/2000/svg">
+      {/* Top Root Card */}
+      <rect x="270" y="16" width="340" height="52" rx="14" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+      <text x="440" y="38" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="13" fill="var(--color-primary, #0284c7)">CHẨN ĐOÁN XÁC ĐỊNH: BỆNH NHÂN THIẾU MÁU</text>
+      <text x="440" y="55" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #64748b)">Hb &lt; 13.0 g/dL (Nam) hoặc Hb &lt; 12.0 g/dL (Nữ)</text>
+
+      {/* Decision Diamond */}
+      <polygon points="440,90 535,130 440,170 345,130" fill="var(--color-surface, #ffffff)" stroke="var(--color-warning, #f59e0b)" stroke-width="2"/>
+      <text x="440" y="126" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="var(--color-warning, #d97706)">PHÂN LOẠI THEO</text>
+      <text x="440" y="142" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10.5" fill="var(--color-text-muted, #64748b)">CHỈ SỐ MCV (fL)?</text>
+
+      {/* Connector from Root to Diamond */}
+      <line x1="440" y1="68" x2="440" y2="90" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#rbcArrBlue)"/>
+
+      {/* 3 Branches from Diamond */}
+      {/* Branch 1: MCV < 80 (Hồng cầu nhỏ) */}
+      <path d="M 345 130 L 150 130 Q 140 130 140 140 L 140 195" fill="none" stroke="var(--color-danger, #ef4444)" stroke-width="2" marker-end="url(#rbcArrRed)"/>
+      <text x="215" y="122" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-danger, #ef4444)">MCV &lt; 80 fL</text>
+
+      {/* Branch 2: MCV 80-100 (Đẳng bào) */}
+      <path d="M 440 170 L 440 195" fill="none" stroke="var(--color-warning, #f59e0b)" stroke-width="2" marker-end="url(#arrAmber)"/>
+      <text x="450" y="185" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10.5" fill="var(--color-warning, #d97706)">80 – 100 fL</text>
+
+      {/* Branch 3: MCV > 100 (Hồng cầu to) */}
+      <path d="M 535 130 L 730 130 Q 740 130 740 140 L 740 195" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#rbcArrBlue)"/>
+      <text x="605" y="122" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-primary, #0284c7)">MCV &gt; 100 fL</text>
+
+      {/* Pillar 1: Microcytic */}
+      <rect x="15" y="195" width="255" height="215" rx="12" fill="var(--color-surface, #ffffff)" stroke="var(--color-danger, #ef4444)" stroke-width="1.8"/>
+      <rect x="15" y="195" width="255" height="32" rx="12" fill="rgba(239, 68, 68, 0.12)"/>
+      <text x="142" y="216" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="var(--color-danger, #ef4444)">HỒNG CẦU NHỎ (MCV &lt; 80 fL)</text>
+      <text x="28" y="244" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10.5" fill="var(--color-text, #0f172a)">Nguyên nhân thường gặp (TAILS):</text>
+      <text x="28" y="262" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">• <strong>Thalassemia:</strong> Đột biến chuỗi globin</text>
+      <text x="28" y="278" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">• <strong>Anemia of Chronic Disease:</strong> Viêm mạn (↑Hepcidin)</text>
+      <text x="28" y="294" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">• <strong>Iron Deficiency (IDA):</strong> Thiếu sắt (↓Ferritin)</text>
+      <text x="28" y="310" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">• <strong>Lead Poisoning:</strong> Ngộ độc chì (Chấm ưa base)</text>
+      <text x="28" y="326" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">• <strong>Sideroblastic:</strong> Thiếu máu nguyên bào sắt</text>
+      <rect x="25" y="346" width="235" height="52" rx="8" fill="rgba(239, 68, 68, 0.08)"/>
+      <text x="142" y="364" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="var(--color-danger, #ef4444)">Chỉ số Ferritin huyết thanh</text>
+      <text x="142" y="380" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text-muted, #64748b)">và Điện di Hemoglobin là xét nghiệm then chốt</text>
+
+      {/* Pillar 2: Normocytic */}
+      <rect x="312" y="195" width="255" height="215" rx="12" fill="var(--color-surface, #ffffff)" stroke="var(--color-warning, #f59e0b)" stroke-width="1.8"/>
+      <rect x="312" y="195" width="255" height="32" rx="12" fill="rgba(245, 158, 11, 0.12)"/>
+      <text x="440" y="216" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="var(--color-warning, #d97706)">ĐẲNG BÀO (MCV 80 – 100 fL)</text>
+      <text x="325" y="244" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10.5" fill="var(--color-text, #0f172a)">Bước tiếp theo: Đếm Hồng Cầu Lưới</text>
+      <text x="325" y="262" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="var(--color-primary, #0284c7)">• Hồng cầu lưới TĂNG (&gt; 2.0%):</text>
+      <text x="335" y="278" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">- Tán huyết nội/ngoại mạch (Coombs test)</text>
+      <text x="335" y="294" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">- Xuất huyết cấp tính đang hồi phục</text>
+      <text x="325" y="314" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="var(--color-danger, #ef4444)">• Hồng cầu lưới GIẢM (&lt; 0.5%):</text>
+      <text x="335" y="330" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">- Suy thận mạn (Thiếu hụt EPO)</text>
+      <text x="335" y="346" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">- Suy tủy xương bất sản (Aplastic anemia)</text>
+      <rect x="322" y="362" width="235" height="36" rx="8" fill="rgba(245, 158, 11, 0.08)"/>
+      <text x="440" y="378" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="var(--color-warning, #d97706)">Reticulocyte Index (RI &gt; 2% vs &lt; 2%)</text>
+      <text x="440" y="392" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text-muted, #64748b)">phân định tủy có đáp ứng sinh máu hay không</text>
+
+      {/* Pillar 3: Macrocytic */}
+      <rect x="610" y="195" width="255" height="215" rx="12" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+      <rect x="610" y="195" width="255" height="32" rx="12" fill="rgba(2, 132, 199, 0.12)"/>
+      <text x="737" y="216" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="var(--color-primary, #0284c7)">HỒNG CẦU TO (MCV &gt; 100 fL)</text>
+      <text x="622" y="244" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10.5" fill="var(--color-text, #0f172a)">Phân biệt Megaloblastic vs Khác:</text>
+      <text x="622" y="262" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="var(--color-primary, #0284c7)">• Hồng Cầu Khổng Lồ (Megaloblastic):</text>
+      <text x="632" y="278" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">- Thiếu Vitamin B12 (Biermer, dạ dày)</text>
+      <text x="632" y="294" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">- Thiếu Acid Folic (Dinh dưỡng kém)</text>
+      <text x="632" y="310" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">- Neutrophil nhiều múi (&gt;5 múi)</text>
+      <text x="622" y="330" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="var(--color-text, #0f172a)">• Không khổng lồ (Non-megaloblastic):</text>
+      <text x="632" y="346" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">- Bệnh gan mạn tính, Nghiện rượu nặng</text>
+      <text x="632" y="362" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">- Suy giáp, Hội chứng loạn sinh tủy (MDS)</text>
+      <rect x="620" y="374" width="235" height="24" rx="6" fill="rgba(2, 132, 199, 0.08)"/>
+      <text x="737" y="390" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="9.5" fill="var(--color-primary, #0284c7)">Định lượng Vitamin B12 &amp; Folate huyết thanh</text>
     </svg>
+  </div>
+
+  <div class="flowchart-editorial-legend">
+    <div class="flowchart-legend-item">
+      <span class="flowchart-legend-dot" style="background: var(--color-danger, #ef4444);"></span>
+      <span>MCV &lt; 80: Khảo sát dự trữ sắt (Ferritin) và bất thường Hemoglobin</span>
+    </div>
+    <div class="flowchart-legend-item">
+      <span class="flowchart-legend-dot" style="background: var(--color-warning, #f59e0b);"></span>
+      <span>MCV 80–100: Đếm hồng cầu lưới để phân biệt tán huyết / suy tủy</span>
+    </div>
+    <div class="flowchart-legend-item">
+      <span class="flowchart-legend-dot" style="background: var(--color-primary, #0284c7);"></span>
+      <span>MCV &gt; 100: Soi phết máu ngoại biên tìm bạch cầu đa nhân phân nhiều múi</span>
+    </div>
   </div>
 </div>
 

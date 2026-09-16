@@ -47,28 +47,33 @@ sections:
 
 ---
 
-# 🧬 SINH LÝ TIỂU CẦU & QUÁ TRÌNH CẦM MÁU - ĐÔNG MÁU
+<div class="module-badge-group" style="display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap;">
+  <span class="module-badge badge-physio"><i class="fa-solid fa-heart-pulse"></i> Sinh Lý Học Guyton</span>
+  <span class="module-badge" style="background: rgba(245, 158, 11, 0.12); color: var(--color-warning, #f59e0b); border: 1px solid rgba(245, 158, 11, 0.25);"><i class="fa-solid fa-clot"></i> Tiểu Cầu &amp; Đông Cầm Máu</span>
+</div>
+
+# 🧬 SINH LÝ TIỂU CẦU &amp; QUÁ TRÌNH CẦM MÁU - ĐÔNG MÁU
 
 <PhysioQuickNav />
 
-{/* DẢI CHỈ SỐ NHANH (QUICK STATS STRIP) */}
-<section class="stats-strip">
+{/* DẢI CHỈ SỐ HUYẾT HỌC THỰC CHIẾN (EBM CLINICAL STATS) */}
+<section class="stats-strip theme-physio">
   <div class="stats-grid">
     <div class="stat-card">
-      <div class="stat-val blue">PHYS-BLD-05</div>
-      <div class="stat-lbl">Mã chuyên đề • Sinh Lý Máu & Hệ Miễn Dịch</div>
+      <div class="stat-val amber">150 – 400 K/µL</div>
+      <div class="stat-lbl">Số lượng tiểu cầu • Sống 7–10 ngày (1/3 tích trữ lách)</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val green">Nội Môi Ổn Định</div>
-      <div class="stat-lbl">Cân bằng gradient điện hóa & Áp suất thẩm thấu</div>
+      <div class="stat-val blue">2 – 5 phút</div>
+      <div class="stat-lbl">Thời gian máu chảy (BT) • Đánh giá nút chặn tiểu cầu</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val amber">Feedback Loop</div>
-      <div class="stat-lbl">Vòng điều hòa phản hồi thần kinh - thể dịch</div>
+      <div class="stat-val green">INR 0.8 – 1.2</div>
+      <div class="stat-lbl">PT / INR • Con đường ngoại sinh (Theo dõi VKA)</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val purple">Dược Lý EBM</div>
-      <div class="stat-lbl">Ứng dụng lâm sàng chuẩn Guyton 14th & Ganong 26th</div>
+      <div class="stat-val purple">30 – 40 giây</div>
+      <div class="stat-lbl">aPTT • Con đường nội sinh (Theo dõi Heparin)</div>
     </div>
   </div>
 </section>
@@ -82,114 +87,173 @@ Tiểu cầu (*Platelets / Thrombocytes*) là các mảnh tế bào không nhân
 - **Nguồn gốc**: Biệt hóa từ **Tế bào mẫu tiểu cầu khổng lồ (Megakaryocytes)** tại tủy xương dưới sự kích thích của hormone **Thrombopoietin (TPO)** do Gan sản xuất liên tục (95%).
 
 
-<div class="flowchart-card">
-  <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: BÀO TƯƠNG TIỂU CẦU</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+<div class="flowchart-editorial-card">
+  <div class="flowchart-editorial-header">
+    <div class="flowchart-editorial-title">
+      <i class="fa-solid fa-boxes-stacked"></i>
+      HẠT BÀO TƯƠNG TIỂU CẦU: HẠT ALPHA vs HẠT ĐẬM (DENSE CORE GRANULES)
+    </div>
+    <span class="flowchart-editorial-tag">Granule Secretion</span>
   </div>
-  <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 172" width="880" height="172" xmlns="http://www.w3.org/2000/svg">
+
+  <div class="flowchart-editorial-viewport">
+    <svg viewBox="0 0 880 250" width="100%" height="250" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        <marker id="pltArrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-warning, #f59e0b)"/>
         </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
-        </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        <marker id="pltArrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)"/>
         </marker>
       </defs>
 
-      {/* Single Node: BÀO TƯƠNG TIỂU CẦU */}
-      <rect x="156.5" y="20" width="567" height="114" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">BÀO TƯƠNG TIỂU CẦU</text>
-      <text x="180.5" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ├──► HẠT ALPHA (Alpha Granules):</text>
-      <text x="180.5" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ADP &amp; ATP (Kích hoạt ngưng tập tiểu cầu)</text>
-      <text x="180.5" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Serotonin (5-HT: Gây co mạch mạnh)</text>
-      <text x="180.5" y="118" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Ion Canxi Ca2+ (Đồng yếu tố bắt buộc cho dòng thác đông máu)</text>
+      {/* Top Header Card */}
+      <rect x="260" y="16" width="360" height="46" rx="12" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-warning, #f59e0b)" stroke-width="1.8"/>
+      <text x="440" y="36" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12.5" fill="var(--color-warning, #d97706)">BÀO TƯƠNG TIỂU CẦU CHỨA 2 LOẠI HẠT TIẾT CHỦ CHỐT</text>
+      <text x="440" y="52" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #64748b)">Hệ thống ống mở (OCS) và khung vi ống co bóp giải phóng hạt khi hoạt hóa</text>
+
+      {/* Connectors */}
+      <path d="M 440 62 L 440 82 Q 440 88 432 88 L 225 88 Q 217 88 217 94 L 217 106" fill="none" stroke="var(--color-warning, #f59e0b)" stroke-width="1.8" marker-end="url(#pltArrAmber)"/>
+      <path d="M 440 62 L 440 88 Q 440 88 448 88 L 655 88 Q 663 88 663 94 L 663 106" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="1.8" marker-end="url(#pltArrBlue)"/>
+
+      {/* Left Pillar: Hạt Alpha */}
+      <rect x="30" y="106" width="380" height="126" rx="12" fill="var(--color-surface, #ffffff)" stroke="var(--color-warning, #f59e0b)" stroke-width="1.8"/>
+      <rect x="30" y="106" width="380" height="30" rx="12" fill="rgba(245, 158, 11, 0.12)"/>
+      <text x="220" y="126" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="var(--color-warning, #d97706)">HẠT ALPHA (ALPHA GRANULES - GIÀU PROTEIN)</text>
+      
+      <text x="45" y="152" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10.5" fill="var(--color-text, #0f172a)">• Yếu tố đông máu:</text>
+      <text x="175" y="152" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #64748b)">Fibrinogen (I), Yếu tố V, Yếu tố XI</text>
+      <text x="45" y="172" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10.5" fill="var(--color-text, #0f172a)">• Yếu tố dính mạch:</text>
+      <text x="175" y="172" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #64748b)">von Willebrand factor (vWF), Fibronectin</text>
+      <text x="45" y="192" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10.5" fill="var(--color-text, #0f172a)">• Yếu tố tăng trưởng:</text>
+      <text x="175" y="192" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #64748b)">PDGF, TGF-β (Kích thích liền vết thương)</text>
+      <text x="45" y="214" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-danger, #ef4444)">• Hội chứng Tiểu cầu xám (Gray Platelet): Thiếu hạt Alpha bẩm sinh</text>
+
+      {/* Right Pillar: Hạt Đậm */}
+      <rect x="470" y="106" width="380" height="126" rx="12" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+      <rect x="470" y="106" width="380" height="30" rx="12" fill="rgba(2, 132, 199, 0.12)"/>
+      <text x="660" y="126" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="var(--color-primary, #0284c7)">HẠT ĐẬM (DENSE BODIES / δ GRANULES)</text>
+      
+      <text x="485" y="152" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10.5" fill="var(--color-text, #0f172a)">• ADP &amp; ATP:</text>
+      <text x="565" y="152" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #64748b)">Gắn thụ thể P2Y12 kích hoạt tiểu cầu lân cận</text>
+      <text x="485" y="172" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10.5" fill="var(--color-text, #0f172a)">• Serotonin (5-HT):</text>
+      <text x="585" y="172" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #64748b)">Gây co mạch tại chỗ giảm mất máu</text>
+      <text x="485" y="192" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10.5" fill="var(--color-text, #0f172a)">• Ion Canxi Ca2+:</text>
+      <text x="585" y="192" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10.5" fill="var(--color-primary, #0284c7)">Đồng yếu tố bắt buộc cho dòng thác đông máu</text>
+      <text x="485" y="214" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-danger, #ef4444)">• Hội chứng Hermansky-Pudlak: Khiếm khuyết hạt Đậm kèm bạch tạng</text>
     </svg>
   </div>
-</div>
 
+  <div class="flowchart-editorial-legend">
+    <div class="flowchart-legend-item">
+      <span class="flowchart-legend-dot" style="background: var(--color-warning, #f59e0b);"></span>
+      <span>Hạt Alpha: Chứa các đại phân tử protein đông máu và sửa chữa mô</span>
+    </div>
+    <div class="flowchart-legend-item">
+      <span class="flowchart-legend-dot" style="background: var(--color-primary, #0284c7);"></span>
+      <span>Hạt Đậm: Chứa phân tử nhỏ (ADP, 5-HT, Ca2+) kích hoạt ngưng tập tức thì</span>
+    </div>
+  </div>
+</div>
 
 ---
 
 ## 2. Cầm Máu Ban Đầu (Nút Chặn Tiểu Cầu)
 Cầm máu ban đầu là quá trình hình thành **Nút Chặn Tiểu Cầu Trắng (Platelet Plug)** bịt kín lỗ thủng mạch máu trong vòng vài giây đến vài phút:
 
-
-<div class="flowchart-card">
-  <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: TỔN THƯƠNG NỘI MÔ MẠCH MÁU</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+<div class="flowchart-editorial-card">
+  <div class="flowchart-editorial-header">
+    <div class="flowchart-editorial-title">
+      <i class="fa-solid fa-stairs"></i>
+      3 BƯỚC HÌNH THÀNH NÚT CHẶN TIỂU CẦU (DÍNH ──► HOẠT HÓA ──► NGƯNG TẬP)
+    </div>
+    <span class="flowchart-editorial-tag">Primary Hemostasis</span>
   </div>
-  <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 546" width="880" height="546" xmlns="http://www.w3.org/2000/svg">
+
+  <div class="flowchart-editorial-viewport">
+    <svg viewBox="0 0 880 340" width="100%" height="340" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
-        </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
-        </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        <marker id="pltArrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-success, #10b981)"/>
         </marker>
       </defs>
 
-      {/* Single Node: TỔN THƯƠNG NỘI MÔ MẠCH MÁU */}
-      <rect x="241.50000000000003" y="20" width="396.99999999999994" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">TỔN THƯƠNG NỘI MÔ MẠCH MÁU</text>
-      <text x="265.5" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ▼ (1. DÍNH TIỂU CẦU - Platelet Adhesion)</text>
-      {/* Bifurcation Path */}
-      <path d="M 440 80 L 440 94 L 235 94 L 235 108" fill="none" stroke="var(--amber, #f59e0b)" stroke-width="1.8" marker-end="url(#arrAmber)"/>
-      <path d="M 440 94 L 645 94 L 645 108" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Left Column: Yếu tố von Willebrand (vWF) */}
-      <rect x="40" y="108" width="390" height="90" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
-      <text x="235" y="130" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">Yếu tố von Willebrand (vWF)</text>
-      <line x1="60" y1="144" x2="410" y2="144" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="60" y="160" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ▼ (2. HOẠT HÓA &amp; TI</text>
-      {/* Right Column: Thụ Thể GPIb */}
-      <rect x="450" y="108" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="645" y="130" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Thụ Thể GPIb</text>
-      <line x1="470" y1="144" x2="820" y2="144" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="470" y="160" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ẾT HẠT - Activation &amp; Secretion)</text>
-      {/* Bifurcation Path */}
-      <path d="M 440 198 L 440 212 L 235 212 L 235 226" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      <path d="M 440 212 L 645 212 L 645 226" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Left Column: ADP */}
-      <rect x="40" y="226" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="235" y="248" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">ADP</text>
-      <line x1="60" y1="262" x2="410" y2="262" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="60" y="278" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ▼ (3. NGƯNG TẬP TI</text>
-      {/* Right Column: Thromboxane A2 (TXA2) */}
-      <rect x="450" y="226" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="645" y="248" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Thromboxane A2 (TXA2)</text>
-      <line x1="470" y1="262" x2="820" y2="262" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="470" y="278" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ỂU CẦU - Platelet Aggregation)</text>
-      {/* Bifurcation Path */}
-      <path d="M 440 316 L 440 330 L 235 330 L 235 344" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      <path d="M 440 330 L 645 330 L 645 344" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Left Column: Phức Hợp Thụ Thể GPIIb/IIIa */}
-      <rect x="40" y="344" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="235" y="366" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Phức Hợp Thụ Thể GPIIb/IIIa</text>
-      <line x1="60" y1="380" x2="410" y2="380" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      {/* Right Column: Fibrinogen */}
-      <rect x="450" y="344" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="645" y="366" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Fibrinogen</text>
-      <line x1="470" y1="380" x2="820" y2="380" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <line x1="440" y1="434" x2="440" y2="462" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: NÚT CHẶN TIỂU CẦU BAN ĐẦU ĐƯỢC */}
-      <rect x="220" y="462" width="440" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="484" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">NÚT CHẶN TIỂU CẦU BAN ĐẦU ĐƯỢC THÀNH LẬP</text>
+      {/* 3 Sequential Step Cards */}
+      {/* Step 1: Adhesion */}
+      <rect x="20" y="20" width="260" height="200" rx="12" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+      <rect x="20" y="20" width="260" height="32" rx="12" fill="rgba(2, 132, 199, 0.12)"/>
+      <text x="150" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="var(--color-primary, #0284c7)">1. DÍNH TIỂU CẦU (ADHESION)</text>
+      
+      <text x="32" y="72" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Tổn thương nội mô làm lộ lớp Collagen</text>
+      <text x="32" y="90" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10.5" fill="var(--color-text, #0f172a)">• Cơ chế phân tử:</text>
+      <text x="32" y="108" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">Yếu tố von Willebrand (vWF) đóng vai trò</text>
+      <text x="32" y="124" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">chiếc cầu nối gắn Collagen vào thụ thể <strong>GPIb</strong></text>
+      <text x="32" y="140" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">trên bề mặt tiểu cầu.</text>
+      
+      <rect x="28" y="156" width="244" height="52" rx="8" fill="rgba(2, 132, 199, 0.08)"/>
+      <text x="150" y="174" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="var(--color-primary, #0284c7)">Bệnh lý liên quan:</text>
+      <text x="150" y="190" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-danger, #ef4444)">Hội chứng Bernard-Soulier (Thiếu GPIb)</text>
+      <text x="150" y="204" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-danger, #ef4444)">Bệnh von Willebrand (vWD - Thiếu vWF)</text>
+
+      {/* Arrow 1 to 2 */}
+      <path d="M 280 120 L 305 120" fill="none" stroke="var(--color-warning, #f59e0b)" stroke-width="2" marker-end="url(#pltArrAmber)"/>
+
+      {/* Step 2: Activation & Secretion */}
+      <rect x="310" y="20" width="260" height="200" rx="12" fill="var(--color-surface, #ffffff)" stroke="var(--color-warning, #f59e0b)" stroke-width="1.8"/>
+      <rect x="310" y="20" width="260" height="32" rx="12" fill="rgba(245, 158, 11, 0.12)"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="var(--color-warning, #d97706)">2. HOẠT HÓA &amp; TIẾT HẠT</text>
+      
+      <text x="322" y="72" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Đổi hình dạng: Hình đĩa ──► Cầu có chân giả</text>
+      <text x="322" y="90" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10.5" fill="var(--color-text, #0f172a)">• Tiết các hóa chất hoạt mạch:</text>
+      <text x="322" y="108" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">- <strong>ADP:</strong> Gắn thụ thể P2Y12 lôi kéo tiểu cầu</text>
+      <text x="322" y="124" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">- <strong>Thromboxane A2 (TXA2):</strong> Do enzyme COX-1</text>
+      <text x="322" y="140" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">tổng hợp từ Acid Arachidonic (Co mạch + ngưng tập)</text>
+      
+      <rect x="318" y="156" width="244" height="52" rx="8" fill="rgba(245, 158, 11, 0.08)"/>
+      <text x="440" y="174" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="var(--color-warning, #d97706)">Đích tác dụng của thuốc:</text>
+      <text x="440" y="190" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text, #0f172a)">Aspirin: Ức chế không thuận nghịch COX-1</text>
+      <text x="440" y="204" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text, #0f172a)">Clopidogrel / Ticagrelor: Chẹn thụ thể P2Y12</text>
+
+      {/* Arrow 2 to 3 */}
+      <path d="M 570 120 L 595 120" fill="none" stroke="var(--color-success, #10b981)" stroke-width="2" marker-end="url(#pltArrGreen)"/>
+
+      {/* Step 3: Aggregation */}
+      <rect x="600" y="20" width="260" height="200" rx="12" fill="var(--color-surface, #ffffff)" stroke="var(--color-success, #10b981)" stroke-width="1.8"/>
+      <rect x="600" y="20" width="260" height="32" rx="12" fill="rgba(16, 185, 129, 0.12)"/>
+      <text x="730" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="var(--color-success, #059669)">3. NGƯNG TẬP (AGGREGATION)</text>
+      
+      <text x="612" y="72" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Hoạt hóa làm biến đổi cấu hình phức hợp</text>
+      <text x="612" y="90" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10.5" fill="var(--color-text, #0f172a)">thụ thể bề mặt <strong>GPIIb/IIIa</strong>.</text>
+      <text x="612" y="108" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">• Phân tử <strong>Fibrinogen</strong> đóng vai trò cầu nối</text>
+      <text x="612" y="124" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">liên kết giữa các thụ thể GPIIb/IIIa của</text>
+      <text x="612" y="140" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">các tiểu cầu liền kề ──► <strong>NÚT CHẶN TIỂU CẦU</strong>.</text>
+      
+      <rect x="608" y="156" width="244" height="52" rx="8" fill="rgba(16, 185, 129, 0.08)"/>
+      <text x="730" y="174" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="var(--color-success, #059669)">Bệnh lý &amp; Thuốc:</text>
+      <text x="730" y="190" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-danger, #ef4444)">Suy nhược tiểu cầu Glanzmann (Thiếu GPIIb/IIIa)</text>
+      <text x="730" y="204" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text, #0f172a)">Abciximab, Tirofiban: Chẹn GPIIb/IIIa</text>
+
+      {/* Bottom Result Ribbon */}
+      <rect x="20" y="240" width="840" height="75" rx="12" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="440" y="266" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-primary, #0284c7)">KẾT QUẢ: THÀNH LẬP NÚT CHẶN TIỂU CẦU TRẮNG (PRIMARY HEMOSTATIC PLUG)</text>
+      <text x="440" y="286" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">Bịt kín tổn thương mao mạch nhỏ trong 2 - 5 phút (Thời gian máu chảy BT bình thường).</text>
+      <text x="440" y="304" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #64748b)">Để ngăn dòng máu áp lực cao cuốn trôi, dòng thác đông máu thứ phát bắt đầu kích hoạt bọc lưới Fibrin.</text>
     </svg>
+  </div>
+
+  <div class="flowchart-editorial-legend">
+    <div class="flowchart-legend-item">
+      <span class="flowchart-legend-dot" style="background: var(--color-primary, #0284c7);"></span>
+      <span>Dính (GPIb-vWF): Khởi đầu tiếp xúc tổn thương</span>
+    </div>
+    <div class="flowchart-legend-item">
+      <span class="flowchart-legend-dot" style="background: var(--color-warning, #f59e0b);"></span>
+      <span>Hoạt hóa (ADP, TXA2): Phóng đại tín hiệu (Đích thuốc Aspirin &amp; Clopidogrel)</span>
+    </div>
+    <div class="flowchart-legend-item">
+      <span class="flowchart-legend-dot" style="background: var(--color-success, #10b981);"></span>
+      <span>Ngưng tập (GPIIb/IIIa-Fibrinogen): Tạo khối nút chặn cơ học</span>
+    </div>
   </div>
 </div>
 
@@ -205,78 +269,103 @@ Cầm máu ban đầu là quá trình hình thành **Nút Chặn Tiểu Cầu Tr
 Dòng thác đông máu là chuỗi phản ứng enzyme liên hoàn biến đổi các tiền chất hòa tan thành mạng lưới sợi **Fibrin không tan**, gia cố nút chặn tiểu cầu thành **Cục máu đông đỏ vững chắc**:
 
 
-<div class="flowchart-card">
-  <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: CON ĐƯỜNG NGOẠI SINH (PT/INR)</div>
+<div class="flowchart-editorial-card">
+  <div class="flowchart-editorial-header">
+    <div class="flowchart-editorial-title">
+      <i class="fa-solid fa-code-fork" style="color: var(--color-primary, #0284c7);"></i>
+      DÒNG THÁC ĐÔNG MÁU: NGOẠI SINH (PT) - NỘI SINH (aPTT) - CON ĐƯỜNG CHUNG
+    </div>
     <span class="badge badge-blue">Pure Orthogonal SVG</span>
   </div>
-  <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 710" width="880" height="710" xmlns="http://www.w3.org/2000/svg">
+
+  <div class="flowchart-editorial-viewport">
+    <svg viewBox="0 0 880 460" width="880" height="460" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        <marker id="arrCascadeBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)"/>
         </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        <marker id="arrCascadeAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-warning, #f59e0b)"/>
         </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        <marker id="arrCascadeGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-success, #10b981)"/>
         </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        <marker id="arrCascadeRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-danger, #ef4444)"/>
         </marker>
       </defs>
 
-      {/* Left Column: CON ĐƯỜNG NGOẠI SINH (PT/INR) */}
-      <rect x="40" y="20" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="235" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">CON ĐƯỜNG NGOẠI SINH (PT/INR)</text>
-      <line x1="60" y1="56" x2="410" y2="56" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="60" y="72" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• (Tổn thương mô giải phóng Tissue</text>
-      <text x="60" y="90" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  Factor</text>
-      {/* Right Column: CON ĐƯỜNG NỘI SINH (aPTT) */}
-      <rect x="450" y="20" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="645" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">CON ĐƯỜNG NỘI SINH (aPTT)</text>
-      <line x1="470" y1="56" x2="820" y2="56" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="470" y="72" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ) (Tiếp xúc bề mặt tích điện âm)</text>
-      {/* Bifurcation Path */}
-      <path d="M 440 110 L 440 124 L 235 124 L 235 138" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      <path d="M 440 124 L 645 124 L 645 138" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Left Column: TF + VIIa */}
-      <rect x="40" y="138" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="235" y="160" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">TF + VIIa</text>
-      <line x1="60" y1="174" x2="410" y2="174" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      {/* Right Column: XII ──► XIIa */}
-      <rect x="450" y="138" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="645" y="160" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">XII ──► XIIa</text>
-      <line x1="470" y1="174" x2="820" y2="174" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <line x1="440" y1="228" x2="440" y2="256" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: XI ──► XIa */}
-      <rect x="250" y="256" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="278" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">XI ──► XIa</text>
-      <line x1="440" y1="302" x2="440" y2="330" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: IX ──► IXa */}
-      <rect x="250" y="330" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="352" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">IX ──► IXa</text>
-      <line x1="440" y1="376" x2="440" y2="404" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: HOẠT HÓA YẾU TỐ X ──► Xa */}
-      <rect x="250" y="404" width="380" height="46" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
-      <text x="440" y="426" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">HOẠT HÓA YẾU TỐ X ──► Xa</text>
-      <line x1="440" y1="450" x2="440" y2="478" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: PROTHROMBIN (II) ──► THROMBIN  */}
-      <rect x="245" y="478" width="390" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="500" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">PROTHROMBIN (II) ──► THROMBIN (IIa)</text>
-      <line x1="440" y1="524" x2="440" y2="552" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: FIBRINOGEN (I) ──► SỢI FIBRIN  */}
-      <rect x="250" y="552" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="574" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">FIBRINOGEN (I) ──► SỢI FIBRIN (Ia)</text>
-      <line x1="440" y1="598" x2="440" y2="626" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: CỤC MÁU ĐÔNG FIBRIN VỮNG CHẮC */}
-      <rect x="250" y="626" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="648" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">CỤC MÁU ĐÔNG FIBRIN VỮNG CHẮC</text>
+      {/* LEFT WING: CON ĐƯỜNG NGOẠI SINH (EXTRINSIC) */}
+      <rect x="25" y="20" width="370" height="150" rx="12" fill="var(--color-surface, #ffffff)" stroke="var(--color-warning, #f59e0b)" stroke-width="1.8"/>
+      <rect x="25" y="20" width="370" height="30" rx="12" fill="rgba(245, 158, 11, 0.12)"/>
+      <text x="210" y="41" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="var(--color-warning, #d97706)">CON ĐƯỜNG NGOẠI SINH (EXTRINSIC PATHWAY)</text>
+      
+      <text x="40" y="70" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Khởi phát: <strong>Tổn thương mô</strong> phóng thích Yếu tố Mô (TF / III)</text>
+      <text x="40" y="90" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Phức hệ hoạt hóa: <strong>TF + Yếu tố VIIa + Ca²⁺</strong></text>
+      <text x="40" y="112" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="var(--color-text-muted, #64748b)">Xét nghiệm theo dõi: <strong>PT (Prothrombin Time) / INR</strong></text>
+      
+      <rect x="35" y="124" width="350" height="36" rx="6" fill="rgba(245, 158, 11, 0.08)"/>
+      <text x="210" y="146" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text, #0f172a)">Đích tác dụng của: <strong>Kháng Vitamin K (Warfarin / Sintrom)</strong></text>
+
+      {/* RIGHT WING: CON ĐƯỜNG NỘI SINH (INTRINSIC) */}
+      <rect x="485" y="20" width="370" height="150" rx="12" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+      <rect x="485" y="20" width="370" height="30" rx="12" fill="rgba(2, 132, 199, 0.12)"/>
+      <text x="670" y="41" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="var(--color-primary, #0284c7)">CON ĐƯỜNG NỘI SINH (INTRINSIC PATHWAY)</text>
+      
+      <text x="500" y="70" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Tiếp xúc bề mặt tích điện âm: <strong>XII ──► XIIa</strong></text>
+      <text x="500" y="90" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Chuỗi cascade: <strong>XI ──► XIa ──► IX ──► IXa</strong></text>
+      <text x="500" y="110" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Phức hệ Tenase nội sinh: <strong>[IXa + VIIIa + Ca²⁺ + PL]</strong></text>
+      
+      <rect x="495" y="124" width="350" height="36" rx="6" fill="rgba(2, 132, 199, 0.08)"/>
+      <text x="670" y="139" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="9.5" fill="var(--color-primary, #0284c7)">Theo dõi: aPTT | Bệnh lý: Hemophilia A (thiếu VIII), B (thiếu IX)</text>
+      <text x="670" y="152" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" fill="var(--color-text-muted, #64748b)">Thuốc tác động: Heparin tiêu chuẩn (UFH kéo dài aPTT)</text>
+
+      {/* ORTHOGONAL CONVERGENCE ARROWS TO COMMON PATHWAY */}
+      <path d="M 210 170 L 210 195 L 415 195 L 415 210" fill="none" stroke="var(--color-warning, #f59e0b)" stroke-width="2" marker-end="url(#arrCascadeAmber)"/>
+      <path d="M 670 170 L 670 195 L 465 195 L 465 210" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arrCascadeBlue)"/>
+
+      {/* CENTRAL CONVERGENCE: CON ĐƯỜNG CHUNG (COMMON PATHWAY) */}
+      {/* Node 1: Yếu tố Xa */}
+      <rect x="250" y="212" width="380" height="42" rx="10" fill="rgba(16, 185, 129, 0.12)" stroke="var(--color-success, #10b981)" stroke-width="2"/>
+      <text x="440" y="238" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-success, #059669)">HOẠT HÓA YẾU TỐ X ──► Xa (ĐIỂM HỘI TỤ)</text>
+      
+      {/* Arrow */}
+      <path d="M 440 254 L 440 274" fill="none" stroke="var(--color-success, #10b981)" stroke-width="2" marker-end="url(#arrCascadeGreen)"/>
+
+      {/* Node 2: Prothrombinase & Thrombin */}
+      <rect x="200" y="276" width="480" height="52" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-success, #10b981)" stroke-width="1.8"/>
+      <text x="440" y="298" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="var(--color-text, #0f172a)">Phức hệ Prothrombinase: [Xa + Va + Ca²⁺ + Phospholipid]</text>
+      <text x="440" y="318" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-success, #059669)">Chuyển PROTHROMBIN (II) ──► THROMBIN (IIa)</text>
+
+      {/* Arrow */}
+      <path d="M 440 328 L 440 348" fill="none" stroke="var(--color-success, #10b981)" stroke-width="2" marker-end="url(#arrCascadeGreen)"/>
+
+      {/* Node 3: Fibrin Formation & Stabilization */}
+      <rect x="180" y="350" width="520" height="56" rx="10" fill="rgba(239, 68, 68, 0.08)" stroke="var(--color-danger, #ef4444)" stroke-width="1.8"/>
+      <text x="440" y="372" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="var(--color-danger, #dc2626)">Thrombin (IIa) cắt FIBRINOGEN (I) ──► SỢI FIBRIN (Ia)</text>
+      <text x="440" y="392" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">Yếu tố XIIIa (Fibrin-Stabilizing Factor) tạo liên kết đồng hóa trị tạo <strong>LƯỚI FIBRIN BỀN VỮNG</strong></text>
+
+      {/* Bottom Result Pill */}
+      <rect x="120" y="416" width="640" height="34" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.2"/>
+      <text x="440" y="438" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="var(--color-primary, #0284c7)">KẾT QUẢ ĐÔNG MÁU THỨ PHÁT: CỤC MÁU ĐÔNG ĐỎ VỮNG CHẮC (RED THROMBUS)</text>
     </svg>
   </div>
-</div>
 
+  <div class="flowchart-editorial-legend">
+    <div class="flowchart-legend-item">
+      <span class="flowchart-legend-dot" style="background: var(--color-warning, #f59e0b);"></span>
+      <span>Ngoại sinh: TF + VIIa $\rightarrow$ PT/INR (Đích Warfarin)</span>
+    </div>
+    <div class="flowchart-legend-item">
+      <span class="flowchart-legend-dot" style="background: var(--color-primary, #0284c7);"></span>
+      <span>Nội sinh: XII/XI/IX/VIII $\rightarrow$ aPTT (Đích Heparin, Hemophilia A/B)</span>
+    </div>
+    <div class="flowchart-legend-item">
+      <span class="flowchart-legend-dot" style="background: var(--color-success, #10b981);"></span>
+      <span>Con đường chung: Xa $\rightarrow$ Thrombin IIa $\rightarrow$ Fibrinogen $\rightarrow$ Lưới Fibrin (Đích DOACs)</span>
+    </div>
+  </div>
+</div>
 
 ---
 
@@ -290,42 +379,76 @@ Dòng thác đông máu là chuỗi phản ứng enzyme liên hoàn biến đổ
 
 ### B. Quá Trình Tiêu Sợi Huyết & Ý Nghĩa Lâm Sàng Của D-Dimer
 
-
-<div class="flowchart-card">
-  <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: Mô lành tiết t-PA (Tissue Plasminogen Activator)</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+<div class="flowchart-editorial-card">
+  <div class="flowchart-editorial-header">
+    <div class="flowchart-editorial-title">
+      <i class="fa-solid fa-scissors" style="color: var(--color-danger, #ef4444);"></i>
+      SƠ ĐỒ TIÊU SỢI HUYẾT (FIBRINOLYSIS) &amp; CƠ CHẾ SINH D-DIMER
+    </div>
+    <span class="badge badge-red">Fibrinolysis Pathway</span>
   </div>
-  <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 266" width="880" height="266" xmlns="http://www.w3.org/2000/svg">
+
+  <div class="flowchart-editorial-viewport">
+    <svg viewBox="0 0 880 320" width="880" height="320" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        <marker id="arrFibBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)"/>
         </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        <marker id="arrFibRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-danger, #ef4444)"/>
         </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        <marker id="arrFibGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-success, #10b981)"/>
         </marker>
       </defs>
 
-      {/* Single Node: Mô lành tiết t-PA (Tissue Plas */}
-      <rect x="180" y="20" width="520" height="46" rx="10" fill="rgba(16, 185, 129, 0.08)" stroke="var(--color-success, #10b981)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-success, #10b981)">Mô lành tiết t-PA (Tissue Plasminogen Activator)</text>
-      <line x1="440" y1="66" x2="440" y2="94" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: Chuyển Hóa PLASMINOGEN ──► PLA */}
-      <rect x="160" y="94" width="560" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Chuyển Hóa PLASMINOGEN ──► PLASMIN (Enzyme phân giải</text>
-      <text x="440" y="134" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--color-text, #0f172a)">protein cực mạnh)</text>
-      <line x1="440" y1="154" x2="440" y2="182" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: Plasmin phân cắt mạng lưới sợi */}
-      <rect x="195" y="182" width="490" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="204" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Plasmin phân cắt mạng lưới sợi Fibrin đông tụ</text>
+      {/* Row 1: Source & Trigger */}
+      <rect x="40" y="20" width="360" height="64" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+      <text x="220" y="44" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="var(--color-primary, #0284c7)">Nội mô mạch máu lành tiết t-PA</text>
+      <text x="220" y="64" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">(Tissue Plasminogen Activator - Bị ức chế bởi PAI-1)</text>
+
+      <rect x="480" y="20" width="360" height="64" rx="10" fill="rgba(2, 132, 199, 0.08)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="660" y="44" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="var(--color-text, #0f172a)">Thuốc tiêu sợi huyết (Thrombolytics)</text>
+      <text x="660" y="64" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-primary, #0284c7)">Alteplase (rt-PA), Tenecteplase (TNK-tPA), Reteplase</text>
+
+      {/* Arrow Down to Plasminogen */}
+      <path d="M 220 84 L 220 115 L 420 115 L 420 130" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arrFibBlue)"/>
+      <path d="M 660 84 L 660 115 L 460 115 L 460 130" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arrFibBlue)"/>
+
+      {/* Row 2: Activation to Plasmin */}
+      <rect x="220" y="132" width="440" height="60" rx="12" fill="var(--color-surface, #ffffff)" stroke="var(--color-warning, #f59e0b)" stroke-width="2"/>
+      <text x="440" y="156" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-warning, #d97706)">PLASMINOGEN ──► PLASMIN</text>
+      <text x="440" y="176" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">Enzyme protease tiêu đạm mạnh | Bị ức chế nội sinh bởi α2-antiplasmin</text>
+
+      {/* Arrow to Cleavage */}
+      <path d="M 440 192 L 440 220" fill="none" stroke="var(--color-danger, #ef4444)" stroke-width="2" marker-end="url(#arrFibRed)"/>
+
+      {/* Row 3: Cleavage of Fibrin & Outcomes */}
+      <rect x="40" y="222" width="380" height="76" rx="10" fill="rgba(239, 68, 68, 0.08)" stroke="var(--color-danger, #ef4444)" stroke-width="1.8"/>
+      <text x="230" y="246" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="var(--color-danger, #dc2626)">CẮT MẠNG LƯỚI FIBRIN LIÊN KẾT CHÉO</text>
+      <text x="230" y="266" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text, #0f172a)">Phóng thích <strong>D-DIMER</strong> (Sản phẩm giáng hóa Fibrin)</text>
+      <text x="230" y="284" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-danger, #dc2626)">Giá trị lâm sàng: NPV 98-99% loại trừ DVT và PE</text>
+
+      <rect x="460" y="222" width="380" height="76" rx="10" fill="rgba(16, 185, 129, 0.08)" stroke="var(--color-success, #10b981)" stroke-width="1.8"/>
+      <text x="650" y="246" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="var(--color-success, #059669)">TÁI THÔNG LÒNG MẠCH MÁU</text>
+      <text x="650" y="266" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text, #0f172a)">Dọn dẹp hoàn toàn cục huyết khối sau khi nội mô lành</text>
+      <text x="650" y="284" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text-muted, #64748b)">Thuốc ức chế tiêu sợi huyết (Cầm máu): Acid Tranexamic (TXA)</text>
     </svg>
+  </div>
+
+  <div class="flowchart-editorial-legend">
+    <div class="flowchart-legend-item">
+      <span class="flowchart-legend-dot" style="background: var(--color-primary, #0284c7);"></span>
+      <span>t-PA &amp; Thuốc tiêu sợi huyết: Hoạt hóa Plasminogen thành Plasmin</span>
+    </div>
+    <div class="flowchart-legend-item">
+      <span class="flowchart-legend-dot" style="background: var(--color-danger, #ef4444);"></span>
+      <span>D-Dimer: Dấu ấn sinh học chứng minh có cục Fibrin đang bị ly giải</span>
+    </div>
+    <div class="flowchart-legend-item">
+      <span class="flowchart-legend-dot" style="background: var(--color-success, #10b981);"></span>
+      <span>Tái thông mạch: Cân bằng tự nhiên phục hồi lưu thông dòng máu</span>
+    </div>
   </div>
 </div>
 

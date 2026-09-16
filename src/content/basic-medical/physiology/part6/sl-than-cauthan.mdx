@@ -51,24 +51,31 @@ sections:
 
 <PhysioQuickNav />
 
+<div class="module-badge-group">
+  <span class="badge badge-system"><i class="fa-solid fa-droplet"></i> Sinh Lý Thận & Thể Dịch</span>
+  <span class="badge badge-source"><i class="fa-solid fa-book-bookmark"></i> Guyton 14th Ch. 26-27 • Ganong 26th Ch. 37</span>
+  <span class="badge badge-level"><i class="fa-solid fa-layer-group"></i> Y Khoa Cơ Sở • Module Thận</span>
+  <span class="badge badge-evidence"><i class="fa-solid fa-certificate"></i> EBM 2026 • KDIGO Guideline</span>
+</div>
+
 {/* DẢI CHỈ SỐ NHANH (QUICK STATS STRIP) */}
-<section class="stats-strip">
+<section class="stats-strip theme-physio">
   <div class="stats-grid">
     <div class="stat-card">
-      <div class="stat-val blue">PHYS-REN-01</div>
-      <div class="stat-lbl">Mã chuyên đề • Sinh Lý Thận & Thể Dịch</div>
+      <div class="stat-val blue">125 <span class="stat-unit">mL/min</span></div>
+      <div class="stat-lbl">Độ Lọc Cầu Thận GFR • 180 Lít/ngày</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val green">Nội Môi Ổn Định</div>
-      <div class="stat-lbl">Cân bằng gradient điện hóa & Áp suất thẩm thấu</div>
+      <div class="stat-val green">+10 <span class="stat-unit">mmHg</span></div>
+      <div class="stat-lbl">Áp Suất Lọc Ròng (NFP) • Pgc - Pbs - πgc</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val amber">Feedback Loop</div>
-      <div class="stat-lbl">Vòng điều hòa phản hồi thần kinh - thể dịch</div>
+      <div class="stat-val amber">20 <span class="stat-unit">%</span></div>
+      <div class="stat-lbl">Phân Suất Lọc (FF) • GFR / RPF (125/600)</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val purple">Dược Lý EBM</div>
-      <div class="stat-lbl">Ứng dụng lâm sàng chuẩn Guyton 14th & Ganong 26th</div>
+      <div class="stat-val purple">1,200 <span class="stat-unit">mL/min</span></div>
+      <div class="stat-lbl">Dòng Máu Qua Thận (RBF) • 20 - 25% C.O.</div>
     </div>
   </div>
 </section>
@@ -76,74 +83,159 @@ sections:
 ---
 
 ## 1. Cấu Trúc Màng Lọc Cầu Thận 3 Lớp
-Màng lọc cầu thận (*Glomerular Filtration Barrier*) có tính thấm nước và các chất hòa tan cao gấp hàng trăm lần mao mạch thông thường nhưng ngăn chặn gần như tuyệt đối tế bào máu và protein huyết tương:
-
+Màng lọc cầu thận (*Glomerular Filtration Barrier*) có tính thấm nước và các chất hòa tan cao gấp hàng trăm lần mao mạch thông thường nhưng ngăn chặn gần như tuyệt đối tế bào máu và protein huyết tương lớn:
 
 <div class="flowchart-card">
   <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: LÒNG MAO MẠCH CẦU THẬN: Máu tới từ Tiểu Động Mạch Đến</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+    <div class="flowchart-title"><i class="fa-solid fa-shield-halved" style="color: var(--color-primary, #0284c7);"></i> KIẾN TRÚC MÀNG LỌC CẦU THẬN 3 LỚP & CHỌN LỌC ĐIỆN TÍCH / KÍCH THƯỚC</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG • Guyton & Hall</span>
   </div>
   <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 260" width="880" height="260" xmlns="http://www.w3.org/2000/svg">
+    <svg class="flowchart-svg" viewBox="0 0 920 370" width="920" height="370" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrowBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
         </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrowGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
         </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrowRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
         </marker>
       </defs>
 
-      {/* Single Node: LÒNG MAO MẠCH CẦU THẬN: Máu tớ */}
-      <rect x="155" y="20" width="570" height="114" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">LÒNG MAO MẠCH CẦU THẬN: Máu tới từ Tiểu Động Mạch Đến</text>
-      <text x="179" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ├── 1. TẾ BÀO NỘI MÔ CÓ LỖ THỦNG (Fenestrated Endothelium):</text>
-      <text x="179" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  Lỗ lọc 70 – 100 nm (Chặn tế bào máu)</text>
-      <text x="179" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ├── 2. MÀNG ĐÁY CẦU THẬN (GBM): Lớp Collagen IV + Heparan</text>
-      <text x="179" y="118" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  Sulfate Proteoglycan TÍCH ĐIỆN ÂM CỰC MẠNH</text>
-      <line x1="440" y1="134" x2="440" y2="162" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: KHOANG BAWMAN: Hứng dịch lọc c */}
-      <rect x="155" y="162" width="570" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="184" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">KHOANG BAWMAN: Hứng dịch lọc cầu thận nguyên thủy 180</text>
-      <text x="440" y="202" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--color-text, #0f172a)">Lít/ngày</text>
+      {/* Top Banner: Lòng Mao Mạch Cầu Thận */}
+      <rect x="30" y="16" width="860" height="42" rx="10" fill="var(--color-primary, #0284c7)" opacity="0.12"/>
+      <rect x="30" y="16" width="860" height="42" rx="10" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="1.6"/>
+      <text x="460" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="13" fill="var(--color-primary, #0284c7)">LÒNG MAO MẠCH CẦU THẬN (Máu từ Tiểu Động Mạch Đến • RBF = 1200 mL/phút • P_GC = 60 mmHg)</text>
+
+      {/* 3 Filtration Layers */}
+      {/* Layer 1: Fenestrated Endothelium */}
+      <g transform="translate(40, 78)">
+        <rect x="0" y="0" width="260" height="150" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="#0284c7" stroke-width="1.8"/>
+        <rect x="0" y="0" width="260" height="32" rx="10" fill="#0284c7" opacity="0.15"/>
+        <text x="130" y="21" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#0284c7">LỚP 1: TẾ BÀO NỘI MÔ CÓ LỖ</text>
+        <text x="130" y="52" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">Fenestrated Endothelium</text>
+        <text x="20" y="74" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Đường kính lỗ: 70 – 100 nm</text>
+        <text x="20" y="94" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Chặn: Hồng cầu, bạch cầu, TC</text>
+        <text x="20" y="114" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Cho qua: Hầu hết protein HT</text>
+        <text x="20" y="134" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="10.5" fill="#dc2626">► Hàng rào chặn tế bào máu</text>
+      </g>
+
+      {/* Layer 2: GBM */}
+      <g transform="translate(330, 78)">
+        <rect x="0" y="0" width="260" height="150" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="#d97706" stroke-width="1.8"/>
+        <rect x="0" y="0" width="260" height="32" rx="10" fill="#d97706" opacity="0.15"/>
+        <text x="130" y="21" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#d97706">LỚP 2: MÀNG ĐÁY CẦU THẬN (GBM)</text>
+        <text x="130" y="52" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">Glomerular Basement Membrane</text>
+        <text x="20" y="74" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Lưới Collagen type IV & Laminin</text>
+        <text x="20" y="94" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Giàu Heparan Sulfate (Điện âm -)</text>
+        <text x="20" y="114" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Ngăn các phân tử mang điện âm</text>
+        <text x="20" y="134" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="10.5" fill="#d97706">► Đẩy lùi Albumin (Charge barrier)</text>
+      </g>
+
+      {/* Layer 3: Podocyte Foot Processes */}
+      <g transform="translate(620, 78)">
+        <rect x="0" y="0" width="260" height="150" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="#059669" stroke-width="1.8"/>
+        <rect x="0" y="0" width="260" height="32" rx="10" fill="#059669" opacity="0.15"/>
+        <text x="130" y="21" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#059669">LỚP 3: CHÂN TẾ BÀO BIỂU MÔ</text>
+        <text x="130" y="52" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">Podocyte Slit Diaphragm</text>
+        <text x="20" y="74" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Chân giả (pedicels) đan xen</text>
+        <text x="20" y="94" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Khe lọc rộng: 4 – 14 nm</text>
+        <text x="20" y="114" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Protein Nephrin & Podocin tạo rào</text>
+        <text x="20" y="134" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="10.5" fill="#059669">► Rào cản kích thước tối hậu</text>
+      </g>
+
+      {/* Flow downward vectors */}
+      <line x1="170" y1="228" x2="170" y2="265" stroke="#0284c7" stroke-width="2" marker-end="url(#arrowBlue)"/>
+      <line x1="460" y1="228" x2="460" y2="265" stroke="#d97706" stroke-width="2" marker-end="url(#arrowGreen)"/>
+      <line x1="750" y1="228" x2="750" y2="265" stroke="#059669" stroke-width="2" marker-end="url(#arrowGreen)"/>
+
+      {/* Bottom Result Box: Khoang Bowman */}
+      <rect x="30" y="275" width="860" height="50" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="#059669" stroke-width="1.8"/>
+      <text x="460" y="296" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#059669">KHOANG BOWMAN • DỊCH LỌC CẦU THẬN NGUYÊN THỦY (125 mL/phút • 180 Lít/ngày)</text>
+      <text x="460" y="314" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">Thành phần: Nước, Glucose (100%), Na+, K+, Cl-, HCO3-, Urê, Creatinine • TUYỆT ĐỐI KHÔNG CÓ Hồng cầu & Albumin (&lt;0.01%)</text>
     </svg>
+  </div>
+  <div class="flowchart-editorial-legend">
+    <div class="legend-item"><span class="legend-dot" style="background:#0284c7;"></span><span>Nội mô có lỗ (70-100 nm)</span></div>
+    <div class="legend-item"><span class="legend-dot" style="background:#d97706;"></span><span>Màng đáy GBM tích điện âm (Heparan Sulfate)</span></div>
+    <div class="legend-item"><span class="legend-dot" style="background:#059669;"></span><span>Khe lọc Podocyte (Nephrin/Podocin 4-14 nm)</span></div>
   </div>
 </div>
 
-
-  1. **Chọn lọc theo kích thước (Size Selectivity)**: Các phân tử có bán kính $< 2.0\text{ nm}$ (Nước, Glucose, Ion điện giải, Urê, Creatinine) lọc tự do 100%; Các phân tử $> 4.2\text{ nm}$ (Protein lớn, Globulin) bị chặn lại hoàn toàn.
-  2. **Chọn lọc theo điện tích (Charge Selectivity)**: Các phân tử mang điện tích âm bị đẩy lùi mạnh mẽ bởi lớp Heparan Sulfate của GBM và áo phủ Podocalyxin của Podocytes. Dù phân tử **Albumin** có bán kính chỉ $3.6\text{ nm}$ (về lý thuyết có thể lọt qua khe), nhưng do Albumin mang điện tích âm ở pH $7.4$, nó bị đẩy lùi và hầu như **không thể lọt vào khoang Bowman ($< 0.01\%$)**.
-
+1. **Chọn lọc theo kích thước (Size Selectivity)**: Các phân tử có bán kính $< 2.0\text{ nm}$ (Nước, Glucose, Ion điện giải, Urê, Creatinine) lọc tự do 100%; Các phân tử $> 4.2\text{ nm}$ (Protein lớn, Globulin) bị chặn lại hoàn toàn.
+2. **Chọn lọc theo điện tích (Charge Selectivity)**: Các phân tử mang điện tích âm bị đẩy lùi mạnh mẽ bởi lớp Heparan Sulfate của GBM và áo phủ Podocalyxin của Podocytes. Dù phân tử **Albumin** có bán kính chỉ $3.6\text{ nm}$ (về lý thuyết có thể lọt qua khe), nhưng do Albumin mang điện tích âm ở pH $7.4$, nó bị đẩy lùi và hầu như **không thể lọt vào khoang Bowman ($< 0.01\%$)**.
 
 ---
 
 ## 2. Động Lực Học Starling & Áp Suất Lọc (NFP)
 Sự hình thành dịch lọc cầu thận là một quá trình siêu lọc thụ động được chi phối bởi **4 Áp lực Starling**:
 
-$$\text{Áp suất lọc ròng (NFP)} = (P_{GC} - P_{BS}) - (\pi_{GC} - \pi_{BS})$$
+$$\text{Áp suất lọc ròng (NFP)} = (P_{GC} - P_{BS}) - (\pi_{GC} - \pi_{BS}) = (60 - 18) - (32 - 0) = \mathbf{+10\text{ mmHg}}$$
 
-```
-ÁP LỰC THÚC ĐẨY LỌC:
-  • P_GC (Áp suất thủy tĩnh mao mạch cầu thận): +60 mmHg (Rất cao nhờ Tiểu ĐM đi có sức cản lớn)
-  • π_BS (Áp suất keo khoang Bowman): 0 mmHg (Vì không có protein lọt qua)
-  ──► TỔNG LỰC ĐẨY LỌC = +60 mmHg
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-scale-balanced" style="color: var(--color-primary, #0284c7);"></i> CÂN BẰNG LỰC STARLING TẠI MAO MẠCH CẦU THẬN</div>
+    <span class="badge badge-green">Pure Orthogonal SVG • Starling Forces</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 920 300" width="920" height="300" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="starlingBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="starlingRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
 
-ÁP LỰC CHỐNG LẠI SỰ LỌC:
-  • P_BS (Áp suất thủy tĩnh khoang Bowman): -18 mmHg (Chống lại dịch đẩy vào)
-  • π_GC (Áp suất keo mao mạch cầu thận): -32 mmHg (Do protein giữ nước, tăng từ 28 lên 36 mmHg về cuối mao mạch)
-  ──► TỔNG LỰC CHỐNG LỌC = -50 mmHg
+      {/* Promoting Forces Column */}
+      <g transform="translate(40, 20)">
+        <rect x="0" y="0" width="390" height="180" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="#059669" stroke-width="1.8"/>
+        <rect x="0" y="0" width="390" height="36" rx="10" fill="#059669" opacity="0.15"/>
+        <text x="195" y="24" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="12" fill="#059669">LỰC THÚC ĐẨY LỌC (Outward Forces): +60 mmHg</text>
+        
+        <text x="25" y="65" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text, #0f172a)">• P_GC (Áp suất thủy tĩnh mao mạch cầu thận):</text>
+        <text x="40" y="85" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="14" fill="#059669">+60 mmHg</text>
+        <text x="120" y="85" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">(Rất cao do sức cản tiểu ĐM đi lớn)</text>
 
-══════════════════════════════════════════════════════════════════════════
-ÁP SUẤT LỌC RÒNG CUỐI CÙNG (NFP) = 60 - 18 - 32 = +10 mmHg
-```
+        <text x="25" y="120" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text, #0f172a)">• π_BS (Áp suất keo khoang Bowman):</text>
+        <text x="40" y="140" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="14" fill="#059669">0 mmHg</text>
+        <text x="100" y="140" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">(Bình thường không có protein lọt qua)</text>
 
+        <text x="25" y="168" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#059669">► TỔNG LỰC ĐẨY RA NGOÀI = +60 mmHg</text>
+      </g>
+
+      {/* Opposing Forces Column */}
+      <g transform="translate(490, 20)">
+        <rect x="0" y="0" width="390" height="180" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="#dc2626" stroke-width="1.8"/>
+        <rect x="0" y="0" width="390" height="36" rx="10" fill="#dc2626" opacity="0.15"/>
+        <text x="195" y="24" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="12" fill="#dc2626">LỰC CHỐNG LẠI LỌC (Inward Forces): -50 mmHg</text>
+        
+        <text x="25" y="65" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text, #0f172a)">• P_BS (Áp suất thủy tĩnh khoang Bowman):</text>
+        <text x="40" y="85" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="14" fill="#dc2626">-18 mmHg</text>
+        <text x="125" y="85" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">(Áp lực chống dịch đẩy vào khoang)</text>
+
+        <text x="25" y="120" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text, #0f172a)">• π_GC (Áp suất keo mao mạch cầu thận):</text>
+        <text x="40" y="140" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="14" fill="#dc2626">-32 mmHg</text>
+        <text x="125" y="140" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">(Protein giữ nước; tăng từ 28 lên 36)</text>
+
+        <text x="25" y="168" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#dc2626">► TỔNG LỰC CHỐNG LỌC = -50 mmHg</text>
+      </g>
+
+      {/* Net Result Bar */}
+      <rect x="40" y="220" width="840" height="56" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="#0284c7" stroke-width="2"/>
+      <text x="460" y="244" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="13" fill="#0284c7">ÁP SUẤT LỌC RÒNG (NFP) = +60 - 50 = +10 mmHg</text>
+      <text x="460" y="264" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">GFR = Kf × NFP = 12.5 mL/min/mmHg × 10 mmHg = 125 mL/phút (~ 180 Lít/ngày)</text>
+    </svg>
+  </div>
+  <div class="flowchart-editorial-legend">
+    <div class="legend-item"><span class="legend-dot" style="background:#059669;"></span><span>Lực đẩy dịch vào khoang Bowman (+60 mmHg)</span></div>
+    <div class="legend-item"><span class="legend-dot" style="background:#dc2626;"></span><span>Lực giữ/chống dịch lọt qua (-50 mmHg)</span></div>
+    <div class="legend-item"><span class="legend-dot" style="background:#0284c7;"></span><span>Áp suất lọc hữu dụng NFP (+10 mmHg)</span></div>
+  </div>
+</div>
 
 ---
 
@@ -161,7 +253,6 @@ $$FF = \frac{GFR}{RPF} = \frac{125\text{ mL/min}}{600\text{ mL/min}} \approx \ma
 
 - **Ý nghĩa sinh lý**: Cứ mỗi $100\text{ mL}$ huyết tương chảy qua thận, có đúng **$20\text{ mL}$** được lọc vào khoang Bowman, $80\text{ mL}$ còn lại tiếp tục theo tiểu động mạch đi nuôi mạng mao mạch quanh ống thận.
 
-
 ---
 
 ## 4. Cơ Chế Tự Điều Hòa: Myogenic & Macula Densa
@@ -172,94 +263,154 @@ Thận có khả năng tự duy trì ổn định $RBF$ và $GFR$ khi Huyết á
 2. **Cơ Chế Điều Hòa Ngược Ống - Cầu Thận (Tubuloglomerular Feedback - TGF)**:
    - Tế bào **Macula Densa** (Vết đặc) tại chỗ tiếp xúc giữa quai Henle và ống lượn xa đóng vai trò là cảm biến nồng độ $NaCl$:
 
-
 <div class="flowchart-card">
   <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: GFR TĂNG CAO</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+    <div class="flowchart-title"><i class="fa-solid fa-arrows-spin" style="color: var(--color-primary, #0284c7);"></i> CƠ CHẾ ĐIỀU HÒA NGƯỢC ỐNG - CẦU THẬN (TUBULOGLOMERULAR FEEDBACK - TGF)</div>
+    <span class="badge badge-amber">Pure Orthogonal SVG • Feedback Loop</span>
   </div>
   <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 326" width="880" height="326" xmlns="http://www.w3.org/2000/svg">
+    <svg class="flowchart-svg" viewBox="0 0 920 280" width="920" height="280" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="tgfBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
         </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
-        </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="tgfAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
         </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        <marker id="tgfGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
         </marker>
       </defs>
 
-      {/* Single Node: GFR TĂNG CAO */}
-      <rect x="250" y="20" width="380" height="46" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">GFR TĂNG CAO</text>
-      <line x1="440" y1="66" x2="440" y2="94" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: TẾ BÀO MACULA DENSA PHÁT HIỆN  */}
-      <rect x="190" y="94" width="500" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">TẾ BÀO MACULA DENSA PHÁT HIỆN NỒNG ĐỘ NaCl CAO</text>
-      <line x1="440" y1="140" x2="440" y2="168" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: Giải Phóng ADENOSINE &amp; ATP */}
-      <rect x="250" y="168" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="190" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Giải Phóng ADENOSINE &amp; ATP</text>
-      <line x1="440" y1="214" x2="440" y2="242" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: HẠ ÁP SUẤT P_GC VÀ ĐƯA GFR TRỞ */}
-      <rect x="145" y="242" width="590" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="264" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">HẠ ÁP SUẤT P_GC VÀ ĐƯA GFR TRỞ VỀ MỨC CHUẨN 125 mL/phút</text>
+      {/* Step 1 */}
+      <rect x="30" y="30" width="180" height="90" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
+      <text x="120" y="55" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="var(--amber, #d97706)">BƯỚC 1: KÍCH THÍCH</text>
+      <text x="120" y="80" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="12" fill="var(--color-text, #0f172a)">GFR Tăng Cao</text>
+      <text x="120" y="100" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">Dòng dịch lọc chảy xiết</text>
+
+      {/* Vector 1 -> 2 */}
+      <line x1="210" y1="75" x2="250" y2="75" stroke="#0284c7" stroke-width="2" marker-end="url(#tgfBlue)"/>
+
+      {/* Step 2 */}
+      <rect x="250" y="30" width="190" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="#0284c7" stroke-width="1.8"/>
+      <text x="345" y="55" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="#0284c7">BƯỚC 2: CẢM BIẾN</text>
+      <text x="345" y="80" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="12" fill="var(--color-text, #0f172a)">Tế Bào Macula Densa</text>
+      <text x="345" y="100" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">Phát hiện [NaCl] tăng cao</text>
+
+      {/* Vector 2 -> 3 */}
+      <line x1="440" y1="75" x2="480" y2="75" stroke="#0284c7" stroke-width="2" marker-end="url(#tgfBlue)"/>
+
+      {/* Step 3 */}
+      <rect x="480" y="30" width="190" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="#d97706" stroke-width="1.8"/>
+      <text x="575" y="55" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="#d97706">BƯỚC 3: TRUYỀN TIN</text>
+      <text x="575" y="80" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="12" fill="var(--color-text, #0f172a)">Phóng Thích Adenosine</text>
+      <text x="575" y="100" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">Kèm ATP qua thụ thể A1</text>
+
+      {/* Vector 3 -> 4 */}
+      <line x1="670" y1="75" x2="710" y2="75" stroke="#0284c7" stroke-width="2" marker-end="url(#tgfBlue)"/>
+
+      {/* Step 4 */}
+      <rect x="710" y="30" width="180" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="#dc2626" stroke-width="1.8"/>
+      <text x="800" y="55" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="#dc2626">BƯỚC 4: ĐÁP ỨNG</text>
+      <text x="800" y="80" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="12" fill="var(--color-text, #0f172a)">Co Tiểu ĐM Đến</text>
+      <text x="800" y="100" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">Tăng sức cản dòng máu</text>
+
+      {/* Feedback Vector Loop to Bottom */}
+      <path d="M 800 120 L 800 160 L 460 160" fill="none" stroke="#059669" stroke-width="2" marker-end="url(#tgfGreen)"/>
+
+      {/* Step 5: Homeostatic Restoration */}
+      <rect x="180" y="180" width="560" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="#059669" stroke-width="2"/>
+      <text x="460" y="205" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#059669">KẾT QUẢ ĐIỀU HÒA PHẢN HỒI ÂM TÍNH (NEGATIVE FEEDBACK)</text>
+      <text x="460" y="226" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">Hạ áp suất thủy tĩnh P_GC → Đưa GFR trở về mức chuẩn sinh lý 125 mL/phút</text>
     </svg>
   </div>
+  <div class="flowchart-editorial-legend">
+    <div class="legend-item"><span class="legend-dot" style="background:#f59e0b;"></span><span>Kích thích ban đầu (GFR tăng)</span></div>
+    <div class="legend-item"><span class="legend-dot" style="background:#0284c7;"></span><span>Cảm biến Macula Densa & Truyền tin hóa học</span></div>
+    <div class="legend-item"><span class="legend-dot" style="background:#059669;"></span><span>Hồi phục nội môi (Negative Feedback ổn định GFR)</span></div>
+  </div>
 </div>
-
 
 ---
 
 ## 5. Dược Lý Tiểu Động Mạch: NSAIDs vs ACEi/ARBs
+
 <div class="flowchart-card">
   <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: Tiểu Động Mạch ĐẾN</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+    <div class="flowchart-title"><i class="fa-solid fa-pills" style="color: var(--color-primary, #0284c7);"></i> ĐỘNG LỰC HỌC TIỂU ĐỘNG MẠCH ĐẾN - CẦU THẬN - TIỂU ĐỘNG MẠCH ĐI & NGUY CƠ SUY THẬN CẤP</div>
+    <span class="badge badge-red">Pure Orthogonal SVG • Clinical Pharmacology</span>
   </div>
   <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 148" width="880" height="148" xmlns="http://www.w3.org/2000/svg">
+    <svg class="flowchart-svg" viewBox="0 0 920 250" width="920" height="250" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="pharmBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
-        </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
-        </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
         </marker>
       </defs>
 
-      <rect x="30" y="20" width="250" height="90" rx="8" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
-      <text x="155" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--amber, #d97706)">Tiểu Động Mạch ĐẾN</text>
-      <line x1="45" y1="50" x2="265" y2="50" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="42" y="66" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Giãn bởi: PROSTAGLANDI</text>
-      <text x="42" y="84" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Co bởi:   NSAIDs (Ức chế tổng</text>
-      <rect x="315" y="20" width="250" height="90" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text, #0f172a)">MAO MẠCH CẦU THẬN (PGC)</text>
-      <line x1="330" y1="50" x2="550" y2="50" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="327" y="66" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• N (PGE2, PGI2)</text>
-      <text x="327" y="84" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• hợp Prostaglandin)       Giãn bởi:</text>
-      <rect x="600" y="20" width="250" height="90" rx="8" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
-      <text x="725" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--amber, #d97706)">Tiểu Động Mạch ĐI</text>
-      <line x1="615" y1="50" x2="835" y2="50" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="612" y="66" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Co bởi: ANGIOTENSIN II</text>
-      <text x="612" y="84" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• ACEi / ARBs (Ức chế Angiotensin II)</text>
+      {/* Left Card: Tiểu ĐM Đến */}
+      <g transform="translate(30, 20)">
+        <rect x="0" y="0" width="270" height="150" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="#d97706" stroke-width="1.8"/>
+        <rect x="0" y="0" width="270" height="32" rx="10" fill="#d97706" opacity="0.15"/>
+        <text x="135" y="21" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="#d97706">TIỂU ĐỘNG MẠCH ĐẾN (AFFERENT)</text>
+        
+        <text x="15" y="55" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#059669">✓ GIÃN MẠCH BỞI:</text>
+        <text x="25" y="73" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">Prostaglandins (PGE2, PGI2)</text>
+
+        <text x="15" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#dc2626">✗ CO THẮT NGUY HIỂM BỞI:</text>
+        <text x="25" y="118" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#dc2626">NSAIDs (Ibuprofen, Meloxicam...)</text>
+        <text x="25" y="136" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Ức chế tổng hợp Prostaglandin</text>
+      </g>
+
+      {/* Vector Left -> Center */}
+      <line x1="300" y1="95" x2="330" y2="95" stroke="#0284c7" stroke-width="2" marker-end="url(#pharmBlue)"/>
+
+      {/* Center Card: Mao Mạch Cầu Thận */}
+      <g transform="translate(330, 20)">
+        <rect x="0" y="0" width="260" height="150" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="#0284c7" stroke-width="2"/>
+        <rect x="0" y="0" width="260" height="32" rx="10" fill="#0284c7" opacity="0.15"/>
+        <text x="130" y="21" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="#0284c7">MAO MẠCH CẦU THẬN (P_GC)</text>
+        
+        <text x="130" y="60" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="16" fill="#0284c7">P_GC = 60 mmHg</text>
+        <text x="130" y="82" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">Quyết định áp suất lọc NFP</text>
+
+        <rect x="15" y="98" width="230" height="40" rx="6" fill="#dc2626" opacity="0.1"/>
+        <text x="130" y="115" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10.5" fill="#dc2626">Cảnh báo: P_GC SỤT GIẢM</text>
+        <text x="130" y="130" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="#dc2626">→ SUY THẬN CẤP TRƯỚC THẬN (AKI)</text>
+      </g>
+
+      {/* Vector Center -> Right */}
+      <line x1="590" y1="95" x2="620" y2="95" stroke="#0284c7" stroke-width="2" marker-end="url(#pharmBlue)"/>
+
+      {/* Right Card: Tiểu ĐM Đi */}
+      <g transform="translate(620, 20)">
+        <rect x="0" y="0" width="270" height="150" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="#d97706" stroke-width="1.8"/>
+        <rect x="0" y="0" width="270" height="32" rx="10" fill="#d97706" opacity="0.15"/>
+        <text x="135" y="21" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="#d97706">TIỂU ĐỘNG MẠCH ĐI (EFFERENT)</text>
+        
+        <text x="15" y="55" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#dc2626">✓ CO MẠCH MẠNH BỞI:</text>
+        <text x="25" y="73" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">Angiotensin II (Duy trì P_GC)</text>
+
+        <text x="15" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#0284c7">✗ GIÃN MẠCH BỞI THUỐC:</text>
+        <text x="25" y="118" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#0284c7">ACEi / ARBs (Enalapril, Losartan...)</text>
+        <text x="25" y="136" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Chẹn Angiotensin II → Máu thoát nhanh</text>
+      </g>
+
+      {/* Clinical Bottom Banner */}
+      <rect x="30" y="185" width="860" height="48" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="#dc2626" stroke-width="1.6"/>
+      <text x="460" y="206" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="#dc2626">HỘI CHỨNG TRIPLE WHAMMY: NSAID + ACEi/ARB + LỢI TIỂU</text>
+      <text x="460" y="222" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">Co thắt đường vào (NSAID) + Mở toang đường ra (ACEi) + Giảm thể tích nội mạch (Lợi tiểu) = GFR sụp đổ hoàn toàn!</text>
     </svg>
   </div>
+  <div class="flowchart-editorial-legend">
+    <div class="legend-item"><span class="legend-dot" style="background:#059669;"></span><span>Prostaglandins giữ mở đường vào</span></div>
+    <div class="legend-item"><span class="legend-dot" style="background:#dc2626;"></span><span>Angiotensin II co đường ra để tạo áp lực lọc</span></div>
+    <div class="legend-item"><span class="legend-dot" style="background:#0284c7;"></span><span>Ứng dụng điều trị bảo vệ thận và cạm bẫy AKI</span></div>
+  </div>
 </div>
-  - **Khi dùng thuốc NSAIDs**: Gây **co thắt tiểu động mạch đến** $\rightarrow$ Giảm lượng máu vào cầu thận $\rightarrow$ Giảm áp lực $P_{GC}$ $\rightarrow$ **Giảm GFR cấp tính**.
-  - **Khi dùng thuốc ACEi / ARBs**: Gây **giãn tiểu động mạch đi** $\rightarrow$ Máu thoát ra khỏi cầu thận dễ dàng hơn $\rightarrow$ Giảm áp lực $P_{GC}$ $\rightarrow$ Giảm áp lực lọc cầu thận (hiệu quả bảo vệ thận chống xơ hóa lâu dài trong Đái tháo đường, nhưng có thể gây giảm nhẹ GFR lúc mới khởi đầu).
+
+- **Khi dùng thuốc NSAIDs**: Gây **co thắt tiểu động mạch đến** $\rightarrow$ Giảm lượng máu vào cầu thận $\rightarrow$ Giảm áp lực $P_{GC}$ $\rightarrow$ **Giảm GFR cấp tính**.
+- **Khi dùng thuốc ACEi / ARBs**: Gây **giãn tiểu động mạch đi** $\rightarrow$ Máu thoát ra khỏi cầu thận dễ dàng hơn $\rightarrow$ Giảm áp lực $P_{GC}$ $\rightarrow$ Giảm áp lực lọc cầu thận (hiệu quả bảo vệ thận chống xơ hóa lâu dài trong Đái tháo đường, nhưng có thể gây giảm nhẹ GFR lúc mới khởi đầu).
 
 ## 6. Tài Liệu Tham Khảo EBM
 <div class="citation-box">

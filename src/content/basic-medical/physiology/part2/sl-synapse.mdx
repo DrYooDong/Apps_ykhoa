@@ -55,24 +55,29 @@ sections:
 
 <PhysioQuickNav />
 
+<div style="display: flex; gap: 0.5rem; margin-bottom: 1rem; align-items: center; flex-wrap: wrap;">
+  <span class="module-badge badge-physio"><i class="fa-solid fa-bolt"></i> Sinh Lý Học • Part 2</span>
+  <span class="module-badge" style="border-color: rgba(56, 189, 248, 0.3); background: rgba(56, 189, 248, 0.1); color: var(--dsp-sky, #0284c7);"><i class="fa-solid fa-circle-nodes"></i> Synapse &amp; Dẫn Truyền Thần Kinh</span>
+</div>
+
 {/* DẢI CHỈ SỐ NHANH (QUICK STATS STRIP) */}
-<section class="stats-strip">
+<section class="stats-strip theme-physio">
   <div class="stats-grid">
     <div class="stat-card">
-      <div class="stat-val blue">PHYS-NERV-01</div>
-      <div class="stat-lbl">Mã chuyên đề • Sinh Lý Hệ Thần Kinh & Cơ</div>
+      <div class="stat-val blue">20 – 40 nm</div>
+      <div class="stat-lbl">Khe Synapse hóa học • Độ trễ dẫn truyền 0.5 – 1.0 ms</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val green">Nội Môi Ổn Định</div>
-      <div class="stat-lbl">Cân bằng gradient điện hóa & Áp suất thẩm thấu</div>
+      <div class="stat-val amber">10⁻⁷ ➔ 10⁻⁴ M Ca²⁺</div>
+      <div class="stat-lbl">Canxi cúc tận cùng kích hoạt xuất bào qua SNARE trong &lt; 0.2 ms</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val amber">Feedback Loop</div>
-      <div class="stat-lbl">Vòng điều hòa phản hồi thần kinh - thể dịch</div>
+      <div class="stat-val green">-55 mV Ngưỡng</div>
+      <div class="stat-lbl">Tích hợp EPSP &amp; IPSP tại Gò sợi trục (Axon Hillock) giàu Na_V</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val purple">Dược Lý EBM</div>
-      <div class="stat-lbl">Ứng dụng lâm sàng chuẩn Guyton 14th & Ganong 26th</div>
+      <div class="stat-val red">Botox vs Uốn ván</div>
+      <div class="stat-lbl">Liệt mềm (cắt SNAP-25) vs Co cứng (cắt Synaptobrevin tế bào Renshaw)</div>
     </div>
   </div>
 </section>
@@ -93,42 +98,98 @@ sections:
 | **Vị trí điển hình** | Cơ tim, cơ trơn ruột, nhân cạnh não thất | **Hầu như toàn bộ hệ thần kinh trung ương & tiếp hợp thần kinh - cơ** |
 
 
-<div class="flowchart-card">
-  <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: Cúc Tận Cùng Tiền Synapse</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+<div class="flowchart-editorial-card">
+  <div class="flowchart-editorial-header">
+    <div class="flowchart-editorial-title">
+      <i class="fa-solid fa-circle-nodes"></i>
+      <span>CẤU TRÚC SYNAPSE HÓA HỌC &amp; CƠ CHẾ XUẤT BÀO QUA PHỨC HỢP SNARE</span>
+    </div>
+    <span class="module-badge badge-physio">Synaptic Physiology</span>
   </div>
-  <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 284" width="880" height="284" xmlns="http://www.w3.org/2000/svg">
+  <div class="flowchart-editorial-viewport">
+    <svg viewBox="0 0 920 330" width="100%" height="auto" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        <marker id="arrSnare" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)"/>
         </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
-        </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        <marker id="arrCa" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--amber, #f59e0b)"/>
         </marker>
       </defs>
 
-      {/* Single Node: Cúc Tận Cùng Tiền Synapse */}
-      <rect x="169.25" y="20" width="541.5" height="78" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">Cúc Tận Cùng Tiền Synapse</text>
-      <text x="193.25" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ├──► Xung điện thế mở kênh Ca2+ ──► Ca2+ ùa vào kích hoạt</text>
-      <text x="193.25" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  phức hợp SNARE</text>
-      <line x1="440" y1="98" x2="440" y2="126" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: Khe Synapse 20-40nm */}
-      <rect x="250" y="126" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="148" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Khe Synapse 20-40nm</text>
-      <line x1="440" y1="172" x2="440" y2="200" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: Màng Sau Synapse */}
-      <rect x="250" y="200" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="222" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Màng Sau Synapse</text>
+      {/* 3 Compartment Blocks: Presynaptic, Cleft, Postsynaptic */}
+
+      {/* 1. Presynaptic Terminal Card */}
+      <rect x="30" y="20" width="370" height="250" rx="12" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+      <rect x="30" y="20" width="370" height="34" rx="12" fill="rgba(2, 132, 199, 0.12)"/>
+      <text x="215" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" fill="var(--color-primary, #0284c7)">1. CÚC TẬN CÙNG TIỀN SYNAPSE</text>
+
+      <text x="50" y="76" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="var(--color-text, #0f172a)">• Điện thế hoạt động khử cực màng</text>
+      <text x="50" y="96" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="var(--amber, #d97706)">• Mở kênh Ca_V (N-type, P/Q-type)</text>
+      <text x="65" y="114" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text-muted, #64748b)">[Ca²⁺] nội bào vọt từ 10⁻⁷ lên 10⁻⁴ M</text>
+
+      {/* SNARE sub-box */}
+      <rect x="50" y="130" width="330" height="86" rx="8" fill="rgba(245, 158, 11, 0.08)" stroke="var(--amber, #f59e0b)" stroke-width="1.2"/>
+      <text x="215" y="150" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="var(--amber, #d97706)">Phức Hợp SNARE &amp; Synaptotagmin</text>
+      <text x="65" y="172" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text, #0f172a)">• v-SNARE: Synaptobrevin (VAMP) trên túi tiết</text>
+      <text x="65" y="190" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text, #0f172a)">• t-SNARE: Syntaxin-1 &amp; SNAP-25 trên màng đích</text>
+      <text x="65" y="206" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="700" fill="var(--color-danger, #ef4444)">⚡ Botox cắt SNAP-25 • Tetanus cắt Synaptobrevin</text>
+
+      <text x="50" y="240" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="700" fill="var(--color-primary, #0284c7)">➔ Hòa màng xuất bào Neurotransmitter (&lt; 0.2 ms)</text>
+
+      {/* Arrow: Presynaptic to Cleft */}
+      <line x1="400" y1="145" x2="435" y2="145" stroke="var(--color-primary, #0284c7)" stroke-width="2.5" marker-end="url(#arrSnare)"/>
+
+      {/* 2. Synaptic Cleft Card */}
+      <rect x="440" y="20" width="130" height="250" rx="10" fill="rgba(16, 185, 129, 0.08)" stroke="var(--color-success, #10b981)" stroke-width="1.8" stroke-dasharray="6,4"/>
+      <text x="505" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="var(--color-success, #10b981)">KHE SYNAPSE</text>
+      <text x="505" y="58" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="700" fill="var(--color-text-muted, #64748b)">20 – 40 nm</text>
+
+      <text x="505" y="100" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="var(--color-text, #0f172a)">Khuếch tán</text>
+      <text x="505" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="600" fill="var(--color-text-muted, #64748b)">1 chiều duy nhất</text>
+
+      {/* NT icons floating */}
+      <circle cx="505" cy="145" r="7" fill="var(--color-primary, #0284c7)"/>
+      <circle cx="485" cy="170" r="7" fill="var(--color-primary, #0284c7)"/>
+      <circle cx="525" cy="170" r="7" fill="var(--color-primary, #0284c7)"/>
+      <text x="505" y="196" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="800" fill="var(--color-primary, #0284c7)">ACh / Glu / GABA</text>
+
+      <text x="505" y="225" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="700" fill="var(--color-danger, #ef4444)">AChE phân hủy</text>
+      <text x="505" y="242" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="600" fill="var(--color-text-muted, #64748b)">&amp; Tái hấp thu</text>
+
+      {/* Arrow: Cleft to Postsynaptic */}
+      <line x1="570" y1="145" x2="605" y2="145" stroke="var(--color-primary, #0284c7)" stroke-width="2.5" marker-end="url(#arrSnare)"/>
+
+      {/* 3. Postsynaptic Membrane Card */}
+      <rect x="610" y="20" width="280" height="250" rx="12" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="2"/>
+      <rect x="610" y="20" width="280" height="34" rx="12" fill="rgba(100, 116, 139, 0.12)"/>
+      <text x="750" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" fill="var(--color-text, #0f172a)">2. MÀNG SAU SYNAPSE</text>
+
+      {/* EPSP branch */}
+      <rect x="625" y="66" width="250" height="84" rx="8" fill="rgba(16, 185, 129, 0.10)" stroke="var(--color-success, #10b981)" stroke-width="1.2"/>
+      <text x="750" y="86" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="var(--color-success, #10b981)">ĐIỆN THẾ HƯNG PHẤN (EPSP)</text>
+      <text x="640" y="106" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="var(--color-text, #0f172a)">• Thụ thể mở kênh Na⁺ hoặc Ca²⁺ vào</text>
+      <text x="640" y="122" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text-muted, #64748b)">• Glutamate (AMPA/NMDA), ACh (nAChR)</text>
+      <text x="640" y="138" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="var(--color-success, #10b981)">➔ Khử cực màng hướng tới -55 mV</text>
+
+      {/* IPSP branch */}
+      <rect x="625" y="160" width="250" height="84" rx="8" fill="rgba(239, 68, 68, 0.10)" stroke="var(--color-danger, #ef4444)" stroke-width="1.2"/>
+      <text x="750" y="180" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="var(--color-danger, #ef4444)">ĐIỆN THẾ ỨC CHẾ (IPSP)</text>
+      <text x="640" y="200" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="var(--color-text, #0f172a)">• Thụ thể mở kênh Cl⁻ vào hoặc K⁺ ra</text>
+      <text x="640" y="216" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text-muted, #64748b)">• GABA (GABA-A, GABA-B), Glycine</text>
+      <text x="640" y="232" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="var(--color-danger, #ef4444)">➔ Ưu phân cực sâu (-80 đến -90 mV)</text>
+
+      {/* Bottom Summary Strip */}
+      <rect x="30" y="282" width="860" height="32" rx="6" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="460" y="303" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="var(--color-text, #0f172a)">
+        Độ trễ Synapse = 0.5 – 1.0 ms • Dẫn truyền tuyệt đối 1 chiều (Unidirectional) • Quyết định hưng phấn hay ức chế tại Thụ thể màng sau
+      </text>
     </svg>
+  </div>
+  <div class="flowchart-editorial-legend">
+    <div class="legend-chip"><span class="legend-dot" style="background: var(--color-primary, #0284c7);"></span> Cúc tiền synapse &amp; Phóng thích SNARE</div>
+    <div class="legend-chip"><span class="legend-dot" style="background: var(--color-success, #10b981);"></span> Khe synapse &amp; Khử cực EPSP</div>
+    <div class="legend-chip"><span class="legend-dot" style="background: var(--color-danger, #ef4444);"></span> Ức chế IPSP (GABA / Glycine)</div>
   </div>
 </div>
 
@@ -171,51 +232,88 @@ Mỗi neuron thần kinh trong não bộ tiếp nhận hàng nghìn đến hàng
 2. **Cộng gộp thời gian (Temporal Summation)**: Một cúc tận cùng đơn lẻ phát xung kích thích liên tiếp với tần số cao dồn dập trước khi điện thế EPSP trước đó kịp phân rã.
 
 
-<div class="flowchart-card">
-  <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: +</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+<div class="flowchart-editorial-card">
+  <div class="flowchart-editorial-header">
+    <div class="flowchart-editorial-title">
+      <i class="fa-solid fa-calculator"></i>
+      <span>TÍCH HỢP TÍN HIỆU TẠI GÒ SỢI TRỤC: CỘNG GỘP KHÔNG GIAN &amp; THỜI GIAN</span>
+    </div>
+    <span class="module-badge badge-physio">Signal Integration</span>
   </div>
-  <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 332" width="880" height="332" xmlns="http://www.w3.org/2000/svg">
+  <div class="flowchart-editorial-viewport">
+    <svg viewBox="0 0 920 450" width="100%" height="auto" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        <marker id="arrSum" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)"/>
         </marker>
         <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
-        </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-success, #10b981)"/>
         </marker>
         <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-danger, #ef4444)"/>
         </marker>
       </defs>
 
-      {/* Single Node: + */}
-      <rect x="250" y="20" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">+</text>
-      {/* Bifurcation Path */}
-      <path d="M 440 66 L 440 80 L 235 80 L 235 94" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      <path d="M 440 80 L 645 80 L 645 94" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Left Column: + */}
-      <rect x="40" y="94" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="235" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">+</text>
-      <line x1="60" y1="130" x2="410" y2="130" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      {/* Right Column: GÒ SỢI TRỤC (AXON HILLOCK) */}
-      <rect x="450" y="94" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="645" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">GÒ SỢI TRỤC (AXON HILLOCK)</text>
-      <line x1="470" y1="130" x2="820" y2="130" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      {/* Reconvergence Path */}
-      <path d="M 235 184 L 235 200 L 440 200 L 440 216" fill="none" stroke="#059669" stroke-width="1.8" marker-end="url(#arrGreen)"/>
-      <path d="M 645 184 L 645 200 L 440 200" fill="none" stroke="#059669" stroke-width="1.8"/>
-      {/* Single Node: - */}
-      <rect x="173.5" y="216" width="533" height="78" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="238" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">-</text>
-      <text x="197.5" y="260" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Tổng đại số: Σ(EPSP) - Σ(IPSP) ├── CÓ ──► PHÁT XUNG HOẠT</text>
-      <text x="197.5" y="278" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  ĐỘNG</text>
+      {/* Top Level: 2 Parallel Input Mechanisms */}
+      {/* Left Input: Spatial Summation */}
+      <rect x="50" y="20" width="370" height="74" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+      <text x="235" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" fill="var(--color-primary, #0284c7)">CỘNG GỘP KHÔNG GIAN (Spatial)</text>
+      <text x="70" y="62" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="600" fill="var(--color-text, #0f172a)">• Nhiều cúc tiền synapse phát xung đồng thời</text>
+      <text x="70" y="78" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text-muted, #64748b)">• Các dòng điện cục bộ hội tụ từ nhiều vị trí đuôi gai</text>
+
+      {/* Right Input: Temporal Summation */}
+      <rect x="500" y="20" width="370" height="74" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+      <text x="685" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" fill="var(--color-primary, #0284c7)">CỘNG GỘP THỜI GIAN (Temporal)</text>
+      <text x="520" y="62" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="600" fill="var(--color-text, #0f172a)">• Một cúc tiền synapse phát xung liên tiếp tần số cao</text>
+      <text x="520" y="78" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text-muted, #64748b)">• Sóng EPSP kế tiếp chồng lấn trước khi EPSP trước phân rã</text>
+
+      {/* Orthogonal Converging Lines to Axon Hillock */}
+      <path d="M 235 94 L 235 125 L 460 125 L 460 144" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arrSum)"/>
+      <path d="M 685 94 L 685 125 L 460 125" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+
+      {/* Axon Hillock Processing Node */}
+      <rect x="180" y="146" width="560" height="68" rx="12" fill="var(--color-surface, #ffffff)" stroke="var(--amber, #f59e0b)" stroke-width="2"/>
+      <rect x="180" y="146" width="560" height="26" rx="12" fill="rgba(245, 158, 11, 0.12)"/>
+      <text x="460" y="164" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="800" fill="var(--amber, #d97706)">GÒ SỢI TRỤC (AXON HILLOCK) — BỘ TÍCH HỢP ĐẠI SỐ</text>
+      <text x="460" y="188" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="var(--color-text, #0f172a)">Tổng đại số: ΔV = Σ(EPSP hưng phấn) − Σ(IPSP ức chế)</text>
+      <text x="460" y="204" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text-muted, #64748b)">Vùng có ngưỡng hưng phấn thấp nhất do mật độ kênh Na_V dày đặc gấp 7 lần thân neuron</text>
+
+      {/* Connector down to Decision Diamond */}
+      <line x1="460" y1="214" x2="460" y2="242" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arrSum)"/>
+
+      {/* Decision Diamond: Threshold Reach? */}
+      <polygon points="460,244 580,284 460,324 340,284" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+      <text x="460" y="280" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="var(--color-text, #0f172a)">V_m ≥ -55 mV ?</text>
+      <text x="460" y="295" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="600" fill="var(--color-text-muted, #64748b)">(Đạt ngưỡng kích thích)</text>
+
+      {/* Left Outcome: NO / Dưới ngưỡng */}
+      <path d="M 340 284 L 200 284 L 200 348" fill="none" stroke="var(--color-danger, #ef4444)" stroke-width="2" marker-end="url(#arrRed)"/>
+      <rect x="230" y="268" width="55" height="20" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-danger, #ef4444)" stroke-width="1"/>
+      <text x="257" y="282" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="800" fill="var(--color-danger, #ef4444)">KHÔNG</text>
+
+      <rect x="50" y="350" width="300" height="78" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-danger, #ef4444)" stroke-width="1.8"/>
+      <rect x="50" y="350" width="300" height="24" rx="10" fill="rgba(239, 68, 68, 0.10)"/>
+      <text x="200" y="366" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="800" fill="var(--color-danger, #ef4444)">KHÔNG PHÁT XUNG (DƯỚI NGƯỠNG)</text>
+      <text x="65" y="388" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text, #0f172a)">• Điện thế suy giảm điện trương (Electrotonic decay)</text>
+      <text x="65" y="404" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text-muted, #64748b)">• Màng nhanh chóng tái lập điện thế nghỉ -70 mV</text>
+
+      {/* Right Outcome: YES / Đạt ngưỡng */}
+      <path d="M 580 284 L 720 284 L 720 348" fill="none" stroke="var(--color-success, #10b981)" stroke-width="2" marker-end="url(#arrGreen)"/>
+      <rect x="635" y="268" width="45" height="20" rx="4" fill="var(--color-surface, #ffffff)" stroke="var(--color-success, #10b981)" stroke-width="1"/>
+      <text x="657" y="282" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="800" fill="var(--color-success, #10b981)">CÓ</text>
+
+      <rect x="570" y="350" width="300" height="78" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-success, #10b981)" stroke-width="1.8"/>
+      <rect x="570" y="350" width="300" height="24" rx="10" fill="rgba(16, 185, 129, 0.10)"/>
+      <text x="720" y="366" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="800" fill="var(--color-success, #10b981)">BÙNG PHÁT ĐIỆN THẾ HOẠT ĐỘNG</text>
+      <text x="585" y="388" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text, #0f172a)">• Mở ồ ạt kênh Na_V theo chu trình phản hồi dương</text>
+      <text x="585" y="404" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="var(--color-success, #10b981)">• Lan truyền dọc sợi trục: "Tất Cả Hoặc Không"</text>
     </svg>
+  </div>
+  <div class="flowchart-editorial-legend">
+    <div class="legend-chip"><span class="legend-dot" style="background: var(--color-primary, #0284c7);"></span> Tín hiệu đầu vào (Không gian &amp; Thời gian)</div>
+    <div class="legend-chip"><span class="legend-dot" style="background: var(--amber, #f59e0b);"></span> Tích hợp tại Gò sợi trục (Axon Hillock)</div>
+    <div class="legend-chip"><span class="legend-dot" style="background: var(--color-success, #10b981);"></span> Đạt ngưỡng (-55 mV) ➔ Phát xung</div>
+    <div class="legend-chip"><span class="legend-dot" style="background: var(--color-danger, #ef4444);"></span> Dưới ngưỡng ➔ Tắt ngấm</div>
   </div>
 </div>
 

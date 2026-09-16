@@ -51,24 +51,33 @@ sections:
 
 <PhysioQuickNav />
 
+<div class="module-badge-group">
+  <span class="badge badge-physio"><i class="fa-solid fa-utensils"></i> GIẢI PHẪU - SINH LÝ HỌC</span>
+  <span class="badge badge-outline">Tiêu Hóa: Miệng &amp; Thực Quản • Guyton 14th Ch.63-64 • Ganong 26th Ch.25</span>
+</div>
+
 {/* DẢI CHỈ SỐ NHANH (QUICK STATS STRIP) */}
-<section class="stats-strip">
+<section class="stats-strip theme-physio">
   <div class="stats-grid">
     <div class="stat-card">
-      <div class="stat-val blue">PHYS-DIG-01</div>
-      <div class="stat-lbl">Mã chuyên đề • Sinh Lý Hệ Tiêu Hóa & Chuyển Hóa</div>
+      <div class="stat-val blue">1.0 — 1.5 L</div>
+      <div class="stat-lbl">Nước bọt / ngày • Tuyến dưới hàm đóng góp 70% lúc nghỉ</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val green">Nội Môi Ổn Định</div>
-      <div class="stat-lbl">Cân bằng gradient điện hóa & Áp suất thẩm thấu</div>
+      <div class="stat-val green">3 — 5 cm/s</div>
+      <div class="stat-lbl">Tốc độ sóng nhu động • Đẩy thức ăn xuống dạ dày trong 8-10s</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val amber">Feedback Loop</div>
-      <div class="stat-lbl">Vòng điều hòa phản hồi thần kinh - thể dịch</div>
+      <div class="stat-val amber">15 — 30 mmHg</div>
+      <div class="stat-lbl">Trương lực nghỉ LES • Ngăn acid và dịch vị trào ngược</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val purple">Dược Lý EBM</div>
-      <div class="stat-lbl">Ứng dụng lâm sàng chuẩn Guyton 14th & Ganong 26th</div>
+      <div class="stat-val purple">Đám rối Auerbach</div>
+      <div class="stat-lbl">Myenteric Plexus • Chủ nhịp nhu động cơ trơn thực quản</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val red">Mất NO / VIP</div>
+      <div class="stat-lbl">Cơ chế Achalasia • LES không giãn mở, hình ảnh mỏ chim</div>
     </div>
   </div>
 </section>
@@ -83,68 +92,94 @@ Quá trình tiêu hóa bắt đầu tại khoang miệng thông qua phản xạ 
   2. *Tuyến Dưới Hàm (Submandibular)*: Đóng góp **70%** tổng lượng nước bọt lúc nghỉ, tiết dịch hỗn hợp (thanh dịch + chất nhầy).
   3. *Tuyến Dưới Lưỡi (Sublingual)*: Tiết chủ yếu chất nhầy **Mucin** bôi trơn viên thức ăn.
 
-```
-THÀNH PHẦN BẢO VỆ CỦA NƯỚC BỌT:
-  • Kháng thể IgA tiết (Secretory IgA): Ngăn vi khuẩn và virus bám dính vào niêm mạc miệng.
-  • Enzyme Lysozyme & Thiocyanate: Phá hủy vách tế bào vi khuẩn.
-  • Lactoferrin: Gắn giữ sắt tự do, ức chế vi khuẩn sinh sôi.
-  • Ion Bicarbonate (HCO3-): Trung hòa acid mảng bám vi khuẩn, chống sâu răng.
-```
-
+<div class="callout callout-info">
+  <div class="callout-title"><i class="fa-solid fa-shield-virus"></i> CÁC YẾU TỐ BẢO VỆ SINH HỌC CỦA NƯỚC BỌT</div>
+  <ul style="margin: 0; padding-left: 1.25rem; line-height: 1.8;">
+    <li><strong>Kháng thể IgA tiết (Secretory IgA)</strong>: Trung hòa kháng nguyên và ngăn vi khuẩn, virus bám dính vào niêm mạc miệng.</li>
+    <li><strong>Lysozyme &amp; Thiocyanate</strong>: Phá vỡ cầu nối peptidoglycan vách tế bào vi khuẩn.</li>
+    <li><strong>Lactoferrin</strong>: Gắn giữ sắt tự do, bỏ đói và ức chế các chủng vi khuẩn sinh sôi.</li>
+    <li><strong>Hệ đệm Bicarbonate ($HCO_3^-$)</strong>: Trung hòa acid do vi khuẩn sinh ra từ mảng bám, bảo vệ men răng chống sâu răng.</li>
+  </ul>
+</div>
 
 ---
 
 ## 2. Cơ Chế 3 Giai Đoạn Động Tác Nuốt
-Động tác nuốt được điều phối bởi **Trung tâm nuốt tại Hành não** qua các dây thần kinh sọ V, IX, X, XII:
-
+Động tác nuốt được điều phối bởi **Trung tâm nuốt tại Hành não** qua mạng lưới dây thần kinh sọ (V, IX, X, XII):
 
 <div class="flowchart-card">
   <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: GIAI ĐOẠN MIỆNG (Oral Stage)</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+    <div class="flowchart-title"><i class="fa-solid fa-arrows-down-to-line" style="color: var(--color-primary, #0284c7);"></i> 3 GIAI ĐOẠN ĐỘNG TÁC NUỐT: MIỆNG ──► HỌNG ──► THỰC QUẢN</div>
+    <span class="badge badge-blue">Swallowing Reflex</span>
   </div>
   <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 420" width="880" height="420" xmlns="http://www.w3.org/2000/svg">
+    <svg class="flowchart-svg" viewBox="0 0 900 360" width="100%" height="360" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrSwalBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
         </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrSwalGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
-        </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
         </marker>
       </defs>
 
-      {/* Single Node: 1. GIAI ĐOẠN MIỆNG (Oral Stage */}
-      <rect x="228.75" y="20" width="422.5" height="60" rx="10" fill="var(--blue-bg, #eff6ff)" stroke="var(--blue, #0284c7)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-primary, #0284c7)">1. GIAI ĐOẠN MIỆNG (Oral Stage)</text>
-      <text x="252.75" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ▼ (Kích thích thụ thể cơ học quanh eo họng)</text>
-      <line x1="440" y1="80" x2="440" y2="108" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: 2. GIAI ĐOẠN HỌNG (Pharyngeal  */}
-      <rect x="160.75" y="108" width="558.5" height="186" rx="10" fill="var(--blue-bg, #eff6ff)" stroke="var(--blue, #0284c7)" stroke-width="1.8"/>
-      <text x="440" y="130" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-primary, #0284c7)">2. GIAI ĐOẠN HỌNG (Pharyngeal Stage)</text>
-      <text x="184.75" y="152" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Lưỡi gà kéo lên trên ──► BỊT KÍN LỖ MŨI SAU (Chống sặc lên</text>
-      <text x="184.75" y="170" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  mũi)</text>
-      <text x="184.75" y="188" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Các nếp gấp khẩu hầu khép lại ──► Tạo khe hẹp chọn lọc viên</text>
-      <text x="184.75" y="206" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  thức ăn nhai kỹ</text>
-      <text x="184.75" y="224" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Nắp thanh môn hạ xuống &amp; Dây thanh âm khép chặt ──► BỊT KÍN</text>
-      <text x="184.75" y="242" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  KHÍ QUẢN (Ngăn sặc vào phổi)</text>
-      <text x="184.75" y="260" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Cơ thắt thực quản trên (UES) giãn mở ──► Sóng co bóp họng</text>
-      <text x="184.75" y="278" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  đẩy viên thức ăn vào thực quản</text>
-      <line x1="440" y1="294" x2="440" y2="322" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: 3. GIAI ĐOẠN THỰC QUẢN (Esopha */}
-      <rect x="190.5" y="322" width="499" height="60" rx="10" fill="var(--blue-bg, #eff6ff)" stroke="var(--blue, #0284c7)" stroke-width="1.8"/>
-      <text x="440" y="344" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-primary, #0284c7)">3. GIAI ĐOẠN THỰC QUẢN (Esophageal Stage)</text>
-      <text x="214.5" y="366" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Sóng nhu động đẩy thức ăn dọc thực quản xuống dạ dày</text>
+      {/* CỘT 1: GIAI ĐOẠN MIỆNG */}
+      <rect x="25" y="25" width="265" height="260" rx="12" fill="var(--color-surface, #ffffff)" stroke="#0284c7" stroke-width="2"/>
+      <rect x="25" y="25" width="265" height="38" rx="12" fill="#0284c7" fill-opacity="0.12"/>
+      <text x="157" y="49" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12.5" fill="#0284c7">1. GIAI ĐOẠN MIỆNG (Oral)</text>
+
+      <rect x="40" y="75" width="235" height="42" rx="8" fill="var(--blue-bg, #eff6ff)" stroke="#93c5fd" stroke-width="1.2"/>
+      <text x="157" y="100" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#1d4ed8">CHỦ ĐỘNG (Tự ý)</text>
+
+      <text x="40" y="135" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Lưỡi cuộn lại nâng lên trên,</text>
+      <text x="40" y="153" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  ép chặt vào vòm miệng cứng.</text>
+      <text x="40" y="178" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Đẩy viên thức ăn (bolus) ra</text>
+      <text x="40" y="196" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  phía sau vào eo họng.</text>
+      <text x="40" y="224" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="#0284c7" font-weight="700">──► Kích thích thụ thể cơ học</text>
+      <text x="40" y="242" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="#0284c7" font-weight="700">  quanh trụ màn hầu (Dây IX)</text>
+
+      {/* MŨI TÊN CHUYỂN CỘT 1 SANG 2 */}
+      <path d="M 290 155 L 316 155" fill="none" stroke="#0284c7" stroke-width="2.5" marker-end="url(#arrSwalBlue)"/>
+
+      {/* CỘT 2: GIAI ĐOẠN HỌNG */}
+      <rect x="318" y="25" width="265" height="260" rx="12" fill="var(--color-surface, #ffffff)" stroke="#059669" stroke-width="2"/>
+      <rect x="318" y="25" width="265" height="38" rx="12" fill="#059669" fill-opacity="0.12"/>
+      <text x="450" y="49" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12.5" fill="#059669">2. GIAI ĐOẠN HỌNG (&lt; 2s)</text>
+
+      <rect x="333" y="75" width="235" height="42" rx="8" fill="var(--green-bg, #f0fdf4)" stroke="#86efac" stroke-width="1.2"/>
+      <text x="450" y="100" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#15803d">PHẢN XẠ TỰ ĐỘNG (Không tự ý)</text>
+
+      <text x="333" y="135" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• 1. Lưỡi gà kéo lên bịt lỗ mũi sau</text>
+      <text x="333" y="153" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #64748b)">     (Ngăn sặc thức ăn lên mũi)</text>
+      <text x="333" y="175" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• 2. Nắp thanh môn hạ &amp; dây thanh khép</text>
+      <text x="333" y="193" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="#b91c1c" font-weight="600">     (Bịt kín khí quản, chống sặc phổi)</text>
+      <text x="333" y="215" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• 3. Cơ thắt thực quản trên (UES) mở</text>
+      <text x="333" y="235" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="#15803d" font-weight="700">──► Sóng co họng tống bolus vào TQ</text>
+
+      {/* MŨI TÊN CHUYỂN CỘT 2 SANG 3 */}
+      <path d="M 583 155 L 608 155" fill="none" stroke="#059669" stroke-width="2.5" marker-end="url(#arrSwalGreen)"/>
+
+      {/* CỘT 3: GIAI ĐOẠN THỰC QUẢN */}
+      <rect x="610" y="25" width="265" height="260" rx="12" fill="var(--color-surface, #ffffff)" stroke="#d97706" stroke-width="2"/>
+      <rect x="610" y="25" width="265" height="38" rx="12" fill="#d97706" fill-opacity="0.12"/>
+      <text x="742" y="49" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12.5" fill="#d97706">3. THỰC QUẢN (8 — 10s)</text>
+
+      <rect x="625" y="75" width="235" height="42" rx="8" fill="var(--amber-bg, #fffbeb)" stroke="#fcd34d" stroke-width="1.2"/>
+      <text x="742" y="100" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#b45309">NHU ĐỘNG CƠ TRƠN</text>
+
+      <text x="625" y="135" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Nhu động nguyên phát (Primary):</text>
+      <text x="625" y="153" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #64748b)">  Sóng liên tục nối tiếp từ họng (3-5 cm/s)</text>
+      <text x="625" y="175" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Nhu động thứ phát (Secondary):</text>
+      <text x="625" y="193" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #64748b)">  Kích hoạt khi thức ăn nghẽn kẹt thành TQ</text>
+      <text x="625" y="215" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="#059669" font-weight="700">• Cơ thắt dưới (LES) giãn mở</text>
+      <text x="625" y="235" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">  Thức ăn rơi êm ái vào buồng dạ dày</text>
+
+      {/* DẢI CHÚ THÍCH DƯỚI */}
+      <rect x="25" y="300" width="850" height="45" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="45" y="327" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)"><strong style="color: #0284c7;">Trung tâm nuốt hành não:</strong> Ức chế trung tâm hít vào DRG trong suốt giai đoạn họng (&lt; 2 giây) để tạo giai đoạn ngừng thở sinh lý tuyệt đối khi nuốt.</text>
     </svg>
   </div>
 </div>
-
 
 ---
 
@@ -156,47 +191,66 @@ THÀNH PHẦN BẢO VỆ CỦA NƯỚC BỌT:
    - Xuất hiện khi viên thức ăn quá to hoặc khô bị mắc kẹt lại trong lòng thực quản.
    - Sự căng giãn cơ học thành thực quản kích hoạt phản xạ tại chỗ qua **Đám rối thần kinh Auerbach (Myenteric Plexus)**, phát sinh các đợt sóng co bóp thứ phát liên tiếp cho đến khi tống hết thức ăn vào dạ dày.
 
-
 ---
 
-## 4. Trương Lực Cơ Thắt LES
-**Cơ thắt thực quản dưới (Lower Esophageal Sphincter - LES)** duy trì một áp lực trương lực nghỉ cao (**$15 – 30\text{ mmHg}$**) để ngăn không cho dịch vị acid và pepsin từ dạ dày trào ngược lên:
-
+## 4. Trương Lực Cơ Thắt LES & Bệnh Sinh EBM
+**Cơ thắt thực quản dưới (Lower Esophageal Sphincter — LES)** duy trì một áp lực trương lực nghỉ cao (**$15 – 30\text{ mmHg}$**) để ngăn không cho dịch vị acid và pepsin từ dạ dày trào ngược lên:
 
 <div class="flowchart-card">
   <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: Viên thức ăn tới cuối thực quản</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+    <div class="flowchart-title"><i class="fa-solid fa-stethoscope" style="color: var(--color-primary, #0284c7);"></i> ĐỐI SOÁNH SINH LÝ BỆNH: BÌNH THƯỜNG VS CO THẮT TÂM VỊ (ACHALASIA) VS TRÀO NGƯỢC (GERD)</div>
+    <span class="badge badge-red">Pathophysiology Triad</span>
   </div>
   <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 266" width="880" height="266" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
-        </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
-        </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
-        </marker>
-      </defs>
+    <svg class="flowchart-svg" viewBox="0 0 900 360" width="100%" height="360" xmlns="http://www.w3.org/2000/svg">
+      {/* CỘT 1: BÌNH THƯỜNG */}
+      <rect x="25" y="25" width="265" height="260" rx="12" fill="var(--color-surface, #ffffff)" stroke="#059669" stroke-width="2"/>
+      <rect x="25" y="25" width="265" height="38" rx="12" fill="#059669" fill-opacity="0.12"/>
+      <text x="157" y="49" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12.5" fill="#059669">SINH LÝ BÌNH THƯỜNG</text>
 
-      {/* Single Node: Viên thức ăn tới cuối thực quả */}
-      <rect x="250" y="20" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Viên thức ăn tới cuối thực quản</text>
-      <line x1="440" y1="66" x2="440" y2="94" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: LES GIÃN MỞ HOÀN TOÀN */}
-      <rect x="250" y="94" width="380" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">LES GIÃN MỞ HOÀN TOÀN</text>
-      <text x="274" y="138" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Thức ăn rơi êm ái vào buồng Dạ dày</text>
-      <line x1="440" y1="154" x2="440" y2="182" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: LES CO THẮT CHẶT TRỞ LẠI */}
-      <rect x="250" y="182" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="204" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">LES CO THẮT CHẶT TRỞ LẠI</text>
+      <rect x="40" y="75" width="235" height="42" rx="8" fill="var(--green-bg, #f0fdf4)" stroke="#86efac" stroke-width="1.2"/>
+      <text x="157" y="100" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#15803d">Trương lực nghỉ: 15 — 30 mmHg</text>
+
+      <text x="40" y="135" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Lúc nghỉ: Co thắt chặt ngăn dịch vị</text>
+      <text x="40" y="153" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  acid trào ngược từ dạ dày lên.</text>
+      <text x="40" y="178" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Khi nuốt: Neuron tiết NO &amp; VIP</text>
+      <text x="40" y="196" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  làm LES GIÃN MỞ HOÀN TOÀN.</text>
+      <text x="40" y="224" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="#15803d" font-weight="700">✓ Thức ăn rơi êm ái vào dạ dày</text>
+      <text x="40" y="242" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="#15803d" font-weight="700">✓ Sau đó LES co thắt chặt trở lại</text>
+
+      {/* CỘT 2: CO THẮT TÂM VỊ (ACHALASIA) */}
+      <rect x="318" y="25" width="265" height="260" rx="12" fill="var(--color-surface, #ffffff)" stroke="#dc2626" stroke-width="2"/>
+      <rect x="318" y="25" width="265" height="38" rx="12" fill="#dc2626" fill-opacity="0.12"/>
+      <text x="450" y="49" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12.5" fill="#dc2626">CO THẮT TÂM VỊ (ACHALASIA)</text>
+
+      <rect x="333" y="75" width="235" height="42" rx="8" fill="var(--red-bg, #fef2f2)" stroke="#fca5a5" stroke-width="1.2"/>
+      <text x="450" y="100" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#b91c1c">Trương lực nghỉ &gt; 30 mmHg (Mất giãn)</text>
+
+      <text x="333" y="135" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Thoái hóa neuron tiết NO &amp; VIP tại</text>
+      <text x="333" y="153" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  đám rối thần kinh Auerbach.</text>
+      <text x="333" y="178" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="#b91c1c" font-weight="700">• LES MẤT KHẢ NĂNG GIÃN MỞ</text>
+      <text x="333" y="196" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">  khi nuốt + mất nhu động thân TQ.</text>
+      <text x="333" y="224" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="#b91c1c" font-weight="800">⚠ Nuốt nghẹn ĐẶC &amp; LỎNG từ đầu</text>
+      <text x="333" y="242" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="#b91c1c" font-weight="700">★ X-quang: Dấu "Mỏ chim" (Bird's beak)</text>
+
+      {/* CỘT 3: TRÀO NGƯỢC (GERD) */}
+      <rect x="610" y="25" width="265" height="260" rx="12" fill="var(--color-surface, #ffffff)" stroke="#d97706" stroke-width="2"/>
+      <rect x="610" y="25" width="265" height="38" rx="12" fill="#d97706" fill-opacity="0.12"/>
+      <text x="742" y="49" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12.5" fill="#d97706">TRÀO NGƯỢC (GERD)</text>
+
+      <rect x="625" y="75" width="235" height="42" rx="8" fill="var(--amber-bg, #fffbeb)" stroke="#fcd34d" stroke-width="1.2"/>
+      <text x="742" y="100" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#b45309">Trương lực nghỉ &lt; 10 mmHg (Suy yếu)</text>
+
+      <text x="625" y="135" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Suy yếu trương lực nền của LES hoặc</text>
+      <text x="625" y="153" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  giãn cơ thắt thoáng qua (TLESR).</text>
+      <text x="625" y="178" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="#b45309" font-weight="700">• Acid &amp; pepsin trào ngược thực quản</text>
+      <text x="625" y="196" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">  gây nóng rát sau xương ức, ợ chua.</text>
+      <text x="625" y="224" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="#dc2626" font-weight="700">⚠ Biến chứng: Thực quản Barrett</text>
+      <text x="625" y="242" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #64748b)">  (Dị sản biểu mô trụ tăng nguy cơ K)</text>
+
+      {/* DẢI CHÚ THÍCH DƯỚI */}
+      <rect x="25" y="300" width="850" height="45" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="45" y="327" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)"><strong style="color: #dc2626;">Chẩn đoán phân biệt vàng:</strong> Đo áp lực thực quản độ phân giải cao (HRM) là tiêu chuẩn vàng chẩn đoán Achalasia (IRP tăng cao, mất nhu động thực quản 100%).</text>
     </svg>
   </div>
 </div>

@@ -55,24 +55,29 @@ sections:
 
 <PhysioQuickNav />
 
+<div style="display: flex; gap: 0.5rem; margin-bottom: 1rem; align-items: center; flex-wrap: wrap;">
+  <span class="module-badge badge-physio"><i class="fa-solid fa-bolt"></i> Sinh Lý Học • Part 2</span>
+  <span class="module-badge" style="border-color: rgba(168, 85, 247, 0.3); background: rgba(168, 85, 247, 0.1); color: var(--dsp-purple, #a855f7);"><i class="fa-solid fa-brain"></i> Thân Não, Tiểu Não &amp; Hạch Nền</span>
+</div>
+
 {/* DẢI CHỈ SỐ NHANH (QUICK STATS STRIP) */}
-<section class="stats-strip">
+<section class="stats-strip theme-physio">
   <div class="stats-grid">
     <div class="stat-card">
-      <div class="stat-val blue">PHYS-NERV-05</div>
-      <div class="stat-lbl">Mã chuyên đề • Sinh Lý Hệ Thần Kinh & Cơ</div>
+      <div class="stat-val blue">ARAS Thân Não</div>
+      <div class="stat-lbl">Mạng lưới lưới duy trì ý thức • Tổn thương ➔ Hôn mê sâu</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val green">Nội Môi Ổn Định</div>
-      <div class="stat-lbl">Cân bằng gradient điện hóa & Áp suất thẩm thấu</div>
+      <div class="stat-val amber">Mất Vỏ vs Mất Não</div>
+      <div class="stat-lbl">Tổn thương TRÊN Nhân đỏ (co gấp chi trên) vs DƯỚI Nhân đỏ (duỗi cứng 4 chi)</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val amber">Feedback Loop</div>
-      <div class="stat-lbl">Vòng điều hòa phản hồi thần kinh - thể dịch</div>
+      <div class="stat-val green">Tiểu Não Comparator</div>
+      <div class="stat-lbl">Hiệu chỉnh sai số vận động thời gian thực • Run chủ ý (Intention tremor)</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val purple">Dược Lý EBM</div>
-      <div class="stat-lbl">Ứng dụng lâm sàng chuẩn Guyton 14th & Ganong 26th</div>
+      <div class="stat-val purple">D1 (Trực tiếp) vs D2 (Gián tiếp)</div>
+      <div class="stat-lbl">Chân ga khởi phát cử động vs Chân phanh kìm hãm • Bệnh lý Parkinson / Huntington</div>
     </div>
   </div>
 </section>
@@ -97,40 +102,90 @@ Thân não (*Brainstem* gồm Trung não, Cầu não, Hành não) là trung tâm
 Đánh giá tư thế bất thường ở bệnh nhân hôn mê sâu giúp xác định chính xác tầng tổn thương thân não:
 
 
-<div class="flowchart-card">
-  <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: VỎ NÃO ĐẠI NÃO</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+<div class="flowchart-editorial-card">
+  <div class="flowchart-editorial-header">
+    <div class="flowchart-editorial-title">
+      <i class="fa-solid fa-person"></i>
+      <span>ĐỐI CHIẾU LÂM SÀNG: TƯ THẾ MẤT VỎ (DECORTICATE) VS TƯ THẾ MẤT NÃO (DECEREBRATE)</span>
+    </div>
+    <span class="module-badge badge-physio">Coma Neurological Exam</span>
   </div>
-  <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 252" width="880" height="252" xmlns="http://www.w3.org/2000/svg">
+  <div class="flowchart-editorial-viewport">
+    <svg viewBox="0 0 920 370" width="100%" height="auto" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        <marker id="arrDecort" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--amber, #d97706)"/>
         </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
-        </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        <marker id="arrDecereb" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-danger, #ef4444)"/>
         </marker>
       </defs>
 
-      {/* Single Node: VỎ NÃO ĐẠI NÃO */}
-      <rect x="250" y="20" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">VỎ NÃO ĐẠI NÃO</text>
-      <line x1="440" y1="66" x2="440" y2="94" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: NHÂN ĐỎ (Trung não) */}
-      <rect x="250" y="94" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">NHÂN ĐỎ (Trung não)</text>
-      <line x1="440" y1="140" x2="440" y2="168" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: NHÂN TIỀN ĐÌNH (Hành não) */}
-      <rect x="250" y="168" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="190" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">NHÂN TIỀN ĐÌNH (Hành não)</text>
+      {/* LEFT COLUMN: DECORTICATE */}
+      <rect x="30" y="16" width="415" height="330" rx="12" fill="var(--color-surface, #ffffff)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
+      <rect x="30" y="16" width="415" height="34" rx="12" fill="rgba(245, 158, 11, 0.12)"/>
+      <text x="237" y="38" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" fill="var(--amber, #d97706)">TƯ THẾ MẤT VỎ (DECORTICATE — CO GẤP CHI TRÊN)</text>
+
+      {/* Level 1: Lesion Location */}
+      <rect x="50" y="60" width="375" height="48" rx="8" fill="rgba(245, 158, 11, 0.06)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.2"/>
+      <text x="65" y="78" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="var(--color-text, #0f172a)">• Vị trí tổn thương: PHÍA TRÊN NHÂN ĐỎ</text>
+      <text x="65" y="94" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="600" fill="var(--amber, #d97706)">Bán cầu đại não, bao trong hoặc đồi thị</text>
+
+      <line x1="237" y1="108" x2="237" y2="128" stroke="var(--amber, #d97706)" stroke-width="2" marker-end="url(#arrDecort)"/>
+
+      {/* Level 2: Pathway Mechanism */}
+      <rect x="50" y="130" width="375" height="58" rx="8" fill="var(--color-surface, #ffffff)" stroke="var(--amber, #f59e0b)" stroke-width="1.6"/>
+      <text x="237" y="148" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="var(--amber, #d97706)">NHÂN ĐỎ (TRUNG NÃO) CÒN NGUYÊN VẸN</text>
+      <text x="237" y="166" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text, #0f172a)">Dải Đỏ - Gai (Rubrospinal) hoạt động kích thích cơ gấp chi trên</text>
+      <text x="237" y="180" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="600" fill="var(--color-text-muted, #64748b)">Chi dưới duỗi do mất ức chế vỏ não đối với nhân tiền đình</text>
+
+      <line x1="237" y1="188" x2="237" y2="208" stroke="var(--amber, #d97706)" stroke-width="2" marker-end="url(#arrDecort)"/>
+
+      {/* Level 3: Clinical Posture */}
+      <rect x="50" y="210" width="375" height="60" rx="8" fill="rgba(245, 158, 11, 0.06)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.2"/>
+      <text x="65" y="228" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="var(--color-text, #0f172a)">• Chi trên: CO GẤP ép sát ngực, bàn tay nắm chặt</text>
+      <text x="65" y="246" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="var(--color-text, #0f172a)">• Chi dưới: DUỖI THẲNG, bàn chân xoay trong gập lòng</text>
+
+      {/* Score Box */}
+      <rect x="50" y="280" width="375" height="54" rx="8" fill="rgba(245, 158, 11, 0.12)" stroke="var(--amber, #f59e0b)" stroke-width="1.2"/>
+      <text x="237" y="300" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="var(--amber, #d97706)">GLASGOW VẬN ĐỘNG = 3 ĐIỂM (Co cứng gấp)</text>
+      <text x="237" y="318" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text, #0f172a)">Tiên lượng nặng nhưng còn tốt hơn mất não</text>
+
+
+      {/* RIGHT COLUMN: DECEREBRATE */}
+      <rect x="475" y="16" width="415" height="330" rx="12" fill="var(--color-surface, #ffffff)" stroke="var(--color-danger, #ef4444)" stroke-width="1.8"/>
+      <rect x="475" y="16" width="415" height="34" rx="12" fill="rgba(239, 68, 68, 0.12)"/>
+      <text x="682" y="38" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" fill="var(--color-danger, #ef4444)">TƯ THẾ MẤT NÃO (DECEREBRATE — DUỖI CỨNG 4 CHI)</text>
+
+      {/* Level 1: Lesion Location */}
+      <rect x="495" y="60" width="375" height="48" rx="8" fill="rgba(239, 68, 68, 0.06)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.2"/>
+      <text x="510" y="78" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="var(--color-text, #0f172a)">• Vị trí tổn thương: PHÍA DƯỚI NHÂN ĐỎ</text>
+      <text x="510" y="94" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="600" fill="var(--color-danger, #ef4444)">Thân não giữa Trung não và Cầu não (Cắt đứt dải đỏ gai)</text>
+
+      <line x1="682" y1="108" x2="682" y2="128" stroke="var(--color-danger, #ef4444)" stroke-width="2" marker-end="url(#arrDecereb)"/>
+
+      {/* Level 2: Pathway Mechanism */}
+      <rect x="495" y="130" width="375" height="58" rx="8" fill="var(--color-surface, #ffffff)" stroke="var(--color-danger, #ef4444)" stroke-width="1.6"/>
+      <text x="682" y="148" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="var(--color-danger, #ef4444)">NHÂN TIỀN ĐÌNH BÊN CHIẾM ƯU THẾ TUYỆT ĐỐI</text>
+      <text x="682" y="166" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text, #0f172a)">Mất hoàn toàn ảnh hưởng của nhân đỏ kích thích cơ gấp</text>
+      <text x="682" y="180" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="600" fill="var(--color-text-muted, #64748b)">Dải Tiền Đình - Gai kích thích ồ ạt cơ duỗi toàn thân</text>
+
+      <line x1="682" y1="188" x2="682" y2="208" stroke="var(--color-danger, #ef4444)" stroke-width="2" marker-end="url(#arrDecereb)"/>
+
+      {/* Level 3: Clinical Posture */}
+      <rect x="495" y="210" width="375" height="60" rx="8" fill="rgba(239, 68, 68, 0.06)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.2"/>
+      <text x="510" y="228" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="var(--color-danger, #ef4444)">• Chi trên: DUỖI CỨNG áp sát thân, cẳng tay xoay sấp</text>
+      <text x="510" y="246" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="var(--color-danger, #ef4444)">• Chi dưới: DUỖI CỨNG, bàn chân duỗi, ưỡn người Opisthotonos</text>
+
+      {/* Score Box */}
+      <rect x="495" y="280" width="375" height="54" rx="8" fill="rgba(239, 68, 68, 0.12)" stroke="var(--color-danger, #ef4444)" stroke-width="1.2"/>
+      <text x="682" y="300" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="var(--color-danger, #ef4444)">GLASGOW VẬN ĐỘNG = 2 ĐIỂM (Duỗi cứng mất não)</text>
+      <text x="682" y="318" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="var(--color-danger, #ef4444)">TIÊN LƯỢNG NGUY KỊCH • NGUY CƠ TỤT KẸT NÃO TỬ VONG</text>
     </svg>
+  </div>
+  <div class="flowchart-editorial-legend">
+    <div class="legend-chip"><span class="legend-dot" style="background: var(--amber, #f59e0b);"></span> Mất Vỏ (Tổn thương TRÊN Nhân đỏ ➔ Co gấp chi trên, Glasgow 3đ)</div>
+    <div class="legend-chip"><span class="legend-dot" style="background: var(--color-danger, #ef4444);"></span> Mất Não (Tổn thương DƯỚI Nhân đỏ ➔ Duỗi cứng 4 chi, Glasgow 2đ)</div>
   </div>
 </div>
 
@@ -218,58 +273,97 @@ Tiểu não (*Cerebellum*) chiếm 10% thể tích não nhưng chứa hơn 50% t
 Hạch nền là tập hợp các nhân xám dưới vỏ có vai trò **khởi phát, điều chỉnh biên độ và dập tắt các cử động không mong muốn**:
 
 
-<div class="flowchart-card">
-  <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: VỎ NÃO ĐẠI NÃO</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+<div class="flowchart-editorial-card">
+  <div class="flowchart-editorial-header">
+    <div class="flowchart-editorial-title">
+      <i class="fa-solid fa-diagram-project"></i>
+      <span>MẠNG LƯỚI HẠCH NỀN: CON ĐƯỜNG TRỰC TIẾP (D1) VS GIÁN TIẾP (D2)</span>
+    </div>
+    <span class="module-badge badge-physio">Basal Ganglia Circuit</span>
   </div>
-  <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 472" width="880" height="472" xmlns="http://www.w3.org/2000/svg">
+  <div class="flowchart-editorial-viewport">
+    <svg viewBox="0 0 920 450" width="100%" height="auto" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        <marker id="arrBgDir" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-success, #10b981)"/>
         </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        <marker id="arrBgInd" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-danger, #ef4444)"/>
         </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        <marker id="arrBgDop" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)"/>
         </marker>
       </defs>
 
-      {/* Single Node: VỎ NÃO ĐẠI NÃO */}
-      <rect x="250" y="20" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">VỎ NÃO ĐẠI NÃO</text>
-      <line x1="440" y1="66" x2="440" y2="94" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: THỂ VÂN (STRATIUM: Caudate + P */}
-      <rect x="235" y="94" width="410" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">THỂ VÂN (STRATIUM: Caudate + Putamen)</text>
-      <text x="259" y="138" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ▼ (-) GABA ▼ (-) GABA │ │</text>
-      {/* Bifurcation Path */}
-      <path d="M 440 154 L 440 168 L 235 168 L 235 182" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      <path d="M 440 168 L 645 168 L 645 182" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Left Column: GPi / SNr */}
-      <rect x="40" y="182" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="235" y="204" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">GPi / SNr</text>
-      <line x1="60" y1="218" x2="410" y2="218" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      {/* Right Column: GPe (Cầu nhạt ngoài) */}
-      <rect x="450" y="182" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="645" y="204" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">GPe (Cầu nhạt ngoài)</text>
-      <line x1="470" y1="218" x2="820" y2="218" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="470" y="234" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• (-) GABA │</text>
-      <line x1="440" y1="272" x2="440" y2="300" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: NHÂN DƯỚI ĐỒI (STN) */}
-      <rect x="250" y="300" width="380" height="60" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
-      <text x="440" y="322" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">NHÂN DƯỚI ĐỒI (STN)</text>
-      <text x="274" y="344" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ▼ (-) GABA (Giảm ức chế) │ │</text>
-      <line x1="440" y1="360" x2="440" y2="388" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: ĐỒI THỊ (THALAMUS: VA/VL) */}
-      <rect x="250" y="388" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="410" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">ĐỒI THỊ (THALAMUS: VA/VL)</text>
+      {/* Top Node: Vỏ Não Vận Động */}
+      <rect x="250" y="16" width="420" height="42" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+      <text x="460" y="34" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" fill="var(--color-primary, #0284c7)">VỎ NÃO VẬN ĐỘNG (MOTOR CORTEX)</text>
+      <text x="460" y="49" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="600" fill="var(--color-text-muted, #64748b)">Kích thích Glutamate (+) Thể Vân ──►</text>
+
+      {/* Substantia Nigra pars compacta (SNc) side-node */}
+      <rect x="700" y="70" width="190" height="60" rx="8" fill="rgba(2, 132, 199, 0.08)" stroke="var(--color-primary, #0284c7)" stroke-width="1.5"/>
+      <text x="795" y="90" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="var(--color-primary, #0284c7)">THỂ ĐEN (SNc)</text>
+      <text x="795" y="106" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="700" fill="var(--color-text, #0f172a)">Tiết Dopamine</text>
+      <text x="795" y="120" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="600" fill="var(--color-text-muted, #64748b)">(+ D1 trực tiếp / - D2 gián tiếp)</text>
+
+      {/* Connector from Cortex to Striatum */}
+      <line x1="460" y1="58" x2="460" y2="78" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arrBgDop)"/>
+
+      {/* Central Node: Thể Vân (Striatum) */}
+      <rect x="230" y="80" width="460" height="48" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--amber, #f59e0b)" stroke-width="2"/>
+      <text x="460" y="100" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" fill="var(--amber, #d97706)">THỂ VÂN (STRATIUM: Nhân Đuôi + Bèo Sẫm)</text>
+      <text x="460" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="600" fill="var(--color-text-muted, #64748b)">Tiếp nhận Dopamine từ SNc và phát xung ức chế GABA sang 2 nhánh</text>
+
+      {/* Bifurcation to Direct (Left) and Indirect (Right) */}
+      <path d="M 330 128 L 330 152 L 235 152 L 235 170" fill="none" stroke="var(--color-success, #10b981)" stroke-width="2" marker-end="url(#arrBgDir)"/>
+      <path d="M 590 128 L 590 152 L 685 152 L 685 170" fill="none" stroke="var(--color-danger, #ef4444)" stroke-width="2" marker-end="url(#arrBgInd)"/>
+
+      {/* LEFT COLUMN: DIRECT PATHWAY (CHÂN GA) */}
+      <rect x="35" y="172" width="400" height="210" rx="12" fill="var(--color-surface, #ffffff)" stroke="var(--color-success, #10b981)" stroke-width="1.8"/>
+      <rect x="35" y="172" width="400" height="30" rx="12" fill="rgba(16, 185, 129, 0.12)"/>
+      <text x="235" y="192" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="800" fill="var(--color-success, #10b981)">CON ĐƯỜNG TRỰC TIẾP (D1 — CHÂN GA)</text>
+
+      <rect x="55" y="210" width="360" height="42" rx="6" fill="rgba(16, 185, 129, 0.06)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="70" y="228" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="700" fill="var(--color-text, #0f172a)">• Thể vân ức chế trực tiếp GABA (-) lên GPi / SNr</text>
+      <text x="70" y="244" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-success, #10b981)">➔ GPi/SNr bị kìm hãm, ngừng phát xung ức chế đồi thị</text>
+
+      <rect x="55" y="260" width="360" height="52" rx="6" fill="var(--color-surface, #ffffff)" stroke="var(--color-success, #10b981)" stroke-width="1.2"/>
+      <text x="235" y="278" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="800" fill="var(--color-success, #10b981)">GIẢI ỨC CHẾ ĐỒI THỊ (DISINHIBITION OF THALAMUS)</text>
+      <text x="235" y="296" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="600" fill="var(--color-text, #0f172a)">Đồi thị (VA/VL) tự do phát xung Glutamate (+) mạnh mẽ lên Vỏ não</text>
+
+      <rect x="55" y="320" width="360" height="50" rx="6" fill="rgba(16, 185, 129, 0.12)" stroke="var(--color-success, #10b981)" stroke-width="1.2"/>
+      <text x="235" y="339" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="var(--color-success, #10b981)">KHỞI PHÁT CỬ ĐỘNG VẬN ĐỘNG (PRO-MOVEMENT)</text>
+      <text x="235" y="356" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="600" fill="var(--color-text, #0f172a)">Dopamine gắn D1 kích thích nhánh này giúp cử động mượt mà</text>
+
+
+      {/* RIGHT COLUMN: INDIRECT PATHWAY (CHÂN PHANH) */}
+      <rect x="485" y="172" width="400" height="210" rx="12" fill="var(--color-surface, #ffffff)" stroke="var(--color-danger, #ef4444)" stroke-width="1.8"/>
+      <rect x="485" y="172" width="400" height="30" rx="12" fill="rgba(239, 68, 68, 0.12)"/>
+      <text x="685" y="192" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="800" fill="var(--color-danger, #ef4444)">CON ĐƯỜNG GIÁN TIẾP (D2 — CHÂN PHANH)</text>
+
+      <rect x="505" y="210" width="360" height="42" rx="6" fill="rgba(239, 68, 68, 0.06)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="520" y="228" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="700" fill="var(--color-text, #0f172a)">• Thể vân (-) GPe ➔ Giải ức chế Nhân Dưới Đồi (STN)</text>
+      <text x="520" y="244" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-danger, #ef4444)">➔ STN phát xung Glutamate (+) kích thích mạnh GPi/SNr</text>
+
+      <rect x="505" y="260" width="360" height="52" rx="6" fill="var(--color-surface, #ffffff)" stroke="var(--color-danger, #ef4444)" stroke-width="1.2"/>
+      <text x="685" y="278" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="800" fill="var(--color-danger, #ef4444)">TĂNG CƯỜNG ỨC CHẾ ĐỒI THỊ (INHIBITION)</text>
+      <text x="685" y="296" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="600" fill="var(--color-text, #0f172a)">GPi/SNr bị kích hoạt xả ồ ạt GABA (-) làm câm lặng Đồi thị</text>
+
+      <rect x="505" y="320" width="360" height="50" rx="6" fill="rgba(239, 68, 68, 0.12)" stroke="var(--color-danger, #ef4444)" stroke-width="1.2"/>
+      <text x="685" y="339" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="var(--color-danger, #ef4444)">DẬP TẮT VẬN ĐỘNG THỪA (ANTI-MOVEMENT)</text>
+      <text x="685" y="356" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="600" fill="var(--color-text, #0f172a)">Tổn thương STN ➔ Mất phanh ➔ Múa vung nửa người (Hemiballismus)</text>
+
+      {/* Bottom Summary Strip */}
+      <rect x="35" y="392" width="850" height="38" rx="8" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.2"/>
+      <text x="460" y="416" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="var(--color-text, #0f172a)">
+        Bệnh Parkinson: Mất Dopamine Thể Đen ➔ Yếu Chân Ga (D1) + Quá tải Chân Phanh (D2) ➔ Chậm chạp vận động (Bradykinesia)
+      </text>
     </svg>
+  </div>
+  <div class="flowchart-editorial-legend">
+    <div class="legend-chip"><span class="legend-dot" style="background: var(--color-success, #10b981);"></span> Con đường Trực tiếp D1 (Kích hoạt cử động)</div>
+    <div class="legend-chip"><span class="legend-dot" style="background: var(--color-danger, #ef4444);"></span> Con đường Gián tiếp D2 (Dập tắt cử động thừa)</div>
+    <div class="legend-chip"><span class="legend-dot" style="background: var(--color-primary, #0284c7);"></span> Dopamine Thể Đen (Tác dụng kích thích kép)</div>
   </div>
 </div>
 

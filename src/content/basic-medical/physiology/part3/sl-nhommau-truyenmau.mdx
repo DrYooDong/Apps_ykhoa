@@ -45,26 +45,34 @@ sections:
 
 # 🧬 SINH LÝ NHÓM MÁU & AN TOÀN TRUYỀN MÁU
 
+<div class="module-badge-group">
+  <span class="module-badge module-badge-physio">
+    <i class="fa-solid fa-heart-pulse"></i> Sinh Lý Học Guyton &amp; Ganong
+  </span>
+  <span class="module-badge module-badge-part">Part 3: Sinh Lý Máu &amp; Miễn Dịch</span>
+  <span class="module-badge module-badge-code">PHYS-BLD-04</span>
+</div>
+
 <PhysioQuickNav />
 
 {/* DẢI CHỈ SỐ NHANH (QUICK STATS STRIP) */}
-<section class="stats-strip">
+<section class="stats-strip theme-physio">
   <div class="stats-grid">
     <div class="stat-card">
-      <div class="stat-val blue">PHYS-BLD-04</div>
-      <div class="stat-lbl">Mã chuyên đề • Sinh Lý Máu & Hệ Miễn Dịch</div>
+      <div class="stat-val blue">O (45%) • B (30%)</div>
+      <div class="stat-lbl">Tỷ lệ ABO Việt Nam • A (20%) • AB (5% hiếm)</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val green">Nội Môi Ổn Định</div>
-      <div class="stat-lbl">Cân bằng gradient điện hóa & Áp suất thẩm thấu</div>
+      <div class="stat-val green">&gt; 99.9% Rh(+)</div>
+      <div class="stat-lbl">Hệ Rhesus (RhD) • Rh(-) cực hiếm (&lt; 0.1%)</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val amber">Feedback Loop</div>
-      <div class="stat-lbl">Vòng điều hòa phản hồi thần kinh - thể dịch</div>
+      <div class="stat-val amber">RhoGAM 300 µg</div>
+      <div class="stat-lbl">Dự phòng HDFN • Tuần 28 thai kỳ &amp; &le; 72h sau sinh</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val purple">Dược Lý EBM</div>
-      <div class="stat-lbl">Ứng dụng lâm sàng chuẩn Guyton 14th & Ganong 26th</div>
+      <div class="stat-val red">&ge; 10 - 50 mL</div>
+      <div class="stat-lbl">Ngưỡng truyền nhầm ABO gây sốc tán huyết cấp &amp; DIC</div>
     </div>
   </div>
 </section>
@@ -75,36 +83,87 @@ sections:
 Hệ thống ABO do Karl Landsteiner phát hiện năm 1900 dựa trên sự hiện diện của hai kháng nguyên carbohydrate **Kháng nguyên A** và **Kháng nguyên B** trên màng hồng cầu:
 
 
-<div class="flowchart-card">
-  <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: Chất Tiền Thân H (Fucose)</div>
+<div class="flowchart-editorial-card">
+  <div class="flowchart-editorial-header">
+    <div class="flowchart-editorial-title">
+      <i class="fa-solid fa-dna" style="color: var(--color-primary, #0284c7);"></i>
+      SINH TỔNG HỢP KHÁNG NGUYÊN ABO &amp; QUY LUẬT TƯƠNG HỖ LANDSTEINER
+    </div>
     <span class="badge badge-blue">Pure Orthogonal SVG</span>
   </div>
-  <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 172" width="880" height="172" xmlns="http://www.w3.org/2000/svg">
+
+  <div class="flowchart-editorial-viewport">
+    <svg viewBox="0 0 880 340" width="880" height="340" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        <marker id="arrAboBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)"/>
         </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        <marker id="arrAboAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-warning, #f59e0b)"/>
         </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        <marker id="arrAboGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-success, #10b981)"/>
         </marker>
       </defs>
 
-      {/* Single Node: Chất Tiền Thân H (Fucose) */}
-      <rect x="156.5" y="20" width="567" height="114" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">Chất Tiền Thân H (Fucose)</text>
-      <text x="180.5" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ├──► Gắn N-acetylgalactosamine (Enzyme Transferase A) ──►</text>
-      <text x="180.5" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  KHÁNG NGUYÊN A</text>
-      <text x="180.5" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ├──► Gắn D-galactose (Enzyme Transferase B) ──► KHÁNG NGUYÊN</text>
-      <text x="180.5" y="118" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  B</text>
+      {/* Level 1: Precursor Substance H */}
+      <rect x="240" y="20" width="400" height="60" rx="12" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+      <text x="440" y="44" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-primary, #0284c7)">CHẤT TIỀN THÂN NỀN H (SUBSTANCE H - FUCOSE)</text>
+      <text x="440" y="64" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">Enzyme Fucosyltransferase (Gen H) gắn L-Fucose vào chuỗi Lipid/Protein màng hồng cầu</text>
+
+      {/* Orthogonal Split Lines */}
+      <path d="M 340 80 L 340 105 L 160 105 L 160 125" fill="none" stroke="var(--color-warning, #f59e0b)" stroke-width="2" marker-end="url(#arrAboAmber)"/>
+      <path d="M 440 80 L 440 125" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arrAboBlue)"/>
+      <path d="M 540 80 L 540 105 L 720 105 L 720 125" fill="none" stroke="var(--color-success, #10b981)" stroke-width="2" marker-end="url(#arrAboGreen)"/>
+
+      {/* Level 2: 3 Outcome Cards */}
+      {/* Branch A */}
+      <rect x="30" y="128" width="260" height="120" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-warning, #f59e0b)" stroke-width="1.8"/>
+      <rect x="30" y="128" width="260" height="28" rx="10" fill="rgba(245, 158, 11, 0.12)"/>
+      <text x="160" y="147" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="var(--color-warning, #d97706)">GEN A (TRANSFERASE A)</text>
+      <text x="42" y="174" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text, #0f172a)">• Gắn <strong>N-acetylgalactosamine</strong></text>
+      <text x="42" y="192" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10.5" fill="var(--color-warning, #d97706)">──► KHÁNG NGUYÊN A</text>
+      <text x="42" y="210" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text-muted, #64748b)">Huyết tương có <strong>Anti-B (IgM)</strong></text>
+      <text x="42" y="226" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text-muted, #64748b)">Tỷ lệ dân số VN: ~20%</text>
+
+      {/* Branch O */}
+      <rect x="310" y="128" width="260" height="120" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+      <rect x="310" y="128" width="260" height="28" rx="10" fill="rgba(2, 132, 199, 0.12)"/>
+      <text x="440" y="147" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="var(--color-primary, #0284c7)">GEN O (KHÔNG HOẠT TÍNH)</text>
+      <text x="322" y="174" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text, #0f172a)">• Đột biến mất codon (Del 261G)</text>
+      <text x="322" y="192" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10.5" fill="var(--color-primary, #0284c7)">──► GIỮ NGUYÊN CHẤT NỀN H</text>
+      <text x="322" y="210" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text-muted, #64748b)">Huyết tương có <strong>Cả Anti-A &amp; Anti-B</strong></text>
+      <text x="322" y="226" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text-muted, #64748b)">Tỷ lệ dân số VN: ~45% (Phổ biến nhất)</text>
+
+      {/* Branch B */}
+      <rect x="590" y="128" width="260" height="120" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-success, #10b981)" stroke-width="1.8"/>
+      <rect x="590" y="128" width="260" height="28" rx="10" fill="rgba(16, 185, 129, 0.12)"/>
+      <text x="720" y="147" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="var(--color-success, #059669)">GEN B (TRANSFERASE B)</text>
+      <text x="602" y="174" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text, #0f172a)">• Gắn <strong>D-galactose</strong></text>
+      <text x="602" y="192" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10.5" fill="var(--color-success, #059669)">──► KHÁNG NGUYÊN B</text>
+      <text x="602" y="210" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text-muted, #64748b)">Huyết tương có <strong>Anti-A (IgM)</strong></text>
+      <text x="602" y="226" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text-muted, #64748b)">Tỷ lệ dân số VN: ~30%</text>
+
+      {/* Level 3: Bombay Alert Box */}
+      <rect x="30" y="262" width="820" height="62" rx="10" fill="rgba(239, 68, 68, 0.08)" stroke="var(--color-danger, #ef4444)" stroke-width="1.5"/>
+      <text x="440" y="284" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="var(--color-danger, #dc2626)">HIỆN TƯỢNG KIỂU HÌNH BOMBAY (GEN ĐỒNG HỢP TỬ LẶN hh): KHÔNG CÓ CẢ CHẤT NỀN H</text>
+      <text x="440" y="304" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text, #0f172a)">Bề mặt hồng cầu trơ (đọc nhầm là O), nhưng huyết thanh chứa CẢ Anti-A, Anti-B, Anti-H nồng độ cao ──► CHỈ ĐƯỢC NHẬN MÁU TỪ BOMBAY KHÁC!</text>
     </svg>
+  </div>
+
+  <div class="flowchart-editorial-legend">
+    <div class="flowchart-legend-item">
+      <span class="flowchart-legend-dot" style="background: var(--color-warning, #f59e0b);"></span>
+      <span>Nhóm A: KN A + Anti-B | Nhận HC A, O | Nhận HT A, AB</span>
+    </div>
+    <div class="flowchart-legend-item">
+      <span class="flowchart-legend-dot" style="background: var(--color-primary, #0284c7);"></span>
+      <span>Nhóm O: Không có KN A/B + Có cả Anti-A/B | Người cho HC phổ thông</span>
+    </div>
+    <div class="flowchart-legend-item">
+      <span class="flowchart-legend-dot" style="background: var(--color-success, #10b981);"></span>
+      <span>Nhóm B: KN B + Anti-A | Nhóm AB: Cả KN A &amp; B (Người cho HT phổ thông)</span>
+    </div>
   </div>
 </div>
 
@@ -119,9 +178,7 @@ Trong huyết tương của một cá thể bình thường, **luôn luôn xuấ
 | **Nhóm AB** | **Cả Kháng nguyên A & B** | **HOÀN TOÀN KHÔNG CÓ** | ~5% (Hiếm) | **A, B, AB, O** *(Nhận HC phổ thông)* | **Chỉ nhận AB** |
 | **Nhóm O** | **Không có A và B** (chỉ có H) | **Cả Anti-A & Anti-B** (IgM & IgG) | **~45%** (Phổ biến nhất) | **Chỉ nhận O** | **A, B, AB, O** *(Nhận HT phổ thông)* |
 
-
-  Những người mang kiểu gen đồng hợp tử lặn $hh$ không thể tổng hợp được **Chất nền H**. Do đó, dù có gen A hay B thì enzym cũng không có cơ chất để gắn đường, làm bề mặt hồng cầu hoàn toàn trơ (xét nghiệm nhóm máu thường quy sẽ đọc nhầm là nhóm O). Tuy nhiên, huyết thanh của người Bombay chứa **CẢ Anti-A, Anti-B và Anti-H nồng độ rất cao**. Họ **CHỈ CÓ THỂ NHẬN ĐƯỢC MÁU TỪ MỘT NGƯỜI BOMBAY KHÁC**; nếu truyền máu nhóm O thông thường, Anti-H sẽ lập tức phá hủy hồng cầu truyền vào gây tử vong.
-
+Những người mang kiểu gen đồng hợp tử lặn $hh$ không thể tổng hợp được **Chất nền H**. Do đó, dù có gen A hay B thì enzym cũng không có cơ chất để gắn đường, làm bề mặt hồng cầu hoàn toàn trơ (xét nghiệm nhóm máu thường quy sẽ đọc nhầm là nhóm O). Tuy nhiên, huyết thanh của người Bombay chứa **CẢ Anti-A, Anti-B và Anti-H nồng độ rất cao**. Họ **CHỈ CÓ THỂ NHẬN ĐƯỢC MÁU TỪ MỘT NGƯỜI BOMBAY KHÁC**; nếu truyền máu nhóm O thông thường, Anti-H sẽ lập tức phá hủy hồng cầu truyền vào gây tử vong.
 
 ---
 
@@ -133,149 +190,166 @@ Hệ thống Rh gồm hơn 50 kháng nguyên protein xuyên màng, trong đó **
 
 ### Bệnh Tan Máu Trẻ Sơ Sinh (Hemolytic Disease of the Newborn - HDN)
 
-
-<div class="flowchart-card">
-  <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: MẸ Rh(-)</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+<div class="flowchart-editorial-card">
+  <div class="flowchart-editorial-header">
+    <div class="flowchart-editorial-title">
+      <i class="fa-solid fa-baby" style="color: var(--color-danger, #ef4444);"></i>
+      CƠ CHẾ BẤT ĐỒNG RH MẸ - CON (HDN) &amp; DỰ PHÒNG CHUẨN VÀNG BẰNG RHOGAM
+    </div>
+    <span class="badge badge-red">Rh Incompatibility &amp; HDFN</span>
   </div>
-  <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 460" width="880" height="460" xmlns="http://www.w3.org/2000/svg">
+
+  <div class="flowchart-editorial-viewport">
+    <svg viewBox="0 0 880 340" width="880" height="340" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        <marker id="arrHdnGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-success, #10b981)"/>
         </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        <marker id="arrHdnAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-warning, #f59e0b)"/>
         </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        <marker id="arrHdnRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-danger, #ef4444)"/>
         </marker>
       </defs>
 
-      {/* Left Column: MẸ Rh(-) */}
-      <rect x="40" y="20" width="390" height="116" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="235" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">MẸ Rh(-)</text>
-      <line x1="60" y1="56" x2="410" y2="56" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="60" y="72" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ├──► Trong thai kỳ: Hồng cầu thai nhi</text>
-      <text x="60" y="90" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  không qua</text>
-      <text x="60" y="108" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• └──► Cuộc chuyển dạ sinh con 1: Bánh</text>
-      <text x="60" y="126" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  nhau bong tróc</text>
-      {/* Right Column: CON THỨ 1: Rh(+) */}
-      <rect x="450" y="20" width="390" height="116" rx="10" fill="rgba(16, 185, 129, 0.08)" stroke="var(--color-success, #10b981)" stroke-width="1.5"/>
-      <text x="645" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-success, #10b981)">CON THỨ 1: Rh(+)</text>
-      <line x1="470" y1="56" x2="820" y2="56" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="470" y="72" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• được nhau thai. Mẹ và bé đều khỏe mạnh</text>
-      <text x="470" y="90" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  bình thường.</text>
-      <text x="470" y="108" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• làm một lượng nhỏ máu con Rh(+) lọt</text>
-      <text x="470" y="126" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  vào tuần hoàn mẹ.</text>
-      <line x1="440" y1="136" x2="440" y2="164" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: Hệ miễn dịch của Mẹ bị mẫn cảm */}
-      <rect x="170" y="164" width="540" height="60" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.8"/>
-      <text x="440" y="186" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">Hệ miễn dịch của Mẹ bị mẫn cảm, sản sinh kháng thể</text>
-      <text x="440" y="204" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--red, #dc2626)">Anti-D dạng IgG tồn tại vĩnh viễn trong máu</text>
-      {/* Bifurcation Path */}
-      <path d="M 440 224 L 440 238 L 235 238 L 235 252" fill="none" stroke="var(--red, #ef4444)" stroke-width="1.8" marker-end="url(#arrRed)"/>
-      <path d="M 440 238 L 645 238 L 645 252" fill="none" stroke="var(--red, #ef4444)" stroke-width="1.8" marker-end="url(#arrRed)"/>
-      {/* Left Column: MẸ Rh(-) */}
-      <rect x="40" y="252" width="390" height="170" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.5"/>
-      <text x="235" y="274" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">MẸ Rh(-)</text>
-      <line x1="60" y1="288" x2="410" y2="288" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="60" y="304" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• └──► Kháng thể Anti-D (dạng IgG nhỏ)</text>
-      <text x="60" y="322" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  DỄ DÀNG</text>
-      <text x="60" y="340" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Tấn công phá hủy hàng loạt hồ</text>
-      <text x="60" y="358" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ├──► Thiếu máu nặng, suy tim sung hu</text>
-      <text x="60" y="376" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• └──► Bilirubin gián tiếp tăng vọt ngấm</text>
-      <text x="60" y="394" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  v</text>
-      {/* Right Column: CON THỨ 2: Rh(+) */}
-      <rect x="450" y="252" width="390" height="170" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.5"/>
-      <text x="645" y="274" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">CON THỨ 2: Rh(+)</text>
-      <line x1="470" y1="288" x2="820" y2="288" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="470" y="304" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ĐI XUYÊN QUA NHAU THAI VÀO TUẦN HOÀN</text>
-      <text x="470" y="322" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  THAI NHI</text>
-      <text x="470" y="340" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ng cầu thai nhi ──► TÁN HUYẾT NẶNG NỀ</text>
-      <text x="470" y="358" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• yết ──► PHÙ THAI NHI (Hydrops Fetalis</text>
-      <text x="470" y="376" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  tử vong)</text>
-      <text x="470" y="394" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ào nhân xám não ──► VÀNG DA NHÂN NÃO</text>
-      <text x="470" y="412" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  (Kernicterus)</text>
+      {/* 3 Sequential Timeline Columns */}
+      {/* Stage 1: Thai kỳ 1 */}
+      <rect x="25" y="20" width="260" height="200" rx="12" fill="var(--color-surface, #ffffff)" stroke="var(--color-success, #10b981)" stroke-width="1.8"/>
+      <rect x="25" y="20" width="260" height="32" rx="12" fill="rgba(16, 185, 129, 0.12)"/>
+      <text x="155" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="var(--color-success, #059669)">THAI KỲ 1: MẸ Rh(-) &amp; THAI Rh(+)</text>
+      <text x="38" y="72" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Màng nhau thai toàn vẹn ngăn</text>
+      <text x="38" y="90" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">  hồng cầu thai nhi lọt sang mẹ.</text>
+      <text x="38" y="112" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="var(--color-success, #059669)">• Kết quả thai kỳ 1:</text>
+      <text x="38" y="130" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">Mẹ chưa có kháng thể Anti-D.</text>
+      <text x="38" y="146" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">Bé thứ 1 sinh ra <strong>HOÀN TOÀN KHỎE MẠNH</strong>.</text>
+      <rect x="33" y="166" width="244" height="42" rx="6" fill="rgba(16, 185, 129, 0.08)"/>
+      <text x="155" y="190" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="9.5" fill="var(--color-success, #059669)">Chưa xảy ra tai biến tán huyết</text>
+
+      {/* Arrow 1 to 2 */}
+      <path d="M 285 120 L 310 120" fill="none" stroke="var(--color-warning, #f59e0b)" stroke-width="2" marker-end="url(#arrHdnAmber)"/>
+
+      {/* Stage 2: Chuyển dạ lần 1 & Mẫn cảm */}
+      <rect x="315" y="20" width="260" height="200" rx="12" fill="var(--color-surface, #ffffff)" stroke="var(--color-warning, #f59e0b)" stroke-width="1.8"/>
+      <rect x="315" y="20" width="260" height="32" rx="12" fill="rgba(245, 158, 11, 0.12)"/>
+      <text x="445" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="var(--color-warning, #d97706)">CHUYỂN DẠ 1: MẪN CẢM MIỄN DỊCH</text>
+      <text x="328" y="72" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Bánh nhau bong tróc làm hồng cầu</text>
+      <text x="328" y="90" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">  Rh(+) của con lọt vào tuần hoàn mẹ.</text>
+      <text x="328" y="112" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="var(--color-warning, #d97706)">• Phản ứng miễn dịch mẹ:</text>
+      <text x="328" y="130" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">Hệ miễn dịch mẹ sản sinh <strong>Anti-D (IgG)</strong></text>
+      <text x="328" y="146" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">tồn tại vĩnh viễn trong huyết thanh mẹ.</text>
+      <rect x="323" y="166" width="244" height="42" rx="6" fill="rgba(245, 158, 11, 0.08)"/>
+      <text x="445" y="184" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="9" fill="var(--color-warning, #d97706)">Cơ hội vàng: Tiêm RhoGAM trong &le; 72h</text>
+      <text x="445" y="198" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="8.5" fill="var(--color-text-muted, #64748b)">để triệt tiêu tế bào Rh+ trước khi mẫn cảm!</text>
+
+      {/* Arrow 2 to 3 */}
+      <path d="M 575 120 L 600 120" fill="none" stroke="var(--color-danger, #ef4444)" stroke-width="2" marker-end="url(#arrHdnRed)"/>
+
+      {/* Stage 3: Thai kỳ 2 & Tan máu sơ sinh */}
+      <rect x="605" y="20" width="250" height="200" rx="12" fill="var(--color-surface, #ffffff)" stroke="var(--color-danger, #ef4444)" stroke-width="1.8"/>
+      <rect x="605" y="20" width="250" height="32" rx="12" fill="rgba(239, 68, 68, 0.12)"/>
+      <text x="730" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="var(--color-danger, #dc2626)">THAI KỲ 2: TAI BIẾN HDFN NẶNG</text>
+      <text x="618" y="72" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Kháng thể Anti-D (IgG monomer)</text>
+      <text x="618" y="90" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">  <strong>DỄ DÀNG XUYÊN QUA NHAU THAI</strong>.</text>
+      <text x="618" y="112" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="var(--color-danger, #dc2626)">• Hậu quả cho thai nhi Rh(+):</text>
+      <text x="618" y="130" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text-muted, #64748b)">- Tan máu cấp ──► Thiếu máu thai nhi nặng</text>
+      <text x="618" y="146" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text-muted, #64748b)">- Phù thai nhi (Hydrops Fetalis ──► Tử vong)</text>
+      <rect x="613" y="166" width="234" height="42" rx="6" fill="rgba(239, 68, 68, 0.08)"/>
+      <text x="730" y="184" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="9" fill="var(--color-danger, #dc2626)">Vàng da nhân não (Kernicterus)</text>
+      <text x="730" y="198" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="8.5" fill="var(--color-text-muted, #64748b)">Bilirubin tự do ngấm nhân xám gây bại não</text>
+
+      {/* Bottom Protocol Ribbon */}
+      <rect x="25" y="240" width="830" height="75" rx="12" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="440" y="266" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-primary, #0284c7)">PHÁC ĐỒ DỰ PHÒNG TIÊU CHUẨN: TIÊM RHOGAM (ANTI-D IMMUNOGLOBULIN 300 µg)</text>
+      <text x="440" y="286" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">Tiêm bắp cho tất cả mẹ Rh(-) vào tuần 28 thai kỳ và trong vòng 72 giờ sau sinh nếu con mang Rh(+).</text>
+      <text x="440" y="304" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #64748b)">Cơ chế: Tiêu hủy hồng cầu Rh+ của con ngay trong máu mẹ trước khi hệ miễn dịch kịp ghi nhớ và tạo kháng thể.</text>
     </svg>
+  </div>
+
+  <div class="flowchart-editorial-legend">
+    <div class="flowchart-legend-item">
+      <span class="flowchart-legend-dot" style="background: var(--color-success, #10b981);"></span>
+      <span>Con thứ 1: Khỏe mạnh bình thường do mẹ chưa có kháng thể Anti-D</span>
+    </div>
+    <div class="flowchart-legend-item">
+      <span class="flowchart-legend-dot" style="background: var(--color-warning, #f59e0b);"></span>
+      <span>Chuyển dạ 1: Thời điểm mẫn cảm sinh Anti-D IgG</span>
+    </div>
+    <div class="flowchart-legend-item">
+      <span class="flowchart-legend-dot" style="background: var(--color-danger, #ef4444);"></span>
+      <span>Con thứ 2: Tan máu nặng (Cần dự phòng bắt buộc bằng RhoGAM)</span>
+    </div>
   </div>
 </div>
 
-
-  Để ngăn ngừa tuyệt đối tình trạng sinh kháng thể của người mẹ $Rh^-$:
-  - **Tiêm bắp 300 µg RhoGAM (Kháng thể Anti-D thụ động)** cho tất cả các bà mẹ $Rh^-$ mang thai vào **tuần thứ 28 của thai kỳ** và **trong vòng 72 giờ sau khi sinh bé mang nhóm máu $Rh^+$** (hoặc sau sẩy thai, nạo hút, chọc ối).
-  - *Cơ chế*: RhoGAM sẽ bao bọc và tiêu hủy tức thì toàn bộ hồng cầu $Rh^+$ của thai nhi vừa lọt vào máu mẹ trước khi hệ miễn dịch của người mẹ kịp nhận diện và khởi động phản ứng tạo kháng thể chủ động.
-
+Để ngăn ngừa tuyệt đối tình trạng sinh kháng thể của người mẹ $Rh^-$:
+- **Tiêm bắp 300 µg RhoGAM (Kháng thể Anti-D thụ động)** cho tất cả các bà mẹ $Rh^-$ mang thai vào **tuần thứ 28 của thai kỳ** và **trong vòng 72 giờ sau khi sinh bé mang nhóm máu $Rh^+$** (hoặc sau sẩy thai, nạo hút, chọc ối).
+- *Cơ chế*: RhoGAM sẽ bao bọc và tiêu hủy tức thì toàn bộ hồng cầu $Rh^+$ của thai nhi vừa lọt vào máu mẹ trước khi hệ miễn dịch của người mẹ kịp nhận diện và khởi động phản ứng tạo kháng thể chủ động.
 
 ---
 
 ## 3. Nguyên Tắc An Toàn & Đọ Chéo (Cross-matching)
 Nguyên tắc truyền máu tối cao: **KHÔNG ĐỂ KHÁNG THỂ TRONG HUYẾT TƯƠNG NGƯỜI NHẬN GẶP VÀ PHÁ HỦY KHÁNG NGUYÊN TƯƠNG ỨNG TRÊN HỒNG CẦU NGƯỜI CHO**.
 
-
-<div class="flowchart-card">
-  <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: XÉT NGHIỆM PHẢN ỨNG ĐỌ CHÉO TẠI PHÒNG XÉT NGHIỆM &amp; TẠI GIƯỜNG</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+<div class="flowchart-editorial-card">
+  <div class="flowchart-editorial-header">
+    <div class="flowchart-editorial-title">
+      <i class="fa-solid fa-vial-circle-check" style="color: var(--color-primary, #0284c7);"></i>
+      QUY TRÌNH PHẢN ỨNG ĐỌ CHÉO (CROSS-MATCHING) &amp; MA TRẬN TƯƠNG THÍCH
+    </div>
+    <span class="badge badge-blue">Cross-Match Protocol</span>
   </div>
-  <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 380" width="880" height="380" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
-        </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
-        </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
-        </marker>
-      </defs>
 
-      {/* Single Node: XÉT NGHIỆM PHẢN ỨNG ĐỌ CHÉO TẠ */}
-      <rect x="150" y="20" width="580" height="78" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">XÉT NGHIỆM PHẢN ỨNG ĐỌ CHÉO TẠI PHÒNG XÉT NGHIỆM &amp; TẠI</text>
-      <text x="440" y="60" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--amber, #d97706)">GIƯỜNG</text>
-      <text x="174" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ├──► PHẢN ỨNG CHÉO CHÍNH (Major Cross-match):</text>
-      {/* Bifurcation Path */}
-      <path d="M 440 98 L 440 112 L 235 112 L 235 126" fill="none" stroke="var(--amber, #f59e0b)" stroke-width="1.8" marker-end="url(#arrAmber)"/>
-      <path d="M 440 112 L 645 112 L 645 126" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Left Column: Hồng Cầu Người Cho */}
-      <rect x="40" y="126" width="390" height="98" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
-      <text x="235" y="148" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">Hồng Cầu Người Cho</text>
-      <line x1="60" y1="162" x2="410" y2="162" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="60" y="178" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Ý nghĩa sống còn: BẮT BUỘC PHẢI ÂM TÍN</text>
-      <text x="60" y="196" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• └──► PHẢN ỨNG CHÉO P</text>
-      {/* Right Column: Huyết Thanh Người Nhận */}
-      <rect x="450" y="126" width="390" height="98" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="645" y="148" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Huyết Thanh Người Nhận</text>
-      <line x1="470" y1="162" x2="820" y2="162" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="470" y="178" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• H (Không ngưng kết). Nếu ngưng kết ──►</text>
-      <text x="470" y="196" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  CẤM TRUYỀN!</text>
-      <text x="470" y="214" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• HỤ (Minor Cross-match):</text>
-      {/* Bifurcation Path */}
-      <path d="M 440 224 L 440 238 L 235 238 L 235 252" fill="none" stroke="var(--red, #ef4444)" stroke-width="1.8" marker-end="url(#arrRed)"/>
-      <path d="M 440 238 L 645 238 L 645 252" fill="none" stroke="var(--red, #ef4444)" stroke-width="1.8" marker-end="url(#arrRed)"/>
-      {/* Left Column: Huyết Thanh Người Cho */}
-      <rect x="40" y="252" width="390" height="90" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.5"/>
-      <text x="235" y="274" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">Huyết Thanh Người Cho</text>
-      <line x1="60" y1="288" x2="410" y2="288" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="60" y="304" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Đánh giá kháng thể bất thường trong</text>
-      <text x="60" y="322" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  máu</text>
-      {/* Right Column: Hồng Cầu Người Nhận */}
-      <rect x="450" y="252" width="390" height="90" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.5"/>
-      <text x="645" y="274" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">Hồng Cầu Người Nhận</text>
-      <line x1="470" y1="288" x2="820" y2="288" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="470" y="304" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• người cho (ít nguy hiểm hơn do bị pha</text>
-      <text x="470" y="322" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  loãng nhanh).</text>
+  <div class="flowchart-editorial-viewport">
+    <svg viewBox="0 0 880 320" width="880" height="320" xmlns="http://www.w3.org/2000/svg">
+      {/* 2 Parallel Test Columns */}
+      {/* Tube 1: Major Cross-match */}
+      <rect x="40" y="20" width="380" height="190" rx="12" fill="var(--color-surface, #ffffff)" stroke="var(--color-danger, #ef4444)" stroke-width="2"/>
+      <rect x="40" y="20" width="380" height="34" rx="12" fill="rgba(239, 68, 68, 0.12)"/>
+      <text x="230" y="43" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-danger, #dc2626)">PHẢN ỨNG CHÉO CHÍNH (MAJOR CROSS-MATCH)</text>
+
+      <text x="60" y="78" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Thành phần: <strong>Hồng Cầu Người Cho</strong> + <strong>Huyết Thanh Người Nhận</strong></text>
+      <text x="60" y="100" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #64748b)">Kiểm tra xem huyết thanh người nhận có kháng thể tiêu hủy hồng cầu cho hay không.</text>
+      
+      <rect x="55" y="120" width="350" height="74" rx="8" fill="rgba(239, 68, 68, 0.08)"/>
+      <text x="230" y="142" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="var(--color-danger, #dc2626)">TIÊU CHUẨN AN TOÀN SỐNG CÒN: BẮT BUỘC ÂM TÍNH</text>
+      <text x="230" y="162" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text, #0f172a)">Không có hiện tượng ngưng kết hoặc tán huyết trên lam kính.</text>
+      <text x="230" y="180" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="var(--color-danger, #dc2626)">NẾU CÓ BẤT KỲ NGƯNG KẾT NÀO ──► TUYỆT ĐỐI CẤM TRUYỀN!</text>
+
+      {/* Tube 2: Minor Cross-match */}
+      <rect x="460" y="20" width="380" height="190" rx="12" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+      <rect x="460" y="20" width="380" height="34" rx="12" fill="rgba(2, 132, 199, 0.12)"/>
+      <text x="650" y="43" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-primary, #0284c7)">PHẢN ỨNG CHÉO PHỤ (MINOR CROSS-MATCH)</text>
+
+      <text x="480" y="78" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Thành phần: <strong>Huyết Thanh Người Cho</strong> + <strong>Hồng Cầu Người Nhận</strong></text>
+      <text x="480" y="100" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #64748b)">Đánh giá kháng thể bất thường trong túi máu người cho chống hồng cầu người nhận.</text>
+
+      <rect x="475" y="120" width="350" height="74" rx="8" fill="rgba(2, 132, 199, 0.08)"/>
+      <text x="650" y="142" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="var(--color-primary, #0284c7)">Ý NGHĨA LÂM SÀNG TRUYỀN MÁU</text>
+      <text x="650" y="162" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text, #0f172a)">Ít nguy hiểm hơn chéo chính do kháng thể người cho bị pha loãng</text>
+      <text x="650" y="180" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">trong toàn bộ tuần hoàn người nhận (trừ truyền huyết tương FFP lớn).</text>
+
+      {/* Bottom Matrix Strip */}
+      <rect x="40" y="230" width="800" height="70" rx="12" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="440" y="254" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="var(--color-primary, #0284c7)">QUY TẮC PHỔ THÔNG TRONG CẤP CỨU THẢM HỌA</text>
+      <text x="440" y="274" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)"><strong>Khối Hồng Cầu:</strong> Nhóm O Rh(-) là người cho phổ thông | Nhóm AB là người nhận phổ thông.</text>
+      <text x="440" y="290" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #64748b)"><strong>Huyết Tương Tươi (FFP):</strong> Nhóm AB là người cho phổ thông (không kháng thể) | Nhóm O là người nhận phổ thông.</text>
     </svg>
+  </div>
+
+  <div class="flowchart-editorial-legend">
+    <div class="flowchart-legend-item">
+      <span class="flowchart-legend-dot" style="background: var(--color-danger, #ef4444);"></span>
+      <span>Chéo chính: HC Cho + HT Nhận $\rightarrow$ BẮT BUỘC ÂM TÍNH (Nguy hiểm nhất)</span>
+    </div>
+    <div class="flowchart-legend-item">
+      <span class="flowchart-legend-dot" style="background: var(--color-primary, #0284c7);"></span>
+      <span>Chéo phụ: HT Cho + HC Nhận $\rightarrow$ Pha loãng nhanh trong tuần hoàn</span>
+    </div>
+    <div class="flowchart-legend-item">
+      <span class="flowchart-legend-dot" style="background: var(--color-success, #10b981);"></span>
+      <span>Khối hồng cầu O Rh(-) / Huyết tương AB: Lựa chọn cấp cứu thảm họa</span>
+    </div>
   </div>
 </div>
 

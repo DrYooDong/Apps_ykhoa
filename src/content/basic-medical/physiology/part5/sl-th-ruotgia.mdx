@@ -49,208 +49,360 @@ sections:
 
 # 🧬 SINH LÝ TIÊU HÓA RUỘT GIÀ & HỆ VI SINH ĐƯỜNG RUỘT
 
+{/* MODULE BADGE GROUP */}
+<div class="module-badge-group">
+  <div class="badge-item primary">
+    <i class="fa-solid fa-flask-vial"></i>
+    <span>PHYS-DIG-05 • Part 5: Tiêu Hóa & Chuyển Hóa</span>
+  </div>
+  <div class="badge-item info">
+    <i class="fa-solid fa-book-medical"></i>
+    <span>Guyton 14th Ch.64 & 65 • Ganong 26th Ch.26 & 28</span>
+  </div>
+  <div class="badge-item success">
+    <i class="fa-solid fa-bacteria"></i>
+    <span>Kênh ENaC • Hệ Vi Sinh & SCFAs • Cung Phản Xạ Đại Tiện</span>
+  </div>
+</div>
+
 <PhysioQuickNav />
 
-{/* DẢI CHỈ SỐ NHANH (QUICK STATS STRIP) */}
-<section class="stats-strip">
+{/* DẢI CHỈ SỐ LÂM SÀNG CHUẨN EBM */}
+<section class="stats-strip theme-physio">
   <div class="stats-grid">
     <div class="stat-card">
-      <div class="stat-val blue">PHYS-DIG-05</div>
-      <div class="stat-lbl">Mã chuyên đề • Sinh Lý Hệ Tiêu Hóa & Chuyển Hóa</div>
+      <div class="stat-val blue">1500 mL</div>
+      <div class="stat-lbl">Dưỡng trấp tiếp nhận/ngày từ hồi tràng</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val green">Nội Môi Ổn Định</div>
-      <div class="stat-lbl">Cân bằng gradient điện hóa & Áp suất thẩm thấu</div>
+      <div class="stat-val green">100 – 200 mL</div>
+      <div class="stat-lbl">Nước đào thải ra phân/ngày (hấp thu > 90%)</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val amber">Feedback Loop</div>
-      <div class="stat-lbl">Vòng điều hòa phản hồi thần kinh - thể dịch</div>
+      <div class="stat-val amber">5.0 – 8.0 L</div>
+      <div class="stat-lbl">Công suất hấp thu nước tối đa của đại tràng</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val purple">Dược Lý EBM</div>
-      <div class="stat-lbl">Ứng dụng lâm sàng chuẩn Guyton 14th & Ganong 26th</div>
+      <div class="stat-val purple">10¹¹ – 10¹²</div>
+      <div class="stat-lbl">Mật độ vi khuẩn (CFU/g phân, > 1000 loài)</div>
     </div>
   </div>
 </section>
 
 ---
 
-## 1. Cơ Học Ruột Già & Cử Động Khối
-Ruột già (*Large Intestine / Colon*) dài khoảng 1.5 mét, thực hiện chức năng hấp thu nốt nước/điện giải và cô đặc chứa đựng chất cặn bã:
+## 1. Cơ Học Ruột Già: Phân Túi, Cử Động Khối & Phản Xạ Dạ Dày - Đại Tràng
 
-1. **Chuyển Động Phân Túi (Haustrations / Churning)**:
-   - Các cơ vòng và 3 dải cơ dọc (*Taeniae coli*) co thắt từng đoạn tạo nên các ngấn lồi phình túi (*Haustra*).
-   - Tác dụng: Nhào lặn khối phân qua lại chậm chạp ($2 – 3\text{ cm/phút}$) để phơi bày mọi bề mặt của phân tiếp xúc với niêm mạc nhằm **hút cạn nước và điện giải**.
-2. **Cử Động Toàn Thể / Cử Động Khối (Mass Movements)**:
-   - Xuất hiện **$1 – 3\text{ lần/ngày}$** (đặc biệt sau bữa ăn sáng).
-   - Một đoạn đại tràng dài $20\text{ cm}$ co bóp tống đẩy toàn bộ khối phân dồn nhanh từ đại tràng ngang xuống đại tràng sigma và bóng trực tràng.
-3. **Phản Xạ Dạ Dày - Đại Tràng (Gastrocolic Reflex)**:
-   - Khi thức ăn vào làm căng dạ dày $\rightarrow$ Kích thích tiết Gastrin và dẫn truyền theo Dây X làm tăng mạnh cử động khối ở đại tràng, kích hoạt nhu cầu đi tiêu sau ăn.
-
-
----
-
-## 2. Hấp Thu Nước & Kênh ENaC
-Mỗi ngày đại tràng tiếp nhận khoảng **$1.500\text{ mL}$** dưỡng trấp từ hồi tràng qua van Bauhin:
-
+Ruột già (*Colon / Large Intestine*) dài khoảng $1.5\text{ mét}$, thực hiện chức năng chính: hấp thu nốt nước và điện giải còn sót lại từ dưỡng trấp, lên men chất xơ không tiêu hóa, và cô đặc tạo khuôn chứa đựng chất cặn bã trước khi thải ra ngoài.
 
 <div class="flowchart-card">
   <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: DƯỠNG TRẤP TỪ HỒI TRÀNG: 1.500 mL</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> 3 DẠNG VẬN ĐỘNG CƠ HỌC CỐT LÕI CỦA ĐẠI TRÀNG</div>
+    <span class="badge badge-blue">Pure Editorial SVG</span>
   </div>
   <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 136" width="880" height="136" xmlns="http://www.w3.org/2000/svg">
+    <svg class="flowchart-svg" viewBox="0 0 900 280" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrMot" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
         </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      </defs>
+
+      {/* Cột 1: Chuyển động phân túi */}
+      <rect x="40" y="30" width="255" height="220" rx="14" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+      <rect x="40" y="30" width="255" height="32" rx="14" fill="var(--color-primary, #0284c7)" fill-opacity="0.12"/>
+      <text x="167" y="52" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="12" fill="var(--color-primary, #0284c7)">1. CHUYỂN ĐỘNG PHÂN TÚI</text>
+      <text x="60" y="85" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="700" fill="var(--color-text, #0f172a)">Haustrations / Churning</text>
+      <text x="60" y="108" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Cơ vòng + 3 dải cơ dọc</text>
+      <text x="60" y="126" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #64748b)">(Taeniae coli) co thắt tạo ngấn</text>
+      <text x="60" y="148" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Tốc độ: 2 – 3 cm/phút</text>
+      <text x="60" y="172" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600" fill="var(--color-primary, #0284c7)">• Mục đích sinh lý:</text>
+      <text x="60" y="192" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #64748b)">Nhào lặn khối phân qua lại, phơi bày tối đa bề mặt để hút nước</text>
+
+      {/* Cột 2: Cử động khối */}
+      <rect x="325" y="30" width="250" height="220" rx="14" fill="var(--color-surface, #ffffff)" stroke="#059669" stroke-width="2"/>
+      <rect x="325" y="30" width="250" height="32" rx="14" fill="#059669" fill-opacity="0.12"/>
+      <text x="450" y="52" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="12" fill="#059669)">2. CỬ ĐỘNG KHỐI (MASS MOVEMENTS)</text>
+      <text x="345" y="85" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="700" fill="var(--color-text, #0f172a)">Sóng Nhu Động Toàn Thể</text>
+      <text x="345" y="108" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Tần số: 1 – 3 lần/ngày</text>
+      <text x="345" y="126" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #64748b)">Thường xuất hiện sau bữa sáng</text>
+      <text x="345" y="148" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Quãng đường tống: 20 cm</text>
+      <text x="345" y="172" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600" fill="#059669">• Mục đích sinh lý:</text>
+      <text x="345" y="192" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #64748b)">Dồn phân nhanh từ đại tràng ngang xuống sigma &amp; trực tràng</text>
+
+      {/* Cột 3: Phản xạ dạ dày - đại tràng */}
+      <rect x="605" y="30" width="255" height="220" rx="14" fill="var(--color-surface, #ffffff)" stroke="#d97706" stroke-width="2"/>
+      <rect x="605" y="30" width="255" height="32" rx="14" fill="#d97706" fill-opacity="0.12"/>
+      <text x="732" y="52" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="12" fill="#d97706">3. PHẢN XẠ DẠ DÀY - ĐẠI TRÀNG</text>
+      <text x="625" y="85" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="700" fill="var(--color-text, #0f172a)">Gastrocolic Reflex</text>
+      <text x="625" y="108" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Kích thích: Căng dạ dày</text>
+      <text x="625" y="126" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #64748b)">Thức ăn vào dạ dày sau ăn</text>
+      <text x="625" y="148" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Đường dẫn: Dây X + Gastrin</text>
+      <text x="625" y="172" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600" fill="#d97706">• Tác động:</text>
+      <text x="625" y="192" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #64748b)">Kích hoạt co bóp khối, tạo cảm giác buồn đi tiêu ngay sau bữa ăn</text>
+    </svg>
+  </div>
+  <div class="flowchart-editorial-legend">
+    <div class="legend-item"><span class="legend-dot blue"></span> Phân túi (Hút cạn nước)</div>
+    <div class="legend-item"><span class="legend-dot green"></span> Cử động khối (Dồn phân)</div>
+    <div class="legend-item"><span class="legend-dot amber"></span> Trục Dạ dày - Đại tràng (Dây X)</div>
+  </div>
+</div>
+
+---
+
+## 2. Hấp Thu Nước & Kênh Natri Biểu Mô ENaC
+
+Mỗi ngày, khoảng **$1.500\text{ mL}$** dưỡng trấp lỏng đi qua van hồi manh tràng (Bauhin) vào đại tràng. Nhờ khả năng hấp thu nước vượt trội:
+- **Đại tràng hấp thu tới $1.300 – 1.400\text{ mL nước/ngày}$** (chiếm $> 90\%$).
+- Chỉ khoảng **$100 – 200\text{ mL nước}$** thoát ra ngoài theo phân bình thường.
+- **Công suất bù trừ tối đa**: Đại tràng có thể tăng công suất tái hấp thu lên tới **$5.0 – 8.0\text{ Lít nước/ngày}$** khi ruột non bị ứ dịch hoặc tiêu chảy. Vượt quá ngưỡng này, triệu chứng tiêu chảy lâm sàng mới xuất hiện.
+
+### Cơ chế phân tử hấp thu muối nước tại tế bào biểu mô đại tràng
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> MÔ HÌNH VẬN CHUYỂN TRANSEPITHELIAL QUA KÊNH ENAC &amp; BƠM NAK TẠI ĐẠI TRÀNG</div>
+    <span class="badge badge-blue">Pure Editorial SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 900 350" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrCol" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreenCol" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
         </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+      </defs>
+
+      {/* 3 Khoang: Lòng Đại Tràng (Trái), Tế bào biểu mô Colonocyte (Giữa), Máu (Phải) */}
+      <rect x="30" y="30" width="190" height="290" rx="14" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="125" y="55" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="12" fill="var(--color-text-muted, #64748b)">LÒNG ĐẠI TRÀNG (LUMEN)</text>
+
+      <rect x="240" y="30" width="420" height="290" rx="16" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+      <rect x="240" y="30" width="420" height="32" rx="16" fill="var(--color-primary, #0284c7)" fill-opacity="0.12"/>
+      <text x="450" y="52" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-primary, #0284c7)">TẾ BÀO BIỂU MÔ ĐẠI TRÀNG (COLONOCYTE)</text>
+
+      <rect x="680" y="30" width="190" height="290" rx="14" fill="var(--color-surface-2, #f8fafc)" stroke="#059669" stroke-width="1.5"/>
+      <text x="775" y="55" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="12" fill="#059669">DỊCH KẼ / MAO MẠCH MÁU</text>
+
+      {/* Màng Đỉnh (Apical Membrane) */}
+      {/* Kênh ENaC */}
+      <rect x="228" y="85" width="24" height="60" rx="6" fill="#0284c7"/>
+      <text x="240" y="120" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" fill="#ffffff" font-weight="800">ENaC</text>
+      <text x="125" y="105" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="var(--color-primary, #0284c7)">Na⁺ hấp thu ►</text>
+      <text x="125" y="122" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text-muted, #64748b)">Kích thích bởi Aldosterone</text>
+
+      {/* Kênh trao đổi Cl-/HCO3- */}
+      <rect x="228" y="185" width="24" height="50" rx="6" fill="#d97706"/>
+      <text x="240" y="215" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" fill="#ffffff" font-weight="800">AE</text>
+      <text x="125" y="195" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="700" fill="#059669">Cl⁻ hấp thu ►</text>
+      <text x="125" y="212" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="700" fill="#d97706">◄ HCO₃⁻ bài tiết</text>
+      <text x="125" y="228" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" fill="var(--color-text-muted, #64748b)">Trung hòa acid từ vi khuẩn</text>
+
+      {/* Màng Đáy Bên (Basolateral Membrane) */}
+      {/* Bơm Na+/K+ ATPase */}
+      <rect x="648" y="90" width="24" height="55" rx="6" fill="#0284c7"/>
+      <text x="660" y="122" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" fill="#ffffff" font-weight="800">NaK</text>
+      <text x="775" y="108" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="var(--color-primary, #0284c7)">3 Na⁺ vào máu ►</text>
+      <text x="775" y="124" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">◄ 2 K⁺ vào trong</text>
+
+      {/* Kênh K+ rò rỉ */}
+      <rect x="648" y="185" width="24" height="40" rx="6" fill="#059669"/>
+      <text x="660" y="210" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" fill="#ffffff" font-weight="800">KCh</text>
+      <text x="775" y="205" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="600" fill="#059669">K⁺ hồi lưu vào máu ►</text>
+
+      {/* Vận chuyển nước Paracellular */}
+      <path d="M 180 270 L 730 270" fill="none" stroke="#0284c7" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrCol)"/>
+      <text x="450" y="262" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="var(--color-primary, #0284c7)">Hấp thu Nước thụ động qua khe liên bào (Tight junctions) theo gradient thẩm thấu</text>
+
+      {/* Chú thích tác động của Aldosterone */}
+      <text x="450" y="305" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-style="italic" fill="var(--color-text-muted, #64748b)">Aldosterone gắn thụ thể MR $\rightarrow$ tăng tổng hợp kênh ENaC và bơm Na⁺/K⁺-ATPase $\rightarrow$ giữ muối nước tối đa</text>
+    </svg>
+  </div>
+  <div class="flowchart-editorial-legend">
+    <div class="legend-item"><span class="legend-dot blue"></span> Kênh ENaC &amp; Bơm Na⁺/K⁺</div>
+    <div class="legend-item"><span class="legend-dot amber"></span> Trao đổi Cl⁻/HCO₃⁻ (Kiềm hóa phân)</div>
+    <div class="legend-item"><span class="legend-dot green"></span> Kênh K⁺ hồi lưu màng đáy</div>
+  </div>
+</div>
+
+---
+
+## 3. Hệ Vi Sinh Đường Ruột (Gut Microbiota) & Tổng Hợp Vitamin K
+
+Đại tràng là nơi cư ngụ của hơn **100 nghìn tỷ vi sinh vật** ($10^{11} – 10^{12}\text{ CFU/g}$ chất chứa), thuộc hơn 1.000 loài vi khuẩn (chủ yếu là vi khuẩn kỵ khí tuyệt đối như *Bacteroidetes* và *Firmicutes*). Hệ vi sinh vật đảm nhiệm 3 trụ cột sinh học sống còn:
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> 3 TRỤ CỘT CHỨC NĂNG CỦA HỆ VI SINH ĐƯỜNG RUỘT ĐẠI TRÀNG</div>
+    <span class="badge badge-blue">Pure Editorial SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 900 290" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrMicro" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
         </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      </defs>
+
+      {/* Trụ 1: Lên men tạo SCFAs */}
+      <rect x="40" y="30" width="255" height="230" rx="14" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+      <rect x="40" y="30" width="255" height="32" rx="14" fill="var(--color-primary, #0284c7)" fill-opacity="0.12"/>
+      <text x="167" y="52" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="12" fill="var(--color-primary, #0284c7)">1. LÊN MEN TẠO SCFAS</text>
+      <text x="60" y="85" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="700" fill="var(--color-text, #0f172a)">Acid Béo Chuỗi Ngắn</text>
+      <text x="60" y="108" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Lên men chất xơ không tiêu</text>
+      <text x="60" y="126" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #64748b)">Butyrate, Propionate, Acetate</text>
+      <text x="60" y="150" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="#059669">• Butyrate:</text>
+      <text x="60" y="170" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">Cung cấp 70% năng lượng</text>
+      <text x="60" y="188" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #64748b)">nuôi sống tế bào biểu mô đại tràng</text>
+      <text x="60" y="210" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #64748b)">• Propionate: Tân tạo đường tại gan</text>
+      <text x="60" y="228" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #64748b)">• Acetate: Năng lượng mô ngoại vi</text>
+
+      {/* Trụ 2: Sinh tổng hợp Vitamin */}
+      <rect x="325" y="30" width="250" height="230" rx="14" fill="var(--color-surface, #ffffff)" stroke="#059669" stroke-width="2"/>
+      <rect x="325" y="30" width="250" height="32" rx="14" fill="#059669" fill-opacity="0.12"/>
+      <text x="450" y="52" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="12" fill="#059669)">2. SINH TỔNG HỢP VITAMIN</text>
+      <text x="345" y="85" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="700" fill="#059669">Nguồn Vitamin K Chủ Yếu</text>
+      <text x="345" y="108" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="var(--color-text, #0f172a)">• Vitamin K (K₂ - Menaquinone):</text>
+      <text x="345" y="128" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #64748b)">Cần thiết cho gan tổng hợp</text>
+      <text x="345" y="146" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600" fill="#dc2626">Yếu tố đông máu II, VII, IX, X</text>
+      <text x="345" y="172" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600" fill="var(--color-text, #0f172a)">• Các Vitamin nhóm B:</text>
+      <text x="345" y="192" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #64748b)">- Vitamin B₁₂ &amp; Acid Folic</text>
+      <text x="345" y="210" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #64748b)">- Biotin (Vitamin B₇)</text>
+      <text x="345" y="228" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #64748b)">- Riboflavin &amp; Thiamine</text>
+
+      {/* Trụ 3: Đề kháng khúm & Miễn dịch */}
+      <rect x="605" y="30" width="255" height="230" rx="14" fill="var(--color-surface, #ffffff)" stroke="#d97706" stroke-width="2"/>
+      <rect x="605" y="30" width="255" height="32" rx="14" fill="#d97706" fill-opacity="0.12"/>
+      <text x="732" y="52" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="12" fill="#d97706">3. ĐỀ KHÁNG &amp; MIỄN DỊCH</text>
+      <text x="625" y="85" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="700" fill="var(--color-text, #0f172a)">Colonization Resistance</text>
+      <text x="625" y="108" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Cạnh tranh vị trí bám &amp; dinh dưỡng:</text>
+      <text x="625" y="128" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #64748b)">Ngăn chặn vi khuẩn lạ xâm nhập</text>
+      <text x="625" y="150" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Tiết chất kháng khuẩn Bacteriocin</text>
+      <text x="625" y="174" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600" fill="#d97706">• Kích hoạt miễn dịch niêm mạc:</text>
+      <text x="625" y="194" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #64748b)">Kích thích bài tiết sIgA và duy trì tính toàn vẹn của màng nhầy</text>
+    </svg>
+  </div>
+  <div class="flowchart-editorial-legend">
+    <div class="legend-item"><span class="legend-dot blue"></span> Acid béo chuỗi ngắn (SCFAs - Butyrate)</div>
+    <div class="legend-item"><span class="legend-dot green"></span> Vitamin K (Yếu tố đông máu)</div>
+    <div class="legend-item"><span class="legend-dot amber"></span> Hàng rào đề kháng khúm</div>
+  </div>
+</div>
+
+---
+
+## 4. Cơ Chế Cung Phản Xạ Đại Tiện (Defecation Reflex)
+
+Bình thường, trực tràng hoàn toàn trống rỗng. Khi một **cử động khối** dồn phân vào bóng trực tràng, kích thước trực tràng bị căng giãn sẽ khởi phát **Phản xạ đại tiện**:
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ CUNG PHẢN XẠ ĐẠI TIỆN: ĐIỀU HÒA TỰ Ý VS KHÔNG TỰ Ý</div>
+    <span class="badge badge-blue">Pure Editorial SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 900 370" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrDef" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreenD" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrRedD" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
         </marker>
       </defs>
 
-      {/* Single Node: DƯỠNG TRẤP TỪ HỒI TRÀNG: 1.500 */}
-      <rect x="156.5" y="20" width="567" height="78" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">DƯỠNG TRẤP TỪ HỒI TRÀNG: 1.500 mL</text>
-      <text x="180.5" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ├──► NỬA PHẢI ĐẠI TRÀNG (Manh tràng, Đại tràng lên &amp; 1/2 Đại</text>
-      <text x="180.5" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  tràng ngang):</text>
+      {/* Khối 1: Kích thích căng bóng trực tràng */}
+      <rect x="50" y="30" width="220" height="95" rx="14" fill="var(--color-surface, #ffffff)" stroke="#d97706" stroke-width="2"/>
+      <rect x="50" y="30" width="220" height="26" rx="14" fill="#d97706" fill-opacity="0.12"/>
+      <text x="160" y="48" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="#d97706">CĂNG BÓNG TRỰC TRÀNG</text>
+      <text x="65" y="74" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Phân dồn xuống làm căng giãn</text>
+      <text x="65" y="94" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #64748b)">Kích hoạt thụ thể cơ học thành</text>
+      <text x="65" y="112" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="#d97706" font-weight="600">Phát xung hướng tâm</text>
+
+      {/* Vector 1 -> Tủy S2-S4 & Đám rối Myenteric */}
+      <path d="M 270 78 L 335 78" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arrDef)"/>
+
+      {/* Khối 2: Trung tâm phản xạ Tủy cùng S2-S4 */}
+      <rect x="340" y="30" width="250" height="95" rx="14" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+      <rect x="340" y="30" width="250" height="26" rx="14" fill="var(--color-primary, #0284c7)" fill-opacity="0.12"/>
+      <text x="465" y="48" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-primary, #0284c7)">TỦY CÙNG S2 – S4 (ĐỐI GIAO CẢM)</text>
+      <text x="355" y="74" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Dây thần kinh tạng chậu (Pelvic)</text>
+      <text x="355" y="94" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #64748b)">Khuếch đại sóng co bóp trực tràng</text>
+      <text x="355" y="112" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="#059669" font-weight="600">Ức chế co thắt cơ trơn trong</text>
+
+      {/* Vector 2 -> Cơ thắt trong */}
+      <path d="M 590 78 L 655 78" fill="none" stroke="#059669" stroke-width="2" marker-end="url(#arrGreenD)"/>
+
+      {/* Khối 3: Cơ thắt trong hậu môn (IAS) */}
+      <rect x="660" y="30" width="200" height="95" rx="14" fill="var(--color-surface, #ffffff)" stroke="#059669" stroke-width="2.5"/>
+      <rect x="660" y="30" width="200" height="26" rx="14" fill="#059669" fill-opacity="0.15"/>
+      <text x="760" y="48" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="#059669">CƠ THẮT TRONG (IAS)</text>
+      <text x="675" y="74" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="#059669">• CƠ TRƠN (Không tự ý)</text>
+      <text x="675" y="94" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">Tự động THƯ GIÃN</text>
+      <text x="675" y="112" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #64748b)">Phân tiến vào ống hậu môn</text>
+
+      {/* Phân nhánh lên Vỏ não cảm giác */}
+      <path d="M 760 125 L 760 180" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arrDef)"/>
+
+      {/* Khối 4: Vỏ Não Phân Tích Hoàn Cảnh */}
+      <rect x="490" y="185" width="370" height="60" rx="12" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="675" y="208" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">VỎ NÃO CẢM NHẬN MÓT RẶN &amp; ĐIỀU KIỆN XÃ HỘI</text>
+      <text x="675" y="230" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #64748b)">Chi phối Dây thần kinh Thẹn (Pudendal Nerve S2–S4) đến Cơ thắt ngoài</text>
+
+      {/* 2 Ngã Rẽ Hoàn Cảnh */}
+      <path d="M 570 245 L 570 280 L 320 280 L 320 295" fill="none" stroke="#dc2626" stroke-width="2" marker-end="url(#arrRedD)"/>
+      <path d="M 770 245 L 770 295" fill="none" stroke="#059669" stroke-width="2" marker-end="url(#arrGreenD)"/>
+
+      {/* Nhánh 1: Chưa thuận tiện */}
+      <rect x="180" y="300" width="280" height="60" rx="10" fill="var(--color-surface, #ffffff)" stroke="#dc2626" stroke-width="1.8"/>
+      <text x="320" y="322" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="#dc2626">CHƯA THUẬN TIỆN ĐI TIÊU</text>
+      <text x="320" y="344" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">Chủ động CO CƠ THẮT NGOÀI (Cơ vân) ➔ Trực tràng giãn thích nghi</text>
+
+      {/* Nhánh 2: Thuận tiện đi tiêu */}
+      <rect x="630" y="300" width="280" height="60" rx="10" fill="var(--color-surface, #ffffff)" stroke="#059669" stroke-width="1.8"/>
+      <text x="770" y="322" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="#059669">HOÀN CẢNH THUẬN TIỆN</text>
+      <text x="770" y="344" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">Chủ động GIÃN CƠ THẮT NGOÀI + Rặn Valsalva ➔ Tống xuất phân</text>
     </svg>
+  </div>
+  <div class="flowchart-editorial-legend">
+    <div class="legend-item"><span class="legend-dot amber"></span> Căng giãn thụ thể cơ học trực tràng</div>
+    <div class="legend-item"><span class="legend-dot green"></span> Phản xạ không tự ý (Cơ thắt trong IAS giãn)</div>
+    <div class="legend-item"><span class="legend-dot blue"></span> Vỏ não chi phối Dây Thẹn (Cơ thắt ngoài EAS)</div>
   </div>
 </div>
 
-- **Công suất bù trừ**: Đại tràng có khả năng hấp thu tối đa lên tới **$5.0 – 8.0\text{ Lít nước/ngày}$** khi ruột non bị tiêu chảy.
-
-
 ---
 
-## 3. Hệ Vi Sinh Đường Ruột & Vitamin K
-Đại tràng chứa hơn **100 nghìn tỷ vi sinh vật** (hơn $1.000$ loài, nồng độ $10^{11} – 10^{12}\text{ CFU/mL}$), chiếm hơn 30% khối lượng phân khô:
+## 5. Sinh Lý Bệnh Học Lâm Sàng EBM: Hirschsprung & C. Difficile
 
+### 1. Bệnh Phình đại tràng vô hạch bẩm sinh (Hirschsprung Disease)
+- **Bản chất phôi thai học**: Khi phôi phát triển tuần thứ 5–12, các tế bào mào thần kinh (*Neural crest cells*) di cư theo hướng sọ - đuôi dọc theo ống tiêu hóa. Trong bệnh Hirschsprung, quá trình di chuyển bị ngừng lại đột ngột trước khi tiếp cận đoạn tận cùng của ruột $\rightarrow$ **Vô hạch hoàn toàn cả 2 đám rối Auerbach và Meissner** ở trực tràng và đại tràng sigma.
+- **Hậu quả sinh lý học**: Đoạn ruột vô hạch mất toàn bộ các interneuron ức chế bài tiết nitric oxide (NO) và VIP $\rightarrow$ **Đoạn ruột bị co thắt trương lực liên tục, chít hẹp không thể giãn nở**.
+- **Biểu hiện lâm sàng**: Dưỡng chất và phân bị tắc nghẽn hoàn toàn tại đoạn hẹp, làm đại tràng bình thường phía trên bị ứ đọng phình trướng khổng lồ (*Megacolon*). **Trẻ sơ sinh chậm đi tiêu phân su sau 48 giờ**, chướng bụng nôn mửa; khi thăm trực tràng rút ngón tay ra thấy có dấu hiệu "tháo cống" (phân và hơi phụt ra ồ ạt).
 
-<div class="flowchart-card">
-  <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: HỆ VI SINH VẬT ĐẠI TRÀNG</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
-  </div>
-  <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 248" width="880" height="248" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
-        </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
-        </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
-        </marker>
-      </defs>
-
-      {/* Single Node: HỆ VI SINH VẬT ĐẠI TRÀNG */}
-      <rect x="250" y="20" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">HỆ VI SINH VẬT ĐẠI TRÀNG</text>
-      <path d="M 440 66 L 440 80 L 155 80 L 155 94" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      <path d="M 440 80 L 440 80 L 440 94" fill="none" stroke="var(--amber, #f59e0b)" stroke-width="1.8" marker-end="url(#arrAmber)"/>
-      <path d="M 440 80 L 725 80 L 725 94" fill="none" stroke="var(--color-success, #10b981)" stroke-width="1.8" marker-end="url(#arrGreen)"/>
-      <rect x="30" y="94" width="250" height="116" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="155" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text, #0f172a)">1. LÊN MEN CHẤT XƠ HÒA TAN</text>
-      <line x1="45" y1="124" x2="265" y2="124" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="42" y="140" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Lên men tạo Acid Béo Chuỗi Ngắn</text>
-      <text x="42" y="158" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• (SCFAs: Butyrate, Propionate,</text>
-      <text x="42" y="176" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Acetate)</text>
-      <text x="42" y="194" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Butyrate là NGUỒN</text>
-      <text x="42" y="212" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• CHÍNH nuôi sống t</text>
-      <rect x="315" y="94" width="250" height="116" rx="8" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
-      <text x="440" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--amber, #d97706)">2. TỔNG HỢP CÁC VITAMIN</text>
-      <line x1="330" y1="124" x2="550" y2="124" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="327" y="140" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• TỔNG HỢP VITAMIN K (K2)          •</text>
-      <text x="327" y="158" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• (Cần thiết cho yếu tố II, VII,</text>
-      <text x="327" y="176" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• IX, X của gan)</text>
-      <text x="327" y="194" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• NĂNG LƯỢNG     • Tổng</text>
-      <text x="327" y="212" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• ế bào niêm mạc    Aci</text>
-      <rect x="600" y="94" width="250" height="116" rx="8" fill="rgba(16, 185, 129, 0.08)" stroke="var(--color-success, #10b981)" stroke-width="1.5"/>
-      <text x="725" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-success, #10b981)">3. HÀNG RÀO MIỄN DỊCH BẢO VỆ</text>
-      <line x1="615" y1="124" x2="835" y2="124" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="612" y="140" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Tiết Bacteriocin tiêu diệt vi khuẩn lạ</text>
-      <text x="612" y="158" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Cạnh tranh vị trí bám &amp; dưỡng chất</text>
-      <text x="612" y="176" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Kích thích biểu mô ruột tiết IgA</text>
-      <text x="612" y="194" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• hợp Vitamin B (Biotin,</text>
-      <text x="612" y="212" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• d Folic, Vitamin B12)</text>
-    </svg>
-  </div>
-</div>
-
+### 2. Viêm đại tràng giả mạc do *Clostridioides difficile*
+- **Cơ chế phát sinh**: Sử dụng kháng sinh phổ rộng (Fluoroquinolone, Clindamycin, Cephalosporin thế hệ 3–4) kéo dài tiêu diệt phần lớn hệ vi sinh vật đại tràng, phá vỡ **hàng rào đề kháng khúm (*Colonization resistance*)**.
+- Bào tử *C. difficile* kháng kháng sinh thừa cơ sinh sôi nảy nở ồ ạt, bài tiết **Độc tố A (*Enterotoxin*)** gây viêm thoát dịch và **Độc tố B (*Cytotoxin*)** phá hủy bộ khung tế bào actin $\rightarrow$ Hoại tử biểu mô, hình thành các màng giả màu vàng trắng bám trên niêm mạc, gây tiêu chảy tóe nước dữ dội, sốt, tăng bạch cầu và nguy cơ phình giãn đại tràng nhiễm độc (*Toxic megacolon*).
 
 ---
-
-## 4. Cơ Chế Phản Xạ Đại Tiện
-<div class="flowchart-card">
-  <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: Cử động khối dồn phân làm CĂNG GIÃN BÓNG TRỰC TRÀNG</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
-  </div>
-  <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 278" width="880" height="278" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
-        </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
-        </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
-        </marker>
-      </defs>
-
-      {/* Single Node: Cử động khối dồn phân làm CĂNG */}
-      <rect x="165" y="20" width="550" height="96" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">Cử động khối dồn phân làm CĂNG GIÃN BÓNG TRỰC TRÀNG</text>
-      <text x="189" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ├──► Phản xạ nội tại tại chỗ (Đám rối Myenteric) ──► Tăng</text>
-      <text x="189" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  sóng co bóp trực tràng</text>
-      <text x="189" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ├──► 1. Co bóp mạnh mẽ cơ thành trực tràng</text>
-      <line x1="440" y1="116" x2="440" y2="144" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: Khối phân tiếp cận ống hậu môn */}
-      <rect x="165" y="144" width="550" height="96" rx="10" fill="var(--blue-bg, #eff6ff)" stroke="var(--blue, #0284c7)" stroke-width="1.8"/>
-      <text x="440" y="166" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-primary, #0284c7)">Khối phân tiếp cận ống hậu môn tạo cảm giác mót rặn</text>
-      <text x="189" y="188" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ├── HOÀN CẢNH THUẬN TIỆN ──► Vỏ não cho phép THƯ GIÃN CƠ</text>
-      <text x="189" y="206" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  THẮT NGOÀI HẬU MÔN</text>
-      <text x="189" y="224" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ──► Phân bị giữ lại, trực tràng giãn thích nghi</text>
-    </svg>
-  </div>
-</div>
-
-
----
-
-## 5. Bệnh Lý Lâm Sàng EBM (Hirschsprung & C. diff)
-- **Bản chất**: Do sự dừng lại bất thường của quá trình di cư các tế bào mào thần kinh phôi thai $\rightarrow$ **Vô hạch hoàn toàn đám rối Auerbach và Meissner** ở đoạn trực tràng và đại tràng sigma.
-  - **Hệ quả**: Đoạn ruột vô hạch mất hoàn toàn các neuron ức chế tiết NO/VIP $\rightarrow$ **Co thắt chít hẹp liên tục không thể giãn nở**, làm đoạn đại tràng phía trên bị ứ trệ phân và phình giãn khổng lồ (*Megacolon*).
-  - **Dấu hiệu lâm sàng**: **Trẻ sơ sinh chậm ỉa phân su $> 48\text{ giờ}$**, chướng bụng nôn dịch mật; thăm trực tràng thấy thắt chặt và có dấu hiệu "tháo cống" (phân và hơi xì ra ồ ạt khi rút ngón tay).
 
 ## 6. Tài Liệu Tham Khảo EBM
+
 <div class="citation-box">
   <ol style="margin: 0; padding-left: 1.25rem; line-height: 1.8; color: var(--color-text-muted, #475569); font-size: 0.88rem;">
-    <li><strong>Hall, J. E., & Hall, M. E. (2021)</strong>. <em>Guyton and Hall Textbook of Medical Physiology</em> (14th ed.). Philadelphia: Elsevier. Chapters 64 & 65: Motility and Secretory Functions of the Large Intestine.</li>
-    <li><strong>Barrett, K. E. et al. (2019)</strong>. <em>Ganong's Review of Medical Physiology</em> (26th ed.). New York: McGraw-Hill. Chapter 26: Gastrointestinal Function.</li>
-    <li><strong>Thursby, E., & Juge, N. (2017)</strong>. <em>Introduction to the human gut microbiota</em>. Biochemical Journal, 474(11), 1823-1836.</li>
-    <li><strong>Heuckeroth, R. O. (2018)</strong>. <em>Hirschsprung disease—integrating basic science and clinical medicine to improve outcomes</em>. Nature Reviews Gastroenterology & Hepatology, 15(3), 152-167.</li>
+    <li><strong>Hall, J. E., & Hall, M. E. (2021)</strong>. <em>Guyton and Hall Textbook of Medical Physiology</em> (14th ed.). Philadelphia: Elsevier. Chapter 64: Motility of the Large Intestine & Chapter 65: Secretory Functions of the Large Intestine.</li>
+    <li><strong>Barrett, K. E., Barman, S. M., Brooks, H. L., & Yuan, J. X. J. (2019)</strong>. <em>Ganong's Review of Medical Physiology</em> (26th ed.). New York: McGraw-Hill. Chapter 26: Gastrointestinal Function & Chapter 28: Intestinal Microbiota.</li>
+    <li><strong>Thursby, E., & Juge, N. (2017)</strong>. <em>Introduction to the human gut microbiota</em>. Biochemical Journal, 474(11), 1823-1836. DOI: 10.1042/BCJ20160510.</li>
+    <li><strong>Heuckeroth, R. O. (2018)</strong>. <em>Hirschsprung disease—integrating basic science and clinical medicine to improve outcomes</em>. Nature Reviews Gastroenterology & Hepatology, 15(3), 152-167. DOI: 10.1038/nrgastro.2017.149.</li>
+    <li><strong>McDonald, L. C. et al. (2018)</strong>. <em>Clinical Practice Guidelines for Clostridium difficile Infection in Adults and Children: 2017 Update by IDSA and SHEA</em>. Clinical Infectious Diseases, 66(7), e1-e48.</li>
   </ol>
 </div>
-
 
 {/* HÀNG NÚT ĐIỀU HƯỚNG SPA */}
 <div class="btn-row">

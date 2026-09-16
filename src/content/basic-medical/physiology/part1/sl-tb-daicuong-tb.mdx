@@ -47,24 +47,29 @@ sections:
 
 <PhysioQuickNav />
 
+<div style="display: flex; gap: 0.5rem; margin-bottom: 1rem; align-items: center; flex-wrap: wrap;">
+  <span class="module-badge badge-physio"><i class="fa-solid fa-heart-pulse"></i> Sinh Lý Học • Part 1</span>
+  <span class="module-badge" style="border-color: rgba(2, 132, 199, 0.3); background: rgba(2, 132, 199, 0.1); color: var(--color-primary, #0284c7);"><i class="fa-solid fa-dna"></i> Tế Bào & Nội Môi</span>
+</div>
+
 {/* DẢI CHỈ SỐ NHANH (QUICK STATS STRIP) */}
-<section class="stats-strip">
+<section class="stats-strip theme-physio">
   <div class="stats-grid">
     <div class="stat-card">
-      <div class="stat-val blue">PHYS-CELL-01</div>
-      <div class="stat-lbl">Mã chuyên đề • Sinh Lý Tế Bào & Nội Môi</div>
+      <div class="stat-val blue">60% (42L)</div>
+      <div class="stat-lbl">Tổng lượng dịch cơ thể (TBW ở người 70 kg)</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val green">Nội Môi Ổn Định</div>
-      <div class="stat-lbl">Cân bằng gradient điện hóa & Áp suất thẩm thấu</div>
+      <div class="stat-val green">28L (2/3 TBW)</div>
+      <div class="stat-lbl">Dịch nội bào (ICF: giàu K⁺, Mg²⁺, Protein⁻, PO₄³⁻)</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val amber">Feedback Loop</div>
-      <div class="stat-lbl">Vòng điều hòa phản hồi thần kinh - thể dịch</div>
+      <div class="stat-val teal">14L (1/3 TBW)</div>
+      <div class="stat-lbl">Dịch ngoại bào (ECF: 10.5L Kẽ + 3.5L Huyết tương)</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val purple">Dược Lý EBM</div>
-      <div class="stat-lbl">Ứng dụng lâm sàng chuẩn Guyton 14th & Ganong 26th</div>
+      <div class="stat-val amber">pH 7.35 – 7.45</div>
+      <div class="stat-lbl">Giới hạn nội môi sinh tồn (Chết nếu &lt; 6.8 hoặc &gt; 7.8)</div>
     </div>
   </div>
 </section>
@@ -81,35 +86,57 @@ Nước chiếm khoảng **60% trọng lượng cơ thể** ở người trưở
   - *Dịch xuyên bào (Transcellular Fluid)*: Chiếm lượng nhỏ (~1-2 lít), gồm dịch não tủy, dịch khớp, dịch màng phổi, màng tim, màng bụng.
 
 
-<div class="flowchart-card">
-  <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: Tổng Lượng Dịch Cơ Thể: 60% Trọng lượng (~42L)</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+<div class="flowchart-editorial-card">
+  <div class="flowchart-editorial-header">
+    <div class="flowchart-editorial-title">
+      <i class="fa-solid fa-water"></i>
+      <span>SƠ ĐỒ PHÂN BỐ DỊCH CƠ THỂ (Total Body Water Compartments)</span>
+    </div>
+    <div class="flowchart-editorial-badges">
+      <span class="flowchart-editorial-badge">Guyton 14th • Pure SVG</span>
+    </div>
   </div>
-  <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 154" width="880" height="154" xmlns="http://www.w3.org/2000/svg">
+  <div class="flowchart-editorial-viewport">
+    <svg class="flowchart-editorial-svg" viewBox="0 0 900 240" width="900" height="240" xmlns="http://www.w3.org/2000/svg" font-family="'Plus Jakarta Sans', 'Inter', sans-serif">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        <marker id="fl-arr-emerald" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669" />
         </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
-        </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        <marker id="fl-arr-sky" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7" />
         </marker>
       </defs>
 
-      {/* Single Node: Tổng Lượng Dịch Cơ Thể: 60% Tr */}
-      <rect x="165" y="20" width="550" height="96" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Tổng Lượng Dịch Cơ Thể: 60% Trọng lượng (~42L)</text>
-      <text x="189" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ├──► Dịch Nội Bào (ICF): 2/3 tổng lượng dịch (~28L) • Giàu</text>
-      <text x="189" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  K+, Mg2+, Protein</text>
-      <text x="189" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ├── Dịch kẽ (Interstitial Fluid): 75% ECF (~10.5L)</text>
+      {/*  */}
+      <rect x="180" y="12" width="540" height="52" rx="12" fill="rgba(2, 132, 199, 0.08)" stroke="#0284c7" stroke-width="2" />
+      <text x="450" y="34" text-anchor="middle" font-size="13" font-weight="800" fill="#0284c7">TỔNG LƯỢNG NƯỚC CƠ THỂ (TBW): 60% TRỌNG LƯỢNG (~42 LÍT Ở NGƯỜI 70 KG)</text>
+      <text x="450" y="52" text-anchor="middle" font-size="11" font-weight="500" fill="#64748b">Cân bằng nhập xuất hằng định qua tiêu hóa, thận, hô hấp và bài tiết qua da</text>
+
+      {/*  */}
+      <path d="M 330 64 L 330 84 L 230 84 L 230 96" fill="none" stroke="#059669" stroke-width="2" marker-end="url(#fl-arr-emerald)" />
+      <path d="M 570 64 L 570 84 L 670 84 L 670 96" fill="none" stroke="#0284c7" stroke-width="2" marker-end="url(#fl-arr-sky)" />
+
+      {/*  */}
+      <rect x="50" y="98" width="360" height="126" rx="12" fill="rgba(16, 185, 129, 0.06)" stroke="#059669" stroke-width="2" />
+      <text x="230" y="124" text-anchor="middle" font-size="13" font-weight="800" fill="#059669">DỊCH NỘI BÀO (ICF) • 2/3 TBW (~28 LÍT)</text>
+      <text x="70" y="146" font-size="11" font-weight="600" fill="#334155">• Chiếm 40% trọng lượng cơ thể (bên trong tế bào)</text>
+      <text x="70" y="166" font-size="11" font-weight="700" fill="#059669">• Cation chính: K⁺ (140 mEq/L), Mg²⁺ (58 mEq/L)</text>
+      <text x="70" y="186" font-size="11" font-weight="500" fill="#475569">• Anion chính: Protein⁻ tích điện âm, Phosphates (PO₄³⁻)</text>
+      <text x="70" y="206" font-size="10" font-weight="600" fill="#059669">Ngăn cách bởi màng tế bào lipid kép (tính thấm chọn lọc)</text>
+
+      {/*  */}
+      <rect x="470" y="98" width="400" height="126" rx="12" fill="rgba(2, 132, 199, 0.06)" stroke="#0284c7" stroke-width="2" />
+      <text x="670" y="124" text-anchor="middle" font-size="13" font-weight="800" fill="#0284c7">DỊCH NGOẠI BÀO (ECF) • 1/3 TBW (~14 LÍT)</text>
+      <text x="490" y="146" font-size="11" font-weight="600" fill="#334155">• Môi trường nội môi (Milieu Intérieur) • 20% trọng lượng</text>
+      <text x="490" y="166" font-size="11" font-weight="700" fill="#0284c7">• Cation: Na⁺ (142 mEq/L), Ca²⁺ • Anion: Cl⁻ (103 mEq/L), HCO₃⁻</text>
+      <text x="490" y="186" font-size="11" font-weight="500" fill="#475569">• Phân bố: Dịch kẽ (75% ECF ~10.5L) + Huyết tương (25% ECF ~3.5L)</text>
+      <text x="490" y="206" font-size="10" font-weight="600" fill="#0284c7">• Dịch xuyên bào (~1–2L): Dịch não tủy, dịch khớp, màng phổi/bụng</text>
     </svg>
+  </div>
+  <div class="flowchart-editorial-legend">
+    <span class="flowchart-legend-item"><span class="legend-dot blue"></span> TBW: 60% Thể trọng (~42L)</span>
+    <span class="flowchart-legend-item"><span class="legend-dot green"></span> ICF: 40% Thể trọng (2/3 TBW ~28L)</span>
+    <span class="flowchart-legend-item"><span class="legend-dot blue"></span> ECF: 20% Thể trọng (1/3 TBW ~14L: Kẽ 10.5L + Huyết tương 3.5L)</span>
   </div>
 </div>
 
@@ -157,58 +184,177 @@ Phản hồi âm tính là **cơ chế điều hòa chủ đạo và quan trọn
 
 
 
+<div class="flowchart-editorial-card">
+  <div class="flowchart-editorial-header">
+    <div class="flowchart-editorial-title">
+      <i class="fa-solid fa-arrows-spin"></i>
+      <span>SƠ ĐỒ CƠ CHẾ ĐIỀU HÒA PHẢN HỒI ÂM TÍNH (Negative Feedback Loop)</span>
+    </div>
+    <div class="flowchart-editorial-badges">
+      <span class="flowchart-editorial-badge">Chuẩn Guyton 14th</span>
+    </div>
+  </div>
+  <div class="flowchart-editorial-viewport">
+    <svg class="flowchart-editorial-svg" viewBox="0 0 920 440" width="920" height="440" xmlns="http://www.w3.org/2000/svg" font-family="'Plus Jakarta Sans', 'Inter', sans-serif">
+      <defs>
+        <marker id="fb-arr-blue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7" />
+        </marker>
+        <marker id="fb-arr-red" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626" />
+        </marker>
+        <marker id="fb-arr-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669" />
+        </marker>
+      </defs>
+
+      {/*  */}
+      <rect x="250" y="14" width="420" height="40" rx="20" fill="rgba(16, 185, 129, 0.1)" stroke="#059669" stroke-width="1.5" />
+      <text x="460" y="39" text-anchor="middle" font-size="13" font-weight="700" fill="#059669">CHU TRÌNH ĐIỀU HÒA NGƯỢC ÂM TÍNH CỦA NỘI MÔI</text>
+
+      {/*  */}
+      <rect x="40" y="90" width="190" height="74" rx="12" fill="rgba(239, 68, 68, 0.08)" stroke="#dc2626" stroke-width="2" />
+      <text x="135" y="118" text-anchor="middle" font-size="13" font-weight="700" fill="#dc2626">1. KÍCH THÍCH (Stimulus)</text>
+      <text x="135" y="138" text-anchor="middle" font-size="11" font-weight="500" fill="#475569">Lệch khỏi giá trị cân bằng</text>
+      <text x="135" y="152" text-anchor="middle" font-size="10" font-weight="600" fill="#dc2626">(VD: Huyết áp tăng vọt)</text>
+
+      <path d="M 230 127 L 268 127" fill="none" stroke="#0284c7" stroke-width="2" marker-end="url(#fb-arr-blue)" />
+
+      {/*  */}
+      <rect x="270" y="90" width="190" height="74" rx="12" fill="rgba(2, 132, 199, 0.08)" stroke="#0284c7" stroke-width="2" />
+      <text x="365" y="118" text-anchor="middle" font-size="13" font-weight="700" fill="#0284c7">2. THỤ THỂ (Sensor)</text>
+      <text x="365" y="138" text-anchor="middle" font-size="11" font-weight="500" fill="#475569">Phát hiện biến đổi nội môi</text>
+      <text x="365" y="152" text-anchor="middle" font-size="10" font-weight="600" fill="#0284c7">(VD: Xoang cảnh, Quai ĐMC)</text>
+
+      <path d="M 460 127 L 498 127" fill="none" stroke="#0284c7" stroke-width="2" marker-end="url(#fb-arr-blue)" />
+      <rect x="464" y="104" width="30" height="16" rx="3" fill="#ffffff" stroke="#cbd5e1" stroke-width="0.5" />
+      <text x="479" y="115" text-anchor="middle" font-size="8" font-weight="700" fill="#64748b">IX, X</text>
+
+      {/*  */}
+      <rect x="500" y="78" width="200" height="96" rx="14" fill="rgba(245, 158, 11, 0.09)" stroke="#d97706" stroke-width="2" />
+      <text x="600" y="108" text-anchor="middle" font-size="13" font-weight="700" fill="#d97706">3. TRUNG TÂM ĐIỀU KHIỂN</text>
+      <text x="600" y="126" text-anchor="middle" font-size="11" font-weight="600" fill="#475569">So sánh Điểm Đặt (Set-Point)</text>
+      <text x="600" y="144" text-anchor="middle" font-size="10" font-weight="500" fill="#64748b">Phân tích &amp; Ra quyết định</text>
+      <text x="600" y="162" text-anchor="middle" font-size="10" font-weight="700" fill="#d97706">(VD: Hành não / Trung tâm vận mạch)</text>
+
+      <path d="M 600 174 L 600 228" fill="none" stroke="#0284c7" stroke-width="2" marker-end="url(#fb-arr-blue)" />
+
+      {/*  */}
+      <rect x="490" y="230" width="220" height="74" rx="12" fill="rgba(2, 132, 199, 0.08)" stroke="#0284c7" stroke-width="2" />
+      <text x="600" y="256" text-anchor="middle" font-size="13" font-weight="700" fill="#0284c7">4. CƠ QUAN ĐÁP ỨNG (Effector)</text>
+      <text x="600" y="276" text-anchor="middle" font-size="11" font-weight="500" fill="#475569">Thực thi tín hiệu ly tâm điều chỉnh</text>
+      <text x="600" y="292" text-anchor="middle" font-size="10" font-weight="600" fill="#0284c7">(VD: Giảm nhịp tim, Giãn tiểu ĐM)</text>
+
+      <path d="M 490 267 L 240 267" fill="none" stroke="#059669" stroke-width="2" marker-end="url(#fb-arr-green)" />
+
+      {/*  */}
+      <rect x="40" y="230" width="190" height="74" rx="12" fill="rgba(16, 185, 129, 0.08)" stroke="#059669" stroke-width="2" />
+      <text x="135" y="256" text-anchor="middle" font-size="13" font-weight="700" fill="#059669">5. ĐÁP ỨNG ĐIỀU HÒA</text>
+      <text x="135" y="276" text-anchor="middle" font-size="11" font-weight="600" fill="#059669">Huyết áp hạ về bình thường</text>
+      <text x="135" y="292" text-anchor="middle" font-size="10" font-weight="500" fill="#475569">Khôi phục trạng thái nội môi</text>
+
+      {/*  */}
+      <path d="M 135 304 L 135 375 Q 135 385 125 385 L 25 385 Q 15 385 15 375 L 15 137 Q 15 127 25 127 L 38 127" fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#fb-arr-red)" />
+      
+      <rect x="45" y="373" width="240" height="24" rx="6" fill="#ffffff" stroke="#dc2626" stroke-width="1" />
+      <text x="165" y="389" text-anchor="middle" font-size="11" font-weight="700" fill="#dc2626">
+        (-) PHẢN HỒI ÂM TÍNH (Triệt tiêu kích thích)
+      </text>
+    </svg>
+  </div>
+  <div class="flowchart-editorial-legend">
+    <span class="flowchart-legend-item"><span class="legend-dot red"></span> 1. Kích thích biến đổi</span>
+    <span class="flowchart-legend-item"><span class="legend-dot blue"></span> 2. Thụ thể &amp; Cảm thụ quan</span>
+    <span class="flowchart-legend-item"><span class="legend-dot amber"></span> 3. Trung tâm tích hợp</span>
+    <span class="flowchart-legend-item"><span class="legend-dot blue"></span> 4. Cơ quan đáp ứng</span>
+    <span class="flowchart-legend-item"><span class="legend-dot green"></span> 5. Nội môi khôi phục</span>
+  </div>
+</div>
+
 ### B. Cơ Chế Phản Hồi Dương Tính (Positive Feedback)
 
 Phản hồi dương tính tạo ra một đáp ứng **cùng chiều với kích thích ban đầu**, làm tăng dần cường độ của biến đổi. Đa số các phản hồi dương tính không kiểm soát sẽ dẫn đến **vòng luẩn quẩn bệnh lý (Vicious Cycle)** và tử vong.
 
 Tuy nhiên, cơ thể sử dụng phản hồi dương tính sinh lý trong một số ít quá trình đặc thù đòi hỏi phải **hoàn thành nhanh chóng và dứt khoát**:
 
-
-
-
   1. **Đông máu (Blood Clotting)**: Một yếu tố đông máu được hoạt hóa (như Thrombin) sẽ quay lại kích hoạt chuỗi enzyme dòng thác tạo thêm nhiều Thrombin cho đến khi hình thành nút chặn tiểu cầu và cục máu đông Fibrin bịt kín vết thương.
   2. **Chuyển dạ rặn đẻ (Phản xạ Ferguson & Oxytocin)**: Tăng co bóp tử cung liên tục cho đến khi sổ thai.
   3. **Đỉnh LH gây rụng trứng (LH Surge)**: Nồng độ Estrogen tăng cao vượt ngưỡng phát tín hiệu phản hồi dương tính lên trục dưới đồi - tuyến yên kích thích giải phóng ồ ạt LH gây phóng noãn.
-
 
 ---
 
 ## 4. Ứng Dụng Lâm Sàng & Vòng Luẩn Quẩn
 Hiệu quả của các hệ thống điều hòa phản hồi quyết định ranh giới giữa sự sống và tử vong trong cấp cứu hồi sức:
 
-
-<div class="flowchart-card">
-  <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: Bệnh Nhân Bị Mất Máu Cấp</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+<div class="flowchart-editorial-card">
+  <div class="flowchart-editorial-header">
+    <div class="flowchart-editorial-title">
+      <i class="fa-solid fa-code-branch"></i>
+      <span>LƯU ĐỒ ĐỐI CHIẾU: CƠ CHẾ BÙ TRỪ VS. VÒNG XOẮN TỬ VONG TRONG SỐC MẤT MÁU CẤP</span>
+    </div>
+    <div class="flowchart-editorial-badges">
+      <span class="flowchart-editorial-badge">Sơ Đồ Chuẩn Editorial</span>
+    </div>
   </div>
-  <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 208" width="880" height="208" xmlns="http://www.w3.org/2000/svg">
+  <div class="flowchart-editorial-viewport">
+    <svg class="flowchart-editorial-svg" viewBox="0 0 940 380" width="940" height="380" xmlns="http://www.w3.org/2000/svg" font-family="'Plus Jakarta Sans', 'Inter', sans-serif">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        <marker id="sc-arr-blue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7" />
         </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        <marker id="sc-arr-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669" />
         </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        <marker id="sc-arr-red" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626" />
         </marker>
       </defs>
 
-      {/* Single Node: Bệnh Nhân Bị Mất Máu Cấp */}
-      <rect x="169.25" y="20" width="541.5" height="150" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">Bệnh Nhân Bị Mất Máu Cấp</text>
-      <text x="193.25" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ├──► MẤT MÁU NHẸ/VỪA (&lt; 1 Lít máu, &lt; 20% Thể tích tuần</text>
-      <text x="193.25" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  hoàn):</text>
-      <text x="193.25" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Giảm tưới máu động mạch vành ──► Cơ tim thiếu máu hoại tử</text>
-      <text x="193.25" y="118" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  ──► Giảm sức co bóp tim</text>
-      <text x="193.25" y="136" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ──► Cung lượng tim tiếp tục tụt sâu ──► TỬ VONG TRONG VÀI</text>
-      <text x="193.25" y="154" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  GIỜ NẾU KHÔNG TRUYỀN MÁU</text>
+      {/*  */}
+      <rect x="245" y="15" width="450" height="54" rx="12" fill="rgba(2, 132, 199, 0.08)" stroke="#0284c7" stroke-width="2" />
+      <text x="470" y="38" text-anchor="middle" font-size="14" font-weight="800" fill="#0284c7">BỆNH NHÂN BỊ CHẤN THƯƠNG / MẤT MÁU CẤP TÍNH</text>
+      <text x="470" y="56" text-anchor="middle" font-size="11" font-weight="500" fill="#64748b">Thể tích máu tuần hoàn sụt giảm đột ngột • Giảm tiền gánh tĩnh mạch</text>
+
+      {/*  */}
+      <path d="M 470 69 L 470 100" fill="none" stroke="#0284c7" stroke-width="2" marker-end="url(#sc-arr-blue)" />
+
+      {/*  */}
+      <polygon points="470,102 650,132 470,162 290,132" fill="rgba(245, 158, 11, 0.1)" stroke="#d97706" stroke-width="2" />
+      <text x="470" y="128" text-anchor="middle" font-size="12" font-weight="700" fill="#d97706">Lượng Máu Mất / Thể Tích Tuần Hoàn?</text>
+      <text x="470" y="144" text-anchor="middle" font-size="10" font-weight="600" fill="#64748b">Phân độ sốc giảm thể tích theo ATLS</text>
+
+      {/*  */}
+      <path d="M 290 132 L 180 132 L 180 188" fill="none" stroke="#059669" stroke-width="2" marker-end="url(#sc-arr-green)" />
+      <rect x="120" y="140" width="120" height="22" rx="4" fill="#ffffff" stroke="#059669" stroke-width="0.8" />
+      <text x="180" y="155" text-anchor="middle" font-size="10" font-weight="700" fill="#059669">&lt; 1 Lít (&lt; 20% TBV)</text>
+
+      {/*  */}
+      <rect x="40" y="190" width="380" height="160" rx="12" fill="rgba(16, 185, 129, 0.06)" stroke="#059669" stroke-width="2" />
+      <text x="230" y="216" text-anchor="middle" font-size="13" font-weight="800" fill="#059669">PHẢN HỒI ÂM TÍNH: BÙ TRỪ HIỆU QUẢ</text>
+      <text x="60" y="240" font-size="11" font-weight="600" fill="#334155">• Thụ thể áp lực Baroreceptors khử ức chế giao cảm</text>
+      <text x="60" y="260" font-size="11" font-weight="600" fill="#334155">• Co mạch ngoại vi chọn lọc (da, cơ, tạng bụng) để ưu tiên não-tim</text>
+      <text x="60" y="280" font-size="11" font-weight="600" fill="#334155">• Tăng nhịp tim + co bóp cơ tim duy trì Huyết áp tâm thu &gt; 90</text>
+      <text x="60" y="300" font-size="11" font-weight="600" fill="#334155">• Kích hoạt hệ RAA &amp; ADH giữ muối nước tại ống thận</text>
+      <text x="230" y="332" text-anchor="middle" font-size="12" font-weight="700" fill="#059669">TIÊN LƯỢNG: TỰ HỒI PHỤC HOÀN TOÀN</text>
+
+      {/*  */}
+      <path d="M 650 132 L 760 132 L 760 188" fill="none" stroke="#dc2626" stroke-width="2" marker-end="url(#sc-arr-red)" />
+      <rect x="700" y="140" width="120" height="22" rx="4" fill="#ffffff" stroke="#dc2626" stroke-width="0.8" />
+      <text x="760" y="155" text-anchor="middle" font-size="10" font-weight="700" fill="#dc2626">&ge; 1.5 Lít (&gt; 30% TBV)</text>
+
+      {/*  */}
+      <rect x="520" y="190" width="380" height="160" rx="12" fill="rgba(239, 68, 68, 0.06)" stroke="#dc2626" stroke-width="2" />
+      <text x="710" y="216" text-anchor="middle" font-size="13" font-weight="800" fill="#dc2626">PHẢN HỒI DƯƠNG TÍNH: VÒNG XOẮN TỬ VONG</text>
+      <text x="540" y="240" font-size="11" font-weight="600" fill="#334155">• Tụt HA sâu (&lt; 60 mmHg) vượt ngưỡng bù trừ của Baroreceptor</text>
+      <text x="540" y="260" font-size="11" font-weight="600" fill="#dc2626">• Giảm tưới máu ĐM vành ──► Cơ tim thiếu oxy &amp; toan lactic</text>
+      <text x="540" y="280" font-size="11" font-weight="600" fill="#dc2626">• Sức co bóp tim suy sụp ──► Cung lượng tim tiếp tục tụt sâu</text>
+      <text x="540" y="300" font-size="11" font-weight="600" fill="#334155">• Thiếu máu mô toàn thân ──► Toan chuyển hóa, đông máu nội mạch</text>
+      <text x="710" y="332" text-anchor="middle" font-size="12" font-weight="700" fill="#dc2626">TỬ VONG SAU VÀI GIỜ NẾU KHÔNG HỒI SỨC TRUYỀN MÁU</text>
     </svg>
+  </div>
+  <div class="flowchart-editorial-legend">
+    <span class="flowchart-legend-item"><span class="legend-dot green"></span> &lt; 20% TBV: Cơ chế phản hồi âm tính cứu sống bệnh nhân</span>
+    <span class="flowchart-legend-item"><span class="legend-dot red"></span> &gt; 30% TBV: Vòng xoắn phản hồi dương tính gây sốc mất bù tử vong</span>
   </div>
 </div>
 

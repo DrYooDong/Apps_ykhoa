@@ -51,24 +51,31 @@ sections:
 
 <PhysioQuickNav />
 
+<div class="module-badge-group">
+  <span class="badge badge-system"><i class="fa-solid fa-droplet"></i> Sinh Lý Thận & Thể Dịch</span>
+  <span class="badge badge-source"><i class="fa-solid fa-book-bookmark"></i> Guyton 14th Ch. 25 & 29 • Ganong 26th Ch. 37-38</span>
+  <span class="badge badge-level"><i class="fa-solid fa-layer-group"></i> Y Khoa Cơ Sở • Module Thận</span>
+  <span class="badge badge-evidence"><i class="fa-solid fa-certificate"></i> EBM 2026 • Rối Loạn Thể Dịch</span>
+</div>
+
 {/* DẢI CHỈ SỐ NHANH (QUICK STATS STRIP) */}
-<section class="stats-strip">
+<section class="stats-strip theme-physio">
   <div class="stats-grid">
     <div class="stat-card">
-      <div class="stat-val blue">PHYS-REN-03</div>
-      <div class="stat-lbl">Mã chuyên đề • Sinh Lý Thận & Thể Dịch</div>
+      <div class="stat-val blue">60 <span class="stat-unit">%</span></div>
+      <div class="stat-lbl">Tổng Nước Cơ Thể (TBW) • 42 Lít ở người 70 kg</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val green">Nội Môi Ổn Định</div>
-      <div class="stat-lbl">Cân bằng gradient điện hóa & Áp suất thẩm thấu</div>
+      <div class="stat-val green">60 - 40 - 20</div>
+      <div class="stat-lbl">Phân Bố Khoang Thể Dịch • TBW (60%) : ICF (40%) : ECF (20%)</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val amber">Feedback Loop</div>
-      <div class="stat-lbl">Vòng điều hòa phản hồi thần kinh - thể dịch</div>
+      <div class="stat-val amber">1,200 <span class="stat-unit">mOsm/kg</span></div>
+      <div class="stat-lbl">Độ Ưu Trương Tủy Sâu • Nhân nồng độ ngược dòng</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val purple">Dược Lý EBM</div>
-      <div class="stat-lbl">Ứng dụng lâm sàng chuẩn Guyton 14th & Ganong 26th</div>
+      <div class="stat-val purple">280 - 295 <span class="stat-unit">mOsm</span></div>
+      <div class="stat-lbl">Áp Suất Thẩm Thấu Máu • Độ nhạy ADH kích hoạt khi Δ 1%</div>
     </div>
   </div>
 </section>
@@ -78,60 +85,81 @@ sections:
 ## 1. Các Khoang Thể Dịch (Quy Tắc 60-40-20)
 Tổng lượng nước cơ thể (*Total Body Water - TBW*) chiếm trung bình **60% trọng lượng cơ thể** ở nam giới trưởng thành (khoảng **$42\text{ Lít}$** ở người 70 kg):
 
-
 <div class="flowchart-card">
   <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: TỔNG LƯỢNG NƯỚC CƠ THỂ (TBW = 60% = 42 LÍT)</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+    <div class="flowchart-title"><i class="fa-solid fa-chart-pie" style="color: var(--color-primary, #0284c7);"></i> KIẾN TRÚC PHÂN BỐ CÁC KHOANG THỂ DỊCH TRONG CƠ THỂ (QUY TẮC 60 - 40 - 20)</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG • Guyton & Hall</span>
   </div>
   <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 338" width="880" height="338" xmlns="http://www.w3.org/2000/svg">
+    <svg class="flowchart-svg" viewBox="0 0 920 310" width="920" height="310" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="tbwBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
         </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="tbwGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
-        </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
         </marker>
       </defs>
 
-      {/* Single Node: TỔNG LƯỢNG NƯỚC CƠ THỂ (TBW =  */}
-      <rect x="205" y="20" width="470" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">TỔNG LƯỢNG NƯỚC CƠ THỂ (TBW = 60% = 42 LÍT)</text>
-      {/* Bifurcation Path */}
-      <path d="M 440 66 L 440 80 L 235 80 L 235 94" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      <path d="M 440 80 L 645 80 L 645 94" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Left Column: DỊCH NỘI BÀO (ICF = 2/3 TBW =  */}
-      <rect x="40" y="94" width="390" height="206" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="235" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">DỊCH NỘI BÀO (ICF = 2/3 TBW = 40%</text>
-      <text x="235" y="134" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">= 28 LÍT)</text>
-      <line x1="60" y1="148" x2="410" y2="148" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="60" y="164" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Nằm bên trong tất cả các t</text>
-      <text x="60" y="182" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Cation chính: K+, Mg2+</text>
-      <text x="60" y="200" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Anion chính: Phosphate (P</text>
-      {/* Right Column: DỊCH NGOẠI BÀO (ECF = 1/3 TBW  */}
-      <rect x="450" y="94" width="390" height="206" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="645" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">DỊCH NGOẠI BÀO (ECF = 1/3 TBW =</text>
-      <text x="645" y="134" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">20% = 14 LÍT)</text>
-      <line x1="470" y1="148" x2="820" y2="148" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="470" y="164" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ế bào</text>
-      <text x="470" y="182" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ├──► Dịch Kẽ (Interstitial: 3/4 ECF =</text>
-      <text x="470" y="200" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  15% = 10.5 Lít)</text>
-      <text x="470" y="218" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• O4 3-), Protein</text>
-      <text x="470" y="236" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• └──► Huyết Tương (Plasma: 1/4 ECF = 5%</text>
-      <text x="470" y="254" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  = 3.5 Lít)</text>
-      <text x="470" y="272" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Cation chính: Na+; Anion chính: Cl-,</text>
-      <text x="470" y="290" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  HCO3-</text>
+      {/* Top Banner: TBW */}
+      <rect x="40" y="16" width="840" height="42" rx="10" fill="var(--color-primary, #0284c7)" opacity="0.12"/>
+      <rect x="40" y="16" width="840" height="42" rx="10" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+      <text x="460" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="13" fill="var(--color-primary, #0284c7)">TỔNG LƯỢNG NƯỚC CƠ THỂ (TOTAL BODY WATER - TBW) = 60% TRỌNG LƯỢNG = 42 LÍT</text>
+
+      {/* Connecting bifurcations */}
+      <path d="M 460 58 L 460 76 L 245 76 L 245 94" fill="none" stroke="#0284c7" stroke-width="2" marker-end="url(#tbwBlue)"/>
+      <path d="M 460 76 L 675 76 L 675 94" fill="none" stroke="#059669" stroke-width="2" marker-end="url(#tbwGreen)"/>
+
+      {/* Column 1: Dịch Nội Bào ICF */}
+      <g transform="translate(40, 94)">
+        <rect x="0" y="0" width="410" height="190" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="#0284c7" stroke-width="1.8"/>
+        <rect x="0" y="0" width="410" height="34" rx="10" fill="#0284c7" opacity="0.15"/>
+        <text x="205" y="22" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#0284c7">DỊCH NỘI BÀO (ICF) • 2/3 TBW = 40% = 28 LÍT</text>
+
+        <text x="20" y="58" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">• Vị trí:</text>
+        <text x="35" y="76" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">Nằm bên trong màng tế bào của 37 nghìn tỷ tế bào cơ thể</text>
+
+        <text x="20" y="104" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">• Cation ưu thế tuyệt đối:</text>
+        <text x="35" y="122" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="#0284c7">K+ (~140 - 150 mmol/L) và Mg2+</text>
+
+        <text x="20" y="150" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">• Anion ưu thế:</text>
+        <text x="35" y="168" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">Gốc Phosphate vô cơ (HPO4 2-) và Protein nội bào tích điện âm</text>
+      </g>
+
+      {/* Column 2: Dịch Ngoại Bào ECF */}
+      <g transform="translate(470, 94)">
+        <rect x="0" y="0" width="410" height="190" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="#059669" stroke-width="1.8"/>
+        <rect x="0" y="0" width="410" height="34" rx="10" fill="#059669" opacity="0.15"/>
+        <text x="205" y="22" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#059669">DỊCH NGOẠI BÀO (ECF) • 1/3 TBW = 20% = 14 LÍT</text>
+
+        {/* Sub-box 1: Interstitial */}
+        <rect x="15" y="44" width="180" height="74" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="#059669" stroke-width="1.2"/>
+        <text x="105" y="62" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10.5" fill="#059669">DỊCH KẼ (ISF)</text>
+        <text x="105" y="78" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">3/4 ECF = 15%</text>
+        <text x="105" y="94" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#059669">10.5 Lít</text>
+        <text x="105" y="108" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" fill="var(--color-text-muted, #475569)">Không có protein</text>
+
+        {/* Sub-box 2: Plasma */}
+        <rect x="215" y="44" width="180" height="74" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="#d97706" stroke-width="1.2"/>
+        <text x="305" y="62" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10.5" fill="#d97706">HUYẾT TƯƠNG</text>
+        <text x="305" y="78" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">1/4 ECF = 5%</text>
+        <text x="305" y="94" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#d97706">3.5 Lít</text>
+        <text x="305" y="108" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" fill="var(--color-text-muted, #475569)">Giàu Albumin</text>
+
+        <text x="20" y="142" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">• Cation ưu thế:</text>
+        <text x="120" y="142" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="#059669">Na+ (~140 mmol/L)</text>
+
+        <text x="20" y="168" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">• Anion ưu thế:</text>
+        <text x="120" y="168" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">Cl- (~103 mmol/L) & HCO3- (~24 mmol/L)</text>
+      </g>
     </svg>
   </div>
+  <div class="flowchart-editorial-legend">
+    <div class="legend-item"><span class="legend-dot" style="background:#0284c7;"></span><span>Dịch nội bào ICF (2/3 TBW • Giàu K+, Mg2+, Phosphate)</span></div>
+    <div class="legend-item"><span class="legend-dot" style="background:#059669;"></span><span>Dịch kẽ ISF (3/4 ECF • Đệm gian bào)</span></div>
+    <div class="legend-item"><span class="legend-dot" style="background:#d97706;"></span><span>Huyết tương Plasma (1/4 ECF • Thể tích nội mạch hoạt động)</span></div>
+  </div>
 </div>
-
 
 ---
 
@@ -143,121 +171,168 @@ $$\text{Posm ước tính} = 2[Na^+] + \frac{\text{Glucose (mg/dL)}}{18} + \frac
 - **Trung Tâm Khát & Thụ Thể Thẩm Thấu (Osmoreceptors)**: Nằm tại vùng quanh não thất của Vùng Hạ Đồi (OVLT và SFO).
 - **Độ nhạy cực cao**: Chỉ cần áp suất thẩm thấu máu tăng **1%** (hoặc Natri tăng $2\text{ mmol/L}$) đã kích hoạt phản xạ khát đòi uống nước và kích thích tuyến yên tiết **Hormone ADH**.
 
-
 ---
 
 ## 3. Hệ Thống Ngược Dòng Nhân Nồng Độ Tủy Thận
 Khả năng cô đặc nước tiểu tối đa lên tới **$1.200 – 1.400\text{ mOsm/kg}$** (gấp 4 lần máu) phụ thuộc vào **Độ ưu trương của dịch kẽ tủy thận**:
 
-
 <div class="flowchart-card">
   <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: VỎ THẬN: 300 mOsm/kg</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+    <div class="flowchart-title"><i class="fa-solid fa-arrows-split-up-and-left" style="color: var(--color-primary, #0284c7);"></i> CƠ CHẾ NHÂN NỒNG ĐỘ NGƯỢC DÒNG (QUAI HENLE) & TRAO ĐỔI NGƯỢC DÒNG (VASA RECTA)</div>
+    <span class="badge badge-amber">Pure Orthogonal SVG • Medullary Osmotic Gradient</span>
   </div>
   <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 304" width="880" height="304" xmlns="http://www.w3.org/2000/svg">
+    <svg class="flowchart-svg" viewBox="0 0 920 320" width="920" height="320" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="medBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
         </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
-        </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="medAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
         </marker>
       </defs>
 
-      {/* Single Node: VỎ THẬN: 300 mOsm/kg */}
-      <rect x="250" y="20" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">VỎ THẬN: 300 mOsm/kg</text>
-      {/* Bifurcation Path */}
-      <path d="M 440 66 L 440 80 L 235 80 L 235 94" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      <path d="M 440 80 L 645 80 L 645 94" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Left Column: NHÁNH XUỐNG QUAI HENLE */}
-      <rect x="40" y="94" width="390" height="98" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="235" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">NHÁNH XUỐNG QUAI HENLE</text>
-      <line x1="60" y1="130" x2="410" y2="130" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="60" y="146" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Chỉ thấm NƯỚC (Hút nước</text>
-      <text x="60" y="164" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Dịch lọc cô đặc dần:</text>
-      <text x="60" y="182" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• 300 ──► 600 ──► 900 mOsm</text>
-      {/* Right Column: NHÁNH LÊN DÀY QUAI HENLE (TAL) */}
-      <rect x="450" y="94" width="390" height="98" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="645" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">NHÁNH LÊN DÀY QUAI HENLE (TAL)</text>
-      <line x1="470" y1="130" x2="820" y2="130" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="470" y="146" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ra) • HOÀN TOÀN KHÔNG THẤM NƯỚC</text>
-      <text x="470" y="164" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Bơm tích cực Na+, K+, 2Cl- qua NKCC2</text>
-      <text x="470" y="182" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ra dịch kẽ tủy tạo độ ưu trương</text>
-      <line x1="440" y1="192" x2="440" y2="220" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: TỦY THẬN SÂU: 1.200 mOsm/kg */}
-      <rect x="250" y="220" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="242" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">TỦY THẬN SÂU: 1.200 mOsm/kg</text>
+      {/* 3 Pillars */}
+      {/* Pillar 1: Quai Henle */}
+      <g transform="translate(30, 20)">
+        <rect x="0" y="0" width="270" height="230" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="#0284c7" stroke-width="1.8"/>
+        <rect x="0" y="0" width="270" height="36" rx="10" fill="#0284c7" opacity="0.15"/>
+        <text x="135" y="23" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="#0284c7">1. QUAI HENLE (NHÂN NỒNG ĐỘ)</text>
+
+        <text x="15" y="60" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">Countercurrent Multiplier:</text>
+        <text x="25" y="80" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Nhánh lên TAL bơm tích cực</text>
+        <text x="35" y="98" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">muối NaCl ra ngoài qua NKCC2</text>
+        <text x="25" y="120" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Tạo gradient ngang: 200 mOsm</text>
+        <text x="25" y="142" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Dòng chảy dịch lọc liên tục</text>
+        <text x="35" y="160" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">nhân gradient theo chiều dọc:</text>
+        <text x="25" y="184" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#d97706">► 300 (Vỏ) → 1.200 mOsm (Tủy)</text>
+        <text x="25" y="208" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Đóng góp 50% độ ưu trương tủy</text>
+      </g>
+
+      {/* Pillar 2: Tái tuần hoàn Urê */}
+      <g transform="translate(325, 20)">
+        <rect x="0" y="0" width="270" height="230" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="#d97706" stroke-width="1.8"/>
+        <rect x="0" y="0" width="270" height="36" rx="10" fill="#d97706" opacity="0.15"/>
+        <text x="135" y="23" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="#d97706">2. TUẦN HOÀN URÊ (UREA RECYCLING)</text>
+
+        <text x="15" y="60" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">Ống góp tủy trong (IMCD):</text>
+        <text x="25" y="80" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• ADH kích hoạt kênh UT-A1/A3</text>
+        <text x="25" y="102" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Tái hấp thu Urê ồ ạt ra kẽ tủy</text>
+        <text x="25" y="124" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Urê khuếch tán vào quai Henle</text>
+        <text x="35" y="142" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">và tuần hoàn trở lại ống góp</text>
+        <text x="25" y="168" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#d97706">► Đóng góp 50% còn lại</text>
+        <text x="35" y="186" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">cho độ thẩm thấu tủy sâu</text>
+        <text x="25" y="210" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="#dc2626">Suy dinh dưỡng thiếu đạm: Giảm cô đặc</text>
+      </g>
+
+      {/* Pillar 3: Vasa Recta */}
+      <g transform="translate(620, 20)">
+        <rect x="0" y="0" width="270" height="230" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="#059669" stroke-width="1.8"/>
+        <rect x="0" y="0" width="270" height="36" rx="10" fill="#059669" opacity="0.15"/>
+        <text x="135" y="23" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="#059669">3. VASA RECTA (TRAO ĐỔI THỤ ĐỘNG)</text>
+
+        <text x="15" y="60" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">Countercurrent Exchanger:</text>
+        <text x="25" y="80" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Dòng máu chảy cực chậm (&lt;5% RBF)</text>
+        <text x="25" y="102" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Mạch uốn hình chữ U sâu vào tủy</text>
+        <text x="25" y="124" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Nhận nước từ nhánh xuống</text>
+        <text x="25" y="146" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Trả lại muối vào kẽ tủy</text>
+        <text x="25" y="172" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#059669">► Bảo toàn gradient ưu trương</text>
+        <text x="35" y="190" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Không làm rửa trôi (washout) muối tủy</text>
+      </g>
+
+      {/* Bottom Summary Strip */}
+      <rect x="30" y="265" width="860" height="42" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="#0284c7" stroke-width="1.5"/>
+      <text x="460" y="284" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="#0284c7">ĐỘ ƯU TRƯƠNG TỦY THẬN 1.200 mOsm/kg LÀ NỀN TẢNG CHO ADH HÚT NƯỚC TỰ DO VÀO MÁU</text>
+      <text x="460" y="299" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">Nếu mất gradient tủy (như dùng Lợi tiểu quai Furosemide liều cao) → Thận mất hoàn toàn khả năng cô đặc nước tiểu</text>
     </svg>
+  </div>
+  <div class="flowchart-editorial-legend">
+    <div class="legend-item"><span class="legend-dot" style="background:#0284c7;"></span><span>Quai Henle: Bơm NaCl nhân nồng độ (Multiplier)</span></div>
+    <div class="legend-item"><span class="legend-dot" style="background:#d97706;"></span><span>Tuần hoàn Urê: Đóng góp 50% độ thẩm thấu tủy sâu</span></div>
+    <div class="legend-item"><span class="legend-dot" style="background:#059669;"></span><span>Vasa Recta: Trao đổi thụ động bảo tồn gradient (Exchanger)</span></div>
   </div>
 </div>
 
-- **Mạng Mạch Thẳng Vasa Recta**: Máu chảy chậm hình chữ U theo cơ chế **Trao đổi ngược dòng (Countercurrent Exchanger)**, lấy đi lượng nước thẩm thấu mà không làm rửa trôi các ion muối $NaCl$ và Urê khỏi tủy thận.
-
+- **Mạng Mạng Mạch Thẳng Vasa Recta**: Máu chảy chậm hình chữ U theo cơ chế **Trao đổi ngược dòng (Countercurrent Exchanger)**, lấy đi lượng nước thẩm thấu mà không làm rửa trôi các ion muối $NaCl$ và Urê khỏi tủy thận.
 
 ---
 
 ## 4. Cơ Chế Tác Dụng Của Hormone ADH
 ADH do nhân trên thị và nhân cạnh não thất vùng Hạ đồi tổng hợp, dự trữ và bài tiết từ **Thùy sau Tuyến yên**:
 
-
 <div class="flowchart-card">
   <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: ÁP SUẤT THẨM THẤU MÁU TĂNG / THỂ TÍCH MÁU GIẢM</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+    <div class="flowchart-title"><i class="fa-solid fa-faucet-drip" style="color: var(--color-primary, #0284c7);"></i> CHU TRÌNH TRUYỀN TIN PHÂN TỬ CỦA ADH (VASOPRESSIN) TẠI TẾ BÀO ỐNG GÓP</div>
+    <span class="badge badge-purple">Pure Orthogonal SVG • Intracellular Signaling</span>
   </div>
   <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 516" width="880" height="516" xmlns="http://www.w3.org/2000/svg">
+    <svg class="flowchart-svg" viewBox="0 0 920 280" width="920" height="280" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="adhBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
         </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="adhGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
-        </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
         </marker>
       </defs>
 
-      {/* Single Node: ÁP SUẤT THẨM THẤU MÁU TĂNG / T */}
-      <rect x="190" y="20" width="500" height="46" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">ÁP SUẤT THẨM THẤU MÁU TĂNG / THỂ TÍCH MÁU GIẢM</text>
-      <line x1="440" y1="66" x2="440" y2="94" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: Gắn vào Thụ Thể V2 trên Màng Đ */}
-      <rect x="165" y="94" width="550" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Gắn vào Thụ Thể V2 trên Màng Đáy Bên Tế Bào Ống Góp</text>
-      <line x1="440" y1="140" x2="440" y2="168" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: Kích hoạt Protein Gs ──► Tăng  */}
-      <rect x="145" y="168" width="590" height="60" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
-      <text x="440" y="190" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">Kích hoạt Protein Gs ──► Tăng cAMP ──► Hoạt hóa Protein</text>
-      <text x="440" y="208" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--amber, #d97706)">Kinase A (PKA)</text>
-      <line x1="440" y1="228" x2="440" y2="256" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: Chèn hàng loạt Bọc chứa KÊNH A */}
-      <rect x="150" y="256" width="580" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="278" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Chèn hàng loạt Bọc chứa KÊNH AQUAPORIN-2 lên Màng Đỉnh</text>
-      <line x1="440" y1="302" x2="440" y2="330" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: NƯỚC TỰ DO TỪ NƯỚC TIỂU BỊ HÚT */}
-      <rect x="155" y="330" width="570" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="352" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">NƯỚC TỰ DO TỪ NƯỚC TIỂU BỊ HÚT Ồ ẠT VỀ DỊCH KẼ TỦY ƯU</text>
-      <text x="440" y="370" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--color-text, #0f172a)">TRƯƠNG ──► VỀ MÁU</text>
-      <line x1="440" y1="390" x2="440" y2="418" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: NƯỚC TIỂU CÔ ĐẶC TỐI ĐA (1.200 */}
-      <rect x="150" y="418" width="580" height="60" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
-      <text x="440" y="440" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">NƯỚC TIỂU CÔ ĐẶC TỐI ĐA (1.200 mOsm) - LƯỢNG NƯỚC TIỂU</text>
-      <text x="440" y="458" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--amber, #d97706)">GIẢM XUỐNG 0.5 LÍT/NGÀY</text>
+      {/* 4 Steps Horizontal */}
+      {/* Step 1 */}
+      <g transform="translate(30, 20)">
+        <rect x="0" y="0" width="190" height="150" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
+        <text x="95" y="28" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="var(--amber, #d97706)">BƯỚC 1: KÍCH THÍCH</text>
+        <text x="15" y="58" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">Posm tăng &gt; 295 mOsm</text>
+        <text x="15" y="78" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">hoặc Thể tích máu sụt</text>
+        <text x="15" y="102" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">► Hạ đồi kích hoạt</text>
+        <text x="15" y="122" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#0284c7">Tuyến yên tiết ADH</text>
+      </g>
+
+      <line x1="220" y1="95" x2="250" y2="95" stroke="#0284c7" stroke-width="2" marker-end="url(#adhBlue)"/>
+
+      {/* Step 2 */}
+      <g transform="translate(250, 20)">
+        <rect x="0" y="0" width="190" height="150" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="#0284c7" stroke-width="1.8"/>
+        <text x="95" y="28" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#0284c7">BƯỚC 2: GẮN THỤ THỂ</text>
+        <text x="15" y="58" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">Thụ Thể V2 Màng Đáy</text>
+        <text x="15" y="78" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">Gắn vào tế bào chính</text>
+        <text x="15" y="102" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">► Hoạt hóa Gs Protein</text>
+        <text x="15" y="122" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="10" fill="#dc2626">Đích: Vaptans chẹn V2</text>
+      </g>
+
+      <line x1="440" y1="95" x2="470" y2="95" stroke="#0284c7" stroke-width="2" marker-end="url(#adhBlue)"/>
+
+      {/* Step 3 */}
+      <g transform="translate(470, 20)">
+        <rect x="0" y="0" width="190" height="150" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="#d97706" stroke-width="1.8"/>
+        <text x="95" y="28" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#d97706">BƯỚC 3: TRUYỀN TIN</text>
+        <text x="15" y="58" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">Tăng cAMP Nội Bào</text>
+        <text x="15" y="78" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">Kích hoạt Protein Kinase A</text>
+        <text x="15" y="102" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">Phosphoryl hóa bọc dự trữ</text>
+        <text x="15" y="122" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10.5" fill="#d97706">Aquaporin-2 nội bào</text>
+      </g>
+
+      <line x1="660" y1="95" x2="690" y2="95" stroke="#0284c7" stroke-width="2" marker-end="url(#adhBlue)"/>
+
+      {/* Step 4 */}
+      <g transform="translate(690, 20)">
+        <rect x="0" y="0" width="200" height="150" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="#059669" stroke-width="1.8"/>
+        <text x="100" y="28" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#059669">BƯỚC 4: HIỆU ỨNG TẬN</text>
+        <text x="15" y="58" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#059669">Chèn Aquaporin-2</text>
+        <text x="15" y="78" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">lên Màng Đỉnh (Apical)</text>
+        <text x="15" y="102" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#059669">HÚT NƯỚC TỰ DO VÀO MÁU</text>
+        <text x="15" y="122" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Nước tiểu cô đặc 1200 mOsm</text>
+      </g>
+
+      {/* Bottom Summary */}
+      <rect x="30" y="195" width="860" height="50" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="#059669" stroke-width="2"/>
+      <text x="460" y="218" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#059669">KẾT QUẢ ĐIỀU HÒA: KHÔI PHỤC THỂ TÍCH MÁU & HẠ ÁP SUẤT THẨM THẤU VỀ 285 mOsm/kg</text>
+      <text x="460" y="235" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">Thiếu ADH (Đái tháo nhạt): Nước tiểu pha loãng &lt;100 mOsm, tiểu 10-20 L/ngày • Thừa ADH (SIADH): Giữ nước gây hạ Natri máu nặng</text>
     </svg>
+  </div>
+  <div class="flowchart-editorial-legend">
+    <div class="legend-item"><span class="legend-dot" style="background:#f59e0b;"></span><span>Kích thích thẩm thấu hoặc thể tích</span></div>
+    <div class="legend-item"><span class="legend-dot" style="background:#0284c7;"></span><span>Thụ thể V2 & Dòng truyền tin cAMP/PKA</span></div>
+    <div class="legend-item"><span class="legend-dot" style="background:#059669;"></span><span>Kênh Aquaporin-2 hút nước tự do vào máu</span></div>
   </div>
 </div>
 

@@ -44,26 +44,33 @@ sections:
 
 # 🧬 SINH LÝ TĂNG TRƯỞNG & PHÁT TRIỂN THỂ CHẤT NHI KHOA
 
+<div class="module-badge-group">
+  <span class="badge badge-purple"><i class="fa-solid fa-book-medical"></i> GP-SL Part 9 • Nhi Khoa</span>
+  <span class="badge badge-blue"><i class="fa-solid fa-child"></i> Tăng Trưởng Cân Nặng &amp; Chiều Cao</span>
+  <span class="badge badge-green"><i class="fa-solid fa-person-walking"></i> Mốc Tâm Thần Vận Động</span>
+  <span class="badge badge-amber"><i class="fa-solid fa-arrow-up-right-dots"></i> Dậy Thì Thang Điểm Tanner</span>
+</div>
+
 <PhysioQuickNav />
 
 {/* DẢI CHỈ SỐ NHANH (QUICK STATS STRIP) */}
-<section class="stats-strip">
+<section class="stats-strip theme-physio">
   <div class="stats-grid">
     <div class="stat-card">
-      <div class="stat-val blue">PHYS-PED-01</div>
-      <div class="stat-lbl">Mã chuyên đề • Sinh Lý Học Nhi Khoa</div>
+      <div class="stat-val blue">x2 lúc 5m • x3 lúc 1y</div>
+      <div class="stat-lbl">Cân nặng tăng gấp đôi lúc 5 tháng (~6kg), gấp 3 lúc 1 tuổi (~9kg)</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val green">Nội Môi Ổn Định</div>
-      <div class="stat-lbl">Cân bằng gradient điện hóa & Áp suất thẩm thấu</div>
+      <div class="stat-val green">100 cm lúc 4y</div>
+      <div class="stat-lbl">Chiều cao đạt 1 mét (gấp đôi sơ sinh 50 cm) lúc tròn 4 tuổi</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val amber">Feedback Loop</div>
-      <div class="stat-lbl">Vòng điều hòa phản hồi thần kinh - thể dịch</div>
+      <div class="stat-val amber">Thóp 12 – 18m</div>
+      <div class="stat-lbl">Thóp sau đóng lúc 2 tháng • Thóp trước đóng lúc 12–18 tháng</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val purple">Dược Lý EBM</div>
-      <div class="stat-lbl">Ứng dụng lâm sàng chuẩn Guyton 14th & Ganong 26th</div>
+      <div class="stat-val purple">Tanner 1 ➔ 5</div>
+      <div class="stat-lbl">Bé gái: Nhú vú Thelarche ➔ Có kinh Menarche sau 2–2.5 năm</div>
     </div>
   </div>
 </section>
@@ -71,24 +78,78 @@ sections:
 ---
 
 ## 1. Quy Luật Tăng Trưởng Thể Chất
-Trẻ em không phải là người lớn thu nhỏ mà là một cơ thể đang phát triển không ngừng với tốc độ phi tuyến tính:
+Trẻ em không phải là người lớn thu nhỏ mà là một cơ thể đang phát triển không ngừng với tốc độ phi tuyến tính theo từng giai đoạn lứa tuổi:
 
-```
-[1. CÂN NẶNG]:
-  • Sơ sinh đủ tháng: 3.0 – 3.2 kg (Có sụt cân sinh lý < 10% trong 7 ngày đầu, lấy lại cân sau 10 - 14 ngày).
-  • 4 – 5 tháng tuổi: GẤP ĐÔI cân sơ sinh (~6.0 kg).
-  • 1 tuổi: GẤP BA cân sơ sinh (~9.0 – 10.0 kg).
-  • 2 tuổi: GẤP BỐN cân sơ sinh (~12.0 kg).
-  • Công thức tính cân nặng trẻ 1 – 10 tuổi: Cân nặng (kg) = 9 + 2(N - 1) (N là số tuổi).
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title">
+      <i class="fa-solid fa-child" style="color: var(--color-primary, #0284c7);"></i>
+      SƠ ĐỒ QUY LUẬT TĂNG TRƯỞNG CÂN NẶNG &amp; CHIỀU CAO THEO TUỔI (WHO)
+    </div>
+    <span class="badge badge-blue">Growth Trajectory</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 920 250" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+      {/* Weight Row */}
+      <rect x="20" y="20" width="880" height="100" rx="12" fill="var(--color-surface-2, #f8fafc)" stroke="#0284c7" stroke-width="1.8"/>
+      <rect x="20" y="20" width="150" height="100" rx="12" fill="var(--color-primary-light, #e0f2fe)"/>
+      <text x="95" y="62" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="13" fill="#0284c7">CÂN NẶNG</text>
+      <text x="95" y="82" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">Quy tắc x2, x3, x4</text>
 
-[2. CHIỀU CAO / CHIỀU DÀI NẰM]:
-  • Sơ sinh: ~50 cm.
-  • Năm đầu tiên (+25 cm): 1 tuổi đạt ~75 cm.
-  • 4 tuổi: ĐẠT 100 cm (1 mét - GẤP ĐÔI chiều dài lúc sinh).
-  • Từ 4 tuổi đến trước dậy thì: Tăng đều đặn 5 – 6 cm/năm.
-  • Công thức tính chiều cao trẻ > 4 tuổi: Chiều cao (cm) = 100 + 5(N - 4).
-```
+      {/* Weight Milestones */}
+      <text x="210" y="50" font-family="'Plus Jakarta Sans', font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">SƠ SINH</text>
+      <text x="210" y="74" font-family="'Plus Jakarta Sans', font-weight="800" font-size="16" fill="#0284c7">3.0 – 3.2 kg</text>
+      <text x="210" y="94" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Sụt cân SL &lt; 10% (7 ngày)</text>
 
+      <line x1="340" y1="35" x2="340" y2="105" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+
+      <text x="375" y="50" font-family="'Plus Jakarta Sans', font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">4 – 5 THÁNG</text>
+      <text x="375" y="74" font-family="'Plus Jakarta Sans', font-weight="800" font-size="16" fill="#0284c7">GẤP ĐÔI (~6 kg)</text>
+      <text x="375" y="94" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Tăng 750g/tháng</text>
+
+      <line x1="510" y1="35" x2="510" y2="105" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+
+      <text x="545" y="50" font-family="'Plus Jakarta Sans', font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">1 TUỔI</text>
+      <text x="545" y="74" font-family="'Plus Jakarta Sans', font-weight="800" font-size="16" fill="#0284c7">GẤP BA (~9–10 kg)</text>
+      <text x="545" y="94" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Tốc độ chậm lại</text>
+
+      <line x1="685" y1="35" x2="685" y2="105" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+
+      <text x="715" y="50" font-family="'Plus Jakarta Sans', font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">CÔNG THỨC 1–10 TUỔI</text>
+      <text x="715" y="74" font-family="'Plus Jakarta Sans', font-weight="800" font-size="14" fill="#059669">W = 9 + 2(N - 1) kg</text>
+      <text x="715" y="94" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">N là số tuổi thực tế</text>
+
+      {/* Height Row */}
+      <rect x="20" y="135" width="880" height="100" rx="12" fill="var(--color-surface-2, #f8fafc)" stroke="#059669" stroke-width="1.8"/>
+      <rect x="20" y="135" width="150" height="100" rx="12" fill="var(--green-bg, #ecfdf5)"/>
+      <text x="95" y="177" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="13" fill="#059669">CHIỀU CAO</text>
+      <text x="95" y="197" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">Chiều dài nằm / đứng</text>
+
+      {/* Height Milestones */}
+      <text x="210" y="165" font-family="'Plus Jakarta Sans', font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">SƠ SINH</text>
+      <text x="210" y="189" font-family="'Plus Jakarta Sans', font-weight="800" font-size="16" fill="#059669">~50 cm</text>
+      <text x="210" y="209" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Chiều dài trung bình</text>
+
+      <line x1="340" y1="150" x2="340" y2="220" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+
+      <text x="375" y="165" font-family="'Plus Jakarta Sans', font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">1 TUỔI</text>
+      <text x="375" y="189" font-family="'Plus Jakarta Sans', font-weight="800" font-size="16" fill="#059669">~75 cm (+25 cm)</text>
+      <text x="375" y="209" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Năm tăng trưởng nhanh nhất</text>
+
+      <line x1="510" y1="150" x2="510" y2="220" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+
+      <text x="545" y="165" font-family="'Plus Jakarta Sans', font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">4 TUỔI</text>
+      <text x="545" y="189" font-family="'Plus Jakarta Sans', font-weight="800" font-size="16" fill="#059669">100 cm (1 MÉT)</text>
+      <text x="545" y="209" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">GẤP ĐÔI chiều dài sơ sinh</text>
+
+      <line x1="685" y1="150" x2="685" y2="220" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+
+      <text x="715" y="165" font-family="'Plus Jakarta Sans', font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">CÔNG THỨC &gt; 4 TUỔI</text>
+      <text x="715" y="189" font-family="'Plus Jakarta Sans', font-weight="800" font-size="14" fill="#0284c7">H = 100 + 5(N - 4) cm</text>
+      <text x="715" y="209" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Tăng đều 5–6 cm/năm</text>
+    </svg>
+  </div>
+</div>
 
 ---
 
@@ -97,7 +158,6 @@ Vòng đầu phản ánh trực tiếp sự phát triển thể tích của não
 - **Kích thước vòng đầu**: Sơ sinh ($34 – 35\text{ cm}$) $\rightarrow$ 6 tháng ($43\text{ cm}$) $\rightarrow$ 1 tuổi ($46\text{ cm}$) $\rightarrow$ Người lớn ($54 – 56\text{ cm}$).
 - **Thóp Sau (Posterior Fontanelle)**: Hình tam giác nhỏ, **đóng rất sớm lúc 6 – 8 tuần tuổi (khoảng 2 tháng)**.
 - **Thóp Trước (Anterior Fontanelle)**: Hình quả trám lớn, **đóng bình thường vào khoảng 12 – 18 tháng tuổi** (Đóng quá sớm $< 6$ tháng gây hẹp sọ dính khớp sớm *Craniosynostosis*; Đóng muộn $> 24$ tháng gặp trong Còi xương thiếu Vitamin D, Não úng thủy hoặc Suy giáp bẩm sinh).
-
 
 ---
 
@@ -111,24 +171,93 @@ Vòng đầu phản ánh trực tiếp sự phát triển thể tích của não
 | **12 Tháng (1 tuổi)** | **Tự đi vài bước chập chững** | Thả khối gỗ vào cốc | Nói được 1 – 2 từ đơn có nghĩa (bà, mẹ) | Chỉ trỏ món đồ mình thích |
 | **2 Tuổi (24 tháng)** | Chạy nhảy vững, đá bóng, leo cầu thang | Xếp tháp 6 khối gỗ, cầm thìa tự xúc | Ghép câu 2 từ ("Mẹ bế", "Uống nước") | Chơi song song với bạn |
 
-
 ---
 
 ## 4. Đánh Giá Dậy Thì Theo Thang Điểm Tanner
 Dậy thì là giai đoạn tăng tốc tăng trưởng thể chất vượt bậc kết hợp hoàn thiện cơ quan sinh sản:
 
-```
-[THANG ĐIỂM TANNER (5 GIAI ĐOẠN)]:
-  • Tanner 1: Trẻ em trước dậy thì (Prepubertal).
-  • Tanner 2: KHỞI PHÁT DẬY THÌ:
-      - Nữ: Bắt đầu nhú chồi vú (Thelarche lúc 8 – 13 tuổi) + Xuất hiện lông mu thưa.
-      - Nam: Bắt đầu phì đại tinh hoàn (Thể tích tinh hoàn > 4 mL đo bằng thước Prader).
-  • Tanner 3 & 4: Tăng tốc chiều cao đỉnh (Peak Height Velocity: Nữ tăng 8 cm/năm, Nam tăng 10 cm/năm).
-  • Tanner 5: Trưởng thành sinh dục hoàn toàn (Người lớn).
-```
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title">
+      <i class="fa-solid fa-arrow-up-right-dots" style="color: var(--color-purple, #7c3aed);"></i>
+      5 GIAI ĐOẠN DẬY THÌ THEO THANG ĐIỂM TANNER &amp; TRÌNH TỰ SINH HỌC
+    </div>
+    <span class="badge badge-purple">Tanner Milestones</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 920 200" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrTan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#7c3aed"/>
+        </marker>
+      </defs>
 
+      {/* Stage 1 */}
+      <rect x="20" y="20" width="165" height="155" rx="12" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <rect x="20" y="20" width="165" height="32" rx="12" fill="var(--color-surface-3, #f1f5f9)"/>
+      <text x="102" y="41" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="var(--color-text, #0f172a)">TANNER 1</text>
+      <text x="102" y="74" text-anchor="middle" font-family="'Plus Jakarta Sans', font-weight="700" font-size="12" fill="var(--color-text, #0f172a)">Tiền Dậy Thì</text>
+      <text x="102" y="96" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">Nữ: Vú chưa phát triển</text>
+      <text x="102" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">Nam: Tinh hoàn &lt; 4 mL</text>
+      <text x="102" y="136" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">Không có lông mu</text>
 
-  Trình tự xuất hiện dậy thì ở bé gái: Nhú vú (*Thelarche*) $\rightarrow$ Mọc lông mu (*Pubarche*) $\rightarrow$ Tăng vọt chiều cao $\rightarrow$ **CÓ KINH NGUYỆT LẦN ĐẦU (*Menarche*, thường xuất hiện sau nhú vú 2 – 2.5 năm)**. Sau khi có kinh lần đầu, đĩa sụn tiếp hợp cốt hóa dưới tác dụng của Estrogen và trẻ chỉ cao thêm tối đa khoảng $3 – 5\text{ cm}$ rồi ngừng hẳn.
+      {/* Arrow 1 */}
+      <path d="M 185 97 L 200 97" fill="none" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrTan)"/>
+
+      {/* Stage 2 */}
+      <rect x="205" y="20" width="165" height="155" rx="12" fill="var(--color-surface-2, #f8fafc)" stroke="#0284c7" stroke-width="1.8"/>
+      <rect x="205" y="20" width="165" height="32" rx="12" fill="var(--color-primary-light, #e0f2fe)"/>
+      <text x="287" y="41" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#0284c7">TANNER 2</text>
+      <text x="287" y="74" text-anchor="middle" font-family="'Plus Jakarta Sans', font-weight="800" font-size="12" fill="#0284c7">KHỞI PHÁT DẬY THÌ</text>
+      <text x="287" y="96" text-anchor="middle" font-family="'Plus Jakarta Sans', font-weight="600" font-size="10.5" fill="#0284c7">• Nhú vú (Thelarche)</text>
+      <text x="287" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">8–13 tuổi (trung bình 10–11y)</text>
+      <text x="287" y="136" text-anchor="middle" font-family="'Plus Jakarta Sans', font-weight="600" font-size="10.5" fill="#0284c7">• Tinh hoàn &gt; 4 mL</text>
+      <text x="287" y="154" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Đo bằng thước Prader</text>
+
+      {/* Arrow 2 */}
+      <path d="M 370 97 L 385 97" fill="none" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrTan)"/>
+
+      {/* Stage 3 */}
+      <rect x="390" y="20" width="165" height="155" rx="12" fill="var(--color-surface-2, #f8fafc)" stroke="#d97706" stroke-width="1.8"/>
+      <rect x="390" y="20" width="165" height="32" rx="12" fill="var(--amber-bg, #fffbeb)"/>
+      <text x="472" y="41" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#d97706">TANNER 3</text>
+      <text x="472" y="74" text-anchor="middle" font-family="'Plus Jakarta Sans', font-weight="700" font-size="12" fill="#d97706">BÙNG NỔ CHIỀU CAO</text>
+      <text x="472" y="96" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">Vú &amp; quầng vú to dần</text>
+      <text x="472" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">Dương vật dài ra</text>
+      <text x="472" y="136" text-anchor="middle" font-family="'Plus Jakarta Sans', font-weight="700" font-size="10.5" fill="#d97706">Peak Height Velocity:</text>
+      <text x="472" y="154" text-anchor="middle" font-family="'Plus Jakarta Sans', font-weight="600" font-size="10" fill="#d97706">Nữ tăng 8 cm/năm đỉnh</text>
+
+      {/* Arrow 3 */}
+      <path d="M 555 97 L 570 97" fill="none" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrTan)"/>
+
+      {/* Stage 4 */}
+      <rect x="575" y="20" width="165" height="155" rx="12" fill="var(--color-surface-2, #f8fafc)" stroke="#dc2626" stroke-width="1.8"/>
+      <rect x="575" y="20" width="165" height="32" rx="12" fill="var(--red-bg, #fef2f2)"/>
+      <text x="657" y="41" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#dc2626">TANNER 4</text>
+      <text x="657" y="74" text-anchor="middle" font-family="'Plus Jakarta Sans', font-weight="800" font-size="12" fill="#dc2626">KINH NGUYỆT ĐẦU</text>
+      <text x="657" y="96" text-anchor="middle" font-family="'Plus Jakarta Sans', font-weight="700" font-size="10.5" fill="#dc2626">• Menarche ở nữ</text>
+      <text x="657" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Sau nhú vú 2–2.5 năm</text>
+      <text x="657" y="136" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">Nam tăng 10 cm/năm</text>
+      <text x="657" y="154" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Lông mu dạng người lớn</text>
+
+      {/* Arrow 4 */}
+      <path d="M 740 97 L 755 97" fill="none" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrTan)"/>
+
+      {/* Stage 5 */}
+      <rect x="760" y="20" width="140" height="155" rx="12" fill="var(--color-surface-2, #f8fafc)" stroke="#7c3aed" stroke-width="2"/>
+      <rect x="760" y="20" width="140" height="32" rx="12" fill="var(--purple-bg, #f5f3ff)"/>
+      <text x="830" y="41" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#7c3aed">TANNER 5</text>
+      <text x="830" y="74" text-anchor="middle" font-family="'Plus Jakarta Sans', font-weight="800" font-size="12" fill="#7c3aed">TRƯỞNG THÀNH</text>
+      <text x="830" y="96" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">Sinh dục hoàn thiện</text>
+      <text x="830" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', font-weight="700" font-size="10.5" fill="#dc2626">Cốt hóa đĩa sụn</text>
+      <text x="830" y="136" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Ngừng cao thêm</text>
+      <text x="830" y="154" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">(Sau có kinh +3–5 cm)</text>
+    </svg>
+  </div>
+</div>
+
+> [!NOTE]
+> **Trình tự xuất hiện dậy thì ở bé gái:** Nhú vú (*Thelarche*) $\rightarrow$ Mọc lông mu (*Pubarche*) $\rightarrow$ Tăng vọt chiều cao $\rightarrow$ **CÓ KINH NGUYỆT LẦN ĐẦU (*Menarche*, thường xuất hiện sau nhú vú 2 – 2.5 năm)**. Sau khi có kinh lần đầu, đĩa sụn tiếp hợp cốt hóa dưới tác dụng của Estrogen và trẻ chỉ cao thêm tối đa khoảng $3 – 5\text{ cm}$ rồi ngừng hẳn.
 
 ## 5. Tài Liệu Tham Khảo EBM
 <div class="citation-box">

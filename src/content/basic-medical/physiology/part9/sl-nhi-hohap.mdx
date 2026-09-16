@@ -45,26 +45,33 @@ sections:
 
 # 🧬 ĐẶC ĐIỂM SINH LÝ HÔ HẤP TRẺ EM & TRẺ SƠ SINH
 
+<div class="module-badge-group">
+  <span class="badge badge-purple"><i class="fa-solid fa-book-medical"></i> GP-SL Part 9 • Nhi Khoa</span>
+  <span class="badge badge-blue"><i class="fa-solid fa-lungs"></i> Cơ Học Hô Hấp Sơ Sinh</span>
+  <span class="badge badge-green"><i class="fa-solid fa-droplet"></i> Surfactant &amp; Bệnh Màng Trong</span>
+  <span class="badge badge-amber"><i class="fa-solid fa-stopwatch"></i> Tần Số Thở Theo Tuổi WHO</span>
+</div>
+
 <PhysioQuickNav />
 
 {/* DẢI CHỈ SỐ NHANH (QUICK STATS STRIP) */}
-<section class="stats-strip">
+<section class="stats-strip theme-physio">
   <div class="stats-grid">
     <div class="stat-card">
-      <div class="stat-val blue">PHYS-PED-03</div>
-      <div class="stat-lbl">Mã chuyên đề • Sinh Lý Học Nhi Khoa</div>
+      <div class="stat-val blue">4 mm vs 8 mm</div>
+      <div class="stat-lbl">Khẩu kính khí quản sơ sinh vs người lớn</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val green">Nội Môi Ổn Định</div>
-      <div class="stat-lbl">Cân bằng gradient điện hóa & Áp suất thẩm thấu</div>
+      <div class="stat-val red">R ∝ 1/r⁴ (x16)</div>
+      <div class="stat-lbl">Phù nề 1mm làm tăng kháng lực thở gấp 16 LẦN!</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val amber">Feedback Loop</div>
-      <div class="stat-lbl">Vòng điều hòa phản hồi thần kinh - thể dịch</div>
+      <div class="stat-val amber">6 – 8 mL/kg</div>
+      <div class="stat-lbl">Tiêu thụ Oxy $VO_2$ cao gấp đôi người lớn</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val purple">Dược Lý EBM</div>
-      <div class="stat-lbl">Ứng dụng lâm sàng chuẩn Guyton 14th & Ganong 26th</div>
+      <div class="stat-val purple">DPPC &amp; CPAP</div>
+      <div class="stat-lbl">Bơm Surfactant + NCPAP cấp cứu bệnh màng trong RDS</div>
     </div>
   </div>
 </section>
@@ -72,52 +79,92 @@ sections:
 ---
 
 ## 1. Đặc Điểm Giải Phẫu Đường Thở Trẻ Em
-Hệ hô hấp của trẻ em có nhiều nét giải phẫu chuyên biệt khiến trẻ rất dễ bị tắc nghẽn đường thở và suy hô hấp:
-
+Hệ hô hấp của trẻ em có nhiều nét giải phẫu chuyên biệt khiến trẻ rất dễ bị tắc nghẽn đường thở và suy hô hấp tiến triển tối cấp:
 
 <div class="flowchart-card">
   <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: ĐẶC ĐIỂM ĐƯỜNG THỞ TRẺ EM</div>
+    <div class="flowchart-title">
+      <i class="fa-solid fa-lungs" style="color: var(--color-primary, #0284c7);"></i>
+      MA TRẬN GIẢI PHẪU ĐƯỜNG THỞ NHI KHOA VS NGƯỜI LỚN
+    </div>
     <span class="badge badge-blue">Pure Orthogonal SVG</span>
   </div>
   <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 262" width="880" height="262" xmlns="http://www.w3.org/2000/svg">
+    <svg class="flowchart-svg" viewBox="0 0 920 380" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrBlueH" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
-        </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
-        </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
         </marker>
       </defs>
 
-      {/* Single Node: ĐẶC ĐIỂM ĐƯỜNG THỞ TRẺ EM */}
-      <rect x="160.75" y="20" width="558.5" height="204" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">ĐẶC ĐIỂM ĐƯỜNG THỞ TRẺ EM</text>
-      <text x="184.75" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Đầu to, chẩm nhô cao ──► Khi nằm ngửa đầu dễ bị gập làm gập</text>
-      <text x="184.75" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  đường thở</text>
-      <text x="184.75" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Lưỡi tương đối to so với khoang miệng ──► Dễ tụt lưỡi gây</text>
-      <text x="184.75" y="118" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  ngạt khi hôn mê/an thần</text>
-      <text x="184.75" y="136" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Nắp thanh môn (Epiglottis) dài, hẹp hình chữ U/Omega, ngả</text>
-      <text x="184.75" y="154" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  sau ──► Khó bộc lộ khi đặt nội khí quản</text>
-      <text x="184.75" y="172" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ĐƯỜNG THỞ HÌNH PHỄU: Vị trí hẹp nhất tại VÒNG SỤN NHẪN</text>
-      <text x="184.75" y="190" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  (Cricoid Cartilage - Dưới thanh môn)</text>
-      <text x="184.75" y="208" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Khẩu kính đường thở rất nhỏ (Khí quản sơ sinh chỉ ~4 mm)</text>
+      {/* 4 Feature Columns Grid */}
+      {/* Box 1: Head & Neck */}
+      <rect x="20" y="20" width="205" height="230" rx="12" fill="var(--color-surface-2, #f8fafc)" stroke="#0284c7" stroke-width="1.8"/>
+      <rect x="20" y="20" width="205" height="36" rx="12" fill="var(--color-primary-light, #e0f2fe)"/>
+      <text x="122" y="43" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#0284c7">1. ĐẦU &amp; CHẨM TO</text>
+      <text x="32" y="76" font-family="'Plus Jakarta Sans', font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">Đặc điểm giải phẫu:</text>
+      <text x="32" y="96" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">Chẩm to, cổ ngắn nhô cao.</text>
+      <text x="32" y="116" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">Khi nằm ngửa, đầu tự</text>
+      <text x="32" y="136" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">động gập về phía trước.</text>
+      <line x1="32" y1="150" x2="213" y2="150" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="32" y="172" font-family="'Plus Jakarta Sans', font-weight="700" font-size="11" fill="#dc2626">Nguy cơ lâm sàng:</text>
+      <text x="32" y="192" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">Gập tắc đường thở trên.</text>
+      <text x="32" y="214" font-family="'Plus Jakarta Sans', font-weight="700" font-size="10" fill="#059669">➔ Xử trí: Kê khăn vai</text>
+      <text x="32" y="232" font-family="'Plus Jakarta Sans', font-weight="600" font-size="10" fill="#059669">(Tư thế "ngửi hoa")</text>
+
+      {/* Box 2: Tongue & Oropharynx */}
+      <rect x="245" y="20" width="205" height="230" rx="12" fill="var(--color-surface-2, #f8fafc)" stroke="#059669" stroke-width="1.8"/>
+      <rect x="245" y="20" width="205" height="36" rx="12" fill="var(--green-bg, #ecfdf5)"/>
+      <text x="347" y="43" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#059669">2. LƯỠI TƯƠNG ĐỐI TO</text>
+      <text x="257" y="76" font-family="'Plus Jakarta Sans', font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">Đặc điểm giải phẫu:</text>
+      <text x="257" y="96" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">Lưỡi to chiếm gần hết</text>
+      <text x="257" y="116" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">khoang miệng, hàm dưới</text>
+      <text x="257" y="136" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">nhỏ tụt ra sau.</text>
+      <line x1="257" y1="150" x2="438" y2="150" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="257" y="172" font-family="'Plus Jakarta Sans', font-weight="700" font-size="11" fill="#dc2626">Nguy cơ lâm sàng:</text>
+      <text x="257" y="192" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">Tụt lưỡi tắc nghẽn hầu</text>
+      <text x="257" y="214" font-family="'Plus Jakarta Sans', font-weight="700" font-size="10" fill="#059669">➔ Xử trí: Nâng cằm /</text>
+      <text x="257" y="232" font-family="'Plus Jakarta Sans', font-weight="600" font-size="10" fill="#059669">Đẩy hàm (Jaw-thrust)</text>
+
+      {/* Box 3: Epiglottis */}
+      <rect x="470" y="20" width="205" height="230" rx="12" fill="var(--color-surface-2, #f8fafc)" stroke="#d97706" stroke-width="1.8"/>
+      <rect x="470" y="20" width="205" height="36" rx="12" fill="var(--amber-bg, #fffbeb)"/>
+      <text x="572" y="43" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#d97706">3. NẮP THANH MÔN CHỮ Ω</text>
+      <text x="482" y="76" font-family="'Plus Jakarta Sans', font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">Đặc điểm giải phẫu:</text>
+      <text x="482" y="96" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">Dài, hẹp, mềm hình chữ</text>
+      <text x="482" y="116" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">U hoặc Omega (Ω), nằm</text>
+      <text x="482" y="136" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">nghiêng 45° ra sau.</text>
+      <line x1="482" y1="150" x2="663" y2="150" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="482" y="172" font-family="'Plus Jakarta Sans', font-weight="700" font-size="11" fill="#dc2626">Nguy cơ lâm sàng:</text>
+      <text x="482" y="192" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">Khó nhìn thấy lỗ thanh môn.</text>
+      <text x="482" y="214" font-family="'Plus Jakarta Sans', font-weight="700" font-size="10" fill="#059669">➔ Đặt NKQ: Dùng lưỡi</text>
+      <text x="482" y="232" font-family="'Plus Jakarta Sans', font-weight="600" font-size="10" fill="#059669">đèn thẳng Miller để nâng</text>
+
+      {/* Box 4: Funnel Cricoid */}
+      <rect x="695" y="20" width="205" height="230" rx="12" fill="var(--color-surface-2, #f8fafc)" stroke="#dc2626" stroke-width="1.8"/>
+      <rect x="695" y="20" width="205" height="36" rx="12" fill="var(--red-bg, #fef2f2)"/>
+      <text x="797" y="43" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#dc2626">4. ĐƯỜNG THỞ HÌNH PHỄU</text>
+      <text x="707" y="76" font-family="'Plus Jakarta Sans', font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">Đặc điểm giải phẫu:</text>
+      <text x="707" y="96" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">Điểm hẹp nhất tại VÒNG</text>
+      <text x="707" y="116" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">SỤN NHẪN (Dưới thanh môn);</text>
+      <text x="707" y="136" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">Người lớn hình trụ (Dây thanh).</text>
+      <line x1="707" y1="150" x2="888" y2="150" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="707" y="172" font-family="'Plus Jakarta Sans', font-weight="700" font-size="11" fill="#dc2626">Định luật Poiseuille:</text>
+      <text x="707" y="192" font-family="'Plus Jakarta Sans', font-weight="800" font-size="10.5" fill="#dc2626">Phù nề 1 mm ➔ Kháng lực</text>
+      <text x="707" y="210" font-family="'Plus Jakarta Sans', font-weight="800" font-size="10.5" fill="#dc2626">đường thở TĂNG GẤP 16 LẦN!</text>
+      <text x="707" y="232" font-family="'Plus Jakarta Sans', font-weight="600" font-size="10" fill="var(--color-text-muted, #475569)">Tiếng thở rít Stridor / Croup</text>
+
+      {/* Bottom Comparison Strip */}
+      <rect x="20" y="268" width="880" height="96" rx="12" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="460" y="292" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">ĐỊNH LUẬT POISEUILLE: TẠI SAO PHÙ NỀ ĐƯỜNG THỞ NHI KHOA LẠI NGUY HIỂM HƠN NGƯỜI LỚN?</text>
+      <line x1="40" y1="304" x2="880" y2="304" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="50" y="324" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Người lớn (Đường kính 8 mm): Phù nề 1 mm niêm mạc ➔ Lòng ống còn 6 mm (giảm 44% diện tích) ➔ Kháng lực R tăng gấp <tspan font-weight="800" fill="#0284c7">3 LẦN</tspan>.</text>
+      <text x="50" y="348" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Trẻ sơ sinh (Đường kính 4 mm): Phù nề 1 mm niêm mạc ➔ Lòng ống còn 2 mm (giảm 75% diện tích) ➔ Kháng lực R tăng vọt <tspan font-weight="800" fill="#dc2626">16 LẦN ($R \propto 1/r^4$)</tspan>!</text>
     </svg>
   </div>
 </div>
 
-
-  $$R \propto \frac{1}{r^4} \quad \text{(Kháng lực đường thở tỷ lệ nghịch với lũy thừa bậc 4 của bán kính)}$$
-  - Ở người lớn (Khí quản $8\text{ mm}$): Phù nề $1\text{ mm}$ niêm mạc làm diện tích lòng ống giảm 44%, kháng lực tăng gấp **3 lần**.
-  - Ở trẻ nhỏ (Khí quản $4\text{ mm}$): Phù nề $1\text{ mm}$ niêm mạc làm diện tích lòng ống giảm tới **75%**, kháng lực **TĂNG VỌT GẤP 16 LẦN** (gây ra tiếng thở rít thanh quản Stridor và suy hô hấp tối cấp trong Bệnh Croup / Viêm thanh khí phế quản cấp).
-
+$$R \propto \frac{1}{r^4} \quad \text{(Kháng lực đường thở tỷ lệ nghịch với lũy thừa bậc 4 của bán kính)}$$
 
 ---
 
@@ -130,36 +177,84 @@ Hệ hô hấp của trẻ em có nhiều nét giải phẫu chuyên biệt khi�
 | **Dung tích cặn chức năng (FRC)** | **Rất thấp** (Phổi dễ bị xẹp khi thở ra). | Cao, tạo kho dự trữ oxy ổn định lúc nghỉ. |
 | **Tiêu thụ Oxy ($VO_2$)** | **$6 – 8\text{ mL/kg/phút}$ (CAO GẤP ĐÔI NGƯỜI LỚN)**. | $3 – 4\text{ mL/kg/phút}$. |
 
-- **Ý nghĩa lâm sàng**: Khi có tắc nghẽn đường thở, trẻ tiêu tốn lượng oxy khổng lồ, cơ hoành nhanh chóng bị mỏi kiệt sức dẫn đến **Cơn ngưng thở và trụy hô hấp đột ngột** nhanh hơn nhiều so với người lớn.
-
+> [!CAUTION]
+> **Ý nghĩa lâm sàng:** Khi có tắc nghẽn đường thở, trẻ tiêu tốn lượng oxy khổng lồ trong khi cơ hoành nhanh chóng bị mỏi kiệt sức do ít sợi cơ Type I. Tình trạng này dẫn đến **Cơn ngưng thở và trụy hô hấp đột ngột** nhanh hơn rất nhiều so với người lớn!
 
 ---
 
 ## 3. Chất Hoạt Diện Surfactant & Bệnh Màng Trong (RDS)
 - **Surfactant**: Phức hợp Phospholipid (chủ yếu là **DPPC - Dipalmitoylphosphatidylcholine**) và các protein đặc hiệu (SP-A, B, C, D) do **Tế bào phế nang Type II** tổng hợp từ tuần thai thứ 24 và đạt nồng độ đầy đủ sau **tuần thai thứ 34 – 35**.
-- **Định luật Laplace**: $P = \frac{2T}{r}$. Surfactant làm giảm sức căng bề mặt $T$ theo tỷ lệ thuận với bán kính $r$, ngăn không cho các phế nang nhỏ bị xẹp lép dồn khí sang phế nang lớn.
+- **Định luật Laplace**: $P = \frac{2T}{r}$. Surfactant làm giảm sức căng bề mặt $T$ theo tỷ lệ thuận với bán kính $r$, ngăn không cho các phế nang nhỏ bị xẹp dồn khí sang phế nang lớn.
 
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title">
+      <i class="fa-solid fa-droplet" style="color: var(--color-primary, #0284c7);"></i>
+      SƠ ĐỒ SINH LÝ BỆNH: THIẾU HỤT SURFACTANT &amp; BỆNH MÀNG TRONG (RDS)
+    </div>
+    <span class="badge badge-red">Pathophysiology Flowchart</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 920 320" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrRedH" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+        <marker id="arrGreenH" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+      </defs>
 
-  - **Dịch tễ**: Gặp ở $>60\%$ trẻ sinh non $< 28\text{ tuần}$ và 30% trẻ sinh non $28 – 34\text{ tuần}$.
-  - **Cơ chế**: Thiếu hụt Surfactant $\rightarrow$ Sức căng bề mặt cao làm **xẹp phế nang lan tỏa cuối thì thở ra**, giảm FRC, Shunt Phải - Trái trong phổi, xuất tiết dịch fibrin tạo lớp màng trong bao phủ phế nang.
-  - **Dấu hiệu lâm sàng**: Thở nhanh, **Thở rên (Grunting - trẻ tự khép thanh môn để tạo PEEP giữ mở phế nang)**, Phập phồng cánh mũi, Co kéo lồng ngực mạnh mẽ, Tím tái.
-  - **Điều trị EBM**:
-    1. Tiêm dự phòng Corticoid trước sinh (Betamethasone) cho mẹ dọa sinh non để kích thích tế bào Type II trưởng thành.
-    2. Hồi sức sau sinh: Thở áp lực dương liên tục (**NCPAP**) sớm kết hợp **Bơm Surfactant ngoại sinh (Curosurf/Survanta)** qua ống nội khí quản.
+      {/* Step 1: Preterm */}
+      <rect x="20" y="20" width="260" height="70" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="#dc2626" stroke-width="1.8"/>
+      <text x="150" y="44" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#dc2626">TRẺ SINH NON &lt; 34 TUẦN</text>
+      <text x="150" y="66" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">Tế bào Phế nang Type II chưa trưởng thành</text>
 
+      {/* Arrow 1 to 2 */}
+      <path d="M 280 55 L 320 55" fill="none" stroke="#dc2626" stroke-width="2" marker-end="url(#arrRedH)"/>
+
+      {/* Step 2: Surfactant deficiency */}
+      <rect x="330" y="20" width="260" height="70" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="#dc2626" stroke-width="1.8"/>
+      <text x="460" y="44" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#dc2626">THIẾU SURFACTANT (DPPC)</text>
+      <text x="460" y="66" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">Sức căng bề mặt (T) tăng rất cao ($P = 2T/r$)</text>
+
+      {/* Arrow 2 to 3 */}
+      <path d="M 590 55 L 630 55" fill="none" stroke="#dc2626" stroke-width="2" marker-end="url(#arrRedH)"/>
+
+      {/* Step 3: Alveolar Collapse */}
+      <rect x="640" y="20" width="260" height="70" rx="10" fill="var(--red-bg, #fef2f2)" stroke="#dc2626" stroke-width="2"/>
+      <text x="770" y="44" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#dc2626">XẸP PHẾ NANG LAN TỎA</text>
+      <text x="770" y="66" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">FRC tụt giảm nghiêm trọng sau mỗi nhịp thở</text>
+
+      {/* Arrow down to Cascade */}
+      <path d="M 770 90 L 770 125" fill="none" stroke="#dc2626" stroke-width="2" marker-end="url(#arrRedH)"/>
+
+      {/* Clinical Manifestations & Pathophysiology */}
+      <rect x="20" y="130" width="880" height="74" rx="12" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="460" y="152" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#dc2626">HẬU QUẢ LÂM SÀNG &amp; DẤU HIỆU ĐẶC BIỆT CỦA BỆNH MÀNG TRONG (RDS):</text>
+      <text x="40" y="174" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Shunt Phải – Trái nội phổi ➔ Thiếu oxy máu nặng nề ($PaO_2 \downarrow$), toan hô hấp hỗn hợp toan chuyển hóa.</text>
+      <text x="40" y="194" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• <tspan font-weight="800" fill="#d97706">THỞ RÊN (GRUNTING):</tspan> Cơ chế bù trừ sinh lý sống còn — trẻ tự khép một phần thanh môn ở thì thở ra nhằm tạo áp lực dương PEEP nội sinh giữ mở phế nang!</text>
+
+      {/* Treatment Box */}
+      <rect x="20" y="222" width="880" height="74" rx="12" fill="var(--green-bg, #ecfdf5)" stroke="#059669" stroke-width="2"/>
+      <text x="460" y="244" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#059669">CHIẾN LƯỢC ĐIỀU TRỊ EBM (EUROPEAN RDS GUIDELINES 2023):</text>
+      <text x="40" y="266" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">1. <tspan font-weight="700">Dự phòng trước sinh:</tspan> Tiêm Betamethasone cho mẹ dọa sinh non 24–34 tuần kích thích tế bào Type II tăng sinh enzyme tổng hợp Surfactant.</text>
+      <text x="40" y="286" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">2. <tspan font-weight="700">Hồi sức sau sinh:</tspan> Thở áp lực dương liên tục không xâm lấn (<tspan font-weight="700" fill="#0284c7">NCPAP</tspan>) sớm + Bơm <tspan font-weight="700" fill="#059669">Surfactant ngoại sinh</tspan> (kỹ thuật LISA/MIST).</text>
+    </svg>
+  </div>
+</div>
 
 ---
 
 ## 4. Tần Số Thở & Tiêu Thụ Oxy Theo Tuổi
-Tần số thở của trẻ giảm dần theo tuổi khi dung tích phổi tăng lên:
+Dung tích sống và số lượng phế nang tăng dần theo tuổi làm tần số thở sinh lý giảm dần từ sơ sinh đến tuổi trưởng thành:
 
-```
-[BẢNG TẦN SỐ THỞ BÌNH THƯỜNG THEO TUỔI (WHO)]:
-  • Sơ sinh (< 2 tháng tuổi):       30 – 50 lần/phút (Thở nhanh khi ≥ 60 lần/phút)
-  • Trẻ nhũ nhi (2 – 11 tháng):    25 – 40 lần/phút (Thở nhanh khi ≥ 50 lần/phút)
-  • Trẻ nhỏ (1 – 5 tuổi):          20 – 30 lần/phút (Thở nhanh khi ≥ 40 lần/phút)
-  • Trẻ lớn (> 5 tuổi):            15 – 20 lần/phút (Thở nhanh khi ≥ 30 lần/phút)
-```
+| Nhóm Tuổi | Tần Số Thở Bình Thường | Ngưỡng Thở Nhanh Theo WHO (Dấu hiệu Viêm Phổi) |
+|---|---|---|
+| **Trẻ Sơ sinh (&lt; 2 tháng tuổi)** | **30 – 50 lần/phút** | $\ge \mathbf{60\text{ lần/phút}}$ |
+| **Trẻ Nhũ nhi (2 – 11 tháng tuổi)** | **25 – 40 lần/phút** | $\ge \mathbf{50\text{ lần/phút}}$ |
+| **Trẻ Nhỏ (1 – 5 tuổi)** | **20 – 30 lần/phút** | $\ge \mathbf{40\text{ lần/phút}}$ |
+| **Trẻ Lớn (&gt; 5 tuổi)** | **15 – 20 lần/phút** | $\ge \mathbf{30\text{ lần/phút}}$ |
 
 ## 5. Tài Liệu Tham Khảo EBM
 <div class="citation-box">

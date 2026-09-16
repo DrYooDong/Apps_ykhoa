@@ -51,28 +51,33 @@ sections:
 
 ---
 
-# 🧬 SINH LÝ BẠCH CẦU & HỆ THỐNG MIỄN DỊCH
+<div class="module-badge-group" style="display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap;">
+  <span class="module-badge badge-physio"><i class="fa-solid fa-heart-pulse"></i> Sinh Lý Học Guyton</span>
+  <span class="module-badge" style="background: rgba(14, 165, 233, 0.12); color: var(--color-info, #0284c7); border: 1px solid rgba(14, 165, 233, 0.25);"><i class="fa-solid fa-shield-halved"></i> Bạch Cầu &amp; Miễn Dịch</span>
+</div>
+
+# 🧬 SINH LÝ BẠCH CẦU &amp; HỆ THỐNG MIỄN DỊCH
 
 <PhysioQuickNav />
 
-{/* DẢI CHỈ SỐ NHANH (QUICK STATS STRIP) */}
-<section class="stats-strip">
+{/* DẢI CHỈ SỐ HUYẾT HỌC THỰC CHIẾN (EBM CLINICAL STATS) */}
+<section class="stats-strip theme-physio">
   <div class="stats-grid">
     <div class="stat-card">
-      <div class="stat-val blue">PHYS-BLD-03</div>
-      <div class="stat-lbl">Mã chuyên đề • Sinh Lý Máu & Hệ Miễn Dịch</div>
+      <div class="stat-val blue">4.0 – 10.0 K/µL</div>
+      <div class="stat-lbl">Bạch cầu toàn phần (WBC) • 5 dòng tế bào thực thi</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val green">Nội Môi Ổn Định</div>
-      <div class="stat-lbl">Cân bằng gradient điện hóa & Áp suất thẩm thấu</div>
+      <div class="stat-val green">50% – 70%</div>
+      <div class="stat-lbl">Neutrophils • Tiên phong diệt khuẩn (NETs &amp; MPO)</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val amber">Feedback Loop</div>
-      <div class="stat-lbl">Vòng điều hòa phản hồi thần kinh - thể dịch</div>
+      <div class="stat-val purple">20% – 40%</div>
+      <div class="stat-lbl">Lymphocytes • Tế bào T, B, NK (Miễn dịch thích ứng)</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val purple">Dược Lý EBM</div>
-      <div class="stat-lbl">Ứng dụng lâm sàng chuẩn Guyton 14th & Ganong 26th</div>
+      <div class="stat-val amber">C5b – C9</div>
+      <div class="stat-lbl">Phức hợp MAC • Bổ thể đục thủng màng ly giải vi khuẩn</div>
     </div>
   </div>
 </section>
@@ -83,35 +88,73 @@ sections:
 Tổng số lượng bạch cầu bình thường ở người lớn là **$4.000 – 10.000\text{ tế bào/}\mu\text{L}$**:
 
 
-<div class="flowchart-card">
-  <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: BẠCH CẦU TOÀN PHẦN (WBC)</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+<div class="flowchart-editorial-card">
+  <div class="flowchart-editorial-header">
+    <div class="flowchart-editorial-title">
+      <i class="fa-solid fa-users-viewfinder"></i>
+      PHÂN LOẠI 5 DÒNG BẠCH CẦU (TOTAL WBC: 4.000 – 10.000 /µL)
+    </div>
+    <span class="flowchart-editorial-tag">2 Major Lineages</span>
   </div>
-  <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 154" width="880" height="154" xmlns="http://www.w3.org/2000/svg">
+
+  <div class="flowchart-editorial-viewport">
+    <svg viewBox="0 0 880 270" width="100%" height="270" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        <marker id="wbcArrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)"/>
         </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
-        </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        <marker id="wbcArrPurple" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#8b5cf6"/>
         </marker>
       </defs>
 
-      {/* Single Node: BẠCH CẦU TOÀN PHẦN (WBC) */}
-      <rect x="160.75" y="20" width="558.5" height="96" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">BẠCH CẦU TOÀN PHẦN (WBC)</text>
-      <text x="184.75" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ├──► BẠCH CẦU HẠT (Granulocytes):</text>
-      <text x="184.75" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ├── Bạch cầu Đơn nhân (Monocytes): 2% – 8% ──► Vào mô thành</text>
-      <text x="184.75" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  Đại Thực Bào (APCs)</text>
+      {/* Top Root Node */}
+      <rect x="270" y="16" width="340" height="46" rx="12" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+      <text x="440" y="36" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12.5" fill="var(--color-primary, #0284c7)">BẠCH CẦU MÁU NGOẠI BIÊN (100%)</text>
+      <text x="440" y="52" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #64748b)">Sinh ra từ tế bào gốc tạo máu tủy xương (HSC)</text>
+
+      {/* Bifurcation Connectors */}
+      <path d="M 440 62 L 440 82 Q 440 88 432 88 L 225 88 Q 217 88 217 94 L 217 106" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="1.8" marker-end="url(#wbcArrBlue)"/>
+      <path d="M 440 62 L 440 88 Q 440 88 448 88 L 655 88 Q 663 88 663 94 L 663 106" fill="none" stroke="#8b5cf6" stroke-width="1.8" marker-end="url(#wbcArrPurple)"/>
+
+      {/* Pillar 1: Bạch Cầu Có Hạt (Granulocytes ~60-75%) */}
+      <rect x="30" y="106" width="375" height="150" rx="12" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+      <rect x="30" y="106" width="375" height="30" rx="12" fill="rgba(2, 132, 199, 0.12)"/>
+      <text x="217" y="126" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="var(--color-primary, #0284c7)">BẠCH CẦU CÓ HẠT (GRANULOCYTES ~65%)</text>
+      
+      <text x="45" y="152" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">• Neutrophil (Trung tính: 50% – 70%):</text>
+      <text x="65" y="170" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #64748b)">Nhân 3–5 múi, thực bào vi khuẩn cấp tính (Myeloperoxidase, NETs)</text>
+      
+      <text x="45" y="190" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">• Eosinophil (Ưa acid: 1% – 4%):</text>
+      <text x="65" y="208" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #64748b)">Nhân 2 múi mắt kính, diệt ký sinh trùng giun sán (MBP, ECP)</text>
+      
+      <text x="45" y="228" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">• Basophil (Ưa kiềm: 0.5% – 1%):</text>
+      <text x="65" y="246" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #64748b)">Hạt xanh tím che nhân, mang thụ thể FcεRI giải phóng Histamine</text>
+
+      {/* Pillar 2: Bạch Cầu Không Hạt (Agranulocytes ~25-40%) */}
+      <rect x="475" y="106" width="375" height="150" rx="12" fill="var(--color-surface, #ffffff)" stroke="#8b5cf6" stroke-width="1.8"/>
+      <rect x="475" y="106" width="375" height="30" rx="12" fill="rgba(139, 92, 246, 0.12)"/>
+      <text x="662" y="126" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="#7c3aed)">BẠCH CẦU KHÔNG HẠT (AGRANULOCYTES ~35%)</text>
+      
+      <text x="490" y="152" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">• Monocyte / Đại thực bào (2% – 8%):</text>
+      <text x="510" y="170" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #64748b)">Tế bào lớn nhất máu, nhân hạt đậu, trình diện kháng nguyên (APCs)</text>
+      
+      <text x="490" y="194" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">• Tế bào Lympho (20% – 40%):</text>
+      <text x="510" y="212" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #64748b)">- T CD4+ (Helper) &amp; T CD8+ (Cytotoxic / Độc tế bào)</text>
+      <text x="510" y="230" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #64748b)">- Lympho B biệt hóa thành Tương bào tiết Kháng thể</text>
+      <text x="510" y="248" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #64748b)">- Tế bào NK (Natural Killer: Diệt virus &amp; ung thư không cần mẫn cảm)</text>
     </svg>
+  </div>
+
+  <div class="flowchart-editorial-legend">
+    <div class="flowchart-legend-item">
+      <span class="flowchart-legend-dot" style="background: var(--color-primary, #0284c7);"></span>
+      <span>Bạch cầu hạt: Miễn dịch bẩm sinh tiên phong (Thực bào diệt khuẩn, dị ứng, ký sinh trùng)</span>
+    </div>
+    <div class="flowchart-legend-item">
+      <span class="flowchart-legend-dot" style="background: #8b5cf6;"></span>
+      <span>Bạch cầu đơn nhân &amp; Lympho: Cầu nối sang miễn dịch thích ứng đặc hiệu (T/B Cells)</span>
+    </div>
   </div>
 </div>
 
@@ -133,53 +176,111 @@ Miễn dịch tự nhiên (*Innate Immunity*) là hàng rào phòng thủ không
 Bổ thể được hoạt hóa theo 3 con đường độc lập nhưng cùng hội tụ tại bước phân cắt enzyme **C3 convertase**:
 
 
-<div class="flowchart-card">
-  <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: Con đường Cổ điển (Classical)</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+<div class="flowchart-editorial-card">
+  <div class="flowchart-editorial-header">
+    <div class="flowchart-editorial-title">
+      <i class="fa-solid fa-shield-virus"></i>
+      3 CON ĐƯỜNG HOẠT HÓA BỔ THỂ &amp; PHỨC HỢP TẤN CÔNG MÀNG (MAC: C5b–C9)
+    </div>
+    <span class="flowchart-editorial-tag">Convergence Cascade</span>
   </div>
-  <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 426" width="880" height="426" xmlns="http://www.w3.org/2000/svg">
+
+  <div class="flowchart-editorial-viewport">
+    <svg viewBox="0 0 880 380" width="100%" height="380" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        <marker id="compArrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)"/>
         </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        <marker id="compArrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-warning, #f59e0b)"/>
         </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        <marker id="compArrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-danger, #ef4444)"/>
         </marker>
       </defs>
 
-      {/* Single Node: 1. Con đường Cổ điển (Classica */}
-      <rect x="250" y="20" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">1. Con đường Cổ điển (Classical)</text>
-      <line x1="440" y1="66" x2="440" y2="94" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: 2. Con đường Lectin (MBL) */}
-      <rect x="250" y="94" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">2. Con đường Lectin (MBL)</text>
-      <line x1="440" y1="140" x2="440" y2="168" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: 3. Con đường Thay thế (Alterna */}
-      <rect x="245" y="168" width="390" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="190" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">3. Con đường Thay thế (Alternative)</text>
-      <text x="269" y="212" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ▼ (Hội tụ tại enzym C3 Convertase)</text>
-      <line x1="440" y1="228" x2="440" y2="256" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: Phân cắt C3 ──► C3a + C3b */}
-      <rect x="165" y="256" width="550" height="132" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
-      <text x="440" y="278" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">Phân cắt C3 ──► C3a + C3b</text>
-      <text x="189" y="300" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ├──► C3a &amp; C5a: Yếu tố phản vệ (Anaphylatoxins) gây giãn</text>
-      <text x="189" y="318" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  mạch, hóa ứng động bạch cầu</text>
-      <text x="189" y="336" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ├──► C3b: Opsonin hóa (Opsonization) bao bọc vi khuẩn kích</text>
-      <text x="189" y="354" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  thích đại thực bào ăn</text>
-      <text x="189" y="372" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Đục thủng màng tế bào vi khuẩn gây ly giải (Lysis)</text>
+      {/* 3 Pathway Pillars */}
+      {/* 1. Classical */}
+      <rect x="20" y="20" width="260" height="95" rx="12" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+      <rect x="20" y="20" width="260" height="26" rx="12" fill="rgba(2, 132, 199, 0.12)"/>
+      <text x="150" y="38" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="var(--color-primary, #0284c7)">1. CON ĐƯỜNG CỔ ĐIỂN (CLASSICAL)</text>
+      <text x="32" y="62" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Khởi phát: Phức hợp Kháng nguyên - Kháng thể</text>
+      <text x="32" y="78" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">• Phân tử IgG hoặc IgM gắn vào C1q</text>
+      <text x="32" y="96" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="var(--color-primary, #0284c7)">──► Hoạt hóa C4 &amp; C2 ──► C4b2a</text>
+
+      {/* 2. Lectin */}
+      <rect x="310" y="20" width="260" height="95" rx="12" fill="var(--color-surface, #ffffff)" stroke="var(--color-warning, #f59e0b)" stroke-width="1.8"/>
+      <rect x="310" y="20" width="260" height="26" rx="12" fill="rgba(245, 158, 11, 0.12)"/>
+      <text x="440" y="38" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="var(--color-warning, #d97706)">2. CON ĐƯỜNG LECTIN (MBL)</text>
+      <text x="322" y="62" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Khởi phát: Mannose-Binding Lectin (MBL)</text>
+      <text x="322" y="78" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">• Nhận diện gốc đường mannose màng vi khuẩn</text>
+      <text x="322" y="96" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="var(--color-warning, #d97706)">──► Kích hoạt MASP ──► C4b2a</text>
+
+      {/* 3. Alternative */}
+      <rect x="600" y="20" width="260" height="95" rx="12" fill="var(--color-surface, #ffffff)" stroke="var(--color-success, #10b981)" stroke-width="1.8"/>
+      <rect x="600" y="20" width="260" height="26" rx="12" fill="rgba(16, 185, 129, 0.12)"/>
+      <text x="730" y="38" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="var(--color-success, #059669)">3. CON ĐƯỜNG THAY THẾ (ALTERNATIVE)</text>
+      <text x="612" y="62" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Khởi phát: Tự thủy phân C3 liên tục trong máu</text>
+      <text x="612" y="78" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">• Gắn LPS vi khuẩn, yếu tố B &amp; D</text>
+      <text x="612" y="96" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="var(--color-success, #059669)">──► Tạo phức hợp C3bBb</text>
+
+      {/* Convergence Connectors down to C3 Convertase */}
+      <path d="M 150 115 L 150 135 Q 150 142 160 142 L 430 142 Q 440 142 440 150 L 440 160" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#compArrBlue)"/>
+      <line x1="440" y1="115" x2="440" y2="160" stroke="var(--color-warning, #f59e0b)" stroke-width="2" marker-end="url(#compArrAmber)"/>
+      <path d="M 730 115 L 730 135 Q 730 142 720 142 L 450 142 Q 440 142 440 150 L 440 160" fill="none" stroke="var(--color-success, #10b981)" stroke-width="2" marker-end="url(#compArrBlue)"/>
+
+      {/* Central Node: C3 Convertase */}
+      <rect x="250" y="160" width="380" height="54" rx="12" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-danger, #ef4444)" stroke-width="2"/>
+      <text x="440" y="182" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12.5" fill="var(--color-danger, #ef4444)">ĐIỂM HỘI TỤ TRUNG ƯƠNG: ENZYME C3 CONVERTASE</text>
+      <text x="440" y="198" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10.5" fill="var(--color-text-muted, #64748b)">Phân cắt hàng triệu phân tử C3 thành C3a &amp; C3b (Phóng đại tín hiệu)</text>
+
+      {/* Bifurcation below C3 Convertase */}
+      <path d="M 330 214 L 330 234 Q 330 240 320 240 L 140 240 Q 130 240 130 248 L 130 258" fill="none" stroke="var(--color-warning, #f59e0b)" stroke-width="1.8" marker-end="url(#compArrAmber)"/>
+      <path d="M 440 214 L 440 258" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="1.8" marker-end="url(#compArrBlue)"/>
+      <path d="M 550 214 L 550 234 Q 550 240 560 240 L 740 240 Q 750 240 750 248 L 750 258" fill="none" stroke="var(--color-danger, #ef4444)" stroke-width="1.8" marker-end="url(#compArrRed)"/>
+
+      {/* 3 Outcome Pillars of Complement Activation */}
+      {/* Outcome 1: C3a, C5a */}
+      <rect x="20" y="258" width="240" height="100" rx="12" fill="var(--color-surface, #ffffff)" stroke="var(--color-warning, #f59e0b)" stroke-width="1.8"/>
+      <rect x="20" y="258" width="240" height="26" rx="12" fill="rgba(245, 158, 11, 0.12)"/>
+      <text x="140" y="276" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="var(--color-warning, #d97706)">YẾU TỐ PHẢN VỆ (C3a &amp; C5a)</text>
+      <text x="32" y="300" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Làm vỡ hạt dưỡng bào (Mast cells)</text>
+      <text x="32" y="318" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Giải phóng Histamine gây giãn mạch</text>
+      <text x="32" y="336" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="var(--color-warning, #d97706)">• Hóa ứng động lôi kéo Neutrophil tới ổ viêm</text>
+
+      {/* Outcome 2: C3b */}
+      <rect x="300" y="258" width="280" height="100" rx="12" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+      <rect x="300" y="258" width="280" height="26" rx="12" fill="rgba(2, 132, 199, 0.12)"/>
+      <text x="440" y="276" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="var(--color-primary, #0284c7)">OPSONIN HÓA VI KHUẨN (C3b)</text>
+      <text x="312" y="300" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• C3b gắn áo ngoài màng tế bào vi khuẩn</text>
+      <text x="312" y="318" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Đại thực bào &amp; Neutrophil có thụ thể CR1</text>
+      <text x="312" y="336" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="var(--color-primary, #0284c7)">• Kích thích thực bào vi khuẩn tăng gấp nghìn lần</text>
+
+      {/* Outcome 3: MAC (C5b-C9) */}
+      <rect x="620" y="258" width="240" height="100" rx="12" fill="var(--color-surface, #ffffff)" stroke="var(--color-danger, #ef4444)" stroke-width="1.8"/>
+      <rect x="620" y="258" width="240" height="26" rx="12" fill="rgba(239, 68, 68, 0.12)"/>
+      <text x="740" y="276" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="var(--color-danger, #ef4444)">PHỨC HỢP TẤN CÔNG MÀNG (MAC)</text>
+      <text x="632" y="300" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• C5b liên kết C6, C7, C8 và chuỗi C9</text>
+      <text x="632" y="318" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Đục thủng lỗ màng tế bào vi khuẩn</text>
+      <text x="632" y="336" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="var(--color-danger, #ef4444)">• Nước ùa vào ──► Tế bào căng vỡ (Ly giải)</text>
     </svg>
   </div>
-</div>
 
+  <div class="flowchart-editorial-legend">
+    <div class="flowchart-legend-item">
+      <span class="flowchart-legend-dot" style="background: var(--color-primary, #0284c7);"></span>
+      <span>Cổ điển: Kháng thể IgG/IgM | Lectin: Gốc đường Mannose</span>
+    </div>
+    <div class="flowchart-legend-item">
+      <span class="flowchart-legend-dot" style="background: var(--color-success, #10b981);"></span>
+      <span>Thay thế: Tự kích hoạt liên tục trên nội độc tố vi khuẩn</span>
+    </div>
+    <div class="flowchart-legend-item">
+      <span class="flowchart-legend-dot" style="background: var(--color-danger, #ef4444);"></span>
+      <span>Thiếu hụt C5–C9: Nguy cơ nhiễm trùng Neisseria (Não mô cầu, Lậu cầu) tái diễn</span>
+    </div>
+  </div>
+</div>
 
 ---
 
@@ -193,58 +294,68 @@ Phân tử MHC (*Major Histocompatibility Complex*, ở người gọi là **HLA
 | **Tế bào T nhận diện** | **Được nhận diện bởi Tế Bào $TCD8^+$ (T Độc Cytotoxic)** | **Được nhận diện bởi Tế Bào $TCD4^+$ (T Giúp Đỡ Helper)** |
 | **Cơ chế tiêu diệt** | Tiết **Perforin và Granzyme B** kích hoạt tế bào đích chết theo chương trình (Apoptosis). | Tiết **Cytokines (IL-2, IFN-$\gamma$, IL-4)** kích hoạt đại thực bào và lympho B tiết kháng thể. |
 
-
 ---
 
 ## 4. Miễn Dịch Tế Bào T & Dịch Thể B
 Kháng thể là các glycoprotein hình chữ Y do **Tương bào (Plasma cells - biệt hóa từ Lympho B)** sản xuất:
 
-
-<div class="flowchart-card">
-  <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: Kháng Nguyên</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+<div class="flowchart-editorial-card">
+  <div class="flowchart-editorial-header">
+    <div class="flowchart-editorial-title">
+      <i class="fa-solid fa-code-fork"></i>
+      CẤU TRÚC PHÂN TỬ KHÁNG THỂ IMMUNOGLOBULIN (HÌNH CHỮ Y: MẢNH Fab vs MẢNH Fc)
+    </div>
+    <span class="flowchart-editorial-tag">Immunoglobulin Architecture</span>
   </div>
-  <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 300" width="880" height="300" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
-        </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
-        </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
-        </marker>
-      </defs>
 
-      {/* Left Column: Kháng Nguyên */}
-      <rect x="40" y="20" width="390" height="90" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.5"/>
-      <text x="235" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">Kháng Nguyên</text>
-      <line x1="60" y1="56" x2="410" y2="56" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="60" y="72" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• \ </text>
-      <text x="60" y="90" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• \ </text>
-      {/* Right Column: Kháng Nguyên */}
-      <rect x="450" y="20" width="390" height="90" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.5"/>
-      <text x="645" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">Kháng Nguyên</text>
-      <line x1="470" y1="56" x2="820" y2="56" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="470" y="72" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• /</text>
-      <text x="470" y="90" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• /</text>
-      {/* Reconvergence Path */}
-      <path d="M 235 110 L 235 126 L 440 126 L 440 142" fill="none" stroke="#059669" stroke-width="1.8" marker-end="url(#arrGreen)"/>
-      <path d="M 645 110 L 645 126 L 440 126" fill="none" stroke="#059669" stroke-width="1.8"/>
-      {/* Single Node: Vùng Biến Đổi Fab */}
-      <rect x="250" y="142" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="164" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Vùng Biến Đổi Fab</text>
-      <line x1="440" y1="188" x2="440" y2="216" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: Vùng Hằng Định Fc */}
-      <rect x="250" y="216" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="238" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Vùng Hằng Định Fc</text>
+  <div class="flowchart-editorial-viewport">
+    <svg viewBox="0 0 880 280" width="100%" height="280" xmlns="http://www.w3.org/2000/svg">
+      {/* Top Header Card */}
+      <rect x="250" y="16" width="380" height="46" rx="12" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+      <text x="440" y="36" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12.5" fill="var(--color-primary, #0284c7)">CẤU TRÚC KHÁNG THỂ ĐƠN PHÂN (MONOMER IgG)</text>
+      <text x="440" y="52" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #64748b)">2 Chuỗi nặng (H) + 2 Chuỗi nhẹ (L) nối với nhau bằng cầu nối Disulfide (-S-S-)</text>
+
+      {/* Connectors */}
+      <path d="M 440 62 L 440 82 Q 440 88 432 88 L 225 88 Q 217 88 217 94 L 217 106" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="1.8" marker-end="url(#wbcArrBlue)"/>
+      <path d="M 440 62 L 440 88 Q 440 88 448 88 L 655 88 Q 663 88 663 94 L 663 106" fill="none" stroke="#8b5cf6" stroke-width="1.8" marker-end="url(#wbcArrPurple)"/>
+
+      {/* Left Pillar: Mảnh Fab */}
+      <rect x="30" y="106" width="380" height="155" rx="12" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+      <rect x="30" y="106" width="380" height="30" rx="12" fill="rgba(2, 132, 199, 0.12)"/>
+      <text x="220" y="126" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="var(--color-primary, #0284c7)">MẢNH Fab (FRAGMENT ANTIGEN-BINDING)</text>
+      
+      <text x="45" y="152" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">• Vị trí gắn Kháng nguyên (Paratope):</text>
+      <text x="65" y="170" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #64748b)">Tạo bởi các vùng biến đổi siêu cao (Hypervariable / CDRs) của chuỗi VH và VL</text>
+      
+      <text x="45" y="192" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">• Tính đặc hiệu miễn dịch:</text>
+      <text x="65" y="210" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #64748b)">Mỗi phân tử IgG có 2 cánh tay Fab giống hệt nhau, gắn đặc hiệu 2 epitope</text>
+      
+      <text x="45" y="232" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10.5" fill="var(--color-primary, #0284c7)">• Chức năng: Trung hòa độc tố vi khuẩn, ngăn virus xâm nhập tế bào</text>
+
+      {/* Right Pillar: Mảnh Fc */}
+      <rect x="470" y="106" width="380" height="155" rx="12" fill="var(--color-surface, #ffffff)" stroke="#8b5cf6" stroke-width="1.8"/>
+      <rect x="470" y="106" width="380" height="30" rx="12" fill="rgba(139, 92, 246, 0.12)"/>
+      <text x="660" y="126" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="#7c3aed)">MẢNH Fc (FRAGMENT CRYSTALLIZABLE)</text>
+      
+      <text x="485" y="152" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">• Vùng hằng định chuỗi nặng (CH2, CH3):</text>
+      <text x="505" y="170" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #64748b)">Quyết định lớp kháng thể (IgG, IgA, IgM, IgE, IgD)</text>
+      
+      <text x="485" y="192" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">• Vị trí gắn tế bào hiệu ứng &amp; bổ thể:</text>
+      <text x="505" y="210" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #64748b)">- Gắn C1q hoạt hóa bổ thể theo con đường cổ điển</text>
+      <text x="505" y="226" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #64748b)">- Gắn thụ thể FcγR trên đại thực bào (Thực bào opsonin) và tế bào NK (ADCC)</text>
+      <text x="505" y="244" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="#7c3aed">- Gắn FcRn trên nhau thai giúp IgG vận chuyển sang máu thai nhi</text>
     </svg>
+  </div>
+
+  <div class="flowchart-editorial-legend">
+    <div class="flowchart-legend-item">
+      <span class="flowchart-legend-dot" style="background: var(--color-primary, #0284c7);"></span>
+      <span>Fab: Nhận diện và bắt giữ kháng nguyên đặc hiệu</span>
+    </div>
+    <div class="flowchart-legend-item">
+      <span class="flowchart-legend-dot" style="background: #8b5cf6;"></span>
+      <span>Fc: Kích hoạt đáp ứng hiệu ứng (Bổ thể, Thực bào, Vận chuyển qua nhau thai)</span>
+    </div>
   </div>
 </div>
 

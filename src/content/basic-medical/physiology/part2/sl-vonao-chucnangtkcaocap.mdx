@@ -51,24 +51,29 @@ sections:
 
 <PhysioQuickNav />
 
+<div style="display: flex; gap: 0.5rem; margin-bottom: 1rem; align-items: center; flex-wrap: wrap;">
+  <span class="module-badge badge-physio"><i class="fa-solid fa-bolt"></i> Sinh Lý Học • Part 2</span>
+  <span class="module-badge" style="border-color: rgba(236, 72, 153, 0.3); background: rgba(236, 72, 153, 0.1); color: var(--dsp-pink, #ec4899);"><i class="fa-solid fa-brain"></i> Vỏ Não &amp; Thần Kinh Cao Cấp</span>
+</div>
+
 {/* DẢI CHỈ SỐ NHANH (QUICK STATS STRIP) */}
-<section class="stats-strip">
+<section class="stats-strip theme-physio">
   <div class="stats-grid">
     <div class="stat-card">
-      <div class="stat-val blue">PHYS-NERV-06</div>
-      <div class="stat-lbl">Mã chuyên đề • Sinh Lý Hệ Thần Kinh & Cơ</div>
+      <div class="stat-val blue">6 Lớp &gt;95% Bán Cầu T</div>
+      <div class="stat-lbl">Tân vỏ não • Ưu thế ngôn ngữ (Broca, Wernicke, Bó Cung)</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val green">Nội Môi Ổn Định</div>
-      <div class="stat-lbl">Cân bằng gradient điện hóa & Áp suất thẩm thấu</div>
+      <div class="stat-val amber">Broca vs Wernicke</div>
+      <div class="stat-lbl">Không lưu loát, hiểu tốt (BA 44,45) vs Lưu loát 'Salad từ', mất hiểu (BA 22)</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val amber">Feedback Loop</div>
-      <div class="stat-lbl">Vòng điều hòa phản hồi thần kinh - thể dịch</div>
+      <div class="stat-val green">LTP Hải Mã (Mg²⁺/Ca²⁺)</div>
+      <div class="stat-lbl">Khử cực bật nút Mg²⁺ trên NMDA • Hoạt hóa CaMKII chèn thêm AMPA</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val purple">Dược Lý EBM</div>
-      <div class="stat-lbl">Ứng dụng lâm sàng chuẩn Guyton 14th & Ganong 26th</div>
+      <div class="stat-val purple">EEG &amp; REM (25%)</div>
+      <div class="stat-lbl">Beta 14–30Hz • Alpha 8–13Hz • N3 ngủ sâu phục hồi • REM mất trương lực Atonia</div>
     </div>
   </div>
 </section>
@@ -112,48 +117,122 @@ Các vùng liên hợp không tiếp nhận cảm giác nguyên thủy và cũng
 Mô hình xử lý ngôn ngữ kinh điển của Wernicke-Geschwind bao gồm sự phối hợp nhịp nhàng giữa các trung khu:
 
 
-<div class="flowchart-card">
-  <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: Nghe âm thanh</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+<div class="flowchart-editorial-card">
+  <div class="flowchart-editorial-header">
+    <div class="flowchart-editorial-title">
+      <i class="fa-solid fa-comment-dots"></i>
+      <span>MẠNG LƯỚI XỬ LÝ NGÔN NGỮ WERNICKE – GESCHWIND &amp; ĐỊNH KHU MẤT NGÔN NGỮ</span>
+    </div>
+    <span class="module-badge badge-physio">Language Processing</span>
   </div>
-  <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 296" width="880" height="296" xmlns="http://www.w3.org/2000/svg">
+  <div class="flowchart-editorial-viewport">
+    <svg viewBox="0 0 920 360" width="100%" height="auto" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        <marker id="arrLang" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)"/>
         </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
-        </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        <marker id="arrArc" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--dsp-purple, #a855f7)"/>
         </marker>
       </defs>
 
-      <rect x="30" y="20" width="250" height="90" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="155" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text, #0f172a)">Nghe âm thanh</text>
-      <line x1="45" y1="50" x2="265" y2="50" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <rect x="315" y="20" width="250" height="90" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text, #0f172a)">Vỏ não Thính giác (A1)</text>
-      <line x1="330" y1="50" x2="550" y2="50" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="327" y="66" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• ▼ (Dẫn truy</text>
-      <rect x="600" y="20" width="250" height="90" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="725" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text, #0f172a)">VÙNG WERNICKE (Hiểu ngôn ngữ)</text>
-      <line x1="615" y1="50" x2="835" y2="50" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="612" y="66" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• ền qua BÓ CUNG Arcuate Fasciculus)</text>
-      <line x1="440" y1="110" x2="440" y2="138" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: VÙNG BROCA (Lập kế hoạch phát  */}
-      <rect x="250" y="138" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="160" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">VÙNG BROCA (Lập kế hoạch phát âm)</text>
-      <line x1="440" y1="184" x2="440" y2="212" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: Vỏ não Vận động M1 */}
-      <rect x="250" y="212" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="234" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Vỏ não Vận động M1</text>
+      {/* 4 Stage Process Cards across width */}
+
+      {/* Stage 1: Sensory Input (A1 / V1) */}
+      <rect x="25" y="20" width="195" height="240" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <rect x="25" y="20" width="195" height="32" rx="10" fill="rgba(100, 116, 139, 0.10)"/>
+      <text x="122" y="41" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="var(--color-text, #0f172a)">1. TIẾP NHẬN ĐẦU VÀO</text>
+
+      <text x="40" y="75" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="700" fill="var(--color-text, #0f172a)">• Nghe tiếng nói:</text>
+      <text x="40" y="92" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text-muted, #64748b)">Vỏ não Thính giác (A1)</text>
+      <text x="40" y="106" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="600" fill="var(--color-text-muted, #64748b)">Brodmann 41, 42</text>
+
+      <line x1="40" y1="120" x2="205" y2="120" stroke="var(--color-border, #cbd5e1)" stroke-dasharray="3,3"/>
+
+      <text x="40" y="142" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="700" fill="var(--color-text, #0f172a)">• Đọc chữ viết:</text>
+      <text x="40" y="159" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text-muted, #64748b)">Vỏ não Thị giác (V1)</text>
+      <text x="40" y="173" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text-muted, #64748b)">➔ Hồi góc (Angular Gyrus)</text>
+      <text x="40" y="187" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="600" fill="var(--color-text-muted, #64748b)">Brodmann 39</text>
+
+      <rect x="35" y="208" width="175" height="42" rx="6" fill="rgba(2, 132, 199, 0.08)"/>
+      <text x="122" y="226" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="700" fill="var(--color-primary, #0284c7)">Chuyển mã thính giác</text>
+      <text x="122" y="240" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="600" fill="var(--color-text-muted, #64748b)">&amp; hình ảnh chữ viết</text>
+
+      {/* Connector: 1 to 2 */}
+      <line x1="220" y1="135" x2="245" y2="135" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arrLang)"/>
+
+      {/* Stage 2: Wernicke's Area */}
+      <rect x="250" y="20" width="200" height="240" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
+      <rect x="250" y="20" width="200" height="32" rx="10" fill="rgba(245, 158, 11, 0.12)"/>
+      <text x="350" y="41" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="var(--amber, #d97706)">2. HIỂU NGÔN NGỮ</text>
+
+      <text x="350" y="72" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" fill="var(--color-text, #0f172a)">VÙNG WERNICKE</text>
+      <text x="350" y="88" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="var(--amber, #d97706)">Thái dương trên sau (BA 22)</text>
+
+      <text x="265" y="118" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text, #0f172a)">• Giải mã ý nghĩa ngữ nghĩa</text>
+      <text x="265" y="134" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text, #0f172a)">• Hình thành ý niệm lời đáp</text>
+
+      {/* Aphasia Warning Box */}
+      <rect x="260" y="160" width="180" height="88" rx="6" fill="rgba(245, 158, 11, 0.10)" stroke="var(--amber, #f59e0b)" stroke-width="1"/>
+      <text x="350" y="178" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="800" fill="var(--amber, #d97706)">MẤT NGÔN NGỮ WERNICKE</text>
+      <text x="270" y="196" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="700" fill="var(--color-text, #0f172a)">• Lưu loát (Fluent) nhưng vô nghĩa</text>
+      <text x="270" y="210" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="700" fill="var(--color-danger, #ef4444)">• MẤT HOÀN TOÀN KHẢ NĂNG HIỂU</text>
+      <text x="270" y="224" font-family="'Plus Jakarta Sans', sans-serif" font-size="8.5" font-weight="600" fill="var(--color-text-muted, #64748b)">Không biết mình nói sai ("Salad từ")</text>
+
+      {/* Connector: 2 to 3 (Arcuate Fasciculus) */}
+      <line x1="450" y1="135" x2="475" y2="135" stroke="var(--dsp-purple, #a855f7)" stroke-width="2.5" marker-end="url(#arrArc)"/>
+
+      {/* Stage 3: Arcuate Fasciculus */}
+      <rect x="480" y="20" width="185" height="240" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--dsp-purple, #a855f7)" stroke-width="1.8"/>
+      <rect x="480" y="20" width="185" height="32" rx="10" fill="rgba(168, 85, 247, 0.12)"/>
+      <text x="572" y="41" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="var(--dsp-purple, #a855f7)">3. DẪN TRUYỀN</text>
+
+      <text x="572" y="72" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" fill="var(--color-text, #0f172a)">BÓ CUNG</text>
+      <text x="572" y="88" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="var(--dsp-purple, #a855f7)">(Arcuate Fasciculus)</text>
+
+      <text x="495" y="118" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text, #0f172a)">• Cầu nối chất trắng</text>
+      <text x="495" y="134" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text, #0f172a)">• Truyền tín hiệu từ</text>
+      <text x="495" y="148" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text, #0f172a)">Wernicke sang Broca</text>
+
+      {/* Aphasia Warning Box */}
+      <rect x="490" y="160" width="165" height="88" rx="6" fill="rgba(168, 85, 247, 0.10)" stroke="var(--dsp-purple, #a855f7)" stroke-width="1"/>
+      <text x="572" y="178" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="800" fill="var(--dsp-purple, #a855f7)">MẤT NGÔN NGỮ DẪN TRUYỀN</text>
+      <text x="500" y="196" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="700" fill="var(--color-text, #0f172a)">• Nói lưu loát, Hiểu tốt</text>
+      <text x="500" y="210" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="700" fill="var(--color-danger, #ef4444)">• MẤT KHẢ NĂNG LẶP LẠI</text>
+      <text x="500" y="224" font-family="'Plus Jakarta Sans', sans-serif" font-size="8.5" font-weight="600" fill="var(--color-text-muted, #64748b)">Không lặp lại được từ ngữ yêu cầu</text>
+
+      {/* Connector: 3 to 4 */}
+      <line x1="665" y1="135" x2="690" y2="135" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arrLang)"/>
+
+      {/* Stage 4: Broca's Area & M1 */}
+      <rect x="695" y="20" width="200" height="240" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-danger, #ef4444)" stroke-width="1.8"/>
+      <rect x="695" y="20" width="200" height="32" rx="10" fill="rgba(239, 68, 68, 0.12)"/>
+      <text x="795" y="41" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="var(--color-danger, #ef4444)">4. PHÁT ÂM VẬN ĐỘNG</text>
+
+      <text x="795" y="72" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" fill="var(--color-text, #0f172a)">VÙNG BROCA ➔ M1</text>
+      <text x="795" y="88" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="var(--color-danger, #ef4444)">Hồi trán dưới (BA 44, 45)</text>
+
+      <text x="710" y="118" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text, #0f172a)">• Lập trình vận động phát âm</text>
+      <text x="710" y="134" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text, #0f172a)">• M1 điều khiển lưỡi, môi, họng</text>
+
+      {/* Aphasia Warning Box */}
+      <rect x="705" y="160" width="180" height="88" rx="6" fill="rgba(239, 68, 68, 0.10)" stroke="var(--color-danger, #ef4444)" stroke-width="1"/>
+      <text x="795" y="178" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="800" fill="var(--color-danger, #ef4444)">MẤT NGÔN NGỮ BROCA</text>
+      <text x="715" y="196" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="700" fill="var(--color-danger, #ef4444)">• KHÔNG LƯU LOÁT (Non-fluent)</text>
+      <text x="715" y="210" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="700" fill="var(--color-success, #10b981)">• Khả năng HIỂU VẪN BÌNH THƯỜNG</text>
+      <text x="715" y="224" font-family="'Plus Jakarta Sans', sans-serif" font-size="8.5" font-weight="600" fill="var(--color-text-muted, #64748b)">Nói ngập ngừng từng từ, rất bực bội</text>
+
+      {/* Bottom Summary Strip */}
+      <rect x="25" y="280" width="870" height="42" rx="8" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.2"/>
+      <text x="460" y="306" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="var(--color-text, #0f172a)">
+        Mô hình Wernicke-Geschwind: Nghe/Đọc ➔ Wernicke (Hiểu) ➔ Bó Cung ➔ Broca (Lập kế hoạch) ➔ Vỏ não M1 phát âm
+      </text>
     </svg>
+  </div>
+  <div class="flowchart-editorial-legend">
+    <div class="legend-chip"><span class="legend-dot" style="background: var(--amber, #f59e0b);"></span> Vùng Wernicke (Mất ngôn ngữ lưu loát, mất hiểu)</div>
+    <div class="legend-chip"><span class="legend-dot" style="background: var(--dsp-purple, #a855f7);"></span> Bó Cung (Mất ngôn ngữ dẫn truyền, mất lặp lại)</div>
+    <div class="legend-chip"><span class="legend-dot" style="background: var(--color-danger, #ef4444);"></span> Vùng Broca (Mất ngôn ngữ không lưu loát, hiểu tốt)</div>
   </div>
 </div>
 
@@ -178,48 +257,79 @@ Mô hình xử lý ngôn ngữ kinh điển của Wernicke-Geschwind bao gồm s
 Hiện tượng tăng cường hiệu quả truyền tin qua synapse kéo dài (LTP) tại hồi hải mã là nền tảng cốt lõi của quá trình học tập và hình thành trí nhớ:
 
 
-<div class="flowchart-card">
-  <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: Kích thích dồn dập tần số cao</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+<div class="flowchart-editorial-card">
+  <div class="flowchart-editorial-header">
+    <div class="flowchart-editorial-title">
+      <i class="fa-solid fa-dna"></i>
+      <span>CƠ CHẾ PHÂN TỬ TĂNG CƯỜNG DÀI HẠN (LTP) TẠI HỒI HẢI MÃ — NỀN TẢNG TRÍ NHỚ</span>
+    </div>
+    <span class="module-badge badge-physio">Molecular Memory</span>
   </div>
-  <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 390" width="880" height="390" xmlns="http://www.w3.org/2000/svg">
+  <div class="flowchart-editorial-viewport">
+    <svg viewBox="0 0 920 420" width="100%" height="auto" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        <marker id="arrLtp" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)"/>
         </marker>
         <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-success, #10b981)"/>
         </marker>
         <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--amber, #d97706)"/>
         </marker>
       </defs>
 
-      {/* Single Node: Kích thích dồn dập tần số cao */}
-      <rect x="250" y="20" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Kích thích dồn dập tần số cao</text>
-      <line x1="440" y1="66" x2="440" y2="94" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: Khử cực mạnh màng sau synapse  */}
-      <rect x="165" y="94" width="550" height="78" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Khử cực mạnh màng sau synapse qua thụ thể AMPA</text>
-      <text x="189" y="138" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Đẩy nút ion Magie (Mg2+) đang chặn lỗ thụ thể NMDA văng ra</text>
-      <text x="189" y="156" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  ngoài</text>
-      <line x1="440" y1="172" x2="440" y2="200" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: Kênh Thụ Thể NMDA MỞ TOANG */}
-      <rect x="250" y="200" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="222" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Kênh Thụ Thể NMDA MỞ TOANG</text>
-      <line x1="440" y1="246" x2="440" y2="274" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: Hoạt hóa Enzyme CaMKII &amp; Prote */}
-      <rect x="169.25" y="274" width="541.5" height="78" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="296" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Hoạt hóa Enzyme CaMKII &amp; Protein Kinase C</text>
-      <text x="193.25" y="318" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ├──► (1) Gắn thêm hàng loạt thụ thể AMPA mới lên màng sau</text>
-      <text x="193.25" y="336" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  synapse</text>
+      {/* Step 1: High Frequency Stimulation */}
+      <rect x="250" y="16" width="420" height="42" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+      <text x="460" y="34" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" fill="var(--color-primary, #0284c7)">1. KÍCH THÍCH DỒN DẬP TẦN SỐ CAO (TETANIC STIMULATION)</text>
+      <text x="460" y="49" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="600" fill="var(--color-text-muted, #64748b)">Cúc tiền synapse giải phóng lượng lớn chất dẫn truyền thần kinh Glutamate</text>
+
+      <line x1="460" y1="58" x2="460" y2="78" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arrLtp)"/>
+
+      {/* Step 2: AMPA Depolarization */}
+      <rect x="230" y="80" width="460" height="44" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.6"/>
+      <text x="460" y="98" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="800" fill="var(--color-text, #0f172a)">2. GLUTAMATE KÍCH HOẠT THỤ THỂ AMPA (Na⁺ VÀO)</text>
+      <text x="460" y="114" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="600" fill="var(--color-text-muted, #64748b)">Dòng Na⁺ vào ồ ạt khử cực mạnh mẽ màng sau synapse (V_m tăng cao)</text>
+
+      <line x1="460" y1="124" x2="460" y2="144" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arrLtp)"/>
+
+      {/* Step 3: Mg2+ Unblock */}
+      <rect x="210" y="146" width="500" height="46" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--amber, #f59e0b)" stroke-width="2"/>
+      <text x="460" y="165" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" fill="var(--amber, #d97706)">3. BẬT NÚT ION MAGIE (Mg²⁺) RA KHỎI LỖ THỤ THỂ NMDA</text>
+      <text x="460" y="181" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="600" fill="var(--color-text-muted, #64748b)">Điện tích dương nội bào đẩy ion Mg²⁺ đang chặn lỗ kênh NMDA văng ra ngoài</text>
+
+      <line x1="460" y1="192" x2="460" y2="212" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arrLtp)"/>
+
+      {/* Step 4: Ca2+ Influx */}
+      <rect x="230" y="214" width="460" height="44" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-success, #10b981)" stroke-width="2"/>
+      <text x="460" y="232" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="800" fill="var(--color-success, #10b981)">4. KÊNH NMDA MỞ TOANG ➔ DÒNG Ca²⁺ Ồ ẠT VÀO BÀO TƯƠNG</text>
+      <text x="460" y="248" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="600" fill="var(--color-text-muted, #64748b)">Canxi đóng vai trò là sứ giả thứ 2 kích hoạt enzyme CaMKII và PKC</text>
+
+      {/* Bifurcation to Dual Remodeling */}
+      <path d="M 330 258 L 330 282 L 235 282 L 235 300" fill="none" stroke="var(--color-success, #10b981)" stroke-width="2" marker-end="url(#arrGreen)"/>
+      <path d="M 590 258 L 590 282 L 685 282 L 685 300" fill="none" stroke="var(--amber, #d97706)" stroke-width="2" marker-end="url(#arrAmber)"/>
+
+      {/* Left Remodeling: Postsynaptic AMPA insertion */}
+      <rect x="40" y="302" width="390" height="98" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-success, #10b981)" stroke-width="1.8"/>
+      <rect x="40" y="302" width="390" height="26" rx="10" fill="rgba(16, 185, 129, 0.12)"/>
+      <text x="235" y="320" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="var(--color-success, #10b981)">TÁI CẤU TRÚC MÀNG SAU SYNAPSE (CaMKII)</text>
+      <text x="55" y="344" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="var(--color-text, #0f172a)">• Chèn thêm hàng loạt thụ thể AMPA mới lên màng</text>
+      <text x="55" y="360" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text-muted, #64748b)">• Tăng độ dẫn điện của thụ thể AMPA có sẵn</text>
+      <text x="55" y="378" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="var(--color-success, #10b981)">➔ Tăng vọt đáp ứng với mỗi xung kích thích tương lai</text>
+
+      {/* Right Remodeling: Retrograde NO Signal */}
+      <rect x="490" y="302" width="390" height="98" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
+      <rect x="490" y="302" width="390" height="26" rx="10" fill="rgba(245, 158, 11, 0.12)"/>
+      <text x="685" y="320" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="var(--amber, #d97706)">TÍN HIỆU NGƯỢC DÒNG TIỀN SYNAPSE (NO)</text>
+      <text x="505" y="344" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="var(--color-text, #0f172a)">• Tổng hợp Nitric Oxide (NO) khuếch tán ngược về cúc tiền</text>
+      <text x="505" y="360" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text-muted, #64748b)">• Thúc đẩy tiền synapse phóng thích thêm nhiều Glutamate</text>
+      <text x="505" y="378" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="var(--amber, #d97706)">➔ Khóa chặt vòng kết nối synapse trí nhớ lâu dài</text>
     </svg>
+  </div>
+  <div class="flowchart-editorial-legend">
+    <div class="legend-chip"><span class="legend-dot" style="background: var(--color-primary, #0284c7);"></span> Khử cực AMPA</div>
+    <div class="legend-chip"><span class="legend-dot" style="background: var(--amber, #f59e0b);"></span> Bật nút Mg²⁺ trên NMDA</div>
+    <div class="legend-chip"><span class="legend-dot" style="background: var(--color-success, #10b981);"></span> Dòng Ca²⁺ &amp; Chèn thêm AMPA (Ghi nhớ dài hạn)</div>
   </div>
 </div>
 

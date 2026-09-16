@@ -55,24 +55,29 @@ sections:
 
 <PhysioQuickNav />
 
+<div style="display: flex; gap: 0.5rem; margin-bottom: 1rem; align-items: center; flex-wrap: wrap;">
+  <span class="module-badge badge-physio"><i class="fa-solid fa-heart-pulse"></i> Sinh Lý Học • Part 1</span>
+  <span class="module-badge" style="border-color: rgba(13, 148, 136, 0.3); background: rgba(13, 148, 136, 0.1); color: var(--dsp-teal, #0d9488);"><i class="fa-solid fa-layer-group"></i> Sinh Lý Màng Tế Bào</span>
+</div>
+
 {/* DẢI CHỈ SỐ NHANH (QUICK STATS STRIP) */}
-<section class="stats-strip">
+<section class="stats-strip theme-physio">
   <div class="stats-grid">
     <div class="stat-card">
-      <div class="stat-val blue">PHYS-CELL-02</div>
-      <div class="stat-lbl">Mã chuyên đề • Sinh Lý Tế Bào & Nội Môi</div>
+      <div class="stat-val blue">7.5 – 10 nm</div>
+      <div class="stat-lbl">Độ dày màng kép phospholipid khảm lỏng (Singer & Nicolson)</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val green">Nội Môi Ổn Định</div>
-      <div class="stat-lbl">Cân bằng gradient điện hóa & Áp suất thẩm thấu</div>
+      <div class="stat-val green">-70 đến -90 mV</div>
+      <div class="stat-lbl">Điện thế nghỉ màng tế bào ($V_m$ phân cực âm mặt trong)</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val amber">Feedback Loop</div>
-      <div class="stat-lbl">Vòng điều hòa phản hồi thần kinh - thể dịch</div>
+      <div class="stat-val amber">3 Na⁺ / 2 K⁺ / 1 ATP</div>
+      <div class="stat-lbl">Tỷ lệ bơm sinh điện nguyên phát Na⁺/K⁺-ATPase (Tiêu tốn 1/3 ATP)</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val purple">Dược Lý EBM</div>
-      <div class="stat-lbl">Ứng dụng lâm sàng chuẩn Guyton 14th & Ganong 26th</div>
+      <div class="stat-val purple">280 – 295 mOsm</div>
+      <div class="stat-lbl">Áp suất thẩm thấu đẳng trương dịch ngoại bào ECF</div>
     </div>
   </div>
 </section>
@@ -85,13 +90,121 @@ Màng tế bào (*Plasma Membrane*) là một lớp màng sinh học siêu mỏn
 - **Cholesterol**: Xen kẽ giữa các phân tử phospholipid, quyết định độ lỏng và độ bền cơ học của màng tế bào.
 - **Protein màng**: Chiếm 50%–55% khối lượng, gồm *Protein xuyên màng (Integral/Transmembrane)* làm kênh ion, bơm vận chuyển, thụ thể và *Protein ngoại vi (Peripheral)* gắn ở mặt trong màng tham gia truyền tin nội bào.
 
-```
-Mặt Ngoại Bào [ECF] (Giàu Na+, Cl-, Ca2+)
-  🔴~🔴~🔴~🔴~🔴~🔴~🔴~🔴~🔴~🔴 (Đầu ưa nước - Hydrophilic Heads)
-  || || || || || || || || || || (Đuôi kỵ nước - Hydrophobic Tails: Rào cản lipid)
-  🔴~🔴~🔴~🔴~🔴~🔴~🔴~🔴~🔴~🔴 (Đầu ưa nước)
-Mặt Nội Bào [ICF] (Giàu K+, Mg2+, Protein-, PO4 3-)
-```
+<div class="flowchart-editorial-card">
+  <div class="flowchart-editorial-header">
+    <div class="flowchart-editorial-title">
+      <i class="fa-solid fa-atom"></i>
+      <span>SƠ ĐỒ CẤU TRÚC MÀNG VÀ 4 CƠ CHẾ VẬN CHUYỂN QUA MÀNG TẾ BÀO</span>
+    </div>
+    <div class="flowchart-editorial-badges">
+      <span class="flowchart-editorial-badge">Guyton 14th • Editorial Vector</span>
+    </div>
+  </div>
+  <div class="flowchart-editorial-viewport">
+    <svg class="flowchart-editorial-svg" viewBox="0 0 940 430" width="940" height="430" xmlns="http://www.w3.org/2000/svg" font-family="'Plus Jakarta Sans', 'Inter', sans-serif">
+      <defs>
+        <marker id="mb-arr-blue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7" />
+        </marker>
+        <marker id="mb-arr-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669" />
+        </marker>
+        <marker id="mb-arr-red" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626" />
+        </marker>
+        <marker id="mb-arr-purple" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#8b5cf6" />
+        </marker>
+      </defs>
+
+      {/*  */}
+      <rect x="20" y="15" width="900" height="110" rx="8" fill="rgba(2, 132, 199, 0.04)" />
+      <text x="40" y="38" font-size="12" font-weight="700" fill="#0284c7">
+        DỊCH NGOẠI BÀO [ECF] (Na⁺ 142 mM, Cl⁻ 103 mM, Ca²⁺ 2.4 mM, Glucose)
+      </text>
+
+      {/*  */}
+      <rect x="20" y="135" width="900" height="110" fill="rgba(100, 116, 139, 0.08)" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="4,4" />
+      <rect x="25" y="172" width="130" height="34" rx="6" fill="#ffffff" stroke="#94a3b8" stroke-width="1" />
+      <text x="90" y="193" text-anchor="middle" font-size="11" font-weight="800" fill="#475569">MÀNG LIPID KÉP</text>
+      <text x="90" y="209" text-anchor="middle" font-size="9" font-weight="600" fill="#64748b">Dày 7.5 – 10 nm</text>
+
+      {/*  */}
+      <g fill="#0284c7" opacity="0.8">
+        <circle cx="170" cy="144" r="6"/><circle cx="186" cy="144" r="6"/><circle cx="202" cy="144" r="6"/><circle cx="218" cy="144" r="6"/>
+        <circle cx="330" cy="144" r="6"/><circle cx="346" cy="144" r="6"/><circle cx="362" cy="144" r="6"/><circle cx="378" cy="144" r="6"/>
+        <circle cx="550" cy="144" r="6"/><circle cx="566" cy="144" r="6"/><circle cx="582" cy="144" r="6"/><circle cx="598" cy="144" r="6"/>
+        <circle cx="750" cy="144" r="6"/><circle cx="766" cy="144" r="6"/><circle cx="782" cy="144" r="6"/><circle cx="798" cy="144" r="6"/>
+
+        <circle cx="170" cy="236" r="6"/><circle cx="186" cy="236" r="6"/><circle cx="202" cy="236" r="6"/><circle cx="218" cy="236" r="6"/>
+        <circle cx="330" cy="236" r="6"/><circle cx="346" cy="236" r="6"/><circle cx="362" cy="236" r="6"/><circle cx="378" cy="236" r="6"/>
+        <circle cx="550" cy="236" r="6"/><circle cx="566" cy="236" r="6"/><circle cx="582" cy="236" r="6"/><circle cx="598" cy="236" r="6"/>
+        <circle cx="750" cy="236" r="6"/><circle cx="766" cy="236" r="6"/><circle cx="782" cy="236" r="6"/><circle cx="798" cy="236" r="6"/>
+      </g>
+
+      {/*  */}
+      <rect x="20" y="255" width="900" height="155" rx="8" fill="rgba(16, 185, 129, 0.04)" />
+      <text x="40" y="395" font-size="12" font-weight="700" fill="#059669">
+        DỊCH NỘI BÀO [ICF] (K⁺ 140 mM, Mg²⁺ 58 mM, Protein⁻, Phosphates | Vm = -70 đến -90 mV)
+      </text>
+
+      {/*  */}
+      <rect x="160" y="55" width="85" height="28" rx="6" fill="#ffffff" stroke="#0284c7" stroke-width="1.5" />
+      <text x="202" y="73" text-anchor="middle" font-size="10" font-weight="700" fill="#0284c7">O₂, CO₂, Lipid</text>
+      <path d="M 202 85 L 202 295" fill="none" stroke="#0284c7" stroke-width="2.5" marker-end="url(#mb-arr-blue)" />
+      <rect x="155" y="305" width="95" height="50" rx="8" fill="#ffffff" stroke="#0284c7" stroke-width="1.5" />
+      <text x="202" y="323" text-anchor="middle" font-size="10" font-weight="800" fill="#0284c7">KHUẾCH TÁN</text>
+      <text x="202" y="337" text-anchor="middle" font-size="9" font-weight="600" fill="#475569">Đơn Thuần</text>
+      <text x="202" y="349" text-anchor="middle" font-size="8" font-weight="500" fill="#64748b">Fick: Tuyến tính</text>
+
+      {/*  */}
+      <rect x="325" y="55" width="90" height="28" rx="6" fill="#ffffff" stroke="#059669" stroke-width="1.5" />
+      <text x="370" y="73" text-anchor="middle" font-size="10" font-weight="700" fill="#059669">Glucose (GLUT)</text>
+      <rect x="340" y="148" width="60" height="84" rx="10" fill="rgba(16, 185, 129, 0.15)" stroke="#059669" stroke-width="2" />
+      <text x="370" y="195" text-anchor="middle" font-size="11" font-weight="800" fill="#059669">GLUT</text>
+      <path d="M 370 85 L 370 145" fill="none" stroke="#059669" stroke-width="2" />
+      <path d="M 370 234 L 370 295" fill="none" stroke="#059669" stroke-width="2" marker-end="url(#mb-arr-green)" />
+      <rect x="320" y="305" width="100" height="50" rx="8" fill="#ffffff" stroke="#059669" stroke-width="1.5" />
+      <text x="370" y="323" text-anchor="middle" font-size="10" font-weight="800" fill="#059669">KHUẾCH TÁN</text>
+      <text x="370" y="337" text-anchor="middle" font-size="9" font-weight="600" fill="#475569">Có Hỗ Trợ</text>
+      <text x="370" y="349" text-anchor="middle" font-size="8" font-weight="700" fill="#059669">Bão hòa Vmax</text>
+
+      {/*  */}
+      <rect x="525" y="140" width="115" height="100" rx="14" fill="rgba(217, 119, 6, 0.12)" stroke="#d97706" stroke-width="2" />
+      <text x="582" y="178" text-anchor="middle" font-size="11" font-weight="800" fill="#d97706">Na⁺/K⁺-ATPase</text>
+      <text x="582" y="198" text-anchor="middle" font-size="10" font-weight="700" fill="#dc2626">1 ATP Thủy Phân</text>
+      <text x="582" y="218" text-anchor="middle" font-size="9" font-weight="600" fill="#d97706">Đích Digoxin</text>
+      <path d="M 552 260 L 552 95" fill="none" stroke="#dc2626" stroke-width="2.5" marker-end="url(#mb-arr-red)" />
+      <rect x="515" y="55" width="75" height="26" rx="5" fill="#ffffff" stroke="#dc2626" stroke-width="1" />
+      <text x="552" y="72" text-anchor="middle" font-size="9" font-weight="700" fill="#dc2626">3 Na⁺ Ra ECF</text>
+      <path d="M 612 95 L 612 295" fill="none" stroke="#059669" stroke-width="2.5" marker-end="url(#mb-arr-green)" />
+      <rect x="575" y="305" width="75" height="26" rx="5" fill="#ffffff" stroke="#059669" stroke-width="1" />
+      <text x="612" y="322" text-anchor="middle" font-size="9" font-weight="700" fill="#059669">2 K⁺ Vào ICF</text>
+      <rect x="525" y="340" width="115" height="36" rx="6" fill="#fffbeb" stroke="#d97706" stroke-width="1" />
+      <text x="582" y="356" text-anchor="middle" font-size="9" font-weight="800" fill="#d97706">CHỦ ĐỘNG NGUYÊN PHÁT</text>
+      <text x="582" y="369" text-anchor="middle" font-size="8" font-weight="500" fill="#64748b">Ngược Gradient Điện Hóa</text>
+
+      {/*  */}
+      <rect x="745" y="140" width="120" height="100" rx="14" fill="rgba(139, 92, 246, 0.12)" stroke="#8b5cf6" stroke-width="2" />
+      <text x="805" y="178" text-anchor="middle" font-size="11" font-weight="800" fill="#8b5cf6">ĐỒNG VẬN SGLT</text>
+      <text x="805" y="198" text-anchor="middle" font-size="10" font-weight="700" fill="#8b5cf6">Na⁺ + Glucose</text>
+      <text x="805" y="218" text-anchor="middle" font-size="9" font-weight="600" fill="#64748b">Đích SGLT2i</text>
+      <path d="M 775 90 L 775 295" fill="none" stroke="#0284c7" stroke-width="2" marker-end="url(#mb-arr-blue)" />
+      <path d="M 835 90 L 835 295" fill="none" stroke="#8b5cf6" stroke-width="2" marker-end="url(#mb-arr-purple)" />
+      <rect x="740" y="55" width="130" height="26" rx="5" fill="#ffffff" stroke="#8b5cf6" stroke-width="1" />
+      <text x="805" y="72" text-anchor="middle" font-size="9" font-weight="700" fill="#8b5cf6">Na⁺ + Glucose (Ống thận)</text>
+      <rect x="740" y="340" width="130" height="36" rx="6" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="1" />
+      <text x="805" y="356" text-anchor="middle" font-size="9" font-weight="800" fill="#8b5cf6">CHỦ ĐỘNG THỨ PHÁT</text>
+      <text x="805" y="369" text-anchor="middle" font-size="8" font-weight="500" fill="#64748b">Mượn Thế Năng Gradient Na⁺</text>
+    </svg>
+  </div>
+  <div class="flowchart-editorial-legend">
+    <span class="flowchart-legend-item"><span class="legend-dot blue"></span> Khuếch tán đơn thuần: Fick, không tốn năng lượng</span>
+    <span class="flowchart-legend-item"><span class="legend-dot green"></span> Khuếch tán có hỗ trợ: GLUT, bão hòa Vmax</span>
+    <span class="flowchart-legend-item"><span class="legend-dot amber"></span> Chủ động nguyên phát: Bơm Na⁺/K⁺-ATPase (1 ATP)</span>
+    <span class="flowchart-legend-item"><span class="legend-dot red"></span> Chủ động thứ phát: SGLT (Thế năng gradient Na⁺)</span>
+  </div>
+</div>
 
 
   Động lực ròng quyết định chiều và tốc độ di chuyển của một ion qua màng là sự tổng hợp vector của hai lực độc lập:

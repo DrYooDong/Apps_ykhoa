@@ -51,24 +51,33 @@ sections:
 
 <PhysioQuickNav />
 
+<div class="module-badge-group">
+  <span class="badge badge-physio"><i class="fa-solid fa-lungs"></i> GIẢI PHẪU - SINH LÝ HỌC</span>
+  <span class="badge badge-outline">Hệ Hô Hấp • Guyton 14th Ch.38 • Ganong 26th Ch.34</span>
+</div>
+
 {/* DẢI CHỈ SỐ NHANH (QUICK STATS STRIP) */}
-<section class="stats-strip">
+<section class="stats-strip theme-physio">
   <div class="stats-grid">
     <div class="stat-card">
-      <div class="stat-val blue">PHYS-RESP-01</div>
-      <div class="stat-lbl">Mã chuyên đề • Sinh Lý Tim Mạch & Hô Hấp</div>
+      <div class="stat-val blue">500 mL</div>
+      <div class="stat-lbl">TV (Tidal Volume) • Thể tích khí lưu thông lúc nghỉ</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val green">Nội Môi Ổn Định</div>
-      <div class="stat-lbl">Cân bằng gradient điện hóa & Áp suất thẩm thấu</div>
+      <div class="stat-val amber">150 mL</div>
+      <div class="stat-lbl">VD (Dead Space) • Khoảng chết giải phẫu đường thở</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val amber">Feedback Loop</div>
-      <div class="stat-lbl">Vòng điều hòa phản hồi thần kinh - thể dịch</div>
+      <div class="stat-val green">4.2 L/min</div>
+      <div class="stat-lbl">VA (Alveolar Vent) • Thông khí phế nang có ích</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val purple">Dược Lý EBM</div>
-      <div class="stat-lbl">Ứng dụng lâm sàng chuẩn Guyton 14th & Ganong 26th</div>
+      <div class="stat-val purple">2.300 mL</div>
+      <div class="stat-lbl">FRC • Dung tích cặn chức năng (Điểm cân bằng)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val blue">5.800 mL</div>
+      <div class="stat-lbl">TLC • Dung tích toàn phổi sau hít vào tối đa</div>
     </div>
   </div>
 </section>
@@ -76,46 +85,76 @@ sections:
 ---
 
 ## 1. Cấu Trúc Phân Vùng Hệ Hô Hấp
-Cây khí phế quản phân nhánh 23 thế hệ, được chia thành hai vùng chức năng rạch ròi:
-
+Cây khí phế quản phân nhánh qua **23 thế hệ**, được chia thành hai vùng chức năng rạch ròi với đặc tính mô học và sinh lý khác biệt hoàn toàn:
 
 <div class="flowchart-card">
   <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: VÙNG DẪN KHÍ (Thế Hệ 0 – 16): Khí quản ──► Phế quản ──► Tiểu phế quản tận</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+    <div class="flowchart-title"><i class="fa-solid fa-lungs" style="color: var(--color-primary, #0284c7);"></i> PHÂN VÙNG CHỨC NĂNG CÂY KHÍ PHẾ QUẢN (23 THẾ HỆ)</div>
+    <span class="badge badge-blue">Editorial Architecture</span>
   </div>
   <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 314" width="880" height="314" xmlns="http://www.w3.org/2000/svg">
+    <svg class="flowchart-svg" viewBox="0 0 900 360" width="100%" height="360" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrRespBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
         </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrRespGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
-        </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
         </marker>
       </defs>
 
-      {/* Single Node: VÙNG DẪN KHÍ (Thế Hệ 0 – 16):  */}
-      <rect x="145" y="20" width="590" height="132" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">VÙNG DẪN KHÍ (Thế Hệ 0 – 16): Khí quản ──► Phế quản ──►</text>
-      <text x="440" y="60" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--red, #dc2626)">Tiểu phế quản tận</text>
-      <text x="169" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Chức năng: Làm ấm (37°C), Làm ẩm (100% hơi nước) và Lọc sạch</text>
-      <text x="169" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  bụi bẩn qua thang cuốn nhầy - lông chuyển.</text>
-      <text x="169" y="118" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Tạo nên KHOẢNG CHẾT GIẢI PHẪU (Anatomic Dead Space: VD ≈ 150</text>
-      <text x="169" y="136" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  mL) - Hoàn toàn không tham gia trao đổi khí.</text>
-      <line x1="440" y1="152" x2="440" y2="180" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: VÙNG HÔ HẤP (Thế Hệ 17 – 23):  */}
-      <rect x="150" y="180" width="580" height="96" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="202" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">VÙNG HÔ HẤP (Thế Hệ 17 – 23): Tiểu phế quản hô hấp ──►</text>
-      <text x="440" y="220" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--color-text, #0f172a)">Ống phế nang ──► Túi phế nang</text>
-      <text x="174" y="242" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Chứa khoảng 300 – 500 triệu phế nang tạo nên Diện tích bề</text>
-      <text x="174" y="260" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  mặt trao đổi khí khổng lồ (100 m2 / bằng sân tennis).</text>
+      {/* CỘT TRÁI: VÙNG DẪN KHÍ */}
+      <rect x="30" y="25" width="405" height="280" rx="14" fill="var(--color-surface, #ffffff)" stroke="#0284c7" stroke-width="2"/>
+      <rect x="30" y="25" width="405" height="42" rx="14" fill="#0284c7" fill-opacity="0.12"/>
+      <text x="232" y="52" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="14" fill="#0284c7">VÙNG DẪN KHÍ (Thế hệ 0 — 16)</text>
+
+      {/* Steps Vùng Dẫn Khí */}
+      <rect x="50" y="82" width="365" height="46" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.2"/>
+      <text x="65" y="102" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="12" fill="var(--color-text, #0f172a)">Khí quản (G0) ──► Phế quản chính (G1-G3)</text>
+      <text x="65" y="118" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #64748b)">Có sụn nâng đỡ hình chữ C, giữ đường thở luôn mở</text>
+
+      <path d="M 232 128 L 232 144" fill="none" stroke="#0284c7" stroke-width="1.6" marker-end="url(#arrRespBlue)"/>
+
+      <rect x="50" y="148" width="365" height="46" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.2"/>
+      <text x="65" y="168" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="12" fill="var(--color-text, #0f172a)">Tiểu phế quản (G4-G15) ──► TPQ Tận (G16)</text>
+      <text x="65" y="184" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #64748b)">Mất sụn, có lớp cơ trơn dày chịu chi phối thần kinh tự chủ</text>
+
+      <rect x="50" y="212" width="365" height="75" rx="8" fill="var(--blue-bg, #eff6ff)" stroke="#93c5fd" stroke-width="1.2"/>
+      <text x="65" y="232" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="#1d4ed8">• Chức năng:</text>
+      <text x="145" y="232" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">Làm ấm (37°C), Làm ẩm (100%), Lọc sạch</text>
+      <text x="65" y="252" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="#1d4ed8">• Khoảng chết:</text>
+      <text x="155" y="252" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">VD ≈ 150 mL (Anatomic Dead Space)</text>
+      <text x="65" y="272" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="#b91c1c" font-weight="600">⚠ Tuyệt đối không tham gia trao đổi khí phế nang</text>
+
+      {/* CỘT PHẢI: VÙNG HÔ HẤP */}
+      <rect x="465" y="25" width="405" height="280" rx="14" fill="var(--color-surface, #ffffff)" stroke="#059669" stroke-width="2"/>
+      <rect x="465" y="25" width="405" height="42" rx="14" fill="#059669" fill-opacity="0.12"/>
+      <text x="667" y="52" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="14" fill="#059669">VÙNG HÔ HẤP (Thế hệ 17 — 23)</text>
+
+      {/* Steps Vùng Hô Hấp */}
+      <rect x="485" y="82" width="365" height="46" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.2"/>
+      <text x="500" y="102" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="12" fill="var(--color-text, #0f172a)">Tiểu phế quản hô hấp (G17 — G19)</text>
+      <text x="500" y="118" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #64748b)">Thành bắt đầu xuất hiện rải rác các túi phế nang đầu tiên</text>
+
+      <path d="M 667 128 L 667 144" fill="none" stroke="#059669" stroke-width="1.6" marker-end="url(#arrRespGreen)"/>
+
+      <rect x="485" y="148" width="365" height="46" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.2"/>
+      <text x="500" y="168" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="12" fill="var(--color-text, #0f172a)">Ống phế nang (G20-G22) ──► Túi phế nang (G23)</text>
+      <text x="500" y="184" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #64748b)">Cụm chùm phế nang tận cùng, mạng mao mạch bọc kín</text>
+
+      <rect x="485" y="212" width="365" height="75" rx="8" fill="var(--green-bg, #f0fdf4)" stroke="#86efac" stroke-width="1.2"/>
+      <text x="500" y="232" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="#15803d">• Số lượng:</text>
+      <text x="575" y="232" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">300 — 500 triệu phế nang ở cả 2 phổi</text>
+      <text x="500" y="252" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="#15803d">• Diện tích:</text>
+      <text x="575" y="252" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">≈ 100 m² (Tương đương 1 sân tennis)</text>
+      <text x="500" y="272" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="#15803d" font-weight="600">✓ Nơi diễn ra 100% quá trình trao đổi khí O2 và CO2</text>
+
+      {/* DẢI CHÚ THÍCH DƯỚI */}
+      <rect x="30" y="318" width="840" height="30" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #e2e8f0)" stroke-width="1"/>
+      <circle cx="50" cy="333" r="5" fill="#0284c7"/>
+      <text x="62" y="337" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">Vùng dẫn khí: Vận chuyển đối lưu khí (Convection), sụn & cơ trơn</text>
+      <circle cx="485" cy="333" r="5" fill="#059669"/>
+      <text x="497" y="337" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">Vùng hô hấp: Vận chuyển khuếch tán thụ động (Diffusion), phế nang mỏng</text>
     </svg>
   </div>
 </div>
@@ -140,58 +179,164 @@ Cây khí phế quản phân nhánh 23 thế hệ, được chia thành hai vùn
 ---
 
 ## 3. Định Luật Laplace & Surfactant
-Mặt trong phế nang được lót bởi một lớp dịch mỏng tạo ra **Sức căng bề mặt (Surface Tension - $T$)** có xu hướng kéo phế nang xẹp lại. Theo **Định luật Laplace**:
+Mặt trong phế nang được lót bởi một lớp dịch mỏng tạo ra **Sức căng bề mặt (Surface Tension — $T$)** có xu hướng kéo phế nang xẹp lại. Theo **Định luật Laplace**:
 
 $$P = \frac{2 \cdot T}{r}$$
 
-- $P$: Áp suất xẹp phế nang.
-- $T$: Sức căng bề mặt của lớp dịch lót.
-- $r$: Bán kính phế nang.
+- $P$: Áp suất xẹp hướng tâm kéo sụp phế nang.
+- $T$: Sức căng bề mặt của lớp dịch lót ($N/m$).
+- $r$: Bán kính phế nang ($m$).
 
-```
-NẾU KHÔNG CÓ SURFACTANT:
-  • Phế nang nhỏ (r nhỏ) ──► Áp suất xẹp P CỰC LỚN
-  • Phế nang lớn (r lớn) ──► Áp suất xẹp P NHỎ HƠN
-  ──► Không khí từ phế nang nhỏ bị ép dồn hết sang phế nang lớn ──► PHẾ NANG NHỎ XẸP HOÀN TOÀN!
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-soap" style="color: var(--color-primary, #0284c7);"></i> ĐỊNH LUẬT LAPLACE & VAI TRÒ CHỐNG XẸP CỦA SURFACTANT</div>
+    <span class="badge badge-amber">Pathophysiology Matrix</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 900 360" width="100%" height="360" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrLapRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+        <marker id="arrLapGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+      </defs>
 
-KHI CÓ SURFACTANT (Tế bào Phế nang Type II tiết):
-  • Phân tử Surfactant (DPPC) bị nén đậm đặc ở phế nang nhỏ ──► GIẢM MẠNH SỨC CĂNG BỀ MẶT T
-  ──► Cân bằng áp suất P giữa các phế nang lớn và nhỏ ──► PHẾ NANG KHÔNG BỊ XẸP, ỔN ĐỊNH ĐỒNG ĐỀU!
-```
+      {/* CỘT TRÁI: KHÔNG CÓ SURFACTANT */}
+      <rect x="30" y="20" width="405" height="235" rx="14" fill="var(--color-surface, #ffffff)" stroke="#dc2626" stroke-width="2"/>
+      <rect x="30" y="20" width="405" height="40" rx="14" fill="#dc2626" fill-opacity="0.12"/>
+      <text x="232" y="46" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="13.5" fill="#dc2626">KHÔNG CÓ SURFACTANT (Trẻ non tháng NRDS)</text>
 
+      <rect x="50" y="75" width="365" height="48" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.2"/>
+      <text x="65" y="94" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text, #0f172a)">Sức căng bề mặt T bằng nhau ở cả 2 phế nang</text>
+      <text x="65" y="112" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #64748b)">Không có chất hoạt diện điều hòa: T1 (nhỏ) = T2 (lớn)</text>
+
+      <path d="M 232 123 L 232 138" fill="none" stroke="#dc2626" stroke-width="1.6" marker-end="url(#arrLapRed)"/>
+
+      <rect x="50" y="142" width="365" height="100" rx="8" fill="var(--red-bg, #fef2f2)" stroke="#fca5a5" stroke-width="1.2"/>
+      <text x="65" y="162" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="#b91c1c">• Phế nang nhỏ (r1 &lt; r2):</text>
+      <text x="220" y="162" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="#b91c1c">P1 = 2T / r1 (Áp suất xẹp CỰC CAO)</text>
+      <text x="65" y="182" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="#b91c1c">• Phế nang lớn (r2 &gt; r1):</text>
+      <text x="220" y="182" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">P2 = 2T / r2 (Áp suất xẹp thấp hơn)</text>
+      <text x="65" y="204" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="#b91c1c" font-weight="700">──► Khí dồn từ phế nang nhỏ sang phế nang lớn</text>
+      <text x="65" y="224" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="#dc2626" font-weight="800">❌ PHẾ NANG NHỎ BỊ XẸP HOÀN TOÀN (Atelectasis)!</text>
+
+      {/* CỘT PHẢI: CÓ SURFACTANT */}
+      <rect x="465" y="20" width="405" height="235" rx="14" fill="var(--color-surface, #ffffff)" stroke="#059669" stroke-width="2"/>
+      <rect x="465" y="20" width="405" height="40" rx="14" fill="#059669" fill-opacity="0.12"/>
+      <text x="667" y="46" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="13.5" fill="#059669">CÓ SURFACTANT (Tế Bào Type II Tiết DPPC)</text>
+
+      <rect x="485" y="75" width="365" height="48" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.2"/>
+      <text x="500" y="94" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text, #0f172a)">Surfactant bị nén đậm đặc ở phế nang nhỏ</text>
+      <text x="500" y="112" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #64748b)">Mật độ phospholipid dày đặc giúp GIẢM MẠNH T1 (T1 &lt;&lt; T2)</text>
+
+      <path d="M 667 123 L 667 138" fill="none" stroke="#059669" stroke-width="1.6" marker-end="url(#arrLapGreen)"/>
+
+      <rect x="485" y="142" width="365" height="100" rx="8" fill="var(--green-bg, #f0fdf4)" stroke="#86efac" stroke-width="1.2"/>
+      <text x="500" y="162" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="#15803d">• Tỷ số Laplace cân bằng:</text>
+      <text x="660" y="162" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="#15803d">T1 / r1 ≈ T2 / r2</text>
+      <text x="500" y="182" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="#15803d">• Áp suất xẹp cân bằng:</text>
+      <text x="660" y="182" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">P1 (nhỏ) ≈ P2 (lớn)</text>
+      <text x="500" y="204" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="#15803d" font-weight="700">──► Không có dòng khí di chuyển cưỡng bức giữa các túi</text>
+      <text x="500" y="224" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="#059669" font-weight="800">✓ CẢ HAI PHẾ NANG CÙNG MỞ BUNG ỔN ĐỊNH ĐỒNG ĐỀU!</text>
+
+      {/* THANH ỨNG DỤNG LÂM SÀNG DƯỚI */}
+      <rect x="30" y="270" width="840" height="75" rx="12" fill="var(--blue-bg, #eff6ff)" stroke="#93c5fd" stroke-width="1.5"/>
+      <text x="50" y="294" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12.5" fill="#1d4ed8"><i class="fa-solid fa-notes-medical"></i> ỨNG DỤNG LÂM SÀNG: HỘI CHỨNG SUY HÔ HẤP CẤP SƠ SINH (NRDS)</text>
+      <text x="50" y="314" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Trẻ sinh non trước 34 tuần thiếu Surfactant $\rightarrow$ Phế nang xẹp lan tỏa, độ giãn nở phổi ($C_L$) tụt dốc, thiếu oxy máu nặng.</text>
+      <text x="50" y="333" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="#b91c1c" font-weight="600">• Điều trị EBM: Tiêm Corticosteroid (Betamethasone) kích thích trưởng thành phổi cho mẹ trước sinh & Bơm Surfactant ngoại sinh vào khí quản trẻ.</text>
+    </svg>
+  </div>
+</div>
 
 ---
 
 ## 4. Các Thể Tích & Dung Tích Phổi
+Đo dung tích thông khí bằng **Hô hấp kế (Spirometry)** ghi lại đồ thị dao động thể tích khí theo thời gian:
+
 <div class="flowchart-card">
   <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: 4. Các Thể Tích &amp; Dung Tích Phổi</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+    <div class="flowchart-title"><i class="fa-solid fa-chart-line" style="color: var(--color-primary, #0284c7);"></i> ĐỒ THỊ HÔ HẤP KÝ (SPIROGRAM): CÁC PHÂN ĐOẠN THỂ TÍCH & DUNG TÍCH PHỔI</div>
+    <span class="badge badge-blue">Spirogram Analysis</span>
   </div>
   <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 172" width="880" height="172" xmlns="http://www.w3.org/2000/svg">
+    <svg class="flowchart-svg" viewBox="0 0 900 390" width="100%" height="390" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
-        </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
-        </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
-        </marker>
+        <pattern id="rvPattern" width="10" height="10" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+          <line x1="0" y1="0" x2="0" y2="10" stroke="#fca5a5" stroke-width="1.5" />
+        </pattern>
       </defs>
 
-      {/* Single Node: Dung tích toàn phổi (TLC ≈ 5.8 */}
-      <rect x="70" y="20" width="740" height="114" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Dung tích toàn phổi (TLC ≈ 5.800 mL)</text>
-      <text x="94" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ├───────────────────────────────────────────┬─────────────────┤</text>
-      <text x="94" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ├───────────────────────────────────────────┤ VC (Dung tích</text>
-      <text x="94" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  │</text>
-      <text x="94" y="118" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ├───────────────────────────────────────────┴─────────────────┼───────────────────────────</text>
+      {/* KHUNG TRỤC TỌA ĐỘ SPIROGRAM */}
+      <rect x="30" y="25" width="530" height="300" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+
+      {/* Lưới ngang thể tích */}
+      {/* 5800 mL - TLC */}
+      <line x1="85" y1="50" x2="540" y2="50" stroke="#e2e8f0" stroke-dasharray="3,3" stroke-width="1"/>
+      <text x="75" y="54" text-anchor="end" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="#0284c7">5800</text>
+
+      {/* 2800 mL - Đỉnh thở thường */}
+      <line x1="85" y1="180" x2="540" y2="180" stroke="#e2e8f0" stroke-dasharray="3,3" stroke-width="1"/>
+      <text x="75" y="184" text-anchor="end" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600" fill="var(--color-text-muted, #64748b)">2800</text>
+
+      {/* 2300 mL - Đáy thở thường (FRC) */}
+      <line x1="85" y1="210" x2="540" y2="210" stroke="#059669" stroke-dasharray="4,4" stroke-width="1.2"/>
+      <text x="75" y="214" text-anchor="end" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="#059669">2300 (FRC)</text>
+
+      {/* 1200 mL - Đáy thở ra tối đa (RV) */}
+      <line x1="85" y1="265" x2="540" y2="265" stroke="#dc2626" stroke-dasharray="4,4" stroke-width="1.2"/>
+      <text x="75" y="269" text-anchor="end" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="#dc2626">1200 (RV)</text>
+
+      {/* 0 mL */}
+      <line x1="85" y1="315" x2="540" y2="315" stroke="var(--color-text, #0f172a)" stroke-width="1.5"/>
+      <text x="75" y="319" text-anchor="end" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="var(--color-text, #0f172a)">0 mL</text>
+
+      {/* Vùng RV gạch chéo không đo được */}
+      <rect x="85" y="265" width="455" height="50" fill="url(#rvPattern)" opacity="0.6"/>
+      <text x="312" y="295" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="#dc2626">KHÍ CẶN (RV = 1.200 mL) • KHÔNG THỞ RA ĐƯỢC</text>
+
+      {/* ĐƯỜNG CONG SPIROGRAM THỰC TẾ */}
+      <path d="M 95 210 Q 120 180 145 210 Q 170 180 195 210 L 220 210 Q 255 50 285 50 Q 315 50 345 210 Q 375 265 405 265 Q 435 265 465 210 Q 490 180 515 210" 
+            fill="none" stroke="#0284c7" stroke-width="3" stroke-linecap="round"/>
+
+      {/* Nhãn trên đồ thị sóng */}
+      <text x="145" y="170" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#0284c7">TV (500 mL)</text>
+      <text x="285" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#0284c7">HÍT VÀO TỐI ĐA (IRV 3.000 mL)</text>
+      <text x="405" y="255" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#d97706">THỞ RA TỐI ĐA (ERV 1.100 mL)</text>
+
+      {/* KHỐI BẢNG PHÂN ĐỊNH DUNG TÍCH BÊN PHẢI */}
+      <rect x="580" y="25" width="295" height="300" rx="12" fill="var(--color-surface, #ffffff)" stroke="#0284c7" stroke-width="1.8"/>
+      <rect x="580" y="25" width="295" height="36" rx="12" fill="#0284c7" fill-opacity="0.12"/>
+      <text x="727" y="49" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="13" fill="#0284c7">CÁC DUNG TÍCH PHỔI (CAPACITIES)</text>
+
+      {/* TLC */}
+      <rect x="595" y="70" width="265" height="50" rx="8" fill="var(--blue-bg, #eff6ff)" stroke="#93c5fd" stroke-width="1.2"/>
+      <text x="608" y="89" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#1d4ed8">TLC (Toàn phổi) = 5.800 mL</text>
+      <text x="608" y="107" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">TLC = VC + RV = IRV + TV + ERV + RV</text>
+
+      {/* VC */}
+      <rect x="595" y="128" width="265" height="50" rx="8" fill="var(--green-bg, #f0fdf4)" stroke="#86efac" stroke-width="1.2"/>
+      <text x="608" y="147" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#15803d">VC (Dung tích sống) = 4.600 mL</text>
+      <text x="608" y="165" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">Khí tối đa có thể huy động: IRV + TV + ERV</text>
+
+      {/* FRC */}
+      <rect x="595" y="186" width="265" height="50" rx="8" fill="var(--amber-bg, #fffbeb)" stroke="#fcd34d" stroke-width="1.2"/>
+      <text x="608" y="205" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#b45309">FRC (Cặn chức năng) = 2.300 mL</text>
+      <text x="608" y="223" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">FRC = ERV + RV (Lượng khí sau thở bình thường)</text>
+
+      {/* RV Warning */}
+      <rect x="595" y="244" width="265" height="68" rx="8" fill="var(--red-bg, #fef2f2)" stroke="#fca5a5" stroke-width="1.2"/>
+      <text x="608" y="264" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#b91c1c">RV = 1.200 mL (Khí cặn)</text>
+      <text x="608" y="282" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="#dc2626" font-weight="700">⚠ KHÔNG ĐO ĐƯỢC bằng Hô hấp ký</text>
+      <text x="608" y="299" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">Cần Pha loãng khí Heli hoặc Đo thể tích thân</text>
+
+      {/* DẢI CHÚ THÍCH DƯỚI */}
+      <rect x="30" y="340" width="845" height="35" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #e2e8f0)" stroke-width="1"/>
+      <circle cx="50" cy="358" r="5" fill="#0284c7"/>
+      <text x="62" y="362" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">Đường cong xanh lam: Dao động thể tích qua các thì hít thở gắng sức trên Spirometry</text>
+      <circle cx="580" cy="358" r="5" fill="#dc2626"/>
+      <text x="592" y="362" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="#dc2626" font-weight="600">FRC và RV bảo vệ phế nang không xẹp hoàn toàn ở cuối thì thở ra</text>
     </svg>
   </div>
 </div>

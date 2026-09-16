@@ -45,26 +45,33 @@ sections:
 
 # 🧬 ĐẶC ĐIỂM SINH LÝ THẬN & THỂ DỊCH TRẺ EM
 
+<div class="module-badge-group">
+  <span class="badge badge-purple"><i class="fa-solid fa-book-medical"></i> GP-SL Part 9 • Nhi Khoa</span>
+  <span class="badge badge-blue"><i class="fa-solid fa-droplet"></i> Thể Dịch &amp; Nước TBW</span>
+  <span class="badge badge-green"><i class="fa-solid fa-filter"></i> Tiến Trình Trưởng Thành GFR</span>
+  <span class="badge badge-amber"><i class="fa-solid fa-calculator"></i> Dịch Duy Trì Holliday-Segar</span>
+</div>
+
 <PhysioQuickNav />
 
 {/* DẢI CHỈ SỐ NHANH (QUICK STATS STRIP) */}
-<section class="stats-strip">
+<section class="stats-strip theme-physio">
   <div class="stats-grid">
     <div class="stat-card">
-      <div class="stat-val blue">PHYS-PED-05</div>
-      <div class="stat-lbl">Mã chuyên đề • Sinh Lý Học Nhi Khoa</div>
+      <div class="stat-val blue">TBW 75 – 80%</div>
+      <div class="stat-lbl">Tỷ lệ nước cơ thể &amp; ECF 45% rất cao ở sơ sinh</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val green">Nội Môi Ổn Định</div>
-      <div class="stat-lbl">Cân bằng gradient điện hóa & Áp suất thẩm thấu</div>
+      <div class="stat-val green">GFR 20 – 40 mL</div>
+      <div class="stat-lbl">Lúc sinh • Đạt mức 120 mL/phút/1.73m² sau 1–2 tuổi</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val amber">Feedback Loop</div>
-      <div class="stat-lbl">Vòng điều hòa phản hồi thần kinh - thể dịch</div>
+      <div class="stat-val amber">600 – 700 mOsm</div>
+      <div class="stat-lbl">Khả năng cô đặc tối đa kém do quai Henle ngắn</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val purple">Dược Lý EBM</div>
-      <div class="stat-lbl">Ứng dụng lâm sàng chuẩn Guyton 14th & Ganong 26th</div>
+      <div class="stat-val purple">100 – 50 – 20</div>
+      <div class="stat-lbl">Quy tắc kinh điển tính dịch duy trì Holliday-Segar</div>
     </div>
   </div>
 </section>
@@ -81,22 +88,73 @@ Trẻ em có tỷ lệ nước trong cơ thể (*Total Body Water - TBW*) và t�
 | **Dịch Nội Bào (ICF)** | 35% Trọng lượng | 35% Trọng lượng | 40% Trọng lượng |
 | **Tốc độ trao đổi nước/ngày** | **$100 – 150\text{ mL/kg/ngày}$ (50% ECF)** | $100\text{ mL/kg/ngày}$ | $35\text{ mL/kg/ngày}$ (10% ECF) |
 
-- **Ý nghĩa sinh lý bệnh**: Do dịch ngoại bào chiếm tỷ trọng lớn và tốc độ quay vòng nước diễn ra với tốc độ chóng mặt, **chỉ cần 1 ngày trẻ bị nôn trớ hoặc tiêu chảy mất nước không bù kịp thời đã có thể làm mất tới 10 – 15% trọng lượng cơ thể gây sốc giảm thể tích tử vong**.
-
+> [!WARNING]
+> **Ý nghĩa sinh lý bệnh:** Do dịch ngoại bào chiếm tỷ trọng áp đảo và tốc độ quay vòng nước diễn ra với tốc độ chóng mặt, **chỉ cần 24 giờ trẻ bị nôn trớ hoặc tiêu chảy cấp mất nước không bù kịp thời đã có thể làm mất tới 10 – 15% trọng lượng cơ thể gây sốc giảm thể tích tử vong**.
 
 ---
 
 ## 2. Độ Lọc Cầu Thận GFR Theo Tuổi
-Lúc sinh ra, cấu trúc nephron của trẻ đã đầy đủ về số lượng ($1\text{ triệu/thận}$) nhưng chưa hoàn thiện về mặt chức năng:
+Lúc sinh ra, cấu trúc nephron của trẻ đã đầy đủ về số lượng ($1\text{ triệu/thận}$) nhưng chưa hoàn thiện về mặt chức năng. Tốc độ lọc cầu thận tăng dần theo các mốc phát triển:
 
-```
-[SỰ TIẾN TRIỂN CỦA ĐỘ LỌC CẦU THẬN GFR (mL/phút/1.73 m2)]:
-  • Sơ sinh ngày đầu:   20 – 30 mL/phút/1.73 m2 (Do sức cản mạch máu thận còn cao)
-  • Sơ sinh 2 tuần:     40 – 60 mL/phút/1.73 m2
-  • Trẻ 6 tháng tuổi:   70 – 90 mL/phút/1.73 m2
-  • Trẻ 1 – 2 tuổi:     120 – 130 mL/phút/1.73 m2 (ĐẠT MỨC TRƯỞNG THÀNH CỦA NGƯỜI LỚN)
-```
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title">
+      <i class="fa-solid fa-gauge-high" style="color: var(--color-primary, #0284c7);"></i>
+      TIẾN TRÌNH TRƯỞNG THÀNH ĐỘ LỌC CẦU THẬN GFR (mL/phút/1.73 m²)
+    </div>
+    <span class="badge badge-green">Maturation Roadmap</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 920 160" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrGfr" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+      </defs>
 
+      {/* Stage 1 */}
+      <rect x="20" y="20" width="205" height="116" rx="12" fill="var(--color-surface-2, #f8fafc)" stroke="#0284c7" stroke-width="1.8"/>
+      <rect x="20" y="20" width="205" height="32" rx="12" fill="var(--color-primary-light, #e0f2fe)"/>
+      <text x="122" y="41" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#0284c7">SƠ SINH NGÀY 1 – 3</text>
+      <text x="122" y="78" text-anchor="middle" font-family="'Plus Jakarta Sans', font-weight="800" font-size="16" fill="#0284c7">20 – 30</text>
+      <text x="122" y="98" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">mL/phút/1.73 m²</text>
+      <text x="122" y="118" text-anchor="middle" font-family="'Plus Jakarta Sans', font-weight="600" font-size="10" fill="#dc2626">Kháng lực mạch thận cao</text>
+
+      {/* Arrow 1 */}
+      <path d="M 225 78 L 245 78" fill="none" stroke="#0284c7" stroke-width="2" marker-end="url(#arrGfr)"/>
+
+      {/* Stage 2 */}
+      <rect x="250" y="20" width="205" height="116" rx="12" fill="var(--color-surface-2, #f8fafc)" stroke="#059669" stroke-width="1.8"/>
+      <rect x="250" y="20" width="205" height="32" rx="12" fill="var(--green-bg, #ecfdf5)"/>
+      <text x="352" y="41" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#059669">SƠ SINH 2 TUẦN</text>
+      <text x="352" y="78" text-anchor="middle" font-family="'Plus Jakarta Sans', font-weight="800" font-size="16" fill="#059669">40 – 60</text>
+      <text x="352" y="98" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">mL/phút/1.73 m²</text>
+      <text x="352" y="118" text-anchor="middle" font-family="'Plus Jakarta Sans', font-weight="600" font-size="10" fill="#059669">Lưu lượng máu thận tăng</text>
+
+      {/* Arrow 2 */}
+      <path d="M 455 78 L 475 78" fill="none" stroke="#0284c7" stroke-width="2" marker-end="url(#arrGfr)"/>
+
+      {/* Stage 3 */}
+      <rect x="480" y="20" width="205" height="116" rx="12" fill="var(--color-surface-2, #f8fafc)" stroke="#d97706" stroke-width="1.8"/>
+      <rect x="480" y="20" width="205" height="32" rx="12" fill="var(--amber-bg, #fffbeb)"/>
+      <text x="582" y="41" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#d97706">TRẺ 6 THÁNG TUỔI</text>
+      <text x="582" y="78" text-anchor="middle" font-family="'Plus Jakarta Sans', font-weight="800" font-size="16" fill="#d97706">70 – 90</text>
+      <text x="582" y="98" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">mL/phút/1.73 m²</text>
+      <text x="582" y="118" text-anchor="middle" font-family="'Plus Jakarta Sans', font-weight="600" font-size="10" fill="#d97706">Bằng 60–75% người lớn</text>
+
+      {/* Arrow 3 */}
+      <path d="M 685 78 L 705 78" fill="none" stroke="#0284c7" stroke-width="2" marker-end="url(#arrGfr)"/>
+
+      {/* Stage 4 */}
+      <rect x="710" y="20" width="190" height="116" rx="12" fill="var(--color-surface-2, #f8fafc)" stroke="#7c3aed" stroke-width="2"/>
+      <rect x="710" y="20" width="190" height="32" rx="12" fill="var(--purple-bg, #f5f3ff)"/>
+      <text x="805" y="41" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#7c3aed">TRẺ 1 – 2 TUỔI</text>
+      <text x="805" y="78" text-anchor="middle" font-family="'Plus Jakarta Sans', font-weight="800" font-size="16" fill="#7c3aed">120 – 130</text>
+      <text x="805" y="98" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">mL/phút/1.73 m²</text>
+      <text x="805" y="118" text-anchor="middle" font-family="'Plus Jakarta Sans', font-weight="700" font-size="10" fill="#059669">ĐẠT CHUẨN NGƯỜI LỚN</text>
+    </svg>
+  </div>
+</div>
 
 ---
 
@@ -108,48 +166,73 @@ Lúc sinh ra, cấu trúc nephron của trẻ đã đầy đủ về số lượ
 2. **Khả Năng Tái Hấp Thu Bicarbonate ($HCO_3^-$) Thấp**:
    - Ngưỡng thận đối với $HCO_3^-$ ở trẻ sơ sinh thấp ($20 – 21\text{ mmol/L}$ so với người lớn $24 – 26\text{ mmol/L}$) $\rightarrow$ Trẻ rất dễ rơi vào **Toan Chuyển Hóa** khi có sốt, nhiễm trùng hoặc tiêu chảy.
 
-
 ---
 
 ## 4. Công Thức Tính Dịch Duy Trì Holliday-Segar
-Đây là công thức nền tảng trong Nhi khoa lâm sàng để tính tổng lượng dịch truyền hoặc lượng dịch uống tối thiểu cần cung cấp trong 24 giờ:
-
+Công thức kinh điển Holliday-Segar (1957) được khuyến cáo toàn cầu để tính tổng nhu cầu nước sinh lý trong 24 giờ dựa trên tốc độ chuyển hóa năng lượng ($100\text{ kcal} \approx 100\text{ mL nước}$):
 
 <div class="flowchart-card">
   <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: 4. Công Thức Tính Dịch Duy Trì Holliday-Segar</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+    <div class="flowchart-title">
+      <i class="fa-solid fa-calculator" style="color: var(--color-primary, #0284c7);"></i>
+      SƠ ĐỒ 3 TẦNG TÍNH DỊCH DUY TRÌ HOLLIDAY-SEGAR (QUY TẮC 100 – 50 – 20)
+    </div>
+    <span class="badge badge-blue">Clinical Calculator</span>
   </div>
   <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 118" width="880" height="118" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
-        </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
-        </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
-        </marker>
-      </defs>
+    <svg class="flowchart-svg" viewBox="0 0 920 230" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+      {/* Tier 1 */}
+      <rect x="20" y="20" width="280" height="180" rx="12" fill="var(--color-surface-2, #f8fafc)" stroke="#0284c7" stroke-width="2"/>
+      <rect x="20" y="20" width="280" height="40" rx="12" fill="var(--color-primary-light, #e0f2fe)"/>
+      <text x="160" y="45" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#0284c7">TẦNG 1: 10 KG ĐẦU TIÊN</text>
+      <text x="160" y="90" text-anchor="middle" font-family="'Plus Jakarta Sans', font-weight="800" font-size="20" fill="#0284c7">100 mL/kg/24h</text>
+      <text x="160" y="112" text-anchor="middle" font-family="'Plus Jakarta Sans', font-weight="700" font-size="12" fill="var(--color-text-muted, #475569)">(Hoặc 4 mL/kg/giờ)</text>
+      <line x1="40" y1="126" x2="280" y2="126" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="160" y="150" text-anchor="middle" font-family="'Plus Jakarta Sans', font-weight="600" font-size="11" fill="var(--color-text, #0f172a)">Trẻ 10 kg: Tối đa</text>
+      <text x="160" y="172" text-anchor="middle" font-family="'Plus Jakarta Sans', font-weight="800" font-size="13" fill="#0284c7">1.000 mL/ngày (40 mL/h)</text>
 
-      {/* Single Node: Cân Nặng Của Trẻ               */}
-      <rect x="70" y="20" width="740" height="60" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">Cân Nặng Của Trẻ │ Nhu Cầu Dịch Duy Trì Trong 24 Giờ │</text>
-      <text x="94" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ├───────────────────────────────────────┼────────────────────────────────────────────────────────┤</text>
+      {/* Tier 2 */}
+      <rect x="320" y="20" width="280" height="180" rx="12" fill="var(--color-surface-2, #f8fafc)" stroke="#059669" stroke-width="2"/>
+      <rect x="320" y="20" width="280" height="40" rx="12" fill="var(--green-bg, #ecfdf5)"/>
+      <text x="460" y="45" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#059669">TẦNG 2: 10 KG TIẾP THEO (11–20 KG)</text>
+      <text x="460" y="90" text-anchor="middle" font-family="'Plus Jakarta Sans', font-weight="800" font-size="20" fill="#059669">+ 50 mL/kg/24h</text>
+      <text x="460" y="112" text-anchor="middle" font-family="'Plus Jakarta Sans', font-weight="700" font-size="12" fill="var(--color-text-muted, #475569)">(Hoặc + 2 mL/kg/giờ)</text>
+      <line x1="340" y1="126" x2="580" y2="126" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="460" y="150" text-anchor="middle" font-family="'Plus Jakarta Sans', font-weight="600" font-size="11" fill="var(--color-text, #0f172a)">Trẻ 20 kg: 1000 + 500 =</text>
+      <text x="460" y="172" text-anchor="middle" font-family="'Plus Jakarta Sans', font-weight="800" font-size="13" fill="#059669">1.500 mL/ngày (60 mL/h)</text>
+
+      {/* Tier 3 */}
+      <rect x="620" y="20" width="280" height="180" rx="12" fill="var(--color-surface-2, #f8fafc)" stroke="#d97706" stroke-width="2"/>
+      <rect x="620" y="20" width="280" height="40" rx="12" fill="var(--amber-bg, #fffbeb)"/>
+      <text x="760" y="45" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#d97706">TẦNG 3: MỖI KG TRÊN 20 KG</text>
+      <text x="760" y="90" text-anchor="middle" font-family="'Plus Jakarta Sans', font-weight="800" font-size="20" fill="#d97706">+ 20 mL/kg/24h</text>
+      <text x="760" y="112" text-anchor="middle" font-family="'Plus Jakarta Sans', font-weight="700" font-size="12" fill="var(--color-text-muted, #475569)">(Hoặc + 1 mL/kg/giờ)</text>
+      <line x1="640" y1="126" x2="880" y2="126" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="760" y="150" text-anchor="middle" font-family="'Plus Jakarta Sans', font-weight="600" font-size="11" fill="var(--color-text, #0f172a)">Trẻ 30 kg: 1500 + 200 =</text>
+      <text x="760" y="172" text-anchor="middle" font-family="'Plus Jakarta Sans', font-weight="800" font-size="13" fill="#d97706">1.700 mL/ngày (70 mL/h)</text>
     </svg>
   </div>
 </div>
 
+<div class="comparison-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem; margin: 1.5rem 0;">
+  <div class="card" style="border-left: 4px solid var(--color-primary, #0284c7); background: var(--color-surface, #ffffff); border-radius: 12px; padding: 1.25rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+    <h4 style="margin: 0 0 0.5rem; color: #0284c7; font-weight: 700;"><i class="fa-solid fa-calculator"></i> Ví dụ 1: Trẻ nặng 15 kg</h4>
+    <p style="margin: 0; line-height: 1.6; font-size: 0.92rem; color: var(--color-text, #0f172a);">
+      • 10 kg đầu = $10 \times 100\text{ mL} = 1.000\text{ mL}$<br/>
+      • 5 kg tiếp = $5 \times 50\text{ mL} = 250\text{ mL}$<br/>
+      <strong>➔ Tổng dịch 24h:</strong> $1.250\text{ mL/ngày} \approx \mathbf{52\text{ mL/giờ}}$ (hoặc $40 + 5 \times 2 = 50\text{ mL/h}$).
+    </p>
+  </div>
 
-  - **Trẻ nặng $15\text{ kg}$**:
-    $$\text{Dịch 24h} = (10\text{ kg} \times 100\text{ mL}) + (5\text{ kg} \times 50\text{ mL}) = 1.000 + 250 = \mathbf{1.250\text{ mL/ngày}} \approx \mathbf{52\text{ mL/giờ}}$$
-  - **Trẻ nặng $25\text{ kg}$**:
-    $$\text{Dịch 24h} = 1.000 + 500 + (5\text{ kg} \times 20\text{ mL}) = 1.500 + 100 = \mathbf{1.600\text{ mL/ngày}} \approx \mathbf{67\text{ mL/giờ}}$$
+  <div class="card" style="border-left: 4px solid var(--color-warning, #d97706); background: var(--color-surface, #ffffff); border-radius: 12px; padding: 1.25rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+    <h4 style="margin: 0 0 0.5rem; color: #d97706; font-weight: 700;"><i class="fa-solid fa-calculator"></i> Ví dụ 2: Trẻ nặng 25 kg</h4>
+    <p style="margin: 0; line-height: 1.6; font-size: 0.92rem; color: var(--color-text, #0f172a);">
+      • 20 kg đầu = $1.000 + 500 = 1.500\text{ mL}$<br/>
+      • 5 kg tiếp (&gt;20 kg) = $5 \times 20\text{ mL} = 100\text{ mL}$<br/>
+      <strong>➔ Tổng dịch 24h:</strong> $1.600\text{ mL/ngày} \approx \mathbf{67\text{ mL/giờ}}$ (hoặc $60 + 5 \times 1 = 65\text{ mL/h}$).
+    </p>
+  </div>
+</div>
 
 ## 5. Tài Liệu Tham Khảo EBM
 <div class="citation-box">

@@ -49,26 +49,33 @@ sections:
 
 # 🧬 SINH LÝ HỆ SINH SẢN NAM & NỮ (REPRODUCTIVE PHYSIOLOGY)
 
+<div class="module-badge-group">
+  <span class="badge badge-system"><i class="fa-solid fa-dna"></i> Sinh Lý Hệ Nội Tiết & Sinh Sản</span>
+  <span class="badge badge-source"><i class="fa-solid fa-book-medical"></i> Guyton 14th Ch. 81-82 • Ganong 26th Ch. 22-23</span>
+  <span class="badge badge-module"><i class="fa-solid fa-venus-mars"></i> Sinh Lý Hệ Sinh Sản &amp; Chu Kỳ Kinh Nguyệt</span>
+  <span class="badge badge-ebm"><i class="fa-solid fa-shield-halved"></i> EBM 2026</span>
+</div>
+
 <PhysioQuickNav />
 
 {/* DẢI CHỈ SỐ NHANH (QUICK STATS STRIP) */}
-<section class="stats-strip">
+<section class="stats-strip theme-physio">
   <div class="stats-grid">
     <div class="stat-card">
-      <div class="stat-val blue">PHYS-ENDO-06</div>
-      <div class="stat-lbl">Mã chuyên đề • Sinh Lý Hệ Nội Tiết & Sinh Sản</div>
+      <div class="stat-val blue">Sinh Tinh 64 - 72 Ngày</div>
+      <div class="stat-lbl">Nhiệt độ bìu 34 - 35°C • LH kích thích Leydig • FSH nuôi dưỡng Sertoli</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val green">Nội Môi Ổn Định</div>
-      <div class="stat-lbl">Cân bằng gradient điện hóa & Áp suất thẩm thấu</div>
+      <div class="stat-val green">Pha Hoàng Thể Cố Định</div>
+      <div class="stat-lbl">Luôn cố định 14 ngày • Progesterone kích thích niêm mạc tử cung tiết chế</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val amber">Feedback Loop</div>
-      <div class="stat-lbl">Vòng điều hòa phản hồi thần kinh - thể dịch</div>
+      <div class="stat-val amber">Đỉnh LH (LH Surge)</div>
+      <div class="stat-lbl">Feedback dương Estrogen &gt; 36h • Phóng noãn sau đỉnh LH 24 - 36 giờ</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val purple">Dược Lý EBM</div>
-      <div class="stat-lbl">Ứng dụng lâm sàng chuẩn Guyton 14th & Ganong 26th</div>
+      <div class="stat-val purple">Prolactin vs Oxytocin</div>
+      <div class="stat-lbl">Prolactin tạo sữa trong nang vú • Oxytocin co cơ biểu mô tống sữa ra ngoài</div>
     </div>
   </div>
 </section>
@@ -76,193 +83,174 @@ sections:
 ---
 
 ## 1. Sinh Lý Sinh Sản Nam & Testosterone
-Quá trình sinh tinh (*Spermatogenesis*) diễn ra liên tục tại các **Ống sinh tinh (Seminiferous Tubules)** của tinh hoàn (mất khoảng 64–72 ngày ở nhiệt độ tối ưu $34 – 35^\circ\text{C}$):
-
+Quá trình sinh tinh (*Spermatogenesis*) diễn ra liên tục tại các **Ống sinh tinh (Seminiferous Tubules)** của tinh hoàn, được điều hòa bởi trục Hạ đồi - Tuyến yên - Tinh hoàn (HPG axis) qua hai dòng tế bào chuyên biệt:
 
 <div class="flowchart-card">
   <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: VÙNG HẠ ĐỒI</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+    <div class="flowchart-title"><i class="fa-solid fa-mars" style="color: var(--color-primary, #0284c7);"></i> TRỤC HPG NAM GIỚI: TẾ BÀO LEYDIG (TESTOSTERONE) &amp; TẾ BÀO SERTOLI (SINH TINH)</div>
+    <span class="badge badge-blue">Guyton 14th Ch.81 • Pure Orthogonal SVG</span>
   </div>
   <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 504" width="880" height="504" xmlns="http://www.w3.org/2000/svg">
+    <svg class="flowchart-svg" viewBox="0 0 960 460" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrRepBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
         </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
-        </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrRepRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+        <marker id="arrRepAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
         </marker>
       </defs>
 
-      {/* Single Node: VÙNG HẠ ĐỒI */}
-      <rect x="250" y="20" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">VÙNG HẠ ĐỒI</text>
-      <line x1="440" y1="66" x2="440" y2="94" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: TUYẾN YÊN TRƯỚC */}
-      <rect x="250" y="94" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">TUYẾN YÊN TRƯỚC</text>
-      <line x1="440" y1="140" x2="440" y2="168" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: TẾ BÀO LEYDIG (Mô kẽ) */}
-      <rect x="250" y="168" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="190" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">TẾ BÀO LEYDIG (Mô kẽ)</text>
-      <line x1="440" y1="214" x2="440" y2="242" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: DIHYDROTESTOSTERONE - DHT (Tuy */}
-      <rect x="205" y="242" width="470" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="264" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">DIHYDROTESTOSTERONE - DHT (Tuyến tiền liệt)</text>
-      <line x1="440" y1="288" x2="440" y2="316" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: TẾ BÀO SERTOLI (Ống sinh tinh) */}
-      <rect x="156.5" y="316" width="567" height="150" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
-      <text x="440" y="338" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">TẾ BÀO SERTOLI (Ống sinh tinh)</text>
-      <text x="180.5" y="360" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Nuôi dưỡng tinh trùng, tạo Hàng rào máu - tinh hoàn</text>
-      <text x="180.5" y="378" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  (Blood-Testis Barrier)</text>
-      <text x="180.5" y="396" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Tiết Protein gắn Androgen (ABP) giữ nồng độ Testosterone cao</text>
-      <text x="180.5" y="414" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  trong lòng ống</text>
-      <text x="180.5" y="432" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Tiết Hormone INHIBIN B ──► (-) Feedback Âm Tính Ức Chế Riêng</text>
-      <text x="180.5" y="450" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  Tuyến Yên Tiết FSH</text>
+      {/* TẦNG 1: VÙNG HẠ ĐỒI */}
+      <rect x="250" y="20" width="460" height="50" rx="10" fill="var(--color-surface, #ffffff)" stroke="#0284c7" stroke-width="2"/>
+      <text x="480" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12.5" fill="#0284c7">VÙNG HẠ ĐỒI (HYPOTHALAMUS)</text>
+      <text x="480" y="58" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Tiết GnRH theo nhịp xung (Pulsatile mỗi 90-120 phút)</text>
+
+      <line x1="480" y1="70" x2="480" y2="105" stroke="#0284c7" stroke-width="2" marker-end="url(#arrRepBlue)"/>
+
+      {/* TẦNG 2: TUYẾN YÊN TRƯỚC */}
+      <rect x="250" y="110" width="460" height="50" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="480" y="132" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#0284c7">TUYẾN YÊN TRƯỚC (GONADOTROPE CELLS)</text>
+      <text x="480" y="148" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">Bài tiết 2 hormone hướng sinh dục: <strong>LH</strong> và <strong>FSH</strong></text>
+
+      {/* RẼ NHÁNH SANG 2 TẾ BÀO TINH HOÀN */}
+      <path d="M 380 160 L 380 200 L 250 200 L 250 220" fill="none" stroke="#0284c7" stroke-width="2" marker-end="url(#arrRepBlue)"/>
+      <path d="M 580 160 L 580 200 L 710 200 L 710 220" fill="none" stroke="#d97706" stroke-width="2" marker-end="url(#arrRepAmber)"/>
+      <text x="250" y="190" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#0284c7">Hormone LH tác động</text>
+      <text x="710" y="190" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#d97706">Hormone FSH tác động</text>
+
+      {/* CỘT TRÁI: TẾ BÀO LEYDIG */}
+      <rect x="60" y="225" width="380" height="205" rx="12" fill="var(--color-surface, #ffffff)" stroke="#0284c7" stroke-width="2"/>
+      <rect x="60" y="225" width="380" height="30" rx="12" fill="#0284c7"/>
+      <text x="250" y="245" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#ffffff">TẾ BÀO LEYDIG (MÔ KẼ NGOÀI ỐNG SINH TINH)</text>
+
+      <text x="75" y="275" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#0284c7">• Bài tiết Testosterone:</text>
+      <text x="75" y="295" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Phát triển cơ bắp, xương, trầm giọng, phân bố lông nam</text>
+      <text x="75" y="315" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Chuyển thành <strong>5α-DHT</strong> (nhờ 5α-reductase) tại tuyến tiền liệt &amp; da</text>
+      <text x="75" y="335" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Chuyển thành <strong>Estrogen</strong> (nhờ Aromatase) tại mô mỡ &amp; xương</text>
+
+      <rect x="75" y="355" width="350" height="60" rx="6" fill="#fef2f2" stroke="#dc2626" stroke-width="1"/>
+      <text x="250" y="375" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="10" fill="#dc2626">FEEDBACK ÂM TÍNH (-):</text>
+      <text x="250" y="393" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text, #0f172a)">Testosterone ức chế ngược cả <strong>Hạ đồi (GnRH)</strong> và <strong>Tuyến yên (LH)</strong></text>
+
+      {/* CỘT PHẢI: TẾ BÀO SERTOLI */}
+      <rect x="520" y="225" width="380" height="205" rx="12" fill="var(--color-surface, #ffffff)" stroke="#d97706" stroke-width="2"/>
+      <rect x="520" y="225" width="380" height="30" rx="12" fill="#d97706"/>
+      <text x="710" y="245" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#ffffff">TẾ BÀO SERTOLI (TRONG THÀNH ỐNG SINH TINH)</text>
+
+      <text x="535" y="275" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#d97706">• Chức năng nuôi dưỡng sinh tinh:</text>
+      <text x="535" y="295" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Tạo <strong>Hàng rào máu - tinh hoàn (BTB)</strong> bảo vệ tinh trùng</text>
+      <text x="535" y="315" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Tiết <strong>ABP (Androgen Binding Protein)</strong> giữ Testosterone cao tại chỗ</text>
+      <text x="535" y="335" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Tiết <strong>Inhibin B</strong> phản hồi chọn lọc</text>
+
+      <rect x="535" y="355" width="350" height="60" rx="6" fill="#fef2f2" stroke="#dc2626" stroke-width="1"/>
+      <text x="710" y="375" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="10" fill="#dc2626">FEEDBACK ÂM TÍNH (-):</text>
+      <text x="710" y="393" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text, #0f172a)">Inhibin B ức chế chọn lọc riêng <strong>Tuyến yên trước tiết FSH</strong></text>
     </svg>
   </div>
+  <div class="flowchart-editorial-legend">
+    <div class="legend-item"><span class="legend-dot" style="background: #0284c7;"></span> Nhánh LH - Tế bào Leydig (Testosterone)</div>
+    <div class="legend-item"><span class="legend-dot" style="background: #d97706;"></span> Nhánh FSH - Tế bào Sertoli (Sinh tinh &amp; Inhibin B)</div>
+    <div class="legend-item"><span class="legend-dot" style="background: #dc2626;"></span> Phản hồi ức chế ngược dòng (-)</div>
+  </div>
 </div>
-
 
 ---
 
 ## 2. Chu Kỳ Buồng Trứng & Nội Mạc Tử Cung
-Một chu kỳ kinh nguyệt tiêu chuẩn kéo dài **28 ngày**, tính từ ngày đầu tiên ra máu kinh (Ngày 1):
-
+Một chu kỳ kinh nguyệt tiêu chuẩn kéo dài **28 ngày**, phân chia thành 2 nửa đối xứng quanh cột mốc rụng trứng ngày thứ 14:
 
 <div class="flowchart-card">
   <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: CHU KỲ KINH NGUYỆT 28 NGÀY</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+    <div class="flowchart-title"><i class="fa-solid fa-venus" style="color: var(--color-primary, #0284c7);"></i> TIẾN TRÌNH 28 NGÀY: PHA NANG TRỨNG VS PHA HOÀNG THỂ &amp; BIẾN ĐỔI TỬ CUNG</div>
+    <span class="badge badge-blue">Ganong 26th Ch.23 • Pure Orthogonal SVG</span>
   </div>
   <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 316" width="880" height="316" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
-        </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
-        </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
-        </marker>
-      </defs>
+    <svg class="flowchart-svg" viewBox="0 0 960 440" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+      {/* NỬA TRÁI: NGÀY 1 - 14 (PHA NANG TRỨNG / TĂNG SINH) */}
+      <rect x="30" y="20" width="435" height="400" rx="14" fill="var(--color-surface, #ffffff)" stroke="#0284c7" stroke-width="2"/>
+      <rect x="30" y="20" width="435" height="40" rx="14" fill="#0284c7"/>
+      <text x="247" y="45" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12.5" fill="#ffffff">NỬA ĐẦU (NGÀY 1 – 14): PHA NANG TRỨNG</text>
 
-      {/* Single Node: CHU KỲ KINH NGUYỆT 28 NGÀY */}
-      <rect x="203.25" y="20" width="473.5" height="60" rx="10" fill="var(--blue-bg, #eff6ff)" stroke="var(--blue, #0284c7)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-primary, #0284c7)">CHU KỲ KINH NGUYỆT 28 NGÀY</text>
-      <text x="227.25" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ▼ (Ngày 1 – 14) ▼ (Ngày 14 – 28: CỐ ĐỊNH 14 NGÀY)</text>
-      {/* Bifurcation Path */}
-      <path d="M 440 80 L 440 94 L 235 94 L 235 108" fill="none" stroke="var(--amber, #f59e0b)" stroke-width="1.8" marker-end="url(#arrAmber)"/>
-      <path d="M 440 94 L 645 94 L 645 108" fill="none" stroke="var(--red, #ef4444)" stroke-width="1.8" marker-end="url(#arrRed)"/>
-      {/* Left Column: PHA NANG TRỨNG (Follicular Pha */}
-      <rect x="40" y="108" width="390" height="170" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
-      <text x="235" y="130" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">PHA NANG TRỨNG (Follicular Phase)</text>
-      <line x1="60" y1="144" x2="410" y2="144" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="60" y="160" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Tuyến yên tiết FSH kích thích nang</text>
-      <text x="60" y="178" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  noãn phát triển</text>
-      <text x="60" y="196" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Tế bào hạt tiết nồng độ ESTROGEN tăng</text>
-      <text x="60" y="214" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  vọt</text>
-      <text x="60" y="232" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Tương ứng PHA TĂNG SINH</text>
-      <text x="60" y="250" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  (Proliferative) ở Tử cung</text>
-      <text x="60" y="268" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Nội mạc tử cung dầy lên từ 1mm ──► 4mm</text>
-      {/* Right Column: PHA HOÀNG THỂ (Luteal Phase) */}
-      <rect x="450" y="108" width="390" height="170" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.5"/>
-      <text x="645" y="130" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">PHA HOÀNG THỂ (Luteal Phase)</text>
-      <line x1="470" y1="144" x2="820" y2="144" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="470" y="160" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Nang noãn vỡ biến thành HOÀNG THỂ</text>
-      <text x="470" y="178" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  (Corpus Luteum)</text>
-      <text x="470" y="196" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Tiết lượng lớn PROGESTERONE &amp; Estrogen</text>
-      <text x="470" y="214" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• : • Tương ứng PHA TIẾT CHẾ (Secretory)</text>
-      <text x="470" y="232" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  ở Tử cung:</text>
-      <text x="470" y="250" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Nội mạc dầy 8mm, mạch máu xoắn, tích</text>
-      <text x="470" y="268" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  trữ Glycogen</text>
+      <rect x="45" y="75" width="405" height="50" rx="8" fill="#f0f9ff" stroke="#0284c7" stroke-width="1"/>
+      <text x="247" y="96" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#0284c7">TẠI BUỒNG TRỨNG (FOLLICULAR PHASE)</text>
+      <text x="247" y="114" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">FSH tuyển chọn và kích thích nang De Graaf chín</text>
+
+      <text x="50" y="145" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#0284c7">• Hormone Thống Trị: ESTROGEN (ESTRADIOL)</text>
+      <text x="50" y="165" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">Tế bào vỏ (Theca) tiết Androgen → Tế bào hạt (Granulosa)</text>
+      <text x="50" y="183" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">dưới tác động của FSH thơm hóa thành <strong>Estradiol</strong></text>
+
+      <rect x="45" y="200" width="405" height="50" rx="8" fill="#f8fafc" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="247" y="221" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#0284c7">TẠI NỘI MẠC TỬ CUNG (PROLIFERATIVE PHASE)</text>
+      <text x="247" y="239" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">Pha Tăng Sinh: Tái tạo sau kỳ hành kinh</text>
+
+      <text x="50" y="270" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Estrogen kích thích phân chia tế bào đáy, làm dầy niêm mạc (1mm → 4mm)</text>
+      <text x="50" y="290" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Phát triển các mạch máu thẳng và tuyến nội mạc đơn giản</text>
+      <text x="50" y="310" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Chất nhầy cổ tử cung loãng, trong, đàn hồi (thuận lợi cho tinh trùng)</text>
+
+      <rect x="45" y="335" width="405" height="70" rx="8" fill="#fffbeb" stroke="#d97706" stroke-width="1.2"/>
+      <text x="247" y="358" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#d97706">CỘT MỐC NGÀY 14: ĐỈNH LH (LH SURGE)</text>
+      <text x="247" y="378" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">Estrogen đạt đỉnh kéo dài &gt; 36h kích hoạt Feedback (+) lên Yên</text>
+      <text x="247" y="394" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="#dc2626"><strong>Bùng phát đỉnh LH gây phóng noãn (Rụng trứng) sau 24-36h</strong></text>
+
+      {/* NỬA PHẢI: NGÀY 14 - 28 (PHA HOÀNG THỂ / TIẾT CHẾ) */}
+      <rect x="495" y="20" width="435" height="400" rx="14" fill="var(--color-surface, #ffffff)" stroke="#059669" stroke-width="2"/>
+      <rect x="495" y="20" width="435" height="40" rx="14" fill="#059669"/>
+      <text x="712" y="45" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12.5" fill="#ffffff">NỬA SAU (NGÀY 14 – 28): PHA HOÀNG THỂ (CỐ ĐỊNH 14 NGÀY)</text>
+
+      <rect x="510" y="75" width="405" height="50" rx="8" fill="#f0fdf4" stroke="#059669" stroke-width="1"/>
+      <text x="712" y="96" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#059669">TẠI BUỒNG TRỨNG (LUTEAL PHASE)</text>
+      <text x="712" y="114" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">Vỏ nang biến đổi thành Hoàng thể (Corpus Luteum)</text>
+
+      <text x="515" y="145" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#059669">• Hormone Thống Trị: PROGESTERONE (&amp; Estrogen)</text>
+      <text x="515" y="165" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">Hoàng thể tiết lượng lớn <strong>Progesterone</strong> làm tăng nhiệt độ cơ thể</text>
+      <text x="515" y="183" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">(Tăng 0.3 – 0.5°C sau rụng trứng dùng để theo dõi chu kỳ)</text>
+
+      <rect x="510" y="200" width="405" height="50" rx="8" fill="#f8fafc" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="712" y="221" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#059669">TẠI NỘI MẠC TỬ CUNG (SECRETORY PHASE)</text>
+      <text x="712" y="239" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">Pha Tiết Chế: Sẵn sàng cho phôi nang làm tổ</text>
+
+      <text x="515" y="270" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Niêm mạc dầy đạt 7-8mm, mạch máu phát triển ngoằn ngoèo xoắn ốc</text>
+      <text x="515" y="290" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Các tuyến nở to chứa đầy dịch nhầy giàu Glycogen nuôi dưỡng phôi</text>
+      <text x="515" y="310" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Ức chế co bóp cơ trơn tử cung (bảo vệ phôi thai)</text>
+
+      <rect x="510" y="335" width="405" height="70" rx="8" fill="#fef2f2" stroke="#dc2626" stroke-width="1.2"/>
+      <text x="712" y="358" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#dc2626">KẾT THÚC CHU KỲ: NẾU KHÔNG THỤ TINH</text>
+      <text x="712" y="378" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">Hoàng thể thoái hóa thành Bạch thể (Corpus Albicans)</text>
+      <text x="712" y="394" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="#dc2626"><strong>Progesterone tụt dốc → Co thắt mạch máu → Hành kinh (Ngày 1)</strong></text>
     </svg>
+  </div>
+  <div class="flowchart-editorial-legend">
+    <div class="legend-item"><span class="legend-dot" style="background: #0284c7;"></span> Nửa đầu chu kỳ: Pha Nang Trứng / Pha Tăng Sinh (Estrogen)</div>
+    <div class="legend-item"><span class="legend-dot" style="background: #d97706;"></span> Cột mốc ngày 14: Đỉnh LH bùng nổ gây rụng trứng</div>
+    <div class="legend-item"><span class="legend-dot" style="background: #059669;"></span> Nửa sau chu kỳ: Pha Hoàng Thể / Pha Tiết Chế (Progesterone)</div>
+    <div class="legend-item"><span class="legend-dot" style="background: #dc2626;"></span> Thoái hóa hoàng thể &amp; Bong niêm mạc hành kinh</div>
   </div>
 </div>
 
-
 ---
 
-## 3. Đỉnh LH & Cơ Chế Rụng Trứng
-<div class="flowchart-card">
-  <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: Cuối Pha Nang Trứng (Ngày 12 - 13)</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
-  </div>
-  <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 402" width="880" height="402" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
-        </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
-        </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
-        </marker>
-      </defs>
-
-      {/* Single Node: Cuối Pha Nang Trứng (Ngày 12 - */}
-      <rect x="165" y="20" width="550" height="60" rx="10" fill="rgba(16, 185, 129, 0.08)" stroke="var(--color-success, #10b981)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-success, #10b981)">Cuối Pha Nang Trứng (Ngày 12 - 13)</text>
-      <text x="189" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ▼ (KÍCH HOẠT HIỆN TƯỢNG FEEDBACK DƯƠNG TÍNH LÊN TUYẾN YÊN)</text>
-      <line x1="440" y1="80" x2="440" y2="108" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: GIẢI PHÓNG ĐỈNH LH VÀ ĐỈNH FSH */}
-      <rect x="215" y="108" width="450" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="130" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">GIẢI PHÓNG ĐỈNH LH VÀ ĐỈNH FSH (LH SURGE)</text>
-      <text x="239" y="152" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ▼ (24 – 36 giờ sau đỉnh LH)</text>
-      <line x1="440" y1="168" x2="440" y2="196" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: RỤNG TRỨNG (PHÓNG NOÃN VÀO NGÀ */}
-      <rect x="160.75" y="196" width="558.5" height="168" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="218" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">RỤNG TRỨNG (PHÓNG NOÃN VÀO NGÀY THỨ 14)</text>
-      <text x="184.75" y="240" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ▼ (NẾU ĐƯỢC THỤ TINH) ▼ (NẾU KHÔNG THỤ TINH)</text>
-      <text x="184.75" y="258" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Hợp tử làm tổ tiết hormone hCG Hoàng thể thoái hóa thành</text>
-      <text x="184.75" y="276" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  Bạch thể (Corpus Albicans)</text>
-      <text x="184.75" y="294" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Duy trì Hoàng thể tiếp tục tiết Progesterone Progesterone &amp;</text>
-      <text x="184.75" y="312" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  Estrogen tụt dốc đột ngột</text>
-      <text x="184.75" y="330" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Niêm mạc tử cung được bảo tồn duy trì thai kỳ ──► BONG TRÓC</text>
-      <text x="184.75" y="348" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  NỘI MẠC TỬ CUNG ──► RA MÁU KINH NGUYỆT</text>
-    </svg>
-  </div>
-</div>
-
-
----
-
-## 4. Sinh Lý Thai Kỳ & Hormone hCG
+## 3. Sinh Lý Thai Kỳ & Hormone hCG
 - **Human Chorionic Gonadotropin (hCG)**: Do các **Tế bào hợp bào nuôi (Syncytiotrophoblast)** của phôi nang tiết ra ngay sau khi làm tổ (ngày thứ 8–9 sau thụ tinh).
   - *Chức năng sống còn*: hCG có cấu trúc tương tự LH, gắn vào thụ thể LH của **Hoàng thể thai kỳ**, kích thích hoàng thể tiếp tục sản xuất Progesterone và Estrogen nuôi dưỡng niêm mạc tử cung trong **8 – 10 tuần đầu tiên** cho đến khi bánh nhau tự sản xuất đủ hormone.
   - *Chẩn đoán thai*: Xét nghiệm que thử thai nước tiểu và định lượng $\beta$-hCG huyết thanh.
 
-
 ---
 
-## 5. Sinh Lý Tiết Sữa: Prolactin vs Oxytocin
+## 4. Sinh Lý Tiết Sữa: Prolactin vs Oxytocin
 | Hormone | Nguồn gốc | Kích thích bài tiết | Tác động sinh lý lên Tuyến Vú |
 |---|---|---|---|
 | **PROLACTIN** | **Thùy Trước Tuyến Yên** | Động tác bú mút của trẻ (giảm Dopamine hạ đồi) | **KÍCH THÍCH SINH TỔNG HỢP VÀ TẠO RA SỮA** trong các nang tuyến vú. |
 | **OXYTOCIN** | **Thùy Sau Tuyến Yên** | Phản xạ thần kinh khi trẻ bú mút / tiếng khóc của con | **KÍCH THÍCH CO BÓP TẾ BÀO CƠ BIỂU MÔ** (Myoepithelial cells) quanh nang vú ──► **PHUN TỐNG SỮA RA NGOÀI (Milk Ejection Reflex)**. |
 
+Nồng độ **Prolactin tăng cao liên tục khi cho con bú mẹ hoàn toàn** sẽ ức chế vùng hạ đồi bài tiết **GnRH** theo nhịp xung $\rightarrow$ Tuyến yên giảm tiết LH và FSH $\rightarrow$ **ỨC CHẾ HOÀN TOÀN SỰ RỤNG TRỨNG VÀ MẤT KINH NGUYỆT** (Phương pháp tránh thai vô kinh khi cho con bú).
 
-  Nồng độ **Prolactin tăng cao liên tục khi cho con bú mẹ hoàn toàn** sẽ ức chế vùng hạ đồi bài tiết **GnRH** theo nhịp xung $\rightarrow$ Tuyến yên giảm tiết LH và FSH $\rightarrow$ **ỨC CHẾ HOÀN TOÀN SỰ RỤNG TRỨNG VÀ MẤT KINH NGUYỆT** (Phương pháp tránh thai vô kinh khi cho con bú).
+---
 
-## 6. Tài Liệu Tham Khảo EBM
+## 5. Tài Liệu Tham Khảo EBM
 <div class="citation-box">
   <ol style="margin: 0; padding-left: 1.25rem; line-height: 1.8; color: var(--color-text-muted, #475569); font-size: 0.88rem;">
     <li><strong>Hall, J. E., & Hall, M. E. (2021)</strong>. <em>Guyton and Hall Textbook of Medical Physiology</em> (14th ed.). Philadelphia: Elsevier. Chapters 81 & 82: Male & Female Reproductive Physiology.</li>
@@ -270,7 +258,6 @@ Một chu kỳ kinh nguyệt tiêu chuẩn kéo dài **28 ngày**, tính từ ng
     <li><strong>Yen, S. S. C., Jaffe, R. B., & Barbieri, R. L. (2019)</strong>. <em>Yen & Jaffe's Reproductive Endocrinology</em> (8th ed.). Elsevier.</li>
   </ol>
 </div>
-
 
 {/* HÀNG NÚT ĐIỀU HƯỚNG SPA */}
 <div class="btn-row">
@@ -281,3 +268,4 @@ Một chu kỳ kinh nguyệt tiêu chuẩn kéo dài **28 ngày**, tính từ ng
     <i class="fa-solid fa-arrow-up"></i> Lên đầu trang
   </a>
 </div>
+

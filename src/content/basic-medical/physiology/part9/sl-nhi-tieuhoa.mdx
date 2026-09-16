@@ -45,26 +45,33 @@ sections:
 
 # 🧬 ĐẶC ĐIỂM SINH LÝ TIÊU HÓA & DINH DƯỠNG TRẺ EM
 
+<div class="module-badge-group">
+  <span class="badge badge-purple"><i class="fa-solid fa-book-medical"></i> GP-SL Part 9 • Nhi Khoa</span>
+  <span class="badge badge-blue"><i class="fa-solid fa-baby"></i> Dung Tích Dạ Dày Theo Ngày Tuổi</span>
+  <span class="badge badge-amber"><i class="fa-solid fa-arrows-up-down"></i> Cơ Chế Nôn Trớ Sinh Lý (GER)</span>
+  <span class="badge badge-green"><i class="fa-solid fa-person-breastfeeding"></i> Sữa Mẹ EBM &amp; Ăn Dặm 6 Tháng</span>
+</div>
+
 <PhysioQuickNav />
 
 {/* DẢI CHỈ SỐ NHANH (QUICK STATS STRIP) */}
-<section class="stats-strip">
+<section class="stats-strip theme-physio">
   <div class="stats-grid">
     <div class="stat-card">
-      <div class="stat-val blue">PHYS-PED-04</div>
-      <div class="stat-lbl">Mã chuyên đề • Sinh Lý Học Nhi Khoa</div>
+      <div class="stat-val blue">5 – 7 mL</div>
+      <div class="stat-lbl">Dung tích dạ dày ngày 1 (bi ve) ➔ 60 mL ngày 7 (trứng gà)</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val green">Nội Môi Ổn Định</div>
-      <div class="stat-lbl">Cân bằng gradient điện hóa & Áp suất thẩm thấu</div>
+      <div class="stat-val amber">Góc His Tù</div>
+      <div class="stat-lbl">Cơ thắt LES chưa trưởng thành ➔ Nôn trớ sinh lý nhũ nhi</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val amber">Feedback Loop</div>
-      <div class="stat-lbl">Vòng điều hòa phản hồi thần kinh - thể dịch</div>
+      <div class="stat-val green">Lactase Sớm</div>
+      <div class="stat-lbl">Tụy chưa có Amylase ➔ Không ăn dặm tinh bột trước 6 tháng</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val purple">Dược Lý EBM</div>
-      <div class="stat-lbl">Ứng dụng lâm sàng chuẩn Guyton 14th & Ganong 26th</div>
+      <div class="stat-val purple">Whey 70/30</div>
+      <div class="stat-lbl">Đạm Whey/Casein tối ưu + sIgA &amp; HMOs bẫy vi khuẩn</div>
     </div>
   </div>
 </section>
@@ -72,35 +79,119 @@ sections:
 ---
 
 ## 1. Dung Tích & Cơ Học Dạ Dày Sơ Sinh
-Dạ dày của trẻ sơ sinh phát triển dung tích cực kỳ nhanh chóng trong những tuần đầu tiên sau sinh:
+Dạ dày của trẻ sơ sinh phát triển dung tích cực kỳ nhanh chóng trong những tuần đầu tiên sau sinh để thích ứng với lượng sữa mẹ tiết ra:
 
-```
-[DUNG TÍCH DẠ DÀY THEO NGÀY TUỔI]:
-  • Ngày 1 sau sinh: 5 – 7 mL (Kích thước bằng viên bi ve - Vừa vặn lượng SỮA NON Colostrum của mẹ)
-  • Ngày 3 sau sinh: 20 – 30 mL (Kích thước bằng quả óc chó)
-  • Ngày 7 sau sinh: 45 – 60 mL (Kích thước bằng quả trứng gà)
-  • 1 tháng tuổi:    80 – 150 mL
-  • 1 tuổi:          250 – 300 mL
-  • Người lớn:       1.000 – 1.500 mL
-```
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title">
+      <i class="fa-solid fa-baby" style="color: var(--color-primary, #0284c7);"></i>
+      TIẾN TRÌNH PHÁT TRIỂN DUNG TÍCH DẠ DÀY SƠ SINH THEO NGÀY TUỔI
+    </div>
+    <span class="badge badge-blue">Gastric Capacity Roadmap</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 920 170" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrGas" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+      </defs>
 
+      {/* Day 1 */}
+      <rect x="20" y="20" width="165" height="126" rx="12" fill="var(--color-surface-2, #f8fafc)" stroke="#0284c7" stroke-width="1.8"/>
+      <rect x="20" y="20" width="165" height="32" rx="12" fill="var(--color-primary-light, #e0f2fe)"/>
+      <text x="102" y="41" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#0284c7">NGÀY 1 SAU SINH</text>
+      <text x="102" y="76" text-anchor="middle" font-family="'Plus Jakarta Sans', font-weight="800" font-size="16" fill="#0284c7">5 – 7 mL</text>
+      <text x="102" y="98" text-anchor="middle" font-family="'Plus Jakarta Sans', font-weight="600" font-size="10.5" fill="var(--color-text, #0f172a)">Kích cỡ: Viên bi ve</text>
+      <text x="102" y="118" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Vừa vặn sữa non Colostrum</text>
+
+      {/* Arrow 1 */}
+      <path d="M 185 83 L 200 83" fill="none" stroke="#0284c7" stroke-width="2" marker-end="url(#arrGas)"/>
+
+      {/* Day 3 */}
+      <rect x="205" y="20" width="165" height="126" rx="12" fill="var(--color-surface-2, #f8fafc)" stroke="#059669" stroke-width="1.8"/>
+      <rect x="205" y="20" width="165" height="32" rx="12" fill="var(--green-bg, #ecfdf5)"/>
+      <text x="287" y="41" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#059669">NGÀY 3 SAU SINH</text>
+      <text x="287" y="76" text-anchor="middle" font-family="'Plus Jakarta Sans', font-weight="800" font-size="16" fill="#059669">20 – 30 mL</text>
+      <text x="287" y="98" text-anchor="middle" font-family="'Plus Jakarta Sans', font-weight="600" font-size="10.5" fill="var(--color-text, #0f172a)">Kích cỡ: Quả óc chó</text>
+      <text x="287" y="118" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Dạ dày bắt đầu giãn nở</text>
+
+      {/* Arrow 2 */}
+      <path d="M 370 83 L 385 83" fill="none" stroke="#0284c7" stroke-width="2" marker-end="url(#arrGas)"/>
+
+      {/* Day 7 */}
+      <rect x="390" y="20" width="165" height="126" rx="12" fill="var(--color-surface-2, #f8fafc)" stroke="#d97706" stroke-width="1.8"/>
+      <rect x="390" y="20" width="165" height="32" rx="12" fill="var(--amber-bg, #fffbeb)"/>
+      <text x="472" y="41" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#d97706">NGÀY 7 SAU SINH</text>
+      <text x="472" y="76" text-anchor="middle" font-family="'Plus Jakarta Sans', font-weight="800" font-size="16" fill="#d97706">45 – 60 mL</text>
+      <text x="472" y="98" text-anchor="middle" font-family="'Plus Jakarta Sans', font-weight="600" font-size="10.5" fill="var(--color-text, #0f172a)">Kích cỡ: Quả trứng gà</text>
+      <text x="472" y="118" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Cữ bú 60–90 mL/lần</text>
+
+      {/* Arrow 3 */}
+      <path d="M 555 83 L 570 83" fill="none" stroke="#0284c7" stroke-width="2" marker-end="url(#arrGas)"/>
+
+      {/* 1 Month */}
+      <rect x="575" y="20" width="165" height="126" rx="12" fill="var(--color-surface-2, #f8fafc)" stroke="#7c3aed" stroke-width="1.8"/>
+      <rect x="575" y="20" width="165" height="32" rx="12" fill="var(--purple-bg, #f5f3ff)"/>
+      <text x="657" y="41" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#7c3aed">1 THÁNG TUỔI</text>
+      <text x="657" y="76" text-anchor="middle" font-family="'Plus Jakarta Sans', font-weight="800" font-size="16" fill="#7c3aed">80 – 150 mL</text>
+      <text x="657" y="98" text-anchor="middle" font-family="'Plus Jakarta Sans', font-weight="600" font-size="10.5" fill="var(--color-text, #0f172a)">Kích cỡ: Quả trứng vịt</text>
+      <text x="657" y="118" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Giảm số cữ bú đêm</text>
+
+      {/* Arrow 4 */}
+      <path d="M 740 83 L 755 83" fill="none" stroke="#0284c7" stroke-width="2" marker-end="url(#arrGas)"/>
+
+      {/* 1 Year */}
+      <rect x="760" y="20" width="140" height="126" rx="12" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <rect x="760" y="20" width="140" height="32" rx="12" fill="var(--color-surface-3, #f1f5f9)"/>
+      <text x="830" y="41" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="var(--color-text, #0f172a)">1 TUỔI</text>
+      <text x="830" y="76" text-anchor="middle" font-family="'Plus Jakarta Sans', font-weight="800" font-size="16" fill="var(--color-text, #0f172a)">250 – 300 mL</text>
+      <text x="830" y="98" text-anchor="middle" font-family="'Plus Jakarta Sans', font-weight="600" font-size="10.5" fill="var(--color-text-muted, #475569)">Dạ dày hình chữ J</text>
+      <text x="830" y="118" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Người lớn: 1.000–1.500 mL</text>
+    </svg>
+  </div>
+</div>
 
 ---
 
 ## 2. Cơ Chế Nôn Trớ Sinh Lý Ở Trẻ Nhỏ
-Hơn 50% trẻ nhũ nhi dưới 3 tháng tuổi có hiện tượng nôn trớ sữa sinh lý (*Gastroesophageal Reflux - GER*) do các yếu tố giải phẫu chức năng:
+Hơn 50% trẻ nhũ nhi dưới 3 tháng tuổi có hiện tượng trào ngược dạ dày thực quản sinh lý (*Physiological Gastroesophageal Reflux - GER*) do sự phối hợp của 5 yếu tố giải phẫu chức năng:
 
-```
-[CÁC YẾU TỐ DẪN ĐẾN NÔN TRỚ SINH LÝ Ở TRẺ NHŨ NHI]:
-  1. Dạ dày nằm ngang, hình ống trụ, đáy dạ dày chưa phát triển
-  2. Góc His (Góc giữa thực quản và đáy vị) là GÓC TÙ (chưa tạo nẹp van chống trào ngược)
-  3. CƠ THẮT THỰC QUẢN DƯỚI (LES) CHƯA TRƯỞNG THÀNH: Áp lực trương lực nghỉ thấp, dễ giãn mở tự phát
-  4. Cơ môn vị phát triển tốt và co thắt chặt
-  5. Chế độ ăn 100% thức ăn lỏng (Sữa) + Tư thế thường nằm ngửa sau bú
-```
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title">
+      <i class="fa-solid fa-arrows-up-down" style="color: var(--color-warning, #d97706);"></i>
+      5 YẾU TỐ SINH LÝ GÂY NÔN TRỚ NHŨ NHI &amp; CHIẾN LƯỢC XỬ TRÍ EBM
+    </div>
+    <span class="badge badge-amber">Pathophysiology &amp; Care</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 920 250" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+      {/* Left: 5 Pathophysiological Factors */}
+      <rect x="20" y="20" width="480" height="210" rx="12" fill="var(--color-surface-2, #f8fafc)" stroke="#d97706" stroke-width="1.8"/>
+      <rect x="20" y="20" width="480" height="36" rx="12" fill="var(--amber-bg, #fffbeb)"/>
+      <text x="260" y="43" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#d97706">5 YẾU TỐ GIẢI PHẪU &amp; CHỨC NĂNG DẠ DÀY NHŨ NHI</text>
+      <text x="35" y="78" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">1. <tspan font-weight="700">Dạ dày nằm ngang:</tspan> Hình ống trụ tròn, đáy vị chưa phát triển.</text>
+      <text x="35" y="102" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">2. <tspan font-weight="700">Góc His là GÓC TÙ:</tspan> Chưa tạo được nẹp van ép chống dòng trào ngược.</text>
+      <text x="35" y="126" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">3. <tspan font-weight="700" fill="#dc2626">Cơ thắt thực quản dưới (LES) yếu:</tspan> Trương lực nghỉ thấp, dễ giãn mở tự phát.</text>
+      <text x="35" y="150" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">4. <tspan font-weight="700">Cơ môn vị phát triển tốt:</tspan> Co thắt chặt cản trở sữa xuống tá tràng.</text>
+      <text x="35" y="174" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">5. <tspan font-weight="700">Chế độ ăn 100% dạng lỏng (Sữa):</tspan> Kết hợp tư thế nằm ngửa sau bú.</text>
+      <line x1="35" y1="188" x2="485" y2="188" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="35" y="210" font-family="'Plus Jakarta Sans', font-weight="700" font-size="10.5" fill="#059669">➔ Tiến triển tự nhiên: Tự khỏi khi trẻ biết ngồi vững và ăn dặm đặc (6–12 tháng).</text>
 
-- **Hướng dẫn chăm sóc EBM**: Cho trẻ ngậm bắt vú đúng cách tránh nuốt hơi, vỗ ợ hơi sau bú, bế đứng hoặc giữ đầu cao $30^\circ$ trong 20–30 phút sau khi bú.
-
+      {/* Right: EBM Nursing Interventions */}
+      <rect x="520" y="20" width="380" height="210" rx="12" fill="var(--color-surface-2, #f8fafc)" stroke="#059669" stroke-width="1.8"/>
+      <rect x="520" y="20" width="380" height="36" rx="12" fill="var(--green-bg, #ecfdf5)"/>
+      <text x="710" y="43" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#059669">HƯỚNG DẪN CHĂM SÓC GIẢM NÔN TRỚ EBM</text>
+      <text x="535" y="78" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• <tspan font-weight="700">Ngậm bắt vú đúng cách:</tspan> Tránh nuốt nhiều bọt khí vào dạ dày.</text>
+      <text x="535" y="106" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• <tspan font-weight="700">Vỗ ợ hơi giữa cữ &amp; sau cữ:</tspan> Tống hơi tích tụ ở đáy dạ dày ra ngoài.</text>
+      <text x="535" y="134" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• <tspan font-weight="700">Tư thế bế đứng / Đầu cao 30°:</tspan> Duy trì 20–30 phút sau khi bú xong.</text>
+      <text x="535" y="162" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• <tspan font-weight="700">Chia nhỏ cữ bú:</tspan> Tránh cho bú quá no vượt quá dung tích dạ dày.</text>
+      <line x1="535" y1="188" x2="885" y2="188" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="535" y="210" font-family="'Plus Jakarta Sans', font-weight="700" font-size="10.5" fill="#dc2626">CẢNH BÁO: Không nằm sấp ngay sau bú (nguy cơ đột tử SIDS)!</text>
+    </svg>
+  </div>
+</div>
 
 ---
 
@@ -112,19 +203,44 @@ Hơn 50% trẻ nhũ nhi dưới 3 tháng tuổi có hiện tượng nôn trớ s
 | **Lipase Tụy & Acid Mật** | Hoạt tính men tụy và muối mật còn thấp ở trẻ sơ sinh. | Bù trừ nhờ **Lipase trong sữa mẹ (BSSL)** và Lipase lưỡi giúp tiêu hóa chất béo sữa mẹ dễ dàng. |
 | **Pepsin & Acid HCl** | Nồng độ acid dịch vị thấp hơn người lớn (pH 3.0 – 5.0). | Thích hợp cho việc tiêu hóa protein sữa mẹ mà không làm phá hủy các kháng thể IgA. |
 
-
 ---
 
 ## 4. Ưu Thế Vàng Của Sữa Mẹ & Ăn Dặm 6 Tháng
-1. **Kháng Thể IgA Tiết (Secretory IgA - sIgA)**: Không bị acid dạ dày phân hủy, tráng phủ toàn bộ niêm mạc ruột như một "áo giáp miễn dịch", trung hòa độc tố và vi khuẩn gây bệnh đường ruột.
-  2. **Oligosaccharides Sữa Mẹ (HMOs)**: Là prebiotic nuôi dưỡng chọn lọc vi khuẩn có lợi *Bifidobacterium infantis*, đồng thời đóng vai trò như thụ thể giả bẫy dính vi khuẩn gây bệnh đào thải ra phân.
-  3. **Tỷ Lệ Đạm Whey / Casein Tối Ưu ($70/30$)**: Đạm Whey hòa tan tạo thành các cục đông mềm mịn trong dạ dày giúp **thời gian làm rỗng dạ dày chỉ mất 90 phút** (sữa bò mất $3 – 4\text{ giờ}$ do nhiều Casein khó tiêu).
-  4. **Acid Béo Không No Chuỗi Dài (DHA & ARA)**: Cần thiết cho sự phát triển võng mạc và myelin hóa tế bào thần kinh não bộ.
 
+<div class="comparison-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
+  <div class="card" style="border-left: 4px solid var(--color-primary, #0284c7); background: var(--color-surface, #ffffff); border-radius: 12px; padding: 1.15rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+    <h4 style="margin: 0 0 0.5rem; color: #0284c7; font-weight: 700;"><i class="fa-solid fa-shield-halved"></i> 1. Kháng Thể sIgA</h4>
+    <p style="margin: 0; line-height: 1.55; font-size: 0.9rem; color: var(--color-text, #0f172a);">
+      Không bị acid dạ dày phân hủy, tráng phủ toàn bộ niêm mạc ruột như một "áo giáp miễn dịch", trung hòa độc tố và vi khuẩn gây bệnh đường ruột.
+    </p>
+  </div>
 
-### Khuyến Cáo Ăn Dặm Khoa Học Theo WHO / ESPGHAN
-- Nuôi con bằng **sữa mẹ hoàn toàn trong 6 tháng đầu đời (180 ngày)**.
-- **Bắt đầu ăn dặm từ tròn 6 tháng tuổi**: Vì lúc này men Amylase tụy đã trưởng thành, hệ tiêu hóa và thận đã sẵn sàng tiếp nhận thức ăn đặc, đồng thời nhu cầu Sắt và Năng lượng của trẻ đã vượt quá lượng cung cấp trong sữa mẹ đơn thuần.
+  <div class="card" style="border-left: 4px solid var(--color-success, #059669); background: var(--color-surface, #ffffff); border-radius: 12px; padding: 1.15rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+    <h4 style="margin: 0 0 0.5rem; color: #059669; font-weight: 700;"><i class="fa-solid fa-bacterium"></i> 2. HMOs (Oligosaccharides)</h4>
+    <p style="margin: 0; line-height: 1.55; font-size: 0.9rem; color: var(--color-text, #0f172a);">
+      Prebiotic nuôi dưỡng chọn lọc vi khuẩn có lợi <em>Bifidobacterium infantis</em>, đồng thời đóng vai trò như thụ thể giả bẫy dính mầm bệnh đào thải ra phân.
+    </p>
+  </div>
+
+  <div class="card" style="border-left: 4px solid var(--color-warning, #d97706); background: var(--color-surface, #ffffff); border-radius: 12px; padding: 1.15rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+    <h4 style="margin: 0 0 0.5rem; color: #d97706; font-weight: 700;"><i class="fa-solid fa-fire-burner"></i> 3. Đạm Whey / Casein (70/30)</h4>
+    <p style="margin: 0; line-height: 1.55; font-size: 0.9rem; color: var(--color-text, #0f172a);">
+      Đạm Whey hòa tan tạo khối đông mềm mịn, làm rỗng dạ dày chỉ sau <strong>90 phút</strong> (sữa công thức nhiều Casein khó tiêu mất 3–4 giờ).
+    </p>
+  </div>
+
+  <div class="card" style="border-left: 4px solid var(--color-purple, #7c3aed); background: var(--color-surface, #ffffff); border-radius: 12px; padding: 1.15rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+    <h4 style="margin: 0 0 0.5rem; color: #7c3aed; font-weight: 700;"><i class="fa-solid fa-brain"></i> 4. Acid Béo DHA &amp; ARA</h4>
+    <p style="margin: 0; line-height: 1.55; font-size: 0.9rem; color: var(--color-text, #0f172a);">
+      Cần thiết sống còn cho sự phát triển võng mạc và quá trình myelin hóa sợi trục thần kinh não bộ trong 1.000 ngày đầu đời.
+    </p>
+  </div>
+</div>
+
+> [!TIP]
+> ### Khuyến Cáo Ăn Dặm Khoa Học Theo WHO / ESPGHAN
+> - Nuôi con bằng **sữa mẹ hoàn toàn trong 6 tháng đầu đời (180 ngày)**.
+> - **Bắt đầu ăn dặm từ tròn 6 tháng tuổi**: Vì lúc này men Amylase tụy đã trưởng thành, hệ tiêu hóa và thận đã sẵn sàng tiếp nhận thức ăn đặc, đồng thời nhu cầu Sắt và Năng lượng của trẻ đã vượt quá lượng cung cấp trong sữa mẹ đơn thuần.
 
 ## 5. Tài Liệu Tham Khảo EBM
 <div class="citation-box">

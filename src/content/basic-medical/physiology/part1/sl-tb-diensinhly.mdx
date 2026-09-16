@@ -55,24 +55,29 @@ sections:
 
 <PhysioQuickNav />
 
+<div style="display: flex; gap: 0.5rem; margin-bottom: 1rem; align-items: center; flex-wrap: wrap;">
+  <span class="module-badge badge-physio"><i class="fa-solid fa-heart-pulse"></i> Sinh Lý Học • Part 1</span>
+  <span class="module-badge" style="border-color: rgba(99, 102, 241, 0.3); background: rgba(99, 102, 241, 0.1); color: var(--dsp-indigo, #6366f1);"><i class="fa-solid fa-bolt"></i> Điện Sinh Lý Học</span>
+</div>
+
 {/* DẢI CHỈ SỐ NHANH (QUICK STATS STRIP) */}
-<section class="stats-strip">
+<section class="stats-strip theme-physio">
   <div class="stats-grid">
     <div class="stat-card">
-      <div class="stat-val blue">PHYS-CELL-03</div>
-      <div class="stat-lbl">Mã chuyên đề • Sinh Lý Tế Bào & Nội Môi</div>
+      <div class="stat-val blue">-70 đến -90 mV</div>
+      <div class="stat-lbl">Điện thế nghỉ màng (RMP sợi thần kinh lớn &amp; tế bào cơ vân)</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val green">Nội Môi Ổn Định</div>
-      <div class="stat-lbl">Cân bằng gradient điện hóa & Áp suất thẩm thấu</div>
+      <div class="stat-val amber">-55 đến -65 mV</div>
+      <div class="stat-lbl">Ngưỡng khử cực kích hoạt (Threshold mở ồ ạt kênh NaV)</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val amber">Feedback Loop</div>
-      <div class="stat-lbl">Vòng điều hòa phản hồi thần kinh - thể dịch</div>
+      <div class="stat-val rose">+30 đến +35 mV</div>
+      <div class="stat-lbl">Đỉnh khử cực vượt ngưỡng (Overshoot đảo cực màng tế bào)</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val purple">Dược Lý EBM</div>
-      <div class="stat-lbl">Ứng dụng lâm sàng chuẩn Guyton 14th & Ganong 26th</div>
+      <div class="stat-val green">0.25 – 0.30 s</div>
+      <div class="stat-lbl">Thời kỳ trơ tuyệt đối tế bào cơ thất (chống co cứng tetanus)</div>
     </div>
   </div>
 </section>
@@ -86,11 +91,34 @@ sections:
 - **Tế bào cơ trơn**: $V_m \approx -50\text{ đến }-60\text{ mV}$.
 - **Hồng cầu**: $V_m \approx -10\text{ mV}$.
 
-```
-Môi Trường Ngoại Bào [ECF]: [+] [+] [+] [+] [+] (Điện tích dương)
-════════════════════════════════════════════════ Màng tế bào lipid kép
-Bào Tương Nội Bào [ICF]:   [-] [-] [-] [-] [-] (Điện thế nghỉ Vm = -90 mV)
-```
+<div class="flowchart-editorial-card">
+  <div class="flowchart-editorial-header">
+    <div class="flowchart-editorial-title">
+      <i class="fa-solid fa-battery-half"></i>
+      <span>SỰ PHÂN BỐ ĐIỆN TÍCH VÀ NGUYÊN NHÂN TẠO ĐIỆN THẾ NGHỈ MÀNG (RMP)</span>
+    </div>
+    <div class="flowchart-editorial-badges">
+      <span class="flowchart-editorial-badge">Ganong 26th</span>
+    </div>
+  </div>
+  <div class="flowchart-editorial-viewport">
+    <svg class="flowchart-editorial-svg" viewBox="0 0 900 190" width="900" height="190" xmlns="http://www.w3.org/2000/svg" font-family="'Plus Jakarta Sans', 'Inter', sans-serif">
+      {/*  */}
+      <rect x="30" y="15" width="840" height="42" rx="8" fill="rgba(2, 132, 199, 0.08)" stroke="#0284c7" stroke-width="1.5" />
+      <text x="50" y="41" font-size="13" font-weight="700" fill="#0284c7">MÔI TRƯỜNG NGOẠI BÀO [ECF]: [+] [+] [+] [+] [+] (Tích điện dương tương đối • Na⁺ 142 mM, Cl⁻ 103 mM)</text>
+
+      {/*  */}
+      <line x1="30" y1="78" x2="870" y2="78" stroke="#94a3b8" stroke-width="3" stroke-dasharray="8,6" />
+      <rect x="350" y="68" width="200" height="22" rx="4" fill="#ffffff" stroke="#64748b" stroke-width="1" />
+      <text x="450" y="83" text-anchor="middle" font-size="10" font-weight="700" fill="#475569">MÀNG TẾ BÀO (TÍNH THẤM K⁺ &gt;&gt; Na⁺)</text>
+
+      {/*  */}
+      <rect x="30" y="105" width="840" height="65" rx="8" fill="rgba(99, 102, 241, 0.08)" stroke="#6366f1" stroke-width="1.5" />
+      <text x="50" y="130" font-size="13" font-weight="700" fill="#6366f1">BÀO TƯƠNG NỘI BÀO [ICF]: [-] [-] [-] [-] [-] (Điện thế nghỉ Vm = -70 đến -90 mV)</text>
+      <text x="50" y="152" font-size="11" font-weight="500" fill="#475569">Chi phối bởi: (1) Kênh rò rỉ K⁺ mở tự do (PK &gt;&gt; PNa) • (2) Anion Protein⁻, PO₄³⁻ không qua màng • (3) Bơm Na⁺/K⁺-ATPase (-4 mV)</text>
+    </svg>
+  </div>
+</div>
 
 
   1. **Tính Thấm Chọn Lọc Cao Với Ion $K^+$**: Ở trạng thái nghỉ, các kênh rò rỉ $K^+$ (*Tandem Pore Domain $K^+$ Channels - K2P*) luôn mở tự do, làm tính thấm của màng đối với $K^+$ cao gấp **50 – 100 lần** so với ion $Na^+$.
@@ -129,39 +157,102 @@ Vì ở trạng thái nghỉ $P_K \gg P_{Na}$, điện thế màng thực tế (
 Khi kích thích đạt ngưỡng (*Threshold Potential $\approx -55\text{ mV}$*), tế bào thần kinh và cơ sẽ phát sinh một biến đổi điện thế bùng phát cực nhanh tuân theo **Quy luật Tất cả hoặc Không (All-or-None Law)**:
 
 
-<div class="flowchart-card">
-  <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: 3. Các Pha Điện Thế Hoạt Động</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+<div class="flowchart-editorial-card">
+  <div class="flowchart-editorial-header">
+    <div class="flowchart-editorial-title">
+      <i class="fa-solid fa-chart-line"></i>
+      <span>ĐƯỜNG CONG ĐIỆN THẾ HOẠT ĐỘNG (Action Potential Curve &amp; Ion Fluxes)</span>
+    </div>
+    <div class="flowchart-editorial-badges">
+      <span class="flowchart-editorial-badge">Guyton 14th • Editorial Vector</span>
+    </div>
   </div>
-  <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 226" width="880" height="226" xmlns="http://www.w3.org/2000/svg">
+  <div class="flowchart-editorial-viewport">
+    <svg class="flowchart-editorial-svg" viewBox="0 0 860 420" width="860" height="420" xmlns="http://www.w3.org/2000/svg" font-family="'Plus Jakarta Sans', 'Inter', sans-serif">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
-        </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
-        </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
-        </marker>
+        <linearGradient id="curveGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#0284c7"/>
+          <stop offset="20%" stop-color="#f59e0b"/>
+          <stop offset="35%" stop-color="#ef4444"/>
+          <stop offset="65%" stop-color="#10b981"/>
+          <stop offset="85%" stop-color="#6366f1"/>
+          <stop offset="100%" stop-color="#0284c7"/>
+        </linearGradient>
       </defs>
 
-      {/* Single Node: Điện thế (mV) */}
-      <rect x="186.25" y="20" width="507.5" height="168" rx="10" fill="var(--blue-bg, #eff6ff)" stroke="var(--blue, #0284c7)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-primary, #0284c7)">Điện thế (mV)</text>
-      <text x="210.25" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• +35 ──┐ ▲ Giai đoạn Vượt ngưỡng (Overshoot)</text>
-      <text x="210.25" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• 0 ──┼────────────/───\───────────────────────────</text>
-      <text x="210.25" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• 55 ──┼──────────/ \ ◄ Ngưỡng kích thích (Threshold)</text>
-      <text x="210.25" y="118" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• 70 ──┼────────/ \ </text>
-      <text x="210.25" y="136" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• 90 ──┴───────/ \__________ ◄ Ưu phân cực (Undershoot)</text>
-      <text x="210.25" y="154" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Khử cực Tái cực</text>
-      <text x="210.25" y="172" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• (Na+ ùa vào) (K+ thoát ra)</text>
+      {/*  */}
+      {/*  */}
+      <line x1="90" y1="50" x2="90" y2="350" stroke="#94a3b8" stroke-width="2"/>
+      {/*  */}
+      <line x1="90" y1="350" x2="800" y2="350" stroke="#94a3b8" stroke-width="2"/>
+      <text x="790" y="375" text-anchor="end" font-size="11" font-weight="700" fill="#64748b">Thời gian (mili-giây • ms) ►</text>
+      <text x="80" y="42" text-anchor="end" font-size="11" font-weight="700" fill="#0284c7">Điện thế (mV) ▲</text>
+
+      {/*  */}
+      {/*  */}
+      <line x1="90" y1="80" x2="800" y2="80" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="4,4"/>
+      <text x="80" y="85" text-anchor="end" font-size="11" font-weight="700" fill="#ef4444">+35 mV</text>
+      <rect x="360" y="66" width="160" height="24" rx="4" fill="#ffffff" stroke="#ef4444" stroke-width="1"/>
+      <text x="440" y="82" text-anchor="middle" font-size="11" font-weight="700" fill="#ef4444">▲ Đỉnh Vượt Ngưỡng (+35 mV)</text>
+
+      {/*  */}
+      <line x1="90" y1="140" x2="800" y2="140" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="2,2"/>
+      <text x="80" y="145" text-anchor="end" font-size="11" font-weight="600" fill="#64748b">0 mV</text>
+
+      {/*  */}
+      <line x1="90" y1="230" x2="800" y2="230" stroke="#d97706" stroke-width="1.5" stroke-dasharray="6,4"/>
+      <text x="80" y="235" text-anchor="end" font-size="11" font-weight="700" fill="#d97706">-55 mV</text>
+      <rect x="180" y="218" width="130" height="22" rx="4" fill="#ffffff" stroke="#d97706" stroke-width="1"/>
+      <text x="245" y="233" text-anchor="middle" font-size="10" font-weight="700" fill="#d97706">Ngưỡng Khử Cực</text>
+
+      {/*  */}
+      <line x1="90" y1="280" x2="800" y2="280" stroke="#0284c7" stroke-width="1.5" stroke-dasharray="4,4"/>
+      <text x="80" y="285" text-anchor="end" font-size="11" font-weight="700" fill="#0284c7">-70 mV</text>
+      <text x="790" y="275" text-anchor="end" font-size="10" font-weight="700" fill="#0284c7">Điện thế nghỉ (RMP)</text>
+
+      {/*  */}
+      <line x1="90" y1="320" x2="800" y2="320" stroke="#6366f1" stroke-width="1" stroke-dasharray="4,4"/>
+      <text x="80" y="325" text-anchor="end" font-size="11" font-weight="700" fill="#6366f1">-90 mV</text>
+
+      {/*  */}
+      {/*  */}
+      <path d="M 90 280 L 170 280 Q 195 270 220 230 Q 260 110 320 80 Q 380 110 460 280 Q 500 325 550 320 Q 610 310 680 280 L 800 280"
+            fill="none" stroke="url(#curveGrad)" stroke-width="3.5" stroke-linecap="round"/>
+
+      {/*  */}
+      {/*  */}
+      <circle cx="270" cy="155" r="5" fill="#ef4444"/>
+      <rect x="200" y="115" width="130" height="34" rx="6" fill="#ffffff" stroke="#ef4444" stroke-width="1"/>
+      <text x="265" y="130" text-anchor="middle" font-size="10" font-weight="700" fill="#ef4444">1. KHỬ CỰC</text>
+      <text x="265" y="143" text-anchor="middle" font-size="9" font-weight="600" fill="#334155">Na⁺ ùa vào qua NaV</text>
+
+      {/*  */}
+      <circle cx="410" cy="180" r="5" fill="#059669"/>
+      <rect x="420" y="150" width="130" height="34" rx="6" fill="#ffffff" stroke="#059669" stroke-width="1"/>
+      <text x="485" y="165" text-anchor="middle" font-size="10" font-weight="700" fill="#059669">2. TÁI CỰC</text>
+      <text x="485" y="178" text-anchor="middle" font-size="9" font-weight="600" fill="#334155">K⁺ thoát ra qua KV</text>
+
+      {/*  */}
+      <circle cx="550" cy="320" r="5" fill="#6366f1"/>
+      <rect x="520" y="340" width="150" height="34" rx="6" fill="#ffffff" stroke="#6366f1" stroke-width="1"/>
+      <text x="595" y="355" text-anchor="middle" font-size="10" font-weight="700" fill="#6366f1">3. ƯU PHÂN CỰC</text>
+      <text x="595" y="368" text-anchor="middle" font-size="9" font-weight="600" fill="#334155">Kênh K⁺ đóng chậm (-90 mV)</text>
+
+      {/*  */}
+      <line x1="220" y1="385" x2="440" y2="385" stroke="#ef4444" stroke-width="2"/>
+      <line x1="220" y1="380" x2="220" y2="390" stroke="#ef4444" stroke-width="2"/>
+      <line x1="440" y1="380" x2="440" y2="390" stroke="#ef4444" stroke-width="2"/>
+      <text x="330" y="405" text-anchor="middle" font-size="10" font-weight="700" fill="#ef4444">Trơ tuyệt đối (ARP: Cổng h đóng)</text>
+
+      <line x1="440" y1="385" x2="580" y2="385" stroke="#f59e0b" stroke-width="2"/>
+      <line x1="580" y1="380" x2="580" y2="390" stroke="#f59e0b" stroke-width="2"/>
+      <text x="510" y="405" text-anchor="middle" font-size="10" font-weight="700" fill="#d97706">Trơ tương đối (RRP)</text>
     </svg>
+  </div>
+  <div class="flowchart-editorial-legend">
+    <span class="flowchart-legend-item"><span class="legend-dot red"></span> 1. Khử cực: Mở cổng m NaV, Na⁺ ùa vào (+35 mV)</span>
+    <span class="flowchart-legend-item"><span class="legend-dot green"></span> 2. Tái cực: Đóng cổng h NaV, mở kênh KV, K⁺ ra ngoài</span>
+    <span class="flowchart-legend-item"><span class="legend-dot blue"></span> 3. Ưu cực &amp; Phục hồi: Kênh K⁺ đóng chậm, Bơm Na⁺/K⁺-ATPase tái lập RMP</span>
   </div>
 </div>
 

@@ -55,24 +55,29 @@ sections:
 
 <PhysioQuickNav />
 
+<div style="display: flex; gap: 0.5rem; margin-bottom: 1rem; align-items: center; flex-wrap: wrap;">
+  <span class="module-badge badge-physio"><i class="fa-solid fa-heart-pulse"></i> Sinh Lý Học • Part 2</span>
+  <span class="module-badge" style="border-color: rgba(225, 29, 72, 0.3); background: rgba(225, 29, 72, 0.1); color: var(--dsp-rose, #e11d48);"><i class="fa-solid fa-heart"></i> Cơ Tim &amp; Cơ Trơn</span>
+</div>
+
 {/* DẢI CHỈ SỐ NHANH (QUICK STATS STRIP) */}
-<section class="stats-strip">
+<section class="stats-strip theme-physio">
   <div class="stats-grid">
     <div class="stat-card">
-      <div class="stat-val blue">PHYS-NERV-03</div>
-      <div class="stat-lbl">Mã chuyên đề • Sinh Lý Hệ Thần Kinh & Cơ</div>
+      <div class="stat-val rose">250 – 300 ms</div>
+      <div class="stat-lbl">Thời gian điện thế hoạt động cơ thất có Pha 2 Cao nguyên (Plateau)</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val green">Nội Môi Ổn Định</div>
-      <div class="stat-lbl">Cân bằng gradient điện hóa & Áp suất thẩm thấu</div>
+      <div class="stat-val amber">CICR (20% / 80%)</div>
+      <div class="stat-lbl">Phóng thích Canxi do Canxi kích hoạt (20% CaV1.2 ➔ 80% RyR2 từ SR)</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val amber">Feedback Loop</div>
-      <div class="stat-lbl">Vòng điều hòa phản hồi thần kinh - thể dịch</div>
+      <div class="stat-val teal">Calmodulin + MLCK</div>
+      <div class="stat-lbl">Cơ chế co cơ trơn (Hoàn toàn không có Troponin, chốt Latch-state)</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val purple">Dược Lý EBM</div>
-      <div class="stat-lbl">Ứng dụng lâm sàng chuẩn Guyton 14th & Ganong 26th</div>
+      <div class="stat-val green">Trơ Tuyệt Đối 250 ms</div>
+      <div class="stat-lbl">Kéo dài trọn thì tâm thu (Systole) • Chống co cứng uốn ván (Tetany)</div>
     </div>
   </div>
 </section>
@@ -86,40 +91,62 @@ Cơ tim (*Cardiac Muscle / Myocardium*) có cấu trúc vân tương tự cơ x�
   1. *Thể liên kết (Desmosomes)*: Neo giữ cơ học các sợi tơ cơ giữa các tế bào, ngăn không cho các tế bào xé rách nhau khi co bóp mạnh.
   2. *Liên kết khe (Gap Junctions)*: Cho phép các ion ($Na^+, Ca^{2+}$) tự do khuếch tán từ tế bào này sang tế bào khác với điện trở cực thấp, giúp **điện thế hoạt động lan truyền đồng bộ trên toàn bộ khối cơ tim như một tế bào duy nhất**.
 
-
-<div class="flowchart-card">
-  <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: Tế bào Cơ tim 1</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+<div class="flowchart-editorial-card">
+  <div class="flowchart-editorial-header">
+    <div class="flowchart-editorial-title">
+      <i class="fa-solid fa-heart-pulse"></i>
+      <span>SƠ ĐỒ CẤU TRÚC ĐĨA XEN &amp; CƠ CHẾ HỢP BÀO ĐIỆN HỌC CƠ TIM</span>
+    </div>
+    <div class="flowchart-editorial-badges">
+      <span class="flowchart-editorial-badge">Guyton 14th • Pure Vector</span>
+    </div>
   </div>
-  <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 148" width="880" height="148" xmlns="http://www.w3.org/2000/svg">
+  <div class="flowchart-editorial-viewport">
+    <svg class="flowchart-editorial-svg" viewBox="0 0 920 230" width="920" height="230" xmlns="http://www.w3.org/2000/svg" font-family="'Plus Jakarta Sans', 'Inter', sans-serif">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
-        </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
-        </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        <marker id="ic-arr-blue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7" />
         </marker>
       </defs>
 
-      {/* Left Column: Tế bào Cơ tim 1 */}
-      <rect x="40" y="20" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="235" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Tế bào Cơ tim 1</text>
-      <line x1="60" y1="56" x2="410" y2="56" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="60" y="72" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• └──► Điện thế hoạt động la</text>
-      {/* Right Column: Tế bào Cơ tim 2 */}
-      <rect x="450" y="20" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="645" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Tế bào Cơ tim 2</text>
-      <line x1="470" y1="56" x2="820" y2="56" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="470" y="72" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• n truyền tức thì qua liên kết khe ─┘</text>
+      {/* Cardiomyocyte 1 */}
+      <rect x="40" y="25" width="370" height="150" rx="14" fill="rgba(225, 29, 72, 0.06)" stroke="#e11d48" stroke-width="2"/>
+      <text x="225" y="55" text-anchor="middle" font-size="14" font-weight="800" fill="#e11d48">TẾ BÀO CƠ TIM 1 (Cardiomyocyte A)</text>
+      <text x="70" y="85" font-size="11" font-weight="600" fill="#334155">• Nhân tế bào nằm ở trung tâm</text>
+      <text x="70" y="105" font-size="11" font-weight="600" fill="#334155">• Tơ cơ phân nhánh giàu ty thể (chiếm 40% thể tích)</text>
+      <text x="70" y="125" font-size="11" font-weight="700" fill="#0284c7">• Phát xung điện thế hoạt động (Khử cực Pha 0)</text>
+      <text x="70" y="145" font-size="10" font-weight="500" fill="#64748b">Dòng ion Na⁺, Ca²⁺ ùa vào bào tương</text>
+
+      {/* Intercalated Disc Junction in the Middle */}
+      <rect x="425" y="15" width="70" height="170" rx="8" fill="rgba(245, 158, 11, 0.12)" stroke="#d97706" stroke-width="2" stroke-dasharray="6,4"/>
+      <text x="460" y="45" text-anchor="middle" font-size="10" font-weight="800" fill="#d97706">ĐĨA XEN</text>
+
+      {/* Desmosomes & Gap Junctions Nodes inside */}
+      <rect x="430" y="60" width="60" height="36" rx="4" fill="#ffffff" stroke="#ef4444" stroke-width="1"/>
+      <text x="460" y="75" text-anchor="middle" font-size="8" font-weight="800" fill="#dc2626">DESMOSOME</text>
+      <text x="460" y="87" text-anchor="middle" font-size="7" font-weight="600" fill="#475569">Neo cơ học</text>
+
+      <rect x="430" y="110" width="60" height="46" rx="4" fill="#ffffff" stroke="#059669" stroke-width="1"/>
+      <text x="460" y="125" text-anchor="middle" font-size="8" font-weight="800" fill="#059669">GAP JUNCTION</text>
+      <text x="460" y="137" text-anchor="middle" font-size="7" font-weight="700" fill="#0284c7">Kênh Connexon</text>
+      <text x="460" y="148" text-anchor="middle" font-size="7" font-weight="600" fill="#059669">Điện trở cực thấp</text>
+
+      {/* Ionic arrow crossing gap junction */}
+      <path d="M 380 133 L 530 133" fill="none" stroke="#0284c7" stroke-width="3" marker-end="url(#ic-arr-blue)"/>
+
+      {/* Cardiomyocyte 2 */}
+      <rect x="510" y="25" width="370" height="150" rx="14" fill="rgba(225, 29, 72, 0.06)" stroke="#e11d48" stroke-width="2"/>
+      <text x="695" y="55" text-anchor="middle" font-size="14" font-weight="800" fill="#e11d48">TẾ BÀO CƠ TIM 2 (Cardiomyocyte B)</text>
+      <text x="540" y="85" font-size="11" font-weight="600" fill="#334155">• Nhận dòng ion Na⁺, Ca²⁺ tức thì không trễ</text>
+      <text x="540" y="105" font-size="11" font-weight="600" fill="#334155">• Khử cực lập tức theo quy luật Tất Cả Hoặc Không</text>
+      <text x="540" y="125" font-size="11" font-weight="700" fill="#059669">• HỢP BÀO CHỨC NĂNG (Functional Syncytium)</text>
+      <text x="540" y="145" font-size="10" font-weight="500" fill="#64748b">Toàn bộ tâm nhĩ/tâm thất co đồng thời như một tế bào duy nhất</text>
     </svg>
+  </div>
+  <div class="flowchart-editorial-legend">
+    <span class="flowchart-legend-item"><span class="legend-dot red"></span> Desmosomes: Chịu lực căng cơ học chống xé rách tế bào</span>
+    <span class="flowchart-legend-item"><span class="legend-dot green"></span> Gap Junctions (Connexin 43): Kênh ion thông thương điện trở thấp</span>
+    <span class="flowchart-legend-item"><span class="legend-dot blue"></span> Hợp bào cơ tim: Lan truyền sóng khử cực đồng vận toàn diện</span>
   </div>
 </div>
 
@@ -138,40 +165,107 @@ Cơ tim (*Cardiac Muscle / Myocardium*) có cấu trúc vân tương tự cơ x�
 Khác với cơ xương có thời kỳ trơ cực ngắn (1–2 ms), **cơ tim có thời kỳ trơ kéo dài 200 – 300 ms** (nhờ Pha 2 Cao nguyên Plateau):
 
 
-<div class="flowchart-card">
-  <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: Thời Kỳ Trơ Tuyệt Đối Kéo Dài Của Cơ Tim</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+<div class="flowchart-editorial-card">
+  <div class="flowchart-editorial-header">
+    <div class="flowchart-editorial-title">
+      <i class="fa-solid fa-heart-pulse"></i>
+      <span>ĐIỆN THẾ HOẠT ĐỘNG CƠ TÂM THẤT & THỜI KỲ TRƠ TUYỆT ĐỐI (250 ms)</span>
+    </div>
+    <span class="module-badge badge-physio">Cardiac Electrophysiology</span>
   </div>
-  <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 244" width="880" height="244" xmlns="http://www.w3.org/2000/svg">
+  <div class="flowchart-editorial-viewport">
+    <svg viewBox="0 0 920 380" width="100%" height="auto" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
-        </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
-        </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        <linearGradient id="plateauGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="var(--color-primary, #0284c7)" stop-opacity="0.25"/>
+          <stop offset="100%" stop-color="var(--color-primary, #0284c7)" stop-opacity="0.0"/>
+        </linearGradient>
+        <linearGradient id="twitchGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="var(--color-danger, #ef4444)" stop-opacity="0.20"/>
+          <stop offset="100%" stop-color="var(--color-danger, #ef4444)" stop-opacity="0.0"/>
+        </linearGradient>
+        <marker id="arrVp" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)"/>
         </marker>
       </defs>
 
-      {/* Single Node: Điện thế cơ tim (mV) */}
-      <rect x="160.75" y="20" width="558.5" height="186" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Điện thế cơ tim (mV)</text>
-      <text x="184.75" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• +20 ──┐ Pha 0 (Na+) ─── Pha 2 Cao Nguyên (Plateau: Ca2+ vào</text>
-      <text x="184.75" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  = K+ ra)</text>
-      <text x="184.75" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• 0 ──┼/ \ </text>
-      <text x="184.75" y="118" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• 90 ──┴────────────────────\________________________ Pha 4</text>
-      <text x="184.75" y="136" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  (Nghỉ)</text>
-      <text x="184.75" y="154" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ◄── THỜI KỲ TRƠ TUYỆT ĐỐI (250 ms) ──►</text>
-      <text x="184.75" y="172" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ◄──────── Nhát co cơ học (Systole) ────────► ◄── Giãn cơ</text>
-      <text x="184.75" y="190" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  (Diastole) ──►</text>
+      {/* Grid lines & Voltage levels */}
+      <line x1="70" y1="50" x2="880" y2="50" stroke="var(--color-border, #cbd5e1)" stroke-dasharray="4,4" opacity="0.4"/>
+      <text x="60" y="54" text-anchor="end" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="var(--color-text-muted, #64748b)">+20 mV</text>
+
+      <line x1="70" y1="100" x2="880" y2="100" stroke="var(--color-border, #cbd5e1)" stroke-dasharray="4,4" opacity="0.4"/>
+      <text x="60" y="104" text-anchor="end" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="var(--color-text-muted, #64748b)">0 mV</text>
+
+      <line x1="70" y1="170" x2="880" y2="170" stroke="var(--color-border, #cbd5e1)" stroke-dasharray="4,4" opacity="0.4"/>
+      <text x="60" y="174" text-anchor="end" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="var(--color-text-muted, #64748b)">-55 mV</text>
+
+      <line x1="70" y1="230" x2="880" y2="230" stroke="var(--color-border, #cbd5e1)" stroke-dasharray="4,4" opacity="0.4"/>
+      <text x="60" y="234" text-anchor="end" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="var(--color-text-muted, #64748b)">-90 mV</text>
+
+      {/* Area fill under AP */}
+      <path d="M 120 230 L 160 230 L 175 55 L 210 70 L 390 85 L 490 230 L 880 230 L 880 230 Z" fill="url(#plateauGrad)"/>
+
+      {/* Mechanical Twitch Curve (Co cơ học tâm thất) */}
+      <path d="M 180 230 Q 320 70 420 160 T 560 230" fill="url(#twitchGrad)" stroke="var(--color-danger, #ef4444)" stroke-width="2" stroke-dasharray="5,4"/>
+      <text x="350" y="145" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="var(--color-danger, #ef4444)">Nhát co cơ học (Systole)</text>
+
+      {/* Action Potential Path (Ventricular Myocyte 5 Phases) */}
+      <path d="M 90 230 L 160 230 L 175 50 L 210 70 C 270 75, 330 80, 390 85 C 430 95, 460 160, 490 230 L 880 230" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="3.5" stroke-linecap="round"/>
+
+      {/* Phase Badges & Annotations */}
+      {/* Phase 0 */}
+      <rect x="110" y="105" width="85" height="42" rx="6" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="1.4"/>
+      <text x="152" y="122" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="var(--color-primary, #0284c7)">Pha 0: Khử cực</text>
+      <text x="152" y="137" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text-muted, #64748b)">Na⁺ ồ ạt vào</text>
+
+      {/* Phase 1 */}
+      <rect x="180" y="20" width="80" height="38" rx="6" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.2"/>
+      <text x="220" y="36" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="800" fill="var(--color-text, #0f172a)">Pha 1: Tái cực sớm</text>
+      <text x="220" y="50" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="600" fill="var(--color-text-muted, #64748b)">Kênh Ito (K⁺ ra)</text>
+
+      {/* Phase 2: Plateau */}
+      <rect x="270" y="42" width="135" height="42" rx="6" fill="var(--color-surface, #ffffff)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
+      <text x="337" y="58" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="var(--amber, #d97706)">Pha 2: Cao nguyên (Plateau)</text>
+      <text x="337" y="74" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="600" fill="var(--color-text-muted, #64748b)">Ca²⁺ vào (L-type) = K⁺ ra</text>
+
+      {/* Phase 3 */}
+      <rect x="440" y="140" width="95" height="40" rx="6" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.2"/>
+      <text x="487" y="156" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="800" fill="var(--color-text, #0f172a)">Pha 3: Tái cực nhanh</text>
+      <text x="487" y="170" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="600" fill="var(--color-text-muted, #64748b)">K⁺ ồ ạt ra (IKr, IKs)</text>
+
+      {/* Phase 4 */}
+      <rect x="580" y="200" width="115" height="38" rx="6" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.2"/>
+      <text x="637" y="216" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="800" fill="var(--color-text, #0f172a)">Pha 4: Điện thế nghỉ</text>
+      <text x="637" y="230" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="600" fill="var(--color-text-muted, #64748b)">Kênh IK1 &amp; Na⁺/K⁺ ATPase</text>
+
+      {/* Refractory Period Banners below curve */}
+      {/* Absolute Refractory Period (ARP ~200-250ms) */}
+      <rect x="160" y="260" width="280" height="34" rx="6" fill="rgba(239, 68, 68, 0.12)" stroke="var(--color-danger, #ef4444)" stroke-width="1.5"/>
+      <text x="300" y="278" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="var(--color-danger, #ef4444)">THỜI KỲ TRƠ TUYỆT ĐỐI (ARP ≈ 200 - 250 ms)</text>
+      <text x="300" y="290" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="600" fill="var(--color-text-muted, #64748b)">Không thể tạo điện thế hoạt động mới dù kích thích mạnh</text>
+
+      {/* Relative Refractory Period (RRP ~50ms) */}
+      <rect x="445" y="260" width="90" height="34" rx="6" fill="rgba(245, 158, 11, 0.12)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
+      <text x="490" y="278" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="800" fill="var(--amber, #d97706)">TRƠ TƯƠNG ĐỐI</text>
+      <text x="490" y="290" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="8.5" font-weight="600" fill="var(--color-text-muted, #64748b)">RRP ≈ 50 ms</text>
+
+      {/* Mechanical cycle timeline bar */}
+      <rect x="160" y="306" width="375" height="26" rx="5" fill="rgba(2, 132, 199, 0.10)" stroke="var(--color-primary, #0284c7)" stroke-width="1.2"/>
+      <text x="347" y="323" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="var(--color-primary, #0284c7)">Nhát co cơ học (Systole) diễn ra đồng thời với thời kỳ trơ</text>
+
+      <rect x="540" y="306" width="220" height="26" rx="5" fill="rgba(16, 185, 129, 0.10)" stroke="var(--color-success, #10b981)" stroke-width="1.2"/>
+      <text x="650" y="323" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="var(--color-success, #10b981)">Giãn cơ học (Diastole)</text>
+
+      {/* Axis arrow */}
+      <line x1="90" y1="230" x2="880" y2="230" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="870" y="246" text-anchor="end" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text-muted, #64748b)">Thời gian (ms) ──►</text>
     </svg>
+  </div>
+  <div class="flowchart-editorial-legend">
+    <div class="legend-chip"><span class="legend-dot" style="background: var(--color-primary, #0284c7);"></span> Điện thế hoạt động tâm thất</div>
+    <div class="legend-chip"><span class="legend-dot" style="background: var(--color-danger, #ef4444);"></span> Nhát co cơ học (Systole)</div>
+    <div class="legend-chip"><span class="legend-dot" style="background: var(--amber, #f59e0b);"></span> Pha cao nguyên (Plateau)</div>
+    <div class="legend-chip"><span class="legend-dot" style="background: var(--color-success, #10b981);"></span> Đổ đầy máu (Diastole)</div>
   </div>
 </div>
 
@@ -197,56 +291,82 @@ Cơ trơn cấu tạo nên thành của các tạng rỗng (ống tiêu hóa, ph
 ---
 
 ## 4. Cơ Chế Co Cơ Calmodulin & MLCK
-<div class="flowchart-card">
-  <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: Nồng độ Ca2+ bào tương tăng cao</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+<div class="flowchart-editorial-card">
+  <div class="flowchart-editorial-header">
+    <div class="flowchart-editorial-title">
+      <i class="fa-solid fa-diagram-project"></i>
+      <span>CHU TRÌNH CO CƠ TRƠN: CALMODULIN – MLCK &amp; CƠ CHẾ CHỐT (LATCH STATE)</span>
+    </div>
+    <span class="module-badge badge-physio">Molecular Signaling</span>
   </div>
-  <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 458" width="880" height="458" xmlns="http://www.w3.org/2000/svg">
+  <div class="flowchart-editorial-viewport">
+    <svg viewBox="0 0 920 440" width="100%" height="auto" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        <marker id="arrMlck" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)"/>
         </marker>
         <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-success, #10b981)"/>
         </marker>
         <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--amber, #f59e0b)"/>
         </marker>
       </defs>
 
-      {/* Single Node: Nồng độ Ca2+ bào tương tăng ca */}
-      <rect x="250" y="20" width="380" height="46" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">Nồng độ Ca2+ bào tương tăng cao</text>
-      {/* Bifurcation Path */}
-      <path d="M 440 66 L 440 80 L 235 80 L 235 94" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      <path d="M 440 80 L 645 80 L 645 94" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Left Column: Gắn với Protein Calmodulin (Ca */}
-      <rect x="40" y="94" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="235" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Gắn với Protein Calmodulin (CaM)</text>
-      <line x1="60" y1="130" x2="410" y2="130" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      {/* Right Column: Ca2+ - Calmodulin */}
-      <rect x="450" y="94" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="645" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Ca2+ - Calmodulin</text>
-      <line x1="470" y1="130" x2="820" y2="130" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <line x1="440" y1="184" x2="440" y2="212" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: Hoạt hóa Enzyme MLCK (Myosin L */}
-      <rect x="180" y="212" width="520" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="234" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Hoạt hóa Enzyme MLCK (Myosin Light Chain Kinase)</text>
-      <line x1="440" y1="258" x2="440" y2="286" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: Phosphoryl hóa Chuỗi nhẹ Myosi */}
-      <rect x="170" y="286" width="540" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="308" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Phosphoryl hóa Chuỗi nhẹ Myosin (Myosin Regulatory</text>
-      <text x="440" y="326" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--color-text, #0f172a)">Light Chain)</text>
-      <line x1="440" y1="346" x2="440" y2="374" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: Đầu Myosin được hoạt hóa, gắn  */}
-      <rect x="205" y="374" width="470" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="396" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Đầu Myosin được hoạt hóa, gắn vào sợi Actin</text>
+      {/* Root Node: Ca2+ cytosol increases */}
+      <rect x="260" y="16" width="400" height="46" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+      <text x="460" y="36" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" fill="var(--color-primary, #0284c7)">KÍCH THÍCH: NỒNG ĐỘ Ca²⁺ NỘI BÀO TĂNG (&gt; 10⁻⁶ M)</text>
+      <text x="460" y="52" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text-muted, #64748b)">Từ dịch ngoại bào (kênh Ca_V1.2) + từ SR (kênh RyR / IP3R)</text>
+
+      {/* Connector down */}
+      <line x1="460" y1="62" x2="460" y2="88" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arrMlck)"/>
+
+      {/* Step 2: Gắn Calmodulin */}
+      <rect x="230" y="90" width="460" height="46" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.6"/>
+      <text x="460" y="110" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" fill="var(--color-text, #0f172a)">4 Ca²⁺ GẮN VÀO CALMODULIN (CaM)</text>
+      <text x="460" y="126" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text-muted, #64748b)">Tạo phức hợp hoạt hóa 4Ca²⁺ · Calmodulin (thay thế cho Troponin C)</text>
+
+      {/* Connector down */}
+      <line x1="460" y1="136" x2="460" y2="162" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arrMlck)"/>
+
+      {/* Step 3: Hoạt hóa MLCK */}
+      <rect x="210" y="164" width="500" height="46" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.6"/>
+      <text x="460" y="184" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" fill="var(--color-text, #0f172a)">PHỨC HỢP Ca²⁺·CaM HOẠT HÓA ENZYME MLCK</text>
+      <text x="460" y="200" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text-muted, #64748b)">Myosin Light Chain Kinase được chuyển từ dạng bất hoạt sang dạng hoạt động</text>
+
+      {/* Connector down */}
+      <line x1="460" y1="210" x2="460" y2="236" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arrMlck)"/>
+
+      {/* Step 4: Phosphoryl hóa chuỗi nhẹ Myosin */}
+      <rect x="190" y="238" width="540" height="46" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
+      <text x="460" y="258" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" fill="var(--amber, #d97706)">PHOSPHORYL HÓA CHUỖI NHẸ ĐIỀU HÒA MYOSIN (RLC)</text>
+      <text x="460" y="274" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text-muted, #64748b)">Tiêu tốn 1 ATP ──► Đầu Myosin tăng ái lực với Actin ──► Bắt đầu co rút tạo lực</text>
+
+      {/* Bifurcation connectors to 2 pathways */}
+      <path d="M 330 284 L 330 316 L 240 316 L 240 334" fill="none" stroke="var(--amber, #f59e0b)" stroke-width="1.8" marker-end="url(#arrAmber)"/>
+      <path d="M 590 284 L 590 316 L 680 316 L 680 334" fill="none" stroke="var(--color-success, #10b981)" stroke-width="1.8" marker-end="url(#arrGreen)"/>
+
+      {/* Left Outcome: Latch State (Cơ chế chốt) */}
+      <rect x="50" y="336" width="380" height="88" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--amber, #f59e0b)" stroke-width="2"/>
+      <rect x="50" y="336" width="380" height="28" rx="10" fill="rgba(245, 158, 11, 0.12)"/>
+      <text x="240" y="355" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="var(--amber, #d97706)">CƠ CHẾ CHỐT (LATCH STATE) — TRƯƠNG LỰC</text>
+      <text x="70" y="380" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="var(--color-text, #0f172a)">• MLCP khử phosphoryl khi đầu Myosin vẫn gắn Actin</text>
+      <text x="70" y="396" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text-muted, #64748b)">• Tốc độ tách cầu nối cực chậm (Slow cycling rate)</text>
+      <text x="70" y="412" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="var(--amber, #d97706)">• Giữ trương lực thành mạch nhiều giờ, tiêu thụ 1/300 ATP</text>
+
+      {/* Right Outcome: Giãn cơ hoàn toàn qua MLCP */}
+      <rect x="490" y="336" width="380" height="88" rx="10" fill="var(--color-surface, #ffffff)" stroke="var(--color-success, #10b981)" stroke-width="2"/>
+      <rect x="490" y="336" width="380" height="28" rx="10" fill="rgba(16, 185, 129, 0.12)"/>
+      <text x="680" y="355" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="var(--color-success, #10b981)">GIÃN CƠ HOÀN TOÀN (RELAXATION)</text>
+      <text x="510" y="380" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="var(--color-text, #0f172a)">• Ca²⁺ nội bào giảm (&lt; 10⁻⁷ M) nhờ bơm SERCA &amp; NCX</text>
+      <text x="510" y="396" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="var(--color-text-muted, #64748b)">• Enzyme MLCP tách hoàn toàn đầu Myosin khỏi Actin</text>
+      <text x="510" y="412" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="var(--color-success, #10b981)">• NO/cGMP &amp; Salbutamol/cAMP kích thích MLCP gây giãn</text>
     </svg>
+  </div>
+  <div class="flowchart-editorial-legend">
+    <div class="legend-chip"><span class="legend-dot" style="background: var(--color-primary, #0284c7);"></span> Chuỗi tín hiệu Ca²⁺-CaM-MLCK</div>
+    <div class="legend-chip"><span class="legend-dot" style="background: var(--amber, #f59e0b);"></span> Cơ chế chốt Latch State (Tiết kiệm năng lượng)</div>
+    <div class="legend-chip"><span class="legend-dot" style="background: var(--color-success, #10b981);"></span> Giãn cơ hoàn toàn qua MLCP</div>
   </div>
 </div>
 

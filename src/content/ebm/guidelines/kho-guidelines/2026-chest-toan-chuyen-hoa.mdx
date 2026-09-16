@@ -75,12 +75,33 @@ sections:
     icon: "fa-solid fa-book-bookmark"
 ---
 
-<div class="stats-strip">
+<div class="module-badge-group study-badges">
+  <span class="badge badge-rose"><i class="fa-solid fa-scale-balanced"></i> Critical Care Trial Synthesis</span>
+  <span class="badge badge-blue"><i class="fa-solid fa-newspaper"></i> CHEST Journal (Official ACCP Publication)</span>
+  <span class="badge badge-indigo"><i class="fa-solid fa-flask-vial"></i> Thử Nghiệm BICAR-ICU 1 &amp; 2</span>
+  <span class="badge badge-teal"><i class="fa-solid fa-heart-pulse"></i> Hồi Sức Toan Chuyển Hóa Nặng</span>
+</div>
+
+<section class="stats-strip theme-trial">
   <div class="stats-grid">
     <div class="stat-card">
-      <div class="stat-val red">pH &lt; 7.20</div>
-      <div class="stat-lbl">Ngưỡng định nghĩa toan chuyển hóa nặng tại ICU; liên quan trực tiếp tới ức chế co bóp cơ tim và giãn mạch kháng catecholamine.</div>
+      <div class="stat-val rose">pH &lt; 7.20</div>
+      <div class="stat-lbl">Ngưỡng toan chuyển hóa nặng tại ICU (Giảm co bóp tim &amp; Trơ vận mạch)</div>
     </div>
+    <div class="stat-card">
+      <div class="stat-val emerald">Giảm 50% RRT</div>
+      <div class="stat-lbl">BICAR-ICU 2 (629 BN) chứng minh NaHCO3 4.2% giảm một nửa can thiệp lọc máu</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val teal">Đích pH &gt; 7.30</div>
+      <div class="stat-lbl">Mục tiêu nâng kiềm tạm thời (Temporizing goal) bảo vệ chức năng tạng</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val amber">Bù Ca2+ &amp; K+ Trước</div>
+      <div class="stat-lbl">Bắt buộc bù đủ canxi ion hóa và kali máu trước khi truyền kiềm để phòng ngừa ngừng tim</div>
+    </div>
+  </div>
+</section>
     <div class="stat-card">
       <div class="stat-val blue">Giảm 50% RRT</div>
       <div class="stat-lbl">Thử nghiệm BICAR-ICU 2 (629 bệnh nhân) chứng minh truyền NaHCO3 4.2% giúp giảm 50% nhu cầu can thiệp lọc máu cấp cứu.</div>
@@ -900,7 +921,27 @@ sections:
 </div>
 
 {/* SECTION 11: TÀI LIỆU THAM KHẢO CHUẨN AMA */}
-<div class="sec-card" id="sec-citation">
+    <!-- CLINICAL TRANSLATION VERDICT BOX -->
+    <div class="verdict-box practice-changing">
+      <div class="verdict-header">
+        <div class="verdict-icon"><i class="fa-solid fa-award"></i></div>
+        <div class="verdict-title">Đúc Kết Lâm Sàng: Quy Tắc Vàng Truyền Kiềm Tại ICU (EBM Critical Care Translation)</div>
+      </div>
+      <div class="verdict-content">
+        <div class="verdict-qna">
+          <div class="qna-item">
+            <div class="qna-q"><i class="fa-solid fa-circle-question"></i> Khi nào NÊN và KHÔNG NÊN truyền Natri Bicarbonate?</div>
+            <div class="qna-a"><strong>NÊN DÙNG:</strong> Toan chuyển hóa nặng (pH &lt; 7.20) có tổn thương thận cấp AKI (AKIN 2-3) nhằm mục tiêu nâng pH &gt; 7.30, giúp giảm 50% nhu cầu lọc máu cấp cứu (BICAR-ICU 2).<br /><strong>CHỐNG CHỈ ĐỊNH / TRÁNH:</strong> DKA, Toan lactic do thiếu oxy đơn thuần (Hypoxic Lactic Acidosis), Hội chứng ly giải u, và quá tải thể tích/phù phổi cấp.</div>
+          </div>
+          <div class="qna-item">
+            <div class="qna-q"><i class="fa-solid fa-triangle-exclamation"></i> Sai lầm nguy hiểm nhất khi truyền kiềm là gì?</div>
+            <div class="qna-a">Không bù Canxi ion hóa (iCa) trước khi truyền: Nâng pH nhanh làm tăng gắn kết canxi với albumin, gây tụt canxi tự do cấp tính dẫn tới tụt huyết áp trơ và rối loạn nhịp tim. Đồng thời không cố tăng thông khí phút quá mức trên máy thở để bình thường hóa pH vì nguy cơ chấn thương phổi VILI.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec-card" id="sec-citation">
   <div class="sec-hdr">
     <div class="sec-hdr-left">
       <div class="sec-icon"><i class="fa-solid fa-book-bookmark"></i></div>

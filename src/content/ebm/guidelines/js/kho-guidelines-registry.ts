@@ -6,12 +6,47 @@
  * cho toàn bộ tài liệu lâm sàng trong thư mục kho-guidelines/
  * Dùng làm nguồn dữ liệu EBM cơ sở cho SOAP & Tra cứu EBM nhanh.
  *
- * Cập nhật đồng bộ: 2026-09-16 (164 tài liệu lâm sàng)
+ * Cập nhật đồng bộ: 2026-09-16 (165 tài liệu lâm sàng)
  */
 
 import { Study } from './guidelines-types';
 
 export const KHO_GUIDELINES_STATIC: Study[] = [
+  {
+    "id": "2026-diagnostics-lao-thai-ky",
+    "title": "Diagnostics 2026: Quản Lý Bệnh Lao Trong Thai Kỳ — Chẩn Đoán, Phác Đồ Hàng 1, MDR-TB & Chăm Sóc Chu Sinh",
+    "titleEn": "Tuberculosis in Pregnancy: An Updated Narrative Review (Diagnostics 2026)",
+    "drug": "Isoniazid, Rifampicin, Pyrazinamide, Ethambutol, Pyridoxine (Vitamin B6), Levofloxacin, Bedaquiline, Linezolid",
+    "sourceType": "intl-guideline",
+    "specialty": "infect",
+    "design": "review",
+    "intervention": "Tầm soát hệ thống 4 triệu chứng ở mỗi lần khám thai; chẩn đoán bằng GeneXpert MTB/RIF Ultra và X-quang ngực chắn chì bảo vệ bụng; khởi trị ngay phác đồ 6 tháng 2HRZE/4HR kết hợp Vitamin B6; điều trị MDR-TB bằng phác đồ toàn đường uống nhóm A (Fluoroquinolones, Bedaquiline, Linezolid), tuyệt đối chống chỉ định Aminoglycosides và Ethionamide; quản lý lao bẩm sinh theo tiêu chuẩn Cantwell và dự phòng sơ sinh bằng H+R.",
+    "primaryEndpoint": "Tổng quan toàn diện các bằng chứng EBM cập nhật nhất về dịch tễ học, biến chứng mẹ - thai, phương thức chẩn đoán tích hợp, phác đồ điều trị lao nhạy cảm và lao kháng thuốc, đồng nhiễm HIV, lao sơ sinh và chăm sóc hậu sản.",
+    "keyResults": "Điều trị thành công 88% với phác đồ chuẩn 6 tháng 2HRZE/4HR ở thai phụ | Giảm tử vong chu sinh (lao hoạt động chưa điều trị làm tăng OR = 4,2 tử vong chu sinh, OR = 9,0 sảy thai) | Phác đồ uống MDR-TB đạt 72,2% thành công (Alene et al.).",
+    "impact": "practice-changing",
+    "year": 2026,
+    "organization": "Diagnostics / WHO EBM",
+    "journal": "Diagnostics (Basel)",
+    "phase": "Narrative Review / EBM Guidelines",
+    "population": "Phụ nữ mang thai, phụ nữ sau sinh (postpartum), trẻ sơ sinh có phơi nhiễm hoặc mắc bệnh lao (TB, MDR-TB, đồng nhiễm TB/HIV).",
+    "summary": "Tổng quan EBM 2026 trên tạp chí Diagnostics cung cấp hướng dẫn thực hành toàn diện về quản lý bệnh lao trong thai kỳ. Nhấn mạnh việc tầm soát 4 triệu chứng tại mỗi lần khám thai, không trì hoãn điều trị lao hoạt động bằng phác đồ chuẩn 6 tháng 2HRZE/4HR có bổ sung Pyridoxine (B6), áp dụng phác đồ toàn đường uống cho MDR-TB và kiểm soát chặt chẽ lao bẩm sinh theo tiêu chuẩn Cantwell.",
+    "detailedConclusion": "Không bao giờ trì hoãn điều trị lao hoạt động trong thai kỳ vì nguy cơ tử vong mẹ và chu sinh vượt trội hoàn toàn so với độc tính thuốc. Phác đồ chuẩn 6 tháng 2HRZE/4HR an toàn và đạt tỷ lệ khỏi bệnh 88%, bắt buộc bổ sung Pyridoxine 25-50 mg/ngày phòng độc thần kinh và Vitamin K gần ngày sinh phòng băng huyết. Đối với MDR-TB, ưu tiên phác đồ hoàn toàn đường uống nhóm A (Levofloxacin/Moxifloxacin, Bedaquiline, Linezolid) kéo dài 18-24 tháng; chống chỉ định tuyệt đối Aminoglycosides (Amikacin/Streptomycin - gây điếc thai nhi) và Ethionamide (dị tật bẩm sinh). Trẻ sơ sinh sinh từ mẹ mắc lao hoạt động cần được đánh giá tiêu chuẩn Cantwell; nếu khỏe mạnh, uống dự phòng INH + Rifampicin trong 3 tháng trước khi làm TST tiêm BCG; chống chỉ định BCG cho thai phụ và trẻ nghi ngờ nhiễm HIV. Cho con bú an toàn khi mẹ dùng thuốc hàng 1 và đã điều trị đủ 2 tuần.",
+    "file": "2026-diagnostics-lao-thai-ky.mdx",
+    "conditionKey": "tuberculosis",
+    "icd10": [
+      "A15",
+      "A16",
+      "O98.0",
+      "P37.0"
+    ],
+    "asianData": true,
+    "bookmarked": false,
+    "subgroups": {
+      "Biến chứng mẹ - thai (Sobhy et al.)": "HBAR: Tăng tử vong chu sinh (OR): 4.2% | Tăng sảy thai / thai lưu (OR): 9.0% | Tăng nguy cơ sinh non (OR): 1.7% | Bệnh tật chung người mẹ (OR): 3.0%",
+      "Hiệu quả phác đồ lâm sàng": "HBAR: Tỷ lệ khỏi bệnh phác đồ chuẩn 2HRZE/4HR: 88.0% | Tỷ lệ thành công phác đồ MDR-TB thai kỳ: 72.2% | Kết cục thai kỳ thuận lợi trong MDR-TB: 72.3%",
+      "Khuyến cáo an toàn thai kỳ": "HBAR: Phác đồ chuẩn hàng 1 (2HRZE/4HR + B6): 100.0% | Tránh Aminoglycosides & Ethionamide: 100.0% | X-quang chắn chì an toàn: 100.0%"
+    }
+  },
   {
     "id": "2026-eta-diet-and-thyroid",
     "title": "ETA 2026: Chế Độ Ăn và Dinh Dưỡng Trong Quản Lý Các Rối Loạn Tuyến Giáp",

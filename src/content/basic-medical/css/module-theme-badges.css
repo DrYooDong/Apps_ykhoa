@@ -1,0 +1,353 @@
+/* ============================================================
+   CLINIPORTAL — MODULE THEME BADGES & ACCENTS
+   File: src/content/basic-medical/css/module-theme-badges.css
+   Standards: Dark-First & Light Mode compatible via Design Tokens
+   Unified Theme System for:
+     1. Sinh lý học (Physiology) - Emerald / Teal Accent
+     2. Sinh lý bệnh (Pathophysiology) - Rose / Violet Accent
+     3. Hóa sinh Y học (Biochemistry) - Teal / Amber Accent
+     4. Dịch tễ học (Epidemiology) - Indigo / Purple Accent
+     5. Y học Chứng cứ (EBM Guidelines) - Sky / Blue Accent
+   ============================================================ */
+
+/* ────────────────────────────────────────────────────────────
+   1. MODULE THEME DEFINITIONS (Tokens & Variables)
+   ──────────────────────────────────────────────────────────── */
+
+/* Physiology (Sinh lý học) */
+:root,
+.theme-physio,
+[data-module="physiology"],
+.hero-physio {
+  --theme-accent: var(--dsp-emerald, #10b981);
+  --theme-accent-dark: #059669;
+  --theme-accent-light: #6ee7b7;
+  --theme-accent-glow: rgba(16, 185, 129, 0.35);
+  --theme-accent-bg: rgba(16, 185, 129, 0.1);
+  --theme-accent-border: rgba(16, 185, 129, 0.3);
+  --theme-gradient-hero: linear-gradient(135deg, rgba(5, 150, 105, 0.12) 0%, rgba(2, 132, 199, 0.08) 50%, rgba(13, 148, 136, 0.06) 100%);
+  --theme-gradient-bar: linear-gradient(90deg, #10b981 0%, #0d9488 50%, #0284c7 100%);
+}
+
+/* Pathophysiology (Sinh lý bệnh) */
+.theme-patho,
+[data-module="pathophysiology"],
+.hero-patho {
+  --theme-accent: var(--dsp-rose, #ef4444);
+  --theme-accent-dark: #dc2626;
+  --theme-accent-light: #fda4af;
+  --theme-accent-glow: rgba(239, 68, 68, 0.35);
+  --theme-accent-bg: rgba(239, 68, 68, 0.1);
+  --theme-accent-border: rgba(239, 68, 68, 0.3);
+  --theme-gradient-hero: linear-gradient(135deg, rgba(225, 29, 72, 0.12) 0%, rgba(124, 58, 237, 0.08) 50%, rgba(2, 132, 199, 0.05) 100%);
+  --theme-gradient-bar: linear-gradient(90deg, #ef4444 0%, #f43f5e 50%, #8b5cf6 100%);
+}
+
+/* Biochemistry (Hóa sinh y học) */
+.theme-biochem,
+[data-module="biochemistry"],
+.hero-biochem {
+  --theme-accent: var(--dsp-teal, #0d9488);
+  --theme-accent-dark: #0f766e;
+  --theme-accent-light: #5eead4;
+  --theme-accent-glow: rgba(13, 148, 136, 0.35);
+  --theme-accent-bg: rgba(13, 148, 136, 0.1);
+  --theme-accent-border: rgba(13, 148, 136, 0.3);
+  --theme-gradient-hero: linear-gradient(135deg, rgba(13, 148, 136, 0.12) 0%, rgba(245, 158, 11, 0.08) 50%, rgba(2, 132, 199, 0.05) 100%);
+  --theme-gradient-bar: linear-gradient(90deg, #0d9488 0%, #14b8a6 50%, #f59e0b 100%);
+}
+
+/* Epidemiology (Dịch tễ học) */
+.theme-epi,
+[data-module="epidemiology"],
+.hero-epi {
+  --theme-accent: var(--dsp-indigo, #6366f1);
+  --theme-accent-dark: #4f46e5;
+  --theme-accent-light: #a5b4fc;
+  --theme-accent-glow: rgba(99, 102, 241, 0.35);
+  --theme-accent-bg: rgba(99, 102, 241, 0.1);
+  --theme-accent-border: rgba(99, 102, 241, 0.3);
+  --theme-gradient-hero: linear-gradient(135deg, rgba(99, 102, 241, 0.12) 0%, rgba(139, 92, 246, 0.08) 50%, rgba(2, 132, 199, 0.05) 100%);
+  --theme-gradient-bar: linear-gradient(90deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
+}
+
+/* EBM Guidelines & Trials */
+.theme-ebm,
+[data-module="ebm"],
+.hero-ebm {
+  --theme-accent: var(--dsp-sky, #0284c7);
+  --theme-accent-dark: #0369a1;
+  --theme-accent-light: #38bdf8;
+  --theme-accent-glow: rgba(2, 132, 199, 0.35);
+  --theme-accent-bg: rgba(2, 132, 199, 0.1);
+  --theme-accent-border: rgba(2, 132, 199, 0.3);
+  --theme-gradient-hero: linear-gradient(135deg, rgba(2, 132, 199, 0.12) 0%, rgba(13, 148, 136, 0.08) 50%, rgba(16, 185, 129, 0.05) 100%);
+  --theme-gradient-bar: linear-gradient(90deg, #0284c7 0%, #0d9488 50%, #10b981 100%);
+}
+
+/* ────────────────────────────────────────────────────────────
+   2. MODULE BADGE SYSTEM (.module-badge & .module-badge-group)
+   ──────────────────────────────────────────────────────────── */
+
+.module-badge-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.module-badge,
+.module-badge-group .badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+  border: 1px solid var(--theme-accent-border, rgba(2, 132, 199, 0.3));
+  background: var(--theme-accent-bg, rgba(2, 132, 199, 0.1));
+  color: var(--theme-accent, #0284c7);
+}
+
+.module-badge i,
+.module-badge-group .badge i {
+  font-size: 0.85em;
+  color: inherit;
+}
+
+.module-badge:hover,
+.module-badge-group .badge:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px var(--theme-accent-glow, rgba(2, 132, 199, 0.2));
+  border-color: var(--theme-accent);
+}
+
+/* Badge Variants */
+.badge-physio {
+  --theme-accent: var(--dsp-emerald, #059669);
+  --theme-accent-bg: rgba(5, 150, 105, 0.1);
+  --theme-accent-border: rgba(5, 150, 105, 0.28);
+  --theme-accent-glow: rgba(16, 185, 129, 0.25);
+}
+[data-theme="dark"] .badge-physio {
+  --theme-accent: #34d399;
+  --theme-accent-bg: rgba(52, 211, 153, 0.15);
+  --theme-accent-border: rgba(52, 211, 153, 0.35);
+}
+
+.badge-patho {
+  --theme-accent: var(--dsp-rose, #e11d48);
+  --theme-accent-bg: rgba(225, 29, 72, 0.1);
+  --theme-accent-border: rgba(225, 29, 72, 0.28);
+  --theme-accent-glow: rgba(239, 68, 68, 0.25);
+}
+[data-theme="dark"] .badge-patho {
+  --theme-accent: #fb7185;
+  --theme-accent-bg: rgba(251, 113, 133, 0.15);
+  --theme-accent-border: rgba(251, 113, 133, 0.35);
+}
+
+.badge-biochem,
+.badge-teal {
+  --theme-accent: var(--dsp-teal, #0d9488);
+  --theme-accent-bg: rgba(13, 148, 136, 0.1);
+  --theme-accent-border: rgba(13, 148, 136, 0.28);
+  --theme-accent-glow: rgba(13, 148, 136, 0.25);
+}
+[data-theme="dark"] .badge-biochem,
+[data-theme="dark"] .badge-teal {
+  --theme-accent: #2dd4bf;
+  --theme-accent-bg: rgba(45, 212, 191, 0.15);
+  --theme-accent-border: rgba(45, 212, 191, 0.35);
+}
+
+.badge-epi,
+.badge-indigo {
+  --theme-accent: var(--dsp-indigo, #4f46e5);
+  --theme-accent-bg: rgba(99, 102, 241, 0.1);
+  --theme-accent-border: rgba(99, 102, 241, 0.28);
+  --theme-accent-glow: rgba(99, 102, 241, 0.25);
+}
+[data-theme="dark"] .badge-epi,
+[data-theme="dark"] .badge-indigo {
+  --theme-accent: #818cf8;
+  --theme-accent-bg: rgba(129, 140, 248, 0.15);
+  --theme-accent-border: rgba(129, 140, 248, 0.35);
+}
+
+.badge-ebm,
+.badge-sky,
+.badge-blue {
+  --theme-accent: var(--dsp-sky, #0284c7);
+  --theme-accent-bg: rgba(2, 132, 199, 0.1);
+  --theme-accent-border: rgba(2, 132, 199, 0.28);
+  --theme-accent-glow: rgba(2, 132, 199, 0.25);
+}
+[data-theme="dark"] .badge-ebm,
+[data-theme="dark"] .badge-sky,
+[data-theme="dark"] .badge-blue {
+  --theme-accent: #38bdf8;
+  --theme-accent-bg: rgba(56, 189, 248, 0.15);
+  --theme-accent-border: rgba(56, 189, 248, 0.35);
+}
+
+.badge-amber,
+.badge-orange {
+  --theme-accent: var(--dsp-amber, #d97706);
+  --theme-accent-bg: rgba(245, 158, 11, 0.1);
+  --theme-accent-border: rgba(245, 158, 11, 0.28);
+  --theme-accent-glow: rgba(245, 158, 11, 0.25);
+}
+[data-theme="dark"] .badge-amber,
+[data-theme="dark"] .badge-orange {
+  --theme-accent: #fbbf24;
+  --theme-accent-bg: rgba(251, 191, 36, 0.15);
+  --theme-accent-border: rgba(251, 191, 36, 0.35);
+}
+
+.badge-purple,
+.badge-violet {
+  --theme-accent: #7c3aed;
+  --theme-accent-bg: rgba(124, 58, 237, 0.1);
+  --theme-accent-border: rgba(124, 58, 237, 0.28);
+  --theme-accent-glow: rgba(124, 58, 237, 0.25);
+}
+[data-theme="dark"] .badge-purple,
+[data-theme="dark"] .badge-violet {
+  --theme-accent: #a78bfa;
+  --theme-accent-bg: rgba(167, 139, 250, 0.15);
+  --theme-accent-border: rgba(167, 139, 250, 0.35);
+}
+
+.badge-rose,
+.badge-red {
+  --theme-accent: var(--dsp-rose, #e11d48);
+  --theme-accent-bg: rgba(225, 29, 72, 0.1);
+  --theme-accent-border: rgba(225, 29, 72, 0.28);
+  --theme-accent-glow: rgba(225, 29, 72, 0.25);
+}
+[data-theme="dark"] .badge-rose,
+[data-theme="dark"] .badge-red {
+  --theme-accent: #fb7185;
+  --theme-accent-bg: rgba(251, 113, 133, 0.15);
+  --theme-accent-border: rgba(251, 113, 133, 0.35);
+}
+
+.badge-emerald,
+.badge-green {
+  --theme-accent: var(--dsp-emerald, #059669);
+  --theme-accent-bg: rgba(5, 150, 105, 0.1);
+  --theme-accent-border: rgba(5, 150, 105, 0.28);
+  --theme-accent-glow: rgba(16, 185, 129, 0.25);
+}
+[data-theme="dark"] .badge-emerald,
+[data-theme="dark"] .badge-green {
+  --theme-accent: #34d399;
+  --theme-accent-bg: rgba(52, 211, 153, 0.15);
+  --theme-accent-border: rgba(52, 211, 153, 0.35);
+}
+
+/* ────────────────────────────────────────────────────────────
+   3. STATS STRIP DYNAMIC THEME OVERRIDES
+   ──────────────────────────────────────────────────────────── */
+
+/* When the container has theme class or data-module */
+.theme-physio .stat-card::before,
+[data-module="physiology"] .stat-card::before {
+  background: var(--theme-gradient-bar, linear-gradient(90deg, #10b981 0%, #0d9488 50%, #0284c7 100%));
+}
+
+.theme-patho .stat-card::before,
+[data-module="pathophysiology"] .stat-card::before {
+  background: var(--theme-gradient-bar, linear-gradient(90deg, #ef4444 0%, #f43f5e 50%, #8b5cf6 100%));
+}
+
+.theme-biochem .stat-card::before,
+[data-module="biochemistry"] .stat-card::before {
+  background: var(--theme-gradient-bar, linear-gradient(90deg, #0d9488 0%, #14b8a6 50%, #f59e0b 100%));
+}
+
+.theme-epi .stat-card::before,
+[data-module="epidemiology"] .stat-card::before {
+  background: var(--theme-gradient-bar, linear-gradient(90deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%));
+}
+
+/* Individual Stat Value Colors */
+.stat-val.emerald,
+.stat-val.green {
+  color: var(--dsp-emerald, #059669);
+}
+[data-theme="dark"] .stat-val.emerald,
+[data-theme="dark"] .stat-val.green {
+  color: #34d399;
+}
+
+.stat-val.teal {
+  color: var(--dsp-teal, #0d9488);
+}
+[data-theme="dark"] .stat-val.teal {
+  color: #2dd4bf;
+}
+
+.stat-val.rose,
+.stat-val.red {
+  color: var(--dsp-rose, #e11d48);
+}
+[data-theme="dark"] .stat-val.rose,
+[data-theme="dark"] .stat-val.red {
+  color: #fb7185;
+}
+
+.stat-val.indigo {
+  color: var(--dsp-indigo, #4f46e5);
+}
+[data-theme="dark"] .stat-val.indigo {
+  color: #818cf8;
+}
+
+.stat-val.amber {
+  color: var(--dsp-amber, #d97706);
+}
+[data-theme="dark"] .stat-val.amber {
+  color: #fbbf24;
+}
+
+.stat-val.blue,
+.stat-val.sky {
+  color: var(--dsp-sky, #0284c7);
+}
+[data-theme="dark"] .stat-val.blue,
+[data-theme="dark"] .stat-val.sky {
+  color: #38bdf8;
+}
+
+/* ────────────────────────────────────────────────────────────
+   4. ARTICLE HERO THEME ENHANCEMENT
+   ──────────────────────────────────────────────────────────── */
+
+.article-hero.theme-physio {
+  background: linear-gradient(135deg, #064e3b 0%, #065f46 40%, #0284c7 100%);
+  box-shadow: 0 12px 32px rgba(5, 150, 105, 0.25);
+}
+
+.article-hero.theme-patho {
+  background: linear-gradient(135deg, #881337 0%, #9f1239 40%, #7c3aed 100%);
+  box-shadow: 0 12px 32px rgba(225, 29, 72, 0.25);
+}
+
+.article-hero.theme-biochem {
+  background: linear-gradient(135deg, #134e4a 0%, #115e59 40%, #d97706 100%);
+  box-shadow: 0 12px 32px rgba(13, 148, 136, 0.25);
+}
+
+.article-hero.theme-epi {
+  background: linear-gradient(135deg, #312e81 0%, #3730a3 40%, #8b5cf6 100%);
+  box-shadow: 0 12px 32px rgba(99, 102, 241, 0.25);
+}

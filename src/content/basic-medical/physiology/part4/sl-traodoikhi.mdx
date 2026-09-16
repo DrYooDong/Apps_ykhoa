@@ -49,26 +49,33 @@ sections:
 
 # 🧬 SINH LÝ TRAO ĐỔI KHÍ & TƯƠNG XỨNG THÔNG KHÍ / TƯỚI MÁU (V/Q)
 
-<PhysioQuickNav />
+<div class="module-badge-group">
+  <span class="badge badge-physio"><i class="fa-solid fa-lungs"></i> GIẢI PHẪU - SINH LÝ HỌC</span>
+  <span class="badge badge-outline">Trao Đổi Khí • Guyton 14th Ch.39-40 • Ganong 26th Ch.34</span>
+</div>
 
 {/* DẢI CHỈ SỐ NHANH (QUICK STATS STRIP) */}
-<section class="stats-strip">
+<section class="stats-strip theme-physio">
   <div class="stats-grid">
     <div class="stat-card">
-      <div class="stat-val blue">PHYS-RESP-02</div>
-      <div class="stat-lbl">Mã chuyên đề • Sinh Lý Tim Mạch & Hô Hấp</div>
+      <div class="stat-val blue">104 mmHg</div>
+      <div class="stat-lbl">PAO2 • Phân áp oxy trong lòng phế nang</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val green">Nội Môi Ổn Định</div>
-      <div class="stat-lbl">Cân bằng gradient điện hóa & Áp suất thẩm thấu</div>
+      <div class="stat-val amber">40 mmHg</div>
+      <div class="stat-lbl">PACO2 • Phân áp CO2 phế nang bình thường</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val amber">Feedback Loop</div>
-      <div class="stat-lbl">Vòng điều hòa phản hồi thần kinh - thể dịch</div>
+      <div class="stat-val green">0.8</div>
+      <div class="stat-lbl">Tỷ lệ V/Q • Tương xứng thông khí / tưới máu lý tưởng</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val purple">Dược Lý EBM</div>
-      <div class="stat-lbl">Ứng dụng lâm sàng chuẩn Guyton 14th & Ganong 26th</div>
+      <div class="stat-val purple">0.25 s</div>
+      <div class="stat-lbl">Thời gian cân bằng • Dự trữ khuếch tán gấp 3 lần (0.75 s)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val blue">&lt; 15 mmHg</div>
+      <div class="stat-lbl">A-a Gradient • Độ chênh phế nang - động mạch chuẩn</div>
     </div>
   </div>
 </section>
@@ -80,64 +87,93 @@ sections:
    - Áp suất khí quyển khô ở mực nước biển: $P_{atm} = 760\text{ mmHg}$.
    - Khí hít vào được làm ẩm bão hòa hơi nước tại khí quản ($P_{H_2O} = 47\text{ mmHg}$ ở $37^\circ\text{C}$):
      $$P_{i}O_2 = (P_{atm} - P_{H_2O}) \times FiO_2 = (760 - 47) \times 0.21 \approx \mathbf{150\text{ mmHg}}$$
-2. **Định Luật Henry**: Nồng độ chất khí hòa tan trong dịch tỷ lệ thuận với phân áp của nó ($C = k \cdot P$). **Độ hòa tan của khí $CO_2$ trong huyết tương cao gấp 20 – 24 lần so với khí $O_2$** $\rightarrow CO_2$ khuếch tán qua màng phế nang cực nhanh và dễ dàng.
+2. **Định Luật Henry**: Nồng độ chất khí hòa tan trong dịch tỷ lệ thuận với phân áp của nó ($C = k \cdot P$). **Độ hòa tan của khí $CO_2$ trong huyết tương cao gấp 20 – 24 lần so với khí $O_2$** $\rightarrow CO_2$ khuếch tán qua màng phế nang cực nhanh và dễ dàng dù gradient áp suất nhỏ hơn nhiều.
 3. **Định Luật Khuếch Tán Fick**:
 
 $$V_{gas} = \frac{A \cdot D \cdot (P_1 - P_2)}{T}$$
 
 - $A$: Diện tích bề mặt trao đổi màng phế nang ($\approx 100\text{ m}^2$).
-- $T$: Chiều dày màng phế nang - mao mạch ($\approx 0.2 – 0.6\text{ }\mu\text{m}$).
+- $T$: Chiều dày màng phế nang — mao mạch ($\approx 0.2 – 0.6\text{ }\mu\text{m}$).
 - $(P_1 - P_2)$: Chênh lệch phân áp chất khí hai bên màng.
-
 
 ---
 
 ## 2. Cấu Trúc Màng Phế Nang - Mao Mạch
 Khí $O_2$ và $CO_2$ khuếch tán thụ động qua một cấu trúc siêu mỏng chỉ dày **$0.2 – 0.6\text{ }\mu\text{m}$** gồm 6 lớp liên tiếp:
 
-
 <div class="flowchart-card">
   <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: LÒNG PHẾ NANG: PAO2 = 104 mmHg, PACO2 = 40 mmHg</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+    <div class="flowchart-title"><i class="fa-solid fa-layer-group" style="color: var(--color-primary, #0284c7);"></i> CẤU TRÚC 6 LỚP MÀNG PHẾ NANG — MAO MẠCH (CHIỀU DÀY 0.2 — 0.6 µm)</div>
+    <span class="badge badge-blue">Microscopic Anatomy</span>
   </div>
   <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 278" width="880" height="278" xmlns="http://www.w3.org/2000/svg">
+    <svg class="flowchart-svg" viewBox="0 0 900 340" width="100%" height="340" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrDiffO2" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
         </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
-        </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrDiffCO2" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
         </marker>
       </defs>
 
-      {/* Single Node: LÒNG PHẾ NANG: PAO2 = 104 mmHg */}
-      <rect x="160.75" y="20" width="558.5" height="132" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">LÒNG PHẾ NANG: PAO2 = 104 mmHg, PACO2 = 40 mmHg</text>
-      <text x="184.75" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ├── 1. Lớp dịch lót phế nang chứa chất hoạt diện Surfactant</text>
-      <text x="184.75" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ├── 2. Tế bào biểu mô phế nang dẹt (Pneumocyte Type I)</text>
-      <text x="184.75" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ├── 3. Màng đáy biểu mô phế nang</text>
-      <text x="184.75" y="118" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ├── 4. Khoảng kẽ cực mỏng giữa phế nang và mao mạch</text>
-      <text x="184.75" y="136" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ├── 5. Màng đáy mao mạch phổi</text>
-      <line x1="440" y1="152" x2="440" y2="180" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: LÒNG MAO MẠCH PHỔI: Máu tĩnh m */}
-      <rect x="170" y="180" width="540" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="202" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">LÒNG MAO MẠCH PHỔI: Máu tĩnh mạch tới có PvO2 = 40</text>
-      <text x="440" y="220" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--color-text, #0f172a)">mmHg, PvCO2 = 45 mmHg</text>
+      {/* CỘT TRÁI: LÒNG PHẾ NANG */}
+      <rect x="30" y="25" width="220" height="230" rx="12" fill="var(--blue-bg, #eff6ff)" stroke="#93c5fd" stroke-width="2"/>
+      <text x="140" y="55" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="13" fill="#1d4ed8">LÒNG PHẾ NANG</text>
+      <rect x="50" y="75" width="180" height="55" rx="8" fill="var(--color-surface, #ffffff)" stroke="#93c5fd" stroke-width="1.2"/>
+      <text x="140" y="98" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="14" fill="#0284c7">PAO2 = 104 mmHg</text>
+      <text x="140" y="118" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="12" fill="#d97706">PACO2 = 40 mmHg</text>
+      <text x="140" y="160" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #64748b)">Không khí phế nang</text>
+      <text x="140" y="180" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #64748b)">làm ẩm 100% bão hòa</text>
+
+      {/* CỘT GIỮA: 6 LỚP MÀNG PHẾ NANG MAO MẠCH */}
+      <rect x="270" y="25" width="360" height="230" rx="12" fill="var(--color-surface, #ffffff)" stroke="#0284c7" stroke-width="1.8"/>
+      <rect x="270" y="25" width="360" height="34" rx="12" fill="#0284c7" fill-opacity="0.12"/>
+      <text x="450" y="48" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12.5" fill="#0284c7">6 LỚP KHUẾCH TÁN (T = 0.2 — 0.6 µm)</text>
+
+      {/* 6 Lớp */}
+      <text x="290" y="80" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">1. Lớp dịch lót phế nang + Surfactant</text>
+      <line x1="290" y1="88" x2="610" y2="88" stroke="#e2e8f0" stroke-width="1"/>
+
+      <text x="290" y="106" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">2. Biểu mô phế nang (Pneumocyte Type I dẹt)</text>
+      <line x1="290" y1="114" x2="610" y2="114" stroke="#e2e8f0" stroke-width="1"/>
+
+      <text x="290" y="132" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">3. Màng đáy biểu mô phế nang</text>
+      <line x1="290" y1="140" x2="610" y2="140" stroke="#e2e8f0" stroke-width="1"/>
+
+      <text x="290" y="158" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#b45309">4. Khoảng kẽ siêu mỏng (Interstitial Space)</text>
+      <line x1="290" y1="166" x2="610" y2="166" stroke="#e2e8f0" stroke-width="1"/>
+
+      <text x="290" y="184" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">5. Màng đáy mao mạch phổi</text>
+      <line x1="290" y1="192" x2="610" y2="192" stroke="#e2e8f0" stroke-width="1"/>
+
+      <text x="290" y="210" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">6. Tế bào nội mô mao mạch (Capillary Endothelium)</text>
+
+      {/* Mũi tên khuếch tán O2 và CO2 */}
+      <path d="M 235 115 L 268 115" fill="none" stroke="#0284c7" stroke-width="2.5" marker-end="url(#arrDiffO2)"/>
+      <path d="M 665 175 L 632 175" fill="none" stroke="#dc2626" stroke-width="2.5" marker-end="url(#arrDiffCO2)"/>
+
+      {/* CỘT PHẢI: LÒNG MAO MẠCH PHỔI */}
+      <rect x="650" y="25" width="220" height="230" rx="12" fill="var(--red-bg, #fef2f2)" stroke="#fca5a5" stroke-width="2"/>
+      <text x="760" y="55" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="13" fill="#dc2626">LÒNG MAO MẠCH PHỔI</text>
+
+      <rect x="665" y="75" width="190" height="60" rx="8" fill="var(--color-surface, #ffffff)" stroke="#fca5a5" stroke-width="1.2"/>
+      <text x="760" y="96" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #64748b)">Máu tĩnh mạch tới:</text>
+      <text x="760" y="118" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="12" fill="#dc2626">PvO2 = 40 • PvCO2 = 45</text>
+
+      <path d="M 760 137 L 760 152" fill="none" stroke="#059669" stroke-width="1.8" marker-end="url(#arrDiffO2)"/>
+
+      <rect x="665" y="155" width="190" height="60" rx="8" fill="var(--green-bg, #f0fdf4)" stroke="#86efac" stroke-width="1.2"/>
+      <text x="760" y="176" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #64748b)">Máu động mạch rời phổi:</text>
+      <text x="760" y="198" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12.5" fill="#059669">PaO2 = 104 • PaCO2 = 40</text>
+
+      {/* DẢI CHÚ THÍCH DƯỚI */}
+      <rect x="30" y="275" width="840" height="48" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="#fcd34d" stroke-width="1.2"/>
+      <text x="50" y="296" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="#b45309">⚠ Ý NGHĨA LÂM SÀNG BẢO VỆ MÀNG:</text>
+      <text x="50" y="313" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">Trong Xơ phổi vô căn (IPF) hoặc Phù phổi cấp (ứ dịch mô kẽ) $\rightarrow$ Chiều dày T tăng gấp 3–5 lần $\rightarrow$ Tốc độ khuếch tán O2 giảm nghiêm trọng.</text>
     </svg>
   </div>
 </div>
-
-
-  Trong các bệnh cảnh **Xơ phổi vô căn (Idiopathic Pulmonary Fibrosis - IPF)**, Viêm phổi mô kẽ hoặc Phù phổi cấp (ứ dịch trong khoảng kẽ) $\rightarrow$ Chiều dày màng $T$ tăng gấp 3–5 lần $\rightarrow$ Theo định luật Fick, tốc độ khuếch tán khí $O_2$ bị sụt giảm nghiêm trọng gây hạ oxy máu khi gắng sức.
-
 
 ---
 
@@ -145,40 +181,60 @@ Khí $O_2$ và $CO_2$ khuếch tán thụ động qua một cấu trúc siêu m�
 - Thời gian một hồng cầu lưu thông qua mao mạch phổi lúc nghỉ ngơi: **$0.75\text{ giây}$**.
 - Quá trình khuếch tán trao đổi $O_2$ và $CO_2$ đạt trạng thái cân bằng hoàn tất chỉ sau **$0.25\text{ giây}$ (ngay trong $1/3$ đầu tiên của mao mạch)**:
 
-
 <div class="flowchart-card">
   <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: 3. Động Học &amp; Dự Trữ Khuếch Tán Khí</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+    <div class="flowchart-title"><i class="fa-solid fa-stopwatch" style="color: var(--color-primary, #0284c7);"></i> ĐỒ THỊ ĐỘNG HỌC KHUẾCH TÁN O2: DỰ TRỮ KHUẾCH TÁN GẤP 3 LẦN</div>
+    <span class="badge badge-blue">Transit Kinetics</span>
   </div>
   <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 244" width="880" height="244" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
-        </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
-        </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
-        </marker>
-      </defs>
+    <svg class="flowchart-svg" viewBox="0 0 900 330" width="100%" height="330" xmlns="http://www.w3.org/2000/svg">
+      {/* Khung đồ thị */}
+      <rect x="30" y="25" width="840" height="240" rx="12" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
 
-      {/* Single Node: Phân áp O2 (mmHg) */}
-      <rect x="160.75" y="20" width="558.5" height="186" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Phân áp O2 (mmHg)</text>
-      <text x="184.75" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• 104</text>
-      <text x="184.75" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  ┌────────────────────────────────────────────────────────</text>
-      <text x="184.75" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  (Cân bằng PAO2)</text>
-      <text x="184.75" y="118" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• 40 ┼────/ (Máu tĩnh mạch tới)</text>
-      <text x="184.75" y="136" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• 0 └───┴───────────────────────┴───────────────────────┴────</text>
-      <text x="184.75" y="154" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  Thời gian (giây)</text>
-      <text x="184.75" y="172" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• 0.25s (1/3 đầu) 0.50s 0.75s (Hết mao mạch)</text>
-      <text x="184.75" y="190" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ◄── ĐÃ CÂN BẰNG ──► ◄──── DỰ TRỮ KHUẾCH TÁN GẤP 3 LẦN ────►</text>
+      {/* Trục Tung PO2 */}
+      <line x1="90" y1="45" x2="90" y2="225" stroke="var(--color-text, #0f172a)" stroke-width="1.5"/>
+      <text x="80" y="55" text-anchor="end" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="#0284c7">104 mmHg (PAO2)</text>
+      <line x1="85" y1="60" x2="840" y2="60" stroke="#0284c7" stroke-dasharray="4,4" stroke-width="1"/>
+
+      <text x="80" y="165" text-anchor="end" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600" fill="#dc2626">40 mmHg (PvO2)</text>
+      <line x1="85" y1="170" x2="840" y2="170" stroke="#dc2626" stroke-dasharray="3,3" stroke-width="1"/>
+
+      {/* Trục Hoành: Thời gian máu qua mao mạch phổi (giây) */}
+      <line x1="90" y1="225" x2="840" y2="225" stroke="var(--color-text, #0f172a)" stroke-width="1.5"/>
+
+      {/* Các mốc thời gian */}
+      {/* 0.00s */}
+      <text x="90" y="244" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600" fill="var(--color-text-muted, #64748b)">0.00s</text>
+
+      {/* 0.25s (1/3 đầu) */}
+      <line x1="340" y1="45" x2="340" y2="225" stroke="#059669" stroke-dasharray="4,4" stroke-width="1.5"/>
+      <text x="340" y="244" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="#059669">0.25s (1/3 đầu)</text>
+
+      {/* 0.50s */}
+      <line x1="590" y1="45" x2="590" y2="225" stroke="#cbd5e1" stroke-dasharray="3,3" stroke-width="1"/>
+      <text x="590" y="244" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600" fill="var(--color-text-muted, #64748b)">0.50s</text>
+
+      {/* 0.75s (Hết mao mạch) */}
+      <line x1="800" y1="45" x2="800" y2="225" stroke="#0284c7" stroke-width="1.5"/>
+      <text x="800" y="244" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="#0284c7">0.75s (Rời phổi)</text>
+
+      {/* Vùng tô nền: 1/3 đầu vs Dự trữ */}
+      <rect x="90" y="45" width="250" height="180" fill="#059669" fill-opacity="0.06"/>
+      <text x="215" y="115" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#059669">ĐÃ CÂN BẰNG HOÀN TOÀN</text>
+
+      <rect x="340" y="45" width="460" height="180" fill="#0284c7" fill-opacity="0.04"/>
+      <text x="570" y="115" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#0284c7">DỰ TRỮ AN TOÀN KHUẾCH TÁN GẤP 3 LẦN</text>
+
+      {/* Đường cong PO2 mao mạch lúc nghỉ */}
+      <path d="M 90 170 Q 180 160 250 80 Q 300 60 340 60 L 800 60" fill="none" stroke="#0284c7" stroke-width="3.5" stroke-linecap="round"/>
+      <circle cx="90" cy="170" r="5" fill="#dc2626"/>
+      <circle cx="340" cy="60" r="5" fill="#059669"/>
+      <circle cx="800" cy="60" r="5" fill="#0284c7"/>
+
+      {/* DẢI CHÚ THÍCH DƯỚI */}
+      <rect x="30" y="280" width="840" height="35" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #e2e8f0)" stroke-width="1"/>
+      <circle cx="50" cy="298" r="5" fill="#059669"/>
+      <text x="62" y="302" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">Khi gắng sức nặng: Cung lượng tim tăng cao rút ngắn thời gian lưu thông xuống 0.25s, máu vẫn kịp bão hòa 100% oxy</text>
     </svg>
   </div>
 </div>
@@ -200,37 +256,54 @@ Do trọng lực tác động lên cột máu và cột khí:
 
 <div class="flowchart-card">
   <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: ĐỈNH PHỔI (Vùng 1)</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+    <div class="flowchart-title"><i class="fa-solid fa-mountain" style="color: var(--color-primary, #0284c7);"></i> 3 VÙNG WEST CỦA PHỔI Ở TƯ THẾ ĐỨNG (TRỌNG LỰC & GRADIENT ÁP SUẤT)</div>
+    <span class="badge badge-blue">West Zone Dynamics</span>
   </div>
   <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 252" width="880" height="252" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
-        </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
-        </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
-        </marker>
-      </defs>
+    <svg class="flowchart-svg" viewBox="0 0 900 360" width="100%" height="360" xmlns="http://www.w3.org/2000/svg">
+      {/* VÙNG 1: ĐỈNH PHỔI */}
+      <rect x="30" y="20" width="840" height="75" rx="12" fill="var(--amber-bg, #fffbeb)" stroke="#fcd34d" stroke-width="1.6"/>
+      <rect x="45" y="32" width="160" height="50" rx="8" fill="#d97706" fill-opacity="0.15"/>
+      <text x="125" y="52" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12.5" fill="#b45309">VÙNG 1: ĐỈNH PHỔI</text>
+      <text x="125" y="70" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#b45309">PA &gt; Pa &gt; Pv</text>
 
-      {/* Single Node: ĐỈNH PHỔI (Vùng 1) */}
-      <rect x="250" y="20" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">ĐỈNH PHỔI (Vùng 1)</text>
-      <line x1="440" y1="66" x2="440" y2="94" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: THÂN PHỔI (Vùng 2) */}
-      <rect x="250" y="94" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">THÂN PHỔI (Vùng 2)</text>
-      <line x1="440" y1="140" x2="440" y2="168" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: ĐÁY PHỔI (Vùng 3) */}
-      <rect x="250" y="168" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="190" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">ĐÁY PHỔI (Vùng 3)</text>
+      <text x="225" y="48" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="12" fill="var(--color-text, #0f172a)">• Áp lực phế nang (PA) đè ép xẹp hoàn toàn lòng mao mạch</text>
+      <text x="225" y="68" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #64748b)">Tưới máu cực thấp, thông khí cao $\rightarrow$ Tỷ lệ V/Q &gt; 3.0 (KHOẢNG CHẾT SINH LÝ)</text>
+      <rect x="740" y="32" width="115" height="50" rx="8" fill="var(--color-surface, #ffffff)" stroke="#fcd34d" stroke-width="1"/>
+      <text x="797" y="54" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="13" fill="#b45309">V/Q &gt; 3.0</text>
+      <text x="797" y="70" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">Khoảng chết</text>
+
+      {/* VÙNG 2: THÂN PHỔI */}
+      <rect x="30" y="105" width="840" height="75" rx="12" fill="var(--green-bg, #f0fdf4)" stroke="#86efac" stroke-width="1.6"/>
+      <rect x="45" y="117" width="160" height="50" rx="8" fill="#059669" fill-opacity="0.15"/>
+      <text x="125" y="137" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12.5" fill="#15803d">VÙNG 2: THÂN PHỔI</text>
+      <text x="125" y="155" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#15803d">Pa &gt; PA &gt; Pv</text>
+
+      <text x="225" y="133" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="12" fill="var(--color-text, #0f172a)">• Dòng máu chảy đập theo thì: Mở thì tâm thu, hẹp thì tâm trương</text>
+      <text x="225" y="153" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #64748b)">Thông khí và tưới máu cân bằng tối ưu $\rightarrow$ Tỷ lệ V/Q ≈ 0.8 — 1.0 (LÝ TƯỞNG NHẤT)</text>
+      <rect x="740" y="117" width="115" height="50" rx="8" fill="var(--color-surface, #ffffff)" stroke="#86efac" stroke-width="1"/>
+      <text x="797" y="139" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="13" fill="#15803d">V/Q ≈ 0.8</text>
+      <text x="797" y="155" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">Lý tưởng</text>
+
+      {/* VÙNG 3: ĐÁY PHỔI */}
+      <rect x="30" y="190" width="840" height="75" rx="12" fill="var(--blue-bg, #eff6ff)" stroke="#93c5fd" stroke-width="1.6"/>
+      <rect x="45" y="202" width="160" height="50" rx="8" fill="#0284c7" fill-opacity="0.15"/>
+      <text x="125" y="222" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12.5" fill="#1d4ed8">VÙNG 3: ĐÁY PHỔI</text>
+      <text x="125" y="240" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#1d4ed8">Pa &gt; Pv &gt; PA</text>
+
+      <text x="225" y="218" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="12" fill="var(--color-text, #0f172a)">• Áp lực thủy tĩnh trọng lực làm mao mạch luôn căng giãn tối đa</text>
+      <text x="225" y="238" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #64748b)">Tưới máu cực dồi dào vượt trội thông khí $\rightarrow$ Tỷ lệ V/Q ≈ 0.6 (HƠI THẤP)</text>
+      <rect x="740" y="202" width="115" height="50" rx="8" fill="var(--color-surface, #ffffff)" stroke="#93c5fd" stroke-width="1"/>
+      <text x="797" y="224" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="13" fill="#1d4ed8">V/Q ≈ 0.6</text>
+      <text x="797" y="240" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">Dư tưới máu</text>
+
+      {/* DẢI CHÚ THÍCH DƯỚI */}
+      <rect x="30" y="280" width="840" height="65" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="50" y="304" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="var(--color-text, #0f172a)">HAI THÁI CỰC BẤT TƯƠNG XỨNG V/Q:</text>
+      <text x="50" y="325" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="#dc2626" font-weight="700">• SHUNT (V/Q = 0):</text>
+      <text x="175" y="325" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">Có tưới máu nhưng không thông khí (Viêm phổi, ARDS) ──► KHÔNG ĐÁP ỨNG THỞ OXY 100%</text>
+      <text x="50" y="340" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="#b45309" font-weight="700">• KHOẢNG CHẾT (V/Q = ∞):</text>
+      <text x="215" y="340" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">Có thông khí nhưng tắc tưới máu (Thuyên tắc phổi PE) ──► Lãng phí thông khí</text>
     </svg>
   </div>
 </div>
@@ -239,7 +312,6 @@ Do trọng lực tác động lên cột máu và cột khí:
 |---|---|---|---|
 | **Shunt (Luồng thông)** | **$V/Q = 0$** | **Có tưới máu nhưng HOÀN TOÀN KHÔNG CÓ THÔNG KHÍ** (Phế nang xẹp dính, đông đặc dịch mủ trong Viêm phổi, ARDS, Dị tật tim Shunt Phải-Trái). | **HOÀN TOÀN KHÔNG ĐÁP ỨNG** (Máu đi tắt qua phế nang xẹp không thể gặp oxy). |
 | **Khoảng chết (Dead Space)** | **$V/Q = \infty$** | **Có thông khí nhưng HOÀN TOÀN KHÔNG ĐƯỢC TƯỚI MÁU** (Tắc mạch máu trong **Thuyên tắc động mạch phổi PE**). | Thông khí bị lãng phí hoàn toàn. |
-
 
 ---
 
@@ -250,57 +322,69 @@ $$P_A O_2 = FiO_2(P_{atm} - P_{H_2O}) - \frac{PaCO_2}{R} = 150 - \frac{40}{0.8} 
 
 - **Độ chênh $A-a\text{ Gradient} = P_A O_2 - PaO_2$** (Bình thường **$< 10 – 15\text{ mmHg}$**; tăng nhẹ theo tuổi: $\text{Bình thường} \approx \frac{\text{Tuổi}}{4} + 4$).
 
-
 <div class="flowchart-card">
   <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: BỆNH NHÂN BỊ HẠ OXY MÁU (PaO2 &lt; 60 mmHg)</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+    <div class="flowchart-title"><i class="fa-solid fa-sitemap" style="color: var(--color-primary, #0284c7);"></i> LƯU ĐỒ CHẨN ĐOÁN HẠ OXY MÁU DỰA TRÊN ĐỘ CHÊNH A-a GRADIENT</div>
+    <span class="badge badge-green">Clinical Decision Tree</span>
   </div>
   <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 302" width="880" height="302" xmlns="http://www.w3.org/2000/svg">
+    <svg class="flowchart-svg" viewBox="0 0 900 370" width="100%" height="370" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrAaBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
         </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrAaGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
         </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrAaRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
         </marker>
       </defs>
 
-      {/* Single Node: BỆNH NHÂN BỊ HẠ OXY MÁU (PaO2  */}
-      <rect x="220" y="20" width="440" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">BỆNH NHÂN BỊ HẠ OXY MÁU (PaO2 &lt; 60 mmHg)</text>
-      {/* Bifurcation Path */}
-      <path d="M 440 66 L 440 80 L 235 80 L 235 94" fill="none" stroke="var(--red, #ef4444)" stroke-width="1.8" marker-end="url(#arrRed)"/>
-      <path d="M 440 80 L 645 80 L 645 94" fill="none" stroke="var(--amber, #f59e0b)" stroke-width="1.8" marker-end="url(#arrAmber)"/>
-      {/* Left Column: A-a GRADIENT BÌNH THƯỜNG (&lt; 15 */}
-      <rect x="40" y="94" width="390" height="170" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.5"/>
-      <text x="235" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">A-a GRADIENT BÌNH THƯỜNG (&lt; 15</text>
-      <text x="235" y="134" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">mmHg)</text>
-      <line x1="60" y1="148" x2="410" y2="148" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="60" y="164" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• (Nguyên nhân NGOÀI phổi, Phổi hoàn</text>
-      <text x="60" y="182" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  toàn lành lặn):</text>
-      <text x="60" y="200" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Giảm thông khí phế nang (Ngộ độc</text>
-      <text x="60" y="218" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  Opioid, Liệt cơ hô hấp)</text>
-      <text x="60" y="236" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Giảm phân áp O2 hít vào (Lên vùng núi</text>
-      <text x="60" y="254" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  cao, Hỏa hoạn ngạt khí</text>
-      {/* Right Column: A-a GRADIENT TĂNG CAO (&gt; 15 mm */}
-      <rect x="450" y="94" width="390" height="170" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
-      <text x="645" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">A-a GRADIENT TĂNG CAO (&gt; 15 mmHg)</text>
-      <line x1="470" y1="130" x2="820" y2="130" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="470" y="146" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• (Nguyên nhân TẠI NỘI TẠI NHU MÔ PHỔI):</text>
-      <text x="470" y="164" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Bất tương xứng V/Q (Hen phế quản,</text>
-      <text x="470" y="182" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  COPD, Viêm phế quản)</text>
-      <text x="470" y="200" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ) • Shunt phổi (Viêm phổi đông đặc</text>
-      <text x="470" y="218" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  thùy, ARDS, Phù phổi cấp)</text>
-      <text x="470" y="236" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Giảm khuếch tán màng (Xơ phổi mô kẽ</text>
-      <text x="470" y="254" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  IPF)</text>
+      {/* NODE GỐC: HẠ OXY MÁU */}
+      <rect x="250" y="20" width="400" height="52" rx="12" fill="var(--color-surface, #ffffff)" stroke="#0284c7" stroke-width="2"/>
+      <text x="450" y="44" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="13" fill="#0284c7">BỆNH NHÂN HẠ OXY MÁU (PaO2 &lt; 60 mmHg)</text>
+      <text x="450" y="61" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #64748b)">Tính độ chênh áp A-a Gradient = PAO2 — PaO2</text>
+
+      {/* ĐƯỜNG RẼ NHÁNH VUÔNG GÓC 90 ĐỘ */}
+      <path d="M 450 72 L 450 95 L 235 95 L 235 118" fill="none" stroke="#059669" stroke-width="2" marker-end="url(#arrAaGreen)"/>
+      <path d="M 450 95 L 665 95 L 665 118" fill="none" stroke="#dc2626" stroke-width="2" marker-end="url(#arrAaRed)"/>
+
+      {/* CỘT TRÁI: A-a GRADIENT BÌNH THƯỜNG */}
+      <rect x="30" y="120" width="410" height="205" rx="12" fill="var(--color-surface, #ffffff)" stroke="#059669" stroke-width="2"/>
+      <rect x="30" y="120" width="410" height="38" rx="12" fill="#059669" fill-opacity="0.12"/>
+      <text x="235" y="144" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="13" fill="#059669">A-a GRADIENT BÌNH THƯỜNG (&lt; 15 mmHg)</text>
+
+      <rect x="48" y="168" width="374" height="65" rx="8" fill="var(--green-bg, #f0fdf4)" stroke="#86efac" stroke-width="1.2"/>
+      <text x="60" y="188" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="#15803d">1. Giảm thông khí phế nang (Hypoventilation)</text>
+      <text x="60" y="206" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Ngộ độc Opioid, an thần, liệt cơ (GBS, Myasthenia)</text>
+      <text x="60" y="222" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="#15803d" font-weight="600">✓ Dấu ấn: PaCO2 tăng cao tương ứng (&gt; 45 mmHg)</text>
+
+      <rect x="48" y="242" width="374" height="65" rx="8" fill="var(--green-bg, #f0fdf4)" stroke="#86efac" stroke-width="1.2"/>
+      <text x="60" y="262" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="#15803d">2. Giảm phân áp O2 hít vào (Low PiO2)</text>
+      <text x="60" y="280" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Leo núi cao (Áp suất khí quyển giảm), ngạt khói hỏa hoạn</text>
+      <text x="60" y="296" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="#15803d" font-weight="600">✓ Nhu mô phổi hoàn toàn lành lặn</text>
+
+      {/* CỘT PHẢI: A-a GRADIENT TĂNG CAO */}
+      <rect x="460" y="120" width="410" height="205" rx="12" fill="var(--color-surface, #ffffff)" stroke="#dc2626" stroke-width="2"/>
+      <rect x="460" y="120" width="410" height="38" rx="12" fill="#dc2626" fill-opacity="0.12"/>
+      <text x="665" y="144" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="13" fill="#dc2626">A-a GRADIENT TĂNG CAO (&gt; 15 mmHg)</text>
+
+      <rect x="478" y="168" width="374" height="42" rx="8" fill="var(--red-bg, #fef2f2)" stroke="#fca5a5" stroke-width="1.2"/>
+      <text x="490" y="186" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#b91c1c">1. Bất tương xứng V/Q (COPD, Hen phế quản, PE)</text>
+      <text x="490" y="200" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="#15803d" font-weight="700">✓ ĐÁP ỨNG RẤT TỐT với liệu pháp thở Oxy</text>
+
+      <rect x="478" y="218" width="374" height="42" rx="8" fill="var(--red-bg, #fef2f2)" stroke="#fca5a5" stroke-width="1.2"/>
+      <text x="490" y="236" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#b91c1c">2. Shunt nội phổi (Viêm phổi đông đặc, ARDS, Xẹp phổi)</text>
+      <text x="490" y="250" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="#dc2626" font-weight="700">❌ HOÀN TOÀN KHÔNG ĐÁP ỨNG với thở Oxy 100%</text>
+
+      <rect x="478" y="268" width="374" height="42" rx="8" fill="var(--red-bg, #fef2f2)" stroke="#fca5a5" stroke-width="1.2"/>
+      <text x="490" y="286" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#b91c1c">3. Rối loạn khuếch tán màng (Xơ phổi mô kẽ IPF)</text>
+      <text x="490" y="300" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #64748b)">Hạ oxy máu nặng hơn rất nhiều khi gắng sức</text>
+
+      {/* DẢI CHÚ THÍCH DƯỚI */}
+      <rect x="30" y="335" width="840" height="28" rx="6" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="50" y="353" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">Tiêu chuẩn vàng: Phân biệt nguyên nhân tại phổi (A-a tăng) vs ngoài phổi (A-a bình thường, PaCO2 tăng)</text>
     </svg>
   </div>
 </div>

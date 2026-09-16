@@ -49,270 +49,453 @@ sections:
 
 # 🧬 SINH LÝ TIÊU HÓA & HẤP THU TẠI RUỘT NON
 
+{/* MODULE BADGE GROUP */}
+<div class="module-badge-group">
+  <div class="badge-item primary">
+    <i class="fa-solid fa-flask-vial"></i>
+    <span>PHYS-DIG-04 • Part 5: Tiêu Hóa & Chuyển Hóa</span>
+  </div>
+  <div class="badge-item info">
+    <i class="fa-solid fa-book-medical"></i>
+    <span>Guyton 14th Ch.64 & 65 • Ganong 26th Ch.26</span>
+  </div>
+  <div class="badge-item success">
+    <i class="fa-solid fa-bottle-water"></i>
+    <span>SGLT1 • PepT1 • Hạt Chylomicron • Cơ Chế ORS Cứu Mạng</span>
+  </div>
+</div>
+
 <PhysioQuickNav />
 
-{/* DẢI CHỈ SỐ NHANH (QUICK STATS STRIP) */}
-<section class="stats-strip">
+{/* DẢI CHỈ SỐ LÂM SÀNG CHUẨN EBM */}
+<section class="stats-strip theme-physio">
   <div class="stats-grid">
     <div class="stat-card">
-      <div class="stat-val blue">PHYS-DIG-04</div>
-      <div class="stat-lbl">Mã chuyên đề • Sinh Lý Hệ Tiêu Hóa & Chuyển Hóa</div>
+      <div class="stat-val blue">250 m²</div>
+      <div class="stat-lbl">Diện tích hấp thu (khuếch đại gấp 600x)</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val green">Nội Môi Ổn Định</div>
-      <div class="stat-lbl">Cân bằng gradient điện hóa & Áp suất thẩm thấu</div>
+      <div class="stat-val green">7.0 – 8.0 L</div>
+      <div class="stat-lbl">Nước hấp thu/ngày (90% dịch tiêu hóa)</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val amber">Feedback Loop</div>
-      <div class="stat-lbl">Vòng điều hòa phản hồi thần kinh - thể dịch</div>
+      <div class="stat-val amber">12 → 8 cpm</div>
+      <div class="stat-lbl">Tần số co bóp phân đoạn (Tá tràng → Hồi tràng)</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val purple">Dược Lý EBM</div>
-      <div class="stat-lbl">Ứng dụng lâm sàng chuẩn Guyton 14th & Ganong 26th</div>
+      <div class="stat-val purple">245 mOsm/L</div>
+      <div class="stat-lbl">Dung dịch ORS chuẩn WHO (Na⁺ 75, Glu 75)</div>
     </div>
   </div>
 </section>
 
 ---
 
-## 1. Cấu Trúc Khuếch Đại & Cơ Học Ruột Non
-Ruột non dài khoảng 5–6 mét, là cơ quan hấp thu chủ yếu của cơ thể nhờ diện tích bề mặt được khuếch đại lên gấp **$600\text{ lần}$** (đạt tới **$250\text{ m}^2$**):
+## 1. Cấu Trúc Khuếch Đại Diện Tích & Cơ Học Ruột Non
 
+Ruột non dài khoảng $5 – 6\text{ mét}$, là cơ quan tiêu hóa và hấp thu chủ yếu của toàn bộ ống tiêu hóa. Nếu ruột non chỉ là một ống trụ nhẵn phẳng thông thường, diện tích tiếp xúc chỉ vỏn vẹn khoảng $0.4\text{ m}^2$. Nhờ sự phối hợp của 3 tầng cấu trúc giải phẫu đặc biệt, diện tích bề mặt thực tế được **khuếch đại lên gấp 600 lần**, đạt tới **$250\text{ m}^2$** (tương đương diện tích một sân tennis tiêu chuẩn):
 
 <div class="flowchart-card">
   <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: ỐNG RUỘT HÌNH TRỤ THÔ</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> 3 BẬC THANG KHUẾCH ĐẠI DIỆN TÍCH BỀ MẶT HẤP THU RUỘT NON (GẤP 600 LẦN)</div>
+    <span class="badge badge-blue">Pure Editorial SVG</span>
   </div>
   <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 172" width="880" height="172" xmlns="http://www.w3.org/2000/svg">
+    <svg class="flowchart-svg" viewBox="0 0 900 300" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrAmp" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
-        </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
-        </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
         </marker>
       </defs>
 
-      {/* Single Node: ỐNG RUỘT HÌNH TRỤ THÔ */}
-      <rect x="169.25" y="20" width="541.5" height="114" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">ỐNG RUỘT HÌNH TRỤ THÔ</text>
-      <text x="193.25" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ├──► 1. Nếp gấp vòng Kerckring (Valvulae Conniventes) ──►</text>
-      <text x="193.25" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  Tăng gấp 3 lần (1.2 m2)</text>
-      <text x="193.25" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ├──► 2. Các Nhung Mao (Villi: 4 – 5 triệu nhung mao) ──►</text>
-      <text x="193.25" y="118" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  Tăng gấp 10 lần (12 m2)</text>
+      {/* Cấp 0: Ống trụ thô */}
+      <rect x="30" y="40" width="170" height="200" rx="14" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <rect x="30" y="40" width="170" height="32" rx="14" fill="var(--color-surface-2, #f8fafc)"/>
+      <text x="115" y="61" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text-muted, #64748b)">ỐNG TRỤ ĐƠN</text>
+      <text x="115" y="110" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="800" fill="var(--color-text, #0f172a)">~ 0.4 m²</text>
+      <text x="45" y="145" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #64748b)">• Dài 5 – 6 m</text>
+      <text x="45" y="165" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #64748b)">• Bán kính r ~ 1.5 cm</text>
+      <text x="45" y="195" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600" fill="var(--color-text-muted, #64748b)">Bề mặt phẳng ban đầu</text>
+
+      {/* Vector 1 */}
+      <path d="M 200 140 L 245 140" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arrAmp)"/>
+      <text x="222" y="130" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="700" fill="var(--color-primary, #0284c7)">x 3</text>
+
+      {/* Cấp 1: Nếp gấp vòng Kerckring */}
+      <rect x="250" y="40" width="180" height="200" rx="14" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+      <rect x="250" y="40" width="180" height="32" rx="14" fill="var(--color-primary, #0284c7)" fill-opacity="0.12"/>
+      <text x="340" y="61" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-primary, #0284c7)">1. NẾP KERCKRING</text>
+      <text x="340" y="110" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="800" fill="var(--color-primary, #0284c7)">~ 1.2 m²</text>
+      <text x="265" y="145" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Nếp gấp vòng niêm mạc</text>
+      <text x="265" y="165" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #64748b)">Cao tới 8 – 10 mm</text>
+      <text x="265" y="195" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600" fill="var(--color-primary, #0284c7)">Tăng gấp 3 lần</text>
+
+      {/* Vector 2 */}
+      <path d="M 430 140 L 475 140" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arrAmp)"/>
+      <text x="452" y="130" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="700" fill="var(--color-primary, #0284c7)">x 10</text>
+
+      {/* Cấp 2: Nhung mao (Villi) */}
+      <rect x="480" y="40" width="180" height="200" rx="14" fill="var(--color-surface, #ffffff)" stroke="#059669" stroke-width="2"/>
+      <rect x="480" y="40" width="180" height="32" rx="14" fill="#059669" fill-opacity="0.12"/>
+      <text x="570" y="61" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="#059669)">2. NHUNG MAO (VILLI)</text>
+      <text x="570" y="110" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="800" fill="#059669)">~ 12 m²</text>
+      <text x="495" y="145" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• 4 – 5 triệu nhung mao</text>
+      <text x="495" y="165" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #64748b)">Cao 0.5 – 1.0 mm</text>
+      <text x="495" y="195" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600" fill="#059669">Tăng gấp 10 lần</text>
+
+      {/* Vector 3 */}
+      <path d="M 660 140 L 705 140" fill="none" stroke="#059669" stroke-width="2" marker-end="url(#arrAmp)"/>
+      <text x="682" y="130" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="700" fill="#059669)">x 20</text>
+
+      {/* Cấp 3: Vi nhung mao (Microvilli) */}
+      <rect x="710" y="40" width="160" height="200" rx="14" fill="var(--color-surface, #ffffff)" stroke="#d97706" stroke-width="2.5"/>
+      <rect x="710" y="40" width="160" height="32" rx="14" fill="#d97706" fill-opacity="0.15"/>
+      <text x="790" y="61" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="#d97706">3. VI NHUNG MAO</text>
+      <text x="790" y="110" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="15" font-weight="800" fill="#d97706">~ 250 m²</text>
+      <text x="722" y="145" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• 1000 vi nhung mao/tb</text>
+      <text x="722" y="165" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #64748b)">Bờ bàn chải + Men</text>
+      <text x="722" y="195" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="#d97706">TĂNG GẤP 20 LẦN</text>
+
+      {/* Tóm tắt chân trang */}
+      <rect x="30" y="255" width="840" height="32" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #e2e8f0)" stroke-width="1"/>
+      <text x="450" y="275" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="var(--color-text, #0f172a)">TỔNG HỆ SỐ KHUẾCH ĐẠI = 3 x 10 x 20 = 600 LẦN ➔ ĐẠT DIỆN TÍCH TỐI ĐA 250 M²</text>
     </svg>
+  </div>
+  <div class="flowchart-editorial-legend">
+    <div class="legend-item"><span class="legend-dot blue"></span> Nếp gấp vòng Kerckring (x3)</div>
+    <div class="legend-item"><span class="legend-dot green"></span> Nhung mao Villi (x10)</div>
+    <div class="legend-item"><span class="legend-dot amber"></span> Bờ bàn chải Vi nhung mao (x20)</div>
   </div>
 </div>
 
 ### Hai Hình Thức Cơ Học Ruột Non
-1. **Co Bóp Phân Đoạn (Segmentation Contractions)**: Nhào trộn dưỡng trấp với enzym tụy, mật và dịch ruột liên tục ($12\text{ ck/phút}$ ở tá tràng, $8 – 9\text{ ck/phút}$ ở hồi tràng).
-2. **Phức Hợp Vận Động Di Chuyển (MMC - Migrating Motor Complex)**: Sóng co bóp quét sạch thức ăn thừa và vi khuẩn dọc ruột non trong giai đoạn đói giữa các bữa ăn (chu kỳ 90–120 phút), được kích hoạt bởi hormone **Motilin**.
-
+1. **Co bóp phân đoạn (Segmentation Contractions)**: Nhào trộn dưỡng trấp liên tục với enzyme tụy, mật và enzyme màng ruột. Tần số co bóp giảm dần theo chiều dài ruột non: **$12\text{ chu kỳ/phút}$** tại tá tràng $\rightarrow$ **$8 – 9\text{ chu kỳ/phút}$** tại đoạn cuối hồi tràng (gradient tần số giúp dưỡng trấp di chuyển chậm về phía ruột già).
+2. **Phức hợp vận động di chuyển (MMC - Migrating Motor Complex)**: Sóng co bóp nhu động mạnh mẽ quét sạch thức ăn thừa và vi khuẩn dọc ruột non trong giai đoạn nhịn đói giữa các bữa ăn (chu kỳ $90 – 120\text{ phút}$), được kích hoạt bởi hormone **Motilin** tiết ra từ tế bào M tá tràng và hỗng tràng.
 
 ---
 
 ## 2. Cơ Chế Phân Tử Hấp Thu Carbohydrate
-Tinh bột và đường đôi sau khi được thủy phân bởi $\alpha$-Amylase và các enzym riềm bàn chải (*Lactase, Sucrase, Maltase*) thành 3 loại đường đơn:
 
+Tinh bột và đường đôi sau khi được thủy phân bởi $\alpha$-Amylase tụy và các disaccharidase bờ bàn chải (*Lactase, Sucrase, Maltase*) sẽ giải phóng ra 3 monosaccharide: **Glucose (80%)**, **Galactose (10%)** và **Fructose (10%)**.
 
-<div class="flowchart-card">
-  <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: LÒNG RUỘT NON</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
-  </div>
-  <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 384" width="880" height="384" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
-        </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
-        </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
-        </marker>
-      </defs>
-
-      <rect x="30" y="20" width="250" height="90" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="155" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text, #0f172a)">LÒNG RUỘT NON</text>
-      <line x1="45" y1="50" x2="265" y2="50" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <rect x="315" y="20" width="250" height="90" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text, #0f172a)">TẾ BÀO BIỂU MÔ RUỘT</text>
-      <line x1="330" y1="50" x2="550" y2="50" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <rect x="600" y="20" width="250" height="90" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="725" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text, #0f172a)">MÁU TĨNH MẠCH CỬA</text>
-      <line x1="615" y1="50" x2="835" y2="50" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      {/* Bifurcation Path */}
-      <path d="M 440 110 L 440 124 L 235 124 L 235 138" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      <path d="M 440 124 L 645 124 L 645 138" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Left Column: KÊNH SGLT1 */}
-      <rect x="40" y="138" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="235" y="160" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">KÊNH SGLT1</text>
-      <line x1="60" y1="174" x2="410" y2="174" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="60" y="190" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• (Ph</text>
-      {/* Right Column: KÊNH GLUT2 */}
-      <rect x="450" y="138" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="645" y="160" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">KÊNH GLUT2</text>
-      <line x1="470" y1="174" x2="820" y2="174" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="470" y="190" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ụ thuộc Bơm Na+/K+-ATPase màng đáy)</text>
-      {/* Bifurcation Path */}
-      <path d="M 440 228 L 440 242 L 235 242 L 235 256" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      <path d="M 440 242 L 645 242 L 645 256" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Left Column: KÊNH GLUT5 */}
-      <rect x="40" y="256" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="235" y="278" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">KÊNH GLUT5</text>
-      <line x1="60" y1="292" x2="410" y2="292" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      {/* Right Column: KÊNH GLUT2 */}
-      <rect x="450" y="256" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="645" y="278" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">KÊNH GLUT2</text>
-      <line x1="470" y1="292" x2="820" y2="292" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-    </svg>
-  </div>
-</div>
-
-
-  - **SGLT1 (Sodium-Glucose Cotransporter 1)**: Vận chuyển chủ động thứ phát, đưa 1 phân tử Glucose (hoặc Galactose) đi kèm $2\text{ ion } Na^+$ vào tế bào ngược gradient nồng độ.
-  - **GLUT5**: Vận chuyển khuếch tán thuận hóa chọn lọc riêng cho **Fructose** (hoàn toàn không cần $Na^+$).
-  - **GLUT2**: Nằm ở màng đáy bên, vận chuyển cả 3 loại đường đơn (Glucose, Galactose, Fructose) vào dịch kẽ để ngấm vào mao mạch về gan.
-
-
----
-
-## 3. Cơ Chế Hấp Thu Protein & Peptid
-Enzym tụy (Trypsin, Chymotrypsin, Carboxypeptidase) và Peptidase riềm bàn chải phân cắt protein thành:
-
+### Sự phân bố các kênh vận chuyển màng đỉnh và màng đáy
 
 <div class="flowchart-card">
   <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: LÒNG RUỘT NON</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> MÔ HÌNH VẬN CHUYỂN TRANSEPITHELIAL CỦA GLUCOSE, GALACTOSE &amp; FRUCTOSE</div>
+    <span class="badge badge-blue">Pure Editorial SVG</span>
   </div>
   <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 296" width="880" height="296" xmlns="http://www.w3.org/2000/svg">
+    <svg class="flowchart-svg" viewBox="0 0 900 360" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrCarb" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
         </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrGreenC" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
-        </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
         </marker>
       </defs>
 
-      <rect x="30" y="20" width="250" height="90" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="155" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text, #0f172a)">LÒNG RUỘT NON</text>
-      <line x1="45" y1="50" x2="265" y2="50" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <rect x="315" y="20" width="250" height="90" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text, #0f172a)">TẾ BÀO BIỂU MÔ RUỘT</text>
-      <line x1="330" y1="50" x2="550" y2="50" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <rect x="600" y="20" width="250" height="90" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="725" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text, #0f172a)">MÁU TĨNH MẠCH CỬA</text>
-      <line x1="615" y1="50" x2="835" y2="50" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <line x1="440" y1="110" x2="440" y2="138" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: Đồng Vận Chuyển Na+ */}
-      <rect x="250" y="138" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="160" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Đồng Vận Chuyển Na+</text>
-      <line x1="440" y1="184" x2="440" y2="212" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: KÊNH PepT1 (Đồng Vận H+) */}
-      <rect x="250" y="212" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="234" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">KÊNH PepT1 (Đồng Vận H+)</text>
+      {/* 3 Compartments: Lòng Ruột (Trái), Enterocyte (Giữa), Mao mạch TM Cửa (Phải) */}
+      <rect x="30" y="30" width="200" height="300" rx="14" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="130" y="55" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="12" fill="var(--color-text-muted, #64748b)">LÒNG RUỘT NON (LUMEN)</text>
+
+      <rect x="250" y="30" width="400" height="300" rx="16" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+      <rect x="250" y="30" width="400" height="32" rx="16" fill="var(--color-primary, #0284c7)" fill-opacity="0.12"/>
+      <text x="450" y="52" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-primary, #0284c7)">TẾ BÀO BIỂU MÔ RUỘT (ENTEROCYTE)</text>
+
+      <rect x="670" y="30" width="200" height="300" rx="14" fill="var(--color-surface-2, #f8fafc)" stroke="#059669" stroke-width="1.5"/>
+      <text x="770" y="55" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="12" fill="#059669">TĨNH MẠCH CỬA (MÁU)</text>
+
+      {/* Màng Đỉnh (Apical / Brush Border) */}
+      {/* Kênh SGLT1 */}
+      <rect x="238" y="85" width="24" height="60" rx="6" fill="#0284c7"/>
+      <text x="250" y="120" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" fill="#ffffff" font-weight="800">SGLT1</text>
+      <text x="130" y="100" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="var(--color-primary, #0284c7)">2 Na⁺ + 1 Glucose ►</text>
+      <text x="130" y="118" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="600" fill="var(--color-primary, #0284c7)">(hoặc Galactose)</text>
+      <text x="130" y="134" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text-muted, #64748b)">Chủ động thứ phát (ngược dốc)</text>
+
+      {/* Kênh GLUT5 */}
+      <rect x="238" y="185" width="24" height="50" rx="6" fill="#d97706"/>
+      <text x="250" y="215" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" fill="#ffffff" font-weight="800">GLUT5</text>
+      <text x="130" y="205" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="#d97706">1 Fructose ►</text>
+      <text x="130" y="222" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text-muted, #64748b)">Khuếch tán thuận hóa (không cần Na⁺)</text>
+
+      {/* Bào tương Enterocyte */}
+      <text x="450" y="115" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="600" fill="var(--color-text, #0f172a)">[Glucose / Galactose] tích lũy cao</text>
+      <path d="M 270 115 L 630 115" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arrCarb)"/>
+
+      <text x="450" y="215" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="600" fill="var(--color-text, #0f172a)">[Fructose] nội bào</text>
+      <path d="M 270 210 L 630 210" fill="none" stroke="#d97706" stroke-width="2" marker-end="url(#arrCarb)"/>
+
+      {/* Màng Đáy Bên (Basolateral Membrane) */}
+      {/* Kênh GLUT2 */}
+      <rect x="638" y="130" width="24" height="70" rx="6" fill="#059669"/>
+      <text x="650" y="170" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" fill="#ffffff" font-weight="800">GLUT2</text>
+      <text x="770" y="150" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="#059669">Glucose, Galactose, Fructose ►</text>
+      <text x="770" y="168" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">Khuếch tán thuận hóa ra dịch kẽ</text>
+      <text x="770" y="184" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="#059669">Vào mao mạch tĩnh mạch cửa</text>
+
+      {/* Bơm Na+/K+ ATPase màng đáy (Động lực học) */}
+      <rect x="638" y="240" width="24" height="45" rx="6" fill="#0284c7"/>
+      <text x="650" y="267" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" fill="#ffffff" font-weight="800">NaK</text>
+      <text x="770" y="255" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="600" fill="#0284c7">3 Na⁺ ra máu / 2 K⁺ vào trong</text>
+      <text x="770" y="272" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text-muted, #64748b)">Tạo gradient nồng độ Na⁺ dốc cho SGLT1</text>
+
+      {/* Chú thích chân sơ đồ */}
+      <text x="450" y="310" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-style="italic" fill="var(--color-text-muted, #64748b)">SGLT1: Ứng dụng trọng tâm trong Dung dịch Bù nước Điện giải Oresol (ORS)</text>
     </svg>
+  </div>
+  <div class="flowchart-editorial-legend">
+    <div class="legend-item"><span class="legend-dot blue"></span> SGLT1 (Đồng vận chuyển Na⁺-Glucose)</div>
+    <div class="legend-item"><span class="legend-dot amber"></span> GLUT5 (Khuếch tán Fructose)</div>
+    <div class="legend-item"><span class="legend-dot green"></span> GLUT2 (Xuất monosaccharide vào máu)</div>
   </div>
 </div>
 
-- **Kênh PepT1**: Hấp thu Di-peptide và Tri-peptide đồng vận chuyển với $ion H^+$. Tốc độ hấp thu đạm qua PepT1 nhanh hơn và hiệu quả hơn hấp thu từng acid amin tự do riêng lẻ.
-
-
 ---
 
-## 4. Cơ Chế Hấp Thu Lipid & Chylomicron
-Khác với đường và đạm đi trực tiếp vào máu tĩnh mạch cửa, **chất béo đi vào hệ bạch huyết**:
+## 3. Cơ Chế Phân Tử Hấp Thu Protein & Peptid
 
+Sau khi thức ăn giàu protein được phân cắt bởi Pepsin dạ dày và protease tụy (*Trypsin, Chymotrypsin, Carboxypeptidase*), các sản phẩm phân giải tiếp tục được peptidase gắn trên vi nhung mao chuyển hóa thành:
+- **Acid amin tự do (Free Amino Acids)**: Chiếm $30 – 40\%$.
+- **Di-peptide & Tri-peptide**: Chiếm tới **$60 – 70\%$** lượng đạm hấp thu.
 
 <div class="flowchart-card">
   <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: LÒNG RUỘT NON</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> ĐỐI SÁNH HAI CON ĐƯỜNG HẤP THU ĐẠM: PEPT1 (H⁺) VS CHẤT VẬN CHUYỂN AA (NA⁺)</div>
+    <span class="badge badge-blue">Pure Editorial SVG</span>
   </div>
   <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 386" width="880" height="386" xmlns="http://www.w3.org/2000/svg">
+    <svg class="flowchart-svg" viewBox="0 0 900 320" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrProt" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
         </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrGreenP" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
-        </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
         </marker>
       </defs>
 
-      {/* Single Node: LÒNG RUỘT NON */}
-      <rect x="186.25" y="20" width="507.5" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">LÒNG RUỘT NON</text>
-      <text x="210.25" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ▼ (Khuếch tán thụ động qua màng lipid kép vào tế bào)</text>
-      <line x1="440" y1="80" x2="440" y2="108" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: LƯỚI NỘI CHẤT TẾ BÀO BIỂU MÔ */}
-      <rect x="169.25" y="108" width="541.5" height="78" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="130" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">LƯỚI NỘI CHẤT TẾ BÀO BIỂU MÔ</text>
-      <text x="193.25" y="152" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ▼ (Bộ máy Golgi đóng gói cùng Cholesterol, Phospholipid &amp;</text>
-      <text x="193.25" y="170" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  Apoprotein B-48)</text>
-      <line x1="440" y1="186" x2="440" y2="214" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: HẠT CHYLOMICRON (Đường Kính 10 */}
-      <rect x="215" y="214" width="450" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="236" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">HẠT CHYLOMICRON (Đường Kính 100 – 500 nm)</text>
-      <text x="239" y="258" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ▼ (Xuất bào qua màng đáy bên)</text>
-      <line x1="440" y1="274" x2="440" y2="302" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: MAO MẠCH DƯỠNG CHẤP BẠCH HUYẾT */}
-      <rect x="215" y="302" width="450" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="324" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">MAO MẠCH DƯỠNG CHẤP BẠCH HUYẾT (LACTEALS)</text>
+      {/* Khối Trái: CON ĐƯỜNG PEPT1 (CHIẾM ƯU THẾ 60-70%) */}
+      <rect x="40" y="30" width="390" height="260" rx="14" fill="var(--color-surface, #ffffff)" stroke="#059669" stroke-width="2"/>
+      <rect x="40" y="30" width="390" height="34" rx="14" fill="#059669" fill-opacity="0.12"/>
+      <text x="235" y="53" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="13" fill="#059669">KÊNH PEPT1: DI-PEPTIDE &amp; TRI-PEPTIDE (60–70%)</text>
+
+      <text x="60" y="90" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="700" fill="var(--color-text, #0f172a)">• Cơ chế vận chuyển:</text>
+      <text x="185" y="90" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" fill="var(--color-text, #0f172a)">Đồng vận chuyển chủ động với H⁺</text>
+
+      <text x="60" y="115" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="700" fill="#059669">• Tốc độ hấp thu:</text>
+      <text x="180" y="115" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="600" fill="#059669">Nhanh hơn hấp thu acid amin đơn lẻ</text>
+
+      <text x="60" y="140" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="700" fill="var(--color-text, #0f172a)">• Động lực H⁺:</text>
+      <text x="155" y="140" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" fill="var(--color-text-muted, #64748b)">Cung cấp bởi bơm trao đổi Na⁺/H⁺ (NHE3)</text>
+
+      <line x1="60" y1="155" x2="410" y2="155" stroke="var(--color-border, #e2e8f0)" stroke-width="1"/>
+
+      <text x="60" y="180" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="700" fill="var(--color-text, #0f172a)">• Số phận nội bào:</text>
+      <text x="75" y="202" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">Peptidase bào tương phân cắt triệt để thành acid amin tự do</text>
+      <text x="75" y="222" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #64748b)">Không còn di/tri-peptide nguyên vẹn đi vào máu (trừ một số ít)</text>
+
+      <text x="60" y="255" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="#059669">Ứng dụng: Dược phẩm (Kháng sinh Beta-lactam, ACEi hấp thu qua PepT1)</text>
+
+      {/* Khối Phải: CON ĐƯỜNG ACID AMIN ĐƠN LẺ */}
+      <rect x="470" y="30" width="390" height="260" rx="14" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+      <rect x="470" y="30" width="390" height="34" rx="14" fill="var(--color-primary, #0284c7)" fill-opacity="0.12"/>
+      <text x="665" y="53" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="13" fill="var(--color-primary, #0284c7)">CÁC CHẤT VẬN CHUYỂN ACID AMIN (30–40%)</text>
+
+      <text x="490" y="90" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="700" fill="var(--color-text, #0f172a)">• Cơ chế vận chuyển:</text>
+      <text x="615" y="90" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" fill="var(--color-text, #0f172a)">Đồng vận chuyển chủ động với Na⁺ (hoặc không phụ thuộc)</text>
+
+      <text x="490" y="115" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="700" fill="var(--color-text, #0f172a)">• Các hệ vận chuyển chuyên biệt:</text>
+      <text x="505" y="138" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">- Hệ B (B0AT1): Acid amin trung tính</text>
+      <text x="505" y="156" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">- Hệ b0,+: Acid amin kiềm (Lysine, Arginine) &amp; Cysteine</text>
+      <text x="505" y="174" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">- Hệ X-AG: Acid amin acid (Aspartate, Glutamate)</text>
+
+      <line x1="490" y1="188" x2="840" y2="188" stroke="var(--color-border, #e2e8f0)" stroke-width="1"/>
+
+      <text x="490" y="210" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="700" fill="var(--color-primary, #0284c7)">• Xuất qua màng đáy bên:</text>
+      <text x="505" y="230" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">Khuếch tán thuận hóa vào dịch kẽ rồi vào tĩnh mạch cửa</text>
+
+      <text x="490" y="255" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="#d97706">Bệnh di truyền: Bệnh Hartnup (thiếu B0AT1) &amp; Cystinuria</text>
     </svg>
+  </div>
+  <div class="flowchart-editorial-legend">
+    <div class="legend-item"><span class="legend-dot green"></span> Kênh PepT1 (Ưu thế 60–70% đạm)</div>
+    <div class="legend-item"><span class="legend-dot blue"></span> Đồng vận chuyển Acid Amin / Na⁺</div>
+    <div class="legend-item"><span class="legend-dot amber"></span> Động lực bơm trao đổi NHE3</div>
   </div>
 </div>
 
+---
+
+## 4. Cơ Chế Hấp Thu Lipid & Sự Hình Thành Hạt Chylomicron
+
+Khác biệt căn bản nhất giữa hấp thu Lipid với Đường và Đạm là: **Chất béo không đi vào mao mạch máu mà đi vào Mao Mạch Dưỡng Chấp Bạch Huyết (*Lacteals*)**:
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> CHU TRÌNH HẤP THU &amp; XUẤT BÀO CHYLOMICRON VÀO MAO MẠCH DƯỠNG CHẤP BẠCH HUYẾT</div>
+    <span class="badge badge-blue">Pure Editorial SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 900 370" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrLipid" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreenL" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+      </defs>
+
+      {/* Node 1: Hạt Micelle tiếp cận màng đỉnh */}
+      <rect x="40" y="40" width="230" height="110" rx="14" fill="var(--color-surface, #ffffff)" stroke="#d97706" stroke-width="2"/>
+      <rect x="40" y="40" width="230" height="28" rx="14" fill="#d97706" fill-opacity="0.12"/>
+      <text x="155" y="59" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="12" fill="#d97706">1. HẠT MICELLE HỖN HỢP</text>
+      <text x="55" y="86" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600" fill="var(--color-text, #0f172a)">• Tiếp cận lớp nước tĩnh</text>
+      <text x="55" y="106" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #64748b)">Giải phóng FFA &amp; 2-MAG</text>
+      <text x="55" y="124" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="#059669" font-weight="600">Khuếch tán thụ động qua màng lipid</text>
+
+      {/* Vector 1 -> SER */}
+      <path d="M 270 95 L 335 95" fill="none" stroke="#d97706" stroke-width="2" marker-end="url(#arrLipid)"/>
+
+      {/* Node 2: Lưới nội chất hạt trơn (SER) */}
+      <rect x="340" y="40" width="240" height="110" rx="14" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+      <rect x="340" y="40" width="240" height="28" rx="14" fill="var(--color-primary, #0284c7)" fill-opacity="0.12"/>
+      <text x="460" y="59" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="12" fill="var(--color-primary, #0284c7)">2. LƯỚI NỘI CHẤT TRƠN (SER)</text>
+      <text x="355" y="86" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="var(--color-text, #0f172a)">• TÁI TỔNG HỢP TRIGLYCERIDE</text>
+      <text x="355" y="106" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #64748b)">FFA + 2-MAG $\rightarrow$ Triglyceride (TG)</text>
+      <text x="355" y="124" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #64748b)">Ester hóa Cholesterol $\rightarrow$ Chol. Ester</text>
+
+      {/* Vector 2 -> Golgi */}
+      <path d="M 580 95 L 645 95" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arrLipid)"/>
+
+      {/* Node 3: Bộ máy Golgi & Đóng gói */}
+      <rect x="650" y="40" width="220" height="110" rx="14" fill="var(--color-surface, #ffffff)" stroke="#059669" stroke-width="2"/>
+      <rect x="650" y="40" width="220" height="28" rx="14" fill="#059669" fill-opacity="0.12"/>
+      <text x="760" y="59" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="12" fill="#059669">3. BỘ MÁY GOLGI ĐÓNG GÓI</text>
+      <text x="665" y="86" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600" fill="var(--color-text, #0f172a)">• Gắn Apolipoprotein B-48</text>
+      <text x="665" y="106" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #64748b)">Bọc vỏ phospholipid + Apo B-48</text>
+      <text x="665" y="124" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="#059669" font-weight="700">Tạo hạt Chylomicron (100–500 nm)</text>
+
+      {/* Vector 3 -> Xuống Hạt Chylomicron & Xuất bào */}
+      <path d="M 760 150 L 760 205" fill="none" stroke="#059669" stroke-width="2" marker-end="url(#arrGreenL)"/>
+
+      {/* Node 4: Xuất bào qua màng đáy bên */}
+      <rect x="490" y="210" width="380" height="115" rx="14" fill="var(--color-surface, #ffffff)" stroke="#059669" stroke-width="2.5"/>
+      <rect x="490" y="210" width="380" height="28" rx="14" fill="#059669" fill-opacity="0.15"/>
+      <text x="680" y="229" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#059669">4. XUẤT BÀO &amp; TIẾP CẬN LACTEALS</text>
+      <text x="510" y="258" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="700" fill="#059669">• Chylomicron xuất bào qua màng đáy bên</text>
+      <text x="510" y="278" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">Kích thước quá lớn ($100 – 500\text{ nm}$) KHÔNG LỌT QUA ĐƯỢC</text>
+      <text x="510" y="296" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600" fill="#dc2626">màng đáy mao mạch máu thông thường</text>
+
+      {/* Vector 4 -> Mao mạch dưỡng chấp */}
+      <path d="M 490 265 L 340 265" fill="none" stroke="#0284c7" stroke-width="2.5" marker-end="url(#arrLipid)"/>
+
+      {/* Node 5: Mao Mạch Dưỡng Chấp Bạch Huyết (Lacteals) */}
+      <rect x="40" y="210" width="295" height="115" rx="14" fill="var(--color-surface, #ffffff)" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+      <rect x="40" y="210" width="295" height="28" rx="14" fill="var(--color-primary, #0284c7)" fill-opacity="0.12"/>
+      <text x="187" y="229" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-primary, #0284c7)">MAO MẠCH DƯỠNG CHẤP (LACTEALS)</text>
+      <text x="55" y="258" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="var(--color-primary, #0284c7)">• Khe hở liên bào rộng lớn</text>
+      <text x="55" y="278" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">Chylomicron đi thẳng vào dịch bạch huyết</text>
+      <text x="55" y="298" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #64748b)">Theo Ống ngực (Thoracic duct) đổ vào TM dưới đòn</text>
+    </svg>
+  </div>
+  <div class="flowchart-editorial-legend">
+    <div class="legend-item"><span class="legend-dot amber"></span> Hạt Micelle giải phóng lipid</div>
+    <div class="legend-item"><span class="legend-dot blue"></span> SER tái tổng hợp Triglyceride</div>
+    <div class="legend-item"><span class="legend-dot green"></span> Chylomicron xuất bào vào Lacteals</div>
+  </div>
+</div>
 
 ---
 
-## 5. Hấp Thu Nước, Sắt, Canxi & Oresol (ORS)
-- **Hấp Thu Nước ($7 – 8\text{ Lít/ngày}$)**: Di chuyển thụ động thẩm thấu theo sau sự hấp thu tích cực của $Na^+$, Glucose và Acid amin.
-- **Hấp Thu Sắt ($Fe^{2+}$)**: Xảy ra chủ yếu tại **Tá tràng** qua kênh **DMT1** (Vitamin C giúp khử $Fe^{3+} \rightarrow Fe^{2+}$ dễ hấp thu hơn).
-- **Hấp Thu Canxi ($Ca^{2+}$)**: Xảy ra tại Tá tràng qua kênh **TRPV6** và protein vận chuyển nội bào **Calbindin** (được tổng hợp nhờ **Vitamin $D_3$ hoạt tính $1,25\text{-(OH)}_2\text{-D}_3$**).
+## 5. Hấp Thu Nước, Sắt, Canxi & Nguyên Lý Cứu Mạng Của Oresol (ORS)
 
+### 1. Phân bố vị trí hấp thu chuyên biệt trên các đoạn ruột
+| Vị trí ruột | Dưỡng chất hấp thu chọn lọc chính | Cơ chế chuyên biệt |
+|---|---|---|
+| **Tá tràng (Duodenum)** | **Sắt ($Fe^{2+}$)**, **Canxi ($Ca^{2+}$)** | Kênh DMT1 (cần Vit C khử $Fe^{3+}$); Kênh TRPV6 + Calbindin (kích hoạt bởi Vit $D_3$) |
+| **Hỗng tràng (Jejunum)** | Carbohydrate, Amino acid, **Acid Folic**, phần lớn Nước/Điện giải | SGLT1, PepT1, GLUT2, Bơm NHE3 |
+| **Hồi tràng (Ileum)** | **Vitamin $B_{12}$** (phức hợp với Yếu tố nội IF), **Muối mật** | Thụ thể Cubilin tại hồi tràng; Đồng vận ASBT thu hồi 95% muối mật |
 
-  - **Cơ chế tiêu chảy mất nước do Tả (*Vibrio cholerae*)**: Độc tố Tả gắn vào thụ thể $GM_1$ kích hoạt tăng vọt $cAMP$ nội bào $\rightarrow$ Mở toang kênh $CFTR$ bài xuất ồ ạt ion $Cl^-$ và nước ra lòng ruột ($> 1\text{ Lít nước/giờ}$).
-  - **Giải pháp Oresol**: Kênh đồng vận chuyển **SGLT1 hoàn toàn không bị ảnh hưởng bởi $cAMP$**. Uống dung dịch ORS chứa đúng tỷ lệ $Na^+$ và Glucose ($75\text{ mmol/L } Na^+ + 75\text{ mmol/L Glucose}$) sẽ kích hoạt SGLT1 kéo $Na^+$ và Glucose ồ ạt vào tế bào, kéo theo lượng nước khổng lồ hấp thu ngược trở lại tuần hoàn, chặn đứng nguy cơ tử vong do sốc giảm thể tích.
+### 2. Nguyên lý khoa học của Dung dịch Bù nước Điện giải Oresol (ORS) trong dịch Tả
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> ĐỐI SÁNH: ĐỘC TỐ TẢ GÂY MẤT NƯỚC VS CƠ CHẾ CỨU MẠNG BẰNG ORESOL (ORS)</div>
+    <span class="badge badge-blue">Pure Editorial SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 900 330" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrRedORS" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+        <marker id="arrGreenORS" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+      </defs>
+
+      {/* Cột Trái: ĐỘC TỐ VI KHUẨN TẢ */}
+      <rect x="40" y="30" width="390" height="270" rx="14" fill="var(--color-surface, #ffffff)" stroke="#dc2626" stroke-width="2"/>
+      <rect x="40" y="30" width="390" height="34" rx="14" fill="#dc2626" fill-opacity="0.12"/>
+      <text x="235" y="53" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="13" fill="#dc2626">CƠ CHẾ TIÊU CHẢY DO TẢ (CHOLERA)</text>
+
+      <text x="60" y="90" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="700" fill="var(--color-text, #0f172a)">1. Độc tố Tả (Cholera Toxin):</text>
+      <text x="75" y="110" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #64748b)">Tiểu phần A gắn thụ thể GM1, ADP-ribosyl hóa protein Gs</text>
+
+      <text x="60" y="135" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="700" fill="#dc2626">2. Khóa thụ thể Gs ở trạng thái BẬT liên tục:</text>
+      <text x="75" y="155" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600" fill="#dc2626">Kích hoạt Adenylyl cyclase $\rightarrow$ cAMP tăng vọt gấp bội</text>
+
+      <line x1="60" y1="170" x2="410" y2="170" stroke="var(--color-border, #e2e8f0)" stroke-width="1"/>
+
+      <text x="60" y="195" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="700" fill="#dc2626">3. Mở toang kênh Cl⁻ CFTR tại hốc Lieberkühn:</text>
+      <text x="75" y="215" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">Cl⁻ thoát ồ ạt ra lòng ruột kéo theo Na⁺ và nước</text>
+
+      <text x="60" y="245" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="800" fill="#dc2626">HỆ QUẢ: Tiêu chảy xối xả (&gt; 1 L/h) dạng "nước vo gạo"</text>
+      <text x="75" y="265" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-style="italic" fill="var(--color-text-muted, #64748b)">Tử vong nhanh do sốc giảm thể tích và toan chuyển hóa</text>
+
+      {/* Cột Phải: NGUYÊN LÝ CỨU MẠNG CỦA ORS */}
+      <rect x="470" y="30" width="390" height="270" rx="14" fill="var(--color-surface, #ffffff)" stroke="#059669" stroke-width="2"/>
+      <rect x="470" y="30" width="390" height="34" rx="14" fill="#059669" fill-opacity="0.12"/>
+      <text x="665" y="53" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="13" fill="#059669">GIẢI PHÁP ĐỒNG VẬN SGLT1 CỦA ORESOL</text>
+
+      <text x="490" y="90" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="700" fill="#059669">1. Kênh SGLT1 HOÀN TOÀN KHÔNG BỊ cAMP ẢNH HƯỞNG:</text>
+      <text x="505" y="110" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #64748b)">SGLT1 hoạt động độc lập với kênh bài tiết CFTR</text>
+
+      <text x="490" y="135" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="700" fill="var(--color-text, #0f172a)">2. Cung cấp tỷ lệ chuẩn Glucose : Natri (1 : 1):</text>
+      <text x="505" y="155" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600" fill="#059669">75 mmol/L Glucose + 75 mmol/L Na⁺ (245 mOsm/L)</text>
+
+      <line x1="490" y1="170" x2="840" y2="170" stroke="var(--color-border, #e2e8f0)" stroke-width="1"/>
+
+      <text x="490" y="195" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="700" fill="#059669">3. Kéo ngược Na⁺ &amp; Nước vào tuần hoàn:</text>
+      <text x="505" y="215" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">Mỗi phân tử Glucose kéo theo 2 Na⁺, tạo áp suất thẩm thấu</text>
+
+      <text x="490" y="245" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="800" fill="#059669">KẾT QUẢ: Kéo ồ ạt nước hấp thu ngược vào lòng mạch</text>
+      <text x="505" y="265" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-style="italic" fill="var(--color-text-muted, #64748b)">Chặn đứng sốc giảm thể tích, cứu sống hàng triệu trẻ em mỗi năm</text>
+    </svg>
+  </div>
+  <div class="flowchart-editorial-legend">
+    <div class="legend-item"><span class="legend-dot red"></span> Độc tố Tả kích hoạt mở kênh CFTR</div>
+    <div class="legend-item"><span class="legend-dot green"></span> Đồng vận SGLT1 cứu mạng của Oresol</div>
+  </div>
+</div>
+
+---
 
 ## 6. Tài Liệu Tham Khảo EBM
+
 <div class="citation-box">
   <ol style="margin: 0; padding-left: 1.25rem; line-height: 1.8; color: var(--color-text-muted, #475569); font-size: 0.88rem;">
-    <li><strong>Hall, J. E., & Hall, M. E. (2021)</strong>. <em>Guyton and Hall Textbook of Medical Physiology</em> (14th ed.). Philadelphia: Elsevier. Chapter 65: Digestion and Absorption in the Gastrointestinal Tract.</li>
-    <li><strong>Barrett, K. E. et al. (2019)</strong>. <em>Ganong's Review of Medical Physiology</em> (26th ed.). New York: McGraw-Hill. Chapter 26: Gastrointestinal Secretion & Absorption.</li>
-    <li><strong>Wright, E. M., Loo, D. D., & Hirayama, B. A. (2011)</strong>. <em>Biology of human sodium glucose transporters</em>. Physiological Reviews, 91(2), 733-794.</li>
-    <li><strong>World Health Organization (2006)</strong>. <em>The treatment of diarrhoea: a manual for physicians and other senior health workers</em> (4th rev.). World Health Organization.</li>
+    <li><strong>Hall, J. E., & Hall, M. E. (2021)</strong>. <em>Guyton and Hall Textbook of Medical Physiology</em> (14th ed.). Philadelphia: Elsevier. Chapter 64: Motility of the Alimentary Tract & Chapter 65: Digestion and Absorption in the Gastrointestinal Tract.</li>
+    <li><strong>Barrett, K. E., Barman, S. M., Brooks, H. L., & Yuan, J. X. J. (2019)</strong>. <em>Ganong's Review of Medical Physiology</em> (26th ed.). New York: McGraw-Hill. Chapter 26: Gastrointestinal Secretion and Absorption.</li>
+    <li><strong>Wright, E. M., Loo, D. D., & Hirayama, B. A. (2011)</strong>. <em>Biology of human sodium glucose transporters</em>. Physiological Reviews, 91(2), 733-794. DOI: 10.1152/physrev.00055.2009.</li>
+    <li><strong>World Health Organization (2006)</strong>. <em>The treatment of diarrhoea: a manual for physicians and other senior health workers</em> (4th rev.). World Health Organization. ISBN 9789241593182.</li>
+    <li><strong>Daniel, H. (2004)</strong>. <em>Molecular and integrative physiology of intestinal peptide transport</em>. Annual Review of Physiology, 66, 361-384. DOI: 10.1146/annurev.physiol.66.032102.150242.</li>
   </ol>
 </div>
-
 
 {/* HÀNG NÚT ĐIỀU HƯỚNG SPA */}
 <div class="btn-row">

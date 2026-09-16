@@ -49,26 +49,33 @@ sections:
 
 # 🧬 SINH LÝ TUẦN HOÀN THAI NHI & CHUYỂN TIẾP SƠ SINH
 
+<div class="module-badge-group">
+  <span class="badge badge-purple"><i class="fa-solid fa-book-medical"></i> GP-SL Part 9 • Nhi Khoa</span>
+  <span class="badge badge-blue"><i class="fa-solid fa-baby"></i> Tuần Hoàn Sơ Sinh & Thai Nhi</span>
+  <span class="badge badge-green"><i class="fa-solid fa-code-branch"></i> 3 Luồng Thông Sinh Lý (DV - FO - DA)</span>
+  <span class="badge badge-amber"><i class="fa-solid fa-heart-circle-bolt"></i> Chuyển Tiếp Chu Sinh EBM</span>
+</div>
+
 <PhysioQuickNav />
 
 {/* DẢI CHỈ SỐ NHANH (QUICK STATS STRIP) */}
-<section class="stats-strip">
+<section class="stats-strip theme-physio">
   <div class="stats-grid">
     <div class="stat-card">
-      <div class="stat-val blue">PHYS-PED-02</div>
-      <div class="stat-lbl">Mã chuyên đề • Sinh Lý Học Nhi Khoa</div>
+      <div class="stat-val blue">3 Shunts</div>
+      <div class="stat-lbl">DV (Tĩnh mạch) • FO (Bầu dục) • DA (Động mạch)</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val green">Nội Môi Ổn Định</div>
-      <div class="stat-lbl">Cân bằng gradient điện hóa & Áp suất thẩm thấu</div>
+      <div class="stat-val green">PVR ↓ 80%</div>
+      <div class="stat-lbl">Sụt giảm sức cản phổi ngay sau nhịp thở đầu đời</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val amber">Feedback Loop</div>
-      <div class="stat-lbl">Vòng điều hòa phản hồi thần kinh - thể dịch</div>
+      <div class="stat-val amber">10 – 15h</div>
+      <div class="stat-lbl">Thời gian đóng chức năng ống động mạch (DA)</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val purple">Dược Lý EBM</div>
-      <div class="stat-lbl">Ứng dụng lâm sàng chuẩn Guyton 14th & Ganong 26th</div>
+      <div class="stat-val purple">COX-Inhibitor</div>
+      <div class="stat-lbl">Indomethacin/Ibuprofen đóng PDA vs PGE1 giữ mở</div>
     </div>
   </div>
 </section>
@@ -76,16 +83,18 @@ sections:
 ---
 
 ## 1. Sơ Đồ Tuần Hoàn Thai Nhi & 3 Shunts
-Trong buồng ối tử cung, **Bánh nhau (Placenta)** đảm nhận hoàn toàn chức năng hô hấp, dinh dưỡng và bài tiết thay cho phổi và thận của thai nhi:
-
+Trong buồng ối tử cung, **Bánh nhau (Placenta)** đảm nhận hoàn toàn chức năng hô hấp, dinh dưỡng và bài tiết thay cho phổi và thận của thai nhi. Máu giàu oxy ($SaO_2 \approx 80\%$, $PO_2 \approx 30-35\text{ mmHg}$) từ bánh nhau di chuyển qua 3 luồng thông sinh lý chuyên biệt để ưu tiên tưới máu cho Não và Tim:
 
 <div class="flowchart-card">
   <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: BÁNH NHAU (Máu bão hòa Oxy cao nhất: SaO2 80%, PO2 30 – 35 mmHg)</div>
+    <div class="flowchart-title">
+      <i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i>
+      SƠ ĐỒ HUYẾT ĐỘNG THAI NHI: 3 LUỒNG THÔNG SINH LÝ (SHUNTS)
+    </div>
     <span class="badge badge-blue">Pure Orthogonal SVG</span>
   </div>
   <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 712" width="880" height="712" xmlns="http://www.w3.org/2000/svg">
+    <svg class="flowchart-svg" viewBox="0 0 920 620" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
@@ -99,56 +108,87 @@ Trong buồng ối tử cung, **Bánh nhau (Placenta)** đảm nhận hoàn toà
         <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
         </marker>
+        <marker id="arrPurple" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#7c3aed"/>
+        </marker>
       </defs>
 
-      {/* Single Node: BÁNH NHAU (Máu bão hòa Oxy cao */}
-      <rect x="145" y="20" width="590" height="78" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">BÁNH NHAU (Máu bão hòa Oxy cao nhất: SaO2 80%, PO2 30 –</text>
-      <text x="440" y="60" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--color-text, #0f172a)">35 mmHg)</text>
-      <text x="169" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ▼ (TĨNH MẠCH RỐN - 1 Tĩnh Mạch Rốn duy nhất)</text>
-      <line x1="440" y1="98" x2="440" y2="126" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: ỐNG TĨNH MẠCH (DUCTUS VENOSUS  */}
-      <rect x="220" y="126" width="440" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="148" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">ỐNG TĨNH MẠCH (DUCTUS VENOSUS - SHUNT 1)</text>
-      {/* Bifurcation Path */}
-      <path d="M 440 172 L 440 186 L 235 186 L 235 200" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      <path d="M 440 186 L 645 186 L 645 200" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Left Column: TÂM NHĨ PHẢI */}
-      <rect x="40" y="200" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="235" y="222" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">TÂM NHĨ PHẢI</text>
-      <line x1="60" y1="236" x2="410" y2="236" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="60" y="252" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• (Máu tĩnh mạch từ SVC trộn vào</text>
-      {/* Right Column: LỖ BẦU DỤC (FORAMEN OVALE - SH */}
-      <rect x="450" y="200" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="645" y="222" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">LỖ BẦU DỤC (FORAMEN OVALE - SHUNT</text>
-      <text x="645" y="240" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">2)</text>
-      <line x1="470" y1="254" x2="820" y2="254" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="470" y="270" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Nhĩ Phải) ▼</text>
-      <line x1="440" y1="290" x2="440" y2="318" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: TÂM NHĨ TRÁI ──► TÂM THẤT TRÁI */}
-      <rect x="250" y="318" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="340" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">TÂM NHĨ TRÁI ──► TÂM THẤT TRÁI</text>
-      <line x1="440" y1="364" x2="440" y2="392" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: TÂM THẤT PHẢI ──► ĐỘNG MẠCH PH */}
-      <rect x="250" y="392" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="414" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">TÂM THẤT PHẢI ──► ĐỘNG MẠCH PHỔI</text>
-      <line x1="440" y1="438" x2="440" y2="466" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: ĐỘNG MẠCH CHỦ LÊN */}
-      <rect x="250" y="466" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="488" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">ĐỘNG MẠCH CHỦ LÊN</text>
-      <line x1="440" y1="512" x2="440" y2="540" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: ỐNG ĐỘNG MẠCH (DUCTUS ARTERIOS */}
-      <rect x="205" y="540" width="470" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="562" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">ỐNG ĐỘNG MẠCH (DUCTUS ARTERIOSUS - SHUNT 3)</text>
-      <line x1="440" y1="586" x2="440" y2="614" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: ĐỘNG MẠCH CHỦ XUỐNG ──► 2 ĐỘNG */}
-      <rect x="145" y="614" width="590" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="636" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">ĐỘNG MẠCH CHỦ XUỐNG ──► 2 ĐỘNG MẠCH RỐN ──► TRỞ VỀ BÁNH</text>
-      <text x="440" y="654" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--color-text, #0f172a)">NHAU ĐỂ TRAO ĐỔI OXY</text>
+      {/* Origin: Placenta */}
+      <rect x="300" y="16" width="320" height="54" rx="12" fill="var(--color-surface-2, #f8fafc)" stroke="#dc2626" stroke-width="2"/>
+      <text x="460" y="38" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="13" fill="#dc2626">BÁNH NHAU (PLACENTA)</text>
+      <text x="460" y="56" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">Nguồn trao đổi khí duy nhất • SaO2 80% • PO2 30–35 mmHg</text>
+
+      {/* Umbilical Vein */}
+      <path d="M 460 70 L 460 102" fill="none" stroke="#dc2626" stroke-width="2.5" marker-end="url(#arrRed)"/>
+      <text x="475" y="90" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="#dc2626">1 Tĩnh Mạch Rốn (Giàu O2)</text>
+
+      {/* Shunt 1: Ductus Venosus */}
+      <rect x="250" y="104" width="420" height="60" rx="12" fill="var(--color-surface-2, #f8fafc)" stroke="#7c3aed" stroke-width="2"/>
+      <text x="460" y="127" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#7c3aed">SHUNT 1: ỐNG TĨNH MẠCH (DUCTUS VENOSUS - DV)</text>
+      <text x="460" y="148" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">Đi tắt qua gan 50–60% máu giàu O2 đổ thẳng vào Tĩnh Mạch Chủ Dưới (IVC)</text>
+
+      {/* Down to RA */}
+      <path d="M 460 164 L 460 196" fill="none" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrPurple)"/>
+      <text x="475" y="184" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">IVC (Trộn máu chi dưới)</text>
+
+      {/* Central Heart Split: RA */}
+      <rect x="260" y="198" width="400" height="50" rx="12" fill="var(--color-surface-2, #f8fafc)" stroke="#0284c7" stroke-width="2"/>
+      <text x="460" y="220" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="13" fill="#0284c7">TÂM NHĨ PHẢI (RIGHT ATRIUM - RA)</text>
+      <text x="460" y="238" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">Phân luồng bởi van Eustachian: Luồng ưu tiên vs Luồng thứ cấp</text>
+
+      {/* Left Branch: Shunt 2 FO */}
+      <path d="M 330 248 L 330 286 L 190 286 L 190 310" fill="none" stroke="#059669" stroke-width="2" marker-end="url(#arrGreen)"/>
+      <text x="210" y="280" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="#059669">Luồng 1 (1/3 máu giàu O2)</text>
+
+      {/* Right Branch: RV */}
+      <path d="M 590 248 L 590 286 L 730 286 L 730 310" fill="none" stroke="#0284c7" stroke-width="2" marker-end="url(#arrBlue)"/>
+      <text x="610" y="280" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="#0284c7">Luồng 2 (2/3 máu + máu SVC)</text>
+
+      {/* Card Left: Shunt 2 Foramen Ovale */}
+      <rect x="30" y="312" width="320" height="96" rx="12" fill="var(--color-surface-2, #f8fafc)" stroke="#059669" stroke-width="1.8"/>
+      <text x="190" y="334" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#059669">SHUNT 2: LỖ BẦU DỤC (FORAMEN OVALE - FO)</text>
+      <line x1="45" y1="344" x2="335" y2="344" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="50" y="362" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Nhĩ Phải ──► Bắn thẳng sang Nhĩ Trái (LA)</text>
+      <text x="50" y="380" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Nhĩ Trái ──► Thất Trái (LV) ──► ĐMC Lên</text>
+      <text x="50" y="398" font-family="'Plus Jakarta Sans', font-weight="700" font-size="10" fill="#059669">➔ Ưu tiên tưới VÀNH TIM & NÃO BỘ (SaO2 ~65%)</text>
+
+      {/* Card Right: RV to PA */}
+      <rect x="570" y="312" width="320" height="96" rx="12" fill="var(--color-surface-2, #f8fafc)" stroke="#0284c7" stroke-width="1.8"/>
+      <text x="730" y="334" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#0284c7">THẤT PHẢI &amp; ĐỘNG MẠCH PHỔI</text>
+      <line x1="585" y1="344" x2="875" y2="344" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="590" y="362" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Nhĩ Phải ──► Van 3 lá ──► Thất Phải (RV)</text>
+      <text x="590" y="380" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• RV bơm vào Thân Động Mạch Phổi (MPA)</text>
+      <text x="590" y="398" font-family="'Plus Jakarta Sans', font-weight="700" font-size="10" fill="#d97706">➔ Phổi thai nhi xẹp, PVR cực cao (chỉ 10% vào phổi)</text>
+
+      {/* Shunt 3 Ductus Arteriosus */}
+      <path d="M 730 408 L 730 446 L 560 446" fill="none" stroke="#d97706" stroke-width="2" marker-end="url(#arrAmber)"/>
+      <rect x="360" y="424" width="200" height="44" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="#d97706" stroke-width="1.8"/>
+      <text x="460" y="442" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#d97706">SHUNT 3: ỐNG ĐỘNG MẠCH</text>
+      <text x="460" y="458" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Ductus Arteriosus (DA - 90% dòng RV)</text>
+
+      {/* Merge to Descending Aorta */}
+      <path d="M 190 408 L 190 490 L 360 490" fill="none" stroke="#059669" stroke-width="2"/>
+      <path d="M 460 468 L 460 490" fill="none" stroke="#d97706" stroke-width="2"/>
+      <path d="M 360 490 L 560 490" fill="none" stroke="#dc2626" stroke-width="2" marker-end="url(#arrRed)"/>
+
+      <rect x="260" y="492" width="400" height="54" rx="12" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="460" y="514" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">ĐỘNG MẠCH CHỦ XUỐNG (DESCENDING AORTA)</text>
+      <text x="460" y="534" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">Cấp máu cho tạng bụng, chi dưới (SaO2 ~55–60%)</text>
+
+      {/* Return to Placenta via 2 Umbilical Arteries */}
+      <path d="M 460 546 L 460 574" fill="none" stroke="#dc2626" stroke-width="2" marker-end="url(#arrRed)"/>
+      <rect x="280" y="576" width="360" height="34" rx="8" fill="var(--red-bg, #fef2f2)" stroke="#dc2626" stroke-width="1.5"/>
+      <text x="460" y="598" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#dc2626">2 ĐỘNG MẠCH RỐN ──► TRỞ VỀ BÁNH NHAU THẢI CO2 &amp; CHẤT THẢI</text>
     </svg>
   </div>
-</div>
 
+  <div class="flowchart-editorial-legend">
+    <div class="legend-item"><span class="legend-dot dot-purple"></span> Shunt 1: Ductus Venosus (Tĩnh Mạch)</div>
+    <div class="legend-item"><span class="legend-dot dot-green"></span> Shunt 2: Foramen Ovale (Lỗ Bầu Dục)</div>
+    <div class="legend-item"><span class="legend-dot dot-amber"></span> Shunt 3: Ductus Arteriosus (Ống ĐM)</div>
+    <div class="legend-item"><span class="legend-dot dot-blue"></span> Huyết động Phổi &amp; SVR</div>
+  </div>
+</div>
 
 ---
 
@@ -159,42 +199,81 @@ Trong buồng ối tử cung, **Bánh nhau (Placenta)** đảm nhận hoàn toà
 | **Sức cản mạch máu Hệ Thống (SVR)** | **RẤT THẤP** (Do bánh nhau là một hồ máu có trở kháng mạch cực kỳ thấp). | **TĂNG VỌT GẤP ĐÔI** (Do kẹp cắt dây rốn loại bỏ hoàn toàn tuần hoàn bánh nhau). |
 | **Áp lực buồng tim** | **Áp lực Tim Phải > Áp lực Tim Trái** ($RA > LA; RV > LV$). | **Áp lực Tim Trái > Áp lực Tim Phải** ($LA > RA; LV > RV$). |
 
-
 ---
 
 ## 3. Tiếng Khóc Đầu Đời & Chuyển Tiếp Sau Sinh
+Khoảnh khắc chào đời với tiếng khóc đầu tiên và việc kẹp cắt rốn tạo nên một cuộc cách mạng huyết động học toàn diện:
+
 <div class="flowchart-card">
   <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: TIẾNG KHÓC CHÀO ĐỜI &amp; NHỊP THỞ ĐẦU TIÊN CỦA TRẺ</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+    <div class="flowchart-title">
+      <i class="fa-solid fa-bolt" style="color: var(--color-warning, #d97706);"></i>
+      CHU TRÌNH CHUYỂN TIẾP TUẦN HOÀN SƠ SINH: 3 CƠ CHẾ SỐNG CÒN
+    </div>
+    <span class="badge badge-amber">3-Pillar Editorial Vector</span>
   </div>
   <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 226" width="880" height="226" xmlns="http://www.w3.org/2000/svg">
+    <svg class="flowchart-svg" viewBox="0 0 920 340" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrBlue3" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
         </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrGreen3" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
         </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrAmber3" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
         </marker>
       </defs>
 
-      {/* Single Node: TIẾNG KHÓC CHÀO ĐỜI &amp; NHỊP THỞ */}
-      <rect x="156.5" y="20" width="567" height="168" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">TIẾNG KHÓC CHÀO ĐỜI &amp; NHỊP THỞ ĐẦU TIÊN CỦA TRẺ</text>
-      <text x="180.5" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ├── 1. Khí tràn vào phế nang tống đẩy dịch phổi ra ngoài ──►</text>
-      <text x="180.5" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  PHỔI NỞ TOÀN BỘ</text>
-      <text x="180.5" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ├── 2. Nồng độ Oxy phế nang tăng cao (PaO2 tăng từ 25 lên</text>
-      <text x="180.5" y="118" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  100 mmHg)</text>
-      <text x="180.5" y="136" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ──► Loại bỏ bánh nhau ──► Sức cản hệ thống SVR tăng cao</text>
-      <text x="180.5" y="154" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ──► Máu từ Tĩnh mạch rốn ngừng chảy ──► Áp lực Nhĩ Phải giảm</text>
-      <text x="180.5" y="172" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  thấp</text>
+      {/* Top Banner: First Cry & Cord Clamping */}
+      <rect x="160" y="16" width="600" height="46" rx="12" fill="var(--color-surface-2, #f8fafc)" stroke="#d97706" stroke-width="2"/>
+      <text x="460" y="36" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="13" fill="#d97706">TIẾNG KHÓC ĐẦU TIÊN &amp; KẸP CẮT RỐN (CHUYỂN TIẾP CHU SINH)</text>
+      <text x="460" y="52" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">Kích hoạt đồng thời 3 chuỗi phản ứng huyết động học tách biệt</text>
+
+      {/* Branch Lines */}
+      <path d="M 460 62 L 460 76 L 165 76 L 165 96" fill="none" stroke="#0284c7" stroke-width="2" marker-end="url(#arrBlue3)"/>
+      <path d="M 460 62 L 460 96" fill="none" stroke="#059669" stroke-width="2" marker-end="url(#arrGreen3)"/>
+      <path d="M 460 62 L 460 76 L 755 76 L 755 96" fill="none" stroke="#d97706" stroke-width="2" marker-end="url(#arrAmber3)"/>
+
+      {/* Pillar 1: Respiratory & PVR */}
+      <rect x="20" y="98" width="290" height="210" rx="12" fill="var(--color-surface-2, #f8fafc)" stroke="#0284c7" stroke-width="1.8"/>
+      <rect x="20" y="98" width="290" height="36" rx="12" fill="var(--color-primary-light, #e0f2fe)"/>
+      <text x="165" y="121" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#0284c7">1. THÔNG KHÍ PHỔI &amp; PVR ↓</text>
+      <text x="35" y="152" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Khí tràn vào phế nang tống dịch ra</text>
+      <text x="35" y="172" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• $PaO_2$ tăng vọt từ 25 ➔ 100 mmHg</text>
+      <text x="35" y="192" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Phóng thích NO &amp; Prostacyclin ($PGI_2$)</text>
+      <text x="35" y="212" font-family="'Plus Jakarta Sans', font-weight="700" font-size="11" fill="#0284c7">➔ Giãn mạch máu phổi: PVR ↓ 80%</text>
+      <line x1="35" y1="226" x2="295" y2="226" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="35" y="246" font-family="'Plus Jakarta Sans', font-weight="800" font-size="11" fill="#0284c7">KẾT QUẢ HUYẾT ĐỘNG:</text>
+      <text x="35" y="266" font-family="'Plus Jakarta Sans', font-size="11" fill="var(--color-text-muted, #475569)">Áp lực buồng Thất Phải &amp; ĐMP giảm thấp</text>
+      <text x="35" y="286" font-family="'Plus Jakarta Sans', font-size="11" fill="var(--color-text-muted, #475569)">Máu lên phổi tăng vọt gấp 10 lần</text>
+
+      {/* Pillar 2: Cord Clamping & Foramen Ovale */}
+      <rect x="315" y="98" width="290" height="210" rx="12" fill="var(--color-surface-2, #f8fafc)" stroke="#059669" stroke-width="1.8"/>
+      <rect x="315" y="98" width="290" height="36" rx="12" fill="var(--green-bg, #ecfdf5)"/>
+      <text x="460" y="121" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#059669">2. KẸP RỐN &amp; ĐÓNG LỖ BẦU DỤC</text>
+      <text x="330" y="152" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Kẹp dây rốn: Cắt bỏ hồ máu bánh nhau</text>
+      <text x="330" y="172" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Sức cản hệ thống SVR tăng gấp đôi</text>
+      <text x="330" y="192" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Hồi lưu tĩnh mạch phổi về LA tăng vọt</text>
+      <text x="330" y="212" font-family="'Plus Jakarta Sans', font-weight="700" font-size="11" fill="#059669">➔ Áp lực Nhĩ Trái (LA) &gt; Nhĩ Phải (RA)</text>
+      <line x1="330" y1="226" x2="590" y2="226" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="330" y="246" font-family="'Plus Jakarta Sans', font-weight="800" font-size="11" fill="#059669">ĐÓNG LỖ BẦU DỤC (FO):</text>
+      <text x="330" y="266" font-family="'Plus Jakarta Sans', font-size="11" fill="var(--color-text-muted, #475569)">Vách nguyên phát ép chặt vào vách thứ phát</text>
+      <text x="330" y="286" font-family="'Plus Jakarta Sans', font-size="11" fill="var(--color-text-muted, #475569)">Đóng van cơ học ngay trong vài giây đầu</text>
+
+      {/* Pillar 3: Ductus Arteriosus Closure */}
+      <rect x="610" y="98" width="290" height="210" rx="12" fill="var(--color-surface-2, #f8fafc)" stroke="#d97706" stroke-width="1.8"/>
+      <rect x="610" y="98" width="290" height="36" rx="12" fill="var(--amber-bg, #fffbeb)"/>
+      <text x="755" y="121" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#d97706">3. CO THẮT ĐÓNG ỐNG ĐỘNG MẠCH</text>
+      <text x="625" y="152" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Oxy máu động mạch tăng cao ($PaO_2 \uparrow$)</text>
+      <text x="625" y="172" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Mất nguồn $PGE_2$ từ bánh nhau</text>
+      <text x="625" y="192" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Tăng giáng hóa Prostaglandin tại phổi</text>
+      <text x="625" y="212" font-family="'Plus Jakarta Sans', font-weight="700" font-size="11" fill="#d97706">➔ Co thắt cơ trơn thành ống động mạch</text>
+      <line x1="625" y1="226" x2="885" y2="226" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="625" y="246" font-family="'Plus Jakarta Sans', font-weight="800" font-size="11" fill="#d97706">TIẾN TRÌNH ĐÓNG (DA):</text>
+      <text x="625" y="266" font-family="'Plus Jakarta Sans', font-size="11" fill="var(--color-text-muted, #475569)">Đóng chức năng sau 10 – 15 giờ</text>
+      <text x="625" y="286" font-family="'Plus Jakarta Sans', font-size="11" fill="var(--color-text-muted, #475569)">Hóa xơ vĩnh viễn thành Dây chằng ĐM sau 2–3 tuần</text>
     </svg>
   </div>
 </div>
@@ -214,14 +293,34 @@ Trong buồng ối tử cung, **Bánh nhau (Placenta)** đảm nhận hoàn toà
 ---
 
 ## 5. Bệnh Lý Lâm Sàng: PDA & PPHN
-1. **Còn Ống Động Mạch (Patent Ductus Arteriosus - PDA)**:
-     - Thường gặp ở **trẻ sinh non** (do thành ống động mạch kém nhạy cảm với oxy và nồng độ $PGE_2$ lưu hành còn cao).
-     - Gây luồng thông **Trái $\rightarrow$ Phải** từ ĐMC sang ĐMP $\rightarrow$ Tăng gánh thể tích thất trái, phù phổi sung huyết, ruột thiếu máu gây viêm ruột hoại tử (NEC).
-     - *Điều trị*: Thuốc ức chế tổng hợp Prostaglandin (**Indomethacin hoặc Ibuprofen tiêm truyền**) giúp đóng ống.
-  2. **Tăng Áp Phổi Tồn Tại Ở Trẻ Sơ Sinh (PPHN)**:
-     - Thất bại trong việc sụt giảm sức cản mạch phổi sau sinh (do ngạt chu sinh, hít phân su MAS, nhiễm khuẩn huyết).
-     - Hậu quả: $PVR$ vẫn cao hơn $SVR \rightarrow$ **Tái lập luồng thông Phải $\rightarrow$ Trái qua Lỗ bầu dục và Ống động mạch** $\rightarrow$ Tím tái thiếu oxy máu nặng nề trơ với thở oxy.
-     - *Điều trị cấp cứu EBM*: **Thở khí Khí Nitric Oxide (iNO)** giãn chọn lọc mạch máu phổi kết hợp hồi sức thở máy cao tần HFOV.
+
+<div class="comparison-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem; margin: 1.5rem 0;">
+  <div class="card" style="border-left: 4px solid var(--color-warning, #d97706); background: var(--color-surface, #ffffff); border-radius: 12px; padding: 1.25rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
+      <span class="badge badge-amber"><i class="fa-solid fa-heart-crack"></i> Bệnh Học 1</span>
+      <h3 style="margin: 0; font-size: 1.05rem; font-weight: 700; color: var(--color-text, #0f172a);">Còn Ống Động Mạch (PDA)</h3>
+    </div>
+    <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.9rem; line-height: 1.6; color: var(--color-text, #0f172a);">
+      <li><strong>Đối tượng:</strong> Thường gặp ở <em>trẻ sinh non</em> do cơ trơn ống động mạch kém nhạy với O2 và mức $PGE_2$ máu còn cao.</li>
+      <li><strong>Huyết động:</strong> Shunt <strong>Trái ➔ Phải</strong> ($Ao \rightarrow PA$) do $SVR > PVR$ sau sinh.</li>
+      <li><strong>Hậu quả:</strong> Tăng gánh thể tích thất trái, phù phổi sung huyết, "ăn cắp máu" làm ruột thiếu máu gây viêm ruột hoại tử (NEC).</li>
+      <li><strong>Điều trị EBM:</strong> Thuốc ức chế COX (<strong>Indomethacin / Ibuprofen IV</strong>) giúp ĐÓNG ống; phẫu thuật/can thiệp bít dù nếu thất bại.</li>
+    </ul>
+  </div>
+
+  <div class="card" style="border-left: 4px solid var(--color-danger, #dc2626); background: var(--color-surface, #ffffff); border-radius: 12px; padding: 1.25rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
+      <span class="badge badge-red"><i class="fa-solid fa-triangle-exclamation"></i> Bệnh Học 2</span>
+      <h3 style="margin: 0; font-size: 1.05rem; font-weight: 700; color: var(--color-text, #0f172a);">Tăng Áp Phổi Tồn Tại Sơ Sinh (PPHN)</h3>
+    </div>
+    <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.9rem; line-height: 1.6; color: var(--color-text, #0f172a);">
+      <li><strong>Cơ chế:</strong> Thất bại sụt giảm PVR sau sinh (ngạt chu sinh, hít phân su MAS, nhiễm trùng huyết sơ sinh).</li>
+      <li><strong>Huyết động:</strong> $PVR$ duy trì mức cao vượt $SVR \rightarrow$ <strong>Tái lập shunt Phải ➔ Trái</strong> qua Lỗ Bầu Dục và Ống Động Mạch.</li>
+      <li><strong>Hậu quả:</strong> Máu nghèo O2 tràn vào tuần hoàn hệ thống $\rightarrow$ Tím tái nặng trơ với thở oxy 100%, chênh lệch $SpO_2$ trước/sau ống động mạch $> 10\%$.</li>
+      <li><strong>Điều trị EBM:</strong> <strong>Khí Nitric Oxide hít (iNO)</strong> giãn chọn lọc mạch phổi kết hợp thở máy cao tần HFOV &amp; ECMO.</li>
+    </ul>
+  </div>
+</div>
 
 ## 6. Tài Liệu Tham Khảo EBM
 <div class="citation-box">
