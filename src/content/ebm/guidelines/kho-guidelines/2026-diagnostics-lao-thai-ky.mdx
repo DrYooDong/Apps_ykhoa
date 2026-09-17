@@ -6,11 +6,11 @@ organization: "Diagnostics / WHO EBM"
 year: "2026"
 category: "guidelines"
 status: "published"
-version: "3.0.0"
-updatedAt: "2026-09-16"
+version: "3.1.0"
+updatedAt: "2026-09-17"
 cor: "I"
 loe: "A"
-description: "Tổng quan cập nhật EBM 2026 trên tạp chí Diagnostics về bệnh lao trong thai kỳ: dịch tễ học, biến chứng mẹ - thai, thuật toán chẩn đoán tích hợp, phác đồ hàng 1, quản lý lao kháng thuốc MDR-TB, đồng nhiễm HIV, lao bẩm sinh và chăm sóc chu sinh."
+description: "Tổng quan cập nhật EBM 2026 trên tạp chí Diagnostics về bệnh lao trong thai kỳ: dịch tễ học, biến chứng mẹ - thai, thuật toán chẩn đoán tích hợp 6 bước, phác đồ hàng 1, quản lý lao kháng thuốc MDR-TB, đồng nhiễm HIV, lao ngoài phổi, lao bẩm sinh và chăm sóc chu sinh."
 tags:
   - "Lao thai kỳ"
   - "Tuberculosis in Pregnancy"
@@ -52,7 +52,7 @@ sections:
     icon: "fa-solid fa-shield-virus"
   - id: "sec-sosinh-hauphu"
     number: 7
-    title: "Lao sơ sinh, Thời kỳ sau sinh & Ngừa thai"
+    title: "Lao ngoài phổi, Sơ sinh & Hậu sản"
     icon: "fa-solid fa-baby"
   - id: "sec-ebm-gaps"
     number: 8
@@ -75,7 +75,7 @@ sections:
     </div>
     <div class="stat-card">
       <div class="stat-val red">x4,2 lần</div>
-      <div class="stat-lbl">Gia tăng nguy cơ tử vong chu sinh do lao hoạt động trong thai kỳ</div>
+      <div class="stat-lbl">Gia tăng nguy cơ tử vong chu sinh do lao hoạt động trong thai kỳ (Sobhy et al.)</div>
     </div>
     <div class="stat-card">
       <div class="stat-val green">88%</div>
@@ -83,7 +83,7 @@ sections:
     </div>
     <div class="stat-card">
       <div class="stat-val amber">+95%</div>
-      <div class="stat-lbl">Tăng tỷ lệ mắc lao bùng phát trong 180 ngày đầu sau sinh (Postpartum)</div>
+      <div class="stat-lbl">Tăng tỷ lệ mắc lao bùng phát trong 180 ngày đầu sau sinh (Postpartum flare)</div>
     </div>
   </div>
 </section>
@@ -116,13 +116,13 @@ sections:
 
 <div class="quickmenu" id="quickmenu">
   <div class="quickmenu-inner">
-    <a href="#sec-dichte" class="quickmenu-item active">1. Dịch tễ</a>
+    <a href="#sec-dichte" class="quickmenu-item active">1. Dịch tễ &amp; PRISMA</a>
     <a href="#sec-sinhbenh-nguyco" class="quickmenu-item">2. Sinh bệnh &amp; Biến chứng</a>
     <a href="#sec-chandoan" class="quickmenu-item">3. Phương thức chẩn đoán</a>
-    <a href="#sec-luodo-chandoan" class="quickmenu-item">4. Lưu đồ tích hợp</a>
+    <a href="#sec-luodo-chandoan" class="quickmenu-item">4. Lưu đồ thuật toán 6 bước</a>
     <a href="#sec-dieutri-hang1" class="quickmenu-item">5. Phác đồ hàng 1</a>
     <a href="#sec-mdr-hiv" class="quickmenu-item">6. MDR-TB &amp; HIV</a>
-    <a href="#sec-sosinh-hauphu" class="quickmenu-item">7. Sơ sinh &amp; Hậu sản</a>
+    <a href="#sec-sosinh-hauphu" class="quickmenu-item">7. EPTB, Sơ sinh &amp; Hậu sản</a>
     <a href="#sec-ebm-gaps" class="quickmenu-item">8. Khuyến cáo &amp; Tham khảo</a>
   </div>
 </div>
@@ -133,7 +133,7 @@ sections:
   <div class="sec-card" id="sec-dichte">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">🌍</span>
-      <h2 class="sec-title">1. Dịch Tễ Học Toàn Cầu, Gánh Nặng Lao Thai Kỳ &amp; Phương Pháp Tổng Quan (PRISMA)</h2>
+      <h2 class="sec-title">1. Dịch Tễ Học Toàn Cầu, Gánh Nặng Lao Thai Kỳ &amp; Phương Pháp Tổng Quan (PRISMA 2020)</h2>
     </div>
     <div class="sec-body">
       
@@ -150,7 +150,7 @@ sections:
           <div class="update-card-accent" style="background: #0f6fb4;"></div>
           <div class="update-card-header">
             <div class="update-card-icon" style="background: #eff6ff; color: #0f6fb4;">👥</div>
-            <div class="update-card-title">Phân Bố Dân Số &amp; Địa Lý</div>
+            <div class="update-card-title">Phân Bố Dân Số &amp; 8 Quốc Gia Trọng Điểm</div>
           </div>
           <div class="update-card-body">
             <ul style="margin-left: 1rem; line-height: 1.7;">
@@ -179,50 +179,96 @@ sections:
         </div>
       </div>
 
-      <!-- FIGURE 1: PRISMA SELECTION PROCESS VISUAL DIAGRAM -->
-      <div style="margin-top: 1.5rem; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 8px; padding: 1.25rem;">
-        <h3 style="margin-top: 0; font-size: 1.05rem; color: var(--color-primary); display: flex; align-items: center; gap: 0.5rem;">
-          <i class="fa-solid fa-filter"></i> Sơ đồ PRISMA: Quy Trình Lựa Chọn Tài Liệu Tổng Quan (Figure 1)
-        </h3>
-        <p style="font-size: 0.9rem; color: var(--color-text-muted); margin-bottom: 1rem;">
-          Tổng quan tự sự (narrative review) thực hiện tìm kiếm trên cơ sở dữ liệu PubMed/MEDLINE, Scopus và Web of Science giai đoạn tháng 1/2000 – tháng 5/2026:
+      <!-- FIGURE 1: PRISMA 2020 SELECTION PROCESS VISUAL FLOW -->
+      <div style="margin-top: 1.75rem; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 8px; padding: 1.25rem;">
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.75rem;">
+          <h3 style="margin: 0; font-size: 1.05rem; color: var(--color-primary); display: flex; align-items: center; gap: 0.5rem;">
+            <i class="fa-solid fa-filter"></i> Figure 1. Lưu Đồ PRISMA 2020: Quy Trình Tuyển Chọn Tài Liệu Tổng Quan
+          </h3>
+          <span style="font-size: 0.75rem; background: rgba(2, 132, 199, 0.1); color: var(--color-primary); padding: 3px 8px; border-radius: 12px; font-weight: 600;">
+            PRISMA Flow Diagram
+          </span>
+        </div>
+        <p style="font-size: 0.88rem; color: var(--color-text-muted); margin-bottom: 1.25rem;">
+          Thiết kế tổng quan tự sự (narrative review) kết hợp thẩm định EBM phê phán trên cơ sở dữ liệu PubMed/MEDLINE, Scopus và Web of Science giai đoạn tháng 1/2000 – tháng 5/2026:
         </p>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem;">
-          <div style="background: var(--color-bg); border-left: 4px solid #0284c7; padding: 0.75rem; border-radius: 4px;">
-            <div style="font-weight: 600; color: #0284c7;">1. Nhận diện (Identification)</div>
-            <div style="font-size: 0.85rem; margin-top: 0.25rem;">
-              • Databases: n = 2<br />
-              • Registers: n = 131<br />
-              • Tổ chức quốc tế: n = 17<br />
-              <em>Loại n = 7 trùng lặp, n = 32 lý do khác</em>
+        <!-- PRISMA VISUAL PIPELINE -->
+        <div style="display: flex; flex-direction: column; gap: 1rem;">
+          
+          <!-- BƯỚC 1: IDENTIFICATION -->
+          <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1rem;">
+            <div style="background: rgba(2, 132, 199, 0.06); border: 1px solid #0284c7; border-left: 5px solid #0284c7; padding: 0.85rem; border-radius: 6px;">
+              <div style="font-weight: 700; color: #0284c7; font-size: 0.9rem; display: flex; align-items: center; gap: 0.4rem;">
+                <i class="fa-solid fa-magnifying-glass"></i> 1. NHẬN DIỆN (IDENTIFICATION)
+              </div>
+              <div style="font-size: 0.85rem; margin-top: 0.4rem; line-height: 1.6;">
+                • Cơ sở dữ liệu điện tử (Databases): <strong>n = 2</strong><br />
+                • Sổ bộ đăng ký nghiên cứu (Registers): <strong>n = 131</strong><br />
+                • Tài liệu từ tổ chức quốc tế (WHO, CDC...): <strong>n = 17</strong>
+              </div>
+            </div>
+            <div style="background: rgba(239, 68, 68, 0.05); border: 1px dashed #ef4444; border-left: 4px solid #ef4444; padding: 0.85rem; border-radius: 6px; font-size: 0.82rem; line-height: 1.5;">
+              <strong style="color: #ef4444;">Loại trước sàng lọc:</strong><br />
+              • Bản ghi trùng lặp: n = 7<br />
+              • Tự động loại: n = 5<br />
+              • Lý do khác: n = 27
             </div>
           </div>
 
-          <div style="background: var(--color-bg); border-left: 4px solid #f59e0b; padding: 0.75rem; border-radius: 4px;">
-            <div style="font-weight: 600; color: #f59e0b;">2. Sàng lọc (Screening)</div>
-            <div style="font-size: 0.85rem; margin-top: 0.25rem;">
-              • Sàng lọc tiêu đề/abstract: n = 94 (loại n = 5)<br />
-              • Tìm kiếm toàn văn: n = 89 (database) + n = 17 (khác)<br />
-              <em>Loại n = 34 không lấy được toàn văn</em>
+          <div style="text-align: center; color: var(--color-primary);"><i class="fa-solid fa-arrow-down"></i></div>
+
+          <!-- BƯỚC 2: SCREENING -->
+          <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1rem;">
+            <div style="background: rgba(245, 158, 11, 0.06); border: 1px solid #f59e0b; border-left: 5px solid #f59e0b; padding: 0.85rem; border-radius: 6px;">
+              <div style="font-weight: 700; color: #b45309; font-size: 0.9rem; display: flex; align-items: center; gap: 0.4rem;">
+                <i class="fa-solid fa-list-check"></i> 2. SÀNG LỌC (SCREENING)
+              </div>
+              <div style="font-size: 0.85rem; margin-top: 0.4rem; line-height: 1.6;">
+                • Sàng lọc tiêu đề và tóm tắt (Title/Abstract): <strong>n = 94</strong><br />
+                • Tìm kiếm toàn văn: <strong>n = 89</strong> (Databases) + <strong>n = 17</strong> (Nguồn khác)
+              </div>
+            </div>
+            <div style="background: rgba(239, 68, 68, 0.05); border: 1px dashed #ef4444; border-left: 4px solid #ef4444; padding: 0.85rem; border-radius: 6px; font-size: 0.82rem; line-height: 1.5;">
+              <strong style="color: #ef4444;">Loại trong sàng lọc:</strong><br />
+              • Loại qua Title/Abstract: n = 5<br />
+              • Không truy xuất được toàn văn: n = 34
             </div>
           </div>
 
-          <div style="background: var(--color-bg); border-left: 4px solid #8b5cf6; padding: 0.75rem; border-radius: 4px;">
-            <div style="font-weight: 600; color: #8b5cf6;">3. Đủ điều kiện (Eligibility)</div>
-            <div style="font-size: 0.85rem; margin-top: 0.25rem;">
-              • Đánh giá toàn văn: n = 55 (DB) + n = 17 (khác)<br />
-              <em>Loại n = 9 từ DB (ngôn ngữ, trùng, sai kết cục)<br />
-              Loại n = 4 từ nguồn khác (lỗi thời, sai đối tượng)</em>
+          <div style="text-align: center; color: var(--color-primary);"><i class="fa-solid fa-arrow-down"></i></div>
+
+          <!-- BƯỚC 3: ELIGIBILITY -->
+          <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1rem;">
+            <div style="background: rgba(139, 92, 246, 0.06); border: 1px solid #8b5cf6; border-left: 5px solid #8b5cf6; padding: 0.85rem; border-radius: 6px;">
+              <div style="font-weight: 700; color: #6d28d9; font-size: 0.9rem; display: flex; align-items: center; gap: 0.4rem;">
+                <i class="fa-solid fa-clipboard-check"></i> 3. ĐÁNH GIÁ ĐỦ ĐIỀU KIỆN (ELIGIBILITY)
+              </div>
+              <div style="font-size: 0.85rem; margin-top: 0.4rem; line-height: 1.6;">
+                • Đánh giá toàn văn từ Databases: <strong>n = 55</strong><br />
+                • Đánh giá toàn văn từ nguồn khác: <strong>n = 17</strong>
+              </div>
+            </div>
+            <div style="background: rgba(239, 68, 68, 0.05); border: 1px dashed #ef4444; border-left: 4px solid #ef4444; padding: 0.85rem; border-radius: 6px; font-size: 0.82rem; line-height: 1.5;">
+              <strong style="color: #ef4444;">Loại sau toàn văn (n = 13):</strong><br />
+              • DB (n=9): 2 sai tiếng, 1 trùng, 6 sai kết cục<br />
+              • Nguồn khác (n=4): 2 lỗi thời, 2 sai quần thể
             </div>
           </div>
 
-          <div style="background: var(--color-bg); border-left: 4px solid #10b981; padding: 0.75rem; border-radius: 4px;">
-            <div style="font-weight: 600; color: #10b981;">4. Đưa vào nghiên cứu (Included)</div>
-            <div style="font-size: 0.85rem; margin-top: 0.25rem;">
-              <strong>Tổng cộng 46 nghiên cứu</strong> thuộc 13 báo cáo tổng hợp được phân tích chuyên sâu về dịch tễ, chẩn đoán, dược lý và kết cục thai kỳ.
+          <div style="text-align: center; color: var(--color-primary);"><i class="fa-solid fa-arrow-down"></i></div>
+
+          <!-- BƯỚC 4: INCLUDED -->
+          <div style="background: rgba(16, 185, 129, 0.08); border: 2px solid #10b981; border-left: 6px solid #10b981; padding: 1rem; border-radius: 6px;">
+            <div style="font-weight: 700; color: #047857; font-size: 0.95rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;">
+              <span><i class="fa-solid fa-check-double"></i> 4. ĐƯA VÀO TỔNG QUAN (INCLUDED)</span>
+              <span style="background: #10b981; color: #fff; font-size: 0.75rem; padding: 2px 10px; border-radius: 12px; font-weight: 700;">46 Nghiên Cứu / 13 Báo Cáo</span>
             </div>
+            <p style="margin: 0.5rem 0 0 0; font-size: 0.88rem; line-height: 1.6;">
+              Tổng cộng <strong>46 nghiên cứu</strong> (thuộc 13 báo cáo tổng hợp) được đưa vào tổng quan luận giải chuyên sâu về gánh nặng dịch tễ, cơ chế bệnh sinh, biến chứng mẹ - thai, phương thức chẩn đoán tích hợp, phác đồ điều trị hàng 1, quản lý MDR-TB, đồng nhiễm HIV, lao ngoài phổi, lao sơ sinh và khoảng trống nghiên cứu.
+            </p>
           </div>
+
         </div>
       </div>
 
@@ -242,30 +288,30 @@ sections:
           <div class="update-card-accent" style="background: #0284c7;"></div>
           <div class="update-card-header">
             <div class="update-card-icon" style="background: #eff6ff; color: #0284c7;">🧬</div>
-            <div class="update-card-title">Tác Nhân &amp; 3 Kịch Bản Tự Nhiên</div>
+            <div class="update-card-title">Tác Nhân Phức Hợp MTBC &amp; 3 Kịch Bản Tự Nhiên</div>
           </div>
           <div class="update-card-body">
             <ul style="margin-left: 1rem; line-height: 1.7;">
-              <li><strong>Phức hợp M. tuberculosis (MTBC):</strong> Lây truyền qua các hạt khí dung khi bệnh nhân ho, hắt hơi. <em>M. bovis</em> có đặc tính đề kháng tự nhiên với Pyrazinamide.</li>
-              <li><strong>1. Loại bỏ sớm / Kháng vi khuẩn:</strong> Nhờ hệ miễn dịch bẩm sinh và đại thực bào phế nang.</li>
-              <li><strong>2. Nhiễm lao (Tuberculosis Infection):</strong> Phản ứng miễn dịch qua trung gian tế bào tồn tại dai dẳng (TST hoặc IGRA dương tính) nhưng <strong>không có triệu chứng hay tổn thương hoạt động</strong> (chiếm 1/4 – 1/3 dân số thế giới).</li>
+              <li><strong>Phức hợp M. tuberculosis (MTBC):</strong> Bao gồm <em>M. tuberculosis, M. bovis, M. bovis BCG, M. africanum, M. caprae, M. microti...</em> Trong đó <em>M. bovis</em> và vắc-xin BCG có đặc tính <strong>kháng tự nhiên với Pyrazinamide</strong>.</li>
+              <li><strong>1. Loại bỏ sớm / Kháng vi khuẩn:</strong> Nhờ hệ miễn dịch bẩm sinh và đại thực bào phế nang tiêu diệt hoàn toàn vi khuẩn.</li>
+              <li><strong>2. Nhiễm lao (Tuberculosis Infection):</strong> Phản ứng miễn dịch tế bào tồn tại dai dẳng (TST/IGRA dương tính) nhưng <strong>không có triệu chứng hay tổn thương hoạt động</strong> (chiếm 1/4 – 1/3 dân số thế giới).</li>
               <li><strong>3. Bệnh lao hoạt động (Active TB):</strong> Vi khuẩn vượt qua hàng rào phòng ngự, tăng sinh gây tổn thương mô phổi hoặc ngoài phổi.</li>
             </ul>
           </div>
-          <div class="update-verdict verdict-blue">Diễn tiến sinh bệnh học</div>
+          <div class="update-verdict verdict-blue">MTBC &amp; Lịch sử tự nhiên</div>
         </div>
 
         <div class="update-card">
           <div class="update-card-accent" style="background: #f59e0b;"></div>
           <div class="update-card-header">
             <div class="update-card-icon" style="background: #fffbeb; color: #f59e0b;">⚠️</div>
-            <div class="update-card-title">Sự Thay Đổi Miễn Dịch Trong Thai Kỳ</div>
+            <div class="update-card-title">Sự Thay Đổi Miễn Dịch &amp; Nguy Cơ Thai Kỳ</div>
           </div>
           <div class="update-card-body">
             <ul style="margin-left: 1rem; line-height: 1.7;">
-              <li>Thai kỳ tạo ra trạng thái dung nạp miễn dịch sinh lý để bảo vệ thai nhi (dị ghép bán phần), với sự <strong>chuyển dịch cán cân miễn dịch từ Th1 sang ưu thế Th2</strong>.</li>
-              <li>Sự ức chế đáp ứng Th1 (giảm sản xuất IFN-γ và TNF-α) làm suy yếu khả năng kiểm soát vi khuẩn lao trong u hạt, làm tăng nguy cơ bùng phát từ nhiễm lao tiềm ẩn thành lao hoạt động.</li>
-              <li>Các yếu tố nguy cơ phối hợp: Đồng nhiễm HIV, Đái tháo đường (DM/GDM), suy dinh dưỡng, nghèo đói và điều kiện sống chật chội.</li>
+              <li>Thai kỳ tạo trạng thái dung nạp miễn dịch sinh lý bảo vệ thai nhi, với sự <strong>chuyển dịch cán cân miễn dịch từ Th1 sang ưu thế Th2</strong>.</li>
+              <li>Sự ức chế đáp ứng Th1 (giảm sản xuất IFN-γ và TNF-α) làm suy yếu khả năng kiểm soát vi khuẩn lao trong u hạt, thúc đẩy chuyển từ nhiễm lao sang lao hoạt động.</li>
+              <li><strong>Các yếu tố nguy cơ bùng phát:</strong> Đái tháo đường (suy giảm đại thực bào), suy giảm miễn dịch (HIV làm sụt giảm CD4), suy dinh dưỡng, hút thuốc lá và lạm dụng rượu.</li>
             </ul>
           </div>
           <div class="update-verdict verdict-amber">Chuyển dịch Th1 → Th2</div>
@@ -305,17 +351,17 @@ sections:
               <tr>
                 <td class="source-cell"><strong>Bệnh tật chung ở người mẹ</strong></td>
                 <td><span class="rx-tag caution">Tăng gấp 3,0 lần (OR = 3,0)</span></td>
-                <td>Thiếu máu nặng (tăng gấp 4 lần), suy dinh dưỡng, suy kiệt và tăng nguy cơ nhiễm trùng huyết.</td>
+                <td>Thiếu máu nặng (tăng gấp 4 lần), suy dinh dưỡng, suy kiệt và tăng nguy cơ nhiễm trùng huyết, ARDS.</td>
               </tr>
               <tr>
                 <td class="source-cell"><strong>Rối loạn THA thai kỳ / Tiền sản giật</strong></td>
                 <td><span class="rx-tag caution">Gia tăng đáng kể</span></td>
-                <td>Viêm mạn tính gây rối loạn chức năng nội mạc mạch máu nhau thai. <em>Tương tác thuốc:</em> Rifampicin cảm ứng mạnh CYP450 làm giảm hiệu quả của Methyldopa; khuyến cáo ưu tiên dùng chẹn beta hoặc chẹn kênh calci (Nifedipine).</td>
+                <td>Viêm mạn tính gây rối loạn chức năng nội mạc mạch máu nhau thai. <em>Tương tác thuốc:</em> Rifampicin cảm ứng mạnh CYP450 làm giảm hiệu quả của Methyldopa; <strong>khuyến cáo ưu tiên dùng chẹn beta hoặc chẹn kênh calci (Nifedipine)</strong>.</td>
               </tr>
               <tr>
                 <td class="source-cell"><strong>Lao nhau thai &amp; Viêm màng ối</strong></td>
                 <td><span class="rx-tag preferred">Đặc thù thai kỳ</span></td>
-                <td>Vi khuẩn lan theo đường máu vào bánh nhau: Đại thể thấy bánh nhau phì đại, có ổ hoại tử bã đậu vàng-trắng; vi thể thấy nang củ hoại tử với tế bào khổng lồ Langhans hoặc viêm màng thai thâm nhiễm bạch cầu trung tính.</td>
+                <td>Lan truyền theo đường máu vào bánh nhau: <em>Đại thể</em> thấy bánh nhau phì đại, có ổ hoại tử xám-trắng, nốt hoại tử bã đậu vàng-trắng hoặc vôi hóa rải rác; <em>Vi thể</em> điển hình có nang củ hoại tử với tế bào khổng lồ Langhans, nhưng hay gặp hơn là viêm màng thai cấp tính thâm nhiễm bạch cầu trung tính và hoại tử đông.</td>
               </tr>
               <tr>
                 <td class="source-cell"><strong>Băng huyết sau sinh (PPH)</strong></td>
@@ -325,7 +371,7 @@ sections:
               <tr>
                 <td class="source-cell"><strong>Vỡ bóng khí phổi khi chuyển dạ</strong></td>
                 <td><span class="rx-tag caution">Biến chứng cấp cứu</span></td>
-                <td>Động tác rặn đẻ kéo dài làm tăng vọt áp lực trong lồng ngực gây vỡ bóng khí xơ sẹo, dẫn đến tràn khí màng phổi áp lực. <strong>Chỉ định:</strong> Cân nhắc thủ thuật giúp sinh (giác hút/vacuum) để rút ngắn giai đoạn 2 chuyển dạ.</td>
+                <td>Động tác rặn đẻ kéo dài (Valsalva) làm tăng vọt áp lực trong lồng ngực gây vỡ bóng khí xơ sẹo cũ, dẫn đến tràn khí màng phổi áp lực. <strong>Chỉ định:</strong> Cân nhắc thủ thuật giúp sinh (giác hút - vacuum extraction) để rút ngắn giai đoạn 2 chuyển dạ.</td>
               </tr>
             </tbody>
           </table>
@@ -389,7 +435,7 @@ sections:
                 <td class="source-cell"><strong>Xét nghiệm IGRA (QFT / T-SPOT)</strong></td>
                 <td>Máu toàn phần (ngoại vi)</td>
                 <td>Phát hiện nhiễm lao, đặc biệt ở người đã từng tiêm vắc-xin BCG.</td>
-                <td>Độ đặc hiệu > 95%; độ nhạy ~75–85%.</td>
+                <td>Độ đặc hiệu &gt; 95%; độ nhạy ~75–85%.</td>
                 <td>Sự suy giảm sinh lý đáp ứng IFN-γ trong thai kỳ có thể làm giảm độ nhạy; chi phí cao.</td>
                 <td>Độ đặc hiệu vượt trội TST; không bị dương tính giả bởi vắc-xin BCG.</td>
               </tr>
@@ -413,7 +459,7 @@ sections:
                 <td class="source-cell"><span class="rx-tag preferred">Đầu tay</span> <strong>GeneXpert MTB/RIF</strong></td>
                 <td>Đờm hoặc bệnh phẩm ngoài phổi</td>
                 <td>Xét nghiệm sinh học phân tử hàng đầu phát hiện lao &amp; đột biến kháng Rifampicin.</td>
-                <td>Độ nhạy > 80%; độ đặc hiệu ~98–99%.</td>
+                <td>Độ nhạy &gt; 80%; độ đặc hiệu ~98–99%.</td>
                 <td>Có thể cho kết quả âm tính ở bệnh nhân có tải lượng vi khuẩn cực thấp.</td>
                 <td>Cho kết quả nhanh trong ~2 giờ; đồng thời phát hiện kháng Rifampicin.</td>
               </tr>
@@ -515,7 +561,7 @@ sections:
   <div class="sec-card" id="sec-luodo-chandoan">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">🔀</span>
-      <h2 class="sec-title">4. Lưu Đồ Thuật Toán Chẩn Đoán Tích Hợp (Figure 6 &amp; Interactive Flowchart)</h2>
+      <h2 class="sec-title">4. Lưu Đồ Thuật Toán Chẩn Đoán Tích Hợp (Figure 6 &amp; High-Fidelity Flowchart)</h2>
     </div>
     <div class="sec-body">
       
@@ -523,7 +569,7 @@ sections:
         <span class="infobox-icon">💡</span>
         <div>
           <strong>Chiến lược tiếp cận lâm sàng đa tầng tích hợp</strong>
-          Phối hợp chặt chẽ giữa <strong>Đánh giá lâm sàng</strong>, <strong>Điều tra vi sinh phân tử</strong>, <strong>Chẩn đoán hình ảnh an toàn</strong> và <strong>Phối hợp liên chuyên khoa</strong> (Sản khoa – Truyền nhiễm – Hô hấp – Sơ sinh).
+          Lưu đồ mô hình hóa trọn vẹn quy trình 6 bước chẩn đoán và xử trí lao trong thai kỳ: từ đánh giá lâm sàng ban đầu, xét nghiệm vi sinh phân tử, chẩn đoán hình ảnh an toàn, phân nhánh A &amp; B, các chỉ định chuyển tuyến chuyên khoa cho đến quản lý đa chuyên khoa và 4 nguyên tắc cốt lõi.
         </div>
       </div>
 
@@ -532,93 +578,298 @@ sections:
         <img src="./images/2026-diagnostics-lao-thai-ky-fig6.png" alt="Figure 6: Integrated diagnostic approach for suspected tuberculosis during pregnancy" class="fig-img" loading="lazy" />
         <div class="fig-caption">
           <div class="fig-title">Figure 6. Integrated Diagnostic Approach for Suspected Tuberculosis During Pregnancy</div>
-          Lưu đồ thuật toán chẩn đoán tích hợp cho thai phụ nghi ngờ mắc bệnh lao: Kết hợp đánh giá lâm sàng, xét nghiệm vi sinh/phân tử, đánh giá hình ảnh học và tiêu chuẩn hội chẩn/chuyển viện chuyên khoa.
+          Lưu đồ thuật toán chẩn đoán tích hợp cho thai phụ nghi ngờ mắc bệnh lao: Kết hợp đánh giá lâm sàng, xét nghiệm vi sinh/phân tử, đánh giá hình ảnh học an toàn, phân nhánh A &amp; B, tiêu chuẩn hội chẩn chuyên khoa và mô hình phối hợp liên viện.
         </div>
       </div>
 
-      <!-- VISUAL CLINICAL FLOWCHART COMPONENT -->
-      <div style="margin-top: 1.5rem; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 8px; padding: 1.25rem;">
-        <h3 style="font-size: 1.05rem; color: var(--color-primary); margin-top: 0; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
-          <i class="fa-solid fa-network-wired"></i> Mô Hình Hóa Thuật Toán Chẩn Đoán 6 Bước Thực Chiến
-        </h3>
+      <!-- HIGH-FIDELITY VISUAL CLINICAL FLOWCHART (REPRESENTING FIGURE 6 IN CODE) -->
+      <div style="margin-top: 2rem; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);">
+        
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.25rem; border-bottom: 1px solid var(--color-border); padding-bottom: 0.75rem;">
+          <div style="font-weight: 700; font-size: 1.1rem; color: var(--color-primary); display: flex; align-items: center; gap: 0.5rem;">
+            <i class="fa-solid fa-diagram-project"></i> Mô Hình Hóa Thuật Toán Lâm Sàng 6 Bước (Figure 6 Interactive Code)
+          </div>
+          <span style="font-size: 0.8rem; background: rgba(16, 185, 129, 0.1); color: #059669; padding: 3px 10px; border-radius: 12px; font-weight: 600;">
+            Chuẩn Hóa Editorial Flowchart
+          </span>
+        </div>
 
-        <div style="display: flex; flex-direction: column; gap: 1rem;">
+        <div style="display: flex; flex-direction: column; gap: 1.25rem;">
           
-          <!-- BƯỚC 1 -->
-          <div style="border: 1px solid #0284c7; background: rgba(2, 132, 199, 0.05); border-radius: 6px; padding: 1rem;">
-            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;">
-              <span style="font-weight: 700; color: #0284c7; font-size: 0.95rem;">BƯỚC 1: NHẬN DIỆN THAI PHỤ CÓ NGUY CƠ CAO HOẶC TRIỆU CHỨNG NGHI NGỜ</span>
-              <span style="background: #0284c7; color: #fff; font-size: 0.75rem; padding: 2px 8px; border-radius: 12px;">Sàng lọc đầu vào</span>
+          <!-- BƯỚC 1: INITIAL CLINICAL ASSESSMENT -->
+          <div style="border: 2px solid #6366f1; background: rgba(99, 102, 241, 0.04); border-radius: 8px; padding: 1.25rem; position: relative;">
+            <div style="display: flex; align-items: flex-start; gap: 1rem;">
+              <div style="width: 48px; height: 48px; border-radius: 50%; background: #e0e7ff; color: #4338ca; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0;">
+                <i class="fa-solid fa-person-pregnant"></i>
+              </div>
+              <div style="flex: 1;">
+                <div style="font-weight: 700; color: #4338ca; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.5px;">
+                  1. Đánh Giá Lâm Sàng Ban Đầu (Initial Clinical Assessment)
+                </div>
+                <div style="font-size: 0.9rem; margin-top: 0.35rem; color: var(--color-text); font-weight: 600;">
+                  Thai phụ có bất kỳ dấu hiệu / yếu tố nguy cơ nào sau đây:
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.5rem; margin-top: 0.5rem; font-size: 0.88rem;">
+                  <div>• Ho kéo dài (≥ 2 tuần)</div>
+                  <div>• Ra mồ hôi trộm ban đêm</div>
+                  <div>• Sốt nhẹ về chiều / sốt kéo dài</div>
+                  <div>• Tiền sử tiếp xúc nguồn lây lao</div>
+                  <div>• Sụt cân hoặc không tăng cân thai kỳ</div>
+                  <div>• Nhiễm HIV hoặc suy giảm miễn dịch</div>
+                </div>
+              </div>
             </div>
-            <p style="margin: 0.5rem 0 0 0; font-size: 0.9rem; line-height: 1.6;">
-              Thai phụ có <strong>bất kỳ dấu hiệu nào sau đây:</strong><br />
-              • Ho kéo dài ≥ 2 tuần &nbsp;|&nbsp; • Sốt nhẹ về chiều / Sốt không rõ nguyên nhân &nbsp;|&nbsp; • Sụt cân hoặc không tăng cân thai kỳ &nbsp;|&nbsp; • Đổ mồ hôi đêm<br />
-              • Tiền sử tiếp xúc trực tiếp nguồn lây lao &nbsp;|&nbsp; • Nhiễm HIV hoặc cơ địa suy giảm miễn dịch nặng
-            </p>
           </div>
 
-          <div style="text-align: center; color: var(--color-text-muted); font-size: 1.2rem;"><i class="fa-solid fa-arrow-down"></i></div>
+          <!-- MŨI TÊN NỐI -->
+          <div style="text-align: center; color: #6366f1; font-size: 1.3rem; margin: -0.5rem 0;"><i class="fa-solid fa-arrow-down"></i></div>
 
-          <!-- BƯỚC 2 & 3: SONG HÀNH VI SINH VÀ HÌNH ẢNH -->
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+          <!-- BƯỚC 2: INITIAL EVALUATION -->
+          <div style="border: 2px solid #0284c7; background: rgba(2, 132, 199, 0.04); border-radius: 8px; padding: 1.25rem;">
+            <div style="display: flex; align-items: flex-start; gap: 1rem;">
+              <div style="width: 48px; height: 48px; border-radius: 50%; background: #e0f2fe; color: #0369a1; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0;">
+                <i class="fa-solid fa-clipboard-list"></i>
+              </div>
+              <div style="flex: 1;">
+                <div style="font-weight: 700; color: #0369a1; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.5px;">
+                  2. Đánh Giá Ban Đầu (Initial Evaluation)
+                </div>
+                <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 0.5rem; font-size: 0.9rem;">
+                  <div><i class="fa-solid fa-check text-success"></i> <strong>Khám lâm sàng chi tiết</strong> toàn diện</div>
+                  <div><i class="fa-solid fa-check text-success"></i> <strong>Tầm soát hệ thống 4 triệu chứng</strong></div>
+                  <div><i class="fa-solid fa-check text-success"></i> <strong>Xét nghiệm huyết thanh học HIV</strong></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- MŨI TÊN NỐI -->
+          <div style="text-align: center; color: #0284c7; font-size: 1.3rem; margin: -0.5rem 0;"><i class="fa-solid fa-arrow-down"></i></div>
+
+          <!-- SUSPICION OF ACTIVE TUBERCULOSIS BADGE -->
+          <div style="text-align: center;">
+            <span style="display: inline-block; background: #1e3a8a; color: #ffffff; padding: 0.6rem 1.75rem; border-radius: 30px; font-weight: 700; font-size: 0.95rem; letter-spacing: 0.5px; box-shadow: 0 2px 8px rgba(30, 58, 138, 0.25);">
+              <i class="fa-solid fa-triangle-exclamation" style="color: #facc15; margin-right: 0.4rem;"></i>
+              SUSPICION OF ACTIVE TUBERCULOSIS (NGHI NGỜ LAO HOẠT ĐỘNG)
+            </span>
+          </div>
+
+          <!-- MŨI TÊN NỐI -->
+          <div style="text-align: center; color: #1e3a8a; font-size: 1.3rem; margin: -0.5rem 0;"><i class="fa-solid fa-arrow-down"></i></div>
+
+          <!-- BƯỚC 3: MICROBIOLOGICAL INVESTIGATION -->
+          <div style="border: 2px solid #10b981; background: rgba(16, 185, 129, 0.04); border-radius: 8px; padding: 1.25rem;">
+            <div style="display: flex; align-items: flex-start; gap: 1rem;">
+              <div style="width: 48px; height: 48px; border-radius: 50%; background: #d1fae5; color: #047857; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0;">
+                <i class="fa-solid fa-microscope"></i>
+              </div>
+              <div style="flex: 1;">
+                <div style="font-weight: 700; color: #047857; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.5px;">
+                  3. Điều Tra Vi Sinh &amp; Sinh Học Phân Tử (Microbiological Investigation)
+                </div>
+                <ul style="margin: 0.5rem 0 0 1.25rem; font-size: 0.9rem; line-height: 1.7;">
+                  <li><strong>Nhuộm soi đờm trực tiếp:</strong> Kỹ thuật nhuộm soi Ziehl–Neelsen phát hiện trực khuẩn kháng cồn toan (AFB).</li>
+                  <li><strong>Xét nghiệm NAAT (Sinh học phân tử):</strong> Bắt buộc thực hiện <strong>GeneXpert MTB/RIF</strong> hoặc <strong>Xpert MTB/RIF Ultra</strong> để xác định nhanh vi khuẩn lao và đột biến gen kháng Rifampicin trong ~2 giờ.</li>
+                  <li><strong>Nuôi cấy vi khuẩn Mycobacteria:</strong> Môi trường lỏng (MGIT) và/hoặc môi trường đặc (Lowenstein–Jensen) để làm kháng sinh đồ DST.</li>
+                  <li style="color: var(--color-text-muted); font-style: italic;">*Thu thập 2–3 mẫu đờm (ưu tiên mẫu sáng sớm) bất cứ khi nào có thể.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- MŨI TÊN NỐI -->
+          <div style="text-align: center; color: #10b981; font-size: 1.3rem; margin: -0.5rem 0;"><i class="fa-solid fa-arrow-down"></i></div>
+
+          <!-- BƯỚC 4: IMAGING EVALUATION -->
+          <div style="border: 2px solid #ea580c; background: rgba(234, 88, 12, 0.04); border-radius: 8px; padding: 1.25rem;">
+            <div style="display: flex; align-items: flex-start; gap: 1rem;">
+              <div style="width: 48px; height: 48px; border-radius: 50%; background: #ffedd5; color: #c2410c; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0;">
+                <i class="fa-solid fa-lungs"></i>
+              </div>
+              <div style="flex: 1;">
+                <div style="font-weight: 700; color: #c2410c; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.5px;">
+                  4. Đánh Giá Hình Ảnh Học (Imaging Evaluation)
+                </div>
+                <div style="font-size: 0.92rem; margin-top: 0.4rem; line-height: 1.6;">
+                  <strong>Chụp X-quang ngực (Chest Radiography - CXR):</strong> Thực hiện tư thế sau - trước (PA) và nghiêng với <strong>tấm chắn chì bảo vệ vùng bụng (Abdominal Shielding)</strong> bắt buộc. Liều bức xạ thai nhi an toàn (&lt; 0,01 mGy).
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- MŨI TÊN PHÂN NHÁNH A & B -->
+          <div style="display: flex; justify-content: space-around; color: #ea580c; font-size: 1.3rem; margin: -0.5rem 0;">
+            <div style="width: 50%; text-align: center;"><i class="fa-solid fa-arrow-down"></i></div>
+            <div style="width: 50%; text-align: center;"><i class="fa-solid fa-arrow-down"></i></div>
+          </div>
+
+          <!-- 2 NHÁNH A VÀ B -->
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem;">
             
-            <div style="border: 1px solid #10b981; background: rgba(16, 185, 129, 0.05); border-radius: 6px; padding: 1rem;">
-              <div style="font-weight: 700; color: #10b981; font-size: 0.95rem;">BƯỚC 2: ĐIỀU TRA VI SINH &amp; PHÂN TỬ</div>
-              <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.88rem; line-height: 1.6;">
-                <li>Thu thập <strong>2–3 mẫu đờm</strong> (ưu tiên sáng sớm).</li>
-                <li><strong>GeneXpert MTB/RIF</strong> hoặc <strong>Xpert Ultra</strong>: Bắt buộc để xác định nhanh vi khuẩn &amp; gen kháng Rifampicin trong 2 giờ.</li>
-                <li><strong>Nhuộm soi AFB</strong> (Ziehl-Neelsen) đánh giá tải lượng.</li>
-                <li><strong>Nuôi cấy MGIT/LJ</strong>: Làm kháng sinh đồ (DST).</li>
-                <li><em>Nếu CD4 &lt; 100/µL hoặc HIV nặng:</em> Làm thêm LF-LAM nước tiểu.</li>
-              </ul>
+            <!-- NHÁNH A: NORMAL OR INCONCLUSIVE -->
+            <div style="border: 2px solid #0284c7; background: rgba(2, 132, 199, 0.04); border-radius: 8px; padding: 1.25rem; display: flex; flex-direction: column;">
+              <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
+                <span style="background: #0284c7; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem;">A</span>
+                <div style="font-weight: 700; color: #0284c7; font-size: 0.92rem; text-transform: uppercase;">
+                  X-Quang Bình Thường / Không Rõ Nhưng Lâm Sàng Nghi Ngờ Cao
+                </div>
+              </div>
+              <div style="font-size: 0.88rem; line-height: 1.6; flex: 1;">
+                <strong>Cân nhắc chụp Cắt lớp vi tính ngực (CT ngực)</strong> không cản quang trong các trường hợp chọn lọc, đặc biệt khi:
+                <ul style="margin: 0.5rem 0 0 1.25rem;">
+                  <li>Bệnh cảnh lâm sàng diễn tiến nặng (Severe disease)</li>
+                  <li>Nghi ngờ thể lao kê lan tỏa (Miliary tuberculosis)</li>
+                  <li>Nghi ngờ tổn thương hạch trung thất hoặc ngoài phổi</li>
+                  <li>Cần loại trừ các chẩn đoán phân biệt nghiêm trọng khác</li>
+                </ul>
+              </div>
+              <div style="margin-top: 0.75rem; padding: 0.5rem; background: #e0f2fe; border-radius: 4px; font-size: 0.8rem; color: #0369a1; text-align: center; font-weight: 600;">
+                <i class="fa-solid fa-circle-radiation"></i> CT ngực: Đánh giá cá thể hóa nguy cơ - lợi ích
+              </div>
             </div>
 
-            <div style="border: 1px solid #8b5cf6; background: rgba(139, 92, 246, 0.05); border-radius: 6px; padding: 1rem;">
-              <div style="font-weight: 700; color: #8b5cf6; font-size: 0.95rem;">BƯỚC 3: ĐÁNH GIÁ HÌNH ẢNH AN TOÀN</div>
-              <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.88rem; line-height: 1.6;">
-                <li><strong>Chụp X-quang ngực (CXR)</strong> tư thế thẳng &amp; nghiêng: Bắt buộc sử dụng <strong>tấm chì chắn bụng (Abdominal shielding)</strong>.</li>
-                <li><em>Trường hợp CXR bình thường nhưng lâm sàng nghi ngờ cao:</em> Cân nhắc chụp <strong>CT ngực liều thấp</strong> không thuốc cản quang (nghi lao kê, hạch trung thất, lao ngoài phổi).</li>
-                <li>Liều bức xạ thai nhi từ CXR chắn bụng &lt; 0,01 mGy (ngưỡng dị tật &gt; 100 mGy).</li>
-              </ul>
+            <!-- NHÁNH B: ABNORMAL RADIOGRAPH -->
+            <div style="border: 2px solid #10b981; background: rgba(16, 185, 129, 0.04); border-radius: 8px; padding: 1.25rem; display: flex; flex-direction: column;">
+              <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
+                <span style="background: #10b981; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem;">B</span>
+                <div style="font-weight: 700; color: #047857; font-size: 0.92rem; text-transform: uppercase;">
+                  X-Quang Bất Thường Gợi Ý Bệnh Lao (Suggestive of TB)
+                </div>
+              </div>
+              <div style="font-size: 0.88rem; line-height: 1.6; flex: 1;">
+                Các tổn thương điển hình của lao hoạt động hoặc di chứng lao cũ:
+                <ul style="margin: 0.5rem 0 0 1.25rem;">
+                  <li>Tổn thương tạo hang (Cavities) thành mỏng hoặc dày</li>
+                  <li>Đông đặc thùy phổi (Consolidations)</li>
+                  <li>Nốt mờ hoặc thâm nhiễm phế trường (Infiltrates)</li>
+                  <li>Hình ảnh hạt kê rải rác hai bên (Miliary pattern)</li>
+                  <li>Tràn dịch màng phổi (Pleural effusion)</li>
+                </ul>
+              </div>
+              <div style="margin-top: 0.75rem; padding: 0.5rem; background: #d1fae5; border-radius: 4px; font-size: 0.85rem; color: #047857; text-align: center; font-weight: 700;">
+                <i class="fa-solid fa-play"></i> Khởi trị ngay phác đồ phù hợp &amp; Xác nhận vi sinh
+              </div>
             </div>
 
           </div>
 
-          <div style="text-align: center; color: var(--color-text-muted); font-size: 1.2rem;"><i class="fa-solid fa-arrow-down"></i></div>
+          <!-- MŨI TÊN HỘI TỤ -->
+          <div style="text-align: center; color: #e11d48; font-size: 1.3rem; margin: -0.25rem 0;"><i class="fa-solid fa-arrow-down"></i></div>
 
-          <!-- BƯỚC 4: TỔNG HỢP KẾT QUẢ VÀ RA QUYẾT ĐỊNH -->
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+          <!-- BƯỚC 5: SPECIALIST REFERRAL INDICATED WHEN -->
+          <div style="border: 2px solid #e11d48; background: rgba(225, 29, 72, 0.03); border-radius: 8px; padding: 1.25rem;">
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; margin-bottom: 0.85rem;">
+              <div style="font-weight: 700; color: #be123c; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; gap: 0.5rem;">
+                <i class="fa-solid fa-hospital-user"></i> 5. Chỉ Định Chuyển Tuyến / Hội Chẩn Chuyên Khoa (Specialist Referral Indicated When)
+              </div>
+              <span style="font-size: 0.75rem; background: #be123c; color: #fff; padding: 2px 8px; border-radius: 10px; font-weight: 600;">
+                6 Tiêu Chuẩn Kích Hoạt
+              </span>
+            </div>
+
+            <!-- 6 SPECIALIST REFERRAL CARDS -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0.75rem;">
+              
+              <div style="background: var(--color-surface); border: 1px solid #fecdd3; border-radius: 6px; padding: 0.75rem; display: flex; align-items: center; gap: 0.65rem;">
+                <div style="color: #e11d48; font-size: 1.25rem;"><i class="fa-solid fa-bacteria"></i></div>
+                <div style="font-size: 0.85rem; line-height: 1.4;">
+                  <strong>Nghi ngờ lao kháng thuốc</strong><br />
+                  <span style="color: var(--color-text-muted); font-size: 0.8rem;">MDR-TB / Kháng Rifampicin</span>
+                </div>
+              </div>
+
+              <div style="background: var(--color-surface); border: 1px solid #fecdd3; border-radius: 6px; padding: 0.75rem; display: flex; align-items: center; gap: 0.65rem;">
+                <div style="color: #e11d48; font-size: 1.25rem;"><i class="fa-solid fa-lungs"></i></div>
+                <div style="font-size: 0.85rem; line-height: 1.4;">
+                  <strong>Suy hô hấp tiến triển</strong><br />
+                  <span style="color: var(--color-text-muted); font-size: 0.8rem;">Severe respiratory compromise</span>
+                </div>
+              </div>
+
+              <div style="background: var(--color-surface); border: 1px solid #fecdd3; border-radius: 6px; padding: 0.75rem; display: flex; align-items: center; gap: 0.65rem;">
+                <div style="color: #e11d48; font-size: 1.25rem;"><i class="fa-solid fa-ribbon"></i></div>
+                <div style="font-size: 0.85rem; line-height: 1.4;">
+                  <strong>Đồng nhiễm HIV</strong><br />
+                  <span style="color: var(--color-text-muted); font-size: 0.8rem;">HIV coinfection &amp; suy giảm MD</span>
+                </div>
+              </div>
+
+              <div style="background: var(--color-surface); border: 1px solid #fecdd3; border-radius: 6px; padding: 0.75rem; display: flex; align-items: center; gap: 0.65rem;">
+                <div style="color: #e11d48; font-size: 1.25rem;"><i class="fa-solid fa-virus-covid"></i></div>
+                <div style="font-size: 0.85rem; line-height: 1.4;">
+                  <strong>Lao lan tỏa / ngoài phổi</strong><br />
+                  <span style="color: var(--color-text-muted); font-size: 0.8rem;">Lao màng não, kê, xương khớp</span>
+                </div>
+              </div>
+
+              <div style="background: var(--color-surface); border: 1px solid #fecdd3; border-radius: 6px; padding: 0.75rem; display: flex; align-items: center; gap: 0.65rem;">
+                <div style="color: #e11d48; font-size: 1.25rem;"><i class="fa-solid fa-circle-question"></i></div>
+                <div style="font-size: 0.85rem; line-height: 1.4;">
+                  <strong>Chẩn đoán chưa rõ ràng</strong><br />
+                  <span style="color: var(--color-text-muted); font-size: 0.8rem;">Diagnostic uncertainty / AFB(-)</span>
+                </div>
+              </div>
+
+              <div style="background: var(--color-surface); border: 1px solid #fecdd3; border-radius: 6px; padding: 0.75rem; display: flex; align-items: center; gap: 0.65rem;">
+                <div style="color: #e11d48; font-size: 1.25rem;"><i class="fa-solid fa-heart-pulse"></i></div>
+                <div style="font-size: 0.85rem; line-height: 1.4;">
+                  <strong>Mẹ hoặc thai không ổn định</strong><br />
+                  <span style="color: var(--color-text-muted); font-size: 0.8rem;">Huyết động, suy thai, tiền sản giật</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- MŨI TÊN NỐI -->
+          <div style="text-align: center; color: #7c3aed; font-size: 1.3rem; margin: -0.25rem 0;"><i class="fa-solid fa-arrow-down"></i></div>
+
+          <!-- BƯỚC 6: MULTIDISCIPLINARY MANAGEMENT & KEY PRINCIPLES -->
+          <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1rem;">
             
-            <div style="border-left: 4px solid #10b981; background: var(--color-bg); padding: 1rem; border-radius: 4px;">
-              <div style="font-weight: 700; color: #10b981;">Nhánh 1: GeneXpert (+) &amp; Không kháng Rifampicin</div>
-              <p style="margin: 0.25rem 0 0 0; font-size: 0.88rem;">
-                &rarr; Khởi trị ngay phác đồ lao nhạy cảm hàng 1 chuẩn 6 tháng (<strong>2HRZE / 4HR</strong>).<br />
-                &rarr; Bắt buộc bổ sung Pyridoxine (B6) 25–50 mg/ngày.<br />
-                &rarr; Tiêm Vitamin K gần ngày dự sinh.
-              </p>
+            <!-- 4 CHUYÊN KHOA -->
+            <div style="border: 2px solid #7c3aed; background: rgba(124, 58, 237, 0.04); border-radius: 8px; padding: 1.25rem;">
+              <div style="font-weight: 700; color: #6d28d9; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.85rem;">
+                <i class="fa-solid fa-users"></i> 6. Quản Lý Đa Chuyên Khoa (Multidisciplinary Management)
+              </div>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem; font-size: 0.85rem;">
+                <div style="background: var(--color-surface); padding: 0.75rem; border-radius: 6px; border: 1px solid var(--color-border);">
+                  <div style="font-weight: 700; color: #e11d48;"><i class="fa-solid fa-baby-carriage"></i> Sản Khoa (Obstetrics)</div>
+                  <div style="margin-top: 0.25rem; font-size: 0.8rem;">Theo dõi sức khỏe mẹ - thai, tăng trưởng thai nhi và lập kế hoạch sinh an toàn.</div>
+                </div>
+                <div style="background: var(--color-surface); padding: 0.75rem; border-radius: 6px; border: 1px solid var(--color-border);">
+                  <div style="font-weight: 700; color: #16a34a;"><i class="fa-solid fa-user-doctor"></i> Bệnh Truyền Nhiễm (ID)</div>
+                  <div style="margin-top: 0.25rem; font-size: 0.8rem;">Chẩn đoán căn nguyên, lựa chọn phác đồ, theo dõi tương tác thuốc và tuân thủ.</div>
+                </div>
+                <div style="background: var(--color-surface); padding: 0.75rem; border-radius: 6px; border: 1px solid var(--color-border);">
+                  <div style="font-weight: 700; color: #2563eb;"><i class="fa-solid fa-lungs"></i> Hô Hấp (Pulmonology)</div>
+                  <div style="margin-top: 0.25rem; font-size: 0.8rem;">Đánh giá chức năng thông khí, xử trí tổn thương xơ sẹo, tràn khí và bóng khí phổi.</div>
+                </div>
+                <div style="background: var(--color-surface); padding: 0.75rem; border-radius: 6px; border: 1px solid var(--color-border);">
+                  <div style="font-weight: 700; color: #0891b2;"><i class="fa-solid fa-baby"></i> Sơ Sinh (Neonatology)</div>
+                  <div style="margin-top: 0.25rem; font-size: 0.8rem;">Lập kế hoạch đón bé, tầm soát lao bẩm sinh, điều trị dự phòng và tiêm chủng.</div>
+                </div>
+              </div>
             </div>
 
-            <div style="border-left: 4px solid #ef4444; background: var(--color-bg); padding: 1rem; border-radius: 4px;">
-              <div style="font-weight: 700; color: #ef4444;">Nhánh 2: Kháng Rifampicin (MDR-TB) hoặc Diễn tiến nặng</div>
-              <p style="margin: 0.25rem 0 0 0; font-size: 0.88rem;">
-                &rarr; Kích hoạt <strong>Hội chẩn đa chuyên khoa khẩn cấp</strong>.<br />
-                &rarr; Chuyển tuyến chuyên khoa Lao &amp; Bệnh Phổi / Bệnh Truyền nhiễm.<br />
-                &rarr; Thiết lập phác đồ hoàn toàn đường uống (All-oral MDR-TB).
-              </p>
+            <!-- KEY PRINCIPLES -->
+            <div style="border: 2px solid #3b82f6; background: rgba(59, 130, 246, 0.05); border-radius: 8px; padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <div style="font-weight: 700; color: #1d4ed8; font-size: 0.95rem; text-transform: uppercase; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.4rem;">
+                  <i class="fa-solid fa-shield-halved"></i> Key Principles (Nguyên Tắc Cốt Lõi)
+                </div>
+                <ul style="margin: 0 0 0 1rem; font-size: 0.88rem; line-height: 1.8;">
+                  <li><strong>Nghi ngờ sớm:</strong> Nhạy bén với triệu chứng chồng lấp thai kỳ.</li>
+                  <li><strong>Chẩn đoán kịp thời:</strong> Không trì hoãn vì e ngại bức xạ/xét nghiệm.</li>
+                  <li><strong>An toàn mẹ &amp; thai:</strong> Tối ưu hiệu lực và loại bỏ thuốc quái thai.</li>
+                  <li><strong>Kiểm soát lây nhiễm:</strong> Cách ly giọt bắn và bảo vệ trẻ sơ sinh.</li>
+                </ul>
+              </div>
+              <div style="margin-top: 0.75rem; padding: 0.4rem; background: #dbeafe; border-radius: 4px; font-size: 0.78rem; color: #1e40af; text-align: center; font-weight: 600;">
+                Tối ưu hóa kết cục cho cả mẹ và thai nhi
+              </div>
             </div>
 
-          </div>
-
-          <div style="text-align: center; color: var(--color-text-muted); font-size: 1.2rem;"><i class="fa-solid fa-arrow-down"></i></div>
-
-          <!-- BƯỚC 5 & 6: CHĂM SÓC ĐA CHUYÊN KHOA -->
-          <div style="border: 1px solid #f59e0b; background: rgba(245, 158, 11, 0.05); border-radius: 6px; padding: 1rem;">
-            <div style="font-weight: 700; color: #b45309; font-size: 0.95rem;">BƯỚC 5 &amp; 6: QUẢN LÝ LIÊN CHUYÊN KHOA &amp; KẾ HOẠCH SINH AN TOÀN</div>
-            <p style="margin: 0.5rem 0 0 0; font-size: 0.9rem; line-height: 1.6;">
-              • <strong>Sản khoa:</strong> Theo dõi tăng trưởng thai qua siêu âm mỗi 3–4 tuần (phát hiện sớm thai chậm tăng trưởng IUGR, viêm màng ối, đờ tử cung); rút ngắn giai đoạn 2 chuyển dạ nếu có bóng khí phổi.<br />
-              • <strong>Truyền nhiễm &amp; Hô hấp:</strong> Giám sát đáp ứng vi sinh (soi đờm tháng 2, 5, 6), theo dõi men gan AST/ALT định kỳ.<br />
-              • <strong>Sơ sinh:</strong> Đánh giá bánh nhau giải phẫu bệnh; tầm soát lao bẩm sinh theo tiêu chuẩn Cantwell; cách ly tạm thời nếu mẹ còn AFB dương tính.
-            </p>
           </div>
 
         </div>
@@ -825,10 +1076,48 @@ sections:
   <div class="sec-card" id="sec-sosinh-hauphu">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">👶</span>
-      <h2 class="sec-title">7. Lao Sơ Sinh, Bẩm Sinh (Cantwell Criteria), Chăm Sóc Hậu Sản &amp; Ngừa Thai</h2>
+      <h2 class="sec-title">7. Lao Ngoài Phổi (EPTB), Lao Sơ Sinh, Tiêu Chuẩn Cantwell, Hậu Sản &amp; Ngừa Thai</h2>
     </div>
     <div class="sec-body">
       
+      <!-- LAO NGOÀI PHỔI TRONG THAI KỲ (EPTB) -->
+      <div style="margin-bottom: 1.5rem; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 8px; padding: 1.25rem;">
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.75rem;">
+          <h3 style="margin: 0; font-size: 1.05rem; color: var(--color-primary); display: flex; align-items: center; gap: 0.5rem;">
+            <i class="fa-solid fa-viruses"></i> Lao Ngoài Phổi Trong Thai Kỳ (Extrapulmonary TB - EPTB)
+          </h3>
+          <span style="font-size: 0.75rem; background: rgba(225, 29, 72, 0.1); color: #e11d48; padding: 2px 8px; border-radius: 10px; font-weight: 700;">
+            Chiếm tới 66,6% tại Ấn Độ
+          </span>
+        </div>
+        <p style="font-size: 0.88rem; color: var(--color-text-muted); margin-bottom: 1rem; line-height: 1.6;">
+          Tại các quốc gia có gánh nặng lao cao, lao ngoài phổi chiếm tỷ lệ rất lớn ở phụ nữ trong độ tuổi sinh đẻ. Ba thể lâm sàng quan trọng nhất bao gồm:
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+          <div style="background: var(--color-bg); border-left: 4px solid #0284c7; padding: 0.85rem; border-radius: 4px;">
+            <div style="font-weight: 700; color: #0284c7; font-size: 0.9rem;">1. Lao Hạch Cổ (Tuberculous Lymphadenitis)</div>
+            <div style="font-size: 0.85rem; margin-top: 0.35rem; line-height: 1.6;">
+              Dạng hay gặp nhất trong các thể EPTB thai kỳ. Biểu hiện khối hạch cổ sưng to, chắc, dính cụm, không đau hoặc rò chất bã đậu mạn tính. Tiên lượng nhìn chung rất thuận lợi khi điều trị phác đồ chuẩn 6 tháng.
+            </div>
+          </div>
+
+          <div style="background: var(--color-bg); border-left: 4px solid #ef4444; padding: 0.85rem; border-radius: 4px;">
+            <div style="font-weight: 700; color: #ef4444; font-size: 0.9rem;">2. Lao Màng Não (Tuberculous Meningitis)</div>
+            <div style="font-size: 0.85rem; margin-top: 0.35rem; line-height: 1.6;">
+              Thể lao ngoài phổi nguy hiểm nhất, đe dọa trực tiếp tính mạng mẹ và thai nhi. Đòi hỏi chẩn đoán khẩn cấp (chọc dò dịch não tủy làm GeneXpert/Ultra), phối hợp sớm Corticosteroid (Dexamethasone) và kéo dài thời gian điều trị từ 9–12 tháng.
+            </div>
+          </div>
+
+          <div style="background: var(--color-bg); border-left: 4px solid #8b5cf6; padding: 0.85rem; border-radius: 4px;">
+            <div style="font-weight: 700; color: #8b5cf6; font-size: 0.9rem;">3. Lao Đường Sinh Dục (Genital TB)</div>
+            <div style="font-size: 0.85rem; margin-top: 0.35rem; line-height: 1.6;">
+              Tổn thương chủ yếu ở niêm mạc tử cung và hai vòi trứng, gây dính xơ tắc vòi trứng dẫn đến <strong>vô sinh thứ phát</strong>, rối loạn kinh nguyệt kéo dài và gia tăng nguy cơ <strong>thai ngoài tử cung</strong> nghiêm trọng.
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="updates-grid">
         <div class="update-card">
           <div class="update-card-accent" style="background: #06b6d4;"></div>
