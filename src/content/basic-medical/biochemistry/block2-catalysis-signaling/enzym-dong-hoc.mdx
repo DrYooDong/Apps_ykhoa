@@ -111,18 +111,64 @@ sections:
 ## 1. Bản Chất Xúc Tác, Năng Lượng Hoạt Hóa & Hệ Thống Phân Loại 7 Lớp IUBMB
 Enzym là những chất xúc tác sinh học có bản chất hầu hết là **protein** (ngoại lệ là các phân tử RNA xúc tác gọi là **Ribozym** như trong cấu trúc spliceosome hoặc peptidyl transferase của ribosome).
 
-```
-                 Trạng thái chuyển tiếp (Transition State ‡)
-                         / \
-                        /   \  <-- Năng lượng hoạt hóa không xúc tác (ΔG‡ rất cao)
-     Năng lượng        /     \
-        (G)           /  / \  \ <-- Năng lượng hoạt hóa có ENZYM XÚC TÁC (Được hạ thấp)
-                     /  /   \  \
-             Cơ chất --/-----\---\
-             (S)    /         \   \
-                   /           \   \___ Sản phẩm (P)
-                  /                 \
-```
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-chart-line" style="color: var(--color-primary, #0284c7);"></i> GIẢN ĐỒ NĂNG LƯỢNG HOẠT HÓA (ΔG‡) &amp; TRẠNG THÁI CHUYỂN TIẾP (‡)</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 250" width="880" height="250" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrAxis" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-text, #0f172a)"/>
+        </marker>
+        <marker id="arrRedE" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+        <marker id="arrBlueE" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+      </defs>
+
+      {/* Trục tọa độ */}
+      <line x1="80" y1="210" x2="80" y2="25" stroke="var(--color-text, #0f172a)" stroke-width="2" marker-end="url(#arrAxis)"/>
+      <line x1="80" y1="210" x2="820" y2="210" stroke="var(--color-text, #0f172a)" stroke-width="2" marker-end="url(#arrAxis)"/>
+      <text x="70" y="20" text-anchor="end" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="var(--color-text, #0f172a)">Năng Lượng Tự Do (G)</text>
+      <text x="820" y="228" text-anchor="end" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">Tiến Trình Phản Ứng ➔</text>
+
+      {/* Đường mức mức cơ chất S */}
+      <line x1="80" y1="140" x2="200" y2="140" stroke="#0284c7" stroke-width="3"/>
+      <rect x="90" y="115" width="100" height="22" rx="4" fill="rgba(2, 132, 199, 0.12)"/>
+      <text x="140" y="130" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#0284c7">CƠ CHẤT [S]</text>
+
+      {/* Đường mức sản phẩm P */}
+      <line x1="680" y1="180" x2="800" y2="180" stroke="#059669" stroke-width="3"/>
+      <rect x="690" y="155" width="100" height="22" rx="4" fill="rgba(16, 185, 129, 0.12)"/>
+      <text x="740" y="170" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#059669">SẢN PHẨM [P]</text>
+
+      {/* Đường cong KHÔNG XÚC TÁC (Đỏ nét đứt) */}
+      <path d="M 200 140 C 270 140, 360 40, 440 40 C 520 40, 610 180, 680 180" fill="none" stroke="#dc2626" stroke-width="2.5" stroke-dasharray="6,4"/>
+      <circle cx="440" cy="40" r="5" fill="#dc2626"/>
+      <text x="440" y="30" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#dc2626">Trạng thái chuyển tiếp ‡ (Không xúc tác: ΔG‡ rất cao)</text>
+
+      {/* Đường cong CÓ ENZYME XÚC TÁC (Xanh nét liền) */}
+      <path d="M 200 140 C 270 140, 360 90, 440 90 C 520 90, 610 180, 680 180" fill="none" stroke="#0284c7" stroke-width="3"/>
+      <circle cx="440" cy="90" r="6" fill="#0284c7"/>
+      <text x="440" y="112" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#0284c7">Trạng thái chuyển tiếp ‡ (Có enzym: ΔG‡ được hạ thấp)</text>
+
+      {/* Mũi tên so sánh năng lượng hoạt hóa */}
+      <line x1="300" y1="140" x2="300" y2="45" stroke="#dc2626" stroke-width="1.5" marker-end="url(#arrRedE)"/>
+      <text x="305" y="85" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="#dc2626">ΔG‡ không xúc tác</text>
+
+      <line x1="560" y1="140" x2="560" y2="95" stroke="#0284c7" stroke-width="1.5" marker-end="url(#arrBlueE)"/>
+      <text x="565" y="120" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="#0284c7">ΔG‡ có xúc tác</text>
+
+      {/* Độ chênh lệch ΔG phản ứng tổng thể */}
+      <line x1="790" y1="140" x2="790" y2="180" stroke="var(--color-text-muted, #475569)" stroke-width="1.5" stroke-dasharray="3,3"/>
+      <text x="800" y="163" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="var(--color-text, #0f172a)">ΔG &lt; 0 (Tự phát, không đổi)</text>
+    </svg>
+  </div>
+</div>
 
 - **Quy luật nhiệt động học**: Enzym **hạ thấp năng lượng hoạt hóa ($\Delta G^\ddagger$)** bằng cách ổn định hóa trạng thái chuyển tiếp, nhưng **tuyệt đối không làm thay đổi $\Delta G$ tổng thể** hay hằng số cân bằng ($K_{eq}$) của phản ứng.
 - **Đơn vị đo hoạt tính**:
@@ -196,17 +242,53 @@ Enzym là những chất xúc tác sinh học có bản chất hầu hết là *
 ## 2. Cấu Trúc Holoenzym, Trung Tâm Hoạt Động & Cơ Chế Xúc Tác Cảm Ứng
 $$\mathbf{\text{Holoenzym (Hoạt tính đầy đủ)}} = \mathbf{\text{Apoenzym (Protein)}} + \mathbf{\text{Cofactor (Phi protein)}}$$
 
-```
-                   [ HOLOENZYM HOÀN CHỈNH ]
-                  /                        \
-      [ APOENZYM (Phần Protein) ]    [ COFACTOR (Phần Phi Protein) ]
-      - Kém bền nhiệt                - Bền nhiệt
-      - Quyết định tính đặc hiệu     - Trực tiếp tham gia cơ chế phản ứng
-                                    /                           \
-                        [ ION KIM LOẠI ]                [ COENZYM (Hợp chất hữu cơ) ]
-                        - Metal-activated (gắn lỏng)     - Cosubstrate (gắn lỏng: NAD+, CoA)
-                        - Metalloenzymes (gắn chặt)      - Prosthetic group (gắn chặt: FAD, PLP, Biotin)
-```
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-sitemap" style="color: var(--color-primary, #0284c7);"></i> MÔ HÌNH CẤU TRÚC PHÂN CẤP CỦA HOLOENZYM</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 230" width="880" height="230" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrTree" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+      </defs>
+
+      {/* Node Gốc: Holoenzyme */}
+      <rect x="290" y="15" width="300" height="50" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="#0284c7" stroke-width="2"/>
+      <text x="440" y="36" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="13" fill="var(--color-primary, #0284c7)">HOLOENZYM HOÀN CHỈNH</text>
+      <text x="440" y="52" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Trạng thái phức hợp có hoạt tính xúc tác sinh học</text>
+
+      {/* Nhánh 1: Apoenzyme */}
+      <path d="M 340 65 L 340 85 L 180 85 L 180 95" fill="none" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrTree)"/>
+      <rect x="40" y="95" width="280" height="115" rx="8" fill="rgba(2, 132, 199, 0.06)" stroke="#0284c7" stroke-width="1.5"/>
+      <text x="180" y="118" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-primary, #0284c7)">APOENZYM (Phần Protein)</text>
+      <line x1="55" y1="128" x2="305" y2="128" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="55" y="148" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Bản chất đại phân tử Polypeptide</text>
+      <text x="55" y="168" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Kém bền nhiệt, dễ bị biến tính</text>
+      <text x="55" y="188" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10.5" fill="var(--color-danger, #dc2626)">• Quyết định tính đặc hiệu cơ chất</text>
+
+      {/* Nhánh 2: Cofactor */}
+      <path d="M 540 65 L 540 85 L 610 85 L 610 95" fill="none" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrTree)"/>
+      <rect x="350" y="95" width="490" height="115" rx="8" fill="rgba(245, 158, 11, 0.06)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
+      <text x="595" y="118" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">COFACTOR (Phần Phi Protein — Bền nhiệt, trực tiếp xúc tác)</text>
+      <line x1="365" y1="128" x2="825" y2="128" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+
+      {/* Phân nhánh con 1: Ion kim loại */}
+      <rect x="365" y="135" width="225" height="65" rx="6" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="477.5" y="153" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">Ion Kim Loại</text>
+      <text x="375" y="171" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text-muted, #475569)">• Hoạt hóa (Gắn lỏng): Mg²⁺, K⁺</text>
+      <text x="375" y="187" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text-muted, #475569)">• Metalloenzyme (Gắn chặt): Zn²⁺, Fe²⁺</text>
+
+      {/* Phân nhánh con 2: Coenzyme */}
+      <rect x="605" y="135" width="225" height="65" rx="6" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="717.5" y="153" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">Coenzyme (Chất hữu cơ)</text>
+      <text x="615" y="171" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text-muted, #475569)">• Cosubstrate (Gắn lỏng): NAD⁺, CoA</text>
+      <text x="615" y="187" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text-muted, #475569)">• Nhóm ngoại (Gắn chặt): FAD, PLP, Biotin</text>
+    </svg>
+  </div>
+</div>
 
 - **Trung tâm hoạt động (Active Site)**: Gồm **Vùng gắn cơ chất (Binding site)** định vị cơ chất và **Vùng xúc tác (Catalytic site)** trực tiếp bẻ gãy liên kết (ví dụ: bộ ba xúc tác Ser-His-Asp trong Serine protease).
 - **Mô hình Khóa & Chìa (Fischer, 1894)**: Tương tác tĩnh, cứng nhắc $\rightarrow$ Được thay thế bởi **Mô hình Tiếp xúc Cảm ứng (Induced Fit - Koshland, 1958)**: Cơ chất cảm ứng làm thay đổi cấu hình linh động của trung tâm hoạt động để ôm kẹp lấy cơ chất và ổn định trạng thái chuyển tiếp.
@@ -242,21 +324,13 @@ $$\mathbf{v_0 = \frac{V_{max}[S]}{K_m + [S]}} \quad \text{với} \quad \mathbf{K
         </marker>
       </defs>
 
-      {/* Single Node: Vận tốc (v0) */}
-      <rect x="169.25" y="20" width="541.5" height="96" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">Vận tốc (v0)</text>
-      <text x="193.25" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Vmax ┼─────────────────────────────── (Đường tiệm cận bão</text>
-      <text x="193.25" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  hòa: Phản ứng bậc 0)</text>
-      <text x="193.25" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Vmax/2 ┼───────────────────* /</text>
-      <line x1="440" y1="116" x2="440" y2="144" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: S */}
-      <rect x="250" y="144" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="166" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">S</text>
-      <line x1="440" y1="190" x2="440" y2="218" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: S */}
-      <rect x="250" y="218" width="380" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="240" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">S</text>
-      <text x="274" y="262" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• 0 Km</text>
+      {/* Single Node: Động học Michaelis-Menten */}
+      <rect x="140" y="20" width="600" height="130" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
+      <text x="440" y="44" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="13" fill="var(--amber, #d97706)">ĐẶC TRƯNG ĐỘNG HỌC MICHAELIS-MENTEN (Đồ thị Hyperbol v0 theo [S])</text>
+      <text x="165" y="72" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Vmax: Tốc độ cực đại khi toàn bộ phân tử enzym đều bão hòa bởi cơ chất (Phản ứng bậc 0)</text>
+      <text x="165" y="94" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Vmax / 2: Nửa tốc độ cực đại (Điểm mốc đối chiếu nồng độ cơ chất để xác định Km)</text>
+      <text x="165" y="116" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Km (Hằng số Michaelis): Nồng độ [S] tại đó v0 = 1/2 Vmax; Km tỷ lệ nghịch với ái lực</text>
+      <text x="165" y="138" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Khi [S] &lt;&lt; Km: v0 ≈ (Vmax/Km)[S] (Bậc 1); Khi [S] &gt;&gt; Km: v0 ≈ Vmax (Bậc 0)</text>
     </svg>
   </div>
 </div>
@@ -275,38 +349,25 @@ $$\mathbf{v_0 = \frac{V_{max}[S]}{K_m + [S]}} \quad \text{với} \quad \mathbf{K
 
 $$\mathbf{\frac{1}{v_0} = \left(\frac{K_m}{V_{max}}\right) \frac{1}{[S]} + \frac{1}{V_{max}}}$$
 
-
 <div class="flowchart-card">
   <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: S</div>
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: ĐẶC TRƯNG ĐỒ THỊ NGHỊCH ĐẢO KÉP LINEWEAVER-BURK</div>
     <span class="badge badge-blue">Pure Orthogonal SVG</span>
   </div>
   <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 206" width="880" height="206" xmlns="http://www.w3.org/2000/svg">
+    <svg class="flowchart-svg" viewBox="0 0 880 150" width="880" height="150" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
         </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
-        </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
-        </marker>
       </defs>
 
-      {/* Single Node: 1/v0 */}
-      <rect x="250" y="20" width="380" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">1/v0</text>
-      <text x="274" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• 1/Vmax ┼──────*</text>
-      <line x1="440" y1="80" x2="440" y2="108" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: S */}
-      <rect x="250" y="108" width="380" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="130" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">S</text>
-      <text x="274" y="152" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• 1/Km 0</text>
+      {/* Single Node: Lineweaver-Burk */}
+      <rect x="140" y="20" width="600" height="110" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+      <text x="440" y="44" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="13" fill="var(--color-text, #0f172a)">ĐẶC TRƯNG HÌNH HỌC ĐỒ THỊ LINEWEAVER-BURK (1/v0 theo 1/[S])</text>
+      <text x="165" y="70" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Giao điểm trục tung (y-intercept): 1 / Vmax (Xác định vận tốc tối đa)</text>
+      <text x="165" y="92" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Giao điểm trục hoành (x-intercept): -1 / Km (Xác định hằng số ái lực Km)</text>
+      <text x="165" y="114" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-primary, #0284c7)" font-weight="700">• Độ dốc đường thẳng (Slope): Km / Vmax (Phân biệt rõ cơ chế các chất ức chế enzym)</text>
     </svg>
   </div>
 </div>
@@ -387,9 +448,9 @@ Các enzym dị lập thể là các protein đa bán đơn vị có trung tâm 
       {/* Single Node: TRẠNG THÁI T (Tense - Dạng căn */}
       <rect x="155" y="20" width="570" height="96" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
       <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">TRẠNG THÁI T (Tense - Dạng căng): Ái lực rất thấp với</text>
-      <text x="440" y="60" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--amber, #d97706)">cơ chất ◄─── Gắn chất ức chế dị lập thể (-)</text>
+      <text x="440" y="60" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--amber, #d97706)">cơ chất ◄ Gắn chất ức chế dị lập thể (-)</text>
       <text x="179" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• TRẠNG THÁI R (Relaxed - Dạng giãn): Ái lực rất cao với cơ</text>
-      <text x="179" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  chất ◄─── Gắn chất hoạt hóa dị lập thể (+) / Cơ chất</text>
+      <text x="179" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  chất ◄ Gắn chất hoạt hóa dị lập thể (+) / Cơ chất</text>
     </svg>
   </div>
 </div>
@@ -420,7 +481,7 @@ Các enzym dị lập thể là các protein đa bán đơn vị có trung tâm 
       {/* Single Node: Vận tốc (v0) */}
       <rect x="199.00000000000003" y="20" width="481.99999999999994" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
       <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Vận tốc (v0)</text>
-      <text x="223.00000000000003" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ▲ /─── Trạng thái R (Được hoạt hóa: Đường dốc hơn)</text>
+      <text x="223.00000000000003" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ▲ / Trạng thái R (Được hoạt hóa: Đường dốc hơn)</text>
       <line x1="440" y1="80" x2="440" y2="108" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
       {/* Single Node: ĐƯỜNG CONG CHỮ S (SIGMOID) */}
       <rect x="250" y="108" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>

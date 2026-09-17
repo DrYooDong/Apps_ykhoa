@@ -110,14 +110,63 @@ sections:
 ## 1. Tiêu Hóa, Hấp Thu Monosaccharide & Diễn Biến 10 Phản Ứng Của Đường Phân (HDP)
 Glucid thức ăn cung cấp khoảng **60% tổng nhu cầu năng lượng** hàng ngày của cơ thể. 
 
-```
-  TIÊU HÓA VÀ HẤP THU MONOSACCHARIDE TẠI ỐNG TIÊU HÓA:
-  Tinh bột / Glycogen ──(α-Amylase nước bọt & tụy)──► Oligosaccharide, Dextrin, Maltose
-  ──(Disaccharidases vi nhung mao ruột: Maltase, Lactase, Sacarase)──► Monosaccharide tự do:
-      • Glucose & Galactose: Đồng vận chuyển tích cực thứ cấp qua màng đỉnh bởi SGLT-1 (nhờ gradient Na+).
-      • Fructose: Khuếch tán thuận lợi gia tốc qua màng đỉnh bởi GLUT-5.
-      • Màng đáy: Cả 3 monosaccharide cùng khuếch tán vào tĩnh mạch cửa về gan qua GLUT-2.
-```
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-cookie-bite" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: TIÊU HÓA &amp; HẤP THU MONOSACCHARIDE QUA TẾ BÀO BIỂU MÔ RUỘT (ENTEROCYTE)</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 280" width="880" height="280" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue24" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen24" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber24" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+      </defs>
+
+      {/* TOP: TIÊU HÓA THỦY PHÂN Ở LÒNG RUỘT */}
+      <rect x="25" y="15" width="830" height="52" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.4"/>
+      <text x="45" y="34" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#0284c7">GIAI ĐOẠN 1: THỦY PHÂN TRONG LÒNG ỐNG TIÊU HÓA &amp; BỜ BÀN CHẢI</text>
+      <text x="45" y="52" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">Tinh bột / Glycogen (α-Amylase nước bọt &amp; tụy)► Dextrin, Maltose (Maltase, Lactase, Sacarase vi nhung mao)► Glucose, Galactose, Fructose</text>
+
+      {/* THREE ENTEROCYTE TRANSPORT COLUMNS */}
+      {/* COLUMN 1: SGLT-1 (Glucose & Galactose) */}
+      <rect x="25" y="80" width="265" height="180" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="#0284c7" stroke-width="1.6"/>
+      <rect x="35" y="90" width="245" height="24" rx="5" fill="#e0f2fe"/>
+      <text x="157" y="106" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#0369a1">MÀNG ĐỈNH: KÊNH SGLT-1</text>
+      <text x="40" y="132" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#0284c7">Glucose &amp; Galactose</text>
+      <text x="40" y="152" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Đồng vận chuyển tích cực thứ cấp</text>
+      <text x="40" y="172" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Tỷ lệ ghép cặp: 2 Na⁺ : 1 Hexose</text>
+      <text x="40" y="196" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="#dc2626">Nguyên lý gói ORESOL (ORS):</text>
+      <text x="40" y="214" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">Na⁺ kéo nước vào qua SGLT-1 cứu sống tiêu chảy mất nước</text>
+
+      {/* COLUMN 2: GLUT-5 (Fructose) */}
+      <rect x="305" y="80" width="265" height="180" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="#d97706" stroke-width="1.6"/>
+      <rect x="315" y="90" width="245" height="24" rx="5" fill="#fef3c7"/>
+      <text x="437" y="106" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#b45309">MÀNG ĐỈNH: KÊNH GLUT-5</text>
+      <text x="320" y="132" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#d97706">Fructose (Đường Quả)</text>
+      <text x="320" y="152" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Khuếch tán thuận lợi gia tốc</text>
+      <text x="320" y="172" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Hoàn toàn không phụ thuộc Na⁺</text>
+      <text x="320" y="196" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="#d97706">Dung nạp hạn chế ở người:</text>
+      <text x="320" y="214" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">Ăn quá nhiều Fructose gây đầy hơi, chướng bụng, tiêu chảy thẩm thấu</text>
+
+      {/* COLUMN 3: GLUT-2 & Na+/K+-ATPase (Màng đáy) */}
+      <rect x="585" y="80" width="270" height="180" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="#059669" stroke-width="1.6"/>
+      <rect x="595" y="90" width="250" height="24" rx="5" fill="#dcfce7"/>
+      <text x="720" y="106" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#15803d">MÀNG ĐÁY BÊN: GLUT-2 &amp; BƠM Na⁺</text>
+      <text x="600" y="132" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#059669">Vào Tuần Hoàn Cửa Về Gan:</text>
+      <text x="600" y="152" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Cả 3 đường khuếch tán qua GLUT-2</text>
+      <text x="600" y="172" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Bơm Na⁺/K⁺-ATPase tiêu thụ ATP</text>
+      <text x="600" y="196" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="#059669">Động lực học toàn hệ thống:</text>
+      <text x="600" y="214" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">Duy trì gradient nồng độ Na⁺ thấp nội bào cho màng đỉnh hoạt động</text>
+    </svg>
+  </div>
+</div>
 
 ---
 
@@ -151,24 +200,24 @@ Xảy ra hoàn toàn trong **bào tương (cytosol)** của mọi tế bào, chi
       {/* Single Node: GIAI ĐOẠN 1: HOẠT HÓA TIÊU TỐN */}
       <rect x="170" y="20" width="540" height="150" rx="10" fill="var(--blue-bg, #eff6ff)" stroke="var(--blue, #0284c7)" stroke-width="1.8"/>
       <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-primary, #0284c7)">GIAI ĐOẠN 1: HOẠT HÓA TIÊU TỐN NĂNG LƯỢNG (-2 ATP)</text>
-      <text x="194" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Glucose ──(1. Hexokinase/Glucokinase + ATP)──► G6P ──(2.</text>
-      <text x="194" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  Phosphohexose Isomerase)──► F6P</text>
-      <text x="194" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ──(3. PFK-1 + ATP - ĐIỀU HÒA CHÍNH)──►</text>
+      <text x="194" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Glucose (1. Hexokinase/Glucokinase + ATP)► G6P (2.</text>
+      <text x="194" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  Phosphohexose Isomerase)► F6P</text>
+      <text x="194" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• (3. PFK-1 + ATP - ĐIỀU HÒA CHÍNH)►</text>
       <text x="194" y="118" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  Fructose-1,6-bisphosphate (F1,6BP)</text>
-      <text x="194" y="136" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ──(4. Aldolase)──► DHAP + GAP ──(5. Triose Phosphate</text>
-      <text x="194" y="154" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  Isomerase)──► 2 x Glyceraldehyde-3-P (GAP)</text>
+      <text x="194" y="136" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• (4. Aldolase)► DHAP + GAP (5. Triose Phosphate</text>
+      <text x="194" y="154" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  Isomerase)► 2 x Glyceraldehyde-3-P (GAP)</text>
       <line x1="440" y1="170" x2="440" y2="198" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
       {/* Single Node: GIAI ĐOẠN 2: OXY HÓA THU NĂNG  */}
       <rect x="155" y="198" width="570" height="204" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
       <text x="440" y="220" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">GIAI ĐOẠN 2: OXY HÓA THU NĂNG LƯỢNG (+4 ATP + 2 NADH)</text>
-      <text x="179" y="242" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• 2 GAP ──(6. GAPDH + 2 NAD+ + 2 Pi)──► 2 x</text>
+      <text x="179" y="242" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• 2 GAP (6. GAPDH + 2 NAD+ + 2 Pi)► 2 x</text>
       <text x="179" y="260" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  1,3-Bisphosphoglycerate (1,3-BPG) + 2 NADH</text>
-      <text x="179" y="278" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ──(7. Phosphoglycerate Kinase + 2 ADP)──► 2 x</text>
+      <text x="179" y="278" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• (7. Phosphoglycerate Kinase + 2 ADP)► 2 x</text>
       <text x="179" y="296" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  3-Phosphoglycerate + 2 ATP (Mức cơ chất 1)</text>
-      <text x="179" y="314" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ──(8. Phosphoglycerate Mutase)──► 2 x 2-Phosphoglycerate</text>
-      <text x="179" y="332" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ──(9. Enolase - BỊ NaF ỨC CHẾ)──► 2 x Phosphoenolpyruvate</text>
+      <text x="179" y="314" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• (8. Phosphoglycerate Mutase)► 2 x 2-Phosphoglycerate</text>
+      <text x="179" y="332" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• (9. Enolase - BỊ NaF ỨC CHẾ)► 2 x Phosphoenolpyruvate</text>
       <text x="179" y="350" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  (PEP) + 2 H2O</text>
-      <text x="179" y="368" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ──(10. Pyruvate Kinase + 2 ADP)──► 2 x PYRUVATE + 2 ATP (Mức</text>
+      <text x="179" y="368" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• (10. Pyruvate Kinase + 2 ADP)► 2 x PYRUVATE + 2 ATP (Mức</text>
       <text x="179" y="386" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  cơ chất 2)</text>
     </svg>
   </div>
@@ -250,7 +299,7 @@ Xảy ra hoàn toàn trong **bào tương (cytosol)** của mọi tế bào, chi
       <line x1="470" y1="162" x2="820" y2="162" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
       <text x="470" y="178" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ▼ (Vào chất nền ty thể)</text>
       <text x="470" y="196" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Phức hợp Pyruvate Dehydrogenase (PDH)</text>
-      <text x="470" y="214" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Pyruvate + NAD+ + CoA ──► Acetyl-CoA +</text>
+      <text x="470" y="214" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Pyruvate + NAD+ + CoA ► Acetyl-CoA +</text>
       <text x="470" y="232" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  CO2 + NADH</text>
       <text x="470" y="250" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• trì GAPDH)▼ (Cơ vận động nặng) ▼</text>
       <path d="M 440 260 L 440 274 L 155 274 L 155 288" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
@@ -262,15 +311,15 @@ Xảy ra hoàn toàn trong **bào tương (cytosol)** của mọi tế bào, chi
       <rect x="315" y="288" width="250" height="90" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
       <text x="440" y="310" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text, #0f172a)">CHU TRÌNH CORI</text>
       <line x1="330" y1="318" x2="550" y2="318" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="327" y="334" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Lactate cơ ──(Máu)──► Gan</text>
-      <text x="327" y="352" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• ──(Tâ</text>
-      <text x="327" y="370" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• ──(</text>
+      <text x="327" y="334" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Lactate cơ (Máu)► Gan</text>
+      <text x="327" y="352" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• (Tâ</text>
+      <text x="327" y="370" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• (</text>
       <rect x="600" y="288" width="250" height="90" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
       <text x="725" y="310" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text, #0f172a)">2 VÒNG CHU TRÌNH KREBS &amp; ETC</text>
       <line x1="615" y1="318" x2="835" y2="318" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
       <text x="612" y="334" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• 10 ATP/Acetyl-CoA x 2 = +20 ATP</text>
-      <text x="612" y="352" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• n tạo đường)──► Glucose</text>
-      <text x="612" y="370" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Máu)──► Trả lại Cơ vân.</text>
+      <text x="612" y="352" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• n tạo đường)► Glucose</text>
+      <text x="612" y="370" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Máu)► Trả lại Cơ vân.</text>
     </svg>
   </div>
 </div>
@@ -344,17 +393,17 @@ Con đường HMP Shunt xảy ra trong bào tương, **không tạo ra ATP**, cu
       {/* Single Node: 1. GIAI ĐOẠN OXY HÓA KHÔNG THU */}
       <rect x="160" y="20" width="560" height="114" rx="10" fill="var(--blue-bg, #eff6ff)" stroke="var(--blue, #0284c7)" stroke-width="1.8"/>
       <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-primary, #0284c7)">1. GIAI ĐOẠN OXY HÓA KHÔNG THUẬN NGHỊCH (Sinh NADPH)</text>
-      <text x="184" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Glucose-6-phosphate ──(G6PD + NADP+ - BƯỚC ĐIỀU HÒA</text>
-      <text x="184" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  CHÍNH)──► 6-Phosphogluconolactone + NADPH</text>
-      <text x="184" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ──(Lactonase + H2O)──► 6-Phosphogluconate ──(6-PGDH +</text>
-      <text x="184" y="118" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  NADP+)──► Ribulose-5-phosphate + CO2 + NADPH</text>
+      <text x="184" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Glucose-6-phosphate (G6PD + NADP+ - BƯỚC ĐIỀU HÒA</text>
+      <text x="184" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  CHÍNH)► 6-Phosphogluconolactone + NADPH</text>
+      <text x="184" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• (Lactonase + H2O)► 6-Phosphogluconate (6-PGDH +</text>
+      <text x="184" y="118" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  NADP+)► Ribulose-5-phosphate + CO2 + NADPH</text>
       <line x1="440" y1="134" x2="440" y2="162" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
       {/* Single Node: 2. GIAI ĐOẠN BIẾN ĐỔI KHÔNG OX */}
       <rect x="169.25" y="162" width="541.5" height="114" rx="10" fill="var(--blue-bg, #eff6ff)" stroke="var(--blue, #0284c7)" stroke-width="1.8"/>
       <text x="440" y="184" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-primary, #0284c7)">2. GIAI ĐOẠN BIẾN ĐỔI KHÔNG OXY HÓA THUẬN NGHỊCH</text>
-      <text x="193.25" y="206" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Ribulose-5-P ──► Ribose-5-P (Tổng hợp DNA/RNA) +</text>
+      <text x="193.25" y="206" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Ribulose-5-P ► Ribose-5-P (Tổng hợp DNA/RNA) +</text>
       <text x="193.25" y="224" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  Xylulose-5-P</text>
-      <text x="193.25" y="242" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• ──(Transketolase cần TPP / Vitamin B1 &amp; Transaldolase)──►</text>
+      <text x="193.25" y="242" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• (Transketolase cần TPP / Vitamin B1 &amp; Transaldolase)►</text>
       <text x="193.25" y="260" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  Tái tạo Fructose-6-P &amp; GAP đi vào Đường phân.</text>
     </svg>
   </div>
@@ -400,22 +449,22 @@ $$\text{G-S-S-G} + \text{NADPH} + \text{H}^+ \xrightarrow{\text{Glutathione Redu
       {/* Single Node: SINH TỔNG HỢP GLYCOGEN (GLYCOG */}
       <rect x="165" y="20" width="550" height="150" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
       <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">SINH TỔNG HỢP GLYCOGEN (GLYCOGENESIS)</text>
-      <text x="189" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Glucose ──► G6P ──► G1P ──(UDP-Glucose Pyrophosphorylase +</text>
-      <text x="189" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  UTP)──► UDP-Glucose</text>
-      <text x="189" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ──(Gắn vào mồi Glycogenin)──► Glycogen Synthase (Kéo dài</text>
+      <text x="189" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Glucose ► G6P ► G1P (UDP-Glucose Pyrophosphorylase +</text>
+      <text x="189" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  UTP)► UDP-Glucose</text>
+      <text x="189" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• (Gắn vào mồi Glycogenin)► Glycogen Synthase (Kéo dài</text>
       <text x="189" y="118" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  liên kết α-1,4)</text>
-      <text x="189" y="136" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ──(Branching Enzyme: Amylo-α-1,4 -&gt; α-1,6</text>
-      <text x="189" y="154" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  Transglucosidase)──► TẠO ĐIỂM NHÁNH LIÊN KẾT α-1,6.</text>
+      <text x="189" y="136" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• (Branching Enzyme: Amylo-α-1,4 -&gt; α-1,6</text>
+      <text x="189" y="154" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  Transglucosidase)► TẠO ĐIỂM NHÁNH LIÊN KẾT α-1,6.</text>
       <line x1="440" y1="170" x2="440" y2="198" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
       {/* Single Node: PHÂN GIẢI GLYCOGEN (GLYCOGENOL */}
       <rect x="160.75" y="198" width="558.5" height="150" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
       <text x="440" y="220" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">PHÂN GIẢI GLYCOGEN (GLYCOGENOLYSIS)</text>
-      <text x="184.75" y="242" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Glycogen ──(Glycogen Phosphorylase cần PLP / Vitamin B6)──►</text>
+      <text x="184.75" y="242" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Glycogen (Glycogen Phosphorylase cần PLP / Vitamin B6)►</text>
       <text x="184.75" y="260" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  Cắt liên kết α-1,4 giải phóng Glucose-1-P (9/10)</text>
-      <text x="184.75" y="278" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ──(Dừng lại cách điểm nhánh 4 gốc: Dextrin giới hạn)</text>
-      <text x="184.75" y="296" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ──(Debranching Enzyme: Glucan Transferase dời 3 gốc &amp;</text>
+      <text x="184.75" y="278" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• (Dừng lại cách điểm nhánh 4 gốc: Dextrin giới hạn)</text>
+      <text x="184.75" y="296" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• (Debranching Enzyme: Glucan Transferase dời 3 gốc &amp;</text>
       <text x="184.75" y="314" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  Amylo-α-1,6-Glucosidase thủy phân điểm nhánh)</text>
-      <text x="184.75" y="332" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ──► Giải phóng Glucose tự do (1/10).</text>
+      <text x="184.75" y="332" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ► Giải phóng Glucose tự do (1/10).</text>
     </svg>
   </div>
 </div>
@@ -447,17 +496,42 @@ $$\text{G-S-S-G} + \text{NADPH} + \text{H}^+ \xrightarrow{\text{Glutathione Redu
 ## 5. Con Đường Tân Tạo Đường (Gluconeogenesis) & Điều Hòa Dị Lập Thể Bởi F-2,6-BP
 Xảy ra chủ yếu ở **Gan (90%)** và **Vỏ thận (10%)** để duy trì đường huyết cho não và hồng cầu khi nhịn đói kéo dài.
 
-```
-  4 ENZYME ĐẶC HIỆU VƯỢT 3 BƯỚC MỘT CHIỀU CỦA ĐƯỜNG PHÂN:
-  1. Vượt Pyruvate Kinase:
-     • Tại Ty thể: Pyruvate + CO2 + ATP ──(Pyruvate Carboxylase cần Biotin & Acetyl-CoA hoạt hóa)──► Oxaloacetate
-       (Khử thành Malate để vượt màng ty thể ra bào tương rồi oxy hóa lại thành Oxaloacetate).
-     • Tại Bào tương: Oxaloacetate + GTP ──(PEPCK)──► Phosphoenolpyruvate (PEP) + GDP + CO2.
-  2. Vượt PFK-1:
-     • Fructose-1,6-bisphosphate + H2O ──(Fructose-1,6-bisphosphatase-1 / FBPase-1)──► Fructose-6-P + Pi.
-  3. Vượt Hexokinase:
-     • Glucose-6-phosphate + H2O ──(Glucose-6-Phosphatase trên màng ER)──► GLUCOSE TỰ DO + Pi.
-```
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> 4 ENZYME ĐẶC HIỆU VƯỢT 3 BƯỚC MỘT CHIỀU ĐƯỜNG PHÂN (TÂN TẠO ĐƯỜNG)</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 270" width="880" height="270" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrGluco" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreenG" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+      </defs>
+
+      {/* Chốt chặn 1 */}
+      <rect x="40" y="20" width="800" height="75" rx="8" fill="rgba(2, 132, 199, 0.06)" stroke="#0284c7" stroke-width="1.5"/>
+      <text x="60" y="42" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-primary, #0284c7)">1. VƯỢT CHỐT CHẶN PYRUVATE KINASE (2 BƯỚC QUA TY THỂ &amp; BÀO TƯƠNG)</text>
+      <text x="60" y="62" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Ty thể: Pyruvate + CO₂ + ATP (Pyruvate Carboxylase cần Biotin &amp; Acetyl-CoA)► Oxaloacetate (Khử ra Malate)</text>
+      <text x="60" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Bào tương: Oxaloacetate + GTP (Phosphoenolpyruvate Carboxykinase - PEPCK)► Phosphoenolpyruvate (PEP) + GDP + CO₂</text>
+
+      {/* Chốt chặn 2 */}
+      <rect x="40" y="105" width="800" height="70" rx="8" fill="rgba(245, 158, 11, 0.06)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
+      <text x="60" y="127" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">2. VƯỢT CHỐT CHẶN PHOSPHOFRUCTOKINASE-1 (PFK-1)</text>
+      <text x="60" y="147" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Fructose-1,6-bisphosphate + H₂O (Fructose-1,6-bisphosphatase-1 / FBPase-1)► Fructose-6-Phosphate + Pi</text>
+      <text x="60" y="165" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Điểm chốt chặn dị lập thể: Bị ức chế mạnh bởi AMP &amp; Fructose-2,6-bisphosphate; Kích hoạt bởi Citrate</text>
+
+      {/* Chốt chặn 3 */}
+      <rect x="40" y="185" width="800" height="70" rx="8" fill="rgba(16, 185, 129, 0.06)" stroke="var(--color-success, #10b981)" stroke-width="1.5"/>
+      <text x="60" y="207" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-success, #10b981)">3. VƯỢT CHỐT CHẶN GLUCOKINASE / HEXOKINASE (MÀNG LƯỚI NỘI SINH CHẤT ER)</text>
+      <text x="60" y="227" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Glucose-6-phosphate + H₂O (Glucose-6-Phosphatase trên màng ER gan/thận)► GLUCOSE TỰ DO + Pi</text>
+      <text x="60" y="245" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10.5" fill="var(--color-primary, #0284c7)">• Phóng thích Glucose tự do vào máu duy trì đường huyết (Cơ vân không có enzyme này nên không thả đường vào máu)</text>
+    </svg>
+  </div>
+</div>
 
 - **Chi phí năng lượng**: Tổng hợp 1 phân tử Glucose từ 2 Pyruvate tiêu tốn **4 ATP + 2 GTP + 2 NADH** (được cung cấp từ quá trình $\beta$-oxy hóa acid béo).
 
@@ -465,13 +539,44 @@ Xảy ra chủ yếu ở **Gan (90%)** và **Vỏ thận (10%)** để duy trì 
 
 ### B. Vai Trò Của Fructose-2,6-bisphosphate (F-2,6-BP) & Enzyme Lưỡng Chức Năng
 
-```
-  Trạng thái NOH (Insulin cao): Phosphatase hoạt hóa ──► PFK-2 hoạt động, FBPase-2 bất hoạt
-  ──► Tăng F-2,6-BP ──► KÍCH HOẠT PFK-1 (ĐƯỜNG PHÂN MẠNH) & ỨC CHẾ FBPase-1.
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-toggle-on" style="color: var(--color-primary, #0284c7);"></i> CÔNG TẮC LƯỠNG NĂNG PFK-2 / FBPase-2 &amp; NỒNG ĐỘ F-2,6-BP</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 230" width="880" height="230" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrInsulin" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGlucagon" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+      </defs>
 
-  Trạng thái ĐÓI (Glucagon cao -> cAMP -> PKA): PKA phosphoryl hóa enzyme lưỡng chức năng
-  ──► PFK-2 bất hoạt, FBPase-2 hoạt động ──► Giảm F-2,6-BP ──► GIẢI PHÓNG FBPase-1 (TÂN TẠO ĐƯỜNG MẠNH).
-```
+      {/* Cột Trái: Trạng thái NOH (Insulin) */}
+      <rect x="40" y="20" width="380" height="190" rx="10" fill="rgba(2, 132, 199, 0.06)" stroke="#0284c7" stroke-width="1.8"/>
+      <text x="230" y="44" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12.5" fill="var(--color-primary, #0284c7)">TRẠNG THÁI NO / SAU ĂN (INSULIN CAO)</text>
+      <line x1="60" y1="56" x2="400" y2="56" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="65" y="78" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Insulin kích hoạt Phosphoprotein Phosphatase (PP1)</text>
+      <text x="65" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Khử phosphate enzyme: PFK-2 BẬT, FBPase-2 TẮT</text>
+      <text x="65" y="122" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="#0284c7">• TĂNG MẠNH Fructose-2,6-bisphosphate (F-2,6-BP)</text>
+      <text x="65" y="144" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Kích thích dị lập thể cực mạnh PFK-1 &amp; Ức chế FBPase-1</text>
+      <text x="65" y="172" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-success, #10b981)">➔ TĂNG TỐC ĐƯỜNG PHÂN (GLYCOLYSIS) TIÊU THỤ ĐƯỜNG</text>
+
+      {/* Cột Phải: Trạng thái ĐÓI (Glucagon) */}
+      <rect x="460" y="20" width="380" height="190" rx="10" fill="rgba(245, 158, 11, 0.06)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
+      <text x="650" y="44" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12.5" fill="var(--amber, #d97706)">TRẠNG THÁI ĐÓI / XA BỮA ĂN (GLUCAGON CAO)</text>
+      <line x1="480" y1="56" x2="820" y2="56" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="485" y="78" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Glucagon gắn GPCR ➔ Tăng cAMP ➔ Kích hoạt PKA</text>
+      <text x="485" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Phosphoryl hóa enzyme: PFK-2 TẮT, FBPase-2 BẬT</text>
+      <text x="485" y="122" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--amber, #d97706)">• GIẢM MẠNH Fructose-2,6-bisphosphate (F-2,6-BP)</text>
+      <text x="485" y="144" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Giải phóng FBPase-1 khỏi ức chế dị lập thể</text>
+      <text x="485" y="172" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#dc2626">➔ TĂNG TỐC TÂN TẠO ĐƯỜNG (GLUCONEOGENESIS) GIỮ ĐƯỜNG HUYẾT</text>
+    </svg>
+  </div>
+</div>
 
 ---
 

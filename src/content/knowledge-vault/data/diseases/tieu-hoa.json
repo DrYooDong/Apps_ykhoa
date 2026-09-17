@@ -1,110 +1,98 @@
 [
   {
-    "id": "xo_gan",
-    "ten": "Xơ gan (Mất bù / Còn bù) & Tăng áp lực tĩnh mạch cửa",
+    "id": "xo-gan-con-bu",
+    "ten": "Xơ gan còn bù (Compensated Cirrhosis / cACLD)",
     "icd": "K74.6",
-    "nhom": "Tiêu hóa",
-    "baoDong": true,
-    "ghiChuBaoDong": "Xuất huyết tiêu hóa do vỡ giãn TMTQ, hôn mê gan (bệnh não gan), hội chứng gan thận.",
-    "tomTat": "Xơ hóa lan tỏa kèm hình thành nốt tân sinh mô gan. Lâm sàng biểu hiện hội chứng suy tế bào gan (vàng da, sao mạch, albumin giảm) và hội chứng tăng áp cửa (cổ trướng, tuần hoàn bàng hệ).",
+    "nhom": "Gan mật - Tiêu hóa",
+    "baoDong": false,
+    "ghiChuBaoDong": "Giai đoạn còn bù (Child-Pugh A). Cần điều trị kiểm soát căn nguyên (HBV/HCV/Rượu), đánh giá tăng áp cửa (CSPH), dự phòng vỡ giãn TMTQ và tầm soát HCC mỗi 6 tháng.",
+    "tomTat": "Xơ gan còn bù (cACLD) là giai đoạn cấu trúc gan bị xơ hóa lan rộng (F4) nhưng chức năng tổng hợp và chuyển hóa gan vẫn duy trì bù trừ tốt (Child-Pugh A). Chưa xuất hiện biến cố mất bù đe dọa tính mạng.",
     "danSo": {
       "gioiTinh": "any",
-      "tuoiMin": 20,
-      "tuoiMax": 100
+      "tuoiMin": 18,
+      "tuoiMax": 120
     },
     "dd": [
       [
-        "co_chuong",
+        "xo_gan_f4_non_invasive",
         4.5,
         "dt"
       ],
       [
-        "tuan_hoan_bang_he",
-        4,
+        "child_pugh_a_compensated",
+        4.0,
         "dt"
       ],
       [
-        "vang_da_niem",
-        3,
+        "lab_tieu_cau_giam",
+        3.0,
         "gy"
       ],
       [
-        "sao_mach_ban_tay_son",
-        3.5,
-        "gy"
-      ],
-      [
-        "phu_hai_chi_duoi",
-        3,
-        "ht"
-      ],
-      [
-        "sieu_am_gan_tho",
-        4.5,
-        "dt"
-      ],
-      [
-        "albumin_giam",
-        3.5,
-        "dt"
-      ],
-      [
-        "inr_keo_dai",
-        3.5,
-        "dt"
-      ],
-      [
-        "tieu_cau_giam",
+        "imaging_nhu_mo_gan_co_not",
         2.5,
+        "gy"
+      ],
+      [
+        "sao_mach_ban_do_long_ban_tay",
+        1.5,
         "ht"
       ],
       [
-        "men_gan_tang",
-        2,
-        "ht"
+        "co_truong_lam_sang",
+        -5.0,
+        "loaitru"
+      ],
+      [
+        "xuathuyet_tieu_hoa_vo_gian_tmtq",
+        -5.0,
+        "loaitru"
+      ],
+      [
+        "benh_nao_gan",
+        -5.0,
+        "loaitru"
       ]
     ],
     "phacDo": {
       "tuyen": [
-        "Kiểm soát cổ trướng: Hạn chế muối (< 2g Na/ngày), Spironolactone 100mg/ngày + Furosemide 40mg/ngày (tỷ lệ 100:40)",
-        "Dự phòng xuất huyết TMTQ: Propranolol hoặc Carvedilol 6.25 - 12.5mg/ngày, thắt búi giãn TMTQ qua nội soi",
-        "Bệnh não gan: Lactulose 20-30ml x 2-3 lần/ngày (mục tiêu 2-3 lần phân mềm/ngày) + Rifaximin 550mg x 2 lần/ngày"
+        "Trạm y tế / Ngoại trú: Tái khám định kỳ mỗi 3-6 tháng; theo dõi CTM (Tiểu cầu), AST, ALT, Bilirubin, Albumin, PT/INR. Tầm soát ung thư gan (HCC) mỗi 6 tháng bằng Siêu âm ổ bụng KÈM AFP/PIVKA-II.",
+        "Bệnh viện Huyện / Tỉnh: Điều trị tiệt căn nguyên nhân gốc (Thuốc kháng virus TAF/ETV cho HBV; DAA SOF/VEL 12 tuần cho HCV; cai rượu tuyệt đối). Đánh giá phân tầng nguy cơ CSPH.",
+        "Bệnh viện Chuyên khoa / Tuyến Tỉnh - TW: Khởi đầu Carvedilol 6.25mg/ngày dự phòng nguyên phát vỡ giãn TMTQ khi có CSPH (LSM ≥ 20 kPa hoặc PLT &lt; 150 G/L) hoặc phát hiện giãn TMTQ trên nội soi."
       ],
       "thuoc": [
         [
-          "Spironolactone",
-          "100mg - 200mg uống buổi sáng",
-          "Lợi tiểu kháng Aldosterone"
+          "Tenofovir alafenamide (TAF) / Entecavir (ETV)",
+          "TAF 25mg PO q24h hoặc ETV 0.5mg PO q24h",
+          "Chỉ định bắt buộc 100% bệnh nhân xơ gan còn bù do HBV uống dài hạn suốt đời"
         ],
         [
-          "Furosemide",
-          "40mg - 80mg uống buổi sáng",
-          "Lợi tiểu quai, phối hợp Spironolactone"
+          "Sofosbuvir/Velpatasvir (SOF/VEL)",
+          "SOF/VEL 400/100mg 1 viên/ngày x 12 tuần",
+          "Điều trị tiệt căn Viêm gan C mạn có xơ gan còn bù (mọi kiểu gen) theo Quyết định 2855/QĐ-BYT"
         ],
         [
-          "Lactulose",
-          "20ml - 30ml uống 2-3 lần/ngày",
-          "Thải trừ Amoniac đường ruột"
+          "Carvedilol (Thuốc chẹn beta không chọn lọc)",
+          "Khởi đầu 6.25mg x 1 lần/ngày, tăng lên 6.25mg x 2 lần/ngày sau 3-7 ngày",
+          "Dự phòng vỡ giãn TMTQ khi có CSPH hoặc giãn TMTQ. Mục tiêu nhịp tim 55-60 lần/phút, HATT ≥ 90 mmHg"
         ],
         [
           "Propranolol",
-          "20mg - 40mg uống 2 lần/ngày",
-          "Chẹn beta không chọn lọc giảm áp cửa"
+          "20-40mg PO x 2 lần/ngày, tăng dần liều",
+          "Thay thế Carvedilol khi không dung nạp. Giảm liều nếu HATT &lt; 90 mmHg hoặc nhịp tim &lt; 50 lần/phút"
         ]
       ],
       "theoDoi": [
-        "Cân nặng và vòng bụng hằng ngày (giảm tối đa 0.5kg/ngày nếu không phù, 1.0kg/ngày nếu có phù)",
-        "Điện giải đồ, Creatinine mỗi 3-7 ngày (tránh hạ Natri máu, suy thận)",
-        "Nội soi thực quản dạ dày định kỳ sàng lọc giãn vỡ TMTQ"
+        "Tầm soát HCC: Siêu âm ổ bụng + AFP / PIVKA-II định kỳ nghiêm ngặt mỗi 6 tháng.",
+        "Xét nghiệm sinh hóa chức năng gan, công thức máu (Tiểu cầu), PT/INR mỗi 3-6 tháng.",
+        "Nội soi dạ dày theo dõi giãn TMTQ mỗi 1-2 năm (nếu có CSPH)."
       ],
       "luuY": [
-        "Tránh tuyệt đối NSAIDs, thuốc an thần nhóm Benzodiazepine",
-        "Chọc tháo dịch báng lượng lớn (> 5 lít) phải bù Albumin 8g/lít dịch tháo"
+        "CẤM TUYỆT ĐỐI rượu, bia, đồ uống có cồn và các thuốc gây độc cho gan (tránh Paracetamol &gt; 2g/ngày).",
+        "Tránh tự ý dùng NSAIDs, Aspirin và các thuốc an thần/Benzodiazepine do nguy cơ thúc đẩy vỡ giãn TMTQ, suy thận hoặc bệnh não gan."
       ],
       "nguon": [
-        "AASLD 2021",
-        "EASL 2018",
-        "Bộ Y Tế"
+        "Hướng dẫn BYT Viêm gan B (2026), Quyết định 2855/QĐ-BYT (2024), Baveno VII Consensus Guidelines &amp; AASLD Practice Guidance 2023"
       ]
     }
   },

@@ -271,7 +271,7 @@ Glycerophospholipid gồm: **Khung Glycerol** + **2 Acid béo** (vị trí *sn-1
       {/* Single Node: C1 (sn-1): Acid béo bão hòa (P */}
       <rect x="160.75" y="20" width="558.5" height="78" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
       <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">C1 (sn-1): Acid béo bão hòa (Palmitic / Stearic)</text>
-      <text x="184.75" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Glycerol ──── C2 (sn-2): Acid béo chưa bão hòa (Arachidonic</text>
+      <text x="184.75" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Glycerol  C2 (sn-2): Acid béo chưa bão hòa (Arachidonic</text>
       <text x="184.75" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  / Oleic)</text>
       <line x1="440" y1="98" x2="440" y2="126" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
       {/* Single Node: Nhóm Phân Cực X */}
@@ -353,7 +353,7 @@ Glycerophospholipid gồm: **Khung Glycerol** + **2 Acid béo** (vị trí *sn-1
       {/* Single Node: (PLA1)                     (PL */}
       <rect x="185" y="20" width="510" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
       <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">(PLA1) (PLA2 - Nọc rắn, giải phóng Arachidonic)</text>
-      <text x="209" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• CH2 ─ O ──────── CO ─ R1 CH ─ O ───────── CO ─ R2</text>
+      <text x="209" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• CH2  O  CO  R1 CH  O  CO  R2</text>
       <line x1="440" y1="80" x2="440" y2="108" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
       {/* Single Node: Base Nitơ X */}
       <rect x="250" y="108" width="380" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
@@ -380,13 +380,14 @@ Sphingolipid xây dựng trên khung aminoalcol **Sphingosine ($18\text{C}$)**. 
 
 ### B. Cholesterol, Nhân Steran & Đệm Nhiệt Độ Màng
 
-```
-  CẤU TRÚC PHÂN TỬ CHOLESTEROL:
-  - Khung nhân Steran (Cyclopentanoperhydrophenanthren gồm 4 vòng A, B, C, D ngưng tụ).
-  - Nhóm cực: -OH tại C3 hướng ra ngoài bề mặt màng.
-  - Vị trí bất bão hòa: Nối đôi C5=C6.
-  - Đuôi kỵ nước: Nhánh hydrocarbon 8C gắn tại C17 cắm sâu vào lõi lipid.
-```
+<BiochemAlert type="info" title="4 Đặc Điểm Cấu Trúc Phân Tử Cholesterol">
+  <ul>
+    <li><strong>Khung nhân Steran:</strong> Vòng Cyclopentanoperhydrophenanthren gồm 4 vòng ngưng tụ (A, B, C, D) tạo khung phẳng, cứng vững chãi.</li>
+    <li><strong>Đầu cực ưa nước duy nhất:</strong> Nhóm hydroxyl (-OH) tại vị trí carbon C3 hướng ra tiếp xúc với môi trường nước bề mặt màng.</li>
+    <li><strong>Vị trí bất bão hòa:</strong> Một liên kết đôi giữa C5=C6 trên vòng B.</li>
+    <li><strong>Đuôi kỵ nước:</strong> Nhánh hydrocarbon phân nhánh 8 carbon gắn tại C17 cắm sâu vào lõi lipid kỵ nước của lớp màng kép.</li>
+  </ul>
+</BiochemAlert>
 
 - **Chức năng đệm nhiệt độ của Cholesterol**:
   - Ở nhiệt độ cao ($T > T_m$): Nhân steroid phẳng cứng hạn chế chuyển động quay của chuỗi acyl, **ngăn màng quá lỏng**.
@@ -400,11 +401,60 @@ Do lipid kỵ nước không tan trong máu, chúng được đóng gói thành 
 - **Lõi kỵ nước**: Triglyceride (năng lượng) + Cholesteryl Este (CE).
 - **Vỏ đơn lớp phân cực**: Phospholipid + Cholesterol tự do (FC) + **Apolipoprotein**.
 
-```
-(+) Cực dương (Anode) ◄───────────────────────────────────────────── (-) Cực âm (Vạch xuất phát)
-        [HDL]                    [VLDL]                 [LDL]                  [Chylomicron]
-     (Alpha-LP)              (Pre-beta-LP)             (Beta-LP)           (Đứng yên tại vạch)
-```
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-dna" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ ĐIỆN DI LIPOPROTEIN TRÊN GEL AGAROSE (pH 8.6)</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 170" width="880" height="170" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrElectrophoresis" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+      </defs>
+
+      {/* Bản gel */}
+      <rect x="40" y="20" width="800" height="130" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
+
+      {/* Cực âm & Cực dương */}
+      <rect x="55" y="32" width="110" height="24" rx="4" fill="#ef4444" opacity="0.12"/>
+      <text x="110" y="48" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#dc2626">CỰC ÂM (–) CATHODE</text>
+
+      <rect x="715" y="32" width="110" height="24" rx="4" fill="#0284c7" opacity="0.12"/>
+      <text x="770" y="48" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#0284c7">CỰC DƯƠNG (+) ANODE</text>
+
+      {/* Mũi tên hướng di chuyển điện trường */}
+      <line x1="180" y1="44" x2="700" y2="44" stroke="#0284c7" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrElectrophoresis)"/>
+      <text x="440" y="40" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text-muted, #475569)">Chiều di chuyển tích điện âm hướng về cực dương (pH 8.6)</text>
+
+      {/* 4 Phân đoạn vạch điện di */}
+      {/* Vạch 1: Chylomicron */}
+      <rect x="75" y="68" width="140" height="65" rx="6" fill="rgba(245, 158, 11, 0.08)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
+      <text x="145" y="88" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">Chylomicron</text>
+      <text x="145" y="104" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text-muted, #475569)">Vạch xuất phát (Origin)</text>
+      <text x="145" y="120" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="9" fill="#dc2626">Hạt lớn nhất, đứng yên</text>
+
+      {/* Vạch 2: Beta (LDL) */}
+      <rect x="250" y="68" width="150" height="65" rx="6" fill="rgba(239, 68, 68, 0.08)" stroke="#ef4444" stroke-width="1.5"/>
+      <text x="325" y="88" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#dc2626">LDL (β-Lipoprotein)</text>
+      <text x="325" y="104" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text-muted, #475569)">Phân đoạn β (Beta)</text>
+      <text x="325" y="120" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" fill="var(--color-text-muted, #475569)">Giàu Cholesterol (50%)</text>
+
+      {/* Vạch 3: Pre-beta (VLDL) */}
+      <rect x="435" y="68" width="165" height="65" rx="6" fill="rgba(2, 132, 199, 0.08)" stroke="#0284c7" stroke-width="1.5"/>
+      <text x="517.5" y="88" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#0284c7">VLDL (Pre-β-LP)</text>
+      <text x="517.5" y="104" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text-muted, #475569)">Phân đoạn Pre-beta</text>
+      <text x="517.5" y="120" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" fill="var(--color-text-muted, #475569)">Giàu Triglyceride nội sinh</text>
+
+      {/* Vạch 4: Alpha (HDL) */}
+      <rect x="635" y="68" width="170" height="65" rx="6" fill="rgba(16, 185, 129, 0.08)" stroke="#10b981" stroke-width="1.5"/>
+      <text x="720" y="88" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#059669">HDL (α-Lipoprotein)</text>
+      <text x="720" y="104" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="9.5" fill="#059669">Di chuyển nhanh nhất (+)</text>
+      <text x="720" y="120" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" fill="var(--color-text-muted, #475569)">Hàm lượng Protein cao nhất</text>
+    </svg>
+  </div>
+</div>
 
 <div class="table-responsive">
   <table class="table-modern">
@@ -471,21 +521,46 @@ Do lipid kỵ nước không tan trong máu, chúng được đóng gói thành 
 ---
 
 ## 5. 3 Con Đường Chuyển Hóa Lipoprotein (Ngoại Sinh, Nội Sinh, Vận Chuyển Ngược HDL)
-```
-  1. CON ĐƯỜNG NGOẠI SINH:
-     Thức ăn ──► Ruột (Apo B-48) ──► Nascent CM ──(Nhận Apo C-II, E từ HDL)──► Mature CM
-     ──(LPL mao mạch thủy phân TG giải phóng FFA)──► CM Remnant ──(Uptake tại Gan qua Apo E)
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-arrows-spin" style="color: var(--color-primary, #0284c7);"></i> 3 CON ĐƯỜNG CHUYỂN HÓA LIPOPROTEIN (NGOẠI SINH, NỘI SINH &amp; RCT)</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 320" width="880" height="320" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrPathway" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrAmberP" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrGreenP" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+      </defs>
 
-  2. CON ĐƯỜNG NỘI SINH:
-     Gan (Apo B-100 + TG) ──► Nascent VLDL ──(Nhận Apo C-II, E từ HDL)──► Mature VLDL
-     ──(LPL mao mạch rút TG)──► IDL ──(Hepatic Lipase xoang gan rút nốt TG)──► LDL (Chỉ còn Apo B-100)
-     ──► Gan thu hồi 80% & Mô ngoại biên thu hồi 20% qua Thụ thể LDL
+      {/* Làn 1: Ngoại sinh */}
+      <rect x="40" y="20" width="800" height="85" rx="8" fill="rgba(245, 158, 11, 0.06)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
+      <text x="60" y="42" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">1. CON ĐƯỜNG NGOẠI SINH (CHYLOMICRON TỪ THỨC ĂN RUỘT NON)</text>
+      <text x="60" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Ruột non đóng gói Lipid ➔ Nascent CM (Apo B-48) ➔ Nhận Apo C-II &amp; Apo E từ HDL ➔ CM Trưởng thành</text>
+      <text x="60" y="86" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• LPL mao mạch thủy phân Triglyceride giải phóng FFA cho cơ/mỡ ➔ CM Tàn dư (Remnant) về Gan qua thụ thể Apo E</text>
 
-  3. VẬN CHUYỂN CHOLESTEROL NGƯỢC (RCT):
-     Discoid Nascent HDL (Gan/Ruột) ◄──(Bơm cholesterol qua ABCA1)── Đại thực bào thành mạch
-     ──(LCAT / Apo A-I ester hóa tạo CE)──► Hạt cầu HDL3 ──(Nhận thêm FC qua ABCG1 & CETP)──► HDL2
-     ──► Gan thu nhận chọn lọc CE qua Thụ thể quét SR-BI ──► Đào thải ra dịch mật / muối mật
-```
+      {/* Làn 2: Nội sinh */}
+      <rect x="40" y="115" width="800" height="95" rx="8" fill="rgba(2, 132, 199, 0.06)" stroke="var(--color-primary, #0284c7)" stroke-width="1.5"/>
+      <text x="60" y="137" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-primary, #0284c7)">2. CON ĐƯỜNG NỘI SINH (VLDL ➔ IDL ➔ LDL TỪ GAN)</text>
+      <text x="60" y="159" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Gan bài tiết Nascent VLDL (Apo B-100 + TG) ➔ Nhận Apo C-II, E từ HDL ➔ VLDL Trưởng thành</text>
+      <text x="60" y="181" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• LPL mao mạch rút TG tạo IDL ➔ Hepatic Lipase (HTGL) xoang gan rút nốt TG tạo hạt LDL giàu Cholesterol</text>
+      <text x="60" y="201" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• LDL (chỉ còn Apo B-100) được thanh thải: 80% thu hồi tại Gan và 20% vào Mô ngoại vi qua thụ thể LDLR</text>
+
+      {/* Làn 3: Vận chuyển ngược RCT */}
+      <rect x="40" y="220" width="800" height="85" rx="8" fill="rgba(16, 185, 129, 0.06)" stroke="var(--color-success, #10b981)" stroke-width="1.5"/>
+      <text x="60" y="242" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-success, #10b981)">3. VẬN CHUYỂN CHOLESTEROL NGƯỢC (REVERSE CHOLESTEROL TRANSPORT - RCT QUA HDL)</text>
+      <text x="60" y="264" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Discoid Nascent HDL (Gan/Ruột) nhận Cholesterol tự do từ đại thực bào thành mạch qua kênh ABCA1</text>
+      <text x="60" y="286" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• LCAT / Apo A-I ester hóa tạo HDL hình cầu ➔ Gan thu nhận chọn lọc Cholesteryl Este qua thụ thể SR-BI để đào thải dịch mật</text>
+    </svg>
+  </div>
+</div>
 
 ---
 
@@ -529,15 +604,13 @@ Do lipid kỵ nước không tan trong máu, chúng được đóng gói thành 
       <text x="60" y="220" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Tách rời ở pH acid</text>
       <text x="60" y="238" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Tái chế lên màng - A</text>
       <text x="60" y="256" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Choleste</text>
-      <text x="60" y="274" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ┌─────────────────────────────────────────</text>
       {/* Right Column: HẠT LDL VÀO LYSOSOME */}
       <rect x="450" y="168" width="390" height="116" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
       <text x="645" y="190" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">HẠT LDL VÀO LYSOSOME</text>
       <line x1="470" y1="204" x2="820" y2="204" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
       <text x="470" y="220" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Acid Hydrolase thủy phân:</text>
-      <text x="470" y="238" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• po B-100 ──► Acid amin tự do</text>
-      <text x="470" y="256" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ryl Este ──► CHOLESTEROL TỰ DO (FC)</text>
-      <text x="470" y="274" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ────┴─────────────────────────────────────────────┐</text>
+      <text x="470" y="238" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• po B-100 ► Acid amin tự do</text>
+      <text x="470" y="256" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ryl Este ► CHOLESTEROL TỰ DO (FC)</text>
       <path d="M 440 284 L 440 298 L 155 298 L 155 312" fill="none" stroke="var(--amber, #f59e0b)" stroke-width="1.8" marker-end="url(#arrAmber)"/>
       <path d="M 440 298 L 440 298 L 440 312" fill="none" stroke="var(--amber, #f59e0b)" stroke-width="1.8" marker-end="url(#arrAmber)"/>
       <path d="M 440 298 L 725 298 L 725 312" fill="none" stroke="var(--amber, #f59e0b)" stroke-width="1.8" marker-end="url(#arrAmber)"/>

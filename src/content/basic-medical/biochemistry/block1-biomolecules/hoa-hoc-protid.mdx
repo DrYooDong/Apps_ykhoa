@@ -139,9 +139,9 @@ sections:
         </marker>
       </defs>
 
-      {/* Single Node: H2N ─ Cα ─ COOH */}
+      {/* Single Node: H2N  Cα  COOH */}
       <rect x="199.00000000000003" y="20" width="481.99999999999994" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">H2N ─ Cα ─ COOH</text>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">H2N  Cα  COOH</text>
       <text x="223.00000000000003" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• R (Chuỗi bên quy định tính chất lý hóa riêng biệt)</text>
     </svg>
   </div>
@@ -222,12 +222,42 @@ sections:
 
 Cơ thể người không thể tự tổng hợp (hoặc tổng hợp không đủ tốc độ) nên bắt buộc phải được cung cấp qua chế độ ăn:
 
-```
-  P ──► Phenylalanine (Phe)           T ──► Threonine (Thr)           H ──► Histidine (His)
-  V ──► Valine (Val)                  I ──► Isoleucine (Ile)          A ──► Arginine (Arg - Bán thiết yếu trẻ em)
-  T ──► Tryptophan (Trp)              M ──► Methionine (Met)          L ──► Leucine (Leu)
-                                                                      L ──► Lysine (Lys)
-```
+<div class="matrix-grid">
+  <div class="matrix-card">
+    <div class="matrix-card-title">
+      <span>PVT (Phe, Val, Trp)</span>
+      <span class="rx-tag preferred">Nhóm 1</span>
+    </div>
+    <div class="matrix-card-desc">
+      • <strong>P:</strong> Phenylalanine (Phe)<br/>
+      • <strong>V:</strong> Valine (Val)<br/>
+      • <strong>T:</strong> Tryptophan (Trp)
+    </div>
+  </div>
+  <div class="matrix-card">
+    <div class="matrix-card-title">
+      <span>TIM (Thr, Ile, Met)</span>
+      <span class="rx-tag success">Nhóm 2</span>
+    </div>
+    <div class="matrix-card-desc">
+      • <strong>T:</strong> Threonine (Thr)<br/>
+      • <strong>I:</strong> Isoleucine (Ile)<br/>
+      • <strong>M:</strong> Methionine (Met)
+    </div>
+  </div>
+  <div class="matrix-card">
+    <div class="matrix-card-title">
+      <span>HALL (His, Arg, Leu, Lys)</span>
+      <span class="rx-tag danger">Nhóm 3</span>
+    </div>
+    <div class="matrix-card-desc">
+      • <strong>H:</strong> Histidine (His)<br/>
+      • <strong>A:</strong> Arginine (Arg - Bán thiết yếu ở trẻ em)<br/>
+      • <strong>L:</strong> Leucine (Leu)<br/>
+      • <strong>L:</strong> Lysine (Lys)
+    </div>
+  </div>
+</div>
 
 - **Mối liên hệ chuyển hóa phụ thuộc**:
   - **Tyrosine (Tyr)** được tổng hợp trực tiếp từ **Phenylalanine** qua enzyme Phenylalanine Hydroxylase $\rightarrow$ Chỉ không thiết yếu khi khẩu phần đủ Phe (Đột biến gây bệnh Phenylketonuria - PKU).
@@ -259,11 +289,61 @@ Cơ thể người không thể tự tổng hợp (hoặc tổng hợp không đ
 
 Ở pH sinh lý ($\approx 7.4$), acid amin tồn tại chủ yếu ở dạng **ion lưỡng cực (Zwitterion)**: nhóm carboxyl tích điện âm ($-COO^-$) và nhóm amin tích điện dương ($-NH_3^+$), tổng điện tích thuần bằng 0.
 
-```
-       +H3N ─ CH(R) ─ COOH   ◄════(+H+)════►   +H3N ─ CH(R) ─ COO-   ◄════(+OH-)════►   H2N ─ CH(R) ─ COO-
-           Dạng Cation (pH < 2)                    Zwitterion (pH ≈ 7)                    Dạng Anion (pH > 10)
-           (Điện tích thuần: +1)                   (Điện tích thuần: 0)                   (Điện tích thuần: -1)
-```
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-scale-balanced" style="color: var(--color-primary, #0284c7);"></i> CÂN BẰNG PHÂN LY ION LƯỠNG CỰC (ZWITTERION) CỦA ACID AMIN</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 180" width="880" height="180" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrZwitL" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+        <marker id="arrZwitR" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+      </defs>
+
+      {/* Cột 1: Dạng Cation (pH thấp) */}
+      <rect x="40" y="25" width="240" height="130" rx="10" fill="rgba(239, 68, 68, 0.06)" stroke="#ef4444" stroke-width="1.5"/>
+      <text x="160" y="50" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#dc2626">DẠNG CATION (pH &lt; pK₁)</text>
+      <text x="160" y="78" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="13" fill="var(--color-text, #0f172a)">⁺H₃N  CH(R)  COOH</text>
+      <line x1="60" y1="92" x2="260" y2="92" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="160" y="112" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#dc2626">Điện tích thuần: +1</text>
+      <text x="160" y="132" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Di chuyển về Cực âm (Cathode)</text>
+
+      {/* Mũi tên 1: Cation <-> Zwitterion */}
+      <line x1="290" y1="75" x2="330" y2="75" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrZwitR)"/>
+      <text x="310" y="68" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" fill="#0284c7">-H⁺ / +OH⁻</text>
+      <line x1="330" y1="95" x2="290" y2="95" stroke="#dc2626" stroke-width="1.8" marker-end="url(#arrZwitL)"/>
+      <text x="310" y="110" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" fill="#dc2626">+H⁺ (pK₁)</text>
+
+      {/* Cột 2: Zwitterion (Điểm đẳng điện) */}
+      <rect x="340" y="20" width="240" height="140" rx="10" fill="rgba(16, 185, 129, 0.08)" stroke="var(--color-success, #10b981)" stroke-width="2"/>
+      <text x="460" y="46" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12.5" fill="var(--color-success, #10b981)">ZWITTERION (pH = pI)</text>
+      <text x="460" y="76" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="14" fill="var(--color-primary, #0284c7)">⁺H₃N  CH(R)  COO⁻</text>
+      <line x1="360" y1="92" x2="560" y2="92" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="460" y="112" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="var(--color-success, #10b981)">Điện tích thuần: 0 (Trung hòa)</text>
+      <text x="460" y="132" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Độ tan cực tiểu • Đứng yên điện trường</text>
+      <text x="460" y="148" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text-muted, #475569)">(Trạng thái chiếm ưu thế ở pH sinh lý)</text>
+
+      {/* Mũi tên 2: Zwitterion <-> Anion */}
+      <line x1="590" y1="75" x2="630" y2="75" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrZwitR)"/>
+      <text x="610" y="68" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" fill="#0284c7">-H⁺ (pK₂)</text>
+      <line x1="630" y1="95" x2="590" y2="95" stroke="#dc2626" stroke-width="1.8" marker-end="url(#arrZwitL)"/>
+      <text x="610" y="110" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" fill="#dc2626">+H⁺</text>
+
+      {/* Cột 3: Dạng Anion (pH cao) */}
+      <rect x="640" y="25" width="240" height="130" rx="10" fill="rgba(2, 132, 199, 0.06)" stroke="#0284c7" stroke-width="1.5"/>
+      <text x="760" y="50" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#0284c7">DẠNG ANION (pH &gt; pK₂)</text>
+      <text x="760" y="78" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="13" fill="var(--color-text, #0f172a)">H₂N  CH(R)  COO⁻</text>
+      <line x1="660" y1="92" x2="860" y2="92" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="760" y="112" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#0284c7">Điện tích thuần: -1</text>
+      <text x="760" y="132" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Di chuyển về Cực dương (Anode)</text>
+    </svg>
+  </div>
+</div>
 
 $$\text{pH} = \text{p}K_a + \log_{10} \frac{[\text{Base liên hợp (Chất nhận proton)}]}{[\text{Acid (Chất cho proton)}]}$$
 
@@ -314,13 +394,12 @@ Mặc dù được biểu diễn là liên kết đơn $C-N$, liên kết peptid
         </marker>
       </defs>
 
-      {/* Single Node: O                   O⁻ */}
+      {/* Single Node: Cấu trúc cộng hưởng liên kết peptid */}
       <rect x="190.5" y="20" width="499" height="114" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">O O⁻</text>
-      <text x="214.5" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ║ │</text>
-      <text x="214.5" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ─── C ─ N ─── ◄════► ─── C ═ N⁺ ───</text>
-      <text x="214.5" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• H H</text>
-      <text x="214.5" y="118" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• (Liên kết đơn C-N) (Bản chất bán đôi C=N+ cứng nhắc)</text>
+      <text x="440" y="44" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="13" fill="var(--color-text, #0f172a)">CỘNG HƯỞNG ĐIỆN TỬ CỦA LIÊN KẾT PEPTID</text>
+      <text x="440" y="70" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" fill="var(--color-primary, #0284c7)" font-weight="700"> C(=O)  NH   ⟷   C(O⁻)  N⁺H </text>
+      <text x="440" y="94" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Mang 40% đặc tính liên kết đôi C=N: Phẳng, cứng nhắc, không xoay tự do</text>
+      <text x="440" y="114" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Cấu hình Trans bền vững hơn cấu hình Cis (giảm thiểu cản trở không gian)</text>
     </svg>
   </div>
 </div>
@@ -402,10 +481,10 @@ Mặc dù được biểu diễn là liên kết đơn $C-N$, liên kết peptid
         </marker>
       </defs>
 
-      {/* Single Node: [CẤU TRÚC BẬC I] ────────► [CẤ */}
+      {/* Single Node: [CẤU TRÚC BẬC I] ► [CẤ */}
       <rect x="150" y="20" width="580" height="132" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">[CẤU TRÚC BẬC I] ────────► [CẤU TRÚC BẬC II] ────────►</text>
-      <text x="440" y="60" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--color-text, #0f172a)">[CẤU TRÚC BẬC III] ────────► [CẤU TRÚC BẬC IV]</text>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">[CẤU TRÚC BẬC I] ► [CẤU TRÚC BẬC II] ►</text>
+      <text x="440" y="60" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--color-text, #0f172a)">[CẤU TRÚC BẬC III] ► [CẤU TRÚC BẬC IV]</text>
       <text x="174" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Trình tự tuyến tính Xoắn α &amp; Lá gấp β Cuộn gập 3D hoàn chỉnh</text>
       <text x="174" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  Tổ hợp đa tiểu đơn vị</text>
       <text x="174" y="118" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• (Liên kết peptid) (Liên kết hydro khung) (Tương tác kỵ nước,</text>
@@ -427,14 +506,15 @@ Mặc dù được biểu diễn là liên kết đơn $C-N$, liên kết peptid
 
 ### B. Động Lực Nhiệt Động Học Cuộn Gập Kỵ Nước (Hydrophobic Collapse)
 
-```
-  CÁC LIÊN KẾT GIỮ VỮNG CẤU TRÚC BẬC III & IV:
-  1. Tương tác Kỵ nước (Hydrophobic effect) ──► ĐỘNG LỰC NHIỆT ĐỘNG CHÍNH (Tăng Entropy nước xung quanh)
-  2. Cầu Disulfide (-S-S-)                 ──► Liên kết cộng hóa trị bền vững giữa 2 gốc Cysteine
-  3. Liên kết Muối (Salt bridge / Ion)     ──► Lực hút tĩnh điện giữa Asp/Glu (-) và Lys/Arg/His (+)
-  4. Liên kết Hydro                        ──► Tương tác giữa các chuỗi bên R phân cực
-  5. Lực Van der Waals                     ──► Lực hút giữa các nguyên tử tiếp xúc sát nhau trong lõi
-```
+<BiochemAlert type="info" title="5 Lực Tương Tác Giữ Vững Cấu Trúc Bậc III &amp; Bậc IV">
+  <ol>
+    <li><strong>Tương tác Kỵ nước (Hydrophobic effect):</strong> Động lực nhiệt động học chính thúc đẩy chuỗi bên kỵ nước vùi vào lõi, làm tăng entropy của các phân tử nước xung quanh.</li>
+    <li><strong>Cầu Disulfide (-S-S-):</strong> Liên kết cộng hóa trị bền vững duy nhất giữa 2 gốc Cysteine, chống lại biến tính nhiệt và biến dạng cơ học.</li>
+    <li><strong>Cầu muối / Liên kết ion (Salt bridge):</strong> Lực hút tĩnh điện giữa nhóm carboxylate âm (-COO⁻ của Asp/Glu) và nhóm amino dương (-NH₃⁺ của Lys/Arg/His).</li>
+    <li><strong>Liên kết Hydro:</strong> Tương tác tĩnh điện giữa các chuỗi bên phân cực (Ser, Thr, Tyr, Asn, Gln).</li>
+    <li><strong>Lực Van der Waals:</strong> Lực hút lưỡng cực cảm ứng giữa các nguyên tử tiếp xúc sát nhau trong không gian lõi đặc khít.</li>
+  </ol>
+</BiochemAlert>
 
 ---
 
@@ -577,10 +657,9 @@ Mặc dù được biểu diễn là liên kết đơn $C-N$, liên kết peptid
         </marker>
       </defs>
 
-      {/* Single Node: Phương Pháp Sắc Ký │ Cơ Sở Phâ */}
       <rect x="160" y="20" width="560" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Phương Pháp Sắc Ký │ Cơ Sở Phân Tách Lý Hóa │ Thứ Tự</text>
-      <text x="440" y="60" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--color-text, #0f172a)">Rửa Giải (Elution) │</text>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Phương Pháp Sắc Ký • Cơ Sở Phân Tách Lý Hóa • Thứ Tự</text>
+      <text x="440" y="60" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--color-text, #0f172a)">Rửa Giải (Elution)</text>
     </svg>
   </div>
 </div>

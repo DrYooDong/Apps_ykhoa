@@ -123,10 +123,10 @@ Virus gây suy giảm miễn dịch ở người (*Human Immunodeficiency Virus*
 </div>
 
 ```
-                     ┌── gag ──> Mã hóa Polyprotein Ma trận (MA-p17), Capsid (CA-p24), Nucleocapsid (NC-p7/p9)
-                     ├── pol ──> Mã hóa Bộ 3 Enzyme Xúc tác: Protease (PR), Reverse Transcriptase (RT), Integrase (IN)
-Bộ Gen HIV (~10 kb)  ├── env ──> Mã hóa Tiền chất gp160 ──(Furin Tế bào chủ)──> gp120 (Bề mặt) + gp41 (Xuyên màng)
-                     └── Gen Phụ trợ (Accessory Genes) ──> Tat, Rev, Nef, Vif, Vpr, Vpu (Quyết định độc lực & Lẩn tránh)
+                     ┌ gag > Mã hóa Polyprotein Ma trận (MA-p17), Capsid (CA-p24), Nucleocapsid (NC-p7/p9)
+                      pol > Mã hóa Bộ 3 Enzyme Xúc tác: Protease (PR), Reverse Transcriptase (RT), Integrase (IN)
+Bộ Gen HIV (~10 kb)   env > Mã hóa Tiền chất gp160 (Furin Tế bào chủ)> gp120 (Bề mặt) + gp41 (Xuyên màng)
+                     └ Gen Phụ trợ (Accessory Genes) > Tat, Rev, Nef, Vif, Vpr, Vpu (Quyết định độc lực & Lẩn tránh)
 ```
 
 <div class="table-responsive">
@@ -179,16 +179,16 @@ Bộ Gen HIV (~10 kb)  ├── env ──> Mã hóa Tiền chất gp160 ──
 Chu kỳ sống của HIV là một chuỗi sự kiện phân tử phối hợp tinh vi, bắt đầu từ sự gắn kết trên màng tế bào cho đến khi nảy chồi và trưởng thành virion.
 
 ```
-[Virion Tự Do] ──(gp120 + CD4)──> [Gắn CCR5 / CXCR4] ──(gp41 Thò Fusion Peptide)──> [Hòa Màng Tế Bào]
-                                                                                            │
+[Virion Tự Do] (gp120 + CD4)> [Gắn CCR5 / CXCR4] (gp41 Thò Fusion Peptide)> [Hòa Màng Tế Bào]
+                                                                                            
                                                                                     (Lõi Capsid Nguyên Vẹn)
-                                                                                            │
-[Tích Hợp Provirus (Integrase)] <──(Chui Qua Lỗ Nhân Nhờ CPSF6)── [Phiên Mã Ngược (RT: ssRNA ➔ dsDNA)]
-             │
-             └──> [Phiên Mã mRNA (Tat/Rev)] ──> [Dịch Mã Gag/Pol/Env] ──> [Lắp Ráp Màng & Nảy Chồi (ESCRT)]
-                                                                                            │
+                                                                                            
+[Tích Hợp Provirus (Integrase)] <(Chui Qua Lỗ Nhân Nhờ CPSF6) [Phiên Mã Ngược (RT: ssRNA ➔ dsDNA)]
+             
+             └> [Phiên Mã mRNA (Tat/Rev)] > [Dịch Mã Gag/Pol/Env] > [Lắp Ráp Màng & Nảy Chồi (ESCRT)]
+                                                                                            
                                                                                 (Protease Tự Cắt Polyprotein)
-                                                                                            │
+                                                                                            
                                                                                [Virion Trưởng Thành Chín]
 ```
 
@@ -280,13 +280,63 @@ Trong nhiều thập kỷ, quan niệm kinh điển cho rằng sự suy giảm t
 ## 4. Động Học Miễn Dịch & Ba Giai Đoạn Bệnh: Đỉnh Tải Lượng, Setpoint & Phá Vỡ GALT
 Quá trình tiến triển tự nhiên của nhiễm HIV khi không có điều trị ART trải qua 3 giai đoạn động học sinh lý bệnh:
 
-```
-[Phơi Nhiễm] ──> [GIAI ĐOẠN 0: NHIỄM CẤP] ──> [GIAI ĐOẠN 1-2: NHIỄM MÃN TÍNH] ──> [GIAI ĐOẠN 3-4: AIDS TIẾN TRIỂN]
-                        │                                  │                                  │
-                - Đỉnh Viremia (~10^6.7)           - Rò rỉ vi khuẩn GALT (LPS)        - CD4 < 200 tế bào/µL
-                - Bão Cytokine (IP-10)            - Viêm hệ thống & Viêm nội mạc     - Xơ hóa hoàn toàn hạch
-                - Thiết lập Setpoint (~10^4.4)     - T kiệt quệ (Exhaustion: PD-1)    - Tràn đổ virus (Spillover)
-```
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-chart-line" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ ĐỘNG HỌC MIỄN DỊCH &amp; BA GIAI ĐOẠN TIẾN TRIỂN TỰ NHIÊN CỦA HIV</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 190" width="880" height="190" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      {/* Giai đoạn 0: Cấp tính */}
+      <rect x="30" y="20" width="250" height="150" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
+      <text x="155" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--amber, #d97706)">GIAI ĐOẠN 0: NHIỄM CẤP</text>
+      <line x1="45" y1="50" x2="265" y2="50" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="45" y="70" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Đỉnh Viremia vọt cao (~10^6.7 bản sao)</text>
+      <text x="45" y="90" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Bão Cytokine (IFN-α, CXCL10/IP-10)</text>
+      <text x="45" y="110" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Hội chứng giống tăng bạch cầu đơn nhân</text>
+      <text x="45" y="130" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• T CD8+ CTL kéo tải lượng về Setpoint</text>
+      <text x="45" y="154" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="var(--amber, #d97706)">➔ Điểm cân bằng (~10^4.4 bản sao/mL)</text>
+
+      {/* Mũi tên GĐ 0 -> GĐ 1-2 */}
+      <line x1="280" y1="95" x2="313" y2="95" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#arrBlue)"/>
+
+      {/* Giai đoạn 1-2: Mãn tính */}
+      <rect x="315" y="20" width="250" height="150" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-primary, #0284c7)" stroke-width="1.5"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-primary, #0284c7)">GIAI ĐOẠN 1-2: NHIỄM MÃN TÍNH</text>
+      <line x1="330" y1="50" x2="550" y2="50" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="330" y="70" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Tiêu diệt 90% CD4+ Th17 tại mô ruột</text>
+      <text x="330" y="90" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Rò rỉ vi khuẩn GALT: Tràn LPS vào máu</text>
+      <text x="330" y="110" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Kích hoạt miễn dịch mạn tính qua TLR-4</text>
+      <text x="330" y="130" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Tế bào T kiệt quệ: Bộc lộ PD-1, CTLA-4</text>
+      <text x="330" y="154" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="var(--color-primary, #0284c7)">➔ Lắng đọng Collagen, xơ hóa cấu trúc hạch</text>
+
+      {/* Mũi tên GĐ 1-2 -> GĐ 3-4 */}
+      <line x1="565" y1="95" x2="598" y2="95" stroke="var(--red, #ef4444)" stroke-width="2" marker-end="url(#arrRed)"/>
+
+      {/* Giai đoạn 3-4: AIDS */}
+      <rect x="600" y="20" width="250" height="150" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.5"/>
+      <text x="725" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--red, #dc2626)">GIAI ĐOẠN 3-4: AIDS TIẾN TRIỂN</text>
+      <line x1="615" y1="50" x2="835" y2="50" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="615" y="70" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• CD4 sụt giảm nghiêm trọng &lt; 200/µL</text>
+      <text x="615" y="90" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Hạch lympho xơ hóa teo hủy hoàn toàn</text>
+      <text x="615" y="110" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Hiệu ứng tràn đổ virion tự do vào máu</text>
+      <text x="615" y="130" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Bùng phát nhiễm trùng cơ hội (PJP, Lao)</text>
+      <text x="615" y="154" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="var(--red, #dc2626)">➔ Ung thư virus (Sarcoma Kaposi, Lymphoma)</text>
+    </svg>
+  </div>
+</div>
 
 <div class="flow-steps">
   <div class="flow-step">
@@ -325,10 +375,10 @@ Quá trình tiến triển tự nhiên của nhiễm HIV khi không có điều 
 Sự tồn tại của **Hồ chứa virus tiềm ẩn (Viral Reservoir)** là nguyên nhân duy nhất khiến các thuốc ART hiện đại không thể chữa khỏi dứt điểm bệnh HIV và giải thích tại sao tải lượng virus luôn bùng phát trở lại nếu ngừng thuốc.
 
 ```
-                    ┌── Defective Provirus (>90%) ──> Đột biến mất chức năng phiên mã
-                    ├── Latent Reservoir ───────────> Provirus tích hợp vùng dị nhiễm sắc thể (Tắt hoàn toàn)
-HIV Proviral DNA   ├── Clonal Expansion ───────────> Phân chia tế bào T nhớ tự nhiên, nhân đôi Provirus nguyên vẹn
-                    └── Active Reservoir ───────────> Vẫn rò rỉ phiên mã protein Gag/Env (Gây Viêm mạn & Viral Blips)
+                    ┌ Defective Provirus (>90%) > Đột biến mất chức năng phiên mã
+                     Latent Reservoir > Provirus tích hợp vùng dị nhiễm sắc thể (Tắt hoàn toàn)
+HIV Proviral DNA    Clonal Expansion > Phân chia tế bào T nhớ tự nhiên, nhân đôi Provirus nguyên vẹn
+                    └ Active Reservoir > Vẫn rò rỉ phiên mã protein Gag/Env (Gây Viêm mạn & Viral Blips)
 ```
 
 <div class="matrix-grid">

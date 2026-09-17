@@ -165,31 +165,87 @@ Virus cúm (Influenza) thuộc họ **Orthomyxoviridae**, là virus ARN sợi đ
 ---
 
 ## 2. Chu Kỳ Nhân Lên Phân Tử & Bản Đồ Đích Tác Dụng Thuốc Kháng Virus
-```
-[ Virion ] ──(HA + Axit Sialic)──► Nhập bào qua Endosome ──► Acid hóa Endosome
-                                                                       │
-                                                                 Kênh M2 bơm H⁺ → Acid hóa lõi virion
-                                                                       │ 🎯 [ADAMANTANES: Chặn kênh M2]
-                                                                       ▼
-                                                             "Cởi vỏ" → vRNPs giải phóng vào Bào tương
-                                                                       │
-                                                              Vận chuyển vRNPs vào Nhân tế bào
-                                                                       │
-                                              ┌────────────────────────┴────────────────────────┐
-                                              ▼                                                 ▼
-                             Phiên mã mARN (RdRp phức hợp PB1-PB2-PA)             Sao chép ARN bộ gen mới
-                                              │ 🎯 [BALOXAVIR: Chặn PA/Endonuclease Cap-Snatching]
-                                              │ 🎯 [FAVIPIRAVIR: Đột biến gây chết RdRp]
-                                              ▼
-                                  Dịch mã tại Ribosome (HA, NA, M, NP...)
-                                              │
-                                 Lắp ráp tại màng tế bào chủ → Nảy mầm
-                                              │
-                              Virion mới gắn với axit sialic màng → Bị giữ lại
-                                              │ 🎯 [NAIs: Chặn NA → Bẫy virion trên màng]
-                                              ▼
-                               [ Giải phóng Virion mới — bị chặn bởi Oseltamivir/Zanamivir ]
-```
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-virus" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: CHU KỲ NHÂN LÊN VIRUS CÚM &amp; 4 ĐÍCH TÁC DỤNG THUỐC KHÁNG VIRUS</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 380" width="880" height="380" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+      </defs>
+
+      {/* Bước 1: Gắn màng & Cởi vỏ */}
+      <rect x="40" y="15" width="480" height="68" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-primary, #0284c7)" stroke-width="1.5"/>
+      <text x="55" y="36" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-primary, #0284c7)">1. GẮN MÀNG, NHẬP BÀO &amp; CỞI VỎ (UNCOATING)</text>
+      <text x="55" y="56" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• HA gắn thụ thể Axit Sialic ➔ Nhập bào tạo túi Endosome</text>
+      <text x="55" y="72" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Kênh ion M2 bơm H+ acid hóa lõi hạt ➔ Phóng thích vRNPs</text>
+
+      {/* Thuốc 1: Adamantanes */}
+      <rect x="540" y="15" width="300" height="68" rx="8" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.5"/>
+      <text x="555" y="36" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--red, #dc2626)">🎯 ĐÍCH 1: KÊNH M2 (AMANTADINE)</text>
+      <text x="555" y="54" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text, #0f172a)">Bịt lòng kênh M2 ngăn cởi vỏ</text>
+      <text x="555" y="70" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="10" fill="var(--red, #dc2626)">⚠️ Kháng &gt;99% (S31N) - Không dùng</text>
+
+      {/* Mũi tên 1 -> 2 */}
+      <path d="M 280 83 L 280 102" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+
+      {/* Bước 2: Vận chuyển nhân & Phiên mã */}
+      <rect x="40" y="102" width="480" height="74" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--amber, #d97706)" stroke-width="1.5"/>
+      <text x="55" y="123" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--amber, #d97706)">2. VẬN CHUYỂN VÀO NHÂN &amp; PHIÊN MÃ (CAP-SNATCHING)</text>
+      <text x="55" y="143" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• vRNPs vào nhân ➔ Phức hợp RdRp (PB1-PB2-PA) sao chép gen</text>
+      <text x="55" y="161" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• PA endonuclease &quot;cướp mũ&quot; 5'-cap của mRNA tế bào chủ</text>
+
+      {/* Thuốc 2: Baloxavir */}
+      <rect x="540" y="102" width="300" height="74" rx="8" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
+      <text x="555" y="123" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--amber, #d97706)">🎯 ĐÍCH 2: PA ENDONUCLEASE</text>
+      <text x="555" y="141" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="10.5" fill="var(--color-text, #0f172a)">BALOXAVIR MARBOXIL (1 liều duy nhất)</text>
+      <text x="555" y="159" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Ức chế cướp mũ mRNA ➔ Chặn đứng phiên mã</text>
+
+      {/* Mũi tên 2 -> 3 */}
+      <path d="M 280 176 L 280 196" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+
+      {/* Bước 3: Dịch mã & Sao chép gen */}
+      <rect x="40" y="196" width="480" height="72" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--purple, #7c3aed)" stroke-width="1.5"/>
+      <text x="55" y="217" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--purple, #7c3aed)">3. DỊCH MÃ PROTEIN &amp; TỔNG HỢP VẬT LIỆU DI TRUYỀN</text>
+      <text x="55" y="237" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Ribosome bào tương dịch mã protein cấu trúc (HA, NA, M, NP)</text>
+      <text x="55" y="255" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• RdRp sao chép các đoạn RNA bộ gen virus mới</text>
+
+      {/* Thuốc 3: Favipiravir */}
+      <rect x="540" y="196" width="300" height="72" rx="8" fill="var(--purple-bg, #f5f3ff)" stroke="var(--purple, #7c3aed)" stroke-width="1.5"/>
+      <text x="555" y="217" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--purple, #7c3aed)">🎯 ĐÍCH 3: ENZYME RdRp (FAVIPIRAVIR)</text>
+      <text x="555" y="235" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text, #0f172a)">Đồng vận Purine ức chế chọn lọc RdRp</text>
+      <text x="555" y="253" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Gây tích lũy đột biến gây chết (Lethal Mutagenesis)</text>
+
+      {/* Mũi tên 3 -> 4 */}
+      <path d="M 280 268 L 280 288" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+
+      {/* Bước 4: Nảy mầm & Giải phóng */}
+      <rect x="40" y="288" width="480" height="76" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-success, #10b981)" stroke-width="1.5"/>
+      <text x="55" y="309" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-success, #059669)">4. NẢY MẦM &amp; CẮT GIẢI PHÓNG VIRION (RELEASE)</text>
+      <text x="55" y="329" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Virion mới nảy mầm qua màng nhưng dính chặt bởi Axit Sialic</text>
+      <text x="55" y="349" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Enzyme Neuraminidase (NA) cắt gốc sialic để giải phóng virion</text>
+
+      {/* Thuốc 4: NAIs */}
+      <rect x="540" y="288" width="300" height="76" rx="8" fill="rgba(16, 185, 129, 0.08)" stroke="var(--color-success, #10b981)" stroke-width="1.5"/>
+      <text x="555" y="309" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-success, #059669)">🎯 ĐÍCH 4: NEURAMINIDASE INHIBITORS (NAIs)</text>
+      <text x="555" y="327" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="10.5" fill="var(--color-text, #0f172a)">OSELTAMIVIR, ZANAMIVIR, PERAMIVIR</text>
+      <text x="555" y="347" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Ức chế enzyme NA ➔ Bẫy virion dính chùm trên màng tế bào</text>
+    </svg>
+  </div>
+</div>
 
 <div class="table-responsive">
   <table class="table-modern">

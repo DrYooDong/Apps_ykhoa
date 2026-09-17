@@ -110,12 +110,34 @@ sections:
 ## 1. Nguyên Lý Phản Ứng PCR Cổ Điển, Chu Kỳ Nhiệt & Hệ Kiểm Soát UNG/dUTP
 **Phản ứng chuỗi Polymerase (PCR)** do Kary Mullis phát minh năm 1983 (Nobel Hóa học 1993) là kỹ thuật nhân bản hàng triệu bản sao đoạn DNA đích *in vitro*.
 
-```
-  SO SÁNH NHÂN ĐÔI DNA TRONG TẾ BÀO (IN VIVO) VS PCR TRONG ỐNG NGHIỆM (IN VITRO):
-  - Tháo xoắn tách mạch: Helicase + SSB  ──► Thay bằng: Biến tính nhiệt độ cao (95°C)
-  - Đoạn mồi khởi đầu:   Enzyme Primase   ──► Thay bằng: Cặp mồi Oligonucleotide tổng hợp sẵn
-  - Kéo dài chuỗi DNA:   DNA Polymerase   ──► Thay bằng: Taq Polymerase chịu nhiệt (72°C)
-```
+<div class="table-responsive">
+  <table class="table-modern">
+    <thead>
+      <tr>
+        <th style="width: 30%;">Đặc Điểm Phản Ứng</th>
+        <th style="width: 35%;">Nhân Đôi Tế Bào (In Vivo)</th>
+        <th style="width: 35%;">Phản Ứng PCR (In Vitro)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Tháo xoắn tách mạch</strong></td>
+        <td>Enzym Helicase + Protein gắn sợi đơn SSB</td>
+        <td><span class="rx-tag danger">Biến tính nhiệt độ cao</span> (94–95°C)</td>
+      </tr>
+      <tr>
+        <td><strong>Đoạn mồi khởi đầu</strong></td>
+        <td>Enzym Primase tổng hợp mồi RNA</td>
+        <td><span class="rx-tag preferred">Cặp mồi DNA tổng hợp</span> (Oligonucleotide 18–25 nt)</td>
+      </tr>
+      <tr>
+        <td><strong>Kéo dài mạch mới</strong></td>
+        <td>DNA Polymerase III / δ, ε</td>
+        <td><span class="rx-tag success">Taq Polymerase</span> chịu nhiệt cao (72°C)</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 ---
 
@@ -237,20 +259,37 @@ sections:
 
 ### B. Các Biến Thể PCR Phổ Biến Trong Y Học
 
-```
-  1. MULTIPLEX PCR (PCR Đa Mồi):
-     - Tích hợp đồng thời nhiều cặp mồi trong 1 ống nghiệm.
-     - Phát hiện đồng thời nhiều tác nhân vi sinh (Bảng kiểm viêm màng não, viêm đường hô hấp).
+<div class="matrix-grid">
+  <div class="matrix-card">
+    <div class="matrix-card-title">
+      <span>1. Multiplex PCR (Đa Mồi)</span>
+      <span class="rx-tag preferred">Đa Tác Nhân Cùng Lúc</span>
+    </div>
+    <div class="matrix-card-desc">
+      Tích hợp đồng thời nhiều cặp mồi đặc hiệu trong một giếng phản ứng duy nhất; chẩn đoán nhanh các hội chứng nhiễm trùng đa căn nguyên (bảng kiểm viêm màng não mủ, viêm đường hô hấp cấp).
+    </div>
+  </div>
 
-  2. NESTED PCR (PCR Tổ 2 Vòng):
-     - Vòng 1 (Mồi ngoài) tạo sản phẩm lớn --> Vòng 2 (Mồi trong) khuếch đại tiếp đoạn đích bên trong.
-     - Triệt tiêu 100% băng bắt cặp sai, độ nhạy tối đa chẩn đoán HBV genotype.
+  <div class="matrix-card">
+    <div class="matrix-card-title">
+      <span>2. Nested PCR (Tổ 2 Vòng)</span>
+      <span class="rx-tag success">Độ Đặc Hiệu Tối Đa</span>
+    </div>
+    <div class="matrix-card-desc">
+      Vòng 1 dùng cặp mồi ngoài khuếch đại đoạn lớn; Vòng 2 dùng cặp mồi trong nhân bản đoạn đích lõi; Triệt tiêu 100% hiện tượng bắt cặp mồi sai, độ nhạy cao trong định type genotype HBV/HCV.
+    </div>
+  </div>
 
-  3. REVERSE TRANSCRIPTION PCR (RT-PCR):
-     - Tác nhân virus có hệ gen là ARN (HIV, HCV, SARS-CoV-2, Cúm).
-     - Bước 1: Enzyme Reverse Transcriptase tổng hợp cDNA từ ARN khuôn (cần chất ức chế RNAsin).
-     - Bước 2: Taq Polymerase tiến hành chu kỳ PCR nhân bản cDNA.
-```
+  <div class="matrix-card">
+    <div class="matrix-card-title">
+      <span>3. RT-PCR (Phiên Mã Ngược)</span>
+      <span class="rx-tag danger">Phát Hiện Virus ARN</span>
+    </div>
+    <div class="matrix-card-desc">
+      Dành riêng cho virus mang hệ gen ARN (HIV, HCV, SARS-CoV-2, Cúm mùa): Enzym Reverse Transcriptase tổng hợp sợi cDNA từ ARN khuôn, sau đó Taq Polymerase nhân bản theo chu kỳ PCR tiêu chuẩn.
+    </div>
+  </div>
+</div>
 
 ---
 
@@ -353,35 +392,151 @@ Khác với PCR cổ điển chỉ đọc kết quả điểm cuối, **Real-tim
 ## 5. Giải Trình Tự Sanger: Nguyên Lý Dừng Chuỗi ddNTP & Điện Di Mao Quản Tự Động
 Được Frederick Sanger phát minh năm 1977 (Nobel Hóa học 1980) — Tiêu chuẩn vàng giải mã trình tự DNA.
 
-```
-       CẤU TRÚC PHÂN TỬ DÙNG ĐỂ KÉO DÀI VS DỪNG CHUỖI:
-       - dNTP:  Có nhóm 3'-OH tự do ──► Tạo liên kết phosphodiester kéo dài chuỗi tiếp tục.
-       - ddNTP: MẤT nhóm 3'-OH (chỉ có -H) ──► KHÔNG THỂ tạo liên kết mới ──► DỪNG CHUỖI TỨC THÌ!
-```
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-barcode" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: QUY TRÌNH GIẢI TRÌNH TỰ SANGER &amp; CƠ CHẾ DỪNG CHUỖI ddNTP</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 270" width="880" height="270" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue18" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrAmber18" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrGreen18" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+      </defs>
 
-```
-  QUY TRÌNH GIẢI TRÌNH TỰ SANGER TỰ ĐỘNG:
-  1. Một ống phản ứng chứa: DNA khuôn + Mồi + DNA Polymerase + 4 dNTP + 4 ddNTP (gắn 4 màu huỳnh quang).
-  2. Phản ứng kéo dài tạo ra hỗn hợp hàng nghìn đoạn DNA dừng ở các vị trí kích thước khác nhau.
-  3. Bơm vào hệ thống Điện di mao quản (Capillary Electrophoresis) phân tách lệch nhau đúng 1 nucleotide.
-  4. Tia Laser quét qua đầu mao quản đọc màu huỳnh quang ──► Phần mềm máy tính vẽ biểu đồ Chromatogram.
-```
+      {/* TOP COMPARISON: dNTP vs ddNTP */}
+      <rect x="30" y="15" width="395" height="52" rx="8" fill="#ecfdf5" stroke="#059669" stroke-width="1.4"/>
+      <text x="45" y="34" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#065f46">dNTP (Deoxynucleotide):</text>
+      <text x="45" y="52" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">Có nhóm 3'-OH tự do ➔ Tạo liên kết Phosphodiester kéo dài mạch</text>
+
+      <rect x="455" y="15" width="395" height="52" rx="8" fill="#fef2f2" stroke="#dc2626" stroke-width="1.4"/>
+      <text x="470" y="34" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#991b1b">ddNTP (Dideoxynucleotide):</text>
+      <text x="470" y="52" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#dc2626">MẤT 3'-OH (chỉ còn -H) ➔ Không thể tạo liên kết mới ➔ DỪNG CHUỖI!</text>
+
+      {/* STEP 1 */}
+      <rect x="30" y="85" width="185" height="165" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="#0284c7" stroke-width="1.6"/>
+      <rect x="40" y="95" width="165" height="22" rx="5" fill="#e0f2fe"/>
+      <text x="122" y="110" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="10" fill="#0369a1">1. PHẢN ỨNG TỔNG HỢP</text>
+      <text x="45" y="134" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text, #0f172a)">• DNA khuôn + Mồi</text>
+      <text x="45" y="152" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text, #0f172a)">• DNA Polymerase</text>
+      <text x="45" y="170" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text, #0f172a)">• Tỷ lệ dNTP dư thừa</text>
+      <text x="45" y="188" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text, #0f172a)">• Lượng nhỏ 4 ddNTP</text>
+      <text x="45" y="206" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="#0284c7">Gắn 4 màu huỳnh quang</text>
+
+      {/* Arrow 1 -> 2 */}
+      <line x1="215" y1="165" x2="245" y2="165" stroke="#0284c7" stroke-width="2" marker-end="url(#arrBlue18)"/>
+
+      {/* STEP 2 */}
+      <rect x="245" y="85" width="185" height="165" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="#d97706" stroke-width="1.6"/>
+      <rect x="255" y="95" width="165" height="22" rx="5" fill="#fef3c7"/>
+      <text x="337" y="110" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="10" fill="#b45309">2. DỪNG CHUỖI NGẪU NHIÊN</text>
+      <text x="255" y="134" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text, #0f172a)">• ddNTP tích hợp ngẫu nhiên</text>
+      <text x="255" y="152" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text, #0f172a)">• Dừng phản ứng tại base đó</text>
+      <text x="255" y="170" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text, #0f172a)">• Sinh hỗn hợp hàng ngàn đoạn</text>
+      <text x="255" y="190" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="#d97706">Kích thước chênh lệch</text>
+      <text x="255" y="208" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text, #0f172a)">đúng từng 1 nucleotide</text>
+
+      {/* Arrow 2 -> 3 */}
+      <line x1="430" y1="165" x2="460" y2="165" stroke="#d97706" stroke-width="2" marker-end="url(#arrAmber18)"/>
+
+      {/* STEP 3 */}
+      <rect x="460" y="85" width="185" height="165" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="#059669" stroke-width="1.6"/>
+      <rect x="470" y="95" width="165" height="22" rx="5" fill="#dcfce7"/>
+      <text x="552" y="110" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="10" fill="#15803d">3. ĐIỆN DI MAO QUẢN</text>
+      <text x="470" y="134" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text, #0f172a)">• Bơm vào cột mao quản hẹp</text>
+      <text x="470" y="152" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text, #0f172a)">• Tác dụng điện trường mạnh</text>
+      <text x="470" y="170" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text, #0f172a)">• Phân tách theo phân tử lượng</text>
+      <text x="470" y="190" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="#059669">Đoạn ngắn chạy trước</text>
+      <text x="470" y="208" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text, #0f172a)">Đoạn dài chạy sau</text>
+
+      {/* Arrow 3 -> 4 */}
+      <line x1="645" y1="165" x2="675" y2="165" stroke="#059669" stroke-width="2" marker-end="url(#arrGreen18)"/>
+
+      {/* STEP 4 */}
+      <rect x="675" y="85" width="175" height="165" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="#7c3aed" stroke-width="1.6"/>
+      <rect x="685" y="95" width="155" height="22" rx="5" fill="#ede9fe"/>
+      <text x="762" y="110" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="10" fill="#5b21b6">4. LASER &amp; CHROMATOGRAM</text>
+      <text x="685" y="134" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text, #0f172a)">• Tia Laser quét đầu mao quản</text>
+      <text x="685" y="152" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text, #0f172a)">• Cảm biến đọc bước sóng</text>
+      <text x="685" y="170" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text, #0f172a)">• Màu A, C, G, T riêng biệt</text>
+      <text x="685" y="190" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="#7c3aed">Xuất sắc phổ 4 đỉnh màu</text>
+      <text x="685" y="208" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text, #0f172a)">Đọc chính xác từng base</text>
+    </svg>
+  </div>
+</div>
 
 ---
 
 ## 6. Giải Trình Tự Thế Hệ Mới NGS (Illumina): Khuếch Đại Bắc Cầu & Sinh Tổng Hợp SBS
 Công nghệ **Next-Generation Sequencing (NGS)** thực hiện hàng triệu đến hàng tỷ phản ứng giải trình tự song song trên một chip kính phẳng (*Flow cell*).
 
-```
-  3 BƯỚC CỐT LÕI CỦA CÔNG NGHỆ ILLUMINA NGS:
-  1. Chuẩn bị thư viện (Library Prep): Cắt vụn DNA 200–500 bp, gắn đầu nối Adapter 2 đầu.
-  2. Khuếch đại bắc cầu (Bridge Amplification): Đoạn DNA uốn cong tạo cầu nối nhân bản tạo hàng triệu Cụm Đơn Dòng (Clusters) trên bề mặt Flow cell.
-  3. Giải trình tự bằng sinh tổng hợp (Sequencing by Synthesis - SBS):
-     - Bơm 4 dNTP mang nhóm chặn kết thúc thuận nghịch (3'-O-azidomethyl) và 4 chất màu huỳnh quang.
-     - Polymerase gắn đúng 1 base bổ sung ──► Bị chặn không cho kéo dài.
-     - Laser quét chụp ảnh huỳnh quang xác định loại base vừa tích hợp tại từng cụm.
-     - Bơm chất khử TCEP cắt bỏ huỳnh quang và phục hồi 3'-OH tự do cho chu kỳ tiếp theo.
-```
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-microchip" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: 3 BƯỚC CÔNG NGHỆ ILLUMINA NGS (SEQUENCING BY SYNTHESIS)</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 250" width="880" height="250" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue19" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrAmber19" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrGreen19" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+      </defs>
+
+      {/* STEP 1: Library Prep */}
+      <rect x="25" y="20" width="250" height="205" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="#0284c7" stroke-width="1.6"/>
+      <rect x="35" y="30" width="230" height="24" rx="5" fill="#e0f2fe"/>
+      <text x="150" y="47" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#0369a1">1. CHUẨN BỊ THƯ VIỆN (LIBRARY PREP)</text>
+      <text x="40" y="76" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">Phân cắt &amp; Gắn Adapter:</text>
+      <text x="40" y="98" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Cắt vụn DNA kích thước 200–500 bp</text>
+      <text x="40" y="118" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Thêm đuôi A (A-tailing) ở đầu 3'</text>
+      <text x="40" y="138" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Gắn Adapter chứa trình tự mồi &amp; chỉ số mẫu (Index barcode)</text>
+      <text x="40" y="172" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="#0284c7">➔ Sẵn sàng cố định bề mặt Flow cell</text>
+      <text x="40" y="192" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">Cho phép chạy gộp hàng trăm mẫu</text>
+
+      {/* Arrow 1 -> 2 */}
+      <line x1="275" y1="122" x2="310" y2="122" stroke="#0284c7" stroke-width="2" marker-end="url(#arrAmber19)"/>
+
+      {/* STEP 2: Bridge Amplification */}
+      <rect x="315" y="20" width="250" height="205" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="#d97706" stroke-width="1.6"/>
+      <rect x="325" y="30" width="230" height="24" rx="5" fill="#fef3c7"/>
+      <text x="440" y="47" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#b45309">2. KHUẾCH ĐẠI BẮC CẦU (CLUSTERING)</text>
+      <text x="330" y="76" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">Tạo Cụm Đơn Dòng Trên Bản Kính:</text>
+      <text x="330" y="98" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Đoạn DNA lai với Oligo bề mặt chip</text>
+      <text x="330" y="118" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Uốn cong tạo cầu nối (Bridge)</text>
+      <text x="330" y="138" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Nhân đôi tại chỗ đẳng nhiệt</text>
+      <text x="330" y="172" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="#d97706">➔ Hàng triệu cụm (Clusters) đơn dòng</text>
+      <text x="330" y="192" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">Khuếch đại tín hiệu huỳnh quang đủ lớn</text>
+
+      {/* Arrow 2 -> 3 */}
+      <line x1="565" y1="122" x2="600" y2="122" stroke="#d97706" stroke-width="2" marker-end="url(#arrGreen19)"/>
+
+      {/* STEP 3: SBS */}
+      <rect x="605" y="20" width="250" height="205" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="#059669" stroke-width="1.6"/>
+      <rect x="615" y="30" width="230" height="24" rx="5" fill="#dcfce7"/>
+      <text x="730" y="47" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#15803d">3. SINH TỔNG HỢP SBS (SEQUENCING)</text>
+      <text x="620" y="76" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">Chu Kỳ Khóa Thuận Nghịch:</text>
+      <text x="620" y="98" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Bơm dNTP có nhóm chặn 3'-O-azidomethyl</text>
+      <text x="620" y="118" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Pol gắn 1 base ➔ Bị chặn ngay</text>
+      <text x="620" y="138" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Laser chụp ảnh huỳnh quang nhận diện</text>
+      <text x="620" y="172" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="#059669">➔ TCEP cắt huỳnh quang &amp; mở lại 3'-OH</text>
+      <text x="620" y="192" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">Sẵn sàng cho chu kỳ nucleotide kế tiếp</text>
+    </svg>
+  </div>
+</div>
 
 <div class="matrix-grid">
   <div class="matrix-card">

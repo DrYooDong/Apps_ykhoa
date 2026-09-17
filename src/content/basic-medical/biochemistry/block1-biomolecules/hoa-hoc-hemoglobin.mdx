@@ -174,17 +174,56 @@ sections:
 - **Protoporphyrin IX**: Gồm 8 nhóm thế phân bố cụ thể: **4 gốc Methyl (M)** tại 1, 3, 5, 8; **2 gốc Vinyl (V)** tại 2, 4; và **2 gốc Propionyl (P)** tại 6, 7.
 - **Nhóm Ngoại Hem (Heme)**: Là phức hợp metalloporphyrin gồm **ion sắt hóa trị hai ($\text{Fe}^{2+}$)** nằm chính giữa mặt phẳng Protoporphyrin IX, liên kết với 4 nguyên tử Nitơ của 4 vòng pyrrole bằng 4 liên kết phối trí hướng tâm.
 
-```
-       CH=CH2 (Vinyl)     CH3 (Methyl)
-            \            /
-             [Pyrrole II]
-            /            \
-  CH3 ── [Pyrrole I] ── Fe2+ ── [Pyrrole III] ── CH3
-            \            /
-             [Pyrrole IV]
-            /            \
-  CH2-CH2-COOH (P)      CH2-CH2-COOH (Propionyl)
-```
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-atom" style="color: var(--color-primary, #0284c7);"></i> CẤU TRÚC PHÂN TỬ NHÂN HEME (PROTOPORPHYRIN IX + Fe²⁺)</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 200" width="880" height="200" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+      </defs>
+
+      {/* Trung tâm Fe2+ */}
+      <circle cx="440" cy="100" r="32" fill="var(--color-surface-2, #f8fafc)" stroke="#dc2626" stroke-width="2.5"/>
+      <text x="440" y="96" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="14" fill="#dc2626">Fe²⁺</text>
+      <text x="440" y="112" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" fill="var(--color-text-muted, #475569)">(Sắt hóa trị II)</text>
+
+      {/* Vòng Pyrrole I (Trái) */}
+      <rect x="180" y="70" width="150" height="60" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="255" y="94" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="12" fill="var(--color-text, #0f172a)">Pyrrole I</text>
+      <text x="255" y="112" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Gốc Methyl (-CH₃)</text>
+      <line x1="330" y1="100" x2="408" y2="100" stroke="#dc2626" stroke-width="1.8" stroke-dasharray="3,3"/>
+
+      {/* Vòng Pyrrole II (Trên) */}
+      <rect x="365" y="10" width="150" height="55" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="440" y="32" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="12" fill="var(--color-text, #0f172a)">Pyrrole II</text>
+      <text x="440" y="49" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Gốc Vinyl (-CH=CH₂)</text>
+      <line x1="440" y1="65" x2="440" y2="68" stroke="#dc2626" stroke-width="1.8" stroke-dasharray="3,3"/>
+
+      {/* Vòng Pyrrole III (Phải) */}
+      <rect x="550" y="70" width="150" height="60" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="625" y="94" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="12" fill="var(--color-text, #0f172a)">Pyrrole III</text>
+      <text x="625" y="112" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Gốc Methyl (-CH₃)</text>
+      <line x1="550" y1="100" x2="472" y2="100" stroke="#dc2626" stroke-width="1.8" stroke-dasharray="3,3"/>
+
+      {/* Vòng Pyrrole IV (Dưới) */}
+      <rect x="345" y="135" width="190" height="55" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="440" y="157" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="12" fill="var(--color-text, #0f172a)">Pyrrole IV (Bất đối xứng)</text>
+      <text x="440" y="174" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">2 Gốc Propionyl (-CH₂CH₂COOH)</text>
+      <line x1="440" y1="132" x2="440" y2="135" stroke="#dc2626" stroke-width="1.8" stroke-dasharray="3,3"/>
+
+      {/* Chú thích phối trí */}
+      <text x="440" y="196" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text-muted, #475569)">4 Liên kết phối trí phẳng với Nitơ pyrrole • 2 Liên kết vuông góc: His F8 (gốc) &amp; O₂ / His E7</text>
+    </svg>
+  </div>
+</div>
 
 ---
 
@@ -199,13 +238,47 @@ sections:
 ## 2. Cấu Trúc Tetramer Globin (HbA, HbF), Phối Trí Sắt & His F8 / His E7
 **Hemoglobin (HbA)** là một protein hình cầu tetramer ($64.456\text{ Da}$, 574 acid amin) gồm **2 chuỗi $\alpha$** (141 aa, 7 đoạn xoắn $\alpha$) và **2 chuỗi $\beta$** (146 aa, 8 đoạn xoắn $\alpha$).
 
-```
-  [Bán đơn vị α1] ══════ (Tiếp xúc chặt chẽ) ══════ [Bán đơn vị β1]
-         ║                                                 ║
-   (Tiếp xúc trượt lỏng lẻo)                         (Tiếp xúc trượt lỏng lẻo)
-         ║                                                 ║
-  [Bán đơn vị β2] ══════ (Tiếp xúc chặt chẽ) ══════ [Bán đơn vị α2]
-```
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-diagram-project" style="color: var(--color-primary, #0284c7);"></i> CẤU TRÚC TỨ PHÂN TETRAMER GLOBIN (α₁β₁ — α₂β₂)</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 180" width="880" height="180" xmlns="http://www.w3.org/2000/svg">
+      {/* Card Dimer α1β1 trên */}
+      <rect x="120" y="20" width="280" height="60" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="#0284c7" stroke-width="1.8"/>
+      <text x="260" y="44" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="12" fill="var(--color-text, #0f172a)">Tiểu đơn vị α₁</text>
+      <text x="260" y="62" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">141 Acid amin • 7 đoạn xoắn α</text>
+
+      <rect x="480" y="20" width="280" height="60" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="#0284c7" stroke-width="1.8"/>
+      <text x="620" y="44" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="12" fill="var(--color-text, #0f172a)">Tiểu đơn vị β₁</text>
+      <text x="620" y="62" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">146 Acid amin • 8 đoạn xoắn α</text>
+
+      <line x1="400" y1="50" x2="480" y2="50" stroke="#0284c7" stroke-width="3"/>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="9" fill="#0284c7">TIẾP XÚC CHẶT CHẼ</text>
+      <text x="440" y="62" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="8.5" fill="var(--color-text-muted, #475569)">(35 Acid amin)</text>
+
+      {/* Card Dimer α2β2 dưới */}
+      <rect x="120" y="105" width="280" height="60" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="#059669" stroke-width="1.8"/>
+      <text x="260" y="129" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="12" fill="var(--color-text, #0f172a)">Tiểu đơn vị β₂</text>
+      <text x="260" y="147" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">146 Acid amin • 8 đoạn xoắn α</text>
+
+      <rect x="480" y="105" width="280" height="60" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="#059669" stroke-width="1.8"/>
+      <text x="620" y="129" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="12" fill="var(--color-text, #0f172a)">Tiểu đơn vị α₂</text>
+      <text x="620" y="147" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">141 Acid amin • 7 đoạn xoắn α</text>
+
+      <line x1="400" y1="135" x2="480" y2="135" stroke="#059669" stroke-width="3"/>
+      <text x="440" y="127" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="9" fill="#059669">TIẾP XÚC CHẶT CHẼ</text>
+      <text x="440" y="147" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="8.5" fill="var(--color-text-muted, #475569)">(35 Acid amin)</text>
+
+      {/* Tiếp xúc trượt lỏng lẻo dọc */}
+      <line x1="260" y1="80" x2="260" y2="105" stroke="#d97706" stroke-width="2" stroke-dasharray="4,3"/>
+      <line x1="620" y1="80" x2="620" y2="105" stroke="#d97706" stroke-width="2" stroke-dasharray="4,3"/>
+      <text x="100" y="96" text-anchor="end" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="8.5" fill="#d97706">TIẾP XÚC TRƯỢT (19 aa) ➔</text>
+      <text x="780" y="96" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="8.5" fill="#d97706">➔ XOAY 15° KHI GẮN O₂</text>
+    </svg>
+  </div>
+</div>
 
 ---
 
@@ -238,7 +311,7 @@ sections:
       <rect x="169.25" y="20" width="541.5" height="114" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
       <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Oxy Phân Tử O2</text>
       <text x="193.25" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• (Vị trí thứ 6)</text>
-      <text x="193.25" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ─── Fe2+ (Tâm) ─── (Vị trí 1-4: 4 Nitơ của Protoporphyrin</text>
+      <text x="193.25" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">•  Fe2+ (Tâm)  (Vị trí 1-4: 4 Nitơ của Protoporphyrin</text>
       <text x="193.25" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  IX)</text>
       <text x="193.25" y="118" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• (Vị trí thứ 5)</text>
       <line x1="440" y1="134" x2="440" y2="162" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
@@ -311,13 +384,50 @@ Mối tương quan giữa phân áp oxy ($pO_2$) và độ bão hòa oxy của H
 
 ### B. Chuyển Đổi Dị Lập Thể Giữa Trạng Thái T (Căng) và R (Giãn)
 
-```
-  [TRẠNG THÁI T (Tense / Deoxy-Hb)] ══════════════(+4 O2)═════════════► [TRẠNG THÁI R (Relaxed / Oxy-Hb)]
-  - Cấu trúc cứng nhắc, nhiều cầu muối             - Bẻ gãy các cầu muối giữa các chuỗi
-  - Sắt Fe2+ lệch ngoài mặt phẳng Hem 0.4 Å        - Kéo Fe2+ lọt khít vào mặt phẳng Hem
-  - Hốc trung tâm rộng, KẸP CHẶT 2,3-BPG           - Dimer α1β1 xoay 15°, TỐNG KHỨ 2,3-BPG
-  - Ái lực với Oxy: RẤT THẤP                       - Ái lực với Oxy: RẤT CAO
-```
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-arrows-split-up-and-left" style="color: var(--color-primary, #0284c7);"></i> CHUYỂN ĐỔI DỊ LẬP THỂ (ALLOSTERIC): TRẠNG THÁI T (CĂNG) ⟷ TRẠNG THÁI R (GIÃN)</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 230" width="880" height="230" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue2" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrRed2" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      {/* Cột Trái: Trạng thái T (Tense / Deoxy-Hb) */}
+      <rect x="40" y="20" width="370" height="190" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
+      <text x="225" y="46" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="13" fill="var(--amber, #d97706)">TRẠNG THÁI T (TENSE / DEOXY-HB)</text>
+      <line x1="60" y1="58" x2="390" y2="58" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="65" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Cấu trúc cứng nhắc, gắn kết bởi 8 cầu muối giữa các chuỗi</text>
+      <text x="65" y="106" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Sắt Fe²⁺ lệch ra ngoài mặt phẳng porphyrin 0.4 Å</text>
+      <text x="65" y="130" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Hốc trung tâm mở rộng, KẸP CHẶT phân tử 2,3-BPG</text>
+      <text x="65" y="154" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-danger, #dc2626)">• Ái lực đối với Oxy: RẤT THẤP</text>
+      <text x="65" y="178" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">➔ Ưu thế tại các mô ngoại vi cần nhả nạp O₂</text>
+
+      {/* Mũi tên tương tác 2 chiều trung tâm */}
+      <line x1="420" y1="95" x2="460" y2="95" stroke="#0284c7" stroke-width="2.5" marker-end="url(#arrBlue2)"/>
+      <text x="440" y="86" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="9" fill="#0284c7">+4 O₂</text>
+      <line x1="460" y1="135" x2="420" y2="135" stroke="#dc2626" stroke-width="2.5" marker-end="url(#arrRed2)"/>
+      <text x="440" y="152" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="9" fill="#dc2626">-4 O₂</text>
+
+      {/* Cột Phải: Trạng thái R (Relaxed / Oxy-Hb) */}
+      <rect x="470" y="20" width="370" height="190" rx="10" fill="rgba(2, 132, 199, 0.06)" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+      <text x="655" y="46" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="13" fill="var(--color-primary, #0284c7)">TRẠNG THÁI R (RELAXED / OXY-HB)</text>
+      <line x1="490" y1="58" x2="820" y2="58" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="495" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Bẻ gãy các cầu muối, khung phân tử xoay trượt thư giãn</text>
+      <text x="495" y="106" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Kéo Fe²⁺ lọt khít hoàn hảo vào mặt phẳng Hem</text>
+      <text x="495" y="130" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Dimer α₁β₁ xoay 15° so với α₂β₂, TỐNG KHỨ 2,3-BPG</text>
+      <text x="495" y="154" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-success, #10b981)">• Ái lực đối với Oxy: RẤT CAO (Tăng gấp 100 lần)</text>
+      <text x="495" y="178" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">➔ Ưu thế tại mao mạch phế nang phổi để bắt giữ O₂ tối đa</text>
+    </svg>
+  </div>
+</div>
 
 ---
 
@@ -405,19 +515,56 @@ Mối tương quan giữa phân áp oxy ($pO_2$) và độ bão hòa oxy của H
 
 ### B. 3 Con Đường Vận Chuyển $CO_2$ Từ Mô Về Phổi
 
-```
-  1. HÒA TAN VẬT LÝ (7 – 10%):
-     CO2 khuếch tán tự do trong huyết tương và hồng cầu.
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-lungs" style="color: var(--color-primary, #0284c7);"></i> 3 CON ĐƯỜNG VẬN CHUYỂN CO₂ TỪ MÔ VỀ PHỔI (CHLORIDE SHIFT)</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 260" width="880" height="260" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlueCO2" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+      </defs>
 
-  2. LIÊN KẾT CARBAMAT (15 – 20%):
-     CO2 gắn trực tiếp không cần enzyme vào đầu N-tận chuỗi globin tạo Carbaminohemoglobin:
-     CO2 + Hb-NH3+ ⇌ Hb-NH-COO- + 2 H+ (Ổn định cấu hình T nhả oxy).
+      {/* Đường 1: Hòa tan vật lý */}
+      <rect x="40" y="20" width="250" height="150" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="165" y="44" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="12" fill="var(--color-text, #0f172a)">1. HÒA TAN VẬT LÝ</text>
+      <text x="165" y="62" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="var(--color-primary, #0284c7)">7 – 10% Tổng lượng CO₂</text>
+      <line x1="55" y1="72" x2="275" y2="72" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="55" y="96" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Khuếch tán tự do trong huyết</text>
+      <text x="55" y="116" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">  tương và dịch nội bào hồng cầu</text>
+      <text x="55" y="136" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Quyết định trực tiếp PaCO₂</text>
+      <text x="55" y="156" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">  đo được trên khí máu động mạch</text>
 
-  3. HỆ THỐNG ĐỆM BICARBONATE (70 – 80% - CHÍNH):
-     Tại Mô: CO2 + H2O ──(Carbonic Anhydrase)──► H2CO3 ──► H+ (Hb đệm) + HCO3-
-     HCO3- ra huyết tương đổi lấy Cl- vào hồng cầu qua kênh Band 3 (Chloride Shift / Hamburger).
-     Tại Phổi: Quá trình đảo ngược hoàn toàn giải phóng CO2 ra khí thở.
-```
+      {/* Đường 2: Hợp chất Carbamat */}
+      <rect x="315" y="20" width="250" height="150" rx="8" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
+      <text x="440" y="44" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="12" fill="var(--amber, #d97706)">2. LIÊN KẾT CARBAMAT</text>
+      <text x="440" y="62" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="var(--amber, #d97706)">15 – 20% Tổng lượng CO₂</text>
+      <line x1="330" y1="72" x2="550" y2="72" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="330" y="96" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Gắn nhóm amin đầu N-tận chuỗi</text>
+      <text x="330" y="116" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">  globin: Hb-NH₂ + CO₂ ➔ Hb-NH-COO⁻</text>
+      <text x="330" y="136" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Không cần xúc tác enzym</text>
+      <text x="330" y="156" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10.5" fill="var(--color-danger, #dc2626)">• Tạo Carbamino-Hb ổn định thể T</text>
+
+      {/* Đường 3: Hệ đệm Bicarbonate */}
+      <rect x="590" y="20" width="250" height="150" rx="8" fill="rgba(16, 185, 129, 0.08)" stroke="var(--color-success, #10b981)" stroke-width="1.8"/>
+      <text x="715" y="44" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="12" fill="var(--color-success, #10b981)">3. HỆ ĐỆM BICARBONATE</text>
+      <text x="715" y="62" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="var(--color-success, #10b981)">70 – 80% (CON ĐƯỜNG CHÍNH)</text>
+      <line x1="605" y1="72" x2="825" y2="72" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+      <text x="605" y="96" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• CO₂ + H₂O ➔ H₂CO₃ ➔ H⁺ + HCO₃⁻</text>
+      <text x="605" y="116" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">  (Enzym Carbonic Anhydrase CA-I/II)</text>
+      <text x="605" y="136" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• H⁺ được Deoxy-Hb đệm giữ vững</text>
+      <text x="605" y="156" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10.5" fill="var(--color-primary, #0284c7)">• Trao đổi HCO₃⁻ ra đổi Cl⁻ vào hồng cầu</text>
+
+      {/* Băng dưới: Cơ chế Chloride Shift (Hiện tượng Hamburger) */}
+      <rect x="40" y="185" width="800" height="60" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="440" y="208" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="var(--color-primary, #0284c7)">CƠ CHẾ DỊCH CHUYỂN CLORUA (CHLORIDE SHIFT / HIỆN TƯỢNG HAMBURGER)</text>
+      <text x="440" y="228" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">Tại Mô: Kênh Band 3 (AE1) tống HCO₃⁻ ra huyết tương đổi Cl⁻ vào trong hồng cầu • Tại Phổi: Đảo chiều tống Cl⁻ ra, nhận HCO₃⁻ vào tái tạo CO₂ thở ra</text>
+    </svg>
+  </div>
+</div>
 
 ---
 

@@ -93,14 +93,14 @@ sections:
     </div>
     <div class="stat-card">
       <div class="stat-val emerald">10.000 Lần</div>
-      <div class="stat-lbl">Độ chọn lọc vượt trội của kênh KcsA đối với ion K+ so với ion Na+ nhỏ hơn</div>
+      <div class="stat-lbl">Độ chọn lọc vượt trội của kênh KcsA đối với ion $K^+$ so với ion $Na^+$ nhỏ hơn</div>
     </div>
     <div class="stat-card">
       <div class="stat-val amber">ΔF508 (Phe 508)</div>
-      <div class="stat-lbl">Đột biến mất đoạn gây suy sụp kênh Cl- CFTR trong Bệnh Xơ Nang (CF)</div>
+      <div class="stat-lbl">Đột biến mất đoạn gây suy sụp kênh $Cl^-$ CFTR trong Bệnh Xơ Nang (CF)</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val rose">&gt; 60 mmol/L Cl-</div>
+      <div class="stat-val rose">&gt; 60 mmol/L $Cl^-$</div>
       <div class="stat-lbl">Nồng độ Clo mồ hôi (Sweat Test) - Tiêu chuẩn vàng chẩn đoán Bệnh Xơ Nang</div>
     </div>
   </div>
@@ -111,14 +111,53 @@ sections:
 ## 1. Cấu Trúc Lớp Kép Lipid, Mô Hình Khảm Động & Hệ Enzyme Translocase
 Màng sinh học là cấu trúc tự lắp ráp (*self-assembly*) từ các phân tử lipid lưỡng cực và protein nhờ **hiệu ứng kỵ nước (hydrophobic effect)**, dày khoảng **$6 - 10\text{ nm}$**.
 
-```
-                 [MÔI TRƯỜNG NGOẠI BÀO] (Ưa nước)
-     ● ─── Đầu cực (Phosphatidylcholine, Sphingomyelin, Glycolipid)
-    / \ ── Đuôi béo kỵ nước (Acid béo no + không no cis tạo góc gãy)
-    \ /
-     ● ─── Đầu cực (Phosphatidylserine tích điện âm, Phosphatidylethanolamine)
-                 [BÀO TƯƠNG NỘI BÀO] (Ưa nước)
-```
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-layer-group" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: CẤU TRÚC LỚP KÉP PHOSPHOLIPID &amp; TÍNH BẤT ĐỐI XỨNG CỦA MÀNG TẾ BÀO</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 260" width="880" height="260" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue23" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <linearGradient id="gradCore" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#fef3c7" stop-opacity="0.8"/>
+          <stop offset="50%" stop-color="#fffbeb" stop-opacity="0.95"/>
+          <stop offset="100%" stop-color="#fef3c7" stop-opacity="0.8"/>
+        </linearGradient>
+      </defs>
+
+      {/* ZONE 1: MÔI TRƯỜNG NGOẠI BÀO */}
+      <rect x="30" y="10" width="820" height="30" rx="6" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.2"/>
+      <text x="440" y="30" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#0369a1">MÔI TRƯỜNG NGOẠI BÀO (ƯA NƯỚC - HYDROPHILIC)</text>
+
+      {/* ZONE 2: LÁ MÀNG NGOÀI */}
+      <rect x="30" y="50" width="820" height="48" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="#0284c7" stroke-width="1.6"/>
+      <circle cx="65" cy="74" r="14" fill="#0284c7"/>
+      <text x="65" y="79" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="14" fill="#ffffff">●</text>
+      <text x="95" y="68" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#0284c7">LÁ MÀNG NGOÀI (OUTER LEAFLET):</text>
+      <text x="95" y="86" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">Chủ yếu là Phosphatidylcholine (PC), Sphingomyelin &amp; Glycolipid (tạo lớp áo Glycocalyx nhận diện miễn dịch)</text>
+
+      {/* ZONE 3: LÕI KỴ NƯỚC Ở GIỮA */}
+      <rect x="30" y="105" width="820" height="52" rx="8" fill="url(#gradCore)" stroke="#d97706" stroke-width="1.6"/>
+      <text x="50" y="127" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#b45309">LÕI KỴ NƯỚC (HYDROPHOBIC CORE - 6–10 nm):</text>
+      <text x="50" y="145" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="#78350f">Đuôi acid béo no (thẳng) + Acid béo không no cis (gấp góc 30°) tạo độ lỏng linh hoạt + Phân tử Cholesterol xen kẽ điều hòa độ nhớt</text>
+
+      {/* ZONE 4: LÁ MÀNG TRONG */}
+      <rect x="30" y="165" width="820" height="48" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="#059669" stroke-width="1.6"/>
+      <circle cx="65" cy="189" r="14" fill="#059669"/>
+      <text x="65" y="194" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="14" fill="#ffffff">●</text>
+      <text x="95" y="183" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#059669">LÁ MÀNG TRONG (INNER LEAFLET):</text>
+      <text x="95" y="201" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">Chủ yếu là Phosphatidylserine (PS tích điện âm) &amp; Phosphatidylethanolamine (PE) ➔ Giữ bên trong bởi enzym Flippase (ATP)</text>
+
+      {/* ZONE 5: BÀO TƯƠNG NỘI BÀO */}
+      <rect x="30" y="220" width="820" height="30" rx="6" fill="#dcfce7" stroke="#059669" stroke-width="1.2"/>
+      <text x="440" y="240" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#15803d">BÀO TƯƠNG TẾ BÀO (ƯA NƯỚC - CYTOSOL)</text>
+    </svg>
+  </div>
+</div>
 
 ---
 
@@ -137,10 +176,12 @@ Màng sinh học là cấu trúc tự lắp ráp (*self-assembly*) từ các ph�
 
 ### B. Mô Hình Khảm Động Singer-Nicolson (1972) & Hệ Translocase
 
-```
-  [1. Khuếch Tán Bên (Lateral Diffusion)]: Di chuyển ngang trong cùng 1 lá màng cực nhanh (10^7 lần/giây).
-  [2. Khuếch Tán Lật Màng (Flip-Flop)]: Rất hiếm khi tự phát (vài tuần) do rào cản năng lượng đưa đầu cực qua lõi kỵ nước.
-```
+<BiochemAlert type="info" title="2 Kiểu Chuyển Động Nhiệt Động Học Của Phân Tử Lipid">
+  <ul>
+    <li><strong>Khuếch tán bên (Lateral Diffusion):</strong> Di chuyển ngang trong cùng một lá màng với tốc độ cực nhanh ($10^7\text{ lần/giây}$), cho phép protein và lipid dịch chuyển tự do.</li>
+    <li><strong>Khuếch tán lật màng (Flip-Flop):</strong> Đổi vị trí giữa hai lá màng; rất hiếm khi tự phát (thời gian bán hủy hàng tuần) do rào cản nhiệt động đưa đầu cực qua lõi kỵ nước ➔ Cần enzyme chuyên biệt (Flippase/Floppase/Scramblase).</li>
+  </ul>
+</BiochemAlert>
 
 <div class="table-responsive">
   <table class="table-modern">
@@ -294,7 +335,7 @@ Màng sinh học là cấu trúc tự lắp ráp (*self-assembly*) từ các ph�
 
 ---
 
-## 3. Cấu Trúc Kênh Chọn Lọc K+ (KcsA) & Kênh Aquaporin (Chống Nhảy Proton)
+## 3. Cấu Trúc Kênh Chọn Lọc $K^+$ (KcsA) & Kênh Aquaporin (Chống Nhảy Proton)
 ### A. Kênh Kali Chọn Lọc KcsA (Roderick MacKinnon - Nobel 2003)
 - **Cấu trúc**: Homotetramer, bộ lọc chọn lọc chứa motif **TVGYG (Thr-Val-Gly-Tyr-Gly)**.
 - **Cơ chế lập thể loại trừ $Na^+$**:
@@ -312,17 +353,80 @@ Màng sinh học là cấu trúc tự lắp ráp (*self-assembly*) từ các ph�
 
 ---
 
-## 4. Vận Chuyển Tích Cực Sơ Cấp: Bơm Na+/K+, H+/K+ Dạ Dày, Ca2+ SERCA & Cu2+
+## 4. Vận Chuyển Tích Cực Sơ Cấp: Bơm $Na^+/K^+$, $H^+/K^+$ Dạ Dày, $Ca^{2+}$ SERCA & $Cu^{2+}$
 ### A. Bơm $Na^+/K^+$-ATPase (P-type ATPase)
 
-```
-  CHU TRÌNH XÚC TÁC ALBERS-POST:
-  1. Trạng thái E1 (hướng bào tương): Gắn 3 Na+ và 1 ATP.
-  2. Tự phosphoryl hóa gốc Aspartate --> Tạo phức hợp giàu năng lượng E1-P, giải phóng ADP.
-  3. Chuyển cấu hình sang E2-P (hướng ngoại bào): Giảm ái lực Na+, phóng thích 3 Na+ ra ngoài.
-  4. Gắn 2 K+ ngoại bào vào E2-P --> Kích hoạt tự khử phosphate giải phóng Pi --> Về E2.
-  5. Chuyển cấu hình về E1 (hướng bào tương): Giải phóng 2 K+ vào nội bào, nhận 3 Na+ mới.
-```
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-arrows-rotate" style="color: var(--color-primary, #0284c7);"></i> CHU TRÌNH XÚC TÁC 5 BƯỚC ALBERS-POST CỦA BƠM Na⁺/K⁺-ATPase</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 230" width="880" height="230" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrCycle" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+      </defs>
+
+      {/* Bước 1 */}
+      <rect x="30" y="20" width="150" height="90" rx="8" fill="rgba(2, 132, 199, 0.08)" stroke="#0284c7" stroke-width="1.5"/>
+      <text x="105" y="40" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#0284c7">1. TRẠNG THÁI E₁</text>
+      <text x="105" y="58" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text, #0f172a)">Hướng vào bào tương</text>
+      <text x="105" y="74" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="#dc2626">• Gắn 3 Na⁺</text>
+      <text x="105" y="90" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text-muted, #475569)">• Gắn 1 phân tử ATP</text>
+
+      {/* Mũi tên 1 -> 2 */}
+      <line x1="180" y1="65" x2="200" y2="65" stroke="#0284c7" stroke-width="2" marker-end="url(#arrCycle)"/>
+
+      {/* Bước 2 */}
+      <rect x="200" y="20" width="150" height="90" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="275" y="40" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="var(--color-text, #0f172a)">2. PHOSPHORYL HÓA</text>
+      <text x="275" y="58" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text, #0f172a)">Thủy phân ATP ➔ E₁-P</text>
+      <text x="275" y="74" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="var(--color-primary, #0284c7)">Gốc Aspartate nhận P</text>
+      <text x="275" y="90" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text-muted, #475569)">Giải phóng phân tử ADP</text>
+
+      {/* Mũi tên 2 -> 3 */}
+      <line x1="350" y1="65" x2="370" y2="65" stroke="#0284c7" stroke-width="2" marker-end="url(#arrCycle)"/>
+
+      {/* Bước 3 */}
+      <rect x="370" y="20" width="150" height="90" rx="8" fill="rgba(245, 158, 11, 0.08)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
+      <text x="445" y="40" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="var(--amber, #d97706)">3. CHUYỂN DẠNG E₂-P</text>
+      <text x="445" y="58" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text, #0f172a)">Mở ra ngoài tế bào</text>
+      <text x="445" y="74" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="#dc2626">• NHẢ 3 Na⁺ RA NGOÀI</text>
+      <text x="445" y="90" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text-muted, #475569)">Giảm ái lực với Na⁺</text>
+
+      {/* Mũi tên 3 -> 4 */}
+      <line x1="520" y1="65" x2="540" y2="65" stroke="#0284c7" stroke-width="2" marker-end="url(#arrCycle)"/>
+
+      {/* Bước 4 */}
+      <rect x="540" y="20" width="150" height="90" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="615" y="40" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="var(--color-text, #0f172a)">4. GẮN K⁺ &amp; KHỬ P</text>
+      <text x="615" y="58" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text, #0f172a)">Gắn 2 K⁺ ngoại bào</text>
+      <text x="615" y="74" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="#059669">• Tự khử phosphate</text>
+      <text x="615" y="90" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text-muted, #475569)">Nhả Pi tự do ➔ Dạng E₂</text>
+
+      {/* Mũi tên 4 -> 5 */}
+      <line x1="690" y1="65" x2="710" y2="65" stroke="#0284c7" stroke-width="2" marker-end="url(#arrCycle)"/>
+
+      {/* Bước 5 */}
+      <rect x="710" y="20" width="140" height="90" rx="8" fill="rgba(16, 185, 129, 0.08)" stroke="#10b981" stroke-width="1.5"/>
+      <text x="780" y="40" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#059669)">5. HỒI PHỤC E₁</text>
+      <text x="780" y="58" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text, #0f172a)">Mở lại vào trong bào tương</text>
+      <text x="780" y="74" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="#059669">• NHẢ 2 K⁺ VÀO TRONG</text>
+      <text x="780" y="90" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" fill="var(--color-text-muted, #475569)">Sẵn sàng chu kỳ mới</text>
+
+      {/* Đường nối vòng lặp ngược lại từ Bước 5 về Bước 1 */}
+      <path d="M 780 110 L 780 145 L 105 145 L 105 110" fill="none" stroke="#0284c7" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#arrCycle)"/>
+      <text x="440" y="140" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="var(--color-primary, #0284c7)">◄ KHỞI ĐỘNG VÒNG LẶP MỚI (TIÊU TỐN 1 ATP ĐẨY 3 Na⁺ RA ĐỔI 2 K⁺ VÀO) ►</text>
+
+      {/* Banner Dược lý lâm sàng */}
+      <rect x="30" y="165" width="820" height="50" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
+      <text x="440" y="186" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#dc2626">ỨNG DỤNG DƯỢC LÝ TIM MẠCH (DIGOXIN / OUABAIN):</text>
+      <text x="440" y="202" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Ức chế cạnh tranh vị trí gắn K⁺ ở mặt ngoài (Trạng thái E₂-P) ➔ Tích lũy Na⁺ nội bào ➔ Gián tiếp kích hoạt tích tụ Ca²⁺ qua bơm trao đổi Na⁺/Ca²⁺ ➔ Tăng co bóp cơ tim</text>
+    </svg>
+  </div>
+</div>
 
 - **Ứng dụng dược lý**: **Digoxin & Ouabain** ức chế cạnh tranh vị trí gắn $K^+$ của bơm $\rightarrow$ Tăng $Na^+$ nội bào $\rightarrow$ Ức chế bơm trao đổi $Na^+/Ca^{2+} \rightarrow$ Tích lũy $Ca^{2+}$ nội bào làm **tăng sức co bóp cơ tim trong suy tim**.
 
@@ -333,7 +437,7 @@ Màng sinh học là cấu trúc tự lắp ráp (*self-assembly*) từ các ph�
 <div class="matrix-grid">
   <div class="matrix-card">
     <div class="matrix-card-title">
-      <span>1. Bơm H+/K+-ATPase Dạ Dày</span>
+      <span>1. Bơm $H^+/K^+$-ATPase Dạ Dày</span>
       <span class="rx-tag danger">Bài Tiết Acid HCl (pH ~ 1.0)</span>
     </div>
     <div class="matrix-card-desc">
@@ -343,7 +447,7 @@ Màng sinh học là cấu trúc tự lắp ráp (*self-assembly*) từ các ph�
 
   <div class="matrix-card">
     <div class="matrix-card-title">
-      <span>2. Bơm Ca2+-ATPase (SERCA)</span>
+      <span>2. Bơm $Ca^{2+}$-ATPase (SERCA)</span>
       <span class="rx-tag preferred">Thư Giãn Cơ Sau Co Thắt</span>
     </div>
     <div class="matrix-card-desc">
@@ -354,7 +458,7 @@ Màng sinh học là cấu trúc tự lắp ráp (*self-assembly*) từ các ph�
   <div class="matrix-card">
     <div class="matrix-card-title">
       <span>3. Bệnh Menkes &amp; Bệnh Wilson</span>
-      <span class="rx-tag warning">Đột Biến Bơm Cu2+-ATPase</span>
+      <span class="rx-tag warning">Đột Biến Bơm $Cu^{2+}$-ATPase</span>
     </div>
     <div class="matrix-card-desc">
       - <strong>Menkes</strong>: Đột biến bơm hấp thu đồng ở ruột, thiếu đồng mô, tóc xoăn bạc dễ gãy.<br />
@@ -450,8 +554,8 @@ Màng sinh học là cấu trúc tự lắp ráp (*self-assembly*) từ các ph�
       <rect x="155" y="20" width="570" height="114" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
       <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">MÔ HÌNH HẤP THU XUYÊN TẾ BÀO (TRANSCELLULAR) Ở RUỘT &amp;</text>
       <text x="440" y="60" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--color-text, #0f172a)">THẬN:</text>
-      <text x="179" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Lòng ruột/ống thận ──(SGLT-1/2 qua gradient Na+)──► Tế bào</text>
-      <text x="179" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  biểu mô ──(GLUT-2)──► Máu mao mạch</text>
+      <text x="179" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Lòng ruột/ống thận (SGLT-1/2 qua gradient Na+)► Tế bào</text>
+      <text x="179" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">  biểu mô (GLUT-2)► Máu mao mạch</text>
       <text x="179" y="118" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Bơm Na+/K+-ATPase đáy giữ Na+ thấp</text>
     </svg>
   </div>
@@ -468,11 +572,12 @@ Màng sinh học là cấu trúc tự lắp ráp (*self-assembly*) từ các ph�
 
 ### B. Kênh CFTR & Bệnh Lý Xơ Nang Tụy (Cystic Fibrosis)
 
-```
-  CƠ CHẾ ĐÓNG MỞ KÊNH CFTR:
-  1. Tín hiệu cAMP kích hoạt Protein Kinase A (PKA) --> Phosphoryl hóa miền điều hòa R.
-  2. Hai phân tử ATP gắn vào NBD1 và NBD2 --> Kênh mở toang cho ion Cl- và HCO3- thoát ra ngoài.
-```
+<BiochemAlert type="reaction" title="Cơ Chế Phân Tử Đóng Mở Kênh CFTR">
+  <ol>
+    <li><strong>Phosphoryl hóa:</strong> Tín hiệu cAMP nội bào kích hoạt Protein Kinase A (PKA) gắn nhóm phosphate lên miền điều hòa R (*Regulatory domain*).</li>
+    <li><strong>Gắn kết ATP:</strong> Hai phân tử ATP gắn đồng thời vào hai miền NBD1 và NBD2 (*Nucleotide-Binding Domains*) làm biến đổi cấu hình không gian ➔ Mở toang cổng dẫn truyền ion $Cl^-$ và $HCO_3^-$ thoát ra ngoài lòng ống.</li>
+  </ol>
+</BiochemAlert>
 
 <div class="matrix-grid">
   <div class="matrix-card">
@@ -535,10 +640,10 @@ Màng sinh học là cấu trúc tự lắp ráp (*self-assembly*) từ các ph�
 
       {/* Single Node: ĐỘC TỐ DỊCH TẢ (Cholera Toxin) */}
       <rect x="145" y="20" width="590" height="114" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">ĐỘC TỐ DỊCH TẢ (Cholera Toxin) ──► Tăng vọt cAMP ──► Mở</text>
-      <text x="440" y="60" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--amber, #d97706)">toang kênh CFTR ──► Mất Cl-, Na+, Nước ồ ạt</text>
-      <text x="169" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• (Kênh SGLT-1 hoàn toàn KHÔNG bị ức chế) │</text>
-      <text x="169" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• UỐNG DUNG DỊCH ORT (NaCl + Glucose) ──► Kích hoạt SGLT-1 ──►</text>
+      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">ĐỘC TỐ DỊCH TẢ (Cholera Toxin) ► Tăng vọt cAMP ► Mở</text>
+      <text x="440" y="60" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--amber, #d97706)">toang kênh CFTR ► Mất Cl-, Na+, Nước ồ ạt</text>
+      <text x="169" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• (Kênh SGLT-1 hoàn toàn KHÔNG bị ức chế)</text>
+      <text x="169" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• UỐNG DUNG DỊCH ORT (NaCl + Glucose) ► Kích hoạt SGLT-1 ►</text>
       <text x="169" y="118" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  Kéo Na+, Glucose và Nước ngược vào máu!</text>
     </svg>
   </div>

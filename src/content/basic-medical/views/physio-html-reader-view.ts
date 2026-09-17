@@ -321,6 +321,12 @@ async function fetchAndHydratePhysioArticle(
       link2.href = './src/styles/components/mdx-base.css';
       document.head.appendChild(link2);
     }
+    if (!document.querySelector('link[href*="physio-shared.css"]')) {
+      const link3 = document.createElement('link');
+      link3.rel = 'stylesheet';
+      link3.href = './src/content/basic-medical/css/physio-shared.css';
+      document.head.appendChild(link3);
+    }
 
     const parsed = cliniMdxEngine.parse(htmlText);
     const cleanTitle = parsed.title;
@@ -396,6 +402,45 @@ async function fetchAndHydratePhysioArticle(
           border: none !important;
           box-shadow: none !important;
           box-sizing: border-box !important;
+        }
+
+        #physio-article-mount .infobox {
+          display: flex;
+          align-items: flex-start;
+          gap: 1rem;
+          padding: 1.15rem 1.35rem;
+          border-radius: 14px;
+          margin: 1.5rem 0;
+          font-size: 0.94rem;
+          line-height: 1.65;
+          position: relative;
+        }
+
+        #physio-article-mount .infobox:has(> .infobox-title),
+        #physio-article-mount .infobox:not(:has(.infobox-icon)):not(:has(.mdx-alert-icon)) {
+          flex-direction: column !important;
+          align-items: stretch !important;
+          gap: 0.5rem !important;
+        }
+
+        #physio-article-mount .infobox-body {
+          flex: 1 !important;
+          width: 100% !important;
+        }
+
+        #physio-article-mount .infobox-title {
+          display: block !important;
+          width: 100% !important;
+          font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif) !important;
+          font-size: 0.98rem !important;
+          font-weight: 800 !important;
+          line-height: 1.4 !important;
+          margin-bottom: 0.35rem !important;
+          color: var(--color-text, #0f172a) !important;
+        }
+
+        [data-theme="dark"] #physio-article-mount .infobox-title {
+          color: var(--color-text, #f8fafc) !important;
         }
 
         @media (max-width: 768px) {

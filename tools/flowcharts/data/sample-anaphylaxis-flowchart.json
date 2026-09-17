@@ -1,0 +1,127 @@
+{
+  "id": "fc-anaphylaxis-tt51",
+  "title": "PHÁC ĐỒ CẤP CỨU PHẢN VỆ (THÔNG TƯ 51/2017/TT-BYT)",
+  "subtitle": "Quy trình xử trí tối khẩn cấp từ ban đầu đến hồi sức chuyên sâu",
+  "viewBox": { "width": 960, "height": 620 },
+  "nodes": [
+    {
+      "id": "node-start",
+      "type": "start",
+      "badge": "TIẾP NHẬN",
+      "title": "Nghi ngờ Phản vệ",
+      "desc": "Tiếp xúc dị nguyên + Mày đay, phù môi/mắt, khó thở, tụt HA",
+      "x": 360,
+      "y": 40,
+      "width": 240,
+      "height": 70
+    },
+    {
+      "id": "node-adrenalin",
+      "type": "focal",
+      "badge": "TỐI KHẨN CẤP",
+      "title": "ADRENALIN 1mg/1ml TIÊM BẮP",
+      "desc": "Người lớn: 1/2 - 1 ống | Trẻ em: 1/5 - 1/3 ống (Mặt trước ngoài đùi)",
+      "x": 340,
+      "y": 150,
+      "width": 280,
+      "height": 80
+    },
+    {
+      "id": "node-eval",
+      "type": "decision",
+      "badge": "ĐÁNH GIÁ 3-5 PHÚT",
+      "title": "Đáp Ứng Lâm Sàng?",
+      "desc": "Huyết áp cải thiện? Hết co thắt phế quản, khó thở?",
+      "x": 370,
+      "y": 270,
+      "width": 220,
+      "height": 75
+    },
+    {
+      "id": "node-refractory",
+      "type": "dose",
+      "badge": "CHƯA ĐÁP ỨNG / NẶNG HƠN",
+      "title": "Nhắc Lại Adrenalin & Hồi Sức",
+      "desc": "Tiêm bắp nhắc lại mỗi 3-5p + Lập 2 đường truyền TM ngoại vi + Truyền dịch nhanh 1-2L",
+      "x": 80,
+      "y": 390,
+      "width": 260,
+      "height": 90
+    },
+    {
+      "id": "node-infusion",
+      "type": "action",
+      "badge": "KHÁNG TRỊ",
+      "title": "Truyền Adrenalin Liên Tục",
+      "desc": "Bơm tiêm điện bắt đầu 0.1 mcg/kg/phút + Đặt NKQ nếu suy hô hấp đe dọa",
+      "x": 80,
+      "y": 515,
+      "width": 260,
+      "height": 80
+    },
+    {
+      "id": "node-supportive",
+      "type": "action",
+      "badge": "ỔN ĐỊNH HUYẾT ĐỘNG",
+      "title": "Điều Trị Hỗ Trợ & Phối Hợp",
+      "desc": "Nằm đầu bằng, chân cao + Thở Oxy + Diphenhydramine TM + Methylprednisolon TM",
+      "x": 620,
+      "y": 390,
+      "width": 260,
+      "height": 90
+    },
+    {
+      "id": "node-monitoring",
+      "type": "stable",
+      "badge": "THEO DÕI NẰM VIỆN",
+      "title": "Theo Dõi Tối Thiểu 24-48 Giờ",
+      "desc": "Cảnh giác phản vệ pha 2 (Biphasic) + Cấp thẻ cảnh ứng và bút tiêm EpiPen",
+      "x": 620,
+      "y": 515,
+      "width": 260,
+      "height": 80
+    }
+  ],
+  "edges": [
+    {
+      "from": "node-start",
+      "to": "node-adrenalin",
+      "fromAnchor": "bottom",
+      "toAnchor": "top"
+    },
+    {
+      "from": "node-adrenalin",
+      "to": "node-eval",
+      "fromAnchor": "bottom",
+      "toAnchor": "top"
+    },
+    {
+      "from": "node-eval",
+      "to": "node-refractory",
+      "label": "KHÔNG ĐÁP ỨNG",
+      "fromAnchor": "left",
+      "toAnchor": "top",
+      "type": "danger"
+    },
+    {
+      "from": "node-eval",
+      "to": "node-supportive",
+      "label": "ĐÁP ỨNG TỐT",
+      "fromAnchor": "right",
+      "toAnchor": "top",
+      "type": "success"
+    },
+    {
+      "from": "node-refractory",
+      "to": "node-infusion",
+      "fromAnchor": "bottom",
+      "toAnchor": "top"
+    },
+    {
+      "from": "node-supportive",
+      "to": "node-monitoring",
+      "fromAnchor": "bottom",
+      "toAnchor": "top"
+    }
+  ]
+}

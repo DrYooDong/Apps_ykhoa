@@ -1,0 +1,132 @@
+{
+  "id": "fc-malaria-transmission",
+  "title": "CHU KỲ LÂY TRUYỀN & ĐỘNG THÁI VÒNG ĐỜI KÝ SINH TRÙNG SỐT RÉT",
+  "subtitle": "Vòng đời khép kín giữa Giai đoạn Vô tính (Schizogony ở Người) và Hữu tính (Sporogony ở Anopheles)",
+  "viewBox": { "width": 960, "height": 640 },
+  "nodes": [
+    {
+      "id": "node-inoculation",
+      "type": "start",
+      "badge": "LÂY TRUYỀN",
+      "title": "Muỗi Anopheles Truyền Thoa Trùng",
+      "desc": "Muỗi cái hút máu tiết Sporozoites vào mao mạch; xâm nhập tế bào gan sau 30–60 phút",
+      "x": 340,
+      "y": 40,
+      "width": 280,
+      "height": 70
+    },
+    {
+      "id": "node-hepatic",
+      "type": "dose",
+      "badge": "SCHIZOGONY TẠI GAN",
+      "title": "Giai Đoạn Tiền Hồng Cầu (Gan)",
+      "desc": "Kéo dài 6-16 ngày. Nhân lên thành hàng chục ngàn Merozoites. P. vivax/ovale tạo Thể Ngủ (Hypnozoites)",
+      "x": 620,
+      "y": 150,
+      "width": 280,
+      "height": 85
+    },
+    {
+      "id": "node-erythrocytic",
+      "type": "focal",
+      "badge": "SCHIZOGONY HỒNG CẦU",
+      "title": "Chu Kỳ Cơn Sốt Rét Lâm Sàng",
+      "desc": "Merozoites xâm nhập phá vỡ hồng cầu chu kỳ 48h (falciparum/vivax) hoặc 72h (malariae): Rét run - Sốt cao - Vã mồ hôi",
+      "x": 620,
+      "y": 285,
+      "width": 280,
+      "height": 90
+    },
+    {
+      "id": "node-gametocyte",
+      "type": "decision",
+      "badge": "BIỆT HÓA GIAO BÀO",
+      "title": "HÌnh Thành Giao Bào (Gametocytes)",
+      "desc": "Một phần Merozoites biệt hóa thành giao bào đực và cái lưu hành trong máu (không gây triệu chứng lâm sàng)",
+      "x": 340,
+      "y": 420,
+      "width": 280,
+      "height": 80
+    },
+    {
+      "id": "node-sporogony",
+      "type": "action",
+      "badge": "SPOROGONY TRONG MUỖI",
+      "title": "Sinh Sản Hữu Tính Trong Anopheles",
+      "desc": "Muỗi hút giao bào: Thụ tinh tại dạ dày muỗi -> Ookinete -> Oocyst -> Phóng thích Sporozoites lên tuyến nước bọt (8-30 ngày)",
+      "x": 50,
+      "y": 285,
+      "width": 260,
+      "height": 90
+    },
+    {
+      "id": "node-hypnozoite",
+      "type": "stable",
+      "badge": "THỂ NGỦ (HYPNOZOITE)",
+      "title": "Tái Phát Xa (Relapse)",
+      "desc": "Chỉ có ở P. vivax và P. ovale: ngủ yên trong gan nhiều tháng/năm; chỉ bị diệt bởi Primaquine / Tafenoquine",
+      "x": 50,
+      "y": 150,
+      "width": 260,
+      "height": 85
+    }
+  ],
+  "edges": [
+    {
+      "from": "node-inoculation",
+      "to": "node-hepatic",
+      "fromAnchor": "right",
+      "toAnchor": "top",
+      "type": "primary",
+      "label": "ĐẾN GAN TRONG 30-60P"
+    },
+    {
+      "from": "node-hepatic",
+      "to": "node-erythrocytic",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "type": "danger",
+      "label": "GIẢI PHÓNG HÀNG CHỤC NGÀN MEROZOITES"
+    },
+    {
+      "from": "node-hepatic",
+      "to": "node-hypnozoite",
+      "fromAnchor": "left",
+      "toAnchor": "right",
+      "type": "success",
+      "label": "P. VIVAX / P. OVALE ĐI VÀO THỂ NGỦ"
+    },
+    {
+      "from": "node-hypnozoite",
+      "to": "node-erythrocytic",
+      "fromAnchor": "bottom",
+      "toAnchor": "left",
+      "type": "danger",
+      "label": "TÁI HOẠT ĐỘNG SAU NHIỀU THÁNG"
+    },
+    {
+      "from": "node-erythrocytic",
+      "to": "node-gametocyte",
+      "fromAnchor": "bottom",
+      "toAnchor": "right",
+      "type": "primary",
+      "label": "BIỆT HÓA HỮU TÍNH"
+    },
+    {
+      "from": "node-gametocyte",
+      "to": "node-sporogony",
+      "fromAnchor": "left",
+      "toAnchor": "bottom",
+      "type": "primary",
+      "label": "MUỖI HÚT GIAO BÀO"
+    },
+    {
+      "from": "node-sporogony",
+      "to": "node-inoculation",
+      "fromAnchor": "top",
+      "toAnchor": "left",
+      "type": "primary",
+      "label": "SPOROZOTIES LÊN TUYẾN NƯỚC BỌT"
+    }
+  ]
+}

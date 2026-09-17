@@ -900,32 +900,114 @@ export class CliniMdxEngine {
   /**
    * Format nội dung công thức toán học KaTeX
    */
-  private formatMathContent(math: string): string {
+  public formatMathContent(math: string): string {
+    if (typeof window !== 'undefined' && (window as any).katex && typeof (window as any).katex.renderToString === 'function') {
+      try {
+        return (window as any).katex.renderToString(math, { throwOnError: false });
+      } catch {
+        // Fallback to pure regex parser below
+      }
+    }
+
     let formatted = math;
 
-    // Handle \mathbf{...}
+    // 1. Text & Font Styles
     formatted = formatted.replace(/\\mathbf\{([^{}]+)\}/g, '<strong style="font-weight: 800; color: var(--color-primary, #0284c7);">$1</strong>');
-
-    // Handle \frac{A}{B}
-    formatted = formatted.replace(/\\frac\{([^{}]+)\}\{([^{}]+)\}/g, '<span class="mdx-math-fraction" style="display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; padding: 0 4px;"><span class="mdx-math-num" style="border-bottom: 1.5px solid currentColor; padding-bottom: 2px;">$1</span><span class="mdx-math-den" style="padding-top: 2px;">$2</span></span>');
-
-    // Handle \text{...}
+    formatted = formatted.replace(/\\mathit\{([^{}]+)\}/g, '<em>$1</em>');
+    formatted = formatted.replace(/\\mathrm\{([^{}]+)\}/g, '<span style="font-family: var(--font-body, sans-serif);">$1</span>');
     formatted = formatted.replace(/\\text\{([^{}]+)\}/g, '<span style="font-family: var(--font-body, sans-serif); font-style: normal; font-size: 0.92em; margin: 0 2px;">$1</span>');
 
-    // Handle Greek & Math symbols
+    // 2. Fractions \frac{A}{B} & Roots \sqrt{A} (nested loop)
+    while (/\\frac\{([^{}]+)\}\{([^{}]+)\}/.test(formatted)) {
+      formatted = formatted.replace(/\\frac\{([^{}]+)\}\{([^{}]+)\}/g, '<span class="mdx-math-fraction" style="display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; padding: 0 4px;"><span class="mdx-math-num" style="border-bottom: 1.5px solid currentColor; padding-bottom: 2px;">$1</span><span class="mdx-math-den" style="padding-top: 2px;">$2</span></span>');
+    }
+    while (/\\sqrt\{([^{}]+)\}/.test(formatted)) {
+      formatted = formatted.replace(/\\sqrt\{([^{}]+)\}/g, '√($1)');
+    }
+
+    // 3. Arrows & Directions
+    formatted = formatted
+      .replace(/\\xrightarrow\{([^{}]*)\}/g, (_m, label) => {
+        const trimmed = label.trim();
+        return trimmed ? `<span class="mdx-math-arrow-labeled" style="display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; padding: 0 4px; font-size: 0.88em;"><span style="font-size: 0.78em; line-height: 1.1; border-bottom: 1px solid currentColor; padding: 0 4px;">${trimmed}</span><span style="font-size: 1.1em; line-height: 0.8;">→</span></span>` : '→';
+      })
+      .replace(/\\implies/g, '⟹')
+      .replace(/\\Longrightarrow/g, '⟹')
+      .replace(/\\Longleftarrow/g, '⟸')
+      .replace(/\\(Long|long)?rightarrow/g, '→')
+      .replace(/\\(Long|long)?leftarrow/g, '←')
+      .replace(/\\(Long|long)?leftrightarrow/g, '⟺')
+      .replace(/\\Rightarrow/g, '⇒')
+      .replace(/\\Leftarrow/g, '⇐')
+      .replace(/\\to\b/g, '→')
+      .replace(/\\iff/g, '⟺')
+      .replace(/\\uparrow/g, '↑')
+      .replace(/\\downarrow/g, '↓');
+
+    // 4. Greek Symbols
+    formatted = formatted
+      .replace(/\\Gamma/g, 'Γ')
+      .replace(/\\gamma/g, 'γ')
+      .replace(/\\Delta/g, 'Δ')
+      .replace(/\\delta/g, 'δ')
+      .replace(/\\Theta/g, 'Θ')
+      .replace(/\\theta/g, 'θ')
+      .replace(/\\Lambda/g, 'Λ')
+      .replace(/\\lambda/g, 'λ')
+      .replace(/\\Sigma/g, 'Σ')
+      .replace(/\\sigma/g, 'σ')
+      .replace(/\\Omega/g, 'Ω')
+      .replace(/\\omega/g, 'ω')
+      .replace(/\\Phi/g, 'Φ')
+      .replace(/\\phi/g, 'φ')
+      .replace(/\\Pi/g, 'Π')
+      .replace(/\\pi/g, 'π')
+      .replace(/\\alpha/g, 'α')
+      .replace(/\\beta/g, 'β')
+      .replace(/\\kappa/g, 'κ')
+      .replace(/\\mu/g, 'µ')
+      .replace(/\\eta/g, 'η')
+      .replace(/\\(var)?epsilon/g, 'ε')
+      .replace(/\\rho/g, 'ρ')
+      .replace(/\\tau/g, 'τ');
+
+    // 5. Operators & Relations
     formatted = formatted
       .replace(/\\approx/g, '≈')
-      .replace(/\\mu/g, 'µ')
+      .replace(/\\propto/g, '∝')
+      .replace(/\\sim/g, '∼')
       .replace(/\\times/g, '×')
       .replace(/\\cdot/g, '·')
       .replace(/\\pm/g, '±')
       .replace(/\\le(q)?/g, '≤')
       .replace(/\\ge(q)?/g, '≥')
-      .replace(/\\alpha/g, 'α')
-      .replace(/\\beta/g, 'β')
-      .replace(/\\pi/g, 'π')
-      .replace(/\\Delta/g, 'Δ')
-      .replace(/\\infty/g, '∞');
+      .replace(/\\gg/g, '≫')
+      .replace(/\\ll/g, '≪')
+      .replace(/\\neq/g, '≠')
+      .replace(/\\infty/g, '∞')
+      .replace(/\\circ/g, '°');
+
+    // 6. Spacing & Functions
+    formatted = formatted
+      .replace(/\\qquad/g, '&emsp;&emsp;')
+      .replace(/\\quad/g, '&emsp;')
+      .replace(/\\[,; ]/g, '&nbsp;')
+      .replace(/\\left\(/g, '(')
+      .replace(/\\right\)/g, ')')
+      .replace(/\\left\[/g, '[')
+      .replace(/\\right\]/g, ']')
+      .replace(/\\ln\b/g, 'ln')
+      .replace(/\\log\b/g, 'log');
+
+    // 7. Superscripts (Số mũ: Rh+, Ca2+, 10^-3, etc.)
+    // Handle ^{...} first, then single token ^...
+    formatted = formatted.replace(/\^{([^}]+)}/g, '<sup>$1</sup>');
+    formatted = formatted.replace(/\^([0-9a-zA-Z+-]+)/g, '<sup>$1</sup>');
+
+    // 8. Subscripts (Số dưới: T3, T4, FT3, FT4, PaO2, etc.)
+    // Handle _{...} first, then single token _...
+    formatted = formatted.replace(/_{([^}]+)}/g, '<sub>$1</sub>');
+    formatted = formatted.replace(/_([0-9a-zA-Z+-]+)/g, '<sub>$1</sub>');
 
     return formatted;
   }

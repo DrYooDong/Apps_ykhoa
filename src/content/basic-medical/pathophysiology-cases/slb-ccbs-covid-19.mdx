@@ -187,27 +187,76 @@ Vi-rút SARS-CoV-2 là một Betacoronavirus ARN sợi đơn hướng dương ($
   </div>
 </div>
 
-```
-[ SARS-CoV-2 ] ──(gp Spike + ACE2)──► Cắt TMPRSS2 ──► Hòa màng / Nhập bào
-                                                             │
-                                                      Giải phóng +ssRNA vào bào tương
-                                                             │
-                                    ┌────────────────────────┴────────────────────────┐
-                                    ▼                                                 ▼
-                         Dịch mã Polyprotein                               Phức hợp sao chép RTC (nsp)
-                         (Cắt bởi M-pro/3CLpro)                           ─► Tổng hợp ARN bộ gen mới
-                                    │                                                 │
-                                    └──────────────────────────┬──────────────────────┘
-                                                               │
-                                                   Lắp ráp tại ERGIC/Golgi
-                                                               │
-                                   ┌───────────────────────────┴───────────────────────────┐
-                                   ▼                                                       ▼
-                        [ Xuất bào qua lysosome ]                           [ Đóng gói trong EVs/Exosomes ]
-                        Virion tự do lây nhiễm trực tiếp                    "Ngựa gỗ thành Troia" phát tán hệ thống
-                                                                            ─► Chứa TF, PS (kích hoạt đông máu)
-                                                                            ─► Thoát kháng thể trung hòa
-```
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-virus" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: CHU KỲ NHÂN LÊN SARS-COV-2 &amp; CƠ CHẾ XUẤT BÀO HỆ THỐNG</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 340" width="880" height="340" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      {/* Tầng 1: Xâm nhập & Cắt mồi */}
+      <rect x="140" y="15" width="600" height="42" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-primary, #0284c7)" stroke-width="1.5"/>
+      <text x="440" y="32" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-primary, #0284c7)">SARS-CoV-2 GẮN ACE2 ➔ TMPRSS2 CẮT SPIKE ➔ HÒA MÀNG &amp; PHÓNG THÍCH +ssRNA</text>
+      <text x="440" y="48" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Spike S1/S2 gắn ACE2 nội mô/phế nang • TMPRSS2 kích hoạt dung hợp màng tế bào</text>
+
+      {/* Rẽ nhánh Tầng 2 */}
+      <path d="M 440 57 L 440 70 L 235 70 L 235 85" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <path d="M 440 70 L 645 70 L 645 85" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+
+      {/* Cột Trái: Dịch mã & Cắt Polyprotein */}
+      <rect x="40" y="85" width="390" height="74" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--amber, #d97706)" stroke-width="1.5"/>
+      <text x="235" y="105" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--amber, #d97706)">DỊCH MÃ POLYPROTEIN (pp1a / pp1ab)</text>
+      <text x="235" y="125" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">Protease chính M-pro (3CLpro) &amp; PLpro phân cắt tạo 16 nsp</text>
+      <text x="235" y="143" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Đích nhắm của Nirmatrelvir (Paxlovid)</text>
+
+      {/* Cột Phải: Phức hợp sao chép RTC */}
+      <rect x="450" y="85" width="390" height="74" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--purple, #7c3aed)" stroke-width="1.5"/>
+      <text x="645" y="105" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--purple, #7c3aed)">PHỨC HỢP SAO CHÉP PHIÊN MÃ (RTC)</text>
+      <text x="645" y="125" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">RNA-dependent RNA Polymerase (nsp12 RdRp) sao chép bộ gen</text>
+      <text x="645" y="143" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Đích nhắm của Remdesivir &amp; Molnupiravir</text>
+
+      {/* Hội tụ Tầng 3 */}
+      <path d="M 235 159 L 235 174 L 440 174 L 440 188" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <path d="M 645 159 L 645 174 L 440 174" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+
+      {/* Tầng 3: Lắp ráp ERGIC */}
+      <rect x="190" y="188" width="500" height="42" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-primary, #0284c7)" stroke-width="1.5"/>
+      <text x="440" y="206" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-primary, #0284c7)">ĐÓNG GÓI &amp; LẮP RÁP TẠI KHOANG TRUNG GIAN ERGIC / GOLGI</text>
+      <text x="440" y="222" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Genom ARN liên kết vỏ Nucleocapsid N + nụ màng chứa Spike (S), Màng (M), Vỏ (E)</text>
+
+      {/* Phân đôi Tầng 4 */}
+      <path d="M 440 230 L 440 242 L 235 242 L 235 256" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <path d="M 440 242 L 645 242 L 645 256" fill="none" stroke="var(--red, #ef4444)" stroke-width="1.8" marker-end="url(#arrRed)"/>
+
+      {/* Cột Trái: Xuất bào Lysosome */}
+      <rect x="40" y="256" width="390" height="72" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-primary, #0284c7)" stroke-width="1.5"/>
+      <text x="235" y="276" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-primary, #0284c7)">1. XUẤT BÀO QUA LYSOSOME BẤT HOẠT</text>
+      <text x="235" y="296" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">Phóng thích Virion tự do ra dịch ngoại bào</text>
+      <text x="235" y="314" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Lây nhiễm trực tiếp các tế bào biểu mô phế nang lân cận</text>
+
+      {/* Cột Phải: Đóng gói EVs - Ngựa gỗ Troia */}
+      <rect x="450" y="256" width="390" height="72" rx="8" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.5"/>
+      <text x="645" y="276" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--red, #dc2626)">2. ĐÓNG GÓI TRONG TÚI NGOẠI BÀO (EVs / EXOSOMES)</text>
+      <text x="645" y="296" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="10.5" fill="var(--red, #dc2626)">&quot;Ngựa Gỗ Troia&quot; phát tán hệ thống • Chứa TF + PS kích hoạt đông máu</text>
+      <text x="645" y="314" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Ẩn náu màng lipid, thoát kháng thể trung hòa ➔ Gây huyết khối vi mạch</text>
+    </svg>
+  </div>
+</div>
 
 ---
 
@@ -350,20 +399,20 @@ Hệ miễn dịch thích ứng giữ vai trò sống còn trong thanh thải vi
 
 ```
                SARS-CoV-2 & Cytokines (TNF-α, IL-1, IL-6)
-                                   │
+                                   
                                    ▼
                    [ Tổn thương tế bào nội mạc (ECs) ]
-                                   │
-          ┌────────────────────────┴────────────────────────┐
+                                   
+          ┌┐
           ▼                                                 ▼
    [ Co rút tế bào → CLS ]                      [ Mất cân bằng đông máu ]
    - Thoát huyết tương vào phế nang             - Giảm: Antithrombin III, TFPI, Protein C
    - Xẹp phổi & Màng hyaline                   - Tăng: vWF, FVIII, TF, PS bộc lộ
-          │                                               │
+                                                         
           ▼                                               ▼
    [ Phù nề phế nang → ARDS ]              [ Vi huyết khối Amyloid (kháng Plasmin) ]
-          │                                               │
-          └─────────────────────────┬─────────────────────┘
+                                                         
+          └┘
                                     ▼
                         [ SUY ĐA CƠ QUAN / MODS ]
 ```
@@ -460,32 +509,32 @@ Ba cơ chế bệnh sinh cốt lõi phối hợp với nhau tạo vòng xoắn b
 
 ```
               [ Sự tồn tại dai dẳng SARS-CoV-2 sau giai đoạn cấp ]
-                                      │
-             ┌────────────────────────┴────────────────────────┐
+                                      
+             ┌┐
              ▼                                                 ▼
    [ Túi EVs bộc lộ TF/PS ]                       [ Tự kháng thể APL, anti-IFN ]
    [ Protein gai kích thích TLRs ]                [ Tái hoạt động EBV/CMV/VZV ]
-             │                                                 │
-             └────────────────────────┬────────────────────────┘
+                                                              
+             └┘
                                       ▼
                   [ Viêm mạch nội mạc mạn tính kéo dài ]
-                                      │
+                                      
                                       ▼
              [ Vi huyết khối Amyloid kháng Plasmin tích lũy ]
-                                      │
-                   ┌──────────────────┴──────────────────┐
+                                      
+                   ┌┐
                    ▼                                     ▼
           [ Vi mao mạch phổi ]               [ Vi mao mạch não ]
           - Giảm DLCO                        - Giảm tưới máu nhu mô não
           - Xơ hóa phổi kẽ                  - "Sương mù não" (Brain Fog)
           - Khó thở gắng sức                - Giảm trí nhớ / mất tập trung
-                   │                                     │
-                   └──────────────────┬──────────────────┘
+                                                        
+                   └┘
                                       ▼
                          [ THIẾU OXY MÔ MẠN TÍNH ]
-                                      │
+                                      
                      (HIF-1α kích hoạt → Tăng cytokine viêm)
-                                      │
+                                      
                           (Vòng Lặp Ác Tính Không Tự Dập Tắt)
 ```
 

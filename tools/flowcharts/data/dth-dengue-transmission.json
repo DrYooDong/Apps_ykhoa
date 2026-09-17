@@ -1,0 +1,123 @@
+{
+  "id": "fc-dengue-transmission",
+  "title": "CHU KỲ LÂY TRUYỀN VÉC-TƠ & ĐỘNG THÁI BỆNH SINH DENGUE (DENV)",
+  "subtitle": "Động học kép giữa EIP trong muỗi Aedes và IIP/ADE trong cơ thể người",
+  "viewBox": { "width": 960, "height": 640 },
+  "nodes": [
+    {
+      "id": "node-viremia",
+      "type": "start",
+      "badge": "NGUỒN LÂY",
+      "title": "Người Bệnh Có Virus Huyết",
+      "desc": "Tải lượng DENV cao trong máu từ 1-2 ngày trước sốt đến ngày 4-5",
+      "x": 360,
+      "y": 40,
+      "width": 240,
+      "height": 70
+    },
+    {
+      "id": "node-eip",
+      "type": "dose",
+      "badge": "Ủ BỆNH NGOẠI LAI (EIP)",
+      "title": "Nhân Lên Trong Muỗi Aedes",
+      "desc": "8–12 ngày (ở 28-30°C). Virus lan từ ruột giữa lên tuyến nước bọt; muỗi truyền suốt đời",
+      "x": 620,
+      "y": 150,
+      "width": 270,
+      "height": 80
+    },
+    {
+      "id": "node-bite",
+      "type": "action",
+      "badge": "LÂY TRUYỀN",
+      "title": "Muỗi Cái Đốt Người Lành",
+      "desc": "Tiết nước bọt chứa DENV vào mao mạch; tập tính đốt ban ngày (sáng sớm / chiều tối)",
+      "x": 620,
+      "y": 275,
+      "width": 270,
+      "height": 75
+    },
+    {
+      "id": "node-iip",
+      "type": "decision",
+      "badge": "Ủ BỆNH NỘI LAI (IIP)",
+      "title": "Nhân Lên Trong Cơ Thể Người",
+      "desc": "4–10 ngày (trung bình 4-7 ngày). DENV nhân lên tại tế bào đuôi gai & đại thực bào",
+      "x": 360,
+      "y": 395,
+      "width": 240,
+      "height": 80
+    },
+    {
+      "id": "node-primary",
+      "type": "stable",
+      "badge": "NHIỄM LẦN ĐẦU (PRIMARY)",
+      "title": "Sốt Dengue Cổ Điển",
+      "desc": "Tự giới hạn sau 7 ngày; tạo miễn dịch trung hòa suốt đời với cùng serotype",
+      "x": 70,
+      "y": 515,
+      "width": 250,
+      "height": 85
+    },
+    {
+      "id": "node-ade",
+      "type": "focal",
+      "badge": "NHIỄM THỨ PHÁT (SECONDARY)",
+      "title": "Cơ Chế ADE & Sốc Dengue (DSS)",
+      "desc": "Khác serotype: phức hợp kháng thể non-neutralizing gây bão Cytokine, thoát huyết tương",
+      "x": 640,
+      "y": 515,
+      "width": 250,
+      "height": 85
+    }
+  ],
+  "edges": [
+    {
+      "from": "node-viremia",
+      "to": "node-eip",
+      "fromAnchor": "right",
+      "toAnchor": "top",
+      "type": "primary",
+      "label": "MUỖI HÚT MÁU"
+    },
+    {
+      "from": "node-eip",
+      "to": "node-bite",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "type": "primary"
+    },
+    {
+      "from": "node-bite",
+      "to": "node-iip",
+      "fromAnchor": "left",
+      "toAnchor": "right",
+      "type": "primary",
+      "label": "TRUYỀN VIRUS"
+    },
+    {
+      "from": "node-iip",
+      "to": "node-primary",
+      "fromAnchor": "left",
+      "toAnchor": "top",
+      "type": "success",
+      "label": "ĐÁP ỨNG MIỄN DỊCH ĐẦU"
+    },
+    {
+      "from": "node-iip",
+      "to": "node-ade",
+      "fromAnchor": "right",
+      "toAnchor": "top",
+      "type": "danger",
+      "label": "TÁI NHIỄM KHÁC SEROTYPE"
+    },
+    {
+      "from": "node-iip",
+      "to": "node-viremia",
+      "fromAnchor": "top",
+      "toAnchor": "bottom",
+      "type": "primary",
+      "label": "HÌNH THÀNH Ổ VIRUS HUYẾT MỚI"
+    }
+  ]
+}

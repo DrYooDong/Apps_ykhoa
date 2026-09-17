@@ -279,15 +279,16 @@ sections:
 ## 3. Cấu Trúc Xoắn Kép Watson-Crick (B-DNA), Quy Luật Chargaff & 4 Lực Ổn Định
 Mô hình cấu trúc xoắn kép DNA dạng **B-DNA** do James Watson và Francis Crick đề xuất năm 1953:
 
-```
-  CÁC THÔNG SỐ HÌNH HỌC KINH ĐIỂN CỦA B-DNA:
-  - 2 chuỗi polynucleotide đối song song (Antiparallel: một sợi 5'->3', sợi đối diện 3'->5').
-  - Xoắn phải quanh một trục chung.
-  - Đường kính chuỗi xoắn kép: 2.0 nm (20 Å).
-  - Chu kỳ một vòng xoắn: 3.4 nm (34 Å) gồm đúng 10 cặp base (bp).
-  - Khoảng cách giữa 2 cặp base kế cận (Rise): 0.34 nm (3.4 Å).
-  - Xuất hiện 2 rãnh: Rãnh lớn (Major groove) và Rãnh nhỏ (Minor groove).
-```
+<BiochemAlert type="info" title="6 Thông Số Hình Học Kinh Điển Của Chuỗi Xoắn Kép B-DNA (Watson-Crick 1953)">
+  <ul>
+    <li><strong>Hướng chuỗi:</strong> 2 chuỗi polynucleotide đối song song (Antiparallel: sợi 5' ➔ 3' ghép với sợi 3' ➔ 5').</li>
+    <li><strong>Chiều xoắn:</strong> Xoắn phải (*right-handed*) quanh một trục không gian chung.</li>
+    <li><strong>Đường kính chuỗi xoắn:</strong> $2.0\text{ nm}$ ($20\text{ \AA}$), tạo không gian ổn định cho cặp base purin - pyrimidin.</li>
+    <li><strong>Chu kỳ vòng xoắn (Pitch):</strong> $3.4\text{ nm}$ ($34\text{ \AA}$), tương ứng đúng 10 cặp base (bp) trên mỗi chu kỳ.</li>
+    <li><strong>Khoảng cách kế cận (Rise):</strong> $0.34\text{ nm}$ ($3.4\text{ \AA}$) giữa 2 cặp base kề nhau.</li>
+    <li><strong>Rãnh không gian:</strong> Xuất hiện xen kẽ <strong>Rãnh lớn (Major groove)</strong> và <strong>Rãnh nhỏ (Minor groove)</strong>, nơi các protein điều hòa (Transcription Factors) bám nhận diện trình tự base đặc hiệu.</li>
+  </ul>
+</BiochemAlert>
 
 ---
 
@@ -363,12 +364,60 @@ $$\text{Guanin (G)} \equiv \text{Cytosin (C)} \quad (\text{3 liên kết hydro})
 ## 5. Cấu Trúc Siêu Phân Tử Chromatin, Bát Phân Histone & 5 Cấp Độ Đóng Gói
 Sợi đôi DNA dài **$2\text{ mét}$** ($6.4 \times 10^9\text{ bp}$ ở tế bào người lưỡng bội) được đóng gói nén chặt **10.000 lần** trong nhân tế bào $5–10\,\mu\text{m}$ nhờ liên kết tĩnh điện với các protein **Histone** giàu Lysine và Arginine (+).
 
-```
-  CẤU TRÚC ĐƠN VỊ NUCLEOSOME:
-  - Bát phân Histone lõi (Histone Octamer): [(H3-H4)2 - (H2A-H2B)2]
-  - Sợi DNA quấn quanh lõi: 146 cặp base (bp) quấn 1.75 vòng xoắn trái.
-  - Đoạn DNA liên kết (Linker DNA): 30 - 54 bp nối 2 nucleosome, được khóa bởi Histone H1.
-```
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-atom" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: CẤU TRÚC ĐƠN VỊ NUCLEOSOME &amp; KHÓA HISTONE H1</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 210" width="880" height="210" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrBlue16" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrGreen16" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+      </defs>
+
+      {/* BLOCK 1: Bát phân Histone lõi */}
+      <rect x="30" y="25" width="245" height="155" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="#0284c7" stroke-width="1.6"/>
+      <rect x="40" y="35" width="225" height="24" rx="5" fill="#e0f2fe"/>
+      <text x="152" y="52" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#0369a1">BÁT PHÂN HISTONE LÕI</text>
+      <text x="45" y="78" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">Histone Octamer:</text>
+      <text x="45" y="98" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Dimer [(H3)₂ - (H4)₂]</text>
+      <text x="45" y="118" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Dimer [(H2A)₂ - (H2B)₂]</text>
+      <text x="45" y="142" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="#0284c7">Giàu Lysine &amp; Arginine (+)</text>
+      <text x="45" y="160" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">Hút tĩnh điện khung Phosphate (-)</text>
+
+      {/* Arrow 1 -> 2 */}
+      <line x1="275" y1="102" x2="310" y2="102" stroke="#0284c7" stroke-width="2" marker-end="url(#arrBlue16)"/>
+
+      {/* BLOCK 2: Sợi DNA Quấn Quanh */}
+      <rect x="315" y="25" width="250" height="155" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="#059669" stroke-width="1.6"/>
+      <rect x="325" y="35" width="230" height="24" rx="5" fill="#dcfce7"/>
+      <text x="440" y="52" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#15803d">SỢI DNA QUẤN QUANH LÕI</text>
+      <text x="330" y="78" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">Thông số nén cấu trúc:</text>
+      <text x="330" y="98" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Chiều dài: 146 cặp base (bp)</text>
+      <text x="330" y="118" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Quấn 1.75 vòng xoắn trái</text>
+      <text x="330" y="142" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="#059669">Nén nhỏ thể tích 6–7 lần</text>
+      <text x="330" y="160" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">Tạo sợi hạt đường kính 10 nm</text>
+
+      {/* Arrow 2 -> 3 */}
+      <line x1="565" y1="102" x2="600" y2="102" stroke="#059669" stroke-width="2" marker-end="url(#arrGreen16)"/>
+
+      {/* BLOCK 3: Linker DNA & Khóa H1 */}
+      <rect x="605" y="25" width="245" height="155" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="#d97706" stroke-width="1.6"/>
+      <rect x="615" y="35" width="225" height="24" rx="5" fill="#fef3c7"/>
+      <text x="727" y="52" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#b45309">LINKER DNA &amp; KHÓA HISTONE H1</text>
+      <text x="620" y="78" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">DNA Liên Kết &amp; Khóa Vị Trí:</text>
+      <text x="620" y="98" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Đoạn DNA tự do: 30–54 bp</text>
+      <text x="620" y="118" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Histone H1 (Clamping lock)</text>
+      <text x="620" y="142" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="#d97706">Cố định cửa vào / ra của DNA</text>
+      <text x="620" y="160" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #64748b)">Tiền đề cuộn xoắn Solenoid 30 nm</text>
+    </svg>
+  </div>
+</div>
 
 
 <div class="flowchart-card">
@@ -466,13 +515,67 @@ Sợi đôi DNA dài **$2\text{ mét}$** ($6.4 \times 10^9\text{ bp}$ ở tế b
 ## 7. Các Kỹ Thuật Sinh Học Phân Tử (PCR, qPCR, NGS), Cận Lâm Sàng
 ### A. Kỹ Thuật PCR & Real-Time qPCR
 
-```
-  CHU KỲ NHIỆT 3 BƯỚC CỦA PCR (Kary Mullis 1983):
-  1. Biến tính (Denaturation): 94 - 95°C (30 giây) ──► Tách rời 2 sợi đơn làm khuôn.
-  2. Bắt cặp mồi (Annealing): 55 - 65°C ──► Cặp mồi đặc hiệu gắn bổ sung vào 2 đầu vùng đích.
-  3. Kéo dài (Extension): 72°C ──► Taq Polymerase gắn dNTPs kéo dài chuỗi theo chiều 5'->3'.
-  ===> Sau n chu kỳ: Khuếch đại 2^n bản sao DNA mục tiêu.
-```
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-arrows-spin" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: CHU KỲ NHIỆT 3 BƯỚC CỦA PHẢN ỨNG PCR (KARY MULLIS)</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 230" width="880" height="230" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrRed17" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+        <marker id="arrAmber17" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="arrGreen17" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="arrBlue17" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+      </defs>
+
+      {/* STEP 1: Biến Tính */}
+      <rect x="30" y="20" width="240" height="150" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="#dc2626" stroke-width="1.6"/>
+      <rect x="40" y="30" width="220" height="24" rx="5" fill="#fee2e2"/>
+      <text x="150" y="47" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#991b1b">1. BIẾN TÍNH (DENATURATION)</text>
+      <text x="45" y="74" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="13" fill="#dc2626">94°C – 95°C (30 giây)</text>
+      <text x="45" y="98" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Đứt toàn bộ liên kết Hydro</text>
+      <text x="45" y="118" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Tách xoắn kép DNA khuôn</text>
+      <text x="45" y="142" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="#dc2626">➔ Tạo 2 sợi đơn ssDNA làm khuôn</text>
+
+      {/* Arrow 1 -> 2 */}
+      <line x1="270" y1="95" x2="310" y2="95" stroke="#dc2626" stroke-width="2" marker-end="url(#arrAmber17)"/>
+
+      {/* STEP 2: Bắt Cặp Mồi */}
+      <rect x="315" y="20" width="250" height="150" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="#d97706" stroke-width="1.6"/>
+      <rect x="325" y="30" width="230" height="24" rx="5" fill="#fef3c7"/>
+      <text x="440" y="47" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#b45309">2. BẮT CẶP MỒI (ANNEALING)</text>
+      <text x="330" y="74" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="13" fill="#d97706">55°C – 65°C (30–60 giây)</text>
+      <text x="330" y="98" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Cặp mồi xuôi (F) &amp; ngược (R)</text>
+      <text x="330" y="118" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Bắt cặp bổ sung 2 đầu đích</text>
+      <text x="330" y="142" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="#d97706">➔ Cung cấp đầu 3'-OH cho enzym</text>
+
+      {/* Arrow 2 -> 3 */}
+      <line x1="565" y1="95" x2="605" y2="95" stroke="#d97706" stroke-width="2" marker-end="url(#arrGreen17)"/>
+
+      {/* STEP 3: Kéo Dài Chuỗi */}
+      <rect x="610" y="20" width="240" height="150" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="#059669" stroke-width="1.6"/>
+      <rect x="620" y="30" width="220" height="24" rx="5" fill="#dcfce7"/>
+      <text x="730" y="47" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#15803d">3. KÉO DÀI (EXTENSION)</text>
+      <text x="625" y="74" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="13" fill="#059669">72°C (Tối ưu Taq Polymerase)</text>
+      <text x="625" y="98" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Taq Polymerase lắp ráp dNTPs</text>
+      <text x="625" y="118" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Tổng hợp theo chiều 5' ➔ 3'</text>
+      <text x="625" y="142" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="#059669">➔ Nhân đôi toàn vẹn đoạn DNA đích</text>
+
+      {/* Amplification summary bottom banner */}
+      <rect x="180" y="185" width="520" height="32" rx="8" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.2"/>
+      <text x="440" y="206" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#0369a1">KẾT QUẢ: Sau n chu kỳ (25–35 vòng) ➔ Nhân bản lũy thừa bậc 2: Số bản sao = 2ⁿ đoạn DNA</text>
+    </svg>
+  </div>
+</div>
 
 - **Real-Time qPCR**: Đo tín hiệu huỳnh quang thời gian thực trong từng chu kỳ:
   - **SYBR Green I**: Bám không đặc hiệu vào mọi sợi đôi dsDNA (cần phân tích đường cong nóng chảy *Melting curve*).

@@ -100,7 +100,7 @@ sections:
     </div>
     <div class="stat-card">
       <div class="stat-val rose">&lt; 10–12 mmol/L / 24h</div>
-      <div class="stat-lbl">Giới hạn tốc độ nâng Na+ an toàn tuyệt đối phòng ngừa biến chứng hủy myelin cầu não (CPM)</div>
+      <div class="stat-lbl">Giới hạn tốc độ nâng $Na^+$ an toàn tuyệt đối phòng ngừa biến chứng hủy myelin cầu não (CPM)</div>
     </div>
   </div>
 </section>
@@ -110,12 +110,43 @@ sections:
 ## 1. Cấu Trúc Lý Hóa Của Nước, Hằng Số Điện Môi & Mạng Lưới Liên Kết Hydro
 Nước ($H_2O$) là dung môi sinh học duy nhất cho mọi phản ứng hóa sinh trong cơ thể.
 
-```
-                  (2δ-) Oxy (Tứ diện lệch - Góc liên kết 105°)
-                    /     \
-                   /       \
-             (δ+) H         H (δ+)  ◄── Lưỡng cực điện tích vĩnh cửu
-```
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-droplet" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ HÓA HỌC: CẤU TRÚC PHÂN TỬ NƯỚC (H₂O) &amp; MOMENT LƯỠNG CỰC VĨNH CỬU</div>
+    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 140" width="880" height="140" xmlns="http://www.w3.org/2000/svg">
+      {/* Oxygen atom */}
+      <circle cx="440" cy="40" r="24" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+      <text x="440" y="46" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="14" fill="#991b1b">O (2δ⁻)</text>
+
+      {/* Chemical bonds */}
+      <line x1="422" y1="56" x2="368" y2="98" stroke="#64748b" stroke-width="3"/>
+      <line x1="458" y1="56" x2="512" y2="98" stroke="#64748b" stroke-width="3"/>
+
+      {/* Bond angle curve & text */}
+      <path d="M 405 68 A 40 40 0 0 0 475 68" fill="none" stroke="#d97706" stroke-width="1.6" stroke-dasharray="3 3"/>
+      <text x="440" y="85" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#b45309">Góc liên kết 104.5°</text>
+
+      {/* Hydrogen atoms */}
+      <circle cx="355" cy="108" r="18" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+      <text x="355" y="113" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#0369a1">H (δ⁺)</text>
+
+      <circle cx="525" cy="108" r="18" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+      <text x="525" y="113" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#0369a1">H (δ⁺)</text>
+
+      {/* Dipole description badges */}
+      <rect x="50" y="45" width="230" height="50" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="#0284c7" stroke-width="1.2"/>
+      <text x="165" y="66" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#0284c7">CẤU TRÚC HÌNH HỌC</text>
+      <text x="165" y="84" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text, #0f172a)">Tứ diện lệch (Góc 104.5°)</text>
+
+      <rect x="600" y="45" width="230" height="50" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="#dc2626" stroke-width="1.2"/>
+      <text x="715" y="66" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#dc2626">LƯỠNG CỰC ĐIỆN TÍCH</text>
+      <text x="715" y="84" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text, #0f172a)">Moment lưỡng cực μ = 1.85 Debye</text>
+    </svg>
+  </div>
+</div>
 
 ---
 
@@ -251,8 +282,8 @@ $$\text{pH} = \text{p}K_a + \log\frac{[\text{Base liên hợp } A^-]}{[\text{Aci
       <rect x="155" y="20" width="570" height="96" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
       <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">TỔNG LƯỢNG NƯỚC CƠ THỂ (TBW = 60% = 42 LÍT Ở NGƯỜI 70</text>
       <text x="440" y="60" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--color-text, #0f172a)">KG)</text>
-      <text x="179" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ├── 1. KHOANG NỘI BÀO (ICF): 2/3 TBW = 40% = 28 LÍT</text>
-      <text x="179" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ├── Dịch kẽ (Interstitial): 75% ECF = 10.5 Lít</text>
+      <text x="179" y="82" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• 1. KHOANG NỘI BÀO (ICF): 2/3 TBW = 40% = 28 LÍT</text>
+      <text x="179" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Dịch kẽ (Interstitial): 75% ECF = 10.5 Lít</text>
     </svg>
   </div>
 </div>
@@ -311,7 +342,7 @@ $$\text{Osmolality máu tính toán} = 2 \times [Na^+] + [\text{Glucose}] + [\te
       </tr>
       <tr>
         <td><strong>Tăng Natri Máu<br />($Na^+ > 146\text{ mmol/L}$)</strong></td>
-        <td>Mất nước đơn thuần / Quá tải Na+</td>
+        <td>Mất nước đơn thuần / Quá tải $Na^+$</td>
         <td>Đái tháo nhạt (DI do thiếu ADH), không uống được nước, truyền $\text{NaHCO}_3$.</td>
         <td>Bù nước tự do (Uống nước hoặc truyền Glucose 5% chậm).</td>
       </tr>
@@ -325,32 +356,32 @@ $$\text{Osmolality máu tính toán} = 2 \times [Na^+] + [\text{Glucose}] + [\te
 
 ---
 
-## 6. Cân Bằng Kali Máu: Tăng Kali (Sóng T Nhọn) vs Hạ Kali (Sóng U, Bù Mg2+)
+## 6. Cân Bằng Kali Máu: Tăng Kali (Sóng T Nhọn) vs Hạ Kali (Sóng U, Bù $Mg^{2+}$)
 Nồng độ $K^+$ huyết thanh sinh lý: **$3.5 - 5.0\text{ mmol/L}$** (Quyết định điện thế màng nghỉ).
 
 <div class="matrix-grid">
   <div class="matrix-card">
     <div class="matrix-card-title">
-      <span>1. Tăng Kali Máu ([K+] &gt; 5.0 mmol/L)</span>
+      <span>1. Tăng Kali Máu ($[K^+] > 5.0\text{ mmol/L}$)</span>
       <span class="rx-tag danger">Cấp Cứu Ngừng Tim Tâm Trương</span>
     </div>
     <div class="matrix-card-desc">
-      - <strong>Nguyên nhân</strong>: Suy thận cấp/mạn, Thiếu Aldosterone, Toan chuyển hóa (đẩy K+ ra ngoài), Tiêu cơ vân.<br />
+      - <strong>Nguyên nhân</strong>: Suy thận cấp/mạn, Thiếu Aldosterone, Toan chuyển hóa (đẩy $K^+$ ra ngoài), Tiêu cơ vân.<br />
       - <strong>Tăng Kali giả</strong>: Vỡ hồng cầu (tan máu) trong ống nghiệm.<br />
       - <strong>ECG</strong>: Sóng T cao nhọn đối xứng (tented T) ➔ Mất sóng P, QRS giãn rộng ➔ Sóng hình sin ngừng tim.<br />
-      - <strong>Xử trí</strong>: Calcium Gluconate (ổn định màng cơ tim), Insulin + Glucose (đẩy K+ vào tế bào), Khí dung Albuterol.
+      - <strong>Xử trí</strong>: Calcium Gluconate (ổn định màng cơ tim), Insulin + Glucose (đẩy $K^+$ vào tế bào), Khí dung Albuterol.
     </div>
   </div>
 
   <div class="matrix-card">
     <div class="matrix-card-title">
-      <span>2. Hạ Kali Máu ([K+] &lt; 3.5 mmol/L)</span>
+      <span>2. Hạ Kali Máu ($[K^+] < 3.5\text{ mmol/L}$)</span>
       <span class="rx-tag warning">Nguy Cơ Xoắn Đỉnh &amp; Liệt Cơ</span>
     </div>
     <div class="matrix-card-desc">
       - <strong>Nguyên nhân</strong>: Nôn mửa, tiêu chảy, Lợi tiểu quai/thiazide, Cường Aldosterone, Kiềm chuyển hóa.<br />
       - <strong>ECG</strong>: Sóng T dẹt/âm, ST chênh xuống, xuất hiện <strong>Sóng U nổi bật</strong>, QT kéo dài giả tạo.<br />
-      - <strong>QUY TẮC VÀNG</strong>: <strong>Bắt buộc bù Magnesi (Mg2+) trước</strong>; hạ Mg2+ làm mở toang kênh ROMK thận đào thải mất hết kali.
+      - <strong>QUY TẮC VÀNG</strong>: <strong>Bắt buộc bù Magnesi ($Mg^{2+}$) trước</strong>; hạ $Mg^{2+}$ làm mở toang kênh ROMK thận đào thải mất hết kali.
     </div>
   </div>
 </div>

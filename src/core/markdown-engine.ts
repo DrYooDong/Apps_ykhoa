@@ -10,6 +10,8 @@
  * 5. Table of Contents (TOC) & Slug anchors.
  */
 
+import { cliniMdxEngine } from './mdx-engine';
+
 export interface ParsedMarkdown {
   metadata: Record<string, string>;
   body: string;
@@ -260,7 +262,9 @@ export class MarkdownCoreEngine {
   private formatInline(text: string): string {
     return text
       // Inline Math: $E = mc^2$
-      .replace(/(?<!\$)\$(?!\$)([^\n$]+)(?<!\$)\$(?!\$)/g, '<span class="mdx-math-inline">$1</span>')
+      .replace(/(?<!\$)\$(?!\$)([^\n$]+)(?<!\$)\$(?!\$)/g, (_m, math) => {
+        return `<span class="mdx-math-inline">${cliniMdxEngine.formatMathContent(math)}</span>`;
+      })
       // Bold
       .replace(/\*\*\s*([^*]+?)\s*\*\*/g, '<strong>$1</strong>')
       // Italic
