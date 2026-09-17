@@ -983,7 +983,13 @@ sections:
       recs.push('<strong>Đo lại lipid sau 4-6 tuần:</strong> Nếu LDL-C ≥ 55 mg/dL -> Nâng bậc lên Phối hợp ba (thêm Axit Bempedoic HOẶC Ức chế PCSK9). Nếu vẫn chưa đạt -> Nâng lên Phối hợp bốn.');
     }
 
-    resultDiv.innerHTML = \`
+    let recsHtml = recs.map(function(r) { return '<li style="margin-bottom: 0.35rem;">' + r + '</li>'; }).join('');
+    let alertsHtml = '';
+    if (alerts.length > 0) {
+      alertsHtml = '<div style="background: #fef2f2; border: 1px solid #fecaca; border-radius: 6px; padding: 0.75rem; margin-top: 0.5rem;"><strong style="color: #dc2626; font-size: 0.85rem;"><i class="fa-solid fa-triangle-exclamation"></i> Cảnh Báo Lâm Sàng & An Toàn:</strong><ul style="margin: 0.25rem 0 0 1.25rem; padding: 0; font-size: 0.82rem; line-height: 1.55; color: #991b1b;">' + alerts.map(function(a) { return '<li>' + a + '</li>'; }).join('') + '</ul></div>';
+    }
+
+    resultDiv.innerHTML = \x60
       <div style="background: var(--color-surface, #fff); padding: 1.25rem; border-radius: 8px; border: 1px solid var(--color-border, #cbd5e1);">
         <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.75rem; border-bottom: 1px solid var(--color-border, #cbd5e1); padding-bottom: 0.5rem;">
           <h5 style="margin: 0; font-size: 1rem; color: var(--color-text);">
@@ -994,19 +1000,12 @@ sections:
         <div style="margin-bottom: 0.75rem;">
           <strong style="color: #0284c7; font-size: 0.9rem;">Khuyến Cáo Phác Đồ Cá Thể Hóa:</strong>
           <ul style="margin: 0.35rem 0 0 1.25rem; padding: 0; font-size: 0.85rem; line-height: 1.65;">
-            \${recs.map(r => \`<li style="margin-bottom: 0.35rem;">\${r}</li>\`).join('')}
+            \${recsHtml}
           </ul>
         </div>
-        \${alerts.length > 0 ? \`
-          <div style="background: #fef2f2; border: 1px solid #fecaca; border-radius: 6px; padding: 0.75rem; margin-top: 0.5rem;">
-            <strong style="color: #dc2626; font-size: 0.85rem;"><i class="fa-solid fa-triangle-exclamation"></i> Cảnh Báo Lâm Sàng & An Toàn:</strong>
-            <ul style="margin: 0.25rem 0 0 1.25rem; padding: 0; font-size: 0.82rem; line-height: 1.55; color: #991b1b;">
-              \${alerts.map(a => \`<li>\${a}</li>\`).join('')}
-            </ul>
-          </div>
-        \` : ''}
+        \${alertsHtml}
       </div>
-    \`;
+    \x60;
   }
 
   document.addEventListener('DOMContentLoaded', () => {

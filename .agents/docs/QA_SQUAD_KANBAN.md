@@ -90,6 +90,11 @@
 | **QA-004** | Kiểm định nạp dynamic stylesheet & container override trong SPA Reader | AGENT-04 | 2026-09-17 | `agent04-spa-reader-audit.mjs` (PASS) |
 | **QA-005** | Chuẩn hóa schema bệnh học & xóa ký tự escape `\_` trong JSON | AGENT-05 | 2026-09-17 | `agent05-json-schema-validator.mjs` (PASS) |
 | **QA-006** | Nâng cấp toàn diện 12 tệp MDX Dịch tễ học, chuẩn hóa 7 Pillars bệnh mạn tính & nhúng Orthogonal SVG | QA + Flowchart Squad | 2026-09-17 | `audit_epi.js`, `run-qa-squad.mjs`, `tsc` (PASS) |
+| **QA-007** | [Phase 1] Xây dựng `audit-guidelines.mjs` & Quét kiểm định 7 chiều trên toàn bộ 107 tệp MDX Kho Guidelines EBM | QA Agent Squad | 2026-09-17 | `tools/qa/reports/guidelines-audit-report.json` (47 Nhóm A, 36 Nhóm B, 24 Nhóm C) |
+| **QA-008** | [Phase 2] Khắc phục triệt để lỗi Nhóm A: triệt tiêu Truncation, thay thế 35 Stats Strip generic & sửa toàn vẹn thẻ HTML cho 17 tệp MDX | QA Agent Squad | 2026-09-17 | `audit-guidelines.mjs` (0 Nhóm A, 68 Nhóm B, 39 Nhóm C) |
+| **QA-009** | [Phase 3] Đa dạng hóa icons 38 tệp, triệt tiêu 100% boilerplate recommendations & chuẩn hóa 100% LF line endings | QA Agent Squad | 2026-09-17 | `upgrade-guidelines-phase3.mjs` (0 Nhóm A, 25 Nhóm B, 82 Nhóm C) |
+| **QA-010** | [Phase 4] Triệt tiêu 100% KaTeX $...$ (14 tệp), loại bỏ hardcoded inline colors cho Dark Mode & spot-check EBM | QA Agent Squad | 2026-09-17 | `fix-katex-guidelines.mjs`, `audit-dark-mode-colors.mjs` (0 Nhóm A, 11 Nhóm B, 96 Nhóm C / 89.7% Pass) |
+| **QA-011** | [Phase 5] Đồng bộ Registry cho 11 tệp MDX còn lại, verify browser & nghiệm thu toàn diện 107/107 tệp đạt chuẩn tuyệt đối | QA Agent Squad | 2026-09-17 | `add-11-guidelines-to-registry.mjs`, `audit-guidelines.mjs` (0 Nhóm A, 0 Nhóm B, 107 Nhóm C / 100.0% Pass) |
 | **QA-MST** | Xây dựng Master Runner điều phối đồng bộ 5 Agent trong 0.51s | QA Conductor | 2026-09-17 | `run-qa-squad.mjs` (APPROVED) |
 
 ---
