@@ -197,10 +197,16 @@ function auditDisease(slug) {
   const sampleCase = sampleCases.find(c => {
     const normTen = c.ten.toLowerCase();
     const slugLower = slug.toLowerCase();
-    if (slugLower.includes('c') || slugLower.includes('hcv')) {
+    if (slugLower.includes('dot_bung_phat') || slugLower.includes('bung-phat')) {
+      return normTen.includes('đợt bùng phát') || normTen.includes('bùng phát') || normTen.includes('flare');
+    }
+    if (slugLower.includes('xo_gan') || slugLower.includes('xo-gan')) {
+      return (normTen.includes('xơ gan còn bù') || normTen.includes('cacld') || normTen.includes('xơ gan')) && !normTen.includes('chưa xơ gan');
+    }
+    if (slugLower.includes('vgsv_c') || slugLower.includes('viem_gan_c') || slugLower === 'hcv') {
       return normTen.includes('viêm gan vi rút c') || normTen.includes('viêm gan c') || normTen.includes('hcv');
     }
-    if (slugLower.includes('b') || slugLower.includes('hbv')) {
+    if (slugLower.includes('vgsv_b') || slugLower.includes('viem_gan_b') || slugLower === 'hbv') {
       return normTen.includes('viêm gan vi rút b') || normTen.includes('viêm gan b') || normTen.includes('hbv');
     }
     if (slugLower.includes('sot_xuat_huyet')) return normTen.includes('sxh') || normTen.includes('dengue');
@@ -228,10 +234,16 @@ function auditDisease(slug) {
     const sfile = s.fullFileName?.toLowerCase() || '';
     const stitle = s.title?.toLowerCase() || '';
     const slugLower = slug.toLowerCase();
-    if (slugLower.includes('c') || slugLower.includes('hcv')) {
+    if (slugLower.includes('dot_bung_phat') || slugLower.includes('bung-phat')) {
+      return sid.includes('dot-bung-phat') || sid.includes('dot_bung_phat') || stitle.includes('bùng phát');
+    }
+    if (slugLower.includes('xo_gan') || slugLower.includes('xo-gan')) {
+      return (sid.includes('xo_gan') || sid.includes('xo-gan') || stitle.includes('xơ gan')) && !stitle.includes('chưa xơ gan');
+    }
+    if (slugLower.includes('vgsv_c') || slugLower.includes('viem_gan_c') || slugLower === 'hcv') {
       return sid.includes('viem_gan_c') || sid.includes('viem-gan-c') || sfile.includes('viem_gan_c') || stitle.includes('viêm gan vi rút c') || stitle.includes('viêm gan c');
     }
-    if (slugLower.includes('b') || slugLower.includes('hbv')) {
+    if (slugLower.includes('vgsv_b') || slugLower.includes('viem_gan_b') || slugLower === 'hbv') {
       return sid.includes('viem-gan-vi-rut-b') || sid.includes('vgsv_b') || sfile.includes('viem-gan-vi-rut-b') || stitle.includes('viêm gan vi rút b');
     }
     if (slugLower.includes('sot_xuat_huyet')) return sid.includes('sot_xuat_huyet') || sfile.includes('sot_xuat_huyet');

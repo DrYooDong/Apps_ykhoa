@@ -69,11 +69,12 @@ export interface GradedProtocol {
 
 export interface SeverityGradingItem {
   grade: string;
-  severity: 'mild' | 'moderate' | 'severe' | 'critical';
+  severity: 'mild' | 'moderate' | 'severe' | 'critical' | 'phenotype' | 'info' | string;
   criteria: string;
   triage: string;
   primaryAction: string;
   targetVitals?: string;
+  badgeText?: string;
   protocol?: GradedProtocol;
 }
 
@@ -95,7 +96,10 @@ export interface DiseaseReactionChainDefinition {
   };
   criteria: DiagnosticCriterionItem[];
   
-  // Phân độ lâm sàng & Đánh giá mức độ nặng
+  // Phân độ lâm sàng & Đánh giá mức độ nặng / Thể lâm sàng
+  stagingType?: 'severity' | 'phenotype' | 'stage' | 'score' | 'none';
+  hasSeverityGrading?: boolean;
+  nonStagedExplanation?: string;
   severityGrading?: SeverityGradingItem[];
 
   // Phác đồ điều trị phân bậc
@@ -126,6 +130,8 @@ export const DIAGNOSTIC_CHAIN_DATABASE: Record<string, DiseaseReactionChainDefin
 
   // ── Toàn bộ các bệnh lý đã làm giàu chuyên sâu từ Prompt 08/09 (thư mục enriched/) ──
   ...ENRICHED_DISEASES,
+  'sot_xuat_huyet_dengue': ENRICHED_DISEASES['sot_xuat_huyet_dengue'],
+  'sot-xuat-huyet-dengue': ENRICHED_DISEASES['sot_xuat_huyet_dengue'],
   'sot_ret': ENRICHED_DISEASES['sot_ret'],
   'sot-ret': ENRICHED_DISEASES['sot_ret'],
   'viem_gan_vi_rut_c_man': ENRICHED_DISEASES['vgsv_C'],
@@ -140,6 +146,13 @@ export const DIAGNOSTIC_CHAIN_DATABASE: Record<string, DiseaseReactionChainDefin
   'viem_gan_c': ENRICHED_DISEASES['vgsv_C'],
   'sot-xoan-khuan-leptospira': ENRICHED_DISEASES['leptospira'],
   'sot_xoan_khuan_leptospira': ENRICHED_DISEASES['leptospira'],
+  'xo_gan_con_bu': ENRICHED_DISEASES['xo_gan_con_bu'],
+  'xo-gan-con-bu': ENRICHED_DISEASES['xo_gan_con_bu'],
+  'cACLD': ENRICHED_DISEASES['xo_gan_con_bu'],
+  'dot_bung_phat_vgsv_B': ENRICHED_DISEASES['dot_bung_phat_vgsv_B'],
+  'dot_bung_phat_viem_gan_b': ENRICHED_DISEASES['dot_bung_phat_vgsv_B'],
+  'dot-bung-phat-viem-gan-b': ENRICHED_DISEASES['dot_bung_phat_vgsv_B'],
+  'hbv-flare': ENRICHED_DISEASES['dot_bung_phat_vgsv_B'],
 
   // ── 30 Bệnh lý Trọng tâm được biên soạn thủ công & chi tiết chuyên sâu ──────
   // (Ghi đè để bảo toàn bộ tiêu chuẩn & phác đồ thuốc phân tầng chi tiết nhất)

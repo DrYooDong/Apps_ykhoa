@@ -305,6 +305,10 @@ export function analyzeClinicalCase(
         b.id === 'sot_xoan_khuan_leptospira' ||
         b.id === 'sot_ret' ||
         b.id === 'sot_ret' ||
+        b.id === 'dot_bung_phat_vgsv_B' ||
+        b.id === 'dot-bung-phat-viem-gan-b' ||
+        b.id === 'xo_gan_con_bu' ||
+        b.id === 'xo-gan-con-bu' ||
         b.id === 'viem_phoi';
 
       // 1. Sốt xuất huyết Dengue: Vector muỗi Aedes, ổ dịch SXH, mùa mưa
@@ -397,8 +401,15 @@ export function analyzeClinicalCase(
         }
       }
 
-      // 6. Viêm gan vi rút B (HBV)
-      if (b.id === 'vgsv_B' || b.id === 'vgsv_b' || b.id === 'viem-gan-vi-rut-b' || b.id === 'viem_gan_b') {
+      // 6. Viêm gan vi rút B (HBV) & Đợt bùng phát
+      if (
+        b.id === 'vgsv_B' ||
+        b.id === 'vgsv_b' ||
+        b.id === 'viem-gan-vi-rut-b' ||
+        b.id === 'viem_gan_b' ||
+        b.id === 'dot_bung_phat_vgsv_B' ||
+        b.id === 'dot-bung-phat-viem-gan-b'
+      ) {
         const epiMatch =
           normalizeText(epiContext.vectorExposure).includes('hbv') ||
           normalizeText(epiContext.vectorExposure).includes('tiem vac xin') ||
@@ -407,16 +418,41 @@ export function analyzeClinicalCase(
           normalizeText(epiContext.outbreakAlert).includes('ung thu gan') ||
           normalizeText(epiContext.outbreakAlert).includes('xo gan') ||
           normalizeText(epiContext.outbreakAlert).includes('hcc') ||
+          normalizeText(epiContext.outbreakAlert).includes('ngung') ||
+          normalizeText(epiContext.outbreakAlert).includes('nas') ||
           normalizeText(epiContext.endemicArea).includes('viem gan') ||
           normalizeText(epiContext.endemicArea).includes('hbv');
         if (epiMatch && matched.length > 0) {
           factor *= 1.25;
           epiBoostInfo = {
             boosted: true,
-            reason: 'Tam giác Dịch tễ: Vùng lưu hành cao HBV / Tiền sử gia đình xơ gan, ung thư gan',
+            reason: 'Tam giác Dịch tễ: Vùng lưu hành cao HBV / Nguy cơ bùng phát hoặc tiền sử gia đình xơ gan, ung thư gan',
             points: 15,
           };
-          notes.push('Dịch tễ học ủng hộ mạnh mẽ chẩn đoán Viêm gan vi rút B (HBV)');
+          notes.push('Dịch tễ học ủng hộ mạnh mẽ chẩn đoán bệnh lý liên quan Viêm gan vi rút B (HBV)');
+        }
+      }
+
+      // 6.5. Xơ gan còn bù (cACLD)
+      if (b.id === 'xo_gan_con_bu' || b.id === 'xo-gan-con-bu') {
+        const epiMatch =
+          normalizeText(epiContext.vectorExposure).includes('hbv') ||
+          normalizeText(epiContext.vectorExposure).includes('hcv') ||
+          normalizeText(epiContext.vectorExposure).includes('ruou') ||
+          normalizeText(epiContext.outbreakAlert).includes('xo gan') ||
+          normalizeText(epiContext.outbreakAlert).includes('ung thu gan') ||
+          normalizeText(epiContext.outbreakAlert).includes('hcc') ||
+          normalizeText(epiContext.endemicArea).includes('viem gan') ||
+          normalizeText(epiContext.endemicArea).includes('hbv') ||
+          normalizeText(epiContext.endemicArea).includes('hcv');
+        if (epiMatch && matched.length > 0) {
+          factor *= 1.25;
+          epiBoostInfo = {
+            boosted: true,
+            reason: 'Tam giác Dịch tễ: Vùng lưu hành cao viêm gan virus mạn tính / Tiền sử gia đình xơ gan, HCC',
+            points: 15,
+          };
+          notes.push('Dịch tễ học ủng hộ mạnh mẽ chẩn đoán Xơ gan còn bù (cACLD)');
         }
       }
 

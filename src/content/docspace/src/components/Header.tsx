@@ -7,6 +7,7 @@ import {
   Stethoscope,
   Activity,
   Layers,
+  Award,
 } from 'lucide-react';
 import { KnowledgeBase } from '../types.ts';
 import { VAULT_CATALOG } from '../lib/vaultBridge.ts';
@@ -20,6 +21,7 @@ interface HeaderProps {
   onChangeMode: (mode: MainViewMode) => void;
   onOpenVault: (khoCode?: string, query?: string) => void;
   onOpenAbout: () => void;
+  onOpenSimulation?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -113,39 +115,53 @@ export const Header: React.FC<HeaderProps> = ({
         <div className="hidden lg:flex items-center gap-1 bg-slate-100/80 p-0.5 rounded-md border border-slate-200">
           <button
             onClick={() => onOpenVault('GUIDELINE')}
-            className="px-2 py-0.5 text-[11px] font-semibold text-rose-900 bg-rose-50 hover:bg-rose-100 border border-rose-200/80 rounded transition-all cursor-pointer flex items-center gap-1 shadow-2xs"
+            className="w-7 h-7 flex items-center justify-center text-xs font-semibold text-rose-900 bg-rose-50 hover:bg-rose-100 border border-rose-200/80 rounded transition-all cursor-pointer shadow-2xs"
             title="Kho Guidelines Bộ Y Tế, ESC, AHA & Landmark RCTs"
+            aria-label="Kho Guidelines"
           >
             <span>📚</span>
-            <span>Guidelines</span>
           </button>
           <button
             onClick={() => onOpenVault('CC')}
-            className="px-2 py-0.5 text-[11px] font-semibold text-amber-900 bg-amber-50 hover:bg-amber-100 border border-amber-200/80 rounded transition-all cursor-pointer flex items-center gap-1 shadow-2xs"
+            className="w-7 h-7 flex items-center justify-center text-xs font-semibold text-amber-900 bg-amber-50 hover:bg-amber-100 border border-amber-200/80 rounded transition-all cursor-pointer shadow-2xs"
             title="Kho Công cụ & Thang điểm (CURB-65, Wells, GCS, NIHSS...)"
+            aria-label="Kho Công cụ"
           >
             <span>🧮</span>
-            <span>Công cụ</span>
           </button>
           <button
             onClick={() => onOpenVault('ICD10')}
-            className="px-2 py-0.5 text-[11px] font-semibold text-sky-900 bg-sky-50 hover:bg-sky-100 border border-sky-200/80 rounded transition-all cursor-pointer flex items-center gap-1 shadow-2xs"
-            title="Kho ICD-10"
+            className="w-7 h-7 flex items-center justify-center text-xs font-semibold text-sky-900 bg-sky-50 hover:bg-sky-100 border border-sky-200/80 rounded transition-all cursor-pointer shadow-2xs"
+            title="Kho Tra cứu ICD-10"
+            aria-label="Kho ICD-10"
           >
             <span>🏷️</span>
-            <span>ICD-10</span>
           </button>
         </div>
 
         {/* Nút về Trang chủ chính CliniPortal */}
         <a
           href="../../../index.html#/"
-          className="hidden md:flex items-center gap-1.5 px-2.5 py-1 bg-slate-50 hover:bg-slate-100 text-slate-700 border border-slate-200 rounded text-xs font-semibold transition-colors no-underline shadow-2xs"
+          className="w-7 h-7 flex items-center justify-center bg-slate-50 hover:bg-slate-100 text-slate-700 border border-slate-200 rounded transition-colors no-underline shadow-2xs"
           title="Về Trang chủ chính CliniPortal"
+          aria-label="Trang chủ"
         >
           <Home className="w-3.5 h-3.5 text-blue-600" />
-          <span>Trang chủ</span>
         </a>
+
+        {/* Nút Giả Lập Lâm Sàng & Luyện Thi OSCE */}
+        {onOpenSimulation && (
+          <button
+            type="button"
+            id="btn-nav-simulation"
+            onClick={onOpenSimulation}
+            className="w-7 h-7 flex items-center justify-center bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white rounded transition-all shadow-2xs cursor-pointer"
+            title="Mở Phòng Giả Lập Lâm Sàng & Luyện Thi OSCE Thích Ứng (3 Nhánh Rẽ)"
+            aria-label="Giả Lập OSCE"
+          >
+            <Award className="w-3.5 h-3.5" />
+          </button>
+        )}
 
         <button
           id="btn-nav-about"

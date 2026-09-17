@@ -148,15 +148,15 @@ export const VaultDrawer: React.FC<VaultDrawerProps> = ({
                     setSelectedArticle(null);
                     setSelectedGuideline(null);
                   }}
-                  className={`px-2.5 py-1 rounded-md font-bold transition-all cursor-pointer flex items-center gap-1.5 text-[11px] shadow-2xs ${
+                  className={`w-7 h-7 flex items-center justify-center rounded-md font-bold transition-all cursor-pointer text-xs shadow-2xs ${
                     activeKho === 'GUIDELINE'
                       ? 'bg-rose-600 text-white shadow-xs ring-2 ring-rose-400/40'
                       : 'bg-rose-50 text-rose-800 border border-rose-200 hover:bg-rose-100'
                   }`}
-                  title="Xem 78 văn bản Khuyến cáo Bộ Y Tế, ESC, AHA & Nghiên cứu Landmark RCTs"
+                  title={`Kho Guidelines EBM (${GUIDELINE_STUDIES.length})`}
+                  aria-label="Kho Guidelines"
                 >
                   <span>📚</span>
-                  <span>Kho Guidelines ({GUIDELINE_STUDIES.length})</span>
                 </button>
 
                 <button
@@ -165,15 +165,15 @@ export const VaultDrawer: React.FC<VaultDrawerProps> = ({
                     setSelectedArticle(null);
                     setSelectedGuideline(null);
                   }}
-                  className={`px-2.5 py-1 rounded-md font-bold transition-all cursor-pointer flex items-center gap-1.5 text-[11px] shadow-2xs ${
+                  className={`w-7 h-7 flex items-center justify-center rounded-md font-bold transition-all cursor-pointer text-xs shadow-2xs ${
                     activeKho === 'CC'
                       ? 'bg-amber-600 text-white shadow-xs ring-2 ring-amber-400/40'
                       : 'bg-amber-50 text-amber-800 border border-amber-200 hover:bg-amber-100'
                   }`}
-                  title="Xem 19 công cụ tính toán & thang điểm lâm sàng (CURB-65, Wells, GCS, NIHSS...)"
+                  title={`Kho Công cụ & Thang điểm (${khoSummaries.find((k) => k.code === 'CC')?.articleCount || 19})`}
+                  aria-label="Kho Công cụ"
                 >
                   <span>🧮</span>
-                  <span>Kho Công cụ ({khoSummaries.find((k) => k.code === 'CC')?.articleCount || 19})</span>
                 </button>
 
                 <button
@@ -182,15 +182,15 @@ export const VaultDrawer: React.FC<VaultDrawerProps> = ({
                     setSelectedArticle(null);
                     setSelectedGuideline(null);
                   }}
-                  className={`px-2.5 py-1 rounded-md font-bold transition-all cursor-pointer flex items-center gap-1.5 text-[11px] shadow-2xs ${
+                  className={`w-7 h-7 flex items-center justify-center rounded-md font-bold transition-all cursor-pointer text-xs shadow-2xs ${
                     activeKho === 'ICD10'
                       ? 'bg-sky-600 text-white shadow-xs ring-2 ring-sky-400/40'
                       : 'bg-sky-50 text-sky-800 border border-sky-200 hover:bg-sky-100'
                   }`}
-                  title="Xem 11 cẩm nang mã bệnh ICD-10 & phòng ngừa xuất toán BHYT"
+                  title={`Kho ICD-10 & BHYT (${khoSummaries.find((k) => k.code === 'ICD10')?.articleCount || 11})`}
+                  aria-label="Kho ICD-10"
                 >
                   <span>🏷️</span>
-                  <span>Kho ICD-10 ({khoSummaries.find((k) => k.code === 'ICD10')?.articleCount || 11})</span>
                 </button>
 
                 <button
@@ -199,15 +199,15 @@ export const VaultDrawer: React.FC<VaultDrawerProps> = ({
                     setSelectedArticle(null);
                     setSelectedGuideline(null);
                   }}
-                  className={`px-2.5 py-1 rounded-md font-bold transition-all cursor-pointer flex items-center gap-1.5 text-[11px] shadow-2xs ${
+                  className={`w-7 h-7 flex items-center justify-center rounded-md font-bold transition-all cursor-pointer text-xs shadow-2xs ${
                     activeKho === 'CDSS'
                       ? 'bg-purple-600 text-white shadow-xs ring-2 ring-purple-400/40'
                       : 'bg-purple-50 text-purple-800 border border-purple-200 hover:bg-purple-100'
                   }`}
-                  title="Xem 4 hệ thống hỗ trợ ra quyết định lâm sàng (Dengue, ECG, ABG Pro, X-Ray)"
+                  title={`Kho CDSS Hỗ trợ ra quyết định (${khoSummaries.find((k) => k.code === 'CDSS')?.articleCount || 4})`}
+                  aria-label="Kho CDSS"
                 >
                   <span>⚡</span>
-                  <span>Kho CDSS ({khoSummaries.find((k) => k.code === 'CDSS')?.articleCount || 4})</span>
                 </button>
               </div>
             </div>

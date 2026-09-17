@@ -1,15 +1,27 @@
 ---
-
-title: "Ca lâm sàng Xơ gan còn bù do HBV (Child-Pugh A 5đ, LSM 18.5 kPa, PLT 115 G/L, Giãn TMTQ độ I-II) ở bệnh nhân Nam 52 tuổi" caseId: "soap-xo\_gan\_con\_bu-01" specialty: "Gan mật - Tiêu hóa" experienceLevel: "essential" difficultyRating: 3 authorDoctor: "Hội đồng Khoa học CliniPortal DocSpace" icd10:
-
-* "K74.6"
-* "B18.1" tags:
-* "Gan mật - Tiêu hóa"
-* "Xơ gan còn bù"
-* "cACLD"
-* "Baveno VII"
-* "SOAP" demographicContext: "Bệnh nhân Nam 52 tuổi, kỹ sư xây dựng, tiền sử nhiễm HBV mạn 5 năm điều trị không liên tục" historyPearls: "⚡ BÀI HỌC KHAI THÁC BỆNH SỬ: Ở bệnh nhân xơ gan còn bù, triệu chứng cơ năng thường rất nghèo nàn hoặc chỉ có mệt mỏi mơ hồ; chìa khóa là phải khai thác kỹ tiền sử tuân thủ thuốc kháng virus, tiền sử gia đình có người mắc HCC và các dấu hiệu cảnh báo mất bù sớm (phù chân chiều, nôn đen, rối loạn ngủ)." objectivePitfalls: "⚠️ BẪY CẬN LÂM SÀNG &amp; KHÁM: Không được dựa vào ALT/AST bình thường để loại trừ xơ gan tiến triển; xơ gan còn bù có thể có men gan hoàn toàn trong giới hạn bình thường. Cần chú ý chỉ số tiểu cầu giảm dần (&lt; 150 G/L) và độ đàn hồi gan FibroScan (LSM ≥ 12.5–15 kPa) để không bỏ sót cACLD." diagnosticPearls: "🧠 ĐÚC KẾT BIỆN LUẬN: Xác chẩn cACLD dựa trên FibroScan LSM 18.5 kPa KÈM Child-Pugh A (5 điểm). Nguy cơ CSPH được khẳng định do LSM ≥ 20 kPa / PLT &lt; 150 G/L, đặt ra chỉ định bắt buộc tầm soát giãn TMTQ qua nội soi (kết quả có giãn độ I-II)." takeawayLessons: "🎯 BÀI HỌC KINH NGHIỆM ĐIỀU TRỊ: Khởi động ngay TAF 25mg/ngày để đạt thoái triển xơ hóa nhu mô gan VÀ Carvedilol 6.25mg/ngày dự phòng nguyên phát vỡ giãn TMTQ (mục tiêu nhịp tim 55–60/phút). Tuyệt đối cấm rượu bia, NSAIDs và duy trì siêu âm + PIVKA-II/AFP tầm soát HCC mỗi 6 tháng." sourceReference: "Hướng dẫn BYT Viêm gan B (2026), Quyết định 2855/QĐ-BYT (2024), Baveno VII Consensus &amp; AASLD Guidance 2023" clinicalContext: "Phòng khám Chuyên khoa Gan mật Ngoại trú / Khoa Nội Tiêu hóa" updated: "2026-09-16"
-
+title: "Ca lâm sàng Xơ gan còn bù do HBV (Child-Pugh A 5đ, LSM 18.5 kPa, PLT 115 G/L, Giãn TMTQ độ I-II) ở bệnh nhân Nam 52 tuổi"
+caseId: "soap-xo_gan_con_bu-01"
+specialty: "Tiêu hóa"
+experienceLevel: "essential"
+difficultyRating: 3
+authorDoctor: "Hội đồng Khoa học CliniPortal DocSpace"
+icd10:
+  - "K74.6"
+  - "B18.1"
+tags:
+  - "Tiêu hóa"
+  - "Xơ gan còn bù"
+  - "cACLD"
+  - "Baveno VII"
+  - "SOAP"
+demographicContext: "Bệnh nhân Nam 52 tuổi, kỹ sư xây dựng, tiền sử nhiễm HBV mạn 5 năm điều trị không liên tục"
+historyPearls: "⚡ BÀI HỌC KHAI THÁC BỆNH SỬ: Ở bệnh nhân xơ gan còn bù, triệu chứng cơ năng thường rất nghèo nàn hoặc chỉ có mệt mỏi mơ hồ; chìa khóa là phải khai thác kỹ tiền sử tuân thủ thuốc kháng virus, tiền sử gia đình có người mắc HCC và các dấu hiệu cảnh báo mất bù sớm (phù chân chiều, nôn đen, rối loạn ngủ)."
+objectivePitfalls: "⚠️ BẪY CẬN LÂM SÀNG & KHÁM: Không được dựa vào ALT/AST bình thường để loại trừ xơ gan tiến triển; xơ gan còn bù có thể có men gan hoàn toàn trong giới hạn bình thường. Cần chú ý chỉ số tiểu cầu giảm dần (< 150 G/L) và độ đàn hồi gan FibroScan (LSM ≥ 12.5–15 kPa) để không bỏ sót cACLD."
+diagnosticPearls: "🧠 ĐÚC KẾT BIỆN LUẬN: Xác chẩn cACLD dựa trên FibroScan LSM 18.5 kPa KÈM Child-Pugh A (5 điểm). Nguy cơ CSPH được khẳng định do LSM ≥ 20 kPa / PLT < 150 G/L, đặt ra chỉ định bắt buộc tầm soát giãn TMTQ qua nội soi (kết quả có giãn độ I-II)."
+takeawayLessons: "🎯 BÀI HỌC KINH NGHIỆM ĐIỀU TRỊ: Khởi động ngay TAF 25mg/ngày để đạt thoái triển xơ hóa nhu mô gan VÀ Carvedilol 6.25mg/ngày dự phòng nguyên phát vỡ giãn TMTQ (mục tiêu nhịp tim 55–60/phút). Tuyệt đối cấm rượu bia, NSAIDs và duy trì siêu âm + PIVKA-II/AFP tầm soát HCC mỗi 6 tháng."
+sourceReference: "Hướng dẫn BYT Viêm gan B (2026), Quyết định 2855/QĐ-BYT (2024), Baveno VII Consensus & AASLD Guidance 2023"
+clinicalContext: "Phòng khám Chuyên khoa Gan mật Ngoại trú / Khoa Nội Tiêu hóa"
+updated: "2026-09-16"
 ---
 
 ### 🩺 Ca Lâm Sàng: Xơ gan còn bù do Viêm gan vi rút B mạn tính (cACLD / Child-Pugh A)

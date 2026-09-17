@@ -213,29 +213,39 @@ ${currentCase.p.takeawayLessons ? `* Bài học kinh nghiệm: ${currentCase.p.t
         </div>
 
         {/* Action Toolbar */}
-        <div className="flex items-center gap-2 self-start md:self-auto flex-wrap">
+        <div className="flex items-center gap-1.5 self-start md:self-auto flex-wrap">
           <button
             type="button"
             onClick={handleCopySoapSummary}
-            className="flex items-center gap-1.5 px-3 h-9 bg-white/10 hover:bg-white/20 text-white font-medium text-xs rounded-lg transition-colors cursor-pointer border border-white/15"
-            title="Sao chép tóm tắt SOAP vào bộ nhớ tạm"
+            className="w-9 h-9 flex items-center justify-center bg-white/10 hover:bg-white/20 text-white rounded-lg transition-colors cursor-pointer border border-white/15"
+            title={copiedNotification ? "Đã sao chép SOAP!" : "Sao chép tóm tắt SOAP vào bộ nhớ tạm"}
+            aria-label="Sao chép SOAP"
           >
             {copiedNotification ? (
-              <Check className="w-3.5 h-3.5 text-emerald-400" />
+              <Check className="w-4 h-4 text-emerald-400" />
             ) : (
-              <Share2 className="w-3.5 h-3.5 text-slate-300" />
+              <Share2 className="w-4 h-4 text-slate-300" />
             )}
-            <span>{copiedNotification ? 'Đã sao chép!' : 'Sao chép SOAP'}</span>
           </button>
 
           <button
             type="button"
             onClick={() => window.print()}
-            className="flex items-center gap-1.5 px-3 h-9 bg-white/10 hover:bg-white/20 text-white font-medium text-xs rounded-lg transition-colors cursor-pointer border border-white/15 no-print"
+            className="w-9 h-9 flex items-center justify-center bg-white/10 hover:bg-white/20 text-white rounded-lg transition-colors cursor-pointer border border-white/15 no-print"
             title="In bảng SOAP ra giấy hoặc xuất PDF"
+            aria-label="In bản SOAP"
           >
-            <Printer className="w-3.5 h-3.5 text-slate-300" />
-            <span>In bản SOAP</span>
+            <Printer className="w-4 h-4 text-slate-300" />
+          </button>
+
+          <button
+            type="button"
+            onClick={handleExportVaultMarkdown}
+            className="w-9 h-9 flex items-center justify-center bg-white/10 hover:bg-white/20 text-white rounded-lg transition-colors cursor-pointer border border-white/15 no-print"
+            title="Xuất ca bệnh này thành file Markdown chuẩn Obsidian (.md)"
+            aria-label="Xuất Markdown"
+          >
+            <BookOpen className="w-4 h-4 text-slate-300" />
           </button>
 
           <button
@@ -256,16 +266,6 @@ ${currentCase.p.takeawayLessons ? `* Bài học kinh nghiệm: ${currentCase.p.t
           >
             <Download className="w-3.5 h-3.5" />
             <span>Nạp ca mới</span>
-          </button>
-
-          <button
-            type="button"
-            onClick={handleExportVaultMarkdown}
-            className="flex items-center gap-1.5 px-3.5 h-9 bg-white/10 hover:bg-white/20 text-white font-medium text-xs rounded-lg transition-colors cursor-pointer border border-white/15 no-print"
-            title="Xuất ca bệnh này thành file Markdown chuẩn Obsidian (.md)"
-          >
-            <BookOpen className="w-3.5 h-3.5" />
-            <span>Xuất Markdown</span>
           </button>
         </div>
       </div>

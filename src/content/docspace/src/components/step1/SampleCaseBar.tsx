@@ -24,25 +24,21 @@ interface SampleCaseBarProps {
 
 // Helper to get a concise label for quick chips
 const getShortCaseTitle = (sample: SampleCase): string => {
-  if (sample.nhomBenh) {
-    if (sample.mucDo === 'canh_bao') return `${sample.nhomBenh} (Cảnh báo)`;
-    if (sample.mucDo === 'nguy_kich') {
-      if (sample.ten.includes('tụt kẹt')) return `${sample.nhomBenh} (Dọa tụt kẹt)`;
-      if (sample.ten.includes('Weil')) return `${sample.nhomBenh} (Bệnh Weil)`;
-      return `${sample.nhomBenh} (Cấp cứu)`;
-    }
-    if (sample.mucDo === 'man_tinh') return `${sample.nhomBenh} (Mạn tính)`;
-    return sample.nhomBenh;
+  let title = sample.nhomBenh || sample.ten;
+  title = title
+    .replace('Sốt xuất huyết Dengue', 'SXH Dengue')
+    .replace('Nhiễm trùng huyết do Não mô cầu', 'Não mô cầu')
+    .replace('Nhiễm trùng huyết', 'Nhiễm trùng huyết')
+    .replace('Viêm màng não mủ', 'Viêm màng não');
+
+  if (sample.mucDo === 'canh_bao') return `${title} (Cảnh báo)`;
+  if (sample.mucDo === 'nguy_kich') {
+    if (sample.ten.includes('tụt kẹt')) return `${title} (Tụt kẹt)`;
+    if (sample.ten.includes('Weil')) return `${title} (Weil)`;
+    return `${title} (Cấp cứu)`;
   }
-  // Fallback if metadata is missing
-  const name = sample.ten;
-  if (name.includes('SXH') || name.includes('Dengue')) return 'SXH Dengue (Cảnh báo)';
-  if (name.includes('Tụt Kẹt')) return 'Viêm Màng Não (Dọa tụt kẹt)';
-  if (name.includes('Não mô cầu')) return 'Não mô cầu (Cấp cứu)';
-  if (name.includes('Thủy đậu')) return 'Thủy đậu (Thông thường)';
-  if (name.includes('Viêm gan') || name.includes('HBV')) return 'Viêm gan B (Mạn tính)';
-  if (name.includes('Leptospira') || name.includes('Weil')) return 'Leptospira (Bệnh Weil)';
-  return name.length > 28 ? name.slice(0, 26) + '...' : name;
+  if (sample.mucDo === 'man_tinh') return `${title} (Mạn tính)`;
+  return title.length > 22 ? title.slice(0, 20) + '...' : title;
 };
 
 export const SampleCaseBar: React.FC<SampleCaseBarProps> = ({
@@ -63,29 +59,24 @@ export const SampleCaseBar: React.FC<SampleCaseBarProps> = ({
         setIsDropdownOpen(false);
       }
     };
-    if (isDropdownOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
-    }
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [isDropdownOpen]);
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   const handleSelectCase = (sample: SampleCase, idx: number) => {
     setActiveCaseIdx(idx);
     onLoadSample(sample);
     setIsDropdownOpen(false);
-    setTimeout(() => setActiveCaseIdx(null), 1600);
   };
 
-  // Filter cases for the quick dropdown
   const filteredDropdownCases = SAMPLE_CASES.filter((c) => {
-    if (!dropdownSearch.trim()) return true;
     const q = dropdownSearch.toLowerCase().trim();
+    if (!q) return true;
     return (
       c.ten.toLowerCase().includes(q) ||
-      (c.form?.lyDo || '').toLowerCase().includes(q) ||
-      (c.tags || []).join(' ').toLowerCase().includes(q)
+      (c.nhomBenh && c.nhomBenh.toLowerCase().includes(q)) ||
+      (c.form.lyDo && c.form.lyDo.toLowerCase().includes(q)) ||
+      (c.form.chanDoan && c.form.chanDoan.toLowerCase().includes(q))
     );
   });
 
@@ -111,21 +102,21 @@ export const SampleCaseBar: React.FC<SampleCaseBarProps> = ({
               {SAMPLE_CASES.length} ca
             </span>
           </div>
-          <span className="text-[11px] text-slate-400 hidden xl:inline">
+          <span className="text-[11px] text-slate-400 hidden 2xl:inline">
             (Nạp nhanh dữ kiện mô phỏng 4 bước)
           </span>
         </div>
 
         {/* CENTER: Quick Dropdown Combobox & Featured Chips */}
-        <div className="flex items-center gap-2 flex-1 max-w-2xl min-w-[240px]">
+        <div className="flex items-center gap-2 flex-1 min-w-0">
           {/* Quick Dropdown Combobox */}
-          <div className="relative flex-1" ref={dropdownRef}>
+          <div className="relative flex-1 min-w-[180px] max-w-sm" ref={dropdownRef}>
             <button
               type="button"
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
               className="w-full flex items-center justify-between gap-2 px-3 py-1.5 text-xs bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-750 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 rounded-lg transition-all cursor-pointer shadow-2xs"
             >
-              <div className="flex items-center gap-2 truncate">
+              <div className="flex items-center gap-2 truncate min-w-0">
                 <FolderOpen className="w-3.5 h-3.5 text-slate-400 shrink-0" />
                 <span className="truncate">
                   {activeCaseIdx !== null
@@ -234,8 +225,8 @@ export const SampleCaseBar: React.FC<SampleCaseBarProps> = ({
             )}
           </div>
 
-          {/* Quick featured chips (Visible on md+ screens for 1-click test) */}
-          <div className="hidden lg:flex items-center gap-1.5 shrink-0">
+          {/* Quick featured chips (Adaptive display on xl+ screens) */}
+          <div className="hidden xl:flex items-center gap-1.5 min-w-0 overflow-hidden">
             {featuredCases.map((sample, idx) => {
               const isSelected = activeCaseIdx === idx;
               const shortTitle = getShortCaseTitle(sample);
@@ -246,7 +237,9 @@ export const SampleCaseBar: React.FC<SampleCaseBarProps> = ({
                   type="button"
                   onClick={() => handleSelectCase(sample, idx)}
                   title={`${sample.ten}: ${sample.form.lyDo || ''}`}
-                  className={`inline-flex items-center gap-1 px-2.5 py-1 text-xs font-medium rounded-lg border transition-all cursor-pointer whitespace-nowrap ${
+                  className={`items-center gap-1 px-2.5 py-1 text-xs font-medium rounded-lg border transition-all cursor-pointer whitespace-nowrap shrink-0 ${
+                    idx >= 2 ? 'hidden 2xl:inline-flex' : 'inline-flex'
+                  } ${
                     isSelected
                       ? 'bg-blue-600 text-white border-blue-600 shadow-xs'
                       : 'bg-slate-50 dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-900/30 text-slate-600 dark:text-slate-300 hover:text-blue-700 dark:hover:text-blue-300 border-slate-200 dark:border-slate-700'
@@ -257,7 +250,7 @@ export const SampleCaseBar: React.FC<SampleCaseBarProps> = ({
                   ) : (
                     <span className="w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0" />
                   )}
-                  <span>{shortTitle}</span>
+                  <span className="truncate max-w-[130px]">{shortTitle}</span>
                 </button>
               );
             })}
@@ -265,12 +258,12 @@ export const SampleCaseBar: React.FC<SampleCaseBarProps> = ({
         </div>
 
         {/* RIGHT: Full Modal Trigger & Reset Button */}
-        <div className="flex items-center gap-2 shrink-0">
+        <div className="flex items-center gap-2 shrink-0 ml-auto z-10">
           {/* Button to open comprehensive library modal */}
           <button
             type="button"
             onClick={() => setIsModalOpen(true)}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-blue-700 dark:text-blue-300 bg-blue-50 dark:bg-blue-950/40 hover:bg-blue-100 dark:hover:bg-blue-900/60 border border-blue-200 dark:border-blue-800 rounded-lg shadow-2xs transition-all cursor-pointer hover:shadow-xs"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-blue-700 dark:text-blue-300 bg-blue-50 dark:bg-blue-950/40 hover:bg-blue-100 dark:hover:bg-blue-900/60 border border-blue-200 dark:border-blue-800 rounded-lg shadow-2xs transition-all cursor-pointer hover:shadow-xs shrink-0"
             title="Mở thư viện ca bệnh mẫu đầy đủ với tìm kiếm và phân loại"
           >
             <Sparkles className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
@@ -283,10 +276,10 @@ export const SampleCaseBar: React.FC<SampleCaseBarProps> = ({
               type="button"
               onClick={onReset}
               title="Xóa trắng toàn bộ form dữ kiện để nhập ca mới"
-              className="inline-flex items-center gap-1 px-2.5 py-1.5 text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-rose-600 dark:hover:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/30 border border-slate-200 dark:border-slate-700 hover:border-rose-200 dark:hover:border-rose-800 rounded-lg transition-colors cursor-pointer"
+              aria-label="Xóa form"
+              className="inline-flex items-center justify-center w-7 h-7 text-slate-500 dark:text-slate-400 hover:text-rose-600 dark:hover:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/30 border border-slate-200 dark:border-slate-700 hover:border-rose-200 dark:hover:border-rose-800 rounded-lg transition-colors cursor-pointer shrink-0"
             >
-              <RefreshCw className="w-3 h-3" />
-              <span className="hidden sm:inline">Xóa form</span>
+              <RefreshCw className="w-3.5 h-3.5" />
             </button>
           )}
         </div>

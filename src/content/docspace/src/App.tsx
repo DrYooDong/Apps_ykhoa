@@ -11,6 +11,7 @@ import { AboutModal } from './components/AboutModal.tsx';
 import { PrintReportModal } from './components/PrintReportModal.tsx';
 import { VaultDrawer } from './components/VaultDrawer.tsx';
 import { CdssModal, CdssToolSlug } from './components/CdssModal.tsx';
+import { ClinicalSimulationModal } from './components/simulation/ClinicalSimulationModal.tsx';
 import { ErrorBoundary } from './components/common/ErrorBoundary.tsx';
 import { DEFAULT_KNOWLEDGE_BASE, SampleCase } from './data/seedData.ts';
 import {
@@ -106,6 +107,7 @@ export function MainApp() {
   const [vaultKho, setVaultKho] = useState('ALL');
   const [isCdssOpen, setIsCdssOpen] = useState(false);
   const [activeCdssTool, setActiveCdssTool] = useState<CdssToolSlug>('hub');
+  const [isSimulationOpen, setIsSimulationOpen] = useState(false);
 
   // Active Guideline integration banner state
   const [activeGuidelineBanner, setActiveGuidelineBanner] = useState<GuidelineStudy | null>(null);
@@ -135,6 +137,21 @@ export function MainApp() {
     setVaultQuery(query || '');
     setVaultKho(khoCode || 'ALL');
     setIsVaultDrawerOpen(true);
+  };
+
+  const handleLoadBranchIntoWorkspace = (data: {
+    form: ClinicalFormState;
+    vitals: VitalsState;
+    labs: LabsState;
+    selectedSymptoms: string[];
+  }) => {
+    setForm(data.form);
+    setVitals(data.vitals);
+    setLabs(data.labs);
+    setSelected(new Set(data.selectedSymptoms));
+    setActiveMode('clinical');
+    setClinicalStep('t1');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   // Tiếp nhận Clinical Intent hai chiều từ EBM / Vault hoặc URL fallback
@@ -438,6 +455,7 @@ export function MainApp() {
         onChangeMode={setActiveMode}
         onOpenVault={(khoCode, query) => handleOpenVaultDrawer(undefined, query, khoCode)}
         onOpenAbout={() => setIsAboutOpen(true)}
+        onOpenSimulation={() => setIsSimulationOpen(true)}
       />
 
       {/* 3-Step Clinical Navigation (chỉ hiện khi đang ở Chu trình lâm sàng) */}
@@ -683,6 +701,12 @@ export function MainApp() {
         results={results}
         kb={kb}
         summaryText={summaryText}
+      />
+
+      <ClinicalSimulationModal
+        isOpen={isSimulationOpen}
+        onClose={() => setIsSimulationOpen(false)}
+        onLoadBranchIntoWorkspace={handleLoadBranchIntoWorkspace}
       />
     </div>
   );

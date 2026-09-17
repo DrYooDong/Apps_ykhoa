@@ -1,128 +1,40 @@
 import React, { useMemo, useState } from 'react';
 import {
-  Activity,
-  AlertCircle,
   AlertTriangle,
   ArrowRight,
-  Check,
-  CheckCircle2,
-  ChevronDown,
-  ChevronUp,
-  Clock,
   Database,
-  Download,
   FileCheck,
-  FileText,
-  Filter,
-  Heart,
-  HelpCircle,
-  Info,
-  Layers,
-  Mic,
-  Plus,
-  RefreshCw,
-  Search,
-  Sliders,
-  Sparkles,
-  Stethoscope,
-  Thermometer,
   Trash2,
-  Upload,
-  User,
-  Wind,
-  X,
   Zap,
 } from 'lucide-react';
 import {
   AnalysisResult,
   ClinicalFormState,
   EpidemiologyContext,
-  Gender,
   KnowledgeBase,
   LabsState,
-  RoleType,
-  TrieuChung,
+  SampleCase,
   VitalsState,
 } from '../types.ts';
-import { GROUP_COLORS, SAMPLE_CASES, SampleCase } from '../data/seedData.ts';
-import {
-  evaluateThreshold,
-  normalizeText,
-} from '../lib/clinicalEngine.ts';
 import { SampleCaseBar } from './step1/SampleCaseBar.tsx';
 import { PatientInfoPanel } from './step1/PatientInfoPanel.tsx';
 import { TextFreeEntryPanel } from './step1/TextFreeEntryPanel.tsx';
-import { DataActionsBar } from './step1/DataActionsBar.tsx';
 import { EpidemiologyPanel } from './step1/EpidemiologyPanel.tsx';
+import { TopVaultsQuickBar } from './step1/TopVaultsQuickBar.tsx';
+import { VitalsCardsPanel, VitalsStatusInfo } from './step1/VitalsCardsPanel.tsx';
+import { LabsCardsPanel, LabsStatusInfo } from './step1/LabsCardsPanel.tsx';
+import {
+  ClinicalSelectorControl,
+  CLINICAL_SYNDROME_PRESETS,
+  SyndromePreset,
+} from './step1/ClinicalSelectorControl.tsx';
+import { SymptomCategorySection } from './step1/SymptomCategorySection.tsx';
+import { ClinicalCopilotSidebar } from './step1/ClinicalCopilotSidebar.tsx';
 
-export interface SyndromePreset {
-  id: string;
-  name: string;
-  shortName: string;
-  icon: string;
-  badgeClass: string;
-  description: string;
-  symptomIds: string[];
-}
+// Re-export syndrome presets for backward compatibility
+export { CLINICAL_SYNDROME_PRESETS, type SyndromePreset };
 
-export const CLINICAL_SYNDROME_PRESETS: SyndromePreset[] = [
-  {
-    id: 'acs',
-    name: 'H/c Mạch vành cấp (ACS)',
-    shortName: '🫀 Vành cấp (ACS)',
-    icon: '🫀',
-    badgeClass: 'border-red-200 text-red-700 bg-red-50 hover:bg-red-100',
-    description: 'Đau thắt ngực sau xương ức, hướng lan, vã mồ hôi, Troponin, ST chênh, THA, ĐTĐ',
-    symptomIds: ['dau_nguc', 'dau_nguc_lan', 'va_mo_hoi', 'kho_tho', 'troponin', 'st_chenh', 'thc_tha', 'dt_dai_duong', 'roi_loan_lipid', 'hut_thuoc', 'benh_ly_tim', 'mach_nhanh', 'ha_huyet_ap'],
-  },
-  {
-    id: 'resp',
-    name: 'Khó thở & Suy hô hấp',
-    shortName: '🫁 Suy hô hấp cấp',
-    icon: '🫁',
-    badgeClass: 'border-cyan-200 text-cyan-800 bg-cyan-50 hover:bg-cyan-100',
-    description: 'Khó thở, orthopnea, SpO2 tụt, ho, đàm, rale/thâm nhiễm, D-dimer, CTPA',
-    symptomIds: ['kho_tho', 'kho_tho_nam', 'tho_rut', 'spo2_thap', 'ho', 'ho_dam', 'ho_mau', 'xq_phoi_tham_nhiem', 'd_dimer', 'ctpa', 'sung_dau_chan_1_ben'],
-  },
-  {
-    id: 'acute_abdomen',
-    name: 'Đau bụng cấp & Ngoại khoa',
-    shortName: '🩺 Đau bụng cấp',
-    icon: '🩺',
-    badgeClass: 'border-amber-200 text-amber-800 bg-amber-50 hover:bg-amber-100',
-    description: 'Đau thượng vị/HCP/HSP, MacBurney, đề kháng phúc mạc, buồn nôn, men tụy, siêu âm',
-    symptomIds: ['dau_thuong_vi', 'dau_hong_phai', 'mac_burney', 'phan_ung_tb', 'buon_non_non', 'dau_hcp', 'murphy', 'sot', 'bc_tang', 'men_tuy', 'sa_tui_mat'],
-  },
-  {
-    id: 'stroke',
-    name: 'Đột quỵ & Thần kinh (FAST)',
-    shortName: '🧠 Đột quỵ / FAST',
-    icon: '🧠',
-    badgeClass: 'border-purple-200 text-purple-800 bg-purple-50 hover:bg-purple-100',
-    description: 'Liệt nửa người, méo miệng, thất ngôn, lơ mơ, đau đầu dữ dội, CT sọ não',
-    symptomIds: ['liet_nua_nguoi', 'meo_mieng', 'noi_kho', 'dau_dau', 'roi_loan_tri_giac', 'chong_mat', 'co_cung', 'ct_so', 'rung_nhi'],
-  },
-  {
-    id: 'fever_infection',
-    name: 'Sốt & Hội chứng Nhiễm trùng',
-    shortName: '🌡️ Sốt / Nhiễm trùng',
-    icon: '🌡️',
-    badgeClass: 'border-orange-200 text-orange-800 bg-orange-50 hover:bg-orange-100',
-    description: 'Sốt cao liên tục, sốt nhẹ về chiều, mệt mỏi, đau cơ, bạch cầu tăng, NS1 Dengue',
-    symptomIds: ['sot', 'sot_cao_27', 'sot_ve_chieu', 'met_moi', 'dau_co', 'bc_tang', 'ns1_dengue', 'ban_xuat_huyet'],
-  },
-  {
-    id: 'metabolic_shock',
-    name: 'Hôn mê / Toan kiềm (DKA)',
-    shortName: '⚡ Toan kiềm / DKA',
-    icon: '⚡',
-    badgeClass: 'border-emerald-200 text-emerald-800 bg-emerald-50 hover:bg-emerald-100',
-    description: 'Đái tháo đường, tiểu nhiều, khát nước, thở Kussmaul, đường huyết, ceton, anion gap',
-    symptomIds: ['dt_dai_duong', 'tieu_nhieu', 'khat_nuoc', 'kussmaul', 'hoi_aceton', 'dh_tang', 'ceton_duong', 'khoang_anion'],
-  },
-];
-
-interface Step1Props {
+export interface Step1Props {
   kb: KnowledgeBase;
   form: ClinicalFormState;
   setForm: React.Dispatch<React.SetStateAction<ClinicalFormState>>;
@@ -227,8 +139,6 @@ export const Step1DataIngestion: React.FC<Step1Props> = ({
     return list;
   }, [vitals]);
 
-  const topHypothesis = liveResults && liveResults.length > 0 ? liveResults[0] : null;
-
   // Available unique organ groups in the knowledge base
   const organGroups = useMemo(() => {
     const set = new Set<string>();
@@ -242,21 +152,18 @@ export const Step1DataIngestion: React.FC<Step1Props> = ({
   const handleChipClick = (id: string, e?: React.MouseEvent) => {
     e?.preventDefault();
     if (selected.has(id)) {
-      // Currently positive -> switch to unselected
       setSelected((prev) => {
         const next = new Set(prev);
         next.delete(id);
         return next;
       });
     } else if (negated.has(id)) {
-      // Currently negative -> switch to unselected
       setNegated((prev) => {
         const next = new Set(prev);
         next.delete(id);
         return next;
       });
     } else {
-      // Currently unselected -> set positive
       setSelected((prev) => new Set(prev).add(id));
       setNegated((prev) => {
         const next = new Set(prev);
@@ -304,7 +211,6 @@ export const Step1DataIngestion: React.FC<Step1Props> = ({
     setSelected(new Set());
     setNegated(new Set());
   };
-
 
   // Quick normal vitals preset
   const handleSetNormalVitals = () => {
@@ -402,147 +308,6 @@ export const Step1DataIngestion: React.FC<Step1Props> = ({
     });
   };
 
-  // Helper to render symptom chips grouped by category & filtered by organ group or syndrome
-  const renderCategoryChips = (category: 'cn' | 'tt' | 'tc' | 'cls') => {
-    const list = kb.trieuChung.filter((tc) => {
-      if (!tc.loai.includes(category)) return false;
-      if (activeOrganGroup !== 'all' && tc.nhom !== activeOrganGroup) return false;
-      if (activeSyndromeId) {
-        const syn = CLINICAL_SYNDROME_PRESETS.find((s) => s.id === activeSyndromeId);
-        if (syn && !syn.symptomIds.includes(tc.id)) return false;
-      }
-      if (activeSection === 'selected') {
-        if (!selected.has(tc.id) && !derived.has(tc.id) && !negated.has(tc.id)) return false;
-      }
-      return true;
-    });
-
-    const query = normalizeText(chipFilter);
-
-    const filtered = list.filter((tc) => {
-      if (!query) return true;
-      const matchName = normalizeText(tc.ten).includes(query);
-      const matchKeywords = tc.tuKhoa.some((k) => normalizeText(k).includes(query));
-      return matchName || matchKeywords;
-    });
-
-    if (filtered.length === 0) {
-      return (
-        <div className="py-3 px-2 text-xs text-slate-400 italic">
-          {activeSection === 'selected'
-            ? 'Chưa có dữ kiện nào được chọn trong phân đoạn này.'
-            : activeSyndromeId
-            ? 'Không có dữ kiện thuộc hội chứng này trong phân đoạn hiện tại.'
-            : 'Không tìm thấy triệu chứng phù hợp với bộ lọc hiện tại.'}
-        </div>
-      );
-    }
-
-    const renderChip = (tc: TrieuChung) => {
-      const isSelected = selected.has(tc.id);
-      const isDerived = derived.has(tc.id);
-      const isNeg = negated.has(tc.id);
-      const groupColor = GROUP_COLORS[tc.nhom] || '#64748b';
-
-      return (
-        <div
-          key={tc.id}
-          className={`group inline-flex items-center rounded-md border text-xs transition-all duration-150 shadow-2xs ${
-            isSelected
-              ? 'bg-blue-600 text-white border-blue-600 font-semibold ring-1 ring-blue-500/30'
-              : isDerived
-              ? 'bg-blue-50 text-blue-800 border-blue-300 font-semibold border-dashed'
-              : isNeg
-              ? 'bg-red-50 text-red-700 border-red-200 line-through decoration-red-400'
-              : 'bg-white hover:bg-slate-50 text-slate-700 border-slate-200 hover:border-slate-300'
-          }`}
-        >
-          {/* Primary click toggle positive */}
-          <button
-            type="button"
-            id={`chip-${tc.id}`}
-            onClick={(e) => handleChipClick(tc.id, e)}
-            title={`Từ khóa: ${tc.tuKhoa.join(', ') || '—'}\nClick để chọn Dương tính (+)`}
-            className="px-2 py-1 flex items-center gap-1.5 text-left cursor-pointer select-none"
-          >
-            <span
-              className="w-1.5 h-1.5 rounded-full shrink-0"
-              style={{ backgroundColor: isSelected ? '#ffffff' : groupColor }}
-            />
-            <span className="truncate max-w-[210px]">{tc.ten}</span>
-            {tc.map && !isSelected && (
-              <span
-                className="text-[9.5px] px-1 rounded font-mono-custom bg-slate-100 text-slate-600 border border-slate-200"
-                title={`Ngưỡng tự suy: ${tc.map.fld} ${tc.map.op} ${tc.map.val ?? tc.map.valNam}`}
-              >
-                ⚙
-              </span>
-            )}
-            {isSelected && <Check className="w-3 h-3 text-white ml-0.5 shrink-0" />}
-          </button>
-
-          {/* Action button to mark as Negative / Rule-out */}
-          {!isSelected && !isDerived && (
-            <button
-              type="button"
-              id={`btn-neg-${tc.id}`}
-              onClick={(e) => handleMarkNegative(tc.id, e)}
-              title={isNeg ? 'Bỏ đánh dấu phủ định' : 'Đánh dấu phủ định (Không có triệu chứng này)'}
-              className={`px-1.5 py-1 text-[10px] font-bold border-l transition-colors cursor-pointer ${
-                isNeg
-                  ? 'border-red-200 text-red-700 hover:bg-red-100'
-                  : 'border-slate-200 text-slate-400 hover:text-red-600 hover:bg-red-50'
-              }`}
-            >
-              {isNeg ? '✕' : '−'}
-            </button>
-          )}
-        </div>
-      );
-    };
-
-    // When viewing all organ groups and without search/syndrome filtering, group neatly by organ
-    if (activeOrganGroup === 'all' && !query && !activeSyndromeId && activeSection !== 'selected') {
-      const clusters: Record<string, TrieuChung[]> = {};
-      filtered.forEach((tc) => {
-        if (!clusters[tc.nhom]) clusters[tc.nhom] = [];
-        clusters[tc.nhom].push(tc);
-      });
-
-      return (
-        <div className="space-y-2.5">
-          {Object.entries(clusters).map(([organName, items]) => {
-            const organColor = GROUP_COLORS[organName] || '#64748b';
-            return (
-              <div key={organName} className="bg-slate-50/60 border border-slate-200/80 rounded-lg p-2.5">
-                <div className="flex items-center gap-1.5 mb-1.5 text-[11px] font-semibold text-slate-600">
-                  <span
-                    className="w-2 h-2 rounded-full shrink-0"
-                    style={{ backgroundColor: organColor }}
-                  />
-                  <span>{organName}</span>
-                  <span className="text-[10px] text-slate-400 font-mono-custom font-normal">
-                    ({items.length})
-                  </span>
-                </div>
-                <div className="flex flex-wrap gap-1.5">
-                  {items.map(renderChip)}
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      );
-    }
-
-    // Direct flat list for focused views (syndrome, search, organ filter, or selected review)
-    return (
-      <div className="flex flex-wrap gap-1.5">
-        {filtered.map(renderChip)}
-      </div>
-    );
-  };
-
   const countCategorySelected = (cat: 'cn' | 'tt' | 'tc' | 'cls') => {
     const ids = kb.trieuChung.filter((t) => t.loai.includes(cat)).map((t) => t.id);
     let count = 0;
@@ -576,7 +341,7 @@ export const Step1DataIngestion: React.FC<Step1Props> = ({
       : [];
 
   // Vitals threshold checks for visual gauge status
-  const vitalsStatus = useMemo(() => {
+  const vitalsStatus: VitalsStatusInfo = useMemo(() => {
     const t = parseFloat(vitals.vNhiet);
     const m = parseFloat(vitals.vMach);
     const hatt = parseFloat(vitals.vHATT);
@@ -609,7 +374,7 @@ export const Step1DataIngestion: React.FC<Step1Props> = ({
   }, [vitals]);
 
   // Labs threshold checks
-  const labsStatus = useMemo(() => {
+  const labsStatus: LabsStatusInfo = useMemo(() => {
     const bc = parseFloat(labs.lBC);
     const tc = parseFloat(labs.lTC);
     const hct = parseFloat(labs.lHct);
@@ -630,123 +395,18 @@ export const Step1DataIngestion: React.FC<Step1Props> = ({
       {/* 0. Dedicated Compact Sample Case Bar */}
       <SampleCaseBar onLoadSample={onLoadSample} onReset={onReset} />
 
-      {/* Top Clinical Navigation Bar & Quick Tools */}
-      <div className="bg-white border border-slate-200 rounded-lg p-3 shadow-xs flex flex-wrap items-center justify-between gap-3">
-        {/* Navigation Sections */}
-        <div className="flex items-center gap-1.5 overflow-x-auto py-0.5 max-w-full">
-          <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider mr-1 hidden sm:inline">
-            Mục:
-          </span>
-          {[
-            { id: 'all', label: 'Tất cả mục' },
-            { id: 'hc', label: 'A. Hành chính' },
-            { id: 'cn', label: `B. Cơ năng (${countCategorySelected('cn')})` },
-            { id: 'tt', label: `C. Thực thể (${countCategorySelected('tt')})` },
-            { id: 'tc', label: `D. Tiền căn (${countCategorySelected('tc')})` },
-            { id: 'cls', label: `E. Cận lâm sàng (${countCategorySelected('cls')})` },
-          ].map((sec) => (
-            <button
-              key={sec.id}
-              type="button"
-              onClick={() => setActiveSection(sec.id as any)}
-              className={`px-2.5 py-1 text-xs font-medium rounded-md whitespace-nowrap transition-all cursor-pointer ${
-                activeSection === sec.id
-                  ? 'bg-blue-600 text-white font-semibold shadow-xs'
-                  : 'bg-slate-100 hover:bg-slate-200/80 text-slate-700'
-              }`}
-            >
-              {sec.label}
-            </button>
-          ))}
-        </div>
-
-        {/* Quick Tally & Diagnostic Shortcuts */}
-        <div className="flex items-center gap-2">
-          <div className="hidden md:flex items-center gap-2 text-xs font-mono-custom text-slate-600 px-2.5 py-1 bg-slate-50 border border-slate-200 rounded-md">
-            <span className="text-blue-700 font-semibold">+{selected.size} dương</span>
-            <span className="text-slate-300">|</span>
-            <span className="text-emerald-700 font-semibold">⚙ {derived.size} tự suy</span>
-            <span className="text-slate-300">|</span>
-            <span className="text-red-700 font-semibold">−{negated.size} âm tính</span>
-          </div>
-
-          <button
-            id="btn-quick-normal-vitals"
-            onClick={handleSetNormalVitals}
-            title="Điền nhanh sinh hiệu bình thường (37°C, 76 l/p, 120/80 mmHg, 16 l/p, 98%)"
-            className="flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium text-slate-700 bg-white border border-slate-200 hover:bg-slate-50 hover:border-slate-300 rounded-md transition-colors cursor-pointer shadow-xs"
-          >
-            <Activity className="w-3.5 h-3.5 text-emerald-600" />
-            <span className="hidden sm:inline">Nạp sinh hiệu chuẩn</span>
-          </button>
-
-          <button
-            id="btn-header-run-analysis"
-            onClick={onRunAnalysis}
-            className="flex items-center gap-1.5 px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold rounded-md shadow-xs transition-all cursor-pointer"
-          >
-            <Zap className="w-3.5 h-3.5 fill-current" />
-            <span>Phân tích ngay</span>
-          </button>
-        </div>
-      </div>
-
-      {/* Clinical Vaults Quick Integration Bar: Kho Công cụ, Kho ICD-10, Kho CDSS */}
-      <div className="bg-gradient-to-r from-blue-50/70 via-indigo-50/40 to-slate-50 border border-blue-200/80 rounded-lg p-2.5 px-3.5 flex flex-wrap items-center justify-between gap-2.5 shadow-2xs">
-        <div className="flex items-center gap-2 text-xs">
-          <span className="flex items-center gap-1 font-bold text-blue-950">
-            <Sparkles className="w-3.5 h-3.5 text-blue-600" />
-            Tra cứu lâm sàng bổ trợ:
-          </span>
-          <span className="text-slate-500 hidden lg:inline">
-            Kết nối trực tiếp 3 kho tài liệu & công cụ thực hành y khoa:
-          </span>
-        </div>
-
-        <div className="flex items-center gap-2 flex-wrap">
-          <button
-            type="button"
-            id="btn-step1-vault-cc"
-            onClick={() => onOpenVaultDrawer?.(undefined, undefined, 'CC')}
-            className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold text-amber-900 bg-white border border-amber-300/80 hover:bg-amber-50 rounded-md transition-all cursor-pointer shadow-2xs hover:shadow-xs hover:border-amber-400"
-            title="Tra cứu 19 công cụ và thang điểm lâm sàng (CURB-65, CHA2DS2-VASc, Cockcroft-Gault, CKD-EPI, Glasgow, NIHSS, qSOFA, Wells, ABG...)"
-          >
-            <span className="text-amber-600 font-bold">🧮</span>
-            <span>Kho Công cụ & Thang điểm</span>
-            <span className="bg-amber-100 text-amber-800 text-[10px] font-mono-custom font-bold px-1.5 py-0.2 rounded-full border border-amber-200">
-              19
-            </span>
-          </button>
-
-          <button
-            type="button"
-            id="btn-step1-vault-icd10"
-            onClick={() => onOpenVaultDrawer?.(undefined, undefined, 'ICD10')}
-            className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold text-sky-900 bg-white border border-sky-300/80 hover:bg-sky-50 rounded-md transition-all cursor-pointer shadow-2xs hover:shadow-xs hover:border-sky-400"
-            title="Tra cứu 11 cẩm nang mã ICD-10 chuyên khoa, quy tắc chọn mã chính/phụ & sổ tay 50+ bẫy lỗi xuất toán BHYT"
-          >
-            <span className="text-sky-600 font-bold">🏷️</span>
-            <span>Kho ICD-10 & BHYT</span>
-            <span className="bg-sky-100 text-sky-800 text-[10px] font-mono-custom font-bold px-1.5 py-0.2 rounded-full border border-sky-200">
-              11
-            </span>
-          </button>
-
-          <button
-            type="button"
-            id="btn-step1-vault-cdss"
-            onClick={() => onOpenVaultDrawer?.(undefined, undefined, 'CDSS')}
-            className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold text-purple-900 bg-white border border-purple-300/80 hover:bg-purple-50 rounded-md transition-all cursor-pointer shadow-2xs hover:shadow-xs hover:border-purple-400"
-            title="Hệ thống hỗ trợ ra quyết định lâm sàng CDSS (Tính liều kháng sinh eGFR & PK/PD, Phác đồ bù dịch SXHD Dengue)"
-          >
-            <span className="text-purple-600 font-bold">⚡</span>
-            <span>Kho CDSS Quyết định</span>
-            <span className="bg-purple-100 text-purple-800 text-[10px] font-mono-custom font-bold px-1.5 py-0.2 rounded-full border border-purple-200">
-              4
-            </span>
-          </button>
-        </div>
-      </div>
+      {/* Top Clinical Navigation Bar, Tally & Vault Shortcuts */}
+      <TopVaultsQuickBar
+        activeSection={activeSection}
+        setActiveSection={setActiveSection}
+        countCategorySelected={countCategorySelected}
+        selectedCount={selected.size}
+        derivedCount={derived.size}
+        negatedCount={negated.size}
+        onSetNormalVitals={handleSetNormalVitals}
+        onRunAnalysis={onRunAnalysis}
+        onOpenVaultDrawer={onOpenVaultDrawer}
+      />
 
       {/* Critical Vitals Banner Alert if any vital signs are abnormal */}
       {vitalsStatus.criticalCount > 0 && (
@@ -774,10 +434,11 @@ export const Step1DataIngestion: React.FC<Step1Props> = ({
           {/* Quick NLP Paste & Transcription Hub */}
           {(activeSection === 'all' || activeSection === 'hc') && (
             <TextFreeEntryPanel
-              kb={kb}
+              form={form}
               setForm={setForm}
+              kb={kb}
               setSelected={setSelected}
-              setNegated={setNegated}
+              summaryText={summaryText}
             />
           )}
 
@@ -787,943 +448,154 @@ export const Step1DataIngestion: React.FC<Step1Props> = ({
           )}
 
           {/* Mục Dịch Tễ Học (Tam Giác Chẩn Đoán Truyền Nhiễm) */}
-          {(activeSection === 'all' || activeSection === 'hc') && epiContext && onUpdateEpiContext && (
+          {(activeSection === 'all' || activeSection === 'hc') && (
             <EpidemiologyPanel
               epiContext={epiContext}
               onUpdateEpiContext={onUpdateEpiContext}
-              onOpenVaultDrawer={onOpenVaultDrawer}
             />
           )}
 
           {/* Clinical Fast Selector & Orientation Control Center */}
-          <div className="bg-white border border-slate-200 rounded-lg p-3 sm:p-3.5 shadow-xs flex flex-col gap-3">
-            {/* Tier 1: Clinical Syndrome Quick Orientation */}
-            <div>
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-xs font-bold text-slate-800 flex items-center gap-1.5">
-                  <Zap className="w-3.5 h-3.5 text-amber-500" />
-                  Định hướng nhanh theo Bệnh cảnh lâm sàng (Clinical Presets):
-                </span>
-                {activeSyndromeId && (
-                  <button
-                    type="button"
-                    onClick={() => setActiveSyndromeId(null)}
-                    className="text-[11px] text-blue-600 hover:text-blue-800 font-semibold flex items-center gap-1 cursor-pointer transition-colors"
-                  >
-                    <X className="w-3 h-3" />
-                    Bỏ lọc hội chứng
-                  </button>
-                )}
-              </div>
-
-              {/* Syndrome preset chips */}
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-1.5">
-                {CLINICAL_SYNDROME_PRESETS.map((syn) => {
-                  const isActive = activeSyndromeId === syn.id;
-                  return (
-                    <button
-                      key={syn.id}
-                      type="button"
-                      onClick={() => setActiveSyndromeId((prev) => (prev === syn.id ? null : syn.id))}
-                      className={`px-2 py-1.5 rounded-md border text-left text-xs transition-all flex flex-col gap-0.5 cursor-pointer select-none ${
-                        isActive
-                          ? 'bg-blue-600 text-white border-blue-600 font-semibold ring-2 ring-blue-400/30 shadow-2xs'
-                          : `${syn.badgeClass} border`
-                      }`}
-                      title={syn.description}
-                    >
-                      <span className="font-semibold truncate text-[11.5px] flex items-center gap-1">
-                        <span>{syn.icon}</span>
-                        <span className="truncate">{syn.shortName.replace(/^[^\s]+\s*/, '')}</span>
-                      </span>
-                      <span
-                        className={`text-[9.5px] truncate font-normal ${
-                          isActive ? 'text-blue-100' : 'text-slate-500'
-                        }`}
-                      >
-                        {syn.symptomIds.length} mục then chốt
-                      </span>
-                    </button>
-                  );
-                })}
-              </div>
-
-              {/* Active syndrome banner if selected */}
-              {activeSyndromeId && (() => {
-                const currentSyn = CLINICAL_SYNDROME_PRESETS.find((s) => s.id === activeSyndromeId);
-                if (!currentSyn) return null;
-                return (
-                  <div className="mt-2.5 bg-gradient-to-r from-blue-50/90 via-indigo-50/50 to-white border border-blue-200/80 rounded-lg p-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-2 shadow-2xs">
-                    <div className="flex items-start gap-2">
-                      <span className="text-xl shrink-0 mt-0.5">{currentSyn.icon}</span>
-                      <div>
-                        <div className="flex items-center gap-2 flex-wrap">
-                          <span className="text-xs font-bold text-blue-950">
-                            Đang định hướng: {currentSyn.name}
-                          </span>
-                          <span className="text-[10px] px-1.5 py-0.5 rounded bg-blue-100 text-blue-800 font-mono-custom font-semibold">
-                            {currentSyn.symptomIds.length} dữ kiện
-                          </span>
-                        </div>
-                        <p className="text-[11px] text-slate-600 mt-0.5 line-clamp-1">
-                          {currentSyn.description}
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-1.5 self-end sm:self-center shrink-0">
-                      <button
-                        type="button"
-                        onClick={() => handleApplySyndromePreset(currentSyn)}
-                        className="px-2.5 py-1 rounded text-xs font-semibold bg-blue-600 text-white hover:bg-blue-700 transition-colors flex items-center gap-1 cursor-pointer shadow-2xs"
-                        title="Tick chọn nhanh toàn bộ triệu chứng gợi ý của hội chứng này"
-                      >
-                        <Sparkles className="w-3 h-3 text-amber-300" />
-                        Chọn nhanh gói gợi ý
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => setActiveSyndromeId(null)}
-                        className="px-2 py-1 rounded text-xs font-medium bg-white hover:bg-slate-100 text-slate-600 border border-slate-200 transition-colors flex items-center gap-1 cursor-pointer"
-                        title="Quay lại chế độ xem tất cả"
-                      >
-                        <X className="w-3 h-3" />
-                        Bỏ lọc
-                      </button>
-                    </div>
-                  </div>
-                );
-              })()}
-            </div>
-
-            {/* Tier 2: Section Navigation Tabs */}
-            <div className="pt-2 border-t border-slate-100">
-              <div className="flex items-center gap-1 overflow-x-auto pb-0.5 border-b border-slate-200 text-xs">
-                <button
-                  type="button"
-                  onClick={() => setActiveSection('all')}
-                  className={`px-3 py-1.5 rounded-t-md font-semibold transition-all flex items-center gap-1.5 cursor-pointer border-b-2 -mb-[1px] ${
-                    activeSection === 'all'
-                      ? 'border-blue-600 text-blue-600 bg-blue-50/50'
-                      : 'border-transparent text-slate-600 hover:text-slate-900 hover:bg-slate-50'
-                  }`}
-                >
-                  <Layers className="w-3.5 h-3.5" />
-                  <span>Tất cả</span>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => setActiveSection('cn')}
-                  className={`px-3 py-1.5 rounded-t-md font-semibold transition-all flex items-center gap-1.5 cursor-pointer border-b-2 -mb-[1px] ${
-                    activeSection === 'cn'
-                      ? 'border-blue-600 text-blue-600 bg-blue-50/50'
-                      : 'border-transparent text-slate-600 hover:text-slate-900 hover:bg-slate-50'
-                  }`}
-                >
-                  <span className="w-4 h-4 rounded bg-slate-800 text-white text-[10px] flex items-center justify-center font-mono-custom">B</span>
-                  <span>Cơ năng</span>
-                  {countCategorySelected('cn') > 0 && (
-                    <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-blue-600 text-white font-mono-custom font-bold">
-                      {countCategorySelected('cn')}
-                    </span>
-                  )}
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => setActiveSection('tt')}
-                  className={`px-3 py-1.5 rounded-t-md font-semibold transition-all flex items-center gap-1.5 cursor-pointer border-b-2 -mb-[1px] ${
-                    activeSection === 'tt'
-                      ? 'border-blue-600 text-blue-600 bg-blue-50/50'
-                      : 'border-transparent text-slate-600 hover:text-slate-900 hover:bg-slate-50'
-                  }`}
-                >
-                  <span className="w-4 h-4 rounded bg-slate-800 text-white text-[10px] flex items-center justify-center font-mono-custom">C</span>
-                  <span>Thực thể & Vitals</span>
-                  {countCategorySelected('tt') > 0 && (
-                    <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-blue-600 text-white font-mono-custom font-bold">
-                      {countCategorySelected('tt')}
-                    </span>
-                  )}
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => setActiveSection('tc')}
-                  className={`px-3 py-1.5 rounded-t-md font-semibold transition-all flex items-center gap-1.5 cursor-pointer border-b-2 -mb-[1px] ${
-                    activeSection === 'tc'
-                      ? 'border-blue-600 text-blue-600 bg-blue-50/50'
-                      : 'border-transparent text-slate-600 hover:text-slate-900 hover:bg-slate-50'
-                  }`}
-                >
-                  <span className="w-4 h-4 rounded bg-slate-800 text-white text-[10px] flex items-center justify-center font-mono-custom">D</span>
-                  <span>Tiền căn</span>
-                  {countCategorySelected('tc') > 0 && (
-                    <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-blue-600 text-white font-mono-custom font-bold">
-                      {countCategorySelected('tc')}
-                    </span>
-                  )}
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => setActiveSection('cls')}
-                  className={`px-3 py-1.5 rounded-t-md font-semibold transition-all flex items-center gap-1.5 cursor-pointer border-b-2 -mb-[1px] ${
-                    activeSection === 'cls'
-                      ? 'border-blue-600 text-blue-600 bg-blue-50/50'
-                      : 'border-transparent text-slate-600 hover:text-slate-900 hover:bg-slate-50'
-                  }`}
-                >
-                  <span className="w-4 h-4 rounded bg-slate-800 text-white text-[10px] flex items-center justify-center font-mono-custom">E</span>
-                  <span>Cận lâm sàng</span>
-                  {countCategorySelected('cls') > 0 && (
-                    <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-blue-600 text-white font-mono-custom font-bold">
-                      {countCategorySelected('cls')}
-                    </span>
-                  )}
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => setActiveSection('selected')}
-                  className={`px-3 py-1.5 rounded-t-md font-semibold transition-all flex items-center gap-1.5 cursor-pointer border-b-2 -mb-[1px] ml-auto ${
-                    activeSection === 'selected'
-                      ? 'border-amber-500 text-amber-800 bg-amber-50/60'
-                      : 'border-transparent text-slate-600 hover:text-slate-900 hover:bg-slate-50'
-                  }`}
-                >
-                  <FileCheck className="w-3.5 h-3.5 text-amber-600" />
-                  <span>Đã chọn</span>
-                  {(selected.size + derived.size + negated.size) > 0 && (
-                    <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-amber-600 text-white font-mono-custom font-bold">
-                      {selected.size + derived.size}+{negated.size}
-                    </span>
-                  )}
-                </button>
-              </div>
-            </div>
-
-            {/* Tier 3: Active Selection Tray (Khay các vấn đề đang kích hoạt) */}
-            {(selected.size > 0 || derived.size > 0 || negated.size > 0) && (
-              <div className="bg-slate-50 border border-slate-200 rounded-lg p-2.5">
-                <div className="flex flex-wrap items-center justify-between gap-1.5 mb-1.5">
-                  <span className="text-[11px] font-bold text-slate-700 flex items-center gap-1">
-                    <FileCheck className="w-3.5 h-3.5 text-blue-600" />
-                    Đang kích hoạt ({selected.size + derived.size} dương tính · {negated.size} âm tính loại trừ):
-                  </span>
-                  <button
-                    type="button"
-                    onClick={handleClearAllSelections}
-                    className="text-[10.5px] text-red-600 hover:text-red-800 hover:bg-red-50 px-1.5 py-0.5 rounded font-medium flex items-center gap-1 cursor-pointer transition-colors"
-                    title="Xóa tất cả các triệu chứng đã chọn hoặc loại trừ"
-                  >
-                    <Trash2 className="w-3 h-3" />
-                    Xóa tất cả
-                  </button>
-                </div>
-
-                <div className="flex flex-wrap gap-1 max-h-[95px] overflow-y-auto pr-1">
-                  {Array.from(selected).map((id) => (
-                    <span
-                      key={id}
-                      className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-medium bg-blue-600 text-white shadow-2xs"
-                    >
-                      <span className="truncate max-w-[170px]">{resolveSymptomName(id)}</span>
-                      <button
-                        type="button"
-                        onClick={() => handleChipClick(id)}
-                        className="hover:bg-blue-700 rounded p-0.5 cursor-pointer"
-                        title="Bỏ chọn triệu chứng này"
-                      >
-                        <X className="w-2.5 h-2.5" />
-                      </button>
-                    </span>
-                  ))}
-                  {Array.from(derived)
-                    .filter((id) => !selected.has(id))
-                    .map((id) => (
-                      <span
-                        key={id}
-                        className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-medium bg-blue-100 text-blue-900 border border-blue-300 font-mono-custom"
-                        title="Dữ kiện tự suy từ sinh hiệu hoặc xét nghiệm"
-                      >
-                        <span className="truncate max-w-[170px]">⚙ {resolveSymptomName(id)}</span>
-                      </span>
-                    ))}
-                  {Array.from(negated).map((id) => (
-                    <span
-                      key={id}
-                      className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-medium bg-red-100 text-red-800 border border-red-200 line-through decoration-red-400"
-                    >
-                      <span className="truncate max-w-[170px]">{resolveSymptomName(id)} (-)</span>
-                      <button
-                        type="button"
-                        onClick={(e) => handleMarkNegative(id, e)}
-                        className="hover:bg-red-200 rounded p-0.5 cursor-pointer no-underline"
-                        title="Bỏ đánh dấu phủ định"
-                      >
-                        <X className="w-2.5 h-2.5" />
-                      </button>
-                    </span>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Tier 4: Search & Organ Group Filters */}
-            <div className="flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-slate-100">
-              {/* Search input */}
-              <div className="relative flex-1 min-w-[180px]">
-                <Search className="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-2.5" />
-                <input
-                  id="input-filter-chips"
-                  type="text"
-                  value={chipFilter}
-                  onChange={(e) => setChipFilter(e.target.value)}
-                  placeholder="🔎 Tìm nhanh: đau ngực, sốt, khó thở, troponin..."
-                  className="w-full pl-8 pr-7 py-1 text-xs bg-slate-50 focus:bg-white border border-slate-200 rounded-md focus:outline-none focus:border-blue-500 transition-colors text-slate-800"
-                />
-                {chipFilter && (
-                  <button
-                    onClick={() => setChipFilter('')}
-                    className="absolute right-2 top-2 text-slate-400 hover:text-slate-600 cursor-pointer"
-                  >
-                    <X className="w-3.5 h-3.5" />
-                  </button>
-                )}
-              </div>
-
-              {/* Organ system selector pills */}
-              <div className="flex items-center gap-1 overflow-x-auto py-0.5 text-xs">
-                <span className="text-[11px] text-slate-500 font-medium mr-1 hidden sm:inline">Hệ cơ quan:</span>
-                <button
-                  type="button"
-                  onClick={() => setActiveOrganGroup('all')}
-                  className={`px-2 py-0.5 rounded text-[11px] font-medium transition-colors cursor-pointer ${
-                    activeOrganGroup === 'all'
-                      ? 'bg-slate-800 text-white font-semibold'
-                      : 'bg-slate-100 hover:bg-slate-200 text-slate-700'
-                  }`}
-                >
-                  Tất cả
-                </button>
-                {organGroups.map((grp) => {
-                  const grpColor = GROUP_COLORS[grp] || '#64748b';
-                  const isSelected = activeOrganGroup === grp;
-                  return (
-                    <button
-                      key={grp}
-                      type="button"
-                      onClick={() => setActiveOrganGroup(grp)}
-                      className={`px-2 py-0.5 rounded text-[11px] font-medium transition-all flex items-center gap-1 cursor-pointer ${
-                        isSelected
-                          ? 'bg-blue-600 text-white font-semibold shadow-2xs'
-                          : 'bg-slate-100 hover:bg-slate-200 text-slate-700'
-                      }`}
-                    >
-                      <span
-                        className="w-1.5 h-1.5 rounded-full shrink-0"
-                        style={{ backgroundColor: isSelected ? '#ffffff' : grpColor }}
-                      />
-                      <span>{grp}</span>
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* Quick guide on tri-state interaction */}
-            <div className="flex items-center justify-between text-[10.5px] text-slate-500 pt-1 border-t border-slate-100">
-              <div className="flex items-center gap-3">
-                <span className="flex items-center gap-1">
-                  <span className="w-2.5 h-2.5 bg-blue-600 rounded text-white text-[8px] flex items-center justify-center font-bold">✓</span>
-                  Bấm tên = Dương tính (+)
-                </span>
-                <span className="flex items-center gap-1">
-                  <span className="w-2.5 h-2.5 bg-red-100 text-red-700 border border-red-300 rounded text-[9px] flex items-center justify-center font-bold">−</span>
-                  Bấm nút [-] = Âm tính loại trừ
-                </span>
-                <span className="flex items-center gap-1">
-                  <span className="px-1 bg-slate-100 border border-slate-300 rounded text-[9px] font-mono-custom">⚙</span>
-                  Tự suy từ chỉ số
-                </span>
-              </div>
-              <span className="hidden sm:inline text-slate-400">
-                Hiển thị {kb.trieuChung.length} mục dữ kiện lâm sàng
-              </span>
-            </div>
-          </div>
+          <ClinicalSelectorControl
+            totalSymptomsCount={kb.trieuChung.length}
+            activeSyndromeId={activeSyndromeId}
+            setActiveSyndromeId={setActiveSyndromeId}
+            activeSection={activeSection}
+            setActiveSection={setActiveSection}
+            selected={selected}
+            derived={derived}
+            negated={negated}
+            chipFilter={chipFilter}
+            setChipFilter={setChipFilter}
+            activeOrganGroup={activeOrganGroup}
+            setActiveOrganGroup={setActiveOrganGroup}
+            organGroups={organGroups}
+            onChipClick={handleChipClick}
+            onMarkNegative={handleMarkNegative}
+            onClearAllSelections={handleClearAllSelections}
+            onApplySyndromePreset={handleApplySyndromePreset}
+            resolveSymptomName={resolveSymptomName}
+            countCategorySelected={countCategorySelected}
+          />
 
           {/* Mục B: Triệu chứng cơ năng */}
           {(activeSection === 'all' || activeSection === 'cn' || (activeSection === 'selected' && (countCategorySelected('cn') + countCategoryNegated('cn') > 0))) && (
-            <div className="bg-white border border-slate-200 rounded-lg p-3.5 sm:p-4 shadow-xs">
-              <div className="flex items-center justify-between mb-2.5">
-                <div className="flex items-center gap-2">
-                  <span className="w-5 h-5 rounded flex items-center justify-center bg-slate-800 text-white text-xs font-bold font-mono-custom">
-                    B
-                  </span>
-                  <div>
-                    <h2 className="font-display text-sm sm:text-base font-bold text-slate-800">
-                      Triệu chứng cơ năng (Chủ quan / Subjective)
-                    </h2>
-                    <p className="text-[11px] text-slate-500">
-                      Bệnh nhân tự cảm nhận và khai báo khi thăm hỏi bệnh sử
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="px-2 py-0.5 rounded-md font-mono-custom text-[11px] bg-blue-50 text-blue-700 border border-blue-200 font-semibold">
-                    {countCategorySelected('cn')} đã chọn
-                  </span>
-                  <button
-                    onClick={() => handleStartVoice('cn')}
-                    className={`p-1.5 rounded-md border transition-colors cursor-pointer ${
-                      isRecording === 'cn'
-                        ? 'bg-red-500 text-white border-red-600 animate-pulse'
-                        : 'text-slate-600 hover:bg-slate-50 border-slate-200'
-                    }`}
-                    title="Ghi âm mô tả cơ năng"
-                  >
-                    <Mic className="w-3.5 h-3.5" />
-                  </button>
-                </div>
-              </div>
-
-              {renderCategoryChips('cn')}
-
-              <textarea
-                value={form.text.cn}
-                onChange={(e) =>
-                  setForm((prev) => ({
-                    ...prev,
-                    text: { ...prev.text, cn: e.target.value },
-                  }))
-                }
-                rows={2}
-                placeholder="Ghi chú chi tiết thêm về triệu chứng cơ năng (hoàn cảnh khởi phát, hướng lan, thời gian kéo dài, yếu tố tăng/giảm...)"
-                className="w-full mt-2.5 border border-slate-200 rounded-md p-2 text-xs bg-slate-50 focus:bg-white focus:outline-none focus:border-blue-500 text-slate-800"
-              />
-            </div>
+            <SymptomCategorySection
+              category="cn"
+              badgeLetter="B"
+              title="Triệu chứng cơ năng (Chủ quan / Subjective)"
+              subtitle="Cảm nhận và phàn nàn trực tiếp từ người bệnh hoặc người nhà"
+              placeholder="Ghi chú bệnh sử tự do (khởi phát, tính chất cơn đau, yếu tố tăng/giảm, triệu chứng kèm theo...)"
+              textValue={form.text.cn}
+              onTextChange={(val) => setForm((prev) => ({ ...prev, text: { ...prev.text, cn: val } }))}
+              isRecording={isRecording === 'cn'}
+              onStartVoice={() => handleStartVoice('cn')}
+              selectedCount={countCategorySelected('cn')}
+              kb={kb}
+              activeOrganGroup={activeOrganGroup}
+              activeSyndromeId={activeSyndromeId}
+              activeSection={activeSection}
+              selected={selected}
+              derived={derived}
+              negated={negated}
+              chipFilter={chipFilter}
+              onChipClick={handleChipClick}
+              onMarkNegative={handleMarkNegative}
+            />
           )}
 
           {/* Mục C: Triệu chứng thực thể & Dấu hiệu sinh tồn */}
           {(activeSection === 'all' || activeSection === 'tt' || (activeSection === 'selected' && (countCategorySelected('tt') + countCategoryNegated('tt') > 0))) && (
-            <div className="bg-white border border-slate-200 rounded-lg p-3.5 sm:p-4 shadow-xs">
-              <div className="flex items-center justify-between mb-3">
-                <div className="flex items-center gap-2">
-                  <span className="w-5 h-5 rounded flex items-center justify-center bg-slate-800 text-white text-xs font-bold font-mono-custom">
-                    C
-                  </span>
-                  <div>
-                    <h2 className="font-display text-sm sm:text-base font-bold text-slate-800">
-                      Dấu hiệu sinh tồn & Triệu chứng thực thể (Khách quan / Objective)
-                    </h2>
-                    <p className="text-[11px] text-slate-500">
-                      Thăm khám lâm sàng, quan sát trực tiếp và đo lường chỉ số sinh tồn
-                    </p>
-                  </div>
-                </div>
-                <span className="px-2 py-0.5 rounded-md font-mono-custom text-[11px] bg-blue-50 text-blue-700 border border-blue-200 font-semibold">
-                  {countCategorySelected('tt')} đã chọn
-                </span>
-              </div>
-
-              {/* Medical Monitor Style: Vitals Input Cards */}
-              <div className="mb-3.5 p-3 bg-slate-50 border border-slate-200 rounded-lg">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-xs font-bold text-slate-700 flex items-center gap-1.5">
-                    <Activity className="w-3.5 h-3.5 text-blue-600" />
-                    Thước đo sinh hiệu (Vitals Monitor)
-                  </span>
-                  <span className="text-[11px] text-slate-500">
-                    Vượt ngưỡng tham chiếu sẽ tự động suy ra dữ kiện chẩn đoán (⚙)
-                  </span>
-                </div>
-
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2.5 text-xs font-mono-custom">
-                  {/* Nhiệt độ */}
-                  <div className="bg-white p-2 border border-slate-200 rounded-md">
-                    <div className="flex items-center justify-between mb-1">
-                      <label className="font-sans font-semibold text-slate-700 flex items-center gap-1 text-[11px]">
-                        <Thermometer className="w-3 h-3 text-red-500" />
-                        Nhiệt độ
-                      </label>
-                      <span className="text-[9.5px] text-slate-400 font-sans">36.5–37.5°C</span>
-                    </div>
-                    <div className="relative">
-                      <input
-                        id="vNhiet"
-                        type="number"
-                        step="0.1"
-                        value={vitals.vNhiet}
-                        onChange={(e) => setVitals((prev) => ({ ...prev, vNhiet: e.target.value }))}
-                        placeholder="37.0"
-                        className={`w-full border rounded p-1.5 text-xs font-bold ${
-                          vitalsStatus.isTempAbnormal
-                            ? 'border-red-400 bg-red-50 text-red-700'
-                            : 'border-slate-200 bg-slate-50 focus:bg-white text-slate-800'
-                        }`}
-                      />
-                      <span className="absolute right-2 top-1.5 text-[10px] text-slate-400">°C</span>
-                    </div>
-                  </div>
-
-                  {/* Mạch */}
-                  <div className="bg-white p-2 border border-slate-200 rounded-md">
-                    <div className="flex items-center justify-between mb-1">
-                      <label className="font-sans font-semibold text-slate-700 flex items-center gap-1 text-[11px]">
-                        <Heart className="w-3 h-3 text-rose-500" />
-                        Mạch
-                      </label>
-                      <span className="text-[9.5px] text-slate-400 font-sans">60–90 bpm</span>
-                    </div>
-                    <div className="relative">
-                      <input
-                        id="vMach"
-                        type="number"
-                        value={vitals.vMach}
-                        onChange={(e) => setVitals((prev) => ({ ...prev, vMach: e.target.value }))}
-                        placeholder="76"
-                        className={`w-full border rounded p-1.5 text-xs font-bold ${
-                          vitalsStatus.isPulseAbnormal
-                            ? 'border-red-400 bg-red-50 text-red-700'
-                            : 'border-slate-200 bg-slate-50 focus:bg-white text-slate-800'
-                        }`}
-                      />
-                      <span className="absolute right-2 top-1.5 text-[10px] text-slate-400">l/p</span>
-                    </div>
-                  </div>
-
-                  {/* Huyết áp */}
-                  <div className="bg-white p-2 border border-slate-200 rounded-md">
-                    <div className="flex items-center justify-between mb-1">
-                      <label className="font-sans font-semibold text-slate-700 flex items-center gap-1 text-[11px]">
-                        <Activity className="w-3 h-3 text-blue-500" />
-                        Huyết áp
-                      </label>
-                      <span className="text-[9.5px] text-slate-400 font-sans">120/80</span>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <input
-                        id="vHATT"
-                        type="number"
-                        value={vitals.vHATT}
-                        onChange={(e) => setVitals((prev) => ({ ...prev, vHATT: e.target.value }))}
-                        placeholder="120"
-                        title="Tâm thu (bình thường 90-139)"
-                        className={`w-full border rounded p-1.5 text-xs font-bold text-center ${
-                          vitalsStatus.isBPAbnormal
-                            ? 'border-red-400 bg-red-50 text-red-700'
-                            : 'border-slate-200 bg-slate-50 focus:bg-white text-slate-800'
-                        }`}
-                      />
-                      <span className="text-slate-400 font-bold">/</span>
-                      <input
-                        id="vHATTr"
-                        type="number"
-                        value={vitals.vHATTr}
-                        onChange={(e) => setVitals((prev) => ({ ...prev, vHATTr: e.target.value }))}
-                        placeholder="80"
-                        title="Tâm trương (bình thường 60-89)"
-                        className="w-full border border-slate-200 bg-slate-50 focus:bg-white rounded p-1.5 text-xs font-bold text-center text-slate-800"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Nhịp thở */}
-                  <div className="bg-white p-2 border border-slate-200 rounded-md">
-                    <div className="flex items-center justify-between mb-1">
-                      <label className="font-sans font-semibold text-slate-700 flex items-center gap-1 text-[11px]">
-                        <Wind className="w-3 h-3 text-cyan-500" />
-                        Nhịp thở
-                      </label>
-                      <span className="text-[9.5px] text-slate-400 font-sans">12–20 l/p</span>
-                    </div>
-                    <div className="relative">
-                      <input
-                        id="vTho"
-                        type="number"
-                        value={vitals.vTho}
-                        onChange={(e) => setVitals((prev) => ({ ...prev, vTho: e.target.value }))}
-                        placeholder="16"
-                        className={`w-full border rounded p-1.5 text-xs font-bold ${
-                          vitalsStatus.isRespAbnormal
-                            ? 'border-red-400 bg-red-50 text-red-700'
-                            : 'border-slate-200 bg-slate-50 focus:bg-white text-slate-800'
-                        }`}
-                      />
-                      <span className="absolute right-2 top-1.5 text-[10px] text-slate-400">l/p</span>
-                    </div>
-                  </div>
-
-                  {/* SpO2 */}
-                  <div className="bg-white p-2 border border-slate-200 rounded-md">
-                    <div className="flex items-center justify-between mb-1">
-                      <label className="font-sans font-semibold text-slate-700 flex items-center gap-1 text-[11px]">
-                        <Activity className="w-3 h-3 text-indigo-500" />
-                        SpO₂
-                      </label>
-                      <span className="text-[9.5px] text-slate-400 font-sans">≥ 95%</span>
-                    </div>
-                    <div className="relative">
-                      <input
-                        id="vSpo2"
-                        type="number"
-                        value={vitals.vSpo2}
-                        onChange={(e) => setVitals((prev) => ({ ...prev, vSpo2: e.target.value }))}
-                        placeholder="98"
-                        className={`w-full border rounded p-1.5 text-xs font-bold ${
-                          vitalsStatus.isSpo2Abnormal
-                            ? 'border-red-400 bg-red-50 text-red-700'
-                            : 'border-slate-200 bg-slate-50 focus:bg-white text-slate-800'
-                        }`}
-                      />
-                      <span className="absolute right-2 top-1.5 text-[10px] text-slate-400">%</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Auto-derived vitals badges */}
-                {derivedVitalsList.length > 0 && (
-                  <div className="flex flex-wrap items-center gap-1.5 mt-2 pt-2 border-t border-slate-200">
-                    <span className="text-[11px] font-sans font-semibold text-blue-900">
-                      Dữ kiện suy luận được kích hoạt:
-                    </span>
-                    {derivedVitalsList.map((badge, idx) => (
-                      <span
-                        key={idx}
-                        className="px-2 py-0.5 rounded text-[11px] font-mono-custom bg-blue-100/70 text-blue-800 border border-blue-300 font-semibold"
-                      >
-                        ⚙ {badge}
-                      </span>
-                    ))}
-                  </div>
-                )}
-              </div>
-
-              {renderCategoryChips('tt')}
-
-              <textarea
-                value={form.text.tt}
-                onChange={(e) =>
-                  setForm((prev) => ({
-                    ...prev,
-                    text: { ...prev.text, tt: e.target.value },
-                  }))
-                }
-                rows={2}
-                placeholder="Khám các cơ quan khác (nghe tim, rì rào phế nang, điểm đau khu trú, dấu kích thích phúc mạc, tri giác, Glasgow...)"
-                className="w-full mt-2.5 border border-slate-200 rounded-md p-2 text-xs bg-slate-50 focus:bg-white focus:outline-none focus:border-blue-500 text-slate-800"
+            <SymptomCategorySection
+              category="tt"
+              badgeLetter="C"
+              title="Dấu hiệu sinh tồn & Triệu chứng thực thể (Khách quan / Objective)"
+              subtitle="Thăm khám lâm sàng, quan sát trực tiếp và đo lường chỉ số sinh tồn"
+              placeholder="Khám các cơ quan khác (nghe tim, rì rào phế nang, điểm đau khu trú, dấu kích thích phúc mạc, tri giác, Glasgow...)"
+              textValue={form.text.tt}
+              onTextChange={(val) => setForm((prev) => ({ ...prev, text: { ...prev.text, tt: val } }))}
+              isRecording={isRecording === 'tt'}
+              onStartVoice={() => handleStartVoice('tt')}
+              selectedCount={countCategorySelected('tt')}
+              kb={kb}
+              activeOrganGroup={activeOrganGroup}
+              activeSyndromeId={activeSyndromeId}
+              activeSection={activeSection}
+              selected={selected}
+              derived={derived}
+              negated={negated}
+              chipFilter={chipFilter}
+              onChipClick={handleChipClick}
+              onMarkNegative={handleMarkNegative}
+            >
+              <VitalsCardsPanel
+                vitals={vitals}
+                setVitals={setVitals}
+                vitalsStatus={vitalsStatus}
+                derivedVitalsList={derivedVitalsList}
               />
-            </div>
+            </SymptomCategorySection>
           )}
 
           {/* Mục D: Tiền căn */}
           {(activeSection === 'all' || activeSection === 'tc' || (activeSection === 'selected' && (countCategorySelected('tc') + countCategoryNegated('tc') > 0))) && (
-            <div className="bg-white border border-slate-200 rounded-lg p-3.5 sm:p-4 shadow-xs">
-              <div className="flex items-center justify-between mb-2.5">
-                <div className="flex items-center gap-2">
-                  <span className="w-5 h-5 rounded flex items-center justify-center bg-slate-800 text-white text-xs font-bold font-mono-custom">
-                    D
-                  </span>
-                  <div>
-                    <h2 className="font-display text-sm sm:text-base font-bold text-slate-800">
-                      Tiền căn & Yếu tố nguy cơ
-                    </h2>
-                    <p className="text-[11px] text-slate-500">
-                      Bệnh mạn tính, tiền sử gia đình, dị ứng thuốc và phẫu thuật cũ
-                    </p>
-                  </div>
-                </div>
-                <span className="px-2 py-0.5 rounded-md font-mono-custom text-[11px] bg-blue-50 text-blue-700 border border-blue-200 font-semibold">
-                  {countCategorySelected('tc')} đã chọn
-                </span>
-              </div>
-
-              {renderCategoryChips('tc')}
-
-              <textarea
-                value={form.text.tc}
-                onChange={(e) =>
-                  setForm((prev) => ({
-                    ...prev,
-                    text: { ...prev.text, tc: e.target.value },
-                  }))
-                }
-                rows={2}
-                placeholder="Thuốc đang sử dụng định kỳ, dị ứng kháng sinh/thức ăn, tiền căn ngoại khoa, thói quen hút thuốc lá/uống rượu bia..."
-                className="w-full mt-2.5 border border-slate-200 rounded-md p-2 text-xs bg-slate-50 focus:bg-white focus:outline-none focus:border-blue-500 text-slate-800"
-              />
-            </div>
+            <SymptomCategorySection
+              category="tc"
+              badgeLetter="D"
+              title="Tiền căn bệnh lý, Dị ứng & Yếu tố nguy cơ"
+              subtitle="Bệnh nền mạn tính, tiền căn phẫu thuật, dùng thuốc kéo dài và tiền sử gia đình"
+              placeholder="Tiền căn dùng thuốc, dị ứng thuốc/thức ăn, tiền căn sản khoa, lối sống (hút thuốc lá gói-năm, bia rượu...)"
+              textValue={form.text.tc}
+              onTextChange={(val) => setForm((prev) => ({ ...prev, text: { ...prev.text, tc: val } }))}
+              isRecording={isRecording === 'tc'}
+              onStartVoice={() => handleStartVoice('tc')}
+              selectedCount={countCategorySelected('tc')}
+              kb={kb}
+              activeOrganGroup={activeOrganGroup}
+              activeSyndromeId={activeSyndromeId}
+              activeSection={activeSection}
+              selected={selected}
+              derived={derived}
+              negated={negated}
+              chipFilter={chipFilter}
+              onChipClick={handleChipClick}
+              onMarkNegative={handleMarkNegative}
+            />
           )}
 
           {/* Mục E: Cận lâm sàng có sẵn */}
           {(activeSection === 'all' || activeSection === 'cls' || (activeSection === 'selected' && (countCategorySelected('cls') + countCategoryNegated('cls') > 0))) && (
-            <div className="bg-white border border-slate-200 rounded-lg p-3.5 sm:p-4 shadow-xs">
-              <div className="flex items-center justify-between mb-3">
-                <div className="flex items-center gap-2">
-                  <span className="w-5 h-5 rounded flex items-center justify-center bg-slate-800 text-white text-xs font-bold font-mono-custom">
-                    E
-                  </span>
-                  <div>
-                    <h2 className="font-display text-sm sm:text-base font-bold text-slate-800">
-                      Cận lâm sàng & Xét nghiệm tại chỗ
-                    </h2>
-                    <p className="text-[11px] text-slate-500">
-                      Kết quả công thức máu, sinh hóa máu, men tim cấp và chẩn đoán hình ảnh đã có
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-2">
-                  <button
-                    id="btn-quick-normal-labs"
-                    onClick={handleSetNormalLabs}
-                    title="Nạp chỉ số xét nghiệm thông thường"
-                    className="text-[11px] font-medium text-slate-600 hover:text-blue-700 px-2 py-0.5 bg-slate-100 hover:bg-slate-200 rounded transition-colors cursor-pointer"
-                  >
-                    Nạp xét nghiệm chuẩn
-                  </button>
-                  <span className="px-2 py-0.5 rounded-md font-mono-custom text-[11px] bg-blue-50 text-blue-700 border border-blue-200 font-semibold">
-                    {countCategorySelected('cls')} đã chọn
-                  </span>
-                </div>
-              </div>
-
-              {/* Point of Care Labs Card */}
-              <div className="mb-3.5 p-3 bg-slate-50 border border-slate-200 rounded-lg">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-xs font-bold text-slate-700 flex items-center gap-1.5">
-                    <Sliders className="w-3.5 h-3.5 text-blue-600" />
-                    Chỉ số sinh hóa & huyết học nhanh
-                  </span>
-                  <span className="text-[11px] text-slate-500">
-                    Ngưỡng tham chiếu tiêu chuẩn Bộ Y tế
-                  </span>
-                </div>
-
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2.5 text-xs font-mono-custom">
-                  {/* Bạch cầu */}
-                  <div className="bg-white p-2 border border-slate-200 rounded-md">
-                    <div className="flex items-center justify-between mb-1">
-                      <label className="font-sans font-semibold text-slate-700 text-[11px]">Bạch cầu (BC)</label>
-                      <span className="text-[9.5px] text-slate-400 font-sans">4.0–10.0</span>
-                    </div>
-                    <div className="relative">
-                      <input
-                        id="lBC"
-                        type="number"
-                        step="0.1"
-                        value={labs.lBC}
-                        onChange={(e) => setLabs((prev) => ({ ...prev, lBC: e.target.value }))}
-                        placeholder="7.5"
-                        className={`w-full border rounded p-1.5 text-xs font-bold ${
-                          labsStatus.isBCAbnormal
-                            ? 'border-red-400 bg-red-50 text-red-700'
-                            : 'border-slate-200 bg-slate-50 focus:bg-white text-slate-800'
-                        }`}
-                      />
-                      <span className="absolute right-2 top-1.5 text-[10px] text-slate-400">G/L</span>
-                    </div>
-                  </div>
-
-                  {/* Tiểu cầu */}
-                  <div className="bg-white p-2 border border-slate-200 rounded-md">
-                    <div className="flex items-center justify-between mb-1">
-                      <label className="font-sans font-semibold text-slate-700 text-[11px]">Tiểu cầu (TC)</label>
-                      <span className="text-[9.5px] text-slate-400 font-sans">150–400</span>
-                    </div>
-                    <div className="relative">
-                      <input
-                        id="lTC"
-                        type="number"
-                        value={labs.lTC}
-                        onChange={(e) => setLabs((prev) => ({ ...prev, lTC: e.target.value }))}
-                        placeholder="250"
-                        className={`w-full border rounded p-1.5 text-xs font-bold ${
-                          labsStatus.isTCAbnormal
-                            ? 'border-red-400 bg-red-50 text-red-700'
-                            : 'border-slate-200 bg-slate-50 focus:bg-white text-slate-800'
-                        }`}
-                      />
-                      <span className="absolute right-2 top-1.5 text-[10px] text-slate-400">G/L</span>
-                    </div>
-                  </div>
-
-                  {/* Hct */}
-                  <div className="bg-white p-2 border border-slate-200 rounded-md">
-                    <div className="flex items-center justify-between mb-1">
-                      <label className="font-sans font-semibold text-slate-700 text-[11px]">Hematocrit</label>
-                      <span className="text-[9.5px] text-slate-400 font-sans">37–48%</span>
-                    </div>
-                    <div className="relative">
-                      <input
-                        id="lHct"
-                        type="number"
-                        step="0.1"
-                        value={labs.lHct}
-                        onChange={(e) => setLabs((prev) => ({ ...prev, lHct: e.target.value }))}
-                        placeholder="42"
-                        className={`w-full border rounded p-1.5 text-xs font-bold ${
-                          labsStatus.isHctAbnormal
-                            ? 'border-red-400 bg-red-50 text-red-700'
-                            : 'border-slate-200 bg-slate-50 focus:bg-white text-slate-800'
-                        }`}
-                      />
-                      <span className="absolute right-2 top-1.5 text-[10px] text-slate-400">%</span>
-                    </div>
-                  </div>
-
-                  {/* Glucose */}
-                  <div className="bg-white p-2 border border-slate-200 rounded-md">
-                    <div className="flex items-center justify-between mb-1">
-                      <label className="font-sans font-semibold text-slate-700 text-[11px]">Glucose máu</label>
-                      <span className="text-[9.5px] text-slate-400 font-sans">3.9–6.4</span>
-                    </div>
-                    <div className="relative">
-                      <input
-                        id="lGlu"
-                        type="number"
-                        step="0.1"
-                        value={labs.lGlu}
-                        onChange={(e) => setLabs((prev) => ({ ...prev, lGlu: e.target.value }))}
-                        placeholder="5.4"
-                        className={`w-full border rounded p-1.5 text-xs font-bold ${
-                          labsStatus.isGluAbnormal
-                            ? 'border-red-400 bg-red-50 text-red-700'
-                            : 'border-slate-200 bg-slate-50 focus:bg-white text-slate-800'
-                        }`}
-                      />
-                      <span className="absolute right-2 top-1.5 text-[10px] text-slate-400">mmol/L</span>
-                    </div>
-                  </div>
-
-                  {/* Troponin */}
-                  <div className="bg-white p-2 border border-slate-200 rounded-md">
-                    <div className="flex items-center justify-between mb-1">
-                      <label className="font-sans font-semibold text-slate-700 text-[11px] text-rose-700">Troponin hs</label>
-                      <span className="text-[9.5px] text-slate-400 font-sans">&lt; 14 ng/L</span>
-                    </div>
-                    <div className="relative">
-                      <input
-                        id="lTrop"
-                        type="number"
-                        value={labs.lTrop}
-                        onChange={(e) => setLabs((prev) => ({ ...prev, lTrop: e.target.value }))}
-                        placeholder="8"
-                        className={`w-full border rounded p-1.5 text-xs font-bold ${
-                          labsStatus.isTropAbnormal
-                            ? 'border-red-400 bg-red-50 text-red-700'
-                            : 'border-slate-200 bg-slate-50 focus:bg-white text-slate-800'
-                        }`}
-                      />
-                      <span className="absolute right-2 top-1.5 text-[10px] text-slate-400">ng/L</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Auto-derived labs badges */}
-                {derivedLabsList.length > 0 && (
-                  <div className="flex flex-wrap items-center gap-1.5 mt-2 pt-2 border-t border-slate-200">
-                    <span className="text-[11px] font-sans font-semibold text-blue-900">
-                      Dữ kiện cận lâm sàng suy luận:
-                    </span>
-                    {derivedLabsList.map((badge, idx) => (
-                      <span
-                        key={idx}
-                        className="px-2 py-0.5 rounded text-[11px] font-mono-custom bg-blue-100/70 text-blue-800 border border-blue-300 font-semibold"
-                      >
-                        ⚙ {badge}
-                      </span>
-                    ))}
-                  </div>
-                )}
-
-                {/* Point-of-Care Fast Calculators & Protocols from Kho CC & CDSS */}
-                <div className="flex flex-wrap items-center gap-1.5 mt-2.5 pt-2 border-t border-slate-200">
-                  <span className="text-[10.5px] font-bold text-slate-500 uppercase tracking-wide mr-1 flex items-center gap-1">
-                    <Sparkles className="w-3 h-3 text-amber-500" />
-                    Tính nhanh xét nghiệm:
-                  </span>
-
-                  <button
-                    type="button"
-                    onClick={() => onOpenVaultDrawer?.(undefined, 'CKD-EPI', 'CC')}
-                    className="inline-flex items-center gap-1 px-2 py-0.5 text-[11px] font-semibold text-amber-800 bg-amber-50 hover:bg-amber-100 border border-amber-200 rounded transition-colors cursor-pointer"
-                    title="Công thức ước tính mức lọc cầu thận CKD-EPI 2021 & Cockcroft-Gault"
-                  >
-                    <span>🧮</span>
-                    <span>eGFR & Cockcroft-Gault</span>
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => onOpenVaultDrawer?.(undefined, 'kháng sinh', 'CDSS')}
-                    className="inline-flex items-center gap-1 px-2 py-0.5 text-[11px] font-semibold text-purple-800 bg-purple-50 hover:bg-purple-100 border border-purple-200 rounded transition-colors cursor-pointer"
-                    title="Hệ thống CDSS tính liều kháng sinh hiệu chỉnh theo eGFR & đặc tính PK/PD"
-                  >
-                    <span>⚡</span>
-                    <span>Chỉnh liều KS theo eGFR (CDSS)</span>
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => onOpenVaultDrawer?.(undefined, 'Insulin', 'CC')}
-                    className="inline-flex items-center gap-1 px-2 py-0.5 text-[11px] font-semibold text-blue-800 bg-blue-50 hover:bg-blue-100 border border-blue-200 rounded transition-colors cursor-pointer"
-                    title="Phác đồ Insulin Sliding Scale và hiệu chỉnh đường huyết cấp cứu"
-                  >
-                    <span>💉</span>
-                    <span>Insulin Sliding Scale</span>
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => onOpenVaultDrawer?.(undefined, 'Khí máu', 'CC')}
-                    className="inline-flex items-center gap-1 px-2 py-0.5 text-[11px] font-semibold text-rose-800 bg-rose-50 hover:bg-rose-100 border border-rose-200 rounded transition-colors cursor-pointer"
-                    title="Biện luận Khí máu động mạch (ABG) 6 bước: Toan kiềm, Anion Gap & bù trừ"
-                  >
-                    <span>🩸</span>
-                    <span>Biện luận ABG 6 bước</span>
-                  </button>
-
-                  <a
-                    href="../knowledge-vault/cdss/abg/index.html"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-1 px-2 py-0.5 text-[11px] font-bold text-cyan-800 bg-cyan-50 hover:bg-cyan-100 border border-cyan-300 rounded transition-colors"
-                    title="Mở Hệ thống CDSS Phân Tích Khí Máu Động Mạch (ABG Pro) độc lập"
-                  >
-                    <span>🩸</span>
-                    <span>CDSS ABG Pro ↗</span>
-                  </a>
-
-                  <a
-                    href="../knowledge-vault/cdss/xray/index.html"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-1 px-2 py-0.5 text-[11px] font-bold text-purple-800 bg-purple-50 hover:bg-purple-100 border border-purple-300 rounded transition-colors"
-                    title="Mở Hệ thống CDSS Phân Tích X-Quang Ngực & Bụng (RadAI PACS) độc lập"
-                  >
-                    <span>🩻</span>
-                    <span>CDSS RadAI X-Ray ↗</span>
-                  </a>
-                </div>
-              </div>
-
-              {renderCategoryChips('cls')}
-
-              <textarea
-                value={form.text.cls}
-                onChange={(e) =>
-                  setForm((prev) => ({
-                    ...prev,
-                    text: { ...prev.text, cls: e.target.value },
-                  }))
-                }
-                rows={2}
-                placeholder="Kết quả hình ảnh học hoặc CLS khác: ECG (ST chênh lên ở đạo trình nào), X-quang ngực thẳng, Siêu âm tim/bụng tổng quát, CT scan..."
-                className="w-full mt-2.5 border border-slate-200 rounded-md p-2 text-xs bg-slate-50 focus:bg-white focus:outline-none focus:border-blue-500 text-slate-800"
+            <SymptomCategorySection
+              category="cls"
+              badgeLetter="E"
+              title="Cận lâm sàng & Xét nghiệm tại chỗ"
+              subtitle="Kết quả công thức máu, sinh hóa máu, men tim cấp và chẩn đoán hình ảnh đã có"
+              placeholder="Kết quả hình ảnh học hoặc CLS khác: ECG (ST chênh lên ở đạo trình nào), X-quang ngực thẳng, Siêu âm tim/bụng tổng quát, CT scan..."
+              textValue={form.text.cls}
+              onTextChange={(val) => setForm((prev) => ({ ...prev, text: { ...prev.text, cls: val } }))}
+              isRecording={isRecording === 'cls'}
+              onStartVoice={() => handleStartVoice('cls')}
+              selectedCount={countCategorySelected('cls')}
+              kb={kb}
+              activeOrganGroup={activeOrganGroup}
+              activeSyndromeId={activeSyndromeId}
+              activeSection={activeSection}
+              selected={selected}
+              derived={derived}
+              negated={negated}
+              chipFilter={chipFilter}
+              onChipClick={handleChipClick}
+              onMarkNegative={handleMarkNegative}
+            >
+              <LabsCardsPanel
+                labs={labs}
+                setLabs={setLabs}
+                labsStatus={labsStatus}
+                derivedLabsList={derivedLabsList}
+                onSetNormalLabs={handleSetNormalLabs}
+                onOpenVaultDrawer={onOpenVaultDrawer}
               />
-            </div>
+            </SymptomCategorySection>
           )}
 
           {/* Review Mode Empty State when in 'selected' tab but nothing selected */}
@@ -1760,10 +632,11 @@ export const Step1DataIngestion: React.FC<Step1Props> = ({
               <button
                 id="btn-reset-form"
                 onClick={onReset}
-                className="flex items-center gap-1.5 px-3 py-2 bg-white border border-slate-200 text-slate-700 hover:bg-red-50 hover:text-red-700 hover:border-red-200 text-xs rounded-md transition-all cursor-pointer shadow-xs"
+                className="w-9 h-9 flex items-center justify-center bg-white border border-slate-200 text-slate-500 hover:bg-red-50 hover:text-red-700 hover:border-red-200 rounded-md transition-all cursor-pointer shadow-xs"
+                title="Làm mới ca / Xóa form"
+                aria-label="Làm mới ca"
               >
-                <Trash2 className="w-3.5 h-3.5" />
-                <span>Làm mới ca</span>
+                <Trash2 className="w-4 h-4" />
               </button>
             </div>
 
@@ -1771,272 +644,34 @@ export const Step1DataIngestion: React.FC<Step1Props> = ({
               <button
                 id="btn-save-postgres-footer"
                 onClick={onSaveToPostgres}
-                className="flex items-center gap-1.5 px-3 py-2 bg-slate-50 border border-slate-200 text-slate-700 hover:bg-slate-100 text-xs font-medium rounded-md transition-all cursor-pointer shadow-xs"
+                className="w-9 h-9 flex items-center justify-center bg-slate-50 border border-slate-200 text-slate-700 hover:bg-slate-100 rounded-md transition-all cursor-pointer shadow-xs"
+                title="Lưu ca vào CSDL / In bệnh án"
+                aria-label="Lưu ca vào CSDL"
               >
-                <Database className="w-3.5 h-3.5 text-blue-600" />
-                <span>Lưu ca vào CSDL</span>
+                <Database className="w-4 h-4 text-blue-600" />
               </button>
             </div>
           </div>
         </div>
 
         {/* Right Sidebar: Real-time Clinical Copilot & Diagnostic Radar (Col 9-12) */}
-        <div className="lg:col-span-4 flex flex-col gap-3.5">
-          {/* Diagnostic Probability Card */}
-          <div className="bg-white border border-slate-200 rounded-lg p-3.5 shadow-xs">
-            <div className="flex items-center justify-between mb-2.5 pb-2 border-b border-slate-100">
-              <div className="flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                <h3 className="font-display font-bold text-xs sm:text-sm text-slate-800">
-                  Suy luận chẩn đoán tức thời
-                </h3>
-              </div>
-              <span className="text-[10px] text-slate-400 font-mono-custom uppercase tracking-wider">
-                Evidence Engine
-              </span>
-            </div>
-
-            {liveResults.length > 0 ? (
-              <div className="flex flex-col gap-3">
-                {liveResults.slice(0, 3).map((res, idx) => (
-                  <div key={res.b.id} className="p-2.5 rounded-md bg-slate-50 border border-slate-200 flex flex-col gap-1.5">
-                    <div className="flex items-start justify-between gap-2 text-xs">
-                      <div className="flex flex-col">
-                        <span className="font-bold text-slate-800 flex items-center gap-1.5">
-                          <span className="text-slate-400 font-mono-custom">#{idx + 1}</span>
-                          {res.b.ten}
-                        </span>
-                        <span className="text-[10px] text-slate-500 font-mono-custom">
-                          ICD-10: {res.b.icd} • {res.matched.length} bằng chứng trùng khớp
-                        </span>
-                      </div>
-                      <div className="flex flex-col items-end shrink-0">
-                        <span
-                          className={`font-mono-custom font-bold text-sm ${
-                            res.pct >= 70
-                              ? 'text-blue-600'
-                              : res.pct >= 40
-                              ? 'text-amber-600'
-                              : 'text-slate-600'
-                          }`}
-                        >
-                          {res.pct}%
-                        </span>
-                        {res.b.baoDong && (
-                          <span className="text-red-700 font-bold text-[9px] px-1 py-0.2 bg-red-100 border border-red-300 rounded mt-0.5">
-                            CẤP CỨU
-                          </span>
-                        )}
-                      </div>
-                    </div>
-
-                    {/* Progress indicator */}
-                    <div className="h-1.5 w-full bg-slate-200 rounded-full overflow-hidden">
-                      <div
-                        className={`h-full rounded-full transition-all duration-500 ${
-                          res.pct >= 70 ? 'bg-blue-600' : res.pct >= 40 ? 'bg-amber-500' : 'bg-slate-400'
-                        }`}
-                        style={{ width: `${res.pct}%` }}
-                      />
-                    </div>
-                  </div>
-                ))}
-
-                <button
-                  onClick={onRunAnalysis}
-                  className="w-full flex items-center justify-center gap-1.5 py-1.5 px-3 bg-blue-50 border border-blue-200 text-blue-700 hover:bg-blue-100 rounded text-xs font-semibold transition-colors cursor-pointer"
-                >
-                  <span>Xem bảng chứng cứ & phân biệt chi tiết</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </button>
-              </div>
-            ) : (
-              <div className="py-4 text-center text-xs text-slate-500 flex flex-col items-center gap-1.5">
-                <Stethoscope className="w-6 h-6 text-slate-300" />
-                <span>Nhập sinh hiệu hoặc chọn triệu chứng để kích hoạt công cụ suy luận.</span>
-              </div>
-            )}
-
-            {/* Interactive Clarifying Questions */}
-            {suggestedQuestions.length > 0 && (
-              <div className="mt-3.5 pt-3 border-t border-slate-200">
-                <div className="flex items-center justify-between mb-2">
-                  <h4 className="font-semibold text-[11px] text-slate-700 flex items-center gap-1">
-                    <HelpCircle className="w-3.5 h-3.5 text-blue-600" />
-                    <span>Hỏi bệnh bổ sung — làm rõ «{topResult.b.ten}»:</span>
-                  </h4>
-                  <span className="text-[10px] text-blue-600 font-mono-custom">Trọng số cao</span>
-                </div>
-
-                <div className="flex flex-col gap-1.5">
-                  {suggestedQuestions.map((q) => (
-                    <div
-                      key={q.tc.id}
-                      className="p-2 bg-slate-50 border border-slate-200 rounded-md text-xs flex items-center justify-between gap-2 shadow-2xs"
-                    >
-                      <div className="flex flex-col">
-                        <span className="text-slate-800 text-[11.5px]">
-                          Bệnh nhân có <b>{q.tc.ten}</b> không?
-                        </span>
-                        <span className="text-[10px] text-slate-400">
-                          {q.role === 'dt' ? 'Dấu chứng đặc trưng' : 'Dấu chứng gợi ý'} (+{q.w} điểm)
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-1 shrink-0">
-                        <button
-                          id={`btn-q-yes-${q.tc.id}`}
-                          onClick={() => handleQuestionAnswer(q.tc.id, true)}
-                          className="px-2 py-1 bg-blue-600 text-white text-[10.5px] font-semibold rounded hover:bg-blue-700 transition-all cursor-pointer shadow-xs"
-                        >
-                          Có (+)
-                        </button>
-                        <button
-                          id={`btn-q-no-${q.tc.id}`}
-                          onClick={() => handleQuestionAnswer(q.tc.id, false)}
-                          className="px-2 py-1 bg-white border border-slate-200 text-red-600 text-[10.5px] font-semibold rounded hover:bg-red-50 transition-all cursor-pointer shadow-xs"
-                        >
-                          Không (−)
-                        </button>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
-
-          {/* Active Clinical Intake Stream: Bảng theo dõi & quản lý dữ kiện lâm sàng đã nạp */}
-          <div className="bg-white border border-slate-200 rounded-xl p-3.5 sm:p-4 shadow-xs flex flex-col gap-3">
-            <div className="flex items-center justify-between pb-2.5 border-b border-slate-100 flex-wrap gap-2">
-              <div className="flex items-center gap-2">
-                <div className="w-6 h-6 rounded-md bg-blue-50 text-blue-600 flex items-center justify-center">
-                  <Layers className="w-3.5 h-3.5" />
-                </div>
-                <div>
-                  <h3 className="font-display font-bold text-xs sm:text-sm text-slate-900 leading-none">
-                    Dữ kiện lâm sàng đã nạp
-                  </h3>
-                  <span className="text-[10.5px] text-slate-400 font-medium">
-                    Luồng dữ kiện đầu vào phục vụ suy luận
-                  </span>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-1.5">
-                {(selected.size > 0 || derived.size > 0 || negated.size > 0) && (
-                  <button
-                    type="button"
-                    onClick={handleClearAllSelections}
-                    className="text-[10.5px] text-red-600 hover:text-red-800 hover:bg-red-50 px-2 py-0.5 rounded font-medium flex items-center gap-1 cursor-pointer transition-colors border border-red-200/60"
-                    title="Xóa tất cả triệu chứng đã chọn và loại trừ"
-                  >
-                    <Trash2 className="w-3 h-3" />
-                    <span>Xóa tất cả</span>
-                  </button>
-                )}
-                <span className="px-2 py-0.5 rounded font-mono-custom text-[10.5px] bg-blue-50 text-blue-700 border border-blue-200 font-semibold">
-                  {positiveSymptomsList.length} (+) · {negativeSymptomsList.length} (−)
-                </span>
-              </div>
-            </div>
-
-            {/* Dấu chứng dương tính (+) */}
-            <div>
-              <div className="flex items-center justify-between mb-1.5">
-                <span className="font-bold text-blue-900 text-[11px] uppercase tracking-wider flex items-center gap-1.5">
-                  <span className="w-2 h-2 rounded-full bg-blue-600"></span>
-                  <span>Dấu chứng dương tính ({positiveSymptomsList.length}):</span>
-                </span>
-              </div>
-              {positiveSymptomsList.length > 0 ? (
-                <div className="flex flex-wrap gap-1.5 max-h-[160px] overflow-y-auto pr-1">
-                  {positiveSymptomsList.map((item) => (
-                    <span
-                      key={item.id}
-                      className="px-2 py-0.5 bg-blue-50 text-blue-800 border border-blue-200/80 rounded-md font-medium text-[11px] flex items-center gap-1 group"
-                    >
-                      <Check className="w-3 h-3 text-blue-600 shrink-0" />
-                      <span>{item.name}</span>
-                      <button
-                        type="button"
-                        onClick={() => handleChipClick(item.id)}
-                        className="text-blue-400 hover:text-red-600 ml-0.5 opacity-60 group-hover:opacity-100 cursor-pointer"
-                        title="Bỏ chọn triệu chứng này"
-                      >
-                        <X className="w-3 h-3" />
-                      </button>
-                    </span>
-                  ))}
-                </div>
-              ) : (
-                <p className="text-slate-400 italic text-[11px] py-1">
-                  Chưa ghi nhận triệu chứng dương tính. Chọn ở bảng phân loại bên trái hoặc dán bệnh sử.
-                </p>
-              )}
-            </div>
-
-            {/* Dữ kiện âm tính loại trừ (−) */}
-            <div className="pt-2 border-t border-slate-100">
-              <div className="flex items-center justify-between mb-1.5">
-                <span className="font-bold text-rose-900 text-[11px] uppercase tracking-wider flex items-center gap-1.5">
-                  <span className="w-2 h-2 rounded-full bg-rose-600"></span>
-                  <span>Dữ kiện loại trừ / Phủ định ({negativeSymptomsList.length}):</span>
-                </span>
-              </div>
-              {negativeSymptomsList.length > 0 ? (
-                <div className="flex flex-wrap gap-1.5 max-h-[120px] overflow-y-auto pr-1">
-                  {negativeSymptomsList.map((item) => (
-                    <span
-                      key={item.id}
-                      className="px-2 py-0.5 bg-rose-50 text-rose-800 border border-rose-200/80 rounded-md font-medium text-[11px] flex items-center gap-1 group"
-                    >
-                      <X className="w-3 h-3 text-rose-600 shrink-0" />
-                      <span>Không: {item.name}</span>
-                      <button
-                        type="button"
-                        onClick={() => removeNegated(item.id)}
-                        className="text-rose-400 hover:text-rose-700 ml-0.5 opacity-60 group-hover:opacity-100 cursor-pointer"
-                        title="Bỏ dữ kiện phủ định này"
-                      >
-                        <X className="w-3 h-3" />
-                      </button>
-                    </span>
-                  ))}
-                </div>
-              ) : (
-                <p className="text-slate-400 italic text-[11px] py-1">
-                  Chưa có dữ kiện phủ định. Bấm nút [−] ở danh sách triệu chứng hoặc trả lời "Không" ở câu hỏi làm rõ.
-                </p>
-              )}
-            </div>
-
-            {/* Tóm lược sinh hiệu đã ghi nhận */}
-            {vitalsPills.length > 0 && (
-              <div className="pt-2 border-t border-slate-100">
-                <span className="font-bold text-slate-700 text-[11px] uppercase tracking-wider block mb-1.5 flex items-center gap-1.5">
-                  <Activity className="w-3 h-3 text-indigo-600" />
-                  <span>Sinh hiệu hiện thời:</span>
-                </span>
-                <div className="grid grid-cols-2 sm:grid-cols-5 gap-1.5 text-center font-mono-custom">
-                  {vitalsPills.map((vp, idx) => (
-                    <div key={idx} className="bg-slate-50 border border-slate-200/80 rounded-lg p-1.5">
-                      <span className="block text-[9.5px] text-slate-500 font-sans">{vp.label}</span>
-                      <b className="text-xs text-slate-900">{vp.value} <span className="text-[10px] font-normal text-slate-500 font-sans">{vp.unit}</span></b>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
-
-          {/* Database & File Management Widget */}
-          <DataActionsBar
-            onSaveToPostgres={onSaveToPostgres}
-            onExportCase={onExportCase}
-            onImportCase={onImportCase}
-            onReset={onReset}
-          />
-        </div>
+        <ClinicalCopilotSidebar
+          liveResults={liveResults}
+          suggestedQuestions={suggestedQuestions}
+          topResult={topResult}
+          onQuestionAnswer={handleQuestionAnswer}
+          positiveSymptomsList={positiveSymptomsList}
+          negativeSymptomsList={negativeSymptomsList}
+          vitalsPills={vitalsPills}
+          onChipClick={handleChipClick}
+          onRemoveNegated={removeNegated}
+          onClearAllSelections={handleClearAllSelections}
+          onRunAnalysis={onRunAnalysis}
+          onSaveToPostgres={onSaveToPostgres}
+          onExportCase={onExportCase}
+          onImportCase={onImportCase}
+          onReset={onReset}
+        />
       </div>
     </div>
   );

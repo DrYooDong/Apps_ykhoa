@@ -150,31 +150,31 @@ export const SoapDetailView: React.FC<SoapDetailViewProps> = ({
             <button
               type="button"
               onClick={() => onOpenVaultDrawer?.(undefined, undefined, 'CC')}
-              className="px-2.5 py-1.5 text-xs font-medium text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 rounded-lg transition-colors cursor-pointer flex items-center gap-1.5 shadow-2xs"
-              title="Mở 19 công cụ và thang điểm lâm sàng trong Kho CC"
+              className="w-8 h-8 flex items-center justify-center text-xs font-medium text-amber-900 bg-amber-50 hover:bg-amber-100 border border-amber-200 rounded-lg transition-colors cursor-pointer shadow-2xs"
+              title="Kho Công cụ & Thang điểm lâm sàng (19)"
+              aria-label="Kho Công cụ"
             >
               <span>🧮</span>
-              <span>Kho Công cụ (19)</span>
             </button>
 
             <button
               type="button"
               onClick={() => onOpenVaultDrawer?.(undefined, undefined, 'ICD10')}
-              className="px-2.5 py-1.5 text-xs font-medium text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 rounded-lg transition-colors cursor-pointer flex items-center gap-1.5 shadow-2xs"
-              title="Mở Cẩm nang ICD-10 và Bẫy lỗi BHYT trong Kho ICD10"
+              className="w-8 h-8 flex items-center justify-center text-xs font-medium text-sky-900 bg-sky-50 hover:bg-sky-100 border border-sky-200 rounded-lg transition-colors cursor-pointer shadow-2xs"
+              title="Kho Cẩm nang ICD-10 & Bẫy lỗi BHYT (11)"
+              aria-label="Kho ICD-10"
             >
               <span>🏷️</span>
-              <span>Kho ICD-10 (11)</span>
             </button>
 
             <button
               type="button"
               onClick={() => onOpenVaultDrawer?.(undefined, undefined, 'CDSS')}
-              className="px-2.5 py-1.5 text-xs font-medium text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 rounded-lg transition-colors cursor-pointer flex items-center gap-1.5 shadow-2xs"
-              title="Mở Hệ thống hỗ trợ ra quyết định lâm sàng trong Kho CDSS"
+              className="w-8 h-8 flex items-center justify-center text-xs font-medium text-purple-900 bg-purple-50 hover:bg-purple-100 border border-purple-200 rounded-lg transition-colors cursor-pointer shadow-2xs"
+              title="Kho Hệ thống hỗ trợ ra quyết định lâm sàng CDSS (3)"
+              aria-label="Kho CDSS"
             >
               <span>⚡</span>
-              <span>Kho CDSS (3)</span>
             </button>
           </div>
 

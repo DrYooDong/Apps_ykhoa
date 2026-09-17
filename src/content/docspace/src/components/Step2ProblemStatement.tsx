@@ -1,38 +1,11 @@
 import React, { useMemo, useState, useEffect } from 'react';
 import {
-  FileText,
-  Copy,
-  Check,
-  CheckCircle2,
-  Plus,
-  Trash2,
-  Star,
-  Triangle,
-  Compass,
-  Sparkles,
-  ArrowRight,
   ArrowLeft,
-  BookOpen,
-  Info,
-  Layers,
-  AlertCircle,
-  AlertTriangle,
-  HeartPulse,
-  ShieldAlert,
-  Stethoscope,
-  Microscope,
-  MapPin,
-  Calendar,
+  ArrowRight,
   Bug,
-  ShieldCheck,
-  Edit3,
-  ChevronDown,
-  ChevronUp,
-  Zap,
-  Flame,
-  User,
-  X,
-  Activity,
+  Compass,
+  FileText,
+  Stethoscope,
 } from 'lucide-react';
 import {
   AnalysisResult,
@@ -44,6 +17,9 @@ import {
   TrieuChung,
   VitalsState,
 } from '../types.ts';
+import { CaseSummaryPanel, SummaryStructure } from './step2/CaseSummaryPanel.tsx';
+import { DiagnosticTrianglePanel } from './step2/DiagnosticTrianglePanel.tsx';
+import { ProblemListSection } from './step2/ProblemListSection.tsx';
 
 interface Step2ProblemStatementProps {
   form: ClinicalFormState;
@@ -78,14 +54,9 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
 }) => {
   const [copiedSummary, setCopiedSummary] = useState(false);
   const [summaryViewMode, setSummaryViewMode] = useState<'structured' | 'emr'>('structured');
-  const [newProblemLabel, setNewProblemLabel] = useState('');
-  const [newProblemType, setNewProblemType] = useState<ProblemStatementEntry['type']>('hoi-chung');
-  const [newProblemPriority, setNewProblemPriority] = useState<NonNullable<ProblemStatementEntry['priorityLevel']>>('acute');
-  const [newProblemEvidence, setNewProblemEvidence] = useState('');
-  const [editingProblemId, setEditingProblemId] = useState<string | null>(null);
-  const [editingEvidence, setEditingEvidence] = useState('');
   const [editingSummary, setEditingSummary] = useState(false);
   const [customSummaryText, setCustomSummaryText] = useState('');
+  const [infectiousMode, setInfectiousMode] = useState(true);
 
   // Lấy danh sách triệu chứng đã chọn
   const selectedSymptoms = useMemo(() => {
@@ -96,40 +67,10 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
     return kb.trieuChung.filter((tc) => negatedIds.has(tc.id));
   }, [kb.trieuChung, negatedIds]);
 
-  const resolveSymptomName = (id: string) => {
-    const tc = kb.trieuChung.find((t) => t.id === id);
-    if (tc) return tc.ten;
-    return id.replace(/_/g, ' ');
-  };
-
-  const positiveSymptomsList = useMemo(() => {
-    return Array.from(selectedIds).map((id) => ({
-      id,
-      name: resolveSymptomName(id),
-    }));
-  }, [selectedIds, kb.trieuChung]);
-
-  const negativeSymptomsList = useMemo(() => {
-    return Array.from(negatedIds).map((id) => ({
-      id,
-      name: resolveSymptomName(id),
-    }));
-  }, [negatedIds, kb.trieuChung]);
-
-  const vitalsPills = useMemo(() => {
-    const list: { label: string; value: string; unit?: string }[] = [];
-    if (vitals.vMach) list.push({ label: 'Mạch', value: `${vitals.vMach}`, unit: 'l/p' });
-    if (vitals.vHATT && vitals.vHATTr) list.push({ label: 'Huyết áp', value: `${vitals.vHATT}/${vitals.vHATTr}`, unit: 'mmHg' });
-    if (vitals.vNhiet) list.push({ label: 'Nhiệt độ', value: `${vitals.vNhiet}`, unit: '°C' });
-    if (vitals.vTho) list.push({ label: 'Nhịp thở', value: `${vitals.vTho}`, unit: 'l/p' });
-    if (vitals.vSpo2) list.push({ label: 'SpO₂', value: `${vitals.vSpo2}`, unit: '%' });
-    return list;
-  }, [vitals]);
-
   const topHypothesis = liveResults && liveResults.length > 0 ? liveResults[0] : null;
 
   // Dữ liệu phân đoạn chuẩn hóa của Tóm tắt bệnh án
-  const summaryStructure = useMemo(() => {
+  const summaryStructure: SummaryStructure = useMemo(() => {
     const genderStr = form.gioiTinh === 'nam' ? 'Nam' : form.gioiTinh === 'nu' ? 'Nữ' : 'Người bệnh';
     const ageStr = form.tuoi ? `${form.tuoi} tuổi` : 'chưa rõ tuổi';
     const reasonStr = form.lyDo || 'chưa ghi nhận';
@@ -341,16 +282,14 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
         selectedIds.has('co_giat') ||
         selectedIds.has('dau_hieu_than_kinh_nguy_hiem');
 
-      // ==========================================
-      // TẦNG 1: NGUY CƠ ĐE DỌA TÍNH MẠNG (LIFE-THREATENING)
-      // ==========================================
+      // Tầng 1: Đe dọa tính mạng
       if (hasHypotension) {
         suggested.push({
           id: 'prob_shock',
           label: 'Hội chứng Sốc / Tụt huyết áp tụt tưới máu mô',
           type: 'hoi-chung',
           priorityLevel: 'life-threatening',
-          isPrimary: true, // Ưu tiên số 1 làm trục biện luận
+          isPrimary: true,
           evidence: [
             !isNaN(sbp)
               ? `Huyết áp ${vitals.vHATT}/${vitals.vHATTr} mmHg${
@@ -388,9 +327,7 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
         });
       }
 
-      // ==========================================
-      // TẦNG 2: VẤN ĐỀ CẤP TÍNH & HỘI CHỨNG CẦN CHẨN ĐOÁN (ACUTE)
-      // ==========================================
+      // Tầng 2: Cấp tính
       const hasMeningeal =
         selectedIds.has('cung_gay') ||
         (selectedIds.has('dau_dau') && selectedIds.has('non_oi') && (temp >= 38 || selectedIds.has('sot')));
@@ -448,1180 +385,54 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
         });
       }
 
-      const hasAbdoPain =
-        selectedIds.has('dau_hong_phai') || selectedIds.has('dau_thuong_vi') || selectedIds.has('dau_bung_duoi');
-      if (hasAbdoPain) {
+      // Tầng 3: Mạn tính
+      if (selectedIds.has('thc_tha')) {
         suggested.push({
-          id: 'prob_abdo',
-          label: 'Hội chứng đau bụng cấp cần phân biệt ngoại khoa',
-          type: 'hoi-chung',
-          priorityLevel: 'acute',
-          isPrimary: suggested.length === 0,
-          evidence: ['Đau bụng khởi phát cấp tính'].filter(Boolean),
+          id: 'prob_htn',
+          label: 'Tăng huyết áp (Tiền căn bệnh nền)',
+          type: 'benh-ly',
+          priorityLevel: 'chronic',
+          evidence: ['Tiền căn tăng huyết áp mạn tính'],
         });
       }
-
-      if (
-        epiContext.contactHistory ||
-        epiContext.endemicArea ||
-        epiContext.outbreakAlert ||
-        epiContext.vectorExposure
-      ) {
+      if (selectedIds.has('dt_dai_duong')) {
         suggested.push({
-          id: 'prob_epi',
-          label: 'Yếu tố dịch tễ truyền nhiễm nổi bật',
-          type: 'dich-te',
-          priorityLevel: 'acute',
-          isPrimary: false,
-          evidence: [
-            epiContext.outbreakAlert ? `Ổ dịch: ${epiContext.outbreakAlert}` : '',
-            epiContext.endemicArea ? `Vùng: ${epiContext.endemicArea}` : '',
-            epiContext.vectorExposure ? `Vector: ${epiContext.vectorExposure}` : '',
-          ].filter(Boolean),
+          id: 'prob_dm',
+          label: 'Đái tháo đường (Tiền căn bệnh nền)',
+          type: 'benh-ly',
+          priorityLevel: 'chronic',
+          evidence: ['Tiền căn đái tháo đường'],
         });
-      }
-
-      // ==========================================
-      // TẦNG 3: BỆNH LÝ MẠN TÍNH ĐỒNG MẮC & TIỀN CĂN (CHRONIC)
-      // ==========================================
-      const tcText = (form.text.tc || '').toLowerCase();
-      const chronicMatches: { match: string; label: string; evidenceText: string }[] = [
-        {
-          match: 'tăng huyết áp',
-          label: 'Tiền căn Tăng huyết áp',
-          evidenceText: 'Ghi nhận bệnh sử/tiền căn tăng huyết áp đang điều trị thuốc hạ áp',
-        },
-        {
-          match: 'đái tháo đường',
-          label: 'Tiền căn Đái tháo đường',
-          evidenceText: 'Tiền căn đái tháo đường (tuýp 1 / tuýp 2), có nguy cơ tổn thương mạch máu & toan kiềm',
-        },
-        {
-          match: 'copd',
-          label: 'Tiền căn Bệnh phổi tắc nghẽn mạn tính (COPD)',
-          evidenceText: 'Tiền căn COPD / hen phế quản, nguy cơ đợt cấp suy hô hấp và ứ CO₂',
-        },
-        {
-          match: 'suy thận',
-          label: 'Tiền căn Bệnh thận mạn tính (CKD)',
-          evidenceText: 'Tiền căn suy thận mạn tính / CKD, giảm mức lọc cầu thận cần hiệu chỉnh liều thuốc',
-        },
-      ];
-
-      chronicMatches.forEach((c) => {
-        if (tcText.includes(c.match)) {
-          suggested.push({
-            id: `prob_chr_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`,
-            label: c.label,
-            type: 'benh-man-tinh',
-            priorityLevel: 'chronic',
-            isPrimary: false,
-            evidence: [c.evidenceText],
-          });
-        }
-      });
-
-      // Nếu vẫn chưa có vấn đề nào, lấy Lý do vào viện làm vấn đề Tầng 2
-      if (suggested.length === 0 && form.lyDo.trim()) {
-        suggested.push({
-          id: 'prob_chief',
-          label: form.lyDo.trim(),
-          type: 'trieu-chung',
-          priorityLevel: 'acute',
-          isPrimary: true,
-          evidence: ['Lý do chính khiến người bệnh nhập viện'],
-        });
-      }
-
-      // Đảm bảo luôn có đúng 1 vấn đề isPrimary (ưu tiên Tầng 1 trước)
-      if (!suggested.some((p) => p.isPrimary) && suggested.length > 0) {
-        suggested[0].isPrimary = true;
       }
 
       detectConflicts(suggested);
-
-      if (suggested.length > 0) {
-        onUpdateProblems(suggested);
-      }
+      onUpdateProblems(suggested);
     }
-  }, [form.lyDo, form.text.tc, vitals, labs, selectedIds, epiContext, problems.length, onUpdateProblems]);
+  }, [selectedIds, vitals, labs, problems.length]);
 
-  // Sao chép tóm tắt bệnh án
   const handleCopySummary = () => {
-    const textToCopy = editingSummary ? customSummaryText : generatedSummary;
+    const textToCopy = customSummaryText || generatedSummary;
     navigator.clipboard.writeText(textToCopy);
     setCopiedSummary(true);
     setTimeout(() => setCopiedSummary(false), 2000);
   };
 
-  // Chọn vấn đề chính để làm trục biện luận
-  const handleSetPrimaryProblem = (problemId: string) => {
-    const updated = problems.map((p) => ({
-      ...p,
-      isPrimary: p.id === problemId,
-    }));
-    onUpdateProblems(updated);
-  };
-
-  // Thay đổi tầng ưu tiên của vấn đề (Tầng 1 / 2 / 3)
-  const handleUpdateProblemTier = (
-    id: string,
-    tier: 'life-threatening' | 'acute' | 'chronic'
-  ) => {
-    const updated = problems.map((p) => {
-      if (p.id === id) {
-        return { ...p, priorityLevel: tier };
-      }
-      return p;
-    });
-    detectConflicts(updated);
-    onUpdateProblems(updated);
-  };
-
-  // Bắt đầu chỉnh sửa dữ kiện giải thích của vấn đề
-  const handleStartEditProblem = (p: ProblemStatementEntry) => {
-    setEditingProblemId(p.id);
-    setEditingEvidence((p.evidence || []).join(' · '));
-  };
-
-  // Lưu chỉnh sửa dữ kiện giải thích của vấn đề
-  const handleSaveEditProblem = (id: string) => {
-    const updated = problems.map((p) => {
-      if (p.id === id) {
-        return {
-          ...p,
-          evidence: editingEvidence.trim()
-            ? editingEvidence
-                .split('·')
-                .map((s) => s.trim())
-                .filter(Boolean)
-            : [],
-        };
-      }
-      return p;
-    });
-    onUpdateProblems(updated);
-    setEditingProblemId(null);
-  };
-
-  // Thêm vấn đề mới
-  const handleAddProblem = () => {
-    if (!newProblemLabel.trim()) return;
-    const newEntry: ProblemStatementEntry = {
-      id: `prob_${Date.now()}`,
-      label: newProblemLabel.trim(),
-      type: newProblemType,
-      priorityLevel: newProblemPriority,
-      isPrimary: problems.length === 0,
-      evidence: newProblemEvidence.trim() ? [newProblemEvidence.trim()] : [],
-    };
-    const updated = [...problems, newEntry];
-    detectConflicts(updated);
-    onUpdateProblems(updated);
-    setNewProblemLabel('');
-    setNewProblemEvidence('');
-  };
-
-  // Xóa vấn đề
-  const handleDeleteProblem = (id: string) => {
-    const filtered = problems.filter((p) => p.id !== id);
-    if (filtered.length > 0 && !filtered.some((p) => p.isPrimary)) {
-      filtered[0].isPrimary = true;
-    }
-    detectConflicts(filtered);
-    onUpdateProblems(filtered);
-  };
-
-  // Đánh giá Tam giác Chẩn đoán Truyền nhiễm
-  const triangleData = useMemo(() => {
-    // Đỉnh 1: Dịch tễ (Epidemiology)
-    const epiPoints: string[] = [];
-    if (epiContext.contactHistory) epiPoints.push(`Tiếp xúc: ${epiContext.contactHistory}`);
-    if (epiContext.travelHistory) epiPoints.push(`Đi lại: ${epiContext.travelHistory}`);
-    if (epiContext.endemicArea) epiPoints.push(`Vùng dịch: ${epiContext.endemicArea}`);
-    if (epiContext.seasonalContext) epiPoints.push(`Mùa: ${epiContext.seasonalContext}`);
-    if (epiContext.outbreakAlert) epiPoints.push(`Ổ dịch: ${epiContext.outbreakAlert}`);
-    if (epiContext.vectorExposure) epiPoints.push(`Vector: ${epiContext.vectorExposure}`);
-    if (epiContext.waterFoodRisk) epiPoints.push(`Nguồn nước/ăn: ${epiContext.waterFoodRisk}`);
-
-    // Đỉnh 2: Lâm sàng (Clinical Symptoms & Signs)
-    const clinicalPoints: string[] = [];
-    if (parseFloat(vitals.vNhiet) >= 38 || selectedIds.has('sot') || selectedIds.has('sot_cao_27')) {
-      clinicalPoints.push(`Sốt cao (${vitals.vNhiet || '≥38'}°C)`);
-    }
-    if (selectedIds.has('dau_dau')) clinicalPoints.push('Đau đầu');
-    if (selectedIds.has('dau_co')) clinicalPoints.push('Đau cơ / mỏi người');
-    if (selectedIds.has('dau_hau_mon_orbital')) clinicalPoints.push('Đau sau hốc mắt');
-    if (selectedIds.has('ban_xuat_huyet')) clinicalPoints.push('Chấm xuất huyết da niêm');
-    if (selectedIds.has('loet_eschar')) clinicalPoints.push('Vết loét hoại tử cộm đen (Eschar)');
-    if (selectedIds.has('vang_da')) clinicalPoints.push('Vàng da niêm');
-    if (selectedIds.has('dau_bap_chan')) clinicalPoints.push('Đau cơ bắp chân dữ dội');
-
-    // Đỉnh 3: Cận lâm sàng (Paraclinical & Microbiology)
-    const paraPoints: string[] = [];
-    if (labs.lTC && parseFloat(labs.lTC) < 100) paraPoints.push(`Tiểu cầu giảm: ${labs.lTC} G/L`);
-    if (labs.lHct && parseFloat(labs.lHct) > 42) paraPoints.push(`Hct tăng cô đặc: ${labs.lHct}%`);
-    if (labs.lBC) paraPoints.push(`Bạch cầu: ${labs.lBC} G/L`);
-    if (selectedIds.has('ns1_dengue')) paraPoints.push('Test nhanh NS1 Dengue (+)');
-    if (selectedIds.has('ky_sinh_trung_sot_ret')) paraPoints.push('Ký sinh trùng sốt rét giọt dày (+)');
-    if (selectedIds.has('men_gan_tang')) paraPoints.push('Men gan AST/ALT tăng cao');
-
-    // Mức độ hội tụ
-    const hasEpi = epiPoints.length > 0;
-    const hasClin = clinicalPoints.length > 0;
-    const hasPara = paraPoints.length > 0;
-
-    let level: 'high' | 'moderate' | 'low' = 'low';
-    if (hasEpi && hasClin && hasPara) level = 'high';
-    else if ((hasEpi && hasClin) || (hasClin && hasPara)) level = 'moderate';
-
-    // Gợi ý bệnh lý truyền nhiễm từ Tam giác
-    let suspectedOrientation = 'Chưa xác định định hướng truyền nhiễm';
-    if (hasEpi || hasClin) {
-      if (
-        epiContext.outbreakAlert?.toLowerCase().includes('dengue') ||
-        epiContext.vectorExposure?.toLowerCase().includes('muỗi vằn') ||
-        epiContext.vectorExposure?.toLowerCase().includes('aedes') ||
-        selectedIds.has('ns1_dengue') ||
-        (parseFloat(labs.lTC) < 100 && parseFloat(vitals.vNhiet) >= 38)
-      ) {
-        suspectedOrientation = 'Nghi ngờ cao: Sốt xuất huyết Dengue (A90/A91) · Vector Aedes aegypti';
-      } else if (
-        epiContext.travelHistory?.toLowerCase().includes('rừng') ||
-        epiContext.vectorExposure?.toLowerCase().includes('mò') ||
-        selectedIds.has('loet_eschar')
-      ) {
-        suspectedOrientation = 'Nghi ngờ cao: Sốt mò (Scrub typhus) · Orientia tsutsugamushi';
-      } else if (
-        epiContext.waterFoodRisk?.toLowerCase().includes('lụt') ||
-        epiContext.waterFoodRisk?.toLowerCase().includes('nước bẩn') ||
-        (parseFloat(vitals.vNhiet) >= 38 && selectedIds.has('dau_bap_chan'))
-      ) {
-        suspectedOrientation = 'Nghi ngờ: Bệnh Leptospirosis · Tiếp xúc nguồn nước ô nhiễm';
-      } else if (
-        epiContext.travelHistory?.toLowerCase().includes('biên giới') ||
-        epiContext.endemicArea?.toLowerCase().includes('tây nguyên') ||
-        selectedIds.has('ky_sinh_trung_sot_ret')
-      ) {
-        suspectedOrientation = 'Nghi ngờ: Sốt rét (Malaria) · Vector Anopheles';
-      } else if (parseFloat(vitals.vNhiet) >= 38) {
-        suspectedOrientation = 'Theo dõi: Sốt nhiễm trùng cấp chưa rõ tiêu điểm';
-      }
-    }
-
-    return {
-      epiPoints,
-      clinicalPoints,
-      paraPoints,
-      level,
-      suspectedOrientation,
-    };
-  }, [epiContext, vitals, labs, selectedIds]);
-
-  // Tự động nhận diện bệnh lý truyền nhiễm từ dữ kiện ca bệnh
-  const autoDetectInfectious = useMemo(() => {
-    const tempNum = parseFloat(vitals.vNhiet);
-    const hasFever = (!isNaN(tempNum) && tempNum >= 38) || selectedIds.has('sot') || selectedIds.has('sot_cao_27');
-    const hasEpi = Boolean(
-      epiContext.outbreakAlert ||
-      epiContext.endemicArea ||
-      epiContext.vectorExposure ||
-      epiContext.travelHistory ||
-      epiContext.contactHistory ||
-      epiContext.waterFoodRisk
-    );
-    const hasInfectiousLabs =
-      selectedIds.has('ns1_dengue') ||
-      selectedIds.has('ky_sinh_trung_sot_ret') ||
-      (parseFloat(labs.lTC) < 100 && hasFever);
-    const hasInfectiousProblem = problems.some(
-      (p) =>
-        p.type === 'dich-te' ||
-        p.label.toLowerCase().includes('nhiễm') ||
-        p.label.toLowerCase().includes('sốt') ||
-        p.label.toLowerCase().includes('dengue') ||
-        p.label.toLowerCase().includes('vi khuẩn') ||
-        p.label.toLowerCase().includes('virus')
-    );
-    return hasFever || hasEpi || hasInfectiousLabs || hasInfectiousProblem;
-  }, [vitals.vNhiet, selectedIds, epiContext, labs.lTC, problems]);
-
-  // Công tắc bật/tắt Tam giác Chẩn đoán Truyền nhiễm
-  const [infectiousMode, setInfectiousMode] = useState<boolean>(autoDetectInfectious);
-
-  useEffect(() => {
-    setInfectiousMode(autoDetectInfectious);
-  }, [autoDetectInfectious]);
-
-  // Giao diện Khung Danh Sách Vấn Đề (Problem List) 3 Tầng Chuẩn Y Khoa
-  const problemListContent = (
-    <div className="space-y-4">
-      {/* Banner Nguyên tắc sư phạm lâm sàng từ Bộ môn Nội khoa & Thầy Sĩ */}
-      <div className="bg-gradient-to-r from-blue-50 via-indigo-50 to-slate-50 border border-blue-200 rounded-xl p-3.5 text-xs text-blue-950 space-y-2 shadow-2xs">
-        <div className="flex items-center gap-2 font-bold text-blue-900 text-xs sm:text-sm">
-          <Info className="w-4 h-4 text-blue-600 shrink-0" />
-          <span>Nguyên tắc Đặt Vấn Đề chuẩn Y khoa (Bản nâng cấp của Tóm tắt bệnh án):</span>
-        </div>
-        <p className="text-slate-700 leading-relaxed text-[11.5px]">
-          Vấn đề là những bất thường cần giải quyết tính đến hiện tại. Gom các triệu chứng rời rạc thành <strong>cụm vấn đề có giá trị định hướng</strong> và bắt buộc phân định thành <strong>3 Tầng Ưu Tiên</strong>:
-        </p>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-[11px] pt-1">
-          <div className="flex items-center gap-1.5 p-1.5 rounded-lg bg-rose-100/70 border border-rose-200 text-rose-900">
-            <span className="w-2 h-2 rounded-full bg-rose-600 shrink-0" />
-            <span><b>Tầng 1:</b> Đe dọa tính mạng (Cấp cứu)</span>
-          </div>
-          <div className="flex items-center gap-1.5 p-1.5 rounded-lg bg-amber-100/70 border border-amber-200 text-amber-900">
-            <span className="w-2 h-2 rounded-full bg-amber-600 shrink-0" />
-            <span><b>Tầng 2:</b> Cấp tính (Tìm nguyên nhân)</span>
-          </div>
-          <div className="flex items-center gap-1.5 p-1.5 rounded-lg bg-blue-100/70 border border-blue-200 text-blue-900">
-            <span className="w-2 h-2 rounded-full bg-blue-600 shrink-0" />
-            <span><b>Tầng 3:</b> Mạn tính (Đồng mắc / Tiền căn)</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Hiển thị danh sách phân nhóm 3 tầng */}
-      {problems.length === 0 ? (
-        <div className="text-center py-8 border-2 border-dashed border-slate-200 rounded-xl bg-slate-50/50">
-          <AlertCircle className="w-8 h-8 text-slate-300 mx-auto mb-2" />
-          <p className="text-xs font-semibold text-slate-600">Chưa có vấn đề lâm sàng nào được xác lập.</p>
-          <p className="text-[11px] text-slate-400 mt-0.5">
-            Hệ thống sẽ tự động tổng hợp khi nạp dữ kiện ở Bước 1 hoặc bạn có thể tự thêm vấn đề bên dưới.
-          </p>
-        </div>
-      ) : (
-        <div className="space-y-4">
-          {(['life-threatening', 'acute', 'chronic'] as const).map((tierKey) => {
-            const tierProblems = problems.filter((p) => {
-              if (tierKey === 'life-threatening') return p.priorityLevel === 'life-threatening';
-              if (tierKey === 'acute')
-                return p.priorityLevel === 'acute' || (!p.priorityLevel && p.type !== 'benh-man-tinh');
-              return p.priorityLevel === 'chronic' || p.type === 'benh-man-tinh';
-            });
-
-            if (tierProblems.length === 0) return null;
-
-            const tierMeta = {
-              'life-threatening': {
-                title: 'TẦNG 1: NGUY CƠ ĐE DỌA TÍNH MẠNG & CẤP CỨU SINH HIỆU',
-                subtitle: 'Ưu tiên số 1 · Cần can thiệp hồi sức tức thì trước khi chẩn đoán chi tiết',
-                badgeClass: 'bg-rose-600 text-white',
-                borderClass: 'border-rose-300 bg-rose-50/30 border-l-4 border-l-rose-600',
-                icon: HeartPulse,
-                colorText: 'text-rose-900',
-              },
-              acute: {
-                title: 'TẦNG 2: VẤN ĐỀ CẤP TÍNH & HỘI CHỨNG CẦN CHẨN ĐOÁN',
-                subtitle: 'Trục biện luận chẩn đoán nguyên nhân bệnh cảnh nhập viện',
-                badgeClass: 'bg-amber-500 text-white',
-                borderClass: 'border-amber-300 bg-amber-50/20 border-l-4 border-l-amber-500',
-                icon: Flame,
-                colorText: 'text-amber-900',
-              },
-              chronic: {
-                title: 'TẦNG 3: BỆNH LÝ MẠN TÍNH ĐỒNG MẮC & TIỀN CĂN',
-                subtitle: 'Ảnh hưởng trực tiếp đến phác đồ dùng thuốc, độc tính và tiên lượng',
-                badgeClass: 'bg-blue-600 text-white',
-                borderClass: 'border-blue-300 bg-blue-50/20 border-l-4 border-l-blue-600',
-                icon: ShieldCheck,
-                colorText: 'text-blue-900',
-              },
-            }[tierKey];
-
-            const TierIcon = tierMeta.icon;
-
-            return (
-              <div key={tierKey} className="space-y-2.5">
-                {/* Tiêu đề nhóm Tầng */}
-                <div className="flex items-center justify-between gap-2 px-1 pt-1">
-                  <div className="flex items-center gap-2">
-                    <span className={`px-2 py-0.5 rounded text-[10px] font-extrabold uppercase tracking-wide flex items-center gap-1 ${tierMeta.badgeClass}`}>
-                      <TierIcon className="w-3 h-3" />
-                      {tierMeta.title}
-                    </span>
-                    <span className="text-[11px] text-slate-500 hidden sm:inline">
-                      ({tierProblems.length} vấn đề) · {tierMeta.subtitle}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Danh sách các card vấn đề trong tầng */}
-                <div className="space-y-2.5">
-                  {tierProblems.map((prob) => {
-                    const isPrimary = prob.isPrimary;
-                    const isEditing = editingProblemId === prob.id;
-
-                    return (
-                      <div
-                        key={prob.id}
-                        className={`p-3.5 rounded-xl border transition-all shadow-2xs ${
-                          isPrimary
-                            ? 'bg-blue-50/80 border-blue-400 ring-2 ring-blue-500/20 shadow-xs'
-                            : tierMeta.borderClass
-                        }`}
-                      >
-                        {/* Header của Card Vấn đề */}
-                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
-                          <div className="flex items-start gap-2.5 min-w-0 flex-1">
-                            <div className="min-w-0 flex-1">
-                              <div className="flex items-center gap-2 flex-wrap">
-                                <span className="text-xs sm:text-sm font-bold text-slate-900">
-                                  {prob.label}
-                                </span>
-
-                                {isPrimary && (
-                                  <span className="inline-flex items-center gap-1 px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wide bg-amber-100 text-amber-950 border border-amber-300 rounded-full">
-                                    <Star className="w-2.5 h-2.5 fill-amber-500 text-amber-500" />
-                                    Trục biện luận chính
-                                  </span>
-                                )}
-
-                                <span
-                                  className={`text-[10px] px-2 py-0.5 rounded-full font-medium ${
-                                    prob.type === 'hoi-chung'
-                                      ? 'bg-purple-100 text-purple-800'
-                                      : prob.type === 'dich-te'
-                                      ? 'bg-emerald-100 text-emerald-800'
-                                      : prob.type === 'bat-thuong-cls'
-                                      ? 'bg-amber-100 text-amber-800'
-                                      : prob.type === 'benh-man-tinh'
-                                      ? 'bg-blue-100 text-blue-800'
-                                      : 'bg-slate-100 text-slate-700'
-                                  }`}
-                                >
-                                  {prob.type === 'hoi-chung'
-                                    ? 'Hội chứng'
-                                    : prob.type === 'dich-te'
-                                    ? 'Dịch tễ'
-                                    : prob.type === 'bat-thuong-cls'
-                                    ? 'Cận lâm sàng'
-                                    : prob.type === 'benh-man-tinh'
-                                    ? 'Bệnh mạn tính'
-                                    : 'Triệu chứng'}
-                                </span>
-
-                                {/* Bộ chọn nhanh chuyển Tầng Ưu Tiên */}
-                                <select
-                                  value={prob.priorityLevel || tierKey}
-                                  onChange={(e) =>
-                                    handleUpdateProblemTier(prob.id, e.target.value as any)
-                                  }
-                                  className="text-[10px] font-medium border border-slate-300 rounded px-1.5 py-0.5 bg-white text-slate-700 focus:outline-none"
-                                  title="Chuyển tầng ưu tiên cho vấn đề này"
-                                >
-                                  <option value="life-threatening">🔴 Tầng 1 (Đe dọa tính mạng)</option>
-                                  <option value="acute">🟡 Tầng 2 (Cấp tính)</option>
-                                  <option value="chronic">🔵 Tầng 3 (Mạn tính)</option>
-                                </select>
-                              </div>
-
-                              {/* Dữ kiện chứng minh */}
-                              {prob.evidence.length > 0 && (
-                                <div className="text-[11px] text-slate-600 mt-1 flex items-center gap-1.5 flex-wrap">
-                                  <span className="font-semibold text-slate-700">Dữ kiện:</span>
-                                  <span>{prob.evidence.join(' · ')}</span>
-                                </div>
-                              )}
-                            </div>
-                          </div>
-
-                          {/* Action Buttons */}
-                          <div className="flex items-center gap-1.5 shrink-0 self-end sm:self-center">
-                            {!isPrimary && (
-                              <button
-                                type="button"
-                                onClick={() => handleSetPrimaryProblem(prob.id)}
-                                title="Chọn làm vấn đề chính để làm trục biện luận"
-                                className="px-2.5 py-1 text-xs text-blue-700 hover:text-blue-800 bg-white hover:bg-blue-50 border border-blue-200 rounded-md transition-colors flex items-center gap-1 cursor-pointer font-medium"
-                              >
-                                <Star className="w-3 h-3 text-amber-500" />
-                                <span>Chọn làm VĐ chính</span>
-                              </button>
-                            )}
-
-                            <button
-                              type="button"
-                              onClick={() => {
-                                if (isEditing) setEditingProblemId(null);
-                                else handleStartEditProblem(prob);
-                              }}
-                              title="Chỉnh sửa dữ kiện giải thích cho vấn đề này"
-                              className={`p-1.5 text-xs rounded-md border transition-colors cursor-pointer flex items-center gap-1 ${
-                                isEditing
-                                  ? 'bg-blue-600 text-white border-blue-600'
-                                  : 'text-slate-600 bg-white hover:bg-slate-100 border-slate-200'
-                              }`}
-                            >
-                              <Edit3 className="w-3 h-3" />
-                              <span className="text-[10px] hidden sm:inline">
-                                {isEditing ? 'Đang sửa' : 'Sửa dữ kiện'}
-                              </span>
-                            </button>
-
-                            <button
-                              type="button"
-                              onClick={() => handleDeleteProblem(prob.id)}
-                              title="Xóa vấn đề này"
-                              className="p-1.5 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-md transition-colors cursor-pointer"
-                            >
-                              <Trash2 className="w-3.5 h-3.5" />
-                            </button>
-                          </div>
-                        </div>
-
-                        {/* Cảnh báo Xung Đột (nếu có) */}
-                        {prob.conflictNotes && (
-                          <div className="mt-2.5 p-2.5 bg-rose-50 border border-rose-200 rounded-lg text-xs text-rose-950 flex items-start gap-2 shadow-2xs">
-                            <AlertTriangle className="w-4 h-4 text-rose-600 shrink-0 mt-0.5" />
-                            <div className="leading-relaxed">
-                              <strong>Cảnh báo:</strong> {prob.conflictNotes}
-                            </div>
-                          </div>
-                        )}
-
-                        {/* DỮ KIỆN GIẢI THÍCH CHO VẤN ĐỀ ĐẶT RA */}
-                        {isEditing ? (
-                          <div className="mt-2.5 p-3 bg-white rounded-lg border border-blue-300 space-y-2 text-xs">
-                            <div className="font-bold text-blue-950 flex items-center gap-1.5">
-                              <Edit3 className="w-3.5 h-3.5 text-blue-600" />
-                              <span>Chỉnh sửa dữ kiện giải thích cho «{prob.label}»:</span>
-                            </div>
-                            <textarea
-                              value={editingEvidence}
-                              onChange={(e) => setEditingEvidence(e.target.value)}
-                              placeholder="Nhập các dữ kiện giải thích ngắn gọn (phân tách các ý bằng dấu ·)..."
-                              rows={2}
-                              className="w-full border border-slate-300 rounded-md p-2 text-xs focus:ring-1 focus:ring-blue-500 focus:outline-none"
-                            />
-                            <div className="flex justify-end gap-2 pt-0.5">
-                              <button
-                                type="button"
-                                onClick={() => setEditingProblemId(null)}
-                                className="px-2.5 py-1 text-xs text-slate-600 bg-slate-100 rounded hover:bg-slate-200 cursor-pointer"
-                              >
-                                Hủy
-                              </button>
-                              <button
-                                type="button"
-                                onClick={() => handleSaveEditProblem(prob.id)}
-                                className="px-3 py-1 text-xs font-bold text-white bg-blue-600 rounded hover:bg-blue-700 cursor-pointer"
-                              >
-                                Lưu dữ kiện
-                              </button>
-                            </div>
-                          </div>
-                        ) : (
-                          <div className="mt-2.5 p-2.5 bg-white/80 border border-slate-200/90 rounded-lg text-xs">
-                            <div className="font-semibold text-[11px] text-slate-700 flex items-center gap-1.5 mb-1">
-                              <CheckCircle2 className="w-3.5 h-3.5 text-blue-600 shrink-0" />
-                              <span>Dữ kiện giải thích cho vấn đề đặt ra:</span>
-                            </div>
-                            {prob.evidence && prob.evidence.length > 0 ? (
-                              <div className="text-[11.5px] leading-relaxed text-slate-700 font-medium pl-5">
-                                {prob.evidence.join(' · ')}
-                              </div>
-                            ) : (
-                              <div className="text-[11px] text-slate-400 italic pl-5">
-                                Chưa ghi nhận dữ kiện giải thích cụ thể cho vấn đề này.
-                              </div>
-                            )}
-                          </div>
-                        )}
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      )}
-
-      {/* Form thêm vấn đề tùy chỉnh (Chỉ cần Tên, Phân tầng và Dữ kiện giải thích) */}
-      <div className="pt-3 border-t border-slate-200 bg-slate-50/70 p-3.5 rounded-xl border space-y-2.5 text-xs">
-        <div className="font-bold text-slate-800 flex items-center gap-1.5">
-          <Plus className="w-3.5 h-3.5 text-blue-600" />
-          <span>Thêm vấn đề mới (Kèm phân tầng ưu tiên và dữ kiện giải thích):</span>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-12 gap-2">
-          <input
-            type="text"
-            placeholder="Tên vấn đề (VD: Cơn tăng huyết áp khẩn cấp, Loét hoại tử cộm đen...)"
-            value={newProblemLabel}
-            onChange={(e) => setNewProblemLabel(e.target.value)}
-            className="sm:col-span-6 text-xs border border-slate-300 rounded-lg px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
-          />
-
-          <select
-            value={newProblemPriority}
-            onChange={(e) => setNewProblemPriority(e.target.value as any)}
-            className="sm:col-span-3 text-xs border border-slate-300 rounded-lg px-2.5 py-2 bg-white focus:outline-none"
-          >
-            <option value="life-threatening">🔴 Tầng 1: Đe dọa tính mạng</option>
-            <option value="acute">🟡 Tầng 2: Cấp tính</option>
-            <option value="chronic">🔵 Tầng 3: Mạn tính / Tiền căn</option>
-          </select>
-
-          <select
-            value={newProblemType}
-            onChange={(e) => setNewProblemType(e.target.value as any)}
-            className="sm:col-span-3 text-xs border border-slate-300 rounded-lg px-2.5 py-2 bg-white focus:outline-none"
-          >
-            <option value="hoi-chung">Hội chứng</option>
-            <option value="trieu-chung">Triệu chứng</option>
-            <option value="bat-thuong-cls">Bất thường CLS</option>
-            <option value="dich-te">Yếu tố dịch tễ</option>
-            <option value="benh-man-tinh">Bệnh mạn tính</option>
-          </select>
-        </div>
-
-        <div>
-          <input
-            type="text"
-            placeholder="Dữ kiện giải thích ngắn gọn cho vấn đề đặt ra (VD: Sốt cao N3, ban xuất huyết da niêm, tiểu cầu giảm 68 G/L)..."
-            value={newProblemEvidence}
-            onChange={(e) => setNewProblemEvidence(e.target.value)}
-            className="w-full text-xs border border-slate-300 rounded-lg px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
-          />
-        </div>
-
-        <div className="flex justify-end pt-1">
-          <button
-            type="button"
-            onClick={handleAddProblem}
-            disabled={!newProblemLabel.trim()}
-            className="px-4 py-2 text-xs font-semibold bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 text-white rounded-lg transition-colors flex items-center justify-center gap-1.5 cursor-pointer disabled:cursor-not-allowed shadow-xs"
-          >
-            <Plus className="w-3.5 h-3.5" />
-            Thêm vấn đề vào danh sách
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-
-  // Giao diện Khung Tam Giác Chẩn Đoán Truyền Nhiễm & Panel Dịch Tễ
-  const infectiousTriangleContent = (
-    <div className="space-y-4">
-      {/* Card Tam giác chẩn đoán: Dịch tễ — Lâm sàng — Cận lâm sàng */}
-      <div className="bg-white rounded-xl border border-slate-200 shadow-2xs overflow-hidden">
-        <div className="bg-gradient-to-r from-emerald-900 to-teal-900 text-white px-4 py-3 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Triangle className="w-4 h-4 text-emerald-300 fill-emerald-300/20" />
-            <h3 className="text-sm font-bold tracking-tight">
-              Tam Giác Chẩn Đoán Truyền Nhiễm
-            </h3>
-          </div>
-          <span
-            className={`text-[11px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider ${
-              triangleData.level === 'high'
-                ? 'bg-emerald-400 text-emerald-950'
-                : triangleData.level === 'moderate'
-                ? 'bg-amber-400 text-amber-950'
-                : 'bg-slate-700 text-slate-200'
-            }`}
-          >
-            Hội tụ: {triangleData.level === 'high' ? 'Cao' : triangleData.level === 'moderate' ? 'Vừa' : 'Thấp'}
-          </span>
-        </div>
-
-        <div className="p-4 space-y-4">
-          {/* Minh họa trực quan Tam giác chẩn đoán SVG */}
-          <div className="relative bg-slate-900 text-white rounded-xl p-4 overflow-hidden border border-slate-800">
-            <div className="flex justify-center mb-3">
-              <svg width="220" height="130" viewBox="0 0 220 130" className="drop-shadow-md">
-                <polygon
-                  points="110,15 20,115 200,115"
-                  fill="rgba(16, 185, 129, 0.12)"
-                  stroke={triangleData.level === 'high' ? '#10b981' : '#38bdf8'}
-                  strokeWidth="2.5"
-                  strokeDasharray={triangleData.level === 'low' ? '4 4' : 'none'}
-                />
-                {/* Node 1: Dịch tễ (Đỉnh trên) */}
-                <circle cx="110" cy="15" r="7" fill="#10b981" />
-                <text x="110" y="32" fill="#a7f3d0" fontSize="10" fontWeight="bold" textAnchor="middle">
-                  DỊCH TỄ HỌC
-                </text>
-
-                {/* Node 2: Lâm sàng (Đỉnh dưới trái) */}
-                <circle cx="20" cy="115" r="7" fill="#38bdf8" />
-                <text x="35" y="112" fill="#bae6fd" fontSize="10" fontWeight="bold" textAnchor="start">
-                  LÂM SÀNG
-                </text>
-
-                {/* Node 3: Cận lâm sàng (Đỉnh dưới phải) */}
-                <circle cx="200" cy="115" r="7" fill="#f59e0b" />
-                <text x="185" y="112" fill="#fde68a" fontSize="10" fontWeight="bold" textAnchor="end">
-                  CẬN LÂM SÀNG
-                </text>
-              </svg>
-            </div>
-
-            {/* Kết luận định hướng từ tam giác */}
-            <div className="bg-slate-800/80 rounded-lg p-2.5 border border-slate-700/80 text-xs">
-              <div className="flex items-center gap-1.5 text-emerald-400 font-bold mb-1">
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>Định hướng từ Tam giác Lâm sàng:</span>
-              </div>
-              <div className="text-slate-200 font-medium leading-snug">
-                {triangleData.suspectedOrientation}
-              </div>
-            </div>
-          </div>
-
-          {/* Chi tiết 3 đỉnh của Tam giác */}
-          <div className="space-y-3 text-xs">
-            {/* Đỉnh 1: Dịch tễ */}
-            <div className="p-3 bg-emerald-50/70 border border-emerald-200 rounded-lg space-y-1.5">
-              <div className="flex items-center justify-between">
-                <span className="font-bold text-emerald-900 flex items-center gap-1.5">
-                  <MapPin className="w-3.5 h-3.5 text-emerald-600" />
-                  1. Yếu tố Dịch tễ học (Epidemiology)
-                </span>
-                <span className="text-[10px] text-emerald-700 font-mono">
-                  {triangleData.epiPoints.length} dữ kiện
-                </span>
-              </div>
-              {triangleData.epiPoints.length > 0 ? (
-                <ul className="space-y-1 text-emerald-900 pl-4 list-disc">
-                  {triangleData.epiPoints.map((pt, i) => (
-                    <li key={i}>{pt}</li>
-                  ))}
-                </ul>
-              ) : (
-                <p className="text-[11px] text-slate-500 italic">
-                  Chưa ghi nhận yếu tố dịch tễ (bạn có thể bổ sung trong panel bên dưới).
-                </p>
-              )}
-            </div>
-
-            {/* Đỉnh 2: Lâm sàng */}
-            <div className="p-3 bg-sky-50/70 border border-sky-200 rounded-lg space-y-1.5">
-              <div className="flex items-center justify-between">
-                <span className="font-bold text-sky-900 flex items-center gap-1.5">
-                  <Stethoscope className="w-3.5 h-3.5 text-sky-600" />
-                  2. Biểu hiện Lâm sàng (Clinical)
-                </span>
-                <span className="text-[10px] text-sky-700 font-mono">
-                  {triangleData.clinicalPoints.length} dữ kiện
-                </span>
-              </div>
-              {triangleData.clinicalPoints.length > 0 ? (
-                <ul className="space-y-1 text-sky-900 pl-4 list-disc">
-                  {triangleData.clinicalPoints.map((pt, i) => (
-                    <li key={i}>{pt}</li>
-                  ))}
-                </ul>
-              ) : (
-                <p className="text-[11px] text-slate-500 italic">
-                  Chưa ghi nhận triệu chứng nhiễm trùng đặc trưng.
-                </p>
-              )}
-            </div>
-
-            {/* Đỉnh 3: Cận lâm sàng */}
-            <div className="p-3 bg-amber-50/70 border border-amber-200 rounded-lg space-y-1.5">
-              <div className="flex items-center justify-between">
-                <span className="font-bold text-amber-900 flex items-center gap-1.5">
-                  <Microscope className="w-3.5 h-3.5 text-amber-600" />
-                  3. Cận lâm sàng & Vi sinh (Paraclinical)
-                </span>
-                <span className="text-[10px] text-amber-700 font-mono">
-                  {triangleData.paraPoints.length} dữ kiện
-                </span>
-              </div>
-              {triangleData.paraPoints.length > 0 ? (
-                <ul className="space-y-1 text-amber-900 pl-4 list-disc">
-                  {triangleData.paraPoints.map((pt, i) => (
-                    <li key={i}>{pt}</li>
-                  ))}
-                </ul>
-              ) : (
-                <p className="text-[11px] text-slate-500 italic">
-                  Chưa nạp cận lâm sàng định hướng (NS1, CTM, men gan...).
-                </p>
-              )}
-            </div>
-          </div>
-
-          {/* Nút tra cứu nhanh Kho Dịch tễ học */}
-          {onOpenVaultDrawer && (
-            <button
-              type="button"
-              onClick={() => onOpenVaultDrawer('Dịch tễ học', 'Truyền nhiễm', 'DTH')}
-              className="w-full py-2 px-3 text-xs font-semibold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 rounded-lg transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
-            >
-              <BookOpen className="w-3.5 h-3.5" />
-              Tra cứu Kho Dịch Tễ Học (142+ bài viết EBM)
-            </button>
-          )}
-        </div>
-      </div>
-
-      {/* Quick Input Panel: Bổ sung nhanh yếu tố dịch tễ */}
-      <div className="bg-white rounded-xl border border-slate-200 shadow-2xs p-4 space-y-3">
-        <div className="flex items-center gap-2 text-xs font-bold text-slate-800">
-          <Bug className="w-4 h-4 text-emerald-600" />
-          <span>Bổ sung nhanh Yếu tố Dịch tễ (Tam giác chẩn đoán)</span>
-        </div>
-
-        <div className="space-y-2 text-xs">
-          <div>
-            <label className="text-[11px] font-medium text-slate-600 block mb-1">
-              Ổ dịch / Bệnh đang lưu hành tại địa phương:
-            </label>
-            <input
-              type="text"
-              placeholder="VD: Sốt xuất huyết Dengue, Sởi, Cúm mùa..."
-              value={epiContext.outbreakAlert}
-              onChange={(e) =>
-                onUpdateEpiContext({ ...epiContext, outbreakAlert: e.target.value })
-              }
-              className="w-full border border-slate-300 rounded-md px-2.5 py-1.5 focus:outline-none focus:ring-1 focus:ring-emerald-500 text-xs"
-            />
-          </div>
-
-          <div className="grid grid-cols-2 gap-2">
-            <div>
-              <label className="text-[11px] font-medium text-slate-600 block mb-1">
-                Vùng dịch tễ / Nơi ở:
-              </label>
-              <input
-                type="text"
-                placeholder="VD: Tây Nguyên, ĐBSCL..."
-                value={epiContext.endemicArea}
-                onChange={(e) =>
-                  onUpdateEpiContext({ ...epiContext, endemicArea: e.target.value })
-                }
-                className="w-full border border-slate-300 rounded-md px-2.5 py-1.5 focus:outline-none focus:ring-1 focus:ring-emerald-500 text-xs"
-              />
-            </div>
-            <div>
-              <label className="text-[11px] font-medium text-slate-600 block mb-1">
-                Vector / Động vật:
-              </label>
-              <input
-                type="text"
-                placeholder="VD: Muỗi vằn, ve mò, chuột..."
-                value={epiContext.vectorExposure}
-                onChange={(e) =>
-                  onUpdateEpiContext({ ...epiContext, vectorExposure: e.target.value })
-                }
-                className="w-full border border-slate-300 rounded-md px-2.5 py-1.5 focus:outline-none focus:ring-1 focus:ring-emerald-500 text-xs"
-              />
-            </div>
-          </div>
-
-          <div>
-            <label className="text-[11px] font-medium text-slate-600 block mb-1">
-              Nguồn nước / Tiếp xúc đặc biệt:
-            </label>
-            <input
-              type="text"
-              placeholder="VD: Lội nước ngập lụt, đi rừng suối 10 ngày trước..."
-              value={epiContext.waterFoodRisk}
-              onChange={(e) =>
-                onUpdateEpiContext({ ...epiContext, waterFoodRisk: e.target.value })
-              }
-              className="w-full border border-slate-300 rounded-md px-2.5 py-1.5 focus:outline-none focus:ring-1 focus:ring-emerald-500 text-xs"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 py-6 space-y-6">
-      {/* Header hướng dẫn */}
-      <div className="bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 text-white rounded-xl p-5 shadow-sm border border-blue-800/40">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div className="space-y-1">
-            <div className="flex items-center gap-2">
-              <span className="px-2.5 py-0.5 rounded-full bg-blue-500/20 text-blue-200 border border-blue-400/30 text-xs font-semibold uppercase tracking-wider">
-                Bước 2 / 4 · Chuẩn Y học Lâm sàng
-              </span>
-              <span className="text-xs text-blue-200/80">
-                Theo PGS.TS Hoàng Văn Sĩ & BSCKI Trần Thanh Tuấn
-              </span>
-            </div>
-            <h1 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
-              Tóm Tắt Bệnh Án & Đặt Vấn Đề
-            </h1>
-            <p className="text-xs sm:text-sm text-blue-100/80 max-w-3xl leading-relaxed">
-              Quy trình chuẩn: <strong>I. Tóm tắt bệnh án chuẩn hóa</strong> (trực quan hóa các dữ kiện) $\rightarrow$ <strong>II. Đặt vấn đề & Tam giác chẩn đoán truyền nhiễm</strong> (gộp chung để chọn vấn đề chính và đối chiếu định hướng dịch tễ học).
-            </p>
-          </div>
-
-          <div className="flex items-center gap-2 shrink-0">
-            <button
-              type="button"
-              onClick={() => onGoToStep('t1')}
-              className="px-3 py-2 text-xs font-medium text-blue-200 hover:text-white hover:bg-white/10 rounded-lg border border-blue-400/30 transition-all flex items-center gap-1.5 cursor-pointer"
-            >
-              <ArrowLeft className="w-3.5 h-3.5" />
-              Sửa dữ kiện
-            </button>
-            <button
-              type="button"
-              onClick={() => onGoToStep('t3')}
-              className="px-4 py-2 text-xs font-bold text-blue-950 bg-amber-400 hover:bg-amber-300 rounded-lg shadow-sm hover:shadow transition-all flex items-center gap-1.5 cursor-pointer"
-            >
-              Sang Biện luận chẩn đoán
-              <ArrowRight className="w-3.5 h-3.5" />
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* SECTION I: TÓM TẮT BỆNH ÁN CHUẨN HÓA (Định hướng chẩn đoán - Theo chuẩn Hình 1) */}
-      <div className="bg-white rounded-xl border border-slate-200/90 shadow-2xs overflow-hidden">
-        {/* Header with Title, Mode Switcher, and Copy Button */}
-        <div className="bg-slate-50/90 px-4 py-3 border-b border-slate-200 flex items-center justify-between gap-2 flex-wrap">
-          <div className="flex items-center gap-2">
-            <div className="w-6 h-6 rounded-md bg-blue-50 text-blue-600 flex items-center justify-center">
-              <FileText className="w-3.5 h-3.5" />
-            </div>
-            <div>
-              <h2 className="text-xs sm:text-sm font-bold text-slate-800 leading-none">
-                Tóm tắt bệnh án chuẩn hóa
-              </h2>
-              <span className="text-[10.5px] text-slate-400 font-medium">
-                Chuẩn lâm sàng EMR · Tự động cập nhật
-              </span>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-1.5">
-            {/* View Switcher: Trực quan vs Văn bản EMR */}
-            <div className="flex items-center border border-slate-200 rounded-lg p-0.5 bg-white text-[11px]">
-              <button
-                type="button"
-                onClick={() => {
-                  setSummaryViewMode('structured');
-                  setEditingSummary(false);
-                }}
-                className={`px-2.5 py-1 rounded-md font-medium transition-all cursor-pointer ${
-                  summaryViewMode === 'structured' && !editingSummary
-                    ? 'bg-blue-600 text-white shadow-2xs font-semibold'
-                    : 'text-slate-600 hover:text-slate-900'
-                }`}
-              >
-                Trực quan
-              </button>
-              <button
-                type="button"
-                onClick={() => {
-                  setSummaryViewMode('emr');
-                  setEditingSummary(false);
-                }}
-                className={`px-2.5 py-1 rounded-md font-medium transition-all cursor-pointer ${
-                  summaryViewMode === 'emr' && !editingSummary
-                    ? 'bg-blue-600 text-white shadow-2xs font-semibold'
-                    : 'text-slate-600 hover:text-slate-900'
-                }`}
-              >
-                Văn bản EMR
-              </button>
-              <button
-                type="button"
-                onClick={() => setEditingSummary(!editingSummary)}
-                className={`px-2.5 py-1 rounded-md font-medium transition-all cursor-pointer ${
-                  editingSummary
-                    ? 'bg-amber-600 text-white shadow-2xs font-semibold'
-                    : 'text-slate-600 hover:text-amber-700'
-                }`}
-              >
-                {editingSummary ? 'Đang tự sửa' : 'Tự chỉnh sửa'}
-              </button>
-            </div>
-
-            <button
-              type="button"
-              id="btn-copy-summary-step2"
-              onClick={handleCopySummary}
-              className={`flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold rounded-lg border transition-all cursor-pointer ${
-                copiedSummary
-                  ? 'bg-emerald-600 text-white border-emerald-600 shadow-xs'
-                  : 'bg-blue-50 hover:bg-blue-100 text-blue-700 border-blue-200/80'
-              }`}
-              title="Sao chép tóm tắt bệnh án chuẩn EMR vào clipboard"
-            >
-              {copiedSummary ? (
-                <>
-                  <Check className="w-3.5 h-3.5" />
-                  <span>Đã chép!</span>
-                </>
-              ) : (
-                <>
-                  <Copy className="w-3.5 h-3.5" />
-                  <span>Sao chép</span>
-                </>
-              )}
-            </button>
-          </div>
-        </div>
-
-        {/* Body content */}
-        <div className="p-4 sm:p-5">
-          {editingSummary ? (
-            <div className="space-y-2">
-              <div className="text-[11px] text-amber-700 bg-amber-50 border border-amber-200 p-2 rounded-md">
-                Chế độ soạn thảo tự do: Bạn có thể tinh chỉnh văn phong tóm tắt trước khi lưu hoặc sao chép vào hồ sơ bệnh án.
-              </div>
-              <textarea
-                rows={10}
-                value={customSummaryText}
-                onChange={(e) => setCustomSummaryText(e.target.value)}
-                className="w-full text-xs sm:text-sm font-mono text-slate-800 bg-slate-50/50 border border-slate-300 rounded-lg p-3 leading-relaxed focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
-              />
-            </div>
-          ) : summaryViewMode === 'emr' ? (
-            <div
-              id="clinical-summary-box-step2"
-              className="p-3 bg-slate-50 border border-slate-200/90 rounded-xl text-xs leading-relaxed text-slate-800 font-mono-custom whitespace-pre-wrap select-all min-h-[140px]"
-            >
-              {generatedSummary}
-            </div>
-          ) : (
-            /* Structured Visual View - Exactly matching Figure 1 */
-            <div id="clinical-summary-structured-step2" className="space-y-3.5 text-xs">
-              {/* Section 1: Hành chính & Lý do vào viện */}
-              <div className="p-3 bg-slate-50/90 border border-slate-200/80 rounded-lg flex flex-wrap items-center justify-between gap-2.5">
-                <div className="flex items-center gap-2 flex-wrap">
-                  <span className="font-semibold text-slate-800 flex items-center gap-1.5">
-                    <User className="w-3.5 h-3.5 text-slate-500" />
-                    <span>
-                      {form.gioiTinh === 'nam' ? 'Nam' : form.gioiTinh === 'nu' ? 'Nữ' : 'Chưa rõ giới tính'}
-                      {form.tuoi ? `, ${form.tuoi} tuổi` : ''}
-                    </span>
-                  </span>
-                  {form.ngheNghiep && (
-                    <span className="text-slate-500 text-[11px] bg-white px-2 py-0.5 rounded border border-slate-200">
-                      {form.ngheNghiep}
-                    </span>
-                  )}
-                </div>
-
-                <div className="text-[11.5px]">
-                  <span className="text-slate-500">Vào viện vì: </span>
-                  <b className="text-rose-700 font-semibold">{form.lyDo || 'Chưa ghi nhận'}</b>
-                </div>
-              </div>
-
-              {/* Section 2: Dấu chứng dương tính có giá trị */}
-              <div>
-                <div className="flex items-center justify-between mb-1.5">
-                  <span className="font-bold text-blue-900 text-[11px] uppercase tracking-wider flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-blue-600" />
-                    <span>DẤU CHỨNG DƯƠNG TÍNH ({positiveSymptomsList.length}):</span>
-                  </span>
-                </div>
-                {positiveSymptomsList.length > 0 ? (
-                  <div className="flex flex-wrap gap-1.5">
-                    {positiveSymptomsList.map((item) => (
-                      <span
-                        key={item.id}
-                        className="px-2 py-1 bg-blue-50 text-blue-800 border border-blue-200/80 rounded-md font-medium text-[11px] flex items-center gap-1"
-                      >
-                        <Check className="w-3 h-3 text-blue-600 shrink-0" />
-                        <span>{item.name}</span>
-                      </span>
-                    ))}
-                  </div>
-                ) : (
-                  <span className="text-slate-400 italic text-[11px]">Chưa ghi nhận triệu chứng dương tính</span>
-                )}
-              </div>
-
-              {/* Section 3: Dữ kiện âm tính loại trừ */}
-              {negativeSymptomsList.length > 0 && (
-                <div>
-                  <div className="flex items-center justify-between mb-1.5">
-                    <span className="font-bold text-rose-900 text-[11px] uppercase tracking-wider flex items-center gap-1.5">
-                      <span className="w-2 h-2 rounded-full bg-rose-600" />
-                      <span>DỮ KIỆN ÂM TÍNH LOẠI TRỪ ({negativeSymptomsList.length}):</span>
-                    </span>
-                  </div>
-                  <div className="flex flex-wrap gap-1.5">
-                    {negativeSymptomsList.map((item) => (
-                      <span
-                        key={item.id}
-                        className="px-2 py-1 bg-rose-50 text-rose-800 border border-rose-200/80 rounded-md font-medium text-[11px] flex items-center gap-1"
-                      >
-                        <X className="w-3 h-3 text-rose-600 shrink-0" />
-                        <span>Không có: {item.name}</span>
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Section 4: Dấu hiệu sinh tồn (Vitals) */}
-              {vitalsPills.length > 0 && (
-                <div>
-                  <span className="font-bold text-slate-700 text-[11px] uppercase tracking-wider block mb-1.5 flex items-center gap-1.5">
-                    <Activity className="w-3 h-3 text-indigo-600" />
-                    <span>DẤU HIỆU SINH TỒN:</span>
-                  </span>
-                  <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 text-center font-mono-custom">
-                    {vitalsPills.map((vp, idx) => (
-                      <div key={idx} className="bg-slate-50 border border-slate-200/80 rounded-lg p-2 shadow-2xs">
-                        <span className="block text-[10px] text-slate-500 font-sans">{vp.label}</span>
-                        <b className="text-xs sm:text-sm text-slate-900">
-                          {vp.value} <span className="text-[10px] font-normal text-slate-500 font-sans">{vp.unit}</span>
-                        </b>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Section 5: Định hướng chẩn đoán sơ bộ (Nghĩ nhiều nhất) */}
-              {topHypothesis ? (
-                <div className="p-3.5 bg-gradient-to-r from-blue-50 via-indigo-50/50 to-white border border-blue-200/90 rounded-xl flex items-center justify-between gap-3 shadow-2xs">
-                  <div className="flex flex-col gap-1">
-                    <span className="text-[10.5px] font-bold text-blue-900 uppercase tracking-wider flex items-center gap-1.5">
-                      <Sparkles className="w-3 h-3 text-blue-600" />
-                      <span>ĐỊNH HƯỚNG CHẨN ĐOÁN SƠ BỘ (NGHĨ NHIỀU NHẤT)</span>
-                    </span>
-                    <div className="flex items-center gap-2 flex-wrap mt-0.5">
-                      <b className="text-xs sm:text-sm text-slate-900 font-display">
-                        {topHypothesis.b.ten}
-                      </b>
-                      {topHypothesis.b.icd && (
-                        <span className="font-mono-custom text-[10px] font-bold bg-blue-100 text-blue-800 px-1.5 py-0.5 rounded border border-blue-200">
-                          ICD-10: {topHypothesis.b.icd}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-
-                  <div className="shrink-0 text-right">
-                    <span className="block text-[10px] text-slate-500">Độ phù hợp</span>
-                    <span className="text-base sm:text-lg font-black text-blue-700 font-mono-custom">
-                      {topHypothesis.pct}%
-                    </span>
-                  </div>
-                </div>
-              ) : (
-                <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg text-slate-500 text-xs italic">
-                  Chưa có định hướng chẩn đoán sơ bộ. Hãy nạp triệu chứng ở Bước 1 để hệ thống CDSS tính toán tự động.
-                </div>
-              )}
-            </div>
-          )}
-
-          <div className="mt-3 flex items-center justify-between text-[11px] text-slate-500 border-t border-slate-100 pt-2">
-            <span className="italic">
-              * Tóm tắt chỉ nêu các triệu chứng/hội chứng dương tính và các triệu chứng âm tính có giá trị loại trừ.
-            </span>
-            <span className="text-slate-400">Định dạng chuẩn EMR tóm tắt bệnh án</span>
-          </div>
-        </div>
-      </div>
+    <div className="flex flex-col gap-5">
+      {/* SECTION I: TÓM TẮT BỆNH ÁN CHUẨN HÓA */}
+      <CaseSummaryPanel
+        summaryStructure={summaryStructure}
+        summaryViewMode={summaryViewMode}
+        setSummaryViewMode={setSummaryViewMode}
+        editingSummary={editingSummary}
+        setEditingSummary={setEditingSummary}
+        customSummaryText={customSummaryText}
+        setCustomSummaryText={setCustomSummaryText}
+        generatedSummary={generatedSummary}
+        copiedSummary={copiedSummary}
+        handleCopySummary={handleCopySummary}
+        topResult={topHypothesis}
+      />
 
       {/* SECTION II: ĐẶT VẤN ĐỀ & TAM GIÁC CHẨN ĐOÁN (GỘP CHUNG) */}
       <div className="bg-white rounded-xl border border-slate-200 shadow-2xs overflow-hidden">
@@ -1686,10 +497,19 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
               {/* Lưới gộp chung 2 cột: Đặt vấn đề (7 cột) & Tam giác chẩn đoán (5 cột) */}
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
                 <div className="lg:col-span-7">
-                  {problemListContent}
+                  <ProblemListSection
+                    problems={problems}
+                    onUpdateProblems={onUpdateProblems}
+                    onOpenVaultDrawer={onOpenVaultDrawer}
+                  />
                 </div>
                 <div className="lg:col-span-5">
-                  {infectiousTriangleContent}
+                  <DiagnosticTrianglePanel
+                    epiContext={epiContext}
+                    onUpdateEpiContext={onUpdateEpiContext}
+                    selectedSymptoms={selectedSymptoms}
+                    onOpenVaultDrawer={onOpenVaultDrawer}
+                  />
                 </div>
               </div>
             </div>
@@ -1714,7 +534,11 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
               </div>
 
               {/* Danh sách vấn đề full-width */}
-              {problemListContent}
+              <ProblemListSection
+                problems={problems}
+                onUpdateProblems={onUpdateProblems}
+                onOpenVaultDrawer={onOpenVaultDrawer}
+              />
             </div>
           )}
         </div>

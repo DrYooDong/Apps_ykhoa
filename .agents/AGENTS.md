@@ -27,6 +27,10 @@ d:\Apps_ykhoa\.agents/
 │   ├── FILE_MAP.md                   # Bản đồ cấu trúc file
 │   ├── WORKFLOW_CHECKLISTS.md        # Bộ bảng kiểm quy trình
 │   ├── DESIGN_SQUAD_KANBAN.md        # Bảng điều phối Kanban của Design Squad
+│   ├── DOCSPACE_UI_FEATURE_KANBAN.md # 🩺 Bảng điều phối Kanban của DocSpace UI/UX & Feature Squad
+│   ├── DOCSPACE_MEDICAL_QA_KANBAN.md # 🩺 Bảng điều phối Kanban của DocSpace Medical Knowledge Squad
+│   ├── DOCSPACE_CASE_INGESTION_KANBAN.md # 🤖 Bảng điều phối Kanban của Case Ingestion & Prompt Squad
+│   ├── DOCSPACE_CLINICAL_SIMULATION_KANBAN.md # 🎓 Bảng điều phối Kanban của Simulation & Education Squad
 │   ├── DESIGN_TO_CODE.md             # Hướng dẫn thiết kế sang mã nguồn
 │   └── design-vault/                 # 🏛️ Hệ thống 4 Kho Thiết Kế Chuyên Biệt (Design Vaults)
 │       ├── 0.0_DESIGN_VAULT_INDEX.md
@@ -49,8 +53,8 @@ d:\Apps_ykhoa\.agents/
 │   └── design-squad-rules.md         # 10. Quy tắc vận hành & Merge Gate Design Squad
 └── skills/                           # Thư mục 70+ Skills chuyên môn & workflow
     ├── Agent Intelligence & Memory   # agent-memory-systems, agent-memory-checkpoint, agent-manager, state-management-patterns...
-    ├── Healthcare AI & Safety        # cdss-development-patterns, emr-development-patterns, patient-safety-eval-harness, docspace-clinical-pipeline, docspace-cdss-builder, docspace-soap-ingester, docspace-prompt-06-07-ingester...
-    ├── UI/UX & Design Engineering    # design-engineering, stop-making-ui-slop, antigravity-ui-motion-design, mobile-design-system, canvas-design, design-components, algorithmic-art, ui-ux-designer, d-web-experience, brand-guidelines...
+    ├── Healthcare AI & Safety        # docspace-clinical-simulation-squad, docspace-case-ingestion-squad, docspace-medical-qa-squad, cdss-development-patterns, emr-development-patterns, patient-safety-eval-harness, docspace-clinical-pipeline, docspace-cdss-builder, docspace-soap-ingester, docspace-prompt-06-07-ingester...
+    ├── UI/UX & Design Engineering    # docspace-ui-feature-squad, design-engineering, stop-making-ui-slop, antigravity-ui-motion-design, mobile-design-system, canvas-design, design-components, algorithmic-art, ui-ux-designer, d-web-experience, brand-guidelines...
     ├── Research & Knowledge Hub      # scholar-evaluation, research-synthesizer, auto-research, hypothesis-generation, knowledge-extraction, brain-to-docs, search-first-research, data-structure-protocol-dsp, obsidian-cli...
     ├── Workflow & Quality Skills     # brainstorming, code-reviewer, find-bugs, ui-review, simplify-code, multi-agent-optimization, subagent-coding-workflow...
     ├── Performance & Standards       # performance-optimizer, wcag-audit-patterns, accessibility-wcag-medical...
@@ -65,9 +69,13 @@ d:\Apps_ykhoa\.agents/
 | Khi làm task... | Đọc file / Skill... |
 |-----------------|---------------------|
 | Bất kỳ task nào | `.agents/docs/PROJECT_OVERVIEW.md` & `rules/*.md` |
+| UI/UX & Tính năng DocSpace | Skill `docspace-ui-feature-squad`, `.agents/docs/DOCSPACE_UI_FEATURE_KANBAN.md` & `src/content/docspace/docs/UI_FEATURE_DESIGN_SYSTEM.md` |
+| Kiểm định & Chuẩn hóa Y khoa DocSpace | Skill `docspace-medical-qa-squad`, `.agents/docs/DOCSPACE_MEDICAL_QA_KANBAN.md` & `src/content/docspace/docs/MEDICAL_KNOWLEDGE_STANDARDIZATION_GUIDELINES.md` |
+| Nạp Ca & Khai thác NotebookLM DocSpace | Skill `docspace-case-ingestion-squad`, `.agents/docs/DOCSPACE_CASE_INGESTION_KANBAN.md` & `src/content/docspace/docs/CASE_INGESTION_SOP.md` |
+| Giả lập Lâm sàng, OSCE & EMR DocSpace | Skill `docspace-clinical-simulation-squad`, `.agents/docs/DOCSPACE_CLINICAL_SIMULATION_KANBAN.md` & `src/content/docspace/docs/CLINICAL_SIMULATION_GUIDELINES.md` |
 | DocSpace, CDSS, Prompts, Bệnh học | Skill `docspace-clinical-pipeline`, `docspace-cdss-builder`, `docspace-soap-ingester`, `docspace-prompt-06-07-ingester` |
-| Thiết kế UI/UX, Component | `.agents/docs/design-vault/0.0_DESIGN_VAULT_INDEX.md` & Skill `core-components` |
-| Quản lý Task Design | `.agents/docs/DESIGN_SQUAD_KANBAN.md` |
+| Thiết kế UI/UX, Component CliniPortal | `.agents/docs/design-vault/0.0_DESIGN_VAULT_INDEX.md` & Skill `core-components` |
+| Quản lý Task Design CliniPortal | `.agents/docs/DESIGN_SQUAD_KANBAN.md` |
 | Tìm file cụ thể | `.agents/docs/FILE_MAP.md` |
 | Checklist quy trình (A/B/C/D) | `.agents/docs/WORKFLOW_CHECKLISTS.md` |
 | Hướng dẫn kiến trúc & Style | `src/styles/README.md` |

@@ -141,19 +141,22 @@ export const Step4KnowledgeBase: React.FC<Step4Props> = ({
           </p>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1.5">
           <button
             onClick={onExportKB}
-            className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 text-xs font-semibold rounded-md cursor-pointer transition-colors shadow-2xs"
+            className="w-7 h-7 flex items-center justify-center bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 rounded-md cursor-pointer transition-colors shadow-2xs"
             title="Xuất cơ sở tri thức hiện tại thành file JSON"
+            aria-label="Xuất JSON"
           >
             <Download className="w-3.5 h-3.5" />
-            <span>Xuất JSON</span>
           </button>
 
-          <label className="flex items-center gap-1.5 px-3 py-1.5 bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 text-xs font-semibold rounded-md cursor-pointer transition-colors shadow-2xs">
+          <label
+            className="w-7 h-7 flex items-center justify-center bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 rounded-md cursor-pointer transition-colors shadow-2xs"
+            title="Nạp cơ sở tri thức từ file JSON"
+            aria-label="Nạp JSON"
+          >
             <Upload className="w-3.5 h-3.5" />
-            <span>Nạp JSON</span>
             <input
               type="file"
               accept=".json"

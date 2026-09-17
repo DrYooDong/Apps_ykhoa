@@ -1,4 +1,3 @@
-```
 ---
 title: "Ca lâm sàng Đợt bùng phát viêm gan vi rút B mạn tính ở bệnh nhân nam 42 tuổi tự ý ngưng Tenofovir"
 caseId: "soap-dot-bung-phat-viem-gan-b-01"
@@ -115,5 +114,3 @@ updated: "2026-09-16"
 1. Bộ Y tế Việt Nam. *Hướng dẫn chẩn đoán, điều trị viêm gan vi rút B* (Ban hành kèm theo Quyết định số 1740/QĐ-BYT ngày 16 tháng 6 năm 2026).
 2. European Association for the Study of the Liver (EASL). *EASL Clinical Practice Guidelines on the management of hepatitis B virus infection*. J Hepatol. Aug 2025;83(2):502-583.
 3. Terrault NA, Lok ASF, McMahon BJ, et al. *Update on prevention, diagnosis, and treatment of chronic hepatitis B: AASLD 2018 hepatitis B guidance*. Hepatology. Apr 2018;67(4):1560-1599.
-
-```

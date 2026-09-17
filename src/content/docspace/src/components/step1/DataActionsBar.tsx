@@ -32,10 +32,10 @@ export const DataActionsBar: React.FC<DataActionsBarProps> = ({
             type="button"
             onClick={onReset}
             title="Làm mới toàn bộ form"
-            className="text-[11px] text-slate-400 hover:text-rose-600 flex items-center gap-1 transition-colors cursor-pointer"
+            aria-label="Làm mới form"
+            className="w-6 h-6 flex items-center justify-center rounded text-slate-400 hover:text-rose-600 hover:bg-rose-50 transition-colors cursor-pointer"
           >
-            <RotateCcw className="w-3 h-3" />
-            <span>Xóa form</span>
+            <RotateCcw className="w-3.5 h-3.5" />
           </button>
         )}
       </div>
