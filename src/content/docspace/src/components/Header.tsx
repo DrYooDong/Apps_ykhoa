@@ -30,6 +30,7 @@ export const Header: React.FC<HeaderProps> = ({
   onChangeMode,
   onOpenVault,
   onOpenAbout,
+  onOpenSimulation,
 }) => {
   return (
     <header className="h-14 bg-white border-b border-slate-200 flex items-center justify-between px-3 sm:px-6 shrink-0 select-none z-30 no-print">
