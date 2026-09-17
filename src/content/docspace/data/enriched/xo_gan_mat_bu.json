@@ -1,0 +1,369 @@
+{
+    "icdCode": "K74.6",
+    "icdPrefixes": [
+        "K74.6",
+        "K70.3",
+        "K71.7",
+        "K74.5"
+    ],
+    "diseaseName": "Xơ gan mất bù (Decompensated Liver Cirrhosis)",
+    "specialty": "Tiêu hóa - Gan mật",
+    "severity": "severe",
+    "summary": "Xơ gan mất bù là giai đoạn tiến triển muộn của bệnh gan mạn tính đặc trưng bởi sự suy giảm nghiêm trọng chức năng tổng hợp của gan và tăng áp lực tĩnh mạch cửa tiến triển. Bệnh biểu hiện bằng ít nhất một biến cố mất bù lâm sàng: cổ trướng, xuất huyết tiêu hóa do vỡ giãn tĩnh mạch thực quản-dạ dày, bệnh não gan, vàng da hoặc nhiễm trùng dịch cổ trướng (SBP), kèm nguy cơ cao tiến triển thành Suy gan cấp trên nền mạn (ACLF) và tử vong.",
+    "goldStandard": "Chẩn đoán xác định dựa trên bằng chứng lâm sàng/hình ảnh học của xơ gan (FibroScan ≥ 12.5 kPa hoặc APRI &gt; 1.0) kết hợp với sự xuất hiện của ít nhất một biến cố mất bù lâm sàng (Cổ trướng, Xuất huyết vỡ giãn TMQ, Bệnh não gan, Vàng da sâu Bilirubin &gt; 50 µmol/L) và phân độ Child-Pugh B (7–9 điểm) hoặc Child-Pugh C (≥ 10 điểm).",
+    "criteriaRule": {
+        "mandatoryIds": [
+            "xo_gan_evidence",
+            "decompensation_event"
+        ],
+        "minMajorRequired": 2,
+        "minMinorRequired": 1,
+        "ruleDescription": "Chẩn đoán xác định Xơ gan mất bù khi có BẰNG CHỨNG XƠ GAN (Lâm sàng/Hình ảnh/FibroScan/APRI) VÀ ÍT NHẤT 1 BIẾN CỐ MẤT BÙ (Cổ trướng, Xuất huyết vỡ giãn TMQ, Bệnh não gan, Vàng da) VÀ Phân độ Child-Pugh B hoặc C."
+    },
+    "criteria": [
+        {
+            "id": "xo_gan_evidence",
+            "type": "mandatory",
+            "label": "Bằng chứng Xơ gan cấu trúc &amp; Tăng áp cửa (LSM ≥ 12.5 kPa / APRI &gt; 1.0)",
+            "description": "Tiền sử bệnh gan mạn tính (HBV, HCV, Rượu, MASH...) kèm dấu hiệu lâm sàng (sao mạch, lòng bàn tay son, tuần hoàn phế chủ, lách to) hoặc đo độ đàn hồi gan FibroScan ≥ 12.5 kPa / APRI &gt; 1.0 / Siêu âm thấy nhu mô gan thô nốt, bờ không đều.",
+            "sourceGuideline": "Quyết định 2855/QĐ-BYT 2024 &amp; Baveno VII Consensus"
+        },
+        {
+            "id": "decompensation_event",
+            "type": "mandatory",
+            "label": "Hiện diện của Biến cố Mất bù Lâm sàng (Decompensation Event)",
+            "description": "Xuất hiện ít nhất 1 trong các hội chứng: Cổ trướng (Ascites), Xuất huyết tiêu hóa do vỡ giãn TMQ/Dạ dày, Bệnh não gan (Hepatic Encephalopathy), Vàng da tiến triển (Jaundice) hoặc Nhiễm trùng dịch cổ trướng nguyên phát (SBP).",
+            "sourceGuideline": "EASL Decompensated Cirrhosis CPG &amp; AASLD 2023"
+        },
+        {
+            "id": "ascites_clinical",
+            "type": "major",
+            "label": "Hội chứng Cổ trướng &amp; Giảm Albumin máu",
+            "description": "Bụng trướng căng, gõ đục vùng thấp, dấu hiệu sóng vỗ (+). Xét nghiệm Albumin máu giảm &lt; 28–35 g/L, SAAG (Serum-Ascites Albumin Gradient) ≥ 11 g/L khẳng định cổ trướng do tăng áp cửa.",
+            "sourceGuideline": "EASL Decompensated Cirrhosis CPG"
+        },
+        {
+            "id": "variceal_bleed",
+            "type": "major",
+            "label": "Xuất huyết tiêu hóa do Tăng áp lực Tĩnh mạch cửa",
+            "description": "Nôn ra máu tươi/máu cục, đi cầu phân đen như bã cà phê hoặc máu tươi lượng lớn; Nội soi dạ dày phát hiện giãn tĩnh mạch thực quản (F2/F3) hoặc tĩnh mạch phế vị đang chảy máu hoặc có dấu chấm đỏ (Red spots).",
+            "sourceGuideline": "Baveno VII Consensus &amp; AASLD Guidance 2023"
+        },
+        {
+            "id": "hepatic_encephalopathy",
+            "type": "major",
+            "label": "Hội chứng Bệnh não gan (Hepatic Encephalopathy - West-Haven Grade I-IV)",
+            "description": "Rối loạn nhịp ngủ, thay đổi tính cách, mất định hướng không gian/thời gian, dấu run vỗ cánh (Asterixis/Flapping tremor) (+), lơ mơ hoặc hôn mê. Khí máu/Huyết thanh Ammonia (NH3) tăng cao.",
+            "sourceGuideline": "EASL/AASLD HE Guidelines"
+        },
+        {
+            "id": "lab_child_pugh_score",
+            "type": "lab",
+            "label": "Suy giảm Chức năng Tổng hợp Gan (Child-Pugh B: 7–9 điểm / Child-Pugh C: ≥ 10 điểm)",
+            "description": "Bilirubin toàn phần &gt; 35–50 µmol/L (&gt; 2–3 mg/dL), Albumin &lt; 28–35 g/L (&lt; 2.8–3.5 g/dL), Tỷ lệ Prothrombin &lt; 44–64% (hoặc INR &gt; 1.7–2.3).",
+            "labThreshold": "Child-Pugh Score ≥ 7 điểm (Class B hoặc C)",
+            "sourceGuideline": "Bộ Y Tế Việt Nam &amp; EASL CPG"
+        },
+        {
+            "id": "lab_hyponatremia_kidney",
+            "type": "lab",
+            "label": "Rối loạn Điện giải &amp; Chức năng Thận (Hạ Natri máu &amp; Suy thận cấp/HRS)",
+            "description": "Natri huyết thanh giảm &lt; 130–135 mmol/L do rò rỉ huyết tương và giãn mạch tạng; Creatinine máu tăng &gt; 133 µmol/L (&gt; 1.5 mg/dL) hoặc tăng ≥ 26.5 µmol/L trong 48h (Hội chứng Gan Thận - HRS-AKI).",
+            "labThreshold": "Na+ &lt; 130 mmol/L hoặc Creatinine &gt; 133 µmol/L",
+            "sourceGuideline": "EASL Clinical Practice Guidelines"
+        },
+        {
+            "id": "imaging_portal_htn",
+            "type": "imaging",
+            "label": "Hình ảnh Tăng áp cửa &amp; Biến đổi Cấu trúc Gan trên Siêu âm/CT/MRI",
+            "description": "Siêu âm Doppler/CT bụng: Tĩnh mạch cửa giãn &gt; 13 mm, lách to (đường kính dọc &gt; 12 cm), tuần hoàn bàng hệ rốn/lách-thận, tái thông tĩnh mạch rốn, dịch tự do khoang bụng.",
+            "labThreshold": "Đường kính TTM &gt; 13mm, Chiều dài lách &gt; 120mm",
+            "sourceGuideline": "AASLD Practice Guidance 2023"
+        }
+    ],
+    "severityGrading": [
+        {
+            "grade": "Xơ gan Mất bù Thể Nhẹ - Trung bình (Child-Pugh B / 7–9 điểm - Cổ trướng độ 1-2, Chưa biến chứng cấp)",
+            "severity": "mild",
+            "criteria": "[Lâm sàng]: Cổ trướng mức độ ít đến vừa (Độ 1–2), không có xuất huyết tiêu hóa, không có bệnh não gan hoặc chỉ có HE tiềm ẩn (Minimal HE). [Cận lâm sàng]: Bilirubin 35–50 µmol/L, Albumin 28–35 g/L, INR 1.7–2.3, Natri máu &gt; 130 mmol/L, Creatinine bình thường. [Tiêu chuẩn an toàn]: Huyết động ổn định, còn ăn uống đường miệng được, không có nhiễm trùng kèm theo.",
+            "triage": "Nội trú Khoa Tiêu hóa - Gan mật / Bệnh viện Tỉnh",
+            "primaryAction": "Điều trị lợi tiểu phối hợp Spironolactone + Furosemide tỷ lệ 100mg:40mg, hạn chế muối (&lt; 2g/ngày), điều trị nguyên nhân gốc (NAs/DAAs), theo dõi cân nặng và điện giải đồ hàng tuần.",
+            "targetVitals": "Huyết áp tâm thu ≥ 100 mmHg, Giảm cân 0.5 kg/ngày (không phù) hoặc 1.0 kg/ngày (có phù), Natri máu ≥ 135 mmol/L, Creatinine &lt; 120 µmol/L.",
+            "protocol": {
+                "title": "Phác đồ Quản lý Xơ gan Mất bù Child-Pugh B &amp; Cổ trướng Trung bình",
+                "tuyen": [
+                    "Nhập viện nội trú theo dõi và làm bilan đánh giá chức năng gan (Child-Pugh, MELD-Na)",
+                    "Khởi đầu lợi tiểu phối hợp Spironolactone + Furosemide uống buổi sáng",
+                    "Tầm soát giãn tĩnh mạch thực quản qua nội soi dạ dày nếu chưa làm trong 12 tháng"
+                ],
+                "drugs": [
+                    [
+                        "Spironolactone (Uống)",
+                        "100 mg/ngày (tối đa 400 mg/ngày)",
+                        "Thuốc chẹn Aldosterone ưu tiên đầu tay"
+                    ],
+                    [
+                        "Furosemide (Uống)",
+                        "40 mg/ngày (tối đa 160 mg/ngày)",
+                        "Phối hợp duy trì tỷ lệ 100mg:40mg để giữ Kali máu ổn định"
+                    ],
+                    [
+                        "Tenofovir disoproxil fumarate (TDF) hoặc Entecavir",
+                        "TDF 300mg/ngày hoặc ETV 0.5mg/ngày (PO)",
+                        "Chỉ định ngay nếu nguyên nhân do Viêm gan B mạn không phụ thuộc tải lượng HBV DNA"
+                    ]
+                ],
+                "monitoring": [
+                    "Cân nặng hàng ngày, Vòng bụng, CTM, Điện giải đồ (Na+, K+), Creatinine mỗi 3–5 ngày"
+                ],
+                "cautions": [
+                    "Ngừng ngay lợi tiểu nếu Natri máu &lt; 125 mmol/L, Creatinine tăng vọt hoặc xuất hiện Bệnh não gan"
+                ]
+            }
+        },
+        {
+            "grade": "Xơ gan Mất bù Thể Nặng (Child-Pugh C / 10–12 điểm - Cổ trướng độ 3 / Bệnh não gan độ I-II / Vỡ giãn TMQ đã cầm)",
+            "severity": "moderate",
+            "criteria": "[Lâm sàng]: Cổ trướng căng to (Độ 3), Bệnh não gan West-Haven Độ I–II (lơ mơ, mất định hướng, run vỗ cánh), hoặc Vừa qua đợt xuất huyết tiêu hóa vỡ giãn TMQ đã can thiệp thắt thắt vòng cao su ổn định. [Cận lâm sàng]: Bilirubin &gt; 50 µmol/L, Albumin &lt; 28 g/L, INR &gt; 2.3, Hạ Natri máu nhẹ (125–130 mmol/L). [Lâm sàng bổ sung]: Suy dinh dưỡng nặng, teo cơ (Sarcopenia).",
+            "triage": "Nội trú Cấp cứu Tiêu hóa / Hồi sức Gan mật / BV Chuyên khoa Trung ương",
+            "primaryAction": "Chọc tháo dịch cổ trướng lượng lớn (LVP) kèm truyền Albumin 8g/L dịch tháo; Bệnh脑 gan dùng Lactulose + Rifaximin 550mg x 2; Kháng sinh dự phòng SBP (Ceftriaxone 1g/ngày); Carvedilol dự phòng xuất huyết tái phát.",
+            "targetVitals": "HATT ≥ 90–100 mmHg, Mạch 55–60 lần/phút (khi dùng Carvedilol), Đi cầu 2–3 lần phân mềm/ngày (với Lactulose), SpO2 ≥ 95%.",
+            "protocol": {
+                "title": "Phác đồ Điều trị Xơ gan Mất bù Child-Pugh C &amp; Biến chứng Cổ trướng căng / HE / SBP",
+                "tuyen": [
+                    "Nằm đầu cao 30 độ, đặt xông dạ dày và xông tiểu theo dõi lượng nước tiểu/h nếu lơ mơ",
+                    "Chọc tháo dịch cổ trướng chẩn đoán (xét nghiệm bạch cầu đa nhân trung tính - PMN) và chọc giải áp nếu cổ trướng căng gây khó thở",
+                    "Khởi động ngay Lactulose thụt tháo/uống kết hợp Rifaximin cho Bệnh não gan"
+                ],
+                "drugs": [
+                    [
+                        "Albumin người 20%",
+                        "20g (100 mL) cho mỗi 2.5L dịch tháo (hoặc 8g/L dịch nếu tháo &gt; 5L)",
+                        "Bắt buộc truyền để phòng suy tuần hoàn sau chọc tháo (PICD) và suy thận HRS"
+                    ],
+                    [
+                        "Lactulose (Uống / Thụt tháo)",
+                        "15–30 mL x 2–3 lần/ngày (PO) hoặc 300 mL pha 700 mL nước (Thụt giữ)",
+                        "Chỉnh liều đạt 2–3 lần đi cầu phân mềm/ngày, hạ NH3 máu"
+                    ],
+                    [
+                        "Rifaximin",
+                        "550 mg x 2 lần/ngày (PO)",
+                        "Phối hợp Lactulose ngăn ngừa tái phát Bệnh脑 gan"
+                    ],
+                    [
+                        "Ceftriaxone",
+                        "1g/ngày (IV) x 7 ngày",
+                        "Dự phòng nhiễm trùng SBP ở bệnh nhân xuất huyết tiêu hóa hoặc Albumin dịch ổ bụng &lt; 15 g/L"
+                    ]
+                ],
+                "monitoring": [
+                    "Sinh hiệu mỗi 2–4h, Phân độ Bệnh não gan hàng ngày, PMN dịch ổ bụng sau 48h, Creatinine và Natri máu"
+                ],
+                "cautions": [
+                    "Tuyệt đối KHÔNG dùng NSAIDs, Aminoglycosides, Sedatives (thuốc an thần) và hạn chế tối đa PPIs không chỉ định"
+                ]
+            }
+        },
+        {
+            "grade": "Xơ gan Mất bù Nguy Kịch / Sốc &amp; Suy Đa Tạng (Child-Pugh C ≥ 13 / ACLF - Sốc Vỡ Giãn TMQ Ồ Ạt / Hôn Mê Gan / SBP Cấp / HRS-AKI)",
+            "severity": "critical",
+            "criteria": "[Lâm sàng]: Xuất huyết tiêu hóa ồ ạt do vỡ giãn TMQ gây Sốc giảm thể tích (HA &lt; 90/60 mmHg, M &gt; 120), Hôn mê gan West-Haven Độ III–IV, Hội chứng Gan Thận cấp (HRS-AKI Creatinine vọt &gt; 200 µmol/L), Nhiễm trùng huyết do SBP, hoặc Suy gan cấp trên nền mạn (ACLF) suy ≥ 2 tạng. [Cận lâm sàng]: Toan chuyển hóa nặng, Lactate máu &gt; 4 mmol/L, Tiếu cầu &lt; 30 G/L, INR &gt; 3.0, MELD-Na Score ≥ 25.",
+            "triage": "Khoa Hồi sức Tích cực (ICU) / Trung tâm Ghép Gan",
+            "primaryAction": "Hồi sức hô hấp tuần hoàn (Đặt NKQ bảo vệ đường thở), Can thiệp nội soi cầm máu khẩn cấp trong 12h, Bù dịch tĩnh mạch kiềm chế + Khối hồng cầu duy trì Hb 7–8 g/dL, Vận mạch Terlipressin/Somatostatin IV, Albumin liều cao (1g/kg/ngày) chống HRS.",
+            "targetVitals": "HATT ≥ 90 mmHg, MAP ≥ 65 mmHg, Hb 7–8 g/dL, SpO2 ≥ 95%, Nước tiểu ≥ 0.5 mL/kg/h, Lactate máu &lt; 2 mmol/L.",
+            "protocol": {
+                "title": "Phác đồ Cấp cứu Hồi sức Xơ gan Mất bù Nguy Kịch, Sốc Vỡ Giãn TMQ &amp; Suy Đa Tạng (ICU)",
+                "tuyen": [
+                    "Đặt ống nội soi khí quản bảo vệ đường thở khẩn cấp nếu Bệnh não gan Độ III-IV hoặc Nôn ra máu ồ ạt",
+                    "Thiết lập 2 đường truyền tĩnh mạch lớn (16G-18G) hoặc Catheter TMTT, đặt huyết áp động mạch xâm nhập (A-line)",
+                    "Nội soi can thiệp thắt tĩnh mạch thực quản (EBL) hoặc tiêm keo gụ (Cyanoacrylate) TMQ/Dạ dày trong vòng 12 giờ đầu"
+                ],
+                "drugs": [
+                    [
+                        "Terlipressin hoặc Somatostatin",
+                        "Terlipressin 2mg IV bolus mỗi 4h (hoặc 1-2mg truyền IV liên tục) / Somatostatin 250mcg IV bolus rồi duy trì 250mcg/h",
+                        "Thuốc co mạch tạng giảm áp cửa ưu tiên hàng đầu, duy trì 3–5 ngày"
+                    ],
+                    [
+                        "Khối hồng cầu lắng (PRBC)",
+                        "Truyền duy trì Nồng độ Hemoglobin (Hb) đạt 7–8 g/dL (Chiến lược truyền máu hạn chế)",
+                        "Tránh truyền máu quá mức làm tăng vọt áp lực tĩnh mạch cửa gây xuất huyết tái phát"
+                    ],
+                    [
+                        "Albumin 20%",
+                        "1 g/kg/ngày trong ngày 1, sau đó 20–40 g/ngày",
+                        "Điều trị HRS-AKI kết hợp Terlipressin và chống sốc nhiễm khuẩn SBP"
+                    ],
+                    [
+                        "Ceftriaxone / Meropenem",
+                        "Ceftriaxone 1g/ngày IV (hoặc Meropenem 1g x 3 lần/ngày nếu nghi ngờ vi khuẩn kháng thuốc/ACLF)",
+                        "Kháng sinh phổ rộng cấp cứu"
+                    ],
+                    [
+                        "Noradrenaline (Norepinephrine)",
+                        "Truyền TMTT liên tục chỉnh liều nâng MAP ≥ 65 mmHg",
+                        "Chỉ định khi Terlipressin/bù dịch chưa nâng đủ HA"
+                    ]
+                ],
+                "monitoring": [
+                    "Monitor sinh hiệu xâm nhập liên tục, Khí máu động mạch &amp; Lactate mỗi 2-4h, Hct/Hb mỗi 4-6h, Nước tiểu/h, Thang điểm CLIF-SOFA / MELD-Na hàng ngày"
+                ],
+                "cautions": [
+                    "Đánh giá chỉ định TIPSS cấp cứu (TIPS cứu vãn) trong 24-72h nếu thất bại nội soi cầm máu; Hội chẩn khẩn Khả năng Ghép gan"
+                ]
+            }
+        }
+    ],
+    "protocol": {
+        "title": "Phác đồ Điều trị Toàn diện Xơ gan Mất bù &amp; Phòng ngừa Biến chứng theo EASL &amp; BYT",
+        "guideline": "Quyết định 2855/QĐ-BYT (2024), EASL Guidelines Decompensated Cirrhosis &amp; Baveno VII (2022)",
+        "targetGoals": [
+            "Kiểm soát biến cố mất bù (xử trí cổ trướng, ngưng xuất huyết tiêu hóa, đảo ngược bệnh não gan)",
+            "Ngăn ngừa tiến triển thành Suy gan cấp trên nền mạn (ACLF) và Hội chứng Gan Thận (HRS-AKI)",
+            "Điều trị triệt để nguyên nhân gốc rễ (Ức chế HBV bằng NAs, Diệt HCV bằng DAAs, Ngưng rượu hoàn toàn) để đạt trạng thái Tái bù trừ (Recompensation)"
+        ],
+        "initialManagement": [
+            "Phân tầng tiếp nhận ngay theo độ nặng Child-Pugh B, C và thang điểm MELD-Na",
+            "Sàng lọc và xử trí khẩn cấp 4 biến cố cờ đỏ: Xuất huyết vỡ giãn TMQ, SBP, HE và HRS-AKI",
+            "Chế độ dinh dưỡng chuyên biệt: Năng lượng 35–40 kcal/kg/ngày, Protein 1.2–1.5 g/kg/ngày, ăn bữa phụ muộn đêm (Late-evening snack) chứa BCAA"
+        ],
+        "firstLineDrugs": [
+            {
+                "drugName": "Spironolactone + Furosemide",
+                "class": "Lợi tiểu phối hợp Kháng Aldosterone &amp; Lợi tiểu quai",
+                "route": "Uống (PO)",
+                "dosage": "Khởi đầu Spironolactone 100mg + Furosemide 40mg/ngày; Tăng dần liều mỗi 3-5 ngày lên tối đa 400mg : 160mg/ngày",
+                "frequency": "1 lần/ngày vào buổi sáng",
+                "instructions": "Uống buổi sáng, theo dõi cân nặng và điện giải đồ. Mục tiêu giảm cân 0.5kg/ngày (không phù) hoặc 1kg/ngày (có phù)",
+                "isFirstLine": true,
+                "notes": "Ưu tiên phối hợp ngay từ đầu ở xơ gan mất bù tái phát để giữ Kali máu ổn định",
+                "contraindications": [
+                    "Hạ Natri máu nặng &lt; 125 mmol/L",
+                    "Suy thận cấp Creatinine &gt; 177 µmol/L",
+                    "Bệnh não gan tiến triển"
+                ]
+            },
+            {
+                "drugName": "Lactulose / Lactitol",
+                "class": "Thuốc nhuận tràng thẩm thấu / Hạ Ammonia máu",
+                "route": "Uống (PO) hoặc Thụt giữ qua hậu môn",
+                "dosage": "Uống 15–30 mL x 2–3 lần/ngày hoặc Thụt giữ 300 mL Lactulose pha 700 mL nước",
+                "frequency": "2–3 lần/ngày",
+                "instructions": "Điều chỉnh liều để người bệnh đi cầu 2–3 lần/ngày phân mềm. Không để tiêu chảy phân lỏng &gt; 4 lần/ngày",
+                "isFirstLine": true,
+                "notes": "Đầu tay trong điều trị và dự phòng Bệnh não gan",
+                "contraindications": [
+                    "Tắc ruột cơ học",
+                    "Thủng ruột"
+                ]
+            },
+            {
+                "drugName": "Terlipressin / Somatostatin",
+                "class": "Thuốc co mạch tạng (Vasoactive Drugs)",
+                "route": "Tiêm/Truyền tĩnh mạch (IV)",
+                "dosage": "Terlipressin 1–2 mg IV mỗi 4h (hoặc Somatostatin 250 mcg IV bolus rồi duy trì 250 mcg/h)",
+                "frequency": "Liên tục 3–5 ngày",
+                "instructions": "Dùng ngay khi nghi ngờ xuất huyết vỡ giãn TMQ trước khi nội soi và dùng trong điều trị HRS-AKI phối hợp Albumin",
+                "isFirstLine": true,
+                "notes": "Ngừng thuốc sau khi ngưng xuất huyết 48h hoặc sau can thiệp EBL thành công",
+                "contraindications": [
+                    "Bệnh cơ tim cục bộ nặng",
+                    "Bệnh mạch máu ngoại biên nặng"
+                ]
+            }
+        ],
+        "secondLineDrugs": [
+            {
+                "drugName": "Rifaximin",
+                "class": "Kháng sinh đường ruột không hấp thu",
+                "route": "Uống (PO)",
+                "dosage": "550 mg x 2 lần/ngày (hoặc 400 mg x 3 lần/ngày)",
+                "frequency": "2 lần/ngày",
+                "instructions": "Phối hợp với Lactulose ở bệnh nhân Bệnh não gan tái phát ≥ 2 đợt",
+                "isFirstLine": false,
+                "notes": "Giảm rõ rệt tỷ lệ nhập viện tái phát do HE và nhiễm trùng SBP",
+                "contraindications": [
+                    "Mẫn cảm với Rifaximin hoặc dẫn xuất Rifamycin"
+                ]
+            },
+            {
+                "drugName": "Carvedilol / Propranolol",
+                "class": "Thuốc chẹn Beta không chọn lọc (NSBBs)",
+                "route": "Uống (PO)",
+                "dosage": "Carvedilol khởi đầu 6.25 mg/ngày, tăng lên 12.5 mg/ngày; Propranolol 20–40 mg x 2 lần/ngày",
+                "frequency": "1–2 lần/ngày",
+                "instructions": "Dự phòng cấp 1 và cấp 2 xuất huyết vỡ giãn TMQ. Dùng khi huyết áp và chức năng thận còn bù tốt",
+                "isFirstLine": false,
+                "notes": "Carvedilol giảm áp cửa mạnh hơn Propranolol và dễ dung nạp hơn",
+                "contraindications": [
+                    "Sốc nhiễm trùng / Sốc giảm thể tích",
+                    "Huyết áp tâm thu &lt; 90 mmHg",
+                    "Hen phế quản nặng / Nhịp chậm &lt; 50 lần/phút"
+                ]
+            }
+        ],
+        "supportiveCare": [
+            "Nghỉ ngơi, hạn chế muối &lt; 2g/ngày (88 mmol Na+/ngày) cho người bệnh cổ trướng",
+            "Bổ sung BCAA (Amino acid chuỗi nhánh) đường uống cho người bệnh suy dinh dưỡng nặng hoặc HE mãn tính",
+            "Tầm soát định kỳ Ung thư biểu mô tế bào gan (HCC) bằng Siêu âm bụng + AFP/PIVKA-II mỗi 6 tháng"
+        ]
+    },
+    "complications": [
+        {
+            "name": "Xuất huyết tiêu hóa do Vỡ giãn Tĩnh mạch Thực quản / Dạ dày (Acute Variceal Bleeding)",
+            "timeframe": "acute_24h",
+            "warningSigns": "Nôn ra máu tươi/máu đen ồ ạt, đi cầu phân đen dính như nhựa đường, mạch nhanh nhỏ &gt; 100 lần/phút, HATT tụt &lt; 90 mmHg, hoa mắt chóng mặt",
+            "preventiveAction": "Đặt đường truyền lớn, cho thở oxy, gọi nội soi can thiệp thắt EBL trong 12h, tiêm Terlipressin/Somatostatin IV, truyền khối hồng cầu giữ Hb 7-8 g/dL, Ceftriaxone 1g/ngày",
+            "onCallAlertText": "Y LỆNH TRỰC BÁO ĐỘNG ĐỎ - XHTH VỠ GIÃN TMQ: Cho thở oxy, đặt NKQ nếu lơ mơ, Terlipressin 2mg IV bolus, gọi trực Nội soi can thiệp EBL khẩn, thử CTM/Đông máu/Nhóm máu xin Khối hồng cầu!"
+        },
+        {
+            "name": "Nhiễm trùng Dịch cổ trướng Nguyên phát (Spontaneous Bacterial Peritonitis - SBP)",
+            "timeframe": "subacute_7d",
+            "warningSigns": "Đau bụng sốt nhẹ hoặc không sốt, bụng trướng đau lan tỏa, tiêu chảy, Bệnh não gan xuất hiện đột ngột hoặc chức năng thận xấu đi nhanh chóng",
+            "preventiveAction": "Chọc dò dịch cổ trướng chẩn đoán ngay: Bào chế PMN ≥ 250 tế bào/mm3 (0.25 G/L) khẳng định SBP; Tiêm Ceftriaxone 2g/ngày IV + Albumin 1.5 g/kg ngày 1 và 1 g/kg ngày 3 chống suy thận",
+            "onCallAlertText": "Y LỆNH TRỰC - SBP: Chọc dịch ổ bụng gửi xét nghiệm PMN/Cấy dịch khẩn. Nếu PMN ≥ 250/mm3 -&gt; Tiêm Ceftriaxone 2g IV + Truyền Albumin 1.5g/kg!"
+        },
+        {
+            "name": "Hội chứng Gan Thận Cấp (HRS-AKI / Hepatorenal Syndrome)",
+            "timeframe": "acute_24h",
+            "warningSigns": "Thiểu niệu (&lt; 500 mL/24h), Creatinine máu tăng vọt &gt; 133 µmol/L hoặc tăng ≥ 26.5 µmol/L trong 48h ở bệnh nhân cổ trướng, Natri niệu rất thấp &lt; 10 mmol/L",
+            "preventiveAction": "Ngừng ngay toàn bộ lợi tiểu/thuốc độc thận; Truyền thử Albumin 1g/kg/ngày x 2 ngày; Nếu không hồi phục -&gt; Chẩn đoán HRS-AKI -&gt; Cho Terlipressin 0.5–2 mg IV mỗi 4h + Albumin 20–40 g/ngày",
+            "onCallAlertText": "Y LỆNH TRỰC - HRS-AKI: NGỪNG NGAY LỢI TIỂU &amp; NSAIDs! Bù Albumin 1g/kg x 2 ngày. Nếu Creatinine không giảm -&gt; Dùng Terlipressin IV + Albumin!"
+        }
+    ],
+    "monitoringLabs": [
+        "Công thức máu (CBC): Theo dõi Tiểu cầu, Bạch cầu và Hematocrit/Hemoglobin mỗi ngày (khi cấp cứu) hoặc mỗi 3-5 ngày",
+        "Sinh hóa gan thận: AST, ALT, Bilirubin toàn phần/trực tiếp, Albumin, Protein máu, Ure, Creatinine mỗi 2-3 ngày",
+        "Điện giải đồ máu (Na+, K+, Cl-, Ca2+): Theo dõi Natri máu sát sao (nguy cơ hạ Natri máu do pha loãng)",
+        "Đông máu toàn bộ: PT, INR, APTT, Fibrinogen đánh giá chức năng tổng hợp",
+        "Xét nghiệm Dịch ổ bụng: Tế bào PMN, Albumin dịch, Protein dịch, Cấy vi khuẩn tìm căn nguyên",
+        "Siêu âm Doppler Mạch máu Gan-Cửa &amp; Siêu âm Ổ bụng tổng quát định kỳ"
+    ],
+    "vaultPathways": [
+        {
+            "khoCode": "CD",
+            "khoName": "Kho Tiêu Chuẩn CĐ",
+            "articleTitle": "Bộ tiêu chuẩn chẩn đoán xác định Xơ gan mất bù &amp; Các chỉ số đánh giá chức năng gan",
+            "searchKeyword": "chan doan xo gan mat bu child pugh meld"
+        },
+        {
+            "khoCode": "PDDT",
+            "khoName": "Kho Phác Đồ Điều Trị",
+            "articleTitle": "Phác đồ điều trị, dược thư &amp; tư vấn người bệnh xơ gan mất bù và các biến chứng",
+            "searchKeyword": "phac do dieu tri xo gan mat bu co truong he"
+        },
+        {
+            "khoCode": "DTH",
+            "khoName": "Kho Dịch Tễ &amp; Nguy Cơ",
+            "articleTitle": "Dịch tễ học, căn nguyên virus HBV/HCV/Rượu &amp; Yếu tố nguy cơ tử vong trong xơ gan",
+            "searchKeyword": "dich te hoc xo gan nguyen nhan hbv hcv"
+        },
+        {
+            "khoCode": "BC",
+            "khoName": "Kho Biến Chứng",
+            "articleTitle": "Nhận diện và xử trí cấp cứu các biến chứng đe dọa sinh mạng: Sốc vỡ giãn TMQ, SBP, HRS và Bệnh não gan",
+            "searchKeyword": "bien chung xo gan mat bu hrs sbp he vo gian tmq"
+        }
+    ]
+}

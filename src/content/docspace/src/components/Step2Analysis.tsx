@@ -153,7 +153,13 @@ export const Step2Analysis: React.FC<Step2Props> = ({
       <ParallelActionBoard problems={problems} />
 
       {/* KHỐI 2: THANG ĐIỂM NGUY CƠ & PHÂN TẦNG CẤP CỨU (ESI, PEWS, NEWS2) */}
-      <RiskScoreTriagePanel vitals={vitals} labs={labs} form={form} />
+      <RiskScoreTriagePanel
+        vitals={vitals}
+        labs={labs}
+        form={form}
+        results={results}
+        onOpenVaultDrawer={onOpenVaultDrawer}
+      />
 
       {/* KHỐI 3: KẾT QUẢ PHÂN TÍCH SUY LUẬN LÂM SÀNG CDSS */}
       {results.length === 0 ? (

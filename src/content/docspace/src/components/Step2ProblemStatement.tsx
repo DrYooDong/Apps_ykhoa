@@ -129,11 +129,11 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
     if (labs.lGlu) labItems.push(`Glucose ${labs.lGlu} mmol/L`);
     if (labs.lTrop) labItems.push(`Troponin ${labs.lTrop} ng/L`);
     const clsNarrative: string[] = [];
-    if (form.text.cls.trim()) clsNarrative.push(form.text.cls.trim());
+    if (form?.text?.cls?.trim()) clsNarrative.push(form.text.cls.trim());
 
     // 5. Tiền căn
     const tcList: string[] = [];
-    if (form.text.tc.trim()) tcList.push(form.text.tc.trim());
+    if (form?.text?.tc?.trim()) tcList.push(form.text.tc.trim());
     const tcSymptoms = selectedSymptoms.filter((s) => s.loai.includes('tc')).map((s) => s.ten);
     if (tcSymptoms.length > 0) tcList.push(`Tiền sử: ${tcSymptoms.join(', ')}`);
 

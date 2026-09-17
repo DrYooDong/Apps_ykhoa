@@ -338,7 +338,12 @@ export function MainApp() {
       tuoi: sample.form.tuoi,
       ngheNghiep: sample.form.ngheNghiep,
       lyDo: sample.form.lyDo,
-      text: { ...sample.form.text },
+      text: {
+        cn: sample.form.text?.cn || '',
+        tt: sample.form.text?.tt || '',
+        tc: sample.form.text?.tc || '',
+        cls: sample.form.text?.cls || '',
+      },
     });
     if (sample.vitals) {
       setVitals((prev) => ({ ...prev, ...sample.vitals }));
@@ -513,7 +518,7 @@ export function MainApp() {
 
       {/* Main View Area */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-5">
-        <ErrorBoundary onReset={() => setClinicalStep('t1')}>
+        <ErrorBoundary key={`${activeMode}_${clinicalStep}`} onReset={() => setClinicalStep('t1')}>
         {/* PHÂN HỆ 1: CHU TRÌNH LÂM SÀNG 3 BƯỚC */}
         {activeMode === 'clinical' && (
           <>

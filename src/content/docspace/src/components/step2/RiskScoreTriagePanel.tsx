@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import {
   Activity,
   AlertTriangle,
@@ -21,6 +21,9 @@ import {
 } from 'lucide-react';
 import { ClinicalFormState, VitalsState, LabsState, AnalysisResult } from '../../types.ts';
 import {
+  calculateClinicalRiskScore,
+  calculateEsiTriage,
+  calculatePewsScore,
   ClinicalRiskScore,
   EsiScoreResult,
   PewsScoreResult,
@@ -30,11 +33,11 @@ interface RiskScoreTriagePanelProps {
   form?: ClinicalFormState;
   vitals?: VitalsState;
   labs?: LabsState;
-  results: AnalysisResult[];
-  riskScore: ClinicalRiskScore;
-  esiScore: EsiScoreResult;
-  pewsScore: PewsScoreResult;
-  isPediatric: boolean;
+  results?: AnalysisResult[];
+  riskScore?: ClinicalRiskScore;
+  esiScore?: EsiScoreResult;
+  pewsScore?: PewsScoreResult;
+  isPediatric?: boolean;
   onOpenVaultDrawer?: (diseaseName?: string, query?: string, khoCode?: string) => void;
 }
 
@@ -42,25 +45,54 @@ export const RiskScoreTriagePanel: React.FC<RiskScoreTriagePanelProps> = ({
   form,
   vitals,
   labs,
-  results,
-  riskScore,
-  esiScore,
-  pewsScore,
-  isPediatric,
+  results = [],
+  riskScore: providedRiskScore,
+  esiScore: providedEsiScore,
+  pewsScore: providedPewsScore,
+  isPediatric: providedIsPediatric,
   onOpenVaultDrawer,
 }) => {
+  const isPediatric = providedIsPediatric ?? (form?.tuoi ? parseInt(form.tuoi, 10) < 16 : false);
+
+  const topMatchedIds = useMemo(() => {
+    return results && results[0]?.matched ? new Set(results[0].matched.map((m) => m.tc.id)) : undefined;
+  }, [results]);
+
+  const riskScore: ClinicalRiskScore = useMemo(() => {
+    return providedRiskScore || calculateClinicalRiskScore(vitals, labs, results, form);
+  }, [providedRiskScore, vitals, labs, results, form]);
+
+  const pewsScore: PewsScoreResult = useMemo(() => {
+    return providedPewsScore || calculatePewsScore(vitals, labs, form, topMatchedIds);
+  }, [providedPewsScore, vitals, labs, form, topMatchedIds]);
+
+  const esiScore: EsiScoreResult = useMemo(() => {
+    return providedEsiScore || calculateEsiTriage(vitals, labs, form, topMatchedIds);
+  }, [providedEsiScore, vitals, labs, form, topMatchedIds]);
+
   const [activeScoreSystem, setActiveScoreSystem] = useState<'news2' | 'esi' | 'pews'>(
     isPediatric ? 'pews' : 'news2'
   );
   const [showBreakdown, setShowBreakdown] = useState(false);
   const [showEsiDetails, setShowEsiDetails] = useState(false);
 
+  const defaultScoreColor = {
+    bg: 'bg-slate-50',
+    border: 'border-slate-200',
+    text: 'text-slate-700',
+    badgeBg: 'bg-slate-100',
+    badgeText: 'text-slate-800',
+    hex: '#64748b',
+    gradient: 'from-slate-500 to-slate-600',
+    badge: 'bg-slate-100 text-slate-800 border-slate-300',
+  };
+
   const currentScoreColor =
-    activeScoreSystem === 'esi'
-      ? esiScore.color
+    (activeScoreSystem === 'esi'
+      ? esiScore?.color
       : activeScoreSystem === 'pews'
-      ? pewsScore.color
-      : riskScore.color;
+      ? pewsScore?.color
+      : riskScore?.color) || defaultScoreColor;
 
   return (
     <div

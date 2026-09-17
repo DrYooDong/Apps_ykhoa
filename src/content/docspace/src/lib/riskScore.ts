@@ -937,7 +937,7 @@ export function calculateEsiTriage(
 
   // 1. Xét nghiệm máu / nước tiểu
   if (
-    form?.text.cls.trim() ||
+    form?.text?.cls?.trim() ||
     labs?.lBC ||
     labs?.lHct ||
     labs?.lTC ||
@@ -953,8 +953,8 @@ export function calculateEsiTriage(
     selectedIds?.has('kho_tho') ||
     selectedIds?.has('dau_bung') ||
     selectedIds?.has('chan_thuong') ||
-    form?.text.cls.toLowerCase().includes('x-quang') ||
-    form?.text.cls.toLowerCase().includes('siêu âm')
+    form?.text?.cls?.toLowerCase().includes('x-quang') ||
+    form?.text?.cls?.toLowerCase().includes('siêu âm')
   ) {
     resourceList.push('Chẩn đoán hình ảnh (X-quang ngực, Siêu âm ổ bụng)');
   }
