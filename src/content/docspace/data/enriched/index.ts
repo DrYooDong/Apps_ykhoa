@@ -19,6 +19,7 @@ import vgsv_B from './vgsv_B.json';
 import vgsv_C from './vgsv_C.json';
 import viem_mang_nao from './viem_mang_nao.json';
 import xo_gan_con_bu from './xo_gan_con_bu.json';
+import xo_gan_mat_bu from './xo_gan_mat_bu.json';
 
 export const ENRICHED_DISEASES: Record<string, DiseaseReactionChainDefinition> = {
   'dot_bung_phat_vgsv_B': dot_bung_phat_vgsv_B as unknown as DiseaseReactionChainDefinition,
@@ -30,6 +31,7 @@ export const ENRICHED_DISEASES: Record<string, DiseaseReactionChainDefinition> =
   'vgsv_C': vgsv_C as unknown as DiseaseReactionChainDefinition,
   'viem_mang_nao': viem_mang_nao as unknown as DiseaseReactionChainDefinition,
   'xo_gan_con_bu': xo_gan_con_bu as unknown as DiseaseReactionChainDefinition,
+  'xo_gan_mat_bu': xo_gan_mat_bu as unknown as DiseaseReactionChainDefinition,
 };
 
 export const ENRICHED_DISEASE_KEYS = Object.keys(ENRICHED_DISEASES);

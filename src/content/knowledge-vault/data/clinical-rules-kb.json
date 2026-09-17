@@ -2,7 +2,7 @@
   "meta": {
     "ten": "Kho tri thức lâm sàng toàn diện — 33 Bệnh lý trọng tâm & 195+ Triệu chứng CDSS",
     "phienBan": 4,
-    "capNhat": "2026-09-17T13:45:32.639Z"
+    "capNhat": "2026-09-17T15:05:31.212Z"
   },
   "trieuChung": [
     {
@@ -4291,6 +4291,86 @@
         "phu ne thanh tui mat"
       ],
       "map": null
+    },
+    {
+      "id": "co_truong_do_3",
+      "ten": "Cổ trướng căng / Dịch ổ bụng lượng nhiều (Ascites Grade 3)",
+      "nhom": "Tiêu hóa",
+      "loai": [
+        "tt"
+      ],
+      "tuKhoa": [
+        "co truong",
+        "dich o bung",
+        "bung truong cang",
+        "song vo"
+      ],
+      "map": null
+    },
+    {
+      "id": "non_ra_mau_phan_den",
+      "ten": "Xuất huyết tiêu hóa (Nôn ra máu / Phân đen dính nhựa đường)",
+      "nhom": "Tiêu hóa",
+      "loai": [
+        "cn",
+        "tt"
+      ],
+      "tuKhoa": [
+        "non ra mau",
+        "phan den",
+        "vo gian tinh mach thuc quan"
+      ],
+      "map": null
+    },
+    {
+      "id": "run_vo_canh_flapping_tremor",
+      "ten": "Run vỗ cánh (Asterixis / Flapping tremor) - Bệnh脑 gan",
+      "nhom": "Thần kinh",
+      "loai": [
+        "tt"
+      ],
+      "tuKhoa": [
+        "asterixis",
+        "flapping tremor",
+        "run vo canh",
+        "benh nao gan"
+      ],
+      "map": null
+    },
+    {
+      "id": "giam_albumin_mau",
+      "ten": "Giảm Albumin máu (&lt; 28 g/L)",
+      "nhom": "Cận lâm sàng",
+      "loai": [
+        "cls"
+      ],
+      "tuKhoa": [
+        "giam albumin",
+        "albumin mau thap"
+      ],
+      "map": {
+        "fld": "lAlbumin",
+        "op": "&lt;=",
+        "val": 28
+      }
+    },
+    {
+      "id": "tang_inr_pt",
+      "ten": "Rối loạn đông máu (INR &gt; 1.7 / PT &lt; 50%)",
+      "nhom": "Cận lâm sàng",
+      "loai": [
+        "cls"
+      ],
+      "tuKhoa": [
+        "inr tang",
+        "pt giam",
+        "coagulation"
+      ],
+      "map": {
+        "fld": "lINR",
+        "op": "&gt;=",
+        "val": 1.7
+      }
     }
   ],
   "benh": [
@@ -5310,6 +5390,117 @@
         ],
         "nguon": [
           "Hướng dẫn BYT Viêm gan B (2026), Quyết định 2855/QĐ-BYT (2024), Baveno VII Consensus Guidelines &amp; AASLD Practice Guidance 2023"
+        ]
+      }
+    },
+    {
+      "id": "xo_gan_mat_bu",
+      "ten": "Xơ gan mất bù (Decompensated Liver Cirrhosis)",
+      "icd": "K74.6",
+      "nhom": "Tiêu hóa - Gan mật",
+      "baoDong": true,
+      "ghiChuBaoDong": "CẢNH BÁO ĐỎ: Bệnh nhân xơ gan mất bù có nguy cơ cao tử vong do Sốc vỡ giãn TMQ, Nhiễm trùng dịch cổ trướng (SBP), Bệnh não gan tiến triển hoặc Suy gan cấp trên nền mạn (ACLF)!",
+      "tomTat": "Xơ gan mất bù là giai đoạn tiến triển muộn của bệnh gan mạn tính đặc trưng bởi suy giảm chức năng gan nặng và tăng áp lực tĩnh mạch cửa tiến triển kèm theo ít nhất một biến cố mất bù lâm sàng.",
+      "danSo": {
+        "gioiTinh": "any",
+        "tuoiMin": 18,
+        "tuoiMax": 100
+      },
+      "dd": [
+        [
+          "xo_gan_evidence",
+          4.5,
+          "dt"
+        ],
+        [
+          "decompensation_event",
+          4,
+          "dt"
+        ],
+        [
+          "co_truong_do_3",
+          3.5,
+          "gy"
+        ],
+        [
+          "non_ra_mau_phan_den",
+          3.5,
+          "gy"
+        ],
+        [
+          "run_vo_canh_flapping_tremor",
+          3,
+          "gy"
+        ],
+        [
+          "giam_albumin_mau",
+          2.5,
+          "ht"
+        ],
+        [
+          "tang_inr_pt",
+          2.5,
+          "ht"
+        ],
+        [
+          "giam_tieu_cau",
+          2,
+          "ht"
+        ],
+        [
+          "sao_mach_long_ban_tay_son",
+          1.5,
+          "ht"
+        ],
+        [
+          "thung_tang_rong",
+          -5,
+          "loaitru"
+        ]
+      ],
+      "phacDo": {
+        "tuyen": [
+          "Tuyến 1 (Trạm y tế/PK): Phát hiện biến cố mất bù (cổ trướng, nôn máu, lơ mơ), sơ cứu ban đầu, thiết lập đường truyền tĩnh mạch và chuyển tuyến cấp cứu ngay.",
+          "Tuyến 2 (Nội trú BV Huyện/Tỉnh): Nhập viện 100%. Điều trị lợi tiểu (Spironolactone + Furosemide), chọc tháo dịch cổ trướng giải áp + truyền Albumin, dùng Lactulose + Rifaximin cho HE.",
+          "Tuyến 3 (ICU / BV Chuyên khoa Gan mật): Hồi sức cấp cứu vỡ giãn TMQ (Terlipressin/Somatostatin IV + Nội soi thắt EBL trong 12h), chống sốc, điều trị HRS-AKI (Terlipressin + Albumin 1g/kg) và đánh giá khả năng Ghép gan."
+        ],
+        "thuoc": [
+          [
+            "Spironolactone + Furosemide",
+            "100mg Spironolactone + 40mg Furosemide/ngày (PO)",
+            "Phối hợp duy trì tỷ lệ 100mg:40mg. Chỉnh liều mỗi 3-5 ngày, tối đa 400mg:160mg/ngày"
+          ],
+          [
+            "Albumin 20%",
+            "20g (100 mL) cho mỗi 2.5L dịch cổ trướng tháo ra (hoặc 8g/L dịch tháo &gt; 5L)",
+            "Bắt buộc truyền khi chọc tháo dịch cổ trướng lượng lớn để phòng suy tuần hoàn PICD và HRS"
+          ],
+          [
+            "Lactulose",
+            "15-30 mL x 2-3 lần/ngày (PO) hoặc 300 mL pha 700 mL nước thụt giữ",
+            "Chỉnh liều đạt 2-3 lần đi cầu phân mềm/ngày để hạ NH3 máu"
+          ],
+          [
+            "Terlipressin / Somatostatin",
+            "Terlipressin 1-2 mg IV q4h / Somatostatin 250 mcg IV bolus rồi duy trì 250 mcg/h",
+            "Thuốc co mạch tạng hàng đầu trong vỡ giãn TMQ và điều trị HRS-AKI"
+          ],
+          [
+            "Tenofovir disoproxil fumarate (TDF) hoặc Entecavir",
+            "TDF 300mg/ngày hoặc ETV 0.5mg/ngày (PO)",
+            "Chỉ định ngay ở bệnh nhân xơ gan mất bù do HBV không phụ thuộc tải lượng HBV-DNA"
+          ]
+        ],
+        "theoDoi": [
+          "Sinh hiệu, tri giác (thang điểm West-Haven), lượng nước tiểu/h và vòng bụng/cân nặng hàng ngày",
+          "Xét nghiệm CTM, Hct, Bilirubin, Albumin, Creatinine, Elektrolyte (Na+, K+) và INR mỗi 2-3 ngày"
+        ],
+        "luuY": [
+          "TUYỆT ĐỐI KHÔNG dùng thuốc giảm đau NSAIDs, Aspirin, Aminoglycosides và thuốc an thần (Sedatives).",
+          "Hạn chế truyền dịch tinh thể chứa Natri cao (NaCl 0.9%) ở bệnh nhân cổ trướng nặng; không nâng Natri máu quá nhanh (&gt; 8-10 mmol/L/24h) để tránh hội chứng hủy Myelin cầu não."
+        ],
+        "nguon": [
+          "Quyết định 2855/QĐ-BYT (2024), EASL Guidelines on Decompensated Cirrhosis &amp; Baveno VII Consensus (2022)"
         ]
       }
     },
