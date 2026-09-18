@@ -73,12 +73,12 @@ src/content/ebm/guidelines/
 | `guidelines.css` | CSS | Master Style Entry Point nạp các mô-đun CSS | Style rules |
 | `guidelines.ts` | TS | Entry Controller điều phối `DOMContentLoaded` & Resize listener | `window.toggleSidebar`, `window.calculateNNT` |
 | `guidelinesdata.ts` | TS | Kho danh mục Chuyên khoa, Thiết kế, Tạp chí & Nạp Registry | `window.SAMPLE_STUDIES`, `window.CLINICAL_CONDITIONS` |
-| `kho-guidelines-registry.ts` | TS | Kho Metadata tĩnh tập trung 105+ tài liệu EBM | `KHO_GUIDELINES_STATIC`, `window.KHO_GUIDELINES_STATIC` |
+| `kho-guidelines-registry.ts` | TS | Kho Metadata tĩnh tập trung 161 tài liệu EBM chuẩn hóa (Đã lọc sạch trùng lặp) | `KHO_GUIDELINES_STATIC`, `window.KHO_GUIDELINES_STATIC` |
 | `guidelines-types.ts` | TS | Hệ thống Interface & Type Definitions trung tâm | `Study`, `FilterState`, `DuplicateCheckResult` |
 | `guidelines-view.ts` | TS | SPA View Component tích hợp vào Router của CliniPortal | `GuidelinesView` |
 | `js/guideline-sync.ts` | TS | Quản lý lưu trữ cục bộ, khử trùng lặp & đồng bộ LocalStorage | `window.loadStudies`, `window.saveStudies`, `window.detectStudyDuplicate` |
 | `js/guideline-table.ts` | TS | Lọc và Render Bảng bài báo, Thẻ Compact, Tabs Switcher | `window.renderTable`, `window.setFilter`, `window.switchTab` |
-| `js/guideline-modals.ts` | TS | Xử lý Modal Thêm/Sửa, Nhập JSON & Cấu hình ICD-10 Registry | `window.openAddModal`, `window.openConditionSettingsModal` |
+| `js/guideline-modals.ts` | TS | Xử lý Modal Thêm/Sửa, Nhập JSON, Lọc trùng nghiên cứu & Cấu hình ICD-10 Registry | `window.openAddModal`, `window.openConditionSettingsModal`, `window.openDuplicateScanModal` |
 | `js/guideline-visualizations.ts` | TS | Vẽ Bento Grid, Đồng hồ Gauge SVG & Bubble Evidence Map | `window.renderVisualizations` |
 | `js/guideline-evidence-analytics.ts` | TS | Tính toán Thống kê bằng cấp EBM & Công cụ NNT | `window.renderAnalytics` |
 | `js/guideline-cmd-palette.ts` | TS | Khởi tạo Command Palette (Ctrl+K) tra cứu nhanh Snippet | `window.openCommandPalette`, `window.handleCmdInput` |

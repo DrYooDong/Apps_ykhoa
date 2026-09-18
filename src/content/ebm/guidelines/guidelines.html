@@ -49,6 +49,11 @@
       const btn = document.getElementById('settings-toggle-btn');
       if (btn) btn.setAttribute('aria-expanded', 'false');
     }
+    function openDuplicateScanModal() {
+      if (window.openDuplicateScanModal) {
+        window.openDuplicateScanModal();
+      }
+    }
   </script>
 </head>
 
@@ -93,6 +98,14 @@
               <div class="settings-item-content">
                 <div class="settings-item-title">Quản lý Kho Bệnh (ICD-10)</div>
                 <div class="settings-item-desc">Thêm/sửa danh mục Vấn đề - Bệnh & mã ICD-10</div>
+              </div>
+            </button>
+
+            <button class="settings-menu-item" onclick="openDuplicateScanModal(); closeSettingsMenu();" role="menuitem">
+              <div class="settings-item-icon icon-amber">🛡️</div>
+              <div class="settings-item-content">
+                <div class="settings-item-title">Lọc Trùng Nghiên Cứu</div>
+                <div class="settings-item-desc">Quét & xử lý trùng lặp trong toàn bộ kho tài liệu</div>
               </div>
             </button>
 
@@ -948,7 +961,7 @@
   <div class="modal-overlay" id="duplicate-resolution-modal">
     <div class="modal modal-large" style="max-width: 960px;">
       <div class="modal-header">
-        <h3>🛡️ Phép Kiểm Trùng Lặp Dữ Liệu Nghiên Cứu</h3>
+        <h3 id="dup-modal-title">🛡️ Phép Kiểm Trùng Lặp Dữ Liệu Nghiên Cứu</h3>
         <button class="modal-close" onclick="closeDuplicateResolutionModal()">&times;</button>
       </div>
       <div class="modal-body">
@@ -956,7 +969,7 @@
           <!-- Dynamic banner rendered via JS -->
         </div>
 
-        <div style="display: flex; justify-content: space-between; align-items: center; background: var(--surface-2); padding: 8px 12px; border-radius: 8px; border: 1px solid var(--border-light); flex-wrap: wrap; gap: 8px;">
+        <div id="dup-action-bar" style="display: flex; justify-content: space-between; align-items: center; background: var(--surface-2); padding: 8px 12px; border-radius: 8px; border: 1px solid var(--border-light); flex-wrap: wrap; gap: 8px;">
           <div style="font-size: 0.8rem; font-weight: 700; color: var(--text);">⚡ Thao tác nhanh hàng loạt cho các bản ghi trùng:</div>
           <div style="display: flex; gap: 8px; flex-wrap: wrap;">
             <button type="button" class="btn btn-small" onclick="applyGlobalDupAction('skip')" style="font-size: 0.72rem; padding: 4px 10px;">🚫 Bỏ qua tất cả trùng</button>
@@ -969,9 +982,9 @@
           <!-- Items list rendered via JS -->
         </div>
       </div>
-      <div class="modal-footer">
+      <div class="modal-footer" id="dup-modal-footer">
         <button type="button" class="btn" onclick="closeDuplicateResolutionModal()">Hủy bỏ</button>
-        <button type="button" class="btn btn-primary" onclick="executeDuplicateImport()" style="font-weight: 800;">✅ Xác Nhận Thực Thi Nạp Dữ Liệu</button>
+        <button type="button" class="btn btn-primary" id="dup-confirm-btn" onclick="executeDuplicateResolutionAction()" style="font-weight: 800;">✅ Xác Nhận Thực Thi Nạp Dữ Liệu</button>
       </div>
     </div>
   </div>

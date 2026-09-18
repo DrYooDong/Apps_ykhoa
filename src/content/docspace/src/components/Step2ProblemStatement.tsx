@@ -20,6 +20,7 @@ import {
 import { CaseSummaryPanel, SummaryStructure } from './step2/CaseSummaryPanel.tsx';
 import { DiagnosticTrianglePanel } from './step2/DiagnosticTrianglePanel.tsx';
 import { ProblemListSection } from './step2/ProblemListSection.tsx';
+import { ClinicalReasoningPanel } from './step2/ClinicalReasoningPanel.tsx';
 
 interface Step2ProblemStatementProps {
   form: ClinicalFormState;
@@ -69,13 +70,52 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
 
   const topHypothesis = liveResults && liveResults.length > 0 ? liveResults[0] : null;
 
-  // Dữ liệu phân đoạn chuẩn hóa của Tóm tắt bệnh án
-  const summaryStructure: SummaryStructure = useMemo(() => {
-    const genderStr = form.gioiTinh === 'nam' ? 'Nam' : form.gioiTinh === 'nu' ? 'Nữ' : 'Người bệnh';
-    const ageStr = form.tuoi ? `${form.tuoi} tuổi` : 'chưa rõ tuổi';
-    const reasonStr = form.lyDo || 'chưa ghi nhận';
+  // Helper bóc tách thời gian khởi phát / diễn tiến bệnh từ bệnh sử hoặc lý do vào viện
+  const diseaseDuration = useMemo(() => {
+    const combined = `${form.lyDo || ''} ${form.text?.cn || ''}`;
+    const patterns = [
+      /(?:giờ thứ|ngày thứ)\s*(\d+)/i,
+      /(?:bệnh|khởi phát|cách nhập viện|diễn tiến)\s+(\d+\s*(?:giờ|ngày|tuần|tháng))/i,
+      /(\d+\s*(?:giờ|ngày|tuần|tháng)\s+nay)/i,
+      /(\d+\s*(?:giờ|ngày)\s+trước\s+nhập\s+viện)/i,
+    ];
+    for (const p of patterns) {
+      const m = combined.match(p);
+      if (m) {
+        if (p.source.includes('thứ')) {
+          return m[0]; // e.g. "giờ thứ 4", "ngày thứ 3"
+        }
+        return m[1] || m[0];
+      }
+    }
+    return null;
+  }, [form.lyDo, form.text?.cn]);
 
-    // 1. Triệu chứng cơ năng
+  // Dữ liệu phân đoạn chuẩn hóa của Tóm tắt bệnh án (chuẩn ĐHYD TP.HCM & BV Chợ Rẫy)
+  const summaryStructure: SummaryStructure = useMemo(() => {
+    const genderStr = form.gioiTinh === 'nam' ? 'nam' : form.gioiTinh === 'nu' ? 'nữ' : 'người bệnh';
+    const ageStr = form.tuoi ? `${form.tuoi} tuổi` : 'chưa rõ tuổi';
+    const reasonStr = form.lyDo ? form.lyDo.trim() : 'khám bệnh';
+    const durationStr =
+      diseaseDuration && !reasonStr.toLowerCase().includes(diseaseDuration.toLowerCase())
+        ? ` (${diseaseDuration})`
+        : '';
+
+    const opening = `Bệnh nhân ${genderStr}, ${ageStr}, vào viện vì ${reasonStr}${durationStr}.`;
+    const leadIn = 'Qua hỏi bệnh và thăm khám lâm sàng, ghi nhận các hội chứng, triệu chứng sau:';
+    const closing = 'Ngoài các dấu hiệu trên, chưa ghi nhận bất thường khác.';
+
+    // 1. Các Hội chứng lâm sàng & Vấn đề cấp (Ưu tiên gom nhóm theo chuẩn ĐHYD TPHCM)
+    const syndromes: string[] = [];
+    problems.forEach((p) => {
+      if (p.type === 'hoi-chung' || (p.priorityLevel === 'acute' && !p.id.startsWith('prob_'))) {
+        if (!syndromes.includes(p.label)) {
+          syndromes.push(p.label);
+        }
+      }
+    });
+
+    // 2. Triệu chứng cơ năng
     const cnList: string[] = [];
     if (form.text.cn.trim()) cnList.push(form.text.cn.trim());
     const cnSymptoms = selectedSymptoms
@@ -85,7 +125,7 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
       cnList.push(`Dấu hiệu ghi nhận: ${cnSymptoms.join(', ')}`);
     }
 
-    // 2. Triệu chứng thực thể
+    // 3. Triệu chứng thực thể & Sinh hiệu bất thường
     const vitalAnomalies: string[] = [];
     const tempNum = parseFloat(vitals.vNhiet);
     if (!isNaN(tempNum) && tempNum >= 38) vitalAnomalies.push(`Sốt ${vitals.vNhiet}°C`);
@@ -111,7 +151,7 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
       .map((s) => s.ten);
     if (ttSymptoms.length > 0) examList.push(`Dấu hiệu thực thể: ${ttSymptoms.join(', ')}`);
 
-    // 3. Yếu tố Dịch tễ học (Góc nhìn truyền nhiễm)
+    // 4. Yếu tố Dịch tễ học (Góc nhìn truyền nhiễm)
     const epiList: string[] = [];
     if (epiContext?.endemicArea?.trim()) epiList.push(`Vùng dịch tễ lưu hành: ${epiContext.endemicArea.trim()}`);
     if (epiContext?.outbreakAlert?.trim()) epiList.push(`Ổ dịch địa phương: ${epiContext.outbreakAlert.trim()}`);
@@ -121,7 +161,7 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
     if (epiContext?.seasonalContext?.trim()) epiList.push(`Bối cảnh mùa dịch: ${epiContext.seasonalContext.trim()}`);
     if (epiContext?.waterFoodRisk?.trim()) epiList.push(`Nguồn nước/thực phẩm: ${epiContext.waterFoodRisk.trim()}`);
 
-    // 4. Cận lâm sàng ban đầu
+    // 5. Cận lâm sàng ban đầu
     const labItems: string[] = [];
     if (labs.lBC) labItems.push(`Bạch cầu ${labs.lBC} G/L`);
     if (labs.lTC) labItems.push(`Tiểu cầu ${labs.lTC} G/L`);
@@ -131,18 +171,22 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
     const clsNarrative: string[] = [];
     if (form?.text?.cls?.trim()) clsNarrative.push(form.text.cls.trim());
 
-    // 5. Tiền căn
+    // 6. Tiền căn
     const tcList: string[] = [];
     if (form?.text?.tc?.trim()) tcList.push(form.text.tc.trim());
     const tcSymptoms = selectedSymptoms.filter((s) => s.loai.includes('tc')).map((s) => s.ten);
     if (tcSymptoms.length > 0) tcList.push(`Tiền sử: ${tcSymptoms.join(', ')}`);
 
-    // 6. Dấu hiệu âm tính có giá trị loại trừ
+    // 7. Dấu hiệu âm tính có giá trị loại trừ
     const negList = negatedSymptoms.map((s) => `Không ${s.ten.toLowerCase()}`);
 
     return {
-      demographics: `Bệnh nhân ${genderStr.toLowerCase()}, ${ageStr}.`,
-      reason: `Vào viện vì lý do: ${reasonStr}.`,
+      demographics: `Bệnh nhân ${genderStr}, ${ageStr}.`,
+      reason: `Vào viện vì: ${reasonStr}.`,
+      duration: diseaseDuration || undefined,
+      opening,
+      leadIn,
+      syndromes,
       cnList,
       vitalAnomalies,
       examList,
@@ -151,22 +195,32 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
       clsNarrative,
       tcList,
       negList,
+      closing,
     };
-  }, [form, vitals, labs, selectedSymptoms, negatedSymptoms, epiContext]);
+  }, [form, vitals, labs, selectedSymptoms, negatedSymptoms, epiContext, problems, diseaseDuration]);
 
-  // Sinh văn bản Tóm tắt bệnh án tự động chuẩn mực y khoa (xuống hàng thoáng mắt theo từng phần)
+  // Sinh văn bản Tóm tắt bệnh án tự động chuẩn mực y khoa (xuống hàng thoáng mắt theo từng phần chuẩn ĐHYD TP.HCM)
   const generatedSummary = useMemo(() => {
     const s = summaryStructure;
     const parts: string[] = [];
 
-    parts.push(`${s.demographics}\n${s.reason}\nQua hỏi bệnh và thăm khám lâm sàng, ghi nhận các vấn đề chính sau:`);
+    parts.push(`${s.opening}\n${s.leadIn}`);
 
-    if (s.cnList.length > 0) {
-      parts.push(`1. Triệu chứng cơ năng:\n${s.cnList.map((item) => `- ${item}`).join('\n')}`);
-    } else {
-      parts.push(`1. Triệu chứng cơ năng:\n- Chưa ghi nhận bất thường đặc hiệu.`);
+    let sectionIdx = 1;
+
+    // 1. Các Hội chứng lâm sàng & Vấn đề cấp (nếu có)
+    if (s.syndromes && s.syndromes.length > 0) {
+      parts.push(`${sectionIdx++}. Các Hội chứng lâm sàng & Vấn đề cấp:\n${s.syndromes.map((syn) => `- ${syn}`).join('\n')}`);
     }
 
+    // 2. Triệu chứng cơ năng
+    if (s.cnList.length > 0) {
+      parts.push(`${sectionIdx++}. Triệu chứng cơ năng & Bệnh sử:\n${s.cnList.map((item) => `- ${item}`).join('\n')}`);
+    } else {
+      parts.push(`${sectionIdx++}. Triệu chứng cơ năng & Bệnh sử:\n- Chưa ghi nhận bất thường đặc hiệu.`);
+    }
+
+    // 3. Triệu chứng thực thể & Dấu hiệu sinh tồn
     const ttParts: string[] = [];
     if (s.vitalAnomalies.length > 0) {
       ttParts.push(`- Sinh hiệu bất thường: ${s.vitalAnomalies.join(' · ')}`);
@@ -175,15 +229,12 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
       s.examList.forEach((e) => ttParts.push(`- ${e}`));
     }
     if (ttParts.length > 0) {
-      parts.push(`2. Triệu chứng thực thể:\n${ttParts.join('\n')}`);
+      parts.push(`${sectionIdx++}. Triệu chứng thực thể & Dấu hiệu sinh tồn:\n${ttParts.join('\n')}`);
     } else {
-      parts.push(`2. Triệu chứng thực thể:\n- Tổng trạng ổn định, chưa ghi nhận dấu hiệu nặng.`);
+      parts.push(`${sectionIdx++}. Triệu chứng thực thể & Dấu hiệu sinh tồn:\n- Tổng trạng ổn định, chưa ghi nhận dấu hiệu nặng.`);
     }
 
-    if (s.epiList.length > 0) {
-      parts.push(`3. Yếu tố dịch tễ (Góc nhìn truyền nhiễm):\n${s.epiList.map((e) => `- ${e}`).join('\n')}`);
-    }
-
+    // 4. Cận lâm sàng ban đầu (nếu có)
     const clsParts: string[] = [];
     if (s.labItems.length > 0) {
       clsParts.push(`- Chỉ số xét nghiệm: ${s.labItems.join(' · ')}`);
@@ -192,16 +243,26 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
       s.clsNarrative.forEach((c) => clsParts.push(`- ${c}`));
     }
     if (clsParts.length > 0) {
-      parts.push(`4. Cận lâm sàng ban đầu:\n${clsParts.join('\n')}`);
+      parts.push(`${sectionIdx++}. Cận lâm sàng & Xét nghiệm ban đầu:\n${clsParts.join('\n')}`);
     }
 
+    // Yếu tố dịch tễ (nếu có)
+    if (s.epiList && s.epiList.length > 0) {
+      parts.push(`- Yếu tố dịch tễ (Bối cảnh truyền nhiễm):\n${s.epiList.map((e) => `  + ${e}`).join('\n')}`);
+    }
+
+    // 5. Tiền căn có liên quan
     if (s.tcList.length > 0) {
-      parts.push(`5. Tiền căn:\n${s.tcList.map((t) => `- ${t}`).join('\n')}`);
+      parts.push(`${sectionIdx++}. Tiền căn có liên quan:\n${s.tcList.map((t) => `- ${t}`).join('\n')}`);
     }
 
+    // 6. Dấu hiệu âm tính có giá trị chẩn đoán / loại trừ
     if (s.negList.length > 0) {
-      parts.push(`6. Dấu hiệu âm tính có giá trị loại trừ:\n- ${s.negList.join('; ')}`);
+      parts.push(`${sectionIdx++}. Dấu hiệu âm tính có giá trị loại trừ:\n- ${s.negList.join('; ')}`);
     }
+
+    // Câu kết chuẩn hóa
+    parts.push(s.closing);
 
     return parts.join('\n\n');
   }, [summaryStructure]);
@@ -544,6 +605,22 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
         </div>
       </div>
 
+      {/* SECTION III: BIỆN LUẬN LÂM SÀNG (CLINICAL REASONING ENGINE - PGS.TS HOÀNG VĂN SỸ & BSCKI TRẦN THANH TUẤN) */}
+      <ClinicalReasoningPanel
+        topResult={topHypothesis}
+        results={liveResults || []}
+        kb={kb}
+        form={form}
+        vitals={vitals}
+        labs={labs}
+        selectedSymptoms={selectedSymptoms}
+        negatedSymptoms={negatedSymptoms}
+        problems={problems}
+        epiContext={epiContext}
+        onGoToStep={onGoToStep}
+        onOpenVaultDrawer={onOpenVaultDrawer}
+      />
+
       {/* Bottom Action Bar */}
       <div className="flex items-center justify-between pt-4 border-t border-slate-200">
         <button
@@ -560,7 +637,7 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
           onClick={() => onGoToStep('t3')}
           className="px-5 py-2.5 text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-lg shadow-sm hover:shadow transition-all flex items-center gap-2 cursor-pointer"
         >
-          Tiếp tục sang Bước 3: Phân tích & Biện luận
+          Tiếp tục sang Bước 3: Đề nghị Cận lâm sàng & Phân tầng xử trí
           <ArrowRight className="w-4 h-4" />
         </button>
       </div>

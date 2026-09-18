@@ -216,11 +216,16 @@ export const Step2Analysis: React.FC<Step2Props> = ({
               </button>
             </div>
 
-            {/* KHỐI 4: ĐỀ NGHỊ CẬN LÂM SÀNG CHIẾN LƯỢC (TARGETED DIAGNOSTIC WORKUP) */}
+            {/* KHỐI 4: ĐỀ NGHỊ CẬN LÂM SÀNG 2 TẦNG (TARGETED & ROUTINE WORKUP - PGS.TS HOÀNG VĂN SỸ) */}
             <TargetedDiagnosticWorkup
               topResult={top}
               results={results}
               activeChain={activeChain}
+              vitals={vitals}
+              labs={labs}
+              form={form}
+              problems={problems}
+              epiContext={epiContext}
             />
 
             {/* KHỐI 5: CHẨN ĐOÁN PHÂN BIỆT & ĐỐI SÁNH ĐỐI ĐẦU */}

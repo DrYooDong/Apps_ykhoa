@@ -3,12 +3,14 @@
  * Path: src/content/ebm/guidelines/js/guideline-modals.ts
  */
 
-import { Study, BatchDuplicateItem } from './guidelines-types';
+import { Study, BatchDuplicateItem, ExistingDuplicateConflict } from './guidelines-types';
 
 import './guidelines-types';
 
 let editingStudyId: string | null = null;
 let pendingImportBatch: BatchDuplicateItem[] = [];
+let existingDupConflicts: ExistingDuplicateConflict[] = [];
+let duplicateModalMode: 'import' | 'scan' = 'import';
 
 function getValueFromIds(...ids: string[]): string {
   for (const id of ids) {
@@ -550,8 +552,13 @@ export function fillSampleJSON(): void {
 }
 
 export function openDuplicateResolutionModal(): void {
+  duplicateModalMode = 'import';
   const modal = document.getElementById('duplicate-resolution-modal');
   if (!modal) return;
+  const modalTitle = document.getElementById('dup-modal-title') || modal.querySelector('.modal-header h3');
+  if (modalTitle) modalTitle.innerHTML = '🛡️ Phép Kiểm Trùng Lặp Dữ Liệu Nghiên Cứu';
+  const confirmBtn = document.getElementById('dup-confirm-btn');
+  if (confirmBtn) confirmBtn.textContent = '✅ Xác Nhận Thực Thi Nạp Dữ Liệu';
   modal.classList.add('active');
   renderDuplicateResolutionItems();
 }
@@ -560,6 +567,8 @@ export function closeDuplicateResolutionModal(): void {
   const modal = document.getElementById('duplicate-resolution-modal');
   if (modal) modal.classList.remove('active');
   pendingImportBatch = [];
+  existingDupConflicts = [];
+  duplicateModalMode = 'import';
 }
 
 export function applyGlobalDupAction(action: string): void {
@@ -581,7 +590,25 @@ export function setPerItemDupAction(index: number, action: string): void {
 export function renderDuplicateResolutionItems(): void {
   const bannerEl = document.getElementById('dup-summary-banner');
   const containerEl = document.getElementById('dup-items-container');
+  const actionBar = document.getElementById('dup-action-bar');
+  const confirmBtn = document.getElementById('dup-confirm-btn');
   if (!containerEl) return;
+
+  if (actionBar) {
+    actionBar.style.display = 'flex';
+    actionBar.innerHTML = `
+      <div style="font-size: 0.8rem; font-weight: 700; color: var(--text);">⚡ Thao tác nhanh hàng loạt cho các bản ghi trùng:</div>
+      <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+        <button type="button" class="btn btn-small" onclick="applyGlobalDupAction('skip')" style="font-size: 0.72rem; padding: 4px 10px;">🚫 Bỏ qua tất cả trùng</button>
+        <button type="button" class="btn btn-small" onclick="applyGlobalDupAction('overwrite')" style="font-size: 0.72rem; padding: 4px 10px;">🔄 Ghi đè tất cả trùng</button>
+        <button type="button" class="btn btn-small" onclick="applyGlobalDupAction('new')" style="font-size: 0.72rem; padding: 4px 10px;">➕ Giữ cả hai (Thêm mới)</button>
+      </div>
+    `;
+  }
+  if (confirmBtn) {
+    confirmBtn.style.display = '';
+    confirmBtn.textContent = '✅ Xác Nhận Thực Thi Nạp Dữ Liệu';
+  }
 
   const total = pendingImportBatch.length;
   const dupCount = pendingImportBatch.filter(b => b.dupResult && b.dupResult.isDuplicate).length;
@@ -725,7 +752,411 @@ export function executeDuplicateImport(): void {
   if (window.renderTable) window.renderTable();
   if (window.renderUpdates) window.renderUpdates();
 
-  alert(`🎉 Phép kiểm hoàn tất & đã thực thi nạp dữ liệu!\n• Thêm mới thành công: ${addedCount} bài\n• Ghi đè / Cập nhật: ${overwrittenCount} bài\n• Bỏ qua bài trùng: ${skippedCount} bài.`);
+  if (window.showMedicalToast) {
+    window.showMedicalToast({
+      type: 'success',
+      title: 'Nạp dữ liệu hoàn tất',
+      message: `Đã nạp xong: Thêm mới ${addedCount} bài, Cập nhật ${overwrittenCount} bài, Bỏ qua ${skippedCount} bài trùng.`
+    });
+  } else {
+    alert(`🎉 Phép kiểm hoàn tất & đã thực thi nạp dữ liệu!\n• Thêm mới thành công: ${addedCount} bài\n• Ghi đè / Cập nhật: ${overwrittenCount} bài\n• Bỏ qua bài trùng: ${skippedCount} bài.`);
+  }
+}
+
+// ════════════════════════════════════════════════════════════════
+// SMART SCAN & CLEANUP DUPLICATES (LỌC TRÙNG KHO NGHIÊN CỨU)
+// ════════════════════════════════════════════════════════════════
+
+export function scanExistingDuplicates(): ExistingDuplicateConflict[] {
+  const list = window.studies || [];
+  const conflicts: ExistingDuplicateConflict[] = [];
+  const seenPairKeys = new Set<string>();
+
+  for (let i = 0; i < list.length; i++) {
+    const studyA = list[i];
+    if (!studyA || !studyA.id) continue;
+
+    for (let j = i + 1; j < list.length; j++) {
+      const studyB = list[j];
+      if (!studyB || !studyB.id || studyA.id === studyB.id) continue;
+
+      const pairKey = [studyA.id, studyB.id].sort().join(':::');
+      if (seenPairKeys.has(pairKey)) continue;
+
+      // 1. Kiểm tra trỏ cùng file MDX
+      const sameFile = !!(studyA.file && studyB.file && studyA.file.trim().toLowerCase() === studyB.file.trim().toLowerCase());
+
+      // 2. Kiểm tra Core Key (viết tắt / tên nghiên cứu)
+      const coreA = window.extractCoreKey ? window.extractCoreKey(studyA.title) : '';
+      const coreB = window.extractCoreKey ? window.extractCoreKey(studyB.title) : '';
+      const sameCore = !!(coreA && coreB && coreA === coreB);
+
+      // 3. Phép kiểm đối sánh đa yếu tố CDSS
+      let dupResult = window.detectStudyDuplicate ? window.detectStudyDuplicate(studyA, [studyB]) : null;
+
+      let isDup = false;
+      let score = 0;
+      let level: 'exact' | 'high' | 'moderate' = 'moderate';
+      let reasons: string[] = [];
+
+      if (sameFile) {
+        isDup = true;
+        score = 100;
+        level = 'exact';
+        reasons.push(`Cùng liên kết bài tóm tắt: ${studyA.file}`);
+      }
+
+      if (sameCore) {
+        isDup = true;
+        score = 100;
+        level = 'exact';
+        reasons.push('Trùng khớp 100% Tiêu đề cốt lõi / Tên viết tắt nghiên cứu');
+      }
+
+      if (dupResult && dupResult.isDuplicate) {
+        isDup = true;
+        score = Math.max(score, dupResult.score);
+        if (dupResult.matchLevel === 'exact') level = 'exact';
+        else if (dupResult.matchLevel === 'high' && level !== 'exact') level = 'high';
+        if (dupResult.reasons && dupResult.reasons.length > 0) {
+          dupResult.reasons.forEach(r => {
+            if (!reasons.includes(r)) reasons.push(r);
+          });
+        }
+      }
+
+      if (isDup) {
+        seenPairKeys.add(pairKey);
+
+        // Đánh giá độ phong phú thông tin để chọn bản ghi chính ưu tiên giữ
+        const scoreStudyCompleteness = (s: Study): number => {
+          let pts = 0;
+          if (s.file) pts += 25;
+          if (s.summary && s.summary !== 'Không có kết luận') pts += 20;
+          if (s.parts && Array.isArray(s.parts) && s.parts.length > 0) pts += 15;
+          if (s.subgroups) pts += 10;
+          if (s.keyResults) pts += 10;
+          if (s.drug) pts += 5;
+          if (s.primaryEndpoint) pts += 5;
+          if (s.intervention) pts += 5;
+          if ((s as any).journalMetrics) pts += 5;
+          if (s.icd10 && (Array.isArray(s.icd10) ? s.icd10.length : 1)) pts += 5;
+          return pts;
+        };
+
+        const compA = scoreStudyCompleteness(studyA);
+        const compB = scoreStudyCompleteness(studyB);
+
+        const primary = compB > compA ? studyB : studyA;
+        const duplicate = compB > compA ? studyA : studyB;
+
+        conflicts.push({
+          id: `conflict_${conflicts.length + 1}`,
+          studyA: primary,
+          studyB: duplicate,
+          score: Math.min(100, score),
+          matchLevel: level,
+          reasons: reasons.length > 0 ? reasons : ['Trùng lặp dữ liệu nghiên cứu'],
+          action: 'merge'
+        });
+      }
+    }
+  }
+
+  return conflicts;
+}
+
+export function openDuplicateScanModal(): void {
+  duplicateModalMode = 'scan';
+  const modal = document.getElementById('duplicate-resolution-modal');
+  if (!modal) return;
+
+  const modalTitle = document.getElementById('dup-modal-title') || modal.querySelector('.modal-header h3');
+  if (modalTitle) {
+    modalTitle.innerHTML = '🛡️ Lọc Trùng Nghiên Cứu — Quét Kho Dữ Liệu';
+  }
+
+  existingDupConflicts = scanExistingDuplicates();
+  modal.classList.add('active');
+  renderDuplicateScanItems();
+}
+
+export function renderDuplicateScanItems(): void {
+  const bannerEl = document.getElementById('dup-summary-banner');
+  const containerEl = document.getElementById('dup-items-container');
+  const actionBar = document.getElementById('dup-action-bar');
+  const confirmBtn = document.getElementById('dup-confirm-btn');
+  if (!containerEl) return;
+
+  const totalStudies = (window.studies || []).length;
+  const count = existingDupConflicts.length;
+
+  if (count === 0) {
+    if (bannerEl) {
+      bannerEl.innerHTML = `
+        <div style="width: 100%; text-align: center; padding: 1.5rem 0;">
+          <div style="font-size: 2.4rem; margin-bottom: 0.6rem;">🎉</div>
+          <div style="font-size: 1.1rem; font-weight: 800; color: var(--color-success, #16a34a); margin-bottom: 6px;">
+            Kho Dữ Liệu Sạch Sẽ — Không Phát Hiện Nghiên Cứu Trùng Lặp!
+          </div>
+          <div style="font-size: 0.84rem; color: var(--text-muted); max-width: 540px; margin: 0 auto 1.25rem; line-height: 1.5;">
+            Hệ thống đã quét toàn diện toàn bộ <strong>${totalStudies}</strong> hướng dẫn & thử nghiệm lâm sàng hiện có trong kho. Tất cả bản ghi đều độc lập và duy nhất về tiêu đề cốt lõi, năm công bố, mã ICD-10 và nguồn tổ chức.
+          </div>
+          <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(22, 163, 74, 0.1); color: var(--color-success, #16a34a); border: 1px solid rgba(22, 163, 74, 0.25); padding: 6px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 700;">
+            <i class="fa-solid fa-circle-check"></i> 100% Dữ liệu chuẩn hóa (Không có trùng lặp)
+          </div>
+        </div>
+      `;
+    }
+    if (actionBar) actionBar.style.display = 'none';
+    containerEl.innerHTML = '';
+    if (confirmBtn) confirmBtn.style.display = 'none';
+    return;
+  }
+
+  if (confirmBtn) {
+    confirmBtn.style.display = '';
+    confirmBtn.textContent = '✅ Xác Nhận Lọc Trùng & Làm Sạch';
+  }
+
+  if (actionBar) {
+    actionBar.style.display = 'flex';
+    actionBar.innerHTML = `
+      <div style="font-size: 0.8rem; font-weight: 700; color: var(--text);">⚡ Thao tác nhanh hàng loạt cho các cặp trùng:</div>
+      <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+        <button type="button" class="btn btn-small btn-primary" onclick="applyGlobalScanDupAction('merge')" style="font-size: 0.72rem; padding: 4px 10px;">🔄 Tự động hợp nhất tất cả</button>
+        <button type="button" class="btn btn-small" onclick="applyGlobalScanDupAction('delete_b')" style="font-size: 0.72rem; padding: 4px 10px;">🗑️ Xóa tất cả bản sao thừa</button>
+        <button type="button" class="btn btn-small" onclick="applyGlobalScanDupAction('keep_both')" style="font-size: 0.72rem; padding: 4px 10px;">⏭️ Giữ cả hai (Bỏ qua)</button>
+      </div>
+    `;
+  }
+
+  if (bannerEl) {
+    bannerEl.innerHTML = `
+      <div>
+        <div style="font-size: 0.95rem; font-weight: 800; color: #dc2626;">
+          🔍 Lọc Trùng Kho Dữ Liệu: Phát hiện ${count} cặp nghiên cứu có nguy cơ trùng lặp!
+        </div>
+        <div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 4px;">
+          Đã đối soát toàn bộ <strong>${totalStudies}</strong> bài trong hệ thống. Vui lòng chọn hành động xử lý cho từng cặp bên dưới:
+        </div>
+      </div>
+      <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+        <span class="dup-badge dup-badge-exact">⚠️ ${count} cặp trùng</span>
+        <button type="button" class="btn btn-small" onclick="filterTableByDuplicateIds()" style="font-size: 0.72rem; padding: 4px 10px;" title="Xem các bài trùng trên bảng dữ liệu chính">
+          📋 Xem trên bảng
+        </button>
+      </div>
+    `;
+  }
+
+  let html = '';
+  existingDupConflicts.forEach((conflict, idx) => {
+    const sA = conflict.studyA;
+    const sB = conflict.studyB;
+
+    let badgeClass = 'dup-badge-new';
+    let badgeLabel = '✨ Trùng nguy cơ vừa';
+    if (conflict.matchLevel === 'exact') {
+      badgeClass = 'dup-badge-exact';
+      badgeLabel = '🔴 Trùng khớp 100%';
+    } else if (conflict.matchLevel === 'high') {
+      badgeClass = 'dup-badge-high';
+      badgeLabel = `🟠 Trùng nguy cơ cao (${conflict.score}%)`;
+    } else {
+      badgeClass = 'dup-badge-moderate';
+      badgeLabel = `🟡 Trùng nguy cơ vừa (${conflict.score}%)`;
+    }
+
+    html += `
+      <div class="dup-item-card" style="border-left: 4px solid var(--accent, #ea580c);">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+          <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+            <span style="font-weight: 800; font-size: 0.82rem; color: var(--text-muted);">#${idx + 1}</span>
+            <span class="dup-badge ${badgeClass}">${badgeLabel}</span>
+            <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">Lý do: ${escapeHtml(conflict.reasons.join(' • '))}</span>
+          </div>
+
+          <div class="dup-action-selector">
+            <span style="font-size: 0.75rem; color: var(--text-muted);">Hành động:</span>
+            <label>
+              <input type="radio" name="scan_dup_action_${idx}" value="merge" ${conflict.action === 'merge' ? 'checked' : ''} onchange="setPerScanItemDupAction(${idx}, 'merge')">
+              <span>🔄 Hợp nhất vào Bài 1</span>
+            </label>
+            <label>
+              <input type="radio" name="scan_dup_action_${idx}" value="delete_b" ${conflict.action === 'delete_b' ? 'checked' : ''} onchange="setPerScanItemDupAction(${idx}, 'delete_b')">
+              <span>🗑️ Xóa Bài 2</span>
+            </label>
+            <label>
+              <input type="radio" name="scan_dup_action_${idx}" value="delete_a" ${conflict.action === 'delete_a' ? 'checked' : ''} onchange="setPerScanItemDupAction(${idx}, 'delete_a')">
+              <span>🗑️ Xóa Bài 1</span>
+            </label>
+            <label>
+              <input type="radio" name="scan_dup_action_${idx}" value="keep_both" ${conflict.action === 'keep_both' ? 'checked' : ''} onchange="setPerScanItemDupAction(${idx}, 'keep_both')">
+              <span>⏭️ Giữ cả hai</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="dup-comparison-grid">
+          <div class="dup-subcard" style="border-color: var(--accent-light, #fed7aa);">
+            <div class="dup-subcard-header" style="color: var(--accent, #ea580c); font-weight: 800;">
+              💾 Bản Ghi 1 (Khuyên giữ - Chi tiết hơn)
+            </div>
+            <div class="dup-subcard-title">${escapeHtml(sA.title || 'Không có tiêu đề')}</div>
+            <div class="dup-subcard-meta">
+              <span>📅 Năm: <strong>${sA.year || 'N/A'}</strong></span>
+              <span>🏛️ Nguồn: <strong>${escapeHtml(sA.organization || sA.journal || 'N/A')}</strong></span>
+              <span>💊 Thuốc: <strong>${escapeHtml(sA.drug || sA.intervention || 'N/A')}</strong></span>
+              <span>📝 Tóm tắt MDX: <strong>${sA.file ? `<span style="color:#16a34a; font-weight:700;">Có file</span>` : '<span style="color:var(--text-muted);">Không</span>'}</strong></span>
+              <span>🔑 ID: <code style="font-size: 0.7rem;">${sA.id}</code></span>
+            </div>
+          </div>
+
+          <div class="dup-subcard" style="background: var(--surface-2); border-color: var(--border-light);">
+            <div class="dup-subcard-header" style="color: #dc2626; font-weight: 800;">
+              ⚠️ Bản Ghi 2 (Trùng lặp / Thừa)
+            </div>
+            <div class="dup-subcard-title">${escapeHtml(sB.title || 'Không có tiêu đề')}</div>
+            <div class="dup-subcard-meta">
+              <span>📅 Năm: <strong>${sB.year || 'N/A'}</strong></span>
+              <span>🏛️ Nguồn: <strong>${escapeHtml(sB.organization || sB.journal || 'N/A')}</strong></span>
+              <span>💊 Thuốc: <strong>${escapeHtml(sB.drug || sB.intervention || 'N/A')}</strong></span>
+              <span>📝 Tóm tắt MDX: <strong>${sB.file ? `<span style="color:#16a34a; font-weight:700;">Có file</span>` : '<span style="color:var(--text-muted);">Không</span>'}</strong></span>
+              <span>🔑 ID: <code style="font-size: 0.7rem;">${sB.id}</code></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  });
+
+  containerEl.innerHTML = html;
+}
+
+export function applyGlobalScanDupAction(action: 'merge' | 'delete_b' | 'keep_both'): void {
+  if (!existingDupConflicts || existingDupConflicts.length === 0) return;
+  existingDupConflicts.forEach(c => {
+    c.action = action;
+  });
+  renderDuplicateScanItems();
+}
+
+export function setPerScanItemDupAction(index: number, action: string): void {
+  if (existingDupConflicts && existingDupConflicts[index]) {
+    existingDupConflicts[index].action = action as any;
+  }
+}
+
+export function executeDuplicateScanCleanup(): void {
+  if (!existingDupConflicts || existingDupConflicts.length === 0) {
+    closeDuplicateResolutionModal();
+    return;
+  }
+
+  let mergedCount = 0;
+  let deletedCount = 0;
+  const idsToRemove = new Set<string>();
+
+  existingDupConflicts.forEach(conflict => {
+    const { studyA, studyB, action } = conflict;
+    if (action === 'merge') {
+      const idxA = (window.studies || []).findIndex(s => s.id === studyA.id);
+      if (idxA !== -1) {
+        const merged: Study = { ...window.studies[idxA] };
+        if (!merged.file && studyB.file) merged.file = studyB.file;
+        if ((!merged.summary || merged.summary === 'Không có kết luận') && studyB.summary) merged.summary = studyB.summary;
+        if (!merged.parts && studyB.parts) merged.parts = studyB.parts;
+        if (!merged.subgroups && studyB.subgroups) merged.subgroups = studyB.subgroups;
+        if (!merged.drug && studyB.drug) merged.drug = studyB.drug;
+        if (!merged.intervention && studyB.intervention) merged.intervention = studyB.intervention;
+        if (!(merged as any).journalMetrics && (studyB as any).journalMetrics) (merged as any).journalMetrics = (studyB as any).journalMetrics;
+        if (!merged.icd10 && studyB.icd10) merged.icd10 = studyB.icd10;
+        window.studies[idxA] = merged;
+      }
+      idsToRemove.add(studyB.id);
+      mergedCount++;
+    } else if (action === 'delete_b') {
+      idsToRemove.add(studyB.id);
+      deletedCount++;
+    } else if (action === 'delete_a') {
+      idsToRemove.add(studyA.id);
+      deletedCount++;
+    }
+  });
+
+  if (idsToRemove.size > 0) {
+    window.studies = (window.studies || []).filter(s => !idsToRemove.has(s.id));
+    idsToRemove.forEach(id => {
+      if (window.saveDeletedStudyId) window.saveDeletedStudyId(id);
+    });
+
+    try {
+      const stored = localStorage.getItem('cliniportal_custom_studies');
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        if (Array.isArray(parsed)) {
+          const filtered = parsed.filter((s: any) => !idsToRemove.has(s.id));
+          localStorage.setItem('cliniportal_custom_studies', JSON.stringify(filtered));
+        }
+      }
+    } catch(e) {}
+  }
+
+  if (window.saveStudies) window.saveStudies();
+  closeDuplicateResolutionModal();
+
+  if (window.renderTable) window.renderTable();
+  if (window.renderUpdates) window.renderUpdates();
+  if (window.renderTimeline) window.renderTimeline();
+  if (typeof (window as any).updateTabCounts === 'function') (window as any).updateTabCounts();
+
+  if (window.showMedicalToast) {
+    window.showMedicalToast({
+      type: 'success',
+      title: 'Lọc trùng hoàn tất',
+      message: `🎉 Đã xử lý ${existingDupConflicts.length} cặp trùng lặp (Hợp nhất: ${mergedCount}, Loại bỏ: ${idsToRemove.size} bản ghi thừa)!`
+    });
+  } else {
+    alert(`🎉 Lọc trùng hoàn tất!\n• Hợp nhất: ${mergedCount} bài\n• Loại bỏ: ${idsToRemove.size} bản ghi thừa.`);
+  }
+}
+
+export function executeDuplicateResolutionAction(): void {
+  if (duplicateModalMode === 'scan') {
+    executeDuplicateScanCleanup();
+  } else {
+    executeDuplicateImport();
+  }
+}
+
+export function filterTableByDuplicateIds(): void {
+  if (!existingDupConflicts || existingDupConflicts.length === 0) return;
+  const dupIds = new Set<string>();
+  existingDupConflicts.forEach(c => {
+    dupIds.add(c.studyA.id);
+    dupIds.add(c.studyB.id);
+  });
+  closeDuplicateResolutionModal();
+  if (window.switchTab) window.switchTab('list');
+
+  if (!window.selectedIds) window.selectedIds = new Set<string>();
+  window.selectedIds.clear();
+  dupIds.forEach(id => window.selectedIds.add(id));
+
+  if (window.updateFloatingCompareBar) window.updateFloatingCompareBar();
+  if (window.renderTable) window.renderTable();
+
+  const tableEl = document.getElementById('guidelines-table') || document.getElementById('studies-tbody');
+  if (tableEl) tableEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+  if (window.showMedicalToast) {
+    window.showMedicalToast({
+      type: 'info',
+      title: 'Đã đánh dấu bài trùng',
+      message: `Đã chọn ${dupIds.size} nghiên cứu có liên quan đến các cặp trùng lặp trên bảng dữ liệu.`
+    });
+  }
 }
 
 export function openConditionSettingsModal(): void {
@@ -991,6 +1422,12 @@ if (typeof window !== 'undefined') {
   window.applyGlobalDupAction = applyGlobalDupAction;
   window.setPerItemDupAction = setPerItemDupAction;
   window.executeDuplicateImport = executeDuplicateImport;
+  window.openDuplicateScanModal = openDuplicateScanModal;
+  window.executeDuplicateScanCleanup = executeDuplicateScanCleanup;
+  window.applyGlobalScanDupAction = applyGlobalScanDupAction;
+  window.setPerScanItemDupAction = setPerScanItemDupAction;
+  window.executeDuplicateResolutionAction = executeDuplicateResolutionAction;
+  window.filterTableByDuplicateIds = filterTableByDuplicateIds;
   window.openConditionSettingsModal = openConditionSettingsModal;
   window.closeConditionSettingsModal = closeConditionSettingsModal;
   window.renderConditionManagementTable = renderConditionManagementTable;

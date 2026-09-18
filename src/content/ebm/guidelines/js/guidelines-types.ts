@@ -83,6 +83,16 @@ export interface BatchDuplicateItem {
   raw?: any;
 }
 
+export interface ExistingDuplicateConflict {
+  id: string;
+  studyA: Study;
+  studyB: Study;
+  score: number;
+  matchLevel: 'exact' | 'high' | 'moderate';
+  reasons: string[];
+  action: 'merge' | 'delete_b' | 'delete_a' | 'keep_both';
+}
+
 export interface ColumnVisibilityState {
   sourceType: boolean;
   specialty: boolean;
@@ -248,6 +258,12 @@ declare global {
     applyGlobalDupAction?: (action: string) => void;
     setPerItemDupAction?: (index: number, action: string) => void;
     executeDuplicateImport?: () => void;
+    openDuplicateScanModal?: () => void;
+    executeDuplicateScanCleanup?: () => void;
+    applyGlobalScanDupAction?: (action: 'merge' | 'delete_b' | 'keep_both') => void;
+    setPerScanItemDupAction?: (index: number, action: string) => void;
+    filterTableByDuplicateIds?: () => void;
+    executeDuplicateResolutionAction?: () => void;
     openConditionSettingsModal?: () => void;
     closeConditionSettingsModal?: () => void;
     renderConditionManagementTable?: () => void;
