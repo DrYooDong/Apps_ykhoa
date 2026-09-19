@@ -49,7 +49,10 @@ export const DEFAULT_KNOWLEDGE_BASE: KnowledgeBase = {
     phienBan: 4,
     capNhat: '2026-09-12T11:15:21.495Z',
   },
-  trieuChung: symptomsRaw as unknown as TrieuChung[],
+  trieuChung: (symptomsRaw as unknown as TrieuChung[]).map(tc => ({
+    ...tc,
+    tuKhoa: Array.isArray(tc.tuKhoa) ? tc.tuKhoa : []
+  })),
   benh: diseasesRaw as unknown as Benh[],
 };
 

@@ -131,26 +131,33 @@ Viêm màng não vi khuẩn cấp do Não mô cầu (*Neisseria meningitidis*) b
 
 ## ⚙️ 4. Quy Tắc Phân Tích Cú Pháp Linh Hoạt (Parser Robustness)
 
-Script `tools/scripts/ingest-notebooklm-case.mjs` được trang bị parser nâng cao, có khả năng xử lý linh hoạt:
-1. **Cấp độ Tiêu đề**: Chấp nhận mọi cấp độ markdown từ `##` đến `####` cho các tiểu mục (ví dụ: `## 1. Dấu hiệu sinh tồn` hoặc `### 1. Dấu hiệu sinh tồn`).
-2. **Ký tự Bullet**: Hỗ trợ đồng thời cả dấu gạch đầu dòng (`-`) lẫn dấu sao hoa thị (`*`).
-3. **Bóc tách Y lệnh thuốc đa tầng**: Nhận diện tên thuốc in đậm (`* **Tên thuốc**:`) và trích xuất các dòng liều lượng thụt lề bên dưới.
+Script `tools/scripts/ingest-notebooklm-case.mjs` và engine `docspace-oneclick-ingester.mjs` được trang bị parser nâng cao, có khả năng xử lý linh hoạt:
+1. **Khử Thực thể HTML (HTML Entity Auto-Sanitizer)**: Tự động chuyển đổi `&gt;` $\to$ `>`, `&lt;` $\to$ `<`, `&amp;` $\to$ `&`, `&#39;` $\to$ `'`, `&quot;` $\to$ `"` từ output thô của LLM/NotebookLM.
+2. **Tự Động Tổng Hợp Frontmatter (Auto-Frontmatter Synthesizer)**: Nếu tệp xuất từ Prompt 07 thiếu khối `--- frontmatter ---`, parser sẽ tự động trích xuất tiêu đề từ H1, mã ICD-10, chuyên khoa bệnh lý, bối cảnh dịch tễ và bài học lâm sàng để tự tạo Frontmatter chuẩn EBM.
+3. **Cấp độ Tiêu đề**: Chấp nhận mọi cấp độ markdown từ `##` đến `####` cho các tiểu mục (ví dụ: `## 1. Dấu hiệu sinh tồn` hoặc `### 1. Dấu hiệu sinh tồn`).
+4. **Ký tự Bullet**: Hỗ trợ đồng thời cả dấu gạch đầu dòng (`-`) lẫn dấu sao hoa thị (`*`).
+5. **Bóc tách Y lệnh thuốc đa tầng**: Nhận diện tên thuốc in đậm (`* **Tên thuốc**:`) và trích xuất các dòng liều lượng thụt lề bên dưới.
 
 ---
 
 ## 🚀 5. Thao Tác Nạp Ca Bằng Script Tự Động
 
-Khi có nội dung ca bệnh SOAP Markdown mới:
-1. Lưu file vào: `src/content/knowledge-vault/ba/soap-<slug>-01.md`.
-2. Chạy lệnh:
+Khi có nội dung ca bệnh SOAP Markdown mới (hoặc tệp xuất thô từ NotebookLM):
+1. **Cách 1 (Khuyến nghị - Nạp 1-Chạm kèm Kiểm định 2 Cổng)**:
+   ```powershell
+   node tools/scripts/docspace-oneclick-ingester.mjs src/content/knowledge-vault/ba/soap-<slug>-01.md
+   ```
+2. **Cách 2 (Nạp trực tiếp qua Ingest Tool)**:
    ```powershell
    node tools/scripts/ingest-notebooklm-case.mjs src/content/knowledge-vault/ba/soap-<slug>-01.md
    ```
 3. Script sẽ tự động:
+   - Tự động khử HTML entities và tự tổng hợp Frontmatter nếu thiếu.
    - Bóc tách toàn bộ 4 khối S-O-A-P và các bài học lâm sàng.
    - Bổ sung/Cập nhật mục vào `src/content/knowledge-vault/data/vault-catalog-thuc-hanh.json`.
    - Cập nhật master catalog `src/content/knowledge-vault/data/vault-catalog.json`.
    - Đồng bộ tự động sang `src/content/docspace/src/data/` để giao diện web hiển thị ngay lập tức mà không cần reload server.
+   - Kích hoạt Medical QA Gate (6/6 Pillars) và Vault Readiness Check (15/15 Criteria).
 
 ---
 

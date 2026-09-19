@@ -51,12 +51,24 @@ function bundleDiseases() {
       const items = JSON.parse(fs.readFileSync(fPath, 'utf8'));
       if (Array.isArray(items)) {
         summary[file] = items.length;
+        let fileModified = false;
         for (const d of items) {
           if (seenIds.has(d.id)) {
             console.warn(`⚠️ Cảnh báo: Trùng lặp mã bệnh ID "${d.id}" trong ${file}!`);
           }
           seenIds.add(d.id);
+
+          // Auto-Healer: Nếu dd bị nhầm thành object { symptom: weight }, chuyển về mảng tuple [id, weight, role]
+          if (d.dd && typeof d.dd === 'object' && !Array.isArray(d.dd)) {
+            console.warn(`🩹 Auto-Healer: Đang chuyển đổi dd dạng object của bệnh "${d.id}" sang mảng 3 thành phần chuẩn...`);
+            d.dd = Object.entries(d.dd).map(([k, v]) => [k, typeof v === 'number' ? v : 3, 'dt']);
+            fileModified = true;
+          }
+
           allDiseases.push(d);
+        }
+        if (fileModified) {
+          fs.writeFileSync(fPath, JSON.stringify(items, null, 2), 'utf8');
         }
       }
     } catch (e) {

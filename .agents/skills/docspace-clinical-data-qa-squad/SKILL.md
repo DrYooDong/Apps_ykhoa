@@ -82,11 +82,18 @@ Mọi dữ liệu triệu chứng, xét nghiệm và tiền căn trong DocSpace 
   - Không đưa kết quả xét nghiệm cận lâm sàng vào ô Triệu chứng cơ năng (`form.text.cn`).
   - Ô Tiền căn chỉ chứa tiền sử bệnh lý bản thân, tiền sử gia đình, tiền sử tiêm chủng và dị ứng.
 
+#### 6. 🩺 CD-AGENT-05: CDSS Schema Auto-Healer (Chuyên viên Tự Chữa lành Schema Trọng số CDSS)
+* **Kích hoạt khi**: Biên soạn hoặc nạp luật bệnh lý chuyên khoa (`diseases/*.json`) có nguy cơ sai lệch định dạng `dd`.
+* **Mục tiêu**: Đảm bảo 100% luật diễn dịch `dd` tuân thủ đúng dạng mảng các 3-tuple `[symptomId, weight, role]` với `role ∈ {"dt", "gy", "ht", "loaitru"}`.
+* **Quy tắc nghiệm thu**:
+  - Tự động phát hiện và chuyển đổi định dạng Object vô tình phát sinh (`{"symptom": weight}`) sang dạng mảng 3-tuple hợp lệ trong `bundle-clinical-rules.mjs`.
+  - Bảo đảm không gây crash engine tính toán Bayesian/Weight Scoring tại Bước 3.
+
 ---
 
 ## 🛠️ 3. Bộ Công Cụ Tự Động Hóa (Tooling & Automated Linters)
 
-Squad vận hành bộ công cụ kiểm toán tự động đặt tại `tools/qa/`:
+Squad vận hành bộ công cụ kiểm toán và tự động hóa:
 
 ```bash
 # Chạy kiểm toán toàn diện dữ liệu lâm sàng, phát hiện HTML entities, viết tắt lỗi và triệu chứng trùng lặp
@@ -94,6 +101,9 @@ node tools/qa/docspace-clinical-data-linter.mjs
 
 # Chạy ở chế độ sửa lỗi tự động (Auto-fix HTML entities & standard abbreviations)
 node tools/qa/docspace-clinical-data-linter.mjs --fix
+
+# Gom cụm và tự chữa lành schema CDSS (Auto-healer for dd 3-tuples)
+node tools/scripts/bundle-clinical-rules.mjs
 ```
 
 ---
@@ -105,3 +115,4 @@ node tools/qa/docspace-clinical-data-linter.mjs --fix
 - [ ] Tên nút triệu chứng không chứa tiền tố thừa thãi (`"Cận lâm sàng: ..."`, `"Dấu hiệu cảnh báo: ..."`).
 - [ ] 100% từ viết tắt tuân thủ từ điển chuẩn và có định dạng typography chuẩn (`SpO₂`, `HbA1c`).
 - [ ] Dữ liệu Tiền căn (TC) hoàn toàn tách bạch với Yếu tố Dịch tễ (DTH).
+- [ ] 100% luật `dd` trong `diseases/*.json` đạt chuẩn 3-tuple `[id, weight, role]` hợp lệ.

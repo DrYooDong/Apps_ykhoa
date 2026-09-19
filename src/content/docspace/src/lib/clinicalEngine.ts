@@ -209,7 +209,7 @@ export function analyzeClinicalCase(
 
   kb.trieuChung.forEach((tc) => {
     if (!present[tc.id] && !negated.has(tc.id)) {
-      if (tc.tuKhoa.some((k) => k && combinedNarrative.includes(normalizeText(k)))) {
+      if (Array.isArray(tc.tuKhoa) && tc.tuKhoa.some((k) => k && combinedNarrative.includes(normalizeText(k)))) {
         present[tc.id] = { via: 'mô tả' };
       }
     }

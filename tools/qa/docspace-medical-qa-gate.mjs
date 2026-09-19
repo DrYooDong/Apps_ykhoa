@@ -98,16 +98,21 @@ report(1, 'Zero-Orphan Symptoms Verification', orphanCount === 0 && caseOrphans 
 // =========================================================================
 const idSeen = new Set();
 const dupIds = [];
+const missingTuKhoa = [];
 symptoms.forEach(s => {
   if (idSeen.has(s.id)) dupIds.push(s.id);
   idSeen.add(s.id);
+  if (!Array.isArray(s.tuKhoa) || s.tuKhoa.length === 0) {
+    missingTuKhoa.push(s.id);
+  }
 });
 
 const kbDiseases = kb.benh || [];
 const isSync = kbDiseases.length === totalDisCount;
-report(2, 'Symptom Dictionary Deduplication & Multi-file Sync', dupIds.length === 0 && isSync, [
+report(2, 'Symptom Dictionary Deduplication & Multi-file Sync', dupIds.length === 0 && isSync && missingTuKhoa.length === 0, [
   `Tổng số triệu chứng trong clinical-rules-symptoms.json: ${symptoms.length}`,
   `Trùng lặp ID triệu chứng: ${dupIds.length}`,
+  `Triệu chứng thiếu mảng từ khóa tuKhoa: ${missingTuKhoa.length}`,
   `Đồng bộ bệnh lý giữa diseases/*.json và clinical-rules-kb.json: ${isSync ? `HOÀN HẢO (${kbDiseases.length}/${totalDisCount} bệnh)` : 'LỆCH DỮ LIỆU'}`
 ]);
 

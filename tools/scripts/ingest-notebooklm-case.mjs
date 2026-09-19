@@ -15,9 +15,9 @@
 import fs from 'fs';
 import path from 'path';
 
-const ROOT = fs.existsSync('d:/Apps/Apps_ykhoa/src/content/knowledge-vault')
-  ? 'd:/Apps/Apps_ykhoa'
-  : process.cwd();
+const ROOT = fs.existsSync(path.join(process.cwd(), 'src/content/knowledge-vault'))
+  ? process.cwd()
+  : (fs.existsSync('d:/Apps/Apps_ykhoa/src/content/knowledge-vault') ? 'd:/Apps/Apps_ykhoa' : process.cwd());
 
 const VAULT_ROOT = path.join(ROOT, 'src/content/knowledge-vault');
 const VAULT_DATA_DIR = path.join(VAULT_ROOT, 'data');
@@ -30,12 +30,118 @@ const DOCSPACE_CATALOG_PATH = path.join(DOCSPACE_DATA_DIR, 'vault-catalog.json')
 const DOCSPACE_THUCHANH_PATH = path.join(DOCSPACE_DATA_DIR, 'vault-catalog-thuc-hanh.json');
 
 /**
+ * Hàm khử HTML entities thường gặp từ output thô của AI/NotebookLM
+ */
+function sanitizeHtmlEntities(str) {
+  if (!str) return '';
+  return str
+    .replace(/&gt;/g, '>')
+    .replace(/&lt;/g, '<')
+    .replace(/&amp;/g, '&')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&nbsp;/g, ' ');
+}
+
+/**
+ * Tạo slug chuẩn từ tiếng Việt
+ */
+function slugifyVietnamese(text) {
+  if (!text) return 'ca-lam-sang';
+  return text
+    .toString()
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[đĐ]/g, 'd')
+    .replace(/[^a-z0-9\s-]/g, '')
+    .trim()
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-');
+}
+
+/**
+ * Tự động tổng hợp Frontmatter khi Markdown từ Prompt 07 thiếu khối ---
+ */
+function synthesizeFrontmatter(rawText, filePath = '') {
+  const clean = sanitizeHtmlEntities(rawText);
+  const frontmatter = {};
+
+  // 1. Trích xuất Tiêu đề
+  const titleMatch = clean.match(/^#\s*(?:📋\s*)?(?:BỆNH ÁN LÂM SÀNG\s*(?:S-O-A-P)?:?\s*)?([^\n\r]+)/mi);
+  if (titleMatch) {
+    frontmatter.title = titleMatch[1].trim().replace(/^:\s*/, '');
+  } else {
+    const base = path.basename(filePath, '.md');
+    frontmatter.title = base.replace(/^(?:soap-)/, '').replace(/-/g, ' ').toUpperCase();
+  }
+
+  // 2. CaseId
+  const fileBase = path.basename(filePath, '.md');
+  if (fileBase && fileBase !== 'temp' && fileBase !== 'input') {
+    frontmatter.caseId = fileBase.startsWith('soap-') ? fileBase : `soap-${fileBase}`;
+  } else {
+    frontmatter.caseId = `soap-${slugifyVietnamese(frontmatter.title).slice(0, 40)}`;
+  }
+
+  // 3. ICD-10
+  const icdMatch = clean.match(/(?:Mã\s*ICD(?:-10)?|ICD-10)\s*[:：]\s*`?([A-Z0-9.,\s\-–]+)`?/i);
+  if (icdMatch) {
+    const rawCodes = icdMatch[1].split(/[,·\s–-]+/).map(c => c.trim()).filter(c => /^[A-Z][0-9]/.test(c));
+    if (rawCodes.length > 0) {
+      frontmatter.icd10 = rawCodes;
+    }
+  }
+
+  // 4. Chuyên khoa (Inferred Specialty)
+  const lowerAll = (frontmatter.title + ' ' + clean.slice(0, 1500)).toLowerCase();
+  if (/dengue|sốt xuất huyết|uốn ván|nhiễm trùng|viêm ruột thừa|ký sinh|sốt rét|thương hàn|lao/.test(lowerAll)) {
+    frontmatter.specialty = 'Truyền nhiễm';
+  } else if (/nhồi máu|nstemi|stemi|suy tim|tăng huyết áp|rung nhĩ|mạch vành|đau ngực/.test(lowerAll)) {
+    frontmatter.specialty = 'Tim mạch';
+  } else if (/xơ gan|viêm gan|viêm tụy|xuất huyết tiêu hóa|loét dạ dày|dạ dày/.test(lowerAll)) {
+    frontmatter.specialty = 'Tiêu hóa';
+  } else if (/đột quỵ|nhồi máu não|xuất huyết não|động kinh|màng não|yếu liệt/.test(lowerAll)) {
+    frontmatter.specialty = 'Thần kinh';
+  } else if (/copd|hen|viêm phổi|khó thở|suy hô hấp|tràn khí/.test(lowerAll)) {
+    frontmatter.specialty = 'Hô hấp';
+  } else if (/suy thận|aki|ckd|hội chứng thận hư|tiết niệu|sỏi thận/.test(lowerAll)) {
+    frontmatter.specialty = 'Thận - Tiết niệu';
+  } else if (/đái tháo đường|bướu giáp|cường giáp|suy giáp|cushing/.test(lowerAll)) {
+    frontmatter.specialty = 'Nội tiết';
+  } else {
+    frontmatter.specialty = 'Nội khoa tổng quát';
+  }
+
+  // 5. Bối cảnh dịch tễ & Hành chánh
+  const demoMatch = clean.match(/(?:Hành chánh & Bối cảnh|Bối cảnh dịch tễ|Hành chính)[:：]?([\s\S]*?)(?=###|##|\n\n\n|$)/i);
+  if (demoMatch) {
+    frontmatter.demographicContext = demoMatch[1].replace(/[*#]/g, '').trim().split('\n').filter(l => l.trim()).join(' | ').slice(0, 200);
+  }
+
+  // 6. Pearls & Pitfalls
+  const pearlMatch = clean.match(/(?:CẠM BẪY LÂM SÀNG|ĐIỂM NGỌC LÂM SÀNG|BÀI HỌC KINH NGHIỆM)[:：]?([\s\S]*?)(?=###|##|$)/i);
+  if (pearlMatch) {
+    frontmatter.takeawayLessons = pearlMatch[1].replace(/[*#]/g, '').trim().slice(0, 300);
+  }
+
+  frontmatter.experienceLevel = 'intermediate';
+  frontmatter.difficultyRating = 3;
+  frontmatter.authorDoctor = 'DocSpace AI Ingestion Engine';
+  frontmatter.tags = ['SOAP', frontmatter.specialty, 'NotebookLM'];
+
+  return { frontmatter, body: clean, synthesized: true };
+}
+
+/**
  * Hàm phân tích YAML Frontmatter đơn giản không cần external dependencies
  */
-function parseFrontmatter(rawText) {
-  const match = rawText.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/);
+function parseFrontmatter(rawText, filePath = '') {
+  const sanitized = sanitizeHtmlEntities(rawText);
+  const match = sanitized.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/);
   if (!match) {
-    return { frontmatter: {}, body: rawText };
+    // Tự động tổng hợp Frontmatter nếu thiếu
+    return synthesizeFrontmatter(sanitized, filePath);
   }
 
   const yamlBlock = match[1];
@@ -283,7 +389,7 @@ function extractMedications(pText) {
 function processMarkdownFile(filePath) {
   console.log(`\n📄 Đang xử lý ca lâm sàng: ${path.basename(filePath)}...`);
   const content = fs.readFileSync(filePath, 'utf-8');
-  const { frontmatter, body } = parseFrontmatter(content);
+  const { frontmatter, body, synthesized } = parseFrontmatter(content, filePath);
 
   if (!frontmatter.title) {
     console.error(`❌ Lỗi: File ${filePath} không có trường 'title' trong frontmatter! Bỏ qua.`);
@@ -352,7 +458,28 @@ function processMarkdownFile(filePath) {
     fs.mkdirSync(VAULT_BA_DIR, { recursive: true });
   }
   const destMdPath = path.join(VAULT_BA_DIR, `${caseId}.md`);
-  fs.writeFileSync(destMdPath, content, 'utf-8');
+  let contentToSave = content;
+  if (synthesized) {
+    const yml = [
+      '---',
+      `title: "${frontmatter.title.replace(/"/g, '\\"')}"`,
+      `caseId: ${caseId}`,
+      `specialty: ${frontmatter.specialty}`,
+      `difficultyRating: ${frontmatter.difficultyRating || 3}`,
+      `experienceLevel: ${frontmatter.experienceLevel || 'intermediate'}`,
+      `authorDoctor: "${frontmatter.authorDoctor || 'DocSpace AI Ingestion Engine'}"`,
+      frontmatter.demographicContext ? `demographicContext: "${frontmatter.demographicContext.replace(/"/g, '\\"')}"` : null,
+      frontmatter.takeawayLessons ? `takeawayLessons: "${frontmatter.takeawayLessons.replace(/"/g, '\\"')}"` : null,
+      frontmatter.icd10 && frontmatter.icd10.length > 0 ? `icd10:\n${frontmatter.icd10.map(c => `  - ${c}`).join('\n')}` : null,
+      frontmatter.tags && frontmatter.tags.length > 0 ? `tags:\n${frontmatter.tags.map(t => `  - ${t}`).join('\n')}` : null,
+      '---',
+      '',
+      body
+    ].filter(x => x !== null).join('\n');
+    contentToSave = yml;
+    console.log(`   ✨ [Auto-Frontmatter] Đã tự động tổng hợp Frontmatter chuẩn cho ${caseId}.md`);
+  }
+  fs.writeFileSync(destMdPath, contentToSave, 'utf-8');
   console.log(`   ➔ Đã lưu file Markdown vào: ${destMdPath}`);
 
   return article;
