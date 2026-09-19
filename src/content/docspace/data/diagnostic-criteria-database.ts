@@ -146,9 +146,13 @@ export const DIAGNOSTIC_CHAIN_DATABASE: Record<string, DiseaseReactionChainDefin
   'viem_gan_c': ENRICHED_DISEASES['vgsv_C'],
   'sot-xoan-khuan-leptospira': ENRICHED_DISEASES['leptospira'],
   'sot_xoan_khuan_leptospira': ENRICHED_DISEASES['leptospira'],
-  'xo_gan_con_bu': ENRICHED_DISEASES['xo_gan_con_bu'],
-  'xo-gan-con-bu': ENRICHED_DISEASES['xo_gan_con_bu'],
-  'cACLD': ENRICHED_DISEASES['xo_gan_con_bu'],
+  'xo_gan': ENRICHED_DISEASES['xo_gan'],
+  'xo-gan': ENRICHED_DISEASES['xo_gan'],
+  'xo_gan_con_bu': ENRICHED_DISEASES['xo_gan'],
+  'xo-gan-con-bu': ENRICHED_DISEASES['xo_gan'],
+  'xo_gan_mat_bu': ENRICHED_DISEASES['xo_gan'],
+  'xo-gan-mat-bu': ENRICHED_DISEASES['xo_gan'],
+  'cACLD': ENRICHED_DISEASES['xo_gan'],
   'dot_bung_phat_vgsv_B': ENRICHED_DISEASES['dot_bung_phat_vgsv_B'],
   'dot_bung_phat_viem_gan_b': ENRICHED_DISEASES['dot_bung_phat_vgsv_B'],
   'dot-bung-phat-viem-gan-b': ENRICHED_DISEASES['dot_bung_phat_vgsv_B'],
@@ -1810,7 +1814,7 @@ export function findReactionChainByIcd(icdCode: string): DiseaseReactionChainDef
   
   for (const key of Object.keys(DIAGNOSTIC_CHAIN_DATABASE)) {
     const item = DIAGNOSTIC_CHAIN_DATABASE[key];
-    if (item && item.icdPrefixes.some(p => clean.startsWith(p) || clean === p)) {
+    if (item && item.icdPrefixes && Array.isArray(item.icdPrefixes) && item.icdPrefixes.some(p => clean.startsWith(p) || clean === p)) {
       return item;
     }
   }
@@ -1821,5 +1825,5 @@ export function findReactionChainByIcd(icdCode: string): DiseaseReactionChainDef
  * Lấy danh sách tất cả các bệnh có chuỗi phản ứng
  */
 export function getAllReactionChains(): DiseaseReactionChainDefinition[] {
-  return Object.values(DIAGNOSTIC_CHAIN_DATABASE);
+  return Object.values(DIAGNOSTIC_CHAIN_DATABASE).filter((c): c is DiseaseReactionChainDefinition => Boolean(c && c.diseaseName));
 }

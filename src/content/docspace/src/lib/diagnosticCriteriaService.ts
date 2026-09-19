@@ -78,6 +78,7 @@ function findChainForCd(cd: VaultArticle): { key: string; chain: DiseaseReaction
   // 3. Khớp tên bệnh lý
   const normTitle = cd.title.toLowerCase().trim();
   for (const [key, chain] of Object.entries(DIAGNOSTIC_CHAIN_DATABASE)) {
+    if (!chain || !chain.diseaseName) continue;
     const chainName = chain.diseaseName.toLowerCase().trim();
     if (chainName === normTitle || chainName.includes(normTitle) || normTitle.includes(chainName)) {
       return { key, chain };
@@ -87,6 +88,7 @@ function findChainForCd(cd: VaultArticle): { key: string; chain: DiseaseReaction
   // 4. Khớp qua aliases
   if (cd.aliases && cd.aliases.length > 0) {
     for (const [key, chain] of Object.entries(DIAGNOSTIC_CHAIN_DATABASE)) {
+      if (!chain || !chain.diseaseName) continue;
       const chainName = chain.diseaseName.toLowerCase().trim();
       if (cd.aliases.some((al) => chainName.includes(al.toLowerCase().trim()) || al.toLowerCase().trim().includes(chainName))) {
         return { key, chain };
@@ -97,6 +99,7 @@ function findChainForCd(cd: VaultArticle): { key: string; chain: DiseaseReaction
   // 5. Khớp qua ICD
   if (cd.icd10 && cd.icd10.length > 0) {
     for (const [key, chain] of Object.entries(DIAGNOSTIC_CHAIN_DATABASE)) {
+      if (!chain || !chain.diseaseName) continue;
       if (
         cd.icd10.some(
           (c) =>

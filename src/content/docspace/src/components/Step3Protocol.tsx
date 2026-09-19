@@ -129,20 +129,21 @@ export const Step3Protocol: React.FC<Step3Props> = ({
     const existingIds = new Set(list.map((b) => b.id));
 
     Object.entries(DIAGNOSTIC_CHAIN_DATABASE).forEach(([key, chain]) => {
+      if (!chain || !chain.diseaseName) return;
       if (!existingIds.has(key)) {
         list.push({
           id: key,
           ten: chain.diseaseName,
-          icd: chain.icdCode,
-          nhom: chain.specialty,
+          icd: chain.icdCode || '',
+          nhom: chain.specialty || 'Nội khoa',
           baoDong: chain.severity === 'emergency',
           ghiChuBaoDong: chain.severity === 'emergency' ? 'Cần kích hoạt lệnh trực cấp cứu khẩn cấp' : '',
-          tomTat: chain.summary,
+          tomTat: chain.summary || '',
           danSo: { gioiTinh: 'any' },
           dd: [],
           phacDo: {
-            tuyen: chain.protocol.initialManagement || [],
-            thuoc: chain.protocol.firstLineDrugs
+            tuyen: chain.protocol?.initialManagement || [],
+            thuoc: chain.protocol?.firstLineDrugs
               ? chain.protocol.firstLineDrugs.map((d) => [
                   d.drugName,
                   `${d.dosage}${d.route ? ' (' + d.route + ')' : ''}`,
@@ -152,16 +153,16 @@ export const Step3Protocol: React.FC<Step3Props> = ({
             theoDoi: chain.monitoringLabs || [],
             luuY: [
               'Theo dõi sát phản ứng thuốc & nguy cơ tương tác',
-              ...chain.protocol.supportiveCare,
+              ...(chain.protocol?.supportiveCare || []),
             ],
-            nguon: [chain.protocol.guideline || 'Hướng dẫn chẩn đoán và điều trị Bộ Y tế'],
+            nguon: [chain.protocol?.guideline || 'Hướng dẫn chẩn đoán và điều trị Bộ Y tế'],
           },
         });
         existingIds.add(key);
       }
     });
 
-    return list.sort((a, b) => a.ten.localeCompare(b.ten, 'vi'));
+    return list.sort((a, b) => (a.ten || '').localeCompare(b.ten || '', 'vi'));
   }, [kb.benh]);
 
   const currentDisease = useMemo(() => {
@@ -182,14 +183,17 @@ export const Step3Protocol: React.FC<Step3Props> = ({
     }
     const found = Object.values(DIAGNOSTIC_CHAIN_DATABASE).find(
       (c) =>
-        c.icdCode.toUpperCase() === currentDisease.icd.toUpperCase() ||
-        (c.icdPrefixes && c.icdPrefixes.some((p) => currentDisease.icd.toUpperCase().startsWith(p.toUpperCase())))
+        c &&
+        c.icdCode && (
+          c.icdCode.toUpperCase() === (currentDisease.icd || '').toUpperCase() ||
+          (c.icdPrefixes && c.icdPrefixes.some((p) => (currentDisease.icd || '').toUpperCase().startsWith(p.toUpperCase())))
+        )
     );
     if (found) return found;
 
-    const normName = currentDisease.ten.toLowerCase();
+    const normName = (currentDisease.ten || '').toLowerCase();
     const foundByName = Object.values(DIAGNOSTIC_CHAIN_DATABASE).find((c) =>
-      normName.includes(c.diseaseName.toLowerCase()) || c.diseaseName.toLowerCase().includes(normName)
+      c && c.diseaseName && (normName.includes(c.diseaseName.toLowerCase()) || c.diseaseName.toLowerCase().includes(normName))
     );
     if (foundByName) return foundByName;
 

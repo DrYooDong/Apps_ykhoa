@@ -41,7 +41,7 @@ import {
 import {
   DIAGNOSTIC_CHAIN_DATABASE,
   DiseaseReactionChainDefinition,
-} from '../../data/diagnostic-criteria-database.ts';
+} from '../../../data/diagnostic-criteria-database.ts';
 
 interface ClinicalReasoningPanelProps {
   topResult: AnalysisResult | null;
@@ -102,9 +102,11 @@ export const ClinicalReasoningPanel: React.FC<ClinicalReasoningPanelProps> = ({
     const cleanName = leadDiagnosis.ten.toLowerCase().trim();
     const cleanIcd = leadDiagnosis.icd.toUpperCase().trim();
     for (const [, c] of Object.entries(DIAGNOSTIC_CHAIN_DATABASE)) {
+      if (!c || !c.diseaseName) continue;
       if (
         c.diseaseName.toLowerCase().trim() === cleanName ||
-        (c.icd10 && c.icd10.toUpperCase().trim() === cleanIcd)
+        (c.icdCode && c.icdCode.toUpperCase().trim() === cleanIcd) ||
+        (c.icdPrefixes && c.icdPrefixes.some((p) => cleanIcd.startsWith(p.toUpperCase())))
       ) {
         return c;
       }
