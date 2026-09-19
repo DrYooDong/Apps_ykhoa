@@ -83,36 +83,42 @@ export const VaultDrawer: React.FC<VaultDrawerProps> = ({
         onClick={onClose}
       />
 
-      <div className="fixed inset-y-0 right-0 max-w-full flex pl-10">
-        <div className="w-screen max-w-2xl bg-white shadow-2xl flex flex-col border-l border-slate-200">
+      {/* Drawer Container: Bottom Sheet trên Mobile (<768px), Side Drawer trên Desktop (>=768px) */}
+      <div className="fixed inset-x-0 bottom-0 md:bottom-auto md:top-0 md:right-0 md:left-auto md:inset-y-0 max-w-full flex md:pl-10 h-[88vh] md:h-full z-10 pointer-events-auto">
+        <div className="w-full md:w-screen md:max-w-2xl bg-white shadow-2xl flex flex-col border-t md:border-t-0 md:border-l border-slate-200 rounded-t-2xl md:rounded-none overflow-hidden animate-slide-up md:animate-none">
+          {/* Mobile Drag Bar Indicator */}
+          <div className="w-12 h-1.5 bg-slate-300 rounded-full mx-auto my-2 md:hidden shrink-0" />
+
           {/* Header */}
-          <div className="px-5 py-4 bg-slate-900 text-white flex items-center justify-between shrink-0">
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white shadow-md">
+          <div className="px-4 sm:px-5 py-3 sm:py-4 bg-slate-900 text-white flex items-center justify-between shrink-0">
+            <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+              <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white shadow-md shrink-0">
                 <BookOpen className="w-4.5 h-4.5" />
               </div>
-              <div>
+              <div className="min-w-0">
                 <div className="flex items-center gap-2">
-                  <h2 className="font-display font-bold text-base tracking-tight">
-                    CliniPortal Knowledge & EBM Vault
+                  <h2 className="font-display font-bold text-sm sm:text-base tracking-tight truncate">
+                    Knowledge & EBM Vault
                   </h2>
-                  <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-blue-500/20 text-blue-300 font-semibold border border-blue-400/30">
-                    2.400+ Vault · 78+ Guidelines
+                  <span className="hidden sm:inline-flex px-2 py-0.5 rounded text-[10px] font-mono bg-blue-500/20 text-blue-300 font-semibold border border-blue-400/30">
+                    2.400+ Vault
                   </span>
                 </div>
-                <p className="text-xs text-slate-400">
-                  Tra cứu y học chứng cứ, phác đồ, tiêu chuẩn chẩn đoán & cơ chế bệnh sinh
+                <p className="text-[11px] sm:text-xs text-slate-400 truncate">
+                  Tra cứu y học chứng cứ, phác đồ &amp; chuẩn đoán
                 </p>
               </div>
             </div>
 
             <button
               onClick={onClose}
-              className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer"
+              className="p-1.5 sm:p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer shrink-0 min-h-[38px] min-w-[38px] flex items-center justify-center"
+              aria-label="Đóng ngăn tra cứu"
             >
               <X className="w-5 h-5" />
             </button>
           </div>
+
 
           {/* Search & Filter Bar */}
           <div className="p-4 bg-slate-50 border-b border-slate-200 flex flex-col gap-2.5 shrink-0">

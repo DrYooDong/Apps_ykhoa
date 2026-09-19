@@ -12,6 +12,7 @@ import { PrintReportModal } from './components/PrintReportModal.tsx';
 import { VaultDrawer } from './components/VaultDrawer.tsx';
 import { CdssModal, CdssToolSlug } from './components/CdssModal.tsx';
 import { ClinicalSimulationModal } from './components/simulation/ClinicalSimulationModal.tsx';
+import { BottomNavBar } from './components/mobile/BottomNavBar.tsx';
 import { ErrorBoundary } from './components/common/ErrorBoundary.tsx';
 import { DEFAULT_KNOWLEDGE_BASE, SampleCase } from './data/seedData.ts';
 import {
@@ -516,8 +517,8 @@ export function MainApp() {
         </div>
       )}
 
-      {/* Main View Area */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-5">
+      {/* Main View Area with Mobile Bottom Padding */}
+      <main className="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 py-3 sm:py-5 pb-24 md:pb-6">
         <ErrorBoundary key={`${activeMode}_${clinicalStep}`} onReset={() => setClinicalStep('t1')}>
         {/* PHÂN HỆ 1: CHU TRÌNH LÂM SÀNG 3 BƯỚC */}
         {activeMode === 'clinical' && (
@@ -667,8 +668,8 @@ export function MainApp() {
         </ErrorBoundary>
       </main>
 
-      {/* Footer */}
-      <footer className="h-9 bg-white border-t border-slate-200 flex items-center justify-between px-4 sm:px-6 shrink-0 text-xs text-slate-500 no-print">
+      {/* Desktop Footer (Ẩn trên di động để nhường chỗ cho BottomNavBar) */}
+      <footer className="hidden md:flex h-9 bg-white border-t border-slate-200 items-center justify-between px-4 sm:px-6 shrink-0 text-xs text-slate-500 no-print">
         <div className="max-w-7xl w-full mx-auto flex items-center justify-between gap-4">
           <div className="flex items-center gap-4 text-[11px]">
             <span className="flex items-center gap-1.5 font-medium text-emerald-700">
@@ -683,6 +684,14 @@ export function MainApp() {
           </div>
         </div>
       </footer>
+
+      {/* Mobile Fixed Bottom Navigation Bar */}
+      <BottomNavBar
+        activeMode={activeMode}
+        onChangeMode={setActiveMode}
+        onOpenVault={(khoCode, query) => handleOpenVaultDrawer(undefined, query, khoCode)}
+        onOpenSimulation={() => setIsSimulationOpen(true)}
+      />
 
       {/* Modals & Drawers */}
       <VaultDrawer
@@ -728,3 +737,4 @@ export function MainApp() {
 export default function App() {
   return <MainApp />;
 }
+

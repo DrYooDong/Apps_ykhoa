@@ -97,6 +97,7 @@ export const Step1DataIngestion: React.FC<Step1Props> = ({
   const [dismissedQuestions, setDismissedQuestions] = useState<Set<string>>(new Set());
   const [activeSection, setActiveSection] = useState<'all' | 'hc' | 'cn' | 'tt' | 'tc' | 'cls' | 'selected'>('all');
   const [activeSyndromeId, setActiveSyndromeId] = useState<string | null>(null);
+  const [isMobileCopilotOpen, setIsMobileCopilotOpen] = useState(false);
 
   // Map of symptom id to display name with aliases & fallback
   const vocabMap = useMemo(() => {
@@ -634,25 +635,109 @@ export const Step1DataIngestion: React.FC<Step1Props> = ({
           </div>
         </div>
 
-        {/* Right Sidebar: Real-time Clinical Copilot & Diagnostic Radar (Col 9-12) */}
-        <ClinicalCopilotSidebar
-          liveResults={liveResults}
-          suggestedQuestions={suggestedQuestions}
-          topResult={topResult}
-          onQuestionAnswer={handleQuestionAnswer}
-          positiveSymptomsList={positiveSymptomsList}
-          negativeSymptomsList={negativeSymptomsList}
-          vitalsPills={vitalsPills}
-          onChipClick={handleChipClick}
-          onRemoveNegated={removeNegated}
-          onClearAllSelections={handleClearAllSelections}
-          onRunAnalysis={onRunAnalysis}
-          onSaveToPostgres={onSaveToPostgres}
-          onExportCase={onExportCase}
-          onImportCase={onImportCase}
-          onReset={onReset}
-        />
+        {/* Right Sidebar: Real-time Clinical Copilot & Diagnostic Radar (Col 9-12 on Desktop, Sheet on Mobile) */}
+        <div className="hidden lg:block lg:col-span-4">
+          <ClinicalCopilotSidebar
+            liveResults={liveResults}
+            suggestedQuestions={suggestedQuestions}
+            topResult={topResult}
+            onQuestionAnswer={handleQuestionAnswer}
+            positiveSymptomsList={positiveSymptomsList}
+            negativeSymptomsList={negativeSymptomsList}
+            vitalsPills={vitalsPills}
+            onChipClick={handleChipClick}
+            onRemoveNegated={removeNegated}
+            onClearAllSelections={handleClearAllSelections}
+            onRunAnalysis={onRunAnalysis}
+            onSaveToPostgres={onSaveToPostgres}
+            onExportCase={onExportCase}
+            onImportCase={onImportCase}
+            onReset={onReset}
+          />
+        </div>
       </div>
+
+      {/* Mobile Floating Diagnostic & Quick CTA Bar (Chỉ hiện trên màn hình < 1024px) */}
+      <div className="fixed bottom-16 inset-x-2.5 z-30 lg:hidden pointer-events-none no-print">
+        <div className="bg-slate-900/90 backdrop-blur-md text-white rounded-xl p-2 px-3 shadow-xl border border-slate-700/60 flex items-center justify-between gap-2 pointer-events-auto animate-slide-up">
+          {/* Top diagnostic preview */}
+          <button
+            type="button"
+            onClick={() => setIsMobileCopilotOpen(true)}
+            className="flex items-center gap-2 overflow-hidden text-left cursor-pointer min-h-[40px] flex-1 mr-1"
+          >
+            <div className="w-8 h-8 rounded-lg bg-blue-600/90 text-white flex items-center justify-center shrink-0">
+              <Zap className="w-4 h-4 fill-current text-yellow-300" />
+            </div>
+            <div className="min-w-0 flex-1">
+              <div className="text-[10px] text-slate-400 uppercase tracking-wider font-semibold">
+                Định hướng CDSS ({liveResults.length})
+              </div>
+              <div className="text-xs font-bold truncate text-white">
+                {topResult ? `${topResult.b.ten} (${topResult.pct}%)` : 'Chờ nạp dữ kiện'}
+              </div>
+            </div>
+          </button>
+
+          {/* Quick CTA to Step 2 */}
+          <button
+            type="button"
+            onClick={onRunAnalysis}
+            className="flex items-center gap-1.5 px-3 py-2 bg-blue-600 hover:bg-blue-500 active:bg-blue-700 text-white rounded-lg font-bold text-xs shrink-0 shadow-xs cursor-pointer min-h-[40px]"
+          >
+            <span>Bước 2</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Copilot Bottom Sheet Modal */}
+      {isMobileCopilotOpen && (
+        <div className="fixed inset-0 z-50 flex flex-col justify-end lg:hidden animate-fade-in">
+          <div
+            className="fixed inset-0 bg-slate-900/60 backdrop-blur-xs transition-opacity"
+            onClick={() => setIsMobileCopilotOpen(false)}
+            aria-hidden="true"
+          />
+          <div className="relative bg-slate-50 rounded-t-2xl shadow-2xl border-t border-slate-200 p-4 max-h-[85vh] overflow-y-auto animate-slide-up z-10 select-none pb-safe">
+            <div className="w-12 h-1.5 bg-slate-300 rounded-full mx-auto mb-3" />
+            <div className="flex items-center justify-between pb-2 mb-3 border-b border-slate-200">
+              <div className="flex items-center gap-2">
+                <Zap className="w-4 h-4 text-yellow-500 fill-current" />
+                <h3 className="text-sm font-bold text-slate-800">Trợ Thủ CDSS & Radar Chẩn Đoán</h3>
+              </div>
+              <button
+                type="button"
+                onClick={() => setIsMobileCopilotOpen(false)}
+                className="p-1 text-slate-400 hover:text-slate-600 rounded-full hover:bg-slate-200 cursor-pointer"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <ClinicalCopilotSidebar
+              liveResults={liveResults}
+              suggestedQuestions={suggestedQuestions}
+              topResult={topResult}
+              onQuestionAnswer={handleQuestionAnswer}
+              positiveSymptomsList={positiveSymptomsList}
+              negativeSymptomsList={negativeSymptomsList}
+              vitalsPills={vitalsPills}
+              onChipClick={handleChipClick}
+              onRemoveNegated={removeNegated}
+              onClearAllSelections={handleClearAllSelections}
+              onRunAnalysis={() => {
+                setIsMobileCopilotOpen(false);
+                onRunAnalysis();
+              }}
+              onSaveToPostgres={onSaveToPostgres}
+              onExportCase={onExportCase}
+              onImportCase={onImportCase}
+              onReset={onReset}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 };

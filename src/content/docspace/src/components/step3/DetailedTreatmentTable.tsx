@@ -256,11 +256,21 @@ export const DetailedTreatmentTable: React.FC<DetailedTreatmentTableProps> = ({
         />
       </div>
 
+      {/* Scroll indicator hint for mobile */}
+      <div className="flex sm:hidden items-center justify-between px-4 py-1.5 text-[11px] text-blue-800 bg-blue-50/70 border-y border-blue-100/80 mb-2">
+        <span className="flex items-center gap-1">
+          <span>👈👉</span>
+          <span>Vuốt ngang để xem đủ 4 cột Phác đồ & Y lệnh</span>
+        </span>
+        <span className="font-bold text-blue-700 font-mono-custom text-[10px]">4 CỘT</span>
+      </div>
+
       {/* 2. BẢNG 4 CỘT CHUẨN HOÁ */}
-      <div className="overflow-x-auto px-4 pb-4">
-        <table className="w-full text-left border-collapse text-xs border border-slate-200 rounded-lg overflow-hidden shadow-2xs">
+      <div className="overflow-x-auto px-2 sm:px-4 pb-4 no-scrollbar">
+        <table className="w-full text-left border-collapse text-xs border border-slate-200 rounded-lg overflow-hidden shadow-2xs min-w-[760px]">
           <thead>
             <tr className="bg-slate-100/90 text-slate-700 border-b border-slate-200 font-bold uppercase tracking-wider text-[11px]">
+
               <th className="p-3 w-[18%] min-w-[170px] border-r border-slate-200">
                 1. Phân loại (Mức độ / Phân tầng)
               </th>

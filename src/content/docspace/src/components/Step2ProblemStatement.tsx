@@ -832,25 +832,26 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
       </div>
 
       {/* Bottom Action Bar */}
-      <div className="flex items-center justify-between pt-4 border-t border-slate-200">
+      <div className="flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-2.5 pt-4 border-t border-slate-200">
         <button
           type="button"
           onClick={() => onGoToStep('t1')}
-          className="px-4 py-2.5 text-xs font-semibold text-slate-700 bg-white hover:bg-slate-100 border border-slate-300 rounded-lg transition-colors flex items-center gap-2 cursor-pointer"
+          className="px-4 py-2.5 text-xs font-semibold text-slate-700 bg-white hover:bg-slate-100 border border-slate-300 rounded-lg transition-colors flex items-center justify-center gap-2 cursor-pointer min-h-[44px]"
         >
           <ArrowLeft className="w-4 h-4" />
-          Quay lại Bước 1: Nạp dữ kiện
+          <span>Bước 1: Nạp dữ kiện</span>
         </button>
 
         <button
           type="button"
           onClick={() => onGoToStep('t3')}
-          className="px-5 py-2.5 text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-lg shadow-sm hover:shadow transition-all flex items-center gap-2 cursor-pointer"
+          className="px-5 py-2.5 text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 active:bg-blue-800 rounded-lg shadow-sm hover:shadow transition-all flex items-center justify-center gap-2 cursor-pointer min-h-[44px]"
         >
-          Tiếp tục sang Bước 3: Phân tích &amp; Biện luận chẩn đoán
+          <span>Tiếp tục: Bước 3 (Biện luận & CDSS)</span>
           <ArrowRight className="w-4 h-4" />
         </button>
       </div>
     </div>
   );
 };
+

@@ -36,7 +36,7 @@ export const VitalsCardsPanel: React.FC<VitalsCardsPanelProps> = ({
         </span>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2.5 text-xs font-mono-custom">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 sm:gap-2.5 text-xs font-mono-custom">
         {/* Nhiệt độ */}
         <div className="bg-white p-2 border border-slate-200 rounded-md">
           <div className="flex items-center justify-between mb-1">
@@ -54,13 +54,13 @@ export const VitalsCardsPanel: React.FC<VitalsCardsPanelProps> = ({
               value={vitals.vNhiet}
               onChange={(e) => setVitals((prev) => ({ ...prev, vNhiet: e.target.value }))}
               placeholder="37.0"
-              className={`w-full border rounded p-1.5 text-xs font-bold ${
+              className={`w-full border rounded p-2 sm:p-1.5 min-h-[40px] sm:min-h-0 text-sm sm:text-xs font-bold ${
                 vitalsStatus.isTempAbnormal
                   ? 'border-red-400 bg-red-50 text-red-700'
                   : 'border-slate-200 bg-slate-50 focus:bg-white text-slate-800'
               }`}
             />
-            <span className="absolute right-2 top-1.5 text-[10px] text-slate-400">°C</span>
+            <span className="absolute right-2 top-2 sm:top-1.5 text-[10px] text-slate-400">°C</span>
           </div>
         </div>
 
@@ -80,18 +80,18 @@ export const VitalsCardsPanel: React.FC<VitalsCardsPanelProps> = ({
               value={vitals.vMach}
               onChange={(e) => setVitals((prev) => ({ ...prev, vMach: e.target.value }))}
               placeholder="76"
-              className={`w-full border rounded p-1.5 text-xs font-bold ${
+              className={`w-full border rounded p-2 sm:p-1.5 min-h-[40px] sm:min-h-0 text-sm sm:text-xs font-bold ${
                 vitalsStatus.isPulseAbnormal
                   ? 'border-red-400 bg-red-50 text-red-700'
                   : 'border-slate-200 bg-slate-50 focus:bg-white text-slate-800'
               }`}
             />
-            <span className="absolute right-2 top-1.5 text-[10px] text-slate-400">l/p</span>
+            <span className="absolute right-2 top-2 sm:top-1.5 text-[10px] text-slate-400">l/p</span>
           </div>
         </div>
 
         {/* Huyết áp */}
-        <div className="bg-white p-2 border border-slate-200 rounded-md">
+        <div className="bg-white p-2 border border-slate-200 rounded-md col-span-2 sm:col-span-1">
           <div className="flex items-center justify-between mb-1">
             <label className="font-sans font-semibold text-slate-700 flex items-center gap-1 text-[11px]">
               <Activity className="w-3 h-3 text-blue-500" />
@@ -107,7 +107,7 @@ export const VitalsCardsPanel: React.FC<VitalsCardsPanelProps> = ({
               onChange={(e) => setVitals((prev) => ({ ...prev, vHATT: e.target.value }))}
               placeholder="120"
               title="HA tâm thu (bình thường 90-139)"
-              className={`w-full border rounded p-1.5 text-xs font-bold text-center ${
+              className={`w-full border rounded p-2 sm:p-1.5 min-h-[40px] sm:min-h-0 text-sm sm:text-xs font-bold text-center ${
                 vitalsStatus.isBPAbnormal
                   ? 'border-red-400 bg-red-50 text-red-700'
                   : 'border-slate-200 bg-slate-50 focus:bg-white text-slate-800'
@@ -121,7 +121,7 @@ export const VitalsCardsPanel: React.FC<VitalsCardsPanelProps> = ({
               onChange={(e) => setVitals((prev) => ({ ...prev, vHATTr: e.target.value }))}
               placeholder="80"
               title="HA tâm trương (bình thường 60-89)"
-              className="w-full border border-slate-200 bg-slate-50 focus:bg-white rounded p-1.5 text-xs font-bold text-center text-slate-800"
+              className="w-full border border-slate-200 bg-slate-50 focus:bg-white rounded p-2 sm:p-1.5 min-h-[40px] sm:min-h-0 text-sm sm:text-xs font-bold text-center text-slate-800"
             />
           </div>
         </div>
@@ -142,13 +142,13 @@ export const VitalsCardsPanel: React.FC<VitalsCardsPanelProps> = ({
               value={vitals.vTho}
               onChange={(e) => setVitals((prev) => ({ ...prev, vTho: e.target.value }))}
               placeholder="16"
-              className={`w-full border rounded p-1.5 text-xs font-bold ${
+              className={`w-full border rounded p-2 sm:p-1.5 min-h-[40px] sm:min-h-0 text-sm sm:text-xs font-bold ${
                 vitalsStatus.isRespAbnormal
                   ? 'border-red-400 bg-red-50 text-red-700'
                   : 'border-slate-200 bg-slate-50 focus:bg-white text-slate-800'
               }`}
             />
-            <span className="absolute right-2 top-1.5 text-[10px] text-slate-400">l/p</span>
+            <span className="absolute right-2 top-2 sm:top-1.5 text-[10px] text-slate-400">l/p</span>
           </div>
         </div>
 
@@ -168,13 +168,13 @@ export const VitalsCardsPanel: React.FC<VitalsCardsPanelProps> = ({
               value={vitals.vSpo2}
               onChange={(e) => setVitals((prev) => ({ ...prev, vSpo2: e.target.value }))}
               placeholder="98"
-              className={`w-full border rounded p-1.5 text-xs font-bold ${
+              className={`w-full border rounded p-2 sm:p-1.5 min-h-[40px] sm:min-h-0 text-sm sm:text-xs font-bold ${
                 vitalsStatus.isSpo2Abnormal
                   ? 'border-red-400 bg-red-50 text-red-700'
                   : 'border-slate-200 bg-slate-50 focus:bg-white text-slate-800'
               }`}
             />
-            <span className="absolute right-2 top-1.5 text-[10px] text-slate-400">%</span>
+            <span className="absolute right-2 top-2 sm:top-1.5 text-[10px] text-slate-400">%</span>
           </div>
         </div>
       </div>

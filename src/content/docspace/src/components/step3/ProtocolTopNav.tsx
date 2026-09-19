@@ -28,18 +28,22 @@ export const ProtocolTopNav: React.FC<ProtocolTopNavProps> = ({
   filteredDiseases,
 }) => {
   return (
-    <div className="bg-white border border-slate-200 rounded-xl p-3 sm:p-3.5 shadow-xs flex flex-wrap items-center justify-between gap-3">
+    <div className="bg-white border border-slate-200 rounded-xl p-2.5 sm:p-3.5 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-3">
       {/* Nút quay lại tinh gọn */}
-      <div className="flex items-center gap-2.5">
+      <div className="flex items-center justify-between sm:justify-start gap-2.5">
         <button
           id="btn-back-to-step2"
           onClick={onBackToAnalysis}
-          className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-50 hover:bg-slate-100 text-slate-700 border border-slate-200 text-xs font-semibold rounded-lg transition-colors cursor-pointer shadow-2xs"
+          className="flex items-center gap-1.5 px-3 py-2 sm:py-1.5 bg-slate-50 hover:bg-slate-100 text-slate-700 border border-slate-200 text-xs font-semibold rounded-lg transition-colors cursor-pointer shadow-2xs min-h-[38px]"
           title="Quay lại bảng phân tích và chẩn đoán phân biệt"
         >
           <ArrowLeft className="w-3.5 h-3.5 text-slate-600" />
           <span className="font-medium">Quay lại phân tích</span>
         </button>
+
+        <span className="text-xs font-bold text-slate-800 sm:hidden">
+          Phác đồ điều trị
+        </span>
 
         <div className="h-4 w-px bg-slate-200 hidden sm:block" />
 
@@ -49,14 +53,14 @@ export const ProtocolTopNav: React.FC<ProtocolTopNavProps> = ({
       </div>
 
       {/* Lựa chọn chuyên khoa & bệnh lý */}
-      <div className="flex items-center gap-2 flex-wrap flex-1 sm:flex-initial justify-end">
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 flex-1 sm:flex-initial sm:justify-end">
         {/* Bộ lọc chuyên khoa */}
         <div className="flex items-center gap-1.5">
           <Filter className="w-3.5 h-3.5 text-slate-400 hidden lg:inline" />
           <select
             value={selectedSpecialty}
             onChange={(e) => onSelectSpecialty(e.target.value)}
-            className="border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs bg-slate-50 hover:bg-slate-100/70 focus:outline-none focus:border-blue-500 text-slate-700 font-medium cursor-pointer transition-colors"
+            className="w-full sm:w-auto border border-slate-200 rounded-lg px-2.5 py-2 sm:py-1.5 text-xs bg-slate-50 hover:bg-slate-100/70 focus:outline-none focus:border-blue-500 text-slate-700 font-medium cursor-pointer transition-colors min-h-[38px]"
             title="Lọc danh sách theo chuyên khoa"
           >
             <option value="all">Tất cả chuyên khoa</option>
@@ -73,7 +77,7 @@ export const ProtocolTopNav: React.FC<ProtocolTopNavProps> = ({
           id="select-disease-protocol"
           value={selectedDiseaseId}
           onChange={(e) => onSelectDisease(e.target.value)}
-          className="border border-slate-200 rounded-lg px-3 py-1.5 text-xs font-semibold bg-slate-50 hover:bg-slate-100/70 focus:outline-none focus:border-blue-500 text-slate-800 max-w-[260px] sm:max-w-[320px] truncate cursor-pointer transition-colors"
+          className="w-full sm:w-auto border border-slate-200 rounded-lg px-3 py-2 sm:py-1.5 text-xs font-semibold bg-slate-50 hover:bg-slate-100/70 focus:outline-none focus:border-blue-500 text-slate-800 sm:max-w-[320px] truncate cursor-pointer transition-colors min-h-[40px]"
           title="Chọn bệnh lý cần xem phác đồ"
         >
           {filteredDiseases.map((b) => (
@@ -87,3 +91,4 @@ export const ProtocolTopNav: React.FC<ProtocolTopNavProps> = ({
     </div>
   );
 };
+

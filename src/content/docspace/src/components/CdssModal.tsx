@@ -167,42 +167,42 @@ export const CdssModal: React.FC<CdssModalProps> = ({
   const standaloneUrl = getCdssAppUrl(activeTool);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-slate-950/70 backdrop-blur-md animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-0 sm:p-4 bg-slate-950/70 backdrop-blur-md animate-in fade-in duration-200">
       <div
-        className={`bg-white rounded-xl shadow-2xl border border-slate-200 flex flex-col overflow-hidden transition-all duration-300 ${
+        className={`bg-white shadow-2xl border border-slate-200 flex flex-col overflow-hidden transition-all duration-300 rounded-none sm:rounded-xl ${
           isFullscreen
-            ? 'fixed inset-2 sm:inset-3 w-auto h-auto'
-            : 'w-full max-w-[1440px] h-[92vh]'
+            ? 'fixed inset-0 sm:inset-3 w-full sm:w-auto h-full sm:h-auto'
+            : 'w-full max-w-[1440px] h-full sm:h-[92vh]'
         }`}
       >
         {/* Top Navbar Header */}
-        <header className="px-4 py-2.5 bg-slate-900 text-white flex items-center justify-between border-b border-slate-800 shrink-0 gap-3">
-          <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-blue-600/90 text-white flex items-center justify-center shadow-xs">
+        <header className="px-3 sm:px-4 py-2.5 bg-slate-900 text-white flex items-center justify-between border-b border-slate-800 shrink-0 gap-2 sm:gap-3">
+          <div className="flex items-center gap-2 sm:gap-2.5 min-w-0">
+            <div className="w-8 h-8 rounded-lg bg-blue-600/90 text-white flex items-center justify-center shadow-xs shrink-0">
               <Activity className="w-4 h-4 animate-pulse" />
             </div>
-            <div>
-              <div className="flex items-center gap-2">
-                <span className="font-bold text-sm text-white tracking-wide flex items-center gap-1.5">
-                  CliniPortal CDSS Workstation
+            <div className="min-w-0">
+              <div className="flex items-center gap-1.5 sm:gap-2">
+                <span className="font-bold text-xs sm:text-sm text-white tracking-wide truncate">
+                  CDSS Workstation
                 </span>
-                <span className="px-1.5 py-0.5 rounded text-[10px] font-semibold bg-blue-500/20 text-blue-300 border border-blue-500/30">
+                <span className="px-1.5 py-0.5 rounded text-[9.5px] sm:text-[10px] font-semibold bg-blue-500/20 text-blue-300 border border-blue-500/30 shrink-0">
                   {currentMeta.badge}
                 </span>
               </div>
-              <p className="text-[11px] text-slate-400 hidden sm:block">
+              <p className="text-[11px] text-slate-400 hidden sm:block truncate">
                 {currentMeta.desc}
               </p>
             </div>
           </div>
 
           {/* Right Action Tools */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
             <a
               href={standaloneUrl}
               target="_blank"
               rel="noreferrer"
-              className="px-2.5 py-1 text-xs font-semibold text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-md transition-colors flex items-center gap-1.5 cursor-pointer"
+              className="px-2 sm:px-2.5 py-1 text-xs font-semibold text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-md transition-colors flex items-center gap-1.5 cursor-pointer min-h-[36px]"
               title="Mở trong tab riêng toàn trang"
             >
               <ExternalLink className="w-3.5 h-3.5" />
@@ -211,7 +211,7 @@ export const CdssModal: React.FC<CdssModalProps> = ({
 
             <button
               onClick={() => setIsFullscreen(!isFullscreen)}
-              className="p-1.5 text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-md transition-colors cursor-pointer"
+              className="hidden sm:flex p-1.5 text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-md transition-colors cursor-pointer min-h-[36px] min-w-[36px] items-center justify-center"
               title={isFullscreen ? 'Thu nhỏ cửa sổ' : 'Phóng to toàn màn hình'}
             >
               {isFullscreen ? (
@@ -223,13 +223,14 @@ export const CdssModal: React.FC<CdssModalProps> = ({
 
             <button
               onClick={onClose}
-              className="p-1.5 text-slate-400 hover:text-white bg-slate-800 hover:bg-rose-600/80 border border-slate-700 hover:border-rose-500 rounded-md transition-colors cursor-pointer"
+              className="p-1.5 text-slate-400 hover:text-white bg-slate-800 hover:bg-rose-600/80 border border-slate-700 hover:border-rose-500 rounded-md transition-colors cursor-pointer min-h-[36px] min-w-[36px] flex items-center justify-center"
               title="Đóng cửa sổ (ESC)"
             >
               <X className="w-4 h-4" />
             </button>
           </div>
         </header>
+
 
         {/* Sub-Header: Module Tab Navigation Bar */}
         <nav className="bg-slate-100 border-b border-slate-200 px-3 py-1.5 flex items-center justify-between gap-1 overflow-x-auto no-scrollbar shrink-0">

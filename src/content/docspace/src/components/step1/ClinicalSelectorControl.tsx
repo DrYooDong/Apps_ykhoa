@@ -116,11 +116,11 @@ export const ClinicalSelectorControl: React.FC<ClinicalSelectorControlProps> = (
     <div className="bg-white border border-slate-200 rounded-lg p-3 sm:p-3.5 shadow-xs flex flex-col gap-3">
       {/* Section Navigation Tabs */}
       <div>
-        <div className="flex items-center gap-1 overflow-x-auto pb-0.5 border-b border-slate-200 text-xs">
+        <div className="flex items-center gap-1 overflow-x-auto pb-0.5 border-b border-slate-200 text-xs no-scrollbar">
           <button
             type="button"
             onClick={() => setActiveSection('all')}
-            className={`px-3 py-1.5 rounded-t-md font-semibold transition-all flex items-center gap-1.5 cursor-pointer border-b-2 -mb-[1px] ${
+            className={`px-3 py-2 sm:py-1.5 rounded-t-md font-semibold transition-all flex items-center gap-1.5 cursor-pointer border-b-2 -mb-[1px] whitespace-nowrap shrink-0 min-h-[38px] ${
               activeSection === 'all'
                 ? 'border-blue-600 text-blue-600 bg-blue-50/50'
                 : 'border-transparent text-slate-600 hover:text-slate-900 hover:bg-slate-50'
@@ -133,7 +133,7 @@ export const ClinicalSelectorControl: React.FC<ClinicalSelectorControlProps> = (
           <button
             type="button"
             onClick={() => setActiveSection('cn')}
-            className={`px-3 py-1.5 rounded-t-md font-semibold transition-all flex items-center gap-1.5 cursor-pointer border-b-2 -mb-[1px] ${
+            className={`px-3 py-2 sm:py-1.5 rounded-t-md font-semibold transition-all flex items-center gap-1.5 cursor-pointer border-b-2 -mb-[1px] whitespace-nowrap shrink-0 min-h-[38px] ${
               activeSection === 'cn'
                 ? 'border-blue-600 text-blue-600 bg-blue-50/50'
                 : 'border-transparent text-slate-600 hover:text-slate-900 hover:bg-slate-50'
@@ -148,10 +148,11 @@ export const ClinicalSelectorControl: React.FC<ClinicalSelectorControlProps> = (
             )}
           </button>
 
+
           <button
             type="button"
             onClick={() => setActiveSection('tt')}
-            className={`px-3 py-1.5 rounded-t-md font-semibold transition-all flex items-center gap-1.5 cursor-pointer border-b-2 -mb-[1px] ${
+            className={`px-3 py-2 sm:py-1.5 rounded-t-md font-semibold transition-all flex items-center gap-1.5 cursor-pointer border-b-2 -mb-[1px] whitespace-nowrap shrink-0 min-h-[38px] ${
               activeSection === 'tt'
                 ? 'border-blue-600 text-blue-600 bg-blue-50/50'
                 : 'border-transparent text-slate-600 hover:text-slate-900 hover:bg-slate-50'
@@ -169,7 +170,7 @@ export const ClinicalSelectorControl: React.FC<ClinicalSelectorControlProps> = (
           <button
             type="button"
             onClick={() => setActiveSection('tc')}
-            className={`px-3 py-1.5 rounded-t-md font-semibold transition-all flex items-center gap-1.5 cursor-pointer border-b-2 -mb-[1px] ${
+            className={`px-3 py-2 sm:py-1.5 rounded-t-md font-semibold transition-all flex items-center gap-1.5 cursor-pointer border-b-2 -mb-[1px] whitespace-nowrap shrink-0 min-h-[38px] ${
               activeSection === 'tc'
                 ? 'border-blue-600 text-blue-600 bg-blue-50/50'
                 : 'border-transparent text-slate-600 hover:text-slate-900 hover:bg-slate-50'
@@ -187,7 +188,7 @@ export const ClinicalSelectorControl: React.FC<ClinicalSelectorControlProps> = (
           <button
             type="button"
             onClick={() => setActiveSection('cls')}
-            className={`px-3 py-1.5 rounded-t-md font-semibold transition-all flex items-center gap-1.5 cursor-pointer border-b-2 -mb-[1px] ${
+            className={`px-3 py-2 sm:py-1.5 rounded-t-md font-semibold transition-all flex items-center gap-1.5 cursor-pointer border-b-2 -mb-[1px] whitespace-nowrap shrink-0 min-h-[38px] ${
               activeSection === 'cls'
                 ? 'border-blue-600 text-blue-600 bg-blue-50/50'
                 : 'border-transparent text-slate-600 hover:text-slate-900 hover:bg-slate-50'
@@ -205,7 +206,7 @@ export const ClinicalSelectorControl: React.FC<ClinicalSelectorControlProps> = (
           <button
             type="button"
             onClick={() => setActiveSection('selected')}
-            className={`px-3 py-1.5 rounded-t-md font-semibold transition-all flex items-center gap-1.5 cursor-pointer border-b-2 -mb-[1px] ml-auto ${
+            className={`px-3 py-2 sm:py-1.5 rounded-t-md font-semibold transition-all flex items-center gap-1.5 cursor-pointer border-b-2 -mb-[1px] whitespace-nowrap shrink-0 min-h-[38px] ml-auto ${
               activeSection === 'selected'
                 ? 'border-amber-500 text-amber-800 bg-amber-50/60'
                 : 'border-transparent text-slate-600 hover:text-slate-900 hover:bg-slate-50'

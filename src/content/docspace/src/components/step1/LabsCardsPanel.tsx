@@ -49,7 +49,7 @@ export const LabsCardsPanel: React.FC<LabsCardsPanelProps> = ({
         </div>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2.5 text-xs font-mono-custom">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 sm:gap-2.5 text-xs font-mono-custom">
         {/* Bạch cầu */}
         <div className="bg-white p-2 border border-slate-200 rounded-md">
           <div className="flex items-center justify-between mb-1">
@@ -64,13 +64,13 @@ export const LabsCardsPanel: React.FC<LabsCardsPanelProps> = ({
               value={labs.lBC}
               onChange={(e) => setLabs((prev) => ({ ...prev, lBC: e.target.value }))}
               placeholder="7.5"
-              className={`w-full border rounded p-1.5 text-xs font-bold ${
+              className={`w-full border rounded p-2 sm:p-1.5 min-h-[40px] sm:min-h-0 text-sm sm:text-xs font-bold ${
                 labsStatus.isBCAbnormal
                   ? 'border-red-400 bg-red-50 text-red-700'
                   : 'border-slate-200 bg-slate-50 focus:bg-white text-slate-800'
               }`}
             />
-            <span className="absolute right-2 top-1.5 text-[10px] text-slate-400">G/L</span>
+            <span className="absolute right-2 top-2 sm:top-1.5 text-[10px] text-slate-400">G/L</span>
           </div>
         </div>
 
@@ -87,13 +87,13 @@ export const LabsCardsPanel: React.FC<LabsCardsPanelProps> = ({
               value={labs.lTC}
               onChange={(e) => setLabs((prev) => ({ ...prev, lTC: e.target.value }))}
               placeholder="250"
-              className={`w-full border rounded p-1.5 text-xs font-bold ${
+              className={`w-full border rounded p-2 sm:p-1.5 min-h-[40px] sm:min-h-0 text-sm sm:text-xs font-bold ${
                 labsStatus.isTCAbnormal
                   ? 'border-red-400 bg-red-50 text-red-700'
                   : 'border-slate-200 bg-slate-50 focus:bg-white text-slate-800'
               }`}
             />
-            <span className="absolute right-2 top-1.5 text-[10px] text-slate-400">G/L</span>
+            <span className="absolute right-2 top-2 sm:top-1.5 text-[10px] text-slate-400">G/L</span>
           </div>
         </div>
 
@@ -111,13 +111,13 @@ export const LabsCardsPanel: React.FC<LabsCardsPanelProps> = ({
               value={labs.lHct}
               onChange={(e) => setLabs((prev) => ({ ...prev, lHct: e.target.value }))}
               placeholder="42"
-              className={`w-full border rounded p-1.5 text-xs font-bold ${
+              className={`w-full border rounded p-2 sm:p-1.5 min-h-[40px] sm:min-h-0 text-sm sm:text-xs font-bold ${
                 labsStatus.isHctAbnormal
                   ? 'border-red-400 bg-red-50 text-red-700'
                   : 'border-slate-200 bg-slate-50 focus:bg-white text-slate-800'
               }`}
             />
-            <span className="absolute right-2 top-1.5 text-[10px] text-slate-400">%</span>
+            <span className="absolute right-2 top-2 sm:top-1.5 text-[10px] text-slate-400">%</span>
           </div>
         </div>
 
@@ -135,18 +135,18 @@ export const LabsCardsPanel: React.FC<LabsCardsPanelProps> = ({
               value={labs.lGlu}
               onChange={(e) => setLabs((prev) => ({ ...prev, lGlu: e.target.value }))}
               placeholder="5.4"
-              className={`w-full border rounded p-1.5 text-xs font-bold ${
+              className={`w-full border rounded p-2 sm:p-1.5 min-h-[40px] sm:min-h-0 text-sm sm:text-xs font-bold ${
                 labsStatus.isGluAbnormal
                   ? 'border-red-400 bg-red-50 text-red-700'
                   : 'border-slate-200 bg-slate-50 focus:bg-white text-slate-800'
               }`}
             />
-            <span className="absolute right-2 top-1.5 text-[10px] text-slate-400">mmol/L</span>
+            <span className="absolute right-2 top-2 sm:top-1.5 text-[10px] text-slate-400">mmol/L</span>
           </div>
         </div>
 
         {/* Troponin */}
-        <div className="bg-white p-2 border border-slate-200 rounded-md">
+        <div className="bg-white p-2 border border-slate-200 rounded-md col-span-2 sm:col-span-1">
           <div className="flex items-center justify-between mb-1">
             <label className="font-sans font-semibold text-slate-700 text-[11px] text-rose-700">Troponin hs</label>
             <span className="text-[9.5px] text-slate-400 font-sans">&lt; 14 ng/L</span>
@@ -158,13 +158,13 @@ export const LabsCardsPanel: React.FC<LabsCardsPanelProps> = ({
               value={labs.lTrop}
               onChange={(e) => setLabs((prev) => ({ ...prev, lTrop: e.target.value }))}
               placeholder="8"
-              className={`w-full border rounded p-1.5 text-xs font-bold ${
+              className={`w-full border rounded p-2 sm:p-1.5 min-h-[40px] sm:min-h-0 text-sm sm:text-xs font-bold ${
                 labsStatus.isTropAbnormal
                   ? 'border-red-400 bg-red-50 text-red-700'
                   : 'border-slate-200 bg-slate-50 focus:bg-white text-slate-800'
               }`}
             />
-            <span className="absolute right-2 top-1.5 text-[10px] text-slate-400">ng/L</span>
+            <span className="absolute right-2 top-2 sm:top-1.5 text-[10px] text-slate-400">ng/L</span>
           </div>
         </div>
       </div>
