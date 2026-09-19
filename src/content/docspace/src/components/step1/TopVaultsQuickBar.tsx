@@ -1,5 +1,5 @@
 import React from 'react';
-import { Activity, Sparkles, Zap } from 'lucide-react';
+import { Activity, Zap } from 'lucide-react';
 
 interface TopVaultsQuickBarProps {
   activeSection: 'all' | 'hc' | 'cn' | 'tt' | 'tc' | 'cls' | 'selected';
@@ -36,10 +36,10 @@ export const TopVaultsQuickBar: React.FC<TopVaultsQuickBarProps> = ({
           {[
             { id: 'all', label: 'Tất cả mục' },
             { id: 'hc', label: 'A. Hành chính' },
-            { id: 'cn', label: `B. Cơ năng (${countCategorySelected('cn')})` },
-            { id: 'tt', label: `C. Thực thể (${countCategorySelected('tt')})` },
-            { id: 'tc', label: `D. Tiền căn (${countCategorySelected('tc')})` },
-            { id: 'cls', label: `E. Cận lâm sàng (${countCategorySelected('cls')})` },
+            { id: 'cn', label: `B. TCCN (${countCategorySelected('cn')})` },
+            { id: 'tt', label: `C. TCTT & DHST (${countCategorySelected('tt')})` },
+            { id: 'tc', label: `D. TC (${countCategorySelected('tc')})` },
+            { id: 'cls', label: `E. CLS (${countCategorySelected('cls')})` },
           ].map((sec) => (
             <button
               key={sec.id}
@@ -73,7 +73,7 @@ export const TopVaultsQuickBar: React.FC<TopVaultsQuickBarProps> = ({
             className="flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium text-slate-700 bg-white border border-slate-200 hover:bg-slate-50 hover:border-slate-300 rounded-md transition-colors cursor-pointer shadow-xs"
           >
             <Activity className="w-3.5 h-3.5 text-emerald-600" />
-            <span className="hidden sm:inline">Nạp sinh hiệu chuẩn</span>
+            <span className="hidden sm:inline">Nạp DHST chuẩn</span>
           </button>
 
           <button
@@ -83,63 +83,6 @@ export const TopVaultsQuickBar: React.FC<TopVaultsQuickBarProps> = ({
           >
             <Zap className="w-3.5 h-3.5 fill-current" />
             <span>Phân tích ngay</span>
-          </button>
-        </div>
-      </div>
-
-      {/* Clinical Vaults Quick Integration Bar: Kho Công cụ, Kho ICD-10, Kho CDSS */}
-      <div className="bg-gradient-to-r from-blue-50/70 via-indigo-50/40 to-slate-50 border border-blue-200/80 rounded-lg p-2.5 px-3.5 flex flex-wrap items-center justify-between gap-2.5 shadow-2xs">
-        <div className="flex items-center gap-2 text-xs">
-          <span className="flex items-center gap-1 font-bold text-blue-950">
-            <Sparkles className="w-3.5 h-3.5 text-blue-600" />
-            Tra cứu lâm sàng bổ trợ:
-          </span>
-          <span className="text-slate-500 hidden lg:inline">
-            Kết nối trực tiếp 3 kho tài liệu & công cụ thực hành y khoa:
-          </span>
-        </div>
-
-        <div className="flex items-center gap-2 flex-wrap">
-          <button
-            type="button"
-            id="btn-step1-vault-cc"
-            onClick={() => onOpenVaultDrawer?.(undefined, undefined, 'CC')}
-            className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold text-amber-900 bg-white border border-amber-300/80 hover:bg-amber-50 rounded-md transition-all cursor-pointer shadow-2xs hover:shadow-xs hover:border-amber-400"
-            title="Tra cứu 19 công cụ và thang điểm lâm sàng (CURB-65, CHA2DS2-VASc, Cockcroft-Gault, CKD-EPI, Glasgow, NIHSS, qSOFA, Wells, ABG...)"
-          >
-            <span className="text-amber-600 font-bold">🧮</span>
-            <span>Kho Công cụ & Thang điểm</span>
-            <span className="bg-amber-100 text-amber-800 text-[10px] font-mono-custom font-bold px-1.5 py-0.2 rounded-full border border-amber-200">
-              19
-            </span>
-          </button>
-
-          <button
-            type="button"
-            id="btn-step1-vault-icd10"
-            onClick={() => onOpenVaultDrawer?.(undefined, undefined, 'ICD10')}
-            className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold text-sky-900 bg-white border border-sky-300/80 hover:bg-sky-50 rounded-md transition-all cursor-pointer shadow-2xs hover:shadow-xs hover:border-sky-400"
-            title="Tra cứu 11 cẩm nang mã ICD-10 chuyên khoa, quy tắc chọn mã chính/phụ & sổ tay 50+ bẫy lỗi xuất toán BHYT"
-          >
-            <span className="text-sky-600 font-bold">🏷️</span>
-            <span>Kho ICD-10 & BHYT</span>
-            <span className="bg-sky-100 text-sky-800 text-[10px] font-mono-custom font-bold px-1.5 py-0.2 rounded-full border border-sky-200">
-              11
-            </span>
-          </button>
-
-          <button
-            type="button"
-            id="btn-step1-vault-cdss"
-            onClick={() => onOpenVaultDrawer?.(undefined, undefined, 'CDSS')}
-            className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold text-purple-900 bg-white border border-purple-300/80 hover:bg-purple-50 rounded-md transition-all cursor-pointer shadow-2xs hover:shadow-xs hover:border-purple-400"
-            title="Hệ thống hỗ trợ ra quyết định lâm sàng CDSS (Tính liều kháng sinh eGFR & PK/PD, Phác đồ bù dịch SXHD Dengue)"
-          >
-            <span className="text-purple-600 font-bold">⚡</span>
-            <span>Kho CDSS Quyết định</span>
-            <span className="bg-purple-100 text-purple-800 text-[10px] font-mono-custom font-bold px-1.5 py-0.2 rounded-full border border-purple-200">
-              4
-            </span>
           </button>
         </div>
       </div>

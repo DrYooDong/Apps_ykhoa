@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sliders, Sparkles } from 'lucide-react';
+import { Sliders } from 'lucide-react';
 import { LabsState } from '../../types.ts';
 
 export interface LabsStatusInfo {
@@ -185,76 +185,6 @@ export const LabsCardsPanel: React.FC<LabsCardsPanelProps> = ({
           ))}
         </div>
       )}
-
-      {/* Point-of-Care Fast Calculators & Protocols from Kho CC & CDSS */}
-      <div className="flex flex-wrap items-center gap-1.5 mt-2.5 pt-2 border-t border-slate-200">
-        <span className="text-[10.5px] font-bold text-slate-500 uppercase tracking-wide mr-1 flex items-center gap-1">
-          <Sparkles className="w-3 h-3 text-amber-500" />
-          Tính nhanh CLS:
-        </span>
-
-        <button
-          type="button"
-          onClick={() => onOpenVaultDrawer?.(undefined, 'CKD-EPI', 'CC')}
-          className="inline-flex items-center gap-1 px-2 py-0.5 text-[11px] font-semibold text-amber-800 bg-amber-50 hover:bg-amber-100 border border-amber-200 rounded transition-colors cursor-pointer"
-          title="Công thức ước tính mức lọc cầu thận CKD-EPI 2021 & Cockcroft-Gault"
-        >
-          <span>🧮</span>
-          <span>eGFR & Cockcroft-Gault</span>
-        </button>
-
-        <button
-          type="button"
-          onClick={() => onOpenVaultDrawer?.(undefined, 'kháng sinh', 'CDSS')}
-          className="inline-flex items-center gap-1 px-2 py-0.5 text-[11px] font-semibold text-purple-800 bg-purple-50 hover:bg-purple-100 border border-purple-200 rounded transition-colors cursor-pointer"
-          title="Hệ thống CDSS tính liều kháng sinh hiệu chỉnh theo eGFR & đặc tính PK/PD"
-        >
-          <span>⚡</span>
-          <span>Chỉnh liều KS theo eGFR (CDSS)</span>
-        </button>
-
-        <button
-          type="button"
-          onClick={() => onOpenVaultDrawer?.(undefined, 'Insulin', 'CC')}
-          className="inline-flex items-center gap-1 px-2 py-0.5 text-[11px] font-semibold text-blue-800 bg-blue-50 hover:bg-blue-100 border border-blue-200 rounded transition-colors cursor-pointer"
-          title="Phác đồ Insulin Sliding Scale và hiệu chỉnh đường huyết cấp cứu"
-        >
-          <span>💉</span>
-          <span>Insulin Sliding Scale</span>
-        </button>
-
-        <button
-          type="button"
-          onClick={() => onOpenVaultDrawer?.(undefined, 'Khí máu', 'CC')}
-          className="inline-flex items-center gap-1 px-2 py-0.5 text-[11px] font-semibold text-rose-800 bg-rose-50 hover:bg-rose-100 border border-rose-200 rounded transition-colors cursor-pointer"
-          title="Biện luận Khí máu động mạch (KMĐM/ABG) 6 bước: Toan kiềm, Anion Gap & bù trừ"
-        >
-          <span>🩸</span>
-          <span>Biện luận KMĐM (ABG) 6 bước</span>
-        </button>
-
-        <a
-          href="../knowledge-vault/cdss/abg/index.html"
-          target="_blank"
-          rel="noreferrer"
-          className="inline-flex items-center gap-1 px-2 py-0.5 text-[11px] font-bold text-cyan-800 bg-cyan-50 hover:bg-cyan-100 border border-cyan-300 rounded transition-colors"
-          title="Mở Hệ thống CDSS Phân Tích Khí Máu Động Mạch (ABG Pro) độc lập"
-        >
-          <span>🩸</span>
-          <span>CDSS KMĐM Pro ↗</span>
-        </a>
-
-        <a
-          href="../knowledge-vault/cdss/xray/index.html"
-          target="_blank"
-          rel="noreferrer"
-          className="inline-flex items-center gap-1 px-2 py-0.5 text-[11px] font-bold text-purple-800 bg-purple-50 hover:bg-purple-100 border border-purple-300 rounded transition-colors"
-          title="Mở Hệ thống CDSS Phân Tích X-Quang Ngực & Bụng (RadAI PACS) độc lập"
-        >
-          <span>🩻</span>
-          <span>CDSS RadAI XQ ↗</span>
-        </a>
-      </div>
     </div>
   );
 };

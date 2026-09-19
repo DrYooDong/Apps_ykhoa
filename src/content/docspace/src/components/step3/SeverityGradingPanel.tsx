@@ -39,14 +39,14 @@ export const SeverityGradingPanel: React.FC<SeverityGradingPanelProps> = ({
           <div>
             <div className="flex items-center gap-2 flex-wrap">
               <h4 className="font-display font-bold text-sm sm:text-base text-indigo-950">
-                Đánh Giá Phân Độ Lâm Sàng & Sàng Lọc Biến Chứng
+                Đánh Giá Phân Độ LS &amp; Sàng Lọc Biến Chứng
               </h4>
               <span className="px-2 py-0.5 rounded text-[10.5px] font-mono bg-indigo-100 text-indigo-700 font-semibold border border-indigo-200">
                 Quy trình EBM
               </span>
             </div>
             <p className="text-[11px] text-slate-500">
-              Tiêu chuẩn chẩn đoán xác nhận bệnh nhân mắc bệnh; Phân độ & Biến chứng quyết định chính xác phác đồ, tốc độ dịch và tuyến điều trị.
+              Tiêu chuẩn CĐ xác nhận BN mắc bệnh; Phân độ &amp; Biến chứng quyết định chính xác phác đồ, tốc độ dịch và tuyến ĐT.
             </p>
           </div>
         </div>
@@ -55,7 +55,7 @@ export const SeverityGradingPanel: React.FC<SeverityGradingPanelProps> = ({
         {autoSuggestedGradeIndex > 0 && severityGrades[autoSuggestedGradeIndex] && (
           <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-amber-100 text-amber-900 border border-amber-300 text-xs font-semibold animate-pulse">
             <Sparkles className="w-3.5 h-3.5 text-amber-700" />
-            <span>Gợi ý tự động từ sinh hiệu/CLS: {severityGrades[autoSuggestedGradeIndex]?.grade.split(':')[0]}</span>
+            <span>Gợi ý tự động từ DHST/CLS: {severityGrades[autoSuggestedGradeIndex]?.grade.split(':')[0]}</span>
           </div>
         )}
       </div>
@@ -80,7 +80,7 @@ export const SeverityGradingPanel: React.FC<SeverityGradingPanelProps> = ({
                   activeChain?.stagingType === 'phenotype' ||
                   severityGrades.some((g) => g.grade.toLowerCase().includes('thể ') || g.severity === 'phenotype')
                     ? 'thể lâm sàng / dạng bệnh'
-                    : 'phân độ lâm sàng'
+                    : 'phân độ LS'
                 } hiện tại của người bệnh:
               </span>
             </span>

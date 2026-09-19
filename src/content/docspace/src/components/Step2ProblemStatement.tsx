@@ -20,7 +20,6 @@ import {
 import { CaseSummaryPanel, SummaryStructure } from './step2/CaseSummaryPanel.tsx';
 import { DiagnosticTrianglePanel } from './step2/DiagnosticTrianglePanel.tsx';
 import { ProblemListSection } from './step2/ProblemListSection.tsx';
-import { ClinicalReasoningPanel } from './step2/ClinicalReasoningPanel.tsx';
 import { toAbbreviatedMedicalText } from '../lib/medicalAbbreviations.ts';
 
 interface Step2ProblemStatementProps {
@@ -715,22 +714,6 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
         </div>
       </div>
 
-      {/* SECTION III: BIỆN LUẬN LÂM SÀNG (CLINICAL REASONING ENGINE - PGS.TS HOÀNG VĂN SỸ & BSCKI TRẦN THANH TUẤN) */}
-      <ClinicalReasoningPanel
-        topResult={topHypothesis}
-        results={liveResults || []}
-        kb={kb}
-        form={form}
-        vitals={vitals}
-        labs={labs}
-        selectedSymptoms={selectedSymptoms}
-        negatedSymptoms={negatedSymptoms}
-        problems={problems}
-        epiContext={epiContext}
-        onGoToStep={onGoToStep}
-        onOpenVaultDrawer={onOpenVaultDrawer}
-      />
-
       {/* Bottom Action Bar */}
       <div className="flex items-center justify-between pt-4 border-t border-slate-200">
         <button
@@ -747,7 +730,7 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
           onClick={() => onGoToStep('t3')}
           className="px-5 py-2.5 text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-lg shadow-sm hover:shadow transition-all flex items-center gap-2 cursor-pointer"
         >
-          Tiếp tục sang Bước 3: Đề nghị Cận lâm sàng & Phân tầng xử trí
+          Tiếp tục sang Bước 3: Phân tích &amp; Biện luận chẩn đoán
           <ArrowRight className="w-4 h-4" />
         </button>
       </div>

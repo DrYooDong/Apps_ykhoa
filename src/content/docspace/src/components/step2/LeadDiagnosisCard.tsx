@@ -72,7 +72,7 @@ export const LeadDiagnosisCard: React.FC<LeadDiagnosisCardProps> = ({
         <div className="flex flex-col gap-1.5">
           <div className="flex items-center gap-2 flex-wrap">
             <span className="px-2.5 py-0.5 rounded text-[11px] font-bold bg-blue-500/30 text-blue-200 border border-blue-400/40">
-              CHẨN ĐOÁN SƠ BỘ #1
+              CĐSB #1
             </span>
             <span className="text-xs font-mono-custom text-blue-300">
               ICD-10: <b>{disease.icd}</b>
@@ -136,7 +136,7 @@ export const LeadDiagnosisCard: React.FC<LeadDiagnosisCardProps> = ({
           }`}
         >
           <Microscope className="w-3.5 h-3.5" />
-          <span>Tiêu chuẩn chẩn đoán</span>
+          <span>Tiêu chuẩn CĐ</span>
         </button>
 
         <button
@@ -175,7 +175,7 @@ export const LeadDiagnosisCard: React.FC<LeadDiagnosisCardProps> = ({
           }`}
         >
           <ShieldAlert className="w-3.5 h-3.5" />
-          <span>Cảnh báo biến chứng</span>
+          <span>Cảnh báo biến chứng (Kho BC)</span>
         </button>
       </div>
 

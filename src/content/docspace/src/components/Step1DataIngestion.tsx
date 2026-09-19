@@ -1,6 +1,5 @@
 import React, { useMemo, useState } from 'react';
 import {
-  AlertTriangle,
   ArrowRight,
   Database,
   FileCheck,
@@ -407,25 +406,6 @@ export const Step1DataIngestion: React.FC<Step1Props> = ({
         onRunAnalysis={onRunAnalysis}
         onOpenVaultDrawer={onOpenVaultDrawer}
       />
-
-      {/* Critical Vitals Banner Alert if any vital signs are abnormal */}
-      {vitalsStatus.criticalCount > 0 && (
-        <div className="bg-amber-50 border border-amber-200 rounded-lg p-2.5 px-3.5 flex items-center justify-between gap-3 text-amber-900 text-xs shadow-2xs animate-fadeIn">
-          <div className="flex items-center gap-2">
-            <AlertTriangle className="w-4 h-4 text-amber-600 shrink-0" />
-            <span>
-              <b>Cảnh báo thông số sinh hiệu:</b> Phát hiện{' '}
-              <span className="font-semibold">{vitalsStatus.criticalCount} chỉ số bất thường</span> so
-              với thang chuẩn. Hệ thống đã tự động kích hoạt các luật suy luận diễn dịch tương ứng (⚙).
-            </span>
-          </div>
-          {derivedVitalsList.length > 0 && (
-            <span className="hidden lg:inline text-[11px] font-mono-custom bg-amber-100 text-amber-800 px-2 py-0.5 rounded border border-amber-300">
-              {derivedVitalsList.join(', ')}
-            </span>
-          )}
-        </div>
-      )}
 
       {/* Main Grid: Left Ingestion Forms (8 cols) + Right Real-time Copilot (4 cols) */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">

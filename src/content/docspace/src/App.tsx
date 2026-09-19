@@ -587,6 +587,12 @@ export function MainApp() {
                 selectedCount={selected.size}
                 derivedCount={derived.size}
                 negatedCount={negated.size}
+                selectedIds={selected}
+                negatedIds={negated}
+                onGoToStep={(step) => {
+                  setClinicalStep(step as ClinicalStepId);
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
                 onGoToProtocol={handleGoToProtocol}
                 onSaveToPostgres={() => setIsPrintOpen(true)}
                 onPrintReport={() => setIsPrintOpen(true)}

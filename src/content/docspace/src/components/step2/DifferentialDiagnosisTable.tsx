@@ -71,7 +71,7 @@ export const DifferentialDiagnosisTable: React.FC<DifferentialDiagnosisTableProp
           </span>
           <div>
             <h3 className="font-display text-sm font-bold text-slate-900 flex items-center gap-2">
-              Chẩn đoán phân biệt
+              CĐPB (Chẩn đoán phân biệt)
               <span className="px-2 py-0.5 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">
                 {rawDifferentials.length}
               </span>

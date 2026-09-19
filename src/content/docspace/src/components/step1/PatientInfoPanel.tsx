@@ -31,7 +31,7 @@ export const PatientInfoPanel: React.FC<PatientInfoPanelProps> = ({
             A
           </span>
           <h2 className="font-display text-sm sm:text-base font-bold text-slate-800">
-            Hành chính &amp; lý do vào viện
+            Hành chính &amp; LDVV
           </h2>
         </div>
         <span className="text-[11px] text-slate-500">
@@ -95,7 +95,7 @@ export const PatientInfoPanel: React.FC<PatientInfoPanelProps> = ({
 
         {/* Lý do vào viện */}
         <div>
-          <label className="block font-semibold text-slate-700 mb-1">Lý do vào viện</label>
+          <label className="block font-semibold text-slate-700 mb-1">LDVV (Lý do vào viện)</label>
           <input
             id="input-reason"
             type="text"

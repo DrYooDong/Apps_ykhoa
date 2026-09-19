@@ -10,7 +10,6 @@ import {
   X,
 } from 'lucide-react';
 import { AnalysisResult, RoleType, TrieuChung } from '../../types.ts';
-import { DataActionsBar } from './DataActionsBar.tsx';
 
 interface SuggestedQuestion {
   tc: TrieuChung;
@@ -61,7 +60,7 @@ export const ClinicalCopilotSidebar: React.FC<ClinicalCopilotSidebarProps> = ({
           <div className="flex items-center gap-1.5">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
             <h3 className="font-display font-bold text-xs sm:text-sm text-slate-800">
-              Suy luận chẩn đoán tức thời
+              Suy luận CĐ tức thời
             </h3>
           </div>
           <span className="text-[10px] text-slate-400 font-mono-custom uppercase tracking-wider">
@@ -127,7 +126,7 @@ export const ClinicalCopilotSidebar: React.FC<ClinicalCopilotSidebarProps> = ({
         ) : (
           <div className="py-4 text-center text-xs text-slate-500 flex flex-col items-center gap-1.5">
             <Stethoscope className="w-6 h-6 text-slate-300" />
-            <span>Nhập sinh hiệu hoặc chọn triệu chứng để kích hoạt công cụ suy luận.</span>
+            <span>Nhập DHST hoặc chọn triệu chứng để kích hoạt công cụ suy luận.</span>
           </div>
         )}
 
@@ -150,7 +149,7 @@ export const ClinicalCopilotSidebar: React.FC<ClinicalCopilotSidebarProps> = ({
                 >
                   <div className="flex flex-col">
                     <span className="text-slate-800 text-[11.5px]">
-                      Bệnh nhân có <b>{q.tc.ten}</b> không?
+                      BN có <b>{q.tc.ten}</b> không?
                     </span>
                     <span className="text-[10px] text-slate-400">
                       {q.role === 'dt' ? 'Dấu chứng đặc trưng' : 'Dấu chứng gợi ý'} (+{q.w} điểm)
@@ -188,7 +187,7 @@ export const ClinicalCopilotSidebar: React.FC<ClinicalCopilotSidebarProps> = ({
             </div>
             <div>
               <h3 className="font-display font-bold text-xs sm:text-sm text-slate-900 leading-none">
-                Dữ kiện lâm sàng đã nạp
+                Dữ kiện LS đã nạp
               </h3>
               <span className="text-[10.5px] text-slate-400 font-medium">
                 Luồng dữ kiện đầu vào phục vụ suy luận
@@ -305,14 +304,6 @@ export const ClinicalCopilotSidebar: React.FC<ClinicalCopilotSidebarProps> = ({
           </div>
         )}
       </div>
-
-      {/* Database & File Management Widget */}
-      <DataActionsBar
-        onSaveToPostgres={onSaveToPostgres}
-        onExportCase={onExportCase}
-        onImportCase={onImportCase}
-        onReset={onReset}
-      />
     </div>
   );
 };

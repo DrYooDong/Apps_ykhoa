@@ -41,14 +41,14 @@ export const ProblemListSection: React.FC<ProblemListSectionProps> = ({
       title: 'TẦNG 1: NGUY CƠ ĐE DỌA TÍNH MẠNG / CẤP CỨU KHẨN CẤP',
       badgeClass: 'bg-red-100 text-red-800 border-red-300',
       borderClass: 'border-red-200 bg-red-50/20',
-      description: 'Cần ổn định hồi sức sinh hiệu ABC ngay lập tức (Sốc, tụt HA, suy hô hấp nặng, hôn mê...).',
+      description: 'Cần ổn định hồi sức DHST ABC ngay lập tức (Sốc, tụt HA, suy hô hấp nặng, hôn mê...).',
     },
     {
       level: 'acute' as const,
       title: 'TẦNG 2: VẤN ĐỀ CẤP TÍNH & HỘI CHỨNG BỆNH CHÍNH',
       badgeClass: 'bg-amber-100 text-amber-800 border-amber-300',
       borderClass: 'border-amber-200 bg-amber-50/20',
-      description: 'Lý do chính khiến bệnh nhân nhập viện, cần chẩn đoán xác định và phân biệt.',
+      description: 'Lý do chính khiến BN nhập viện (LDNV), cần CĐXĐ và CĐPB.',
     },
     {
       level: 'chronic' as const,
@@ -108,7 +108,7 @@ export const ProblemListSection: React.FC<ProblemListSectionProps> = ({
       <div className="p-3 bg-gradient-to-r from-slate-50 via-blue-50/30 to-slate-50 border border-slate-200 rounded-xl flex items-start gap-2.5 text-xs text-slate-700">
         <Info className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
         <div>
-          <b className="text-slate-900">Quy tắc Đặt Vấn Đề Lâm Sàng 3 Tầng (Theo Thầy Sĩ & Thầy Tuấn):</b>
+          <b className="text-slate-900">Quy tắc Đặt VĐ LS 3 Tầng (Theo Thầy Sĩ & Thầy Tuấn):</b>
           <p className="mt-0.5 text-slate-600 leading-relaxed">
             Ưu tiên gom triệu chứng thành <b>Hội chứng</b> nếu đủ tiêu chuẩn; nếu chưa đủ hội chứng thì đặt thành <b>Triệu chứng độc lập có giá trị</b>. Sắp xếp theo 3 tầng ưu tiên xử trí: (1) Cấp cứu đe dọa sinh tồn ➔ (2) Vấn đề cấp tính ➔ (3) Bệnh nền mạn tính.
           </p>

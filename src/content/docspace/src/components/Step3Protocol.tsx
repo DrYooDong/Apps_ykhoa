@@ -18,7 +18,6 @@ import {
   RotateCcw,
   ShieldAlert,
   Sparkles,
-  User,
 } from 'lucide-react';
 import {
   Benh,
@@ -623,26 +622,6 @@ export const Step3Protocol: React.FC<Step3Props> = ({
     }
   };
 
-  // Abnormal vitals summary
-  const abnormalVitalsSummary = useMemo(() => {
-    if (!vitals) return [];
-    const list: string[] = [];
-    const t = parseFloat(vitals.vNhiet);
-    const m = parseFloat(vitals.vMach);
-    const hatt = parseFloat(vitals.vHATT);
-    const hattr = parseFloat(vitals.vHATTr);
-    const nt = parseFloat(vitals.vTho);
-    const spo2 = parseFloat(vitals.vSpo2);
-
-    if (!isNaN(t) && (t >= 38.0 || t < 36.0)) list.push(`T°: ${t}°C`);
-    if (!isNaN(m) && (m > 100 || m < 60)) list.push(`Mạch: ${m} l/p`);
-    if (!isNaN(hatt) && (hatt >= 140 || hatt < 90)) list.push(`HATT: ${hatt} mmHg`);
-    if (!isNaN(hattr) && hattr >= 90) list.push(`HATTr: ${hattr} mmHg`);
-    if (!isNaN(nt) && (nt > 22 || nt < 12)) list.push(`Thở: ${nt} l/p`);
-    if (!isNaN(spo2) && spo2 < 94) list.push(`SpO₂: ${spo2}%`);
-    return list;
-  }, [vitals]);
-
   const specialties = useMemo(() => {
     const set = new Set<string>();
     allAvailableDiseases.forEach((b) => {
@@ -723,79 +702,6 @@ export const Step3Protocol: React.FC<Step3Props> = ({
           </select>
         </div>
       </div>
-
-      {/* Patient Vital Context Banner (If patient data exists) */}
-      {(form || (vitals && Object.values(vitals).some(Boolean))) && (
-        <div className="bg-slate-900 text-white rounded-xl p-3 px-4 shadow-xs flex flex-wrap items-center justify-between gap-3 text-xs">
-          <div className="flex items-center gap-3 flex-wrap">
-            <div className="flex items-center gap-2">
-              <span className="w-6 h-6 rounded-full bg-blue-500/20 text-blue-300 border border-blue-400/30 flex items-center justify-center font-bold text-xs">
-                <User className="w-3.5 h-3.5" />
-              </span>
-              <span className="font-semibold text-slate-200">
-                {form?.gioiTinh === 'nam' ? 'Nam' : form?.gioiTinh === 'nu' ? 'Nữ' : 'BN'}{' '}
-                {form?.tuoi ? `· ${form.tuoi} tuổi` : ''}
-              </span>
-              {form?.ngheNghiep && (
-                <span className="text-slate-400 hidden sm:inline">({form.ngheNghiep})</span>
-              )}
-            </div>
-
-            {form?.lyDo && (
-              <div className="text-slate-300 hidden md:flex items-center gap-1.5 border-l border-slate-700 pl-3">
-                <span className="text-slate-400">LDNV:</span>
-                <span className="font-medium text-white italic">"{form.lyDo}"</span>
-              </div>
-            )}
-          </div>
-
-          {vitals && (
-            <div className="flex items-center gap-3 font-mono-custom text-[11px] text-slate-300 flex-wrap">
-              <span className="flex items-center gap-1">
-                <span className="text-slate-400">T°C:</span>
-                <b className={parseFloat(vitals.vNhiet) >= 38 ? 'text-amber-400' : 'text-slate-100'}>
-                  {vitals.vNhiet || '—'}°C
-                </b>
-              </span>
-              <span>·</span>
-              <span className="flex items-center gap-1">
-                <span className="text-slate-400">M:</span>
-                <b className={parseFloat(vitals.vMach) > 100 ? 'text-rose-400' : 'text-slate-100'}>
-                  {vitals.vMach || '—'} l/p
-                </b>
-              </span>
-              <span>·</span>
-              <span className="flex items-center gap-1">
-                <span className="text-slate-400">HA:</span>
-                <b className="text-slate-100">
-                  {vitals.vHATT || '—'}/{vitals.vHATTr || '—'}
-                </b>
-              </span>
-              <span>·</span>
-              <span className="flex items-center gap-1">
-                <span className="text-slate-400">SpO₂:</span>
-                <b className={parseFloat(vitals.vSpo2) < 94 ? 'text-rose-400' : 'text-emerald-400'}>
-                  {vitals.vSpo2 || '—'}%
-                </b>
-              </span>
-            </div>
-          )}
-        </div>
-      )}
-
-      {/* Abnormal Signs Quick Warning Alert */}
-      {abnormalVitalsSummary.length > 0 && (
-        <div className="bg-amber-50 border border-amber-200 rounded-xl p-2.5 px-3.5 flex items-center justify-between text-amber-900 text-xs shadow-2xs">
-          <div className="flex items-center gap-2">
-            <AlertTriangle className="w-4 h-4 text-amber-600 shrink-0" />
-            <span>
-              <b>Lưu ý DHST người bệnh:</b> Phát hiện các thông số vượt ngưỡng tham chiếu:{' '}
-              <span className="font-semibold">{abnormalVitalsSummary.join(' · ')}</span>. Ưu tiên các
-              y lệnh ổn định huyết động và oxy liệu pháp.
-            </span>
-          </div>
-        </div>
-      )}
 
       {/* Main Protocol Presentation Card */}
       {currentDisease && (
@@ -1123,7 +1029,7 @@ export const Step3Protocol: React.FC<Step3Props> = ({
                 <BookOpen className="w-4 h-4" />
               </div>
             }
-            title="8. Khuyến cáo điều trị EBM & Chuỗi Bệnh Học Đa Chiều (Knowledge Vault)"
+            title="8. Khuyến cáo ĐT EBM & Chuỗi Bệnh Học Đa Chiều (Knowledge Vault)"
             subtitle="Khuyến cáo Bộ Y Tế, Hội chuyên khoa quốc tế (ESC, AHA, IDSA) & chuỗi bài học trong 18 Kho tri thức"
             badgeText={`${matchedGuidelines.length} khuyến cáo EBM`}
             badgeColor="bg-indigo-100 text-indigo-800 border-indigo-200"

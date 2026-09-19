@@ -6,11 +6,9 @@ import {
   CheckCircle2,
   Database,
   Layers,
-  Printer,
   ShieldAlert,
   Sparkles,
   Stethoscope,
-  Users,
 } from 'lucide-react';
 import {
   AnalysisResult,
@@ -19,14 +17,14 @@ import {
   KnowledgeBase,
   LabsState,
   ProblemStatementEntry,
+  TrieuChung,
   VitalsState,
 } from '../types.ts';
 import {
   DIAGNOSTIC_CHAIN_DATABASE,
   DiseaseReactionChainDefinition,
 } from '../../data/diagnostic-criteria-database.ts';
-import { ParallelActionBoard } from './step2/ParallelActionBoard.tsx';
-import { RiskScoreTriagePanel } from './step2/RiskScoreTriagePanel.tsx';
+import { ClinicalReasoningPanel } from './step2/ClinicalReasoningPanel.tsx';
 import { LeadDiagnosisCard } from './step2/LeadDiagnosisCard.tsx';
 import { TargetedDiagnosticWorkup } from './step2/TargetedDiagnosticWorkup.tsx';
 import { DifferentialDiagnosisTable } from './step2/DifferentialDiagnosisTable.tsx';
@@ -47,6 +45,9 @@ interface Step2Props {
   primaryProblem?: ProblemStatementEntry;
   problems?: ProblemStatementEntry[];
   epiContext?: EpidemiologyContext;
+  selectedIds?: Set<string>;
+  negatedIds?: Set<string>;
+  onGoToStep?: (stepId: 't1' | 't2' | 't3' | 't4') => void;
 }
 
 export const Step2Analysis: React.FC<Step2Props> = ({
@@ -65,8 +66,25 @@ export const Step2Analysis: React.FC<Step2Props> = ({
   primaryProblem,
   problems = [],
   epiContext,
+  selectedIds,
+  negatedIds,
+  onGoToStep,
 }) => {
   const top = results && results.length > 0 ? results[0] : null;
+
+  const selectedSymptoms: TrieuChung[] = useMemo(() => {
+    if (selectedIds && selectedIds.size > 0) {
+      return kb.trieuChung.filter((tc) => selectedIds.has(tc.id));
+    }
+    return top ? top.matched.map((m) => m.tc) : [];
+  }, [kb.trieuChung, selectedIds, top]);
+
+  const negatedSymptoms: TrieuChung[] = useMemo(() => {
+    if (negatedIds && negatedIds.size > 0) {
+      return kb.trieuChung.filter((tc) => negatedIds.has(tc.id));
+    }
+    return [];
+  }, [kb.trieuChung, negatedIds]);
 
   // Active diagnostic chain lookup (from enriched criteria database)
   const activeChain: DiseaseReactionChainDefinition | undefined = useMemo(() => {
@@ -89,79 +107,7 @@ export const Step2Analysis: React.FC<Step2Props> = ({
 
   return (
     <div className="space-y-4">
-      {/* Telemetry Bar & Summary Stats */}
-      <div className="bg-white border border-slate-200 rounded-xl p-3 px-4 shadow-xs flex flex-wrap items-center justify-between gap-3">
-        <div className="flex items-center gap-2.5 flex-wrap">
-          <div className="flex items-center gap-1.5 px-2.5 py-1 bg-blue-50 text-blue-800 rounded-lg text-xs font-semibold border border-blue-200">
-            <Activity className="w-3.5 h-3.5 text-blue-600" />
-            <span>{results.length} chẩn đoán khả dĩ</span>
-          </div>
-
-          <div className="flex items-center gap-1.5 px-2.5 py-1 bg-slate-50 text-slate-700 rounded-lg text-xs font-medium border border-slate-200">
-            <span>Dữ kiện:</span>
-            <b className="text-slate-900">{selectedCount} đã chọn</b>
-            {derivedCount > 0 && (
-              <span className="text-emerald-700 font-medium">· +{derivedCount} suy luận</span>
-            )}
-            {negatedCount > 0 && (
-              <span className="text-rose-700 font-medium">· -{negatedCount} phủ định</span>
-            )}
-          </div>
-
-          {epiContext && (
-            <div className="flex items-center gap-1.5 px-2.5 py-1 bg-purple-50 text-purple-800 rounded-lg text-xs font-medium border border-purple-200">
-              <Users className="w-3.5 h-3.5 text-purple-600" />
-              <span>Dịch tễ: {epiContext.ageYears ? `${epiContext.ageYears} tuổi` : ''} ({epiContext.area || 'Toàn quốc'})</span>
-            </div>
-          )}
-        </div>
-
-        <div className="flex items-center gap-2">
-          <button
-            type="button"
-            onClick={onPrintReport}
-            className="flex items-center gap-1.5 px-3 py-1.5 bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 font-semibold text-xs rounded-lg cursor-pointer transition-colors shadow-2xs"
-            title="In tóm tắt ca bệnh & chẩn đoán ra PDF"
-          >
-            <Printer className="w-3.5 h-3.5" />
-            <span>In báo cáo / PDF</span>
-          </button>
-        </div>
-      </div>
-
-      {/* Primary Problem Badge Banner (if set in Step 2) */}
-      {primaryProblem && (
-        <div className="bg-gradient-to-r from-blue-50 to-indigo-50/50 border border-blue-200 rounded-xl p-3 px-4 text-xs flex flex-wrap items-center justify-between gap-2 shadow-2xs">
-          <div className="flex items-center gap-2">
-            <span className="px-2 py-0.5 rounded bg-blue-600 text-white font-bold text-[10.5px]">
-              VẤN ĐỀ CHÍNH
-            </span>
-            <span className="font-bold text-slate-900">{primaryProblem.title}</span>
-            {primaryProblem.priorityLevel && (
-              <span className="text-slate-500 font-mono-custom text-[11px]">
-                ({primaryProblem.priorityLevel})
-              </span>
-            )}
-          </div>
-          <span className="text-slate-500 text-[11px] italic">
-            Cơ sở định hướng suy luận CDSS &amp; biện luận phân biệt
-          </span>
-        </div>
-      )}
-
-      {/* KHỐI 1: BẢNG HÀNH ĐỘNG ĐỒNG THỜI (PARALLEL ACTION BOARD - PGS.TS HOÀNG VĂN SĨ) */}
-      <ParallelActionBoard problems={problems} />
-
-      {/* KHỐI 2: THANG ĐIỂM NGUY CƠ & PHÂN TẦNG CẤP CỨU (ESI, PEWS, NEWS2) */}
-      <RiskScoreTriagePanel
-        vitals={vitals}
-        labs={labs}
-        form={form}
-        results={results}
-        onOpenVaultDrawer={onOpenVaultDrawer}
-      />
-
-      {/* KHỐI 3: KẾT QUẢ PHÂN TÍCH SUY LUẬN LÂM SÀNG CDSS */}
+      {/* KẾT QUẢ PHÂN TÍCH SUY LUẬN LS CDSS */}
       {results.length === 0 ? (
         <div className="bg-white border border-slate-200 rounded-xl p-12 text-center shadow-xs">
           <Stethoscope className="w-10 h-10 text-slate-300 mx-auto mb-3" />
@@ -175,7 +121,23 @@ export const Step2Analysis: React.FC<Step2Props> = ({
       ) : (
         top && (
           <div className="space-y-4">
-            {/* Chẩn đoán sơ bộ Hàng đầu (Lead Diagnosis Card with 4 Tabs) */}
+            {/* KHỐI 3: BIỆN LUẬN LÂM SÀNG TOÀN DIỆN (CLINICAL REASONING ENGINE - PGS.TS HOÀNG VĂN SỸ & BSCKI TRẦN THANH TUẤN) */}
+            <ClinicalReasoningPanel
+              topResult={top}
+              results={results}
+              kb={kb}
+              form={form || { gioiTinh: 'nam', tuoi: '', ngheNghiep: '', lyDo: '', text: { cn: '', tt: '', tc: '', cls: '' } }}
+              vitals={vitals || { vNhiet: '', vMach: '', vHATT: '', vHATTr: '', vTho: '', vSpo2: '' }}
+              labs={labs || { lBC: '', lTC: '', lHct: '', lGlu: '', lTrop: '' }}
+              selectedSymptoms={selectedSymptoms}
+              negatedSymptoms={negatedSymptoms}
+              problems={problems}
+              epiContext={epiContext}
+              onGoToStep={onGoToStep}
+              onOpenVaultDrawer={onOpenVaultDrawer}
+            />
+
+            {/* KHỐI 4: CĐSB HÀNG ĐẦU (LEAD DIAGNOSIS CARD WITH 4 TABS) */}
             <LeadDiagnosisCard
               topResult={top}
               kb={kb}
@@ -183,7 +145,7 @@ export const Step2Analysis: React.FC<Step2Props> = ({
               onOpenVaultDrawer={onOpenVaultDrawer}
             />
 
-            {/* Thanh tác vụ chiến lược cho Chẩn đoán sơ bộ */}
+            {/* Thanh tác vụ chiến lược cho CĐSB */}
             <div className="flex flex-wrap items-center gap-2.5 p-3.5 bg-white border border-slate-200 rounded-xl shadow-xs">
               <button
                 id="btn-goto-protocol-top"
@@ -191,7 +153,7 @@ export const Step2Analysis: React.FC<Step2Props> = ({
                 onClick={() => onGoToProtocol(top.b.id)}
                 className="flex items-center gap-1.5 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs rounded-lg shadow-xs cursor-pointer transition-colors"
               >
-                <span>Xem toàn bộ phác đồ điều trị Bước 4</span>
+                <span>Xem toàn bộ phác đồ ĐT Bước 4</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </button>
 
@@ -216,7 +178,7 @@ export const Step2Analysis: React.FC<Step2Props> = ({
               </button>
             </div>
 
-            {/* KHỐI 4: ĐỀ NGHỊ CẬN LÂM SÀNG 2 TẦNG (TARGETED & ROUTINE WORKUP - PGS.TS HOÀNG VĂN SỸ) */}
+            {/* KHỐI 5: ĐỀ NGHỊ CLS 2 TẦNG (TARGETED & ROUTINE WORKUP - PGS.TS HOÀNG VĂN SỸ) */}
             <TargetedDiagnosticWorkup
               topResult={top}
               results={results}
@@ -228,7 +190,7 @@ export const Step2Analysis: React.FC<Step2Props> = ({
               epiContext={epiContext}
             />
 
-            {/* KHỐI 5: CHẨN ĐOÁN PHÂN BIỆT & ĐỐI SÁNH ĐỐI ĐẦU */}
+            {/* KHỐI 6: CĐPB & ĐỐI SÁNH ĐỐI ĐẦU */}
             <DifferentialDiagnosisTable
               results={results}
               kb={kb}

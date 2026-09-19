@@ -301,7 +301,7 @@ export const EbmGuidelinesSection: React.FC<EbmGuidelinesSectionProps> = ({
             <div>
               <div className="flex items-center gap-2">
                 <h4 className="font-display font-bold text-sm sm:text-base text-white tracking-tight">
-                  Khuyến Cáo & Hướng Dẫn Điều Trị EBM Chính Thức
+                  Khuyến Cáo & Hướng Dẫn ĐT EBM Chính Thức
                 </h4>
                 <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-red-500/20 text-red-300 font-bold border border-red-500/30">
                   {matchedGuidelines.length} Khuyến Cáo Khớp

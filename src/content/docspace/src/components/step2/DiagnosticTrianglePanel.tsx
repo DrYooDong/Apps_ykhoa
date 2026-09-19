@@ -60,10 +60,10 @@ export const DiagnosticTrianglePanel: React.FC<DiagnosticTrianglePanelProps> = (
           </div>
           <div>
             <h2 className="text-xs sm:text-sm font-bold text-slate-800 leading-none">
-              Tam giác chẩn đoán Truyền nhiễm
+              Tam giác CĐ Truyền nhiễm
             </h2>
             <span className="text-[10.5px] text-slate-400 font-medium">
-              Dịch tễ học · Lâm sàng · Cận lâm sàng
+              DTH · LS · CLS
             </span>
           </div>
         </div>

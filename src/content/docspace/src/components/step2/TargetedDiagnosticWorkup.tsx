@@ -559,13 +559,13 @@ export const TargetedDiagnosticWorkup: React.FC<TargetedDiagnosticWorkupProps> =
           </div>
           <div>
             <h3 className="text-xs sm:text-sm font-bold text-slate-800 leading-none flex items-center gap-1.5">
-              <span>Đề nghị Cận lâm sàng 2 Tầng</span>
+              <span>Đề nghị CLS 2 Tầng</span>
               <span className="text-[10px] font-semibold text-blue-700 bg-blue-100 px-1.5 py-0.5 rounded">
                 Chuẩn ĐHYD TP.HCM
               </span>
             </h3>
             <span className="text-[10.5px] text-slate-400 font-medium">
-              Tầng 1: Chẩn đoán & Biến chứng · Tầng 2: Thường quy nền tảng ({selectedItemIds.size}/{allWorkupItems.length} chỉ định đã chọn)
+              Tầng 1: CĐ & Biến chứng · Tầng 2: Thường quy nền tảng ({selectedItemIds.size}/{allWorkupItems.length} chỉ định đã chọn)
             </span>
           </div>
         </div>
@@ -638,7 +638,7 @@ export const TargetedDiagnosticWorkup: React.FC<TargetedDiagnosticWorkupProps> =
                   ? 'bg-emerald-600 text-white border-emerald-600'
                   : 'bg-blue-50 hover:bg-blue-100 text-blue-800 border-blue-200'
               }`}
-              title="Sao chép toàn bộ Y lệnh Cận lâm sàng 2 Tầng vào bộ nhớ tạm"
+              title="Sao chép toàn bộ Y lệnh CLS 2 Tầng vào bộ nhớ tạm"
             >
               {copiedLabWorkup ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
               <span>{copiedLabWorkup ? 'Đã sao chép EMR!' : 'Sao chép Y lệnh'}</span>
@@ -665,7 +665,7 @@ export const TargetedDiagnosticWorkup: React.FC<TargetedDiagnosticWorkupProps> =
                     </span>
                     <div>
                       <h4 className="text-xs sm:text-sm font-bold text-blue-950 leading-tight">
-                        TẦNG 1: CẬN LÂM SÀNG CHẨN ĐOÁN &amp; BIẾN CHỨNG (SPECIFIC WORKUP)
+                        TẦNG 1: CLS CHẨN ĐOÁN &amp; BIẾN CHỨNG (SPECIFIC WORKUP)
                       </h4>
                       <p className="text-[11px] text-blue-700">
                         Xét nghiệm đặc hiệu nhắm vào bệnh sơ bộ «{topResult.b.ten}», loại trừ bệnh phân biệt và theo dõi biến chứng
