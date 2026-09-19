@@ -29,6 +29,7 @@ interface SafePrescribingProps {
   patientGender?: string;
   patientCreatinine?: string; // µmol/L hoặc mg/dL
   onOpenVaultDrawer?: (diseaseName?: string, query?: string, khoCode?: string) => void;
+  onOpenCdssModal?: (tool: 'dengue' | 'ecg' | 'abg' | 'xray' | 'hepa' | 'neuro' | 'microbio' | 'antibiotic' | 'hub') => void;
 }
 
 export const SafePrescribingDdiPanel: React.FC<SafePrescribingProps> = ({
@@ -38,6 +39,7 @@ export const SafePrescribingDdiPanel: React.FC<SafePrescribingProps> = ({
   patientGender,
   patientCreatinine,
   onOpenVaultDrawer,
+  onOpenCdssModal,
 }) => {
   const [manualEgfr, setManualEgfr] = useState<string>('');
   const [isExpanded, setIsExpanded] = useState<boolean>(true);
@@ -203,6 +205,23 @@ export const SafePrescribingDdiPanel: React.FC<SafePrescribingProps> = ({
             />
             <span className="text-[10px] text-slate-400">mL/p</span>
           </div>
+
+          <button
+            type="button"
+            onClick={() => {
+              if (onOpenCdssModal) {
+                onOpenCdssModal('antibiotic');
+              } else {
+                onOpenVaultDrawer?.(undefined, 'kháng sinh', 'CDSS');
+              }
+            }}
+            className="flex items-center gap-1 px-2.5 py-1 bg-sky-600 hover:bg-sky-700 text-white border border-sky-600 text-xs font-semibold rounded shadow-2xs transition-colors cursor-pointer"
+            title="Mở CDSS Quản Lý Liều Kháng Sinh & Suy Thận (WHO AWaRe & Sanford)"
+          >
+            <Pill className="w-3 h-3" />
+            <span className="hidden sm:inline">CDSS Liều Kháng Sinh</span>
+            <span className="sm:hidden">CDSS KS</span>
+          </button>
 
           <button
             type="button"

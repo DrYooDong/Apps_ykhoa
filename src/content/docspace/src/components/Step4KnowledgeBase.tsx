@@ -28,6 +28,7 @@ import {
   searchVaultArticles,
   VAULT_CATALOG,
   VaultArticle,
+  CdssToolSlug,
 } from '../lib/vaultBridge.ts';
 import {
   buildDiagnosticCards,
@@ -40,6 +41,7 @@ interface Step4Props {
   onImportKB: (file: File) => void;
   onGoToProtocol?: (diseaseId: string) => void;
   onOpenVaultDrawer?: (diseaseName: string, khoCode?: string) => void;
+  onOpenCdssModal?: (tool: CdssToolSlug) => void;
 }
 
 export const Step4KnowledgeBase: React.FC<Step4Props> = ({
@@ -48,6 +50,7 @@ export const Step4KnowledgeBase: React.FC<Step4Props> = ({
   onImportKB,
   onGoToProtocol,
   onOpenVaultDrawer,
+  onOpenCdssModal,
 }) => {
   const [activeTab, setActiveTab] = useState<'criteria' | 'symptoms' | 'rules' | 'vault'>('criteria');
   const [criteriaSource, setCriteriaSource] = useState<'all' | 'core' | 'vault'>('all');
@@ -761,19 +764,19 @@ export const Step4KnowledgeBase: React.FC<Step4Props> = ({
                     ⚡
                   </div>
                   <span className="px-2 py-0.5 rounded-full text-[11px] font-mono-custom font-bold bg-purple-100 text-purple-800 border border-purple-200">
-                    4 hệ thống
+                    8 hệ thống
                   </span>
                 </div>
                 <h4 className="font-display font-bold text-sm text-slate-900 mb-1">
                   Hệ thống Hỗ trợ Ra Quyết định (CDSS)
                 </h4>
                 <p className="text-xs text-slate-600 leading-relaxed">
-                  4 hệ thống ra quyết định lâm sàng tương tác: Bù dịch SXHD Dengue (BYT 2023), Phân tích ECG 12 đạo trình, Khí máu động mạch (ABG Pro) 6 bước, Phân tích X-quang PACS thông minh...
+                  8 hệ thống ra quyết định lâm sàng tương tác: Quản lý Liều Kháng Sinh &amp; Suy Thận (WHO AWaRe &amp; Sanford), Vi sinh Mahon, Bù dịch SXHD Dengue, ECG 12 đạo trình, Khí máu ABG Pro, X-quang PACS...
                 </p>
               </div>
 
               <div className="mt-3 pt-2.5 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-purple-700">
-                <span>Duyệt 4 hệ thống CDSS</span>
+                <span>Duyệt 8 hệ thống CDSS</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </div>
             </div>
@@ -847,14 +850,36 @@ export const Step4KnowledgeBase: React.FC<Step4Props> = ({
                     </p>
                   </div>
 
-                  <div className="pt-3 mt-3 border-t border-slate-100 flex items-center justify-between gap-2">
-                    <button
-                      type="button"
-                      onClick={() => onOpenVaultDrawer?.(art.title, art.khoCode)}
-                      className="text-xs font-semibold text-indigo-600 hover:text-indigo-800 transition-colors cursor-pointer"
-                    >
-                      Xem nhanh Drawer
-                    </button>
+                  <div className="pt-3 mt-3 border-t border-slate-100 flex items-center justify-between gap-2 flex-wrap">
+                    <div className="flex items-center gap-2">
+                      <button
+                        type="button"
+                        onClick={() => onOpenVaultDrawer?.(art.title, art.khoCode)}
+                        className="text-xs font-semibold text-indigo-600 hover:text-indigo-800 transition-colors cursor-pointer"
+                      >
+                        Xem nhanh Drawer
+                      </button>
+
+                      {art.khoCode === 'CDSS' && onOpenCdssModal && (
+                        <button
+                          type="button"
+                          onClick={() => {
+                            const t = art.title.toLowerCase();
+                            if (t.includes('kháng sinh') || art.id.toLowerCase().includes('antibiotic')) {
+                              onOpenCdssModal('antibiotic');
+                            } else if (t.includes('dengue')) {
+                              onOpenCdssModal('dengue');
+                            } else {
+                              onOpenCdssModal('hub');
+                            }
+                          }}
+                          className="px-2 py-0.5 rounded bg-purple-100 hover:bg-purple-200 text-purple-800 text-[11px] font-bold transition-colors cursor-pointer flex items-center gap-1 shadow-2xs"
+                          title="Mở ứng dụng CDSS tương tác độc lập"
+                        >
+                          <span>⚡ Mở CDSS</span>
+                        </button>
+                      )}
+                    </div>
 
                     <a
                       href={getKnowledgeVaultWebUrl(art.id)}

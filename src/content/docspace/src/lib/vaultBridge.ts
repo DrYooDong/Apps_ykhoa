@@ -318,11 +318,22 @@ export function getKnowledgeVaultWebUrl(articleId?: string, query?: string, khoC
   return `../knowledge-vault/index.html`;
 }
 
+export type CdssToolSlug =
+  | 'dengue'
+  | 'ecg'
+  | 'abg'
+  | 'xray'
+  | 'hepa'
+  | 'neuro'
+  | 'microbio'
+  | 'antibiotic'
+  | 'hub';
+
 /**
- * Tạo URL mở trực tiếp công cụ CDSS độc lập (Dengue, ECG, ABG, X-Ray hoặc CDSS Hub)
+ * Tạo URL mở trực tiếp công cụ CDSS độc lập (Dengue, ECG, ABG, X-Ray, Hepa, Neuro, Microbio, Antibiotic hoặc CDSS Hub)
  * Đường dẫn tĩnh nội bộ trong public/cdss/ của DocSpace giúp hoạt động 100% trên cả dev server và production
  */
-export function getCdssAppUrl(moduleSlug: 'dengue' | 'ecg' | 'abg' | 'xray' | 'hepa' | 'neuro' | 'hub' = 'hub'): string {
+export function getCdssAppUrl(moduleSlug: CdssToolSlug = 'hub'): string {
   if (moduleSlug === 'dengue') {
     return `./cdss/dengue/index.html`;
   }
@@ -340,6 +351,12 @@ export function getCdssAppUrl(moduleSlug: 'dengue' | 'ecg' | 'abg' | 'xray' | 'h
   }
   if (moduleSlug === 'neuro') {
     return `./cdss/neuro/index.html`;
+  }
+  if (moduleSlug === 'microbio') {
+    return `./cdss/microbio/index.html`;
+  }
+  if (moduleSlug === 'antibiotic') {
+    return `./cdss/antibiotic/index.html`;
   }
   return `./cdss/index.html`;
 }

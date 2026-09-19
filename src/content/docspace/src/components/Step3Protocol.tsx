@@ -60,6 +60,7 @@ interface Step3Props {
   form?: ClinicalFormState;
   vitals?: VitalsState;
   labs?: LabsState;
+  onOpenCdssModal?: (tool: 'dengue' | 'ecg' | 'abg' | 'xray' | 'hepa' | 'neuro' | 'microbio' | 'antibiotic' | 'hub') => void;
 }
 
 export const Step3Protocol: React.FC<Step3Props> = ({
@@ -76,6 +77,7 @@ export const Step3Protocol: React.FC<Step3Props> = ({
   form,
   vitals,
   labs,
+  onOpenCdssModal,
 }) => {
   // Local state for checked orders & custom additions
   const [checkedOrders, setCheckedOrders] = useState<Set<string>>(new Set());
@@ -746,6 +748,7 @@ export const Step3Protocol: React.FC<Step3Props> = ({
               patientGender={form?.gioiTinh}
               patientCreatinine={labs?.lCre}
               onOpenVaultDrawer={onOpenVaultDrawer}
+              onOpenCdssModal={onOpenCdssModal}
             />
           </CollapsibleProtocolSection>
 

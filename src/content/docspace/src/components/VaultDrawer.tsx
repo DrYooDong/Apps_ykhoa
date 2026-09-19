@@ -780,6 +780,74 @@ export const VaultDrawer: React.FC<VaultDrawerProps> = ({
                         Mô phỏng phản xạ đồng tử, vận nhãn, khoanh da, dáng đi, thoát vị não &amp; thang điểm NIHSS/GCS.
                       </p>
                     </div>
+
+                    <div
+                      onClick={() => {
+                        if (onOpenCdssModal) {
+                          onOpenCdssModal('microbio');
+                          onClose();
+                        } else {
+                          window.open(getCdssAppUrl('microbio'), '_blank');
+                        }
+                      }}
+                      className="p-3 bg-gradient-to-br from-teal-50 to-emerald-50/50 hover:from-teal-100/70 hover:to-emerald-100/70 border border-teal-200 rounded-lg transition-all flex flex-col justify-between group shadow-2xs text-left cursor-pointer"
+                    >
+                      <div className="flex items-start justify-between gap-1 mb-1">
+                        <span className="px-1.5 py-0.5 rounded text-[10px] font-bold text-teal-700 bg-teal-100 border border-teal-300">
+                          Mahon 6th &amp; CLSI
+                        </span>
+                        <a
+                          href={getCdssAppUrl('microbio')}
+                          target="_blank"
+                          rel="noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="p-1 text-teal-500 hover:text-teal-700 rounded hover:bg-teal-100/80 transition-colors"
+                          title="Mở tab riêng"
+                        >
+                          <ExternalLink className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                        </a>
+                      </div>
+                      <h4 className="text-xs font-bold text-teal-950 group-hover:text-teal-700 transition-colors">
+                        7. CDSS Vi Sinh &amp; Định Danh (Mahon)
+                      </h4>
+                      <p className="text-[11px] text-slate-500 mt-1 line-clamp-2">
+                        Định danh 50+ vi khuẩn, ma trận kháng sinh đồ AST/CLSI M100, kính hiển vi và xuất báo cáo SOAP.
+                      </p>
+                    </div>
+
+                    <div
+                      onClick={() => {
+                        if (onOpenCdssModal) {
+                          onOpenCdssModal('antibiotic');
+                          onClose();
+                        } else {
+                          window.open(getCdssAppUrl('antibiotic'), '_blank');
+                        }
+                      }}
+                      className="p-3 bg-gradient-to-br from-sky-50 to-blue-50/50 hover:from-sky-100/70 hover:to-blue-100/70 border border-sky-200 rounded-lg transition-all flex flex-col justify-between group shadow-2xs text-left cursor-pointer"
+                    >
+                      <div className="flex items-start justify-between gap-1 mb-1">
+                        <span className="px-1.5 py-0.5 rounded text-[10px] font-bold text-sky-700 bg-sky-100 border border-sky-300">
+                          WHO AWaRe &amp; Sanford
+                        </span>
+                        <a
+                          href={getCdssAppUrl('antibiotic')}
+                          target="_blank"
+                          rel="noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="p-1 text-sky-500 hover:text-sky-700 rounded hover:bg-sky-100/80 transition-colors"
+                          title="Mở tab riêng"
+                        >
+                          <ExternalLink className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                        </a>
+                      </div>
+                      <h4 className="text-xs font-bold text-sky-950 group-hover:text-sky-700 transition-colors">
+                        8. CDSS Liều Kháng Sinh &amp; Suy Thận
+                      </h4>
+                      <p className="text-[11px] text-slate-500 mt-1 line-clamp-2">
+                        Hiệu chỉnh liều theo CrCl Cockcroft-Gault, eGFR CKD-EPI, lọc máu HD/CRRT, cảnh báo tương tác DDI.
+                      </p>
+                    </div>
                   </div>
                 )}
 

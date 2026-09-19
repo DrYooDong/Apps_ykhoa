@@ -619,6 +619,7 @@ export function MainApp() {
                 onPrintReport={() => setIsPrintOpen(true)}
                 onOpenVaultDrawer={handleOpenVaultDrawer}
                 onNavigateToSoapCase={handleNavigateToSoapCase}
+                onOpenCdssModal={handleOpenCdss}
                 form={form}
                 vitals={vitals}
                 labs={labs}
@@ -660,6 +661,7 @@ export function MainApp() {
               setClinicalStep('t4');
             }}
             onOpenVaultDrawer={handleOpenVaultDrawer}
+            onOpenCdssModal={handleOpenCdss}
           />
         )}
         </ErrorBoundary>

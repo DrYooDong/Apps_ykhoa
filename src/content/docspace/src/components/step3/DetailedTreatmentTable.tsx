@@ -44,6 +44,7 @@ interface DetailedTreatmentTableProps {
   patientGender?: string;
   patientCreatinine?: string;
   onOpenVaultDrawer?: (diseaseName?: string, query?: string, khoCode?: string) => void;
+  onOpenCdssModal?: (tool: 'dengue' | 'ecg' | 'abg' | 'xray' | 'hepa' | 'neuro' | 'microbio' | 'antibiotic' | 'hub') => void;
 }
 
 export const DetailedTreatmentTable: React.FC<DetailedTreatmentTableProps> = ({
@@ -71,6 +72,7 @@ export const DetailedTreatmentTable: React.FC<DetailedTreatmentTableProps> = ({
   patientGender,
   patientCreatinine,
   onOpenVaultDrawer,
+  onOpenCdssModal,
 }) => {
   const [showAddModal, setShowAddModal] = useState(false);
   const [newDrug, setNewDrug] = useState('');
@@ -250,6 +252,7 @@ export const DetailedTreatmentTable: React.FC<DetailedTreatmentTableProps> = ({
           patientGender={patientGender}
           patientCreatinine={patientCreatinine}
           onOpenVaultDrawer={onOpenVaultDrawer}
+          onOpenCdssModal={onOpenCdssModal}
         />
       </div>
 

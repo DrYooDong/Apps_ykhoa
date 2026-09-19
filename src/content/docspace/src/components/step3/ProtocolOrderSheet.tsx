@@ -32,6 +32,7 @@ interface ProtocolOrderSheetProps {
   patientGender?: string;
   patientCreatinine?: string;
   onOpenVaultDrawer?: (diseaseName?: string, query?: string, khoCode?: string) => void;
+  onOpenCdssModal?: (tool: 'dengue' | 'ecg' | 'abg' | 'xray' | 'hepa' | 'neuro' | 'microbio' | 'antibiotic' | 'hub') => void;
 }
 
 export const ProtocolOrderSheet: React.FC<ProtocolOrderSheetProps> = ({
@@ -49,6 +50,7 @@ export const ProtocolOrderSheet: React.FC<ProtocolOrderSheetProps> = ({
   patientGender,
   patientCreatinine,
   onOpenVaultDrawer,
+  onOpenCdssModal,
 }) => {
   const [showAddCustom, setShowAddCustom] = useState(false);
   const [newDrug, setNewDrug] = useState('');
@@ -294,12 +296,19 @@ export const ProtocolOrderSheet: React.FC<ProtocolOrderSheetProps> = ({
         <div className="flex items-center gap-1.5 flex-wrap">
           <button
             type="button"
-            onClick={() => onOpenVaultDrawer?.(undefined, 'kháng sinh', 'CDSS')}
-            className="w-7 h-7 flex items-center justify-center rounded bg-purple-50 hover:bg-purple-100 text-purple-900 border border-purple-200 text-xs transition-colors cursor-pointer shadow-2xs"
-            title="Bảng Tính Liều Kháng Sinh Theo eGFR & PK/PD trong Kho CDSS"
+            onClick={() => {
+              if (onOpenCdssModal) {
+                onOpenCdssModal('antibiotic');
+              } else {
+                onOpenVaultDrawer?.(undefined, 'kháng sinh', 'CDSS');
+              }
+            }}
+            className="px-2.5 py-1 flex items-center gap-1.5 rounded bg-sky-50 hover:bg-sky-100 text-sky-900 border border-sky-300 text-xs font-bold transition-colors cursor-pointer shadow-2xs"
+            title="Mở CDSS Quản Lý Liều Kháng Sinh & Suy Thận (WHO AWaRe & Sanford)"
             aria-label="Tính liều KS eGFR & PK/PD"
           >
-            <span>⚡</span>
+            <Pill className="w-3.5 h-3.5 text-sky-600" />
+            <span>⚡ Tính Liều Kháng Sinh (CDSS)</span>
           </button>
 
           <button

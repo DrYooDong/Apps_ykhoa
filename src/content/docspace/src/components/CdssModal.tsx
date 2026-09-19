@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {
   Activity,
   Brain,
+  Bug,
   Cpu,
   Droplet,
   ExternalLink,
@@ -9,13 +10,14 @@ import {
   HeartPulse,
   Maximize2,
   Minimize2,
+  Pill,
   Scan,
   Wind,
   X,
 } from 'lucide-react';
-import { getCdssAppUrl } from '../lib/vaultBridge.ts';
+import { getCdssAppUrl, CdssToolSlug } from '../lib/vaultBridge.ts';
 
-export type CdssToolSlug = 'dengue' | 'ecg' | 'abg' | 'xray' | 'hepa' | 'neuro' | 'hub';
+export type { CdssToolSlug };
 
 interface CdssModalProps {
   isOpen: boolean;
@@ -88,6 +90,24 @@ const CDSS_TABS: ToolTabMeta[] = [
     colorClass: 'text-amber-700 border-amber-300 bg-amber-50',
     activeBgClass: 'bg-amber-600 text-white shadow-sm',
     desc: 'Mô phỏng phản xạ đồng tử, vận nhãn, khoanh da, dáng đi, thoát vị não & thang điểm NIHSS/GCS.',
+  },
+  {
+    id: 'microbio',
+    title: 'Vi Sinh & Kháng Sinh Đồ (Mahon)',
+    badge: 'Mahon 6th & CLSI',
+    icon: <Bug className="w-4 h-4 text-teal-600" />,
+    colorClass: 'text-teal-700 border-teal-300 bg-teal-50',
+    activeBgClass: 'bg-teal-600 text-white shadow-sm',
+    desc: 'Định danh 50+ vi khuẩn, ma trận kháng sinh đồ AST/CLSI M100, kính hiển vi và xuất SOAP.',
+  },
+  {
+    id: 'antibiotic',
+    title: 'Liều Kháng Sinh & Suy Thận',
+    badge: 'WHO AWaRe & Sanford',
+    icon: <Pill className="w-4 h-4 text-sky-600" />,
+    colorClass: 'text-sky-700 border-sky-300 bg-sky-50',
+    activeBgClass: 'bg-sky-600 text-white shadow-sm',
+    desc: 'Tính CrCl Cockcroft-Gault, eGFR CKD-EPI, lọc máu HD/CRRT/CAPD, tương tác DDI và xuất PDF.',
   },
   {
     id: 'hub',
