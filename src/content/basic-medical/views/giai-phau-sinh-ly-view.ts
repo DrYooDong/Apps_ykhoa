@@ -36,7 +36,7 @@ export function renderGiaiPhauSinhLyView(): string {
             </div>
             
             <h1 class="promax-hero-title" id="hero-title">
-              GIẢI PHẬU & SINH LÝ HỌC THEO HỆ CƠ QUAN
+              GIẢI PHẪU & SINH LÝ HỌC THEO HỆ CƠ QUAN
             </h1>
             
             <p class="promax-hero-desc">

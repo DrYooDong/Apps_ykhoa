@@ -126,6 +126,77 @@ export interface QuyNhanLocResult {
   totalScore: number;
 }
 
+// ─── NẠP ÂM 60 HOA GIÁP & SAO ĐĂNG VIÊN ──────────────────────────────────
+export type NapAmElement = 'Kim' | 'Mộc' | 'Thủy' | 'Hỏa' | 'Thổ';
+
+export interface NapAmDetail {
+  canChi: string;
+  name: string;        // Ví dụ: "Lộ Bàng Thổ", "Hải Trung Kim"...
+  element: NapAmElement;
+  meaning: string;
+}
+
+// ─── ĐÁNH GIÁ VỤ VIỆC Y KHOA CHUYÊN BIỆT (CHƯƠNG II: 83 VỤ) ───────────
+export type MedicalTaskType =
+  | 'cau_thay'    // VỤ 81: Cầu Thầy Trị Bệnh & Phẫu Thuật
+  | 'hot_thuoc'   // VỤ 82: Hốt Thuốc / Bào Chế / Ra Y Lệnh Đầu Tay
+  | 'uong_thuoc'  // VỤ 83: Uống Thuốc / Khởi Đầu Liệu Trình / Hóa Trị
+  | 'khai_truong' // VỤ 37: Khai Trương Phòng Khám / Tiếp Nhận Thiết Bị Mới
+  | 'giao_dich';  // VỤ 39: Ký Kết Hợp Đồng Y Tế / Thầu Thuốc
+
+export interface MedicalTaskConfig {
+  id: MedicalTaskType;
+  vuNumber: number;
+  title: string;
+  shortTitle: string;
+  description: string;
+  specialDays?: string[];     // 3 Ngày Tối Thượng (ví dụ: Kỷ Dậu, Bính Thìn, Nhâm Thìn trong Vụ 81)
+  baseDays: string[];        // Các ngày tốt căn bản của vụ
+  hapTruc: string[];
+  kyTruc?: string[];
+  hapThanSat?: string[];
+  kyThanSat?: string[];
+  genderRules?: {
+    maleKyTruc?: string[];
+    femaleKyTruc?: string[];
+  };
+  specialNotes: string[];
+}
+
+export interface MedicalTaskScoreEvaluation {
+  task: MedicalTaskConfig;
+  isSpecialDay: boolean;
+  isBaseDay: boolean;
+  baseScore: number;
+  saoScore: number;
+  saoNote: string;
+  trucScore: number;
+  trucNote: string;
+  thanSatScore: number;
+  thanSatNote: string;
+  totalScore: number;
+  recommendation: 'rat_tot' | 'tot' | 'binh_thuong' | 'khong_nen';
+  advice: string;
+}
+
+// ─── PHÂN HẠNG 9 BẬC GIỜ KHỞI SỰ (CHƯƠNG VII) ───────────────────────────
+export interface GioRankResult {
+  chi: string;
+  can: string;
+  fullCanChi: string;
+  timeRange: string;
+  starName: string;
+  isHoangDao: boolean;
+  napAm: string;
+  napAmElement: NapAmElement;
+  rank: number; // 1 -> 9
+  rankTitle: string; // 'Hạng Nhất' -> 'Hạng Chín'
+  badgeClass: string;
+  goodFactors: string[];
+  badFactors: string[];
+  clinicalNote: string;
+}
+
 export interface DayScoreEvaluation {
   total: number;
   rawTotal: number;
@@ -150,6 +221,7 @@ export interface DayScoreEvaluation {
   b3: { point: number; detail: string[] };
   b4: { errors: string[]; bonuses: string[]; penalty: number; bonusPoint: number };
   saoTu: SaoTuItem;
+  saoTuDangVien: { isDangVien: boolean; bonusScore: number; note: string };
   trucNgay: TrucItem;
   tietKhiInfo: {
     tietKhi: TietKhiItem;
@@ -160,6 +232,12 @@ export interface DayScoreEvaluation {
   advice: ClinicalAdvice;
   hoangDaoHours: string[];
   gioTimeline: GioDetailItem[];
+  // Bổ sung chuyên sâu theo sách:
+  napAmDay: NapAmDetail;
+  napAmDoc: NapAmDetail;
+  napAmRelation: { score: number; text: string; relationType: 'sinh_nhap' | 'dong_hanh' | 'sinh_xuat' | 'khac_xuat' | 'khac_nhap' };
+  medicalTasks: Record<MedicalTaskType, MedicalTaskScoreEvaluation>;
+  gioRanks: GioRankResult[];
 }
 
 export interface WeekDaySummary {
@@ -182,7 +260,7 @@ export interface WeekDaySummary {
 
 export interface BestClinicalDayResult {
   rank: number;
-  purpose: 'surgery' | 'clinic' | 'ebm' | 'consultation';
+  purpose: 'surgery' | 'clinic' | 'ebm' | 'consultation' | 'med_cau_thay' | 'med_hot_thuoc' | 'med_uong_thuoc';
   purposeName: string;
   evalData: DayScoreEvaluation;
   matchReasons: string[];
@@ -200,5 +278,3 @@ export interface ShiftEnergyData {
   caffeineTip: string;
   safetyChecklist: string[];
 }
-
-// ─── HẰNG SỐ & DỮ LIỆU CƠ BẢN ──────────────────────────────────────────

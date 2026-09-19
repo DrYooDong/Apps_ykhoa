@@ -1,13 +1,17 @@
 /**
  * CliniPortal 2.0 — Good Day UI Modals, Badges & Calendar View
+ * Nâng cấp toàn diện theo Y điển "XEM NGÀY TỐT XẤU" (Chương II 83 Vụ, Chương III Đăng Viên, Chương VI Nạp Âm, Chương VII 9 Bậc Giờ)
  * Path: src/tools/good-day-modal.ts
  */
 
 import type {
   DoctorProfile,
+  DoctorSpecialty,
   DayScoreEvaluation,
   ShiftEnergyData,
-  BestClinicalDayResult
+  BestClinicalDayResult,
+  GioRankResult,
+  MedicalTaskScoreEvaluation
 } from './good-day-types';
 
 import {
@@ -23,6 +27,11 @@ import {
   copyDaySummaryText,
   getCanChiYear,
   getSaoTu,
+  checkSaoDangVien,
+  getNapAm,
+  evaluateNapAmRelation,
+  evaluateMedicalTasks,
+  calculateGioRanks9Bậc,
   calculateBiorhythms,
   getTrucNgay,
   getTietKhiInfo,
@@ -34,6 +43,83 @@ import {
 } from './good-day-engine';
 
 import { getDailyClinicalPearl } from './good-day-data';
+
+// ─── HELPER FORMAT STYLES ─────────────────────────────────────────────
+
+function getNapAmRelationBadge(relation: string, score: number, text: string): string {
+  let bg = 'rgba(100,116,139,0.12)';
+  let color = 'var(--color-text, #334155)';
+  let border = 'var(--color-border, #cbd5e1)';
+  let icon = '⚖️';
+
+  switch (relation) {
+    case 'sinh_nhap':
+      bg = 'rgba(16,185,129,0.15)';
+      color = '#059669';
+      border = '#10b981';
+      icon = '🌿';
+      break;
+    case 'dong_khi':
+      bg = 'rgba(2,132,199,0.15)';
+      color = '#0284c7';
+      border = '#0284c7';
+      icon = '🤝';
+      break;
+    case 'sinh_xuat':
+      bg = 'rgba(99,102,241,0.12)';
+      color = '#4f46e5';
+      border = '#6366f1';
+      icon = '↗️';
+      break;
+    case 'khac_xuat':
+      bg = 'rgba(245,158,11,0.15)';
+      color = '#d97706';
+      border = '#f59e0b';
+      icon = '🛡️';
+      break;
+    case 'khac_nhap':
+      bg = 'rgba(239,68,68,0.15)';
+      color = '#dc2626';
+      border = '#ef4444';
+      icon = '⚠️';
+      break;
+  }
+
+  const scoreStr = score >= 0 ? `+${score}đ` : `${score}đ`;
+  return `
+    <span style="display: inline-flex; align-items: center; gap: 0.25rem; padding: 0.15rem 0.55rem; border-radius: 4px; background: ${bg}; color: ${color}; border: 1px solid ${border}; font-size: 0.75rem; font-weight: 700;">
+      <span>${icon}</span>
+      <span>${text} (${scoreStr})</span>
+    </span>
+  `;
+}
+
+function getGioRankVisual(rank: number): { badgeBg: string; textColor: string; borderColor: string; icon: string; title: string } {
+  switch (rank) {
+    case 1:
+      return { badgeBg: 'linear-gradient(135deg, rgba(16,185,129,0.2), rgba(245,158,11,0.2))', textColor: '#047857', borderColor: '#10b981', icon: '🥇', title: 'Hạng 1 (Rất Nên Dùng)' };
+    case 2:
+      return { badgeBg: 'rgba(16,185,129,0.15)', textColor: '#059669', borderColor: '#10b981', icon: '🥈', title: 'Hạng 2 (Nên Dùng)' };
+    case 3:
+      return { badgeBg: 'rgba(2,132,199,0.15)', textColor: '#0284c7', borderColor: '#0284c7', icon: '🥉', title: 'Hạng 3 (Khá Nên Dùng)' };
+    case 4:
+      return { badgeBg: 'rgba(59,130,246,0.12)', textColor: '#2563eb', borderColor: '#3b82f6', icon: '✨', title: 'Hạng 4 (Nên Dùng)' };
+    case 5:
+      return { badgeBg: 'var(--color-surface, #fff)', textColor: 'var(--color-text-muted, #64748b)', borderColor: 'var(--color-border, #e2e8f0)', icon: '⚖️', title: 'Hạng 5 (Tạm Dùng)' };
+    case 6:
+      return { badgeBg: 'rgba(245,158,11,0.12)', textColor: '#d97706', borderColor: '#f59e0b', icon: '⚠️', title: 'Hạng 6 (Chẳng Nên Dùng)' };
+    case 7:
+      return { badgeBg: 'rgba(249,115,22,0.12)', textColor: '#ea580c', borderColor: '#f97316', icon: '🟠', title: 'Hạng 7 (Chẳng Nên Dùng)' };
+    case 8:
+      return { badgeBg: 'rgba(239,68,68,0.12)', textColor: '#dc2626', borderColor: '#ef4444', icon: '⛔', title: 'Hạng 8 (Quyết Không Dùng)' };
+    case 9:
+      return { badgeBg: 'rgba(220,38,38,0.2)', textColor: '#b91c1c', borderColor: '#b91c1c', icon: '🚫', title: 'Hạng 9 (Tuyệt Đối Chẳng Dùng)' };
+    default:
+      return { badgeBg: 'var(--color-surface, #fff)', textColor: 'var(--color-text, #334155)', borderColor: 'var(--color-border, #e2e8f0)', icon: '🕒', title: 'Hạng Bình Hòa' };
+  }
+}
+
+// ─── HERO BADGE UPDATES ───────────────────────────────────────────────
 
 export function updateDayScoreBadge(now: Date = new Date()): void {
   const scoreBtn = document.getElementById('heroDayScoreBtn');
@@ -66,6 +152,8 @@ export function updateHeroEnergyBadge(now: Date = new Date()): void {
   energyBtn.className = `status-pill hero-energy-badge ${energy.statusClass}`;
 }
 
+// ─── MAIN DAY SCORE MODAL (5 TABS NÂNG CẤP) ────────────────────────────
+
 export function openDayScoreModal(
   targetDate: Date = new Date(),
   activeTab: 'day' | 'week' | 'finder' | 'month' | 'profile' = 'day'
@@ -91,12 +179,18 @@ export function openDayScoreModal(
   const tiet = evalData.tietKhiInfo;
   const than = evalData.thanSat;
   const sao = evalData.saoTu;
+  const saoDangVien = evalData.saoTuDangVien;
   const diaChi = evalData.diaChiRelations;
   const quyNhan = evalData.quyNhanLoc;
+  const napAmDay = evalData.napAmDay;
+  const napAmDoc = evalData.napAmDoc;
+  const napAmRel = evalData.napAmRelation;
+  const medTasks = evalData.medicalTasks;
+  const currentHourNum = targetDate.getHours();
 
   const modalHtml = `
-    <div class="day-score-modal-overlay" id="dayScoreModalOverlay" style="position: fixed; inset: 0; background: rgba(15,23,42,0.72); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 0.75rem;">
-      <div class="day-score-modal-card animate-pop-in" style="background: var(--color-surface, #fff); border: 1px solid var(--color-border, #e2e8f0); border-radius: 1.15rem; width: 100%; max-width: 860px; max-height: 94vh; overflow-y: auto; box-shadow: 0 25px 40px -5px rgba(0,0,0,0.35); padding: 1.4rem; display: flex; flex-direction: column;">
+    <div class="day-score-modal-overlay" id="dayScoreModalOverlay" style="position: fixed; inset: 0; background: rgba(15,23,42,0.75); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 0.75rem;">
+      <div class="day-score-modal-card animate-pop-in" style="background: var(--color-surface, #fff); border: 1px solid var(--color-border, #e2e8f0); border-radius: 1.15rem; width: 100%; max-width: 900px; max-height: 94vh; overflow-y: auto; box-shadow: 0 25px 40px -5px rgba(0,0,0,0.35); padding: 1.4rem; display: flex; flex-direction: column;">
         
         <!-- Modal Header -->
         <div class="modal-card-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.85rem; border-bottom: 1px solid var(--color-border, #e2e8f0); padding-bottom: 0.75rem;">
@@ -133,23 +227,25 @@ export function openDayScoreModal(
           
           <!-- Top Score Summary Banner -->
           <div class="score-summary-banner ${evalData.badgeClass}" style="display: flex; align-items: center; gap: 1.25rem; padding: 1.25rem; background: var(--color-surface-offset, #f8fafc); border-radius: 0.85rem; border: 1px solid var(--color-border, #e2e8f0);">
-            <div class="score-gauge-wrap" style="position: relative; width: 84px; height: 84px; flex-shrink: 0; display: flex; align-items: center; justify-content: center;">
+            <div class="score-gauge-wrap" style="position: relative; width: 88px; height: 88px; flex-shrink: 0; display: flex; align-items: center; justify-content: center;">
               <svg style="width: 100%; height: 100%; transform: rotate(-90deg);" viewBox="0 0 100 100">
                 <circle cx="50" cy="50" r="42" fill="none" stroke="var(--color-border, #e2e8f0)" stroke-width="8" />
                 <circle cx="50" cy="50" r="42" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="8" stroke-dasharray="264" stroke-dashoffset="${264 - (264 * evalData.total) / 100}" stroke-linecap="round" />
               </svg>
               <div style="position: absolute; text-align: center;">
-                <span style="font-size: 1.35rem; font-weight: 800; color: var(--color-text, #0f172a);">${evalData.total}</span>
+                <span style="font-size: 1.4rem; font-weight: 800; color: var(--color-text, #0f172a);">${evalData.total}</span>
                 <span style="font-size: 0.65rem; color: var(--color-text-muted, #64748b); display: block; margin-top: -3px;">/100</span>
               </div>
             </div>
             <div style="flex: 1;">
               <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.35rem;">
-                <div style="display: flex; align-items: center; gap: 0.4rem;">
+                <div style="display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap;">
                   <span style="font-size: 0.8rem; font-weight: 700; padding: 0.2rem 0.65rem; border-radius: 1rem; background: var(--color-primary, #0284c7); color: #fff;">
                     ${evalData.icon} ${evalData.rating}
                   </span>
-                  <span style="font-size: 0.8rem; color: var(--color-text-muted, #64748b);">Sao <strong>${sao.name}</strong> (${sao.type === 'cat' ? '✨ Cát' : '⚠️ Hung'}) • Trực <strong>${truc.name}</strong></span>
+                  <span style="font-size: 0.8rem; color: var(--color-text-muted, #64748b);">
+                    Sao <strong>${sao.name}</strong> (${sao.type === 'cat' ? '✨ Cát' : '⚠️ Hung'}) • Trực <strong>${truc.name}</strong> (${truc.rating})
+                  </span>
                 </div>
                 <div style="display: flex; gap: 0.35rem;">
                   <button type="button" id="btnExportICS" style="padding: 0.25rem 0.6rem; font-size: 0.75rem; font-weight: 700; border-radius: 0.35rem; border: 1px solid var(--color-primary, #0284c7); background: rgba(2,132,199,0.1); color: var(--color-primary, #0284c7); cursor: pointer;" title="Tải file .ics vào Google/Apple Calendar">
@@ -160,23 +256,231 @@ export function openDayScoreModal(
                   </button>
                 </div>
               </div>
-              <h4 style="margin: 0 0 0.25rem 0; font-size: 1.1rem; font-weight: 800; color: var(--color-text, #0f172a);">
+              
+              <h4 style="margin: 0 0 0.25rem 0; font-size: 1.15rem; font-weight: 800; color: var(--color-text, #0f172a);">
                 ${evalData.formattedDate} — Ngày ${evalData.canChiDay} (Âm lịch: ${evalData.lunarDay}/${evalData.lunarMonth})
               </h4>
               <p style="margin: 0; font-size: 0.85rem; color: var(--color-text-muted, #64748b); line-height: 1.45;">${evalData.summaryText}</p>
+
+              <!-- Hàng Nạp Âm 60 Hoa Giáp & Tương Quan -->
+              <div style="display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; margin-top: 0.45rem;">
+                <span style="font-size: 0.75rem; padding: 0.15rem 0.5rem; border-radius: 4px; background: var(--color-surface, #fff); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text, #0f172a);">
+                  📜 Nạp Âm Ngày: <strong>${napAmDay.name}</strong> (${napAmDay.element})
+                </span>
+                <span style="font-size: 0.75rem; padding: 0.15rem 0.5rem; border-radius: 4px; background: var(--color-surface, #fff); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text, #0f172a);">
+                  🩺 Nạp Âm BS: <strong>${napAmDoc.name}</strong> (${napAmDoc.element})
+                </span>
+                ${getNapAmRelationBadge(napAmRel.relation, napAmRel.score, napAmRel.text)}
+              </div>
+
+              <!-- Huy hiệu Sao Đăng Viên nếu có -->
+              ${saoDangVien.isDangVien ? `
+                <div style="margin-top: 0.45rem; padding: 0.35rem 0.65rem; border-radius: 0.45rem; background: linear-gradient(135deg, rgba(245,158,11,0.15), rgba(234,179,8,0.08)); border: 1px solid #f59e0b; color: #b45309; font-size: 0.78rem; font-weight: 800; display: flex; align-items: center; gap: 0.4rem;">
+                  <span>👑 SAO ĐĂNG VIÊN:</span>
+                  <span>${saoDangVien.note} (+${saoDangVien.bonusScore}đ — Hoán hung hóa cát, vạn sự hanh thông)</span>
+                </div>
+              ` : ''}
+
+              <!-- Thông tin Bác sĩ & Thần sát hộ thân -->
               <div style="margin-top: 0.5rem; font-size: 0.78rem; color: var(--color-text, #0f172a); display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem;">
                 <span>👨‍⚕️ <strong>${doc.name || 'Bác sĩ'}</strong> (${doc.gender || 'Nam'}) — Tuổi ${doc.canNam} ${doc.chiNam} (Mệnh ${doc.hanhMenh})</span>
                 <span style="background: rgba(2,132,199,0.12); color: var(--color-primary, #0284c7); padding: 0.1rem 0.5rem; border-radius: 4px; font-weight: 700;">
                   ${(SPECIALTY_METAS[doc.specialty || 'surgery'] || SPECIALTY_METAS.surgery).icon} ${(SPECIALTY_METAS[doc.specialty || 'surgery'] || SPECIALTY_METAS.surgery).shortName}
                 </span>
                 ${quyNhan.thienAt.isMatch ? `<span style="background: rgba(16,185,129,0.15); color: #059669; padding: 0.1rem 0.4rem; border-radius: 4px; font-weight: 700;">🌟 Thiên Ất Quý Nhân</span>` : ''}
+                ${quyNhan.locThan.isMatch ? `<span style="background: rgba(245,158,11,0.15); color: #d97706; padding: 0.1rem 0.4rem; border-radius: 4px; font-weight: 700;">💰 Lộc Thần Chiếu</span>` : ''}
                 ${diaChi.tamHop.isMatch ? `<span style="background: rgba(2,132,199,0.15); color: #0284c7; padding: 0.1rem 0.4rem; border-radius: 4px; font-weight: 700;">✨ Tam Hợp Cát</span>` : ''}
+                ${than.score > 0 ? `<span style="background: rgba(16,185,129,0.12); color: #059669; padding: 0.1rem 0.4rem; border-radius: 4px; font-weight: 700;">🛡️ ${than.list.slice(0, 2).join(', ')}</span>` : ''}
               </div>
             </div>
           </div>
 
-          <!-- 4 Khuyến Nghị Hành Động Lâm Sàng -->
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 0.65rem;">
+          <!-- BENTO 3 CHUYÊN VỤ Y TẾ TRỌNG ĐIỂM (CHƯƠNG II: 83 VỤ) -->
+          <div style="padding: 0.95rem; border-radius: 0.75rem; background: var(--color-surface-offset, #f8fafc); border: 1px solid var(--color-border, #e2e8f0);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.65rem; flex-wrap: wrap; gap: 0.4rem;">
+              <span style="font-size: 0.85rem; font-weight: 800; color: var(--color-text, #0f172a); display: flex; align-items: center; gap: 0.4rem;">
+                <span>🩺</span>
+                <span>KHẢO SÁT 3 CHUYÊN VỤ Y TẾ TRỌNG ĐIỂM (THEO Y ĐIỂN CỔ TRUYỀN & PHÁC ĐỒ)</span>
+              </span>
+              <span style="font-size: 0.72rem; color: var(--color-primary, #0284c7); font-weight: 700;">Chương II: Vụ 81 - 82 - 83</span>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0.75rem;">
+              
+              <!-- Vụ 81: Cầu Thầy Trị Bệnh & Lên Lịch Mổ -->
+              ${(() => {
+                const t = medTasks.cau_thay;
+                const isGood = t.recommendation === 'rat_tot' || t.recommendation === 'tot';
+                const isBad = t.recommendation === 'khong_nen';
+                const badgeText = t.recommendation === 'rat_tot' ? '✨ Đại Cát' : (t.recommendation === 'tot' ? '🌟 Cát Lành' : (isBad ? '⚠️ Thận Trọng' : '⚖️ Bình Hòa'));
+                const badgeColor = isGood ? '#059669' : (isBad ? '#dc2626' : '#64748b');
+                const badgeBg = isGood ? 'rgba(16,185,129,0.15)' : (isBad ? 'rgba(239,68,68,0.15)' : 'rgba(100,116,139,0.12)');
+                const border = t.isSpecialDay ? '#f59e0b' : (isGood ? '#10b981' : (isBad ? '#ef4444' : 'var(--color-border, #e2e8f0)'));
+                const reasons = [t.trucNote, t.saoNote, t.thanSatNote].filter(Boolean).join(' • ');
+
+                return `
+                  <div style="padding: 0.85rem; border-radius: 0.65rem; background: var(--color-surface, #fff); border: 1px solid ${border}; position: relative; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                      <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 0.4rem; margin-bottom: 0.35rem;">
+                        <div>
+                          <span style="font-size: 0.7rem; font-weight: 800; color: #0284c7; text-transform: uppercase;">VỤ 81 (Y ĐIỂN)</span>
+                          <h5 style="margin: 0.1rem 0; font-size: 0.92rem; font-weight: 800; color: var(--color-text, #0f172a);">
+                            🔪 Trị Bệnh & Phẫu Thuật
+                          </h5>
+                        </div>
+                        <div style="text-align: right;">
+                          <span style="font-size: 0.72rem; font-weight: 800; padding: 0.15rem 0.45rem; border-radius: 4px; background: ${badgeBg}; color: ${badgeColor};">
+                            ${badgeText} (${t.totalScore >= 0 ? '+' : ''}${t.totalScore}đ)
+                          </span>
+                        </div>
+                      </div>
+
+                      ${t.isSpecialDay ? `
+                        <div style="margin: 0.3rem 0; padding: 0.25rem 0.5rem; border-radius: 4px; background: linear-gradient(135deg, rgba(245,158,11,0.2), rgba(234,179,8,0.1)); border: 1px solid #f59e0b; color: #b45309; font-size: 0.72rem; font-weight: 800;">
+                          👑 NGÀY TỐI THƯỢNG Y DƯỢC (${evalData.canChiDay})
+                        </div>
+                      ` : ''}
+
+                      <div style="font-size: 0.76rem; color: var(--color-text-muted, #64748b); line-height: 1.35; margin: 0.35rem 0;">
+                        ${reasons || 'Ngày bình thường, y vụ triển khai theo đúng quy chuẩn.'}
+                      </div>
+                    </div>
+
+                    <div style="margin-top: 0.5rem; padding-top: 0.45rem; border-top: 1px dashed var(--color-border, #e2e8f0); font-size: 0.74rem; color: var(--color-text, #0f172a);">
+                      🎯 <strong>Chỉ định:</strong> Phù hợp phẫu thuật chương trình, can thiệp thủ thuật, đặt buồng tiêm, mời chuyên gia hội chẩn mổ khó.
+                    </div>
+                  </div>
+                `;
+              })()}
+
+              <!-- Vụ 82: Hốt Thuốc & Bào Chế Y Dược -->
+              ${(() => {
+                const t = medTasks.hot_thuoc;
+                const isGood = t.recommendation === 'rat_tot' || t.recommendation === 'tot';
+                const isBad = t.recommendation === 'khong_nen';
+                const badgeText = t.recommendation === 'rat_tot' ? '✨ Đại Cát' : (t.recommendation === 'tot' ? '🌟 Cát Lành' : (isBad ? '⚠️ Thận Trọng' : '⚖️ Bình Hòa'));
+                const badgeColor = isGood ? '#059669' : (isBad ? '#dc2626' : '#64748b');
+                const badgeBg = isGood ? 'rgba(16,185,129,0.15)' : (isBad ? 'rgba(239,68,68,0.15)' : 'rgba(100,116,139,0.12)');
+                const border = isGood ? '#10b981' : (isBad ? '#ef4444' : 'var(--color-border, #e2e8f0)');
+                const reasons = [t.trucNote, t.saoNote, t.thanSatNote].filter(Boolean).join(' • ');
+
+                return `
+                  <div style="padding: 0.85rem; border-radius: 0.65rem; background: var(--color-surface, #fff); border: 1px solid ${border}; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                      <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 0.4rem; margin-bottom: 0.35rem;">
+                        <div>
+                          <span style="font-size: 0.7rem; font-weight: 800; color: #0284c7; text-transform: uppercase;">VỤ 82 (Y ĐIỂN)</span>
+                          <h5 style="margin: 0.1rem 0; font-size: 0.92rem; font-weight: 800; color: var(--color-text, #0f172a);">
+                            💊 Hốt Thuốc & Bào Chế
+                          </h5>
+                        </div>
+                        <div style="text-align: right;">
+                          <span style="font-size: 0.72rem; font-weight: 800; padding: 0.15rem 0.45rem; border-radius: 4px; background: ${badgeBg}; color: ${badgeColor};">
+                            ${badgeText} (${t.totalScore >= 0 ? '+' : ''}${t.totalScore}đ)
+                          </span>
+                        </div>
+                      </div>
+
+                      <div style="font-size: 0.76rem; color: var(--color-text-muted, #64748b); line-height: 1.35; margin: 0.35rem 0;">
+                        ${reasons || 'Trực và sao ổn định, pha chế và kiểm kê thuốc thông suốt.'}
+                      </div>
+                    </div>
+
+                    <div style="margin-top: 0.5rem; padding-top: 0.45rem; border-top: 1px dashed var(--color-border, #e2e8f0); font-size: 0.74rem; color: var(--color-text, #0f172a);">
+                      🎯 <strong>Chỉ định:</strong> Bốc thuốc đông y, pha chế dung dịch dinh dưỡng TPN, thử phản ứng kháng sinh / thuốc sinh học, cấp phát thuốc mới.
+                    </div>
+                  </div>
+                `;
+              })()}
+
+              <!-- Vụ 83: Uống Thuốc & Khởi Phác Đồ Mới -->
+              ${(() => {
+                const t = medTasks.uong_thuoc;
+                const isGood = t.recommendation === 'rat_tot' || t.recommendation === 'tot';
+                const isBad = t.recommendation === 'khong_nen';
+                const badgeText = t.recommendation === 'rat_tot' ? '✨ Đại Cát' : (t.recommendation === 'tot' ? '🌟 Cát Lành' : (isBad ? '⚠️ Thận Trọng' : '⚖️ Bình Hòa'));
+                const badgeColor = isGood ? '#059669' : (isBad ? '#dc2626' : '#64748b');
+                const badgeBg = isGood ? 'rgba(16,185,129,0.15)' : (isBad ? 'rgba(239,68,68,0.15)' : 'rgba(100,116,139,0.12)');
+                const border = isGood ? '#10b981' : (isBad ? '#ef4444' : 'var(--color-border, #e2e8f0)');
+                const reasons = [t.trucNote, t.saoNote, t.thanSatNote].filter(Boolean).join(' • ');
+
+                return `
+                  <div style="padding: 0.85rem; border-radius: 0.65rem; background: var(--color-surface, #fff); border: 1px solid ${border}; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                      <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 0.4rem; margin-bottom: 0.35rem;">
+                        <div>
+                          <span style="font-size: 0.7rem; font-weight: 800; color: #0284c7; text-transform: uppercase;">VỤ 83 (Y ĐIỂN)</span>
+                          <h5 style="margin: 0.1rem 0; font-size: 0.92rem; font-weight: 800; color: var(--color-text, #0f172a);">
+                            🧪 Uống Thuốc & Khởi Liệu Trình
+                          </h5>
+                        </div>
+                        <div style="text-align: right;">
+                          <span style="font-size: 0.72rem; font-weight: 800; padding: 0.15rem 0.45rem; border-radius: 4px; background: ${badgeBg}; color: ${badgeColor};">
+                            ${badgeText} (${t.totalScore >= 0 ? '+' : ''}${t.totalScore}đ)
+                          </span>
+                        </div>
+                      </div>
+
+                      <div style="font-size: 0.76rem; color: var(--color-text-muted, #64748b); line-height: 1.35; margin: 0.35rem 0;">
+                        ${reasons || 'Bắt đầu cữ thuốc đầu tiên, cơ thể dung nạp và hấp thu ổn định.'}
+                      </div>
+                    </div>
+
+                    <div style="margin-top: 0.5rem; padding-top: 0.45rem; border-top: 1px dashed var(--color-border, #e2e8f0); font-size: 0.74rem; color: var(--color-text, #0f172a);">
+                      🎯 <strong>Chỉ định:</strong> Uống liều thuốc khởi đầu, khởi động chu kỳ hóa trị / liệu pháp miễn dịch, tiêm ngừa vắc-xin, bắt đầu phác đồ mạn tính.
+                    </div>
+                  </div>
+                `;
+              })()}
+
+            </div>
+          </div>
+
+          <!-- TIMELINE 12 KHUNG GIỜ VỚI MA TRẬN 9 BẬC GIỜ KHỞI SỰ (CHƯƠNG VII) -->
+          <div style="padding: 0.95rem; border-radius: 0.75rem; background: var(--color-surface-offset, #f8fafc); border: 1px solid var(--color-border, #e2e8f0);">
+            <div style="font-size: 0.85rem; font-weight: 800; color: var(--color-text, #0f172a); margin-bottom: 0.35rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.4rem;">
+              <span><i class="fa-solid fa-clock-rotate-left" style="color: var(--color-primary, #0284c7);"></i> TIMELINE 12 KHUNG GIỜ & 9 BẬC GIỜ KHỞI SỰ (CHƯƠNG VII):</span>
+              <span style="font-size: 0.72rem; color: #10b981; font-weight: 700;">🟢 Khung giờ phát sáng = Giờ hiện tại</span>
+            </div>
+            <p style="margin: 0 0 0.65rem 0; font-size: 0.75rem; color: var(--color-text-muted, #64748b);">
+              Khảo sát Can Giờ (Ngũ Thử Độn Nhật), Chi Giờ, Nạp Âm Giờ so với Bác Sĩ — Xếp 9 Hạng Cát Hung thực chiến:
+            </p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(136px, 1fr)); gap: 0.45rem;">
+              ${evalData.gioRanks.map(g => {
+                const timelineItem = evalData.gioTimeline.find(t => t.chi === g.chi);
+                const isCurrent = timelineItem ? timelineItem.isCurrent : false;
+                const visual = getGioRankVisual(g.rank);
+
+                return `
+                  <div style="padding: 0.45rem 0.55rem; border-radius: 0.45rem; border: 1px solid ${isCurrent ? '#10b981' : visual.borderColor}; background: ${isCurrent ? 'rgba(16,185,129,0.12)' : (g.isHoangDao ? 'rgba(2,132,199,0.05)' : 'var(--color-surface, #fff)')}; position: relative; ${isCurrent ? 'box-shadow: 0 0 0 2px rgba(16,185,129,0.4);' : ''} display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                      <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span style="font-size: 0.78rem; font-weight: 800; color: var(--color-text, #0f172a);">${g.fullCanChi}</span>
+                        <span style="font-size: 0.65rem; font-weight: 700; color: ${g.isHoangDao ? '#059669' : '#94a3b8'};">${g.isHoangDao ? '🌟 Hoàng' : '🌑 Hắc'}</span>
+                      </div>
+                      <div style="font-size: 0.68rem; color: var(--color-text-muted, #64748b);">${g.timeRange}</div>
+                      
+                      <!-- Nạp Âm của Giờ -->
+                      <div style="font-size: 0.65rem; color: var(--color-text-muted, #64748b); margin-top: 0.15rem;">
+                        ${g.napAm} (${g.napAmElement})
+                      </div>
+                    </div>
+
+                    <!-- Badge 9 Hạng Giờ -->
+                    <div style="margin-top: 0.35rem;">
+                      <div style="padding: 0.15rem 0.3rem; border-radius: 4px; background: ${visual.badgeBg}; border: 1px solid ${visual.borderColor}; color: ${visual.textColor}; font-size: 0.66rem; font-weight: 800; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" title="${g.clinicalNote}">
+                        ${visual.icon} ${visual.title.split(' ')[0]} ${visual.title.split(' ')[1] || ''}
+                      </div>
+                    </div>
+                  </div>
+                `;
+              }).join('')}
+            </div>
+          </div>
+
+          <!-- 4 Khuyến Nghị Hành Động Lâm Sàng Chuyên Khoa -->
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(195px, 1fr)); gap: 0.65rem;">
             <div style="padding: 0.75rem; border-radius: 0.6rem; background: var(--color-surface-offset, #f8fafc); border: 1px solid var(--color-border, #e2e8f0);">
               <div style="font-size: 0.8rem; font-weight: 700; color: ${evalData.advice.surgery.status === 'good' ? '#059669' : (evalData.advice.surgery.status === 'caution' ? '#d97706' : 'var(--color-text, #0f172a)')}; margin-bottom: 0.2rem;">
                 🔪 ${evalData.advice.surgery.title}
@@ -203,34 +507,13 @@ export function openDayScoreModal(
             </div>
           </div>
 
-          <!-- Timeline 12 Khung Giờ Real-Time -->
-          <div style="padding: 0.85rem; border-radius: 0.6rem; background: var(--color-surface-offset, #f8fafc); border: 1px solid var(--color-border, #e2e8f0);">
-            <div style="font-size: 0.85rem; font-weight: 800; color: var(--color-text, #0f172a); margin-bottom: 0.5rem; display: flex; justify-content: space-between; align-items: center;">
-              <span><i class="fa-solid fa-clock-rotate-left" style="color: var(--color-primary, #0284c7);"></i> Timeline 12 Khung Giờ & Thần Sát (Cát/Hắc Đạo):</span>
-              <span style="font-size: 0.72rem; color: #10b981; font-weight: 700;">🟢 Khung giờ phát sáng = Giờ hiện tại</span>
-            </div>
-            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(125px, 1fr)); gap: 0.4rem;">
-              ${evalData.gioTimeline.map(g => `
-                <div style="padding: 0.4rem 0.5rem; border-radius: 0.4rem; border: 1px solid ${g.isCurrent ? '#10b981' : 'var(--color-border, #e2e8f0)'}; background: ${g.isCurrent ? 'rgba(16,185,129,0.12)' : (g.isHoangDao ? 'rgba(2,132,199,0.05)' : 'var(--color-surface, #fff)')}; position: relative; ${g.isCurrent ? 'box-shadow: 0 0 0 2px rgba(16,185,129,0.4);' : ''}">
-                  <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <span style="font-size: 0.75rem; font-weight: 800; color: var(--color-text, #0f172a);">Giờ ${g.chi}</span>
-                    <span style="font-size: 0.65rem; font-weight: 700; color: ${g.isHoangDao ? '#059669' : '#94a3b8'};">${g.isHoangDao ? '🌟 Hoàng Đạo' : '🌑 Hắc Đạo'}</span>
-                  </div>
-                  <div style="font-size: 0.68rem; color: var(--color-text-muted, #64748b);">${g.timeRange}</div>
-                  <div style="font-size: 0.7rem; font-weight: 700; color: ${g.isHoangDao ? 'var(--color-primary, #0284c7)' : 'var(--color-text-muted, #64748b)'}; margin-top: 0.15rem;" title="${g.meaning}">
-                    ${g.starName}
-                  </div>
-                </div>
-              `).join('')}
-            </div>
-          </div>
-
           <!-- Bát Tự & 28 Sao Tú & Tiết Khí -->
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.75rem;">
             <div style="padding: 0.85rem; border-radius: 0.6rem; background: var(--color-surface-offset, #f8fafc); border: 1px solid var(--color-border, #e2e8f0);">
               <span style="font-size: 0.7rem; font-weight: 700; color: var(--color-text-muted, #64748b); text-transform: uppercase;">NHỊ THẬP BÁT TÚ</span>
               <div style="font-weight: 800; font-size: 0.95rem; color: var(--color-text, #0f172a); margin: 0.2rem 0;">
                 Sao ${sao.name} (${sao.element} ${sao.animal}) — ${sao.type === 'cat' ? '<span style="color:#10b981;">Cát Tinh</span>' : '<span style="color:#ef4444;">Hung Tinh</span>'}
+                ${saoDangVien.isDangVien ? '<span style="color:#b45309; font-size:0.75rem; font-weight:800;"> (Đăng Viên 👑)</span>' : ''}
               </div>
               <p style="font-size: 0.78rem; color: var(--color-text-muted, #64748b); margin: 0; line-height: 1.35;">${sao.desc}</p>
             </div>
@@ -288,7 +571,7 @@ export function openDayScoreModal(
             </div>
           </div>
 
-          <div class="week-forecast-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 0.5rem;">
+          <div class="week-forecast-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(105px, 1fr)); gap: 0.5rem;">
             ${weekData.map((item) => `
               <div class="week-forecast-card ${item.badgeClass} ${item.isToday ? 'is-today' : ''} ${item.isBestDay ? 'is-best-day' : ''}" 
                    data-date-str="${item.date.toISOString()}"
@@ -324,47 +607,65 @@ export function openDayScoreModal(
             <label style="font-weight: 800; font-size: 0.9rem; display: block; margin-bottom: 0.5rem; color: var(--color-primary, #0284c7);">
               🎯 Chọn Mục Đích Cần Tìm Ngày Đẹp (Quét 30 Ngày Tới):
             </label>
-            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;" id="purposeSelectorWrap">
-              <button type="button" class="purpose-filter-btn active" data-purpose="surgery" style="padding: 0.45rem 0.85rem; font-size: 0.8rem; font-weight: 700; border-radius: 0.4rem; border: 1px solid var(--color-primary, #0284c7); background: var(--color-primary, #0284c7); color: #fff; cursor: pointer;">
+            <div style="display: flex; flex-wrap: wrap; gap: 0.45rem;" id="purposeSelectorWrap">
+              <button type="button" class="purpose-filter-btn active" data-purpose="surgery" style="padding: 0.45rem 0.8rem; font-size: 0.8rem; font-weight: 700; border-radius: 0.4rem; border: 1px solid var(--color-primary, #0284c7); background: var(--color-primary, #0284c7); color: #fff; cursor: pointer;">
                 🔪 Phẫu Thuật & Mổ Phiên
               </button>
-              <button type="button" class="purpose-filter-btn" data-purpose="clinic" style="padding: 0.45rem 0.85rem; font-size: 0.8rem; font-weight: 700; border-radius: 0.4rem; border: 1px solid var(--color-border, #e2e8f0); background: var(--color-surface, #fff); color: var(--color-text, #334155); cursor: pointer;">
-                🏥 Khai Trương / Tiếp Nhận Máy
+              <button type="button" class="purpose-filter-btn" data-purpose="med_cau_thay" style="padding: 0.45rem 0.8rem; font-size: 0.8rem; font-weight: 700; border-radius: 0.4rem; border: 1px solid var(--color-border, #e2e8f0); background: var(--color-surface, #fff); color: var(--color-text, #334155); cursor: pointer;">
+                🩺 Vụ 81: Cầu Thầy & Trị Bệnh
               </button>
-              <button type="button" class="purpose-filter-btn" data-purpose="ebm" style="padding: 0.45rem 0.85rem; font-size: 0.8rem; font-weight: 700; border-radius: 0.4rem; border: 1px solid var(--color-border, #e2e8f0); background: var(--color-surface, #fff); color: var(--color-text, #334155); cursor: pointer;">
+              <button type="button" class="purpose-filter-btn" data-purpose="med_hot_thuoc" style="padding: 0.45rem 0.8rem; font-size: 0.8rem; font-weight: 700; border-radius: 0.4rem; border: 1px solid var(--color-border, #e2e8f0); background: var(--color-surface, #fff); color: var(--color-text, #334155); cursor: pointer;">
+                💊 Vụ 82: Hốt Thuốc & Bào Chế
+              </button>
+              <button type="button" class="purpose-filter-btn" data-purpose="med_uong_thuoc" style="padding: 0.45rem 0.8rem; font-size: 0.8rem; font-weight: 700; border-radius: 0.4rem; border: 1px solid var(--color-border, #e2e8f0); background: var(--color-surface, #fff); color: var(--color-text, #334155); cursor: pointer;">
+                🧪 Vụ 83: Uống Thuốc & Khởi Phác Đồ
+              </button>
+              <button type="button" class="purpose-filter-btn" data-purpose="clinic" style="padding: 0.45rem 0.8rem; font-size: 0.8rem; font-weight: 700; border-radius: 0.4rem; border: 1px solid var(--color-border, #e2e8f0); background: var(--color-surface, #fff); color: var(--color-text, #334155); cursor: pointer;">
+                🏥 Khai Trương / Nhận Máy
+              </button>
+              <button type="button" class="purpose-filter-btn" data-purpose="ebm" style="padding: 0.45rem 0.8rem; font-size: 0.8rem; font-weight: 700; border-radius: 0.4rem; border: 1px solid var(--color-border, #e2e8f0); background: var(--color-surface, #fff); color: var(--color-text, #334155); cursor: pointer;">
                 🎓 Báo Cáo EBM & Luận Án
               </button>
-              <button type="button" class="purpose-filter-btn" data-purpose="consultation" style="padding: 0.45rem 0.85rem; font-size: 0.8rem; font-weight: 700; border-radius: 0.4rem; border: 1px solid var(--color-border, #e2e8f0); background: var(--color-surface, #fff); color: var(--color-text, #334155); cursor: pointer;">
-                🤝 Hội Chẩn & Ký Hợp Đồng
+              <button type="button" class="purpose-filter-btn" data-purpose="consultation" style="padding: 0.45rem 0.8rem; font-size: 0.8rem; font-weight: 700; border-radius: 0.4rem; border: 1px solid var(--color-border, #e2e8f0); background: var(--color-surface, #fff); color: var(--color-text, #334155); cursor: pointer;">
+                🤝 Hội Chẩn Ca Khó
               </button>
             </div>
           </div>
 
           <!-- Top 5 Best Days Container -->
           <div id="bestDaysContainer" style="display: flex; flex-direction: column; gap: 0.65rem;">
-            ${bestSurgeryDays.map((item) => `
-              <div class="week-forecast-card ${item.evalData.badgeClass}" 
-                   data-date-str="${item.evalData.dateObj.toISOString()}"
-                   style="padding: 0.85rem 1rem; border-radius: 0.6rem; background: var(--color-surface-offset, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); display: flex; align-items: center; justify-content: space-between; gap: 1rem; cursor: pointer;">
-                <div style="display: flex; align-items: center; gap: 0.75rem;">
-                  <span style="font-size: 1.4rem; font-weight: 900; color: ${item.rank === 1 ? '#f59e0b' : (item.rank === 2 ? '#94a3b8' : '#b45309')};">
-                    #${item.rank}
-                  </span>
-                  <div>
-                    <h4 style="margin: 0 0 0.15rem 0; font-size: 0.95rem; font-weight: 800; color: var(--color-text, #0f172a);">
-                      ${item.evalData.formattedDate} — Ngày ${item.evalData.canChiDay}
-                    </h4>
-                    <div style="font-size: 0.75rem; color: var(--color-text-muted, #64748b);">
-                      ${item.matchReasons.join(' • ')}
+            ${bestSurgeryDays.map((item) => {
+              const hasDangVien = item.evalData.saoTuDangVien.isDangVien;
+              const isSpecialDay = item.evalData.medicalTasks.cau_thay.isSpecialDay;
+
+              return `
+                <div class="week-forecast-card ${item.evalData.badgeClass}" 
+                     data-date-str="${item.evalData.dateObj.toISOString()}"
+                     style="padding: 0.85rem 1rem; border-radius: 0.6rem; background: var(--color-surface-offset, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); display: flex; align-items: center; justify-content: space-between; gap: 1rem; cursor: pointer;">
+                  <div style="display: flex; align-items: center; gap: 0.75rem;">
+                    <span style="font-size: 1.4rem; font-weight: 900; color: ${item.rank === 1 ? '#f59e0b' : (item.rank === 2 ? '#94a3b8' : '#b45309')};">
+                      #${item.rank}
+                    </span>
+                    <div>
+                      <div style="display: flex; align-items: center; gap: 0.35rem; flex-wrap: wrap;">
+                        <h4 style="margin: 0; font-size: 0.95rem; font-weight: 800; color: var(--color-text, #0f172a);">
+                          ${item.evalData.formattedDate} — Ngày ${item.evalData.canChiDay}
+                        </h4>
+                        ${isSpecialDay ? `<span style="font-size: 0.65rem; font-weight: 800; background: linear-gradient(135deg, rgba(245,158,11,0.2), rgba(234,179,8,0.1)); border: 1px solid #f59e0b; color: #b45309; padding: 0.05rem 0.4rem; border-radius: 4px;">👑 TỐI THƯỢNG Y DƯỢC</span>` : ''}
+                        ${hasDangVien ? `<span style="font-size: 0.65rem; font-weight: 800; background: rgba(245,158,11,0.15); color: #d97706; padding: 0.05rem 0.35rem; border-radius: 4px;">🌟 ĐĂNG VIÊN</span>` : ''}
+                      </div>
+                      <div style="font-size: 0.75rem; color: var(--color-text-muted, #64748b); margin-top: 0.15rem;">
+                        ${item.matchReasons.join(' • ')}
+                      </div>
                     </div>
                   </div>
+                  <div style="text-align: right; flex-shrink: 0;">
+                    <div style="font-size: 1.25rem; font-weight: 900; color: var(--color-text, #0f172a);">${item.evalData.total}đ</div>
+                    <span style="font-size: 0.72rem; font-weight: 700; color: #059669;">${item.evalData.icon} ${item.evalData.rating}</span>
+                  </div>
                 </div>
-                <div style="text-align: right; flex-shrink: 0;">
-                  <div style="font-size: 1.25rem; font-weight: 900; color: var(--color-text, #0f172a);">${item.evalData.total}đ</div>
-                  <span style="font-size: 0.72rem; font-weight: 700; color: #059669;">${item.evalData.icon} ${item.evalData.rating}</span>
-                </div>
-              </div>
-            `).join('')}
+              `;
+            }).join('')}
           </div>
         </div>
 
@@ -412,7 +713,7 @@ export function openDayScoreModal(
         <div id="tabContentProfile" style="display: ${activeTab === 'profile' ? 'flex' : 'none'}; flex-direction: column; gap: 1rem;">
           <div style="padding: 1rem; background: var(--color-surface-offset, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); border-radius: 0.6rem;">
             <label style="font-weight: 800; font-size: 0.9rem; display: block; margin-bottom: 0.6rem; color: var(--color-primary, #0284c7);">
-              ⚙️ Cấu Hình Thông Tin Bác Sĩ (Cá Nhân Hóa Bát Tự & Biorhythms):
+              ⚙️ Cấu Hình Thông Tin Bác Sĩ (Cá Nhân Hóa Bát Tự, Nạp Âm & Biorhythms):
             </label>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.65rem;">
               <div>
@@ -468,8 +769,10 @@ export function openDayScoreModal(
         </div>
 
         <!-- Modal Footer -->
-        <div class="modal-card-footer" style="margin-top: 1.25rem; padding-top: 0.75rem; border-top: 1px solid var(--color-border, #e2e8f0); display: flex; justify-content: space-between; align-items: center;">
-          <span style="font-size: 0.72rem; color: var(--color-text-muted, #64748b);">28 Sao Tú, Tam Hợp, Quý Nhân, Timeline 12 Giờ & Biorhythms 4 Trục</span>
+        <div class="modal-card-footer" style="margin-top: 1.25rem; padding-top: 0.75rem; border-top: 1px solid var(--color-border, #e2e8f0); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <span style="font-size: 0.72rem; color: var(--color-text-muted, #64748b);">
+            Chuẩn hóa theo Y điển "Xem Ngày Tốt Xấu": 83 Vụ, Sao Đăng Viên, Nạp Âm 60 Hoa Giáp, 9 Bậc Giờ Khởi Sự & Biorhythms 4 Trục
+          </span>
           <button class="btn btn-primary" id="btnCloseDayScoreModalBottom" style="background: var(--color-primary, #0284c7); color: #fff; border: none; padding: 0.45rem 1.1rem; border-radius: 0.4rem; cursor: pointer; font-size: 0.85rem; font-weight: 700;">
             Đóng
           </button>
@@ -548,6 +851,7 @@ export function openDayScoreModal(
   // Purpose filter in Finder tab
   const purposeBtns = overlay?.querySelectorAll('.purpose-filter-btn');
   const bestDaysContainer = document.getElementById('bestDaysContainer');
+
   purposeBtns?.forEach(btn => {
     btn.addEventListener('click', () => {
       purposeBtns.forEach(b => {
@@ -563,29 +867,38 @@ export function openDayScoreModal(
       const found = findBestClinicalDays(p, 30, doc);
 
       if (bestDaysContainer) {
-        bestDaysContainer.innerHTML = found.map(item => `
-          <div class="week-forecast-card ${item.evalData.badgeClass}" 
-               data-date-str="${item.evalData.dateObj.toISOString()}"
-               style="padding: 0.85rem 1rem; border-radius: 0.6rem; background: var(--color-surface-offset, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); display: flex; align-items: center; justify-content: space-between; gap: 1rem; cursor: pointer;">
-            <div style="display: flex; align-items: center; gap: 0.75rem;">
-              <span style="font-size: 1.4rem; font-weight: 900; color: ${item.rank === 1 ? '#f59e0b' : (item.rank === 2 ? '#94a3b8' : '#b45309')};">
-                #${item.rank}
-              </span>
-              <div>
-                <h4 style="margin: 0 0 0.15rem 0; font-size: 0.95rem; font-weight: 800; color: var(--color-text, #0f172a);">
-                  ${item.evalData.formattedDate} — Ngày ${item.evalData.canChiDay}
-                </h4>
-                <div style="font-size: 0.75rem; color: var(--color-text-muted, #64748b);">
-                  ${item.matchReasons.join(' • ')}
+        bestDaysContainer.innerHTML = found.map(item => {
+          const hasDangVien = item.evalData.saoTuDangVien.isDangVien;
+          const isSpecialDay = item.evalData.medicalTasks.cau_thay.isSpecialDay;
+
+          return `
+            <div class="week-forecast-card ${item.evalData.badgeClass}" 
+                 data-date-str="${item.evalData.dateObj.toISOString()}"
+                 style="padding: 0.85rem 1rem; border-radius: 0.6rem; background: var(--color-surface-offset, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); display: flex; align-items: center; justify-content: space-between; gap: 1rem; cursor: pointer;">
+              <div style="display: flex; align-items: center; gap: 0.75rem;">
+                <span style="font-size: 1.4rem; font-weight: 900; color: ${item.rank === 1 ? '#f59e0b' : (item.rank === 2 ? '#94a3b8' : '#b45309')};">
+                  #${item.rank}
+                </span>
+                <div>
+                  <div style="display: flex; align-items: center; gap: 0.35rem; flex-wrap: wrap;">
+                    <h4 style="margin: 0; font-size: 0.95rem; font-weight: 800; color: var(--color-text, #0f172a);">
+                      ${item.evalData.formattedDate} — Ngày ${item.evalData.canChiDay}
+                    </h4>
+                    ${isSpecialDay ? `<span style="font-size: 0.65rem; font-weight: 800; background: linear-gradient(135deg, rgba(245,158,11,0.2), rgba(234,179,8,0.1)); border: 1px solid #f59e0b; color: #b45309; padding: 0.05rem 0.4rem; border-radius: 4px;">👑 TỐI THƯỢNG Y DƯỢC</span>` : ''}
+                    ${hasDangVien ? `<span style="font-size: 0.65rem; font-weight: 800; background: rgba(245,158,11,0.15); color: #d97706; padding: 0.05rem 0.35rem; border-radius: 4px;">🌟 ĐĂNG VIÊN</span>` : ''}
+                  </div>
+                  <div style="font-size: 0.75rem; color: var(--color-text-muted, #64748b); margin-top: 0.15rem;">
+                    ${item.matchReasons.join(' • ')}
+                  </div>
                 </div>
               </div>
+              <div style="text-align: right; flex-shrink: 0;">
+                <div style="font-size: 1.25rem; font-weight: 900; color: var(--color-text, #0f172a);">${item.evalData.total}đ</div>
+                <span style="font-size: 0.72rem; font-weight: 700; color: #059669;">${item.evalData.icon} ${item.evalData.rating}</span>
+              </div>
             </div>
-            <div style="text-align: right; flex-shrink: 0;">
-              <div style="font-size: 1.25rem; font-weight: 900; color: var(--color-text, #0f172a);">${item.evalData.total}đ</div>
-              <span style="font-size: 0.72rem; font-weight: 700; color: #059669;">${item.evalData.icon} ${item.evalData.rating}</span>
-            </div>
-          </div>
-        `).join('');
+          `;
+        }).join('');
 
         // Re-attach clicks
         bestDaysContainer.querySelectorAll('.week-forecast-card').forEach(card => {
@@ -769,7 +1082,7 @@ if (typeof document !== 'undefined') {
   }
 }
 
-// Expose to window for backward compatibility
+// Expose to window for backward compatibility & direct CLI testing
 if (typeof window !== 'undefined') {
   (window as any).GoodDayCalculator = {
     evaluateDayScore,
@@ -785,6 +1098,11 @@ if (typeof window !== 'undefined') {
     saveDoctorProfile,
     getCanChiYear,
     getSaoTu,
+    checkSaoDangVien,
+    getNapAm,
+    evaluateNapAmRelation,
+    evaluateMedicalTasks,
+    calculateGioRanks9Bậc,
     calculateBiorhythms,
     getTrucNgay,
     getTietKhiInfo,
