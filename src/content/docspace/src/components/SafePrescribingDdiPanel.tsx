@@ -23,7 +23,8 @@ import {
 } from '../data/drug-interaction-database.ts';
 
 interface SafePrescribingProps {
-  prescribedDrugNames: string[];
+  prescribedDrugNames?: string[];
+  prescribedDrugs?: string[];
   patientAge?: string;
   patientGender?: string;
   patientCreatinine?: string; // µmol/L hoặc mg/dL
@@ -32,6 +33,7 @@ interface SafePrescribingProps {
 
 export const SafePrescribingDdiPanel: React.FC<SafePrescribingProps> = ({
   prescribedDrugNames,
+  prescribedDrugs,
   patientAge,
   patientGender,
   patientCreatinine,
@@ -40,10 +42,20 @@ export const SafePrescribingDdiPanel: React.FC<SafePrescribingProps> = ({
   const [manualEgfr, setManualEgfr] = useState<string>('');
   const [isExpanded, setIsExpanded] = useState<boolean>(true);
 
+  // Normalize input drug names safely
+  const effectiveDrugNames = useMemo(() => {
+    const list = Array.isArray(prescribedDrugNames)
+      ? prescribedDrugNames
+      : Array.isArray(prescribedDrugs)
+      ? prescribedDrugs
+      : [];
+    return list.filter((n): n is string => typeof n === 'string' && n.trim().length > 0);
+  }, [prescribedDrugNames, prescribedDrugs]);
+
   // Match prescribed strings to DRUG_DATABASE IDs
   const matchedDrugIds = useMemo(() => {
     const ids: string[] = [];
-    const normalizedInput = prescribedDrugNames.map((n) => n.toLowerCase());
+    const normalizedInput = effectiveDrugNames.map((n) => n.toLowerCase());
 
     Object.values(DRUG_DATABASE).forEach((drug) => {
       const matchGeneric = normalizedInput.some((input) =>
@@ -59,7 +71,7 @@ export const SafePrescribingDdiPanel: React.FC<SafePrescribingProps> = ({
     });
 
     return Array.from(new Set(ids));
-  }, [prescribedDrugNames]);
+  }, [effectiveDrugNames]);
 
   // Compute or parse eGFR
   const effectiveEgfr = useMemo(() => {

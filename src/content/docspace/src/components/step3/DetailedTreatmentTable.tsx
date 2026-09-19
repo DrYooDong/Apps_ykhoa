@@ -244,10 +244,12 @@ export const DetailedTreatmentTable: React.FC<DetailedTreatmentTableProps> = ({
       {/* DDI Safe Prescribing Panel */}
       <div className="px-4">
         <SafePrescribingDdiPanel
-          prescribedDrugs={allPrescribedDrugNames}
+          prescribedDrugNames={allPrescribedDrugNames || []}
+          prescribedDrugs={allPrescribedDrugNames || []}
           patientAge={patientAge}
           patientGender={patientGender}
           patientCreatinine={patientCreatinine}
+          onOpenVaultDrawer={onOpenVaultDrawer}
         />
       </div>
 

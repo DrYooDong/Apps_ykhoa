@@ -125,8 +125,8 @@ export const Step3Protocol: React.FC<Step3Props> = ({
 
   // Merge KB diseases with Diagnostic Chain Database
   const allAvailableDiseases = useMemo(() => {
-    const list: Benh[] = [...kb.benh];
-    const existingIds = new Set(list.map((b) => b.id));
+    const list: Benh[] = Array.isArray(kb?.benh) ? [...kb.benh] : [];
+    const existingIds = new Set(list.map((b) => b?.id).filter(Boolean));
 
     Object.entries(DIAGNOSTIC_CHAIN_DATABASE).forEach(([key, chain]) => {
       if (!chain || !chain.diseaseName) return;
