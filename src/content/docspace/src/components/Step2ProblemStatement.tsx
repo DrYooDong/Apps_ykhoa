@@ -21,6 +21,7 @@ import { CaseSummaryPanel, SummaryStructure } from './step2/CaseSummaryPanel.tsx
 import { DiagnosticTrianglePanel } from './step2/DiagnosticTrianglePanel.tsx';
 import { ProblemListSection } from './step2/ProblemListSection.tsx';
 import { toAbbreviatedMedicalText } from '../lib/medicalAbbreviations.ts';
+import { normalizeText } from '../lib/normalizeUtils.ts';
 
 interface Step2ProblemStatementProps {
   form: ClinicalFormState;
@@ -36,6 +37,93 @@ interface Step2ProblemStatementProps {
   onUpdateProblems: (problems: ProblemStatementEntry[]) => void;
   onGoToStep: (stepId: 't1' | 't3') => void;
   onOpenVaultDrawer?: (diseaseName?: string, query?: string, khoCode?: string) => void;
+}
+
+/**
+ * Kiểm tra xem một câu trong Tiền căn (TC) có bị trùng lặp với danh sách dịch tễ (epiList / epiContext)
+ * hoặc mang bản chất thông tin dịch tễ đã được ghi nhận riêng.
+ */
+function isEpidemiologyDuplicate(
+  tcSentence: string,
+  epiList: string[],
+  epiContext?: Partial<EpidemiologyContext>
+): boolean {
+  if (!tcSentence || !tcSentence.trim()) return true;
+
+  const rawNormTC = normalizeText(tcSentence).replace(/[^a-z0-9\s]/g, ' ').replace(/\s+/g, ' ').trim();
+  if (rawNormTC.length < 5) return true;
+
+  // Danh sách các chuỗi dịch tễ đã có trong hồ sơ
+  const existingEpiTexts: string[] = [];
+
+  // 1. Thu thập từ epiList đã sinh
+  epiList.forEach((item) => {
+    const norm = normalizeText(item).replace(/[^a-z0-9\s]/g, ' ').replace(/\s+/g, ' ').trim();
+    // Bỏ qua prefix dạng "ổ dịch địa phương", "vùng dịch tễ lưu hành", "tiếp xúc vector", v.v.
+    const clean = norm.replace(
+      /^(o dich dia phuong|vung dich te luu hanh|tiep xuc vector|tiep xuc nguon lay|tien su di lai|boi canh mua dich|nguon nuoc thuc pham)\s*/,
+      ''
+    ).trim();
+    if (clean.length >= 6) existingEpiTexts.push(clean);
+  });
+
+  // 2. Thu thập từ các trường gốc của epiContext
+  if (epiContext) {
+    const fields = [
+      epiContext.outbreakAlert,
+      epiContext.endemicArea,
+      epiContext.vectorExposure,
+      epiContext.contactHistory,
+      epiContext.travelHistory,
+      epiContext.seasonalContext,
+      epiContext.waterFoodRisk,
+    ];
+    fields.forEach((f) => {
+      if (f && f.trim()) {
+        const norm = normalizeText(f).replace(/[^a-z0-9\s]/g, ' ').replace(/\s+/g, ' ').trim();
+        if (norm.length >= 6) existingEpiTexts.push(norm);
+      }
+    });
+  }
+
+  // 3. So khớp chuỗi con & tương đồng từ khóa
+  const tcWords = rawNormTC.split(' ').filter((w) => w.length > 2);
+
+  for (const epiText of existingEpiTexts) {
+    // Nếu chuỗi TC bao hàm hoặc bị bao hàm bởi chuỗi dịch tễ
+    if (rawNormTC.includes(epiText) || epiText.includes(rawNormTC)) {
+      return true;
+    }
+
+    // So sánh token overlap (nếu trùng phần lớn các từ khóa cốt lõi)
+    const epiWords = epiText.split(' ').filter((w) => w.length > 2);
+    if (tcWords.length > 0 && epiWords.length > 0) {
+      const commonWords = tcWords.filter((w) => epiWords.includes(w));
+      // Nếu trùng >= 3 từ khóa và chiếm >= 50% số từ khóa câu TC
+      if (commonWords.length >= 3 && commonWords.length / tcWords.length >= 0.5) {
+        return true;
+      }
+    }
+  }
+
+  // 4. Nếu đã có dữ liệu dịch tễ (existingEpiTexts có dữ liệu) và câu TC thuần túy là câu phát biểu dịch tễ
+  if (existingEpiTexts.length > 0) {
+    const isPureEpiPattern =
+      /(song trong vung|o dich|vung luu hanh|vung dich te|muoi van|aedes|anopheles|tiep xuc ca benh|tiep xuc nguon lay|ngap lut|loi nuoc|rung ray|ngu lan trai|khu nha tro|song cung)/i.test(
+        rawNormTC
+      );
+    // Kiểm tra xem có chứa thông tin bệnh án / tiền căn y khoa thực sự không
+    const hasMedicalHistoryWords =
+      /(tien su|tien can|benh ly|man tinh|di ung|tang huyet ap|suy than|dai thao duong|co giat|viem gan|tiem vac xin|tiem phong|phau thuat|truyen mau)/i.test(
+        rawNormTC
+      );
+
+    if (isPureEpiPattern && !hasMedicalHistoryWords) {
+      return true;
+    }
+  }
+
+  return false;
 }
 
 export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
@@ -271,16 +359,39 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
       });
     }
 
-    // 6. Tiền căn (TC) có liên quan
+    // 6. Tiền căn (TC) có liên quan (Khử trùng lặp thông minh với Yếu tố Dịch tễ)
     const tcList: string[] = [];
     const tcSymptoms = selectedSymptoms.filter((s) => s.loai.includes('tc')).map((s) => toAbbreviatedMedicalText(s.ten));
     if (tcSymptoms.length > 0) {
-      tcList.push(...tcSymptoms);
+      tcSymptoms.forEach((s) => {
+        if (!isEpidemiologyDuplicate(s, epiList, epiContext) && !tcList.includes(s)) {
+          tcList.push(s);
+        }
+      });
     }
     if (form?.text?.tc?.trim()) {
       const tcClean = cleanNarrativeSentences(form.text.tc);
       tcClean.forEach((t) => {
-        if (!tcList.includes(t)) tcList.push(t);
+        // Kiểm tra nếu câu này bị trùng lặp với dịch tễ đã ghi nhận
+        if (isEpidemiologyDuplicate(t, epiList, epiContext)) {
+          // Nếu epiList hoàn toàn trống mà câu TC chứa thông tin dịch tễ rõ nét, tự động chuyển vào epiList
+          if (epiList.length === 0) {
+            epiList.push(t);
+          }
+          // Bỏ qua, không đưa vào tcList để tránh hiển thị trùng lặp
+          return;
+        }
+
+        // Kiểm tra trùng lặp với các mục đã có trong tcList
+        const normT = normalizeText(t);
+        const isDuplicateWithExistingTc = tcList.some((existing) => {
+          const normExisting = normalizeText(existing);
+          return normT.includes(normExisting) || normExisting.includes(normT);
+        });
+
+        if (!isDuplicateWithExistingTc && !tcList.includes(t)) {
+          tcList.push(t);
+        }
       });
     }
 
@@ -353,16 +464,22 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
       parts.push(`${sectionIdx++}. CLS & Xét nghiệm bất thường:\n${clsParts.join('\n')}`);
     }
 
-    // 5. Yếu tố Dịch tễ & TC liên quan
+    // 5. Yếu tố Dịch tễ & Tiền căn liên quan
     const ctxParts: string[] = [];
     if (s.epiList && s.epiList.length > 0) {
       s.epiList.forEach((e) => ctxParts.push(`- Dịch tễ: ${e}`));
     }
     if (s.tcList && s.tcList.length > 0) {
-      s.tcList.forEach((t) => ctxParts.push(`- TC: ${t}`));
+      s.tcList.forEach((t) => ctxParts.push(`- Tiền căn: ${t}`));
     }
     if (ctxParts.length > 0) {
-      parts.push(`${sectionIdx++}. Yếu tố Dịch tễ & TC liên quan:\n${ctxParts.join('\n')}`);
+      const sectionTitle =
+        s.epiList.length > 0 && s.tcList.length > 0
+          ? 'Yếu tố Dịch tễ & Tiền căn liên quan'
+          : s.epiList.length > 0
+          ? 'Yếu tố Dịch tễ học liên quan'
+          : 'Tiền căn bệnh lý (TC) liên quan';
+      parts.push(`${sectionIdx++}. ${sectionTitle}:\n${ctxParts.join('\n')}`);
     }
 
     // 6. Dấu hiệu âm tính (-) có giá trị loại trừ

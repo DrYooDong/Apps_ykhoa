@@ -39,10 +39,10 @@ Dựa trên các hướng dẫn điều trị chuẩn (Guidelines Bộ Y Tế, W
      * Đặt ID gợi nhớ (ví dụ: 'ghe_itch', 'ghe_burrow', 'ghe_microscopy').
    - `severityGrading[]`: Bổ sung hoặc nâng cấp mảng 3 phân độ chuẩn (mild, moderate, critical):
      * `criteria`: Tiêu chuẩn phân độ cho Bước 3 (bóc tách [Lâm sàng], [Cận lâm sàng], [Tiêu chuẩn an toàn], [Cảnh báo]; không để lẫn xử trí/mục tiêu sinh hiệu).
-     * `triage`: Tuyến tiếp nhận & phân luồng (Cột 1 Bảng Chiến Lược 3 Cột Bước 4).
-     * `primaryAction`: Định hướng chiến lược xử trí (Cột 2 Bảng Chiến Lược 3 Cột Bước 4).
-     * `targetVitals`: Mục tiêu điều trị & sinh hiệu (Cột 3 Bảng Chiến Lược 3 Cột Bước 4).
-     * `protocol`: Phác đồ chi tiết theo phân độ (title, tuyen, drugs, monitoring, cautions).
+     * `triage`, `primaryAction`, `targetVitals`: Định hướng chiến lược & phân tầng xử trí Bước 4.
+     * `specialPopulations`: Đối tượng đặc biệt (Mục 1c Bước 4: người cao tuổi, trẻ em, thai phụ, suy thận eGFR, suy gan).
+     * `timelinePhases`: Lộ trình chi tiết từng ngày hiển thị trực tiếp lên BẢNG 4 CỘT tại Mục 2 Bước 4 (Phân loại | Giai đoạn & Mục tiêu | Phác đồ & Y lệnh | Theo dõi LS & CLS).
+     * `clinicalCautions`: 3 nhóm lưu ý lâm sàng tại Mục 3 Bước 4 ([1] Cảnh báo quan trọng, [2] Chống chỉ định CCĐ, [3] Tiêu chuẩn xuất viện/chuyển tuyến).
    - `protocol.targetGoals`: Thay bằng 3 mục tiêu lâm sàng cụ thể của bệnh.
    - `protocol.initialManagement`: Thay bằng 3 hành động thực hành tại giường bệnh.
    - `protocol.firstLineDrugs`: Phải có ít nhất 1-2 thuốc đầu tay cụ thể:

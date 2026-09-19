@@ -870,6 +870,28 @@
 
 ---
 
+## 🩺 src/content/docspace/ (Phân hệ MedLens DocSpace — Phác Đồ Điều Trị & Y Lệnh Lâm Sàng)
+
+| File | Vai trò | Phân hệ |
+|------|---------|---------|
+| `src/components/Step3Protocol.tsx` | Master component Mục 04. Phác đồ điều trị chuẩn hoá theo 6 đầu mục lâm sàng | DocSpace Step 4 Protocol |
+| `src/components/step3/ProtocolTopNav.tsx` | Thanh điều hướng trên cùng tinh gọn (Nút quay lại + Bộ lọc chuyên khoa & bệnh) | DocSpace Step 4 Protocol |
+| `src/components/step3/ProtocolDiseaseHeader.tsx` | Thanh hiển thị tên bệnh tinh gọn (Tên bệnh, ICD-10, Chuyên khoa, Nguồn phác đồ) | DocSpace Step 4 Protocol |
+| `src/components/step3/ProtocolClassificationSection.tsx` | Đầu mục 1: Phân loại cá thể hóa (1a Phân độ nặng, 1b Biến chứng, 1c Đối tượng đặc biệt) | DocSpace Step 4 Protocol |
+| `src/components/step3/DetailedTreatmentTable.tsx` | Đầu mục 2: Phác đồ điều trị chi tiết Bảng 4 Cột (Phân loại, Giai đoạn & Mục tiêu, Phác đồ & Y lệnh, Theo dõi) | DocSpace Step 4 Protocol |
+| `src/components/step3/ClinicalCautionsSection.tsx` | Đầu mục 3: Lưu ý lâm sàng ([1] Cảnh báo quan trọng, [2] Chống chỉ định, [3] Tiêu chuẩn xuất viện) | DocSpace Step 4 Protocol |
+| `src/components/step3/HealthcareWorkerKnowledgeSection.tsx` | Đầu mục 5: Kiến thức nhân viên y tế (5a Cơ sở GPSL/SLB, 5b Lâm sàng DTH/CD/BC/Dược, 5c Guidelines EBM) | DocSpace Step 4 Protocol |
+| `.agents/skills/docspace-step1-ingestion-squad/SKILL.md` | Đội ngũ AI chuyên trách Bước 1: Tiếp nhận dữ liệu, triệu chứng, DHST & Dịch tễ học | Agent Squad Skill |
+| `.agents/skills/docspace-step2-reasoning-squad/SKILL.md` | Đội ngũ AI chuyên trách Bước 2: Tóm tắt bệnh án, Đặt vấn đề 3 tầng & Tam giác DTH | Agent Squad Skill |
+| `.agents/skills/docspace-step3-cdss-squad/SKILL.md` | Đội ngũ AI chuyên trách Bước 3: Động cơ suy luận CDSS, Trọng số & Phân độ lâm sàng | Agent Squad Skill |
+| `.agents/skills/docspace-step4-protocol-squad/SKILL.md` | Đội ngũ AI chuyên trách Bước 4: Phác đồ toàn diện, Bảng 4 Cột, 6 Đầu mục & DDI | Agent Squad Skill |
+| `.agents/skills/docspace-treatment-protocol-ui-squad/SKILL.md` | Đội ngũ AI chuyên trách thiết kế giao diện, Bảng 4 cột và công thái học phác đồ | Agent Squad Skill |
+| `.agents/skills/docspace-treatment-data-engineering-squad/SKILL.md` | Đội ngũ AI chuyên trách cấu trúc dữ liệu y khoa, mapping timeline và an toàn kê đơn | Agent Squad Skill |
+| `.agents/docs/DOCSPACE_TREATMENT_PROTOCOL_KANBAN.md` | Bảng điều phối Kanban liên ngành cho Treatment Protocol UI & Data Squad | Project Kanban |
+| `.agents/docs/DOCSPACE_4STEPS_AGENT_KANBAN.md` | Bảng điều phối Master Kanban cho 4 Đội ngũ Chu trình Lâm sàng DocSpace (Bước 1 - Bước 4) | Project Master Kanban |
+
+---
+
 *Cập nhật file này mỗi khi thêm trang/skill mới vào hệ thống.*
 
 

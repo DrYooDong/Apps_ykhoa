@@ -59,18 +59,19 @@ Hệ sinh thái tri thức CliniPortal DocSpace được thiết kế theo luồ
 │     [Tiêu chuẩn an toàn], [Dấu hiệu cảnh báo đỏ].                                      │
 │   - 🛑 Nguyên tắc: Tuyệt đối không để lẫn phần xử trí hay mục tiêu sinh hiệu ở Bước 3!  │
 ├────────────────────────────────────────────────────────────────────────────────────────┤
-│ • BƯỚC 4: PHÁC ĐỒ ĐIỀU TRỊ TOÀN DIỆN (9 PHÂN MỤC COLLAPSIBLE)                           │
-│   - Bảng Chiến Lược 3 Cột: Tuyến tiếp nhận | Định hướng xử trí | Mục tiêu sinh hiệu.   │
-│   - Cơ chế Ẩn/Hiện: Mục 1 (Chọn phân độ) luôn mở; Mục 2-9 mặc định ẩn                   │
-│     với nút Bung/Thu gọn độc lập & Toolbar Master Toggles.                             │
-│   - 9 Phân mục chuẩn hóa tuần tự, loại bỏ 100% trùng lặp:                              │
-│     Mục 1 (Chọn phân độ & Bảng 3 Cột) ➔ Mục 2 (Sàng lọc & Xử trí Biến chứng khẩn)     │
-│     ➔ Mục 3 (Xử trí cấp cứu & Tuyến điều trị: Ngoại trú / Nội trú / ICU)               │
-│     ➔ Mục 4 (Y lệnh thuốc: Kháng sinh/Kháng virus theo kinh nghiệm & đích, Dược thư)   │
-│     ➔ Mục 5 (Thang điểm nguy cơ & CDSS) ➔ Mục 6 (Theo dõi & Cảnh báo an toàn)          │
-│     ➔ Mục 7 (Tư vấn xuất viện Teach-Back, Cách ly kiểm soát lây nhiễm & Dặn dò)        │
-│     ➔ Mục 8 (Khuyến cáo EBM & Liên kết Pathway chuyên sâu)                             │
-│     ➔ Mục 9 (Ca lâm sàng thực chiến SOAP & Prompt AI hội chẩn tại giường).             │
+│ • BƯỚC 4: PHÁC ĐỒ ĐIỀU TRỊ TOÀN DIỆN (6 ĐẦU MỤC CHUẨN HÓA & BẢNG 4 CỘT)                │
+│   - Header tối giản & Dropdown chuyên khoa/bệnh; thanh tiến độ (%) & xuất EMR chuẩn HIS. │
+│   - 6 Đầu mục chuẩn hóa loại bỏ 100% trùng lặp:                                        │
+│     Mục 1 (Phân loại cá thể hóa: 1a Phân độ nặng, 1b Biến chứng, 1c Đối tượng đặc biệt)  │
+│     ➔ Mục 2 (Phác đồ chi tiết - BẢNG 4 CỘT: Phân loại | Giai đoạn & Mục tiêu           │
+│              | Phác đồ & Y lệnh [Thuốc, BHYT, DDI, eGFR] | Theo dõi [LS & CLS])         │
+│     ➔ Mục 3 (Lưu ý lâm sàng: [1] Cảnh báo quan trọng, [2] Chống chỉ định tuyệt đối,     │
+│              [3] Tiêu chuẩn xuất viện hoặc chuyển tuyến)                                │
+│     ➔ Mục 4 (Vấn đề người bệnh quan tâm: Tư vấn Teach-Back 3 góc nhìn, 7 Cờ đỏ,         │
+│              5 Sai lầm cộng đồng cần bài trừ, Dinh dưỡng & Hồi phục)                    │
+│     ➔ Mục 5 (Kiến thức cho NVYT: 5a Cơ sở GPSL/SLB, 5b Lâm sàng DTH/CD/BC/Dược,         │
+│              5c Guidelines EBM & Landmark Trials)                                       │
+│     ➔ Mục 6 (Các ca bệnh liên quan: Hồ sơ thực chiến SOAP Markdown & Prompt AI).        │
 └────────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -83,9 +84,9 @@ Nhóm prompt này dùng để trích xuất **MÃ NGUỒN & DỮ LIỆU CẤU TR
 | STT | File Prompt | Loại Code Sinh Ra | Nơi Nạp / Lưu File Trong Dự Án | Tác Dụng Trong Chu Trình Lâm Sàng Mới |
 | :---: | :--- | :--- | :--- | :--- |
 | **00** | [`00-master-prompt-nap-chu-trinh-lam-sang.txt`](00-master-prompt-nap-chu-trinh-lam-sang.txt) | **Tổng hợp 4 Khối Code**: CDSS JSON, Trọng số KB, Ca mẫu, SOAP MD | Theo hướng dẫn từng khối | **Chạy 1 lần duy nhất sinh toàn bộ gói dữ liệu lâm sàng 4 bước** cho bất kỳ bệnh truyền nhiễm nào |
-| **05** | [`05-prompt-cdss-json-generator.txt`](05-prompt-cdss-json-generator.txt) | **Enriched CDSS JSON**<br>(Tiêu chuẩn chẩn đoán, Ngưỡng xét nghiệm vi sinh/huyết học, `severityGrading` đa phân độ, Phác đồ, Thuốc đặc hiệu/kháng sinh, Cờ đỏ) | `src/content/docspace/data/enriched/<slug>.json`<br>*(Chạy `node tools/scripts/build-enriched-cdss.mjs`)* | **Bước 3 & Bước 4**<br>• `criteria` $\to$ Tiêu chuẩn phân độ Bước 3<br>• `triage`, `primaryAction`, `targetVitals` $\to$ Bảng Chiến Lược 3 Cột Bước 4<br>• `protocol` $\to$ Phác đồ 9 phân mục Bước 4 |
+| **05** | [`05-prompt-cdss-json-generator.txt`](05-prompt-cdss-json-generator.txt) | **Enriched CDSS JSON**<br>(Tiêu chuẩn chẩn đoán, Ngưỡng vi sinh/huyết học, `severityGrading`, `specialPopulations`, `timelinePhases` Bảng 4 cột, `clinicalCautions`) | `src/content/docspace/data/enriched/<slug>.json`<br>*(Chạy `node tools/scripts/build-enriched-cdss.mjs`)* | **Bước 3 & Bước 4**<br>• `criteria` $\to$ Tiêu chuẩn phân độ Bước 3 & Mục 1a Bước 4<br>• `timelinePhases` $\to$ Bảng 4 Cột chi tiết từng ngày ở Mục 2 Bước 4<br>• `specialPopulations` $\to$ Mục 1c Bước 4<br>• `clinicalCautions` $\to$ Mục 3 Bước 4 |
 | **06** | [`06-prompt-sample-case-generator.txt`](06-prompt-sample-case-generator.txt) | **1. Ca bệnh mẫu JSON**<br>**2. Ma trận trọng số CDSS JSON** | 1. `src/content/knowledge-vault/data/sample-clinical-cases.json`<br>2. `src/content/knowledge-vault/data/clinical-rules-symptoms.json` & `data/diseases/<chuyen-khoa>.json`<br>*(Chạy `node tools/scripts/bundle-clinical-rules.mjs`)* | **Bước 1, 2 & 3**<br>• Bước 1: Nạp ca mẫu (kèm dịch tễ vùng lưu hành, véc-tơ, tiền sử tiêm chủng)<br>• Bước 2: Kích hoạt Tam giác chẩn đoán DTH gộp Đặt vấn đề<br>• Bước 3: Tính % xác suất chẩn đoán & thang điểm NEWS2/PEWS/ESI/qSOFA |
-| **07** | [`07-prompt-soap-case-ingest.txt`](07-prompt-soap-case-ingest.txt) | **Hồ sơ ca bệnh SOAP Markdown** | Nạp qua nút **"Nạp ca từ NotebookLM"** trên thanh Header (hoặc lưu `knowledge-vault/ba/`) | **Bước 4 (Mục 9)** & Sổ tay kinh nghiệm SOAP<br>Hiển thị ca thực chiến đối sánh đa chiều và cung cấp Prompt AI hội chẩn tại giường |
+| **07** | [`07-prompt-soap-case-ingest.txt`](07-prompt-soap-case-ingest.txt) | **Hồ sơ ca bệnh SOAP Markdown** | Nạp qua nút **"Nạp ca từ NotebookLM"** trên thanh Header (hoặc lưu `knowledge-vault/ba/`) | **Bước 4 (Mục 6)** & Sổ tay kinh nghiệm SOAP<br>Hiển thị ca thực chiến đối sánh đa chiều và cung cấp Prompt AI hội chẩn tại giường |
 | **08** | [`08-prompt-db-batch-enricher.txt`](08-prompt-db-batch-enricher.txt) | **Làm giàu hàng loạt entry CSDL** | `src/content/docspace/data/kho-chan-doan-db.ts` | **Nâng cấp CSDL**<br>Thay thế các entry placeholder mẫu thành dữ liệu lâm sàng định lượng có `severityGrading` chuẩn cho bệnh truyền nhiễm |
 
 ---
@@ -97,9 +98,9 @@ Nhóm prompt này dùng khi bạn muốn trích xuất các bài tổng quan y h
 | Mã Kho | File Prompt | Chuyên Đề & Nội Dung Hợp Nhất Cho Bệnh Truyền Nhiễm | Kết Nối Chu Trình Lâm Sàng | File Đích Trong Knowledge Vault |
 | :---: | :--- | :--- | :--- | :--- |
 | **CD** | [`01-prompt-cd-chan-doan.txt`](01-prompt-cd-chan-doan.txt) | **Kho Tiêu Chuẩn Chẩn Đoán & Vi Sinh**<br>• Diễn tiến giai đoạn lâm sàng (Ủ bệnh, Khởi phát, Toàn phát, Hồi phục)<br>• Dấu hiệu lâm sàng kinh điển (Dát sẩn, phỏng nước, xuất huyết, màng giả, cứng gáy...)<br>• Xét nghiệm vi sinh/huyết thanh: Nuôi cấy, Kháng sinh đồ, PCR/RT-PCR, Test nhanh kháng nguyên, IgM/IgG MAC-ELISA<br>• Ngưỡng xét nghiệm phản ứng viêm: CBC, CRP, Procalcitonin, Ferritin, Lactate máu<br>• Bảng chẩn đoán phân biệt toàn diện theo hội chứng | **Bước 3**: Cung cấp tiêu chuẩn phân độ chẩn đoán định lượng (tuyệt đối không lẫn điều trị) | `knowledge-vault/2.3. Kho chẩn đoán/Truyền nhiễm/CD_{slug}_P1.md` |
-| **PDDT** | [`02-prompt-pddt-phac-do.txt`](02-prompt-pddt-phac-do.txt) | **Kho Phác Đồ Điều Trị Toàn Diện** *(Hợp nhất Phác đồ + Dược + Tư vấn)*<br>• Phân tầng xử trí theo tuyến: Tuyến xã/phường (Ngoại trú) $\to$ Huyện/Tỉnh (Nội trú) $\to$ Tuyến cuối (ICU/Hồi sức truyền nhiễm)<br>• **Phác đồ đặc hiệu**: Liệu pháp kháng sinh theo kinh nghiệm vs theo kháng sinh đồ, Kháng virus trong cửa sổ vàng (Oseltamivir, Acyclovir...), Kháng ký sinh trùng, Huyết thanh kháng độc tố (SAT, Kháng dại, IVIG)<br>• **Hồi sức tích cực**: Bù dịch tinh thể/keo, vận mạch (Noradrenaline, Adrenaline), thở máy bảo vệ phổi ARDS, lọc máu liên tục (CRRT), ECMO<br>• **Dược thư lâm sàng**: Chỉnh liều theo ClCr/eGFR, tương tác thuốc chống chỉ định, độc tính gan/thận<br>• **Tư vấn xuất viện & Kiểm soát lây nhiễm Teach-Back**: Tiêu chuẩn ra viện, biện pháp cách ly tại nhà, xử lý chất thải, tiêm phòng người tiếp xúc | **Bước 4**: Vận hành Bảng Chiến Lược 3 Cột, Y lệnh thuốc & Tư vấn Teach-Back | `knowledge-vault/2.4. Kho phác đồ điều trị/Truyền nhiễm/PDDT_{slug}_P1.md` |
+| **PDDT** | [`02-prompt-pddt-phac-do.txt`](02-prompt-pddt-phac-do.txt) | **Kho Phác Đồ Điều Trị Toàn Diện** *(Cấu trúc chuẩn 6 Đầu mục & Bảng 4 Cột)*<br>• **Mục 1**: Phân loại cá thể hóa (1a Nặng nhẹ, 1b Biến chứng, 1c Đối tượng đặc biệt)<br>• **Mục 2 (Bảng 4 Cột)**: Phân loại \| Giai đoạn & Mục tiêu \| Phác đồ & Y lệnh (Xử trí, Thuốc chuẩn, BHYT, DDI, chỉnh liều eGFR) \| Theo dõi (LS & CLS)<br>• **Mục 3**: Lưu ý lâm sàng ([1] Cảnh báo, [2] CCĐ tuyệt đối NSAIDs/Corticoid/tiêm bắp, [3] Tiêu chuẩn xuất viện & chuyển tuyến)<br>• **Mục 4**: Tư vấn Teach-Back 3 góc nhìn, 7 Cờ đỏ, bài trừ 5 sai lầm cộng đồng, dinh dưỡng<br>• **Mục 5**: Kiến thức NVYT (5a GPSL/SLB, 5b DTH/CD/BC/Dược, 5c Guidelines EBM & RCTs)<br>• **Mục 6**: Ca bệnh thực chiến SOAP Markdown & Prompt AI hội chẩn tại giường | **Bước 4**: Vận hành toàn diện 6 Đầu mục, Bảng 4 Cột y lệnh thuốc & Tư vấn Teach-Back | `knowledge-vault/2.4. Kho phác đồ điều trị/Truyền nhiễm/PDDT_{slug}_P1.md` |
 | **DTH** | [`03-prompt-dth-dich-te.txt`](03-prompt-dth-dich-te.txt) | **Kho Dịch Tễ Học & Yếu Tố Nguy Cơ** *(Hợp nhất Dịch tễ + Nguy cơ)*<br>• **Tam giác dịch tễ**: Ký chủ (Host) - Tác nhân gây bệnh (Agent) - Môi trường & Véc-tơ (Environment & Vector)<br>• Đường lây truyền: Hô hấp (giọt bắn / không khí), Tiêu hóa (phân - miệng), Tiếp xúc máu / dịch thể, Côn trùng / véc-tơ truyền, Lây từ động vật (Zoonosis)<br>• Thông số dịch tễ: Hệ số lây nhiễm cơ bản $R_0$, tỷ lệ tấn công (Attack rate), tỷ lệ tử vong/mắc (Case Fatality Rate - CFR), chu kỳ mùa vụ, vùng lưu hành tại Việt Nam<br>• **Ma trận yếu tố nguy cơ EBM**: Trẻ sơ sinh, nhũ nhi, phụ nữ có thai, người cao tuổi, cơ địa suy giảm miễn dịch (HIV, tiểu đường, xơ gan, đang dùng corticoid/ức chế miễn dịch)<br>• Kiểm soát dịch thể: Giám sát ca bệnh, xử lý ổ dịch, tiêm chủng vắc-xin & điều trị dự phòng sau phơi nhiễm (PEP) | **Bước 1 & Bước 2**: Bổ sung bối cảnh dịch tễ học và vận hành Tam giác chẩn đoán gộp Đặt vấn đề | `knowledge-vault/1.4. Kho dịch tễ học/Truyền nhiễm/DTH_{slug}_P1.md` |
-| **BC** | [`04-prompt-bc-bien-chung.txt`](04-prompt-bc-bien-chung.txt) | **Kho Biến Chứng & Cấp Cứu Truyền Nhiễm**<br>• Sốc nhiễm khuẩn (Septic Shock), suy đa tạng (MODS)<br>• Suy hô hấp cấp tiến triển (ARDS) do virus/vi khuẩn<br>• Viêm cơ tim cấp, rối loạn nhịp tim do độc tố<br>• Viêm não - màng não, phù não cấp, co giật kéo dài<br>• Xuất huyết ồ ạt, rối loạn đông máu nội mạch rải rác (DIC)<br>• Hội chứng bão Cytokine (Cytokine Storm Syndrome / HLH)<br>• Phác đồ xử trí cấp cứu "Giờ Vàng" & Y lệnh trực On-Call khẩn cấp | **Bước 3 & Bước 4**: Cảnh báo cờ đỏ & vận hành Mục 2 (Sàng lọc Biến chứng khẩn) | `knowledge-vault/2.5. Kho biến chứng/Truyền nhiễm/BC_{slug}_P1.md` |
+| **BC** | [`04-prompt-bc-bien-chung.txt`](04-prompt-bc-bien-chung.txt) | **Kho Biến Chứng & Cấp Cứu Truyền Nhiễm**<br>• Sốc nhiễm khuẩn (Septic Shock), suy đa tạng (MODS)<br>• Suy hô hấp cấp tiến triển (ARDS) do virus/vi khuẩn<br>• Viêm cơ tim cấp, rối loạn nhịp tim do độc tố<br>• Viêm não - màng não, phù não cấp, co giật kéo dài<br>• Xuất huyết ồ ạt, rối loạn đông máu nội mạch rải rác (DIC)<br>• Hội chứng bão Cytokine (Cytokine Storm Syndrome / HLH)<br>• Phác đồ xử trí cấp cứu "Giờ Vàng" & Y lệnh trực On-Call khẩn cấp | **Bước 3 & Bước 4**: Cảnh báo cờ đỏ & vận hành Mục 1b (Biến chứng) & Mục 3 (Cảnh báo) | `knowledge-vault/2.5. Kho biến chứng/Truyền nhiễm/BC_{slug}_P1.md` |
 
 ---
 
@@ -290,7 +291,7 @@ Sau khi NotebookLM sinh xong dữ liệu cấu trúc, bạn nạp vào codebase 
      node tools/scripts/bundle-clinical-rules.mjs
      ```
 
-3. **Nạp Ca Bệnh Thực Chiến SOAP (Mục 9 Bước 4)**:
+3. **Nạp Ca Bệnh Thực Chiến SOAP (Mục 6 Bước 4)**:
    - Bạn có thể lưu file markdown vào `src/content/knowledge-vault/ba/` hoặc mở giao diện DocSpace MedLens Pro trên trình duyệt (`http://localhost:5173/src/content/docspace/`), bấm nút **"Nạp ca từ NotebookLM"** trên Header, dán nội dung Markdown vào và bấm **"Phân tích & Nạp vào sổ tay"**.
 
 4. **Kiểm Định Chất Lượng Tự Động (Quality Gate Bắt Buộc)**:
@@ -348,13 +349,13 @@ Khi biên soạn dữ liệu CDSS cho bệnh truyền nhiễm, AI và Bác sĩ b
 > ### 4. Phân Định Rõ Ràng Giữa Bước 3 (Chẩn Đoán/Phân Độ) & Bước 4 (Xử Trí/Điều Trị)
 >
 > - Tại **Bước 3**: Chỉ tập trung vào bộ tiêu chuẩn nhận diện mức độ nặng (`criteria`: [Lâm sàng], [Cận lâm sàng], [Tiêu chuẩn an toàn], [Dấu hiệu cảnh báo]). Tuyệt đối không đưa y lệnh thuốc, dịch truyền hay mục tiêu huyết áp vào Bước 3.
-> - Tại **Bước 4**: Chuyển giao toàn bộ quyết định can thiệp sang Bảng Chiến Lược 3 Cột (`triage`, `primaryAction`, `targetVitals`) và 9 Phân mục điều trị chuyên sâu.
+> - Tại **Bước 4**: Chuyển giao toàn bộ quyết định can thiệp sang **Bảng 4 Cột** (`timelinePhases`) và **6 Đầu mục điều trị chuẩn hóa** (Phân loại cá thể hóa, Bảng 4 Cột, Lưu ý lâm sàng [1][2][3], Tư vấn người bệnh Kho TV, Kiến thức NVYT, Ca bệnh SOAP).
 
 > [!TIP]
 >
 > ### 5. Kiểm Soát Nhiễm Khuẩn & Cảnh Báo Khai Báo Dịch Bệnh
 >
-> Trong mục tư vấn và dặn dò (Mục 7 Bước 4), luôn bao gồm:
+> Trong mục tư vấn và dặn dò (Mục 4 Bước 4), luôn bao gồm:
 >
 > - Phân loại biện pháp phòng ngừa lây nhiễm: **Phòng ngừa chuẩn (Standard)**, **Đường tiếp xúc (Contact)**, **Giọt bắn (Droplet)**, hoặc **Đường không khí (Airborne)**.
 > - Nhắc nhở khai báo bệnh truyền nhiễm thuộc nhóm A, B, C theo quy định tại **Thông tư 54/2015/TT-BYT** của Bộ Y Tế.
@@ -363,15 +364,22 @@ Khi biên soạn dữ liệu CDSS cho bệnh truyền nhiễm, AI và Bác sĩ b
 
 ## 🤖 7. HỆ THỐNG SKILLS & AI AGENT CHUYÊN TRÁCH DOCSPACE
 
-Nhằm tự động hóa hoàn toàn quy trình xử lý, kiểm định chất lượng và tích hợp tri thức y khoa từ các prompt trên vào CliniPortal DocSpace mà không gây xung đột kiến trúc hay vỡ mã nguồn, hệ thống cung cấp **3 AI Skills chuyên trách** trong `.agents/skills/`:
+Nhằm tự động hóa hoàn toàn quy trình xử lý, kiểm định chất lượng và tích hợp tri thức y khoa từ các prompt trên vào CliniPortal DocSpace mà không gây xung đột kiến trúc hay vỡ mã nguồn, hệ thống thiết lập **4 Đội ngũ Agent (Squads) tương ứng 4 Bước** cùng các Squad chuyên biệt trong `.agents/skills/`:
 
-### 1. Phân định vai trò 3 AI Skills & Agents
+### 1. Phân định vai trò 4 Master Squads tương ứng 4 Bước Lâm Sàng
 
-| Skill / AI Agent | Đường dẫn & Kích hoạt | Nhiệm vụ chuyên môn cốt lõi | Prompt phụ trách |
-| :--- | :--- | :--- | :--- |
-| **DocSpace Clinical Pipeline Orchestrator** | `.agents/skills/docspace-clinical-pipeline/` | • Điều phối tổng thể 4 Bước Chu trình Lâm sàng<br>• Chuẩn hóa danh xưng Chuyên khoa chuẩn (Canonical Specialty)<br>• Cấu hình bộ định danh ID Aliasing & Dịch tễ Boost trong `clinicalEngine.ts`<br>• Khởi chạy bộ kiểm tra chất lượng 10 tiêu chí toàn diện | **Prompt 00**<br>(Master Prompt) |
-| **DocSpace CDSS Builder** | `.agents/skills/docspace-cdss-builder/` | • Sinh và nạp Enriched CDSS JSON chuẩn TypeScript interface<br>• Bóc tách bộ 4 tiền tố `severityGrading` ([Lâm sàng], [Cận lâm sàng], [Tiêu chuẩn an toàn], [Dấu hiệu cảnh báo])<br>• Dựng Bảng Chiến Lược 3 Cột & 9 phân mục điều trị chuyên sâu<br>• Đồng bộ ma trận trọng số triệu chứng (`dt`, `gy`, `ht`, `loaitru`) | **Prompt 05**, **06**, **08** |
-| **DocSpace SOAP Ingester** | `.agents/skills/docspace-soap-ingester/` | • Xử lý và chuẩn hóa hồ sơ bệnh án SOAP Markdown từ NotebookLM<br>• Bóc tách chuẩn 4 khối S-O-A-P và cấu trúc Frontmatter YAML<br>• Đồng bộ danh mục ca bệnh (`vault-catalog.json`, `vault-catalog-thuc-hanh.json`)<br>• Tích hợp Prompt AI Hội chẩn tại giường ở Mục 9 Bước 4 | **Prompt 07** |
+| Bước | Đội ngũ AI Agent Squad | Kích hoạt Skill | Nhiệm vụ chuyên môn cốt lõi | Prompt phụ trách |
+| :---: | :--- | :--- | :--- | :--- |
+| **Bước 1** | **Step 1 Ingestion Squad** | `.agents/skills/docspace-step1-ingestion-squad/` | • Tiếp nhận ca bệnh, đo lường sinh hiệu, trích xuất triệu chứng (CN, TT, TC, CLS)<br>• Khai thác bối cảnh dịch tễ học vùng lưu hành, véc-tơ, tiền sử tiêm chủng | **Prompt 06** (Ca mẫu) |
+| **Bước 2** | **Step 2 Reasoning Squad** | `.agents/skills/docspace-step2-reasoning-squad/` | • Tóm tắt bệnh án EMR ngắt dòng trực quan<br>• Đặt vấn đề 3 tầng ưu tiên (PGS.TS Hoàng Văn Sĩ)<br>• Kích hoạt EpiBoost tam giác dịch tễ & phân giải mâu thuẫn bệnh đồng mắc | **Prompt 03**, **06** |
+| **Bước 3** | **Step 3 CDSS Squad** | `.agents/skills/docspace-step3-cdss-squad/` | • Động cơ suy luận CDSS & Ma trận trọng số (`dt`, `gy`, `ht`, `loaitru`)<br>• Bộ thang điểm cảnh báo sớm (NEWS2, PEWS, ESI, qSOFA)<br>• Tiêu chuẩn vàng và bộ 4 tiền tố phân độ nặng (`criteria`) | **Prompt 01**, **05**, **06** |
+| **Bước 4** | **Step 4 Protocol Squad** | `.agents/skills/docspace-step4-protocol-squad/` | • Vận hành 6 Đầu mục phác đồ điều trị chi tiết<br>• Bảng 4 Cột lộ trình từng ngày (`timelinePhases`) & xuất EMR chuẩn HIS<br>• An toàn kê đơn (DDI, eGFR), 3 nhóm cảnh báo [1][2][3], Kho TV & 18 Kho tri thức | **Prompt 02**, **05**, **07** |
+
+### 2. Các Đội ngũ Bổ trợ Chuyên biệt (Specialized Support Squads)
+- **UI/UX & Công thái học**: `docspace-treatment-protocol-ui-squad` & `docspace-ui-feature-squad` (Tối ưu giao diện Bảng 4 Cột, responsive mobile, micro-animations).
+- **Kỹ thuật Dữ liệu & Pipeline**: `docspace-treatment-data-engineering-squad` & `docspace-cdss-builder` (Chuẩn hóa JSON schema, mapping CSDL, bundling scripts).
+- **Kiểm định Lâm sàng & Khử lỗi**: `docspace-clinical-data-qa-squad` & `docspace-medical-qa-squad` (Khử viết tắt, lọc trùng triệu chứng, bảo toàn Zero-Orphan Symptoms).
+- **Khai thác Ca bệnh & Huấn luyện**: `docspace-case-ingestion-squad` & `docspace-clinical-simulation-squad` & `docspace-soap-ingester` (Nạp ca từ NotebookLM, OSCE, EMR Export).
 
 ### 2. Công cụ tự động Audit bệnh lý (Automated Disease Audit CLI)
 
@@ -398,5 +406,5 @@ node tools/scripts/docspace-disease-audit.mjs all
 6. `clinical-rules-kb.json` đã khai báo entity bệnh với tên và chuyên khoa chuẩn
 7. Toàn bộ mã triệu chứng trong `dd` đều được định nghĩa trong từ vựng triệu chứng (Zero Orphan Symptoms)
 8. Có ít nhất 1 ca bệnh mẫu được định nghĩa trong `sample-clinical-cases.json`
-9. Phác đồ Bước 4 Mục 9 đã tích hợp hồ sơ SOAP thực chiến
+9. Phác đồ Bước 4 Mục 6 đã tích hợp hồ sơ SOAP thực chiến
 10. Dịch tễ học đã được nạp vào `epidemiology-context-database.ts` và kết nối với `clinicalEngine.ts`

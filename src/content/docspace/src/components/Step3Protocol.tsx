@@ -1,22 +1,14 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import {
-  Activity,
   AlertTriangle,
   ArrowLeft,
-  BookOpen,
-  Calendar,
-  Calculator,
-  Check,
   ChevronDown,
   ChevronUp,
   ClipboardCheck,
-  ClipboardCopy,
-  Filter,
+  GraduationCap,
   Heart,
-  Pill,
+  Layers,
   Printer,
-  RotateCcw,
-  ShieldAlert,
   Sparkles,
 } from 'lucide-react';
 import {
@@ -30,11 +22,8 @@ import {
   DIAGNOSTIC_CHAIN_DATABASE,
   SeverityGradingItem,
 } from '../../data/diagnostic-criteria-database.ts';
-import { GROUP_COLORS, GROUP_NAMES } from '../data/seedData.ts';
 import {
-  findVaultArticlesForDisease,
   getPathwayArticles,
-  getToolsForDisease,
   VaultArticle,
 } from '../lib/vaultBridge.ts';
 import {
@@ -43,18 +32,18 @@ import {
 } from '../lib/guidelineBridge.ts';
 import { getSimilarSoapCases } from '../lib/crossReferenceEngine.ts';
 import { getDailyTreatmentTimeline } from '../lib/dailyTreatmentTimeline.ts';
-import { PatientCounselingPanel } from './PatientCounselingPanel.tsx';
 
-// Subcomponents in step3/
+// 6 Subcomponents in step3/
+import { ProtocolTopNav } from './step3/ProtocolTopNav.tsx';
+import { ProtocolDiseaseHeader } from './step3/ProtocolDiseaseHeader.tsx';
 import { CollapsibleProtocolSection } from './step3/CollapsibleProtocolSection.tsx';
-import { SeverityGradingPanel } from './step3/SeverityGradingPanel.tsx';
-import { CustomOrder, ProtocolOrderSheet } from './step3/ProtocolOrderSheet.tsx';
-import { DailyTimelineTable } from './step3/DailyTimelineTable.tsx';
-import { ComplicationsTriageSection } from './step3/ComplicationsTriageSection.tsx';
-import { ClinicalCalculatorsSection } from './step3/ClinicalCalculatorsSection.tsx';
-import { MonitoringCautionsSection } from './step3/MonitoringCautionsSection.tsx';
-import { EbmGuidelinesSection } from './step3/EbmGuidelinesSection.tsx';
+import { ProtocolClassificationSection } from './step3/ProtocolClassificationSection.tsx';
+import { DetailedTreatmentTable } from './step3/DetailedTreatmentTable.tsx';
+import { ClinicalCautionsSection } from './step3/ClinicalCautionsSection.tsx';
+import { PatientCounselingPanel } from './PatientCounselingPanel.tsx';
+import { HealthcareWorkerKnowledgeSection } from './step3/HealthcareWorkerKnowledgeSection.tsx';
 import { SoapCasesSection } from './step3/SoapCasesSection.tsx';
+import { CustomOrder } from './step3/ProtocolOrderSheet.tsx';
 
 interface Step3Props {
   kb: KnowledgeBase;
@@ -94,16 +83,14 @@ export const Step3Protocol: React.FC<Step3Props> = ({
   const [copySuccess, setCopySuccess] = useState(false);
   const [selectedSpecialty, setSelectedSpecialty] = useState<string>('all');
 
-  // Collapsible sections state: all sections collapsed by default except Severity Staging
+  // 6 Collapsible sections state: Headings 1 & 2 open by default, 3-6 collapsed
   const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({
-    rx: false,
-    procedures: false,
-    complications: false,
-    calculators: false,
-    monitoring: false,
-    counseling: false,
-    ebm: false,
-    soap: false,
+    classification: true, // 1. Phân loại (cá thể hoá)
+    protocol: true,       // 2. Phác đồ điều trị chi tiết (Bảng 4 cột)
+    cautions: false,      // 3. Lưu ý lâm sàng
+    counseling: false,    // 4. Vấn đề người bệnh quan tâm
+    knowledge: false,     // 5. Kiến thức cho nhân viên y tế
+    soap: false,          // 6. Các ca bệnh liên quan
   });
 
   const toggleSection = (key: string) => {
@@ -112,26 +99,22 @@ export const Step3Protocol: React.FC<Step3Props> = ({
 
   const handleExpandAll = () => {
     setExpandedSections({
-      rx: true,
-      procedures: true,
-      complications: true,
-      calculators: true,
-      monitoring: true,
+      classification: true,
+      protocol: true,
+      cautions: true,
       counseling: true,
-      ebm: true,
+      knowledge: true,
       soap: true,
     });
   };
 
   const handleCollapseAll = () => {
     setExpandedSections({
-      rx: false,
-      procedures: false,
-      complications: false,
-      calculators: false,
-      monitoring: false,
+      classification: false,
+      protocol: false,
+      cautions: false,
       counseling: false,
-      ebm: false,
+      knowledge: false,
       soap: false,
     });
   };
@@ -140,115 +123,82 @@ export const Step3Protocol: React.FC<Step3Props> = ({
   const [selectedGradeIdx, setSelectedGradeIdx] = useState<number>(0);
   const [activeComplicationIndices, setActiveComplicationIndices] = useState<Set<number>>(new Set());
 
-  // Merge kb.benh and all diseases from DIAGNOSTIC_CHAIN_DATABASE
+  // Merge KB diseases with Diagnostic Chain Database
   const allAvailableDiseases = useMemo(() => {
     const list: Benh[] = [...kb.benh];
-    const seenIds = new Set(list.map((b) => b.id));
-    const seenNames = new Set(list.map((b) => b.ten.toLowerCase().trim()));
+    const existingIds = new Set(list.map((b) => b.id));
 
-    for (const [key, chain] of Object.entries(DIAGNOSTIC_CHAIN_DATABASE)) {
-      const normName = chain.diseaseName.toLowerCase().trim();
-      if (seenIds.has(key) || seenNames.has(normName)) continue;
-      seenIds.add(key);
-      seenNames.add(normName);
-
-      const tuyen =
-        chain.protocol?.initialManagement && chain.protocol.initialManagement.length > 0
-          ? chain.protocol.initialManagement
-          : chain.protocol?.targetGoals && chain.protocol.targetGoals.length > 0
-          ? chain.protocol.targetGoals
-          : [chain.protocol?.title || `Quy trình xử trí chuẩn cho ${chain.diseaseName}`];
-
-      const thuoc: Array<[string, string, string]> = [];
-      if (chain.protocol?.firstLineDrugs && chain.protocol.firstLineDrugs.length > 0) {
-        chain.protocol.firstLineDrugs.forEach((d) => {
-          thuoc.push([
-            d.drugName,
-            `${d.dosage}${d.route ? ' (' + d.route + ')' : ''}`,
-            d.instructions || d.class || 'Khuyến cáo bậc 1',
-          ]);
+    Object.entries(DIAGNOSTIC_CHAIN_DATABASE).forEach(([key, chain]) => {
+      if (!existingIds.has(key)) {
+        list.push({
+          id: key,
+          ten: chain.diseaseName,
+          icd: chain.icdCode,
+          nhom: chain.specialty,
+          baoDong: chain.severity === 'emergency',
+          ghiChuBaoDong: chain.severity === 'emergency' ? 'Cần kích hoạt lệnh trực cấp cứu khẩn cấp' : '',
+          tomTat: chain.summary,
+          danSo: { gioiTinh: 'any' },
+          dd: [],
+          phacDo: {
+            tuyen: chain.protocol.initialManagement || [],
+            thuoc: chain.protocol.firstLineDrugs
+              ? chain.protocol.firstLineDrugs.map((d) => [
+                  d.drugName,
+                  `${d.dosage}${d.route ? ' (' + d.route + ')' : ''}`,
+                  d.instructions || d.class || 'Khuyến cáo bậc 1',
+                ])
+              : [],
+            theoDoi: chain.monitoringLabs || [],
+            luuY: [
+              'Theo dõi sát phản ứng thuốc & nguy cơ tương tác',
+              ...chain.protocol.supportiveCare,
+            ],
+            nguon: [chain.protocol.guideline || 'Hướng dẫn chẩn đoán và điều trị Bộ Y tế'],
+          },
         });
+        existingIds.add(key);
       }
-      if (chain.protocol?.secondLineDrugs && chain.protocol.secondLineDrugs.length > 0) {
-        chain.protocol.secondLineDrugs.slice(0, 2).forEach((d) => {
-          thuoc.push([
-            d.drugName,
-            `${d.dosage}${d.route ? ' (' + d.route + ')' : ''}`,
-            d.instructions || d.class || 'Lựa chọn bậc 2',
-          ]);
-        });
-      }
+    });
 
-      const theoDoi =
-        chain.monitoringLabs && chain.monitoringLabs.length > 0
-          ? chain.monitoringLabs
-          : ['Theo dõi sát sinh hiệu, SpO2, mạch, huyết áp mỗi 1-2 giờ', 'Đánh giá đáp ứng lâm sàng sau 24-48 giờ'];
-
-      const luuY = [
-        ...(chain.protocol?.supportiveCare || []),
-        ...(chain.complications ? chain.complications.slice(0, 2).map((c) => `Cảnh báo: ${c.name} - ${c.warningSigns}`) : []),
-      ];
-
-      list.push({
-        id: key,
-        ten: chain.diseaseName,
-        icd: chain.icdCode,
-        nhom: chain.specialty || 'Chuyên khoa',
-        baoDong: chain.severity === 'emergency',
-        ghiChuBaoDong: chain.severity === 'emergency' ? `Cảnh báo cấp cứu khẩn cấp: ${chain.diseaseName}` : '',
-        tomTat: chain.summary,
-        danSo: { gioiTinh: 'any', tuoiMin: 0, tuoiMax: 120 },
-        dd: chain.criteria
-          ? chain.criteria.map((c) => [
-              c.id,
-              c.type === 'mandatory' ? 4.5 : c.type === 'major' ? 3.5 : 2.5,
-              c.type === 'exclusion' ? 'loaitru' : 'dt',
-            ])
-          : [],
-        phacDo: {
-          tuyen,
-          thuoc:
-            thuoc.length > 0
-              ? thuoc
-              : [['Theo dõi và điều trị triệu chứng', 'Theo liều lượng chuẩn EBM', 'Khuyến cáo chuyên khoa']],
-          theoDoi,
-          luuY: luuY.length > 0 ? luuY : ['Tuân thủ nghiêm ngặt chỉ định và chống chỉ định'],
-          nguon: [chain.protocol?.guideline || 'Hướng dẫn chẩn đoán và điều trị Bộ Y tế & EBM'],
-        },
-      });
-    }
-
-    return list;
+    return list.sort((a, b) => a.ten.localeCompare(b.ten, 'vi'));
   }, [kb.benh]);
 
-  // Currently viewed disease
-  const currentDisease: Benh = useMemo(() => {
-    return allAvailableDiseases.find((b) => b.id === selectedDiseaseId) || allAvailableDiseases[0];
+  const currentDisease = useMemo(() => {
+    if (!selectedDiseaseId) return allAvailableDiseases[0] || null;
+    return (
+      allAvailableDiseases.find((b) => b.id === selectedDiseaseId) ||
+      allAvailableDiseases.find((b) => b.icd === selectedDiseaseId) ||
+      allAvailableDiseases[0] ||
+      null
+    );
   }, [allAvailableDiseases, selectedDiseaseId]);
 
-  // Active reaction chain
+  // Active Reaction Chain
   const activeChain = useMemo(() => {
     if (!currentDisease) return undefined;
     if (DIAGNOSTIC_CHAIN_DATABASE[currentDisease.id]) {
       return DIAGNOSTIC_CHAIN_DATABASE[currentDisease.id];
     }
-    const cleanName = currentDisease.ten.toLowerCase().trim();
-    for (const [, c] of Object.entries(DIAGNOSTIC_CHAIN_DATABASE)) {
-      if (c.diseaseName.toLowerCase().trim() === cleanName) {
-        return c;
-      }
-    }
+    const found = Object.values(DIAGNOSTIC_CHAIN_DATABASE).find(
+      (c) =>
+        c.icdCode.toUpperCase() === currentDisease.icd.toUpperCase() ||
+        (c.icdPrefixes && c.icdPrefixes.some((p) => currentDisease.icd.toUpperCase().startsWith(p.toUpperCase())))
+    );
+    if (found) return found;
+
+    const normName = currentDisease.ten.toLowerCase();
+    const foundByName = Object.values(DIAGNOSTIC_CHAIN_DATABASE).find((c) =>
+      normName.includes(c.diseaseName.toLowerCase()) || c.diseaseName.toLowerCase().includes(normName)
+    );
+    if (foundByName) return foundByName;
+
     return undefined;
   }, [currentDisease]);
 
   // Knowledge Vault articles & pathways
   const pathway = useMemo(() => {
     return getPathwayArticles(currentDisease?.ten || '');
-  }, [currentDisease]);
-
-  const diseaseTools: VaultArticle[] = useMemo(() => {
-    if (!currentDisease) return [];
-    return getToolsForDisease(currentDisease.ten, currentDisease.icd);
   }, [currentDisease]);
 
   const matchedGuidelines = useMemo(() => {
@@ -273,21 +223,21 @@ export const Step3Protocol: React.FC<Step3Props> = ({
       );
       if (targetIdx !== -1) {
         setActiveComplicationIndices((prev) => new Set([...prev, targetIdx]));
-        setExpandedSections((prev) => ({ ...prev, complications: true, rx: true }));
-
-        const comp = activeChain.complications[targetIdx];
-        if (comp.orderSet && comp.orderSet.length > 0) {
-          const newOrders: CustomOrder[] = comp.orderSet.map((item: any, i: number) => ({
-            id: `init_comp_${Date.now()}_${i}`,
-            drug: `[XỬ TRÍ CẤP CỨU: ${comp.name}] ${item.drug}`,
-            dosage: item.dosage,
-            note: item.note,
-            completed: false,
-          }));
-          setCustomOrders((prev) => {
-            const existingDrugs = new Set(prev.map((p) => p.drug));
-            const toAdd = newOrders.filter((n) => !existingDrugs.has(n.drug));
-            return toAdd.length > 0 ? [...prev, ...toAdd] : prev;
+      } else {
+        const matchingIndices: number[] = [];
+        activeChain.complications.forEach((c, idx) => {
+          if (
+            c.name.toLowerCase().includes(initialComplicationId.toLowerCase()) ||
+            initialComplicationId.toLowerCase().includes(c.name.toLowerCase())
+          ) {
+            matchingIndices.push(idx);
+          }
+        });
+        if (matchingIndices.length > 0) {
+          setActiveComplicationIndices((prev) => {
+            const next = new Set(prev);
+            matchingIndices.forEach((i) => next.add(i));
+            return next;
           });
         }
       }
@@ -477,7 +427,7 @@ export const Step3Protocol: React.FC<Step3Props> = ({
       };
       setCustomOrders((prev) => [newOrder, ...prev]);
     }
-    setExpandedSections((prev) => ({ ...prev, rx: true }));
+    setExpandedSections((prev) => ({ ...prev, protocol: true }));
   };
 
   const handleAddPreventionOrder = (drug: string, dosage: string, note: string) => {
@@ -489,7 +439,7 @@ export const Step3Protocol: React.FC<Step3Props> = ({
       completed: false,
     };
     setCustomOrders((prev) => [newOrder, ...prev]);
-    setExpandedSections((prev) => ({ ...prev, rx: true }));
+    setExpandedSections((prev) => ({ ...prev, protocol: true }));
   };
 
   const handleApplyGuidelineDrugs = (study: any) => {
@@ -503,7 +453,7 @@ export const Step3Protocol: React.FC<Step3Props> = ({
       completed: false,
     }));
     setCustomOrders((prev) => [...prev, ...newItems]);
-    setExpandedSections((prev) => ({ ...prev, rx: true }));
+    setExpandedSections((prev) => ({ ...prev, protocol: true }));
   };
 
   // Order actions
@@ -545,6 +495,9 @@ export const Step3Protocol: React.FC<Step3Props> = ({
     phacDo.tuyen.forEach((_, idx) => next.add(`tuyen-${currentDisease.id}-g${selectedGradeIdx}-${idx}`));
     phacDo.thuoc.forEach((_, idx) => next.add(`thuoc-${currentDisease.id}-g${selectedGradeIdx}-${idx}`));
     phacDo.theoDoi.forEach((_, idx) => next.add(`theodoi-${currentDisease.id}-g${selectedGradeIdx}-${idx}`));
+    timelinePhases.forEach((phase) => {
+      phase.treatments.forEach((_, tIdx) => next.add(`phase-${phase.id}-${tIdx}`));
+    });
     setCheckedOrders(next);
     setCustomOrders((prev) => prev.map((co) => ({ ...co, completed: true })));
   };
@@ -556,6 +509,9 @@ export const Step3Protocol: React.FC<Step3Props> = ({
       phacDo.tuyen.forEach((_, idx) => next.delete(`tuyen-${currentDisease.id}-g${selectedGradeIdx}-${idx}`));
       phacDo.thuoc.forEach((_, idx) => next.delete(`thuoc-${currentDisease.id}-g${selectedGradeIdx}-${idx}`));
       phacDo.theoDoi.forEach((_, idx) => next.delete(`theodoi-${currentDisease.id}-g${selectedGradeIdx}-${idx}`));
+      timelinePhases.forEach((phase) => {
+        phase.treatments.forEach((_, tIdx) => next.delete(`phase-${phase.id}-${tIdx}`));
+      });
       return next;
     });
     setCustomOrders((prev) => prev.map((co) => ({ ...co, completed: false })));
@@ -565,9 +521,12 @@ export const Step3Protocol: React.FC<Step3Props> = ({
   const totalStandardOrders = phacDo.tuyen.length + phacDo.thuoc.length + phacDo.theoDoi.length;
   const totalAllOrders = totalStandardOrders + customOrders.length;
   const currentCheckedCount =
-    Array.from(checkedOrders).filter((key) => key.startsWith(`tuyen-${currentDisease.id}-g${selectedGradeIdx}`) ||
-      key.startsWith(`thuoc-${currentDisease.id}-g${selectedGradeIdx}`) ||
-      key.startsWith(`theodoi-${currentDisease.id}-g${selectedGradeIdx}`)
+    Array.from(checkedOrders).filter(
+      (key) =>
+        key.startsWith(`tuyen-${currentDisease?.id}-g${selectedGradeIdx}`) ||
+        key.startsWith(`thuoc-${currentDisease?.id}-g${selectedGradeIdx}`) ||
+        key.startsWith(`theodoi-${currentDisease?.id}-g${selectedGradeIdx}`) ||
+        key.startsWith('phase-')
     ).length + customOrders.filter((co) => co.completed).length;
 
   const progressPercent = totalAllOrders > 0 ? Math.round((currentCheckedCount / totalAllOrders) * 100) : 0;
@@ -580,7 +539,7 @@ export const Step3Protocol: React.FC<Step3Props> = ({
     lines.push(`BỆNH VIỆN / PHÒNG KHÁM - PHIẾU Y LỆNH & PHÁC ĐỒ ĐIỀU TRỊ`);
     lines.push(`========================================================`);
     lines.push(`Thời gian lập: ${new Date().toLocaleString('vi-VN')}`);
-    lines.push(`Bệnh nhân: ${form?.hoTen || 'Chưa định danh'} | Giới tính: ${form?.gioiTinh || '—'} | Tuổi: ${form?.tuoi || '—'}`);
+    lines.push(`Bệnh nhân: ${form?.lyDo || 'Chưa định danh'} | Giới tính: ${form?.gioiTinh || '—'} | Tuổi: ${form?.tuoi || '—'}`);
     lines.push(`Chẩn đoán chính: ${currentDisease.ten} (ICD-10: ${currentDisease.icd})`);
     if (activeSeverityGrade) {
       lines.push(`Phân độ / Thể bệnh: ${activeSeverityGrade.grade} (${activeSeverityGrade.severity.toUpperCase()})`);
@@ -638,296 +597,82 @@ export const Step3Protocol: React.FC<Step3Props> = ({
 
   return (
     <div className="flex flex-col gap-4">
-      {/* Top Clinical Navigation Bar & Protocol Switcher */}
-      <div className="bg-white border border-slate-200 rounded-xl p-3 sm:p-4 shadow-xs flex flex-wrap items-center justify-between gap-3">
-        {/* Left: Back & Title */}
-        <div className="flex items-center gap-3">
-          <button
-            id="btn-back-to-step2"
-            onClick={onBackToAnalysis}
-            className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-50 hover:bg-slate-100 text-slate-700 border border-slate-200 text-xs font-semibold rounded-lg transition-colors cursor-pointer"
-            title="Quay lại bảng phân tích và chẩn đoán phân biệt"
-          >
-            <ArrowLeft className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline">Quay lại phân tích</span>
-            <span className="sm:hidden">Quay lại</span>
-          </button>
-          <div>
-            <div className="flex items-center gap-2">
-              <h2 className="font-display text-base sm:text-lg font-bold text-slate-900">
-                Phác đồ ĐT & Y lệnh LS
-              </h2>
-              <span className="px-2 py-0.5 text-[10.5px] font-mono-custom bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-md font-semibold">
-                Clinical Pathway
-              </span>
-            </div>
-            <p className="text-[11px] text-slate-500">
-              Chuẩn hóa theo Hướng dẫn Bộ Y tế và Hiệp hội Quốc tế (AHA, ESC, ATS, GOLD)
-            </p>
-          </div>
-        </div>
+      {/* 1. Thanh điều hướng trên cùng tinh gọn */}
+      <ProtocolTopNav
+        onBackToAnalysis={onBackToAnalysis}
+        selectedSpecialty={selectedSpecialty}
+        onSelectSpecialty={setSelectedSpecialty}
+        specialties={specialties}
+        selectedDiseaseId={currentDisease?.id || ''}
+        onSelectDisease={onSelectDisease}
+        filteredDiseases={filteredDiseases}
+      />
 
-        {/* Right: Quick actions & selector */}
-        <div className="flex items-center gap-2 flex-wrap">
-          {/* Specialty Filter */}
-          <div className="flex items-center gap-1">
-            <Filter className="w-3.5 h-3.5 text-slate-400 hidden md:inline" />
-            <select
-              value={selectedSpecialty}
-              onChange={(e) => setSelectedSpecialty(e.target.value)}
-              className="border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs bg-slate-50 focus:outline-none focus:border-blue-500 text-slate-700 font-medium"
-            >
-              <option value="all">Tất cả chuyên khoa</option>
-              {specialties.map((s) => (
-                <option key={s} value={s}>
-                  {GROUP_NAMES[s] || s}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          {/* Disease Selector Dropdown */}
-          <select
-            id="select-disease-protocol"
-            value={currentDisease?.id || ''}
-            onChange={(e) => onSelectDisease(e.target.value)}
-            className="border border-slate-200 rounded-lg px-3 py-1.5 text-xs font-semibold bg-slate-50 focus:outline-none focus:border-blue-500 text-slate-800 max-w-[240px] truncate"
-          >
-            {filteredDiseases.map((b) => (
-              <option key={b.id} value={b.id}>
-                {b.baoDong ? '⚑ ' : ''}
-                {b.ten} ({b.icd})
-              </option>
-            ))}
-          </select>
-        </div>
-      </div>
-
-      {/* Main Protocol Presentation Card */}
+      {/* Khối trình bày phác đồ chính */}
       {currentDisease && (
         <div className="bg-white border border-slate-200 rounded-xl p-4 sm:p-6 shadow-xs flex flex-col gap-5">
-          {/* Disease Header Banner & Metadata */}
-          <div className="flex flex-wrap items-start justify-between gap-4 pb-4 border-b border-slate-200">
-            <div className="flex flex-col gap-1.5 max-w-3xl">
-              <div className="flex items-center gap-2 flex-wrap">
-                <h3 className="font-display text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
-                  {currentDisease.ten}
-                </h3>
-                <span className="px-2.5 py-0.5 text-xs font-mono-custom bg-slate-800 text-white rounded-md font-semibold">
-                  {currentDisease.icd}
-                </span>
-                <span
-                  className="px-2.5 py-0.5 text-[11px] font-semibold text-white rounded-md"
-                  style={{ backgroundColor: GROUP_COLORS[currentDisease.nhom] || '#2563eb' }}
-                >
-                  {GROUP_NAMES[currentDisease.nhom] || currentDisease.nhom}
-                </span>
-                {currentDisease.baoDong && (
-                  <span className="px-2.5 py-0.5 text-[11px] font-bold bg-red-50 text-red-700 border border-red-200 rounded-md flex items-center gap-1 animate-pulse">
-                    <ShieldAlert className="w-3.5 h-3.5 text-red-600" />
-                    <span>CẤP CỨU / NGUY KỊCH</span>
-                  </span>
-                )}
-              </div>
-
-              {currentDisease.baoDong && currentDisease.ghiChuBaoDong && (
-                <div className="text-xs text-red-800 bg-red-50/80 p-2 rounded-lg border border-red-200 font-medium">
-                  ⚑ <b>Cảnh báo đỏ:</b> {currentDisease.ghiChuBaoDong}
-                </div>
-              )}
-
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                {currentDisease.tomTat}
-              </p>
-            </div>
-
-            {/* Reference Source Tag */}
-            <div className="text-right flex flex-col items-end gap-1 font-mono-custom text-xs">
-              <span className="text-slate-400 text-[11px]">Nguồn phác đồ:</span>
-              <div className="flex flex-col items-end gap-1">
-                {phacDo.nguon.map((src, i) => (
-                  <span
-                    key={i}
-                    className="px-2 py-0.5 rounded bg-slate-100 text-slate-700 border border-slate-200 font-medium text-[11px]"
-                  >
-                    {src}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* ========================================================================= */}
-          {/* KHỐI 1: ĐÁNH GIÁ PHÂN ĐỘ & BIẾN CHỨNG LÂM SÀNG                             */}
-          {/* ========================================================================= */}
-          <SeverityGradingPanel
-            severityGrades={severityGrades}
-            selectedGradeIdx={selectedGradeIdx}
-            onSelectGradeIdx={setSelectedGradeIdx}
-            autoSuggestedGradeIndex={autoSuggestedGradeIndex}
-            activeChain={activeChain}
+          {/* 2. Thanh hiển thị tên bệnh tinh gọn */}
+          <ProtocolDiseaseHeader
+            diseaseName={currentDisease.ten}
+            diseaseIcd={currentDisease.icd}
+            specialtyGroup={currentDisease.nhom}
+            sources={phacDo.nguon}
           />
 
-          {/* Clinical Order Execution Progress Bar & Actions */}
-          <div className="bg-slate-50 border border-slate-200 rounded-xl p-3.5 flex flex-wrap items-center justify-between gap-3">
-            <div className="flex items-center gap-3 flex-1 min-w-[240px]">
-              <div className="flex items-center gap-1.5 text-xs font-bold text-slate-800">
-                <ClipboardCheck className="w-4 h-4 text-blue-600" />
-                <span>Tiến độ thực thi y lệnh:</span>
-              </div>
-              <div className="flex-1 max-w-xs bg-slate-200 rounded-full h-2.5 overflow-hidden">
-                <div
-                  className={`h-full transition-all duration-300 rounded-full ${
-                    progressPercent >= 100
-                      ? 'bg-emerald-600'
-                      : progressPercent >= 50
-                      ? 'bg-blue-600'
-                      : 'bg-amber-500'
-                  }`}
-                  style={{ width: `${progressPercent}%` }}
-                />
-              </div>
-              <span className="font-mono-custom text-xs font-bold text-slate-700">
-                {currentCheckedCount}/{totalAllOrders} ({progressPercent}%)
-              </span>
-            </div>
+          {/* Master Collapsible Controls Toolbar */}
+          <div className="flex items-center justify-between gap-3 p-2 bg-slate-50/90 rounded-lg border border-slate-200 text-xs">
+            <span className="font-semibold text-slate-700 flex items-center gap-1.5">
+              <Layers className="w-3.5 h-3.5 text-blue-600" />
+              <span>Bố cục 6 đầu mục lâm sàng chuẩn hoá</span>
+            </span>
 
-            {/* Quick Bulk Order Controls & Collapsible Master Toggles */}
-            <div className="flex items-center gap-1.5 flex-wrap">
-              <button
-                type="button"
-                id="btn-complete-all-orders"
-                onClick={handleCompleteAll}
-                className="w-7 h-7 flex items-center justify-center text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-200 rounded-md transition-colors cursor-pointer shadow-2xs"
-                title="Đánh dấu tất cả y lệnh trong phác đồ đã hoàn thành"
-                aria-label="Hoàn tất tất cả y lệnh"
-              >
-                <Check className="w-3.5 h-3.5" />
-              </button>
-
-              <button
-                type="button"
-                id="btn-reset-orders"
-                onClick={handleResetOrders}
-                className="w-7 h-7 flex items-center justify-center text-slate-600 hover:text-slate-900 bg-white border border-slate-200 hover:bg-slate-100 rounded-md transition-colors cursor-pointer shadow-2xs"
-                title="Bỏ chọn tất cả y lệnh"
-                aria-label="Bỏ chọn tất cả y lệnh"
-              >
-                <RotateCcw className="w-3.5 h-3.5" />
-              </button>
-
-              <button
-                type="button"
-                id="btn-copy-orders"
-                onClick={handleCopyOrderSheet}
-                className={`w-7 h-7 flex items-center justify-center rounded-md border transition-all cursor-pointer shadow-2xs ${
-                  copySuccess
-                    ? 'bg-emerald-600 text-white border-emerald-700 shadow-xs'
-                    : 'bg-white hover:bg-slate-50 text-slate-700 border-slate-200'
-                }`}
-                title={copySuccess ? "Đã sao chép EMR!" : "Sao chép toàn bộ y lệnh theo chuẩn EMR/HIS"}
-                aria-label="Sao chép y lệnh"
-              >
-                {copySuccess ? (
-                  <Check className="w-3.5 h-3.5" />
-                ) : (
-                  <ClipboardCopy className="w-3.5 h-3.5 text-slate-500" />
-                )}
-              </button>
-
-              <div className="h-4 w-px bg-slate-300 hidden sm:block mx-0.5" />
-
-              {/* Master Collapsible Controls */}
+            <div className="flex items-center gap-1.5">
               <button
                 type="button"
                 onClick={handleExpandAll}
-                className="w-7 h-7 flex items-center justify-center text-slate-700 bg-white hover:bg-slate-100 border border-slate-200 rounded-md transition-colors cursor-pointer shadow-2xs"
-                title="Bung toàn bộ các phần nội dung phác đồ"
-                aria-label="Bung toàn bộ các phần"
+                className="flex items-center gap-1 px-2 py-1 bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 rounded text-xs font-semibold cursor-pointer transition-colors shadow-2xs"
+                title="Bung toàn bộ 6 phần nội dung"
               >
-                <ChevronDown className="w-3.5 h-3.5 text-blue-600" />
+                <ChevronDown className="w-3 h-3 text-blue-600" />
+                <span>Bung tất cả</span>
               </button>
 
               <button
                 type="button"
                 onClick={handleCollapseAll}
-                className="w-7 h-7 flex items-center justify-center text-slate-600 hover:text-slate-900 bg-white hover:bg-slate-100 border border-slate-200 rounded-md transition-colors cursor-pointer shadow-2xs"
-                title="Thu gọn các phần nội dung để màn hình gọn gàng"
-                aria-label="Thu gọn các phần"
+                className="flex items-center gap-1 px-2 py-1 bg-white hover:bg-slate-100 text-slate-600 border border-slate-200 rounded text-xs font-semibold cursor-pointer transition-colors shadow-2xs"
+                title="Thu gọn các phần để màn hình gọn gàng"
               >
-                <ChevronUp className="w-3.5 h-3.5 text-slate-500" />
+                <ChevronUp className="w-3 h-3 text-slate-500" />
+                <span>Thu gọn</span>
               </button>
             </div>
           </div>
 
-          {/* Section 2: Bảng y lệnh thuốc & Dược lâm sàng (phacDo.thuoc) */}
+          {/* ========================================================================= */}
+          {/* ĐẦU MỤC 1: PHÂN LOẠI (CÁ THỂ HOÁ)                                         */}
+          {/* 1a. Phân độ nặng nhẹ | 1b. Phân độ biến chứng | 1c. Đối tượng đặc biệt    */}
+          {/* ========================================================================= */}
           <CollapsibleProtocolSection
-            id="rx"
-            isOpen={expandedSections.rx}
-            onToggle={() => toggleSection('rx')}
+            id="classification"
+            isOpen={expandedSections.classification}
+            onToggle={() => toggleSection('classification')}
             icon={
-              <div className="w-7 h-7 rounded-md bg-blue-600 text-white flex items-center justify-center shadow-xs shrink-0">
-                <Pill className="w-4 h-4" />
+              <div className="w-7 h-7 rounded-md bg-indigo-600 text-white flex items-center justify-center shadow-xs shrink-0">
+                <Layers className="w-4 h-4" />
               </div>
             }
-            title="2. Bảng y lệnh thuốc & Dược LS (Medical Order Sheet - Rx)"
-            subtitle="Chỉ định liều lượng, đường dùng, kiểm tra tương tác thuốc (DDI), chỉnh liều eGFR & quy tắc BHYT"
-            badgeText={`${phacDo.thuoc.length + customOrders.length} y lệnh`}
-            badgeColor="bg-blue-100 text-blue-800 border-blue-200"
+            title="1. Phân loại (cá thể hoá)"
+            subtitle="1a. Phân độ nặng nhẹ &bull; 1b. Phân độ biến chứng &bull; 1c. Các đối tượng đặc biệt"
+            badgeText={`${severityGrades.length} phân độ`}
+            badgeColor="bg-indigo-100 text-indigo-800 border-indigo-200"
           >
-            <ProtocolOrderSheet
-              diseaseId={currentDisease.id}
+            <ProtocolClassificationSection
+              severityGrades={severityGrades}
               selectedGradeIdx={selectedGradeIdx}
-              standardDrugs={phacDo.thuoc}
-              customOrders={customOrders}
-              checkedOrders={checkedOrders}
-              onToggleOrder={toggleOrder}
-              onToggleCustomOrder={toggleCustomOrder}
-              onAddCustomOrder={addCustomOrder}
-              onRemoveCustomOrder={removeCustomOrder}
-              allPrescribedDrugNames={allPrescribedDrugNames}
-              patientAge={form?.tuoi}
-              patientGender={form?.gioiTinh}
-              patientCreatinine={labs?.lCre}
-              onOpenVaultDrawer={onOpenVaultDrawer}
-            />
-          </CollapsibleProtocolSection>
-
-          {/* Section 3: Phác đồ điều trị chi tiết từng ngày */}
-          <CollapsibleProtocolSection
-            id="procedures"
-            isOpen={expandedSections.procedures}
-            onToggle={() => toggleSection('procedures')}
-            icon={
-              <div className="w-7 h-7 rounded-md bg-blue-600 text-white flex items-center justify-center shadow-xs shrink-0">
-                <Calendar className="w-4 h-4" />
-              </div>
-            }
-            title="3. Phác đồ ĐT chi tiết từng ngày"
-            subtitle="Lộ trình can thiệp lâm sàng phân tầng theo từng giai đoạn ngày bệnh (gom nhóm các ngày có xử trí tương tự)"
-            badgeText={`${timelinePhases.length} giai đoạn can thiệp`}
-            badgeColor="bg-blue-100 text-blue-800 border-blue-200"
-          >
-            <DailyTimelineTable timelinePhases={timelinePhases} />
-          </CollapsibleProtocolSection>
-
-          {/* Section 4: Sàng Lọc & Xử Trí Biến Chứng Tích Cực */}
-          <CollapsibleProtocolSection
-            id="complications"
-            isOpen={expandedSections.complications}
-            onToggle={() => toggleSection('complications')}
-            icon={
-              <div className="w-7 h-7 rounded-md bg-rose-600 text-white flex items-center justify-center shadow-xs shrink-0">
-                <ShieldAlert className="w-4 h-4" />
-              </div>
-            }
-            title="4. Sàng Lọc & Xử Trí Biến Chứng Tích Cực (Complications Sentinel - Kho BC)"
-            subtitle="Đánh dấu biểu hiện biến chứng để kích hoạt lệnh trực cấp cứu & phác đồ can thiệp chuyên sâu"
-            badgeText={`${activeComplications.length} biến chứng rủi ro`}
-            badgeColor="bg-rose-100 text-rose-800 border-rose-200"
-            containerClassName="bg-rose-50/40 border border-rose-200 rounded-xl p-4 shadow-2xs"
-          >
-            <ComplicationsTriageSection
+              onSelectGradeIdx={setSelectedGradeIdx}
+              autoSuggestedGradeIndex={autoSuggestedGradeIndex}
+              activeChain={activeChain}
               diseaseId={currentDisease.id}
               diseaseName={currentDisease.ten}
               activeComplications={activeComplications}
@@ -937,63 +682,88 @@ export const Step3Protocol: React.FC<Step3Props> = ({
               onAddPreventionOrder={handleAddPreventionOrder}
               vitals={vitals}
               labs={labs}
+              patientAge={form?.tuoi}
+              patientGender={form?.gioiTinh}
               onOpenVaultDrawer={onOpenVaultDrawer}
             />
           </CollapsibleProtocolSection>
 
-          {/* Section 5: Thang điểm lượng giá nguy cơ & Phân tầng xử trí */}
+          {/* ========================================================================= */}
+          {/* ĐẦU MỤC 2: PHÁC ĐỒ ĐIỀU TRỊ CHI TIẾT (BẢNG 4 CỘT)                         */}
+          {/* Phân loại | Giai đoạn & Mục tiêu | Phác đồ & Y lệnh | Theo dõi LS & CLS     */}
+          {/* ========================================================================= */}
           <CollapsibleProtocolSection
-            id="calculators"
-            isOpen={expandedSections.calculators}
-            onToggle={() => toggleSection('calculators')}
+            id="protocol"
+            isOpen={expandedSections.protocol}
+            onToggle={() => toggleSection('protocol')}
             icon={
-              <div className="w-7 h-7 rounded-md bg-indigo-600 text-white flex items-center justify-center shadow-xs shrink-0">
-                <Calculator className="w-4 h-4" />
+              <div className="w-7 h-7 rounded-md bg-blue-600 text-white flex items-center justify-center shadow-xs shrink-0">
+                <ClipboardCheck className="w-4 h-4" />
               </div>
             }
-            title="5. Thang điểm lượng giá nguy cơ & Phân tầng XT"
-            subtitle="CURB-65, Killip và các công cụ tính toán lượng giá lâm sàng (Kho Công cụ - CC)"
-            badgeText={`${diseaseTools.length} công cụ`}
-            badgeColor="bg-indigo-100 text-indigo-800 border-indigo-200"
-            containerClassName="bg-slate-50/80 border border-slate-200 rounded-xl p-4 shadow-2xs"
+            title="2. Phác đồ điều trị chi tiết (Bảng 4 cột)"
+            subtitle="Phân loại &bull; Giai đoạn & Mục tiêu &bull; Phác đồ & Y lệnh &bull; Theo dõi (Lâm sàng & Cận lâm sàng)"
+            badgeText={`${currentCheckedCount}/${totalAllOrders} y lệnh (${progressPercent}%)`}
+            badgeColor="bg-blue-100 text-blue-800 border-blue-200"
           >
-            <ClinicalCalculatorsSection
+            <DetailedTreatmentTable
               diseaseId={currentDisease.id}
               diseaseName={currentDisease.ten}
-              diseaseGroup={currentDisease.nhom}
-              diseaseTools={diseaseTools}
+              selectedGradeIdx={selectedGradeIdx}
+              activeSeverityGrade={activeSeverityGrade}
+              phacDo={phacDo}
+              timelinePhases={timelinePhases}
+              customOrders={customOrders}
+              checkedOrders={checkedOrders}
+              onToggleOrder={toggleOrder}
+              onToggleCustomOrder={toggleCustomOrder}
+              onAddCustomOrder={addCustomOrder}
+              onRemoveCustomOrder={removeCustomOrder}
+              onCompleteAll={handleCompleteAll}
+              onResetOrders={handleResetOrders}
+              onCopyOrderSheet={handleCopyOrderSheet}
+              copySuccess={copySuccess}
+              currentCheckedCount={currentCheckedCount}
+              totalAllOrders={totalAllOrders}
+              progressPercent={progressPercent}
+              allPrescribedDrugNames={allPrescribedDrugNames}
+              patientAge={form?.tuoi}
+              patientGender={form?.gioiTinh}
+              patientCreatinine={labs?.lCre}
               onOpenVaultDrawer={onOpenVaultDrawer}
             />
           </CollapsibleProtocolSection>
 
-          {/* Section 6: Chỉ tiêu theo dõi, mục tiêu lâm sàng & Cảnh báo an toàn */}
+          {/* ========================================================================= */}
+          {/* ĐẦU MỤC 3: LƯU Ý LÂM SÀNG                                                 */}
+          {/* [1] Cảnh báo quan trọng | [2] Chống chỉ định | [3] Tiêu chuẩn xuất viện  */}
+          {/* ========================================================================= */}
           <CollapsibleProtocolSection
-            id="monitoring"
-            isOpen={expandedSections.monitoring}
-            onToggle={() => toggleSection('monitoring')}
+            id="cautions"
+            isOpen={expandedSections.cautions}
+            onToggle={() => toggleSection('cautions')}
             icon={
-              <div className="w-7 h-7 rounded-md bg-amber-500 text-white flex items-center justify-center shadow-xs shrink-0">
-                <Activity className="w-4 h-4" />
+              <div className="w-7 h-7 rounded-md bg-amber-600 text-white flex items-center justify-center shadow-xs shrink-0">
+                <AlertTriangle className="w-4 h-4" />
               </div>
             }
-            title="6. Chỉ tiêu theo dõi, mục tiêu LS & Cảnh báo an toàn"
-            subtitle="Các mốc sinh hiệu cần giám sát, tiêu chuẩn cải thiện, chống chỉ định và tiêu chuẩn ra viện / chuyển tầng"
-            badgeText={`${phacDo.theoDoi.length} chỉ tiêu · ${phacDo.luuY.length} lưu ý`}
+            title="3. Lưu ý lâm sàng"
+            subtitle="[1] Lưu ý, cảnh báo quan trọng &bull; [2] Chống chỉ định &bull; [3] Tiêu chuẩn xuất viện hoặc chuyển tuyến"
+            badgeText={`${phacDo.luuY.length} lưu ý & CCĐ`}
             badgeColor="bg-amber-100 text-amber-800 border-amber-200"
-            containerClassName="bg-amber-50/30 border border-amber-200/80 rounded-xl p-4 shadow-2xs"
+            containerClassName="bg-amber-50/20 border border-amber-200/80 rounded-xl p-4 shadow-2xs"
           >
-            <MonitoringCautionsSection
-              diseaseId={currentDisease.id}
-              selectedGradeIdx={selectedGradeIdx}
-              monitoringItems={phacDo.theoDoi}
+            <ClinicalCautionsSection
               cautionItems={phacDo.luuY}
               timelinePhases={timelinePhases}
-              checkedOrders={checkedOrders}
-              onToggleOrder={toggleOrder}
+              activeSeverityGrade={activeSeverityGrade}
             />
           </CollapsibleProtocolSection>
 
-          {/* Section 7: Tư vấn người bệnh & Tờ rơi dặn dò */}
+          {/* ========================================================================= */}
+          {/* ĐẦU MỤC 4: VẤN ĐỀ NGƯỜI BỆNH QUAN TÂM                                     */}
+          {/* Tư vấn & giải thích bệnh cho người bệnh (Kho TV)                          */}
+          {/* ========================================================================= */}
           <CollapsibleProtocolSection
             id="counseling"
             isOpen={expandedSections.counseling}
@@ -1003,11 +773,11 @@ export const Step3Protocol: React.FC<Step3Props> = ({
                 <Heart className="w-4 h-4" />
               </div>
             }
-            title="7. Tư vấn người bệnh & Tờ rơi dặn dò (Kho TV)"
-            subtitle="Tài liệu giáo dục sức khỏe và hướng dẫn dặn dò người bệnh đối ứng từ Kho Tư Vấn EBM"
+            title="4. Vấn đề người bệnh quan tâm"
+            subtitle="Tư vấn & giải thích bệnh cho người bệnh (Kho TV)"
             badgeText="Kho TV"
             badgeColor="bg-teal-100 text-teal-800 border-teal-200"
-            containerClassName="bg-teal-50/30 border border-teal-200/80 rounded-xl p-4 shadow-2xs"
+            containerClassName="bg-teal-50/20 border border-teal-200/80 rounded-xl p-4 shadow-2xs"
           >
             <PatientCounselingPanel
               diseaseName={currentDisease.ten}
@@ -1019,23 +789,26 @@ export const Step3Protocol: React.FC<Step3Props> = ({
             />
           </CollapsibleProtocolSection>
 
-          {/* Section 8: Bằng chứng Y học Chứng cứ & Hướng Dẫn Điều Trị EBM */}
+          {/* ========================================================================= */}
+          {/* ĐẦU MỤC 5: KIẾN THỨC CHO NHÂN VIÊN Y TẾ                                   */}
+          {/* 5a. Cơ sở (GPSL/SLB) | 5b. Lâm sàng (DTH/CD/BC/Dược) | 5c. Guidelines     */}
+          {/* ========================================================================= */}
           <CollapsibleProtocolSection
-            id="ebm"
-            isOpen={expandedSections.ebm}
-            onToggle={() => toggleSection('ebm')}
+            id="knowledge"
+            isOpen={expandedSections.knowledge}
+            onToggle={() => toggleSection('knowledge')}
             icon={
-              <div className="w-7 h-7 rounded-md bg-indigo-600 text-white flex items-center justify-center shadow-xs shrink-0">
-                <BookOpen className="w-4 h-4" />
+              <div className="w-7 h-7 rounded-md bg-purple-600 text-white flex items-center justify-center shadow-xs shrink-0">
+                <GraduationCap className="w-4 h-4" />
               </div>
             }
-            title="8. Khuyến cáo ĐT EBM & Chuỗi Bệnh Học Đa Chiều (Knowledge Vault)"
-            subtitle="Khuyến cáo Bộ Y Tế, Hội chuyên khoa quốc tế (ESC, AHA, IDSA) & chuỗi bài học trong 18 Kho tri thức"
+            title="5. Kiến thức cho nhân viên y tế"
+            subtitle="5a. Cơ sở (GPSL / SLB) &bull; 5b. Lâm sàng (DTH / CĐ / BC / Dược) &bull; 5c. Guidelines - EBM"
             badgeText={`${matchedGuidelines.length} khuyến cáo EBM`}
-            badgeColor="bg-indigo-100 text-indigo-800 border-indigo-200"
-            containerClassName="bg-indigo-50/30 border border-indigo-200/80 rounded-xl p-4 shadow-2xs"
+            badgeColor="bg-purple-100 text-purple-800 border-purple-200"
+            containerClassName="bg-purple-50/20 border border-purple-200/80 rounded-xl p-4 shadow-2xs"
           >
-            <EbmGuidelinesSection
+            <HealthcareWorkerKnowledgeSection
               diseaseName={currentDisease.ten}
               diseaseIcd={currentDisease.icd}
               pathway={pathway}
@@ -1045,7 +818,10 @@ export const Step3Protocol: React.FC<Step3Props> = ({
             />
           </CollapsibleProtocolSection>
 
-          {/* Section 9: Ca Bệnh Lâm Sàng Thực Chiến & Hội Chẩn AI */}
+          {/* ========================================================================= */}
+          {/* ĐẦU MỤC 6: CÁC CA BỆNH LIÊN QUAN (SOAP)                                   */}
+          {/* Ca bệnh thực tế, bẫy chẩn đoán, hội chẩn NotebookLM                       */}
+          {/* ========================================================================= */}
           <CollapsibleProtocolSection
             id="soap"
             isOpen={expandedSections.soap}
@@ -1055,9 +831,9 @@ export const Step3Protocol: React.FC<Step3Props> = ({
                 <Sparkles className="w-4 h-4" />
               </div>
             }
-            title="9. Ca Bệnh LS Thực Chiến & Hội Chẩn AI (SOAP Cases)"
+            title="6. Các ca bệnh liên quan (SOAP)"
             subtitle="Tham khảo ca bệnh thực tế tương tự, bẫy chẩn đoán và tạo prompt hội chẩn NotebookLM"
-            badgeText={`${similarSoapCases.length} ca bệnh phù hợp`}
+            badgeText={`${similarSoapCases.length} ca bệnh`}
             badgeColor="bg-emerald-100 text-emerald-800 border-emerald-200"
             containerClassName="bg-white border border-emerald-200/80 rounded-xl p-4 shadow-2xs"
           >

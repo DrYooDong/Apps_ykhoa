@@ -359,24 +359,35 @@ export const CaseSummaryPanel: React.FC<CaseSummaryPanelProps> = ({
               </div>
             )}
 
-            {/* Section 5: Yếu tố Dịch tễ & TC liên quan */}
+            {/* Section 5: Yếu tố Dịch tễ & Tiền căn (TC) liên quan */}
             {(s.epiList.length > 0 || s.tcList.length > 0) && (
               <div className="border border-amber-200 bg-amber-50/30 rounded-lg p-3">
                 <div className="flex items-center gap-1.5 text-xs font-bold text-amber-950 mb-2">
                   <Compass className="w-3.5 h-3.5 text-amber-600" />
-                  <span>{s.syndromes && s.syndromes.length > 0 ? '5' : '4'}. Yếu tố Dịch tễ & TC liên quan:</span>
+                  <span>
+                    {s.syndromes && s.syndromes.length > 0 ? '5' : '4'}.{' '}
+                    {s.epiList.length > 0 && s.tcList.length > 0
+                      ? 'Yếu tố Dịch tễ & Tiền căn (TC) liên quan:'
+                      : s.epiList.length > 0
+                      ? 'Yếu tố Dịch tễ học liên quan:'
+                      : 'Tiền căn bệnh lý (TC) liên quan:'}
+                  </span>
                 </div>
-                <ul className="space-y-1.5 pl-1">
+                <ul className="space-y-2 pl-1">
                   {s.epiList.map((epi, idx) => (
-                    <li key={idx} className="flex items-start gap-2 text-xs text-amber-950">
-                      <span className="w-1.5 h-1.5 rounded-full bg-amber-600 mt-1.5 shrink-0" />
-                      <span className="leading-relaxed"><b>Dịch tễ:</b> {epi}</span>
+                    <li key={`epi-${idx}`} className="flex items-start gap-2 text-xs text-amber-950">
+                      <span className="px-1.5 py-0.2 rounded text-[10.5px] font-semibold bg-amber-100/90 text-amber-900 border border-amber-300/80 shrink-0 mt-0.5">
+                        Dịch tễ
+                      </span>
+                      <span className="leading-relaxed font-medium">{epi}</span>
                     </li>
                   ))}
                   {s.tcList.map((tc, idx) => (
-                    <li key={idx} className="flex items-start gap-2 text-xs text-slate-800">
-                      <span className="w-1.5 h-1.5 rounded-full bg-slate-500 mt-1.5 shrink-0" />
-                      <span className="leading-relaxed"><b>TC:</b> {tc}</span>
+                    <li key={`tc-${idx}`} className="flex items-start gap-2 text-xs text-slate-800">
+                      <span className="px-1.5 py-0.2 rounded text-[10.5px] font-semibold bg-slate-100 text-slate-700 border border-slate-200 shrink-0 mt-0.5">
+                        Tiền căn
+                      </span>
+                      <span className="leading-relaxed font-medium">{tc}</span>
                     </li>
                   ))}
                 </ul>

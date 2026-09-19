@@ -10,14 +10,14 @@
 # Sau đó chỉ cần chạy: node tools/scripts/build-enriched-cdss.mjs
 # Hệ thống sẽ tự động bundle vào Chu trình lâm sàng (Bước 3 & Bước 4)!
 #
-# 🌟 QUY TẮC ÁNH XẠ GIAO DIỆN (UI MAPPING) CHO "severityGrading":
-#   • "criteria": Ánh xạ vào BƯỚC 3: Tiêu chuẩn phân độ lâm sàng (Severity Staging Criteria).
+# 🌟 QUY TẮC ÁNH XẠ GIAO DIỆN (UI MAPPING CHO 6 ĐẦU MỤC & BẢNG 4 CỘT BƯỚC 4):
+#   • "criteria": Ánh xạ vào BƯỚC 3 (Tiêu chuẩn phân độ lâm sàng) & Mục 1a Bước 4 (Phân độ nặng nhẹ).
 #     BẮT BUỘC chứa các tiền tố bóc tách: [Lâm sàng], [Cận lâm sàng], [Tiêu chuẩn an toàn],
 #     [Dấu hiệu cảnh báo]. TUYỆT ĐỐI KHÔNG chứa tuyến tiếp nhận, xử trí hay mục tiêu sinh hiệu tại đây!
-#   • "triage": Ánh xạ vào CỘT 1 (Tuyến Tiếp Nhận & Phân Luồng) của Bảng Chiến Lược 3 Cột (Bước 4).
-#   • "primaryAction": Ánh xạ vào CỘT 2 (Định Hướng Chiến Lược Xử Trí) của Bảng Chiến Lược 3 Cột (Bước 4).
-#   • "targetVitals": Ánh xạ vào CỘT 3 (Mục Tiêu Điều Trị & Sinh Hiệu) của Bảng Chiến Lược 3 Cột (Bước 4).
-#   • "protocol": Ánh xạ vào 9 Phân mục chi tiết của Bước 4 (mặc định ở chế độ ẩn, có nút bung/thu gọn).
+#   • "specialPopulations": Ánh xạ vào Mục 1c Bước 4 (Đối tượng đặc biệt: Người cao tuổi, Trẻ em, Thai phụ, Suy thận eGFR, Suy gan).
+#   • "timelinePhases": Ánh xạ trực tiếp vào BẢNG 4 CỘT tại Mục 2 Bước 4 (Lộ trình chi tiết từng ngày: Giai đoạn & Mục tiêu, Phác đồ & Y lệnh, Theo dõi LS & CLS).
+#   • "clinicalCautions": Ánh xạ vào Mục 3 Bước 4 ([1] Cảnh báo quan trọng, [2] Chống chỉ định CCĐ, [3] Tiêu chuẩn xuất viện hoặc chuyển tuyến).
+#   • "vaultPathways": Ánh xạ vào Mục 5 & 6 Bước 4 (Kiến thức nhân viên y tế & Ca bệnh liên quan).
 # ==============================================================================
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -280,36 +280,148 @@ BẮT BUỘC XUẤT DUY NHẤT ĐỐI TƯỢNG JSON HỢP LỆ (VALID JSON), KH�
       \"onCallAlertText\": \"[Y LỆNH TRỰC: PHÙ PHỔI/QUÁ TẢI DỊCH: Ngưng dịch truyền ngay lập tức, thở NCPAP, Furosemide IV!]\"
     }
   ],
-  \"monitoringLabs\": [
-    \"[Xét nghiệm 1: ví dụ Công thức máu theo dõi Hct và Tiểu cầu mỗi 1-2h (khi sốc) hoặc 4-6h]\",
-    \"[Xét nghiệm 2: ví dụ Men gan AST/ALT, Creatinine, Điện giải đồ, Khí máu động mạch]\",
-    \"[Xét nghiệm 3: ví dụ Đông máu toàn bộ PT/INR, APTT, Fibrinogen máu]\",
-    \"[Xét nghiệm 4: ví dụ Siêu âm ổ bụng tổng quát và Siêu âm màng phổi/màng bụng]\"
+  "monitoringLabs": [
+    "[Xét nghiệm 1: ví dụ Công thức máu theo dõi Hct và Tiểu cầu mỗi 1-2h (khi sốc) hoặc 4-6h]",
+    "[Xét nghiệm 2: ví dụ Men gan AST/ALT, Creatinine, Điện giải đồ, Khí máu động mạch]",
+    "[Xét nghiệm 3: ví dụ Đông máu toàn bộ PT/INR, APTT, Fibrinogen máu]",
+    "[Xét nghiệm 4: ví dụ Siêu âm ổ bụng tổng quát và Siêu âm màng phổi/màng bụng]"
   ],
-  \"vaultPathways\": [
+  // MỤC 1c: ĐỐI TƯỢNG ĐẶC BIỆT CẦN CÁ THỂ HÓA
+  "specialPopulations": [
     {
-      \"khoCode\": \"CD\",
-      \"khoName\": \"Kho Tiêu Chuẩn CĐ\",
-      \"articleTitle\": \"Bộ tiêu chuẩn chẩn đoán xác định [TÊN BỆNH LÝ]\",
-      \"searchKeyword\": \"[từ khóa tìm kiếm]\"
+      "population": "Người cao tuổi (≥ 65 tuổi)",
+      "adjustments": "[Hiệu chỉnh liều paracetamol, thận trọng bù dịch vì nguy cơ suy tim tiềm tàng, theo dõi sát chức năng thận]",
+      "cautions": "[Triệu chứng thường không điển hình, dễ vào sốc kín đáo]"
     },
     {
-      \"khoCode\": \"PDDT\",
-      \"khoName\": \"Kho Phác Đồ Điều Trị\",
-      \"articleTitle\": \"Phác đồ điều trị, dược thư & tư vấn người bệnh [TÊN BỆNH LÝ]\",
-      \"searchKeyword\": \"[từ khóa tìm kiếm]\"
+      "population": "Trẻ em / Nhũ nhi",
+      "adjustments": "[Tính liều thuốc và tốc độ dịch truyền chặt chẽ theo cân nặng thực tế hoặc cân nặng lý tưởng (IBW)]",
+      "cautions": "[Dễ co giật do sốt cao, diễn tiến sốc nhanh hơn người lớn]"
     },
     {
-      \"khoCode\": \"DTH\",
-      \"khoName\": \"Kho Dịch Tễ & Nguy Cơ\",
-      \"articleTitle\": \"Dịch tễ học lâm sàng, tam giác lây truyền & yếu tố nguy cơ [TÊN BỆNH LÝ]\",
-      \"searchKeyword\": \"[từ khóa tìm kiếm]\"
+      "population": "Phụ nữ mang thai",
+      "adjustments": "[Theo dõi sát tim thai, nguy cơ dọa sinh non hoặc băng huyết sau sinh]",
+      "cautions": "[Chống chỉ định các thuốc ảnh hưởng thai nhi; chuyển viện chuyên khoa Sản - Nhiễm]"
     },
     {
-      \"khoCode\": \"BC\",
-      \"khoName\": \"Kho Biến Chứng\",
-      \"articleTitle\": \"Nhận diện và xử trí cấp cứu các biến chứng đe dọa sinh mạng [TÊN BỆNH LÝ]\",
-      \"searchKeyword\": \"[từ khóa tìm kiếm]\"
+      "population": "Bệnh nhân suy thận (eGFR < 60 mL/min)",
+      "adjustments": "[Hiệu chỉnh liều các thuốc đào thải qua thận; thận trọng với dịch keo cao phân tử Dextran/HES]",
+      "cautions": "[Nguy cơ quá tải tuần hoàn sớm, vô niệu cấp]"
+    },
+    {
+      "population": "Bệnh nhân suy gan / Men gan tăng cao",
+      "adjustments": "[Giảm liều Paracetamol tối đa <= 2g/24h; ưu tiên dùng Ringer Acetate thay Ringer Lactate]",
+      "cautions": "[Nguy cơ suy gan cấp và bệnh não gan]"
+    }
+  ],
+  // MỤC 2: PHÁC ĐỒ ĐIỀU TRỊ CHI TIẾT (BẢNG 4 CỘT - TIMELINE PHASES)
+  "timelinePhases": [
+    {
+      "id": "phase_1",
+      "dayRange": "N1 - N3",
+      "phaseName": "[Tên giai đoạn 1: ví dụ Giai đoạn Sốt cấp tính]",
+      "clinicalGoal": "[Mục tiêu lâm sàng: Hạ sốt an toàn, bù nước Oresol PO, phát hiện sớm dấu hiệu chuyển độ]",
+      "treatments": [
+        { "category": "Hạ sốt", "content": "Paracetamol 10-15 mg/kg khi sốt >= 38.5°C, cách mỗi 4-6h (tối đa 60 mg/kg/ngày hoặc 3g/ngày người lớn).", "isHighlighted": true },
+        { "category": "Bù dịch uống", "content": "Oresol pha chuẩn 1500-2500 mL/ngày + nước hoa quả/cháo loãng. Không truyền dịch TM khi tự uống được." },
+        { "category": "Chăm sóc", "content": "Nghỉ ngơi tại giường, ăn nhẹ dễ tiêu, tránh thực phẩm sẫm màu (đỏ/đen/nâu)." }
+      ],
+      "monitoring": [
+        { "type": "LS", "metric": "Thân nhiệt & Tri giác", "frequency": "q4h", "target": "Hạ sốt an toàn, tỉnh táo" },
+        { "type": "LS", "metric": "Lượng nước tiểu 24h", "frequency": "q4-6h", "target": "Duy trì >= 1.0 mL/kg/h" },
+        { "type": "CLS", "metric": "Công thức máu (Hct, Tiểu cầu, Bạch cầu)", "frequency": "q24h", "target": "Hct nền ổn định, theo dõi tiểu cầu" },
+        { "type": "CLS", "metric": "Xét nghiệm căn nguyên (NS1 Ag / PCR)", "frequency": "1 lần (N1-N5)", "target": "Xác chẩn căn nguyên" }
+      ],
+      "cautionsAndDischarge": {
+        "cautions": ["[Cấm dùng NSAIDs/Aspirin]", "[Tái khám mỗi ngày hoặc khi có cờ đỏ]"],
+        "triageOrDischargeCriteria": "[Chỉ định điều trị ngoại trú có giám sát]"
+      }
+    },
+    {
+      "id": "phase_2",
+      "dayRange": "N4 - N6",
+      "phaseName": "[Tên giai đoạn 2: ví dụ Giai đoạn Nguy hiểm / Thoát huyết tương]",
+      "clinicalGoal": "[Mục tiêu lâm sàng: Duy trì thể tích lòng mạch, ngừa sốc mất bù, phát hiện và xử trí xuất huyết sớm]",
+      "treatments": [
+        { "category": "Dịch truyền TM", "content": "Ringer Lactate bậc thang 6-7 -> 5 -> 3 -> 1.5 mL/kg/h dựa trên đáp ứng sinh hiệu và Hct.", "isHighlighted": true },
+        { "category": "Hồi sức sốc", "content": "Nếu sốc: Tinh thể 15-20 mL/kg/h giờ đầu; chuyển Cao phân tử Dextran 40 10-15 mL/kg/h nếu tái sốc hoặc kháng tinh thể.", "isHighlighted": true },
+        { "category": "Hỗ trợ hô hấp", "content": "Thở oxy qua cannula 2-4 L/p khi SpO2 < 95% hoặc dọa sốc." }
+      ],
+      "monitoring": [
+        { "type": "LS", "metric": "Mạch, HA, Hiệu áp, CRT", "frequency": "q1-2h khi dọa sốc, q15-30p khi sốc", "target": "HATT >= 90, Hiệu áp > 20 mmHg, CRT < 2s" },
+        { "type": "LS", "metric": "Lượng nước tiểu qua sonde", "frequency": "q1h", "target": ">= 0.5 - 1.0 mL/kg/h" },
+        { "type": "CLS", "metric": "Hematocrit tại giường", "frequency": "Trước & sau mỗi cữ dịch truyền", "target": "Không để Hct cô đặc dốc đứng" }
+      ],
+      "cautionsAndDischarge": {
+        "cautions": ["[Cảnh báo: Hết sốt là bắt đầu giai đoạn vào sốc nguy hiểm nhất]", "[Phát hiện hiệu áp kẹp <= 20 mmHg]", "[Cấm tiêm bắp]"],
+        "triageOrDischargeCriteria": "[Nhập viện 100% khoa Nội/Nhiễm hoặc ICU]"
+      }
+    },
+    {
+      "id": "phase_3",
+      "dayRange": "N7 - N8",
+      "phaseName": "[Tên giai đoạn 3: ví dụ Giai đoạn Hồi phục & Tái hấp thu]",
+      "clinicalGoal": "[Mục tiêu lâm sàng: Ngừng dịch truyền đúng thời điểm, phòng ngừa phù phổi cấp quá tải thể tích]",
+      "treatments": [
+        { "category": "Ngừng dịch truyền", "content": "BẮT BUỘC ngừng dịch truyền TM sau cắt sốc 24-48h hoặc khi bệnh nhân thèm ăn, tiểu nhiều.", "isHighlighted": true },
+        { "category": "Lợi tiểu", "content": "Furosemide 10-20 mg IV chỉ dùng khi có dấu hiệu quá tải dịch / phù phổi cấp và huyết động đã hoàn toàn ổn định." }
+      ],
+      "monitoring": [
+        { "type": "LS", "metric": "Nhịp thở, SpO2, nghe phổi", "frequency": "q4h", "target": "Không ran ẩm đáy phổi, SpO2 >= 96% khí trời" },
+        { "type": "LS", "metric": "Ban hồi phục & Cảm giác thèm ăn", "frequency": "q12h", "target": "Ban đảo trắng biển đỏ, người bệnh tỉnh táo thèm ăn" },
+        { "type": "CLS", "metric": "CTM kiểm tra", "frequency": "q24h", "target": "Hct về bình thường, Tiểu cầu hồi phục > 50 G/L" }
+      ],
+      "cautionsAndDischarge": {
+        "cautions": ["[Tuyệt đối không truyền dịch duy trì phòng ngừa phù phổi]", "[Cảnh báo nhịp tim chậm hồi phục]"],
+        "triageOrDischargeCriteria": "[Đủ 4 tiêu chuẩn xuất viện an toàn]"
+      }
+    }
+  ],
+  // MỤC 3: LƯU Ý LÂM SÀNG (3 NHÓM CHUẨN)
+  "clinicalCautions": {
+    "warnings": [
+      "[Cảnh báo 1: Quá tải tuần hoàn & phù phổi cấp do truyền dịch thừa trong giai đoạn tái hấp thu N6-N7]",
+      "[Cảnh báo 2: Thời điểm hết sốt (N4-N5) là thời điểm bước vào cửa sổ sốc nguy hiểm nhất]",
+      "[Cảnh báo 3: Nhận diện sớm hiệu áp kẹp <= 20 mmHg là dọa sốc, cần xử trí can thiệp ngay]"
+    ],
+    "contraindications": [
+      "[Chống chỉ định tuyệt đối NSAIDs (Ibuprofen, Diclofenac, Naproxen...) và Aspirin do nguy cơ xuất huyết tiêu hóa dữ dội]",
+      "[Chống chỉ định Corticoid toàn thân thường quy (không có bằng chứng giảm sốc, tăng nguy cơ nhiễm trùng)]",
+      "[Chống chỉ định tiêm bắp (IM) mọi loại thuốc do nguy cơ tụ máu lớn trong cơ]",
+      "[Chống chỉ định truyền tiểu cầu dự phòng khi chưa có xuất huyết nặng trên lâm sàng]"
+    ],
+    "dischargeCriteria": [
+      "[Hết sốt >= 48 giờ liên tục không dùng thuốc hạ sốt]",
+      "[Huyết động, mạch, huyết áp ổn định hoàn toàn trong 24 giờ không cần dịch truyền]",
+      "[Hematocrit ổn định ở mức bình thường, tiểu cầu có xu hướng hồi phục > 50 G/L]",
+      "[Tỉnh táo, tự ăn uống tốt, tiểu tiện bình thường (>= 1.0 mL/kg/h), không khó thở, không dịch đa màng tiến triển]"
+    ]
+  },
+  // MỤC 4, 5, 6: LIÊN KẾT TRI THỨC EBM & CA THỰC CHIẾN
+  "vaultPathways": [
+    {
+      "khoCode": "CD",
+      "khoName": "Kho Tiêu Chuẩn CĐ",
+      "articleTitle": "Bộ tiêu chuẩn chẩn đoán xác định [TÊN BỆNH LÝ]",
+      "searchKeyword": "[từ khóa tìm kiếm]"
+    },
+    {
+      "khoCode": "PDDT",
+      "khoName": "Kho Phác Đồ Điều Trị",
+      "articleTitle": "Phác đồ điều trị, dược thư & tư vấn người bệnh [TÊN BỆNH LÝ]",
+      "searchKeyword": "[từ khóa tìm kiếm]"
+    },
+    {
+      "khoCode": "DTH",
+      "khoName": "Kho Dịch Tễ & Nguy Cơ",
+      "articleTitle": "Dịch tễ học lâm sàng, tam giác lây truyền & yếu tố nguy cơ [TÊN BỆNH LÝ]",
+      "searchKeyword": "[từ khóa tìm kiếm]"
+    },
+    {
+      "khoCode": "BC",
+      "khoName": "Kho Biến Chứng",
+      "articleTitle": "Nhận diện và xử trí cấp cứu các biến chứng đe dọa sinh mạng [TÊN BỆNH LÝ]",
+      "searchKeyword": "[từ khóa tìm kiếm]"
     }
   ]
 }
