@@ -274,21 +274,33 @@ export const DetailedTreatmentTable: React.FC<DetailedTreatmentTableProps> = ({
           <tbody className="divide-y divide-slate-200">
             {timelinePhases.length > 0 ? (
               timelinePhases.map((phase, pIdx) => {
-                const lsItems = phase.monitoring.filter(
+                const rawMonitoring = Array.isArray(phase?.monitoring)
+                  ? phase.monitoring
+                  : Array.isArray((phase as any)?.monitoringLabs)
+                  ? (phase as any).monitoringLabs.map((l: any) => ({
+                      type: 'CLS' as const,
+                      metric: l.labName || l.metric || 'Xét nghiệm',
+                      frequency: l.frequency || 'Theo dõi',
+                      target: l.target || '',
+                    }))
+                  : [];
+                const lsItems = rawMonitoring.filter(
                   (m) =>
-                    m.type === 'LS' ||
-                    (!m.type &&
-                      /sinh hiệu|mạch|huyết áp|thân nhiệt|tri giác|nước tiểu|thở|curb|khám|ban/i.test(
-                        m.metric
-                      ))
+                    m &&
+                    (m.type === 'LS' ||
+                      (!m.type &&
+                        /sinh hiệu|mạch|huyết áp|thân nhiệt|tri giác|nước tiểu|thở|curb|khám|ban/i.test(
+                          m.metric || ''
+                        )))
                 );
-                const clsItems = phase.monitoring.filter(
+                const clsItems = rawMonitoring.filter(
                   (m) =>
-                    m.type === 'CLS' ||
-                    (!m.type &&
-                      !/sinh hiệu|mạch|huyết áp|thân nhiệt|tri giác|nước tiểu|thở|curb|khám|ban/i.test(
-                        m.metric
-                      ))
+                    m &&
+                    (m.type === 'CLS' ||
+                      (!m.type &&
+                        !/sinh hiệu|mạch|huyết áp|thân nhiệt|tri giác|nước tiểu|thở|curb|khám|ban/i.test(
+                          m.metric || ''
+                        )))
                 );
 
                 return (
@@ -341,7 +353,7 @@ export const DetailedTreatmentTable: React.FC<DetailedTreatmentTableProps> = ({
                     <td className="p-3 border-r border-slate-200">
                       <div className="flex flex-col gap-2">
                         {/* Treatments from phase */}
-                        {phase.treatments.map((tr: any, tIdx: number) => {
+                        {(Array.isArray(phase?.treatments) ? phase.treatments : []).map((tr: any, tIdx: number) => {
                           const title = tr.category || tr.title || 'Can thiệp';
                           const content = tr.content || tr.detail || '';
                           const key = `phase-${phase.id}-${tIdx}`;

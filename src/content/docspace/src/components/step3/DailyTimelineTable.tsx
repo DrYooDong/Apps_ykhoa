@@ -32,21 +32,33 @@ export const DailyTimelineTable: React.FC<DailyTimelineTableProps> = ({ timeline
         </thead>
         <tbody className="divide-y divide-slate-200">
           {timelinePhases.map((phase, pIdx) => {
-            const lsItems = phase.monitoring.filter(
+            const rawMonitoring = Array.isArray(phase?.monitoring)
+              ? phase.monitoring
+              : Array.isArray((phase as any)?.monitoringLabs)
+              ? (phase as any).monitoringLabs.map((l: any) => ({
+                  type: 'CLS' as const,
+                  metric: l.labName || l.metric || 'Xét nghiệm',
+                  frequency: l.frequency || 'Theo dõi',
+                  target: l.target || '',
+                }))
+              : [];
+            const lsItems = rawMonitoring.filter(
               (m) =>
-                m.type === 'LS' ||
-                (!m.type &&
-                  /sinh hiệu|mạch|huyết áp|thân nhiệt|tri giác|nước tiểu|thở|curb|khám|ban/i.test(
-                    m.metric
-                  ))
+                m &&
+                (m.type === 'LS' ||
+                  (!m.type &&
+                    /sinh hiệu|mạch|huyết áp|thân nhiệt|tri giác|nước tiểu|thở|curb|khám|ban/i.test(
+                      m.metric || ''
+                    )))
             );
-            const clsItems = phase.monitoring.filter(
+            const clsItems = rawMonitoring.filter(
               (m) =>
-                m.type === 'CLS' ||
-                (!m.type &&
-                  !/sinh hiệu|mạch|huyết áp|thân nhiệt|tri giác|nước tiểu|thở|curb|khám|ban/i.test(
-                    m.metric
-                  ))
+                m &&
+                (m.type === 'CLS' ||
+                  (!m.type &&
+                    !/sinh hiệu|mạch|huyết áp|thân nhiệt|tri giác|nước tiểu|thở|curb|khám|ban/i.test(
+                      m.metric || ''
+                    )))
             );
 
             return (
@@ -77,7 +89,7 @@ export const DailyTimelineTable: React.FC<DailyTimelineTableProps> = ({ timeline
                 {/* Cột 2: Y lệnh (Thuốc, Dịch truyền & Xử trí) */}
                 <td className="p-3 border-r border-slate-200">
                   <div className="flex flex-col gap-2">
-                    {phase.treatments.map((tr, tIdx) => (
+                    {(Array.isArray(phase?.treatments) ? phase.treatments : []).map((tr, tIdx) => (
                       <div
                         key={tIdx}
                         className={`p-2.5 rounded-md border text-xs leading-relaxed ${

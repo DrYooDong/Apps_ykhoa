@@ -507,7 +507,9 @@ export const Step3Protocol: React.FC<Step3Props> = ({
     phacDo.thuoc.forEach((_, idx) => next.add(`thuoc-${currentDisease.id}-g${selectedGradeIdx}-${idx}`));
     phacDo.theoDoi.forEach((_, idx) => next.add(`theodoi-${currentDisease.id}-g${selectedGradeIdx}-${idx}`));
     timelinePhases.forEach((phase) => {
-      phase.treatments.forEach((_, tIdx) => next.add(`phase-${phase.id}-${tIdx}`));
+      if (Array.isArray(phase?.treatments)) {
+        phase.treatments.forEach((_, tIdx) => next.add(`phase-${phase.id}-${tIdx}`));
+      }
     });
     setCheckedOrders(next);
     setCustomOrders((prev) => prev.map((co) => ({ ...co, completed: true })));
@@ -521,7 +523,9 @@ export const Step3Protocol: React.FC<Step3Props> = ({
       phacDo.thuoc.forEach((_, idx) => next.delete(`thuoc-${currentDisease.id}-g${selectedGradeIdx}-${idx}`));
       phacDo.theoDoi.forEach((_, idx) => next.delete(`theodoi-${currentDisease.id}-g${selectedGradeIdx}-${idx}`));
       timelinePhases.forEach((phase) => {
-        phase.treatments.forEach((_, tIdx) => next.delete(`phase-${phase.id}-${tIdx}`));
+        if (Array.isArray(phase?.treatments)) {
+          phase.treatments.forEach((_, tIdx) => next.delete(`phase-${phase.id}-${tIdx}`));
+        }
       });
       return next;
     });
