@@ -22,6 +22,7 @@ import {
   DIAGNOSTIC_CHAIN_DATABASE,
   SeverityGradingItem,
 } from '../../data/diagnostic-criteria-database.ts';
+import { ENRICHED_DISEASES } from '../../data/enriched/index.ts';
 import {
   getPathwayArticles,
   VaultArticle,
@@ -125,12 +126,14 @@ export const Step3Protocol: React.FC<Step3Props> = ({
   const [selectedGradeIdx, setSelectedGradeIdx] = useState<number>(0);
   const [activeComplicationIndices, setActiveComplicationIndices] = useState<Set<number>>(new Set());
 
-  // Merge KB diseases with Diagnostic Chain Database
+  // Lọc chỉ giữ lại các phác đồ điều trị cốt lõi được gắn cờ (baoDong === true)
   const allAvailableDiseases = useMemo(() => {
-    const list: Benh[] = Array.isArray(kb?.benh) ? [...kb.benh] : [];
+    const list: Benh[] = Array.isArray(kb?.benh)
+      ? kb.benh.filter((b) => Boolean(b && b.baoDong))
+      : [];
     const existingIds = new Set(list.map((b) => b?.id).filter(Boolean));
 
-    Object.entries(DIAGNOSTIC_CHAIN_DATABASE).forEach(([key, chain]) => {
+    Object.entries(ENRICHED_DISEASES).forEach(([key, chain]) => {
       if (!chain || !chain.diseaseName) return;
       if (!existingIds.has(key)) {
         list.push({
@@ -138,8 +141,8 @@ export const Step3Protocol: React.FC<Step3Props> = ({
           ten: chain.diseaseName,
           icd: chain.icdCode || '',
           nhom: chain.specialty || 'Nội khoa',
-          baoDong: chain.severity === 'emergency',
-          ghiChuBaoDong: chain.severity === 'emergency' ? 'Cần kích hoạt lệnh trực cấp cứu khẩn cấp' : '',
+          baoDong: true,
+          ghiChuBaoDong: 'Phác đồ điều trị chuyên sâu EBM',
           tomTat: chain.summary || '',
           danSo: { gioiTinh: 'any' },
           dd: [],
@@ -164,7 +167,9 @@ export const Step3Protocol: React.FC<Step3Props> = ({
       }
     });
 
-    return list.sort((a, b) => (a.ten || '').localeCompare(b.ten || '', 'vi'));
+    return list
+      .filter((b) => Boolean(b.baoDong))
+      .sort((a, b) => (a.ten || '').localeCompare(b.ten || '', 'vi'));
   }, [kb.benh]);
 
   const currentDisease = useMemo(() => {
