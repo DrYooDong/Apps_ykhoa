@@ -1,7 +1,6 @@
-import { defineConfig } from 'vite';
 import { resolve } from 'path';
 
-export default defineConfig({
+export default {
   // Quan trọng nhất: base: './' giúp tương thích với cả
   // giao thức file:/// offline, đóng gói Electron/Capacitor và GitHub Pages.
   base: './',
@@ -43,4 +42,4 @@ export default defineConfig({
     open: true,
     cors: true
   }
-});
+};
