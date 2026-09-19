@@ -12,10 +12,15 @@ import {
   Compass,
   Copy,
   Edit3,
+  ExternalLink,
   FileText,
+  Flame,
   GitCompare,
+  HeartPulse,
+  Info,
   Layers,
   Microscope,
+  Printer,
   RotateCcw,
   ShieldAlert,
   ShieldCheck,
@@ -33,6 +38,10 @@ import {
   TrieuChung,
   VitalsState,
 } from '../../types.ts';
+import {
+  DIAGNOSTIC_CHAIN_DATABASE,
+  DiseaseReactionChainDefinition,
+} from '../../data/diagnostic-criteria-database.ts';
 
 interface ClinicalReasoningPanelProps {
   topResult: AnalysisResult | null;
@@ -47,6 +56,8 @@ interface ClinicalReasoningPanelProps {
   epiContext?: EpidemiologyContext;
   onGoToStep?: (stepId: 't1' | 't2' | 't3' | 't4') => void;
   onOpenVaultDrawer?: (diseaseName?: string, query?: string, khoCode?: string) => void;
+  onGoToProtocol?: (diseaseId: string, options?: { gradeIdx?: number; complicationId?: string }) => void;
+  onPrintReport?: () => void;
 }
 
 export const ClinicalReasoningPanel: React.FC<ClinicalReasoningPanelProps> = ({
@@ -62,6 +73,8 @@ export const ClinicalReasoningPanel: React.FC<ClinicalReasoningPanelProps> = ({
   epiContext,
   onGoToStep,
   onOpenVaultDrawer,
+  onGoToProtocol,
+  onPrintReport,
 }) => {
   const [viewMode, setViewMode] = useState<'structured' | 'emr'>('structured');
   const [editing, setEditing] = useState(false);
@@ -70,7 +83,6 @@ export const ClinicalReasoningPanel: React.FC<ClinicalReasoningPanelProps> = ({
 
   // 1. Xác định Vấn đề chính được chọn để biện luận
   const primaryProblem = useMemo(() => {
-    // Ưu tiên: vấn đề được đánh dấu isPrimary, hoặc vấn đề cấp tính đầu tiên, hoặc lý do vào viện
     const primary = problems.find((p) => p.isPrimary) || problems.find((p) => p.priorityLevel === 'acute') || problems[0];
     if (primary) return primary.label;
     if (form.lyDo && form.lyDo.trim()) return form.lyDo.trim();
@@ -81,7 +93,26 @@ export const ClinicalReasoningPanel: React.FC<ClinicalReasoningPanelProps> = ({
   const leadDiagnosis = topResult ? topResult.b : null;
   const leadMatchPct = topResult ? topResult.pct : 0;
 
-  // Triệu chứng chính và phụ của bệnh sơ bộ
+  // Tra cứu chuỗi phản ứng & tiêu chuẩn chẩn đoán enriched
+  const activeChain: DiseaseReactionChainDefinition | undefined = useMemo(() => {
+    if (!leadDiagnosis) return undefined;
+    if (DIAGNOSTIC_CHAIN_DATABASE[leadDiagnosis.id]) {
+      return DIAGNOSTIC_CHAIN_DATABASE[leadDiagnosis.id];
+    }
+    const cleanName = leadDiagnosis.ten.toLowerCase().trim();
+    const cleanIcd = leadDiagnosis.icd.toUpperCase().trim();
+    for (const [, c] of Object.entries(DIAGNOSTIC_CHAIN_DATABASE)) {
+      if (
+        c.diseaseName.toLowerCase().trim() === cleanName ||
+        (c.icd10 && c.icd10.toUpperCase().trim() === cleanIcd)
+      ) {
+        return c;
+      }
+    }
+    return undefined;
+  }, [leadDiagnosis]);
+
+  // Triệu chứng chính và phụ của bệnh sơ bộ + phân loại cận lâm sàng ban đầu
   const { mainSymptoms, minorSymptoms, supportiveLabs } = useMemo(() => {
     if (!topResult) return { mainSymptoms: [], minorSymptoms: [], supportiveLabs: [] };
 
@@ -90,7 +121,6 @@ export const ClinicalReasoningPanel: React.FC<ClinicalReasoningPanelProps> = ({
     const minor: string[] = [];
 
     topResult.matched.forEach((m) => {
-      // Dựa vào vai trò triệu chứng (bb: bắt buộc, gy: gợi ý)
       if (m.tc.vaiTro === 'bb' || m.tc.loai.includes('tt') || m.weight >= 3) {
         main.push(m.tc.ten);
       } else {
@@ -98,13 +128,109 @@ export const ClinicalReasoningPanel: React.FC<ClinicalReasoningPanelProps> = ({
       }
     });
 
-    // Dữ kiện cận lâm sàng bất thường ủng hộ
-    const labsFound: string[] = [];
-    if (labs.lBC) labsFound.push(`WBC ${labs.lBC} G/L`);
-    if (labs.lTC && parseFloat(labs.lTC) < 100) labsFound.push(`PLT giảm ${labs.lTC} G/L`);
-    if (labs.lHct && parseFloat(labs.lHct) > 44) labsFound.push(`Hct tăng ${labs.lHct}%`);
-    if (labs.lTrop && parseFloat(labs.lTrop) > 14) labsFound.push(`Troponin tăng ${labs.lTrop} ng/L`);
-    if (labs.lGlu && parseFloat(labs.lGlu) > 11) labsFound.push(`Đường huyết tăng ${labs.lGlu} mmol/L`);
+    // Dữ kiện cận lâm sàng bất thường ủng hộ kèm phân loại lâm sàng
+    const labsFound: {
+      raw: string;
+      label: string;
+      value: string;
+      severity: 'critical' | 'warning' | 'abnormal';
+      meaning: string;
+    }[] = [];
+
+    if (labs.lBC) {
+      const bc = parseFloat(labs.lBC);
+      if (!isNaN(bc)) {
+        if (bc < 4.0) {
+          labsFound.push({
+            raw: `WBC ${labs.lBC} G/L`,
+            label: 'WBC',
+            value: `${labs.lBC} G/L (Giảm)`,
+            severity: 'warning',
+            meaning: 'Bạch cầu giảm do ức chế sinh tủy thoáng qua bởi vi rút',
+          });
+        } else if (bc > 10.0) {
+          labsFound.push({
+            raw: `WBC ${labs.lBC} G/L`,
+            label: 'WBC',
+            value: `${labs.lBC} G/L (Tăng)`,
+            severity: 'warning',
+            meaning: 'Bạch cầu tăng, phản ứng viêm hệ thống hoặc bội nhiễm vi khuẩn',
+          });
+        }
+      }
+    }
+
+    if (labs.lTC) {
+      const tc = parseFloat(labs.lTC);
+      if (!isNaN(tc)) {
+        if (tc < 50) {
+          labsFound.push({
+            raw: `PLT giảm ${labs.lTC} G/L`,
+            label: 'PLT (Tiểu cầu)',
+            value: `${labs.lTC} G/L (Giảm nặng)`,
+            severity: 'critical',
+            meaning: 'Giảm tiểu cầu nghiêm trọng (< 50 G/L) — Nguy cơ xuất huyết nội tạng cao',
+          });
+        } else if (tc < 100) {
+          labsFound.push({
+            raw: `PLT giảm ${labs.lTC} G/L`,
+            label: 'PLT (Tiểu cầu)',
+            value: `${labs.lTC} G/L (Giảm)`,
+            severity: 'warning',
+            meaning: 'Tiểu cầu giảm nhanh do ức chế tủy xương và tiêu thụ ngoại vi',
+          });
+        }
+      }
+    }
+
+    if (labs.lHct) {
+      const hct = parseFloat(labs.lHct);
+      if (!isNaN(hct)) {
+        if (hct > 46) {
+          labsFound.push({
+            raw: `Hct tăng ${labs.lHct}%`,
+            label: 'Hct (Hematocrit)',
+            value: `${labs.lHct}% (Cô đặc máu nặng)`,
+            severity: 'critical',
+            meaning: 'Cô đặc máu rõ rệt phản ánh mức độ thoát huyết tương nghiêm trọng',
+          });
+        } else if (hct > 44) {
+          labsFound.push({
+            raw: `Hct tăng ${labs.lHct}%`,
+            label: 'Hct (Hematocrit)',
+            value: `${labs.lHct}% (Tăng)`,
+            severity: 'warning',
+            meaning: 'Dấu hiệu thoát huyết tương vào khoang thứ ba (màng bụng, màng phổi)',
+          });
+        }
+      }
+    }
+
+    if (labs.lTrop) {
+      const trop = parseFloat(labs.lTrop);
+      if (!isNaN(trop) && trop > 14) {
+        labsFound.push({
+          raw: `Troponin tăng ${labs.lTrop} ng/L`,
+          label: 'Troponin siêu nhạy',
+          value: `${labs.lTrop} ng/L (Dương tính)`,
+          severity: 'critical',
+          meaning: 'Hoại tử tế bào cơ tim cấp tính, cảnh báo biến cố mạch vành hoặc viêm cơ tim',
+        });
+      }
+    }
+
+    if (labs.lGlu) {
+      const glu = parseFloat(labs.lGlu);
+      if (!isNaN(glu) && glu > 11.1) {
+        labsFound.push({
+          raw: `Đường huyết tăng ${labs.lGlu} mmol/L`,
+          label: 'Glucose máu',
+          value: `${labs.lGlu} mmol/L (Tăng)`,
+          severity: 'warning',
+          meaning: 'Tăng đường huyết phản ứng stress cấp hoặc đợt mất bù chuyển hóa',
+        });
+      }
+    }
 
     return {
       mainSymptoms: main.length > 0 ? main : matchedNames.slice(0, 3),
@@ -113,79 +239,226 @@ export const ClinicalReasoningPanel: React.FC<ClinicalReasoningPanelProps> = ({
     };
   }, [topResult, labs]);
 
-  // Đề nghị Cận lâm sàng XÁC CHẨN cho bệnh sơ bộ
+  // Đề nghị Cận lâm sàng XÁC CHẨN cho bệnh sơ bộ (Nâng cấp tiêu chuẩn vàng & thời điểm)
   const confirmatoryTests = useMemo(() => {
     if (!leadDiagnosis) return [];
-    // Lấy từ danh mục cận lâm sàng gợi ý của bệnh trong kb
-    const tests: { name: string; purpose: string }[] = [];
+    const tests: {
+      name: string;
+      purpose: string;
+      category: 'gold' | 'dynamic' | 'bedside' | 'specialized';
+      timing: string;
+    }[] = [];
     const diseaseNameLower = leadDiagnosis.ten.toLowerCase();
 
     if (diseaseNameLower.includes('dengue') || diseaseNameLower.includes('sốt xuất huyết')) {
-      tests.push({ name: 'Test nhanh Dengue NS1Ag & Kháng thể Dengue IgM/IgG', purpose: 'Xác định căn nguyên nhiễm vi rút DENV' });
-      tests.push({ name: 'TPTTBM (CBC) theo dõi mỗi 4-6 giờ', purpose: 'Theo dõi động học cô đặc máu Hct và mức giảm PLT' });
-      tests.push({ name: 'SA ổ bụng & màng phổi tại giường', purpose: 'Đánh giá mức độ thoát huyết tương (tràn dịch, dày thành túi mật)' });
+      tests.push({
+        name: 'Test nhanh Dengue NS1Ag & Kháng thể Dengue IgM/IgG',
+        purpose: 'Xác định chính xác căn nguyên nhiễm vi rút DENV (NS1Ag từ N1-N5; IgM/IgG từ N5 trở đi)',
+        category: 'gold',
+        timing: 'Chỉ định ngay lúc tiếp nhận (N1 - N5)',
+      });
+      tests.push({
+        name: 'Tổng phân tích tế bào máu ngoại vi (CBC) theo dõi mỗi 4-6 giờ',
+        purpose: 'Theo dõi sát động học cô đặc máu (tăng Hct) song hành cùng tốc độ sụt giảm tiểu cầu (PLT)',
+        category: 'dynamic',
+        timing: 'Mỗi 4 - 6 giờ trong giai đoạn nguy hiểm (N4 - N7)',
+      });
+      tests.push({
+        name: 'Siêu âm ổ bụng & màng phổi tại giường (Point-of-Care Ultrasound)',
+        purpose: 'Phát hiện sớm thoát huyết tương: tràn dịch màng phổi, dịch ổ bụng, dày thành túi mật (> 4mm)',
+        category: 'bedside',
+        timing: 'Ngay khi Hct tăng hoặc có dấu hiệu cảnh báo',
+      });
     } else if (diseaseNameLower.includes('mạch vành') || diseaseNameLower.includes('nhồi máu') || diseaseNameLower.includes('đau thắt ngực')) {
-      tests.push({ name: 'Định lượng Troponin I/T độ nhạy cao (hs-cTn) động học (0h - 1h/3h)', purpose: 'Xác định hoại tử cơ tim cấp' });
-      tests.push({ name: 'ECG 12 chuyển đạo lặp lại', purpose: 'Xác định vị trí thiếu máu / nhồi máu và đoạn ST chênh' });
-      tests.push({ name: 'SA tim qua thành ngực', purpose: 'Đánh giá rối loạn vận động vùng và phân suất tống máu thất trái (LVEF)' });
-      tests.push({ name: 'Chụp mạch vành qua da (DSA)', purpose: 'Xác định vị trí tắc/hẹp động mạch vành và can thiệp tái tưới máu' });
+      tests.push({
+        name: 'Định lượng Troponin I/T độ nhạy cao (hs-cTn) động học (0h - 1h/3h)',
+        purpose: 'Xác định hoại tử cơ tim cấp tính theo phác đồ động học ESC 0/1h hoặc 0/3h',
+        category: 'gold',
+        timing: 'Ngay lúc vào viện (0h) và lặp lại sau 1-3 giờ',
+      });
+      tests.push({
+        name: 'Điện tâm đồ (ECG) 12 chuyển đạo lặp lại',
+        purpose: 'Định vị vùng thiếu máu / nhồi máu, phát hiện đoạn ST chênh lên hoặc sóng T âm đối xứng',
+        category: 'dynamic',
+        timing: 'Trong vòng 10 phút đầu khi vào viện và lặp lại mỗi 15-30 phút nếu đau ngực tái phát',
+      });
+      tests.push({
+        name: 'Siêu âm tim qua thành ngực (TTE)',
+        purpose: 'Đánh giá rối loạn vận động vùng tương ứng nhánh vành và đo phân suất tống máu thất trái (LVEF)',
+        category: 'bedside',
+        timing: 'Trong 24 giờ đầu hoặc ngay tại giường nếu có suy tim/tụt HA',
+      });
+      tests.push({
+        name: 'Chụp mạch vành qua da (Coronary Angiography - DSA)',
+        purpose: 'Xác định vị trí tắc/hẹp động mạch vành và tiến hành can thiệp tái tưới máu (PCI) khẩn cấp',
+        category: 'specialized',
+        timing: 'Can thiệp thì đầu < 120 phút (với STEMI) hoặc < 24h (với NSTEMI nguy cơ cao)',
+      });
     } else if (diseaseNameLower.includes('màng não')) {
-      tests.push({ name: 'Chọc dò tủy sống khảo sát dịch não tủy (DNT)', purpose: 'Phân tích tế bào, sinh hóa (đạm, đường DNT/máu), soi nhuộm Gram & cấy DNT' });
-      tests.push({ name: 'Chụp CT / MRI sọ não trước chọc dò', purpose: 'Loại trừ nguy cơ tăng áp lực nội sọ và dọa tụt kẹt não' });
-      tests.push({ name: 'Cấy máu 2 vị trí', purpose: 'Tìm vi khuẩn gây nhiễm khuẩn huyết kèm theo' });
+      tests.push({
+        name: 'Chọc dò tủy sống khảo sát dịch não tủy (DNT)',
+        purpose: 'Phân tích tế bào (bạch cầu đa nhân thoái hóa), sinh hóa (đạm tăng, đường DNT/máu < 0.4), soi nhuộm Gram & cấy DNT',
+        category: 'gold',
+        timing: 'Càng sớm càng tốt trước liều kháng sinh đầu tiên (nếu không có chống chỉ định)',
+      });
+      tests.push({
+        name: 'Chụp CT-Scanner sọ não trước chọc dò',
+        purpose: 'Loại trừ nguy cơ tăng áp lực nội sọ và dọa tụt kẹt não trước khi can thiệp thủ thuật',
+        category: 'specialized',
+        timing: 'Cần làm trước chọc dò nếu có dấu thần kinh định vị hoặc hôn mê sâu',
+      });
+      tests.push({
+        name: 'Cấy máu 2 vị trí & Đo Procalcitonin / CRP',
+        purpose: 'Tìm vi khuẩn gây nhiễm khuẩn huyết kèm theo và theo dõi đáp ứng điều trị kháng sinh',
+        category: 'dynamic',
+        timing: 'Lấy mẫu ngay trước khi bắt đầu dùng kháng sinh phổ rộng',
+      });
     } else if (diseaseNameLower.includes('viêm gan')) {
-      tests.push({ name: 'HBV DNA định lượng / HCV RNA định lượng bằng Real-time PCR', purpose: 'Xác định mức độ nhân lên của vi rút' });
-      tests.push({ name: 'HBsAg, HBeAg, Anti-HBe, Anti-HCV', purpose: 'Xác định giai đoạn huyết thanh học' });
-      tests.push({ name: 'Đo độ đàn hồi mô gan (FibroScan / ARFI)', purpose: 'Đánh giá chính xác mức độ xơ hóa gan' });
+      tests.push({
+        name: 'HBV DNA định lượng / HCV RNA định lượng bằng Real-time PCR',
+        purpose: 'Xác định tải lượng vi rút nhân lên để quyết định khởi động thuốc kháng vi rút trực tiếp',
+        category: 'gold',
+        timing: 'Lúc chẩn đoán ban đầu và định kỳ mỗi 3-6 tháng',
+      });
+      tests.push({
+        name: 'Bộ dấu ấn huyết thanh học (HBsAg, HBeAg, Anti-HBe, Anti-HCV, Anti-HDV)',
+        purpose: 'Xác định giai đoạn bệnh sinh học, khả năng lây nhiễm và thể đột biến tiền nhân (pre-core)',
+        category: 'specialized',
+        timing: 'Lần khám đầu tiên',
+      });
+      tests.push({
+        name: 'Đo độ đàn hồi mô gan (FibroScan / Shear Wave Elastography)',
+        purpose: 'Đánh giá mức độ xơ hóa nhu mô gan (F0 - F4) và phát hiện sớm tình trạng xơ gan',
+        category: 'specialized',
+        timing: 'Khảo sát định kỳ ngoại trú',
+      });
     } else if (diseaseNameLower.includes('xơ gan')) {
-      tests.push({ name: 'Nội soi thực quản - dạ dày - tá tràng', purpose: 'Tầm soát và can thiệp thắt giãn tĩnh mạch thực quản' });
-      tests.push({ name: 'SA Doppler mạch máu gan & tầm soát u gan (AFP)', purpose: 'Đánh giá áp lực tĩnh mạch cửa và tầm soát ung thư gan HCC' });
-      tests.push({ name: 'Chọc tháo dịch màng bụng làm xét nghiệm SAAG và tế bào', purpose: 'Đánh giá nguyên nhân cổ trướng và loại trừ viêm phúc mạc tiên phát' });
+      tests.push({
+        name: 'Nội soi thực quản - dạ dày - tá tràng (EGD)',
+        purpose: 'Tầm soát mức độ giãn tĩnh mạch thực quản (F1-F3) và nguy cơ xuất huyết tiêu hóa do tăng áp cửa',
+        category: 'specialized',
+        timing: 'Thực hiện thường quy khi chẩn đoán xơ gan lần đầu',
+      });
+      tests.push({
+        name: 'Siêu âm Doppler hệ tĩnh mạch cửa & Định lượng AFP',
+        purpose: 'Đo tốc độ dòng chảy tĩnh mạch cửa, phát hiện huyết khối và tầm soát ung thư biểu mô tế bào gan (HCC)',
+        category: 'bedside',
+        timing: 'Mỗi 3 - 6 tháng định kỳ',
+      });
+      tests.push({
+        name: 'Chọc tháo dịch màng bụng làm xét nghiệm SAAG và đếm tế bào',
+        purpose: 'Khẳng định cổ trướng do tăng áp lực tĩnh mạch cửa (SAAG >= 1.1 g/dL) và loại trừ viêm phúc mạc tiên phát (SBP)',
+        category: 'gold',
+        timing: 'Khi có cổ trướng mới xuất hiện hoặc nhập viện vì sốt, đau bụng',
+      });
     } else {
-      tests.push({ name: 'Xét nghiệm vi sinh / Sinh học phân tử đặc hiệu (PCR / Huyết thanh học)', purpose: 'Xác định chính xác căn nguyên bệnh' });
-      tests.push({ name: 'Thăm dò hình ảnh học chuyên khoa (SA / CT-Scanner)', purpose: 'Xác định tổn thương giải phẫu bệnh' });
+      tests.push({
+        name: 'Xét nghiệm vi sinh / Sinh học phân tử đặc hiệu (PCR / Kháng thể chuyên sâu)',
+        purpose: 'Xác định chính xác căn nguyên gây bệnh theo khuyến cáo của Hội chuyên khoa',
+        category: 'gold',
+        timing: 'Càng sớm càng tốt trong đợt cấp',
+      });
+      tests.push({
+        name: 'Thăm dò hình ảnh học chuyên sâu (Siêu âm Doppler / CT-Scanner / MRI)',
+        purpose: 'Đánh giá giải phẫu học, mức độ tổn thương thực thể và các biến chứng liên quan',
+        category: 'bedside',
+        timing: 'Theo chỉ định lâm sàng cấp bách',
+      });
     }
+
     return tests;
   }, [leadDiagnosis]);
 
-  // 3. Phân tích Chẩn đoán Phân biệt (Top 2 và Top 3)
+  // 3. Phân tích Chẩn đoán Phân biệt (CĐPB — Tinh chỉnh xử lý chuỗi, tránh lỗi "Chưa có ..")
   const differentialDiagnoses = useMemo(() => {
     if (results.length <= 1) return [];
 
     return results.slice(1, 4).map((res) => {
       const diffDisease = res.b;
-      const commonSymptoms = res.matched.map((m) => m.tc.ten);
+      const commonSymptoms = res.matched
+        .map((m) => m.tc.ten.trim())
+        .filter((t) => t && t.length > 2);
 
-      // Tìm triệu chứng phủ định hoặc còn thiếu khiến ít nghĩ hơn
-      const missingSymptoms = res.missing.slice(0, 3).map((s) => s.ten);
-      const negatedMatching = negatedSymptoms.filter((n) =>
-        diffDisease.trieuChung?.some((tcId) => tcId === n.id)
-      ).map((n) => n.ten);
+      // Làm sạch và chuẩn hóa danh sách triệu chứng phủ định và còn thiếu
+      const cleanNegated = negatedSymptoms
+        .filter((n) => diffDisease.trieuChung?.some((tcId) => tcId === n.id))
+        .map((n) => n.ten.trim().replace(/^[\s\.\,\-]+|[\s\.\,\-]+$/g, ''))
+        .filter((name) => name.length >= 2);
 
-      // Đề xuất CLS loại trừ
-      let exclusionTest = { name: 'Xét nghiệm chuyên biệt tầm soát', purpose: `Loại trừ ${diffDisease.ten}` };
+      const cleanMissing = res.missing
+        .map((s) => s.tc.ten.trim().replace(/^[\s\.\,\-]+|[\s\.\,\-]+$/g, ''))
+        .filter((name) => name.length >= 2 && !name.includes('..'));
+
+      // Đề xuất CLS loại trừ chuyên biệt
+      let exclusionTest = {
+        name: `Xét nghiệm chuyên biệt tầm soát ${diffDisease.ten}`,
+        purpose: `Loại trừ chẩn đoán ${diffDisease.ten}`,
+        badge: 'Tầm soát',
+      };
       const diffNameLower = diffDisease.ten.toLowerCase();
 
       if (diffNameLower.includes('nhiễm trùng huyết') || diffNameLower.includes('sốc nhiễm trùng')) {
-        exclusionTest = { name: 'Cấy máu 2 chai & Định lượng Procalcitonin máu', purpose: 'Loại trừ nhiễm khuẩn huyết vi khuẩn Gr(-)/Gr(+)' };
+        exclusionTest = {
+          name: 'Cấy máu 2 chai (hiếu khí & kỵ khí) & Định lượng Procalcitonin máu',
+          purpose: 'Loại trừ nhiễm khuẩn huyết do vi khuẩn Gram âm / Gram dương',
+          badge: 'Cần làm ngay',
+        };
       } else if (diffNameLower.includes('viêm phổi') || diffNameLower.includes('suy hô hấp')) {
-        exclusionTest = { name: 'XQ ngực thẳng & KMĐM (ABG)', purpose: 'Đánh giá tổn thương phế nang và mức độ oxy hóa máu' };
+        exclusionTest = {
+          name: 'X-quang ngực thẳng & Khí máu động mạch (ABG)',
+          purpose: 'Đánh giá đông đặc phế nang và mức độ giảm oxy hóa máu PaO2/FiO2',
+          badge: 'Cần làm ngay',
+        };
+      } else if (diffNameLower.includes('sỏi mật') || diffNameLower.includes('viêm túi mật')) {
+        exclusionTest = {
+          name: 'Siêu âm gan mật cản quang / MSCT bụng & Bilirubin toàn phần, Bilirubin trực tiếp, GGT, ALP',
+          purpose: 'Đánh giá tình trạng giãn đường mật, sỏi kẹt cổ túi mật và thành túi mật dày > 4mm',
+          badge: 'Ưu tiên',
+        };
+      } else if (diffNameLower.includes('bão giáp') || diffNameLower.includes('nhiễm độc giáp')) {
+        exclusionTest = {
+          name: 'Định lượng FT3, FT4, TSH siêu nhạy & Thang điểm Burch-Wartofsky',
+          purpose: 'Xác định bão giáp cấp hoặc nhiễm độc giáp (TSH ức chế sâu, FT4 tăng vọt)',
+          badge: 'Khẩn cấp',
+        };
+      } else if (diffNameLower.includes('hạ natri') || diffNameLower.includes('điện giải')) {
+        exclusionTest = {
+          name: 'Điện giải đồ máu (Na+, K+, Cl-), Áp lực thẩm thấu máu & Natri niệu',
+          purpose: 'Xác định hạ Natri máu thực sự và phân loại nguyên nhân theo thể tích dịch ngoại bào',
+          badge: 'Ưu tiên',
+        };
       } else if (diffNameLower.includes('màng não')) {
-        exclusionTest = { name: 'Chọc dò dịch não tủy (DNT) & CT sọ não', purpose: 'Loại trừ viêm màng não mủ hoặc xuất huyết dưới nhện' };
+        exclusionTest = {
+          name: 'Chọc dò dịch não tủy (DNT) & CT sọ não loại trừ tăng ALNS',
+          purpose: 'Loại trừ viêm màng não mủ hoặc xuất huyết khoang dưới nhện',
+          badge: 'Khẩn cấp',
+        };
       } else if (diffNameLower.includes('viêm tụy')) {
-        exclusionTest = { name: 'Định lượng Amylase & Lipase máu; CT bụng cản quang', purpose: 'Loại trừ viêm tụy cấp' };
+        exclusionTest = {
+          name: 'Định lượng Lipase / Amylase máu & Chụp CT bụng có cản quang',
+          purpose: 'Loại trừ viêm tụy cấp (tiêu chuẩn Lipase tăng > 3 lần giới hạn trên)',
+          badge: 'Khẩn cấp',
+        };
       } else if (diffNameLower.includes('thuyên tắc phổi')) {
-        exclusionTest = { name: 'Định lượng D-Dimer & Chụp CT mạch máu phổi (CTPA)', purpose: 'Loại trừ thuyên tắc động mạch phổi cấp' };
+        exclusionTest = {
+          name: 'Định lượng D-Dimer độ nhạy cao & Chụp CT mạch máu phổi (CTPA)',
+          purpose: 'Loại trừ thuyên tắc động mạch phổi cấp (PE) theo thang điểm Wells',
+          badge: 'Khẩn cấp',
+        };
       } else if (diffNameLower.includes('bóc tách')) {
-        exclusionTest = { name: 'Chụp CT ngực có cản quang (CTA ngực)', purpose: 'Loại trừ phình bóc tách động mạch chủ ngực cấp' };
+        exclusionTest = {
+          name: 'Chụp MSCT ngực có cản quang (CTA ngực)',
+          purpose: 'Loại trừ phình bóc tách động mạch chủ ngực cấp (Stanford A/B)',
+          badge: 'Cấp cứu tối khẩn',
+        };
       }
 
       return {
         disease: diffDisease,
         pct: res.pct,
         commonSymptoms,
-        missingSymptoms,
-        negatedMatching,
+        cleanNegated,
+        cleanMissing,
         exclusionTest,
       };
     });
@@ -193,8 +466,8 @@ export const ClinicalReasoningPanel: React.FC<ClinicalReasoningPanelProps> = ({
 
   // 4. Đánh giá Toàn diện (Mức độ, Căn nguyên, Biến chứng)
   const comprehensiveAssessment = useMemo(() => {
-    // Mức độ
     let severity = 'Mức độ trung bình, cần theo dõi sát tại khoa điều trị';
+    let severityLevel: 'critical' | 'severe' | 'moderate' = 'moderate';
     const sbp = parseFloat(vitals.vHATT);
     const dbp = parseFloat(vitals.vHATTr);
     const pulse = parseFloat(vitals.vMach);
@@ -203,38 +476,51 @@ export const ClinicalReasoningPanel: React.FC<ClinicalReasoningPanelProps> = ({
     const hasHypoxia = !isNaN(spo2) && spo2 < 94;
 
     if (hasShock || hasHypoxia || (leadDiagnosis && leadDiagnosis.baoDong)) {
-      severity = 'Mức độ NẶNG / CẤP CỨU NGUY KỊCH (có rối loạn huyết động hoặc suy hô hấp, chỉ định theo dõi tại Phòng Cấp cứu / ICU)';
+      severity = 'Mức độ NẶNG / CẤP CỨU NGUY KỊCH (có dấu hiệu rối loạn huyết động hoặc suy hô hấp, chỉ định theo dõi sát tại Phòng Cấp cứu / Hồi sức ICU)';
+      severityLevel = 'critical';
     } else if (problems.some((p) => p.priorityLevel === 'acute')) {
-      severity = 'Mức độ CẤP TÍNH có dấu hiệu cảnh báo, cần nhập viện theo dõi diễn tiến';
+      severity = 'Mức độ CẤP TÍNH có dấu hiệu cảnh báo, cần nhập viện theo dõi sát các chỉ số sinh hiệu và động học xét nghiệm';
+      severityLevel = 'severe';
     }
 
-    // Căn nguyên
-    let etiology = 'Chưa xác định căn nguyên vi sinh / giải phẫu học chính xác, đang chờ kết quả xét nghiệm chuyên biệt';
+    // Căn nguyên bệnh sinh
+    let etiology = 'Chưa xác định căn nguyên vi sinh / giải phẫu học đặc hiệu, đang chờ kết quả xét nghiệm chuyên sâu';
     if (leadDiagnosis) {
       const name = leadDiagnosis.ten.toLowerCase();
-      if (name.includes('dengue')) etiology = 'Nhiễm vi rút Dengue (DENV-1, 2, 3 hoặc 4) truyền qua véc tơ muỗi vằn Aedes aegypti';
-      else if (name.includes('viêm gan b')) etiology = 'Nhiễm vi rút viêm gan B (HBV) mạn tính';
+      if (name.includes('dengue')) etiology = 'Nhiễm vi rút Dengue (DENV-1, 2, 3 hoặc 4) truyền qua véc tơ muỗi vằn Aedes aegypti gây tăng tính thấm thành mạch và thoát huyết tương';
+      else if (name.includes('viêm gan b')) etiology = 'Nhiễm vi rút viêm gan B (HBV) mạn tính gây tổn thương hoại tử nhu mô gan tiến triển';
       else if (name.includes('viêm gan c')) etiology = 'Nhiễm vi rút viêm gan C (HCV) mạn tính';
-      else if (name.includes('mạch vành') || name.includes('nhồi máu')) etiology = 'Xơ vữa động mạch vành tiến triển, nứt vỡ mảng xơ vữa gây huyết khối cấp';
-      else if (name.includes('não mô cầu')) etiology = 'Nhiễm vi khuẩn Neisseria meningitidis lây truyền qua đường giọt bắn hô hấp';
-      else if (name.includes('leptospira')) etiology = 'Nhiễm xoắn khuẩn Leptospira interrogans phơi nhiễm qua nguồn nước bẩn ngập lụt';
+      else if (name.includes('mạch vành') || name.includes('nhồi máu')) etiology = 'Xơ vữa động mạch vành tiến triển, nứt vỡ mảng xơ vữa dẫn đến hình thành huyết khối cấp gây tắc nghẽn lòng mạch';
+      else if (name.includes('não mô cầu')) etiology = 'Nhiễm vi khuẩn Neisseria meningitidis lây truyền qua đường giọt bắn hầu họng';
+      else if (name.includes('leptospira')) etiology = 'Nhiễm xoắn khuẩn Leptospira interrogans phơi nhiễm qua vết trầy xước tiếp xúc nước ngập lụt';
     }
 
-    // Biến chứng
+    // Biến chứng nguy cơ
     const complications: string[] = [];
-    if (hasShock) complications.push('Sốc giảm thể tích do thoát huyết tương / tụt HA');
-    if (hasHypoxia) complications.push('Suy hô hấp cấp giảm oxy máu');
-    if (labs.lTC && parseFloat(labs.lTC) < 50) complications.push(`Giảm PLT nặng (${labs.lTC} G/L) có nguy cơ xuất huyết nội tạng`);
-    if (labs.lHct && parseFloat(labs.lHct) > 48) complications.push(`Cô đặc máu nghiêm trọng (Hct ${labs.lHct}%) do thoát huyết tương`);
+    if (hasShock) complications.push('Sốc giảm thể tích do thoát huyết tương ồ ạt / tụt huyết áp');
+    if (hasHypoxia) complications.push('Suy hô hấp cấp giảm oxy máu do tràn dịch màng phổi');
+    if (labs.lTC && parseFloat(labs.lTC) < 50) complications.push(`Giảm tiểu cầu nặng (${labs.lTC} G/L) có nguy cơ xuất huyết phủ tạng tự phát`);
+    if (labs.lHct && parseFloat(labs.lHct) > 46) complications.push(`Cô đặc máu nghiêm trọng (Hct ${labs.lHct}%) do thoát dịch thể`);
 
-    const complicationStr = complications.length > 0 ? complications.join('; ') : 'Chưa ghi nhận biến chứng suy đa cơ quan tại thời điểm thăm khám.';
+    if (activeChain?.complications && activeChain.complications.length > 0) {
+      activeChain.complications.slice(0, 2).forEach((c) => {
+        if (!complications.some((ex) => ex.toLowerCase().includes(c.name.toLowerCase()))) {
+          complications.push(`${c.name} (${c.warningSigns})`);
+        }
+      });
+    }
+
+    const complicationStr = complications.length > 0
+      ? complications.join('; ')
+      : 'Hiện chưa ghi nhận biến chứng suy cơ quan đe dọa tính mạng tại thời điểm thăm khám.';
 
     return {
       severity,
+      severityLevel,
       etiology,
       complicationStr,
     };
-  }, [vitals, labs, problems, leadDiagnosis]);
+  }, [vitals, labs, problems, leadDiagnosis, activeChain]);
 
   // 5. Sinh Văn bản Biện luận Lâm sàng EMR hoàn chỉnh
   const generatedReasoningText = useMemo(() => {
@@ -266,11 +552,11 @@ export const ClinicalReasoningPanel: React.FC<ClinicalReasoningPanelProps> = ({
       lines.push(`- Dịch tễ học & Bối cảnh phơi nhiễm: ${epiDetails}.`);
     }
     if (supportiveLabs.length > 0) {
-      lines.push(`- Dữ kiện CLS bước đầu ủng hộ: ${supportiveLabs.join(' · ')}.`);
+      lines.push(`- Dữ kiện CLS bước đầu ủng hộ: ${supportiveLabs.map((l) => l.raw).join(' · ')}.`);
     }
     lines.push(`\n-> ĐỀ NGHỊ CLS XÁC CHẨN (CĐXĐ):`);
     confirmatoryTests.forEach((t, i) => {
-      lines.push(`  ${i + 1}. ${t.name}: Nhằm ${t.purpose.toLowerCase()}.`);
+      lines.push(`  ${i + 1}. ${t.name}: Nhằm ${t.purpose.toLowerCase()} (${t.timing}).`);
     });
     lines.push('');
 
@@ -284,14 +570,16 @@ export const ClinicalReasoningPanel: React.FC<ClinicalReasoningPanelProps> = ({
           lines.push(`   + Nghĩ đến vì: BN cũng có các triệu chứng tương đồng như ${d.commonSymptoms.slice(0, 3).join(', ')}.`);
         }
         const reasonsLessLikely: string[] = [];
-        if (d.negatedMatching.length > 0) {
-          reasonsLessLikely.push(`BN không có dấu hiệu ${d.negatedMatching.join(', ')}`);
+        if (d.cleanNegated.length > 0) {
+          reasonsLessLikely.push(`BN không có triệu chứng ${d.cleanNegated.join(', ')}`);
         }
-        if (d.missingSymptoms.length > 0) {
-          reasonsLessLikely.push(`chưa ghi nhận các biểu hiện kinh điển như ${d.missingSymptoms.join(', ')}`);
+        if (d.cleanMissing.length > 0) {
+          reasonsLessLikely.push(`chưa ghi nhận dấu chứng kinh điển như ${d.cleanMissing.slice(0, 2).join(', ')}`);
         }
         if (reasonsLessLikely.length > 0) {
           lines.push(`   + Ít nghĩ hơn vì: ${reasonsLessLikely.join('; ')}.`);
+        } else {
+          lines.push(`   + Ít nghĩ hơn vì: Bệnh cảnh hiện tại chưa có bằng chứng cận lâm sàng đặc hiệu xác nhận.`);
         }
         lines.push(`   -> Đề nghị CLS để loại trừ: ${d.exclusionTest.name} (nhằm ${d.exclusionTest.purpose.toLowerCase()}).`);
       });
@@ -326,35 +614,35 @@ export const ClinicalReasoningPanel: React.FC<ClinicalReasoningPanelProps> = ({
   };
 
   return (
-    <div className="bg-white rounded-xl border border-slate-200 shadow-2xs overflow-hidden">
+    <div className="bg-white rounded-2xl border border-slate-200/90 shadow-sm overflow-hidden transition-all">
       {/* Header */}
-      <div className="bg-slate-50/90 px-4 py-3 border-b border-slate-200 flex items-center justify-between gap-2 flex-wrap">
-        <div className="flex items-center gap-2">
-          <div className="w-6 h-6 rounded-md bg-indigo-50 text-indigo-600 flex items-center justify-center">
-            <Sparkles className="w-3.5 h-3.5" />
+      <div className="bg-gradient-to-r from-slate-50 via-indigo-50/25 to-slate-50 px-4 sm:px-6 py-3.5 border-b border-slate-200 flex items-center justify-between gap-3 flex-wrap">
+        <div className="flex items-center gap-2.5">
+          <div className="w-7 h-7 rounded-lg bg-indigo-600 text-white flex items-center justify-center shadow-xs">
+            <Sparkles className="w-4 h-4" />
           </div>
           <div>
-            <h2 className="text-xs sm:text-sm font-bold text-slate-800 leading-none">
-              III. Biện luận LS & Đề nghị CLS (Clinical Reasoning Engine)
+            <h2 className="text-sm sm:text-base font-bold text-slate-900 leading-tight">
+              III. Biện luận Lâm sàng & Đề nghị Cận lâm sàng (Clinical Reasoning Engine)
             </h2>
-            <span className="text-[10.5px] text-slate-400 font-medium">
+            <span className="text-[11px] text-slate-500 font-medium">
               Phương pháp Biện luận Phân tích & Đánh giá toàn diện · Chuẩn ĐHYD TP.HCM
             </span>
           </div>
         </div>
 
-        <div className="flex items-center gap-1.5">
-          {/* Switcher */}
-          <div className="flex items-center border border-slate-200 rounded-lg p-0.5 bg-white text-[11px]">
+        <div className="flex items-center gap-2">
+          {/* Switcher Trực quan / EMR */}
+          <div className="flex items-center border border-slate-200 rounded-lg p-0.5 bg-white text-xs shadow-2xs">
             <button
               type="button"
               onClick={() => {
                 setViewMode('structured');
                 setEditing(false);
               }}
-              className={`px-2.5 py-1 rounded-md font-medium transition-all cursor-pointer ${
+              className={`px-3 py-1 rounded-md font-medium transition-all cursor-pointer ${
                 viewMode === 'structured' && !editing
-                  ? 'bg-indigo-600 text-white shadow-2xs font-semibold'
+                  ? 'bg-indigo-600 text-white shadow-xs font-semibold'
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
@@ -366,9 +654,9 @@ export const ClinicalReasoningPanel: React.FC<ClinicalReasoningPanelProps> = ({
                 setViewMode('emr');
                 setEditing(false);
               }}
-              className={`px-2.5 py-1 rounded-md font-medium transition-all cursor-pointer ${
+              className={`px-3 py-1 rounded-md font-medium transition-all cursor-pointer ${
                 viewMode === 'emr' && !editing
-                  ? 'bg-indigo-600 text-white shadow-2xs font-semibold'
+                  ? 'bg-indigo-600 text-white shadow-xs font-semibold'
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
@@ -382,7 +670,7 @@ export const ClinicalReasoningPanel: React.FC<ClinicalReasoningPanelProps> = ({
               }}
               className={`px-2.5 py-1 rounded-md font-medium transition-all cursor-pointer ${
                 editing
-                  ? 'bg-amber-600 text-white shadow-2xs font-semibold'
+                  ? 'bg-amber-600 text-white shadow-xs font-semibold'
                   : 'text-slate-600 hover:text-amber-700'
               }`}
             >
@@ -394,32 +682,32 @@ export const ClinicalReasoningPanel: React.FC<ClinicalReasoningPanelProps> = ({
           <button
             type="button"
             onClick={handleCopyReasoning}
-            className={`w-7 h-7 flex items-center justify-center rounded-lg border transition-all cursor-pointer shadow-2xs ${
+            className={`flex items-center gap-1 px-2.5 py-1 rounded-lg border transition-all cursor-pointer text-xs font-semibold shadow-2xs ${
               copied
                 ? 'bg-emerald-600 text-white border-emerald-600 shadow-xs'
-                : 'bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border-indigo-200/80'
+                : 'bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border-indigo-200'
             }`}
-            title={copied ? "Đã sao chép văn bản biện luận EMR!" : "Sao chép toàn bộ văn bản biện luận LS"}
-            aria-label="Sao chép biện luận"
+            title={copied ? 'Đã sao chép văn bản biện luận EMR!' : 'Sao chép toàn bộ văn bản biện luận LS'}
           >
             {copied ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
+            <span>{copied ? 'Đã chép' : 'Sao chép EMR'}</span>
           </button>
         </div>
       </div>
 
       {/* Content */}
-      <div className="p-4 sm:p-5">
+      <div className="p-4 sm:p-6">
         {editing ? (
           <div>
             <div className="flex items-center justify-between mb-2">
               <span className="text-xs font-semibold text-amber-800 flex items-center gap-1.5">
                 <Edit3 className="w-3.5 h-3.5 text-amber-600" />
-                Chế độ tự chỉnh sửa văn bản biện luận:
+                Chế độ tự chỉnh sửa văn bản biện luận lâm sàng:
               </span>
               <button
                 type="button"
                 onClick={() => setCustomText(generatedReasoningText)}
-                className="text-[11px] text-indigo-600 hover:underline cursor-pointer flex items-center gap-1"
+                className="text-xs text-indigo-600 hover:underline cursor-pointer flex items-center gap-1"
               >
                 <RotateCcw className="w-3 h-3" />
                 Khôi phục bản tự động sinh
@@ -428,66 +716,88 @@ export const ClinicalReasoningPanel: React.FC<ClinicalReasoningPanelProps> = ({
             <textarea
               value={customText || generatedReasoningText}
               onChange={(e) => setCustomText(e.target.value)}
-              rows={16}
-              className="w-full text-xs font-mono-custom p-3.5 border border-amber-300 rounded-lg bg-amber-50/20 focus:outline-none focus:ring-1 focus:ring-amber-500 leading-relaxed"
+              rows={18}
+              className="w-full text-xs font-mono-custom p-4 border border-amber-300 rounded-xl bg-amber-50/20 focus:outline-none focus:ring-2 focus:ring-amber-500 leading-relaxed"
             />
           </div>
         ) : viewMode === 'emr' ? (
-          <div className="bg-slate-50 border border-slate-200 rounded-lg p-4 text-xs font-mono-custom text-slate-800 whitespace-pre-line leading-relaxed select-all">
+          <div className="bg-slate-50 border border-slate-200 rounded-xl p-5 text-xs font-mono-custom text-slate-800 whitespace-pre-line leading-relaxed select-all">
             {customText || generatedReasoningText}
           </div>
         ) : (
-          /* Structured Visual View */
-          <div className="flex flex-col gap-4">
+          /* Structured Visual View (HÌNH 1 NÂNG CẤP TOÀN DIỆN) */
+          <div className="flex flex-col gap-5">
             {/* Section A: Vấn đề chính chọn để biện luận */}
-            <div className="p-3 bg-gradient-to-r from-blue-50/70 to-indigo-50/50 border border-blue-200 rounded-lg flex items-center justify-between gap-2 flex-wrap">
-              <div className="flex items-center gap-2">
-                <Compass className="w-4 h-4 text-blue-600 shrink-0" />
-                <span className="text-xs text-slate-700">
-                  Trục vấn đề được chọn để biện luận:{' '}
+            <div className="p-3.5 bg-gradient-to-r from-blue-50 via-indigo-50/50 to-blue-50/30 border border-blue-200/90 rounded-xl flex items-center justify-between gap-3 flex-wrap">
+              <div className="flex items-center gap-2.5">
+                <div className="w-7 h-7 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center shrink-0">
+                  <Compass className="w-4 h-4" />
+                </div>
+                <div className="text-xs text-slate-700">
+                  <span className="text-slate-500 font-medium">Trục vấn đề được chọn để biện luận:</span>{' '}
                   <b className="text-blue-950 font-bold text-sm">"{primaryProblem}"</b>
-                </span>
+                </div>
               </div>
-              <span className="text-[11px] text-blue-700 font-medium bg-blue-100/80 px-2 py-0.5 rounded">
-                Lý do vào viện chính / Vấn đề cấp #1
+              <span className="text-[11px] text-blue-800 font-semibold bg-blue-100/90 border border-blue-200 px-2.5 py-1 rounded-md">
+                Lý do vào viện chính · Vấn đề ưu tiên #1
               </span>
             </div>
 
-            {/* Section B: Biện luận Chẩn đoán Sơ bộ */}
+            {/* Section B: Biện luận Chẩn đoán Sơ bộ (CĐSB) */}
             {leadDiagnosis && (
-              <div className="border border-indigo-200 rounded-xl bg-gradient-to-b from-indigo-50/30 to-white overflow-hidden shadow-2xs">
-                <div className="p-3.5 bg-indigo-100/60 border-b border-indigo-200/80 flex items-center justify-between gap-2 flex-wrap">
+              <div className="border border-indigo-200 rounded-2xl bg-gradient-to-b from-indigo-50/20 via-white to-white overflow-hidden shadow-xs">
+                {/* Header CĐSB */}
+                <div className="p-4 bg-gradient-to-r from-indigo-100/80 via-indigo-50/70 to-indigo-100/60 border-b border-indigo-200 flex items-center justify-between gap-3 flex-wrap">
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-7 h-7 rounded-lg bg-indigo-600 text-white flex items-center justify-center font-bold text-xs shadow-2xs">
+                      B
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <span className="text-xs font-bold text-indigo-950 uppercase tracking-wide">
+                          Chẩn đoán Sơ bộ (CĐSB nghĩ nhiều nhất):
+                        </span>
+                        <span className="text-sm sm:text-base font-extrabold text-blue-950">
+                          {leadDiagnosis.ten}
+                        </span>
+                        <span className="text-xs font-mono-custom text-indigo-700 bg-white px-2 py-0.5 rounded-md border border-indigo-200 font-semibold">
+                          ICD-10: {leadDiagnosis.icd}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
                   <div className="flex items-center gap-2">
-                    <Sparkles className="w-4 h-4 text-indigo-700" />
-                    <span className="text-xs font-bold text-indigo-950">
-                      B. CHẨN ĐOÁN SƠ BỘ (CĐSB nghĩ nhiều nhất):{' '}
-                      <span className="text-sm font-extrabold text-blue-900">{leadDiagnosis.ten}</span>
-                    </span>
-                    <span className="text-xs font-mono-custom text-indigo-700 bg-white px-1.5 py-0.5 rounded border border-indigo-200">
-                      ICD-10: {leadDiagnosis.icd}
+                    <span className="px-3 py-1 rounded-full text-xs font-extrabold bg-indigo-600 text-white shadow-xs font-mono-custom flex items-center gap-1">
+                      <Sparkles className="w-3 h-3" />
+                      <span>{leadMatchPct}% Trùng khớp</span>
                     </span>
                   </div>
-                  <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-indigo-600 text-white shadow-2xs font-mono-custom">
-                    {leadMatchPct}% Trùng khớp
-                  </span>
                 </div>
 
-                <div className="p-4 space-y-3.5">
-                  {/* 4 Tầng bằng chứng */}
+                <div className="p-4 sm:p-5 space-y-4">
+                  {/* 1. Các dữ kiện chứng minh lâm sàng */}
                   <div>
-                    <span className="text-[11px] font-bold text-slate-600 uppercase tracking-wider block mb-2">
-                      1. Các dữ kiện chứng minh:
-                    </span>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 text-xs">
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-[11px] font-bold text-slate-600 uppercase tracking-wider flex items-center gap-1.5">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-indigo-600" />
+                        1. Dữ kiện lâm sàng & Dịch tễ học ủng hộ:
+                      </span>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
                       {/* Triệu chứng chính */}
-                      <div className="p-2.5 bg-white border border-slate-200 rounded-lg">
-                        <span className="font-bold text-blue-900 block mb-1 flex items-center gap-1">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-blue-600" />
-                          Triệu chứng chính phù hợp nhất:
+                      <div className="p-3 bg-white border border-blue-200/90 rounded-xl shadow-2xs">
+                        <span className="font-bold text-blue-900 block mb-2 flex items-center gap-1.5">
+                          <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0" />
+                          <span>Triệu chứng chính phù hợp nhất ({mainSymptoms.length}):</span>
                         </span>
-                        <div className="flex flex-wrap gap-1">
+                        <div className="flex flex-wrap gap-1.5">
                           {mainSymptoms.map((m, idx) => (
-                            <span key={idx} className="px-1.5 py-0.5 rounded bg-blue-50 text-blue-800 border border-blue-200 text-[11px]">
+                            <span
+                              key={idx}
+                              className="px-2 py-1 rounded-md bg-blue-50 text-blue-900 border border-blue-200 text-xs font-medium"
+                            >
                               {m}
                             </span>
                           ))}
@@ -495,119 +805,244 @@ export const ClinicalReasoningPanel: React.FC<ClinicalReasoningPanelProps> = ({
                       </div>
 
                       {/* Triệu chứng phụ củng cố */}
-                      <div className="p-2.5 bg-white border border-slate-200 rounded-lg">
-                        <span className="font-bold text-slate-800 block mb-1 flex items-center gap-1">
-                          <Check className="w-3.5 h-3.5 text-slate-500" />
-                          Triệu chứng phụ củng cố:
+                      <div className="p-3 bg-white border border-slate-200 rounded-xl shadow-2xs">
+                        <span className="font-bold text-slate-800 block mb-2 flex items-center gap-1.5">
+                          <Check className="w-4 h-4 text-slate-500 shrink-0" />
+                          <span>Triệu chứng phụ củng cố ({minorSymptoms.length}):</span>
                         </span>
-                        <div className="flex flex-wrap gap-1">
+                        <div className="flex flex-wrap gap-1.5">
                           {minorSymptoms.length > 0 ? (
                             minorSymptoms.map((m, idx) => (
-                              <span key={idx} className="px-1.5 py-0.5 rounded bg-slate-50 text-slate-700 border border-slate-200 text-[11px]">
+                              <span
+                                key={idx}
+                                className="px-2 py-1 rounded-md bg-slate-50 text-slate-700 border border-slate-200 text-xs"
+                              >
                                 {m}
                               </span>
                             ))
                           ) : (
-                            <span className="text-slate-400 italic text-[11px]">Không có triệu chứng phụ đặc biệt</span>
+                            <span className="text-slate-400 italic text-xs">Không ghi nhận thêm triệu chứng phụ đặc biệt</span>
                           )}
                         </div>
                       </div>
                     </div>
+
+                    {/* Dịch tễ học nếu có */}
+                    {epiContext && (epiContext.endemicArea || epiContext.outbreakAlert || epiContext.vectorExposure) && (
+                      <div className="mt-2.5 p-2.5 bg-teal-50/70 border border-teal-200 rounded-lg flex items-center gap-2 text-xs text-teal-900">
+                        <Info className="w-4 h-4 text-teal-600 shrink-0" />
+                        <div>
+                          <span className="font-bold">Bối cảnh Dịch tễ học & Véc tơ:</span>{' '}
+                          {[epiContext.endemicArea, epiContext.outbreakAlert, epiContext.vectorExposure].filter(Boolean).join(' · ')}
+                        </div>
+                      </div>
+                    )}
                   </div>
 
-                  {/* Cận lâm sàng ban đầu ủng hộ */}
+                  {/* 2. Box Tím: CLS bước đầu ủng hộ chẩn đoán (NÂNG CẤP ĐẲNG CẤP LÂM SÀNG) */}
                   {supportiveLabs.length > 0 && (
-                    <div className="p-2.5 bg-purple-50/60 border border-purple-200 rounded-lg text-xs">
-                      <span className="font-bold text-purple-900 block mb-1 flex items-center gap-1">
-                        <Microscope className="w-3.5 h-3.5 text-purple-600" />
-                        CLS bước đầu ủng hộ chẩn đoán:
-                      </span>
-                      <div className="flex flex-wrap gap-1.5">
+                    <div className="p-3.5 sm:p-4 bg-gradient-to-r from-purple-50/80 via-purple-50/50 to-indigo-50/30 border border-purple-200/90 rounded-xl text-xs shadow-2xs space-y-2.5">
+                      <div className="flex items-center justify-between gap-2 flex-wrap">
+                        <span className="font-bold text-purple-950 flex items-center gap-1.5 text-xs sm:text-sm">
+                          <Microscope className="w-4 h-4 text-purple-700 shrink-0" />
+                          <span>CLS bước đầu ủng hộ chẩn đoán:</span>
+                        </span>
+                        <span className="text-[11px] text-purple-800 font-semibold bg-purple-100/90 border border-purple-200 px-2.5 py-0.5 rounded-full">
+                          Động học bất thường ban đầu
+                        </span>
+                      </div>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2.5">
                         {supportiveLabs.map((lab, idx) => (
-                          <span key={idx} className="px-2 py-0.5 rounded bg-purple-100 text-purple-900 border border-purple-300 font-mono-custom font-semibold text-[11px]">
-                            🧪 {lab}
-                          </span>
+                          <div
+                            key={idx}
+                            className={`p-2.5 rounded-lg border text-xs flex flex-col justify-between ${
+                              lab.severity === 'critical'
+                                ? 'bg-rose-50/70 border-rose-200 text-rose-950'
+                                : 'bg-purple-100/60 border-purple-200/90 text-purple-950'
+                            }`}
+                          >
+                            <div className="flex items-center justify-between gap-1 mb-1">
+                              <span className="font-bold text-xs flex items-center gap-1">
+                                {lab.severity === 'critical' ? (
+                                  <AlertCircle className="w-3.5 h-3.5 text-rose-600" />
+                                ) : (
+                                  <span className="w-2 h-2 rounded-full bg-purple-600" />
+                                )}
+                                <span>{lab.label}</span>
+                              </span>
+                              <span
+                                className={`px-1.5 py-0.5 rounded font-mono-custom font-bold text-[11px] ${
+                                  lab.severity === 'critical'
+                                    ? 'bg-rose-600 text-white'
+                                    : 'bg-purple-700 text-white'
+                                }`}
+                              >
+                                {lab.value}
+                              </span>
+                            </div>
+                            <p className="text-[11px] text-slate-600 mt-1 leading-normal italic">
+                              {lab.meaning}
+                            </p>
+                          </div>
                         ))}
                       </div>
                     </div>
                   )}
 
-                  {/* Đề xuất Cận lâm sàng XÁC CHẨN */}
-                  <div className="p-3 bg-emerald-50/70 border border-emerald-200 rounded-lg text-xs">
-                    <span className="font-bold text-emerald-950 flex items-center gap-1.5 mb-2">
-                      <Target className="w-4 h-4 text-emerald-600" />
-                      Mục tiêu CLS để XÁC CHẨN (CĐXĐ):
-                    </span>
-                    <ul className="space-y-1 pl-1">
+                  {/* 3. Box Xanh Lá: Mục tiêu CLS để XÁC CHẨN (CĐXĐ) (NÂNG CẤP TOÀN DIỆN) */}
+                  <div className="p-3.5 sm:p-4 bg-gradient-to-r from-emerald-50/90 via-teal-50/50 to-emerald-50/40 border border-emerald-300/80 rounded-xl text-xs shadow-2xs space-y-3">
+                    <div className="flex items-center justify-between gap-2 flex-wrap">
+                      <span className="font-bold text-emerald-950 flex items-center gap-2 text-xs sm:text-sm">
+                        <Target className="w-4 h-4 text-emerald-700 shrink-0" />
+                        <span>Mục tiêu CLS để XÁC CHẨN (CĐXĐ):</span>
+                      </span>
+                      {activeChain?.goldStandard && (
+                        <span className="text-[11px] text-emerald-800 font-semibold bg-emerald-100 border border-emerald-300 px-2.5 py-0.5 rounded-full flex items-center gap-1">
+                          <Sparkles className="w-3 h-3 text-emerald-600" />
+                          <span>Chuẩn EBM Bộ Y Tế</span>
+                        </span>
+                      )}
+                    </div>
+
+                    {activeChain?.goldStandard && (
+                      <div className="p-2.5 bg-white/90 border border-emerald-200 rounded-lg text-xs text-emerald-950 font-medium leading-relaxed">
+                        <b className="text-emerald-800">Tiêu chuẩn vàng (Gold Standard):</b> {activeChain.goldStandard}
+                      </div>
+                    )}
+
+                    <div className="space-y-2">
                       {confirmatoryTests.map((t, idx) => (
-                        <li key={idx} className="flex items-start gap-1.5 text-emerald-900">
-                          <span className="font-bold text-emerald-700 mt-0.5">•</span>
-                          <span>
-                            <b>{t.name}:</b> {t.purpose}
+                        <div
+                          key={idx}
+                          className="p-2.5 bg-white/95 border border-emerald-200/90 rounded-lg flex items-start gap-2.5 hover:border-emerald-400 transition-colors"
+                        >
+                          <span className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-800 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
+                            {idx + 1}
                           </span>
-                        </li>
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-center justify-between gap-2 flex-wrap">
+                              <span className="font-bold text-slate-900 text-xs sm:text-[13px]">
+                                {t.name}
+                              </span>
+                              <span className="text-[10.5px] font-semibold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                                {t.timing}
+                              </span>
+                            </div>
+                            <p className="text-slate-600 text-xs mt-0.5 leading-relaxed">
+                              {t.purpose}
+                            </p>
+                          </div>
+                        </div>
                       ))}
-                    </ul>
+                    </div>
                   </div>
                 </div>
               </div>
             )}
 
-            {/* Section C: Biện luận Chẩn đoán Phân biệt */}
+            {/* Section C: BIỆN LUẬN CHẨN ĐOÁN PHÂN BIỆT (CĐPB) (HÌNH 1 NÂNG CẤP - TRÁNH LỖI "Chưa có ..") */}
             {differentialDiagnoses.length > 0 && (
-              <div className="border border-amber-200 rounded-xl bg-gradient-to-b from-amber-50/30 to-white overflow-hidden shadow-2xs">
-                <div className="p-3.5 bg-amber-100/60 border-b border-amber-200/80 flex items-center justify-between gap-2 flex-wrap">
+              <div className="border border-amber-200 rounded-2xl bg-gradient-to-b from-amber-50/30 via-white to-white overflow-hidden shadow-xs">
+                <div className="p-4 bg-gradient-to-r from-amber-100/80 via-amber-50/60 to-amber-100/60 border-b border-amber-200 flex items-center justify-between gap-2 flex-wrap">
                   <div className="flex items-center gap-2">
-                    <GitCompare className="w-4 h-4 text-amber-700" />
-                    <span className="text-xs font-bold text-amber-950">
-                      C. BIỆN LUẬN CHẨN ĐOÁN PHÂN BIỆT (CĐPB — {differentialDiagnoses.length} bệnh lý cần loại trừ)
+                    <div className="w-7 h-7 rounded-lg bg-amber-600 text-white flex items-center justify-center font-bold text-xs shadow-2xs">
+                      C
+                    </div>
+                    <span className="text-xs sm:text-sm font-bold text-amber-950">
+                      BIỆN LUẬN CHẨN ĐOÁN PHÂN BIỆT (CĐPB — {differentialDiagnoses.length} bệnh lý cần loại trừ)
                     </span>
                   </div>
-                  <span className="text-[11px] text-amber-800 font-medium">
+                  <span className="text-[11px] text-amber-800 font-semibold bg-amber-100/90 border border-amber-200 px-2.5 py-0.5 rounded-full">
                     Tránh bỏ sót bệnh lý cấp tính & trùng lắp
                   </span>
                 </div>
 
-                <div className="p-4 space-y-3">
+                <div className="p-4 sm:p-5 space-y-3.5">
                   {differentialDiagnoses.map((diff, idx) => (
-                    <div key={idx} className="p-3 bg-white border border-amber-200/80 rounded-lg space-y-2 text-xs">
+                    <div
+                      key={idx}
+                      className="p-3.5 sm:p-4 bg-white border border-amber-200/90 hover:border-amber-400 rounded-xl space-y-3 text-xs shadow-2xs transition-all"
+                    >
+                      {/* Tiêu đề chẩn đoán phân biệt */}
                       <div className="flex items-center justify-between gap-2 flex-wrap">
-                        <span className="font-bold text-slate-900 text-xs flex items-center gap-1.5">
-                          <span className="w-5 h-5 rounded-full bg-amber-100 text-amber-800 flex items-center justify-center font-bold text-[11px]">
+                        <span className="font-bold text-slate-900 text-xs sm:text-sm flex items-center gap-2">
+                          <span className="w-5 h-5 rounded-full bg-amber-100 text-amber-900 flex items-center justify-center font-bold text-xs">
                             {idx + 1}
                           </span>
-                          Phân biệt với: <span className="text-amber-950 font-bold">{diff.disease.ten}</span>
+                          <span>Phân biệt với:</span>{' '}
+                          <span className="text-amber-950 font-bold text-sm">
+                            {diff.disease.ten}
+                          </span>
+                          <span className="text-[11px] font-mono-custom text-slate-500 bg-slate-100 px-1.5 py-0.5 rounded border border-slate-200">
+                            ICD: {diff.disease.icd}
+                          </span>
                         </span>
-                        <span className="px-2 py-0.5 rounded bg-amber-50 text-amber-800 border border-amber-200 font-mono-custom text-[11px] font-semibold">
-                          {diff.pct}% phù hợp
-                        </span>
+                        <div className="flex items-center gap-2">
+                          <span className="px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-900 border border-amber-300 font-mono-custom text-xs font-bold">
+                            {diff.pct}% phù hợp
+                          </span>
+                          {onOpenVaultDrawer && (
+                            <button
+                              type="button"
+                              onClick={() => onOpenVaultDrawer(diff.disease.ten, diff.disease.icd, 'CD')}
+                              className="px-2 py-0.5 rounded text-[11px] font-medium text-amber-800 hover:text-amber-950 hover:bg-amber-100/80 transition-colors flex items-center gap-1 cursor-pointer"
+                              title="Tra cứu bài viết chuyên khảo trong Kho Chẩn Đoán"
+                            >
+                              <BookOpen className="w-3 h-3 text-amber-600" />
+                              <span>Tra cứu</span>
+                            </button>
+                          )}
+                        </div>
                       </div>
 
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pl-6">
-                        <div>
-                          <span className="text-[11px] font-semibold text-slate-600 block">Nghĩ đến vì:</span>
-                          <span className="text-[11px] text-slate-800">
-                            {diff.commonSymptoms.length > 0 ? diff.commonSymptoms.slice(0, 3).join(', ') : 'Có triệu chứng toàn thân tương tự'}
+                      {/* 2 Cột đối sánh: Nghĩ đến vì vs Ít nghĩ hơn vì */}
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pl-1 sm:pl-7">
+                        {/* Cột Nghĩ đến vì */}
+                        <div className="p-2.5 bg-blue-50/50 border border-blue-200/70 rounded-lg">
+                          <span className="text-[11px] font-bold text-blue-900 block mb-1 flex items-center gap-1">
+                            <Check className="w-3.5 h-3.5 text-blue-600" />
+                            <span>Nghĩ đến vì (Điểm tương đồng):</span>
+                          </span>
+                          <span className="text-xs text-slate-800 leading-relaxed block">
+                            {diff.commonSymptoms.length > 0
+                              ? diff.commonSymptoms.slice(0, 4).join(', ')
+                              : 'Có các triệu chứng toàn thân cấp tính tương đồng'}
                           </span>
                         </div>
-                        <div>
-                          <span className="text-[11px] font-semibold text-rose-700 block">Ít nghĩ hơn vì:</span>
-                          <span className="text-[11px] text-rose-900">
-                            {diff.negatedMatching.length > 0
-                              ? `Không có ${diff.negatedMatching.join(', ')}`
-                              : diff.missingSymptoms.length > 0
-                              ? `Chưa có ${diff.missingSymptoms.join(', ')}`
-                              : 'Tổ hợp triệu chứng chưa điển hình'}
+
+                        {/* Cột Ít nghĩ hơn vì (ĐÃ KHẮC PHỤC TRIỆT ĐỂ LỖI "Chưa có ..") */}
+                        <div className="p-2.5 bg-rose-50/50 border border-rose-200/70 rounded-lg">
+                          <span className="text-[11px] font-bold text-rose-900 block mb-1 flex items-center gap-1">
+                            <ShieldAlert className="w-3.5 h-3.5 text-rose-600" />
+                            <span>Ít nghĩ hơn vì (Dấu hiệu loại trừ):</span>
+                          </span>
+                          <span className="text-xs text-rose-950 leading-relaxed block">
+                            {diff.cleanNegated.length > 0 ? (
+                              `Bệnh nhân không có biểu hiện: ${diff.cleanNegated.join(', ')}.`
+                            ) : diff.cleanMissing.length > 0 ? (
+                              `Chưa ghi nhận các dấu chứng kinh điển: ${diff.cleanMissing.slice(0, 2).join(', ')}.`
+                            ) : (
+                              'Chưa có bằng chứng cận lâm sàng hoặc hình ảnh học đặc hiệu xác nhận chẩn đoán này.'
+                            )}
                           </span>
                         </div>
                       </div>
 
                       {/* Đề xuất CLS loại trừ */}
-                      <div className="mt-1 pl-6 pt-1.5 border-t border-slate-100 flex items-center gap-1.5 text-[11px] text-slate-700 flex-wrap">
-                        <ShieldCheck className="w-3.5 h-3.5 text-rose-600 shrink-0" />
-                        <span>
-                          <b>CLS để loại trừ:</b> <span className="text-rose-900 font-semibold">{diff.exclusionTest.name}</span> ({diff.exclusionTest.purpose})
-                        </span>
+                      <div className="pl-1 sm:pl-7 pt-2 border-t border-slate-100 flex items-center justify-between gap-2 flex-wrap text-xs">
+                        <div className="flex items-center gap-1.5 flex-wrap">
+                          <span className="px-1.5 py-0.5 rounded text-[10.5px] font-bold uppercase bg-rose-100 text-rose-800 border border-rose-300">
+                            {diff.exclusionTest.badge}
+                          </span>
+                          <span className="text-slate-600 font-medium">CLS để loại trừ:</span>
+                          <span className="text-slate-900 font-bold">
+                            {diff.exclusionTest.name}
+                          </span>
+                          <span className="text-slate-500 italic">
+                            ({diff.exclusionTest.purpose.toLowerCase()})
+                          </span>
+                        </div>
                       </div>
                     </div>
                   ))}
@@ -615,45 +1050,124 @@ export const ClinicalReasoningPanel: React.FC<ClinicalReasoningPanelProps> = ({
               </div>
             )}
 
-            {/* Section D: Đánh giá Toàn diện Bệnh lý */}
-            <div className="border border-slate-200 rounded-xl bg-white p-4 shadow-2xs space-y-3">
-              <span className="text-xs font-bold text-slate-800 flex items-center gap-1.5 uppercase tracking-wide">
-                <Activity className="w-4 h-4 text-indigo-600" />
-                D. Đánh giá Toàn diện Bệnh lý (Mức độ — Căn nguyên — Biến chứng)
-              </span>
+            {/* Section D: Đánh giá Toàn diện Bệnh lý (Mức độ — Căn nguyên — Biến chứng) */}
+            <div className="border border-slate-200 rounded-2xl bg-white p-4 sm:p-5 shadow-xs space-y-3.5">
+              <div className="flex items-center justify-between gap-2 flex-wrap">
+                <span className="text-xs sm:text-sm font-bold text-slate-900 flex items-center gap-2 uppercase tracking-wide">
+                  <Activity className="w-4 h-4 text-indigo-600" />
+                  <span>D. Đánh giá Toàn diện Bệnh lý (Mức độ — Căn nguyên — Biến chứng)</span>
+                </span>
+                <span className="text-[11px] text-slate-500 font-medium">
+                  Chuẩn hóa phân tầng theo EBM & Phác đồ Bộ Y Tế
+                </span>
+              </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
-                {/* Mức độ nặng */}
-                <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg">
-                  <span className="font-bold text-slate-700 block mb-1 text-[11px] uppercase tracking-wider">
-                    1. Mức độ nặng:
-                  </span>
-                  <p className="text-slate-800 leading-relaxed font-medium">
-                    {comprehensiveAssessment.severity}
-                  </p>
+                {/* 1. Mức độ nặng */}
+                <div
+                  className={`p-3.5 rounded-xl border flex flex-col justify-between ${
+                    comprehensiveAssessment.severityLevel === 'critical'
+                      ? 'bg-rose-50/80 border-rose-200'
+                      : comprehensiveAssessment.severityLevel === 'severe'
+                      ? 'bg-amber-50/80 border-amber-200'
+                      : 'bg-slate-50 border-slate-200'
+                  }`}
+                >
+                  <div>
+                    <span className="font-bold text-slate-700 block mb-1.5 text-[11px] uppercase tracking-wider flex items-center gap-1">
+                      <Flame className="w-3.5 h-3.5 text-amber-600" />
+                      <span>1. Mức độ nặng:</span>
+                    </span>
+                    <p className="text-slate-800 leading-relaxed font-semibold">
+                      {comprehensiveAssessment.severity}
+                    </p>
+                  </div>
                 </div>
 
-                {/* Nguyên nhân / Căn nguyên */}
-                <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg">
-                  <span className="font-bold text-slate-700 block mb-1 text-[11px] uppercase tracking-wider">
-                    2. Căn nguyên bệnh sinh:
-                  </span>
-                  <p className="text-slate-800 leading-relaxed">
-                    {comprehensiveAssessment.etiology}
-                  </p>
+                {/* 2. Nguyên nhân / Căn nguyên */}
+                <div className="p-3.5 bg-slate-50 border border-slate-200 rounded-xl flex flex-col justify-between">
+                  <div>
+                    <span className="font-bold text-slate-700 block mb-1.5 text-[11px] uppercase tracking-wider flex items-center gap-1">
+                      <Microscope className="w-3.5 h-3.5 text-blue-600" />
+                      <span>2. Căn nguyên bệnh sinh:</span>
+                    </span>
+                    <p className="text-slate-800 leading-relaxed">
+                      {comprehensiveAssessment.etiology}
+                    </p>
+                  </div>
                 </div>
 
-                {/* Biến chứng */}
-                <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg">
-                  <span className="font-bold text-slate-700 block mb-1 text-[11px] uppercase tracking-wider">
-                    3. Biến chứng:
-                  </span>
-                  <p className="text-slate-800 leading-relaxed font-medium text-rose-900">
-                    {comprehensiveAssessment.complicationStr}
-                  </p>
+                {/* 3. Biến chứng */}
+                <div className="p-3.5 bg-slate-50 border border-slate-200 rounded-xl flex flex-col justify-between">
+                  <div>
+                    <span className="font-bold text-slate-700 block mb-1.5 text-[11px] uppercase tracking-wider flex items-center gap-1">
+                      <HeartPulse className="w-3.5 h-3.5 text-rose-600" />
+                      <span>3. Dự báo biến chứng:</span>
+                    </span>
+                    <p className="text-slate-800 leading-relaxed font-medium text-rose-950">
+                      {comprehensiveAssessment.complicationStr}
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
+
+            {/* BOTTOM STRATEGIC ACTION BAR (NÂNG CẤP TÍCH HỢP ĐIỀU HƯỚNG LIỀN MẠCH SANG BƯỚC 4) */}
+            {leadDiagnosis && (
+              <div className="pt-2 flex flex-wrap items-center justify-between gap-3 p-4 bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white rounded-2xl shadow-sm">
+                <div className="flex items-center gap-3">
+                  <div className="w-9 h-9 rounded-xl bg-blue-500/20 text-blue-300 border border-blue-400/30 flex items-center justify-center shrink-0">
+                    <ClipboardCheck className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <div className="font-bold text-xs sm:text-sm text-white">
+                      Hoàn tất biện luận lâm sàng cho: <span className="text-blue-300 font-extrabold">{leadDiagnosis.ten}</span>
+                    </div>
+                    <div className="text-[11px] text-slate-300">
+                      Chuyển sang Bước 4 để xác lập phác đồ phân tầng, y lệnh thuốc & theo dõi điều trị chi tiết.
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2.5 flex-wrap">
+                  {onGoToProtocol && (
+                    <button
+                      id="btn-goto-protocol-integrated"
+                      type="button"
+                      onClick={() => onGoToProtocol(leadDiagnosis.id)}
+                      className="flex items-center gap-2 px-4 sm:px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs sm:text-sm rounded-xl shadow-xs cursor-pointer transition-all hover:translate-x-0.5"
+                    >
+                      <span>Tiến hành lập phác đồ điều trị (Bước 4)</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </button>
+                  )}
+
+                  {onOpenVaultDrawer && (
+                    <button
+                      type="button"
+                      onClick={() => onOpenVaultDrawer(leadDiagnosis.ten, leadDiagnosis.icd, 'PDDT')}
+                      className="flex items-center gap-1.5 px-3 py-2 bg-white/10 hover:bg-white/20 text-slate-200 hover:text-white border border-white/20 font-medium text-xs rounded-xl cursor-pointer transition-colors"
+                      title="Tra cứu phác đồ điều trị & nghiên cứu y học chứng cứ tương ứng"
+                    >
+                      <BookOpen className="w-3.5 h-3.5 text-blue-300" />
+                      <span>Tra cứu Vault EBM</span>
+                    </button>
+                  )}
+
+                  {onPrintReport && (
+                    <button
+                      type="button"
+                      onClick={onPrintReport}
+                      className="flex items-center gap-1.5 px-3 py-2 bg-white/10 hover:bg-white/20 text-slate-200 hover:text-white border border-white/20 font-medium text-xs rounded-xl cursor-pointer transition-colors"
+                      title="In báo cáo bệnh án hoặc xuất bản PDF"
+                    >
+                      <Printer className="w-3.5 h-3.5" />
+                      <span>In báo cáo / PDF</span>
+                    </button>
+                  )}
+                </div>
+              </div>
+            )}
           </div>
         )}
       </div>
