@@ -892,6 +892,32 @@
 
 ---
 
+## ⚡ src/content/docspace/public/cdss/ (Hệ Sinh Thái CDSS Standalone Web Modules)
+
+| File / Thư mục | Vai trò | Phân loại |
+|---|---|---|
+| `index.html` | Cổng thông tin CDSS Hub trung tâm (Hiển thị 8 modules lâm sàng độc lập) | CDSS Hub |
+| `index.ts` | Entry point TypeScript render lưới CDSS Modules | CDSS Hub Engine |
+| `cdss-registry.ts` | CSDL đăng ký danh mục toàn bộ CDSS modules (`CDSS_MODULES`) | CDSS Registry |
+| `cdss-types.ts` | Type definitions cho CDSS Metadata, Categories và Controllers | CDSS Types |
+| `cdss-hub-bundle.js` | IIFE bundle đóng gói Hub phục vụ chạy offline 100% | CDSS Hub Bundle |
+| `shared/cdss-shell.css` | Hệ thống Design Tokens, Navbar & Responsive dùng chung cho mọi CDSS | CDSS Shared Shell |
+| `shared/cdss-shell.js` | Bộ điều khiển đồng bộ Dark/Light Mode và sự kiện toàn cục CDSS | CDSS Shared Shell |
+| `dengue/index.html` | CDSS Tính Dịch Truyền & Chống Sốc SXHD Dengue (Bộ Y Tế 2023) | Standalone Module |
+| `ecg/index.html` | Phân Tích Điện Tâm Đồ 12 Chuyển Đạo & AI Chẩn Đoán (ECG Master) | Standalone Module |
+| `abg/index.html` | Phân Tích Khí Máu Động Mạch & Xử Trí Toan Kiềm (ABG Pro) | Standalone Module |
+| `xray/index.html` | Phân Tích X-Quang Ngực & Bụng Kỹ Thuật Số (RadAI PACS) | Standalone Module |
+| `hepa/index.html` | Phân Tích Sinh Hóa Gan & Quyết Định Lâm Sàng (HepaCDSS) | Standalone Module |
+| `neuro/index.html` | Thần Kinh Lâm Sàng & Mô Phỏng Y Khoa (NeuroExam Pro) | Standalone Module |
+| `microbio/index.html` | Hệ Thống Vi Sinh Lâm Sàng & Định Danh Vi Khuẩn (Mahon CDSS) | Standalone Module |
+| `antibiotic/index.html` | Hệ Thống Quản Lý Liều Kháng Sinh & Suy Thận (Antibiotic CDSS) | Standalone Module |
+| `.agents/skills/cdss-standalone-manager/SKILL.md` | AI Agent Skill quản lý, audit và giám sát vòng đời web CDSS | CDSS Agent Skill |
+| `.agents/skills/cdss-ui-sync-squad/SKILL.md` | AI Agent Skill bảo đảm đồng bộ UI/UX, Design Tokens & Dark Mode | CDSS Agent Skill |
+| `.agents/skills/cdss-module-builder/SKILL.md` | AI Agent Skill hướng dẫn scaffolding, đóng gói và tích hợp CDSS mới | CDSS Agent Skill |
+
+---
+
 *Cập nhật file này mỗi khi thêm trang/skill mới vào hệ thống.*
+
 
 

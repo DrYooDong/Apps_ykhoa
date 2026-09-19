@@ -131,6 +131,24 @@ export const CDSS_MODULES: CDSSModuleMeta[] = [
     badge: 'Mahon 6th Ed. + AST/CLSI',
     isStandalone: true,
     standaloneUrl: 'microbio/index.html'
+  },
+  {
+    id: 'cdss-antibiotic-dosing',
+    slug: 'antibiotic',
+    title: 'Hệ Thống Quản Lý Liều Kháng Sinh & Suy Thận (Antibiotic CDSS)',
+    titleEn: 'Clinical Antibiotic Dosing & Renal Adjustment CDSS',
+    shortDesc: 'Tính toán liều kháng sinh chuẩn hóa theo độ thanh thải Creatinine (Cockcroft-Gault), eGFR CKD-EPI 2021, lọc máu chu kỳ HD/CRRT/CAPD, cảnh báo tương tác thuốc DDI, phân loại WHO AWaRe và xuất báo cáo hội chẩn PDF.',
+    category: 'pharmacology',
+    categoryName: 'Dược lý & Kháng sinh',
+    version: '2.0.0 (WHO AWaRe & Sanford)',
+    updatedAt: '2026-09-19',
+    author: 'CliniPortal Pharmacology Squad & Sanford Guidelines',
+    guidelineSource: 'WHO AWaRe Classification & The Sanford Guide to Antimicrobial Therapy',
+    icd10: ['Z16', 'N18', 'A41', 'A49'],
+    icon: 'fa-solid fa-pills',
+    badge: 'WHO AWaRe + Sanford + HD/CRRT',
+    isStandalone: true,
+    standaloneUrl: 'antibiotic/index.html'
   }
 ];
 

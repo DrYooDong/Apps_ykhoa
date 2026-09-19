@@ -1,0 +1,185 @@
+/**
+ * CliniPortal CDSS — Shared Shell & Navigation Design System
+ * Path: src/content/docspace/public/cdss/shared/cdss-shell.css
+ * 
+ * Chuẩn hóa giao diện Header, Breadcrumb, Theme Toggle và Design Tokens 
+ * cho toàn bộ hệ thống module CDSS độc lập (Standalone CDSS).
+ */
+
+:root {
+  --color-primary: #0284c7;
+  --color-primary-hover: #0369a1;
+  --color-surface: #ffffff;
+  --color-bg: #f8fafc;
+  --color-text: #0f172a;
+  --color-text-muted: #64748b;
+  --color-border: #e2e8f0;
+  --color-success: #16a34a;
+  --color-warning: #eab308;
+  --color-danger: #ef4444;
+  --color-info: #06b6d4;
+  
+  --cdss-nav-height: 52px;
+  --cdss-font-sans: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
+  --cdss-font-mono: 'JetBrains Mono', 'IBM Plex Mono', monospace;
+}
+
+[data-theme="dark"] {
+  --color-primary: #38bdf8;
+  --color-primary-hover: #0ea5e9;
+  --color-surface: #1e293b;
+  --color-bg: #0f172a;
+  --color-text: #f8fafc;
+  --color-text-muted: #94a3b8;
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-border-hover: rgba(255, 255, 255, 0.2);
+}
+
+/* Master Top Navigation Bar */
+.cdss-portal-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  height: var(--cdss-nav-height);
+  padding: 0 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.94);
+  border-bottom: 1px solid var(--color-border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+  font-family: var(--cdss-font-sans);
+  box-sizing: border-box;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+[data-theme="dark"] .cdss-portal-navbar {
+  background: rgba(15, 23, 42, 0.94);
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Breadcrumbs Area */
+.cdss-portal-nav-breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cdss-portal-nav-breadcrumbs a {
+  color: var(--color-text-muted);
+  text-decoration: none;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: color 0.15s ease;
+}
+
+.cdss-portal-nav-breadcrumbs a:hover {
+  color: var(--color-primary);
+}
+
+.cdss-portal-nav-breadcrumbs .separator {
+  font-size: 0.6rem;
+  opacity: 0.5;
+  color: var(--color-text-muted);
+}
+
+.cdss-portal-nav-breadcrumbs .active {
+  color: var(--color-text);
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* Action Buttons Area */
+.cdss-portal-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  flex-shrink: 0;
+}
+
+.cdss-portal-nav-btn {
+  padding: 0.38rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+  text-decoration: none;
+  font-size: 0.78rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  line-height: 1.2;
+}
+
+.cdss-portal-nav-btn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(2, 132, 199, 0.12);
+}
+
+/* Theme Toggle Button */
+.cdss-portal-theme-btn {
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cdss-portal-theme-btn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  transform: rotate(15deg);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .cdss-portal-navbar {
+    padding: 0 0.75rem;
+  }
+  
+  .cdss-portal-nav-breadcrumbs .crumb-hide-mobile {
+    display: none;
+  }
+  
+  .cdss-portal-nav-btn span {
+    display: none;
+  }
+  
+  .cdss-portal-nav-btn {
+    padding: 0.4rem 0.55rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .cdss-portal-nav-breadcrumbs .separator:first-of-type {
+    display: none;
+  }
+  
+  .cdss-portal-nav-breadcrumbs a:first-of-type {
+    display: none;
+  }
+}
