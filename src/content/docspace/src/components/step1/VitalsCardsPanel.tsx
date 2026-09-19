@@ -29,7 +29,7 @@ export const VitalsCardsPanel: React.FC<VitalsCardsPanelProps> = ({
       <div className="flex items-center justify-between mb-2">
         <span className="text-xs font-bold text-slate-700 flex items-center gap-1.5">
           <Activity className="w-3.5 h-3.5 text-blue-600" />
-          Thước đo sinh hiệu (Vitals Monitor)
+          Thước đo DHST (Dấu hiệu sinh tồn)
         </span>
         <span className="text-[11px] text-slate-500">
           Vượt ngưỡng tham chiếu sẽ tự động suy ra dữ kiện chẩn đoán (⚙)
@@ -42,7 +42,7 @@ export const VitalsCardsPanel: React.FC<VitalsCardsPanelProps> = ({
           <div className="flex items-center justify-between mb-1">
             <label className="font-sans font-semibold text-slate-700 flex items-center gap-1 text-[11px]">
               <Thermometer className="w-3 h-3 text-red-500" />
-              Nhiệt độ
+              T°C (Nhiệt độ)
             </label>
             <span className="text-[9.5px] text-slate-400 font-sans">36.5–37.5°C</span>
           </div>
@@ -69,7 +69,7 @@ export const VitalsCardsPanel: React.FC<VitalsCardsPanelProps> = ({
           <div className="flex items-center justify-between mb-1">
             <label className="font-sans font-semibold text-slate-700 flex items-center gap-1 text-[11px]">
               <Heart className="w-3 h-3 text-rose-500" />
-              Mạch
+              M (Mạch)
             </label>
             <span className="text-[9.5px] text-slate-400 font-sans">60–90 bpm</span>
           </div>
@@ -95,7 +95,7 @@ export const VitalsCardsPanel: React.FC<VitalsCardsPanelProps> = ({
           <div className="flex items-center justify-between mb-1">
             <label className="font-sans font-semibold text-slate-700 flex items-center gap-1 text-[11px]">
               <Activity className="w-3 h-3 text-blue-500" />
-              Huyết áp
+              HA (Huyết áp)
             </label>
             <span className="text-[9.5px] text-slate-400 font-sans">120/80</span>
           </div>
@@ -106,7 +106,7 @@ export const VitalsCardsPanel: React.FC<VitalsCardsPanelProps> = ({
               value={vitals.vHATT}
               onChange={(e) => setVitals((prev) => ({ ...prev, vHATT: e.target.value }))}
               placeholder="120"
-              title="Tâm thu (bình thường 90-139)"
+              title="HA tâm thu (bình thường 90-139)"
               className={`w-full border rounded p-1.5 text-xs font-bold text-center ${
                 vitalsStatus.isBPAbnormal
                   ? 'border-red-400 bg-red-50 text-red-700'
@@ -120,7 +120,7 @@ export const VitalsCardsPanel: React.FC<VitalsCardsPanelProps> = ({
               value={vitals.vHATTr}
               onChange={(e) => setVitals((prev) => ({ ...prev, vHATTr: e.target.value }))}
               placeholder="80"
-              title="Tâm trương (bình thường 60-89)"
+              title="HA tâm trương (bình thường 60-89)"
               className="w-full border border-slate-200 bg-slate-50 focus:bg-white rounded p-1.5 text-xs font-bold text-center text-slate-800"
             />
           </div>
@@ -131,7 +131,7 @@ export const VitalsCardsPanel: React.FC<VitalsCardsPanelProps> = ({
           <div className="flex items-center justify-between mb-1">
             <label className="font-sans font-semibold text-slate-700 flex items-center gap-1 text-[11px]">
               <Wind className="w-3 h-3 text-cyan-500" />
-              Nhịp thở
+              NT (Nhịp thở)
             </label>
             <span className="text-[9.5px] text-slate-400 font-sans">12–20 l/p</span>
           </div>

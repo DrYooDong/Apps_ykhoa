@@ -13,6 +13,7 @@ import {
   VitalsState,
 } from '../types.ts';
 import { normalizeText } from './normalizeUtils.ts';
+import { expandSearchTerms } from './medicalAbbreviations.ts';
 export { normalizeText };
 
 export function evaluateThreshold(
@@ -118,7 +119,14 @@ export function extractFromText(raw: string, kb: KnowledgeBase): ExtractedPasteD
   const found: Record<string, { tc: TrieuChung; pos: boolean; neg: boolean }> = {};
 
   for (const tc of kb.trieuChung) {
-    for (const kw of tc.tuKhoa) {
+    // Mở rộng bộ từ khóa của triệu chứng với cả từ viết tắt lâm sàng
+    const allKeywords = new Set<string>(tc.tuKhoa);
+    allKeywords.add(tc.ten);
+    tc.tuKhoa.forEach((kw) => {
+      expandSearchTerms(kw).forEach((expanded) => allKeywords.add(expanded));
+    });
+
+    for (const kw of allKeywords) {
       if (!kw) continue;
       const nKw = normalizeText(kw);
       const matches = matchKeywordIndices(normalized, nKw);
@@ -139,9 +147,9 @@ export function extractFromText(raw: string, kb: KnowledgeBase): ExtractedPasteD
     }
   }
 
-  const ageMatch = normalized.match(/(\d{1,3})\s*tuoi/);
+  const ageMatch = normalized.match(/(\d{1,3})\s*(?:tuoi|t)\b/);
   const genderMatch = normalized.match(/\b(?:benh nhan\s+|bn\s+)?(nam|nu)\b/);
-  const reasonMatch = raw.match(/(?:vào viện vì|lý do vào viện|vào viện với|vào vì)\s*([^.;\n]+)/i);
+  const reasonMatch = raw.match(/(?:vào viện vì|lý do vào viện|lý do nhập viện|ldnv|ldvv|vào viện với|vào vì)[:\s]*([^.;\n]+)/i);
   const jobMatch = raw.match(/(?:nghề nghiệp|làm nghề|công việc)[:\s]*([^.;\n]+)/i);
 
   const hc = {

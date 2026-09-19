@@ -78,10 +78,10 @@ export const CaseSummaryPanel: React.FC<CaseSummaryPanelProps> = ({
           </div>
           <div>
             <h2 className="text-xs sm:text-sm font-bold text-slate-800 leading-none">
-              Tóm tắt bệnh án chuẩn hóa (Hội chứng & Triệu chứng)
+              Tóm tắt BA chuẩn hóa (HC & TC)
             </h2>
             <span className="text-[10.5px] text-slate-400 font-medium">
-              Chuẩn bệnh án Nội khoa ĐHYD TP.HCM · Tự động cập nhật theo diễn tiến
+              Chuẩn bệnh án Nội khoa ĐHYD TP.HCM · Tự động cập nhật theo diễn tiến LS
             </span>
           </div>
         </div>
@@ -183,7 +183,7 @@ export const CaseSummaryPanel: React.FC<CaseSummaryPanelProps> = ({
           /* Structured Visual View */
           <div className="flex flex-col gap-3">
             {/* Section 0: Câu mở đầu & Hành chính lâm sàng */}
-            <div className="p-3 bg-gradient-to-r from-blue-50/70 via-indigo-50/40 to-slate-50 border border-blue-100/90 rounded-lg flex flex-col gap-1.5">
+            <div className="p-3 bg-gradient-to-r from-blue-50/80 via-indigo-50/40 to-slate-50 border border-blue-100/90 rounded-lg flex flex-col gap-1.5">
               <div className="flex items-center justify-between gap-2 flex-wrap">
                 <div className="flex items-center gap-2">
                   <div className="w-5 h-5 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center shrink-0">
@@ -201,92 +201,112 @@ export const CaseSummaryPanel: React.FC<CaseSummaryPanelProps> = ({
                 )}
               </div>
               <p className="text-[11.5px] text-slate-600 italic pl-7">
-                {s.leadIn || 'Qua hỏi bệnh và thăm khám lâm sàng, ghi nhận các hội chứng, triệu chứng sau:'}
+                {s.leadIn || 'Qua hỏi bệnh và thăm khám LS, ghi nhận các vấn đề bất thường sau:'}
               </p>
             </div>
 
-            {/* Section 1: Các Hội chứng lâm sàng & Vấn đề cấp (Ưu tiên số 1 theo chuẩn ĐHYD) */}
+            {/* Section 1: Các HC lâm sàng & Vấn đề cấp (Ưu tiên số 1 theo chuẩn ĐHYD) */}
             {s.syndromes && s.syndromes.length > 0 && (
               <div className="border border-indigo-200 bg-indigo-50/30 rounded-lg p-3">
-                <div className="flex items-center justify-between gap-2 mb-2">
+                <div className="flex items-center justify-between gap-2 mb-2.5">
                   <div className="flex items-center gap-1.5 text-xs font-bold text-indigo-950">
                     <Layers className="w-3.5 h-3.5 text-indigo-600" />
-                    <span>1. Các Hội chứng lâm sàng & Vấn đề cấp nổi bật:</span>
+                    <span>1. Các HC lâm sàng & Vấn đề cấp nổi bật:</span>
                   </div>
-                  <span className="text-[10px] font-medium text-indigo-600 bg-indigo-100/70 px-1.5 py-0.5 rounded">
-                    Gom nhóm bệnh cảnh
+                  <span className="text-[10px] font-medium text-indigo-700 bg-indigo-100/80 px-2 py-0.5 rounded-md border border-indigo-200">
+                    {s.syndromes.length} HC
                   </span>
                 </div>
-                <div className="flex flex-wrap gap-1.5">
+                <ul className="space-y-1.5">
                   {s.syndromes.map((syn, idx) => (
-                    <span
+                    <li
                       key={idx}
-                      className="px-2.5 py-1 rounded-md text-xs bg-indigo-100/80 text-indigo-900 border border-indigo-300/80 font-semibold shadow-2xs flex items-center gap-1"
+                      className="flex items-center gap-2 text-xs font-semibold text-indigo-950 bg-white/80 border border-indigo-200/80 px-2.5 py-1.5 rounded-lg shadow-2xs"
                     >
-                      <Activity className="w-3 h-3 text-indigo-600" />
-                      {syn}
-                    </span>
+                      <Activity className="w-3.5 h-3.5 text-indigo-600 shrink-0" />
+                      <span>{syn}</span>
+                    </li>
                   ))}
-                </div>
+                </ul>
               </div>
             )}
 
-            {/* Section 2: Triệu chứng cơ năng */}
-            <div className="border border-slate-200 rounded-lg p-3">
-              <div className="flex items-center gap-1.5 text-xs font-bold text-slate-800 mb-2">
-                <CheckCircle2 className="w-3.5 h-3.5 text-blue-600" />
-                <span>{s.syndromes && s.syndromes.length > 0 ? '2' : '1'}. Triệu chứng cơ năng & Bệnh sử:</span>
+            {/* Section 2: TCCN bất thường */}
+            <div className="border border-slate-200 rounded-lg p-3 bg-white">
+              <div className="flex items-center justify-between gap-2 mb-2.5">
+                <div className="flex items-center gap-1.5 text-xs font-bold text-slate-800">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-blue-600" />
+                  <span>{s.syndromes && s.syndromes.length > 0 ? '2' : '1'}. TCCN bất thường:</span>
+                </div>
+                {s.cnList.length > 0 && (
+                  <span className="text-[10px] font-medium text-blue-700 bg-blue-50 px-2 py-0.5 rounded-md border border-blue-200">
+                    {s.cnList.length} dấu hiệu
+                  </span>
+                )}
               </div>
               {s.cnList.length > 0 ? (
-                <div className="flex flex-wrap gap-1.5">
+                <ul className="space-y-1.5">
                   {s.cnList.map((item, idx) => (
-                    <span
+                    <li
                       key={idx}
-                      className="px-2 py-0.5 rounded text-xs bg-blue-50 text-blue-800 border border-blue-200 font-medium"
+                      className="flex items-start gap-2.5 text-xs text-slate-800 bg-blue-50/30 border border-blue-100/80 px-3 py-2 rounded-lg transition-colors hover:bg-blue-50/60"
                     >
-                      {item}
-                    </span>
+                      <span className="w-1.5 h-1.5 rounded-full bg-blue-600 mt-1.5 shrink-0" />
+                      <span className="leading-relaxed font-medium">{item}</span>
+                    </li>
                   ))}
-                </div>
+                </ul>
               ) : (
                 <p className="text-xs text-slate-400 italic">Chưa ghi nhận bất thường đặc hiệu.</p>
               )}
             </div>
 
-            {/* Section 3: Thực thể & Dấu hiệu sinh tồn */}
-            <div className="border border-slate-200 rounded-lg p-3">
-              <div className="flex items-center gap-1.5 text-xs font-bold text-slate-800 mb-2">
-                <Stethoscope className="w-3.5 h-3.5 text-emerald-600" />
-                <span>{s.syndromes && s.syndromes.length > 0 ? '3' : '2'}. Triệu chứng thực thể & Dấu hiệu sinh tồn:</span>
+            {/* Section 3: TCTT & DHST bất thường */}
+            <div className="border border-slate-200 rounded-lg p-3 bg-white">
+              <div className="flex items-center justify-between gap-2 mb-2.5">
+                <div className="flex items-center gap-1.5 text-xs font-bold text-slate-800">
+                  <Stethoscope className="w-3.5 h-3.5 text-emerald-600" />
+                  <span>{s.syndromes && s.syndromes.length > 0 ? '3' : '2'}. TCTT & DHST bất thường:</span>
+                </div>
+                {(s.vitalAnomalies.length > 0 || s.examList.length > 0) && (
+                  <span className="text-[10px] font-medium text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200">
+                    {s.vitalAnomalies.length + s.examList.length} bất thường
+                  </span>
+                )}
               </div>
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-2.5">
+                {/* Sinh hiệu (DHST) bất thường */}
                 {s.vitalAnomalies.length > 0 && (
-                  <div className="flex flex-wrap items-center gap-1.5 p-2 bg-rose-50/60 border border-rose-200 rounded-md">
-                    <span className="text-[11px] font-bold text-rose-800 flex items-center gap-1">
-                      <AlertTriangle className="w-3.5 h-3.5 text-rose-600" />
-                      Sinh hiệu bất thường:
+                  <div className="p-2.5 bg-rose-50/80 border border-rose-200 rounded-lg flex flex-col gap-1.5">
+                    <span className="text-[11px] font-bold text-rose-900 flex items-center gap-1.5">
+                      <AlertTriangle className="w-3.5 h-3.5 text-rose-600 shrink-0" />
+                      DHST bất thường ghi nhận:
                     </span>
-                    {s.vitalAnomalies.map((v, idx) => (
-                      <span
-                        key={idx}
-                        className="px-2 py-0.5 rounded text-xs bg-rose-100 text-rose-900 border border-rose-300 font-bold font-mono-custom shadow-2xs"
-                      >
-                        ⚠️ {v}
-                      </span>
-                    ))}
+                    <div className="flex flex-wrap gap-1.5 pl-5">
+                      {s.vitalAnomalies.map((v, idx) => (
+                        <span
+                          key={idx}
+                          className="px-2.5 py-1 rounded text-xs bg-rose-100 text-rose-950 border border-rose-300 font-bold font-mono-custom shadow-2xs"
+                        >
+                          ⚠️ {v}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 )}
+                {/* Dấu hiệu thực thể (TCTT) bất thường (gạch đầu dòng) */}
                 {s.examList.length > 0 && (
-                  <div className="flex flex-wrap gap-1.5">
+                  <ul className="space-y-1.5">
                     {s.examList.map((e, idx) => (
-                      <span
+                      <li
                         key={idx}
-                        className="px-2 py-0.5 rounded text-xs bg-emerald-50 text-emerald-800 border border-emerald-200 font-medium"
+                        className="flex items-start gap-2.5 text-xs text-slate-800 bg-emerald-50/30 border border-emerald-100/80 px-3 py-2 rounded-lg transition-colors hover:bg-emerald-50/60"
                       >
-                        {e}
-                      </span>
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 mt-1.5 shrink-0" />
+                        <span className="leading-relaxed font-medium">{e}</span>
+                      </li>
                     ))}
-                  </div>
+                  </ul>
                 )}
                 {s.vitalAnomalies.length === 0 && s.examList.length === 0 && (
                   <p className="text-xs text-slate-400 italic">Tổng trạng ổn định, chưa ghi nhận dấu hiệu nặng.</p>
@@ -294,100 +314,90 @@ export const CaseSummaryPanel: React.FC<CaseSummaryPanelProps> = ({
               </div>
             </div>
 
-            {/* Section 4: Cận lâm sàng ban đầu */}
+            {/* Section 4: CLS & Xét nghiệm bất thường */}
             {(s.labItems.length > 0 || s.clsNarrative.length > 0) && (
-              <div className="border border-slate-200 rounded-lg p-3">
-                <div className="flex items-center gap-1.5 text-xs font-bold text-slate-800 mb-2">
-                  <Microscope className="w-3.5 h-3.5 text-purple-600" />
-                  <span>{s.syndromes && s.syndromes.length > 0 ? '4' : '3'}. Cận lâm sàng & Xét nghiệm ban đầu:</span>
+              <div className="border border-slate-200 rounded-lg p-3 bg-white">
+                <div className="flex items-center justify-between gap-2 mb-2.5">
+                  <div className="flex items-center gap-1.5 text-xs font-bold text-slate-800">
+                    <Microscope className="w-3.5 h-3.5 text-purple-600" />
+                    <span>{s.syndromes && s.syndromes.length > 0 ? '4' : '3'}. CLS & Xét nghiệm bất thường:</span>
+                  </div>
+                  <span className="text-[10px] font-medium text-purple-700 bg-purple-50 px-2 py-0.5 rounded-md border border-purple-200">
+                    {s.labItems.length + s.clsNarrative.length} kết quả
+                  </span>
                 </div>
                 <div className="flex flex-col gap-2">
+                  {/* Chỉ số xét nghiệm bất thường (WBC, PLT, Hct...) */}
                   {s.labItems.length > 0 && (
-                    <div className="flex flex-wrap gap-1.5">
+                    <ul className="space-y-1.5">
                       {s.labItems.map((lab, idx) => (
-                        <span
+                        <li
                           key={idx}
-                          className="px-2 py-0.5 rounded text-xs bg-purple-50 text-purple-800 border border-purple-200 font-mono-custom font-semibold"
+                          className="flex items-start gap-2.5 text-xs text-purple-950 bg-purple-50/40 border border-purple-200/70 px-3 py-1.5 rounded-lg"
                         >
-                          🧪 {lab}
-                        </span>
+                          <span className="w-1.5 h-1.5 rounded-full bg-purple-600 mt-1.5 shrink-0" />
+                          <span className="font-mono-custom font-semibold">🧪 {lab}</span>
+                        </li>
                       ))}
-                    </div>
+                    </ul>
                   )}
+                  {/* Kết quả cận lâm sàng đặc hiệu (SA, XQ, ECG, vi sinh...) */}
                   {s.clsNarrative.length > 0 && (
-                    <div className="flex flex-wrap gap-1.5">
+                    <ul className="space-y-1.5">
                       {s.clsNarrative.map((c, idx) => (
-                        <span
+                        <li
                           key={idx}
-                          className="px-2 py-0.5 rounded text-xs bg-slate-100 text-slate-700 border border-slate-200 font-medium"
+                          className="flex items-start gap-2.5 text-xs text-slate-800 bg-slate-50 border border-slate-200/80 px-3 py-2 rounded-lg"
                         >
-                          {c}
-                        </span>
+                          <span className="w-1.5 h-1.5 rounded-full bg-slate-500 mt-1.5 shrink-0" />
+                          <span className="leading-relaxed font-medium">{c}</span>
+                        </li>
                       ))}
-                    </div>
+                    </ul>
                   )}
                 </div>
               </div>
             )}
 
-            {/* Section 5: Yếu tố Dịch tễ (nếu có) */}
-            {s.epiList && s.epiList.length > 0 && (
+            {/* Section 5: Yếu tố Dịch tễ & TC liên quan */}
+            {(s.epiList.length > 0 || s.tcList.length > 0) && (
               <div className="border border-amber-200 bg-amber-50/30 rounded-lg p-3">
-                <div className="flex items-center gap-1.5 text-xs font-bold text-amber-900 mb-2">
+                <div className="flex items-center gap-1.5 text-xs font-bold text-amber-950 mb-2">
                   <Compass className="w-3.5 h-3.5 text-amber-600" />
-                  <span>Yếu tố dịch tễ (Bối cảnh truyền nhiễm & Phơi nhiễm):</span>
+                  <span>{s.syndromes && s.syndromes.length > 0 ? '5' : '4'}. Yếu tố Dịch tễ & TC liên quan:</span>
                 </div>
-                <div className="flex flex-wrap gap-1.5">
+                <ul className="space-y-1.5 pl-1">
                   {s.epiList.map((epi, idx) => (
-                    <span
-                      key={idx}
-                      className="px-2 py-0.5 rounded text-xs bg-amber-100 text-amber-900 border border-amber-300 font-medium"
-                    >
-                      {epi}
-                    </span>
+                    <li key={idx} className="flex items-start gap-2 text-xs text-amber-950">
+                      <span className="w-1.5 h-1.5 rounded-full bg-amber-600 mt-1.5 shrink-0" />
+                      <span className="leading-relaxed"><b>Dịch tễ:</b> {epi}</span>
+                    </li>
                   ))}
-                </div>
+                  {s.tcList.map((tc, idx) => (
+                    <li key={idx} className="flex items-start gap-2 text-xs text-slate-800">
+                      <span className="w-1.5 h-1.5 rounded-full bg-slate-500 mt-1.5 shrink-0" />
+                      <span className="leading-relaxed"><b>TC:</b> {tc}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             )}
 
-            {/* Section 6: Tiền căn & Dấu hiệu âm tính loại trừ */}
-            {(s.tcList.length > 0 || s.negList.length > 0) && (
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                {s.tcList.length > 0 && (
-                  <div className="border border-slate-200 rounded-lg p-2.5">
-                    <span className="text-[11px] font-bold text-slate-700 block mb-1">
-                      {s.syndromes && s.syndromes.length > 0 ? '5' : '4'}. Tiền căn có liên quan:
-                    </span>
-                    <div className="flex flex-wrap gap-1">
-                      {s.tcList.map((tc, idx) => (
-                        <span
-                          key={idx}
-                          className="px-1.5 py-0.5 rounded text-[11px] bg-slate-100 text-slate-700 border border-slate-200"
-                        >
-                          {tc}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                )}
-                {s.negList.length > 0 && (
-                  <div className="border border-rose-200 bg-rose-50/30 rounded-lg p-2.5">
-                    <span className="text-[11px] font-bold text-rose-800 flex items-center gap-1 mb-1">
-                      <ShieldCheck className="w-3.5 h-3.5 text-rose-600" />
-                      {s.syndromes && s.syndromes.length > 0 ? '6' : '5'}. Dấu hiệu âm tính có giá trị loại trừ:
-                    </span>
-                    <div className="flex flex-wrap gap-1">
-                      {s.negList.map((neg, idx) => (
-                        <span
-                          key={idx}
-                          className="px-1.5 py-0.5 rounded text-[11px] bg-white text-rose-700 border border-rose-200 line-through decoration-rose-400 font-medium"
-                        >
-                          {neg}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                )}
+            {/* Section 6: Dấu hiệu âm tính (-) loại trừ */}
+            {s.negList.length > 0 && (
+              <div className="border border-rose-200 bg-rose-50/20 rounded-lg p-3">
+                <div className="flex items-center gap-1.5 text-xs font-bold text-rose-900 mb-2">
+                  <ShieldCheck className="w-3.5 h-3.5 text-rose-600" />
+                  <span>{s.syndromes && s.syndromes.length > 0 ? '6' : '5'}. Dấu hiệu âm tính (-) loại trừ:</span>
+                </div>
+                <ul className="space-y-1.5 pl-1">
+                  {s.negList.map((neg, idx) => (
+                    <li key={idx} className="flex items-start gap-2 text-xs text-rose-800">
+                      <span className="w-1.5 h-1.5 rounded-full bg-rose-500 mt-1.5 shrink-0" />
+                      <span className="font-medium">{neg}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             )}
 
@@ -397,13 +407,13 @@ export const CaseSummaryPanel: React.FC<CaseSummaryPanelProps> = ({
               <span>{s.closing || 'Ngoài các dấu hiệu trên, chưa ghi nhận bất thường khác.'}</span>
             </div>
 
-            {/* Section 8: Định hướng chẩn đoán sơ bộ (Nghĩ nhiều nhất) */}
+            {/* Section 8: Định hướng chẩn đoán sơ bộ (CĐSB) */}
             {topResult && (
               <div className="p-3 bg-gradient-to-r from-blue-50/80 to-indigo-50/60 border border-blue-200 rounded-lg flex items-center justify-between gap-2 flex-wrap">
                 <div className="flex items-center gap-2">
                   <Sparkles className="w-4 h-4 text-blue-600" />
                   <span className="text-xs text-slate-700">
-                    Định hướng nghĩ nhiều nhất: <b className="text-blue-950 font-bold">{topResult.b.ten}</b> (ICD-10: {topResult.b.icd})
+                    Định hướng CĐSB nghĩ nhiều nhất: <b className="text-blue-950 font-bold">{topResult.b.ten}</b> (ICD-10: {topResult.b.icd})
                   </span>
                 </div>
                 <span className="px-2 py-0.5 rounded text-xs font-mono-custom font-bold bg-blue-600 text-white shadow-2xs">

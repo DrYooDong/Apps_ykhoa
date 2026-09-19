@@ -100,9 +100,9 @@ export const ClinicalReasoningPanel: React.FC<ClinicalReasoningPanelProps> = ({
 
     // Dữ kiện cận lâm sàng bất thường ủng hộ
     const labsFound: string[] = [];
-    if (labs.lBC) labsFound.push(`Bạch cầu ${labs.lBC} G/L`);
-    if (labs.lTC && parseFloat(labs.lTC) < 100) labsFound.push(`Tiểu cầu giảm ${labs.lTC} G/L`);
-    if (labs.lHct && parseFloat(labs.lHct) > 44) labsFound.push(`Cô đặc máu Hct ${labs.lHct}%`);
+    if (labs.lBC) labsFound.push(`WBC ${labs.lBC} G/L`);
+    if (labs.lTC && parseFloat(labs.lTC) < 100) labsFound.push(`PLT giảm ${labs.lTC} G/L`);
+    if (labs.lHct && parseFloat(labs.lHct) > 44) labsFound.push(`Hct tăng ${labs.lHct}%`);
     if (labs.lTrop && parseFloat(labs.lTrop) > 14) labsFound.push(`Troponin tăng ${labs.lTrop} ng/L`);
     if (labs.lGlu && parseFloat(labs.lGlu) > 11) labsFound.push(`Đường huyết tăng ${labs.lGlu} mmol/L`);
 
@@ -122,12 +122,12 @@ export const ClinicalReasoningPanel: React.FC<ClinicalReasoningPanelProps> = ({
 
     if (diseaseNameLower.includes('dengue') || diseaseNameLower.includes('sốt xuất huyết')) {
       tests.push({ name: 'Test nhanh Dengue NS1Ag & Kháng thể Dengue IgM/IgG', purpose: 'Xác định căn nguyên nhiễm vi rút DENV' });
-      tests.push({ name: 'Tổng phân tích tế bào máu (CBC) theo dõi mỗi 4-6 giờ', purpose: 'Theo dõi động học cô đặc máu Hct và mức giảm tiểu cầu' });
-      tests.push({ name: 'Siêu âm ổ bụng & màng phổi tại giường', purpose: 'Đánh giá mức độ thoát huyết tương (tràn dịch, dày thành túi mật)' });
+      tests.push({ name: 'TPTTBM (CBC) theo dõi mỗi 4-6 giờ', purpose: 'Theo dõi động học cô đặc máu Hct và mức giảm PLT' });
+      tests.push({ name: 'SA ổ bụng & màng phổi tại giường', purpose: 'Đánh giá mức độ thoát huyết tương (tràn dịch, dày thành túi mật)' });
     } else if (diseaseNameLower.includes('mạch vành') || diseaseNameLower.includes('nhồi máu') || diseaseNameLower.includes('đau thắt ngực')) {
       tests.push({ name: 'Định lượng Troponin I/T độ nhạy cao (hs-cTn) động học (0h - 1h/3h)', purpose: 'Xác định hoại tử cơ tim cấp' });
-      tests.push({ name: 'Điện tâm đồ (ECG) 12 chuyển đạo lặp lại', purpose: 'Xác định vị trí thiếu máu / nhồi máu và đoạn ST chênh' });
-      tests.push({ name: 'Siêu âm tim qua thành ngực', purpose: 'Đánh giá rối loạn vận động vùng và phân suất tống máu thất trái (LVEF)' });
+      tests.push({ name: 'ECG 12 chuyển đạo lặp lại', purpose: 'Xác định vị trí thiếu máu / nhồi máu và đoạn ST chênh' });
+      tests.push({ name: 'SA tim qua thành ngực', purpose: 'Đánh giá rối loạn vận động vùng và phân suất tống máu thất trái (LVEF)' });
       tests.push({ name: 'Chụp mạch vành qua da (DSA)', purpose: 'Xác định vị trí tắc/hẹp động mạch vành và can thiệp tái tưới máu' });
     } else if (diseaseNameLower.includes('màng não')) {
       tests.push({ name: 'Chọc dò tủy sống khảo sát dịch não tủy (DNT)', purpose: 'Phân tích tế bào, sinh hóa (đạm, đường DNT/máu), soi nhuộm Gram & cấy DNT' });
@@ -139,11 +139,11 @@ export const ClinicalReasoningPanel: React.FC<ClinicalReasoningPanelProps> = ({
       tests.push({ name: 'Đo độ đàn hồi mô gan (FibroScan / ARFI)', purpose: 'Đánh giá chính xác mức độ xơ hóa gan' });
     } else if (diseaseNameLower.includes('xơ gan')) {
       tests.push({ name: 'Nội soi thực quản - dạ dày - tá tràng', purpose: 'Tầm soát và can thiệp thắt giãn tĩnh mạch thực quản' });
-      tests.push({ name: 'Siêu âm Doppler mạch máu gan & tầm soát u gan (AFP)', purpose: 'Đánh giá áp lực tĩnh mạch cửa và tầm soát ung thư gan HCC' });
+      tests.push({ name: 'SA Doppler mạch máu gan & tầm soát u gan (AFP)', purpose: 'Đánh giá áp lực tĩnh mạch cửa và tầm soát ung thư gan HCC' });
       tests.push({ name: 'Chọc tháo dịch màng bụng làm xét nghiệm SAAG và tế bào', purpose: 'Đánh giá nguyên nhân cổ trướng và loại trừ viêm phúc mạc tiên phát' });
     } else {
       tests.push({ name: 'Xét nghiệm vi sinh / Sinh học phân tử đặc hiệu (PCR / Huyết thanh học)', purpose: 'Xác định chính xác căn nguyên bệnh' });
-      tests.push({ name: 'Thăm dò hình ảnh học chuyên khoa (Siêu âm / CT-Scanner)', purpose: 'Xác định tổn thương giải phẫu bệnh' });
+      tests.push({ name: 'Thăm dò hình ảnh học chuyên khoa (SA / CT-Scanner)', purpose: 'Xác định tổn thương giải phẫu bệnh' });
     }
     return tests;
   }, [leadDiagnosis]);
@@ -169,9 +169,9 @@ export const ClinicalReasoningPanel: React.FC<ClinicalReasoningPanelProps> = ({
       if (diffNameLower.includes('nhiễm trùng huyết') || diffNameLower.includes('sốc nhiễm trùng')) {
         exclusionTest = { name: 'Cấy máu 2 chai & Định lượng Procalcitonin máu', purpose: 'Loại trừ nhiễm khuẩn huyết vi khuẩn Gr(-)/Gr(+)' };
       } else if (diffNameLower.includes('viêm phổi') || diffNameLower.includes('suy hô hấp')) {
-        exclusionTest = { name: 'X-quang ngực thẳng & Khí máu động mạch', purpose: 'Đánh giá tổn thương phế nang và mức độ oxy hóa máu' };
+        exclusionTest = { name: 'XQ ngực thẳng & KMĐM (ABG)', purpose: 'Đánh giá tổn thương phế nang và mức độ oxy hóa máu' };
       } else if (diffNameLower.includes('màng não')) {
-        exclusionTest = { name: 'Chọc dò dịch não tủy & CT sọ não', purpose: 'Loại trừ viêm màng não mủ hoặc xuất huyết dưới nhện' };
+        exclusionTest = { name: 'Chọc dò dịch não tủy (DNT) & CT sọ não', purpose: 'Loại trừ viêm màng não mủ hoặc xuất huyết dưới nhện' };
       } else if (diffNameLower.includes('viêm tụy')) {
         exclusionTest = { name: 'Định lượng Amylase & Lipase máu; CT bụng cản quang', purpose: 'Loại trừ viêm tụy cấp' };
       } else if (diffNameLower.includes('thuyên tắc phổi')) {
@@ -222,9 +222,9 @@ export const ClinicalReasoningPanel: React.FC<ClinicalReasoningPanelProps> = ({
 
     // Biến chứng
     const complications: string[] = [];
-    if (hasShock) complications.push('Sốc giảm thể tích do thoát huyết tương / tụt huyết áp');
+    if (hasShock) complications.push('Sốc giảm thể tích do thoát huyết tương / tụt HA');
     if (hasHypoxia) complications.push('Suy hô hấp cấp giảm oxy máu');
-    if (labs.lTC && parseFloat(labs.lTC) < 50) complications.push(`Giảm tiểu cầu nặng (${labs.lTC} G/L) có nguy cơ xuất huyết nội tạng`);
+    if (labs.lTC && parseFloat(labs.lTC) < 50) complications.push(`Giảm PLT nặng (${labs.lTC} G/L) có nguy cơ xuất huyết nội tạng`);
     if (labs.lHct && parseFloat(labs.lHct) > 48) complications.push(`Cô đặc máu nghiêm trọng (Hct ${labs.lHct}%) do thoát huyết tương`);
 
     const complicationStr = complications.length > 0 ? complications.join('; ') : 'Chưa ghi nhận biến chứng suy đa cơ quan tại thời điểm thăm khám.';
@@ -244,19 +244,19 @@ export const ClinicalReasoningPanel: React.FC<ClinicalReasoningPanelProps> = ({
 
     const lines: string[] = [];
 
-    lines.push('=== BIỆN LUẬN LÂM SÀNG (CLINICAL REASONING RECORD) ===');
+    lines.push('=== BIỆN LUẬN LS (CLINICAL REASONING RECORD) ===');
     lines.push(`(Theo phương pháp Biện luận Phân tích & Tổng hợp · Chuẩn ĐHYD TP.HCM)\n`);
 
     // A. Chọn vấn đề biện luận
-    lines.push(`A. VẤN ĐỀ CHỌN ĐỂ BIỆN LUẬN:`);
-    lines.push(`Bệnh nhân vào viện vì lý do "${primaryProblem}" nên vấn đề "${primaryProblem}" được lựa chọn làm trục chính để biện luận chẩn đoán.\n`);
+    lines.push(`A. VẤN ĐỀ CHỌN ĐỂ BIỆN LUẬN LS:`);
+    lines.push(`BN vào viện vì lý do "${primaryProblem}" nên vấn đề "${primaryProblem}" được lựa chọn làm trục chính để biện luận chẩn đoán.\n`);
 
     // B. Biện luận Chẩn đoán sơ bộ
-    lines.push(`B. BIỆN LUẬN CHẨN ĐOÁN SƠ BỘ:`);
-    lines.push(`Từ vấn đề trên, nghĩ nhiều nhất đến: ${leadDiagnosis.ten.toUpperCase()} (ICD-10: ${leadDiagnosis.icd}), với độ phù hợp lâm sàng ${leadMatchPct}%.`);
+    lines.push(`B. BIỆN LUẬN CHẨN ĐOÁN SƠ BỘ (CĐSB):`);
+    lines.push(`Từ vấn đề trên, nghĩ nhiều nhất đến: ${leadDiagnosis.ten.toUpperCase()} (ICD-10: ${leadDiagnosis.icd}), với độ phù hợp LS ${leadMatchPct}%.`);
     lines.push(`Lý do nghĩ đến:`);
     if (mainSymptoms.length > 0) {
-      lines.push(`- Triệu chứng chính: Bệnh nhân có các biểu hiện đặc thù phù hợp nhất với bệnh cảnh: ${mainSymptoms.join(', ')}.`);
+      lines.push(`- Triệu chứng chính: BN có các biểu hiện đặc thù phù hợp nhất với bệnh cảnh: ${mainSymptoms.join(', ')}.`);
     }
     if (minorSymptoms.length > 0) {
       lines.push(`- Triệu chứng phụ củng cố: Kèm theo ${minorSymptoms.join(', ')}.`);
@@ -266,9 +266,9 @@ export const ClinicalReasoningPanel: React.FC<ClinicalReasoningPanelProps> = ({
       lines.push(`- Dịch tễ học & Bối cảnh phơi nhiễm: ${epiDetails}.`);
     }
     if (supportiveLabs.length > 0) {
-      lines.push(`- Dữ kiện cận lâm sàng bước đầu ủng hộ: ${supportiveLabs.join(' · ')}.`);
+      lines.push(`- Dữ kiện CLS bước đầu ủng hộ: ${supportiveLabs.join(' · ')}.`);
     }
-    lines.push(`\n-> ĐỀ NGHỊ CẬN LÂM SÀNG ĐỂ XÁC CHẨN:`);
+    lines.push(`\n-> ĐỀ NGHỊ CLS XÁC CHẨN (CĐXĐ):`);
     confirmatoryTests.forEach((t, i) => {
       lines.push(`  ${i + 1}. ${t.name}: Nhằm ${t.purpose.toLowerCase()}.`);
     });
@@ -276,16 +276,16 @@ export const ClinicalReasoningPanel: React.FC<ClinicalReasoningPanelProps> = ({
 
     // C. Biện luận Chẩn đoán phân biệt
     if (differentialDiagnoses.length > 0) {
-      lines.push(`C. BIỆN LUẬN CHẨN ĐOÁN PHÂN BIỆT:`);
-      lines.push(`Tuy nhiên, cần đặt ra các chẩn đoán phân biệt sau nhằm tránh bỏ sót bệnh lý nguy hiểm:`);
+      lines.push(`C. BIỆN LUẬN CHẨN ĐOÁN PHÂN BIỆT (CĐPB):`);
+      lines.push(`Tuy nhiên, cần đặt ra các CĐPB sau nhằm tránh bỏ sót bệnh lý nguy hiểm:`);
       differentialDiagnoses.forEach((d, idx) => {
         lines.push(`\n${idx + 1}. Phân biệt với: ${d.disease.ten.toUpperCase()} (Độ phù hợp: ${d.pct}%):`);
         if (d.commonSymptoms.length > 0) {
-          lines.push(`   + Nghĩ đến vì: Bệnh nhân cũng có các triệu chứng tương đồng như ${d.commonSymptoms.slice(0, 3).join(', ')}.`);
+          lines.push(`   + Nghĩ đến vì: BN cũng có các triệu chứng tương đồng như ${d.commonSymptoms.slice(0, 3).join(', ')}.`);
         }
         const reasonsLessLikely: string[] = [];
         if (d.negatedMatching.length > 0) {
-          reasonsLessLikely.push(`bệnh nhân không có dấu hiệu ${d.negatedMatching.join(', ')}`);
+          reasonsLessLikely.push(`BN không có dấu hiệu ${d.negatedMatching.join(', ')}`);
         }
         if (d.missingSymptoms.length > 0) {
           reasonsLessLikely.push(`chưa ghi nhận các biểu hiện kinh điển như ${d.missingSymptoms.join(', ')}`);
@@ -335,7 +335,7 @@ export const ClinicalReasoningPanel: React.FC<ClinicalReasoningPanelProps> = ({
           </div>
           <div>
             <h2 className="text-xs sm:text-sm font-bold text-slate-800 leading-none">
-              III. Biện luận lâm sàng (Clinical Reasoning Engine)
+              III. Biện luận LS & Đề nghị CLS (Clinical Reasoning Engine)
             </h2>
             <span className="text-[10.5px] text-slate-400 font-medium">
               Phương pháp Biện luận Phân tích & Đánh giá toàn diện · Chuẩn ĐHYD TP.HCM
@@ -399,7 +399,7 @@ export const ClinicalReasoningPanel: React.FC<ClinicalReasoningPanelProps> = ({
                 ? 'bg-emerald-600 text-white border-emerald-600 shadow-xs'
                 : 'bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border-indigo-200/80'
             }`}
-            title={copied ? "Đã sao chép văn bản biện luận EMR!" : "Sao chép toàn bộ văn bản biện luận lâm sàng"}
+            title={copied ? "Đã sao chép văn bản biện luận EMR!" : "Sao chép toàn bộ văn bản biện luận LS"}
             aria-label="Sao chép biện luận"
           >
             {copied ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
@@ -460,7 +460,7 @@ export const ClinicalReasoningPanel: React.FC<ClinicalReasoningPanelProps> = ({
                   <div className="flex items-center gap-2">
                     <Sparkles className="w-4 h-4 text-indigo-700" />
                     <span className="text-xs font-bold text-indigo-950">
-                      B. CHẨN ĐOÁN SƠ BỘ (Nghĩ nhiều nhất):{' '}
+                      B. CHẨN ĐOÁN SƠ BỘ (CĐSB nghĩ nhiều nhất):{' '}
                       <span className="text-sm font-extrabold text-blue-900">{leadDiagnosis.ten}</span>
                     </span>
                     <span className="text-xs font-mono-custom text-indigo-700 bg-white px-1.5 py-0.5 rounded border border-indigo-200">
@@ -520,7 +520,7 @@ export const ClinicalReasoningPanel: React.FC<ClinicalReasoningPanelProps> = ({
                     <div className="p-2.5 bg-purple-50/60 border border-purple-200 rounded-lg text-xs">
                       <span className="font-bold text-purple-900 block mb-1 flex items-center gap-1">
                         <Microscope className="w-3.5 h-3.5 text-purple-600" />
-                        Cận lâm sàng bước đầu ủng hộ chẩn đoán:
+                        CLS bước đầu ủng hộ chẩn đoán:
                       </span>
                       <div className="flex flex-wrap gap-1.5">
                         {supportiveLabs.map((lab, idx) => (
@@ -536,7 +536,7 @@ export const ClinicalReasoningPanel: React.FC<ClinicalReasoningPanelProps> = ({
                   <div className="p-3 bg-emerald-50/70 border border-emerald-200 rounded-lg text-xs">
                     <span className="font-bold text-emerald-950 flex items-center gap-1.5 mb-2">
                       <Target className="w-4 h-4 text-emerald-600" />
-                      Mục tiêu Cận lâm sàng để XÁC CHẨN (Confirmatory Workup):
+                      Mục tiêu CLS để XÁC CHẨN (CĐXĐ):
                     </span>
                     <ul className="space-y-1 pl-1">
                       {confirmatoryTests.map((t, idx) => (
@@ -560,7 +560,7 @@ export const ClinicalReasoningPanel: React.FC<ClinicalReasoningPanelProps> = ({
                   <div className="flex items-center gap-2">
                     <GitCompare className="w-4 h-4 text-amber-700" />
                     <span className="text-xs font-bold text-amber-950">
-                      C. BIỆN LUẬN CHẨN ĐOÁN PHÂN BIỆT ({differentialDiagnoses.length} bệnh lý cần loại trừ)
+                      C. BIỆN LUẬN CHẨN ĐOÁN PHÂN BIỆT (CĐPB — {differentialDiagnoses.length} bệnh lý cần loại trừ)
                     </span>
                   </div>
                   <span className="text-[11px] text-amber-800 font-medium">

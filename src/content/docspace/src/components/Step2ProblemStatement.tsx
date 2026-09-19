@@ -21,6 +21,7 @@ import { CaseSummaryPanel, SummaryStructure } from './step2/CaseSummaryPanel.tsx
 import { DiagnosticTrianglePanel } from './step2/DiagnosticTrianglePanel.tsx';
 import { ProblemListSection } from './step2/ProblemListSection.tsx';
 import { ClinicalReasoningPanel } from './step2/ClinicalReasoningPanel.tsx';
+import { toAbbreviatedMedicalText } from '../lib/medicalAbbreviations.ts';
 
 interface Step2ProblemStatementProps {
   form: ClinicalFormState;
@@ -85,10 +86,10 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
         if (p.source.includes('thứ')) {
           return m[0]; // e.g. "giờ thứ 4", "ngày thứ 3"
         }
-        return m[1] || m[0];
+        return `ngày ${m[1]}`.replace(/ngày\s+(\d+)\s+ngày/, 'ngày thứ $1');
       }
     }
-    return null;
+    return '';
   }, [form.lyDo, form.text?.cn]);
 
   // Dữ liệu phân đoạn chuẩn hóa của Tóm tắt bệnh án (chuẩn ĐHYD TP.HCM & BV Chợ Rẫy)
@@ -101,87 +102,194 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
         ? ` (${diseaseDuration})`
         : '';
 
-    const opening = `Bệnh nhân ${genderStr}, ${ageStr}, vào viện vì ${reasonStr}${durationStr}.`;
-    const leadIn = 'Qua hỏi bệnh và thăm khám lâm sàng, ghi nhận các hội chứng, triệu chứng sau:';
+    const opening = `BN ${genderStr}, ${ageStr}, vào viện vì ${reasonStr}${durationStr}.`;
+    const leadIn = 'Qua hỏi bệnh và thăm khám LS, ghi nhận các vấn đề bất thường sau:';
     const closing = 'Ngoài các dấu hiệu trên, chưa ghi nhận bất thường khác.';
 
-    // 1. Các Hội chứng lâm sàng & Vấn đề cấp (Ưu tiên gom nhóm theo chuẩn ĐHYD TPHCM)
+    // Helper lọc câu hành chính / kể chuyện dài dòng trong text nếu người dùng nhập tự do
+    const cleanNarrativeSentences = (rawText: string): string[] => {
+      if (!rawText || !rawText.trim()) return [];
+      return rawText
+        .split(/(?:\r?\n|(?<=[.!?])\s+)/)
+        .map((s) => s.trim().replace(/^[-*•]\s*/, ''))
+        .filter((s) => {
+          if (s.length < 5) return false;
+          const lower = s.toLowerCase();
+          if (/^bệnh nhân\s+(nam|nữ|\d+)/i.test(lower)) return false;
+          if (/^bn\s+(nam|nữ|\d+)/i.test(lower)) return false;
+          if (/tự (uống|dùng|mua)\s+(thuốc|paracetamol)/i.test(lower)) return false;
+          if (/tiền sử (bản thân|gia đình) khỏe mạnh/i.test(lower)) return false;
+          if (/chưa ghi nhận (bất thường|bệnh lý)/i.test(lower)) return false;
+          if (/tim phổi chưa ghi nhận bất thường/i.test(lower)) return false;
+          return true;
+        })
+        .map((s) => toAbbreviatedMedicalText(s));
+    };
+
+    // 1. Các HC lâm sàng & Vấn đề cấp (Ưu tiên gom nhóm theo chuẩn ĐHYD TPHCM)
     const syndromes: string[] = [];
     problems.forEach((p) => {
       if (p.type === 'hoi-chung' || (p.priorityLevel === 'acute' && !p.id.startsWith('prob_'))) {
-        if (!syndromes.includes(p.label)) {
-          syndromes.push(p.label);
+        const abbrLabel = toAbbreviatedMedicalText(p.label);
+        if (!syndromes.includes(abbrLabel)) {
+          syndromes.push(abbrLabel);
         }
       }
     });
 
-    // 2. Triệu chứng cơ năng
+    // 2. TCCN bất thường (Chỉ lấy các triệu chứng cơ năng bất thường dạng gạch đầu dòng)
     const cnList: string[] = [];
-    if (form.text.cn.trim()) cnList.push(form.text.cn.trim());
-    const cnSymptoms = selectedSymptoms
-      .filter((s) => s.loai.includes('cn'))
-      .map((s) => s.ten);
+    const cnSymptoms = selectedSymptoms.filter((s) => s.loai.includes('cn'));
     if (cnSymptoms.length > 0) {
-      cnList.push(`Dấu hiệu ghi nhận: ${cnSymptoms.join(', ')}`);
+      cnSymptoms.forEach((s) => {
+        cnList.push(toAbbreviatedMedicalText(s.ten));
+      });
+    } else if (form.text.cn.trim()) {
+      const extracted = cleanNarrativeSentences(form.text.cn);
+      if (extracted.length > 0) {
+        cnList.push(...extracted);
+      }
     }
 
-    // 3. Triệu chứng thực thể & Sinh hiệu bất thường
+    // 3. TCTT & DHST bất thường
     const vitalAnomalies: string[] = [];
     const tempNum = parseFloat(vitals.vNhiet);
-    if (!isNaN(tempNum) && tempNum >= 38) vitalAnomalies.push(`Sốt ${vitals.vNhiet}°C`);
+    if (!isNaN(tempNum) && (tempNum >= 38.0 || tempNum <= 36.0)) {
+      vitalAnomalies.push(`T°C: ${vitals.vNhiet}°C${tempNum >= 39 ? ' (Sốt cao)' : ''}`);
+    }
     const pulseNum = parseFloat(vitals.vMach);
-    if (!isNaN(pulseNum) && (pulseNum > 100 || pulseNum < 60)) vitalAnomalies.push(`Mạch ${vitals.vMach} l/p`);
+    if (!isNaN(pulseNum) && pulseNum > 100) {
+      vitalAnomalies.push(`M nhanh: ${vitals.vMach} l/p`);
+    } else if (!isNaN(pulseNum) && pulseNum < 60 && pulseNum > 0) {
+      vitalAnomalies.push(`M chậm: ${vitals.vMach} l/p`);
+    }
     const sbp = parseFloat(vitals.vHATT);
     const dbp = parseFloat(vitals.vHATTr);
     if (!isNaN(sbp) && !isNaN(dbp)) {
-      const isNarrow = sbp - dbp <= 20;
-      if (sbp >= 140 || sbp <= 90 || isNarrow) {
-        vitalAnomalies.push(`Huyết áp ${vitals.vHATT}/${vitals.vHATTr} mmHg${isNarrow ? ' (Hiệu áp kẹp ≤ 20 mmHg)' : ''}`);
+      const pulsePressure = sbp - dbp;
+      const isNarrow = pulsePressure <= 20 && pulsePressure > 0;
+      const isHypotension = sbp < 90;
+      const isHypertension = sbp >= 140 || dbp >= 90;
+      if (isHypotension && isNarrow) {
+        vitalAnomalies.push(`HA tụt kẹp: ${vitals.vHATT}/${vitals.vHATTr} mmHg (Hiệu áp ${pulsePressure} mmHg)`);
+      } else if (isNarrow) {
+        vitalAnomalies.push(`HA kẹp: ${vitals.vHATT}/${vitals.vHATTr} mmHg (Hiệu áp ≤ 20 mmHg)`);
+      } else if (isHypotension) {
+        vitalAnomalies.push(`HA tụt: ${vitals.vHATT}/${vitals.vHATTr} mmHg`);
+      } else if (isHypertension) {
+        vitalAnomalies.push(`THA: ${vitals.vHATT}/${vitals.vHATTr} mmHg`);
       }
     }
     const respNum = parseFloat(vitals.vTho);
-    if (!isNaN(respNum) && respNum > 22) vitalAnomalies.push(`Thở ${vitals.vTho} l/p`);
+    if (!isNaN(respNum) && respNum > 20) {
+      vitalAnomalies.push(`NT nhanh: ${vitals.vTho} l/p`);
+    } else if (!isNaN(respNum) && respNum < 12 && respNum > 0) {
+      vitalAnomalies.push(`NT chậm: ${vitals.vTho} l/p`);
+    }
     const spo2Num = parseFloat(vitals.vSpo2);
-    if (!isNaN(spo2Num) && spo2Num < 95) vitalAnomalies.push(`SpO₂ ${vitals.vSpo2}%`);
+    if (!isNaN(spo2Num) && spo2Num < 95 && spo2Num > 0) {
+      vitalAnomalies.push(`SpO₂ giảm: ${vitals.vSpo2}% (khí phòng)`);
+    }
 
     const examList: string[] = [];
-    if (form.text.tt.trim()) examList.push(form.text.tt.trim());
-    const ttSymptoms = selectedSymptoms
-      .filter((s) => s.loai.includes('tt'))
-      .map((s) => s.ten);
-    if (ttSymptoms.length > 0) examList.push(`Dấu hiệu thực thể: ${ttSymptoms.join(', ')}`);
+    const ttSymptoms = selectedSymptoms.filter((s) => s.loai.includes('tt'));
+    if (ttSymptoms.length > 0) {
+      ttSymptoms.forEach((s) => {
+        examList.push(toAbbreviatedMedicalText(s.ten));
+      });
+    } else if (form.text.tt.trim()) {
+      const extracted = cleanNarrativeSentences(form.text.tt);
+      if (extracted.length > 0) {
+        examList.push(...extracted);
+      }
+    }
 
     // 4. Yếu tố Dịch tễ học (Góc nhìn truyền nhiễm)
     const epiList: string[] = [];
-    if (epiContext?.endemicArea?.trim()) epiList.push(`Vùng dịch tễ lưu hành: ${epiContext.endemicArea.trim()}`);
-    if (epiContext?.outbreakAlert?.trim()) epiList.push(`Ổ dịch địa phương: ${epiContext.outbreakAlert.trim()}`);
-    if (epiContext?.vectorExposure?.trim()) epiList.push(`Tiếp xúc vector: ${epiContext.vectorExposure.trim()}`);
-    if (epiContext?.contactHistory?.trim()) epiList.push(`Tiếp xúc nguồn lây: ${epiContext.contactHistory.trim()}`);
-    if (epiContext?.travelHistory?.trim()) epiList.push(`Tiền sử đi lại: ${epiContext.travelHistory.trim()}`);
-    if (epiContext?.seasonalContext?.trim()) epiList.push(`Bối cảnh mùa dịch: ${epiContext.seasonalContext.trim()}`);
-    if (epiContext?.waterFoodRisk?.trim()) epiList.push(`Nguồn nước/thực phẩm: ${epiContext.waterFoodRisk.trim()}`);
+    if (epiContext?.outbreakAlert?.trim()) epiList.push(toAbbreviatedMedicalText(`Ổ dịch địa phương: ${epiContext.outbreakAlert.trim()}`));
+    if (epiContext?.endemicArea?.trim()) epiList.push(toAbbreviatedMedicalText(`Vùng dịch tễ lưu hành: ${epiContext.endemicArea.trim()}`));
+    if (epiContext?.vectorExposure?.trim()) epiList.push(toAbbreviatedMedicalText(`Tiếp xúc vector: ${epiContext.vectorExposure.trim()}`));
+    if (epiContext?.contactHistory?.trim()) epiList.push(toAbbreviatedMedicalText(`Tiếp xúc nguồn lây: ${epiContext.contactHistory.trim()}`));
+    if (epiContext?.travelHistory?.trim()) epiList.push(toAbbreviatedMedicalText(`Tiền sử đi lại: ${epiContext.travelHistory.trim()}`));
+    if (epiContext?.seasonalContext?.trim()) epiList.push(toAbbreviatedMedicalText(`Bối cảnh mùa dịch: ${epiContext.seasonalContext.trim()}`));
+    if (epiContext?.waterFoodRisk?.trim()) epiList.push(toAbbreviatedMedicalText(`Nguồn nước/thực phẩm: ${epiContext.waterFoodRisk.trim()}`));
 
-    // 5. Cận lâm sàng ban đầu
+    // 5. CLS & Xét nghiệm bất thường (Chỉ lấy chỉ số BẤT THƯỜNG)
     const labItems: string[] = [];
-    if (labs.lBC) labItems.push(`Bạch cầu ${labs.lBC} G/L`);
-    if (labs.lTC) labItems.push(`Tiểu cầu ${labs.lTC} G/L`);
-    if (labs.lHct) labItems.push(`Hct ${labs.lHct}%`);
-    if (labs.lGlu) labItems.push(`Glucose ${labs.lGlu} mmol/L`);
-    if (labs.lTrop) labItems.push(`Troponin ${labs.lTrop} ng/L`);
+    const bc = parseFloat(labs.lBC);
+    if (!isNaN(bc)) {
+      if (bc < 4.0) labItems.push(`WBC giảm: ${labs.lBC} G/L`);
+      else if (bc > 10.0) labItems.push(`WBC tăng: ${labs.lBC} G/L`);
+    }
+    const tc = parseFloat(labs.lTC);
+    if (!isNaN(tc)) {
+      if (tc < 50) labItems.push(`PLT giảm nặng: ${labs.lTC} G/L (< 50 G/L)`);
+      else if (tc < 100) labItems.push(`PLT giảm: ${labs.lTC} G/L (< 100 G/L)`);
+      else if (tc < 150) labItems.push(`PLT giảm nhẹ: ${labs.lTC} G/L`);
+      else if (tc > 450) labItems.push(`PLT tăng: ${labs.lTC} G/L`);
+    }
+    const hct = parseFloat(labs.lHct);
+    if (!isNaN(hct)) {
+      if (hct >= 44) labItems.push(`Hct tăng: ${labs.lHct}% (Cô đặc máu)`);
+      else if (hct < 35) labItems.push(`Hct giảm: ${labs.lHct}% (Thiếu máu)`);
+    }
+    const glu = parseFloat(labs.lGlu);
+    if (!isNaN(glu)) {
+      if (glu > 7.0) labItems.push(`Đường huyết tăng: ${labs.lGlu} mmol/L`);
+      else if (glu < 3.9 && glu > 0) labItems.push(`Hạ đường huyết: ${labs.lGlu} mmol/L`);
+    }
+    const trop = parseFloat(labs.lTrop);
+    if (!isNaN(trop) && trop > 14) {
+      labItems.push(`Troponin tăng: ${labs.lTrop} ng/L`);
+    }
+
+    // Các triệu chứng cận lâm sàng từ selectedSymptoms
+    const clsSymptoms = selectedSymptoms.filter((s) => s.loai.includes('cls'));
     const clsNarrative: string[] = [];
-    if (form?.text?.cls?.trim()) clsNarrative.push(form.text.cls.trim());
+    if (clsSymptoms.length > 0) {
+      clsSymptoms.forEach((s) => {
+        clsNarrative.push(toAbbreviatedMedicalText(s.ten));
+      });
+    }
 
-    // 6. Tiền căn
+    // Tách các kết luận cận lâm sàng đặc hiệu từ text (chẩn đoán hình ảnh, vi sinh, men gan...)
+    if (form?.text?.cls?.trim()) {
+      const clsSentences = form.text.cls
+        .split(/(?:\r?\n|(?<=[.!?])\s+)/)
+        .map((s) => s.trim().replace(/^[-*•]\s*/, ''))
+        .filter((s) => {
+          if (s.length < 5) return false;
+          // Bỏ câu CBC nếu đã được liệt kê trong labItems
+          if (/^công thức máu:/i.test(s) && labItems.length > 0) return false;
+          return true;
+        })
+        .map((s) => toAbbreviatedMedicalText(s));
+
+      clsSentences.forEach((sentence) => {
+        if (!clsNarrative.some((item) => item.toLowerCase().includes(sentence.toLowerCase()) || sentence.toLowerCase().includes(item.toLowerCase()))) {
+          clsNarrative.push(sentence);
+        }
+      });
+    }
+
+    // 6. Tiền căn (TC) có liên quan
     const tcList: string[] = [];
-    if (form?.text?.tc?.trim()) tcList.push(form.text.tc.trim());
-    const tcSymptoms = selectedSymptoms.filter((s) => s.loai.includes('tc')).map((s) => s.ten);
-    if (tcSymptoms.length > 0) tcList.push(`Tiền sử: ${tcSymptoms.join(', ')}`);
+    const tcSymptoms = selectedSymptoms.filter((s) => s.loai.includes('tc')).map((s) => toAbbreviatedMedicalText(s.ten));
+    if (tcSymptoms.length > 0) {
+      tcList.push(...tcSymptoms);
+    }
+    if (form?.text?.tc?.trim()) {
+      const tcClean = cleanNarrativeSentences(form.text.tc);
+      tcClean.forEach((t) => {
+        if (!tcList.includes(t)) tcList.push(t);
+      });
+    }
 
-    // 7. Dấu hiệu âm tính có giá trị loại trừ
-    const negList = negatedSymptoms.map((s) => `Không ${s.ten.toLowerCase()}`);
+    // 7. Dấu hiệu âm tính (-) có giá trị loại trừ
+    const negList = negatedSymptoms.map((s) => `Không ${toAbbreviatedMedicalText(s.ten).toLowerCase()}`);
 
     return {
-      demographics: `Bệnh nhân ${genderStr}, ${ageStr}.`,
+      demographics: `BN ${genderStr}, ${ageStr}.`,
       reason: `Vào viện vì: ${reasonStr}.`,
       duration: diseaseDuration || undefined,
       opening,
@@ -208,57 +316,59 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
 
     let sectionIdx = 1;
 
-    // 1. Các Hội chứng lâm sàng & Vấn đề cấp (nếu có)
+    // 1. Các HC lâm sàng & Vấn đề cấp nổi bật
     if (s.syndromes && s.syndromes.length > 0) {
-      parts.push(`${sectionIdx++}. Các Hội chứng lâm sàng & Vấn đề cấp:\n${s.syndromes.map((syn) => `- ${syn}`).join('\n')}`);
+      parts.push(`${sectionIdx++}. Các HC lâm sàng & Vấn đề cấp nổi bật:\n${s.syndromes.map((syn) => `- ${syn}`).join('\n')}`);
     }
 
-    // 2. Triệu chứng cơ năng
+    // 2. TCCN bất thường
     if (s.cnList.length > 0) {
-      parts.push(`${sectionIdx++}. Triệu chứng cơ năng & Bệnh sử:\n${s.cnList.map((item) => `- ${item}`).join('\n')}`);
+      parts.push(`${sectionIdx++}. TCCN bất thường:\n${s.cnList.map((item) => `- ${item}`).join('\n')}`);
     } else {
-      parts.push(`${sectionIdx++}. Triệu chứng cơ năng & Bệnh sử:\n- Chưa ghi nhận bất thường đặc hiệu.`);
+      parts.push(`${sectionIdx++}. TCCN bất thường:\n- Chưa ghi nhận bất thường đặc hiệu.`);
     }
 
-    // 3. Triệu chứng thực thể & Dấu hiệu sinh tồn
+    // 3. TCTT & DHST bất thường
     const ttParts: string[] = [];
     if (s.vitalAnomalies.length > 0) {
-      ttParts.push(`- Sinh hiệu bất thường: ${s.vitalAnomalies.join(' · ')}`);
+      ttParts.push(`- DHST bất thường: ${s.vitalAnomalies.join(' · ')}`);
     }
     if (s.examList.length > 0) {
       s.examList.forEach((e) => ttParts.push(`- ${e}`));
     }
     if (ttParts.length > 0) {
-      parts.push(`${sectionIdx++}. Triệu chứng thực thể & Dấu hiệu sinh tồn:\n${ttParts.join('\n')}`);
+      parts.push(`${sectionIdx++}. TCTT & DHST bất thường:\n${ttParts.join('\n')}`);
     } else {
-      parts.push(`${sectionIdx++}. Triệu chứng thực thể & Dấu hiệu sinh tồn:\n- Tổng trạng ổn định, chưa ghi nhận dấu hiệu nặng.`);
+      parts.push(`${sectionIdx++}. TCTT & DHST bất thường:\n- Tổng trạng ổn định, chưa ghi nhận dấu hiệu nặng.`);
     }
 
-    // 4. Cận lâm sàng ban đầu (nếu có)
+    // 4. CLS & Xét nghiệm bất thường
     const clsParts: string[] = [];
     if (s.labItems.length > 0) {
-      clsParts.push(`- Chỉ số xét nghiệm: ${s.labItems.join(' · ')}`);
+      s.labItems.forEach((lab) => clsParts.push(`- ${lab}`));
     }
     if (s.clsNarrative.length > 0) {
       s.clsNarrative.forEach((c) => clsParts.push(`- ${c}`));
     }
     if (clsParts.length > 0) {
-      parts.push(`${sectionIdx++}. Cận lâm sàng & Xét nghiệm ban đầu:\n${clsParts.join('\n')}`);
+      parts.push(`${sectionIdx++}. CLS & Xét nghiệm bất thường:\n${clsParts.join('\n')}`);
     }
 
-    // Yếu tố dịch tễ (nếu có)
+    // 5. Yếu tố Dịch tễ & TC liên quan
+    const ctxParts: string[] = [];
     if (s.epiList && s.epiList.length > 0) {
-      parts.push(`- Yếu tố dịch tễ (Bối cảnh truyền nhiễm):\n${s.epiList.map((e) => `  + ${e}`).join('\n')}`);
+      s.epiList.forEach((e) => ctxParts.push(`- Dịch tễ: ${e}`));
+    }
+    if (s.tcList && s.tcList.length > 0) {
+      s.tcList.forEach((t) => ctxParts.push(`- TC: ${t}`));
+    }
+    if (ctxParts.length > 0) {
+      parts.push(`${sectionIdx++}. Yếu tố Dịch tễ & TC liên quan:\n${ctxParts.join('\n')}`);
     }
 
-    // 5. Tiền căn có liên quan
-    if (s.tcList.length > 0) {
-      parts.push(`${sectionIdx++}. Tiền căn có liên quan:\n${s.tcList.map((t) => `- ${t}`).join('\n')}`);
-    }
-
-    // 6. Dấu hiệu âm tính có giá trị chẩn đoán / loại trừ
+    // 6. Dấu hiệu âm tính (-) có giá trị loại trừ
     if (s.negList.length > 0) {
-      parts.push(`${sectionIdx++}. Dấu hiệu âm tính có giá trị loại trừ:\n- ${s.negList.join('; ')}`);
+      parts.push(`${sectionIdx++}. Dấu hiệu âm tính (-) loại trừ:\n${s.negList.map((n) => `- ${n}`).join('\n')}`);
     }
 
     // Câu kết chuẩn hóa

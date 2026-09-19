@@ -483,7 +483,7 @@ export const Step1DataIngestion: React.FC<Step1Props> = ({
             <SymptomCategorySection
               category="cn"
               badgeLetter="B"
-              title="Triệu chứng cơ năng (Chủ quan / Subjective)"
+              title="TCCN — Triệu chứng cơ năng (Chủ quan / Subjective)"
               subtitle="Cảm nhận và phàn nàn trực tiếp từ người bệnh hoặc người nhà"
               placeholder="Ghi chú bệnh sử tự do (khởi phát, tính chất cơn đau, yếu tố tăng/giảm, triệu chứng kèm theo...)"
               textValue={form.text.cn}
@@ -509,8 +509,8 @@ export const Step1DataIngestion: React.FC<Step1Props> = ({
             <SymptomCategorySection
               category="tt"
               badgeLetter="C"
-              title="Dấu hiệu sinh tồn & Triệu chứng thực thể (Khách quan / Objective)"
-              subtitle="Thăm khám lâm sàng, quan sát trực tiếp và đo lường chỉ số sinh tồn"
+              title="TCTT & DHST — Thực thể & Sinh hiệu (Khách quan / Objective)"
+              subtitle="Thăm khám LS, quan sát trực tiếp và đo lường DHST"
               placeholder="Khám các cơ quan khác (nghe tim, rì rào phế nang, điểm đau khu trú, dấu kích thích phúc mạc, tri giác, Glasgow...)"
               textValue={form.text.tt}
               onTextChange={(val) => setForm((prev) => ({ ...prev, text: { ...prev.text, tt: val } }))}
@@ -542,7 +542,7 @@ export const Step1DataIngestion: React.FC<Step1Props> = ({
             <SymptomCategorySection
               category="tc"
               badgeLetter="D"
-              title="Tiền căn bệnh lý, Dị ứng & Yếu tố nguy cơ"
+              title="TC — Tiền căn bệnh lý, Dị ứng & Yếu tố nguy cơ"
               subtitle="Bệnh nền mạn tính, tiền căn phẫu thuật, dùng thuốc kéo dài và tiền sử gia đình"
               placeholder="Tiền căn dùng thuốc, dị ứng thuốc/thức ăn, tiền căn sản khoa, lối sống (hút thuốc lá gói-năm, bia rượu...)"
               textValue={form.text.tc}
@@ -568,9 +568,9 @@ export const Step1DataIngestion: React.FC<Step1Props> = ({
             <SymptomCategorySection
               category="cls"
               badgeLetter="E"
-              title="Cận lâm sàng & Xét nghiệm tại chỗ"
-              subtitle="Kết quả công thức máu, sinh hóa máu, men tim cấp và chẩn đoán hình ảnh đã có"
-              placeholder="Kết quả hình ảnh học hoặc CLS khác: ECG (ST chênh lên ở đạo trình nào), X-quang ngực thẳng, Siêu âm tim/bụng tổng quát, CT scan..."
+              title="CLS — Cận lâm sàng & Xét nghiệm tại chỗ"
+              subtitle="Kết quả TPTTBM, sinh hóa máu, men tim cấp và chẩn đoán hình ảnh (XQ/SA/CT) đã có"
+              placeholder="Kết quả hình ảnh học hoặc CLS khác: ECG (ST chênh lên ở đạo trình nào), XQ ngực thẳng, SA tim/bụng tổng quát, CT scan, KMĐM..."
               textValue={form.text.cls}
               onTextChange={(val) => setForm((prev) => ({ ...prev, text: { ...prev.text, cls: val } }))}
               isRecording={isRecording === 'cls'}

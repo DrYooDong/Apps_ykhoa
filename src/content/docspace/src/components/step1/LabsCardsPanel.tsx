@@ -32,7 +32,7 @@ export const LabsCardsPanel: React.FC<LabsCardsPanelProps> = ({
       <div className="flex items-center justify-between mb-2">
         <span className="text-xs font-bold text-slate-700 flex items-center gap-1.5">
           <Sliders className="w-3.5 h-3.5 text-blue-600" />
-          Chỉ số sinh hóa & huyết học nhanh
+          Chỉ số CLS & Xét nghiệm nhanh
         </span>
         <div className="flex items-center gap-2">
           <button
@@ -41,7 +41,7 @@ export const LabsCardsPanel: React.FC<LabsCardsPanelProps> = ({
             title="Nạp chỉ số xét nghiệm thông thường"
             className="text-[11px] font-medium text-slate-600 hover:text-blue-700 px-2 py-0.5 bg-slate-100 hover:bg-slate-200 rounded transition-colors cursor-pointer border border-slate-200"
           >
-            Nạp xét nghiệm chuẩn
+            Nạp CLS chuẩn
           </button>
           <span className="text-[11px] text-slate-500 hidden sm:inline">
             Ngưỡng tham chiếu tiêu chuẩn Bộ Y tế
@@ -53,7 +53,7 @@ export const LabsCardsPanel: React.FC<LabsCardsPanelProps> = ({
         {/* Bạch cầu */}
         <div className="bg-white p-2 border border-slate-200 rounded-md">
           <div className="flex items-center justify-between mb-1">
-            <label className="font-sans font-semibold text-slate-700 text-[11px]">Bạch cầu (BC)</label>
+            <label className="font-sans font-semibold text-slate-700 text-[11px]">WBC (Bạch cầu)</label>
             <span className="text-[9.5px] text-slate-400 font-sans">4.0–10.0</span>
           </div>
           <div className="relative">
@@ -77,7 +77,7 @@ export const LabsCardsPanel: React.FC<LabsCardsPanelProps> = ({
         {/* Tiểu cầu */}
         <div className="bg-white p-2 border border-slate-200 rounded-md">
           <div className="flex items-center justify-between mb-1">
-            <label className="font-sans font-semibold text-slate-700 text-[11px]">Tiểu cầu (TC)</label>
+            <label className="font-sans font-semibold text-slate-700 text-[11px]">PLT (Tiểu cầu)</label>
             <span className="text-[9.5px] text-slate-400 font-sans">150–400</span>
           </div>
           <div className="relative">
@@ -100,7 +100,7 @@ export const LabsCardsPanel: React.FC<LabsCardsPanelProps> = ({
         {/* Hct */}
         <div className="bg-white p-2 border border-slate-200 rounded-md">
           <div className="flex items-center justify-between mb-1">
-            <label className="font-sans font-semibold text-slate-700 text-[11px]">Hematocrit</label>
+            <label className="font-sans font-semibold text-slate-700 text-[11px]">Hct (Hematocrit)</label>
             <span className="text-[9.5px] text-slate-400 font-sans">37–48%</span>
           </div>
           <div className="relative">
@@ -173,7 +173,7 @@ export const LabsCardsPanel: React.FC<LabsCardsPanelProps> = ({
       {derivedLabsList.length > 0 && (
         <div className="flex flex-wrap items-center gap-1.5 mt-2 pt-2 border-t border-slate-200">
           <span className="text-[11px] font-sans font-semibold text-blue-900">
-            Dữ kiện cận lâm sàng suy luận:
+            Dữ kiện CLS suy luận:
           </span>
           {derivedLabsList.map((badge, idx) => (
             <span
@@ -190,7 +190,7 @@ export const LabsCardsPanel: React.FC<LabsCardsPanelProps> = ({
       <div className="flex flex-wrap items-center gap-1.5 mt-2.5 pt-2 border-t border-slate-200">
         <span className="text-[10.5px] font-bold text-slate-500 uppercase tracking-wide mr-1 flex items-center gap-1">
           <Sparkles className="w-3 h-3 text-amber-500" />
-          Tính nhanh xét nghiệm:
+          Tính nhanh CLS:
         </span>
 
         <button
@@ -227,10 +227,10 @@ export const LabsCardsPanel: React.FC<LabsCardsPanelProps> = ({
           type="button"
           onClick={() => onOpenVaultDrawer?.(undefined, 'Khí máu', 'CC')}
           className="inline-flex items-center gap-1 px-2 py-0.5 text-[11px] font-semibold text-rose-800 bg-rose-50 hover:bg-rose-100 border border-rose-200 rounded transition-colors cursor-pointer"
-          title="Biện luận Khí máu động mạch (ABG) 6 bước: Toan kiềm, Anion Gap & bù trừ"
+          title="Biện luận Khí máu động mạch (KMĐM/ABG) 6 bước: Toan kiềm, Anion Gap & bù trừ"
         >
           <span>🩸</span>
-          <span>Biện luận ABG 6 bước</span>
+          <span>Biện luận KMĐM (ABG) 6 bước</span>
         </button>
 
         <a
@@ -241,7 +241,7 @@ export const LabsCardsPanel: React.FC<LabsCardsPanelProps> = ({
           title="Mở Hệ thống CDSS Phân Tích Khí Máu Động Mạch (ABG Pro) độc lập"
         >
           <span>🩸</span>
-          <span>CDSS ABG Pro ↗</span>
+          <span>CDSS KMĐM Pro ↗</span>
         </a>
 
         <a
@@ -252,7 +252,7 @@ export const LabsCardsPanel: React.FC<LabsCardsPanelProps> = ({
           title="Mở Hệ thống CDSS Phân Tích X-Quang Ngực & Bụng (RadAI PACS) độc lập"
         >
           <span>🩻</span>
-          <span>CDSS RadAI X-Ray ↗</span>
+          <span>CDSS RadAI XQ ↗</span>
         </a>
       </div>
     </div>

@@ -15,10 +15,10 @@ export const StepNav: React.FC<StepNavProps> = ({
   onSelectStep,
 }) => {
   const steps: { id: ClinicalStepId; num: string; title: string; subtitle: string }[] = [
-    { id: 't1', num: '1', title: '1. Nạp dữ kiện', subtitle: 'Lâm sàng · Dịch tễ · Cận lâm sàng' },
-    { id: 't2', num: '2', title: '2. Tóm tắt & Đặt VĐ', subtitle: 'Tóm tắt BA · Vấn đề chính · Tam giác DTH' },
-    { id: 't3', num: '3', title: '3. Phân tích & Biện luận', subtitle: 'Suy luận diễn dịch · Truyền nhiễm & Cấp cứu' },
-    { id: 't4', num: '4', title: '4. Phác đồ điều trị', subtitle: 'Phân tầng xử trí · Y lệnh thuốc · EBM' },
+    { id: 't1', num: '1', title: '1. Nạp dữ kiện', subtitle: 'LS · Dịch tễ · CLS' },
+    { id: 't2', num: '2', title: '2. Tóm tắt & Đặt VĐ', subtitle: 'Tóm tắt BA · Vấn đề chính · DTH' },
+    { id: 't3', num: '3', title: '3. Phân tích & Biện luận', subtitle: 'Biện luận LS · CĐSB / CĐPB' },
+    { id: 't4', num: '4', title: '4. Phác đồ ĐT', subtitle: 'Phân tầng XT · Y lệnh ĐT · EBM' },
   ];
 
   // Calculate progress percentage

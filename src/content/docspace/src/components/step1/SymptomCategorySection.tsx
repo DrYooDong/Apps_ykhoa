@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Check, Mic } from 'lucide-react';
 import { KnowledgeBase, TrieuChung } from '../../types.ts';
 import { GROUP_COLORS } from '../../data/seedData.ts';
 import { normalizeText } from '../../lib/clinicalEngine.ts';
 import { CLINICAL_SYNDROME_PRESETS } from './ClinicalSelectorControl.tsx';
+import { expandSearchTerms } from '../../lib/medicalAbbreviations.ts';
 
 interface SymptomCategorySectionProps {
   category: 'cn' | 'tt' | 'tc' | 'cls';
@@ -67,12 +68,21 @@ export const SymptomCategorySection: React.FC<SymptomCategorySectionProps> = ({
   });
 
   const query = normalizeText(chipFilter);
+  const expandedQueries = useMemo(() => {
+    if (!query) return [];
+    return expandSearchTerms(query).map((q) => normalizeText(q));
+  }, [query]);
 
   const filtered = list.filter((tc) => {
     if (!query) return true;
-    const matchName = normalizeText(tc.ten).includes(query);
-    const matchKeywords = tc.tuKhoa.some((k) => normalizeText(k).includes(query));
-    return matchName || matchKeywords;
+    const nameNorm = normalizeText(tc.ten);
+    const keywordsNorm = tc.tuKhoa.map((k) => normalizeText(k));
+
+    return expandedQueries.some((q) => {
+      const matchName = nameNorm.includes(q);
+      const matchKeywords = keywordsNorm.some((k) => k.includes(q));
+      return matchName || matchKeywords;
+    });
   });
 
   const renderChip = (tc: TrieuChung) => {

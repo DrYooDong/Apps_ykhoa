@@ -236,8 +236,8 @@ export const PrintReportModal: React.FC<PrintReportModalProps> = ({
               </div>
             </div>
             <div className="mt-2 text-xs">
-              <span className="text-neutral-500">Lý do vào viện:</span>{' '}
-              <b className="text-neutral-900">{form.lyDo || 'Khám lâm sàng / Cấp cứu'}</b>
+              <span className="text-neutral-500">LDNV:</span>{' '}
+              <b className="text-neutral-900">{form.lyDo || 'Khám LS / Cấp cứu'}</b>
             </div>
           </div>
 
@@ -364,14 +364,14 @@ export const PrintReportModal: React.FC<PrintReportModalProps> = ({
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
             <div className="border border-neutral-200 rounded-lg p-3">
               <div className="font-bold text-xs uppercase text-neutral-700 mb-2 flex items-center justify-between">
-                <span>Dấu hiệu sinh tồn</span>
+                <span>DHST (Dấu hiệu sinh tồn)</span>
                 <span className="text-[10px] text-neutral-400 font-normal">Thăm khám ban đầu</span>
               </div>
               <div className="grid grid-cols-2 gap-2 text-xs font-mono-custom">
-                <div>Nhiệt độ: <b>{vitals.vNhiet ? `${vitals.vNhiet} °C` : '—'}</b></div>
-                <div>Mạch: <b>{vitals.vMach ? `${vitals.vMach} l/ph` : '—'}</b></div>
-                <div>Huyết áp: <b>{vitals.vHATT && vitals.vHATTr ? `${vitals.vHATT}/${vitals.vHATTr} mmHg` : '—'}</b></div>
-                <div>Nhịp thở: <b>{vitals.vTho ? `${vitals.vTho} l/ph` : '—'}</b></div>
+                <div>T°C: <b>{vitals.vNhiet ? `${vitals.vNhiet} °C` : '—'}</b></div>
+                <div>M: <b>{vitals.vMach ? `${vitals.vMach} l/p` : '—'}</b></div>
+                <div>HA: <b>{vitals.vHATT && vitals.vHATTr ? `${vitals.vHATT}/${vitals.vHATTr} mmHg` : '—'}</b></div>
+                <div>NT: <b>{vitals.vTho ? `${vitals.vTho} l/p` : '—'}</b></div>
                 <div>SpO₂: <b>{vitals.vSpo2 ? `${vitals.vSpo2} %` : '—'}</b></div>
                 <div>BMI: <b>{vitals.vBMI || '—'}</b></div>
               </div>
@@ -379,12 +379,12 @@ export const PrintReportModal: React.FC<PrintReportModalProps> = ({
 
             <div className="border border-neutral-200 rounded-lg p-3">
               <div className="font-bold text-xs uppercase text-neutral-700 mb-2 flex items-center justify-between">
-                <span>Cận lâm sàng chính</span>
-                <span className="text-[10px] text-neutral-400 font-normal">Xét nghiệm khẩn</span>
+                <span>CLS chính (Xét nghiệm khẩn)</span>
+                <span className="text-[10px] text-neutral-400 font-normal">Kết quả cận lâm sàng</span>
               </div>
               <div className="grid grid-cols-2 gap-2 text-xs font-mono-custom">
-                <div>Bạch cầu: <b>{labs.lBC ? `${labs.lBC} G/L` : '—'}</b></div>
-                <div>Troponin I: <b>{labs.lTrop ? `${labs.lTrop} ng/mL` : '—'}</b></div>
+                <div>WBC: <b>{labs.lBC ? `${labs.lBC} G/L` : '—'}</b></div>
+                <div>Troponin: <b>{labs.lTrop ? `${labs.lTrop} ng/L` : '—'}</b></div>
                 <div>Đường huyết: <b>{labs.lGlu ? `${labs.lGlu} mmol/L` : '—'}</b></div>
                 <div>Creatinine: <b>{labs.lCre ? `${labs.lCre} µmol/L` : '—'}</b></div>
                 <div>AST/ALT: <b>{labs.lAST || labs.lALT ? `${labs.lAST || '—'}/${labs.lALT || '—'} U/L` : '—'}</b></div>
@@ -396,7 +396,7 @@ export const PrintReportModal: React.FC<PrintReportModalProps> = ({
           {/* Clinical Summary */}
           {summaryText && (
             <div className="mb-5">
-              <div className="font-bold text-xs uppercase text-neutral-700 mb-1.5">Tóm tắt bệnh án</div>
+              <div className="font-bold text-xs uppercase text-neutral-700 mb-1.5">Tóm tắt BA chuẩn hóa</div>
               <div className="p-3 bg-neutral-50 border border-neutral-200 rounded-lg text-xs leading-relaxed whitespace-pre-wrap">
                 {summaryText}
               </div>
@@ -408,7 +408,7 @@ export const PrintReportModal: React.FC<PrintReportModalProps> = ({
             <div className="border-2 border-neutral-900 rounded-lg p-4 mb-5">
               <div className="flex items-center justify-between mb-2">
                 <span className="font-bold text-xs uppercase bg-neutral-900 text-white px-2 py-0.5 rounded">
-                  CHẨN ĐOÁN SƠ BỘ NGHĨ NHIỀU NHẤT
+                  CĐSB (CHẨN ĐOÁN SƠ BỘ NGHĨ NHIỀU NHẤT)
                 </span>
                 <span className="font-mono-custom font-bold text-sm text-neutral-900">
                   Độ phù hợp: {top.pct}% (Khớp {top.matched.length} dữ kiện)
@@ -428,7 +428,7 @@ export const PrintReportModal: React.FC<PrintReportModalProps> = ({
               {/* Differentials */}
               {diffs.length > 0 && (
                 <div className="pt-3 border-t border-neutral-200">
-                  <div className="font-bold text-xs text-neutral-700 mb-1">Chẩn đoán phân biệt cần loại trừ:</div>
+                  <div className="font-bold text-xs text-neutral-700 mb-1">CĐPB (Chẩn đoán phân biệt cần loại trừ):</div>
                   <ul className="list-disc list-inside text-xs text-neutral-600 space-y-0.5">
                     {diffs.map((d, i) => (
                       <li key={i}>
@@ -445,7 +445,7 @@ export const PrintReportModal: React.FC<PrintReportModalProps> = ({
           {top?.b?.phacDo && (
             <div className="mb-6 p-4 border border-neutral-200 rounded-lg bg-neutral-50/50">
               <div className="font-bold text-xs uppercase text-neutral-800 mb-2">
-                Hướng dẫn phác đồ xử trí ban đầu (Bộ Y tế)
+                Hướng dẫn phác đồ XT ban đầu (Bộ Y tế)
               </div>
 
               {top.b.phacDo.tuyen && top.b.phacDo.tuyen.length > 0 && (

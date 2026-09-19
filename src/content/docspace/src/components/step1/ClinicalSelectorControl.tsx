@@ -15,7 +15,7 @@ export interface SyndromePreset {
 export const CLINICAL_SYNDROME_PRESETS: SyndromePreset[] = [
   {
     id: 'acs',
-    name: 'H/c Mạch vành cấp (ACS)',
+    name: 'HC Mạch vành cấp (ACS)',
     shortName: '🫀 Vành cấp (ACS)',
     icon: '🫀',
     badgeClass: 'border-red-200 text-red-700 bg-red-50 hover:bg-red-100',
@@ -51,7 +51,7 @@ export const CLINICAL_SYNDROME_PRESETS: SyndromePreset[] = [
   },
   {
     id: 'fever_infection',
-    name: 'Sốt & Hội chứng Nhiễm trùng',
+    name: 'Sốt & HC Nhiễm trùng',
     shortName: '🌡️ Sốt / Nhiễm trùng',
     icon: '🌡️',
     badgeClass: 'border-orange-200 text-orange-800 bg-orange-50 hover:bg-orange-100',
@@ -238,7 +238,7 @@ export const ClinicalSelectorControl: React.FC<ClinicalSelectorControlProps> = (
             }`}
           >
             <span className="w-4 h-4 rounded bg-slate-800 text-white text-[10px] flex items-center justify-center font-mono-custom">B</span>
-            <span>Cơ năng</span>
+            <span>TCCN (Cơ năng)</span>
             {countCategorySelected('cn') > 0 && (
               <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-blue-600 text-white font-mono-custom font-bold">
                 {countCategorySelected('cn')}
@@ -256,7 +256,7 @@ export const ClinicalSelectorControl: React.FC<ClinicalSelectorControlProps> = (
             }`}
           >
             <span className="w-4 h-4 rounded bg-slate-800 text-white text-[10px] flex items-center justify-center font-mono-custom">C</span>
-            <span>Thực thể & Vitals</span>
+            <span>TCTT & DHST</span>
             {countCategorySelected('tt') > 0 && (
               <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-blue-600 text-white font-mono-custom font-bold">
                 {countCategorySelected('tt')}
@@ -274,7 +274,7 @@ export const ClinicalSelectorControl: React.FC<ClinicalSelectorControlProps> = (
             }`}
           >
             <span className="w-4 h-4 rounded bg-slate-800 text-white text-[10px] flex items-center justify-center font-mono-custom">D</span>
-            <span>Tiền căn</span>
+            <span>TC (Tiền căn)</span>
             {countCategorySelected('tc') > 0 && (
               <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-blue-600 text-white font-mono-custom font-bold">
                 {countCategorySelected('tc')}
@@ -292,7 +292,7 @@ export const ClinicalSelectorControl: React.FC<ClinicalSelectorControlProps> = (
             }`}
           >
             <span className="w-4 h-4 rounded bg-slate-800 text-white text-[10px] flex items-center justify-center font-mono-custom">E</span>
-            <span>Cận lâm sàng</span>
+            <span>CLS (Cận lâm sàng)</span>
             {countCategorySelected('cls') > 0 && (
               <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-blue-600 text-white font-mono-custom font-bold">
                 {countCategorySelected('cls')}
@@ -397,7 +397,7 @@ export const ClinicalSelectorControl: React.FC<ClinicalSelectorControlProps> = (
             type="text"
             value={chipFilter}
             onChange={(e) => setChipFilter(e.target.value)}
-            placeholder="🔎 Tìm nhanh: đau ngực, sốt, khó thở, troponin..."
+            placeholder="🔎 Tìm nhanh: đau ngực, sốt, khó thở, PLT, WBC, HA, troponin..."
             className="w-full pl-8 pr-7 py-1 text-xs bg-slate-50 focus:bg-white border border-slate-200 rounded-md focus:outline-none focus:border-blue-500 transition-colors text-slate-800"
           />
           {chipFilter && (

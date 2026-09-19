@@ -676,7 +676,7 @@ export const Step3Protocol: React.FC<Step3Props> = ({
           <div>
             <div className="flex items-center gap-2">
               <h2 className="font-display text-base sm:text-lg font-bold text-slate-900">
-                Phác đồ điều trị & Y lệnh lâm sàng
+                Phác đồ ĐT & Y lệnh LS
               </h2>
               <span className="px-2 py-0.5 text-[10.5px] font-mono-custom bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-md font-semibold">
                 Clinical Pathway
@@ -733,7 +733,7 @@ export const Step3Protocol: React.FC<Step3Props> = ({
                 <User className="w-3.5 h-3.5" />
               </span>
               <span className="font-semibold text-slate-200">
-                {form?.gioiTinh === 'nam' ? 'Nam' : form?.gioiTinh === 'nu' ? 'Nữ' : 'Bệnh nhân'}{' '}
+                {form?.gioiTinh === 'nam' ? 'Nam' : form?.gioiTinh === 'nu' ? 'Nữ' : 'BN'}{' '}
                 {form?.tuoi ? `· ${form.tuoi} tuổi` : ''}
               </span>
               {form?.ngheNghiep && (
@@ -743,7 +743,7 @@ export const Step3Protocol: React.FC<Step3Props> = ({
 
             {form?.lyDo && (
               <div className="text-slate-300 hidden md:flex items-center gap-1.5 border-l border-slate-700 pl-3">
-                <span className="text-slate-400">Lý do vào viện:</span>
+                <span className="text-slate-400">LDNV:</span>
                 <span className="font-medium text-white italic">"{form.lyDo}"</span>
               </div>
             )}
@@ -752,14 +752,14 @@ export const Step3Protocol: React.FC<Step3Props> = ({
           {vitals && (
             <div className="flex items-center gap-3 font-mono-custom text-[11px] text-slate-300 flex-wrap">
               <span className="flex items-center gap-1">
-                <span className="text-slate-400">T°:</span>
+                <span className="text-slate-400">T°C:</span>
                 <b className={parseFloat(vitals.vNhiet) >= 38 ? 'text-amber-400' : 'text-slate-100'}>
                   {vitals.vNhiet || '—'}°C
                 </b>
               </span>
               <span>·</span>
               <span className="flex items-center gap-1">
-                <span className="text-slate-400">Mạch:</span>
+                <span className="text-slate-400">M:</span>
                 <b className={parseFloat(vitals.vMach) > 100 ? 'text-rose-400' : 'text-slate-100'}>
                   {vitals.vMach || '—'} l/p
                 </b>
@@ -789,7 +789,7 @@ export const Step3Protocol: React.FC<Step3Props> = ({
           <div className="flex items-center gap-2">
             <AlertTriangle className="w-4 h-4 text-amber-600 shrink-0" />
             <span>
-              <b>Lưu ý sinh hiệu người bệnh:</b> Phát hiện các thông số vượt ngưỡng tham chiếu:{' '}
+              <b>Lưu ý DHST người bệnh:</b> Phát hiện các thông số vượt ngưỡng tham chiếu:{' '}
               <span className="font-semibold">{abnormalVitalsSummary.join(' · ')}</span>. Ưu tiên các
               y lệnh ổn định huyết động và oxy liệu pháp.
             </span>
@@ -964,7 +964,7 @@ export const Step3Protocol: React.FC<Step3Props> = ({
                 <Pill className="w-4 h-4" />
               </div>
             }
-            title="2. Bảng y lệnh thuốc & Dược lâm sàng (Medical Order Sheet - Rx)"
+            title="2. Bảng y lệnh thuốc & Dược LS (Medical Order Sheet - Rx)"
             subtitle="Chỉ định liều lượng, đường dùng, kiểm tra tương tác thuốc (DDI), chỉnh liều eGFR & quy tắc BHYT"
             badgeText={`${phacDo.thuoc.length + customOrders.length} y lệnh`}
             badgeColor="bg-blue-100 text-blue-800 border-blue-200"
@@ -997,7 +997,7 @@ export const Step3Protocol: React.FC<Step3Props> = ({
                 <Calendar className="w-4 h-4" />
               </div>
             }
-            title="3. Phác đồ điều trị chi tiết từng ngày"
+            title="3. Phác đồ ĐT chi tiết từng ngày"
             subtitle="Lộ trình can thiệp lâm sàng phân tầng theo từng giai đoạn ngày bệnh (gom nhóm các ngày có xử trí tương tự)"
             badgeText={`${timelinePhases.length} giai đoạn can thiệp`}
             badgeColor="bg-blue-100 text-blue-800 border-blue-200"
@@ -1045,7 +1045,7 @@ export const Step3Protocol: React.FC<Step3Props> = ({
                 <Calculator className="w-4 h-4" />
               </div>
             }
-            title="5. Thang điểm lượng giá nguy cơ & Phân tầng xử trí"
+            title="5. Thang điểm lượng giá nguy cơ & Phân tầng XT"
             subtitle="CURB-65, Killip và các công cụ tính toán lượng giá lâm sàng (Kho Công cụ - CC)"
             badgeText={`${diseaseTools.length} công cụ`}
             badgeColor="bg-indigo-100 text-indigo-800 border-indigo-200"
@@ -1070,7 +1070,7 @@ export const Step3Protocol: React.FC<Step3Props> = ({
                 <Activity className="w-4 h-4" />
               </div>
             }
-            title="6. Chỉ tiêu theo dõi, mục tiêu lâm sàng & Cảnh báo an toàn"
+            title="6. Chỉ tiêu theo dõi, mục tiêu LS & Cảnh báo an toàn"
             subtitle="Các mốc sinh hiệu cần giám sát, tiêu chuẩn cải thiện, chống chỉ định và tiêu chuẩn ra viện / chuyển tầng"
             badgeText={`${phacDo.theoDoi.length} chỉ tiêu · ${phacDo.luuY.length} lưu ý`}
             badgeColor="bg-amber-100 text-amber-800 border-amber-200"
@@ -1149,7 +1149,7 @@ export const Step3Protocol: React.FC<Step3Props> = ({
                 <Sparkles className="w-4 h-4" />
               </div>
             }
-            title="9. Ca Bệnh Lâm Sàng Thực Chiến & Hội Chẩn AI (SOAP Cases)"
+            title="9. Ca Bệnh LS Thực Chiến & Hội Chẩn AI (SOAP Cases)"
             subtitle="Tham khảo ca bệnh thực tế tương tự, bẫy chẩn đoán và tạo prompt hội chẩn NotebookLM"
             badgeText={`${similarSoapCases.length} ca bệnh phù hợp`}
             badgeColor="bg-emerald-100 text-emerald-800 border-emerald-200"
