@@ -6,6 +6,7 @@ import {
   CheckCircle2,
   Database,
   Layers,
+  Printer,
   ShieldAlert,
   Sparkles,
   Stethoscope,
