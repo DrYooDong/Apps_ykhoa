@@ -270,7 +270,7 @@ export function openDayScoreModal(
                 <span style="font-size: 0.75rem; padding: 0.15rem 0.5rem; border-radius: 4px; background: var(--color-surface, #fff); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text, #0f172a);">
                   🩺 Nạp Âm BS: <strong>${napAmDoc.name}</strong> (${napAmDoc.element})
                 </span>
-                ${getNapAmRelationBadge(napAmRel.relation, napAmRel.score, napAmRel.text)}
+                ${getNapAmRelationBadge(napAmRel.relationType, napAmRel.score, napAmRel.text)}
               </div>
 
               <!-- Huy hiệu Sao Đăng Viên nếu có -->
