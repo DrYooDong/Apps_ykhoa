@@ -45,56 +45,63 @@ Tạo 01 đối tượng JSON ca bệnh hoàn chỉnh với số liệu sinh hi�
 Định dạng JSON bắt buộc:
 ```json
 {
-  \"ten\": \"[Tên ca bệnh: ví dụ SXHD Cảnh Báo Ngày 4 (Hct 46%, TC 42 G/L)]\",
-  \"sel\": [
-    \"[id_trieu_chung_1]\",
-    \"[id_trieu_chung_2]\",
-    \"[id_trieu_chung_3]\",
-    \"[id_trieu_chung_4]\",
-    \"[id_trieu_chung_5]\"
-  ],
-  \"vitals\": {
-    \"vNhiet\": \"[Nhiệt độ sốt: ví dụ 39.2]\",
-    \"vMach\": \"[Mạch nhanh: ví dụ 108]\",
-    \"vHATT\": \"[Huyết áp tâm thu: ví dụ 95]\",
-    \"vHATTr\": \"[Huyết áp tâm trương: ví dụ 75]\",
-    \"vTho\": \"[Nhịp thở: ví dụ 22]\",
-    \"vSpo2\": \"[SpO2 %: ví dụ 96]\"
+  "id": "[slug_ca_benh: ví dụ sxh_dengue_canh_bao_n4]",
+  "ten": "[Tên ca bệnh: ví dụ SXHD Cảnh Báo Ngày 4 (Hct 46%, TC 42 G/L)]",
+  "diseaseId": "[SLUG FILE BỆNH LÝ: ví dụ sot_xuat_huyet_dengue]",
+  "icd10": "[MÃ ICD-10 CHÍNH: ví dụ A97.1]",
+  "specialty": "[CHUYÊN KHOA: ví dụ Truyền nhiễm]",
+  "vitals": {
+    "vNhiet": "[Nhiệt độ sốt: ví dụ 39.2]",
+    "vMach": "[Mạch nhanh: ví dụ 108]",
+    "vHATT": "[Huyết áp tâm thu: ví dụ 95]",
+    "vHATTr": "[Huyết áp tâm trương: ví dụ 75]",
+    "vTho": "[Nhịp thở: ví dụ 22]",
+    "vSpo2": "[SpO2 %: ví dụ 96]"
   },
-  \"labs\": {
-    \"lBC\": \"[Bạch cầu G/L: ví dụ 3.2]\",
-    \"lTC\": \"[Tiểu cầu G/L giảm sâu: ví dụ 42]\",
-    \"lHct\": \"[Hematocrit % tăng cô đặc: ví dụ 46]\",
-    \"lGlu\": \"[Đường huyết mmol/L: ví dụ 5.4]\",
-    \"lTrop\": \"[Troponin ng/L: ví dụ 8]\"
+  "labs": {
+    "lBC": "[Bạch cầu G/L: ví dụ 3.2]",
+    "lTC": "[Tiểu cầu G/L giảm sâu: ví dụ 42]",
+    "lHct": "[Hematocrit % tăng cô đặc: ví dụ 46]",
+    "lGlu": "[Đường huyết mmol/L: ví dụ 5.4]",
+    "lTrop": "[Troponin ng/L: ví dụ 8]",
+    "lAST": "[AST/GOT U/L men gan: ví dụ 280]",
+    "lALT": "[ALT/GPT U/L men gan: ví dụ 195]",
+    "lCre": "[Creatinine huyết thanh µmol/L: ví dụ 85]"
   },
-  \"selected\": [
-    \"[id_trieu_chung_1]\",
-    \"[id_trieu_chung_2]\",
-    \"[id_trieu_chung_3]\",
-    \"[id_trieu_chung_4]\",
-    \"[id_trieu_chung_5]\"
+  "selected": [
+    "[id_trieu_chung_1]",
+    "[id_trieu_chung_2]",
+    "[id_trieu_chung_3]",
+    "[id_trieu_chung_4]",
+    "[id_trieu_chung_5]"
   ],
-  \"negated\": [
-    \"[id_trieu_chung_am_tinh_gia_tri_1]\",
-    \"[id_trieu_chung_am_tinh_gia_tri_2]\"
+  "sel": [
+    "[id_trieu_chung_1]",
+    "[id_trieu_chung_2]",
+    "[id_trieu_chung_3]",
+    "[id_trieu_chung_4]",
+    "[id_trieu_chung_5]"
   ],
-  \"epiContext\": {
-    \"endemicArea\": \"Việt Nam là vùng lưu hành dịch tễ của SXH Dengue\",
-    \"outbreakAlert\": \"Đang có ổ dịch Sốt xuất huyết Dengue bùng phát tại địa phương\",
-    \"vectorExposure\": \"Khu vực nhiều muỗi vằn Aedes aegypti, xung quanh có nhiều người mắc sốt xuất huyết\",
-    \"seasonalContext\": \"Mùa mưa (tháng 5-11), cao điểm dịch Sốt xuất huyết lưu hành quanh năm\"
+  "negated": [
+    "[id_trieu_chung_am_tinh_gia_tri_1]",
+    "[id_trieu_chung_am_tinh_gia_tri_2]"
+  ],
+  "epiContext": {
+    "endemicArea": "Việt Nam là vùng lưu hành dịch tễ của SXH Dengue",
+    "outbreakAlert": "Đang có ổ dịch Sốt xuất huyết Dengue bùng phát tại địa phương",
+    "vectorExposure": "Khu vực nhiều muỗi vằn Aedes aegypti, xung quanh có nhiều người mắc sốt xuất huyết",
+    "seasonalContext": "Mùa mưa (tháng 5-11), cao điểm dịch Sốt xuất huyết lưu hành quanh năm"
   },
-  \"form\": {
-    \"gioiTinh\": \"[nam | nu]\",
-    \"tuoi\": \"[Tuổi bệnh nhân: ví dụ 24]\",
-    \"ngheNghiep\": \"[Nghề nghiệp bệnh nhân]\",
-    \"lyDo\": \"[Lý do vào viện: ví dụ Sốt cao ngày 4 kèm đau bụng vùng gan và chảy máu chân răng]\",
-    \"text\": {
-      \"cn\": \"[Đoạn văn mô tả triệu chứng cơ năng: sốt cao liên tục đột ngột không hạ, đau đầu dữ dội vùng trán, đau nhức hốc mắt, đau cơ khớp sâu, buồn nôn, đau tức âm ỉ vùng hạ sườn phải]\",
-      \"tt\": \"[Đoạn văn mô tả khám thực thể: bệnh nhân tỉnh nhưng mệt lả, da mặt và ngực sung huyết, nhiều chấm xuất huyết rải rác cẳng tay và cẳng chân. Nghiệm pháp dây thắt (Lacet) (+). Gan to 2cm dưới bờ sườn, ấn đau tức. Tim đều, phổi trong không rale]\",
-      \"tc\": \"[Đoạn văn tiền căn: khỏe mạnh, chưa từng mắc sốt xuất huyết trước đây. Sống tại khu nhà trọ sinh viên đang có nhiều người cùng mắc sốt xuất huyết. Việt Nam là vùng dịch tễ lưu hành của SXH Dengue, hiện khu vực đang vào mùa cao điểm dịch]\",
-      \"cls\": \"[Đoạn văn cận lâm sàng: Công thức máu WBC 3.2 G/L (giảm), PLT 42 G/L (giảm dốc đứng), Hct 46% (tăng > 20% so với nền). Test nhanh Kháng nguyên NS1 Ag (+). Siêu âm bụng có dày nhẹ thành túi mật 3.5mm và ít dịch góc sườn hoành phải]\"
+  "form": {
+    "gioiTinh": "[nam | nu]",
+    "tuoi": "[Tuổi bệnh nhân: ví dụ 24]",
+    "ngheNghiep": "[Nghề nghiệp bệnh nhân]",
+    "lyDo": "[LDVV (Lý do vào viện): ví dụ Sốt cao ngày 4 kèm đau bụng vùng gan và chảy máu chân răng]",
+    "text": {
+      "cn": "[TCCN (Triệu chứng cơ năng): sốt cao liên tục đột ngột không hạ, đau đầu dữ dội vùng trán, đau nhức hốc mắt, đau cơ khớp sâu, buồn nôn, đau tức âm ỉ vùng hạ sườn phải]",
+      "tt": "[TCTT & DHST (Triệu chứng thực thể & Dấu hiệu sinh tồn): bệnh nhân tỉnh nhưng mệt lả, da mặt và ngực sung huyết, nhiều chấm xuất huyết rải rác cẳng tay và cẳng chân. Nghiệm pháp dây thắt (Lacet) (+). Gan to 2cm dưới bờ sườn, ấn đau tức. Tim đều, phổi trong không rale]",
+      "tc": "[TC (Tiền căn & Dịch tễ): khỏe mạnh, chưa từng mắc sốt xuất huyết trước đây. Sống tại khu nhà trọ sinh viên đang có nhiều người cùng mắc sốt xuất huyết. Việt Nam là vùng dịch tễ lưu hành của SXH Dengue, hiện khu vực đang vào mùa cao điểm dịch]",
+      "cls": "[CLS (Cận lâm sàng & Hình ảnh học): Công thức máu WBC 3.2 G/L (giảm), PLT 42 G/L (giảm dốc đứng), Hct 46% (tăng > 20% so với nền). Test nhanh Kháng nguyên NS1 Ag (+). Siêu âm bụng có dày nhẹ thành túi mật 3.5mm và ít dịch góc sườn hoành phải]"
     }
   }
 }

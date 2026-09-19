@@ -69,29 +69,21 @@ function bundleDiseases() {
     console.log(`   - ${file.padEnd(20)}: ${count} bệnh`);
   }
 
-  // 2. Đồng bộ vào clinical-rules-kb.json nếu có
+  // 2. Đồng bộ vào clinical-rules-kb.json (Chỉ gom bệnh lý, tách rời triệu chứng sang clinical-rules-symptoms.json)
   if (fs.existsSync(OUT_KB_PATH)) {
     try {
       const kb = JSON.parse(fs.readFileSync(OUT_KB_PATH, 'utf8'));
       kb.benh = allDiseases;
+      delete kb.trieuChung; // Giảm gánh nặng: Triệu chứng đã được quản lý độc lập tại clinical-rules-symptoms.json
 
-      const symPath = path.join(DATA_DIR, 'clinical-rules-symptoms.json');
-      if (fs.existsSync(symPath)) {
-        try {
-          const symList = JSON.parse(fs.readFileSync(symPath, 'utf8'));
-          if (Array.isArray(symList)) {
-            kb.trieuChung = symList;
-          }
-        } catch (err) {
-          console.warn(`⚠️ Không thể đọc clinical-rules-symptoms.json:`, err.message);
-        }
-      }
+      if (!kb.meta) kb.meta = {};
+      kb.meta.ten = 'Kho tri thức bệnh học lâm sàng — Master Diseases Database (33 Bệnh lý)';
+      kb.meta.capNhat = new Date().toISOString();
+      kb.meta.symptomsSource = 'clinical-rules-symptoms.json';
+      kb.meta.totalDiseases = allDiseases.length;
 
-      if (kb.meta) {
-        kb.meta.capNhat = new Date().toISOString();
-      }
       fs.writeFileSync(OUT_KB_PATH, JSON.stringify(kb, null, 2) + '\n', 'utf8');
-      console.log(`\n✅ Đã đồng bộ Master KB: ${OUT_KB_PATH}`);
+      console.log(`\n✅ Đã đồng bộ Master KB (Đã tinh gọn, không còn nhân bản triệu chứng): ${OUT_KB_PATH}`);
     } catch (e) {
       console.warn(`⚠️ Không thể cập nhật clinical-rules-kb.json:`, e.message);
     }

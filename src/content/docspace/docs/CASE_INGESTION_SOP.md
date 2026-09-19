@@ -80,19 +80,36 @@ node tools/scripts/ingest-notebooklm-case.mjs src/content/knowledge-vault/ba/<sl
 
 ---
 
-### Bước 5: Đóng Gói Dữ Liệu CDSS Làm Giàu (Nếu có file Enriched mới)
-Nếu bạn nạp thêm file `data/enriched/<slug>.json` mới:
-```powershell
-node tools/scripts/build-enriched-cdss.mjs
-```
-Script sẽ tự động kiểm tra cú pháp, hợp nhất danh mục triệu chứng và đóng gói CSDL cho động cơ suy luận DocSpace.
+### Bước 5: Đóng Gói Dữ Liệu CDSS & Đồng Bộ Master KB
+1. Nếu nạp thêm file `data/enriched/<slug>.json` mới (từ Prompt 05):
+   ```powershell
+   node tools/scripts/build-enriched-cdss.mjs
+   ```
+2. Nếu nạp thêm ca mẫu vào `sample-clinical-cases.json` hoặc cập nhật luật suy luận vào `data/diseases/<chuyen-khoa>.json` (từ Prompt 06):
+   ```powershell
+   node tools/scripts/bundle-clinical-rules.mjs
+   ```
 
 ---
 
-## 🧪 Bảng Kiểm Tra Sau Khi Nạp (Quick Verification)
+## 🧪 Bảng Kiểm Tra Chất Lượng Sau Khi Nạp (Quality Gate Verification)
 
-Sau khi chạy lệnh CLI, mở trình duyệt vào DocSpace:
+Sau khi hoàn tất nạp dữ liệu từ các prompt, chạy bộ 3 lệnh kiểm định tự động:
+
+```powershell
+# 1. Rà soát linter dữ liệu: Zero HTML entities, chuẩn hóa viết tắt y khoa, lọc trùng triệu chứng:
+node tools/qa/docspace-clinical-data-linter.mjs
+
+# 2. Kiểm định 6 Trụ Cột Y Khoa Toàn Diện (Medical QA Gate):
+node tools/qa/docspace-medical-qa-gate.mjs
+
+# 3. Kiểm định 15 Tiêu chí sẵn sàng toàn diện của Kho Tri Thức:
+node tools/scripts/vault-readiness-check.mjs
+```
+
+### ✅ Bảng kiểm tra hiển thị trên giao diện DocSpace:
 - [ ] Chuyển sang phân hệ **Sổ Tay Kinh Nghiệm SOAP** ➔ Ca mới xuất hiện ở đầu danh sách.
-- [ ] Bấm vào xem chi tiết ➔ 4 cột S - O - A - P hiển thị đầy đủ, không bị lỗi font hoặc vỡ bảng.
+- [ ] Bấm vào xem chi tiết ➔ 4 cột S - O - A - P hiển thị đầy đủ, sắc nét, đúng cấu trúc.
 - [ ] Kiểm tra liên kết mã ICD-10 và chuyên khoa chính xác.
-- [ ] Chuyển giao thông tin sang **Medical Knowledge Standardization Squad** để kiểm định nội dung y khoa và chính tả.
+- [ ] Tại **Bước 1**: Ca mẫu nạp sáng đèn đúng triệu chứng, sinh hiệu và xét nghiệm hiển thị đủ.
+- [ ] Tại **Bước 3 & Bước 4**: Phân độ lâm sàng và Bảng 4 Cột hiển thị chi tiết theo từng ngày.

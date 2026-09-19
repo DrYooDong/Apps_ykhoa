@@ -267,40 +267,100 @@ Nếu muốn sinh kiểm soát từng phần độc lập:
 - **Khối 2 & 3 (Ca Mẫu & Trọng Số CDSS)**: Mở [`06-prompt-sample-case-generator.txt`](06-prompt-sample-case-generator.txt) ➔ Điền thông số ➔ Nhận 2 khối code cho `sample-clinical-cases.json` & `diseases/<chuyen-khoa>.json` (kèm `clinical-rules-symptoms.json`).
 - **Khối 4 (Hồ Sơ Ca Bệnh SOAP)**: Mở [`07-prompt-soap-case-ingest.txt`](07-prompt-soap-case-ingest.txt) ➔ Nhận Hồ sơ ca bệnh thực chiến SOAP Markdown chuẩn Frontmatter nạp trực tiếp qua nút Header.
 
-### Bước 3: Nạp Code & Dữ Liệu Vào Hệ Thống CliniPortal
+### Bước 3: Nạp Code & Dữ Liệu Vào Hệ Thống CliniPortal (Hướng Dẫn Chi Tiết Sau Khi Có Kết Quả Từ Prompt)
 
-Sau khi NotebookLM sinh xong dữ liệu cấu trúc, bạn nạp vào codebase theo đúng 3 vị trí sau:
+Sau khi NotebookLM sinh xong dữ liệu từ Prompt 00 (hoặc từng prompt riêng lẻ 05, 06, 07), bạn thực hiện nạp vào codebase theo đúng 3 vị trí và chạy các lệnh tự động hóa sau:
 
-1. **Nạp File Enriched CDSS JSON (Bước 3 & Bước 4)**:
-   - Tạo file JSON mới tại: `src/content/docspace/data/enriched/<slug>.json` (ví dụ: `tay_chan_mieng.json` hoặc `sot_ret.json`).
-   - Dán toàn bộ nội dung Khối 1 (Enriched CDSS JSON) vào file này.
-   - Mở terminal và chạy lệnh build tự động để đăng ký bệnh lý vào hệ thống:
+---
 
+#### 📦 1. XỬ LÝ KẾT QUẢ TỪ PROMPT 05 (Enriched CDSS JSON)
+
+- **Mục đích**: Vận hành Động cơ suy luận Bước 3 & Phác đồ Bảng 4 Cột Mục 2 Bước 4.
+- **Thao tác**:
+  1. Tạo file JSON mới tại: `src/content/docspace/data/enriched/<slug>.json` (ví dụ: `tay_chan_mieng.json`, `sot_ret.json`, `xo_gan.json`).
+  2. Dán toàn bộ nội dung JSON từ Prompt 05 vào file này.
+  3. **Lưu ý cấu trúc đã tinh gọn chuẩn mực**:
+     - Cấp root bắt buộc có: `icdCode`, `diseaseName`, `specialty`, `severity`, `summary`, `goldStandard`, `criteriaRule`, `criteria`, `severityGrading`, `specialPopulations`, `timelinePhases`, `cautionsAndDischarge`, `protocol` (root fallback), `complications`, `monitoringLabs`, `vaultPathways`.
+     - Tuyệt đối không lồng `protocol` bên trong từng bậc của `severityGrading` (tránh phình to dung lượng).
+     - Bảng 4 Cột chi tiết từng ngày được quản lý tại mảng `timelinePhases`.
+  4. Mở terminal và chạy lệnh build tự động để biên dịch và đăng ký bệnh lý vào hệ thống:
      ```powershell
      node tools/scripts/build-enriched-cdss.mjs
      ```
+     > *Script sẽ tự động kiểm tra tính hợp lệ của JSON, xác thực 14 trường dữ liệu tiêu chuẩn và tự động tái tạo file chỉ mục `src/content/docspace/data/enriched/index.ts`.*
 
-     > *Script sẽ tự động kiểm tra cú pháp JSON, xác thực các trường bắt buộc (`icdCode`, `diseaseName`, `criteria`, `protocol`, `severityGrading`) và tái tạo file chỉ mục `src/content/docspace/data/enriched/index.ts`.*
+---
 
-2. **Nạp Ca Bệnh Mẫu & Trọng Số CDSS (Bước 1, 2 & 3)**:
-   - Mở file `src/content/knowledge-vault/data/sample-clinical-cases.json`: Bổ sung đối tượng ca mẫu mới vào mảng `[]`. Đảm bảo có đầy đủ các trường: `ten`, `sel`, `vitals`, `labs`, `selected`, `negated`, `epiContext`, `form`.
-   - Bổ sung triệu chứng mới vào: `src/content/knowledge-vault/data/clinical-rules-symptoms.json` (nếu có triệu chứng mới).
-   - Bổ sung thực thể bệnh lý vào tệp chuyên khoa tương ứng: `src/content/knowledge-vault/data/diseases/<chuyen-khoa>.json` (ví dụ: `truyen-nhiem.json`, `ho-hap.json`, `tim-mach.json`...).
-   - Chạy lệnh tự động đồng bộ vào Master KB:
-     ```powershell
-     node tools/scripts/bundle-clinical-rules.mjs
-     ```
+#### 🧪 2. XỬ LÝ KẾT QUẢ TỪ PROMPT 06 (Ca Mẫu JSON & Ma Trận Trọng Số CDSS)
 
-3. **Nạp Ca Bệnh Thực Chiến SOAP (Mục 6 Bước 4)**:
-   - Bạn có thể lưu file markdown vào `src/content/knowledge-vault/ba/` hoặc mở giao diện DocSpace MedLens Pro trên trình duyệt (`http://localhost:5173/src/content/docspace/`), bấm nút **"Nạp ca từ NotebookLM"** trên Header, dán nội dung Markdown vào và bấm **"Phân tích & Nạp vào sổ tay"**.
+Prompt 06 sinh ra **2 Khối Code riêng biệt**:
 
-4. **Kiểm Định Chất Lượng Tự Động (Quality Gate Bắt Buộc)**:
-   - Sau khi nạp xong dữ liệu, chạy script kiểm định 10 tiêu chí toàn diện để đảm bảo không có triệu chứng mồ côi, sai lệch schema hoặc phân mảnh định danh:
-     ```powershell
-     node tools/scripts/docspace-disease-audit.mjs <slug_benh>
-     ```
+##### 🔹 Khối A: Ca Bệnh Mẫu JSON (Nạp vào Bước 1 & 2)
+1. Mở file: `src/content/knowledge-vault/data/sample-clinical-cases.json`.
+2. Bổ sung đối tượng ca mẫu mới vào mảng `[]`.
+3. **Nguyên tắc an toàn y khoa bắt buộc (Zero-Orphan Rule)**:
+   - Các mã triệu chứng trong `sel`, `selected`, và `negated` **BẮT BUỘC** phải là mã chuẩn đã tồn tại trong từ điển `src/content/knowledge-vault/data/clinical-rules-symptoms.json` (ví dụ: dùng `tc_sot_cao_dot_ngot_duoi_7_ngay`, `tc_giam_tieu_cau_duoi_100_g_l`, `lab_tieu_cau_giam`, `tc_co_dac_mau_hct_tang_tren_20_phan_tram`...). Tuyệt đối không tự đặt mã tự do gây lỗi triệu chứng mồ côi.
+   - Đảm bảo đầy đủ các trường định lượng: `id`, `diseaseId`, `icd10`, `specialty`, `vitals` (sinh hiệu), `labs` (`lBC`, `lTC`, `lHct`, `lAST`, `lALT`, `lCre`...), `epiContext` (bối cảnh dịch tễ), và `form.text` chia ranh giới 4 tầng rõ rệt: `cn` (cơ năng), `ct` (thực thể), `tc` (tiền căn), `cls` (cận lâm sàng).
 
-### Bước 5: Soạn 4 Bài Viết Chuyên Sâu Cho Knowledge Vault (Tùy Chọn)
+##### 🔹 Khối B: Ma Trận Trọng Số CDSS & Bổ Sung Triệu Chứng (Nạp vào Bước 3)
+1. **Nếu có triệu chứng mới**: Mở `src/content/knowledge-vault/data/clinical-rules-symptoms.json` và thêm triệu chứng mới vào danh mục. Đảm bảo tên triệu chứng không chứa ký tự HTML entities thô (`&gt;`, `&lt;`) và không chứa tiền tố thừa.
+2. **Nạp luật suy luận bệnh lý**: Mở tệp chuyên khoa tương ứng tại `src/content/knowledge-vault/data/diseases/<chuyen-khoa>.json` (ví dụ: `truyen-nhiem.json`, `tieu-hoa.json`, `tim-mach.json`...):
+   - Thêm đối tượng bệnh mới hoặc cập nhật mảng `dd` (Ma trận trọng số).
+   - Đảm bảo 100% luật suy luận gán đúng 1 trong 4 vai trò chuẩn: `dt` (Đặc trưng), `gy` (Gợi ý), `ht` (Hỗ trợ), `loaitru` (Loại trừ).
+3. **Chạy lệnh đồng bộ hóa Master KB**:
+   ```powershell
+   node tools/scripts/bundle-clinical-rules.mjs
+   ```
+   > *Script sẽ gom các file chuyên khoa vào `clinical-rules-kb.json`. Nhờ kiến trúc mới đã cắt giảm mảng nhân bản `trieuChung`, dung lượng file Master KB giảm 55%, tải trang nhanh hơn gấp 2 lần.*
+
+---
+
+#### 📝 3. XỬ LÝ KẾT QUẢ TỪ PROMPT 07 (Hồ Sơ Ca Thực Chiến SOAP Markdown)
+
+- **Mục đích**: Vận hành Mục 6 Bước 4 (Hồ sơ ca thực chiến) và Sổ tay Kinh nghiệm Lâm sàng SOAP.
+- **Có 2 phương thức nạp linh hoạt**:
+
+##### 🌟 Phương thức 1 — Nhanh nhất qua Giao diện Web (Khuyên dùng khi thực hành lâm sàng):
+1. Mở DocSpace MedLens Pro trên trình duyệt (`http://localhost:5173/src/content/docspace/`).
+2. Trên thanh Header điều hướng, bấm nút **"Nạp ca từ NotebookLM"**.
+3. Dán toàn bộ nội dung Markdown (gồm cả YAML Frontmatter) từ Prompt 07 vào khung nhập liệu.
+4. Bấm **"Phân tích & Nạp vào sổ tay"** ➔ Ca bệnh sẽ được bóc tách tức thì vào sổ tay và tự động liên kết vào Mục 6 của Bước 4 khi xem bệnh lý tương ứng.
+
+##### ⚡ Phương thức 2 — Lưu trữ Cố định vào Knowledge Vault:
+1. Tạo file Markdown mới tại: `src/content/knowledge-vault/ba/<slug-ca-benh>.md` (ví dụ: `ca-sxh-dengue-soc-ngay-5.md` hoặc `ca-uon-van-nguoi-lon.md`).
+2. Dán nội dung Markdown vào file và lưu lại.
+3. Mở terminal và chạy lệnh đồng bộ tự động vào CSDL catalog:
+   ```powershell
+   node tools/scripts/ingest-notebooklm-case.mjs src/content/knowledge-vault/ba/<slug-ca-benh>.md
+   ```
+   > *Script sẽ tự động phân tích Frontmatter, trích xuất tóm tắt và cập nhật đồng thời cả 2 tệp `vault-catalog.json` và `vault-catalog-thuc-hanh.json`.*
+
+---
+
+#### 🛡️ 4. BỘ BA LỆNH KIỂM ĐỊNH CHẤT LƯỢNG BẮT BUỘC (Quality Gate Checklist)
+
+Sau khi hoàn tất nạp dữ liệu từ các prompt, **BẮT BUỘC** chạy 3 công cụ kiểm định tự động sau đây để đảm bảo hệ sinh thái không có bất kỳ lỗi cú pháp, gãy vỡ liên kết hay triệu chứng mồ côi nào:
+
+```powershell
+# [LỆNH 1] Kiểm định dữ liệu lâm sàng, khử lỗi HTML entities, tiền tố thừa & viết tắt y khoa:
+node tools/qa/docspace-clinical-data-linter.mjs
+
+# [LỆNH 2] Kiểm định 6 Trụ Cột Y Khoa Toàn Diện (Medical QA Gate):
+# (Bảo đảm: Zero-Orphan Symptoms, Multi-file Sync, CDSS Role Matrix, Enriched Schema, SOAP Format, Anti-AI-ism)
+node tools/qa/docspace-medical-qa-gate.mjs
+
+# [LỆNH 3] Kiểm định 15 Tiêu chí sẵn sàng toàn diện của Kho Tri Thức:
+node tools/scripts/vault-readiness-check.mjs
+```
+
+> **Tiêu chuẩn nghiệm thu**:
+> - `docspace-clinical-data-linter.mjs`: `0 HTML lỗi | 0 tiền tố thừa | 0 lỗi viết tắt`.
+> - `docspace-medical-qa-gate.mjs`: **`6/6 PILLARS PASS | 0 FAIL`** (Đặc biệt `PILLAR 1: Zero-Orphan Symptoms` phải đạt 100%).
+> - `vault-readiness-check.mjs`: **`15/15 Tiêu chí Đạt (100%)`**.
+
+---
+
+### Bước 4: Soạn 4 Bài Viết Chuyên Sâu Cho Knowledge Vault (Tùy Chọn)
 
 Khi cần xây dựng thư viện Y học chứng cứ đối chiếu và liên kết Pathway ở Bước 4, hãy dùng Nhóm 2 (Prompt 01, 02, 03, 04):
 

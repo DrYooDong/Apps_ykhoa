@@ -15,13 +15,17 @@
 import fs from 'fs';
 import path from 'path';
 
-const VAULT_ROOT = 'd:/Apps/Apps_ykhoa/src/content/knowledge-vault';
+const ROOT = fs.existsSync('d:/Apps/Apps_ykhoa/src/content/knowledge-vault')
+  ? 'd:/Apps/Apps_ykhoa'
+  : process.cwd();
+
+const VAULT_ROOT = path.join(ROOT, 'src/content/knowledge-vault');
 const VAULT_DATA_DIR = path.join(VAULT_ROOT, 'data');
 const VAULT_CATALOG_PATH = path.join(VAULT_DATA_DIR, 'vault-catalog.json');
 const VAULT_THUCHANH_PATH = path.join(VAULT_DATA_DIR, 'vault-catalog-thuc-hanh.json');
 const VAULT_BA_DIR = path.join(VAULT_ROOT, 'ba');
 
-const DOCSPACE_DATA_DIR = 'd:/Apps/Apps_ykhoa/src/content/docspace/src/data';
+const DOCSPACE_DATA_DIR = path.join(ROOT, 'src/content/docspace/src/data');
 const DOCSPACE_CATALOG_PATH = path.join(DOCSPACE_DATA_DIR, 'vault-catalog.json');
 const DOCSPACE_THUCHANH_PATH = path.join(DOCSPACE_DATA_DIR, 'vault-catalog-thuc-hanh.json');
 

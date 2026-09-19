@@ -377,13 +377,20 @@ export const Step3Protocol: React.FC<Step3Props> = ({
   // Timeline phases
   const timelinePhases = useMemo(() => {
     if (!currentDisease) return [];
+    if (
+      (activeChain as any)?.timelinePhases &&
+      Array.isArray((activeChain as any).timelinePhases) &&
+      (activeChain as any).timelinePhases.length > 0
+    ) {
+      return (activeChain as any).timelinePhases;
+    }
     return getDailyTreatmentTimeline(
       currentDisease.id,
       currentDisease.ten,
       activeSeverityGrade,
       phacDo
     );
-  }, [currentDisease, activeSeverityGrade, phacDo]);
+  }, [currentDisease, activeSeverityGrade, phacDo, activeChain]);
 
   const allPrescribedDrugNames = useMemo(() => {
     const list: string[] = [];

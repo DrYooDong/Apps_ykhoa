@@ -45,8 +45,8 @@ function report(pillarNum, title, passed, details) {
 // PILLAR 1: ZERO-ORPHAN SYMPTOMS & DICTIONARY INTEGRITY
 // =========================================================================
 const kb = JSON.parse(fs.readFileSync(kbPath, 'utf8'));
-const symptoms = kb.trieuChung || [];
 const symStandalone = JSON.parse(fs.readFileSync(symPath, 'utf8'));
+const symptoms = symStandalone;
 const symSet = new Set(symptoms.map(s => s.id));
 
 let orphanCount = 0;
@@ -103,12 +103,12 @@ symptoms.forEach(s => {
   idSeen.add(s.id);
 });
 
-const isSync = symptoms.length === symStandalone.length;
+const kbDiseases = kb.benh || [];
+const isSync = kbDiseases.length === totalDisCount;
 report(2, 'Symptom Dictionary Deduplication & Multi-file Sync', dupIds.length === 0 && isSync, [
-  `Tổng số triệu chứng trong clinical-rules-kb.json: ${symptoms.length}`,
-  `Tổng số triệu chứng trong clinical-rules-symptoms.json: ${symStandalone.length}`,
+  `Tổng số triệu chứng trong clinical-rules-symptoms.json: ${symptoms.length}`,
   `Trùng lặp ID triệu chứng: ${dupIds.length}`,
-  `Đồng bộ 100% giữa 2 tệp tri thức: ${isSync ? 'HOÀN HẢO' : 'LỆCH DỮ LIỆU'}`
+  `Đồng bộ bệnh lý giữa diseases/*.json và clinical-rules-kb.json: ${isSync ? `HOÀN HẢO (${kbDiseases.length}/${totalDisCount} bệnh)` : 'LỆCH DỮ LIỆU'}`
 ]);
 
 // =========================================================================

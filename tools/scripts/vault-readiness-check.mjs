@@ -46,21 +46,22 @@ try {
   if (fs.existsSync(kbPath)) {
     kb = JSON.parse(fs.readFileSync(kbPath, 'utf8'));
   } else {
-    kb = { trieuChung: symptoms, benh: diseases };
+    kb = { benh: diseases };
   }
 } catch (e) {
   check('Modular Clinical Rules Files', false, `Lỗi đọc tệp: ${e.message}`);
 }
 
 if (kb) {
-  check('Symptoms Vocabulary', kb.trieuChung.length >= 150, `Có ${kb.trieuChung.length} triệu chứng lâm sàng chuẩn hóa (Mục tiêu ≥ 150)`);
-  check('Diseases Coverage', kb.benh.length >= 30, `Có ${kb.benh.length} bệnh lý cốt lõi được cấu trúc hóa suy luận CDSS (Mục tiêu ≥ 30)`);
+  const symList = (kb.trieuChung && kb.trieuChung.length > 0) ? kb.trieuChung : symptoms;
+  check('Symptoms Vocabulary', symList.length >= 150, `Có ${symList.length} triệu chứng lâm sàng chuẩn hóa (Mục tiêu ≥ 150)`);
+  check('Diseases Coverage', (kb.benh || diseases).length >= 30, `Có ${(kb.benh || diseases).length} bệnh lý cốt lõi được cấu trúc hóa suy luận CDSS (Mục tiêu ≥ 30)`);
 
   // Kiểm tra liên kết triệu chứng
-  const sMap = new Set(kb.trieuChung.map(s => s.id));
+  const sMap = new Set(symList.map(s => s.id));
   let brokenCount = 0;
-  for (const b of kb.benh) {
-    for (const [tcId] of b.dd) {
+  for (const b of (kb.benh || diseases)) {
+    for (const [tcId] of (b.dd || [])) {
       if (!sMap.has(tcId)) brokenCount++;
     }
   }
