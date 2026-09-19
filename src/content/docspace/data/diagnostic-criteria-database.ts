@@ -146,7 +146,6 @@ export const DIAGNOSTIC_CHAIN_DATABASE: Record<string, DiseaseReactionChainDefin
   'viem_gan_c': ENRICHED_DISEASES['vgsv_C'],
   'sot-xoan-khuan-leptospira': ENRICHED_DISEASES['leptospira'],
   'sot_xoan_khuan_leptospira': ENRICHED_DISEASES['leptospira'],
-  'xo_gan': ENRICHED_DISEASES['xo_gan'],
   'xo-gan': ENRICHED_DISEASES['xo_gan'],
   'xo_gan_con_bu': ENRICHED_DISEASES['xo_gan'],
   'xo-gan-con-bu': ENRICHED_DISEASES['xo_gan'],
