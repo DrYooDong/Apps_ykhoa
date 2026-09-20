@@ -1,0 +1,672 @@
+{
+    "icdCode": "A27",
+    "icdPrefixes": [
+        "A27.0",
+        "A27.8",
+        "A27.9"
+    ],
+    "diseaseName": "Nhiễm Leptospira (Leptospirosis / Bệnh Weil / Sốt xoắn trùng)",
+    "specialty": "Truyền nhiễm",
+    "severity": "emergency",
+    "summary": "Nhiễm Leptospira (Leptospirosis) là bệnh truyền nhiễm cấp tính do xoắn trùng Leptospira interrogans lây truyền từ động vật sang người qua nguồn nước, đất hoặc bùn lầy bị nhiễm nước tiểu động vật mang mầm bệnh (đặc biệt là chuột, gia súc). Diễn tiến bệnh điển hình gồm 2 pha: pha nhiễm trùng huyết (N1–N7) sốt cao cấp tính, đau cơ bắp chân dữ dội, sung huyết kết mạc không mủ; và pha miễn dịch (N8–N14) có thể bùng phát tổn thương đa tạng nghiêm trọng. Thể nặng nhất là Hội chứng Weil (kết hợp suy thận cấp vô niệu, vàng da nhân và xuất huyết da niêm) cùng Hội chứng Xuất huyết phổi cấp (SPHS/ARDS) có tỷ lệ tử vong cao từ 10% đến hơn 50%. Chẩn đoán sớm và điều trị kháng sinh diệt căn nguyên ngay trong 7 ngày đầu là chìa khóa sống còn giúp cải thiện tiên lượng.",
+    "goldStandard": "Xét nghiệm ngưng kết vi thể (Microscopic Agglutination Test - MAT) với độ tăng hiệu thể kháng thể ≥ 4 lần giữa 2 mẫu huyết thanh pha cấp và hồi phục (hoặc hiệu thể đơn ≥ 1:400 đến 1:800 tại vùng dịch tễ) HOẶC Phân lập vi khuẩn Leptospira thành công từ máu/nước tiểu/dịch脳tủy HOẶC RT-PCR dương tính khẳng định gen rrs/lipL32/secY trong 7 ngày đầu của bệnh [theo WHO & NCDC Guidelines 2015].",
+    "criteriaRule": {
+        "mandatoryIds": [
+            "lep_mandatory_fever_exposure"
+        ],
+        "minMajorRequired": 2,
+        "minMinorRequired": 1,
+        "ruleDescription": "Chẩn đoán xác định khi bệnh nhân có Tiêu chuẩn bắt buộc (Sốt cấp tính kèm yếu tố tiếp xúc dịch tễ nước lũ/động vật) VÀ ít nhất 2 tiêu chuẩn chính (Đau cơ bắp chân dữ dội, Sung huyết kết mạc mắt hai bên không mủ, Vàng da/Thiểu niệu) VÀ ít nhất 1 tiêu chuẩn cận lâm sàng khẳng định (MAT dương tính, RT-PCR dương tính, hoặc IgM ELISA/ICT (+))."
+    },
+    "criteria": [
+        {
+            "id": "lep_mandatory_fever_exposure",
+            "type": "mandatory",
+            "label": "Sốt cấp tính kèm bối cảnh dịch tễ tiếp xúc mầm bệnh",
+            "description": "Sốt cao đột ngột (38.5–40.0°C) kèm rét run, đau đầu dồn dập, kéo dài < 7 ngày VÀ có tiền sử tiếp xúc trong vòng 2–20 ngày với nước lũ, ao hồ, bùn lầy, công việc đồng ruộng/cống rãnh, hoặc chăn nuôi/tiếp xúc với chuột, gia súc, động vật có vú.",
+            "sourceGuideline": "Quyết định Bộ Y Tế & NCDC National Guidelines for Leptospirosis 2015"
+        },
+        {
+            "id": "lep_major_calf_tenderness",
+            "type": "major",
+            "label": "Đau dữ dội cơ bắp chân và cơ thắt lưng/đùi (Calf Muscle Tenderness)",
+            "description": "Đau cơ tự nhiên và đau chói khi ấn vào bắp chân hai bên (Calf tenderness), đau lan lên đùi và vùng thắt lưng, khiến người bệnh đi lại khó khăn hoặc không thể tự đứng vững (prostration).",
+            "sourceGuideline": "PPS-PIDSP Clinical Practice Guidelines on Leptospirosis 2019"
+        },
+        {
+            "id": "lep_major_conjunctival_suffusion",
+            "type": "major",
+            "label": "Sung huyết kết mạc mắt hai bên không mủ (Conjunctival Suffusion)",
+            "description": "Mắt đỏ lằn gờ mạch máu, sung huyết kết mạc nhãn cầu và kết mạc mi mắt rõ rệt hai bên nhưng không có tiết dịch mủ hoặc ghẻ mắt, xuất hiện sớm từ ngày thứ 2–4 của bệnh.",
+            "sourceGuideline": "WHO Guidelines & PPS-PIDSP CPG 2019"
+        },
+        {
+            "id": "lep_major_renal_jaundice",
+            "type": "major",
+            "label": "Biểu hiện tổn thương gan thận (Vàng da & Thiểu niệu / Vô niệu)",
+            "description": "Vàng da niêm mạc tiến triển nhanh (Icterus), gan to đau tức VÀ/HOẶC biểu hiện suy thận cấp: thiểu niệu (< 0.5 mL/kg/h), vô niệu, nước tiểu sẫm màu, tăng Creatinine huyết thanh.",
+            "sourceGuideline": "Quyết định Bộ Y Tế & NCDC Guidelines 2015"
+        },
+        {
+            "id": "lep_minor_hemorrhage",
+            "type": "minor",
+            "label": "Hội chứng xuất huyết da niêm và hô hấp",
+            "description": "Chấm xuất huyết rải rác dưới da, chảy máu cam, chảy máu chân răng, bầm tím nơi tiêm truyền, ho ra máu (hemoptysis) hoặc nôn ra máu, đi cầu phân đen.",
+            "sourceGuideline": "PPS-PIDSP CPG 2019 & NCDC 2015"
+        },
+        {
+            "id": "lep_lab_mat_gold",
+            "type": "lab",
+            "label": "Xét nghiệm ngưng kết vi thể (MAT) dương tính chuẩn",
+            "description": "Tiêu chuẩn vàng huyết thanh học: Hiệu thể MAT tăng ≥ 4 lần giữa 2 mẫu huyết thanh kép lấy cách nhau 10–14 ngày HOẶC hiệu thể mẫu đơn ≥ 1:400 (vùng không lưu hành) / ≥ 1:800 (vùng dịch tễ lưu hành cao).",
+            "labThreshold": "MAT Titre >= 1:400 hoặc tăng gấp 4 lần kép",
+            "sourceGuideline": "WHO Recommended Standards for Leptospirosis Surveillance"
+        },
+        {
+            "id": "lep_lab_pcr",
+            "type": "lab",
+            "label": "Xét nghiệm sinh học phân tử RT-PCR khẳng định Leptospira DNA",
+            "description": "Phát hiện đoạn gen đặc hiệu (rrs, lipL32, secY) của Leptospira interrogans trong mẫu máu toàn phần/huyết thanh (N1–N7) hoặc nước tiểu (từ tuần 2). Độ nhạy 50–80% trong tuần đầu, độ đặc hiệu > 95%.",
+            "labThreshold": "RT-PCR dương tính (Ct < 35)",
+            "sourceGuideline": "PLoS NTD Meta-analysis 2020 & PPS-PIDSP 2019"
+        },
+        {
+            "id": "lep_lab_igm_rapid",
+            "type": "lab",
+            "label": "Test nhanh kháng thể Leptospira IgM (ELISA / ICT Dipstick)",
+            "description": "Sàng lọc nhanh IgM bằng Immunochromatography (ICT/Leptocheck) hoặc IgM-ELISA từ ngày bệnh thứ 5–7 trở đi. Độ nhạy pooled 84%, độ đặc hiệu 91%.",
+            "labThreshold": "IgM ICT/ELISA Dương tính (+)",
+            "sourceGuideline": "Cochrane Systematic Review & PPS-PIDSP CPG 2019"
+        },
+        {
+            "id": "lep_imaging_chest",
+            "type": "imaging",
+            "label": "Chẩn đoán hình ảnh X-quang ngực thẳng (Tổn thương xuất huyết phổi)",
+            "description": "X-quang ngực cho thấy các đám mờ thâm nhiễm phế nang dạng nốt, mờ lốm đốm dạng hoa tuyết (snowflake) hoặc mờ lan tỏa 2 bên đáy phổi do xuất huyết nang phổi cấp (SPHS).",
+            "labThreshold": "Thâm nhiễm nhu mô phổi 2 bên / Hình ảnh đốm mờ rải rác",
+            "sourceGuideline": "NCDC Guidelines 2015 & Expert Opinion"
+        }
+    ],
+    "severityGrading": [
+        {
+            "grade": "Mức độ 1 — Thể nhẹ / Khung theo dõi ngoại trú (Anicteric Leptospirosis)",
+            "severity": "mild",
+            "criteria": "[Lâm sàng]: Sốt cấp tính < 7 ngày, đau đầu, đau cơ bắp chân dữ dội, sung huyết kết mạc mắt không mủ, bệnh nhân tỉnh táo, tự uống nước tốt, không có vàng da, không xuất huyết, không khó thở. [Cận lâm sàng]: Công thức máu WBC bình thường hoặc giảm nhẹ, Tiểu cầu >= 100 G/L, Creatinine và Bilirubin máu trong giới hạn bình thường. [Tiêu chuẩn an toàn]: Huyết động ổn định, bài niệu tốt, gia đình có khả năng theo dõi sát cờ đỏ.",
+            "triage": "Ngoại trú / Trạm Y tế / Phòng khám theo dõi hàng ngày",
+            "primaryAction": "Kháng sinh uống Doxycycline 100mg x 2 lần/ngày x 7 ngày (Trẻ em < 8 tuổi và phụ nữ mang thai: Amoxicillin 500mg x 3 lần/ngày hoặc Ampicillin 500mg x 4 lần/ngày x 7 ngày). Bù nước uống Oresol 1500–2500 mL/ngày, hạ sốt Paracetamol 10–15 mg/kg khi sốt >= 38.5°C.",
+            "targetVitals": "Thân nhiệt < 38.0°C, Mạch 60–90 l/p, HATT >= 90 mmHg, SpO2 >= 96%, Bài niệu >= 0.5 mL/kg/h"
+        },
+        {
+            "grade": "Mức độ 2 — Thể trung bình / Nhập viện nội trú (Tổn thương tạng đơn thuần)",
+            "severity": "moderate",
+            "criteria": "[Lâm sàng]: Sốt cao kéo dài, đau cơ nhiều, có biểu hiện vàng da nhẹ-vừa, thiểu niệu nhẹ, ho hắng nhẹ, chưa có thở nhanh nông nặng hay tụt huyết áp. [Cận lâm sàng]: Bilirubin toàn phần 50–150 µmol/L, Creatinine 150–300 µmol/L, Tiểu cầu 50–100 G/L, Men gan AST/ALT tăng 2–5 lần so với thượng giới. [Tiêu chuẩn an toàn]: Nhập viện nội trú 100% để kiểm soát chức năng thận, gan và hô hấp.",
+            "triage": "Nội trú Khoa Truyền nhiễm / Bệnh viện Huyện/Tỉnh",
+            "primaryAction": "Kháng sinh tiêm tĩnh mạch Penicillin G 1.5 triệu UI mỗi 6 giờ IV (hoặc Ceftriaxone 1–2g IV q24h) x 7 ngày. Bù dịch điện giải tinh thể Ringer Lactate/Saline 0.9% điều chỉnh theo bài niệu, theo dõi sát cân nặng và creatinine máu q24h.",
+            "targetVitals": "HATT >= 90 mmHg, Hiệu áp > 20 mmHg, SpO2 >= 95%, Bài niệu >= 0.5 mL/kg/h"
+        },
+        {
+            "grade": "Mức độ 3 — Thể nặng / Cấp cứu nguy kịch (Hội chứng Weil & Xuất huyết phổi - ICU)",
+            "severity": "critical",
+            "criteria": "[Lâm sàng]: Hội chứng Weil (Vàng da sậm + Suy thận cấp vô niệu + Xuất huyết niêm mạc/XHTH) HOẶC Hội chứng Xuất huyết phổi cấp (SPHS) ho ra máu ồ ạt, suy hô hấp cấp ARDS, sốc nhiễm trùng (Shock Index > 1.0), rối loạn tri giác, rối loạn nhịp tim. [Cận lâm sàng]: Creatinine > 300 µmol/L, Bilirubin > 200 µmol/L, Tiểu cầu < 50 G/L, Toan chuyển hóa Lactate > 4 mmol/L, PT kéo dài >= 15s, X-quang phổi thâm nhiễm lan tỏa 2 bên. [Dấu hiệu cảnh báo]: Ho ra máu dâng trào qua ống nội khí quản, vô niệu hoàn toàn, hạ HA kẹp/tụt HA.",
+            "triage": "Khoa Hồi sức Cấp cứu (ICU) / Bệnh viện Đa khoa Tuyến Tỉnh / Trung ương",
+            "primaryAction": "Hồi sức cấp cứu đa tạng: Thở máy xâm nhập PEEP cao bảo vệ phổi; Penicillin G 2.0 triệu UI mỗi 6 giờ IV (hoặc Ceftriaxone 2g IV q24h) x 7–10 ngày; Lọc máu liên tục (CRRT) hoặc Thẩm phân máu cấp cứu; Methylprednisolone pulse 1g/ngày x 3 ngày nếu có xuất huyết phổi/ARDS nặng.",
+            "targetVitals": "MAP >= 65 mmHg, SpO2 >= 95% với PEEP, Lactate < 2.0 mmol/L, Bài niệu duy trì bằng CRRT/lợi tiểu"
+        }
+    ],
+    "protocol": {
+        "title": "Phác đồ Điều trị & Hồi sức Toàn diện Leptospirosis (Bộ Y Tế, WHO, NCDC India 2015 & PPS-PIDSP CPG 2019)",
+        "guideline": "National Guidelines on Diagnosis, Case Management, Prevention and Control of Leptospirosis (NCDC India 2015), PPS-PIDSP Clinical Practice Guidelines on Leptospirosis 2019 & WHO Guidelines 2025",
+        "targetGoals": [
+            "Mục tiêu 1: Khởi động kháng sinh diệt căn nguyên Leptospira càng sớm càng tốt (tốt nhất trong 7 ngày đầu của bệnh) để rút ngắn đợt sốt và giảm nguy cơ biến chứng tạng.",
+            "Mục tiêu 2: Duy trì thể tích lòng mạch và tưới máu mô; kiểm soát suy thận cấp bằng liệu pháp bù dịch hợp lý và lọc máu ngoài thận (CRRT/HD) kịp thời khi có vô niệu/tăng Ure Creatinine dốc đứng.",
+            "Mục tiêu 3: Kiểm soát biến chứng nguy hiểm tính mạng: Xuất huyết phổi cấp (SPHS/ARDS) bằng thông khí nhân tạo PEEP cao và Corticoid liều cao pulse; phòng ngừa phản ứng Jarisch-Herxheimer."
+        ],
+        "initialManagement": [
+            "Phân tầng tiếp nhận ngay tại Cấp cứu: Thể nhẹ (theo dõi ngoại trú) -> Thể trung bình (nội trú Truyền nhiễm) -> Thể nặng/Weil/Xuất huyết phổi (nhập ICU).",
+            "Xử trí kháng sinh khẩn cấp: KHÔNG trì hoãn kháng sinh để chờ kết quả xét nghiệm khẳng định (MAT/PCR) khi có yếu tố lâm sàng + dịch tễ nghi ngờ cao.",
+            "Lập 2 đường truyền tĩnh mạch lớn ngoại biên; xét nghiệm cấp cứu: CTM, Hct, PLT, Creatinine, Ure, Bilirubin, AST, ALT, Khí máu động mạch, X-quang ngực thẳng."
+        ],
+        "firstLineDrugs": [
+            {
+                "drugName": "Doxycycline",
+                "class": "Kháng sinh nhóm Tetracycline (Khử trùng & Dự phòng)",
+                "route": "PO",
+                "dosage": "100 mg x 2 lần/ngày (Uống sau ăn với nhiều nước)",
+                "frequency": "Mỗi 12 giờ x 7 ngày",
+                "instructions": "Kháng sinh đầu tay cho thể nhẹ ngoại trú. Chống chỉ định cho trẻ em < 8 tuổi, phụ nữ mang thai và cho con bú.",
+                "isFirstLine": true
+            },
+            {
+                "drugName": "Benzylpenicillin (Penicillin G)",
+                "class": "Kháng sinh nhóm Beta-lactam tiêm tĩnh mạch",
+                "route": "IV",
+                "dosage": "1.5 - 2.0 triệu UI IV tiêm/truyền chậm mỗi 6 giờ (Trẻ em: 250,000 - 400,000 UI/kg/ngày chia 4 lần)",
+                "frequency": "Mỗi 6 giờ x 7 ngày",
+                "instructions": "Thuốc đầu tay cho thể nặng/nhập viện nội trú và ICU. Cần thử phản ứng da (Test lảy da) trước khi dùng.",
+                "isFirstLine": true
+            },
+            {
+                "drugName": "Ceftriaxone",
+                "class": "Kháng sinh Cephalosporin thế hệ 3 tiêm tĩnh mạch",
+                "route": "IV",
+                "dosage": "1 - 2 g IV x 1 lần/ngày (Trẻ em: 80 - 100 mg/kg/ngày x 1 lần/ngày)",
+                "frequency": "Mỗi 24 giờ x 7 ngày",
+                "instructions": "Thay thế Penicillin G khi bệnh nhân có tiền sử dị ứng nhẹ penicillin hoặc cần phác đồ đơn giản 1 lần/ngày. Tương đương hiệu quả với Penicillin G [Panaphut 2003].",
+                "isFirstLine": true
+            },
+            {
+                "drugName": "Amoxicillin / Ampicillin",
+                "class": "Kháng sinh Penicillin phổ rộng đường uống/tiêm",
+                "route": "PO / IV",
+                "dosage": "Amoxicillin Uống: 500 mg x 3 lần/ngày (Trẻ em: 30-50 mg/kg/ngày chia 3 lần). Ampicillin IV: 500 mg x 4 lần/ngày.",
+                "frequency": "Mỗi 8 giờ (Amoxicillin) hoặc mỗi 6 giờ (Ampicillin) x 7 ngày",
+                "instructions": "Ưu tiên đầu tay cho trẻ em < 8 tuổi, phụ nữ mang thai và bà mẹ cho con bú bị nhiễm Leptospirosis thể nhẹ đến trung bình.",
+                "isFirstLine": true
+            }
+        ],
+        "secondLineDrugs": [
+            {
+                "drugName": "Azithromycin",
+                "class": "Kháng sinh nhóm Macrolide",
+                "route": "PO",
+                "dosage": "500 mg x 1 lần/ngày x 3 - 5 ngày (Trẻ em: 10 mg/kg/ngày)",
+                "frequency": "Mỗi 24 giờ x 3-5 ngày",
+                "instructions": "Thay thế Doxycycline khi dị ứng Beta-lactam hoặc dùng cho thai phụ/trẻ em thể nhẹ."
+            },
+            {
+                "drugName": "Cefotaxime",
+                "class": "Kháng sinh Cephalosporin thế hệ 3 tiêm tĩnh mạch",
+                "route": "IV",
+                "dosage": "1g x 3-4 lần/ngày IV (Trẻ em: 100 - 150 mg/kg/ngày chia 3-4 lần)",
+                "frequency": "Mỗi 6-8 giờ x 7 ngày",
+                "instructions": "Kháng sinh thay thế cho thể nặng trong ICU."
+            },
+            {
+                "drugName": "Methylprednisolone Pulse Therapy",
+                "class": "Corticosteroid liều cao chống viêm & miễn dịch",
+                "route": "IV",
+                "dosage": "1000 mg (1g) IV pha trong 250mL NaCl 0.9% truyền IV trong 2 giờ x 1 lần/ngày x 3 ngày liên tiếp",
+                "frequency": "Mỗi 24 giờ x 3 ngày",
+                "instructions": "Chỉ định hỗ trợ đặc biệt khi có Xuất huyết phổi nặng (SPHS) hoặc ARDS cấp tính do Leptospirosis để giảm bão Cytokine [Kularatne 2011, Shenoy 2006, MDPI 2024]."
+            }
+        ],
+        "complications": [
+            {
+                "name": "Hội chứng Weil (Weil's Syndrome: Suy thận cấp + Vàng da + Xuất huyết)",
+                "timeframe": "subacute_7d",
+                "warningSigns": "Vàng da đậm mắt và da, nước tiểu sẫm màu thiểu niệu/vô niệu (< 400 mL/24h), Creatinine tăng dốc đứng (> 300 µmol/L), chảy máu mũi, bầm tím da.",
+                "preventiveAction": "Hồi sức dịch thể cẩn trọng; Lọc máu liên tục (CRRT) hoặc Thẩm phân máu ngắt quãng (HD) sớm trước khi Ure/Creatinine quá cao hoặc Kali máu > 6.5 mmol/L.",
+                "onCallAlertText": "Y LỆNH TRỰC: HỘI CHỨNG WEIL/SUY THẬN VÔ NIỆU: Đo bài niệu q1h, thử Creatinine/Electrolytes khẩn, báo hội chẩn Lọc máu CRRT!"
+            },
+            {
+                "name": "Hội chứng Xuất huyết phổi cấp (Severe Pulmonary Hemorrhagic Syndrome - SPHS & ARDS)",
+                "timeframe": "subacute_7d",
+                "warningSigns": "Khó thở dữ dội, thở nhanh nông > 30 l/p, SpO2 tụt < 90%, ho ra máu tươi hoặc máu bọt hồng tràn qua sông nội khí quản, X-quang mờ lan tỏa 2 phổi.",
+                "preventiveAction": "Thở máy thông khí xâm nhập PEEP cao (8-12 cmH2O) bảo vệ phổi; Tiêm Methylprednisolone 1g IV pulse; Hạn chế quá tải dịch truyền.",
+                "onCallAlertText": "Y LỆNH TRỰC: XUẤT HUYẾT PHỔI CẤP/ARDS: Đặt NKQ, cài đặt PEEP cao, dùng Methylprednisolone 1g IV pulse, báo Cấp cứu ICU khẩn!"
+            },
+            {
+                "name": "Phản ứng Jarisch-Herxheimer (JHR) sau liều kháng sinh đầu tiên",
+                "timeframe": "acute_24h",
+                "warningSigns": "Xuất hiện trong vòng 1-24 giờ sau liều kháng sinh đầu: rét run dữ dội, sốt vọt, tụt huyết áp, thở nhanh, nổi hồng ban da.",
+                "preventiveAction": "Tiếp tục dùng kháng sinh (không ngưng thuốc); Bù dịch tinh thể IV, theo dõi sát huyết động, dùng Paracetamol IV hạ sốt.",
+                "onCallAlertText": "Y LỆNH TRỰC: PHẢN ỨNG JARISCH-HERXHEIMER: Bù NaCl 0.9% 500mL TTM xả nhanh, Paracetamol IV, theo dõi HA q15p!"
+            }
+        ],
+        "monitoringLabs": [
+            "Công thức máu (Hct, Tiểu cầu, Bạch cầu) q12-24h trong giai đoạn cấp/nặng.",
+            "Sinh hóa máu: Creatinine, Ure, Điện giải đồ (Na+, K+, Cl-, Ca2+), Bilirubin toàn phần/trực tiếp, AST, ALT, CPK q24h.",
+            "Khí máu động mạch (PaO2/FiO2, Lactate, pH, HCO3-) q4-6h khi có suy hô hấp hoặc sốc.",
+            "Đông máu toàn bộ (PT/INR, aPTT, Fibrinogen) q24h khi có xuất huyết.",
+            "X-quang ngực thẳng và Siêu âm màng phổi/ổ bụng tại giường q24h."
+        ]
+    },
+    "specialPopulations": [
+        {
+            "population": "Trẻ em < 8 tuổi",
+            "adjustments": "Tuyệt đối CHỐNG CHỈ ĐỊNH Doxycycline (nguy cơ hỏng men răng và chậm phát triển xương). Thay thế bằng Amoxicillin 30-50 mg/kg/ngày uống chia 3 lần hoặc Ampicillin 100-200 mg/kg/ngày IV chia 4 lần.",
+            "cautions": "Trẻ em dễ co giật do sốt cao, dễ diễn tiến suy hô hấp và suy thận nhanh chóng. Tính liều chính xác theo cân nặng thực tế."
+        },
+        {
+            "population": "Phụ nữ mang thai & Cho con bú",
+            "adjustments": "Tuyệt đối CHỐNG CHỈ ĐỊNH Doxycycline. Dùng Amoxicillin 500mg PO q8h hoặc Ampicillin 500mg IV q6h hoặc Ceftriaxone 1-2g IV q24h x 7 ngày.",
+            "cautions": "Nguy cơ dọa sảy thai, sinh non, băng huyết sau sinh hoặc thai chết lưu do nhiễm trùng Leptospira nặng. Cần phối hợp hội chẩn Chuyên khoa Sản - Truyền nhiễm."
+        },
+        {
+            "population": "Bệnh nhân Suy thận cấp (eGFR < 30 mL/min hoặc Vô niệu)",
+            "adjustments": "Doxycycline và Ceftriaxone KHÔNG CẦN điều chỉnh liều theo chức năng thận. Penicillin G cần giảm liều 50% hoặc kéo dài khoảng cách liều (1.0 triệu UI q6-8h) khi eGFR < 10 mL/min.",
+            "cautions": "Tránh quá tải dịch gây phù phổi cấp; ưu tiên lọc máu CRRT hoặc HD sớm khi Creatinine > 350 µmol/L hoặc Kali máu > 6.0 mmol/L."
+        },
+        {
+            "population": "Bệnh nhân Suy gan / Men gan tăng cao (AST/ALT > 5 lần)",
+            "adjustments": "Giảm liều Paracetamol hạ sốt tối đa <= 2g/24h. Tránh các thuốc độc gan. Chọn kháng sinh đào thải qua thận như Penicillin G, Ceftriaxone.",
+            "cautions": "Theo dõi sát chức năng đông máu (PT/INR) và Bilirubin để phát hiện sớm Suy gan cấp."
+        },
+        {
+            "population": "Người cao tuổi (>= 65 tuổi)",
+            "adjustments": "Thận trọng bù dịch do nguy cơ suy tim tiềm tàng. Theo dõi sát bài niệu và creatinine máu.",
+            "cautions": "Biểu hiện lâm sàng thường không điển hình, dễ bỏ sót sốc kín đáo và suy thận tiến triển nhanh."
+        }
+    ],
+    "timelinePhases": [
+        {
+            "id": "phase_1",
+            "dayRange": "N1 - N7",
+            "phaseName": "Pha Nhiễm Trùng Huyết (Septicemic / Leptospiremic Phase)",
+            "clinicalGoal": "Khởi động kháng sinh diệt căn nguyên sớm, hạ sốt an toàn, bù nước đường uống/TM, ngăn ngừa tổn thương tạng sớm.",
+            "problems": [
+                {
+                    "id": "p1_spec",
+                    "problemName": "Điều trị đặc hiệu diệt vi khuẩn Leptospira interrogans",
+                    "problemType": "specific",
+                    "isNoSpecificTreatment": false,
+                    "treatments": [
+                        {
+                            "category": "ĐT Đặc hiệu",
+                            "content": "Khởi động ngay Kháng sinh: Doxycycline 100mg PO q12h (thể nhẹ) HOẶC Penicillin G 1.5-2.0 triệu UI IV q6h / Ceftriaxone 1-2g IV q24h (thể nặng). Trẻ em/Thai phụ: Amoxicillin 500mg PO q8h hoặc Ampicillin 500mg IV q6h.",
+                            "isHighlighted": true
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "LS",
+                            "metric": "Thân nhiệt & Tri giác",
+                            "frequency": "q4h",
+                            "target": "Cắt sốt sau 48-72h kháng sinh, không tri giác lơ mơ"
+                        }
+                    ]
+                },
+                {
+                    "id": "p1_fever_pain",
+                    "problemName": "Sốt cao rét run & Đau dữ dội cơ bắp chân / Đau đầu",
+                    "problemType": "clinical",
+                    "treatments": [
+                        {
+                            "category": "Hạ sốt & Giảm đau",
+                            "content": "Paracetamol 10-15 mg/kg PO/IV mỗi 4-6h khi sốt >= 38.5°C (Tối đa 60 mg/kg/24h hoặc 3g/24h). Chống chỉ định tuyệt đối NSAIDs và Aspirin do nguy cơ gây xuất huyết da niêm và suy thận nặng hơn.",
+                            "isHighlighted": true
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "LS",
+                            "metric": "Mức độ đau cơ & Thân nhiệt",
+                            "frequency": "q4h",
+                            "target": "Giảm đau bắp chân, thân nhiệt < 38.5°C"
+                        }
+                    ]
+                },
+                {
+                    "id": "p1_labs_diagnosis",
+                    "problemName": "Xét nghiệm chẩn đoán căn nguyên & Thiết lập chỉ số nền",
+                    "problemType": "paraclinical",
+                    "treatments": [
+                        {
+                            "category": "Chỉ định CLS",
+                            "content": "Lấy máu làm RT-PCR Leptospira, CTM (WBC, Hct, PLT), Creatinine, Bilirubin, AST, ALT, Test nhanh IgM ICT/ELISA."
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "CLS",
+                            "metric": "Công thức máu & Creatinine",
+                            "frequency": "q24h",
+                            "target": "Theo dõi số lượng tiểu cầu và chức năng thận"
+                        }
+                    ]
+                }
+            ],
+            "phaseComplications": [
+                {
+                    "id": "p1_comp_jhr",
+                    "problemName": "Phản ứng Jarisch-Herxheimer (JHR) sau liều kháng sinh đầu",
+                    "problemType": "complication",
+                    "treatments": [
+                        {
+                            "category": "Xử trí JHR",
+                            "content": "Duy trì kháng sinh; Bù dịch NaCl 0.9% TTM, dùng Paracetamol hạ sốt, hỗ trợ huyết động nếu tụt HA."
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "LS",
+                            "metric": "Huyết áp & Rét run",
+                            "frequency": "q15-30p trong 6h đầu kháng sinh",
+                            "target": "Huyết áp ổn định, hết rét run"
+                        }
+                    ]
+                }
+            ],
+            "treatments": [
+                {
+                    "category": "Kháng sinh",
+                    "content": "Doxycycline 100mg PO q12h hoặc Penicillin G 1.5 triệu UI IV q6h x 7 ngày.",
+                    "isHighlighted": true
+                },
+                {
+                    "category": "Bù dịch",
+                    "content": "Oresol uống 1500-2500 mL/ngày nếu tự uống được. Truyền NaCl 0.9% / Ringer Lactate nếu nôn ói/mất nước."
+                }
+            ],
+            "monitoring": [
+                {
+                    "type": "LS",
+                    "metric": "Mạch, HA, Nhiệt độ, Bài niệu",
+                    "frequency": "q4-6h",
+                    "target": "Sinh hiệu ổn định, bài niệu >= 0.5 mL/kg/h"
+                },
+                {
+                    "type": "CLS",
+                    "metric": "CTM, Creatinine, Men gan",
+                    "frequency": "q24h",
+                    "target": "Theo dõi tiến triển tạng"
+                }
+            ],
+            "cautionsAndDischarge": {
+                "cautions": [
+                    "[Tuyệt đối cấm dùng NSAIDs/Aspirin]",
+                    "[Bắt đầu kháng sinh sớm không chờ kết quả MAT]",
+                    "[Cảnh giác phản ứng JHR trong 24h đầu]"
+                ],
+                "triageOrDischargeCriteria": "Thể nhẹ đủ điều kiện theo dõi ngoại trú có hẹn tái khám mỗi ngày."
+            }
+        },
+        {
+            "id": "phase_2",
+            "dayRange": "N8 - N14",
+            "phaseName": "Pha Miễn Dịch & Biến Chứng Tạng (Immune / Organ Damage Phase)",
+            "clinicalGoal": "Kiểm soát Hội chứng Weil, hỗ trợ hô hấp xuất huyết phổi ARDS, lọc máu cấp cứu suy thận vô niệu, phòng ngừa tử vong.",
+            "problems": [
+                {
+                    "id": "p2_spec",
+                    "problemName": "Điều trị đặc hiệu tiếp tục đợt kháng sinh",
+                    "problemType": "specific",
+                    "isNoSpecificTreatment": false,
+                    "treatments": [
+                        {
+                            "category": "ĐT Đặc hiệu",
+                            "content": "Hoàn thành đủ đợt 7-10 ngày Penicillin G IV 2.0 triệu UI q6h hoặc Ceftriaxone 2g IV q24h.",
+                            "isHighlighted": true
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "CLS",
+                            "metric": "Xử trí nhiễm trùng",
+                            "frequency": "q24h",
+                            "target": "Sạch vi khuẩn trong máu và nước tiểu"
+                        }
+                    ]
+                },
+                {
+                    "id": "p2_renal_weil",
+                    "problemName": "Suy thận cấp thể thiểu niệu / vô niệu & Vàng da nặng (Hội chứng Weil)",
+                    "problemType": "clinical",
+                    "treatments": [
+                        {
+                            "category": "Lọc máu & Hồi sức Renal",
+                            "content": "Bù dịch cẩn trọng theo CVP/bài niệu; Dùng Lợi tiểu Furosemide IV nếu có quá tải dịch; Chỉ định Lọc máu liên tục (CRRT) hoặc Thẩm phân máu (HD) cấp cứu khi vô niệu, Creatinine > 350 µmol/L, Ure > 25 mmol/L hoặc Kali máu > 6.0 mmol/L.",
+                            "isHighlighted": true
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "LS",
+                            "metric": "Lượng nước tiểu q1h & Cân nặng q24h",
+                            "frequency": "q1h",
+                            "target": "Bài niệu >= 0.5 - 1.0 mL/kg/h"
+                        },
+                        {
+                            "type": "CLS",
+                            "metric": "Creatinine, Ure, Điện giải đồ",
+                            "frequency": "q12-24h",
+                            "target": "Kiểm soát Creatinine và Kali máu"
+                        }
+                    ]
+                },
+                {
+                    "id": "p2_pulmonary_sphs",
+                    "problemName": "Xuất huyết phổi cấp tính (SPHS) & Suy hô hấp ARDS",
+                    "problemType": "complication",
+                    "treatments": [
+                        {
+                            "category": "Hồi sức Hô hấp & Corticoid",
+                            "content": "Thở máy xâm nhập chiến lược bảo vệ phổi PEEP cao (8-12 cmH2O), Vt thấp 6 mL/kg. Tiêm Methylprednisolone Pulse 1000mg IV q24h x 3 ngày liên tiếp để giảm phản ứng viêm Cytokine tại màng phế nang mao mạch.",
+                            "isHighlighted": true
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "LS",
+                            "metric": "SpO2, Khí máu động mạch (PaO2/FiO2)",
+                            "frequency": "q2-4h",
+                            "target": "PaO2/FiO2 > 200, SpO2 >= 95%"
+                        }
+                    ]
+                }
+            ],
+            "phaseComplications": [
+                {
+                    "id": "p2_comp_shock_myocarditis",
+                    "problemName": "Sốc nhiễm trùng & Viêm cơ tim rối loạn nhịp",
+                    "problemType": "complication",
+                    "treatments": [
+                        {
+                            "category": "Vận mạch & Monitor",
+                            "content": "Dùng Noradrenaline TTM duy trì MAP >= 65 mmHg. Đặt Monitor theo dõi nhịp tim continuous, xử trí rối loạn nhịp."
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "LS",
+                            "metric": "Huyết áp động mạch xâm nhập & ECG",
+                            "frequency": "q15-30p",
+                            "target": "MAP >= 65 mmHg, nhịp xoang đều"
+                        }
+                    ]
+                }
+            ],
+            "treatments": [
+                {
+                    "category": "Kháng sinh IV",
+                    "content": "Penicillin G 2.0 triệu UI IV q6h hoặc Ceftriaxone 2g IV q24h.",
+                    "isHighlighted": true
+                },
+                {
+                    "category": "Hồi sức tích cực",
+                    "content": "Thở máy PEEP cao, Lọc máu CRRT/HD khi vô niệu, Methylprednisolone pulse 1g/ngày x 3 ngày khi có SPHS.",
+                    "isHighlighted": true
+                }
+            ],
+            "monitoring": [
+                {
+                    "type": "LS",
+                    "metric": "Mạch, HA, SpO2, Lượng nước tiểu sonde",
+                    "frequency": "q1h",
+                    "target": "Huyết động và hô hấp ổn định"
+                },
+                {
+                    "type": "CLS",
+                    "metric": "Creatinine, Bilirubin, Khí máu, X-quang phổi",
+                    "frequency": "q12-24h",
+                    "target": "Cải thiện chỉ số tổn thương tạng"
+                }
+            ],
+            "cautionsAndDischarge": {
+                "cautions": [
+                    "[Cảnh báo: Xuất huyết phổi ho ra máu dâng trào diễn tiến tử vong trong vài giờ]",
+                    "[Chỉ định lọc máu ngoài thận sớm không chờ Ure quá cao]",
+                    "[Hạn chế truyền dịch quá tải khi suy thận vô niệu]"
+                ],
+                "triageOrDischargeCriteria": "Nhập viện ICU 100% đối với thể nặng có tổn thương đa tạng."
+            }
+        },
+        {
+            "id": "phase_3",
+            "dayRange": "N15 - N21",
+            "phaseName": "Pha Hồi Phục (Convalescent Phase)",
+            "clinicalGoal": "Đánh giá phục hồi chức năng thận gan, cai máy thở, rút sonde tiểu, ngưng lọc máu, đánh giá tiêu chuẩn xuất viện.",
+            "problems": [
+                {
+                    "id": "p3_spec",
+                    "problemName": "Đánh giá sạch mầm bệnh & Hoàn thành điều trị",
+                    "problemType": "specific",
+                    "isNoSpecificTreatment": false,
+                    "treatments": [
+                        {
+                            "category": "Đánh giá",
+                            "content": "Kháng sinh đã hoàn thành đủ đợt 7-10 ngày. Không cần tiếp tục kháng sinh duy trì."
+                        }
+                    ],
+                    "monitoring": []
+                },
+                {
+                    "id": "p3_organ_recovery",
+                    "problemName": "Phục hồi bài niệu & Chức năng Thận Gan",
+                    "problemType": "clinical",
+                    "treatments": [
+                        {
+                            "category": "Phục hồi",
+                            "content": "Chuyển giai đoạn đa niệu (polyuria) của suy thận cấp: theo dõi bù đủ điện giải (đặc biệt là Kali và Natri) tránh hạ Kali máu do thải niệu nhiều. Dinh dưỡng hồi phục đường uống."
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "LS",
+                            "metric": "Bài niệu 24h & Thể trạng",
+                            "frequency": "q8-12h",
+                            "target": "Bài niệu tự nhiên tốt 1500-3000 mL/ngày, hết vàng da"
+                        },
+                        {
+                            "type": "CLS",
+                            "metric": "Creatinine, Ure, K+, Na+",
+                            "frequency": "q48h",
+                            "target": "Creatinine và Điện giải đồ về mức bình thường"
+                        }
+                    ]
+                }
+            ],
+            "phaseComplications": [
+                {
+                    "id": "p3_comp_hypokalemia",
+                    "problemName": "Hạ Kali máu & Mất điện giải do đa niệu hồi phục",
+                    "problemType": "complication",
+                    "treatments": [
+                        {
+                            "category": "Bù điện giải",
+                            "content": "Bù Potassium Chloride (KCl) đường uống hoặc truyền IV cẩn trọng theo nồng độ K+ máu."
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "CLS",
+                            "metric": "Kali máu (K+)",
+                            "frequency": "q24h",
+                            "target": "Duy trì K+ từ 3.5 - 4.5 mmol/L"
+                        }
+                    ]
+                }
+            ],
+            "treatments": [
+                {
+                    "category": "Chăm sóc & Dinh dưỡng",
+                    "content": "Dinh dưỡng giàu năng lượng, bù điện giải đường uống, tập vật lý trị liệu phục hồi cơ lực."
+                }
+            ],
+            "monitoring": [
+                {
+                    "type": "LS",
+                    "metric": "Sinh hiệu, Cân nặng, Thể trạng",
+                    "frequency": "q12h",
+                    "target": "Tỉnh táo, ăn uống tốt, tự đi lại được"
+                },
+                {
+                    "type": "CLS",
+                    "metric": "CTM, Creatinine, Bilirubin, K+",
+                    "frequency": "Trước xuất viện",
+                    "target": "Chức năng tạng hồi phục hoàn toàn"
+                }
+            ],
+            "cautionsAndDischarge": {
+                "cautions": [
+                    "[Cảnh giác hạ Kali máu trong pha đa niệu hồi phục]",
+                    "[Tái khám lại sau 2-4 tuần kiểm tra chức năng thận và mắt (phòng ngừa viêm màng nho mắt muộn)]"
+                ],
+                "triageOrDischargeCriteria": "Hết sốt >= 3 ngày, bài niệu tự nhiên tốt, Creatinine và Bilirubin về gần bình thường, ăn uống và đi lại tốt."
+            }
+        }
+    ],
+    "generalComplications": [
+        {
+            "id": "comp_weil_syndrome",
+            "complicationName": "Hội chứng Weil (Suy thận cấp + Vàng da nhân + Xuất huyết da niêm)",
+            "problemType": "clinical",
+            "warningLevel": "critical",
+            "manifestation": "Vàng da sậm mắt và da, gan to, thiểu niệu/vô niệu, Creatinine > 300 µmol/L, Bilirubin > 150 µmol/L, xuất huyết da niêm mạc dồn dập.",
+            "actionProtocol": "Penicillin G 2.0 triệu UI IV q6h; Lọc máu ngoài thận CRRT/HD cấp cứu khi có chỉ định; Hồi sức dịch kiểm soát CVP.",
+            "monitoringMetrics": "Creatinine, Ure, Bilirubin, Lượng nước tiểu q1h, ECG liên tục"
+        },
+        {
+            "id": "comp_sphs_ards",
+            "complicationName": "Hội chứng Xuất huyết phổi cấp (SPHS) & Suy hô hấp ARDS",
+            "problemType": "clinical",
+            "warningLevel": "critical",
+            "manifestation": "Ho ra máu tươi/bọt hồng, khó thở dữ dội, SpO2 < 88%, X-quang phổi mờ thâm nhiễm phế nang lan tỏa 2 bên.",
+            "actionProtocol": "Đặt NKQ, thở máy PEEP cao (8-12 cmH2O) bảo vệ phổi; Tiêm Methylprednisolone 1g IV pulse x 3 ngày; Hạn chế dịch truyền.",
+            "monitoringMetrics": "Khí máu động mạch (PaO2/FiO2), SpO2 liên tục, X-quang ngực tại giường"
+        },
+        {
+            "id": "comp_uveitis_late",
+            "complicationName": "Viêm màng nho mắt muộn (Leptospiral Uveitis / Chorioretinitis)",
+            "problemType": "clinical",
+            "warningLevel": "moderate",
+            "manifestation": "Đau mắt, nhìn mờ, sợ ánh sáng, sung huyết mống mắt xuất hiện muộn từ vài tuần đến vài tháng sau khi khỏi sốt.",
+            "actionProtocol": "Chuyên khoa Mắt khám soi đáy mắt; Phối hợp Ciprofloxacin PO/IV kèm Doxycycline PO; Corticosteroid nhỏ mắt/uống.",
+            "monitoringMetrics": "Thị lực, Nhãn áp, Khám đèn khe chuyên khoa Mắt"
+        }
+    ],
+    "clinicalCautions": {
+        "warnings": [
+            " CẢNH BÁO SỐNG CÒN: Khởi động kháng sinh lập tức khi nghi ngờ Leptospirosis trên lâm sàng/dịch tễ — TUYỆT ĐỐI KHÔNG trì hoãn chờ kết quả xét nghiệm huyết thanh MAT hay RT-PCR.",
+            " CHỐNG CHỈ ĐỊNH NSAIDs & ASPIRIN: Tuyệt đối không dùng NSAIDs (Ibuprofen, Naproxen...) hay Aspirin để hạ sốt/giảm đau vì làm tăng nguy cơ xuất huyết da niêm nghiêm trọng và làm trầm trọng tổn thương thận.",
+            " XUẤT HUYẾT PHỔI CẤP (SPHS): Biến chứng tử vong nhanh nhất trong vài giờ. Khi có ho ra máu hoặc khó thở, lập tức chuyển ICU, can thiệp thở máy PEEP cao và xem xét Corticoid pulse liều cao."
+        ],
+        "contraindications": [
+            "Chống chỉ định Doxycycline cho trẻ em < 8 tuổi, phụ nữ mang thai và bà mẹ đang cho con bú.",
+            "Chống chỉ định dùng NSAIDs và Aspirin trong suốt quá trình điều trị Leptospirosis.",
+            "Chống chỉ định bù dịch quá tải khi bệnh nhân đang trong giai đoạn suy thận thiểu niệu/vô niệu chưa được lọc máu."
+        ],
+        "dischargeCriteria": [
+            "Hết sốt tự nhiên liên tục >= 72 giờ không dùng thuốc hạ sốt.",
+            "Chức năng thận và gan hồi phục rõ rệt: bài niệu tự nhiên >= 1.0 mL/kg/h, Creatinine và Bilirubin máu giảm về gần mức bình thường.",
+            "Người bệnh tỉnh táo, ăn uống tốt, hết đau cơ bắp chân, không còn dấu hiệu xuất huyết hay khó thở.",
+            "Công thức máu ổn định: Bạch cầu bình thường, Tiểu cầu hồi phục >= 100 G/L."
+        ]
+    },
+    "vaultPathways": [
+        {
+            "khoCode": "CD",
+            "khoName": "Kho Tiêu Chuẩn CĐ",
+            "articleTitle": "Bộ tiêu chuẩn chẩn đoán xác định và phân độ lâm sàng Nhiễm Leptospira",
+            "searchKeyword": "chan doan leptospira mat pcr pps pidsp"
+        },
+        {
+            "khoCode": "PDDT",
+            "khoName": "Kho Phác Đồ Điều Trị",
+            "articleTitle": "Phác đồ điều trị kháng sinh, hồi sức suy thận & xuất huyết phổi Leptospirosis",
+            "searchKeyword": "phac do dieu tri leptospira penicillin doxycycline"
+        },
+        {
+            "khoCode": "DTH",
+            "khoName": "Kho Dịch Tễ & Nguy Cơ",
+            "articleTitle": "Dịch tễ học lâm sàng, véc-tơ truyền bệnh và dự phòng hóa dược Leptospira",
+            "searchKeyword": "dich te leptospirosis chuot nuoc lu du phong doxycycline"
+        },
+        {
+            "khoCode": "BC",
+            "khoName": "Kho Biến Chứng",
+            "articleTitle": "Nhận diện và xử trí cấp cứu Hội chứng Weil và Xuất huyết phổi do Leptospira",
+            "searchKeyword": "bien chung hoi chung weil xuat huyet phoi leptospira"
+        }
+    ]
+}

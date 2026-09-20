@@ -1,0 +1,601 @@
+{
+    "icdCode": "B54",
+    "icdPrefixes": [
+        "B50",
+        "B51",
+        "B52",
+        "B53",
+        "B54"
+    ],
+    "diseaseName": "Sốt rét (Malaria)",
+    "specialty": "Truyền nhiễm",
+    "severity": "emergency",
+    "summary": "Bệnh truyền nhiễm do ký sinh trùng Plasmodium (P. falciparum, P. vivax, P. malariae, P. ovale, P. knowlesi) gây nên, lây truyền chủ yếu qua muỗi Anopheles. Biểu hiện lâm sàng đặc trưng là cơn sốt rét chu kỳ (rét run - sốt cao - vã mồ hôi). Sốt rét do P. falciparum hoặc nhiễm phối hợp có thể tiến triển nhanh thành Sốt rét ác tính gây tổn thương đa tạng (hôn mê, suy hô hấp, suy thận, sốc, thiếu máu nặng, toan chuyển hóa) với tỷ lệ tử vong rất cao nếu không được hồi sức cấp cứu và dùng thuốc đặc trị kịp thời.",
+    "goldStandard": "Soi lam máu giọt dày và giọt mỏng nhuộm Giemsa trên kính hiển vi quang học tìm thấy ký sinh trùng sốt rét (thể vô tính hoặc giao bào), hoặc Xét nghiệm chẩn đoán nhanh RDTs (phát hiện kháng nguyên Pf/Pv), hoặc Kỹ thuật sinh học phân tử Real-time PCR xác định DNA/RNA Plasmodium.",
+    "criteriaRule": {
+        "mandatoryIds": [
+            "sot_ret_fever_epi"
+        ],
+        "minMajorRequired": 2,
+        "minMinorRequired": 1,
+        "ruleDescription": "Chẩn đoán xác định khi có tiêu chuẩn bắt buộc (Sốt + Yếu tố dịch tễ) VÀ ít nhất 2 tiêu chuẩn lâm sàng/cơ năng VÀ ít nhất 1 tiêu chuẩn cận lâm sàng khẳng định (Soi lam Giemsa (+), RDT (+) hoặc PCR (+))."
+    },
+    "criteria": [
+        {
+            "id": "sot_ret_fever_epi",
+            "type": "mandatory",
+            "label": "Sốt kèm yếu tố dịch tễ vùng sốt rét lưu hành",
+            "description": "Đang sốt hoặc có tiền sử sốt trong 3 ngày gần đây (sốt rét run chu kỳ hoặc sốt ớn lạnh/gai rét liên tục) KÈM yếu tố dịch tễ: sống trong vùng SRLH, hoặc đi từ/về từ vùng SRLH (rừng, rẫy, biên giới, quốc gia lưu hành) trong vòng 14 ngày, hoặc có tiền sử mắc sốt rét.",
+            "sourceGuideline": "Quyết định 3377/QĐ-BYT 2023 & Quyết định 4922/QĐ-BYT 2021"
+        },
+        {
+            "id": "sot_ret_paroxysm",
+            "type": "major",
+            "label": "Cơn sốt rét điển hình 3 giai đoạn",
+            "description": "Cơn sốt diễn tiến qua 3 giai đoạn kinh điển: 1. Rét run rét run cầm cập, đắp nhiều chăn vẫn rét (30-60 phút) -> 2. Sốt cao sốt nóng, mặt đỏ, da khô, nhiệt độ 39-41°C (2-6 giờ) -> 3. Vã mồ hôi vã mồ hôi đầm đìa, hạ nhiệt, dịu đau (1-2 giờ). Cơn sốt lặp lại có tính chu kỳ (24h với P. knowlesi, 48h với P. falciparum/P. vivax/P. ovale, 72h với P. malariae).",
+            "sourceGuideline": "Quyết định 3377/QĐ-BYT 2023"
+        },
+        {
+            "id": "sot_ret_clinical_signs",
+            "type": "major",
+            "label": "Hội chứng thiếu máu & Gan lách to",
+            "description": "Da xanh, niêm mạc nhợt do tan máu; lách to (sờ thấy dưới bờ sườn, đau tức), gan to nhẹ, mệt mỏi, chán ăn, đau đầu dữ dội, đau mỏi cơ khớp.",
+            "sourceGuideline": "Quyết định 3377/QĐ-BYT 2023"
+        },
+        {
+            "id": "sot_ret_lab_giemsa",
+            "type": "lab",
+            "label": "Soi lam máu nhuộm Giemsa phát hiện KSTSR (+)",
+            "description": "Xác định hình thái và loài Plasmodium (P.f, P.v, P.m, P.o, P.k) trên lam máu giọt dày/mỏng kèm mật độ KST/µL hoặc % hồng cầu bị nhiễm.",
+            "labThreshold": "Tìm thấy thể vô tính hoặc giao bào Plasmodium trên giọt dày/mỏng",
+            "sourceGuideline": "Quyết định 3377/QĐ-BYT 2023 & WHO Guidelines for Malaria 2024"
+        },
+        {
+            "id": "sot_ret_lab_rdt",
+            "type": "lab",
+            "label": "Test chẩn đoán nhanh RDTs Kháng nguyên Sốt rét (+)",
+            "description": "Phát hiện kháng nguyên HRP-2 (đặc hiệu P. falciparum) và/hoặc pLDH / Aldolase (cho P. vivax và các loài Plasmodium khác).",
+            "labThreshold": "Vạch kết quả Dương tính (Pf (+), Pv (+) hoặc Phối hợp (+))",
+            "sourceGuideline": "Quyết định 3377/QĐ-BYT 2023"
+        },
+        {
+            "id": "sot_ret_lab_pcr",
+            "type": "lab",
+            "label": "Kỹ thuật sinh học phân tử Real-time PCR (+)",
+            "description": "Phát hiện đoạn gen 18S rRNA hoặc chất liệu di truyền DNA/RNA của Plasmodium ở mật độ rất thấp (< 1 KST/µL), giúp phân định chính xác loài Plasmodium và nhiễm phối hợp.",
+            "labThreshold": "Khuếch đại PCR Dương tính với primer đặc hiệu loài Plasmodium",
+            "sourceGuideline": "Quyết định 3377/QĐ-BYT 2023"
+        },
+        {
+            "id": "sot_ret_lab_severe_cutoffs",
+            "type": "lab",
+            "label": "Dấu ấn cận lâm sàng Sốt rét ác tính đe dọa tử vong",
+            "description": "Mật độ KST vô tính cao (> 100.000 KST/µL hoặc > 10% hồng cầu bị nhiễm); Huyết sắc tố Hb < 7 g/dL (hoặc Hct < 20%); Creatinine > 265 µmol/L (3 mg/dL); Bilirubin > 50 µmol/L (3 mg/dL); Bicarbonate < 15 mmol/L (pH < 7.35, Lactate ≥ 5 mmol/L); Đường huyết < 2.2 mmol/L (40 mg/dL).",
+            "labThreshold": "Mật độ KST > 100.000/µL, Hb < 7g/dL, Cre > 265µmol/L, Bili > 50µmol/L, pH < 7.35",
+            "sourceGuideline": "Quyết định 3377/QĐ-BYT 2023"
+        }
+    ],
+    "severityGrading": [
+        {
+            "grade": "Mức độ 1: Sốt rét thể thông thường (Chưa biến chứng)",
+            "severity": "mild",
+            "criteria": "[Lâm sàng]: Có cơn sốt rét điển hình (rét run -> sốt -> vã mồ hôi) hoặc sốt ớn lạnh/gai rét không điển hình. Không có dấu hiệu đe dọa tính mạng. [Cận lâm sàng]: KSTSR (+), Hb > 10 g/dL, không rối loạn chức năng cơ quan. [Tiêu chuẩn an toàn]: Huyết động ổn định, tỉnh táo, không nôn ói nhiều, đủ điều kiện điều trị ngoại trú/tuyến xã.",
+            "triage": "Trạm y tế xã / Phòng khám tư nhân / Ngoại trú",
+            "primaryAction": "Điều trị thuốc đặc hiệu ưu tiên đường uống: Pyramax 3 ngày + Primaquin (diệt giao bào/tiệt căn hypnozoite), hoặc Chloroquin 3 ngày + Primaquin (cho P.v/P.m). Theo dõi lam máu hàng ngày.",
+            "targetVitals": "Mạch 60-90 l/p, HA tâm thu 100-120 mmHg, SpO2 >= 96%, Thân nhiệt < 37.5°C, bài niệu >= 1.0 mL/kg/h"
+        },
+        {
+            "grade": "Mức độ 2: Sốt rét có Dấu hiệu Cảnh báo Ác tính (Cần Nhập viện Nội trú)",
+            "severity": "moderate",
+            "criteria": "[Dấu hiệu cảnh báo]: Rối loạn tri giác nhẹ/thoáng qua (li bì, vật vã), sốt cao liên tục không hạ, rối loạn tiêu hóa nặng (nôn/tiêu chảy nhiều lần, đau bụng cấp), đau đầu dữ dội, thiếu máu nặng (da xanh niêm mạc nhợt). [Cận lâm sàng]: Mật độ KST vô tính cao (P.f ++++ hoặc >= 100.000 KST/µL), Hb 7-9 g/dL. Dọa chuyển thành sốt rét ác tính.",
+            "triage": "Trung tâm Y tế huyện / Bệnh viện đa khoa huyện / Nội trú 100%",
+            "primaryAction": "Nhập viện khẩn cấp; dùng ngay liều Artesunat tiêm IV/IM đầu tiên 2.4 mg/kg (hoặc Pyramax 1 liều uống nếu chưa chuyển viện ngay được); theo dõi sinh hiệu và tri giác mỗi 2-4 giờ.",
+            "targetVitals": "Mạch 70-100 l/p, HATT >= 90 mmHg, SpO2 >= 95%, Tri giác tỉnh táo hoàn toàn (Glasgow 15 đ), bài niệu >= 0.5-1.0 mL/kg/h"
+        },
+        {
+            "grade": "Mức độ 3: Sốt rét ác tính / Biến chứng đe dọa tính mạng",
+            "severity": "critical",
+            "criteria": "[Lâm sàng]: Rối loạn tri giác/hôn mê (Glasgow < 11 hay Blantyre < 3 ở trẻ), co giật > 2 lần/24h, suy hô hấp (SpO2 < 92%, nhịp thở > 30, ran ẩm phổi/ARDS), sốc (HATT < 80 mmHg người lớn, < 70 mmHg trẻ em, CRT >= 3s), xuất huyết nặng. [Cận lâm sàng]: Hb < 7 g/dL (trẻ Hb <= 5 g/dL), Creatinine > 265 µmol/L, Bilirubin > 50 µmol/L, pH < 7.35, Lactate >= 5 mmol/L, Đường huyết < 2.2 mmol/L, Mật độ KST > 10% hồng cầu.",
+            "triage": "Khoa Hồi sức Tích cực (ICU) Bệnh viện Tỉnh / Trung ương",
+            "primaryAction": "Hồi sức cấp cứu tích cực: Artesunat tiêm IV 2.4 mg/kg (giờ 0, 12, 24) [trẻ < 20kg dùng 3 mg/kg]; kiểm soát đường thở/thở máy, bù dịch/vận mạch chống sốc, truyền khối hồng cầu lắng nếu Hb < 7 g/dL, lọc máu liên tục nếu suy thận/toan máu nặng.",
+            "targetVitals": "HATT >= 90 mmHg, MAP >= 65 mmHg, SpO2 >= 95%, Lactate < 2 mmol/L, Đường huyết 4.4-10 mmol/L, bài niệu >= 0.5 mL/kg/h"
+        }
+    ],
+    "protocol": {
+        "title": "Phác đồ chẩn đoán và điều trị bệnh Sốt rét (Quyết định số 3377/QĐ-BYT)",
+        "guideline": "Quyết định 3377/QĐ-BYT ngày 30/08/2023 của Bộ trưởng Bộ Y tế Việt Nam & WHO Guidelines for Malaria 2024-2025",
+        "targetGoals": [
+            "Cắt nhanh cơn sốt và làm sạch ký sinh trùng sốt rét thể vô tính trong máu trong vòng 24-48 giờ.",
+            "Diệt triệt để giao bào (gametocyte) chống lây lan cộng đồng và tiệt căn thể ẩn (hypnozoite trong gan) để ngăn ngừa tái phát xa do P. vivax / P. ovale.",
+            "Phòng ngừa biến chứng ác tính, hồi sức suy đa tạng khẩn cấp, khống chế tỷ lệ tử vong do sốt rét ác tính dưới 0.1%."
+        ],
+        "initialManagement": [
+            "Thực hiện ngay xét nghiệm lam máu nhuộm Giemsa hoặc test nhanh RDTs cho 100% bệnh nhân nghi ngờ sốt rét trước khi cho thuốc.",
+            "Phân tầng điều trị: Sốt rét thường điều trị ngoại trú/tuyến xã; Sốt rét có dấu hiệu cảnh báo/nguy cơ ác tính nhập viện nội trú tuyến huyện; Sốt rét ác tính chuyển khẩn Khoa Hồi sức Cấp cứu (ICU) tuyến huyện/tỉnh.",
+            "Xử trí cấp cứu tại chỗ cho ca ác tính: Tiêm tĩnh mạch ngay liều Artesunat đầu tiên 2.4 mg/kg trước khi chuyển viện."
+        ],
+        "firstLineDrugs": [
+            {
+                "drugName": "Pyronaridin tetraphosphat - artesunat (Pyramax 180mg/60mg viên hoặc 60mg/20mg bột)",
+                "class": "Thuốc phối hợp Artemisinin (ACT) đầu tay ưu tiên",
+                "route": "PO",
+                "dosage": "Uống 1 lần/ngày x 3 ngày liên tục. Người lớn 45-<65kg: 3 viên/ngày; ≥65kg: 4 viên/ngày; 24-<45kg: 2 viên/ngày; 15-<24kg: 1 viên/ngày. Trẻ em dạng bột: <8kg: 1 gói/ngày; 8-<15kg: 2 gói/ngày; 15-<20kg: 3 gói/ngày.",
+                "frequency": "Mỗi 24 giờ x 3 ngày",
+                "instructions": "Chỉ định ưu tiên cho P. falciparum, P. malariae, P. knowlesi và P. vivax/P. ovale. Không dùng cho người mẫn cảm, tổn thương gan nặng, suy thận nặng, phụ nữ có thai 3 tháng đầu.",
+                "isFirstLine": true
+            },
+            {
+                "drugName": "Chloroquin phosphat (Viên 250mg chứa 150mg base)",
+                "class": "Thuốc điều trị diệt thể vô tính P. vivax, P. malariae, P. ovale, P. knowlesi",
+                "route": "PO",
+                "dosage": "Tổng liều 25 mg base/kg trong 3 ngày: Ngày 1 uống 10 mg base/kg (chia 2 lần cách 6h); Ngày 2 uống 10 mg base/kg (chia 2 lần); Ngày 3 uống 5 mg base/kg (1 lần). Liều tuổi: ≥15 tuổi N1: 4 viên, N2: 4 viên, N3: 2 viên.",
+                "frequency": "Ngày 1 và 2 chia 2 lần; Ngày 3 uống 1 lần",
+                "instructions": "Dùng điều trị sốt rét do P. vivax, P. ovale, P. malariae, P. knowlesi nhạy cảm Chloroquin. Thận trọng vẩy nến, động kinh.",
+                "isFirstLine": true
+            },
+            {
+                "drugName": "Primaquin (Viên chứa 7.5mg base)",
+                "class": "Thuốc diệt giao bào (P.f) và tiệt căn thể ẩn hypnozoite trong gan (P.v, P.o)",
+                "route": "PO",
+                "dosage": "Diệt giao bào P.f/P.m/P.k: 0.25-0.5 mg base/kg (người lớn 4 viên 7.5mg) liều duy nhất N1. Tiệt căn P.v/P.o: Nếu G6PD bình thường dùng 0.5 mg base/kg/ngày x 7 ngày (hoặc 0.25 mg base/kg/ngày x 14 ngày). Nếu bán thiếu G6PD (30-70%): 0.25 mg/kg/ngày x 14 ngày. Nếu thiếu G6PD (<30%): 0.75 mg base/kg/lần/tuần x 8 tuần.",
+                "frequency": "Uống sau khi ăn, 1 lần/ngày (hoặc 1 lần/tuần nếu thiếu G6PD)",
+                "instructions": "CẤM DÙNG cho trẻ < 6 tháng tuổi, phụ nữ có thai, phụ nữ cho con bú con < 6 tháng. Tư vấn dặn dò dấu hiệu tan máu cấp (nước tiểu xẫm màu/màu cà phê, da vàng, tụt Hb).",
+                "isFirstLine": true
+            },
+            {
+                "drugName": "Artesunat tiêm (Lọ 60mg bột pha tiêm)",
+                "class": "Thuốc chọn lọc hàng đầu điều trị Sốt rét ác tính",
+                "route": "IV / IM",
+                "dosage": "Trẻ em > 20kg và Người lớn: Giờ thứ 0 dùng 2.4 mg/kg IV, giờ thứ 12 tiêm nhắc 2.4 mg/kg IV (ngày đầu 2 liều). Từ ngày thứ 2 tiêm 2.4 mg/kg/ngày (mỗi 24h) cho đến khi bệnh nhân tỉnh, uống được thì chuyển sang Pyramax uống đủ 3 ngày. Trẻ em < 20kg: Liều tiêm 3.0 mg/kg/lần theo lịch tương tự.",
+                "frequency": "Giờ 0, giờ 12, sau đó mỗi 24 giờ",
+                "instructions": "Pha lọ 60mg với 1 mL Natri Bicarbonate 5% đi kèm, lắc kỹ cho tan hoàn toàn, sau đó pha loãng với 5 mL Natri Clorid 0.9% hoặc Glucose 5% tiêm IV chậm (hoặc tiêm bắp sâu nếu không lấy được tĩnh mạch). Theo dõi tan máu muộn sau điều trị.",
+                "isFirstLine": true
+            }
+        ],
+        "secondLineDrugs": [
+            {
+                "drugName": "Dihydroartemisinin - Piperaquine (Arterakine / CV Artecan 40mg/320mg)",
+                "class": "Thuốc ACT thay thế",
+                "route": "PO",
+                "dosage": "Uống 1 lần/ngày x 3 ngày: Người lớn 36-<60kg: 3 viên/ngày; 60-<80kg: 4 viên/ngày; ≥80kg: 5 viên/ngày; 25-<36kg: 2 viên/ngày; 17-<25kg: 1.5 viên/ngày; 8-<17kg: 1 viên/ngày.",
+                "frequency": "Mỗi 24 giờ x 3 ngày",
+                "instructions": "Không dùng cho phụ nữ có thai 3 tháng đầu. Tránh bữa ăn quá nhiều chất béo (nguy cơ kéo dài khoảng QTc).",
+                "isFirstLine": false
+            },
+            {
+                "drugName": "Quinin sulfat 250mg + Clindamycin 150mg/300mg",
+                "class": "Phác đồ ưu tiên cho Phụ nữ có thai 3 tháng đầu & Trẻ em < 8 tuổi",
+                "route": "PO",
+                "dosage": "Quinin sulfat: 30 mg/kg/24h (người lớn 6 viên/ngày chia 3 lần cách 8h) x 7 ngày. KÈM Clindamycin: 15 mg/kg/24h (người lớn 4 viên 150mg hoặc 2 viên 300mg/ngày chia 2 lần) x 7 ngày.",
+                "frequency": "Quinin chia 3 lần/ngày; Clindamycin chia 2 lần/ngày x 7 ngày",
+                "instructions": "Chỉ định bắt buộc khi bị Sốt rét do P. falciparum ở thai phụ 3 tháng đầu. Theo dõi sát hạ đường huyết do Quinin kích thích tiết Insulin.",
+                "isFirstLine": false
+            }
+        ],
+        "supportiveCare": [
+            "Thở oxy qua cannula 2-4 L/phút nếu SpO2 < 95% hoặc dọa suy hô hấp.",
+            "Hạ sốt an toàn bằng Paracetamol 10-15 mg/kg PO/PR khi T° ≥ 38.5°C (tối đa ≤ 60 mg/kg/ngày hoặc 3g/ngày người lớn). Lau mát bằng nước ấm. Tuyệt đối không dùng Aspirin/NSAIDs.",
+            "Bù dịch đường uống Oresol pha chuẩn (1 gói/1L nước) 1500-2500 mL/ngày. Bù dịch tĩnh mạch thận trọng Ringer Lactate / Natri Clorid 0.9% duy trì bài niệu ≥ 0.5-1.0 mL/kg/h, tránh quá tải dịch gây phù phổi cấp.",
+            "Dinh dưỡng mềm lỏng, dễ tiêu, giàu năng lượng; theo dõi đường huyết mao mạch phòng ngừa hạ đường huyết."
+        ]
+    },
+    "complications": [
+        {
+            "name": "Sốt rét thể não / Hôn mê do Sốt rét ác tính",
+            "timeframe": "acute_24h",
+            "warningSigns": "Lơ mơ, li bì, cuồng sảng, vật vã, Glasgow < 11 điểm (Blantyre < 3 ở trẻ em), co giật toàn thân lặp lại > 2 lần/24h, đồng tử phản ứng kém.",
+            "preventiveAction": "Tiêm tĩnh mạch khẩn Artesunat 2.4 mg/kg (giờ 0, 12, 24). Đặt canul hầu họng, thông khí bảo vệ đường thở, nằm đầu cao 30 độ, dùng Diazepam 0.2-0.3 mg/kg IV chậm nếu co giật. Chống phù não bằng Mannitol 20% 0.5 g/kg IV truyền trong 30 phút.",
+            "onCallAlertText": "Y LỆNH TRỰC BÁO ĐỘNG ĐỎ: SỐT RÉT THỂ NÃO: Tiêm IV Artesunat 2.4 mg/kg ngay, thở oxy, Diazepam IV nếu co giật, thử đường huyết mao mạch STAT!"
+        },
+        {
+            "name": "Suy hô hấp cấp / Phù phổi cấp do Sốt rét ác tính (ARDS)",
+            "timeframe": "acute_24h",
+            "warningSigns": "Khó thở dồn dập, nhịp thở > 30 lần/phút, co kéo cơ hô hấp phụ, SpO2 < 92% khí trời, nghe ran ẩm dâng 2 đáy phổi, khạc đờm bọt hồng.",
+            "preventiveAction": "Đặt bệnh nhân nằm đầu cao 45-90 độ. Thở oxy áp lực dương không xâm lấn CPAP/NCPAP (PEEP 5-10 cmH2O) hoặc đặt nội khí quản thở máy PEEP. NGƯNG NGAY toàn bộ dịch truyền thừa. Dùng Furosemide 0.5-1.0 mg/kg IV chậm khi HATT ≥ 90 mmHg.",
+            "onCallAlertText": "Y LỆNH TRỰC: SUY HÔ HẤP/PHÙ PHỔI: Thở CPAP PEEP 6-8 cmH2O, ngưng dịch truyền tĩnh mạch, Furosemide 20mg IV khẩn!"
+        },
+        {
+            "name": "Suy thận cấp do Sốt rét ác tính (Acute Kidney Injury)",
+            "timeframe": "subacute_7d",
+            "warningSigns": "Thiểu niệu (< 400 mL/24h hoặc < 0.5 mL/kg/h) hoặc vô niệu (< 200 mL/24h), Creatinine máu vọt > 265 µmol/L (3 mg/dL), Ure > 20 mmol/L, phù ngoại vi, tăng Potassium máu.",
+            "preventiveAction": "Đánh giá thể tích lòng mạch: nếu thiếu dịch bù Ringer Lactate / NaCl 0.9% nâng MAP ≥ 65 mmHg; nếu đã đủ dịch mà vô niệu dùng Furosemide IV test; nếu không đáp ứng kèm toan máu pH < 7.15 hoặc K+ > 6.5 mmol/L chỉ định Lọc máu liên tục (CRRT) hoặc Thận nhân tạo (HD).",
+            "onCallAlertText": "Y LỆNH TRỰC: SUY THẬN CẤP/VÔ NIỆU: Đo bài niệu q1h, thử Creatinine/Điện giải/Khí máu, chuẩn bị lọc máu nếu K+ > 6.5 mmol/L!"
+        },
+        {
+            "name": "Sốc sốt xuất huyết / Sốc Sốt rét ác tính (Algid Malaria)",
+            "timeframe": "acute_24h",
+            "warningSigns": "Mạch nhanh nhỏ khó bắt (> 120 l/p), HATT < 80 mmHg (trẻ < 70 mmHg), hiệu áp kẹp ≤ 20 mmHg, chi lạnh ẩm, vã mồ hôi hột, CRT ≥ 3s, da nổi bông.",
+            "preventiveAction": "Nằm đầu phẳng, ủ ấm chi, thở oxy 100%. Lập 2 đường truyền lớn ngoại biên, xả nhanh Ringer Lactate / NaCl 0.9% 10-20 mL/kg trong 30-60 phút. Nếu không ra sốc phối hợp Noradrenaline TTM liều 0.05-0.5 mcg/kg/phút nâng MAP ≥ 65 mmHg. Cấy máu loại trừ Sốc nhiễm khuẩn phối hợp.",
+            "onCallAlertText": "Y LỆNH TRỰC BÁO ĐỘNG ĐỎ: SỐC SỐT RÉT: Thở oxy 100%, xả NaCl 0.9% 10-20 mL/kg TTM khẩn, chuẩn bị Noradrenaline TTM!"
+        },
+        {
+            "name": "Hạ đường huyết đe dọa tử vong (Hypoglycemia)",
+            "timeframe": "acute_24h",
+            "warningSigns": "Vã mồ hôi lạnh, vã mồ hôi hột, nổi gai ốc, run tay chân, mạch nhanh, tri giác lơ mơ, co giật hoặc hôn mê. Đường huyết mao mạch < 2.2 mmol/L (40 mg/dL). Thường gặp ở trẻ em, thai phụ và bệnh nhân điều trị bằng Quinin.",
+            "preventiveAction": "Tiêm tĩnh mạch chậm ngay Glucose 30% 0.5-1.0 mL/kg (hoặc Glucose 20% 1-2 mL/kg), sau đó duy trì truyền tĩnh mạch Glucose 10% tốc độ 2-5 mL/kg/h giữ đường huyết 5-10 mmol/L. Đo lại đường huyết mao mạch mỗi 15-30 phút đến khi ổn định.",
+            "onCallAlertText": "Y LỆNH TRỰC BÁO ĐỘNG ĐỎ: HẠ ĐƯỜNG HUYẾT: Tiêm IV Glucose 30% 50 mL khẩn, duy trì Glucose 10% TTM, thử lại đường huyết sau 15 phút!"
+        },
+        {
+            "name": "Tan máu cấp / Đái huyết sắc tố do Primaquin / Thiếu G6PD (Blackwater Fever)",
+            "timeframe": "subacute_7d",
+            "warningSigns": "Sốt cao đột ngột trở lại, nước tiểu xẫm màu nhanh chóng chuyển sang màu đỏ sẫm, màu nước vối hoặc đen như cà phê, da mắt vàng sậm, Hb tụt dốc đứng (> 2 g/dL/24h), đau lưng hông.",
+            "preventiveAction": "NGƯNG NGAY LẬP TỨC thuốc Primaquin / Tafenoquine. Bù dịch TTM Ringer Lactate duy trì bài niệu cao ≥ 1.5-2.0 mL/kg/h kiềm hóa nước tiểu bằng Bicarbonate. Truyền khẩn Khối hồng cầu lắng (PRBC) 5-10 mL/kg khi Hb < 7 g/dL hoặc có rối loạn huyết động.",
+            "onCallAlertText": "Y LỆNH TRỰC: CẤP CỨU TAN MÁU CẤP/ĐÁI HUYẾT SẮC TỐ: Ngưng ngay Primaquin, truyền bù dịch Ringer Lactate, thử Hct STAT & xin Khối hồng cầu lắng!"
+        }
+    ],
+    "monitoringLabs": [
+        "Soi lam máu Giemsa giọt dày/mỏng kiểm tra mật độ KSTSR mỗi 24h (hoặc mỗi 12h trong sốt rét ác tính) cho đến khi âm tính hoàn toàn.",
+        "Tổng phân tích tế bào máu ngoại vi (Hb, Hct, WBC, PLT) theo dõi tốc độ tan máu và giảm tiểu cầu mỗi 12-24h.",
+        "Sinh hóa máu: Creatinine, Ure, Bilirubin toàn phần/trực tiếp, AST, ALT, Glucose mao mạch/máu tĩnh mạch mỗi 12-24h.",
+        "Điện giải đồ (Na+, K+, Cl-, Ca2+) và Khí máu động mạch (pH, HCO3-, BE, Lactate) theo dõi toan chuyển hóa.",
+        "Xét nghiệm men G6PD (định lượng/bán định lượng) trước khi chỉ định Primaquin liều cao hoặc Tafenoquine."
+    ],
+    "specialPopulations": [
+        {
+            "population": "Trẻ em / Nhũ nhi (< 5 tuổi)",
+            "adjustments": "Liều Artesunat tiêm cho trẻ < 20kg là 3.0 mg/kg/lần (thay vì 2.4 mg/kg như người lớn) vào giờ 0, 12, 24. Dùng dạng bột pha hỗn dịch Pyramax cho trẻ < 20kg. Chloroquin và Primaquin tính liều chặt chẽ theo mg/kg cân nặng.",
+            "cautions": "Dễ co giật do sốt cao, nguy cơ hạ đường huyết và toan chuyển hóa cao hơn người lớn. Chống chỉ định Primaquin cho trẻ < 6 tháng tuổi."
+        },
+        {
+            "population": "Phụ nữ mang thai",
+            "adjustments": "3 tháng đầu: Bắt buộc dùng Quinin sulfat 7 ngày + Clindamycin 7 ngày cho P.f, hoặc Chloroquin 3 ngày cho P.v/P.m. Trên 3 tháng: Dùng các thuốc ACTs (Pyramax, DHA-PPQ, AL, AS-AQ) 3 ngày. Sốt rét ác tính thai phụ 3 tháng đầu dùng Quinin dihydrochlorid IV + Clindamycin IV.",
+            "cautions": "CHỐNG CHỈ ĐỊNH TUYỆT ĐỐI Primaquin và Tafenoquine trong suốt thai kỳ (nguy cơ tan máu cấp ở thai nhi). Rất dễ bị hạ đường huyết cấp khi dùng Quinin (cần truyền Glucose 10% dự phòng). Nguy cơ sảy thai, thai chết lưu, đẻ non."
+        },
+        {
+            "population": "Phụ nữ đang cho con bú",
+            "adjustments": "Dùng phác đồ cắt cơn tương tự phụ nữ có thai trên 3 tháng (Pyramax, DHA-PPQ, AL).",
+            "cautions": "Không dùng Primaquin trừ khi biết rõ trẻ không bị thiếu G6PD (hoặc con > 6 tháng). Không dùng Artesunat - mefloquin khi đang cho con bú trừ khi ngừng cho bú."
+        },
+        {
+            "population": "Bệnh nhân thiếu hụt men G6PD",
+            "adjustments": "Thiếu G6PD (< 30%): Không dùng Primaquin liều hàng ngày; chuyển sang dùng Primaquin 0.75 mg base/kg x 1 lần/tuần x 8 tuần dưới sự giám sát y tế. Bán thiếu G6PD (30-70%): Dùng Primaquin 0.25 mg base/kg/ngày x 14 ngày. CHỐNG CHỈ ĐỊNH TUYỆT ĐỐI Tafenoquine.",
+            "cautions": "Tư vấn dặn dò người bệnh và thân nhân nhận biết ngay các dấu hiệu tan máu cấp (nước tiểu đen/sẫm màu, da vàng, hoa mắt, chóng mặt) để ngưng thuốc khẩn cấp."
+        },
+        {
+            "population": "Bệnh nhân suy thận / Suy gan",
+            "adjustments": "Không cần hiệu chỉnh liều các dẫn xuất Artemisinin (Artesunat, Artemether, Dihydroartemisinin). Giảm 1/3 liều Quinin (dùng 10 mg/kg mỗi 12h) nếu suy thận cấp kéo dài > 48h. Thận trọng với Pyramax nếu có tổn thương gan nặng.",
+            "cautions": "Tránh dùng các thuốc độc cho thận/gan phối hợp; theo dõi sát Creatinine, bài niệu và men gan."
+        }
+    ],
+    "timelinePhases": [
+        {
+            "id": "phase_1",
+            "dayRange": "N1 - N3",
+            "phaseName": "Giai đoạn Sốt cấp tính & Diệt thể vô tính trong máu",
+            "clinicalGoal": "Cắt cơn sốt, diệt sạch thể vô tính ký sinh trùng sốt rét trong hồng cầu, ngăn chặn chuyển độ ác tính",
+            "problems": [
+                {
+                    "id": "p1_spec",
+                    "problemName": "Điều trị đặc hiệu căn nguyên Plasmodium",
+                    "problemType": "specific",
+                    "isNoSpecificTreatment": false,
+                    "treatments": [
+                        {
+                            "category": "Thuốc đặc trị ACT/Chloroquin",
+                            "content": "Pyramax 180/60mg uống 1 lần/ngày x 3 ngày (P.f, P.v, P.m, P.o, P.k) HOẶC Chloroquin 25 mg base/kg x 3 ngày (N1: 10mg/kg, N2: 10mg/kg, N3: 5mg/kg cho P.v, P.m).",
+                            "isHighlighted": true
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "CLS",
+                            "metric": "Soi lam máu Giemsa / KSTSR",
+                            "frequency": "q24h",
+                            "target": "Mật độ KSTSR giảm dốc đứng, âm tính sau 48-72h"
+                        }
+                    ]
+                },
+                {
+                    "id": "p1_gameto_anti_relapse",
+                    "problemName": "Diệt giao bào chống lây lan & Tiệt căn thể ẩn (hypnozoite)",
+                    "problemType": "specific",
+                    "isNoSpecificTreatment": false,
+                    "treatments": [
+                        {
+                            "category": "Thuốc diệt giao bào/thể ẩn",
+                            "content": "Primaquin uống ngay từ N1: P.f/P.m dùng liều duy nhất 0.25-0.5 mg/kg (4 viên 7.5mg). P.v/P.o dùng 0.25 mg/kg/ngày x 14 ngày (hoặc 0.5 mg/kg/ngày x 7 ngày nếu G6PD bình thường).",
+                            "isHighlighted": true
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "LS",
+                            "metric": "Màu sắc nước tiểu & Dấu hiệu tan máu",
+                            "frequency": "Mỗi lần đi tiểu / q12h",
+                            "target": "Nước tiểu trong vàng nhạt, không xẫm màu/cà phê"
+                        }
+                    ]
+                },
+                {
+                    "id": "p1_fever_symptom",
+                    "problemName": "Sốt cao rét run chu kỳ & Đau đầu nhức mỏi cơ",
+                    "problemType": "clinical",
+                    "treatments": [
+                        {
+                            "category": "Hạ sốt & Hỗ trợ",
+                            "content": "Paracetamol 10-15 mg/kg PO/PR q4-6h khi T° ≥ 38.5°C (max 60 mg/kg/ngày). Lau mát nước ấm. Cấm NSAIDs/Aspirin."
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "LS",
+                            "metric": "Thân nhiệt T° & Tri giác",
+                            "frequency": "q4h",
+                            "target": "Thân nhiệt < 37.5°C, tỉnh táo hoàn toàn"
+                        }
+                    ]
+                }
+            ],
+            "phaseComplications": [
+                {
+                    "id": "p1_comp_warning",
+                    "problemName": "Dấu hiệu cảnh báo Sốt rét ác tính (Li bì, nôn nhiều, đau đầu dữ dội, KST > 100.000/µL)",
+                    "problemType": "complication",
+                    "treatments": [
+                        {
+                            "category": "Can thiệp khẩn",
+                            "content": "Chuyển tuyến huyện/tỉnh nội trú; tiêm tĩnh mạch Artesunat 2.4 mg/kg liều đầu tiên."
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "LS",
+                            "metric": "Tri giác, Nhịp thở, Huyết áp",
+                            "frequency": "q1-2h",
+                            "target": "Glasgow 15 đ, không suy tạng"
+                        }
+                    ]
+                }
+            ],
+            "treatments": [
+                {
+                    "category": "Thuốc đặc trị ACT/Chloroquin",
+                    "content": "Pyramax 180/60mg uống 1 lần/ngày x 3 ngày (P.f, P.v, P.m, P.o, P.k) HOẶC Chloroquin 25 mg base/kg x 3 ngày.",
+                    "isHighlighted": true
+                },
+                {
+                    "category": "Thuốc diệt giao bào/thể ẩn",
+                    "content": "Primaquin uống ngay từ N1: P.f/P.m dùng 1 liều duy nhất 0.25-0.5 mg/kg; P.v/P.o dùng 0.25 mg/kg/ngày x 14 ngày.",
+                    "isHighlighted": true
+                },
+                {
+                    "category": "Hạ sốt",
+                    "content": "Paracetamol 10-15 mg/kg khi T° ≥ 38.5°C (max 60 mg/kg/ngày). Không dùng Aspirin/NSAIDs."
+                }
+            ],
+            "monitoring": [
+                {
+                    "type": "CLS",
+                    "metric": "Soi lam máu Giemsa / KSTSR",
+                    "frequency": "q24h",
+                    "target": "Mật độ KSTSR giảm dốc đứng, âm tính sau 48-72h"
+                },
+                {
+                    "type": "LS",
+                    "metric": "Thân nhiệt & Dấu hiệu tan máu",
+                    "frequency": "q4-6h",
+                    "target": "Sốt giảm dần, nước tiểu trong"
+                }
+            ],
+            "cautionsAndDischarge": {
+                "cautions": [
+                    "[Cấm dùng Primaquin cho thai phụ, trẻ < 6 tháng, người thiếu G6PD nặng]",
+                    "[Tái khám kiểm tra lam máu nếu còn sốt sau 3 ngày]"
+                ],
+                "triageOrDischargeCriteria": "Theo dõi điều trị ngoại trú tại trạm y tế nếu hết sốt và KST (-)"
+            }
+        },
+        {
+            "id": "phase_2",
+            "dayRange": "N4 - N7",
+            "phaseName": "Giai đoạn Theo dõi sạch KSTSR & Hoàn thành phác đồ Primaquin",
+            "clinicalGoal": "Đảm bảo sạch hoàn toàn KSTSR trên lam máu, duy trì tuân thủ Primaquin tiệt căn, phát hiện tan máu muộn",
+            "problems": [
+                {
+                    "id": "p2_primaquine_adherence",
+                    "problemName": "Duy trì Primaquin 14 ngày tiệt căn P. vivax / P. ovale",
+                    "problemType": "specific",
+                    "isNoSpecificTreatment": false,
+                    "treatments": [
+                        {
+                            "category": "Duy trì tiệt căn",
+                            "content": "Uống Primaquin 0.25 mg base/kg/ngày sau ăn đến hết N14. Cán bộ y tế giám sát trực tiếp (DOT)."
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "LS",
+                            "metric": "Dấu hiệu tan máu cấp (thiếu máu, da vàng, tiểu đen)",
+                            "frequency": "q24h",
+                            "target": "Hb ổn định, không có tan máu"
+                        }
+                    ]
+                }
+            ],
+            "phaseComplications": [
+                {
+                    "id": "p2_comp_hemolysis",
+                    "problemName": "Tan máu cấp đái huyết sắc tố do Primaquin / Thiếu G6PD",
+                    "problemType": "complication",
+                    "treatments": [
+                        {
+                            "category": "Dừng Primaquin",
+                            "content": "Ngưng ngay Primaquin; truyền bù Ringer Lactate TTM; truyền khối hồng cầu lắng nếu Hb < 7 g/dL."
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "CLS",
+                            "metric": "Công thức máu Hb/Hct & Bài niệu",
+                            "frequency": "q12h",
+                            "target": "Hb không tụt tiếp, bài niệu tốt"
+                        }
+                    ]
+                }
+            ],
+            "treatments": [
+                {
+                    "category": "Duy trì tiệt căn",
+                    "content": "Uống Primaquin 0.25 mg base/kg/ngày sau ăn đến hết N14."
+                }
+            ],
+            "monitoring": [
+                {
+                    "type": "CLS",
+                    "metric": "Lam máu nhuộm Giemsa khẳng định âm tính",
+                    "frequency": "Trước khi ra viện",
+                    "target": "Lam máu âm tính hoàn toàn với KSTSR"
+                }
+            ],
+            "cautionsAndDischarge": {
+                "cautions": [
+                    "[Dừng ngay Primaquin nếu nước tiểu chuyển màu cà phê đen]",
+                    "[Tái khám N29 và N43]"
+                ],
+                "triageOrDischargeCriteria": "Cho ra viện khi kết quả soi lam âm tính hoàn toàn và sinh hiệu ổn định"
+            }
+        },
+        {
+            "id": "phase_3",
+            "dayRange": "N29 - N43",
+            "phaseName": "Giai đoạn Tái khám định kỳ & Giám sát tái phát xa / tái nhiễm",
+            "clinicalGoal": "Xác nhận điều trị khỏi hoàn toàn, phát hiện sớm tái phát xa (relapse) hoặc tái nhiễm (reinfection)",
+            "problems": [
+                {
+                    "id": "p3_recheck",
+                    "problemName": "Tái khám kiểm tra lam máu N29 và N43",
+                    "problemType": "paraclinical",
+                    "isNoSpecificTreatment": true,
+                    "treatments": [
+                        {
+                            "category": "Tái khám",
+                            "content": "Soi lam máu nhuộm Giemsa kiểm tra KSTSR vào ngày N29 và N43 hoặc bất kỳ khi nào có sốt lại."
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "CLS",
+                            "metric": "Lam máu nhuộm Giemsa",
+                            "frequency": "N29, N43",
+                            "target": "Âm tính hoàn toàn"
+                        }
+                    ]
+                }
+            ],
+            "phaseComplications": [
+                {
+                    "id": "p3_comp_relapse",
+                    "problemName": "Tái phát xa P. vivax / P. ovale do tuân thủ Primaquin kém hoặc thiếu G6PD",
+                    "problemType": "complication",
+                    "treatments": [
+                        {
+                            "category": "Điều trị tái phát",
+                            "content": "Điều trị lại bằng phác đồ thay thế (DHA-PPQ hoặc Pyramax) + Primaquin liều cao 0.5 mg/kg/ngày x 14 ngày có giám sát."
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "CLS",
+                            "metric": "Lam máu & Xét nghiệm G6PD lại",
+                            "frequency": "Khi có sốt",
+                            "target": "Xác chẩn tái phát và điều trị triệt để"
+                        }
+                    ]
+                }
+            ],
+            "treatments": [
+                {
+                    "category": "Theo dõi tái khám",
+                    "content": "Tái khám soi lam máu N29 và N43. Sống an toàn phòng chống muỗi đốt."
+                }
+            ],
+            "monitoring": [
+                {
+                    "type": "CLS",
+                    "metric": "Lam máu Giemsa N29, N43",
+                    "frequency": "N29, N43",
+                    "target": "Âm tính hoàn toàn"
+                }
+            ],
+            "cautionsAndDischarge": {
+                "cautions": [
+                    "[Nếu sốt trở lại bất kỳ lúc nào phải đến cơ sở y tế soi lam máu ngay]"
+                ],
+                "triageOrDischargeCriteria": "Xác nhận khỏi bệnh hoàn toàn khi N29 và N43 lam máu âm tính"
+            }
+        }
+    ],
+    "generalComplications": [
+        {
+            "id": "comp_hypoglycemia_gen",
+            "complicationName": "Hạ đường huyết cấp do Quinin hoặc do Sốt rét ác tính",
+            "problemType": "clinical",
+            "warningLevel": "critical",
+            "manifestation": "[Mệt lả, vã mồ hôi lạnh, run tay chân, vã mồ hôi hột, tri giác lơ mơ, co giật, Đường huyết mao mạch < 2.2 mmol/L (40 mg/dL)]",
+            "actionProtocol": "[Tiêm tĩnh mạch chậm ngay Glucose 30% 50 mL (1 mL/kg ở trẻ em); sau đó duy trì Glucose 10% TTM 2-4 mL/kg/h giữ đường huyết 5-10 mmol/L]",
+            "monitoringMetrics": "[Đo đường huyết mao mạch q15-30p trong cơn cấp, sau đó q2-4h]"
+        },
+        {
+            "id": "comp_hemolysis_gen",
+            "complicationName": "Hội chứng Đái huyết sắc tố / Tan máu cấp do Primaquin ở bệnh nhân thiếu G6PD",
+            "problemType": "paraclinical",
+            "warningLevel": "high",
+            "manifestation": "[Nước tiểu chuyển màu đỏ sẫm đến đen như cà phê, Hb tụt dốc đứng, vàng da mắt tăng nhanh, đau lưng hông, mệt lả]",
+            "actionProtocol": "[Ngưng ngay Primaquin/Tafenoquine; bù Ringer Lactate TTM duy trì bài niệu ≥ 1.5-2.0 mL/kg/h; truyền Khối hồng cầu lắng 5-10 mL/kg khi Hb < 7 g/dL]",
+            "monitoringMetrics": "[Quan sát màu sắc nước tiểu mỗi lần đi tiểu, CTM (Hb, Hct) q12h, Creatinine/Ure q24h]"
+        },
+        {
+            "id": "comp_post_artesunate_hemolysis",
+            "complicationName": "Tan máu muộn sau điều trị Artesunat tiêm (Post-artesunate delayed hemolysis)",
+            "problemType": "paraclinical",
+            "warningLevel": "medium",
+            "manifestation": "[Xuất hiện từ 1-3 tuần sau khi tiêm Artesunat hết KSTSR; bệnh nhân mệt mỏi trở lại, da xanh nhẹ, Hb tụt từ từ do lách tiêu hủy hồng cầu bị bóc tách KST]",
+            "actionProtocol": "[Theo dõi CTM lặp lại sau ra viện 7-14 ngày; truyền Khối hồng cầu lắng nếu Hb tụt sâu < 7 g/dL hoặc có triệu chứng thiếu máu nặng]",
+            "monitoringMetrics": "[CTM (Hb, Hct, Hồng cầu lưới), Bilirubin, LDH lúc tái khám N14-N28]"
+        }
+    ],
+    "clinicalCautions": {
+        "warnings": [
+            "[Cảnh báo 1: Sốt rét do P. falciparum có thể diễn tiến thành Sốt rét ác tính rất nhanh trong 24h, bắt buộc phải soi lam/RDT ngay khi có sốt + yếu tố dịch tễ.]",
+            "[Cảnh báo 2: Primaquin dùng cho bệnh nhân thiếu G6PD có thể gây tan máu cấp đái huyết sắc tố nguy hiểm, bắt buộc phải dặn bệnh nhân quan sát màu nước tiểu.]",
+            "[Cảnh báo 3: Dùng Quinin tiêm/uống rất dễ gây hạ đường huyết nặng do kích thích tụy tiết Insulin, đặc biệt ở phụ nữ mang thai.]"
+        ],
+        "contraindications": [
+            "[Chống chỉ định tuyệt đối Primaquin và Tafenoquine cho phụ nữ có thai, phụ nữ cho con bú con < 6 tháng, trẻ em < 6 tháng tuổi, hoặc người thiếu G6PD nặng.]",
+            "[Chống chỉ định dùng đơn trị liệu Artemisinin (Artesunat/Artemether/DHA) đường uống để tránh nguy cơ kháng thuốc.]",
+            "[Chống chỉ định tuyệt đối Aspirin và các thuốc NSAIDs hạ sốt do làm tăng nguy cơ xuất huyết và tổn thương thận.]"
+        ],
+        "dischargeCriteria": [
+            "[Hết sốt liên tục ≥ 48 giờ không dùng thuốc hạ sốt.]",
+            "[Kết quả xét nghiệm soi lam máu nhuộm Giemsa âm tính hoàn toàn với ký sinh trùng sốt rét.]",
+            "[Sinh hiệu, tri giác, chức năng các cơ quan (gan, thận, hô hấp, đông máu) ổn định hoàn toàn.]",
+            "[Bệnh nhân tỉnh táo, tự ăn uống được, bài niệu tốt (≥ 1.0 mL/kg/h) và đã được tư vấn tuân thủ đầy đủ liệu trình Primaquin.]"
+        ]
+    },
+    "vaultPathways": [
+        {
+            "khoCode": "CD",
+            "khoName": "Kho Tiêu Chuẩn CĐ",
+            "articleTitle": "Bộ tiêu chuẩn chẩn đoán xác định Sốt rét",
+            "searchKeyword": "sot ret chan doan giemsa rdt pcr"
+        },
+        {
+            "khoCode": "PDDT",
+            "khoName": "Kho Phác Đồ Điều Trị",
+            "articleTitle": "Phác đồ điều trị, dược thư & tư vấn người bệnh Sốt rét",
+            "searchKeyword": "phac do dieu tri sot ret pyramax chloroquin primaquin artesunat"
+        },
+        {
+            "khoCode": "DTH",
+            "khoName": "Kho Dịch Tễ & Nguy Cơ",
+            "articleTitle": "Dịch tễ học lâm sàng, véc-tơ truyền bệnh & vùng lưu hành Sốt rét",
+            "searchKeyword": "dich te sot ret anopheles papua viet nam"
+        },
+        {
+            "khoCode": "BC",
+            "khoName": "Kho Biến Chứng",
+            "articleTitle": "Nhận diện và xử trí cấp cứu các biến chứng Sốt rét ác tính",
+            "searchKeyword": "sot ret ac tinh the nao suy ho hap suy than soc"
+        }
+    ]
+}
