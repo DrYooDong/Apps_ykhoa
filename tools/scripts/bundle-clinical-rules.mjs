@@ -108,4 +108,11 @@ function bundleDiseases() {
   console.log('🎉 Hoàn tất gom cụm bệnh lý theo chuyên khoa!\n');
 }
 
-bundleDiseases();
+import { bundleSymptoms } from './bundle-symptoms.mjs';
+
+function main() {
+  bundleSymptoms();
+  bundleDiseases();
+}
+
+main();
