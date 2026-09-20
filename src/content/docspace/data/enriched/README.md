@@ -168,6 +168,8 @@ npm --prefix src/content/docspace run build
 ### 💡 Chu trình 3 bước chuẩn khi nạp dữ liệu mới
 
 ```powershell
+node tools/scripts/build-enriched-cdss.mjs
+
 node tools/scripts/bundle-clinical-rules.mjs       # Bước 1: Đồng bộ dữ liệu
 node tools/qa/docspace-clinical-data-linter.mjs    # Bước 2: Dọn sạch HTML & viết tắt
 node tools/scripts/vault-readiness-check.mjs       # Bước 3: Kiểm tra 15/15 tiêu chí

@@ -132,44 +132,69 @@ export const Step3Protocol: React.FC<Step3Props> = ({
     const list: Benh[] = Array.isArray(kb?.benh)
       ? kb.benh.filter((b) => Boolean(b && b.baoDong))
       : [];
-    const existingIds = new Set(list.map((b) => b?.id).filter(Boolean));
+
+    const findExistingIdx = (key: string, chain: any) => {
+      return list.findIndex((b) => {
+        if (!b) return false;
+        if (b.id === key) return true;
+        if (
+          (key === 'aclf' && (b.id === 'suy_gan_cap_tren_nen_man_aclf' || b.id === 'suy-gan-cap-tren-nen-man-aclf')) ||
+          (b.id === 'aclf' && (key === 'suy_gan_cap_tren_nen_man_aclf' || key === 'suy-gan-cap-tren-nen-man-aclf'))
+        ) {
+          return true;
+        }
+        // So khớp ICD và tương đồng tên bệnh để chống duplicate hoàn toàn
+        if (b.icd && chain.icdCode && b.icd.trim().toUpperCase() === chain.icdCode.trim().toUpperCase()) {
+          const n1 = (b.ten || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+          const n2 = (chain.diseaseName || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+          if (n1.includes(n2) || n2.includes(n1)) return true;
+        }
+        return false;
+      });
+    };
 
     Object.entries(ENRICHED_DISEASES).forEach(([key, chain]) => {
       if (!chain || !chain.diseaseName) return;
-      if (!existingIds.has(key)) {
-        list.push({
-          id: key,
-          ten: chain.diseaseName,
-          icd: chain.icdCode || '',
-          nhom: chain.specialty || 'Nội khoa',
-          baoDong: true,
-          ghiChuBaoDong: 'Phác đồ điều trị chuyên sâu EBM',
-          tomTat: chain.summary || '',
-          danSo: { gioiTinh: 'any' },
-          dd: [],
-          phacDo: {
-            tuyen: chain.protocol?.initialManagement || [],
-            thuoc: chain.protocol?.firstLineDrugs
-              ? chain.protocol.firstLineDrugs.map((d) => [
-                  d.drugName,
-                  `${d.dosage}${d.route ? ' (' + d.route + ')' : ''}`,
-                  d.instructions || d.class || 'Khuyến cáo bậc 1',
-                ])
-              : [],
-            theoDoi: chain.monitoringLabs || [],
-            luuY: [
-              'Theo dõi sát phản ứng thuốc & nguy cơ tương tác',
-              ...(chain.protocol?.supportiveCare || []),
-            ],
-            nguon: [chain.protocol?.guideline || 'Hướng dẫn chẩn đoán và điều trị Bộ Y tế'],
-          },
-        });
-        existingIds.add(key);
+      const existingIdx = findExistingIdx(key, chain);
+
+      const enrichedBenh: Benh = {
+        id: key,
+        ten: chain.diseaseName,
+        icd: chain.icdCode || (existingIdx !== -1 ? list[existingIdx].icd : ''),
+        nhom: chain.specialty || (existingIdx !== -1 ? list[existingIdx].nhom : 'Nội khoa'),
+        baoDong: true,
+        ghiChuBaoDong: 'Phác đồ điều trị chuyên sâu EBM',
+        tomTat: chain.summary || (existingIdx !== -1 ? list[existingIdx].tomTat : ''),
+        danSo: { gioiTinh: 'any' },
+        dd: existingIdx !== -1 ? list[existingIdx].dd : [],
+        phacDo: {
+          tuyen: chain.protocol?.initialManagement || (existingIdx !== -1 ? list[existingIdx].phacDo?.tuyen || [] : []),
+          thuoc: chain.protocol?.firstLineDrugs
+            ? chain.protocol.firstLineDrugs.map((d) => [
+                d.drugName,
+                `${d.dosage}${d.route ? ' (' + d.route + ')' : ''}`,
+                d.instructions || d.class || 'Khuyến cáo bậc 1',
+              ])
+            : existingIdx !== -1 ? list[existingIdx].phacDo?.thuoc || [] : [],
+          theoDoi: chain.monitoringLabs || (existingIdx !== -1 ? list[existingIdx].phacDo?.theoDoi || [] : []),
+          luuY: [
+            'Theo dõi sát phản ứng thuốc & nguy cơ tương tác',
+            ...(chain.protocol?.supportiveCare || []),
+          ],
+          nguon: [chain.protocol?.guideline || 'Hướng dẫn chẩn đoán và điều trị Bộ Y tế'],
+        },
+      };
+
+      if (existingIdx !== -1) {
+        // Cập nhật/ghi đè bản ghi cũ bằng bản ghi enriched chuẩn hoá để tránh trùng lặp
+        list[existingIdx] = enrichedBenh;
+      } else {
+        list.push(enrichedBenh);
       }
     });
 
     return list
-      .filter((b) => Boolean(b.baoDong))
+      .filter((b) => Boolean(b && b.baoDong))
       .sort((a, b) => (a.ten || '').localeCompare(b.ten || '', 'vi'));
   }, [kb.benh]);
 
@@ -177,6 +202,12 @@ export const Step3Protocol: React.FC<Step3Props> = ({
     if (!selectedDiseaseId) return allAvailableDiseases[0] || null;
     return (
       allAvailableDiseases.find((b) => b.id === selectedDiseaseId) ||
+      (selectedDiseaseId === 'suy_gan_cap_tren_nen_man_aclf'
+        ? allAvailableDiseases.find((b) => b.id === 'aclf')
+        : null) ||
+      (selectedDiseaseId === 'aclf'
+        ? allAvailableDiseases.find((b) => b.id === 'suy_gan_cap_tren_nen_man_aclf')
+        : null) ||
       allAvailableDiseases.find((b) => b.icd === selectedDiseaseId) ||
       allAvailableDiseases[0] ||
       null
